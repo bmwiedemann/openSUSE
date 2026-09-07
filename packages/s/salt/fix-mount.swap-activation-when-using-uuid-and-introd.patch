@@ -1,0 +1,1194 @@
+From 757a2429569c2e6f5bd91f756de56a16b72a57e2 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 4 Sep 2026 11:59:12 +0100
+Subject: [PATCH] Fix "mount.swap" activation when using UUID and
+ introduce "resolve_canonical" argument (#781)
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+* Fix mount.swap state for UUID= and LABEL= device specifications
+
+fstab(5) allows a swap to be identified by a TAG=value specification
+instead of a device path, and swapon(8) resolves those tags.  The state
+did not: it compared the configured name against the output of
+mount.swaps, which is read from /proc/swaps and therefore only ever
+contains device paths.
+
+The comparison could never match, so the state called mount.swapon on
+every run and then reported
+
+    Swap UUID=... failed to activate
+
+even though the swap was active all along.
+
+Resolve TAG=value specifications to a device path with blkid before
+looking them up, reusing the _convert_to() helper that fstab_present
+already uses for the same purpose.  Specifications that no block device
+matches are left untouched, so a genuine failure is still reported with
+the name the user configured.
+
+* Compare swap devices by their canonical path in the mount.swap state
+
+/proc/swaps, and therefore mount.swaps, reports the path the kernel
+arrived at when the swap was activated, which need not be the name used
+to activate it: swapon(8) follows symlinks, so a swap activated as
+/dev/mapper/system-swap is reported as /dev/dm-0.
+
+That is not a corner case for the TAG=value specifications resolved in
+the previous commit, it is the normal result for LVM and dm-crypt
+setups.  blkid names those devices through /dev/mapper:
+
+    # blkid -t UUID=42fbd303-5ed5-4c40-b382-d1bef97e5d88
+    /dev/mapper/cr_home: UUID="42fbd303-..." TYPE="ext4"
+
+so the resolved device still would not have matched what the kernel
+reports.  The same applies to a swap configured as a symlink, such as
+/dev/disk/by-uuid/<uuid>.
+
+Resolve both the configured name and the keys of the active swaps with
+os.path.realpath() before comparing them.  This also replaces the
+hand-rolled symlink resolution, which only followed a single level and
+assumed that a relative link target lived in /dev.
+
+While here, use the resolved device for the "is set to be added to the
+fstab and to be activated" test-mode check as well; it looked up the
+unresolved name and so never fired for a symlinked device.
+
+* Add resolve_canonical arg to use canonical name for comparison
+
+Adjust code after moving functions to salt.utils.mount
+
+* Add extra unit tests around resolve_canonical
+
+Co-authored-by: Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+
+* Update changelog
+
+* Fix pylint issue
+
+* Fix alignment to prevent pre-commit failure
+
+* Fix function name to be consistent with its purpose
+
+---------
+
+Co-authored-by: Bernhard M. Wiedemann <bwiedemann@suse.de>
+Co-authored-by: Yeray Gutiérrez Cedrés <yeray.gutierrez@suse.com>
+---
+ changelog/16084.fixed.md                 |   1 +
+ changelog/70201.added.md                 |   1 +
+ salt/modules/mount.py                    |  33 ++-
+ salt/states/mount.py                     | 163 ++++++++-----
+ salt/utils/mount.py                      |  61 +++++
+ tests/pytests/unit/modules/test_mount.py | 132 ++++++++++-
+ tests/pytests/unit/states/test_mount.py  | 282 ++++++++++++++++++++++-
+ 7 files changed, 597 insertions(+), 76 deletions(-)
+ create mode 100644 changelog/16084.fixed.md
+ create mode 100644 changelog/70201.added.md
+
+diff --git a/changelog/16084.fixed.md b/changelog/16084.fixed.md
+new file mode 100644
+index 00000000000..10486a672c4
+--- /dev/null
++++ b/changelog/16084.fixed.md
+@@ -0,0 +1 @@
++Fixed `mount.swap` reporting "failed to activate" on every run when the swap device is given as a `UUID=`, `LABEL=`, `PARTUUID=` or `PARTLABEL=` specification, as a symlink such as `/dev/disk/by-uuid/<uuid>`, or as a device-mapper name such as `/dev/mapper/<name>`
+diff --git a/changelog/70201.added.md b/changelog/70201.added.md
+new file mode 100644
+index 00000000000..857ec4b07e6
+--- /dev/null
++++ b/changelog/70201.added.md
+@@ -0,0 +1 @@
++Add ``resolve_canonical`` argument to different functions of the ``mount`` execution and states modules, to allow the matching mechanism for the existing fstab entries to always compare using the canonical names of the devices, even if there are defined as with ``UUID`` or other labels. This prevents the creation of duplicate entries in fstab that refer to the same device.
+diff --git a/salt/modules/mount.py b/salt/modules/mount.py
+index 869c6f2016d..570c0661a9e 100644
+--- a/salt/modules/mount.py
++++ b/salt/modules/mount.py
+@@ -362,7 +362,7 @@ class _fstab_entry:
+         """
+         return os.path.normcase(os.path.normpath(path))
+ 
+-    def match(self, line):
++    def match(self, line, resolve_canonical=False):
+         """
+         Compare potentially partial criteria against line
+         """
+@@ -373,6 +373,11 @@ class _fstab_entry:
+                 cr_opts = sorted(value.split(","))
+                 if ex_opts != cr_opts:
+                     return False
++            elif key == "device" and resolve_canonical:
++                if salt.utils.mount._resolve_canonical(
++                    entry[key], __salt__
++                ) != salt.utils.mount._resolve_canonical(value, __salt__):
++                    return False
+             elif entry[key] != value:
+                 return False
+         return True
+@@ -466,7 +471,7 @@ class _vfstab_entry:
+         """
+         return os.path.normcase(os.path.normpath(path))
+ 
+-    def match(self, line):
++    def match(self, line, **kwargs):
+         """
+         Compare potentially partial criteria against line
+         """
+@@ -714,12 +719,19 @@ def vfstab(config="/etc/vfstab"):
+     return fstab(config)
+ 
+ 
+-def rm_fstab(name, device, config="/etc/fstab"):
++def rm_fstab(name, device, config="/etc/fstab", resolve_canonical=False):
+     """
+     .. versionchanged:: 2016.3.2
+ 
+     Remove the mount point from the fstab
+ 
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
++
+     CLI Example:
+ 
+     .. code-block:: bash
+@@ -739,7 +751,8 @@ def rm_fstab(name, device, config="/etc/fstab"):
+             for line in ifile:
+                 line = salt.utils.stringutils.to_unicode(line)
+                 try:
+-                    if criteria.match(line):
++                    # pylint: disable-next=too-many-function-args
++                    if criteria.match(line, resolve_canonical):
+                         modified = True
+                     else:
+                         lines.append(line)
+@@ -793,7 +806,8 @@ def set_fstab(
+     test=False,
+     match_on="auto",
+     not_change=False,
+-    **kwargs
++    resolve_canonical=False,
++    **kwargs,
+ ):
+     """
+     Verify that this mount is represented in the fstab, change the mount
+@@ -802,6 +816,13 @@ def set_fstab(
+     If the entry is found via `match_on` and `not_change` is True, the
+     current line will be preserved.
+ 
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
++
+     CLI Example:
+ 
+     .. code-block:: bash
+@@ -881,7 +902,7 @@ def set_fstab(
+             for line in ifile:
+                 line = salt.utils.stringutils.to_unicode(line)
+                 try:
+-                    if criteria.match(line):
++                    if criteria.match(line, resolve_canonical):
+                         # Note: If ret isn't None here,
+                         # we've matched multiple lines
+                         ret = "present"
+diff --git a/salt/states/mount.py b/salt/states/mount.py
+index 97dddbe3b0a..6c04c1274eb 100644
+--- a/salt/states/mount.py
++++ b/salt/states/mount.py
+@@ -39,6 +39,8 @@ import logging
+ import os.path
+ import re
+ 
++import salt.utils.mount
++
+ log = logging.getLogger(__name__)
+ 
+ 
+@@ -71,7 +73,8 @@ def mounted(
+     extra_mount_translate_options=None,
+     hidden_opts=None,
+     bind_mount_copy_active_opts=True,
+-    **kwargs
++    resolve_canonical=False,
++    **kwargs,
+ ):
+     """
+     Verify that a device is mounted
+@@ -193,6 +196,13 @@ def mounted(
+         copying the options from the bind mount if it was found to be active.
+ 
+         .. versionadded:: 3006.0
++
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
+     """
+     ret = {"name": name, "changes": {}, "result": True, "comment": ""}
+ 
+@@ -723,6 +733,7 @@ def mounted(
+                     config,
+                     test=True,
+                     match_on=match_on,
++                    resolve_canonical=resolve_canonical,
+                 )
+             if out != "present":
+                 ret["result"] = None
+@@ -780,6 +791,7 @@ def mounted(
+                     pass_num,
+                     config,
+                     match_on=match_on,
++                    resolve_canonical=resolve_canonical,
+                 )
+ 
+         if update_mount_cache:
+@@ -806,27 +818,51 @@ def mounted(
+     return ret
+ 
+ 
+-def swap(name, persist=True, config="/etc/fstab"):
++def _active_swaps():
++    """
++    Return the active swaps, keyed by canonical device path.
++
++    The kernel reports the path it ended up with when the swap was activated,
++    so a device-mapper device shows up as ``/dev/dm-0`` while blkid and the
++    configuration name it ``/dev/mapper/<name>``.  Resolving both sides makes
++    the two spellings compare equal.
++    """
++    return {
++        os.path.realpath(device): stats
++        for device, stats in __salt__["mount.swaps"]().items()
++    }
++
++
++def swap(name, persist=True, config="/etc/fstab", resolve_canonical=False):
+     """
+     Activates a swap device
+ 
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
++
+     .. code-block:: yaml
+ 
+         /root/swapfile:
+           mount.swap
+ 
+-    .. note::
+-        ``swap`` does not currently support LABEL
++    The name can also be one of the ``TAG=value`` specifications accepted by
++    fstab(5):
++
++    .. code-block:: yaml
++
++        UUID=066e0200-2867-4ebe-b9e6-f30026ca2314:
++          mount.swap
++
++
+     """
+     ret = {"name": name, "changes": {}, "result": True, "comment": ""}
+-    on_ = __salt__["mount.swaps"]()
++    on_ = _active_swaps()
+ 
+-    if __salt__["file.is_link"](name):
+-        real_swap_device = __salt__["file.readlink"](name)
+-        if not real_swap_device.startswith("/"):
+-            real_swap_device = "/dev/{}".format(os.path.basename(real_swap_device))
+-    else:
+-        real_swap_device = name
++    real_swap_device = salt.utils.mount._resolve_canonical(name, __salt__)
+ 
+     if real_swap_device in on_:
+         ret["comment"] = "Swap {} already active".format(name)
+@@ -836,7 +872,7 @@ def swap(name, persist=True, config="/etc/fstab"):
+     else:
+         __salt__["mount.swapon"](real_swap_device)
+ 
+-        on_ = __salt__["mount.swaps"]()
++        on_ = _active_swaps()
+ 
+         if real_swap_device in on_:
+             ret["comment"] = "Swap {} activated".format(name)
+@@ -860,11 +896,11 @@ def swap(name, persist=True, config="/etc/fstab"):
+                 fstab_data[item]["device"] for item in fstab_data
+             ]:
+                 ret["result"] = None
+-                if name in on_:
+-                    ret[
+-                        "comment"
+-                    ] = "Swap {} is set to be added to the fstab and to be activated".format(
+-                        name
++                if real_swap_device in on_:
++                    ret["comment"] = (
++                        "Swap {} is set to be added to the fstab and to be activated".format(
++                            name
++                        )
+                     )
+             return ret
+ 
+@@ -884,7 +920,14 @@ def swap(name, persist=True, config="/etc/fstab"):
+             # present, new, change, bad config
+             # Make sure the entry is in the fstab
+             out = __salt__["mount.set_fstab"](
+-                "none", name, "swap", ["defaults"], 0, 0, config
++                "none",
++                name,
++                "swap",
++                ["defaults"],
++                0,
++                0,
++                config,
++                resolve_canonical=resolve_canonical,
+             )
+         if out == "present":
+             return ret
+@@ -904,7 +947,13 @@ def swap(name, persist=True, config="/etc/fstab"):
+ 
+ 
+ def unmounted(
+-    name, device=None, config="/etc/fstab", persist=False, user=None, **kwargs
++    name,
++    device=None,
++    config="/etc/fstab",
++    persist=False,
++    user=None,
++    resolve_canonical=False,
++    **kwargs,
+ ):
+     """
+     .. versionadded:: 0.17.0
+@@ -929,6 +978,13 @@ def unmounted(
+     user
+         The user to own the mount; this defaults to the user salt is
+         running as on the minion
++
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
+     """
+     ret = {"name": name, "changes": {}, "result": True, "comment": ""}
+ 
+@@ -1009,7 +1065,9 @@ def unmounted(
+                 elif "AIX" in __grains__["os"]:
+                     out = __salt__["mount.rm_filesystems"](name, device, config)
+                 else:
+-                    out = __salt__["mount.rm_fstab"](name, device, config)
++                    out = __salt__["mount.rm_fstab"](
++                        name, device, config, resolve_canonical=resolve_canonical
++                    )
+                 if out is not True:
+                     ret["result"] = False
+                     ret["comment"] += ". Failed to persist purge"
+@@ -1050,41 +1108,6 @@ def mod_watch(name, user=None, **kwargs):
+     return ret
+ 
+ 
+-def _convert_to(maybe_device, convert_to):
+-    """
+-    Convert a device name, UUID or LABEL to a device name, UUID or
+-    LABEL.
+-
+-    Return the fs_spec required for fstab.
+-
+-    """
+-
+-    # Fast path. If we already have the information required, we can
+-    # save one blkid call
+-    if (
+-        not convert_to
+-        or (convert_to == "device" and maybe_device.startswith("/"))
+-        or maybe_device.startswith("{}=".format(convert_to.upper()))
+-    ):
+-        return maybe_device
+-
+-    # Get the device information
+-    if maybe_device.startswith("/"):
+-        blkid = __salt__["disk.blkid"](maybe_device)
+-    else:
+-        blkid = __salt__["disk.blkid"](token=maybe_device)
+-
+-    result = None
+-    if len(blkid) == 1:
+-        if convert_to == "device":
+-            result = next(iter(blkid))
+-        else:
+-            key = convert_to.upper()
+-            result = "{}={}".format(key, next(iter(blkid.values()))[key])
+-
+-    return result
+-
+-
+ def fstab_present(
+     name,
+     fs_file,
+@@ -1098,6 +1121,7 @@ def fstab_present(
+     match_on="auto",
+     not_change=False,
+     fs_mount=True,
++    resolve_canonical=False,
+ ):
+     """Makes sure that a fstab mount point is present.
+ 
+@@ -1155,6 +1179,13 @@ def fstab_present(
+         parameter is set to ``True`` and the line is found, the
+         original content will be preserved.
+ 
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
++
+     """
+     ret = {
+         "name": name,
+@@ -1180,7 +1211,7 @@ def fstab_present(
+     if not fs_file == "/":
+         fs_file = fs_file.rstrip("/")
+ 
+-    fs_spec = _convert_to(name, mount_by)
++    fs_spec = salt.utils.mount._convert_to(name, mount_by, __salt__)
+ 
+     # Validate that the device is valid after the conversion
+     if not fs_spec:
+@@ -1223,6 +1254,7 @@ def fstab_present(
+                 test=True,
+                 match_on=match_on,
+                 not_change=not_change,
++                resolve_canonical=resolve_canonical,
+             )
+         ret["result"] = None
+         if out == "present":
+@@ -1275,6 +1307,7 @@ def fstab_present(
+             config=config,
+             match_on=match_on,
+             not_change=not_change,
++            resolve_canonical=resolve_canonical,
+         )
+ 
+     ret["result"] = True
+@@ -1305,7 +1338,9 @@ def fstab_present(
+     return ret
+ 
+ 
+-def fstab_absent(name, fs_file, mount_by=None, config="/etc/fstab"):
++def fstab_absent(
++    name, fs_file, mount_by=None, config="/etc/fstab", resolve_canonical=False
++):
+     """
+     Makes sure that a fstab mount point is absent.
+ 
+@@ -1327,6 +1362,13 @@ def fstab_absent(name, fs_file, mount_by=None, config="/etc/fstab"):
+     config
+         Place where the fstab file lives
+ 
++    resolve_canonical
++        ``UUID=``, ``LABEL=``, ``PARTUUID=`` and ``PARTLABEL=`` names are
++        resolved to the underlying device, so the canonical device path is
++        used for comparison.
++
++        .. versionadded:: 3008.3
++
+     """
+     ret = {
+         "name": name,
+@@ -1345,7 +1387,7 @@ def fstab_absent(name, fs_file, mount_by=None, config="/etc/fstab"):
+     if not fs_file == "/":
+         fs_file = fs_file.rstrip("/")
+ 
+-    fs_spec = _convert_to(name, mount_by)
++    fs_spec = salt.utils.mount._convert_to(name, mount_by, __salt__)
+ 
+     if __grains__["os"] in ["MacOS", "Darwin"]:
+         fstab_data = __salt__["mount.automaster"](config)
+@@ -1375,7 +1417,10 @@ def fstab_absent(name, fs_file, mount_by=None, config="/etc/fstab"):
+             )
+         else:
+             out = __salt__["mount.rm_fstab"](
+-                name=fs_file, device=fs_spec, config=config
++                name=fs_file,
++                device=fs_spec,
++                config=config,
++                resolve_canonical=resolve_canonical,
+             )
+ 
+         if out is not True:
+diff --git a/salt/utils/mount.py b/salt/utils/mount.py
+index 019cac5562b..0125d01abdd 100644
+--- a/salt/utils/mount.py
++++ b/salt/utils/mount.py
+@@ -13,6 +13,10 @@ import salt.utils.yaml
+ 
+ log = logging.getLogger(__name__)
+ 
++# Specifications that fstab(5) accepts in place of a device path.
++# The kernel only ever reports device paths
++_FSTAB_SPEC_TAGS = ("UUID=", "LABEL=", "PARTUUID=", "PARTLABEL=")
++
+ 
+ def _read_file(path):
+     """
+@@ -54,3 +58,60 @@ def write_cache(cache, opts):
+     except OSError:
+         log.error("Failed to cache mounts", exc_info_on_loglevel=logging.DEBUG)
+         return False
++
++
++def _resolve_canonical(name, salt_obj=None):
++    """
++    Return the canonical device path of a device specification.
++
++    ``name`` can be the path of a device node or file, a symlink to
++    either, or one of the ``TAG=value`` specifications accepted by fstab(5),
++    e.g. ``UUID=066e0200-2867-4ebe-b9e6-f30026ca2314``.
++
++    Specifications that cannot be resolved are returned unchanged, so that
++    the caller can still report them the way the user spelled them.
++    """
++    if name.upper().startswith(_FSTAB_SPEC_TAGS):
++        device = _convert_to(name, "device", salt_obj)
++        if not device:
++            # No block device carries that tag.  Hand the specification back
++            # unchanged rather than turning it into a bogus path.
++            return name
++        name = device
++
++    return os.path.realpath(name)
++
++
++def _convert_to(maybe_device, convert_to, salt_obj=None):
++    """
++    Convert a device name, UUID or LABEL to a device name, UUID or
++    LABEL.
++
++    Return the fs_spec required for fstab.
++
++    """
++
++    # Fast path. If we already have the information required, we can
++    # save one blkid call
++    if (
++        not convert_to
++        or (convert_to == "device" and maybe_device.startswith("/"))
++        or maybe_device.startswith(f"{convert_to.upper()}=")
++    ):
++        return maybe_device
++
++    # Get the device information
++    if maybe_device.startswith("/"):
++        blkid = salt_obj["disk.blkid"](maybe_device)
++    else:
++        blkid = salt_obj["disk.blkid"](token=maybe_device)
++
++    result = None
++    if len(blkid) == 1:
++        if convert_to == "device":
++            result = next(iter(blkid))
++        else:
++            key = convert_to.upper()
++            result = f"{key}={next(iter(blkid.values()))[key]}"
++
++    return result
+diff --git a/tests/pytests/unit/modules/test_mount.py b/tests/pytests/unit/modules/test_mount.py
+index 3a4e1d544e3..9f403686b68 100644
+--- a/tests/pytests/unit/modules/test_mount.py
++++ b/tests/pytests/unit/modules/test_mount.py
+@@ -1,5 +1,5 @@
+ """
+-    :codeauthor: Rupesh Tare <rupesht@saltstack.com>
++:codeauthor: Rupesh Tare <rupesht@saltstack.com>
+ """
+ 
+ import logging
+@@ -894,3 +894,133 @@ def test_get_device_from_path(tmp_path):
+                 assert ret is None
+                 ret = mount.get_device_from_path(path)
+                 assert ret == "mydevice"
++
++
++def test_set_fstab_matches_existing_entry_resolving_canonical_from_uuid():
++    """
++    An fstab entry written as a device path must be recognised when the same
++    device is passed as UUID=, only when resolve_canonical=True is passed to
++    set_fstab function, so the existing line is updated instead of a duplicate
++    one being appended.
++    """
++    file_data = "/dev/vdb\t\t/mnt/data\text4\tdefaults\t0 0\n"
++    blkid_info = {
++        "/dev/vdb": {"UUID": "9e7c0810-abf8-49d9-b08e-c54974add143"},
++    }
++
++    helper = mock_open(read_data=file_data)
++    with patch.dict(
++        mount.__salt__, {"disk.blkid": MagicMock(return_value=blkid_info)}
++    ), patch.object(os.path, "isfile", MagicMock(return_value=True)), patch(
++        "salt.utils.files.fopen", helper
++    ):
++        # Without canonical matching this returns "new" and appends a line
++        assert (
++            mount.set_fstab(
++                "/mnt/data",
++                "UUID=9e7c0810-abf8-49d9-b08e-c54974add143",
++                "ext4",
++                resolve_canonical=True,
++            )
++            == "change"
++        )
++
++    written = b"".join(line for call in helper.writelines_calls() for line in call)
++    assert written.count(b"/mnt/data") == 1, written
++
++
++def test_set_fstab_not_matches_existing_entry_without_resolving_canonical_from_uuid():
++    """
++    By default an fstab entry written as a device path should not be recognised when the same
++    device is passed as UUID=, so another entry will be appended.
++    """
++    file_data = "/dev/vdb\t\t/mnt/data\text4\tdefaults\t0 0\n"
++    blkid_info = {
++        "/dev/vdb": {"UUID": "9e7c0810-abf8-49d9-b08e-c54974add143"},
++    }
++
++    helper = mock_open(read_data=file_data)
++    with patch.dict(
++        mount.__salt__, {"disk.blkid": MagicMock(return_value=blkid_info)}
++    ), patch.object(os.path, "isfile", MagicMock(return_value=True)), patch(
++        "salt.utils.files.fopen", helper
++    ):
++        # Without canonical matching this returns "new" and appends a line
++        assert (
++            mount.set_fstab(
++                "/mnt/data",
++                "UUID=9e7c0810-abf8-49d9-b08e-c54974add143",
++                "ext4",
++            )
++            == "new"
++        )
++
++    written = b"".join(line for call in helper.writelines_calls() for line in call)
++    assert written.count(b"/mnt/data") == 2, written
++
++
++def test_set_fstab_matches_existing_swap_entry_resolving_canonical_from_uuid():
++    """
++    Swap entries must be matched by device as well. Switching a swap device
++    from a path to UUID=, when resolve_canonical=True, must end up with the existing
++    line rewritten rather than a second line for the same device, which would
++    leave the system with two swap entries for one disk.
++    """
++    file_data = "/dev/vdc\t\tnone\tswap\tdefaults\t0 0\n"
++    blkid_info = {
++        "/dev/vdc": {"UUID": "34614621-0a6b-4df5-8247-37f06b14c966"},
++    }
++
++    helper = mock_open(read_data=file_data)
++    with patch.dict(
++        mount.__salt__, {"disk.blkid": MagicMock(return_value=blkid_info)}
++    ), patch.object(os.path, "isfile", MagicMock(return_value=True)), patch(
++        "salt.utils.files.fopen", helper
++    ):
++        assert (
++            mount.set_fstab(
++                "none",
++                "UUID=34614621-0a6b-4df5-8247-37f06b14c966",
++                "swap",
++                ["defaults"],
++                0,
++                0,
++                resolve_canonical=True,
++            )
++            == "change"
++        )
++
++    written = b"".join(line for call in helper.writelines_calls() for line in call)
++    assert written.count(b"swap") == 1, written
++
++
++def test_set_fstab_not_matches_existing_swap_entry_without_resolving_canonical_from_uuid():
++    """
++    By default swap entries should not be matched by device as well. Switching a swap device
++    from a path to UUID=, so it would leave the system with two swap entries for one disk.
++    """
++    file_data = "/dev/vdc\t\tnone\tswap\tdefaults\t0 0\n"
++    blkid_info = {
++        "/dev/vdc": {"UUID": "34614621-0a6b-4df5-8247-37f06b14c966"},
++    }
++
++    helper = mock_open(read_data=file_data)
++    with patch.dict(
++        mount.__salt__, {"disk.blkid": MagicMock(return_value=blkid_info)}
++    ), patch.object(os.path, "isfile", MagicMock(return_value=True)), patch(
++        "salt.utils.files.fopen", helper
++    ):
++        assert (
++            mount.set_fstab(
++                "none",
++                "UUID=34614621-0a6b-4df5-8247-37f06b14c966",
++                "swap",
++                ["defaults"],
++                0,
++                0,
++            )
++            == "new"
++        )
++
++    written = b"".join(line for call in helper.writelines_calls() for line in call)
++    assert written.count(b"swap") == 2, written
+diff --git a/tests/pytests/unit/states/test_mount.py b/tests/pytests/unit/states/test_mount.py
+index 382fe6d0e87..0303021534d 100644
+--- a/tests/pytests/unit/states/test_mount.py
++++ b/tests/pytests/unit/states/test_mount.py
+@@ -3,6 +3,7 @@ import os
+ import pytest
+ 
+ import salt.states.mount as mount
++import salt.utils.mount as mount_utils
+ from tests.support.mock import MagicMock, patch
+ 
+ 
+@@ -249,6 +250,7 @@ def test_mounted():
+                         "/etc/fstab",
+                         test=True,
+                         match_on="auto",
++                        resolve_canonical=False,
+                     )
+ 
+     with patch.dict(mount.__grains__, {"os": "AIX"}):
+@@ -294,7 +296,7 @@ def test_swap():
+ 
+     mock = MagicMock(side_effect=["present", "new", "change", "bad config"])
+     mock_f = MagicMock(return_value=False)
+-    mock_swp = MagicMock(return_value=[name])
++    mock_swp = MagicMock(return_value={name: {"type": "file"}})
+     mock_fs = MagicMock(return_value={"none": {"device": name, "fstype": "xfs"}})
+     mock_fs_diff = MagicMock(
+         return_value={"none": {"device": "something_else", "fstype": "xfs"}}
+@@ -456,6 +458,185 @@ def test_swap():
+                     assert mount.swap(name) == ret
+ 
+ 
++@pytest.mark.parametrize(
++    "name",
++    [
++        "UUID=066e0200-2867-4ebe-b9e6-f30026ca2314",
++        "uuid=066e0200-2867-4ebe-b9e6-f30026ca2314",
++        "LABEL=swap",
++        "PARTUUID=8ba0a1c0-e1a0-4dc1-b1b6-b2c1de41c6bb",
++        "PARTLABEL=swap",
++    ],
++)
++def test_swap_device_spec_already_active(name):
++    """
++    A swap given as an fstab(5) TAG=value specification is resolved to its
++    device before the active swaps are looked up, so an already active swap
++    is not reported as failing to activate.
++    """
++    device = "/dev/sdb1"
++
++    mock_swp = MagicMock(return_value={device: {"type": "partition"}})
++    mock_blkid = MagicMock(return_value={device: {"TYPE": "swap"}})
++    mock_swapon = MagicMock()
++
++    with patch.dict(mount.__grains__, {"os": "test"}), patch.dict(
++        mount.__opts__, {"test": False}
++    ), patch.dict(
++        mount.__salt__,
++        {
++            "mount.swaps": mock_swp,
++            "mount.swapon": mock_swapon,
++            "disk.blkid": mock_blkid,
++        },
++    ):
++        ret = mount.swap(name, persist=False)
++
++    assert ret == {
++        "name": name,
++        "changes": {},
++        "result": True,
++        "comment": f"Swap {name} already active",
++    }
++    mock_blkid.assert_called_once_with(token=name)
++    mock_swapon.assert_not_called()
++
++
++def test_swap_device_spec_activated():
++    """
++    An inactive swap given as a TAG=value specification is activated by
++    device path and reported as changed.
++    """
++    name = "UUID=066e0200-2867-4ebe-b9e6-f30026ca2314"
++    device = "/dev/sdb1"
++    stats = {"type": "partition", "size": "1048572", "used": "0", "priority": "-2"}
++
++    mock_swp = MagicMock(side_effect=[{}, {device: stats}])
++    mock_blkid = MagicMock(return_value={device: {"TYPE": "swap"}})
++    mock_swapon = MagicMock()
++
++    with patch.dict(mount.__grains__, {"os": "test"}), patch.dict(
++        mount.__opts__, {"test": False}
++    ), patch.dict(
++        mount.__salt__,
++        {
++            "mount.swaps": mock_swp,
++            "mount.swapon": mock_swapon,
++            "disk.blkid": mock_blkid,
++        },
++    ):
++        ret = mount.swap(name, persist=False)
++
++    assert ret == {
++        "name": name,
++        "changes": stats,
++        "result": True,
++        "comment": f"Swap {name} activated",
++    }
++    mock_swapon.assert_called_once_with(device)
++
++
++def test_swap_device_spec_unresolvable():
++    """
++    A TAG=value specification that no block device matches is left alone, so
++    that the failure is reported with the name the user configured.
++    """
++    name = "UUID=066e0200-2867-4ebe-b9e6-f30026ca2314"
++
++    mock_swp = MagicMock(return_value={})
++    mock_blkid = MagicMock(return_value={})
++    mock_swapon = MagicMock()
++
++    with patch.dict(mount.__grains__, {"os": "test"}), patch.dict(
++        mount.__opts__, {"test": False}
++    ), patch.dict(
++        mount.__salt__,
++        {
++            "mount.swaps": mock_swp,
++            "mount.swapon": mock_swapon,
++            "disk.blkid": mock_blkid,
++        },
++    ):
++        ret = mount.swap(name, persist=False)
++
++    assert ret == {
++        "name": name,
++        "changes": {},
++        "result": False,
++        "comment": f"Swap {name} failed to activate",
++    }
++    mock_swapon.assert_called_once_with(name)
++
++
++def test_swap_symlinked_device_already_active(tmp_path):
++    """
++    A swap named through a symlink, e.g. /dev/disk/by-uuid/<uuid>, is matched
++    against the device path the kernel reports in /proc/swaps.
++    """
++    device = tmp_path / "sdb1"
++    device.touch()
++    link = tmp_path / "by-uuid" / "066e0200-2867-4ebe-b9e6-f30026ca2314"
++    link.parent.mkdir()
++    link.symlink_to(os.path.join("..", device.name))
++
++    name = str(link)
++    mock_swp = MagicMock(return_value={str(device): {"type": "partition"}})
++    mock_swapon = MagicMock()
++
++    with patch.dict(mount.__grains__, {"os": "test"}), patch.dict(
++        mount.__opts__, {"test": False}
++    ), patch.dict(
++        mount.__salt__, {"mount.swaps": mock_swp, "mount.swapon": mock_swapon}
++    ):
++        ret = mount.swap(name, persist=False)
++
++    assert ret == {
++        "name": name,
++        "changes": {},
++        "result": True,
++        "comment": f"Swap {name} already active",
++    }
++    mock_swapon.assert_not_called()
++
++
++def test_swap_device_mapper_already_active(tmp_path):
++    """
++    blkid names a device-mapper device /dev/mapper/<name> while the kernel
++    reports it as /dev/dm-N in /proc/swaps.  Both have to resolve to the same
++    device, otherwise an active swap is reported as failing to activate.
++    """
++    dm_node = tmp_path / "dm-0"
++    dm_node.touch()
++    mapper = tmp_path / "mapper" / "system-swap"
++    mapper.parent.mkdir()
++    mapper.symlink_to(os.path.join("..", dm_node.name))
++
++    name = "UUID=066e0200-2867-4ebe-b9e6-f30026ca2314"
++    mock_swp = MagicMock(return_value={str(dm_node): {"type": "partition"}})
++    mock_blkid = MagicMock(return_value={str(mapper): {"TYPE": "swap"}})
++    mock_swapon = MagicMock()
++
++    with patch.dict(mount.__grains__, {"os": "test"}), patch.dict(
++        mount.__opts__, {"test": False}
++    ), patch.dict(
++        mount.__salt__,
++        {
++            "mount.swaps": mock_swp,
++            "mount.swapon": mock_swapon,
++            "disk.blkid": mock_blkid,
++        },
++    ):
++        ret = mount.swap(name, persist=False)
++
++    assert ret == {
++        "name": name,
++        "changes": {},
++        "result": True,
++        "comment": f"Swap {name} already active",
++    }
++    mock_swapon.assert_not_called()
++
++
+ def test_unmounted():
+     """
+     Test to verify that a device is not mounted
+@@ -638,21 +819,23 @@ def test__convert_to_fast_none():
+     """
+     Test the device name conversor
+     """
+-    assert mount._convert_to("/dev/sda1", None) == "/dev/sda1"
++    assert mount_utils._convert_to("/dev/sda1", None, mount.__salt__) == "/dev/sda1"
+ 
+ 
+ def test__convert_to_fast_device():
+     """
+     Test the device name conversor
+     """
+-    assert mount._convert_to("/dev/sda1", "device") == "/dev/sda1"
++    assert mount_utils._convert_to("/dev/sda1", "device", mount.__salt__) == "/dev/sda1"
+ 
+ 
+ def test__convert_to_fast_token():
+     """
+     Test the device name conversor
+     """
+-    assert mount._convert_to("LABEL=home", "label") == "LABEL=home"
++    assert (
++        mount_utils._convert_to("LABEL=home", "label", mount.__salt__) == "LABEL=home"
++    )
+ 
+ 
+ def test__convert_to_device_none():
+@@ -663,7 +846,7 @@ def test__convert_to_device_none():
+         "disk.blkid": MagicMock(return_value={}),
+     }
+     with patch.dict(mount.__salt__, salt_mock):
+-        assert mount._convert_to("/dev/sda1", "uuid") is None
++        assert mount_utils._convert_to("/dev/sda1", "uuid", mount.__salt__) is None
+         salt_mock["disk.blkid"].assert_called_with("/dev/sda1")
+ 
+ 
+@@ -676,8 +859,8 @@ def test__convert_to_device_token():
+         "disk.blkid": MagicMock(return_value={"/dev/sda1": {"UUID": uuid}}),
+     }
+     with patch.dict(mount.__salt__, salt_mock):
+-        uuid = "UUID={}".format(uuid)
+-        assert mount._convert_to("/dev/sda1", "uuid") == uuid
++        uuid = f"UUID={uuid}"
++        assert mount_utils._convert_to("/dev/sda1", "uuid", mount.__salt__) == uuid
+         salt_mock["disk.blkid"].assert_called_with("/dev/sda1")
+ 
+ 
+@@ -690,8 +873,8 @@ def test__convert_to_token_device():
+         "disk.blkid": MagicMock(return_value={"/dev/sda1": {"UUID": uuid}}),
+     }
+     with patch.dict(mount.__salt__, salt_mock):
+-        uuid = "UUID={}".format(uuid)
+-        assert mount._convert_to(uuid, "device") == "/dev/sda1"
++        uuid = f"UUID={uuid}"
++        assert mount_utils._convert_to(uuid, "device", mount.__salt__) == "/dev/sda1"
+         salt_mock["disk.blkid"].assert_called_with(token=uuid)
+ 
+ 
+@@ -784,6 +967,7 @@ def test_fstab_present_test_present():
+             test=True,
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -819,6 +1003,7 @@ def test_fstab_present_test_new():
+             test=True,
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -851,6 +1036,7 @@ def test_fstab_present_test_change():
+             test=True,
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -883,6 +1069,7 @@ def test_fstab_present_test_error():
+             test=True,
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -972,6 +1159,42 @@ def test_fstab_present_present():
+             config="/etc/fstab",
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
++        )
++
++
++def test_fstab_present_present_resolve_canonical_true():
++    """
++    Test fstab_present
++    """
++    ret = {
++        "name": "/dev/sda1",
++        "result": True,
++        "changes": {},
++        "comment": ["/home entry was already in /etc/fstab."],
++    }
++
++    grains_mock = {"os": "Linux"}
++    opts_mock = {"test": False}
++    salt_mock = {"mount.set_fstab": MagicMock(return_value="present")}
++    with patch.dict(mount.__grains__, grains_mock), patch.dict(
++        mount.__opts__, opts_mock
++    ), patch.dict(mount.__salt__, salt_mock):
++        assert (
++            mount.fstab_present("/dev/sda1", "/home", "ext2", resolve_canonical=True)
++            == ret
++        )
++        salt_mock["mount.set_fstab"].assert_called_with(
++            name="/home",
++            device="/dev/sda1",
++            fstype="ext2",
++            opts="defaults",
++            dump=0,
++            pass_num=0,
++            config="/etc/fstab",
++            match_on="auto",
++            not_change=False,
++            resolve_canonical=True,
+         )
+ 
+ 
+@@ -1009,6 +1232,7 @@ def test_fstab_present_new():
+             config="/etc/fstab",
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -1040,6 +1264,7 @@ def test_fstab_present_new_no_mount():
+             config="/etc/fstab",
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -1071,6 +1296,7 @@ def test_fstab_present_change():
+             config="/etc/fstab",
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -1102,6 +1328,7 @@ def test_fstab_present_fail():
+             config="/etc/fstab",
+             match_on="auto",
+             not_change=False,
++            resolve_canonical=False,
+         )
+ 
+ 
+@@ -1266,7 +1493,40 @@ def test_fstab_absent_present():
+         assert mount.fstab_absent("/dev/sda1", "/home") == ret
+         salt_mock["mount.fstab"].assert_called_with("/etc/fstab")
+         salt_mock["mount.rm_fstab"].assert_called_with(
+-            name="/home", device="/dev/sda1", config="/etc/fstab"
++            name="/home",
++            device="/dev/sda1",
++            config="/etc/fstab",
++            resolve_canonical=False,
++        )
++
++
++def test_fstab_absent_present_resolve_canonical_true():
++    """
++    Test fstab_absent
++    """
++    ret = {
++        "name": "/dev/sda1",
++        "result": True,
++        "changes": {"persist": "removed"},
++        "comment": ["/home entry removed from /etc/fstab."],
++    }
++
++    grains_mock = {"os": "Linux"}
++    opts_mock = {"test": False}
++    salt_mock = {
++        "mount.fstab": MagicMock(return_value={"/home": {}}),
++        "mount.rm_fstab": MagicMock(return_value=True),
++    }
++    with patch.dict(mount.__grains__, grains_mock), patch.dict(
++        mount.__opts__, opts_mock
++    ), patch.dict(mount.__salt__, salt_mock):
++        assert mount.fstab_absent("/dev/sda1", "/home", resolve_canonical=True) == ret
++        salt_mock["mount.fstab"].assert_called_with("/etc/fstab")
++        salt_mock["mount.rm_fstab"].assert_called_with(
++            name="/home",
++            device="/dev/sda1",
++            config="/etc/fstab",
++            resolve_canonical=True,
+         )
+ 
+ 
+@@ -1400,6 +1660,7 @@ def test_bind_mount_copy_active_opts(mount_name):
+                 0,
+                 "/etc/fstab",
+                 match_on="auto",
++                resolve_canonical=False,
+             )
+ 
+             # bind_mount_copy_active_opts is on (default)
+@@ -1430,4 +1691,5 @@ def test_bind_mount_copy_active_opts(mount_name):
+                 0,
+                 "/etc/fstab",
+                 match_on="auto",
++                resolve_canonical=False,
+             )
+-- 
+2.55.0
+

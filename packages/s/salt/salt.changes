@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:06:27 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Fix "mount.swap" activation on UUID and add "resolve_canonical" arg
+
+- Added:
+  * fix-mount.swap-activation-when-using-uuid-and-introd.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 14:19:52 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
 
 - Fix test_tcp for pytest >=8
