@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Sep  3 19:51:30 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 152.0.7977.82 (boo#1278683):
+  * CVE-2026-85046: Type confusion in V8
+  * CVE-2026-85052: Out of bounds read in CrashReporting
+  * CVE-2026-85043: Incomplete cleanup in Network
+  * CVE-2026-85048: Use after free in Compositing
+  * CVE-2026-85045: Race condition in V8
+  * CVE-2026-85050: Out of bounds write in WebGL
+  * CVE-2026-85053: Improper resource exposure in CacheStorage
+  * CVE-2026-85042: Use after free in DevTools
+  * CVE-2026-85049: Use after free in Skia
+  * CVE-2026-85051: Type confusion in Compositing
+  * CVE-2026-85047: Improper input validation in Transactions Platform
+  * CVE-2026-85044: Use of released resource in Mobile
+
+-------------------------------------------------------------------
+Wed Sep  2 06:53:41 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 152.0.7977.75 (boo#1278072):
+  * CVE-2026-84353: Use after free in Shared Tab Groups
+  * CVE-2026-84352: Use after free in WebGL
+  * CVE-2026-84354: Incorrect authorization in FileSystem
+  * CVE-2026-84359: Information leak in Skia
+  * CVE-2026-84357: Improper input validation in Omnibox
+  * CVE-2026-84324: Use after free in Proxy
+  * CVE-2026-84349: Use after free in Browser
+  * CVE-2026-84326: Uninitialized resource in V8
+  * CVE-2026-84333: Use after free in Dawn
+  * CVE-2026-84351: Buffer overflow in GPU
+  * CVE-2026-84325: Improper input validation in DataTransfer
+  * CVE-2026-84328: Missing authorization in FileSystem
+  * CVE-2026-84347: Use after free in WebRTC
+  * CVE-2026-84323: Missing authorization in FileSystem
+  * CVE-2026-84355: Incorrect authorization in Navigation
+  * CVE-2026-84358: Improper privilege management in Downloads
+  * CVE-2026-84332: Incorrect authorization in SiteSettings
+  * CVE-2026-84330: UI misrepresentation in FullScreen
+  * CVE-2026-84334: Incorrect authorization in Chromoting
+  * CVE-2026-84348: Information leak in MediaCapture
+  * CVE-2026-84335: Incorrect authorization in TabStrip
+  * CVE-2026-84327: Incorrect authorization in Autofill
+  * CVE-2026-84329: Confused deputy in CredentialProvider
+  * CVE-2026-84356: UI misrepresentation in FullScreen
+  * CVE-2026-84350: Use after free in TabStrip
+  * CVE-2026-84331: Incorrect authorization in Actor
+  
+-------------------------------------------------------------------
+Tue Sep  1 18:20:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- build with llvm22 on openSUSE Tumbleweed
+
+-------------------------------------------------------------------
+Thu Aug 27 18:58:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update patch that disables EULA dialog to use preferences instead
+  of a hardcoded return
+  chromium-151-no-eula.patch chromium-152-no-eula.patch
+
+-------------------------------------------------------------------
 Tue Aug 25 19:44:42 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 152.0.7977.64 (boo#1276749, stable released 2026-08-25):

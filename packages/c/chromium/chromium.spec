@@ -63,8 +63,8 @@
 # LLVM version
 %if 0%{?suse_version} > 1600
 # LLVM version
-%define llvm_version 21
-%define llvm_version_long 21.1.8
+%define llvm_version 22
+%define llvm_version_long 22.1.8
 # RUST version
 %define rust_version 1.93
 %else
@@ -132,7 +132,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        152.0.7977.64
+Version:        152.0.7977.82
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -205,7 +205,7 @@ Patch401:       chromium-149-strip-path.patch
 Patch402:       chromium-150-toolchain.patch
 Patch403:       chromium-152-revert-crubit.patch
 Patch404:       chromium-152-value_or.patch
-Patch405:       chromium-151-no-eula.patch
+Patch405:       chromium-152-no-eula.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch

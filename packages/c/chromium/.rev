@@ -6667,4 +6667,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
     <comment>Chromium 152.0.7977.64 (boo#1276749, stable released 2026-08-25)</comment>
     <requestid>1373702</requestid>
   </revision>
+  <revision rev="544" vrev="1">
+    <srcmd5>d6c0dfac53d68aed3bfbe89866fc5a14</srcmd5>
+    <version>152.0.7977.82</version>
+    <time>1788773383</time>
+    <user>anag_factory</user>
+    <comment>Chromium 152.0.7977.82 (boo#1278683, boo#1278072)</comment>
+    <requestid>1375678</requestid>
+  </revision>
 </revisionlist>
