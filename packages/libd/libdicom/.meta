@@ -1,0 +1,5 @@
+<package name="libdicom" project="openSUSE:Factory">
+  <title>C library for reading DICOM files</title>
+  <description>libdicom is a C library and a set of command-line tools for reading DICOM WSI files.</description>
+  <url>https://github.com/ImagingDataCommons/libdicom</url>
+</package>
