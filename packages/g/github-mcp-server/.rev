@@ -145,4 +145,22 @@ third-party licence texts). source_validator clean. The v1.10.1..v1.11.0
 commit range mentions no CVEs.</comment>
     <requestid>1373670</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7889365d44739ba1e13e3f5f4a5f3ec4</srcmd5>
+    <version>1.12.0</version>
+    <time>1788773407</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 1.12.0.
+
+New governance toolsets (repository rulesets, custom properties), merge
+HEAD pinning on merge_pull_request, least-privilege public_repo scope for
+public-contribution tools, MCP Server Card handler, and sanitization that
+keeps Markdown/title content intact.
+
+No patches. Go toolchain floor unchanged (go.mod still asks for 1.25.12).
+Re-vendored: no dependency versions moved; golang.org/x/net became a direct
+dependency. Local aarch64 build green, %check runs the full offline suite
+(30 packages ok), rpmlint 0 errors / 0 badness.</comment>
+    <requestid>1375752</requestid>
+  </revision>
 </revisionlist>

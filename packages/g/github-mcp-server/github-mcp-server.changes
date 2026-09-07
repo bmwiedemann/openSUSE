@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep  4 08:15:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.0:
+  * New governance tools for repository rulesets and custom
+    properties, at repository, organization and enterprise level.
+  * merge_pull_request takes expectedHeadSha, so a merge fails
+    rather than racing a branch that moved under it.
+  * create_or_update_file returns a usable file SHA; issue_write no
+    longer hides labels the API silently dropped.
+  * Paginated tools all spell the page size perPage: actions_list
+    advertised per_page but never read it, so its page size had no
+    effect; the projects tools keep per_page as a fallback.
+  * Public-contribution tools request the public_repo scope instead
+    of full repo access.
+  * Review comments carry range coordinates; Copilot review threads
+    expose their resolution reason.
+  * Feature flags evaluate lazily and are deduplicated per request;
+    ?features= sets them on headerless HTTP connections.
+  * Adds an MCP Server Card handler (SEP-2127), an Agent Plugins
+    1.0 manifest, and projected MCP headers in CORS preflights.
+  * Sanitization keeps Markdown, titles and commit messages intact
+    while still stripping invisible characters.
+  * See upstream's release notes for the full list.
+- Re-vendor Go modules: no dependency versions changed;
+  golang.org/x/net becomes a direct dependency, pulling in its idna
+  and httpguts packages plus two x/text bidi helpers.
+
+-------------------------------------------------------------------
 Tue Aug 25 17:01:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.11.0:
