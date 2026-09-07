@@ -1,7 +1,7 @@
 #
 # spec file for package shapelib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,24 +12,22 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or  comments via https://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 %define so_ver  4
 Name:           shapelib
-Version:        1.6.1
+Version:        1.6.3
 Release:        0
 Summary:        Library for ESRI Shapefile Handling
 License:        GPL-2.0-or-later AND (LGPL-2.0-or-later OR MIT) AND SUSE-Public-Domain
-Group:          Productivity/Graphics/Other
 URL:            http://shapelib.maptools.org/
-Source0:        http://download.osgeo.org/shapelib/%{name}-%{version}.tar.gz
-
-BuildRequires:  cmake
+Source0:        https://download.osgeo.org/shapelib/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 # dbfdump is also in perl-DBD-XBase
+# keep the package name: spec-cleaner --perl expands it into 26 perl() Conflicts
 Conflicts:      perl-DBD-XBase
 
 %description
@@ -41,7 +39,6 @@ This package contains the executable programs.
 
 %package -n libshp-devel
 Summary:        Development Environment for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libshp%{so_ver} = %{version}
 Provides:       shapelib-devel = %{version}
 
@@ -54,7 +51,6 @@ This package contains the development environment for shapelib project.
 
 %package -n libshp%{so_ver}
 Summary:        Library for ESRI Shapefile Handling
-Group:          System/Libraries
 
 %description -n libshp%{so_ver}
 The Shapefile C Library provides the ability to write simple C programs for
@@ -64,7 +60,7 @@ associated attribute file (.dbf).
 This package contains the dynamic link library for shapelib project.
 
 %prep
-# %autosetup -p1
+%autosetup -p1
 
 # Fix rpmlint warning "wrong-file-end-of-line-encoding"
 sed -i 's/\r$//' contrib/doc/shpsort.txt
@@ -73,7 +69,7 @@ sed -i 's/\r$//' contrib/doc/shpsort.txt
 %configure \
   --disable-static \
   --disable-silent-rules
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
@@ -82,14 +78,12 @@ make %{?_smp_mflags}
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
-# Contrib tests fail
-make %{?_smp_mflags} check ||:
+%make_build check
 
-%post -n libshp%{so_ver} -p /sbin/ldconfig
-%postun -n libshp%{so_ver} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libshp%{so_ver}
 
 %files
-%license LICENSE-LGPL
+%license LICENSE-LGPL LICENSE-MIT
 %doc ChangeLog
 %doc contrib/doc/ web/
 %{_bindir}/Shape_PointInPoly
@@ -115,7 +109,7 @@ make %{?_smp_mflags} check ||:
 %{_bindir}/shpwkb
 
 %files -n libshp-devel
-%{_includedir}/*
+%{_includedir}/shapefil.h
 %{_libdir}/pkgconfig/shapelib.pc
 %{_libdir}/libshp.so
 

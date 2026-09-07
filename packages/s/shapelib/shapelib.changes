@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:10:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.3:
+  * Fix GCC 15 build failure in dbfadd.c
+  * shpgeo.c: fix wrong comparison operator in debug code
+- Changes from version 1.6.2:
+  * Nullify userdata also in SASetupUtf8Hooks
+  * dbfcreate: allow creating Date and Logical fields
+  * DBFWriteAttribute(): report success when a double is written
+    without precision loss
+  * SHPCreateLL()/DBFCreate(): put the full filename into the error
+    message
+  * Fix cppcheck nullPointerOutOfMemory warnings
+  * Test suite enhancements
+- Soname unchanged: -version-info 5:0:1 -> 6:1:2 leaves current-age
+  at 4, so the library stays libshp.so.4
+- Ship LICENSE-MIT; the License tag already carries the MIT option
+- Drop unused cmake BuildRequires - the build is autotools
+- Use %ldconfig_scriptlets instead of hand-written ldconfig scriptlets
+- Stop masking %check with "||:" - the suite passes on every arch and
+  repo we build, the "contrib tests fail" comment was stale
+- Spec cleanup: drop Group tags, %make_build, explicit %autosetup,
+  list shapefil.h instead of a %{_includedir} glob, https source URL
+- Restore the missing " - " in three pre-2013 changelog headers; the
+  source validator rejects them as INVALID DATE
+
+-------------------------------------------------------------------
 Wed Sep 11 12:37:19 UTC 2024 - Roger Oberholtzer <roger.oberholtzer@gmail.com>
 
 - Patch c75b9281a5b9452d92e1682bdfe6019a13ed819f.diff is no longer needed.
@@ -166,16 +193,16 @@ Tue Apr  2 15:39:31 UTC 2013 - opensuse@dstoecker.de
 - fix license
 
 -------------------------------------------------------------------
-Mon Jul 21 00:00:00 UTC 2008 Dirk Stöcker <opensuse@dstoecker.de>
+Mon Jul 21 00:00:00 UTC 2008 - Dirk Stöcker <opensuse@dstoecker.de>
 
 - some BuildService and rpmlint fixes
 
 -------------------------------------------------------------------
-Wed Jan 11 00:00:00 UTC 2006 Pascal Bleser
+Wed Jan 11 00:00:00 UTC 2006 - Pascal Bleser
 
 - added fixing of libshp.la file ("installed=no" -> "installed=yes")
 
 -------------------------------------------------------------------
-Wed Jan 11 00:00:00 UTC 2006 Pascal Bleser
+Wed Jan 11 00:00:00 UTC 2006 - Pascal Bleser
 
 - new package
