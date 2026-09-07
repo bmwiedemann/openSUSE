@@ -249,4 +249,21 @@
   * go.opentelemetry.io/otel@v1.44.0 (bsc#1276677, CVE-2026-41178)</comment>
     <requestid>1373697</requestid>
   </revision>
+  <revision rev="17" vrev="6">
+    <srcmd5>60540f77ee414e7e0263ea585f1dc64e</srcmd5>
+    <version>3.1.1</version>
+    <time>1788789008</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar:
+  * bsc#1277966, CVE-2026-37236: distribution:
+    github.com/grpc-ecosystem/grpc-gateway/v2/runtime: client can
+    override the HTTP method of a POST request through the
+    X-HTTP-Method-Override header
+
+- update vendor.tar:
+  * bsc#1278997, CVE-2026-84445
+  * bsc#1279219, CVE-2026-84304
+  * bsc#1279316, CVE-2026-84303</comment>
+    <requestid>1376026</requestid>
+  </revision>
 </revisionlist>

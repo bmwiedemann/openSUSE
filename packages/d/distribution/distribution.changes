@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep  6 15:24:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar:
+  * bsc#1277966, CVE-2026-37236: distribution:
+    github.com/grpc-ecosystem/grpc-gateway/v2/runtime: client can
+    override the HTTP method of a POST request through the
+    X-HTTP-Method-Override header
+
+-------------------------------------------------------------------
+Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar:
+  * bsc#1278997, CVE-2026-84445
+  * bsc#1279219, CVE-2026-84304
+  * bsc#1279316, CVE-2026-84303
+
+-------------------------------------------------------------------
 Tue Aug 25 19:05:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor:
