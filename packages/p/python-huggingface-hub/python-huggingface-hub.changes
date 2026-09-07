@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:59:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.30.0:
+  * hf jobs scheduled ls filters like hf jobs ls: --status
+    (active/suspended), repeatable --label key=value and --name;
+    -f/--filter is deprecated and now ignored with a warning
+  * HfApi.list_scheduled_jobs() takes a labels filter
+  * ResolvedRevision records the repo it was resolved against, so
+    reusing one on a different repo re-resolves instead of handing
+    back that repo's commit
+  * hf-inference serves chat completion for any text-generation or
+    image-text-to-text model, no conversational tag required
+  * Follow redirects between Hub hosts when resolving a file rather
+    than failing with a misleading connection error; CDN redirects
+    are still not followed, so Authorization never leaves the Hub
+  * Mark the Sandbox API experimental; shared sandboxes are meant
+    for workloads inside one trust boundary
+
+-------------------------------------------------------------------
 Thu Aug 27 18:08:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.29.0:

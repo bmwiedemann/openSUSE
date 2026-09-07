@@ -137,4 +137,16 @@ Built locally on aarch64 against openSUSE_Tumbleweed: green, rpmlint 0 errors /
 0 warnings / 0 badness.</comment>
     <requestid>1374116</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f518ed73da69d6ee3597c7b09c54fd6</srcmd5>
+    <version>1.30.0</version>
+    <time>1788773409</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.30.0.
+
+setup.py/pyproject.toml are byte-identical to 1.29.0 and nothing public was
+removed, so the Factory consumers (transformers &gt;= 1.5.0, datasets &gt;= 0.25.0,
+timm, sglang, xgrammar) are unaffected - none of them caps huggingface-hub.</comment>
+    <requestid>1375750</requestid>
+  </revision>
 </revisionlist>
