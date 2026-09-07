@@ -857,4 +857,41 @@
   * Update release-packages.yml</comment>
     <requestid>1371263</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>e3c9692af9b13815f27ebc0bdfec3adb</srcmd5>
+    <version>2.2.1</version>
+    <time>1788773543</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 2.2.1:
+  * Updated metadata screenshot
+  * Replaced SteamGridDB with Carrousel screenshot
+  * Update metainfo screenshot commit refs
+  * Updated Screenshots
+  * Increased time until first donate message
+  * Focus installed launcher on Carrousel
+  * Fixed wrong language in Proton comboboxes
+  * Fixed automatic backup for other platforms
+  * Fixed flash animation missing on carrousel
+  * Update release-packages.yml
+- For version 2.2.0:
+  * Fallback to List mode
+  * Update metainfo screenshot commit refs
+  * Updated screenshots
+  * Reworked banner display
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Minor adjustments
+  * Added SteamGridDB for all modes + rearranged widgets
+  * following naming conventions better
+  * added ability to move args added the ability to move up or down args in the Launch Settings window
+  * Fixed carrousel when no games
+  * Fixed categories for carrousel
+  * Allow Proton-CachyOS variants
+  * Add mouse scroll to carrousel
+  * Fixed carrousel fast animation
+  * Fixed carrousel mouse animation and selection
+  * Fixed carrousel custom sorting
+  * Simplified context menu in carrosel</comment>
+    <requestid>1375852</requestid>
+  </revision>
 </revisionlist>
