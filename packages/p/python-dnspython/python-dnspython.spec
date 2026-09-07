@@ -1,7 +1,7 @@
 #
 # spec file for package python-dnspython
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -126,7 +126,8 @@ rm tests/test_resolver_override.py
 # TODO: reenable once TW ships openssl >= 3.2.0
 rm tests/test_dnssec.py
 rm tests/test_dnssecalgs.py
-%pytest
+# testFromUnicodeIDNA2008, testToUnicode5 - failing with idna 1.19 https://github.com/rthalley/dnspython/commit/6af77d7e6762f951dd6fcc4018a2cf25a06700cd
+%pytest -k "not (testFromUnicodeIDNA2008 or testToUnicode5)"
 %endif
 
 %if !%{with test}

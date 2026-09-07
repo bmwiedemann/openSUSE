@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:42:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Skip tests failing with idna 1.19
+
+-------------------------------------------------------------------
 Mon Sep  8 20:26:46 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 2.8.0:
