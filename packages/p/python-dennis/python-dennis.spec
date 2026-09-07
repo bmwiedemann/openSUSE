@@ -23,7 +23,7 @@
 %endif
 
 Name:           python-dennis
-Version:        1.2.0
+Version:        1.3.0
 Release:        0
 Summary:        Utilities for working with PO and POT files
 License:        BSD-3-Clause
@@ -67,7 +67,6 @@ mismatched HTML, missing variables, etc.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/dennis-cmd
-%python_expand rm -r %{buildroot}%{$python_sitelib}/tests/
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
