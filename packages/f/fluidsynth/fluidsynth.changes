@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep  2 13:56:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.6.0
+  New Features
+  * Add automatic Gain Control / Output Limiter on final rendering
+    stage, refer to related FluidSettings.
+  * The synth gained support for signed 32-bit & 24-bit linear PCM,
+    and WASAPI is the first audio driver being able to use 24-bit
+    audio.
+  * Add support for MIDI RPN 5 - Modulation Depth Range.
+  * Add new reverb engines to fix flaws of fluidsynth's previous
+    FDN reverb, refer to wiki for an overview.
+  * Implement GM2 bank select mode.
+  Musically Breaking Changes
+  * Fix a bug introduced 17 years ago in 1.1.0 that caused sample
+    fine-tune to be applied incorrectly for some Soundfont
+    instruments (#1773).
+  * Implement MIDI RP-020 to fix MIDI files that use MTS being
+    played back incorrectly.
+  * Fluidsynth's default reverb engine was changed to Dattorro -
+    a plate-style reverbator (#1760).
+  * Fluidsynth now uses a higher order sinc interpolation, the
+    previous 7th order sinc was dropped due to quality issues.
+  Other changes
+  * Make the Pipewire driver more resilient against xruns (#1813).
+  * Fluidsynth now exits with an error whenever it is unable to
+    load Soundfonts passed as command line argument (#1807).
+
+-------------------------------------------------------------------
 Sat Jul 25 08:38:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.7
