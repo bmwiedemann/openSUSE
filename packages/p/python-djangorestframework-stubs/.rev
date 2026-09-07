@@ -33,4 +33,12 @@
 - Drop patch support-new-mypy.patch, included upstream.</comment>
     <requestid>1305633</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0dc94438cec187623ab5d3299aadc3df</srcmd5>
+    <version>3.18.1</version>
+    <time>1788773464</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1375805</requestid>
+  </revision>
 </revisionlist>

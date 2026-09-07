@@ -27,7 +27,7 @@
 %define package_name djangorestframework_stubs
 %{?sle15_python_module_pythons}
 Name:           python-djangorestframework-stubs%{psuffix}
-Version:        3.16.2
+Version:        3.18.1
 Release:        0
 Summary:        PEP-484 stubs for django-rest-framework
 License:        MIT
@@ -35,24 +35,18 @@ URL:            https://github.com/typeddjango/djangorestframework-stubs
 Source:         %{short_name}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module uv-build}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-django-stubs
-Requires:       python-django-stubs-ext
-Requires:       python-requests
 Requires:       python-types-PyYAML
-Requires:       python-types-requests
 Requires:       python-typing_extensions
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module django-stubs-ext}
-BuildRequires:  %{python_module django-stubs}
+BuildRequires:  %{python_module djangorestframework}
+BuildRequires:  %{python_module djangorestframework-stubs = %{version}}
 BuildRequires:  %{python_module pytest-mypy-plugins}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module requests}
-BuildRequires:  %{python_module types-PyYAML}
-BuildRequires:  %{python_module types-requests}
-BuildRequires:  %{python_module typing_extensions}
 %endif
 %python_subpackages
 
@@ -63,7 +57,9 @@ Mypy stubs for Django REST Framework. Supports Python 3.10 and up.
 %autosetup -p1 -n %{short_name}-%{version}
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
 %if !%{with test}
@@ -74,8 +70,8 @@ Mypy stubs for Django REST Framework. Supports Python 3.10 and up.
 
 %check
 %if %{with test}
-%python_expand PYTHONPATH=$PWD
-%pytest --mypy-only-local-stub
+export PYTHONPATH=$PWD
+%pytest
 %endif
 
 %if !%{with test}

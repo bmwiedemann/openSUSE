@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:43:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 3.18.1:
+  * Fix `ManyRelatedField` type parameters & relation field `default`/`initial` types (#1049)
+  * Fix `PrimaryKeyRelatedField` `pk_field` attribute & parameter type (#1047)
+  * Fix remaining items in stubtest `allowlist_todo.txt` and remove the file (#1039)
+  * Mark stub-only synthetic types with @type_check_only (#1038)
+  * Categorize stubtest allowlist_todo.txt entries (#1037)
+  * Drop Python 3.10 support (#1035)
+  * Update stubs for djangorestframework 3.18.0 (#1030)
+  * Update dependency djangorestframework to v3.18.0 & create new allowlist (#1024)
+  * Fix Request.data type to include list[Any] for JSON bulk payloads (#1016)
+  * Update dependency mypy to >=1.13,<2.4 (#1009)
+  * fix: accept Sequence in paginate_queryset, not just QuerySet (#1001)
+  * Clean up and improve `rest_framework.fields` (#988)
+  * Update dependency pytest-mypy-plugins to v4.0.3 (#985)
+
+-------------------------------------------------------------------
+Thu Jul 16 07:56:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 3.17.0:
+  * Clean up and improve `rest_framework.fields` (#964)
+  * Unpin `types-*` dev dependencies for automatic Renovate updates (#983)
+  * Update dependency mypy to v2 (#975)
+  * Clean up and improve `rest_framework.renderers` (#960)
+  * Change `Serializer` context type `dict` -> `Mapping` (#946)
+  * Add missing decorator stubs for DRF 3.17 (#949)
+  * Fix incomplete types in `rest_framework.utils` (#935)
+  * Add @override decorators & align mypy config with django-stubs (#928)
+  * Remove redundant subclass method annotations in `pagination` (#917)
+  * Fix incorrect function signatures in documentation and schemas stubs (#909)
+  * Add stub for APIClient.generic. (#911)
+  * Fix Request stub allowing arbitrary attribute access (#904)
+  * Remove `requests` dependency (#896)
+  * Convert simpler tests to `assert_type()` tests (#854)
+  * Add official support & test with Python 3.14 (#850)
+  * Fix `SlugRelatedField.slug_field` type: cannot be `None` (#830)
+  * Use explicit mypy error codes in ignore comments and output (#497)
+  * Remove non-existant function `templatetags.rest_framework.urlize_quoted_links()` (#699)
+  * [Breaking change] Remove work-around for `ModelSerializer.instance` field for `many=True` (#719)
+  * Accept lazy strings as path in `APIRequestFactory` and `APIClient` http methods (#825)
+
+-------------------------------------------------------------------
 Thu Sep 18 05:48:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to version 3.16.2:
