@@ -236,4 +236,25 @@ re-audit. All four patches apply unchanged; the @opentui/core pin stays 0.4.5.
 Built locally on aarch64, %check green, rpmlint 0 errors / 0 badness.</comment>
     <requestid>1375573</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>b522d253d5e1af616be71673225b3d8f</srcmd5>
+    <version>1.18.29</version>
+    <time>1788791090</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.18.29
+
+- Codex model filter accepts integer GPT versions and compares them by
+  major and minor
+- copilot sends the session id as X-Interaction-Id
+- TUI uses unicode ellipses
+
+Vendor keep list retraced with Factory's bun 1.4.0: unchanged at 509
+store entries, only gitlab-ai-provider moves 6.12.1 -&gt; 6.13.0 and both
+of its @ai-sdk/provider-utils peer variants are kept. Licences
+re-derived over the same 506 packages, SPDX set unchanged, still no
+copyleft.
+
+Built and %check-tested locally on aarch64.</comment>
+    <requestid>1376112</requestid>
+  </revision>
 </revisionlist>

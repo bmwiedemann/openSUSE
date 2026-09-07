@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:25:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.29:
+  * Codex model filter accepts integer GPT versions and compares
+    them by major and minor
+  * copilot sends the session id as X-Interaction-Id
+  * TUI uses unicode ellipses
+  * Everything else in the range is console, desktop, docs, stats
+    and CI work that this build does not ship
+- Retrace the vendor keep list, which comes back at the same 509
+  store entries: only gitlab-ai-provider moves, 6.12.1 to 6.13.0,
+  and both of its @ai-sdk/provider-utils peer variants are still
+  kept. Same 506 packages, same SPDX set, still no copyleft;
+  README.SUSE-maint records the audit as redone for 1.18.29.
+- Refresh the models.dev catalogue snapshot: it is a live fetch,
+  so Source2 moves on every bump independently of the tag
+
+-------------------------------------------------------------------
 Thu Sep  3 08:52:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.27:
