@@ -1,7 +1,7 @@
 #
 # spec file for package maven-resources-plugin
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,107 +16,88 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "bootstrap"
-%bcond_without bootstrap
-%else
-%bcond_with bootstrap
-%endif
-%global base_name maven-resources-plugin
+Name:           maven-resources-plugin
 Version:        3.5.0
 Release:        0
 Summary:        Maven Resources Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-resources-plugin
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
-Source1:        %{base_name}-build.xml
-Patch0:         %{base_name}-bootstrap-resources.patch
-BuildRequires:  atinject
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local
 BuildRequires:  maven-filtering >= 3.5.0
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-plugin
 BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
 BuildRequires:  sisu-plexus
 BuildRequires:  unzip
+BuildRequires:  xmvn-connector
 BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
+Obsoletes:      %{name}-bootstrap
 BuildArch:      noarch
-%if %{with bootstrap}
-Name:           %{base_name}-bootstrap
-BuildRequires:  ant
-%else
-Name:           %{base_name}
-BuildRequires:  xmvn
-BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
-Obsoletes:      %{base_name}-bootstrap
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-javadoc-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
-%endif
 
 %description
 The Resources Plugin handles the copying of project resources
 to the output directory.
 
-%if %{without bootstrap}
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
 
 %description javadoc
 API documentation for %{name}.
-%endif
 
 %prep
-%setup -q -n %{base_name}-%{version}
-%if %{with bootstrap}
+%setup -q
 cp %{SOURCE1} build.xml
-%patch -P 0 -p1
-%endif
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
 
 %build
-%if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
     commons-lang3 \
+    jsoup/jsoup\
     maven-filtering/maven-filtering \
+    maven/maven-artifact \
     maven/maven-core \
     maven/maven-model \
     maven/maven-plugin-api \
+    maven/maven-resolver-provider \
     maven-plugin-tools/maven-plugin-annotations \
+    maven-plugin-tools/maven-plugin-plugin \
+    maven-plugin-tools/maven-plugin-tools-annotations \
+    maven-plugin-tools/maven-plugin-tools-api \
+    maven-plugin-tools/maven-plugin-tools-generators \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    objectweb-asm/asm-all \
     org.eclipse.sisu.plexus \
+    plexus/archiver \
+    plexus-classworlds \
     plexus/interpolation \
-    plexus/utils
-%{ant} -Dtest.skip=true jar
-%else
-xmvn --batch-mode --offline \
-    -Dmaven.test.skip=true \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
-%endif
+    plexus/utils \
+    plexus/xml \
+    qdox \
+    slf4j/api \
+    velocity-engine/velocity-engine-core \
+    xmvn
+%{ant} -Dtest.skip=true jar javadoc
 
-%{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar
+%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
 
 %install
 %mvn_install
@@ -125,9 +106,7 @@ xmvn --batch-mode --offline \
 %files -f .mfiles
 %license LICENSE NOTICE
 
-%if %{without bootstrap}
 %files javadoc -f .mfiles-javadoc
 %license LICENSE NOTICE
-%endif
 
 %changelog

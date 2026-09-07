@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:17:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build the bootstrap plugin, build the non-bootstrap version
+  using ant and generating the HelpMojo.java and the plugin
+  descriptors by an execution of maven-plugin-plugin goals outside
+  of maven lifecycle
+
+-------------------------------------------------------------------
+Wed Sep  2 14:05:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * maven-resources-plugin-bootstrap-resources.patch
+    + use the new standalone plugin descriptor generator for
+      the bootstrap build
+
+-------------------------------------------------------------------
 Mon Mar  2 13:02:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 3.5.0
