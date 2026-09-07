@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:49:45 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.3:
+  * Add two functions to facilitate creating images above the
+    normal fd limits of a system:
+    + fs.push_file_from_path(source_path, "path/in/image",
+      header).
+    + fs.replace_file_from_path("path/in/image", source_path).
+- Update to version 0.25.2:
+  backhand
+  * Enable deku:descriptive-errors only for backhand-cli.
+  * Remove Box from superblock reader.
+  * Reject wrong sizes and indices in the block reader.
+  * Add combined block reader logic and remove all duplicated
+    code between the v3 and v4 paths.
+  * Add file_data_to_writer, which allows one to stream file
+    contents into a writer.
+  * Use One-Shot decompression for speed improvements.
+  backhand-cli
+  * Enable deku descriptive errors for backhand-cli.
+
+-------------------------------------------------------------------
 Thu Jun 18 16:15:36 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - Enable build on riscv64
