@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:50:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2025-55154: integer overflow when performing magnified size calculations in ReadOneMNGIMage can lead to out-of-bounds write [bsc#1248078]
+  * GraphicsMagick-CVE-2025-55154.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 06:36:47 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches

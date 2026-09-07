@@ -39,6 +39,8 @@ Patch8:         GraphicsMagick-CVE-2026-46523.patch
 Patch11:        GraphicsMagick-CVE-2026-61464.patch
 # CVE-2026-56379: arbitrary MVG drawing command injection via the SVG decoder when processing specially crafted SVG files [bsc#1268878]
 Patch12:        GraphicsMagick-CVE-2026-56379.patch
+# CVE-2025-55154: integer overflow when performing magnified size calculations in ReadOneMNGIMage can lead to out-of-bounds write [bsc#1248078]
+Patch13:        GraphicsMagick-CVE-2025-55154.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++
