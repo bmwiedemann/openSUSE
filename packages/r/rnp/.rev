@@ -197,4 +197,12 @@ Needs SR#1093175</comment>
     <comment>fix tests with GnuPG 2.5.21 (forwarded request 1365740 from AndreasStieger)</comment>
     <requestid>1365741</requestid>
   </revision>
+  <revision rev="24" vrev="5">
+    <srcmd5>6e5827db138f1f60a88538141711f526</srcmd5>
+    <version>0.18.1</version>
+    <time>1788773575</time>
+    <user>anag_factory</user>
+    <comment>fix build (forwarded request 1375905 from AndreasStieger)</comment>
+    <requestid>1375906</requestid>
+  </revision>
 </revisionlist>

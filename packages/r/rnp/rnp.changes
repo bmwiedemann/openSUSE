@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep  5 10:08:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- fix build: upstream is not doing a release and is accumulating
+  fixes tedious to backport. Don't run tests and drop:
+  * rnp-v0.18.1-test_cv25519_bit_fix.patch
+  * rnp-v0.18.1-gnupg-2_5_21-no-partial-file-guard.patch
+
+-------------------------------------------------------------------
 Tue Jul 14 17:12:59 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - fix tests

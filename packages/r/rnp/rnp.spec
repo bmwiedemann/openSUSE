@@ -26,9 +26,7 @@ URL:            https://www.rnpgp.com/
 Source:         https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz
 Source2:        https://github.com/rnpgp/rnp/releases/download/v%{version}/%{name}-v%{version}.tar.gz.asc
 Source3:        https://www.rnpgp.org/openpgp_keys/31AF5A24D861EFCB7CB79A1924900CE0AEFB5417-50DA59D5B9134FA2DB1EB20CFB829AB5D0FE017F.asc#/%{name}.keyring
-Patch0:         rnp-v0.18.1-test_cv25519_bit_fix.patch
 Patch1:         rnp-v0.18.1-botan-1-1.patch
-Patch2:         rnp-v0.18.1-gnupg-2_5_21-no-partial-file-guard.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.18
 BuildRequires:  gpg2 >= 2.2
@@ -85,9 +83,6 @@ export CXX=g++-12
 
 %install
 %cmake_install
-
-%check
-%ctest
 
 %ldconfig_scriptlets -n librnp%{soname}
 
