@@ -31,11 +31,10 @@ Patch0:         Fix-compatibility-with-Qt-6.10.1.patch
 # see https://github.com/fooyin/fooyin/pull/725
 # fixed upstream in master-branch, can be removed in the next version
 Patch1:         Add-missing-header-include-for-QElapsedTimer-class.patch
+Patch2:         delete-extra-deps.patch
 BuildRequires:  c++_compiler
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-# Fixes conflict with ffmepg-8-mini-devel
-BuildRequires:  ffmpeg-7-mini-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  ninja
 BuildRequires:  qt6-base-devel
@@ -51,18 +50,18 @@ BuildRequires:  pkgconfig(alsa)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libarchive)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpipewire-0.3)
-BuildRequires:  pkgconfig(libpostproc)
 BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(sndfile)
 BuildRequires:  pkgconfig(taglib)
 BuildRequires:  pkgconfig(xkbcommon)
+
+Requires:       qt6-sql-sqlite
 
 %description
 fooyin is a Qt6 music player built around customisation. It offers a

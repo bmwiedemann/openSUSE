@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  5 09:32:33 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add delete-extra-deps.patch
+
+-------------------------------------------------------------------
+Thu Sep  3 20:43:20 UTC 2026 - Phakin Kongkha <ntrain5555@gmail.com>
+
+- Add missing runtime dependency qt6-sql-sqlite (boo#1277778)
+
+-------------------------------------------------------------------
 Thu Jan  1 12:36:52 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Fix build in openSUSE Tumbleweed

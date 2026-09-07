@@ -1,0 +1,29 @@
+From: Jan Engelhardt <jengelh@inai.de>
+Date: 2026-09-05 11:30:29.101166149 +0200
+References: https://github.com/fooyin/fooyin/pull/1582
+
+fooyin's cmake files erroneously request packages whose header files
+it never uses. Turn that off.
+(postproc is also gone in ffmpeg-9)
+
+---
+ cmake/modules/FindFFmpeg.cmake |    2 --
+ 1 file changed, 2 deletions(-)
+
+Index: fooyin-0.9.2/cmake/modules/FindFFmpeg.cmake
+===================================================================
+--- fooyin-0.9.2.orig/cmake/modules/FindFFmpeg.cmake
++++ fooyin-0.9.2/cmake/modules/FindFFmpeg.cmake
+@@ -132,12 +132,10 @@ unset(FFMPEG_TARGETS CACHE)
+ # Check for all possible component.
+ find_component(AVCODEC     libavcodec     avcodec     libavcodec/avcodec.h)
+ find_component(AVFORMAT    libavformat    avformat    libavformat/avformat.h)
+-find_component(AVDEVICE    libavdevice    avdevice    libavdevice/avdevice.h)
+ find_component(AVUTIL      libavutil      avutil      libavutil/avutil.h)
+ find_component(AVFILTER    libavfilter    avfilter    libavfilter/avfilter.h)
+ find_component(SWSCALE     libswscale     swscale     libswscale/swscale.h)
+ find_component(SWRESAMPLE  libswresample  swresample  libswresample/swresample.h)
+-find_component(POSTPROC    libpostproc    postproc    libpostproc/postprocess.h)
+ 
+ # Check if the required components were found and add their stuff to the FFMPEG_* vars.
+ foreach (_component ${FFmpeg_FIND_COMPONENTS})
