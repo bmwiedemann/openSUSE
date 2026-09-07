@@ -16,23 +16,33 @@
 #
 
 
-# The internal node dependency generator would slurp package.json and emit
-# bogus npm(...) Provides/Requires; the published bundle has no dependency tree.
+# The internal node dependency generator would slurp the bundled package.json
+# files and emit bogus npm(...) Provides/Requires; everything the CLI needs at
+# runtime is vendored below.
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 %define node_pty_version 1.1.0
 %define node_addon_api_version 7.1.1
+%define ws_version 8.21.3
+%define qrcode_version 1.5.4
+%define pngjs_version 5.0.0
+%define dijkstrajs_version 1.0.3
 Name:           kimi-code
-Version:        0.36.1
+Version:        0.41.0
 Release:        0
 Summary:        Command-line agentic coding assistant powered by Kimi models
 License:        MIT
 URL:            https://github.com/MoonshotAI/kimi-code
-# The published npm artifact is a self-contained, dependency-free bundle
-# (dist/main.mjs). Only the optional native node-pty backend is vendored below.
+# The published npm artifact is a prebuilt bundle (dist/main.mjs). Since 0.39.0
+# it no longer inlines ws and qrcode, so those - plus qrcode's own runtime
+# dependencies - are vendored alongside the optional native node-pty backend.
 Source0:        https://registry.npmjs.org/@moonshot-ai/%{name}/-/%{name}-%{version}.tgz
 Source1:        https://registry.npmjs.org/node-pty/-/node-pty-%{node_pty_version}.tgz
 Source2:        https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
+Source3:        https://registry.npmjs.org/ws/-/ws-%{ws_version}.tgz
+Source4:        https://registry.npmjs.org/qrcode/-/qrcode-%{qrcode_version}.tgz
+Source5:        https://registry.npmjs.org/pngjs/-/pngjs-%{pngjs_version}.tgz
+Source6:        https://registry.npmjs.org/dijkstrajs/-/dijkstrajs-%{dijkstrajs_version}.tgz
 Source99:       kimi-code-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -44,6 +54,15 @@ BuildRequires:  python3
 Requires:       fd
 Requires:       nodejs >= 22.19
 Requires:       ripgrep
+# Only the dependencies that are shipped as separate trees are listed here;
+# dist/main.mjs is a prebuilt bundle whose inlined build-time dependencies
+# cannot be enumerated from the published artifact.
+Provides:       bundled(dijkstrajs) = %{dijkstrajs_version}
+Provides:       bundled(node-addon-api) = %{node_addon_api_version}
+Provides:       bundled(node-pty) = %{node_pty_version}
+Provides:       bundled(pngjs) = %{pngjs_version}
+Provides:       bundled(qrcode) = %{qrcode_version}
+Provides:       bundled(ws) = %{ws_version}
 # node-pty compiles a native addon; the pure-JS bundle is otherwise portable, but
 # only these arches are verified/relevant for the coding-agent workload.
 ExclusiveArch:  x86_64 aarch64
@@ -57,15 +76,23 @@ code search. The interactive shell backend is provided by a compiled node-pty
 addon.
 
 %prep
-# kimi-code itself is installed straight from its npm tarball during install;
-# only the vendored node-pty sources need unpacking here in order to compile.
 %setup -q -c -T
-# Source1: node-pty -> ./package
-tar -xf %{SOURCE1}
-mv package node-pty
-# Source2: node-addon-api -> ./package
-tar -xf %{SOURCE2}
-mv package node-addon-api
+# Every Source is an npm tarball with a single top-level package/ directory.
+# pngjs ships mode-0666 directory entries, so restore directory permissions
+# only after extraction and normalise the modes afterwards.
+unpack_npm() {
+    rm -rf package
+    tar -xf "$1" --delay-directory-restore
+    mv package "$2"
+}
+unpack_npm %{SOURCE0} kimi-code
+unpack_npm %{SOURCE1} node-pty
+unpack_npm %{SOURCE2} node-addon-api
+unpack_npm %{SOURCE3} ws
+unpack_npm %{SOURCE4} qrcode
+unpack_npm %{SOURCE5} pngjs
+unpack_npm %{SOURCE6} dijkstrajs
+chmod -R a+rX,u+w,go-w .
 
 %build
 # Compile the node-pty native addon fully offline.
@@ -86,16 +113,27 @@ node "$node_gyp" rebuild --nodedir=%{_prefix}
 popd
 
 %install
-# Install the self-contained kimi-code bundle from its npm tarball. Installing
-# from the .tgz (not an unpacked dir) makes npm copy the tree into the buildroot
-# instead of symlinking it; --omit=optional keeps npm from reaching out for the
-# optional node-pty / clipboard packages.
-npm_config_prefix=%{buildroot}%{_prefix} \
-    npm install -g --omit=optional --offline %{SOURCE0}
+# The bundle is installed by hand rather than with `npm install`: since 0.39.0
+# kimi-code declares runtime dependencies, so npm resolves them against the
+# registry (and drags in qrcode's CLI-only yargs tree) instead of using the
+# vendored copies below.
+kimiroot=%{buildroot}%{nodejs_sitelib}/@moonshot-ai/%{name}
+install -d %{buildroot}%{nodejs_sitelib}/@moonshot-ai
+cp -a kimi-code "$kimiroot"
 
-# Locate the installed package tree (scoped package under nodejs_sitelib).
-kimidir=$(dirname "$(find %{buildroot}%{nodejs_sitelib} -name main.mjs -path '*kimi-code*' | head -n1)")
-kimiroot=$(dirname "$kimidir")
+# Vendor the declared runtime dependencies into the package's own node_modules.
+install -d "$kimiroot/node_modules"
+cp -a ws qrcode pngjs dijkstrajs "$kimiroot/node_modules/"
+# qrcode's bin/qrcode is the sole consumer of yargs and is not a supported entry
+# point here; dropping it keeps that dependency out of the package.
+rm -rf "$kimiroot/node_modules/qrcode/bin"
+rm -rf "$kimiroot/node_modules/pngjs/coverage"
+rm -rf "$kimiroot/node_modules/dijkstrajs/test"
+# The vendored trees also carry linter/CI dotfiles, CRLF line endings and stray
+# executable bits on plain library sources; rpmlint rejects all three.
+find "$kimiroot/node_modules" -name '.*' -prune -exec rm -rf {} +
+find "$kimiroot/node_modules" -type f -name '*.js' -exec chmod 0644 {} +
+find "$kimiroot/node_modules" -type f -name '*.js' -exec sed -i 's/\r$//' {} +
 
 # Inject the freshly compiled node-pty so `import("node-pty")` resolves.
 install -d "$kimiroot/node_modules/node-pty/build/Release"
@@ -107,8 +145,10 @@ cp -a node-pty/package.json "$kimiroot/node_modules/node-pty/package.json"
 cp -a node-pty/build/Release/pty.node "$kimiroot/node_modules/node-pty/build/Release/"
 
 # Use a concrete node interpreter (openSUSE convention) rather than /usr/bin/env.
-# kimidir is the dist/ directory that directly contains main.mjs.
-sed -i '1s|^#!%{_bindir}/env node|#!%{_bindir}/node|' "$kimidir/main.mjs"
+sed -i '1s|^#!%{_bindir}/env node|#!%{_bindir}/node|' "$kimiroot/dist/main.mjs"
+chmod 0755 "$kimiroot/dist/main.mjs"
+install -d %{buildroot}%{_bindir}
+ln -sr "$kimiroot/dist/main.mjs" %{buildroot}%{_bindir}/kimi
 
 # Drop npm lifecycle postinstall scripts: they only migrate a legacy python
 # shim at npm-install time and are unused by the packaged CLI.
@@ -123,7 +163,12 @@ find %{buildroot}%{nodejs_sitelib} -type f \
 %fdupes %{buildroot}%{nodejs_sitelib}
 
 %check
+# Starting the CLI evaluates dist/main.mjs, whose top-level imports of ws and
+# qrcode fail loudly if the vendored trees are missing or incomplete.
 %{buildroot}%{_bindir}/kimi --version
+# node-pty is only reached through a dynamic import at runtime, so load the
+# compiled addon explicitly to prove it works on this architecture.
+node -e 'require("%{buildroot}%{nodejs_sitelib}/@moonshot-ai/%{name}/node_modules/node-pty")'
 
 %files
 %{_bindir}/kimi

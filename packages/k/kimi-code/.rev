@@ -72,4 +72,22 @@ Built locally against openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors,
 printed 0.36.1.</comment>
     <requestid>1371320</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c924e486f879db7d70bbbeda6ca80009</srcmd5>
+    <version>0.41.0</version>
+    <time>1788789002</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 0.41.0.
+
+Upstream stopped inlining ws and qrcode into dist/main.mjs in 0.39.0 and
+declares them as runtime dependencies now, so the offline `npm install`
+route no longer works. The bundle is unpacked directly instead and ws,
+qrcode plus qrcode's own pngjs and dijkstrajs are vendored into the
+package's private node_modules; all of them are MIT, and the vendored
+trees are listed as Provides: bundled(...).
+
+Built locally on aarch64, rpmlint clean (0 badness). The build check now
+also loads the compiled node-pty addon.</comment>
+    <requestid>1375892</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sat Sep  5 07:11:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.41.0:
+  * Add experimental tower mode for multi-agent orchestration and
+    Remote Control for reaching a local web session remotely
+  * Add the WaitFor tool so the agent can wait for a background
+    task inside the current turn, and an optional fork parameter
+    that starts a subagent from a snapshot of the caller's history
+  * Support two OAuth login methods, kimi.ai and kimi.com, and
+    activate several skills in one prompt
+  * Enable the subagent model pool in every launch mode by default
+    and make turn-level file history unconditional
+  * Add a dangerous-command guard that always asks before shutdown,
+    reboot or rm -rf in manual and YOLO permission modes, disabled
+    with [permission] dangerous_command_guard; auto mode never
+    blocks
+  * Remove kimi web --allow-remote-terminals; PTY terminal routes
+    are served on loopback binds only
+  * Require Edit and Write to read a file first, and reject a write
+    when the file changed on disk since that read
+  * Rework the bundled web dashboard: multi-tab right sidebar,
+    Open/Done/Workspaces session tabs, a plugin marketplace panel
+    and mobile bottom sheets
+  * ... see upstream's release notes for the full list
+- Vendor the runtime dependencies upstream stopped inlining in
+  0.39.0:
+  * Add ws, qrcode and qrcode's own pngjs and dijkstrajs as
+    sources, installed into the package's private node_modules
+  * Unpack the npm tarball directly instead of running npm install,
+    which would resolve the new dependencies against the registry
+    and pull in qrcode's CLI-only yargs tree
+  * Declare the vendored trees with Provides: bundled(...)
+- CVE-2026-48779: ws denial of service from a high volume of tiny
+  WebSocket fragments; the ws inlined in the old bundle predated
+  the 8.21.0 fix, the vendored ws is 8.21.3 (boo#1268927)
+- CVE-2026-45736: ws uninitialized memory disclosure via
+  websocket.close() with a TypedArray, fixed by the same ws version
+  (boo#1269951)
+- Load the compiled node-pty addon during the build check as well
+
+-------------------------------------------------------------------
 Sat Aug 15 18:22:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.36.1:
