@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep  4 05:50:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.2
+  libbson
+  * No changes since 2.5.1. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  Security Fixes
+  * Fix CVE-2026-84964
+    + OCSP error handling.
+  * Fix CVE-2026-84965
+    + unsafe casts during JSON parsing.
+  * Fix CVE-2026-84969
+    + possible unsafe truncation when logging base64.
+  * Fix CVE-2026-84963
+    + unsafe calls to bson_next_power_of_two.
+
+-------------------------------------------------------------------
 Tue Sep  1 13:42:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.1
