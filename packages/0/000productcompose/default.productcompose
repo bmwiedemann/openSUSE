@@ -449,7 +449,6 @@ packagesets:
    - firewalld-bash-completion # reason: dvd:patterns-kde-kde
    - firewalld-lang # reason: dvd:patterns-kde-kde
    - firewalld-zsh-completion # reason: dvd:patterns-media-rest_dvd
-   - fixmath # reason: dvd:openSUSE-release
    - flatpak # reason: dvd:patterns-kde-kde
    - flatpak-kcm6 # reason: dvd:patterns-kde-kde
    - flatpak-kcm6-lang # reason: dvd:patterns-kde-kde
@@ -1660,7 +1659,7 @@ packagesets:
    - libabsl_strings_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_symbolize2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_synchronization2608_0_0 # reason: dvd:patterns-gnome-gnome
-   - libabsl_throw_delegate2608_0_0 # reason: dvd:patterns-gnome-gnome
+   - libabsl_throw_delegate2608_0_0 # reason: dvd:openSUSE-release
    - libabsl_time2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_time_zone2608_0_0 # reason: dvd:patterns-gnome-gnome
    - libabsl_tracing_internal2608_0_0 # reason: dvd:patterns-gnome-gnome
@@ -2183,7 +2182,7 @@ packagesets:
    - libheif-rav1e # reason: dvd:openSUSE-release
    - libheif-svtenc # reason: dvd:openSUSE-release
    - libheif1 # reason: dvd:openSUSE-release
-   - libhidapi-hidraw0 # reason: dvd:grub2
+   - libhidapi-hidraw0 # reason: dvd:patterns-gnome-gnome
    - libhiredis1_3_0 # reason: dvd:patterns-media-rest_dvd
    - libhns1 # reason: dvd:patterns-media-rest_dvd
    - libhogweed6 # reason: dvd:openSUSE-release
@@ -2638,7 +2637,6 @@ packagesets:
    - libreoffice-mailmerge # reason: dvd:openSUSE-release
    - libreoffice-math # reason: dvd:openSUSE-release
    - libreoffice-pyuno # reason: dvd:openSUSE-release
-   - libreoffice-qt5 # reason: dvd:patterns-kde-kde
    - libreoffice-qt6 # reason: dvd:patterns-kde-kde
    - libreoffice-share-linker # reason: dvd:openSUSE-release
    - libreoffice-writer # reason: dvd:openSUSE-release
@@ -5526,7 +5524,6 @@ packagesets:
    - libharfbuzz0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libhd25 # reason: opensuse_microos:patterns-base-hardware
    - libheif1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libhidapi-hidraw0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhogweed6 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhplip0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libhunspell-1_7-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7339,7 +7336,6 @@ packagesets:
    - libharfbuzz0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhd25 # reason: opensuse_kalpa:patterns-kalpa-base
    - libheif1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libhidapi-hidraw0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhogweed6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhplip0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhunspell-1_7-0 # reason: opensuse_kalpa:patterns-kalpa-base
