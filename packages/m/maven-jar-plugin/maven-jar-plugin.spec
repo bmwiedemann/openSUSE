@@ -16,23 +16,16 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "bootstrap"
-%bcond_without bootstrap
-%else
-%bcond_with bootstrap
-%endif
-%global base_name maven-jar-plugin
+Name:           maven-jar-plugin
 Version:        3.5.1
 Release:        0
 Summary:        Maven JAR Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-jar-plugin/
-Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{base_name}/%{version}/%{base_name}-%{version}-source-release.zip
-Source1:        %{base_name}-build.xml
-Source100:      pom_properties.py
-Patch0:         %{base_name}-bootstrap-resources.patch
+Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
+Source1:        %{name}-build.xml
+BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -42,64 +35,38 @@ BuildRequires:  maven-archiver >= 3.5.0
 BuildRequires:  maven-file-management
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-plugin
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver >= 4.2.0
 BuildRequires:  sisu-inject
 BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:)
+Obsoletes:      %{name}-bootstrap
 BuildArch:      noarch
-%if %{with bootstrap}
-Name:           %{base_name}-bootstrap
-BuildRequires:  ant
-%else
-Name:           %{base_name}
-BuildRequires:  xmvn
-BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
-BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
-Obsoletes:      %{base_name}-bootstrap
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-javadoc-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
-%endif
 
 %description
 Builds a Java Archive (JAR) file from the compiled
 project classes and resources.
 
-%if %{without bootstrap}
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Documentation/HTML
 
 %description javadoc
 API documentation for %{name}.
-%endif
 
 %prep
-%setup -q -n %{base_name}-%{version}
-%if %{with bootstrap}
+%setup -q
 cp %{SOURCE1} build.xml
-%patch -P 0 -p1
-python3 %{SOURCE100} pom.xml >build.properties
-%endif
 
 # Remove all dependencies with scope test, since a raw xmvn does not hide them
 %pom_remove_dep -r :::test:
 
 %build
-# Test class MockArtifact doesn't override method getMetadata
-%if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
@@ -114,17 +81,9 @@ build-jar-repository -s lib \
     plexus/archiver \
     plexus/utils \
     slf4j/api
-%{ant} -Dtest.skip=true jar
-%else
-xmvn --batch-mode --offline \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dmaven.test.skip=true \
-    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
-%endif
+ant -Dtest.skip=true jar javadoc
 
-%{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar
+%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
 
 %install
 %mvn_install
@@ -135,10 +94,8 @@ xmvn --batch-mode --offline \
 %license LICENSE
 %doc NOTICE
 
-%if %{without bootstrap}
 %files javadoc -f .mfiles-javadoc
 %license LICENSE
 %doc NOTICE
-%endif
 
 %changelog

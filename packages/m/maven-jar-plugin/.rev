@@ -119,4 +119,12 @@
     <comment>3.5.1</comment>
     <requestid>1367170</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9e5ead18499fa162991ca140fb9546c1</srcmd5>
+    <version>3.5.1</version>
+    <time>1788773439</time>
+    <user>anag_factory</user>
+    <comment>Bootstrap version removal</comment>
+    <requestid>1375778</requestid>
+  </revision>
 </revisionlist>
