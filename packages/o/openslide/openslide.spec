@@ -1,7 +1,7 @@
 #
 # spec file for package openslide
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,110 +12,103 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define soversion 0
-%define libname lib%{name}
+%define soversion 1
 
 Name:           openslide
-Version:        3.4.1
+Version:        4.0.1
 Release:        0
 Summary:        C library for reading virtual slides
 License:        LGPL-2.1-only
-Group:          System/Libraries
-Url:            http://openslide.org/
+URL:            https://openslide.org/
 Source0:        https://github.com/openslide/openslide/releases/download/v%{version}/openslide-%{version}.tar.xz
-BuildRequires:  cairo-devel
+BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  gdk-pixbuf-devel
-BuildRequires:  glib2-devel
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
-BuildRequires:  libxml2-devel
-BuildRequires:  openjpeg2-devel
-BuildRequires:  pkg-config
-BuildRequires:  sqlite3-devel
-BuildRequires:  xz
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(libdicom)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libopenjp2)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 The OpenSlide library allows programs to access virtual slide files
 regardless of the underlying image format.
 
-%package -n %{libname}%{soversion}
+%package -n libopenslide%{soversion}
 Summary:        C library for reading virtual slides
-Group:          System/Libraries
 
-%description -n %{libname}%{soversion}
+%description -n libopenslide%{soversion}
 The OpenSlide library allows programs to access virtual slide files
 regardless of the underlying image format.
 
-%package -n %{libname}-devel
-Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
-Requires:       %{libname}%{soversion} = %{version}
-Recommends:     %{libname}-doc = %{version}
+%package -n libopenslide-devel
+Summary:        Development files for openslide
+Requires:       libopenslide%{soversion} = %{version}
+Recommends:     libopenslide-doc = %{version}
 
-%description -n %{libname}-devel
+%description -n libopenslide-devel
 This package contains libraries and header files for
-developing applications that use %{name}.
+developing applications that use openslide.
 
 %package doc
-Summary:        Documentation for %{name}
-Group:          Documentation/Other
+Summary:        Documentation for openslide
 BuildArch:      noarch
 
 %description doc
 This package contains documentation for developing with openslide library.
 
 %package tools
-Summary:        Command line tools for %{name}
-Group:          Productivity/Graphics/Other
-Requires:       %{libname}%{soversion} = %{version}
+Summary:        Command line tools for openslide
+Requires:       libopenslide%{soversion} = %{version}
 
 %description tools
 This package contains command line tools for working with virtual slides.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-%configure --disable-static
-make %{?_smp_mflags}
+# Note: Building without '-Dtest=disabled' fails without network access. A test is still executed.
+%meson -Dtest=disabled
+
+%meson_build
 
 %install
-%make_install
-find %{buildroot}%{_libdir} -name '*.la' -type f -delete -print
-%fdupes -s doc/html/
+%meson_install
 
-%clean
-rm -rf %{buildroot}
+%check
+%meson_test
 
-%post -n %{libname}%{soversion} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libopenslide%{soversion}
 
-%postun -n %{libname}%{soversion} -p /sbin/ldconfig
-
-%files -n %{libname}%{soversion}
-%defattr(-,root,root)
+%files -n libopenslide%{soversion}
+%license COPYING.LESSER
+%doc CHANGELOG.md README.md
 %{_libdir}/*.so.%{soversion}*
 
-%files -n %{libname}-devel
-%defattr(-,root,root)
-%{_includedir}/%{name}/
+%files -n libopenslide-devel
+%{_includedir}/openslide/
 %{_libdir}/*.so
 %{_libdir}/pkgconfig/*.pc
 
 %files doc
-%defattr(-,root,root)
-%doc README.txt lgpl-2.1.txt LICENSE.txt CHANGELOG.txt doc/html/
+%doc doc/html/
 
 %files tools
-%defattr(-,root,root)
-%{_bindir}/*
-%{_mandir}/man1/openslide*.1.gz
+%{_bindir}/openslide*
+%{_bindir}/slidetool
+%{_mandir}/man1/openslide*.1%{?ext_man}
+%{_mandir}/man1/slidetool.1%{?ext_man}
 
 %changelog
