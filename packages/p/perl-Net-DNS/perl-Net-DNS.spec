@@ -18,10 +18,10 @@
 
 %define cpan_name Net-DNS
 Name:           perl-Net-DNS
-Version:        1.560.0
+Version:        1.570.0
 Release:        0
-# 1.56 -> normalize -> 1.560.0
-%define cpan_version 1.56
+# 1.57 -> normalize -> 1.570.0
+%define cpan_version 1.57
 License:        MIT
 Summary:        Perl Interface to the Domain Name System
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -83,7 +83,7 @@ Provides:       perl(Net::DNS::Mailbox1035)
 Provides:       perl(Net::DNS::Mailbox2535)
 Provides:       perl(Net::DNS::Nameserver) = 2002.0.0
 Provides:       perl(Net::DNS::Packet) = 2003.0.0
-Provides:       perl(Net::DNS::Parameters) = 2054.0.0
+Provides:       perl(Net::DNS::Parameters) = 2059.0.0
 Provides:       perl(Net::DNS::Question) = 2002.0.0
 Provides:       perl(Net::DNS::RR) = 2037.0.0
 Provides:       perl(Net::DNS::RR::A) = 2003.0.0
@@ -101,8 +101,8 @@ Provides:       perl(Net::DNS::RR::CSYNC) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DELEG) = 2053.0.0
 Provides:       perl(Net::DNS::RR::DHCID) = 2003.0.0
 Provides:       perl(Net::DNS::RR::DNAME) = 2003.0.0
-Provides:       perl(Net::DNS::RR::DNSKEY) = 2042.0.0
-Provides:       perl(Net::DNS::RR::DS) = 2042.0.0
+Provides:       perl(Net::DNS::RR::DNSKEY) = 2059.0.0
+Provides:       perl(Net::DNS::RR::DS) = 2059.0.0
 Provides:       perl(Net::DNS::RR::DSYNC) = 2003.0.0
 Provides:       perl(Net::DNS::RR::EUI48) = 2003.0.0
 Provides:       perl(Net::DNS::RR::EUI64) = 2003.0.0
@@ -131,7 +131,7 @@ Provides:       perl(Net::DNS::RR::NSEC3) = 2003.0.0
 Provides:       perl(Net::DNS::RR::NSEC3PARAM) = 2003.0.0
 Provides:       perl(Net::DNS::RR::NULL) = 2002.0.0
 Provides:       perl(Net::DNS::RR::OPENPGPKEY) = 2003.0.0
-Provides:       perl(Net::DNS::RR::OPT) = 2054.0.0
+Provides:       perl(Net::DNS::RR::OPT) = 2059.0.0
 Provides:       perl(Net::DNS::RR::OPT::CHAIN)
 Provides:       perl(Net::DNS::RR::OPT::CLIENT_SUBNET)
 Provides:       perl(Net::DNS::RR::OPT::COOKIE)
@@ -140,17 +140,19 @@ Provides:       perl(Net::DNS::RR::OPT::DHU)
 Provides:       perl(Net::DNS::RR::OPT::EXPIRE)
 Provides:       perl(Net::DNS::RR::OPT::EXTENDED_ERROR)
 Provides:       perl(Net::DNS::RR::OPT::KEY_TAG)
+Provides:       perl(Net::DNS::RR::OPT::MQTYPE_QUERY)
+Provides:       perl(Net::DNS::RR::OPT::MQTYPE_RESPONSE)
 Provides:       perl(Net::DNS::RR::OPT::N3U)
-Provides:       perl(Net::DNS::RR::OPT::NSID)
 Provides:       perl(Net::DNS::RR::OPT::PADDING)
 Provides:       perl(Net::DNS::RR::OPT::REPORT_CHANNEL)
 Provides:       perl(Net::DNS::RR::OPT::TCP_KEEPALIVE)
+Provides:       perl(Net::DNS::RR::OPT::UPDATE_LEASE)
 Provides:       perl(Net::DNS::RR::OPT::ZONEVERSION)
 Provides:       perl(Net::DNS::RR::PTR) = 2002.0.0
 Provides:       perl(Net::DNS::RR::PX) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RESINFO) = 2003.0.0
 Provides:       perl(Net::DNS::RR::RP) = 2002.0.0
-Provides:       perl(Net::DNS::RR::RRSIG) = 2057.0.0
+Provides:       perl(Net::DNS::RR::RRSIG) = 2059.0.0
 Provides:       perl(Net::DNS::RR::RT) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SIG) = 2057.0.0
 Provides:       perl(Net::DNS::RR::SMIMEA) = 2003.0.0
@@ -161,7 +163,7 @@ Provides:       perl(Net::DNS::RR::SSHFP) = 2003.0.0
 Provides:       perl(Net::DNS::RR::SVCB) = 2043.0.0
 Provides:       perl(Net::DNS::RR::TKEY) = 2035.0.0
 Provides:       perl(Net::DNS::RR::TLSA) = 2003.0.0
-Provides:       perl(Net::DNS::RR::TSIG) = 2003.0.0
+Provides:       perl(Net::DNS::RR::TSIG) = 2060.0.0
 Provides:       perl(Net::DNS::RR::TXT) = 2003.0.0
 Provides:       perl(Net::DNS::RR::URI) = 2003.0.0
 Provides:       perl(Net::DNS::RR::X25) = 2002.0.0
@@ -170,7 +172,7 @@ Provides:       perl(Net::DNS::Resolver) = 2017.0.0
 Provides:       perl(Net::DNS::Resolver::Base) = 2057.0.0
 Provides:       perl(Net::DNS::Resolver::MSWin32) = 2002.0.0
 Provides:       perl(Net::DNS::Resolver::Recurse) = 2002.0.0
-Provides:       perl(Net::DNS::Resolver::UNIX) = 2053.0.0
+Provides:       perl(Net::DNS::Resolver::UNIX) = 2059.0.0
 Provides:       perl(Net::DNS::Resolver::android) = 2007.0.0
 Provides:       perl(Net::DNS::Resolver::cygwin) = 2002.0.0
 Provides:       perl(Net::DNS::Resolver::os2) = 2007.0.0

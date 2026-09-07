@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:42:43 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.570.0 (1.57)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes
+
+        Resync with IANA DNS parameters registry.
+        EDNS: Add support for MQTYPE-QUERY option.
+  Fix rt.cpan.org #181125
+        Unbounded recursion when re-encoding message with misplaced TSIG
+        CVE-2026-81928 bsc#1278084
+  Fix rt.cpan.org #180773
+        UNIX resolver can fail in taint mode
+
+-------------------------------------------------------------------
 Sat Jul 18 07:10:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.560.0 (1.56)

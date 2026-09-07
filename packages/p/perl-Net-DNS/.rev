@@ -695,4 +695,20 @@ Personally I would make this even &quot;required&quot; instead of
         UNIX.pm: Unreachable code warning using Apache/mod_perl</comment>
     <requestid>1368056</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>d4fe3c025aac56e3d737156a82f062f6</srcmd5>
+    <version>1.570.0</version>
+    <time>1788773315</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.570.0 (1.57)
+   see /usr/share/doc/packages/perl-Net-DNS/Changes
+        Resync with IANA DNS parameters registry.
+        EDNS: Add support for MQTYPE-QUERY option.
+  Fix rt.cpan.org #181125
+        Unbounded recursion when re-encoding message with misplaced TSIG
+        CVE-2026-81928 bsc#1278084
+  Fix rt.cpan.org #180773
+        UNIX resolver can fail in taint mode</comment>
+    <requestid>1375360</requestid>
+  </revision>
 </revisionlist>
