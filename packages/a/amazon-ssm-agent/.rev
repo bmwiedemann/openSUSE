@@ -686,4 +686,41 @@
   * Validate process name in orphan worker detection (forwarded request 1365508 from glaubitz)</comment>
     <requestid>1365685</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>1a59ec96204db2cf948ebe8fc53407fa</srcmd5>
+    <version>3.3.5226.0</version>
+    <time>1788773449</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3.5226.0
+  * Add bounds check for HeaderLength in AgentMessage Deserialize
+  * Bump github.com/go-git/go-git/v5 to v5.19.2
+    (bsc#1276981, CVE-2026-71556) (bsc#1276994, CVE-2026-71557)
+  * Bump golang.org/x/sync to v0.21.0
+  * Detect Azure Linux and potential future unregistered Linux platforms
+  * Fix Windows session command parsing by removing shlex
+  * Fix shell injection in Windows domainjoin plugin parameters
+  * Prevent control channel deadlock on ProcessorBufferFull
+  * Revert migration from aws-sdk-go v1 to aws-sdk-go-v2 change
+  * Update the logic for loading RegistrationInfo
+  * Upgrade Go version to 1.25.13
+- from version 3.3.5068.0
+  * Migrate from aws-sdk-go v1 to aws-sdk-go-v2
+  * Fix flaky registration/connection channel tests
+  * Sync AWS SDK fork in extra/ with multicloud vendor changes
+  * Harden function create file with permissions in a single syscall
+  * Upgrade Go version to 1.25.12
+  * Bump golang.org/x/net@v0.55.0 to golang.org/x/net@v0.56.0
+  * Fix loopback bypass in remote-host port forwarding denylist
+
+- Drop CVE-2025-22869.patch, merged upstream
+- Drop CVE-2025-22870.patch, merged upstream
+- Drop CVE-2025-47913.patch, merged upstream
+- Drop CVE-2026-25934.patch, merged upstream
+- Add CVE-2026-25934.patch to fix improper verification of data integrity
+  values for .pack and .idx files that can lead to the consumption of
+  corrupted files (bsc#1258095, CVE-2026-25934)
+
+- Add CVE-2025-22869.patch to fix Denial of Service in the Key (forwarded request 1375732 from glaubitz)</comment>
+    <requestid>1375781</requestid>
+  </revision>
 </revisionlist>

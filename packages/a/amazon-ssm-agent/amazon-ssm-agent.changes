@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep  4 06:29:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.3.5226.0
+  * Add bounds check for HeaderLength in AgentMessage Deserialize
+  * Bump github.com/go-git/go-git/v5 to v5.19.2
+    (bsc#1276981, CVE-2026-71556) (bsc#1276994, CVE-2026-71557)
+  * Bump golang.org/x/sync to v0.21.0
+  * Detect Azure Linux and potential future unregistered Linux platforms
+  * Fix Windows session command parsing by removing shlex
+  * Fix shell injection in Windows domainjoin plugin parameters
+  * Prevent control channel deadlock on ProcessorBufferFull
+  * Revert migration from aws-sdk-go v1 to aws-sdk-go-v2 change
+  * Update the logic for loading RegistrationInfo
+  * Upgrade Go version to 1.25.13
+- from version 3.3.5068.0
+  * Migrate from aws-sdk-go v1 to aws-sdk-go-v2
+  * Fix flaky registration/connection channel tests
+  * Sync AWS SDK fork in extra/ with multicloud vendor changes
+  * Harden function create file with permissions in a single syscall
+  * Upgrade Go version to 1.25.12
+  * Bump golang.org/x/net@v0.55.0 to golang.org/x/net@v0.56.0
+  * Fix loopback bypass in remote-host port forwarding denylist
+
+-------------------------------------------------------------------
 Tue Jul 14 07:20:12 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.3.4851.0
@@ -33,6 +57,10 @@ Wed Jun  3 11:14:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Fix visibility issue with Bottlerocket OS in document output
   * Update go-git from v5.17.1 to v5.19.1 (bsc#1264952, CVE-2026-41506), this
     also updates go-billy from v5.8.0 to v5.9.0 (bsc#1267332, CVE-2026-44740)
+- Drop CVE-2025-22869.patch, merged upstream
+- Drop CVE-2025-22870.patch, merged upstream
+- Drop CVE-2025-47913.patch, merged upstream
+- Drop CVE-2026-25934.patch, merged upstream
 - Drop CVE-2026-41506.patch, merged upstream
 
 -------------------------------------------------------------------
@@ -51,6 +79,19 @@ Thu May 28 15:02:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Deprecate legacy cloudwatch plugin
   * Preserve network error details in credential refresher SSM API failures
   * Upgrade Go version to 1.25.9
+
+-------------------------------------------------------------------
+Thu May 21 11:01:27 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-25934.patch to fix improper verification of data integrity
+  values for .pack and .idx files that can lead to the consumption of
+  corrupted files (bsc#1258095, CVE-2026-25934)
+
+-------------------------------------------------------------------
+Tue May 12 11:46:36 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2025-22869.patch to fix Denial of Service in the Key
+  Exchange of golang.org/x/crypto/ssh (bsc#1239342, CVE-2025-22869)
 
 -------------------------------------------------------------------
 Tue May 12 10:44:03 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -102,12 +143,13 @@ Thu Mar 26 09:50:01 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Include package update in Dockerfile
   * Reduce CloudWatch event message length threshold
   * Upgrade Go version to 1.25.7
-  * Update github.com/go-git/go-git/v5 to 5.16.5
+  * Update github.com/go-git/go-git/v5 to 5.16.5 (bsc#1258095, CVE-2026-25934)
   * Update greengrass version
 - from version 3.3.3797.0
   * Update Golang version to 1.24.12
   * Updating golang.org/x/crypto from v0.37.0 to v0.47.0, golang.org/x/net
     from v0.39.0 to v0.48.0 and golang.org/x/sys from v0.32.0 to v0.40.0
+    (bsc#1253611, CVE-2025-47913)
   * Categorize integration tests by adding new tags to split fast and slow ones
   * Fix bug where IP field being empty string and causing UII API failure
 - Drop CVE-2025-47913.patch, merged upstream
@@ -149,7 +191,7 @@ Wed Oct  1 09:09:08 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Update aws:Domainjoin plugin logging from Log4Net to NLog
   * Upgrade Go version to 1.24.7
   * Update github.com/go-git/go-git/v5 to 5.15.0
-  * Update golang.org/x/crypto to v0.37.0
+  * Update golang.org/x/crypto to v0.37.0 (bsc#1238702, CVE-2025-22870)
   * Update golang.org/x/net to v0.39.0
   * Update golang.org/x/sys to v0.32.0
 
@@ -207,7 +249,7 @@ Tue Apr 15 10:41:20 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Fix IPV6 address for IMDS in documentation and deny rule
   * Add hasHardenedACL check to avoid costly recursive hardening of the data
     directory on reboot
-  * Update golang.org/x/crypto from v0.32.0 to v0.36.0
+  * Update golang.org/x/crypto from v0.32.0 to v0.36.0 (bsc#1239342, CVE-2025-22869)
   * Update golang.org/x/net from v0.34.0 to v0.37.0
   * Update golang.org/x/sys from v0.29.0 to v0.31.0
   * Update golang.org/x/oauth2 from v0.24.0 to v0.28.0
