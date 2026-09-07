@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:15:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.0.1:
+  * (added) --logtofile option now required for file logging
+  * (added) Debug builds for Linux amd64 platforms
+  * (fixed) Crash caused by writing simultaneous log events
+  * (fixed) Crash caused by JACK buffer size changes
+  * (fixed) TCP Socket Error when connecting to a studio
+  * (fixed) PLC sync issues caused by out of order packets
+  * (fixed) Wrong-slot cleanup for WebRTC/WebTransport workers
+  * (fixed) Fix for pre-installed msquic linking on Linux
+
+-------------------------------------------------------------------
 Thu Apr 30 12:35:25 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 3.0.0:
