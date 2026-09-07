@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Sep  5 12:04:11 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-Consider-empty-release-and-source-strings-as-null.patch
+    + Normally, <maven.compiler.release/> and
+      <maven.compiler.source/> are used to actually override the
+      variables from parents. And themaven-compiler-plugin considers
+      them as such. However, maven-javadoc-plugin appends an empty
+      --release "" which results in errors like "-author is not a
+      valid release number"...
+
+-------------------------------------------------------------------
+Fri Sep  4 11:18:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Do not build the bootstrap plugin, build the non-bootstrap version
+  using ant and generating the HelpMojo.java and the plugin
+  descriptors by an execution of maven-plugin-plugin goals outside
+  of maven lifecycle
+
+-------------------------------------------------------------------
+Wed Sep  2 13:26:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * maven-javadoc-plugin-bootstrap-resources.patch
+    + use the new standalone plugin descriptor generator for
+      the bootstrap build
+
+-------------------------------------------------------------------
 Sat Oct 18 07:26:52 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

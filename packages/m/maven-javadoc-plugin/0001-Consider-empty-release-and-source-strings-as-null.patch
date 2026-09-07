@@ -1,0 +1,66 @@
+From a5e0189fde417eb4712dec5876bd78bf92eb8d9d Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Sat, 5 Sep 2026 13:56:36 +0200
+Subject: [PATCH] Consider empty release and source strings as null
+
+Normally, <maven.compiler.release/> and <maven.compiler.source/>
+are used to actually override the variables from parents. And the
+maven-compiler-plugin considers them as such. However,
+maven-javadoc-plugin appends an empty --release "" which results
+in things like "-author is not a valid release number"...
+---
+ .../maven/plugins/javadoc/AbstractJavadocMojo.java | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
+
+diff --git a/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java b/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
+index a4350365..79bdf40c 100644
+--- a/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
++++ b/src/main/java/org/apache/maven/plugins/javadoc/AbstractJavadocMojo.java
+@@ -2099,9 +2099,9 @@ public abstract class AbstractJavadocMojo extends AbstractMojo {
+             // or source values specified
+             boolean autoExclude = legacyMode;
+             if (!autoExclude) {
+-                if (release != null) {
++                if (release != null && !release.trim().isEmpty()) {
+                     autoExclude = JavaVersion.parse(release).isBefore("9");
+-                } else if (source != null) {
++                } else if (source != null && !source.trim().isEmpty()) {
+                     autoExclude = JavaVersion.parse(source).isBefore("9");
+                 }
+             }
+@@ -4334,9 +4334,9 @@ public abstract class AbstractJavadocMojo extends AbstractMojo {
+ 
+         if (supportModulePath) {
+             supportModulePath &= javadocRuntimeVersion.isAtLeast("9");
+-            if (release != null) {
++            if (release != null && !release.trim().isEmpty()) {
+                 supportModulePath &= JavaVersion.parse(release).isAtLeast("9");
+-            } else if (source != null) {
++            } else if (source != null && !source.trim().isEmpty()) {
+                 supportModulePath &= JavaVersion.parse(source).isAtLeast("9");
+             }
+         }
+@@ -4579,7 +4579,7 @@ public abstract class AbstractJavadocMojo extends AbstractMojo {
+ 
+         addArgIf(arguments, quiet, "-quiet");
+ 
+-        if (javadocRuntimeVersion.isAtLeast("9") && release != null) {
++        if (javadocRuntimeVersion.isAtLeast("9") && release != null && !release.trim().isEmpty()) {
+             arguments.add("--release");
+             arguments.add(release);
+         } else {
+@@ -5509,9 +5509,9 @@ public abstract class AbstractJavadocMojo extends AbstractMojo {
+         }
+ 
+         final JavaVersion javaApiversion;
+-        if (release != null) {
++        if (release != null && !release.trim().isEmpty()) {
+             javaApiversion = JavaVersion.parse(release);
+-        } else if (source != null && !source.isEmpty()) {
++        } else if (source != null && !source.trim().isEmpty()) {
+             javaApiversion = JavaVersion.parse(source);
+         } else {
+             final String pluginId = "org.apache.maven.plugins:maven-compiler-plugin";
+-- 
+2.55.0
+

@@ -201,4 +201,12 @@ put into adi:2</comment>
     <comment>Fix for encoding mismatch</comment>
     <requestid>1312806</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>e81723f304af6aeae13f84d8aa2e0b06</srcmd5>
+    <version>3.12.0</version>
+    <time>1788773447</time>
+    <user>anag_factory</user>
+    <comment>Consider empty release and source strings as null</comment>
+    <requestid>1375930</requestid>
+  </revision>
 </revisionlist>

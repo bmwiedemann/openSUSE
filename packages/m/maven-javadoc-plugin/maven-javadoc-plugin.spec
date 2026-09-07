@@ -1,7 +1,7 @@
 #
 # spec file for package maven-javadoc-plugin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,23 +16,18 @@
 #
 
 
-%global flavor @BUILD_FLAVOR@%{nil}
-%if "%{flavor}" == "bootstrap"
-%bcond_without bootstrap
-%else
-%bcond_with bootstrap
-%endif
-%global base_name maven-javadoc-plugin
+Name:           maven-javadoc-plugin
 Version:        3.12.0
 Release:        0
 Summary:        Maven plugin for creating javadocs
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugins/maven-javadoc-plugin
-Source0:        %{base_name}-%{version}.tar.xz
-Source1:        %{base_name}-build.xml
-Patch0:         %{base_name}-bootstrap-resources.patch
+Source0:        %{name}-%{version}.tar.xz
+Source1:        %{name}-build.xml
+Patch0:         0001-Consider-empty-release-and-source-strings-as-null.patch
 Patch1:         expected-encoding.patch
+BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  apache-commons-lang3
 BuildRequires:  apache-commons-text
@@ -48,6 +43,7 @@ BuildRequires:  maven-doxia-sitetools
 BuildRequires:  maven-invoker
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-plugin
 BuildRequires:  maven-reporting-api
 BuildRequires:  maven-reporting-impl
 BuildRequires:  maven-resolver-api
@@ -55,6 +51,7 @@ BuildRequires:  maven-resolver-impl
 BuildRequires:  maven-resolver-util
 BuildRequires:  maven-shared-utils
 BuildRequires:  maven-wagon-provider-api
+BuildRequires:  modello >= 2.0.0
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-archiver
 BuildRequires:  plexus-interactivity-api
@@ -68,32 +65,11 @@ BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven.plugins:maven-plugins:pom:) >= 40
+Obsoletes:      %{name}-bootstrap
 BuildArch:      noarch
-%if %{with bootstrap}
-Name:           %{base_name}-bootstrap
-BuildRequires:  ant
-BuildRequires:  modello >= 2.0.0
-%else
-Name:           %{base_name}
-BuildRequires:  xmvn
-BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
-BuildRequires:  mvn(org.codehaus.modello:modello-maven-plugin)
-BuildRequires:  mvn(org.eclipse.sisu:sisu-maven-plugin)
-Obsoletes:      %{base_name}-bootstrap
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-javadoc-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
-%endif
 
 %description
 The Maven Javadoc Plugin is a plugin that uses the javadoc tool for
@@ -109,17 +85,14 @@ API documentation for %{name}.
 %endif
 
 %prep
-%setup -q -n %{base_name}-%{version}
-%if %{with bootstrap}
+%setup -q
 cp %{SOURCE1} build.xml
 %patch -P 0 -p1
-%endif
 %patch -P 1 -p1
 
 %pom_remove_dep :::test:
 
 %build
-%if %{with bootstrap}
 mkdir -p lib
 build-jar-repository -s lib \
     apache-commons-lang3 \
@@ -151,6 +124,7 @@ build-jar-repository -s lib \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/archiver \
+    plexus-classworlds \
     plexus/interactivity-api \
     plexus/io \
     plexus-languages/plexus-java \
@@ -158,17 +132,9 @@ build-jar-repository -s lib \
     plexus/xml \
     qdox \
     slf4j/api
-ant -Dtest.skip=true jar
-%else
-xmvn --batch-mode --offline \
-    -Dmaven.test.skip=true -DmavenVersion=3.5.0 \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
-%endif
+ant -Dtest.skip=true jar javadoc
 
-%{mvn_artifact} pom.xml target/%{base_name}-%{version}.jar
+%{mvn_artifact} pom.xml target/%{name}-%{version}.jar
 
 %install
 %mvn_install
@@ -176,8 +142,6 @@ xmvn --batch-mode --offline \
 
 %files -f .mfiles
 
-%if %{without bootstrap}
 %files javadoc -f .mfiles-javadoc
-%endif
 
 %changelog
