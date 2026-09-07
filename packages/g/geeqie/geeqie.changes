@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  2 15:38:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.1:
+  + Completed GTK3 to GTK4 migration
+- changes from version 3.0 (pre-release):
+  + GTK3 to GTK4 migration.
+- Update BuildRequires to match new GTK4 port:
+  + Removed: pkgconfig(champlain-0.12),
+    pkgconfig(champlain-gtk-0.12), pkgconfig(gspell-1),
+    pkgconfig(gtk+-3.0)
+  + Added: pkgconfig(glib-2.0), pkgconfig(libspelling-1),
+    pkgconfig(gtk4), pkgconfig(shumate-1.0), pkgconfig(pango)
+
+-------------------------------------------------------------------
 Tue Jun 30 19:23:20 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
 
 - Update to version 2.9:

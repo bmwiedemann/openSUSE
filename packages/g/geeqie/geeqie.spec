@@ -17,7 +17,7 @@
 
 
 Name:           geeqie
-Version:        2.9
+Version:        3.1
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
@@ -41,20 +41,21 @@ BuildRequires:  yelp-tools
 BuildRequires:  yelp-xsl
 BuildRequires:  pkgconfig(OpenEXR) >= 3.0.0
 BuildRequires:  pkgconfig(cfitsio)
-BuildRequires:  pkgconfig(champlain-0.12) >= 0.12
-BuildRequires:  pkgconfig(champlain-gtk-0.12) >= 0.12
-BuildRequires:  pkgconfig(ddjvuapi) >= 3.5.27
-BuildRequires:  pkgconfig(exiv2) >= 0.11
-BuildRequires:  pkgconfig(gspell-1)
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.0.0
+BuildRequires:  pkgconfig(ddjvuapi) >= 2.5.27
+BuildRequires:  pkgconfig(exiv2) >= 0.18
+BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(libspelling-1)
+BuildRequires:  pkgconfig(gtk4) >= 4.18
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
 BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.1.0
 BuildRequires:  pkgconfig(libheif) >= 1.3.2
 BuildRequires:  pkgconfig(libjxl) >= 0.3.7
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.0
 BuildRequires:  pkgconfig(libraw) >= 0.20
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.5.0
 BuildRequires:  pkgconfig(libwebp) >= 0.6.1
-BuildRequires:  pkgconfig(lua)
+BuildRequires:  pkgconfig(lua) >= 5.3
+BuildRequires:  pkgconfig(pango) >= 1.46
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
 
 %description
