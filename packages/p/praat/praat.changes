@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Aug 30 17:00:03 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.0.02:
+  * Corpus: extract TextGrid, Sound, speakers Table.
+  * CGN Corpus: extract components, education regions.
+  * Sound: To CPP...
+- Changes from version 7.0.01:
+  * New object: CPP - Cepstral Peak Prominence as a function of
+    time.
+  * Corpus: read CGN 2.0.3.
+- Changes from version 7.0.00:
+  * Major version update, because of the following two breaking
+    changes.
+  * Full-trust checking for scripts that attempt to write files or
+    access system commands (this is a breaking change for
+    automation).
+  * New location of settings file, buttons file and plug-ins on
+    Mac, Windows and Linux, corresponding to how these platforms
+    standardized such locations since 2007 (this is a breaking
+    change for plug-in writers and users of the sendpraat
+    subroutine).
+- Refresh praat-use_system_libs.patch for updated version and to
+  use system zlib as well.
+
+-------------------------------------------------------------------
 Fri May 22 14:40:09 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 6.4.67:

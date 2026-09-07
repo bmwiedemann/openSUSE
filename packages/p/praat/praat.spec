@@ -17,7 +17,7 @@
 
 
 Name:           praat
-Version:        6.4.67
+Version:        7.0.02
 Release:        0
 Summary:        Phonetics by computer
 License:        GPL-3.0-or-later
@@ -44,6 +44,7 @@ BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(opusfile)
 BuildRequires:  pkgconfig(vorbis)
 BuildRequires:  pkgconfig(vorbisfile)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 Praat is an open-software tool for the analysis of speech in phonetics.

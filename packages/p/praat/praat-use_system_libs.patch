@@ -11,19 +11,22 @@ Praat also supplies an unstable upstream portaudio version that's
 not recommendable for distro inclusion.
 
 ---
- Makefile                     |   15 +++++----------
+ Makefile                     |   26 +++++++-------------------
  dwsys/Makefile               |    4 ++--
- dwtools/Makefile             |    2 +-
+ dwsys/NUM2.cpp               |   16 ++++++++--------
+ dwtools/Makefile             |    4 ++--
  dwtools/Sound_extensions.cpp |    8 ++++----
+ melder/Makefile              |    2 +-
+ melder/MelderReadText.cpp    |    2 +-
  melder/NUMlinprog.cpp        |    2 +-
  melder/NUMspecfunc.cpp       |    8 ++++----
  melder/melder.cpp            |    2 +-
- 7 files changed, 18 insertions(+), 23 deletions(-)
+ 10 files changed, 31 insertions(+), 43 deletions(-)
 
-Index: praat.github.io-6.4.67/melder/NUMlinprog.cpp
+Index: praat.github.io-7.0.02/melder/NUMlinprog.cpp
 ===================================================================
---- praat.github.io-6.4.67.orig/melder/NUMlinprog.cpp
-+++ praat.github.io-6.4.67/melder/NUMlinprog.cpp
+--- praat.github.io-7.0.02.orig/melder/NUMlinprog.cpp
++++ praat.github.io-7.0.02/melder/NUMlinprog.cpp
 @@ -17,7 +17,7 @@
   */
  
@@ -33,10 +36,10 @@ Index: praat.github.io-6.4.67/melder/NUMlinprog.cpp
  
  struct structNUMlinprog {
  	glp_prob *linearProgram;
-Index: praat.github.io-6.4.67/melder/NUMspecfunc.cpp
+Index: praat.github.io-7.0.02/melder/NUMspecfunc.cpp
 ===================================================================
---- praat.github.io-6.4.67.orig/melder/NUMspecfunc.cpp
-+++ praat.github.io-6.4.67/melder/NUMspecfunc.cpp
+--- praat.github.io-7.0.02.orig/melder/NUMspecfunc.cpp
++++ praat.github.io-7.0.02/melder/NUMspecfunc.cpp
 @@ -31,10 +31,10 @@
  #include "melder.h"
  #include "../dwsys/NUM2.h"   // NUMridders
@@ -52,10 +55,10 @@ Index: praat.github.io-6.4.67/melder/NUMspecfunc.cpp
  
  double NUMlnGamma (double x) {
  	gsl_sf_result result;
-Index: praat.github.io-6.4.67/melder/melder.cpp
+Index: praat.github.io-7.0.02/melder/melder.cpp
 ===================================================================
---- praat.github.io-6.4.67.orig/melder/melder.cpp
-+++ praat.github.io-6.4.67/melder/melder.cpp
+--- praat.github.io-7.0.02.orig/melder/melder.cpp
++++ praat.github.io-7.0.02/melder/melder.cpp
 @@ -24,7 +24,7 @@
  #include "melder_enums.h"
  
@@ -65,16 +68,16 @@ Index: praat.github.io-6.4.67/melder/melder.cpp
  #ifdef macintosh
  	#include <Carbon/Carbon.h>   // Gestalt
  #endif
-Index: praat.github.io-6.4.67/dwsys/Makefile
+Index: praat.github.io-7.0.02/dwsys/Makefile
 ===================================================================
---- praat.github.io-6.4.67.orig/dwsys/Makefile
-+++ praat.github.io-6.4.67/dwsys/Makefile
+--- praat.github.io-7.0.02.orig/dwsys/Makefile
++++ praat.github.io-7.0.02/dwsys/Makefile
 @@ -1,7 +1,7 @@
  # makefile for library "dwsys".
- # David Weenink and Paul Boersma, 16 May 2026
+ # David Weenink and Paul Boersma, 23 May 2026
  
--CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I ../external/gsl -I ../external/num -I ../external/clapack -I ../kar -I ../dwtools
-+CPPFLAGS = -I ../melder -I ../stat -I ../sys -I ../fon -I /usr/include/gsl -I ../external/num -I ../external/clapack -I ../kar -I ../dwtools
+-CPPFLAGS += -I ../melder -I ../stat -I ../sys -I ../fon -I ../external/gsl -I ../external/num -I ../external/clapack -I ../kar -I ../dwtools
++CPPFLAGS += -I ../melder -I ../stat -I ../sys -I ../fon `pkg-config --cflags gsl` -I ../external/num -I ../external/clapack -I ../kar -I ../dwtools
  
  all: libdwsys.a
  
@@ -85,10 +88,10 @@ Index: praat.github.io-6.4.67/dwsys/Makefile
 -$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h ../external/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
 +$(OBJECTS): *.h ../melder/*.h ../stat/*.h ../sys/*.h ../fon/*.h /usr/include/gsl/*.h ../external/num/*.h ../dwsys/*.h ../kar/*.h
  
-Index: praat.github.io-6.4.67/dwtools/Sound_extensions.cpp
+Index: praat.github.io-7.0.02/dwtools/Sound_extensions.cpp
 ===================================================================
---- praat.github.io-6.4.67.orig/dwtools/Sound_extensions.cpp
-+++ praat.github.io-6.4.67/dwtools/Sound_extensions.cpp
+--- praat.github.io-7.0.02.orig/dwtools/Sound_extensions.cpp
++++ praat.github.io-7.0.02/dwtools/Sound_extensions.cpp
 @@ -37,10 +37,10 @@
  #include "Manipulation.h"
  #include "NUMcomplex.h"
@@ -104,24 +107,26 @@ Index: praat.github.io-6.4.67/dwtools/Sound_extensions.cpp
  
  #include "enums_getText.h"
  #include "Sound_extensions_enums.h"
-Index: praat.github.io-6.4.67/dwtools/Makefile
+Index: praat.github.io-7.0.02/dwtools/Makefile
 ===================================================================
---- praat.github.io-6.4.67.orig/dwtools/Makefile
-+++ praat.github.io-6.4.67/dwtools/Makefile
-@@ -2,7 +2,7 @@
- # David Weenink and Paul Boersma, 16 May 2026
+--- praat.github.io-7.0.02.orig/dwtools/Makefile
++++ praat.github.io-7.0.02/dwtools/Makefile
+@@ -2,8 +2,8 @@
+ # David Weenink and Paul Boersma, 23 May 2026
  
- CPPFLAGS = -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
+ CPPFLAGS += -I . -I ../kar -I ../melder -I ../sys -I ../dwsys -I ../stat -I ../fon -I ../LPC -I ../foned -I ../EEG \
 -	-I ../external/clapack -I ../external/vorbis -I ../external/opusfile -I ../external/portaudio -I ../external/espeak \
-+	-I ../external/clapack -I /usr/include/opus -I ../external/portaudio -I ../external/espeak \
- 	-I ..external/num
+-	-I ..external/num
++	-I ../external/clapack `pkg-config --cflags vorbis opusfile` -I ../external/portaudio -I ../external/espeak \
++	-I ../external/num
  
  OBJECTS = ActivationList.o AffineTransform.o AnalyticSound.o \
-Index: praat.github.io-6.4.67/Makefile
+ 	Categories.o CategoriesEditor.o \
+Index: praat.github.io-7.0.02/Makefile
 ===================================================================
---- praat.github.io-6.4.67.orig/Makefile
-+++ praat.github.io-6.4.67/Makefile
-@@ -366,28 +366,23 @@ all: all-external all-self
+--- praat.github.io-7.0.02.orig/Makefile
++++ praat.github.io-7.0.02/Makefile
+@@ -397,33 +397,27 @@ all: all-external all-self
  		dwsys/libdwsys.a sys/libsys.a melder/libmelder.a kar/libkar.a \
  		external/espeak/libespeak.a \
  		external/portaudio/libportaudio.a \
@@ -129,16 +134,20 @@ Index: praat.github.io-6.4.67/Makefile
 -		external/glpk/libglpk.a \
 +		external/flac/libflac.a external/mp3/libmp3.a \
 +		`pkg-config --libs libpulse` -lglpk \
-+		`pkg-config --libs gsl` \
 +		`pkg-config --libs lame` \
  		external/clapack/libclapack.a \
 -		external/gsl/libgsl.a \
++		`pkg-config --libs gsl` \
  		external/num/libnum.a \
 -		external/vorbis/libvorbis.a \
 -		external/opusfile/libopusfile.a \
 +		`pkg-config --libs vorbis vorbisfile ogg opusfile` \
  		external/whispercpp/libwhisper.a \
- 		$(NON_PRAAT_LIBRARIES)
+ 		external/blake3/libblake3.a \
+-		external/zlib/libzlib.a \
+-               $(NON_PRAAT_LIBRARIES) $(LDFLAGS)
++		`pkg-config --libs zlib` \
++		$(NON_PRAAT_LIBRARIES) $(LDFLAGS)
  
  all-external:
  	$(MAKE) -C external/clapack
@@ -153,5 +162,82 @@ Index: praat.github.io-6.4.67/Makefile
 -	$(MAKE) -C external/vorbis
 -	$(MAKE) -C external/opusfile
  	$(MAKE) -C external/whispercpp
+ 	$(MAKE) -C external/blake3
+-	$(MAKE) -C external/zlib
  
  all-self:
+ 	$(MAKE) -C kar
+@@ -447,19 +441,13 @@ clean: clean-external clean-self clean-t
+ 
+ clean-external:
+ 	$(MAKE) -C external/clapack clean
+-	$(MAKE) -C external/gsl clean
+-	$(MAKE) -C external/glpk clean
+-	$(MAKE) -C external/lame clean
+ 	$(MAKE) -C external/mp3 clean
+ 	$(MAKE) -C external/num clean
+ 	$(MAKE) -C external/flac clean
+ 	$(MAKE) -C external/portaudio clean
+ 	$(MAKE) -C external/espeak clean
+-	$(MAKE) -C external/vorbis clean
+-	$(MAKE) -C external/opusfile clean
+ 	$(MAKE) -C external/whispercpp clean
+ 	$(MAKE) -C external/blake3 clean
+-	$(MAKE) -C external/zlib clean
+ 
+ clean-self:
+ 	$(MAKE) -C kar clean
+Index: praat.github.io-7.0.02/melder/MelderReadText.cpp
+===================================================================
+--- praat.github.io-7.0.02.orig/melder/MelderReadText.cpp
++++ praat.github.io-7.0.02/melder/MelderReadText.cpp
+@@ -18,7 +18,7 @@
+ 
+ #include "melder.h"
+ #include "../kar/UnicodeData.h"
+-#include "../external/zlib/zlib.h"
++#include <zlib.h>
+ 
+ char32 MelderReadText_getChar (MelderReadText me) {
+ 	if (my string32) {
+Index: praat.github.io-7.0.02/melder/Makefile
+===================================================================
+--- praat.github.io-7.0.02.orig/melder/Makefile
++++ praat.github.io-7.0.02/melder/Makefile
+@@ -1,7 +1,7 @@
+ # Makefile of the library "melder"
+ # Paul Boersma, 23 May 2026
+ 
+-CPPFLAGS += -I ../melder -I ../sys
++CPPFLAGS += -I ../melder -I ../sys `pkg-config --cflags zlib`
+ 
+ OBJECTS = melder.o complex.o melder_alloc.o melder_str32.o melder_colour.o \
+ 	melder_ftoa.o melder_console.o melder_atof.o melder_files.o \
+Index: praat.github.io-7.0.02/dwsys/NUM2.cpp
+===================================================================
+--- praat.github.io-7.0.02.orig/dwsys/NUM2.cpp
++++ praat.github.io-7.0.02/dwsys/NUM2.cpp
+@@ -65,15 +65,15 @@
+ #include "NUMmachar.h"
+ #include "melder.h"
+ 
+-#include "gsl_randist.h"
++#include <gsl/gsl_randist.h>
+ 
+-#include "gsl_errno.h"
+-#include "gsl_sf_bessel.h"
+-#include "gsl_sf_gamma.h"
+-#include "gsl_sf_erf.h"
+-#include "gsl_sf_trig.h"
+-#include "gsl_poly.h"
+-#include "gsl_cdf.h"
++#include <gsl/gsl_errno.h>
++#include <gsl/gsl_sf_bessel.h>
++#include <gsl/gsl_sf_gamma.h>
++#include <gsl/gsl_sf_erf.h>
++#include <gsl/gsl_sf_trig.h>
++#include <gsl/gsl_poly.h>
++#include <gsl/gsl_cdf.h>
+ 
+ int NUMcompareTwoIntegers (integer& a, integer& b) {
+ 	return a < b ? -1 : a > b ? 1 : 0;
