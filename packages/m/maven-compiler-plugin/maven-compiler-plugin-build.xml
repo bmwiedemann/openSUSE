@@ -14,10 +14,10 @@
             value="The Compiler Plugin is used to compile the sources of your project."/>
   <property name="project.groupId" value="org.apache.maven.plugins"/>
   <property name="project.artifactId" value="maven-compiler-plugin"/>
-  <property name="project.version" value="3.15.0"/>
+  <property name="project.version" value="3.16.0"/>
   <property name="project.organization.name" value="The Apache Software Foundation"/>
 
-  <property name="spec.version" value="3.15"/>
+  <property name="spec.version" value="3.16"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -58,10 +58,22 @@
   </target>
 
   <!-- ====================================================================== -->
+  <!-- HelpMojo.java generation target                                        -->
+  <!-- ====================================================================== -->
+
+  <target name="helpmojo" description="Generate the HelpMojo.java">
+    <exec executable="xmvn" failonerror="true">
+      <arg value="--batch-mode" />
+      <arg value="--offline" />
+      <arg value="org.apache.maven.plugins:maven-plugin-plugin:helpmojo" />
+    </exec>
+  </target>
+
+  <!-- ====================================================================== -->
   <!-- Compilation target                                                     -->
   <!-- ====================================================================== -->
 
-  <target name="compile" description="Compile the code">
+  <target name="compile" depends="helpmojo" description="Compile the code">
     <mkdir dir="${build.outputDir}"/>
     <javac destdir="${build.outputDir}"
            nowarn="false"
@@ -76,23 +88,10 @@
            source="${compiler.source}">
       <src>
         <pathelement location="${build.srcDir}"/>
+        <pathelement location="${build.dir}/generated-sources/plugin"/>
       </src>
       <classpath refid="build.classpath"/>
     </javac>
-    <copy todir="${build.outputDir}">
-      <fileset dir="${build.resourceDir}"/>
-      <filterchain>
-        <expandproperties>
-          <propertyset>
-            <propertyref name="project.name"/>
-            <propertyref name="project.version"/>
-            <propertyref name="project.groupId"/>
-            <propertyref name="project.artifactId"/>
-            <propertyref name="project.description"/>
-          </propertyset>
-        </expandproperties>
-      </filterchain>
-    </copy>
     <mkdir dir="${build.outputDir}/META-INF/maven/${project.groupId}/${project.artifactId}"/>
     <propertyfile file="${build.outputDir}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.properties">
        <entry  key="artifactId" value="${project.artifactId}"/>
@@ -100,6 +99,18 @@
        <entry  key="version" value="${project.version}"/>
     </propertyfile>
     <copy file="pom.xml" tofile="${build.outputDir}/META-INF/maven/${project.groupId}/${project.artifactId}/pom.xml"/>
+  </target>
+
+  <!-- ====================================================================== -->
+  <!-- Plugin descriptor generation target                                    -->
+  <!-- ====================================================================== -->
+
+  <target name="plugin" depends="compile" description="Generate plugin descriptors">
+    <exec executable="xmvn" failonerror="true">
+      <arg value="--batch-mode" />
+      <arg value="--offline" />
+      <arg value="org.apache.maven.plugins:maven-plugin-plugin:descriptor" />
+    </exec>
   </target>
 
   <!-- ====================================================================== -->
@@ -202,8 +213,8 @@
   <!-- Javadoc target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="javadoc" description="Generates the Javadoc of the application">
-    <javadoc sourcepath="${build.srcDir}"
+  <target name="javadoc" depends="helpmojo" description="Generates the Javadoc of the application">
+    <javadoc sourcepath="${build.srcDir}:${build.dir}/generated-sources/plugin"
              packagenames="*"
              destdir="${reporting.outputDirectory}/apidocs"
              access="protected"
@@ -232,7 +243,7 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="compile,test" description="Package the application">
+  <target name="package" depends="plugin,test" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"

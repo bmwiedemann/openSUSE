@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Thu Sep  3 15:17:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.16.0
+  * New features and improvements
+    + Recompile when dependencies change
+    + Fix incremental detection of empty sources, 3.x
+  * Bug Fixes
+    + MCOMPILER-578: Track outputs across compiler executions
+    + Build fails when annotation processor list is empty (but
+      present)
+    + MCOMPILER-374: Unable to compile MR-JAR code against older
+      directories when module-info.java is present
+    + Make mcompiler-120 IT locale independent
+  * Documentation updates
+    + MCOMPILER-569: Document implicitly compiled excluded sources
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+  * Maintenance
+    + Avoid using deprecated method CompilerConfiguration
+      .setCompilerVersion
+    + Replace adopt-openj9 by semeru JDK distribution on GH
+    + Port the site documentation from APT to Markdown
+    + Verify against Maven 4.0.0-rc-6
+    + Fix tests on Jenkins
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+    + Refactor compiler mojo to use dependency injection and improve
+      string handling
+    + Fix ITs for Maven 3.10.x
+    + Update maven-surefire-plugin version to 3.x in the
+      MCOMPILER-481 IT
+  * Dependency updates
+    + Bump plexusCompilerVersion from 2.16.2 to 2.17.0
+    + Bump org.codehaus.plexus:plexus-java from 1.5.2 to 1.6.0
+    + use latest Maven 4
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump org.apache.maven.plugins:maven-plugins from 47 to 49
+    + Bump org.apache.maven.plugins:maven-invoker-plugin from 3.9.1
+      to 3.10.1
+    + Bump mavenVersion from 3.9.12 to 3.9.16
+    + Bump org.ow2.asm:asm from 9.9.1 to 9.10.1
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.5.0 to 3.5.1
+
+-------------------------------------------------------------------
+Wed Sep  2 10:47:25 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Removed patch:
+  * maven-compiler-plugin-bootstrap-resources.patch
+    + generate the the HelpMojo.java and the plugin descriptors
+      by the actual maven-plugin-plugin mojos
+- Generation of HelpMojo.java and and the plugin descriptors using
+  the actual mojos renders superfluos the bootstrap package flavour
+
+-------------------------------------------------------------------
 Mon Feb  2 09:36:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upsteam release 3.15.0
