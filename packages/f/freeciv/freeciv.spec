@@ -32,10 +32,10 @@ BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6Gui)
 BuildRequires:  pkgconfig(Qt6Widgets)
-BuildRequires:  pkgconfig(SDL2_gfx)
-BuildRequires:  pkgconfig(SDL2_image)
-BuildRequires:  pkgconfig(SDL2_mixer)
-BuildRequires:  pkgconfig(SDL2_ttf)
+BuildRequires:  pkgconfig(sdl3)
+BuildRequires:  pkgconfig(sdl3-image)
+BuildRequires:  pkgconfig(sdl3-mixer)
+BuildRequires:  pkgconfig(sdl3-ttf)
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(gdk-3.0) >= 3.22.0
 BuildRequires:  pkgconfig(gtk4) >= 4.0.0
@@ -96,14 +96,14 @@ Provides:       freeciv_client-%{version}
 %description gtk4
 Freeciv executable using Gtk4 library
 
-%package sdl2
-Summary:        SDL2 client for freeciv
+%package sdl3
+Summary:        SDL3 client for freeciv
 Group:          Amusements/Games/Strategy/Turn Based
 Requires:       freeciv = %{version}
 Provides:       freeciv_client-%{version}
 
-%description sdl2
-Freeciv executable using the SDL2 library
+%description sdl3
+Freeciv executable using the SDL3 library
 
 %prep
 %autosetup -p1
@@ -113,8 +113,8 @@ Freeciv executable using the SDL2 library
 export CXX=g++-12
 %endif
 %meson \
-	-Dclients=gtk3.22,gtk4,qt,sdl2 \
-	-Daudio=sdl2 \
+	-Dclients=gtk3.22,gtk4,qt,sdl3 \
+	-Daudio=sdl3 \
 	-Dfcmp=gtk3,gtk4,qt \
 	-Dsyslua=true \
 	-Dreadline=true \
@@ -195,10 +195,10 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_datadir}/metainfo/org.freeciv.qt.metainfo.xml
 %{_datadir}/metainfo/org.freeciv.qt.mp.metainfo.xml
 
-%files sdl2
+%files sdl3
 %license COPYING
-%{_bindir}/freeciv-sdl2
-%{_datadir}/applications/org.freeciv.sdl2.desktop
-%{_datadir}/metainfo/org.freeciv.sdl2.metainfo.xml
+%{_bindir}/freeciv-sdl3
+%{_datadir}/applications/org.freeciv.sdl3.desktop
+%{_datadir}/metainfo/org.freeciv.sdl3.metainfo.xml
 
 %changelog
