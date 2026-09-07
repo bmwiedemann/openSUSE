@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 04 21:13:18 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Update to version 2.0.3 HUD Up:
+  * feat(ui): Add a setting to toggle runner icons
+  * Advanced options (#75)
+  * feat(runtime): Added various protons for download
+  * fix(ui): Allow selection with single click activation
+  * Update sha
+
+-------------------------------------------------------------------
 Fri Aug 14 21:46:23 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.0.2:

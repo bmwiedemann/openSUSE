@@ -364,4 +364,17 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update sha/commits</comment>
     <requestid>1371264</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>4ab80b8d28a4908257256e3fede1bdee</srcmd5>
+    <version>2.0.3</version>
+    <time>1788773544</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.0.3 HUD Up:
+  * feat(ui): Add a setting to toggle runner icons
+  * Advanced options (#75)
+  * feat(runtime): Added various protons for download
+  * fix(ui): Allow selection with single click activation
+  * Update sha</comment>
+    <requestid>1375853</requestid>
+  </revision>
 </revisionlist>
