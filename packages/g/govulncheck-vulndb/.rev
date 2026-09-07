@@ -2368,4 +2368,41 @@
   * GO-2026-6303 CVE-2026-56854 (forwarded request 1374518 from jfkw)</comment>
     <requestid>1374519</requestid>
   </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>607599788500042fa1a051bf6a09b31d</srcmd5>
+    <version>0.0.20260902T191204</version>
+    <time>1788789034</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.0.20260902T191204 2026-09-02T19:12:04Z.
+  Refs jsc#PED-11136
+  Go CVE Numbering Authority IDs added or updated with aliases:
+  * GO-2026-6305 CVE-2026-55834 GHSA-2wvm-8mvp-22qv
+  * GO-2026-6306 CVE-2026-55064 GHSA-44v6-7fxq-vgf4
+  * GO-2026-6307 CVE-2026-55067 GHSA-569v-q83c-3j3g
+  * GO-2026-6308 CVE-2026-55066 GHSA-5pg6-m483-7vrg
+  * GO-2026-6309 CVE-2026-54746 GHSA-8x7x-83cf-c3pg
+  * GO-2026-6310 CVE-2026-54755 GHSA-cgc5-v3f2-8m2v
+  * GO-2026-6311 CVE-2026-54766 GHSA-f27p-pw2p-9pr4
+  * GO-2026-6312 CVE-2026-55108 GHSA-fmgp-q6jx-gg3x
+  * GO-2026-6313 CVE-2026-55065 GHSA-gg93-x632-9ccv
+  * GO-2026-6314 CVE-2026-55569 GHSA-mf5c-hw34-4hpp
+  * GO-2026-6315 CVE-2026-54754 GHSA-p7gw-2pcp-5pf8
+  * GO-2026-6316 CVE-2026-55068 GHSA-x8mj-6p3q-g5pp
+  * GO-2026-6317 CVE-2026-55588 GHSA-298f-872v-2rcx
+  * GO-2026-6318 CVE-2026-55621 GHSA-64f3-v33m-w89f
+  * GO-2026-6319 CVE-2026-55622 GHSA-c9f5-j9c3-mhrg
+  * GO-2026-6320 CVE-2026-55245 GHSA-w98g-5w9p-p3rc
+  * GO-2026-6321 CVE-2026-55484 GHSA-hr6j-w4mw-g9mj
+  * GO-2026-6322 CVE-2026-55678 GHSA-p378-jp5r-gpgw
+  * GO-2026-6323 CVE-2026-55763 GHSA-v358-wf77-39xv
+  * GO-2026-6324 CVE-2026-55761 GHSA-x626-fcwx-f5pc
+  * GO-2026-6325 CVE-2026-27878 GHSA-6xff-cpcq-vpw2
+  * GO-2026-6326 CVE-2026-55784 GHSA-334q-h5g3-fpxv
+  * GO-2026-6327 CVE-2026-55874 GHSA-56wq-x3wv-3ff4
+  * GO-2026-6328 CVE-2026-55785 GHSA-fp46-6vfw-gc9c
+  * GO-2026-6329 CVE-2026-55873 GHSA-hgpf-8634-g44c
+  * GO-2026-6330 CVE-2026-55764 GHSA-mrpp-v6pg-p54x
+  * GO-2026-6333 CVE-2026-25712 GHSA-37w2-86g3-h4qh (forwarded request 1376045 from jfkw)</comment>
+    <requestid>1376046</requestid>
+  </revision>
 </revisionlist>
