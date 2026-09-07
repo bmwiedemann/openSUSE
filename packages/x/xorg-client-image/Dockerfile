@@ -26,7 +26,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends libavcodec58_134 libpulse0 noto-sans-cjk-fonts xorg-x11-fonts
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends libasound2 libatk-1_0-0 libatk-bridge-2_0-0 libavcodec58_134 libcairo2 libcups2 libgbm1 libgio-2_0-0 libglib-2_0-0 libgobject-2_0-0 libgtk-3-0 libpulse0 mozilla-nspr mozilla-nss noto-sans-cjk-fonts xorg-x11-fonts
 RUN set -euo pipefail; useradd -m -u 1000 -U user
 
 
