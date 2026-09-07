@@ -17,7 +17,7 @@
 
 
 Name:           cvise
-Version:        2.12.0+git.20260702.78bba5d
+Version:        2.12.0+git.20260806.e477494
 Release:        0
 Summary:        Super-parallel Python port of the C-Reduce
 License:        BSD-3-Clause
@@ -25,8 +25,8 @@ URL:            https://github.com/marxin/cvise
 Source:         %{name}-%{version}.tar.xz
 # PATCH-FIX-UPSTREAM cvise-tree-sitter-cpp-aarch64-sign-compare.patch mpluskal@suse.com -- fix -Werror=sign-compare in the bundled tree-sitter-cpp scanner on aarch64 (wchar_t is unsigned there), https://github.com/tree-sitter/tree-sitter-cpp/issues/338
 Patch1:         cvise-tree-sitter-cpp-aarch64-sign-compare.patch
-# PATCH-FIX-UPSTREAM cvise-test-interleaving-deterministic-reduction.patch mpluskal@suse.com -- test_interleaving_lines_passes has two admissible reductions on GCC <= 13 (Leap 16.x) and races between them, https://github.com/marxin/cvise/pull/513
-Patch2:         cvise-test-interleaving-deterministic-reduction.patch
+# PATCH-FIX-UPSTREAM cvise-llvm23-template-parameter-lists.patch mpluskal@suse.com -- LLVM 23 replaced getNumTemplateParameterLists()/getTemplateParameterList() with a single ArrayRef getTemplateParameterLists(), https://github.com/marxin/cvise/pull/515
+Patch2:         cvise-llvm23-template-parameter-lists.patch
 BuildRequires:  astyle
 BuildRequires:  clang-devel
 BuildRequires:  cmake

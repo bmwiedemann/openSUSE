@@ -1285,4 +1285,27 @@ and SLE-15/Leap 15.x ship 3.6) and an unused ncurses-devel BuildRequires.
 Verified locally on aarch64: openSUSE_Tumbleweed, 16.1 and 16.0.</comment>
     <requestid>1369707</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>5f1ff9b162b56a0558d59000b790d451</srcmd5>
+    <version>2.12.0+git.20260806.e477494</version>
+    <time>1788773588</time>
+    <user>anag_factory</user>
+    <comment>Fix FTBFS in Factory with LLVM 23, and re-pin the snapshot to current upstream master.
+
+LLVM 23 replaced the getNumTemplateParameterLists() / getTemplateParameterList(unsigned)
+pair on DeclaratorDecl and TagDecl with a single ArrayRef getTemplateParameterLists().
+The old spelling was removed rather than deprecated, so clang_delta no longer compiled.
+The build stopped at the first error in ClassTemplateToClass.cpp, but there are 12 call
+sites across 4 files; all are converted via two version-guarded compat helpers in
+RewriteUtils.h, so LLVM 19/21/22 (Leap 16.0/16.1, Slowroll) keep building too.
+Sent upstream as https://github.com/marxin/cvise/pull/515
+
+The snapshot re-pin to e4774944 brings in upstream PR #513, which lets
+cvise-test-interleaving-deterministic-reduction.patch be dropped.
+
+All buildable repo/arch combinations in devel:tools are green, including every LLVM 23
+one that was failing before (Tumbleweed x86_64 and i586, Factory_PowerPC ppc64le,
+Factory_ARM armv7l), each with 582 tests passing.</comment>
+    <requestid>1375936</requestid>
+  </revision>
 </revisionlist>

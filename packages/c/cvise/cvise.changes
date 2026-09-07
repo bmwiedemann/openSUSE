@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep  5 08:46:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.0+git.20260806.e477494:
+  * tests: make test_interleaving_lines_passes reduction unique
+- Drop cvise-test-interleaving-deterministic-reduction.patch: merged
+  upstream
+- Add cvise-llvm23-template-parameter-lists.patch: LLVM 23 dropped
+  getNumTemplateParameterLists()/getTemplateParameterList() for a
+  single ArrayRef getTemplateParameterLists(), which broke the build
+  in Factory
+
+-------------------------------------------------------------------
 Wed Aug  5 06:45:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.12.0+git.20260702.78bba5d:

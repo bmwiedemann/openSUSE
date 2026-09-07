@@ -1,0 +1,133 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: clang_delta: adapt to the LLVM 23 template-parameter-list accessors
+
+LLVM 23 replaced the
+
+    unsigned getNumTemplateParameterLists() const
+    TemplateParameterList *getTemplateParameterList(unsigned) const
+
+pair on both DeclaratorDecl and TagDecl in clang/AST/Decl.h with a single
+ArrayRef accessor
+
+    ArrayRef<TemplateParameterList *> getTemplateParameterLists() const
+
+The old spelling was removed outright rather than deprecated, so clang_delta
+fails to compile against LLVM 23 with "no member named
+'getNumTemplateParameterLists'". LLVM <= 22 in turn does not have the ArrayRef
+accessor and c-vise still supports those, so wrap both spellings in two small
+helpers in RewriteUtils.h and route the twelve call sites through them.
+
+--- a/clang_delta/ClassTemplateToClass.cpp
++++ b/clang_delta/ClassTemplateToClass.cpp
+@@ -199,8 +199,8 @@
+ bool ClassTemplateToClassSpecializationTypeRewriteVisitor::VisitCXXMethodDecl(CXXMethodDecl* MD) {
+   if (auto DCT = MD->getParent()->getDescribedClassTemplate()) {
+     if (MD->isOutOfLine() && DCT->getCanonicalDecl() == ConsumerInstance->TheClassTemplateDecl) {
+-      if (MD->getNumTemplateParameterLists() == 1) {
+-        const TemplateParameterList* TPList = MD->getTemplateParameterList(0);
++      if (getNumTemplateParameterListsCompat(MD) == 1) {
++        const TemplateParameterList* TPList = getTemplateParameterListCompat(MD, 0);
+         SourceLocation LocStart = MD->getBeginLoc();
+         ConsumerInstance->removeTemplateAndParameter(LocStart, TPList);
+       }
+--- a/clang_delta/MoveDefinitionToDeclaration.cpp
++++ b/clang_delta/MoveDefinitionToDeclaration.cpp
+@@ -135,8 +135,8 @@
+ 
+     // Update the template parameters name of the class if they are empty
+     // This is very likely since unused parameter names gets removed during reduction
+-    if (MethDef->getNumTemplateParameterLists() == 1) {
+-      TemplateParameterList* TPL = MethDef->getTemplateParameterList(0);
++    if (getNumTemplateParameterListsCompat(MethDef) == 1) {
++      TemplateParameterList* TPL = getTemplateParameterListCompat(MethDef, 0);
+ 
+       if (const TemplateParameterList* ClassTPL = getDescribedTemplateParams(MethDecl->getParent())) {
+         assert(TPL->size() == ClassTPL->size());
+@@ -155,8 +155,8 @@
+     }
+ 
+     // Removing template lists for classes
+-    for (unsigned i = 0; i < MethDef->getNumTemplateParameterLists(); ++i) {
+-      TemplateParameterList* TPL = MethDef->getTemplateParameterList(i);
++    for (unsigned i = 0; i < getNumTemplateParameterListsCompat(MethDef); ++i) {
++      TemplateParameterList* TPL = getTemplateParameterListCompat(MethDef, i);
+       TheRewriter.RemoveText(TPL->getSourceRange());
+     }
+   }
+--- a/clang_delta/ReduceClassTemplateParameter.cpp
++++ b/clang_delta/ReduceClassTemplateParameter.cpp
+@@ -129,9 +129,9 @@
+   FunctionTemplateDecl *TD = FD->getDescribedFunctionTemplate();
+   for (FunctionDecl::redecl_iterator I = FD->redecls_begin(),
+        E = FD->redecls_end(); I != E; ++I) {
+-    unsigned Num = (*I)->getNumTemplateParameterLists();
++    unsigned Num = getNumTemplateParameterListsCompat(*I);
+     for (unsigned Idx = 0; Idx < Num; ++Idx) {
+-      const TemplateParameterList *TPList = (*I)->getTemplateParameterList(Idx);
++      const TemplateParameterList *TPList = getTemplateParameterListCompat(*I, Idx);
+       // We don't want to mistakenly rewrite template parameters associated
+       // with the FD if FD is a function template.
+       if (TD && TPList == TD->getTemplateParameters())
+--- a/clang_delta/RewriteUtils.cpp
++++ b/clang_delta/RewriteUtils.cpp
+@@ -186,16 +186,16 @@
+ 
+   // Ensure that template parameters are included in the def range
+   if (auto* FD = dyn_cast<FunctionDecl>(D)) {
+-    if (FD->getNumTemplateParameterLists()) {
+-      TemplateParameterList* TPL = FD->getTemplateParameterList(0);
++    if (getNumTemplateParameterListsCompat(FD)) {
++      TemplateParameterList* TPL = getTemplateParameterListCompat(FD, 0);
+       Range.setBegin(TPL->getSourceRange().getBegin());
+     } else if (auto* T = FD->getDescribedTemplate()) {
+       TemplateParameterList* TPL = T->getTemplateParameters();
+       Range.setBegin(TPL->getSourceRange().getBegin());
+     }
+   } else if (auto* TD = dyn_cast<TagDecl>(D)) {
+-    if (TD->getNumTemplateParameterLists()) {
+-      TemplateParameterList* TPL = TD->getTemplateParameterList(0);
++    if (getNumTemplateParameterListsCompat(TD)) {
++      TemplateParameterList* TPL = getTemplateParameterListCompat(TD, 0);
+       Range.setBegin(TPL->getSourceRange().getBegin());
+     } else if (auto* T = TD->getDescribedTemplate()) {
+       TemplateParameterList* TPL = T->getTemplateParameters();
+--- a/clang_delta/RewriteUtils.h
++++ b/clang_delta/RewriteUtils.h
+@@ -15,6 +15,7 @@
+ #include "clang/Basic/SourceLocation.h"
+ #include "clang/AST/NestedNameSpecifier.h"
+ #include "clang/AST/DeclTemplate.h"
++#include "llvm/Config/llvm-config.h"
+ 
+ #include "HintsBuilder.h"
+ 
+@@ -55,6 +56,29 @@
+   class ValueDecl;
+ }
+ 
++// LLVM 23 replaced the getNumTemplateParameterLists() /
++// getTemplateParameterList(unsigned) pair on DeclaratorDecl and TagDecl with a
++// single ArrayRef accessor, getTemplateParameterLists(). The old spelling was
++// removed rather than deprecated, so wrap both to keep building either way.
++template <typename DeclT>
++inline unsigned getNumTemplateParameterListsCompat(const DeclT *D) {
++#if LLVM_VERSION_MAJOR >= 23
++  return D->getTemplateParameterLists().size();
++#else
++  return D->getNumTemplateParameterLists();
++#endif
++}
++
++template <typename DeclT>
++inline clang::TemplateParameterList *
++getTemplateParameterListCompat(const DeclT *D, unsigned Index) {
++#if LLVM_VERSION_MAJOR >= 23
++  return D->getTemplateParameterLists()[Index];
++#else
++  return D->getTemplateParameterList(Index);
++#endif
++}
++
+ class RewriteUtils {
+ public:
+   static RewriteUtils *GetInstance(clang::Rewriter *RW, HintsBuilder *H);
