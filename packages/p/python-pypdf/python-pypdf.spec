@@ -24,6 +24,9 @@ Summary:        PDF toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/py-pdf/pypdf
 Source0:        https://github.com/py-pdf/pypdf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE make pypdf work with fonttools in slfo-1.2
+# sent upstream https://github.com/py-pdf/pypdf/pull/4050
+Patch0:         fonttools-slfo.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -58,7 +61,7 @@ objects rather than file streams, allowing for PDF manipulation in memory.
 It is therefore a useful tool for websites that manage or manipulate PDFs.
 
 %prep
-%autosetup -n pypdf-%{version}
+%autosetup -p1 -n pypdf-%{version}
 
 %build
 %pyproject_wheel
