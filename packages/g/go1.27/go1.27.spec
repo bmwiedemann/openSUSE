@@ -96,7 +96,7 @@
 %endif
 
 Name:           go1.27
-Version:        1.27.0
+Version:        1.27.1
 Release:        0
 Summary:        A compiled, garbage-collected, concurrent programming language
 License:        BSD-3-Clause
@@ -112,6 +112,8 @@ Source6:        go.gdbinit
 Source100:      llvm-51bfeff0e4b0757ff773da6882f4d538996c9b04.tar.xz
 Source101:      llvm-c3c24be13f7928460ca1e2fe613a1146c868854e.tar.xz
 Patch9:         go-fixseccomp.patch
+# Go PR #81041 cmd/go: use Objdir-relative paths in cgo compile action IDs
+Patch10:        go1.27-use-Objdir-relative-paths-in-cgo-compile-action-IDs.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # boostrap
 BuildRequires:  go%{go_bootstrap_version}
@@ -201,6 +203,9 @@ Go runtime race detector libraries. Install this package if you wish to use the
 %if 0%{?suse_version} && 0%{?suse_version} < 1500
 %patch -P 9 -p1
 %endif
+
+# Go PR #81041 cmd/go: use Objdir-relative paths in cgo compile action IDs
+%patch -P 10 -p1
 
 cp %{SOURCE4} .
 

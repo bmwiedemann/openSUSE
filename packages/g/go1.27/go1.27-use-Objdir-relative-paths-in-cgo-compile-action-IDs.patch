@@ -1,0 +1,48 @@
+From 1ae809a1da66402a4ae19edcdadbc17f3ac7e8d3 Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <bwiedemann@suse.de>
+Date: Sat, 22 Aug 2026 03:32:32 +0200
+Subject: [PATCH] cmd/go: use Objdir-relative paths in cgo compile action IDs
+
+The per-file cgo compile actions compute their action ID as a subkey of
+the build action ID keyed on the file path. For cgo-generated files
+(_cgo_export.c, *.cgo2.c, swig outputs) that path lives inside the
+per-build randomly named object directory, so the action ID - and with
+it the -frandom-seed=<hash of action ID> passed to the C compiler -
+changes on every build.
+
+With plain compilation an unstable seed is mostly harmless, but when
+CGO_CFLAGS contains -flto, GCC records the command line including
+-frandom-seed in the .gnu.lto_.opts section and derives LTO section
+name suffixes from the seed, so the object files and everything hashed
+from them (package content IDs, the final binary's build ID and GNU
+build-id note) change on every build, making all cgo packages built
+with LTO unreproducible.
+
+Strip the Objdir prefix so the subkey only depends on the stable file
+name within the object directory.
+
+Solved differently upstream by commit 89b06d0c43b5093816c8dc66c17dcf15217e79f5
+that needs 47ee8952f584100d7f47cf7ee8186670c1dbb83c as well.
+---
+ src/cmd/go/internal/work/action.go | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/cmd/go/internal/work/action.go b/src/cmd/go/internal/work/action.go
+index 8b3897e2..b2622f13 100644
+--- a/src/cmd/go/internal/work/action.go
++++ b/src/cmd/go/internal/work/action.go
+@@ -621,7 +621,10 @@ func (c cgoCompileActor) Act(b *Builder, ctx context.Context, a *Action) error {
+ 	a.nonGoOverlay = pr.nonGoOverlay
+ 	buildAction := a.triggers[0].triggers[0] // cgo compile -> cgo collect -> build
+ 
+-	a.actionID = cache.Subkey(buildAction.actionID, "cgo compile "+c.file) // buildAction's action id was computed by the check cache action.
++	// Objdir is randomly named and we don't want it passed into the action ID,
++	// which is used as the compiler's -frandom-seed ; Trim to allow reproducible builds.
++	file := strings.TrimPrefix(c.file, a.Objdir)
++	a.actionID = cache.Subkey(buildAction.actionID, "cgo compile "+file) // buildAction's action id was computed by the check cache action.
+ 	return c.compileFunc(a, a.Objdir, a.Target, c.getFlagsFunc(pr), c.file)
+ }
+ 
+-- 
+2.55.0
+

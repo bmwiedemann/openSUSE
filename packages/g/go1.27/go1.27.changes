@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  1 19:52:53 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.27.1 (released 2026-09-01) includes fixes to cgo, the
+  compiler, the runtime, the go fix command, and the database/sql,
+  debug/elf, encoding/json, net/http, os, simd, and simd/archsimd
+  packages.
+  Refs boo#1272545 go1.27 release tracking
+  * go#81195 cmd/compile: malformed linker symbol for generic method with a receiver that is an alias to a pointer
+  * go#81151 database/sql: closingMutex lost wakeup deadlocks Rows.Next against concurrent Rows.Close
+  * go#81114 debug/elf: applyRelocationsPPC was broken by CL 705075
+  * go#81110 simd/archsimd/internal/simd_test: SIGILL on RK3588 and possibly other arm64 processors
+  * go#81109 cmd/compile: GOEXPERIMENT=simd stub method parameter enforced inconsistently Int16s.ShiftAllLeft rejects both uint8 and uint64 arguments depending on context
+  * go#81101 cmd/fix, x/tools/go/analysis/passes/modernize: embedlit: comma in a comment produces invalid code
+  * go#81096 cmd/compile: SIGILL due to new dependency on z14 s390x instruction set version on z13 and earlier CPUs
+  * go#81083 encoding/json: quoted null rejected for string fields with the ,string option in Go 1.27
+  * go#81059 cmd/fix, x/tools/go/analysis/passes/modernize: embedlit: moving field assignments produces duplicate field name in struct literal
+  * go#81027 net/http: Request.Body.Close returns io.EOF when a handler leaves part of the body unread
+  * go#81016 database/sql: support for uuid.UUID undocumented
+  * go#81012 encoding/json/v2: missing io.ErrUnexpectedEOF from v1 Decoder.Token
+  * go#81011 encoding/json/v2: definition of "JSON-representable fields" looks incorrect
+  * go#81006 cmd/go: go fix embedded literal produces non-compiling program
+  * go#80981 cmd/compile: malformed relocation target for generic method when type argument name contains the method name
+  * go#80935 crypto/tls: client handshake tests hardcode TLSv1.0
+
+-------------------------------------------------------------------
+Sat Aug 22 18:23:44 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add go1.27-use-Objdir-relative-paths-in-cgo-compile-action-IDs.patch
+  to fix esbuild reproducible builds (boo#1234374)
+
+-------------------------------------------------------------------
 Wed Aug 19 16:45:14 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.27.0 (released 2026-08-19) is a major release of Go.
