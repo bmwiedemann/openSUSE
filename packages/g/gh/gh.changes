@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Sep 04 10:13:41 UTC 2026 - Pavel Dostál <pdostal@suse.com>
+
+- Update to version 2.100.0, fixing two deadlock issues in the vendored
+  golang.org/x/crypto/ssh library reachable via crafted SSH channel
+  messages (CVE-2026-56855, CVE-2026-78662, bsc#1278604):
+  * Fix gh api telemetry disablement
+  * Bump go-gh to v2.16.0
+  * Expose per-host API host config
+  * chore: bump toolchain to go1.26.8
+  * chore: bump golang.org/x/crypto to 0.56.0
+  * Record attachment invocation telemetry
+  * Add webhook as an official extension
+  * Merge pull request #14318 from cli/issue-triage-improvements
+  * Refine GHES support wording
+  * Use version-neutral GHES support link
+  * Clarify supported GHES versions
+  * Bump go-gh to v2.15.0
+  * Remove redundant searcher comment
+  * Remove unnecessary 204 on release edit
+  * Remove redundant comment in gist create
+  * Comment api command api_host usage
+  * Comment missing api-client-rollout todo
+  * Document when telemetry disabling is overzealous
+  * Refactor AddAuthTokenHeader
+  * Rename tokenGetter to config
+  * build(deps): bump go-gh to rebased per-host api_host branch
+  * refactor(attachments): send uploads through api.Client.DoRequest
+  * chore: apply go fix
+  * test(internal/attachments): add new method required by interface
+  * chore: tidy go.sum
+  * fix(api): compare request hostname without port when attaching auth token
+  * test(acceptance): fix scriptfilter table field alignment
+  * build(deps): bump go-gh to per-host api_host branch
+  * chore(codeql): cover api.Client.Request in SafeURL path query
+  * fix(auth/shared): route GetScopes path through safeurl
+  * test(config): add coverage for APIHostForHost
+  * test(config): cover deterministic api_host collision resolution
+  * test(api): assert DoRequest preserves an explicit ContentLength
+  * test(acceptance): cover selecting multiple scripts in one directory
+  * refactor(api): use errors.AsType for HTTP error checks
+  * fix(config): resolve api_host collisions deterministically
+  * docs(api): clarify redirect method-rewriting in comments
+  * Send release asset uploads and downloads through api.Client
+  * Let callers set headers on a shared client request
+  * Let a caller stop a request following redirects
+  * Let a caller name the scopes an endpoint needs
+  * Add a raw response request surface to api.Client
+  * Send RenameRepo to a relative path
+  * Make gh api honour api_host for relative paths
+  * Send a host's token to its configured api_host
+  * Add the api_host gateway harness
+  * Let GH_ACCEPTANCE_SCRIPT name several scripts
+  * Wait longer for the search index in the issues script
+  * Add acceptance coverage for gist
+  * Fix discussion acceptance test flags
+  * Resolve aliases to their target when rendering full help on error
+  * Print full help on command misuse for invoking agents
+
+-------------------------------------------------------------------
 Wed Sep  2 08:43:14 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 2.99.0:

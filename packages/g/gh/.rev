@@ -950,4 +950,12 @@ Go's unicode.Version.</comment>
     <comment>gh: update to 2.99.0</comment>
     <requestid>1375339</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>3579239d23b196c692917f459b57a591</srcmd5>
+    <version>2.100.0</version>
+    <time>1788773458</time>
+    <user>anag_factory</user>
+    <comment>gh: update to 2.100.0, fixes CVE-2026-56855 and CVE-2026-78662 in vendored golang.org/x/crypto/ssh (bsc#1278604)</comment>
+    <requestid>1375791</requestid>
+  </revision>
 </revisionlist>
