@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 04 12:54:09 UTC 2026 - aburlakov@suse.com
+
+- Update to version 2.7.2+git.1788518533.7d4dadd6 (bsc#1275019):
+  * Test: give sle15 more time when choosing between sle15 and sle16
+  * Dev: bump jQuery version to 4.0.0
+  * Dev: bump jQuery version to 3.5.0
+  * Dev: bump jQuery version to 2.2.4
+
+-------------------------------------------------------------------
 Wed Aug 26 13:21:01 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.1+git.1787667448.cd1d963e:
