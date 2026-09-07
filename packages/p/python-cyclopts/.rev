@@ -154,4 +154,20 @@ native local osc build against openSUSE_Tumbleweed/aarch64 (--clean): green,
     a clear error instead of failing later</comment>
     <requestid>1373922</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9a2fe0ddaa12095e64e2fe7cbc90b84e</srcmd5>
+    <version>4.24.0</version>
+    <time>1788773406</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.24.0
+
+- Parameter.choices; per-source encoding on file-based Config classes
+- New &quot;sys_exit_if_non_zero_else_return&quot; result action
+- Sphinx directive gains :anchor-prefix:/:anchor-suffix:
+- pydantic field-name options now follow validate_by_name/validate_by_alias
+- Generated docs derive the root command name from the instantiating module
+
+No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
+    <requestid>1375749</requestid>
+  </revision>
 </revisionlist>
