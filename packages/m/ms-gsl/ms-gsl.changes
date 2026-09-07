@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Wed Aug 26 17:33:16 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 5.0.0:
+  * Update return by value threshold in gsl::not_null by ozaktash in #1205
+  * copilot: Provide more project context for the Copilot coding agent
+    by Carson Radtke (@carsonRadtke) in #1207
+  * Document differences between hardened std::span and gsl::span
+    by Carson Radtke (@carsonRadtke) with @Copilot in #1206
+  * Add constexpr to not_null comparison operators
+    by Carson Radtke (@carsonRadtke) with @Copilot in #1208
+  * fix: all pipeline failures by Carson Radtke (@carsonRadtke) in #1221
+  * export proper syntax for GSL_SUPPRESS for new VS
+    by Carson Radtke (@carsonRadtke) in #1213
+  * Revert unintended change to GSL_SUPPRESS
+    by Werner Henze (@beinhaerter) in #1226
+  * use cmake presets instead of cmake settings
+    by Carson Radtke (@carsonRadtke) in #1219
+  * Fix std::hash compilation error for gsl::not_null<std::shared_ptr>
+    by Carson Radtke (@carsonRadtke) with @Copilot in #1210
+  * infra: individual test executables
+    by Carson Radtke (@carsonRadtke) in #1212
+  * doc: Update URL in pointers to F.16 C++ Core Guidelines by maflcko in #1232
+  * doc: Fix to use lower-case anchors in links to C++ Core Guidelines
+    by maflcko in #1234
+  * gsl::not_null: C.85: Make swap noexcept by maflcko in #1235
+  * gsl::not_null: C.89: Make a hash noexcept by maflcko in #1236
+  * ci: Bump to actions/checkout@v6 by maflcko in #1237
+  * ci: Use microsoft/setup-msbuild@v3 by maflcko in #1240
+  * narrow_cast instead of static_cast by Werner Henze (@beinhaerter) in #1250
+  * ci: Bump actions/setup-java@v5 by maflcko in #1249
+  * remove space in GSL_SUPPRESS by Werner Henze (@beinhaerter) in #1248
+  * clang-format improvements by Werner Henze (@beinhaerter) in #1251
+  * feat: implementation of gsl::dyn_array
+    by Carson Radtke (@carsonRadtke) in #1228
+  * ci: fix failing actions by Carson Radtke (@carsonRadtke) in #1255
+  * docs: fix false statements in gsl::dyn_array docs
+    by Carson Radtke (@carsonRadtke) in #1254
+  * dyn_array: fix include tree by Carson Radtke (@carsonRadtke) in #1261
+  * Bump GSL to v5.0.0 by Carson Radtke (@carsonRadtke) in #1262
+  * docs: fix http:// to https:// in CppCoreGuidelines links
+    by Rajkaran (@Rajkaran-122) in #1267
+  * Fix floating-to-integral narrow undefined behavior
+    by Carson Radtke (@carsonRadtke) in #1266
+  * Ensure iterators convert to const iterators
+    by Carson Radtke (@carsonRadtke) in #1264
+  * Prevent external construction of checked iterators
+    by Carson Radtke (@carsonRadtke) in #1263
+
+-------------------------------------------------------------------
 Thu May 21 16:55:35 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream version 4.2.2:
