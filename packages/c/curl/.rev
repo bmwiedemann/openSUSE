@@ -2151,4 +2151,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     curl-disabled-redirect-protocol-message.patch libcurl-fix-wakeup-consumption.patch (forwarded request 1361807 from lmulling)</comment>
     <requestid>1361808</requestid>
   </revision>
+  <revision rev="227" vrev="1">
+    <srcmd5>0813f79fccb5e869957d52958c02c9d8</srcmd5>
+    <version>8.22.0</version>
+    <time>1788773184</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375592</requestid>
+  </revision>
 </revisionlist>

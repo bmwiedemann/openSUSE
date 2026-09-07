@@ -58,10 +58,10 @@ Index: curl-8.20.0/configure.ac
  dnl This defines _ALL_SOURCE for AIX
  CURL_CHECK_AIX_ALL_SOURCE
  
-Index: curl-8.20.0/lib/hostip.c
+Index: curl-8.20.0/lib/vdns/hostip.c
 ===================================================================
---- curl-8.20.0.orig/lib/hostip.c
-+++ curl-8.20.0/lib/hostip.c
+--- curl-8.20.0.orig/lib/vdns/hostip.c
++++ curl-8.20.0/lib/vdns/hostip.c
 @@ -43,6 +43,7 @@
  #include <setjmp.h>  /* for sigjmp_buf, sigsetjmp() */
  #include <signal.h>

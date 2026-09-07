@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:00:09 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 8.22.0:
+  * Security fixes:
+    - CVE-2026-13608: OpenLDAP SASL authentication bypass (bsc#1277476)
+    - CVE-2026-18924: HTTP/2 server push UAF (bsc#1277477)
+    - CVE-2026-19931: Negotiate ambient user conn reuse (bsc#1277478)
+    - CVE-2026-80229: OpenSSL provider use-after-free (bsc#1277479)
+    - CVE-2026-80230: OpenSSL pinning bypass (bsc#1277480)
+    - CVE-2026-80255: secure cookie attribute bypass with tab (bsc#1277482)
+    - CVE-2026-82209: curl: domain-scoped PSL domain cookie (bsc#1278173)
+  * Changes:
+    - gssapi: add support for Apple GSS Framework
+    - hardening: add API guards
+    - RFC 9421 HTTP Message Signatures support
+    - spnego: block NTLM fallback in SPNEGO negotiation
+    - TLS: drop support for TLS-SRP
+    - vquic: add option to use Apple fast UDP
+  * Bugfixes:
+    - altsvc: continue after unknown parameters
+    - asyn-thrdd: retry link-local ipv6 if missing scope id
+    - autotools: minor fixes and improvements
+    - cd2nroff: fix backslashes for 4-space indent lines
+    - cd2nroff: stricter checks for asterisks for italics
+    - cfilters: fix event-based connection shutdown
+    - conncache: apply multi limits to transfers using a shared pool
+    - connect: only set connect timer on first socket
+    - connection reuse: check SSL configs when doing a scheme upgrade
+    - cookie: cookies set for an exact PSL domain is host-only
+    - cookie: improve TAB handling
+    - cookie: refuse to load cookies set against a PSL domain
+    - FTP: fix TLS session reuse on the data connection
+    - hostip: only cache negative resolves for authoritative answers
+    - http digest: tie peer/credentials on input
+    - http2: make server push transfers inherit share from parent
+    - ldap: reject control characters in URL-decoded filter values
+    - ldap: support empty username and password
+    - md5: replace magic numbers with `MD5_DIGEST_LEN`
+    - mime.c: avoid integer overflow in base64 size calculation
+    - mprintf: acknowledge %F
+    - ngtcp2+openssL: fix early data
+    - ngtcp2: avoid NULL deref in cf_ngtcp2_send
+    - openssl+sectrust: fix session reuse
+    - openssl+sectrust: move session verified set into result check
+    - openssl: avoid conn reuse if provider is used
+    - openssl: avoid strlen() on the data from OpenSSL
+    - openssl: prefer modern API flavors for `EVP_MD_CTX` new/free
+    - openssl: replace stray legacy API variant with `EVP_DigestInit_ex()`
+    - url: fix handling of empty user in NTLM matching
+    - url: fix negotiate/ntlm connection reuse
+    - urlapi: allow URLs to not have userauth (hostname)
+    - urlapi: clear password buffer on error path
+    - vtls: move 'native_ca_store' ssl_config_data => ssl_primary_config
+  * Rebase libcurl-ocloexec.patch
+
+-------------------------------------------------------------------
 Wed Jun 24 16:36:24 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 8.21.0:
