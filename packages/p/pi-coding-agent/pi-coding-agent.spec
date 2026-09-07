@@ -23,14 +23,14 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        0.84.4
+Version:        0.85.1
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 135 vendored dependencies are
-# MIT (68), Apache-2.0 (44), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2)
-# and 0BSD (1); every dependency declares a license. The tag below is the
-# union of all of them.
-License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT
+# Legal-Review-Notice: pi itself is MIT. The 127 vendored dependencies are
+# MIT (59), Apache-2.0 (44), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
+# below is the union of all of them.
+License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense
 URL:            https://github.com/earendil-works/pi
 Source0:        https://registry.npmjs.org/%{npm_name}/-/pi-coding-agent-%{version}.tgz
 # The npm tarball ships no license file; taken from the upstream git tag.
@@ -98,7 +98,7 @@ find dist -name '*.d.ts' -delete
 # Documentation screenshots, useless for a terminal application.
 rm -rf docs/images
 
-# The 7.1 MB pre-bundled runtime added in 0.84.3. Patch1 points bin and the
+# The 7.7 MB pre-bundled runtime added in 0.84.3. Patch1 points bin and the
 # rpc-entry export back at the modular tree, so nothing references this any
 # more, and it carries an unpatched second copy of detectInstallMethod() that
 # pi-disable-self-update.patch cannot reach.
@@ -110,11 +110,12 @@ rm -rf dist/bundle
 # non-redistributable shareware WAD on first run.
 rm -rf examples/extensions/doom-overlay
 
-# Upstream's own shrinkwrap omits the integrity field for the six
+# Upstream's own shrinkwrap omits the integrity field for the five
 # @earendil-works/* sibling packages, which the node_modules source service
-# rejects; Source10 is the same file with those hashes filled in. It must stay
-# in place for the install below, or npm re-resolves from package.json and
-# reaches for devDependencies that are deliberately not vendored.
+# rejects; Source10 is the same file with those hashes filled in and the
+# optionalDependency entries removed (see %%build). It must stay in place for
+# the install below, or npm re-resolves from package.json and reaches for
+# devDependencies that are deliberately not vendored.
 cp -p %{SOURCE10} npm-shrinkwrap.json
 
 # That shrinkwrap is production-only, so it does not list the devDependencies
@@ -127,7 +128,18 @@ npm pkg delete devDependencies
 
 %build
 cd %{name}
-local-npm-registry %{_sourcedir} install --omit=dev --ignore-scripts
+# --omit=optional: every optionalDependency in this tree is a per-architecture
+# prebuilt binary, which would make the payload of this noarch package differ
+# between build hosts. @mariozechner/clipboard is a .node addon that
+# loadClipboardNative() already wraps in try/catch, with dist/utils/clipboard.js
+# falling back to the xclip and wl-clipboard tools recommended above; since
+# 0.85.0 @earendil-works/chord pulls in esbuild, whose 26 platform packages are
+# ~11 MB of prebuilt linker each. esbuild is reached only from chord/bundler,
+# which nothing in the shipped tree imports -- pi's only use of chord is
+# pi-agent-core pulling in chord/context -- so its JavaScript wrapper is inert
+# here. Source10 has the same entries stripped, so they are not carried in the
+# source RPM either.
+local-npm-registry %{_sourcedir} install --omit=dev --omit=optional --ignore-scripts
 rm -f npm-shrinkwrap.json package-lock.json
 
 # Prebuilt binaries with no corresponding source. pi-tui/native holds only
@@ -136,13 +148,6 @@ rm -f npm-shrinkwrap.json package-lock.json
 # degrades gracefully.
 rm -rf node_modules/@earendil-works/pi-tui/native
 rm -f node_modules/@silvia-odwyer/photon-node/photon_rs_bg.wasm
-
-# @mariozechner/clipboard resolves to a per-architecture prebuilt .node addon,
-# which would make the payload of this noarch package differ between build
-# hosts. It is an optionalDependency, loadClipboardNative() already wraps the
-# require in try/catch, and dist/utils/clipboard.js falls back to xclip and
-# wl-copy/wl-paste, so dropping it costs nothing on a Linux desktop.
-rm -rf node_modules/@mariozechner/clipboard*
 
 # Zero-length sources upstream never trimmed.
 find . -type f -size 0 -delete

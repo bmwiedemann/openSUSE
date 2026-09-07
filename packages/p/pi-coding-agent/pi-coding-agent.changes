@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:48:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.85.1:
+  * New GPT-6 Astra model for OpenAI API keys and OpenAI Codex
+    subscriptions
+  * Anthropic transports now keep per-turn thinking effort and
+    recover from signed-thinking mismatches
+  * Fullscreen transcript gained a jump-to-latest control and an
+    editor-embedded working indicator; Alt plus mouse wheel scrolls
+    five times faster
+  * SessionManager.inMemory() restores externally stored session
+    entries through the SDK
+  * New inherited vllmPriority and supportsMaxOutputTokens model
+    settings
+  * 0.85.0 accidentally published internal experimental code and
+    broke SDK imports; 0.85.1 makes the client and
+    experimental/plugin subpaths source-only instead
+  * Fixed the built-in tools ignoring ctx.cwd, skills being
+    unavailable when bash was the only enabled tool, concurrent
+    session shares overwriting each other, imported sessions
+    overwriting a same-named one and forks losing their compaction
+    boundary
+  * Fixed startup under seccomp policies that reject the SIGWINCH
+    self-signal, managed fd and ripgrep downloads on musl, and
+    proxied plain-HTTP provider requests hanging after a tool call
+- Refresh package-lock.json (five @earendil-works sibling integrity
+  hashes filled in) and the vendored node_modules archive to match:
+  the new @earendil-works/chord dependency pulls in esbuild,
+  @anthropic-ai/sdk moves 0.91.1 -> 0.123.0 and pulls in
+  standardwebhooks, @stablelib/base64 and fast-sha256, and upstream
+  moved pi-client and pi-protocol to devDependencies; 124 -> 127
+  shipped modules
+- Add Unlicense to the license union for fast-sha256
+- Install with --omit=optional and drop the matching package-lock
+  entries instead of deleting the modules after the fact: every
+  optionalDependency here is a per-architecture prebuilt binary a
+  noarch package must not ship, and esbuild alone would have added
+  26 platform packages to the source RPM
+
+-------------------------------------------------------------------
 Sat Aug 29 07:17:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.84.4:

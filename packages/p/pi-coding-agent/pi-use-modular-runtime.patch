@@ -38,4 +38,4 @@ more.
 +			"import": "./dist/rpc-entry.js"
  		},
  		"./client": {
- 			"types": "./dist/client/index.d.ts",
+ 			"source": "./src/client/index.ts"
