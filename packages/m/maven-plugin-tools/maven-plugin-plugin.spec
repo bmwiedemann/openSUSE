@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-plugin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,36 +28,32 @@ License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
-Patch0:         0002-Remove-dependency-on-jtidy.patch
+Source1:        %{base_name}-build.tar.xz
+Patch0:         0001-A-standalone-generator-of-HelpMojo.java-and-plugin-d.patch
+Patch1:         0002-Remove-dependency-on-jtidy.patch
+BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
-BuildRequires:  maven-local
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  maven-lib
+BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-tools-annotations
+BuildRequires:  maven-plugin-tools-api
+BuildRequires:  maven-plugin-tools-generators
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
+BuildRequires:  objectweb-asm >= 9.9
+BuildRequires:  plexus-build-api0
+BuildRequires:  plexus-utils
+BuildRequires:  plexus-velocity
+BuildRequires:  sisu-inject
+BuildRequires:  sisu-plexus
 BuildRequires:  unzip
-BuildRequires:  mvn(javax.inject:javax.inject)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-annotations)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-api)
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-tools-generators)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-api)
-BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
-BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
+BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
+BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.apache.maven:maven-repository-metadata)
-BuildRequires:  mvn(org.apache.maven:maven-settings)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.codehaus.plexus:plexus-velocity)
-BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus)
-BuildRequires:  mvn(org.ow2.asm:asm) >= 9.9
-BuildRequires:  mvn(org.sonatype.plexus:plexus-build-api)
 Obsoletes:      %{name}-bootstrap
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
 BuildArch:      noarch
 
 %description
@@ -74,25 +70,68 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{file_ver}
+%setup -q -n %{base_name}-%{file_ver} -a1
 %patch -P 0 -p1
+%patch -P 1 -p1
 
 %pom_remove_plugin -r :maven-enforcer-plugin
-%pom_remove_plugin :sisu-maven-plugin
 
 %pom_xpath_inject "pom:project/pom:properties" "
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>"
 
-%build
-pushd %{name}
-%{mvn_file} :%{name} %{base_name}/%{name}
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+# Remove all dependencies with scope test, since a raw xmvn does not hide them
+%pom_remove_dep -r :::test:
 
+%build
+mkdir -p lib
+build-jar-repository -s lib \
+    apache-commons-lang3 \
+    atinject \
+    jsoup/jsoup \
+    maven/maven-artifact \
+    maven/maven-builder-support \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-model-builder \
+    maven/maven-plugin-api \
+    maven/maven-repository-metadata \
+    maven/maven-resolver-provider \
+    maven/maven-settings \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-plugin-tools/maven-plugin-tools-api \
+    maven-plugin-tools/maven-plugin-tools-generators \
+    maven-plugin-tools/maven-plugin-tools-annotations \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    objectweb-asm/asm-all \
+    org.eclipse.sisu.inject \
+    org.eclipse.sisu.plexus \
+    plexus/archiver \
+    plexus-classworlds \
+    plexus/interpolation \
+    plexus/io \
+    plexus/plexus-build-api0 \
+    plexus/utils \
+    plexus/xml \
+    plexus-velocity/plexus-velocity \
+    qdox \
+    slf4j/api \
+    velocity-engine/velocity-engine-core \
+    xmvn
+
+%{mvn_file} :%{name} %{base_name}/%{name}
+%{mvn_package} :%{base_name} __noinstall
+pushd %{name}
+ant \
+    -Dtest.skip=true \
+    jar
+ant \
+    -f build-stage2.xml \
+    -Dtest.skip=true \
+    jar javadoc
+%{mvn_artifact} ../pom.xml
+%{mvn_artifact} pom.xml target/%{name}-%{file_ver}.jar
 popd
 
 %install

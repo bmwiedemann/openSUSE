@@ -1,7 +1,7 @@
 #
 # spec file for package maven-plugin-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  velocity
+BuildRequires:  velocity-engine-core
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-resolve
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
@@ -153,9 +153,9 @@ build-jar-repository -s lib \
     plexus-velocity/plexus-velocity \
     qdox \
     slf4j/api \
-    velocity
+    velocity-engine/velocity-engine-core
 
-%{ant} \
+ant \
     -Dtest.skip=true \
     package javadoc
 

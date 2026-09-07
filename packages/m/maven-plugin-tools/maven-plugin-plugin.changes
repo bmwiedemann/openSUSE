@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:14:59 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build with ant and fold the whole bootstrapping into two stage
+  builds within this package
+  * First, create bootstrap plugin descriptors using the standalone
+    plugin descriptor generator and build the whole bootstrap
+    artifact
+  * Second, install that artifact into a mock maven repository and
+    use it to generate all like if it was inside maven lifecycle.
+    The resulting artifact is having identical metadata as one from
+    maven build.
+
+-------------------------------------------------------------------
+Wed Sep  2 07:06:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0001-A-standalone-generator-of-HelpMojo.java-and-plugin-d.patch
+    + implement a standalone plugin descriptor generator that allows
+      the maven-plugin-plugin-bootstrap to generate its own
+      bootstrap plugin.xml. This generator will be used by other
+      bootstrap packages that were before patching pre-generated
+      plugin descriptors into the source tree
+- Removed patch:
+  * maven-plugin-plugin-bootstrap-resouces.patch
+    + not needed any more, since the bootstrap plugin descriptor is
+      now generated
+
+-------------------------------------------------------------------
 Sat Nov  8 18:45:34 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.0.0-beta-2

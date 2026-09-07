@@ -1,5 +1,4 @@
 <multibuild>
-  <package>maven-plugin-plugin-bootstrap</package>
   <package>maven-plugin-plugin</package>
   <package>maven-plugin-report-plugin</package>
 </multibuild>
