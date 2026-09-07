@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep  6 11:10:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to snapshot 0.5.0~alpha~git376 (0.4.9-376-gad5cf975)
+  * Support for modern ffmpeg 5+ APIs
+- Delete waflib_deprecated.patch (obsoleted), 8a05420.patch
+  95ff046c.patch cdfe9ce.patch (merged), waflib_python312.patch
+  (not used by specfile even previously)
+- Rename aubio-docs to aubio-doc to match most of the other
+  openSUSE packages
+- Rename libaubio-devel to aubio-devel to match specfile
+  writing guidelines (avoiding needless deviations from basename)
+
+-------------------------------------------------------------------
 Sat Mar 29 13:30:08 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix build differently:

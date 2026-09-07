@@ -1,7 +1,7 @@
 #
 # spec file for package python-aubio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,15 @@
 
 %define         skip_python36 1
 Name:           python-aubio
-Version:        0.4.9
+Version:        0.5.0~alpha~git376
+%define rev     ad5cf975aed08cc4562dd008cf9f83b12b82ffb8
 Release:        0
 Summary:        A collection of tools for music analysis
 License:        GPL-3.0-or-later
 URL:            http://aubio.org/
-Source:         http://aubio.org/pub/aubio-%{version}.tar.bz2
-Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
-# PATCH-FIX-UPSTREAM waflib_python312.patch gh#aubio/aubio#394
-# https://gitlab.com/ita1024/waf/-/commit/d2060dfd8af4edb5824153ff24e207b39ecd67a2
-Patch1:         waflib_python312.patch
-# PATCH-FIX-UPSTREAM 95ff046c.patch
-# https://github.com/aubio/aubio/commit/95ff046c698156f21e2ca0d1d8a02c23ab76969f
-Patch2:         95ff046c.patch
+Source:         https://github.com/aubio/aubio/archive/%{rev}.tar.gz
+#Source:         http://aubio.org/pub/aubio-%{version}.tar.bz2
+#Source1:        http://aubio.org/pub/aubio-%{version}.tar.bz2.asc
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pytest}
@@ -50,7 +46,7 @@ aubio is a library to label music and sounds. It listens to audio signals and at
 Its features include segmenting a sound file before each of its attacks, performing pitch detection, tapping the beat and producing midi streams from live audio.
 
 %prep
-%autosetup -p 1 -n aubio-%{version}
+%autosetup -p1 -n aubio-%{rev}
 
 %build
 %python_build
@@ -81,7 +77,6 @@ find %{buildroot}/%{$python_sitearch} -type f -name "*.py" -exec sed -i "1{/#!.*
 %doc README.md ChangeLog AUTHORS
 %python_alternative %{_bindir}/aubio
 %python_alternative %{_bindir}/aubiocut
-%{python_sitearch}/aubio
-%{python_sitearch}/aubio-%{version}*-info
+%{python_sitearch}/aubio*
 
 %changelog

@@ -1,7 +1,7 @@
 #
 # spec file for package aubio
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,44 +19,46 @@
 %define libpkgname libaubio5
 %define debug_package_requires %{libpkgname} = %{version}-%{release}
 Name:           aubio
-Version:        0.4.9
+Version:        0.4.9+git376
+%define rev     ad5cf975aed08cc4562dd008cf9f83b12b82ffb8
 Release:        0
 Summary:        Library for real-time audio labelling
 License:        GPL-3.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://aubio.org
-Source:         http://aubio.org/pub/%{name}-%{version}.tar.bz2
-Source1:        http://aubio.org/pub/%{name}-%{version}.tar.bz2.asc
-# PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/cdfe9ce.patch -- [source_avcodec] avoid deprecation warning with latest avcodec api (58.134.100)
-Patch0:         cdfe9ce.patch
-# PATCH-FIX-UPSTREAM https://github.com/aubio/aubio/commit/8a05420.patch -- [source_avcodec] define FF_API_LAVF_AVCTX for libavcodec > 59, thx @berolinux (closes gh-353)
-Patch1:         8a05420.patch
-Patch2:         waflib_deprecated.patch
+Source:         https://github.com/aubio/aubio/archive/%{rev}.tar.gz
+#Source:         http://aubio.org/pub/%{name}-%{version}.tar.bz2
+#Source1:        http://aubio.org/pub/%{name}-%{version}.tar.bz2.asc
 Source99:       baselibs.conf
-BuildRequires:  alsa-devel
 BuildRequires:  doxygen
 BuildRequires:  fdupes
-BuildRequires:  fftw3-devel
-BuildRequires:  libjack-devel
-BuildRequires:  libsamplerate-devel
-BuildRequires:  libsndfile-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
+BuildRequires:  sox
 BuildRequires:  txt2man
 BuildRequires:  waf
-%if 1 == 0
+BuildRequires:  pkgconfig(alsa)
+BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libavcodec)
-BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libswresample)
-%else
-BuildRequires:  ffmpeg-4-libavcodec-devel
-BuildRequires:  ffmpeg-4-libavdevice-devel
-BuildRequires:  ffmpeg-4-libavformat-devel
-BuildRequires:  ffmpeg-4-libavutil-devel
-BuildRequires:  ffmpeg-4-libswresample-devel
-%endif
+BuildRequires:  pkgconfig(samplerate)
+BuildRequires:  pkgconfig(sndfile)
+# Need full ffmpeg for tests
+BuildConflicts: ffmpeg-4-mini-libs
+BuildConflicts: ffmpeg-4-mini-devel
+BuildConflicts: ffmpeg-5-mini-libs
+BuildConflicts: ffmpeg-5-mini-devel
+BuildConflicts: ffmpeg-6-mini-libs
+BuildConflicts: ffmpeg-6-mini-devel
+BuildConflicts: ffmpeg-7-mini-libs
+BuildConflicts: ffmpeg-7-mini-devel
+BuildConflicts: ffmpeg-8-mini-libs
+BuildConflicts: ffmpeg-8-mini-devel
+BuildConflicts: ffmpeg-9-mini-libs
+BuildConflicts: ffmpeg-9-mini-devel
 
 #ExcludeArch:    i586
 
@@ -78,13 +80,15 @@ detection, tapping the beat and producing midi streams from live audio.
 The name aubio comes from 'audio' with a typo: several transcription
 errors are likely to be found in the results too.
 
-%package -n libaubio-devel
+%package devel
 Summary:        Development package for aubio library
 Group:          Development/Libraries/C and C++
 Requires:       %{libpkgname} = %{version}
 Requires:       glibc-devel
+Obsoletes:      libaubio-devel < %{version}-%{release}
+Provides:       libaubio-devel = %{version}-%{release}
 
-%description -n libaubio-devel
+%description devel
 This package contains the files needed to compile programs that use
 aubio library.
 
@@ -95,16 +99,18 @@ Group:          Productivity/Multimedia/Sound/Editors and Convertors
 %description tools
 This package includes the example programs for aubio library.
 
-%package docs
+%package doc
 Summary:        Documentation for aubio library
 Group:          Documentation/HTML
 BuildArch:      noarch
+Obsoletes:      %{name}-docs < %{version}-%{release}
+Provides:       %{name}-docs = %{version}-%{release}
 
-%description docs
+%description doc
 This package includes the documentation for aubio library.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n aubio-%{rev}
 # set proper library dir
 sed -i -e "s#/lib#/%{_lib}#" src/wscript_build
 # set python3 as testrunner
@@ -112,6 +118,7 @@ sed -i -e 's#python\ ${SRC}#python3 ${SRC}#g' tests/wscript_build
 
 %build
 waf configure --prefix=%{_prefix} --libdir=%{_libdir} --enable-fftw3
+%make_build create_test_sounds
 waf build -v %{?_smp_mflags}
 
 %install
@@ -122,20 +129,19 @@ rm -rf %{buildroot}%{_datadir}/doc/libaubio-doc
 rm -f %{buildroot}%{_libdir}/libaubio.a
 %fdupes -s %{buildroot}%{_docdir}
 
-%post -n %{libpkgname} -p /sbin/ldconfig
-%postun -n %{libpkgname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libpkgname}
 
 %files -n %{libpkgname}
 %{_libdir}/lib*.so.*
 
-%files -n libaubio-devel
+%files devel
 %doc AUTHORS ChangeLog README.md
 %license COPYING
 %{_libdir}/lib*.so
 %{_libdir}/pkgconfig/*.pc
 %{_includedir}/aubio
 
-%files docs
+%files doc
 %doc %{_docdir}/%{name}
 
 %files tools
