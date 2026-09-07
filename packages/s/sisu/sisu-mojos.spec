@@ -40,12 +40,6 @@ BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.inject) >= %{version}
 BuildRequires:  mvn(org.eclipse.sisu:org.eclipse.sisu.plexus) >= %{version}
 BuildRequires:  mvn(org.slf4j:slf4j-nop)
-#!BuildRequires: maven-compiler-plugin-bootstrap
-#!BuildRequires: maven-jar-plugin-bootstrap
-#!BuildRequires: maven-javadoc-plugin-bootstrap
-#!BuildRequires: maven-plugin-plugin-bootstrap
-#!BuildRequires: maven-resources-plugin-bootstrap
-#!BuildRequires: maven-surefire-plugin-bootstrap
 BuildArch:      noarch
 
 %description

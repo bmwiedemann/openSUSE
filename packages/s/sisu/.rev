@@ -151,4 +151,12 @@
     <comment>1.1.0</comment>
     <requestid>1374483</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>7927dd08172c5865495d8f9756a9fc9c</srcmd5>
+    <version>1.1.0</version>
+    <time>1788773441</time>
+    <user>anag_factory</user>
+    <comment>Fix build after removal of bootstrap plugins</comment>
+    <requestid>1375783</requestid>
+  </revision>
 </revisionlist>
