@@ -243,4 +243,18 @@
     <comment>- /etc/sysconfig/language is gone</comment>
     <requestid>1297035</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>41c67b0a78e520d4965e176fbb26f2da</srcmd5>
+    <version>2026.02.25</version>
+    <time>1788773451</time>
+    <user>anag_factory</user>
+    <comment>- Version 2026.02.25
+  * Use new github home
+  * Now UTF-8
+  * Also Australian 
+  * Uses sqlite3 as data base format which is used for
+    extracting with new mk-list python script
+  * Many new words like tokenize</comment>
+    <requestid>1375792</requestid>
+  </revision>
 </revisionlist>

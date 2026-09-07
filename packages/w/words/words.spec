@@ -1,7 +1,7 @@
 #
 # spec file for package words
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,18 @@
 
 
 Name:           words
-Version:        2020.12.07
+Version:        2026.02.25
 Release:        0
 Summary:        An English words dictionary
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Office/Dictionary
-URL:            http://wordlist.sourceforge.net/
-Source0:        https://prdownloads.sourceforge.net/wordlist/scowl-%{version}.tar.gz
+URL:            https://github.com/en-wl/wordlist
+Source0:        https://github.com/en-wl/wordlist/archive/refs/tags/rel-2026.02.25.tar.gz#/wordlist-rel-2026.02.25.tar.gz
 Source1:        sysconfig.words
 Source2:        SuSEconfig.words
 BuildRequires:  glibc-locale
+BuildRequires:  python3
+BuildRequires:  sqlite3-devel
 PreReq:         %fillup_prereq
 Provides:       scowl = %{version}-%{release}
 BuildArch:      noarch
@@ -65,14 +67,31 @@ This package contains a Canadian words dictionary which will be installed as
 
 For a description see the package words.
 
+%package -n words-australian
+Summary:        A Australian words dictionary
+Group:          Productivity/Text/Utilities
+Requires:       words
+
+%description -n words-australian
+This package contains a Australian words dictionary which will be installed as
+
+/usr/share/dict/australian
+
+For a description see the package words.
+
 %prep
-%setup -q -n scowl-%{version}
+%setup -q -n wordlist-rel-%{version}
 
 %build
-spellings="american british canadian"
+spellings="american british canadian australian"
 LANG=POSIX
 export POSIX
 set +o posix
+#
+# Build the scowl.db
+#
+make V=1
+
 #
 # Do resorting for look(1) command
 #
@@ -84,25 +103,26 @@ do
     american*) LC_CTYPE=en_US.UTF-8 ;;
     british*)  LC_CTYPE=en_GB.UTF-8 ;;
     canadian*) LC_CTYPE=en_CA.UTF-8 ;;
+    australian*) LC_CTYPE=en_AU.UTF-8 ;;
     esac
     LC_COLLATE=$LC_CTYPE
     export LC_CTYPE LC_COLLATE
-    > result/${s}.todo
     #
     # Fix sorting as the look(1) command expect sort option -f
-    # and -d. also convert Latin-1 umlauts into UTF-8 based.
+    # and -d.
     #
-    ./mk-list -v2 ${s} 80 | iconv -f latin1 -t utf8 > >(sort -fdu -S10M -o result/${s} ; rm result/${s}.todo)
+    (
+        set -e
+        ./mk-list --variants 2 --accents both ${s} 80 | sort -fdu -S100M -o result/${s}
+    )&
+    #
+    pids="$pids $!"
 done
 #
-# Wait on sorting FIFOs
+# Wait on sorting sun shells
 #
-for s in $spellings
-do
-    while test -e result/${s}.todo
-    do
-	sleep 0.05s
-    done
+for pid in $pids; do
+    wait $pid || exit 1
 done
 
 %install
@@ -126,7 +146,7 @@ fi
 test -L usr/share/dict/words && rm usr/share/dict/words || true
 
 %files
-%doc Copyright README
+%doc Copyright README.md
 %dir %{_libexecdir}/words
 %attr(755,root,root) %{_libexecdir}/words/update
 %{_datadir}/dict/american
@@ -140,5 +160,8 @@ test -L usr/share/dict/words && rm usr/share/dict/words || true
 
 %files -n words-canadian
 %{_datadir}/dict/canadian
+
+%files -n words-australian
+%{_datadir}/dict/australian
 
 %changelog
