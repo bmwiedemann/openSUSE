@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  1 14:51:22 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.6.0 (fixes CVE-2026-84185 (bsc#1278707)):
+  * Fix an issue with parsing headers with 'kid' by @simo5 in #395
+  * Version 1.6.0 by @simo5 in #396
+- Update to 1.5.9 (fixes CVE-2026-80179 (bsc#1277639):
+  * Add ML-DSA post-quantum signature support (RFC 9964) by @rjeffman in #384
+  * Support fully specified algorithms per RFC 9864 by @rjeffman in #389
+  * Skip unknown kty in JWKSet import per RFC 7517 §5 by @rjeffman in #388
+  * Reject non-empty encrypted key in bare ECDH-ES by @simo5 in #391
+  * Limit dot splits during JWE and JWS parsing by @simo5 in #392
+  * Version 1.5.9 by @simo5 in #393
+
+-------------------------------------------------------------------
 Sun Jun 28 10:10:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.8:
