@@ -1,4 +1,173 @@
 -------------------------------------------------------------------
+Wed Sep  2 06:03:32 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- upgrade to rsyslog 8.2608.0
+
+- dropped patches: 
+  * 0001-imptcp-guard-regex-framing-match-at-line-start.patch
+
+  * 2026-08-18: imbeats: rearm listener after failed TLS accept
+  * 2026-08-18: msg: serialize turbo snapshot duplication
+  * 2026-08-18: omfile: harden dynafile default containment
+  * 2026-08-18: fixup! omfwd: support PKCS#11 URIs with ossl TLS
+  * 2026-07-02: omfwd: support PKCS#11 URIs with ossl TLS
+  * 2026-07-21: mmkubernetes: reload SA token proactively and on HTTP 401
+  * 2026-08-17: devtools: remove Cubic from local validation
+  * 2026-08-14: mmnormalize: share turbo $! snapshot across MsgDup by refcount
+  * 2026-08-11: tcpsrv: synchronize session table slots
+  * 2026-08-11: imrelp: preserve errno across stop signal
+  * 2026-08-12: examples.rst: Missing space in template
+  * 2026-08-10: mmnormalize: merge debug metadata
+  * 2026-08-08: normalizers: complete debug test gating
+  * 2026-08-08: normalizers: complete debug integration
+  * 2026-08-07: mmnormalize, pmnormalize: add liblognorm debugging
+  * 2026-08-07: msg: ignore null values in msgSetPropViaJSON() instead of crashing
+  * 2026-08-07: runtime: make error-message flag atomic
+  * 2026-07-24: fuzz: exercise RFC 3164 and RFC 5424 parsers
+  * 2026-08-05: build: unify indentation in AC_CONFIG_FILES list
+  * 2026-07-25: imfile: fix delay.message microsecond conversion
+  * 2026-07-24: diskqueue: reject symlinked persisted segments
+  * 2026-06-23: omfile: control symlink following
+  * 2026-07-25: mmnormalize: make HUP reload worker-safe
+  * 2026-07-24: docs(agents): add Cursor Cloud environment setup notes
+  * 2026-07-22: imbeats: harden Lumberjack input resource handling
+  * 2026-07-23: stringbuf: harden empty string replacement
+  * 2026-07-20: imptcp: guard regex framing match at line start (bsc#1271910)
+  * 2026-07-21: rainerscript: free cnfstmtNewAct nvlst once, at the done: label
+  * 2026-07-21: queue: preserve DA child work during shutdown
+  * 2026-07-21: imtcp: release completed zlib decoder state
+  * 2026-07-09: doc: clarify JSON array rendering
+  * 2026-07-21: Potential fixes for 5 code quality findings (#7397)
+  * 2026-07-20: ratelimit: optimize port-based per-source keys
+  * 2026-07-20: imtcp: make zstd window budget configurable
+  * 2026-07-19: imtcp: use snake case for zstd window tracking
+  * 2026-07-17: imtcp: bound aggregate zstd decoder window memory
+  * 2026-07-20: statsobj: guard Prometheus escape writes
+  * 2026-07-18: config: do not instantiate actions disabled via config.enabled="off"
+  * 2026-07-15: queue: document DA engine internals
+  * 2026-07-14: msg: enforce source-property helper contract
+  * 2026-07-10: ratelimit: remove per-source key policy hot lock
+  * 2026-07-08: ratelimit: speed source-key shortcuts
+  * 2026-07-15: queue: clarify DA transfer worker role
+  * 2026-07-18: compat_queue: add missing STAILQ_FOREACH/STAILQ_NEXT fallback
+  * 2026-07-18: rainerscript: warn on constant AND/OR operand at parse time
+  * 2026-07-18: configure: include <stddef.h> in the STAILQ detection test
+  * 2026-07-17: mmnormalize: share Turbo CEE root path check
+  * 2026-07-17: mmnormalize: fall back after Turbo materialization failure
+  * 2026-07-17: mmnormalize: preserve turbo results across message boundaries
+  * 2026-07-17: benchmarks: harden comparison and helper inputs
+  * 2026-07-16: segdisk: optimize CRC accounting and add benchmarks
+  * 2026-07-15: imjournal: stop invalidation reopen busy-loop
+  * 2026-07-14: queue: harden segmented DA lifecycle invariants
+  * 2026-07-14: queue: harden DA portability and startup cleanup
+  * 2026-07-14: queue: address segmented DA review findings
+  * 2026-07-14: queue: stabilize DA shutdown and reload state
+  * 2026-07-14: queue: clarify lazy marker and legacy state paths
+  * 2026-07-14: queue: gate idle cleanup on durable intent
+  * 2026-07-14: queue: document empty DA marker replacement
+  * 2026-07-14: queue: preserve classic state on transient load errors
+  * 2026-07-14: queue: make idle cleanup restoration crash safe
+  * 2026-07-14: queue: fail classic DA startup on real errors
+  * 2026-07-14: queue: clarify dirty DA configuration handling
+  * 2026-07-14: queue: separate DA idle and worker timeouts
+  * 2026-07-14: queue: document DA auto-upgrade boundary
+  * 2026-07-14: queue: publish fresh DA markers on first spill
+  * 2026-07-14: queue: constrain classic DA startup fallback
+  * 2026-07-14: queue: clarify disabled DA idle timeout
+  * 2026-07-14: queue: preserve classic DA startup fallback
+  * 2026-07-14: doc: describe segmented disk-assisted queues
+  * 2026-07-14: queue: add segmented disk-assisted engine
+  * 2026-07-14: queue: retain adopted recovery frontier
+  * 2026-07-14: queue: address segmented disk review findings
+  * 2026-07-13: queue: wake workers before capacity waits
+  * 2026-07-13: queue: make segmented deletion resumable
+  * 2026-07-13: queue: initialize missing state in empty spool dirs
+  * 2026-07-13: queue: reject invalid segmented codec field types
+  * 2026-07-13: queue: avoid sanitized generation wrap
+  * 2026-07-13: queue: expose segmented disk durability test hooks
+  * 2026-07-13: queue: make segmented disk recovery lazy
+  * 2026-07-09: queue: rework experimental segmented disk backend
+  * 2026-07-08: imjournal: warn when failing to get the MESSAGE field
+  * 2026-07-08: omawslogshlc: add CloudWatch Logs HLC output module
+  * 2026-07-08: core: add systemd READY delay opt-in
+  * 2026-06-02: core/imfile: synchronize sd_notify READY=1 with module startup
+  * 2026-07-07: ratelimit: shard per-source state
+  * 2026-07-06: docs: validate marked config samples
+  * 2026-07-07: ratelimit: shard named config registry
+  * 2026-07-06: runtime: harden ratelimit per-source reload
+  * 2026-07-06: queue: align legacy action batch default
+  * 2026-07-06: runtime: relax worker-count log reads
+  * 2026-07-06: core: relax selected atomic flag reads
+  * 2026-07-06: omkafka: relax poll stop flag atomics
+  * 2026-07-06: doc: add documentation for imfile delay.message parameter
+  * 2026-06-04: core: add generic output rate limiting
+  * 2026-07-05: omelasticsearch: apply TLS options during detection
+  * 2026-06-24: omprog: pace transaction retry resumes
+  * 2026-07-02: runtime: add relaxed 32-bit atomic helpers
+  * 2026-07-02: runtime: fix uint64 atomic fallback return
+  * 2026-07-02: net: match legacy allowed sender hostname handling
+  * 2026-07-02: runtime: modernize atomic helper usage
+  * 2026-07-02: net: add modern allowedSender ACLs
+  * 2026-07-02: queue: keep DA child workers alive while idle
+  * 2026-07-01: runtime: add atomic read load helpers
+  * 2026-07-01: rainerscript: align hex escape lexer states
+  * 2026-06-30: rainerscript: accept hex object string escapes
+  * 2026-06-30: runtime: synchronize action retry shutdown state
+  * 2026-06-30: mmutf8fix: fix replacement sequence examples
+  * 2026-06-16: parser: preserve first sanitize offset with SpaceLF
+  * 2026-06-29: template: avoid new legacy octal escape
+  * 2026-06-29: Make imptcp-epoll-add-failure.sh Linux-only
+  * 2026-06-29: Use check_LTLIBRARIES to generate liboverride_* test libraries
+  * 2026-06-29: doc: correct tcp_user_timeout version marker
+  * 2026-06-23: omhttp: continue after permanent data failures
+  * 2026-06-28: ommail: harden subject template header output
+  * 2026-06-28: omprog/omstdout: guard empty template LF checks
+  * 2026-06-23: tcp: skip legacy z after stream decode
+  * 2026-06-26: omelasticsearch: escape bulk metadata values
+  * 2026-06-24: imtcp: bound zstd decoder window
+  * 2026-06-24: mmkubernetes: add kubernetesurl failover
+  * 2026-06-26: docs: add v8-stable patch-flow skill to stable branch
+  * 2026-06-26: impcap: bound-check ARP address lengths
+  * 2026-06-26: Initialize devcontainer option state
+  * 2026-06-26: Remove obsolete Ubuntu 18.04 dev containers
+  * 2026-06-26: Refresh dev container cleanup
+  * 2026-06-26: agent: add v8-stable patch flow skill
+  * 2026-06-26: ChangeLog: split include-glob follow-up
+  * 2026-06-26: config: keep empty include globs silent
+  * 2026-06-26: gtls: harden DNS SAN byte handling
+  * 2026-06-25: Codify timeoutGuard testbench invariant
+  * 2026-06-26: imhttp: enforce gzip request body limit
+  * 2026-06-24: imhttp: defensive fixes and auth fallback correction
+  * 2026-06-25: doc/release: prevent invalid release version manual change
+  * 2026-06-24: omelasticsearch: add tls.tlsversion, tls.ciphersuites, tls.keyexchangegroups
+  * 2026-06-24: input: warn for rulesets without queues
+  * 2026-06-24: ommongodb: preserve ISODate fractional seconds
+  * 2026-06-24: imuxsock: clarify missing Socket diagnostics
+  * 2026-06-24: rsyslogd: reject -o output over input config
+  * 2026-06-24: template: add timereceived property alias
+  * 2026-06-24: imudp: store received sockaddr length
+  * 2026-06-23: imfile: warn on duplicate file monitors
+  * 2026-06-24: omudpspoof: stop retrying failed fragments
+  * 2026-06-23: gtls: guard early debug-level lookup (bsc#1274610)
+  * 2026-06-23: statsobj: handle lock control failures
+  * 2026-06-23: build: avoid empty usertools install dirs
+  * 2026-06-23: imdocker: recover from stale since anchors
+  * 2026-06-23: tcpflood: add GnuTLS priority string option
+  * 2026-06-23: imjournal: add journal namespace support
+  * 2026-06-23: prepare for next scheduled stable release cycle
+  * 2026-06-23: doc: clarify omprog transaction mode status
+  * 2026-06-23: errmsg: enrich oversize errorfile records
+  * 2026-06-23: omelasticsearch: retry read-only bulk failures
+  * 2026-06-23: doc: clarify fromhost case handling
+  * 2026-06-23: doc: clarify ommysql data failures
+  * 2026-06-23: omuxsock: isolate action socket locks
+  * 2026-06-16: template: add octal control character escape
+  * 2026-06-16: omfwd: add TCP user timeout action option
+  * 2026-06-15: mmutf8fix: support replacement sequences
+  * 2026-06-09: [Modernization] Replace Internal Backticks with Shell Expansion: Rscript Batch 1
+  * 2026-06-08: diag.sh: fix content-pattern-check and assert-first-column-sum-greater-than
+
+-------------------------------------------------------------------
 Tue Aug 25 06:25:15 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - fix RainerScript replace() heap buffer overflow (bsc#1275926)

@@ -24,7 +24,7 @@
 %define requires_file() %( readlink -f '%*' | LC_ALL=C xargs -r rpm -q --qf 'Requires: %%{name} >= %%{epoch}:%%{version}\\n' -f | sed -e 's/ (none):/ /' -e 's/ 0:/ /' | grep -v "is not")
 
 # drop this with next release when doc tarball version lines up
-%define rsyslog_major 8.2606
+%define rsyslog_major 8.2608
 %define rsyslog_patch 0
 Name:           rsyslog
 Summary:        The enhanced syslogd for Linux and Unix
@@ -236,8 +236,7 @@ Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
 Source20:       rsyslog-tmpfiles.conf
-Patch0:         0001-imptcp-guard-regex-framing-match-at-line-start.patch
-Patch1:         0001-fix-RainerScript-replace-heap-buffer-overflow.patch
+Patch:          0001-fix-RainerScript-replace-heap-buffer-overflow.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
@@ -928,6 +927,8 @@ fi
 %if 0%{?suse_version} < 1550
 /sbin/rsyslogd
 %endif
+%attr(755,root,root) %{_bindir}/rsyslog-segqueue
+
 %dir %{rsyslog_module_dir_nodeps}
 %{rsyslog_module_dir_nodeps}/fmhash.so
 %{rsyslog_module_dir_nodeps}/fmhttp.so
