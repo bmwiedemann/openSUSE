@@ -1,7 +1,7 @@
 #
 # spec file for package razercfg
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,11 @@
 
 
 Name:           razercfg
-Version:        0.43
+Version:        0.44
 Release:        0
 Summary:        A Razer device configuration tool
 # Icons are http://creativecommons.org/licenses/by/4.0/
-License:        GPL-2.0-or-later AND CC-BY-SA-4.0
+License:        CC-BY-SA-4.0 AND GPL-2.0-or-later
 Group:          Hardware/Other
 URL:            https://bues.ch/cms/hacking/razercfg.html
 Source0:        https://bues.ch/razercfg/%{name}-%{version}.tar.xz
@@ -30,7 +30,7 @@ Source99:       %{name}.keyring
 # PATCH-FIX-OPENSUSE razercfg-fix-install-in-libdir -- Install libraries in matching directories (e.g. lib64 for 64bit).
 # Reported upstream 21. July 2015
 Patch0:         razercfg-fix-install-in-libdir.patch
-Patch1:	harden_razerd.service.patch
+Patch1:         harden_razerd.service.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
@@ -40,7 +40,7 @@ BuildRequires:  python3-setuptools
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(udev)
-Requires:       python3-qt5
+Requires:       python3-qt6
 %{?systemd_ordering}
 
 %description

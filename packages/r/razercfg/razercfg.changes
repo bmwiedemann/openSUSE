@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat May 23 18:36:34 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.44:
+  * Fix independent axes
+  * Fix QLineEdit.EchoMode
+  * Update Qt.CheckState
+  * Fix QSystemTrayIcon.ActionReason
+  * Update to pyqt6
+
+-------------------------------------------------------------------
 Fri Jun  6 11:20:14 UTC 2025 - Max Lin <mlin@suse.com>
 
 - Add %python3_fix_shebang macro
@@ -73,7 +83,7 @@ Thu Nov 10 14:44:40 UTC 2016 - rpm@fthiessen.de
 -------------------------------------------------------------------
 Tue Aug 30 09:22:50 UTC 2016 - aloisio@gmx.com
 
-- Update to version 0.37 
+- Update to version 0.37
 
 -------------------------------------------------------------------
 Sat Jul 30 02:29:45 UTC 2016 - rpm@fthiessen.de
