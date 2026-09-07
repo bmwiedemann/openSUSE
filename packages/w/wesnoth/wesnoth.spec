@@ -18,7 +18,7 @@
 
 %define boost_min_version 1.67
 Name:           wesnoth
-Version:        1.18.7
+Version:        1.18.8
 Release:        0
 Summary:        Fantasy Turn-Based Strategy Game
 License:        EPL-1.0 AND GPL-2.0-or-later
@@ -26,8 +26,8 @@ Group:          Amusements/Games/Strategy/Turn Based
 URL:            https://www.wesnoth.org/
 # https://github.com/wesnoth/wesnoth/issues/6986 - How about adding a note to the GitHub release page saying "Don't download the tarballs from here"?
 Source:         http://files.wesnoth.org/%{name}-%{version}.tar.bz2
-# PATCH-FIX-UPSTREAM boost.patch - Remove BuildRequires on libboost_system-devel
-Patch0:         boost.patch
+# PATCH-FIX-UPSTREAM wesnoth-boost.patch - Remove BuildRequires on libboost_system-devel
+Patch0:         wesnoth-boost.patch
 BuildRequires:  cmake >= 3.14
 BuildRequires:  dejavu
 BuildRequires:  fdupes
@@ -188,6 +188,8 @@ done
 %dir %{_mandir}/fr/man6
 %dir %{_mandir}/gl
 %dir %{_mandir}/gl/man6
+%dir %{_mandir}/he
+%dir %{_mandir}/he/man6
 %dir %{_mandir}/hu
 %dir %{_mandir}/hu/man6
 %dir %{_mandir}/id

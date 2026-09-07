@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Aug 22 15:16:51 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 1.18.8:
+  Translations
+  * Updated translations: Bengali, Chinese (Simplified), Czech,
+    German, Hebrew, Hungarian, Portuguese (Brazil), Spanish
+  Miscellaneous and Bug Fixes
+  * Make Boost::system optional with boost 1.69 or later
+    (necessary for compatibility with 1.89 and later).
+  * Resolved not all translations being available for selection
+    on Windows builds.
+- Rebase wesnoth-boost.patch, not completely fixed upstream    
+
+-------------------------------------------------------------------
 Thu Apr 16 16:28:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Drop wesnoth-cmake-fix-find-readline.patch, not needed anymore

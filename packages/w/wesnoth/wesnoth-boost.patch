@@ -1,0 +1,19 @@
+diff -Nur wesnoth-1.18.8-orig/src/CMakeLists.txt wesnoth-1.18.8/src/CMakeLists.txt
+--- wesnoth-1.18.8-orig/src/CMakeLists.txt	2026-08-18 17:07:28.000000000 +0200
++++ wesnoth-1.18.8/src/CMakeLists.txt	2026-08-22 17:40:38.407051837 +0200
+@@ -302,7 +302,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale
+@@ -393,7 +392,6 @@
+ 		Boost::iostreams
+ 		Boost::program_options
+ 		Boost::regex
+-		Boost::system
+ 		Boost::random
+ 		Boost::coroutine
+ 		Boost::locale
