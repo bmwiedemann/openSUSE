@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:43:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260903.01
+  * Update dependencies to latest (#636) (bsc#1278597,
+    CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+    (bsc#1278967, CVE-2026-84445)
+- from version 20260902.00
+  * fix octal digit comparison in morePermissive (#631)
+- from version 20260825.00
+  * Remove KillMode from google-guest-agent-manager (#629)
+- from version 20260811.00
+  * Fix SUSE Linux Micro 6+ (#628)
+- Drop CVE-2026-39821.patch, merged upstream
+- Drop CVE-2026-56852.patch, merged upstream
+- Drop guest-agent-micro6.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Aug  6 11:10:08 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
 
 - Add guest-agent-micro6.patch (bsc#1253357)

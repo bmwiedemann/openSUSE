@@ -1,7 +1,6 @@
 #
 # spec file for package google-guest-agent
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +19,7 @@
 %define shortname guest-agent
 
 Name:           google-guest-agent
-Version:        20260803.00
+Version:        20260903.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -30,12 +29,6 @@ Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
 Patch0:         disable_google_dhclient_script.patch
-# PATCH-FIX-UPSTREAM - golang.org/x/net/idna: failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation
-Patch1:         CVE-2026-39821.patch
-# PATCH-FIX-UPSTREAM - golang.org/x/text/unicode/norm: infinite loop on truncated/invalid UTF-8 input
-Patch2:         CVE-2026-56852.patch
-# PATCH-FIX-UPSTREAM - https://github.com/GoogleCloudPlatform/guest-agent/pull/628
-Patch3:         guest-agent-micro6.patch
 BuildRequires:  golang(API) = 1.26
 Requires:       google-guest-configs
 Requires:       google-guest-oslogin >= 20231003
@@ -49,13 +42,6 @@ Google Cloud Guest Agent
 %prep
 %setup -n %{shortname}-%{version} -a1
 %patch -P 0 -p1
-pushd vendor/golang.org/x/net
-%patch -P 1 -p1
-popd
-pushd vendor/golang.org/x/text
-%patch -P 2 -p1
-popd
-%patch -P3
 
 %build
 %ifnarch ppc64

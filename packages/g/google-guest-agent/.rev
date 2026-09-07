@@ -1135,4 +1135,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1371037</requestid>
   </revision>
+  <revision rev="69" vrev="1">
+    <srcmd5>1b685738718041af4d2cf78fefc15d90</srcmd5>
+    <version>20260903.00</version>
+    <time>1788773453</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla reference for CVE-2026-84445 (forwarded request 1375807 from glaubitz)</comment>
+    <requestid>1375815</requestid>
+  </revision>
 </revisionlist>
