@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep  7 21:52:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.5.3:
+  * Casting a fixed-width byte string array (``np.bytes_``) to
+    ``StringDType`` now raises ``TypeError`` when the bytes are not
+    valid UTF-8. Previously the invalid bytes were stored as-is and
+    later caused undefined behavior in
+    string operations.
+  * ``MaskedArray._fill_value`` would become stale when ufuncs that
+    change dtype left the result holding a fill_value typed for the
+    old dtype. The mismatch was silent until something later called
+    ``_check_fill_value``, such as ``.view()``, and then a
+    ``TypeError`` would be raised.  Now, when the copied fill_value
+    is no longer valid for the new dtype, fall back to the
+    default fill_value for that dtype instead of propagating the
+    stale value.  This may raise a ``ComplexWarning`` if the fill_value
+    is complex and the new dtype is real.
+
+-------------------------------------------------------------------
 Tue Aug 18 10:59:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.5.2

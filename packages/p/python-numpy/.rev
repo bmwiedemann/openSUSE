@@ -1503,4 +1503,26 @@ This was now merged upstream, so I added relevant metadata
     <comment>1</comment>
     <requestid>1373024</requestid>
   </revision>
+  <revision rev="150" vrev="1">
+    <srcmd5>f6b04f97673b481dcf98b50b8ad8e485</srcmd5>
+    <version>2.5.3</version>
+    <time>1788879094</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.5.3:
+  * Casting a fixed-width byte string array (``np.bytes_``) to
+    ``StringDType`` now raises ``TypeError`` when the bytes are not
+    valid UTF-8. Previously the invalid bytes were stored as-is and
+    later caused undefined behavior in
+    string operations.
+  * ``MaskedArray._fill_value`` would become stale when ufuncs that
+    change dtype left the result holding a fill_value typed for the
+    old dtype. The mismatch was silent until something later called
+    ``_check_fill_value``, such as ``.view()``, and then a
+    ``TypeError`` would be raised.  Now, when the copied fill_value
+    is no longer valid for the new dtype, fall back to the
+    default fill_value for that dtype instead of propagating the
+    stale value.  This may raise a ``ComplexWarning`` if the fill_value
+    is complex and the new dtype is real.</comment>
+    <requestid>1376247</requestid>
+  </revision>
 </revisionlist>
