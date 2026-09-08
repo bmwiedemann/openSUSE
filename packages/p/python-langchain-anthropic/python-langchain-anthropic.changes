@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:55:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.1:
+  * Add Claude Fable 5.1 support: new claude-fable-5-1 model
+    profile; the model only does adaptive thinking, so a
+    disabled and a manually budgeted thinking block both raise
+    now, as do top_k and non-default top_p/temperature - which
+    are additionally stripped from the request payload
+  * AnthropicPromptCachingMiddleware now omits its inputs from
+    trace payloads when the installed langchain provides
+    TracePolicy
+- Follow upstream and raise the langchain-core floor to 1.6.1
+
+-------------------------------------------------------------------
 Thu Aug 27 18:13:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.0:

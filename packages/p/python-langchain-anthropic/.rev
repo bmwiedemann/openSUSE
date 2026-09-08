@@ -151,4 +151,24 @@ Built locally for openSUSE_Tumbleweed/aarch64: green, rpmlint 0 errors
 0 warnings 0 badness, %check 236 passed / 1 deselected per flavour.</comment>
     <requestid>1374109</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>cde630fae9378a9c5b24c9a2934f2563</srcmd5>
+    <version>1.7.1</version>
+    <time>1788879204</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.1
+
+- Claude Fable 5.1 support: new claude-fable-5-1 model profile; the model only
+  does adaptive thinking, so a disabled and a manually budgeted thinking block
+  both raise now, as do top_k and non-default top_p/temperature - which are
+  additionally stripped from the request payload.
+- AnthropicPromptCachingMiddleware omits its inputs from trace payloads when
+  the installed langchain provides TracePolicy.
+- Follows upstream in raising the langchain-core floor to 1.6.1; Factory ships
+  langchain-core 1.6.1, so this resolves without coordination.
+
+Built locally on aarch64 against openSUSE:Factory:ARM: 241 tests pass per
+Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
+    <requestid>1375744</requestid>
+  </revision>
 </revisionlist>
