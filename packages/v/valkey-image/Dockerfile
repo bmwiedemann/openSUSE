@@ -77,6 +77,7 @@ RUN set -euo pipefail; install -o valkey -g valkey -m 750 -d /data
 WORKDIR /data
 
 RUN set -euo pipefail; install -m 0640 -o root -g valkey /etc/valkey/valkey.default.conf.template /etc/valkey/valkey.conf
+RUN set -euo pipefail; sed -i -e 's,^logfile,#logfile,' /etc/valkey/valkey.conf
 RUN set -euo pipefail; printf 'protected-mode no\nbind * -::*\n' >> /etc/valkey/valkey.conf && chmod 0640 /etc/valkey/valkey.conf && chown root:valkey /etc/valkey/valkey.conf
 USER valkey
 VOLUME /data
