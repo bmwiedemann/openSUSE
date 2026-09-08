@@ -356,4 +356,21 @@
   * Update to Clojure 1.12.3</comment>
     <requestid>1307660</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>490bce3b9e60c843b17400bfd972b300</srcmd5>
+    <version>1.12.6</version>
+    <time>1788879267</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.6:
+  No Changelog provided
+
+- Properly package Clojure
+  So far we just shipped the prebuilt jar file. Now we introduce
+  several more packages and bootstrop functionality to properly
+  build Clojure ourselves
+
+- Update to 1.12.5.1654:
+  * Fix bad version in :deps alias</comment>
+    <requestid>1376113</requestid>
+  </revision>
 </revisionlist>

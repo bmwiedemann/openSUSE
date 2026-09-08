@@ -1,7 +1,7 @@
 #
 # spec file for package clojure
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,61 +16,82 @@
 #
 
 
-Name:           clojure
-Version:        1.12.3.1577
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "bootstrap"
+%define name_suffix -bootstrap
+%else
+%define name_suffix %{nil}
+%endif
+%define group clojure
+%define base_name clojure
+Name:           %{base_name}%{name_suffix}
+Version:        1.12.6
 Release:        0
-Summary:        A dynamic programming language that targets the JVM
+Summary:        Clojure core environment and runtime library
 License:        EPL-1.0
-Group:          Development/Languages/Other
 URL:            https://clojure.org/
-Source0:        https://download.clojure.org/install/clojure-tools-%{version}.tar.gz
+Source0:        https://github.com/clojure/clojure/archive/refs/tags/%{base_name}-%{version}.tar.gz
 BuildRequires:  fdupes
-Requires:       java >= 1.8.0
-Requires:       rlwrap
+BuildRequires:  javapackages-local
 BuildArch:      noarch
+%if "%{flavor}" == "bootstrap"
+BuildRequires:  ant
+BuildRequires:  clojure-core-specs-alpha-bootstrap
+BuildRequires:  clojure-spec-alpha-bootstrap
+%else
+BuildRequires:  maven-local
+BuildRequires:  mvn(org.apache.maven.plugins:maven-antrun-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-assembly-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
+BuildRequires:  mvn(org.apache.maven.plugins:maven-source-plugin)
+BuildRequires:  mvn(org.clojure:core.specs.alpha)
+BuildRequires:  mvn(org.clojure:spec.alpha)
+BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
+Requires:       clojure-core-specs-alpha
+Requires:       clojure-spec-alpha
+Requires:       javapackages-tools
+Obsoletes:      %{base_name}-bootstrap
+#!BuildRequires: clojure-bootstrap clojure-core-specs-alpha clojure-spec-alpha
+%endif
 
 %description
-Clojure is a dynamic programming language that targets the Java
-Virtual Machine (and the CLR, and JavaScript). It is designed to be a
-general-purpose language, combining the approachability and
-interactive development of a scripting language with an
-infrastructure for multithreaded programming. Clojure is a
-compiled language - it compiles directly to JVM bytecode, yet remains
-completely dynamic. Every feature supported by Clojure is supported at
-runtime. Clojure provides access to the Java frameworks, with
-optional type hints and type inference, to ensure that calls to Java
-can avoid reflection.
+Clojure is a dynamic programming language that targets the Java Virtual
+Machine. It is designed to be a general-purpose language, combining the
+approachability and interactive development of a scripting language with an
+efficient and robust infrastructure for multithreaded programming.
 
 %prep
-%autosetup -p1 -n clojure-tools
-sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clj
-sed -i "s/#!\/usr\/bin\/env bash/#!\/bin\/bash/" clojure
-sed -i "s|PREFIX|%{_datadir}/clojure|" clojure
-sed -i "s|BINDIR|%{_bindir}|" clj
+%setup -q -n %{base_name}-%{base_name}-%{version}
+
+%pom_remove_plugin :central-publishing-maven-plugin
 
 %build
+%if "%{flavor}" == "bootstrap"
+ant -Dmaven.compile.classpath=$(build-classpath clojure/spec.alpha clojure/core.specs.alpha) jar
+%else
+%{mvn_build} -jf
+%endif
 
 %install
-install -Dm644 deps.edn "%{buildroot}/%{_datadir}/clojure/deps.edn"
-install -Dm644 example-deps.edn "%{buildroot}/%{_datadir}/clojure/example-deps.edn"
-install -Dm644 exec.jar "%{buildroot}/%{_datadir}/clojure/libexec/exec.jar"
-install -Dm644 clojure-tools-%{version}.jar "%{buildroot}/%{_datadir}/clojure/libexec/clojure-tools-%{version}.jar"
-install -Dm755 clojure "%{buildroot}/%{_bindir}/clojure"
-install -Dm755 clj "%{buildroot}/%{_bindir}/clj"
-install -Dm644 clojure.1 "%{buildroot}%{_mandir}/man1/clojure.1"
-install -Dm644 clj.1 "%{buildroot}%{_mandir}/man1/clj.1"
 
-%fdupes %{buildroot}/%{_prefix}
+%if "%{flavor}" == "bootstrap"
+install -dm 0755 %{buildroot}%{_javadir}/%{group}
+install -pm 0644 %{base_name}.jar %{buildroot}%{_javadir}/%{group}/%{base_name}.jar
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{group}
+install -pm 0644 pom.xml %{buildroot}%{_mavenpomdir}/%{group}/%{base_name}.pom
+%add_maven_depmap %{group}/%{base_name}.pom %{group}/%{base_name}.jar
+%else
+%mvn_install
+%jpackage_script clojure.main "" "" %{group}/%{base_name}:%{group}/core.specs.alpha:%{group}/spec.alpha %{base_name}
+%endif
 
-%files
-%dir %{_datadir}/clojure
-%dir %{_datadir}/clojure/libexec
-%{_bindir}/clj
-%{_bindir}/clojure
-%{_datadir}/clojure/deps.edn
-%{_datadir}/clojure/example-deps.edn
-%{_datadir}/clojure/libexec/exec.jar
-%{_datadir}/clojure/libexec/clojure-tools-%{version}.jar
-%{_mandir}/man1/*
+%fdupes -s %{buildroot}%{_javadir}
+
+%files -f .mfiles
+%license epl-v10.html
+%doc readme.txt changes.md
+%if "%{flavor}" != "bootstrap"
+%{_bindir}/%{base_name}
+%endif
 
 %changelog

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  3 07:55:49 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.6:
+  No Changelog provided
+
+-------------------------------------------------------------------
+Tue Aug 11 10:18:00 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Properly package Clojure
+  So far we just shipped the prebuilt jar file. Now we introduce
+  several more packages and bootstrop functionality to properly
+  build Clojure ourselves
+
+-------------------------------------------------------------------
+Tue Jun 23 12:34:53 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.12.5.1654:
+  * Fix bad version in :deps alias
+
+-------------------------------------------------------------------
 Mon Sep 29 06:54:29 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.12.3.1577:
