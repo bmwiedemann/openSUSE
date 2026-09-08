@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep  7 19:50:15 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Add OpenSSL dependency
+
+-------------------------------------------------------------------
+Mon Sep  7 19:29:34 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.29
+  + Switched MusixMatch lyrics to use API instead of scraping the HTML pages
+  + Standardized the User-Agent header format used for network requests
+  + Improved ListenBrainz scrobbling and made it respect rate limits
+  + Use self-hosted OAuth redirect/proxy for Spotify and Genius which does not accept a random localhost port
+  + Made PKCE optional for OAuth logins, for providers that don't support it
+  + Cover art search now takes album artist and compilation status into account when matching results
+  + Improved detection of generic album titles (e.g. "Greatest Hits", "Live") when scoring cover art search results, using regular expressions
+
+-------------------------------------------------------------------
 Wed Aug 26 19:44:25 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Update to version 1.2.28

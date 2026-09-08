@@ -1943,4 +1943,21 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1373892</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>e4de29bec4eedb2476009f4fb9c5485b</srcmd5>
+    <version>1.2.29</version>
+    <time>1788879470</time>
+    <user>anag_factory</user>
+    <comment>- Add OpenSSL dependency
+- Update to version 1.2.29
+  + Switched MusixMatch lyrics to use API instead of scraping the HTML pages
+  + Standardized the User-Agent header format used for network requests
+  + Improved ListenBrainz scrobbling and made it respect rate limits
+  + Use self-hosted OAuth redirect/proxy for Spotify and Genius which does not accept a random localhost port
+  + Made PKCE optional for OAuth logins, for providers that don't support it
+  + Cover art search now takes album artist and compilation status into account when matching results
+  + Improved detection of generic album titles (e.g. &quot;Greatest Hits&quot;, &quot;Live&quot;) when scoring cover art search results, using regular expressions
+</comment>
+    <requestid>1376236</requestid>
+  </revision>
 </revisionlist>

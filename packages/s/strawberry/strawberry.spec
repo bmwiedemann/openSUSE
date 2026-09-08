@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.28
+Version:        1.2.29
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -72,6 +72,7 @@ BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
 BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libudf)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.12
 
