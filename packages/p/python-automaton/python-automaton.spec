@@ -17,7 +17,7 @@
 
 
 Name:           python-automaton
-Version:        3.4.0
+Version:        3.5.0
 Release:        0
 Summary:        Friendly state machines for python
 License:        Apache-2.0

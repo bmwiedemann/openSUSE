@@ -320,4 +320,17 @@
   * Drop Python 3.9 support</comment>
     <requestid>1343787</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>56699e4fc67a4ba0b644c2403195ad0b</srcmd5>
+    <version>3.5.0</version>
+    <time>1788879324</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.5.0:
+  * Drop Python 3.10 support
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * tox: Use new constraints option
+  * Update packaging configuration</comment>
+    <requestid>1376134</requestid>
+  </revision>
 </revisionlist>
