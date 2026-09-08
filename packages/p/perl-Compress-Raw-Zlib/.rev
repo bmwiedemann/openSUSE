@@ -119,4 +119,38 @@
         16b5fc92e830af8b10c37e6a3e66806cc0db937f</comment>
     <requestid>1337661</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f50fe43df82c4bf67421e10a2fd8840e</srcmd5>
+    <version>2.224</version>
+    <time>1788879491</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.224
+   see /usr/share/doc/packages/perl-Compress-Raw-Zlib/Changes
+    2.224 28 Auguat 2026
+      * Remove call to UpDowngrade in Makefile.PL
+        Fri Aug 28 11:10:08 2026 +0100
+        33f1a3770079af3bbe63979beb03bbb955f6e3e5
+      * Update to version 2.224
+        Fri Aug 28 10:55:27 2026 +0100
+        8fcad9c1a403679f4922deb01b774f393744c65e
+      * remove 5.6-specific code and make 5.8 the min versionsupported
+        Wed Aug 26 16:07:04 2026 +0100
+        cb71d9a683955fc2fce9e5229249ba5b0ca2c58c
+      * Fix typos in Changes file
+        Fri Jul 3 12:01:10 2026 +0100
+        8cffb22f0461390e7d7591034575ee29c5cf5f84
+      * Merge pull request #43 from pmqs/dependabot/github_actions/actions/cache-6
+        Fri Jul 3 11:59:57 2026 +0100
+        372ca65d5736d7e42b6db8c97974f94b9a01f8d3
+      * Merge pull request #42 from pmqs/dependabot/github_actions/actions/checkout-7
+        Fri Jul 3 11:59:49 2026 +0100
+        96a80f268da2ab28b17635c93eb03bba2c760153
+      * Bump actions/cache from 5 to 6
+        Wed Jul 1 08:10:05 2026 +0000
+        19b07df4424d7d55137bea4a30fe52d3a05d1a0b
+      * Bump actions/checkout from 6 to 7
+        Wed Jul 1 08:10:00 2026 +0000
+        caf11eb8b615c65aeec2338ec02fd61ab800d4ff</comment>
+    <requestid>1376320</requestid>
+  </revision>
 </revisionlist>
