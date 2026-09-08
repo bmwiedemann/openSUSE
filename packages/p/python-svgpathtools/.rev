@@ -145,4 +145,31 @@ Changes:
   * Fixed wrong length of flat quadratic bezier</comment>
     <requestid>1321070</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2dc185c03c1d88d27b25b575a79d748f</srcmd5>
+    <version>1.8.0</version>
+    <time>1788879213</time>
+    <user>anag_factory</user>
+    <comment>- Note: Upstream development now makes extensive use of LLMs.
+- Switch to declarative BuildSystem
+- Update to 1.8.0:
+  * Overhaul malformed-transform handling in `parse_transform`
+    + Stricter validation of floating point numbers and transform
+      types (nan/inf, 1_0 and overflow are now rejected);
+      falsy non-strings raise `TypeError`
+    + `transform=&quot;none&quot;`, tabs/newlines and trailing separator
+      commas are now parsed correctly
+    + Emits `SVGSyntaxWarning` (top-level exported `UserWarning`)
+    + Added `strict=True` kwarg to `parse_transform`, which will
+      cause it to raise `ValueError` instead.
+      The `strict_transform_parsing=True` kwarg enables this for
+      `Document`, `Document.from_svg_string`, `SaxDocument`,
+      `flattened_paths` and `flattened_paths_from_group`.
+- Changes in 1.7.3/1.7.4:
+  * Parse SVG arc paths with packed large-arc/sweep flags
+    #gh/mathandy/svgpathtools#129
+  * Raise `ValueError` for truncated path commands instead of
+    `IndexError`</comment>
+    <requestid>1375980</requestid>
+  </revision>
 </revisionlist>
