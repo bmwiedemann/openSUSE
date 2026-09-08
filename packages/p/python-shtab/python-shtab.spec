@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-shtab
-Version:        1.11.0
+Version:        1.12.1
 Release:        0
 Summary:        Automagic shell tab completion for Python CLI applications
 License:        Apache-2.0
@@ -30,10 +30,12 @@ BuildRequires:  %{python_module setuptools_scm >= 3.4}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Recommends:     python-click
 BuildArch:      noarch
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 # Section Tests
+BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
