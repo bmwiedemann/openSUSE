@@ -123,4 +123,17 @@
 - Drop jupyter_events-py312-taskname.patch</comment>
     <requestid>1287597</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>b3cc793de7c87cc64ee46919fbff0c1c</srcmd5>
+    <version>0.12.1</version>
+    <time>1788879423</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.12.1:
+  * [Bug] Fix empty error messages from failing event listeners
+  * Add security.md #113 (@Carreau)
+  * The following people contributed discussions, new ideas, code
+    and documentation contributions, and review.
+  * See our definition of contributors.</comment>
+    <requestid>1376003</requestid>
+  </revision>
 </revisionlist>
