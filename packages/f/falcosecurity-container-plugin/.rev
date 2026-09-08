@@ -19,4 +19,24 @@ build until these land):
   * sr#1360104 - bshoshany-thread-pool (pulled in via falco-libs)</comment>
     <requestid>1360182</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>cf943531e7dbe0dd32a87b08f8850413</srcmd5>
+    <version>0.7.2</version>
+    <time>1788880056</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.7.2:
+  * Recognize systemd nerdctl cgroup paths
+  * Resubscribe to the CRI container events stream and reset
+    the backoff after a healthy subscription
+  * Link libresolv on Linux so libcontainer.so loads on
+    glibc &lt; 2.34
+  * Migrate the Go worker to go.podman.io/podman/v6 and
+    containerd v2.2.5 (Podman API floor still 4.0.0)
+  * Rebase container-plugin-use-system-deps.patch for the
+    new go-worker.cmake resolv hunk
+- License: Apache-2.0 AND MPL-2.0 (vendored Go modules
+  go-pathrs, filepath-securejoin, hashicorp/errwrap and
+  go-multierror)</comment>
+    <requestid>1376283</requestid>
+  </revision>
 </revisionlist>

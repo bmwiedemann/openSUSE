@@ -17,10 +17,13 @@
 
 
 Name:           falcosecurity-container-plugin
-Version:        0.7.1
+Version:        0.7.2
 Release:        0
 Summary:        Falcosecurity plugin providing container metadata
-License:        Apache-2.0
+# Legal-Review-Notice: MPL-2.0 from vendored Go modules statically
+# linked into libworker.a; vendor.tar.gz in the src.rpm satisfies
+# MPL-2.0 §3.2.
+License:        Apache-2.0 AND MPL-2.0
 URL:            https://github.com/falcosecurity/plugins/tree/main/plugins/container
 # Source0/Source1 are produced by _service (obs_scm + go_modules):
 Source0:        container-plugin-%{version}.tar
@@ -31,16 +34,15 @@ Source2:        LICENSE
 # to the system copies so the build works offline:
 Patch0:         container-plugin-use-system-deps.patch
 BuildRequires:  cmake
-BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  go >= 1.25
+BuildRequires:  libbtrfs-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  cmake(fmt)
-BuildRequires:  libbtrfs-devel
-BuildRequires:  libcap-devel
-BuildRequires:  cmake(Reflex)
 BuildRequires:  plugin-sdk-cpp-devel
+BuildRequires:  cmake(Reflex)
+BuildRequires:  cmake(fmt)
+BuildRequires:  pkgconfig(libcap)
 
 %description
 The container plugin enriches Falco/libsinsp events with container metadata

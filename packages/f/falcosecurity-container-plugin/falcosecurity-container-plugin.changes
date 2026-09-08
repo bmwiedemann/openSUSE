@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:32:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.2:
+  * Recognize systemd nerdctl cgroup paths
+  * Resubscribe to the CRI container events stream and reset
+    the backoff after a healthy subscription
+  * Link libresolv on Linux so libcontainer.so loads on
+    glibc < 2.34
+  * Migrate the Go worker to go.podman.io/podman/v6 and
+    containerd v2.2.5 (Podman API floor still 4.0.0)
+  * Rebase container-plugin-use-system-deps.patch for the
+    new go-worker.cmake resolv hunk
+- License: Apache-2.0 AND MPL-2.0 (vendored Go modules
+  go-pathrs, filepath-securejoin, hashicorp/errwrap and
+  go-multierror)
+
+-------------------------------------------------------------------
 Thu Jun 18 07:54:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.7.1):
