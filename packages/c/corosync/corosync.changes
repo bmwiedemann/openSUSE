@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 02:43:52 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
+
+- Add a patch to fix CVE-2026-81665 (bsc#1278738) 
+  * 0002-totempg-Replace-assert-with-check-in-deliver_fn.patch
+- Add a patch to fix CVE-2026-81666 (bsc#1278739) 
+  * 0001-totemsrp-Fix-int-overflow-in-commit_token_sanity.patch
+
+-------------------------------------------------------------------
 Thu Apr  2 06:32:26 UTC 2026 - Nicholas Yang <nicholas.yang@suse.com>
 
 - Add a patch to fix CVE-2026-35091 and CVE-2026-35092 (bsc#1261299)(bsc#1261300)
