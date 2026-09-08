@@ -8478,4 +8478,12 @@
   * CVE-2026-84128 (bmo#2044280)</comment>
     <requestid>1375640</requestid>
   </revision>
+  <revision rev="501" vrev="1">
+    <srcmd5>58ccc2941f858e0f51524ff45d9f0f13</srcmd5>
+    <version>155.0.1</version>
+    <time>1788879098</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1375849</requestid>
+  </revision>
 </revisionlist>
