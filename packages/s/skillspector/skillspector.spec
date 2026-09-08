@@ -21,7 +21,7 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0

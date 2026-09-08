@@ -146,4 +146,23 @@ pywhatwgurl 0.1.2 parses two invalid punycode hosts upstream's pinned
 0.1.1 rejects. test_dense_directory_... re-selected: 19.7 s -&gt; 1.7 s.</comment>
     <requestid>1374666</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>d05597e3b42686f76b20182531a7130d</srcmd5>
+    <version>2.11.1</version>
+    <time>1788880053</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11.1:
+  * Raise the default aggregate scan deadline from 60 s to 600 s
+    and add SKILLSPECTOR_MAX_WORKFLOW_SECONDS to override it
+  * Enforce SKILLSPECTOR_MAX_LLM_CONCURRENCY across all concurrent
+    LLM analyzers rather than separately in each one
+  * Keep safe and unsafe findings distinct when they share a rule
+    fingerprint so deduplication cannot drop security evidence
+  * Detect instructions concealed with ignorable characters or
+    inter-character separators, and fail closed when obfuscation
+    prevents complete interpretation
+  * Parse whitespace-separated allowed-tools without
+    least-privilege false positives</comment>
+    <requestid>1376280</requestid>
+  </revision>
 </revisionlist>
