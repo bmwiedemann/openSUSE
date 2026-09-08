@@ -770,4 +770,12 @@ Stop storing build machine kernel version (boo#1101107)</comment>
       COUNT(DISTINCT) due to SkipScan dropping uncompressed rows.</comment>
     <requestid>1371711</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4f923f5d9411e5fd2798964c76419ee9</srcmd5>
+    <version>2.30.0</version>
+    <time>1788879528</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.0</comment>
+    <requestid>1376356</requestid>
+  </revision>
 </revisionlist>
