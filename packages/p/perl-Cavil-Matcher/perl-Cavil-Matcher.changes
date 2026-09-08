@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:40:56 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.50.0 (1.05)
+   see /usr/share/doc/packages/perl-Cavil-Matcher/Changes
+
+  1.05   2026-09-03
+          - Removed the on-disk fingerprint index (fp_build/fp_open, the Cavil::Matcher::Fingerprints
+            package, and Cavil::Matcher::FpIndex); consumers now keep the searchable index in their own
+            database. The fingerprint_file and content_hash primitives are unchanged.
+  1.04   2026-08-27
+          - FpIndex now caches opened segments and reuses them across searches instead of reopening every
+            segment on every query. Opening a segment is a fixed per-query cost that otherwise dominated search
+            time on a long-lived query server, regardless of the query. Segments are immutable append-only
+            files, so a cached handle always maps the same bytes; a handle whose segment has been compacted out
+            of the manifest is dropped on the next search. Results are unchanged.
+          - score() and FpIndex::search() take an optional minimum containment; matches below it are dropped
+            inside the scorer instead of being returned for the caller to filter. A query dominated by common
+            fingerprints can match hundreds of thousands of contents, almost all coincidental, so applying the
+            floor at this level avoids building and returning them. Defaults to 0 (return everything).
+          - score() and FpIndex::search() also take an optional max_df: query fingerprints appearing in more
+            than that many records of a segment are ignored (boilerplate that matches nearly everything, adding
+            only coincidental hits and skewing containment). Off by default (0). Intended for a compacted
+            single-segment index, where a segment's record count for a fingerprint is its document frequency.
+  1.03   2026-08-27
+          - Fingerprint scoring now reports, for each matched fingerprint, the query fingerprint value it was,
+            appended to each region tuple after the existing start line and span. This lets a caller map
+            matches back to their query positions - enough to tell an aligned copy from scattered coincidental
+            hits, and to derive each query fingerprint's document frequency from a full result set. Backward
+            compatible: the (start_line, span) pair at the front of every region tuple is unchanged.
+  1.02   2026-08-27
+          - Snippet code search: a new winnowed-fingerprint index for "where does this code already exist"
+            provenance queries, alongside the license-pattern matcher. fingerprint_file winnows a file's
+            tokens (k tokens per gram, w grams per window) into content fingerprints; a fingerprint segment
+            stores them keyed by a 128-bit content hash rather than filenames (so it stays lean and joins to
+            the Cavil database), and scoring ranks candidates by both-direction containment with exact
+            matched-line spans for highlighting.
+          - Cavil::Matcher::FpIndex is the pure-Perl lifecycle over a directory of fingerprint segments
+            (incremental add_segment, manifest/generation, memory-mapped shared reads), reusing the same
+            on-disk discipline as the pattern index: versioned, CRC-checksummed, structure-validated on
+            every open, with corrupt or foreign files rejected rather than mis-read.
+          - Byte-identical files are de-duplicated by content hash, so the same source shipped across many
+            package versions is stored once, with no package-name parsing.
+          - Additive only: the license-pattern format is unchanged and no migration is needed.
+
+-------------------------------------------------------------------
 Wed Aug  5 07:49:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.10.0 (1.01)
