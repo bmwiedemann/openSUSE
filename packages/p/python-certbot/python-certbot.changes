@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:05:58 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.8.0
+  * certbot and its acme library now require cryptography>=47.0.0
+  * Fixed removed domains being omitted from the certificate update
+    confirmation prompt
+
+-------------------------------------------------------------------
 Thu Jul 23 11:32:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.7.0
