@@ -1108,7 +1108,8 @@ unsorted:
   - atuin-nushell-completion 
   - atuin-server 
   - atuin-zsh-completion 
-  - aubio-docs 
+  - aubio-devel 
+  - aubio-doc 
   - aubio-tools 
   - audacious 
   - audacious-devel 
@@ -4314,6 +4315,7 @@ unsorted:
   - five-or-more 
   - five-or-more-doc 
   - five-or-more-lang 
+  - fixmath 
   - fixmath-devel 
   - flac 
   - flac-devel 
@@ -4526,7 +4528,7 @@ unsorted:
   - freeciv-gtk4 
   - freeciv-lang 
   - freeciv-qt 
-  - freeciv-sdl2 
+  - freeciv-sdl3 
   - freedoom 
   - freedoom-freedm 
   - freedup 
@@ -12278,7 +12280,6 @@ unsorted:
   - libattr-devel-32bit 
   - libattr-devel-static 
   - libattr1-32bit 
-  - libaubio-devel 
   - libaubio5 
   - libaudaspace-c1_10 
   - libaudaspace-py1_10 
@@ -13095,6 +13096,9 @@ unsorted:
   - libdhash-devel 
   - libdi6 
   - libdico2 
+  - libdicom 
+  - libdicom-devel 
+  - libdicom1 
   - libdict-devel 
   - libdict1_0 
   - libdigikamcore9_1_0 
@@ -15363,7 +15367,7 @@ unsorted:
   - libopenshot-devel 
   - libopenshot27 
   - libopenslide-devel 
-  - libopenslide0 
+  - libopenslide1 
   - libopensm9 
   - libopenspecfun2 
   - libopenssl-3-devel 
@@ -18789,7 +18793,6 @@ unsorted:
   - maven-common-artifact-filters 
   - maven-common-artifact-filters-javadoc 
   - maven-compiler-plugin 
-  - maven-compiler-plugin-bootstrap 
   - maven-compiler-plugin-javadoc 
   - maven-dependency-analyzer 
   - maven-dependency-analyzer-javadoc 
@@ -18816,7 +18819,6 @@ unsorted:
   - maven-enforcer-plugin 
   - maven-enforcer-rules 
   - maven-failsafe-plugin 
-  - maven-failsafe-plugin-bootstrap 
   - maven-file-management 
   - maven-file-management-javadoc 
   - maven-filtering 
@@ -18830,13 +18832,11 @@ unsorted:
   - maven-invoker-plugin 
   - maven-invoker-plugin-javadoc 
   - maven-jar-plugin 
-  - maven-jar-plugin-bootstrap 
   - maven-jar-plugin-javadoc 
   - maven-jarsigner-plugin 
   - maven-jarsigner-plugin-javadoc 
   - maven-javadoc 
   - maven-javadoc-plugin 
-  - maven-javadoc-plugin-bootstrap 
   - maven-javadoc-plugin-javadoc 
   - maven-jaxb2-plugin 
   - maven-jlink-plugin 
@@ -18855,7 +18855,6 @@ unsorted:
   - maven-parent 
   - maven-plugin-annotations 
   - maven-plugin-plugin 
-  - maven-plugin-plugin-bootstrap 
   - maven-plugin-plugin-javadoc 
   - maven-plugin-report-plugin 
   - maven-plugin-report-plugin-javadoc 
@@ -18896,7 +18895,6 @@ unsorted:
   - maven-resolver-transport-wagon 
   - maven-resolver-util 
   - maven-resources-plugin 
-  - maven-resources-plugin-bootstrap 
   - maven-resources-plugin-javadoc 
   - maven-scm 
   - maven-scm-javadoc 
@@ -18907,8 +18905,6 @@ unsorted:
   - maven-shade-plugin-javadoc 
   - maven-shared-incremental 
   - maven-shared-incremental-javadoc 
-  - maven-shared-io 
-  - maven-shared-io-javadoc 
   - maven-shared-jarsigner 
   - maven-shared-jarsigner-javadoc 
   - maven-shared-utils 
@@ -18918,14 +18914,10 @@ unsorted:
   - maven-surefire 
   - maven-surefire-javadoc 
   - maven-surefire-plugin 
-  - maven-surefire-plugin-bootstrap 
   - maven-surefire-plugins-javadoc 
-  - maven-surefire-provider-junit 
   - maven-surefire-provider-junit5 
-  - maven-surefire-provider-testng 
   - maven-surefire-report-parser 
   - maven-surefire-report-plugin 
-  - maven-surefire-report-plugin-bootstrap 
   - maven-wagon-file 
   - maven-wagon-ftp 
   - maven-wagon-http 
@@ -33490,6 +33482,8 @@ unsorted:
   - re-flex 
   - re-flex-devel 
   - re2-devel 
+  - re2j 
+  - re2j-javadoc 
   - read-only-root-fs-volatile 
   - readcd 
   - readline-devel 
@@ -47226,6 +47220,7 @@ unsorted:
   - wordnet 
   - wordnet-devel 
   - words 
+  - words-australian 
   - words-british 
   - words-canadian 
   - workrave 
