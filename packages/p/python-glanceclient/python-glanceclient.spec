@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-glanceclient
-Version:        4.12.0
+Version:        4.13.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Glance
 License:        Apache-2.0

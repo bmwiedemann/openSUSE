@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:42:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.13.0:
+  * Remove Python 3.10 support
+  * Add pyproject.toml to support pip 23.1
+  * Fix outdated default envlist
+  * Replace deprecated datetime.utcfromtimestamp
+  * Drop fallback to UPPER_CONSTRAINTS_FILE
+  * Apply upper constraints to build documentation
+  * Add support for cache clean and prune APIs
+  * Add support for GET /v2/cache/nodes/{image_id}
+  * Zuul: do not use USE_PYTHON3
+
+-------------------------------------------------------------------
 Thu Aug  6 20:40:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.12.0:

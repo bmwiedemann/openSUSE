@@ -778,4 +778,21 @@ update to version 2.3.0
   (upstream)</comment>
     <requestid>1370119</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>24f5ba3a8202ebe0a470c9f45d145328</srcmd5>
+    <version>4.13.0</version>
+    <time>1788879333</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.13.0:
+  * Remove Python 3.10 support
+  * Add pyproject.toml to support pip 23.1
+  * Fix outdated default envlist
+  * Replace deprecated datetime.utcfromtimestamp
+  * Drop fallback to UPPER_CONSTRAINTS_FILE
+  * Apply upper constraints to build documentation
+  * Add support for cache clean and prune APIs
+  * Add support for GET /v2/cache/nodes/{image_id}
+  * Zuul: do not use USE_PYTHON3</comment>
+    <requestid>1376145</requestid>
+  </revision>
 </revisionlist>
