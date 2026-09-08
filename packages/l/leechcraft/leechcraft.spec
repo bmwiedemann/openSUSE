@@ -1,7 +1,7 @@
 #
 # spec file for package leechcraft
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -110,9 +110,9 @@ BuildRequires:  pkgconfig(hunspell) >= 1.5.1
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
 BuildRequires:  pkgconfig(libavformat)
-BuildRequires:  pkgconfig(libavresample)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libchromaprint)
+BuildRequires:  pkgconfig(libswresample)
 %endif
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libidn)
@@ -285,8 +285,8 @@ Summary:        LeechCraft Instant messenger Module
 License:        BSL-1.0
 Group:          Productivity/Networking/Other
 Requires:       %{name} = %{version}
-Requires:       %{name}-azoth-standardstyles
 Requires:       %{name}-azoth-protocolplugin
+Requires:       %{name}-azoth-standardstyles
 Requires:       %{name}-securestorage = %{version}
 Obsoletes:      %{name}-azoth-adiumstyles
 Obsoletes:      %{name}-azoth-juick
@@ -1246,7 +1246,6 @@ Requires:       %{name}-lmp = %{version}
 %description lmp-httstream
 This package provides a streamer plugin for LeechCraft player
 to stream music from LMP via HTTP.
-
 
 %package lmp-mtpsync
 Summary:        LeechCraft MtpSync Module

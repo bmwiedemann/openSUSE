@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Sep  6 12:51:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Build with modern ffmpeg
+
+-------------------------------------------------------------------
 Mon Jul 20 07:37:09 UTC 2026 - Dmitriy Perlow <dap.darkness@gmail.com>
 
 - Fixed clang >= 21 build requirenment;
