@@ -35,6 +35,7 @@ Source1:        https://archive.mariadb.org/connector-c-%{version}/%{name}-%{ver
 # Imported from keyserver based on keyid @ https://mariadb.com/kb/en/mariadb-enterprise/mariadb-enterprise-installation-guide/
 Source2:        mariadb.keyring
 Source3:        baselibs.conf
+Patch1:         ead038d.patch
 Patch4:         private_library.patch
 BuildRequires:  cmake
 BuildRequires:  curl-devel

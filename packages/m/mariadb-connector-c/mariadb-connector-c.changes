@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 14:53:05 UTC 2026 - Adam Majer <adam.majer@suse.de>
+
+- ead038d.patch: fix regresssion in mysql_stmt_bind_result (bsc#1273612)
+
+-------------------------------------------------------------------
 Sat Jun 20 06:58:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 3.4.9
   * private_library.patch rebased onto the restructured libmariadb
     install block (NAMELINK_COMPONENT)
+  * Fix CVE-2026-44172, mysql_real_escape_string() incorrectly handled
+    big5 (bsc#1266438)
 - Drop patches fixed/superseded upstream:
   * mariadb-connector-c-3.4.5-const-correctness.patch
   * mariadb-connector-c-3.4.5-const-correctness-2.patch (upstream now
