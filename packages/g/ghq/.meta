@@ -1,0 +1,4 @@
+<package name="ghq" project="openSUSE:Factory">
+  <title>Remote repository management made easy</title>
+  <description>ghq provides a way to organize remote repository clones, like &quot;go get&quot; does. When you clone a remote repository with &quot;ghq get&quot;, ghq creates a directory under a root directory (~/ghq by default) using the repository URL's host and path.</description>
+</package>
