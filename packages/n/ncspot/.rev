@@ -166,4 +166,34 @@ Therefore it would be important to have the package available in the main repos.
 </comment>
     <requestid>1355710</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8aaa82a83b96169600bf5a54f35fd451</srcmd5>
+    <version>1.4.0</version>
+    <time>1788879535</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  * chore: pin vergen to 9.0.6 to fix build
+  * chore: Prepare for 1.4.0
+  * chore: `cargo update`
+  * chore(deps): bump the cargo group across 1 directory with 6 updates
+  * fix(auth): Handle new refresh token protocol
+  * chore(deps): bump quinn-proto from 0.11.14 to 0.11.16
+  * chore(toolchain): update (#1849)
+  * chore(deps): bump the cargo group across 1 directory with 10 updates
+  * chore(deps): bump the cargo group with 3 updates
+  * chore(deps): bump the cargo group with 2 updates
+  * [create-pull-request] automated change
+  * chore(deps): bump actions/cache from 5 to 6 in the github-actions group
+  * chore(deps): bump actions/checkout in the github-actions group
+  * fix(mpris): prevent volume update before instance created
+  * chore(deps): bump the cargo group with 3 updates
+  * fix: let escape close search screen
+  * feat: Replace ueberzug cover drawing with viuer
+  * chore(deps): bump regex from 1.12.3 to 1.12.4 in the cargo group
+  * [create-pull-request] automated change
+  * chore(deps): bump the cargo group with 2 updates
+  * chore(deps): bump the cargo group across 1 directory with 3 updates
+</comment>
+    <requestid>1376362</requestid>
+  </revision>
 </revisionlist>
