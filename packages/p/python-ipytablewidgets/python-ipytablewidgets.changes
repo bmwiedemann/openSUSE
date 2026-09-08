@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  6 08:08:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.3.4:
+  * switch to yarn
+  * enablement for python 3.14
+
+-------------------------------------------------------------------
 Wed Nov 13 15:02:54 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.3.2:

@@ -37,4 +37,14 @@
 - Required by python-vega 4.0</comment>
     <requestid>1223978</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>9df2b7973ab1180f1d7d703e5d6d72e0</srcmd5>
+    <version>0.3.4</version>
+    <time>1788879422</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.3.4:
+  * switch to yarn
+  * enablement for python 3.14</comment>
+    <requestid>1376002</requestid>
+  </revision>
 </revisionlist>
