@@ -980,4 +980,13 @@
   * sync with the nginx certbot subpackage</comment>
     <requestid>1367391</requestid>
   </revision>
+  <revision rev="85" vrev="1">
+    <srcmd5>59a754979ba0b96574a97da56c220839</srcmd5>
+    <version>5.8.0</version>
+    <time>1788880070</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.8.0
+  * certbot and its acme library now require cryptography&gt;=47.0.0</comment>
+    <requestid>1376371</requestid>
+  </revision>
 </revisionlist>

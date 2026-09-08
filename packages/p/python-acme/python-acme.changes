@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:02:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 5.8.0
+  * certbot and its acme library now require cryptography>=47.0.0
+
+-------------------------------------------------------------------
 Thu Jul 23 11:29:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 5.7.0
