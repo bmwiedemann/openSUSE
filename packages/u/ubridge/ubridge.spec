@@ -17,7 +17,7 @@
 
 
 Name:           ubridge
-Version:        1.2.2
+Version:        1.2.3
 Release:        0
 Summary:        Bridging between UDP tunnels, Ethernet and TAP interfaces
 License:        GPL-3.0-only
