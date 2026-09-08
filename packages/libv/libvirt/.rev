@@ -5147,4 +5147,15 @@ https://build.opensuse.org/requests/1354518
   bsc#1275863</comment>
     <requestid>1373862</requestid>
   </revision>
+  <revision rev="447" vrev="1">
+    <srcmd5>6fa64e9c908d9f77d95b4fb3ddb74e5e</srcmd5>
+    <version>12.7.0</version>
+    <time>1788879181</time>
+    <user>anag_factory</user>
+    <comment>- Update to libvirt 12.7.0
+  - CVE-2026-18917, CVE-2026-77158, CVE-2026-77159
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-7-0-2026-09-01</comment>
+    <requestid>1375858</requestid>
+  </revision>
 </revisionlist>

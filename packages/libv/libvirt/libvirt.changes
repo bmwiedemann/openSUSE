@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep  4 21:14:15 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.7.0
+  - CVE-2026-18917, CVE-2026-77158, CVE-2026-77159
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-7-0-2026-09-01
+
+-------------------------------------------------------------------
 Wed Aug 26 17:17:38 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - CVE-2026-77159: qemu: tpm: Avoid following symlinks when
