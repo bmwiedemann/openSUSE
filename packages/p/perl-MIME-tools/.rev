@@ -346,4 +346,26 @@
   	  &lt;s.ivanov@proxmox.com&gt; for pointing out this missing case.</comment>
     <requestid>1338066</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>532a1a3c15a27d341216cd0069dfcb0f</srcmd5>
+    <version>5.518.0</version>
+    <time>1788879490</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.518.0 (5.518)
+   see /usr/share/doc/packages/perl-MIME-tools/ChangeLog
+  5.518	  2026-08-26  Dianne Skoll &lt;dianne@skoll.ca&gt;
+  	* VERSION 5.518 RELEASED
+  	* Add tests for encoded &quot;boundary=XXX&quot; parameters and set
+  	  the ambiguous-parse flag if any are found.  Patch courtesy
+  	  of Dominik Csapak &lt;d.csapak@proxmox.com&gt;
+  	  MIME::tools chooses to decode encoded boundary parameters.
+  	  MUA behaviors differ; Claws-Mail decodes them while Thunderbird
+  	  does not.
+  	* Don't ignore invalid whitespace after &quot;boundary=XXX&quot; parameter.
+  	  Patch courtesy of Dominik Csapak &lt;d.csapak@proxmox.com&gt;
+  	* Ignore comments between tokens.  A header parameter can be
+  	  written foo(comment)=bar and it's the same as foo=bar.
+  	  Patch courtesy of Dominik Csapak &lt;d.csapak@proxmox.com&gt;</comment>
+    <requestid>1376319</requestid>
+  </revision>
 </revisionlist>
