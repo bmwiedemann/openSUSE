@@ -248,4 +248,17 @@
   * Update master for stable/2025.2</comment>
     <requestid>1370130</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>cdce33df52a73beed2602851e3b5964b</srcmd5>
+    <version>6.5.0</version>
+    <time>1788879325</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.5.0:
+  * Revert &quot;fix: BackupsManager.create() accept project_id
+    keyword argument&quot;
+  * fix: BackupsManager.create() accept project_id keyword
+    argument
+  * Add status and update capability for backups</comment>
+    <requestid>1376137</requestid>
+  </revision>
 </revisionlist>

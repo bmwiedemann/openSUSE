@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-freezerclient
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Freezer
 License:        Apache-2.0
