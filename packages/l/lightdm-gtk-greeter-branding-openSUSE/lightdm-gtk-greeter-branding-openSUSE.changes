@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Aug 11 21:31:34 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Set default NumLock state as it is defined in KBD_NUMLOCK
+  variable in /etc/sysconfig/keyboard using /run/numlock-on set by
+  kbdsettings.service from kbd package and numlockx default.
+
+-------------------------------------------------------------------
 Wed Aug 27 12:46:51 UTC 2025 - Takashi Iwai <tiwai@suse.com>
 
 - Correct the background picture file path (bsc#1248096)

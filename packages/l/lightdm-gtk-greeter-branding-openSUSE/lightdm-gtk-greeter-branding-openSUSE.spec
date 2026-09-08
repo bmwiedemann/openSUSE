@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter-branding-openSUSE
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Guido Berhoerster <gber@opensuse.org>.
 #
 # All modifications and additions to the file contributed by third parties
@@ -28,6 +28,7 @@ Group:          System/X11/Displaymanagers
 URL:            https://launchpad.net/lightdm-gtk-greeter
 Source0:        lightdm-gtk-greeter.conf
 Source1:        lightdm-gtk-greeter-opensuse.png
+Source2:        lightdm.conf
 BuildRequires:  lightdm
 BuildRequires:  lightdm-gtk-greeter
 # default background image
@@ -35,6 +36,7 @@ Requires:       wallpaper-branding
 # default gtk3 theme
 Requires:       gtk3-metatheme-greybird-geeko
 Requires:       lightdm-gtk-greeter = %{lightdm_gtk_greeter_version}
+Requires:       numlockx-default
 Provides:       lightdm-gtk-greeter-branding = %{lightdm_gtk_greeter_version}
 Conflicts:      otherproviders(lightdm-gtk-greeter-branding)
 Supplements:    packageand(lightdm-gtk-greeter:branding-openSUSE)
@@ -52,6 +54,7 @@ cp %{_defaultlicensedir}/lightdm-gtk-greeter/COPYING .
 
 %install
 install -D -p -m 644 %{SOURCE0} %{buildroot}%{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
+install -D -p -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/lightdm/lightdm.conf
 install -D -p -m 644 %{SOURCE1} %{buildroot}%{_datadir}/pixmaps/lightdm-gtk-greeter-opensuse.png
 
 %clean
@@ -61,6 +64,7 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %license COPYING
 %config(noreplace) %{_sysconfdir}/lightdm/lightdm-gtk-greeter.conf
+%config(noreplace) %{_sysconfdir}/lightdm/lightdm.conf
 %{_datadir}/pixmaps/lightdm-gtk-greeter-opensuse.png
 
 %changelog
