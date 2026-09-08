@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Sep  4 15:04:27 CEST 2026 - ma@suse.de
+
+- Show solver problem details per default in not-interactive mode
+  (bsc#1277790)
+  This way they see all details when capturing zypper's output
+  because the (d)etail button can't be pressed in not-interactive
+  mode.
+- version 1.14.101
+
+-------------------------------------------------------------------
+Thu Aug 27 11:56:47 CEST 2026 - ma@suse.de
+
+- Add --servicesd-dir global option to relocate
+  /etc/zypp/services.d (bsc#1257249)
+- version 1.14.100
+
+-------------------------------------------------------------------
+Fri Aug 14 10:50:50 CEST 2026 - ma@suse.de
+
+- info: check for missing positional args before systemSetup
+  (bsc#1274091)
+- Remove deprecated installRecommends option from zypper.conf.
+  The system wide default for all libzypp based applications is
+  defined in zypp.conf(5). It is not recommended to define this in
+  zypper exclusively.
+- BuildRequires:  libzypp-devel >= 17.38.0.
+  Code uses some of the new libzypp log and string tools.
+- version 1.14.99
+
+-------------------------------------------------------------------
 Fri Jun 12 12:15:30 CEST 2026 - ma@suse.de
 
 - Transactional systems: Delegate rw-commands to
