@@ -1767,6 +1767,7 @@
     <package name="libcjson1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libclamav12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libclammspack0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
+    <package name="libclamunrar12" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="libclang-cpp23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang13" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libclang_rt23" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->

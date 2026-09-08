@@ -176,6 +176,7 @@ unsorted:
   - NetworkManager-cloud-setup 
   - NetworkManager-config-server 
   - NetworkManager-devel 
+  - NetworkManager-devel-32bit 
   - NetworkManager-fortisslvpn 
   - NetworkManager-fortisslvpn-lang 
   - NetworkManager-iodine 
@@ -2354,6 +2355,14 @@ unsorted:
   - cln 
   - cln-devel 
   - clojure 
+  - clojure-bootstrap 
+  - clojure-build-poms 
+  - clojure-core-specs-alpha 
+  - clojure-core-specs-alpha-bootstrap 
+  - clojure-maven-plugin 
+  - clojure-maven-plugin-javadoc 
+  - clojure-spec-alpha 
+  - clojure-spec-alpha-bootstrap 
   - clone-master-clean-up 
   - cloud-hypervisor 
   - cloud-hypervisor-remote 
@@ -7128,6 +7137,10 @@ unsorted:
   - ghostview 
   - ghostwriter 
   - ghostwriter-lang 
+  - ghq 
+  - ghq-bash-completion 
+  - ghq-fish-completion 
+  - ghq-zsh-completion 
   - gi-docgen 
   - giac 
   - giac-devel 
@@ -15124,6 +15137,7 @@ unsorted:
   - libnetpbm11-32bit 
   - libnettle-devel 
   - libnettle-devel-32bit 
+  - libnewt0_52-32bit 
   - libnextcloudsync-devel 
   - libnextcloudsync0 
   - libnf2ff0 
@@ -15131,8 +15145,8 @@ unsorted:
   - libnfc-tools 
   - libnfc6 
   - libnfd1 
-  - libnfdump-1_7_8 
-  - libnffile-1_7_8 
+  - libnfdump-1_7_10 
+  - libnffile-1_7_10 
   - libnfnetlink-devel 
   - libnfnetlink0-32bit 
   - libnfs-devel 
@@ -15170,6 +15184,7 @@ unsorted:
   - libnl3-devel 
   - libnl3-devel-32bit 
   - libnlopt1 
+  - libnm0-32bit 
   - libnma-devel 
   - libnma-docs 
   - libnma-gtk4-devel 
@@ -15365,7 +15380,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio10 
   - libopenshot-devel 
-  - libopenshot27 
+  - libopenshot31 
   - libopenslide-devel 
   - libopenslide1 
   - libopensm9 
@@ -17258,6 +17273,9 @@ unsorted:
   - libwacom-tools 
   - libwacom9-32bit 
   - libwaffle-1-0 
+  - libwannier90_4 
+  - libwannier90_4_mpi-openmpi4 
+  - libwannier90_4_mpi-openmpi5 
   - libwapcaplet-devel 
   - libwapcaplet0 
   - libwasmedge0 
@@ -27623,8 +27641,6 @@ unsorted:
   - python313-python-ipware 
   - python313-python-iso639 
   - python313-python-jenkins 
-  - python313-python-jose 
-  - python313-python-jose-cryptography 
   - python313-python-json-logger 
   - python313-python-jsonschema-objects 
   - python313-python-keycloak 
@@ -31742,8 +31758,6 @@ unsorted:
   - python314-python-ipware 
   - python314-python-iso639 
   - python314-python-jenkins 
-  - python314-python-jose 
-  - python314-python-jose-cryptography 
   - python314-python-json-logger 
   - python314-python-jsonschema-objects 
   - python314-python-keycloak 
@@ -47273,6 +47287,7 @@ unsorted:
   - wxsqlite3-devel 
   - wxsvg 
   - x11-japanese-bitmap-fonts 
+  - x11docker 
   - x11perf 
   - x11vnc 
   - x11vnc-frontend 
