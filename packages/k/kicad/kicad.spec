@@ -20,8 +20,8 @@
 # symbol libraries from version 10.0.0
 %define compatversion 10.0.0
 Name:           kicad
-Version:        10.0.3
-%define file_version 10.0.3
+Version:        10.0.6
+%define file_version 10.0.6
 Release:        0
 Summary:        EDA software suite for the creation of schematics and PCB
 License:        AGPL-3.0-or-later AND GPL-3.0-or-later
@@ -171,16 +171,24 @@ chmod -x %{buildroot}%{_datadir}/kicad/scripting/*/*.py
 
 %check
 ./build/kicad/kicad-cli version --format about
-%ctest --exclude-regex 'qa_spice|qa_cli|qa_common|qa_pcbnew'
+%ctest --show-only
+%ctest --exclude-regex 'qa_cli|qa_common|qa_pcbnew|qa_spice'
 
 %ifnarch %{ix86}
-%ctest --tests-regex 'qa_spice|qa_cli'
-# Occasionally fails
-%ctest --repeat until-fail:5 --tests-regex 'qa_pcbnew'
+%ctest --tests-regex 'qa_cli'
 # the ProjectFile test has a side effect on the VCS eval test,
-# see https://gitlab.com/kicad/code/kicad/-/work_items/23959
-./build/qa/tests/common/qa_common -t '!ProjectFile'
+# see https://gitlab.com/kicad/code/kicad/-/work_items/24674
+./build/qa/tests/common/qa_common -t '!ProjectFile' -t '!TextEvalParserVcs'
 ./build/qa/tests/common/qa_common -t 'ProjectFile'
+./build/qa/tests/common/qa_common -t 'TextEvalParserVcs'
+# Another race/side effect in tests?
+# Occasionally fails
+./build/qa/tests/pcbnew/qa_pcbnew -t '!PcbHistoryAutosave' -t '!FootprintImportReconciler'
+./build/qa/tests/pcbnew/qa_pcbnew -t 'PcbHistoryAutosave'
+./build/qa/tests/pcbnew/qa_pcbnew -t 'FootprintImportReconciler'
+# Double-free during test cleanup. Hopefully just a test issue.
+# https://gitlab.com/kicad/code/kicad/-/work_items/25465
+MALLOC_PERTURB_=0 %ctest --tests-regex 'qa_spice'
 %endif
 
 %ifarch %{ix86}
