@@ -1,34 +1,81 @@
 -------------------------------------------------------------------
+Sun Sep  6 18:57:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 1.23.4:
+  * CVE-2026-XXXXX: The max_items security limit was not enforced
+    for the child boxes of iinf, so a file could declare an
+    unbounded number of items.
+  * CVE-2026-XXXXX: Unbounded recursion in the reference-cycle
+    check crashed the parser on a long chain of derived items,
+    without bound when the item-count limit is disabled.
+  * CVE-2026-XXXXX: Permanent decoder deadlock through a lock-order
+    inversion in parallel grid tile decoding (enabled by default).
+  * CVE-2026-XXXXX: Heap out-of-bounds read in the encoder pluginsi
+    for images whose luma and chroma bit depths differ.
+  * CVE-2026-XXXXX: Unreclaimable memory leak in
+    heif_track_get_next_raw_sequence_sample().
+  * CVE-2026-XXXXX: Heap out-of-bounds read in the WebCodecs
+    decoder plugin
+- includes fixes from 1.23.3:
+  * CVE-2026-XXXXX: Heap buffer overflow (write) in the
+    uncompressed (unci) mixed-interleave decoder when the two
+    chroma components declare different bit depths.
+  * CVE-2026-XXXXX: Permanent decoder deadlock through a reference
+    cycle between an image and its alpha auxiliary image.
+  * CVE-2026-XXXXX: Heap out-of-bounds read in the YCbCr 4:2:0 to
+    16-bit interleaved RGB conversion when the chroma planes have a
+    lower bit depth than luma
+  * CVE-2026-XXXXX: Heap buffer overflow in the SVT-AV1 encoder
+    plugin when encoding a high-bit-depth alpha channel, and a
+    double free on its send-picture error path.
+  * CVE-2026-84451: Incomplete fix: the tile range check of the
+    unci decoder (without icef) could still overflow, allowing an
+    out-of-bounds read
+  * CVE-2026-XXXXX: Heap out-of-bounds read when converting odd-
+    height 4:2:0 frames of an uncompressed (uncv) image sequence to
+    RGB.
+  * CVE-2026-XXXXX: Out-of-bounds read in the RGB to YCbCr identity-
+    matrix color conversion when the R, G, and B planes have
+    different bit depths
+  * CVE-2026-84450: A clap property combined with an oversized ispe
+    reached an assert() in the Fraction arithmetic and aborted the
+    process (incomplete fix). An error is returned instead.
+  * Fix Several smaller findings
+  * Fix Undefined behavior (negative shift) in the HDR bit-depth
+    up-conversion for target bit depths above 16. Such conversions
+    are now rejected.
+  * A number of bug fixes
+
+-------------------------------------------------------------------
 Thu Aug 27 16:25:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 1.23.2:
-  * CVE-2026-XXXXX (GHSA-g89c-p67h-r497) Heap buffer overflow in
-    scale_nearest_neighbor() via duplicate alpha planes from nested
-    iden/auxl items. (critical)
-  * (GHSA-2jg2-4ch7-h545) Out-of-bounds read and write in derived-
-    item and pixel-plane handling. Through iden and auxl item
-    chains, a crafted file could attach pixel planes whose size
-    differs from the image geometry; crop, scale, and plane-
-    extraction code then indexed those planes with the wrong size.
-    A working code-execution exploit was confirmed. Plane sizes are
-    now validated wherever they are consumed. (critical)
-  * CVE-2026-XXXXX (GHSA-24wx-9w62-c96w) brotli/zlib decompression
-    of mime metadata and unci image data had no effective output-
-    size limit, so a decompression bomb could exhaust memory.
-    Decompressed output is now bounded by the security limits.
-    (high)
-  * CVE-2026-XXXXX (GHSA-x8xm-cm2c-cfc8) Chains of derived-image
-    references (grid, iovl, iden) bypassed decode caching and
-    memory limits, causing CPU and memory amplification. (high)
-  * CVE-2026-XXXXX (GHSA-xw34-mjcp-jqh8) Sequence sample-timing
-    initialization could produce non-terminating decode loops and
-    unbounded memory, bypassing max_sequence_frames. (high)
-  * CVE-2026-XXXXX (GHSA-j264-xvrp-5v7q) Out-of-bounds write in the
-    unci encoder when heif_context_add_image_tile() is given a tile
-    whose planes do not match its declared size. (high)
-  * CVE-2026-XXXXX (GHSA-p58j-h3vm-3fp5) Heap out-of-bounds read in
-    the inline-mask region API when mask_data_len does not match
-    the region geometry. (medium)
+  * CVE-2026-84383: Heap buffer overflow in
+    scale_nearest_neighbor() via duplicate alpha planes from
+    nested iden/auxl items. (boo#CVE-2026-84383)
+  * Out-of-bounds read and write in derived-item and pixel-plane
+    handling. Through iden and auxl item chains, a crafted file
+    could attach pixel planes whose size differs from the image
+    geometry; crop, scale, and plane-extraction code then indexed
+    those planes with the wrong size. A working code-execution
+    exploit was confirmed. Plane sizes are now validated wherever
+    they are consumed. (boo#1279444)
+  * CVE-2026-84384: brotli/zlib decompression of mime metadata
+    and unci image data had no effective output-size limit, so a
+    decompression bomb could exhaust memory. Decompressed output
+    is now bounded by the security limits. (boo#1279445)
+  * CVE-2026-84447: Chains of derived-image references (grid,
+    iovl, iden) bypassed decode caching and  memory limits, causing
+    CPU and memory amplification. (boo#1279446)
+  * CVE-2026-84446: Sequence sample-timing initialization could
+    produce non-terminating decode loops and unbounded memory,
+    bypassing max_sequence_frames. (boo#1279447)
+  * CVE-2026-84444: Out-of-bounds write in the unci encoder when
+    heif_context_add_image_tile() is given a tile whose planes do
+    not match its declared size. (boo#1279448)
+  * CVE-2026-84448: Heap out-of-bounds read in the inline-mask
+    region API when mask_data_len does not match the region
+    geometry. (boo#1279449)
   * C++ exceptions such as std::bad_alloc can no longer escape the
     C API read/decode entry points; they are returned as a
     heif_error instead of aborting the process
