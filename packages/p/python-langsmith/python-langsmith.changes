@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:44:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.2:
+  * Add 429 and 500 to the urllib3 status_forcelist: 429 was
+    retried only when the response carried Retry-After, which
+    neither the ingest route nor the load balancer sets, so
+    rate-limited batches were dropped after one attempt; 500 was
+    retried only by the app loop, with no backoff
+  * Sandbox snapshots take a tag; name:tag is a mutable pointer
+    to immutable content and defaults to latest, so repeated
+    captures no longer collide on a numeric suffix
+  * Sandbox websocket connects retry on HTTP 429, honouring a
+    finite Retry-After and reusing the command id so reconnects
+    stay idempotent
+
+-------------------------------------------------------------------
 Wed Sep  2 06:19:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.1:

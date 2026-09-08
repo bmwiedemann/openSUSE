@@ -284,4 +284,25 @@ version floor at or below 0.8.18. No Factory consumer caps langsmith
 (langchain-core &gt;= 0.3.45, skillspector &gt;= 0.7.30, both floors).</comment>
     <requestid>1375295</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>f0be9c504fe37937564e6ddd414f0fb9</srcmd5>
+    <version>0.12.2</version>
+    <time>1788879204</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.2
+
+- Add 429 and 500 to the urllib3 status_forcelist: 429 was retried only
+  when the response carried Retry-After, which neither the ingest route
+  nor the load balancer sets, so rate-limited batches were dropped after
+  one attempt; 500 was retried only by the app loop, with no backoff
+- Sandbox snapshots take a tag; name:tag is a mutable pointer to
+  immutable content and defaults to latest
+- Sandbox websocket connects retry on HTTP 429, honouring a finite
+  Retry-After and reusing the command id
+
+Built locally on aarch64 against openSUSE_Tumbleweed: green, 515 tests
+passed per flavour (python313, python314), rpmlint 0 errors/0 warnings/
+0 badness. source_validator clean.</comment>
+    <requestid>1376073</requestid>
+  </revision>
 </revisionlist>
