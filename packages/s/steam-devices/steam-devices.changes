@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Aug 02 08:46:01 UTC 2026 - Jon Brightwell <jon@moozaad.co.uk>
+
+- Update to version 20260625+git.22ec85e:
+  * Fix Valve hidraw devices with no associated input node
+  * steam-input.rules: Only enable wakeup if the attribute exists
+  * Add other Switch 2 controllers over USB
+  * Limit Valve bluetooth devices to VID-only, expose evdevs too
+  * Update 60-steam-input.rules
+  * allow wakeup from Valve devices
+- Update udev-joystick-blacklist to 20250414
+- Changed to noarch
+
+-------------------------------------------------------------------
 Tue Mar 24 09:48:26 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Conditionally require selinux-policy-targeted-gaming on

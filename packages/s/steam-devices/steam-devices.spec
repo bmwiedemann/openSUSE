@@ -17,7 +17,7 @@
 
 
 Name:           steam-devices
-Version:        20251018+git.4d7e6c1
+Version:        20260625+git.22ec85e
 Release:        0
 Summary:        Device support for Steam-related hardware
 License:        MIT
@@ -31,6 +31,7 @@ Obsoletes:      steam-vr <= 1.0.0.78
 Provides:       steam-controller = 1.0.0.78
 Provides:       steam-vr = 1.0.0.78
 Requires:       (selinux-policy-targeted-gaming if selinux-policy-targeted)
+BuildArch:      noarch
 
 %description
 The Steam Controller features dual trackpads, HD haptic feedback, dual-stage
