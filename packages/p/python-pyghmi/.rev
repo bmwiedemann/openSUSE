@@ -587,4 +587,14 @@
   * Update SMM3 to handle common issue with FFDC</comment>
     <requestid>1364108</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>750313e0e92ff962a4044152e0d53217</srcmd5>
+    <version>1.6.19</version>
+    <time>1788879339</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.19:
+  * Enhance SEL handling
+  * xFix missing params to get_cpu_inventory function</comment>
+    <requestid>1376152</requestid>
+  </revision>
 </revisionlist>

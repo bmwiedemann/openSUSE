@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:53:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.6.19:
+  * Enhance SEL handling
+  * xFix missing params to get_cpu_inventory function
+
+-------------------------------------------------------------------
 Mon Jul  6 19:33:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.18:
