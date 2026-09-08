@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep  5 11:07:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable decoders in ffmpeg-9-mini that need no extra build
+  dependencies. This makes it possible for some packages to run
+  testsuites with e.g. WAV files.
+
+-------------------------------------------------------------------
 Tue Sep  1 15:38:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(SPIRV-Headers) BuildRequires: Support swscale

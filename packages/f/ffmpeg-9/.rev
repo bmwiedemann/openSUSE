@@ -32,4 +32,14 @@
   SPIR-V backend.</comment>
     <requestid>1375215</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>2c8a5e49ce7420c26616b2fb99dba2d7</srcmd5>
+    <version>9.0.1</version>
+    <time>1788879143</time>
+    <user>anag_factory</user>
+    <comment>- Enable decoders in ffmpeg-9-mini that need no extra build
+  dependencies. This makes it possible for some packages to run
+  testsuites with e.g. WAV files.</comment>
+    <requestid>1376011</requestid>
+  </revision>
 </revisionlist>
