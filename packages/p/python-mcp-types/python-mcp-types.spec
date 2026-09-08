@@ -17,7 +17,7 @@
 
 
 Name:           python-mcp-types
-Version:        2.1.1
+Version:        2.2.0
 Release:        0
 Summary:        Model Context Protocol wire types
 License:        MIT

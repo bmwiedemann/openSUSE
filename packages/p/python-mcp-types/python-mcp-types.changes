@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:26:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.0:
+  * Replace pydantic RootModel wrappers with type aliases and
+    TypeAdapter validation; wire formats are unchanged
+
+-------------------------------------------------------------------
 Tue Sep  1 06:30:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 2.1.1):
