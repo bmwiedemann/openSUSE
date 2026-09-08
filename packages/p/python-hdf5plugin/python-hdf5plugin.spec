@@ -76,7 +76,8 @@ export HDF5PLUGIN_OPENMP=False
 export HDF5PLUGIN_NATIVE=False
 export HDF5PLUGIN_CPP11=True
 export HDF5PLUGIN_CPP14=True
-export HDF5PLUGIN_SSE3=False
+export HDF5PLUGIN_SSSE3=False
+export HDF5PLUGIN_AVX2=False
 export HDF5PLUGIN_AVX512=False
 # Note: it is possible to remove all filters from embedding and make this a pure API package,
 # But registering system provided filters for consumers like python-fabio is not straight forward

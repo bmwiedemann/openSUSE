@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:27:18 UTC 2026 - Bernhard M. Wiedemann <bwiedemann@suse.de>
+
+- Pin the SIMD build options for reproducible builds (boo#1100677)
+
+-------------------------------------------------------------------
 Fri Oct 24 13:13:32 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 6.0.0
