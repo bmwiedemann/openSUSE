@@ -712,4 +712,14 @@
   * Drop support for Python 3.10</comment>
     <requestid>1368880</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>3ffb607cf0848600fef607eaf33404b2</srcmd5>
+    <version>4.16.0</version>
+    <time>1788879293</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.16.0:
+  * Make sphinx and docutils optional dependencies for sphinxext
+  * Fix usage of cmd2.Statement</comment>
+    <requestid>1376130</requestid>
+  </revision>
 </revisionlist>

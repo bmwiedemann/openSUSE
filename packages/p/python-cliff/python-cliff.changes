@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:15:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.16.0:
+  * Make sphinx and docutils optional dependencies for sphinxext
+  * Fix usage of cmd2.Statement
+
+-------------------------------------------------------------------
 Fri Jul 31 17:09:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.15.0:
