@@ -2,7 +2,7 @@
 # spec file for package waylyrics
 #
 # Copyright (c) 2026 mantarimay
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@ Name:           waylyrics
 Version:        0.4.0
 Release:        0
 Summary:        The furry way to show desktop lyrics
-License:        MIT
+License:        GPL-3.0-or-later AND MIT AND MPL-2.0
 URL:            https://github.com/waylyrics/waylyrics
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
