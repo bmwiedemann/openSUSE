@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:13:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.2.2:
+  * Fix crash in the simplify tool when switching layers
+  * Processing: fix crash when a non thread safe algorithm fails,
+    and restore the raster calculator's missing creation options
+  * Fix long UI hang when opening the browser context menu on STAC
+    parquet datasets
+  * Labelling: keep parallel label placement stable, and stop
+    applying the text vertical offset twice
+  * ArcGIS REST renderers now support transparency
+  * Expressions: lpad/rpad no longer misbehave with an empty fill
+    character
+  * crssync understands the PROJ 9.9 tmerczoned projection method
+  * Auth database storage: refresh the table list and detect the
+    storage capabilities correctly on init
+  * Fix memory leaks in the vector layer addPart code paths
+  * Dark themes: fix dockwidget close buttons and side tab styling
+  * Updated translations; see upstream's release notes for the rest
+- Raise the build dependency floors to what QGIS 4.2 really needs:
+  cmake 3.22, flex 2.6, Python 3.11, Proj 8.1 and Qt 6.4
+
+-------------------------------------------------------------------
 Sun Aug  2 18:21:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.2.1:

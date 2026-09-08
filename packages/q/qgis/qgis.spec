@@ -33,7 +33,7 @@ Name:           qgis
 # builders out of memory here; the build is slow enough without it.
 %define _lto_cflags %{nil}
 
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        A Geographic Information System (GIS)
 # The COPYING file carries the GPL-2.0 text, but the source headers throughout
@@ -55,7 +55,7 @@ BuildRequires:  %{mypython}-OWSLib
 BuildRequires:  %{mypython}-PyQt6-QScintilla
 BuildRequires:  %{mypython}-PyQt6-devel
 BuildRequires:  %{mypython}-PyYAML
-BuildRequires:  %{mypython}-devel >= 3.7
+BuildRequires:  %{mypython}-devel >= 3.11
 BuildRequires:  %{mypython}-psycopg2
 BuildRequires:  %{mypython}-pygments
 BuildRequires:  %{mypython}-pyqt-builder
@@ -64,7 +64,7 @@ BuildRequires:  %{mypython}-termcolor
 BuildRequires:  FastCGI-devel
 BuildRequires:  PDAL-devel
 BuildRequires:  bison >= 2.4
-BuildRequires:  cmake >= 3.12.0
+BuildRequires:  cmake >= 3.22.0
 # %%build runs crssync, which loads libgdal and through it, via libarmadillo
 # and libarpack, libopenblas.so.0. That path is a %%ghost created by
 # update-alternatives from compatlibopenblas_serial0, and openblas advertises
@@ -75,7 +75,7 @@ BuildRequires:  cmake >= 3.12.0
 # soname it cannot make loadable; drop this once science/openblas#8 is in.
 BuildRequires:  compatlibopenblas_serial0
 BuildRequires:  fdupes
-BuildRequires:  flex >= 2.5.6
+BuildRequires:  flex >= 2.6
 BuildRequires:  gcc-c++
 BuildRequires:  geos-devel >= 3.9
 BuildRequires:  libspatialindex-devel
@@ -103,7 +103,7 @@ BuildRequires:  cmake(Qt63DInput)
 BuildRequires:  cmake(Qt63DLogic)
 BuildRequires:  cmake(Qt63DRender)
 BuildRequires:  cmake(Qt6Concurrent)
-BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core) >= 6.4.0
 BuildRequires:  cmake(Qt6Core5Compat)
 BuildRequires:  cmake(Qt6DBus)
 BuildRequires:  cmake(Qt6Gui)
@@ -138,7 +138,7 @@ BuildRequires:  pkgconfig(netcdf)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(pdal) >= 2.2.0
-BuildRequires:  pkgconfig(proj) >= 7.2.0
+BuildRequires:  pkgconfig(proj) >= 8.1
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(protobuf-lite)
 BuildRequires:  pkgconfig(spatialite) >= 4.2.0
