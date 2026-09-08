@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:38:57 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 4.440.0 (4.44)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+
+  4.44 2026-09-02 (rurban)
+  	- Fix canonical sort infinite loop (GH #252 amelchio): malformed UTF-8 keys
+  	  (e.g. Latin-1 byte strings mixed with Unicode) made utf16_cmp
+  	  treat the decoder's (STRLEN)-1 malformed sentinel as a length,
+  	  wrapping the buffer pointer. Now checked as 0 or > remaining length.
+
+-------------------------------------------------------------------
 Sun Jul 19 07:36:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 4.430.0 (4.43)

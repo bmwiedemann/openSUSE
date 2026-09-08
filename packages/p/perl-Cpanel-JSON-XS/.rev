@@ -419,4 +419,18 @@
             to skip only on double/80-bit-ld where %g naturally uses %e for large values.</comment>
     <requestid>1366954</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>86018fb8047f9c47ae570bed35f671ad</srcmd5>
+    <version>4.440.0</version>
+    <time>1788879494</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.440.0 (4.44)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+  4.44 2026-09-02 (rurban)
+  	- Fix canonical sort infinite loop (GH #252 amelchio): malformed UTF-8 keys
+  	  (e.g. Latin-1 byte strings mixed with Unicode) made utf16_cmp
+  	  treat the decoder's (STRLEN)-1 malformed sentinel as a length,
+  	  wrapping the buffer pointer. Now checked as 0 or &gt; remaining length.</comment>
+    <requestid>1376324</requestid>
+  </revision>
 </revisionlist>
