@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.2:
+  * New malloc_graph_abort() to tear down an incomplete malloc graph
+    safely, aimed at a hard crash on workflow cancel; it lives in the
+    native allocator, which this build does not compile
+
+-------------------------------------------------------------------
 Wed Sep  2 14:43:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.0:

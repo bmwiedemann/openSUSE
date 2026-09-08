@@ -6,8 +6,8 @@ PyTorch carries a local version label, which is how the upstream wheels are
 built but not how a distribution builds it: openSUSE's PyTorch reports a plain
 "2.12.0a0". The very version.py that detect_vendor() executes also defines the
 authoritative "cuda" and "hip" attributes, so read those first and keep the
-substring test as a fallback. This half matches the pending upstream change in
-Comfy-Org/comfy-aimdo#84.
+substring test as a fallback. This half matched Comfy-Org/comfy-aimdo#84, which
+upstream closed without merging, so the patch stays downstream.
 
 When neither is set, PyTorch genuinely has no CUDA and no ROCm support, and
 there is no allocator that could be loaded. init() previously logged

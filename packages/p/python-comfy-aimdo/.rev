@@ -98,4 +98,17 @@ Patch0 is still required (upstream PR #84 still open) and applies with no fuzz.
 </comment>
     <requestid>1375418</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>0f4ae0204f5f546c5d4cf594d9de3e07</srcmd5>
+    <version>0.5.2</version>
+    <time>1788879263</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.2.
+
+Purely additive on the Python side: adds malloc_graph_abort() to tear down an
+incomplete malloc graph safely (fixes a hard crash on workflow cancel). No
+exported name removed. The downstream vendor-detection patch still applies
+unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.</comment>
+    <requestid>1376110</requestid>
+  </revision>
 </revisionlist>
