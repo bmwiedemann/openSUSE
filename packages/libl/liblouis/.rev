@@ -652,4 +652,30 @@ not all subpackages need the full blurb. (forwarded request 530874 from jengelh)
     vulnerabilities were fixed, and the documentation was improved.</comment>
     <requestid>1361058</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>80755d2c2d6d36a0c05d801307574f3c</srcmd5>
+    <version>3.39.0</version>
+    <time>1788879178</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.39.0:
+  + A lot of dedicated work by Bue, Tiago, Clive, Leonard,
+    Anthony, Andrey, Dimitar, Danil Kostenkov, Dmitriy Lazarev,
+    Christian Comaschi and Seeing Hands went into this release,
+    and as always Bert did a lot of the work that holds it all
+    together. It adds braille for Haitian Creole and for Māori,
+    the latter following the policy of the Braille Authority of
+    New Zealand Aotearoa Trust, which also brings new tables for
+    English text in New Zealand. The Portuguese grade 1 table has
+    been thoroughly overhauled, the English grade 3 table gained
+    more than 5000 new hyphenation patterns, and the Russian tables
+    gained mathematical braille definitions as well as the last of
+    the grade 1 contractions.  The Bulgarian, Italian and Biblical
+    Hebrew tables all back-translate considerably better than
+    before, and the UEB grade 2 shortforms have been cleaned up,
+    which also makes the compiled table smaller. On the technical
+    side several memory safety issues were fixed, building with
+    clang and MSVC on Windows works again, and the ~spacing~
+    parameter of the translation functions has been deprecated.</comment>
+    <requestid>1376128</requestid>
+  </revision>
 </revisionlist>

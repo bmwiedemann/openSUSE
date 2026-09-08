@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep  6 01:13:09 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Update to version 3.39.0:
+  + A lot of dedicated work by Bue, Tiago, Clive, Leonard,
+    Anthony, Andrey, Dimitar, Danil Kostenkov, Dmitriy Lazarev,
+    Christian Comaschi and Seeing Hands went into this release,
+    and as always Bert did a lot of the work that holds it all
+    together. It adds braille for Haitian Creole and for Māori,
+    the latter following the policy of the Braille Authority of
+    New Zealand Aotearoa Trust, which also brings new tables for
+    English text in New Zealand. The Portuguese grade 1 table has
+    been thoroughly overhauled, the English grade 3 table gained
+    more than 5000 new hyphenation patterns, and the Russian tables
+    gained mathematical braille definitions as well as the last of
+    the grade 1 contractions.  The Bulgarian, Italian and Biblical
+    Hebrew tables all back-translate considerably better than
+    before, and the UEB grade 2 shortforms have been cleaned up,
+    which also makes the compiled table smaller. On the technical
+    side several memory safety issues were fixed, building with
+    clang and MSVC on Windows works again, and the ~spacing~
+    parameter of the translation functions has been deprecated.
+
+-------------------------------------------------------------------
 Sat Jun 13 16:39:04 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 3.38.0:
