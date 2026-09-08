@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:45:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.0.0:
+  * Replace deprecated datetime.datetime.utcnow
+  * Add node label and taint support to nodegroups
+  * Support microversion 1.13: replace stack_id with cluster_id
+    in clusters
+  * CI: Bump hacking to 8.1.0
+  * Fix --os-container-infra-api-version with microversion
+    strings
+  * Migrate setup configuration to pyproject.toml
+  * Rework coe cluster/nodegroup/template set
+  * Move display attribute lists to v1 manager modules
+  * Remove deprecated apiclient indirection layer
+  * Remove legacy magnum CLI and shell infrastructure
+  * Remove backward-compatibility shims from Client and legacy
+    shell
+  * Add test certs from unit testing to ignore
+  * Drop support for Python 3.8, 3.9 and 3.10
+  * Add pyproject.toml to support pip 23.1
+  * Remove url tags from README
+  * Remove legacy 'container' service type fallback
+  * Remove deprecated docker storage driver warning in OSC
+    cluster template
+  * Remove deprecated CLI argument aliases from legacy shell
+    commands
+  * Add option to set driver in cluster_template
+  * CI: Use magnum Zuul queue
+
+-------------------------------------------------------------------
 Thu Aug  6 20:14:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.11.0:

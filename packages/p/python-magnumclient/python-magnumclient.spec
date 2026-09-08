@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-magnumclient
-Version:        4.11.0
+Version:        5.0.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Magnum
 License:        Apache-2.0
@@ -100,7 +100,6 @@ install -p -D -m 644 tools/magnum.bash_completion %{buildroot}%{_sysconfdir}/bas
 %license LICENSE
 %{python_sitelib}/magnumclient
 %{python_sitelib}/python_magnumclient-%{version}.dist-info
-%{_bindir}/magnum
 %{_mandir}/man1/magnum.1.*
 %{_sysconfdir}/bash_completion.d/magnum.bash_completion
 
