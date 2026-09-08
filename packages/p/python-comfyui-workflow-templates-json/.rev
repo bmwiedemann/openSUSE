@@ -112,4 +112,16 @@ python-comfyui-workflow-templates 0.11.54, whose floor is
 -json &gt;= 0.1.66.</comment>
     <requestid>1375578</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>c85078e4a3dc3ae4a86e454af5c1d503</srcmd5>
+    <version>0.1.68</version>
+    <time>1788879256</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.68.
+
+Adds the workflow definitions for the new Anthropic Claude Fable 5.1, Meta Muse
+Image, MiniMax H3 Max Turbo and Recraft V4 style-reference templates. Data-only
+change.</comment>
+    <requestid>1376106</requestid>
+  </revision>
 </revisionlist>
