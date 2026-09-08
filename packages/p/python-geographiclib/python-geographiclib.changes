@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:07:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1:
+  * Fix the inverse geodesic solution for strongly prolate
+    ellipsoids: sig12 < 1 was wrongly taken as proof that the
+    meridional geodesic is the shortest one (new GeodSolve100 test)
+  * Relax the bisection tolerance tolb_ and always leave the Newton
+    loop at maxit2_ instead of bounding the loop itself (new
+    GeodSolve99 test)
+  * Reject a Newton step of |dalp1| >= pi before computing its sine
+    (upstream MPFR fix)
+  * Annotate Geodesic.WGS84 on the class so static type checkers
+    resolve it
+  * Static metadata moved to setup.cfg; sdist ships pyproject.toml
+    instead of setup.py and MANIFEST.in
+- Add setuptools >= 42 build floor, required by upstream's
+  build-system.
+- Drop obsolete Group tag.
+
+-------------------------------------------------------------------
 Tue Jun 17 04:47:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update version to 2.0:
