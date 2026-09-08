@@ -17,7 +17,7 @@
 
 
 Name:           ex_doc
-Version:        0.38.1
+Version:        0.40.3
 Release:        0
 Summary:        ExDoc produces HTML and online documentation for Elixir projects
 License:        Apache-2.0 AND MIT
@@ -25,8 +25,15 @@ Group:          Development/Libraries/Other
 URL:            https://github.com/elixir-lang/ex_doc
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
+Source2:        ex_doc-rpmlintrc
+# Upstream fixes for reproducable builds - sflees@suse.de
+# https://github.com/erlang/otp/issues/4417
+Patch0:         fix-upstream-reprod-epub.patch
+Patch1:         fix-upstream-reprod-html.patch
+Patch2:         fix-upstream-reprod-utils.patch
 BuildRequires:  elixir >= 1.15
 BuildRequires:  elixir-hex
+BuildRequires:  strip-nondeterminism >= 1.15
 Obsoletes:      elixir-ex_doc < %{version}
 Provides:       elixir-ex_doc = %{version}
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,7 +46,7 @@ ExDoc is a tool to generate documentation for your Elixir projects. In case you
 are looking for documentation for Elixir itself, check out Elixir's website.
 
 %prep
-%autosetup -a1 -v
+%autosetup -a1 -v -p1
 
 %build
 export LANG=en_US.UTF-8
@@ -50,6 +57,7 @@ export MIX_PATH=%{elixir_libdir}/hex/ebin
 %install
 sed -i -e '1s|/usr/bin/env escript|/usr/bin/escript|' ex_doc
 install -D -m 0755 ex_doc %{buildroot}%{_bindir}/ex_doc
+strip-nondeterminism --timestamp=${SOURCE_DATE_EPOCH:-1494270000} --clamp-timestamp %{buildroot}%{_bindir}/ex_doc
 
 %files
 %defattr(-,root,root)

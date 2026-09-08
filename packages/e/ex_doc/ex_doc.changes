@@ -1,4 +1,138 @@
 -------------------------------------------------------------------
+Wed Aug 05 23:15:57 UTC 2026 - Simon Lees <sflees@suse.de>
+
+- Update to version 0.40.3:
+  * Fix record autolink - and bump CI (#2240)
+  * Update makeup_erlang version (#2236)
+  * Raise on extras that conflict with reserved filenames
+  * Prevent #search selector from impacting user content
+  * Fix inline code font size in headings (#2220)
+  * Raise on duplicate entries in files in :extras (#2226)
+  * Fix false positive warning when linking to asset files (#2225)
+  * Fix markdown backend code fence language and opaque type display (#2215)
+  * Skip HTML comments when computing synopsis (#2214)
+  * Bump versions in release CI for prebuilt archives (#2213)
+  * Enable use of admonition blocks in cheatsheets (#2210)
+  * Bump minimatch from 3.1.2 to 3.1.5 in /assets (#2205)
+  * Make minor doc language fixes in source_url/rel section
+  * Improve docstring headings, including admonition blocks (#2202)
+  * Tweak ExDoc module doc text (#2203)
+  * The code for :meta seems to have dissapeared, so remove it from docs (#2200)
+  * epub: fix links to extra documents (#2199)
+  * epub: void elements, such `wbr`, must be terminated by the matching end-tag (#2198)
+  * markdown: conditionally copy assets to target dir (#2195)
+  * html: improve consistency across private helpers (#2196)
+  * Replace Karma with Vitest for JavaScript testing (#2197)
+  * use File.write! for everything (as in the html formatter)
+  * group resources just one time
+  * based on llmstxt.org the description should be a blockquote
+  * Add rel="nofollow" to external links in HTML output (#2193)
+  * Turn whitespace minification back on
+  * Improve distinction between docstring headings (H2-H4)
+  * Change headings' levels to match their context
+  * Fix Summary Types heading size
+  * Improve word-breaking of module names and sizing of main page titles (#2190)
+  * Include a description in llms.txt
+  * Do not include source links in markdown files
+  * Generate link to view markdown source
+  * Generate llms.txt instead of index.md
+  * Start marking formatter API public
+  * Reduce the places we pass markdown globally and extend Erlang coverage
+  * Make ExDoc module public
+  * Unify formatter return type
+  * Generate markdown before epub
+  * Have config as first argument in formatter functions
+  * Pass autolink structs around instead of options
+  * Make tests with global state sync
+  * Make source_beam a required argument
+  * Run mix format
+  * Move GroupMatcher to Config
+  * Simplify before_closing_*_tag callback handling
+  * Run retriever just once per formatter
+  * Rename markdown build file
+  * Rename to_string to to_html in DocAST
+  * Normalize formatter dispatch
+  * Split formatter configuration into its own module
+  * Remove unused fields from config
+  * Start unifying autolink rendering
+  * Simplify formatter API
+  * Remove filter_list and nodes_map
+  * Unify markdown and epub nav
+  * Clean up tests to rely less on integration
+  * Extract extras into their module for easier testing
+  * Simplify outputs and formatter
+  * Also default to markdown in the CLI
+  * Assert on types/specs rendered in markdown
+  * Keep specs and source_specs as distinct fields
+  * Simplify markdown template rendering
+  * Only discard unselectable for bash prompts, closes #2180
+  * Update esbuild and turn off whitespace minification (#2186)
+  * Support anchors on redirects (#2185)
+  * Prevent recent heading size changes from applying to docstring headings (#2184)
+  * Only include .html links in Swup
+  * Add Markdown formatter (#2148)
+  * Add the option to trim down the footer
+  * Ensure IDs rather than hrefs are stripped, closes #2175
+  * Show go to latest for prereleases, closes #2173
+  * Fix docs: Move `source_url` to `project` (#2172)
+  * Prevent fake italic in autocomplete text (#2168)
+  * Rename Search Hexdocs link to Go to package docs
+  * Better differentiate headings/sections (#2164)
+  * Document double-colon notation when autolink to Erlang entities (#2161)
+- Patches for reproducable builds in erlang
+  * fix-upstream-reprod-epub.patch
+  * fix-upstream-reprod-html.patch
+  * fix-upstream-reprod-utils.patch
+- Add ex_doc-rpmlintrc to suppress the noarch warning
+
+-------------------------------------------------------------------
+Wed Nov 05 12:02:38 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
+
+- Update to version 0.39.1:
+  * Release v0.39.1
+  * Italics for autocompletion header to not confuse with results
+  * Fix admonition on small screens
+  * Improve box shadow, minimize search button space
+  * Release v0.39.0
+  * Search style
+  * Tags are a list of atoms, closes #2159
+  * Update GitHub organization for Ecto in README (#2158)
+  * Support specifying packages under search
+  * Validate extra fields
+  * Allow multiple search engines (#2153)
+  * Streamline autocompletion
+  * Remove preview feature
+  * Remove tabindex from tabpanels
+  * Add inline code to admonition block test page headings (#2152)
+  * Update assets
+  * Update admonitions; simplify code bg/bdr colors
+  * Include admonition type in test block headings
+  * refactor: extract minimal shared logic between HTML and EPUB formatters (#2147)
+  * Add .cheatmd to epub to avoid broken links
+  * Clean up epub tests
+  * Safe guard exdoc:autocomplete-limit meta access (#2142)
+  * Release v0.38.4
+  * Fix position os stale icon
+  * Escape attributes
+  * Update assets
+  * Increase spacing in bottom actions
+  * Release v0.38.3
+  * Bump tmp from 0.2.1 to 0.2.4 in /assets (#2139)
+  * Load discovered makeup apps for cli (#2138)
+  * Fix typos (#2137)
+  * Improve docs for :skip_undefined_reference_warnings_on (#2136)
+  * Ensure default groups for docs are sorted alphabetically (#2132)
+  * Display description text in docs groups (#2113)
+  * Set minimum elixir on the `README.md` to 1.15 (#2130)
+  * Update assets
+  * Allow configuring autocomplete limit, and default it to 10 instead of 8 (#2129)
+  * Release v0.38.2
+  * Do not add fancy anchors around verbatim headers, closes #2128
+  * Update assets
+  * Move external link margin to the left (#2126)
+  * Fix typo in CHANGELOG.md (#2125)
+
+-------------------------------------------------------------------
 Mon Jun  2 15:34:02 UTC 2025 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Fix required elixir version

@@ -1,0 +1,22 @@
+From 5220946a5e918155ef38c2437b8bc8d392c06b9a Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <637990+bmwiedemann@users.noreply.github.com>
+Date: Mon, 27 Jul 2026 23:42:49 +0200
+Subject: [PATCH] Sort @standard_token_types for reproducible compilation (#75)
+
+---
+ lib/makeup/token/utils.ex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/makeup/token/utils.ex b/lib/makeup/token/utils.ex
+index 17f3d25..2317590 100644
+--- a/deps/makeup/lib/makeup/token/utils.ex
++++ b/deps/makeup/lib/makeup/token/utils.ex
+@@ -95,7 +95,7 @@ defmodule Makeup.Token.Utils do
+ 
+   @precedence Hierarchy.hierarchy_to_precedence(@hierarchy)
+   @token_to_class_map Hierarchy.style_to_class_map(@hierarchy)
+-  @standard_token_types Map.keys(@token_to_class_map)
++  @standard_token_types @token_to_class_map |> Map.keys() |> Enum.sort()
+ 
+   def precedence do
+     @precedence

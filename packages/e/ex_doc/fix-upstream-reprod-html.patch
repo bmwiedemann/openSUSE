@@ -1,0 +1,33 @@
+From a37128a2c334b35c1612eb4be9ff8a6c19115edf Mon Sep 17 00:00:00 2001
+From: "Bernhard M. Wiedemann" <637990+bmwiedemann@users.noreply.github.com>
+Date: Mon, 27 Jul 2026 09:48:59 +0200
+Subject: [PATCH] Use a fixed makeup group_prefix for reproducible HTML output
+ (#2255)
+
+makeup's lexers default to a random 10-digit group_prefix, generated
+anew on every lexer invocation, so every data-group-id attribute in
+highlighted code blocks differs between two builds of the same docs.
+
+Group ids only need to be unique within a single code block: the
+hover-highlighting JS (assets/js/makeup.js) resolves them through
+parentElement, never across blocks. Passing a fixed prefix therefore
+changes nothing functionally while making the generated HTML (and the
+content-hashed search_data/sidebar file names derived from it)
+reproducible.
+---
+ lib/ex_doc/doc_ast.ex | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/lib/ex_doc/doc_ast.ex b/lib/ex_doc/doc_ast.ex
+index c7f7ece2d..94a7b65a3 100644
+--- a/lib/ex_doc/doc_ast.ex
++++ b/lib/ex_doc/doc_ast.ex
+@@ -246,7 +246,7 @@ defmodule ExDoc.DocAST do
+             try do
+               Makeup.highlight_inner_html(code,
+                 lexer: lexer,
+-                lexer_options: lexer_opts,
++                lexer_options: Keyword.put_new(lexer_opts, :group_prefix, "group"),
+                 formatter_options: opts
+               )
+             rescue

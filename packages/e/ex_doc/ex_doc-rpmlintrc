@@ -1,0 +1,3 @@
+# ex_doc package IS arch dependent
+# See https://github.com/elixir-lang/elixir/issues/2785 for details
+addFilter("no-binary")

@@ -7,4 +7,41 @@
     <comment>New package ex_doc for building documentation in erlang package</comment>
     <requestid>1281998</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>50d275cd667d1de408ea2b1ec3a22759</srcmd5>
+    <version>0.40.3</version>
+    <time>1788879540</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.40.3:
+  * Fix record autolink - and bump CI (#2240)
+  * Update makeup_erlang version (#2236)
+  * Raise on extras that conflict with reserved filenames
+  * Prevent #search selector from impacting user content
+  * Fix inline code font size in headings (#2220)
+  * Raise on duplicate entries in files in :extras (#2226)
+  * Fix false positive warning when linking to asset files (#2225)
+  * Fix markdown backend code fence language and opaque type display (#2215)
+  * Skip HTML comments when computing synopsis (#2214)
+  * Bump versions in release CI for prebuilt archives (#2213)
+  * Enable use of admonition blocks in cheatsheets (#2210)
+  * Bump minimatch from 3.1.2 to 3.1.5 in /assets (#2205)
+  * Make minor doc language fixes in source_url/rel section
+  * Improve docstring headings, including admonition blocks (#2202)
+  * Tweak ExDoc module doc text (#2203)
+  * The code for :meta seems to have dissapeared, so remove it from docs (#2200)
+  * epub: fix links to extra documents (#2199)
+  * epub: void elements, such `wbr`, must be terminated by the matching end-tag (#2198)
+  * markdown: conditionally copy assets to target dir (#2195)
+  * html: improve consistency across private helpers (#2196)
+  * Replace Karma with Vitest for JavaScript testing (#2197)
+  * use File.write! for everything (as in the html formatter)
+  * group resources just one time
+  * based on llmstxt.org the description should be a blockquote
+  * Add rel=&quot;nofollow&quot; to external links in HTML output (#2193)
+  * Turn whitespace minification back on
+  * Improve distinction between docstring headings (H2-H4)
+  * Change headings' levels to match their context
+  * Fix Summary Types heading size</comment>
+    <requestid>1376369</requestid>
+  </revision>
 </revisionlist>
