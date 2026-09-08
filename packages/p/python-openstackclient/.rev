@@ -799,4 +799,29 @@ update to version 3.1.0
   * typing: Add missing hints to network.v2.dynamic_routing</comment>
     <requestid>1371530</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>b441fffaa3bbf3f4f50ca69cefd4374e</srcmd5>
+    <version>10.3.0</version>
+    <time>1788879326</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.3.0:
+  * Bump openstacksdk minimum version
+  * Network: Show ip_availability_details in ip availability
+  * Add network trunk subport commands
+  * Add leak-routes related options for subnets
+  * Add support for passing image size to Glance API
+  * Fix AddressesColumn sorting in server list output
+  * evpn: Fix evpn_vni column condition
+  * network: Remove the workaround for SDK for advertise_host
+    attribute
+  * Fix limit update with zero resource limit
+  * Add delete_on_termination support for server creation
+  * volume: Fix help text of 'volume transfer create'
+  * Fix limit list --service passing object instead of ID
+  * Add missing vnic-type choices to --vnic-type
+  * network: Add PVLAN filters to ports and networks
+  * tests: Remove 'volume service set' functional test
+  * tests: Move assert helpers to utils.TestCommand</comment>
+    <requestid>1376138</requestid>
+  </revision>
 </revisionlist>

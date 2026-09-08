@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:13:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.3.0:
+  * Bump openstacksdk minimum version
+  * Network: Show ip_availability_details in ip availability
+  * Add network trunk subport commands
+  * Add leak-routes related options for subnets
+  * Add support for passing image size to Glance API
+  * Fix AddressesColumn sorting in server list output
+  * evpn: Fix evpn_vni column condition
+  * network: Remove the workaround for SDK for advertise_host
+    attribute
+  * Fix limit update with zero resource limit
+  * Add delete_on_termination support for server creation
+  * volume: Fix help text of 'volume transfer create'
+  * Fix limit list --service passing object instead of ID
+  * Add missing vnic-type choices to --vnic-type
+  * network: Add PVLAN filters to ports and networks
+  * tests: Remove 'volume service set' functional test
+  * tests: Move assert helpers to utils.TestCommand
+
+-------------------------------------------------------------------
 Wed Aug  5 14:58:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.2.1:
