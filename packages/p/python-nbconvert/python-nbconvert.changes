@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:58:13 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- CVE-2026-6658: cross-site scripting (XSS) via unsanitized
+  `text/vnd.mermaid` output in HTML exports (bsc#1269365)
+  * Add patch 0001-fix-XSS-in-text-vnd.mermaid.patch
+    gh#jupyter/nbconvert#2294
+
+-------------------------------------------------------------------
 Wed Apr 22 06:57:22 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Update to 7.17.1 (bsc#1262457, bsc#1262456)

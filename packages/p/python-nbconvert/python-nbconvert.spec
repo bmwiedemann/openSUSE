@@ -39,6 +39,8 @@ Summary:        Conversion of Jupyter Notebooks
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/jupyter/nbconvert
 Source0:        https://files.pythonhosted.org/packages/source/n/nbconvert/nbconvert-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE 0001-fix-XSS-in-text-vnd.mermaid.patch bsc#1269365 gh#jupyter/nbconvert#2294
+Patch1:         0001-fix-XSS-in-text-vnd.mermaid.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatchling >= 0.25}
 BuildRequires:  %{python_module pip}

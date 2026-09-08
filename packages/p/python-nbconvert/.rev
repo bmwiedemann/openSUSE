@@ -537,4 +537,12 @@
   * Drop support for Python 3.8, fix the CI tests #2221</comment>
     <requestid>1348704</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>f8f5f90381653deac5f6c2d915e7ee40</srcmd5>
+    <version>7.17.1</version>
+    <time>1788879424</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376195</requestid>
+  </revision>
 </revisionlist>

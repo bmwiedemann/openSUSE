@@ -1,0 +1,29 @@
+From 5a4c5faab6d6440c676fd906b115f06542031aef Mon Sep 17 00:00:00 2001
+From: Daniel Garcia Moreno <daniel.garcia@suse.com>
+Date: Tue, 21 Jul 2026 09:06:22 +0200
+Subject: [PATCH] fix: XSS in text/vnd.mermaid
+
+This patch sanitizes the content of 'text/vnd.mermaid' on rendering to
+avoid XSS
+
+See https://www.cve.org/CVERecord?id=CVE-2026-6658
+---
+ share/templates/lab/base.html.j2 | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/share/templates/lab/base.html.j2 b/share/templates/lab/base.html.j2
+index cebe8410..052bb80c 100644
+--- a/share/templates/lab/base.html.j2
++++ b/share/templates/lab/base.html.j2
+@@ -176,7 +176,7 @@ unknown type  {{ cell.type }}
+ {% block data_mermaid scoped -%}
+ <div class="jp-Mermaid">
+ <pre class="mermaid">
+-{{ output.data['text/vnd.mermaid'].strip() }}
++{{ output.data['text/vnd.mermaid'].strip() | clean_html }}
+ </pre>
+ </div>
+ {%- endblock data_mermaid %}
+-- 
+2.55.0
+
