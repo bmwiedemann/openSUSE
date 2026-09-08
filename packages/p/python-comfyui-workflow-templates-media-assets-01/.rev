@@ -104,4 +104,16 @@ python-comfyui-workflow-templates 0.11.54, whose floor is
 -media-assets-01 &gt;= 0.1.38.</comment>
     <requestid>1375579</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>ed6b821812c2cfbce50a898ac9f8cbb6</srcmd5>
+    <version>0.1.39</version>
+    <time>1788879260</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.39.
+
+Adds the thumbnails for the new Anthropic Claude Fable 5.1, Meta Muse Image,
+MiniMax H3 Max Turbo and Recraft V4 style-reference templates, plus the Meta
+provider logo. Data-only change.</comment>
+    <requestid>1376107</requestid>
+  </revision>
 </revisionlist>
