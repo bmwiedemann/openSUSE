@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.metrics
-Version:        0.16.0
+Version:        0.17.0
 Release:        0
 Summary:        Collect metrics data from other Oslo libraries
 License:        Apache-2.0
