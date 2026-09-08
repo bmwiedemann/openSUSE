@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Sun Jun 21 04:16:06 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Initial package for x11docker 7.8.0.
+- Disable upstream self-install and update paths in packaged builds
+  and use /usr/bin/bash as the interpreter.
+- Install the application icon in the hicolor icon hierarchy.
+- Recommend catatonit and libxcvt for supported runtime paths.
+- Add checks for the packaged mode, version, and help output.

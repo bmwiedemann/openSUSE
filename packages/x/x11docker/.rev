@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0dcf3891fc8fa5f1fd42cb1f126b6603</srcmd5>
+    <version>7.8.0</version>
+    <time>1788879210</time>
+    <user>anag_factory</user>
+    <comment>New package: x11docker 7.8.0, runs GUI applications in containers with isolated X or Wayland display servers. Accepted into X11:Utilities as rq1371679.</comment>
+    <requestid>1375953</requestid>
+  </revision>
+</revisionlist>

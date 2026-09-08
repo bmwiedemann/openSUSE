@@ -1,0 +1,8 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="verify_file" mode="manual">
+    <param name="file">x11docker-7.8.0.tar.gz</param>
+    <param name="verifier">sha256</param>
+    <param name="checksum">32c20e7ca17d6e394656e9b1d86e5f813be5b7347cd39a4635060b6be4513e47</param>
+  </service>
+</services>

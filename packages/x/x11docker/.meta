@@ -1,0 +1,4 @@
+<package name="x11docker" project="openSUSE:Factory">
+  <title>Run GUI applications in containers</title>
+  <description>x11docker runs graphical desktop applications and entire desktop environments in Linux containers using Docker, Podman, or nerdctl.</description>
+</package>
