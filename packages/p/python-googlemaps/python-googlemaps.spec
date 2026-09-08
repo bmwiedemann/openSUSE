@@ -1,7 +1,7 @@
 #
 # spec file for package python-googlemaps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,11 @@
 #
 
 
-%define skip_python2 1
 Name:           python-googlemaps
-Version:        4.7.3
+Version:        4.10.0
 Release:        0
 Summary:        Python client library for Google Maps API Web Services
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/googlemaps/google-maps-services-python
 Source:         https://github.com/googlemaps/google-maps-services-python/archive/v%{version}.tar.gz#/googlemaps-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
