@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:39:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.15.0:
+  * Add openstack-python3-next-jobs
+  * Remove Python 3.10 support
+  * Add pyproject.toml to support pip 23.1
+  * tox: Drop redundant override of install_command
+  * Remove unnecessary direct dependency on Pygments
+
+-------------------------------------------------------------------
 Thu Aug  6 20:16:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.14.0:
