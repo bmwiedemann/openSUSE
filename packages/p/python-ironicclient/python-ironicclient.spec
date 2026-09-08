@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-ironicclient
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Ironic
 License:        Apache-2.0

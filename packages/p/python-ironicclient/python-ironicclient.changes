@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:10:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Add new fields to node history detailed view
+  * Add --disable-ramdisk to runbook set/unset
+  * Remove broken --step option from runbook unset
+  * Remove broken --traits option from runbook create
+  * Add --disable-ramdisk to runbook create
+  * ruff: Enable common checks
+  * Drop unnecessary allowlist_externals
+  * Remove Python 3.10 support
+  * Add openstack-python3-next-jobs job
+
+-------------------------------------------------------------------
 Thu Aug  6 20:11:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.2.0:

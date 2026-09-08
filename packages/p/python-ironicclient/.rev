@@ -590,4 +590,21 @@
   * Add type annotations to `ironicclient/tests/unit/osc`</comment>
     <requestid>1370110</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>16d1e8ef8c663636a6a0b27c842a5b15</srcmd5>
+    <version>6.3.0</version>
+    <time>1788879314</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * Add new fields to node history detailed view
+  * Add --disable-ramdisk to runbook set/unset
+  * Remove broken --step option from runbook unset
+  * Remove broken --traits option from runbook create
+  * Add --disable-ramdisk to runbook create
+  * ruff: Enable common checks
+  * Drop unnecessary allowlist_externals
+  * Remove Python 3.10 support
+  * Add openstack-python3-next-jobs job</comment>
+    <requestid>1376088</requestid>
+  </revision>
 </revisionlist>
