@@ -652,4 +652,19 @@ The license in the LICENSE file is ISC, not MIT (http://www.spdx.org/licenses/IS
     <comment>Update to version 20260530</comment>
     <requestid>1356431</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c4a79b9b861385e39a3117cbfd4141f8</srcmd5>
+    <version>20260903</version>
+    <time>1788879176</time>
+    <user>anag_factory</user>
+    <comment>Update to version 20260903.
+
+Regulatory rule changes for Hong Kong, South Africa and Togo. Re-pinned to the
+GPG-signed upstream tag master-2026-09-03; the shipped regulatory.db and its
+upstream signature regulatory.db.p7s are the unmodified upstream artifacts.
+
+The compact version scheme is kept deliberately: upstream's dotted 2026.09.03
+sorts OLDER than the current 20260530 under rpm version comparison.</comment>
+    <requestid>1376069</requestid>
+  </revision>
 </revisionlist>

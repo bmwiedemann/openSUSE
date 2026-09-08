@@ -19,7 +19,7 @@
 
 %{?!_firmwaredir:%define _firmwaredir /lib/firmware}
 Name:           wireless-regdb
-Version:        20260530
+Version:        20260903
 Release:        0
 Summary:        802.11 regulatory domain database
 License:        ISC

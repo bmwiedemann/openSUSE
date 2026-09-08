@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:34:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260903:
+  * wireless-regdb: update regulatory database based on preceding changes
+  * wireless-regdb: allow 320MHz channel width for Hong Kong (HK)
+  * wireless-regdb: Update 2.4 and 5 GHz rules for South Africa (ZA)
+  * wireless-regdb: Remove DFS flag from 60 GHz band for Togo (TG)
+
+-------------------------------------------------------------------
 Mon Jun  1 18:10:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260530:
