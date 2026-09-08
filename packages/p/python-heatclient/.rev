@@ -770,4 +770,17 @@
     <comment>- skip one test</comment>
     <requestid>1371534</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>832c7b68e4280142ce95fdae5125716d</srcmd5>
+    <version>5.3.0</version>
+    <time>1788879327</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.3.0:
+  * Fix outdated auth_token for swift access
+  * Add openstack-python3-next-jobs
+  * pre-commit: Bump versions
+  * Migrate setup configuration to pyproject.toml
+  * Remove Python 3.10 support</comment>
+    <requestid>1376140</requestid>
+  </revision>
 </revisionlist>
