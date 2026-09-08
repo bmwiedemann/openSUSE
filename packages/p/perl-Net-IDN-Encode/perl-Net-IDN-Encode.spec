@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Net-IDN-Encode
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,20 +18,26 @@
 
 %define cpan_name Net-IDN-Encode
 Name:           perl-Net-IDN-Encode
-Version:        2.500
+Version:        2.502.0
 Release:        0
+# 2.502 -> normalize -> 2.502.0
+%define cpan_version 2.502
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Internationalizing Domain Names in Applications (UTS #46)
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/C/CF/CFAERBER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RR/RRWO/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
-# PATCH-FIX-UPSTREAM https://rt.cpan.org/Public/Bug/Display.html?id=149108
-Patch0:         use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::CBuilder)
-BuildRequires:  perl(Module::Build) >= 0.42
+BuildRequires:  perl(Module::Build) >= 0.420
 BuildRequires:  perl(Test::NoWarnings)
+Provides:       perl(Net::IDN::Encode) = %{version}
+Provides:       perl(Net::IDN::Punycode) = %{version}
+Provides:       perl(Net::IDN::Punycode::PP) = %{version}
+Provides:       perl(Net::IDN::UTS46) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,7 +57,7 @@ correctly encoded input. See perlunitut, perluniintro and perlunicode for
 details.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 

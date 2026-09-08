@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep  5 19:59:01 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Remove use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
+  Fixed upstream.
+
+-------------------------------------------------------------------
+Tue Aug 25 05:51:02 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.502.0 (2.502)
+   see /usr/share/doc/packages/perl-Net-IDN-Encode/Changes
+
+  2.502 2026-08-24
+          - apply fix from Karen Etheridge's 2.501 release.
+          - update the maintainer information.
+          - update the copyright year.
+          - add contributors to ACKNOWLEDGMENTS in the README.
+          - stop signing releases with Module::Signature.
+
+  2.501 2024-01-12 (TRIAL RELEASE)
+          - apply patch from PR #11 (use uvchr_to_utf8_flags instead of
+            uvuni_to_utf8_flags (which is removed in perl 5.38.0)
+
+-------------------------------------------------------------------
 Thu Jan 16 14:32:56 UTC 2025 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Add patch use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch

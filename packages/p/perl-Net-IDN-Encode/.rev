@@ -111,4 +111,25 @@
     <comment></comment>
     <requestid>1239110</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>19c53c18232cba9b97469f3df7e9b670</srcmd5>
+    <version>2.502.0</version>
+    <time>1788879489</time>
+    <user>anag_factory</user>
+    <comment>- Remove use-uvchr_to_utf8_flags-instead-of-uvuni_to_utf8_fla.patch
+  Fixed upstream.
+
+- updated to 2.502.0 (2.502)
+   see /usr/share/doc/packages/perl-Net-IDN-Encode/Changes
+  2.502 2026-08-24
+          - apply fix from Karen Etheridge's 2.501 release.
+          - update the maintainer information.
+          - update the copyright year.
+          - add contributors to ACKNOWLEDGMENTS in the README.
+          - stop signing releases with Module::Signature.
+  2.501 2024-01-12 (TRIAL RELEASE)
+          - apply patch from PR #11 (use uvchr_to_utf8_flags instead of
+            uvuni_to_utf8_flags (which is removed in perl 5.38.0)</comment>
+    <requestid>1376318</requestid>
+  </revision>
 </revisionlist>
