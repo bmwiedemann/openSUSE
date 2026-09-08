@@ -1,0 +1,36 @@
+---
+ CMakeLists.txt        |    5 +++++
+ cmake/wannier90.pc.in |    6 +++---
+ 2 files changed, 8 insertions(+), 3 deletions(-)
+
+Index: wannier90-4.0.2/CMakeLists.txt
+===================================================================
+--- wannier90-4.0.2.orig/CMakeLists.txt
++++ wannier90-4.0.2/CMakeLists.txt
+@@ -73,6 +73,11 @@ if (WANNIER90_INSTALL)
+ 				OUTPUT_VARIABLE CMAKE_INSTALL_FULL_MODULEDIR
+ 		)
+ 	endif ()
++
++	# Relative paths needed for relocatable pkgconfig file
++	file(RELATIVE_PATH CMAKE_INSTALL_INCLUDEDIR_RELATIVE ${CMAKE_INSTALL_PREFIX} ${CMAKE_INSTALL_FULL_INCLUDEDIR})
++	file(RELATIVE_PATH CMAKE_INSTALL_LIBDIR_RELATIVE ${CMAKE_INSTALL_PREFIX} ${CMAKE_INSTALL_FULL_LIBDIR})
++	file(RELATIVE_PATH CMAKE_INSTALL_MODULEDIR_RELATIVE ${CMAKE_INSTALL_PREFIX} ${CMAKE_INSTALL_FULL_MODULEDIR})
+ endif ()
+ 
+ ## Populate variables for FetchContent and sub-projects
+Index: wannier90-4.0.2/cmake/wannier90.pc.in
+===================================================================
+--- wannier90-4.0.2.orig/cmake/wannier90.pc.in
++++ wannier90-4.0.2/cmake/wannier90.pc.in
+@@ -1,7 +1,7 @@
+ prefix: @CMAKE_INSTALL_PREFIX@
+-libdir: ${prefix}/@CMAKE_INSTALL_LIBDIR@
+-includedir: ${prefix}/@CMAKE_INSTALL_INCLUDEDIR@
+-moduledir: ${prefix}/@CMAKE_INSTALL_MODULEDIR@/Wannier90
++libdir: ${prefix}/@CMAKE_INSTALL_LIBDIR_RELATIVE@
++includedir: ${prefix}/@CMAKE_INSTALL_INCLUDEDIR_RELATIVE@
++moduledir: ${prefix}/@CMAKE_INSTALL_MODULEDIR_RELATIVE@/Wannier90
+ 
+ Name: wannier
+ Version: @PROJECT_VERSION@

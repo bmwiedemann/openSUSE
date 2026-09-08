@@ -31,4 +31,33 @@
     <comment></comment>
     <requestid>1148177</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>45d23a040d0f98da393040b2aa1b2052</srcmd5>
+    <version>4.0.2</version>
+    <time>1788879406</time>
+    <user>anag_factory</user>
+    <comment>- Disable %check for openmpi5, since tests deadlock and eventually
+  time out.
+- Add _constraints for increased memory requirements, primarily
+  during testing.
+- Update to version 4.0.2:
+- Add wannier90-pkgconfig-paths.patch to fix path variables in
+  pkgconfig file.
+- Add wannier90-disable-failing-test.patch to disable a test that
+  fails to delete a file in chroot when cleaning up and causes
+  build failures.
+- Add wannier90-arm64-disable-failing-test.patch -- Disable a test
+  that fails due to minor tolerance issues on arm64
+  [gh#wannier-developers/wannier90#678].
+- Drop upstreamed patches:
+  * wannier90-install-pkgconfig.patch
+  * a75344b646227c9d7f12d90af4a35a902e940dca.patch
+- Switch to cmake based build and clean up manual configuration
+  cruft from earlier build scripts.
+- Run testsuite as part of %check; use memory-constraints to limit
+  maximum number of parallel threads and avoid OOM.
+- Update License: GPL-2.0-only -&gt; LGPL-2.1-or-later.
+</comment>
+    <requestid>1376181</requestid>
+  </revision>
 </revisionlist>

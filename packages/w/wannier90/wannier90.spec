@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package wannier90
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -41,10 +41,13 @@ ExclusiveArch:  do_not_build
 %{?mpi_flavor:%{bcond_without mpi}}%{!?mpi_flavor:%{bcond_with mpi}}
 %{?with_mpi:%{!?mpi_flavor:error "No MPI family specified!"}}
 
+%global _gcc_ver %(gcc -dumpversion)
+
 %if %{with mpi}
 %define my_prefix  %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_vers}
 %define my_bindir  %{my_prefix}/bin
 %define my_libdir  %{my_prefix}/%{_lib}
+%define my_fmoddir %{my_libdir}/finclude
 %define my_incdir  %{my_prefix}/include
 %define my_datadir %{my_prefix}/share
 %define my_suffix  -%{mpi_flavor}%{?mpi_vers}
@@ -52,27 +55,34 @@ ExclusiveArch:  do_not_build
 %define my_prefix  %{_prefix}
 %define my_bindir  %{_bindir}
 %define my_libdir  %{_libdir}
+%define my_fmoddir %{my_libdir}/gcc/%{_host}/%{_gcc_ver}/finclude
 %define my_incdir  %{_includedir}
 %define my_datadir %{_datadir}
 %endif
 # /SECTION MPI DEFINITIONS
 
+%define libname lib%{pname}_4%{?with_mpi:_mpi%{my_suffix}}
 Name:           %{pname}%{?my_suffix}
-Version:        3.1.0
+Version:        4.0.2
 Release:        0
 Summary:        A library for generating maximally-localized Wannier functions
-License:        GPL-2.0-only
+License:        LGPL-2.1-or-later
 URL:            http://www.wannier.org/
 Source:         https://github.com/wannier-developers/wannier90/archive/refs/tags/v%{version}.tar.gz#/%{pname}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM wannier90-install-pkgconfig.patch badshah400@gmail.com -- Update Makefile to install a package config file
-Patch0:         wannier90-install-pkgconfig.patch
-# PATCH-FIX-UPSTREAM gh#wannier-developers/wannier90#373 badshah400@gmail.com -- Allocate arrays on non-root nodes to avoid SIGSEG
-Patch1:         https://github.com/wannier-developers/wannier90/commit/a75344b646227c9d7f12d90af4a35a902e940dca.patch
+# PATCH-FIX-UPSTREAM wannier90-pkgconfig-paths.patch badshah400@gmail.com -- Fix paths in pkgconfig variables
+Patch0:         wannier90-pkgconfig-paths.patch
+# PATCH-FIX-UPSTREAM wannier90-disable-failing-test.patch badshah400@gmail.com -- Disable a failing test that causes build failures specific to rpmbuild env
+Patch1:         wannier90-disable-failing-test.patch
 # PATCH-FIX-UPSTREAM gh#wannier-developers/wannier90#371 badshah400@gmail.com -- Ignore rank mismatch issues when building openmpi flavours with gfortran, as recommended in upstream bug report
 Patch2:         wannier90-fix-parallel-compilation.patch
+# PATCH-FIX-UPSTREAM wannier90-arm64-disable-failing-test.patch gh#wannier-developers/wannier90#678 badshah400@gmail.com -- Disable a test that fails due to minor tolerance issues on arm64
+Patch3:         wannier90-arm64-disable-failing-test.patch
 BuildRequires:  blas-devel
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
+BuildRequires:  memory-constraints
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{?mpi_vers}-devel
 %if 0%{?suse_version} >= 1550 && "%{mpi_flavor}" == "openmpi"
@@ -86,55 +96,84 @@ Wannier90 is a library for generating maximally-localized Wannier functions and
 using them to compute advanced electronic properties of materials with high
 efficiency and accuracy.
 
+%package -n %{libname}
+Summary:        Library for generating maximally-localized Wannier functions - shared library
+
+%description -n %{libname}
+Wannier90 is a library for generating maximally-localized Wannier functions and
+using them to compute advanced electronic properties of materials with high
+efficiency and accuracy.
+
+This package provides the shared library for wannier90.
+
 %package devel
-Summary:        Devel files for %{name}
+Summary:        Library for generating Wannier functions - headers and development files
 
 %description devel
+Wannier90 is a library for generating maximally-localized Wannier functions and
+using them to compute advanced electronic properties of materials with high
+efficiency and accuracy.
+
 This package provides files needed for developing against wannier90.
 
 %prep
-%setup -q -n %{pname}-%{version}
-%patch -P 0 -p1
-%patch -P 1 -p1
-%if 0%{?suse_version} >= 1550
-%patch -P 2 -p1
+%autosetup -N -n %{pname}-%{version}
+%autopatch -p1 -M 2
+%ifarch %arm64
+%patch -P 3 -p1
 %endif
 
 %build
-# No configure script
-cp ./config/make.inc.gfort.dynlib make.inc
-
 %if %{with mpi}
 source %{my_bindir}/mpivars.sh
-sed -i "s/^#COMMS\s*=\s*mpi/COMMS = mpi/" make.inc
-sed -i "s/^#MPIF90\s*=\s*mpgfortran #mpif90/MPIF90 = mpif90/" make.inc
-cat make.inc
 %endif
-
-%make_build all dynlib
+%cmake \
+  -DCMAKE_INSTALL_BINDIR=%{my_bindir} \
+  -DCMAKE_INSTALL_INCLUDEDIR=%{my_incdir} \
+  -DCMAKE_INSTALL_LIBDIR=%{my_libdir} \
+  -DCMAKE_INSTALL_MODULEDIR=%{my_fmoddir} \
+  -DWANNIER90_WITH_C=ON \
+  -DWANNIER90_MPI=%{?with_mpi:ON}%{!?with_mpi:OFF} \
+%{nil}
+%cmake_build
 
 %install
-%make_install PREFIX=%{my_prefix} pkgconfig
+%cmake_install
 
-rm %{buildroot}%{my_prefix}/lib/*.a
-mkdir -p %{buildroot}%{my_libdir}/pkgconfig
-find ./ -name "*.so" -print -exec install {} %{buildroot}%{my_libdir}/ \;
-if [ "%{_lib}" != "lib" ]
-then
-  mv %{buildroot}%{my_prefix}/lib/pkgconfig/*.pc %{buildroot}%{my_libdir}/pkgconfig/
-fi
-sed -i "s|%{buildroot}||g" %{buildroot}%{my_libdir}/pkgconfig/*.pc
+# Tests are wrecked on i586; don't even bother
+%ifnarch %ix86
+# Tests deadlock on openmpi5
+%if 0%{?mpi_vers} != 5
+%check
+%if %{with mpi}
+source %{my_bindir}/mpivars.sh
+%endif
+# Some tests are very memory intensive
+%limit_build -m 6000
+%ctest
+%endif
+%endif
+#
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files
 %license LICENSE
 %doc CHANGELOG.md README.rst
 %{my_bindir}/*
 
+%files -n %{libname}
+%{my_libdir}/lib*.so.*
+
 %files devel
-%{my_libdir}/*.so
+%{my_fmoddir}/Wannier90/
+%{my_incdir}/*.h
 %{my_libdir}/pkgconfig/*.pc
+%{my_libdir}/lib*.so
+%{my_libdir}/cmake/Wannier90/
+%if %{with mpi}
+%dir %{my_libdir}/cmake
+%dir %{my_libdir}/finclude
+%endif
 
 %changelog
