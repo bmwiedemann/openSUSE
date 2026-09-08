@@ -170,4 +170,21 @@ native local osc build against openSUSE_Tumbleweed/aarch64 (--clean): green,
 No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
     <requestid>1375749</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>cf341735a80ffd7653395c990103132d</srcmd5>
+    <version>4.25.1</version>
+    <time>1788879482</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.25.1:
+  * Interactive shell no longer exits on Ctrl-C or malformed
+    input; unbalanced quotes raise TokenizationError instead of
+    a raw ValueError
+  * Sphinx RST: render the root default_command params/usage
+    panel
+  * Keep allow_leading_hyphen=True positional values intact when
+    a later character of a combined short option matches a flag
+  * Honor subcommand-level configuration via the invoked
+    command's app-stack rather than the parent app</comment>
+    <requestid>1376272</requestid>
+  </revision>
 </revisionlist>

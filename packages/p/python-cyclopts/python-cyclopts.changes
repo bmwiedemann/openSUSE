@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:24:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.25.1:
+  * Interactive shell no longer exits on Ctrl-C or malformed
+    input; unbalanced quotes raise TokenizationError instead of
+    a raw ValueError
+  * Sphinx RST: render the root default_command params/usage
+    panel
+  * Keep allow_leading_hyphen=True positional values intact when
+    a later character of a combined short option matches a flag
+  * Honor subcommand-level configuration via the invoked
+    command's app-stack rather than the parent app
+
+-------------------------------------------------------------------
 Fri Sep  4 08:00:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.24.0:
