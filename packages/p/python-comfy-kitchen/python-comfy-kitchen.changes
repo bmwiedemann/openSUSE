@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.33:
+  * Sol-Attn token routing (token_aug) added across the CUDA, HIP and
+    eager backends; the eager reference accepts and ignores it
+  * Fused Sol-Attn backends now take float16 as well as bfloat16
+  * sol_attn_chunked and sol_attn_is_available exported at package
+    level
+  * Triton rope: treat omitted leading dimensions as singleton axes
+    (fixes the Trellis model)
+
+-------------------------------------------------------------------
 Thu Sep  3 08:54:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.32:

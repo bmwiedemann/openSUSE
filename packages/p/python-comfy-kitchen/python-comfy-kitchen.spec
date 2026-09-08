@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-kitchen
-Version:        0.2.32
+Version:        0.2.33
 Release:        0
 Summary:        Fast kernel library for ComfyUI (CPU/eager backend)
 # Legal-Review-Notice: NOTICE names the NVIDIA CUDA runtime EULA for a
 # statically linked cudart used only by the CUDA backend. This build does
 # not compile or ship that backend. BSD-3-Clause is from torchao-derived
-# Python in the eager backend (quantization.py, float_utils.py).
+# Python in comfy_kitchen/float_utils.py and the eager backend's
+# quantization.py.
 License:        Apache-2.0 AND BSD-3-Clause
 URL:            https://github.com/Comfy-Org/comfy-kitchen
 Source:         https://github.com/Comfy-Org/comfy-kitchen/archive/refs/tags/v%{version}.tar.gz#/comfy-kitchen-%{version}.tar.gz
@@ -36,6 +37,9 @@ BuildRequires:  %{python_module torch >= 2.7.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# Upstream declares dependencies = [], but comfy_kitchen/__init__.py imports
+# torch at module scope, so this Requires is deliberate; it is what rpmlint
+# reports as python-leftover-require.
 Requires:       python-torch >= 2.7.0
 BuildArch:      noarch
 # Match Factory python-torch (ExcludeArch: %%ix86 %%{arm})

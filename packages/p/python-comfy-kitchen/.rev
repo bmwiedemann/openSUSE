@@ -57,4 +57,21 @@ Fri Aug 21 10:07:52 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
   Requires is the only source of the torch dependency in the RPM.</comment>
     <requestid>1375569</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d42bbd5536be66d59e92e4f39a2060b8</srcmd5>
+    <version>0.2.33</version>
+    <time>1788879266</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.33.
+
+Additive: Sol-Attn token routing (token_aug) across all backends, fp16 accepted
+by the fused backends, sol_attn_chunked / sol_attn_is_available exported at
+package level, and a triton rope fix for the Trellis model. No exported name
+removed. 0.2.33 adds a module-scope &quot;from .backends.cuda import
+sol_attn_chunked&quot; to comfy_kitchen/__init__.py; that resolves without the
+compiled _C extension, and %check confirms &quot;import comfy_kitchen&quot; still works
+in this CPU-only build. The cpu-only-build patch still applies unchanged.
+Factory's comfyui floor (&gt;= 0.2.31) satisfied.</comment>
+    <requestid>1376111</requestid>
+  </revision>
 </revisionlist>
