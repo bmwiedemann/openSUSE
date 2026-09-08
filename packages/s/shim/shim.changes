@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Aug  3 08:35:06 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim-install: Do not update fallback on sl-micro when the fallback
+  is not in efi default boot path
+
+  The SL-Micro SelfInstall image direct unpackage the raw image to
+  the hard drive on target machine. The kiwi produced the raw image
+  by 'shim-install --removable' command. So the raw image does NOT
+  include fallback.efi in the EFI default boot path (aka. the
+  removable boot path, EFI/boot/). Looks that SL-Micro does NOT care
+  the fallback function of SUSE boot entry is lost.
+
+  Normally, with or without fallback.efi should NOT case problem when
+  booting. Also, the distro (SL-Micro in this case) does NOT care fallback
+  function. But some issue machine's firmware can ONLY boot with the
+  removable boot path (aka. the default boot path, /EFI/boot/bootx64.efi).
+  And issue firmware always modified boot order or even removed SUSE boot
+  entry. It causes that the fallback.efi always be triggered in every
+  booting. The outward symptom is an endless cycle of rebooting and showing
+  the fallback prompt box.
+
+  The above situation NOT be found before we fix bsc#1254336. In
+  bsc#1254336, the shim-install did NOT update the files in removable boot
+  path. e.g. /EFI/boot/bootx64.efi or /EFI/boot/fallback.efi.
+
+  So we will NOT update fallback.efi on SL-Micro when shim-install did NOT
+  see fallback in the removable boot path (EFI/boot/fallback.efi). No
+  fallback.efi in the removable boot path means that the target system
+  is installed by wiki raw image.  (bsc#1270036)
+
+-------------------------------------------------------------------
+Fri Jul 31 20:44:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- shim-install: change fgrep to grep -F to avoid warnings
+
+-------------------------------------------------------------------
+Wed Jul 29 02:42:41 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- shim: Add Microsoft-signed nx-shim for SLE (jsc#PED-15978)
+  For preparing use nx shim as the default shim binary on SLE.
+  Add Microsoft-signed nx-shim for SLE:
+        Source42       shim-sles.nx.x86.efi
+        Source43       shim-sles.nx.aarch64.efi
+- shim-install: Fix the variable name for the source of non-nx shim
+- shim-install: Create a white list of SUSE distros for supporing nx shim
+  (jsc#PED-15978)
+
+-------------------------------------------------------------------
+Fri Jun 26 02:58:21 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- shim-install: Improve the detection of SL Micro
+
+  The GRUB_DISTRIBUTOR variable in SL Micro images may contain
+  "SL Micro" or "SL-Micro" prefix. (bsc#1269084)
+
+-------------------------------------------------------------------
 Wed Jun 17 10:21:38 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - shim-install: Create non-NX shim boot entry first to prioritize NX shim
@@ -96,7 +152,7 @@ Tue Aug 19 07:48:52 UTC 2025 - Joey Lee <jlee@suse.com>
 
 - Removed the following patches because they are merged to shim 16.1:
         - shim-alloc-one-more-byte-for-sprintf.patch
-        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
 
 -------------------------------------------------------------------
 Tue Aug 19 03:46:46 UTC 2025 - Joey Lee <jlee@suse.com>
@@ -170,7 +226,7 @@ Tue Aug 19 03:46:46 UTC 2025 - Joey Lee <jlee@suse.com>
       The following patches are merged to 16.1
         - shim-alloc-one-more-byte-for-sprintf.patch
             - 32804cf5d9 Realloc() needs one more byte for sprintf()    [16.1]
-        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+        - shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
             - 72a4c41877 shim: change automatically enable MOK_POLICY_REQUIRE_NX [16.1]
 
 -------------------------------------------------------------------
@@ -203,9 +259,9 @@ Sat Aug  2 16:42:29 UTC 2025 - Joey Lee <jlee@suse.com>
         define gcc_version 13
         global cc_compiler /usr/bin/gcc-%{gcc_version}
         BuildRequires  gcc%{gcc_version}
-        make CC=%{cc_compiler} RELEASE=0 
+        make CC=%{cc_compiler} RELEASE=0
 - Remove shim-disable-dxe-get-mem-attrs.patch
-    - This downstream patch can be removed after moving to gcc13 
+    - This downstream patch can be removed after moving to gcc13
   (bsc#1247432)
 
 -------------------------------------------------------------------
@@ -214,11 +270,11 @@ Thu Jul 31 12:47:58 UTC 2025 - Joey Lee <jlee@suse.com>
 - Add shim-disable-dxe-get-mem-attrs.patch
     - On old edk2-stable202308 ovmf, running dxe_get_mem_attrs() causes
       get_hsi_mem_info() confusion on hsi_status. It looks that hsi_status
-      has a copy after running dxe_get_mem_attrs(). Those elements in 
+      has a copy after running dxe_get_mem_attrs(). Those elements in
       hsi_nx_is_enforced(), HEAPX|STACKX|ROW can NOT set into hsi_status.
       Let's disabling the approach of DXE get memory attributes until
       we found the root cause.
-  (bsc#1247432) 
+  (bsc#1247432)
 
 -------------------------------------------------------------------
 Mon Jul 28 16:25:46 UTC 2025 - Joey Lee <jlee@suse.com>
@@ -261,7 +317,7 @@ Fri Jul 25 06:01:26 UTC 2025 - Joey Lee <jlee@suse.com>
 -------------------------------------------------------------------
 Fri Jul 25 05:44:51 UTC 2025 - Joey Lee <jlee@suse.com>
 
-- Add shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch 
+- Add shim-change-automatically-enable-MOK_POLICY_REQUIRE_NX.patch
     - shim: change automatically enable MOK_POLICY_REQUIRE_NX (PR #761)
   (bsc#1205588)
 
@@ -272,20 +328,20 @@ Tue Jul  8 13:44:42 UTC 2025 - Joey Lee <jlee@suse.com>
   includes quilt series files. It causes that we can not direct add
   new patch file through shim.spec. I replaced it by shim-16.0 tarball
   from upstream:
-  https://github.com/rhboot/shim/releases/download/16.0/shim-16.0.tar.bz2  
+  https://github.com/rhboot/shim/releases/download/16.0/shim-16.0.tar.bz2
 
 -------------------------------------------------------------------
 Thu Jun  5 03:22:48 UTC 2025 - Dennis <dennis.tseng@suse.com>
 
 - rename incorrect certificat name revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt
   to revoked-openSUSE-UEFI-SIGN-Certificate-2022-06.crt, and
-  re-arrange its sequence. 
+  re-arrange its sequence.
 
 -------------------------------------------------------------------
 Wed May 28 03:37:04 UTC 2025 - Tseng <dennis.tseng@suse.com>
 
 - add revoked-SLES-UEFI-SIGN-Certificate-2022-06.crt into dbx
-- build shim with EKU enable flag (ENABLE_CODESIGN_EKU) 
+- build shim with EKU enable flag (ENABLE_CODESIGN_EKU)
   remove EKU enable flag when build MokManager and fallback
 
 -------------------------------------------------------------------
@@ -420,7 +476,7 @@ Tue May  6 06:19:02 UTC 2025 - Dennis <dennis.tseng@suse.com>
         db1f1da Make 'make fanalyzer' work again.
         28d8871 README.tpm: Update MokList entry to MokListRT
         8932527 SBAT Level update for February 2025 GRUB CVEs
-        18d98bf Update version to 16.0 
+        18d98bf Update version to 16.0
 
 -------------------------------------------------------------------
 Fri Dec 20 11:34:51 CET 2024 - mls@suse.de
@@ -447,7 +503,7 @@ Mon Sep 16 06:56:21 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Tue Jun 25 04:12:39 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
 
-- Update asc files of shim-15.8 after being signed back from 
+- Update asc files of shim-15.8 after being signed back from
   Microsoft, including:
   signature-opensuse.x86_64.asc,
   signature-opensuse.aarch64.asc,
@@ -455,7 +511,7 @@ Tue Jun 25 04:12:39 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
   signature-sles.aarch64.asc.
 
 - Enable aarch64 signature comparison which was disabled temporarily
-  before. Now, we got a real one. So it is enabled again.  
+  before. Now, we got a real one. So it is enabled again.
 
 -------------------------------------------------------------------
 Tue Apr  2 03:09:15 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
@@ -502,13 +558,13 @@ Thu Feb 15 09:46:09 UTC 2024 - Joey Lee <jlee@suse.com>
   When and only when hash mismatch and distro_id match with suffix, stop
   building.
         # compare suffix (sles, opensuse) with distro_id (sle, opensuse)
-        # when hash mismatch and distro_id match with suffix, stop building 
+        # when hash mismatch and distro_id match with suffix, stop building
 - Sync the changelog between openSUSE:Factory/shim with SLE-15-SP3/shim
     - Add CVE-2022-28737 number to "Mon Mar 27 09:26:02 UTC 2023" record
     - Add "Thu Apr 13 05:28:10 UTC 2023" record for updating shim-install
       for bsc#1210382.
     - Add "Thu Apr 13 09:13:22 UTC 2023" record for changing the logic of
-      checking shim signature. 
+      checking shim signature.
 
 -------------------------------------------------------------------
 Wed Feb  7 08:54:52 UTC 2024 - Gary Ching-Pang Lin <glin@suse.com>
@@ -535,7 +591,7 @@ Sun Jan 28 09:32:32 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
         pe-relocate: Fix bounds check for MZ binaries (bsc#1215103,CVE-2023-40551)
     - remove shim-Enable-the-NX-compatibility-flag-by-default.patch
         The codes in this patch are already existing in shim-15.8
-        The NX flag is disable which is same as the default value of shim-15.8, 
+        The NX flag is disable which is same as the default value of shim-15.8,
         hence, not need to enable it by this patch now.
     - Patches (git log --oneline --reverse 15.7..15.8)
         657b248 Make sbat_var.S parse right with buggy gcc/binutils
@@ -601,7 +657,7 @@ Sun Jan 28 09:32:32 UTC 2024 - Dennis Tseng <dennis.tseng@suse.com>
         a23e2f0 netboot read_image() should not hardcode DEFAULT_LOADER
         993a345 Try to load revocations.efi even if directory read fails
         1770a03 gitmodules: use shim-15.8 for gnu-efi branch
-        5914984 (HEAD -> main, tag: latest-release, tag: 15.8, origin/main, origin/HEAD) Bump version to 15.8 
+        5914984 (HEAD -> main, tag: latest-release, tag: 15.8, origin/main, origin/HEAD) Bump version to 15.8
 
 -------------------------------------------------------------------
 Wed Jan 24 12:40:36 UTC 2024 - Ludwig Nussel <lnussel@suse.com>
@@ -648,7 +704,7 @@ Thu Apr 13 09:13:22 UTC 2023 - Joey Lee <jlee@suse.com>
   When and only when hash mismatch and distro_id match with suffix, stop
   building.
         # compare suffix (sles, opensuse) with distro_id (sle, opensuse)
-        # when hash mismatch and distro_id match with suffix, stop building 
+        # when hash mismatch and distro_id match with suffix, stop building
 
 -------------------------------------------------------------------
 Thu Apr 13 05:28:10 UTC 2023 - Joey Lee <jlee@suse.com>
@@ -688,7 +744,7 @@ Mon Mar 27 09:26:02 UTC 2023 - Joey Lee <jlee@suse.com>
 -------------------------------------------------------------------
 Thu Jan 12 07:00:19 UTC 2023 - Joey Lee <jlee@suse.com>
 
-- Removed shim-bsc1198101-opensuse-cert-prompt.patch (bsc#1198101) 
+- Removed shim-bsc1198101-opensuse-cert-prompt.patch (bsc#1198101)
    - Detail discussion is in bugzilla:
 	https://bugzilla.suse.com/show_bug.cgi?id=1198101
    - The shim community review and challenge this prompt. No other
@@ -706,7 +762,7 @@ Fri Dec  9 08:38:14 UTC 2022 - Joey Lee <jlee@suse.com>
   full disk encryption: (jsc#PED-922)
     a5c57340740c	Introduce --no-grub-install option
     5c2c3addc51f	Handle different cases of controlling cryptomount volumes during first stage boot
-    26c6bd5df7ae	Have grub take a snapshot of "relevant" TPM PCRs 
+    26c6bd5df7ae	Have grub take a snapshot of "relevant" TPM PCRs
 
 -------------------------------------------------------------------
 Wed Nov 23 07:28:57 UTC 2022 - Joey Lee <jlee@suse.com>
@@ -724,14 +780,14 @@ Wed Nov 23 07:28:57 UTC 2022 - Joey Lee <jlee@suse.com>
 Fri Nov 18 04:52:49 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add shim-Enable-the-NX-compatibility-flag-by-default.patch to
-  enable the NX compatibility flag by default. (jsc#PED-127) 
+  enable the NX compatibility flag by default. (jsc#PED-127)
 
 -------------------------------------------------------------------
 Fri Nov 18 03:17:46 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Drop upstreamed patch:
     - shim-Enable-TDX-measurement-to-RTMR-register.patch
-        - Enable TDX measurement to RTMR register (jsc#PED-1273) 
+        - Enable TDX measurement to RTMR register (jsc#PED-1273)
 	- 4fd484e4c2	15.7
 
 -------------------------------------------------------------------
@@ -807,7 +863,7 @@ Tue Nov 15 08:06:24 UTC 2022 - Joey Lee <jlee@suse.com>
 Tue Nov 15 08:06:05 UTC 2022 - Joey Lee <jlee@suse.com>
 
 - Add shim-Enable-TDX-measurement-to-RTMR-register.patch to support
-  enhance shim measurement to TD RTMR. (jsc#PED-1273) 
+  enhance shim measurement to TD RTMR. (jsc#PED-1273)
 
 -------------------------------------------------------------------
 Tue Nov 15 07:53:59 UTC 2022 - Joey Lee <jlee@suse.com>
@@ -821,7 +877,7 @@ Tue Nov 15 07:53:59 UTC 2022 - Joey Lee <jlee@suse.com>
           on openSUSE.
 	- Enable the AArch64 signature check for SLE:
 		# AArch64 signature
-		signature=%{SOURCE13} 
+		signature=%{SOURCE13}
 
 -------------------------------------------------------------------
 Thu Sep 29 02:42:35 UTC 2022 - Michael Chang <mchang@suse.com>
@@ -1027,9 +1083,9 @@ Tue Jun 28 04:03:45 UTC 2022 - Joey Lee <jlee@suse.com>
       to make sure all object files gets rebuilt
         - reference: https://github.com/rhboot/shim/pull/461
 - The following fix-CVE-2022-28737-v6 patches against bsc#1198458 are included
-  in shim-15.6.tar.bz2 
+  in shim-15.6.tar.bz2
     - shim-bsc1198458-pe-Fix-a-buffer-overflow-when-SizeOfRawData-VirtualS.patch
-        pe: Fix a buffer overflow when SizeOfRawData VirtualSize 
+        pe: Fix a buffer overflow when SizeOfRawData VirtualSize
     - shim-bsc1198458-pe-Perform-image-verification-earlier-when-loading-g.patch
         pe: Perform image verification earlier when loading grub
     - shim-bsc1198458-Update-advertised-sbat-generation-number-for-shim.patch
@@ -1130,7 +1186,7 @@ Thu Jun 17 03:03:37 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Add shim-fix-aa64-relsz.patch to fix the size of rela sections
   for AArch64
-  Fix: https://github.com/rhboot/shim/issues/371 
+  Fix: https://github.com/rhboot/shim/issues/371
 
 -------------------------------------------------------------------
 Fri Jun  4 09:22:51 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
@@ -1189,7 +1245,7 @@ Wed Apr 28 09:28:30 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Split the keys in vendor-dbx.bin to vendor-dbx-sles and
   vendor-dbx-opensuse for shim-sles and shim-opensuse to reduce
-  the size of MokListXRT (bsc#1185261) 
+  the size of MokListXRT (bsc#1185261)
   + Also update generate-vendor-dbx.sh in dbx-cert.tar.xz
 
 -------------------------------------------------------------------
@@ -1211,7 +1267,7 @@ Thu Apr  8 08:44:27 UTC 2021 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Wed Apr  7 12:25:02 UTC 2021 - Johannes Segitz <jsegitz@suse.com>
 
-- Add remove_build_id.patch to prevent the build id being added to 
+- Add remove_build_id.patch to prevent the build id being added to
   the binary. That can cause issues with the signature
 
 -------------------------------------------------------------------
@@ -1410,7 +1466,7 @@ Mon Mar 16 09:42:34 UTC 2020 - Gary Ching-Pang Lin <glin@suse.com>
 Wed Nov 27 06:23:11 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - shim-install: add check for btrfs is used as root file system to enable
-  relative path lookup for file. (bsc#1153953) 
+  relative path lookup for file. (bsc#1153953)
 
 -------------------------------------------------------------------
 Fri Aug 16 04:07:30 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
@@ -1459,7 +1515,7 @@ Thu Jan 17 17:12:14 UTC 2019 - rw@suse.com
 Mon Jan 14 09:48:59 UTC 2019 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update shim-install to handle the partitioned MD devices
-  (bsc#1119762, bsc#1119763) 
+  (bsc#1119762, bsc#1119763)
 
 -------------------------------------------------------------------
 Thu Dec 20 04:13:00 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
@@ -1467,7 +1523,7 @@ Thu Dec 20 04:13:00 UTC 2018 - Gary Ching-Pang Lin <glin@suse.com>
 - Update to 15+git47 (bsc#1120026, FATE#325971)
   + git commit: b3e4d1f7555aabbf5d54de5ea7cd7e839e7bd83d
 - Retire the old openSUSE 4096 bit certificate
-  + Those programs are already out of maintenance. 
+  + Those programs are already out of maintenance.
 - Add shim-always-mirror-mok-variables.patch to mirror MOK
   variables correctly
 - Add shim-correct-license-in-headers.patch to correct the license
@@ -1654,7 +1710,7 @@ Wed Sep 21 09:55:40 UTC 2016 - mchang@suse.com
 -------------------------------------------------------------------
 Fri Aug 19 06:46:59 UTC 2016 - mchang@suse.com
 
-- shim-install : fix regression of password prompt (bsc#993764) 
+- shim-install : fix regression of password prompt (bsc#993764)
 
 -------------------------------------------------------------------
 Fri Aug  5 02:53:54 UTC 2016 - glin@suse.com
@@ -1666,7 +1722,7 @@ Fri Aug  5 02:53:54 UTC 2016 - glin@suse.com
 Wed Aug  3 09:10:25 UTC 2016 - glin@suse.com
 
 - Update shim-bsc973496-mokmanager-no-append-write.patch to try
-  append write first 
+  append write first
 
 -------------------------------------------------------------------
 Tue Aug  2 02:59:46 UTC 2016 - glin@suse.com
@@ -1707,7 +1763,7 @@ Wed May  4 10:40:52 UTC 2016 - agraf@suse.com
 Wed Mar  9 07:15:52 UTC 2016 - mchang@suse.com
 
 - shim-install : fix typing ESC can escape to parent config which is
-  in command mode and cannot return back (bsc#966701) 
+  in command mode and cannot return back (bsc#966701)
 - shim-install : fix no which command for JeOS (bsc#968264)
 
 -------------------------------------------------------------------
@@ -1777,13 +1833,13 @@ Tue Apr  7 07:42:06 UTC 2015 - glin@suse.com
 - Add shim-bsc919675-uninstall-shim-protocols.patch to uninstall
   the shim protocols at Exit (bsc#919675)
 - Add shim-bsc920515-fix-fallback-buffer-length.patch to adjust
-  the buffer size for the boot options (bsc#920515) 
+  the buffer size for the boot options (bsc#920515)
 - Refresh shim-opensuse-cert-prompt.patch
 
 -------------------------------------------------------------------
 Thu Apr  2 16:31:28 UTC 2015 - crrodriguez@opensuse.org
 
-- shim-gcc5.patch: shim needs -std=gnu89 to build with GCC5 
+- shim-gcc5.patch: shim needs -std=gnu89 to build with GCC5
 
 -------------------------------------------------------------------
 Tue Feb 17 06:02:34 UTC 2015 - mchang@suse.com
@@ -1872,8 +1928,8 @@ Fri Aug  8 11:18:36 UTC 2014 - lnussel@suse.de
 Mon Aug  4 07:53:22 UTC 2014 - mchang@suse.com
 
 - shim-install: fix GRUB shows broken letters at boot by calling
-  grub2-install to initialize /boot/grub2 directory with files 
-  needed by grub.cfg (bnc#889765) 
+  grub2-install to initialize /boot/grub2 directory with files
+  needed by grub.cfg (bnc#889765)
 
 -------------------------------------------------------------------
 Wed May 28 04:13:33 UTC 2014 - glin@suse.com
@@ -1896,7 +1952,7 @@ Wed May 14 09:39:02 UTC 2014 - glin@suse.com
 Tue Apr 29 07:38:11 UTC 2014 - mchang@suse.com
 
 - shim-install: fix boot partition and rollback support kluge
-  (bnc#875385) 
+  (bnc#875385)
 
 -------------------------------------------------------------------
 Thu Apr 10 08:20:20 UTC 2014 - glin@suse.com
@@ -1926,7 +1982,7 @@ Thu Mar 13 02:32:15 UTC 2014 - glin@suse.com
 Mon Mar 10 07:56:44 UTC 2014 - glin@suse.com
 
 - Add shim-fix-uninitialized-variable.patch to fix the use of
-  uninitialzed variables in lib 
+  uninitialzed variables in lib
 
 -------------------------------------------------------------------
 Fri Mar  7 09:09:12 UTC 2014 - glin@suse.com
@@ -2005,7 +2061,7 @@ Tue Feb 11 06:30:02 UTC 2014 - glin@suse.com
   creation of the temporary nss database
 - Add shim-only-os-name.patch: remove the kernel version of the
   build server
-- Match the the prefix of the project name properly by escaping the 
+- Match the the prefix of the project name properly by escaping the
   percent sign.
 
 -------------------------------------------------------------------
@@ -2139,7 +2195,7 @@ Tue Jul 23 03:55:05 UTC 2013 - glin@suse.com
   + shim-bnc804631-fix-broken-bootpath.patch
   + shim-bnc798043-no-doulbe-separators.patch
   + shim-bnc807760-change-pxe-2nd-loader-name.patch
-  + shim-bnc808106-correct-certcount.patch 
+  + shim-bnc808106-correct-certcount.patch
   + shim-mokmanager-ui-revamp.patch
 - Add patches
   + shim-merge-lf-loader-code.patch: merge the Linux Foundation
@@ -2168,7 +2224,7 @@ Wed May  8 06:40:12 UTC 2013 - glin@suse.com
 Wed Apr  3 03:54:22 UTC 2013 - glin@suse.com
 
 - Call update-bootloader in %post to update *.efi in \efi\opensuse
-  (bnc#813079) 
+  (bnc#813079)
 
 -------------------------------------------------------------------
 Fri Mar  8 06:53:47 UTC 2013 - glin@suse.com
@@ -2223,7 +2279,7 @@ Thu Feb  7 06:56:19 UTC 2013 - glin@suse.com
 Wed Feb  6 06:35:45 UTC 2013 - mchang@suse.com
 
 - Add shim-install utility
-- Add Recommends to grub2-efi 
+- Add Recommends to grub2-efi
 
 -------------------------------------------------------------------
 Wed Jan 30 09:00:31 UTC 2013 - glin@suse.com

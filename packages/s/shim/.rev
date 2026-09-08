@@ -1605,4 +1605,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>shim-install Create non-NX shim boot entry first to prioritize NX shim</comment>
     <requestid>1360052</requestid>
   </revision>
+  <revision rev="139" vrev="7">
+    <srcmd5>f179e3067ebc9aaffd648d4aed9e5cb3</srcmd5>
+    <version>16.1</version>
+    <time>1788879175</time>
+    <user>anag_factory</user>
+    <comment>shim-install Do not update fallback on sl-micro when the fallback is not in efi default boot path (bsc#1270036)</comment>
+    <requestid>1376068</requestid>
+  </revision>
 </revisionlist>

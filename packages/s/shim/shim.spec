@@ -82,6 +82,8 @@ Source33:	shim-sles.aarch64.efi
 # Microsoft-signed nx-shim
 Source40:       shim-opensuse.nx.x86.efi
 Source41:       shim-opensuse.nx.aarch64.efi
+Source42:       shim-sles.nx.x86.efi
+Source43:       shim-sles.nx.aarch64.efi
 # revoked certificates for dbx
 Source50:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-01.crt
 Source51:       revoked-openSUSE-UEFI-SIGN-Certificate-2013-08.crt
@@ -247,11 +249,11 @@ for suffix in "${suffixes[@]}"; do
 	vendor_dbx='vendor-dbx-sles.esl'
 %ifarch x86_64
 	ms_shim=%{SOURCE32}
-	ms_shim_nx=""
+	ms_shim_nx=%{SOURCE42}
 %else
 	# sles aarch64
 	ms_shim=%{SOURCE33}
-	ms_shim_nx=""
+	ms_shim_nx=%{SOURCE43}
 %endif
     elif test "$suffix" = "devel"; then
 	cert=%{_sourcedir}/_projectcert.crt

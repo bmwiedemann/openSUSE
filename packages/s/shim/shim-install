@@ -23,16 +23,35 @@ grub_install_target=
 self="`basename $0`"
 grub_cfg="/boot/grub2/grub.cfg"
 update_boot=no
+check_fallback=no
 def_grub_efi="${source_dir}/grub.efi"
 def_boot_efi=
 
 [ ! -r /usr/etc/default/shim ] || . /usr/etc/default/shim
 [ ! -r /etc/default/shim ] || . /etc/default/shim
 
+DEFAULT_NX=false
+# A white list of SUSE distros for booting with nx shim
+if [ -f /etc/os-release ]; then
+    . /etc/os-release
+    case "${NAME}" in
+        "openSUSE Tumbleweed")
+            DEFAULT_NX=true
+            ;;
+        "SLES")
+	    case "${VERSION_ID}" in
+                "16.1")
+                    DEFAULT_NX=true
+                    ;;
+            esac
+            ;;
+    esac
+fi
+
+# Default shim
 if [ -z "$def_shim_efi" -o ! -e ${source_dir}/${def_shim_efi} ] ; then
 	def_shim_efi="shim.efi"
 fi
-
 source_shim_efi="${source_dir}/${def_shim_efi}"
 
 # non-nx shim
@@ -40,7 +59,13 @@ def_shim_non_nx_efi="${def_shim_efi%.efi}.non-nx.efi"
 if [ ! -e "${source_dir}/${def_shim_non_nx_efi}" ]; then
     def_shim_non_nx_efi="shim.non-nx.efi"
 fi
-source_shim_nx_efi="${source_dir}/${def_shim_non_nx_efi}"
+source_shim_non_nx_efi="${source_dir}/${def_shim_non_nx_efi}"
+
+# If SUSE distro is NOT in NX list. Set non-nx shim as the default shim
+if [ "$DEFAULT_NX" = "false" ] ; then
+    def_shim_efi="${def_shim_non_nx_efi}"
+    source_shim_efi="${source_shim_non_nx_efi}"
+fi
 
 if [ x${arch} = xx86_64 ] ; then
 	grub_install_target="x86_64-efi"
@@ -95,8 +120,9 @@ case "$OS_ID" in
 esac
 
 # bsc#1230316 Check if the system is encrypted SL-Micro
+# bsc#1269084 Detect the "SL Micro" or "SL-Micro" prefix
 is_encrypted_slm () {
-   if test "$GRUB_DISTRIBUTOR" = "SL Micro" && test -n "$GRUB_TPM2_SEALED_KEY" ; then
+   if [[ "$GRUB_DISTRIBUTOR" =~ ^SL[-\ ]Micro ]] && test -n "$GRUB_TPM2_SEALED_KEY" ; then
        # return true
        return 0
    fi
@@ -311,6 +337,7 @@ else
 fi
 
 if test -n "$efidir"; then
+    # shim file names in efi folder for laster creating boot entry
     efi_file=shim.efi
     efi_non_nx_file=shim.non-nx.efi
     efibootdir="$efidir/EFI/boot"
@@ -329,6 +356,16 @@ fi
 if test "$removable" = "no" -a -f "$efibootdir/$def_boot_efi"; then
     if test -n "$ca_string" && (grep -q "$ca_string" "$efibootdir/$def_boot_efi"); then
         update_boot=yes
+	# We should only update fallback.efi if it is already present. If it is
+	# not present, we should not create one because it will break the
+	# images created as removable target (e.g. SL-Micro selfinstall image).
+	# Remember the purpose here is to update sle distro loaders and also loaders
+	# in fallback path if they are found to be SUSE owned, but that should not
+	# instroduce unexpected behavior change from removable to non-removable.
+	# Some firmware may only support removable boot path.
+	if [ "$OS_ID" = "sl-micro" ]; then
+	    check_fallback=yes
+	fi
     fi
 else
     update_boot=yes
@@ -349,16 +386,16 @@ if test "$clean" = "yes"; then
     if test "$no_nvram" = no && test -n "$bootloader_id"; then
         # Delete old entries from the same distributor.
         for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
-            fgrep -i " $bootloader_id" | cut -b5-8`; do
+            grep -F -i " $bootloader_id" | cut -b5-8`; do
             $efibootmgr -b "$bootnum" -B
         done
 	# Delete old entries for non-nx from the same distributor.
 	for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
-	    fgrep " $bootloader_id-non-nx" | cut -b5-8`; do
+	    grep -F " $bootloader_id-non-nx" | cut -b5-8`; do
 	    $efibootmgr -b "$bootnum" -B
 	done
-	fi
-	exit 0
+    fi
+    exit 0
 fi
 
 cp "${source_dir}/MokManager.efi" "${efidir}"
@@ -375,20 +412,27 @@ fi
 echo "copying $source_grub_efi to ${efidir}/grub.efi"
 cp "$source_grub_efi" "${efidir}/grub.efi"
 
-if test "$efidir" != "$efibootdir" ; then 
+if test "$efidir" != "$efibootdir" ; then
+    # Copy default shim
     cp "${source_shim_efi}" "${efidir}/shim.efi"
-    # copy non-nx shim
-    cp "${source_shim_nx_efi}" "${efidir}/shim.non-nx.efi"
+    # Copy non-nx shim. It's a fallback
+    if [ "$DEFAULT_NX" = "true" ] ; then
+	cp "${source_shim_non_nx_efi}" "${efidir}/shim.non-nx.efi"
+    fi
     if test -n "$bootloader_id"; then
         echo "shim.efi,${bootloader_id}" | iconv -f ascii -t ucs2 > "${efidir}/boot.csv"
     fi
 fi
 
 if test "$update_boot" = "yes"; then
+    # Copy default shim to bootx64.efi/bootaa64.efi
+    # firmware only support one bootx64.efi, so do not copy bootx64.non-nx.efi as a fallback
     cp "$source_shim_efi" "${efibootdir}/${def_boot_efi}"
-    # firmware only support bootx64.efi, NOT support bootx64.non-nx.efi
     if test "$removable" = "no"; then
-        cp "${source_dir}/fallback.efi" "${efibootdir}"
+	if test ${check_fallback} = "yes" &&
+	   test -f "${efibootdir}/fallback.efi"; then
+	   cp "${source_dir}/fallback.efi" "${efibootdir}"
+	fi
         # bsc#1175626, bsc#1175656 Since shim 15, loading MokManager becomes
         # mandatory if a MOK request exists. Copy MokManager to \EFI\boot so
         # that boot*.efi can load MokManager to process the request instead
@@ -502,12 +546,12 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
 
     # Delete old entries from the same distributor.
     for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
-        fgrep -i " $bootloader_id" | cut -b5-8`; do
+        grep -F -i " $bootloader_id" | cut -b5-8`; do
         $efibootmgr -b "$bootnum" -B
     done
     # Delete old entries for non-nx from the same distributor.
     for bootnum in `$efibootmgr | grep '^Boot[0-9]' | \
-	fgrep " $bootloader_id-non-nx" | cut -b5-8`; do
+	grep -F " $bootloader_id-non-nx" | cut -b5-8`; do
 	$efibootmgr -b "$bootnum" -B
     done
 
@@ -533,19 +577,23 @@ if test "$no_nvram" = no && test -n "$bootloader_id"; then
                 efidir_disk="$("$grub_probe" --target=disk --device-map= -d "$mddev")"
                 efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
                 efidir_d=${mddev#/dev/}
-		# create boot entry for non-nx shim
-                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-                  -L "$bootloader_id-non-nx ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
-		# create boot entry for default shim (nx)
+		# create boot entry for non-nx shim as a fallback
+		if [ "$DEFAULT_NX" = "true" ] ; then
+                    $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+                      -L "$bootloader_id-non-nx ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
+		fi
+		# create boot entry for default shim
                 $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
                   -L "$bootloader_id ($efidir_d)" -l "\\EFI\\$efi_distributor\\$efi_file"
             done
         else
             efidir_part="$(echo "$efidir_drive" | sed 's/^([^,]*,[^0-9]*//; s/[^0-9].*//')"
-	    # create boot entry for default shim (nx)
-            $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
-              -L "$bootloader_id-non-nx" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
-	    # create boot entry for default shim (nx)
+	    # create boot entry for non-nx shim as a fallback
+	    if [ "$DEFAULT_NX" = "true" ] ; then
+                $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
+                  -L "$bootloader_id-non-nx" -l "\\EFI\\$efi_distributor\\$efi_non_nx_file"
+	    fi
+	    # create boot entry for default shim
             $efibootmgr -c -d "$efidir_disk" -p "$efidir_part" -w \
               -L "$bootloader_id" -l "\\EFI\\$efi_distributor\\$efi_file"
         fi
