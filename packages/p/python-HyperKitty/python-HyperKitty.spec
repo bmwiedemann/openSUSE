@@ -141,6 +141,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module python-dateutil >= %{python_dateutil_min_version}}
 BuildRequires:  %{python_module robot-detection >= %{robot_detection_min_version}}
 # /SECTION
+#!BuildConflicts: %{python_module Django >= %{django_max_version}}
 
 %description
 A web interface to access GNU Mailman v3 archives.
