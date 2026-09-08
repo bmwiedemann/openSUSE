@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 07 08:15:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1788768889.879c500:
+  * Revert "fix: Prevent command corruption from DSR/CPR loop on serial xterm consoles"
+  * fix: Prevent command corruption from DSR/CPR loop on xterm consoles
+  * test(myjsonrpc): Add test for newline handling
+  * fix(myjsonrpc): omit newline delimiter between JSON objects
+  * feat: Avoid problems with pretty serial markers and multiline commands
+
+-------------------------------------------------------------------
 Wed Aug 26 19:22:19 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1787772129.e7dc5f2:
