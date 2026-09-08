@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug  5 13:17:08 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Also install the CMake package config for the header-only
+  Boost.System during the base build: since CMake 4 removed the
+  FindBoost module, find_package(Boost COMPONENTS system) falls
+  through to BoostConfig.cmake, which requires a per-component
+  boost_system-config.cmake that the top-level b2 install no longer
+  generates now that the compatibility stub library is gone.
+  Package it in libboost_headers-devel.
+
+-------------------------------------------------------------------
 Mon Jun  8 14:15:41 UTC 2026 - Josef Melcr <josef.melcr@suse.com>
 
 - Force remove boost_atomic directory to fix the failing build

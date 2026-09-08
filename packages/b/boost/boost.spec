@@ -1279,6 +1279,21 @@ cd doc
      $LIBRARIES_FLAGS \
      threading=multi link=shared runtime-link=shared install
 
+%if %{build_base}
+# Boost.System is header-only since 1.69 and no longer has a compiled
+# library, so the generic install above creates no CMake config for it and
+# find_package(Boost COMPONENTS system) fails since CMake 4 dropped its
+# FindBoost module. Install the config (an INTERFACE target) via the
+# library's modular install target, which --with-<library> cannot address.
+./b2 -d+2 -q \
+     --debug-configuration \
+     --build-type=minimal --build-dir=./build --stagedir=./stage \
+     --prefix=%{buildroot}%{_prefix} --exec-prefix=%{buildroot}%{_bindir} \
+     --libdir=%{buildroot}%{_libdir} --includedir=%{buildroot}%{_includedir} \
+     --user-config=./user-config.jam \
+     threading=multi link=shared runtime-link=shared /boost/system//install
+%endif
+
 # No python dependencies in the main tree
 
 ! $(ldd %{buildroot}%{_libdir}/*.so* | grep python\\.)
@@ -1824,10 +1839,12 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %dir %{_libdir}/cmake
 %dir %{_libdir}/cmake/Boost-%{version}
 %dir %{_libdir}/cmake/boost_headers-%{version}
+%dir %{_libdir}/cmake/boost_system-%{version}
 %dir %{_includedir}/boost
 %{_libdir}/cmake/BoostDetectToolset-%{version}.cmake
 %{_libdir}/cmake/Boost-%{version}/*
 %{_libdir}/cmake/boost_headers-%{version}/*
+%{_libdir}/cmake/boost_system-%{version}/*
 %{_includedir}/boost/*
 
 %files -n boost-license%{library_version}
