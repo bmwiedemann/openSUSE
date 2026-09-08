@@ -3142,4 +3142,32 @@ cargo-audit reports only the pre-existing accepted RUSTSEC-2023-0071 (rsa,
 no fixed release). Test flavour: 61 binaries, 1371 passed, 0 failed.</comment>
     <requestid>1375341</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>92c383da46b1383ea8616fb81ac1189f</srcmd5>
+    <version>0.12.10</version>
+    <time>1788879288</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.10:
+- uv publish revokes short-lived PyPI trusted-publishing tokens afterwards,
+  failures included
+- uv init demands an explicit --name when the inferred project name is
+  reserved for a Python interpreter
+- uv lock --check reuses the lockfile when an absolute exclude-newer moves
+  later or a package-specific one is disabled, and --locked no longer fails
+  over exclude-newer settings for packages outside the resolution
+- package-specific exclude-newer cutoffs written in a deterministic order
+- faster locking of large workspaces with conflicts, and faster uv publish
+  hashing
+
+Licences re-derived over the re-vendored tree (cargo tree -p uv -e normal,
+516 crates): no crate joins or leaves the linked graph and the copyleft set
+is unchanged, so the License tag stays as it is. zstd-safe 7.3.0 and
+zstd-sys 2.1.0 relicensed to BSD-3-Clause, which is permissive and was
+already present in the graph via subtle, encoding_rs and aws-lc-sys; the
+Legal-Review-Notice records it.
+
+Built natively on aarch64. Main flavour green, rpmlint clean; the test
+flavour runs the Rust workspace suite: 1371 tests pass, 0 fail.</comment>
+    <requestid>1376124</requestid>
+  </revision>
 </revisionlist>

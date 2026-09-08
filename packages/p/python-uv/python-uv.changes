@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:17:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.10:
+  * uv publish revokes short-lived PyPI trusted-publishing tokens
+    afterwards, failures included
+  * uv init demands an explicit --name when the inferred project
+    name is reserved for a Python interpreter
+  * uv lock --check reuses the lockfile when an absolute
+    exclude-newer moves later or a package-specific one is
+    disabled, and --locked no longer fails over exclude-newer
+    settings for packages outside the resolution
+  * package-specific exclude-newer cutoffs written in a
+    deterministic order
+  * faster locking of large workspaces with conflicts, and faster
+    uv publish hashing
+  * preview: missing-exclude-newer-package-lock omits out-of-
+    resolution exclude-newer-package settings from uv.lock, and
+    uv tree --invert shows terminal dependency cycles
+  * Refresh the vendored crates; no crate joins or leaves the
+    linked graph (still 516), but zstd-safe 7.3.0 and zstd-sys
+    2.1.0 relicensed from MIT-or-Apache-2.0 to BSD-3-Clause -
+    still permissive, so the License tag is unchanged
+
+-------------------------------------------------------------------
 Wed Sep  2 06:39:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.9:
