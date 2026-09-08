@@ -1866,4 +1866,37 @@ Putting the API-docs into a separate package removes 23MByte from a gtk3-devel i
   xatom. (bsc#1269225, glgo#GNOME/gtk!10105)</comment>
     <requestid>1363123</requestid>
   </revision>
+  <revision rev="210" vrev="1">
+    <srcmd5>e3e030ebb7d9dc48cc5a49ba96434f0a</srcmd5>
+    <version>3.24.52+git59.b30343717d</version>
+    <time>1788879130</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.24.52+git59.b30343717d:
+  + filechooser: Avoid converting CSS font size twice
+  + a11y: Do not emit false focus changes for a notebook tab on
+    page changes
+  + Window: Free empty string set to gtk-menu-bar-accel
+  + wayland: Align decoration layout fallback with GtkSettings
+  + filechooserwidget: stop the location and load timeouts in
+    dispose
+
+- Update to version 3.24.52+git48.b9cc75f19f:
+  + menu: Avoid scrolling too far
+  + gtkapplication: Fix gtk_application_dbus_register return value
+  + gtk/window: NULL check settings before disconnecting handler
+  + gtkwindow: Clear active state on disappearing pointer
+  + gdk/wayland: Remove unused field in _GdkWaylandSelection
+  + gdk/wayland: Make primary selection and clipboard updates less
+    racy
+  + gdk/wayland: Clear dnd targets
+  + gdk/wayland: Set clipboard targets atomically
+  + Focus does not return to the main window when closing File
+    Chooser
+  + gdk/wayland: Add support for wl_fixes.ack_global_remove
+  + x11: Fix wrong display when getting xatom
+- Drop gtk3-fix-xi2-xatom.patch:fixed upstream.
+
+  (bsc#1119306 fate#326548 glgo#GNOME/gtk!411).</comment>
+    <requestid>1375925</requestid>
+  </revision>
 </revisionlist>

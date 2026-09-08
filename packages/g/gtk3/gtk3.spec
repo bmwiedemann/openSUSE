@@ -30,7 +30,7 @@
 %define __provides_exclude_from ^%{_libdir}/gtk-3.0
 
 Name:           gtk3
-Version:        3.24.52
+Version:        3.24.52+git59.b30343717d
 Release:        0
 Summary:        The GTK+ toolkit library (version 3)
 License:        LGPL-2.1-or-later
@@ -45,8 +45,6 @@ Source99:       baselibs.conf
 Patch0:         gtk3-GTK_PATH64.patch
 # PATCH-FIX-OPENSUSE gtk3-revert-forced-xftdpi.patch fvogt@opensuse.org -- Revert very controversal commit on GTK3, forcing DPI to 96
 Patch1:         gtk3-revert-forced-xftdpi.patch
-# PATCH-FIX-UPSTREAM gtk3-fix-xi2-xatom.patch bsc#1269225, glgo#GNOME/gtk!10105 alynx.zhou@suse.com -- Fix wrong display when handling xi2 xatom
-Patch2:         gtk3-fix-xi2-xatom.patch
 
 BuildRequires:  cups-devel >= 1.7
 BuildRequires:  docbook-xsl-stylesheets
@@ -395,7 +393,6 @@ cp -a %{SOURCE1} .
 %autopatch -p1 -m 1 -M 999
 %else
 %patch -P 1 -p1
-%patch -P 2 -p1
 %endif
 
 %build

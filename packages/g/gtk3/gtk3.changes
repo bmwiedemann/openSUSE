@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Sep  4 07:31:36 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.52+git59.b30343717d:
+  + filechooser: Avoid converting CSS font size twice
+  + a11y: Do not emit false focus changes for a notebook tab on
+    page changes
+  + Window: Free empty string set to gtk-menu-bar-accel
+  + wayland: Align decoration layout fallback with GtkSettings
+  + filechooserwidget: stop the location and load timeouts in
+    dispose
+
+-------------------------------------------------------------------
+Tue Aug 11 07:26:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.24.52+git48.b9cc75f19f:
+  + menu: Avoid scrolling too far
+  + gtkapplication: Fix gtk_application_dbus_register return value
+  + gtk/window: NULL check settings before disconnecting handler
+  + gtkwindow: Clear active state on disappearing pointer
+  + gdk/wayland: Remove unused field in _GdkWaylandSelection
+  + gdk/wayland: Make primary selection and clipboard updates less
+    racy
+  + gdk/wayland: Clear dnd targets
+  + gdk/wayland: Set clipboard targets atomically
+  + Focus does not return to the main window when closing File
+    Chooser
+  + gdk/wayland: Add support for wl_fixes.ack_global_remove
+  + x11: Fix wrong display when getting xatom
+- Drop gtk3-fix-xi2-xatom.patch:fixed upstream.
+
+-------------------------------------------------------------------
 Thu Jul  2 02:10:33 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gtk3-fix-xi2-xatom.patch: Fix wrong display when handling xi2
@@ -1139,7 +1170,7 @@ Thu Dec 13 05:31:08 UTC 2018 - bjorn.lie@gmail.com
 Mon Nov 12 15:57:06 UTC 2018 - mgorse@suse.com
 
 - Add gtk3-atk-table-cell.patch: add support for AtkTableCell
-  (bsc#1119306 fate#326548 glgo#GNOME/gtk!411). 
+  (bsc#1119306 fate#326548 glgo#GNOME/gtk!411).
 
 -------------------------------------------------------------------
 Fri Sep 21 07:31:21 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
@@ -3566,6 +3597,7 @@ Fri Aug 15 13:01:04 CDT 2014 - federico@suse.com
   which are completely decorated by the window manager.  This patch
   adds support for setting those buttons depending on the mode in
   which the desktop is running (bnc#872820).
+
 -------------------------------------------------------------------
 Thu Aug 14 00:55:52 CEST 2014 - hpj@suse.com
 
