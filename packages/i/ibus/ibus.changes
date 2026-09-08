@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 14:40:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Backport patches to fix crashes with GNOME 51 (boo#1279542):
+  + 1a331e695d84fc6bae8f2d11c52d4776df49647b.patch
+  + 5bbe88a1936246185a65f76e58cc85871401e59a.patch
+
+-------------------------------------------------------------------
 Sun Jul 12 03:33:32 UTC 2026 - Fuminobu Takeyama <ftake@geeko.jp> - 1.5.34
 
 - Upstream update to 1.5.34

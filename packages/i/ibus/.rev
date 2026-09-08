@@ -1237,4 +1237,12 @@ This update also contains a patch for usability improvement for 13.1. (forwarded
     <comment></comment>
     <requestid>1365032</requestid>
   </revision>
+  <revision rev="139" vrev="2">
+    <srcmd5>37283d33a75baad4f9b3cf930a4e18c4</srcmd5>
+    <version>1.5.34</version>
+    <time>1788879086</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376193</requestid>
+  </revision>
 </revisionlist>

@@ -65,6 +65,8 @@ Patch11:        setup-switch-im.patch
 # PATCH-FIX-SLE ibus-disable-engines-preload-in-GNOME.patch bnc#1036729 qzhao@suse.com
 # Disable ibus engines preload in GNOME for These works are handled by gnome-shell.
 Patch12:        ibus-disable-engines-preload-in-GNOME.patch
+Patch13:        https://github.com/ibus/ibus/commit/5bbe88a1936246185a65f76e58cc85871401e59a.patch
+Patch14:        https://github.com/ibus/ibus/commit/1a331e695d84fc6bae8f2d11c52d4776df49647b.patch
 BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
 BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.84.0
@@ -217,6 +219,8 @@ cp -r %{SOURCE11} .
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 12 -p1
+%patch -P 13 -p1
+%patch -P 14 -p1
 
 %build
 %configure --disable-static \
