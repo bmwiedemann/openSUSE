@@ -38,8 +38,15 @@
 %global confdir %_prefix%_sysconfdir
 
 %define v_libclamav 12
+%define v_libclamunrar 12
 %define v_libfreshclam 4
 %define v_libclammspack 0
+
+%define libclamav libclamav%{v_libclamav}
+%define libclamunrar libclamunrar%{v_libclamunrar}
+%define libfreshclam libfreshclam%{v_libfreshclam}
+%define libclammspack libclammspack%{v_libclammspack}
+
 %define vjsonc 0.18
 %define jsonc json-c-json-c-%vjsonc-20240915
 
@@ -70,6 +77,9 @@ Patch14:        clamav-document-maxsize.patch
 Patch15:        clamav-format.patch
 Patch16:        clamav-workaround.patch
 Patch17:        clamav-CVE-2026-46671.patch
+# Needed for libcheck-0.10.0 on SLE-12-SP5
+# (but harmless to apply everywhere)
+Patch18:        clamav-libcheck-workarounds.patch
 ExcludeArch:    %{arml} %{ix86}
 
 BuildRequires:  cargo%{?vrust}
@@ -116,9 +126,9 @@ BuildRequires:  python3-pytest
 Obsoletes:      clamav-db < 0.88.3
 Provides:       clamav-nodb = %{version}
 Obsoletes:      clamav-nodb < %{version}
-Requires:       libclamav%v_libclamav = %{version}-%{release}
-Requires:       libclammspack%v_libclammspack = %{version}-%{release}
-Requires:       libfreshclam%v_libfreshclam = %{version}-%{release}
+Requires:       %libclamav = %{version}-%{release}
+Requires:       %libclammspack = %{version}-%{release}
+Requires:       %libfreshclam = %{version}-%{release}
 %if %{without clammspack}
 BuildRequires:  pkgconfig(libmspack)
 %endif
@@ -167,11 +177,21 @@ than one clamd(8) server and seamlessly hot-swap to even the load
 between different machines and to keep scanning for viruses even
 when a server goes down.
 
-%package -n libclamav%v_libclamav
+%package -n %libclamav
 Summary:        ClamAV antivirus engine runtime
 Group:          System/Libraries
+Recommends:     %libclamunrar = %{version}-%{release}
 
-%description -n libclamav%v_libclamav
+%description -n %libclamav
+ClamAV is an antivirus engine designed for detecting trojans,
+viruses, malware and other malicious threats.
+
+%package -n %libclamunrar
+Summary:        ClamAV antivirus RAR support
+License:        NonFree
+Group:          System/Libraries
+
+%description -n %libclamunrar
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
@@ -179,23 +199,23 @@ viruses, malware and other malicious threats.
 Summary:        ClamAV updater library
 Group:          System/Libraries
 
-%description -n libfreshclam%v_libfreshclam
+%description -n %libfreshclam
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
-%package -n libclammspack%v_libclammspack
+%package -n %libclammspack
 Summary:        ClamAV antivirus engine runtime
 Group:          System/Libraries
 
-%description -n libclammspack%v_libclammspack
+%description -n %libclammspack
 ClamAV is an antivirus engine designed for detecting trojans,
 viruses, malware and other malicious threats.
 
 %package devel
 Summary:        Development files for libclamav, an antivirus engine
 Group:          Development/Libraries/C and C++
-Requires:       libclamav%v_libclamav = %{version}
-Requires:       libfreshclam%v_libfreshclam = %{version}
+Requires:       %libclamav = %{version}
+Requires:       %libfreshclam = %{version}
 
 %description devel
 ClamAV is an antivirus engine designed for detecting trojans,
@@ -216,6 +236,7 @@ that want to make use of libclamav.
 %patch -P 15
 %patch -P 16
 %patch -P 17 -p 1
+%patch -P 18
 
 # Update cargo checksums for patched onenote_parser files
 sed -i \
@@ -346,19 +367,22 @@ fi
 %service_del_postun clamav-milter.service
 
 %if 0%{?suse_version} > 1500
-%ldconfig_scriptlets -n libclamav%v_libclamav
-%ldconfig_scriptlets -n libfreshclam%v_libfreshclam
+%ldconfig_scriptlets -n %libclamav
+%ldconfig_scriptlets -n %libclamunrar
+%ldconfig_scriptlets -n %libfreshclam
 %if %{with clammspack}
-%ldconfig_scriptlets -n libclammspack%v_libclammspack
+%ldconfig_scriptlets -n %libclammspack
 %endif
 %else
-%post   -n libclamav%v_libclamav -p /sbin/ldconfig
-%postun -n libclamav%v_libclamav -p /sbin/ldconfig
-%post   -n libfreshclam%v_libfreshclam -p /sbin/ldconfig
-%postun -n libfreshclam%v_libfreshclam -p /sbin/ldconfig
+%post   -n %libclamav -p /sbin/ldconfig
+%postun -n %libclamav -p /sbin/ldconfig
+%post   -n %libclamunrar -p /sbin/ldconfig
+%postun -n %libclamunrar -p /sbin/ldconfig
+%post   -n %libfreshclam -p /sbin/ldconfig
+%postun -n %libfreshclam -p /sbin/ldconfig
 %if %{with clammspack}
-%post   -n libclammspack%v_libclammspack -p /sbin/ldconfig
-%postun -n libclammspack%v_libclammspack -p /sbin/ldconfig
+%post   -n %libclammspack -p /sbin/ldconfig
+%postun -n %libclammspack -p /sbin/ldconfig
 %endif
 %endif
 
@@ -411,14 +435,17 @@ fi
 %{_mandir}/man5/clamav-milter.conf.5%{?ext_man}
 %{_mandir}/man8/clamav-milter.8%{?ext_man}
 
-%files -n libclamav%v_libclamav
-%{_libdir}/libclam*.so.%{v_libclamav}*
+%files -n %libclamav
+%{_libdir}/libclamav.so.%{v_libclamav}*
 
-%files -n libfreshclam%v_libfreshclam
+%files -n %libclamunrar
+%{_libdir}/libclamunrar*.so.%{v_libclamunrar}*
+
+%files -n %libfreshclam
 %{_libdir}/libfreshclam.so.%{v_libfreshclam}*
 
 %if %{with clammspack}
-%files -n libclammspack%v_libclammspack
+%files -n %libclammspack
 %{_libdir}/libclammspack.so.%{v_libclammspack}*
 %endif
 

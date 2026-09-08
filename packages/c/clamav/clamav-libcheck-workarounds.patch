@@ -1,0 +1,16 @@
+--- unit_tests/check_clamd.c.orig
++++ unit_tests/check_clamd.c
+@@ -53,6 +53,13 @@
+ #endif
+ 
+ #include <check.h>
++/* libcheck < 0.11.0 lacks these; define them via the existing helper. */
++#ifndef ck_assert_ptr_nonnull
++#define ck_assert_ptr_nonnull(X) _ck_assert_ptr(X, !=, NULL)
++#endif
++#ifndef ck_assert_ptr_null
++#define ck_assert_ptr_null(X)    _ck_assert_ptr(X, ==, NULL)
++#endif
+ 
+ // libclamav
+ #include "clamav.h"

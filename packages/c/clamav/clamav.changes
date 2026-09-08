@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:02:03 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Put libclamunrar into an optional subpackage, because it has a
+  NonFree license.
+- Improve macro usage for the library subpackages.
+- Add clamav-libcheck-workarounds.patch to work around missing
+  macros in libcheck-0.10.0 on SLE-12-SP5.
+
+-------------------------------------------------------------------
 Sun Aug 16 20:44:26 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - update to 1.5.4

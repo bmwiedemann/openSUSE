@@ -1525,4 +1525,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1373377</requestid>
   </revision>
+  <revision rev="143" vrev="2">
+    <srcmd5>f34153849b5825b63613d035f0e50a7d</srcmd5>
+    <version>1.5.4</version>
+    <time>1788879400</time>
+    <user>anag_factory</user>
+    <comment>- Put libclamunrar into an optional subpackage, because it has a
+  NonFree license.
+- Improve macro usage for the library subpackages.
+- Add clamav-libcheck-workarounds.patch to work around missing
+  macros in libcheck-0.10.0 on SLE-12-SP5.</comment>
+    <requestid>1376176</requestid>
+  </revision>
 </revisionlist>
