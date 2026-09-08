@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 14:03:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Delete unused libnetlink-devel buildrequires. Netlink is enabled
+  anyway.
+
+-------------------------------------------------------------------
 Wed Jul 22 07:24:12 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Enable plugin-nut (boo#1271687)

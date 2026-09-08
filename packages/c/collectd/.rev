@@ -447,4 +447,13 @@ Packaging :
     <comment></comment>
     <requestid>1367693</requestid>
   </revision>
+  <revision rev="52" vrev="3">
+    <srcmd5>fdf79e4a52a989655259e87ab567df21</srcmd5>
+    <version>5.12.0.382.g2cd055fe</version>
+    <time>1788879302</time>
+    <user>anag_factory</user>
+    <comment>- Delete unused libnetlink-devel buildrequires. Netlink is enabled
+  anyway. (forwarded request 1375814 from jengelh)</comment>
+    <requestid>1376135</requestid>
+  </revision>
 </revisionlist>

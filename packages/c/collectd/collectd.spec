@@ -96,7 +96,6 @@ BuildRequires:  java-devel
 BuildRequires:  libesmtp-devel
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libjansson-devel
-BuildRequires:  libnetlink-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libpng-devel
 BuildRequires:  libprotobuf-c-devel
