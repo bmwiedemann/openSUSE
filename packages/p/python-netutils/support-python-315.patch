@@ -1,0 +1,13 @@
+Index: netutils-1.19.1/pyproject.toml
+===================================================================
+--- netutils-1.19.1.orig/pyproject.toml
++++ netutils-1.19.1/pyproject.toml
+@@ -31,7 +31,7 @@ packages = [
+ ]
+ 
+ [tool.poetry.dependencies]
+-python = ">=3.10,<3.15"
++python = ">=3.10,<3.16"
+ napalm = [
+     {version = "^4.1.0", optional = true, python = ">=3.10,<3.14"},
+     {version = "^5.0.0", optional = true, python = ">=3.14"}

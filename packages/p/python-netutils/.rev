@@ -230,4 +230,31 @@
     network driver to pyntc's `cisco_iosxr_ssh` device type.</comment>
     <requestid>1367181</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>178ccf4912db3a70403ae383870241c4</srcmd5>
+    <version>1.19.1</version>
+    <time>1788879242</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.19.1:
+  ## Added
+  * Added a library mapping for ncclient which is used for NETCONF
+    communication.
+  * Added a Library Mapper for LibreNMS obtained values in order to map with
+    existing network_drivers.
+  * Added bit, Kbit, Mbit to normalize bandwidth utility.
+  * Added Aruba AOS-CX support to the Netmiko and Hier Config library
+    mappers.
+  * Added sanitize_config_jinja to render each replacement as a Jinja2
+    template.
+  ## Fixed
+  * Fixed platform mappings to reconcile Netmiko driver support.
+  * Fixed the incorrect running configuration command for aruba_os.
+  * Fixed typo in Ansible mappings for dell_os10.
+  * Fixed config parser failing to parse more than three consecutive banners,
+    which caused &quot;Unable to parse banner end.&quot; errors on configs with many
+    banners (e.g. Cisco IOS).
+- Add patch support-python-315.patch:
+  * Allow building with Python 3.15.</comment>
+    <requestid>1376067</requestid>
+  </revision>
 </revisionlist>
