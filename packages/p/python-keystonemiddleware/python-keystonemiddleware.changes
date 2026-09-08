@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:38:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 13.0.1:
+  * Drop redundant default of memcache_username/password
+  * Mask memcache_password in debug log
+  * Replace deprecated `timeutils.set_time_override`
+- drop 0001-Replace-deprecated-timeutils.set_time_override.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Sun Jun 14 15:37:28 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 13.0.0:

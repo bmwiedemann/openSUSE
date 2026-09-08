@@ -17,14 +17,13 @@
 
 
 Name:           python-keystonemiddleware
-Version:        13.0.0
+Version:        13.0.1
 Release:        0
 Summary:        Middleware for OpenStack Identity
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/keystonemiddleware
 Source0:        https://files.pythonhosted.org/packages/source/k/keystonemiddleware/keystonemiddleware-%{version}.tar.gz
-Patch1:         0001-Replace-deprecated-timeutils.set_time_override.patch
 BuildRequires:  %{python_module PyJWT >= 2.4.0}
 BuildRequires:  %{python_module WebOb >= 1.7.1}
 BuildRequires:  %{python_module WebTest}

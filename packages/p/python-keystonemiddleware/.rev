@@ -439,4 +439,18 @@ update to version 4.9.0
 - add 0001-Replace-deprecated-timeutils.set_time_override.patch</comment>
     <requestid>1370132</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>12a80efcfc6e730be81059f22f3da3a7</srcmd5>
+    <version>13.0.1</version>
+    <time>1788879342</time>
+    <user>anag_factory</user>
+    <comment>- update to 13.0.1:
+  * Drop redundant default of memcache_username/password
+  * Mask memcache_password in debug log
+  * Replace deprecated `timeutils.set_time_override`
+- drop 0001-Replace-deprecated-timeutils.set_time_override.patch
+  (upstream)
+</comment>
+    <requestid>1376277</requestid>
+  </revision>
 </revisionlist>
