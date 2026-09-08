@@ -371,4 +371,13 @@
   * typing: Add type hints to tooz.driver.pgsql</comment>
     <requestid>1369789</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>0fbfea59ed3ceee17d5898d11b426f68</srcmd5>
+    <version>9.1.0</version>
+    <time>1788879336</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.1.0:
+  * Refactor retry wrapper</comment>
+    <requestid>1376150</requestid>
+  </revision>
 </revisionlist>
