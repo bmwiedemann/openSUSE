@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 05 10:53:00 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1788605562.29b45941:
+  * chore(deps): Dependency cron 2026-09-05
+  * style: Enforce perlcritic rule BuiltinFunctions::ProhibitComplexMappings
+  * docs: Fix link to DBD::Pg documentation
+  * chore(deps): bump fast-uri from 3.1.5 to 3.1.7 (#7815)
+  * style: Enforce perlcritic policies regarding input processing
+  * test: make comments UI test signatures and time assertions robust
+  * style: enforce signatures consistently everywhere
+  * feat: add sub signatures to t/ test files
+  * feat: add sub signatures to t/ui/ test files
+  * feat: add sub signatures to t/api/ test files
+  * feat: add sub signatures to t/lib/ files
+  * feat: Generalize NGINX template for rate limiting
+  * test: Mark line as uncoverable
+  * fix: audit log help visibility
+  * perf(search): Fetch only needed columns
+  * feat: Add "Strict scenario" checkbox on "Investigation" tab
+
+-------------------------------------------------------------------
 Mon Aug 31 11:27:35 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1788175640.07173bb1:
