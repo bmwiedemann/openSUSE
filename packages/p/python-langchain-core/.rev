@@ -141,4 +141,18 @@ JSON-serializable again, Google GenAI v1 tool-call streaming indices
 preserved. Dependency floors unchanged. 2032/2055 tests pass.</comment>
     <requestid>1374580</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>01f15b34ae0fcd7968b8f6e0431f17dc</srcmd5>
+    <version>1.6.2</version>
+    <time>1788879206</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.2:
+- bedrock_converse/google_genai content_blocks translators no longer mutate
+  the caller's message.content
+- openai: an &quot;async&quot; key on a tool-call block is carried into extras
+
+Runtime dependencies unchanged. Built natively on aarch64: 2046/2069 tests
+pass (python313/python314), rpmlint clean.</comment>
+    <requestid>1376077</requestid>
+  </revision>
 </revisionlist>

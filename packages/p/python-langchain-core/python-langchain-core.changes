@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:35:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.2:
+  * bedrock_converse/google_genai content_blocks translators no
+    longer mutate the caller's message.content
+  * openai: an "async" key on a tool-call block is carried into
+    extras
+
+-------------------------------------------------------------------
 Sat Aug 29 07:19:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.1:
