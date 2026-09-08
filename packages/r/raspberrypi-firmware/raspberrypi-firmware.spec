@@ -1,6 +1,7 @@
 #
 # spec file for package raspberrypi-firmware
 #
+# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +21,7 @@
 # systemd-rpm-macros is wrong in 15.3 and below
 %define _modprobedir /lib/modprobe.d
 %endif
-%global modprobe_d_files 50-rpi3.conf
+%global modprobe_d_files 50-rpi3.conf 50-rpi-wifi.conf
 
 Name:           raspberrypi-firmware
 Version:        2026.02.11
@@ -83,6 +84,11 @@ mkdir -p %{buildroot}%{_modprobedir}/
 cat > %{buildroot}%{_modprobedir}/50-rpi3.conf <<-'EOF'
 	# Prevent too many page allocations (bsc#1012449)
 	options smsc95xx turbo_mode=N
+EOF
+
+cat > %{buildroot}%{_modprobedir}/50-rpi-wifi.conf <<-'EOF'
+	# Prevent -52 error message during wifi scan (bsc#1215134)
+	options brcmfmac feature_disable=0x282000
 EOF
 
 mkdir -p %{buildroot}%{_prefix}/lib/dracut/dracut.conf.d/
@@ -165,6 +171,7 @@ fi
 %{_prefix}/lib/dracut/dracut.conf.d/raspberrypi_modules.conf
 %dir %{_modprobedir}
 %{_modprobedir}/50-rpi3.conf
+%{_modprobedir}/50-rpi-wifi.conf
 %dir %{_prefix}/lib/sysctl.d/
 %{_prefix}/lib/sysctl.d/50-rpi3.conf
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  2 16:08:10 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
+
+- Prevent -52 error message during wifi scan (bsc#1215134).
+
+-------------------------------------------------------------------
 Mon Jun 15 09:45:14 UTC 2026 - Ivan Ivanov <ivan.ivanov@suse.com>
 
 - Enable 3D video hardware acceleration for RPi5 based boards.
