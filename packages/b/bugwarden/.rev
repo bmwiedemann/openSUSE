@@ -114,4 +114,37 @@ workaround was added, because the fix belongs in the test helper.</comment>
 - Ship the worked OpenTelemetry collector example as documentation</comment>
     <requestid>1371939</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b4f775b6381bf0fc8043dc4f1acd97be</srcmd5>
+    <version>0.6.0</version>
+    <time>1788879236</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.0:
+  * Add caller-selected field projection to bug_info and an opt-in
+    group_by projection to bugs_quicksearch
+  * Window large responses: head/tail for bug_comments and
+    bug_history, a per-comment character cap, and text windowing
+    for download_attachment
+  * Serialize tool responses as compact JSON
+  * Serve the 2026-07-28 MCP lifecycle and version-gate the
+    SEP-2549 cache hints on tools/list to it
+  * Move the audit stream to schema version 2: suppressed_ids_count
+    and suppressed_other_count replace the single suppressed count,
+    work_context is reserved, response_bytes is recorded and the
+    upstream block is populated
+  * Take the audit session id from the session layer instead of the
+    client-supplied header
+  * Cap and escape every client-controlled string that reaches an
+    audit record, a tracing line or a log sink, and bound a stdio
+    frame the way the HTTP transport bounds a body
+  * Arm the shutdown signals before announcing readiness, and
+    answer a handler panic instead of leaving the call unanswered
+- Vendor upstream's own Cargo.lock instead of updating past it
+  (cargo_vendor update=false): the update pulls rmcp 3.2.0, which
+  the &quot;3.1&quot; requirement accepts but which no longer negotiates the
+  2026-07-28 revision this release serves, so three tests fail on
+  the fallback to 2025-11-25
+- Vendored chacha20 is now 0.10.2; 0.5.0 shipped the yanked 0.10.1</comment>
+    <requestid>1376024</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           bugwarden
-Version:        0.5.0
+Version:        0.6.0
 Release:        0
 Summary:        MCP server for Bugzilla with operator-controlled security guards
 # Upstream is Apache-2.0; the rest is the aggregate of the crates statically
