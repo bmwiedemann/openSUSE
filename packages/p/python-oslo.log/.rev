@@ -588,4 +588,15 @@
   * Fix mypy type checking errors</comment>
     <requestid>1369781</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>803c3ae3bac5d70d244b10697b22ee47</srcmd5>
+    <version>8.3.1</version>
+    <time>1788879322</time>
+    <user>anag_factory</user>
+    <comment>- update to 8.3.1:
+  * Remove duplicated optional dependencies from test
+    requirements
+  * Address Python 3.13 issue</comment>
+    <requestid>1376132</requestid>
+  </revision>
 </revisionlist>
