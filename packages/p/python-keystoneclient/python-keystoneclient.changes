@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:37:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.0.0:
+  * Update master for stable/2025.2
+  * Drop deprecated alias of HTTPClient class
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Thu Apr 23 12:21:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop Epoch:0 from the spec file. Epoch is forbidden in openSUSE.

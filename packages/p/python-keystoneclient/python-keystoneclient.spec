@@ -17,7 +17,7 @@
 
 
 Name:           python-keystoneclient
-Version:        5.8.0
+Version:        6.0.0
 Release:        0
 Summary:        Client library for OpenStack Identity API
 License:        Apache-2.0

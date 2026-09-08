@@ -789,4 +789,15 @@
     <comment></comment>
     <requestid>1349064</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>3ed563331a832ae1a09953436757342d</srcmd5>
+    <version>6.0.0</version>
+    <time>1788879329</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.0.0:
+  * Update master for stable/2025.2
+  * Drop deprecated alias of HTTPClient class
+  * Update master for stable/2026.1</comment>
+    <requestid>1376143</requestid>
+  </revision>
 </revisionlist>
