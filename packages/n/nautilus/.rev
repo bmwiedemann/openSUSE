@@ -1913,4 +1913,15 @@ Hence, recommended to be added to 12.3</comment>
   + Updated translations.</comment>
     <requestid>1374889</requestid>
   </revision>
+  <revision rev="234" vrev="1">
+    <srcmd5>61ac8b56df1827e1c62b0a9edc122a71</srcmd5>
+    <version>50.3.1</version>
+    <time>1788879179</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3.1:
+  + Bugfixes: Fix a possible crash when changing app defaults after
+    closing the app chooser
+  + Cleanups: Attempt using any sushi version</comment>
+    <requestid>1376129</requestid>
+  </revision>
 </revisionlist>
