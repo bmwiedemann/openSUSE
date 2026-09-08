@@ -14,13 +14,16 @@
     </service>
     <service name="set_version" mode="manual"/ -->
     <service name="go_modules" mode="manual">
-      <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.52.0</param>
+      <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.55.0</param>
+      <param name="replace">golang.org/x/net=golang.org/x/net@v0.56.0</param>
+      <param name="replace">golang.org/x/text=golang.org/x/text@v0.39.0</param>
+      <param name="replace">golang.org/x/oauth=golang.org/x/oauth@v0.27.0</param>
       <param name="replace">github.com/go-viper/mapstructure/v2=github.com/go-viper/mapstructure/v2@v2.4.0</param>
+      <!-- param name="replace">github.com/blevesearch/bleve=github.com/blevesearch/bleve@v1.0.3</param -->
       <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v1.6.3</param>
-      <param name="replace">github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.17.1</param>
-      <param name="replace">golang.org/x/crypto/ssh=golang.org/x/crypto/ssh@v0.52.0</param>
+      <param name="replace">github.com/go-git/go-git/v5=github.com/go-git/go-git/v5@v5.19.2</param>
+      <param name="replace">golang.org/x/crypto/ssh=golang.org/x/crypto/ssh@v0.56.0</param>
       <param name="replace">golang.org/x/crypto/ssh/agent=golang.org/x/crypto/ssh/agent@v0.52.0</param>
-      <param name="replace">golang.org/x/net=golang.org/x/net@v0.55.0</param>
       <param name="replace">github.com/go-git/go-billy=github.com/go-git/go-billy/v5@v5.9.0</param>
     </service>
 </services>

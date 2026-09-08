@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:02:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: authentication
+  bypass and deadlocks in the crypto/ssh library (bsc#1278592),
+  revendoring to these packages:
+  - golang.org/x/crypto@v0.55.0
+  - golang.org/x/net@v0.56.0
+  - golang.org/x/text@v0.39.0
+  - golang.org/x/oauth@v0.27.0
+  - github.com/go-git/go-git/v5@v5.19.2
+  - golang.org/x/crypto/ssh@v0.56.0
+
+-------------------------------------------------------------------
 Tue Jun  9 21:05:40 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-44740: improper input handling in many components can
@@ -87,7 +100,7 @@ Mon Jun  1 06:55:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
   CertChecker now returns an error instead of panicking when
   these callbacks are nil. (bsc#1266174, GO-2026-5015)
 - CVE-2026-25680: Parsing arbitrary HTML can consume excessive
-  CPU time, possibly leading to denial of service. (bsc#1267196,
+  CPU time, possibly leading to denial of service. (bsc#1267157,
   GO-2026-5028).
 - CVE-2026-25681, CVE-2026-27136, CVE-2026-42502, CVE-2026-42506:
   Parsing arbitrary HTML which is then rendered using Render can

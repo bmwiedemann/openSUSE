@@ -375,4 +375,22 @@ Update to the commit d499b6e.
   github.com/go-git/go-billy/v5 to the version 5.9.0.</comment>
     <requestid>1358254</requestid>
   </revision>
+  <revision rev="17" vrev="7">
+    <srcmd5>86b47f400b9bbfd33c6db81a6bdb2693</srcmd5>
+    <version>0.10.1</version>
+    <time>1788880499</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: authentication
+  bypass and deadlocks in the crypto/ssh library (bsc#1278592),
+  revendoring to these packages:
+  - golang.org/x/crypto@v0.55.0
+  - golang.org/x/net@v0.56.0
+  - golang.org/x/text@v0.39.0
+  - golang.org/x/oauth@v0.27.0
+  - github.com/go-git/go-git/v5@v5.19.2
+  - golang.org/x/crypto/ssh@v0.56.0
+
+  CPU time, possibly leading to denial of service. (bsc#1267157,</comment>
+    <requestid>1376099</requestid>
+  </revision>
 </revisionlist>
