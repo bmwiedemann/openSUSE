@@ -61,12 +61,10 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-cd src
-%make_build CFLAGS="%{optflags}"
+%make_build -C src CFLAGS="%{optflags}"
 
 %install
-cd src
-%make_install V=1
+%make_install -C src V=1
 
 %ldconfig_scriptlets -n %{libname}
 
