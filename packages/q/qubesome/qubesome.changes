@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep 06 10:21:05 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
+
+- Update to version 0.0.21:
+  * runners: Address the follow-up review findings
+  * types: Bound a device request before parsing it
+  * xauth: Build the auth records by parsing the parent file
+  * firecracker: Verify the downloaded kernel before using it
+  * runners: Resolve the runtime and image home dir without trusting input
+  * runners: Share only the requested USB device nodes
+  * runners: Keep the runtime seccomp profile and drop capabilities
+  * clipboard: Build the copy commands as argv
+  * inception: Carry workload arguments as a list over the RPC
+  * types: Validate workload and profile fields at their point of use
+  * config: Fail closed on strict YAML decode errors
+  * mounts: create missing mapped dirs as the current user
+  * gpu: Detect Mesa GPUs and share host drivers via CDI
+  * chore(deps): update dependency golangci/golangci-lint to v2.13.2
+  * chore(deps): update dependency protocolbuffers/protobuf to v36.1
+  * fix(deps): update module google.golang.org/grpc to v1.83.2
+  * chore(deps): update dependency protocolbuffers/protobuf to v36
+  * chore(deps): update dependency golangci/golangci-lint to v2.13.1
+  * fix(deps): update module github.com/stretchr/testify to v1.12.1
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.11.0
+  * fix(deps): update module github.com/stretchr/testify to v1.12.0
+  * fix(deps): update module github.com/urfave/cli/v3 to v3.10.1
+  * build: replace gopkg.in/yaml.v3 with go.yaml.in/yaml/v3
+  * build: Bump golangci-lint to v2.13.0
+  * test: make container runner lookup deterministic
+  * build: go fix ./...
+  * build: bump Go to 1.27
+  * Use libudev for USB device selection
+  * fix(deps): update module github.com/cyphar/filepath-securejoin to v0.7.0
+  * fix(deps): update golang
+  * build(deps): bump the go_modules group across 1 directory with 2 updates
+
+-------------------------------------------------------------------
 Thu Jul 23 20:05:30 UTC 2026 - Paulo Gomes <pjbgf@linux.com>
 
 - Update to version 0.0.20:
