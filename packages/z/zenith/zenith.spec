@@ -17,7 +17,7 @@
 
 
 Name:           zenith
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        Sort of like top or htop but with zoom-able charts
 License:        MIT

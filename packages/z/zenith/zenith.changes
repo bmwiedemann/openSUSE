@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 07 07:48:22 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.15.1:
+  * fix: update starship-battery dependency
+  * chore: version -> 0.15.1
+  * lint: cargo clippy
+  * feat: faster event processing
+  * Fix show temp (#188)
+  * fix: correct Unkown→Unknown typo in NVIDIA error message
+
+-------------------------------------------------------------------
 Tue May 12 09:03:30 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Drop 001-strip-cargo-config.patch since cargo config was removed upstream
