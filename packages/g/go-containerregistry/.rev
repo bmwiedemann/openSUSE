@@ -331,4 +331,37 @@
   * fix(build): unify new build flow into cloudbuild_v2.yaml</comment>
     <requestid>1373694</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>df3108fa92faa7700e9d49ccfdd48cdf</srcmd5>
+    <version>0.22.1</version>
+    <time>1788879432</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.22.1:
+  * Reject non-canonical IP literals in all SSRF guards
+  * daemon: fix stale docker/docker reference in WithClient docs
+  * build(deps): bump the go-deps group across 2 directories with
+    4 updates
+  * authn: do not overwrite AuthConfig.Auth when username and
+    password are empty
+  * build(deps): bump the actions group across 1 directory with 8
+    updates
+  * Support pulling images by sha512 digest
+  * Allow empty label and annotation values in crane mutate
+  * fix(build): Use dependencies.gitSource in cloudbuild_v2.yaml
+  * validate: support index attestation manifests and empty
+    configs
+  * name: improve error when parsing a reference with a URL
+    scheme
+  * fix(build): install binaries to /ko-app and add to PATH
+  * fix(release): honor declared Go toolchain
+  * remote: apply checkRedirectSSRF to writer-side HTTP clients
+  * flatten: preserve config and layer media types when
+    flattening
+  * fix(mutate): make Time layer updates lazy
+  * build(deps): bump the go-deps group across 2 directories with
+    3 updates
+  * remote: copy manifest annotations to referrers fallback tag
+    descriptors</comment>
+    <requestid>1376202</requestid>
+  </revision>
 </revisionlist>
