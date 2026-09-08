@@ -20,7 +20,7 @@
 %define tinysparql_basever 3.11
 
 Name:           localsearch
-Version:        3.11.1
+Version:        3.11.2
 Release:        0
 Summary:        Search tool and indexer using tinysparql
 License:        GPL-2.0-or-later

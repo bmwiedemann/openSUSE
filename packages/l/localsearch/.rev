@@ -114,4 +114,18 @@
   BuildRequires: Use the new stable branch of gexiv.</comment>
     <requestid>1369833</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c8d0abe205d4932e7f5da8a6ccc78ed0</srcmd5>
+    <version>3.11.2</version>
+    <time>1788879141</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.11.2:
+  + Fix possible crash after a directory is deleted
+  + Fix extraction errors with some EPUB files
+  + Fix &quot;localsearch status -f&quot; when extractor is active
+  + Prevent possible main thread stalls when handling many errors
+  + Fix possible situations where files are needlessly re-extracted
+  + Updated translations.</comment>
+    <requestid>1375999</requestid>
+  </revision>
 </revisionlist>

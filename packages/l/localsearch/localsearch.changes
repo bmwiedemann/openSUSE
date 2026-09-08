@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  1 05:57:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.11.2:
+  + Fix possible crash after a directory is deleted
+  + Fix extraction errors with some EPUB files
+  + Fix "localsearch status -f" when extractor is active
+  + Prevent possible main thread stalls when handling many errors
+  + Fix possible situations where files are needlessly re-extracted
+  + Updated translations.
+
+-------------------------------------------------------------------
 Wed Aug  5 08:29:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace pkgconfig(gexiv2) with pkgconfig(gexiv2-0.16)
