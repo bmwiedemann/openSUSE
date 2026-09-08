@@ -1,4 +1,345 @@
 -------------------------------------------------------------------
+Tue Sep 01 07:09:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.0.0:
+  * Fix Windows window recording selection on mixed DPI displays
+  * Document Windows high-DPI recording cursor issue
+  * Fix Windows recording region selection
+  * Verify PipeWire is not a core AppImage dependency
+  * Fix standalone MSIX preparation mode
+  * Separate MSIX packaging from EXE signing
+  * Declare translated languages in Store MSIX
+  * Update curated translations for 4.0.0
+  * Updating translation POT with a few last minute changes.
+  * Document object mask and detection workflows
+  * Preserve combined fade keyframes on short clips
+  * Honor location preferences with Linux portals
+  * Fix About version display when release lookup fails
+  * Use Partner Center identity for Store MSIX
+  * Use frozen CLI for MSIX diagnostics
+  * Fix MSIX diagnostic launcher compilation
+  * Add comprehensive MSIX startup diagnostics
+  * Add PSF launch compatibility for MSIX
+  * Fix duplicate MSIX artifacts
+  * Harden Windows MSIX packaging
+  * Fix screen recording dimension helper binding
+  * Polish tooltip styling and wrapping
+  * Add project-files-only recording option
+  * Move recordings into project assets
+  * Close live capture reader on worker thread
+  * Modernize confirmation dialog styling
+  * Stabilize restored window and dock state
+  * Use desktop portals in Linux AppImage
+  * Handle canceled object tracking jobs safely
+  * Fix cramped Cosmic dock tabs
+  * Defer dock state restoration on Qt 6
+  * Integrate recording dock with application themes
+  * Fix repeated recording start behavior
+  * Stabilize dock layout restoration
+  * Improve Recording View startup and layout
+  * Fix keyboard search in asset detail views
+  * Ignore timeline items occluded by ruler
+  * Guard unavailable tutorial targets
+  * Remove cold-start delay from emoji drags
+  * Document complete PyQt6 runtime requirements
+  * Migrate legacy crop location keyframes
+  * Make translation resources Qt-binding neutral
+  * Stop blocked webcam previews cleanly
+  * Update supporter credits
+  * Update translations for release
+  * Bumping version to 4.0.0, minimum libopenshot version to 1.0.0
+  * Install defusedxml for MSIX signing
+  * Fix Codacy issues in MSIX packaging
+  * Resolve recording Codacy findings
+  * Fix built-in view layout restoration
+  * Document macOS system audio limitation
+  * Refine recording workflow and timeline preview
+  * Refine waveform density preference
+  * Add detailed peak and RMS waveforms
+  * Improve quiet waveform display
+  * Fix HiDPI preview playback icons
+  * Preserve waveform levels and document recording
+  * Integrate system audio screen recording
+  * Fix recording window restore state
+  * Create missing lower tracks for timeline inserts
+  * Improve recording screen selection
+  * Fix recording layout test fakes
+  * Use source timestamps for live video recording
+  * Improve recording layout controls
+  * Use requested FPS for screen recordings
+  * Add timer effect docs and icons
+  * Pass mac crop source dimensions to libopenshot
+  * Enable mac recording window and region selection
+  * Avoid Windows ctypes import on non-Windows
+  * Tighten recording dock layout
+  * Do not bundle PipeWire in AppImage
+  * Preserve live recording timestamps
+  * Polish macOS recording UI defaults
+  * Enable recording UI for macOS AVFoundation
+  * Tune Windows live video recording defaults
+  * Remove ffmpeg camera enumeration fallback
+  * Stabilize Windows recording selectors
+  * Add Windows recording region selectors
+  * Enable recording UI for Windows capture
+  * Set MSIX publisher display name
+  * Name MSIX artifact like installer
+  * Allow MSIX templates without publisher
+  * Set MSIX publisher before signing
+  * Avoid packaging MSIX source installer
+  * Retry GitHub release lookup by tag
+  * Stop uploading MSIX packaging log artifact
+  * Fix MSIX manifest rewrite and quiet signing logs
+  * Fix Windows MSIX signer subject lookup
+  * Align live recording start and preview thumbnails
+  * Fix live recording frame copy
+  * Fix live recording capture edge cases
+  * Quiet MSIX packaging job output
+  * Harden MSIX signer subject detection
+  * Preserve live recording frame order
+  * Align MSIX publisher before cloud signing
+  * Stop recording when live video capture ends
+  * Simplify recording screen controls on Wayland
+  * Fix PowerShell manifest log interpolation
+  * Enable recording screen source on Wayland
+  * Resolve MSIX Packaging Tool app execution alias
+  * Add Windows MSIX packaging CI step
+  * Update Linux packaging for Wayland capture
+  * Patch Qt6 text interaction enum aliases
+  * Add live multi-source recording timeline previews
+  * Expand recording dock for screen and webcam capture
+  * Add Recording View and audio recording dock
+  * Fixing icons on region.py (point, rectangle, trash) to use cosmic dusk higher resolution images.
+  * Fix protobuf asset persistence for processed effects
+  * Fixed the off-by-one source in src/windows/video_widget.py
+  * Fixed the 11 Codacy nitpick
+  * Constrain Object Mask prompts in region selector
+  * Updating AI Effects' UI (simpler UI, JSON driven, Download onnx support)
+  * Add EfficientSAM Object Mask selection preview
+  * Add Object Mask initialization UI
+  * After manually changing the "Current Timecode", center the scrollbars on the new playhead frame #. So if the playhead jumps offscreen, it will center and stay on screen.
+  * Skip release details lookup for dev builds
+  * Add YOLO model picker for Object Detection effect
+  * Existing Object Detector/process dialog changes:
+  * Launch/project-open cache fix:
+  * Making Windows build server index all OpenCV dependencies, and walk the dependency chain, so we only include what is absolutely needed - since including all of them bloats the installer.
+  * Fixing missing OpenCV 4.13.0 files in windows builds
+  * Reverting windows build freeze logs, since they are causing an issue
+  * Making GitLab CI jobs always upload packaging artifacts
+  * Moving cx_Freeze noise/logs into it's own GitLab artifact, and out of our main process logs. Take 2
+  * Moving cx_Freeze noise/logs into it's own GitLab artifact, and out of our main process logs.
+  * Another fix for rpath issues with OpenCV 4.13.0 on Mac builder. Take 2
+  * Another fix for rpath issues with OpenCV 4.13.0 on Mac builder.
+  * Updating a fix for rpath on OpenCV 4.13.0, and updating incorrect otool calls in mac freeze/build scripts.
+  * Updating freeze logic for Windows and Mac to correctly include new OpenCV 4.13.0 dependencies when freezing. Also adding logs for more transparency during this process.
+  * Defaulting to CPU instead of GPU, since some of our builders do not ship CUDA (i.e. AppImage) for OpenCV
+  * Updating OpenCV on Linux and Windows builders to use a newly installed 4.13.0 version (built from source)
+  * Use libopenshot for YOLO ONNX validation
+  * Harden packaged HTTP and model downloads
+  * Preserve import selection order
+  * Allow mouse wheel tilt (left/right) to scroll timeline
+  * Refactoring / relocating a few files that should not be in the root of /src folder
+  * Changed thumbnail slot spacing to ensure smooth visual geometry during zooming, to prevent jittering.
+  * Updating mask effect icon and cache
+  * Updated many effect icons to be more unique and distinctive. Also fixed a bug in our generate cache system (used for caching icons) to correctly handle 2x sized effect icon source images, so our effect icons are much crisper now.
+  * Improve YOLO model download and validation (and use CDN for download)
+  * Add YOLOv5 setup and all-object styling controls
+  * Fixing cache bar to not scroll when the user vertically scrolls the timeline. Take 2 - fixing failing unit test.
+  * Fixing cache bar to not scroll when the user vertically scrolls the timeline.
+  * Fix Object Detector selected-object transforms - Resolve selected tracked objects from evaluated Object Detector properties - Keep tracked-object handles blue while hiding unsupported origin/rotation controls - Save narrow selected-object property updates instead of full objects payloads - Batch paired video-widget transform updates for move and resize operations - Deep-merge tracked-object updates into project data - Fix selected-object color updates for sparse tracked-object data
+  * Fix freeze keyframes for trimmed clips and rename "Speed->Reset" to "Speed->Reset Speed"
+  * Fix timeline marker and cache bar vertical scrolling
+  * Improve Caption editing workflow and preview controls
+  * Adding top, bottom, left, right margin properties to Blur documentation
+  * Updating documentation for our new Tracker/Object Detection support in "Mask:Source".
+  * Add mask source menu for tracked effects - Group choices by clip like tracked-object parenting - Save selected source into mask_source_id
+  * Use reader-applied orientation in preview, region, thumbnails, and proxy paths (source media is now rotated prior to Clip)
+  * Added a new copy button to the About OpenShot dialog, with a nice confirmation tooltip. This makes it more obvious and easier for users to share "system and version info" to us devs (or the community).
+  * Updates to docs (Raffi feedback)
+  * Fixed Blender title colors by updating material node sockets, not just viewport material color.   - Rewrites existing color keyframes so old .blend animations don’t override selected colors.   - Handles Principled, Diffuse, and Emission material nodes more robustly.   - Removed brittle node/input index assumptions in several templates.   - Fixed neon_curves Blender 5.x compositor/glare API issues.   - Verified syntax and runtime execution with Blender 5.0.0 and 5.1.1.
+  * Export Files menu failed to export animated titles (i.e. image sequences) - Animated titles now export as a single MP4. - Fixed silent title exports by disabling audio when no audio exists. - Prevented export failures from leaving the dialog stuck. - Fixed the target-folder chooser appearing behind the main window. - Added focused regression tests.
+  * Adding unit tests for EDL, FCP XML import and exports. - EDL import: grouped video/audio events, source path resolution, opacity/volume/scale comments. - EDL export: per-track file output, blank gaps, video/audio rows, source file comments, opacity/volume/scale keyframes. - FCP XML import: audio-only clips, SVG audio thumbnail, locked tracks, volume keyframes. - FCP XML import: video clip timing, thumbnail path, opacity, center/location, scale, rotation. - FCP path handling: file://, relative paths, internal @... paths. - FCP XML export: video/audio tracks, linked clipitems, links, opacity/audio/motion keyframes.
+  * Updated AudioThumbnail and NotFound SVG icons to match correct icon sizes and correct Cosmic Dusk theme colors.
+  * Updating style of NotFound thumbnail icon to match Cosmic Dusk
+  * Adding a fallback thumbnail path, so certain readers will first try to thumbnail using a quick, optimized path, but then fallback to the legacy, slower path. For example, this fixes and issue where webp image files fail to thumbnail and instead see a "?" unknown thumbnail file.
+  * Updating denoise image icon again
+  * Adding denoise effect to OpenShot docs / user guide
+  * Adding denoise image icons
+  * Improved screen dock restoring at > 100% screen scales, regardless of OS scaling or OpenShot's internal scaling. The goal is to restore the screen as accurately as possible on launch, and without this change, the video widget kept getting smaller and smaller with each launch.
+  * Adding margin between checkbox menus and option text (scope and docks menu) - attempt 4
+  * Adding margin between checkbox menus and option text (scope and docks menu) - attempt 3
+  * Adding margin between checkbox menus and option text (scope and docks menu) - attempt 2. Also fixing a small build server error due to failed import.
+  * Adding margin between checkbox menus and option text (scope and docks menu)
+  * Removing Advanced View from OpenShot, it has no real purpose anymore. Users can customize and save any view now instead of a standard "advanced" view.
+  * Added "MouseButtonRelease" to the PyQt6 compatibility shim in src/qt_api.py
+  * Re-use existing motion effects, such as Blur and Mask if those effects have already been added by a preset. So instead of 2 Blur presets each adding the "Blur" effect to a clip, only 1 effect is used by both.
+  * Updating documentation to relfect new motion preset: Focus Wipe In/Out, and new "Current Timecode" editing features (click to edit time code, up/down arrows increment current section, CTRL/SHIFT keys modify increment, clearing or "0" + enter resets timecode to 0.0)
+  * Fixing direction of motion presets, wipe out (circle options) and focus wipe out (circle options)
+  * Add in-place editable playhead timecode field to the QWidget timeline ruler - Seek the playhead when committed timecode changes via Enter or focus-out - Support segment-aware Up/Down stepping for hours, minutes, seconds, and frames - Allow quick reset to timeline start with blank input or 0 - Preserve existing painted ruler appearance outside edit mode - Match timeline theme font, background, and padding while editing - Inherit normal app text selection styling for the editor - Add unit coverage for blank, zero, valid zero timecode, and malformed input parsing
+  * Adjusting timeline ruler time label density ramp, so we don't jump from 13 labels to 3 labels when zooming - lowering the max density and upping the lowest density, with a gentler ramp.
+  * Fixing issue with zooming where playhead would suddenly jump unexpectantly. Also, improving thumbnail slot logic to prevent obvious jitter during smooth zooming.
+  * Adding a mask to keyframe icon painting, so they don't get painted under the track labels during scrolling.
+  * Adding new Focus Wipe In/Out motion preset - which combines a blur and wipe mask to create a modern and subtle transition effect.
+  * Updating documentation for Beat Sync effect, including step-by-step instructions, common uses, and property list.
+  * Added beat sync effect icons
+  * Added new Blur + Wipe motion presets, which combine a mask and blur effect in a cool way, for a unique reveal blurry then wipe to clean effect.
+  * Fixing 10 Codacy nitpicks, minor cleanup, some exception handling logs, etc...
+  * Fixing Motion->Credits->Scroll Up/Down menu options to use location_y +1/-1, instead of +1.5/-1.5 (so the credits start at the bottom of the screen immediately and end once fully offscreen.
+  * Added a new "My Views" menu to the "View" top menu, where a user can save the current view, choose custom views, or update/delete custom views. It's purposely kept simple but very easy to use for customizing OpenShot for specific user work-flows. Also updated docs.
+  * Removing many view options that are confusing to most users and were never really fully baked: locking/unlocking docks (legacy feature inherited from original Qt implementation). Show / Hide all docks options (we already have Views that are more useful for hiding/showing and positioning docks). - Removed Dock/Scope locking behavior and saved lock state handling from src/windows/main_window.py. - Removed Lock Docks, Unlock Docks, and Show All Docks actions from src/windows/ui/main-window.ui. - Removed related default shortcut/settings entries from src/settings/_default.settings. - Kept Show All Scopes / Close All Scopes as conditional actions under Scopes. - Updated focused tests in src/tests/test_main_window.py. - Removed obsolete shortcuts from doc/main_window.rst.
+  * Fixing "insert keyframe" on a Color property bug, where it was not inserting any keyframes. Now sure if this was a regression or an existing bug.
+  * Add dynamic dock/scope bulk actions and scope locking - Add dynamic Show All / Close All actions for Docks and Scopes - Add Lock Scopes / Unlock Scopes with persisted scopes_frozen state - Keep locked dock/scope menu toggles clickable while hiding dock chrome controls - Apply dock/scope lock state consistently when docks are added or shown - Include Color Wheels in Docks bulk actions and lock handling - Keep live color grade edit mode from re-enabling preview caching until seek/play - Add regression tests for dock lock-state sync and live-property cache behavior
+  * Added Audio Visualization effect details to the *.rst docs / user-guide, and added a unique icon for the effect.
+  * Show the menu option for "Hide/Show waveform" based on if a clip has audio or not.  Also, hide the "Audio" sub-menu in the clip menu for image-only files (i.e. no audio data)
+  * Reorganize View menu and dock controls - Promote Simple, Color, and Advanced View actions to the top-level View menu - Move Toolbar and Fullscreen into a new Window submenu - Keep Docks as a top-level View submenu, excluding Tutorial and scope docks - Add a top-level Scopes submenu with scope dock toggles and Show All Scopes - Rename Freeze/Un-Freeze View to Lock/Unlock Docks - Move Lock/Unlock Docks and Show All Docks into the Docks menu - Make Show All Docks skip the Tutorial dock - Add middle-click-to-close support for dock title bars and tabified dock tabs - Fix Cosmic Dusk checked menu item alignment
+  * Replacing old docs image of our clip context menu (options are reorganized and renamed), and fixing a syntax error in the *.rst export file
+  * Updating user-guide, and expanding many sections, adding additional features to the introduction, and including common search phrases, new chromakey instructions, and more. Updating copyright year on all *.rst files. Removing some old export presets that are SD and no longer relevant. Also adding many new export presets for modern, popular social networks, such as Snapchat, Facebook, Instagram, TikTok, and LinkedIn, and renaming some -HD suffixes that are not used anymore.
+  * Updating docs / user-guide for recently added effects: Film Grain, Glow, Shadow, and Color Grade (updating menu names, and making some small improvements)
+  * Updating docs / user-guide with updated clip menu names and functionality (renaming/reoganized menus).
+  * Reorganize clip Look menu presets - Group Look options into Color, Film, Focus, and Lighting - Add Look presets for Analog Tape, Sharpen, Blur, Shadow, and Glow - Preserve Film Grain presets under the new Film submenu - Add Reset Look support for Color Grade, Film Grain, and Look-managed effects - Tag Look-created generic effects with ui-menu metadata to avoid clobbering manual or motion effects (ui-menu) - Handle animated RGBA color properties for Shadow and Glow presets
+  * Fix Color Grade nested keyframe handling - Add dedicated insert/remove support for Color Grade curve and wheel properties - Prevent Properties table Insert Keyframe from replacing rich wheel payloads - Remove nested Color Grade keyframes without clearing unrelated frames - Rebind open Curve Editor callbacks after Properties model refreshes - Make newly added curve nodes interpolate linearly across animated frames - Enable Color Wheels dock Remove Keyframe between keyframes - Darken disabled Color Wheels dock styling using theme-adaptive palette colors - Add regression tests for nested Color Grade keyframe insert/remove and curve interpolation
+  * Improve bounce motion presets and menu ordering - Increase Bounce In/Out and Emphasis bounce offsets so rebounds are visibly frame-relative - Fix Emphasis presets to apply at the playhead by converting timeline frames to clip-local frames - Alphabetize Motion > In, Out, and Emphasis preset menus and submenu entries - Add regression coverage for bounce keyframe values and playhead-based Emphasis placement
+  * Fix retime support for nested color grade keyframes - Recursively scale nested Points keyframes during timeline retime operations - Cover ColorGrade color wheel and curve editor keyframes in retime regression tests - Refresh the Color Wheels dock from current model data after external edits - Reset the dock to neutral disabled wheels when no ColorGrade effect is selected or bound - Render color wheel controls and Amount/Luma sliders in muted gray while disabled
+  * Improve Camera motion presets with smart framing - Add pure camera motion helper for crop-aware zoom, pan, and zoom+pan keyframes - Compute safe pan ranges from project and source aspect ratios to avoid black bars - Use natural crop room for wide/tall media and only add extra zoom when needed - Add Auto Direction support for Pan and Zoom & Pan presets - Reorganize Camera menu into Zoom, Pan, and Zoom & Pan groups - Add directional Zoom & Pan presets with translatable labels - Add unit coverage for smart camera framing and update timeline integration tests
+  * KeyframeScaler now recursively scales any nested Points keyframe data inside clip/effect/transition properties.   That covers the new ColorGrade wheel and curve editor structures, while preserving the existing special time behavior where both X and Y frame values are scaled. - Also added new unit tests to validate change
+  * Overhaul Motion menu with CSS-accurate animation presets - Replace old scale-zoom / edge-to-edge Motion menu with fully restructured In / Out / Emphasis / Camera / Credits submenus - Apply presets relative to clip's current transform state (multiplicative for scale/alpha, additive for location/rotation/shear) - Refactor VideoWidget._clip_display_rect → _clip_location_geometry + _location_offset / _location_value_from_offset for correct drag-to-normalized-coordinate conversion; add SCALE_NONE support - Add tests for wipe mask contrast, Ken Burns keyframes, and location offset round-trip
+  * Fixing regression with playback, so not all updates switch from playback mode to edit mode. Only user updates to transform, properties, curve editor, and color wheels should switch to edit mode (and disable video playback caching). Normal updates, like moving a clip, adding a clip should not stop video playback caching. AND... if playback is active while a property/transform is edited, do not disable caching.
+  * Re-organizing clip menu options - Hiding options that are audio-only, when no audio track exists - Hiding options that are video-only, when no video track or clip::waveform exists - Re-organization Fade In/Out menu to be simpler, and to clobber previous fade in/out options so they no longer collide (using this menu multiple times is fine now). - Fade In/Out now fades both audio and video (if both exist), or only audio (if audio only), or only video (if only video). - Audio & Volume menu behaves similarly to Fade In/Out, works much better, and simpler. Only appears when audio tracks are present. - Analyze Audio (to show scope for audio levels) is always present regardless of audio track - Fixed Color options to be useful anytime a video track (or waveform true) on a clip
+  * Fix dock undocking and drag freezes on Windows -Avoid restyling dock title bars during active mouse drags, immediately restore native title bars for floating docks, and prevent dock signal args from triggering full theme restyles. Added   regression tests.
+  * Improve Color Grade keyframe and scope dock behavior - Clear preview scope region when all video scopes are closed - Include nested Color Grade curve/wheel keyframes in Next/Prev marker navigation - Show interpolation icons and menus for Color Grade property rows - Support overall interpolation changes for nested curve and wheel keyframes - Add Color Wheels dock keyframe menus and slider interpolation icons - Avoid reopening Project Files dock after imports when it is closed in Color View - Add focused Color Grade keyframe interpolation tests
+  * Reorganize clip context menu for clarity and discoverability - Group Rotate, Crop, and Layout under a new Transform submenu with a "No Transform" reset (single undo step) - Rename Color → Look; nest Color presets and Film Grain as parallel submenus with a unified "Reset Look" - Rename Volume → Audio; nest volume controls under Volume; move Separate Audio (renamed to Separate) and waveform toggle inside - Rename Time → Speed, Fast/Slow → Speed Up/Slow Down, "Reset Time" → Reset - Rename Animate → Motion - Remove standalone Display submenu; waveform toggle moves into Audio (audio-only clips) - Add view-waveform.svg and view-waveform-flat.svg icons - Remove stray debug print() statement
+  * Updating user-guide with Film Grain documentation and usage notes.
+  * Add Film Grain clip presets and UI integration - Add Film Grain preset helper with editable preset values - Add clip context menu presets: No Film Grain, 35mm Fine, 35mm Classic, 35mm Gritty, 16mm Classic, Super 8, High ISO - Add timeline helper tests for applying, replacing, and removing Film Grain effects - Add preset unit tests and Film Grain effect icons - Assign Film Grain a timeline color - Fix integer property dragging for Seed and remove noisy drag debug logging
+  * Fixing many PyQt6/PySide6 issues with Qt compatibility layer, required for new Color Grading effect.
+  * Fixing bug where "Color->Analyze Colors" opens up the "Color Wheels" accidentally.
+  * Updating color grade user guide screenshots to match latest changes, and cross link the effect with the color.rst guide.
+  * Improved layout for color wheels used for color grading, so they are expanding wheels and the layout is more resizable, including titles that are clearer. Also fixed a small bug in properties when using context menu "Reset" on curves.
+  * Vectorscope hue labels now tint toward their target color when pixels are nearby. This makes it much nicely feeling, to quickly see the labels with the most color are now brighter.
+  * Improving histogram rendering when widget changes shape, to not hide bins, but scale them.
+  * Adding more screenshots to our color guide
+  * Improvements to vectorscope rendering and scope rendering in general, to keep image prep off main UI thread, and only paint when image is ready on the main thread. Skip any old stale images.
+  * Big rewrite of our color.rst user guide on colors - it's way better now, and a great introduction to color correction and color grading with OpenShot.
+  * Adding new vectorscope to show the angle and direction of color saturation. Also a new "Color Grade" context menu option in the clip menu, for easy adding a "Color Grade" effect, selecting it, showing properties, color wheels, and scopes - all in one quick selection.  The "Color View" is still optional, but useful to maximize the video preview and hide non-color docks. Added a new region selector to select a portion of the video preview widget to analyze with the scopes, and also improved the region selector a bunch (it's also used by the Tracker effect), and can be better resized, moved, a single click exits that mode, or toggling the selection button on our scope docks.
+  * Adding new "Color" page to user-guide, with detailed explanations and example of both color correction and color grading, and how the OpenShot docks and views can be used to achieve great results.
+  * Improving scopes to have more stable scope images and use additive blending of RGB for histogram correctly. Easier to see images, and more stable (less flickery) scope images. Also fixed some issues with UNDO/REDO support in the Color Wheels dock and the Curve Editor dialogs.
+  * Fixing bug in Color Wheel which prevented updates from completing after interating with wheels and sliders.
+  * Adding new Reset option to color wheels which also reset the related widgets. Also preventing dropdown menus (context menus) in the properties tableview from accidentally trigging a drag in another nearby cell.
+  * Updating effect icon badge colors, so all 39 effect have unique colors.
+  * Adding Color wheels and Curves to kefyrame panel and integrating with drag/drop moving of keyframe logic.
+  * Updating docs with more accurate Color Grade effect properties and workflow description.
+  * Updating docs with some additional info on new "Color View" and Color/Volume context menu changes, and new docks/views.
+  * Added new context menus, Color->Analyze Colors (which adds the Luma Waveform docks and Histogram docks to the lower right corner of the screen), and a Volume->Audio Levels (which adds the audio levels dock to the lower right corner).  Color View no longer adds the "Audio levels" dock. And new sliders have been added and the property sliders have been restyled to match - more modern style (not so rounded corners). Removed "Analysis View" for simplicity. Also added "Edit" context menus to the color wheel and curve preview cells in the properties editor.
+  * Large refactor of curve editor and color wheel dock, to integrate new API and keyframe support.  Both are now fully keyframable and the curve editor also allows handle and vertex editing for bezier curves.
+  * Moving effect icons to the left side of the clip, and including them in the clip menu container, so effect icons are still interactive and visible even as you zoom out, and clips are fairly small.
+  * Updating comments related to FrameScope byte order: RGBA
+  * Adding new Analysis View - which adds all scope docks:  Luma Waveform, Histogram, Audio Levels to the current view.
+  * Removing invalid /timeline sym link on mac build script
+  * Adding keyframe context menus for kefyrames on the bottom of clips, and in the keyframe panel, so interpolation can be changed easily, and keyframes can be removed easily.
+  * Fixing transition border style to use 2px, and adding transition name/text and text container / dropdown menu. Allow dragging of clips/transitions on the text container without opening menu. Updating track name to use larger font, and new menu icon style.
+  * Improving level of detail (LOD) work on clips, to leave dropdown menu when clips are small until it no longer fits. Also fixing some broken unit tests.
+  * Refactor of Zoom Slider to allow smooth zooming instead of delayed/laggy zooming.  Fixed a few other bugs related to incorrect zoom on project open and scrollbar sync between timeline and zoom slider widgets.
+  * Restyling the clip text on all themes, to use a gray text container with rounded corners (translucent) that contains the white clip text, and includes a small dropdown arrow for showing the clip menu when clicked. Now the entire clip text can be clicked to show the clip menu. Also improved the level of detail (LOD) when zooming really far out.
+  * Adjusting clip thumbnails on all themes, to use the source aspect ratio for thumbnail slot size, and adding a drop shadow under clip text.
+  * Large refactor of timeline styles, colors, and assets, and removal of old web-view timeline folder (assets, CSS).
+  * Change QT_SCALE_FACTOR_ROUNDING_POLICY to PassThrough (for supporting fractional sizes of window scaling). This solves some issues with saving/restoring screen dimentions and window state.
+  * Fixing hidden/removed dock state so it is persisted in our settings between launches - so hidden docks don't magically reappear when you relaunch the app.
+  * Removing IRE:ON/OFF filter to make scopes more narrow
+  * Fix theme issue where restarting app would forget top vs bottom tabs when docks are tabbified.
+  * Adding fallback sip import for our PyQt5 build servers (Linux AppImage was failing to import sip)
+  * Adding scrollbars to "Color Wheel" dock so it can be smaller and still usable. Also no longer showing scopes when double clicking the tiny color wheels in the properties.
+  * Adding new "Color" clip context menu options:   - Reset Color restores a known neutral Color Grade payload.   - Auto Contrast improves tonal separation.   - Lift Shadows recovers dark footage.   - Warm Up adjusts white balance and skin-tone feel.   - Boost Color increases color richness without sounding stylized.
+  * Improving dock dragging/moving to not churn video cache (constant rebuilds caused by changing video widget size). Also, adding new scope docks for: - Luma Waveform, Histogram, Audio Levels. Adding an internal "Edit Mode" when properties and transforms are changed and playback is paused (to prevent cache churn and lag during subsequent edits.  Clicking play/pause resumes "Playback Mode" with full caching enabled. Fixed some deadlocks in the UI when dragging docks around and reparenting docks, that would freeze the UI fully.
+  * Gray out disabled curves and disabled color wheels in color grade property editor
+  * Fixing regression when reconnecting the color wheel dock to the selected effect - which was causing an endless refresh loop
+  * Adding Color View, along next to Simple View and Advanced View. Color View hides lots of unneeded docks, so the Preview is central and large, and properties and color grade docks are lined up on the edges of the screen.
+  * Fix crash when moving video preview dock, preventing 0x0 size that caused crash
+  * Disable wheel dock when no color grade effect selected and reenable and connect to property when color grade effect is selected.
+  * Adding "Reset" context menus to curve editor and wheel value types, and updating any visible dialogs when reset happens.
+  * Adds Color Grade property editing to the properties UI, including new curve and wheel editors, model support for the new property types, previews in the properties table, and tests. Also   includes the new Color Grade icons and a small LUT dropdown cleanup.
+  * Bumping version to 3.5.1-dev (since removing webview is a big change)
+  * Fixing unit test failure on Preview dialog, and fixing DELETE key to actually delete a selected effect
+  * Adding documentation for new Shadow and Glow effects
+  * Adding icons for new Shadow and Glow effects
+  * Fixing small audio glitch on auto play preview dialog - the initial dialog resize was causing a quick pause/play which interrupted playback
+  * Improve docked widget tab names, to left align and use Qt.ElideRight (so the text does not center when the tab is too small)
+  * Another attempt to prune webengine/webkit/websockets from our freeze.py script on all platforms
+  * Another attempt to prune webengine/webkit/websockets from our freeze.py script on all platforms
+  * Heavy pruning of freeze.py script, to remove unused files at runtime (duplicate language resources, webkit/webengine related dependencies)
+  * Fix mac build issue due to an invalid qt_install_path
+  * Removing unused webview assets and old packaging references, and old documentation for webkit and webengine. Good bye to you to!
+  * Removing webkit and webengine timeline backends from openshot-qt. Goodbye and thank you for your service!
+  * Fixing a bunch of Codacy nitpicks (minor things)
+  * Improving file naming for ComfyUI workflows, to use a common base suffix "gen1/2/3/4...", and append friendly menu names to the file_name property (example below): - FILENAME_gen1.ext [Noise: Remove] - Also adding file name to Preview dialog: "Preview: FILENAME" - prevent ugly patterns:  gen1_gen1_gen2
+  * Adding Displacement Map effect icons and documentation
+  * Fixing bug where "Mask: Source" and "Source" context menus used in our properties tableview were not showing recently imported files.
+  * Fixing another CTRL+V paste bug for transitions, which would prevent them from being pasted a second time.
+  * Fix bug where CTRL+V does not paste a clip/transition on the correct track when vertical scrolling is involved on the timeline.
+  * Fixing a bug where copy/pasting a clip at the right edge of the timeline did not extend the project's duration to include the newly pasted clips.
+  * Fixing regression when copy/paste was not correctly taking the vertical scroll position of the timeline into account, and pasting clips in the wrong track (not the track selected)
+  * Fixing Windows path regression for assets folder... only content:// paths are treated as Android URIs. Normal local paths, including Windows drive-letter paths, now resolve to the project’s asset folder again. I also added   focused tests for both Windows local paths and content:// URIs.
+  * Adding 2 new audio advanced ai features: Noise -> Reduce/Remove and Clarity -> Speech. Once is a model-based denoiser, and one is a upsampler model - both neural networks, both fast, and both great.
+  * Updating README.md with Qt instructions for switching between PyQt5/PyQt6/PySide6
+  * Fixing a few larger Codacy complaints - this is a higher risk set of changes to launch.py
+  * Fixing small PySide6 bug on the title editor when text lines change (a few more dialogs)
+  * Fixing more Codacy nitpicks - and also a small PySide6 bug on the title editor when text lines change
+  * Fixing a ton of Codacy nitpicks from our Qt6 conversion / refactor
+  * Fixing regression in our translation test script, which imported qt_api and caused a crash.
+  * Fixing regression on auto play in preview dialog for this branch - got clobbered along the way
+  * Improving "open project" and "save project" to fully support android - required some heavy refactoring in qt_api, to hide some of the ugly android implementation details.
+  * Fixing file importing for Android platforms (which is quite a bit different than how our desktop works)
+  * Add new android detect function, some clean up
+  * Integrating new Android override for the preview thread + video widget preset() image flow. This works a bit differently than our desktop versions.
+  * Fixing font dialog issue in PySide6 with compatibility helper
+  * Fixing crashes in pyside6 testing, and also fixing a regression to filtering on our Credits dialog (developers and supporters)
+  * Fixing crashes in pyside6 due to invalid QAction references (or stale references), so attempting a fix.
+  * Fixing a strange crash in pyside6 due to invalid window references on right click context menus
+  * Fixing a QFont issue in PyQt6
+  * Fixing a tiny issue on a double click handler for PyQt6
+  * Fixing a PyQt6 issue on the About/Credits screen, which was erroring due to Regex.
+  * Fixing regression in multi-select files dragging onto timeline (causing duplication of clips)
+  * Fix timeline property menu QPointF mapping
+  * Removing "..." from the end of our new audio denoising context menus, since they do not show a dialog after clicking them.
+  * Add new ComfyUI templates for audio denoising/cleanup/repair/voice enhancing (ComfyUI_FL-ClearVoice custom node):   - Reduce Noise: Reduce hiss, hum, and steady background noise while keeping spoken voice as intact as possible.   - Enhance Voice: Improve speech clarity and overall voice quality for already usable recordings.   - Improve Audio Resolution: Improve low-quality or low-resolution audio by using an audio super-resolution model.   - Repair Audio: Repair degraded, compressed, rough, or damaged audio recordings.
+  * Fixing file importing to fallback with inspecct_reader=True if a failing happens. This forces the CreateReader() to attempt to open each reader and calls a more gracefull/complete fallback sequence. So a failed flac import in QtImageReader will successfully be tried by FFmpegReader next.
+  * Scanning code for other similar failures in Qt6
+  * Fixing 2 more Qt6 issues
+  * Fixing a missing KeyPress, MousebuttonPress qt_api wrapper for QT6
+  * Fixing a few Qt6 bugs during testing
+  * Fixing a bunch more unwrapped Qt imports and references, so no direct imports are found anywhere else in the code, except for qt_api
+  * Fixing imports on region.py for the Tracker effect, to correctly abstract those imports with qt_api
+  * Another Qt6 regression with file adding and dragging
+  * Another Qt6 regression with emoji dragging
+  * Fixing more regressions from merging develop into this branch
+  * Fixing merge regression with QRegEx import for Qt6 path
+  * Silence more theme misses (when applying theme colors, icons, and styles)
+  * Reduce grid size of Emoji list view (they have too much horizontal padding/margin)
+  * Quite theme miss logs (too noisy at the moment)
+  * Moving to exec() method instead of exec_() when launching OpenShot (if available)
+  * Protecting setTabOrder calls from potentially using widgets from different windows (quite noisy logs)
+  * Adding Android-only openshot_shiboken_ext handling for wrapInstance, due to large Arm64 memory addresses (PySide6 forces int() which breaks the pointers in an overflow error)
+  * Protect against setting audio sample rate to None in CheckAudioDevice method
+  * Removing selection rectangles from Transitions, Effects, and Emojis (Thumbnail view) - since they are single selection only lists
+  * Fixing regression in PyQt6 tutorial
+  * Improving Tutorial dialog to be compatible with PyQt6/PySide6
+  * Another fix to Tutorial dialog to use associatedWidgets for PyQt6 & PySide6 compatibility
+  * Fixing tutorial dialog for better support for PyQt6 & PySide6 (importing QPointF correctly, ending QPainter correctly)
+  * Fixing title bar height and margins for PySide6 compatibility (and for a consistent look on all widget libraries).
+  * Fixing a Preferences error for PySide6 - causing the window to fail to appear.
+  * Replaced all explicit Qt base-class __init__ calls with super().__init__() across the codebase.
+  * Replacing more hard-coded PyQt5 imports with qt_api shims.
+  * Fixing PyQt5 hard-coded import in focus tabstops code, which breaks PyQt6.
+  * Fixing a few minor PyQt6 errors and attempting to fix a minor focus/tab order issue.
+  * Fixing some regex issues with PyQt6, preventing filtering from working on a few models (transitions, effects, files)
+  * Fixing a few missing PyQt6 imports in qt_api
+  * Fixing many new PyQt5/PyQt6 issues after merging in develop branch (this might take a few more tries)
+  * Fixing merge issue, after merging develop back into this branch
+  * Updating develoers docs with PyQt5, PyQt6, and PySide6 packages and info.
+  * Removing mentions of pyside2 (never supported)
+  * Initial support for PySide6, tested on Ubuntu 25.04 VM.
+  * Initial PyQt6 support in our qt_api shim - tested in Ubuntu 25.04 VM. Both PyQt5 and PyQt6 are now working, except some cursor issues, which seems to get stuck after a drag/drop item operation.
+  * Initial integration of qt_api shim, to switch between different versions of PyQt5 and PyQt6. VERY Experimental.
+  * Replacing QRegExp with QRegularExpression for Qt6 compatibility in mind. Also, adding a new QT version shim, although we aren't using it quite yet.
+
+-------------------------------------------------------------------
 Wed Apr 08 06:16:33 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 3.5.1:
