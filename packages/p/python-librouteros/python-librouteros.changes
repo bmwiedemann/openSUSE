@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:12:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.1
+  * Prevent AsyncApiProtocol.close() from hanging.
+
+-------------------------------------------------------------------
 Sat Aug 22 09:29:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.2.0:
