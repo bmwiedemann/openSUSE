@@ -945,4 +945,18 @@ The new default is much safer and will reduce the effect application channel lea
     <comment></comment>
     <requestid>1343798</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>fa9baeaa004e44c45b11f51a27e7f3dd</srcmd5>
+    <version>4.2.9</version>
+    <time>1788879234</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.9:
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.7
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.8
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9
+
+  * fix-CVE-2025-30219.patch</comment>
+    <requestid>1376041</requestid>
+  </revision>
 </revisionlist>

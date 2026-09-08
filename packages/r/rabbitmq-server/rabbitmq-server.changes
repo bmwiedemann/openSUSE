@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep  6 14:32:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.9:
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.6
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.7
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.8
+  * https://github.com/rabbitmq/rabbitmq-server/releases/tag/v4.2.9
+
+-------------------------------------------------------------------
 Mon Mar 30 23:41:37 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.5
@@ -80,15 +89,15 @@ Thu Nov  6 04:06:19 UTC 2025 - Simon Lees <sflees@suse.de>
 
 -----------------------------------------------------------------
 Thu Aug  7 06:35:22 UTC 2025 - Simon Lees <sflees@suse.de>
- 
+
 - Restore SLES logrotate file, (bsc#1246091)
- 
+
 -------------------------------------------------------------------
 Wed Apr 30 07:31:55 UTC 2025 - Simon Lees <sflees@suse.de>
 
 - Correctly escape hostname that could lead to xss attack
   (bsc#1240071, CVE-2025-30219)
-  * fix-CVE-2025-30219.patch 
+  * fix-CVE-2025-30219.patch
 
 -------------------------------------------------------------------
 Thu Apr 24 02:53:26 UTC 2025 - Simon Lees <sflees@suse.de>

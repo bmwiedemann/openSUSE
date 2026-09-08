@@ -16,30 +16,23 @@
 #
 
 
-#Compat macro for new _fillupdir macro introduced in Nov 2017
-%if ! %{defined _fillupdir}
-  %define _fillupdir /var/adm/fillup-templates
-%endif
-
-%bcond_without split_plugins
-
 # We want to install into /usr/lib, even on 64-bit platforms
 %define _rabbit_libdir %{_exec_prefix}/lib/rabbitmq
 %define _rabbit_erllibdir %{_rabbit_libdir}/lib/rabbitmq_server-%{version}
-
 %if %{undefined _initddir}
 %define _initddir %{_sysconfdir}/init.d
 %endif
-
-%define _make_args DESTDIR="%{buildroot}" PREFIX="%{_exec_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MANDIR="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} VERSION=%{version} V=1
-
 %define _plugins_state_dir %{_localstatedir}/lib/rabbitmq/plugins
 %define _rabbitmqctl_autocomplete scripts/bash_autocomplete.sh
 %define _rabbitmq_user rabbitmq
 %define _rabbitmq_group rabbitmq
-
+#Compat macro for new _fillupdir macro introduced in Nov 2017
+%if ! %{defined _fillupdir}
+  %define _fillupdir %{_localstatedir}/adm/fillup-templates
+%endif
+%bcond_without split_plugins
 Name:           rabbitmq-server
-Version:        4.2.5
+Version:        4.2.9
 Release:        0
 Summary:        A message broker supporting AMQP, STOMP and MQTT
 License:        MPL-2.0
@@ -48,20 +41,21 @@ URL:            https://www.rabbitmq.com/
 Source:         https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz
 Source1:        https://github.com/rabbitmq/rabbitmq-server/releases/download/v%{version}/rabbitmq-server-%{version}.tar.xz.asc
 Source2:        https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc#/%{name}.keyring
-Source3:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.logrotate
+Source3:        rabbitmq-server.logrotate
 Source4:        rabbitmq-env.conf
 Source6:        rabbitmq-server.service
-Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v%{version}/RPMS/Fedora/rabbitmq-server.tmpfiles
+Source7:        https://raw.githubusercontent.com/rabbitmq/rabbitmq-packaging/v4.2.x/RPMS/Fedora/rabbitmq-server.tmpfiles
 Source8:        README.SUSE
 Patch0:         feature-suse-reproducable-build.patch
+BuildRequires:  7zip
 BuildRequires:  elixir
 # https://www.rabbitmq.com/docs/which-erlang
-BuildRequires:  erlang >= 26.2
-BuildRequires:  7zip
+BuildRequires:  erlang >= 27
 BuildRequires:  erlang-epmd
 BuildRequires:  erlang-src
 BuildRequires:  fdupes
 BuildRequires:  hostname
+BuildRequires:  pkgconfig
 # BuildRequires:  libxslt
 BuildRequires:  python3
 BuildRequires:  rsync
@@ -69,14 +63,14 @@ BuildRequires:  unzip
 BuildRequires:  xmlto
 BuildRequires:  xz
 BuildRequires:  zip
+BuildRequires:  pkgconfig(systemd)
 Requires:       erlang >= 26.2
 Requires:       erlang-epmd
 Requires:       logrotate
-Provides:       AMQP-server
-Requires(pre):  shadow
-Requires(pre):  %fillup_prereq
 Requires:       rabbitmq-server-plugins
-BuildRequires:  pkgconfig(systemd)
+Requires(pre):  %fillup_prereq
+Requires(pre):  shadow
+Provides:       AMQP-server
 Provides:       group(%{_rabbitmq_group})
 Provides:       user(%{_rabbitmq_user})
 %{?systemd_ordering}
@@ -143,7 +137,9 @@ cp %{SOURCE8} .
 # Make elixir happy with Unicode
 export LANG=en_US.UTF-8
 export PYTHON=%{_bindir}/python3
-make all %{_make_args} -j1
+%global _make_args DESTDIR=%{buildroot} PREFIX="%{_prefix}" RMQ_ROOTDIR=%{_rabbit_libdir} RMQ_ERLAPP_DIR=%{_rabbit_erllibdir} MANDIR="%{_mandir}" DOC_INSTALL_DIR=%{buildroot}/%{_docdir} RABBITMQ_VERSION=%{version} V=1
+
+%make_build all %{_make_args} -j1
 
 %install
 # Make elixir happy with Unicode
@@ -154,9 +150,7 @@ make install install-bin install-man %{_make_args}
 mkdir -p %{buildroot}%{_sbindir}
 install -p -D -m 644 %{SOURCE6} %{buildroot}%{_unitdir}/%{name}.service
 ln -s -f %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
-install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
-# Use /run instead of deprecated /var/run in tmpfiles.conf  (bsc#1185075)
-sed -i 's/\/var//' %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
+install -D -p -m 0644 %{SOURCE7} %{buildroot}%{_tmpfilesdir}/%{name}.conf
 
 # Install wrapper scripts
 sed \
@@ -209,7 +203,7 @@ getent passwd %{_rabbitmq_user} >/dev/null || useradd -r -g %{_rabbitmq_group} \
 
 %post
 %service_add_post %{name}.service
-systemd-tmpfiles --create --clean /usr/lib/tmpfiles.d/rabbitmq-server.conf
+%tmpfiles_create %{_tmpfilesdir}/%{name}.conf
 
 %preun
 # Clean out plugin activation state, both on uninstall and upgrade
@@ -232,7 +226,7 @@ done
 %endif
 #
 %{_unitdir}/%{name}.service
-/usr/lib/tmpfiles.d/rabbitmq-server.conf
+%{_tmpfilesdir}/%{name}.conf
 #
 %attr(0755, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq
 %attr(0750, rabbitmq, rabbitmq) %dir %{_localstatedir}/lib/rabbitmq/mnesia
