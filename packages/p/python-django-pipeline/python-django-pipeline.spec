@@ -24,6 +24,8 @@ License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/jazzband/django-pipeline
 Source:         https://files.pythonhosted.org/packages/source/d/django-pipeline/django_pipeline-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jazzband/django-pipeline/pull/853 Fix tests with Django 6.1
+Patch0:         django61.patch
 BuildRequires:  %{python_module Django >= 4.0}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module css-html-js-minify}

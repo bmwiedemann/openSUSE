@@ -83,4 +83,12 @@
 - drop django52.patch (upstream)</comment>
     <requestid>1343246</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>c6b23636267b8a8e64e0e76998222428</srcmd5>
+    <version>4.1.0</version>
+    <time>1788879463</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376217</requestid>
+  </revision>
 </revisionlist>
