@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 01 07:33:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.0.0:
+  * Bumping version to 1.0.0, SO remains 10
+
+-------------------------------------------------------------------
+Sun Jun 28 07:34:12 UTC 2026 - pbuild-ai <adrian@suse.de>
+
+- Updated to version 0.6.0
+  * Fixes for Android builds
+  * Adding android related cmake build options
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Tue Jan 21 14:20:55 UTC 2025 - bjorn.lie@gmail.com
 
 - Update to version 0.4.0:
