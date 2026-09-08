@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep  5 11:07:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable decoders in ffmpeg-8-mini that need no extra build
+  dependencies. This makes it possible for some packages to run
+  testsuites with e.g. WAV files.
+
+-------------------------------------------------------------------
 Mon Aug 28 05:22:38 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-8-CVE-2026-75147.patch:

@@ -119,4 +119,14 @@
     <comment>backports</comment>
     <requestid>1375173</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>e9e3655d3754345f679b2bbf257ef0ed</srcmd5>
+    <version>8.1.2</version>
+    <time>1788879142</time>
+    <user>anag_factory</user>
+    <comment>- Enable decoders in ffmpeg-8-mini that need no extra build
+  dependencies. This makes it possible for some packages to run
+  testsuites with e.g. WAV files.</comment>
+    <requestid>1376010</requestid>
+  </revision>
 </revisionlist>

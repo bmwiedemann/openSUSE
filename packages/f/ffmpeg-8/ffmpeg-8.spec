@@ -20,7 +20,7 @@
 #
 # preamble is present twice, watch out
 #
-%if "%flavor" != "ffmpeg-8-mini"
+%if "%flavor" != "mini"
 
 # Create proper conflicts to make sure we require all from one version
 # p:   Conflict string, eg if you need them all for requires instead
@@ -832,7 +832,6 @@ Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
 BuildRequires:  c_compiler
-BuildRequires:  pkgconfig(openh264)
 Requires:       this-is-only-for-build-envs
 
 %description
@@ -840,9 +839,7 @@ FFmpeg is a multimedia framework.
 This package merely builds the API for the sake of other packages.
 
 %package libs
-# Even with mini, we want ff5 libs to be coinstallable to ff4-devel(!),
-# hence mini-libs and mini-devel are still separated.
-Summary:        Feature-reduced build of FFmpeg, a multimedia framework
+Summary:        Feature/Dependency-reduced build of FFmpeg
 Conflicts:      libavcodec62
 Conflicts:      libavdevice62
 Conflicts:      libavfilter11
@@ -855,6 +852,8 @@ Requires:       this-is-only-for-build-envs
 %description libs
 FFmpeg is a multimedia framework.
 This package contains a cut-down version for building other packages.
+Their testsuites may be unable to complete if they expect a particular
+feature.
 
 %package devel
 Summary:        Header files for feature-reduced FFmpeg build
@@ -883,6 +882,9 @@ This package contains the headers accompanying %name.
 %autosetup -p1 -n %_name-%version
 
 %build
+# configure is expected to ignore enable-encoder names that cannot be enabled
+# due to absent dependencies.
+#
 %define _lto_cflags %nil
 CFLAGS="%optflags" \
 ./configure \
@@ -895,14 +897,21 @@ CFLAGS="%optflags" \
 	--disable-htmlpages --disable-stripping --disable-x86asm \
 	--disable-static --enable-shared --enable-pic \
 	--enable-gpl --enable-version3 \
-	--disable-muxers --disable-demuxers \
-	--disable-encoders --disable-decoders \
+	--enable-muxers \
+	--enable-demuxers \
+	--disable-encoders \
+	--disable-decoders \
+	--enable-encoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_encoders)" \
+	--enable-decoder="$(perl -pe 's{^(\w*).*}{$1,}gs' <%_sourcedir/enable_decoders)" \
+	--disable-decoder=h264,hevc,vc1,prores_raw,vvc \
 	--disable-programs --disable-doc
 for i in H264 HEVC VC1 VVC; do
 	grep -q "#define CONFIG_${i}_DECODER 0" config_components.h
 done
 cat config.h
 %make_build
+#	--enable-encoder="$(grep trivial %_sourcedir/enable_encoders | perl -pe 's{^(\w*).*}{$1,}gs')" \
+#	--enable-decoder="$(grep trivial %_sourcedir/enable_decoders | perl -pe 's{^(\w*).*}{$1,}gs')" \
 
 %install
 b="%buildroot"
