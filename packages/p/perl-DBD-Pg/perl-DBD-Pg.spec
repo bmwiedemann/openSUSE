@@ -18,7 +18,7 @@
 
 %define cpan_name DBD-Pg
 Name:           perl-DBD-Pg
-Version:        3.20.2
+Version:        3.21.2
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        DBI PostgreSQL interface

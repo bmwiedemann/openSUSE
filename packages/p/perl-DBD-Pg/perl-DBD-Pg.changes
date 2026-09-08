@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Thu Aug 27 16:33:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 3.21.2
+   see /usr/share/doc/packages/perl-DBD-Pg/Changes
+
+  Version 3.21.2  (released August 26, 2026)
+   - In the tests, ensure the plan declaration happens after the skip_all calls.
+     [Russell Jenkins]
+   - Fix missing closing double-quote in su -c commands in test setup script.
+     [Jitka Plesnikova]
+   - Support compiling with versions of GCC < 5.
+     [Ed Sabol]
+   - Make port discovery more robust in test setup script.
+     [Ed Sabol, Greg Sabino Mullane]
+   - Avoid using getpwent and compare uid values instead in test setup script.
+     [Ed Sabol]
+  Version 3.21.1  (released August 23, 2026)
+   - Fix incorrect allocation inside of quote_float()
+     Check for NUL more carefully inside of  _dequote_bytea_hex()
+     Fix incorrect allocation inside of pg_destringify_array()
+     [CVE: https://nvd.nist.gov/vuln/detail/CVE-2026-78183]
+     [Greg Sabino Mullane]
+   - Make tests much less verbose; only failed tests need to give details.
+     [Greg Sabino Mullane]
+  Version 3.21.0  (released August 22, 2026)
+   - Add non-blocking async COPY FROM support (pg_putcopydata_async, pg_putcopyend_async, pg_flush)
+     (Github issue #177, pull request #176)
+     [John Napiorkowski, Ed Sabol]
+   - Ensure $sth->rows() returns 0 when no rows returned for updates, deletes,
+       or inserts with ON CONFLICT DO NOTHING
+     [Greg Sabino Mullane, reported by Yiannis]
+     (Github issue #194, pull request #194)
+   - Fix incorrect quoting of float string values (e.g. 'NaN')
+     [Greg Sabino Mullane]
+   - Fix a memory leak in the PQclosePrepared cleanup path
+     [Rorsarach]
+     (Github issue #187, pull request #188)
+   - Fix a memory leak when bind_param called, and some around statement handles.
+     [Greg Sabino Mullane]
+   - Implement new string buffer system for statements and placeholders.
+     This replaces the old linked lists with arrays, and is much faster.
+     [Matt Tyson, Greg Sabino Mullane]
+     (Github pull requests #21 and #201)
+   - Cleanup and refactor code in quote.c. Rename internal functions.
+     Standardize and change error messages.
+     [Greg Sabino Mullane]
+   - Improve and add tests for PQclear logic in dbdimp.c
+     [Greg Sabino Mullane]
+   - Support whitespace in directory names for the test suite.
+     [Greg Sabino Mullane]
+   - Many tweaks to support building and testing on Win32
+     [Greg Sabino Mullane]
+
+-------------------------------------------------------------------
 Sun May  3 07:28:05 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 3.20.2
