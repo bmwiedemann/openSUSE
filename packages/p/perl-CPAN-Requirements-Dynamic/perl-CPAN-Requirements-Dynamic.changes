@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Jul 13 11:44:25 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.3.0 (0.003)
+   see /usr/share/doc/packages/perl-CPAN-Requirements-Dynamic/Changes
+
+  0.003     2026-07-12 21:44:55+02:00 Europe/Brussels
+            - Avoid undefinedness warning in config_defined
+
+-------------------------------------------------------------------
 Tue Apr  8 05:34:38 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.2.0 (0.002)

@@ -15,4 +15,15 @@
     <comment></comment>
     <requestid>1272896</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>73580ecc6a7209e09909aa8a870b31f9</srcmd5>
+    <version>0.3.0</version>
+    <time>1788879493</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.3.0 (0.003)
+   see /usr/share/doc/packages/perl-CPAN-Requirements-Dynamic/Changes
+  0.003     2026-07-12 21:44:55+02:00 Europe/Brussels
+            - Avoid undefinedness warning in config_defined</comment>
+    <requestid>1376323</requestid>
+  </revision>
 </revisionlist>

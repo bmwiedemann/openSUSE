@@ -1,7 +1,7 @@
 #
 # spec file for package perl-CPAN-Requirements-Dynamic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name CPAN-Requirements-Dynamic
 Name:           perl-CPAN-Requirements-Dynamic
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
-# 0.002 -> normalize -> 0.2.0
-%define cpan_version 0.002
+# 0.003 -> normalize -> 0.3.0
+%define cpan_version 0.003
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Dynamic prerequisites in meta files
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/L/LE/LEONT/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
@@ -53,7 +54,7 @@ This module implements a format for describing dynamic prerequisites of a
 distribution.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
