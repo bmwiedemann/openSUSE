@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Logbook
-Version:        1.9.2
+Version:        1.10.1
 Release:        0
 Summary:        A logging replacement for Python
 License:        BSD-3-Clause
@@ -28,7 +28,6 @@ Source1:        vendor.tar.zst
 BuildRequires:  %{python_module Brotli >= 1.1.0}
 BuildRequires:  %{python_module Jinja2 >= 2.11.3}
 BuildRequires:  %{python_module SQLAlchemy >= 1.4}
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module execnet >= 1.5}
 BuildRequires:  %{python_module gevent >= 25.5.1}
 BuildRequires:  %{python_module pip}
