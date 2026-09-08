@@ -27,7 +27,7 @@
 
 %global pythons %{primary_python}
 Name:           python-manilaclient%{?psuffix}
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Client Library for OpenStack Share API
 License:        Apache-2.0

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:50:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * Add availability_zone filter to share list (2.97)
+  * Use keystoneauth session for API requests
+  * Fix resource lock project and user filters
+  * bindep: Remove stale markers
+  * Update migration_get_progress to use GET at microversion 2.98
+  * pre-commit: autoupdate
+  * Redact auth token in debug log output
+  * Direct repository urls to opendev.org
+
+-------------------------------------------------------------------
 Wed Aug 19 18:40:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add multibuild to split off test runs (solves

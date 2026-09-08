@@ -618,4 +618,20 @@ update to version 1.10.0
   * added properties column to share replica list command</comment>
     <requestid>1372072</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a188d310e82d6d25cd0e555dcf96c186</srcmd5>
+    <version>6.3.0</version>
+    <time>1788879340</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * Add availability_zone filter to share list (2.97)
+  * Use keystoneauth session for API requests
+  * Fix resource lock project and user filters
+  * bindep: Remove stale markers
+  * Update migration_get_progress to use GET at microversion 2.98
+  * pre-commit: autoupdate
+  * Redact auth token in debug log output
+  * Direct repository urls to opendev.org</comment>
+    <requestid>1376177</requestid>
+  </revision>
 </revisionlist>
