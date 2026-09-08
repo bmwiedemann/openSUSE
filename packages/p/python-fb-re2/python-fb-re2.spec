@@ -1,7 +1,7 @@
 #
 # spec file for package python-fb-re2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,11 +22,12 @@ Version:        1.0.7
 Release:        0
 Summary:        Python wrapper for Google's RE2
 License:        BSD-3-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/facebook/pyre2
 Source:         https://github.com/facebook/pyre2/archive/v%{version}.tar.gz
 # PATCH-FIX-UPSTREAM cpp17.patch gh#facebook/pyre2#25
 Patch0:         cpp17.patch
+# PATCH-FIX-OPENSUSE Do not use sre_constants
+Patch1:         do-not-use-sre-constants.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -62,7 +63,7 @@ export CFLAGS="%{optflags}"
 %license LICENSE
 %{python_sitearch}/_re2*.so
 %{python_sitearch}/re2.py
-%{python_sitearch}/fb_re2-%{version}*-info
-%pycache_only %{python_sitearch}/__pycache__
+%{python_sitearch}/fb_re2-%{version}.dist-info
+%pycache_only %{python_sitearch}/__pycache__/re2*.pyc
 
 %changelog

@@ -59,4 +59,13 @@
     <comment></comment>
     <requestid>1280568</requestid>
   </revision>
+  <revision rev="8" vrev="7">
+    <srcmd5>288e36c3be21d83e9e977f5c823f7234</srcmd5>
+    <version>1.0.7</version>
+    <time>1788879237</time>
+    <user>anag_factory</user>
+    <comment>- Add patch do-not-use-sre-constants.patch:
+  * Do not use sre_constants stdlib module.</comment>
+    <requestid>1376051</requestid>
+  </revision>
 </revisionlist>

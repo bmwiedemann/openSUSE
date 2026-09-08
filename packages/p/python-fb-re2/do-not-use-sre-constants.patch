@@ -1,0 +1,21 @@
+Index: pyre2-1.0.7/re2.py
+===================================================================
+--- pyre2-1.0.7.orig/re2.py
++++ pyre2-1.0.7/re2.py
+@@ -25,7 +25,7 @@
+ # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+ 
+ import _re2
+-import sre_constants
++from re import error
+ 
+ __all__ = [
+     "error",
+@@ -43,7 +43,6 @@ __all__ = [
+ # Module-private compilation function, for future caching, other enhancements
+ _compile = _re2._compile
+ 
+-error = sre_constants.error
+ escape = _re2.escape
+ Set = _re2.Set
+ UNANCHORED = _re2.UNANCHORED
