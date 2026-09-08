@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-cinderclient
-Version:        9.9.0
+Version:        9.10.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Cinder
 License:        Apache-2.0

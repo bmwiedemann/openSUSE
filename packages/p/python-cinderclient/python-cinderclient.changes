@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:10:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.10.0:
+  * Update python tested versions for hibiscus
+  * Add periodic jobs for cinderclient
+  * Update master for stable/2026.1
+
+-------------------------------------------------------------------
 Mon Mar  9 15:28:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.9.0:
