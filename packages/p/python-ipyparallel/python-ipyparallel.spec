@@ -16,9 +16,9 @@
 #
 
 
-%define distversion 9.1
+%define distversion 9.2
 Name:           python-ipyparallel
-Version:        9.1.0
+Version:        9.2.0
 Release:        0
 Summary:        Interactive parallel computing library for IPython
 License:        BSD-3-Clause
@@ -132,7 +132,7 @@ for f in apps/iploggerapp.py \
 do
   chmod a+x $f
   # Fix wrong-script-interpreter
-  sed -i "s|#!%{_bindir}/env python.*|#!%__$python|" $f
+  sed -i -e "s|#!%{_bindir}/env python.*|#!%{_bindir}/$python|" $f
   $python -m compileall $f
   $python -O -m compileall $f
 done

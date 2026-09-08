@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep  6 08:58:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.2.0:
+  * 9.2.0 updates JupyterLab extension dependencies and removes
+    some use of deprecated APIs in ipykernel.
+
+-------------------------------------------------------------------
 Sun Mar 22 17:30:34 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update dependencies

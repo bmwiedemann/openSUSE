@@ -799,4 +799,14 @@
   * dependabot: split major/minor js bumps #940 (@minrk)</comment>
     <requestid>1341880</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>c4f669d125e9cc72cbfb7132bb483151</srcmd5>
+    <version>9.2.0</version>
+    <time>1788879516</time>
+    <user>anag_factory</user>
+    <comment>- update to 9.2.0:
+  * 9.2.0 updates JupyterLab extension dependencies and removes
+    some use of deprecated APIs in ipykernel.</comment>
+    <requestid>1376346</requestid>
+  </revision>
 </revisionlist>
