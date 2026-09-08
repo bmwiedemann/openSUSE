@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:16:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.13.1:
+  * bindep: Remove stale marker
+  * Use the new variable to enable the RBAC new defaults
+
+-------------------------------------------------------------------
 Thu Aug  6 20:48:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.13.0:

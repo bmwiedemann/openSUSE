@@ -828,4 +828,14 @@ update to version 5.1.0
   * Add version foot protector</comment>
     <requestid>1370125</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>bccac5004ca147c7822b968cd70d0d96</srcmd5>
+    <version>18.13.1</version>
+    <time>1788879317</time>
+    <user>anag_factory</user>
+    <comment>- update to 18.13.1:
+  * bindep: Remove stale marker
+  * Use the new variable to enable the RBAC new defaults</comment>
+    <requestid>1376094</requestid>
+  </revision>
 </revisionlist>
