@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:08:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Disable msdk plugin, currently broken, and in practice abandoned
+  upstream. It is also ranked as 0, so to even attempt to use it,
+  users have to manually enable it via the command line.
+
+-------------------------------------------------------------------
 Wed Aug  5 15:50:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.6:

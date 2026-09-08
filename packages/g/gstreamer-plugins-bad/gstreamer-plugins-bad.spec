@@ -939,7 +939,7 @@ export PYTHON=%{_bindir}/python3
 	-D isac=disabled \
 	-D onnx=disabled \
 %ifarch x86_64
-	-D msdk=enabled \
+	-D msdk=disabled \
 	-D qsv=enabled \
 %else
 	-D msdk=disabled \
@@ -1097,9 +1097,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsdemux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegpsmux.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmpegtsmux.so
-%ifarch x86_64
-%{_libdir}/gstreamer-%{gst_branch}/libgstmsdk.so
-%endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstmse.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmusepack.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmxf.so
