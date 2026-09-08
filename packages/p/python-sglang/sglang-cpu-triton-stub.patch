@@ -64,8 +64,8 @@
  
      if "triton" not in sys.modules and importlib.util.find_spec("triton") is None:
          # Register the meta-path finder first so later ``import triton.X``
-@@ -454,6 +457,10 @@
-         compiler = _make_mock("triton.backends.compiler")
+@@ -494,6 +497,10 @@
+         compiler.GPUTarget = _GPUTarget
          backends.compiler = compiler
  
 +    if not patch_mps:

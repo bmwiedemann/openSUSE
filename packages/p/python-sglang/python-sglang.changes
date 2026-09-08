@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:45:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.19:
+  * Beam search: pass beam_width and get the n best sequences
+    back; does not yet combine with speculative decoding,
+    disaggregation, DP attention or HiCache
+  * The unified radix tree is now the cache for every model, not
+    just hybrid ones; SGLANG_ENABLE_UNIFIED_RADIX_TREE is
+    deprecated
+  * ServerArgs no longer resolves on construction - callers that
+    build one by hand must call resolve_once() first
+  * Requests are capped at 32 stop strings and 32 stop regexes of
+    at most 256 bytes each, HTTP 400 beyond that
+  * Spark3 renamed to Spark2.5 across config, model classes and
+    the tool-call parser (spark -> spark25)
+  * CPU backend: ERNIE support, NUMA/core binding for DP ranks,
+    and fixes for DP attention, bidirectional-attention masking,
+    the truncated KV prefix in intel_amx spec verify, and missing
+    weights in fused_input_proj_cpu for GPTQ INT4
+  * kill_process_tree waits for the reap by default
+  * New models: Qwen3.8, dots3.note, Ling-3.0, MiniCPM-SALA,
+    Granite 4.2, LongCat-Image-Edit
+  * Abridged; see upstream's release notes for the full list
+- Rebase sglang-cpu-triton-stub.patch: upstream grew the Triton
+  stub with autotuner/compiler/GPUTarget classes above our hunk
+- Strip the #! line from every shipped module instead of just
+  cli/killall.py; the new srt/model_loader/expert_pack modules
+  carry one too and scored non-executable-script
+- Regenerate vendor.tar.zst
+
+-------------------------------------------------------------------
 Mon Aug 24 18:24:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.18:

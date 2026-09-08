@@ -57,4 +57,47 @@ vendor.tar.zst regenerated. Built and %check-tested locally on
 aarch64 for python313 and python314.</comment>
     <requestid>1373479</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4b2de9f2ab3a75b1a688200b9ba35725</srcmd5>
+    <version>0.5.19</version>
+    <time>1788879300</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.19
+
+Upstream highlights relevant to this CPU build:
+- Beam search (beam_width); not combinable with speculative decoding,
+  disaggregation, DP attention or HiCache yet
+- The unified radix tree becomes the cache for every model;
+  SGLANG_ENABLE_UNIFIED_RADIX_TREE is deprecated
+- ServerArgs no longer resolves on construction - callers building one
+  by hand must call resolve_once()
+- Requests capped at 32 stop strings and 32 stop regexes of at most
+  256 bytes each, HTTP 400 beyond that
+- CPU backend: ERNIE support, NUMA/core binding for DP ranks, plus DP
+  attention, bidirectional-attention masking, intel_amx spec verify
+  and GPTQ INT4 fused_input_proj fixes
+
+Packaging:
+- sglang-cpu-triton-stub.patch rebased (upstream grew the Triton stub
+  with autotuner/compiler/GPUTarget classes above our hunk); the other
+  three patches apply unchanged
+- The #! line is now stripped from every shipped module, not just
+  cli/killall.py: 0.5.19 adds srt/model_loader/expert_pack/*.py, which
+  carry one but are imported, not executed
+- vendor.tar.zst regenerated. Licence re-derived over the shipped
+  sglang-mm/sglang-grpc graphs: the only genuinely new crates are
+  miniz_oxide (MIT OR Zlib OR Apache-2.0, reachable via flate2) and
+  zlib-rs (not in the shipped graph at all), so the License: tag is
+  unchanged.
+
+pyproject_cpu.toml is byte-identical to 0.5.18, so no dependency floor
+moved - torch stays at the 2.12.0 Factory ships.
+
+Built locally on aarch64 against openSUSE_Tumbleweed: green, %check
+imports both Rust PyO3 extensions and runs the CLI for python313 and
+python314. rpmlint is at the accepted 0.5.18 baseline (6 errors /
+2 warnings / 6 badness, all pre-existing update-alternatives items plus
+the outlines Suggests). source_validator clean.</comment>
+    <requestid>1376136</requestid>
+  </revision>
 </revisionlist>

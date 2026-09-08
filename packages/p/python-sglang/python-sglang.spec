@@ -17,7 +17,7 @@
 
 
 Name:           python-sglang
-Version:        0.5.18
+Version:        0.5.19
 Release:        0
 Summary:        Fast serving framework for large language models
 # Legal-Review-Notice: sgl-model-gateway and CUDA AOT kernels
@@ -242,8 +242,11 @@ find %{buildroot} -type f \( \
 # Triton autotune JSON dumps (and other data files) are mode 0755.
 find %{buildroot}/%{$python_sitearch}/sglang %{buildroot}/%{$python_sitelib}/sglang \
   -type f -exec chmod a-x {} + 2>/dev/null || :
-sed -i '1{/^#!/d}' %{buildroot}%{$python_sitearch}/sglang/cli/killall.py \
-  %{buildroot}%{$python_sitelib}/sglang/cli/killall.py 2>/dev/null || :
+# Several modules carry a #! line but are imported, not executed (the sglang
+# CLI is the only entry point) -- and after the chmod above none of them is
+# executable, so each one scores non-executable-script. Drop the line.
+find %{buildroot}/%{$python_sitearch}/sglang %{buildroot}/%{$python_sitelib}/sglang \
+  -name '*.py' -exec sed -i '1{/^#!/d}' {} + 2>/dev/null || :
 $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash \
   %{buildroot}%{$python_sitearch}/sglang %{buildroot}%{$python_sitelib}/sglang \
   2>/dev/null || :
