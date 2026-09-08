@@ -28,6 +28,14 @@ Wed Sep  2 13:56:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
     load Soundfonts passed as command line argument (#1807).
 
 -------------------------------------------------------------------
+Tue Sep  1 19:35:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Fix a packaging issue:
+  Fluidsynth-shared-targets.cmake creates a 'FluidSynth::fluidsynth'
+  target that points to the fluidsynth executable. It must be
+  present when using CMake.
+
+-------------------------------------------------------------------
 Sat Jul 25 08:38:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.7

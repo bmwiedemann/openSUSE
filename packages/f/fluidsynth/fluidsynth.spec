@@ -54,6 +54,7 @@ can also play MIDI files.
 %package devel
 Summary:        Development package for the fluidsynth library
 Group:          Development/Libraries/C and C++
+Requires:       fluidsynth = %{version}
 Requires:       glibc-devel
 Requires:       libfluidsynth%{sover} = %{version}
 Provides:       libfluidsynth-devel = %{version}
