@@ -1,7 +1,7 @@
 #
 # spec file for package libopenshot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,16 @@
 #
 
 
-%define sover 27
+%define sover 31
 
 Name:           libopenshot
-Version:        0.4.0
+Version:        1.0.0
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://openshot.org/
-Source0:        libopenshot-%{version}.tar.xz
+Source0:        https://github.com/OpenShot/libopenshot/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         libopenshot-ffmpeg8.patch
 BuildRequires:  babl-devel
 BuildRequires:  cmake >= 3.10
@@ -38,31 +38,35 @@ BuildRequires:  gcc13-c++
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 %endif
+BuildRequires:  ImageMagick-devel
+BuildRequires:  alsa-devel
+BuildRequires:  jsoncpp-devel
+BuildRequires:  libopenshot-audio-devel >= 1.0.0
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
 BuildRequires:  python-rpm-macros
+BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  ruby-devel
 BuildRequires:  swig
-BuildRequires:  cmake(OpenShotAudio) >= 0.4.0
-BuildRequires:  pkgconfig(Magick++)
-BuildRequires:  pkgconfig(Qt5Core) >= 5.2.0
+BuildRequires:  unittest-cpp-devel
+BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Multimedia)
 BuildRequires:  pkgconfig(Qt5MultimediaWidgets)
+BuildRequires:  pkgconfig(Qt5Network)
+BuildRequires:  pkgconfig(Qt5Sql)
 BuildRequires:  pkgconfig(Qt5Svg)
+BuildRequires:  pkgconfig(Qt5Test)
 BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(UnitTest++)
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(jsoncpp)
+BuildRequires:  pkgconfig(Qt5Xml)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavdevice)
-BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(python3)
 
 %description
 A library for video editing, composition, animation, and playback,
@@ -113,9 +117,6 @@ This package provides the Python bindings for the OpenShot library.
 
 %prep
 %autosetup -N
-%if 0%{?suse_version} > 1600
-%patch -p1 -P 0
-%endif
 
 %build
 %if 0%{?suse_version} < 1600
@@ -133,6 +134,7 @@ export CXXFLAGS="%{optflags} -Wno-return-type"
 	-DFFMPEG_INCLUDE_DIR=%{_includedir}/ffmpeg \
 	-DUSE_SYSTEM_JSONCPP=ON \
 	%{nil}
+export MAKEFLAGS="-j1"
 %cmake_build
 
 %install
@@ -149,9 +151,9 @@ export CXXFLAGS="%{optflags} -Wno-return-type"
 %files devel
 %{_includedir}/%{name}/
 %{_libdir}/%{name}.so
-%{_libdir}/ruby/vendor_ruby/*/*-linux-gnu/openshot.so
 
 %files -n python3-openshot
 %{python3_sitearch}/*openshot*
+%_libdir/ruby/vendor_ruby/*
 
 %changelog

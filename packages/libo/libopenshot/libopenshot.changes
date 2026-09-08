@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 01 07:30:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 1.0.0:
+  * Recover stale timeline clip reader state
+  * Load PipeWire capture backend on demand
+  * Harden Wayland PipeWire window capture
+  * Synchronize screen capture shutdown
+  * Bumping version to 1.0.0, SO 31, requiring OpenShotAudio 1.0.0
+  * Install FFmpeg avdevice in GitHub CI
+  * Synchronize initial system audio capture
+  * Fix MinGW Core Audio GUID linking
+  * Add system audio to screen capture
+
+-------------------------------------------------------------------
+Wed Apr  2 14:39:08 UTC 2026 - pbuild-ai <adrian@suse.de>
+
+- Update to version 0.7.0:
+  * Smarter thread defaults based on the user's CPU for better performance
+  * Faster thumbnails with lower-resolution decoding for quicker preview generation
+  * Better FFmpeg support across FFmpeg 4.4, 6, and 8
+  * Audio crash fix when applying channel mappings concurrently
+  * Cleaner thumbnails with cropped preview images and no black bars
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
 Tue Oct 21 17:25:58 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix build with ffmpeg8 [gh#FFmpeg/FFmpeg#8238bc0b5e3dba271217b1223a901b3f9713dc6e]
