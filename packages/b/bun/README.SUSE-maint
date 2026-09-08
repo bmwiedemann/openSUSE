@@ -11,9 +11,9 @@ What is being packaged
 ----------------------
 
 1.4.0 is the first release written in Rust; 1.3.14 was the last written in
-Zig. Source0 is the bun-v1.4.0 release tarball. %{git_commit} is the commit
-that tag points at, passed as GIT_SHA so `bun --revision` reports it; it is
-not part of the RPM version.
+Zig. Source0 is the release tarball of the bun-vX.Y.Z tag. %{git_commit} is
+the commit that tag points at, passed as GIT_SHA so `bun --revision` reports
+it; it is not part of the RPM version.
 
 
 Regenerating the sources
@@ -172,12 +172,12 @@ Upstream tracks removing the dependency entirely (scripts/build/CLAUDE.md, "TODO
 - remaining cfg.bun usage"); until then, turn %bcond bootstrap off once the
 package is in the distribution and it will build with the Bun already there.
 
-1.3.14 is old - it is the last Zig release, while the source here is the 1.4.0
+1.3.14 is old - it is the last Zig release, while the source here is a 1.4.x
 Rust tree - but it does the job: the build applies no minimum Bun version, and
 upstream's own CI bootstraps this tree with 1.3.13 (scripts/bootstrap.sh).
 Keep 1.3.14 until bun is in the distribution, then turn %bcond bootstrap off
-so the package builds with itself. Do not switch the bootstrap zips to 1.4.0
-while this package is still the first 1.4.0 in the distro - that would be
+so the package builds with itself. Do not switch the bootstrap zips to a 1.4.x
+while this package is still the only 1.4.x in the distro - that would be
 another foreign binary for no gain.
 
 The binaries are NoSource: uploaded to the build service but not shipped in the
@@ -223,22 +223,16 @@ lint newer than the released compiler. The workspace denies warnings, so an
 unknown lint name is fatal; allowing unknown_lints alongside it is correct on
 both the released compiler and the nightly upstream pins.
 
-bun-highway-scalable-sve.patch sets HWY_DISABLED_TARGETS so that Highway's
-length-agnostic SVE targets are not compiled. Highway implements BitsFromMask
-only for the fixed-length SVE targets - a uint64_t with one bit per lane is not
-well-defined when the vector length is not known until run time - but
-highway_xml.cpp, highway_json.cpp and highway_sourcemap.cpp call it
-unconditionally, so all three fail to compile for HWY_SVE and HWY_SVE2. Those
-targets become attainable on aarch64 whenever the compiler knows SVE and
-Highway has runtime dispatch, which is every clang new enough to build bun.
-
-What is left is NEON plus HWY_SVE_256 and HWY_SVE2_128, the fixed-length
-targets that Neoverse V1, V2 and N2 select, and those do define BitsFromMask -
-so no SVE hardware ends up on the NEON path. The define is applied both to
-Highway's own translation units and to bun's, because HWY_TARGETS is derived
-from it and the two disagreeing would misdispatch at run time.
-
-Worth reporting upstream: it is a portability bug, not a packaging workaround.
+bun-highway-scalable-sve.patch is gone as of 1.4.2. It disabled Highway's
+length-agnostic SVE targets, which fail to compile because Highway defines
+BitsFromMask only for the fixed-length ones while highway_xml.cpp,
+highway_json.cpp and highway_sourcemap.cpp call it unconditionally. Upstream
+now does the same thing itself, in scripts/build/deps/highway.ts, and 1.4.2
+also grew the mechanism the patch had to work around: a dependency's
+provides().defines now reaches bun's own translation units
+(scripts/build/bun.ts), so the value no longer has to be repeated in flags.ts
+to keep HWY_TARGETS consistent between the two. Upstream disables all of
+HWY_ALL_SVE except HWY_SVE2_128, which is a superset of what the patch did.
 
 bun-uniform-dwarf.patch makes the debug information something debugedit can
 process, which rpm needs before it can extract a debuginfo package. Both of its

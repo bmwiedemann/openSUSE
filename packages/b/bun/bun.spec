@@ -17,13 +17,13 @@
 
 
 # 1.4.0 is the first release written in Rust (1.3.14 was the last in Zig).
-# git_commit is the bun-v1.4.0 tag peel, used as GIT_SHA for bun --revision;
+# git_commit is the bun-v1.4.2 tag peel, used as GIT_SHA for bun --revision;
 # it is not part of the RPM version.
-%define git_commit 34cbb9a40b4bd1bd767d134a7065e66c2432a676
-%define git_short 34cbb9a4
+%define git_commit 744846f844374847c902b5e7fd59b4342a51ef99
+%define git_short 744846f8
 # The WebKit revision Source1 was made from, for reference; it is read out of
 # the Bun tarball by bun_webkit, not set here.
-# 0f966e81b78c84bb23213e391bc679c4ef83e56b
+# 2e2aa2290fac856d6f451ceacb58f7f5b44dd057
 # The SQLite amalgamation in Bun's tree. Used for both the bundled() Provides
 # and the %%check that asserts it against sqlite_version(), so the two cannot
 # drift apart on a version bump.
@@ -51,7 +51,7 @@
 # slower but keeps the package free of foreign binaries.
 %bcond_without webkit_source
 Name:           bun
-Version:        1.4.0
+Version:        1.4.2
 Release:        0
 Summary:        Fast all-in-one JavaScript runtime and toolkit
 # Bun itself is MIT, but it is one statically linked executable and everything
@@ -62,7 +62,7 @@ Summary:        Fast all-in-one JavaScript runtime and toolkit
 # picohttpparser (MIT OR Artistic-1.0-Perl) is taken under its permissive half.
 # See LICENSE.md, which upstream keeps current, and re-check this on every
 # version bump. IJG is gone with libjpeg-turbo, the only thing that carried it,
-# now that Patch5 links it from the distribution.
+# now that Patch4 links it from the distribution.
 #
 # LGPL-2.1 section 6 is satisfied by shipping the engine's source: WebKit is
 # Source1 and is part of the src.rpm.
@@ -118,29 +118,25 @@ Patch0:         bun-offline-build.patch
 # and the workspace denies warnings, so the unknown lint is fatal. Allowing
 # unknown_lints alongside it is correct on both compilers.
 Patch1:         bun-unknown-lint.patch
-# Do not compile Highway's length-agnostic SVE targets: Highway defines
-# BitsFromMask only for the fixed-length ones, and three of Bun's SIMD helpers
-# call it unconditionally.
-Patch2:         bun-highway-scalable-sve.patch
 # Emit debug information debugedit can read, so rpm can build a debuginfo
 # package: DWARF 5 from rustc, as clang and the standard library already emit,
 # and without the DWARF 5 accelerator table, which debugedit does not know.
-Patch3:         bun-uniform-dwarf.patch
+Patch2:         bun-uniform-dwarf.patch
 # Do not let WebKit put types in their own units. The linker keeps one copy of
 # each and drops the rest, leaving .debug_str_offsets entries no unit refers to
 # any more, and debugedit asserts on the first of those.
-Patch4:         bun-webkit-no-type-units.patch
+Patch3:         bun-webkit-no-type-units.patch
 # Link zstd, brotli, libdeflate, libspng, libwebp and libjpeg-turbo from the
 # distribution instead of the vendored copies. These are the bundled C
 # libraries whose pin is an unmodified upstream release rather than a fork and
 # that Bun reaches through their installed public headers, so each can be
 # tracked like any other shared library. See the patch header for the details
 # that are specific to each of them.
-Patch5:         bun-system-libs.patch
+Patch4:         bun-system-libs.patch
 # Raise the LLVM version bun pins from 21 to the distribution default.
-Patch6:         bun-llvm-22.patch
+Patch5:         bun-llvm-22.patch
 BuildRequires:  cargo
-# LLVM 22.1.x, per Patch6. scripts/build/tools.ts enforces this for the C
+# LLVM 22.1.x, per Patch5. scripts/build/tools.ts enforces this for the C
 # compiler and the linker only; see the PATH shim in %%build for the C++
 # compiler, which it looks up without a version check.
 BuildRequires:  clang22
@@ -151,7 +147,12 @@ BuildRequires:  git-core
 BuildRequires:  lld22
 BuildRequires:  llvm22
 BuildRequires:  ninja
-BuildRequires:  nodejs24 >= 24.3.0
+# The build driver runs on Node, and 1.4.2 refuses anything below 25
+# (scripts/build/configure.ts): the codegen scripts gate on import.meta.main,
+# and upstream set the floor at the release after the one that added it rather
+# than at 24.2. 26 is what upstream CI installs and what bun's own node headers
+# dependency is pinned to, and Factory has no 25.
+BuildRequires:  nodejs26
 # WebKit cmake. This is not a Perl package: spec-cleaner --perl explodes
 # this into hundreds of perl(...) module BRs and drops git-core.
 BuildRequires:  perl
@@ -163,7 +164,7 @@ BuildRequires:  python3
 BuildRequires:  rust >= 1.97
 BuildRequires:  unzip
 BuildRequires:  zstd
-# Unbundled by Patch5. brotlicommon has no header of its own but is a separate
+# Unbundled by Patch4. brotlicommon has no header of its own but is a separate
 # pkg-config module, and the link line names it. libwebp's sharpyuv needs no
 # entry of its own: it is a transitive dependency of libwebp.so.
 BuildRequires:  pkgconfig(libbrotlicommon)
@@ -183,7 +184,7 @@ Recommends:     libsecret-1-0
 # Bun is a single statically linked executable and everything still listed here
 # ends up inside it. Each is pinned to an exact commit, several are upstream
 # forks (boringssl, tinycc, mimalloc, lol-html) and the JavaScript engine is a
-# fork of WebKit, so none of them can be unbundled the way the six in Patch5
+# fork of WebKit, so none of them can be unbundled the way the six in Patch4
 # were. Unversioned because upstream pins commits rather than releases.
 # Regenerate from bun-prefetch.manifest, LICENSE.md and the crates.io
 # dependencies in Cargo.toml on a version bump - the manifest and LICENSE.md
@@ -320,7 +321,7 @@ export RANLIB=llvm-ranlib-22
 export GIT_SHA="%{git_commit}"
 # process.versions.zstd and .libdeflate are generated from the vendored commit
 # hashes, which say nothing once the distribution libraries are linked instead
-# (Patch5). Report what is actually linked. The other four have no such macro,
+# (Patch4). Report what is actually linked. The other four have no such macro,
 # so they need no counterpart.
 export BUN_SYSTEM_VERSION_ZSTD="$(pkg-config --modversion libzstd)"
 export BUN_SYSTEM_VERSION_LIBDEFLATE="$(pkg-config --modversion libdeflate)"
@@ -373,7 +374,7 @@ ln -s bun %{buildroot}%{_bindir}/bunx
 
 %check
 %{buildroot}%{_bindir}/bun --version
-# Anchored on the release form. A canary reports 1.4.0-canary.<stamp>+<sha>,
+# Anchored on the release form. A canary reports <ver>-canary.<stamp>+<sha>,
 # which a bare substring match for the short sha would have accepted.
 %{buildroot}%{_bindir}/bun --revision | grep -E "^%{version}\+%{git_short}"
 %{buildroot}%{_bindir}/bun -e 'if (6 * 7 !== 42) process.exit(1)'
@@ -401,14 +402,14 @@ int tcc_smoke(int x) { return x * 2 + 2; }
 EOF
 %{buildroot}%{_bindir}/bun -e 'import{cc}from"bun:ffi";const{symbols:{tcc_smoke:g}}=cc({source:"./_tcc_check.c",symbols:{tcc_smoke:{args:["int"],returns:"int"}}});const r=g(20);if(r!==42)throw new Error("bundled(tinycc) returned "+r)'
 
-# Patch5 must have taken effect: every unbundled library has to be an ELF
+# Patch4 must have taken effect: every unbundled library has to be an ELF
 # dependency now. A silently reverted patch would otherwise still build and
 # still pass every test above.
 ldd %{buildroot}%{_bindir}/bun
 for lib in libzstd libbrotlienc libbrotlidec libbrotlicommon libdeflate \
            libspng libwebp libwebpmux libwebpdemux libturbojpeg; do
     ldd %{buildroot}%{_bindir}/bun | grep -qE "\<$lib\.so" || \
-        { echo "$lib is not linked - Patch5 did not take effect"; exit 1; }
+        { echo "$lib is not linked - Patch4 did not take effect"; exit 1; }
 done
 # ... and each one works through the binary, not just at link time.
 %{buildroot}%{_bindir}/bun -e 'const c=Bun.zstdCompressSync(Buffer.from("z".repeat(4096)));if(Bun.zstdDecompressSync(c).length!==4096)throw new Error("zstd round trip failed")'

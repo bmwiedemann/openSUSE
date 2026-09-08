@@ -103,4 +103,35 @@ final link.</comment>
 Built locally on Factory/aarch64: 0 rpmlint errors.</comment>
     <requestid>1373126</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cf060063c7ab8bcf8cc8c9ce5e164dc9</srcmd5>
+    <version>1.4.2</version>
+    <time>1788879277</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.2
+
+- Security: fetch() verifies the TLS certificate against the URL's
+  hostname instead of a caller-supplied Host header. Upstream calls the
+  old behaviour an insecure default for anything that forwards a
+  user-controlled Host, as proxies do. No CVE assigned.
+- Bun.serve speaks HTTP/2, Bun.write(path, response) streams to disk,
+  node:crypto gains argon2, and there is a large performance pass across
+  Buffer, AsyncLocalStorage, Bun.inspect and builtin require().
+- bun build and bun build --compile improvements; bun install --offline.
+- Bundled BoringSSL moves 247 commits and mimalloc 51; no CVEs assigned
+  against either range. WebKit is now 2e2aa229.
+
+Packaging:
+- bun-highway-scalable-sve.patch dropped. Upstream disables the scalable
+  SVE targets itself (a superset - it drops fixed-length SVE_256 too),
+  and 1.4.2 propagates a dependency's defines into bun's own translation
+  units, which is the gap the patch had to work around.
+- BuildRequires nodejs26 instead of nodejs24: the build driver refuses
+  any Node below 25 (scripts/build/configure.ts). Factory has no 25.
+
+Built locally on aarch64 with the full %check green (sqlite version
+assertion, bun:ffi, bundled tinycc, the ldd assertions for all ten
+unbundled libraries, and the image codec chain).</comment>
+    <requestid>1376121</requestid>
+  </revision>
 </revisionlist>

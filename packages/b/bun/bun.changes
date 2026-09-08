@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:00:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.2:
+  * Security: fetch() verifies the TLS certificate against the
+    URL's hostname instead of a caller-supplied Host header. The
+    old behaviour was an insecure default for anything that
+    forwards a user-controlled Host, as proxies do. No CVE
+    assigned
+  * Bun.serve speaks HTTP/2; Bun.write(path, response) streams to
+    disk; WebSocket gains pause()/resume(); node:crypto gains
+    argon2
+  * Up to 9x faster Buffer reads and writes, faster
+    AsyncLocalStorage, Bun.inspect and require() of builtins,
+    lower idle memory; TLS root CAs are embedded as DER and parsed
+    lazily and the system CA bundle is read once, so the first
+    HTTPS request is much cheaper
+  * bun install --offline/--prefer-offline; self-contained
+    node_modules for workspace packages
+  * bun build tree-shakes through dynamic import(), emits fewer and
+    smaller split chunks and gains --min-chunk-size; compiled
+    executables start faster, carry smaller bytecode and can
+    cross-compile with --bytecode
+  * 1.4.2 fixes a bun build variable name collision, an
+    AsyncLocalStorage leak, worker_threads 'online' ordering and
+    Bun.Image on CMYK/YCCK JPEGs
+  * WebKit 2e2aa229. Bundled BoringSSL moves 247 commits (x509
+    pathLenConstraint on self-issued intermediates, an SSLBuffer
+    capacity overflow, an X509 RFC2253 name infinite loop, an
+    ML-KEM constant-time validation regression) and mimalloc 51
+    (heap teardown and cross-thread free lifetimes); no CVEs
+    assigned against either range
+  * See upstream's release notes for the rest
+- Drop bun-highway-scalable-sve.patch: upstream now disables the
+  scalable SVE targets itself - a superset of what the patch did,
+  it drops the fixed-length SVE_256 too - and a dependency's
+  defines finally reach bun's own objects, which is the
+  propagation gap the patch had to paper over
+- Build the driver with nodejs26: 1.4.2 refuses any Node below 25
+
+-------------------------------------------------------------------
 Sat Aug 22 13:49:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.0 (from 1.4.0~git20260808.52bf09cb snapshot):

@@ -1,7 +1,7 @@
 --- a/scripts/build/rust.ts
 +++ b/scripts/build/rust.ts
-@@ -391,6 +391,18 @@
-   // Keep frame pointers — matches the C++ side's `-fno-omit-frame-pointer` / `/Oy-`
+@@ -376,6 +376,18 @@
+   // Keep frame pointers — matches the C++ side's `-fno-omit-frame-pointer`
    // (flags.ts:293-301). Needed so profilers and crash backtraces can walk Rust frames.
    rustflags.push("-Cforce-frame-pointers=yes");
 +  // Emit the same DWARF version as everything else linked in. Clang 21 and the
