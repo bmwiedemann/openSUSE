@@ -1,4 +1,166 @@
 -------------------------------------------------------------------
+Mon Sep  7 22:04:38 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to Version 0.9.0:
+  * TALA is now open source and bundled with D2, including the
+    JavaScript/WASM package. Select it with d2 --layout=tala,
+    D2_LAYOUT=tala, or vars.d2-config.layout-engine: tala. No
+    separate plugin installation or license key is required.
+  * tala: configure layout attempts with --tala-seeds,
+    D2_TALA_SEEDS, or vars.d2-config.data.tala-seeds.
+  * exports: render PNG, GIF, PDF, and PPTX with the built-in
+    renderer
+  * performance: reduce repeated work in Dagre ranking, text
+    measurement, SVG preparation, and PNG encoding
+  * performance: reduce repeated work in selective imports, dynamic
+    grid layout, and PNG connection rendering
+  * exports: reduce PNG memory usage and support images above the
+    previous 67-megapixel limit
+  * performance: SVG rendering is approximately 10× faster across
+    the E2E corpus. Real-world diagrams compile, lay out, and
+    render approximately 3× faster at the median.
+  * renders: SVG exports are approximately 24% smaller across the
+    E2E corpus and 18% smaller across real-world fixtures, with
+    unchanged appearance.
+  * renders: render Markdown labels as native SVG instead of HTML
+    foreignObject content
+  * install: reject the obsolete --tala installer flag with
+    migration guidance before installing, instead of incorrectly
+    claiming that older D2 releases bundle TALA
+  * sequence diagrams: keep synthetic lifeline endpoint IDs stable
+    across architectures
+  * exports: honor D2_TIMEOUT during PNG and GIF rendering
+  * compiler: keep recursive globs out of class and variable
+    definitions and report class reference cycles instead of
+    overflowing the stack
+  * renders: decode gzip, Brotli, and deflate remote images before
+    embedding them
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 matching go.mod
+
+-------------------------------------------------------------------
+Mon Aug 24 17:42:32 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to Version 0.8.2:
+  * exports: gif exports work with animate: true keyword #2663
+  * releases: strip native binaries, build and smoke-test all six
+    archives in CI, produce reproducible archives with checksums,
+    signed provenance, and SBOM attestations, and verify standalone
+    downloads when GitHub provides a digest
+  * plugins: make render post-processing optional and deprecate it
+    for removal after one protocol compatibility cycle; legacy
+    external postprocess commands remain supported during the
+    transition
+  * api: deprecate legacy layout-feature constants, raw-WASM
+    ELK/object-order bridges, unused public wrappers, and test-only
+    comparison, validation, and logging helpers; compatibility
+    entry points remain callable for one release while
+    in-repository callers use supported or internal replacements
+  * maintenance: update the Go toolchain to 1.27.0 and refresh Go,
+    d2.js, CI, release dependencies, and compression-sensitive
+    snapshots
+  * renders: update syntax highlighting and migrate archived font
+    and PDF dependencies to maintained replacements
+  * d2dagre: replace the embedded JavaScript runtime with native Go
+    Dagro and update its D2-used layout surface from Dagre 0.8.5 to
+    Dagre 3.1.1 behavior. This intentionally changes node ordering
+    and coordinates, edge routes, self-loops, and compound sizing
+    in some diagrams; regenerate and review stored SVG or
+    board-JSON snapshots
+  * d2sketch: update the native rough-go renderer from Rough.js
+    4.0.4 to 4.6.6 behavior. Seeded sketch strokes, fills,
+    arrowheads, and SVG paths may change; regenerate and review
+    stored sketch SVG snapshots
+  * d2elk: replace the embedded ELK.js 0.8.2 runtime with native Go
+    elk-go and update D2's ELK layout profile to ELK.js 0.12.0
+    behavior. This is a layout-behavior update, not an
+    output-compatible runtime swap:
+  * existing ELK diagrams may receive different node coordinates
+    and ordering, edge and label routes, and component packing;
+    regenerate and review stored SVG or board-JSON snapshots
+  * children of nested compound graphs may be reordered because ELK
+    0.12 cannot safely apply D2's previous nested model-order
+    profile
+  * non-default --elk-algorithm modes may also produce different
+    geometry; the optional DisCo algorithm is removed because
+    upstream no longer bundles it
+  * d2latex: replace the embedded MathJax JavaScript runtime with
+    the native Go mathjax-go port without changing rendered
+    formulas
+  * performance: native Go engine migrations substantially reduce
+    median end-to-end D2-to-SVG conversion time in Apple M4
+    benchmarks:
+  * Dagre is 7–9× faster
+  * ELK is 40–53× faster
+  * LaTeX is 21.6× faster on a four-formula diagram
+  * performance: remove superlinear compiler and layout bottlenecks
+    in large globs, repeated imports, nested diagrams, compound
+    Dagre graphs, bend-heavy ELK layouts, and style-only
+    scenario/step boards #2827. Median Apple M4 single-CPU
+    synthetic stress benchmarks for these targeted cliffs, rather
+    than corpus-wide conversion averages, improve by:
+  * performance: leading glob applied to 1,000 fields: 1.59s to
+    12ms (~133× faster)
+  * performance: 100 references into the same 100-field import
+    file: 54ms to 12ms (~4.6× faster)
+  * performance: 4,000 flat fields: 67ms to 7ms (~9.6× faster)
+  * performance: 3,200 distinct edges: 200ms to 19ms (~10.6×
+    faster)
+  * performance: 32-node base with 8 style-only scenarios and 8
+    steps (17 boards total): 40ms to 7.3ms (~5.5× faster)
+  * performance: 340-object nested D2 Dagre layout: 1.30s to 0.88s
+    (~32% faster)
+  * performance: Dagro depth-100 compound layout: 3.60s to 0.90s
+    (~4× faster)
+  * performance: 250-node, 1,000-edge ELK layout: 337ms to 238ms
+    (~30% faster)
+  * d2ascii: sql_table and uml class shapes are supported #2623
+  * d2ascii: newlines are handled #2626
+  * d2ascii: empty left columns are cropped #2626
+  * exports: Chromium download through CLI for PNG exports is
+    prompted #2655
+  * exports: animate-interval is no longer required, defaults to
+    1000ms for gifs #2663
+  * renders: remote images are fetched more reliably #2659
+  * d2dagre: keep same-direction parallel edges and self-loop
+    routes finite when using Dagre 3.1.1 behavior
+  * d2svg: reject padding that would produce invalid negative SVG
+    dimensions
+  * d2elk: route ancestor-to-descendant connections around
+    intermediate containers
+  * d2elk: prevent labels on multiple self-loops from overlapping
+    in right-directed layouts, including the ent2d2_right
+    regression case
+  * d2svg: render one-stop gradients with finite SVG offsets
+  * compiler: make suffix globs match only names with the requested
+    suffix
+  * compiler: reject non-finite opacity values with a source
+    diagnostic
+  * d2svg: preserve connection links on LaTeX, Markdown, and code
+    labels
+  * d2lib: preserve caller-supplied light and dark theme overrides
+    over source configuration
+  * compiler: index equivalent connections consistently when
+    endpoint notation is reversed
+  * exports: pptx follows standards more closely, addressing
+    warnings from some Powerpoint software #2645
+  * d2sequence: fix edge case of invalid sequence diagrams #2660
+  * d2svg: Text may overflow legend bounds when monospace font is
+    used #2674
+
+-------------------------------------------------------------------
+Fri Aug  7 05:35:35 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to Version 0.8.1:
+  * Upstream tag 0.8. was not released.
+
+-------------------------------------------------------------------
+Fri Aug  7 04:29:02 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to Version 0.8.0:
+  * Upstream tag 0.8.0 was not released.
+
+-------------------------------------------------------------------
 Tue Aug 19 11:42:04 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to Version 0.7.1:

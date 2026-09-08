@@ -1,7 +1,7 @@
 #
 # spec file for package d2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           d2
-Version:        0.7.1
+Version:        0.9.0
 Release:        0
 Summary:        CLI tool and modern declarative language that turns text to diagrams
 License:        Apache-2.0 AND MIT AND MPL-2.0 AND EPL-2.0 AND GPL-2.0-or-later AND BSD-3-Clause
@@ -25,7 +25,7 @@ Group:          Productivity/Text/Utilities
 URL:            https://github.com/terrastruct/d2
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.27
 
 %description
 A modern declarative diagramming language that turns text to diagrams. Create
