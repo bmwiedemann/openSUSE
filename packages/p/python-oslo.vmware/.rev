@@ -516,4 +516,13 @@
   * Update master for stable/2026.1</comment>
     <requestid>1369787</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>a946ac89e03d62f5ccbfe730e973e59d</srcmd5>
+    <version>4.10.1</version>
+    <time>1788879328</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.10.1:
+  * Ensure extra dependency for bandit to use toml</comment>
+    <requestid>1376141</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.vmware
-Version:        4.10.0
+Version:        4.10.1
 Release:        0
 Summary:        Oslo VMware library for OpenStack projects
 License:        Apache-2.0
