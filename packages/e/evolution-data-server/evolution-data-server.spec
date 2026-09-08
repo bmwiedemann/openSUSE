@@ -407,7 +407,7 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 %{_libdir}/evolution-data-server/
 %if "%{_libdir}" != "%{_libexecdir}"
 %{_libexecdir}/evolution-data-server/
-%exclude %{_libexecdir}/evolution-data-server/evolution-data-server/
+%exclude %{_libexecdir}/evolution-data-server/evolution-data-server/installed-tests/
 %endif
 %{_userunitdir}/evolution-addressbook-factory.service
 %{_userunitdir}/evolution-alarm-notify.service
@@ -503,7 +503,7 @@ sed -i 's/icu-i18n/icu-uc &/' CMakeLists.txt
 
 %files tests
 %{_libdir}/libetestserverutils.so*
-%{_libexecdir}/evolution-data-server/evolution-data-server/
+%{_libexecdir}/evolution-data-server/evolution-data-server/installed-tests/
 %dir %{_datadir}/installed-tests
 %dir %{_datadir}/installed-tests/evolution-data-server
 %{_datadir}/installed-tests/evolution-data-server/

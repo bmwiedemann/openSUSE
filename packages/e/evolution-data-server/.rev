@@ -2574,4 +2574,15 @@ New stable rel</comment>
 - Initial import of evolution-data-server.</comment>
     <requestid>1372142</requestid>
   </revision>
+  <revision rev="276" vrev="3">
+    <srcmd5>07909cb6a55bfa712bc963b4dffd62d9</srcmd5>
+    <version>3.60.2</version>
+    <time>1788879129</time>
+    <user>anag_factory</user>
+    <comment>- Move %{_libexecdir}/evolution-data-server/evolution-data-server
+  (without installed-tests) back to the main package (boo#1277935).
+
+- Initial import of evolution-data-server.</comment>
+    <requestid>1375907</requestid>
+  </revision>
 </revisionlist>
