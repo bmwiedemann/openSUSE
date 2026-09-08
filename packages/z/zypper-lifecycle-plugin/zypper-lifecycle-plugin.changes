@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Jun  4 14:23:16 UTC 2024 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable the %ruby_fix_shebang_path macro to ensure that we use the
+  versioned path to the ruby binary
+
+-------------------------------------------------------------------
 Tue Feb 20 12:12:25 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

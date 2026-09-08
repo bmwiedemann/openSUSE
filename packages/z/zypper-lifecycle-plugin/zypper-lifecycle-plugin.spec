@@ -48,6 +48,7 @@ Zypper subcommand for products and packages lifecycle information.
 %autosetup -p1 -n zypper-lifecycle-%{version}
 
 %build
+%ruby_fix_shebang_path zypper-lifecycle lifecycle-report
 
 %install
 mkdir -p %{buildroot}/usr/lib/zypper/commands %{buildroot}/%{_mandir}/man8
