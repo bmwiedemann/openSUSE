@@ -5080,4 +5080,69 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1373446</requestid>
   </revision>
+  <revision rev="312" vrev="1">
+    <srcmd5>6f6452db51918991c9d14fe40cb4d4d3</srcmd5>
+    <version>11.1.1</version>
+    <time>1788879149</time>
+    <user>anag_factory</user>
+    <comment>- Bugfixes (bsc#1277435, bsc#1263864):
+  * file-posix: Tolerate unaligned hole at middle (bsc#1277435)
+  * target/ppc/kvm: Use host compatibility mode for nested guests (bsc#1263864)
+  * target/ppc/kvm: Add support for querying host compatibility mode (bsc#1263864)
+  * linux-headers: Update to include KVM_CAP_PPC_COMPAT_CAPS (bsc#1263864)
+- Improve riscv64 handling:
+  * [openSUSE][RPM] build all firmware on riscv64 and fix user tests
+  * [openSUSE][RPM] spec: stub out all iotests when running under user
+    emulation (e.g., for riscv64)
+- Fix broken build on aarch64:
+  * [openSUSE][RPM] spec: disable GCS linker validation on aarch64
+- Update to latest stable release (11.1.1)
+  Full backport list here:
+     https://lore.kernel.org/qemu-devel/20260827155607.639070-1-mjt@tls.msk.ru/
+  A selection of them is reported here below:
+   target/riscv/tcg: sret in virtual user mode raises virtual instruction exception
+   target/riscv: Allow UXL to be 3 in mstatus on rv128
+   target/riscv: Restore register dump zero padding
+   tests/qtest: remove trace output from k230 watchdog test
+   target/riscv: enforce even register constraints for Zdinx fcvt pairs
+   target/riscv: reject FMV.X.W/FMV.W.X under Zfinx
+   target/riscv: honor zicbo* envcfg gating in linux-user mode
+   disas/riscv: Fix typo in th.lbib format
+   disas/riscv: Fix isa decoding of rev8
+   disas/riscv: Fix rv32 encoding of zext.h
+   target/riscv: allow menvcfg/henvcfg LPE and SSE bits on RV32
+   hw/riscv/riscv-iommu: preserve requested perm in spa_fetch()
+   hw/riscv/riscv-iommu: fix U-bit check to apply only to leaf S/VS-stage PTEs
+   disas/riscv: Decode unsigned vector immediates as unsigned
+   disas/riscv: Use signed type for vector immediates
+   disas/riscv: Fix 6-bit immediate extraction
+   disas/riscv: Fix th.srri decoding
+   tests/qtest: Add seed CSR zero extension test
+   target/riscv: Fix seed CSR sign extension
+   target/riscv: do not count ECALL in minstret
+   target/riscv: Fix memory leak in riscv_trigger_unrealize()
+   target/riscv: use SXL instead of MXL for read_sstatus
+   target/riscv: Fix PC sync in trans_sspopchk for CFI exception handling
+   whpx: i386: inject back db
+   whpx: i386: work around Hyper-V FP state oddities
+   whpx: i386: synchronise PAT too
+   whpx: i386: enable fast hypercall output
+   hw/i386: fw_cfg: do not set VMX feature control on WHPX
+   whpx: i386: fix xsaves enablement in legacy probing path
+   hw/watchdog: Add lower bound check for watchdogNumber
+   tests/tcg/aarch64: Add regression test for whilewr/whilerw
+   target/arm: Fix SVE2 WHILEWR/WHILERW zero diff boundary case
+   tcg: Export tcg_gen_ussub_i{32,64,tl}
+   hw/intc/arm_gicv3: Have GIC kconfig select GICv3 for HVF and WHPX
+   hw/intc: Fix arm kvm gicv3 selection
+   tcg: Defer tb_flush when initial thread region alloc fails
+   tcg: Return success from tcg_region_alloc
+   tcg: Return success from tcg_region_alloc__locked
+   target/loongarch: check FPE before reading fcc in bceqz/bcnez
+   meson: make linker warnings non-fatal on Linux
+   serial: clear transmit retry callback on unrealize
+   ...
+</comment>
+    <requestid>1376057</requestid>
+  </revision>
 </revisionlist>

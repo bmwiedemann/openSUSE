@@ -32,7 +32,7 @@
 # firmwares as we can (e.g., both x86 and PPC firmwares on aarch64) so they'll
 # be available in as many ports as possible (as noarch packages).
 
-%ifarch x86_64 aarch64
+%ifarch x86_64 aarch64 riscv64
 %define build_ppc_firmware 1
 # Currently, opensbi does not cross build cleanly on 15.3 and 15.4
 %if ! 0%{?sle_version}
@@ -46,9 +46,6 @@
 %define build_opensbi_firmware 1
 %endif
 # FIXME: Try to enable cross building of x86 firmwares here on PPC
-%endif
-%ifarch riscv64
-%define build_opensbi_firmware 1
 %endif
 
 %ifarch x86_64 ppc ppc64 ppc64le s390x aarch64 riscv64
@@ -91,7 +88,7 @@ URL:            https://www.qemu.org/
 Summary:        Machine emulator and virtualizer
 License:        BSD-2-Clause AND BSD-3-Clause AND GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          System/Emulators/PC
-Version:        11.1.0
+Version:        11.1.1
 Release:        0
 Source0:        qemu-%{version}.tar.xz
 Source1:        common.inc
@@ -582,6 +579,11 @@ export HOSTNAME=OBS # is used in roms/SLOF/Makefile.gen (boo#1084909)
 # Let's try to stick to _FORTIFY_SOURCE=2 for now
 EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g') -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2 -Wno-error"
 
+%ifarch aarch64
+# bypass GCS linker validation that fails on AArch64
+EXTRA_LDFLAGS="%{?__global_ldflags} -Wl,-z,gcs-report-dynamic=none"
+%endif
+
 %srcdir/configure \
 %if 0%{?suse_version} >= 1600
 	--python=%_bindir/python3 \
@@ -591,6 +593,7 @@ EXTRA_CFLAGS="$(echo %{optflags} | sed -E 's/-[A-Z]?_FORTIFY_SOURCE[=]?[0-9]*//g
 	--docdir=%_docdir \
 	--datadir=%_datadir \
 	--extra-cflags="${EXTRA_CFLAGS}" \
+	--extra-ldflags="${EXTRA_LDFLAGS}" \
 	--firmwarepath=%_datadir/%name \
 	--libdir=%_libdir \
 	--libexecdir=%_libexecdir \
@@ -963,6 +966,15 @@ cp %{rpmfilesdir}/APIC.core-count2 %{rpmfilesdir}/DSDT.core-count2 %{rpmfilesdir
 echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-seccomp.c
 # keyctl is not yet supported by linux-user emulation
 echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-crypto-secret.c
+# get_mempolicy & libnuma are not implemented by linux-user emulation
+echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-qdev-global-props.c
+echo 'int main (void) { return 0; }' > %{srcdir}/tests/unit/test-qga.c
+# Stub out all iotests under linux-user
+cat << 'EOF' > %{srcdir}/tests/qemu-iotests/check
+import sys
+print("1..0 # SKIP qemu-iotests unsupported under linux-user")
+sys.exit(0)
+EOF
 %endif
 
 # Quick sanity check, as it'll give easier to debug failures
@@ -1880,7 +1892,7 @@ wider support than qboot, but still focuses on quick boot up.
 %package seabios
 Summary:        x86 Legacy BIOS for QEMU
 Group:          System/Emulators/PC
-Version:        11.1.0%{sbver}
+Version:        11.1.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
@@ -1901,7 +1913,7 @@ is the default and legacy BIOS for QEMU.
 %package vgabios
 Summary:        VGA BIOSes for QEMU
 Group:          System/Emulators/PC
-Version:        11.1.0%{sbver}
+Version:        11.1.1%{sbver}
 Release:        0
 BuildArch:      noarch
 Conflicts:      %name < 1.6.0
