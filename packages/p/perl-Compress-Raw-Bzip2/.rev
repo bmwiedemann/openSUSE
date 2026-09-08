@@ -59,4 +59,29 @@
           d8b7ef4eb1507575598430c5e23e2cba95ca410e</comment>
     <requestid>1337663</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cbba0a847d4168671a9a67a40ad51068</srcmd5>
+    <version>2.224</version>
+    <time>1788879493</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.224
+   see /usr/share/doc/packages/perl-Compress-Raw-Bzip2/Changes
+    2.224 28 August 2026
+        * Remove call to UpDowngradein Makefile.PL
+          Fri Aug 28 11:23:19 2026 +0100
+          310cc13ee3160d1ac5ef1571e07dfbdc632ea1a4
+        * Update to version 2.224
+          Fri Aug 28 11:22:54 2026 +0100
+          5b3c59065e088ee4c2ba38b2b3f473d5fbdebd15
+        * remove 5.6-specific code and make 5.8 the min versionsupported
+          Wed Aug 26 16:07:08 2026 +0100
+          0f616e0dc15716f1b3eb3fdea36fd016f3548c96
+        * Bump actions/checkout from 6 to 7
+          Fri Jul 3 12:05:03 2026 +0100
+          9914e31461e7d275aef351c3bfbebba5802862e5
+        * Bump actions/github-script from 8 to 9
+          Mon May 4 18:08:41 2026 +0100
+          5cac74e680c50cf4d75eecbed479a987452c7ea0</comment>
+    <requestid>1376322</requestid>
+  </revision>
 </revisionlist>

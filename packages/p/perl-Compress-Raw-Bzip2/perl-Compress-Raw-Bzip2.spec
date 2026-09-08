@@ -18,7 +18,7 @@
 
 %define cpan_name Compress-Raw-Bzip2
 Name:           perl-Compress-Raw-Bzip2
-Version:        2.218
+Version:        2.224
 Release:        0
 #Upstream: Artistic-1.0 or GPL-1.0-or-later
 License:        (Artistic-1.0 OR GPL-1.0-or-later) AND BSD-3-Clause
