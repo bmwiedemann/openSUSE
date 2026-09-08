@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Sep  6 00:49:55 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 1.15.0
+  * set UV_PYTHON when running maturin develop with uv
+    gh#PyO3/maturin#3236
+  * Set UID and GID headers in pax
+    gh#PyO3/maturin#3241
+  * Replace unguarded panics with explicit errors on fallible input
+    gh#PyO3/maturin#3242
+  * Harden PEP 517 build-wheel and fix unreachable OIDC 404
+    fallback
+    gh#PyO3/maturin#3244
+  * docs: add pdfcrate and quebec to examples
+    gh#PyO3/maturin#3245
+  * Fix abi3t PyModExport entrypoint check
+    gh#PyO3/maturin#3246
+  * fix maturin build --pgo -i <version> with uv install
+    gh#PyO3/maturin#3237
+  * Don’t specify generate-import-lib for PyO3 0.29
+    gh#PyO3/maturin#3258
+  * refactor build so that pgo is part of normal pathway
+    gh#PyO3/maturin#3257
+  * fix: verify bindings detection with cargo tree in workspaces
+    gh#PyO3/maturin#3264
+  * fix: harden cargo tree verification of bindings detection
+    gh#PyO3/maturin#3266
+  * feat: support --pgo for maturin develop
+    gh#PyO3/maturin#3270
+  * feat: support MATURIN_PGO env var to activate --pgo
+    gh#PyO3/maturin#3271
+  * feat: type the bindings input with a single-source-of-truth
+    enum
+    gh#PyO3/maturin#3273
+  * Don't force export of the PyInit_{module_name} in UniFfi mode
+    gh#PyO3/maturin#3275
+  * fix(generate-stubs): write stubs into the module's package
+    directory
+    gh#PyO3/maturin#3282
+  * Fix group not cwd
+    gh#PyO3/maturin#3284
+  * docs: document missing [tool.maturin] config fields
+    gh#PyO3/maturin#3287
+  * docs: fix cross compiling heading level
+    gh#PyO3/maturin#3290
+
+-------------------------------------------------------------------
 Fri Jul  3 12:44:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.14.1
