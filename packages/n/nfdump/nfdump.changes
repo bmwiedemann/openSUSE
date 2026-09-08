@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep  7 16:22:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.10
+  * fixes a build-flag regression that silently broke a core feature
+    for anyone building with plain gcc -O3. clang is not affected.
+
+-------------------------------------------------------------------
+Sun Sep  6 16:33:53 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.9
+  Security fixes
+  * Fixed several use-after-free and DoS issues in IPFIX options
+    template handling (remote-triggerable in nfcapd).
+  * Fixed integer overflows / NULL-deref in NetFlow v9 option
+    template processing.
+  * Fixed stack/heap out-of-bounds reads in legacy v1 file headers
+    and malformed NBAR/VRF records.
+  * Fixed multiple integer overflows and OOB reads in the sFlow
+    decoder (MPLS/VLAN, extended gateway, L4, 802.11 MAC).
+  * Hardened MaxMind and Tor lookup parsers.
+  Bug fixes
+  * Fixed crash and a race condition with multiple dynamic flow
+    sources.
+  * Fixed nfanon single-output-file and IPv6 anonymization bugs.
+  * Fixed icmp handling when data is absent.
+  * Fixed a memory leak in sgregex.
+  Improvements
+  * Maxmind and Tor-DB loading up to 40% faster.
+  * New %gra geo-enriched router/exporter address tag and geo info
+    added to output_raw.
+  * Added missing srcasn/dstasn/ext aggregation.
+  * Added IPFIX nsec time elements 156/157 (VPP 17.07 compatible).
+
+-------------------------------------------------------------------
 Thu Apr 30 08:54:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.7.8

@@ -19,9 +19,9 @@
 %define nfcapddatadir   %{_localstatedir}/lib/nfcapd
 %define sfcapddatadir   %{_localstatedir}/lib/sfcapd
 %define nfhomedir       %{_var}/lib/%{name}
-%define sover           1_7_8
+%define sover           1_7_10
 Name:           nfdump
-Version:        1.7.8
+Version:        1.7.10
 Release:        0
 Summary:        CLI tools to collect and process netflow data
 License:        BSD-3-Clause
