@@ -1,7 +1,7 @@
 #
 # spec file for package cni
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,7 +22,7 @@
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni
 Name:           cni
-Version:        1.3.0
+Version:        1.3.1
 Release:        0
 Summary:        Container Network Interface - networking for Linux containers
 License:        Apache-2.0
@@ -34,8 +34,8 @@ Source2:        vendor.tar.gz
 BuildRequires:  golang-packaging
 BuildRequires:  shadow
 BuildRequires:  systemd-rpm-macros
-BuildRequires:  golang(API) >= 1.21
 BuildRequires:  zstd
+BuildRequires:  golang(API) >= 1.21
 Requires(post): %fillup_prereq
 Recommends:     cni-plugins
 %{?systemd_requires}

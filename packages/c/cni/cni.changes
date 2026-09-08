@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 07 04:57:18 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 1.3.1:
+  * pkg/invoke: add OpenTelemetry trace context propagation
+  * docs: Fix broken link to "Version considerations" in SPEC.md
+  * README: change meeting to 10:00 US/East.
+  * Update test expectations to tolerate error
+  * Tolerate invalid cni cache for DelNetwork
+  * spec: update number of specifically defined terms
+  * moving meeting to bi-weekly
+  * Fix golangci and ci lint error
+  * Add exec error when stderr is present
+  * Update my email
+  * refactor: cni-tool with cobra
+  * update MAINTAINERS
+  * Clarify some language around `DEL` and `prevResult`
+  * remove archived 3rd party plugins
+  * Add error codes for STATUS verb to `types.go` and `SPEC.md`
+
+-------------------------------------------------------------------
 Tue Apr 08 08:03:16 UTC 2025 - Dan Čermák <dcermak@suse.com>
 
 - Update to version 1.3.0:
