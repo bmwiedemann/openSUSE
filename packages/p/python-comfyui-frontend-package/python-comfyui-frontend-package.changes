@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.52.7:
+  * Moves to the 1.52 line, which is ahead of the version ComfyUI's
+    own requirements.txt names; read as static data, and upstream's
+    version check only warns when below the pin
+  * Node display names, widget labels, output names and tooltips now
+    resolved from the backend at read time -- extensions must key on
+    widget.name, not widget.label
+  * Client-side video metadata extraction via mediabunny; 3D camera
+    widget for CreateCameraInfo; RESOLUTION_PREVIEW readout widget
+  * Non-UUID workflow ids lazily migrated to a fresh UUID
+  * Static v-html sinks removed
+  * Ctrl/Cmd shortcuts no longer fall through to the browser; hidden
+    ARIA dialogs no longer block global shortcuts
+  * API key user authentication restored
+  * Comfy Cloud partner nodes branded on canvas and in the registry
+- Bundled DOMPurify 3.4.7 -> 3.4.13, which fixes:
+  * CVE-2026-65898: permanent ALLOWED_ATTR pollution via setConfig()
+  * CVE-2026-65899: Trusted Types policy survives clearConfig()
+  * CVE-2026-65900: SAFE_FOR_TEMPLATES bypass inside <template>
+  * GHSA-55q2-fjhq-7xh7: XSS, IN_PLACE hook removal leaves a
+    detached subtree executable
+  * GHSA-c2j3-45gr-mqc4: CUSTOM_ELEMENT_HANDLING bypasses
+    afterSanitizeElements
+
+-------------------------------------------------------------------
 Thu Aug 27 06:19:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.51.9:

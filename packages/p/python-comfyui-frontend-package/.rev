@@ -105,4 +105,18 @@ errors 0 warnings 0 badness (unchanged vs the 1.50.6 baseline);
 source_validator rc 0.</comment>
     <requestid>1373925</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>820e54ee6d7340d35ce754861e2a26f8</srcmd5>
+    <version>1.52.7</version>
+    <time>1788879263</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.52.7.
+
+Moves to the 1.52 maintenance line. Backend contract is unchanged: comfyui
+reads this package as a static data directory via importlib.resources, and
+upstream's own check_comfy_packages_versions() only warns when the installed
+version is below the pinned one. Factory's comfyui floor (&gt;= 1.50.6, the XSS
+security floor) is satisfied, so no comfyui change is needed.</comment>
+    <requestid>1376109</requestid>
+  </revision>
 </revisionlist>

@@ -16,12 +16,15 @@
 #
 
 Name:           python-comfyui-frontend-package
-Version:        1.51.9
+Version:        1.52.7
 Release:        0
 Summary:        Official ComfyUI frontend as a Python package
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
 # Comfy-Org/ComfyUI_frontend declares GPL-3.0-only in package.json
 License:        GPL-3.0-only
+# The static/ tree is a prebuilt browser bundle and vendors DOMPurify
+# (3.4.13 here, grep DOMPurify.version in static/assets). Check its
+# advisories on every bump -- they do not show up as ComfyUI_frontend CVEs.
 URL:            https://github.com/Comfy-Org/ComfyUI_frontend
 Source0:        https://files.pythonhosted.org/packages/source/c/comfyui_frontend_package/comfyui_frontend_package-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
