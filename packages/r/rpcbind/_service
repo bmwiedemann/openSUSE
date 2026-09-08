@@ -1,5 +1,5 @@
 <services>
-<service name="download_files" mode="localonly">
+<service name="download_files" mode="manual">
     <param name="enforceupstream">yes</param>
   </service>
 </services>

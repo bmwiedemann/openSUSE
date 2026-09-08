@@ -1,8 +1,7 @@
 #
 # spec file for package rpcbind
 #
-# Copyright (c) 2026 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +31,7 @@ URL:            http://rpcbind.sourceforge.net
 Source:         https://downloads.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source2:        sysconfig.rpcbind
 Source5:        rpc-user.conf
+Patch:          0001-rpcinfo-fix-stack-buffer-overflow-in-rpcbdump-short-.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig

@@ -1,0 +1,45 @@
+From ede9c54c0040d06d89683c2a8dd29b5a59a10264 Mon Sep 17 00:00:00 2001
+From: Thomas Blume <Thomas.Blume@suse.com>
+Date: Mon, 31 Aug 2026 12:09:24 +0000
+Subject: [PATCH] rpcinfo: fix stack buffer overflow in rpcbdump() short-mode
+ (CVE-2026-16461)
+
+---
+ src/rpcinfo.c | 17 +++++++++++++----
+ 1 file changed, 13 insertions(+), 4 deletions(-)
+
+diff --git a/src/rpcinfo.c b/src/rpcinfo.c
+index 30d535e..c63d8d0 100644
+--- a/src/rpcinfo.c
++++ b/src/rpcinfo.c
+@@ -959,14 +959,23 @@ rpcbdump (
+ 	{
+ 	  size_t netidmax = sizeof(buf) - 1;
+ 	  char *p = buf;
++	  size_t rem = sizeof(buf);
++	  int n;
+ 
++	  buf[0] = '\0';
+ 	  printf ("%10ld  ", rs->prog);
+ 	  for (vl = rs->vlist; vl; vl = vl->next)
+ 	    {
+-	      sprintf (p, "%d", vl->vers);
+-	      p = p + strlen (p);
+-	      if (vl->next)
+-		sprintf (p++, ",");
++	      n = snprintf(p, rem, "%d%s", vl->vers, vl->next ? "," : "");
++	      if (n < 0)
++		break;
++	      if ((size_t)n >= rem)
++		{
++		  p = buf + sizeof(buf) - 1;
++		  break;
++		}
++	      p += n;
++	      rem -= (size_t)n;
+ 	    }
+ 	  printf ("%-10s", buf);
+ 	  buf[0] = '\0';
+-- 
+2.55.0
+

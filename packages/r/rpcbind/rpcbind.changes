@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:00:00 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Fix stack-based buffer overflow in rpcinfo's rpcbdump()
+  short-mode version-list formatting (bsc#1272340, CVE-2026-16461)
+  * add 0001-rpcinfo-fix-stack-buffer-overflow-in-rpcbdump-short-.patch
+
+-------------------------------------------------------------------
 Mon Jun  1 06:25:27 UTC 2026 - Petr Vorel <pvorel@suse.cz>
 
 - Update to rpcbind 1.2.9
