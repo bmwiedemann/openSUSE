@@ -1,0 +1,47 @@
+--- a/mcp_redmine/server.py	2026-09-08 11:31:59.728737460 +0200
++++ b/mcp_redmine/server.py	2026-09-08 11:31:59.732737911 +0200
+@@ -2,8 +2,8 @@
+ from urllib.parse import urljoin
+ 
+ import httpx
+-from mcp.server.mcpserver import MCPServer, Image
+-from mcp.server.mcpserver.utilities.logging import get_logger
++from mcp.server.fastmcp import FastMCP, Image
++from mcp.server.fastmcp.utilities.logging import get_logger
+ 
+ ### Constants ###
+ 
+@@ -160,7 +160,7 @@
+ 
+ 
+ # Tools
+-mcp = MCPServer("Redmine MCP server", version=VERSION)
++mcp = FastMCP("Redmine MCP server")
+ get_logger(__name__).info(f"Starting MCP Redmine version {VERSION}")
+ 
+ @mcp.tool(description="""
+@@ -288,7 +288,7 @@
+ ATTACHMENT_IMAGE_MAX_BYTES = 5 * 1024 * 1024
+ 
+ @mcp.tool()
+-def redmine_attachment_image(attachment_id: int) -> Image | str:
++def redmine_attachment_image(attachment_id: int):
+     """
+     Fetch an image attachment (e.g. an inline screenshot like !screenshot.png!) and return it as viewable
+     image content. Use redmine_request on '/issues/{id}.json' with params {'include': 'attachments'} to find
+@@ -338,10 +338,11 @@
+     parser.add_argument("--port", type=int, default=8000, help="Port for HTTP transports (default: 8000)")
+     args = parser.parse_args()
+ 
+-    if args.transport == "stdio":
+-        mcp.run(transport="stdio")
+-    else:
+-        mcp.run(transport=args.transport, host=args.host, port=args.port)
++    if args.transport != "stdio":
++        # FastMCP 1.x takes host/port on the constructor/settings, not run()
++        mcp.settings.host = args.host
++        mcp.settings.port = args.port
++    mcp.run(transport=args.transport)
+ 
+ if __name__ == "__main__":
+     main()

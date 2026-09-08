@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.9.5.185311:
+  * Refuse model-controlled API paths that escape REDMINE_URL
+    so the API key is not sent to an arbitrary host
+  * Add streamable-http transport (stdio remains the default)
+    and keep legacy SSE for old clients
+  * REDMINE_READ_ONLY=1 refuses non-GET requests
+  * REDMINE_CA_BUNDLE for a private CA
+  * redmine_attachment_image tool returns image bytes
+  * Persistent httpx.Client with keepalive pooling
+  * Ship and run the pytest suite
+- Add mcp-redmine-fastmcp-1.x.patch: keep running on Factory
+  python-mcp 1.28 FastMCP (MCPServer is the 2.x SDK)
+
+-------------------------------------------------------------------
 Thu Aug 20 18:42:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.8.1.2543:
