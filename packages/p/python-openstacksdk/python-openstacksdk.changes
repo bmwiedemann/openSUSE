@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:17:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.20.0:
+  * Add a way to discard the authentication cached for a cloud
+  * Keep the unscoped credential of a federated plugin
+  * Fix EndpointGroupProject resource base path
+  * Temporarily restore doc/requirements.txt
+  * Add project_cleanup support for load_balancer and key_manager
+  * Pass segment_size in create_object
+  * Pass multipart-manifest as a query parameter when deleting
+    SLOs
+  * tests: Fix type issue with cloud layer tests
+  * typing: Add hints to cloud._network
+  * typing: Add hints to cloud._compute
+  * typing: Add hints to cloud._network_common
+  * typing: Add hints to cloud._identity
+  * typing: Add hints to cloud._block_storage
+  * typing: Add hints to cloud._object_store
+  * typing: Add hints to cloud._image
+  * typing: Add hints to cloud._coe
+  * typing: Add hints to cloud._dns
+  * typing: Add hints to cloud._orchestration
+  * typing: Add hints to cloud._shared_file_system
+  * typing: Add hints to cloud._baremetal
+  * typing: Add hints to cloud._accelerator
+  * typing: Add hints to cloud.openstackcloud
+  * typing: Add hints to cloud.meta
+  * typing: Add hints to cloud.cmd, cloud.inventory
+  * typing: Add hints to cloud._utils, exc
+  * mypy: Disable import-untyped, var-annotated rule for tests
+  * config: Migrate vendor schemas to JSON Schema Draft 2020-12
+  * Wait for power state in baremetal functional tests
+  * ruff: Configure internal rules as external linter
+  * resource: Avoid consuming attributes twice
+  * tests: Fix type issue with service tests (6/6)
+  * tests: Fix type issue with service tests (5/6)
+  * tests: Fix type issue with service tests (4/6)
+  * tests: Fix type issue with service tests (3/6)
+  * Deprecate get_server_meta() method
+  * tests: Fix type issue with service tests (2/6)
+  * tests: Fix type issue with service tests (1/6)
+  * config: Add schema for clouds.yaml files
+  * mypy: Enable checks on unit tests
+  * tests: Add some missing asserts, type hints
+  * tests: Use a module-level base class in resource action tests
+  * tests: Don't assign to methods
+  * tests: Improve network proxy tests
+  * typing: Address various typing issues
+  * load_balancer: Change cascade delete
+  * config: Expand schema.json
+  * config: Drop defaults
+  * config: Initial rework of schema
+  * config: Migrate schemas to JSON Schema Draft 2020-12
+  * compute: Fix server create attribute
+  * identity: Add federated attribute support to User
+  * Identity: Add support for endpoint group/endpoint and
+    endpoint group/project associations
+  * Identity: Add support for endpoint groups
+  * cloud: Remove another unnecessary use of _get_entity
+  * cloud: Remove unnecessary use of _get_entity
+  * cloud: Remove unnecessary/unused utils
+  * Migrate requirements to pyproject.toml
+  * Enable G, LOG ruff rules
+  * Simplify ruff configuration
+  * docs: Rework config guide
+  * docs: Use literals, not italics
+  * config: Add profiles helper
+  * Rework formatting section of HACKING.rst
+  * Add AGENTS.md and document functional test conventions
+  * Add functional tests and Zuul job for accelerator (Cyborg)
+  * [DNS] Increase the zones quota before creating a new one - v2
+  * Network: Add ip_availability_details field
+  * Omit keystone admin endpoint in heat job
+  * image: Add support for list cached nodes API
+  * baremetal: Add support for runbook traits and description
+  * Add extra param fields to get_xy networking methods
+  * Network: Add onboard_network_subnets
+  * [typing] Add proper type hints for role assignment functions
+  * block_storage: Add add/remove volumes fields to Group
+  * baremetal: Fix expected state for the adopt verb
+  * network: Add evpn_vni resource attribute to the Router
+    resource
+
+-------------------------------------------------------------------
 Thu Aug  6 20:50:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.18.0:
