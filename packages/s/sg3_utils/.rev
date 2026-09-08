@@ -742,4 +742,12 @@ Show aggregation and make compatible with Fedora declaration (forwarded request 
   * sg_inq: fix indentation in std_inq_decode sgj_pr_hr strings (match main)</comment>
     <requestid>1359746</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>509f1e0d63ed343db0e8b7a272cfa365</srcmd5>
+    <version>1.48+36.936c7ae</version>
+    <time>1788879093</time>
+    <user>anag_factory</user>
+    <comment>bsc#1277106</comment>
+    <requestid>1376229</requestid>
+  </revision>
 </revisionlist>
