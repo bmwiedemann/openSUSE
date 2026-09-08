@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Aug 28 12:55:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to version 6.1.0:
+  * Support custom arguments in queryset update methods (#3586)
+  * Bootstrap Django 6.1 (#3563)
+  * Don't crash on a many-to-many through model that can't be resolved (#3571)
+  * Detect every generic stub class in the generic consistency test (#3572)
+  * State `pyrefly`, `pyright`, and `ty` support (#3562)
+  * Expand override manager create test + move to `assert_type` (#3559)
+  * Move the queryset row-type assertions to assert_type (#3555)
+  * Move the ModelBase metaclass manager tests to assert_type (#3553)
+  * Allowlist DatabaseWrapper.ops on the concrete database backends (#3551)
+  * Permanently allowlist module-level proxy objects in stubtest (#3550)
+  * Allowlist module-level loop leak variables in expressions (#3549)
+  * Add assert_type coverage for manager and descriptor subclassing (#3545)
+  * Make the narrowed response type of `TemplateView` opt-in (#3543)
+  * Deduplicate the through-table manager additions into a loop (#3544)
+  * Allow all supported types in GeneratedField.choices. (#3541)
+  * Fix middleware callable composition typing (#3538)
+  * Add regression test for static/class queryset methods on from_queryset managers
+  * Fix ngettext/npgettext number parameter type mismatch (#3477)
+  * Change test Client headers parameter to Mapping[str, str] (#1534)
+  * Disallow any generics in our stubs & plugin (#3535)
+  * Add attributes set by application/middleware to `HttpRequest` (#2239)
+  * Make `View`, `TemplateView`, and `TemplateResponseMixin` generic on response type (#2874)
+  * Fix GIS as_sql stub signatures to match runtime (#3212)
+  * Use typeshed aliases where possible (#3533)
+  * Declare fields of `LogEntry`, `FlatPage` and `Redirect` as assignments (#3524)
+  * Type admin site as DefaultAdminSite inheriting from Adminsite (#3296)
+  * Add type arguments to generic `Field`'s (#3522)
+  * Add helper to generate synthetic manager/queryset classes (#3518)
+  * Detect form base classes with has_base instead of a metadata registry (#3520)
+  * Use mypy's lookup_fully_qualified instead of hand-rolled symbol lookup (#3519)
+  * Key test mypy cache dirs by settings content (#3516)
+  * Add type arguments to generic references in `utils` and `templates` (#3513)
+  * Mark fullnames constants as Final (#3515)
+  * Invalidate mypy cache when INSTALLED_APPS change and cache full config computation (#3514)
+  * Add type arguments to generic references in `admin` filters, `utils` and per-app admins (#3502)
+  * Add plugin support for `apps.get_model()` (#3511)
+  * Add type arguments to generic references in django.tasks (#3512)
+  * Improve type in `forms` and improve types of lazy regexes (#3293)
+  * Add type arguments to generic references in core, apps, urls and admindocs (#3503)
+  * Reuse `_AnyField` alias in django context (#3510)
+  * Allow callables returning Choices type for Field.choices. (#3506)
+  * Resolve dynamic manager methods via mypy's `find_member` (#3501)
+  * Implicit M2M through models lose their `objects` / `_default_manager` attributes (#3499)
+  * Update generic class testing instructions in CONTRIBUTING.md (#3498)
+
+-------------------------------------------------------------------
 Wed Jul 15 08:41:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to version 6.0.7:

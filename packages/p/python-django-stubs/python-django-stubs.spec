@@ -26,7 +26,7 @@
 %{?sle15_python_module_pythons}
 %define short_name django-stubs
 Name:           python-django-stubs%{psuffix}
-Version:        6.0.7
+Version:        6.1.0
 Release:        0
 Summary:        PEP-484 stubs for Django
 License:        MIT
@@ -84,6 +84,8 @@ cd ext; %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/%{short_name}
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/django_stubs_ext
 %python_expand %fdupes %{buildroot}%{$python_sitelib}/mypy_django_plugin
+# drop all the empty __init__.pyi files, unlike __init__.py they are not needed
+%python_expand find %{buildroot}%{$python_sitelib}/%{short_name} -type f -name "__init__.pyi" -empty -delete
 %endif
 
 %check
