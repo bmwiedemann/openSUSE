@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:43:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to git snapshot 1.0.16+git20260901.72a61251 (upstream
+  1.0.13 through 1.0.16):
+  * Security: native Write and Edit no longer bypass deny rules
+    through a repository symlink
+  * Security: the upstream installer scripts no longer interpolate
+    an unescaped GROK_CHANNEL value into ~/.grok/config.toml;
+    those scripts are not shipped in this package
+  * New managed policy engine for MCP servers, plugins and the
+    marketplace; selectable models can be pinned from a signed
+    requirements.toml
+  * MCP: support for 2026-07-28 elicitation via multi round-trip
+    requests, bind-time MCP servers, and a fix for the OAuth
+    deadlock in /mcps auth
+  * ACP: new session/set_config_option, and session/new is now
+    answered at spawn
+  * Reasoning effort is a setting instead of separate model
+    variants, and a model may map a different id per effort
+  * Faster startup: settings are fetched once per boot and served
+    cache-first, repository status and the auth refresh are
+    prefetched, and managed config moved off the critical path
+  * Hooks: client-registered PostToolUse hooks contribute feedback
+    and context; session-close hooks are bounded by a per-hook
+    budget
+  * Scheduled loops and live workflows are re-injected on
+    compaction, completed subagent sessions always shut down, and
+    loop task UUIDs keep their dashes
+  * grok inspect reports the bypass lock as advisory rather than
+    enforced, and policy leader reclaim no longer kills supervised
+    daemons
+  * Pager: new gated panel dock consolidating Subagents, Tasks,
+    Watchers and Queued above the prompt; per-turn usage is
+    persisted and exposed via grok usage; failed suppressed tool
+    calls are rendered instead of dropped
+  * 413 and drifted size-overflow errors are routed through the
+    compaction input ladder, and get-output waits are capped at
+    one hour
+- Switch to upstream-version-prefixed snapshot versioning
+  (1.0.16+git<date>.<hash>) instead of the bare 0+git<date>.<hash>
+  so the shipped upstream version is visible; the git date and
+  hash are kept because upstream publishes no tags or releases and
+  reuses version numbers across commits (1.0.10 appears at two
+  sync commits, 1.0.5 at three)
+
+-------------------------------------------------------------------
 Mon Aug 31 14:20:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to git snapshot 0+git20260828.bc7f02e (upstream 1.0.11 and

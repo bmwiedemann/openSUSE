@@ -1,10 +1,19 @@
 <services>
+  <!-- Snapshot versioning: upstream has no tags or releases, and its internal
+       version (crates/codegen/xai-grok-pager-bin/Cargo.toml) is NOT unique per
+       commit - 1.0.10 appears at two sync commits, 1.0.5 at three - so the git
+       date and hash must stay to keep Version: unique and monotonic.
+       On every bump update BOTH the revision below AND the version prefix in
+       versionformat (the only load-bearing one - a "version" param is ignored
+       whenever versionformat is set) to the upstream version at that revision.
+       Never LOWER the prefix: upstream's internal version is not guaranteed
+       monotonic across monorepo syncs, so if it ever regresses keep the
+       previous prefix, otherwise the package needs an Epoch. -->
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/xai-org/grok-build.git</param>
     <param name="scm">git</param>
-    <param name="revision">bc7f02eddd3d84085849dc19ed216f11c23b0571</param>
-    <param name="version">0</param>
-    <param name="versionformat">0+git%cd.%h</param>
+    <param name="revision">72a61251fcffb464bcc687aeb5a998e5a98ec0c9</param>
+    <param name="versionformat">1.0.16+git%cd.%h</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="tar" mode="manual"/>

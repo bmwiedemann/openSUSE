@@ -224,4 +224,39 @@ warnings. Smoke-tested in the build chroot (&quot;grok update&quot; reports
 patch is effective).</comment>
     <requestid>1374894</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>84c7f3b13f623afcc1d0d997d333a7ed</srcmd5>
+    <version>1.0.16+git20260901.72a61251</version>
+    <time>1788879468</time>
+    <user>anag_factory</user>
+    <comment>Update to git snapshot 1.0.16+git20260901.72a61251 (upstream 1.0.13 through 1.0.16).
+
+Version scheme change: the package now uses upstream-version-prefixed snapshot
+versioning (1.0.16+git&lt;date&gt;.&lt;hash&gt;) instead of the previous bare
+0+git&lt;date&gt;.&lt;hash&gt;, so the shipped upstream version is visible. The git date and
+hash are kept deliberately: upstream publishes no tags or releases, and its
+internal version is not unique per commit (1.0.10 appears at two sync commits,
+1.0.5 at three), so the bare version would not be a unique or reliably
+increasing Version:. 0 -&gt; 1 is an increase, so no Epoch is needed.
+
+Includes two upstream security fixes, neither of which has a CVE assigned
+(0 GitHub advisories for the repository):
+- native Write and Edit no longer bypass deny rules through a repository
+  symlink (xai-grok-sandbox, shipped code)
+- the upstream installer scripts no longer interpolate an unescaped
+  GROK_CHANNEL value into ~/.grok/config.toml; those scripts are not shipped
+  in this package, so this one does not affect the RPM
+
+Note this snapshot does NOT resolve boo#1271921 / CVE-2026-47128: upstream
+still pins the nono crate at exactly =0.53.0, so the hold documented there
+still applies.
+
+Built locally for openSUSE_Tumbleweed/aarch64: build green, rpmlint 0 errors
+and 0 badness (3 pre-existing warnings), source_validator clean. Both downstream
+patches still apply and were verified still effective against the new source.
+The Legal-Review-Notice crate counts in the spec were refreshed for the
+re-vendored tree (1018 in graph, 1256 vendored); no newly vendored crate
+introduces a licence outside the existing License: tag.</comment>
+    <requestid>1376231</requestid>
+  </revision>
 </revisionlist>
