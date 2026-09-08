@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:12:24 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 0.5.17:
+  * Highlights:
+    - This release fixes a significant regression introduced in
+      version 0.5.16.  Users are strongly encouraged to upgrade to
+      this release and avoid using 0.5.16.
+  * Fixes:
+    - Fixed factory-created device, node and link objects to stop
+      sharing ownership with their registry global, fixing a
+      regression from the WpClientContext introduced in 0.5.16 that
+      broke proper object destruction in the monitor scripts.
+    - Improved default-nodes to also rank on the object.serial of
+      a node's device and on the node's own object.serial, so that
+      route priorities are only compared between nodes of the same
+      card, and the election no longer changes for no apparent
+      reason when all other keys are equal.
+    - Fixed m-lua-scripting to include the offending Lua type name
+      in POD build errors
+
+- Update to version 0.5.16:
+  * Additions & Enhancements:
+    - Added WpClientContext, a second PipeWire connection running
+      on its own thread that hosts WirePlumber's in-process media
+      objects (loopback and filter-chain modules, LocalNode(),
+      SpaDevice()), so that slow Lua event hooks on the main thread
+      no longer stall their control path; the export core is retired
+      in favor of this new client context
+    - Added new WpDynamicRules class for matching rules with
+      conditions, and updated filter-graph.lua to use it, allowing
+      filter-graphs to be loaded and unloaded dynamically depending
+      on whether other objects exist or not
+    - Added wp_impl_module_unload() and LocalModule:unload(), giving
+      scripts control to unload implemented modules at any time
+    - Added a volume-set action to module-mpris to allow adjusting
+      the volume of a remote MPRIS2 player from Lua
+    - Added --yes flag to wpctl reset to skip the confirmation
+      prompt
+    - Added device.form-factor ALSA node property for use in ALSA
+      rules, and made HDMI node descriptions include the name of the
+      connected display when available
+    - Refactored the Bluetooth monitor to use event hooks for
+      handling devices and nodes, matching the design already used
+      by the v4l2 and libcamera monitors
+    - Overhauled the documentation: filled in every stub and missing
+      Lua API and C API page, added a getting started guide, new
+      wireplumber(1) and wpexec(1) man pages, and removed stale
+      pages describing features renamed or removed in the 0.4 to 0.5
+      transition
+  * Fixes:
+    - Fixed monitors to always activate all device and node
+      features, and made monitors wait for successful device
+      activation before storing the devices and nodes as a managed
+      objects
+    - Fixed find-preferred-profile to skip a configured preferred
+      profile that is not available, instead of leaving no profile
+      selected
+    - Fixed permission-manager to not include destroyed globals when
+      rebuilding the permissions array on objects-changed, fixing
+      some pipewire warnings in the log
+    - Fixed a memory leak in WpSpaDevice by only collecting params
+      from our own requests
+    - Fixed filter-graph to correctly apply graphs defined for the
+      same node across multiple configuration files
+    - Fixed several nil-related crashes and correctness issues in
+      Lua scripts
+    - Improved apply-access to directly attach an already-active
+      permission manager to the client instead of wastefully
+      re-running activation on it
+    - Improved state-stream change detection to avoid spurious state
+      writes from volume rounding and from unset or empty properties
+    - Fixed default-nodes to ignore smart filters when selecting the
+      best default node
+    - Removed the node.filter.forward-format setting and its script,
+      which only worked with 0.4 and never really worked with 0.5
+
+-------------------------------------------------------------------
 Fri Jun 19 07:13:41 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.15:

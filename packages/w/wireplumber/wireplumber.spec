@@ -22,7 +22,7 @@
 %define sover 0
 %define libwireplumber libwireplumber-%{apiver_str}-%{sover}
 Name:           wireplumber
-Version:        0.5.15
+Version:        0.5.17
 Release:        0
 Summary:        Session / policy manager implementation for PipeWire
 License:        MIT
@@ -267,7 +267,9 @@ fi
 %dir %{_datadir}/doc/wireplumber/examples
 %{_datadir}/doc/wireplumber/examples/wireplumber.conf.d
 %{_datadir}/wireplumber
+%{_mandir}/man1/wireplumber.1%{?ext_man}
 %{_mandir}/man1/wpctl.1%{?ext_man}
+%{_mandir}/man1/wpexec.1%{?ext_man}
 
 %files lang -f %{name}.lang
 
