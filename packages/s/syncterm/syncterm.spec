@@ -17,7 +17,7 @@
 
 
 Name:           syncterm
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        An ANSI-BBS terminal which supports telnet, rlogin, and SSH
 License:        GPL-2.0-only
@@ -25,7 +25,6 @@ Group:          Productivity/Networking/Other
 URL:            https://syncterm.net
 #Git-Clone:     https://gitlab.synchro.net/main/sbbs.git
 Source:         https://master.dl.sourceforge.net/project/syncterm/syncterm/%{name}-%{version}/%{name}-%{version}-src.tgz
-Patch0:         syncterm-1.8-cmake.patch
 BuildRequires:  cmake
 BuildRequires:  dos2unix
 BuildRequires:  hicolor-icon-theme

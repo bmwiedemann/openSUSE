@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep  7 22:21:32 UTC 2026 - Andy Alt <arch_stanton5995@proton.me>
+
+- Update to version 1.9
+  * Add LF Expand option to dialing directory
+  * Fix error when scrolling with a non-black background colour
+  * Fix Prestel double-height bottom-half redraw on overwrite
+  * Fix key repeat on Wayland
+  * Fix Wayland content size change
+  * Fix Quartz and Wayland mapping on non-PC charsets (ATASCII etc)
+  * Fix RTS/CTS handling on close() and in 3-Wire mode
+  * Fix some PBM/PPM parsing errors
+  * Fix several Sixel rendering and fragmented-input issues
+  * Fix pixel graphics redraw when images start partway through a
+    character cell
+  * Fix Prestel key mappings
+  * Fix saving the custom video mode column count
+  * Fix shifted navigation key and Alt+Delete handling
+  * Fix mouse motion reporting when no button is pressed
+  * Change audio backend try-order so PulseAudio is no longer tried
+    first
+  * Rework filepick widget
+  * Fix fullscreen aspect ratio on Wayland and Quartz
+  * Fix capture menu to indicate append not overwrite for ASCII and
+    Raw
+- Drop patch:
+  * syncterm-1.8-cmake.patch (1.9 installs the man page to
+    share/man/man1 as syncterm.1 upstream)
+
+-------------------------------------------------------------------
 Sun Apr 19 13:44:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8
