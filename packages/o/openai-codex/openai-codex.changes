@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:27:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.153.4:
+  * GPT-6-Astra is listed in the bundled model picker and is the
+    bundled default when no model is configured
+  * Astra's async-question guidance now applies only when
+    request_user_input_async is available in the session
+- Update to version 0.153.3:
+  * GPT-6-Astra is available in the Amazon Bedrock model picker
+    for Mantle and Runtime global/US routes
+  * Astra's async-question guidance now names
+    request_user_input_async and notes that it accepts text only
+- Keep vendor.tar.zst: 0.153.4 has the same Cargo.lock as 0.153.2,
+  so the linked crate set, the License tag and the
+  Legal-Review-Notice counts are unchanged
+
+-------------------------------------------------------------------
 Fri Sep  4 08:26:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.153.2:
