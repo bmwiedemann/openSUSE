@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:16:02 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.6.0:
+  * Add openstack-python3-next-jobs
+  * Remove Python 3.10 support
+  * Declare Python 3.13 support
+  * Drop options for old documentation build
+  * Drop direct import from the base client module
+  * Delay string interpolations at logging calls
+
+-------------------------------------------------------------------
 Thu Aug  6 20:01:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.5.0:

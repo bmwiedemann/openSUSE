@@ -318,4 +318,18 @@
   * Fix uuid ref support in ACL Manager</comment>
     <requestid>1370108</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1d16c43eca0428ddee83c1a89ee07fdf</srcmd5>
+    <version>7.6.0</version>
+    <time>1788879319</time>
+    <user>anag_factory</user>
+    <comment>- update to 7.6.0:
+  * Add openstack-python3-next-jobs
+  * Remove Python 3.10 support
+  * Declare Python 3.13 support
+  * Drop options for old documentation build
+  * Drop direct import from the base client module
+  * Delay string interpolations at logging calls</comment>
+    <requestid>1376095</requestid>
+  </revision>
 </revisionlist>
