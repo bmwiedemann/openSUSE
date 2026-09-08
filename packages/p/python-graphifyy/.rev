@@ -169,4 +169,27 @@ grammar packages are disabled for Factory's ports repo; pre-existing and
 untouched here.</comment>
     <requestid>1374798</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8040250696c1991b14c6e1eb4dfc7d8d</srcmd5>
+    <version>0.9.55</version>
+    <time>1788879253</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.55 (plus 0.9.54):
+- extraction fixes: module docstring behind a leading comment, Python ids
+  differing only by leading underscores, ghost nodes merged onto the real
+  file node, no type-use edges from node-less symbols
+- TS/JS: named re-export chains resolve to the original definition; a
+  runtime dynamic import() survives the type-argument normalizer
+- JSON config no longer turns every array value into an inheritance edge
+- watch/update: same-basename labels disambiguated in no-cluster mode
+- query scorer ranks a rationale-attribute match in its own tier
+- merge-graphs links a member call whose receiver type lives in another repo
+- definition_file stored relative to the scan root, so a graph is
+  byte-stable across machines
+
+Upstream adds tomli as a runtime dep only for Python &lt; 3.11; our lowest
+target has tomllib in the stdlib, so no new dependency. Built natively on
+aarch64: 4406 tests pass per flavour (python313/python314), rpmlint clean.</comment>
+    <requestid>1376102</requestid>
+  </revision>
 </revisionlist>

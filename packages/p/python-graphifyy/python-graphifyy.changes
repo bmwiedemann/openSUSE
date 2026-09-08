@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:21:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.55:
+  * extraction fixes: module docstring behind a leading comment,
+    Python ids differing only by leading underscores, ghost nodes
+    merged onto the real file node, no type-use edges from
+    node-less symbols
+  * TS/JS: named re-export chains resolve to the original
+    definition; a runtime dynamic import() survives the type-
+    argument normalizer
+  * cross-file entity nodes typed only by their file extension now
+    merge like concept nodes
+  * JSON config no longer turns every array value into an
+    inheritance edge
+  * watch/update: same-basename labels disambiguated in no-cluster
+    mode; a code-only rebuild keeps the pending semantic flag
+  * claude-cli backend tolerates a diagnostic line printed before
+    the JSON envelope
+- Changes from 0.9.54:
+  * query scorer ranks a match on a node's rationale attribute in
+    its own tier
+  * merge-graphs links a member call whose receiver type lives in
+    another repo
+  * a Python type reference to a name imported from another module
+    resolves to that module's definition
+  * definition_file stored relative to the scan root, so a graph is
+    byte-stable across machines
+  * god_nodes honours exclude_hubs_percentile
+  * install/canvas export write atomically
+  * tomli is declared for Python < 3.11; we build on 3.11+ where
+    tomllib is stdlib, so no new dependency
+  * ... see upstream's release notes for the full list
+
+-------------------------------------------------------------------
 Mon Aug 31 06:50:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.53:
