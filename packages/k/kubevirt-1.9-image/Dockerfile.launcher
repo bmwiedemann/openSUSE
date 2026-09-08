@@ -75,11 +75,24 @@ RUN set -euo pipefail; rm -f /var/run && ln -s ../run /var/run && \
     install -m 0644 /usr/share/kube-virt-1.9/virt-launcher/qemu.conf /etc/libvirt/qemu.conf && \
     chmod 0755 /etc/libvirt && \
     setcap 'cap_net_bind_service=+ep' /usr/bin/virt-launcher-monitor
-RUN set -euo pipefail; install -d -m 0755 /usr/share/edk2/ovmf && \
-    ln -s /usr/share/qemu/ovmf-x86_64-4m-code.bin     /usr/share/edk2/ovmf/OVMF_CODE.fd && \
-    ln -s /usr/share/qemu/ovmf-x86_64-4m-vars.bin     /usr/share/edk2/ovmf/OVMF_VARS.fd && \
-    ln -s /usr/share/qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/edk2/ovmf/OVMF_CODE.secboot.fd && \
-    ln -s /usr/share/qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/edk2/ovmf/OVMF_VARS.secboot.fd && \
-    ln -s /usr/share/qemu/ovmf-x86_64-sev.bin         /usr/share/edk2/ovmf/OVMF_CODE.cc.fd && \
-    ln -s edk2/ovmf /usr/share/OVMF
+# virt-launcher probes the firmware under the paths KubeVirt
+# hardcodes per architecture, see:
+# https://github.com/kubevirt/kubevirt/blob/v1.8.0/pkg/virt-config/virt-config.go
+# - DefaultARCHOVMFPath    -> "/usr/share/OVMF" -> /usr/share/edk2/ovmf (Fedora's edk2-ovmf layout)
+# - DefaultAARCH64OVMFPath -> "/usr/share/AAVMF"
+# link them to the SUSE qemu firmware.
+RUN set -euo pipefail; case "$(uname -m)" in \
+    x86_64) \
+        install -d -m 0755 /usr/share/edk2/ovmf && \
+        ln -s /usr/share/qemu/ovmf-x86_64-4m-code.bin     /usr/share/edk2/ovmf/OVMF_CODE.fd && \
+        ln -s /usr/share/qemu/ovmf-x86_64-4m-vars.bin     /usr/share/edk2/ovmf/OVMF_VARS.fd && \
+        ln -s /usr/share/qemu/ovmf-x86_64-smm-ms-code.bin /usr/share/edk2/ovmf/OVMF_CODE.secboot.fd && \
+        ln -s /usr/share/qemu/ovmf-x86_64-smm-ms-vars.bin /usr/share/edk2/ovmf/OVMF_VARS.secboot.fd && \
+        ln -s /usr/share/qemu/ovmf-x86_64-sev.bin         /usr/share/edk2/ovmf/OVMF_CODE.cc.fd && \
+        ln -s edk2/ovmf /usr/share/OVMF ;; \
+    aarch64) \
+        install -d -m 0755 /usr/share/AAVMF && \
+        ln -s /usr/share/qemu/aavmf-aarch64-code.bin /usr/share/AAVMF/AAVMF_CODE.fd && \
+        ln -s /usr/share/qemu/aavmf-aarch64-vars.bin /usr/share/AAVMF/AAVMF_VARS.fd ;; \
+    esac
 ENV MALLOC_ARENA_MAX=1
