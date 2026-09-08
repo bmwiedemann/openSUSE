@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.utils
-Version:        10.1.1
+Version:        10.2.0
 Release:        0
 Summary:        OpenStack Utils Library
 License:        Apache-2.0

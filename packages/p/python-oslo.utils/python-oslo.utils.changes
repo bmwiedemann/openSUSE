@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 07:14:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 10.2.0:
+  * Replace deprecated datetime.utcfromtimestamp
+  * bindep: Remove stale marker
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove unnecessary variable
+  * Drop Python 3.10
+
+-------------------------------------------------------------------
 Sun Jun 14 21:21:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 10.1.1:

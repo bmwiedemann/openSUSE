@@ -725,4 +725,19 @@
 - add 0001-Refactor-TimeFixture-to-use-unittest.mock.patch</comment>
     <requestid>1359619</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>af42d15dac2c4cec48c9cfe8242169a9</srcmd5>
+    <version>10.2.0</version>
+    <time>1788879317</time>
+    <user>anag_factory</user>
+    <comment>- update to 10.2.0:
+  * Replace deprecated datetime.utcfromtimestamp
+  * bindep: Remove stale marker
+  * zuul: Use openstack-python3-next-jobs template
+  * pre-commit: Bump versions
+  * Do not install code to build release notes
+  * Remove unnecessary variable
+  * Drop Python 3.10</comment>
+    <requestid>1376093</requestid>
+  </revision>
 </revisionlist>
