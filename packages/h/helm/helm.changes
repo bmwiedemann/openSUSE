@@ -1,15 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to fix
+  * bsc#1278270, CVE-2026-84303
+  * bsc#1278273, CVE-2026-84304
+  * bsc#1278688, CVE-2026-84445
+
+-------------------------------------------------------------------
+Tue Sep  1 19:58:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to fix
+  * bsc#1277949, CVE-2026-37236
+
+-------------------------------------------------------------------
 Fri Aug 21 22:06:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to fix
   * bsc#1275025, CVE-2026-56864
   * bsc#1275024, CVE-2026-56865
-  * bsc#1271462, CVE-2026-50163
+  * bsc#1276327, CVE-2026-50163
 
 -------------------------------------------------------------------
 Fri Aug 14 05:28:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
-- update to 4.2.4 (bsc#1276510, CVE-2026-41178):
+- update to 4.2.4 (bsc#1276510, CVE-2026-41178,
+      bsc#1276514):
   * fix: Improve error reporting for helm template --debug with
     --show-only- #31185
   * fix: fetch logs from all containers in test pods- #32099

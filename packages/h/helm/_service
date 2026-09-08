@@ -20,5 +20,7 @@
     <param name="replace">golang.org/x/net=golang.org/x/net@v0.57.0</param>
     <param name="replace">golang.org/x/mod=golang.org/x/mod@v0.40.0</param>
     <param name="replace">oras.land/oras-go/v2=oras.land/oras-go/v2@v2.6.2</param>
+    <param name="replace">github.com/grpc-ecosystem/grpc-gateway/v2=github.com/grpc-ecosystem/grpc-gateway/v2@v2.29.0</param>
+    <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
   </service>
 </services>

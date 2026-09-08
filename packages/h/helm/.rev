@@ -1303,4 +1303,18 @@ See changelog in:
     <comment>- update to 4.2.4 (bsc#1276510, CVE-2026-41178):</comment>
     <requestid>1375194</requestid>
   </revision>
+  <revision rev="114" vrev="3">
+    <srcmd5>3a625b3af40b83b6fb4b61e7e14b9347</srcmd5>
+    <version>4.2.4</version>
+    <time>1788879193</time>
+    <user>anag_factory</user>
+    <comment>THE BUG CHANGE
+
+-  * bsc#1271462, CVE-2026-50163
++  * bsc#1276327, CVE-2026-50163
+
+is intentional and requested by the SUSE product security team. This
+changes the CVE reference from the (what was previously the helm bug and is now the trackerbug) to the helm specific bug.</comment>
+    <requestid>1376244</requestid>
+  </revision>
 </revisionlist>
