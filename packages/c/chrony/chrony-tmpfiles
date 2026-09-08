@@ -1,1 +1,5 @@
 d /run/chrony 0750 chrony chrony
+
+d     /var/lib/chrony 0750 chrony chrony -   -
+d     /var/log/chrony 0750 chrony chrony -   -
+
