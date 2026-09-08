@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.333:
+  * Manifest gains the Anthropic Claude Fable 5.1, Meta Muse Image
+    (t2i and edit), MiniMax H3 Max Turbo (i2v and t2v), Recraft V4
+    style-reference and MiniMax H3 multiframe-reference templates
+  * Meta provider logo added
+
+-------------------------------------------------------------------
 Thu Sep  3 08:55:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.331:

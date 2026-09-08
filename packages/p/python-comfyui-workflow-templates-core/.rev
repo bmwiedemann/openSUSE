@@ -129,4 +129,17 @@ python-comfyui-workflow-templates 0.11.54, whose floor is
 -core &gt;= 0.3.331.</comment>
     <requestid>1375577</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9c6e0d77ce0e0efbb800c84c43ad4211</srcmd5>
+    <version>0.3.333</version>
+    <time>1788879255</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.333.
+
+Manifest gains the Anthropic Claude Fable 5.1, Meta Muse Image (t2i and edit),
+MiniMax H3 Max Turbo (i2v and t2v), Recraft V4 style-reference and MiniMax H3
+multiframe-reference templates, plus the Meta provider logo. Manifest-only
+change; no code.</comment>
+    <requestid>1376105</requestid>
+  </revision>
 </revisionlist>
