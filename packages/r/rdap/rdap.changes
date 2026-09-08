@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep  4 11:42:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.10.2
+  * fix: use cached bootstrap registry files instead of downloading
+
+-------------------------------------------------------------------
 Fri Jul 17 13:38:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.10.1

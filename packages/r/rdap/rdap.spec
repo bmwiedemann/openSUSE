@@ -19,7 +19,7 @@
 %global provider_prefix github.com/openrdap/rdap
 %global import_path     %{provider_prefix}
 Name:           rdap
-Version:        0.10.1
+Version:        0.10.2
 Release:        0
 Summary:        RDAP command line client
 License:        MIT
