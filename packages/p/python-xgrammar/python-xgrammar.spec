@@ -17,13 +17,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xgrammar
-Version:        0.2.5
+Version:        0.2.5.post1
 Release:        0
 Summary:        Efficient, Flexible and Portable Structured Generation
 License:        Apache-2.0
 URL:            https://xgrammar.mlc.ai/
-# Upstream stopped publishing an sdist on PyPI; the tarball is generated from
-# the git tag via _service because the C++ build needs the 3rdparty submodules.
+# Upstream's PyPI sdist is unreliable (absent for 0.2.4 and 0.2.5), so the
+# tarball is generated from the git tag via _service, with the 3rdparty
+# submodules the C++ build needs.
 # https://github.com/mlc-ai/xgrammar
 Source:         xgrammar-%{version}.tar.gz
 BuildRequires:  %{python_module apache-tvm-ffi >= 0.1.9}
@@ -81,41 +82,7 @@ export SKBUILD_WHEEL_EXCLUDE='**.a;**.h'
 # is not runnable in the build root. Importing xgrammar loads the compiled
 # tvm_ffi binding first (exercising that the C++ extension builds, loads and
 # links against apache-tvm-ffi correctly) before importing the public API.
-#
-# TEMPORARY: Factory ships python-transformers 5.14.1 (which caps
-# tokenizers<=0.23.0) alongside python-tokenizers 0.23.1, so `import
-# transformers` -- reached via xgrammar's tokenizer_info -- raises ImportError
-# distro-wide. That import happens *after* the native binding is loaded, so we
-# tolerate only that specific ImportError and still assert the C++ extension
-# loaded. Drop this guard once the transformers/tokenizers skew is fixed in
-# Factory.
-cat > smoketest.py <<'PYEOF'
-import sys
-
-try:
-    import xgrammar
-    from xgrammar import Grammar, GrammarCompiler, CompiledGrammar
-
-    assert Grammar is not None
-    assert GrammarCompiler is not None
-    assert CompiledGrammar is not None
-    print("xgrammar smoke test: full import OK")
-except ImportError as exc:
-    if "tokenizers" not in str(exc) and "transformers" not in str(exc):
-        raise
-    # xgrammar/__init__ imports load_binding (native xgrammar_bindings) before
-    # the transformers-dependent tokenizer_info, so the compiled extension is
-    # already loaded even though the top-level import aborted.
-    lb = sys.modules.get("xgrammar.load_binding")
-    assert lb is not None and getattr(lb, "LIB", None) is not None, (
-        "native xgrammar_bindings failed to load"
-    )
-    print(
-        "xgrammar native C++ binding loaded OK; transformers-dependent import "
-        "skipped due to Factory transformers<=0.23.0 / tokenizers 0.23.1 skew"
-    )
-PYEOF
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -B smoketest.py
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -B -c "import xgrammar; from xgrammar import Grammar, GrammarCompiler, CompiledGrammar"
 
 %files %{python_files}
 %license LICENSE NOTICE

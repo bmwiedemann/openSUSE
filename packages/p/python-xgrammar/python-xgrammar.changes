@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:44:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.5.post1:
+  * Release-plumbing only: upstream re-tagged to finish a partial
+    PyPI upload, no change to the shipped code
+- Drop the transformers/tokenizers ImportError guard from %check:
+  Factory transformers 5.16.1 requires tokenizers >= 0.23.1 and
+  Factory ships 0.23.1, so the full import works again
+
+-------------------------------------------------------------------
 Tue Aug 18 10:40:32 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Exclude the static libxgrammar.a and headers from the wheel

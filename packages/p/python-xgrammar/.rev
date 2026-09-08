@@ -32,4 +32,26 @@ pyproject.toml plus a GitHub Actions change, so it is a no-op for this package,
 which builds from the git tag.</comment>
     <requestid>1375572</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>fab1982956264acbe8fe6146ee9b7adc</srcmd5>
+    <version>0.2.5.post1</version>
+    <time>1788879254</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.5.post1
+
+Upstream re-tagged 0.2.5 to finish a partial PyPI upload: the range
+v0.2.5..v0.2.5.post1 is two commits touching only the release workflow
+and the version string, so the shipped code is unchanged.
+
+Also drops the TEMPORARY transformers/tokenizers ImportError guard from
+%check. Its stated drop condition is met: Factory python-transformers is
+5.16.1, which requires python-tokenizers &gt;= 0.23.1 &lt; 0.24.0, and Factory
+ships 0.23.1. The replacement is a plain import assertion, i.e. stricter
+than the guard it replaces.
+
+Built locally on aarch64 against openSUSE_Tumbleweed: green, %check runs
+for python313 and python314, rpmlint 0 errors/0 warnings/0 badness.
+source_validator clean.</comment>
+    <requestid>1376104</requestid>
+  </revision>
 </revisionlist>
