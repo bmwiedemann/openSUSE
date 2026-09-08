@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 01 01:07:43 UTC 2026 - Holden Fried <holden@opensuse.org>
+
+- Update to version 1.10.2:
+  * *** 1.10.2 Release ***
+  * manpages: update version, date
+  * VERSION/changelog: 1.10.2
+  * bat.d/asus: update unit-tests for "no data"
+  * bat.d/asus: tlp-stat -b: display the kernel's -ENODATA as “no data”
+  * bat.d/asus: explain solution to issue #890
+  * bat.d/asus: fix charge threshold for kernel 7.1
+  * Restrict USB charger detection to PD/PPS
+  * tlp-stat -b: base mA(h) -> mW(h) conversion on voltage_min_design
+  * tlp-stat -b: label calculated mW(h) ratings as approximations
+  * Ignore laptop_mode with kernel >= 7.0
+  * Log non-existent vm.laptop_mode
+  * fix: skip vm.laptop_mode on kernels that removed the sysctl
+
+-------------------------------------------------------------------
 Mon May 18 12:58:09 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to version 1.10.1:
