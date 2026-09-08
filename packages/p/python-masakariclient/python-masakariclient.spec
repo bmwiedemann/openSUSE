@@ -18,7 +18,7 @@
 
 %global pythons %{primary_python}
 Name:           python-masakariclient
-Version:        8.8.0
+Version:        8.9.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Masakari
 License:        Apache-2.0
