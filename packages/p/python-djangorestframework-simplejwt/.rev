@@ -105,4 +105,13 @@
 - Add missing Requires on Django.</comment>
     <requestid>1355001</requestid>
   </revision>
+  <revision rev="11" vrev="3">
+    <srcmd5>5695574cbb267c3c0a8860f9637674e2</srcmd5>
+    <version>5.5.1</version>
+    <time>1788879467</time>
+    <user>anag_factory</user>
+    <comment>- Add patch drop-python-jose.patch to drop dependency on optional python-jose in tests
+</comment>
+    <requestid>1376336</requestid>
+  </revision>
 </revisionlist>

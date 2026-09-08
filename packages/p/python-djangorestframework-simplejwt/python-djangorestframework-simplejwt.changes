@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:29:14 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Add patch drop-python-jose.patch to drop dependency on optional python-jose in tests
+
+-------------------------------------------------------------------
 Mon May 25 03:44:02 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-curve-matching-keys.patch:
