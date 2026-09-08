@@ -17,32 +17,32 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-geopy
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
-License:        MIT
 Summary:        Python Geocoding Toolbox
-Url:            https://github.com/geopy/geopy
-Group:          Development/Languages/Python
+License:        MIT
+URL:            https://github.com/geopy/geopy
 Source:         https://github.com/geopy/geopy/archive/%{version}.tar.gz#/geopy-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
-# SECTION test requirements
-BuildRequires:  %{python_module async_generator}
-BuildRequires:  %{python_module docutils}
-BuildRequires:  %{python_module geographiclib >= 1.52}
-BuildRequires:  %{python_module geographiclib < 3}
-BuildRequires:  %{python_module pytest >= 3.10}
-BuildRequires:  %{python_module pytz}
-BuildRequires:  %{python_module xml}
-# /SECTION
 BuildRequires:  fdupes
-Requires:       python-geographiclib >= 1.52
+BuildRequires:  python-rpm-macros
 Requires:       python-geographiclib < 3
+Requires:       python-geographiclib >= 1.52
 Recommends:     python-pytz
 Recommends:     python-xml
 BuildArch:      noarch
+# SECTION test requirements
+BuildRequires:  %{python_module docutils}
+BuildRequires:  %{python_module geographiclib < 3}
+BuildRequires:  %{python_module geographiclib >= 1.52}
+BuildRequires:  %{python_module packaging}
+BuildRequires:  %{python_module pytest >= 3.10}
+BuildRequires:  %{python_module pytest-asyncio >= 0.17}
+BuildRequires:  %{python_module pytz}
+BuildRequires:  %{python_module xml}
+# /SECTION
 %python_subpackages
 
 %description
@@ -57,20 +57,6 @@ extension), and Semantic MediaWiki pages.
 %prep
 %autosetup -n geopy-%{version}
 
-# Online services are not available
-rm \
-  test/geocoders/arcgis.py \
-  test/geocoders/banfrance.py \
-  test/geocoders/databc.py \
-  test/geocoders/geonames.py \
-  test/geocoders/googlev3.py \
-  test/geocoders/ignfrance.py \
-  test/geocoders/nominatim.py \
-  test/geocoders/openmapquest.py \
-  test/geocoders/photon.py \
-  test/geocoders/pickpoint.py \
-  test/geocoders/yandex.py
-
 %build
 export LANG=en_US.UTF-8
 %pyproject_wheel
@@ -82,10 +68,11 @@ export LANG=en_US.UTF-8
 
 %check
 export LANG=en_US.UTF-8
-%pyunittest discover -v
+# upstream's downstream-facing opt-out: skips every test hitting a live geocoder
+%pytest --skip-tests-requiring-internet
 
 %files %{python_files}
-%doc AUTHORS README.rst docs/changelog_09x.rst docs/changelog_1xx.rst
+%doc AUTHORS README.rst docs/changelog_09x.rst docs/changelog_1xx.rst docs/changelog_2xx.rst
 %license LICENSE
 %{python_sitelib}/geopy
 %{python_sitelib}/geopy-%{version}.dist-info

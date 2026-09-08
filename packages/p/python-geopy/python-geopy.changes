@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:42:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5.0:
+  * Security: ReDoS (CWE-1333) in Point.from_string() -
+    CVE-2026-77387, GHSA-mhvh-fq92-pfmr. Strings over 256 chars are
+    now rejected outright, so previously valid input with a long
+    irrelevant prefix starts raising ValueError; reachable through
+    any geocoder reverse() call taking a string
+  * Geocodio: stop raising GeocoderQueryError on empty results
+  * GoogleV3: drop deprecated utcnow() use
+  * Drop Python 3.7, declare 3.13/3.14/3.15 support
+  * Build metadata moved setup.py -> setup.cfg, download_url gone;
+    tests use packaging instead of distutils
+  * Remove Python 2 relics, geopy/compat.py is gone
+- Run %pytest --skip-tests-requiring-internet (upstream's own opt-out)
+  instead of %pyunittest over hand-deleted test files: 488 tests now
+  run offline where unittest discovery collected 181
+- Add python-pytest-asyncio (pytest.ini sets asyncio_mode=auto) and
+  python-packaging (upstream swapped distutils for it) to the test
+  BuildRequires; drop python-async_generator, unused since 2.4.x
+- Package docs/changelog_2xx.rst
+- Cleanup with spec-cleaner
+
+-------------------------------------------------------------------
 Thu Jan 29 18:53:28 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to version 2.4.1:
