@@ -848,4 +848,18 @@
     <comment>Update to 0.410</comment>
     <requestid>1368939</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>8a51a2f772ecd9c3e1bde00e67df55d6</srcmd5>
+    <version>0.411</version>
+    <time>1788879177</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.411
+
+- Update pci and vendor ids
+
+Upstream v0.410..v0.411 is a single data-refresh commit (pci.ids,
+oui.txt, pnp.ids). No build-system or packaging changes; installed file
+set is unchanged. Built locally on aarch64 (openSUSE_Factory_ARM).</comment>
+    <requestid>1376071</requestid>
+  </revision>
 </revisionlist>
