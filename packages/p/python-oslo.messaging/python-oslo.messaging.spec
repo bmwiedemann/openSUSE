@@ -17,7 +17,7 @@
 
 
 Name:           python-oslo.messaging
-Version:        18.2.0
+Version:        18.3.0
 Release:        0
 Summary:        OpenStack oslo.messaging library
 License:        Apache-2.0
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module oslo.serialization >= 2.18.0}
 BuildRequires:  %{python_module oslo.service >= 1.24.0}
 BuildRequires:  %{python_module oslo.utils >= 3.37.0}
 BuildRequires:  %{python_module oslotest >= 3.2.0}
-BuildRequires:  %{python_module pbr >= 2.0.0}
+BuildRequires:  %{python_module pbr >= 6.1.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module stestr >= 2.0.0}
 BuildRequires:  %{python_module stevedore >= 1.20.0}

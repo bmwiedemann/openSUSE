@@ -764,4 +764,13 @@
   * Bump kombu</comment>
     <requestid>1365418</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>850e35d26a99f94e6aef02422cb81836</srcmd5>
+    <version>18.3.0</version>
+    <time>1788879341</time>
+    <user>anag_factory</user>
+    <comment>- update to 18.3.0:
+  * Add OpenTelemetry tracing support for RPC calls</comment>
+    <requestid>1376243</requestid>
+  </revision>
 </revisionlist>

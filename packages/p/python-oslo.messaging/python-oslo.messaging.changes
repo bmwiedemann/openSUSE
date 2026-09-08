@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:52:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.3.0:
+  * Add OpenTelemetry tracing support for RPC calls
+
+-------------------------------------------------------------------
 Mon Jul 13 16:27:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 18.2.0:
