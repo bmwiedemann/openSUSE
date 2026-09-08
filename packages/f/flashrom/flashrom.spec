@@ -17,7 +17,7 @@
 
 
 Name:           flashrom
-Version:        1.7.0+git0.26b070db
+Version:        1.8.0+git0.90b6b437
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only

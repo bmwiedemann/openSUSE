@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  2 09:30:34 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.8.0+git0.90b6b437:
+  * https://www.flashrom.org/release_notes/v_1_8.html
+
+-------------------------------------------------------------------
 Wed Mar 11 19:00:23 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Simplify version rewrite to correctly strip leading v, avoiding "downgrade"
