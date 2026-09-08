@@ -547,4 +547,41 @@
   so require it on arm64.</comment>
     <requestid>1369523</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d082241415ed4777d75389f619e8c37a</srcmd5>
+    <version>0.4.0</version>
+    <time>1788879499</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.0
+  * Initial Qwen3.8-Flash-Next and NVIDIA Nemotron-3-Puzzle support.
+  * Add on-demand tensor reading, per-slot server context limits, and
+    video input options.
+  * GGML updated to 0.23.0 with sparse flash attention, asynchronous
+    backend APIs, and Apple RDMA transport.
+  * Improve CUDA, Vulkan, Metal, SYCL, OpenCL, and other accelerator
+    backends.
+  * Include the matching b10809 Web UI asset.
+- Package switched to semantic versioning
+
+- Add fix-negative-top-n.patch for CVE-2026-52132 (bsc#1278079):
+  reject negative top_n values in the reranking endpoint
+
+- Enable Leap 15.7 builds with GCC 13
+- Disable unavailable OpenCL and OpenVINO backends on Leap 15.7
+
+- Add skip-sme-variants-when-unsupported.patch to skip SME CPU variants
+  when unsupported, allowing aarch64 builds on Leap 16.0 with GCC 13
+
+- Explicitly select GCC 16 on aarch64 so SME CPU variants build
+
+- Update to version 10676
+  * ggml bumped to 0.22.0, llama.cpp bumped to 0.3.0
+  * New model support: MiniMaxText01, MiniMaxM1, BailingMoE3,
+    Kimi-K3 text, Nanbeige 4.2 3B, Qwen3.8-Flash-Next (qwen4exp),
+    DSpark speculator checkpoints, GLM-4.5-Air MTP.
+  * Vulkan: tiled transpose for 0&lt;-&gt;2 permuted CONT, coopmat1
+    SHMEM_STRIDE_PAD/APPLY_SLM_A_RESHAPE for Intel Xe, hoisting
+    support for row IDs and expert count, cross_entropy_loss op.</comment>
+    <requestid>1376340</requestid>
+  </revision>
 </revisionlist>

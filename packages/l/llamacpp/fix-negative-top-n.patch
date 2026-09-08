@@ -1,0 +1,24 @@
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Date: Wed, 2 Sep 2026 00:00:00 +0200
+Subject: [PATCH] server: reject negative rerank top_n
+
+Validate top_n before queuing rerank work. A negative value passed to
+std::vector::resize() is converted to a very large size_t and can raise
+std::bad_alloc.
+
+diff --git a/tools/server/server-common.cpp b/tools/server/server-common.cpp
+--- a/tools/server/server-common.cpp
++++ b/tools/server/server-common.cpp
+@@ -1478,1 +1478,1 @@
+-    elements.resize(std::min(top_n, (int)elements.size()));
++    elements.resize(std::min(std::max(top_n, 0), (int)elements.size()));
+diff --git a/tools/server/server-context.cpp b/tools/server/server-context.cpp
+--- a/tools/server/server-context.cpp
++++ b/tools/server/server-context.cpp
+@@ -5153,1 +5153,5 @@
+-        int top_n = json_value(body, "top_n", (int)documents.size());
++        int top_n = json_value(body, "top_n", (int)documents.size());
++        if (top_n < 0) {
++            res->error(format_error_response("\"top_n\" must be non-negative", ERROR_TYPE_INVALID_REQUEST));
++            return res;
++        }

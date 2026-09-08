@@ -18,44 +18,62 @@
 
 
 %global backend_dir %{_libdir}/ggml
+%global upstream_build 10809
 
-%global llama_sover        0.0.%{version}
+%global llama_sover        %{version}
 %global llama_sover_suffix 0
 
-%global mtmd_sover         0.0.%{version}
+%global mtmd_sover         %{llama_sover}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.17.0
+%global ggml_sover         0.23.0
 %global ggml_sover_suffix  0
 
+%if 0%{?suse_version} == 1500
+%bcond_with opencl
+%bcond_with openvino
+%else
+%bcond_without opencl
 %ifarch x86_64 aarch64
 %bcond_without openvino
 %else
 %bcond_with openvino
 %endif
+%endif
 
 Name:           llamacpp
-Version:        10154
+Version:        0.4.0
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        MIT
 URL:            https://github.com/ggml-org/llama.cpp
-Source:         %{URL}/archive/b%{version}/%{name}-%{version}.tar.gz
-Source1:        %{URL}/releases/download/b%{version}/llama-b%{version}-ui.tar.gz
+Source:         %{URL}/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
+Source1:        %{URL}/releases/download/b%{upstream_build}/llama-b%{upstream_build}-ui.tar.gz
+Patch0:         skip-sme-variants-when-unsupported.patch
+Patch1:         fix-negative-top-n.patch
 BuildRequires:  cmake >= 3.14
-# Newer llama.cpp enables SME, found in ARMv9.2. Only gcc>=16 knows about SME
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-c++
+%else
 %ifarch aarch64
+%if 0%{?suse_version} >= 1610
 BuildRequires:  gcc16-c++
 %else
 BuildRequires:  gcc-c++
+%endif
+%else
+BuildRequires:  gcc-c++
+%endif
 %endif
 BuildRequires:  git
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  shaderc
 BuildRequires:  spirv-headers
+%if %{with opencl}
 BuildRequires:  pkgconfig(OpenCL)
 BuildRequires:  pkgconfig(OpenCL-CLHPP)
+%endif
 BuildRequires:  pkgconfig(libcurl)
 %if %{with openvino}
 BuildRequires:  pkgconfig(openvino)
@@ -104,7 +122,9 @@ that depend on libllama-common.so.
 %package -n libggml%{ggml_sover_suffix}
 Summary:        A tensor library for C++
 Requires:       libggml-cpu
+%if %{with opencl}
 Recommends:     libggml-opencl
+%endif
 Recommends:     libggml-vulkan
 
 %description -n libggml%{ggml_sover_suffix}
@@ -138,6 +158,7 @@ and WhisperCpp projects.
 
 This package includes the Vulkan backend for ggml.
 
+%if %{with opencl}
 %package -n libggml-opencl
 Summary:        A tensor library for C++ (OpenCL backend)
 
@@ -146,7 +167,9 @@ A tensor library for C++. It was created originally to support llama.cpp
 and WhisperCpp projects.
 
 This package includes the OpenCL backend for ggml.
+%endif
 
+%if %{with openvino}
 %package -n libggml-openvino
 Summary:        A tensor library for C++ (OpenVINO backend)
 
@@ -155,6 +178,7 @@ A tensor library for C++. It was created originally to support llama.cpp
 and WhisperCpp projects.
 
 This package includes the OpenVINO backend for ggml.
+%endif
 
 %package -n ggml-devel
 Summary:        Development files for ggml
@@ -195,7 +219,7 @@ Library to handle multimodal inputs for llama.cpp.
 %ldconfig_scriptlets -n libmtmd%{mtmd_sover_suffix}
 
 %prep
-%autosetup -p1 -n llama.cpp-b%{version}
+%autosetup -p1 -n llama.cpp-%{version}
 mkdir -p tools/ui/dist
 tar -xzf %{SOURCE1} --strip-components=1 -C tools/ui/dist
 
@@ -203,6 +227,18 @@ tar -xzf %{SOURCE1} --strip-components=1 -C tools/ui/dist
 
 %define _lto_cflags %{nil}
 %define __builder ninja
+
+%if 0%{?suse_version} == 1500
+export CC=gcc-13
+export CXX=g++-13
+%else
+%ifarch aarch64
+%if 0%{?suse_version} >= 1610
+export CC=gcc-16
+export CXX=g++-16
+%endif
+%endif
+%endif
 
 mkdir -p %{_libdir}
 
@@ -216,15 +252,20 @@ mkdir -p %{_libdir}
     -DGGML_CPU=ON \
     -DGGML_CPU_ALL_VARIANTS=ON \
     -DGGML_VULKAN=ON \
+%if %{with opencl}
     -DGGML_OPENCL=ON \
+%else
+    -DGGML_OPENCL=OFF \
+%endif
 %if %{with openvino}
     -DGGML_OPENVINO=ON \
 %endif
     -DGGML_BACKEND_DL=ON \
     -DGGML_BACKEND_DIR="%{backend_dir}" \
     -DGGML_OPENCL_USE_ADRENO_KERNELS=OFF \
-    -DLLAMA_BUILD_NUMBER=%{version} \
-    -DLLAMA_VERSION="0.0.%{version}" \
+    -DLLAMA_BUILD_IS_DEV=OFF \
+    -DLLAMA_BUILD_NUMBER=%{upstream_build} \
+    -DLLAMA_VERSION="%{version}" \
     %{nil}
 
 %cmake_build
@@ -289,10 +330,12 @@ mkdir -p %{_libdir}
 %dir %{backend_dir}
 %{backend_dir}/libggml-vulkan.so
 
+%if %{with opencl}
 %files -n libggml-opencl
 %license LICENSE
 %dir %{backend_dir}
 %{backend_dir}/libggml-opencl.so
+%endif
 
 %if %{with openvino}
 %files -n libggml-openvino

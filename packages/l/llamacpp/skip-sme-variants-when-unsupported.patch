@@ -1,0 +1,34 @@
+From: Eyad Issa <eyadlorenzo@gmail.com>
+Subject: ggml: skip SME CPU variants when the compiler lacks SME support
+
+GCC only gained support for the AArch64 +sme architecture modifier in
+version 14.  Keep the other optimized ARM variants available when building
+with an older compiler.
+
+---
+ ggml/src/CMakeLists.txt | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/ggml/src/CMakeLists.txt b/ggml/src/CMakeLists.txt
+index 6283fbcec..c017927f1 100644
+--- a/ggml/src/CMakeLists.txt
++++ b/ggml/src/CMakeLists.txt
+@@ -525,8 +525,14 @@ if (GGML_CPU_ALL_VARIANTS)
+             ggml_add_cpu_backend_variant(armv8.2_3    DOTPROD FP16_VECTOR_ARITHMETIC SVE)
+             ggml_add_cpu_backend_variant(armv8.6_1    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8)
+             ggml_add_cpu_backend_variant(armv8.6_2    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SVE2)
+-            ggml_add_cpu_backend_variant(armv9.2_1    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SME)
+-            ggml_add_cpu_backend_variant(armv9.2_2    DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SVE2 SME)
++            include(CheckCXXCompilerFlag)
++            check_cxx_compiler_flag("-march=armv9.2-a+sme" GGML_COMPILER_SUPPORTS_SME)
++            if (GGML_COMPILER_SUPPORTS_SME)
++                ggml_add_cpu_backend_variant(armv9.2_1 DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SME)
++                ggml_add_cpu_backend_variant(armv9.2_2 DOTPROD FP16_VECTOR_ARITHMETIC SVE MATMUL_INT8 SVE2 SME)
++            else()
++                message(STATUS "Skipping ARM SME CPU variants: compiler does not support SME")
++            endif()
+         elseif (CMAKE_SYSTEM_NAME MATCHES "Android")
+             # Android-specific backends with SoC-compatible feature sets
+             ggml_add_cpu_backend_variant(android_armv8.0_1)
+-- 
+2.53.0

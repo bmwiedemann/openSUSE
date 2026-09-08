@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:10:00 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 0.4.0
+  * Initial Qwen3.8-Flash-Next and NVIDIA Nemotron-3-Puzzle support.
+  * Add on-demand tensor reading, per-slot server context limits, and
+    video input options.
+  * GGML updated to 0.23.0 with sparse flash attention, asynchronous
+    backend APIs, and Apple RDMA transport.
+  * Improve CUDA, Vulkan, Metal, SYCL, OpenCL, and other accelerator
+    backends.
+  * Include the matching b10809 Web UI asset.
+- Package switched to semantic versioning
+
+-------------------------------------------------------------------
+Wed Sep 2 11:15:38 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add fix-negative-top-n.patch for CVE-2026-52132 (bsc#1278079):
+  reject negative top_n values in the reranking endpoint
+
+-------------------------------------------------------------------
+Sun Aug 30 22:39:08 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Enable Leap 15.7 builds with GCC 13
+- Disable unavailable OpenCL and OpenVINO backends on Leap 15.7
+
+-------------------------------------------------------------------
+Sun Aug 30 22:16:18 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Add skip-sme-variants-when-unsupported.patch to skip SME CPU variants
+  when unsupported, allowing aarch64 builds on Leap 16.0 with GCC 13
+
+-------------------------------------------------------------------
+Sun Aug 30 22:09:17 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Explicitly select GCC 16 on aarch64 so SME CPU variants build
+
+-------------------------------------------------------------------
+Thu Aug 28 18:01:41 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Update to version 10676
+  * ggml bumped to 0.22.0, llama.cpp bumped to 0.3.0
+  * New model support: MiniMaxText01, MiniMaxM1, BailingMoE3,
+    Kimi-K3 text, Nanbeige 4.2 3B, Qwen3.8-Flash-Next (qwen4exp),
+    DSpark speculator checkpoints, GLM-4.5-Air MTP.
+  * Vulkan: tiled transpose for 0<->2 permuted CONT, coopmat1
+    SHMEM_STRIDE_PAD/APPLY_SLM_A_RESHAPE for Intel Xe, hoisting
+    support for row IDs and expert count, cross_entropy_loss op.
+  * Metal: per-op source split with parallel compile, per-device
+    tuned flash-attn vec (M4, M4 Pro, M3 Max, M5, M5 Pro),
+    chunked SSD MMA for Mamba-2 prefill, dequantize q8_0 using
+    packed types, null-check buffer alloc fix, memory leak fix.
+  * CUDA: MMVQ nwarps=8 for bs=1 dense models on DGX Spark,
+    unblock mmq for MoE on sm_60.
+  * SYCL: fused mul_mat(gate)+mul_mat(up)+GLU for q4_K dense FFN,
+    OPT_STEP_ADAMW/OPT_STEP_SGD ops, TILE for quantized KV decode
+    on BMG, fix thread/block count in quantized cpy kernel.
+  * OpenCL: fix WAR race in generic FA tile kernels when WG spans
+    subgroups, add bin kernels for MoE GEMM (q4_0/q8_1, mxfp4).
+  * WebGPU: mulmat with overlapping src0/src1 (for MiniMax-01),
+    fix infinity handling in ARGSORT and TOP_K.
+  * RPC: implement event and async backend APIs, support Apple
+    RDMA as transport.
+  * Hexagon: support for multi-NPU devices (IQ9, IQ10) and fully
+    async backend, HTP unary ops for ABS and LOG.
+  * Server: re-designed yield_to_queue thread model, add
+    ctx-per-slot (--kv-unified-per-slot), dedup-cache-models
+    preset option, dedup-cache-models, and reject prefilled
+    assistant messages with tool calls.
+  * Common: migrate deprecated --mmap/--no-mmap to --load-mode,
+    support --models-dir loading MTP assistant models, share
+    thread pools when n_threads differ.
+  * Quantization: optimise memory usage by evicting weights after
+    processing each layer, cap working memory size.
+  * UI: stores and services consolidation refactor, dialog-based
+    settings/MCP views, browser get_info tool, API key field
+    masking, move get_datetime tool to frontend, read structured-
+    Content from MCP tool result, alphabetical enum member ordering.
+  * Fixes: conv_transpose_2d for multiple batches, various mtmd
+    fixes (Granite4 Vision, LFM2 tiling threshold, video moov
+    atom, sha256 input hashing), grammar char class hyphen,
+    unicode collapsed symbol class.
+  * Vendor updates: cpp-httplib to 0.53.1, BoringSSL to
+    0.20260813.0.
+  * KleidiAI: reworked build system/integration.
+  * OpenVINO: updated to 2026.3.1, whisper.cpp support,
+    Qwen3.5 on NPU, new ops.
+  * Full commit log:
+    https://github.com/ggml-org/llama.cpp/compare/b10154...b10676
+
+-------------------------------------------------------------------
 Tue Jul 28 07:02:44 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Update to version 10154
