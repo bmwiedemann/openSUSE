@@ -1,14 +1,39 @@
 -------------------------------------------------------------------
+Sun Sep  6 09:19:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.10.1:
+  * irc: fix memory leak in SASL authentication with mechanism
+    "ecdsa-nist256p-challenge"
+  * irc: reject an empty SASL challenge received with mechanism
+    "ecdsa-nist256p-challenge"
+  * relay: limit size of data queued for sending to a client to
+    prevent memory exhaustion
+  * relay: reject fragmented, compressed or oversized websocket
+    control frames received from a client
+  * relay: limit size of partial message received from a client
+    to prevent memory exhaustion
+  * script: reject script names containing path separators in the
+    scripts repository file to prevent writing files outside the
+    scripts directory
+  * xfer: fix comparison of status in search of transfers,
+    preventing a remote peer from starting a file transfer that
+    was not accepted by the user
+  * xfer: limit size of partial message received in DCC chat to
+    prevent memory exhaustion
+  * xfer: remove path from filename received in DCC file transfer
+    to prevent writing the file outside the download directory
+
+-------------------------------------------------------------------
 Fri Aug  7 18:39:06 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.10.0:
 
   Added
   * core: add command /theme (#1338)
-  * core: add built-in "light" theme, applied automatically on first 
+  * core: add built-in "light" theme, applied automatically on first
     start on light-background terminals (#1338)
   * core: add themable flag on configuration options (#1338)
-  * core: add options weechat.look.theme and 
+  * core: add options weechat.look.theme and
     weechat.look.theme_backup (#1338)
   * api: add function theme_register (#1338)
   * fset: add filter t:themable (#1338)
@@ -17,88 +42,88 @@ Fri Aug  7 18:39:06 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * script: add info "script_languages"
 
   Changed
-  * core: improve speed of /upgrade with a lot of buffers and lines 
+  * core: improve speed of /upgrade with a lot of buffers and lines
     (#2338, #2339, #2341)
   * core: improve speed of display of long words in chat area (#2336)
-  * core: add condition on connected relay api clients in default 
+  * core: add condition on connected relay api clients in default
     value of option weechat.look.hotlist_add_conditions
   * core: add /mute in default command for key Alt+= (toggle filters)
-  * api: change type of parameter "pos_option_name" to "const char **" 
+  * api: change type of parameter "pos_option_name" to "const char **"
     in function config_search_with_string
   * relay/api: add field "last_read_line_id" in GET /api/buffers
 
   Fixed
-  * core: fix infinite loop when option weechat.look.read_marker_string 
+  * core: fix infinite loop when option weechat.look.read_marker_string
     is set to a string with a width of zero (#2337)
-  * core: fix option weechat.look.color_real_white not applied when 
+  * core: fix option weechat.look.color_real_white not applied when
     color is "white" on 16+ colors terminals (#1742)
   * core: fix buffer overflow in connection to SOCKS5 proxy (#2325)
-  * api: fix infinite loop in function string_replace when the search 
+  * api: fix infinite loop in function string_replace when the search
     string is empty
   * api: do not free dynamic string on error in function string_dyn_concat
   * irc: fix tag in message with list of names when joining a channel
-  * fset: remove error displayed in core buffer when clicking with the 
+  * fset: remove error displayed in core buffer when clicking with the
     mouse below the last option displayed
-  * guile, lua, perl, python, ruby, tcl: fix conversion of dates in 
+  * guile, lua, perl, python, ruby, tcl: fix conversion of dates in
     the API functions
   * irc: fix conversion of dates in received messages
 
   Security
-  * core: fix buffer overflow in display of time in chat area with a 
+  * core: fix buffer overflow in display of time in chat area with a
     custom time format (#2342)
-  * core: fix integer overflow in size calculation when evaluating 
+  * core: fix integer overflow in size calculation when evaluating
     "${hide:...}" and "${base_encode:...}" (#2335)
   * core: fix possible buffer overflow in command /color alias (#2330)
-  * core: fix possible buffer overflow in list of commands displayed 
+  * core: fix possible buffer overflow in list of commands displayed
     by /help (#2330)
-  * irc: fix heap use-after-free when a batched message causes a 
+  * irc: fix heap use-after-free when a batched message causes a
     disconnection from the server (GHSA-rfmh-3r7f-jpx5)
-  * irc: fix stack buffer overflow when splitting a JOIN message 
+  * irc: fix stack buffer overflow when splitting a JOIN message
     with a large list of channels and keys (GHSA-q2xg-9ggx-77mr)
-  * irc: limit size of data received from the server to prevent 
+  * irc: limit size of data received from the server to prevent
     memory exhaustion
-  * irc: fix out-of-bounds read on incoming DCC command with a 
+  * irc: fix out-of-bounds read on incoming DCC command with a
     quoted filename ending the message (#2322)
-  * logger: fix path traversal in log file name when a buffer local 
-    variable contains the char used internally to protect directory 
+  * logger: fix path traversal in log file name when a buffer local
+    variable contains the char used internally to protect directory
     separators (#2340)
-  * relay: fix use-after-free and double free on remote buffer 
+  * relay: fix use-after-free and double free on remote buffer
     (GHSA-hx59-4hq9-6vmw)
-  * relay: fix authentication bypass with the "plain" password hash 
+  * relay: fix authentication bypass with the "plain" password hash
     algorithm (GHSA-68ff-gq39-pqjm)
-  * relay: limit size of decompressed websocket frame with 
-    permessage-deflate to prevent memory exhaustion 
+  * relay: limit size of decompressed websocket frame with
+    permessage-deflate to prevent memory exhaustion
     (GHSA-v2v4-45wm-5cr3, CVE-2026-53524)
-  * relay: limit size of received websocket frame and HTTP body to 
+  * relay: limit size of received websocket frame and HTTP body to
     prevent memory exhaustion
-  * relay: limit size of partial message received while reading an 
+  * relay: limit size of partial message received while reading an
     HTTP request to prevent memory exhaustion
-  * relay: fix timing attack on password authentication 
+  * relay: fix timing attack on password authentication
     (GHSA-vhv8-g2r9-cwcc, CVE-2026-53525)
   * relay: fix out-of-bounds read in dump of data (#2324)
-  * relay/api: fix memory leak in resources "handshake", "input" and 
+  * relay/api: fix memory leak in resources "handshake", "input" and
     "completion" (GHSA-wmpc-m6g9-fwj8)
   * relay: fix read of uncompressed websocket frame (#2331)
-  * api, relay: fix timing attack on TOTP validation 
+  * api, relay: fix timing attack on TOTP validation
     (GHSA-vhv8-g2r9-cwcc, CVE-2026-53525)
-  * xfer: replace directory separator in remote nick by underscore 
-    in download filename to prevent writing the file outside the 
+  * xfer: replace directory separator in remote nick by underscore
+    in download filename to prevent writing the file outside the
     download directory (#2321)
-  * xfer: fix out-of-bounds read when receiving empty line in DCC 
+  * xfer: fix out-of-bounds read when receiving empty line in DCC
     chat (#2323)
   * xfer: fix out-of-bounds write in xfer file transfer resume (#2326)
- 
+
 -------------------------------------------------------------------
 Fri Aug  7 18:32:30 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.9.5:
-  * core: fix buffer overflow in display of time in chat area with a 
+  * core: fix buffer overflow in display of time in chat area with a
     custom time format (#2342)
-  * irc: fix heap use-after-free when a batched message causes a 
+  * irc: fix heap use-after-free when a batched message causes a
     disconnection from the server (GHSA-rfmh-3r7f-jpx5)
-  * irc: fix stack buffer overflow when splitting a JOIN message with 
+  * irc: fix stack buffer overflow when splitting a JOIN message with
     a large list of channels and keys (GHSA-q2xg-9ggx-77mr)
-  * relay: fix use-after-free and double free on remote buffer 
+  * relay: fix use-after-free and double free on remote buffer
     (GHSA-hx59-4hq9-6vmw)
   * relay: increase max size for decompressed websocket frame
 
@@ -111,14 +136,14 @@ Mon Jul 20 14:50:08 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * core: improve speed of display of long words in chat area (#2336)
 
   Fixed
-  * core: fix infinite loop when option weechat.look.read_marker_string 
+  * core: fix infinite loop when option weechat.look.read_marker_string
     is set to a string with a width of zero (#2337)
-  * core: fix integer overflow in size calculation when evaluating 
+  * core: fix integer overflow in size calculation when evaluating
     "${hide:...}" and "${base_encode:...}" (#2335)
-  * logger: fix path traversal in log file name when a buffer local 
-    variable contains the char used internally to protect directory 
+  * logger: fix path traversal in log file name when a buffer local
+    variable contains the char used internally to protect directory
     separators (#2340)
-  * relay: fix authentication bypass with the "plain" password hash 
+  * relay: fix authentication bypass with the "plain" password hash
     algorithm (GHSA-68ff-gq39-pqjm)
 
 -------------------------------------------------------------------
@@ -127,10 +152,10 @@ Sun Jul  5 14:25:38 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 - Update to 4.9.3:
   * core: fix buffer overflow in connection to SOCKS5 proxy (#2325)
   * core: fix possible buffer overflow in command /color alias (#2330)
-  * core: fix possible buffer overflow in list of commands displayed 
+  * core: fix possible buffer overflow in list of commands displayed
     by /help (#2330)
   * api: do not free dynamic string on error in function string_dyn_concat
-  * relay/api: fix memory leak in resources "handshake", "input" and 
+  * relay/api: fix memory leak in resources "handshake", "input" and
     "completion" (GHSA-wmpc-m6g9-fwj8)
   * relay: fix read of uncompressed websocket frame (#2331)
   * xfer: fix out-of-bounds write in xfer file transfer resume (#2326)
@@ -139,31 +164,31 @@ Sun Jul  5 14:25:38 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 Mon Jun  8 14:32:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.9.2:
-  * api: fix infinite loop in function string_replace when the search 
+  * api: fix infinite loop in function string_replace when the search
     string is empty
-  * irc: limit size of data received from the server to prevent 
+  * irc: limit size of data received from the server to prevent
     memory exhaustion
-  * irc: fix out-of-bounds read on incoming DCC command with a quoted 
+  * irc: fix out-of-bounds read on incoming DCC command with a quoted
     filename ending the message (#2322)
-  * relay: limit size of received websocket frame and HTTP body to 
+  * relay: limit size of received websocket frame and HTTP body to
     prevent memory exhaustion
-  * relay: limit size of partial message received while reading an 
+  * relay: limit size of partial message received while reading an
     HTTP request to prevent memory exhaustion
   * relay: fix out-of-bounds read in dump of data (#2324)
-  * xfer: replace directory separator in remote nick by underscore in 
-    download filename to prevent writing the file outside the download 
+  * xfer: replace directory separator in remote nick by underscore in
+    download filename to prevent writing the file outside the download
     directory (#2321)
-  * xfer: fix out-of-bounds read when receiving empty line in DCC 
+  * xfer: fix out-of-bounds read when receiving empty line in DCC
     chat (#2323)
 
 -------------------------------------------------------------------
 Mon Jun  1 13:01:54 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 -  Update to 4.9.1:
-  * core: fix option weechat.look.color_real_white not applied when 
+  * core: fix option weechat.look.color_real_white not applied when
     color is "white" on 16+ colors terminals (#1742)
   * irc: fix tag in message with list of names when joining a channel
-  * relay: limit size of decompressed websocket frame with 
+  * relay: limit size of decompressed websocket frame with
     permessage-deflate to prevent memory exhaustion (GHSA-v2v4-45wm-5cr3)
   * relay: fix timing attack on password authentication (GHSA-vhv8-g2r9-cwcc)
   * api, relay: fix timing attack on TOTP validation (GHSA-vhv8-g2r9-cwcc)
@@ -177,13 +202,13 @@ Mon Mar 30 11:28:55 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * typing: add option typing.look.item_text (#2305)
 
   Fixed
-  * core: fix crash with /eval when the current buffer is closed in a 
+  * core: fix crash with /eval when the current buffer is closed in a
     command
-  * core: fix buffer size in function util_parse_time, causing buffer 
+  * core: fix buffer size in function util_parse_time, causing buffer
     overflow error in unit tests
-  * irc: fix display of CTCP query sent multiple times to the same 
+  * irc: fix display of CTCP query sent multiple times to the same
     user when capability echo-message is enabled (#2309)
-  * irc: fix unit of server option anti_flood from seconds to 
+  * irc: fix unit of server option anti_flood from seconds to
     milliseconds in output of /server listfull
   * irc: fix creation of irc.msgbuffer option without a server name
   * irc: ignore self join if the channel is already joined (#2291)
@@ -202,7 +227,7 @@ Mon Mar  9 14:55:24 UTC 2026 - Hunter Wardlaw <wardlawhunter@gmail.com>
 Tue Dec  2 01:51:43 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.8.1:
-  * core: fix buffer size in function util_parse_time, causing buffer 
+  * core: fix buffer size in function util_parse_time, causing buffer
     overflow error in unit tests
   * irc: fix creation of irc.msgbuffer option without a server name
 
@@ -215,21 +240,21 @@ Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * irc: remove temporary servers and option irc.look.temporary_servers
 
   Changed
-  * api: add support of date like ISO 8601 but with spaces and lower 
+  * api: add support of date like ISO 8601 but with spaces and lower
     t and z in function util_parse_time (#886)
-  * irc: request and perform SASL authentication when the server 
+  * irc: request and perform SASL authentication when the server
     advertises SASL support with message "CAP NEW" (#2277)
   * irc: send SASL username with mechanism EXTERNAL (#2270)
   * logger: change default time format to %@%F %T.%fZ (UTC) (#886)
-  * logger: use function util_parse_time to parse date/time in log 
+  * logger: use function util_parse_time to parse date/time in log
     files (#886)
-  * relay/api: return an error 400 (Bad Request) when URL parameters 
+  * relay/api: return an error 400 (Bad Request) when URL parameters
     "colors", "nicks", "lines" and "lines_free" have an invalid value
-  * relay/api: return an error 401 (Unauthorized) when header 
+  * relay/api: return an error 401 (Unauthorized) when header
     "x-weechat-totp" has an invalid value
   * xfer: add buffer local variable "server" in DCC CHAT buffers
   * core, irc, relay: add tag "tls" in gnutls messages
-  * irc: add tags "irc_cap" and "log3" in client capability request 
+  * irc: add tags "irc_cap" and "log3" in client capability request
     and SASL not supported messages
   * build: require Curl ≥ 7.68.0 (#2268)
   * build: require GnuTLS ≥ 3.6.3 (#2268)
@@ -240,30 +265,30 @@ Mon Dec  1 06:17:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   Added
   * core: add option weechat.completion.cycle
   * core: add hdata for hooks
-  * api: add functions util_parse_int, util_parse_long and 
+  * api: add functions util_parse_int, util_parse_long and
     util_parse_longlong
   * buflist: add variable ${index_displayed}
 
   Fixed
-  * core: display an error message in case of invalid parameters in 
+  * core: display an error message in case of invalid parameters in
     commands /bar, /buffer, /cursor, /print and /window
-  * api: fix file descriptor leak in hook_url when a timeout occurs 
+  * api: fix file descriptor leak in hook_url when a timeout occurs
     or if the hook is removed during the transfer (#2284)
-  * api: fix parsing of date/times with timezone offset in function 
+  * api: fix parsing of date/times with timezone offset in function
     util_parse_time
-  * irc: fix warning on creation of irc.msgbuffer option when the 
+  * irc: fix warning on creation of irc.msgbuffer option when the
     server name contains upper case letters (#2281)
-  * irc: display a warning for each unknown or invalid server option 
+  * irc: display a warning for each unknown or invalid server option
     in commands /connect and /server
-  * irc: fix colors in messages 367 (ban mask), 728 (quiet mask) and 
+  * irc: fix colors in messages 367 (ban mask), 728 (quiet mask) and
     MODE (#2286)
-  * irc: fix reset of color when multiple modes are set with 
+  * irc: fix reset of color when multiple modes are set with
     command /mode
-  * relay/api: fix crash when an invalid HTTP request is received 
+  * relay/api: fix crash when an invalid HTTP request is received
     from a client
-  * relay/api: return HTTP error 404 instead of 400 when the buffer 
+  * relay/api: return HTTP error 404 instead of 400 when the buffer
     is not found in resources completion and input
-  * relay/api: return HTTP error 400 in case of invalid body in 
+  * relay/api: return HTTP error 400 in case of invalid body in
     resource ping
 
 -------------------------------------------------------------------
@@ -272,12 +297,12 @@ Tue Nov 25 00:21:56 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 - Update to 4.7.2:
 
   Fixed
-  * api: fix file descriptor leak in hook_url when a timeout occurs 
+  * api: fix file descriptor leak in hook_url when a timeout occurs
     or if the hook is removed during the transfer (#2284)
-  * irc: fix colors in messages 367 (ban mask), 728 (quiet mask) and 
+  * irc: fix colors in messages 367 (ban mask), 728 (quiet mask) and
     MODE (#2286)
-  * irc: fix reset of color when multiple modes are set with 
-    command /mode 
+  * irc: fix reset of color when multiple modes are set with
+    command /mode
 
 -------------------------------------------------------------------
 Sat Nov 22 21:26:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
@@ -288,9 +313,9 @@ Sat Nov 22 21:26:34 CET 2025 - Stanislav Brabec <sbrabec@suse.com>
 Mon Aug 18 19:29:05 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.7.1:
-  
+
   Fixed
-  * relay/api: fix crash when an invalid HTTP request is received 
+  * relay/api: fix crash when an invalid HTTP request is received
     from a client
 
 -------------------------------------------------------------------
@@ -299,50 +324,50 @@ Mon Jul 21 18:37:49 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 - Update to 4.7.0:
 
   Changed
-  * breaking: core: fix buffer overflow in function utf8_next_char 
+  * breaking: core: fix buffer overflow in function utf8_next_char
     and return NULL for empty string
-  * breaking: core: fix integer overflow and return "unsigned long" 
+  * breaking: core: fix integer overflow and return "unsigned long"
     in function util_version_number
-  * core: write configuration files on disk only if there are 
+  * core: write configuration files on disk only if there are
     changes (#2250)
-  * core: always enable partial completion for templates in option 
-    weechat.completion.partial_completion_templates, add option 
-    weechat.completion.partial_completion_auto_expand to expand word 
+  * core: always enable partial completion for templates in option
+    weechat.completion.partial_completion_templates, add option
+    weechat.completion.partial_completion_auto_expand to expand word
     on new completion (#2253)
   * core: add script name in output of /debug hooks <plugin>
-  * relay/api: return HTTP error 405 (Method Not Allowed) when the 
+  * relay/api: return HTTP error 405 (Method Not Allowed) when the
     method received is not allowed
 
   Added
-  * core: add support of specifier %@ for UTC time in function 
+  * core: add support of specifier %@ for UTC time in function
     util_strftimeval
   * api: add function file_compare
   * irc: add support of strikethrough text in IRC messages (#2248)
-  * buflist: add variables ${number_zero} and ${number_zero2} 
+  * buflist: add variables ${number_zero} and ${number_zero2}
     (zero-padded buffer number)
   * tests: add fuzz testing (#1462)
 
   Fixed
-  * core: fix write of weechat.log to stdout with weechat-headless 
+  * core: fix write of weechat.log to stdout with weechat-headless
     --stdout (#2247)
-  * core: add refresh of window title on buffer switch, when option 
+  * core: add refresh of window title on buffer switch, when option
     weechat.look.window_title is set
   * core: consider all keys are safe in cursor context (#2244)
-  * core: fix integer overflow with decimal numbers in calculation of 
+  * core: fix integer overflow with decimal numbers in calculation of
     expression
   * core: fix integer overflow in base32 encoding/decoding
   * core: fix buffer overflow in function util_parse_time
   * core: fix buffer overflow in function eval_syntax_highlight_colorize
   * core: fix buffer overflow in function eval_string_base_encode
   * core: fix memory leak in function util_parse_delay
-  * irc: display nick changes and quit messages when option 
+  * irc: display nick changes and quit messages when option
     irc.look.ignore_tag_messages is enabled (#2241)
   * perl: fix build when multiplicity is not available (#2243)
-  * relay/api: reject any invalid or unknown password hash algorithm 
+  * relay/api: reject any invalid or unknown password hash algorithm
     in handshake resource
-  * relay/api: process HTTP request received as soon as a NULL char 
+  * relay/api: process HTTP request received as soon as a NULL char
     is received
-  * relay/weechat: fix empty buffers in client when WeeChat is running 
+  * relay/weechat: fix empty buffers in client when WeeChat is running
     on Solaris/illumos
   * build: fix build on Solaris/illumos (#2251)
 
@@ -355,7 +380,7 @@ Fri Jul 18 16:57:24 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 Mon May 12 18:32:07 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 4.6.3:
-  * core: fix integer overflow with decimal numbers in calculation of 
+  * core: fix integer overflow with decimal numbers in calculation of
     expression
   * core: fix integer overflow in base32 encoding/decoding
   * core: fix integer overflow in function util_version_number
@@ -414,7 +439,7 @@ Mon Mar 24 14:53:08 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * core: fix detection of dl library (#2218)
   * logger: fix path displayed when the logs directory can not be created
   * perl: fix build with Perl < 5.7.29 (#2219, #2220)
-  * python: enable subinterpreters (#2222) 
+  * python: enable subinterpreters (#2222)
 
 -------------------------------------------------------------------
 Mon Mar 10 06:49:57 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
@@ -461,7 +486,7 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * lua: fix compilation on Fedora with Lua < 5.2.0 (#2173, #2174)
   * core: fix build on Darwin (#2216)
   * core: fix build on Android (#2180)
-  
+
   Changed
   * api: return the buffer input callback return code in functions command and command_options
   * api: add special value - (hyphen-minus) in options of function command_options to prevent execution of commands
@@ -476,14 +501,14 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * ruby: fix detection of Ruby on macOS 14, require CMake ≥ 3.18 (#1156)
   * build: require Curl ≥ 7.47.0 (#2195)
   * build: require GnuTLS ≥ 3.3.0 (#2193)
-  
+
   Added
   * relay: display connection status in input prompt of remote buffers, if not connected or if fetching data from remote
   * irc: add option irc.look.notice_nicks_disable_notify
   * irc: add infos "irc_ptr_server", "irc_ptr_channel" and "irc_ptr_nick"
 
 - Update to version 4.4.4:
-  
+
   Fixed
   * script: fix crash on /script buffer when a filter is set (#2214, #2215)
   * core: fix too many sorts of hotlist when buffers are moved (#2097)
@@ -492,7 +517,7 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * perl: fix crash when unloading Perl scripts with Perl 5.38 (#2209, #2213)
 
 - Update to version 4.4.3:
-  
+
   Fixed
   * irc: fix crash on /list buffer when a filter is set (#2197)
   * core: always send the signal "buffer_switch", even when the buffer is opening (#2198)
@@ -534,7 +559,7 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * irc: add support of message 569 (whois, connecting from) (#2162)
   * api: allow NULL value for key in hashtable
   * doc: rename doc "weechat_relay_protocol" to "weechat_relay_weechat"
-  
+
   Added
   * core: add command line option --build-info / -i to display information about build options (#449)
   * irc: add option -export in command /list, add option irc.look.list_buffer_format_export
@@ -552,7 +577,7 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
   * api: add hashtable type "longlong"
   * api: add function line_search_by_id
   * doc: add doc on "api" relay
-  
+
   Fixed
   * python: fix crash on quit with Python 3.12 (#2046, #2126)
   * core: fix crash when deleting a bar that has no items (#2138)
@@ -627,10 +652,10 @@ Mon Jan 06 04:50:15 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
   Changed
   * relay: enable websocket extension "permessage-deflate" with "api" relay only (#1549)
-  
+
   Added
   * relay: add option relay.look.raw_messages_max_length (#2122)
-  
+
   Fixed
   * irc, xfer: fix display of input prompt in IRC private buffers and DCC chat buffers (#2128)
   * irc: don't return pointer to irc server if the channel or nick is not found in info "irc_buffer"
