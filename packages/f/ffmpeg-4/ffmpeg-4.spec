@@ -115,7 +115,7 @@ License:        GPL-3.0-or-later
 Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://ffmpeg.org/
 
-#Freshcode-URL:    http://freshcode.club/projects/ffmpeg
+#Freshcode-URL: http://freshcode.club/projects/ffmpeg
 #Git-Clone:     git://source.ffmpeg.org/ffmpeg
 Source:         https://www.ffmpeg.org/releases/%_name-%version.tar.xz
 Source2:        https://www.ffmpeg.org/releases/%_name-%version.tar.xz.asc
@@ -164,6 +164,15 @@ Patch54:        ffmpeg-4-CVE-2026-65705.patch
 Patch55:        ffmpeg-4-CVE-2026-65706.patch
 Patch56:        ffmpeg-4-CVE-2026-66036-shim01.patch
 Patch57:        ffmpeg-4-CVE-2026-66036.patch
+Patch58:        ffmpeg-4-CVE-2026-70628.patch
+Patch59:        ffmpeg-4-CVE-2026-70629.patch
+Patch60:        ffmpeg-4-CVE-2026-70630.patch
+Patch61:        ffmpeg-4-CVE-2026-70631.patch
+Patch62:        ffmpeg-4-CVE-2026-70632.patch
+Patch64:        ffmpeg-4-CVE-2026-75142.patch
+Patch65:        ffmpeg-4-CVE-2026-75143.patch
+Patch66:        ffmpeg-4-CVE-2026-75144.patch
+Patch67:        ffmpeg-4-CVE-2026-75146.patch
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
 BuildRequires:  libmp3lame-devel

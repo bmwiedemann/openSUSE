@@ -912,4 +912,13 @@
     <comment>add CVE patches and bugrefs</comment>
     <requestid>1372812</requestid>
   </revision>
+  <revision rev="100" vrev="5">
+    <srcmd5>3fe7113998dd90456b95de55c140fed7</srcmd5>
+    <version>4.4.8</version>
+    <time>1788879226</time>
+    <user>anag_factory</user>
+    <comment>cve patches
+minus ffmpeg-4-CVE-2026-75141.patch</comment>
+    <requestid>1376009</requestid>
+  </revision>
 </revisionlist>

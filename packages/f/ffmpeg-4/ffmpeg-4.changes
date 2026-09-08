@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Aug 28 04:47:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-75146.patch:
+  Backport 65b0dab9 from upstream, avformat/dashdec: reject a negative
+  fragment index.
+  (CVE-2026-75146, bsc#1276412)
+
+-------------------------------------------------------------------
+Mon Aug 28 03:34:50 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-75144.patch:
+  Backport 1c10bcc2 from upstream, avformat/rtpenc_vc2hq: reject data
+  units larger than the RTP payload buffer.
+  (CVE-2026-75144, bsc#1276410)
+
+-------------------------------------------------------------------
+Mon Aug 28 03:17:21 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-75143.patch:
+  Backport 1c10bcc2 from upstream, avformat/librist: honor the caller
+  buffer size in librist_read.
+  (CVE-2026-75143, bsc#1276409)
+
+-------------------------------------------------------------------
+Mon Aug 28 02:58:12 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-75142.patch:
+  Backport 9d786e4b from upstream, avformat/mpegenc: reject stream
+  counts that overflow the system header.
+  (CVE-2026-75142, bsc#1276408)
+
+-------------------------------------------------------------------
+Wed Aug 14 09:44:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70632.patch:
+  Backport 16b2049d from upstream, avcodec/cfhd: reject transform-2
+  output wider than the plane.
+  (CVE-2026-70632, bsc#1274289)
+
+-------------------------------------------------------------------
+Wed Aug 14 08:27:41 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70631.patch:
+  Backport 3c287af3 from upstream, avcodec/tiff: reject inflate
+  output shorter than the strip.
+  (CVE-2026-70631, bsc#1274287)
+
+-------------------------------------------------------------------
+Wed Aug 14 07:58:24 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70630.patch:
+  Backport c22667d0 from upstream, avcodec/screenpresso: reject
+  deflate output shorter than the frame.
+  (CVE-2026-70630, bsc#1274282)
+
+-------------------------------------------------------------------
+Wed Aug 14 07:22:18 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70629.patch:
+  Backport a5fe21a1 from upstream, avcodec/rscc: do not leave
+  uninitilized data when the input is too short.
+  (CVE-2026-70629, bsc#1274270)
+
+-------------------------------------------------------------------
+Wed Aug 14 06:52:11 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-70628.patch:
+  Backport 02fc47e1 from upstream, avcodec/dvbsub_parser: avoid
+  signed overflow in the capacity check.
+  (CVE-2026-70628, bsc#1274268)
+
+-------------------------------------------------------------------
 Wed Aug 14 06:28:33 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2026-66036.patch:
