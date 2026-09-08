@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:57:14 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop gegl-CVE-2026-18300.patch: This was applied upstream several
+  versions back. Our original patch was a backport, and we still
+  had an extra bit of code from that left over that still applied
+  and nobody noticed since quilt rebases it so nicely for us.
+
+-------------------------------------------------------------------
+Mon Sep  7 11:19:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.72:
+  + Build:
+    - Build with pure MSVC as well as wasm
+    - Improvements to defcheck,
+    - Minimum meson version bumped to 0.60
+    - More CI integration, harmonized with gimp/babl
+  + Core:
+    - Use G_{BEGIN|END}_DECLS in all header declarations
+    - gegl_param_color_cmp, new function
+    - Avoid crashes in gegl_path
+  + Buffer:
+    - Refactoring, comments and documentation comments in
+      GeglBufferIterator
+    - Avoid duplicate, aliasing stack allocations
+  + OpenCL:
+    - Update headers to OpenCL 3.0
+    - Use gmodule for loading, also on windows
+    - Buffer access code refactored, unifying destruction code
+      paths
+    - Move kernels to operations part of directory hierarchy
+    - Warn on console on initialization errors
+  + Ops:
+    - General: make more consistent use of title case (changing
+      strings, affecting translations)
+    - Factor out common deps for ops in meson
+    - rgbe_load: bail if x or y dimension larger than max scanline
+      width, also further robustness for corrupt files
+    - exp_combine: use public rather than private APIs, qsort
+      rather than g_sort_array
+    - waterpixels, normal-map, gblur-1d: fix crashes due to stack
+      allocations in loop
+    - introspect: fix warnings in console
+    - ff-load, ff-save: disable by default
+    - rawbayer-load (in workshop, not built by default): avoid code
+      execution
+    - normal-map: fix scratch buffer allocations
+    - sdl3-display: SDL3 variant of display op
+    - workshop/sharpen: new operation implementing the classic GIMP
+      sharpen filter
+- Add pkgconfig(sdl3) BuildRequires: New dependency.
+- Rebase gegl-CVE-2026-18300.patch with quilt.
+
+-------------------------------------------------------------------
 Mon Aug 31 03:37:07 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
 
 - Add gegl-CVE-2026-18300.patch: libs/rgbe: fix >200kb report

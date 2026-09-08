@@ -26,7 +26,7 @@
 %bcond_with gegl_docs
 
 Name:           gegl
-Version:        0.4.70
+Version:        0.4.72
 Release:        0
 Summary:        Generic Graphics Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -35,8 +35,6 @@ URL:            https://gegl.org/
 Source0:        https://download.gimp.org/pub/gegl/0.4/%{name}-%{version}.tar.xz
 Source1:        normalize-gir.pl
 Source99:       baselibs.conf
-# PATCH-FIX-UPSTREAM CVE-2026-18300.patch bsc#1276229 xwang@suse.com -- libs/rgbe:fix >200kb report from ZDI
-Patch0:         gegl-CVE-2026-18300.patch
 
 BuildRequires:  ImageMagick
 BuildRequires:  asciidoc
@@ -46,7 +44,7 @@ BuildRequires:  gtk-doc
 BuildRequires:  libjpeg-devel
 BuildRequires:  libspiro-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  meson >= 0.54.0
+BuildRequires:  meson >= 0.60.0
 BuildRequires:  pkgconfig
 %if %{with gegl_docs}
 BuildRequires:  python3-gi-docgen
@@ -88,6 +86,7 @@ BuildRequires:  pkgconfig(pangocairo) >= 1.38.0
 BuildRequires:  pkgconfig(poppler-glib) >= 0.71.0
 BuildRequires:  pkgconfig(pygobject-3.0)
 BuildRequires:  pkgconfig(sdl2)
+BuildRequires:  pkgconfig(sdl3)
 BuildRequires:  pkgconfig(vapigen) >= 0.20.0
 # since version 0.3.5, we no longer provide an orig-addon package, as ffmpeg/libav
 # exists in Tumbleweed and we use it to build
