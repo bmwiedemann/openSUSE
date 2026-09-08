@@ -277,4 +277,32 @@
           74a04c4617f6e7ea87afe0831eecf078607bf40e</comment>
     <requestid>1337662</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>25559965a83f252e214406a7088f0745</srcmd5>
+    <version>2.224.0</version>
+    <time>1788879492</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.224.0 (2.224)
+   see /usr/share/doc/packages/perl-Compress-Raw-Lzma/Changes
+    2.224 28 AUgust 2026
+        * Remove call to UpDowngradein Makefile.PL
+          Fri Aug 28 11:36:43 2026 +0100
+          6ccde8bd13fc897b8be51805856d0bcc7907cd9a
+        * Update to version 2.224
+          Fri Aug 28 11:35:09 2026 +0100
+          0219b1c201700854c84e38db72c89e00b8d6dc1e
+        * remove 5.6-specific code and make 5.8 the min versionsupported
+          Wed Aug 26 16:07:12 2026 +0100
+          6ce24f08bdabfb873211d0e460e702e1098f102a
+        * Bump actions/checkout from 6 to 7
+          Fri Jul 3 12:06:17 2026 +0100
+          65334d24b5ef3c4b4f1874bb0423f2cdb3839ce0
+        * Bump actions/cache from 5 to 6
+          Fri Jul 3 12:05:12 2026 +0100
+          5a7aa2446bdfff48348d024df0867fac3f37d477
+        * Update workflow for 5.8.3
+          Thu Apr 9 11:12:44 2026 +0100
+          99b221485fffe09ae308ccbda2b1cf8e5c67a08d</comment>
+    <requestid>1376321</requestid>
+  </revision>
 </revisionlist>
