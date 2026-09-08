@@ -17,17 +17,15 @@
 
 
 Name:           python-caio
-Version:        0.12.3
+Version:        0.12.4
 Release:        0
 Summary:        Asynchronous file IO for Linux MacOS or Windows
 License:        Apache-2.0
 URL:            https://github.com/mosquito/caio
-# No PyPI sdist for 0.12.3 (pypi.org/pypi/caio/0.12.3/json is 404). Use the
-# GitHub tag archive. Upstream still forgot to bump [project] version in
-# pyproject.toml (the tag still says 0.10.2); %%prep rewrites it so the
-# wheel's dist-info matches %%{version}. Tests stay in the sdist (graft
-# tests in MANIFEST.in), so %%check is unaffected.
-Source:         https://github.com/mosquito/caio/archive/refs/tags/%{version}.tar.gz#/caio-%{version}.tar.gz
+# PyPI sdist (graft tests in MANIFEST.in). 0.12.3 had none and used the
+# GitHub tag archive; 0.12.4 publishes a real sdist with the correct
+# [project] version, so no %%prep rewrite is needed.
+Source:         https://files.pythonhosted.org/packages/source/c/caio/caio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -45,9 +43,6 @@ based fallback. Provides a small, fast async file-IO layer.
 
 %prep
 %autosetup -p1 -n caio-%{version}
-# Upstream often forgets to bump [project] version (still 0.10.2 on tag
-# 0.12.3). Rewrite it so the wheel installs caio-%%{version}.dist-info.
-sed -i 's/^version = ".*"/version = "%{version}"/' pyproject.toml
 
 %build
 %pyproject_wheel

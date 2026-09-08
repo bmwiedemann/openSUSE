@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:25:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.4:
+  * Fix PyPy builds by dropping the redundant Py_Initialize()
+    call from linux_aio and thread_aio (PR #78)
+- Switch Source back to the PyPI sdist now that 0.12.4 publishes
+  one (0.12.3 had none)
+- Drop the %prep rewrite of pyproject.toml version: 0.12.4 ships
+  the correct 0.12.4 metadata
+
+-------------------------------------------------------------------
 Fri Aug 21 13:31:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.3:

@@ -89,4 +89,18 @@ Fri Aug 21 13:31:16 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
   python -c / timing tests still cannot pass in the OBS chroot</comment>
     <requestid>1372865</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>2773b7dbace282deae1dcad61b11294c</srcmd5>
+    <version>0.12.4</version>
+    <time>1788879484</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.4:
+  * Fix PyPy builds by dropping the redundant Py_Initialize()
+    call from linux_aio and thread_aio (PR #78)
+- Switch Source back to the PyPI sdist now that 0.12.4 publishes
+  one (0.12.3 had none)
+- Drop the %prep rewrite of pyproject.toml version: 0.12.4 ships
+  the correct 0.12.4 metadata</comment>
+    <requestid>1376276</requestid>
+  </revision>
 </revisionlist>
