@@ -20,7 +20,7 @@
 %define libregraph_version 1.0.7
 %global __requires_exclude qt6qmlimport\\(eu\\.OpenCloud\\.*
 Name:           opencloud-desktop
-Version:        3.0.3
+Version:        4.0.0 
 Release:        0
 Summary:        The OpenCloud synchronization client
 License:        GPL-2.0-only AND GPL-3.0-only
@@ -106,20 +106,20 @@ in sync with the content on your cloud.
 
 %build
 pushd "./libre-graph-api-cpp-qt-client-%{libregraph_version}/client"
-%{cmake_qt6} -DBUILD_SHARED_LIBS=OFF
-%{qt6_build}
+%{cmake_kf6} -DCMAKE_SKIP_INSTALL_RPATH=ON -DKDE_SKIP_RPATH_SETTINGS=ON -DBUILD_SHARED_LIBS=OFF
+%{kf6_build}
 install -d "${PWD}/.install"
 DESTDIR="${PWD}/.install/" \
 cmake --build build -v -t install
 popd
 
 export CMAKE_PREFIX_PATH="./libre-graph-api-cpp-qt-client-%{libregraph_version}/client/.install%{_libdir}/cmake${CMAKE_PREFIX_PATH+:}${CMAKE_PREFIX_PATH}"
-%{cmake_qt6} -DKDE_SKIP_RPATH_SETTINGS=ON -DKDE_INSTALL_SYSCONFDIR=%{_sysconfdir}
-%{qt6_build}
+%{cmake_kf6} -DCMAKE_SKIP_INSTALL_RPATH=ON -DKDE_SKIP_RPATH_SETTINGS=ON -DKDE_INSTALL_SYSCONFDIR=%{_sysconfdir}
+%{kf6_build}
 
 %install
 export CMAKE_PREFIX_PATH="./libre-graph-api-cpp-qt-client-%{libregraph_version}/client/.install%{_libdir}/cmake${CMAKE_PREFIX_PATH+:}${CMAKE_PREFIX_PATH}"
-%{qt6_install}
+%{kf6_install}
 
 # do not allow to call home
 install -m 0644 -D %{SOURCE1} -t %{buildroot}%{_sysconfdir}/opencloud/
@@ -141,6 +141,7 @@ rm -rf \
 %{_bindir}/opencloudcmd
 %{_datadir}/applications/opencloud.desktop
 %{_datadir}/applications/opencloudcmd.desktop
+%{_datadir}/metainfo/eu.opencloud.desktop.opencloud.metainfo.xml
 %{_libdir}/qt6/plugins/OpenCloud_vfs_*.so
 %{_libdir}/libOpenCloudGui.so
 %dir %{_libdir}/qt6/qml/eu
@@ -156,9 +157,9 @@ rm -rf \
 
 %files -n libopencloudsync0
 %{_libdir}/libOpenCloudLibSync.so.0
-%{_libdir}/libOpenCloudLibSync.so.3.*
+%{_libdir}/libOpenCloudLibSync.so.4.*
 %{_libdir}/libOpenCloudResources.so.0
-%{_libdir}/libOpenCloudResources.so.3.*
+%{_libdir}/libOpenCloudResources.so.4.*
 
 %files -n libopencloudsync-devel
 %{_libdir}/libOpenCloudLibSync.so

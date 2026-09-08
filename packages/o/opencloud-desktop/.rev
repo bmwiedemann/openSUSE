@@ -63,4 +63,16 @@ Enhancement
   detailed changelog</comment>
     <requestid>1323337</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>02583cfd928c81a326094226de85a0ac</srcmd5>
+    <version>4.0.0</version>
+    <time>1788879220</time>
+    <user>anag_factory</user>
+    <comment>- Update tarball to 4.0.0 
+
+- Update to 4.0.0
+  Features and bugfixes see 
+  https://github.com/opencloud-eu/desktop/releases/tag/v4.0.0</comment>
+    <requestid>1376004</requestid>
+  </revision>
 </revisionlist>
