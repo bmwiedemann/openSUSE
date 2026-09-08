@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:12:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.17.0:
+  * Add minimum tls version and caller cipher controls
+  * Prefer out-of-tree auth plugins on entry-point conflicts
+  * Delegate get_endpoint_data in ServiceTokenAuthWrapper
+  * Add a v3websso authentication plugin
+  * Expose the unscoped token of a federated plugin
+  * pre-commit: Bump versions
+  * Rescope federated tokens to a system scope
+  * Terminate the elements hashed into the cache id
+  * Add HTTP 429 Too Many Requests support
+
+-------------------------------------------------------------------
 Mon Jul  6 11:28:30 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.15.0:

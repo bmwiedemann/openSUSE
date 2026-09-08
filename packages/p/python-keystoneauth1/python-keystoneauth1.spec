@@ -17,7 +17,7 @@
 
 
 Name:           python-keystoneauth1
-Version:        5.15.0
+Version:        5.17.0
 Release:        0
 Summary:        OpenStack authenticating tools
 License:        Apache-2.0
@@ -40,7 +40,7 @@ BuildRequires:  %{python_module requests >= 2.14.2}
 BuildRequires:  %{python_module requests-kerberos >= 0.8.0}
 BuildRequires:  %{python_module requests-mock >= 1.2.0}
 BuildRequires:  %{python_module stestr >= 1.0.0}
-BuildRequires:  %{python_module stevedore >= 1.20.0}
+BuildRequires:  %{python_module stevedore >= 5.9.1}
 BuildRequires:  %{python_module testresources >= 2.0.0}
 BuildRequires:  %{python_module testtools >= 2.2.0}
 BuildRequires:  %{python_module typing-extensions >= 4.12}
@@ -54,7 +54,7 @@ Requires:       python-oauthlib >= 0.6.2
 Requires:       python-os-service-types >= 1.2.0
 Requires:       python-requests >= 2.14.2
 Requires:       python-requests-kerberos >= 0.8.0
-Requires:       python-stevedore >= 1.20.0
+Requires:       python-stevedore >= 5.9.1
 Requires:       python-typing-extensions >= 4.12
 %if "python%{python_nodots_ver}" == "%{primary_python}"
 Obsoletes:      python3-keystoneauth1 < %{version}
