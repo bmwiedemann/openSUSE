@@ -189,4 +189,21 @@ langchain-aws, sglang, skillspector, switchyard) are unaffected; none
 caps anthropic. 211 tests pass per flavour, rpmlint clean.</comment>
     <requestid>1375294</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>6d4a6b219b7fe6d4ccb8e9e8f73d7497</srcmd5>
+    <version>1.4.0</version>
+    <time>1788879206</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.0:
+- usage reports gain a Claude Tag category and user breakdowns
+- organization compliance settings state now has named types
+- more endpoints accept a workspace ID
+- client raises a clear error when handed an httpx object instead of an
+  httpx2 one
+- messages resources: custom-code merge repaired
+
+Runtime dependencies unchanged. Built natively on aarch64: 211 tests pass
+per flavour (python313/python314), rpmlint clean.</comment>
+    <requestid>1376080</requestid>
+  </revision>
 </revisionlist>

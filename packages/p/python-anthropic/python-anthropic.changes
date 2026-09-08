@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  7 06:34:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.0:
+  * usage reports gain a Claude Tag category and user breakdowns
+  * organization compliance settings state now has named types
+  * more endpoints accept a workspace ID
+  * client raises a clear error when handed an httpx object
+    instead of an httpx2 one
+  * messages resources: custom-code merge repaired
+
+-------------------------------------------------------------------
 Wed Sep  2 06:41:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.3.0:
