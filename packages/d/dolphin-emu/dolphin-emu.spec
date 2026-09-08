@@ -18,12 +18,12 @@
 
 %define __builder ninja
 Name:           dolphin-emu
-Version:        2606
+Version:        2606a
 Release:        0
 Summary:        Dolphin, a GameCube and Wii Emulator
 License:        (Apache-2.0 OR MIT) AND BSD-2-Clause AND libpng-2.0 AND GPL-2.0-or-later
 URL:            https://dolphin-emu.org
-# n=dolphin-emu && v=2606 && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
+# n=dolphin-emu && v=2606a && d=$n-$v && f=$d.tar.xz && cd /tmp && git clone -b$v https://github.com/$n/dolphin.git $n && pushd $n && git submodule && git submodule update --init --recursive Externals/VulkanMemoryAllocator Externals/cpp-ipc/cpp-ipc Externals/cpp-optparse/cpp-optparse Externals/cubeb/cubeb Externals/gtest Externals/imgui/imgui Externals/implot/implot Externals/rcheevos/rcheevos Externals/tinygltf/tinygltf Externals/watcher/watcher && git submodule status && rm -rf .??* && popd && mv $n $d && tar c --remove-files "$d" | xz -9e > "$f"
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
