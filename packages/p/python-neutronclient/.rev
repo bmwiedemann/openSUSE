@@ -680,4 +680,13 @@
   * [fwaas] Don't ignore missing fw related resources</comment>
     <requestid>1370129</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>902d58567c4bfb21080ec7e0658d6e86</srcmd5>
+    <version>14.0.0</version>
+    <time>1788879315</time>
+    <user>anag_factory</user>
+    <comment>- update to 14.0.0:
+  * Remove Vpnaas client code</comment>
+    <requestid>1376090</requestid>
+  </revision>
 </revisionlist>
