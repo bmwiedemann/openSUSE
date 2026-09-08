@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 21:19:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.63.0:
+  * `ogr` now supports the `allow_maintainer_edit` option for
+    PRs/MRs for GitHub, GitLab and Forgejo.
+  * A potential bug has been fixed in the GitHub implementation
+    of `PullRequest.update_info()`. Previously, `None` values
+    could have been passed to the underlying method called to
+    edit a PR, which could result in an `AssertionError` being
+    raised as this method doesn't support `None` values.
+
+-------------------------------------------------------------------
 Sat Aug 22 10:09:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.62.4:
