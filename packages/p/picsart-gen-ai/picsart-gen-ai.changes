@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:28:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.76.0:
+  * Add the GPT-5.6 Sol, Terra and Luna models: multimodal
+    image-to-text with vision and a low/medium/high --thinking
+  * Expose LTX 2.3 Extend --mode (end/start), LTX 2.3 Retake
+    --retake-mode and --start-time, and 24/25/48/50 fps on LTX
+    2.3; reject an end frame without a start image locally
+  * Drop Starlight Precise 1, Precise 2 and Fast 1 from
+    --model-version, drop url/hex from --output-format, and
+    move Hailuo 2.3 Fast previews from 720p to 768p
+- Re-vendor: the package set is unchanged, only the lockfile
+  version string moves to 2.76.0, and the licence set of the
+  71 vendored packages still holds
+
+-------------------------------------------------------------------
 Fri Sep  4 08:36:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.75.0:
