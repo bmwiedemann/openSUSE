@@ -23,7 +23,7 @@
 %define pyname  pathrs
 
 Name:           libpathrs
-Version:        0.2.5
+Version:        0.2.6
 Release:        0
 Summary:        Safe path resolution library for Linux
 Group:          Productivity/Security

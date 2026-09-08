@@ -1,8 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep  5 13:30:21 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
+
+- Update to libpathrs v0.2.6. Upstream release notes:
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.6>
+
+  This release resolves some crashing issues runc 1.5 would run into if the
+  execution of the container binary failed (due to assertions being violated
+  within libpathrs).
+
+-------------------------------------------------------------------
 Fri Aug 28 05:53:54 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - Update to libpathrs v0.2.5. Upstream release notes:
-  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.4>
+  <https://github.com/cyphar/libpathrs/releases/tag/v0.2.5>
 
   WARNING: This release includes breaking API changes which will cause issues
   when rebuilding binaries. Previously-built binaries will continue to work

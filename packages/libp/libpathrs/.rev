@@ -25,4 +25,12 @@ dependency of container tools like runc, podman, buildah, etc in the future.</co
     <comment>1</comment>
     <requestid>1374355</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>90b2b63579cdd46293a40999e663d1d8</srcmd5>
+    <version>0.2.6</version>
+    <time>1788879144</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376030</requestid>
+  </revision>
 </revisionlist>
