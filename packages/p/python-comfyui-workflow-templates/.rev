@@ -143,4 +143,21 @@ Depends on the -core 0.3.331, -json 0.1.66 and -media-assets-01 0.1.38
 submissions filed alongside this one; please stage them together.</comment>
     <requestid>1375580</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6d6e64071eba620f0dc72e3e06af938d</srcmd5>
+    <version>0.11.55</version>
+    <time>1788879261</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.55.
+
+Adds the Anthropic Claude Fable 5.1, Meta Muse Image, MiniMax H3 Max Turbo and
+Recraft V4 style-reference templates. Bundle floors raised to match what
+upstream moved this release (-core 0.3.333, -json 0.1.68, -media-assets-01
+0.1.39); the other four bundles are unchanged upstream and their floors are
+left alone. Kept as floors, not upstream's &quot;==&quot; pins, so an independent bundle
+release cannot make this package unresolvable.
+
+Depends on the -core / -json / -media-assets-01 submissions filed alongside it.</comment>
+    <requestid>1376108</requestid>
+  </revision>
 </revisionlist>
