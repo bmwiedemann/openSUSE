@@ -18,10 +18,10 @@
 
 %define cpan_name Sereal
 Name:           perl-Sereal
-Version:        5.6.0
+Version:        5.10.0
 Release:        0
-# 5.006 -> normalize -> 5.6.0
-%define cpan_version 5.006
+# 5.010 -> normalize -> 5.10.0
+%define cpan_version 5.010
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Binary serialization module for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,15 +31,15 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Sereal::Decoder) >= 5.6
-BuildRequires:  perl(Sereal::Encoder) >= 5.6
+BuildRequires:  perl(Sereal::Decoder) >= 5.10
+BuildRequires:  perl(Sereal::Encoder) >= 5.10
 BuildRequires:  perl(Test::Deep)
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::LongString)
 BuildRequires:  perl(Test::More) >= 0.88
 BuildRequires:  perl(Test::Warn)
-Requires:       perl(Sereal::Decoder) >= 5.6
-Requires:       perl(Sereal::Encoder) >= 5.6
+Requires:       perl(Sereal::Decoder) >= 5.10
+Requires:       perl(Sereal::Encoder) >= 5.10
 Provides:       perl(Sereal) = %{version}
 %undefine       __perllib_provides
 %{perl_requires}

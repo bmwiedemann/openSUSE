@@ -114,4 +114,26 @@
       * Thanks to Marco Fontani, Ricardo Signes, and James Rouzier</comment>
     <requestid>1356935</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>15b77b8118d594753a12be1fc37c1742</srcmd5>
+    <version>5.10.0</version>
+    <time>1788879488</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.10.0 (5.010)
+   see /usr/share/doc/packages/perl-Sereal/Changes
+  5.010
+      * Reset the pending frozen-object state at the start of every decode.
+  5.009
+      * Only use Perl's C&lt;$Config{ccflags}&gt; when building bundled zstd on
+        AIX / IBM toolchains, or when C&lt;SEREAL_ZSTD_USE_CONFIG_CCFLAGS&gt; is
+        set. Other platforms now use the normal zstd build flags again.
+  5.008
+      * Decoder now supports C&lt;thaw_allow_classes&gt; and C&lt;thaw_deny_action&gt;
+        to control thaw callbacks during decoding. Thanks to James Rouzier
+        for the patches.
+  5.007
+      * Use $Config{ccflags} to compile ztd with. Should fix AIX.
+        Thanks to Thomas Seeling for the suggestion.</comment>
+    <requestid>1376314</requestid>
+  </revision>
 </revisionlist>
