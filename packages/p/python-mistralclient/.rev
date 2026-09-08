@@ -356,4 +356,23 @@
     <comment>- add 0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch</comment>
     <requestid>1370133</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b60f3f928f54b945236aaabfdb512082</srcmd5>
+    <version>6.3.0</version>
+    <time>1788879338</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.3.0:
+  * tox: Drop redundant override of install_command
+  * tox: Drop redundant injection of VIRTUAL_ENV variable
+  * Drop remaining code for Identity v2 API
+  * Drop remaining reference to Heat CloudWatch API
+  * Make CI jobs voting again
+  * Delete ad-hoc actions leaked by workbook functional tests
+  * Fix unit test failure caused by osprofiler 4.4.0
+  * Temporarily disable failing CI jobs
+  * Update master for stable/2026.1
+- drop 0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch
+  (upstream)</comment>
+    <requestid>1376151</requestid>
+  </revision>
 </revisionlist>

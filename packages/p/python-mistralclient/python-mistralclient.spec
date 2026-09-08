@@ -18,14 +18,13 @@
 
 %global pythons %{primary_python}
 Name:           python-mistralclient
-Version:        6.2.0
+Version:        6.3.0
 Release:        0
 Summary:        Python API and CLI for OpenStack Mistral
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://docs.openstack.org/python-mistralclient
 Source0:        https://files.pythonhosted.org/packages/source/p/python_mistralclient/python_mistralclient-%{version}.tar.gz
-Patch1:         0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch
 BuildRequires:  %{python_module PyYAML >= 3.13}
 BuildRequires:  %{python_module fixtures}
 BuildRequires:  %{python_module openstackclient}

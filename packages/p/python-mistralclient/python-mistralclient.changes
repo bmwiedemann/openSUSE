@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:51:33 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 6.3.0:
+  * tox: Drop redundant override of install_command
+  * tox: Drop redundant injection of VIRTUAL_ENV variable
+  * Drop remaining code for Identity v2 API
+  * Drop remaining reference to Heat CloudWatch API
+  * Make CI jobs voting again
+  * Delete ad-hoc actions leaked by workbook functional tests
+  * Fix unit test failure caused by osprofiler 4.4.0
+  * Temporarily disable failing CI jobs
+  * Update master for stable/2026.1
+- drop 0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch
+  (upstream)
+
+-------------------------------------------------------------------
 Thu Aug  6 21:23:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add 0001-Fix-unit-test-failure-caused-by-osprofiler-4.4.0.patch
