@@ -5979,4 +5979,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.16 release</comment>
     <requestid>1373254</requestid>
   </revision>
+  <revision rev="500" vrev="1">
+    <srcmd5>4bed826c1df22721c931cb0cc0b40a98</srcmd5>
+    <version>11.17</version>
+    <time>1788879223</time>
+    <user>anag_factory</user>
+    <comment>- updated to 11.17 release
+  - Bundled vkd3d upgraded to version 2.1.
+  - Initial support for display mode emulation.
+  - Better support for preferred UI languages.
+  - Various bug fixes.
+- update staging to 11.17 release</comment>
+    <requestid>1376012</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep  6 10:47:47 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.17 release
+  - Bundled vkd3d upgraded to version 2.1.
+  - Initial support for display mode emulation.
+  - Better support for preferred UI languages.
+  - Various bug fixes.
+- update staging to 11.17 release
+
+-------------------------------------------------------------------
 Sun Aug 23 08:24:41 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.16 release
