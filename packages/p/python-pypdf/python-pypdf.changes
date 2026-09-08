@@ -12,7 +12,7 @@ Mon Aug 24 09:18:28 UTC 2026 - Markéta Machová <mmachova@suse.com>
   * Improve RC4 fallback when cryptography can't provide it
   6.16.1
   * Limit iterations for outline retrieval and XForm text extraction
-  6.16.0
+  6.16.0 (CVE-2026-84309, bsc#1278986)
   * Detect cycles in TreeObject.insert_child
   * Build /ToUnicode source-code bytes directly in parse_bfrange
   * Reject typeless non-page /Kids entries in strict mode
