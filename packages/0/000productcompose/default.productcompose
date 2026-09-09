@@ -1815,6 +1815,7 @@ packagesets:
    - libcjson1 # reason: dvd:openSUSE-release
    - libclamav12 # reason: dvd:patterns-server-mail_server
    - libclammspack0 # reason: dvd:patterns-server-mail_server
+   - libclamunrar12 # reason: dvd:patterns-server-mail_server
    - libclang-cpp23 # reason: dvd:patterns-media-rest_dvd
    - libclang13 # reason: dvd:patterns-media-rest_dvd
    - libclang_rt23 # reason: dvd:patterns-media-rest_dvd
