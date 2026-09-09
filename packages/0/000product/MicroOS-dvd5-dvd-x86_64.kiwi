@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20260908" schemaversion="4.1">
+<image name="OBS__MicroOS___20260909" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20260908</productvar>
+      <productvar name="VERSION">20260909</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260908,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20260909,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260908/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20260909/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -56,6 +56,7 @@
     <repopackages>
       <repopackage name="aaa_base"/>
       <repopackage name="aardvark-dns"/>
+      <repopackage name="account-utils"/>
       <repopackage name="accounts-qml-module"/>
       <repopackage name="accountsservice"/>
       <repopackage name="adobe-sourcecodepro-fonts"/>
@@ -1027,6 +1028,7 @@
       <repopackage name="libpsl5"/>
       <repopackage name="libpulse-mainloop-glib0"/>
       <repopackage name="libpulse0"/>
+      <repopackage name="libpwaccess0"/>
       <repopackage name="libpwquality-tools"/>
       <repopackage name="libpwquality1"/>
       <repopackage name="libpxbackend-1_0"/>

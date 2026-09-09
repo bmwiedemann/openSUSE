@@ -403,7 +403,6 @@ unsorted:
   - accerciser-plugin-IPython 
   - accessibility-inspector 
   - accessibility-inspector-lang 
-  - account-utils 
   - account-utils-devel 
   - accounts-qml-module-doc 
   - accountsservice-devel 
@@ -8586,6 +8585,8 @@ unsorted:
   - hdsploader 
   - hdspmixer 
   - headmore 
+  - headroom 
+  - headroom-proxy 
   - headscale 
   - healpix 
   - healpix_cxx-devel 
@@ -13153,7 +13154,6 @@ unsorted:
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
-  - libdnssec9 
   - libdom-devel 
   - libdom0 
   - libdouble-conversion3-32bit 
@@ -14533,7 +14533,7 @@ unsorted:
   - libknet1-crypto-openssl-plugin 
   - libknet1-crypto-plugins-all 
   - libknet1-plugins-all 
-  - libknot15 
+  - libknot17 
   - libkokkos-5_1 
   - libkomparediff2-devel 
   - libkpathsea6 
@@ -15776,7 +15776,6 @@ unsorted:
   - libpurple-plugin-xmpp-http-upload 
   - libpurple-tcl 
   - libpurple0 
-  - libpwaccess0 
   - libpwquality-devel 
   - libpxbackend-1_0-32bit 
   - libpxbackend-1_0-mini 
@@ -17699,7 +17698,7 @@ unsorted:
   - libzopflipng1-x86-64-v3 
   - libzrtpcpp-devel 
   - libzrtpcpp4 
-  - libzscanner4 
+  - libzscanner5 
   - libzsolve0 
   - libzstd-devel 
   - libzstd-devel-32bit 
@@ -22292,6 +22291,7 @@ unsorted:
   - perl-IO-Tee 
   - perl-IO-TieCombine 
   - perl-IPC-Run 
+  - perl-IPC-Run3 
   - perl-IPC-ShareLite 
   - perl-IPC-System-Simple 
   - perl-IRI 
@@ -26681,6 +26681,7 @@ unsorted:
   - python313-magic-wormhole-mailbox-server 
   - python313-magic-wormhole-transit-relay 
   - python313-magicalimport 
+  - python313-magika 
   - python313-magnumclient 
   - python313-mailman-hyperkitty 
   - python313-mailman3-fedmsg-plugin 
@@ -27225,7 +27226,6 @@ unsorted:
   - python313-pure-eval 
   - python313-pure-protobuf 
   - python313-pure-sasl 
-  - python313-puremagic 
   - python313-purl 
   - python313-pwdlib 
   - python313-py 
@@ -27424,7 +27424,6 @@ unsorted:
   - python313-pypandoc 
   - python313-pyparallel 
   - python313-pyparsing 
-  - python313-pypdf 
   - python313-pyperclip 
   - python313-pyperf 
   - python313-pypi-attestations 
@@ -28085,6 +28084,7 @@ unsorted:
   - python313-sqlite-anyio 
   - python313-sqlite-fts4 
   - python313-sqlite-utils 
+  - python313-sqlite-vec 
   - python313-sqlite3-to-mysql 
   - python313-sqlitedict 
   - python313-sqlmodel 
@@ -30778,6 +30778,7 @@ unsorted:
   - python314-magic-wormhole-mailbox-server 
   - python314-magic-wormhole-transit-relay 
   - python314-magicalimport 
+  - python314-magika 
   - python314-mailman3-fedmsg-plugin 
   - python314-maison 
   - python314-makefun 
@@ -32220,6 +32221,7 @@ unsorted:
   - python314-sqlite-anyio 
   - python314-sqlite-fts4 
   - python314-sqlite-utils 
+  - python314-sqlite-vec 
   - python314-sqlite3-to-mysql 
   - python314-sqlitedict 
   - python314-sqlmodel 
