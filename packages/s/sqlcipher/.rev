@@ -275,4 +275,12 @@
 - Explicitly BuildRequires gcc and make</comment>
     <requestid>1371935</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>7b6761671e7bc95df8978a1f9277c9ac</srcmd5>
+    <version>4.19.0</version>
+    <time>1788963720</time>
+    <user>anag_factory</user>
+    <comment>Forward sqlcipher 4.19.0 to Factory. Native aarch64 build green, source_validator clean, SONAME unchanged (libsqlcipher.so.0), no rdep rebuilds.</comment>
+    <requestid>1376568</requestid>
+  </revision>
 </revisionlist>

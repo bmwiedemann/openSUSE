@@ -490,4 +490,41 @@ update to 25.0</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1352937</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>384aa0374f71818d6bfc584a7f758a64</srcmd5>
+    <version>26.3</version>
+    <time>1788963501</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.3:
+  * Add a public :class:`~packaging.ranges.VersionRange` API and
+    :meth:`SpecifierSet.to_range()
+    &lt;packaging.specifiers.SpecifierSet.to_range&gt;`, representing
+    the versions a specifier set accepts as an interval set that
+    supports intersection, union, difference, complement, set
+    relations, membership tests, and filtering.
+    :meth:`~packaging.ranges.VersionRange.to_specifier_set`
+    converts a range back to a
+    :class:`~packaging.specifiers.SpecifierSet` where a PEP 440
+    form exists. (:pull:`1267`, :pull:`1270`, :pull:`1298`)
+  * PEP 808: accept Metadata-Version: 2.6. (:pull:`1194`)
+  * Add a limit argument to parse_tag() for compressed tag sets.
+    (:issue:`1220`)
+  * Add a prefer_sdist_predicate argument to Pylock.select() to
+    prefer source distributions over wheels for selected
+    packages. (:pull:`1334`)
+  * Add :func:`~packaging.tags.pure_python_tags` to generate the
+    pure-Python tags for a Python version without touching the
+    running platform. (:pull:`1346`)
+  * Add :meth:`SpecifierSet.is_subset()
+    &lt;packaging.specifiers.SpecifierSet.is_subset&gt;`,
+    :meth:`~packaging.specifiers.SpecifierSet.is_superset`, and
+    :meth:`~packaging.specifiers.SpecifierSet.is_disjoint`, which
+    compare the versions two specifier sets accept.
+    (:pull:`1313`)
+  * Drop support for Python 3.8; packaging now requires Python
+    3.9 or later. (:pull:`1157`)
+  * Prefer native linux_* platform tags over manylinux and
+    musllinux tags on Linux. (:issue:`160`)</comment>
+    <requestid>1376246</requestid>
+  </revision>
 </revisionlist>

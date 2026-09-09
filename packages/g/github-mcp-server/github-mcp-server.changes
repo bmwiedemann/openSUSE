@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:20:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.1:
+  * OAuth protected-resource metadata now advertises only the
+    default scopes instead of the full step-up catalogue, so
+    clients no longer request delete_repo, workflow and
+    administrative scopes at login.
+  * assign_copilot_to_issue and
+    assign_copilot_to_issue_with_intent reject a missing
+    owner, repo or issue_number with a clear parameter error
+    instead of a confusing repository-resolution failure.
+- Vendored Go modules are unchanged (go.mod/go.sum identical to
+  1.12.0).
+
+-------------------------------------------------------------------
 Fri Sep  4 08:15:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.12.0:

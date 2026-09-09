@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:28:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.50.0:
+  * GPT-6 Astra models; new AIML API provider
+  * tool calling for goose-agent
+  * MCP clients prefer the latest protocol version
+  * the remaining keyring operation timeout is gone
+  * fast model routing is gone
+  * Snowflake connections require HTTPS
+  * hardening: CLI session names stay inside the trusted path,
+    subagent platform guards, authoritative tool-approval details,
+    permission revocations persist across managers, tracing honors
+    the content-capture opt-out
+  * see upstream's release notes for the full list
+- Re-derive the License tag from the new vendored crate graph (1333
+  crates vendored, 611 linked): the 13 SPDX identifiers are unchanged
+
+-------------------------------------------------------------------
 Fri Sep  4 07:56:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.49.0:

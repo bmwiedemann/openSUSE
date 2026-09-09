@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-siphash24
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Streaming-capable SipHash-1-3 and SipHash-2-4 implementation
 License:        Apache-2.0 OR LGPL-2.1-or-later

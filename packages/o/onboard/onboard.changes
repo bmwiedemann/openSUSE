@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Aug 26 06:36:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 1ced23c0.patch: Fix build against GNOME alpha/beta/rc
+  versions; the pattern to detect versions was too strict.
+
+-------------------------------------------------------------------
 Fri Aug  7 11:58:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.4.4-5:

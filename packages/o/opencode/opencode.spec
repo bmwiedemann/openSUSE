@@ -35,15 +35,15 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.29
+Version:        1.18.30
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.29 from the declared license field
-# of all 506 unique packages in the vendor tarball (509 store entries). No
-# copyleft of any kind. The SPDX set is unchanged from 1.18.27. Two
+# Legal-Review-Notice: rederived for 1.18.30 from the declared license field
+# of all 508 unique packages in the vendor tarball (510 store entries). No
+# copyleft of any kind. The SPDX set is unchanged from 1.18.29. Two
 # conclusions are not visible from the packages themselves: poe-oauth 0.0.8
 # declares no licence and ships no text, its MIT grant comes from the
 # upstream repository root; caniuse-lite is CC-BY-4.0, whose attribution
@@ -66,7 +66,7 @@ Source4:        %{name}_vendor_trace
 Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
 # Upstream's build script fails unless bun satisfies a caret range around the
-# version it pins. It pins 1.3.14 and Factory has 1.4.0, so the check passes
+# version it pins. It pins 1.3.14 and Factory has 1.4.2, so the check passes
 # and this patch is inert today; it stays because both versions float, and a
 # major bump on either side would otherwise stop the build over upstream's
 # convenience rather than a real incompatibility. See README.SUSE-maint.

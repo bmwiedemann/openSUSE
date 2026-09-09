@@ -201,7 +201,12 @@ sed -i -e '/set(CMAKE_BUILD_WITH_INSTALL_RPATH/ s@.*@# \0@' CMakeLists.txt
 %endif
 
 # Avoid oversubscription, some tests run with 2 Ranks locally
+%if 0%{?suse_version} >= 1600
+export MAX_TEST_THREADS=$(( ${RPM_BUILD_NCPUS:-2} / 2 ))
+%else
 export MAX_TEST_THREADS=$(( %{?_smp_build_ncpus}%{!?_smp_build_ncpus:2} / 2 ))
+%endif
+[ "$MAX_TEST_THREADS" -ge 1 ] || MAX_TEST_THREADS=1
 %cmake \
   -DGMX_VERSION_STRING_OF_FORK=openSUSE \
   -DCMAKE_INSTALL_PREFIX=%{_prefix} \

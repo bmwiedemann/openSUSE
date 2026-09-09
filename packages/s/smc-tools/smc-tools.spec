@@ -17,7 +17,7 @@
 
 
 Name:           smc-tools
-Version:        1.8.7
+Version:        1.8.8
 Release:        0
 Summary:        Shared Memory Communication via RDMA
 License:        EPL-1.0

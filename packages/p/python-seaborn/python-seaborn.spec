@@ -1,7 +1,7 @@
 #
 # spec file for package python-seaborn
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -92,6 +92,7 @@ donttest="testeverythingexcept"
 # This fails in i586 because of int size
 if [ $(getconf LONG_BIT) -eq 32 ]; then
   donttest="$donttest or test_index_alignment_between_series"
+  donttest="$donttest or test_index_as_variable"
 fi
 %pytest -n auto -rfEs -k "not ($donttest)"
 

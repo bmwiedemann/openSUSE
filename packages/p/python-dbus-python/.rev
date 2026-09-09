@@ -154,4 +154,41 @@
     <comment></comment>
     <requestid>1279744</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c4512983eaf204265b642656868db93e</srcmd5>
+    <version>1.4.0</version>
+    <time>1788963523</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.4.0:
+  * Automatically set the NO_REPLY message flag in call_async if
+    there is no reply handler and no error handler
+  * Add arg0namespace match rule support
+    Hofstee)
+  * Add argNpath match rules support
+  * Generate a valid sdist from `meson dist`
+  * Mention more alternatives to this package in the README
+  * Don't require tomllib when generating dist tarball on Python
+    ≥ 3.11
+  * Fix compilation with Python ≥ 3.13 in some situations
+  * Avoid using distutils in setup.py (Simon McVittie)
+  * Fix a typo in example code (dbus-python!25, Robert Ancell)
+  * Safer handling of weak references (Simon McVittie)
+- add missing keyring
+- add Revert-using-Py_TPFLAGS_MANAGED_WEAKREF.patch from fedora,
+  fixes testsuite failures on newer python versions
+
+- Update the provides/obsoletes tags for old-style dbus-1-$python
+- Version update to version 1.2.14:
+- dbus-1-python3 package added
+ - libdbus 1.2 is still supported, but libdbus &gt;= 1.4 is
+ - Make BusConnection.list_activatable_names actually call
+ - Fix compilation on platforms where Py_ssize_t is larger than
+ - fd.o #21831: deserialize empty byte arrays with byte_arrays=True
+ - fd.o #23278, #25105: fix crashes when trying to append more
+   struct entries than the signature allows with libdbus 1.4
+ - fd.o #23831: fix crashes when an embedded Python interpreter
+   imports dbus, is finalized, is re-initialized, and re-imports
+ - fd.o #15013: add dbus.lowlevel.MESSAGE_TYPE_SIGNAL etc., for</comment>
+    <requestid>1376307</requestid>
+  </revision>
 </revisionlist>

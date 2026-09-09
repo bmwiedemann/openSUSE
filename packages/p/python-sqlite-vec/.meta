@@ -1,0 +1,8 @@
+<package name="python-sqlite-vec" project="openSUSE:Factory">
+  <title>Vector search SQLite extension for Python</title>
+  <description>sqlite-vec is a small SQLite extension for storing and querying float,
+int8, and binary vectors in vec0 virtual tables. This package ships the
+loadable (vec0.so) plus Python helpers to load it into sqlite3
+connections and to serialize vectors.</description>
+  <url>https://github.com/asg017/sqlite-vec</url>
+</package>

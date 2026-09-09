@@ -7,4 +7,14 @@
     <comment>new package, dependency of other python packages</comment>
     <requestid>1359999</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>52daf138ebd93f4ccf06e24740c48afa</srcmd5>
+    <version>1.9</version>
+    <time>1788963655</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9:
+  * Declare support for Python 3.15
+  * Fix typos in docs and the intdigest() docstring</comment>
+    <requestid>1376538</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 08 00:48:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
+
+- Update to 0.7.2
+  * Fix "Edit Pressed Action" right-click menu for RSTICK and CPAD
+  * Fix saving RSTICKPRESS action
+  * run.sh: Show GTK more deprecation logs via G_ENABLE_DIAGNOSTIC=1
+  * Fix rest of margin-left/margin-right GTK deprecations
+  * Migrate from deprecated GTK.Image stock
+  
+-------------------------------------------------------------------
 Wed Sep 02 00:42:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.7.1

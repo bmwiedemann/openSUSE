@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:26:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.11:
+  * Verify source archives against hashes recorded in uv.lock
+    before reading metadata or running build backends
+  * Verify supplied hashes for registry requirements pinned with
+    === under --verify-hashes and --require-hashes
+  * Apply hashes from public-version pins to matching local
+    versions when no exact local-version hash is provided
+  * Speed up installs that overwrite or merge files, and local
+    wheel installs via positioned ZIP reads and reused buffers
+  * Skip resolution for uv pip install --no-deps when the
+    requested packages are already installed
+  * Trim whitespace in .python-version files; suppress VIRTUAL_ENV
+    mismatch warnings for --no-sync and --frozen edits
+  * Warn and continue when uv python list cannot query an
+    interpreter
+  * Preview: generate missing pylock.toml artifact hashes (PEP
+    751) and warn on empty hash tables
+  * Refresh the vendored crates; the linked graph grows to 720
+    (multiversion_no_op is new) but the licence set is unchanged
+
+-------------------------------------------------------------------
 Mon Sep  7 08:17:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.10:

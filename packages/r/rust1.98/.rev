@@ -7,4 +7,13 @@
     <comment>New package rust1.98</comment>
     <requestid>1373492</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d3fa0e6a642aa3336baff24aa0beb74c</srcmd5>
+    <version>1.98.1</version>
+    <time>1788963519</time>
+    <user>anag_factory</user>
+    <comment>- Update to rust1.98.1
+- Release notes can be found externally: https://github.com/rust-lang/rust/releases/tag/1.98.1</comment>
+    <requestid>1376267</requestid>
+  </revision>
 </revisionlist>

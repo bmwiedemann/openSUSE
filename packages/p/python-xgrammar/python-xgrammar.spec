@@ -17,22 +17,20 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xgrammar
-Version:        0.2.5.post1
+Version:        0.2.6
 Release:        0
 Summary:        Efficient, Flexible and Portable Structured Generation
 License:        Apache-2.0
 URL:            https://xgrammar.mlc.ai/
-# Upstream's PyPI sdist is unreliable (absent for 0.2.4 and 0.2.5), so the
-# tarball is generated from the git tag via _service, with the 3rdparty
-# submodules the C++ build needs.
 # https://github.com/mlc-ai/xgrammar
-Source:         xgrammar-%{version}.tar.gz
-BuildRequires:  %{python_module apache-tvm-ffi >= 0.1.9}
+# PyPI sdist ships the 3rdparty sources the C++ build needs.
+Source:         https://files.pythonhosted.org/packages/source/x/xgrammar/xgrammar-%{version}.tar.gz
+BuildRequires:  %{python_module apache-tvm-ffi >= 0.1.10}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pydantic}
-BuildRequires:  %{python_module scikit-build-core}
+BuildRequires:  %{python_module scikit-build-core >= 0.10.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module torch >= 1.10.0}
 BuildRequires:  %{python_module transformers >= 4.38.0}
@@ -45,7 +43,9 @@ BuildRequires:  gcc-c++
 BuildRequires:  libopenblas_pthreads0
 BuildRequires:  ninja
 BuildRequires:  python-rpm-macros
-Requires:       python-apache-tvm-ffi >= 0.1.9
+# triton is a Linux x86_64 PyPI dep for the CUDA bitmask kernel only; CPU
+# auto-selects the bundled CPU backend. python-triton is not in Factory.
+Requires:       python-apache-tvm-ffi >= 0.1.10
 Requires:       python-numpy
 Requires:       python-pydantic
 Requires:       python-torch >= 1.10.0
@@ -64,12 +64,6 @@ expressions and context-free grammars.
 
 %build
 export CMAKE_GENERATOR=Ninja
-# Exclude the internal C++ build artifacts (headers plus the static
-# libxgrammar.a, unused at runtime) from the wheel instead of deleting them in
-# %%install: the fat-LTO .a is not reproducible (random .gnu.lto_* section
-# names, ar timestamps) and deleting it after the fact left its varying
-# checksum behind in dist-info/RECORD.
-export SKBUILD_WHEEL_EXCLUDE='**.a;**.h'
 %pyproject_wheel
 
 %install

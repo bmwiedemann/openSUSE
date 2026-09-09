@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Fri Sep 04 18:05:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
-- Update to version 1.75.1:
+- Update to version 1.75.1: (boo#1279548)
   - Security
     - archive
       - Fix zip slip path traversal in untrusted zip files

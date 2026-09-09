@@ -3198,4 +3198,12 @@
     <comment></comment>
     <requestid>1369538</requestid>
   </revision>
+  <revision rev="378" vrev="1">
+    <srcmd5>6974e3f36fe6d87c5f1f6d84d0637560</srcmd5>
+    <version>4.22.0_04</version>
+    <time>1788963550</time>
+    <user>anag_factory</user>
+    <comment>Security update for bsc#1276838 CVE-2026-62437 XSA-509, bsc#1276839 CVE-2026-79602 XSA-510, bsc#1276841 CVE-2026-79603 XSA-511</comment>
+    <requestid>1376391</requestid>
+  </revision>
 </revisionlist>

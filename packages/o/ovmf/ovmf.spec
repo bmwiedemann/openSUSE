@@ -27,7 +27,7 @@
 %endif
 
 Name:           ovmf
-Version:        202605
+Version:        202608
 Release:        0
 Summary:        Open Virtual Machine Firmware
 License:        BSD-2-Clause-Patent
@@ -59,8 +59,8 @@ Source100:      %{name}-rpmlintrc
 Source101:      gdb_uefi.py.in
 Patch1:         %{name}-gdb-symbols.patch
 Patch2:         %{name}-pie.patch
-# Bug 1267604 - ovmf: constructor function causes riscv VM boot failure
-Patch3:         %{name}-Revert-UefiCpuPkg-BaseRiscV64CpuTimerLib-Add-constru.patch
+# Bug 1279560 - ovmf: riscv64 ovmf build failure with GCC
+Patch3:         %{name}-OvmfPkg-RiscVVirt-PlatformPei-Initialize-TpmBase.patch
 # Bug 1259122 - [16.1][Build 5.19][aarch64] openQA test fails in qemu - truncation screen issue appears in qemu boot manager
 Patch5:         %{name}-MdeModulePkg-ConSplitterDxe-Set-default-ConOut-mode.patch
 Patch6:         %{name}-ignore-spurious-GCC-12-warning.patch

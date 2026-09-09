@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep  3 12:02:49 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.4
+  * soapysdr would not compile static.
+  * Some python2 APIs were converted to Python 3 for SWIG 4.5.0
+    compatibility.
+  * An ssh compatibility mode was added to gtlssh. This deals with
+    how parameters are parsed. If you invoke it as gsh, parameters
+    are parsed as ssh does. If invoked as gtlssh, they are parsed
+    like gtlssh does (which is arguably more sane). There is also
+    a parameter to do this. This helps when using it with git and
+    rsync and such. This is described in the gtlssh man page.
+  * In the fsk (afskmdm) gensio, low sample rates were broken
+    because the gain was not set properly in the FIR filter
+    implementation.
+
+-------------------------------------------------------------------
 Wed Jul 22 09:27:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.0.3

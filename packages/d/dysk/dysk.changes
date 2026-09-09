@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Aug 31 13:59:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix version_rewrite pattern in _service to properly strip 'v'
+  from the version field.
+- Re-run service, which triggered vendor tarball update.
+
+-------------------------------------------------------------------
 Mon May 04 18:08:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version v3.6.1:

@@ -7,12 +7,12 @@
 @ai-sdk+alibaba@1.0.17+d6123d32214422cb
 @ai-sdk+amazon-bedrock@4.0.166+d6123d32214422cb
 @ai-sdk+anthropic@3.0.111+d6123d32214422cb
-@ai-sdk+azure@3.0.88+d6123d32214422cb
+@ai-sdk+azure@3.0.93+d6123d32214422cb
 @ai-sdk+cerebras@2.0.41+d6123d32214422cb
 @ai-sdk+cerebras@2.0.60+d6123d32214422cb
 @ai-sdk+cohere@3.0.27+d6123d32214422cb
 @ai-sdk+deepinfra@2.0.41+d6123d32214422cb
-@ai-sdk+deepseek@2.0.47+d6123d32214422cb
+@ai-sdk+deepseek@2.0.50+d6123d32214422cb
 @ai-sdk+gateway@3.0.104+d6123d32214422cb
 @ai-sdk+google-vertex@4.0.181+681b88a6fb77e557
 @ai-sdk+google@3.0.108+d6123d32214422cb
@@ -25,6 +25,7 @@
 @ai-sdk+openai-compatible@2.0.54+d6123d32214422cb
 @ai-sdk+openai@3.0.105+d6123d32214422cb
 @ai-sdk+openai@3.0.84+d6123d32214422cb
+@ai-sdk+openai@3.0.88+d6123d32214422cb
 @ai-sdk+perplexity@3.0.26+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.21+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.23+d6123d32214422cb
@@ -299,8 +300,8 @@ gensync@1.0.0-beta.2
 get-caller-file@2.0.5
 get-east-asian-width@1.6.0
 get-stream@8.0.1
-gitlab-ai-provider@6.13.0+40d0fcf8a09bea5b
-gitlab-ai-provider@6.13.0+6dfbf2eb88514315
+gitlab-ai-provider@6.15.0+40d0fcf8a09bea5b
+gitlab-ai-provider@6.15.0+6dfbf2eb88514315
 glob@13.0.5
 glob@9.3.5
 google-auth-library@10.5.0+759ce506b1ed1a42

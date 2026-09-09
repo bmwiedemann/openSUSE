@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:01:28 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade to version 4.5ga6
+  * Makefile.aux now includes `dual` and `dual-configure` targets 
+    to simplify combined POSIX/Windows builds.
+- Release Notes: https://x3270.miraheze.org/wiki/Release_Notes/suite3270/4.5ga6 
+
+-------------------------------------------------------------------
 Fri Jan 16 10:58:25 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade x3270 to version 4.5ga5

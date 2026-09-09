@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep  7 15:14:18 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Fix the file extension of the source file for BRP_PESIGN_FILES
+  The pesign-repackage.spec.in in pesign-obs-integration uses 'file
+  extension + .sig' to identify the signing format. It only supports
+  .auth as the source file extension for signing a ESL
+  (EFI_SIGNATURE_LIST). The name of signed ESL file is
+  KEKUpdate_openSUSE_PK.bin now.
+
+-------------------------------------------------------------------
 Wed Aug 26 06:08:57 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add ovmf-KEKUpdate to ovmf package (jsc#PED-16786)

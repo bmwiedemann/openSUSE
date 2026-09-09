@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 09 11:42:02 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260909.7cfa1f0:
+  * Drop PCR warning when is not part of the policy
+
+-------------------------------------------------------------------
+Tue Sep 08 13:51:04 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Update to version 1+git20260908.c641fc2:
+  * Update the shim when required
+  * Warn when recovery PIN is different from recovery key
+  * Improves extra boot entries support
+  * Better report when the default snapshot diverges
+  * Explain how to do re-enrolling if recovery PIN fails
+  * Explain why update-prediction fails and how to solve it
+  * Hide comparison output
+  * Add bootctl default entry in the prediction
+
+-------------------------------------------------------------------
 Thu Sep 03 13:44:56 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
 
 - Update to version 1+git20260903.f91f636:

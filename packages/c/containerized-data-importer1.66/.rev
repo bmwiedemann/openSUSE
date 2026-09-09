@@ -16,4 +16,26 @@ The bundled Go dependencies are re-vendored so 1.66 does not regress the depende
 </comment>
     <requestid>1371086</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>af34ed8981922b2a153a3a50bed91bb5</srcmd5>
+    <version>1.66.1</version>
+    <time>1788963607</time>
+    <user>anag_factory</user>
+    <comment>Update to containerized-data-importer 1.66.1 and security re-vendor of the bundled Go dependencies (tarball rebuilt from v1.66.1 with updated go.mod/vendor; upstream sources unchanged).
+
+1.66.1 upstream changes:
+- import into 4k-sector block devices no longer fails (qemu fix pulled into the importer image build)
+- nbdkit nfc support for vSphere disk imports
+- minimum PVC size for the HPE XP and Hitachi HSPC provisioners
+
+v1.66.1 ships the same pristine vendor tree as v1.66.0, so this carries the 1.66.0 bumps forward (golang.org/x/net 0.57.0, moby/spdystream 0.5.1, ulikunitz/xz 0.5.15, go-jose/go-jose/v3 3.0.5) and adds:
+- google.golang.org/grpc 1.79.3 -&gt; 1.83.1: CVE-2026-84304 (bsc#1279234), CVE-2026-84303 (bsc#1279315)
+- golang.org/x/crypto 0.54.0 -&gt; 0.56.0: CVE-2026-56854, CVE-2026-56855, CVE-2026-78662 (bsc#1278621)
+- go.opentelemetry.io/otel 1.39.0 -&gt; 1.44.0: CVE-2026-41178 (bsc#1276687)
+- golang.org/x/text 0.40.0 -&gt; 0.41.0 (required by x/crypto 0.56.0)
+
+golang.org/x/crypto 0.56.0 requires Go 1.26, so BuildRequires moves to golang(API) &gt;= 1.26. _service revision follows the tag.
+</comment>
+    <requestid>1376507</requestid>
+  </revision>
 </revisionlist>

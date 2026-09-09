@@ -49,4 +49,17 @@
         bsc#1267857</comment>
     <requestid>1357991</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>b8537d4b53e8d93be96762f9377c0025</srcmd5>
+    <version>1.140.0</version>
+    <time>1788963530</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.140.0 (1.14)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+  1.14 2026-09-03T14:10:30Z
+      - security fix: CVE-2026-16028 - memory exhaustion, a remote denial-of-service
+        (reported by Robert Rothenberg, CPAN Security Group)
+      - licence: GPL-1 has been updated with the correct links to FSF (#19)</comment>
+    <requestid>1376329</requestid>
+  </revision>
 </revisionlist>

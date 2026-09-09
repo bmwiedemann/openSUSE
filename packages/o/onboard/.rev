@@ -236,4 +236,13 @@
   * Updated translations.</comment>
     <requestid>1372777</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>5021c302df3c8747cdcb2f6edd34075a</srcmd5>
+    <version>1.4.4.5</version>
+    <time>1788963759</time>
+    <user>anag_factory</user>
+    <comment>- Add 1ced23c0.patch: Fix build against GNOME alpha/beta/rc
+  versions; the pattern to detect versions was too strict.</comment>
+    <requestid>1376607</requestid>
+  </revision>
 </revisionlist>

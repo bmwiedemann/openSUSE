@@ -1,0 +1,31 @@
+Subject: x86/emul: cope with internal handlers returning X86EMUL_RETRY
+From: Roger Pau Monne roger@xenproject.org Fri Aug 7 11:03:48 2026 +0200
+Date: Wed Aug 26 17:48:17 2026 +0100:
+Git: 41f73fe55bad6269bc03e25bf878ab608017acee
+
+hvm_io_intercept() can return X86EMUL_RETRY, and as such it needs to be
+handled in the switch in hvmemul_do_io() to avoid triggering the BUG() from
+the default case.
+
+Reset the vCPU state to no in-flight IOREQ and return X86EMUL_RETRY so that
+the access is retried.
+
+This is XSA-510 / CVE-2026-79602.
+
+Reported-by: Jiqian Chen <Jiqian.Chen@amd.com>
+Signed-off-by: Roger Pau Monné <roger@xenproject.org>
+Reviewed-by: Jan Beulich <jbeulich@suse.com>
+(cherry picked from commit 62aff073266bd83fa2d675913d913134abd3c82b)
+
+diff --git a/xen/arch/x86/hvm/emulate.c b/xen/arch/x86/hvm/emulate.c
+index 2efb1d4f08..c09ea002ec 100644
+--- a/xen/arch/x86/hvm/emulate.c
++++ b/xen/arch/x86/hvm/emulate.c
+@@ -308,6 +308,7 @@ static int hvmemul_do_io(
+     switch ( rc )
+     {
+     case X86EMUL_OKAY:
++    case X86EMUL_RETRY:
+         vio->req.state = STATE_IOREQ_NONE;
+         break;
+     case X86EMUL_UNHANDLEABLE:

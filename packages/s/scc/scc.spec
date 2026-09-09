@@ -1,7 +1,7 @@
 #
 # spec file for package scc
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define shortname sccount
 
 Name:           scc
-Version:        3.6.0
+Version:        4.1.0
 Release:        0
 Summary:        CLI tool to report lines of code and other metrics
 License:        MIT
@@ -27,7 +27,7 @@ Group:          Development/Tools/Other
 URL:            https://github.com/boyter/scc
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.24
+BuildRequires:  golang(API) >= 1.26
 
 %description
 A tool similar to cloc, sloccount and tokei. For counting physical the lines of

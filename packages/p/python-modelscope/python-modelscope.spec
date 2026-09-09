@@ -16,10 +16,9 @@
 #
 
 
-%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope
-Version:        1.39.1
+Version:        1.40.0
 Release:        0
 Summary:        ModelScope hub and library core (Model-as-a-Service SDK)
 # Legal-Review-Notice: The sdist vendors non-free NVIDIA EG3D/StyleGAN
@@ -31,9 +30,11 @@ Summary:        ModelScope hub and library core (Model-as-a-Service SDK)
 License:        Apache-2.0 AND BSD-3-Clause AND MIT
 URL:            https://github.com/modelscope/modelscope
 Source:         https://files.pythonhosted.org/packages/source/m/modelscope/modelscope-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-CVE-2026-84202.patch CVE-2026-84202 gh#modelscope/modelscope#1759 mpluskal@suse.com -- yaml.SafeLoader for remote model config YAML
+Patch0:         fix-CVE-2026-84202.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module filelock}
-BuildRequires:  %{python_module modelscope-hub >= 0.2.0}
+BuildRequires:  %{python_module modelscope-hub >= 0.3.0}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.25}
@@ -41,12 +42,10 @@ BuildRequires:  %{python_module setuptools >= 69}
 BuildRequires:  %{python_module tqdm >= 4.64.0}
 BuildRequires:  %{python_module urllib3 >= 1.26}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       alts
 Requires:       python-filelock
-Requires:       python-modelscope-hub >= 0.2.0
+Requires:       python-modelscope-hub >= 0.3.0
 Requires:       python-packaging
 Requires:       python-requests >= 2.25
 Requires:       python-setuptools
@@ -63,7 +62,9 @@ BuildArch:      noarch
 ModelScope is a Model-as-a-Service SDK for browsing, downloading and
 running models from ModelScope Hub. This package ships the hub/library
 core only: the cv, nlp, audio and related extras are not required.
-The modelscope and ms commands delegate to python-modelscope-hub.
+The modelscope and ms commands are provided by python-modelscope-hub;
+this package contributes CLI plugins through the
+modelscope_hub.cli_plugins entry-point group.
 
 %prep
 %autosetup -p1 -n modelscope-%{version}
@@ -94,27 +95,18 @@ find %{buildroot}%{$python_sitelib}/modelscope -type f \( \
   -o -name '*.cpp' -o -name '*.cxx' -o -name '*.cu' -o -name '*.cuh' \) -delete
 find %{buildroot}%{$python_sitelib}/modelscope -type f -exec chmod a-x {} +
 }
-%python_clone -a %{buildroot}%{_bindir}/modelscope
-%python_clone -a %{buildroot}%{_bindir}/ms
-%python_group_libalternatives modelscope
-%python_group_libalternatives ms
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 # Full tests need network and downloaded models. import modelscope
-# pulls modelscope_hub (mandatory).
+# pulls modelscope_hub (mandatory). Console scripts live in
+# python-modelscope-hub; python -m modelscope.cli.cli still delegates.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope, modelscope_hub; assert modelscope.__version__ == '%{version}'"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/modelscope-%{$python_bin_suffix} --help
-
-%pre
-%python_libalternatives_reset_alternative modelscope
-%python_libalternatives_reset_alternative ms
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -m modelscope.cli.cli --help
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
-%python_alternative %{_bindir}/modelscope
-%python_alternative %{_bindir}/ms
 %{python_sitelib}/modelscope
 %{python_sitelib}/modelscope-%{version}.dist-info
 

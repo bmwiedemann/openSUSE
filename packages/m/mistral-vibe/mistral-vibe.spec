@@ -15,8 +15,20 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-Name:           mistral-vibe
-Version:        2.24.5
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+# the test flavour installs into the buildroot only so that %%check has an
+# importable tree on PYTHONPATH; it declares no %%files and ships nothing
+%define _unpackaged_files_terminate_build 0
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+%define origname mistral-vibe
+Name:           %{origname}%{psuffix}
+Version:        2.25.0
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -43,6 +55,10 @@ Patch5:         warning_cleanup.patch
 # PATCH-FIX-OPENSUSE obs-test-synchronization.patch mcepl@suse.com
 # make UI tests robust on slow build workers
 Patch6:         obs-test-synchronization.patch
+# PATCH-FIX-UPSTREAM fingerprint_file_contents.patch gh#mistralai/mistral-vibe#1064 martin@pluskal.org
+# a same-length config rewrite inside one filesystem timestamp tick was
+# invisible to the file fingerprint; hash the contents too
+Patch7:         fingerprint_file_contents.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -51,6 +67,8 @@ BuildRequires:  python3-hatch-vcs
 BuildRequires:  python3-hatchling
 BuildRequires:  python3-pip
 BuildRequires:  python3-rfc8785 >= 0.1.4
+BuildArch:      noarch
+%if !%{with test}
 Requires:       python3-GitPython >= 3.1.57
 Requires:       python3-PyJWT >= 2.13.0
 Requires:       python3-PyYAML >= 6.0.3
@@ -124,6 +142,7 @@ Requires:       python3-rfc8785 >= 0.1.4
 Requires:       python3-rich >= 15.0.0
 Requires:       python3-rpds-py >= 0.30.0
 Requires:       python3-sentry-sdk >= 2.64.0
+Requires:       python3-setproctitle >= 1.3.7
 Requires:       python3-six >= 1.17.0
 Requires:       python3-smmap >= 5.0.3
 Requires:       python3-sounddevice >= 0.5.5
@@ -152,8 +171,9 @@ Obsoletes:      python313-mistral-vibe < %{version}
 Provides:       python313-mistral-vibe = %{version}
 Provides:       python314-mistral-vibe = %{version}
 Obsoletes:      python314-mistral-vibe < %{version}
-BuildArch:      noarch
+%endif
 # SECTION test requirements
+%if %{with test}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  python3-GitPython >= 3.1.57
@@ -257,6 +277,7 @@ BuildRequires:  python3-websockets >= 16.0
 BuildRequires:  python3-zipp >= 3.23.1
 BuildRequires:  python3-zstandard >= 0.25.0
 BuildRequires:  tree-sitter-bash
+%endif
 # /SECTION
 
 %description
@@ -266,7 +287,7 @@ allowing you to use natural language to explore, modify, and interact
 with your projects through a powerful set of tools.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{origname}-%{version}
 
 %build
 %python3_pyproject_wheel
@@ -275,13 +296,22 @@ with your projects through a powerful set of tools.
 %python3_pyproject_install
 %fdupes %{buildroot}%{python3_sitelib}
 
+%if %{with test}
 %check
-export PYTHONTRACEMALLOC=20
-PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60"
+# Do NOT set PYTHONTRACEMALLOC here: recording a 20-frame traceback for every
+# allocation made the suite about 29 times slower (2h25m -> 5min) and turned
+# roughly 44 timing-sensitive tests into spurious timeout failures.
+# Upstream's pyproject.toml sets "-n auto", one xdist worker per CPU; cap it so
+# the suite is the same everywhere instead of varying with the builder's CPU
+# count, and so many-core workers do not exhaust the pty pool.  A later -n
+# overrides the ini value.
+PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60 -n 4"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
 %python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file'
+%endif
 
+%if !%{with test}
 %files
 %license LICENSE
 %doc README.md
@@ -290,5 +320,6 @@ export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
 %{_bindir}/vibe-app-server
 %{python3_sitelib}/vibe
 %{python3_sitelib}/mistral_vibe-%{version}.dist-info
+%endif
 
 %changelog

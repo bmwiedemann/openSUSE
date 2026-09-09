@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:36:23 MDT 2026 - carnold@suse.com
+
+- bsc#1276838 - VUL-0: CVE-2026-62437: xen: x86: DMs may cause mem
+  leak by IRQ binding (XSA-509)
+  6a8f18ad-pass-through-disallow-pt_irq_create_bind-on-dying-domains.patch
+- bsc#1276839 - VUL-0: CVE-2026-79602: xen: x86: improper handling
+  of HVM emulation return codes (XSA-510)
+  6a759f74-emul-cope-with-internal-handlers-returning-X86EMUL_RETRY.patch
+- bsc#1276841 - VUL-0: CVE-2026-79603: xen: unconditionally do TLB
+  flushing ahead of page scrubbing (XSA-511)
+  6a71bd97-xen-page_alloc-ensure-TLB-flush-is-done-ahead-of-page-scrubbing.patch
+
+-------------------------------------------------------------------
 Tue Aug  4 07:55:35 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Re-enable aarch64 builds

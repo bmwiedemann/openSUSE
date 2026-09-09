@@ -38,7 +38,7 @@
 %endif
 
 Name:           ansible-creator
-Version:        26.3.3
+Version:        26.8.0
 Release:        0
 Summary:        A CLI tool for scaffolding Ansible Content
 License:        Apache-2.0

@@ -16,8 +16,6 @@
 #
 
 
-%global         provider_prefix github.com/containernetworking/cni
-%global         import_path     %{provider_prefix}
 %define         cni_etc_dir  %{_sysconfdir}/cni
 %define         cni_bin_dir  %{_libexecdir}/cni
 %define         cni_doc_dir  %{_docdir}/cni
@@ -31,14 +29,9 @@ URL:            https://github.com/containernetworking/cni
 Source0:        %{name}-%{version}.tar.zst
 Source1:        99-loopback.conf
 Source2:        vendor.tar.gz
-BuildRequires:  golang-packaging
-BuildRequires:  shadow
-BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
 BuildRequires:  golang(API) >= 1.21
-Requires(post): %fillup_prereq
 Recommends:     cni-plugins
-%{?systemd_requires}
 
 %description
 The CNI (Container Network Interface) project consists of a
@@ -53,43 +46,31 @@ range of support and the specification is simple to implement.
 %autosetup -a2
 
 %build
-export GOFLAGS=-mod=vendor
-%goprep %{import_path}
-%gobuild libcni
-%gobuild cnitool
-for d in plugins/test/*; do
-  if [ -d $d ]; then
-    %gobuild $d
-  fi
+for i in cnitool plugins/test/*/; do
+  pushd $i
+  go build -buildmode=pie
+  popd
 done
 
 %install
+# create directories
+install -m 755 -d "%{buildroot}%{cni_etc_dir}/net.d" "%{buildroot}%{cni_bin_dir}" "%{buildroot}%{cni_doc_dir}"
+
 # install the plugins
-install -m 755 -d %{buildroot}%{cni_bin_dir}
-install -D %{_builddir}/go/bin/noop %{buildroot}%{cni_bin_dir}/
-install -D %{_builddir}/go/bin/sleep %{buildroot}%{cni_bin_dir}/
+install -D plugins/test/noop/noop %{buildroot}%{cni_bin_dir}/
+install -D plugins/test/sleep/sleep %{buildroot}%{cni_bin_dir}/
 
 # undo a copy: cnitool must go to sbin/
-install -m 755 -d %{buildroot}%{_sbindir}
-install -D %{_builddir}/go/bin/cnitool %{buildroot}%{_sbindir}/
+install -D cnitool/cnitool -t %{buildroot}%{_sbindir}/
 
-# config
-install -m 755 -d %{buildroot}%{cni_etc_dir}
-install -m 755 -d %{buildroot}%{cni_etc_dir}/net.d
-install -D -p -m 0644 %{SOURCE1} %{buildroot}%{cni_etc_dir}/net.d/99-loopback.conf.sample
-
-# documentation
-install -m 755 -d "%{buildroot}%{cni_doc_dir}"
-
-%post
-%{fillup_only -n %{name}}
+# sample config
+cp %{SOURCE1} .
 
 %files
-%doc README.md
+%doc README.md 99-loopback.conf
 %license LICENSE
 %dir %{cni_etc_dir}
 %dir %{cni_etc_dir}/net.d
-%config %{cni_etc_dir}/net.d/*
 %dir %{cni_bin_dir}
 %dir %{cni_doc_dir}
 %{cni_bin_dir}/{noop,sleep}

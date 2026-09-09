@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 11:28:33 UTC 2026 - Petr Vorel <pvorel@suse.cz>
+
+- Backport upstream memory leak fix in statd
+  0001-statd-fix-memory-leak-in-sm_mon_1_svc-when-existing-.patch
+
+-------------------------------------------------------------------
 Mon Aug  3 15:33:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Require python3-PyYAML on openSUSE and SLE: the python-* symbol

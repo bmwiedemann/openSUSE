@@ -46,7 +46,7 @@ BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 ExclusiveArch:  %{_exclusive_arch}
 
 %description

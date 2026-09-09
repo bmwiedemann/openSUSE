@@ -1,4 +1,172 @@
 -------------------------------------------------------------------
+Mon Sep 07 22:40:51 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 4.1.0:
+  * prepare 4.1.0 release
+  * perf: count the kernel in half the time, and count it correctly (#771)
+  * fix(asp.net): correct the server side comment terminator (#772)
+  * fix: normalise negative zero in report SVG coordinates (#767) (#768)
+  * fix: resolve HEAD in git worktrees (#765) (#766)
+  * fix: count Rust byte character literals (#764)
+  *  Issue #762 (#763)
+  * fix: write response body before returning from the handler (#761)
+  * fix(php): correct the double quoted string delimiter (#759)
+- Packaging improvements:
+  * Remove unused scc.obsinfo metadata file, .obscpio format
+    archive was removed previously.
+
+-------------------------------------------------------------------
+Mon Aug 24 02:07:27 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 4.0.0:
+  * release 4.0.0
+  * Fix remap bug and duplicate states bug
+  * feat: improve qt translation source detection (#758)
+  * fix: escape language names and file paths in html output (#756)
+  * fix(ts): correctly detect QT translation source files (#755)
+  * Add --count-unsupported to count unrecognised files as Unknown (#754)
+  * fix(sql): emit CREATE TABLE for locomo metadata in SQL format (#753)
+  * perf: optimize reader.ReadFile (#757)
+  * fix: correct the block comment delimiters for MATLAB and Racket (#752)
+  * fix(lua): long string start and end brackets are swapped (#751)
+  * fix: --format-multi drops targets whose path contains a colon (#750)
+  * fix(openmetrics): ensure metric families are contiguous and labels are escaped (#749)
+  * fix: exit non-zero on output write failures and report to stderr (#748)
+  * fix(sql): escape project names in insert statements (#747)
+  * fix: guard zero category totals in --percent tabular output (#746)
+  * fix(protobuf): count string literals so /* inside an option is not a comment (#745)
+  * fix(terraform): count string literals so /* inside a glob is not a comment (#744)
+  * Fix --cocomo-project-type panic for case-variant built-in types (#742)
+  * build(deps): bump github.com/go-git/go-git/v5 from 5.19.1 to 5.19.2 (#743)
+  * fix: report non-zero megabyte size for xkcd-kb unit in non-leap years (#740)
+  * Add AL (Microsoft Dynamics 365 Business Central) (#739)
+  * fix: use float division for COCOMO monthly wage so non-divisible avg-wage is not truncated (#738)
+  * feat: add F# string literals so (* inside a string is not a comment opener (#737)
+  * Fix typos (#736)
+  * update after rebase
+  * Add additional outputs to -h
+  * feat: update WGSL and WESL language information (#734)
+  * Resolve panic in cs https://github.com/boyter/cs/issues/61
+  * add in coupling to report
+  * add change-coupling report (--coupling / --coupling-for) (#733)
+  * feat: complete Mojo language support (#731)
+  * add comma to byte output too
+  * add commas to wide output and tweak spaces to match
+  * tweak authors slightly
+  * Limit Docker container permissions (#730)
+  * Cognitive Complexity (#729)
+  * move to .sccconfig file
+  * after report run
+  * add in literal for performance fix (#728)
+  * update dependancy
+  * fix: fix tests data race (#727)
+  * fix
+  * fix shallow clone issue
+  * exposure yay
+  * add hotspots to mcp
+  * fixes a few edge cases
+  * resolve issue 466 (#726)
+  * resolve issue 175 (#725)
+  * add in custom ignore file support
+  * move to a 4.0.0 release version for the next one
+  * fix potential mcp issue
+  * update
+  * rename param
+  * Add config overrides per user and project (#724)
+  * turn on gc for git operations
+  * modify pflag implementation so last flag wins (#723)
+  * resolve issue with counting Phoenix LiveView as language (#722)
+  * adding in extra test case for docstrings in python
+  * add in linuguist inspired language detection (#721)
+  * add percentage outputs to json (#720)
+  * fix for issue 412 (#719)
+  * codeberg as badge target
+  * add codeberg support
+  * update dependancies for running in github
+  * update to latest go version
+  * update dependancies
+  * add in proper examples to help
+  * tweak bib comment
+  * WIP of issue 531 (#714)
+  * Catch error when mapping to unknown
+  * refactor: apply go fix suggestions (#712)
+  * feat: little performance tweaks (#711)
+  * Report - infographic (#709)
+  * feat: support Zen C (#708)
+  * tweaks
+  * increment version
+  * tweak help to highlight git options
+  * tweaks
+  * various improvements
+  * fix panic
+  * add in git processing (#707)
+  * Added new directives to makefile (#706)
+  * Update README.md
+  * feat: support recognizing .diff files as Patch (#705)
+  * Add move clasifier (#703)
+  * feat(rust): count ? try operator in complexity (#701)
+  * Add IEC61131-3 Siemens extensions (#702)
+  * fix: fix file tests (#697)
+  * Issue #396 Circular Symlinks Bug (#694)
+  * refactor: convert more tests to Go tests (#696)
+  * fix: prevent apostrophes in docstrings from breaking parsing (#695)
+  * build(deps): bump github.com/buger/jsonparser from 1.1.1 to 1.1.2 (#689)
+  * feat: update CUDA (#693)
+  * feat: update C/C++ language information (#691)
+  * Add https://github.com/boyter/scc/issues/690
+  * feat: automate file generation and add CI tests (#688)
+  * Reduce string allocations (#687)
+  * tweak limits
+  * tweak mcp sorting and limits
+  * ensure mcp has same settings
+  * add mcp support (#686)
+  * feat: support Mojo (#685)
+  * add mog (#683)
+  * tweak
+  * update so we can understand
+  * add ability to configure locomo cycles
+  * new LOCOMO calculation for LLMs - LLM Output COst MOdel (#682)
+  * tweak usages
+  * Add XHTML support (#681)
+  * feat: minor cleanup and optimization (#680)
+  * update benchmarks
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.26 matching go.mod
+  * Remove unused scc-3.7.0.obscpio archive, using .tar.gz only
+
+-------------------------------------------------------------------
+Mon May 04 11:52:09 UTC 2026 - Frederic Crozat <fcrozat@suse.com>
+
+- Update to version 3.7.0:
+  * update dependancy for nice performance gain
+  * fix for issue 678 (#679)
+  * feat: support MLIR (#677)
+  * Add in API functionality where content can be marked as its type allowing (#676)
+  * Regen report after rebase
+  * Add public accessor for internal database
+  * Update README.md
+  * slight fix to solve NaN issue
+  * when format set to json csv or sql uloc not calculated (#675)
+  * feat: support new typescript extensions: cts, mts (#674)
+  * feat: support Nature (#673)
+  * feat: support Rebol (#672)
+  * Add Apex (Salesforce) support (#671)
+  * feat: update Haskell language data (#670)
+  * Issue #582: Add simplified badge colors (#669)
+  * Make badges no longer beta
+  * refactor: add build tests to the CI (#668)
+  * refactor: convert language tests to Go tests (#667)
+  * refactor: convert Bash integration tests to Go tests (#666)
+  * feat: support Amber (#665)
+  * Replace dependencies that are no longer maintained (#663)
+  * Bump golang.org/x/crypto from 0.43.0 to 0.45.0 (#660)
+  * update constants
+  * Fix complexity checks for couple languages (#662)
+  * feat: support TOON (#659)
+  * add in bru language (#658)
+  * feat: improve GetMostSimilarFlags (#657)
+
+-------------------------------------------------------------------
 Fri Oct 31 12:49:32 UTC 2025 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 3.6.0:

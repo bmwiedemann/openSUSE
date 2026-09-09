@@ -1,7 +1,7 @@
 #
 # spec file for package psutils
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,16 +17,30 @@
 
 
 Name:           psutils
-Version:        2.08
+Version:        3.3.17
 Release:        0
 Summary:        Tools for Manipulating PostScript Files
 License:        GPL-3.0-or-later
 Group:          Productivity/Publishing/PS
 URL:            https://github.com/rrthomas/psutils
 Source:         %{url}/releases/download/v%{version}/psutils-%{version}.tar.gz
+BuildRequires:  ImageMagick-config-7-upstream-open
+BuildRequires:  ghostscript
+BuildRequires:  libpaper-devel
+BuildRequires:  libpaper-tools
+BuildRequires:  python-rpm-macros
+BuildRequires:  python3-Wand
+BuildRequires:  python3-argparse-manpage
+BuildRequires:  python3-base
+BuildRequires:  python3-devel
+BuildRequires:  python3-puremagic
+BuildRequires:  python3-pypdf
+BuildRequires:  python3-pytest
+BuildRequires:  python3-pytest-datafiles
+BuildRequires:  python3-setuptools
 Requires:       libpaper-tools
-Requires:       perl
-Requires:       perl(IPC::Run3)
+Requires:       python3-puremagic
+Requires:       python3-pypdf
 
 %description
 This archive contains utilities for manipulating PostScript documents.
@@ -54,15 +68,19 @@ page for each ps utility is also included.
 %autosetup -p1
 
 %build
-%configure
-%make_build
+python3 setup.py build
 
 %install
-%make_install
+python3 setup.py install --prefix=%{_prefix} --root %{buildroot}
+
+%check
+export MAGICK_CONFIGURE_PATH=$(pwd)/my_magick_config
+export PYTHONPATH=%{buildroot}%{python_sitelib}
+pytest -v
 
 %files
 %license COPYING
-%doc README
+%doc README.md
 %{_bindir}/epsffit
 %{_bindir}/psbook
 %{_bindir}/psnup
@@ -72,8 +90,8 @@ page for each ps utility is also included.
 %{_bindir}/extractres
 %{_bindir}/includeres
 %{_bindir}/psjoin
-%{_datadir}/psutils
-%{_datadir}/psutils/PSUtils.pm
+%{python_sitelib}/%{name}
+%{python_sitelib}/%{name}-%{version}-py%{python_version}.egg-info
 %{_mandir}/man1/epsffit.1*
 %{_mandir}/man1/psbook.1*
 %{_mandir}/man1/psnup.1*

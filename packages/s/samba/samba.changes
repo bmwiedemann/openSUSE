@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Sep  3 08:20:40 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Build and install pycache files; (bsc#1274812)
+
+-------------------------------------------------------------------
+Tue Aug 18 14:18:55 UTC 2026 - Noel Power <noel.power@suse.com>
+
+- Update to 4.24.6
+  * leases torture test flappy (marked flappy); (bso#15978).
+  * Memory leak in DRS when replication fails; (bso#16065).
+  * vfs_ceph_snapshots: smbd panics on snapshot access for a
+    share mounted at the CephFS root ("/"); (bso#16176).
+  * race condition in pthreadpool when forking; (bso#16191).
+  * witness test flappy needs to be fixed; (bso#16077).
+  * temporary read of unrelated or non-existing memory in s3 dfs
+    server; (bso#16093).
+  * source4/dsdb/samdb/cracknames.c doesn't use
+    ldb_binary_encode_string() consistently; (bso#16094).
+  * dsgetdcname() may not detect an active directory domain if
+    the netbios domain name is given and nmbd nor the nbt service
+    is available; (bso#16153).
+  * ndr_{push,pull,print}_{timeval,timespec} encode/decode the
+    value twice; (bso#16199).
+  * vfs_ceph_new: smbd crashes when mixing proxy and non-proxy
+    CephFS shares; (bso#16186).
+  * CTDB doesn't send tickle ACKs when taking over a released IP;
+    (bso#15994).
+  * CTDB can run nested elections, in rare circumstances;
+    (bso#16152).
+
+-------------------------------------------------------------------
+Thu Aug  6 15:18:23 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update update-samba-security-profile for selinux
+  Create and label /run/samba/nmbd and /run/samba/winbindd
+  as this doesn't work properly in DC configurations (bsc#1268532)
+
+-------------------------------------------------------------------
 Tue Jul 28 10:30:49 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Update to 4.24.5

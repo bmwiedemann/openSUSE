@@ -54,4 +54,33 @@ for python313 and python314, rpmlint 0 errors/0 warnings/0 badness.
 source_validator clean.</comment>
     <requestid>1376104</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>b6532860c538ccf589519c0d89cc89c1</srcmd5>
+    <version>0.2.6</version>
+    <time>1788963665</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.2.6:
+  * Harden C++ boundary so invalid args, corrupted serialized
+    data and worker-thread errors raise exceptions instead of
+    crashing the process
+  * Reject NUL in regex instead of segfaulting; preserve
+    tokenizer JSON round-trips including binary vocabulary
+  * EBNF/Lark: capture, lazy matching, suffix/stop conditions,
+    token/character budgets, sampling temperature, regex flags,
+    and cached GrammarCompiler.compile_lark
+  * JSON Schema: positional prefixItems, CR whitespace, and
+    fixes for repeat-edge metadata and serialization keys
+  * Structural tags for Cohere XML, Kimi K3 and EXAONE 4.0;
+    max_tokens/max_chars for AnyTextFormat/AnyTokensFormat
+  * NPU token-bitmask backend; wheel CMake build type is
+    Release, so the native extension is no longer full of
+    RelWithDebInfo debug sections
+- Switch the source back to the PyPI sdist (now ships the
+  3rdparty tree the C++ build needs) and drop _service
+- Drop SKBUILD_WHEEL_EXCLUDE: upstream skips installing the
+  static library into the wheel
+- Raise apache-tvm-ffi floor to &gt;= 0.1.10 and scikit-build-core
+  to &gt;= 0.10.0</comment>
+    <requestid>1376540</requestid>
+  </revision>
 </revisionlist>

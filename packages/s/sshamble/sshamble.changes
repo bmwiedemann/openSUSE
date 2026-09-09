@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:03:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.3.12
+  * Add mikrotik CVE-2026-67279 pre-auth rekey session check.
+
+-------------------------------------------------------------------
 Wed Jul 29 07:38:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.10

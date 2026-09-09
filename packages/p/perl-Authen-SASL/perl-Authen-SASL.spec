@@ -18,10 +18,10 @@
 
 %define cpan_name Authen-SASL
 Name:           perl-Authen-SASL
-Version:        2.200.0
+Version:        2.210.0
 Release:        0
-# 2.2000 -> normalize -> 2.200.0
-%define cpan_version 2.2000
+# 2.2100 -> normalize -> 2.210.0
+%define cpan_version 2.2100
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        SASL Authentication framework
 URL:            https://metacpan.org/release/%{cpan_name}

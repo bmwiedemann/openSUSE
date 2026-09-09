@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Sep  8 16:36:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.37.0: core CLI built with maturin (pyo3
+  headroom._core)
+  * Requires distro ast-grep rather than the ast-grep-cli PyPI
+    wheel; binaries.resolve() searches PATH
+  * ExclusiveArch rust_tier1_arches; crates vendored with
+    cargo_vendor mode=manual
+  * headroom-proxy subpackage is headroom-ai[proxy]: FastAPI,
+    uvicorn, magika, onnxruntime, sqlite-vec, and the rest of
+    the CLI gate (ensure_proxy_dependencies)
+  * headroom-proxy is noarch (Requires-only extra)
+

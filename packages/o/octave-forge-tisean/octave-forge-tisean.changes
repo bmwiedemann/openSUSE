@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep  7 16:30:41 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 0.2.4:
+  * Updates for Octave 7+ compatibility
+- Drop obsolete patches:
+  * tisean-drop-error_state-use.patch
+  * 0001-Fix-element-wise-plus-operator.patch
+- Work around broken autoconf compiler/default C++ version
+  detection.
+- Disable some unstable tests
+
+-------------------------------------------------------------------
 Wed Jan  1 19:25:41 UTC 2025 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix some build issues with Octave 9.x, add

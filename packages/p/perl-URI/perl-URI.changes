@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:44:21 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 5.370.0 (5.37)
+   see /usr/share/doc/packages/perl-URI/Changes
+
+  5.37      2026-09-03 22:49:36Z
+      - Preserve leading and trailing whitespace in file:// URI paths instead
+        of silently stripping it (GH#95) (Jacques Deguest)
+
+-------------------------------------------------------------------
 Thu Aug 20 05:49:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 5.360.0 (5.36)

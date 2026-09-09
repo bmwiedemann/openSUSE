@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep  9 05:37:41 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade smc-tools to version 1.8.8
+  * Bug fixes:
+    - smc_rnics: reflect SW PNET ID applied via IB device name (mlx)
+    - smc_rnics: fix Integrated Network misidentified as Network Express 
+
+-------------------------------------------------------------------
 Tue Aug  4 05:18:18 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Fixed the build errors with:

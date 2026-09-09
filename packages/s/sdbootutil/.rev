@@ -933,4 +933,13 @@
   * Report the error if bootctl clean fails (forwarded request 1375626 from aplanas)</comment>
     <requestid>1375627</requestid>
   </revision>
+  <revision rev="110" vrev="1">
+    <srcmd5>213418f8b2fb79dc0f07899110cb4616</srcmd5>
+    <version>1+git20260909.7cfa1f0</version>
+    <time>1788963569</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20260909.7cfa1f0:
+  * Drop PCR warning when is not part of the policy (forwarded request 1376602 from aplanas)</comment>
+    <requestid>1376603</requestid>
+  </revision>
 </revisionlist>

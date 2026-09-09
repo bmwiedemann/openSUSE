@@ -126,7 +126,7 @@ BuildRequires:  pesign-obs-integration
 BuildRequires:  python-rpm-macros
 Provides:       installhint(reboot-needed)
 
-Version:        4.22.0_02
+Version:        4.22.0_04
 Release:        0
 Summary:        Xen Virtualization: Hypervisor (aka VMM aka Microkernel)
 License:        GPL-2.0-only
@@ -161,6 +161,9 @@ Source10183:    xen_maskcalc.py
 # For xen-libs
 Source99:       baselibs.conf
 # Upstream patches
+Patch1:         6a8f18ad-pass-through-disallow-pt_irq_create_bind-on-dying-domains.patch
+Patch2:         6a759f74-emul-cope-with-internal-handlers-returning-X86EMUL_RETRY.patch
+Patch3:         6a71bd97-xen-page_alloc-ensure-TLB-flush-is-done-ahead-of-page-scrubbing.patch
 # Our platform specific patches
 Patch400:       xen-destdir.patch
 Patch401:       vif-bridge-no-iptables.patch

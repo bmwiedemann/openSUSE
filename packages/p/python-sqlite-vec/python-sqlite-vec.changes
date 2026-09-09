@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Tue Sep  8 15:41:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-sqlite-vec 0.1.9:
+  * Vector search SQLite loadable (vec0) and Python API
+    (sqlite_vec.load, serialize_float32/int8)
+  * Built from the GitHub tag archive (PyPI is wheels-only)
+  * vec0.so is built from sqlite-vec.c with system sqlite3
+    headers; static libsqlite_vec0.a is not shipped
+

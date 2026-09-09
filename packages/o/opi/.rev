@@ -867,4 +867,17 @@
   * OrcaSlicer: Load binary with correct architecture (fixes #222)</comment>
     <requestid>1366947</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>7fa17a2de9d885581d1a0d689b49a0a7</srcmd5>
+    <version>5.16.0</version>
+    <time>1788963724</time>
+    <user>anag_factory</user>
+    <comment>- Version 5.16.0
+  * Fix 10_chatgpt_plugin.py
+  * Add ChatGPT desktop app plugin (#223)
+  * Allow repos with local gpgkey
+  * refactor: use python built-in for os-release (#224)
+  * Fix testsuite for Leap 16.0</comment>
+    <requestid>1376570</requestid>
+  </revision>
 </revisionlist>

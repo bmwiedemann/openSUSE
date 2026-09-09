@@ -1009,4 +1009,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.98.0 - for details see the rust1.98 package</comment>
     <requestid>1373493</requestid>
   </revision>
+  <revision rev="119" vrev="1">
+    <srcmd5>30a807123b8d636363021dd9742f8345</srcmd5>
+    <version>1.98.1</version>
+    <time>1788963520</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.98.1 - for details see the rust1.98 package</comment>
+    <requestid>1376268</requestid>
+  </revision>
 </revisionlist>

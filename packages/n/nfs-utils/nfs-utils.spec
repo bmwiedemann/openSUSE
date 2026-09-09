@@ -43,6 +43,7 @@ Source24:       rpc-statd-notify.options.conf
 Source25:       rpc-svcgssd.options.conf
 Source26:       nfs.conf
 Source27:       nfs-utils.tmpfiles.conf
+Patch0:         0001-statd-fix-memory-leak-in-sm_mon_1_svc-when-existing-.patch
 BuildRequires:  e2fsprogs-devel
 BuildRequires:  gcc-c++
 BuildRequires:  libtool

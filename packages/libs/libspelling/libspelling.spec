@@ -44,15 +44,16 @@ BuildRequires:  myspell-en_US
 %description
 A spellcheck library for GTK 4.
 This library is heavily based upon GNOME Text Editor and GNOME
-Builder's spellcheck implementation. However, it is licensed
-LGPL-2.1-or-later
+Builder's spellcheck implementation.
 
 %package -n libspelling%{so_ver}
-Summary:        Shared libraries for %{name}
+Summary:        A spellcheck library for GTK 4
 Provides:       %{name} = %{version}
 
 %description -n libspelling%{so_ver}
-Shared libraries for %{name}.
+A spellcheck library for GTK 4.
+This library is heavily based upon GNOME Text Editor and GNOME
+Builder's spellcheck implementation.
 
 %package -n typelib-1_0-Spelling-%{api_ver}
 Summary:        Introspection file for %{name}

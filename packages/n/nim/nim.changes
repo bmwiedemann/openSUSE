@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Sep  8 13:23:05 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.2.12:
+  * Sixth patch release for stable Nim 2.2 with 142 commits,
+    bringing bugfixes and improvements.
+  * Details and full changelog:
+    https://nim-lang.org/blog/2026/09/08/nim-2212.html
+  * Upstream bugfixes include:
+    - Fixed distinctBase(distinct L[int, 100]) does not match L
+      (gh#nim-lang/Nim#25789)
+    - Fixed & (strformat): interprets {n-1} as {n(-1)}
+      (gh#nim-lang/Nim#25821)
+    - Fixed [C++] ICE expr(sktype): unknown symbol when bindSym
+      constructor proc in macro (gh#nim-lang/Nim#25814)
+    - Fixed SIGSEGV with refc and RVO (gh#nim-lang/Nim#25294)
+    - Fixed ProveField warning with nested case object
+      (gh#nim-lang/Nim#22791)
+    - Fixed incompatible function pointer types C error with uint
+      vs csize_t (gh#nim-lang/Nim#25617)
+    - Fixed regression from 2.2.10 with lent and type aliasing
+      (gh#nim-lang/Nim#25796)
+    - Fixed SIGSEGV in ARC/ORC with repeated use of {.dirty.}
+      template and seq allocations (gh#nim-lang/Nim#25693)
+    - Fixed --panics:on dropping nimErr_ check after a closure call
+      causing OverflowDefect (gh#nim-lang/Nim#25851)
+    - Fixed typeof(result) wrongly counted as use-before-init of
+      result on {.requiresInit.} return types
+      (gh#nim-lang/Nim#25857)
+    - Fixed missing eqcopy for value copy of value-type case object
+      with ref field (gh#nim-lang/Nim#25595)
+    - Fixed iteration on elements of array always copying elements
+      (gh#nim-lang/Nim#25849)
+    - Fixed quote inside static block causing Illegal storage
+      access error (gh#nim-lang/Nim#18367)
+    - Fixed double destroy with {.cursor.} (gh#nim-lang/Nim#26010)
+    - Fixed compareExchange applying invalid release semantics on
+      failure (gh#nim-lang/Nim#26027)
+    - Fixed del(seq) performing self-assignment and =destroy for
+      del(0) of 1-length seq (gh#nim-lang/Nim#26134)
+    - Fixed std/encodings: convert silently corrupting stateful
+      encodings (ISO-2022-JP) (gh#nim-lang/Nim#26173)
+    - Fixed Utf16Char incorrectly declared as signed
+      (gh#nim-lang/Nim#26175)
+- Update bundled atlas to 0.14.7 and sat to commit
+  9d52513b3c68bfb929dbd687d4fb2836cfee6936.
+- Refresh patches for 2.2.12:
+  * nim-nim-gdb_fix_interpreter.patch
+  * nim-fix-tests-i586.patch
+  * nim-2.2.2-pcre2.patch
+
+-------------------------------------------------------------------
 Sun May 10 16:51:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.2.10

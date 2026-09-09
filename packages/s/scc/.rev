@@ -56,4 +56,26 @@ Fixed conflict of binary scc with sc-controller. Binary is now named sccount.</c
   * doc: missing new formatting delivered in #335 (#623) (forwarded request 1314826 from jfkw)</comment>
     <requestid>1314861</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>aa9daecd91317c02f834e7e42d00f096</srcmd5>
+    <version>4.1.0</version>
+    <time>1788963609</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.1.0:
+  * prepare 4.1.0 release
+  * perf: count the kernel in half the time, and count it correctly (#771)
+  * fix(asp.net): correct the server side comment terminator (#772)
+  * fix: normalise negative zero in report SVG coordinates (#767) (#768)
+  * fix: resolve HEAD in git worktrees (#765) (#766)
+  * fix: count Rust byte character literals (#764)
+  * Issue #762 (#763)
+  * fix: write response body before returning from the handler (#761)
+  * fix(php): correct the double quoted string delimiter (#759)
+- Packaging improvements:
+  * Remove unused scc.obsinfo metadata file, .obscpio format
+    archive was removed previously.
+  * Update to BuildRequires: golang(API) &gt;= 1.26 matching go.mod
+  * Remove unused scc-3.7.0.obscpio archive, using .tar.gz only (forwarded request 1376504 from jfkw)</comment>
+    <requestid>1376505</requestid>
+  </revision>
 </revisionlist>

@@ -489,4 +489,16 @@
         @naseeb0) (GH#191)</comment>
     <requestid>1374861</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>f73c15b7ac4cff559354e4d327fce7db</srcmd5>
+    <version>5.370.0</version>
+    <time>1788963529</time>
+    <user>anag_factory</user>
+    <comment>- updated to 5.370.0 (5.37)
+   see /usr/share/doc/packages/perl-URI/Changes
+  5.37      2026-09-03 22:49:36Z
+      - Preserve leading and trailing whitespace in file:// URI paths instead
+        of silently stripping it (GH#95) (Jacques Deguest)</comment>
+    <requestid>1376328</requestid>
+  </revision>
 </revisionlist>

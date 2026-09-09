@@ -1,0 +1,38 @@
+From e99187826d6a244d355717afb80473436d086b1a Mon Sep 17 00:00:00 2001
+From: Richard Lyu <richard.lyu@suse.com>
+Date: Fri, 4 Sep 2026 09:46:57 +0800
+Subject: [PATCH] OvmfPkg/RiscVVirt/PlatformPei: Initialize TpmBase
+
+Building RiscVVirtQemu with GCC fails with -Werror=maybe-uninitialized.
+SetupTPMResources() only assigns TpmBase inside the "Len == 8" and
+"Len == 16" branches that decode the TPM 'reg' property, and the preceding
+ASSERT() is not a control flow guarantee for the compiler:
+
+PlatformPeim.c:192:23: error: 'TpmBase' may be used uninitialized
+[-Werror=maybe-uninitialized]
+  192 |   TpmBase -= Fdt64ToCpu (ReadUnaligned64 ((UINT64 *)RangesProp));
+      |           ^~
+
+Initialize TpmBase next to the existing TpmBaseSize initialization, purely
+to satisfy the compiler.
+
+Signed-off-by: Richard Lyu <richard.lyu@suse.com>
+---
+ OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c b/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
+index fa157b416937..f27569790337 100644
+--- a/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
++++ b/OvmfPkg/RiscVVirt/PlatformPei/PlatformPeim.c
+@@ -122,6 +122,7 @@ SetupTPMResources (
+   //
+   // Empty TpmBaseSize indicates no TPM found.
+   //
++  TpmBase     = 0;
+   TpmBaseSize = 0;
+ 
+   //
+-- 
+2.51.0
+

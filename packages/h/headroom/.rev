@@ -1,0 +1,23 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>c09f03861a302b42cf222907686f8eb0</srcmd5>
+    <version>0.37.0</version>
+    <time>1788963592</time>
+    <user>anag_factory</user>
+    <comment>Initial package 0.37.0: core CLI built with maturin (pyo3
+headroom._core)
+* Requires distro ast-grep rather than the ast-grep-cli PyPI
+  wheel; binaries.resolve() searches PATH
+* ExclusiveArch rust_tier1_arches; crates vendored with
+  cargo_vendor mode=manual
+* headroom-proxy subpackage is headroom-ai[proxy]: FastAPI,
+  uvicorn, magika, onnxruntime, sqlite-vec, and the rest of
+  the CLI gate (ensure_proxy_dependencies)
+* headroom-proxy is noarch (Requires-only extra)
+
+INTERDEPENDENT REQUESTS - please stage together (will not build until these land):
+ * sr#1376401 - python-magika (headroom-proxy runtime)
+ * sr#1376402 - python-sqlite-vec (headroom-proxy --memory)</comment>
+    <requestid>1376404</requestid>
+  </revision>
+</revisionlist>

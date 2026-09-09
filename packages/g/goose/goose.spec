@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.49.0
+Version:        1.50.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,7 +26,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1328 crates vendored, 612 in the linked graph -- the code-mode and
+# (1333 crates vendored, 611 in the linked graph -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
 # then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
@@ -34,13 +34,13 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # Apache-2.0 is not on offer; both are already named, so no "OR" expression in
 # the graph adds an identifier. The remaining entries are crates with no choice
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
-# MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the 20 ICU crates,
-# CC0-1.0 from the six bitcoin_hashes/secp256k1 crates (nostr),
+# MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the ICU crates and
+# unicode-ident, CC0-1.0 from the six bitcoin_hashes/secp256k1 crates (nostr),
 # CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
 # simple_asn1 and untrusted (and from ring, "Apache-2.0 AND ISC"),
 # BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe, Zlib from foldhash
 # and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 165 MIT-only crates. No crate in the graph carries BSD-2-Clause;
+# MIT from the 161 MIT-only crates. No crate in the graph carries BSD-2-Clause;
 # that identifier is held solely by the bundled leaflet.min.js named below.
 # MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;

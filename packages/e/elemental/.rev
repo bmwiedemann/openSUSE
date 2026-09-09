@@ -22,4 +22,14 @@
   * Bump github.com/containerd/containerd/v2 from 2.3.1 to 2.3.2</comment>
     <requestid>1368556</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>96e6e6f3a218032068f042f6608448f3</srcmd5>
+    <version>3.0.3</version>
+    <time>1788963685</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.3:
+  * dependency bumps
+  * Backport bug fixes</comment>
+    <requestid>1376563</requestid>
+  </revision>
 </revisionlist>

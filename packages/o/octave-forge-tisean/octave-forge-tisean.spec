@@ -1,7 +1,7 @@
 #
 # spec file for package octave-forge-tisean
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,14 @@
 
 %define octpkg  tisean
 Name:           octave-forge-%{octpkg}
-Version:        0.2.3
+Version:        0.2.4
 Release:        0
 Summary:        Nonlinear Time Series Analysis
 License:        GPL-3.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gnu-octave.github.io/packages/tisean/
 Source0:        https://downloads.sourceforge.net/project/octave/Octave%20Forge%20Packages/Individual%20Package%20Releases/%{octpkg}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM tisean-drop-error_state-use.patch badshah400@gmail.com -- Drop the use of error_state to support octave >= 8 (https://savannah.gnu.org/bugs/index.php?61583)
-Patch0:         tisean-drop-error_state-use.patch
 Patch1:         0001-Fix-const-correctness-invalid-used-of-non-const-fort.patch
-Patch2:         0001-Fix-element-wise-plus-operator.patch
 BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  octave-devel
@@ -49,12 +46,17 @@ popd
 %octave_pkg_src
 
 %build
+# autoconf compiler detection is broken, force it
+export CXX="g++ -std=gnu++17"
 %octave_pkg_build
 
 %install
 %octave_pkg_install
 
 %check
+# See https://savannah.gnu.org/bugs/index.php?56541
+%global octskiptests %{octskiptests}|ikeda|lyap_spec
+echo "Skip tests requiring using chaotic ikeda time series: %{octskiptests}"
 %octave_pkg_test
 
 %post
@@ -64,7 +66,6 @@ popd
 %octave --eval "pkg rebuild"
 
 %files
-%defattr(-,root,root)
 %{octpackages_dir}/%{octpkg}-%{version}
 %{octlib_dir}/%{octpkg}-%{version}
 

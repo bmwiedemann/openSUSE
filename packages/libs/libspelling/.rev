@@ -132,4 +132,13 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342997</requestid>
   </revision>
+  <revision rev="16" vrev="4">
+    <srcmd5>3d38d2880bcd312ecad241671d8c157a</srcmd5>
+    <version>0.4.10</version>
+    <time>1788963758</time>
+    <user>anag_factory</user>
+    <comment>- Better descriptions for libspelling1.
+- Relegate license info to License: field.</comment>
+    <requestid>1376606</requestid>
+  </revision>
 </revisionlist>

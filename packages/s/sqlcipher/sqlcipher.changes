@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:21:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.19.0:
+  * Security: quote schema aliases in sqlcipher_export() so
+    attacker-controlled attached-database names cannot alter
+    generated SQL
+  * Security: error out on a non-empty but invalid hexkey URI
+    parameter instead of silently writing a plaintext database
+  * Include the crypto-provider error code in KDF error messages
+  * Fix escaping of cipher_migrate file names
+  * Avoid returning NULL rows from cipher_settings if allocation
+    fails
+  * Avoid leaking a partially initialized codec context on init
+    errors
+  * Fix error reporting for failed rekey operations
+  * Adjust permanent-error-state handling so the pager is not
+    left invalid
+  * Improve consistency of private-heap memory tracking
+
+-------------------------------------------------------------------
 Wed Aug 19 07:22:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 4.18.0:

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:19:22 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.210.0 (2.2100)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+
+
+  2.2100  2026-09-06
+    [Security fixes]
+       - CVE-2026-86219: Replay attack in Authen::SASL::Perl::DIGEST_MD5
+         Thanks to TIMLEGGE (@timlegge) and the CPANSec team for the
+         AI-assisted detection and fix!
+
+-------------------------------------------------------------------
 Thu Jan 29 06:01:08 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.200.0 (2.2000)

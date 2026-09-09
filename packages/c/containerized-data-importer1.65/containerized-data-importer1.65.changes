@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep  7 13:24:45 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Security: re-vendor the bundled Go dependencies (tarball rebuilt
+  from v1.65.0 with updated go.mod/vendor; no upstream source changes):
+  * google.golang.org/grpc v1.79.3 -> v1.83.1: CVE-2026-84304
+    (bsc#1279234), CVE-2026-84303 (bsc#1279315)
+  * golang.org/x/crypto v0.52.0 -> v0.56.0: CVE-2026-56854,
+    CVE-2026-56855, CVE-2026-78662 (bsc#1278621)
+  * golang.org/x/text v0.37.0 -> v0.41.0: CVE-2026-56852 (bsc#1272064)
+  * go.opentelemetry.io/otel v1.39.0 -> v1.44.0: CVE-2026-41178
+    (bsc#1276687)
+  * golang.org/x/net v0.55.0 -> v0.57.0 (no open CVE; aligns with
+    the other streams)
+  github.com/go-git/go-git and go-billy are not imported by any
+  module of the tree and are no longer vendored.
+- Build with Go 1.26 (golang.org/x/crypto 0.56.0 requires it).
+
+-------------------------------------------------------------------
 Sat Jul 18 16:19:17 UTC 2026 - victor.carvalho@suse.com
 
 - Security: re-vendor the bundled Go dependencies (no upstream source

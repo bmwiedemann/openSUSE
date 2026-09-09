@@ -1,0 +1,15 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>edea59a8320f9f618f077d75aa5e7235</srcmd5>
+    <version>1.0.3</version>
+    <time>1788963591</time>
+    <user>anag_factory</user>
+    <comment>Initial package of python-magika 1.0.3: Google Magika Python
+module for ML content-type detection
+* CLI is magika-python-client; /usr/bin/magika is the separate
+  Rust client and is not shipped
+- ExclusiveArch x86_64 aarch64: python-onnxruntime is not built
+  on other arches, so the noarch package was unresolvable there</comment>
+    <requestid>1376401</requestid>
+  </revision>
+</revisionlist>

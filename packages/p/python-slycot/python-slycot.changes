@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 12:37:07 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Use constant path to fix reproducible builds (boo#1062303)
+
+-------------------------------------------------------------------
 Wed Jun 17 15:38:38 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 0.7.0

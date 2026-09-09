@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:19:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9:
+  * Declare support for Python 3.15
+  * Fix typos in docs and the intdigest() docstring
+
+-------------------------------------------------------------------
 Wed Jun 17 07:17:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 1.8)

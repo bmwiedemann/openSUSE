@@ -33,7 +33,7 @@ BuildRequires:  pesign-obs-integration
 ExclusiveArch:  x86_64 aarch64
 
 %description
-SUSE signed Microsoft KEK package for OVMF. The KEKUpdate_SUSE_PK.bin file
+SUSE signed Microsoft KEK package for OVMF. The KEKUpdate_SUSE_PK.auth file
 can be used to update kek in SUSE ovmf by efi-updatevar tool.
 
 %prep
@@ -51,20 +51,20 @@ export TIMESTAMP="2010-03-06 19:17:21"
 
 # Input file: The KEK.bin from edk2-$arch-secureboot-binaries.tar.gz is
 #             a ESL (EFI Signature List)
-# Output file: The KEKUpdate_openSUSE_PK.bin is a signable binary format
+# Output file: The KEKUpdate_openSUSE_PK.auth is a signable binary format
 #              which is the source file for signing a ESL:
 # [ Variable Name ][   Vendor GUID  ][   Attributes  ][    EFI_TIME    ][ Payload (ESL) ]
 # |<-- N bytes -->||<-- 16 bytes -->||<-- 4 bytes -->||<-- 16 bytes -->||<-- N bytes -->|
 #
 # We also set EFI_VARIABLE_APPEND_WRITE attribute for writing by efi-updatevar.
 #
-# The KEKUpdate_openSUSE_PK.bin file will directly overwriten by pesign-obs-integration.
+# The KEKUpdate_openSUSE_PK.auth file will directly overwriten by pesign-obs-integration.
 # The pesign-obs-integration attach timestamp and signature (PKCS#7 SignedData)
 # to a EFI_VARIABLE_AUTHENTICATION_2 as the header of the signed auth file.
 #
-# The output signed auth file KEKUpdate_SUSE_PK.bin will be renamed manually to
-# KEKUpdate_<SUSE|openSUSE>_PK<number>.bin for uploading to secureboot_objects project
-sign-efi-sig-list -t "$TIMESTAMP" -a -o KEK MicrosoftAndThirdParty/Firmware/KEK.bin KEKUpdate_SUSE_PK.bin
+# The output signed auth file KEKUpdate_openSUSE_PK.auth will be renamed manually to
+# KEKUpdate_<SUSE|openSUSE>_PK<number>.auth for uploading to secureboot_objects project
+sign-efi-sig-list -t "$TIMESTAMP" -a -o KEK MicrosoftAndThirdParty/Firmware/KEK.bin KEKUpdate_openSUSE_PK.auth
 # TODO: auto generate json file?
 
 # copy signkey, will be included in rpm for user reference
@@ -72,9 +72,9 @@ cert=%{_sourcedir}/_projectcert.crt
 openssl x509 -in $cert -outform DER -out KEKUpdate_signkey.der
 
 %install
-export BRP_PESIGN_FILES='%{_sysconfdir}/uefi/certs/KEKUpdate_SUSE_PK.bin'
+export BRP_PESIGN_FILES='%{_sysconfdir}/uefi/certs/KEKUpdate_openSUSE_PK.auth'
 install -d %{buildroot}/%{_sysconfdir}/uefi/certs/
-install -m 644 KEKUpdate_SUSE_PK.bin %{buildroot}/%{_sysconfdir}/uefi/certs/KEKUpdate_SUSE_PK.bin
+install -m 644 KEKUpdate_openSUSE_PK.auth %{buildroot}/%{_sysconfdir}/uefi/certs/KEKUpdate_openSUSE_PK.auth
 
 fpr=$(openssl x509 -sha1 -fingerprint -inform DER -noout -in KEKUpdate_signkey.der | cut -c 18- | cut -d ":" -f 1,2,3,4 | sed 's/://g')
 install -m 644 KEKUpdate_signkey.der %{buildroot}/%{_sysconfdir}/uefi/certs/${fpr}-KEKUpdate_signkey.crt
@@ -84,7 +84,7 @@ install -m 644 KEKUpdate_signkey.der %{buildroot}/%{_sysconfdir}/uefi/certs/${fp
 %defattr(-,root,root)
 %dir %{_sysconfdir}/uefi/
 %dir %{_sysconfdir}/uefi/certs/
-%{_sysconfdir}/uefi/certs/*.bin
+%{_sysconfdir}/uefi/certs/*.auth
 %{_sysconfdir}/uefi/certs/*.crt
 
 %changelog

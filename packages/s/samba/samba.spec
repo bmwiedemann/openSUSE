@@ -112,6 +112,7 @@ BuildRequires:  python3-xml
 BuildRequires:  readline-devel
 BuildRequires:  rpcgen
 BuildRequires:  fdupes
+BuildRequires:  python3-rpm-macros
 %define pkgconfig_req pkg-config
 BuildRequires:  %{pkgconfig_req}
 BuildRequires:  libtalloc-devel >= %{talloc_version}
@@ -169,7 +170,7 @@ BuildRequires:  liburing-devel
 %endif
 BuildRequires:  sysuser-tools
 
-Version:        4.24.5+git.481.dba78dbdea
+Version:        4.24.6+git.488.e38f6c96c62
 Release:        0
 URL:            https://www.samba.org/
 Obsoletes:      samba-32bit < %{version}
@@ -799,6 +800,8 @@ install -d -m 0755 -p \
 make %{?_smp_mflags} install \
 	DESTDIR=%{buildroot} \
 	CONFIGDIR=%{CONFIGDIR}
+
+%python_compileall
 
 # debug symbols are created and installed if the files are excluded only
 %if ! %{with_dc}
@@ -2085,9 +2088,7 @@ exit 0
 %defattr(-,root,root)
 %{_libdir}/samba/libpyldb-util.%{py3_soflags_dash}-private-samba.so
 %{python3_sitearch}/_ldb_text.py
-%if 0%{?centos_version} > 599 || 0%{?fedora_version} > 11 || 0%{?rhel_version} > 599
 %{python3_sitearch}/__pycache__/_ldb_text.cpython-*.py[co]
-%endif
 %{python3_sitearch}/ldb.%{py3_soflags}.so
 
 %changelog

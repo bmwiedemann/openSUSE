@@ -1,7 +1,7 @@
 #
 # spec file for package python-atom
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Memory efficient Python objects
 License:        BSD-3-Clause
 URL:            https://github.com/nucleic/atom
 Source:         https://files.pythonhosted.org/packages/source/a/atom/atom-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#nucleic/atom#273
+Patch0:         no-pyweakref-get-object.patch
 BuildRequires:  %{python_module cppy >= 1.2.0}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
@@ -34,9 +36,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  c++_compiler
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-%if 0%{?python_version_nodots} < 311
-Requires:       python-typing-extensions
-%endif
 %python_subpackages
 
 %description
@@ -46,7 +45,7 @@ change notification for object attributes. It provides the default
 model binding behaviour for the Enaml UI framework.
 
 %prep
-%setup -q -n atom-%{version}
+%autosetup -p1 -n atom-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

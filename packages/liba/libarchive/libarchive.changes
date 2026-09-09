@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:58:16 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
+
+- Update to 3.8.9:
+  * unzip: Windows port (#3167)
+  * various further bugfixes: https://github.com/libarchive/libarchive/compare/v3.8.8...v3.8.9
+- 3.8.8:
+   * zip: support for reading encrypted zipx formats (bzip2, lzma, ppmd, xz, zstd) (#2685)
+   * build: fix build with glibc 2.43 (#2969)
+   * libarchive core: various NULL pointer, double-free, buffer overrun and integer overflow fixes (#2905, #2927, #2928, #2942, #2957, #2971, #2973, #2988, #2998, #3009, #3010, #3011, #3012, #3019, #3036, #3037, #3040, #3064, #3083, #3114, #3146)
+   * windows: remove support for WinCrypt, fix GetTempPathW TOCTOU race condition (#2739, #3044)
+   * filters (bzip2, gzip, lz4, uu, zstd): fixes for large archives, truncated input handling and out-of-bounds access (#2526, #3033, #3050, #3054, #3073, #3085, #3093, #3100, #3103, #3115, #3132)
+   * 7-zip: multiple heap overflow, hardening and streamable reading fixes (#2923, #2929, #2980, #2985, #3002, #3006, #3062, #3067, #3074, #3099, #3102, #3119)
+   * cab: multi-volume parser fixes and hardening against invalid/truncated headers (#2979, #3000, #3144, #3145, #3153)
+   * cpio: pathname validation and out-of-bounds read fixes (#2984, #3043, #3055, #3095, #3158, #3168)
+   * iso9660: fix path normalization, Joliet overflow/infinite loop and memory leaks (#2968, #2974, #2978, #2983, #3017, #3021, #3029, #3045, #3117)
+   * mtree: fix hex/time value parsers and NULL dereferences (#2930, #2982, #3007, #3008, #3018, #3032, #3057)
+   * RAR/RAR5: fix bound checks, dangling pointers and integer underflow (#3004, #3015, #3047, #3048, #3081, #3087, #3091, #3105, #3121)
+   * tar: harden timestamp parsing, fix OOB with empty wide character directory names (#2991, #3038, #3052)
+   * warc: fix header allocation leak on overflow (#3061)
+   * xar: fix integer overflows, memory leaks and OOB writer accesses (#3013, #3028, #3030, #3032, #3041, #3060)
+   * zip: reject overlong/empty pathnames, limit LZMA memory usage (#2981, #2993, #2996)
+- Removed add-missing-tests.patch: upstream 3.8.9 tarball now ships
+  test_read_format_cab_skip_malformed.c and .cab.uu again, the patch
+  no longer applies and is no longer needed
+
+-------------------------------------------------------------------
 Mon Apr 13 14:32:28 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 3.8.7:

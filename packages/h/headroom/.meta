@@ -1,0 +1,13 @@
+<package name="headroom" project="openSUSE:Factory">
+  <title>Context optimization layer for LLM applications</title>
+  <description>Headroom is a context-optimization layer for LLM applications. It compresses
+tool output and conversation context so requests use fewer tokens, and ships
+a command-line interface plus a compiled pyo3 extension (headroom._core).
+
+This package is the core CLI. The optional [proxy] extra lives in the
+headroom-proxy subpackage; without it, &quot;headroom proxy&quot; / &quot;headroom wrap&quot;
+exit because ensure_proxy_dependencies() hard-imports that set. Code-aware
+slicing shells out to the distro ast-grep binary rather than the
+ast-grep-cli PyPI wheel.</description>
+  <url>https://github.com/headroomlabs-ai/headroom</url>
+</package>

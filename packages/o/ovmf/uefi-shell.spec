@@ -26,7 +26,7 @@
 %endif
 
 Name:           uefi-shell
-Version:        202605
+Version:        202608
 Release:        0
 Summary:        UEFI Shell built from EDK II project
 License:        BSD-2-Clause-Patent

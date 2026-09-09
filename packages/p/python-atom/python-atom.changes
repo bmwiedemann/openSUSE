@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 05:19:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-pyweakref-get-object.patch:
+  * Do not call PyWeakref_GET_OBJECT, use PyWeakref_GetRef instead.
+
+-------------------------------------------------------------------
 Thu Oct 30 01:35:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.12.1:

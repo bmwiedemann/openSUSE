@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:37:53 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
+
+- update to 1.21.1
+  - Fixed: Sidebar tab buttons lack a background color in the second split
+    (clipping issue).
+  - Fixed: Handling input events in the correct prompt when multiple prompts are
+    open.
+  - Fixed: Auto-opened input prompt dialog was duplicated when opening the same
+    link again without first dismissing the first prompt.
+  - Fixed: Auto-opened input prompt randomly becoming unresponsive.
+
+-------------------------------------------------------------------
 Wed Sep  2 18:56:41 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 1.21.0

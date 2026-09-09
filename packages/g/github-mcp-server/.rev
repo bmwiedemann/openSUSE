@@ -163,4 +163,23 @@ dependency. Local aarch64 build green, %check runs the full offline suite
 (30 packages ok), rpmlint 0 errors / 0 badness.</comment>
     <requestid>1375752</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>657bd241165a51413fe3eacb44972d73</srcmd5>
+    <version>1.12.1</version>
+    <time>1788963657</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.12.1:
+  * OAuth protected-resource metadata now advertises only the
+    default scopes instead of the full step-up catalogue, so
+    clients no longer request delete_repo, workflow and
+    administrative scopes at login.
+  * assign_copilot_to_issue and
+    assign_copilot_to_issue_with_intent reject a missing
+    owner, repo or issue_number with a clear parameter error
+    instead of a confusing repository-resolution failure.
+- Vendored Go modules are unchanged (go.mod/go.sum identical to
+  1.12.0).
+</comment>
+    <requestid>1376542</requestid>
+  </revision>
 </revisionlist>

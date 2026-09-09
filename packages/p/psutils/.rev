@@ -166,4 +166,17 @@
     <comment>Depends on SR#998580</comment>
     <requestid>998598</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>c87c9d1db4372d2b36f5478596b2f4e3</srcmd5>
+    <version>3.3.17</version>
+    <time>1788963541</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.3.17:
+  * Major update see Release page on github
+  * Now also with PDF support
+  * Moved from C code to python
+  * Warning: Requires ImageMagick and depends on that security
+    settings</comment>
+    <requestid>1376361</requestid>
+  </revision>
 </revisionlist>

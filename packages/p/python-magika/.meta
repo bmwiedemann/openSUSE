@@ -1,0 +1,11 @@
+<package name="python-magika" project="openSUSE:Factory">
+  <title>Python module for ML content-type detection</title>
+  <description>Magika is an AI-powered file type detection tool. It uses a small
+deep-learning model (a few MiB) to identify 200+ binary and textual
+content types, typically within milliseconds on a single CPU.
+
+This package provides the Python module and magika-python-client.
+The primary magika command is the separate Rust CLI and is not
+shipped here.</description>
+  <url>https://github.com/google/magika</url>
+</package>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:23:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.40.0:
+  * modelscope / ms console scripts moved to
+    python-modelscope-hub (>= 0.3.0); this package ships CLI
+    plugins via the modelscope_hub.cli_plugins entry-point group
+  * Fix studio CLI
+- CVE-2026-84202: PyYAML unsafe Loader on remote model config
+  files allowed arbitrary code execution (boo#1278007)
+  * fix-CVE-2026-84202.patch
+- Drop modelscope and ms binaries and their libalternatives
+  machinery (now provided by python-modelscope-hub)
+
+-------------------------------------------------------------------
 Sat Aug 22 06:05:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Switch from update-alternatives to libalternatives

@@ -306,4 +306,40 @@ https://www.knot-dns.cz/</comment>
     <comment></comment>
     <requestid>1297412</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>5e75bd7db3854cee592eba0d335cb097</srcmd5>
+    <version>3.6.0</version>
+    <time>1788963751</time>
+    <user>anag_factory</user>
+    <comment>Update so that Factory is newer than Leap again
+- update to version 3.6.0, see
+  https://www.knot-dns.cz/2026-09-08-version-360.html
+  * libdnssec is now part of libknot
+
+- update to version 3.5.8, see
+  https://www.knot-dns.cz/2026-09-04-version-358.html
+
+- update to version 3.5.7, see
+  https://www.knot-dns.cz/2026-08-18-version-357.html
+
+- update to version 3.5.6, see
+  https://www.knot-dns.cz/2026-07-20-version-356.html
+  https://www.knot-dns.cz/2026-06-12-version-355.html
+  https://www.knot-dns.cz/2026-04-02-version-354.html
+
+- update to version 3.5.3, see
+  https://www.knot-dns.cz/2026-01-16-version-353.html
+
+- update to version 3.5.2, see
+  https://www.knot-dns.cz/2025-11-28-version-352.html
+
+- disable quic in stable releases due to the missing libraries
+
+- update to version 3.5.1, see
+  https://www.knot-dns.cz/2025-10-16-version-351.html
+
+- update to version 3.5.0, see
+  https://www.knot-dns.cz/2025-09-18-version-350.html</comment>
+    <requestid>1376604</requestid>
+  </revision>
 </revisionlist>

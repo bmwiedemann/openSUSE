@@ -28,6 +28,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/onboard-osk/onboard
 Source:         %{url}/archive/refs/tags/v%{srcver}.tar.gz#/onboard-%{srcver}.tar.gz
 Source1:        onboard-defaults.conf
+Patch0:         https://github.com/onboard-osk/onboard/commit/1ced23c0.patch
 
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++

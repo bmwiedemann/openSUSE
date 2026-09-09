@@ -2,6 +2,7 @@
 # spec file for package packetry
 #
 # Copyright (c) 2022-2024, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2025 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           packetry
-Version:        0.4.0
+Version:        0.5.0
 Release:        0
 Summary:        USB protocol analysis application
 License:        BSD-3-Clause

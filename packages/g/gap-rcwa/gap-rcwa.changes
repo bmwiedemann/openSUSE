@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:05:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.10.1
+  * The computation of the order of some elements of CT(Z)
+    has been made faster.
+
+-------------------------------------------------------------------
 Thu Jul 30 16:00:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.10.0

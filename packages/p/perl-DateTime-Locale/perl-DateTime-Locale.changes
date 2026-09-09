@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Aug 26 05:52:06 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.46
+   see /usr/share/doc/packages/perl-DateTime-Locale/Changes
+
+  1.46     2026-08-25
+
+  - Rebuilt all locale data with the data from CLDR 48.2.0
+
+-------------------------------------------------------------------
 Wed Apr  2 05:36:09 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.45

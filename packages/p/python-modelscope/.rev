@@ -7,4 +7,12 @@
     <comment>Initial package of python-modelscope 1.39.1</comment>
     <requestid>1372992</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>9771f8b147178640fd36965f8b41000c</srcmd5>
+    <version>1.40.0</version>
+    <time>1788963688</time>
+    <user>anag_factory</user>
+    <comment>Forward python-modelscope 1.40.0 to Factory. Fixes CVE-2026-84202 (boo#1278007, SafeLoader for remote model config); hub&gt;=0.3.0 floor; console scripts moved to python-modelscope-hub. Native aarch64 build green, source_validator clean. NOTE: /usr/bin/modelscope+ms absent until python-modelscope-hub restores them.</comment>
+    <requestid>1376571</requestid>
+  </revision>
 </revisionlist>

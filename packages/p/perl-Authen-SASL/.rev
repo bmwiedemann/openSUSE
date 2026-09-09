@@ -264,4 +264,18 @@
        - Several public functions missing from the API documentation</comment>
     <requestid>1332515</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>93e4efd9516192fd91355b33db397af3</srcmd5>
+    <version>2.210.0</version>
+    <time>1788963534</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.210.0 (2.2100)
+   see /usr/share/doc/packages/perl-Authen-SASL/Changes
+  2.2100  2026-09-06
+    [Security fixes]
+       - CVE-2026-86219: Replay attack in Authen::SASL::Perl::DIGEST_MD5
+         Thanks to TIMLEGGE (@timlegge) and the CPANSec team for the
+         AI-assisted detection and fix!</comment>
+    <requestid>1376335</requestid>
+  </revision>
 </revisionlist>

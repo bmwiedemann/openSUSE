@@ -103,4 +103,14 @@
     <comment></comment>
     <requestid>1350824</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>49f77e01161c100e65dc91c97597bfd4</srcmd5>
+    <version>3.6.1</version>
+    <time>1788963744</time>
+    <user>anag_factory</user>
+    <comment>- Fix version_rewrite pattern in _service to properly strip 'v'
+  from the version field.
+- Re-run service, which triggered vendor tarball update. (forwarded request 1374875 from dimstar)</comment>
+    <requestid>1376592</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep  5 21:45:31 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 23.1.1.
+  * Fix memory leak in isInternalSPIRVBuiltin.
+
+-------------------------------------------------------------------
 Sat Aug 29 14:34:44 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 23.1.0.

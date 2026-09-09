@@ -1,0 +1,9 @@
+<constraints>
+  <!-- maturin release build uses lto=thin and codegen-units=1; rustc peaks
+       several GB RSS. Keep workers from OOM-killing the job. -->
+  <hardware>
+    <physicalmemory>
+      <size unit="G">16</size>
+    </physicalmemory>
+  </hardware>
+</constraints>

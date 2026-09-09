@@ -1,7 +1,7 @@
 #
 # spec file for package python-dbus-python
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,20 +21,25 @@
 %define python_add_provides %{python_provides}
 %{?sle15_python_module_pythons}
 Name:           python-dbus-python
-Version:        1.3.2
+Version:        1.4.0
 Release:        0
 Summary:        Python bindings for D-Bus
 License:        MIT
 Group:          Development/Libraries/Python
 URL:            https://www.freedesktop.org/wiki/Software/DBusBindings/
-Source:         https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz
-Source2:        https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.gz.asc
+Source:         https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.xz
+Source2:        https://dbus.freedesktop.org/releases/dbus-python/dbus-python-%{version}.tar.xz.asc
+Source3:        python-dbus-python.keyring
 Source99:       python-dbus-python-rpmlintrc
+Patch1:         Revert-using-Py_TPFLAGS_MANAGED_WEAKREF.patch
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module docutils}
 BuildRequires:  %{python_module gobject}
 BuildRequires:  %{python_module xml}
+BuildRequires:  autoconf-archive
+BuildRequires:  automake
 BuildRequires:  fdupes
+BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(dbus-1) >= 1.8.0
@@ -90,13 +95,14 @@ This package contains development files shared between
 the Python2 and Python3 versions of the bindings.
 
 %prep
-%setup -q -n dbus-python-%{version}
+%autosetup -p1 -n dbus-python-%{version}
 # Remove Makefile* (fix rpmlint warning "makefile-junk")
 rm -f examples/Makefile*
 # Remove shebang from examples
 sed -i '1 {\|^#!%{_bindir}/env| d}' examples/*.py
 
 %build
+env NOCONFIGURE=y bash autogen.sh
 export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
 %define _configure ../configure
 

@@ -63,6 +63,8 @@ mkdir -p build/buildbin
 ln -s %{_bindir}/f2py-%{$python_bin_suffix} build/buildbin/f2py3
 }
 export PATH=$PWD/build/buildbin:$PATH
+# for reproducible builds we specify the build dir, so that no random tmp path gets embedded into debuginfo
+export SKBUILD_BUILD_DIR="%{_builddir}/skbuild-build-{cache_tag}"
 %pyproject_wheel
 
 %install

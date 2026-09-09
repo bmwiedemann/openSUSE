@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Sun Sep  6 15:49:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.0:
+  * Add an experimental /skills browser with search and filter;
+    shared skills sync on session start
+  * Add "vibe update" to check for and install a newer release
+  * Expose plugin-declared MCP servers in /mcp, authenticatable
+    via /mcp login, and discover Mistral's built-in web-search
+    connector
+  * Add connectors (Notion, Linear, Slack, GitHub, Gmail, Google
+    Calendar, Drive) to ACP
+  * Run prompt queueing through the app server, with select,
+    edit, remove, pause and resume controls
+  * vibe --yolo now selects the auto-approve profile; /config
+    saves to the user config by default
+  * Approved file operations act on the cleared path, so a
+    symlink can no longer redirect a write outside the project
+  * Fix crashes on a malformed browser_auth_api_base_url port and
+    on a JSON-Patch move in the session event stream
+  * Drop Devstral Small from the default models list; stale
+    sparse config overrides are migrated automatically
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Rebase no_network.patch, no_terminal.patch, fix_ui_tests.patch
+  and warning_cleanup.patch
+- Rebase obs-test-synchronization.patch and drop its
+  test_queue_selection_ui.py hunks: upstream removed the
+  blocking-bash queue tests they synchronised
+- Add missing runtime dependency on python3-setproctitle, which
+  upstream requires to rename the process to "Vibe CLI"
+- Add fingerprint_file_contents.patch: the config file
+  fingerprint was dev:inode:mtime:size, so rewriting a config
+  file with different data of the same length inside one
+  filesystem timestamp tick left it unchanged and the edit went
+  unnoticed, which lost a concurrent write and kept a stale
+  config loaded.  The contents are now hashed in as well
+  (submitted upstream)
+- Stop exporting PYTHONTRACEMALLOC=20 when running the test
+  suite: recording a 20-frame traceback for every allocation made
+  it about 29 times slower (2h25m to 5min) and turned some 44
+  timing-sensitive tests into spurious timeout failures
+- Cap pytest-xdist at 4 workers: upstream sets "-n auto", so the
+  suite otherwise differs with the builder's CPU count, and
+  many-core workers exhaust the pty pool
+- Move the test suite into a "test" multibuild flavour, so the
+  shipped package no longer waits on it and is not blocked by it.
+  The test flavour carries the test-only BuildRequires, declares
+  no files and produces only a src.rpm
+
+-------------------------------------------------------------------
 Fri Aug 28 15:09:58 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 2.24.5:

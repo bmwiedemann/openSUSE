@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Sep 04 10:10:50 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 2.8.4:
+  * Security fixes:
+    * CVE-2026-66046, bsc#1275732: denial of service vulnerability
+      caused by quadratic algorithmic complexity in the storeAtts()
+      function in xmlparse.c
+    * CVE-2026-76641, bsc#1275915: out-of-bounds read vulnerability
+      that allows attackers to trigger memory corruption
+    * CVE-2026-76957, bsc#1275859: lacks handler call depth tracking
+      with custom encoding callbacks, use-after-free can occur
+    * CVE-2026-76956, bsc#1275860: misinterpretation of getentropy's
+      return code leads to insufficient entropy, vulnerable to hash
+      flooding denial of service
+  * Other fixes:
+    * CMake: only add /source-charset:utf-8 when /utf-8 is not present
+    * lib: resolve undefined behavior from overshifting a signed int
+    * lib: support read-only hash table lookup with non-zero-terminated
+      keys
+    * lib: use a C99 bool for ENTITY.open
+    * version info bumped from 13:3:12 to 13:4:12
+- update to 2.8.3:
+  * Security fixes:
+    * CVE-2026-72522, bsc#1275594: out-of-bounds read and resultant
+      infinite loop due to low surrogates being treated the same as
+      high surrogates during Unicode processing
+  * Other fixes:
+    * fix support for 2+ GiB documents (regression from 2.8.2)
+    * reject empty version in the XML declaration
+    * fix printf format for AIX
+    * CMake|AIX: enable EXPAT_DEV_URANDOM by default
+    * version info bumped from 13:2:12 to 13:3:12
+
+-------------------------------------------------------------------
 Fri Aug 21 21:02:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.2 (

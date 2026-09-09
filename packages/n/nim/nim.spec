@@ -16,15 +16,13 @@
 #
 
 
-%define _atlas_version 0.10.1
-%define _sat_commit e63eaea8baf00bed8bcd5a29ffd8823abb265b39
-
+%define _atlas_version 0.14.7
+%define _sat_commit 9d52513b3c68bfb929dbd687d4fb2836cfee6936
 Name:           nim
-Version:        2.2.10
+Version:        2.2.12
 Release:        0
 Summary:        A statically typed compiled systems programming language
 License:        MIT
-Group:          Development/Languages/Other
 URL:            https://nim-lang.org/
 Source0:        https://nim-lang.org/download/nim-%{version}.tar.xz
 Source1:        https://github.com/nim-lang/atlas/archive/refs/tags/%{_atlas_version}.tar.gz#/atlas-%{_atlas_version}.tar.gz
@@ -38,19 +36,20 @@ Patch2:         nim-2.2.2-pcre2.patch
 BuildRequires:  binutils-devel
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
-# required for the testsuite
-BuildRequires:  gc-devel
 # Nim needs support for both __builtin_saddll_overflow and
 # -std=c++14, therefore gcc 6.2+ is required.
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  git
-BuildRequires:  libopenssl-devel
 BuildRequires:  netcfg
-BuildRequires:  sqlite3-devel
+BuildRequires:  pkgconfig
 BuildRequires:  timezone
 BuildRequires:  valgrind
+# required for the testsuite
+BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  pkgconfig(libpcre2-8)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3)
 # pull in a C compiler (required to build Nim programs)
 Recommends:     clang
 Recommends:     git

@@ -60,6 +60,7 @@ Requires:       pattern() = update_test
 ### openSUSE base system
 Requires:       /usr/bin/hostname
 Requires:       aaa_base
+Recommends:     account-utils
 Requires:       bash
 Requires:       branding-openSUSE
 Requires:       btrfsprogs

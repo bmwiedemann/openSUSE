@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:42:47 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.140.0 (1.14)
+   see /usr/share/doc/packages/perl-Protocol-HTTP2/Changes
+
+  1.14 2026-09-03T14:10:30Z
+      - security fix: CVE-2026-16028 - memory exhaustion, a remote denial-of-service
+        (reported by Robert Rothenberg, CPAN Security Group)
+      - licence: GPL-1 has been updated with the correct links to FSF (#19)
+
+-------------------------------------------------------------------
 Mon Jun  8 09:59:01 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.130.0 (1.13)

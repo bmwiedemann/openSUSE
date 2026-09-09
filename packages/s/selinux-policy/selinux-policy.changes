@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 08 11:41:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260908:
+  * fix NetworkManager dnsmasq-forwarders.conf labeling (bsc#1260038)
+  * Fix for (open)SUSE (bsc#1270243)
+  * Fix for (open)SUSE (bsc#1277439)
+
+-------------------------------------------------------------------
 Wed Aug 26 07:51:38 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260826:

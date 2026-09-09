@@ -36,4 +36,23 @@ subpackage: the upstream e2e ginkgo suite as a single static binary
 (kubevirt*-tests precedent), fixtures excluded.</comment>
     <requestid>1366540</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>3bc3453dd6319b674dcf6b66da76453f</srcmd5>
+    <version>1.65.0</version>
+    <time>1788963607</time>
+    <user>anag_factory</user>
+    <comment>Security re-vendor of the bundled Go dependencies for containerized-data-importer 1.65.0 (tarball rebuilt from v1.65.0 with updated go.mod/vendor; upstream sources unchanged):
+
+- google.golang.org/grpc 1.79.3 -&gt; 1.83.1: CVE-2026-84304 (bsc#1279234), CVE-2026-84303 (bsc#1279315)
+- golang.org/x/crypto 0.52.0 -&gt; 0.56.0: CVE-2026-56854, CVE-2026-56855, CVE-2026-78662 (bsc#1278621)
+- golang.org/x/text 0.37.0 -&gt; 0.41.0: CVE-2026-56852 (bsc#1272064)
+- go.opentelemetry.io/otel 1.39.0 -&gt; 1.44.0: CVE-2026-41178 (bsc#1276687)
+- golang.org/x/net 0.55.0 -&gt; 0.57.0 (no open CVE; aligns with the other streams)
+
+go-git/go-git and go-billy are not imported by any module of the tree and are no longer vendored. golang.org/x/crypto 0.56.0 requires Go 1.26, so BuildRequires moves to golang(API) &gt;= 1.26.
+
+Validated with the full upstream CDI functional test suite against the built images (654 specs, 0 failures).
+</comment>
+    <requestid>1376503</requestid>
+  </revision>
 </revisionlist>

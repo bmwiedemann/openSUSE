@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           sqlcipher
-Version:        4.18.0
+Version:        4.19.0
 Release:        0
 Summary:        SQLite database encryption
 License:        BSD-3-Clause

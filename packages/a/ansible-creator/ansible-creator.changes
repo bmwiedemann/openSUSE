@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep  9 05:12:13 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Update to version 26.8.0 (from 26.3.3):
+  * New "add resource playbook" for simple playbook scaffolding
+  * schema subcommand output now includes validation metadata
+  * init: add --include/--exclude options for resource bundles
+  * Execution environment: build_arg_defaults support for EE projects
+  * Execution environment: scaffold spec files for GitLab CI
+  * Execution environment: option to disable validate_certs
+  * Execution environment: fixed missing build stages and ordering
+  * Security: constrain cairosvg (CVE-2026-31899) and upgrade pillow
+
+-------------------------------------------------------------------
 Tue Mar 31 23:49:18 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
 
 - Update to version 26.3.3 (from 25.12.0):

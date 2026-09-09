@@ -257,4 +257,29 @@ copyleft.
 Built and %check-tested locally on aarch64.</comment>
     <requestid>1376112</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>edf1db3ed7fa5a640824ea117c4b4ad9</srcmd5>
+    <version>1.18.30</version>
+    <time>1788963658</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.30:
+  * Add the Astra system prompt for GPT-6 models
+  * Preserve Bedrock DeepSeek model IDs, including ARN-based IDs,
+    so they resolve correctly
+  * Bump the Azure provider SDK to 3.0.93 and the OpenAI provider
+    SDK to 3.0.88 for compatibility fixes
+  * Add reasoning-effort variants for supported GitLab GPT and
+    Claude models
+  * Preserve explicit OpenAI service tiers
+- Retrace the vendor keep list (509 to 510 store entries):
+  gitlab-ai-provider moves 6.13.0 to 6.15.0 with both of its
+  @ai-sdk/provider-utils peer variants still kept, @ai-sdk/azure
+  3.0.88 to 3.0.93, @ai-sdk/deepseek 2.0.47 to 2.0.50, and a
+  third @ai-sdk/openai 3.0.88 kept next to 3.0.84 and 3.0.105.
+  SPDX set unchanged, still no copyleft; README.SUSE-maint
+  records the audit as redone for 1.18.30.
+- Refresh the models.dev catalogue snapshot: it is a live fetch,
+  so Source2 moves on every bump independently of the tag</comment>
+    <requestid>1376544</requestid>
+  </revision>
 </revisionlist>

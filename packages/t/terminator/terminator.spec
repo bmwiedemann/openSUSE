@@ -1,7 +1,7 @@
 #
 # spec file for package terminator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,13 @@
 #
 
 
-%define _mtime 1747876956
-%define _commit 590a9cd3
+%define _mtime 1788621113
+%define _commit 85c6df52
 
 %global __requires_exclude typelib\\(Gnome\\)
 %define pythons python3
 Name:           terminator
-Version:        2.1.5
+Version:        2.1.6
 Release:        0
 Summary:        Store and run multiple GNOME terminals in one window
 License:        GPL-2.0-only

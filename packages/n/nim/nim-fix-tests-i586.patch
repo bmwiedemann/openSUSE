@@ -1,8 +1,8 @@
-Index: nim-2.0.4/tests/misc/trunner.nim
+Index: nim-2.2.12/tests/misc/trunner.nim
 ===================================================================
---- nim-2.0.4.orig/tests/misc/trunner.nim
-+++ nim-2.0.4/tests/misc/trunner.nim
-@@ -270,14 +270,14 @@ sub/mmain.idx""", context
+--- nim-2.2.12.orig/tests/misc/trunner.nim
++++ nim-2.2.12/tests/misc/trunner.nim
+@@ -284,14 +284,14 @@ sub/mmain.idx""", context
      let cmd = fmt"{nim} r --hints:off --nimcache:{nimcache} --hintAsError:XDeclaredButNotUsed {file}"
      check execCmdEx(cmd) == ("12\n", 0)
  

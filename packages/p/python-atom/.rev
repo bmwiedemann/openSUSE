@@ -196,4 +196,13 @@
     accepted PR #218</comment>
     <requestid>1314474</requestid>
   </revision>
+  <revision rev="17" vrev="2">
+    <srcmd5>483d63f549da99b56175079ed0304bdf</srcmd5>
+    <version>0.12.1</version>
+    <time>1788963632</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-pyweakref-get-object.patch:
+  * Do not call PyWeakref_GET_OBJECT, use PyWeakref_GetRef instead.</comment>
+    <requestid>1376524</requestid>
+  </revision>
 </revisionlist>

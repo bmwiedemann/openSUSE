@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:39:17 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.1.6:
+  + Full Changelog:
+    https://github.com/gnome-terminator/terminator/compare/v2.1.5...v2.1.6
+  + fix ci
+  + Updates for file po/terminator.pot in fr
+  + Updates for file po/terminator.pot in hu
+  + Tmux-like navigation feature
+  + Bug #904 Decouple the copy/paste from PRIMARY or Clipboard
+  + add Add Auto Theme Plugin
+  + Fix incompatibility issues between remote plugins and
+    localization modules
+  + Update TRANSLATION.md
+  + fix: Use Menlo as default mono font on macOS
+  + fix: handle both string and bytes in feed method for
+    drag-and-drop
+  + fix: handle invalid regex gracefully in search
+  + Background blur
+  + add meta key
+  + Add new keybinding action - Shift+Enter = new line
+  + Add plugin to resolve commit hashes to URLs
+  + revert PR 1075
+  + Fix SIGHUP/PTY race in Terminal.close() that loses bash
+    history
+  + Adds custom color selection and theme presets
+  + tests: fix accelerator_parse hash mismatch on Python 3.14
+  + fix macos keybinding
+  + Add mod4 key binding to keybindings.py
+  + more keyboard fixes for macos
+  + Pass terminal to URLHandler plugins
+  + Fix keypress focus check for non-window toplevels
+  + fix: remove unused GObject and Gtk imports with legacy aliases
+  + Add window decoration style setting (Dark/Light/Auto)
+  + Prevent background terminals from flickering the window title
+
+-------------------------------------------------------------------
 Wed Jun 18 06:06:36 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros from python-rpm-macros to build and install.

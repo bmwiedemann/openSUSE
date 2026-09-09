@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  8 10:03:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 3.3.17:
+  * Major update see Release page on github
+  * Now also with PDF support
+  * Moved from C code to python
+  * Warning: Requires ImageMagick and depends on that security
+    settings
+
+-------------------------------------------------------------------
 Mon Aug 22 09:06:29 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Require new package libpaper-tools (boo#1202402) instead of

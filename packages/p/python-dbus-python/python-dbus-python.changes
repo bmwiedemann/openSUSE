@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:08:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.4.0:
+  * Automatically set the NO_REPLY message flag in call_async if
+    there is no reply handler and no error handler
+  * Add arg0namespace match rule support
+    Hofstee)
+  * Add argNpath match rules support
+  * Generate a valid sdist from `meson dist`
+  * Mention more alternatives to this package in the README
+  * Don't require tomllib when generating dist tarball on Python
+    ≥ 3.11
+  * Fix compilation with Python ≥ 3.13 in some situations
+  * Avoid using distutils in setup.py (Simon McVittie)
+  * Fix a typo in example code (dbus-python!25, Robert Ancell)
+  * Safer handling of weak references (Simon McVittie)
+- add missing keyring
+- add Revert-using-Py_TPFLAGS_MANAGED_WEAKREF.patch from fedora,
+  fixes testsuite failures on newer python versions
+
+-------------------------------------------------------------------
 Thu Apr  3 17:08:18 UTC 2025 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Remove require on dbus-1. This library is pulled in by dnf, which normally works inside WSL1,
@@ -79,12 +100,12 @@ Fri Dec 11 17:44:15 UTC 2020 - Benjamin Greiner <code@bnavigator.de>
   gh#openSUSE/python-rpm-macros#66
 - Remove shebang from examples (rpmlint warning, is in common doc)
 - Clean duplicate python flavor variables for configure
-- Update the provides/obsoletes tags for old-style dbus-1-$python 
+- Update the provides/obsoletes tags for old-style dbus-1-$python
 
 -------------------------------------------------------------------
 Wed Jan  8 01:19:38 UTC 2020 - Michael Gorse <mgorse@suse.com>
 
-- Version update to version 1.2.14: 
+- Version update to version 1.2.14:
   * Ensure that the numeric types from dbus.types get the same
     str() under Python 3.8 that they did under previous versions.
   * Disable -Winline.
@@ -289,7 +310,7 @@ Mon Nov 19 18:33:18 UTC 2012 - asterios.dramis@gmail.com
 -------------------------------------------------------------------
 Sun May 27 11:04:49 UTC 2012 - highwaystar.ru@gmail.com
 
-- dbus-1-python3 package added 
+- dbus-1-python3 package added
 
 -------------------------------------------------------------------
 Thu Mar  8 20:33:58 UTC 2012 - asterios.dramis@gmail.com
@@ -355,28 +376,28 @@ Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
 Tue Jan  4 17:58:24 UTC 2011 - fcrozat@novell.com
 
 - new upstream version 0.83.2 :
- - libdbus 1.2 is still supported, but libdbus >= 1.4 is 
+ - libdbus 1.2 is still supported, but libdbus >= 1.4 is
    recommended.
- - Make BusConnection.list_activatable_names actually call 
+ - Make BusConnection.list_activatable_names actually call
    ListActivatableNames, not ListNames
  - Don't override CFLAGS when adding compiler warnings
- - Fix compilation on platforms where Py_ssize_t is larger than 
+ - Fix compilation on platforms where Py_ssize_t is larger than
    int, like x86-64
- - fd.o #21831: deserialize empty byte arrays with byte_arrays=True 
+ - fd.o #21831: deserialize empty byte arrays with byte_arrays=True
    as ByteArray(''), not ByteArray('None')
- - fd.o #23278, #25105: fix crashes when trying to append more 
-   struct entries than the signature allows with libdbus 1.4 
- - fd.o #23831: fix crashes when an embedded Python interpreter 
-   imports dbus, is finalized, is re-initialized, and re-imports 
+ - fd.o #23278, #25105: fix crashes when trying to append more
+   struct entries than the signature allows with libdbus 1.4
+ - fd.o #23831: fix crashes when an embedded Python interpreter
+   imports dbus, is finalized, is re-initialized, and re-imports
    dbus
  - fd.o #21172: avoid some deprecation warnings in Python 2.6
- - fd.o #15013: add dbus.lowlevel.MESSAGE_TYPE_SIGNAL etc., for 
+ - fd.o #15013: add dbus.lowlevel.MESSAGE_TYPE_SIGNAL etc., for
    those who care about message types at a low level
- - When removing signal matches, clean up internal state, avoiding 
-   a memory leak in long-lived Python processes that connect to 
+ - When removing signal matches, clean up internal state, avoiding
+   a memory leak in long-lived Python processes that connect to
    signals from arbitrarily many object paths (fd.o #17551)
- - When setting the sender of a message, allow it to be 
-   org.freedesktop.DBus so you can implement a D-Bus daemon in 
+ - When setting the sender of a message, allow it to be
+   org.freedesktop.DBus so you can implement a D-Bus daemon in
    pure Python
 
 -------------------------------------------------------------------
@@ -392,7 +413,7 @@ Sun Aug  9 08:45:50 CEST 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Tue Sep  9 00:36:16 CEST 2008 - ro@suse.de
 
-- use py_sitedir macro in filelist 
+- use py_sitedir macro in filelist
 
 -------------------------------------------------------------------
 Tue Jul 29 16:36:27 CEST 2008 - thoenig@suse.de
@@ -421,7 +442,7 @@ Tue Dec 11 10:25:40 CET 2007 - thoenig@suse.de
   MissingErrorHandlerException, and vice versa (fd.o #12304, patch
   from René Neumann)
 - Using non-recursive make for dbus/ directory should fix builds in
-  some environments (fd.o #12741) 
+  some environments (fd.o #12741)
 - Everything is now under the same MIT/X11 license used for
   Collabora code in the previous release
 - Added copyright headers to some files that were still missing
@@ -572,29 +593,29 @@ Tue Jun 19 19:08:38 CEST 2007 - thoenig@suse.de
 -------------------------------------------------------------------
 Fri Mar  9 12:06:50 CET 2007 - thoenig@suse.de
 
-- add python-xml to 'Requires' 
+- add python-xml to 'Requires'
 
 -------------------------------------------------------------------
 Sun Mar  4 20:46:40 CET 2007 - thoenig@suse.de
 
 - fix completely broken build
-- new package: dbus-1-python-devel 
+- new package: dbus-1-python-devel
 
 -------------------------------------------------------------------
 Thu Mar  1 12:18:55 CET 2007 - thoenig@suse.de
 
 - new upstream version 0.80.1
-- drop patch dbus-python_bindings_fix.diff 
+- drop patch dbus-python_bindings_fix.diff
 
 -------------------------------------------------------------------
 Mon Nov  6 15:54:33 CET 2006 - thoenig@suse.de
 
-- loosen dependency to D-Bus  
+- loosen dependency to D-Bus
 
 -------------------------------------------------------------------
 Mon Sep 25 12:51:53 CEST 2006 - thoenig@suse.de
 
-- add %{py_requires} (b.n.c #207919) 
+- add %{py_requires} (b.n.c #207919)
 
 -------------------------------------------------------------------
 Tue Aug  1 23:03:57 CEST 2006 - thoenig@suse.de

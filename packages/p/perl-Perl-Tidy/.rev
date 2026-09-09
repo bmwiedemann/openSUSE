@@ -734,4 +734,16 @@
        a function name in their parameter lists. The manual has details.</comment>
     <requestid>1372840</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>2dfc8168d7e23a7779f7be4aba9ce67a</srcmd5>
+    <version>20260826.0.0</version>
+    <time>1788963525</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20260826.0.0 (20260826)
+   see /usr/share/doc/packages/perl-Perl-Tidy/CHANGES.md
+  ## 2026 08 26
+     - Fixed git #213, --heredoc-extra-spaces flag not working correctly.
+     - Additional checks have been added to help catch missing semicolons.</comment>
+    <requestid>1376315</requestid>
+  </revision>
 </revisionlist>

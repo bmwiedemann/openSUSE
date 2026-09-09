@@ -3170,4 +3170,12 @@ Built natively on aarch64. Main flavour green, rpmlint clean; the test
 flavour runs the Rust workspace suite: 1371 tests pass, 0 fail.</comment>
     <requestid>1376124</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>acee794e4f924ca7bf7cde0ee2516980</srcmd5>
+    <version>0.12.11</version>
+    <time>1788963687</time>
+    <user>anag_factory</user>
+    <comment>Forward python-uv 0.12.11 to Factory. Native aarch64 builds green both flavors (test: 1376 passed/0 failed), source_validator clean, license re-derived over vendored tree.</comment>
+    <requestid>1376567</requestid>
+  </revision>
 </revisionlist>

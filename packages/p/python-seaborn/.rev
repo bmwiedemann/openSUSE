@@ -242,4 +242,12 @@
   * gh#mwaskom/seaborn#3820</comment>
     <requestid>1323841</requestid>
   </revision>
+  <revision rev="27" vrev="6">
+    <srcmd5>0f6b5ed57b298462bf29981ab70cdcea</srcmd5>
+    <version>0.13.2</version>
+    <time>1788964457</time>
+    <user>anag_factory</user>
+    <comment>- Skip test failing on 32 bit architectures</comment>
+    <requestid>1376622</requestid>
+  </revision>
 </revisionlist>

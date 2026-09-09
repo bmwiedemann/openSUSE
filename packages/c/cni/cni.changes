@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:14:17 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Clean up spec file:
+  * Remove unnecessary shaodow, systemd and fillup dependencies
+  * Move sample config to %doc
+  * Move away from old way of building go packages
+  * Enable PIE
+
+-------------------------------------------------------------------
 Mon Sep 07 04:57:18 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 1.3.1:

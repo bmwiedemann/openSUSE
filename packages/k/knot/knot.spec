@@ -16,11 +16,11 @@
 #
 
 
-%define libdnssec   libdnssec9
-%define libknot     libknot15
-%define libzscanner libzscanner4
+%define libknot     libknot17
+%define libzscanner libzscanner5
 %define pkg_name knot
 %bcond_without  dnstap
+%bcond_without  redis
 %bcond_without  lto
 %bcond_without systemd
 %if 0%{?is_opensuse}
@@ -35,10 +35,10 @@ BuildRequires:  pkgconfig(libsystemd)
 %{?systemd_requires}
 %endif
 Name:           knot
-Version:        3.4.8
+Version:        3.6.0
 Release:        0
 Summary:        An authoritative DNS daemon
-License:        GPL-3.0-or-later
+License:        GPL-2.0-or-later
 Group:          Productivity/Networking/DNS/Servers
 URL:            https://www.knot-dns.cz/
 Source0:        https://secure.nic.cz/files/knot-dns/%{pkg_name}-%{version}.tar.xz
@@ -50,7 +50,7 @@ Recommends:     knot-utils
 BuildRequires:  libcap-ng-devel
 BuildRequires:  libedit-devel
 BuildRequires:  libnghttp2-devel
-%if 0%{?suse_version} >= 1600
+%if 0%{?suse_version} > 1600
 BuildRequires:  libngtcp2_crypto_gnutls-devel
 BuildRequires:  libngtcp2_crypto_gnutls8
 %endif
@@ -59,6 +59,9 @@ BuildRequires:  lmdb-devel >= 0.9.15
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
+%if %{with redis}
+BuildRequires:  hiredis-devel
+%endif
 BuildRequires:  xz
 BuildRequires:  pkgconfig(gnutls) >= 3.3
 BuildRequires:  pkgconfig(nettle)
@@ -91,7 +94,6 @@ removal.
 #
 Summary:        Development files for the knot libraries
 Group:          Development/Libraries/C and C++
-Requires:       %{libdnssec} = %{version}
 Requires:       %{libknot} = %{version}
 Requires:       %{libzscanner} = %{version}
 Requires:       knot = %{version}
@@ -116,19 +118,6 @@ implementation and can operate non-stop during zone addition or
 removal.
 
 This package contains tools to query and test DNS like kdig and knsupdate.
-
-%package -n %{libdnssec}
-#
-Summary:        DNSSEC support functions for Knot DNS
-Group:          System/Libraries
-
-%description -n %{libdnssec}
-Knot DNS is a DNS server. It implements only the authoritative domain
-name service. It uses a multi-threaded and mostly lock-free
-implementation and can operate non-stop during zone addition or
-removal.
-
-This package contains a library for DNSSEC support functions.
 
 %package -n %{libknot}
 #
@@ -164,7 +153,7 @@ This package contains a library for a zone record scanner.
   --libexecdir=%{_libexecdir}/%{pkg_name} \
   --includedir=%{_includedir}/knot/ \
   --disable-static \
-%if 0%{?suse_version} < 1600
+%if 0%{?suse_version} > 1600
   --enable-quic \
 %endif
   --enable-recvmmsg=yes \
@@ -174,6 +163,9 @@ This package contains a library for a zone record scanner.
 %if %{with dnstap}
   --enable-dnstap=yes \
   --with-module-dnstap=shared \
+%endif
+%if %{with redis}
+  --enable-redis \
 %endif
   --enable-rosedb \
   --with-module-rosedb=shared \
@@ -254,10 +246,8 @@ fi
 %service_del_postun %{pkg_name}.service
 %endif
 
-%post   -n %{libdnssec}   -p /sbin/ldconfig
 %post   -n %{libknot}     -p /sbin/ldconfig
 %post   -n %{libzscanner} -p /sbin/ldconfig
-%postun -n %{libdnssec}   -p /sbin/ldconfig
 %postun -n %{libknot}     -p /sbin/ldconfig
 %postun -n %{libzscanner} -p /sbin/ldconfig
 
@@ -277,9 +267,6 @@ fi
 %dir %attr(-,knot,knot) %{_localstatedir}/lib/knot/
 %ghost %dir %(751,knot,knot) /run/knot
 
-%files -n %{libdnssec}
-%{_libdir}/libdnssec.so.*
-
 %files -n %{libknot}
 %{_libdir}/libknot.so.*
 
@@ -290,11 +277,9 @@ fi
 
 %files devel
 %{_includedir}/knot/
-%{_libdir}/libdnssec.so
 %{_libdir}/libknot.so
 %{_libdir}/libzscanner.so
 %{_libdir}/pkgconfig/knotd.pc
-%{_libdir}/pkgconfig/libdnssec.pc
 %{_libdir}/pkgconfig/libknot.pc
 %{_libdir}/pkgconfig/libzscanner.pc
 

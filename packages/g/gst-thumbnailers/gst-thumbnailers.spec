@@ -17,7 +17,7 @@
 
 
 Name:           gst-thumbnailers
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        GStreamer Thumbnailers
 License:        GPL-3.0

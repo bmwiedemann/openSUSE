@@ -1,0 +1,14 @@
+-------------------------------------------------------------------
+Tue Sep  8 16:44:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- ExclusiveArch x86_64 aarch64: python-onnxruntime is not built
+  on other arches, so the noarch package was unresolvable there
+
+-------------------------------------------------------------------
+Tue Sep  8 15:36:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of python-magika 1.0.3: Google Magika Python
+  module for ML content-type detection
+  * CLI is magika-python-client; /usr/bin/magika is the separate
+    Rust client and is not shipped
+

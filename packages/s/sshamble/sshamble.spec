@@ -18,7 +18,7 @@
 
 
 Name:           sshamble
-Version:        0.3.10
+Version:        0.3.12
 Release:        0
 Summary:        Security testing toolset for SSH
 License:        BSD-2-Clause
@@ -28,7 +28,7 @@ URL:            https://SSHamble.com/
 Source:         https://github.com/runZeroInc/sshamble/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  go
-BuildRequires:  golang-packaging >= 1.22.5
+BuildRequires:  golang-packaging >= 1.27.1
 %{go_provides}
 
 %description

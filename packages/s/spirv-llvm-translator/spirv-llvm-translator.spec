@@ -23,7 +23,7 @@
 
 %define sover   23
 Name:           spirv-llvm-translator
-Version:        23.1.0
+Version:        23.1.1
 Release:        0
 Summary:        LLVM/SPIR-V Bi-Directional Translator library
 License:        BSD-3-Clause

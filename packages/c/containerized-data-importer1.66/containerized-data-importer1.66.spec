@@ -31,7 +31,7 @@
 
 %define upstream_name containerized-data-importer
 Name:           containerized-data-importer1.66
-Version:        1.66.0
+Version:        1.66.1
 Release:        0
 Summary:        Container native virtualization
 License:        Apache-2.0
@@ -49,7 +49,7 @@ BuildRequires:  libnbd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rsync
 BuildRequires:  sed
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 ExclusiveArch:  %{_exclusive_arch}
 
 %description

@@ -110,4 +110,12 @@ Built locally on aarch64 against openSUSE:Factory:ARM: rpmlint 0 errors,
 0 warnings, 0 badness.</comment>
     <requestid>1375755</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>a4cfddfa133da3377f1a09f3b44150f0</srcmd5>
+    <version>1.50.0</version>
+    <time>1788963717</time>
+    <user>anag_factory</user>
+    <comment>Forward goose 1.50.0 to Factory. Native aarch64 build green, rpmlint 0/0/0, source_validator clean, license re-derived (1333 vendored crates).</comment>
+    <requestid>1376569</requestid>
+  </revision>
 </revisionlist>

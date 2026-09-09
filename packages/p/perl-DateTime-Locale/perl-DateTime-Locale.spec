@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime-Locale
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,26 @@
 
 %define cpan_name DateTime-Locale
 Name:           perl-DateTime-Locale
-Version:        1.450000
+Version:        1.460000
 Release:        0
-%define cpan_version 1.45
+%define cpan_version 1.46
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Localization support for DateTime.pm
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Check) >= 0.11.0
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.11
 BuildRequires:  perl(CPAN::Meta::Requirements)
-BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
+BuildRequires:  perl(Dist::CheckConflicts) >= 0.20
 BuildRequires:  perl(File::ShareDir)
-BuildRequires:  perl(File::ShareDir::Install) >= 0.06
+BuildRequires:  perl(File::ShareDir::Install) >= 0.60
 BuildRequires:  perl(IPC::System::Simple)
 BuildRequires:  perl(List::Util) >= 1.45
-BuildRequires:  perl(Params::ValidationCompiler) >= 0.13
+BuildRequires:  perl(Params::ValidationCompiler) >= 0.130
 BuildRequires:  perl(Path::Tiny)
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Library::String)
@@ -44,13 +45,14 @@ BuildRequires:  perl(Test2::Plugin::NoWarnings)
 BuildRequires:  perl(Test2::Plugin::UTF8)
 BuildRequires:  perl(Test2::Require::Module)
 BuildRequires:  perl(Test2::V0)
+BuildRequires:  perl(Test::File::ShareDir)
 BuildRequires:  perl(Test::File::ShareDir::Dist)
 BuildRequires:  perl(Test::More) >= 1.302015
 BuildRequires:  perl(namespace::autoclean) >= 0.190
-Requires:       perl(Dist::CheckConflicts) >= 0.02
+Requires:       perl(Dist::CheckConflicts) >= 0.20
 Requires:       perl(File::ShareDir)
 Requires:       perl(List::Util) >= 1.45
-Requires:       perl(Params::ValidationCompiler) >= 0.13
+Requires:       perl(Params::ValidationCompiler) >= 0.130
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Library::String)
 Requires:       perl(namespace::autoclean) >= 0.190
@@ -72,7 +74,7 @@ If you want to know what methods are available for locale objects, then
 please read the DateTime::Locale::FromData documentation.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -89,7 +91,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md README.md
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md GOVERNANCE.md README.md SECURITY.md SUPPORT.md
 %license LICENSE LICENSE.cldr
 
 %changelog
