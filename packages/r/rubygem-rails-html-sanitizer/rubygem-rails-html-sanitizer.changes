@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Jul 30 11:49:34 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 1.7.1
+  * SVG reference elements now restrict both href and xlink:href to local
+    references (GHSA-cj75-f6xr-r4g7)
+- Added _service to download gem
+- Used recommended command
+  gem2rpm *.gem -o *.spec
+  to update package, which changes the spec file. Should not happen
+  for the next update
+
+-------------------------------------------------------------------
 Fri Mar 13 08:43:49 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Update to version 1.7.0

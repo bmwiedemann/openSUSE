@@ -1,0 +1,7 @@
+<services>
+  <service name="download_files" mode="manual">
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="format_spec_file" mode="manual">
+  </service>
+</services>

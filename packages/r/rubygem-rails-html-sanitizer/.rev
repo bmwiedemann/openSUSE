@@ -134,4 +134,21 @@
       Please note that we may restore support for allowing &quot;noscript&quot; in a future</comment>
     <requestid>1347656</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ec281cf5dfef83ae50a86615cc72369a</srcmd5>
+    <version>1.7.1</version>
+    <time>1789033686</time>
+    <user>anag_factory</user>
+    <comment>please stage with sr#1376640
+
+- Update to version 1.7.1
+  * SVG reference elements now restrict both href and xlink:href to local
+    references (GHSA-cj75-f6xr-r4g7)
+- Added _service to download gem
+- Used recommended command
+  gem2rpm *.gem -o *.spec
+  to update package, which changes the spec file. Should not happen
+  for the next update</comment>
+    <requestid>1376642</requestid>
+  </revision>
 </revisionlist>
