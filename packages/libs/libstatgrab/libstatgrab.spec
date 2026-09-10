@@ -1,7 +1,7 @@
 #
 # spec file for package libstatgrab
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define soname  10
+%define sover  10
 Name:           libstatgrab
 Version:        0.92.1
 Release:        0
@@ -52,19 +52,19 @@ The package also includes two tools: saidar provides a curses-based interface
 for viewing live system statistics, and statgrab is a sysctl-like interface to
 the statistics.
 
-%package -n %{name}%{soname}
+%package -n %{name}%{sover}
 Summary:        Library for %{name}
 License:        LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
+Group:          System/Libraries
 
-%description -n %{name}%{soname}
+%description -n %{name}%{sover}
 Library for package libstatgrab.
 
 %package devel
 Summary:        Development Environment for %{name}
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{name}%{sover} = %{version}
 
 %description devel
 Development environment for libstatgrab (headers, library links, static library).
@@ -73,7 +73,7 @@ Development environment for libstatgrab (headers, library links, static library)
 Summary:        Portable System Statistics Tools
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{name}%{sover} = %{version}
 
 %description -n statgrab
 This package includes a couple of useful tools that use the %{name} library.
@@ -87,7 +87,7 @@ to use statgrab.
 Summary:        Portable System Statistics Tools
 License:        GPL-2.0-or-later
 Group:          System/Monitoring
-Requires:       %{name}%{soname} = %{version}
+Requires:       %{name}%{sover} = %{version}
 
 %description -n saidar
 This package includes a couple of useful tools that use the %{name} library.
@@ -96,7 +96,7 @@ This extends the use of libstatgrab to people writing scripts or anything else
 that can't easily make C function calls.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 autoreconf -fi
@@ -134,10 +134,9 @@ install -Dm 0644 %{SOURCE2} %{buildroot}%{_datadir}/applications/
 rm -fr examples/Makefile*
 cp -a examples %{buildroot}%{_docdir}/%{name}/examples/
 
-%post -n %{name}%{soname} -p /sbin/ldconfig
-%postun -n %{name}%{soname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{name}%{sover}
 
-%files -n %{name}%{soname}
+%files -n %{name}%{sover}
 %{_libdir}/%{name}.so.*
 
 %files devel
