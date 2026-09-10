@@ -1,0 +1,44 @@
+From 847d113863affa6d6ed393ae6a0b8cd5590e00d6 Mon Sep 17 00:00:00 2001
+From: Luca Boccassi <luca.boccassi@gmail.com>
+Date: Wed, 9 Sep 2026 10:53:02 +0100
+Subject: [PATCH] mkosi-obs: Only configure MakeScriptsExecutable in the main
+ image
+
+MakeScriptsExecutable= is multiversal and cannot be configured in
+subimages. Move it to the existing main-image-only drop-in so
+subimages can include mkosi-obs again and inherit the value.
+
+Follow-up for 427970d8fd336b7eccbb75ef3780f4f47b32ef54
+
+Fixes: https://github.com/systemd/mkosi/issues/4451
+---
+ mkosi/resources/mkosi-obs/mkosi.conf             | 3 ---
+ mkosi/resources/mkosi-obs/mkosi.conf.d/main.conf | 1 +
+ 2 files changed, 1 insertion(+), 3 deletions(-)
+
+diff --git a/mkosi/resources/mkosi-obs/mkosi.conf b/mkosi/resources/mkosi-obs/mkosi.conf
+index a939b18e..811ccb59 100644
+--- a/mkosi/resources/mkosi-obs/mkosi.conf
++++ b/mkosi/resources/mkosi-obs/mkosi.conf
+@@ -8,6 +8,3 @@ SecureBoot=no
+ SignExpectedPcr=no
+ Verity=defer
+ Checksum=yes
+-
+-[Build]
+-MakeScriptsExecutable=yes
+diff --git a/mkosi/resources/mkosi-obs/mkosi.conf.d/main.conf b/mkosi/resources/mkosi-obs/mkosi.conf.d/main.conf
+index 0f045278..cffcffb6 100644
+--- a/mkosi/resources/mkosi-obs/mkosi.conf.d/main.conf
++++ b/mkosi/resources/mkosi-obs/mkosi.conf.d/main.conf
+@@ -11,6 +11,7 @@ ToolsTree=
+ CacheDirectory=
+ Incremental=no
+ WithNetwork=never
++MakeScriptsExecutable=yes
+ 
+ [Distribution]
+ RepositoryKeyCheck=no
+-- 
+2.51.0
+

@@ -40,6 +40,8 @@ Source1:        mkosi-initrd.conf
 Patch0:         0001-tests-skip-test_fork_and_wait-if-on-rc-1.patch
 # PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4442
 Patch1:         0002-opensuse-tolerate-missing-RPM-keyring.patch
+# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4453
+Patch2:         0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}

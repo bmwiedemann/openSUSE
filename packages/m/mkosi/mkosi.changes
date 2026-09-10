@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 06:45:37 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Add 0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch:
+  * Backport upstream patch to fix build of signed UKI images in OBS.
+
+-------------------------------------------------------------------
 Fri Sep  4 11:31:18 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Add 0002-opensuse-tolerate-missing-RPM-keyring.patch:

@@ -1336,4 +1336,13 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
     <comment>1</comment>
     <requestid>1376075</requestid>
   </revision>
+  <revision rev="34" vrev="3">
+    <srcmd5>1525dd6859d82bbd56d6cb6ca5b4d99e</srcmd5>
+    <version>27</version>
+    <time>1789033785</time>
+    <user>anag_factory</user>
+    <comment>- Add 0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch:
+  * Backport upstream patch to fix build of signed UKI images in OBS.</comment>
+    <requestid>1376850</requestid>
+  </revision>
 </revisionlist>
