@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.28.0
+Version:        0.29.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -119,7 +119,7 @@ Requires:       python-depyf >= 0.20.0
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
 Requires:       python-filelock >= 3.16.1
-Requires:       python-huggingface-hub >= 1.27.0
+Requires:       python-huggingface-hub >= 1.28.0
 Requires:       python-ijson
 Requires:       python-jsonschema >= 4.23.0
 Requires:       python-lark >= 1.2.2
@@ -172,7 +172,7 @@ Requires:       python-tokenizers >= 0.21.1
 # there and only makes the package uninstallable until it is bumped by hand.
 Requires:       python-torch >= 2.12.0
 Requires:       python-tqdm
-Requires:       python-transformers >= 5.5.3
+Requires:       python-transformers >= 5.10.4
 Requires:       python-typing_extensions >= 4.10
 Requires:       python-watchfiles
 Requires:       python-xgrammar >= 0.2.1
@@ -289,7 +289,7 @@ rm -f $sd/vllm/distributed/kv_transfer/disagg_prefill_workflow.jpg
 rm -f $sd/vllm/vllm_flash_attn/.gitkeep
 # These modules carry a #!/usr/bin/env python shebang but are imported, not run.
 sed -i '1{/^#!/d}' $sd/vllm/entrypoints/grpc_server.py
-sed -i '1{/^#!/d}' $sd/vllm/entrypoints/openai/dp_supervisor.py
+sed -i '1{/^#!/d}' $sd/vllm/entrypoints/launchers/dp_supervisor.py
 %fdupes $sd
 }
 %python_clone -a %{buildroot}%{_bindir}/vllm

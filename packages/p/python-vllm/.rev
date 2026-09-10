@@ -141,4 +141,15 @@ Also in this request:
 Built and tested natively on aarch64, both multibuild flavours.</comment>
     <requestid>1373880</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b841a506f21fcf724904fa62c5be47dd</srcmd5>
+    <version>0.29.0</version>
+    <time>1789033778</time>
+    <user>anag_factory</user>
+    <comment>Forward python-vllm 0.29.0 to Factory (accepted in devel, no competing Factory SR).
+
+- New upstream floors transformers &gt;= 5.10.4, huggingface-hub &gt;= 1.28.0
+- Local aarch64 builds green for both flavors, source_validator clean</comment>
+    <requestid>1376831</requestid>
+  </revision>
 </revisionlist>
