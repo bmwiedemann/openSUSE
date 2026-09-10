@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  9 18:25:46 UTC 2026 - Giacomo Comes <gcomes.obs@gmail.com>
+
+- remove Leap 15.x dependencies
+
+-------------------------------------------------------------------
+Sat Aug 22 20:42:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.2.0:
+  * Adapt keybinding handling to changed API of
+    Gtk.accelerator_parse in newer versions of Gtk. This fixes
+    broken keybindings.
+  * The pytest package needed for running MComix' unit tests is
+    now installed when installing the `dev` dependency group.
+  * MComix now respects the XDG Thumbnail Directory specification
+    (again), and will store thumbnails relative to XDG_CACHE_HOME instead
+    of relative to the home directory on UNIX systems. Nothing
+    changes
+
+-------------------------------------------------------------------
 Mon Oct 13 16:30:21 UTC 2025 - Hunter Wardlaw <wardlawhunter@gmail.com>
 
 - Update to 3.1.1:
@@ -32,11 +51,11 @@ Tue May 21 15:32:29 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
   * Improved robustness to invalid UTF-8
 - update to 3.0.0:
   * MComix uses pyproject.toml instead of the now obsolete setup.py
-  * application meta files are no longer copied automatically by 
+  * application meta files are no longer copied automatically by
     the installation process
   * Fixed bug in Python PDF extraction that prevented rotated PDF
     images being displayed without rotation.
-  * MComix previously didn't remember to restore the "maximized" 
+  * MComix previously didn't remember to restore the "maximized"
     window state when restarting.
 
 -------------------------------------------------------------------
@@ -57,7 +76,7 @@ Wed Oct 11 18:56:48 UTC 2023 - Giacomo Comes <gcomes.obs@gmail.com>
 
 - replace Requires: PyGObject with Requires: python3-gobject-Gdk
 - replace Requires: chardet with Requires: python3-chardet
-- since version 2.2.0 mcomix needs puthon 3.7, use the macro 
+- since version 2.2.0 mcomix needs puthon 3.7, use the macro
   sle15_python_module_pythons to build mcomix on Leap using
   a modern version of python
 

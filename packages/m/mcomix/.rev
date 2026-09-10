@@ -128,4 +128,22 @@
     <comment></comment>
     <requestid>1311197</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>c5c3e1025425e9e24c779fbc51616f5c</srcmd5>
+    <version>3.2.0</version>
+    <time>1789033737</time>
+    <user>anag_factory</user>
+    <comment>- remove Leap 15.x dependencies
+- update to 3.2.0:
+  * Adapt keybinding handling to changed API of
+    Gtk.accelerator_parse in newer versions of Gtk. This fixes
+    broken keybindings.
+  * The pytest package needed for running MComix' unit tests is
+    now installed when installing the `dev` dependency group.
+  * MComix now respects the XDG Thumbnail Directory specification
+    (again), and will store thumbnails relative to XDG_CACHE_HOME instead
+    of relative to the home directory on UNIX systems. Nothing
+    changes</comment>
+    <requestid>1376753</requestid>
+  </revision>
 </revisionlist>

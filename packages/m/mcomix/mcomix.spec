@@ -1,7 +1,7 @@
 #
 # spec file for package mcomix
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,10 @@
 #
 
 
-%if 0%{?suse_version} >= 1600
 %define pythons python3
-%else
-%define pythons python311
-%endif
 
 Name:           mcomix
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Comics Viewer
 License:        GPL-2.0-only
@@ -34,11 +30,8 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  gobject-introspection
-%if 0%{?suse_version} > 1600
-Requires:       python3-PyMuPDF
-%else
-Requires:       mupdf
-%endif
+Requires:       ( %{pythons}-PyMuPDF or mupdf )
+Suggests:       %{pythons}-PyMuPDF
 Requires:       %{pythons}
 Requires:       %{pythons}-Pillow
 Requires:       %{pythons}-chardet
