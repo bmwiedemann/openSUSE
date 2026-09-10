@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  9 06:10:26 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 10.32.8
+  * Update changelog
+  * Upgrade to Go 1.25.13
+  * Dependency update (bsc#1279026, CVE-2026-84445)
+    (bsc#1279223, CVE-2026-84304) (bsc#1279330, CVE-2026-84303)
+  * Fix singleChunkReader to handle concurrent Close during read
+    and add related tests (#3506)
+
+-------------------------------------------------------------------
 Wed Aug 26 06:34:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 10.32.7

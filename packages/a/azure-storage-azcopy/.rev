@@ -170,4 +170,18 @@
 - Remove stale Go module version overrides in _service file (forwarded request 1373745 from glaubitz)</comment>
     <requestid>1373802</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>acaddc763d7de80eb407ecaaa08ec03f</srcmd5>
+    <version>10.32.8</version>
+    <time>1789049113</time>
+    <user>anag_factory</user>
+    <comment>- Update to 10.32.8
+  * Update changelog
+  * Upgrade to Go 1.25.13
+  * Dependency update (bsc#1279026, CVE-2026-84445)
+    (bsc#1279223, CVE-2026-84304) (bsc#1279330, CVE-2026-84303)
+  * Fix singleChunkReader to handle concurrent Close during read
+    and add related tests (#3506) (forwarded request 1376533 from glaubitz)</comment>
+    <requestid>1376902</requestid>
+  </revision>
 </revisionlist>
