@@ -77,10 +77,10 @@ BuildRequires:  pkgconfig(sdl3) >= 3.2.0
 #-------------------------------------------------
 
 #ffmpeg dependencies
-BuildRequires:  pkgconfig(libavcodec) < 62
-BuildRequires:  pkgconfig(libavformat) < 62
-BuildRequires:  pkgconfig(libavutil) < 60
-BuildRequires:  pkgconfig(libswscale) < 9
+BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
 
 #qt dependencies
 BuildRequires:  pkgconfig(Qt6Concurrent)

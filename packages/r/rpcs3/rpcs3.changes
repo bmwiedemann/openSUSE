@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  9 07:33:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Lift restriction on old FFmpeg build dependencies
+
+-------------------------------------------------------------------
 Mon May 18 09:50:48 UTC 2026 - Max Lin <mlin@suse.com>
 
 - Adjust the condition of the requirement version of glew
