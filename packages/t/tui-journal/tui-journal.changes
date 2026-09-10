@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:08:35 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.18.0:
+  * Add support for vjournal backend
+  * Snap to line start or end when vertical navigation is a no-op
+  * Add auto_title configuration for pre-populating new-entry title
+  * Use XDG_RUNTIME_DIR when available in entries_list_cmd
+  * Update vendored dependencies
+- Update license to MIT AND MPL-2.0 to reflect statically linked
+  MPL-2.0 dependency (option-ext)
+
+-------------------------------------------------------------------
 Sat Jul 18 14:24:04 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.17.0:

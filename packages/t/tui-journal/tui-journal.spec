@@ -19,10 +19,11 @@
 
 %bcond_without test
 Name:           tui-journal
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Write and manage journals/notes from the terminal
-License:        MIT
+# Legal-Review-Notice: option-ext is licensed under MPL-2.0; vendor.tar.zst ships in the src.rpm
+License:        MIT AND MPL-2.0
 URL:            https://github.com/AmmarAbouZor/tui-journal
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
