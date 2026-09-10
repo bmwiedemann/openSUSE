@@ -1,0 +1,4 @@
+<package name="openjdk-26-devel-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed BCI OpenJDK 26 development</title>
+  <description>OpenJDK 26 development container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
