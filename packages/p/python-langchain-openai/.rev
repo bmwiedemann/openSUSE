@@ -128,4 +128,12 @@ Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
 </comment>
     <requestid>1372139</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e30d46813a622cabd4da3c496c6b8c37</srcmd5>
+    <version>1.6.2</version>
+    <time>1789054874</time>
+    <user>anag_factory</user>
+    <comment>Forward python-langchain-openai 1.6.2 to Factory. Local aarch64 build green (532 passed x2 flavors), rpmlint 0/0, source_validator clean.</comment>
+    <requestid>1376915</requestid>
+  </revision>
 </revisionlist>

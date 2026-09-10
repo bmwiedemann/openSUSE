@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:42:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.2:
+  * Support async tools and changing the reasoning effort
+    mid-conversation via configuration_update
+  * Keep Azure AD token providers working with the OpenAI 3.8 SDK
+  * Add GPT-6 Astra reasoning efforts and refreshed model profiles
+- Follow upstream and raise the langchain-core requirement floor
+  to 1.6.2
+
+-------------------------------------------------------------------
 Thu Aug 20 05:52:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.0:
