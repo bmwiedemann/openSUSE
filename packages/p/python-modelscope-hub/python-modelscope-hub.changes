@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:44:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.2:
+  * Commit manager supports deletion operations
+  * New delete_files API on HubApi and the legacy compat client
+- Ship the modelscope and ms console scripts again:
+  python-modelscope 1.40.0 moved them to this package (its update
+  also fixed CVE-2026-84202 boo#1278007 in the umbrella SDK), and
+  the 1.40.0 sdist declares no console scripts of its own
+
+-------------------------------------------------------------------
 Wed Sep  2 15:20:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.0:

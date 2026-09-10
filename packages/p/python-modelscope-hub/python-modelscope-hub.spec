@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.4.0
+Version:        0.4.2
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
@@ -52,7 +52,8 @@ BuildArch:      noarch
 %description
 Python SDK and CLI to download, upload and manage models, datasets,
 Studio spaces, skills and MCP servers on ModelScope Hub. Provides a
-HubApi class and the modelscope-hub and ms-hub commands.
+HubApi class and the modelscope, ms, modelscope-hub and ms-hub
+commands.
 
 %prep
 %autosetup -p1 -n modelscope_hub-%{version}
@@ -62,12 +63,14 @@ HubApi class and the modelscope-hub and ms-hub commands.
 
 %install
 %pyproject_install
-# 0.3.0 reclaimed the modelscope/ms scripts from the umbrella SDK, but Factory's
-# python-modelscope still ships them and Requires us -> co-installed file
-# conflict. Drop ours until python-modelscope stops installing them.
-rm %{buildroot}%{_bindir}/modelscope %{buildroot}%{_bindir}/ms
+# python-modelscope 1.40.0 dropped modelscope/ms; this package owns all
+# four console scripts (modelscope, ms, modelscope-hub, ms-hub).
+%python_clone -a %{buildroot}%{_bindir}/modelscope
+%python_clone -a %{buildroot}%{_bindir}/ms
 %python_clone -a %{buildroot}%{_bindir}/modelscope-hub
 %python_clone -a %{buildroot}%{_bindir}/ms-hub
+%python_group_libalternatives modelscope
+%python_group_libalternatives ms
 %python_group_libalternatives modelscope-hub
 %python_group_libalternatives ms-hub
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
@@ -80,15 +83,20 @@ rm %{buildroot}%{_bindir}/modelscope %{buildroot}%{_bindir}/ms
 # that module checks the registry->method binding and still runs.
 %pytest -m "not remote" --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope_hub"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/modelscope-%{$python_bin_suffix} --help
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/ms-hub-%{$python_bin_suffix} --help
 
 %pre
+%python_libalternatives_reset_alternative modelscope
+%python_libalternatives_reset_alternative ms
 %python_libalternatives_reset_alternative modelscope-hub
 %python_libalternatives_reset_alternative ms-hub
 
 %files %{python_files}
 %license LICENSE
 %doc README.md
+%python_alternative %{_bindir}/modelscope
+%python_alternative %{_bindir}/ms
 %python_alternative %{_bindir}/modelscope-hub
 %python_alternative %{_bindir}/ms-hub
 %{python_sitelib}/modelscope_hub

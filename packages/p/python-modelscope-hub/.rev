@@ -98,4 +98,22 @@ Built locally on aarch64: 296 passed / 6 deselected per Python flavour (177 at
 0.3.1), rpmlint 0 errors / 0 badness.</comment>
     <requestid>1375445</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>955a92d4534a3019f42d118cfdd31f3d</srcmd5>
+    <version>0.4.2</version>
+    <time>1789054852</time>
+    <user>anag_factory</user>
+    <comment>Update python-modelscope-hub to 0.4.2
+
+- Commit-manager deletion ops, delete_files compat API
+- Restores /usr/bin/modelscope and /usr/bin/ms: python-modelscope
+  1.40.0 moved those scripts here (verified: its sdist declares
+  no console scripts); this sdist declares all four.
+- 1.40.0 side also fixed CVE-2026-84202 (boo#1278007); hub itself
+  has no yaml Loader usage.
+
+Local aarch64 build green (308 passed x2 flavors, rpmlint 0E/0 badness),
+source_validator clean.</comment>
+    <requestid>1376808</requestid>
+  </revision>
 </revisionlist>
