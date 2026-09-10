@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  9 21:04:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.17.1:
+  - Added
+    - api: Add new AuditList method (#3594)
+    - create: support passwordless / SSO login profiles (#3493)
+  - Fixed
+    - ctxutil: restore password callback hook for embedded age
+      prompts (#3590)
+    - store: Fix reencrypt when adding recipients (#3595) (#3473)
+
+-------------------------------------------------------------------
 Sun Aug 30 14:48:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.17.0:

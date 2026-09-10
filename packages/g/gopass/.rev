@@ -168,4 +168,19 @@
 - Update to 1.17.0:</comment>
     <requestid>1374706</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>c517279a45c728fbe860b65ffabe0e73</srcmd5>
+    <version>1.17.1</version>
+    <time>1789047427</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.17.1:
+  - Added
+    - api: Add new AuditList method (#3594)
+    - create: support passwordless / SSO login profiles (#3493)
+  - Fixed
+    - ctxutil: restore password callback hook for embedded age
+      prompts (#3590)
+    - store: Fix reencrypt when adding recipients (#3595) (#3473)</comment>
+    <requestid>1376755</requestid>
+  </revision>
 </revisionlist>

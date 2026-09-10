@@ -18,9 +18,9 @@
 
 %global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
-Version:        1.17.0
+Version:        1.17.1
 Release:        0
-%global pkg_version 1.17.0
+%global pkg_version 1.17.1
 Summary:        The slightly more awesome standard unix password manager for teams
 License:        MIT
 URL:            https://www.gopass.pw/
