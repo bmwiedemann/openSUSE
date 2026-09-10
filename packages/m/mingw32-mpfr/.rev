@@ -15,4 +15,13 @@
     <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
     <requestid>881625</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6d0e64343366aa9b7562024ee617a009</srcmd5>
+    <version>3.1.2</version>
+    <time>1789033688</time>
+    <user>anag_factory</user>
+    <comment>- Add mpfr-win-thread-safe-dll.patch: backport the MPFR 3.1.3
+  MPFR_WIN_THREAD_SAFE_DLL rework to build with gcc15</comment>
+    <requestid>1376634</requestid>
+  </revision>
 </revisionlist>

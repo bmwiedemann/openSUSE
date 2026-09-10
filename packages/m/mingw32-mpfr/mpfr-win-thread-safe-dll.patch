@@ -1,0 +1,229 @@
+Subject: Use exported accessor functions for the thread-local variables
+
+MPFR's internal thread-local variables were declared with both
+__declspec(dllexport) and __thread.  Windows has no such combination and
+GCC 15 and later reject it outright:
+
+  mpfr-impl.h:253:54: error: thread-local variable '__gmpfr_flags'
+  declared as dllexport
+
+Upstream fixed this in MPFR 3.1.3 (MPFR_WIN_THREAD_SAFE_DLL) by dropping
+the declspec from the variables and exporting generated __gmpfr_*_f()
+accessors instead, so users of the DLL that include mpfr-impl.h reach the
+variables through a function call.
+
+Backported from MPFR 3.1.6.
+
+--- a/src/mpfr-impl.h
++++ b/src/mpfr-impl.h
+@@ -250,30 +250,82 @@
+ extern "C" {
+ #endif
+ 
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR unsigned int __gmpfr_flags;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_exp_t   __gmpfr_emin;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_exp_t   __gmpfr_emax;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_prec_t  __gmpfr_default_fp_bit_precision;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_rnd_t   __gmpfr_default_rounding_mode;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_euler;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_catalan;
+-
+-#ifndef MPFR_USE_LOGGING
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_pi;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_log2;
+-#else
++#if __GMP_LIBGMP_DLL
++# define MPFR_WIN_THREAD_SAFE_DLL 1
++#endif
++
++#if defined(__MPFR_WITHIN_MPFR) || !defined(MPFR_WIN_THREAD_SAFE_DLL)
++extern MPFR_THREAD_ATTR unsigned int __gmpfr_flags;
++extern MPFR_THREAD_ATTR mpfr_exp_t   __gmpfr_emin;
++extern MPFR_THREAD_ATTR mpfr_exp_t   __gmpfr_emax;
++extern MPFR_THREAD_ATTR mpfr_prec_t  __gmpfr_default_fp_bit_precision;
++extern MPFR_THREAD_ATTR mpfr_rnd_t   __gmpfr_default_rounding_mode;
++extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_euler;
++extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_catalan;
++# ifndef MPFR_USE_LOGGING
++extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_pi;
++extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_cache_const_log2;
++# else
+ /* Two constants are used by the logging functions (via mpfr_fprintf,
+    then mpfr_log, for the base conversion): pi and log(2). Since the
+    mpfr_cache function isn't re-entrant when working on the same cache,
+    we need to define two caches for each constant. */
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_normal_pi;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_normal_log2;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_logging_pi;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_t __gmpfr_logging_log2;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_ptr __gmpfr_cache_const_pi;
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR mpfr_cache_ptr __gmpfr_cache_const_log2;
++extern MPFR_THREAD_ATTR mpfr_cache_t   __gmpfr_normal_pi;
++extern MPFR_THREAD_ATTR mpfr_cache_t   __gmpfr_normal_log2;
++extern MPFR_THREAD_ATTR mpfr_cache_t   __gmpfr_logging_pi;
++extern MPFR_THREAD_ATTR mpfr_cache_t   __gmpfr_logging_log2;
++extern MPFR_THREAD_ATTR mpfr_cache_ptr __gmpfr_cache_const_pi;
++extern MPFR_THREAD_ATTR mpfr_cache_ptr __gmpfr_cache_const_log2;
++# endif
++#endif
++
++#ifdef MPFR_WIN_THREAD_SAFE_DLL
++# define MPFR_MAKE_VARFCT(T,N) T * N ## _f (void) { return &N; }
++__MPFR_DECLSPEC unsigned int * __gmpfr_flags_f (void);
++__MPFR_DECLSPEC mpfr_exp_t *   __gmpfr_emin_f (void);
++__MPFR_DECLSPEC mpfr_exp_t *   __gmpfr_emax_f (void);
++__MPFR_DECLSPEC mpfr_prec_t *  __gmpfr_default_fp_bit_precision_f (void);
++__MPFR_DECLSPEC mpfr_rnd_t *   __gmpfr_default_rounding_mode_f (void);
++__MPFR_DECLSPEC mpfr_cache_t * __gmpfr_cache_const_euler_f (void);
++__MPFR_DECLSPEC mpfr_cache_t * __gmpfr_cache_const_catalan_f (void);
++# ifndef MPFR_USE_LOGGING
++__MPFR_DECLSPEC mpfr_cache_t * __gmpfr_cache_const_pi_f (void);
++__MPFR_DECLSPEC mpfr_cache_t * __gmpfr_cache_const_log2_f (void);
++# else
++__MPFR_DECLSPEC mpfr_cache_t *   __gmpfr_normal_pi_f (void);
++__MPFR_DECLSPEC mpfr_cache_t *   __gmpfr_normal_log2_f (void);
++__MPFR_DECLSPEC mpfr_cache_t *   __gmpfr_logging_pi_f (void);
++__MPFR_DECLSPEC mpfr_cache_t *   __gmpfr_logging_log2_f (void);
++__MPFR_DECLSPEC mpfr_cache_ptr * __gmpfr_cache_const_pi_f (void);
++__MPFR_DECLSPEC mpfr_cache_ptr * __gmpfr_cache_const_log2_f (void);
++# endif
++# ifndef __MPFR_WITHIN_MPFR
++#  define __gmpfr_flags                    (*__gmpfr_flags_f())
++#  define __gmpfr_emin                     (*__gmpfr_emin_f())
++#  define __gmpfr_emax                     (*__gmpfr_emax_f())
++#  define __gmpfr_default_fp_bit_precision (*__gmpfr_default_fp_bit_precision_f())
++#  define __gmpfr_default_rounding_mode    (*__gmpfr_default_rounding_mode_f())
++#  define __gmpfr_cache_const_euler        (*__gmpfr_cache_const_euler_f())
++#  define __gmpfr_cache_const_catalan      (*__gmpfr_cache_const_catalan_f())
++#  ifndef MPFR_USE_LOGGING
++#   define __gmpfr_cache_const_pi         (*__gmpfr_cache_const_pi_f())
++#   define __gmpfr_cache_const_log2       (*__gmpfr_cache_const_log2_f())
++#  else
++#   define __gmpfr_normal_pi              (*__gmpfr_normal_pi_f())
++#   define __gmpfr_logging_pi             (*__gmpfr_logging_pi_f())
++#   define __gmpfr_logging_log2           (*__gmpfr_logging_log2_f())
++#   define __gmpfr_cache_const_pi         (*__gmpfr_cache_const_pi_f())
++#   define __gmpfr_cache_const_log2       (*__gmpfr_cache_const_log2_f())
++#  endif
++# endif
++#else
++# define MPFR_MAKE_VARFCT(T,N)
+ #endif
+ 
++# define MPFR_THREAD_VAR(T,N,V)    \
++  MPFR_THREAD_ATTR T N = (V);      \
++  MPFR_MAKE_VARFCT (T,N)
++
+ #define BASE_MAX 62
+ __MPFR_DECLSPEC extern const __mpfr_struct __gmpfr_l2b[BASE_MAX-1][2];
+ 
+@@ -987,8 +1039,9 @@
+ #define mpfr_const_catalan(_d,_r) mpfr_cache(_d,__gmpfr_cache_const_catalan,_r)
+ 
+ #define MPFR_DECL_INIT_CACHE(_cache,_func)                           \
+- mpfr_cache_t MPFR_THREAD_ATTR _cache =                              \
+-    {{{{0,MPFR_SIGN_POS,0,(mp_limb_t*)0}},0,_func}}
++  MPFR_THREAD_ATTR mpfr_cache_t _cache =                             \
++    {{{{0,MPFR_SIGN_POS,0,(mp_limb_t*)0}},0,_func}};                 \
++  MPFR_MAKE_VARFCT (mpfr_cache_t,_cache)
+ 
+ 
+ 
+--- a/src/const_catalan.c
++++ b/src/const_catalan.c
+@@ -24,7 +24,7 @@
+ #include "mpfr-impl.h"
+ 
+ /* Declare the cache */
+-MPFR_DECL_INIT_CACHE(__gmpfr_cache_const_catalan, mpfr_const_catalan_internal);
++MPFR_DECL_INIT_CACHE (__gmpfr_cache_const_catalan, mpfr_const_catalan_internal)
+ 
+ /* Set User Interface */
+ #undef mpfr_const_catalan
+--- a/src/const_euler.c
++++ b/src/const_euler.c
+@@ -24,7 +24,7 @@
+ #include "mpfr-impl.h"
+ 
+ /* Declare the cache */
+-MPFR_DECL_INIT_CACHE(__gmpfr_cache_const_euler, mpfr_const_euler_internal);
++MPFR_DECL_INIT_CACHE (__gmpfr_cache_const_euler, mpfr_const_euler_internal)
+ 
+ /* Set User Interface */
+ #undef mpfr_const_euler
+--- a/src/const_log2.c
++++ b/src/const_log2.c
+@@ -25,11 +25,11 @@
+ 
+ /* Declare the cache */
+ #ifndef MPFR_USE_LOGGING
+-MPFR_DECL_INIT_CACHE(__gmpfr_cache_const_log2, mpfr_const_log2_internal);
++MPFR_DECL_INIT_CACHE (__gmpfr_cache_const_log2, mpfr_const_log2_internal)
+ #else
+-MPFR_DECL_INIT_CACHE(__gmpfr_normal_log2, mpfr_const_log2_internal);
+-MPFR_DECL_INIT_CACHE(__gmpfr_logging_log2, mpfr_const_log2_internal);
+-mpfr_cache_ptr MPFR_THREAD_ATTR __gmpfr_cache_const_log2 = __gmpfr_normal_log2;
++MPFR_DECL_INIT_CACHE (__gmpfr_normal_log2, mpfr_const_log2_internal)
++MPFR_DECL_INIT_CACHE (__gmpfr_logging_log2, mpfr_const_log2_internal)
++MPFR_THREAD_VAR (mpfr_cache_ptr, __gmpfr_cache_const_log2, __gmpfr_normal_log2)
+ #endif
+ 
+ /* Set User interface */
+--- a/src/const_pi.c
++++ b/src/const_pi.c
+@@ -24,11 +24,11 @@
+ 
+ /* Declare the cache */
+ #ifndef MPFR_USE_LOGGING
+-MPFR_DECL_INIT_CACHE(__gmpfr_cache_const_pi, mpfr_const_pi_internal);
++MPFR_DECL_INIT_CACHE (__gmpfr_cache_const_pi, mpfr_const_pi_internal)
+ #else
+-MPFR_DECL_INIT_CACHE(__gmpfr_normal_pi, mpfr_const_pi_internal);
+-MPFR_DECL_INIT_CACHE(__gmpfr_logging_pi, mpfr_const_pi_internal);
+-mpfr_cache_ptr MPFR_THREAD_ATTR __gmpfr_cache_const_pi = __gmpfr_normal_pi;
++MPFR_DECL_INIT_CACHE (__gmpfr_normal_pi, mpfr_const_pi_internal)
++MPFR_DECL_INIT_CACHE (__gmpfr_logging_pi, mpfr_const_pi_internal)
++MPFR_THREAD_VAR (mpfr_cache_ptr, __gmpfr_cache_const_pi, __gmpfr_normal_pi)
+ #endif
+ 
+ /* Set User Interface */
+--- a/src/exceptions.c
++++ b/src/exceptions.c
+@@ -22,10 +22,9 @@
+ 
+ #include "mpfr-impl.h"
+ 
+-unsigned int MPFR_THREAD_ATTR __gmpfr_flags = 0;
+-
+-mpfr_exp_t MPFR_THREAD_ATTR __gmpfr_emin = MPFR_EMIN_DEFAULT;
+-mpfr_exp_t MPFR_THREAD_ATTR __gmpfr_emax = MPFR_EMAX_DEFAULT;
++MPFR_THREAD_VAR (unsigned int, __gmpfr_flags, 0)
++MPFR_THREAD_VAR (mpfr_exp_t, __gmpfr_emin, MPFR_EMIN_DEFAULT)
++MPFR_THREAD_VAR (mpfr_exp_t, __gmpfr_emax, MPFR_EMAX_DEFAULT)
+ 
+ #undef mpfr_get_emin
+ 
+--- a/src/set_dfl_prec.c
++++ b/src/set_dfl_prec.c
+@@ -23,8 +23,8 @@
+ #include "mpfr-impl.h"
+ 
+ /* default is IEEE double precision, i.e. 53 bits */
+-mpfr_prec_t MPFR_THREAD_ATTR __gmpfr_default_fp_bit_precision \
+-  = IEEE_DBL_MANT_DIG;
++MPFR_THREAD_VAR (mpfr_prec_t, __gmpfr_default_fp_bit_precision,
++                 IEEE_DBL_MANT_DIG)
+ 
+ void
+ mpfr_set_default_prec (mpfr_prec_t prec)
+--- a/src/set_rnd.c
++++ b/src/set_rnd.c
+@@ -23,7 +23,7 @@
+ 
+ #include "mpfr-impl.h"
+ 
+-mpfr_rnd_t MPFR_THREAD_ATTR __gmpfr_default_rounding_mode = MPFR_RNDN;
++MPFR_THREAD_VAR (mpfr_rnd_t, __gmpfr_default_rounding_mode, MPFR_RNDN)
+ 
+ void
+ mpfr_set_default_rounding_mode (mpfr_rnd_t rnd_mode)
