@@ -351,4 +351,15 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
     <comment></comment>
     <requestid>1341972</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0f7b8ef5bde3b49682518a7c1f9f949e</srcmd5>
+    <version>3.2.1</version>
+    <time>1789047605</time>
+    <user>anag_factory</user>
+    <comment>- Add gerbera-pugixml-1.16-tests.patch to fix ExampleConfigGeneratorTest
+  with pugixml &gt;= 1.16, which prints empty elements as &lt;node /&gt; instead
+  of &lt;node&gt;&lt;/node&gt; (gh#gerbera/gerbera#3890).
+</comment>
+    <requestid>1376867</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:32:59 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add gerbera-pugixml-1.16-tests.patch to fix ExampleConfigGeneratorTest
+  with pugixml >= 1.16, which prints empty elements as <node /> instead
+  of <node></node> (gh#gerbera/gerbera#3890).
+
+-------------------------------------------------------------------
 Sun Mar 22 06:06:35 UTC 2026 - ecsos <ecsos@opensuse.org> 3.2.1
 
 - Update to 3.2.1
