@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.57:
+  * incremental rebuild keeps referenced-project nodes instead of
+    dropping them when re-extracting .csproj/.sln
+  * duplicate-node merge keeps the richer node and folds in
+    non-empty fields from the losers
+  * C# generic call sites with explicit type arguments resolve to
+    the method definition
+  * this.X function members captured in every enclosing-function
+    form, not just function declarations
+- Update to 0.9.56:
+  * Rust trait method declarations extracted as nodes instead of
+    silently dropped
+  * skipping git hook no longer terminates chained hooks
+  * MCP query_graph seeded on leaf nodes reaches callers, like CLI
+  * member calls colliding with language builtins resolve to
+    user-defined methods
+  * Node subpath imports via package.json imports map resolve
+  * TS import-type normalization no longer pins CPU on large files
+  * rebuild watchdog kills spawned workers on timeout instead of
+    orphaning them
+  * Dart extraction stamps source_location like other extractors
+- Deselect timing-fragile test_same_size_rewrite_in_one_tick_is_requeued:
+  * it needs detect/save within 50ms of file creation, slower hosts
+    exceed it and fail; test and code identical in 0.9.55
+
+-------------------------------------------------------------------
 Mon Sep  7 07:21:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.55:

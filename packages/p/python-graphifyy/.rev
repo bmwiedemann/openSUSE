@@ -192,4 +192,17 @@ target has tomllib in the stdlib, so no new dependency. Built natively on
 aarch64: 4406 tests pass per flavour (python313/python314), rpmlint clean.</comment>
     <requestid>1376102</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fec7065e85b98a305a35502e33fb89b9</srcmd5>
+    <version>0.9.57</version>
+    <time>1789033773</time>
+    <user>anag_factory</user>
+    <comment>Forward python-graphifyy 0.9.57 to Factory (accepted in devel via SR 1376837).
+
+Bugfix double-bump over 0.9.55: incremental-rebuild node retention,
+dedup survivor richness, C# generic call-site resolution, Rust trait
+extraction, hook-chain skip fix, MCP leaf query, plus one racy-test
+deselect (timing-fragile mtime-collision test).</comment>
+    <requestid>1376838</requestid>
+  </revision>
 </revisionlist>
