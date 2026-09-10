@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  8 18:45:55 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- Update to 0.27.2
+  * Add exceptions module and TyperException base class.
+
+-------------------------------------------------------------------
 Thu Aug  6 18:02:08 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - Update to 0.27.1

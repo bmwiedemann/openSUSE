@@ -614,4 +614,13 @@
     in docs.</comment>
     <requestid>1370101</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>a506edda12633f11bc290bcbf0cc6ef5</srcmd5>
+    <version>0.27.2</version>
+    <time>1789033593</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.2
+  * Add exceptions module and TyperException base class.</comment>
+    <requestid>1376491</requestid>
+  </revision>
 </revisionlist>
