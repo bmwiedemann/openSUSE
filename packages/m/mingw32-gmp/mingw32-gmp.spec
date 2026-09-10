@@ -1,7 +1,7 @@
 #
 # spec file for package mingw32-gmp
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,13 +25,14 @@ Group:          Development/Libraries/C and C++
 URL:            https://gmplib.org/
 Source:         https://gmplib.org/download/gmp/gmp-%{version}.tar.xz
 Source1000:     %{name}-rpmlintrc
+Patch0:         gmp-c23-prototype.patch
 BuildRequires:  m4
 BuildRequires:  mingw32-cross-gcc
 BuildRequires:  mingw32-cross-gcc-c++
 BuildRequires:  xz
 #!BuildIgnore:  post-build-checks
 BuildArch:      noarch
-%{_mingw32_package_header_debug}
+%_mingw32_package_header_debug
 
 %description
 GMP is a free library for arbitrary precision arithmetic, operating on signed integers,
@@ -69,7 +70,7 @@ These libraries are needed to develop programs which calculate with huge numbers
 %_mingw32_debug_package
 
 %prep
-%setup -q -n gmp-%{version}
+%autosetup -p1 -n gmp-%{version}
 
 %build
 echo "lt_cv_deplibs_check_method='pass_all'" >>%{_mingw32_cache}
