@@ -128,4 +128,12 @@
   * Add rx_addr to cfg80211_rtw_remain_on_channel</comment>
     <requestid>1374769</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>1f8b0f750757a643277ad775b7961b0a</srcmd5>
+    <version>5.8.7.1+git20260818.04ed700</version>
+    <time>1789033721</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376745</requestid>
+  </revision>
 </revisionlist>

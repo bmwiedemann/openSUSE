@@ -95,13 +95,12 @@ done
 %install
 export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=%{kernel_module_package_moddir}
-kernel_version=`uname -r | sed -e "s/-[^-]*$//"`
-echo ${kernel_version}
 for flavor in %{flavors_to_build} ; do
     pushd obj/$flavor
-    install -d %{buildroot}/lib/modules/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
-    mkdir -p %{buildroot}%{kernel_module_directory}/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
-    install -p -m 644 88x2bu.ko %{buildroot}%{kernel_module_directory}/${kernel_version}-${flavor}/${INSTALL_MOD_DIR}/
+    kernel_version=$(cat %{_prefix}/src/linux-obj/%{_target_cpu}/$flavor/include/config/kernel.release)
+    echo ${kernel_version}
+    mkdir -p %{buildroot}%{kernel_module_directory}/${kernel_version}/${INSTALL_MOD_DIR}/
+    install -p -m 644 88x2bu.ko %{buildroot}%{kernel_module_directory}/${kernel_version}/${INSTALL_MOD_DIR}/
     popd
 done
 
