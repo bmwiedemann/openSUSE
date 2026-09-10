@@ -259,4 +259,35 @@
     were modified to have `target='_blank'`. #291 @fnando</comment>
     <requestid>1343433</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>62928d61660b00cf950b61a93f09d918</srcmd5>
+    <version>2.25.2</version>
+    <time>1789033685</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1376549 from jsegitz
+
+- update to 2.25.2
+  * Ensure Loofah::HTML5::Scrub.allowed_uri? recognizes numeric character
+    references without semicolons (e.g. javascript&amp;#58alert(1)), which browsers
+    decode and execute, and rejects schemes split by them. See
+    GHSA-5qhf-9phg-95m2. @flavorjones
+  * Ensure Loofah::HTML5::Scrub.allowed_uri? recognizes the named character
+    references &amp;Tab; and &amp;NewLine;, which CGI.unescapeHTML does not decode and
+    browsers strip from URIs, and rejects schemes split by them (e.g.
+    java&amp;Tab;script:alert(1)). See GHSA-8whx-365g-h9vv. @flavorjones
+  * Ensure that both href and xlink:href attributes on SVG elements like use
+    are restricted to local (same-document) references. Previously only
+    xlink:href was restricted, allowing the SVG 2 href attribute to reference
+    external documents. See GHSA-9wjq-cp2p-hrgf. @flavorjones
+  * Harden data: URI mediatype parsing in Loofah::HTML5::Scrub.allowed_uri?.
+    The mediatype is now parsed following the WHATWG data: URL spec and RFC
+    2397 instead of simply being split on a colon. A data: URI with an omitted
+    or malformed mediatype is now treated as text/plain and allowed, and one
+    without the required comma is now rejected. #305 @flavorjones
+  * Remove feed from the default set of allowed protocols
+  * Ensure Loofah::HTML5::Scrub.allowed_uri? recognizes unescaped whitespace
+    entities and rejects schemas containing them. See GHSA-46fp-8f5p-pf2m. #302
+    @flavorjones</comment>
+    <requestid>1376640</requestid>
+  </revision>
 </revisionlist>
