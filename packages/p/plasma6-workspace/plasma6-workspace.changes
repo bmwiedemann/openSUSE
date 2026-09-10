@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:09:09 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.5
+- Changes since 6.7.4:
+  * Add missing Qt::Qml link
+  * applets/notifications: Don't invoke default action when a link is hovered
+  * Klipper: Make the Help button in Klipper's config work
+  * Klipper: Make apply work in keyboard shortcuts configuration tab (kde#485460)
+  * InfiniteList: fix current day view
+  * applets/digital-clock: fix tooltip overflow and center time zones (kde#524390,kde#501555)
+  * InfiniteList: fix calendar changing views when dragging it between displays (kde#472360)
+  * 🍒 shell/scripting: fix setOpacity calling wrong method
+  * klipper: Preserve encoded PNG when restoring history entries
+  * Scripting: restore Applet::index property (kde#523675)
+  * applets/digital-clock: Compare agenda dates across time zones (kde#442100)
+  * margins-separator: update BugReportUrl
+  * kcms/nightlight: Add missing non-default highlight (kde#521974)
+  * Update version for new release 6.7.5
+
+-------------------------------------------------------------------
 Tue Aug  4 11:26:49 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:
