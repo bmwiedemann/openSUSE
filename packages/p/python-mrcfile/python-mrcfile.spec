@@ -24,6 +24,8 @@ Summary:        MRC file I/O library
 License:        BSD-3-Clause
 URL:            https://github.com/ccpem/mrcfile
 Source:         https://github.com/ccpem/mrcfile/archive/refs/tags/v%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#ccpem/mrcfile#76
+Patch0:         support-numpy-2.5.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -58,6 +60,11 @@ is used in structural biology to store image and volume data.
 %check
 # https://github.com/ccpem/mrcfile/issues/73
 skip="test_data_transposed_in_place_is_written_without_errors"
+# Fails on 32 bit arches
+if [ $(getconf LONG_BIT) = 32 ]; then
+    skip+=" or test_writing_image_mode_6_native_byte_order"
+    skip+=" or test_stats_are_updated_on_request"
+fi
 %pytest -v -k "not ($skip)"
 
 %post

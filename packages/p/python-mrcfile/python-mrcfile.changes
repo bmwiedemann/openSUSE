@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 06:19:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-numpy-2.5.patch:
+  * Support changes required for numpy 2.5.
+
+-------------------------------------------------------------------
 Mon Mar  2 01:17:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Stop skipping tests that have been fixed upstream, and skip a different

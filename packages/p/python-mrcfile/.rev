@@ -52,4 +52,13 @@
 - List directories in python_sitelib explicitly.</comment>
     <requestid>1335674</requestid>
   </revision>
+  <revision rev="7" vrev="3">
+    <srcmd5>5725ebcc208036ecf210b2019720b84a</srcmd5>
+    <version>1.5.4</version>
+    <time>1789033774</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-numpy-2.5.patch:
+  * Support changes required for numpy 2.5.</comment>
+    <requestid>1376839</requestid>
+  </revision>
 </revisionlist>
