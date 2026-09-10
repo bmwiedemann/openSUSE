@@ -1,4 +1,534 @@
 -------------------------------------------------------------------
+Wed Sep  9 09:35:08 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- drop the 'v' from the version string
+
+-------------------------------------------------------------------
+Mon Sep 07 16:27:23 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version v3.0+6.g1ac60ca4b:
+  * tests: make the fabrics mock IPC wire format explicit little-endian
+  * tests: make the fabrics mock work on 32-bit time64 architectures
+  * tests: fix native-endian struct.pack in fabrics discovery mock
+  * build: show CFLAGS/LDFLAGS in the meson configuration summary
+  * build: cross-test on i386 to catch 32-bit time_t truncation bugs
+
+-------------------------------------------------------------------
+Mon Sep 07 13:39:00 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version v3.0+1.g56361dc25:
+  * shared: fix time_t truncation in shr_format_ts() on 32-bit archs
+
+-------------------------------------------------------------------
+Mon Sep 07 11:48:43 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0:
+  * Release v3.0
+  * doc: Regenerate all docs for v3.0
+  * scripts: handle NEWS.md update on release
+  * completions: update the shell completions
+  * libnvme: return an empty string for missing namespace attributes
+  * nvme-types-base: fix kernel-doc-check warnings
+  * log: check if etdas setting supported or not
+  * log: add force option to report data area 4
+  * ioctl-win: add support for dsm command with deallocate attribute
+  * ocp: add missing case 6 fields to ocp smart log v2 json output
+  * completions: move completion install rules into completions/meson.build
+  * completions: regenerate from a full build
+  * completions: wire generation and drift-check into the build
+  * ioctl-win: extend data out buffer fix to all write commands with no data
+  * ioctl-win: differentiate between io and admin storage protocol commands
+  * ioctl-win: fix ns delete handling
+  * ctrl-map: make Windows pci address detection locale-independent
+  * libnvme: use the shared validators in the config parser
+  * shared: check the month and character set in an NQN
+  * tests: use valid NQNs in test fixtures
+  * libnvme: validate the host NQN and host identifier on read
+  * shared: add NQN and UUID string validators
+  * libnvme: do not scan the topology when creating a GlobalCtx
+  * libnvme: expose scan_topology() in the Python bindings
+  * libnvme: let GlobalCtx() take the host identity
+  * libnvme/fabrics: fix to check dctype string NULL pointer
+  * doc: fix ocp documentations asciidoc failures
+  * doc: add feat and ocp commands to meson.build
+  * doc: add feat commands remainted
+  * nvme-print: fix null pointer dereference in strset_iterate_sorted_
+  * libnvme: flag read=none members in the generated SWIG interface
+  * libnvme: build the host identity Python objects with Py_BuildValue()
+  * libnvme: document the ctx default in the host identity docs
+  * nvme-discoverd: take a time span for the give-up horizon
+  * shared: add shr_parse_time()
+  * ocp: remove logically dead code in parse_event_fifo()
+  * libnvme: simplify file existence check in test_creates_missing_directory()
+  * tests: use pathlib in the e2e test cases
+  * tests: use pathlib in the e2e runner
+  * registry: fix unchecked return value from libnvmf_registry_attr_for_each
+  * exclusion: fix insecure temporary file creation in excl_edit()
+  * libnvme: fix unchecked return value of sscanf in ctrl_instance()
+  * libnvme: check return value of sscanf in libnvme_ns_generic_to_blkdev()
+  * keys: print check command results only with --verbose
+  * shared: fix resource leaks on early return in table tests
+  * mem: remove unnecessary type cast
+  * mem: fix integer overflow in allocation rounding
+  * plugins/solidigm: Improve Telemetry debug info parsing
+  * doc: fix to add copy command namespace-id option description
+  * tests: probe both stdout and stderr for _probe_command
+  * completions: regenerate from the alphabetized generator
+  * completions: update test for alphabetical output
+  * completions: alphabetize bash and zsh command and option lists
+  * doc: add power mgmt command
+  * feat: fix to add err-recovery command nsid option checking
+  * doc: add err-recovery command
+  * doc: add num-queues command
+  * doc: add host-behavior-support command
+  * doc: add lba-range-type command
+  * feat: add lba-range-type command
+  * utils: fix resource leak in copy_opt_val on strdup failure
+  * ocp: print physical media units written/read as 128-bit decimal value
+  * libnvme: python: decode discovery log page fields the way C does
+  * tests: add CLI tests for samsung vs-internal-log
+  * plugins/samsung: add Samsung vendor specific extensions plugin
+  * shared: add shr_dir_prefix_len()
+  * shared: handle a path with no file name in shr_mkdir_from_fname()
+  * shared: fix tautological range check in DEFINE_SHR_PARSE_CSV_FUNC
+  * libnvme: expose the top-level host identity
+  * libnvme: python: expose the top-level connection defaults
+  * Release v3.0-rc3
+  * completions: regenerate bash, zsh, and PowerShell completions for v3.0-rc3
+  * doc: Regenerate all docs for v3.0-rc3
+  * nvme: fix improper value passed to libnvme_strerror in identify_ctrl
+  * libnvme: leave registry ownership alone on a reused connection
+  * nvme: make --quiet suppress informational output
+  * libnvme: carry the fabrics context credentials into the controller
+  * doc: nvme-fabrics.conf is shared by the nvme-cli tools, not by everyone
+  * fw: fix improper value passed to libnvme_strerror in fw_commit_support_mud
+  * shared: fix improper use of negative row id in test_multi_type_and_centered
+  * tests: fix improper use of negative return value in test_shr_table_print()
+  * shared: fix missing negative-return check in test_invalid_format_type
+  * shared/tests: fix improper use of negative row id in test_basic_table
+  * libnvme: python: stop freeing tree-owned objects in destructors
+  * nvme-cmds: fix status code type check for get log dynamic chunk retry
+  * ioctl-win: use generic passthru for get log with non-NVM CSI values
+  * ioctl-win: retry skipped log pages with generic passthrough
+  * libnvme: pass the global context to the host ID generators
+  * nvme: list every exclusion list and flag invalid entries
+  * libnvme: fix crash on a malformed exclusion entry
+  * nvme-print: dump command datum always
+  * libnvme: examples: free the context in display-columnar
+  * libnvme: account for the appended spaces in libnvmf_get_entity_version()
+  * libnvme: drop the static stat buffer in nvme_verify_chr()
+  * libnvme: mi: reject async events that carry the RSP bit in nmp
+  * libnvme: examples: fix select() usage in telemetry-listen
+  * libnvme: nbft: reject heap objects too small for the structures they decode
+  * libnvme: size the AEM ack recv buffer to what's actually left
+  * libnvme: reject oversized discovery log record counts
+  * libnvme: drop typedefs for tree types
+  * libnvme/lib: update return doc for libnvme_transport_handle_get_name
+  * libnvme/tree: update doc on return
+  * libnvme: update doc on owner ship
+  * libnvme/fabrics: update prefix of nvme_deconfigure_ctrl
+  * libnvme/crypto: use enum libnvmf_hmac_alg instead of int type
+  * intel: check intel_vu_log allocation in get_internal_log()
+  * wdc: validate drive-essentials directory header and file offsets
+  * amzn: clamp detail-I/O histogram counts to the compiled-in array sizes
+  * nvme: don't masquerade other Identify NVM CS NS errors as Invalid Field
+  * nvme: continue without PI when get_pi_info() fails
+  * nvme: add nvme-cli internal error codes
+  * tests: simulate a real NVMe completion-status error in libmock_nvme
+  * tests: add PIF tests
+  * tests: generalize libmock_fabrics into libmock_nvme
+  * shared: check the new row's val pointer in shr_table_get_row_id()
+  * completions: make the generated-file notice scream
+  * shared: add shr_parse_csv_u128 parser
+  * Release v3.0-rc2
+  * completions: regenerate bash, zsh, and PowerShell completions for v3.0-rc2
+  * doc: Regenerate all docs for v3.0-rc2
+  * fabrics: return correct already connected error code
+  * global-ctx: forward library logging to stderr
+  * keys: document the diagnostics gen-tls-psk prints to stdout
+  * keys: document what else gen-tls-key changed
+  * doc: write the linknvme cross-references the way the macro expects
+  * keys: name the TLS commands after the PSK
+  * keys: list insert-tls in the plugin command index
+  * keys: distinguish the three PSKs in the TLS output
+  * keys: drop the gen-tls-key alias page's phantom -h option
+  * keys: document check-tls-key's new output order
+  * libnvme: fix the hash name in derive_tls_key()'s comment
+  * libnvme: use the specification's PSK vocabulary in the TLS key API
+  * libnvme: fix the kernel-doc of the crypto keyring helpers
+  * libnvme: fail the TLS PSK insert when the keyring cannot be linked
+  * keys: correct what the TLS commands document
+  * keys: export TLS PSKs with the interchange format version
+  * doc: add libnvme specification coverage tracker
+  * libnvme: add AZR decode enum for ZNS Namespace Create Options (ZNSCO)
+  * libnvme: add missing Zone Resource Management fields to nvme_zns_id_ctrl
+  * libnvme: add Zone Descriptor Changed AER notice value
+  * libnvme: add ZCC decode enum for Zone Management Send CQE Dword 0
+  * libnvme: add decode enums for ZNS Zone Descriptor bitfields
+  * libnvme: add LBARS decode enum for nvme_lba_status_desc.status
+  * libnvme: fix Namespace Granularity List max descriptor count
+  * libnvme: add decode enums for nvme_id_ctrl_nvm kpiocap and aocs fields
+  * libnvme: fix nvme_id_nsfeat gaps and nvme_id_ns_mc doc swap, add KPIOS decode
+  * libnvme: fix nvme_fdp_event_realloc struct layout
+  * libnvme: add Get/Set Features constructors for Performance Characteristics
+  * libnvme: add Cancel command constructor (Base Spec 2.4 chapter 7)
+  * libnvme: add Manage Exported Port command (5.4.6)
+  * libnvme: add remaining Manage Exported NVM Subsystem Send operations (5.2.19)
+  * libnvme: add Manage Exported Namespace command (5.2.17)
+  * libnvme: add Manage Exported NVM Subsystem Receive - List operations (5.2.18)
+  * libnvme: add Manage Exported NVM Subsystem Send - Delete (5.2.19)
+  * libnvme: add Manage Exported NVM Subsystem Receive - Create (5.2.18)
+  * libnvme: add Clear Exported NVM Resource Configuration constructor (5.2.4)
+  * libnvme: field-level fixes from completing the chapter 5.2 gap audit
+  * libnvme: add missing chapter 5.4 fabrics admin command constructors
+  * libnvme: fix Lockdown Command Dword 14 UUID Index mask (5.2.16)
+  * libnvme: add missing Identify CNS values and constructors (5.2.14)
+  * libnvme: add missing Get Log Page constructors (Base Spec 2.4 5.2.13)
+  * libnvme: add missing Get/Set Features constructors and Abort CQE decode
+  * libnvme: add missing command constructors for Abort, AER, Keep Alive, Track Receive
+  * libnvme: add missing Sanitize Namespace generic status codes (Base Spec 2.4)
+  * libnvme, nvme: add Revert to Subsystem Manufacturing Settings Personality (TP4195)
+  * libnvme: add NVMe TDISP DEVICE_INTERFACE_REPORT structure (TP4213)
+  * libnvme: add NVMe-MI Persistent Data Area commands (TP6040)
+  * libnvme, nvme: add Host Addressable Subsystem Local Memory (TP4184)
+  * libnvme, nvme: add Rate Limiting feature and log page (TP4176)
+  * libnvme: add SFF E2 form factor support (TP6041)
+  * libnvme: add Port Information Capabilities field (TP6042)
+  * libnvme, nvme: add Controller-scoped Command and Feature Lockdown (TP4222)
+  * libnvme, nvme: add Device Voltage Threshold (TP4210)
+  * libnvme, nvme: add Idle I/O Exit Latency Limit (TP4204)
+  * libnvme, nvme: add Sanitize Purge Request and Reporting (TP4218)
+  * libnvme: report Reclaim Unit Handle scope in FID Supported and Effects (TP4215)
+  * libnvme: add Lockdown Persistence Personality (TP4200)
+  * libnvme: implement Configurable Device Personality (ECN139)
+  * nvme: use __u64 for verify ilbrt to match OPT_SUFFIX
+  * nvme: return -EINVAL for invalid prinfo in submit_io
+  * libnvme: fix out-of-bounds read in do_security_info()
+  * shared: check return value of remove() in dir_is_writable()
+  * shared: fix resource leaks in test_read_file
+  * shared: fix resource leak in test_add_columns_invalid_width
+  * libnvme: fix resource leak in read_discovery()
+  * tests: fix resource leak in run_handle_plugin()
+  * ocp: telemetry string parsing off-by-1
+  * rpmb: move into a plugin and split into subcommands
+  * gitignore: ignore __pycache__ anywhere
+  * ioctl-win: fix inacurate comment
+  * nvme-test: fix _probe_command check
+  * completions: add PowerShell completion generator
+  * NEWS: document silent nvme ns create in 3.0
+  * tests: fall back to legacy commands when needed
+  * seagate: pass fw activation history log page by pointer
+  * wdc: Remove unused value assignment in drive essentials
+  * solidigm: fix STRING_OVERFLOW in join_options
+  * ocp: fix unused value of temp_sz in get_telemetry_dump()
+  * seagate: remove duplicate nvme_set_features_simple call in vs_clr_pcie_correctable_errs
+  * doc: update contributing with no_device flag
+  * nvme: do not show 'device' help text
+  * plugin: sort the core plugins into groups
+  * nvme: show 'id' in top level
+  * nvme: move support log pages to log plugin
+  * NEWS: document TP6039 CHDS/NSHDS changes as breaking API
+  * libnvme: update MI APIs with TP6039
+  * NEWS: document ECN122/TP4150/TP4193 renames as breaking changes
+  * libnvme: update definitions with TP4193 changes
+  * libnvme: update definitions with TP4150 changes
+  * libnvme: update definitions with ECN122 changes
+  * libnvme: rename dhchap-secret INI key to kxchap-secret
+  * libnvme: fix stale --dhchap-secret in concat error message
+  * libnvme: add nvme_init_auth_send/receive command wrappers
+  * libnvme: add missing types for authentication
+  * libnvme: rename dhchp to kxchap
+  * libnvme: rename NBFT DH group fields to KX terminology
+  * micron: refactor spawn_and_capture helper to use shared spawn utils
+  * io-util: add shr_read_all to read a file descriptor to EOF
+  * micron: refactor micron spawn helper to use shr_spawnp
+  * proc-util: add shr_spawnp that uses execvp/_spawnvp
+  * ocp: fix stack information disclosure in binary_hwcomp_log
+  * scaleflux: fix strcpy into fixed-size buffer in nvme_expand_cap()
+  * tests: add a fully bidirectional 3-DC referral ring test
+  * micron: unused value in micron_write_os_config_to_file()
+  * discoverd: make the DC give-up horizon configurable
+  * plugins add resv to group "I/O Commands"
+  * nvme: hyphenate --fast-io-fail-tmo, keep old spelling as alias
+  * tests: cover discovery-walk depth cap, cycles, and self-entry precedence
+  * plugins/exclusion: use shared array-util for entry_collection
+  * plugins: sort the plugins alphabetically
+  * nvme: reorganize the plugin groups
+  * discoverd: disconnect and poll DCs with EPCSD=0
+  * discoverd: fall back to parent's EPCSD view when self entry absent
+  * discoverd: surface DC self-entry's EPCSD bit from dlp_fetch()
+  * nvme-print: fix to check init and finish functions
+  * libnvme: stop reporting every ENOKEY as a missing TLS key
+  * nvme-print-stdout: use libnvme VWCI print getters
+  * nvme-print-stdout: use libnvme NVMSR print getters
+  * nvme-types-base: add spec v2.4 CTRATT fields
+  * nvme-types-base: add spec v2.4 PEL events
+  * nvme: remove unused local header includes
+  * nvme: sort header includes
+  * nvme: group the local includes together
+  * shared: add constructor attribute
+  * plugin: replace X-macro command registration with plain C
+  * tests: add plugin unit test
+  * tests: add more tests for argconfig
+  * test-assert-util: change test to use shr_spawn for cross-platform support
+  * shared: add shr_pipe, shr_spawn, and shr_wait_proc
+  * ini-util: fix Windows error reporting when opening a directory
+  * libnvme: add loopback transport for testing
+  * libnvme/tests/ioctl: print errno with strerror() instead of %m
+  * sandisk: only consume the passthru result on success
+  * libnvme: clear the passthru result before dispatching on Windows
+  * tests: add platform print format attribute support for fail
+  * nvme: harden discovery log print paths against unterminated fields
+  * libnvme: guarantee terminated discovery log entry strings
+  * shared: split shr_trim() into shr_rtrim() and shr_ltrim()
+  * Release v3.0-rc1
+  * completions: regenerate bash and zsh completions for v3.0-rc1
+  * doc: Regenerate all docs for v3.0-rc1
+  * shared: cover more error paths in the util tests
+  * shared: expand table-util test coverage
+  * shared: enable crypto-util and sig-util tests on Windows
+  * shared: rename test directory
+  * shared: enable ini-tests on Windows
+  * shared: add shr_close and shr_rmdir
+  * shared: streamline header names
+  * shared: update include statement to include folder name
+  * plugins/solidigm: Added log names to solidigm log-page-directory.
+  * libnvme: fold NBFT discovery onto the shared walker
+  * libnvme: rewrite _nvmf_discover() as a depth-capped, deduped walk
+  * libnvme: unify discovery ctrl lookup-or-create into dc_open()
+  * libnvme: use a Discovery Descriptor's own NQN when specified
+  * nvme, libnvme: rename discover/connect-all --force to --no-reuse
+  * libnvme: guard three unchecked fabrics hook calls against NULL
+  * ocp: fix null check and unsigned comparison in parse_event_fifo()
+  * libnvme: pass ctrl_params to libnvmf_ctrl_match_config
+  * libnvme: replace libnvmf_ctrl_find with libnvme_ctrl_find
+  * libnvme: stop copying struct libnvmf_context for per-entry discovery state
+  * nvme-print: fix sign extension in stdout_phy_rx_eom_descs()
+  * libnvme: fix the pin secret expansion
+  * plugins/config: add 'nvme config status' command
+  * tests: add fabrics CLI integration tests
+  * tests/mem: fix mmap interposition in mem test for 32-bit arches
+  * libnvme: pin kernel-doc-check to a locale that's guaranteed to exist
+  * completions: update testing document
+  * plugins/nvme-mi: replace perror with nvme_show_perror
+  * plugins/io-mgmt: initialize config
+  * plugin/security: fix error handling
+  * NEWS.md: document command moves into plugins
+  * doc: update/add new plugins documentation
+  * nvme: move fw commands into a plugin
+  * nvme: move security commands into a plugin
+  * nvme: move io-mgmt commands into a plugin
+  * nvme: move dir commands into a plugin
+  * nvme: move nvme-mi commands into a plugin
+  * nvme: move resv commands into a plugin
+  * nvme: move ns commands into a plugin
+  * nvme: move id commands into a plugin
+  * libnvme: normalize a comma-separated FC WWN pair in TID construction
+  * micron: fix header size vs file size mismatch in get_common_log
+  * micron: fix telemetry log size mismatch vs header and missing host log
+  * completions: generate zsh completion from command metadata
+  * wdc: fix logically dead code in wdc_do_cap_telemetry_log
+  * libnvme: take only pairs of hexadecimal digits in a secret
+  * keys: name the length option after the secret
+  * keys: name the KX-HMAC-CHAP commands after the secret
+  * nvme: take the 2.x options in the check-dhchap-key alias
+  * keys: say secret rather than key in the check-kxchap output
+  * nvme: say secret rather than key for KX-HMAC-CHAP
+  * keys: reject a hex secret with an odd number of characters
+  * keys: take the secret length from a hex secret in gen-kxchap
+  * keys: decouple the secret length from the hash id in gen-kxchap
+  * keys: emit the secret representation from gen-kxchap
+  * nvme-print: fix unintended sign extension in json_eom_printable_eye()
+  * micron: fix logically dead code in micron_nand_stats()
+  * libnvme: fix negative errno passed to libnvme_strerror in _nvmf_discover
+  * libnvme: group discovery decision state and log it per entry
+  * plugins/log: fix up some merge helpers hiccups
+  * nvme-regs: use asprintf instead fix sized buffer for path
+  * plugins: split vendor from core plugins
+  * nvme: move deprecated commands into separate section
+  * nvme: move get-log page commands into a plugin
+  * tests/e2e: close per-test log files after tearDown cleanup runs
+  * netapp: fix heap-buffer-overflow in ONTAP TLV label parsing
+  * libnvme: honor caller-supplied open flags in libnvme_open
+  * nvme.h: remove global include header
+  * nvme.h: unclutter global header file
+  * nvme-print: remove struct nvme_get_log_args from the print layer
+  * nvme-cmds: inline nvme_get_nsid_log into callers
+  * nvme-cmds: merge nvme_identify_ctrl/nvme_identify_ns into callers
+  * nvme-cmds: merge remaining low-usage helpers into callers
+  * nvme-cmds: merge single-user helpers into caller
+  * src/json: rename to nvme-json
+  * src: rename utils.h/c to field-parser.h/c
+  * tests/unit/c: don't silently pass when stderr can't be redirected
+  * nvme: add streamed firmware download mode
+  * libnvme: keep aligned buffer when madvise fails
+  * micron: fix missing break in switch in micron_internal_logs()
+  * libnvme: fix persistent discovery ctrl disconnect decisions
+  * solidigm: fix heap-buffer-overflow in COD telemetry parser
+  * shared: distribute common.h to common code
+  * tests/e2e: store output for every command
+  * tests: only test config and utils when plugins are enabled
+  * tests/e2e: fix stdout/stderr capture in per-test log files
+  * ioctl-win: fix possible null dereference in security send.
+  * ioctl-win: add scsi status translation to nvme status
+  * ioctl-win: fix format command with SES=1 on windows
+  * ioctl-win: improve and clean up error handling and reporting
+  * plugins/ocp: Fixed propagation of nsid when getting error injection.
+  * fabrics: fix swapped arguments in nbft_connect()
+  * scaleflux: fix divide-by-zero in nvme_parse_evtlog()
+  * libnvme: rename test to tests
+  * shared: add shr_parse_csv_u8 parser
+  * libnvme: fix logically dead error check in derive_psk_digest()
+  * doc: document --persistent[=no|auto|force]
+  * nvme: redesign --persistent, remove --epcsd/--no-epcsd
+  * nvme: split discovery.conf lines on whitespace only, not '='
+  * nvme: add OPT_STRING_OPTIONAL() for optional-argument options
+  * nvme: fix to set global variable log_level in logging
+  * libnvme: merge attr accessor files into one shared set
+  * tests/e2e: skip tests if hardware is not supported
+  * tests/e2e: create a fully standalone Python package
+  * tests/e2e: make test configuration flexible
+  * tests: move all tests under tests directory
+  * nvme-types-base: add spec v2.4 feature IDs
+  * nvme-types-base: add spec v2.4 log page IDs
+  * nvme-print: fix log ID string ordering
+  * nvme-types-base: add cross-controller reset
+  * nvme-types-base: fix kernel-doc-check warnings
+  * nvme-print-stdout: use libnvme LBA range type feature print getters
+  * nvme-print-stdout: use libnvme FDP feature print getters
+  * nvme-types-base: fix FDPCIDX mask value
+  * nvme-print-stdout: use libnvme TMPTHH print getter
+  * ioctl-win: add nvme-mi-send/recv support on WinPE
+  * nvme: enable MI admin commands unconditionally
+  * libnvme: move accessors.[ch] and accessors-fabrics.[ch] to generated subdir
+  * libnvme: rename sysfs to attrs and move generated files to a subdir
+  * ocp: sanitize tainted ascii_id_length before memcpy
+  * solidigm: remove logically dead code in parse_tracker_chunk_json
+  * test: fix integer overflow in shift expressions
+  * sandisk: remove logically dead code in sndk_do_cap_telemetry_log
+  * solidigm-telemetry: check return value of sldm_telemetry_structure_parse
+  * solidigm-telemetry: fix missing fallthrough annotations in debug info switch
+  * tree-fabrics: fix null pointer dereference in ctrl_lookups()
+  * nvme-print: revert outer loop bound change in json_nvme_fdp_configs()
+  * solidigm: fix unchecked return value in solidigm_config_get_nlog_formats()
+  * solidigm: fix integer overflow in sldm_parse_cd_uart_log()
+  * libnvme/test: fix use after free in test_nvmf_sanitize_addrs()
+  * Release v3.0-b.5
+  * doc: Regenerate all docs for v3.0-b.5
+  * nvme: move source code to src folder
+  * libnvme: add lazy sysfs read to subsystems (libnvme_subsystem)
+  * shared/hex-util: validate input
+  * util: remove util/types.h
+  * shared: move util_uuid_to_string/util_fw_to_string to shared/uuid-util
+  * shared: move int48_to_long/int56_to_long to shared/int-util
+  * shared: move nvme_uint128_t and its helpers to shared/uint128-util
+  * shared: move fd/FILE cleanup helpers out of util/cleanup.h
+  * shared/fs-util: add shr_fd_is_open
+  * shared: move print_word_wrapped/comma-sep-array parsers to shared/
+  * shared: move temperature/timestamp/spinner helpers out of util/types.c
+  * shared: move util/table.{c,h} to shared/table
+  * shared/fs-utils: add shr_unlink
+  * shared: move util/sighdl-{linux,win}.c to shared/sig-util
+  * shared: move util/hash-{linux,win}.c to shared/crypto-util
+  * shared: move util/suffix.{c,h} to shared/suffix-util
+  * shared: move read_binary_file to shared/fs-util
+  * shared: move hex_to_int/hex_to_ascii to shared/hex-util
+  * plugins/seagate: fix dead code caused by checking flags & NORMAL
+  * plugins/ocp: check return value of ocp_get_uuid_index
+  * nvme: fix negative error formatting in wait_self_test
+  * plugins/huawei: fix unsigned return code check in huawei_list
+  * plugins/solidigm: fix integer overflow in wltracker_show_newer_entries
+  * plugins/lm: fix NULL pointer check for fopen in lm_migration_recv
+  * completions: generate bash completion from command metadata
+  * plugins/ymtc: fix unterminated string passed to strtol in ReadSysFile
+  * tests/micron: fix verbose msg test due to nvme_show_verbose_result fix
+  * micron: standardize output format handling
+  * micron: clean up parse_and_open error handling
+  * micron: use helper method for parsing options and reading drive model
+  * libnvme/mi: fix overflowed constant in subsystem_health_status_poll
+  * util: fix double close of bin_file in read_binary_file
+  * libnvme: fix uninitialized buffer in libnvmf_tid_get_canonical()
+  * ocp: fix resource leak of fp in print_ocp_telemetry_normal
+  * nvme: fix void pointer arithmetic in get_log_offset()
+  * ocp: fix out-of-bounds access in json_c7_log()
+  * libnvme/design: refresh generate_sysfs_accessors.md
+  * libnvme: add lazy sysfs read to eui64/nguid/uuid (libnvme_ns)
+  * libnvme: generalize sysfs generator's pointer-member handling
+  * nvme-print-stdout: use libnvme KPIOC print getters
+  * nvme-print-stdout: use libnvme CW print getters
+  * nvme-print-stdout: use libnvme DPS print getters
+  * nvme-print-stdout: use libnvme TRATTR print getters
+  * nvme-print-stdout: use libnvme FNA print getters
+  * nvme-print-stdout: use libnvme IPMSR print getters
+  * nvme-print-stdout: use libnvme KPIOC print getters
+  * nvme-print-stdout: use libnvme SANICAP print getters
+  * nvme-print-stdout: use libnvme DSTO print getters
+  * nvme-print-stdout: fix and use libnvme OACS print getters
+  * nvme-print-stdout: use libnvme OAES print getters
+  * libnvme: replace GETSHIFT with ccan's ilog32()
+  * libnvme: drop volatile qualifier from cached sysfs numerics
+  * libnvme: add lazy sysfs read to namespaces (libnvme_ns)
+  * libnvme: add lazy sysfs read to paths (libnvme_path)
+  * doc: Restructure README
+  * libnvme/tests: use PRIx64 for __u64 types
+  * ccan/endian: guard endian defintion
+  * libnvme: drop duplicate accessor/ctrl-sysfs symbols from libnvme.ld
+  * libnvme/no-mi: add libnvme_transport_handle_get_mi_ep
+  * libnvme: add missing SPDX/banner to generated sysfs .i files
+  * libnvme: convert lazy getters to return error codes
+  * netapp: fix null pointer dereference in netapp_smdevices_print_verbose()
+  * netapp: fix null pointer dereference in netapp_ontapdevices_print_regular()
+  * netapp: fix null pointer dereference in netapp_ontapdevices_print_verbose()
+  * ocp: fix untrusted allocation size in parse_event_fifos()
+  * util/argconfig: fix always-false range check in comma-sep array parser
+  * libnvme/fabrics: fix negative errno passed to libnvme_strerror in nbft_discovery
+  * util: fix resource leak in dump_command_metadata()
+  * solidigm-telemetry: check return value of recursive sldm_telemetry_structure_parse calls
+  * doc: do not install discoverd man page when disabled
+  * doc: add libnvme changes to NEWS.md
+  * libnvme/fabrics: refactor libnvmf_discover
+  * libnvme/fabrics: handle all disconnects in libnvmf_discover
+  * libnvme/fabrics: set kato before discovery starts
+  * libnvme/fabrics: rewrite dc_should_connect
+  * libnvme/fabrics: factor out dc_should_connect logic
+  * fabrics: handle multiple invocation of safe_discovery_log
+  * libnvme/fabrics: handle connect separately from discover
+  * libnvme/fabrics: drop connect arg from discover_log hook
+  * libnvme/fabrics: move arguments into fabrics context
+  * libnvme/private-fabrics: use tabs for code generator args
+  * libnvme/accessors: sort libnvmf entries
+  * libnvme/nvme-base-types: fix sanicap vers and nvers bit definitions
+  * solidigm: remove trailing space from clear-pcie-correctable-errors name
+  * nvme-types: fix nvme_host_discover_log family struct names
+  * doc: fix discover/discovery wording in nvme-discover.txt
+  * fabrics: rename discovery action functions to discover
+  * nvme-print: fix nvme_show_verbose_message() error severity
+  * fabrics: don't clobber "already connected" message on connect failure
+  * libnvme: check return value of libnvmf_tid_set_identity in test
+  * nvme: fix negative errno passed to libnvme_strerror in get_register_properties
+  * nvme-print: fix untrusted loop bounds in json_nvme_fdp_configs()
+  * ocp: fix resource leak of description in parse_event_fifo
+  * nvme-print-stdout: sort entries numerically
+  * libnvme: make struct libnvme_ctrl_sysfs opaque
+  * shared: add __shr_likely/__shr_unlikely branch-hint macros
+  * libnvme: extract libnvme_parse_src_addr() for direct testing
+  * libnvme/generator: rename generate-accessors.py for import
+  * fabrics: Add EPCSD parsing to discover sub-command
+  * libnvme/fabrics: Implement EPCSD for discovery
+  * keys: validate the DHHC-1 secret length for every hash id
+  * base64: validate padding and trailing bits
+  * solidigm-telemetry: fix UB sign-extension shift in telemetry_log_get_value
+  * netapp: fix resource leak on alloc failure in netapp_smdevices()
+  * netapp: fix resource leak on alloc failure in netapp_ontapdevices()
+  * shared: move dirents cleanup from private-tree.h to shared/cleanup.h
+  * shared/shr-assert: replace assert with shr_assert
+  * libnvme/nbft: reject SSNS and Discovery entries with unresolved Security Descriptors
+  * libnvme/fabrics: skip NBFT records with Security Profile Descriptors
+  * ioctl-win: update fw-commit action implementation based on testing
+  * lm-nvme: return errors from lm_migration_recv()
+- undone the missing man pages change from b4 in the spec file
+
+-------------------------------------------------------------------
 Fri Jul 31 14:55:54 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - Update to version 3.0~b.4:

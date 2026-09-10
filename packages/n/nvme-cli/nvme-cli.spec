@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        3.0~b.4
+Version:        3.0+6.g1ac60ca4b
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only
@@ -218,7 +218,6 @@ fi
 %endif
 %{_mandir}/man1/nvme*.1*%{?ext_man}
 %{_mandir}/man5/nvme*.5*%{?ext_man}
-%{_mandir}/man8/nvme*.8*%{?ext_man}
 %{_udevrulesdir}/65-persistent-net-nbft.rules
 %{_udevrulesdir}/70-nvmf-keys.rules
 %{_udevrulesdir}/70-nvmf-autoconnect.rules
