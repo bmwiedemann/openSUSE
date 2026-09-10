@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 09 19:37:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260904:
+  * Fix RB28/RB628 tone and DTCS index mapping
+  * Retevis RB28/RB628: Fix Busy Channel Lockout display
+  * various bug fixes
+
+-------------------------------------------------------------------
 Fri Aug 21 18:55:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260821:
