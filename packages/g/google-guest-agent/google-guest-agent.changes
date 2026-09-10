@@ -1,10 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:03:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+
+-------------------------------------------------------------------
 Fri Sep  4 09:43:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260903.01
   * Update dependencies to latest (#636) (bsc#1278597,
     CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
-    (bsc#1278967, CVE-2026-84445)
+    (bsc#1278967, CVE-2026-84445) (bsc#1279297, CVE-2026-84303)
+    (bsc#1279414, CVE-2026-84304)
 - from version 20260902.00
   * fix octal digit comparison in morePermissive (#631)
 - from version 20260825.00

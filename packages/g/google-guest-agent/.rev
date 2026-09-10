@@ -1143,4 +1143,13 @@
     <comment>- Add missing Bugzilla reference for CVE-2026-84445 (forwarded request 1375807 from glaubitz)</comment>
     <requestid>1375815</requestid>
   </revision>
+  <revision rev="70" vrev="1">
+    <srcmd5>512e74f79061de31ddd6f3499ad74eb1</srcmd5>
+    <version>20260903.01</version>
+    <time>1789055901</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662) (forwarded request 1376945 from glaubitz)</comment>
+    <requestid>1376954</requestid>
+  </revision>
 </revisionlist>
