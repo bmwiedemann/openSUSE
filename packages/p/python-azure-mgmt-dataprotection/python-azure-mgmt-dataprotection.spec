@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-dataprotection
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Microsoft Azure Dataprotection Management Client Library for Python
 License:        MIT
