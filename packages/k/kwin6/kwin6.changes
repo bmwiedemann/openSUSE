@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:08:07 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.5
+- Too many changes to list here
+- Drop patches, now upstream:
+  * 0001-wayland-Increase-global-removal-timer-timeout-to-1-d.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 14:46:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Add patch to improve issues after unplugging outputs:
