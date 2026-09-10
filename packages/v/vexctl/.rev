@@ -265,4 +265,31 @@ VEX can be thought of as a &quot;negative security advisory&quot;. Using VEX, so
   * build(deps): Bump chainguard-dev/actions in the all group (forwarded request 1367708 from jfkw)</comment>
     <requestid>1367709</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>f0cf15cdee1d2dc3d915bbd6e5a948c7</srcmd5>
+    <version>0.4.4+git70.36f6f3a</version>
+    <time>1789033693</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4.4+git70.36f6f3a:
+  * Fix Windows failures found by the OS test matrix
+  * Add race detector to tests in CI
+  * Modernize the release SBOM
+  * Test on the stable Go release across operating systems
+  * Drop the snapshot workflow
+  * Update readme
+  * Add e2e registry test
+  * Fix image reference resolution
+  * Attach attestations as OCI referrers and read both layouts
+  * Move signing to sigstore bundles
+  * Bump dep versions
+  * Compute Go versions and run matrix tests
+  * build(deps): Bump github.com/google/go-containerregistry
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump github.com/sirupsen/logrus
+  * build(deps): Bump github.com/google/go-containerregistry
+  * Do not dereference a missing document timestamp in ApplySingleVEX
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 matching go.mod (forwarded request 1376660 from jfkw)</comment>
+    <requestid>1376661</requestid>
+  </revision>
 </revisionlist>

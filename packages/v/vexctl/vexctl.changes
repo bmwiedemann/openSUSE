@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 09 15:30:10 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.4+git70.36f6f3a:
+  * Fix Windows failures found by the OS test matrix
+  * Add race detector to tests in CI
+  * Modernize the release SBOM
+  * Test on the stable Go release across operating systems
+  * Drop the snapshot workflow
+  * Update readme
+  * Add e2e registry test
+  * Fix image reference resolution
+  * Attach attestations as OCI referrers and read both layouts
+  * Move signing to sigstore bundles
+  * Bump dep versions
+  * Compute Go versions and run matrix tests
+  * build(deps): Bump github.com/google/go-containerregistry
+  * build(deps): Bump the all group across 1 directory with 2 updates
+  * build(deps): Bump github.com/sirupsen/logrus
+  * build(deps): Bump github.com/google/go-containerregistry
+  * Do not dereference a missing document timestamp in ApplySingleVEX
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 matching go.mod
+
+-------------------------------------------------------------------
+Tue Sep 08 02:17:54 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.4+git44.d69ce1a:
+  * build(deps): Bump google.golang.org/grpc from 1.82.1 to 1.83.1
+  * build(deps): Bump the all group across 1 directory with 5 updates
+  * Add OWNERS and aliases with new maintainers
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump github.com/stretchr/testify from 1.11.1 to 1.12.0
+  * build(deps): Bump github.com/sirupsen/logrus from 1.9.4 to 1.10.0
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+  * build(deps): Bump the all group with 2 updates
+  * fix: append package name to repository_url when normalizing oci purls
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+  * build(deps): Bump the all group with 2 updates
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+
+-------------------------------------------------------------------
 Sat Jul 25 03:27:20 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.4+git20.5d61136:
