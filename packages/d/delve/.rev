@@ -610,4 +610,45 @@
   * proc: fix C frame attribution for noreturn calls in stack unwinding (#4374) (forwarded request 1369335 from jfkw)</comment>
     <requestid>1369337</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>4d4eace0caf1d22e135ca897052aad4d</srcmd5>
+    <version>1.27.2</version>
+    <time>1789033713</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.27.2:
+  * *: v1.27.2 (#4446)
+  * goversion: format versioned development builds correctly (#4445)
+  * proc,service: emit events while calling DownloadLibraryDebugInfo (#4438)
+  *  proc: fix range-over-func next test on linux/loong64 (#4441)
+  * gobuild: keep -C first for test builds (#4444)
+  * dap: add types command to list program types (#4439)
+  * proc: do not call debuginfod-find right after attach (#4431)
+  * proc: fix infinite loop in mapIteratorSwiss.next (#4433)
+  * proc/native: poll wait4 on FreeBSD to avoid a lost wakeup (#4435)
+  * terminal,service,proc: add set next statement (jump) command (#4434)
+  * ci: run the FreeBSD tests on GitHub Actions (#4432)
+  * tests: regenerate capslock (#4426)
+  * ci: upload fuzz crashers as GitHub Actions artifacts (#4428)
+  * debugger: close resumeNotify early with the halt command (#4425)
+  * tests: report error with t.Fatal if we can't compile a fixture (#4424)
+  * service/dap: honor the frame and goroutine of the SetVariable scope (#4419)
+  * proc: advance through FreeBSD process snapshots (#4421)
+  * ci: upgrade GitHub Actions and pin GoReleaser (#4427)
+  * build(deps): bump github.com/cilium/ebpf from 0.11.0 to 0.22.0 (#4422)
+  * release: make interrupted draft uploads rerunnable (#4409)
+  * ci: fail early when a release is already published (#4408)
+  * proc: do not nest memCache objects (#4418)
+  * service/dap: print &quot;ps aux&quot; before exiting tests (#4417)
+  * pkg/proc: defer pointer cast to syscall invoking function (#4414)
+  * build: add plumber workflow security check (#4406)
+  * build: pin github actions to commit shas and declare workflow permissions (#4405)
+  * proc: export LoadFullValue as return-by-value helper (#4411)
+  * *: add scripts to setup / run eval fuzzer and run in CI (#4412)
+  * proc/native: update Windows syscall generator (#4404)
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 latest stable.
+    This tool requires that it be built with the same or newer
+    go1.x toolchain as the Go applications it operates on. (forwarded request 1376749 from jfkw)</comment>
+    <requestid>1376750</requestid>
+  </revision>
 </revisionlist>
