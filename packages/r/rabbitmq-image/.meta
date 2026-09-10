@@ -1,0 +1,4 @@
+<package name="rabbitmq-image" project="openSUSE:Factory">
+  <title>openSUSE Tumbleweed RabbitMQ message broker supporting AMQP, STOMP and MQTT</title>
+  <description>RabbitMQ message broker supporting AMQP, STOMP and MQTT container based on the openSUSE Tumbleweed Base Container Image.</description>
+</package>
