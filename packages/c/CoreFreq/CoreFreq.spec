@@ -58,7 +58,13 @@ sed -i \
     aarch64/{corefreq-cli.c,coretypes.h}
 
 %build
-%make_build
+# Userspace parts are flavor independent, build them once
+%make_build corefreqd corefreq-cli
+
+# Build the kernel module once per kernel flavor
+for flavor in %{flavors_to_build}; do
+    %make_build BUILD=build-$flavor KERNELDIR=%{kernel_source $flavor} corefreqk.ko
+done
 
 %install
 export INSTALL_MOD_PATH=%{buildroot}
@@ -66,6 +72,11 @@ export INSTALL_MOD_DIR=updates
 
 mkdir -p %{buildroot}%{_bindir} %{buildroot}%{_unitdir} %{buildroot}%{_sbindir}
 
+for flavor in %{flavors_to_build}; do
+    make BUILD=build-$flavor KERNELDIR=%{kernel_source $flavor} module-install
+done
+
+# build/ holds no corefreqk.ko, so this only installs the userspace bits.
 PREFIX=%{buildroot}%{_prefix} make install
 
 cp %{SOURCE100} %{buildroot}%{_unitdir}

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep  9 13:34:49 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Fix build for kernel-longterm (boo#1217824)
+
+-------------------------------------------------------------------
 Thu Sep  3 22:24:37 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - fixed compilation on aarch64 caused by enum names clashing with
