@@ -25,4 +25,12 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>920533</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>340d6817df3f44b65a3fdd00080ae5e2</srcmd5>
+    <version>6.1.1</version>
+    <time>1789033690</time>
+    <user>anag_factory</user>
+    <comment>Add gmp-c23-prototype.patch to fix build with gcc15</comment>
+    <requestid>1376644</requestid>
+  </revision>
 </revisionlist>
