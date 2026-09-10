@@ -7,7 +7,10 @@
 
 # m: memory limit in MBs per core; default is 1000
 %limit_build(m:) \
-    _threads="`/usr/bin/getconf _NPROCESSORS_ONLN`" \
+    %global _threads $(/usr/bin/getconf _NPROCESSORS_ONLN) \
+    %global _jobs %{?jobs}%{!?jobs:${RPM_BUILD_NCPUS:-%_threads}} \
+    _threads=%_threads \
+    test "$_threads" -gt "%_jobs" && _threads=%_jobs \
     _core_memory="%{-m:%{-m*}}%{!-m:1000}" \
     echo "Available memory:" \
     cat /proc/meminfo \
@@ -22,7 +25,7 @@
         test "$_threads" -gt "$max_jobs" && _threads="$max_jobs" && echo "Warning: Reducing number of jobs to $max_jobs because of memory limits" \
         test "$_threads" -le 0 && _threads=1 && echo "Warning: Do not use the parallel build at all because of memory limits" \
     fi \
-    %global jobs $([[ -n $_threads ]] && echo $_threads || echo "`/usr/bin/getconf _NPROCESSORS_ONLN`") \
-    %global _smp_mflags $([[ -n $_threads ]] && echo "-j$_threads" || echo "-j`/usr/bin/getconf _NPROCESSORS_ONLN`") \
-    %global _smp_build_ncpus $([[ -n $_threads ]] && echo "$_threads" || echo "`/usr/bin/getconf _NPROCESSORS_ONLN`") \
+    %global jobs $([[ -n $_threads ]] && echo "$_threads" || echo "%_jobs") \
+    %global _smp_mflags $([[ -n $_threads ]] && echo "-j$_threads" || echo "-j%_jobs") \
+    %global _smp_build_ncpus $([[ -n $_threads ]] && echo "$_threads" || echo "%_jobs") \
     %{nil}

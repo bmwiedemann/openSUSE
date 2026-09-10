@@ -41,4 +41,12 @@ not contain empty values</comment>
     <comment></comment>
     <requestid>1236830</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>eda53c32ab842a8a525b856aadf547ba</srcmd5>
+    <version>20180406</version>
+    <time>1789033624</time>
+    <user>anag_factory</user>
+    <comment>memory-constraints: - Never use more than the configured jobs</comment>
+    <requestid>1376517</requestid>
+  </revision>
 </revisionlist>

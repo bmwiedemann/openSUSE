@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Nov  3 07:47:52 UTC 2025 - Andreas Schwab <schwab@suse.de>
+
+- Never use more than the configured jobs
+
+-------------------------------------------------------------------
 Thu Jan  9 11:29:51 UTC 2025 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Also set _smp_build_ncpus to fix usage with meson macro and
