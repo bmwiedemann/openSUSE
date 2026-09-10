@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:09:23 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.5
+- Changes since 6.7.4:
+  * powerdevil: Clear stale battery warnings after charging
+  * applets/batterymonitor: omit PPD message when there's no PPD
+  * kcm: Fix non-default highlight
+  * Update version for new release 6.7.5
+
+-------------------------------------------------------------------
 Tue Aug  4 11:27:01 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:
