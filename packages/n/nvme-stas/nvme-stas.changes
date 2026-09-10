@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Sep 08 07:10:06 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.0:
+  * license: put the SPDX identifier on the first line
+  * doc: bring the documentation up to date for 3.0
+  * coverage: run the daemons against a declared /etc/nvme
+  * staslib: parse time spans the way systemd does
+  * test: cover the referral signal and the configuration libnvme refuses
+  * staslib: an IPv4-mapped address is an IPv4 address
+  * coverage: give the disconnect test something to disconnect
+  * staslib: do not talk to a discovery controller we have parked
+  * staslib: let stacd work out what it was managing instead of remembering
+  * github, CI: Set latest python version to 3.14
+  * staslib: do not disconnect I/O controllers we were never told about
+  * staslib: hold discovery connections open only where EPCSD says to
+  * staslib: rename zeroconf-connections-persistence to dc-giveup-timeout
+  * staslib: do not claim to keep a configuration there never was
+  * Finish removing stasadm
+  * coverage: drive the simulation from the connectivity configuration
+  * staslib: drop the unused option checkers
+  * stafd, stacd: add --conn-conf-file
+  * Move stafd.conf and stacd.conf to /etc/nvme
+  * staslib: drop sys.conf and stasadm
+  * staslib: take connection parameters from the connectivity configuration
+  * staslib: make the host identity of a connection testable
+  * doc: document the connectivity configuration
+  * staslib: read connectivity configuration from /etc/nvme/nvme-stas.conf
+  * staslib: drop two helpers left without callers
+  * staslib: make the singleton thread-safe and check its arguments
+  * staslib: stop suppressing nvme-cli's udev rule
+  * staslib: replace disconnect-scope with honor-fabric-zoning
+  * staslib: never disconnect a controller that isn't ours
+  * test: give libnvme's test base dir one path per process
+  * staslib: read libnvme's host-wide exclusion list
+  * staslib: rename host-nqn/host_nqn to hostnqn
+  * staslib: check the exclusion list before (re)connecting
+  * staslib: rename dhchap to kxchap
+  * Update nvme-stas to use libnvme3
+  * docs: a bit of tyding up
+  * doc: update DISTROS.md
+  * coverage: tweaked the script to cover a few more lines of code
+  * test, fixes: Add more coverage tests and fix a few bugs
+  * chore: replace doxygen annotations with plain docstrings; fix bugs
+  * fix: adapt to new libnvme Python API (Phase 2 + exception hierarchy)
+  * fix: adapt to new libnvme nvme.ctrl() dict-based constructor
+  * doc: update TESTING.md
+  * tests: add more coverage
+  * coverage: minor fixes
+  * test: correct several bugs and robustness issues in coverage.sh.in
+  * tests: fix failing tests
+  * test: expand unit-test coverage across four test files
+  * doc: remove Docker support artifacts
+  * doc: clarify that containerized deployment is not supported
+  * test: add unit tests for stas module utility functions
+  * code quality: add CodeQL static analysis
+  * code quality: enable copilot
+  * docs: updating docs with nvme-stas vs nvme-cli comparison
+  * claude: add CLAUDE.md file
+  * code-review: fix bugs, modernize, and expand test coverage
+  * test: fix ruff format errors
+  * nbft: libnvme's nvme.nbft_get now expects a global context argument
+  * lint: remove all the '# pylint: disable=<blah>' comments
+  * lint: use ruff instead of pylint+pyflakes+black
+  * doc: fix typos in *.xml documentation
+  * cosmetic: fix typos in code comments
+  * docs: fix various typos and clarify a few things
+  * docs: fix typo
+  * version 3.0: making changes to be compatible with libnvme 3.0
+  * stafd: add missing authentication parameter documentation
+  * Release: Tagging release 2.4.1
+  * ctrl: restore backward compatibility with libnvme 1.11 and prior.
+  * NEWS.md: Document release 2.4
+  * Release 2.4
+  * stacd: add authentication support (DHCHAP)
+  * black: reformatted to comply with latest black version
+  * udev-rules: use systemd escape char (\x09) instead of \t (tab)
+  * make: use "meson --internal unistall"
+  * Fixing GitHub workflows
+  * test: Allow running latest pylint instead of old 2.17.7 version
+  * Black: making code compatible with latest version of black
+  * systemd: Harden stafd/stacd service files
+  * debian: Updated debian control file to match upstream Debian Pkg
+  * Skip mac2iface test when multiple interfaces have the same MAC
+  * Skip mac2iface test for esoteric interfaces
+  * test: Fix test-udev with dummy interfaces
+- enabled build tests
+- install documentation
+
+-------------------------------------------------------------------
 Tue Nov 05 12:26:47 UTC 2024 - Daniel Wagner <daniel.wagner@suse.com>
 
 - Update to version 2.3.1:
