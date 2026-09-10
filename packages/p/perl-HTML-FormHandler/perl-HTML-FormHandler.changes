@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:42:30 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.410.2 (0.410002)
+   see /usr/share/doc/packages/perl-HTML-FormHandler/Changes
+
+  0.410002  2026-09-07 13:17:02+02:00 Europe/Vienna
+     - fix failing t/errors/maketext_inert_argument.t test with non-English locale
+     - fix CVE-2026-85484 bsc#1279869
+       by HTML encoding option-list labels
+       this doesn't use html_filter any more and might break code that used it for mangling labels
+       and values
+     - fix CVE-2026-85485 bsc#1279870
+       Three locations of unencoded error messages have been overlooked in the fix for CVE-2026-19872.
+       These where in the Table form layout and Bootstrap (2 and 3) theme wrappers.
+     - fix CVE-2026-85630 bsc#1279871
+       by encoding HTML attribute values as per HTML attribute context in process_attrs
+
+  0.410001  2026-09-03 15:35:45+02:00 Europe/Vienna
+     - add the missing Changes entry for CVE-2022-4993
+
+  0.410000  2026-09-03 15:16:36+02:00 Europe/Vienna
+     - Fix exception when field 'result' has been garbage-collected
+     - Crypt::* and MIME::Base64 prereqs added in last release are moved to
+       optional prereqs
+     - Fix CVE-2026-19872 bsc#1279868
+       by html escaping all error message on render
+       only the Select field did this previously but when adding the error message to the field
+       instead of only when rendering to HTML
+     - Fix CVE-2022-4993
+       by passing error messages with request data as Locale::Maketext arguments instead of templates
+
+-------------------------------------------------------------------
 Mon Jun 23 21:49:10 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

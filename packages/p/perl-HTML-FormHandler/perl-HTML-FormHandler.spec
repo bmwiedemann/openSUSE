@@ -1,7 +1,7 @@
 #
 # spec file for package perl-HTML-FormHandler
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,20 @@
 
 %define cpan_name HTML-FormHandler
 Name:           perl-HTML-FormHandler
-Version:        0.400.680
+Version:        0.410.2
 Release:        0
-# 0.40068 -> normalize -> 0.400.680
-%define cpan_version 0.40068
+# 0.410002 -> normalize -> 0.410.2
+%define cpan_version 0.410002
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        HTML forms using Moose
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/G/GS/GSHANK/%{cpan_name}-%{cpan_version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/A/AB/ABRAXXA/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Class::Load) >= 0.60
-BuildRequires:  perl(Crypt::Blowfish)
-BuildRequires:  perl(Crypt::CBC)
 BuildRequires:  perl(Data::Clone)
 BuildRequires:  perl(DateTime)
 BuildRequires:  perl(DateTime::Format::Strptime)
@@ -44,7 +43,6 @@ BuildRequires:  perl(HTML::TreeBuilder) >= 3.230
 BuildRequires:  perl(JSON::MaybeXS) >= 1.3.3
 BuildRequires:  perl(List::Util) >= 1.33
 BuildRequires:  perl(Moose) >= 2.140.300
-BuildRequires:  perl(MooseX::Getopt) >= 0.160
 BuildRequires:  perl(MooseX::Types) >= 0.200
 BuildRequires:  perl(MooseX::Types::Common)
 BuildRequires:  perl(MooseX::Types::LoadableClass) >= 0.6
@@ -55,13 +53,11 @@ BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::Exception)
 BuildRequires:  perl(Test::Memory::Cycle) >= 1.40
 BuildRequires:  perl(Test::More) >= 0.94
+BuildRequires:  perl(Test::Needs)
 BuildRequires:  perl(Test::Warn)
 BuildRequires:  perl(Try::Tiny)
-BuildRequires:  perl(aliased)
 BuildRequires:  perl(namespace::autoclean) >= 0.90
 Requires:       perl(Class::Load) >= 0.60
-Requires:       perl(Crypt::Blowfish)
-Requires:       perl(Crypt::CBC)
 Requires:       perl(Data::Clone)
 Requires:       perl(DateTime)
 Requires:       perl(DateTime::Format::Strptime)
@@ -72,14 +68,12 @@ Requires:       perl(HTML::TreeBuilder) >= 3.230
 Requires:       perl(JSON::MaybeXS) >= 1.3.3
 Requires:       perl(List::Util) >= 1.33
 Requires:       perl(Moose) >= 2.140.300
-Requires:       perl(MooseX::Getopt) >= 0.160
 Requires:       perl(MooseX::Types) >= 0.200
 Requires:       perl(MooseX::Types::Common)
 Requires:       perl(MooseX::Types::LoadableClass) >= 0.6
 Requires:       perl(Sub::Exporter)
 Requires:       perl(Sub::Name)
 Requires:       perl(Try::Tiny)
-Requires:       perl(aliased)
 Requires:       perl(namespace::autoclean) >= 0.90
 Provides:       perl(HTML::FormHandler) = %{version}
 Provides:       perl(HTML::FormHandler::Base) = %{version}
@@ -217,6 +211,8 @@ Provides:       perl(HTML::FormHandler::Widget::Wrapper::Table) = %{version}
 Provides:       perl(HTML::FormHandler::Widget::Wrapper::TableInline) = %{version}
 Provides:       perl(HTML::FormHandler::Wizard) = %{version}
 %undefine       __perllib_provides
+Recommends:     perl(Crypt::Blowfish)
+Recommends:     perl(Crypt::CBC)
 %{perl_requires}
 
 %description
