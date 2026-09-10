@@ -248,4 +248,15 @@
   * create release v3.5.0 #889</comment>
     <requestid>1349088</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8d5fcfc3171f65996527c60c3e593116</srcmd5>
+    <version>3.5.1</version>
+    <time>1789054871</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.1:
+  * Fix broken star history chart in README #904
+  * Fix #906 #908
+  * New release #910</comment>
+    <requestid>1376919</requestid>
+  </revision>
 </revisionlist>
