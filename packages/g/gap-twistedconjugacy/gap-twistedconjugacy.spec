@@ -17,7 +17,7 @@
 
 
 Name:           gap-twistedconjugacy
-Version:        3.4.0
+Version:        3.4.2
 Release:        0
 Summary:        GAP: Computation with twisted conjugacy classes
 License:        GPL-2.0-or-later

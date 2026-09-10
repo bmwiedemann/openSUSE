@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep  9 17:39:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.2
+  * `ExtendedReidemeisterSpectrum` is now more efficient for
+    non-2-generated finite soluble groups and for quasisimple
+    groups.
+  * `CoincidenceReidemeisterSpectrum( H, G )` is now more efficient
+    when `G` is trivial or abelian, and when `H` = `G` is
+    quasisimple.
+  * Fixed a bug in `RepresentativeTwistedConjugation` that could
+    lead to errors.
+  * Fixed an assertion in `CoincidenceGroup`.
+  * Fixed a bug in `RepresentativesTwistedConjugacyClasses` where
+    the returned representatives could lie outside the given normal
+    subgroup `N`.
+  * `ReidemeisterNumber` will now return `infinity` immediately if
+    called for homomorphisms whose source has smaller Hirsch length
+    than their range.
+  * Fixed a bug in `RepresentativesEndomorphismClasses` and
+    `RepresentativesHomomorphismClasses` that could lead to wrong
+    results.
+
+-------------------------------------------------------------------
 Sun Jul  5 19:08:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.0
