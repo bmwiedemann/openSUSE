@@ -18,22 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-forked
-Version:        1.6.0
+Version:        1.7.5
 Release:        0
 Summary:        Run each test in a forked subprocess
 License:        MIT
 URL:            https://github.com/pytest-dev/pytest-forked
-Source:         https://files.pythonhosted.org/packages/source/p/pytest-forked/pytest-forked-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on gh#pytest-dev/pytest-forked#103
-Patch0:         switch-to-multiprocessing.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pytest-forked/pytest_forked-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pytest >= 3.10}
+BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-pytest >= 3.10
+Requires:       python-pytest >= 7
 BuildArch:      noarch
 %python_subpackages
 
@@ -41,7 +40,7 @@ BuildArch:      noarch
 Extraction of pytest-xdist --forked module used for running tests in forked subprocess
 
 %prep
-%autosetup -p1 -n pytest-forked-%{version}
+%autosetup -p1 -n pytest_forked-%{version}
 
 %build
 %pyproject_wheel

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 02:22:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.7.5:
+  * Drop support for EOL Python versions: 3.7, 3.8, 3.9.
+  * Print proper child process exit status.
+  * Removed dependency to py.
+  * Fix tests marked with @pytest.mark.forked in pytest 7+.
+  * Pytest >= 7 is now required.
+- Drop patch switch-to-multiprocessing.patch, merged upstream.
+
+-------------------------------------------------------------------
 Wed Aug  5 04:11:46 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch switch-to-multiprocessing.patch:

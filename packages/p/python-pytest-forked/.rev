@@ -105,4 +105,18 @@
   * Use multiprocessing rather than py.process.ForkedFunc.</comment>
     <requestid>1369619</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca1a916f50e49cf35a890d7090d66fda</srcmd5>
+    <version>1.7.5</version>
+    <time>1789033739</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.5:
+  * Drop support for EOL Python versions: 3.7, 3.8, 3.9.
+  * Print proper child process exit status.
+  * Removed dependency to py.
+  * Fix tests marked with @pytest.mark.forked in pytest 7+.
+  * Pytest &gt;= 7 is now required.
+- Drop patch switch-to-multiprocessing.patch, merged upstream.</comment>
+    <requestid>1376801</requestid>
+  </revision>
 </revisionlist>
