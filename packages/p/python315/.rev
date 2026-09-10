@@ -402,4 +402,41 @@ covered).</comment>
   - CVE-2026-11940-tarfile-escape.patch</comment>
     <requestid>1368661</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>150b9fc1e1e4853ba59243da11d9776d</srcmd5>
+    <version>3.15.0~rc2</version>
+    <time>1789033680</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.15.0~rc2:
+  - Security
+    - gh-156723: Update bundled libexpat to version 2.8.4.
+    - gh-156002: Bound the amount of data zipfile decompresses
+      per read for members compressed with bzip2, LZMA, or
+      Zstandard, matching the existing limit for deflate. A small
+      archive member could previously expand into an unbounded
+      allocation even when read in small chunks (bsc#1277111,
+      CVE-2026-15310).
+    - gh-155999: Fix the tarfile tar and data extraction filters
+      creating directories outside the destination for members
+      whose name leaves the destination and returns to it, such
+      as ../evil/../dest/sub/file. The containment check used the
+      resolved path, but intermediate directories were created
+      from the name as given (bsc#1276227, CVE-2026-19672).
+    - gh-155292: Change the stringprep module and encodings.idna
+      codec to not consider Unicode codepoint attributes beyond
+      those defined in RFC 3454 (bsc#1276226, CVE-2026-17084).
+    - gh-155694: Fix CVE 2026-15806 by scoping HTTPPasswordMgr
+      credentials to the URL scheme, preventing credentials
+      stored for an HTTPS URL from being used for a matching HTTP
+      URL, while URIs without a scheme continue to match any
+      scheme (bsc#1276223, CVE-2026-15806).
+  - Core and Builtins
+    - gh-155725: tracemalloc no longer acquires the GIL nor
+      creates a temporary thread state to trace memory
+      allocations: traceback frames now store plain UTF-8 strings
+      instead of Python str objects, and tracebacks are captured
+      using the Python thread state already associated with the
+      calling thread, even if it is not attached. Threads without</comment>
+    <requestid>1376612</requestid>
+  </revision>
 </revisionlist>
