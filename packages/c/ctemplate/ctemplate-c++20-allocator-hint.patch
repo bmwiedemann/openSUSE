@@ -1,0 +1,31 @@
+From 5aa5a00e74ea8a1ea22d6a9760b4b420687fa4e5 Mon Sep 17 00:00:00 2001
+From: Conrad Poelman <cpgithub@stellarscience.com>
+Date: Mon, 11 May 2020 21:55:00 -0400
+Subject: [PATCH] C++20 / gcc10 fix: remove hint, removed typedef
+Git-commit: 5aa5a00e74ea8a1ea22d6a9760b4b420687fa4e5
+
+C++17 deprecated, and C++20 fully removed, the std::allocator<T>::const_pointer typedef (https://en.cppreference.com/w/cpp/memory/allocator). So gcc10 fails to compile this file.
+
+The selected fix was to completely remove the hint argument because (a) it was ignored anyway, and (b) std::allocator's allocate() function also chose to remove its hint argument in C++20 (https://en.cppreference.com/w/cpp/memory/allocator/allocate).
+---
+openSUSE note: GCC 15 turns this into a hard error even though the
+template is never instantiated with the hint, because -Wtemplate-body
+now parses uninstantiated template bodies.
+
+ src/base/arena-inl.h | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/src/base/arena-inl.h b/src/base/arena-inl.h
+index 9408e9b..99ab4d3 100755
+--- a/src/base/arena-inl.h
++++ b/src/base/arena-inl.h
+@@ -93,8 +93,7 @@ template <class T, class C> class ArenaAllocator {
+   ArenaAllocator(C* arena) : arena_(arena) { }  // NOLINT
+   ~ArenaAllocator() { }
+ 
+-  pointer allocate(size_type n,
+-                   std::allocator<void>::const_pointer /*hint*/ = 0) {
++  pointer allocate(size_type n) {
+     assert(arena_ && "No arena to allocate from!");
+     return reinterpret_cast<T*>(arena_->AllocAligned(n * sizeof(T),
+                                                      kAlignment));

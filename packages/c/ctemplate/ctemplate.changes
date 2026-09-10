@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:08:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add ctemplate-c++20-allocator-hint.patch: fix build with GCC 15,
+  whose libstdc++ no longer declares std::allocator<void>::const_pointer
+  and which now parses uninstantiated template bodies (upstream 5aa5a00)
+- Modernise spec file; run %check with -j1, the tests share a fixed
+  /tmp/template_unittest_dir and race in parallel
+
+-------------------------------------------------------------------
 Wed Mar 17 09:12:01 UTC 2021 - Wang Jun <jgwang@suse.com>
 
 - Update to version 2.4
