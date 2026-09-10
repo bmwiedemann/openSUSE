@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep  6 09:30:35 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.390.0 (0.39)
+   see /usr/share/doc/packages/perl-UUID/Changes
+
+  0.39 Sat Sep  5 11:48:16 EDT 2026
+    - Fix deadlock on MacOS/OSX.
+      - Thanks Kurt Starsinic, Matt Martini. [rt.cpan.org #178101]
+    - AUTOMATED_TESTING no longer forces verbose.
+    - More explicit error checking in lock wrapper.
+    - Fixed possible looping in UMTX_lock in some cases.
+    - Fixed chicken-egg problem in test lib in some cases.
+    - Switched to flush by default in test lib due to missing flush() in
+      older IO::File.
+    - Started adding coverage tests.
+    - Fixed a few broken POD tags.
+
+-------------------------------------------------------------------
 Fri May 15 08:20:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.380.0 (0.38)

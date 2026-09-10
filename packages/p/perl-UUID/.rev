@@ -101,4 +101,24 @@
       - Notice the first 3 digit groups of each UUID.</comment>
     <requestid>1358061</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>910bdf978d98fcf81632e9c6c4503c70</srcmd5>
+    <version>0.390.0</version>
+    <time>1789049111</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.390.0 (0.39)
+   see /usr/share/doc/packages/perl-UUID/Changes
+  0.39 Sat Sep  5 11:48:16 EDT 2026
+    - Fix deadlock on MacOS/OSX.
+      - Thanks Kurt Starsinic, Matt Martini. [rt.cpan.org #178101]
+    - AUTOMATED_TESTING no longer forces verbose.
+    - More explicit error checking in lock wrapper.
+    - Fixed possible looping in UMTX_lock in some cases.
+    - Fixed chicken-egg problem in test lib in some cases.
+    - Switched to flush by default in test lib due to missing flush() in
+      older IO::File.
+    - Started adding coverage tests.
+    - Fixed a few broken POD tags.</comment>
+    <requestid>1376888</requestid>
+  </revision>
 </revisionlist>
