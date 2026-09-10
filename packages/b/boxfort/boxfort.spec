@@ -19,7 +19,7 @@
 %define _lto_cflags %{nil}
 
 Name:           boxfort
-Version:        0.1.7
+Version:        0.1.8
 Release:        0
 Summary:        A sandboxing C library for Criterion
 License:        MIT
