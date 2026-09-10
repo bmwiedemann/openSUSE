@@ -1,7 +1,7 @@
 #
 # spec file for package cgal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Ioda-Net Sàrl, Charmoille, Switzerland.
 #
 # All modifications and additions to the file contributed by third parties
@@ -23,7 +23,7 @@
 #@TODO : ask for rename and take into account the obsolete existant thing. like libcgal deps
 %define _sourcename CGAL
 Name:           cgal
-Version:        6.1
+Version:        6.2.1
 Release:        0
 Summary:        Computational Geometry Algorithms Library
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
