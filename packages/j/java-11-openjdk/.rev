@@ -711,4 +711,12 @@
     <comment>August 2026 CSPU + tzdata 2026c</comment>
     <requestid>1373461</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>b7d7a233fa96e970c97f95bb6c28f915</srcmd5>
+    <version>11.0.32.1</version>
+    <time>1789033702</time>
+    <user>anag_factory</user>
+    <comment>Add bug number</comment>
+    <requestid>1376664</requestid>
+  </revision>
 </revisionlist>

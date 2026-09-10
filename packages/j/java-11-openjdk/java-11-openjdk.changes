@@ -7,7 +7,8 @@ Mon Aug 24 16:50:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
     + JDK-8384708, bsc#1275778, CVE-2026-61308: Enhance HTTP
       Connections
     + JDK-8386205, bsc#1275764, CVE-2026-70907: Enhance TLS server
-    + JDK-8382471, CVE-2026-60589: Improve Resource Resolving
+    + JDK-8382471, bsc#1275777, CVE-2026-60589: Improve Resource
+      Resolving
     + JDK-8389476: Bump update version for OpenJDK: jdk-11.0.32.1
 - Added patch:
   * tzdata-2026c.patch
