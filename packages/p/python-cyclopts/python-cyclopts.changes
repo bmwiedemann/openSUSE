@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.25.2:
+  * Reject NaN in numeric range validators
+
+-------------------------------------------------------------------
 Tue Sep  8 06:24:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.25.1:

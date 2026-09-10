@@ -187,4 +187,13 @@ No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
     command's app-stack rather than the parent app</comment>
     <requestid>1376272</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>b9726343e04aa1963f89cf33a94fff25</srcmd5>
+    <version>4.25.2</version>
+    <time>1789033763</time>
+    <user>anag_factory</user>
+    <comment>Update to 4.25.2:
+* Reject NaN in numeric range validators</comment>
+    <requestid>1376809</requestid>
+  </revision>
 </revisionlist>
