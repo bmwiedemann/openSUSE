@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep  9 19:55:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.17
+  Changes
+  * New tests for TFTP option negotiation and malformed requests.
+  Fixes
+  * TFTP: reject packets too short for the header their opcode
+    implies.
+  * TFTP: bound RRQ/WRQ option parsing to the received packet, and
+    defer the buffer reallocation until parsing is done.
+  * TFTP: clamp a negotiated blksize to the RFC 2348 maximum, 65464.
+  * TFTP: ignore DATA packets when no transfer is open.
+  * TFTP: ERROR messages used strerror() text for what are protocol
+    codes.
+
+-------------------------------------------------------------------
 Sun Jun 21 13:34:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.16
