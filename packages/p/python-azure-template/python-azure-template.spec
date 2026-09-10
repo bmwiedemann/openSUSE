@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-template
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-template
-Version:        0.1.0b4077576
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Template Package Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-template/azure-template-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_template/azure_template-%{version}.tar.gz
 Source1:        LICENSE.txt
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -32,7 +32,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       (python-azure-core >= 1.23.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.31.0 with python-azure-core < 2.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-azure-template < 0.1.0b3511266
@@ -42,17 +42,18 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-This template package matches necessary patterns that the development team has established to
-create a unified sdk functional from Python 2.7 onwards. The packages contained herein can be
-installed singly or as part of the azure namespace.
+This template package matches necessary patterns that the development team
+has established to create a unified SDK. The packages contained herein can
+be installed singly or as part of the azure namespace. Any other introductory
+text should go here.
 
-This package has been tested with Python 2.7, 3.5, 3.6, 3.7 and 3.8
+This package has been tested with Python 3.7+.
 
 %prep
-%setup -q -n azure-template-%{version}
+%setup -q -n azure_template-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-template-%{version}
+install -m 644 %{SOURCE1} %{_builddir}/azure_template-%{version}
 %pyproject_wheel
 
 %install
