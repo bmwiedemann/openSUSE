@@ -63,10 +63,10 @@
 # LLVM version
 %if 0%{?suse_version} > 1600
 # LLVM version
-%define llvm_version 22
-%define llvm_version_long 22.1.8
+%define llvm_version 23
+%define llvm_version_long 23.1.0
 # RUST version
-%define rust_version 1.93
+%define rust_version 1.94
 %else
 # LLVM version
 %define llvm_version 19
@@ -120,6 +120,11 @@
 %else
 %bcond_with flac_1_5
 %endif
+%if %{pkg_vcmp pipewire-devel >= 1.6.0}
+%bcond_without pipewire16
+%else
+%bcond_with pipewire16
+%endif
 # Package names
 %if %{with is_beta}
 %define chromedriver_name %{name}-chromedriver
@@ -132,7 +137,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        152.0.7977.82
+Version:        153.0.8010.36
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -146,6 +151,9 @@ Source3:        README.openSUSE
 # upstream only contains x86 binary of 4.x, other archs do not work reliably
 # try to use an old version like in debian package
 Source4:        https://registry.npmjs.org/rollup/-/rollup-%{rollup_version}.tgz
+# properly build a typescript-go instead of using an arbitrary intree binary
+Source5:        TypeScript-7.0.2.tar.gz
+Source6:        TypeScript-7.0.2-vendor.tar.gz
 # Toolchain definitions
 Source30:       master_preferences
 Source104:      chromium-symbolic.svg
@@ -206,6 +214,8 @@ Patch402:       chromium-150-toolchain.patch
 Patch403:       chromium-152-revert-crubit.patch
 Patch404:       chromium-152-value_or.patch
 Patch405:       chromium-152-no-eula.patch
+Patch406:       chromium-153-opus_includes.patch
+Patch407:       chromium-153-ignore-typescript-deps.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -285,9 +295,6 @@ Patch1041:      gtk-414-2.patch
 Patch1050:      chromium-140-old-flac.patch
 # only in ffmpeg avutil >= 60.31
 Patch1051:      chromium-150-ffmpeg_no_agtm.patch
-# revert upstream patch ending in compile error
-# error: static assertion expression is not an integral constant expression
-Patch1060:       chromium-24264eefbfd3464161764f31a2752c5327719452.patch
 Patch1061:       chromium-146-static-assert.patch
 # llvm19 segfaults in
 # ../services/network/public/cpp/permissions_policy/origin_with_possible_wildcards.cc:99:1: current parser token 'std'
@@ -308,6 +315,10 @@ Patch1073:       chromium-151-constexpr.patch
 Patch1074:       chromium-152-no-lifetime-checks.patch 
 Patch1075:       chromium-152-no-warning-suppression-map.patch
 Patch1080:       rollup.patch
+# another crubit revert
+Patch1081:       chromium-493e6c3911e33cc356856bafbffc6cf95521266b.patch
+# revert patch needing more recent pipewire
+Patch1082:       chromium-a0253ec15b3d3072fb35d6be29ba9224c36f9dd7.patch
 
 # end conditionally applied patches
 BuildRequires:  SDL-devel
@@ -322,6 +333,7 @@ BuildRequires:  gn >= %{gn_version}
 BuildRequires:  gperf
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  golang(API)
+BuildRequires:  golang-packaging
 # Java used during build
 BuildRequires:  java-openjdk-headless
 BuildRequires:  libdc1394
@@ -510,6 +522,7 @@ BuildRequires:  pkgconfig(libwebp) >= 0.4.0
 %if %{with system_zstd}
 BuildRequires:  pkgconfig(libzstd) >= 1.5.5
 %endif
+BuildRequires:  zstd
 # compiler selection
 %if %{with clang}
 # clang/llvm case
@@ -537,7 +550,6 @@ BuildRequires:  gcc%{gcc_version}-c++
 %if 0%{?suse_version} >= 1699
 #!BuildIgnore:  rpmlint rpmlint-Factory rpmlint-mini
 %endif
-BuildRequires:  unzip
 
 %description
 Chromium is the open-source project behind Google Chrome. We invite you to join us in our effort to help build a safer, faster, and more stable way for all Internet users to experience the web, and to create a powerful platform for developing a new generation of web applications.
@@ -587,7 +599,6 @@ WebDriver is an open source tool for automated testing of webapps across many br
 
 clang_version="$(clang-%{llvm_version} --version | sed -n 's/clang version //p')"
 if [[ $(echo ${clang_version} | cut -d. -f1) -lt 21 ]]; then
-%patch -p1 -R -P 1060
 %patch -p1 -P 1061
 %patch -p1 -P 1062
 %patch -p1 -P 1065
@@ -605,6 +616,16 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 %patch -p1 -P 1071
 %patch -p1 -P 1074
 fi
+
+# revert another crubit patch until we get a proper building crubit
+%patch -p1 -R -P 1081
+
+%if %{without pipewire16}
+pushd third_party/webrtc
+%patch -p1 -R -P 1082
+popd
+%endif
+
 
 ## ROLLUP_HACK
 rm -rf third_party/devtools-frontend/src/node_modules/rollup
@@ -666,6 +687,20 @@ gflags+=" -buildvcs=false"
 GO_FLAGS="${gflags}" make
 cp -a esbuild ../third_party/devtools-frontend/src/third_party/esbuild/esbuild
 popd
+
+# drop in tree binaries
+rm -f third_party/typescript/linux-amd64/src/lib/tsc{,.sig}
+tar -xf %{SOURCE5}
+pushd TypeScript-*/tsc
+tar -xf %{SOURCE6}
+# apply the local patch .. sigh
+pushd internal/bundled/libs
+patch -p2 < ../../../../../third_party/typescript/linux-amd64/3pp/patches/typescript_native_preview.patch
+popd
+%{goprep} github.com/microsoft/typescript-go
+%{gobuild} -mod=vendor ./cmd/tsgo
+popd
+cp -a $RPM_BUILD_DIR/go/bin/tsgo third_party/typescript/linux-amd64/src/lib/tsc
 
 # Fix the path to nodejs binary
 mkdir -p third_party/node/linux/node-linux-x64/bin
@@ -834,6 +869,7 @@ keeplibs=(
     third_party/gperf
     third_party/highway
     third_party/hunspell
+    third_party/iamf_tools
     third_party/ink
     third_party/inspector_protocol
     third_party/ipcz
@@ -940,6 +976,7 @@ keeplibs=(
     third_party/tflite/src/third_party/fft2d
     third_party/tflite/src/third_party/xla/third_party/tsl
     third_party/tflite/src/third_party/xla/xla/tsl
+    third_party/typescript
     third_party/ukey2
     third_party/utf
     third_party/vulkan
@@ -1021,6 +1058,10 @@ keeplibs+=( third_party/rust/cxx )
 keeplibs+=( third_party/snappy )
 %endif
 build/linux/unbundle/remove_bundled_libraries.py "${keeplibs[@]}" --do-remove
+
+# re-add a proper python3 link
+mkdir -p third_party/cpython3/host/bin
+ln -sfn %{_bindir}/$PYTHON third_party/cpython3/host/bin/python3
 
 # GN sets lto on its own and we need just ldflag options, not cflags
 %define _lto_cflags %{nil}

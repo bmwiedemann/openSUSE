@@ -1,0 +1,9 @@
+--- chromium-153.0.8010.5/tools/typescript/validate_tsconfig.py	2026/08/29 09:27:43	1.1
++++ chromium-153.0.8010.5/tools/typescript/validate_tsconfig.py	2026/08/29 09:29:12
+@@ -337,4 +337,5 @@
+   for missing_input in missing_inputs:
+     errorMessage += f'//{missing_input}\n'
+ 
+-  return False, errorMessage
++  #return False, errorMessage
++  return True, None

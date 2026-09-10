@@ -6,8 +6,8 @@ Index: chromium-144.0.7559.59/base/allocator/partition_allocator/src/partition_a
  //     PA_MUSTTAIL return Func1(d + 1);  // `Func1()` will be tail-called.
  //   }
  // ```
--#if PA_HAS_CPP_ATTRIBUTE(clang::musttail)
-+#if PA_HAS_CPP_ATTRIBUTE(clang::musttail) && !defined(__powerpc64__)
+-#if __has_cpp_attribute(clang::musttail)
++#if __has_cpp_attribute(clang::musttail) && !defined(__powerpc64__)
  #define PA_MUSTTAIL [[clang::musttail]]
  #else
  #define PA_MUSTTAIL

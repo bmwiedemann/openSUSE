@@ -2,7 +2,7 @@ Index: chromium-151.0.7922.10/components/autofill/core/browser/BUILD.gn
 ===================================================================
 --- chromium-151.0.7922.10.orig/components/autofill/core/browser/BUILD.gn
 +++ chromium-151.0.7922.10/components/autofill/core/browser/BUILD.gn
-@@ -131,6 +131,11 @@ static_library("browser") {
+@@ -131,6 +131,11 @@
    _configs = configs
    configs = []
    configs = [ "//third_party/tflite:tflite_shim_config" ] + _configs
@@ -12,5 +12,5 @@ Index: chromium-151.0.7922.10/components/autofill/core/browser/BUILD.gn
 +    ]
 +  }
    sources = [
-     "at_memory/at_memory_data_type.cc",
-     "at_memory/at_memory_data_type.h",
+     "at_memory/at_memory_enablement_utils.cc",
+     "at_memory/at_memory_enablement_utils.h",

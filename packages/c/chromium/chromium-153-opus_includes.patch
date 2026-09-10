@@ -1,0 +1,63 @@
+--- chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.cc	2026/08/26 09:00:55	1.1
++++ chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.cc	2026/08/26 09:01:07
+@@ -30,8 +30,8 @@
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+ #include "iamf/obu/types.h"
+-#include "include/opus.h"
+-#include "include/opus_types.h"
++#include "opus.h"
++#include "opus_types.h"
+ 
+ namespace iamf_tools {
+ 
+--- chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.h	2026/08/26 09:01:09	1.1
++++ chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_decoder.h	2026/08/26 09:01:12
+@@ -23,7 +23,7 @@
+ #include "iamf/cli/codec/decoder_base.h"
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+-#include "include/opus.h"
++#include "opus.h"
+ 
+ namespace iamf_tools {
+ 
+--- chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_encoder.cc	2026/08/26 09:01:12	1.1
++++ chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_encoder.cc	2026/08/26 09:01:21
+@@ -32,9 +32,9 @@
+ #include "iamf/common/utils/validation_utils.h"
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+-#include "include/opus.h"
+-#include "include/opus_defines.h"
+-#include "include/opus_types.h"
++#include "opus.h"
++#include "opus_defines.h"
++#include "opus_types.h"
+ 
+ namespace iamf_tools {
+ 
+--- chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_encoder.h	2026/08/26 09:01:21	1.1
++++ chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_encoder.h	2026/08/26 09:01:27
+@@ -22,8 +22,8 @@
+ #include "iamf/obu/codec_config.h"
+ #include "iamf/obu/decoder_config/opus_decoder_config.h"
+ #include "iamf/obu/substream_channel_count.h"
+-#include "include/opus.h"
+-#include "include/opus_defines.h"
++#include "opus.h"
++#include "opus_defines.h"
+ 
+ namespace iamf_tools {
+ 
+--- chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_utils.cc	2026/08/26 09:01:27	1.1
++++ chromium-153.0.8010.5/third_party/iamf_tools/src/iamf/cli/codec/opus_utils.cc	2026/08/26 09:01:31
+@@ -3,7 +3,7 @@
+ #include "absl/status/status.h"
+ #include "absl/strings/str_cat.h"
+ #include "absl/strings/string_view.h"
+-#include "include/opus_defines.h"
++#include "opus_defines.h"
+ 
+ namespace iamf_tools {
+ 
