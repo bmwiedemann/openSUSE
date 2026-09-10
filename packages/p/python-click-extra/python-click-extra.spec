@@ -27,18 +27,22 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        8.9.1
+Version:        9.1.0
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/click-extra
 Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar.gz#/%{module_name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#kdeldycke/click-extra#1933
+Patch0:         do-not-use-bare-python.patch
+# PATCH-FIX-UPSTREAM gh#kdeldycke/click-extra#1934
+Patch1:         monkeypatch-shutil-correctly.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
 BuildRequires:  %{python_module boltons >= 20.0.0}
-BuildRequires:  %{python_module click >= 8.3.1}
+BuildRequires:  %{python_module click >= 8.4.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 1.0.1}
 BuildRequires:  %{python_module extra-platforms >= 13.4}
@@ -71,7 +75,7 @@ BuildRequires:  %{python_module wcwidth}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-boltons >= 20.0.0
-Requires:       python-click >= 8.3.1
+Requires:       python-click >= 8.4.1
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 1.0.1
 Requires:       python-extra-platforms >= 13.4

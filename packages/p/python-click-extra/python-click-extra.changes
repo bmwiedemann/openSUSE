@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Sep 10 02:14:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 9.1.0:
+  * Add --record to click-extra screenshot, running the command under a
+    pseudo-terminal and writing an animated SVG of every screen it draws.
+  * Draw the invocation above a capture as a shell prompt; --prompt overrides
+    or hides it, and --closing-prompt draws the prompt the shell returns to.
+  * Open a recorded animation by typing its command line out, with --typing,
+    --submit and the new type_line().
+  * Match a configuration key against a parameter name whatever its case, so
+    Foo-Bar and FOO_BAR both reach the foo_bar parameter.
+  * Fix a drawn prompt dropping the quotes around an argument or environment
+    value holding a space, so a captured command line pastes back as the
+    command it pictures.
+  * Fix an argument declared with a plain click.argument(help=...) drawing a
+    blank Positional arguments entry on the help screen.
+  * Fix a MulticallGroup and a VersionOption failing to copy on Python 3.10
+    with Click 8.4.
+  * Paint the (DEPRECATED) label with the deprecated theme slot in --tree and
+    the --params help column, as the help screen already does.
+  * Breaking: Rename every camel-cased spinner preset to kebab case, so
+    boxBounce is now box-bounce.
+  * Add a click-extra screenshot subcommand capturing any CLI's colored
+    output as an SVG image, an HTML document or raw escape sequences.
+  * Lay a capture out at the longest line it holds with an auto width, or
+    emit it as a bare inline-styled HTML block with --fragment.
+  * Tell a captured command its chrome through CLITHEME and COLORFGBG, so a
+    CLI passing --theme auto renders for the window it lands in.
+  * Add a click-extra snippet subcommand and a click_extra.snippet module
+    coloring a source file with Pygments and drawing it.
+  * Add a :mirror: option to the click:run directive, keeping a Markdown
+    link to that capture in the source, refreshed by refresh-directives.
+  * Add a click_extra.recording module rebuilding a terminal's screen from
+    the stream a command writes at it, in-process with ScreenRecorder or from
+    a Unix command with record_command.
+  * Render an animated SVG capture from a sequence of frames, tuned by hold,
+    blank, speed and quantize(), and fed by the new Spinner.frame_lines().
+  * Add render_help(), the HELP_FORMATS and INSTALLABLE_FORMATS registries,
+    and the to_markdown(), to_dict(), to_json(), read_manpage(),
+    format_manpage() and install_manpages() backends behind them.
+  * Add --output-dir and --install to every installable wrap --help-format
+    rendering, so a man page reaches your man directory the way a Carapace
+    spec reaches Carapace's.
+  * Add sort_subcommands and subcommand_priorities to @group, plus a
+    sort_subcommands context setting inherited by every subgroup, ordering
+    subcommands by registration or priority. Closes
+  * Add an option_priorities argument to @command and @group, reordering the
+    help screen without moving the order option callbacks run in, plus
+    iter_params_for_display().
+  * Add LazySubcommand, declaring a lazy subcommand's Cloup section and
+    fallback_to_default_section beside its import path.
+  * Track Click 8.5.0: keep click_extra.testing.isolated_filesystem() alive,
+    re-export custom_version_option, and keep get_binary_stream and
+    get_text_stream bound by a star import.
+- Add patches:
+  * do-not-use-bare-python.patch
+  * monkeypatch-shutil-correctly.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 09:48:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.9.1:

@@ -375,4 +375,41 @@ update to 6.1.0</comment>
     render a wrapped cell drop column widths instead of</comment>
     <requestid>1372224</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>3e417865d909cc0f2e0629b5b7a21886</srcmd5>
+    <version>9.1.0</version>
+    <time>1789033772</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.1.0:
+  * Add --record to click-extra screenshot, running the command under a
+    pseudo-terminal and writing an animated SVG of every screen it draws.
+  * Draw the invocation above a capture as a shell prompt; --prompt overrides
+    or hides it, and --closing-prompt draws the prompt the shell returns to.
+  * Open a recorded animation by typing its command line out, with --typing,
+    --submit and the new type_line().
+  * Match a configuration key against a parameter name whatever its case, so
+    Foo-Bar and FOO_BAR both reach the foo_bar parameter.
+  * Fix a drawn prompt dropping the quotes around an argument or environment
+    value holding a space, so a captured command line pastes back as the
+    command it pictures.
+  * Fix an argument declared with a plain click.argument(help=...) drawing a
+    blank Positional arguments entry on the help screen.
+  * Fix a MulticallGroup and a VersionOption failing to copy on Python 3.10
+    with Click 8.4.
+  * Paint the (DEPRECATED) label with the deprecated theme slot in --tree and
+    the --params help column, as the help screen already does.
+  * Breaking: Rename every camel-cased spinner preset to kebab case, so
+    boxBounce is now box-bounce.
+  * Add a click-extra screenshot subcommand capturing any CLI's colored
+    output as an SVG image, an HTML document or raw escape sequences.
+  * Lay a capture out at the longest line it holds with an auto width, or
+    emit it as a bare inline-styled HTML block with --fragment.
+  * Tell a captured command its chrome through CLITHEME and COLORFGBG, so a
+    CLI passing --theme auto renders for the window it lands in.
+  * Add a click-extra snippet subcommand and a click_extra.snippet module
+    coloring a source file with Pygments and drawing it.
+  * Add a :mirror: option to the click:run directive, keeping a Markdown
+    link to that capture in the source, refreshed by refresh-directives.</comment>
+    <requestid>1376836</requestid>
+  </revision>
 </revisionlist>

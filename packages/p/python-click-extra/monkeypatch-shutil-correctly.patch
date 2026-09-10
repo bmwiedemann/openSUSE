@@ -1,0 +1,27 @@
+From d905f6e6e371b2863f16e85eda4d5c176e9253c3 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 10 Sep 2026 11:34:32 +1000
+Subject: [PATCH] Accept kwargs in get_terminal_size monkeypatch
+
+test_version monkeypatches shutil.get_terminal_size() in a way that will
+only accept positional arguments, and not keyword arguments, leading to
+confusing tracebacks from pytest.
+---
+ tests/test_version.py | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/tests/test_version.py b/tests/test_version.py
+index 1179472fd..6c53c8592 100644
+--- a/tests/test_version.py
++++ b/tests/test_version.py
+@@ -1349,7 +1349,9 @@ def terminal_width(monkeypatch):
+ 
+     def pin(columns: int) -> None:
+         monkeypatch.setattr(
+-            shutil, "get_terminal_size", lambda *_: os.terminal_size((columns, 24))
++            shutil,
++            "get_terminal_size",
++            lambda *args, **kwargs: os.terminal_size((columns, 24)),
+         )
+ 
+     return pin
