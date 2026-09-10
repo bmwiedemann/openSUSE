@@ -266,4 +266,12 @@
   * bsc#1279316, CVE-2026-84303</comment>
     <requestid>1376026</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>5fcd2701a14c8f310288dbcb665e4e66</srcmd5>
+    <version>3.1.1</version>
+    <time>1789047592</time>
+    <user>anag_factory</user>
+    <comment>- update x/crypto to 0.52.0 (bsc#1268884, CVE-2026-39827,</comment>
+    <requestid>1376883</requestid>
+  </revision>
 </revisionlist>
