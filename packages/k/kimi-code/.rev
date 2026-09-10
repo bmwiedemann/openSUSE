@@ -90,4 +90,18 @@ Built locally on aarch64, rpmlint clean (0 badness). The build check now
 also loads the compiled node-pty addon.</comment>
     <requestid>1375892</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>030550cb13c7541d83974533016dc1bc</srcmd5>
+    <version>0.42.0</version>
+    <time>1789033701</time>
+    <user>anag_factory</user>
+    <comment>Update kimi-code to 0.42.0
+
+Experimental Updates panel, always-on subagent model pool,
+Remote Control and minidb search worker; tower//tasks, file
+search, image and dashboard improvements.
+
+Devel SR 1376654 accepted; devel carries 0.42.0.</comment>
+    <requestid>1376657</requestid>
+  </revision>
 </revisionlist>

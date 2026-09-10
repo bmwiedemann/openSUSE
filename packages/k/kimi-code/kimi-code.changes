@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep  9 16:32:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.42.0:
+  * Add an experimental Updates panel with paginated progress
+    messages from the main agent and subagents, enabled with
+    KIMI_CODE_EXPERIMENTAL_NOTIFY_USER=1
+  * Turn the subagent model pool, Remote Control and the minidb
+    session-index read model with the global search worker always
+    on; their experimental flags and opt-out variables are gone,
+    search persistence is now tuned via the [database] section
+  * Give tower worker and reviewer briefings the full mission
+    context, follow the subagent timeout for tower agents, and
+    show each background agent's model in /tasks
+  * Retrieve file search matches beyond the first 100 results,
+    accept HEIC, HEIF and BMP images with Kimi-served models,
+    and warn in kimi -p when project MCP servers are skipped in
+    an untrusted folder
+  * Read files with configurable character limits and resumable
+    long-line reads, decode malformed UTF-16 with a warning, and
+    preserve image and video filenames in session history
+  * Rework the dashboard: deletable sessions, reorderable media
+    rail, collapsed tool calls revealed with Ctrl-O, and less
+    jank on long conversations and session reloads
+
+-------------------------------------------------------------------
 Sat Sep  5 07:11:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.41.0:
