@@ -52,4 +52,20 @@
   * New `useragent()` accessor/mutator</comment>
     <requestid>1325870</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>28554b5c2648867211ed19820dec3439</srcmd5>
+    <version>1.0.1</version>
+    <time>1789049112</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.0.1
+   see /usr/share/doc/packages/perl-XML-Feed/ChangeLog.md
+  ## [Unreleased]
+  ## [v1.0.1] - 2026-09-08
+  ### Fixed
+  * Typo in Pod (thanks @stefanhaerter)
+  * Validate the `format` argument against a list of known formatters before
+    using it to build and load a class name, preventing code injection via a
+    malicious format string</comment>
+    <requestid>1376890</requestid>
+  </revision>
 </revisionlist>
