@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:08:39 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.5
+- Changes since 6.7.4:
+  * Update version for new release 6.7.5
+  * applets/kicker: don't launch favorites twice on Space
+  * emojier: go back to search field on Arrow Up
+  * Add missing Qt::Qml link
+  * containments/desktop: respect type-ahead setting in widget (kde#523053)
+  * applets/kickoff: disable reusing items in KickoffGridView (kde#515229)
+  * applets/taskmanager: correct for initial spacer in RtL (kde#504898)
+  * applets/taskmanager: make task progress bar follow rtl (kde#524112)
+  * applets/kicker: don't allow dragging categories
+  * applets/kicker: fix highlight while dragging
+  * emojier: make window large enough for sidebar (kde#523090)
+  * containments/panel: strip mnemonics from tooltip (kde#488578)
+  * applets/taskmanager: Fix "cannot read property width of undefined" warnings
+  * Only link discover to deb files on deb-based distros
+  * applets/taskmanager: Ask for a thumbnail when window is ready for painting
+  * Panel: expose reorderApplets() function for scripting
+  * desktop: Do not overwrite wallpaper-provided accent color (kde#514656)
+  * minimizeall, showdesktop, folder: update BugReportUrl
+  * kcms/landingpage: Fix color bleed through at the corners (kde#522042)
+  * spellchecking: do not ask to apply settings if no backend or dictionary exists (kde#521712)
+  * Update version for new release 6.7.5
+
+-------------------------------------------------------------------
 Tue Aug  4 11:26:17 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:
