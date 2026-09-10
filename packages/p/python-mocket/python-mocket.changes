@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep  1 20:50:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.14.4:
+  * Fix for nested Mocketizer's decorators
+
+-------------------------------------------------------------------
 Tue Jul 14 15:13:07 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to 3.14.3:
