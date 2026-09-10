@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Tue Sep 08 22:06:34 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 0.20260907:
+  * Use ReachabilityCache to improve performance of loop detection
+  * Support `target(target_type, name)` in `gn edit`
+  * Cache reverse dependencies for dependency exposure.
+  * Skip attempting to resolve known files as module names.
+  * Cache file path -> target lookup in `gn suggest`.
+  * Make `gn edit move` idempotent.
+  * When re-running build/gen.py from ninja, preserve environment variables.
+  * Implement pretty for several more types
+  * Ensure `gn edit` follows the style guide for variable ordering.
+  * Simplify code produced by gn edit.
+  * Support setting expressions in `gn edit`
+  * Revert "Write to ninja files via a standard API"
+  * Write to ninja files via a standard API
+  * Use move instead of add where suitable when suggesting fixes.
+  * Fix EditCommandTest.ShardSubcommand
+  * Support public_inputs in gn desc
+  * Update `gn format` to always insert newlines before targets.
+  * run_formatter.sh: Warn if `rustfmt` is not installed.
+  * docs: Document that copy() uses the toolchain's copy tool
+  * standard_out.h: Add ScopedBufferedOuptut class.
+  * Support public_inputs in group targets
+  * Run benchmarks serially.
+  * Write benchmarks to out/before and out/after instead of out/
+  * Add jj subcommands to easily compare revisions.
+  * Add `build/gen.py --gen ~/chromium/src=out/Default`
+  * Create a trace comparison tool to evaluate the performance impact of a change.
+  * Allow host_os and host_cpu to be accessed in .gn files
+  * Implement `gn edit "shard"` subcommand
+  * Hint about --fix/--apply when running without them
+  * Add support for creating new targets in `gn edit`
+  * Support cloning of nodes in the AST.
+  * Mark NOTREACHED as [[noreturn]]
+  * Implement `gn check --fix`
+  * Fix gn suggest adding self-dependency loops.
+  * Add a `gn suggest --apply` option.
+  * Add `gn edit` suggestions to `gn suggest`
+  * Implement `gn edit "rename attr attr"`
+  * Implement `gn edit "move attr attr value(s)"`
+  * Implement `gn edit "add attribute value(s)"`
+  * Implement `gn edit "remove attr value(s)"`
+  * Refactor parse nodes to support non-const access.
+  * Implement `gn edit delete` and `gn edit remove attr`
+  * Implement `gn edit` command, and implement a simple subcommand "set"
+  * Add features to test framework
+  * Implement a Result<T> type.
+  * Fix formatter on main branch
+  * Fix path to build/gen.py.
+  * Add pre-upload checks into ninja targets
+  * Add --exclude-type command-line argument
+  * Add CQ to starlark branch
+  * Refactor main.star to support multiple branches.
+  * Implement rule implementation execution.
+  * Create a simple session type and create a test for it.
+  * Fix lifetime of starlark struct keys passed to C++.
+  * Rename .bzl to .scl in accordance with design doc guidance.
+  * Split into two kinds of scopes - scopes and structs.
+
+-------------------------------------------------------------------
 Sat Aug 01 10:14:23 UTC 2026 - Ruediger Oertel <ro@suse.com>
 
 - Update to version 0.20260730:

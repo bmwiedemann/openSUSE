@@ -2,7 +2,7 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://gn.googlesource.com/gn.git</param>
-    <param name="revision">3fd3b0624d8cba16927853600130b2c33d4e7928</param>
+    <param name="revision">5df47e556efde72cc576d8a3af23b58b614345bd</param>
     <param name="versionformat">0.%cd</param>
     <param name="changesgenerate">enable</param>
   </service>

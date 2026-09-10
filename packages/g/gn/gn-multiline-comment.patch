@@ -1,19 +1,19 @@
---- gn/src/gn/header_checker.h	2026/04/07 15:51:32	1.1
-+++ gn/src/gn/header_checker.h	2026/04/07 15:51:59
-@@ -105,11 +105,11 @@
-   // the following graph:
-   //
-   // ```
--  //     A
--  //    / \
--  //   B   C
--  //    \ /
--  //     D
-+  //     A   .
-+  //    / \  .
-+  //   B   C .
-+  //    \ /  .
-+  //     D   .
-   // ```
-   //
-   // The BFS will visit nodes in order: A, B, C and D, but will record only the
+--- gn-0.20260907/src/gn/header_checker.h	2026/09/08 22:12:25	1.1
++++ gn-0.20260907/src/gn/header_checker.h	2026/09/08 22:12:43
+@@ -117,11 +117,11 @@
+     // Consider the following graph:
+     //
+     // ```
+-    //     A
+-    //    / \
+-    //   B   C
+-    //    \ /
+-    //     D
++    //     A    .
++    //    / \   .
++    //   B   C  .
++    //    \ /   .
++    //     D    .
+     // ```
+     //
+     // The BFS will visit nodes in order: A, B, C and D, but will record only

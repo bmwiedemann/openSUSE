@@ -287,4 +287,12 @@
     <comment>dependency for chromium 152</comment>
     <requestid>1373705</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>127841b33893a70aaf1f740b3bd70f1a</srcmd5>
+    <version>0.20260907</version>
+    <time>1789033674</time>
+    <user>anag_factory</user>
+    <comment>gn 0.20260907, dependency of Chromium 154</comment>
+    <requestid>1376516</requestid>
+  </revision>
 </revisionlist>
