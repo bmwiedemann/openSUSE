@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallclassnr
-Version:        1.6.0
+Version:        1.7.1
 Release:        0
 Summary:        GAP: Finite groups library with small class number
 License:        GPL-2.0-or-later
@@ -27,8 +27,7 @@ URL:            https://stertooy.github.io/SmallClassNr/
 Source:         https://github.com/stertooy/SmallClassNr/releases/download/v%version/SmallClassNr-%version.tar.gz
 BuildArch:      noarch
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.14
-Suggests:       gap-smallgrp >= 1.5.4
+Requires:       gap-core >= 4.15
 
 %description
 The SmallClassNr package provides access to finite groups with small

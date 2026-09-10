@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep  9 17:42:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.1
+  * `IteratorSmallClassNrGroups` can now be given the option
+    `AsPermGroup`.
+
+-------------------------------------------------------------------
+Sat Aug 15 02:12:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.7.0
+  * A complete, but as of yet unverified classification of the
+    groups of class numbers 15 to 20 can now be loaded using
+    `LoadUnverifiedSmallClassNrGroups()` (which replaces the old
+    command `LoadIncompleteSmallClassNrGroups()`).
+  * `IdClassNr` is now even faster for most groups, and no longer
+    relies on `IdGroup` / `SmallGrp`.
+
+-------------------------------------------------------------------
 Thu Jul 30 07:07:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.0
