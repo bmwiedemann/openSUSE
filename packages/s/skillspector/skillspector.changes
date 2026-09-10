@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.11.2:
+  * Deduplicate reference-coverage records so duplicate Markdown
+    references no longer abort with fatal unaccounted_work errors
+  * Account distinct reference targets sharing one source line
+    without conflicting completion records
+  * Stop false static-parser limits on simple runtime parameters,
+    inline skill invocations, PowerShell member access and long
+    quoted prose
+  * Keep runtime-selected printf/command/builtin/env paths marked
+    partially inspected instead of claiming exact reconstruction
+- Deselect two more aarch64-speed tests, both green in upstream CI:
+  test_cross_window_separator_pair_across_public_surfaces (only the
+  is_complete projection fails at the 30 s per-artifact budget; every
+  detection assertion passes) and
+  test_pe3_repeated_nouns_have_bounded_qualifier_cost (1.28 s against
+  a 1.0 s wall-clock bound)
+
+-------------------------------------------------------------------
 Tue Sep  8 06:26:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.11.1:
