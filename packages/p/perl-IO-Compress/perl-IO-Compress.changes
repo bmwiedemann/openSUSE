@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Fri Aug 28 17:31:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.224.0 (2.224)
+   see /usr/share/doc/packages/perl-IO-Compress/Changes
+
+    2.224 28 August 2026
+      * Update to version 2.224
+        Fri Aug 28 12:15:12 2026 +0100
+        04c15c022022020f12271071710f42296d98fb47
+      * remove 5.6-specific code and make 5.8 the min versionsupported
+        Wed Aug 26 16:06:31 2026 +0100
+        5e153a50913d012cb58016ad2782ce2bfb3bbc92
+      * Remove 5,6 from Travis build
+        Tue Aug 25 11:52:20 2026 +0100
+        952483f59dd4de7c70d747e330cbec7ae35706da
+      * remove dead backwards compatibility code
+        Tue Aug 25 11:48:21 2026 +0100
+        61a0b950e6466bc685b5a638a02a77db426be528
+      * remove redundant version checks
+        Tue Aug 25 11:48:21 2026 +0100
+        0de16bbbbe1baeec3f79583690a1003262b9302d
+      * fix test skip message with threaded perl 5.6
+        Tue Aug 25 11:48:21 2026 +0100
+        7992fb718dc041d3e04da635d7e9c542c10f66ce
+      * remove broken version check
+        Tue Aug 25 11:48:21 2026 +0100
+        92c2eb86890f840a44d87a749ef735537e2fa548
+      * simplify $needBinmode logic
+        Tue Aug 25 11:48:21 2026 +0100
+        86f96d52d96030c74e48ab44c07f48d252872aae
+      * fix ExtUtils::MakeMaker version check
+        Tue Aug 25 11:48:21 2026 +0100
+        8ed0a2ab1a9ce4e9048b2d90dc857ae3cbca0119
+      * more instances needed fixed for   #82
+        Tue Aug 25 11:23:00 2026 +0100
+        d7e0e2520af0f73d802e1288e02d1da15b926387
+      * make tests pass with spaces in $^X
+        Tue Aug 25 11:05:11 2026 +0100
+        674a7b6dc5ec6413ecf66f9d25e8a3b845bef226
+      * possible missing comma in file anyunc.pl Fixes #81
+        Sun Aug 2 15:48:54 2026 +0100
+        fe011442f2d40b436fcc19cd96e38fb08031d8bc
+      * Update zipdetails to version 4.009
+        Sat Jul 25 21:35:19 2026 +0100
+        3f0508d793e894d9baf134a5fea673b4677ab7c9
+      * Set  GlobMapper.pm to version 1.002.  Fixes #80
+        Tue Jul 21 23:10:54 2026 +0100
+        4dc945b0b64f8ead71b7bbba87407889bb0cf0cb
+      * Update CHENGES
+        Sat Jul 4 09:23:19 2026 +0100
+        cfbbd9e8f32c8279076be21591da0ef65bf4aecf
+
+-------------------------------------------------------------------
 Sun Jul  5 08:15:23 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.223.0 (2.223)

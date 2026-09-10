@@ -18,10 +18,10 @@
 
 %define cpan_name IO-Compress
 Name:           perl-IO-Compress
-Version:        2.223.0
+Version:        2.224.0
 Release:        0
-# 2.223 -> normalize -> 2.223.0
-%define cpan_version 2.223
+# 2.224 -> normalize -> 2.224.0
+%define cpan_version 2.224
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        IO Interface to compressed data files/buffers
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -31,38 +31,38 @@ Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(Compress::Raw::Bzip2) >= 2.218
-BuildRequires:  perl(Compress::Raw::Zlib) >= 2.222
-Requires:       perl(Compress::Raw::Bzip2) >= 2.218
-Requires:       perl(Compress::Raw::Zlib) >= 2.222
-Provides:       perl(Compress::Zlib) = 2.223
-Provides:       perl(File::GlobMapper) = 1.001
+BuildRequires:  perl(Compress::Raw::Bzip2) >= 2.224
+BuildRequires:  perl(Compress::Raw::Zlib) >= 2.224
+Requires:       perl(Compress::Raw::Bzip2) >= 2.224
+Requires:       perl(Compress::Raw::Zlib) >= 2.224
+Provides:       perl(Compress::Zlib) = 2.224
+Provides:       perl(File::GlobMapper) = 1.002
 Provides:       perl(IO::Compress) = %{version}
-Provides:       perl(IO::Compress::Adapter::Bzip2) = 2.223
-Provides:       perl(IO::Compress::Adapter::Deflate) = 2.223
-Provides:       perl(IO::Compress::Adapter::Identity) = 2.223
-Provides:       perl(IO::Compress::Base) = 2.223
-Provides:       perl(IO::Compress::Base::Common) = 2.223
-Provides:       perl(IO::Compress::Bzip2) = 2.223
-Provides:       perl(IO::Compress::Deflate) = 2.223
-Provides:       perl(IO::Compress::Gzip) = 2.223
-Provides:       perl(IO::Compress::Gzip::Constants) = 2.223
-Provides:       perl(IO::Compress::RawDeflate) = 2.223
-Provides:       perl(IO::Compress::Zip) = 2.223
-Provides:       perl(IO::Compress::Zip::Constants) = 2.223
-Provides:       perl(IO::Compress::Zlib::Constants) = 2.223
-Provides:       perl(IO::Compress::Zlib::Extra) = 2.223
-Provides:       perl(IO::Uncompress::Adapter::Bunzip2) = 2.223
-Provides:       perl(IO::Uncompress::Adapter::Identity) = 2.223
-Provides:       perl(IO::Uncompress::Adapter::Inflate) = 2.223
-Provides:       perl(IO::Uncompress::AnyInflate) = 2.223
-Provides:       perl(IO::Uncompress::AnyUncompress) = 2.223
-Provides:       perl(IO::Uncompress::Base) = 2.223
-Provides:       perl(IO::Uncompress::Bunzip2) = 2.223
-Provides:       perl(IO::Uncompress::Gunzip) = 2.223
-Provides:       perl(IO::Uncompress::Inflate) = 2.223
-Provides:       perl(IO::Uncompress::RawInflate) = 2.223
-Provides:       perl(IO::Uncompress::Unzip) = 2.223
+Provides:       perl(IO::Compress::Adapter::Bzip2) = 2.224
+Provides:       perl(IO::Compress::Adapter::Deflate) = 2.224
+Provides:       perl(IO::Compress::Adapter::Identity) = 2.224
+Provides:       perl(IO::Compress::Base) = 2.224
+Provides:       perl(IO::Compress::Base::Common) = 2.224
+Provides:       perl(IO::Compress::Bzip2) = 2.224
+Provides:       perl(IO::Compress::Deflate) = 2.224
+Provides:       perl(IO::Compress::Gzip) = 2.224
+Provides:       perl(IO::Compress::Gzip::Constants) = 2.224
+Provides:       perl(IO::Compress::RawDeflate) = 2.224
+Provides:       perl(IO::Compress::Zip) = 2.224
+Provides:       perl(IO::Compress::Zip::Constants) = 2.224
+Provides:       perl(IO::Compress::Zlib::Constants) = 2.224
+Provides:       perl(IO::Compress::Zlib::Extra) = 2.224
+Provides:       perl(IO::Uncompress::Adapter::Bunzip2) = 2.224
+Provides:       perl(IO::Uncompress::Adapter::Identity) = 2.224
+Provides:       perl(IO::Uncompress::Adapter::Inflate) = 2.224
+Provides:       perl(IO::Uncompress::AnyInflate) = 2.224
+Provides:       perl(IO::Uncompress::AnyUncompress) = 2.224
+Provides:       perl(IO::Uncompress::Base) = 2.224
+Provides:       perl(IO::Uncompress::Bunzip2) = 2.224
+Provides:       perl(IO::Uncompress::Gunzip) = 2.224
+Provides:       perl(IO::Uncompress::Inflate) = 2.224
+Provides:       perl(IO::Uncompress::RawInflate) = 2.224
+Provides:       perl(IO::Uncompress::Unzip) = 2.224
 Provides:       perl(U64)
 Provides:       perl(Zlib::OldDeflate)
 Provides:       perl(Zlib::OldInflate)
