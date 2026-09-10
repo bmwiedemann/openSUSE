@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.4.0:
+  * Faster verification: file blocks verified in parallel with
+    a reader thread feeding the workers, redundant whole-file
+    MD5 skipped and whole-file hash now opt-in
+  * New flag to follow symlinks when creating recovery data
+  * Fix tail of scanned file not counted when built without
+    OpenMP
+  * Rework Windows long-path handling
+
+-------------------------------------------------------------------
 Sat Aug 15 18:15:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.3.0:

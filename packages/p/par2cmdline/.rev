@@ -106,4 +106,12 @@ source_validator clean; spec-cleaner diff empty.
 </comment>
     <requestid>1371317</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>5148b499c9d9f8c3195ae5c8a2d0c243</srcmd5>
+    <version>1.4.0</version>
+    <time>1789047450</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.4.0: parallel block verification, follow-symlinks create flag, non-OpenMP tail-count fix.</comment>
+    <requestid>1376813</requestid>
+  </revision>
 </revisionlist>
