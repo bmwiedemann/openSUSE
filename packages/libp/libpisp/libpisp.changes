@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:15:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.7.0
+  * gst: Add BGR output format support.
+  * gst: Honour GstVideoMeta strides on input buffers.
+  * gst: Fix R/B channel ordering for RGB output formats.
+  * tests: Add strided input and BGR test cases.
+  * tests: Drop BGR compensation for GStreamer RGB output.
+
+-------------------------------------------------------------------
 Tue Jun 30 06:33:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.0
