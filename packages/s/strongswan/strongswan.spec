@@ -31,15 +31,13 @@
 %bcond_with     integrity
 %endif
 %bcond_without  farp
-%bcond_without  afalg
 %bcond_without  mysql
 %bcond_without  sqlite
-%bcond_without  gcrypt
 %bcond_without  nm
 %bcond_without  systemd
 
 Name:           strongswan
-Version:        6.0.7
+Version:        6.1.0
 Release:        0
 Summary:        IPsec-based VPN solution
 License:        GPL-2.0-or-later
@@ -82,9 +80,6 @@ BuildRequires:  libmysqlclient-devel
 %endif
 %if %{with sqlite}
 BuildRequires:  pkgconfig(sqlite3)
-%endif
-%if %{with gcrypt}
-BuildRequires:  pkgconfig(libgcrypt)
 %endif
 %if %{with nm}
 BuildRequires:  pkgconfig(libnm)
@@ -228,12 +223,6 @@ autoreconf --force --install
 	--enable-pkcs11 \
 	--enable-openssl \
 	--enable-agent \
-%if %{with gcrypt}
-	--enable-gcrypt \
-%else
-	--disable-gcrypt \
-%endif
-	--enable-blowfish \
 	--enable-ctr \
 	--enable-ccm \
 	--enable-gcm \
@@ -241,9 +230,6 @@ autoreconf --force --install
 	--enable-mgf1 \
 	--enable-unity \
 	--enable-md4 \
-%if %{with afalg}
-	--enable-af-alg \
-%endif
 	--enable-eap-sim \
 	--enable-eap-sim-file \
 	--enable-eap-sim-pcsc \
@@ -267,9 +253,7 @@ autoreconf --force --install
 	--enable-tnc-pdp \
 	--enable-tnc-imc \
 	--enable-tnc-imv \
-	--enable-tnccs-11 \
 	--enable-tnccs-20 \
-	--enable-tnccs-dynamic \
 	--enable-imc-test \
 	--enable-imv-test \
 	--enable-imc-scanner \
@@ -279,15 +263,12 @@ autoreconf --force --install
 %if %{with farp}
 	--enable-farp \
 %endif
-	--enable-smp \
 	--enable-sql \
 	--enable-attr-sql \
 	--enable-addrblock \
 	--enable-radattr \
 	--enable-mediation \
-	--enable-led \
 	--enable-certexpire \
-	--enable-duplicheck \
 	--enable-coupling \
 %if %{with mysql}
 	--enable-mysql \
@@ -459,7 +440,6 @@ fi
 %{_libexecdir}/ipsec/conftest
 %endif
 %{_libexecdir}/ipsec/xfrmi
-%{_libexecdir}/ipsec/duplicheck
 %{_libexecdir}/ipsec/pool
 %{_libexecdir}/ipsec/charon
 %{_libexecdir}/ipsec/_imv_policy
@@ -488,13 +468,9 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/counters.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/drbg.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/vici.conf
-%if %{with afalg}
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/af-alg.conf
-%endif
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/agent.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/attr.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/attr-sql.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/blowfish.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ccm.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/certexpire.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/cmac.conf
@@ -504,7 +480,6 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/curl.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/dhcp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/dnskey.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/duplicheck.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/eap-aka-3gpp2.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/eap-aka.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/eap-dynamic.conf
@@ -528,16 +503,12 @@ fi
 %endif
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/fips-prf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gcm.conf
-%if %{with gcrypt}
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gcrypt.conf
-%endif
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/chapoly.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/gmp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ha.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/kdf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/kernel-netlink.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/ldap.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/led.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/md4.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/mgf1.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/nonce.conf
@@ -553,13 +524,10 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/random.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/resolve.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/revocation.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/smp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/socket-default.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/sql.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/sshkey.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnccs-11.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnccs-20.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnccs-dynamic.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnc-imc.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnc-imv.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/tnc-pdp.conf
@@ -568,13 +536,10 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/updown.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/x509.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-eap.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-generic.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xauth-pam.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/xcbc.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon/bypass-lan.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/af-alg.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/agent.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/blowfish.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/bypass-lan.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/ccm.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/cmac.conf
@@ -591,7 +556,6 @@ fi
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/eap-ttls.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/fips-prf.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcm.conf
-%config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gcrypt.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/chapoly.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/gmp.conf
 %config(noreplace) %attr(600,root,root) %{strongswan_configs}/charon-nm/kdf.conf
@@ -635,13 +599,9 @@ fi
 %{strongswan_libdir}/imcvs/imv-test.so
 %dir %{strongswan_plugins}
 %{strongswan_plugins}/libstrongswan-addrblock.so
-%if %{with afalg}
-%{strongswan_plugins}/libstrongswan-af-alg.so
-%endif
 %{strongswan_plugins}/libstrongswan-agent.so
 %{strongswan_plugins}/libstrongswan-attr.so
 %{strongswan_plugins}/libstrongswan-attr-sql.so
-%{strongswan_plugins}/libstrongswan-blowfish.so
 %{strongswan_plugins}/libstrongswan-ccm.so
 %{strongswan_plugins}/libstrongswan-certexpire.so
 %{strongswan_plugins}/libstrongswan-cmac.so
@@ -652,7 +612,6 @@ fi
 %{strongswan_plugins}/libstrongswan-curl.so
 %{strongswan_plugins}/libstrongswan-dhcp.so
 %{strongswan_plugins}/libstrongswan-dnskey.so
-%{strongswan_plugins}/libstrongswan-duplicheck.so
 %{strongswan_plugins}/libstrongswan-eap-aka-3gpp2.so
 %{strongswan_plugins}/libstrongswan-eap-aka.so
 %{strongswan_plugins}/libstrongswan-eap-dynamic.so
@@ -676,16 +635,12 @@ fi
 %endif
 %{strongswan_plugins}/libstrongswan-fips-prf.so
 %{strongswan_plugins}/libstrongswan-gcm.so
-%if %{with gcrypt}
-%{strongswan_plugins}/libstrongswan-gcrypt.so
-%endif
 %{strongswan_plugins}/libstrongswan-chapoly.so
 %{strongswan_plugins}/libstrongswan-gmp.so
 %{strongswan_plugins}/libstrongswan-ha.so
 %{strongswan_plugins}/libstrongswan-kdf.so
 %{strongswan_plugins}/libstrongswan-kernel-netlink.so
 %{strongswan_plugins}/libstrongswan-ldap.so
-%{strongswan_plugins}/libstrongswan-led.so
 %{strongswan_plugins}/libstrongswan-md4.so
 %{strongswan_plugins}/libstrongswan-mgf1.so
 %{strongswan_plugins}/libstrongswan-nonce.so
@@ -701,7 +656,6 @@ fi
 %{strongswan_plugins}/libstrongswan-random.so
 %{strongswan_plugins}/libstrongswan-resolve.so
 %{strongswan_plugins}/libstrongswan-revocation.so
-%{strongswan_plugins}/libstrongswan-smp.so
 %{strongswan_plugins}/libstrongswan-socket-default.so
 %{strongswan_plugins}/libstrongswan-sql.so
 %{strongswan_plugins}/libstrongswan-sshkey.so
@@ -709,13 +663,10 @@ fi
 %{strongswan_plugins}/libstrongswan-tnc-imv.so
 %{strongswan_plugins}/libstrongswan-tnc-pdp.so
 %{strongswan_plugins}/libstrongswan-tnc-tnccs.so
-%{strongswan_plugins}/libstrongswan-tnccs-11.so
 %{strongswan_plugins}/libstrongswan-tnccs-20.so
-%{strongswan_plugins}/libstrongswan-tnccs-dynamic.so
 %{strongswan_plugins}/libstrongswan-unity.so
 %{strongswan_plugins}/libstrongswan-x509.so
 %{strongswan_plugins}/libstrongswan-xauth-eap.so
-%{strongswan_plugins}/libstrongswan-xauth-generic.so
 %{strongswan_plugins}/libstrongswan-xauth-pam.so
 %{strongswan_plugins}/libstrongswan-xcbc.so
 %{strongswan_plugins}/libstrongswan-vici.so
@@ -730,13 +681,9 @@ fi
 %dir %{strongswan_templates}/database/sql
 %{strongswan_templates}/config/strongswan.conf
 %{strongswan_templates}/config/plugins/addrblock.conf
-%if %{with afalg}
-%{strongswan_templates}/config/plugins/af-alg.conf
-%endif
 %{strongswan_templates}/config/plugins/agent.conf
 %{strongswan_templates}/config/plugins/attr-sql.conf
 %{strongswan_templates}/config/plugins/attr.conf
-%{strongswan_templates}/config/plugins/blowfish.conf
 %{strongswan_templates}/config/plugins/ccm.conf
 %{strongswan_templates}/config/plugins/certexpire.conf
 %{strongswan_templates}/config/plugins/cmac.conf
@@ -748,7 +695,6 @@ fi
 %{strongswan_templates}/config/plugins/dhcp.conf
 %{strongswan_templates}/config/plugins/dnskey.conf
 %{strongswan_templates}/config/plugins/drbg.conf
-%{strongswan_templates}/config/plugins/duplicheck.conf
 %{strongswan_templates}/config/plugins/eap-aka-3gpp2.conf
 %{strongswan_templates}/config/plugins/eap-aka.conf
 %{strongswan_templates}/config/plugins/eap-dynamic.conf
@@ -772,16 +718,12 @@ fi
 %endif
 %{strongswan_templates}/config/plugins/fips-prf.conf
 %{strongswan_templates}/config/plugins/gcm.conf
-%if %{with gcrypt}
-%{strongswan_templates}/config/plugins/gcrypt.conf
-%endif
 %{strongswan_templates}/config/plugins/chapoly.conf
 %{strongswan_templates}/config/plugins/gmp.conf
 %{strongswan_templates}/config/plugins/ha.conf
 %{strongswan_templates}/config/plugins/kdf.conf
 %{strongswan_templates}/config/plugins/kernel-netlink.conf
 %{strongswan_templates}/config/plugins/ldap.conf
-%{strongswan_templates}/config/plugins/led.conf
 %{strongswan_templates}/config/plugins/md4.conf
 %{strongswan_templates}/config/plugins/mgf1.conf
 %{strongswan_templates}/config/plugins/nonce.conf
@@ -797,7 +739,6 @@ fi
 %{strongswan_templates}/config/plugins/random.conf
 %{strongswan_templates}/config/plugins/resolve.conf
 %{strongswan_templates}/config/plugins/revocation.conf
-%{strongswan_templates}/config/plugins/smp.conf
 %{strongswan_templates}/config/plugins/socket-default.conf
 %{strongswan_templates}/config/plugins/sql.conf
 %{strongswan_templates}/config/plugins/sshkey.conf
@@ -805,14 +746,11 @@ fi
 %{strongswan_templates}/config/plugins/tnc-imv.conf
 %{strongswan_templates}/config/plugins/tnc-pdp.conf
 %{strongswan_templates}/config/plugins/tnc-tnccs.conf
-%{strongswan_templates}/config/plugins/tnccs-11.conf
 %{strongswan_templates}/config/plugins/tnccs-20.conf
-%{strongswan_templates}/config/plugins/tnccs-dynamic.conf
 %{strongswan_templates}/config/plugins/unity.conf
 %{strongswan_templates}/config/plugins/updown.conf
 %{strongswan_templates}/config/plugins/x509.conf
 %{strongswan_templates}/config/plugins/xauth-eap.conf
-%{strongswan_templates}/config/plugins/xauth-generic.conf
 %{strongswan_templates}/config/plugins/xauth-pam.conf
 %{strongswan_templates}/config/plugins/xcbc.conf
 %{strongswan_templates}/config/plugins/vici.conf

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep  9 08:20:40 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 6.1.0
+  * IKEv1 is now disabled by default. Support will be removed in a
+    future release.
+  * Added support for XFRM_MSG_MIGRATE_STATE on Linux 7.2+.
+  * Removed the following plugins and components: af-alg,
+    android-dns, blowfish, charon-xpc, duplicheck, gcrypt,
+    keychain, led, libfast, manager, medsrv/medcli, padlock, smp,
+    soup, tnc-ifmap, tnccs-11, tnccs-dynamic.
+  * Fixed crashes and memory leaks in the openssl plugin related to
+    the processing of PKCS#7 containers. [CVE-2026-78123,
+    CVE-2026-78124, CVE-2026-78129].
+  * Fixed a crash in the eap-aka plugin's processing of
+    AKA-Synchronization-Failure. [CVE-2026-78126]
+  * Fixed an authorization bypass in the eap-peap/eap-ttls plugins
+    when propagation of authentication details from inner EAP
+    methods. [CVE-2026-78134]
+  * Fixed a memory exhaustion with IKEv2 message logging.
+    [CVE-2026-78127]
+  * Fixed denial of services in the x509 plugin related to the
+    verification of attributes/certificates, identity parsing, and
+    ietfAttrSyntax ASN.1 type parsing. [CVE-2026-78130,
+    CVE-2026-78131, CVE-2026-78132]
+  * Fixed use-after-free in libcharon related to IKEv2 rekeying
+    collisions [CVE-2026-78133].
+  * Fixed creation of  Child SA before complete authentication in
+    libcharon. [CVE-2026-78135]
+
+-------------------------------------------------------------------
 Mon Jun  8 15:14:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 6.0.7
