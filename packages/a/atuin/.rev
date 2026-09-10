@@ -1625,4 +1625,12 @@
     <comment>Update to version 18.21.0 (forwarded request 1375082 from develop7)</comment>
     <requestid>1375083</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>57b6e25e479706cf92096fa0ff1898e3</srcmd5>
+    <version>18.22.0</version>
+    <time>1789054863</time>
+    <user>anag_factory</user>
+    <comment>Update to version 18.22.0 (forwarded request 1376892 from develop7)</comment>
+    <requestid>1376894</requestid>
+  </revision>
 </revisionlist>
