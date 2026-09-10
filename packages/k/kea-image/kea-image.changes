@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:35:16 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- explicitly install grep to workaround missing dependencies on the post-install script of kea
+
+-------------------------------------------------------------------
 Mon Aug 31 16:26:00 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - fix access permissions of rpmdb
