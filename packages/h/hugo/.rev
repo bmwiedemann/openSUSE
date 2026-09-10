@@ -2069,4 +2069,39 @@
   * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.13 to 2.24.14 (forwarded request 1370884 from jfkw)</comment>
     <requestid>1370885</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>4b82a44e1e6f5206d478c098ead8a08d</srcmd5>
+    <version>0.166.0</version>
+    <time>1789033726</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.166.0:
+  * releaser: Bump versions for release of 0.166.0
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/mod from 0.40.0 to 0.41.0
+  * tpl/strings: Fix replaceRE with zero-width assertions
+  * build(deps): bump github.com/getkin/kin-openapi from 0.146.0 to 0.149.0
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * common/hreflect: Fix the off-by-one in the float to int overflow guards
+  * hexec: Fail on symlinks that escape the Node.js permission paths
+  * js: Add es2025 as supported build target
+  * config/security: Add http.proxyFromEnvironment and document the resolved address check
+  * build(deps): bump github.com/bep/lazycache from 0.8.1 to 0.9.0
+  * build(deps): bump github.com/bep/tmc from 0.6.0 to 0.7.0
+  * hugofs: Drop symlinked mount roots
+  * markup/highlight: Escape lineAnchors before passing it to Chroma
+  * Squashed 'docs/' changes from c85af679b..237e4cdf7
+  * build(deps): bump github.com/yuin/goldmark from 1.8.5 to 1.8.6
+  * build(deps): bump golang.org/x/image from 0.44.0 to 0.45.0
+  * tpl/partials: Slight performance improvement of the common partialCached case
+  * deps: Upgrade github.com/gobwas/glob v0.2.3 =&gt; v1.0.0
+  * Add internalExternal.IgnoreTailwindCSSSecurityError config option
+  * markup/pandoc: Support pandoc 3.11 and later
+  * build(deps): bump golang.org/x/mod from 0.39.0 to 0.40.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.16 to 2.24.17
+  * build(deps): bump github.com/gohugoio/httpcache from 0.8.0 to 0.9.0
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) &gt;= 1.27 matching go.mod (forwarded request 1376747 from jfkw)</comment>
+    <requestid>1376748</requestid>
+  </revision>
 </revisionlist>

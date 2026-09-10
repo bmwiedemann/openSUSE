@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Sep 09 18:36:23 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.166.0:
+  * releaser: Bump versions for release of 0.166.0
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * build(deps): bump golang.org/x/mod from 0.40.0 to 0.41.0
+  * tpl/strings: Fix replaceRE with zero-width assertions
+  * build(deps): bump github.com/getkin/kin-openapi from 0.146.0 to 0.149.0
+  * build(deps): bump github.com/bits-and-blooms/bitset
+  * common/hreflect: Fix the off-by-one in the float to int overflow guards
+  * hexec: Fail on symlinks that escape the Node.js permission paths
+  * js: Add es2025 as supported build target
+  * config/security: Add http.proxyFromEnvironment and document the resolved address check
+  * build(deps): bump github.com/bep/lazycache from 0.8.1 to 0.9.0
+  * build(deps): bump github.com/bep/tmc from 0.6.0 to 0.7.0
+  * hugofs: Drop symlinked mount roots
+  * markup/highlight: Escape lineAnchors before passing it to Chroma
+  * Squashed 'docs/' changes from c85af679b..237e4cdf7
+  * build(deps): bump github.com/yuin/goldmark from 1.8.5 to 1.8.6
+  * build(deps): bump golang.org/x/image from 0.44.0 to 0.45.0
+  * tpl/partials: Slight performance improvement of the common partialCached case
+  * deps: Upgrade github.com/gobwas/glob v0.2.3 => v1.0.0
+  * Add internalExternal.IgnoreTailwindCSSSecurityError config option
+  * markup/pandoc: Support pandoc 3.11 and later
+  * build(deps): bump golang.org/x/mod from 0.39.0 to 0.40.0
+  * build(deps): bump github.com/tdewolff/minify/v2 from 2.24.16 to 2.24.17
+  * build(deps): bump github.com/gohugoio/httpcache from 0.8.0 to 0.9.0
+  * config/security: Harden the default http.urls and resolved address checks (#15285)
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1
+  * tpl/transform: Bump fileCacheEntryVersion in transform.ToMath (note)
+  * resources/images: Bump formatVersionNumbers.PNG and fix version cache busting for images.Filter (note)
+  * build(deps): bump golang.org/x/tools from 0.48.0 to 0.49.0
+  * build(deps): bump software.sslmate.com/src/go-pkcs12 from 0.7.0 to 0.7.2
+  * resources/images: Preserve the source palette for geometric filter chains
+  * resources/images: Add golden test cases for geometric filter chains on paletted images
+  * resources/images: Fix filters on transparent colors and paletted images
+  * resources/images: Add some golden test cases
+  * related: Speed up index creation
+  * github: Fix workflow for stale issues
+  * related: Add tokenize option for index values
+  * resources/page: Don't let a title's "/" split an auto-derived slug
+  * warpc/js: Upgrade katex to 0.18.4 (note)
+  * config/security: Deny text/org content by default
+  * config/allconfig: Improve resilience of hugo mod init
+  * tpl: Separate deferred templates by escaping mode
+  * resources: Validate the resolved address on remote fetches
+  * markup: Escape code-fence attribute values in the default renderer
+  * hugolib: Make .Render take an optional context argument
+  * modules/npm: Make the generated workspace package private with a stable name
+  * common/hstore: Keep read lock while sorting map values
+  * metrics: Improve template metrics duration formatting
+  * Remove comments from rebuild test functions
+  * hugolib: Add some fast render mode integration tests
+  * all: Run modernize -fix ./...
+  * Upgrade to Go 1.27
+  * commands: Fix lang flag description in config command
+  * tpl: Improve the return keyword in templates
+  * page: Add IndexOf method to Pages
+  * tpl/resources: Add resources.Publish
+  * hugolib: Fix slice bounds panic when deleting multiple nodes at same path
+  * hugolib: Fix ReadingTime and FuzzyWordCount calculations
+  * releaser: Prepare repository for 0.166.0-DEV
+- Packaging improvements:
+  * Update to BuildRequires: golang(API) >= 1.27 matching go.mod
+
+-------------------------------------------------------------------
 Wed Aug 12 16:37:44 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.165.0:
