@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 11:10:48 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- Lower the requirements for Pygments -- I want to submit b4 to
+  SLFO and it depends on (non-present) textual.
+
+-------------------------------------------------------------------
 Sun Jul  5 10:44:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.2.8:
