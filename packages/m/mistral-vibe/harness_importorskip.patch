@@ -1,0 +1,21 @@
+---
+ tests/app_server/test_unified_harness_backend_adapter.py |    5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+Index: mistral-vibe-2.25.1/tests/app_server/test_unified_harness_backend_adapter.py
+===================================================================
+--- mistral-vibe-2.25.1.orig/tests/app_server/test_unified_harness_backend_adapter.py
++++ mistral-vibe-2.25.1/tests/app_server/test_unified_harness_backend_adapter.py
+@@ -12,8 +12,11 @@ from types import SimpleNamespace
+ from typing import TYPE_CHECKING, Any, Literal, cast
+ 
+-import mistralai_vibe_local_harness.session_protocol as harness_session_protocol
+ import pytest
+ import tomli_w
++
++# mistralai-vibe-local-harness is an optional extra: skip this module when
++# it is missing instead of failing collection, like the other harness tests
++harness_session_protocol = pytest.importorskip("mistralai_vibe_local_harness.session_protocol")
+ 
+ from tests.conftest import build_test_agent_loop, build_test_vibe_config
+ from tests.mock.utils import mock_llm_chunk

@@ -28,7 +28,7 @@
 %endif
 %define origname mistral-vibe
 Name:           %{origname}%{psuffix}
-Version:        2.25.0
+Version:        2.25.1
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -59,6 +59,10 @@ Patch6:         obs-test-synchronization.patch
 # a same-length config rewrite inside one filesystem timestamp tick was
 # invisible to the file fingerprint; hash the contents too
 Patch7:         fingerprint_file_contents.patch
+# PATCH-FIX-UPSTREAM harness_importorskip.patch martin@pluskal.org
+# the harness is an optional extra: skip the module when it is missing
+# instead of failing collection, same as the other harness test modules
+Patch8:         harness_importorskip.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -254,6 +258,7 @@ BuildRequires:  python3-respx >= 0.22.0
 BuildRequires:  python3-rich >= 15.0.0
 BuildRequires:  python3-rpds-py >= 0.30.0
 BuildRequires:  python3-sentry-sdk >= 2.64.0
+BuildRequires:  python3-setproctitle >= 1.3.7
 BuildRequires:  python3-sounddevice >= 0.5.5
 BuildRequires:  python3-soupsieve >= 2.8.4
 BuildRequires:  python3-sse-starlette >= 3.4.1

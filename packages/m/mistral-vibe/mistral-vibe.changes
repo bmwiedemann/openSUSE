@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:45:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.1:
+  * Background process tools show the command or PID with a typed
+    result widget; tool call groups fold into one summary line
+    (Ctrl+O toggles all groups and result bodies)
+  * New built-in worktree plugin; Desktop keeps 15 recent managed
+    Code worktrees, skipping active, dirty, untracked or unpushed ones
+  * Risky calls go back to the model to self-correct, escalating to
+    an approval prompt only after a streak
+  * Remove unauthenticated debugpy listener on localhost:5678
+    activated by DEBUG_MODE=true under vibe-acp
+  * Smart approve classifies on the fast Mistral model regardless of
+    session model; content-dumping git commands no longer
+    fast-approved
+  * Invalid API key error names the key origin; rejected keys no
+    longer offer a doomed /retry
+  * Built-in vibe plugin no longer dropped from sessions; user-scope
+    plugins keep their scope instead of showing as project
+  * GrowthBook default-value rollouts and boolean flags take effect;
+    cached experiment variants survive cold start and resume
+  * Bump harness to 0.4.3 (mistralai-vibe-local-harness stays
+    an unpackaged optional extra)
+- Rebase no_terminal.patch, fix_ui_tests.patch and
+  history_properties_timeout.patch for upstream test reshuffles
+- Extend obs-test-synchronization.patch to the chat autocompletion
+  UI tests: poll for the completed state instead of fixed pauses
+- Add harness_importorskip.patch: skip the unified-harness adapter
+  test module when the optional local harness is absent, like the
+  other harness test modules do
+- Add test-only BuildRequires on python3-setproctitle, newly
+  imported by tests/test_pytest_vibe.py
+
+-------------------------------------------------------------------
 Sun Sep  6 15:49:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.25.0:

@@ -14,7 +14,7 @@ Index: mistral-vibe-2.24.3/tests/core/test_history_properties.py
 +SEEDS = range(5)
  
  
- @pytest.mark.parametrize("seed", SEEDS)
+ def test_anchors_and_fixed_point() -> None:
 @@ -236,7 +236,7 @@
      manual edit survives projection, never silently dropped nor conflated with the
      decisions already baked into disk. Reverting every hunk then bottoms out at v0.

@@ -21,10 +21,10 @@
  tests/tools/test_ui_bash_execution.py                          |    2 ++
  tests/vscode_extension_promo/test_ui_vscode_extension_promo.py |    2 ++
  19 files changed, 39 insertions(+)
-Index: mistral-vibe-2.25.0/pyproject.toml
+Index: mistral-vibe-2.25.1/pyproject.toml
 ===================================================================
---- mistral-vibe-2.25.0.orig/pyproject.toml
-+++ mistral-vibe-2.25.0/pyproject.toml
+--- mistral-vibe-2.25.1.orig/pyproject.toml
++++ mistral-vibe-2.25.1/pyproject.toml
 @@ -273,6 +273,7 @@ timeout = 10
  markers = [
      "unified_supported: backend contract behavior implemented by the Unified Harness",
@@ -33,10 +33,10 @@ Index: mistral-vibe-2.25.0/pyproject.toml
  ]
  filterwarnings = [
      # (e2e) streaming mock server is started in a thread; and the cli is spawn in a fork
-Index: mistral-vibe-2.25.0/tests/cli/test_switching_mode.py
+Index: mistral-vibe-2.25.1/tests/cli/test_switching_mode.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_switching_mode.py
-+++ mistral-vibe-2.25.0/tests/cli/test_switching_mode.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_switching_mode.py
++++ mistral-vibe-2.25.1/tests/cli/test_switching_mode.py
 @@ -5,6 +5,8 @@ from unittest.mock import patch
  
  import pytest
@@ -46,10 +46,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_switching_mode.py
  from tests.conftest import build_test_agent_loop, build_test_vibe_app
  from tests.mock.utils import mock_llm_chunk
  from tests.stubs.fake_backend import FakeBackend
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_clipboard_notifications.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_clipboard_notifications.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_clipboard_notifications.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_clipboard_notifications.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_clipboard_notifications.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_clipboard_notifications.py
 @@ -3,6 +3,8 @@ from __future__ import annotations
  from unittest.mock import patch
  
@@ -59,10 +59,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_clipboard_notifications.py
  from textual.selection import Selection
  from textual.widget import Widget
  
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_config_and_model_picker.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_config_and_model_picker.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_config_and_model_picker.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_config_and_model_picker.py
 @@ -3,6 +3,9 @@ from __future__ import annotations
  from unittest.mock import AsyncMock, patch
  
@@ -73,10 +73,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
  from textual.widgets import OptionList
  
  from tests.conftest import build_test_vibe_app, build_test_vibe_config, wait_until
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_screen.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_config_screen.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_config_screen.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_config_screen.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_config_screen.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_config_screen.py
 @@ -4,6 +4,9 @@ from pathlib import Path
  import tomllib
  
@@ -87,10 +87,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_screen.py
  from textual.pilot import Pilot
  import tomli_w
  
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_exit_command.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_exit_command.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_exit_command.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_exit_command.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_exit_command.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_exit_command.py
 @@ -4,6 +4,8 @@ from typing import Any
  
  import pytest
@@ -100,10 +100,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_exit_command.py
  from tests.conftest import build_test_vibe_app
  from vibe.cli.textual_ui.widgets.chat_input.container import ChatInputContainer
  from vibe.cli.textual_ui.widgets.messages import SlashCommandMessage, UserMessage
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_theme_picker.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_theme_picker.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_theme_picker.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_theme_picker.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_theme_picker.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_theme_picker.py
 @@ -7,6 +7,8 @@ from unittest.mock import AsyncMock, Moc
  
  import pytest
@@ -113,10 +113,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_theme_picker.py
  from tests.conftest import build_test_vibe_app, build_test_vibe_config
  from vibe.cli.textual_ui.app import BottomApp
  from vibe.cli.textual_ui.widgets.theme_picker import ThemePickerApp
-Index: mistral-vibe-2.25.0/tests/cli/test_whoami_command.py
+Index: mistral-vibe-2.25.1/tests/cli/test_whoami_command.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_whoami_command.py
-+++ mistral-vibe-2.25.0/tests/cli/test_whoami_command.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_whoami_command.py
++++ mistral-vibe-2.25.1/tests/cli/test_whoami_command.py
 @@ -4,6 +4,8 @@ import asyncio
  
  import pytest
@@ -126,10 +126,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_whoami_command.py
  from tests.conftest import build_test_vibe_app
  from tests.stubs.fake_account_gateway import FakeAccountGateway
  from tests.stubs.fake_identity_gateway import FakeIdentityGateway
-Index: mistral-vibe-2.25.0/tests/cli/test_word_selection.py
+Index: mistral-vibe-2.25.1/tests/cli/test_word_selection.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_word_selection.py
-+++ mistral-vibe-2.25.0/tests/cli/test_word_selection.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_word_selection.py
++++ mistral-vibe-2.25.1/tests/cli/test_word_selection.py
 @@ -3,6 +3,8 @@ from __future__ import annotations
  from typing import Any, ClassVar, cast
  
@@ -139,10 +139,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_word_selection.py
  from textual import events
  from textual.geometry import Offset, Region
  from textual.screen import Screen
-Index: mistral-vibe-2.25.0/tests/cli/textual_ui/test_chat_input_word_drag.py
+Index: mistral-vibe-2.25.1/tests/cli/textual_ui/test_chat_input_word_drag.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/textual_ui/test_chat_input_word_drag.py
-+++ mistral-vibe-2.25.0/tests/cli/textual_ui/test_chat_input_word_drag.py
+--- mistral-vibe-2.25.1.orig/tests/cli/textual_ui/test_chat_input_word_drag.py
++++ mistral-vibe-2.25.1/tests/cli/textual_ui/test_chat_input_word_drag.py
 @@ -1,6 +1,8 @@
  from __future__ import annotations
  
@@ -152,23 +152,23 @@ Index: mistral-vibe-2.25.0/tests/cli/textual_ui/test_chat_input_word_drag.py
  from textual import events
  from textual.widgets.text_area import Selection
  
-Index: mistral-vibe-2.25.0/tests/cli/textual_ui/test_message_queue_ui.py
+Index: mistral-vibe-2.25.1/tests/cli/textual_ui/test_message_queue_ui.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/textual_ui/test_message_queue_ui.py
-+++ mistral-vibe-2.25.0/tests/cli/textual_ui/test_message_queue_ui.py
-@@ -6,6 +6,8 @@ import time
- 
+--- mistral-vibe-2.25.1.orig/tests/cli/textual_ui/test_message_queue_ui.py
++++ mistral-vibe-2.25.1/tests/cli/textual_ui/test_message_queue_ui.py
+@@ -4,6 +4,8 @@ from collections.abc import Iterator
+
  import pytest
- 
+
 +pytestmark = pytest.mark.terminal
 +
- from tests.conftest import build_test_agent_loop, build_test_vibe_app
- from tests.mock.utils import mock_llm_chunk
- from tests.stubs.fake_backend import FakeBackend
-Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_resume.py
+ from tests.conftest import (
+     build_test_agent_loop,
+     build_test_vibe_app,
+ Index: mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_resume.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/e2e/agent_loop_characterization/test_resume.py
-+++ mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_resume.py
+--- mistral-vibe-2.25.1.orig/tests/e2e/agent_loop_characterization/test_resume.py
++++ mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_resume.py
 @@ -8,6 +8,8 @@ import time
  import pexpect
  import pytest
@@ -178,10 +178,10 @@ Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_resume.py
  from tests.e2e.agent_loop_characterization.support import (
      assert_assistant_tool_call_present,
      assert_message_content_present,
-Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_subagents.py
+Index: mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_subagents.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/e2e/agent_loop_characterization/test_subagents.py
-+++ mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_subagents.py
+--- mistral-vibe-2.25.1.orig/tests/e2e/agent_loop_characterization/test_subagents.py
++++ mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_subagents.py
 @@ -5,6 +5,8 @@ from pathlib import Path
  import pexpect
  import pytest
@@ -191,10 +191,10 @@ Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_subagents.
  from tests.e2e.agent_loop_characterization.support import (
      assert_message_content_present,
      assert_tool_result_contains,
-Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_execution.py
+Index: mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_tool_execution.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/e2e/agent_loop_characterization/test_tool_execution.py
-+++ mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_execution.py
+--- mistral-vibe-2.25.1.orig/tests/e2e/agent_loop_characterization/test_tool_execution.py
++++ mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_tool_execution.py
 @@ -6,6 +6,8 @@ from pathlib import Path
  import pexpect
  import pytest
@@ -204,10 +204,10 @@ Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_execu
  from tests.e2e.agent_loop_characterization.support import (
      answer_approval,
      assert_assistant_tool_call_present,
-Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_permissions.py
+Index: mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/e2e/agent_loop_characterization/test_tool_permissions.py
-+++ mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_permissions.py
+--- mistral-vibe-2.25.1.orig/tests/e2e/agent_loop_characterization/test_tool_permissions.py
++++ mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_tool_permissions.py
 @@ -6,6 +6,8 @@ from pathlib import Path
  import pexpect
  import pytest
@@ -217,10 +217,10 @@ Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_tool_permi
  from tests.e2e.agent_loop_characterization.support import (
      answer_approval,
      assert_tool_result_contains,
-Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_user_interaction.py
+Index: mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_user_interaction.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/e2e/agent_loop_characterization/test_user_interaction.py
-+++ mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_user_interaction.py
+--- mistral-vibe-2.25.1.orig/tests/e2e/agent_loop_characterization/test_user_interaction.py
++++ mistral-vibe-2.25.1/tests/e2e/agent_loop_characterization/test_user_interaction.py
 @@ -7,6 +7,8 @@ import time
  import pexpect
  import pytest
@@ -230,10 +230,10 @@ Index: mistral-vibe-2.25.0/tests/e2e/agent_loop_characterization/test_user_inter
  from tests.e2e.agent_loop_characterization.support import (
      APPROVAL_INPUT_GRACE_PERIOD_S,
      assert_tool_result_contains,
-Index: mistral-vibe-2.25.0/tests/onboarding/test_ui_onboarding.py
+Index: mistral-vibe-2.25.1/tests/onboarding/test_ui_onboarding.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/onboarding/test_ui_onboarding.py
-+++ mistral-vibe-2.25.0/tests/onboarding/test_ui_onboarding.py
+--- mistral-vibe-2.25.1.orig/tests/onboarding/test_ui_onboarding.py
++++ mistral-vibe-2.25.1/tests/onboarding/test_ui_onboarding.py
 @@ -10,6 +10,8 @@ from unittest.mock import MagicMock, pat
  import keyring
  from keyring.errors import KeyringError
@@ -243,10 +243,10 @@ Index: mistral-vibe-2.25.0/tests/onboarding/test_ui_onboarding.py
  from textual.content import Content
  from textual.events import Resize
  from textual.geometry import Size
-Index: mistral-vibe-2.25.0/tests/tools/test_ui_bash_execution.py
+Index: mistral-vibe-2.25.1/tests/tools/test_ui_bash_execution.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/tools/test_ui_bash_execution.py
-+++ mistral-vibe-2.25.0/tests/tools/test_ui_bash_execution.py
+--- mistral-vibe-2.25.1.orig/tests/tools/test_ui_bash_execution.py
++++ mistral-vibe-2.25.1/tests/tools/test_ui_bash_execution.py
 @@ -5,6 +5,8 @@ import time
  from pydantic import JsonValue
  import pytest
@@ -256,10 +256,10 @@ Index: mistral-vibe-2.25.0/tests/tools/test_ui_bash_execution.py
  from tests.conftest import build_test_agent_loop, build_test_vibe_app
  from tests.mock.utils import mock_llm_chunk
  from tests.stubs.fake_backend import FakeBackend
-Index: mistral-vibe-2.25.0/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
+Index: mistral-vibe-2.25.1/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
-+++ mistral-vibe-2.25.0/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
+--- mistral-vibe-2.25.1.orig/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
++++ mistral-vibe-2.25.1/tests/vscode_extension_promo/test_ui_vscode_extension_promo.py
 @@ -8,6 +8,8 @@ from unittest.mock import patch
  
  import pytest

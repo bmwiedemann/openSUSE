@@ -73,3 +73,87 @@ Index: mistral-vibe-2.25.0/tests/update_notifier/test_ui_update_notification.py
          await _assert_no_notifications(app, pilot, timeout=0.3)
      assert notifier.fetch_update_calls == 1
  
+Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
+===================================================================
+--- mistral-vibe-2.25.1.orig/tests/autocompletion/test_ui_chat_autocompletion.py
++++ mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
+@@ -2,6 +2,7 @@
+ 
+ from pathlib import Path
+ 
++import asyncio
+ import pytest
+ from textual.widgets import Markdown
+ 
+@@ -12,6 +13,14 @@
+     _CompletionRow,
+ )
+ from vibe.cli.textual_ui.widgets.chat_input.container import ChatInputContainer
++
++async def _wait_until(pilot, predicate, timeout: float = 6.0) -> bool:
++    deadline = asyncio.get_running_loop().time() + timeout
++    while asyncio.get_running_loop().time() < deadline:
++        if predicate():
++            return True
++        await pilot.pause(0.05)
++    return predicate()
+ 
+ 
+ @pytest.mark.asyncio
+@@ -183,6 +192,21 @@
+ 
+         await pilot.press(*"@src/core/extra/")
+ 
++        expected = (
++            "src/core/extra/extra_file_1.py",
++            "src/core/extra/extra_file_10.py",
++            "src/core/extra/extra_file_11.py",
++            "src/core/extra/extra_file_12.py",
++            "src/core/extra/extra_file_2.py",
++            "src/core/extra/extra_file_3.py",
++            "src/core/extra/extra_file_4.py",
++            "src/core/extra/extra_file_5.py",
++            "src/core/extra/extra_file_6.py",
++            "src/core/extra/extra_file_7.py",
++        )
++        assert await _wait_until(
++            pilot, lambda: all(e in popup.content_text for e in expected)
++        )
+         popup_content = popup.content_text
+         assert "src/core/extra/extra_file_1.py" in popup_content
+         assert "src/core/extra/extra_file_10.py" in popup_content
+@@ -225,9 +249,8 @@
+ 
+         await pilot.press(*"Print @REA")
+         await pilot.press("tab")
+-        await pilot.pause(0.2)
+-
+-        assert chat_input.value == "Print @README.md "
++
++        assert await _wait_until(pilot, lambda: chat_input.value == "Print @README.md ")
+         assert popup.styles.display == "none"
+ 
+ 
+@@ -242,7 +265,7 @@
+         await pilot.press(*"Print @src/m")
+         await pilot.press("enter")
+ 
+-        assert chat_input.value == "Print @src/main.py "
++        assert await _wait_until(pilot, lambda: chat_input.value == "Print @src/main.py ")
+         assert popup.styles.display == "none"
+ 
+ 
+@@ -317,7 +340,7 @@
+         await pilot.press(*message_to_fill_history)
+         await pilot.press("enter")
+         await pilot.press("up", "up")
+-        assert chat_input.value == "Check @src/main.py"
++        assert await _wait_until(pilot, lambda: chat_input.value == "Check @src/main.py")
+         await pilot.pause(0.2)
+         # ensure popup is hidden - user was navigating history: we don't want to interrupt
+         assert popup.styles.display == "none"
+@@ -329,3 +353,3 @@
+         await pilot.pause(0.1)
+-        assert chat_input.value == "Check @src/main.py"
++        assert await _wait_until(pilot, lambda: chat_input.value == "Check @src/main.py")
+         await pilot.pause(0.2)

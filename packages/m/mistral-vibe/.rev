@@ -571,4 +571,15 @@
   no files and produces only a src.rpm</comment>
     <requestid>1376417</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9f0c6aeaf54e3cc7002abf4363486b54</srcmd5>
+    <version>2.25.1</version>
+    <time>1789047614</time>
+    <user>anag_factory</user>
+    <comment>Update mistral-vibe to 2.25.1 (bugfix release).
+
+Local builds green on aarch64, both multibuild flavors:
+main flavor rpmlint 0 badness, test flavor 7920 passed / 40 skipped.</comment>
+    <requestid>1376854</requestid>
+  </revision>
 </revisionlist>

@@ -7,10 +7,10 @@
  tests/test_ui_rewind.py                           |    2 ++
  6 files changed, 20 insertions(+), 2 deletions(-)
 
-Index: mistral-vibe-2.25.0/tests/app_server/test_vibe_code.py
+Index: mistral-vibe-2.25.1/tests/app_server/test_vibe_code.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/app_server/test_vibe_code.py
-+++ mistral-vibe-2.25.0/tests/app_server/test_vibe_code.py
+--- mistral-vibe-2.25.1.orig/tests/app_server/test_vibe_code.py
++++ mistral-vibe-2.25.1/tests/app_server/test_vibe_code.py
 @@ -68,7 +68,7 @@ def test_app_server_import_does_not_requ
          capture_output=True,
          env=env,
@@ -20,10 +20,10 @@ Index: mistral-vibe-2.25.0/tests/app_server/test_vibe_code.py
      )
  
      assert result.returncode == 0, result.stderr
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_config_and_model_picker.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_config_and_model_picker.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_config_and_model_picker.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_config_and_model_picker.py
 @@ -1,5 +1,6 @@
  from __future__ import annotations
  
@@ -56,10 +56,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_config_and_model_picker.py
  
          assert app.config.active_model.alias == "alpha"
          assert app._current_bottom_app == BottomApp.Input
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_session_incremental_renderer.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_session_incremental_renderer.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_session_incremental_renderer.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_session_incremental_renderer.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_session_incremental_renderer.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_session_incremental_renderer.py
 @@ -5,6 +5,8 @@ from pathlib import Path
  import time
  
@@ -69,10 +69,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_session_incremental_renderer.py
  from textual.widgets import Button
  
  from tests.conftest import build_test_agent_loop
-Index: mistral-vibe-2.25.0/tests/cli/test_ui_skill_dispatch.py
+Index: mistral-vibe-2.25.1/tests/cli/test_ui_skill_dispatch.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_ui_skill_dispatch.py
-+++ mistral-vibe-2.25.0/tests/cli/test_ui_skill_dispatch.py
+--- mistral-vibe-2.25.1.orig/tests/cli/test_ui_skill_dispatch.py
++++ mistral-vibe-2.25.1/tests/cli/test_ui_skill_dispatch.py
 @@ -8,6 +8,8 @@ from weakref import WeakKeyDictionary
  
  import pytest
@@ -82,10 +82,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_ui_skill_dispatch.py
  from tests.conftest import (
      build_test_agent_loop,
      build_test_vibe_app,
-Index: mistral-vibe-2.25.0/tests/cli/textual_ui/test_app_server_requests.py
+Index: mistral-vibe-2.25.1/tests/cli/textual_ui/test_app_server_requests.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/textual_ui/test_app_server_requests.py
-+++ mistral-vibe-2.25.0/tests/cli/textual_ui/test_app_server_requests.py
+--- mistral-vibe-2.25.1.orig/tests/cli/textual_ui/test_app_server_requests.py
++++ mistral-vibe-2.25.1/tests/cli/textual_ui/test_app_server_requests.py
 @@ -8,6 +8,8 @@ from unittest.mock import AsyncMock, Mag
  
  import pytest
@@ -95,16 +95,16 @@ Index: mistral-vibe-2.25.0/tests/cli/textual_ui/test_app_server_requests.py
  from tests.conftest import (
      build_test_agent_loop,
      build_test_vibe_app,
-Index: mistral-vibe-2.25.0/tests/test_ui_rewind.py
+Index: mistral-vibe-2.25.1/tests/test_ui_rewind.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/test_ui_rewind.py
-+++ mistral-vibe-2.25.0/tests/test_ui_rewind.py
-@@ -6,6 +6,8 @@ import time
- 
+--- mistral-vibe-2.25.1.orig/tests/test_ui_rewind.py
++++ mistral-vibe-2.25.1/tests/test_ui_rewind.py
+@@ -4,6 +4,8 @@ from contextlib import suppress
+
  import pytest
- 
+
 +pytestmark = pytest.mark.terminal
 +
- from tests.conftest import build_test_agent_loop, build_test_vibe_app
+ from tests.conftest import build_test_agent_loop, build_test_vibe_app, wait_until
  from tests.mock.utils import mock_llm_chunk
  from tests.stubs.fake_backend import FakeBackend
