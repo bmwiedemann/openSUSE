@@ -179,4 +179,18 @@
 - Do not install a C++ header file.</comment>
     <requestid>1339202</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>8ef919032fa424503caa25d46a92f1ad</srcmd5>
+    <version>0.19.2</version>
+    <time>1789033741</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.19.2:
+  * XmpValueArray constructor checks typeId value.
+  * Add exiv2.XmpParser.encode() to Python interface.
+  * Fix crash when getting strings of malformed values.
+  * Python 3.15 compatibility.
+- Drop patch skip_network_tests.patch, a better version was merged.
+- Add patch support-32-bit-in-tests.patch, don't fail tests with 32 bit.</comment>
+    <requestid>1376804</requestid>
+  </revision>
 </revisionlist>

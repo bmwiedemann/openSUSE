@@ -18,14 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-exiv2
-Version:        0.18.1
+Version:        0.19.2
 Release:        0
 Summary:        Python3 bindings for the exiv2 library
 License:        GPL-3.0-only
 URL:            https://github.com/jim-easterbrook/python-exiv2
 Source:         https://github.com/jim-easterbrook/python-exiv2/archive/refs/tags/%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#jim-easterbrook/python-exiv2#63
-Patch0:         skip_network_tests.patch
+# PATCH-FIX-OPENSUSE Work around gh#jim-easterbrook/python-exiv2#73
+Patch0:         support-32-bit-in-tests.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -60,7 +60,6 @@ easy manipulation of image metadata.
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
-export NONET=1
 %pyunittest_arch discover -v tests/
 
 %files %{python_files}
