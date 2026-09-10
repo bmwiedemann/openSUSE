@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep  1 21:07:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 9.0.1:
+  * Marked the other parameter of SimplePath.joinpath and
+    SimplePath.__truediv__ positional-only, so pathlib.Path
+    satisfies the protocol under type checkers that compare
+    parameter names.
+
+-------------------------------------------------------------------
 Mon Mar 23 11:56:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 9.0.0:

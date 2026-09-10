@@ -394,4 +394,12 @@ It does NOT conflict with python38 standard library (see upstream description)</
   * Removed Python 3.9 compatibility.</comment>
     <requestid>1342029</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>f93fbf5eb65b9d3818c0dc182f7382d9</srcmd5>
+    <version>9.0.1</version>
+    <time>1789033609</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1376501</requestid>
+  </revision>
 </revisionlist>
