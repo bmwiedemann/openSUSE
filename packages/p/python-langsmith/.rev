@@ -305,4 +305,17 @@ passed per flavour (python313, python314), rpmlint 0 errors/0 warnings/
 0 badness. source_validator clean.</comment>
     <requestid>1376073</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>61a1f87feead5bf6068252b512a95d0f</srcmd5>
+    <version>0.12.4</version>
+    <time>1789054854</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.12.4
+
+- 0.12.3: replayable multipart resends, no per-batch threads in hybrid tracing, new LangSmithSecret, proxy_config on update_sandbox
+- 0.12.4: livekit agents 1.7/1.8 telemetry
+- Patch langsmith-python314-iscoroutinefunction.patch retained (still applies, upstream unfixed)
+- Local native aarch64 build green, 656 passed x2 flavors, rpmlint 0 errors/0 warnings</comment>
+    <requestid>1376811</requestid>
+  </revision>
 </revisionlist>

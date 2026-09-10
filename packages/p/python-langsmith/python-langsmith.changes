@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.4:
+  * LiveKit integration reads agents 1.7 and 1.8 telemetry -
+    conversation fields moved under lk.pii and message spans went
+    part-based, so traces lost conversation content without this
+- Update to 0.12.3:
+  * Make the multipart body replayable across both retry layers:
+    path-based attachments were silently dropped on resend and
+    bodies over the streaming threshold hung the server on retry
+  * Hybrid tracing no longer spawns threads per batch; the two
+    sends now run sequentially on the tracing thread
+  * New LangSmithSecret: mark a value once, it serializes as
+    [LANGSMITH SECRET] everywhere in the trace
+  * update_sandbox takes proxy_config, so short-lived proxy
+    credentials on a reused sandbox can be rotated in place
+
+-------------------------------------------------------------------
 Mon Sep  7 06:44:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.2:
