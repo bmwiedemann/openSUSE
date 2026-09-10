@@ -15,4 +15,13 @@
     <comment>- Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc</comment>
     <requestid>881629</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>eb7d44acee4e77714a5fe79efaf60f23</srcmd5>
+    <version>3.1.4</version>
+    <time>1789054876</time>
+    <user>anag_factory</user>
+    <comment>Add mpfr-no-dllexport-memfuncs.patch: drop the dllexport from the
+  thread-local memory function pointers, which GCC 15+ rejects.</comment>
+    <requestid>1376921</requestid>
+  </revision>
 </revisionlist>

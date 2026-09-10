@@ -1,0 +1,31 @@
+Subject: Do not dllexport the thread-local memory function pointers
+
+MPFR 3.1.3 made mpfr_allocate_func and friends thread-local, but left the
+__MPFR_DECLSPEC on their declarations.  Windows cannot export a
+thread-local variable and GCC 15 and later reject the combination:
+
+  mpfr-gmp.h:273:50: error: thread-local variable 'mpfr_allocate_func'
+  declared as dllexport
+
+The 3.1.3 MPFR_WIN_THREAD_SAFE_DLL rework fixed the same problem for the
+variables declared in mpfr-impl.h, but missed these three.  They are only
+ever reached through MPFR_GET_MEMFUNC from within the library, so no
+accessor is needed -- dropping the declspec is enough.
+
+--- a/src/mpfr-gmp.h
++++ b/src/mpfr-gmp.h
+@@ -270,9 +270,11 @@
+ #define __gmp_allocate_func   (MPFR_GET_MEMFUNC, mpfr_allocate_func)
+ #define __gmp_reallocate_func (MPFR_GET_MEMFUNC, mpfr_reallocate_func)
+ #define __gmp_free_func       (MPFR_GET_MEMFUNC, mpfr_free_func)
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR void * (*mpfr_allocate_func)   _MPFR_PROTO ((size_t));
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR void * (*mpfr_reallocate_func) _MPFR_PROTO ((void *, size_t, size_t));
+-__MPFR_DECLSPEC extern MPFR_THREAD_ATTR void   (*mpfr_free_func)       _MPFR_PROTO ((void *, size_t));
++/* Not exported: nothing outside the library uses these, and a thread-local
++   variable cannot be dllexport'ed. */
++extern MPFR_THREAD_ATTR void * (*mpfr_allocate_func)   _MPFR_PROTO ((size_t));
++extern MPFR_THREAD_ATTR void * (*mpfr_reallocate_func) _MPFR_PROTO ((void *, size_t, size_t));
++extern MPFR_THREAD_ATTR void   (*mpfr_free_func)       _MPFR_PROTO ((void *, size_t));
+ 
+ #endif
+ 

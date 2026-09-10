@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:39:05 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add mpfr-no-dllexport-memfuncs.patch: drop the dllexport from the
+  thread-local memory function pointers, which GCC 15+ rejects.
+
+-------------------------------------------------------------------
 Sat Mar 27 00:31:10 UTC 2021 - Jan Engelhardt <jengelh@inai.de>
 
 - Add BuildIgnores to break a cycle between gmp, mpfr, mpc, gcc

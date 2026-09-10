@@ -1,7 +1,7 @@
 #
 # spec file for package mingw64-mpfr
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2025 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ URL:            http://mpfr.org/
 # upstream removed the file unfortunately
 #Source:         http://mpfr.org/mpfr-current/mpfr-%{version}.tar.xz
 Source:         mpfr-%{version}.tar.xz
+Patch0:         mpfr-no-dllexport-memfuncs.patch
 #!BuildIgnore: post-build-checks
 BuildRequires:  mingw64-cross-gcc
 BuildRequires:  mingw64-gmp-devel
