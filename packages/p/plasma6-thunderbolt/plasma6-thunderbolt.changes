@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  8 12:09:02 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 6.7.5:
+  * New bugfix release
+  * For more details see https://kde.org/announcements/plasma/6/6.7.5
+- Changes since 6.7.4:
+  * kcm: Add missing Qt::Qml link
+  * CMakeLists.txt: Use COMPONENTS syntax for Qt6/KF6 find_package()
+
+-------------------------------------------------------------------
 Tue Aug  4 11:26:42 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Update to 6.7.4:
