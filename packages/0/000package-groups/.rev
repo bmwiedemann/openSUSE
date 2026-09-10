@@ -2457,4 +2457,12 @@ See https://build.opensuse.org/request/show/1286046</comment>
     <comment>Obsolete patterns-microos-hardware</comment>
     <requestid>1371155</requestid>
   </revision>
+  <revision rev="345" vrev="343">
+    <srcmd5>e10cd58794bac0f364a52db94ebcc7bb</srcmd5>
+    <version>unknown</version>
+    <time>1789033587</time>
+    <user>anag_factory</user>
+    <comment>Add riscv64 to kde and microos patterns, and build microos release packages</comment>
+    <requestid>1376228</requestid>
+  </revision>
 </revisionlist>

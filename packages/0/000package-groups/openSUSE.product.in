@@ -17,6 +17,7 @@
           <distrotarget arch="s390x">openSUSE-Tumbleweed-s390x</distrotarget>
           <distrotarget arch="ppc64le">openSUSE-Tumbleweed-ppc64le</distrotarget>
           <distrotarget arch="aarch64">openSUSE-Tumbleweed-aarch64</distrotarget>
+          <distrotarget arch="riscv64">openSUSE-Tumbleweed-riscv64</distrotarget>
         </updates>
       </register>
 
