@@ -1,8 +1,8 @@
-Index: gencode.c
+Index: libpcap-1.10.7/gencode.c
 ===================================================================
---- gencode.c.orig
-+++ gencode.c
-@@ -8204,6 +8204,7 @@ gen_inbound(compiler_state_t *cstate, in
+--- libpcap-1.10.7.orig/gencode.c
++++ libpcap-1.10.7/gencode.c
+@@ -8684,6 +8684,7 @@ gen_inbound(compiler_state_t *cstate, in
  	 */
  	switch (cstate->linktype) {
  	case DLT_SLIP:

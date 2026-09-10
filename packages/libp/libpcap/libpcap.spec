@@ -17,7 +17,7 @@
 
 
 Name:           libpcap
-Version:        1.10.6
+Version:        1.10.7
 Release:        0
 Summary:        A Library for Network Sniffers
 License:        BSD-3-Clause
@@ -82,9 +82,7 @@ Requires:       pkgconfig(libusb-1.0)
 libpcap static libraries
 
 %prep
-%setup -q
-%patch -P 2
-%patch -P 3 -p1
+%autosetup -p1
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects

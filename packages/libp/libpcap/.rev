@@ -1018,4 +1018,12 @@
     - Add LINKTYPE_DECT_NR/DLT_DECT_NR. (forwarded request 1325077 from pmonrealgonzalez)</comment>
     <requestid>1326305</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>5e4f6bd9885d8ca7d74bf8752ace29e2</srcmd5>
+    <version>1.10.7</version>
+    <time>1789033620</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376585</requestid>
+  </revision>
 </revisionlist>
