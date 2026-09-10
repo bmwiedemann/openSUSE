@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 06:51:39 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.40.0
+  * update googleapis and regenerate (#18229)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Sep  2 13:49:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.39.2

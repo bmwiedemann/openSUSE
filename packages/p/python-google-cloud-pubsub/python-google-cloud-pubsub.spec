@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-pubsub
-Version:        2.39.2
+Version:        2.40.0
 Release:        0
 Summary:        Google Cloud Pub/Sub API client library
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module flaky}
-BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.2}
 BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.14.2
 %if %python_version_nodots < 314

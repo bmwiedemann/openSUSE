@@ -122,4 +122,14 @@
     <comment>1</comment>
     <requestid>1375491</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2c194f8cc53c051a8c85a3dfccd7668c</srcmd5>
+    <version>2.40.0</version>
+    <time>1789051207</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.40.0
+  * update googleapis and regenerate (#18229)
+- Update BuildRequires and Requires from setup.py (forwarded request 1376843 from glaubitz)</comment>
+    <requestid>1376907</requestid>
+  </revision>
 </revisionlist>
