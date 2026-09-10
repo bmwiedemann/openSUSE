@@ -1,0 +1,23 @@
+-------------------------------------------------------------------
+Tue Sep  8 11:57:11 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Initial package, version 0.2.2
+  https://github.com/kubevirt/virt-template/releases/tag/v0.2.2
+  virt-template is the KubeVirt add-on providing VirtualMachineTemplate
+  resources; KubeVirt 1.9 pins this release and virt-operator deploys
+  its API server and controller when the Template feature gate is on.
+  Versioned package (virt-template0.2) so that the minor a KubeVirt
+  release pins can be shipped next to the next one.
+  * apiserver subpackage: /usr/bin/virt-template-apiserver
+  * controller subpackage: /usr/bin/virt-template-controller
+  * tests subpackage: the compiled functional suite
+    (/usr/bin/virt-template-tests)
+- Together with the images built from it, provides the
+  virt-template-apiserver and virt-template-controller containers the
+  KubeVirt 1.9 manifests reference; without them virt-operator on
+  Tumbleweed never reaches Available (bsc#1272604).
+- The tarball is upstream v0.2.2 with its vendored Go modules updated
+  (go.mod/go.sum/vendor only, no source changes): golang.org/x/net
+  0.57.0, golang.org/x/crypto 0.56.0, golang.org/x/text 0.41.0,
+  google.golang.org/grpc 1.83.1, go.opentelemetry.io/otel 1.44.0.
+- Build with Go 1.26 (required by golang.org/x/crypto 0.56.0).

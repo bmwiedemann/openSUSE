@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>14c9c571048b2342979959e10c053256</srcmd5>
+    <version>0.2.2</version>
+    <time>1789033678</time>
+    <user>anag_factory</user>
+    <comment>New package virt-template0.2: virt-template 0.2.2, the KubeVirt add-on providing VirtualMachineTemplate resources. KubeVirt 1.9 pins this release; virt-operator deploys its API server and controller from the images built from this package (bsc#1272604).
+
+Versioned package so the minor a KubeVirt release pins can ship next to the next one. Tarball is upstream v0.2.2 with its vendored Go modules updated (go.mod/go.sum/vendor only, no source changes).
+</comment>
+    <requestid>1376608</requestid>
+  </revision>
+</revisionlist>
