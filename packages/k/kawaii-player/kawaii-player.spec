@@ -17,15 +17,15 @@
 
 
 # See also http://en.opensuse.org/openSUSE:Specfile_guidelines
-%define _over   8.0.0-1
+%define _over   8.1.0-1
 %define _bver   8.0.0
 Name:           kawaii-player
-Version:        8.0.0.1
+Version:        8.1.0.1
 Release:        0
 Summary:        Multimedia player, library manager and media server
 License:        GPL-3.0-or-later
 URL:            https://github.com/kanishka-linux/kawaii-player
-Source0:        https://github.com/kanishka-linux/kawaii-player/archive/refs/tags/%{_over}.tar.gz#/%{name}-%{_over}.tar.gz
+Source0:        https://github.com/kanishka-linux/kawaii-player/archive/refs/tags/v%{_over}.tar.gz#/%{name}-%{_over}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig

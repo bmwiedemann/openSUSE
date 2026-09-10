@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 10 13:29:17 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Fix url so osc service runall download_files works again 
+
+-------------------------------------------------------------------
+Wed Sep  9 13:53:50 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
+
+- Update to version 8.1.0-1:
+  * Fix Master navigation via web remote control
+  * fix showing total duration while transcoding
+  * reset episode-info also during series-info reset
+  * add episode info reset buttonn in series details page
+  * allow bulk episode renaming
+  * update extract_episode_number
+  * fix bulk-episode edits 
+
+-------------------------------------------------------------------
 Mon Aug 10 08:59:33 UTC 2026 - Daniel Donisa <daniel.donisa@suse.com>
 
 - Update to version 8.0.0-1:
