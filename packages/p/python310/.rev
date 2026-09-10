@@ -1429,4 +1429,41 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   bsc#1277271.</comment>
     <requestid>1375464</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>df676632ea95b870a5456540aef1fcb1</srcmd5>
+    <version>3.10.21</version>
+    <time>1789033681</time>
+    <user>anag_factory</user>
+    <comment>- Update 3.10.21:
+  - Build
+    - gh-153438: Update Windows build and installer tooling and
+      documentation to use the current download URL for
+      nuget.exe.
+  - Library
+    - gh-109638: Fix exponential time in csv.Sniffer.sniff() for
+      a sample which contains many quote characters. A doubled
+      quote character is now also detected in a field which
+      contains the delimiter or a line break.
+    - gh-98820: Fix quadratic time in csv.Sniffer.sniff() for
+      a sample which contains quoted fields, in particular for
+      a single column of quoted fields.
+    - gh-146083: Update bundled libexpat to version 2.7.5.
+    - gh-141707: Don’t change tarfile.TarInfo type from AREGTYPE
+      to DIRTYPE when parsing GNU long name or link headers
+      (bsc#1259611, CVE-2025-13462).
+    - gh-90949: Add
+      SetBillionLaughsAttackProtectionActivationThreshold() and
+      SetBillionLaughsAttackProtectionMaximumAmplification() to
+      xmlparser objects to tune protections against billion
+      laughs attacks. Patch by Bénédikt Tran.
+    - gh-100372: ssl.SSLContext.load_verify_locations() no longer
+      incorrectly accepts some cases of trailing data when
+      parsing DER.
+  - Security
+    - gh-153030: Fixed quadratic complexity in incremental
+      parsing of long unterminated constructs (such as tags or
+      comments) in html.parser.HTMLParser, which could be
+      exploited for a denial of service (bsc#1271192,</comment>
+    <requestid>1376616</requestid>
+  </revision>
 </revisionlist>
