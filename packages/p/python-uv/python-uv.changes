@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:47:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.12:
+  * Release artifacts and wheels are code-signed now (Apple
+    Developer ID + notary on macOS, Authenticode on Windows)
+  * Exclude distributions uploaded after the exclude-newer
+    cutoff from lockfiles and generated requirement hashes
+  * Refresh the vendored crates (icu_segmenter and
+    icu_locale_fallback, with data, are new); the licence set
+    is unchanged
+
+-------------------------------------------------------------------
 Wed Sep  9 06:26:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.11:

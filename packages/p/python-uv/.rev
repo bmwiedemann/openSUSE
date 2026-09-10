@@ -3178,4 +3178,20 @@ flavour runs the Rust workspace suite: 1371 tests pass, 0 fail.</comment>
     <comment>Forward python-uv 0.12.11 to Factory. Native aarch64 builds green both flavors (test: 1376 passed/0 failed), source_validator clean, license re-derived over vendored tree.</comment>
     <requestid>1376567</requestid>
   </revision>
+  <revision rev="121" vrev="1">
+    <srcmd5>02a1587e38a0fe615ca3414d84e48a80</srcmd5>
+    <version>0.12.12</version>
+    <time>1789033788</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.12.12.
+
+- Release artifacts and wheels are code-signed now
+- Exclude post-cutoff distributions from lockfiles/requirement hashes
+- Re-vendored; licence set unchanged
+
+Testreport: local native aarch64 builds green for both flavors
+(main: rpmlint badness 0; test: 61 suites, 1377 passed, 0 failed),
+source_validator rc 0. Accepted into devel as SR 1376852.</comment>
+    <requestid>1376855</requestid>
+  </revision>
 </revisionlist>
