@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 09 03:34:35 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1278238 - CVE-2026-82247 - gitoxide's gix-url crate (<= 0.32.0, fixed in 0.37.1) uses a hand-rolled URL parser that does not treat '?' or '#' as terminating the authority
+- bsc#1278228 - CVE-2026-82251 - gitoxide before 0.52.1 fails to validate submodule names from .gitmodules configuration, allowing path traversal
+- bsc#1278129 - CVE-2026-82250 - gitoxide gix-packetline versions before 0.21.5 contain a panic vulnerability in the TextRef implementation 
+- bsc#1278107 - CVE-2026-82253 - gitoxide (Rust crates gix <= 0.72.0 and gix-validate <= 0.10.0) contains a path traversal vulnerability.
+- bsc#1277888 - CVE-2026-82254 - gitoxide before 0.69.0 contains unchecked array indexing in delta application
+- Update to version 0.10.25:
+  * Bump object version
+  * Split README metadata into docs/
+  * Add plugin mode for dlopen modules
+  * Simplify the CI
+  * Sync up compile_with_exec functionality
+  * Bump to cargo 0.99
+  * Bump dependencies
+  * Address clippy lints
+  * Document how to use cheadergen with cargo-c
+
+-------------------------------------------------------------------
 Thu Aug 13 04:13:47 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1274305 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
