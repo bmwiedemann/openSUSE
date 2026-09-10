@@ -3362,7 +3362,6 @@ packagesets:
    - perl-IO-Tty # reason: dvd:patterns-base-console
    - perl-IO-stringy # reason: dvd:patterns-server-mail_server
    - perl-IP-Country # reason: dvd:patterns-server-mail_server
-   - perl-IPC-Run3 # reason: dvd:patterns-base-console
    - perl-JSON # reason: dvd:patterns-server-mail_server
    - perl-JSON-XS # reason: dvd:patterns-server-mail_server
    - perl-LWP-MediaTypes # reason: dvd:patterns-gnome-gnome
@@ -3650,6 +3649,7 @@ packagesets:
    - python313-policycoreutils # reason: dvd:patterns-server-directory_server
    - python313-psutil # reason: dvd:patterns-kde-kde
    - python313-ptyprocess # reason: dvd:patterns-xfce-xfce
+   - python313-puremagic # reason: dvd:patterns-base-console
    - python313-pyOpenSSL # reason: dvd:patterns-gnome-gnome
    - python313-pyasn1 # reason: dvd:patterns-server-directory_server
    - python313-pyasn1-modules # reason: dvd:patterns-server-directory_server
@@ -3662,6 +3662,7 @@ packagesets:
    - python313-pygit2 # reason: dvd:salt-master
    - python313-pyinotify # reason: dvd:patterns-kde-kde
    - python313-pylsqpack # reason: dvd:salt-master
+   - python313-pypdf # reason: dvd:patterns-base-console
    - python313-pysmbc # reason: dvd:patterns-gnome-gnome
    - python313-python-dateutil # reason: dvd:patterns-server-directory_server
    - python313-python-slugify # reason: dvd:patterns-server-directory_server
@@ -4595,6 +4596,7 @@ packagesets:
    - PackageKit-branding-openSUSE # reason: opensuse_microos:patterns-microos-base-packagekit
    - aaa_base # reason: opensuse_microos:patterns-base-hardware
    - aardvark-dns # reason: opensuse_microos:patterns-containers-runtime_podman
+   - account-utils # reason: opensuse_microos:patterns-containers-runtime_podman
    - accounts-qml-module # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - accountsservice # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - adobe-sourcecodepro-fonts # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5699,6 +5701,7 @@ packagesets:
    - libpsl5 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpulse-mainloop-glib0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpulse0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libpwaccess0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpwquality-tools # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libpwquality1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libpxbackend-1_0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -6162,7 +6165,7 @@ packagesets:
    - sg3_utils # reason: opensuse_microos:patterns-microos-onlyDVD
    - sgml-skel # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - shadow # reason: opensuse_microos:patterns-containers-runtime_podman
-   - shadow-pw-mgmt # reason: opensuse_microos:patterns-containers-runtime_podman
+   - shadow-pw-mgmt # reason: opensuse_microos:docker
    - shared-mime-info # reason: opensuse_microos:patterns-containers-runtime_podman
    - shim # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - signon-kwallet-extension # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
