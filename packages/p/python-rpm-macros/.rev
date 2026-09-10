@@ -747,4 +747,16 @@ prerequisite for new python submission</comment>
   * Definitions of %python_site{lib,arch}_module macros.</comment>
     <requestid>1372870</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>09df2fa5dc8d68ce711a950b69328491</srcmd5>
+    <version>20260909.65d2791</version>
+    <time>1789047615</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260909.65d2791:
+  * Ensure that prio is always an integer number
+
+- Update to version 20260908.1ec0542:
+  * Provide a primary_python fallback for legacy projects</comment>
+    <requestid>1376598</requestid>
+  </revision>
 </revisionlist>
