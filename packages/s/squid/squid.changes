@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Aug 25 07:50:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 7.7:
+  * FTP: Reject commands with parameters containing CR
+  * FTP: Do not send commands with embedded CRs or LFs
+  * Protect several base64 encoding buffers
+  * Honor directive parameters that follow a quoted filename
+    reference
+  * Assorted build optimisations and code cleanups
+- Modernise spec file with spec-cleaner and drop the unused
+  fdupes build dependency
+
+-------------------------------------------------------------------
 Wed Jun 17 06:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 7.6:

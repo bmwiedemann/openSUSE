@@ -24,14 +24,13 @@
 %define         squidhelperdir %{_sbindir}
 %endif
 Name:           squid
-Version:        7.6
+Version:        7.7
 Release:        0
 Summary:        Caching and forwarding HTTP web proxy
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Web/Proxy
-URL:            http://www.squid-cache.org
-Source0:        https://github.com/squid-cache/squid/releases/download/SQUID_7_6/squid-7.6.tar.xz
-Source1:        https://github.com/squid-cache/squid/releases/download/SQUID_7_6/squid-7.6.tar.xz.asc
+URL:            https://www.squid-cache.org
+Source0:        https://github.com/squid-cache/squid/releases/download/SQUID_7_7/squid-7.7.tar.xz
+Source1:        https://github.com/squid-cache/squid/releases/download/SQUID_7_7/squid-7.7.tar.xz.asc
 Source5:        pam.squid
 Source6:        unsquid.pl
 Source7:        %{name}.logrotate
@@ -47,15 +46,7 @@ Source16:       initialize_cache_if_needed.sh
 Source17:       tmpfilesdir.squid.conf
 Patch1:         missing_installs.patch
 Patch3:         harden_squid.service.patch
-BuildRequires:  cppunit-devel
 BuildRequires:  expat
-BuildRequires:  fdupes
-%if 0%{?suse_version} < 1590
-BuildRequires:  gcc11-c++
-%else
-BuildRequires:  gcc-c++
-%endif
-BuildRequires:  libcap-devel
 BuildRequires:  libtool
 BuildRequires:  openldap2-devel
 BuildRequires:  openssl-devel
@@ -63,9 +54,11 @@ BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  samba-winbind
 BuildRequires:  sharutils
+BuildRequires:  pkgconfig(cppunit)
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(krb5)
+BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(nettle)
@@ -74,6 +67,11 @@ Requires(pre):  permissions
 Recommends:     logrotate
 Provides:       http_proxy
 %{?systemd_ordering}
+%if 0%{?suse_version} < 1590
+BuildRequires:  gcc11-c++
+%else
+BuildRequires:  gcc-c++
+%endif
 %if 0%{?suse_version} <= 1500
 # due to package rename
 # Wed Aug 15 17:40:30 UTC 2012
@@ -89,7 +87,7 @@ BuildRequires:  sysuser-tools
 Requires(pre):  shadow
 %endif
 %if 0%{?suse_version} >= 1330 && 0%{?suse_version} < 1599
-BuildRequires:  libnsl-devel
+BuildRequires:  pkgconfig(libnsl)
 %endif
 
 %description
@@ -166,7 +164,7 @@ export CXX=g++-11
 mkdir src/icmp/tests
 #mkdir tools/squidclient/tests
 #mkdir tools/sysvinit/tests tools/tests
-make %{?_smp_mflags}
+%make_build
 %if 0%{?suse_version} >= 1500
 %sysusers_generate_pre %{SOURCE12} squid
 %endif
@@ -235,11 +233,11 @@ install -m 644 %{SOURCE12} %{buildroot}%{_sysusersdir}/
 
 %check
 # Fails in chroot environment
-make check %{?_smp_mflags}
+%make_build check
 
 %pretrans -p <lua>
 -- Remove symlink that is has become a directory
-path = "%_datadir/squid/errors/es-mx"
+path = "%{_datadir}/squid/errors/es-mx"
 st = posix.stat(path)
 if st and st.type == "link" then
   os.remove(path)
@@ -248,7 +246,6 @@ end
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
-
 %pre
 # we need this group for /usr/sbin/pinger
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}
@@ -269,6 +266,7 @@ if [ $(%{_bindir}/id -nG %{name} 2>/dev/null | grep -q winbind; echo $?) -ne 0 ]
 fi
 %endif
 %service_add_pre %{name}.service
+
 %if 0%{?suse_version} > 1500
 # Prepare for migration to /usr/etc; save any old .rpmsave
 for i in logrotate.d/%{name} pam.d/%{name} ; do
