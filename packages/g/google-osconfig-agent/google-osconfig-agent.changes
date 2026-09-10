@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep  9 10:57:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260908.00
+  * Migrate presubmits from deb11 to deb12 (#1050)
+- from version 20260903.00
+  * Bump the go_modules group across 1 directory with 3 updates (#1047)
+- from version 20260826.01
+  * Introduce E2E v2 framework and inventory tests (#1039)
+- from version 20260826.00
+  * Remove test case for asserting JSON marshal error from task_state.go (#1045)
+- from version 20260824.00
+  * security: pin GitHub actions to commit SHAs in CodeQL workflow (#1042)
+- from version 20260817.01
+  * Add Configuration for SCALIBR (#1034)
+- from version 20260817.00
+  * add CheckState and Cleanup tests (#1008)
+- from version 20260811.01
+  * Improve unit tests for osinfo/osinfo_linux.go (#1020)
+- from version 20260811.00
+  * Bump github.com/go-git/go-git/v5 (#1036)
+- Drop CVE-2026-39821.patch, merged upstream
+- Update google.golang.org/grpc to v1.83.2 (bsc#1278967, CVE-2026-84445)
+  (bsc#1279297, CVE-2026-84303) (bsc#1279414, CVE-2026-84304)
+
+-------------------------------------------------------------------
 Tue Aug  4 08:20:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260803.00

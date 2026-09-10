@@ -19,7 +19,7 @@
 %define shortname osconfig
 
 Name:           google-osconfig-agent
-Version:        20260803.00
+Version:        20260908.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0
@@ -28,8 +28,6 @@ URL:            https://github.com/GoogleCloudPlatform/osconfig
 Source0:        %{shortname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source2:        rpmlintrc
-# PATCH-FIX-UPSTREAM - golang.org/x/net/idna: failure to reject ASCII-only Punycode-encoded labels allows for validation bypass and privilege escalation
-Patch0:         CVE-2026-39821.patch
 BuildRequires:  golang(API) >= 1.25.5
 Requires:       google-guest-configs
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
@@ -39,9 +37,6 @@ Google Cloud OSConfig Agent
 
 %prep
 %setup -n %{shortname}-%{version} -a1
-pushd vendor/golang.org/x/net
-%patch -P 0 -p1
-popd
 
 %build
 %ifnarch ppc64
