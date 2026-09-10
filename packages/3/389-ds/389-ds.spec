@@ -31,7 +31,7 @@
 %define svrcorelib libsvrcore0
 
 Name:           389-ds
-Version:        3.2.2+4b41542b2
+Version:        3.3.1+8c2711bd6
 Release:        0
 Summary:        389 Directory Server
 License:        GPL-3.0-or-later AND MPL-2.0
@@ -328,6 +328,10 @@ rm -rv %{buildroot}/usr/share/cockpit/
 rm -rv %{buildroot}/usr/share/metainfo/389-console/
 mv src/svrcore/README{,.svrcore}
 mv src/svrcore/LICENSE{,.svrcore}
+
+# We supply our own sysusers file.
+rm %{buildroot}%{_sysusersdir}/389-ds-base.conf
+
 install -m 0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/
 install -m 0644 %{SOURCE11} %{buildroot}%{_unitdir}/dirsrv@.service.d/krbkdcbefore.conf
 

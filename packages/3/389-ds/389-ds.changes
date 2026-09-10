@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Wed Sep 09 00:34:14 UTC 2026 - william.brown@suse.com
+
+- CVE-2026-18922 - During SASL PLAIN authentication, a stale identity carried in a Cyrus SASL auxiliary property from a prior failed bind attempt can be installed on a connection following a subsequent, unrelated successful bind
+- CVE-2026-19843 - The Cockpit 389 Console's LDAP editor constructs an ldapsearch command by embedding an LDAP entry's distinguished name (DN) into a shell command string
+- CVE-2026-76560 - A flaw was found in 389 Directory Server. The SELFDN ACI bind-rule evaluator incorrectly matches an anonymous LDAP client's empty bind DN
+- CVE-2026-18355 - A heap buffer overflow flaw was found in the SASL I/O layer of 389 Directory Server (389-ds-base).
+- bsc#1275302 - CVE-2026-18663 - pre-authentication double-free in get_ldapmessage_controls_ext() via critical Session Tracking control 
+- bsc#1273133 - CVE-2026-11770 - pre-auth LDAP filter injection in CleanAllRUV status check
+- bsc#1279572 - CVE-2026-18453 - pre-authentication NULL pointer dereference via paged results and USE_ONE_BACKEND control in op_shared_search
+- bsc#1273132 - CVE-2026-15722 - pre-authentication stack buffer overflow in get_ruvelement_from_berval() via unbounded replica ID parsing
+- Update to version 3.3.1+8c2711bd6:
+  * Issue 7757 - stack-buffer-overflow caused by slapi_attr_init_syntax() (#7759)
+  * Issue 7796 - A large received replicaID can overflow the storage buffer (#7797)
+  * Bump version to 3.3.1
+  * Security fix for CVE-2026-76560
+  * Security fix for CVE-2026-19843
+  * Security fix for CVE-2026-18922
+  * Security fix for CVE-2026-18453
+  * Security fix for CVE-2026-18355
+  * Issue 7806 - Preserve dsEntryDN case on modify (#7807)
+  * Issue 7808 - CI - harden online_import_nosync_test (#7809)
+  * Bump fast-uri from 3.1.5 to 3.1.7 in /src/cockpit/389-console
+  * Issue 7595 - Remove the nightly dedup gate and fix dispatched test runs (#7792)
+  * Issue 7611 - PBKDF2 password verification should reject invalid iteration counts (#7632)
+  * Issue 7785 - Downstream release automation using Packit (#7786)
+  * Issue 2779 - Streamline SPEC file for potential inclusion in Fedora (#7784)
+  * Issue 7769 - Password may wrongly be reported as expired (#7777)
+  * Update Rust crate uuid to v1.26.0
+  * Update dependency eslint to v10.9.1
+  * Update github-actions
+  * Reject mismatched cn in dynamic certificate add requests (#7680)
+  * Fix expiration time check (#7718)
+  * Issue 7722 - Switch to `logconv.py` as default (#7778)
+  * Issue 6176 - Add sysusers.d support and modernize systemd path detection (#7776)
+  * Issue 7774 - Add backport action (#7775)
+  * Issue 7770 - Testimony failure in test_cleanruv_extop_security.py (#7771)
+  * CVE-2026-11770 - Fix StartReplicationRequest auth gate response format
+  * Security fix for CVE-2026-11770
+  * Issue 7595 - Run PR tests when the nightly gate is skipped (#7766)
+  * Issue 7760 - CI - harden dsconf_task_test.py
+  * Update rust-dependencies to v1.4.4
+  * Issue 7764 - Remove stale Cargo.lock (#7765)
+  * Issue 4701 - Fix UAF when excluding attrs from retro changelog (#7730)
+  * Update github/codeql-action digest to db488dd
+  * Update cockpit-389-ds-npm
+  * Issue 7723 - Range search returns an empty result when its start key is removed (#7724)
+  * Issue 7728 - bdb: Fix nsslapd-db-compactdb-interval: 0 not disabling auto compaction
+  * Issue 7639 - Move log compression outside of global write lock
+  * Issue 7595 - Skip redundant CI runs to relieve the Actions queue (#7717)
+  * Issue 7631 - Don't install bpftrace by default (#7726)
+  * Issue 7735 - Heap overflow when parsing objectclass superior (#7736)
+  * Issue 7733 - Typo about nsuniqueid in tombstone_to_conflict (#7734)
+  * Update rust-dependencies
+  * Issue 3555 - UI - Fix audit issue with npm - fast-uri, js-yaml, nanoid (#7700)
+  * Issue 7707 - lib389: set nsDS5ReplicaBindDNGroup before ensure_agreement() in join_supplier/hub/consumer (#7708)
+  * Issue 7679 - Add layered agent docs, task skills, and guides (#7686)
+  * Issue 7688 - BUG - partial address leak in sso token (#7689)
+  * Issue 7705 - With memberOfEntryScope set, deferred memberOf skips MODIFY operations (#7706)
+  * Issue 7698 - Fix silent entry loss in LMDB bulk import waiter handling (#7699)
+  * Issue 7711 - Fix typo in accountpolicy --login-history-size help text (#7713)
+  * Issue 6419 - Error: name 'cockpit_present' is not defined (#7719)
+  * Update github-actions
+  * Issue 7709 - Add EPEL 10 target to Packit COPR builds (#7721)
+  * Issue 7666 - Replication performance degradation during total init on high-latency storage (#7667)
+  * Issue 7645 - Add runtime LeakSanitizer leak check (#7646)
+  * Issue 7273 - In a chaining environment binding as remote user causes an invalid error in the logs
+  * Issue 7709 - Add EPEL 10 target to Packit COPR builds
+  * Issue 7714 - UI - sass import rules are deprecated
+  * Issue 7658 - Heap Buffer Overflow in sasl_io_recv() via Padded SASL UNBIND
+  * Issue 7710 - MemberOf deferred update - Use condvar instead of sleep loop
+  * Issue 7637 - UI - Using Arrow Keys in New Object Wizard Resulted in DOM Reload
+  * Issue 7685 - BUG - Avoid ioblocktimeout (#7687)
+  * Issue 7578 - schema - attribute refcount is not maintained properly
+  * Issue 7468 - RFE - HIBP password breach validation (#7492)
+  * Issue 7605 - Harden CI test ports against ephemeral allocation (#7692)
+  * Issue 7528 - Retry the CI image pull instead of failing the job (#7691)
+  * Backport Issue 7519 — ignore obsolete entrydn when entryrdn is in use (#7657)
+  * Update cockpit-389-ds-npm (#7565)
+  * Issue 7466 - UI - Refactor all TextInput number types to NumberInput
+  * Migrate pwdchan to base64 0.23 Engine API
+  * Update rust-dependencies
+  * Update rust-dependencies (#7669)
+  * Issue 7505 - RFE - CLI - add feature to determine which password policy applies to a user
+  * Issue 7652 - Fix acl_test after fixing anonymous bind with password (#7678)
+  * Update github/codeql-action digest to f205ea1
+  * Issue 7675 - memory leak in test_libslapd_csngen_clock_failure- #7676 #7676
+  * Issue 7670 - BDB range searches intermittently fail with err=1 under write load (#7671)
+  * Issue 7652 - change bind result with password but no dn (#7653)
+  * Issue 7284 - Creating local password policy succeeds with incorrect passwordInHistory value (#7662)
+  * Issue 7200 - repl-agmt create doesn't set some parameters (#7663)
+  * Update rust-dependencies (#7472)
+  * Pin dependencies
+  * Update actions/checkout action to v7
+  * Update Rust crate openssl to v0.10.80 [SECURITY]
+  * Issue 7327 - Unify topology naming in tests (#7650)
+  * Issue 7633 - RFE - Add offline diagnostics for thread pool saturation (#7634)
+  * Issue 7611 - Preserve legacy PBKDF2 hash compatibility (#7649)
+  * Issue 7547 - Heap buffer overflow in ldap_utf8prev()
+  * Issue 7543 - buffer overflow in slapi_dn_find_parent_ext() (#7544)
+  * Issue 7545 - Heap buffer overflow in str2entry_state_information_from_type() (#7546)
+  * Issue 7569 - Reduce noisy CodeQL false-positive alerts (#7629)
+  * Issue 7611 - PBKDF2 password verification should reject invalid iteration count (#7613)
+  * Issue 7535 - Fix race in test_schema_update_policy_reject
+  * Issue 7595 - Reduce Actions queue saturation (#7596)
+  * Issue 7558 - Total init sends the suffix entry twice (#7640)
+  * Issue 7147 - Fix DN cache ownership during online reindex (#7641)
+  * Issue 7635 - Integer Underflow in {SMD5} Password Comparison (#7636)
+  * Issue 7284 - Automated test for creating local password policy with incorrect passwordInHistory value (#7608)
+  * Issue 7406 - Fix ldap-agent SNMP stats file loading (#7630)
+  * Issue 7621 - Stack Buffer Overflow in Password checkPrefix
+  * Issue 7623  - Heap Buffer Overflow in 389-ds-base Audit Log Password Masking
+  * Issue 7569 - Add CodeQL advanced setup workflow (#7570)
+  * Issue 7536 - CI - Fix backup_task_after_failure race (#7588)
+  * Issue 7610 - Still some lib389.topologies in CI tests (#7612)
+  * Issue 7529 - Fix WebUI local policy availability test (#7609)
+  * Issue 7617 - Fix wrong PR_ASSERT about entry cache (#7618)
+  * Issue 7602 - CI - lib389 user compare fails due to parentid mismatch (#7603)
+  * Issue 7380 - Automated test for negative wtime (#7616)
+  * Issue 7147 - entrycache_eviction_test CI test is failing (#7607)
+  * Issue 7537 - CI - Fix replication log monitoring parser/timing failures (#7592)
+  * Issue 7593 - Fix testimony docstring for SASL overflow test (#7606)
+  * Issue 7583 - Compressed logs are prematurely deleted (#7584)
+  * Issue 7530 - CI - Stabilize DNA plugin replication tests timing out in CI (#7572)
+  * Issue 7567 - Content Sync plugin unbounded queue growth and race conditions (#7568)
+  * Issue 7593 - Reject invalid SASL packet length values in sasl_io_start_packet (#7594)
+  * Issue 3555 - UI - Fix audit issue with npm - ws, js-yaml, babel/core (#7599)
+  * Issue 7263 - UI - Use cockpit.file API for temporary file writes (#7590)
+  * Issue 7541 - Add invalid ACL text header regression test (#7591)
+  * Issue 7554 - UI - Revise local password policy layout
+  * Issue 7521 - UI - make changes for cockpit API updates
+  * Issue 7529 - Fix WebUI CI failure cascade and missing screenshots (#7566)
+  * Issue 7541 - heap-buffer-overflows in __aclp__normalize_acltxt() (#7542)
+  * Issue 7534 - CI - Fix resource_limits fdlimits failures in BDB and LMDB (#7585)
+  * Issue 6753 - Port ticket 48392 test (#7523)
+  * Issue 7531 - Fix LMDB replication regression_m2 failures and core dumps (#7575)
+  * Issue 7490 - Enable USDT probes by default in RPM (#7491)
+  * Issue 7576 - Fix leak of temporary attribute syntax hash tables after schema reload
+  * Issue 7573 - Post-import cache autotuning does not recompute entry cache size (#7574)
+  * Issue 7558 - During online import, the IDL should be created with in-depth first approach (#7559)
+  * Issue 7500 - Prevent unsigned integer underflow during stalled import
+  * Issue 7562 - Error: NssSsl.add_cert() got an unexpected keyword argument 'input_file' (#7563)
+  * Issue 7560 - lib389 - Add helper function for checking ASAN files
+  * Issue 7539 - Server shutdown during online reindex may lead to data loss (#7540)
+  * Issue 7549 - Substring index should validate minimum nsSubStrBegin/nsSubStrEnd values (#7550)
+  * Issue 3555 - UI - Fix audit issue with npm - brace-expansion (#7556)
+  * Issue 7554 - deref plugin null pointer dereference if ber_init fails
+  * Issue 7532 - CI - Fix BDB CLU dbmon tests leaving instance offline (#7553)
+  * Issue 7391 - Harden systemd service unit (#7392)
+  * Bump version to 3.3.0
+
+-------------------------------------------------------------------
 Tue Aug 18 05:46:48 UTC 2026 - william.brown@suse.com
 
 - Due to an administration error some patches were missed in the previous update.
