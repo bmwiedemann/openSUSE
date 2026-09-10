@@ -1,0 +1,34 @@
+Index: fs-2.4.16/tests/test_doctest.py
+===================================================================
+--- fs-2.4.16.orig/tests/test_doctest.py
++++ fs-2.4.16/tests/test_doctest.py
+@@ -181,6 +181,12 @@ class TestDoctest(unittest.TestCase):
+ 
+ def make_wrapper(x):
+     def _test_wrapper(self):
++        # In 3.15, runTest expects self._test_result to exist for subtest tracking
++        if not hasattr(x, '_test_result'):
++            class DummyTestResult:
++                def addSubTest(self, test, subtest, outcome):
++                    pass
++            x._test_result = DummyTestResult()
+         x.setUp()
+         try:
+             x.runTest()
+Index: fs-2.4.16/fs/_ftp_parse.py
+===================================================================
+--- fs-2.4.16.orig/fs/_ftp_parse.py
++++ fs-2.4.16/fs/_ftp_parse.py
+@@ -86,6 +86,12 @@ def parse_line(line):
+ def _parse_time(t, formats):
+     for frmt in formats:
+         try:
++            # strptime() raises ValueError when the format string
++            # contains %d without a year directive in 3.15
++            current_year = time.localtime().tm_year
++            has_year = "%Y" in frmt or "%y" in frmt
++            t = t if has_year else f"{current_year} {t}"
++            frmt = frmt if has_year else f"%Y {frmt}"
+             _t = time.strptime(t, frmt)
+             break
+         except ValueError:
