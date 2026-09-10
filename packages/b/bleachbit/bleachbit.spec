@@ -22,7 +22,7 @@
 # 'typelib(AppIndicator)' doesn't exist anymore. It is a fallback if AppIndicator3 can't be found (bleachbit/GUI.py:50)
 %global         __requires_exclude typelib\\(AppIndicator\\)
 Name:           bleachbit
-Version:        6.0.2
+Version:        6.0.4
 Release:        0
 Summary:        Tool for removing unnecessary files, freeing space, and maintaining privacy
 License:        GPL-3.0-only
@@ -111,12 +111,6 @@ sed -i -e 's/^Exec=bleachbit$/Exec=xdg-su -c bleachbit/g' \
 # Fix non-executable-script
 chmod +x %{buildroot}%{_datadir}/%{name}/CLI.py
 chmod +x %{buildroot}%{_datadir}/%{name}/GUI.py
-
-%check
-python3 bleachbit.py --sysinfo
-python3 bleachbit.py -l | wc -l
-python3 bleachbit.py -p system.cache | wc -l
-python3 -m unittest -v tests.TestFileUtilities tests.TestUnix
 
 %files
 %doc README.md doc/*

@@ -159,4 +159,29 @@
     <comment></comment>
     <requestid>1364537</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3fd97d690ba2acfa4f29e712ec1851d9</srcmd5>
+    <version>6.0.4</version>
+    <time>1789054880</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.4:
+  * Massive security, bug fix, and code cleanup
+  * Improve startup speed and scanning speed
+  * Add cleaners for Android Studio, Gradle Cache, fish, Zsh shell, and Python command line
+  * Improve cleaners for Claude and browser supercookies
+  * Shrink the Windows installer and installation footprint
+  * Add early support for macOS: new Safari cleaner, compatibility with
+    existing cleaners (such as Google Chrome and Firefox), full CLI support,
+    and early GUI support
+
+- Update to 6.0.3:
+  * Early support for macOS.
+  * DNF5 interpretation (for Fedora and similar)
+  * Delete top-level log files in the Claude cleaner
+  * Remember GUI zoom level
+  * New cleaners for Python history, fish shell, Zsh shell
+  * Redesigned CI download page for nightly Windows releases
+  * Speed improvements</comment>
+    <requestid>1376922</requestid>
+  </revision>
 </revisionlist>
