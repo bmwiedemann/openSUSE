@@ -108,4 +108,15 @@ unchanged from the previous build at 4 badness (4x non-executable-script on
 upstream's shebanged library modules, pre-existing). source_validator clean.</comment>
     <requestid>1373869</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a60a7286c62ed162080b84ccd67b171f</srcmd5>
+    <version>5.17.0</version>
+    <time>1789054856</time>
+    <user>anag_factory</user>
+    <comment>Forward python-transformers 5.17.0 to Factory
+
+Devel SR 1376812 accepted. Built green locally (aarch64 native),
+source_validator clean.</comment>
+    <requestid>1376814</requestid>
+  </revision>
 </revisionlist>

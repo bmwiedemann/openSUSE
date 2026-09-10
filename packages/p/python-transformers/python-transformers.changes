@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:43:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.17.0:
+  * Add Hy4-Preview (780B MoE, 1M context), VibeVoice TTS,
+    NeoMME encoders, Fun-ASR-Nano, KimiLinear and Canary-1B-v2
+  * Vision 2D/3D rotary embeddings unified into one RoPE module,
+    custom vision models using their own RoPE logic must migrate
+  * Generation no longer syncs the accelerator every decode step
+    and no longer downloads remote hub files unconditionally
+  * Fix quantized VibeVoice cache, FP8 embedding/TP overrides,
+    YOLOS device_map="auto" mismatch and transformers chat flags
+
+-------------------------------------------------------------------
 Wed Aug 26 17:57:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.16.1:
