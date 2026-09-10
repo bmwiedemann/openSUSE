@@ -1,7 +1,7 @@
 #
 # spec file for package nvmetcli
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,14 @@
 
 
 Name:           nvmetcli
-Version:        0.8
+Version:        0.9
 Release:        1%{?dist}
 Summary:        Command line interface for the kernel NVMe nvmet
 License:        Apache-2.0
 Group:          System/Management
 URL:            http://git.infradead.org/users/hch/nvmetcli.git
 Source:         nvmetcli-v%{version}.tar.gz
-Patch1:         nvmetcli-update-python-to-python3.patch
-Patch2:         harden_nvmet.service.patch
-Patch3:         When-kmodpy-is-not-available-call-kmod-binary-directly.patch
-# PATCH-FIX-UPSTREAM remove_six.patch bsc#1244013 mcepl@suse.com
-# remove use of six, we don't need to support Python 2 any more
-Patch4:         remove_six.patch
+Patch1:         harden_nvmet.service.patch
 BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  python3-pip
@@ -40,7 +35,6 @@ Requires:       python3-configshell-fb
 Requires(post): systemd
 Requires(postun): systemd
 Requires(preun): systemd
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildArch:      noarch
 
 %description
@@ -64,8 +58,6 @@ mkdir -p %{buildroot}%{_prefix}/sbin
 %else
   mv %{buildroot}%{_bindir}/nvmetcli %{buildroot}%{_sbindir}
 %endif
-mkdir -p %{buildroot}%{_prefix}/usr/sbin
-ln -s /usr/sbin/service %{buildroot}/usr/sbin/rcnvmet
 mkdir -p %{buildroot}%{_unitdir}
 install -m 644 nvmet.service %{buildroot}%{_unitdir}/nvmet.service
 
@@ -84,12 +76,11 @@ install -m 644 nvmet.service %{buildroot}%{_unitdir}/nvmet.service
 %service_del_postun nvmet.service
 
 %files
-%defattr(-,root,root,-)
 %{python3_sitelib}
 %dir %{_sysconfdir}/nvmet
 %{_sbindir}/nvmetcli
-/usr/sbin/rcnvmet
 %{_unitdir}/nvmet.service
-%doc COPYING README
+%license COPYING
+%doc README
 
 %changelog

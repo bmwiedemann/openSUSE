@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Sep  8 08:30:23 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version v0.9:
+  * nvmetcli: store DHCHAP attributes
+  * nvmetcli: add support for NVMe passthru target
+  * nvmetcli: add discovery_nqn configfs attribute
+  * nvmetcli: reservation configuration support
+  * nvmetcli: remove use of the Python six package
+  * nvmetcli: remove python-kmod, call kmod binary directly
+  * nvmetcli: use exported configshell symbols
+  * nvmet, nvmetcli: add type annotations, docstrings and various
+    lint/pylint/flake8/mypy fixups
+  * nvmet, nvmetcli: convert % formatting to f-strings
+  * build: replace setup.py with PEP 517/518 pyproject.toml
+  * build: enable pylint and mypy checks in CI
+- Drop remove_six.patch and
+  When-kmodpy-is-not-available-call-kmod-binary-directly.patch,
+  merged upstream
+- Drop nvmetcli-update-python-to-python3.patch, no longer applies
+  since upstream dropped setup.py; the nvmetcli script's shebang
+  is fixed up automatically at build time
+- Spec file cleanup:
+  * drop obsolete BuildRoot tag and %defattr, no longer needed
+    with modern rpm
+  * mark COPYING with %license instead of %doc
+  * remove a leftover buggy mkdir of %{_prefix}/usr/sbin
+    (expanded to /usr/usr/sbin and was never used)
+  * drop the rcnvmet symlink, no longer required per the
+    openSUSE systemd packaging guidelines (jsc#PED-266)
+
+-------------------------------------------------------------------
 Wed Jun 18 15:10:09 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Add remove_six.patch to remove dependency on the six module
