@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:27:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.31.0:
+  * Sandboxes: custom Job labels for dedicated sandboxes
+    (--label KEY=VALUE, merged with internal labels)
+  * Downloads: retried header timeouts, tolerated missing HEAD
+    Content-Length, atomic snapshot_download refs writes, no cache
+    copies on hf download --dry-run --local-dir
+  * huggingface_hub.utils.httpx re-exports httpx for integrators
+    (types/exceptions; keep using get_session() for requests)
+  * HfFileSystem.get() rejects unsafe remote filenames (ValueError)
+  * CLI: fixed buckets rm --recursive prefix siblings, hf update
+    self-upgrade on Windows, shell-script extensions error, truncated
+    command descriptions
+  * Fixed CommitInfo copy/pickle, SliceFileObj iteration, dotenv # and
+    single-quote parsing
+
+-------------------------------------------------------------------
 Fri Sep  4 07:59:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.30.0:

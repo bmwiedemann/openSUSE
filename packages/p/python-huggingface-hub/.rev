@@ -149,4 +149,16 @@ removed, so the Factory consumers (transformers &gt;= 1.5.0, datasets &gt;= 0.25
 timm, sglang, xgrammar) are unaffected - none of them caps huggingface-hub.</comment>
     <requestid>1375750</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e64859ae4e038efca52691e3bd106003</srcmd5>
+    <version>1.31.0</version>
+    <time>1789142539</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.31.0
+
+Sandbox Job labels, resilient downloads, httpx re-export,
+HfFileSystem unsafe-path rejection. rpmlint 0 badness,
+import smoke py313/py314.</comment>
+    <requestid>1376987</requestid>
+  </revision>
 </revisionlist>
