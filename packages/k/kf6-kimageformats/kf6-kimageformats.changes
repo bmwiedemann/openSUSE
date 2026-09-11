@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * jp2: Fix new[] vs delete by not doing new[] (kde#525120)
+  * qRoundOrZero_T: fix possible assert in qRound (kde#524678)
+  * autotests: Add non-standard HEIF image
+  * heif: re-enable decoding of non-standard images (kde#495686)
+  * Add HEIC test files with crop transformation
+  * heif: check crop values
+  * jxl: Do not rewind after reading final frame
+  * rgb: reject RLE start offsets that underflow the raster data
+  * avif: Do not rewind in jumpToNextImage()
+  * ossfuzz: call functions used in animations
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:35 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
