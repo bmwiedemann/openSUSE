@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Aug 25 14:41:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Fix build failure with SWIG 4.5 and Python 3.13 (boo#1275515)
+- 5.0.3
+
+-------------------------------------------------------------------
 Mon Nov 13 09:44:31 UTC 2023 - Noel Power <nopower@suse.com>
 
 - Fix leak when passing Term objects; (bsc#1217075)
