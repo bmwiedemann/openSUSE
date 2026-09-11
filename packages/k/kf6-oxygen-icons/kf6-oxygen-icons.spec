@@ -18,19 +18,19 @@
 
 %define qt6_version 6.6.0
 %define rname oxygen-icons
-# Full KF6 version (e.g. 6.29.0)
+# Full KF6 version (e.g. 6.30.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_with autotests
 %bcond_without released
 Name:           kf6-oxygen-icons
-Version:        6.29.0
+Version:        6.30.0
 Release:        0
 Summary:        Oxygen Icon Theme
 License:        LGPL-3.0-only
 URL:            https://www.kde.org
-Source:         https://download.kde.org/stable/oxygen-icons/%{rname}-%{version}.tar.xz
+Source:         %{rname}-%{version}.tar.xz
 %if %{with released}
-Source1:        https://download.kde.org/stable/oxygen-icons/%{rname}-%{version}.tar.xz.sig
+Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 Source99:       kf6-oxygen-icons-rpmlintrc
 %endif

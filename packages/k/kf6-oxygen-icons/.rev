@@ -39,4 +39,41 @@
     <comment>KDE Frameworks 6.29 (forwarded request 1370409 from krop)</comment>
     <requestid>1371417</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>dc76d9f926d724806347dd1bebf684b8</srcmd5>
+    <version>6.30.0</version>
+    <time>1789142461</time>
+    <user>anag_factory</user>
+    <comment>- Remove wrong URL from the .spec file, same as other kf6-* packages
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * fixes
+  * more fixes
+  * bug fixing
+  * missing icon sizes
+  * minor bug fix
+  * Add go-parent-folder icons for Bug 524878
+  * minor fix i hope to a rendering bug
+  * another derivative icon
+  * miss commit fix
+  * new icon for KDebugSettings
+  * small improvements
+  * more sizes
+  * just for testing
+  * aparently forgot to submit the source svg
+  * 32X32 AND 22X22 OF KTIMER ICON VERSIONS
+  * improvement in visibility
+  * new icon
+  * renaming
+  * missed an icon raster
+  * fixing a bug and removing the faoux backlight
+  * new ktimer icon still missing the small sizes
+  * Update version to 6.30.0</comment>
+    <requestid>1376862</requestid>
+  </revision>
 </revisionlist>

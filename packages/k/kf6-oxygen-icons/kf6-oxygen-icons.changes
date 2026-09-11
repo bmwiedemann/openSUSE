@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:22:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Remove wrong URL from the .spec file, same as other kf6-* packages
+
+-------------------------------------------------------------------
+Tue Sep  8 09:22:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * fixes
+  * more fixes
+  * bug fixing
+  * missing icon sizes
+  * minor bug fix
+  * Add go-parent-folder icons for Bug 524878
+  * minor fix i hope to a rendering bug
+  * another derivative icon
+  * miss commit fix
+  * new icon for KDebugSettings
+  * small improvements
+  * more sizes
+  * just for testing
+  * aparently forgot to submit the source svg
+  * 32X32 AND 22X22 OF KTIMER ICON VERSIONS
+  * improvement in visibility
+  * new icon
+  * renaming
+  * missed an icon raster
+  * fixing a bug and removing the faoux backlight
+  * new ktimer icon still missing the small sizes
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
