@@ -20,10 +20,6 @@
 %define source_name SFCGAL
 %define _libname    libSFCGAL2
 %define _soversion  2
-# while upstream https://gitlab.com/Oslandia/SFCGAL/-/issues/259
-# and https://gitlab.com/Oslandia/SFCGAL/-/issues/258 are pending.
-# this force postgis ix86 to be build without sfcgal.
-ExcludeArch:    %{ix86}
 %define withexamples 0
 %ifarch %{ix86} x86_64
 %define withosgd 1
@@ -37,51 +33,51 @@ BuildRequires:  pkgconfig(openscenegraph)
 %define withtest 0
 %endif
 Name:           sfcgal
-Version:        2.2.0
+Version:        2.3.0
 Release:        0
 Summary:        C++ wrapper library around CGAL
 License:        LGPL-2.0-or-later
-Group:          Productivity/Graphics/CAD
 URL:            https://sfcgal.gitlab.io/SFCGAL/
 Source0:        https://gitlab.com/sfcgal/SFCGAL/-/archive/v%{version}/SFCGAL-v%{version}.tar.bz2
-Patch0:         boost.patch
-# PATCH-FIX-UPSTREAM fix(examples): Add missing cgal target link library - https://gitlab.com/sfcgal/SFCGAL/-/merge_requests/647
-Patch1:         647.patch
+# PATCH-FIX-OPENSUSE sfcgal-fix-osg-namespace.patch - 2.3.0 opens 2 namespaces in OsgFactory
+# but closes 3, so every -DSFCGAL_WITH_OSG=ON build fails. No upstream ref on purpose: the
+# OSG backend was deleted upstream after 2.3.0, so there is no branch left to send it to.
+Patch0:         sfcgal-fix-osg-namespace.patch
 BuildRequires:  cmake
-BuildRequires:  eigen3-devel
 BuildRequires:  gmp-devel
 BuildRequires:  lapack-devel
-BuildRequires:  libboost_chrono-devel >= 1.72
-BuildRequires:  libboost_filesystem-devel >= 1.72
 BuildRequires:  libboost_headers-devel >= 1.72
 BuildRequires:  libboost_program_options-devel >= 1.72
 BuildRequires:  libboost_serialization-devel >= 1.72
 BuildRequires:  libboost_test-devel >= 1.72
 BuildRequires:  libboost_thread-devel >= 1.72
-BuildRequires:  libboost_timer-devel >= 1.72
 BuildRequires:  libcgal-devel >= 5.6
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-clang
 BuildRequires:  memory-constraints
 BuildRequires:  pkgconfig
-BuildRequires:  xz-devel
 BuildRequires:  pkgconfig(cunit)
+BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(gl)
 BuildRequires:  pkgconfig(gmp)
 BuildRequires:  pkgconfig(libecpg) >= 10
 BuildRequires:  pkgconfig(libecpg_compat) >= 10
+BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libpgtypes) >= 10
 BuildRequires:  pkgconfig(libpq) >= 10
 BuildRequires:  pkgconfig(mpfr)
-BuildRequires:  pkgconfig(nlohmann_json)
+BuildRequires:  pkgconfig(nlohmann_json) >= 3.11
 BuildRequires:  pkgconfig(zlib)
+# while upstream https://gitlab.com/Oslandia/SFCGAL/-/issues/259
+# and https://gitlab.com/Oslandia/SFCGAL/-/issues/258 are pending.
+# this force postgis ix86 to be build without sfcgal.
+ExcludeArch:    %{ix86}
 
 %description
 This package contains tools & sample data to test %{_libname}.
 
 %package -n %{_libname}
 Summary:        Libraries SFCGAL applications
-Group:          Development/Libraries/C and C++
 Provides:       libsfcgal%{_soversion}
 
 %description -n %{_libname}
@@ -115,8 +111,8 @@ Supported operations include :
 
 %package devel
 Summary:        Development files and tools for SFCGAL applications
-Group:          Development/Libraries/C and C++
 Requires:       %{_libname} = %{version}
+Requires:       pkgconfig(nlohmann_json) >= 3.11
 
 %description devel
 Content headers & files to envelopment files for %{_libname}
@@ -148,6 +144,7 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DCMAKE_GMP_ENABLE_CXX=ON \
   -DSFCGAL_CHECK_VALIDITY=TRUE \
   -DCMAKE_NO_BUILTIN_CHRPATH=ON \
+  -DSFCGAL_WITH_EIGEN=ON \
 %if %{withosgd}
   -DSFCGAL_WITH_OSG=ON \
 %else
@@ -164,7 +161,7 @@ tmpflags="${tmpflags/-fstack-clash-protection}"
   -DSFCGAL_BUILD_TESTS=OFF
 %endif
 
-%cmake_build -v
+%cmake_build
 
 %install
 %cmake_install

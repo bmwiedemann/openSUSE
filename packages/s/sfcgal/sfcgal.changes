@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Sep  3 19:29:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.0 (2026-06-12):
+  * New 3D primitives Box, Cube, Cone, Frustum, Torus and NURBS
+    curves on a common Primitive base class, with clone and
+    transform support
+  * New algorithms: polygon repair, surface mesh simplification,
+    split by a plane, project_medial_axis, roof generation,
+    chamfer/fillet and topological point insertion
+  * New GeoJSON and OBJ readers, WKB code 25 for Solid
+  * C API gained 75 calls and lost none, deprecated ones are now
+    marked, added SFCGAL_MAKE_VERSION and SFCGAL_VERSION_NUM
+  * Header algorithm/tesselate.h renamed to tessellate.h
+  * Fixes in centroid, offset, distance3D, straight skeleton,
+    minkowskiSum3D, polygon repair and the WKT writer
+  * New sfcgalop CLI tool, upstream option left disabled here
+  * See upstream's NEWS for the full list
+- Drop boost.patch and 647.patch - both merged upstream
+- Drop libboost_chrono-devel, libboost_filesystem-devel and
+  libboost_timer-devel buildrequires - upstream switched to
+  std::chrono and std::filesystem
+- Require nlohmann_json >= 3.11, upstream's declared minimum
+- Cleanup with spec-cleaner
+- Build with -DSFCGAL_WITH_EIGEN=ON - without it two of the three
+  surface simplification strategies throw at runtime, and the
+  eigen3 buildrequires was doing nothing
+- Let sfcgal-devel require nlohmann_json, the new io/geojson.h
+  includes nlohmann/json.hpp
+- Drop stray -v from %cmake_build - make reads it as --version, so
+  %build compiled nothing and %install did it all serially
+- Add sfcgal-fix-osg-namespace.patch - upstream closes three
+  namespaces in OsgFactory but the C++17 nested form opens two,
+  breaking every build with -DSFCGAL_WITH_OSG=ON (x86_64 here)
+
+-------------------------------------------------------------------
 Thu Feb 26 16:57:03 UTC 2026 - Bruno Friedmann <bruno@ioda-net.ch>
 
 - add upstream patch 647.patch fix(examples): Add missing cgal target link library

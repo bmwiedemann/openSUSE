@@ -1,0 +1,24 @@
+diff -Naur a/src/detail/io/OsgFactory.cpp b/src/detail/io/OsgFactory.cpp
+--- a/src/detail/io/OsgFactory.cpp	2026-09-03 22:37:30.742563465 +0200
++++ b/src/detail/io/OsgFactory.cpp	2026-09-03 22:37:30.862576950 +0200
+@@ -223,7 +223,6 @@
+ }
+ 
+ } // namespace io
+-} // namespace detail
+-} // namespace SFCGAL
++} // namespace SFCGAL::detail
+ 
+ #endif // SFCGAL_WITH_OSG
+diff -Naur a/src/detail/io/OsgFactory.h b/src/detail/io/OsgFactory.h
+--- a/src/detail/io/OsgFactory.h	2026-09-03 22:37:30.742563465 +0200
++++ b/src/detail/io/OsgFactory.h	2026-09-03 22:37:30.862576950 +0200
+@@ -115,7 +115,6 @@
+ };
+ 
+ } // namespace io
+-} // namespace detail
+-} // namespace SFCGAL
++} // namespace SFCGAL::detail
+ 
+ #endif
