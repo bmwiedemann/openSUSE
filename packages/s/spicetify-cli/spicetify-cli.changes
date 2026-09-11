@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:07:20 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.45.0:
+  * feat: spotify `1.3.0` support & alpha fix
+  * chore(vscode): use oxc formatter instead of biome (#3919)
+  * fix(wrapper): make PopupModal styling self-contained (#3917)
+  * fix(wrapper): update `Color.CSSFormat` module check (#3907)
+  * feat(config): allow editing spotify launch flags (#3905)
+  * docs(install): explain shell PATH activation (#3903)
+  * feat(lyrics-plus): implement pinyin romanization for Chinese lyrics (#3893)
+  * feat(lyrics-plus): optimize musixmatch API calls (#3909)
+  * feat: added new css mappings for right sidebar (#3898)
+  * chore(deps): bump golang.org/x/net from 0.56.0 to 0.57.0 (#3900)
+  * chore(deps): bump actions/setup-node from 6 to 7 (#3901)
+  * chore(deps): bump actions/setup-go from 6 to 7 (#3902)
+  * fix(css-map): add progress bar container class for 1.2.94 (#3897)
+  * fix(css): artist profile picture fix affecting all images (#3887)
+  * fix(css): incorrect shape for artist profile picture (#3885)
+
+-------------------------------------------------------------------
 Sun Jul 05 11:35:35 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.44.0:
