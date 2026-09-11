@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  8 07:10:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.7:
+  + effectv: quarktv: read from mapped memory to reduce latency and
+    improve performance
+  + flxdec: Various read fixes
+  + qml6gloverlay: output texture lifetime fixes
+  + qtdemux: Add 'stream-format' field for AC-4 caps
+  + qtdemux: Ensure enough data is available for reading closed
+    caption boxes
+  + rtpmanager: crash on malformed RTCP SDES due to uninitialized
+    values being used
+  + rtpmanager: Fix malformed SDES processing segfault
+  + rtpsession: implement DoS protection mechanisms
+  + scaletempo: fix integer overflow in output_overlap_s16
+  + soup: fix redirect uri when not using automatic redirects
+  + souphttpsrc: Add new location-trusted property
+
+-------------------------------------------------------------------
 Wed Aug  5 15:57:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.6:
