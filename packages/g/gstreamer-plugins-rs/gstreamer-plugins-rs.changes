@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep  8 07:07:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.7:
+  + isobmff: Fix min_display_mastering_luminance in mdcv box
+  + rtprecv: limit the number of remote sources being tracked
+  + rtspsrc2: Fix handling of scheme and parameter parsing
+  + st2038anc: Fix inverted even/odd parity on ST 291 ADF words
+  + Fix a couple of new Rust 1.97 clippy warnings
+  + Sort entries for deterministic build results
+  + Update dependencies
+  + closedcaption: update to winnow to 1.0
+
+-------------------------------------------------------------------
 Wed Aug  5 16:17:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.6:
