@@ -16,15 +16,15 @@
 #
 
 
-%define sover 5
+%define sover 6
 %define libname lib%{name}%{sover}
 Name:           hyprtoolkit
-Version:        0.5.4
+Version:        0.6.0
 Release:        0
 Summary:        A C++ GUI toolkit for native Wayland applications
 License:        BSD-3-Clause
 URL:            https://github.com/hyprwm/hyprtoolkit
-Source0:        %{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  cmake
 BuildRequires:  gcc-c++ >= 14
@@ -38,7 +38,8 @@ BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(hyprgraphics) >= 0.5.0
 BuildRequires:  pkgconfig(hyprlang) >= 0.6.0
-BuildRequires:  pkgconfig(hyprutils) >= 0.9.0
+BuildRequires:  pkgconfig(hyprutils) >= 0.14.2
+BuildRequires:  pkgconfig(absl_flat_hash_map)
 BuildRequires:  pkgconfig(hyprwayland-scanner) >= 0.4.0
 BuildRequires:  pkgconfig(iniparser)
 BuildRequires:  pkgconfig(libdrm)

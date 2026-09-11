@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Thu Sep 10 13:13:06 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to 0.6.0:
+  * core/backend: reset g_backend last in terminate to fix UAF
+  * window/wayland: initialize appliedScale member
+  * element/slider: normalize value to percentage in replaceData
+  * core/backend: reset iconFactory and config in enterLoop
+  * element/image: attach listener before enqueue to fix race condition
+  * element/checkbox: make checkmark color reactive
+  * renderer/gl: use sc/rc cast helpers
+  * element/progressbar: add ProgressBar widget
+  * element/textbox: fix password masking and cursor for utf-8 input
+  * element/textbox: re-render on rebuild for password, placeholder, multiline
+  * element: add imperative setters for textbox, text, and button
+  * element/textbox: refresh label on first window-attached reposition
+  * Fix header inclusion for cross-platform compatibility
+  * renderer/gl: compute line thickness perpendicular in pixel space
+  * element/checkbox: implement state and setState
+  * core/animation: implement gradient animation
+  * treewide: resolve TODO and FIXME markers
+  * element/textbox: add clipboard copy/cut/paste
+  * window/wayland: programmatic and interactive resize
+  * element/radiogroup: add Radio style and coordinator
+  * system/icons: skip already-parsed themes to break inherit cycles
+  * element/button: add accent variant
+  * element/textbox: add eye icon for password visibility toggle
+  * element/textbox: hover cursor and highlight on the eye icon
+  * element/button: add ellipsize option for long labels
+  * tests/text: pin link color so the parse test is theme-independent
+  * element/textbox: vertically center single-line selection highlight
+  * core/wayland: route keyboard to the focused window, not the pointer one
+  * element/scrollarea: add optional draggable scrollbar
+  * element/text: fix size flicker at the ellipsize boundary
+  * element/text: clamp ellipsize to the layout room hint, not the box
+  * Re-render CImageElements on fitMode change
+  * cmake/packaging: add auto pkg-config gen to CMakeLists
+  * flake.lock: Update
+  * fix : update scanner api calls from proxy() to resource()
+  * window: add keyboard shortcuts inhibitor option
+  * system/icons: get theme dirs from environment
+  * window/layer: implement set size
+  * fix: Fix crash when explicit sync export fails
+  * Fix constant rerender bug in icons
+  * Make popups work on layer shells and fix incorrect cast
+  * element/textbox: check if window is null in keyboard focus events
+  * core: properly implement animations
+  * core: add an embedded backend
+  * element/text: do not cache preferred size
+  * core: migrate event loop to hyprutils
+  * Other various minor fixes
+  
+-------------------------------------------------------------------
 Tue Jul 14 08:13:09 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to 0.5.4 :
