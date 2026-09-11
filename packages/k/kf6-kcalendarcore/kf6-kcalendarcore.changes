@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:21:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * Use QLocale for concatenating recurrence days
+  * Improve translation contexts for some of the recurrence descriptions
+  * src/vcalformat.cpp - fix spelling typo in a comment
+  * Adapt recurrenceDescription unit tests to English translations
+  * Add Incidence::recurrenceDescription
+  * Fix Incidence::statusName property name
+  * Add translated enum names for Incidence::secrecy and Incidence::status
+  * Change parseScheduleMessage to take a QByteArray as input
+  * Add translated names for attendee status and role enums
+  * Fix tr() message context
+  * Expose Calendar and ScheduleMessage to python bindings
+  * Add translated error messages
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0

@@ -29,11 +29,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.29.0)
+# Full KF6 version (e.g. 6.30.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kcalendarcore
-Version:        6.29.0
+Version:        6.30.0
 Release:        0
 Summary:        Library to access and handle calendar data
 License:        LGPL-2.0-or-later
@@ -50,6 +50,7 @@ BuildRequires:  cmake(LibIcal) >= 3.0
 BuildRequires:  cmake(Qt6Core) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Qml) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Gui) >= %{qt6_version}
+BuildRequires:  cmake(Qt6LinguistTools) >= %{qt6_version}
 BuildRequires:  cmake(Qt6ToolsTools) >= %{qt6_version}
 # SECTION bindings
 %if %{with kde_python_bindings}
@@ -104,6 +105,8 @@ Summary:        Python bindings for kf6-kcalendarcore
 This package provides Python bindings for kf6-kcalendarcore.
 %endif
 
+%lang_package -n libKF6CalendarCore6
+
 %prep
 %autosetup -p1 -n %{rname}-%{version}
 
@@ -124,6 +127,8 @@ This package provides Python bindings for kf6-kcalendarcore.
 %kf6_install
 
 %fdupes %{buildroot}%{_kf6_includedir}
+
+%find_lang kcalendarcore6 --with-qt --without-mo
 
 %ldconfig_scriptlets -n libKF6CalendarCore%{sonum}
 
@@ -152,5 +157,7 @@ This package provides Python bindings for kf6-kcalendarcore.
 %{mypython_sitearch}/*.so
 %{_kf6_sharedir}/PySide6/typesystems/typesystem_kcalendarcore.xml
 %endif
+
+%files -n libKF6CalendarCore6-lang -f kcalendarcore6.lang
 
 %changelog
