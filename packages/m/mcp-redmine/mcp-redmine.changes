@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:28:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.9.10.84818:
+  * Save attachments byte-exact: JSON-content attachments no longer
+    fail redmine_download with TypeError (request gains a raw flag)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:30:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.9.5.185311:

@@ -38,4 +38,14 @@ SR 1369199.</comment>
 - Run upstream pytest (18 passed)</comment>
     <requestid>1376343</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>32d9a417cbb2088625cc735daa8f8211</srcmd5>
+    <version>2026.9.10.84818</version>
+    <time>1789142534</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2026.9.10.84818:
+- Save attachments byte-exact: JSON-content attachments no longer
+  fail redmine_download with TypeError (request gains a raw flag)</comment>
+    <requestid>1376988</requestid>
+  </revision>
 </revisionlist>
