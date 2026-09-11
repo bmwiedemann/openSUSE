@@ -285,4 +285,12 @@
   * 0001-kfileitemactions-fix-submenu-lifetime-using-main-men.patch</comment>
     <requestid>1372567</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>66c154c8d585926841fb89ac73328097</srcmd5>
+    <version>6.30.0</version>
+    <time>1789142403</time>
+    <user>anag_factory</user>
+    <comment>KDE Frameworks 6.30 (forwarded request 1376348 from krop)</comment>
+    <requestid>1376701</requestid>
+  </revision>
 </revisionlist>

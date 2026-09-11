@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname kio
-# Full KF6 version (e.g. 6.29.0)
+# Full KF6 version (e.g. 6.30.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.29.0
+Version:        6.30.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -33,8 +33,6 @@ Source:         %{rname}-%{version}.tar.xz
 Source1:        %{rname}-%{version}.tar.xz.sig
 Source2:        frameworks.keyring
 %endif
-# PATCH-FIX-UPSTREAM
-Patch0:         0001-kfileitemactions-fix-submenu-lifetime-using-main-men.patch
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules >= %{_kf6_version}
 BuildRequires:  libattr-devel

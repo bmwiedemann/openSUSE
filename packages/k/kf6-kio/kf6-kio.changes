@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Too many changes since 6.29.0, only listing bugfixes:
+  * [ftp] Send commands in upper case consistently (kde#523927)
+  * KOpenWithDialog: fix pattern matching in filterAcceptsRow() (kde#524085)
+  * kfileitemactions: fix submenu lifetime using main menu as the parent (kde#524239)
+  * http: Report how far an upload has got, not what the answer weighs (kde#518511)
+  * Don't show percent-encoded strings for items of desktop:/ IO worker (kde#522470)
+  * properties: show how much room a folder takes up, not only its data (kde#457363)
+  * file: let a folder with the setgid bit give a copied file its group (kde#399270)
+  * openurljob: open a shell script rather than refuse it as a program (kde#522948)
+  * knewfilemenu: allow overriding system templates with local templates (kde#473991)
+  * knewfilemenu: set application link title to not be misleading (kde#520949)
+  * knewfilemenu: fix relative symlinks (kde#508444)
+  * RenameFileDialog: offer the rename operation of the last rename (kde#523932)
+- Drop patch, merged upstream:
+  * 0001-kfileitemactions-fix-submenu-lifetime-using-main-men.patch
+
+-------------------------------------------------------------------
 Thu Aug 20 17:05:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Add upstream fix (kde#524239, boo#1275906)
