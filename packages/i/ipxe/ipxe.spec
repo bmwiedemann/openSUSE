@@ -67,7 +67,7 @@ BuildRequires:  ovmf-tools
 # - for KVM/QEMU: pseries machines use SLOF (Open Firmware).
 # We can, therefore, restrict the to only x86_64 and ARM64, which is also
 # where the binaries are necessary and are actually executable.
-ExclusiveArch:  x86_64 aarch64
+ExclusiveArch:  x86_64 aarch64 riscv64
 
 %description
 iPXE is a network bootloader. It provides a direct
