@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:50:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.0:
+  * Managed Agents gain auto tool permissions, add Message.to_param
+    and BetaMessage.to_param
+  * credentials files readable by group or others are refused, new
+    CredentialsError and IdentityTokenFileError
+  * streaming keeps partial tool input JSON off content blocks
+
+-------------------------------------------------------------------
 Mon Sep  7 06:34:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.4.0:

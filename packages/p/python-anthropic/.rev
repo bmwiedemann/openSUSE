@@ -206,4 +206,16 @@ Runtime dependencies unchanged. Built natively on aarch64: 211 tests pass
 per flavour (python313/python314), rpmlint clean.</comment>
     <requestid>1376080</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>462808206e9399e505bccefc4759ab54</srcmd5>
+    <version>1.5.0</version>
+    <time>1789142595</time>
+    <user>anag_factory</user>
+    <comment>Update python-anthropic 1.4.0 -&gt; 1.5.0.
+
+Minor bump, no dependency floor changes (all upstream
+requires_dist floors already in spec). Local native aarch64
+build green, source_validator clean.</comment>
+    <requestid>1377312</requestid>
+  </revision>
 </revisionlist>
