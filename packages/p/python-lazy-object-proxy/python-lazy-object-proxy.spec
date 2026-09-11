@@ -1,7 +1,7 @@
 #
 # spec file for package python-lazy-object-proxy
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -32,6 +32,8 @@ Summary:        Rebuild a new abstract syntax tree from Python's ast
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-lazy-object-proxy
 Source:         https://files.pythonhosted.org/packages/source/l/lazy-object-proxy/lazy_object_proxy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#ionelmc/python-lazy-object-proxy#97
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 75}
@@ -53,7 +55,7 @@ A fast and thorough lazy object proxy that rebuilds a new abstract syntax tree
 from Python's ast
 
 %prep
-%setup -q -n lazy_object_proxy-%{version}
+%autosetup -p1 -n lazy_object_proxy-%{version}
 
 %build
 %if !%{with test}

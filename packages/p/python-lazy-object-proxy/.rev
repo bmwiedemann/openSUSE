@@ -196,4 +196,13 @@
   * Dropped support for Python 3.8.</comment>
     <requestid>1319606</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>0ff7d1c33516d277bdc1640197c9173d</srcmd5>
+    <version>1.12.0</version>
+    <time>1789142592</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support different await TypeError exception messages.</comment>
+    <requestid>1377058</requestid>
+  </revision>
 </revisionlist>

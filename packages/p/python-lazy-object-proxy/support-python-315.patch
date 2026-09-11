@@ -1,0 +1,54 @@
+From 153d13206f7595606e8717fe8f0992bd34b8bd8b Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Fri, 11 Sep 2026 16:13:03 +1000
+Subject: [PATCH] Support new await TypeError messages
+
+Python 3.15 changed the TypeError exception messages that are raised if
+you pass in the wrong object. Handle both pre-3.15 and 3.15 and on.
+---
+ tests/test_async_py3.py | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_async_py3.py b/tests/test_async_py3.py
+index 8e7b108..5958f05 100644
+--- a/tests/test_async_py3.py
++++ b/tests/test_async_py3.py
+@@ -542,7 +542,11 @@ def __await__(self):
+     async def foo():
+         return await lop.Proxy(Awaitable)
+ 
+-    with pytest.raises(TypeError, match='__await__.*returned non-iterator of type'):
++    msg = '__await__.*returned non-iterator of type'
++    if sys.version_info[:2] >= (3, 15):
++        msg = r'__await__\(\) must return an iterator, not NoneType'
++
++    with pytest.raises(TypeError, match=msg):
+         run_async(lop.Proxy(foo))
+ 
+ 
+@@ -650,7 +654,11 @@ def __await__(self):
+     async def foo():
+         return await lop.Proxy(Awaitable)
+ 
+-    with pytest.raises(TypeError, match=r'__await__\(\) returned a coroutine'):
++    msg = r'__await__\(\) returned a coroutine'
++    if sys.version_info[:2] >= (3, 15):
++        msg = r'__await__\(\) must return an iterator, not coroutine'
++
++    with pytest.raises(TypeError, match=msg):
+         run_async(lop.Proxy(foo))
+ 
+     c.close()
+@@ -664,7 +672,11 @@ def __await__(self):
+     async def foo():
+         return await lop.Proxy(Awaitable)
+ 
+-    with pytest.raises(TypeError, match='__await__.*returned non-iterator of type'):
++    msg = '__await__.*returned non-iterator of type'
++    if sys.version_info[:2] >= (3, 15):
++        msg = r'__await__\(\) must return an iterator, not.*Awaitable'
++
++    with pytest.raises(TypeError, match=msg):
+         run_async(lop.Proxy(foo))
+ 
+ 

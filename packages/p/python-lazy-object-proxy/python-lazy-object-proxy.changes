@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:18:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Support different await TypeError exception messages.
+
+-------------------------------------------------------------------
 Mon Nov 24 01:20:29 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.12.0:
