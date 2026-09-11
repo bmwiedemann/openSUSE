@@ -3061,7 +3061,6 @@ unsorted:
   - ctris 
   - cttop 
   - cudd-devel 
-  - cuishark 
   - culmus-ancient-semitic-fonts 
   - culmus-fonts 
   - cunit-devel 
@@ -10970,7 +10969,6 @@ unsorted:
   - ladspa-devel 
   - ladspa-lsp-plugins 
   - ladspa-matched 
-  - ladspa-preamp 
   - ladspa-pvoc 
   - ladspa-rnnoise 
   - ladspa-sooperlooper 
@@ -21825,7 +21823,6 @@ unsorted:
   - perl-Benchmark-Timer 
   - perl-BerkeleyDB 
   - perl-Bit-Vector 
-  - perl-Boost-Geometry-Utils 
   - perl-Browser-Open 
   - perl-Business-ISBN 
   - perl-Business-ISBN-Data 
@@ -46850,6 +46847,9 @@ unsorted:
   - virt-manager-common 
   - virt-p2v 
   - virt-scenario-gtk 
+  - virt-template0.2-apiserver 
+  - virt-template0.2-controller 
+  - virt-template0.2-tests 
   - virt-top 
   - virt-v2v 
   - virt-v2v-bash-completion 
