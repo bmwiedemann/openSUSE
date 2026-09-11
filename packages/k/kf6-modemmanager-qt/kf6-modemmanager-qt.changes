@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * Do not use CMAKE_MODULE_PATH variable before it is created
+  * Remove usage of no longer existing QT_DEFINITIONS CMake variable
+  * Remove Qt4-times unused subdir CMakeLists.txt file for D-Bus support
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:50 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
