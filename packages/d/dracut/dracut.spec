@@ -26,7 +26,7 @@
 %endif
 
 Name:           dracut
-Version:        112+suse.47.gec0b378
+Version:        112+suse.51.gf078a84
 Release:        0
 Summary:        Event driven initramfs infrastructure
 License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -99,7 +99,6 @@ Dracut contains various modules which are driven by the event-based udev
 and systemd. Having root on MD, DM, LVM2, LUKS is supported as well as
 NFS, iSCSI, NBD, FCoE.
 
-%ifnarch %ix86
 %package fips
 Summary:        Dracut modules to build a dracut initramfs with an integrity check
 Group:          System/Base
@@ -110,9 +109,7 @@ Requires:       libkcapi-tools
 This package requires everything which is needed to build an
 initramfs with dracut, which does an integrity check of the kernel
 and its cryptography during startup.
-%endif
 
-%ifnarch %ix86
 %package ima
 Summary:        Dracut modules to build a dracut initramfs with IMA
 Group:          System/Base
@@ -123,7 +120,6 @@ Requires:       keyutils
 %description ima
 This package requires everything which is needed to build an
 initramfs (using dracut) which tries to load an IMA policy during startup.
-%endif
 
 %package tools
 Summary:        Tools to build a local initramfs
@@ -182,10 +178,8 @@ rm -rf %{buildroot}%{dracutlibdir}/modules.d/10warpclock
 rm -rf %{buildroot}%{dracutlibdir}/dracut.conf.d/*
 install -D -m 0644 %{SOURCE4} %{buildroot}%{dracutlibdir}/dracut.conf.d/01-dist.conf
 install -D -m 0644 %{SOURCE5} %{buildroot}%{_sysconfdir}/dracut.conf.d/99-debug.conf
-%ifnarch %ix86
 install -m 0644 %{SOURCE6} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-fips.conf
 install -m 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/dracut.conf.d/10-ima.conf
-%endif
 
 # Install persistent policy config.
 %ifarch s390 s390x
@@ -227,58 +221,42 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 
 %{?regenerate_initrd_post}
 
-%ifnarch %ix86
 %post fips
 %{?regenerate_initrd_post}
-%endif
 
-%ifnarch %ix86
 %post ima
 %{?regenerate_initrd_post}
-%endif
 
 %postun
 %{?regenerate_initrd_post}
 
-%ifnarch %ix86
 %postun fips
 %{?regenerate_initrd_post}
-%endif
 
-%ifnarch %ix86
 %postun ima
 %{?regenerate_initrd_post}
-%endif
 
 %posttrans
 %{?regenerate_initrd_posttrans}
 
-%ifnarch %ix86
 %posttrans fips
 %{?regenerate_initrd_posttrans}
-%endif
 
-%ifnarch %ix86
 %posttrans ima
 %{?regenerate_initrd_posttrans}
-%endif
 
-%ifnarch %ix86
 %files fips
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/10-fips.conf
 %{dracutlibdir}/modules.d/11fips
 %{dracutlibdir}/modules.d/11fips-crypto-policies
-%endif
 
-%ifnarch %ix86
 %files ima
 %license COPYING
 %config %{_sysconfdir}/dracut.conf.d/10-ima.conf
 %{dracutlibdir}/modules.d/75securityfs
 %{dracutlibdir}/modules.d/76masterkey
 %{dracutlibdir}/modules.d/77integrity
-%endif
 
 %files tools
 %{_bindir}/dracut-catimages
@@ -356,10 +334,6 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %{dracutlibdir}/modules.d/10systemd-network-management
 %ifnarch s390 s390x
 %{dracutlibdir}/modules.d/10warpclock
-%endif
-%ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/11fips
-%exclude %{dracutlibdir}/modules.d/11fips-crypto-policies
 %endif
 %{dracutlibdir}/modules.d/11systemd-ac-power
 %{dracutlibdir}/modules.d/11systemd-ask-password
@@ -485,20 +459,11 @@ rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
 %ifarch s390 s390x
 %{dracutlibdir}/modules.d/74znet
 %endif
-%ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/75securityfs
-%endif
 %{dracutlibdir}/modules.d/76biosdevname
-%ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/76masterkey
-%endif
 %{dracutlibdir}/modules.d/76systemd-emergency
 %{dracutlibdir}/modules.d/77dracut-systemd
 %{dracutlibdir}/modules.d/77ecryptfs
 %{dracutlibdir}/modules.d/77initqueue
-%ifarch %ix86
-%exclude %{dracutlibdir}/modules.d/77integrity
-%endif
 %{dracutlibdir}/modules.d/77pollcdrom
 %{dracutlibdir}/modules.d/77selinux
 %{dracutlibdir}/modules.d/77syslog

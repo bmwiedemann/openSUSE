@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 10 06:39:44 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.51.gf078a84:
+  * fix(fcoe): do not produce an error if there is no configuration in /etc/fcoe
+  * fix(drm): add leds-qcom-lpg to aarch64 specific modules needed by drm
+  * fix(dracut): correct order of "Creating image" log line
+  * fix(systemd-cryptsetup): check all crypttab entries for socket key files
+
+-------------------------------------------------------------------
+Wed Sep  9 13:36:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Properly enable fips/ima subpackages for i586: fips patterns are
+  available for i586 as well (reverts aae9dca).
+
+-------------------------------------------------------------------
 Mon Aug 31 11:30:52 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.47.gec0b378:
