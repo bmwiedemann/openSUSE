@@ -19,7 +19,7 @@
 %global parent modello
 %global subname maven-plugin
 Name:           %{parent}-%{subname}
-Version:        2.7.0
+Version:        2.8.1
 Release:        0
 Summary:        Modello Maven Plugin
 License:        Apache-2.0 AND MIT
@@ -53,7 +53,7 @@ BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xpp3) = %{version}
 BuildRequires:  mvn(org.codehaus.modello:modello-plugin-xsd) = %{version}
 BuildRequires:  mvn(org.codehaus.plexus:plexus-build-api)
 BuildRequires:  mvn(org.codehaus.plexus:plexus-utils)
-BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:)
+BuildRequires:  mvn(org.codehaus.plexus:plexus:pom:) >= 27
 BuildArch:      noarch
 
 %description

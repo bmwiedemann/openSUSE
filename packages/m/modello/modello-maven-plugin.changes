@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep  9 09:10:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 2.8.1
+  * Breaking changes
+    + Compile the verifiers with the JDK compiler and the test
+      classpath
+  * New features and improvements
+    + Establish automatic module names
+    + Allow arbitrary attributes on DOM elements in generated XSD
+  * Bug Fixes
+    + Let the setUp methods actually run
+    + Fix site build for issue 593
+  * Documentation updates
+    + Explain why src/test/verifiers is not a source root
+    + improve Features Demo
+    + Convert the plugin site pages from xdoc to Markdown
+    + Rewrite README with usage, status and version guidance
+    + Convert the plugin pages to Markdown using code blocks
+    + Convert the FAQ from FML to Markdown and fix its dead links
+    + Convert two site documents from xdoc to Markdown
+    + Restore the document metadata dropped when the pages were
+      ported
+    + Stop pinning a version in the README snippet
+  * Maintenance
+    + Give every verifier a package and a unique class name
+    + Migrate the tests off the JUnit 4 assertions
+    + Port the site documentation from APT to Markdown
+    + Use JSR-330 for component injection
+  * Build
+    + Update parent to plexus 27
+    + Declare the maven-plugin-tools version locally
+    + Point the SCM URLs at HTTPS
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump plexus-utils to 4.1.0
+    + Bump the plexus dependencies released today
+    + Bump com.fasterxml.woodstox:woodstox-core from 7.1.1 to 7.2.2
+    + Bump org.xmlunit:xmlunit-core from 2.11.0 to 2.13.0
+    + Bump sisu.version from 1.0.0 to 1.1.0
+    + Bump org.jsoup:jsoup from 1.22.1 to 1.23.1
+    + Bump com.fasterxml.jackson:jackson-bom from 2.21.2 to 2.22.2
+- Modified patches:
+  * 0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
+  * 0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+    + rebase
+
+-------------------------------------------------------------------
 Fri Sep  4 11:26:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modify the BuildRequires after the removal of bootstrap plugins
