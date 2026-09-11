@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn-tools
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -166,7 +166,7 @@ build-jar-repository -s lib \
   org.eclipse.sisu.plexus \
   slf4j/api
 
-%{ant} -Dtest.skip=true package javadoc
+ant -Dtest.skip=true package javadoc
 
 %install
 # jars

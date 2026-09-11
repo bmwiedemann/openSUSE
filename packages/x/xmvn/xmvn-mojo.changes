@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  6 06:02:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Build this package using ant and generate the plugin descriptor
+  by maven-plugin-plugin run outside of maven life-cycle.
+
+-------------------------------------------------------------------
 Fri Sep  4 11:31:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modify the BuildRequires after the removal of bootstrap plugins

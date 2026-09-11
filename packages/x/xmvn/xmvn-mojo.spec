@@ -1,7 +1,7 @@
 #
 # spec file for package xmvn-mojo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,27 +26,23 @@ License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://fedora-java.github.io/xmvn/
 Source0:        https://github.com/fedora-java/%{parent}/releases/download/%{version}/%{parent}-%{version}.tar.xz
+Source1:        %{parent}-build.tar.xz
 Patch0:         xmvn-mojo-sisu110.patch
 BuildRequires:  %{parent}-api = %{version}
 BuildRequires:  %{parent}-core = %{version}
+BuildRequires:  ant
+BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local
-BuildRequires:  xmvn
+BuildRequires:  maven-lib
+BuildRequires:  maven-plugin-annotations
+BuildRequires:  maven-plugin-plugin
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
+BuildRequires:  objectweb-asm
 BuildRequires:  xmvn-install
+BuildRequires:  xmvn-minimal
 BuildRequires:  xmvn-resolve
-BuildRequires:  mvn(org.apache.maven.plugin-tools:maven-plugin-annotations)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-compiler-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-jar-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-plugin-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-resources-plugin)
-BuildRequires:  mvn(org.apache.maven.plugins:maven-surefire-plugin)
-BuildRequires:  mvn(org.apache.maven.resolver:maven-resolver-util)
-BuildRequires:  mvn(org.apache.maven:maven-artifact)
-BuildRequires:  mvn(org.apache.maven:maven-core)
-BuildRequires:  mvn(org.apache.maven:maven-model)
-BuildRequires:  mvn(org.apache.maven:maven-plugin-api)
-BuildRequires:  mvn(org.ow2.asm:asm)
 BuildArch:      noarch
 
 %description
@@ -63,7 +59,7 @@ Group:          Documentation/HTML
 This package provides %{summary}.
 
 %prep
-%setup -q -n %{parent}-%{version}
+%setup -q -n %{parent}-%{version} -a1
 
 %autopatch -p1
 
@@ -100,11 +96,25 @@ pushd %{name}
 popd
 
 %build
+mkdir -p lib
+build-jar-repository -s lib \
+    atinject \
+    maven/maven-artifact \
+    maven/maven-core \
+    maven/maven-model \
+    maven/maven-plugin-api \
+    maven-plugin-tools/maven-plugin-annotations \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
+    objectweb-asm/asm-all \
+    xmvn
+
 pushd %{name}
-  xmvn \
-    --batch-mode --offline \
-    -Dmaven.test.skip=true -Dsource=8 \
-    package org.apache.maven.plugins:maven-javadoc-plugin:aggregate
+  ant \
+%if %{without tests}
+  -Dtest.skip=true \
+%endif
+  package javadoc
 
 %{mvn_artifact} pom.xml target/%{name}-%{version}.jar
 

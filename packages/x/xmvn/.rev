@@ -231,4 +231,12 @@
     <comment>Fix build after removal of bootstrap plugins</comment>
     <requestid>1375782</requestid>
   </revision>
+  <revision rev="30" vrev="8">
+    <srcmd5>18a1a544cc8f25d8b86f906adbd4d609</srcmd5>
+    <version>4.3.0</version>
+    <time>1789142641</time>
+    <user>anag_factory</user>
+    <comment>build xmvn-mojo with ant</comment>
+    <requestid>1377325</requestid>
+  </revision>
 </revisionlist>
