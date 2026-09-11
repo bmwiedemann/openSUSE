@@ -1,0 +1,133 @@
+From ee94588903e1a6aa21af28d4e7ef1e8085ab916c Mon Sep 17 00:00:00 2001
+From: Igor Bezukh <ibezukh@redhat.com>
+Date: Thu, 16 Jul 2026 13:10:51 +0300
+Subject: [PATCH 1/2] use safepath when dialing the migration target unix
+ sockets
+
+since the target socket file resides on virt-launcher,
+the handler constructs the path using /proc/<pid>/root.
+using safe path will keep the dial process protected
+from symlink attacks.
+
+Signed-off-by: Igor Bezukh <ibezukh@redhat.com>
+---
+ .../migration-proxy/migration-proxy.go        | 76 ++++++++++++++++---
+ 1 file changed, 64 insertions(+), 12 deletions(-)
+
+diff --git a/pkg/virt-handler/migration-proxy/migration-proxy.go b/pkg/virt-handler/migration-proxy/migration-proxy.go
+index e7ab78a..6a4a42a 100644
+--- a/pkg/virt-handler/migration-proxy/migration-proxy.go
++++ b/pkg/virt-handler/migration-proxy/migration-proxy.go
+@@ -33,6 +33,7 @@ import (
+ 	"kubevirt.io/client-go/log"
+ 
+ 	diskutils "kubevirt.io/kubevirt/pkg/ephemeral-disk-utils"
++	"kubevirt.io/kubevirt/pkg/safepath"
+ 	"kubevirt.io/kubevirt/pkg/util"
+ 	"kubevirt.io/kubevirt/pkg/util/net/ip"
+ 	virtconfig "kubevirt.io/kubevirt/pkg/virt-config"
+@@ -443,22 +444,28 @@ func (m *migrationProxy) handleConnection(fd net.Conn) {
+ 	inBoundErr := make(chan error, 1)
+ 
+ 	var conn net.Conn
+-	var err error
++	var dialErr error
+ 	if m.targetProtocol == "tcp" && m.clientTLSConfig != nil {
+-		conn, err = tls.Dial(m.targetProtocol, m.targetAddress, m.migrationTLSConfig)
++		conn, dialErr = tls.Dial(m.targetProtocol, m.targetAddress, m.migrationTLSConfig)
+ 		// Check for specific error (CN missmatch), fallback to old client TLS
+-		if err != nil {
+-			m.logger.Reason(err).Info("fallback to old tls config")
+-			conn, err = tls.Dial(m.targetProtocol, m.targetAddress, m.clientTLSConfig)
++		if dialErr != nil {
++			m.logger.Reason(dialErr).Info("fallback to old tls config")
++			conn, dialErr = tls.Dial(m.targetProtocol, m.targetAddress, m.clientTLSConfig)
+ 		} else if tlsErr := conn.(*tls.Conn).Handshake(); tlsErr != nil {
+-			m.logger.Reason(err).Info("handshake failed, fallback to old tls config")
+-			conn, err = tls.Dial(m.targetProtocol, m.targetAddress, m.clientTLSConfig)
++			m.logger.Reason(tlsErr).Info("handshake failed, fallback to old tls config")
++			conn, dialErr = tls.Dial(m.targetProtocol, m.targetAddress, m.clientTLSConfig)
+ 		}
++	} else if m.targetProtocol == "tcp" {
++		conn, dialErr = net.Dial(m.targetProtocol, m.targetAddress)
++	} else if m.targetProtocol == "unix" {
++		conn, dialErr = dialUnixNoFollow(m.targetAddress)
+ 	} else {
+-		conn, err = net.Dial(m.targetProtocol, m.targetAddress)
++		m.logger.Errorf("unsupported target protocol: %s", m.targetProtocol)
++		return
+ 	}
+-	if err != nil {
+-		m.logger.Reason(err).Error("unable to create outbound leg of proxy to host")
++
++	if dialErr != nil {
++		m.logger.Reason(dialErr).Errorf("unable to create outbound leg of proxy to host")
+ 		return
+ 	}
+ 
+@@ -476,11 +483,11 @@ func (m *migrationProxy) handleConnection(fd net.Conn) {
+ 	}()
+ 
+ 	select {
+-	case err = <-outBoundErr:
++	case err := <-outBoundErr:
+ 		if err != nil {
+ 			m.logger.Reason(err).Errorf("error encountered copying data to outbound connection")
+ 		}
+-	case err = <-inBoundErr:
++	case err := <-inBoundErr:
+ 		if err != nil {
+ 			m.logger.Reason(err).Errorf("error encountered copying data into inbound connection")
+ 		}
+@@ -489,6 +496,51 @@ func (m *migrationProxy) handleConnection(fd net.Conn) {
+ 	}
+ }
+ 
++const procRootMarker = "/root/"
++
++type procRootPath struct {
++	rootBase string
++	elems    []string
++}
++
++func splitProcRootPath(path string) (*procRootPath, error) {
++	idx := strings.Index(path, procRootMarker)
++	if idx == -1 {
++		return nil, fmt.Errorf("path %q does not contain %q marker", path, procRootMarker)
++	}
++	rootBase := path[:idx+len("/root")]
++	relativePath := path[idx+len(procRootMarker):]
++	if relativePath == "" {
++		return nil, fmt.Errorf("path %q has empty relative path after %q marker", path, procRootMarker)
++	}
++	return &procRootPath{
++		rootBase: rootBase,
++		elems:    strings.Split(relativePath, "/"),
++	}, nil
++}
++
++func dialUnixNoFollow(path string) (net.Conn, error) {
++	procPath, err := splitProcRootPath(path)
++	if err != nil {
++		return nil, err
++	}
++	safePath, err := safepath.JoinAndResolveWithRelativeRoot(procPath.rootBase, procPath.elems...)
++	if err != nil {
++		return nil, err
++	}
++
++	var conn net.Conn
++	err = safePath.ExecuteNoFollow(func(safePath string) error {
++		var dialErr error
++		conn, dialErr = net.Dial("unix", safePath)
++		return dialErr
++	})
++	if err != nil {
++		return nil, err
++	}
++	return conn, nil
++}
++
+ func (m *migrationProxy) Start() error {
+ 
+ 	if m.unixSocketPath != "" {

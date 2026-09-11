@@ -1,0 +1,30 @@
+From: Victor Carvalho <victor.carvalho@suse.com>
+Date: Wed, 9 Sep 2026 16:40:00 +0200
+Subject: [PATCH] manifest-templator: apply the custom image flags before rendering the operator deployment
+
+The templator renders the virt-operator deployment spec before it
+copies the --virt-*-image, --gs-image, --pr-helper-image and
+--sidecar-shim-image flags into the template data, so every custom
+image passed on the command line is silently ignored for the operator
+deployment in the release manifests; only the OLM CSV, rendered later,
+sees them. Render the deployment after the flags are applied.
+
+---
+--- a/tools/manifest-templator/manifest-templator.go
++++ b/tools/manifest-templator/manifest-templator.go
+@@ -160,7 +160,6 @@
+ 		data.PackageName = *packageName
+ 		data.CreatedAt = getTimestamp()
+ 		data.ReplacesCsvVersion = ""
+-		data.OperatorDeploymentSpec = getOperatorDeploymentSpec(data, 2)
+ 		data.PriorityClassSpec = getPriorityClassSpec(2)
+ 		data.VirtOperatorImage = *virtOperatorImage
+ 		data.VirtApiImage = *virtApiImage
+@@ -177,6 +176,7 @@
+ 		data.SidecarShimImage = *sidecarShimImage
+ 		data.Hypervisor = *hypervisor
+ 		data.WithKubeVirtControlPlaneLabel = *withKubeVirtControlPlaneLabel
++		data.OperatorDeploymentSpec = getOperatorDeploymentSpec(data, 2)
+ 		if *featureGates != "" {
+ 			data.FeatureGates = strings.Split(*featureGates, ",")
+ 		}

@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Wed Sep  9 18:52:13 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Security: re-vendor the bundled Go dependencies to the current fixed
+  versions (no upstream source changes; the tarball is v1.9.0 with
+  updated go.mod/go.sum/vendor only):
+  * golang.org/x/crypto v0.54.0 -> v0.56.0: CVE-2026-56854,
+    CVE-2026-56855, CVE-2026-78662 (bsc#1278574)
+  * google.golang.org/grpc v1.79.3 -> v1.83.2: CVE-2026-84303
+    (bsc#1279276), CVE-2026-84304 (bsc#1279184), CVE-2026-84445
+    (bsc#1278869; fixed in 1.83.2, 1.83.1 is still affected)
+  Carried along by the above, no separate advisory open against the
+  versions they replace: golang.org/x/net v0.57.0 -> v0.58.0,
+  golang.org/x/text v0.40.0 -> v0.41.0, google.golang.org/protobuf
+  v1.36.5 -> v1.36.11 in the staging modules.
+- Add 0004-manifest-templator-apply-the-custom-image-flags-before-rendering-the-operator-deployment.patch:
+  the manifest templator rendered the virt-operator deployment before
+  applying its --virt-*-image flags, so custom images passed at build
+  time never reached the release manifests. With the fix the
+  virt-template image references are set through the templator instead
+  of post-processing the rendered manifest.
+
+-------------------------------------------------------------------
+Wed Sep  9 11:37:56 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Add 0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch:
+  PCI host device passthrough left the virt-launcher pod stuck in
+  creation on kernels that expose the vfio-dev sysfs class but do not
+  create /dev/vfio/devices/* (no CONFIG_VFIO_DEVICE_CDEV): kubelet
+  failed with "lstat /dev/vfio/devices/vfio0: no such file or
+  directory". Verify the cdev node exists before adding it to the
+  device specs (upstream release-1.9 commit 7d045a56dd, kubevirt PR
+  18905, fixed after v1.9.0).
+- Add 0002-use-safepath-when-dialing-the-migration-target-unix-sockets.patch:
+  CVE-2026-13622 (bsc#1272840) —
+  virt-handler dials the migration target unix sockets through
+  /proc/<pid>/root of the virt-launcher pod; resolve the socket path
+  with safepath and dial via ExecuteNoFollow so a symlink planted
+  inside the launcher filesystem cannot redirect the connection.
+  Unsupported target protocols are now rejected instead of dialed.
+- Add 0003-tests-dial-migration-target-sockets-through-proc-root-layout.patch:
+  the migration-proxy unit tests dialed target sockets straight out of a
+  temporary directory, which is not below a /proc/<pid>/root and is
+  therefore refused by the resolution above; place those sockets under a
+  "root" directory so they keep the shape they have in production.
+
+-------------------------------------------------------------------
+Tue Sep  8 12:12:01 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
+
+- Deploy virt-template from the images built from the virt-template0.2
+  package: the operator manifest now sets VIRT_TEMPLATE_APISERVER_IMAGE
+  and VIRT_TEMPLATE_CONTROLLER_IMAGE to virt-template-apiserver and
+  virt-template-controller at the version this release pins (v0.2.2).
+  virt-operator enables the Template feature gate by default since 1.9
+  and derived the virt-template references from its own registry, where
+  the images did not exist, so every deployment waited on two
+  ImagePullBackOff pods and never reported Available (bsc#1272604).
+
+-------------------------------------------------------------------
 Tue Aug 25 14:43:50 UTC 2026 - Victor Carvalho <victor.carvalho@suse.com>
 
 - Package the persistent-reservation helper's entrypoint script:

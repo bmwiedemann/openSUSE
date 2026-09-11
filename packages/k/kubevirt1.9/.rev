@@ -32,4 +32,57 @@ installed, so enabling the PersistentReservation feature gate
 crashlooped every virt-handler pod.</comment>
     <requestid>1373648</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>44b89127af1af09cb66710a32d72566b</srcmd5>
+    <version>1.9.0</version>
+    <time>1789142548</time>
+    <user>anag_factory</user>
+    <comment>kubevirt1.9 1.9.0: virt-template deployment, three upstream backports, re-vendored Go dependencies
+
+- Deploy virt-template from the images built from the virt-template0.2
+  package. virt-operator enables the Template feature gate by default from
+  1.9 on and derived the virt-template image references from its own
+  registry, where they do not exist, so every deployment waited on two
+  ImagePullBackOff pods and never reported Available. The operator manifest
+  now sets VIRT_TEMPLATE_APISERVER_IMAGE and VIRT_TEMPLATE_CONTROLLER_IMAGE
+  to virt-template-apiserver and virt-template-controller at the version
+  this release pins (v0.2.2).
+
+- 0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch: PCI
+  host device passthrough left the virt-launcher pod stuck in creation on
+  kernels that expose the vfio-dev sysfs class but do not create
+  /dev/vfio/devices/* (no CONFIG_VFIO_DEVICE_CDEV); kubelet failed with
+  &quot;lstat /dev/vfio/devices/vfio0: no such file or directory&quot;. Verify the
+  cdev node exists before adding it to the device specs. Upstream
+  release-1.9 commit 7d045a56dd, kubevirt PR 18905, fixed after v1.9.0.
+
+- 0002/0003: CVE-2026-13622. virt-handler dials the migration target unix
+  sockets through /proc/&lt;pid&gt;/root of the virt-launcher pod; resolve the
+  socket path with safepath and dial via ExecuteNoFollow so a symlink
+  planted inside the launcher filesystem cannot redirect the connection,
+  and reject unsupported target protocols instead of dialing them. The
+  migration-proxy unit tests are adjusted to place their sockets under a
+  root directory so they keep the shape they have in production. Same
+  patches as kubevirt1.8, applied unchanged to 1.9.0.
+
+- 0004-manifest-templator-apply-the-custom-image-flags-before-rendering-the-operator-deployment.patch:
+  the templator rendered the virt-operator deployment spec before it copied
+  the --virt-*-image flags into the template data, so those flags never
+  reached the release manifests. Rendering the deployment after they are
+  applied lets hack/build-manifests.sh set the virt-template image
+  references directly, replacing the awk post-processing of
+  kubevirt-operator.yaml.
+
+- Re-vendor the bundled Go dependencies to the current fixed versions. The
+  tarball is upstream v1.9.0 with go.mod, go.sum and vendor/ regenerated;
+  there are no upstream source changes. golang.org/x/crypto v0.54.0 -&gt;
+  v0.56.0 covers CVE-2026-56854, CVE-2026-56855 and CVE-2026-78662.
+  google.golang.org/grpc v1.79.3 -&gt; v1.83.2 covers CVE-2026-84303,
+  CVE-2026-84304 and CVE-2026-84445, the last fixed in 1.83.2 only.
+  Carried along by those two: golang.org/x/net v0.57.0 -&gt; v0.58.0,
+  golang.org/x/text v0.40.0 -&gt; v0.41.0 and google.golang.org/protobuf
+  v1.36.5 -&gt; v1.36.11.
+</comment>
+    <requestid>1377009</requestid>
+  </revision>
 </revisionlist>

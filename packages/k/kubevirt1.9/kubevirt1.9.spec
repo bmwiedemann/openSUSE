@@ -29,6 +29,12 @@ URL:            https://github.com/kubevirt/kubevirt
 Source0:        %{upstream_name}-%{version}.tar.gz
 Source3:        %{url}/releases/download/v%{version}/disks-images-provider.yaml
 Source100:      %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM 0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch -- release-1.9 7d045a56dd (PR 18905/18931): guard the VFIO cdev DeviceSpec on kernels without CONFIG_VFIO_DEVICE_CDEV
+Patch0:         0001-Fix-VFIO-cdev-passthrough-on-kernels-without-CONFIG_VFIO.patch
+Patch1:         0002-use-safepath-when-dialing-the-migration-target-unix-sockets.patch
+Patch2:         0003-tests-dial-migration-target-sockets-through-proc-root-layout.patch
+# FIXME: not yet upstream: --virt-*-image flags were ignored for the operator deployment
+Patch3:         0004-manifest-templator-apply-the-custom-image-flags-before-rendering-the-operator-deployment.patch
 BuildRequires:  glibc-devel-static
 BuildRequires:  golang-packaging
 BuildRequires:  libnbd-devel
@@ -285,7 +291,19 @@ build_tests="true" \
     %{nil}
 
 %if 0%{?suse_version} >= 1699
-env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true ./hack/build-manifests.sh
+# virt-operator deploys virt-template (Template feature gate, on by default
+# since 1.9) from image references it derives from its own registry, where
+# upstream's quay.io images do not exist. Point it at the images built from
+# the virt-template package, at the version this release pins
+# (hack/virt-template/default.sh), through the manifest templator's
+# custom-image flags (Patch3 makes the operator deployment honour them).
+vt_version=$(sed -n 's/^virt_template_version=.*:-"v\([^"]*\)".*/\1/p' hack/virt-template/default.sh)
+[ -n "$vt_version" ]
+env DOCKER_PREFIX=$reg_path DOCKER_TAG=%{version} KUBEVIRT_NO_BAZEL=true \
+    TEMPLATOR_EXTRA_FLAGS="--virt-template-apiserver-image=$reg_path/virt-template-apiserver:$vt_version --virt-template-controller-image=$reg_path/virt-template-controller:$vt_version" \
+    ./hack/build-manifests.sh
+[ "$(grep -c 'name: VIRT_TEMPLATE_APISERVER_IMAGE' _out/manifests/release/kubevirt-operator.yaml)" = 1 ]
+
 %endif
 
 %install

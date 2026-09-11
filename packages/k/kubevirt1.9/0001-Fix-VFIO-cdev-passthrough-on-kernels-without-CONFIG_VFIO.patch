@@ -1,0 +1,169 @@
+From 7d045a56dd00687d0fc8655354d71965bd688b50 Mon Sep 17 00:00:00 2001
+From: fossedihelm <ffossemo@redhat.com>
+Date: Mon, 24 Aug 2026 22:23:55 +0200
+Subject: [PATCH] Fix VFIO cdev passthrough on kernels without
+ CONFIG_VFIO_DEVICE_CDEV
+
+When VFIO cdev device specs were added in commit 27c59c50fd, the code
+unconditionally attempted to expose /dev/vfio/devices/<name> character
+devices to virt-launcher, even on kernels that lack CONFIG_VFIO_DEVICE_CDEV
+support.
+
+On such kernels (e.g., Debian 13 with 7.1.8), the sysfs vfio-dev directory
+may exist but the actual device files in /dev/vfio/devices/ are not created.
+This caused containerd to fail when trying to lstat the non-existent devices,
+breaking PCI passthrough entirely even with the IOMMUFD feature gate disabled.
+
+Verify the existence of the device before adding it to the device specs.
+On kernels without IOMMUFD support, the function now gracefully returns an empty list,
+allowing the legacy VFIO group interface to work as intended.
+
+Assisted-By: Claude <noreply@anthropic.com>
+Signed-off-by: fossedihelm <ffossemo@redhat.com>
+---
+ pkg/virt-handler/device-manager/common.go     | 11 ++++-
+ .../device-manager/common_test.go             | 43 ++++++++++++++++++-
+ .../device-manager/export_test.go             |  6 +++
+ pkg/virt-handler/device-manager/pci_device.go |  5 ++-
+ 4 files changed, 61 insertions(+), 4 deletions(-)
+
+diff --git a/pkg/virt-handler/device-manager/common.go b/pkg/virt-handler/device-manager/common.go
+index a06c86b5a2..db7a43b6fe 100644
+--- a/pkg/virt-handler/device-manager/common.go
++++ b/pkg/virt-handler/device-manager/common.go
+@@ -304,7 +304,16 @@ func formatVFIOCdevDeviceSpecs(pciAddress string) []*v1beta1.DeviceSpec {
+ 
+ 	devSpecs := make([]*v1beta1.DeviceSpec, 0, len(entries))
+ 	for _, entry := range entries {
+-		cdevPath := filepath.Join("/dev/vfio/devices", entry.Name())
++		cdevPath := filepath.Join(vfioDevicesRoot, entry.Name())
++		// Only add the device spec if the actual device file exists
++		if _, err := os.Stat(cdevPath); err != nil {
++			if errors.Is(err, os.ErrNotExist) {
++				log.DefaultLogger().V(4).Infof("VFIO cdev %s does not exist, skipping", cdevPath)
++			} else {
++				log.DefaultLogger().Reason(err).Warningf("Failed to stat VFIO cdev %s", cdevPath)
++			}
++			continue
++		}
+ 		devSpecs = append(devSpecs, &v1beta1.DeviceSpec{
+ 			HostPath:      cdevPath,
+ 			ContainerPath: cdevPath,
+diff --git a/pkg/virt-handler/device-manager/common_test.go b/pkg/virt-handler/device-manager/common_test.go
+index e605ec04e2..12e807c3f5 100644
+--- a/pkg/virt-handler/device-manager/common_test.go
++++ b/pkg/virt-handler/device-manager/common_test.go
+@@ -33,10 +33,14 @@ import (
+ 
+ var _ = Describe("PCI device plugin VFIO cdev allocation", func() {
+ 	var tmpDir string
++	var vfioDevicesDir string
+ 
+ 	BeforeEach(func() {
+ 		tmpDir = GinkgoT().TempDir()
++		vfioDevicesDir = filepath.Join(tmpDir, "dev-vfio-devices")
++		Expect(os.MkdirAll(vfioDevicesDir, 0755)).To(Succeed())
+ 		DeferCleanup(devicemanager.SetPCIBasePath(tmpDir))
++		DeferCleanup(devicemanager.SetVFIODevicesRoot(vfioDevicesDir))
+ 	})
+ 
+ 	It("should include VFIO cdev device specs in Allocate response", func() {
+@@ -45,6 +49,8 @@ var _ = Describe("PCI device plugin VFIO cdev allocation", func() {
+ 		vfioDevDir := filepath.Join(tmpDir, pciAddr, "vfio-dev")
+ 		Expect(os.MkdirAll(vfioDevDir, 0755)).To(Succeed())
+ 		Expect(os.WriteFile(filepath.Join(vfioDevDir, "vfio0"), []byte{}, 0644)).To(Succeed())
++		// Create the actual device file in the mocked /dev/vfio/devices directory
++		Expect(os.WriteFile(filepath.Join(vfioDevicesDir, "vfio0"), []byte{}, 0644)).To(Succeed())
+ 
+ 		dpi := devicemanager.NewPCIDevicePluginForTest(map[string]string{iommuGroup: pciAddr})
+ 
+@@ -57,10 +63,11 @@ var _ = Describe("PCI device plugin VFIO cdev allocation", func() {
+ 		Expect(err).ToNot(HaveOccurred())
+ 		Expect(resp.ContainerResponses).To(HaveLen(1))
+ 
++		expectedPath := filepath.Join(vfioDevicesDir, "vfio0")
+ 		Expect(resp.ContainerResponses[0].Devices).To(ContainElement(
+ 			BeEquivalentTo(&pluginapi.DeviceSpec{
+-				HostPath:      "/dev/vfio/devices/vfio0",
+-				ContainerPath: "/dev/vfio/devices/vfio0",
++				HostPath:      expectedPath,
++				ContainerPath: expectedPath,
+ 				Permissions:   "mrw",
+ 			})))
+ 	})
+@@ -79,10 +86,42 @@ var _ = Describe("PCI device plugin VFIO cdev allocation", func() {
+ 		Expect(err).ToNot(HaveOccurred())
+ 		Expect(resp.ContainerResponses).To(HaveLen(1))
+ 
++		devicePaths := make([]string, 0)
++		for _, spec := range resp.ContainerResponses[0].Devices {
++			devicePaths = append(devicePaths, spec.ContainerPath)
++		}
++		Expect(devicePaths).ToNot(ContainElement(ContainSubstring(vfioDevicesDir)))
++	})
++
++	It("should skip VFIO cdev device specs when sysfs dir exists but device files don't", func() {
++		// This simulates kernels without CONFIG_VFIO_DEVICE_CDEV where the
++		// vfio-dev directory exists in sysfs but the actual character devices
++		// in /dev/vfio/devices/ don't exist
++		pciAddr := "0000:08:00.0"
++		iommuGroup := "42"
++		vfioDevDir := filepath.Join(tmpDir, pciAddr, "vfio-dev")
++		Expect(os.MkdirAll(vfioDevDir, 0755)).To(Succeed())
++		Expect(os.WriteFile(filepath.Join(vfioDevDir, "vfio0"), []byte{}, 0644)).To(Succeed())
++
++		// Note: we don't create /dev/vfio/devices/vfio0, simulating the missing device
++
++		dpi := devicemanager.NewPCIDevicePluginForTest(map[string]string{iommuGroup: pciAddr})
++
++		resp, err := dpi.Allocate(context.Background(), &pluginapi.AllocateRequest{
++			ContainerRequests: []*pluginapi.ContainerAllocateRequest{
++				{DevicesIDs: []string{iommuGroup}},
++			},
++		})
++
++		Expect(err).ToNot(HaveOccurred())
++		Expect(resp.ContainerResponses).To(HaveLen(1))
++
++		// Should only contain legacy VFIO group devices, not cdev devices
+ 		devicePaths := make([]string, 0)
+ 		for _, spec := range resp.ContainerResponses[0].Devices {
+ 			devicePaths = append(devicePaths, spec.ContainerPath)
+ 		}
+ 		Expect(devicePaths).ToNot(ContainElement(ContainSubstring("/dev/vfio/devices/")))
++		Expect(devicePaths).To(ContainElement("/dev/vfio/vfio"))
+ 	})
+ })
+diff --git a/pkg/virt-handler/device-manager/export_test.go b/pkg/virt-handler/device-manager/export_test.go
+index 647970289e..93618960ac 100644
+--- a/pkg/virt-handler/device-manager/export_test.go
++++ b/pkg/virt-handler/device-manager/export_test.go
+@@ -33,3 +33,9 @@ func SetPCIBasePath(p string) func() {
+ 	pciBasePath = p
+ 	return func() { pciBasePath = old }
+ }
++
++func SetVFIODevicesRoot(p string) func() {
++	old := vfioDevicesRoot
++	vfioDevicesRoot = p
++	return func() { vfioDevicesRoot = old }
++}
+diff --git a/pkg/virt-handler/device-manager/pci_device.go b/pkg/virt-handler/device-manager/pci_device.go
+index db14a603e1..83caf3397e 100644
+--- a/pkg/virt-handler/device-manager/pci_device.go
++++ b/pkg/virt-handler/device-manager/pci_device.go
+@@ -44,7 +44,10 @@ const (
+ 	vfioMount      = "/dev/vfio/vfio"
+ )
+ 
+-var pciBasePath = "/sys/bus/pci/devices"
++var (
++	pciBasePath     = "/sys/bus/pci/devices"
++	vfioDevicesRoot = "/dev/vfio/devices"
++)
+ 
+ type PCIDevice struct {
+ 	pciID      string
+-- 
+2.55.0
+
