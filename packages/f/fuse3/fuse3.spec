@@ -18,7 +18,7 @@
 
 Name:           fuse3
 %define lname   libfuse3-4
-Version:        3.18.2
+Version:        3.18.3
 Release:        0
 Summary:        Reference implementation of the "Filesystem in Userspace"
 License:        BSD-2-Clause AND GPL-2.0-only AND LGPL-2.1-only

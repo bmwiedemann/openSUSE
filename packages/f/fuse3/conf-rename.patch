@@ -3,10 +3,10 @@
  util/meson.build       |    2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
 
-Index: fuse-3.17.1/util/install_helper.sh
+Index: fuse-3.18.3/util/install_helper.sh
 ===================================================================
---- fuse-3.17.1.orig/util/install_helper.sh
-+++ fuse-3.17.1/util/install_helper.sh
+--- fuse-3.18.3.orig/util/install_helper.sh
++++ fuse-3.18.3/util/install_helper.sh
 @@ -25,7 +25,7 @@ else
  fi
  
@@ -16,13 +16,13 @@ Index: fuse-3.17.1/util/install_helper.sh
  
  if $useroot; then
      chown root:root "${DESTDIR}${bindir}/fusermount3"
-Index: fuse-3.17.1/util/meson.build
+Index: fuse-3.18.3/util/meson.build
 ===================================================================
---- fuse-3.17.1.orig/util/meson.build
-+++ fuse-3.17.1/util/meson.build
+--- fuse-3.18.3.orig/util/meson.build
++++ fuse-3.18.3/util/meson.build
 @@ -1,4 +1,4 @@
 -fuseconf_path = join_paths(get_option('prefix'), get_option('sysconfdir'), 'fuse.conf')
 +fuseconf_path = join_paths(get_option('prefix'), get_option('sysconfdir'), 'fuse3.conf')
  
- executable('fusermount3', ['fusermount.c', '../lib/mount_util.c', '../lib/util.c'],
-            include_directories: include_dirs,
+ executable('fusermount3', ['fusermount.c', '../lib/mount_util.c',
+            '../lib/fuse_log.c', '../lib/util.c'],
