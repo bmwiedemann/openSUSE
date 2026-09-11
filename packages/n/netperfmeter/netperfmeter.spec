@@ -18,7 +18,7 @@
 
 %define services netperfmeter.service netperfmeter-module-loader.service
 Name:           netperfmeter
-Version:        2.0.10
+Version:        2.0.11
 Release:        0
 Summary:        Network performance meter for the UDP, TCP, SCTP and DCCP protocols
 License:        GPL-3.0-or-later
@@ -51,13 +51,8 @@ The vector files can e.g. be used to create plots of the results.
 %autosetup
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
-# FIXME: you should use the %%cmake macros
-mkdir build && cd build
-cmake .. \
-    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
+%cmake \
+    -DCMAKE_INSTALL_SYSCONFDIR=/etc \
     -DWITH_NEAT=0 \
     -DBUILD_TEST_PROGRAMS=1 \
     -DBUILD_PLOT_PROGRAMS=1

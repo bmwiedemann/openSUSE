@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 11:26:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.11
+  * Replaced hard-coded /etc by ${CMAKE_INSTALL_SYSCONFDIR} in
+    CMakeLists.txt.
+  * Improved CMakeLists.txt: PDF to SVG can now be processed by
+    pdf2svg, mutool, or Inkscape.
+  * QUIC updates.
+
+-------------------------------------------------------------------
 Sat Aug  1 08:42:38 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.10
