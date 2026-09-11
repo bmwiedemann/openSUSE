@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * only show bracket match preview if the view is visible
+  * vi-mode: Fix append to block for tabs
+  * vi-mode: Fix cursor column swap with tabs
+  * vi-mode: Fix operations in selection ranges with tabs
+  * vi-mode: Fix success message for non-successful save commands (kde#473077)
+  * vi-mode: Fix "save all" command for unnamed files
+  * Fix resolution for KateVi::Range debug operator
+  * vi-mode: Implement filename registers
+  * vi-mode: Fix yank highlight for blocks with tabs
+  * vi-mode: Simplify method to detect waiting for characters
+  * vi-mode: Refactor the method for leaving insert mode
+  * vi-mode: Fix checks for setting user marks (kde#520734)
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
