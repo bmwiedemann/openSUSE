@@ -17,7 +17,7 @@
 
 
 Name:           falcosecurity-container-plugin
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 Summary:        Falcosecurity plugin providing container metadata
 # Legal-Review-Notice: MPL-2.0 from vendored Go modules statically

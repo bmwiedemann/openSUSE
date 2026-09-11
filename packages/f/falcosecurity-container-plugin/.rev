@@ -39,4 +39,12 @@ build until these land):
   go-multierror)</comment>
     <requestid>1376283</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>95da026afb39ca903b6c702507730ee1</srcmd5>
+    <version>0.7.4</version>
+    <time>1789142535</time>
+    <user>anag_factory</user>
+    <comment>Forward 0.7.4 to Factory: engine bootstrap timeout, container lookup retry/backoff recovery fixes, containerd 2.2.8 / grpc 1.83.2. Built green on aarch64, source_validator clean.</comment>
+    <requestid>1376993</requestid>
+  </revision>
 </revisionlist>

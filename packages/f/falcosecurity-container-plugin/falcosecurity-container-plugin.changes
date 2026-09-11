@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:35:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.4:
+  * Bound the engine bootstrap with a new engine_timeout init
+    option (default 10s) so a dead runtime socket cannot hang
+    Falco startup
+  * Retry lookups of containers unknown to the runtime with
+    exponential backoff instead of dropping them after 150ms
+  * Stop the startup listing at the engine timeout without
+    loading partial metadata; look up leftover containers in
+    the background
+  * Recover unfinished containerd namespaces and interrupted
+    inspections across retries
+  * Go worker: containerd v2.2.5 -> v2.2.8, grpc 1.83.1 -> 1.83.2
+    (plus x/* and protobuf bumps, no new modules vendored)
+
+-------------------------------------------------------------------
 Tue Sep  8 06:32:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7.2:

@@ -6,10 +6,10 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/falcosecurity/plugins.git</param>
     <param name="scm">git</param>
-    <param name="revision">refs/tags/plugins/container/v0.7.2</param>
+    <param name="revision">refs/tags/plugins/container/v0.7.4</param>
     <param name="subdir">plugins/container</param>
     <param name="filename">container-plugin</param>
-    <param name="versionformat">0.7.2</param>
+    <param name="versionformat">0.7.4</param>
     <param name="changesgenerate">enable</param>
   </service>
   <service name="tar" mode="manual"/>
