@@ -1,0 +1,16 @@
+-------------------------------------------------------------------
+Thu Sep 10 17:45:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package: tilth 0.10.1, a tree-sitter based code indexer that
+  answers structural queries (definitions, references, callers, file
+  outlines) from the CLI or as an MCP server instead of dumping whole
+  files:
+  * vendored crates are updated off upstream's Cargo.lock
+    (cargo_vendor update=true), so the shipped binary is not built
+    from the exact dependency set upstream tested
+  * License: covers the statically linked non-MIT crates -
+    Apache-2.0 (tree-sitter-elixir), BSD-3-Clause (encoding_rs),
+    Zlib (foldhash)
+  * requires git-core at runtime: "tilth diff" and the file overview
+    shell out to git
+

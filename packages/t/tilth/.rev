@@ -1,0 +1,22 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>2aa7ddd821b7e5d6e4292bec3181c96c</srcmd5>
+    <version>0.10.1</version>
+    <time>1789142537</time>
+    <user>anag_factory</user>
+    <comment>New package: tilth 0.10.1
+
+Tree-sitter based code indexer that answers structural queries
+(definitions, references, callers, file outlines) from the CLI or as an
+MCP server, instead of reading whole files.
+
+Rust, MIT upstream; the License tag additionally covers the statically
+linked non-MIT crates (Apache-2.0 tree-sitter-elixir, BSD-3-Clause
+encoding_rs, Zlib foldhash) - derivation is documented in a comment
+above the tag. Crates are vendored via cargo_vendor.
+
+Green on x86_64 and aarch64 across Tumbleweed, Slowroll and Leap
+16.1/16.0/15.7; 653 tests run in %check; rpmlint clean.</comment>
+    <requestid>1376999</requestid>
+  </revision>
+</revisionlist>

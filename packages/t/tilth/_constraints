@@ -1,0 +1,12 @@
+<constraints>
+  <!-- fat LTO + codegen-units=1 with debuginfo=2; %check rebuilds the whole
+       graph in the dev profile on top of the ~320 MB vendor tree -->
+  <hardware>
+    <memory>
+      <size unit="G">8</size>
+    </memory>
+    <disk>
+      <size unit="G">16</size>
+    </disk>
+  </hardware>
+</constraints>
