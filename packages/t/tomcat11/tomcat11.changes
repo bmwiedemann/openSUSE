@@ -1,4 +1,175 @@
 -------------------------------------------------------------------
+Mon Sep 07 13:38:36 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 11.0.25
+  * Fixed CVEs:
+    + CVE-2026-73180: If the session ID for an authenticated HTTP session was
+      changed after a WebSocket connection had been established under that
+      authenticated HTTP session, the WebSokcet session would not be closed as
+      required by the Jakarta WebSocket specification when the HTTP session
+      ended. (bsc#1276902)
+    + CVE-2026-68763: An allocation leak in the HTTP/2 backlog tracking when a
+      stream was reset could be manipulated to trigger a denial of service.
+      (bsc#1276901)
+    + CVE-2026-68569: For some authentication methods (e.g. CLIENT-CERT,
+      SPNEGO), a user would be authenticated even if the user did not exist in
+      the DataSourceRealm. (bsc#1276900)
+    + CVE-2026-68525: The FORM authentication process allowed the bypassing of
+      a security constraint that limited user access to a resource POST but
+      not GET. (bsc#1276899)
+    + CVE-2026-66422: security-role-ref definitions were incorrectly used as
+      role aliases within the Realm in additional to the correct usage with
+      Request.isUserInRole(). (bsc#1276898)
+    + CVE-2026-66299: The WebSocket chat example provided an unbounded buffer
+      for undelivered messages. A maliciously slow client could cause the
+      buffer to grow continuously, eventually leading to an memory exhaustion
+      and failure of the Tomcat process. (bsc#1273150)
+    + CVE-2026-65927: An off-by-one error impacting the [N] flag on the
+      rewrite valves caused rewrite processing to restart at the second rule
+      rather than the first rule. (bsc#1276897)
+    + CVE-2026-65905: If, before windowSize requests had been made, a client
+      made a DIGEST authenticated request with a nonceCount on the upper
+      boundary of the replay window then that request was replayable once only
+      while the associated nonceCount remained within the replay window.
+      (bsc#1276896)
+    + CVE-2026-65637: The fix for CVE-2026-32990 was incomplete. (bsc#1276895)
+    + CVE-2026-65183: A race condition when creating a Unix Domain Socket
+      allowed an unauthorised local user to access the Unix Domain Socket.
+      (bsc#1276894)
+    + CVE-2026-65182: The security constraint processing enabled a security
+      constraint bypass if a constraint for a longer path was specified before
+      a more restrictive constraint for a shorter sub-path. (bsc#1276893)
+  * Catalina
+    + Fix: Ensure that a login-config conflict when merging web.xml fragments
+      triggers a deployment failure. (markt)
+    + Code: Remove unnecessary calls to String.intern() in the parsing of
+      configuration files. (markt)
+    + Fix: Extend sessionAttributeValueClassNameFilter to include filtering of
+      dynamic proxy interface classes. (markt)
+    + Fix: Attempt to use rollback when persisting user data to the
+      DataSourceUserDatabase fails and improve error reporting. (remm)
+    + Fix: 70143: Handle InvalidFileNameException when parsing parts to
+      rethrow it as an IllegalStateException as mandated by the Servlet
+      specification. (remm)
+    + Fix: Add missing reason to the JsonErrorReportValve. (remm)
+    + Fix: evaluation of the N and C flags for rewrite rules. (remm)
+    + Fix: qsd flag should always discard the original query string when
+      rewriting. (remm)
+    + Fix: Add appropriate escaping for context path, current directory name
+      and parent directory name for directory listings produced by the default
+      servlet. Ensure XML escaping is used with XML output. (markt)
+    + Fix: When processing certificate subject names and issuer names within
+      RewriteValve rules, always use the RFC 2253 format name. (markt)
+    + Fix: the incorrect rejection of requests using digest authentication
+      when the client provided nonce count is at the upper boundary of the
+      window (markt).
+    + Update: Separate the Context role mapping from the Servlet specification
+      security-role-ref. (remm)
+    + Fix: Handle the case where the JNDIRealm is configured to perform role
+      searches with userRoleAttribute but the attribute is not available or
+      not configured for the current user. (markt)
+    + Fix: Improve handling of session attribute addition concurrent with
+      session expiration. An application will now either see a successful
+      addition followed by expiration or the addition will not succeed. It is
+      no longer possible for the session to expire and the addition to
+      succeed. This is of particular not for attributes that implement
+      HttpSessionBindingListener. (markt)
+    + Fix: Add a new attribute to the Context,
+      urlPatternsProvidedInDecodedForm. This attribute controls whether URLs
+      and URL patterns provided in the deployment descriptor (web.xml),
+      annotations and/or their programmatic equivalents are treated as being
+      provided in URL-encoded form (i.e. using %nn encoding) or in decoded
+      form. The Servlet specification requires that they are provided in
+      decoded form. However, Tomcat has historically treated them as if they
+      are provided in encoded form. In Tomcat 12, they will always be treated
+      as if they are provided in decoded form. This setting enables migration
+      from encoded form to decoded form on an application by application
+      basis. This attribute will be removed in Tomcat 12 where it will
+      effectively be hard-coded to true. (markt)
+    + Fix: Ensure the security constraint with the longest matching path is
+      selected when more than one constraint matches the request path. (markt)
+    + Fix: If the request saved by FORM authentication uses a method other
+      than GET, ensure that the security constraints are re-assessed after the
+      saved request is restored and before it is processed. Custom
+      Authenticator implementations that extend FormAuthenticator and override
+      doAuthenticate() and/or restoreRequest() will require modification.
+      (markt)
+    + Fix: Various improvements to the DataSourceRealm. A failure to connect
+      to the database or an exception during either user or role lookup will
+      now result in an authentication failure rather than a partially
+      populated Principal. For CLIENT-CERT and SPNEGO authentication, the user
+      must exist in the database for authentication to succeed. (markt)
+  * Coyote
+    + Update: Add utility AutoCloseable URLConnection wrapper, and use it to
+      cleanup existing code patterns. (remm/markt)
+    + Fix: When processing an HTTP upgrade from HTTP/1.1 to HTTP/2, ensure
+      that all the HTTP/1.1 data has been processed before switching
+      protocols. (markt)
+    + Fix: Require every HTTP/2 request to provide an authority (either an
+      :authority pseudo header or a Host header). (markt)
+    + Fix: Register the use of an HTTP/2 stream identifier earlier so that
+      there is no possibility of a re-used stream identifier being accepted,
+      regardless of how early in the HEADERS frame processing an error is
+      detected. (markt)
+    + Add: new attributes (unixDomainSocketParentPermissions and
+      unixDomainSocketParentOwner) to the NIO connector to provide additional
+      control over the security of Unix Domain Sockets. Additional checks
+      (enabled by default) have also been added for the directory where the
+      Unix Domain Socket will be created.(markt)
+    + Fix: an allocation leak in the HTTP/2 backlog tracking when a stream is
+      reset. (markt)
+  * Jasper
+    + Fix: Ensure internal state is reset before re-using ELParser. (markt)
+  * WebSocket
+    + Add: a limit (defaults to 8KB) on the size of the HTTP response headers
+      accepted during a WebSocket HTTP upgrade. This is configured via the
+      org.apache.tomcat.websocket.MAX_HTTP_RESPONSE_HEADER_BYTES user
+      property. (markt)
+    + Fix: Improve URI template matching for WebSocket end points. Trailing
+      slashes are now significant both for template definitions and URIs
+      considered for potential matches to those URIs. Note that this means if
+      a URI template ends in a variable without a trailing slash, that
+      variable might be expanded to the empty string. (markt)
+    + Fix: Account for session ID changes when tracking WebSocket connections
+      for closure because they were created under an authenticated HTTP
+      session that has since ended. (markt)
+  * Web applications
+    + Fix: 70160: Correct various references to the Servlet specification to
+      use version 6.1. (markt)
+    + Fix: Documentation: Better sample httpd configuration for use with
+      SSLValve and add a note that the exact configuration required will
+      depend on the overall httpd configuration. (markt)
+    + Fix: Examples: Limit the buffering of messages in the WebSocket chat
+      example to prevent a malicious client triggering excessive memory usage
+      that could lead to a DoS. (markt)
+    + Fix: Documentation: Expand the description of the %S (session ID) access
+      log pattern token. (markt)
+    + Fix: Manager: Use reflection to load clustering classes in
+      sessionsList.jsp so the sessions list page renders correctly when
+      clustering JARs are not present. (csutherl)
+  * Other
+    + Update: Maven Resolver Ant Tasks to 1.6.1. (rjung)
+    + Update: Objenesis to 3.6. (markt)
+    + Update: JSign to 7.5. (markt)
+    + Update: Bouncy Castle to 1.85. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations provided by tak7iji. (markt)
+  * Cluster
+    + Add: Change the default encryptionAlgorithm for the EncryptInterceptor
+      to AES/GCM/NoPadding. This is a breaking change for the
+      EncryptInterceptor. (markt)
+    + Add: Expand the documentation for the EncryptInterceptor to be more
+      explicit regarding the security weaknesses of some supported algorithms.
+      Also explicitly state that the replay protection is only effective for
+      non-malleable algorithms. (markt)
+    + Add: Expand the Javadoc for the DNSMembershipProvider in particular
+      explaining its behaviour and providing configuration advice if control
+      more over cluster membership is required. (markt)
+  * jdbc-pool
+    + Fix: 70164: Correct the documentation for the testOnBorrow attribute.
+      Pull request #1033 provided by Kohei Tamura. (markt)
+
+-------------------------------------------------------------------
 Mon Aug 03 12:21:00 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
 
 - Fix executable bit on tomcat, tomcat-digest, tomcat-tool-wrapper

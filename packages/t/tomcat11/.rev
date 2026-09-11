@@ -119,4 +119,12 @@
     <comment>bsc#1273184</comment>
     <requestid>1374491</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>9a7551899f8c75f7ba7fb7283d20b48a</srcmd5>
+    <version>11.0.25</version>
+    <time>1789142656</time>
+    <user>anag_factory</user>
+    <comment>Update to Tomcat 11.0.25</comment>
+    <requestid>1377356</requestid>
+  </revision>
 </revisionlist>
