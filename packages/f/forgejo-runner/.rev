@@ -714,4 +714,12 @@
     <comment>- Update to version 13.0.0: (forwarded request 1369304 from darix)</comment>
     <requestid>1369330</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>8f2c2eb3311dce1ce51f7a8e77c20618</srcmd5>
+    <version>13.1.0</version>
+    <time>1789142677</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377350</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Mon Aug 31 17:10:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 13.1.0 
+  - features
+    - PR: feat(jobparser): add 'EnableNamespaces' to allow matrix
+      reusable workflows to distinguish between internal jobs
+    - PR: feat(plugin): allow streaming logs from start operation
+    - PR: feat(plugin): add experimental gRPC v1alpha plugin
+      backend support
+  - bug fixes
+    - PR: fix: move environment-related description fields from
+      capability to create RPC
+    - PR: fix(plugin): remove hard-coded 'mkdir -p'
+    - PR: fix(plugin): clarify content of ExecOutput to having one
+      type of data at a time
+    - PR: fix: remove duplicate working directory & environment
+      from plugin protocol
+    - PR: fix: prevent runner's stdout isatty affecting docker
+      create, exec, attach commands
+    - PR: fix: don't run host-based executor & LXC executor
+      subcommands in a TTY
+  - other
+    - PR: Update module code.forgejo.org/forgejo/actions-proto to
+      v0.8.0
+    - PR: Update data.forgejo.org/oci/ci Docker tag to v3
+    - PR: Update module github.com/sirupsen/logrus to v1.10.2
+    - PR: Update module google.golang.org/grpc to v1.83.2
+    - PR: chore: add documentation of concurrency & cancellation to
+      plugin protocol
+    - PR: Update module mvdan.cc/gofumpt to v0.11.0
+    - PR: Update forgejo-runner to v13
+    - PR: chore: update go to 1.26
+    - PR: Update module golang.org/x/term to v0.45.0
+    - PR: Update module github.com/stretchr/testify to v1.12.1
+    - PR: Update module github.com/sirupsen/logrus to v1.10.1
+    - PR: Update module github.com/vektra/mockery/v3 to v3.7.4
+    - PR: Update module
+      github.com/golangci/golangci-lint/v2/cmd/golangci-lint to
+      v2.13.1
+    - PR: Update go toolchain directive to v1.26.7
+    - PR: Update data.forgejo.org/oci/alpine Docker tag to v3.24
+    - PR: Update go toolchain directive to v1.26.6 [SECURITY]
+    - PR: test: fix TestRunner_RunEvent not checking error messages
+      on error cases
+    - PR: Update module google.golang.org/protobuf to v1.36.12
+    - PR: Update module github.com/vektra/mockery/v3 to v3.7.3
+    - PR: Update module github.com/moby/go-archive to v0.3.3
+    - PR: Update dependency forgejo-runner-service-yq to v4.53.6
+    - PR: Update go toolchain directive to v1.25.14
+    - PR: Update dependency buildx to v0.36.1
+    - PR: Update golang.org/x/net (indirect) to v0.56.0 [SECURITY]
+    - PR: Update module github.com/moby/go-archive to v0.3.0
+      [SECURITY]
+    - PR: Update golang.org/x/text (indirect) to v0.39.0 [SECURITY]
+    - PR: Update module google.golang.org/grpc to v1.82.1
+      [SECURITY]
+    - PR: Update module github.com/docker/cli to
+      v29.7.2+incompatible
+    - PR: Update go toolchain directive to v1.25.13 [SECURITY]
+    - PR: Update module go.yaml.in/yaml/v3 to v3.0.5
+    - PR: Update module github.com/docker/cli to
+      v29.7.1+incompatible
+
+-------------------------------------------------------------------
 Mon Aug  3 16:24:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 13.0.0:
