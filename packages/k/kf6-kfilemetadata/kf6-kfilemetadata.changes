@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * [PostscriptDscExtractor] Fix time offset parsing for Qt 6.12
+  * [PostscriptDscExtractor] Modernize QString usage
+  * [SimpleExtractionResult] Fix copy constructor
+  * [EmbeddedImageData] Remove some dead, unreachable code and data
+  * Fix a few nodiscard warnings for QFile::open
+  * [ExtractorPlugin] Allow alias names when matching extractor mimetypes (kde#522678)
+  * [kfilemetadata_dump] Provide information about cover images etc
+  * [FFmpegExtractor] Extract cover image from Matroska streams
+  * [FFmpegExtractorTest] Move test class declaration to implementation file
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
