@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:46:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.57:
+  * Tracks the bundle train: floors rise to -core 0.3.337, -json
+    0.1.72 and -media-assets-01 0.1.43, matching upstream's ==
+    pins; api/image/other/video pins unchanged, floors untouched
+  * Still floors, not '=': the re-export shim only imports five
+    stable helpers from -core, and upstream's == set is a
+    release-train lockfile, not an API constraint
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.55:

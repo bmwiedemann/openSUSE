@@ -160,4 +160,12 @@ release cannot make this package unresolvable.
 Depends on the -core / -json / -media-assets-01 submissions filed alongside it.</comment>
     <requestid>1376108</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>b5494b2f63ce4061a4c79cfb7e941c0e</srcmd5>
+    <version>0.11.57</version>
+    <time>1789142545</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfyui-workflow-templates 0.11.57 to Factory (devel accepted SR1377002; bundle forwards SR1376995/SR1376997/SR1377001 carry its floors).</comment>
+    <requestid>1377003</requestid>
+  </revision>
 </revisionlist>
