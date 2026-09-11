@@ -25,6 +25,11 @@ Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source0:        https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
 Source1:        libzpc-rpmlintrc
+### The man pages must be pre-generated in advance!
+Source2:        hbkzpcprovider.conf.5
+Source3:        hbkzpcprovider.7
+Source4:        zpckey.1
+###
 
 BuildRequires:  clang
 BuildRequires:  cmake >= 3.10
@@ -74,10 +79,10 @@ persistent protected key origins, from which protected keys can be (re-)derived.
 
 %install
 cd build
-touch hbkzpcprovider.conf.5 hbkzpcprovider.7 zpckey.1
+cp %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 %make_install
-install -m644 hbkzpcprovider.conf \
-        -D -t %{buildroot}%{_sysconfdir}/pki/tls/openssl.d/
+install -D -m 0644 hbkzpcprovider.conf \
+        %{buildroot}%{_docdir}/libzpc-provider/hbkzpcprovider.conf.example
 
 %fdupes %{buildroot}%{_mandir}
 
@@ -91,13 +96,10 @@ install -m644 hbkzpcprovider.conf \
 %ifarch s390x
 %files provider
 %license LICENSE
+%{_docdir}/libzpc-provider/
 %{modulesdir}/zpcprovider.so
 %{_mandir}/man5/hbkzpcprovider.conf.5*
 %{_mandir}/man7/hbkzpcprovider.7*
-%dir %{_sysconfdir}/pki
-%dir %{_sysconfdir}/pki/tls
-%dir %{_sysconfdir}/pki/tls/openssl.d
-%config(noreplace) %{_sysconfdir}/pki/tls/openssl.d/hbkzpcprovider.conf
 %endif
 
 %files tools

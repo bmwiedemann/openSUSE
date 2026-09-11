@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 11 09:12:05 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Amended the .spec file to fix build and packaging issues (jsc#PED-16483):
+  * Added pre-generated man pages (hbkzpcprovider.7, hbkzpcprovider.conf.5,
+    zpckey.1) as sources to bypass missing pandoc dependency on SLES >= 16.0
+  * Relocated OpenSSL configuration example from the specific path to
+    %{_docdir}/libzpc-provider/hbkzpcprovider.conf.example
+  * Fixed package directory ownership for %{_docdir}/libzpc-provider/
+
+-------------------------------------------------------------------
 Mon Jun 29 16:52:29 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade libzpc to version 2.0.1 (jsc#PED-16483)
