@@ -22,7 +22,7 @@
 
 %define so_ver 2
 Name:           indi
-Version:        2.2.3.1
+Version:        2.2.4.2
 Release:        0
 Summary:        Instrument Neutral Distributed Interface
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND GPL-3.0-or-later
@@ -30,8 +30,6 @@ Group:          Productivity/Scientific/Astronomy
 URL:            https://www.indilib.org/
 Source0:        https://github.com/indilib/indi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        indi-rpmlintrc
-# PATCH-FIX-UPSTREAM https://github.com/indilib/indi/commit/bf77bd1c26c268e5973cace1dc21807b42148539.patch
-Patch0:         fix-gcc16.patch
 BuildRequires:  cmake
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
 %if 0%{?suse_version} < 1600

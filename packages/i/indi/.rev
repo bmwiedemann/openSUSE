@@ -365,4 +365,60 @@
 </comment>
     <requestid>1366764</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>f39c4220dd97834e073e979bf24ba942</srcmd5>
+    <version>2.2.4.2</version>
+    <time>1789142480</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.4.2:
+  * iEQ: mark Home operation complete when mount reaches home by
+    @cfuture81 in #2462
+  * WandererRotator: Add configurable move accuracy and fix false
+    &quot;not po… by @pmneo in #2448
+  * Add pier side to PMC8 driver by @Seggan in #2463
+  * iEQ: clarify firmware labels, show N/A for absent hand
+    controller by @cfuture81 in #2464
+  * dome/nexdome_beaver: fix USB response truncation, add shutter
+    and dome abort and rotator full-measurement by @jaimealemany in
+    #2458
+  * indi_usbdewpoint :Fix regressions of power refactor (#2287) by
+    @escribana in #2460
+  * CRUX TitanTCS: fix RA-stall during slew, park, unpark, goto-
+    error recovery, pier side by @cfuture81 in #2459
+  * Add Wave 100i to SkyWatcher Alt-Az driver by @beegmon in #2419
+  * indidrivermain: Fix concurrent stdin read crash in multi-device
+    BLOB ping wait by @cfuture81 in #2421
+  * Add Wanderer FilterCube for RASA driver, optimize other
+    WandererAstro drivers by @WandererAstro in #2420
+  * Myfocuserpro2 - Support for devices without Temperature Probes
+    by @TerminalMan in #2423
+  * fix(lx200): drop unused variable. by @TallFurryMan in #2426
+  * fix: suppress all strncpy warnings. by @TallFurryMan in #2427
+  * Enhance Alpaca support, fix connection in Filterwheel and CCD
+    image issues by @gordtulloch in #2430
+  * Wanderer ETA: Refactor helpers + add completion messages by
+    @cfuture81 in #2433
+  * FilterInterface: Fix filter name count when wheel size changes
+    by @cfuture81 in #2438
+  * Pegasus Flat Master Neo by @DomMer2587 in #2439
+  * CCD Simulator: Add tilt simulation for Aberration Inspector
+    testing by @cfuture81 in #2441
+  * Add TOUPTEK SH20 telescope driver by @ToupTekSoftware in #2442
+  * Add Askar WAF focuser driver by @3255867418 in #2443
+  * Joystick: Fix EMA filter sticking and slew buttons not
+    repeating by @cfuture81 in #2440
+  * Wanderer ETA: Fix first-connect serial packages by @cfuture81
+    in #2437
+  * weather: uranusmeteo: fix GPS altitude, TIME_UTC offset, add
+    Lux by @gstax in #2446
+  * WandererRotator: fix handshake parse bugs and abs()-on-double
+    hazards by @cfuture81 in #2452
+  * skywatcherAltAzMount: fix Alt-Az tracking direction reversal by
+    @bcolyn in #2455
+  * Fix -Wformat errors: format specifier type mismatches breaking
+    Powerpc builds by @ADITI-MISHRA310 in #2456
+- Drop upstreamed fix-gcc16.patch
+</comment>
+    <requestid>1376916</requestid>
+  </revision>
 </revisionlist>
