@@ -554,4 +554,30 @@
       * *** WARNING: Next release will require perl-5.12 ***</comment>
     <requestid>1366351</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>c268ef7d22a76402dacb8532278ff56d</srcmd5>
+    <version>1.653.0</version>
+    <time>1789146024</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.653.0 (1.653)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+  1.653 - 2026-09-09, H.Merijn Brand &amp; Robert Rothenberg
+      * Fix test for 32bit-perl (report in PR#189)
+      * Fix arbitrary module and file loading via dbm_type/dbm_mldbm (CVE-2026-78030)
+      * More META checking/updates
+      * Tighten symlink outside of f_dir (CVE-2026-15392) check (reported by Raj) bsc#1271629
+      * CPAN.org does not forward email anymore
+  1.652 - 2026-08-15, H.Merijn Brand &amp; Robert Rothenberg
+      * DBI now requires perl-5.12, driven by CVE's
+      * Fix test for perl configured without threads (caught by perl-5.45.1)
+      * Small doc fix, (issue#155), thanks Dick Franks
+      * Add suggested dependency (issue#145), thanks Dick Franks
+      * Force placeholder limit on :# and :p# too (CVE-2026-73194)
+      * Limit statements to 292 Mb in preparse (CVE-2026-73193)
+      * Add a security policy (issue#174)
+      * Add dbm_updatable_key attribute to DBD::DBM to configure how keys are updated
+      * Fix missing import in DBI::DBD::SqlEngine
+      * Fix !Caller2 caller loss when $^P is set (PR#184) (Thanks Paul)</comment>
+    <requestid>1376905</requestid>
+  </revision>
 </revisionlist>
