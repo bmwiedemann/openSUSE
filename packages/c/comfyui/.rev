@@ -201,4 +201,12 @@ from the previous version.</comment>
   uninstallable in Factory whenever one of them was updated alone.</comment>
     <requestid>1374668</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>855f31ceb83397aa98b702f0be3593f3</srcmd5>
+    <version>0.35.0</version>
+    <time>1789142545</time>
+    <user>anag_factory</user>
+    <comment>Forward comfyui 0.35.0 to Factory (devel accepted SR1377004; cone forwards SR1376991/SR1376995/SR1376997/SR1377001/SR1377003 carry its floors).</comment>
+    <requestid>1377005</requestid>
+  </revision>
 </revisionlist>

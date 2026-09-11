@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:47:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.35.0:
+  * New Comfy Compiler, File3DToMesh node, VideoTrim/VideoCrop nodes
+    and LTXV keyframe/guide nodes; Pixal3D multiview support
+  * API nodes: Meta Muse Image, OpenAI GPT Image 2.5 Flare/Sunburst
+    and gpt-6-astra, Anthropic Claude Fable 5.1, MiniMax H3 Max
+    options; retired Veo/DALL-E entries dropped with the 0.11.57
+    templates
+  * Respect the container cgroup memory limit instead of host RAM;
+    quantized-mm gating fixes for text encoders and MPS
+  * Floors follow the train to aimdo 0.5.3, kitchen 0.2.33,
+    embedded-docs 0.5.11 and workflow-templates 0.11.57; frontend
+    security floor stays >= 1.50.6
+  * Both downstream patches apply unrebased; no new third-party
+    dependencies (requirements.txt diff is the five train pins)
+
+-------------------------------------------------------------------
 Sun Aug 30 08:06:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.34.2:
