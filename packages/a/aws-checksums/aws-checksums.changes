@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:20:45 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.2.11
+  * Fix clang-cl compilation by @georgthegreat in (#112)
+  * Regression Labeler Fix by @azkrishpy in (#113)
+  * Update deprecated OpenBSD CI job by @sfod in (#114)
+  * Use latest as aws-crt-builder version by @sfod in (#115)
+  * CI/CD improvements by @azkrishpy in (#117)
+- Prefer explicit path and filenames over wildcards in %files section
+- Refresh ac_re-add-so-version.patch
+
+-------------------------------------------------------------------
 Sun Feb 15 09:53:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.2.10

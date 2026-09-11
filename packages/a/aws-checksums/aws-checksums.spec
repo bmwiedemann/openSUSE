@@ -20,7 +20,7 @@
 %define library_version 1.0.0
 %define library_soversion 1
 Name:           aws-checksums
-Version:        0.2.10
+Version:        0.2.11
 Release:        0
 Summary:        Checksums package for AWS SDK for C
 License:        Apache-2.0
@@ -96,13 +96,14 @@ export LD_LIBRARY_PATH=%{_builddir}/%{name}-%{version}/build
 %files -n lib%{name}%{library_soversion}
 %doc README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files -n lib%{name}-devel
 %license LICENSE
 %{_libdir}/cmake/%{name}/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws/checksums
+%{_includedir}/aws/checksums/*.h
 
 %changelog

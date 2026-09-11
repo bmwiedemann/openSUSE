@@ -1,11 +1,9 @@
-diff -Nru aws-checksums-0.1.20.orig/CMakeLists.txt aws-checksums-0.1.20/CMakeLists.txt
---- aws-checksums-0.1.20.orig/CMakeLists.txt	2024-09-13 18:19:34.000000000 +0000
-+++ aws-checksums-0.1.20/CMakeLists.txt	2024-09-17 11:00:11.523015122 +0000
-@@ -73,8 +73,8 @@
- 
- aws_add_sanitizers(${PROJECT_NAME})
- 
--# We are not ABI stable yet
+diff -Nru aws-checksums-0.2.11.orig/CMakeLists.txt aws-checksums-0.2.11/CMakeLists.txt
+--- aws-checksums-0.2.11.orig/CMakeLists.txt	2026-08-18 01:08:11.000000000 +0000
++++ aws-checksums-0.2.11/CMakeLists.txt	2026-09-08 09:15:15.239739205 +0000
+@@ -57,6 +57,7 @@
+ # We are not ABI stable yet
+ # TODO: switch to VERSION derived from the VERSION file (via aws_get_version) once SOVERSION is set explicitly, to avoid changing the SONAME.
  set_target_properties(${PROJECT_NAME} PROPERTIES VERSION 1.0.0)
 +set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES SOVERSION 1)
  
