@@ -16,18 +16,31 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 Name:           python-ase
-Version:        3.28.0
+Version:        3.29.0
 Release:        0
 Summary:        Atomic Simulation Environment
 License:        LGPL-2.1-or-later
 URL:            https://ase-lib.org/
 Source:         https://files.pythonhosted.org/packages/source/a/ase/ase-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://gitlab.com/ase/ase/-/merge_requests/4175 Numpy2.5 fixes
+Patch0:         numpy25.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-matplotlib >= 3.5.2
+Requires:       python-numpy >= 1.21.6
+Requires:       python-scipy >= 1.8.1
+Requires:       python-typing_extensions
+BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module matplotlib >= 3.5.2}
 BuildRequires:  %{python_module numpy >= 1.21.6}
@@ -35,14 +48,15 @@ BuildRequires:  %{python_module pytest >= 7.4.0}
 BuildRequires:  %{python_module pytest-xdist >= 3.2.0}
 BuildRequires:  %{python_module scipy >= 1.8.1}
 BuildRequires:  %{python_module tk}
+BuildRequires:  %{python_module typing_extensions}
 # /SECTION
-BuildRequires:  fdupes
-Requires:       python-matplotlib >= 3.5.2
-Requires:       python-numpy >= 1.21.6
-Requires:       python-scipy >= 1.8.1
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:      noarch
+%endif
 %python_subpackages
 
 %description
@@ -71,6 +85,9 @@ donttest+=" or test_pw_input_write_nested_flat or test_fix_scaled"
 
 %postun
 %python_uninstall_alternative ase
+
+%pre
+%python_libalternatives_reset_alternative ase
 
 %files %{python_files}
 %doc CHANGELOG.rst README.rst

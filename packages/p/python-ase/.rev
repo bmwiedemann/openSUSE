@@ -115,4 +115,16 @@
 - Initial release of 3.22.1.</comment>
     <requestid>1349726</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>1bd941cc1eedc75a477fd61440e3d53e</srcmd5>
+    <version>3.29.0</version>
+    <time>1789142731</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.29.0:
+  * Read and write support for the RuNNer input format
+  * The SocketIO calculator client supports future defaults from the i-PI
+- Add numpy25.patch to fix tests with NumPy 2.5
+- Convert to libalternatives on SLE-16-based and newer systems</comment>
+    <requestid>1377395</requestid>
+  </revision>
 </revisionlist>
