@@ -53,8 +53,6 @@ BuildRequires:  octave-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Widgets)
 %define python_subpackage_only 1
 %python_subpackages
 

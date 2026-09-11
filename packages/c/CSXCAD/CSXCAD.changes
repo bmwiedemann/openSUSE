@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 22:01:26 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Remove no longer required Qt5 build dependencies.
+
+-------------------------------------------------------------------
 Sun Jul 26 15:04:02 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build broken after dependency changes, add
