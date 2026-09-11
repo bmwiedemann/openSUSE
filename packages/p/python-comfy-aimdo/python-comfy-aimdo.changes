@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:34:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.3:
+  * Runtime simple_vram_headroom accessors, so the VRAM budget can be
+    retuned without re-running init() (which resets its other args)
+  * Refuse a second init_devices() without deinit() first: it used to
+    orphan live CUDA hooks and segfault on the next torch allocation
+  * detect_vendor() now reads torch.version hip/cuda first -- the
+    upstream half of our downstream vendor-detection patch, which
+    shrinks to the quiet-no-accelerator hunk (rebased, still needed)
+  * ROCm 7 runtime preferred, integrated ROCm GPUs budgeted against
+    system RAM on Linux
+  * torch floor stays >= 2.8.0: README still names PyTorch 2.8+, and
+    the sdist declares no install dependencies
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.2:

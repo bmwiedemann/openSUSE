@@ -18,13 +18,13 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-aimdo
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        AI Model Dynamic Offloader for ComfyUI (pure-Python fallback)
 License:        GPL-3.0-only
 URL:            https://github.com/Comfy-Org/comfy-aimdo
 Source:         https://github.com/Comfy-Org/comfy-aimdo/archive/refs/tags/v%{version}.tar.gz#/comfy-aimdo-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE comfy-aimdo-detect-vendor-without-local-version.patch mpluskal@suse.com -- read torch's own cuda/hip attributes instead of the wheel-only version suffix, and skip quietly when there is no accelerator
+# PATCH-FIX-OPENSUSE comfy-aimdo-detect-vendor-without-local-version.patch mpluskal@suse.com -- return False quietly when PyTorch has no accelerator, instead of guessing cuda with a warning (the torch.version hip/cuda detection half is upstream since 0.5.3)
 Patch0:         comfy-aimdo-detect-vendor-without-local-version.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.0}

@@ -111,4 +111,12 @@ exported name removed. The downstream vendor-detection patch still applies
 unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.</comment>
     <requestid>1376110</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>669356e6510b206c86a85860f62bfb2e</srcmd5>
+    <version>0.5.3</version>
+    <time>1789142541</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfy-aimdo 0.5.3 to Factory (devel accepted SR1376990).</comment>
+    <requestid>1376991</requestid>
+  </revision>
 </revisionlist>
