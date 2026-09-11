@@ -1,0 +1,23 @@
+diff -Naur libzpc-1.5.0.orig/CMakeLists.txt libzpc-1.5.0/CMakeLists.txt
+--- libzpc-1.5.0.orig/CMakeLists.txt	2026-09-09 09:38:12.837904956 +0200
++++ libzpc-1.5.0/CMakeLists.txt	2026-09-09 09:39:58.898871022 +0200
+@@ -122,8 +122,8 @@
+     ZPC_VERSION_MINOR=${ZPC_VERSION_MINOR}
+     ZPC_VERSION_PATCH=${ZPC_VERSION_PATCH}
+ )
+-configure_file(libzpc.pc.in libzpc.pc @ONLY)
+ include(GNUInstallDirs)
++configure_file(libzpc.pc.in libzpc.pc @ONLY)
+ 
+ install(
+     TARGETS zpc
+diff -Naur libzpc-1.5.0.orig/libzpc.pc.in libzpc-1.5.0/libzpc.pc.in
+--- libzpc-1.5.0.orig/libzpc.pc.in	2026-09-09 09:38:12.838904965 +0200
++++ libzpc-1.5.0/libzpc.pc.in	2026-09-09 09:40:46.915308384 +0200
+@@ -6,3 +6,6 @@
+ Name: @PROJECT_NAME@
+ Description: @PROJECT_DESCRIPTION@
+ Version: @PROJECT_VERSION@
++
++Cflags: -I${includedir}
++Libs: -L${libdir} -lzpc

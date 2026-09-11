@@ -1,0 +1,12 @@
+diff -Naur a/doc/Doxyfile.in b/doc/Doxyfile.in
+--- a/doc/Doxyfile.in	2026-02-05 18:05:05.000000000 +0100
++++ b/doc/Doxyfile.in	2026-09-11 08:55:17.628157797 +0200
+@@ -312,7 +312,7 @@
+ #---------------------------------------------------------------------------
+ # Configuration options related to the man page output
+ #---------------------------------------------------------------------------
+-GENERATE_MAN           = NO
++GENERATE_MAN           = YES
+ MAN_OUTPUT             = man
+ MAN_EXTENSION          = .3
+ MAN_SUBDIR             =

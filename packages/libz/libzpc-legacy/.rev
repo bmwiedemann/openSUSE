@@ -7,4 +7,16 @@
     <comment>add so we can move libzpc to v2</comment>
     <requestid>1365829</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>25b019f8aa32635a5e4eab38d7babfe8</srcmd5>
+    <version>1.5.0</version>
+    <time>1789142708</time>
+    <user>anag_factory</user>
+    <comment>- Applied a patch (bsc#1279335) to generate man pages
+  * libzpc-legacy-gen-man-pages.patch
+- The man pages are shipped in the `libzpc-legacy-devel` sub-package
+- Applied a patch (bsc#1279335)
+  * libzpc-legacy-fix-pkgconfig.patch</comment>
+    <requestid>1377368</requestid>
+  </revision>
 </revisionlist>

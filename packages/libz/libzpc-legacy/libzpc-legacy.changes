@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:57:07 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1279335) to generate man pages 
+  * libzpc-legacy-gen-man-pages.patch 
+- The man pages are shipped in the `libzpc-legacy-devel` sub-package
+
+-------------------------------------------------------------------
+Wed Sep  9 07:15:21 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Applied a patch (bsc#1279335) 
+  * libzpc-legacy-fix-pkgconfig.patch 
+
+-------------------------------------------------------------------
 Wed Jul 15 07:25:20 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Introduce libzpc-legacy package for the 1.x branch (jsc#PED-16483)

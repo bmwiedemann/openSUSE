@@ -28,6 +28,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  libjson-c-devel
 BuildRequires:  texlive-bibtex-bin
 ExclusiveArch:  s390x
+###
+Patch010:       libzpc-legacy-fix-pkgconfig.patch
+Patch011:       libzpc-legacy-gen-man-pages.patch
+###
 
 %description
 This is the legacy 1.x branch of the IBM Z Protected-key Crypto library,
@@ -62,6 +66,8 @@ shared library for the libzpc RPM.
 %install
 cd build
 %make_install
+install -d -m 0755 %{buildroot}%{_mandir}/man3
+install -m 0644 doc/man/man3/*.3 %{buildroot}%{_mandir}/man3/
 
 %post -n libzpc1 -p /sbin/ldconfig
 
@@ -78,5 +84,6 @@ cd build
 %{_includedir}/zpc/*.h
 %{_libdir}/libzpc.so
 %{_libdir}/pkgconfig/libzpc.pc
+%{_mandir}/man3/*.3%{?ext_man}
 
 %changelog
