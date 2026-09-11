@@ -81,7 +81,7 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.28.6
+Version:        1.28.7
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
@@ -1264,7 +1264,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libgstdxva-%{gst_branch}.so.0*
 
 %files -n libgsthip-1_0-0
-%{_libdir}/libgsthip.so.0*
+%{_libdir}/libgsthip-%{gst_branch}.so.0*
 
 %files -n libgstmse-1_0-0
 %{_libdir}/libgstmse-%{gst_branch}.so.0*
