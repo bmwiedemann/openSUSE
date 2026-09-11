@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 11 00:24:35 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Update to 0.27.0
+ * Add str_concat() and container_of() macros and config builtin
+ * Add reg("pc") alias and type expression substitution for macros
+ * Fix session probes and func builtin for return/exit branch
+ * Fix address space handling for maps, variables, and USDT arguments
+ * Fix str allocation consistency and crash from leaked debug location
+
+-------------------------------------------------------------------
 Thu Aug 27 06:27:15 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Use pkgconfig() dependencies and %autosetup
