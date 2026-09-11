@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:51:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.2:
+  * Preserve malformed streamed tool invocations when replaying
+    Anthropic messages: an invalid_tool_call keeps its id and name
+    as a tool_use block with empty input, so the matching error
+    ToolMessage is no longer an orphaned tool_result rejected by
+    the API
+- Follow upstream and raise the langchain-core floor to 1.6.2
+
+-------------------------------------------------------------------
 Fri Sep  4 07:55:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.1:

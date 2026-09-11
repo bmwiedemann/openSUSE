@@ -171,4 +171,17 @@ Built locally on aarch64 against openSUSE:Factory:ARM: 241 tests pass per
 Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
     <requestid>1375744</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ab95e8366d858c1a67262aa4b5ff2d9f</srcmd5>
+    <version>1.7.2</version>
+    <time>1789142599</time>
+    <user>anag_factory</user>
+    <comment>Forward python-langchain-anthropic 1.7.2 to Factory
+
+- Preserve malformed streamed tool invocations on Anthropic
+  message replay (invalid_tool_call keeps id/name as tool_use
+  with empty input)
+- langchain-core floor 1.6.2 per upstream (Factory carries 1.6.2)</comment>
+    <requestid>1377316</requestid>
+  </revision>
 </revisionlist>
