@@ -75,7 +75,7 @@ Recommends:     python-geoip2
 Recommends:     python-pylibmc
 Recommends:     python-pymemcache
 Provides:       python-Django = %{version}
-Conflicts:      %{python_module Django}
+Conflicts:      %{python_module Django > %{version}}
 Provides:       python-django = %{version}
 Obsoletes:      python-django < %{version}
 Provides:       python-South = %{version}

@@ -23,4 +23,13 @@
     values in the admin (bsc#1273000)</comment>
     <requestid>1370202</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>e7cbe3ade2678e26665a4033a3a38a4b</srcmd5>
+    <version>5.2.17</version>
+    <time>1789142743</time>
+    <user>anag_factory</user>
+    <comment>- Correct the Conflicts: line
+</comment>
+    <requestid>1377403</requestid>
+  </revision>
 </revisionlist>
