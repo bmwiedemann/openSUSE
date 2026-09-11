@@ -18,10 +18,11 @@
 
 %define shortname fresh
 Name:           fresh-editor
-Version:        0.4.10
+Version:        0.5.1
 Release:        0
 Summary:        A terminal text editor you can just use
-License:        GPL-2.0-only
+# Legal-Review-Notice: option-ext is licensed under MPL-2.0; vendor.tar.zst ships in the src.rpm
+License:        GPL-2.0-only AND MPL-2.0
 URL:            https://getfresh.dev/
 Source0:        %{shortname}-v%{version}.tar.zst
 Source1:        vendor.tar.zst

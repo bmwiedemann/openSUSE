@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:12:43 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.5.1:
+  * Add shaded pane edges with text fade-out at viewport edges
+  * Implement smooth line-by-line wheel scrolling
+  * Improve Git Blame readability and contrast
+  * Improve Review Diff and Git Log commands and parsing
+  * Fix startup crash on empty buffer with unsaved changes
+  * Improve multi-cursor editing and integrated terminal behavior
+  * Optimize cursor movement and editing in large single-line files
+  * Overhaul editor chrome onto a retained-mode layout tree
+  * Update vendored dependencies
+- Update _service modes from disabled to manual
+- Update license to GPL-2.0-only AND MPL-2.0 to reflect statically
+  linked MPL-2.0 dependency (option-ext)
+
+-------------------------------------------------------------------
 Sun Aug 23 15:13:40 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version v0.4.10:
