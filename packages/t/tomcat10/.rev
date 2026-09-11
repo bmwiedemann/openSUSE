@@ -293,4 +293,12 @@
     <comment>bsc#1273184</comment>
     <requestid>1374490</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>4573d729bfcc28952f5274fa7318e60c</srcmd5>
+    <version>10.1.59</version>
+    <time>1789142655</time>
+    <user>anag_factory</user>
+    <comment>Update to Tomcat 10.0.59</comment>
+    <requestid>1377355</requestid>
+  </revision>
 </revisionlist>
