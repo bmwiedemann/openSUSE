@@ -17,25 +17,22 @@
 
 
 Name:           javaparser
-Version:        3.28.0
+Version:        3.28.2
 Release:        0
 Summary:        Java Parser and Abstract Syntax Tree for Java
 License:        Apache-2.0 OR LGPL-3.0-or-later
 Group:          Development/Libraries/Java
 URL:            https://javaparser.org
 Source0:        https://github.com/javaparser/javaparser/archive/%{name}-parent-%{version}.tar.gz
+Source1:        %{name}-build.tar.xz
+BuildRequires:  aqute-bnd
+BuildRequires:  checker-qual
 BuildRequires:  fdupes
+BuildRequires:  guava
 BuildRequires:  java-devel >= 1.8
-BuildRequires:  maven-local
-BuildRequires:  mvn(biz.aQute.bnd:bnd-maven-plugin)
-BuildRequires:  mvn(com.google.code.findbugs:jsr305)
-BuildRequires:  mvn(com.google.guava:guava)
-BuildRequires:  mvn(org.checkerframework:checker-qual)
-BuildRequires:  mvn(org.codehaus.mojo:build-helper-maven-plugin)
-BuildRequires:  mvn(org.codehaus.mojo:javacc-maven-plugin)
-BuildRequires:  mvn(org.javassist:javassist)
-BuildRequires:  mvn(org.junit:junit-bom:pom:)
-BuildRequires:  mvn(org.junit.jupiter:junit-jupiter-engine)
+BuildRequires:  javacc
+BuildRequires:  javapackages-local >= 6
+BuildRequires:  javassist
 BuildArch:      noarch
 
 %description
@@ -49,44 +46,16 @@ Summary:        Javadoc for %{name}
 This package contains API documentation for %{name}.
 
 %prep
-%autosetup -n %{name}-%{name}-parent-%{version}
+%autosetup -n %{name}-%{name}-parent-%{version} -a1
 
 sed -i 's/\r//' readme.md
-
-# Remove plugins unnecessary for RPM builds
-%pom_remove_plugin -r :jacoco-maven-plugin
-%pom_remove_plugin :maven-source-plugin
-%pom_remove_plugin org.sonatype.central:central-publishing-maven-plugin
-
-%pom_add_dep org.checkerframework:checker-qual::provided javaparser-symbol-solver-core
-%pom_add_dep com.google.code.findbugs:jsr305::provided javaparser-symbol-solver-core
-
-# Compatibility alias
-%{mvn_alias} :javaparser-core com.google.code.javaparser:javaparser
-
-# Fix javacc plugin name
-sed -i \
-  -e 's/ph-javacc-maven-plugin/javacc-maven-plugin/' \
-  -e 's/com.helger.maven/org.codehaus.mojo/' \
-  javaparser-core/pom.xml
-
-# This plugin is not packaged, so use maven-resources-plugin to accomplish the same thing
-%pom_remove_plugin :templating-maven-plugin javaparser-core
-%pom_xpath_inject "pom:build" "
-<resources>
-  <resource>
-    <directory>src/main/java-templates</directory>
-    <filtering>true</filtering>
-    <targetPath>\${basedir}/src/main/java</targetPath>
-  </resource>
-</resources>" javaparser-core
 
 # Missing dep on jbehave for testing
 %pom_disable_module javaparser-core-testing
 %pom_disable_module javaparser-core-testing-bdd
+%pom_disable_module javaparser-symbol-solver-testing
 
 # Only need to ship the core module
-%pom_disable_module javaparser-core-generators
 %pom_disable_module javaparser-core-metamodel-generator
 %pom_disable_module javaparser-core-serialization
 
@@ -95,21 +64,47 @@ echo "-noextraheaders: true" >> javaparser-core/bnd.bnd
 echo "-snapshot: SNAPSHOT" >> javaparser-core/bnd.bnd
 
 %build
-%{mvn_build} -f -- \
-%if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
-    -Dmaven.compiler.release=8 \
-%endif
-    -Dsource=8
+mkdir -p lib
+build-jar-repository -s -p lib \
+    aqute-bnd/biz.aQute.bnd.ant \
+    checker-qual \
+    guava \
+    javacc \
+    javassist
+ant -Dtest.skip=true package javadoc
 
 %install
-%mvn_install
+# dirs
+install -dm 0755 %{buildroot}%{_javadir}/%{name}
+install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
+install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
+
+# jars
+install -pm 0644 %{name}-core/target/%{name}-core-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}/%{name}-core.jar
+install -pm 0644 %{name}-symbol-solver-core/target/%{name}-symbol-solver-core-%{version}.jar \
+  %{buildroot}%{_javadir}/%{name}/%{name}-symbol-solver-core.jar
+# poms
+%{mvn_install_pom} %{name}-core/pom.xml \
+  %{buildroot}%{_mavenpomdir}/%{name}/%{name}-core.pom
+%add_maven_depmap %{name}/%{name}-core.pom %{name}/%{name}-core.jar -a com.google.code.javaparser:javaparser
+%{mvn_install_pom} %{name}-symbol-solver-core/pom.xml \
+  %{buildroot}%{_mavenpomdir}/%{name}/%{name}-symbol-solver-core.pom
+%add_maven_depmap %{name}/%{name}-symbol-solver-core.pom %{name}/%{name}-symbol-solver-core.jar
+
+# javadoc
+cp -r %{name}-core/target/site/apidocs \
+  %{buildroot}%{_javadocdir}/%{name}/%{name}-core
+cp -r  %{name}-symbol-solver-core/target/site/apidocs \
+  %{buildroot}%{_javadocdir}/%{name}/%{name}-symbol-solver-core
 %fdupes -s %{buildroot}%{_javadocdir}
 
 %files -f .mfiles
 %doc readme.md changelog.md
 %license LICENSE LICENSE.APACHE LICENSE.GPL LICENSE.LGPL
 
-%files javadoc -f .mfiles-javadoc
+%files javadoc
+%{_javadocdir}/%{name}
 %license LICENSE LICENSE.APACHE LICENSE.GPL LICENSE.LGPL
 
 %changelog

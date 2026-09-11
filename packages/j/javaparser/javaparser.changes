@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Wed Sep  9 01:07:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.28.2
+  * Added
+    + Implement switch expr type extraction
+    + fix: implement phase-2 poly-expression inference for
+      method/construct or references (JLS §15.12.2.7)
+    + Enforce JLS §14.11.1 language-level rules for multi-pattern
+      case labels
+  * Changed
+    + refactor(lexicalpreservation): introduce TextElementSequence
+      API and migrate core classes
+    + refactor: Extract and centralize indentation logic in lexical
+      preservation
+    + build: add OSGi support to all deployable modules
+  * Fixed
+    + fix(grammar): allow empty component list in RecordPattern
+    + Fix: issue #4974 How to detect array.length ValueDeclaration
+    + Fix CommentInserter crash on compact classes
+    + Resolve parsing issue for module-info classes with multiple
+      exports
+    + Issue3365
+    + Fix: issue 4949 Parsing issue in switch with yield with Java
+      25 parser configuration
+    + fix: resolve constructor references via context rather than
+      constructed type
+    + fix: handle wildcard actualType in matchTypeParameters
+    + Fix: UnsupportedOperationException when resolving method calls
+      inside lambdas in Comparator.comparing
+    + fix: resolve constructor parameter type for lambda in 
+      ObjectCreationExpr
+    + fix(FunctionalInterfaceLogic): return empty() for
+      non-reference types
+    + Fix lambda type inference for fully-qualified static method
+      calls
+    + fix(grammar): allow text block ending in escaped backslash
+      before closing """
+    + Fix parsing of multiple patterns in switch case labels
+  * Uncategorised
+    + Add comprehensive test suite for lexical preserving printer
+      rules
+    + fix: resolve NameExpr to field when local variable with same
+      name is declared later
+- Generate and adapt ant build in order to be able to build this
+  early
+
+-------------------------------------------------------------------
 Tue Apr 28 02:48:13 UTC 2026 - Anton Shvetz <shvetz.anton@gmail.com>
 
 - Upgrade to upstream version 3.28.0
