@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  8 15:35:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 3.1.0
+  * New features and improvements
+    + Establish an automatic module name on the 3.x line
+  * Bug Fixes
+    + Backport the UTF-8-without-BOM and ISO-8859-1 parsing fix
+      to 3.x
+  * Maintenance
+    + [3.x] Set the next development version to 3.1.0-SNAPSHOT
+  * Build
+    + [3.x] Update parent to plexus 27
+    + Keep the 3.x release drafter config on the 3.x branch
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 20 to 26
+    + Bump release-drafter/release-drafter from 6 to 7.7.0
+
+-------------------------------------------------------------------
 Wed Jun  4 15:26:12 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 3.0.2
