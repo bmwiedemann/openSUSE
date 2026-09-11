@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:57:36 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
+
+- Update to version 1.2.30
+  + Fixed an out-of-bounds memory access in HMAC signing when using keys longer than the hash's block size, affecting request signing for Discogs and Musixmatch (#2309)
+  + Fixed the build failing when the tag fetcher (AcoustID) is disabled (#2310)
+  + Changed API credentials for Spotify for production use 
+
+-------------------------------------------------------------------
 Mon Sep  7 19:50:15 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add OpenSSL dependency

@@ -1960,4 +1960,16 @@ Fixes a critical bug in version 0.6.2, crashes when using internet services.
 </comment>
     <requestid>1376236</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>244ae01791a1a5c0eb60f142a39cac6f</srcmd5>
+    <version>1.2.30</version>
+    <time>1789142549</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.30
+  + Fixed an out-of-bounds memory access in HMAC signing when using keys longer than the hash's block size, affecting request signing for Discogs and Musixmatch (#2309)
+  + Fixed the build failing when the tag fetcher (AcoustID) is disabled (#2310)
+  + Changed API credentials for Spotify for production use 
+</comment>
+    <requestid>1377010</requestid>
+  </revision>
 </revisionlist>
