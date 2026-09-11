@@ -1203,4 +1203,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>bsc#1273184</comment>
     <requestid>1374489</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>6b805190a7a4b8ec87caf94b607cdd4f</srcmd5>
+    <version>9.0.121</version>
+    <time>1789142653</time>
+    <user>anag_factory</user>
+    <comment>Update to Tomcat 9.0.121</comment>
+    <requestid>1377354</requestid>
+  </revision>
 </revisionlist>
