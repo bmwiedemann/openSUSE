@@ -1,7 +1,7 @@
 #
 # spec file for package sablot
 #
-# Copyright (c) 2013 SUSE LINUX Products GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,7 +12,7 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -20,18 +20,20 @@ Name:           sablot
 Version:        1.0.3
 Release:        0
 Summary:        XSL Processor
-License:        GPL-2.0+
-Group:          Productivity/Publishing/XML
-Url:            http://www.gingerall.com/charlie/ga/xml/p_sab.xml
+License:        GPL-2.0-or-later
+URL:            http://www.gingerall.com/charlie/ga/xml/p_sab.xml
 Source:         http://sourceforge.net/projects/sablotron/files/sablotron-%{version}/Sablot-%{version}.tar.gz
 Patch0:         %{name}-%{version}-newautoconf.diff
 Patch1:         %{name}-%{version}-gcc3.diff
 Patch2:         %{name}-%{version}-delete.diff
+Patch3:         %{name}-%{version}-cxx20.diff
+BuildRequires:  autoconf
+BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  libexpat-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(expat)
 Provides:       sablotron
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Sablotron is an XSL processor fully implemented in C++. The excellent
@@ -39,11 +41,8 @@ Expat parser is used as the associated XML parser.
 
 %package devel
 Summary:        Header Files and Libraries for Sablot Development
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
+Requires:       %{name} = %{version}-%{release}
 Requires:       glibc-devel
-Provides:       sablotd
-Obsoletes:      sablotd
 
 %description devel
 Header files and libraries needed for sablot development.
@@ -56,26 +55,27 @@ chmod 644 README
 touch COPYING NEWS AUTHORS ChangeLog
 autoreconf -fiv
 %configure --disable-static --with-pic
-make %{?_smp_mflags}
+%make_build
 
 %install
-make install DESTDIR=%{buildroot}
-rm -f %{buildroot}%{_libdir}/*.la
+%make_install
+find %{buildroot} -type f -name "*.la" -delete -print
 
-%post -p /sbin/ldconfig
-
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
 %files
-%defattr(-,root,root)
 %doc README
 %{_bindir}/sabcmd
 %{_libdir}/*.so.*
 %{_mandir}/man1/*
 
 %files devel
-%defattr(-,root,root)
-%attr(644,root,root) %{_includedir}/*
+%{_includedir}/sabcfg.h
+%{_includedir}/sabdbg.h
+%{_includedir}/sablot.h
+%{_includedir}/sdom.h
+%{_includedir}/shandler.h
+%{_includedir}/sxpath.h
 %{_libdir}/*.so
 %{_bindir}/sablot-config
 

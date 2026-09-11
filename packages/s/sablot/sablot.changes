@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:22:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix C++20 build failure (rewritten != requires operator==
+  returning bool, Str::operator== returns Bool):
+  * spell the comparison in DefaultedStr::set as !(a == b)
+  * new patch sablot-1.0.3-cxx20.diff
+- Spec cleanup: SPDX license, drop Group/BuildRoot/%defattr and
+  the sablotd rename shim from 2000, explicit devel headers,
+  %make_build/%make_install, %ldconfig_scriptlets,
+  pkgconfig(expat), explicit autoconf and automake BuildRequires.
+
+-------------------------------------------------------------------
 Mon Feb 26 13:04:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

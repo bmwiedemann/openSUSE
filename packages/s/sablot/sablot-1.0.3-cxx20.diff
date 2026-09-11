@@ -1,0 +1,13 @@
+--- src/engine/decimal.cpp
++++ src/engine/decimal.cpp
+@@ -472,7 +472,9 @@
+ 
+ eFlag DefaultedStr::set(Sit S, const Str& value)
+ {
+-    if (specified && value != specifiedValue)
++    // C++20 rewritten != needs operator== returning bool, but
++    // Str::operator== returns Bool (int); spell out the negation.
++    if (specified && !(value == specifiedValue))
+ 	Err1(S, E1_FORMAT_DUPLICIT_OPTION, ownName());
+     if (singleChar && utf8StrLength(value) != 1)
+ 	Err1(S, E1_FORMAT_OPTION_CHAR, ownName());
