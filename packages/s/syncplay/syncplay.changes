@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:21:34 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
+
+- Update to 1.7.6
+  - Fix M3U8 playlist loading by skipping comment and metadata lines
+    beginning with #
+  - Restore TLS compatibility with pyOpenSSL 26.2.0 (
+  - Improve the invalid TLS certificate error message
+  - Fix a race condition that could cause deleted persistent rooms
+    to reappear after the server restarted
+  - Fix setting other users as ready or not ready in isolated rooms
+  - Do not offer readiness status controls for room entries
+  - Initialize latencyCalculation before its conditional assignment
+  - Fix automatic reconnection after a server timeout, including
+    cases occurring after a PC wakes from sleep
+  - Fix the default IPv6 server listen interface
+  - Support mpv version strings containing a v prefix
+  - Fix setuptools deprecation warnings for Syncplay resource
+    packages
+  - Update the copyright notice to 2026
+  - Fix incorrect file ownership in Debian packages by building
+    them with fakeroot
+- drop support-tls-on-pyopenssl-26.2.0.patch (upstream)
+
+-------------------------------------------------------------------
 Fri May 22 16:04:25 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
 
 - Add support-tls-on-pyopenssl-26.2.0.patch
@@ -26,9 +50,9 @@ Sat Apr 26 09:27:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.4:
   * Added ‘readiness override’ feature. If you can control a remove, you can
-    set someone a ready or not ready through the context menu in the list of 
-    who is playing what. Only works if the server is running v.1.7.4, but 
-    can change status for people using older clients. Adds the 
+    set someone a ready or not ready through the context menu in the list of
+    who is playing what. Only works if the server is running v.1.7.4, but
+    can change status for people using older clients. Adds the
     folderSearchWarningThreshold’ setting to the Synclay INI.
   * Allow folder search timings to be tweaked for better FTP rmount support,
     adding ‘folderSearchFirstFileTimeout’, ‘folderSearchTimeout’ and
@@ -45,17 +69,17 @@ Sat Apr 26 09:27:20 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 Thu May  9 19:29:21 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.7.3:
-  * Fix MPV socket getting created in CWD folder rand only create second pipe 
+  * Fix MPV socket getting created in CWD folder rand only create second pipe
     if manually specified using input-ipc-server per player argument
-  * Add support for mpv installed from Microsoft store 
-  * Fix invalid string escapes 
+  * Add support for mpv installed from Microsoft store
+  * Fix invalid string escapes
 
 - Update to version 1.7.2:
-  * Add new per-user mpv.net path 
-  * Pass input-ipc-server player argument to mpv 
-  * Fix --no-gui PySide dependency issue on non-Windows OS 
-  * Fixed German Translation and added more Translated Strings 
-  * Remove adding executable permissions to .desktop files 
+  * Add new per-user mpv.net path
+  * Pass input-ipc-server player argument to mpv
+  * Fix --no-gui PySide dependency issue on non-Windows OS
+  * Fixed German Translation and added more Translated Strings
+  * Remove adding executable permissions to .desktop files
   * Allow player arguments with spaces/quotes
   * Fixed MPC-HC hanging issue involving 'LRESULT' error
   * Don't log all 32/64-bit cryptography 'frozen zipimport' errors
@@ -133,7 +157,7 @@ Sun Apr 16 15:31:09 UTC 2023 - Alexei Sorokin <sor.alexei@meowr.ru>
 -------------------------------------------------------------------
 Thu Sep  2 20:14:46 UTC 2021 - Emily Roberts <nopeinomicon@posteo.net>
 
-- Update to version 1.6.9 
+- Update to version 1.6.9
   * Removed references to discontinued IRC channel
   * Update and improve Brazilian Portuguese translation
 

@@ -71,4 +71,41 @@
     <comment></comment>
     <requestid>1355024</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>1fc6704f46a5023f7b5d19f48a9c5ebf</srcmd5>
+    <version>1.7.6</version>
+    <time>1789142682</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.6
+  - Fix M3U8 playlist loading by skipping comment and metadata lines
+    beginning with #
+  - Restore TLS compatibility with pyOpenSSL 26.2.0 (
+  - Improve the invalid TLS certificate error message
+  - Fix a race condition that could cause deleted persistent rooms
+    to reappear after the server restarted
+  - Fix setting other users as ready or not ready in isolated rooms
+  - Do not offer readiness status controls for room entries
+  - Initialize latencyCalculation before its conditional assignment
+  - Fix automatic reconnection after a server timeout, including
+    cases occurring after a PC wakes from sleep
+  - Fix the default IPv6 server listen interface
+  - Support mpv version strings containing a v prefix
+  - Fix setuptools deprecation warnings for Syncplay resource
+    packages
+  - Update the copyright notice to 2026
+  - Fix incorrect file ownership in Debian packages by building
+    them with fakeroot
+- drop support-tls-on-pyopenssl-26.2.0.patch (upstream)
+
+    set someone a ready or not ready through the context menu in the list of
+    who is playing what. Only works if the server is running v.1.7.4, but
+    can change status for people using older clients. Adds the
+  * Fix MPV socket getting created in CWD folder rand only create second pipe
+  * Add support for mpv installed from Microsoft store
+  * Fix invalid string escapes
+  * Add new per-user mpv.net path
+  * Pass input-ipc-server player argument to mpv
+  * Fix --no-gui PySide dependency issue on non-Windows OS</comment>
+    <requestid>1377346</requestid>
+  </revision>
 </revisionlist>
