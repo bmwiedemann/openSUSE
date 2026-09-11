@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep  3 05:53:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 6.2.0
+  * Bugs:
+    + FELIX-6830: maven-bundle-plugin includes alien resources (e.g.
+      beans_*.xsd, validation-*.xsd) from classpath dependencies
+      when a module-info is present
+    + FELIX-6857: maven-bundle-plugin: do not embed type=pom
+      dependencies (bnd fails opening the .pom as a JAR)
+  * Improvements:
+    + FELIX-6858: Upgrade bndlib to 7.4.0
+    + FELIX-6741: Upgrade dependencies for maven-bundle-plugin
+      (bnd 7.3.0 among other updates)
+    + FELIX-6708: Upgrade bnd to 7.0.0 (Java 17 or higher required)
+- Fetch sources using source service from the felix monorepo
+- Removed patch:
+  * new-reporting-api.patch
+    + Integrated upstream.
+
+-------------------------------------------------------------------
 Mon Jul 21 14:19:23 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

@@ -17,14 +17,13 @@
 
 
 Name:           maven-bundle-plugin
-Version:        5.1.9
+Version:        6.2.0
 Release:        0
 Summary:        Maven Bundle Plugin
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://felix.apache.org
-Source0:        https://repo1.maven.org/maven2/org/apache/felix/%{name}/%{version}/%{name}-%{version}-source-release.tar.gz
-Patch0:         new-reporting-api.patch
+Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib)
@@ -68,11 +67,10 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch -P 0 -p1
 
 find -name '*.jar' -delete
 
-%pom_change_dep :org.osgi.core :osgi.core
+%pom_remove_dep org.apache.felix:org.apache.felix.metatype
 
 %pom_remove_plugin :maven-invoker-plugin
 

@@ -1,0 +1,17 @@
+<services>
+	<service name="tar_scm" mode="manual">
+		<param name="scm">git</param>
+		<param name="url">https://github.com/apache/felix-dev.git</param>
+		<param name="revision">maven-bundle-plugin-6.2.0</param>
+		<param name="match-tag">maven-bundle-plugin-*</param>
+		<param name="versionformat">@PARENT_TAG@</param>
+        <param name="versionrewrite-pattern">maven-bundle-plugin-(.*)</param>
+		<param name="subdir">tools/maven-bundle-plugin</param>
+		<param name="filename">maven-bundle-plugin</param>
+	</service>
+	<service name="recompress" mode="manual">
+		<param name="file">*.tar</param>
+		<param name="compression">xz</param>
+	</service>
+	<service name="set_version" mode="manual"/>
+</services>
