@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 01:10:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Declare support for Python 3.15.
+
+-------------------------------------------------------------------
 Fri Aug 21 10:09:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.3.5:

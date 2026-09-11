@@ -29,6 +29,8 @@ Summary:        The dynamic configurator for your Python Project
 License:        MIT
 URL:            https://github.com/dynaconf/dynaconf
 Source:         https://github.com/dynaconf/dynaconf/archive/%{version}.tar.gz#/dynaconf-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#dynaconf/dynaconf#1451
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}

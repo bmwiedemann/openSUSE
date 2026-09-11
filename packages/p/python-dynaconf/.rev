@@ -305,4 +305,13 @@
     psb.</comment>
     <requestid>1372787</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>f5cc7355f6a1278140756f7c602a1fe6</srcmd5>
+    <version>3.3.5</version>
+    <time>1789142573</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Declare support for Python 3.15.</comment>
+    <requestid>1377028</requestid>
+  </revision>
 </revisionlist>
