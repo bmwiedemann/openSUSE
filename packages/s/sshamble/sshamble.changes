@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:18:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.4
+  * mikrotik: handle interactive shell better.
+  * fix interactive shells.
+  * support mikrotik sessions.
+
+-------------------------------------------------------------------
 Tue Sep  8 06:03:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.3.12

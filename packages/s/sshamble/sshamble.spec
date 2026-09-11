@@ -18,7 +18,7 @@
 
 
 Name:           sshamble
-Version:        0.3.12
+Version:        0.4.0
 Release:        0
 Summary:        Security testing toolset for SSH
 License:        BSD-2-Clause
