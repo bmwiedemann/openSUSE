@@ -1,0 +1,38 @@
+From c73be45c664349554fcbc5ab3919b74b33c3bc1e Mon Sep 17 00:00:00 2001
+From: Henry Schreiner <HenrySchreinerIII@gmail.com>
+Date: Mon, 20 Jul 2026 11:38:01 -0400
+Subject: [PATCH] test: tolerate CMake 4 install path normalization (#1205)
+
+CMake >= 4 drops the redundant "/./" from install messages, so
+test_make now normalizes the captured output before matching.
+
+Assisted-by: ClaudeCode:claude-opus-4.8
+---
+ tests/test_cmaker.py | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: scikit_build-0.19.1/tests/test_cmaker.py
+===================================================================
+--- scikit_build-0.19.1.orig/tests/test_cmaker.py
++++ scikit_build-0.19.1/tests/test_cmaker.py
+@@ -123,16 +123,18 @@ def test_make(configure_with_cmake_sourc
+             messages += [
+                 "/SRC",
+                 f"/BUILD/{to_unix_path(CMAKE_BUILD_DIR())}",
+-                f"/BUILD/{to_unix_path(CMAKE_INSTALL_DIR())}/./foo.txt",
++                f"/BUILD/{to_unix_path(CMAKE_INSTALL_DIR())}/foo.txt",
+             ]
+         else:
+             messages += [
+                 "/SRC",
+                 f"/SRC/{to_unix_path(CMAKE_BUILD_DIR())}",
+-                f"/SRC/{to_unix_path(CMAKE_INSTALL_DIR())}/./foo.txt",
++                f"/SRC/{to_unix_path(CMAKE_INSTALL_DIR())}/foo.txt",
+             ]
+ 
++        # CMake >= 4 normalizes the redundant "/./" out of install messages.
+         out, _ = capfd.readouterr()
++        out = out.replace("/./", "/")
+         for message in messages:
+             assert message in out
+ 

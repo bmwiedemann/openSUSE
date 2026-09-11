@@ -27,15 +27,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build%{psuffix}
-Version:        0.19.0
+Version:        0.19.1
 Release:        0
 Summary:        Improved build system generator for Python C/C++/Fortran/Cython extensions
 License:        MIT
 URL:            https://github.com/scikit-build/scikit-build
 Source:         https://files.pythonhosted.org/packages/source/s/scikit-build/scikit_build-%{version}.tar.gz
 Source99:       sample-setup.cfg
-# PATCH-FIX-UPSTREAM scikit-build-pr1180-warnsetuptools.patch gh#scikit-build/scikit-build#1180
-Patch0:         scikit-build-pr1180-warnsetuptools.patch
+# PATCH-FIX-UPSTREAM https://github.com/scikit-build/scikit-build/pull/1205 test: tolerate CMake 4 install path normalization
+Patch0:         cmake4.patch
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatch-vcs}
@@ -74,7 +74,7 @@ BuildArch:      noarch
 Improved build system generator for Python C/C++/Fortran/Cython extensions
 
 %prep
-%autosetup -n scikit_build-%{version}
+%autosetup -p1 -n scikit_build-%{version}
 %if %{with test}
 # some tests call setup.py develop|install|test, which by default write to /usr
 # This is not allowed in OBS

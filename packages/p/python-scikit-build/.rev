@@ -338,4 +338,17 @@ This is for updated setuptools in Staging:B</comment>
 - cleaned up spec using spec-cleaner</comment>
     <requestid>1360069</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>fa1bf78221f1c2823d2441c27f2523c0</srcmd5>
+    <version>0.19.1</version>
+    <time>1789142756</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.19.1
+  * Support Visual Studio 18 2026
+  * Correctness bugs found in code review
+  * Remove usage of py.path
+- Add cmake4.patch to fix tests
+- Drop merged scikit-build-pr1180-warnsetuptools.patch</comment>
+    <requestid>1377417</requestid>
+  </revision>
 </revisionlist>

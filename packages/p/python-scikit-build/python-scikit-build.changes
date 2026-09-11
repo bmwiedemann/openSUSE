@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:12:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 0.19.1
+  * Support Visual Studio 18 2026
+  * Correctness bugs found in code review
+  * Remove usage of py.path
+- Add cmake4.patch to fix tests
+- Drop merged scikit-build-pr1180-warnsetuptools.patch
+
+-------------------------------------------------------------------
 Wed Jun 17 14:56:59 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Add scikit-build-pr1180-warnsetuptools.patch
