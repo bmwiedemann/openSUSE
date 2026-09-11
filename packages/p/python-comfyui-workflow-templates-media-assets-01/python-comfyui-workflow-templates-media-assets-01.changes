@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:42:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.43:
+  * 9 new thumbnail webp files for the 8 templates the 0.3.337
+    manifest added; purely additive, __init__.py byte-identical,
+    no dependencies
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.39:
