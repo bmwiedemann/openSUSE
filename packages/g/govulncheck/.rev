@@ -374,4 +374,15 @@
   * Refs boo#1248678 (forwarded request 1374521 from jfkw)</comment>
     <requestid>1374617</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8e9bb10cf40daa9d747cd3aa86e13a7d</srcmd5>
+    <version>1.8.0</version>
+    <time>1789142739</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.0:
+  * go.mod: update golang.org/x dependencies
+  * cmd/govulncheck/integration: bump image version
+  * all: upgrade go directive to at least 1.26.0 [generated] (forwarded request 1377406 from jfkw)</comment>
+    <requestid>1377407</requestid>
+  </revision>
 </revisionlist>
