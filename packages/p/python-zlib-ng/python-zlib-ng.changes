@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 04:26:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-315.patch:
+  * Do not crash during copy() on a flushed compress object.
+
+-------------------------------------------------------------------
 Tue Mar 24 15:21:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.0:

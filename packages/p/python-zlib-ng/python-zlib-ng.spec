@@ -31,9 +31,10 @@ Version:        1.0.0
 Release:        0
 License:        Python-2.0
 Summary:        Faster zlib and gzip compatible compression and decompression
-Group:          Development/Languages/Python
 URL:            https://github.com/pycompression/python-zlib-ng
 Source0:        https://files.pythonhosted.org/packages/source/z/zlib-ng/zlib_ng-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#pycompression/python-zlib-ng#80
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77}
@@ -56,7 +57,7 @@ Faster zlib and gzip compatible compression and decompression by providing Pytho
 This package provides Python bindings for the zlib-ng library.
 
 %prep
-%setup -q -n zlib_ng-%{version}
+%autosetup -p1 -n zlib_ng-%{version}
 
 %build
 %if !%{with test}

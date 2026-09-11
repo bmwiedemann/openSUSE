@@ -1,0 +1,175 @@
+From 31a11a4b936f9ad8fae5150fea67513e9302aa1a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Edgar=20Ram=C3=ADrez=20Mondrag=C3=B3n?=
+ <edgarrm358@gmail.com>
+Date: Tue, 30 Jun 2026 15:51:19 -0600
+Subject: [PATCH 1/5] Fix a crash when calling `copy()` on a flushed compress
+ object on Python 3.15
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Signed-off-by: Edgar Ramírez Mondragón <edgarrm358@gmail.com>
+---
+ CHANGELOG.rst               | 5 +++++
+ src/zlib_ng/zlib_ngmodule.c | 3 ++-
+ 2 files changed, 7 insertions(+), 1 deletion(-)
+
+Index: zlib_ng-1.0.0/src/zlib_ng/zlib_ngmodule.c
+===================================================================
+--- zlib_ng-1.0.0.orig/src/zlib_ng/zlib_ngmodule.c
++++ zlib_ng-1.0.0/src/zlib_ng/zlib_ngmodule.c
+@@ -801,7 +801,8 @@ zlib_Compress_copy(compobject *self, PyO
+ 
+     if (!self->is_initialised) {
+         PyErr_SetString(PyExc_ValueError, "Cannot copy flushed objects.");
+-        goto error;
++        Py_DECREF(return_value);
++        return NULL;
+     }
+ 
+     /* Copy the zstream state
+Index: zlib_ng-1.0.0/tests/test_compat.py
+===================================================================
+--- zlib_ng-1.0.0.orig/tests/test_compat.py
++++ zlib_ng-1.0.0/tests/test_compat.py
+@@ -64,21 +64,21 @@ def limited_zlib_tests(strategies=ZLIB_S
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "value"],
+-                         itertools.product(DATA_SIZES, SEEDS))
++                         list(itertools.product(DATA_SIZES, SEEDS)))
+ def test_crc32(data_size, value):
+     data = DATA[:data_size]
+     assert zlib.crc32(data, value) == zlib_ng.crc32(data, value)
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "value"],
+-                         itertools.product(DATA_SIZES, SEEDS))
++                         list(itertools.product(DATA_SIZES, SEEDS)))
+ def test_adler32(data_size, value):
+     data = DATA[:data_size]
+     assert zlib.adler32(data, value) == zlib_ng.adler32(data, value)
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level", "wbits"],
+-                         itertools.product(DATA_SIZES, range(10), WBITS_RANGE))
++                         list(itertools.product(DATA_SIZES, range(10), WBITS_RANGE)))
+ def test_compress(data_size, level, wbits):
+     data = DATA[:data_size]
+     compressed = zlib_ng.compress(data, level=level, wbits=wbits)
+@@ -87,7 +87,7 @@ def test_compress(data_size, level, wbit
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level"],
+-                         itertools.product(DATA_SIZES, range(10)))
++                         list(itertools.product(DATA_SIZES, range(10))))
+ def test_decompress_zlib(data_size, level):
+     data = DATA[:data_size]
+     compressed = zlib.compress(data, level=level)
+@@ -96,7 +96,7 @@ def test_decompress_zlib(data_size, leve
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level", "wbits", "memLevel", "strategy"],
+-                         limited_zlib_tests(ZLIB_STRATEGIES))
++                         list(limited_zlib_tests(ZLIB_STRATEGIES)))
+ def test_decompress_wbits(data_size, level, wbits, memLevel, strategy):
+     data = DATA[:data_size]
+     compressobj = zlib.compressobj(level=level, wbits=wbits, memLevel=memLevel,
+@@ -107,7 +107,7 @@ def test_decompress_wbits(data_size, lev
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level", "wbits"],
+-                         itertools.product([128 * 1024], range(10), WBITS_RANGE),)
++                         list(itertools.product([128 * 1024], range(10), WBITS_RANGE),))
+ def test_decompress_zlib_ng(data_size, level, wbits):
+     data = DATA[:data_size]
+     compressed = zlib_ng.compress(data, level=level, wbits=wbits)
+@@ -116,7 +116,7 @@ def test_decompress_zlib_ng(data_size, l
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level", "wbits", "memLevel", "strategy"],
+-                         limited_zlib_tests(ZLIBNG_STRATEGIES))
++                         list(limited_zlib_tests(ZLIBNG_STRATEGIES)))
+ def test_compress_compressobj(data_size, level, wbits, memLevel, strategy):
+     data = DATA[:data_size]
+     compressobj = zlib_ng.compressobj(level=level,
+@@ -129,7 +129,7 @@ def test_compress_compressobj(data_size,
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level", "wbits", "memLevel", "strategy"],
+-                         limited_zlib_tests(ZLIB_STRATEGIES))
++                         list(limited_zlib_tests(ZLIB_STRATEGIES)))
+ def test_decompress_decompressobj(data_size, level, wbits, memLevel, strategy):
+     data = DATA[:data_size]
+     compressobj = zlib.compressobj(level=level, wbits=wbits, memLevel=memLevel,
+@@ -151,7 +151,7 @@ def test_decompressobj_unconsumed_tail()
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level"],
+-                         itertools.product(DATA_SIZES, range(10)))
++                         list(itertools.product(DATA_SIZES, range(10))))
+ def test_gzip_ng_compress(data_size, level):
+     data = DATA[:data_size]
+     compressed = gzip_ng.compress(data, compresslevel=level)
+@@ -159,7 +159,7 @@ def test_gzip_ng_compress(data_size, lev
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level"],
+-                         itertools.product(DATA_SIZES, range(10)))
++                         list(itertools.product(DATA_SIZES, range(10))))
+ def test_decompress_gzip(data_size, level):
+     data = DATA[:data_size]
+     compressed = gzip.compress(data, compresslevel=level)
+@@ -168,7 +168,7 @@ def test_decompress_gzip(data_size, leve
+ 
+ 
+ @pytest.mark.parametrize(["data_size", "level"],
+-                         itertools.product(DATA_SIZES, range(10)))
++                         list(itertools.product(DATA_SIZES, range(10))))
+ def test_decompress_gzip_ng(data_size, level):
+     data = DATA[:data_size]
+     compressed = gzip_ng.compress(data, compresslevel=level)
+@@ -177,7 +177,7 @@ def test_decompress_gzip_ng(data_size, l
+ 
+ 
+ @pytest.mark.parametrize(["unused_size", "wbits"],
+-                         itertools.product([26], [-15, 15, 31]))
++                         list(itertools.product([26], [-15, 15, 31])))
+ def test_unused_data(unused_size, wbits):
+     unused_data = b"abcdefghijklmnopqrstuvwxyz"[:unused_size]
+     compressor = zlib.compressobj(wbits=wbits)
+Index: zlib_ng-1.0.0/tests/test_gzip_ng.py
+===================================================================
+--- zlib_ng-1.0.0.orig/tests/test_gzip_ng.py
++++ zlib_ng-1.0.0/tests/test_gzip_ng.py
+@@ -65,7 +65,7 @@ def test_GzipNGFile_read_truncated():
+                 "reached")
+ 
+ 
+-@pytest.mark.parametrize("level", range(1, 10))
++@pytest.mark.parametrize("level", list(range(1, 10)))
+ def test_decompress_stdin_stdout(capsysbinary, level):
+     """Test if the command line can decompress data that has been compressed
+     by gzip at all levels."""
+Index: zlib_ng-1.0.0/tests/test_gzip_ng_threaded.py
+===================================================================
+--- zlib_ng-1.0.0.orig/tests/test_gzip_ng_threaded.py
++++ zlib_ng-1.0.0/tests/test_gzip_ng_threaded.py
+@@ -31,7 +31,7 @@ def test_threaded_read():
+ 
+ 
+ @pytest.mark.parametrize(["mode", "threads"],
+-                         itertools.product(["wb", "wt"], [1, 3, -1]))
++                         list(itertools.product(["wb", "wt"], [1, 3, -1])))
+ def test_threaded_write(mode, threads):
+     with tempfile.NamedTemporaryFile("wb", delete=False) as tmp:
+         # Use a small block size to simulate many writes.
+@@ -216,7 +216,7 @@ def test_threaded_writer_does_not_close_
+ 
+ @pytest.mark.timeout(5)
+ @pytest.mark.parametrize(
+-    ["mode", "threads"], itertools.product(["rb", "wb"], [1, 2]))
++    ["mode", "threads"], list(itertools.product(["rb", "wb"], [1, 2])))
+ def test_threaded_program_can_exit_on_error(tmp_path, mode, threads):
+     program = tmp_path / "no_context_manager.py"
+     test_file = tmp_path / "output.gz"

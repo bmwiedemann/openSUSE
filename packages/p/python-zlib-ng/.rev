@@ -67,4 +67,13 @@
     PYTHONPATH.</comment>
     <requestid>1342268</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>f54983bc05c00cc1da31260f8baa30cb</srcmd5>
+    <version>1.0.0</version>
+    <time>1789142587</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Do not crash during copy() on a flushed compress object.</comment>
+    <requestid>1377035</requestid>
+  </revision>
 </revisionlist>
