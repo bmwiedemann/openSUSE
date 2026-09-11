@@ -24,6 +24,8 @@ Summary:        A wrapper for the GNU Privacy Guard (GPG or GnuPG)
 License:        BSD-3-Clause
 URL:            https://pythonhosted.org/python-gnupg/index.html
 Source:         https://files.pythonhosted.org/packages/source/p/python-gnupg/python_gnupg-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/vsajip/python-gnupg/commit/a97de39361545761e040f3b37139592a77597454 gpg 2.5.21 introduced a change whereby the mode does change
+Patch0:         gpg2521.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -41,7 +43,7 @@ This module allows access to GnuPG's key management,
 encryption and signature functionality from Python programs.
 
 %prep
-%setup -q -n python-gnupg-%{version}
+%autosetup -p1 -n python-gnupg-%{version}
 
 %build
 %pyproject_wheel

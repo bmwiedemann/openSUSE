@@ -1,0 +1,104 @@
+From a97de39361545761e040f3b37139592a77597454 Mon Sep 17 00:00:00 2001
+From: Vinay Sajip <vinay_sajip@yahoo.co.uk>
+Date: Sun, 9 Aug 2026 17:27:41 +0100
+Subject: [PATCH] Add quick_sign_key function, add hidden recipients to
+ encrypt_file, and allow paths in verify_file.
+
+---
+ README.rst     |  4 ++++
+ pyproject.toml |  2 +-
+ test_gnupg.py  | 29 +++++++++++++++++++----------
+ 3 files changed, 24 insertions(+), 11 deletions(-)
+
+Index: python-gnupg-0.5.6/README.rst
+===================================================================
+--- python-gnupg-0.5.6.orig/README.rst
++++ python-gnupg-0.5.6/README.rst
+@@ -77,6 +77,10 @@ Change log
+ 
+ Released: Not yet
+ 
++* Add quick_sign_key function, add hidden recipients to encrypt_file, and allow paths in
++  verify_file. Thanks to Zach Szczesniak for the patch.
++
++
+ 0.5.6
+ -----
+ 
+Index: python-gnupg-0.5.6/pyproject.toml
+===================================================================
+--- python-gnupg-0.5.6.orig/pyproject.toml
++++ python-gnupg-0.5.6/pyproject.toml
+@@ -1,5 +1,5 @@
+ [build-system]
+ requires = [
+-    "setuptools >= 44",
++    "setuptools >= 68,<75",
+ ]
+ build-backend = 'setuptools.build_meta'
+Index: python-gnupg-0.5.6/test_gnupg.py
+===================================================================
+--- python-gnupg-0.5.6.orig/test_gnupg.py
++++ python-gnupg-0.5.6/test_gnupg.py
+@@ -1143,6 +1143,7 @@ class GPGTestCase(unittest.TestCase):
+             # pick a mode that won't be already in effect via umask
+             if os.path.exists(encfname) and os.path.exists(decfname):
+                 mode = os.stat(encfname).st_mode | stat.S_IXUSR
++                logger.debug('Setting mode to %s', oct(mode))
+                 os.chmod(encfname, mode)
+                 # assume same for decfname
+                 os.chmod(decfname, mode)
+@@ -1180,21 +1181,28 @@ class GPGTestCase(unittest.TestCase):
+             if gnupg._py3k:
+                 logger.debug('about to pass text stream to decrypt_file')
+                 with open(encfname, 'r') as efile:
+-                    self.assertRaises(UnicodeDecodeError, self.gpg.decrypt_file, efile,
+-                                      passphrase='bbrown', output=decfname)
++                    self.assertRaises(UnicodeDecodeError,
++                                      self.gpg.decrypt_file,
++                                      efile,
++                                      passphrase='bbrown',
++                                      output=decfname)
+         finally:
+             for fn in (encfname, decfname):
+-                if os.name == 'posix' and mode is not None:
++                if os.name == 'posix' and mode is not None and self.gpg.version < (2, 5, 21):
+                     # Check that the file wasn't deleted, and that the
+                     # mode bits we set are still in effect
+-                    self.assertEqual(os.stat(fn).st_mode, mode)
++                    # gpg 2.5.21 introduced a change whereby the mode does change
++                    msg = 'Mode changed for %s: %s vs. %s' % (fn, oct(os.stat(fn).st_mode), oct(mode))
++                    if os.stat(fn).st_mode != mode:
++                        logger.error('Mode changed for %s: %s vs. %s', fn, oct(os.stat(fn).st_mode), oct(mode))
++                    self.assertEqual(os.stat(fn).st_mode, mode, msg)
+                 if os.path.exists(fn):
+                     os.remove(fn)
+ 
+     def test_file_encryption_and_decryption(self):
+         "Test that encryption/decryption to/from file works"
+-        encfno, encfname = tempfile.mkstemp(prefix='pygpg-test-')
+-        decfno, decfname = tempfile.mkstemp(prefix='pygpg-test-')
++        encfno, encfname = tempfile.mkstemp(prefix='pygpg-test-', suffix='.enc')
++        decfno, decfname = tempfile.mkstemp(prefix='pygpg-test-', suffix='.dec')
+         # On Windows, if the handles aren't closed, the files can't be deleted
+         os.close(encfno)
+         os.close(decfno)
+@@ -1638,7 +1646,7 @@ TEST_GROUPS = {
+     'basic':
+     set(['test_environment', 'test_list_keys_initial', 'test_nogpg', 'test_make_args', 'test_quote_with_shell']),
+     'test':
+-    set(['test_add_subkey']),
++    set(['test_file_encryption_and_decryption']),
+ }
+ 
+ 
+@@ -1659,7 +1667,9 @@ def suite(args=None):
+ 
+ 
+ def init_logging():
++
+     class PrimegenFilter(logging.Filter):
++
+         def filter(self, record):
+             arg = record.args
+             if isinstance(arg, (list, tuple)) and len(arg) > 0:
