@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 12:48:10 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Pin go version to 1.26 due to https://github.com/grpc/grpc-go/issues/9206
+
+-------------------------------------------------------------------
+Thu Sep 10 12:07:45 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.6:
+  * Bump FDW version to v2.2.6 (#5034)
+  * Bump Go toolchain to 1.26.7 to remediate CVE-2026-39821 (GO-2026-5026) (#5031) (#5033)
+
+-------------------------------------------------------------------
 Mon Aug 10 13:52:40 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.4.5:

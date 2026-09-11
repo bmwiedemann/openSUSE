@@ -330,4 +330,15 @@
   * Fix release workflow homebrew PR title check (#4983) (#5004) (forwarded request 1370548 from ph03nix)</comment>
     <requestid>1370553</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>dca30dbc0b259c7c48ec9fcb30cbe3ce</srcmd5>
+    <version>2.4.6</version>
+    <time>1789142509</time>
+    <user>anag_factory</user>
+    <comment>- Pin go version to 1.26 due to https://github.com/grpc/grpc-go/issues/9206
+- Update to version 2.4.6:
+  * Bump FDW version to v2.2.6 (#5034)
+  * Bump Go toolchain to 1.26.7 to remediate CVE-2026-39821 (GO-2026-5026) (#5031) (#5033) (forwarded request 1376947 from ph03nix)</comment>
+    <requestid>1376953</requestid>
+  </revision>
 </revisionlist>
