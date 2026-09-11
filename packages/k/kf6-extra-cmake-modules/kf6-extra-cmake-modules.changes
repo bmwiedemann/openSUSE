@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:21:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * List ECM sources explicitly instead of using GLOBS
+  * ECMInstalledLibraryCheck: add more separating linebreaks to generated files
+  * ExecuteKDEModules: add newer KDE modules to test
+  * ExecuteKDEModules: split off support for apple platform, document it
+  * ECMInstalledLibraryCheck: use $<cond:string> over $<IF:cond,string,>
+  * Add ECMInstalledLibraryCheck
+  * ecm_generate_export_header: make VERSION optional, default to PROJECT_VERSION
+  * ECMSetupVersion: support version args in <major>.<minor> and <major> forms
+  * ECMSetupVersion: use final hex number in version header, not calculation
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
