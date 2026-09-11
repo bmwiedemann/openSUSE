@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * Add DotEnv syntax highlighting
+  * repository.h: Make Repository::eventFilter() protected
+  * syntax/yaml.xml: Have BuildStream files use the yaml highlighter
+  * Associate .envrc files with Bash
+  * Add KDL syntax highlighting
+  * Add Just syntax highlighting
+  * Initialize more cmake variables explicitly
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
