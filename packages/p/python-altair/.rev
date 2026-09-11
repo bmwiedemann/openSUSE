@@ -237,4 +237,13 @@
     up to the outer structural layer following an add_params operation.</comment>
     <requestid>1366048</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>91cd2c495842d7fdd27f1e2bd0250e4e</srcmd5>
+    <version>6.2.2</version>
+    <time>1789142691</time>
+    <user>anag_factory</user>
+    <comment>- drop buildrequires on vega_datasets, to be removed from
+  Tumbleweed</comment>
+    <requestid>1377338</requestid>
+  </revision>
 </revisionlist>

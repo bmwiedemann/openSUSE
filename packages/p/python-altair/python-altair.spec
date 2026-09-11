@@ -40,7 +40,6 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module toolz}
 BuildRequires:  %{python_module typing-extensions >= 4.12 if %python-base < 3.15}
-BuildRequires:  %{python_module vega_datasets}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2
