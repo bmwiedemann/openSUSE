@@ -20,7 +20,7 @@
 %define lmdmaj 120
 
 Name:           live555
-Version:        2026.08.14
+Version:        2026.08.25
 Release:        0
 Summary:        LIVE555 Streaming Media
 License:        LGPL-2.1-only

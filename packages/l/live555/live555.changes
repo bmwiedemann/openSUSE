@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:57:16 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2026.08.25:
+  + Fixed a bug in "VorbisAudioRTPSource" that could have caused a
+    malicious SDP description to crash a RTP client.
+
+-------------------------------------------------------------------
 Sat Aug 22 20:32:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.08.14:
@@ -83,10 +90,10 @@ Wed May 27 10:32:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Fri Mar 27 09:03:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
-- Update to version 2026.03.23:
-  + Fixed a bug in the RTSP server code that caused it to
-    improperly handle non-interleaved "SETUP"s that were sent for a
-    session where interleaving (i.e., RTP/RTCP-over-TCP) had
+- Update to version 2026.03.23 (boo#1279932):
+  + CVE-2026-38998: Fixed a bug in the RTSP server code that caused
+    it to improperly handle non-interleaved "SETUP"s that were sent
+    for a session where interleaving (i.e., RTP/RTCP-over-TCP) had
     already been "SETUP".  (This could cause a 'use-after-free'
     error.
   - For changes between 2024.08.01 to today, please refer to
