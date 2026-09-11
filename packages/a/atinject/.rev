@@ -55,4 +55,12 @@
     <comment>Revert to previous version format to accomodate sle updates</comment>
     <requestid>1186337</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>0b63cdfe54fa585c63ccefc0104a29cc</srcmd5>
+    <version>1+20211017gitd06ce18</version>
+    <time>1789142635</time>
+    <user>anag_factory</user>
+    <comment>Install a real pom file</comment>
+    <requestid>1377323</requestid>
+  </revision>
 </revisionlist>

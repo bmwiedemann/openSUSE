@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep  3 21:34:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Install the real pom, since some unit tests in some packages
+  need a real pom to descend
+
+-------------------------------------------------------------------
 Tue Jul  9 08:20:48 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Revert to versioning 1+<date>git<git short hash> to avoid upgrade

@@ -1,7 +1,7 @@
 #
 # spec file for package atinject
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,15 +50,22 @@ This package contains the API documentation for %{name}.
 %setup -q
 cp %{SOURCE1} build.xml
 
+%pom_xpath_set pom:project/pom:groupId javax.inject
+%pom_xpath_set pom:project/pom:artifactId javax.inject
+
 %build
-%{ant} package javadoc
+ant package javadoc
 
 %install
 # jars
-install -dm 755 %{buildroot}%{_javadir}/javax.inject
+install -dm 0755 %{buildroot}%{_javadir}/javax.inject
 install -m 0644 target/javax.inject-%{artifactversion}.jar %{buildroot}%{_javadir}/%{name}.jar
 (cd %{buildroot}%{_javadir}/javax.inject && ln -s ../%{name}.jar .)
-%add_maven_depmap javax.inject:javax.inject:%{artifactversion} %{name}.jar
+
+# pom
+install -dm 0755 %{buildroot}%{_mavenpomdir}
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%add_maven_depmap %{name}.pom %{name}.jar
 
 # javadoc
 install -dm 755 %{buildroot}%{_javadocdir}/%{name}
