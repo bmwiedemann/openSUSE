@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:06:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 0.43.6
+  * Fix aws_get_version conflict by @azkrishpy in (#903)
+  * bind out low speed limit on http client by @sbiscigl in (#905)
+
+-------------------------------------------------------------------
 Thu Aug 13 07:52:42 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 0.43.5
