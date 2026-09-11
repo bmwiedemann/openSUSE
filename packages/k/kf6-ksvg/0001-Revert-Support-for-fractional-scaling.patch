@@ -14,11 +14,11 @@ This reverts commit 3dd28b0640d2c613654f992ad3453a0b92beebe1.
  src/ksvg/svg.cpp                        |  27 ++++---
  7 files changed, 115 insertions(+), 120 deletions(-)
 
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/framesvgitem.cpp
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/declarativeimports/framesvgitem.cpp
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/declarativeimports/framesvgitem.cpp	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/framesvgitem.cpp	2025-10-29 05:53:35.434927031 +0100
-@@ -123,7 +123,7 @@
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/declarativeimports/framesvgitem.cpp	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/declarativeimports/framesvgitem.cpp	2026-08-19 07:38:23.616648064 +0200
+@@ -122,7 +122,7 @@
  
      void reposition(const QRect &frameGeometry, QSize &fullSize)
      {
@@ -27,7 +27,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/framesvgit
  
          // ensure we're not passing a weird rectangle to updateTexturedRectGeometry
          if (!nodeRect.isValid() || nodeRect.isEmpty()) {
-@@ -153,7 +153,7 @@
+@@ -152,7 +152,7 @@
              QString elementId = prefix + FrameSvgHelpers::borderToElementId(m_border);
  
              // re-render the SVG at new size
@@ -36,7 +36,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/framesvgit
              textureRect = texture()->normalizedTextureSubRect();
          } else if (texture()) { // for fast stretch.
              textureRect = texture()->normalizedTextureSubRect();
-@@ -731,7 +731,10 @@
+@@ -730,7 +730,10 @@
  
  void FrameSvgItem::updateDevicePixelRatio()
  {
@@ -48,19 +48,19 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/framesvgit
      if (newDevicePixelRatio != m_frameSvg->devicePixelRatio()) {
          m_frameSvg->setDevicePixelRatio(newDevicePixelRatio);
          m_textureChanged = true;
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/svgitem.cpp
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/declarativeimports/svgitem.cpp
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/declarativeimports/svgitem.cpp	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/svgitem.cpp	2025-10-29 05:55:58.826843180 +0100
-@@ -15,6 +15,7 @@
- #include "ksvg/svg.h"
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/declarativeimports/svgitem.cpp	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/declarativeimports/svgitem.cpp	2026-08-19 07:38:23.616793086 +0200
+@@ -16,6 +16,7 @@
  
+ #include "imagetexturescache.h"
  #include "managedtexturenode.h"
 +#include <cmath> //floor()
  
  #include <KColorScheme>
  #include <KColorUtils>
-@@ -273,7 +274,10 @@
+@@ -277,7 +278,10 @@
  
  void SvgItem::updateDevicePixelRatio()
  {
@@ -72,10 +72,10 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/declarativeimports/svgitem.cp
      if (newDevicePixelRatio != m_svg->devicePixelRatio()) {
          m_svg->setDevicePixelRatio(newDevicePixelRatio);
          m_textureChanged = true;
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/framesvg.cpp
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/ksvg/framesvg.cpp	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp	2025-10-29 05:53:35.435166833 +0100
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/ksvg/framesvg.cpp	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/framesvg.cpp	2026-08-19 07:38:23.616864927 +0200
 @@ -15,7 +15,7 @@
  #include <QCryptographicHash>
  #include <QPainter>
@@ -94,7 +94,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      } else {
          return d->frameSize(d->frame.data());
      }
-@@ -490,6 +490,9 @@
+@@ -517,6 +517,9 @@
  
      if (maskFrame->cachedBackground.isNull()) {
          generateBackground(maskFrame);
@@ -104,7 +104,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      }
  
      return maskFrame->cachedBackground;
-@@ -554,8 +557,8 @@
+@@ -581,8 +584,8 @@
      }
  
      // Overlays
@@ -115,7 +115,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      if (overlayAvailable && !overlayCached) {
          overlaySize = q->elementSize(frame->prefix % QLatin1String("overlay")).toSize();
  
-@@ -582,7 +585,7 @@
+@@ -609,7 +612,7 @@
          if (q->hasElement(QLatin1String("mask-") % prefix % QLatin1String("center"))) {
              overlay = alphaMask();
          } else {
@@ -124,7 +124,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
              overlay.fill(Qt::white);
          }
          QPainter overlayPainter(&overlay);
-@@ -590,13 +593,13 @@
+@@ -617,13 +620,13 @@
          // Tiling?
          if (q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-horizontal"))
              || q->hasElement(frame->prefix % QLatin1String("hint-overlay-tile-vertical"))) {
@@ -141,7 +141,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
          }
  
          overlayPainter.end();
-@@ -609,14 +612,14 @@
+@@ -636,14 +639,14 @@
      if (!overlay.isNull()) {
          QPainter p(&frame->cachedBackground);
          p.setCompositionMode(QPainter::CompositionMode_SourceOver);
@@ -158,7 +158,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
  
      if (!size.isValid()) {
  #ifndef NDEBUG
-@@ -629,14 +632,13 @@
+@@ -656,14 +659,13 @@
          return;
      }
  
@@ -175,7 +175,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      paintCenter(p, frame, contentRect, size);
  
      paintCorner(p, frame, FrameSvg::LeftBorder | FrameSvg::TopBorder, contentRect);
-@@ -645,26 +647,25 @@
+@@ -672,26 +674,25 @@
      paintCorner(p, frame, FrameSvg::RightBorder | FrameSvg::BottomBorder, contentRect);
  
      // Sides
@@ -214,7 +214,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      if (frame->enabledBorders & FrameSvg::LeftBorder && q->hasElement(frame->prefix % QLatin1String("left"))) {
          contentRect.translate(frame->leftWidth * q->devicePixelRatio(), 0);
      }
-@@ -686,7 +687,7 @@
+@@ -713,7 +714,7 @@
  
          const QString oldPath = fd->imagePath;
          const FrameSvg::EnabledBorders oldBorders = fd->enabledBorders;
@@ -223,7 +223,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
          const int oldColorSet = fd->colorSet;
          const auto oldColors = fd->colorOverrides;
  
-@@ -751,28 +752,27 @@
+@@ -778,28 +779,27 @@
      }
  }
  
@@ -258,7 +258,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
              } else {
                  q->paint(&p, FrameSvgHelpers::sectionRect(FrameSvg::NoBorder, contentRect, fullSize * q->devicePixelRatio()), centerElementId);
              }
-@@ -781,7 +781,7 @@
+@@ -808,7 +808,7 @@
  
      if (frame->composeOverBorder) {
          p.setCompositionMode(QPainter::CompositionMode_DestinationIn);
@@ -267,7 +267,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
          p.setCompositionMode(QPainter::CompositionMode_SourceOver);
      }
  }
-@@ -789,51 +789,35 @@
+@@ -816,51 +816,35 @@
  void FrameSvgPrivate::paintBorder(QPainter &p,
                                    const QSharedPointer<FrameData> &frame,
                                    const FrameSvg::EnabledBorders borders,
@@ -326,7 +326,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      }
  }
  
-@@ -891,7 +875,7 @@
+@@ -918,7 +902,7 @@
      // qCDebug(LOG_KSVG) << "!!!!!!!!!!!!!!!!!!!!!! updating sizes" << prefix;
      Q_ASSERT(frame);
  
@@ -335,10 +335,10 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/framesvg.cpp
      q->resize();
      if (!frame->cachedBackground.isNull()) {
          frame->cachedBackground = QPixmap();
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_helpers.h
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/framesvg_helpers.h
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/ksvg/private/framesvg_helpers.h	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_helpers.h	2025-10-29 05:53:35.435298165 +0100
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/ksvg/private/framesvg_helpers.h	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/framesvg_helpers.h	2026-08-19 07:38:23.616990868 +0200
 @@ -45,7 +45,7 @@
  /*
   * Returns the suggested geometry for the borders given a fullSize frame size and a contentRect
@@ -385,10 +385,10 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_helpers
  }
  
  }
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_p.h
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/framesvg_p.h
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/ksvg/private/framesvg_p.h	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_p.h	2025-10-29 05:53:35.435356265 +0100
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/ksvg/private/framesvg_p.h	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/framesvg_p.h	2026-08-19 07:38:23.617039319 +0200
 @@ -80,39 +80,38 @@
      static const int MAX_CACHED_MASKS = 10;
      uint lastModified = 0;
@@ -493,10 +493,10 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/framesvg_p.h
  
      static QHash<ImageSetPrivate *, QHash<uint, QWeakPointer<FrameData>>> s_sharedFrames;
  
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/svg_p.h
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/svg_p.h
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/ksvg/private/svg_p.h	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/svg_p.h	2025-10-29 05:53:35.435391006 +0100
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/ksvg/private/svg_p.h	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/private/svg_p.h	2026-08-19 07:38:23.617072599 +0200
 @@ -141,8 +141,8 @@
      void setNaturalSize(const QString &path, const QSizeF &size);
      QSizeF naturalSize(const QString &path);
@@ -517,11 +517,11 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/private/svg_p.h
      QHash<QString, unsigned int> m_lastModifiedTimes;
  };
  }
-Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
+Index: ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/svg.cpp
 ===================================================================
---- ksvg-6.11.0git.20251028T204230~9eebb9d6.orig/src/ksvg/svg.cpp	2025-10-28 19:42:30.000000000 +0100
-+++ ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp	2025-10-29 05:53:35.435444116 +0100
-@@ -273,7 +273,7 @@
+--- ksvg-6.24.0git.20260817T171546~c35038c1.orig/src/ksvg/svg.cpp	2026-08-17 19:15:46.000000000 +0200
++++ ksvg-6.24.0git.20260817T171546~c35038c1/src/ksvg/svg.cpp	2026-08-19 07:38:23.617125489 +0200
+@@ -278,7 +278,7 @@
      QMetaObject::invokeMethod(m_configSyncTimer, qOverload<>(&QTimer::start));
  }
  
@@ -530,7 +530,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
  {
      const QString pathId = path % id;
  
-@@ -281,7 +281,7 @@
+@@ -286,7 +286,7 @@
      if (it == m_sizeHintsForId.constEnd()) {
          KConfigGroup imageGroup(m_svgElementsCache, path);
          const QStringList &encoded = imageGroup.readEntry(id, QStringList());
@@ -539,7 +539,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
          for (const auto &token : encoded) {
              const auto &parts = token.split(QLatin1Char('x'));
              if (parts.size() != 2) {
-@@ -299,10 +299,10 @@
+@@ -304,10 +304,10 @@
      return *it;
  }
  
@@ -552,7 +552,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
          QString ret;
          for (const auto &s : list) {
              ret += QString::number(s.width()) % QLatin1Char('x') % QString::number(s.height()) % QLatin1Char(',');
-@@ -563,7 +563,7 @@
+@@ -568,7 +568,7 @@
      // Look at the size hinted elements and try to find the smallest one with an
      // identical aspect ratio.
      if (s.isValid() && !elementId.isEmpty()) {
@@ -561,7 +561,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
  
          if (!elementSizeHints.isEmpty()) {
              QSizeF bestFit(-1, -1);
-@@ -890,11 +890,18 @@
+@@ -898,11 +898,18 @@
  
  void Svg::setDevicePixelRatio(qreal ratio)
  {
@@ -581,7 +581,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
  
      Q_EMIT repaintNeeded();
  }
-@@ -922,7 +929,7 @@
+@@ -930,7 +937,7 @@
  void Svg::paint(QPainter *painter, const QPointF &point, const QString &elementID)
  {
      Q_ASSERT(painter->device());
@@ -590,7 +590,7 @@ Index: ksvg-6.11.0git.20251028T204230~9eebb9d6/src/ksvg/svg.cpp
      QPixmap pix((elementID.isNull() || d->multipleImages) ? d->findInCache(elementID, ratio, size()) : d->findInCache(elementID, ratio));
  
      if (pix.isNull()) {
-@@ -940,16 +947,16 @@
+@@ -948,16 +955,16 @@
  void Svg::paint(QPainter *painter, const QRectF &rect, const QString &elementID)
  {
      Q_ASSERT(painter->device());
