@@ -371,7 +371,6 @@ export ASFLAGS="$CFLAGS"
   %endif
   --with-mantype=man \
   --enable-shared \
-  --disable-static \
   --disable-rpath
 %make_build all V=1 STRIP=/bin/true
 

@@ -291,4 +291,13 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
     <comment>- Update to 4.0.6</comment>
     <requestid>1365787</requestid>
   </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>374c748b06bd3e020e98d8108041bd7f</srcmd5>
+    <version>4.0.6</version>
+    <time>1789146020</time>
+    <user>anag_factory</user>
+    <comment>- Do not disable static support as it blocks extensions from static
+  linking intree libraries (boo#1276559)</comment>
+    <requestid>1376895</requestid>
+  </revision>
 </revisionlist>

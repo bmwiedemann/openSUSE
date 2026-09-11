@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 12:58:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Do not disable static support as it blocks extensions from static
+  linking intree libraries (boo#1276559)
+
+-------------------------------------------------------------------
 Wed Jul 15 01:13:20 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.0.6
