@@ -172,6 +172,8 @@ dos2unix -c ascii README.md
        -DINSTALL_LIBS=ON \
        -DUSE_DOUBLE_PRECISION=ON \
        -DBUILD_OBJ2SDF_EXTRA=OFF \
+       -DBULLET2_MULTITHREADING=ON \
+       -DBULLET2_USE_OPEN_MP_MULTITHREADING=ON \
        -DPYTHON_INCLUDE_DIR=%{python3_inc} \
        -DPYTHON_LIBRARY=%{python3_lib} \
        -DPYTHON_SITE_PACKAGES=%{python3_sitearch}
