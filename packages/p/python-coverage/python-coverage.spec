@@ -37,7 +37,7 @@ Version:        7.14.3
 Release:        0
 Summary:        Code coverage measurement for Python
 License:        Apache-2.0
-URL:            https://github.com/nedbat/coveragepy
+URL:            https://github.com/coveragepy/coveragepy
 Source:         https://files.pythonhosted.org/packages/source/c/coverage/coverage-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}

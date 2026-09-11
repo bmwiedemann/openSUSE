@@ -1031,4 +1031,12 @@ update to latest version</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1371095</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>0d58a337bdaf263dba2990b0bd465c7d</srcmd5>
+    <version>7.14.3</version>
+    <time>1789145998</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1376652</requestid>
+  </revision>
 </revisionlist>
