@@ -127,4 +127,13 @@
   * Bugfix: call resolver function in DjangoConnectionField as documented</comment>
     <requestid>1331490</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>f5f73bf7b0d3532eacf9f19c4043d091</srcmd5>
+    <version>3.2.3</version>
+    <time>1789142742</time>
+    <user>anag_factory</user>
+    <comment>- Restrict to Django &lt; 6
+</comment>
+    <requestid>1377402</requestid>
+  </revision>
 </revisionlist>

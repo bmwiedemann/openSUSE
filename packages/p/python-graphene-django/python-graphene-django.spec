@@ -29,7 +29,8 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree
-Requires:       python-Django >= 3.2
+# Restrict Django to <6 https://github.com/graphql-python/graphene-django/pull/1560
+Requires:       (python-Django >= 3.2 with python-Django < 6)
 Requires:       python-graphene >= 3.0
 Requires:       python-graphql-core >= 3.1.0
 Requires:       python-graphql-relay >= 3.1
@@ -38,7 +39,7 @@ Requires:       python-text-unidecode
 Suggests:       python-djangorestframework >= 3.6.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2}
+BuildRequires:  %{python_module Django >= 3.2 with %python-Django < 6}
 BuildRequires:  %{python_module django-filter >= 22.1}
 BuildRequires:  %{python_module djangorestframework >= 3.6.3}
 BuildRequires:  %{python_module graphene >= 3.0}
@@ -51,6 +52,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module text-unidecode}
 # /SECTION
+#!BuildConflicts: %{python_module Django >= 6}
 %python_subpackages
 
 %description
