@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug  5 15:35:08 UTC 2026 - Noel Power <nopower@suse.com>
+
+- CVE-2026-25706: yast2-samba-client: OS command injection via
+  attacker-controlled OU (Active Directory-supplied);
+  (bsc#1272776).
+- 5.0.5
+
+-------------------------------------------------------------------
 Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507
