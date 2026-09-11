@@ -406,4 +406,12 @@ Supersedes sr#1375609 (0.153.0), which this replaces rather than follows.
 </comment>
     <requestid>1376304</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>a1cb50812399e6914cc2d14af609475a</srcmd5>
+    <version>0.154.0</version>
+    <time>1789142483</time>
+    <user>anag_factory</user>
+    <comment>Forward openai-codex 0.154.0 to Factory. Devel carries 0.154.0, local aarch64 build green, rpmlint 0/0, source_validator clean.</comment>
+    <requestid>1376913</requestid>
+  </revision>
 </revisionlist>

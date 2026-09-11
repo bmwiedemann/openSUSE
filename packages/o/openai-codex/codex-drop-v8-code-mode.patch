@@ -23,12 +23,13 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -101,7 +99,6 @@
+@@ -101,8 +99,7 @@
      "otel-trace-websocket",
      "tui",
      "tools",
 -    "v8-poc",
      "websocket-client",
+     "windows-sandbox-service",
      "worktree",
      "workload-identity",
 @@ -185,7 +182,6 @@

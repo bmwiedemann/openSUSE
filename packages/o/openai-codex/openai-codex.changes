@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 10 05:53:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.154.0:
+  * Experimental worktree support for isolated checkouts of new
+    or forked sessions, with browse and resume
+  * Answer questions inline while Codex keeps working, keeping
+    the main draft
+  * Vim R replace mode with undo and dot-repeat; /copy keeps
+    formatting and covers status and session fields
+  * Plugin tools refresh after external upgrades, MCP OAuth
+    refresh is coordinated, helpers no longer run before trust
+    is established; resume and fork keep saved permissions
+  * Drop the deprecated codex mcp-server entry point, now codex mcp
+- Rebase codex-drop-v8-code-mode.patch over the new
+  windows-sandbox-service member; same removals as before
+- Regenerate vendor.tar.zst: rmcp 3.1.3 -> 3.2.0 plus routine
+  bumps; webrtc/gstreamer/cpal stay out of the codex-cli link
+  graph, so the License tag is unchanged
+- Legal-Review-Notice: linked-crate count 876/878 -> 880/882 on
+  aarch64/x86_64; the vendored dependency licence set is unchanged
+- cargo-audit reports the same five advisories as 0.151.0, none
+  new and none fixable by re-vendoring
+
+-------------------------------------------------------------------
 Tue Sep  8 06:27:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.153.4:
