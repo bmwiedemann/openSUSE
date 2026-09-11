@@ -1,4 +1,84 @@
 -------------------------------------------------------------------
+Fri Sep 11 12:23:55 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.10.1:
+  * chore(release): fix release of v17.10.1 (#2321)
+  * chore(deps): update dawidd6/action-homebrew-bump-formula action to v10 (#2320)
+  * chore: release v17.10.1 (#2319)
+  * style: apply clippy lints (#2318)
+  * chore: release v17.10.0 (#2238)
+  * fix(android-studio): skip when `studio` is WordPress Studio CLI (#2263)
+  * feat(sheldon): add `assume_yes` support and quiet/verbose config options (#2315)
+  * chore(deps): update release-plz/action action to v0.5.135 (#2313)
+  * feat(mise): add `assume_yes` support for `mise self-update` (#2312)
+  * fix(claude): skip plugins without a configured marketplace (#2304)
+  * fix(wsl): report distribution update failures
+  * fix(wsl): preserve bash command arguments
+  * chore(release-plz): modernize template for git-cliff 2.14 (#2311)
+  * chore(deps): update release-plz/action action to v0.5.134 (#2309)
+  * chore(renovate): disable maxMajorIncrement (#2308)
+  * feat(step): add Antigravity CLI (#2262)
+  * chore(pre-commit): autoupdate (#2305)
+  * chore(deps): update release-plz/action action to v0.5.133 (#2299)
+  * chore(deps): update dtolnay/rust-toolchain digest to d103106 (#2297)
+  * chore(deps): lock file maintenance (#2303)
+  * fix(shelly): fix upgrade command (#2301)
+  * fix(codex): detect standalone installation symlink (#2296)
+  * chore(deps): update rust to v1.98.1 (#2298)
+  * feat(step): add Adless (#2271)
+  * chore(deps): lock file maintenance (#2287)
+  * chore(pre-commit): autoupdate (#2288)
+  * feat(step): add AppManager (#2289)
+  * fix(zr): use new update command (#2290)
+  * chore(deps): update github/codeql-action action to v4.37.9 (#2273)
+  * chore(deps): lock file maintenance (#2275)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.7 (#2281)
+  * chore(pre-commit): autoupdate (#2277)
+  * chore(deps): update rust to v1.98.0 (#2272)
+  * chore(deps): update github/codeql-action action to v4.37.7 (#2249)
+  * chore(deps): update swatinem/rust-cache action to v2.9.2 (#2253)
+  * chore(deps): update dtolnay/rust-toolchain digest to 6c977a6 (#2251)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.6 (#2252)
+  * chore(deps): update actions/attest-build-provenance action to v4.2.2 (#2254)
+  * chore(deps): update rust crate clap-cargo to 0.19.0 (#2267)
+  * chore(deps): lock file maintenance (#2260)
+  * chore(pre-commit): autoupdate (#2261)
+  * style(github): unwrap newlines in pull request template (#2264)
+  * feat(step): add Hermes Agent (#2257)
+  * fix(nobara): use `nobara-sync` instead of `dnf` (#2248)
+  * feat(vscode): clean obsolete extension directories (#2228)
+  * chore(deps): update github/codeql-action action to v4.37.5 (#2242)
+  * chore(deps): lock file maintenance (#2244)
+  * feat(skills): prefer local skills binary and add package manager config (#2243)
+  * docs: remove unnecessary dry-run question from PR template (#2241)
+  * refactor: refactor steps using `arg_if` family of methods
+  * refactor: add `arg_if` family of methods to `Executor`
+  * refactor(sudo_loop): replace panic with eyre
+  * refactor(breaking_changes): move version parsing to a lazy static
+  * refactor: comment on panic on missing home directory
+  * refactor: replace unwraps on write_all with ?
+  * refactor: improve use of regexes
+  * refactor(vagrant): replace panic with eyre
+  * refactor(uv): replace panic with eyre
+  * refactor(elan): replace panic with eyre
+  * refactor(toolbx): replace panic with eyre
+  * refactor(config): replace panic with eyre
+  * refactor(which): replace panic with eyre
+  * docs(contributing): use modern command running in example
+  * refactor(oh_my_bash): replace panic with eyre
+  * refactor(uv): replace panic with eyre
+  * refactor: replace panic with eyre in `check_is_python_2_or_shim`
+  * refactor(tmux): replace panic with eyre
+  * refactor(android): replace panic with eyre
+  * refactor(dotnet): replace panic with eyre
+  * refactor(rubygems): simplify path checking
+  * fix(rubygems): correctly skip step instead of doing nothing
+  * refactor: remove unnecessary unwrap
+  * refactor(poetry): replace panic with eyre
+  * refactor(pip3): replace panic with eyre
+  * refactor(waydroid): replace panic with eyre
+
+-------------------------------------------------------------------
 Wed Jul 29 03:17:21 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.9.0:
