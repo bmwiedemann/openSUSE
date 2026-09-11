@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:52:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.13:
+  * Add GraalPy 3.13.0 to the managed Python versions
+  * Verify hashes when downloading PEP 658 metadata sidecars
+  * Avoid full wheel downloads during resolution by reusing
+    supported hashes from direct URL fragments
+  * Refresh the vendored crates (editpe and debug-ignore are
+    new, both permissive and outside the shipped graph); the
+    licence set is unchanged
+
+-------------------------------------------------------------------
 Thu Sep 10 05:47:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.12:

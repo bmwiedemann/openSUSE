@@ -3194,4 +3194,23 @@ Testreport: local native aarch64 builds green for both flavors
 source_validator rc 0. Accepted into devel as SR 1376852.</comment>
     <requestid>1376855</requestid>
   </revision>
+  <revision rev="122" vrev="1">
+    <srcmd5>6bea51dd4f4c55287b04c59be5e20a79</srcmd5>
+    <version>0.12.13</version>
+    <time>1789142660</time>
+    <user>anag_factory</user>
+    <comment>Update python-uv to 0.12.13
+
+- Add GraalPy 3.13.0 to the managed Python versions
+- Verify hashes when downloading PEP 658 metadata sidecars
+- Avoid full wheel downloads during resolution by reusing
+  supported hashes from direct URL fragments
+- Refresh the vendored crates (editpe and debug-ignore are
+  new, both permissive and outside the shipped graph); the
+  licence set is unchanged
+
+Built green natively on aarch64 (main + test flavors),
+source_validator clean.</comment>
+    <requestid>1377333</requestid>
+  </revision>
 </revisionlist>
