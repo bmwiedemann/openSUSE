@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Sep  9 18:04:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 4.0.0-beta-3
+  * New features and improvements
+    + Wire up @after annotation scanning in the annotation-based
+      descriptor extractor
+    + MPLUGIN-421: Replace QDox with JavaParser for Javadoc
+      extraction
+    + Stop depending on Wagon for nonProxyHosts matching
+    + GH-944: Support root path exclusion for QDox scanning to
+      avoid existing blocking issues
+  * Bug Fixes
+    + Normalize references in Javadoc
+    + Fix excludedScanDirectories never matching on Windows
+    + #1105 Modified to properly report expression and defaultValue
+      when processing Maven 4 plugin
+    + JavadocLinkGenerator.createLink(String) must consider module
+      names
+  * Documentation updates
+    + Restore the common wording on the download page
+    + Convert the index page from xdoc to Markdown
+  * Maintenance
+    + Update SCM tag and resolver version
+    + Run the site ITs against the parent's site plugin version
+    + Convert the index page from xdoc to Markdown
+    + MPLUGIN-421: Migrate legacy plugin Javadoc annotations
+    + Restore the document metadata dropped when the pages were
+      ported
+    + Port the site documentation from APT to Markdown
+    + Build against Maven 4.0.0-rc-6
+    + Remove Plexus component configuration
+    + Cleanup tests
+    + Remove deprecated GeneratorUtils#toText
+  * Dependency updates
+    + Bump org.jsoup:jsoup from 1.19.1 to 1.23.2
+    + Bump org.codehaus.plexus:plexus-java from 1.5.0 to 1.6.0
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.9.0 to
+      2.12.1
+    + Bump org.codehaus.plexus:plexus-velocity from 2.3.0 to 2.4.0
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.2 to 4.1.0
+    + Bump org.codehaus.plexus:plexus-i18n from 1.0.0 to 1.2.0
+    + Bump org.codehaus.plexus:plexus-archiver from 4.10.3 to 4.14.0
+    + Bump net.bytebuddy:byte-buddy from 1.17.8 to 1.18.12
+    + Stop depending on Wagon for nonProxyHosts matching
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump org.apache.maven:maven-parent from 47 to 49
+    + Bump asmVersion from 9.9 to 9.10.1
+    + Bump maven3Version from 3.9.11 to 3.9.16
+    + Bump doxiaVersion from 2.0.0 to 2.1.0
+    + Update to Parent 47 and Resolver 1.9.25
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.3.0 to 3.5.1
+    + Bump org.assertj:assertj-core from 3.27.6 to 3.27.7
+    + Add palantir format for Java 25
+    + Bump org.apache.commons:commons-lang3 from 3.19.0 to 3.20.0
+- Modified patches:
+  * 0001-A-standalone-plugin-descriptor-generator.patch
+  * 0002-Remove-dependency-on-jtidy.patch
+    + rebase
+
+-------------------------------------------------------------------
 Wed Sep  2 07:06:17 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

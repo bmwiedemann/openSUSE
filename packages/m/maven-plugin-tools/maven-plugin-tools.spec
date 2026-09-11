@@ -17,7 +17,7 @@
 
 
 %global base_ver 4.0.0
-%global beta_ver 2
+%global beta_ver 3
 %global file_ver %{base_ver}-beta-%{beta_ver}
 Name:           maven-plugin-tools
 Version:        %{base_ver}~beta%{beta_ver}
@@ -36,6 +36,7 @@ BuildRequires:  httpcomponents-client
 BuildRequires:  httpcomponents-core
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  javaparser >= 3.28.2
 BuildRequires:  jsoup
 BuildRequires:  maven-lib
 BuildRequires:  maven-reporting-api
@@ -48,7 +49,6 @@ BuildRequires:  plexus-languages
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-velocity
 BuildRequires:  plexus-xml
-BuildRequires:  qdox
 BuildRequires:  sisu-inject
 BuildRequires:  sisu-plexus
 BuildRequires:  slf4j
@@ -129,19 +129,17 @@ build-jar-repository -s lib \
     atinject \
     httpcomponents/httpclient \
     httpcomponents/httpcore \
+    javaparser/javaparser-core \
+    javaparser/javaparser-symbol-solver-core \
     jsoup/jsoup \
-    maven/maven-api-plugin \
     maven/maven-artifact \
-    maven/maven-compat \
     maven/maven-core \
     maven/maven-model \
     maven/maven-plugin-api \
     maven/maven-settings \
     maven-reporting-api/maven-reporting-api \
     maven-resolver/maven-resolver-api \
-    maven-wagon/provider-api \
     objectweb-asm/asm \
-    objectweb-asm/asm-commons \
     objectweb-asm/asm-util \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
@@ -151,7 +149,6 @@ build-jar-repository -s lib \
     plexus/utils \
     plexus/xml \
     plexus-velocity/plexus-velocity \
-    qdox \
     slf4j/api \
     velocity-engine/velocity-engine-core
 

@@ -1,20 +1,29 @@
-From 6953b37ee5a7c0566d2e11e7141768f8a4c03fa2 Mon Sep 17 00:00:00 2001
+From f52d37feb1f749d8551299b2f9bba457356ab20e Mon Sep 17 00:00:00 2001
 From: Mikolaj Izdebski <mizdebsk@redhat.com>
 Date: Mon, 27 Apr 2020 12:56:04 +0200
-Subject: [PATCH 2/3] Remove dependency on jtidy
+Subject: [PATCH 2/2] Remove dependency on jtidy
 
 Forwarded: not-needed
-
 ---
- .../plugin/generator/GeneratorUtils.java      | 49 +------------------
+ .../plugin/generator/GeneratorUtils.java      | 50 -------------------
  .../PluginDescriptorFilesGenerator.java       |  7 +--
- 2 files changed, 2 insertions(+), 54 deletions(-)
+ 2 files changed, 1 insertion(+), 56 deletions(-)
 
 diff --git a/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/GeneratorUtils.java b/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/GeneratorUtils.java
-index 99aa7965..f05fb876 100644
+index 5a7fd89f..35b202bd 100644
 --- a/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/GeneratorUtils.java
 +++ b/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/GeneratorUtils.java
-@@ -51,7 +51,6 @@ import org.apache.maven.reporting.MavenReport;
+@@ -22,9 +22,6 @@ import javax.swing.text.MutableAttributeSet;
+ import javax.swing.text.html.HTML;
+ import javax.swing.text.html.HTMLEditorKit;
+ 
+-import java.io.ByteArrayInputStream;
+-import java.io.ByteArrayOutputStream;
+-import java.nio.charset.StandardCharsets;
+ import java.util.Collection;
+ import java.util.HashMap;
+ import java.util.LinkedList;
+@@ -43,7 +40,6 @@ import org.apache.maven.tools.plugin.util.PluginUtils;
  import org.codehaus.plexus.component.repository.ComponentDependency;
  import org.codehaus.plexus.util.StringUtils;
  import org.codehaus.plexus.util.xml.XMLWriter;
@@ -22,10 +31,11 @@ index 99aa7965..f05fb876 100644
  
  /**
   * Convenience methods to play with Maven plugins.
-@@ -225,52 +224,6 @@ public final class GeneratorUtils {
+@@ -217,52 +213,6 @@ public final class GeneratorUtils {
+         return decoded.toString();
      }
  
-     /**
+-    /**
 -     * Fixes some javadoc comment to become a valid XHTML snippet.
 -     *
 -     * @param description Javadoc description with HTML tags, may be <code>null</code>.
@@ -71,24 +81,14 @@ index 99aa7965..f05fb876 100644
 -        return commentCleaned;
 -    }
 -
--    /**
-      * Converts a HTML fragment as extracted from a javadoc comment to a plain text string. This method tries to retain
-      * as much of the text formatting as possible by means of the following transformations:
-      * <ul>
-@@ -301,7 +254,7 @@ public final class GeneratorUtils {
-         HTMLEditorKit.ParserCallback htmlCallback = new MojoParserCallback(sb);
- 
-         try {
--            parser.parse(new StringReader(makeHtmlValid(html)), htmlCallback, true);
-+            parser.parse(new StringReader(html), htmlCallback, true);
-         } catch (IOException e) {
-             throw new RuntimeException(e);
-         }
+     /**
+      * ParserCallback implementation.
+      */
 diff --git a/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/PluginDescriptorFilesGenerator.java b/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/PluginDescriptorFilesGenerator.java
-index cf5c5c48..9f435f0e 100644
+index e1f6ffdc..2b182fdb 100644
 --- a/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/PluginDescriptorFilesGenerator.java
 +++ b/maven-plugin-tools-generators/src/main/java/org/apache/maven/tools/plugin/generator/PluginDescriptorFilesGenerator.java
-@@ -201,12 +201,7 @@ public class PluginDescriptorFilesGenerator implements Generator {
+@@ -209,12 +209,7 @@ public class PluginDescriptorFilesGenerator implements Generator {
       */
      private static String getTextValue(DescriptorType type, boolean containsXhtmlValue, String text) {
          final String xhtmlText;
@@ -96,11 +96,12 @@ index cf5c5c48..9f435f0e 100644
 -        {
 -            xhtmlText = GeneratorUtils.makeHtmlValid(text);
 -        } else {
-             xhtmlText = text;
+-            xhtmlText = text;
 -        }
++        xhtmlText = text;
          if (type != DescriptorType.XHTML) {
              return new HtmlToPlainTextConverter().convert(text);
          } else {
 -- 
-2.41.0
+2.55.0
 

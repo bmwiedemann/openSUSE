@@ -17,7 +17,7 @@
 
 
 %global base_ver 4.0.0
-%global beta_ver 2
+%global beta_ver 3
 %global file_ver %{base_ver}-beta-%{beta_ver}
 %global base_name maven-plugin-tools
 Name:           maven-plugin-plugin
@@ -29,12 +29,13 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/plugin-tools/
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugin-tools/%{base_name}/%{file_ver}/%{base_name}-%{file_ver}-source-release.zip
 Source1:        %{base_name}-build.tar.xz
-Patch0:         0001-A-standalone-generator-of-HelpMojo.java-and-plugin-d.patch
+Patch0:         0001-A-standalone-plugin-descriptor-generator.patch
 Patch1:         0002-Remove-dependency-on-jtidy.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  javaparser >= 3.28.2
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-plugin-tools-annotations
@@ -86,14 +87,14 @@ API documentation for %{name}.
 %build
 mkdir -p lib
 build-jar-repository -s lib \
-    apache-commons-lang3 \
     atinject \
+    guava/guava \
+    javaparser/javaparser-core \
+    javaparser/javaparser-symbol-solver-core \
     jsoup/jsoup \
     maven/maven-artifact \
-    maven/maven-builder-support \
     maven/maven-core \
     maven/maven-model \
-    maven/maven-model-builder \
     maven/maven-plugin-api \
     maven/maven-repository-metadata \
     maven/maven-resolver-provider \
@@ -104,30 +105,25 @@ build-jar-repository -s lib \
     maven-plugin-tools/maven-plugin-tools-annotations \
     maven-resolver/maven-resolver-api \
     maven-resolver/maven-resolver-util \
-    objectweb-asm/asm-all \
+    objectweb-asm/asm \
+    objectweb-asm/asm-util \
     org.eclipse.sisu.inject \
     org.eclipse.sisu.plexus \
     plexus/archiver \
     plexus-classworlds \
-    plexus/interpolation \
     plexus/io \
     plexus/plexus-build-api0 \
     plexus/utils \
     plexus/xml \
     plexus-velocity/plexus-velocity \
-    qdox \
     slf4j/api \
-    velocity-engine/velocity-engine-core \
-    xmvn
+    slf4j/simple \
+    velocity-engine/velocity-engine-core
 
 %{mvn_file} :%{name} %{base_name}/%{name}
 %{mvn_package} :%{base_name} __noinstall
 pushd %{name}
 ant \
-    -Dtest.skip=true \
-    jar
-ant \
-    -f build-stage2.xml \
     -Dtest.skip=true \
     jar javadoc
 %{mvn_artifact} ../pom.xml

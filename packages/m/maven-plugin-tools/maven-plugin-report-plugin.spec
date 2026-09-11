@@ -17,7 +17,7 @@
 
 
 %global base_ver 4.0.0
-%global beta_ver 2
+%global beta_ver 3
 %global file_ver %{base_ver}-beta-%{beta_ver}
 %global base_name maven-plugin-tools
 Name:           maven-plugin-report-plugin
