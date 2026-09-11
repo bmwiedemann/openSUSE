@@ -879,4 +879,17 @@
   	* data update fpr 20260827</comment>
     <requestid>1376331</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>d9c91ade39df172161d792573252ec8e</srcmd5>
+    <version>20260907.1.0</version>
+    <time>1789146019</time>
+    <user>anag_factory</user>
+    <comment>- updated to 20260907.1.0 (20260907.001)
+   see /usr/share/doc/packages/perl-Business-ISBN-Data/Changes
+  20260907.001 2026-09-07T18:17:37Z
+  	* data update 2026-09-07
+  20260905.001 2026-09-05T21:31:14Z
+  	* data update for 2026-09-05</comment>
+    <requestid>1376889</requestid>
+  </revision>
 </revisionlist>
