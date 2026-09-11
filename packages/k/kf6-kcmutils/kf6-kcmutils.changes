@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:21:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * Documentation fixes
+  * Fix documentation for SettingsStateBinding
+  * Fix docs for KQuickManagedConfigModule
+  * kcmutils_generate_module_data: add missing var init, for safer usage
+  * Add missing EXCLUDE_DEPRECATED_BEFORE_AND_AT default variable declaration
+  * No longer explicitly include CMakeParseArguments
+  * Fix types in QML documentation
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
