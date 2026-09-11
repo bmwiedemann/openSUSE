@@ -28,11 +28,11 @@
 %define mypython_sitearch %{expand:%%%{mypython}_sitearch}
 %endif
 
-# Full KF6 version (e.g. 6.29.0)
+# Full KF6 version (e.g. 6.30.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kguiaddons
-Version:        6.29.0
+Version:        6.30.0
 Release:        0
 Summary:        Utilities for graphical user interfaces
 License:        LGPL-2.1-or-later
@@ -130,6 +130,7 @@ This package provides Python bindings for kf6-kguiaddons.
 %files
 %{_kf6_applicationsdir}/google-maps-geo-handler.desktop
 %{_kf6_applicationsdir}/openstreetmap-geo-handler.desktop
+%{_kf6_applicationsdir}/cartes-geo-handler.desktop
 %{_kf6_applicationsdir}/wheelmap-geo-handler.desktop
 %{_kf6_bindir}/kde-geo-uri-handler
 %{_kf6_debugdir}/kguiaddons.categories

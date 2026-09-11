@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * Add geo: URI handler for Cartes
+  * Add support to pass along the unmodified geo: URI in an URL template
+  * Fix geo: URI query string encoding
+  * Reuse explicitly provided image data (kde#519651)
+  * waylandclipboard: Check isInterruptionRequested in prepare read loop (kde#517743)
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
