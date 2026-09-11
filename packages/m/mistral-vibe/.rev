@@ -582,4 +582,20 @@ Local builds green on aarch64, both multibuild flavors:
 main flavor rpmlint 0 badness, test flavor 7920 passed / 40 skipped.</comment>
     <requestid>1376854</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>2ea602a0981c5020d16bee560134a314</srcmd5>
+    <version>2.25.2</version>
+    <time>1789142547</time>
+    <user>anag_factory</user>
+    <comment>Update mistral-vibe to 2.25.2 (AI/mistral-vibe PR #3, merged).
+
+2.25.2 bugfix release: VS Code debug submenu + session status panel,
+faster session picker, steered-prompt display preserved, permission
+mode survives worktree starts, failed &quot;always&quot; grants warn, worktree
+ops serialized across processes. Rebased harness_importorskip.patch
+for an upstream unittest.mock import reshuffle; no drops, no dep
+changes. Local builds green on aarch64, main + test flavors
+(7929 passed, 40 skipped).</comment>
+    <requestid>1376998</requestid>
+  </revision>
 </revisionlist>

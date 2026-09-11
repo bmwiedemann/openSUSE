@@ -28,7 +28,7 @@
 %endif
 %define origname mistral-vibe
 Name:           %{origname}%{psuffix}
-Version:        2.25.1
+Version:        2.25.2
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0

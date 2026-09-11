@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:31:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.2:
+  * VS Code extension: debug submenu with log level picker, open
+    log file, and a togglable session status panel with agent
+    statistics (steps, tokens, tokens/sec, context, cost)
+  * Session picker opens faster: merged session listing built once
+    per cursor walk instead of on every page
+  * Steered prompts keep their host-provided display content in
+    app-server session history; selected permission mode survives
+    session start in a worktree
+  * An "always" permission grant that fails to reach ~/.vibe now
+    warns instead of passing silently and re-asking next session
+  * Managed worktree creation, attachment and retention cleanup
+    serialized across processes, with stale reservations recovered
+  * Sessions touched while paging no longer vanish from the picker
+- Rebase harness_importorskip.patch for the upstream unittest.mock
+  import reshuffle above the patched lines
+
+-------------------------------------------------------------------
 Thu Sep 10 05:45:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.25.1:
