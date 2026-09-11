@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Aug 31 09:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.2
+  * Security fix backported from the development branch: the HTTP
+    server handed request URIs to the handlers uncanonified, so a
+    request with "../" segments - plain or percent-encoded as
+    "%2e%2e" - could escape a directory served by
+    nng_http_handler_alloc_directory() and return any file the
+    server process could read (gh#nanomsg/nng#2303).  URIs are now
+    canonified while the request line is parsed.  No CVE has been
+    assigned.  Comes with http_msg_test, a regression test
+    covering both traversal spellings.
+  * Report the correct version: v1.12.0 and v1.12.1 both shipped
+    include/nng/nng.h still declaring 1.11.0, so nng_version() and
+    the installed CMake package version were wrong and
+    find_package(nng 1.12) failed.
+  * v1.12.1 was tagged on the wrong commit and so missed that
+    bump, which is why 1.12.2 exists; the security fix itself was
+    already complete in 1.12.1.  The ABI soversion is unchanged
+    at 1.
+- Spec cleanup:
+  * Drop the obsolete Group tags.
+  * Use %autosetup, %cmake_build and %ldconfig_scriptlets.
+  * Build and run the offline part of the upstream test suite in
+    %check; the transport, protocol, nngcat and stress tests bind
+    fixed loopback ports, and some of them additionally reach out
+    to public DNS and httpbin.org, so they are not selected.
+    reconnect_test is excluded on top of that: it gives
+    listen+send+recv a hard 100 ms budget, which a slow worker
+    misses - it flipped red on half the s390x builds of an
+    unchanged tree.
+  * Require cmake >= 3.15, the minimum upstream checks for.
+  * Drop the commented-out pkgconfig entry from %files, nng does
+    not install a .pc file.
+- Split nngcat out of nng-devel into a new nng-utils subpackage:
+  nngcat is a runtime tool for sending and receiving messages over
+  Scalability Protocol sockets, not a development file, and it
+  only sat in nng-devel because the spec builds no main package.
+  * nng-devel hard-requires the matching nng-utils, so an existing
+    nng-devel install keeps the binary across the upgrade and the
+    build root matches a system install - a Recommends is not
+    pulled into the build environment.  nng-utils can also be
+    installed on its own, without the headers.
+  * The upstream nngcat.1 man page is still not built:
+    NNG_ENABLE_DOC is all or nothing, needs asciidoctor and
+    renders all 325 manual pages plus an HTML copy of each.
+
+-------------------------------------------------------------------
 Mon Jun 29 09:42:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.12
