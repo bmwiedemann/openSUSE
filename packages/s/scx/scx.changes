@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Aug 31 21:38:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 1.1.3:
+  https://github.com/sched-ext/scx/releases/tag/v1.1.2
+  https://github.com/sched-ext/scx/releases/tag/v1.1.3
+- add missing BR for openssl
+- simplify the install section by installing all the scx binaries
+  from the target/release directory.
+
+-------------------------------------------------------------------
 Tue Jun 30 05:22:35 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update cargo vendor

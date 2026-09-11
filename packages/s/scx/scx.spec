@@ -20,7 +20,7 @@
 %define libbpf_min_ver 1.4
 %define llvm_min_ver 17
 Name:           scx
-Version:        1.1.1
+Version:        1.1.3
 Release:        0
 Summary:        Sched_ext CPU schedulers
 License:        GPL-2.0-only
@@ -38,6 +38,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  rust+cargo >= 1.82
 BuildRequires:  pkgconfig(libbpf) >= %{libbpf_min_ver}
 BuildRequires:  pkgconfig(libseccomp)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(protobuf)
 BuildRequires:  pkgconfig(systemd)
 
@@ -60,28 +61,7 @@ Header files needed to develop a sched-ext scheduler in C.
 %cargo_build
 
 %install
-export CARGO_HOME=$PWD/.cargo
-
-for path in ./tools/scxtop \
-	./tools/scxcash \
-	./scheds/rust/scx_beerland \
-	./scheds/rust/scx_bpfland \
-	./scheds/rust/scx_cake \
-	./scheds/rust/scx_chaos \
-	./scheds/rust/scx_cosmos \
-	./scheds/rust/scx_flash \
-	./scheds/rust/scx_lavd \
-	./scheds/rust/scx_layered \
-	./scheds/rust/scx_mitosis \
-	./scheds/rust/scx_p2dq \
-	./scheds/rust/scx_pandemonium \
-	./scheds/rust/scx_rustland \
-	./scheds/rust/scx_rusty \
-	./scheds/rust/scx_tickless; do
-pushd "${path}"
-%{cargo_install}
-popd
-done
+install -D -m 0755 -t %{buildroot}%{_bindir} $(find target/release -maxdepth 1  -type f -executable -name scx_\*) target/release/scxtop
 
 install -Dm644 %{SOURCE2} \
     %{buildroot}%{_unitdir}/scx.service
@@ -108,7 +88,8 @@ install -Dm644 scheds/include/scx/*.h \
 %files
 %license LICENSE
 %doc README.md OVERVIEW.md
-%{_bindir}/scx{cash,top,_*}
+%{_bindir}/scxtop
+%{_bindir}/scx_*
 %{_unitdir}/scx.service
 %config(noreplace) %{_sysconfdir}/default/%{name}
 
