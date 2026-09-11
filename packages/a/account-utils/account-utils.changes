@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:28:29 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add missing %systemd_ordering to ensure that the installed
+  units are configured properly (bsc#1280003)
+
+-------------------------------------------------------------------
 Fri Jul 17 10:00:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.4.0+git20260717.3914e08:

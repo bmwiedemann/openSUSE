@@ -44,7 +44,7 @@ Conflicts:      busybox-adduser
 #Obsoletes:      shadow-pw-mgmt
 Requires(pre):  pam-config
 Requires(posttrans): pam-config
-
+%{systemd_ordering}
 
 %description
 The account-utils package contains the utilities and services to do user management and authentication without the need for setuid/setgid binaries. This allows the stack to work with `NoNewPrivs` enabled (means setuid/setgid binaries will no longer work). Communication happens via varlink.
