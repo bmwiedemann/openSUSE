@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:56:15 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20260911.f4f012f3:
+  * varlink-whitelist: include systemd-mini variants in packages
+
+-------------------------------------------------------------------
+Wed Sep 09 10:13:31 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20260909.c94e212c:
+  * varlink-whitelist: add missing systemd Varlink units (bsc#1261919)
+  * openSUSE/scoring: raise badness for varlink violations (bsc#1232899)
+
+-------------------------------------------------------------------
 Mon Aug 31 11:57:26 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 2.10.0+git20260827.9644f1e0:

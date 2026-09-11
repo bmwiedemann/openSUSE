@@ -5805,4 +5805,17 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
   * polkit-rules-whitelist: add portprotonqt rules (bsc#1270218)</comment>
     <requestid>1374856</requestid>
   </revision>
+  <revision rev="549" vrev="1">
+    <srcmd5>ab0a4da43a63a748c50a3c78c475c1a6</srcmd5>
+    <version>2.10.0+git20260911.f4f012f3</version>
+    <time>1789142467</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20260911.f4f012f3:
+  * varlink-whitelist: include systemd-mini variants in packages
+- Update to version 2.10.0+git20260909.c94e212c:
+  * varlink-whitelist: add missing systemd Varlink units (bsc#1261919)
+  * openSUSE/scoring: raise badness for varlink violations (bsc#1232899)
+</comment>
+    <requestid>1377363</requestid>
+  </revision>
 </revisionlist>
