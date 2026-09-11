@@ -780,4 +780,16 @@ Remove ancient Obsoletes/provides (forwarded request 232571 from sumski)</commen
     <comment>Update to 0.26.27</comment>
     <requestid>1351347</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>2ac28d4bb93c04b9026721ef29d2f59f</srcmd5>
+    <version>0.26.28</version>
+    <time>1789142701</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.26.28
+  * Improved: translations
+  * Added: new build option BUILD_DOC (D:ON), for the offline program manual
+  * Fixed: missing replugging of KXmlGui action lists after toolbar editing
+  * Fixed: potential crashes on MMB pastes on selection-clipboard-less systems</comment>
+    <requestid>1377365</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:27:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 0.26.28
+  * Improved: translations
+  * Added: new build option BUILD_DOC (D:ON), for the offline program manual
+  * Fixed: missing replugging of KXmlGui action lists after toolbar editing
+  * Fixed: potential crashes on MMB pastes on selection-clipboard-less systems
+
+-------------------------------------------------------------------
 Thu May  7 05:54:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 0.26.27
