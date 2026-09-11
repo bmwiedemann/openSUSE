@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:52:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.9
+  * feat: add backwards compatible hybrid PQ policies (#6044)
+  * docs: io callback examples (#6036)
+  * fix(bindings): avoid mutable aliasing in shared Config callbacks (#6053)
+  * fix: set actual_protocol_version_established on deserialized connections (#6049)
+  * chore: upgrade CBMC to 6.11.0 (#6061)
+  * perf(sidetrail): Avoid digest zeroing in proof (#6056)
+  * chore(bindings): release bump v0.3.43 (#6070)
+  * feat: add `s2n_conn_get_signature_public_key_type` API (#5963)
+  * feat(metrics): add negotiated metrics for compatibility (#6068)
+  * feat: skip blinding delay on missing required client cert (#6072)
+  * fix: restrict cert signature preferences in custom CNSA2 interop policies (#6073)
+  * fix(metrics): normalize s2n signature (#6077)
+- from version 1.7.8
+  * fix: null `evp_cipher_ctx` after free in `s2n_session_key_alloc()` error path (#6024)
+  * fix(docs): Hide unstable-renegotiate poll_send cfg in rustdoc (#6022)
+  * test: peer_cert_chain behavior with elided CA (#5914)
+  * fix(psk): return usage error for uninitialized offered PSK (#6009)
+  * fix: prevent use-after-free in `Connection::set_config` when C setter rejects replacement (#6023)
+  * chore: remove inline policy builder code (#6025)
+  * chore(bindings): release bump (#6027)
+  * fix: zero-init hash state and guard async offload wipe against in-flight ops (#6028)
+  * fix: handshake integrity over content types (#6017)
+  * test: add behavior tests for Connection::wipe (#6029)
+  * fix(bindings): default to efficient record size (#6020)
+  * chore: update http test with new status code (#6034)
+  * ci: Use GitHub mirror for musl and upgrade octokit action to Node 24 (#6031)
+  * fix: fail explicitly when server selects unavailable KEM group in key share recv (#6026)
+  * feat(metrics): flush on drop (#6032)
+  * fix: Zero-initialize all local variable declarations (#6007)
+  * fix: Add fail-closed default cases to all switch statements (#6006)
+  * feat: add s2n_connection_handshake_complete() public API (#5906)
+  * fix(connection): Make set_config validator replacement transactional (#5847)
+  * build(deps): bump cross-platform-actions/action from 1.3.0 to 1.4.0
+    in /.github/workflows in the all-gha-updates group (#6035)
+  * test: print assertion backtraces in FAIL_MSG_PRINT (#5785)
+  * fix(cbc): Disable padding after key init and check decrypt len (#6042)
+  * fix(metrics): jitter export timing (#6046)
+  * chore: bump metrics subscriber for release (#6050)
+
+-------------------------------------------------------------------
 Thu Aug 13 09:43:17 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.7
