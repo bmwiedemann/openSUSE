@@ -255,4 +255,12 @@
 - Switch to pyproject macros.</comment>
     <requestid>1282463</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>1b79e17386e2227ccc8e648446420190</srcmd5>
+    <version>4.1</version>
+    <time>1789142746</time>
+    <user>anag_factory</user>
+    <comment>- Add django6.patch for compatibility with Django 6</comment>
+    <requestid>1377408</requestid>
+  </revision>
 </revisionlist>

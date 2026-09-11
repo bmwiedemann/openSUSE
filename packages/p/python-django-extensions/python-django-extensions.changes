@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 13:48:11 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add django6.patch for compatibility with Django 6
+
+-------------------------------------------------------------------
 Wed Jun  4 00:39:58 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.1:

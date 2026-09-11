@@ -1,7 +1,7 @@
 #
 # spec file for package python-django-extensions
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,8 @@ Summary:        Extensions for Django
 License:        BSD-3-Clause
 URL:            https://github.com/django-extensions/django-extensions
 Source:         https://github.com/django-extensions/django-extensions/archive/%{version}.tar.gz#/django-extensions-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/django-extensions/django-extensions/pull/1979 fix: add Django 6 compatibility for signals, constraints, and random char field
+Patch0:         django6.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
