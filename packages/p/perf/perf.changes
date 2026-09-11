@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 23:44:33 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Create perf-plugin-jvmti package to support JAVA profiling
+  (jsc#PED-16404 jsc#PED-16405)
+
+-------------------------------------------------------------------
 Mon Jul 27 12:42:13 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Remove obsolete recommends:

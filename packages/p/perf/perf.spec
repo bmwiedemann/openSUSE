@@ -47,6 +47,7 @@ BuildRequires:  flex
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  gtk2-devel
+BuildRequires:  java-devel
 BuildRequires:  kernel-source >= 2.6.31
 BuildRequires:  libcap-devel
 # Debuginfod integration has major issues: boo#1213785
@@ -105,6 +106,18 @@ Requires:       %{name} = %{version}
 %description devel
 Development headers for perf. This is currently only dlfilter header.
 
+%package plugin-jvmti
+Summary:        JVMTI agent for Java JIT profiling with perf
+Group:          Development/Tools/Other
+Requires:       %{name} = %{version}-%{release}
+Requires:       java
+
+%description plugin-jvmti
+This package contains the libperf-jvmti.so shared library agent.
+It allows the Linux 'perf' tool to map runtime Java Virtual Machine (JVM)
+Just-In-Time (JIT) compiled code addresses back to actual human-readable
+Java class and method names.
+
 %package bash-completion
 Summary:        Bash completion for perf
 Group:          System/Shells
@@ -149,7 +162,7 @@ sed -i 's@ignored "-Wstrict-prototypes"@&\n#pragma GCC diagnostic ignored "-Wdep
 sed -i.old 's@\(all: .*\)info@\1@' tools/perf/Documentation/Makefile
 
 # PASS rpm optflags as EXTRA_FLAGS, passing as CFLAGS overrides and breaks build
-%define perf_options LIBTRACEEVENT_DYNAMIC=1 BUILD_BPF_SKEL=1 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core tipdir=share/doc/packages/perf %{_perf_unwind}
+%define perf_options JDIR=${JAVA_HOME} LIBTRACEEVENT_DYNAMIC=1 BUILD_BPF_SKEL=1 EXTRA_CFLAGS="%{optflags}" ASCIIDOC8=1 USE_ASCIIDOCTOR=1 CORESIGHT=1 GTK2=1 prefix=%{_prefix} libdir=%{_libdir} perfexecdir=lib/%{name}-core tipdir=share/doc/packages/perf %{_perf_unwind}
 
 %build
 cd tools/perf
@@ -187,6 +200,8 @@ make -f Makefile.perf \
 
 mkdir -p %{buildroot}%{_datadir}/bash-completion/completions/
 mv %{buildroot}%{_sysconfdir}/bash_completion.d/perf %{buildroot}%{_datadir}/bash-completion/completions/
+mkdir -p %{buildroot}%{_libdir}/perf
+mv %{buildroot}%{_libdir}/libperf-jvmti.so %{buildroot}%{_libdir}/perf/
 
 # temp workaround as perf Makefile is still installing plugins even with LIBTRACEEVENT_DYNAMIC=1
 rm -rf %{buildroot}/%{_libdir}/traceevent
@@ -222,5 +237,9 @@ rm -rf %{buildroot}/%{_libdir}/traceevent
 %files %{python_files perf}
 %defattr(-,root,root)
 %{python_sitearch}/perf*
+
+%files plugin-jvmti
+%dir %{_libdir}/perf
+%{_libdir}/perf/libperf-jvmti.so
 
 %changelog
