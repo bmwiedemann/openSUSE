@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 11 03:08:43 UTC 2026 - william.brown@suse.com
+
+- Update to version 1.11.2~git0.547933867:
+  * Release 1.11.2
+  * Security: medium - ldap bind state reset on failure (#4569)
+  * Resolve new database index creation issue
+  * Correctly tag latest
+
+-------------------------------------------------------------------
 Fri Aug 14 05:51:58 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.11.1~git0.bfb60b5cb:
