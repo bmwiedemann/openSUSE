@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep  1 12:41:32 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-39821: Fix potential validation bypass and privilege
+                  escalation by bumping golang.org/x/net to version
+                  0.57.0 (bsc#1266556)
+
+-------------------------------------------------------------------
 Mon Jun  8 15:47:23 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not build for SLE 12
