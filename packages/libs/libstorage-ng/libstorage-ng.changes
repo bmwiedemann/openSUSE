@@ -1,4 +1,76 @@
 --------------------------------------------------------------------
+Thu Sep 10 14:27:24 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1096
+- improved testsuite
+- 4.5.352
+
+--------------------------------------------------------------------
+Thu Sep 10 08:39:00 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1095
+- removed redundant code
+- 4.5.351
+
+--------------------------------------------------------------------
+Thu Sep 10 07:08:58 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1094
+- add udevadm settle call before erasing encryption layer (bsc#1279918)
+- 4.5.350
+
+--------------------------------------------------------------------
+Wed Sep 9 15:01:03 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1093
+- provide specialized output functions for Environment class
+- coding style
+- 4.5.349
+
+--------------------------------------------------------------------
+Thu Sep 3 12:47:44 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Danish) (bsc#1149754)
+- 4.5.348
+
+--------------------------------------------------------------------
+Thu Sep 3 09:42:58 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1092
+- removed set_ruby_logger workaround since AI found problems with
+  it
+- 4.5.347
+
+--------------------------------------------------------------------
+Wed Sep 2 15:55:16 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1091
+- added some function aliases
+- coding style
+- ignore generated file
+- 4.5.346
+
+--------------------------------------------------------------------
+Wed Sep 2 12:05:31 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1090
+- Fix SWIG 4.5.0 template instantiations and logger crashes (see
+  bsc#1275515).
+- 4.5.345
+
+--------------------------------------------------------------------
+Wed Sep 2 08:04:09 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Danish) (bsc#1149754)
+- 4.5.344
+
+--------------------------------------------------------------------
+Mon Aug 31 20:54:06 UTC 2026 - aschnell@suse.com
+
+- Translated using Weblate (Danish) (bsc#1149754)
+- 4.5.343
+
+--------------------------------------------------------------------
 Sat Aug 22 17:37:42 UTC 2026 - aschnell@suse.com
 
 - Translated using Weblate (Lao) (bsc#1149754)
