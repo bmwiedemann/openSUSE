@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:37:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.337:
+  * Manifest now lists 559 templates: new pixal3d multiview, nano-banana
+    turnaround, gpt6-astra, gpt-image-2.5 flare/sunburst and
+    minimax-h3-fun-controlnet entries; retired DALL-E 2/3 entries gone
+  * No code or dependency change: loader.py byte-identical, sdist still
+    declares no install dependencies
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.333:

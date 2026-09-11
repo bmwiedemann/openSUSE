@@ -142,4 +142,12 @@ multiframe-reference templates, plus the Meta provider logo. Manifest-only
 change; no code.</comment>
     <requestid>1376105</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>33190e9bb7df93d0acd2938df8c452cb</srcmd5>
+    <version>0.3.337</version>
+    <time>1789142542</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfyui-workflow-templates-core 0.3.337 to Factory (devel accepted SR1376994).</comment>
+    <requestid>1376995</requestid>
+  </revision>
 </revisionlist>
