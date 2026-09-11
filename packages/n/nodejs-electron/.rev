@@ -1536,4 +1536,15 @@ to Staging:F with it</comment>
 - Add quiche-quiche_buffer_allocator-missing-memcpy.patch to fix ftbfs</comment>
     <requestid>1328950</requestid>
   </revision>
+  <revision rev="178" vrev="4">
+    <srcmd5>7eac175114c09f76e1ac5b44c02bcf51</srcmd5>
+    <version>37.10.2</version>
+    <time>1789142522</time>
+    <user>anag_factory</user>
+    <comment>[botdel] Package has had build problems for &gt;= 6 weeks
+- Add patches to fix ftbfs
+  * remote_syscall_arg_handler-missing-PATH_MAX.patch
+  * ncrypto-missing-INT_MAX.patch</comment>
+    <requestid>1376963</requestid>
+  </revision>
 </revisionlist>

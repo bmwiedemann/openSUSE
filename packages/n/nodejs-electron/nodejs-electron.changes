@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:56:54 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
+
+- Add patches to fix ftbfs
+  * remote_syscall_arg_handler-missing-PATH_MAX.patch
+  * ncrypto-missing-INT_MAX.patch
+
+-------------------------------------------------------------------
 Fri Jan 23 18:39:58 UTC 2026 - Bruno Pitrus <brunopitrus@hotmail.com>
 
 - Add quiche-quiche_buffer_allocator-missing-memcpy.patch to fix ftbfs

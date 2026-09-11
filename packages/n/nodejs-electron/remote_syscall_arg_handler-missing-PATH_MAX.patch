@@ -1,0 +1,10 @@
+--- src/sandbox/linux/syscall_broker/remote_syscall_arg_handler.cc.orig	2025-11-25 20:19:26.509769388 +0100
++++ src/sandbox/linux/syscall_broker/remote_syscall_arg_handler.cc	2026-09-10 15:17:15.662672166 +0200
+@@ -9,6 +9,7 @@
+ 
+ #include "sandbox/linux/syscall_broker/remote_syscall_arg_handler.h"
+ 
++#include <linux/limits.h>
+ #include <string.h>
+ #include <sys/ioctl.h>
+ #include <sys/syscall.h>
