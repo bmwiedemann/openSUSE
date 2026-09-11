@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:21:51 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * KFormat: Get current time in UTC
+  * kfilesystemtype: identify a fuse mount by its name when the table cannot
+  * kfilesystemtype: tell a fuse mount with a disk behind it from one without
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
