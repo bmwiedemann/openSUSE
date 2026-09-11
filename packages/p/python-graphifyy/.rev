@@ -205,4 +205,15 @@ extraction, hook-chain skip fix, MCP leaf query, plus one racy-test
 deselect (timing-fragile mtime-collision test).</comment>
     <requestid>1376838</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>744a7320cb35ff84ce161a87278a1479</srcmd5>
+    <version>0.9.58</version>
+    <time>1789142659</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.9.58: python/php/bash import resolution fixes, SQL index
+nodes, Rust static/const nodes, install/labelling robustness, psycopg
+in all extra. Keeps the timing-fragile mtime test deselected
+(unchanged upstream). Local aarch64 build green, validator clean.</comment>
+    <requestid>1377319</requestid>
+  </revision>
 </revisionlist>

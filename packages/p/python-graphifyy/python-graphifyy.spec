@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-graphifyy
-Version:        0.9.57
+Version:        0.9.58
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT

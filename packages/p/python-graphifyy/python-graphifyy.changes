@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:50:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.58:
+  * Python nested-function calls resolve per lexical scope instead
+    of leaking to a same-named function elsewhere
+  * submodule imports in PEP 420 namespace packages and bare-name
+    sibling imports in flat script dirs now resolve
+  * PHP aliased use imports key the binding on the alias
+  * a directory literally named out is skipped as build output only
+    with build-output evidence, real source out/ is kept
+  * variable-held constant script paths in exec position resolve
+  * SQL CREATE INDEX emits index nodes; Rust module-level
+    static/const declarations extracted as nodes
+  * TS export star no longer resolves to a same-named interface
+    method; incremental rebuild keeps rationale/summary on
+    source-path collisions
+  * install skips unwritable always-on registration with a warning;
+    labelling falls back to a run-time claude CLI; all extra gains
+    psycopg[binary]
+- Keep deselecting timing-fragile
+  test_same_size_rewrite_in_one_tick_is_requeued: test and
+  detect.py logic identical to 0.9.57, still racy on slower hosts
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.57:
