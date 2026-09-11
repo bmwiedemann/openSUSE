@@ -1026,4 +1026,13 @@
   (bsc#1279297, CVE-2026-84303) (bsc#1279414, CVE-2026-84304) (forwarded request 1376587 from glaubitz)</comment>
     <requestid>1376904</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>d4c9e99219559ca80dbbfa4b1f9ada98</srcmd5>
+    <version>20260908.00</version>
+    <time>1789142527</time>
+    <user>anag_factory</user>
+    <comment>- Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662) (forwarded request 1376970 from glaubitz)</comment>
+    <requestid>1376977</requestid>
+  </revision>
 </revisionlist>

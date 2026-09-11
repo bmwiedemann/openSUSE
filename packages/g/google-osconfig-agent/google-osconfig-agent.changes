@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 15:37:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+
+-------------------------------------------------------------------
 Wed Sep  9 10:57:40 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260908.00
