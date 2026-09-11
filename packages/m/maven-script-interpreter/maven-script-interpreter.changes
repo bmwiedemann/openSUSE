@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep  5 13:42:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.8
+  * New features and improvements
+    + Allow interpreters to target a specific bytecode version
+  * Maintenance
+    + Inherit the maven-invoker-plugin version from the parent
+    + Port the site documentation from APT to Markdown
+  * Dependency updates
+    + Bump org.apache.groovy:groovy from 4.0.31 to 4.0.33
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump org.apache.maven.shared:maven-shared-components from 47
+      to 49
+    + Bump commons-io:commons-io from 2.21.0 to 2.22.0
+
+-------------------------------------------------------------------
 Thu Apr 23 06:37:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.7

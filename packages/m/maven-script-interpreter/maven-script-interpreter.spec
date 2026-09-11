@@ -17,7 +17,7 @@
 
 
 Name:           maven-script-interpreter
-Version:        1.7
+Version:        1.8
 Release:        0
 Summary:        Maven Script Interpreter
 License:        Apache-2.0
