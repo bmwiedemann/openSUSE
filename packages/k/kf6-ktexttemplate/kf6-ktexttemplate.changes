@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Changes since 6.29.0:
+  * Update dependency version to 6.30.0
+  * No longer explicitly include CMakeParseArguments
+  * Make date/time filter locale-aware
+  * Make Context accessible to filters
+  * Update version to 6.30.0
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
