@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Sep  9 12:56:54 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- conflict the blas/lapack reference devel package for SLE16SP1 and 
+  also mentioning .obs/workflows.yml here so that some bots are happy
+
+-------------------------------------------------------------------
+Fri Aug  7 14:24:58 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Do not pin openblas-common-devel to a single flavour for SLE16SP1
+  (bsc#1273798)
+
+
+-------------------------------------------------------------------
+Tue Aug  4 10:51:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.34:
+  * Fix potential race conditions between concurrent calls to level3
+    BLAS functions, caused by inadvertent use of non-unified locks,
+    and a further potential race in GETRF
+  * Reimplement the GEADD extension so both matrices can be
+    transposed independently, and add an extension for overriding the
+    default XERBLA error handler
+  * Add or improve multithreading thresholds in SPR, SPR2, SYR, SYR2,
+    TBMV, TPMV, GETRS, LAED3, LASWP, LAUUM, TRTRS and ZTRTRI
+  * Guard against spurious NaN values in the reimplemented LAED3
+  * Fix potential access to unrelated memory in the C fallback
+    versions of the LAPACK functions ILAENV and IPARMQ
+  * Fix the generated pkgfile to support spaces in path names
+
+-------------------------------------------------------------------
 Sun Aug  2 09:59:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Let the compat package provide libopenblas.so.0 instead of the

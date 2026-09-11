@@ -984,4 +984,30 @@ gdal-linked package in Application:Geo.
 Merged as science/openblas#8.</comment>
     <requestid>1369393</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>097f2b2d5a305ecfd9b13840a24391b8</srcmd5>
+    <version>0.3.34</version>
+    <time>1789146009</time>
+    <user>anag_factory</user>
+    <comment>- conflict the blas/lapack reference devel package for SLE16SP1 and 
+  also mentioning .obs/workflows.yml here so that some bots are happy
+
+- Do not pin openblas-common-devel to a single flavour for SLE16SP1
+  (bsc#1273798)
+
+- Update to version 0.3.34:
+  * Fix potential race conditions between concurrent calls to level3
+    BLAS functions, caused by inadvertent use of non-unified locks,
+    and a further potential race in GETRF
+  * Reimplement the GEADD extension so both matrices can be
+    transposed independently, and add an extension for overriding the
+    default XERBLA error handler
+  * Add or improve multithreading thresholds in SPR, SPR2, SYR, SYR2,
+    TBMV, TPMV, GETRS, LAED3, LASWP, LAUUM, TRTRS and ZTRTRI
+  * Guard against spurious NaN values in the reimplemented LAED3
+  * Fix potential access to unrelated memory in the C fallback
+    versions of the LAPACK functions ILAENV and IPARMQ
+  * Fix the generated pkgfile to support spaces in path names</comment>
+    <requestid>1376863</requestid>
+  </revision>
 </revisionlist>

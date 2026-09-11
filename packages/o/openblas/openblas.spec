@@ -169,7 +169,7 @@ ExclusiveArch:  do_not_build
 %endif
 
 Name:           %{package_name}
-Version:        0.3.33
+Version:        0.3.34
 Release:        0
 Summary:        An optimized BLAS library based on GotoBLAS2
 License:        BSD-3-Clause
@@ -272,6 +272,9 @@ Summary:        Development libraries for OpenBLAS, %{flavor} version
 Group:          Development/Libraries/C and C++
 Requires:       %{pname}-common-devel = %{version}
 Requires:       lib%{name}%{so_a} = %{version}
+# Flavour agnostic handle, so that %%{pname}-common-devel can be satisfied by
+# whichever flavour the user asked for instead of dragging in a second one.
+Provides:       %{pname}-devel(any) = %version
 %if 0%{?arch_flavor}
 Provides:       %{pname}-devel = %version
 Provides:       %{pname}-devel(default) = %version
@@ -289,6 +292,7 @@ Summary:        Development libraries for OpenBLAS for explicit link to OpenBLAS
 Group:          Development/Libraries/C and C++
 Requires:       %{pname}-common-devel = %{version}
 Requires:       compatlib%{name}%{so_a} = %{version}
+Provides:       %{pname}-devel(any) = %version
 %if 0%{?arch_flavor}
 Provides:       %{pname}-devel = %version
 Provides:       %{pname}-devel(default) = %version
@@ -312,7 +316,24 @@ This package contains the static libraries.
 %package      -n %{pname}-common-devel
 Summary:        Development headers and libraries for OpenBLAS
 Group:          Development/Libraries/C and C++
+%if %{with alternatives}
+# The openblas.pc and cmake files shipped here are symlinks into the private
+# directory of the flavour that built them, so this one is really needed.
 Requires:       lib%{name}-devel = %{version}
+%else
+# Without alternatives the headers, openblas.pc and the cmake files are
+# flavour independent, so any flavour's devel package will do. Requiring one
+# specific flavour would pull in a second runtime library, which conflicts
+# with the flavour the user actually asked for and makes
+# "zypper in libopenblas_openmp-devel" unresolvable.
+Requires:       %{pname}-devel(any) = %{version}
+Recommends:     %{pname}-devel(default) = %{version}
+# Without alternatives the BLAS/LAPACK headers are installed straight into
+# %{_includedir} so conflict the reference implementations.
+Conflicts:      cblas-devel
+Conflicts:      lapack-devel
+Conflicts:      lapacke-devel
+%endif
 Requires(pre):  coreutils
 Requires(post): coreutils
 Obsoletes:      %{pname}-devel < %version
