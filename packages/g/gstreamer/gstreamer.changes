@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep  8 06:46:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.7:
+  +  Highlighted bugfixes:
+     - Various security fixes and playback fixes
+     - appsrc EOS handling regression fix for applications pushing
+       EOS into a blocked appsrc
+     - glcolorconvert fixes for older OpenGL/GLSL versions
+     - mxfdemux: Fix keyframe detection regression and possible
+       artefacts after seeking
+     - QML6 GL Overlay output texture lifetime handling fixes
+     - opencv: Add support for building against OpenCV 5
+     - hip: Add missing API version suffix in HIP support library
+       filename and fix hipcc detection on Windows with HIP SDK 7.x
+     - analytics: fix classes off-by-one in ssdtensordec leading to
+       mislabelling of objects in the examples
+     - isobmff: Fix min_display_mastering_luminance in mdcv box
+     - rtpbin2: rtprecv: limit the number of remote sources being
+       tracked
+     - st2038anc: parity bit handling fixes for ST 291 ADF words
+     - video converter and videoconvertscale fixes
+     - mpegdemux: restore gap event sending in MPEG-PS demuxer
+     - typefinding: fix typefinding regressions for ogg and text
+       files
+     - Fix x264enc high bit depth support in binary packages
+     - Various bug fixes, build fixes, memory leak fixes, and other
+       stability and reliability improvements
+  + gstreamer:
+    - cpuid: Clean up NEON and ASIMD getauxval detection + port
+      Orc's elf_aux_info support
+    - dataurisrc: Fix empty payloads and unsupported charset
+      conversion
+    - pipeline: Avoid lock inversion when handling
+      GST_MESSAGE_RESET_TIME
+    - validate: Use a single value type in configs lists
+
+-------------------------------------------------------------------
 Wed Aug  5 15:41:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.6:
