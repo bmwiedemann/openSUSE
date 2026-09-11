@@ -107,7 +107,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.11.15
+Version:        3.11.16
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -190,77 +190,23 @@ Patch25:        gh139257-Support-docutils-0.22.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
 # Reject control characters in wsgiref.headers.Headers
 Patch33:        CVE-2025-15366-imap-ctrl-chars.patch
-# PATCH-FIX-OPENSUSE test_UDPLITE_support.patch mcepl@suse.com
-# improve testing of the presence of IPPROTO_UDPLITE support
-Patch34:        test_UDPLITE_support.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15367-poplib-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in poplib
 Patch35:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-12781-b64decode-alt-chars.patch bsc#1257108 mcepl@suse.com
 # Fix decoding with non-standard Base64 alphabet gh#python/cpython#125346
 Patch36:        CVE-2025-12781-b64decode-alt-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2026-2297-SourcelessFileLoader-io_open_code.patch bsc#1259240 mcepl@suse.com
-# Ensure SourcelessFileLoader uses io.open_code
-Patch37:        CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
-# PATCH-FIX-UPSTREAM CVE-2026-3644-cookies-Morsel-update-II.patch bsc#1259734 mcepl@suse.com
-# Reject control characters in http.cookies.Morsel.update() and http.cookies.BaseCookie.js_output
-Patch38:        CVE-2026-3644-cookies-Morsel-update-II.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4224-expat-unbound-C-recursion.patch bsc#1259735 mcepl@suse.com
-# Avoid unbound C recursion in conv_content_model
-Patch39:        CVE-2026-4224-expat-unbound-C-recursion.patch
-# PATCH-FIX-UPSTREAM CVE-2025-13462-tarinfo-header-parse.patch bsc#1259611 mcepl@suse.com
-# Skip TarInfo DIRTYPE normalization during GNU long name handling
-Patch40:        CVE-2025-13462-tarinfo-header-parse.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4519-webbrowser-open-dashes.patch bsc#1260026 mcepl@suse.com
-# reject leading dashes in webbrowser URLs
-Patch41:        CVE-2026-4519-webbrowser-open-dashes.patch
 # PATCH-FIX-UPSTREAM CVE-2026-3479-pkgutil_get_data.patch bsc#1259989 mcepl@suse.com
 # pkgutil.get_data() reject invalid resource arguments
 Patch42:        CVE-2026-3479-pkgutil_get_data.patch
 # PATCH-FIX-UPSTREAM CVE-2026-3446-base64-padding.patch bsc#1261970 mcepl@suse.com
 # Do not ignore excess Base64 data after the first padded quad
 Patch43:        CVE-2026-3446-base64-padding.patch
-# PATCH-FIX-UPSTREAM CVE-2026-6100-use-after-free-decompression.patch bsc#1262098 mcepl@suse.com
-# NULL dangling pointer to avoid use-after-free error
-Patch44:        CVE-2026-6100-use-after-free-decompression.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4786-webbrowser-open-action.patch bsc#1262319 mcepl@suse.com
-# Fix webbrowser %action substitution bypass of dash-prefix check
-Patch45:        CVE-2026-4786-webbrowser-open-action.patch
-# PATCH-FIX-UPSTREAM CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch bsc#1261969 mcepl@suse.com
-# Reject CR/LF in HTTP tunnel request headers
-Patch46:        CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
 # PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
 # Base64-encode cookie values embedded in JS
 Patch47:        CVE-2026-6019-Morsel-js_output.patch
-# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
-# Fix symlink escape via tarfile hardlink-extraction fallback
-Patch48:        CVE-2026-11940-tarfile-escape.patch
-# PATCH-FIX-UPSTREAM CVE-2026-8328-ftplib-no-trust-PASV-resp.patch bsc#1265268 mcepl@suse.com
-# Make ftplib not trust the PASV response
-Patch49:        CVE-2026-8328-ftplib-no-trust-PASV-resp.patch
-# PATCH-FIX-UPSTREAM CVE-2026-7210-pyexpat-entropy-hash-flooding.patch bsc#1264962 mcepl@suse.com
-# Use XML_SetHashSalt16Bytes in pyexpat/_elementtree when possible
-Patch50:        CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
 # PATCH-FIX-UPSTREAM Based on gh#python/cpython#142057 Support fixes required for Sphinx 9
 Patch51:        support-sphinx-9.patch
-# PATCH-FIX-UPSTREAM CVE-2026-15308-HTMLParser-CPU-exhaust.patch bsc#1271192 mcepl@suse.com
-# Fix quadratic complexity in incremental parsing in HTMLParser
-Patch52:        CVE-2026-15308-HTMLParser-CPU-exhaust.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4360-filter_function-TarFile-extractone.patch bsc#1269959 mcepl@suse.com
-# Pass filter_function to TarFile._extract_one() during .extract()
-Patch53:        CVE-2026-4360-filter_function-TarFile-extractone.patch
-# PATCH-FIX-UPSTREAM CVE-2026-11972-tarfile-Stream-seek-EOF.patch bsc#1269788 mcepl@suse.com
-# Make tarfile._Stream.seek break at EOF
-Patch54:        CVE-2026-11972-tarfile-Stream-seek-EOF.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0864-normalize-LFTAB-configparser.patch bsc#1269066 mcepl@suse.com
-# Normalize all line endings (CR, CRLF, and LF) in configparser
-Patch55:        CVE-2026-0864-normalize-LFTAB-configparser.patch
-# PATCH-FIX-UPSTREAM CVE-2026-7774-tarfile-data_filter-symlink.patch bsc#1267821 mcepl@suse.com
-# tarfile.data_filter: validate written link target
-Patch56:        CVE-2026-7774-tarfile-data_filter-symlink.patch
-# PATCH-FIX-UPSTREAM CVE-2026-3276-On2-unicodedata-normalize.patch bsc#1267581 mcepl@suse.com
-# gh-149079: Fix O(n^2) canonical ordering in unicodedata.normalize()
-Patch57:        CVE-2026-3276-On2-unicodedata-normalize.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch58:        bsc1263083-http-cookies-atob-utf8.patch
