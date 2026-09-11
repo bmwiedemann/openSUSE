@@ -183,4 +183,15 @@
     - store: Fix reencrypt when adding recipients (#3595) (#3473)</comment>
     <requestid>1376755</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d55ba44ca126f453a9b0cc1e8cdad43d</srcmd5>
+    <version>1.17.2</version>
+    <time>1789142733</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.17.2:
+  - Remove GPG_FINGERPRINT from goreleaser config
+  - Revert to goreleaser 2.11.2 so we can keep on Go 1.25
+  - ci: Fix broken script snippet in release workflow</comment>
+    <requestid>1377400</requestid>
+  </revision>
 </revisionlist>

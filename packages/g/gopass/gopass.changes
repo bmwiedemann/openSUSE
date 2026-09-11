@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:28:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.17.2:
+  - Remove GPG_FINGERPRINT from goreleaser config
+  - Revert to goreleaser 2.11.2 so we can keep on Go 1.25
+  - ci: Fix broken script snippet in release workflow
+
+-------------------------------------------------------------------
 Wed Sep  9 21:04:56 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.17.1:
