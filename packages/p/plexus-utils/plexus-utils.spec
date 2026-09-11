@@ -17,7 +17,7 @@
 
 
 Name:           plexus-utils
-Version:        4.0.2
+Version:        4.1.0
 Release:        0
 Summary:        Plexus Common Utilities
 License:        Apache-1.1 AND Apache-2.0 AND xpp AND BSD-3-Clause AND LicenseRef-SUSE-Public-Domain
@@ -25,7 +25,6 @@ Group:          Development/Libraries/Java
 URL:            https://codehaus-plexus.github.io/plexus-utils/
 Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{version}.tar.gz
 Source1:        %{name}-build.xml
-Patch0:         plexus-utils-CVE-2025-67030.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
@@ -48,7 +47,6 @@ Javadoc for %{name}.
 
 %prep
 %setup -q -n %{name}-%{name}-%{version}
-%patch -P 0 -p1
 
 cp %{SOURCE1} build.xml
 mkdir -p lib
