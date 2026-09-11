@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep  9 08:58:19 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Do not package the sphinx doctree cache (4.4 of 5.1 MB) because
+  its environment.pickle is not reproducible
+
+-------------------------------------------------------------------
 Fri Aug 28 14:10:03 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 2.3.1

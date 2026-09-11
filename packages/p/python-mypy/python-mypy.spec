@@ -135,6 +135,8 @@ rm docs/make.bat
 pushd docs
 %make_build html
 rm build/html/.buildinfo
+# sphinx doctree cache: not documentation, and environment.pickle is not reproducible
+rm -r build/doctrees
 popd
 %endif
 
