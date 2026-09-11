@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 09 08:17:12 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Removed the embedded libexpat copy in %prep (bsc#1275100)
+  * Only the Windows build uses it. The Unix build links the
+    system libexpat
+
+-------------------------------------------------------------------
 Wed Sep  9 06:01:28 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Upgrade to version 4.5ga6

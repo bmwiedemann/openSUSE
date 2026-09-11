@@ -112,6 +112,12 @@ x026 is a fun toy which emulates an x026 puncher.
 # -q uietly -c reate -name all3270
 # -a fter changing into all3270, expand sources
 %setup -q -n suite3270-%{version} -a1
+
+# Remove the embedded libexpat copy. Only the Windows build uses it.
+# The Unix build links the system libexpat. See bsc#1275100.
+echo "Removing $(find extern/libexpat -type f | wc -l) embedded libexpat files"
+rm -rfv extern/libexpat
+
 %patch -P 0
 %patch -P 100
 %patch -P 101
