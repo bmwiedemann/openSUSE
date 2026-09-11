@@ -1,0 +1,25 @@
+From 0c527dc95e1f6cc92a256109383a57ba1ccc0d8e Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Thu, 3 Sep 2026 22:15:19 +0200
+Subject: [PATCH 7/7] Avoid error "Classes found in the wrong directory"
+
+---
+ biz.aQute.bndlib/src/aQute/bnd/osgi/Analyzer.java | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/biz.aQute.bndlib/src/aQute/bnd/osgi/Analyzer.java b/biz.aQute.bndlib/src/aQute/bnd/osgi/Analyzer.java
+index 8fc29332a..9f6f452cb 100644
+--- a/biz.aQute.bndlib/src/aQute/bnd/osgi/Analyzer.java
++++ b/biz.aQute.bndlib/src/aQute/bnd/osgi/Analyzer.java
+@@ -2652,6 +2652,8 @@ public class Analyzer extends Processor {
+ 			if (path.startsWith(prefix)) {
+ 
+ 				String relativePath = path.substring(prefix.length());
++				if (relativePath.startsWith("META-INF/"))
++					continue;
+ 
+ 				if (okToIncludeDirs) {
+ 					int n = relativePath.lastIndexOf('/');
+-- 
+2.55.0
+

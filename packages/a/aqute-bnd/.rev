@@ -137,4 +137,12 @@
     <comment>Sync changelogs</comment>
     <requestid>1366671</requestid>
   </revision>
+  <revision rev="18" vrev="7">
+    <srcmd5>ace3807c513b4f27e806765d3b1ce305</srcmd5>
+    <version>6.4.1</version>
+    <time>1789142647</time>
+    <user>anag_factory</user>
+    <comment>Avoid errors with multirelease projects</comment>
+    <requestid>1377327</requestid>
+  </revision>
 </revisionlist>

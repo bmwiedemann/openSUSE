@@ -39,6 +39,7 @@ Patch3:         0003-Remove-unmet-dependencies.patch
 Patch4:         0004-reproducible-timestamps.patch
 Patch5:         0005-reproducible-packages-list.patch
 Patch6:         0006-Set-reproducible-build-from-environment.patch
+Patch7:         0007-Avoid-error-Classes-found-in-the-wrong-directory.patch
 BuildRequires:  ant
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
@@ -81,18 +82,11 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n bnd-%{version} -a 1
+%autosetup -n bnd-%{version} -a 1 -p 1
 
 mkdir -p lib
 build-jar-repository -s lib \
   slf4j/api slf4j/simple osgi-annotation osgi-core osgi-compendium osgi-service-subsystem ant
-
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
 
 # Port to slf4j 2.x
 sed -i "s/org.slf4j.impl.SimpleLogger/org.slf4j.simple.SimpleLogger/g" `find . -name \*.java | xargs`

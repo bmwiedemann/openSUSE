@@ -31,6 +31,7 @@ Patch3:         0003-Remove-unmet-dependencies.patch
 Patch4:         0004-reproducible-timestamps.patch
 Patch5:         0005-reproducible-packages-list.patch
 Patch6:         0006-Set-reproducible-build-from-environment.patch
+Patch7:         0007-Avoid-error-Classes-found-in-the-wrong-directory.patch
 BuildRequires:  fdupes
 BuildRequires:  maven-local
 BuildRequires:  mvn(biz.aQute.bnd:biz.aQute.bndlib) >= %{version}
@@ -54,14 +55,7 @@ Group:          Development/Libraries/Java
 API documentation for %{name}.
 
 %prep
-%setup -q -n bnd-%{version}
-
-%patch -P 1 -p1
-%patch -P 2 -p1
-%patch -P 3 -p1
-%patch -P 4 -p1
-%patch -P 5 -p1
-%patch -P 6 -p1
+%autosetup -n bnd-%{version} -p 1
 
 # Port to slf4j 2.x
 sed -i "s/org.slf4j.impl.SimpleLogger/org.slf4j.simple.SimpleLogger/g" `find . -name \*.java | xargs`

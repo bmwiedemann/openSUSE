@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep  3 20:29:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * 0007-Avoid-error-Classes-found-in-the-wrong-directory.patch
+    + Avoid error "Classes found in the wrong directory" when
+      scanning a multi-release build
+
+-------------------------------------------------------------------
 Mon Jul 13 12:01:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Port to slf4j 2.x
