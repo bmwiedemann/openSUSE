@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 10 18:39:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.72:
+  * Same train as -core 0.3.337: 8 new template JSONs (pixal3d
+    multiview, nano-banana turnaround, gpt6-astra, gpt-image-2.5
+    flare/sunburst, minimax-h3-fun-controlnet); 3 retired DALL-E
+    JSONs removed; pure data, no code or dependencies
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.68:

@@ -124,4 +124,12 @@ Image, MiniMax H3 Max Turbo and Recraft V4 style-reference templates. Data-only
 change.</comment>
     <requestid>1376106</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7e60bd14eded31c870a6d2119c39ae70</srcmd5>
+    <version>0.1.72</version>
+    <time>1789142543</time>
+    <user>anag_factory</user>
+    <comment>Forward python-comfyui-workflow-templates-json 0.1.72 to Factory (devel accepted SR1376996).</comment>
+    <requestid>1376997</requestid>
+  </revision>
 </revisionlist>
