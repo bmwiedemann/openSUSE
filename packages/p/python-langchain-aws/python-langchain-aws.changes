@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:50:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.6:
+  * ChatBedrockConverse gained streaming and tool_choice support
+    for GPT-6 and GPT-5.6, and reasoning_effort for GPT-5.6 and
+    GPT-6 Astra
+  * ChatBedrockConverse now passes json_schema structured output
+    through Converse and repairs model-stringified tool-call args
+  * ChatBedrockConverse updated DeepSeek V3.x and Claude Fable 5.1
+    tool_choice handling, and declared Claude 5 structured output
+    in the model profiles
+  * langgraph-checkpoint-aws now preserves delta snapshots when
+    patching messages
+
+-------------------------------------------------------------------
 Thu Sep  3 08:52:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.5:

@@ -151,4 +151,12 @@ No runtime dependency floor changes. Built native aarch64: 611 tests
 passed per flavour (py313/py314), rpmlint 0 badness.</comment>
     <requestid>1375576</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>2a78d384ac9e1abed689204b1426e9c2</srcmd5>
+    <version>1.7.6</version>
+    <time>1789142597</time>
+    <user>anag_factory</user>
+    <comment>Forward python-langchain-aws 1.7.6 to Factory (home-&gt;devel SR 1377311 accepted, autoforward-gate ELIGIBLE).</comment>
+    <requestid>1377315</requestid>
+  </revision>
 </revisionlist>
