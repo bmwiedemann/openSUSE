@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  9 12:32:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.4.44:
+  + Fix various i386-related regressions
+  + avx512:
+    - Disable target on x86
+    - Implement the missing memoff-reg moves
+  + Fix Debian gcc miscompiling the backup float conversion
+    functions
+
+-------------------------------------------------------------------
 Sat Aug 29 07:56:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.4.43:
