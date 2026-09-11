@@ -17,7 +17,7 @@
 
 
 Name:           plexus-pom
-Version:        25
+Version:        27
 Release:        0
 Summary:        Root Plexus Projects POM
 License:        Apache-2.0
