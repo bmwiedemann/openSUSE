@@ -205,4 +205,12 @@
     <comment>distribution-gpg-keys boo#1272293 (forwarded request 1367372 from AndreasStieger)</comment>
     <requestid>1367373</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>be40aa1c5112d71a84247660321fdb7d</srcmd5>
+    <version>1.122</version>
+    <time>1789142712</time>
+    <user>anag_factory</user>
+    <comment>distribution-gpg-keys 1.122 (forwarded request 1377371 from AndreasStieger)</comment>
+    <requestid>1377372</requestid>
+  </revision>
 </revisionlist>
