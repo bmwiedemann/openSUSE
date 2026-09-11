@@ -264,4 +264,12 @@ retry submit due to git-&gt;obs autosync delays</comment>
     <comment>bugfixes/CVEs</comment>
     <requestid>1375210</requestid>
   </revision>
+  <revision rev="32" vrev="3">
+    <srcmd5>94b4e195643cd74407524567eaf1acfd</srcmd5>
+    <version>7.1.5</version>
+    <time>1789142578</time>
+    <user>anag_factory</user>
+    <comment>cancel bugrefs (patches were revoked)</comment>
+    <requestid>1377029</requestid>
+  </revision>
 </revisionlist>

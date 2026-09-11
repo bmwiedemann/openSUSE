@@ -1,26 +1,10 @@
 -------------------------------------------------------------------
-Mon Aug 28 05:22:38 UTC 2026 - Cliff Zhao <qzhao@suse.com>
-
-- Add ffmpeg-7-CVE-2026-75147.patch:
-  Backport 983dae9c from upstream, avformat/rtpenc_av1: bound OBU
-  size in the keyframe search loop.
-  (CVE-2026-75147, bsc#1276413)
-
--------------------------------------------------------------------
 Mon Aug 28 04:47:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-7-CVE-2026-75146.patch:
   Backport 65b0dab9 from upstream, avformat/dashdec: reject a negative
   fragment index.
   (CVE-2026-75146, bsc#1276412)
-
--------------------------------------------------------------------
-Mon Aug 28 04:02:17 UTC 2026 - Cliff Zhao <qzhao@suse.com>
-
-- Add ffmpeg-7-CVE-2026-75145.patch:
-  Backport b4c199c5 from upstream, avformat/rtpenc_av1: do not narrow
-  the OBU size to (long).
-  (CVE-2026-75145, bsc#1276411)
 
 -------------------------------------------------------------------
 Mon Aug 28 03:34:50 UTC 2026 - Cliff Zhao <qzhao@suse.com>
