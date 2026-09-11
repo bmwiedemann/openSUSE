@@ -1,4 +1,171 @@
 -------------------------------------------------------------------
+Fri Sep  4 16:52:54 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 3.12.14:
+  - Core and Builtins
+    - gh-139808: Add branch protections for AArch64 (BTI/PAC) in
+      assembly code used by -X perf_jit (Linux perf profiler
+      integration).
+  - Documentation
+    - gh-136155: We are now checking for fatal errors in EPUB
+      builds in CI.
+  - Library
+    - gh-109638: Fix exponential time in csv.Sniffer.sniff() for
+      a sample which contains many quote characters. A doubled
+      quote character is now also detected in a field which
+      contains the delimiter or a line break.
+    - gh-98820: Fix quadratic time in csv.Sniffer.sniff() for
+      a sample which contains quoted fields, in particular for
+      a single column of quoted fields.
+    - gh-149231: In tomllib, the number of parts in TOML keys is
+      now limited.
+    - gh-146083: Update bundled libexpat to version 2.7.5.
+    - gh-141707: Don’t change tarfile.TarInfo type from AREGTYPE
+      to DIRTYPE when parsing GNU long name or link headers
+      (bsc#1259611, CVE-2025-13462).
+    - gh-90949: Add
+      SetBillionLaughsAttackProtectionActivationThreshold() and
+      SetBillionLaughsAttackProtectionMaximumAmplification() to
+      xmlparser objects to tune protections against billion
+      laughs attacks. Patch by Bénédikt Tran.
+  - Security
+    - gh-155558: Update bundled libexpat to version 2.8.3 for the
+      fix to CVE 2026-72522.
+    - gh-153030: Fixed quadratic complexity in incremental
+      parsing of long unterminated constructs (such as tags or
+      comments) in html.parser.HTMLParser, which could be
+      exploited for a denial of service (bsc#1271192,
+      CVE-2026-15308).
+    - gh-152674: The xml.etree.ElementTree.Element methods
+      findall(), iterfind() and find() avoid quadratic behavior
+      when using XPath index predicates ([1], [last()],
+      [last()-N]) on XML documents with many same-tag siblings.
+    - gh-152216: Update bundled libexpat to version 2.8.2.
+    - gh-151987: The tarfile.TarFile.extract() method now applies
+      the given filter when it extracts a link target from the
+      archive as a fallback (bsc#1269959, CVE-2026-4360).
+    - gh-151981: In tarfile, seeking a stream now stops when end
+      of the stream is reached (bsc#1269788, CVE-2026-11972).
+    - gh-151544: Modules/Setup.local is no longer used as
+      a landmark to discover whether Python is running in
+      a source tree, as it could potentially affect actual
+      installs. The pybuilddir.txt file is now the sole indicator
+      of running in a source tree.
+    - gh-151558: Fixed an vulnerability in the tarfile data and
+      tar extraction filters where crafted archives could create
+      a symlink pointing outside the destination directory. This
+      was a bypass of CVE 2025-4330 (bsc#1268977,
+      CVE-2026-11940).
+    - gh-150599: Fix a possible stack buffer overflow in bz2 when
+      a bz2.BZ2Decompressor is reused after a decompression
+      error. The decompressor now becomes unusable after libbz2
+      reports an error (bsc#1267974, CVE-2026-9669).
+    - gh-150743: http.client now limits the number of
+      chunked-response trailer lines it will read to 100, and the
+      number of interim (1xx) responses it will skip to 100.
+      A malicious or broken server could previously stream
+      trailer lines or 100 Continue responses forever, hanging
+      the client even when a socket timeout was in use. Reported
+      by @YLChen-007 via GHSA-w4q2-g22w-6fr4.
+    - gh-149698: Update bundled libexpat to version 2.8.1 for the
+      fix for CVE 2026-45186.
+    - gh-87451: The ftplib module’s undocumented ftpcp function
+      no longer trusts the IPv4 address value returned from the
+      source server in response to the PASV command by default,
+      completing the fix for CVE-2021-4189. As with ftplib.FTP,
+      the former behavior can be re-enabled by setting the
+      trust_server_pasv_ipv4_address attribute on the source
+      ftplib.FTP instance to True. Thanks to Qi Deng at Aurascape
+      AI for the report (bsc#1265268, CVE-2026-8328).
+    - gh-149486: tarfile.data_filter() now validates link targets
+      using the same normalised value that is written to disk,
+      strips trailing separators from the member name when
+      resolving a symlink’s directory, and rejects link members
+      that would replace the destination directory itself. This
+      closes several path-traversal bypasses of the data
+      extraction filter (bsc#1267821, CVE-2026-7774).
+    - gh-149079: Fix a potential denial of service in
+      unicodedata.normalize(). The canonical ordering step of
+      Unicode normalization used a quadratic-time insertion sort
+      for reordering combining characters, which could be
+      exploited with crafted input containing many combining
+      characters in non-canonical order. Replaced with
+      a linear-time counting sort for long runs (bsc#1267581,
+      CVE-2026-3276).
+    - gh-149018: Improved protection against XML hash-flooding
+      attacks in xml.parsers.expat and xml.etree.ElementTree when
+      Python is compiled with libExpat 2.8.0 or later
+      (bsc#1264962, CVE-2026-7210).
+    - gh-149017: Update bundled libexpat to version 2.8.0.
+    - gh-148808: Added buffer boundary check when using nbytes
+      parameter with
+      asyncio.AbstractEventLoop.sock_recvfrom_into(). Only
+      relevant for Windows and the asyncio.ProactorEventLoop.
+    - gh-148395: Fix a dangling input pointer in
+      lzma.LZMADecompressor, bz2.BZ2Decompressor, and internal
+      zlib._ZlibDecompressor when memory allocation fails with
+      MemoryError, which could let a subsequent decompress() call
+      read or write through a stale pointer to the
+      already-released caller buffer (bsc#1262098, CVE-2026-6100,
+      seems like it has been incompletely applied
+      gh#python/cpython#151605).
+    - gh-148169: A bypass in webbrowser allowed URLs prefixed
+      with %action to pass the dash-prefix safety check
+      (bsc#1262098, CVE-2026-6100).
+    - gh-146581: Fix vulnerability in shutil.unpack_archive() for
+      ZIP files on Windows which allowed to write files outside
+      of the destination tree if the patch in the archive
+      contains a Windows drive prefix. Now such invalid paths
+      will be skipped. Files containing “..” in the name (like
+      “foo..bar”) are no longer skipped.
+    - gh-146333: Fix quadratic backtracking in
+      configparser.RawConfigParser option parsing regexes (OPTCRE
+      and OPTCRE_NV). A crafted configuration line with many
+      whitespace characters could cause excessive CPU usage.
+    - gh-146211: Reject CR/LF characters in tunnel request
+      headers for the HTTPConnection.set_tunnel() method
+      (bsc#1261969, CVE-2026-1502).
+    - gh-145986: xml.parsers.expat: Fixed a crash caused by
+      unbounded C recursion when converting deeply nested XML
+      content models with ElementDeclHandler(). This addresses
+      CVE 2026-4224 (bsc#1259735, CVE-2026-4224).
+    - gh-145599: Reject control characters in http.cookies.Morsel
+      update() and js_output(). This addresses CVE 2026-3644.
+    - gh-145506: Fixes CVE 2026-2297 by ensuring that
+      SourcelessFileLoader uses io.open_code() when opening .pyc
+      files (bsc#1259240, CVE-2026-2297).
+    - gh-144370: Disallow usage of control characters in status
+      in wsgiref.handlers to prevent HTTP header injections.
+      Patch by Benedikt Johannes.
+    - gh-143930: Reject leading dashes in URLs passed to
+      webbrowser.open() (bsc#1260026, CVE-2026-4519).
+    - gh-143927: Normalize all line endings (CR, CRLF, and LF) to
+      LF+TAB when writing multi-line configparser values
+      (bsc#1269066, CVE-2026-0864).
+  - Tests
+    - gh-149776: Fix test_socket on Linux kernel 7.1 and newer:
+      skip UDP Lite tests if it’s not supported. Patch by Victor
+      Stinner.
+- Remove upstreamed patches:
+  - CVE-2025-13462-tarinfo-header-parse.patch
+  - CVE-2026-0864-normalize-LFTAB-configparser.patch
+  - CVE-2026-11940-tarfile-escape.patch
+  - CVE-2026-11972-tarfile-Stream-seek-EOF.patch
+  - CVE-2026-1502-reject-CRLF-HTTP-tunnel.patch
+  - CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+  - CVE-2026-2297-SourcelessFileLoader-io_open_code.patch
+  - CVE-2026-3276-On2-unicodedata-normalize.patch
+  - CVE-2026-4224-expat-unbound-C-recursion.patch
+  - CVE-2026-4360-filter_function-TarFile-extractone.patch
+  - CVE-2026-4519-webbrowser-open-dashes.patch
+  - CVE-2026-4786-webbrowser-open-action.patch
+  - CVE-2026-6100-use-after-free-decompression.patch
+  - CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
+  - CVE-2026-7774-tarfile-data_filter-symlink.patch
+  - CVE-2026-8328-ftplib-no-trust-PASV-resp.patch
+  - test_UDPLITE_support.patch
+
+-------------------------------------------------------------------
 Sat Aug  8 15:14:27 UTC 2026 - Matej Cepl <mcepl@suse.com>
 
 - noCVE: CVE-2026-6019 fix does not handle non-ascii chars correctly
@@ -10,7 +177,7 @@ Fri Jul 31 13:55:17 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-3276: Fix O(n^2) canonical ordering in
   unicodedata.normalize() (bsc#1267581, gh#python/cpython#149079)
-CVE-2026-3276-On2-unicodedata-normalize.patch
+  - CVE-2026-3276-On2-unicodedata-normalize.patch
 
 -------------------------------------------------------------------
 Fri Jul 31 13:42:27 UTC 2026 - Matej Cepl <mcepl@cepl.eu>

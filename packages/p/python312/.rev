@@ -2142,4 +2142,41 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   bsc1263083-http-cookies-atob-utf8.patch</comment>
     <requestid>1371253</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f0ab5d2b9f9211bef68f13e20af3ae66</srcmd5>
+    <version>3.12.14</version>
+    <time>1789145992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.12.14:
+  - Core and Builtins
+    - gh-139808: Add branch protections for AArch64 (BTI/PAC) in
+      assembly code used by -X perf_jit (Linux perf profiler
+      integration).
+  - Documentation
+    - gh-136155: We are now checking for fatal errors in EPUB
+      builds in CI.
+  - Library
+    - gh-109638: Fix exponential time in csv.Sniffer.sniff() for
+      a sample which contains many quote characters. A doubled
+      quote character is now also detected in a field which
+      contains the delimiter or a line break.
+    - gh-98820: Fix quadratic time in csv.Sniffer.sniff() for
+      a sample which contains quoted fields, in particular for
+      a single column of quoted fields.
+    - gh-149231: In tomllib, the number of parts in TOML keys is
+      now limited.
+    - gh-146083: Update bundled libexpat to version 2.7.5.
+    - gh-141707: Don’t change tarfile.TarInfo type from AREGTYPE
+      to DIRTYPE when parsing GNU long name or link headers
+      (bsc#1259611, CVE-2025-13462).
+    - gh-90949: Add
+      SetBillionLaughsAttackProtectionActivationThreshold() and
+      SetBillionLaughsAttackProtectionMaximumAmplification() to
+      xmlparser objects to tune protections against billion
+      laughs attacks. Patch by Bénédikt Tran.
+  - Security
+    - gh-155558: Update bundled libexpat to version 2.8.3 for the
+      fix to CVE 2026-72522.</comment>
+    <requestid>1376614</requestid>
+  </revision>
 </revisionlist>

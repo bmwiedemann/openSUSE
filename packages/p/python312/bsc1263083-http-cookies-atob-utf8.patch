@@ -10,10 +10,10 @@ Subject: [PATCH 1/2] [3.13] gh-149144: Use decodeURIComponent() for UTF-8
  Lib/test/test_http_cookies.py |   27 ++++++++++++++-------------
  2 files changed, 17 insertions(+), 16 deletions(-)
 
-Index: Python-3.12.13/Lib/http/cookies.py
+Index: Python-3.12.14/Lib/http/cookies.py
 ===================================================================
---- Python-3.12.13.orig/Lib/http/cookies.py	2026-08-08 22:17:38.717876965 +0200
-+++ Python-3.12.13/Lib/http/cookies.py	2026-08-08 22:17:42.129593311 +0200
+--- Python-3.12.14.orig/Lib/http/cookies.py	2026-09-04 16:20:20.949697392 +0200
++++ Python-3.12.14/Lib/http/cookies.py	2026-09-04 18:51:53.108598022 +0200
 @@ -389,18 +389,18 @@
          return '<%s: %s>' % (self.__class__.__name__, self.OutputString())
  
@@ -36,10 +36,10 @@ Index: Python-3.12.13/Lib/http/cookies.py
          // end hiding -->
          </script>
          """ % (output_encoded,)
-Index: Python-3.12.13/Lib/test/test_http_cookies.py
+Index: Python-3.12.14/Lib/test/test_http_cookies.py
 ===================================================================
---- Python-3.12.13.orig/Lib/test/test_http_cookies.py	2026-08-08 22:17:38.718292458 +0200
-+++ Python-3.12.13/Lib/test/test_http_cookies.py	2026-08-08 22:17:42.129751609 +0200
+--- Python-3.12.14.orig/Lib/test/test_http_cookies.py	2026-09-04 16:20:20.950146018 +0200
++++ Python-3.12.14/Lib/test/test_http_cookies.py	2026-09-04 18:51:53.108978502 +0200
 @@ -1,10 +1,10 @@
  # Simple test suite for http/cookies.py
 -import base64
