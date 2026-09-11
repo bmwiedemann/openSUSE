@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:22:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.30.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.30.0
+- Too many changes since 6.29.0, only listing bugfixes:
+  * Drop Close When Idle handling from kwalletd (kde#524500)
+  * Fix logic errors in internalOpen (kde#524373)
+
+-------------------------------------------------------------------
 Sun Aug  9 10:38:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.29.0
