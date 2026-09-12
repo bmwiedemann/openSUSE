@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep  9 13:23:01 UTC 2026 - rw@suse.com
+
+- coreutils-uniq-fix-read-overrun-with-w.patch: Add upstream
+  security fix (CVE-2026-56391, bsc#1272698)
+  * uniq: '-w' no longer overruns the read buffer in multibyte locales.
+    [bug introduced in coreutils-9.5]
+- coreutils-unexpand-fix-heap-overflow.patch:  Add upstream
+  security fix (CVE-2026-56392, bsc#1272699)
+  * unexpand: '-t' no longer overflows a heap buffer for tab
+    values > SIZE_MAX/16.
+    [bug introduced in coreutils-9.11]
+
+-------------------------------------------------------------------
+Wed Aug  9 12:58:58 UTC 2026 - rw@suse.com
+
+- coreutils-tests-df-sync-fix-strace.patch: Add test patch
+  to let df-sync test succeed on more architecures.
+
+-------------------------------------------------------------------
 Fri Jun 19 06:54:32 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Switch coreutils-single to build as hardlinks
@@ -13,7 +32,6 @@ Tue May 19 21:14:56 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
     [bug introduced in coreutils-9.11]
   * 'tee' no longer treats short writes as errors.
     [bug introduced in coreutils-9.11]
-
 
 -------------------------------------------------------------------
 Thu May  7 13:06:43 UTC 2026 - rw@suse.com

@@ -1,0 +1,45 @@
+---
+ tests/df/sync.sh |   15 +++++++++++----
+ 1 file changed, 11 insertions(+), 4 deletions(-)
+
+--- a/tests/df/sync.sh
++++ b/tests/df/sync.sh
+@@ -22,7 +22,9 @@ print_ver_ df
+ # This test is marked "very expensive" since calling sync() can take a long
+ # time on a busy system.
+ very_expensive_
+-require_strace_ 'sync,statfs,fstatfs'
++
++STRACE="trace=/^(sync|statfs|fstatfs)"
++require_strace_ "$STRACE"
+ 
+ # Check that sync was called before statfs or statvfs.
+ check_sync ()
+@@ -31,7 +33,9 @@ check_sync ()
+   while IFS= read line; do
+     case "$line" in
+       sync\(*) seen_sync=1 ;;
+-      statfs\(*|fstatfs\(*)
++#     statfs\(*|fstatfs\(*)
++#     statfs\(*|statfs64\(*|fstatfs\(*)
++      statfs*|fstatfs*)
+         if test "$seen_sync" -eq 1; then
+           return 0
+         else
+@@ -45,11 +49,14 @@ check_sync ()
+ }
+ 
+ # Make sure that 'df --sync' calls sync() before gathering usage information.
+-strace -o strace.out -e trace=sync,statfs,fstatfs df --sync || fail=1
++strace -o strace.out -e "$STRACE" df --sync || fail=1
+ check_sync strace.out || fail=1
++[ "$fail" -ne 1 ] || cat strace.out 
+ 
+ # Also check it with a file given as the argument.
+-strace -o strace.out -e trace=sync,statfs,fstatfs df --sync . || fail=1
++strace -o strace.out -e "$STRACE" df --sync . || fail=1
+ check_sync strace.out || fail=1
++[ "$fail" -ne 1 ] || cat strace.out
++cat strace.out >&$stderr_fileno_
+ 
+ Exit $fail

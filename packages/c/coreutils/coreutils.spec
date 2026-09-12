@@ -64,7 +64,14 @@ Patch501:       coreutils-test_without_valgrind.patch
 Patch810:       coreutils-skip-tests-rm-ext3-perf.patch
 Patch900:       coreutils-tests-workaround-make-fdleak.patch
 Patch901:       coreutils-tests-misc-tty-eof-avoid-false-failure.patch
-Patch902:       coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch
+Patch902:       coreutils-tests-df-sync-fix-strace.patch
+
+# Upstream fix for bsc#1265378
+Patch920:       coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch
+# Upstream security fix for CVE-2026-56391 / bsc#1272698
+Patch922:       coreutils-uniq-fix-read-overrun-with-w.patch
+# Upstream security fix for CVE-2026-56392 / bsc#1272699
+Patch923:       coreutils-unexpand-fix-heap-overflow.patch
 
 BuildRequires:  automake
 BuildRequires:  gmp-devel
@@ -182,6 +189,9 @@ package coreutils-systemd:
 %patch -P 900
 %patch -P 901 -p 1
 %patch -P 902 -p 1
+%patch -P 920 -p 1
+%patch -P 922 -p 1
+%patch -P 923 -p 1
 
 # ================================================
 %build
