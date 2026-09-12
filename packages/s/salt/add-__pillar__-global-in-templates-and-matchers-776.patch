@@ -1,0 +1,277 @@
+From 3cc335e77e564f7c1e68c95bed6e45d84bc0dc1a Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 10 Sep 2026 12:03:16 +0200
+Subject: [PATCH] Add `__pillar__` global in templates and matchers
+ (#776)
+
+* Add `__pillar__` global in templates and matchers
+
+This is a partial cherry-pick of https://github.com/saltstack/salt/pull/64043
+
+* Fix unit tests
+
+Add test from alt PR
+
+Fix linter
+
+Fix test assertion for ext_pillar_first
+
+Address frebib's PR comments: ensure opts['pillar'] is set in __init__ and explicitly update pack
+
+Fix linter: remove trailing newlines
+
+Add explicit tests for pillar_opts, ssh_merge_pillar, decrypt_pillar and non-ext_pillar_first paths
+
+Fix formatting and final logic verification for dunder pillar
+
+Fixup
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@vmware.com>
+---
+ salt/loader/__init__.py                  | 17 ++++++++++++++++-
+ salt/matchers/confirm_top.py             |  6 +++++-
+ salt/matchers/pillar_exact_match.py      | 11 ++++++++---
+ salt/matchers/pillar_match.py            | 11 ++++++++---
+ salt/matchers/pillar_pcre_match.py       | 11 ++++++++---
+ salt/pillar/__init__.py                  | 17 +++++++++++++----
+ tests/pytests/unit/pillar/test_pillar.py | 24 +++++++++++++++++++++++-
+ tests/unit/test_pillar.py                |  1 +
+ 8 files changed, 82 insertions(+), 16 deletions(-)
+
+diff --git a/salt/loader/__init__.py b/salt/loader/__init__.py
+index b41cc64b8e6..f09c6615909 100644
+--- a/salt/loader/__init__.py
++++ b/salt/loader/__init__.py
+@@ -418,19 +418,34 @@ def metaproxy(opts, loaded_base_name=None):
+     )
+ 
+ 
+-def matchers(opts, loaded_base_name=None):
++def matchers(opts, loaded_base_name=None, context=None, pillar=None):
+     """
+     Return the matcher services plugins
+ 
+     :param dict opts: The Salt options dictionary
+     :param str loaded_base_name: The imported modules namespace when imported
+                                  by the salt loader.
++    :param dict context: The Salt context dictionary
++    :param dict pillar: The Salt pillar dictionary
+     """
++    if context is None:
++        context = {}
++
++    pack = {
++        "__salt__": {},
++        "__runners__": {},
++        "__grains__": opts.get("grains", {}),
++        "__context__": context,
++    }
++    if pillar is not None:
++        pack["__pillar__"] = pillar
++
+     return LazyLoader(
+         _module_dirs(opts, "matchers"),
+         opts,
+         tag="matchers",
+         loaded_base_name=loaded_base_name,
++        pack=pack,
+     )
+ 
+ 
+diff --git a/salt/matchers/confirm_top.py b/salt/matchers/confirm_top.py
+index d2edc99d8f8..659cd5c772a 100644
+--- a/salt/matchers/confirm_top.py
++++ b/salt/matchers/confirm_top.py
+@@ -24,7 +24,11 @@ def confirm_top(match, data, nodegroups=None):
+     if "matchers" in __context__:
+         matchers = __context__["matchers"]
+     else:
+-        matchers = salt.loader.matchers(__opts__)
++        # Matchers need pillar data if available
++        pillar = __pillar__ if "__pillar__" in globals() else None
++        if hasattr(pillar, "value"):
++            pillar = pillar.value()
++        matchers = salt.loader.matchers(__opts__, context=__context__, pillar=pillar)
+         __context__["matchers"] = matchers
+     funcname = matcher + "_match.match"
+     if matcher == "nodegroup":
+diff --git a/salt/matchers/pillar_exact_match.py b/salt/matchers/pillar_exact_match.py
+index ac62c49f9de..ea233ad9415 100644
+--- a/salt/matchers/pillar_exact_match.py
++++ b/salt/matchers/pillar_exact_match.py
+@@ -20,11 +20,16 @@ def match(tgt, delimiter=":", opts=None, minion_id=None):
+         log.error("Got insufficient arguments for pillar match statement from master")
+         return False
+ 
+-    if "pillar" in opts:
++    if opts.get("pillar"):
+         pillar = opts["pillar"]
+-    elif "ext_pillar" in opts:
+-        log.info("No pillar found, fallback to ext_pillar")
++    elif "__pillar__" in globals():
++        pillar = __pillar__
++        if hasattr(pillar, "value"):
++            pillar = pillar.value()
++    elif opts.get("ext_pillar"):
+         pillar = opts["ext_pillar"]
++    else:
++        pillar = {}
+ 
+     return salt.utils.data.subdict_match(
+         pillar, tgt, delimiter=delimiter, exact_match=True
+diff --git a/salt/matchers/pillar_match.py b/salt/matchers/pillar_match.py
+index 87b0df606ba..929bf7cb489 100644
+--- a/salt/matchers/pillar_match.py
++++ b/salt/matchers/pillar_match.py
+@@ -21,10 +21,15 @@ def match(tgt, delimiter=DEFAULT_TARGET_DELIM, opts=None, minion_id=None):
+         log.error("Got insufficient arguments for pillar match statement from master")
+         return False
+ 
+-    if "pillar" in opts:
++    if opts.get("pillar"):
+         pillar = opts["pillar"]
+-    elif "ext_pillar" in opts:
+-        log.info("No pillar found, fallback to ext_pillar")
++    elif "__pillar__" in globals():
++        pillar = __pillar__
++        if hasattr(pillar, "value"):
++            pillar = pillar.value()
++    elif opts.get("ext_pillar"):
+         pillar = opts["ext_pillar"]
++    else:
++        pillar = {}
+ 
+     return salt.utils.data.subdict_match(pillar, tgt, delimiter=delimiter)
+diff --git a/salt/matchers/pillar_pcre_match.py b/salt/matchers/pillar_pcre_match.py
+index ba76a26fa4b..8c627fc80ac 100644
+--- a/salt/matchers/pillar_pcre_match.py
++++ b/salt/matchers/pillar_pcre_match.py
+@@ -23,11 +23,16 @@ def match(tgt, delimiter=DEFAULT_TARGET_DELIM, opts=None, minion_id=None):
+         )
+         return False
+ 
+-    if "pillar" in opts:
++    if opts.get("pillar"):
+         pillar = opts["pillar"]
+-    elif "ext_pillar" in opts:
+-        log.info("No pillar found, fallback to ext_pillar")
++    elif "__pillar__" in globals():
++        pillar = __pillar__
++        if hasattr(pillar, "value"):
++            pillar = pillar.value()
++    elif opts.get("ext_pillar"):
+         pillar = opts["ext_pillar"]
++    else:
++        pillar = {}
+ 
+     return salt.utils.data.subdict_match(
+         pillar, tgt, delimiter=delimiter, regex_match=True
+diff --git a/salt/pillar/__init__.py b/salt/pillar/__init__.py
+index 0b532aca5ed..599a236b17e 100644
+--- a/salt/pillar/__init__.py
++++ b/salt/pillar/__init__.py
+@@ -572,6 +572,12 @@ class Pillar:
+         self.saltenv = saltenv
+         self.client = salt.fileclient.get_file_client(self.opts, True)
+         self.avail = self.__gather_avail()
++        self.pillar_data = self.opts.get("pillar", {})
++        if not isinstance(self.pillar_data, dict):
++            self.pillar_data = {}
++        else:
++            # Ensure we have a plain dict and not a proxy into opts
++            self.pillar_data = dict(self.pillar_data)
+ 
+         if opts.get("file_client", "") == "local" and not opts.get(
+             "use_master_when_local", False
+@@ -589,7 +595,9 @@ class Pillar:
+             self.functions = functions
+ 
+         self.opts["minion_id"] = minion_id
+-        self.matchers = salt.loader.matchers(self.opts)
++        self.matchers = salt.loader.matchers(self.opts, pillar=self.pillar_data)
++        if hasattr(self.matchers, "pack"):
++            self.matchers.pack["__pillar__"] = self.pillar_data
+         self.rend = salt.loader.render(self.opts, self.functions)
+         ext_pillar_opts = copy.deepcopy(self.opts)
+         # Keep the incoming opts ID intact, ie, the master id
+@@ -883,7 +891,7 @@ class Pillar:
+         """
+         matches = {}
+         if reload:
+-            self.matchers = salt.loader.matchers(self.opts)
++            self.matchers = salt.loader.matchers(self.opts, pillar=self.pillar_data)
+         for saltenv, body in top.items():
+             if self.opts["pillarenv"]:
+                 if saltenv != self.opts["pillarenv"]:
+@@ -1254,12 +1262,13 @@ class Pillar:
+         top, top_errors = self.get_top()
+         if ext:
+             if self.opts.get("ext_pillar_first", False):
+-                self.opts["pillar"], errors = self.ext_pillar(self.pillar_override)
++                pillar, errors = self.ext_pillar(self.pillar_override)
++                self.pillar_data.update(pillar)
+                 self.rend = salt.loader.render(self.opts, self.functions)
+                 matches = self.top_matches(top, reload=True)
+                 pillar, errors = self.render_pillar(matches, errors=errors)
+                 pillar = merge(
+-                    self.opts["pillar"],
++                    self.pillar_data,
+                     pillar,
+                     self.merge_strategy,
+                     self.opts.get("renderer", "yaml"),
+diff --git a/tests/pytests/unit/pillar/test_pillar.py b/tests/pytests/unit/pillar/test_pillar.py
+index 11eda34318b..f01f8cee2a2 100644
+--- a/tests/pytests/unit/pillar/test_pillar.py
++++ b/tests/pytests/unit/pillar/test_pillar.py
+@@ -7,7 +7,7 @@ import salt.loader
+ import salt.pillar
+ import salt.utils.cache
+ from salt.utils.odict import OrderedDict
+-from tests.support.mock import MagicMock
++from tests.support.mock import MagicMock, patch
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -175,3 +175,25 @@ def test_remote_pillar_timeout(temp_salt_minion, tmp_path):
+     pillar.channel.crypted_transfer_decode_dictentry = mock
+     with pytest.raises(salt.exceptions.SaltClientError):
+         pillar.compile_pillar()
++
++
++def test_ssh_merge_pillar_in_dunder_pillar(temp_salt_minion):
++    """
++    Test that ssh_merge_pillar correctly merges extra pillar data from opts["pillar"] into __pillar__
++    """
++    opts = temp_salt_minion.config.copy()
++    opts["ssh_merge_pillar"] = True
++    opts["pillar"] = {"ssh_key": "ssh_value"}
++
++    grains = salt.loader.grains(opts)
++    pillar = salt.pillar.Pillar(opts, grains, temp_salt_minion.id, "base")
++
++    pil_value = {"normal_key": "normal_value"}
++    with patch.object(pillar, "render_pillar", return_value=(pil_value, [])):
++        compiled = pillar.compile_pillar()
++        assert compiled["ssh_key"] == "ssh_value"
++        assert compiled["normal_key"] == "normal_value"
++
++    # The loader pack should contain the merged SSH pillar
++    assert pillar.functions.pack["__pillar__"]["ssh_key"] == "ssh_value"
++    assert pillar.functions["pillar.get"]("ssh_key") == "ssh_value"
+diff --git a/tests/unit/test_pillar.py b/tests/unit/test_pillar.py
+index b71c0e9a371..67102eb2535 100644
+--- a/tests/unit/test_pillar.py
++++ b/tests/unit/test_pillar.py
+@@ -89,6 +89,7 @@ class PillarTestCase(TestCase):
+             "renderer_blacklist": [],
+             "renderer_whitelist": [],
+             "state_top": "",
++            "pillar": {},
+             "pillar_roots": {"dev": [], "base": []},
+             "file_roots": {"dev": [], "base": []},
+             "extension_modules": "",
+-- 
+2.55.0
+

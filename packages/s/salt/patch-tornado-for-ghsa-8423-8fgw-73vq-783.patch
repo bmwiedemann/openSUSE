@@ -1,0 +1,46 @@
+From 7f13812c030dfc5469e3d2bc09ea7366c9960088 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Pablo=20Su=C3=A1rez=20Hern=C3=A1ndez?=
+ <psuarezhernandez@suse.com>
+Date: Fri, 11 Sep 2026 15:16:34 +0100
+Subject: [PATCH] Patch tornado for GHSA-8423-8fgw-73vq (#783)
+
+* Patch tornado for GHSA-8423-8fgw-73vq
+
+httputil: Apply multipart max_parts limit earlier
+This prevents some CPU and memory amplification attacks.
+
+https://github.com/tornadoweb/tornado/security/advisories/GHSA-8423-8fgw-73vq
+https://github.com/tornadoweb/tornado/commit/de85b3f87446e323e881bbaa3d5a74f4b76e5f05
+
+* Add changelog entry
+---
+ changelog/70269.fixed.md     | 1 +
+ salt/ext/tornado/httputil.py | 4 +++-
+ 2 files changed, 4 insertions(+), 1 deletion(-)
+ create mode 100644 changelog/70269.fixed.md
+
+diff --git a/changelog/70269.fixed.md b/changelog/70269.fixed.md
+new file mode 100644
+index 00000000000..20096970be0
+--- /dev/null
++++ b/changelog/70269.fixed.md
+@@ -0,0 +1 @@
++- Patch tornado for GHSA-8423-8fgw-73vq
+diff --git a/salt/ext/tornado/httputil.py b/salt/ext/tornado/httputil.py
+index b230a85d7b9..587657f0c39 100644
+--- a/salt/ext/tornado/httputil.py
++++ b/salt/ext/tornado/httputil.py
+@@ -916,7 +916,9 @@ def parse_multipart_form_data(boundary, data, arguments, files, config=None):
+     final_boundary_index = data.rfind(b"--" + boundary + b"--")
+     if final_boundary_index == -1:
+         raise HTTPInputError("Invalid multipart/form-data: no final boundary found")
+-    parts = data[:final_boundary_index].split(b"--" + boundary + b"\r\n")
++    parts = data[:final_boundary_index].split(
++        b"--" + boundary + b"\r\n", config.max_parts + 1
++    )
+     if len(parts) > config.max_parts:
+         raise HTTPInputError("multipart/form-data has too many parts")
+     for part in parts:
+-- 
+2.55.0
+

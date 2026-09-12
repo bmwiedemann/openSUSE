@@ -1,0 +1,166 @@
+From 624fffbc7caa0ecb9f1309a3e7997aec7cca31cd Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Wed, 9 Sep 2026 09:19:56 +0200
+Subject: [PATCH] Remove usages of pkg_resources (bsc#1262135)
+
+* Remove usages of pkg_resources
+
+* Fix pre-commit and lint failures
+
+---------
+
+Co-authored-by: twangboy <shane.d.lee@gmail.com>
+---
+ salt/modules/pip.py                    | 16 ++--------------
+ salt/states/pip_state.py               | 26 +++++---------------------
+ salt/utils/versions.py                 |  7 +++++++
+ tests/pytests/unit/utils/test_cloud.py |  7 +++----
+ 4 files changed, 17 insertions(+), 39 deletions(-)
+
+diff --git a/salt/modules/pip.py b/salt/modules/pip.py
+index 68a2a442a1e..b30e472886e 100644
+--- a/salt/modules/pip.py
++++ b/salt/modules/pip.py
+@@ -84,8 +84,6 @@ import shutil
+ import sys
+ import tempfile
+ 
+-import pkg_resources  # pylint: disable=3rd-party-module-not-gated
+-
+ import salt.utils.data
+ import salt.utils.files
+ import salt.utils.json
+@@ -96,11 +94,6 @@ import salt.utils.url
+ import salt.utils.versions
+ from salt.exceptions import CommandExecutionError, CommandNotFoundError
+ 
+-try:
+-    import pkg_resources
+-except ImportError:
+-    pkg_resources = None
+-
+ 
+ # This needs to be named logger so we don't shadow it in pip.install
+ logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
+@@ -120,12 +113,7 @@ def __virtual__():
+     entire filesystem.  If it's not installed in a conventional location, the
+     user is required to provide the location of pip each time it is used.
+     """
+-    if pkg_resources is None:
+-        ret = False, 'Package dependency "pkg_resource" is missing'
+-    else:
+-        ret = "pip"
+-
+-    return ret
++    return "pip"
+ 
+ 
+ def _pip_bin_env(cwd, bin_env):
+@@ -1711,7 +1699,7 @@ def list_all_versions(
+             versions = [
+                 v for v in match.group(1).split(", ") if v and excludes.match(v)
+             ]
+-            versions.sort(key=pkg_resources.parse_version)
++            versions.sort(key=salt.utils.versions.parse)
+             break
+     if not versions:
+         return None
+diff --git a/salt/states/pip_state.py b/salt/states/pip_state.py
+index 542a7f6c751..bcab1cd2835 100644
+--- a/salt/states/pip_state.py
++++ b/salt/states/pip_state.py
+@@ -28,16 +28,6 @@ import salt.utils.data
+ import salt.utils.versions
+ from salt.exceptions import CommandExecutionError, CommandNotFoundError
+ 
+-try:
+-    import pkg_resources
+-
+-    HAS_PKG_RESOURCES = True
+-except ImportError:
+-    HAS_PKG_RESOURCES = False
+-
+-
+-# pylint: disable=import-error
+-
+ 
+ def purge_pip():
+     """
+@@ -141,8 +131,6 @@ def __virtual__():
+     """
+     Only load if the pip module is available in __salt__
+     """
+-    if HAS_PKG_RESOURCES is False:
+-        return False, "The pkg_resources python library is not installed"
+     if "pip.list" in __salt__:
+         return __virtualname__
+     return False
+@@ -345,26 +333,22 @@ def _check_if_installed(
+ 
+ def _pep440_version_cmp(pkg1, pkg2, ignore_epoch=False):
+     """
+-    Compares two version strings using pkg_resources.parse_version.
++    Compares two version strings using packaging.version.Version.
+     Return -1 if version1 < version2, 0 if version1 ==version2,
+     and 1 if version1 > version2. Return None if there was a problem
+     making the comparison.
+     """
+-    if HAS_PKG_RESOURCES is False:
+-        log.warning(
+-            "The pkg_resources packages was not loaded. Please install setuptools."
+-        )
+-        return None
++
+     normalize = lambda x: str(x).split("!", 1)[-1] if ignore_epoch else str(x)
+     pkg1 = normalize(pkg1)
+     pkg2 = normalize(pkg2)
+ 
+     try:
+-        if pkg_resources.parse_version(pkg1) < pkg_resources.parse_version(pkg2):
++        if salt.utils.versions.Version(pkg1) < salt.utils.versions.Version(pkg2):
+             return -1
+-        if pkg_resources.parse_version(pkg1) == pkg_resources.parse_version(pkg2):
++        if salt.utils.versions.Version(pkg1) == salt.utils.versions.Version(pkg2):
+             return 0
+-        if pkg_resources.parse_version(pkg1) > pkg_resources.parse_version(pkg2):
++        if salt.utils.versions.Version(pkg1) > salt.utils.versions.Version(pkg2):
+             return 1
+     except Exception as exc:  # pylint: disable=broad-except
+         log.exception(exc)
+diff --git a/salt/utils/versions.py b/salt/utils/versions.py
+index 2426f47b6b4..5abd634584c 100644
+--- a/salt/utils/versions.py
++++ b/salt/utils/versions.py
+@@ -464,3 +464,10 @@ def check_boto_reqs(
+             )
+ 
+     return True
++
++
++def parse(version):
++    """
++    A replacement for `pkg_resources.parse_version` which is being deprecated.
++    """
++    return packaging.version.parse(version)
+diff --git a/tests/pytests/unit/utils/test_cloud.py b/tests/pytests/unit/utils/test_cloud.py
+index db9d258d399..a9d926e858e 100644
+--- a/tests/pytests/unit/utils/test_cloud.py
++++ b/tests/pytests/unit/utils/test_cloud.py
+@@ -448,11 +448,10 @@ def test_winrm_pinnned_version():
+         except ImportError:
+             raise pytest.skip('The "winrm" python module is not installed in this env.')
+         else:
+-            import pkg_resources
++            from importlib.metadata import version
+ 
+-            winrm_pkg = pkg_resources.get_distribution("pywinrm")
+-            assert winrm_pkg.version >= "0.3.0"
+-    # fmt: on
++            winrm_version = version("pywinrm")
++            assert winrm_version >= "0.3.0"
+ 
+ 
+ def test_ssh_gateway_arguments_default_alive_args():
+-- 
+2.55.0
+

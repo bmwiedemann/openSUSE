@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:27:22 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- tornado: httputil: Apply multipart limit earlier (bsc#1280008)
+
+- Added:
+  * patch-tornado-for-ghsa-8423-8fgw-73vq-783.patch
+
+-------------------------------------------------------------------
+Thu Sep 10 10:09:57 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
+
+- Add __pillar__ global in templates and matchers (bsc#1274616)
+
+- Added:
+  * add-__pillar__-global-in-templates-and-matchers-776.patch
+
+-------------------------------------------------------------------
+Wed Sep  9 07:36:20 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Remove rpm-vercmp dependency and fix pkg.version_cmp
+- Remove usages of pkg_resources (bsc#1262135)
+
+- Added:
+  * remove-rpm-vercmp-dependency-and-fix-pkg.version_cmp.patch
+  * remove-usages-of-pkg_resources-bsc-1262135.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 11:06:27 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - Fix "mount.swap" activation on UUID and add "resolve_canonical" arg
