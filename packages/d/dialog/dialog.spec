@@ -1,7 +1,7 @@
 #
 # spec file for package dialog
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,7 @@
 #
 
 
-%define src_date 20250817
+%define src_date 20260721
 %define somajor 15
 Name:           dialog
 Version:        1.3
@@ -24,7 +24,7 @@ Release:        0
 Summary:        Menus and Input Boxes for Shell Scripts
 License:        LGPL-2.1-only
 Group:          Development/Tools/Other
-URL:            http://invisible-island.net/dialog/
+URL:            https://invisible-island.net/dialog/
 Source0:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz
 Source1:        https://www.invisible-island.net/archives/%{name}/%{name}-%{version}-%{src_date}.tgz.asc
 Source2:        %{name}.keyring

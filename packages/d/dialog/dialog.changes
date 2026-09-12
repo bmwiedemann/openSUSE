@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Sep  4 09:50:52 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.3-20260721:
+  + correct order of sprintf parameters for token-count error messages
+    (patch by Xinting Zhou).
+  + updated cs.po, zh_CN.po from
+    https://translationproject.org/latest/dialog/
+  + configure script fixes for compiler warnings
+  + updated ms.po from
+    https://translationproject.org/latest/dialog/
+  + updated ar.po, ka.po, ms.po, ru.po, sr.po from
+    https://translationproject.org/latest/dialog/
+
+-------------------------------------------------------------------
+Wed Feb 25 13:06:02 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.3-20260107:
+  + modify package/debian/* to work with Debian 13+.
+  + modify run_test.sh to set LD_LIBRARY_PATH in case "make check" is
+    used on a system where dialog's shared library was not installed.
+  + improve gen-pkgconfig.in by widening the filter for "-z" options.
+  + improve layout of menu and checklist/radiolist widgets (report by
+    Mike Castle).
+  + add a limit-check in the tailbox widget.
+  + correct length of input-fields in form widget (report by Mike Castle).
+  + correct a typo for aspect ratio in files written by --create-rc
+    (report by Mike Castle).
+  + improve manpage description of --hline (report by Mike Castle).
+  + update configure script macros for cross-compatibility.
+  + added kab.po from
+          https://translationproject.org/latest/dialog/
+  + updated bg.po, de.po, eo.po, fa.po, id.po, ja.po, ms.po, pl.po,
+    pt.po, ro.po, sq.po, sv.po, uk.po from
+          https://translationproject.org/latest/dialog/
+  + configure script fixes for compiler warnings
+  + update config.guess, config.sub
+
+-------------------------------------------------------------------
 Fri Sep 12 13:34:12 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.3-20250817:
