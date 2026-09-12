@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           libkomparediff2
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        A library to compare files and strings
 License:        GPL-2.0-or-later
