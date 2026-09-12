@@ -1,7 +1,7 @@
-From e1e27add6a799e8973e7b3777ec3187ebd86c523 Mon Sep 17 00:00:00 2001
+From cfc9eee8433d1d064bafebff1be64b1296263ed1 Mon Sep 17 00:00:00 2001
 From: Aleksa Sarai <asarai@suse.de>
 Date: Wed, 11 Oct 2023 21:19:12 +1100
-Subject: [PATCH 6/6] SLE12: revert "apparmor: remove version-conditionals from
+Subject: [PATCH 5/5] SLE12: revert "apparmor: remove version-conditionals from
  template"
 
 This reverts the following commits:
@@ -16,20 +16,22 @@ These version conditionals are still required on SLE 12, where our
 apparmor_parser version is quite old.
 
 Signed-off-by: Aleksa Sarai <cyphar@cyphar.com>
+Signed-off-by: rcmadhankumar <madhankumar.chellamuthu@suse.com>
+(cherry picked from commit e1e27add6a799e8973e7b3777ec3187ebd86c523)
 ---
  contrib/apparmor/main.go                      | 16 +++-
  contrib/apparmor/template.go                  | 16 ++++
  pkg/aaparser/aaparser.go                      | 86 +++++++++++++++++++
- .../moby/profiles/apparmor/apparmor.go        | 16 +++-
+ .../moby/profiles/apparmor/apparmor.go        | 10 +++
  .../moby/profiles/apparmor/template.go        |  4 +
- 5 files changed, 134 insertions(+), 4 deletions(-)
+ 5 files changed, 130 insertions(+), 2 deletions(-)
  create mode 100644 pkg/aaparser/aaparser.go
 
 diff --git a/contrib/apparmor/main.go b/contrib/apparmor/main.go
 index 899d8378ed..13caa8245e 100644
 --- a/contrib/apparmor/main.go
 +++ b/contrib/apparmor/main.go
-@@ -6,9 +6,13 @@ import (
+@@ -6,9 +6,13 @@
  	"os"
  	"path"
  	"text/template"
@@ -72,7 +74,7 @@ diff --git a/contrib/apparmor/template.go b/contrib/apparmor/template.go
 index 58afcbe845..e6d0b6d37c 100644
 --- a/contrib/apparmor/template.go
 +++ b/contrib/apparmor/template.go
-@@ -20,9 +20,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -20,9 +20,11 @@
  
    umount,
    pivot_root,
@@ -84,7 +86,7 @@ index 58afcbe845..e6d0b6d37c 100644
    network,
    capability,
    owner /** rw,
-@@ -45,10 +47,12 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -45,10 +47,12 @@
    /etc/ld.so.cache r,
    /etc/passwd r,
  
@@ -97,7 +99,7 @@ index 58afcbe845..e6d0b6d37c 100644
  
    /usr/lib/** rm,
    /lib/** rm,
-@@ -69,9 +73,11 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -69,9 +73,11 @@
    /sbin/zfs rCx,
    /sbin/apparmor_parser rCx,
  
@@ -109,7 +111,7 @@ index 58afcbe845..e6d0b6d37c 100644
  
    profile /bin/cat (complain) {
      /etc/ld.so.cache r,
-@@ -93,8 +99,10 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -93,8 +99,10 @@
      /dev/null rw,
      /bin/ps mr,
  
@@ -120,7 +122,7 @@ index 58afcbe845..e6d0b6d37c 100644
  
      # Quiet dac_override denials
      deny capability dac_override,
-@@ -112,11 +120,15 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -112,11 +120,15 @@
      /proc/tty/drivers r,
    }
    profile /sbin/iptables (complain) {
@@ -136,7 +138,7 @@ index 58afcbe845..e6d0b6d37c 100644
      capability sys_admin,
      capability dac_override,
  
-@@ -135,7 +147,9 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -135,7 +147,9 @@
      /proc/[0-9]*/mounts rw,
    }
    profile /sbin/modprobe /bin/kmod (complain) {
@@ -146,7 +148,7 @@ index 58afcbe845..e6d0b6d37c 100644
      capability sys_module,
      /etc/ld.so.cache r,
      /lib/** rm,
-@@ -149,7 +163,9 @@ profile /usr/bin/docker (attach_disconnected, complain) {
+@@ -149,7 +163,9 @@
    }
    # xz works via pipes, so we do not need access to the filesystem.
    profile /usr/bin/xz (complain) {
@@ -249,36 +251,28 @@ index 0000000000..89b48b2dba
 +	return numericVersion, nil
 +}
 diff --git a/vendor/github.com/moby/profiles/apparmor/apparmor.go b/vendor/github.com/moby/profiles/apparmor/apparmor.go
-index 445eed64e9..060a482289 100644
+index 244ae70fb2..af79e08980 100644
 --- a/vendor/github.com/moby/profiles/apparmor/apparmor.go
 +++ b/vendor/github.com/moby/profiles/apparmor/apparmor.go
-@@ -11,10 +11,14 @@ import (
- 	"path"
+@@ -16,6 +16,8 @@
+ 	"path/filepath"
  	"strings"
  	"text/template"
 +
 +	"github.com/moby/moby/v2/pkg/aaparser"
  )
  
--// profileDirectory is the file store for apparmor profiles and macros.
--const profileDirectory = "/etc/apparmor.d"
-+var (
-+	// profileDirectory is the file store for apparmor profiles and macros.
-+	profileDirectory = "/etc/apparmor.d"
-+)
- 
- // profileData holds information about the given profile for generation.
- type profileData struct {
-@@ -26,6 +30,8 @@ type profileData struct {
+ // profileDirectory is the file store for AppArmor profiles and macros.
+@@ -33,6 +35,8 @@ type profileData struct {
  	Imports []string
- 	// InnerImports defines the apparmor functions to import in the profile.
+ 	// InnerImports defines the AppArmor functions to import in the profile.
  	InnerImports []string
 +	// Version is the {major, minor, patch} version of apparmor_parser as a single number.
 +	Version int
  }
  
- // generateDefault creates an apparmor profile from ProfileData.
-@@ -45,6 +51,12 @@ func (p *profileData) generateDefault(out io.Writer) error {
+ // generate creates an AppArmor profile from ProfileData.
+@@ -61,6 +65,12 @@ func generate(p *profileData, out io.Writer, macroExistsFn func(string) bool) er
  		p.InnerImports = append(p.InnerImports, "#include <abstractions/base>")
  	}
  
@@ -292,10 +286,10 @@ index 445eed64e9..060a482289 100644
  }
  
 diff --git a/vendor/github.com/moby/profiles/apparmor/template.go b/vendor/github.com/moby/profiles/apparmor/template.go
-index 2ebcc218a7..682425f71e 100644
+index 4694a6c6e1..181b6cdbd5 100644
 --- a/vendor/github.com/moby/profiles/apparmor/template.go
 +++ b/vendor/github.com/moby/profiles/apparmor/template.go
-@@ -22,6 +22,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -37,6 +37,7 @@
    capability,
    file,
    umount,
@@ -303,24 +297,25 @@ index 2ebcc218a7..682425f71e 100644
    # Host (privileged) processes may send signals to container processes.
    signal (receive) peer=unconfined,
    # runc may send signals to container processes (for "docker stop").
-@@ -32,6 +33,7 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
-   signal (receive) peer={{.DaemonProfile}},
+@@ -47,6 +48,7 @@
+   signal (receive) peer="{{.DaemonProfile}}",
    # Container processes may send signals amongst themselves.
-   signal (send,receive) peer={{.Name}},
+   signal (send,receive) peer="{{.Name}}",
 +{{end}}
  
    deny @{PROC}/* w,   # deny write for all files directly in /proc (not in a subdir)
    # deny write to files not in /proc/<number>/** or /proc/sys/**
-@@ -52,7 +54,9 @@ profile {{.Name}} flags=(attach_disconnected,mediate_deleted) {
+@@ -67,8 +69,10 @@
    deny /sys/devices/virtual/powercap/** rwklx,
    deny /sys/kernel/security/** rwklx,
  
 +{{if ge .Version 208095}}
-   # suppress ptrace denials when using 'docker ps' or using 'ps' inside a container
-   ptrace (trace,read,tracedby,readby) peer={{.Name}},
+   # allow processes within the container to trace each other,
+   # provided all other LSM and yama setting allow it.
+   ptrace (trace,tracedby,read,readby) peer="{{.Name}}",
 +{{end}}
  }
  `
 -- 
-2.53.0
+2.54.0
 

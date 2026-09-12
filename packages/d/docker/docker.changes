@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Sep  3 06:30:01 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Ship the SELinux CIL policies from contrib/selinux/, loading
+  docker-af-alg-deny.cil (mitigates CVE-2026-31431) via semodule
+  when SELinux is enabled (bsc#1278193).
+
+-------------------------------------------------------------------
+Tue Aug 11 09:27:20 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
+
+- Update to Docker 29.7.2. See upstream changelog online at
+  <https://docs.docker.com/engine/release-notes/29/#2972>
+- Update to buildx 0.36.1. See upstream changelog online at
+  <https://github.com/docker/buildx/releases/tag/v0.36.1>
+- Rebased patches:
+  * 0001-SECRETS-SUSE-always-clear-our-internal-secrets.patch
+  * 0002-SECRETS-daemon-allow-directory-creation-in-run-secre.patch
+  * 0003-SECRETS-SUSE-implement-SUSE-container-secrets.patch
+  * 0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
+  * 0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
+    (renamed from 0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch)
+  * cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
+  * cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
+- Remove patches now fixed upstream:
+  - 0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
+    (bsc#1099277, superseded by upstream commit 528a806141 "daemon:
+    Always reload AppArmor profile at daemon startup", which fixes
+    the same root cause: the daemon no longer skips reinstalling the
+    docker-default profile on upgrade)
+  - 0007-CVE-2026-39984-Ensure-correct-certificate-is-used-fo.patch
+    (bsc#1262346, CVE-2026-39984 fixed upstream via vendored
+    sigstore/timestamp-authority v2.1.2)
+  - 0008-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
+    (bsc#1265782, CVE-2026-33814 fixed upstream via vendored
+    golang.org/x/net v0.57.0)
+  - 0009-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
+    (bsc#1266625, CVE-2026-39821 fixed upstream via vendored
+    golang.org/x/net v0.57.0)
+  - 0010-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
+    (bsc#1267827, CVE-2026-41567 fixed upstream directly in moby/moby
+    via commit 2022313ffe)
+
+-------------------------------------------------------------------
 Tue Jun 23 06:19:04 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Ensure correct certificate is used for TSA auth

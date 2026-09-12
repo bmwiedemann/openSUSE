@@ -1,7 +1,7 @@
 #
 # spec file for package docker
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,8 +53,8 @@
 %endif
 
 # MANUAL: This needs to be updated with every docker update.
-%define docker_real_version 29.4.0
-%define docker_git_version daa0cb7f23
+%define docker_real_version 29.7.2
+%define docker_git_version 6a43e3d5af
 %define docker_version %{docker_real_version}_ce
 # This "nice version" is so that docker --version gives a result that can be
 # parsed by other people. boo#1182476
@@ -62,7 +62,7 @@
 
 %if %{with buildx}
 # MANUAL: This needs to be updated with every docker-buildx update.
-%define buildx_version 0.33.0
+%define buildx_version 0.36.1
 %endif
 
 # Used when generating the "build" information for Docker version. The value of
@@ -70,7 +70,7 @@
 # helpfully injects into our build environment from the changelog). If you want
 # to generate a new git_commit_epoch, use this:
 #  $ date --date="$(git show --format=fuller --date=iso $COMMIT_ID | grep -oP '(?<=^CommitDate: ).*')" '+%s'
-%define git_commit_epoch 1775550724
+%define git_commit_epoch 1785954267
 
 Name:           docker%{flavour}
 Version:        %{docker_version}
@@ -108,14 +108,8 @@ Patch901:       cli-0001-openSUSE-point-users-to-docker-buildx-package.patch
 Patch902:       cli-0002-SECRETS-SUSE-default-to-DOCKER_BUILDKIT-0-for-docker.patch
 # UPSTREAM: Revert of upstream patch to keep SLE-12 build working.
 Patch200:       0004-BUILD-SLE12-revert-graphdriver-btrfs-use-kernel-UAPI.patch
-# UPSTREAM: Backport of <https://github.com/moby/moby/pull/41954>.
-Patch201:       0005-bsc1073877-apparmor-clobber-docker-default-profile-o.patch
 # UPSTREAM: Revert of upstream patches to make apparmor work on SLE 12.
-Patch202:       0006-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
-Patch203:       0007-CVE-2026-39984-Ensure-correct-certificate-is-used-fo.patch
-Patch204:       0008-CVE-2026-33814-http2-prevent-hanging-Transport-due-t.patch
-Patch205:       0009-CVE-2026-39821-idna-update-from-x-text-fix-ToUnicode.patch
-Patch206:       0010-CVE-2026-41567-daemon-Decompress-archives-before-ent.patch
+Patch201:       0005-SLE12-revert-apparmor-remove-version-conditionals-fr.patch
 BuildRequires:  audit
 BuildRequires:  bash-completion
 BuildRequires:  ca-certificates
@@ -134,8 +128,8 @@ BuildRequires:  sqlite3-devel
 BuildRequires:  sysuser-tools
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.25
-BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libnftables)
+BuildRequires:  pkgconfig(libsystemd)
 %if %{with apparmor}
 %if 0%{?suse_version} >= 1500
 # This conditional only works on rpm>=4.13, which SLE 12 doesn't have. But we
@@ -390,18 +384,8 @@ cp %{SOURCE130} .
 # Patches to build on SLE-12.
 %patch -P200 -p1
 %endif
-# bsc#1099277
-%patch -P201 -p1
 # Solves apparmor issues on SLE-12, but okay for newer SLE versions too.
-%patch -P202 -p1
-# bsc#1262346
-%patch -P203 -p1
-# bsc#1265782
-%patch -P204 -p1
-# bsc#1266625
-%patch -P205 -p1
-# bsc#1267827
-%patch -P206 -p1
+%patch -P201 -p1
 
 %build
 %sysusers_generate_pre %{SOURCE160} %{name} docker.conf
@@ -529,6 +513,12 @@ install -D -m0644 %{SOURCE110} %{buildroot}%{_udevrulesdir}/80-docker.rules
 # audit rules
 install -D -m0640 %{SOURCE140} %{buildroot}%{_sysconfdir}/audit/rules.d/docker.rules
 
+# SELinux policies. docker-af-alg-deny.cil denies AF_ALG sockets in
+# container domains (mitigates CVE-2026-31431); docker_client.cil is an
+# optional udica template for confining docker CLI clients. bsc#1278193
+install -d -m0755 %{buildroot}%{_datadir}/docker/selinux
+install -p -m0644 %{docker_builddir}/contrib/selinux/*.cil %{buildroot}%{_datadir}/docker/selinux/
+
 # sysconfig file
 install -D -m0644 %{SOURCE120} %{buildroot}%{_fillupdir}/sysconfig.docker
 
@@ -580,12 +570,21 @@ grep -q '^dockremap:' /etc/subgid || \
 %post
 %service_add_post docker.service docker.socket
 %{fillup_only -n docker}
+# Load the AF_ALG deny policy when SELinux is enabled. This may fail on
+# systems with SELinux userspace < 3.6, or without container-selinux's
+# container_domain attribute, so keep installation non-fatal. bsc#1278193
+if command -v semodule >/dev/null 2>&1 && selinuxenabled 2>/dev/null; then
+	semodule -i %{_datadir}/docker/selinux/docker-af-alg-deny.cil 2>/dev/null || :
+fi
 
 %preun
 %service_del_preun docker.service docker.socket
 
 %postun
 %service_del_postun docker.service docker.socket
+if [ "$1" -eq 0 ] && command -v semodule >/dev/null 2>&1; then
+	semodule -r docker-af-alg-deny 2>/dev/null || :
+fi
 
 %files
 %defattr(-,root,root)
@@ -620,6 +619,10 @@ grep -q '^dockremap:' /etc/subgid || \
 %dir %attr(750,root,root) %{_sysconfdir}/audit/rules.d
 %config %{_sysconfdir}/audit/rules.d/docker.rules
 %{_udevrulesdir}/80-docker.rules
+
+%dir %{_datadir}/docker
+%dir %{_datadir}/docker/selinux
+%{_datadir}/docker/selinux/*.cil
 
 %{_mandir}/man*/*%{ext_man}
 
