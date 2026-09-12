@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:16:30 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to final GCC 13.5 
+
+-------------------------------------------------------------------
+Fri Sep  4 08:11:10 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-13 branch head, 3c92f70d174a1bc9a4bfb866d, git10509 
+  * GCC 13.5 release candidate
+- Add gcc13-pr124811.patch to resolve reproducible build issues
+  when a PCH is used
+
+-------------------------------------------------------------------
 Wed Jun 10 11:09:00 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to gcc-13 branch head, 1990e6544b9f0db39c470b999, git10355

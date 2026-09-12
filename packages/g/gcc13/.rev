@@ -514,4 +514,17 @@ that go1.21 can be build.  I believe Staging:L for now.
 - disabled -fhardened</comment>
     <requestid>1358536</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>276f9ff745403e214cdb2a1f6ae1c752</srcmd5>
+    <version>13.5.0+git10516</version>
+    <time>1789240519</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to final GCC 13.5 
+
+- Update to gcc-13 branch head, 3c92f70d174a1bc9a4bfb866d, git10509 
+  * GCC 13.5 release candidate
+- Add gcc13-pr124811.patch to resolve reproducible build issues
+  when a PCH is used</comment>
+    <requestid>1377335</requestid>
+  </revision>
 </revisionlist>
