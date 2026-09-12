@@ -14230,7 +14230,7 @@ unsorted:
   - libhyprcursor0 
   - libhyprgraphics4 
   - libhyprlang2 
-  - libhyprtoolkit5 
+  - libhyprtoolkit6 
   - libhyprutils13 
   - libhyprwire3 
   - libi2c0 
@@ -20238,6 +20238,7 @@ unsorted:
   - nmon 
   - nmtree 
   - nng-devel 
+  - nng-utils 
   - nnn 
   - nnn-bash-completion 
   - nnn-fish-completion 
@@ -21751,6 +21752,7 @@ unsorted:
   - perf-bash-completion 
   - perf-devel 
   - perf-gtk 
+  - perf-plugin-jvmti 
   - perf-rebuild 
   - perftest 
   - perl-32bit 
@@ -22613,6 +22615,7 @@ unsorted:
   - perl-Parallel-ForkManager 
   - perl-Params-Classify 
   - perl-Params-Coerce 
+  - perl-Params-SomeUtil 
   - perl-Params-Validate 
   - perl-Params-ValidationCompiler 
   - perl-Parse-ANSIColor-Tiny 
@@ -45590,6 +45593,10 @@ unsorted:
   - tiled 
   - tilix 
   - tilix-lang 
+  - tilth 
+  - tilth-bash-completion 
+  - tilth-fish-completion 
+  - tilth-zsh-completion 
   - time-api 
   - time-api-javadoc 
   - timekpr-next 

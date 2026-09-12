@@ -1268,6 +1268,7 @@ packagesets:
    - libKF6BookmarksWidgets6 # reason: dvd:patterns-kde-kde
    - libKF6BreezeIcons6 # reason: dvd:patterns-kde-kde
    - libKF6CalendarCore6 # reason: dvd:patterns-kde-kde
+   - libKF6CalendarCore6-lang # reason: dvd:patterns-kde-kde
    - libKF6CalendarEvents6 # reason: dvd:patterns-kde-kde
    - libKF6CalendarEvents6-lang # reason: dvd:patterns-kde-kde
    - libKF6Codecs6 # reason: dvd:patterns-kde-kde
