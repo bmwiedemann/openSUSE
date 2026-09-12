@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep  3 17:15:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.1.1:
+  * Vendored libmaxminddb bumped to 1.13.3: no longer rejects
+    databases whose metadata ends in a 0-element map or array
+- Changes from 3.1.0:
+  * Vendored libmaxminddb bumped to 1.13.1: hardening for corrupt
+    or malicious databases (integer overflow, bounds checking,
+    use-after-free)
+- Build against the system libmaxminddb instead of the vendored copy,
+  which was statically linked in until now - the two fixes above come
+  from whatever libmaxminddb the target ships (1.13.3 on Tumbleweed,
+  still 1.12.2 on Leap 16.x), not from a private copy
+  * MAXMINDDB_USE_SYSTEM_LIBMAXMINDDB=1, plus
+    MAXMINDDB_REQUIRE_EXTENSION=1 so a failed extension build errors
+    out instead of silently falling back to pure Python
+- Set MM_FORCE_EXT_TESTS=1 so the extension tests fail loudly instead
+  of skipping should the .so ever go missing
+- Replace libmaxminddb-devel with pkgconfig(libmaxminddb) + pkgconfig,
+  add gcc
+- BuildRequire setuptools >= 77.0.3, as upstream requires
+- Drop the Leap 15.6 setuptools compatibility sed, 15.6 is EOL
+
+-------------------------------------------------------------------
 Thu Jan 29 18:11:49 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to version 3.0.0:

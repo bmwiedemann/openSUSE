@@ -1,7 +1,7 @@
 #
 # spec file for package python-maxminddb
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-maxminddb
-Version:        3.0.0
+Version:        3.1.1
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0
@@ -26,11 +26,13 @@ URL:            https://www.maxmind.com/
 Source:         https://files.pythonhosted.org/packages/source/m/maxminddb/maxminddb-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module setuptools >= 77.0.3}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
-BuildRequires:  libmaxminddb-devel
+BuildRequires:  gcc
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  pkgconfig(libmaxminddb)
 # SECTION test requirements
 BuildRequires:  %{python_module pytest}
 # /SECTION
@@ -45,14 +47,14 @@ subnets (IPv4 or IPv6).
 
 %prep
 %autosetup -n maxminddb-%{version}
-
-# hack to restore compatibility with older setuptools
-%if 0%{?suse_version} <= 1500
-sed -i 's/^from setuptools.command.bdist_wheel/from wheel.bdist_wheel/' setup.py
-%endif
+# no bundled libmaxminddb, see MAXMINDDB_USE_SYSTEM_LIBMAXMINDDB below
+rm -r extension/libmaxminddb
 
 %build
 export CFLAGS="%{optflags}"
+export MAXMINDDB_USE_SYSTEM_LIBMAXMINDDB=1
+# without this setup.py silently falls back to the pure Python reader
+export MAXMINDDB_REQUIRE_EXTENSION=1
 %pyproject_wheel
 
 %install
@@ -60,6 +62,8 @@ export CFLAGS="%{optflags}"
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
+# else the extension tests skip themselves when the .so is missing
+export MM_FORCE_EXT_TESTS=1
 %pytest_arch
 
 %files %{python_files}

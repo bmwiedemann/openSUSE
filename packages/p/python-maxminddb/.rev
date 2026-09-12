@@ -192,4 +192,12 @@
     <comment> Update to version 3.0.0</comment>
     <requestid>1330347</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d6abc026be0612f655a406ba11ebbd25</srcmd5>
+    <version>3.1.1</version>
+    <time>1789240510</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1376983</requestid>
+  </revision>
 </revisionlist>
