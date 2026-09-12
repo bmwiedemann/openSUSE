@@ -48,7 +48,9 @@ Source10:       system-group-sudo.conf
 Patch0:         sudo-sudoers.patch
 Patch1:         fix-CVE-2026-35535.patch
 BuildRequires:  audit-devel
+BuildRequires:  bison
 BuildRequires:  cyrus-sasl-devel
+BuildRequires:  flex
 BuildRequires:  groff
 BuildRequires:  libopenssl-devel
 BuildRequires:  libselinux-devel
@@ -174,14 +176,16 @@ export LDFLAGS="-pie"
     --without-secure-path \
     --with-passprompt="[sudo] password for %%p: " \
     --with-rundir=%{_localstatedir}/lib/sudo \
-    --with-sssd
-%if 0%{?sle_version} < 150000
-# the SLES12 way
+    --with-sssd \
+    --with-devel
+# Remove pre-generated parser files so make regenerates them in the
+# correct dependency order. Without this, parallel make can compile
+# sources that include gram.h while yacc is overwriting it.
+rm -f plugins/sudoers/gram.[ch] plugins/sudoers/toke.c plugins/sudoers/getdate.c
 %make_build
-%else
-# -B required to make every build give the same result - maybe from bad build deps in Makefiles?
-%make_build -B
-%endif
+
+%check
+%make_build check
 
 %install
 %make_install install_uid=`id -u` install_gid=`id -g`

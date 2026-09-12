@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep  8 03:55:28 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
+
+- Drop make -B workaround for parallel build race condition.
+  The underlying issue (sudo Bug #842, libtool .o/.lo race) was
+  fixed upstream in sudo 1.8.24 (July 2018). The -B flag was added
+  in SR#622342 with the note that it could be reverted after the
+  upstream fix landed. Also drop the sle_version < 150000 build
+  conditional that was only needed for the non-B code path.
+- Add --with-devel to build the full upstream test suite including
+  the testsudoers regression binary. Pre-generated parser files are
+  removed before make to prevent a parallel build race where yacc
+  overwrites gram.h while other sources are compiling against it.
+  Add bison and flex as BuildRequires for the regeneration.
+- Add %check section to run the upstream test suite during build.
+  Fedora, Debian and Arch Linux all run make check.
+
+-------------------------------------------------------------------
 Thu Jun 11 12:28:29 UTC 2026 - Simon Lees <sflees@suse.de>
 
 - Fix missing %verify(not mode) %{_bindir}/sudo (bsc#1263098)
