@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kapman
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Pac-Man-like game by KDE
 License:        GPL-2.0-or-later
