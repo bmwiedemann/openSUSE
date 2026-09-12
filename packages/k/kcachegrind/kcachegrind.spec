@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcachegrind
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Frontend for Cachegrind
 License:        BSD-4-Clause AND GPL-2.0-only AND GFDL-1.2-only
