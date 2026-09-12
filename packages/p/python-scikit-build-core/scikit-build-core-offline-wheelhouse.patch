@@ -1,17 +1,27 @@
-Index: scikit_build_core-0.12.2/tests/conftest.py
+Index: scikit_build_core-1.0.3/tests/conftest.py
 ===================================================================
---- scikit_build_core-0.12.2.orig/tests/conftest.py
-+++ scikit_build_core-0.12.2/tests/conftest.py
-@@ -50,40 +50,7 @@ def _is_valid_wheel(wheel: Path) -> bool
+--- scikit_build_core-1.0.3/tests/conftest.py
++++ scikit_build_core-1.0.3/tests/conftest.py
+@@ -64,64 +64,7 @@
  def pep518_wheelhouse(
      pytestconfig: pytest.Config, tmp_path_factory: pytest.TempPathFactory
  ) -> Path:
 -    wheelhouse = pytestconfig.cache.mkdir("wheelhouse")
 -    tmp_path = tmp_path_factory.mktemp("wheelhouse_tmp")
 -
--    main_lock = FileLock(wheelhouse / "main.lock")
--    with main_lock:
--        if not list(tmp_path.glob("scikit_build_core-*.whl")):
+-    # A single lock for all wheelhouse mutations prevents cross-lock races on
+-    # Windows where concurrent readers (zipfile.is_zipfile) and writers
+-    # (unlink/replace) on different locks would cause PermissionError (WinError 5).
+-    wheelhouse_lock = FileLock(wheelhouse / "wheels.lock")
+-    with wheelhouse_lock:
+-        # Only build the scikit-build-core wheel when the current version is not
+-        # already present; this avoids a redundant pip-wheel invocation on every
+-        # worker while still catching version changes between runs.
+-        skbuild_version = metadata.version("scikit-build-core")
+-        if not any(
+-            whl.name.startswith(f"scikit_build_core-{skbuild_version}-")
+-            for whl in wheelhouse.glob("scikit_build_core-*.whl")
+-        ):
 -            subprocess.run(
 -                [
 -                    sys.executable,
@@ -28,19 +38,33 @@ Index: scikit_build_core-0.12.2/tests/conftest.py
 -                text=True,
 -            )
 -            for wheel in tmp_path.glob("*.whl"):
--                shutil.copy(wheel, wheelhouse)
+-                target = wheelhouse / wheel.name
+-                if _is_valid_wheel(target):
+-                    continue  # already present and valid; skip to avoid PermissionError on Windows
+-                shutil.copy(wheel, target)
 -
--    wheels_lock = FileLock(wheelhouse / "wheels.lock")
--    with wheels_lock:
+-            # Remove stale scikit-build-core wheels that weren't just copied
+-            copied = {f.name for f in tmp_path.glob("scikit_build_core-*.whl")}
+-            for stale in wheelhouse.glob("scikit_build_core-*.whl"):
+-                if stale.name not in copied:
+-                    stale.unlink()
+-
+-        # Clean up any invalid or orphaned wheels.  Because we hold the single
+-        # shared lock here, there are no concurrent readers to race against.
+-        _clean_wheelhouse(wheelhouse)
+-
 -        if not all(
 -            any(_is_valid_wheel(whl) for whl in wheelhouse.glob(f"{p}*.whl"))
 -            for p in download_wheels.WHEELS
 -        ):
 -            download_wheels.prepare(wheelhouse)
 -
--    return wheelhouse
+-            # Re-validate after downloading, in case a partially-written wheel
+-            # was cached from an interrupted run.
+-            _clean_wheelhouse(wheelhouse)
 -
+-    return wheelhouse
 +    return os.getcwd() + '/build'
  
+ 
  class VEnv:
-     def __init__(self, env_dir: Path, *, wheelhouse: Path | None = None) -> None:

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 10 14:53:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.3:
+  * Major 1.0 release: setuptools and hatchling plugins are no
+    longer experimental, new unified scikit-build CLI with init
+    command, PEP 808 partially-dynamic metadata via
+    dynamic-metadata plugins, PEP 803 free-threaded stable ABI.
+  * Behavior changes for downstreams: renamed config fields
+    (cmake.minimum-version, ninja.minimum-version, cmake.verbose,
+    cmake.targets) now error unless minimum-version is set, SDists
+    resolve symlinks by default, the empty pyproject extra was
+    removed.
+  * 1.0.1-1.0.3 are bugfix-only: namespace packages and wheel
+    timestamp clamp on 32-bit, redirect editable installs honoring
+    path hooks, setuptools plugin config_settings passthrough.
+- Drop scikit-build-core-issue1258_setuptools-scm.patch: adopted
+  upstream.
+- Rebase scikit-build-core-offline-wheelhouse.patch for the reworked
+  tests/conftest.py wheelhouse fixture.
+- Ship the new scikit-build and scikit-build-core console scripts via
+  libalternatives.
+
+-------------------------------------------------------------------
 Wed Jun  3 12:43:51 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Require cmake in the main package again: the main cmake is always

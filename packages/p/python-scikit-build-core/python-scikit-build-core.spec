@@ -18,31 +18,32 @@
 
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "test"
-%bcond_without test
 %define psuffix -test
+%bcond_without test
 %else
-%bcond_with test
 %define psuffix %{nil}
+%bcond_with test
 %endif
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-scikit-build-core%{psuffix}
-Version:        0.12.2
+Version:        1.0.3
 Release:        0
 Summary:        Build backend for CMake based projects
 License:        Apache-2.0
 URL:            https://github.com/scikit-build/scikit-build-core
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit_build_core/scikit_build_core-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM scikit-build-core-issue1258_setuptools-scm.patch gh#scikit-build/scikit-build-core#1258
-Patch0:         https://github.com/scikit-build/scikit-build-core/commit/56e8c65f6911c168a4f23ae76c9c7f9ad4c088eb.patch#/scikit-build-core-issue1258_setuptools-scm.patch
 # PATCH-FEATURE-OPENSUSE scikit-build-core-offline-wheelhouse.patch provide the testing wheels without runtime download code@bnavigator.de
-Patch1:         scikit-build-core-offline-wheelhouse.patch
+Patch0:         scikit-build-core-offline-wheelhouse.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module hatch-vcs >= 0.4}
 BuildRequires:  %{python_module hatchling >= 1.24}
 BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       cmake
 Requires:       python-packaging >= 23.2
 Requires:       python-pathspec >= 0.12
@@ -88,9 +89,9 @@ Features over classic Scikit-build:
 
 %package wheels
 Summary:        The scikit_build_core[wheels] extra
+Requires:       ninja
 Requires:       python-scikit-build-core = %{version}
 Provides:       python-scikit_build_core-pyproject = %{version}-%{release}
-Requires:       ninja
 
 %description wheels
 Python CMake adaptor and Python API for plugins: The extra requirement to build PEP518 wheels and sdists.
@@ -106,6 +107,9 @@ Note that on openSUSE, this requirement still uses the system cmake and does not
 %if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%python_clone -a %{buildroot}%{_bindir}/scikit-build
+%python_clone -a %{buildroot}%{_bindir}/scikit-build-core
+%python_group_libalternatives scikit-build scikit-build-core
 %endif
 
 %check
@@ -121,9 +125,15 @@ donttest="test_pep517_sdist_hash or test_pep518_sdist"
 %endif
 
 %if !%{with test}
+%pre
+%python_libalternatives_reset_alternative scikit-build
+%python_libalternatives_reset_alternative scikit-build-core
+
 %files %{python_files}
 %license LICENSE
 %doc README.md
+%python_alternative %{_bindir}/scikit-build
+%python_alternative %{_bindir}/scikit-build-core
 %{python_sitelib}/scikit_build_core
 %{python_sitelib}/scikit_build_core-%{version}.dist-info
 
