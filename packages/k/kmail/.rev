@@ -1000,4 +1000,12 @@
     <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
     <requestid>1372427</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>df6f71bcb8f9a6c91f0bef039364d9db</srcmd5>
+    <version>26.08.1</version>
+    <time>1789240596</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.08.1 (forwarded request 1376352 from krop)</comment>
+    <requestid>1377189</requestid>
+  </revision>
 </revisionlist>
