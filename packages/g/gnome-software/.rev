@@ -1404,4 +1404,14 @@ New stable release</comment>
   + Updated translations.</comment>
     <requestid>1361898</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>c60b1042ce8499ebe6147abb2869a442</srcmd5>
+    <version>50.4</version>
+    <time>1789240514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.4:
+  + Speed up Software Repositories dialog on non-Fedora package
+    based systems.</comment>
+    <requestid>1377055</requestid>
+  </revision>
 </revisionlist>
