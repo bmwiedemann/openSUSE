@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:23:48 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260910:
+  * Allow polkit_auth_t dac_read_search/dac_override (bsc#1255503)
+  * Allow pam_ssh_agent configure custom key location (bsc#1255503)
+
+-------------------------------------------------------------------
 Tue Sep 08 11:41:50 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260908:
