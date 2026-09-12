@@ -40,6 +40,8 @@ Summary:        A collection of helpers and mock objects for unit tests and doc 
 License:        MIT
 URL:            https://github.com/Simplistix/testfixtures
 Source:         https://files.pythonhosted.org/packages/source/t/testfixtures/testfixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#simplistix/testfixtures#262
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
@@ -54,6 +56,7 @@ BuildRequires:  %{python_module Twisted}
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module sybil >= 10.1}
 BuildRequires:  %{python_module testfixtures = %{version}}
+BuildRequires:  %{python_module tzdata}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros

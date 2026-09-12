@@ -1,0 +1,95 @@
+From 6579678357a561e3e6333d37e0f44b7a0c1e6fdb Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@withers.org>
+Date: Wed, 22 Jul 2026 09:17:46 +0100
+Subject: [PATCH 1/2] Add Python 3.15 (beta) to CI alongside 3.14
+
+WarningMessage gained a module attribute in 3.15; account for it
+in the ShouldWarn explore test.
+---
+ .github/workflows/ci.yml   | 2 ++
+ src/testfixtures/compat.py | 1 +
+ tests/test_shouldwarn.py   | 3 +++
+ 3 files changed, 6 insertions(+)
+
+diff --git a/.github/workflows/ci.yml b/.github/workflows/ci.yml
+index f2246934..dfa80748 100644
+--- a/.github/workflows/ci.yml
++++ b/.github/workflows/ci.yml
+@@ -17,6 +17,7 @@ jobs:
+         python-version:
+           - "3.11"
+           - "3.14"
++          - "3.15"
+         uv-resolution:
+           - "lowest-direct"
+           - "highest"
+@@ -81,6 +82,7 @@ jobs:
+         python-version:
+           - "3.11"
+           - "3.14"
++          - "3.15"
+     steps:
+       - uses: cjw296/python-action/check-typing@v3
+         with:
+diff --git a/src/testfixtures/compat.py b/src/testfixtures/compat.py
+index bd1bf666..90d226cb 100644
+--- a/src/testfixtures/compat.py
++++ b/src/testfixtures/compat.py
+@@ -6,6 +6,7 @@
+ 
+ PY_312_PLUS: bool = PY_VERSION >= (3, 12)
+ PY_313_PLUS: bool = PY_VERSION >= (3, 13)
++PY_315_PLUS: bool = PY_VERSION >= (3, 15)
+ 
+ if PY_313_PLUS:
+     from typing import TypeVar as TypeVar
+diff --git a/tests/test_shouldwarn.py b/tests/test_shouldwarn.py
+index a1d31b07..0a923383 100644
+--- a/tests/test_shouldwarn.py
++++ b/tests/test_shouldwarn.py
+@@ -6,6 +6,7 @@
+     ShouldWarn, compare, ShouldRaise, ShouldNotWarn,
+     Comparison as C
+ )
++from testfixtures.compat import PY_315_PLUS
+ from testfixtures.shouldraise import ShouldAssert
+ 
+ 
+@@ -147,6 +148,8 @@ def test_maximal_explore(self):
+             message=C(DeprecationWarning('foo')),
+             source=None
+         )
++        if PY_315_PLUS:
++            expected_attrs['module'] = 'bar_module'
+ 
+         compare(expected=C(warnings.WarningMessage, **expected_attrs),
+             actual=recorded[0])
+
+From 9bae76b9fbac7e81fe9c32aff9ca66dbacbde4d3 Mon Sep 17 00:00:00 2001
+From: Chris Withers <chris@withers.org>
+Date: Wed, 29 Jul 2026 22:37:38 +0100
+Subject: [PATCH 2/2] Bump pydantic minimum on 3.15 to one bundling pyo3 0.28
+
+pydantic-core's pyo3 pin only reached 3.15 support at 2.42.0
+(pydantic 2.13.0); earlier releases fail to build on 3.15 since
+their vendored pyo3 0.26 caps out at 3.14.
+---
+ pyproject.toml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index 8b4b8c71..6a2e4df8 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -36,7 +36,10 @@ polars = ["polars>=1.32"]
+ pandas = ["pandas>=2.3.3"]
+ numpy = ["numpy>=2.3.2"]
+ structlog = ["structlog>=24.3.0"]
+-pydantic = ["pydantic>=2.12.0"]
++pydantic = [
++    "pydantic>=2.12.0; python_version < '3.15'",
++    "pydantic>=2.13.0; python_version >= '3.15'",
++]
+ twisted = ["twisted>=22.1"]
+ yaml = ["pyyaml>=6.0.3"]
+ toml = ["tomlkit>=0.10.0"]

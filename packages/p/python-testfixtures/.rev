@@ -480,4 +480,13 @@
     equality.</comment>
     <requestid>1373095</requestid>
   </revision>
+  <revision rev="35" vrev="2">
+    <srcmd5>82183a2d1cdc76746389e7e14288a677</srcmd5>
+    <version>12.3.0</version>
+    <time>1789240513</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support changes required for Python 3.15.</comment>
+    <requestid>1377031</requestid>
+  </revision>
 </revisionlist>
