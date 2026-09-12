@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:36:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 2.48
+  * Avoid fortify compiler warnings in vmcp.c
+  * Simplify parseterm() to avoid compiler warning
+
+-------------------------------------------------------------------
 Wed Jul 15 12:29:23 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 2.47
