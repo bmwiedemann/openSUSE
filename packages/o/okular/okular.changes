@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:38:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.1/
+- Changes since 26.08.0:
+  * Fix crash on broken dvi files (kde#524551)
+  * Fix visibility of pdf overprint setting
+  * Fix dangling form field page pointers after saving (kde#477153)
+  * Initialize m_pasteAnnotation (kde#524527)
+  * Backport a synctex security fix (kde#524168)
+
+-------------------------------------------------------------------
 Sun Aug 16 07:28:06 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.0
