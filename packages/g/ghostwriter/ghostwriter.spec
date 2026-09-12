@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ghostwriter
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        A distraction-free Markdown editor
 License:        GPL-3.0-or-later
