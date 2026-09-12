@@ -1,6 +1,6 @@
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-08-13 16:34:16.694518372 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Javadoc.java	2024-08-13 16:36:49.825656246 +0200
-@@ -1807,6 +1807,16 @@
+--- a/src/main/org/apache/tools/ant/taskdefs/Javadoc.java
++++ b/src/main/org/apache/tools/ant/taskdefs/Javadoc.java
+@@ -1807,6 +1807,16 @@ public class Javadoc extends Task {
       */
      @Override
      public void execute() throws BuildException {
@@ -17,7 +17,7 @@
          checkTaskName();
  
          final List<String> packagesToDoc = new Vector<>();
-@@ -2013,6 +2023,10 @@
+@@ -2013,6 +2023,10 @@ public class Javadoc extends Task {
              toExecute.createArgument().setValue("-author");
          }
  

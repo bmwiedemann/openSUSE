@@ -1,4 +1,144 @@
 -------------------------------------------------------------------
+Thu Sep 10 19:38:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.10.18
+  * Breaking changes:
+    + the default value for <ftp>'s useSecureDataChannel has been
+      changed to true which means using ftps now also tries to use
+      an encrypted data channel by default.
+    + the <ftp> and <scp> tasks have new allowFilesToEscapeDest
+    attributes. When set to false - which is the default - the tasks
+    will not download files or create directories outside the
+    designated destination directory when downloading from the
+    remote server. In the unlikely case you need the old bahaviour
+    of writing outside the destination directory you must set the
+    value to true explicitly.
+  * Other changes:
+    + when using the SOURCE_DATE_EPOCH environment variable to set
+      the time for <tstamp> the timezone will now be set to UTC for
+      DSTAMP, TSTAMP and TODAY. This also applies to nested formats
+      where the locale now also defaults to en_US unless it (or the
+      timezone) have been set explicitly.
+    + Upgraded the jakarta.mail dependency to 2.0.2 because of
+      CVE-2025-7962.
+    + the SOURCE_DATE_EPOCH environment variable as well as the
+      magic ant.tstamp.now and ant.tstamp.now.iso properties now
+      also affect the timestamp added to a properties file written
+      by <propertyfile> - but only if jdkproperties has its default
+      value of false.
+    + a new method getBuildDate in Project can now be used to
+      calculate a notion of a "build date" that consults the
+      SOURCE_DATE_EPOCH environment variable as well as the magic
+      ant.tstamp.now and ant.tstamp.now.iso properties in this order
+      which you can use if you want to obtain a reproducible
+      timestamp in tasks you write yourself.
+    + The "record" task now has a new "relativeToBaseDir" attribute,
+      which can be set to "yes" or "no", to control where the
+      recorder's file gets created. In the absence of this
+      attribute, if the "name" of the recorder was a relative path,
+      then the recorder would create the file in the current working
+      directory of the process. With this new attribute, the
+      recorder can be configured to create that file in the basedir
+      of the project.
+  * Fixed bugs:
+    + When running with "microsoft" Java, Ant used to hardcode the
+      "$JAVA_HOME/Packages" directory in the runtime Paths for
+      certain tasks. The JDK shipped by Microsoft no longer contains
+      that directory (for several decades now). As a result, when
+      running with "microsoft" Java, an exception would be raised
+      due to the missing directory. This has now been fixed and Ant
+      no longer adds that directory to the Java runtime Paths.
+    + Inaccuracies in the documentation of the "record" task have
+      been fixed.
+    + <mappedresources> with "enableMultipleMappings" set to "true"
+      threw a NullPointerException if the mapper didn't apply to
+      one of the resources. Unmapped resources are now omitted from
+      the collection.
+- Changes of version 1.10.17
+  * Fixed bugs:
+    + The JavaEnvUtils and FileUtils classes statically depend on
+      each other since Ant 1.10.16 making it impossible to load
+      JavaEnvUtils without loading FileUtils first causing
+      NullPointerException for programmatic use on Windows. This
+      affected Eclipse and may also affect other projects using Ant
+      as a library. The classes can now be loaded independently
+      again.
+- Changes of version 1.10.16
+  * Breaking changes:
+    + <xslt> now uses the same logic to compare file timestamps when
+      determining whether a target file is out-of-date with respect
+      to the source file or stylesheet that most other tasks use.
+      This means it will assume a default timestamp granularity that
+      depends on the current operating system.
+      A new granularity attribute allows you to override the assumed
+      granularity.
+      Under certain edge cases this means xslt will now not process
+      files it would have processed before (when the timestamps of
+      source or stylesheet are very close or even equal to the
+      timestamp of the target). In this case you can set granularity
+      to 0 to get back to the behavior of 1.10.15.
+    + the <mail> task as well as MailLogger will now check the server
+      identity as specified by RFC 2595 when JavaMail is used in
+      combination with TLS (plain TLS or StartTLS).
+      The check can be disabled with a new MailLogger property
+      MailLogger.tls.checkserveridentity or a new <mail> task
+      attribute checkServerIdentity.
+    + Ant now recognizes Windows junctions and treats them just like
+      symbolic links in general. With this builds on Windows that
+      use followSymlinks="false" and rely on Ant following Windows
+      junctions will break. In order to get the old behavior you
+      need to set followSymlinks to true and exclude real symbolic
+      links via the <symlink> selector.
+  * Fixed bugs:
+    + <scp> now properly handles IPv6 addresses as hostnames.
+    + javac task has been fixed to generate the "-classpath" option
+      only when there are any classpath elements present.
+    + URLResource#getName could strip the first character of a
+      resource path even if it was not a file separator.
+    + ant.bat now exits with a non-zero exit code if ANT_HOME is not
+      set.
+    + A regression in ftp task caused some files to not be
+      downloaded. That has been fixed now.
+  * Other changes:
+    + Ant will no longer set a java.lang.SecurityManager at runtime
+      if the "java.security.manager" system property is set to
+      "disallow".
+    + <mail> and MailLogger can now enforce the use of STARTLS
+      rather than silently fall back to unencrypted authentication
+      via a new MailLogger property and a new <mail> task attribute.
+    + added a Windows specific <mklink> task that can be used to
+      create hard links, symbolic links and junctions.
+    + added <delete link="..."> that can be used delete symbolic
+      links or Windows junctions. For symbolic links this duplicates
+      what <symlink action="delete" ...> does - it has been
+      introduced to handle symlinks and junctions via a single API.
+    + added <canCreateSymlink> condition that evaluates to true if
+      the current Ant process can create symbolic links.
+    + added <windowsjunction> file selector which only selects
+      directories that are Windows junctions.
+    + added a new actOnLinkTargets attribute to <setpermissions> to
+      control whether the permissions apply to a symbolic link or
+      Windows junction or the target of the respective links. The
+      old behavior of changing the link's target remains as default.
+    + a new combination of attributes allows <sshexec> to mask
+      sensitive data specified for the command line to execute.
+- Modified patches:
+  * apache-ant-bootstrap.patch
+  * apache-ant-class-path-in-manifest.patch
+  * apache-ant-no-test-jar.patch
+  * apache-ant-xml-apis.patch
+  * reproducible-jar-mtime.patch
+  * reproducible-javadoc.patch
+    + rebase
+  * reproducible-build-manifest.patch
+    + just omit completely the Created-By if SOURCE_DATE_EPOCH is
+      set
+- Removed patches:
+  * reproducible-build-date.patch
+  * reproducible-propertyfile-task.patch
+    + rendered obsolete by upstream changes
+
+-------------------------------------------------------------------
 Tue Jun  9 16:05:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Build against the new extended junit5-minimal
@@ -144,7 +284,7 @@ Thu Aug 31 06:49:53 UTC 2023 - Fridrich Strba <fstrba@suse.com>
       executes tasks that call "java.lang.System.exit()" and if
       those tasks aren't running in a forked VM of their own, then
       such tasks will now kill the entire Ant build process. It is
-      recommended that such tasks be updated to launch in a forked 
+      recommended that such tasks be updated to launch in a forked
       VM so that the System.exit() call will not impact the JVM in
       which Ant process runs.
   * Fixed bugs:
@@ -201,42 +341,42 @@ Wed Jan 18 09:18:50 UTC 2023 - David Anes <david.anes@suse.com>
 
 - Update to 1.10.13:
   * Breaking changes:
-    - <get> has a new attribute authenticateOnRedirect that can be 
-      used to prevent Ant from sending the configured credentials 
+    - <get> has a new attribute authenticateOnRedirect that can be
+      used to prevent Ant from sending the configured credentials
       when following a redirect. It is false by default, which means
-      builds that rely on credentials being used on the redirected 
+      builds that rely on credentials being used on the redirected
       URI may break.
   * Fixed bugs:
-    - the PropertyEnumerator change introduced in 1.10.9 proved to 
-      be not fully backwards compatible when combined with certain 
+    - the PropertyEnumerator change introduced in 1.10.9 proved to
+      be not fully backwards compatible when combined with certain
       custom PropertyHelper implementations - for example when using
       AntXtras.
     - legacy-xml reporter of the junitlauncher task now escapes ]]>
       when writing CDATA.
-    - <scp> may leak connections when trying to preserve the last 
-      modified timestamps of files transferred recursively from a 
+    - <scp> may leak connections when trying to preserve the last
+      modified timestamps of files transferred recursively from a
       server.
     - tstamp task would in certain cases parse the SOURCE_DATE_EPOCH
-      environment variable value to an incorrect date. This has now 
+      environment variable value to an incorrect date. This has now
       been fixed.
-    - fetch.xml didn't set up non-default repositories propery and 
+    - fetch.xml didn't set up non-default repositories propery and
       thus failed to download JAI.
     - When building and installing Ant distribution from source, the
-      build script would change permissions on unrelated files in 
-      the destination directory. This is now fixed and such 
-      unrelated files in the destination directory will be left 
+      build script would change permissions on unrelated files in
+      the destination directory. This is now fixed and such
+      unrelated files in the destination directory will be left
       untouched.
-    - parsing tar entries with multiple NUL bytes in their name 
+    - parsing tar entries with multiple NUL bytes in their name
       would include garbage bytes as the name included all bytes up
       to the last NUL rather than the first.
-    - loadresource might log warnings even though quiet was set to 
+    - loadresource might log warnings even though quiet was set to
       true
     - javac task would add paths constructs containing wildcards to
       the internally created argument file where wildcards are not
       allowed
   * Other changes:
     - added an implementation of the MIME Mail sender based on the
-      repackaged Jakarta Mail package rather than javax Mail.  
+      repackaged Jakarta Mail package rather than javax Mail.
     - The "listener" element in the junitlauncher task now supports
       an "extension" attribute to control the filename extension
       of the generated output file from the listener.
@@ -246,8 +386,8 @@ Wed Jan 18 09:18:50 UTC 2023 - David Anes <david.anes@suse.com>
       improve performance in some special cases.
     - <manifest> will now create the parent directory of the
       manifestFile attribute if it doesn't exist.
-    - org.apache.tools.ant.BuildLogger now has a new method 
-      getMessageOutputLevel() which returns the currently set 
+    - org.apache.tools.ant.BuildLogger now has a new method
+      getMessageOutputLevel() which returns the currently set
       message output level.
 
 -------------------------------------------------------------------
@@ -265,20 +405,20 @@ Wed Dec 15 16:19:12 UTC 2021 - David Anes <david.anes@suse.com>
 
 - Update to 1.10.12:
  * The update includes fixes for the following CVEs:
-   CVE-2021-36374, bsc#1188469 
-      Excessive memory allocation when reading a specially 
+   CVE-2021-36374, bsc#1188469
+      Excessive memory allocation when reading a specially
       crafted ZIP archive or a derived formats.
    CVE-2021-36373, bsc#1188468
-      Excessive memory allocation when reading a specially 
+      Excessive memory allocation when reading a specially
       crafted TAR archive.
  * The http condition would follow redirects even when "followRedirects" attribute
    was set to "false". This has now been fixed. Bugzilla Report 65489
  * Made sure setting build.compiler to the fully qualified classname
    that corresponds to extJavac or modern has the same effect as using
    the shorter alias names. Bugzilla Report 65539
- * Prevent potential deadlocks in org.apache.tools.ant.IntrospectionHelper. 
+ * Prevent potential deadlocks in org.apache.tools.ant.IntrospectionHelper.
    Bugzilla Report 65424
- * The implementation of AntClassLoader#findResources() has been changed to optimize 
+ * The implementation of AntClassLoader#findResources() has been changed to optimize
    it for potential performance issues, as those noted at https://issues.jenkins.io/browse/JENKINS-22310?focusedCommentId=197405&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-197405
    Github Pull Request #151
  * AntClassLoader now implements the ClassLoader#findResource(String) method.
@@ -468,7 +608,7 @@ Fri Feb  8 08:51:41 UTC 2019 - Fridrich Strba <fstrba@suse.com>
 
 - Create an ant-junit5 package to build junit5 optional tasks
   when they become resolved
-- Add a simple pom file for ant-bootstrap.jar  
+- Add a simple pom file for ant-bootstrap.jar
 
 -------------------------------------------------------------------
 Fri Feb  8 07:26:44 UTC 2019 - Fridrich Strba <fstrba@suse.com>
@@ -502,7 +642,7 @@ Mon Dec 10 08:22:18 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 Mon Nov 26 08:07:13 UTC 2018 - Fridrich Strba <fstrba@suse.com>
 
 - Let ant-antlr provide ant-xz too, since it contains the
-  corresponding jar. 
+  corresponding jar.
 
 -------------------------------------------------------------------
 Wed Oct 31 10:20:23 UTC 2018 - Fridrich Strba <fstrba@suse.com>
@@ -598,7 +738,7 @@ Wed Oct  4 09:07:19 UTC 2017 - fstrba@suse.com
 -------------------------------------------------------------------
 Fri Sep 29 07:06:59 UTC 2017 - fstrba@suse.com
 
-- Don't condition the maven defines on release version, but on 
+- Don't condition the maven defines on release version, but on
   _maven_repository being defined
 
 -------------------------------------------------------------------
@@ -719,7 +859,7 @@ Fri Jul  4 11:54:48 UTC 2014 - tchvatal@suse.com
 -------------------------------------------------------------------
 Thu May 15 13:18:36 UTC 2014 - peter.trommler@ohm-hochschule.de
 
-- fix summary (was antlr summary) 
+- fix summary (was antlr summary)
 
 -------------------------------------------------------------------
 Mon May 12 14:00:55 UTC 2014 - darin@darins.net
@@ -744,7 +884,7 @@ Thu Apr 24 09:54:12 UTC 2014 - dmueller@suse.com
 -------------------------------------------------------------------
 Wed Apr 23 12:55:35 UTC 2014 - darin@darins.net
 
-- Update packaging to build the openjdk and not gcj 
+- Update packaging to build the openjdk and not gcj
 
 -------------------------------------------------------------------
 Thu Jan  2 08:36:18 UTC 2014 - mvyskocil@suse.com
@@ -767,12 +907,12 @@ Thu Jan  2 08:36:18 UTC 2014 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Wed Dec  4 14:58:13 UTC 2013 - mvyskocil@suse.com
 
-- use requires_eq instead of manual call of rpm -q 
+- use requires_eq instead of manual call of rpm -q
 
 -------------------------------------------------------------------
 Wed Oct  2 09:52:33 UTC 2013 - mvyskocil@suse.com
 
-- install compat symlink to /usr/share/ant/bin/antRun to make scala build 
+- install compat symlink to /usr/share/ant/bin/antRun to make scala build
 
 -------------------------------------------------------------------
 Mon Sep  9 11:05:25 UTC 2013 - tchvatal@suse.com
@@ -825,12 +965,12 @@ Wed May 30 11:46:44 UTC 2012 - cfarrell@suse.com
 -------------------------------------------------------------------
 Tue May 15 07:02:23 UTC 2012 - mvyskocil@suse.cz
 
-- build ignore java-1_7_0-openjdk as well 
+- build ignore java-1_7_0-openjdk as well
 
 -------------------------------------------------------------------
 Wed Feb  1 12:54:47 UTC 2012 - mvyskocil@suse.cz
 
-- revert the Recommends to fix a lot of build fails 
+- revert the Recommends to fix a lot of build fails
 
 -------------------------------------------------------------------
 Wed Jan 25 09:54:17 UTC 2012 - mvyskocil@suse.cz
@@ -859,12 +999,12 @@ Sat Sep 17 11:04:48 UTC 2011 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Mar 14 13:02:38 UTC 2011 - mvyskocil@suse.cz
 
-- ignore openjdk for build of core ant 
+- ignore openjdk for build of core ant
 
 -------------------------------------------------------------------
 Wed Mar  9 08:56:33 UTC 2011 - mvyskocil@suse.cz
 
-- Update to ant 1.8.2 
+- Update to ant 1.8.2
   * performance improvements in directory scanning
   * XSLT task honors classpath again (bugrep 49271)
   * distinction between core tasks and optional tasks is abolished
@@ -917,7 +1057,7 @@ Fri Apr  9 10:41:42 UTC 2010 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Thu Mar 18 15:58:41 UTC 2010 - mvyskocil@suse.cz
 
-- fix the compat symlinks 
+- fix the compat symlinks
 
 -------------------------------------------------------------------
 Wed Mar 17 15:05:43 UTC 2010 - mvyskocil@suse.cz
@@ -933,7 +1073,7 @@ Wed Jun 17 10:22:10 CEST 2009 - mvyskocil@suse.cz
 -------------------------------------------------------------------
 Sun May  3 11:37:14 CEST 2009 - ro@suse.de
 
-- do not assume release number for ant and ant-antlr are identical 
+- do not assume release number for ant and ant-antlr are identical
 
 -------------------------------------------------------------------
 Tue Apr 28 15:03:07 CEST 2009 - mvyskocil@suse.cz
@@ -951,11 +1091,11 @@ Tue Apr 28 15:03:07 CEST 2009 - mvyskocil@suse.cz
 
   * <java> with fork now returns gives -1 instead of 0 as result when
   * failonerror
-  is false and some exception (including timeout) occurs. Br 42377. 
+  is false and some exception (including timeout) occurs. Br 42377.
 
   * ant-type attribute has been marked as deprecated and a warning has been
   issued if it is encountered in the build file.
-  
+
   * FileUtils.createTempFile now actually creates the file.
   The TempFile task still does not create the file by default, can be
   instructed to do so however using a new parameter.  Bugzilla report 33969.
@@ -977,7 +1117,7 @@ Mon Nov  3 11:45:06 CET 2008 - mvyskocil@suse.cz
 Mon Jul 21 16:29:31 CEST 2008 - ro@suse.de
 
 - use xerces-j2-bootstrap to build (as early as possible)
-- add java doc dir to filelist of javadoc subpackage to fix build 
+- add java doc dir to filelist of javadoc subpackage to fix build
 
 -------------------------------------------------------------------
 Wed Jul 16 14:11:41 CEST 2008 - coolo@suse.de
@@ -1005,20 +1145,20 @@ Fri Jul  6 19:24:52 CEST 2007 - dbornkessel@suse.de
 
  Changes that could break older environments:
  -------------------------------------------
- 
+
  * Initial support for JDK 6 (JSR 223) scripting.
    <*script*> tasks will now use javax.scripting if BSF is
    not available, or if explicitly requested by using
    a "manager" attribute.
- 
+
  * The -noproxy option which was in the previous 1.7 alpha and beta
    releases has been removed. It is the default behavior and not needed.
- 
+
  * Removed launcher classes from nodeps jar.
- 
+
  * <classconstants> filter reader uses ISO-8859-1 encoding to read
    the java class file. Bugzilla report 33604.
- 
+
  * Defer reference process. Bugzilla 36955, 34458, 37688.
    This may break build files in which a reference was set in a target which was
    never executed. Historically, Ant would set the reference early on, during parse
@@ -1027,44 +1167,44 @@ Fri Jul  6 19:24:52 CEST 2007 - dbornkessel@suse.de
    an error about an undefined reference, locate the reference and move it somewhere
    where it is used, or fix the depends attribute of the target in question to
    depend on the target which defines the reference/datatype.
- 
+
  * <script> and <scriptdef> now set the current thread context.
- 
+
  * Unrestrict the dbvendor names in the websphere element of the ejbjar task.
    Bugzilla Report 40475.
- 
+
  * <env> nested element in <java>, <exec> and others is now case-insensitive
    for windows OS. Bugzilla Report 28874.
- 
+
  * Removed support for xalan1 completely. Users of Xalan1 for Ant builds will
    have to stay at ant 1.6.5 or upgrade to xalan2.
- 
+
  * Use org.apache.log4j.Logger instead of org.apache.log4j.Category.
    Category has been deprecated for ~2 years and has been removed from
    the log4j code.  Logger was introduced in log4j 1.2 so users of
    log4j 1.1 and log4j 1.0 need to upgrade to a newer version of log4j.
    Bugzilla Report 31951.
- 
+
  * build.sysclasspath now also affects the bootclasspath handling of
    spawned Java VMs.  If you set build.sysclasspath to anything other
    than "ignore" (or leave it unset, since "ignore" is the default when
    it comes to bootclasspath handling), then the bootclasspath of the
    VM running Ant will be added to the bootclasspath you've specified.
- 
+
  * The <java fork="false"> now as per default installs a security manager
    using the default permissions. This is now independent of the
    failonerror attribute.  Bugzilla report 33361.
- 
+
  * <signjar> now notices when the jar and signedjar are equal, and switches
    to the same dependency logic as when signedjar is omitted. This may break
    something that depended upon signing in this situation. However, since
    invoking the JDK jarsigner program with -signedjar set to the source jar
    actually crashes the JVM on our (Java1.5) systems, we don't think any
    build files which actually worked will be affected by the change.
- 
+
  * <signjar> used to ignore a nested fileset when a jar was also provided as an
    attribute, printing a warning message; now it signs files in the fileset.
- 
+
  * An improved method of handling timestamp granularity differences between
    client and server was added to the <ftp> task.  FTP servers typically
    have HH:mm timestamps whereas local filesystems have HH:mm:ss timestamps.
@@ -1076,7 +1216,7 @@ Fri Jul  6 19:24:52 CEST 2007 - dbornkessel@suse.de
    adds a minute to the server timestamp in order to account for this,
    Scripts which previously used timediffmillis to do this compensation may
    need to be rewritten.  timediffmillis has now been deprecated.
- 
+
  * On Java1.5+, Ant automatically sets the system property
    java.net.useSystemProxies to true, which gives it automatic use of the local
    IE (Windows) or Gnome2 (Unix/Linux) proxy settings. This may break any build
@@ -1084,55 +1224,55 @@ Fri Jul  6 19:24:52 CEST 2007 - dbornkessel@suse.de
    use the -noproxy command-line option to disable this new feature.
    Note that the Java1.5 proxy configuration system still does not
    appear to work reliably on Windows or Linux.
- 
+
  * Support for the XSL:P XML parser has been removed.
    Bugzilla Report 23455.
- 
+
  * Visual Age for Java optional tasks removed.
- 
+
  * Testlet (test) optional task removed.
- 
+
  * Icontract optional task removed.
- 
+
  * Metamata (maudit, mmetrics, and mparse tasks) removed.
- 
+
  * Sitraka (jpcoverage, jpcovmerge, jpcovreport) tasks suppressed.
- 
+
  * <fixcrlf> used \r (Mac) line endings on OS X, whose proper line separator
    is \n (Unix).  Bugzilla report 39585.
- 
+
  * <scp> now optionally supports the sftp protocol, you may need a
    newer jsch.jar.  Bugzilla Report 39373.
- 
+
  * Ant launcher program prints errors to stderr, and exits with a 2 exit code
    value if, for any reason, it cannot actually start Ant proper. This will only
    affect programs/scripts that called the launcher and which did not want to
    receive an error if Ant itself would not start
- 
+
  * All .NET tasks are now deprecated in favor of the new .NET Antlib:
    http://ant.apache.org/antlibs/dotnet/index.html
- 
+
 -------------------------------------------------------------------
 Fri Sep 22 14:34:40 CEST 2006 - dbornkessel@suse.de
 
-- read in properties in /etc/ant.conf 
+- read in properties in /etc/ant.conf
 - added source=1.4
 
 -------------------------------------------------------------------
 Mon May  8 14:54:11 CEST 2006 - dbornkessel@suse.de
 
 - only ant-antlr updates
- 
+
 
 -------------------------------------------------------------------
 Thu Feb  2 20:55:06 CET 2006 - dbornkessel@suse.de
 
-- fixed rpmlint errors and warnings 
+- fixed rpmlint errors and warnings
 
 -------------------------------------------------------------------
 Tue Jan 31 17:29:45 CET 2006 - dbornkessel@suse.de
 
-- only ant-antlr updates 
+- only ant-antlr updates
 
 -------------------------------------------------------------------
 Fri Jan 27 12:12:48 CET 2006 - dbornkessel@suse.de
@@ -1143,23 +1283,23 @@ Fri Jan 27 12:12:48 CET 2006 - dbornkessel@suse.de
 -------------------------------------------------------------------
 Tue Jan 24 16:55:46 CET 2006 - dbornkessel@suse.de
 
-- Not dependend on xml-commons-apis, which are provided by xerces-j2, which does not 
-  depend on ant package (in contrast to old dependency on 
+- Not dependend on xml-commons-apis, which are provided by xerces-j2, which does not
+  depend on ant package (in contrast to old dependency on
   xml-commons-apis <-> ant)
 - optional task are now again in extra spec file ant-antlr
- 
+
 
 -------------------------------------------------------------------
 Thu Jan 19 14:10:18 CET 2006 - dbornkessel@suse.de
 
-- Integrated ant and ant-antlr again in one spec file as there is no 
+- Integrated ant and ant-antlr again in one spec file as there is no
   dependency loop ... jpackage BuildRequires were wrong.
 - updated to version 1.6.5
 
 -------------------------------------------------------------------
 Mon Dec 19 10:46:33 CET 2005 - dbornkessel@suse.de
 
-- added if statement that hinders unwanted creation of a file within a for loop 
+- added if statement that hinders unwanted creation of a file within a for loop
 
 -------------------------------------------------------------------
 Thu Sep 29 00:10:39 CEST 2005 - dmueller@suse.de
@@ -1174,7 +1314,7 @@ Fri Mar  4 13:53:08 CET 2005 - skh@suse.de
 -------------------------------------------------------------------
 Sun Sep  5 20:00:07 CEST 2004 - skh@suse.de
 
-- create and add /usr/share/java/ant to file list for optional 
+- create and add /usr/share/java/ant to file list for optional
   tasks to put their jars into
 
 -------------------------------------------------------------------

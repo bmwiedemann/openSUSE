@@ -1,10 +1,10 @@
---- apache-ant-1.10.7/build.xml	2019-09-01 08:14:10.000000000 +0200
-+++ apache-ant-1.10.7/build.xml	2019-10-12 12:30:11.014986025 +0200
-@@ -976,7 +976,7 @@
+--- a/build.xml
++++ b/build.xml
+@@ -1041,7 +1041,7 @@
           Create the essential distribution that can run Apache Ant
         ===================================================================
    -->
--  <target name="dist-lite" depends="jars,test-jar,-ant-dist-warn-jdk9+"
+-  <target name="dist-lite" depends="jars,test-jar,component-boms,-ant-dist-warn-jdk9+"
 +  <target name="dist-lite" depends="jars,-ant-dist-warn-jdk9+"
            description="--> creates a minimum distribution to run Apache Ant">
  

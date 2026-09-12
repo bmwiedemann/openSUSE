@@ -1,6 +1,6 @@
---- apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-09-18 09:25:56.006778808 +0200
-+++ apache-ant-1.10.14/src/main/org/apache/tools/ant/taskdefs/Zip.java	2024-09-18 11:06:39.405766871 +0200
-@@ -846,6 +846,14 @@
+--- a/src/main/org/apache/tools/ant/taskdefs/Zip.java
++++ b/src/main/org/apache/tools/ant/taskdefs/Zip.java
+@@ -846,6 +846,14 @@ public class Zip extends MatchingTask {
                  archiveType);
          }
  

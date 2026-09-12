@@ -52,7 +52,7 @@ Summary:        Java-based build tool
 %endif
 %endif
 %endif
-Version:        1.10.15
+Version:        1.10.18
 Release:        0
 License:        Apache-2.0
 Group:          Development/Tools/Building
@@ -61,19 +61,17 @@ Source0:        https://www.apache.org/dist/ant/source/apache-ant-%{version}-src
 Source1:        apache-ant-1.8.ant.conf
 Source10:       ant-bootstrap.pom.in
 Source1000:     https://www.apache.org/dist/ant/source/apache-ant-%{version}-src.tar.xz.asc
+# https://downloads.apache.org/ant/KEYS
 Source1001:     ant.keyring
 Patch0:         apache-ant-no-test-jar.patch
 Patch1:         apache-ant-class-path-in-manifest.patch
 Patch2:         apache-ant-bootstrap.patch
-#PATCH-FEATURE-OPENSUSE bmwiedemann -- have fixed build dates
-Patch3:         reproducible-build-date.patch
 # PATCH-FEATURE-OPENSUSE reproducible-build-manifest.patch -- have fixed "Created-by" in manifest
-Patch5:         reproducible-build-manifest.patch
-Patch6:         apache-ant-xml-apis.patch
+Patch3:         reproducible-build-manifest.patch
+Patch4:         apache-ant-xml-apis.patch
 # PATCH-FEATURE-OPENSUSE debian patch to use SOURCE_DATE_EPOCH for timestamp in property files
-Patch7:         reproducible-propertyfile-task.patch
-Patch8:         reproducible-jar-mtime.patch
-Patch9:         reproducible-javadoc.patch
+Patch5:         reproducible-jar-mtime.patch
+Patch6:         reproducible-javadoc.patch
 BuildRequires:  antlr-bootstrap
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
@@ -417,14 +415,12 @@ find -name \*.jar -print -delete
 %if %{with bootstrap}
 %patch -P 0 -p1
 %endif
-%patch -P 1
+%patch -P 1 -p1
 %patch -P 2 -p1
 %patch -P 3 -p1
+%patch -P 4 -p1
 %patch -P 5 -p1
 %patch -P 6 -p1
-%patch -P 7 -p1
-%patch -P 8 -p1
-%patch -P 9 -p1
 
 # clean jar files
 find . -name "*.jar" -print -delete

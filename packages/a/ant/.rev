@@ -934,4 +934,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>Build against the new extended junit5-minimal</comment>
     <requestid>1358229</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>f3c34f32f34c49070707124b58e86f87</srcmd5>
+    <version>1.10.18</version>
+    <time>1789240516</time>
+    <user>dimstar_suse</user>
+    <comment>1.10.18</comment>
+    <requestid>1377308</requestid>
+  </revision>
 </revisionlist>

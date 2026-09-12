@@ -1,6 +1,6 @@
---- apache-ant-1.10.5/src/script/ant	2018-07-10 06:50:31.000000000 +0200
-+++ apache-ant-1.10.5/src/script/ant	2018-12-10 09:12:59.451126724 +0100
-@@ -206,7 +206,7 @@
+--- a/src/script/ant
++++ b/src/script/ant
+@@ -208,7 +208,7 @@ fi
  # request optional jars and their dependencies via the OPT_JAR_LIST
  # variable
  if $rpm_mode && [ -x /usr/bin/build-classpath ]; then

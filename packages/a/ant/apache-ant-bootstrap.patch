@@ -1,6 +1,6 @@
---- apache-ant-1.10.7/bootstrap.sh	2019-09-01 08:14:10.000000000 +0200
-+++ apache-ant-1.10.7/bootstrap.sh	2019-10-12 12:34:23.892369973 +0200
-@@ -143,7 +143,7 @@
+--- a/bootstrap.sh
++++ b/bootstrap.sh
+@@ -144,7 +144,7 @@ else
    echo ... Compiling Ant Classes with ${JAVAC_RELEASE_VERSION}
  fi
  
