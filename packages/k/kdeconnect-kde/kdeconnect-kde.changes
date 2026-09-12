@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:34:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.1/
+- Changes since 26.08.0:
+  * Use regular newlines instead of <br>
+  * Do not query notification server capabilities on win/mac
+  * Do not use HTML in notifications, unless the server supports it
+  * Correct last commit
+  * plasmoid: fix direction of expander arrow in RTL languages
+  * plasmoid: Fix orientation of arrow to expand/collapse notifications (kde#524889)
+  * Fix crash if icon downloads after the notification is closed (kde#524908)
+  * Fix DevicePage.qml:179 depends on non-bindable properties: type
+  * Highlight selected device
+  * Quit app, if open, when quitting kdeconnect on macos too
+  * Fix macos crash in systemvolumeplugin
+  * Reimplement deleteLater but checking that the socket wasn't updated
+  * Fix copy-pasted return that should be a continue like the rest
+  * Do not create devicelink if we are going to discard it
+  * Fix clipboard plugin trying to share directories
+
+-------------------------------------------------------------------
 Sun Aug 16 07:26:56 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.0
