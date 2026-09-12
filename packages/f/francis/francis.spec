@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           francis
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Productivity tool
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
