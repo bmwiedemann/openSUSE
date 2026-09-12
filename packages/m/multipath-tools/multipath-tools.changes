@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 19:19:40 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to version 0.15.1+229+suse.6c6f63e:
+  * Fix hang in initrd during installation (bsc#1274053)
+
+-------------------------------------------------------------------
 Fri Aug 28 11:00:28 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Update to version 0.15.1+227+suse.6644513 (see NEWS.md for details)

@@ -2396,4 +2396,13 @@ Binary file multipath-tools-0.14.3+212+suse.f5d32098.tar.xz (revision 178) delet
     <comment>Fix bug ref</comment>
     <requestid>1375582</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>e0cb577828db84a501abdfd3fad9713d</srcmd5>
+    <version>0.15.1+229+suse.6c6f63e</version>
+    <time>1789240511</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.15.1+229+suse.6c6f63e:
+  * Fix hang in initrd during installation (bsc#1274053)</comment>
+    <requestid>1377008</requestid>
+  </revision>
 </revisionlist>
