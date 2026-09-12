@@ -17,15 +17,18 @@
 
 
 Name:           baseiso-containment
-Version:        0.2.5
+Version:        0.2.7
 Release:        0
 Summary:        Wraps Agama build for product composer
 License:        MIT
 Group:          System/Management
 Source1:        baseiso.spec.in
 Source2:        baseiso_post_run
+Source3:        agama-installer.tftpbootpatterns.txt
+Source4:        agama-installer.tftpbootlinks.txt
 BuildRequires:  filesystem
 BuildArch:      noarch
+Requires:       mkisofs
 
 %description
 Wraps Agama build as base image for product composer
@@ -33,11 +36,15 @@ Wraps Agama build as base image for product composer
 %install
 mkdir -p %{buildroot}%{_prefix}/lib/build/post_build.d
 install -m 644 %{S:1} %{buildroot}%{_prefix}/lib/build/
+install -m 644 %{S:3} %{buildroot}%{_prefix}/lib/build/
+install -m 644 %{S:4} %{buildroot}%{_prefix}/lib/build/
 install -m 755 %{S:2} %{buildroot}%{_prefix}/lib/build/post_build.d/
 
 %files
 %dir %{_prefix}/lib/build/post_build.d
 %{_prefix}/lib/build/post_build.d/*_post_run
 %{_prefix}/lib/build/baseiso.spec.in
+%{_prefix}/lib/build/*.tftpbootpatterns.txt
+%{_prefix}/lib/build/*.tftpbootlinks.txt
 
 %changelog

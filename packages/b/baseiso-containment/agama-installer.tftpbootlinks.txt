@@ -1,0 +1,13 @@
+/EFI/BOOT/MokManager.efi
+/EFI/BOOT/bootaa64.efi
+/EFI/BOOT/bootx64.efi
+/EFI/BOOT/grub.efi
+/boot/aarch64/loader/initrd
+/boot/aarch64/loader/linux
+/boot/x86_64/loader/initrd
+/boot/x86_64/loader/linux
+/boot/s390x/initrd
+/boot/s390x/linux
+/boot/ppc64le/initrd
+/boot/ppc64le/linux
+/LiveOS/squashfs.img

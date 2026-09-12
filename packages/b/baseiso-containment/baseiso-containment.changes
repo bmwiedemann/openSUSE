@@ -6,6 +6,25 @@ Tue Jan 20 08:11:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   changelog2spec.
 
 -------------------------------------------------------------------
+Fri Sep  5 21:29:52 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- 0.2.7
+  * tftpboot: package s390x specific files
+  * maintain the directory structure rather than putting everything inside
+    the loader/ directory. Files are also symlinked into loader/ to
+    keep old configurations working
+  * add skelcd package that can be extracted in ftp-trees (bsc#1248800)
+
+-------------------------------------------------------------------
+Wed Jul  2 09:13:28 UTC 2025 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
+
+- 0.2.6
+  * rework tftpboot rpm generation: extract the whole live squashfs
+    filesystem from the standard agama-installer iso, rather than
+    using the purpose-built PXE images (which will be likely dropped
+    soon)
+
+-------------------------------------------------------------------
 Tue Jun 24 13:27:33 CEST 2025 - Ruediger Oertel <ro@suse.de>
 
 * copy milestone files along with the created rpms if they exist

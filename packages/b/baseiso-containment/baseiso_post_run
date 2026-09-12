@@ -35,26 +35,15 @@ ARCH="$(uname -m)"
 
 set +e # we have set -e, so on Minimal VMs this needs to fail silently
 iso_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.iso 2>/dev/null`
-pxe_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.install.tar 2>/dev/null`
 milestone_file=`ls -1 /usr/src/packages/KIWI/agama-installer*.milestone 2>/dev/null`
 set -e
 
 # nothing to do for us
-if [ -z "$iso_file" ] && [ -z "$pxe_file" ]; then
+if [ -z "$iso_file" ]; then
     exit 0
 fi
 
-if [ -n "$pxe_file" ]; then
-    PXEBOOT_BCOND="--with pxeboot"
-else
-    PXEBOOT_BCOND="--without pxeboot"
-fi
-
-if [ -n "$iso_file" ]; then
-    main_file=${iso_file##*/}
-else
-    main_file=${pxe_file##*/}
-fi
+main_file=${iso_file##*/}
 
 iso_name=${main_file%.$ARCH*}
 iso_version=${main_file#*$ARCH-}
@@ -88,9 +77,9 @@ $BUILD_DIR/changelog2spec --target rpm --timestampfile "$BUILD_ROOT/.build-chang
 cat $BUILD_ROOT/.build-changelog >> "$BUILD_DIR/image.spec"
 
 if [ -z "$BUILD_DISTURL" ]; then
-  rpmbuild --target $ARCH -ba $PXEBOOT_BCOND $BUILD_DIR/image.spec
+  rpmbuild --target $ARCH -ba $BUILD_DIR/image.spec
 else
-  rpmbuild --target $ARCH -ba $PXEBOOT_BCOND --define "disturl $BUILD_DISTURL" $BUILD_DIR/image.spec
+  rpmbuild --target $ARCH -ba --define "disturl $BUILD_DISTURL" $BUILD_DIR/image.spec
 fi
 
 # required for the BS to find the rpm, because it is
@@ -100,6 +89,9 @@ mv $TOPDIR/RPMS/$ARCH/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.$ARCH.rpm
 if [ -e $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_build.noarch.rpm ]; then
   mv $TOPDIR/RPMS/noarch/tftpboot-$iso_name$FLAVOR-$ARCH-$iso_version-$iso_build.noarch.rpm $TOPDIR/OTHER/
 fi
+if [ -e $TOPDIR/RPMS/$ARCH/skelcd-$iso_name$FLAVOR-$iso_version-$iso_build.$ARCH.rpm ]; then
+  mv $TOPDIR/RPMS/$ARCH/skelcd-$iso_name$FLAVOR-$iso_version-$iso_build.$ARCH.rpm $TOPDIR/OTHER/
+fi
 mv $TOPDIR/SRPMS/baseiso-$iso_name$FLAVOR-$iso_version-$iso_build.src.rpm $TOPDIR/OTHER/
 if [ -e "$milestone_file" ]; then
   for rpmpack in $TOPDIR/OTHER/*rpm ; do
@@ -107,3 +99,4 @@ if [ -e "$milestone_file" ]; then
     cp -a $milestone_file ${rpmpack%.rpm}.milestone
   done
 fi
+

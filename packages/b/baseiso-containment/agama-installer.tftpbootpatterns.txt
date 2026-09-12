@@ -1,0 +1,14 @@
+^/LiveOS/squashfs\.img$
+^/EFI/BOOT/.*\.efi$
+^/boot/.*/initrd$
+^/boot/.*/linux$
+^/suse\.ins$
+^/susehmc\.ins$
+^/boot/s390x/cd\.ikr$
+^/boot/s390x/initrd\.off$
+^/boot/s390x/initrd\.siz$
+^/boot/s390x/parmfile$
+^/boot/s390x/parmfile\.hmc$
+^/boot/s390x/sles\.exec$
+^/boot/s390x/suse\.ins$
+^/boot/s390x/zipl\.map$
