@@ -19,12 +19,12 @@
 
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.8.0
+%define kpim6_version 6.8.1
 %define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           kdepim-addons
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Addons for KDE PIM applications
 License:        GPL-2.0-only
@@ -74,8 +74,8 @@ BuildRequires:  cmake(KPim6CalendarUtils) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6EventViews) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6GrantleeTheme) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Gravatar) >= %{kpim6_version}
-BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IMAP) >= %{kpim6_version}
+BuildRequires:  cmake(KPim6IdentityManagementCore) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6ImportWizard) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6IncidenceEditor) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6Itinerary) >= %{kpim6_version}

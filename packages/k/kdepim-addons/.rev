@@ -1035,4 +1035,12 @@ Newer versions will have the correct headers.</comment>
     <comment>KDE release gear 26.08.0 (forwarded request 1371427 from krop)</comment>
     <requestid>1372380</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>12c11d26c2d179a0e995d111bb4da8a2</srcmd5>
+    <version>26.08.1</version>
+    <time>1789240584</time>
+    <user>dimstar_suse</user>
+    <comment>KDE release gear 26.08.1 (forwarded request 1376352 from krop)</comment>
+    <requestid>1377142</requestid>
+  </revision>
 </revisionlist>
