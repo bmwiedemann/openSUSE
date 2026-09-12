@@ -571,6 +571,10 @@ for service in openvswitch \
         ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc${service}
 done
 
+install -p -D -m 0755 \
+        rhel/usr_share_openvswitch_scripts_ovs-systemd-reload \
+        %{buildroot}/%{_datadir}/openvswitch/scripts/ovs-systemd-reload
+
 # This changes group ownership of any vfio device to 'hugetlbfs' through udev.
 # That's probably not the most appropriate name for such a group and also
 # should probably be coordinated system wide.
@@ -964,6 +968,7 @@ fi
 %{_sbindir}/rcopenvswitch
 %{_sbindir}/rcovs-delete-transient-ports
 %{_unitdir}/openvswitch.service
+%{_datadir}/openvswitch/scripts/ovs-systemd-reload
 %{_unitdir}/ovs-vswitchd.service
 %{_unitdir}/ovsdb-server.service
 %{_unitdir}/ovs-delete-transient-ports.service

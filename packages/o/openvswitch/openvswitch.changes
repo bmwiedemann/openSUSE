@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:27:37 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Add ovs-systemd-reload to fix systemctl reload (bsc#1273198)
+
+-------------------------------------------------------------------
 Wed Jul 29 13:10:34 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
 
 - Update ovn to 26.03.2
