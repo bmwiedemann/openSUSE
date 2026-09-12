@@ -19,12 +19,12 @@
 
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.8.0
+%define kpim6_version 6.8.1
 %define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           messagelib
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        KDE PIM library for e-mail message parsing and display
 License:        GPL-2.0-only AND GPL-3.0-only AND LGPL-2.1-or-later
