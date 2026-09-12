@@ -21,7 +21,7 @@
 %define skip_python315 1
 %{?sle15_python_module_pythons}
 Name:           python-backports.zstd
-Version:        1.6.0
+Version:        1.7.0
 Release:        0
 Summary:        Backport of compressionzstd
 License:        BSD-3-Clause

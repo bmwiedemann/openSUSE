@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:22:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- update to 1.7.0
+  * Update code with CPython 3.14.7 version
+
+-------------------------------------------------------------------
 Thu Jul  2 07:44:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - skip for python 3.15

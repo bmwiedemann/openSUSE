@@ -42,4 +42,12 @@
     <comment>- skip for python 3.15</comment>
     <requestid>1363140</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>369032605b3f45718b884e91aab4e93c</srcmd5>
+    <version>1.7.0</version>
+    <time>1789240522</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1377344</requestid>
+  </revision>
 </revisionlist>
