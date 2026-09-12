@@ -22,7 +22,7 @@
 %define rname baloo-widgets
 %bcond_without released
 Name:           baloo-widgets
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Framework for searching and managing metadata
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-only
