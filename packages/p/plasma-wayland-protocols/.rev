@@ -200,4 +200,24 @@
     <comment>Update to 1.21.0</comment>
     <requestid>1357260</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>2faa1688f4f5e01da2e4c661a0d2e91b</srcmd5>
+    <version>1.22.0</version>
+    <time>1789240515</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.22.0:
+  * Bump version to 1.22.0
+  * Add capability for whether an output can be disabled
+  * Fix org_kde_plasma_stacking_order version
+  * Add &quot;mapped&quot; state
+  * Remove invalid statement about org_kde_plasma_window::initial_state
+  * Mark reduced blanking flag in kde_output_device_mode_v2 as deprecated
+  * Allow specifying custom modes with CVT timings
+  * drop qt5 support
+  * require ECM 6
+  * autotests: Drop CMakeListst.txt
+  * Partially revert bcb9d6ebcf7d43d2565295bec0f4e93d53ffc642, and fix all scanner warning
+  * Hard reset since versions in plasma-window-management prior to 17 (forwarded request 1376909 from Vogtinator)</comment>
+    <requestid>1377307</requestid>
+  </revision>
 </revisionlist>

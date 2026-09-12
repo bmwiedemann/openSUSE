@@ -18,7 +18,7 @@
 
 %bcond_without released
 Name:           plasma-wayland-protocols
-Version:        1.21.0
+Version:        1.22.0
 Release:        0
 Summary:        Wayland protocols used by Plasma
 License:        BSD-3-Clause AND LGPL-2.1-only AND LGPL-2.1-or-later AND MIT
@@ -31,6 +31,8 @@ Source2:        plasma.keyring
 %endif
 BuildRequires:  fdupes
 BuildRequires:  kf6-extra-cmake-modules
+# To make KDEInstallDirs6.cmake happy, it unconditionally uses qtpaths.
+BuildRequires:  cmake(Qt6CoreTools)
 
 %description
 This package contains the non-standard Wayland protocol definitions used by
