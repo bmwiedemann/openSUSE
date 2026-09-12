@@ -24,7 +24,7 @@
 
 %bcond_without released
 Name:           artikulate
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        Pronunciation Self-Teaching
 License:        BSD-3-Clause AND GPL-2.0-only AND LGPL-3.0-or-later
