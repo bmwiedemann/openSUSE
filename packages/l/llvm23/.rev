@@ -35,4 +35,16 @@
 - Clean up update-alternatives migration.</comment>
     <requestid>1374358</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>60c9046ac8ad98d3d2c2fab5130e5911</srcmd5>
+    <version>23.1.1</version>
+    <time>1789240510</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 23.1.1.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.
+- Drop obsolete llvm-fix-i586-build.patch.
+</comment>
+    <requestid>1376975</requestid>
+  </revision>
 </revisionlist>

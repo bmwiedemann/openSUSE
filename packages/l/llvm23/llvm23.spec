@@ -19,7 +19,7 @@
 %global _sonum  23
 %global _minor  %{_sonum}.1
 %global _soname %{_minor}%{?_rc:-rc%_rc}
-%global _patch_level 0
+%global _patch_level 1
 %global _relver %{_minor}.%{_patch_level}
 %global _version %_relver%{?_rc:-rc%_rc}
 %global _itsme23 1
@@ -442,8 +442,6 @@ Patch30:        bolt-link-shared-library.patch
 Patch31:        clang-riscv-triple.patch
 # PATCH-FIX-UPSTREAM Enable build of bolt's hugify runtime on riscv64.
 Patch32:        bolt-riscv-build-hugify-runtime.patch
-# PATCH-FIX-UPSTREAM Fix build on i586 (without SSE2).
-Patch33:        llvm-fix-i586-build.patch
 # PATCH-FIX-UPSTREAM Fix build with GCC on riscv64.
 Patch34:        llvm-fix-riscv-build-gcc.patch
 # PATCH-FIX-UPSTREAM Fix FileCheck test with x87 floating-point arithmetic
@@ -901,7 +899,6 @@ rm -r cross-project-tests flang flang-rt libclc libsycl llvm-libgcc mlir
 %patch -P 25 -p1
 %patch -P 28 -p1
 %patch -P 30 -p1
-%patch -P 33 -p1
 %patch -P 34 -p1
 %patch -P 35 -p1
 
