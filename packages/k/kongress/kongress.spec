@@ -21,7 +21,7 @@
 
 %bcond_without  released
 Name:           kongress
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 License:        GPL-3.0-or-later
 Summary:        Companion application for conferences
