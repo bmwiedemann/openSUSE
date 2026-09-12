@@ -18,12 +18,12 @@
 
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.8.0
+%define kpim6_version 6.8.1
 %define ktextaddons_version 2.0.2
 
 %bcond_without released
 Name:           akonadi-contacts
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        KDE PIM Libraries for Akonadi Contacts
 License:        LGPL-2.1-or-later
