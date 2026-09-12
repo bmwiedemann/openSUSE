@@ -1,8 +1,6 @@
-diff --git a/test-suite/tests/numbers.test b/test-suite/tests/numbers.test
-index 59e370e..6b07655 100644
---- a/test-suite/tests/numbers.test
-+++ b/test-suite/tests/numbers.test
-@@ -5309,7 +5309,7 @@
+--- a/test-suite/tests/numbers.test	2024-04-15 19:58:25.000000000 +0200
++++ b/test-suite/tests/numbers.test	2026-07-28 16:36:01.729421626 +0200
+@@ -5346,7 +5346,7 @@
                                      d))))))))
  
      (with-test-prefix "fractions"
@@ -11,7 +9,7 @@ index 59e370e..6b07655 100644
             (lambda (d)
               (for '((0 1 2 5 1/2 3/2 5/2))  ;; multiples
                    (lambda (m)
-@@ -5319,7 +5319,7 @@
+@@ -5356,7 +5356,7 @@
                                      d))))))))
  
      (with-test-prefix "mixed types"

@@ -1,7 +1,7 @@
 #
 # spec file for package guile
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %define libgver     1
 %define gsuff       %{guilemaj}_%{guilemin}-%{libgver}
 Name:           guile
-Version:        %{guilevers}.9
+Version:        %{guilevers}.11
 Release:        0
 Summary:        GNU's Ubiquitous Intelligent Language for Extension
 License:        GFDL-1.3-only AND GPL-3.0-or-later AND LGPL-3.0-or-later

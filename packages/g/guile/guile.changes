@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Tue Jul 28 14:37:00 UTC 2026 - Giacomo Leidi <giacomo.leidi@suse.com>
+
+- Update to 3.0.11 (includes changes from 3.0.10):
+  * Language and syntax:
+    - 'define' is now allowed in all bodies, including 'when', 'unless',
+      'cond' and 'case' clauses, 'and-let*' bodies and 'with-fluids'.
+    - R7RS 'cond-expand' now supports 'else'.
+    - Fixed scoping of top-level variables: references to unbound
+      variables in other modules are no longer silently rewritten to the
+      current module, and macro-introduced top-level names no longer
+      collide.
+  * New SRFI support:
+    - SRFI-207 (string-notated bytevectors), including #u8"..." read and
+      print syntax and hex/base64 encoding.
+    - SRFI-197 (pipeline operators): chain, chain-and, chain-when,
+      chain-lambda, nest, nest-reverse.
+    - SRFI-244 (multiple-value definitions).
+    - SRFI-119 (Wisp), an indentation-based surface syntax.
+    - SRFI-64 (test suites) has been rewritten to fix a number of
+      interface, conformance and correctness issues.
+  * Ports:
+    - Added R6RS custom textual ports, the new (ice-9 soft-ports)
+      interface and the low-level (ice-9 custom-ports) facility.
+    - Custom binary ports are now suspendable.
+    - 'get-bytevector-all' has been rewritten in Scheme and is now
+      suspendable.
+  * New interfaces:
+    - GOOPS gained 'method*' and 'define-method*' with support for
+      optional and keyword arguments, including 'next-method'.
+    - (system foreign) exports 'read-c-struct' and 'write-c-struct'.
+    - (ice-9 rdelim) gained 'for-line-in-file', 'for-rdelim-from-port'
+      and 'for-delimited-from-port'.
+    - 'copy-file' accepts #:copy-on-write; 'seek' supports SEEK_DATA and
+      SEEK_HOLE.
+    - '%inhibit-welcome-message' suppresses the REPL banner.
+    - The PEG parser in (ice-9 peg) now covers the full PEG grammar and
+      supports the '[^...]' not-in-range pattern.
+  * Performance:
+    - Calls to procedures with keyword arguments can now be inlined.
+    - Improved compilation of 'append', 'logand' and 'raise-exception',
+      and better type inference.
+    - 'copy-file' now uses 'sendfile' instead of a read/write loop.
+    - Faster compilation of 'letrec'.
+  * Platform support:
+    - The JIT (lightening) now supports riscv.
+    - 'piped-process' and 'system*' are implemented on top of
+      'posix_spawn' and work on systems without fork().
+    - Numerous Cygwin, MSYS and Darwin fixes.
+  * Bug fixes:
+    - Fixed incorrect comparison between exact and inexact numbers.
+    - Fixed UTF-8 decoding in (ice-9 suspendable-ports) and hashing
+      corruption for UTF-8 symbols with non-ASCII characters.
+    - Fixed deadlocks in 'sigaction', 'join-thread' on timeout and
+      'call-with-new-thread'.
+    - Fixed segmentation faults in concurrent 'scm_with_guile',
+      'spawn' and 'make-struct/no-tail', and a memory leak in 'spawn'.
+    - Fixed a potential buffer overrun in 'getsockopt' with timestamps.
+    - Fixed setjmp/longjmp related crashes on Windows.
+    - 'basename' now checks the suffix against the base name rather than
+      the full path.
+  * Deprecations:
+    - (ice-9 lineio) is deprecated; use 'read-line' together with
+      'unread-string'.
+
+-------------------------------------------------------------------
 Tue Apr  8 10:53:14 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - add -std=gnu17 to CFLAGS to fix gcc15 compile time error
