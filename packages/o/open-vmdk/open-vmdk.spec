@@ -25,8 +25,11 @@ Group:          System/Management
 URL:            https://github.com/vmware/open-vmdk
 Source0:        https://github.com/vmware/open-vmdk/archive/refs/tags/v%{version}.tar.gz
 Patch0:         shebang.patch
+# PATCH-FIX-OPENSUSE 0001-fix-look-ups-the-parent-controller-ID-for-additional.patch bsc#1274784 sckang@suse.com -- fix look ups the parent controller ID for additional disks
+Patch1:         0001-fix-look-ups-the-parent-controller-ID-for-additional.patch
 BuildRequires:  zlib-devel
 Requires:       coreutils
+Requires:       gawk
 Requires:       grep
 Requires:       python3-PyYAML
 Requires:       python3-lxml

@@ -1,0 +1,79 @@
+From 2f7e22c68aaca85cd9adb4487c950befd9519332 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Ji=C5=99=C3=AD=20B=C4=9Blka?= <jirib79@gmail.com>
+Date: Wed, 12 Aug 2026 11:02:05 +0200
+Subject: [PATCH] fix look ups the parent controller ID for additional disks
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+the script looks up the parent controller ID for additional disks by
+grepping for the literal string Hard Disk 1 (capital D), but the
+hw15–hw21 templates (including template-hw19.ovf, which the client
+uses) name that element Hard disk 1 (lowercase d). Only the legacy
+hw7/10/11/13/14 templates use the capitalized form.
+
+Because the match silently fails, disk_parent_id comes out empty, so
+every disk beyond the first gets inserted with
+<rasd:Parent></rasd:Parent> instead of
+<rasd:Parent>3</rasd:Parent>. This is visible directly in the client's
+own xtrace output. Without a valid SCSI parent, the importer falls
+back to treating these disks as if attached to the IDE controller,
+which only supports AddressOnParent values 0 and 1 — so the third
+disk's AddressOnParent=2 gets rejected by govc with the observed
+error.
+
+$ ag --nonumber -G \.ovf 'Hard [Dd]isk'
+templates/template-hw14.ovf
+        <rasd:ElementName>Hard Disk 1</rasd:ElementName>
+
+templates/template-hw17.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+templates/template-hw20.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+templates/template-hw13.ovf
+        <rasd:ElementName>Hard Disk 1</rasd:ElementName>
+
+templates/template-hw7.ovf
+        <rasd:ElementName>Hard Disk 1</rasd:ElementName>
+
+templates/template-hw11.ovf
+        <rasd:ElementName>Hard Disk 1</rasd:ElementName>
+
+templates/template-hw15.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+templates/template-hw19.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+templates/template-hw21.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+templates/template-hw10.ovf
+        <rasd:ElementName>Hard Disk 1</rasd:ElementName>
+
+templates/template-hw18.ovf
+        <rasd:ElementName>Hard disk 1</rasd:ElementName>
+
+Signed-off-by: Jiří Bělka <jirib79@gmail.com>
+---
+ ova/mkova.sh | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ova/mkova.sh b/ova/mkova.sh
+index 33f1850..27294ba 100755
+--- a/ova/mkova.sh
++++ b/ova/mkova.sh
+@@ -129,7 +129,7 @@ done
+ next_id=$((max_id+1))
+ 
+ # Get vmdk parent id
+-disk_parent_id=`sed -n '/Hard Disk 1/,+3p' $ovftempl | grep Parent | sed 's/[^0-9]*//g'`
++disk_parent_id=`sed -n '/Hard [Dd]isk 1/,+3p' $ovftempl | grep Parent | sed 's/[^0-9]*//g'`
+ 
+ TMPDIR=$(mktemp -p . -d XXXXXXXX)
+ 
+-- 
+2.54.0
+

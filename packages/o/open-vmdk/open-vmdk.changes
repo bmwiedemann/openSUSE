@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Aug 14 09:27:37 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add 0001-fix-look-ups-the-parent-controller-ID-for-additional.patch:
+  fix look ups the parent controller ID for additional disks
+  (bsc#1274784).
+- Add gawk requires (bsc#1274784).
+
+-------------------------------------------------------------------
 Mon Jun 15 11:17:55 UTC 2026 - PraveenKumar Handigol <praveenkumar.handigol@suse.com>
 
 - Remove Legal-Review-Notice again
