@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep  8 09:34:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.1
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.1/
+- Changes since 26.08.0:
+  * Fix effect zone going outside clip when enabled
+  * minor cleanup in mixer widget
+  * fix the crash when changing the Timeline Preview when creating a new project
+  * fix: bug: crash when save exit after deleting a sequence
+  * FIx possible crash stopping a failed audio recording
+  * add entitlement info for MacOS
+  * Fix reuse
+  * Add entitlement file for MacOS
+  * Ensure no audio is processed on thumbnail producers
+  * Fix crash on ripple edit with project monitor hidden
+  * fix(transcoding): replace deprecated -vsync with -fps_mode for modern FFmpeg
+  * Remove ghost menu caused by deprecated marker_menu entry
+  * fix: bug: hang when splash closed, and false crash alarm on restart
+  * Fix typo
+  * Update KDDockWidgets tabbar proxystyle on application palette change (kde#522933)
+
+-------------------------------------------------------------------
 Sun Aug 16 07:27:00 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.0
