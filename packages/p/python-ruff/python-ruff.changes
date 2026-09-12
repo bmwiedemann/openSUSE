@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:53:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.7:
+  * Preview: new RUF077 rule for default values on method
+    receivers, re.prefixmatch recognized by RUF039 and RUF055
+  * Bug fixes: nested quotes in format spec interpolations,
+    ISC003 fix marked unsafe for docstrings, TID254 multi-member
+    import fixes skipped, PLW0133 gated on Python 3.15
+  * Rule changes: D211/D203 conflict diagnostic corrected,
+    slice and frozendict generics recognized, typing
+    .no_type_check_decorator no longer suggested by UP035
+  * Performance: reused parser name lookups, faster inherited
+    configuration resolution
+  * Re-vendored, license set unchanged (MIT AND MPL-2.0)
+
+-------------------------------------------------------------------
 Fri Sep  4 08:34:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.6:
