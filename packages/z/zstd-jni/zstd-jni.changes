@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:21:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to v1.5.7.16
+  * Security fixes:
+    + bsc#1279953 (CVE-2026-87823), bsc#1279954 (CVE-2026-87877),
+      bsc#1279955 (CVE-2026-87825), bsc#1279956 (CVE-2026-87824)
+  * no structured changelog provided by upstream
+- Added patch:
+  * no-lvm-linker.patch
+    + Upstream CMakeList.txt specifies "-fuse-ld=lld", but we don't
+      want to depend on LVM linker
+- Modified patches:
+  * 00-load-system-library.patch
+  * max-page-size.patch
+    + rebase
+
+-------------------------------------------------------------------
 Mon Jun 29 07:25:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

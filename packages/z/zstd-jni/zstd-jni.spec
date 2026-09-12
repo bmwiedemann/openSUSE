@@ -17,7 +17,7 @@
 
 
 %global ver 1.5.7
-%global rev 11
+%global rev 16
 %global uver %{ver}-%{rev}
 Name:           zstd-jni
 Version:        %{ver}.%{rev}
@@ -30,12 +30,14 @@ Source0:        %{url}/archive/refs/tags/v%{uver}.tar.gz
 Source1:        https://repo1.maven.org/maven2/com/github/luben/%{name}/%{uver}/%{name}-%{uver}.pom
 Source100:      %{name}-build.xml
 Patch0:         00-load-system-library.patch
-Patch1:         max-page-size.patch
+Patch1:         no-lvm-linker.patch
+Patch2:         max-page-size.patch
 BuildRequires:  ant
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  javapackages-local >= 6
+BuildRequires:  jetbrains-annotations
 
 %description
 JNI bindings for Zstd native library that provides fast and high compression
@@ -56,8 +58,9 @@ API documentation for %{name}
 %prep
 %setup -q -n %{name}-%{uver}
 %patch -P 0 -p1
-%ifarch ppc64le
 %patch -P 1 -p1
+%ifarch ppc64le
+%patch -P 2 -p1
 %endif
 cp %{SOURCE100} build.xml
 
@@ -74,6 +77,8 @@ sed -i -e 's#@SYS_LIBRARY_PREFIX@#%{_libdir}/%{name}#' \
 	src/main/java/com/github/luben/zstd/util/Native.java
 
 %build
+mkdir -p lib
+build-jar-repository -s lib jetbrains-annotations
 ant jar javadoc
 
 %cmake
