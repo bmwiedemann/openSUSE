@@ -494,6 +494,9 @@ cp %{SOURCE1} .
 %files -n libboost_graph-devel
 %doc README
 
+%files -n libboost_json-devel
+%doc README
+
 %files -n libboost_iostreams-devel
 %doc README
 
