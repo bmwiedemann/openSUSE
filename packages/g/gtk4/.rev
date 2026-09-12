@@ -1177,4 +1177,31 @@ New upstream release</comment>
   + Updated translations.</comment>
     <requestid>1375699</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>098b1ec427e9d17e6f25265c2188178b</srcmd5>
+    <version>4.22.5</version>
+    <time>1789240514</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.22.5:
+  + Bugs fixed:
+    - Crashes with SIGSEGV in
+      `gdk_wayland_toplevel_remove_from_session()`
+    - gtk 4.22.4 fails to build on 32-bit arm
+    - Css text-decoration rule requires a resize to take effect
+      (regression)
+    - window: Fixup pointer focus when unmapping a popover
+    - gpu: Trigger cache GC from dmabuf downloading code
+    - gskvulkanimage: fix building on 32-bit
+    - Revert &quot;filechooserutils: Stop using pixbufs&quot;
+    - Fix the build with pango main
+    - gl: Actually report partial damage
+    - gtkapplication-wayland: Add a missing NULL check when
+      forgetting a window
+    - css: Fix invalidation for text decorations
+    - wayland: Fix munmap() of the wrong pointer in the dmabuf
+      format table
+    - memoryconvert: Pass the correct pointer address
+  + Updated translations.</comment>
+    <requestid>1377057</requestid>
+  </revision>
 </revisionlist>
