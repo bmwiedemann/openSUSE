@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           qrca
-Version:        26.08.0
+Version:        26.08.1
 Release:        0
 Summary:        QR code scanner for Plasma
 License:        GPL-3.0-or-later
