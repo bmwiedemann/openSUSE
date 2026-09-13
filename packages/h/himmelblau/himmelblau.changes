@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 10 20:23:54 UTC 2026 - David Mulder <david.mulder@suse.com>
+
+- Update to version 3.1.14+git0.7d1ea961:
+  * cargo vet
+  * build: refresh dependency lockfile
+  * Version 3.1.14
+  * Increase the recursion limit for fuzz build
+  * fix(idmap): blocklist allocator functions
+  * fix(auth): gate Intune MFA resource
+  * fix(selinux): label the Intune policy cache directory
+  * Update libhimmelblau to latest version
+  * Version 3.1.13
+  * cargo vet
+  * security: restrict SSPR Hello fallback to local logins
+  * Reject Hello password reauth when offline
+  * Block remote Hello PIN during offline auth
+  * Delay breakglass password caching until MFA succeeds
+  * fix(auth): restore systemd compatibility
+  * security: authenticate systemd daemon-call bypass
+  * Fix local group membership parsing
+  * Preserve Debian PAM account jumps.
+  * systemd: hide mok-variables from himmelblaud-tasks
+  * fix: keep QR greeter SVG private under runtime dir
+  * deps(rust): bump the all-cargo-updates group across 1 directory with 8 updates
+
+-------------------------------------------------------------------
 Thu Aug 13 13:16:09 UTC 2026 - David Mulder <david.mulder@suse.com>
 
 - Update to version 3.1.12+git0.bd4adfd7:

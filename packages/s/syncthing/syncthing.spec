@@ -17,11 +17,10 @@
 
 
 Name:           syncthing
-Version:        2.1.3
+Version:        2.1.5
 Release:        0
 Summary:        Continuous File Synchronisation
 License:        MPL-2.0
-Group:          Productivity/Networking/File-Sharing
 URL:            https://syncthing.net/
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-source-v%{version}.tar.gz
 # signature can not be validated at the moment, see changelog entry from "Jan 16 11:32:55 UTC 2025" and https://github.com/syncthing/syncthing/issues/9902
@@ -29,10 +28,11 @@ Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}
 Source2:        %{name}.keyring
 Source3:        %{name}-relaysrv-user.conf
 Patch0:         harden_strelaysrv.service.patch
+BuildRequires:  pkgconfig
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  update-desktop-files
-BuildRequires:  golang(API) >= 1.14
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(systemd)
 %{?systemd_ordering}
@@ -44,8 +44,7 @@ on one machine will automatically be replicated to other devices.
 
 %package relaysrv
 Summary:        Relay server for syncthing
-Group:          Productivity/Networking/File-Sharing
-Requires(pre):  pwdutils
+Requires(pre):  shadow
 %{?systemd_ordering}
 %sysusers_requires
 
@@ -85,19 +84,21 @@ mv LICENSE AUTHORS CONDUCT.md CONTRIBUTING.md README.md "$st_dir"
 install -Dpm 0755 bin/%{name} %{buildroot}%{_bindir}/%{name}
 install -Dpm 0755 bin/strelaysrv %{buildroot}%{_bindir}/strelaysrv
 install -dm 0750 %{buildroot}/%{_localstatedir}/lib/syncthing-relaysrv
+# "etc" here is upstream's literal source-tree dir name (cmd/strelaysrv/etc/),
+# not our sysconfdir - spec-cleaner mis-macroifies it, keep it literal
 install -Dpm 0644 cmd/strelaysrv/etc/linux-systemd/strelaysrv.service \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i '/Service\]/a EnvironmentFile=-\/etc\/default/strelaysrv'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
-sed -i 's,^ExecStart=.*,ExecStart=/usr/bin/strelaysrv $OPTIONS,'    \
+sed -i 's,^ExecStart=.*,ExecStart=%{_bindir}/strelaysrv $OPTIONS,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
-sed -i 's,EnvironmentFile=/etc/default/syncthing-relaysrv,EnvironmentFile=-/etc/default/syncthing-relaysrv,'    \
+sed -i 's,EnvironmentFile=%{_sysconfdir}/default/syncthing-relaysrv,EnvironmentFile=-%{_sysconfdir}/default/syncthing-relaysrv,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i 's/^User=.*/User=strelaysrv/'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 sed -i 's/^Group=.*/Group=strelaysrv/'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
-sed -i 's,^ReadWritePaths=.*,ReadWritePaths=/var/lib/syncthing-relaysrv,'    \
+sed -i 's,^ReadWritePaths=.*,ReadWritePaths=%{_localstatedir}/lib/syncthing-relaysrv,'    \
   %{buildroot}%{_unitdir}/strelaysrv.service
 install -Dpm 0644 etc/linux-systemd/system/%{name}@.service        \
   %{buildroot}%{_unitdir}/%{name}@.service
@@ -125,6 +126,9 @@ install -D -m 0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/%{name}-relaysrv.conf
 %preun
 %service_del_preun %{name}@.service
 %if 0%{?suse_version} >= 1500 || 0%{?sle_version} > 120300
+# spec-cleaner wraps the systemd_user_preun/postun macro names below in
+# braces, which breaks argument passing to these parameterized macros
+# (verified: build fails on macro expansion) - keep the bare macro-plus-arg form
 %systemd_user_preun %{name}.service
 %endif
 

@@ -1,0 +1,92 @@
+From a6a9591dd122d4fe259a5aab881808883797082c Mon Sep 17 00:00:00 2001
+From: Steven Silvester <steven.silvester@gmail.com>
+Date: Wed, 13 May 2026 12:48:18 -0500
+Subject: [PATCH] Fix nightlies: update deprecated scipy call, fix
+ underdetermined test
+
+- Replace deprecated usages of `scipy` `distance_matrix` function by `spatial.distance.cdist`.
+- Update `test_polynomial_weighted_estimation` to be robust. Previously had an under-determined system (third degree polynomial, with only eight data points).
+---
+ src/skimage/measure/fit.py                   |  1 +
+ src/skimage/transform/_thin_plate_splines.py |  6 +++---
+ tests/skimage/transform/test_geometric.py    | 12 +++++++-----
+ 3 files changed, 11 insertions(+), 8 deletions(-)
+
+Index: scikit_image-0.26.0/src/skimage/measure/fit.py
+===================================================================
+--- scikit_image-0.26.0.orig/src/skimage/measure/fit.py
++++ scikit_image-0.26.0/src/skimage/measure/fit.py
+@@ -621,6 +621,7 @@ class CircleModel(_BaseModel):
+                 warn_only=warn_only,
+             )
+ 
++        # Compute the Euclidean distances from the center.
+         center = C[0:2]
+         # Can remove once SciPy 1.18 is the default
+         if version.parse(scipy.__version__) >= version.parse('1.18.0dev0'):
+Index: scikit_image-0.26.0/src/skimage/transform/_thin_plate_splines.py
+===================================================================
+--- scikit_image-0.26.0.orig/src/skimage/transform/_thin_plate_splines.py
++++ scikit_image-0.26.0/src/skimage/transform/_thin_plate_splines.py
+@@ -1,7 +1,7 @@
+ from typing import Self
+ 
+ import numpy as np
+-from scipy.spatial import distance_matrix
++from scipy.spatial.distance import cdist
+ 
+ from .._shared.utils import check_nD, _deprecate_estimate, FailedEstimation
+ 
+@@ -180,7 +180,7 @@ class ThinPlateSplineTransform:
+         self.src = src
+         n, d = src.shape
+ 
+-        dist = distance_matrix(src, src)
++        dist = cdist(src, src)
+         K = self._radial_basis_kernel(dist)
+         P = np.hstack([np.ones((n, 1)), src])
+         n_plus_3 = n + 3
+@@ -197,7 +197,7 @@ class ThinPlateSplineTransform:
+ 
+     def _radial_distance(self, coords):
+         """Compute the radial distance between input points and source points."""
+-        dists = distance_matrix(coords, self.src)
++        dists = cdist(coords, self.src)
+         return self._radial_basis_kernel(dists)
+ 
+     def _spline_function(self, coords, radial_dist):
+Index: scikit_image-0.26.0/tests/skimage/transform/test_geometric.py
+===================================================================
+--- scikit_image-0.26.0.orig/tests/skimage/transform/test_geometric.py
++++ scikit_image-0.26.0/tests/skimage/transform/test_geometric.py
+@@ -861,10 +861,12 @@ def test_polynomial_estimation():
+ 
+ 
+ def test_polynomial_weighted_estimation():
+-    # Over-determined solution with same points, and unity weights
+-    tform = estimate_transform('polynomial', SRC, DST, order=10)
++    # Use order=2 so the system is over-determined with 8 points:
++    # A has shape (16, 13), giving a unique least-squares solution.
++    # order=3 would require > 20 rows (i.e. > 10 points) to be over-determined.
++    tform = estimate_transform('polynomial', SRC, DST, order=2)
+     tform_w = estimate_transform(
+-        'polynomial', SRC, DST, order=10, weights=np.ones(SRC.shape[0])
++        'polynomial', SRC, DST, order=2, weights=np.ones(SRC.shape[0])
+     )
+     assert_almost_equal(tform.params, tform_w.params)
+ 
+@@ -872,12 +874,12 @@ def test_polynomial_weighted_estimation(
+     # the same result.
+     point_weights = np.ones(SRC.shape[0] + 1)
+     point_weights[0] = 1.0e-15
+-    tform1 = estimate_transform('polynomial', SRC, DST, order=10)
++    tform1 = estimate_transform('polynomial', SRC, DST, order=2)
+     tform2 = estimate_transform(
+         'polynomial',
+         SRC[np.arange(-1, SRC.shape[0]), :],
+         DST[np.arange(-1, SRC.shape[0]), :],
+-        order=10,
++        order=2,
+         weights=point_weights,
+     )
+     assert_almost_equal(tform1.params, tform2.params, decimal=4)

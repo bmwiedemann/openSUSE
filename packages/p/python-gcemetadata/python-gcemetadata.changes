@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep  4 18:05:43 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 1.1.2 (bsc#1261908)
+  + Avoid connection attempt to black hole. Handle IPv6 and IPv4 access
+    to the metadata server giving IPv6 preference
+
+-------------------------------------------------------------------
 Mon Jul  6 13:11:51 UTC 2026 - Jesús Bermúdez Velázquez <jesus.bv@suse.com>
 
 - Update to version 1.1.1 (bsc#1269423)

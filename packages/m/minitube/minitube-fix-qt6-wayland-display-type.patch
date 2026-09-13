@@ -1,0 +1,27 @@
+--- minitube-4.0/lib/media/src/mpv/mpvwidget.cpp
++++ new/lib/media/src/mpv/mpvwidget.cpp
+@@ -54,13 +54,14 @@
+     isPlatformX11 = QX11Info::isPlatformX11();
+     #else
+         Display *display = nullptr;
++        struct wl_display *wlDisplay = nullptr;
+         if (auto *ni = qGuiApp->nativeInterface<QNativeInterface::QX11Application>()) {
+             display = ni->display();
+             isPlatformX11 = true;
+         }
+     #if QT_VERSION >= QT_VERSION_CHECK(6, 5, 0)
+         else if (auto *ni = qGuiApp->nativeInterface<QNativeInterface::QWaylandApplication>()) {
+-            display = ni->display();
++            wlDisplay = ni->display();
+             isPlatformWayland = true;
+         }
+     #endif
+@@ -70,7 +71,7 @@
+         params[2].data = (void *)display;
+     } else if (isPlatformWayland) {
+         params[2].type = MPV_RENDER_PARAM_WL_DISPLAY;
+-        params[2].data = (void *)display;
++        params[2].data = (void *)wlDisplay;
+     }
+ #endif
+ 

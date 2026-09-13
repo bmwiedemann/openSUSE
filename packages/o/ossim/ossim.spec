@@ -19,16 +19,18 @@
 
 %define so_ver 2
 Name:           ossim
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Open Source Software Image Map (OSSIM)
 License:        LGPL-3.0-only
 URL:            https://trac.osgeo.org/ossim/
-Source0:        https://github.com/ossimlabs/ossim/releases/download/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM ossim-long-int-cast.patch gh#ossimlabs/ossim#301 badshah400@gmail.com -- Explicitly cast hsize_t into u_int64 to avoid compilation problems with hdf5 >= 1.14.0
-Patch0:         ossim-long-int-cast.patch
+Source0:        https://github.com/ossimlabs/ossim/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE ossim-link-system-tiff.patch mpluskal@suse.com -- link the system libtiff via TIFF_LIBRARIES (set by CMake's own FindTIFF, used after dropping the bundled finders)
-Patch1:         ossim-link-system-tiff.patch
+Patch0:         ossim-link-system-tiff.patch
+# PATCH-FIX-UPSTREAM ossim-fix-include-paths.patch gh#ossimlabs/ossim@2350b999 -- Fix <base/...> and relative support_data/ include paths (post-2.12.1 upstream fix)
+Patch1:         ossim-fix-include-paths.patch
+# PATCH-FIX-UPSTREAM ossim-fix-test-include-paths.patch -- Same include-path bug class in the test sources, not covered upstream yet
+Patch2:         ossim-fix-test-include-paths.patch
 BuildRequires:  cmake >= 2.8.0
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -43,6 +45,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgeotiff)
 BuildRequires:  pkgconfig(libtiff-4)
 BuildRequires:  pkgconfig(openthreads)
+BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 
 %description
@@ -89,15 +92,21 @@ for m in CMakeParseArguments FindFreetype FindGit FindHDF5 FindJPEG \
          FindSubversion FindTIFF; do
     find . -name "$m.cmake" -delete
 done
+# Fixed interpreter path (no /usr/bin/env) in the installed helper script.
+sed -i '1s|^#!/usr/bin/env bash|#!/bin/bash|' apps/ossim-config.in
 
 %build
 # vpfutil is old K&R-style C (e.g. an inline "double atof();"), which GCC's
 # C23 default rejects with "conflicting types"; build the C parts as gnu17.
 export CFLAGS="%{optflags} -std=gnu17"
 # Generate a Ninja build (faster for this large C++ library)
+# USE_OSSIM_JSONCPP=OFF: 2.12.1 defaults the bundled jsoncpp amalgamation
+# ON, but its finder only searches empty OSSIM_*_PREFIX paths; use the
+# system jsoncpp as before.
 %define __builder ninja
 %cmake \
   -DINSTALL_LIBRARY_DIR=%{_libdir} \
+  -DUSE_OSSIM_JSONCPP=OFF \
   -DBUILD_OSSIM_FRAMEWORKS=ON \
   -DBUILD_OSSIM_FREETYPE_SUPPORT=ON \
   -DBUILD_OSSIM_MPI_SUPPORT=OFF \

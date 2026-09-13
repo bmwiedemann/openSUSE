@@ -349,4 +349,18 @@
     <comment>- Skip python311: tifffile dropped support</comment>
     <requestid>1355545</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>04434e7cc025d8a66c1d4be507573381</srcmd5>
+    <version>0.26.0</version>
+    <time>1789240881</time>
+    <user>dimstar_suse</user>
+    <comment>Forwarded request #1377424 from mcalabkova
+
+- Add few upstream patches to make tests pass:
+    * scipy118.patch
+    * numpy25.patch
+    * ellipse.patch
+    * scipy-spatial.patch</comment>
+    <requestid>1377432</requestid>
+  </revision>
 </revisionlist>

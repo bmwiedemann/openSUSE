@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:03:47 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.1.5 (skips 2.1.4, not released):
+  * Fix handling of receive-only folders' changed directories
+    (gh#syncthing/syncthing#8004)
+  * Fix the metrics/support-bundle API endpoint
+    (gh#syncthing/syncthing#10847)
+  * Open the GUI when relaunched instead of printing an error
+    (gh#syncthing/syncthing#10727)
+  * Raise the minimum Go toolchain to 1.26; bump
+    BuildRequires: golang(API) from 1.14 accordingly
+  * Update vendored dependencies, notably golang.org/x/net to
+    0.58.0 and quic-go to 0.61.0 (Factory already carried x/net
+    0.57.0 before this bump, already past the fix boundary for
+    boo#1265685 CVE-2026-33814 and boo#1266554 CVE-2026-39821 -
+    this update doesn't change that)
+- spec-cleaner cleanup: drop Group: tags, rename
+  Requires(pre): pwdutils to shadow, add an explicit
+  BuildRequires: pkgconfig alongside the pkgconfig(...) deps
+  (kept two spec-cleaner rewrites reverted: the
+  cmd/strelaysrv/etc/ install source path is upstream's literal
+  source-tree name, not our sysconfdir; and wrapping
+  systemd_user_preun/systemd_user_postun in braces breaks
+  argument passing to those parameterized macros, verified by a
+  failed build)
+
+-------------------------------------------------------------------
 Wed Aug  5 15:58:20 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
 
 - Update to 2.1.3

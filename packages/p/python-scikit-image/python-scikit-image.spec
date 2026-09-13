@@ -38,11 +38,19 @@ URL:            https://scikit-image.org/
 Source0:        https://files.pythonhosted.org/packages/source/s/scikit-image/%{srcname}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Based on gh#scikit-image/scikit-image#8010
 Patch0:         support-new-pillow.patch
+# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/pull/8157 Fix minkowski distanced invocation for SciPy >= 1.18
+Patch1:         scipy118.patch
+# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/pull/8020 Avoid deprecated assign to ndarray.shape
+Patch2:         numpy25.patch
+# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/pull/8054 MAINT: make ellipse fitting forward compatible
+Patch3:         ellipse.patch
+# PATCH-FIX-UPSTREAM https://github.com/scikit-image/scikit-image/commit/a6a9591dd122d4fe259a5aab881808883797082c Fix nightlies: update deprecated scipy call, fix underdetermined test
+Patch4:         scipy-spatial.patch
 BuildRequires:  %{python_module Cython >= 3.0.4}
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module meson-python >= 0.15}
-BuildRequires:  %{python_module numpy-devel >= 1.24}
-BuildRequires:  %{python_module packaging >= 21}
+BuildRequires:  %{python_module numpy-devel >= 2.1}
+BuildRequires:  %{python_module packaging >= 24}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pythran}
 BuildRequires:  %{python_module setuptools}
@@ -55,24 +63,24 @@ Requires:       python-Pillow >= 10.1
 Requires:       python-imageio >= 2.33
 Requires:       python-lazy-loader >= 0.4
 Requires:       python-networkx >= 3
-Requires:       python-numpy >= 1.24
-Requires:       python-packaging >= 21.0
-Requires:       python-scipy >= 1.11.4
-Requires:       python-tifffile >= 2022.8.12
+Requires:       python-numpy >= 2.1
+Requires:       python-packaging >= 24.0
+Requires:       python-scipy >= 1.15
+Requires:       python-tifffile >= 2025.1.10
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-Recommends:     python-PyWavelets >= 1.6
+Recommends:     python-PyWavelets >= 1.7
 Recommends:     python-QtPy
 Recommends:     python-SimpleITK
-Recommends:     python-astropy >= 5
+Recommends:     python-astropy >= 6.1
 Recommends:     python-cloudpickle >= 1.1.1
-Recommends:     python-dask-array >= 2023.2.0
-Recommends:     python-matplotlib >= 3.7
+Recommends:     python-dask-array >= 2025.1.0
+Recommends:     python-matplotlib >= 3.10
 Recommends:     python-pooch >= 1.6.0
 Recommends:     python-pyamg >= 5.2
 %if %{with test}
-BuildRequires:  %{python_module dask-array >= 2023.2.0}
-BuildRequires:  %{python_module matplotlib >= 3.7}
+BuildRequires:  %{python_module dask-array >= 2025.1.0}
+BuildRequires:  %{python_module matplotlib >= 3.10}
 BuildRequires:  %{python_module numpydoc >= 1.7}
 BuildRequires:  %{python_module pytest >= 8}
 BuildRequires:  %{python_module pytest-localserver}

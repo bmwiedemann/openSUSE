@@ -1,7 +1,7 @@
 #
 # spec file for package fastjet
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,19 @@ Summary:        Package for jet finding in pp and e+e- collisions
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/C and C++
 URL:            http://fastjet.fr/
-Source:         http://fastjet.fr/repo/%{name}-%{version}.tar.gz
+Source0:        http://fastjet.fr/repo/%{name}-%{version}.tar.gz
+Source1:        %{name}.rpmlintrc
+# PATCH-FIX-OPENSUSE fastjet-cmake-soversion.patch badshah400@gmail.com -- Add so versioning to cmake script consistent with autoconf build scripts
+Patch0:         fastjet-cmake-soversion.patch
+BuildRequires:  %{python_module devel}
 BuildRequires:  cgal-devel
+BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  python3-devel
+BuildRequires:  swig
+
+%define python_subpackage_only 1
+%python_subpackages
 
 %description
 FastJet is a software package for jet finding in pp and e+e-
@@ -120,45 +128,46 @@ jet-algorithm, and the inclusive anti-kt algorithm.
 This package provides the develoment files for SISCone plugin for
 fastjet.
 
-%package -n python3-%{name}
-Summary:        Python3 bindings for fastjet
+%package -n python-%{name}
+Summary:        Python bindings for fastjet
 Group:          Development/Libraries/Python
 
-%description -n python3-%{name}
+%description -n python-%{name}
 FastJet is a software package for jet finding in pp and e+e-
 collisions.
 
 This package provides python3 bindings for fastjet.
 
 %prep
-%setup -q
+%autosetup -p1
+sed -Ei "1{s@/usr/bin/env bash@%{_bindir}/bash@}" fastjet-config.in
 
 %build
-# Don't use --enable-cgal-header-only option up to 15.2
-%configure --disable-static \
-           --enable-allcxxplugins \
-%if 0%{?sle_version} < 120000 || 0%{?sle_version} > 150200
-           --enable-cgal-header-only \
-%endif
-           --enable-pyext \
-           --enable-cgal
-%make_build
+
+%{python_expand # multiple flavours of python
+mkdir ../build_$python
+cp -pr ./ ../build_$python
+pushd ../build_$python
+%cmake -DFASTJET_ENABLE_DEBUG:BOOL=OFF \
+  		 -DFASTJET_ENABLE_CGAL:BOOL=ON \
+			 -DFASTJET_ENABLE_ALLCXXPLUGINS:BOOL=ON \
+			 -DFASTJET_BUILD_EXAMPLES:BOOL=OFF \
+			 -DFASTJET_ENABLE_PYTHON:BOOL=ON \
+			 -DPython_EXECUTABLE:PATH=%{_bindir}/$python \
+			 %{nil}
+%cmake_build
+popd
+}
 
 %install
-%make_install
+%{python_expand # multiple flavours of python
+pushd ../build_$python
+%cmake_install
+popd
+}
 
-# REMOVE libtool ARCHIVES
-find %{buildroot} -type f -name "*.la" -delete -print
-
-# Remove rpaths from fastjet-config script
-sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
-
-%fdupes %{buildroot}%{python3_sitelib}/
-
-%post -n libfastjet0 -p /sbin/ldconfig
-%postun -n libfastjet0 -p /sbin/ldconfig
-%post -n fastjet-plugin-siscone -p /sbin/ldconfig
-%postun -n fastjet-plugin-siscone -p /sbin/ldconfig
+%ldconfig_scriptlets -n libfastjet0
+%ldconfig_scriptlets -n fastjet-plugin-siscone
 
 %files -n libfastjet0
 %license COPYING
@@ -169,11 +178,11 @@ sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 
 %files -n fastjet-devel
 %{_bindir}/fastjet-config
+%{_includedir}/fastjet/
 %{_libdir}/libfastjet.so
 %{_libdir}/libfastjettools.so
 %{_libdir}/libfastjetplugins.so
-%{_includedir}/fastjet/
-%{_datadir}/%{name}/
+%{_libdir}/cmake/%{name}/
 
 %files -n fastjet-plugin-siscone
 %{_libdir}/libsiscone*.so.*
@@ -181,10 +190,9 @@ sed -i "s|-Wl,-rpath,[^ ]\+||g" %{buildroot}%{_bindir}/fastjet-config
 %files -n fastjet-plugin-siscone-devel
 %{_libdir}/libsiscone*.so
 %{_includedir}/siscone/
+%{_libdir}/cmake/siscone/
 
-%files -n python3-%{name}
-%{python3_sitelib}/fastjet.*
-%{python3_sitelib}/__pycache__/*
-%{python3_sitearch}/_fastjet_swig.*
+%files %{python_files fastjet}
+%{python_sitearch}/%{name}/
 
 %changelog

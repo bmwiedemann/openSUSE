@@ -1,0 +1,52 @@
+From 2350b9995d0020ad07f0f4dfa2c3b032c951c57f Mon Sep 17 00:00:00 2001
+From: Ivan Mincik <ivan.mincik@gmail.com>
+Date: Sat, 1 Aug 2026 13:37:35 +0200
+Subject: [PATCH] Fix include paths
+
+---
+ src/support_data/ossimNitfGenericTag.cpp           | 4 ++--
+ src/support_data/ossimNitfRegisteredDesFactory.cpp | 2 +-
+ src/support_data/ossimNitfXmlTag.cpp               | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/support_data/ossimNitfGenericTag.cpp b/src/support_data/ossimNitfGenericTag.cpp
+index 9aa05191..4bd25830 100644
+--- a/src/support_data/ossimNitfGenericTag.cpp
++++ b/src/support_data/ossimNitfGenericTag.cpp
+@@ -13,8 +13,8 @@
+ #include <ossim/support_data/ossimNitfCommon.h>
+ #include <ossim/base/ossimKeywordlist.h>
+ #include <ossim/base/ossimNotify.h>
+-#include <base/ossimException.h>
+-#include <base/ossimTrace.h>
++#include <ossim/base/ossimException.h>
++#include <ossim/base/ossimTrace.h>
+ 
+ #include <istream>
+ #include <iostream>
+diff --git a/src/support_data/ossimNitfRegisteredDesFactory.cpp b/src/support_data/ossimNitfRegisteredDesFactory.cpp
+index 6609d9ac..a0074098 100644
+--- a/src/support_data/ossimNitfRegisteredDesFactory.cpp
++++ b/src/support_data/ossimNitfRegisteredDesFactory.cpp
+@@ -17,7 +17,7 @@
+ #include <ossim/support_data/ossimNitfCscsdbDes.h>
+ #include <ossim/support_data/ossimNitfCssfabDes.h>
+ 
+-#include "support_data/ossimNitfCsephbDes.h"
++#include <ossim/support_data/ossimNitfCsephbDes.h>
+ 
+ RTTI_DEF1(ossimNitfRegisteredDesFactory, "ossimNitfRegisteredDesFactory", ossimNitfDesFactory);
+ 
+diff --git a/src/support_data/ossimNitfXmlTag.cpp b/src/support_data/ossimNitfXmlTag.cpp
+index aefdddc3..59e2b7fa 100644
+--- a/src/support_data/ossimNitfXmlTag.cpp
++++ b/src/support_data/ossimNitfXmlTag.cpp
+@@ -14,7 +14,7 @@
+ #include <ossim/support_data/ossimNitfXmlTag.h>
+ #include <iomanip>
+ #include <sstream>
+-#include <base/ossimPreferences.h>
++#include <ossim/base/ossimPreferences.h>
+ 
+ ossimNitfXmlTag::ossimNitfXmlTag(ossimString tagName)
+    : ossimNitfRegisteredTag(tagName, 0)

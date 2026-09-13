@@ -32,4 +32,16 @@
     <comment></comment>
     <requestid>1133447</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>15b63a7649f768cb5914c9a5c4129f22</srcmd5>
+    <version>2.7.6</version>
+    <time>1789240915</time>
+    <user>dimstar_suse</user>
+    <comment>Forward z 2.7.6 to Factory.
+
+- Add -g/-G options to use pigz/lbzip2/pbzip2/pixz if available
+- Rename -I option to -bz
+- Honor TMPDIR for temp files instead of hardcoded /tmp</comment>
+    <requestid>1377538</requestid>
+  </revision>
 </revisionlist>

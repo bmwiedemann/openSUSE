@@ -19,23 +19,24 @@
 
 
 Name:           patool
-Version:        4.0.5
+Version:        4.1.0
 Release:        0
 Summary:        Portable Command Line Archive File Manager
 License:        GPL-3.0-or-later
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/wummel/patool
 Source:         https://github.com/wummel/patool/releases/download/%{version}/patool-%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-base >= 3.11
+BuildRequires:  python3-base >= 3.12
 BuildRequires:  python3-devel
+BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
-BuildArch:      noarch
-
+BuildRequires:  unzip
+BuildRequires:  zip
 # upstream no longer provides a bash completion file
 Obsoletes:      %{name}-bash-completion
 Provides:       %{name}-bash-completion
+BuildArch:      noarch
 
 %description
 patool is a portable command line archive file manager. Various archive types
@@ -62,9 +63,18 @@ It relies on helper applications to handle those archive formats.
 %python3_install
 %fdupes %{buildroot}
 
+%check
+# single-flavor spec (python3_* macros): run the suite with the default
+# interpreter; the bare pytest macro would expand over all pythons flavors.
+# TestPyzipPasswordfile is broken upstream (create_zip takes no password,
+# fails with and without zip installed), so deselect it.
+python3 -m pytest tests/ --deselect tests/archives/test_pyzipfile.py::TestPyzipPasswordfile::test_py_zipfile
+
 %files
-%doc COPYING doc/*.txt
+%license COPYING
+%doc doc/*.txt
 %{_bindir}/patool
-%{python3_sitelib}/*
+%{python3_sitelib}/patoolib
+%{python3_sitelib}/patool-%{version}*-info
 
 %changelog

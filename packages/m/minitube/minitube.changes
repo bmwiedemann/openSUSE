@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:56:02 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 4.0:
+  * Upstream's main effort for this release is a Qt6 port (release
+    is tagged "Based on Qt 6"); few other user-facing changes
+  * Toolbar/UI rework: a compact mode, a top-only toolbar option,
+    refreshed icons
+  * Remove the startup nag dialog
+- Switch the build from Qt5 to Qt6, following upstream's own
+  primary target for this release:
+  * use the qmake6/qmake6_install build macros instead of the
+    qmake5 ones
+  * BuildRequires: Qt6Core/DBus/Network/OpenGLWidgets/Sql/Widgets/
+    Xml pkgconfig(...) forms and qt6-qml-devel/qt6-tools-linguist,
+    replacing the Qt5 equivalents
+  * Drop the Qt5X11Extras BuildRequires: unneeded under Qt6,
+    already guarded out in lib/media/media.pri
+  * Drop the libqt5-qtscript-devel BuildRequires: dead weight
+    already, no QtScript usage anywhere in this release's source
+    (upstream dropped its internal use back in 2.6) - Qt6 doesn't
+    even have that module
+- Drop minitube-fix-mpv-api-change.patch: the mpv_opengl_init_params
+  API-version guard it added is now upstream in
+  lib/media/src/mpv/mpvwidget.cpp
+- Add minitube-fix-qt6-wayland-display-type.patch: upstream's own
+  Qt6/Wayland mpv rendering path assigns QWaylandApplication's
+  wl_display* into a variable typed as Xlib's Display*, which
+  fails to compile; use a correctly-typed variable instead
+  (gh#flaviotordini/minitube#257, also #250 and #255; upstream's
+  own unmerged fix at gh#flaviotordini/media#5 takes a different,
+  arguably more idiomatic approach - drops the typed variable and
+  assigns straight into the void* render-param field)
+- Rebase minitube-no-update-check.patch: upstream restructured
+  lib/updater/updater.pri around the DEFINES *= UPDATER line it
+  removes, same net effect (internal updater stays disabled)
+- spec-cleaner cleanup: drop Group: tag (kept qt6-qml-devel as a
+  package name, not pkgconfig(Qt6Qml): same 32-bit provider-choice
+  issue as the pre-existing Qt5 comment, obs-build#724)
+
+-------------------------------------------------------------------
 Fri Feb 23 09:34:54 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

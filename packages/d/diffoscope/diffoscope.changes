@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep  5 15:09:58 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- update to 329:
+  * Allow trailing garbage in Gzip files.
+  * Use the XML comparators for SVG vector image
+    files.
+- Spec cleanup: drop obsolete Group: tag.
+
+-------------------------------------------------------------------
 Sun Jun 28 20:21:31 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 322:

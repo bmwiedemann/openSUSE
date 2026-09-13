@@ -1,7 +1,7 @@
 #
 # spec file for package z
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2009 - 2014 Pascal Bleser pascal.bleser@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,11 +18,10 @@
 
 
 Name:           z
-Version:        2.7.4
+Version:        2.7.6
 Release:        0
 Summary:        Frontend for compressing and uncompressing
 License:        GPL-2.0-only
-Group:          Productivity/Archiving/Compression
 URL:            https://kinzler.com/me/z/
 Source:         https://kinzler.com/me/z/z-%{version}.tgz
 BuildArch:      noarch

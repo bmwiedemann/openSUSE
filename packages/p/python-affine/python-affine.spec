@@ -1,7 +1,7 @@
 #
 # spec file for package python-affine
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,21 +18,24 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-affine
-Version:        2.4.0
+Version:        3.0.1
 Release:        0
 Summary:        Affine transformation matrices
 License:        BSD-3-Clause
 URL:            https://github.com/sgillies/affine
 Source:         https://files.pythonhosted.org/packages/source/a/affine/affine-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module flit-core}
+BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       %{python_module attrs >= 21.3.0}
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest >= 3.0}
+BuildRequires:  %{python_module attrs >= 21.3.0}
+BuildRequires:  %{python_module numpy}
+BuildRequires:  %{python_module pytest >= 6.0}
 # /SECTION
 %python_subpackages
 

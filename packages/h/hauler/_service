@@ -4,5 +4,6 @@
     <param name="compression">zst</param>
     <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
     <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.56.0</param>
+    <param name="replace">github.com/containerd/containerd/v2=github.com/containerd/containerd/v2@v2.3.5</param>
   </service>
 </services>

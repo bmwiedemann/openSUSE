@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:22:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 20260802:
+  * fixes for crafted-archive memory safety issues: path traversal
+    via bare ".." entries, heap overflows from unchecked QLZ block
+    sizes, strcpy overflow of destination buffer, NAME_BUFFER_SIZE
+    check bypass
+  * memory leak fix in parse_flags, performance fix for -P1 on
+    Windows, FreeBSD build fix
+  * makefile reworked for packagers: DESTDIR support, overridable
+    PREFIX/CXX/CXXFLAGS/LDFLAGS; spec now passes optflags and
+    installs with DESTDIR; PGO feedback build fixed to actually
+    recompile and to not re-instrument the final binary
+  * CI moved to GitHub Actions with Windows build, CircleCI dropped
+
+-------------------------------------------------------------------
 Thu Feb 20 18:43:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 20230507 from a new upstream:

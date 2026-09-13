@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:13:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.3:
+  * New /branch command forks the current conversation into
+    a new resumable session
+  * @ file mentions use Git-aware discovery and accept pasted
+    files and folders
+  * Retained chats stay readable and restore their worktrees
+    when work resumes
+  * New session logs are no longer readable by other users
+    on POSIX systems
+  * AGENTS.md instructions load into the system prompt under
+    the experimental unified harness
+  * Bump the optional local harness runtime to 0.4.5 (stays
+    an unpackaged extra, covered by harness_importorskip.patch)
+- All nine patches re-apply cleanly, no rebase needed
+- Deselect racy test_respects_max_entries_to_process_limit:
+  upstream 2.25.3 scores completions in raw scandir walk order
+  capped at max_entries_to_process, so the assertion set is
+  empty whenever the src/ subtree walks first (IndexError)
+
+-------------------------------------------------------------------
 Thu Sep 10 18:31:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.25.2:

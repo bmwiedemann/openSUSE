@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:12:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 4.1.0:
+  4.1.0 (released 04.09.2026)
+    * Add more invalid characters for Windows filenames.
+    * Require Python >= 3.12 for native tarfile extraction filters.
+  4.0.7 (released 03.09.2026)
+    * Fix quoting of shell arguments on Windows systems.
+  4.0.6 (released 03.09.2026)
+    * Prefer zpaqfranz for ZPAQ (.zpaq) archives.
+    * Document dependencies, added SECURITY.md.
+    * Fix quoting of shell arguments on Windows systems.
+- require Python >= 3.12 to match upstream.
+- run upstream testsuite in %check (one upstream-broken password
+  test deselected).
+- spec cleanup: drop Group tag, split %license, tighten %files.
+
+-------------------------------------------------------------------
 Wed Jun 10 07:48:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 4.0.5:

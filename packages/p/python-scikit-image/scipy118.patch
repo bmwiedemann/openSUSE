@@ -1,0 +1,63 @@
+From 3f8abbeb7fb87669e5d5620f0d4f38379b3e4641 Mon Sep 17 00:00:00 2001
+From: Stefan van der Walt <stefanv@berkeley.edu>
+Date: Wed, 13 May 2026 06:09:09 -0700
+Subject: [PATCH] Fix minkowski distanced invocation for SciPy >= 1.18 (#8157)
+
+SciPy now raises a warning for `spatial.minkowski_distance`, need to use
+`spatial.distance.minkowski` instead.
+
+Without this fix, we don't build nightlies.
+---
+ TODO.txt                   |  2 ++
+ src/skimage/measure/fit.py | 11 ++++++++---
+ 2 files changed, 10 insertions(+), 3 deletions(-)
+
+Index: scikit_image-0.26.0/TODO.txt
+===================================================================
+--- scikit_image-0.26.0.orig/TODO.txt
++++ scikit_image-0.26.0/TODO.txt
+@@ -42,6 +42,8 @@ Other
+   `scipy.linalg.eigsh` is available everywhere, remove the compatibility logic in
+   `skimage/graph/_graph_cut.py::_ncut_relabel` and the `xfail` mark in
+   `tests/skimage/graph/test_rag.py::test_reproducibility`.
++* Once SciPy 1.18 is minimal required version, remove minkowski
++  distance branching from `src/skimage/measure/fit.py`.
+ 
+ Post numpy 2
+ ------------
+Index: scikit_image-0.26.0/src/skimage/measure/fit.py
+===================================================================
+--- scikit_image-0.26.0.orig/src/skimage/measure/fit.py
++++ scikit_image-0.26.0/src/skimage/measure/fit.py
+@@ -5,7 +5,8 @@ from warnings import warn, catch_warning
+ 
+ import numpy as np
+ from numpy.linalg import inv
+-from scipy import optimize, spatial
++from packaging import version
++import scipy
+ 
+ from .._shared.utils import (
+     _deprecate_estimate,
+@@ -621,7 +622,11 @@ class CircleModel(_BaseModel):
+             )
+ 
+         center = C[0:2]
+-        distances = spatial.minkowski_distance(center, data)
++        # Can remove once SciPy 1.18 is the default
++        if version.parse(scipy.__version__) >= version.parse('1.18.0dev0'):
++            distances = scipy.spatial.distance.minkowski(center, data)
++        else:
++            distances = scipy.spatial.minkowski_distance(center, data)
+         r = np.sqrt(np.mean(distances**2))
+ 
+         # Revert normalization and set init params.
+@@ -1022,7 +1027,7 @@ class EllipseModel(_BaseModel):
+             xi = x[i]
+             yi = y[i]
+             # faster without Dfun, because of the python overhead
+-            t, _ = optimize.leastsq(fun, t0[i], args=(xi, yi))
++            t, _ = scipy.optimize.leastsq(fun, t0[i], args=(xi, yi))
+             residuals[i] = np.sqrt(fun(t, xi, yi))
+ 
+         return residuals

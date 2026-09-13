@@ -70,4 +70,16 @@
     <comment></comment>
     <requestid>1247571</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7e630aa98e8284a7dbd1ee61f50e783b</srcmd5>
+    <version>20260802</version>
+    <time>1789240916</time>
+    <user>dimstar_suse</user>
+    <comment>Forward qpress 20260802 to Factory (accepted in Archiving, no reviewer set).
+
+- Crafted-archive memory safety fixes, packager-friendly makefile,
+  PGO feedback build repaired. Local aarch64 build green,
+  rpmlint badness 0, source_validator clean.</comment>
+    <requestid>1377549</requestid>
+  </revision>
 </revisionlist>

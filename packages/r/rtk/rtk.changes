@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:16:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.49.0:
+  * sqlfluff: new lint filter for "sqlfluff lint" JSON output
+  * recall: SQLite-backed content-addressed recall store with
+    selectable retriever mode, plus recall efficiency counters
+    in telemetry
+  * rewrite: rewrite the pipeline producer when all consumers are
+    safe, peel process-wrapper prefixes, and pass sudo commands
+    through untouched
+  * grep: free -l for the native --files-with-matches flag
+  * ruff: preserve non-check subcommands
+  * diff: align by LCS and name the cause of invisible differences
+  * runner: flush captured output and die by the relayed signal
+- Refresh rtk-unbundle-sqlite.patch for the new toml_edit line in
+  the 0.49.0 manifest and rtk-no-deny-warnings.patch for the new
+  version path (both still needed -- upstream PRs 3446 and 3447
+  are open)
+- No licence change on the re-vendor: the linked crate set resolves
+  to the existing License tag (200 vendored, 137 linked); upstream
+  fixed its own manifest license to the valid SPDX id Apache-2.0
+- cargo audit: quick-xml 0.37.5 carries RUSTSEC-2026-0194 and
+  RUSTSEC-2026-0195, both fixed only in 0.41, which upstream's "0.37"
+  requirement cannot reach; unchanged from 0.48.0
+  * RUSTSEC-2026-0195 needs an NsReader, which rtk never builds
+  * RUSTSEC-2026-0194 is reachable only over the .trx files that
+    a local "dotnet test" run writes, never over network input
+
+-------------------------------------------------------------------
 Sat Sep  5 11:14:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.48.0:

@@ -28,7 +28,7 @@
 %endif
 %define origname mistral-vibe
 Name:           %{origname}%{psuffix}
-Version:        2.25.2
+Version:        2.25.3
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
 License:        Apache-2.0
@@ -313,7 +313,10 @@ with your projects through a powerful set of tools.
 PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60 -n 4"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
-%python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file'
+# -k deselects: the ssl_cert_file test needs network certs; the
+# max_entries test races scandir walk order against the processing
+# cap and fails with an empty assertion set (upstream 2.25.3 race).
+%python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file and not test_respects_max_entries_to_process_limit'
 %endif
 
 %if !%{with test}

@@ -23,4 +23,16 @@
     <comment></comment>
     <requestid>1359844</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a835729dcffe313393a2bf548f4be22</srcmd5>
+    <version>4.1.0</version>
+    <time>1789240917</time>
+    <user>dimstar_suse</user>
+    <comment>Forward patool 4.1.0 to Factory (accepted in Archiving as SR 1377552).
+
+Upstream 4.0.6 + 4.0.7 + 4.1.0: tarfile filter hardening (Python &gt;= 3.12),
+shell-quoting fixes, zpaqfranz for ZPAQ, SECURITY.md. Testsuite runs in
+%check (83 passed), spec cleaned. Built green on aarch64.</comment>
+    <requestid>1377553</requestid>
+  </revision>
 </revisionlist>

@@ -309,4 +309,12 @@
     <comment>- Update to release 4.7.2</comment>
     <requestid>1367968</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>48a7b1cbb3ffcb1e2140f1262e09b142</srcmd5>
+    <version>4.7.3</version>
+    <time>1789240888</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 4.7.3</comment>
+    <requestid>1377461</requestid>
+  </revision>
 </revisionlist>

@@ -15,4 +15,12 @@
     <comment></comment>
     <requestid>1274400</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>72d049f6e3e5d0497c52f315c167bd71</srcmd5>
+    <version>3.1.6</version>
+    <time>1789240907</time>
+    <user>dimstar_suse</user>
+    <comment>Forward python-pyshp 3.1.6 to Factory. Major 3.x: py3.9+, src-layout/hatchling, DBF whitespace change. Native aarch64 build green, rpmlint clean.</comment>
+    <requestid>1377526</requestid>
+  </revision>
 </revisionlist>

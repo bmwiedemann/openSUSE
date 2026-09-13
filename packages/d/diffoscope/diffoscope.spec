@@ -17,11 +17,10 @@
 
 
 Name:           diffoscope
-Version:        322
+Version:        329
 Release:        0
 Summary:        In-depth comparison of files, archives, and directories
 License:        GPL-3.0-or-later
-Group:          Development/Languages/Python
 URL:            https://diffoscope.org/
 Source0:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2
 Source1:        https://diffoscope.org/archive/diffoscope-%{version}.tar.bz2.asc
@@ -39,11 +38,11 @@ Requires:       python3-libarchive-c
 Requires:       python3-python-magic
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Recommends:     python3-argcomplete
+Recommends:     python3-defusedxml
 # Tools required for proper function of this program
 # in extras_require
 Recommends:     python3-distro
-Recommends:     python3-argcomplete
-Recommends:     python3-defusedxml
 Recommends:     python3-jsondiff
 Recommends:     python3-progressbar
 # for getfacl

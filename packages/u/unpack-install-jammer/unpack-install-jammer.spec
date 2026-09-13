@@ -1,7 +1,7 @@
 #
 # spec file for package unpack-install-jammer
 #
-# Copyright (c) 2021 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           unpack-install-jammer
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Pulls files out of InstallJammer generated executable installers
-License:        GPL-3.0
-Group:          Productivity/Archiving/Backup
-Url:            https://github.com/lod/unpack-install-jammer/
+License:        GPL-3.0-only
+URL:            https://github.com/lod/unpack-install-jammer/
 Source:         https://github.com/lod/unpack-install-jammer/archive/%{version}.tar.gz
 BuildRequires:  perl-macros
-Requires:       perl-Term-ProgressBar
-Requires:       perl-Modern-Perl
-Requires:       perl-Compress-Raw-Lzma
-Requires:       perl-File-HomeDir
-Requires:       perl-Data-Dump
+Requires:       perl(Compress::Raw::Lzma)
+Requires:       perl(Data::Dump)
+Requires:       perl(File::HomeDir)
+Requires:       perl(Modern::Perl)
+Requires:       perl(Term::ProgressBar) >= 2.00
 BuildArch:      noarch
 %{perl_requires}
 
@@ -53,4 +52,3 @@ install extract.pl -Dm0755 %{buildroot}%{_bindir}/unpack-install-jammer
 %license LICENSE
 
 %changelog
-

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 06:13:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.3
+  libbson
+  * No changes since 2.5.2. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  * Fix CVE-2026-88036
+    + Use exact match for file ID in GridFS methods.
+  * Fix CVE-2026-88035
+    + Validate SASL username CVE-2026-88035.
+
+-------------------------------------------------------------------
 Fri Sep  4 05:50:31 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.2

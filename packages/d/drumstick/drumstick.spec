@@ -18,7 +18,7 @@
 
 
 Name:           drumstick
-Version:        2.11.0
+Version:        2.11.1
 Release:        0
 Summary:        MIDI Sequencer C++ Library Bindings
 License:        GPL-2.0-or-later AND GPL-3.0-or-later
@@ -45,7 +45,7 @@ BuildRequires:  cmake(Qt6UiPlugin)
 BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(sonivox) >= 4.0
 BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(fluidsynth)
+BuildRequires:  pkgconfig(fluidsynth) >= 2.5
 BuildRequires:  pkgconfig(libpipewire-0.3)
 BuildRequires:  pkgconfig(libpulse-simple)
 

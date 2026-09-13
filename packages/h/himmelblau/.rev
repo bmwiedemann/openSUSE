@@ -1773,4 +1773,12 @@ on leap 15.6, selinux-policy-devel doesn't exist
     <comment></comment>
     <requestid>1371066</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>c04a08bb912907190a8df90098cc5db0</srcmd5>
+    <version>3.1.14+git0.7d1ea961</version>
+    <time>1789240878</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1377429</requestid>
+  </revision>
 </revisionlist>

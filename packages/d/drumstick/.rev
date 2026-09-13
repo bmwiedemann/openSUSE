@@ -258,4 +258,17 @@
     <comment>Update to 2.11.0</comment>
     <requestid>1328993</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>0f15eab1586292649ad03011ddb551bf</srcmd5>
+    <version>2.11.1</version>
+    <time>1789240892</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11.1
+  * RT, sonivox backend: user selectable FM and WT synths
+  * File: avoid warnings when ignoring QFile::open() returned result
+  * Widgets: update Sonivox configuration dialog
+  * File: WRK format - fix interpretation of some track parameters
+- Update BuildRequires fluidsynth, version &gt;= 2.5 is needed (forwarded request 1377465 from Kieltux)</comment>
+    <requestid>1377501</requestid>
+  </revision>
 </revisionlist>

@@ -132,4 +132,12 @@ change.</comment>
     <comment>Forward python-comfyui-workflow-templates-json 0.1.72 to Factory (devel accepted SR1376996).</comment>
     <requestid>1376997</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d69a1313fbadf7b848f1654dc95e5ebb</srcmd5>
+    <version>0.1.74</version>
+    <time>1789240898</time>
+    <user>dimstar_suse</user>
+    <comment>Forward templates-json 0.1.74 (train leaf 2/3).</comment>
+    <requestid>1377498</requestid>
+  </revision>
 </revisionlist>

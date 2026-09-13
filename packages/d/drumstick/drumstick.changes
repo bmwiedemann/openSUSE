@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep  1 15:07:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.11.1
+  * RT, sonivox backend: user selectable FM and WT synths
+  * File: avoid warnings when ignoring QFile::open() returned result
+  * Widgets: update Sonivox configuration dialog
+  * File: WRK format - fix interpretation of some track parameters
+- Update BuildRequires fluidsynth, version >= 2.5 is needed
+
+-------------------------------------------------------------------
 Sat Jan 24 11:59:19 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.11.0. No changelog.

@@ -72,4 +72,13 @@
 - Build AVX2 enabled hwcaps library for x86_64-v3</comment>
     <requestid>1304168</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>f92e341f44722d5565e5018d688d2f10</srcmd5>
+    <version>1.5.4</version>
+    <time>1789240916</time>
+    <user>dimstar_suse</user>
+    <comment>Update bzip3 to 1.5.4 (bugfix release): libbz3 decompress/incompressible and exact-multiple-block-size data fixes, autoconf bzip3.pc fix, cmake out-of-source + soname alignment, --jobs/--block docs.
+Built natively on aarch64, rpmlint clean, SONAME unchanged (libbzip3.so.1).</comment>
+    <requestid>1377545</requestid>
+  </revision>
 </revisionlist>

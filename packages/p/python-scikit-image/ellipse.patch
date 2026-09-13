@@ -1,0 +1,55 @@
+From b9b377cb403284954533b4cc2e61543a79e2d04c Mon Sep 17 00:00:00 2001
+From: Evgeni Burovski <evgeny.burovskiy@gmail.com>
+Date: Fri, 6 Mar 2026 09:01:52 +0100
+Subject: [PATCH] MAINT: make ellipse fitting forward compatible  (#8054)
+
+NumPy plans to change it's `linalg.eig` routine to always return complex
+results. Currently, it returns either complex or real values,
+depending on whether the eigenvalues lie on the real axis or not.
+See https://github.com/numpy/numpy/pull/30411
+
+The only effect on scikit-image AFAICS, is in the ellipse estimation
+routines, which require that eigenvalues are real. In fact, the story
+seems to be somewhat convoluted:
+- some datasets produce non-zero imaginary parts, which break `EllipseModel.fit`,
+https://github.com/scikit-image/scikit-image/issues/7013
+- the current failure mode is a TypeError from an in-place modulo operation,
+`phi %= np.pi`, where `phi` is constructed from eigenvalues/eigenvectors
+- https://github.com/scikit-image/scikit-image/issues/7013#issuecomment-1583203321
+asks for a reproducer, and
+https://github.com/numpy/numpy/issues/29000#issuecomment-3414690376 has
+some discussion of potential fixes/enhancements
+
+This PR makes a minimal fix to make `EllipseModel.fit`: take the real
+part of eigenvalues/eigenvectors explicitly, and raise an error if
+either of them has non-zero imaginary parts.
+
+---------
+
+Co-authored-by: Stefan van der Walt <stefanv@berkeley.edu>
+---
+ src/skimage/measure/fit.py | 11 +++++++++++
+ 1 file changed, 11 insertions(+)
+
+diff --git a/src/skimage/measure/fit.py b/src/skimage/measure/fit.py
+index 62aec90f79b..1cc8d678c9d 100644
+--- a/src/skimage/measure/fit.py
++++ b/src/skimage/measure/fit.py
+@@ -904,6 +904,17 @@ def _estimate(self, data, warn_only=True):
+         # from this equation [eqn. 28]
+         eig_vals, eig_vecs = np.linalg.eig(M)
+ 
++        # https://github.com/scikit-image/scikit-image/issues/7013
++        if not (np.all(np.isreal(eig_vals)) and np.all(np.isreal(eig_vecs))):
++            raise ValueError(
++                "Uh oh! We expected real eigenvalues and -vectors. "
++                "We've had one report of this issue in the past, but couldn't reproduce it. "
++                "Please help us fix it by sharing your input data at\n\n"
++                "  https://github.com/scikit-image/scikit-image/issues/7013\n"
++            )
++        eig_vals = eig_vals.real
++        eig_vecs = eig_vecs.real
++
+         # eigenvector must meet constraint 4ac - b^2 to be valid.
+         cond = 4 * np.multiply(eig_vecs[0, :], eig_vecs[2, :]) - np.power(
+             eig_vecs[1, :], 2

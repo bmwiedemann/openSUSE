@@ -1,0 +1,2 @@
+# rpath flags are returned by script only if user explicitly asks
+addFilter("fastjet-devel..*: E: rpath-in-buildconfig")

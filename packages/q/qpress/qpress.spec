@@ -2,7 +2,7 @@
 # spec file for package qpress
 #
 # Copyright (c) 2025 Andreas Stieger <andreas.stieger@gmx.de>
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 
 Name:           qpress
-Version:        20230507
+Version:        20260802
 Release:        0
 Summary:        File archiver designed for speed
 License:        GPL-1.0-only AND GPL-2.0-only AND GPL-3.0-only
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/PierreLvx/qpress
 Source0:        https://github.com/PierreLvx/qpress/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  c++_compiler
@@ -45,18 +44,20 @@ because the destination is smaller than the source. A few features:
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags}"
+export CXXFLAGS="%{optflags}"
 %if %{do_profiling}
-  %make_build CFLAGS="$CFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
+  %make_build CXXFLAGS="$CXXFLAGS %{cflags_profile_generate}" LDFLAGS="-fprofile-arcs"
   ./qpress -o *.cpp | ./qpress -dio > /dev/null
-  %make_build CFLAGS="$CFLAGS %{cflags_profile_feedback}" LDFLAGS="-fprofile-arcs"
+  # force feedback rebuild: single-target makefile sees qpress as up to date
+  rm -f qpress
+  # no LDFLAGS here: -fprofile-arcs would re-instrument the final binary
+  %make_build CXXFLAGS="$CXXFLAGS %{cflags_profile_feedback}"
 %else
-  %make_build
+  %make_build CXXFLAGS="%{optflags}"
 %endif
 
 %install
-mkdir -p %{buildroot}/usr/bin
-%make_install PREFIX=%{buildroot}/usr
+%make_install PREFIX=%{_prefix}
 
 %files
 %license LICENSE.GPL-1.0

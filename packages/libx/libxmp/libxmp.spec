@@ -18,7 +18,7 @@
 
 Name:           libxmp
 %define lname	libxmp4
-Version:        4.7.2
+Version:        4.7.3
 Release:        0
 Summary:        Module Player library for MOD, S3M, IT and others
 License:        MIT

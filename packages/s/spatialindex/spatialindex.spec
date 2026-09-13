@@ -1,7 +1,7 @@
 #
 # spec file for package spatialindex
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,18 @@
 
 
 Name:           spatialindex
-Version:        1.9.3
+Version:        2.1.0
 Release:        0
 Summary:        A library for spatial indexing
 License:        MIT
-Group:          Productivity/Graphics/Other
 URL:            https://libspatialindex.org/
 Source0:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2
 Source1:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2.sha512sum
-# PATCH-FIX-OPENSUSE restore-pkg-config-functionality.patch -- pkg-config: restore functionality (via CMake), change Cflags
-Patch0:         restore-pkg-config-functionality.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  make
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 
 %description
 An extensible framework that will support robust spatial indexing methods.
@@ -49,14 +46,10 @@ algorithm, etc. should be easy to customize.
 Index persistence. Internal memory and external memory structures should be
 supported. Clustered and non-clustered indices should be easy to be persisted.
 
-%package -n lib%{name}6
+%package -n lib%{name}8
 Summary:        A library for spatial indexing
-Group:          Productivity/Graphics/Other
-# Version 1.9.3 of spatialindex was wrongly shipping the .so.6 in libspatialindex4
-# Help tp replace this package version
-Obsoletes:      libspatialindex4 = 1.9.3
 
-%description -n lib%{name}6
+%description -n lib%{name}8
 libspatialindex provides a general framework for developing spatial indices.
 Currently it defines generic interfaces, provides simple main memory and disk
 based storage managers and a robust implementation of an R*-tree, an MVR-tree
@@ -64,8 +57,7 @@ and a TPR-tree.
 
 %package        devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries
-Requires:       lib%{name}6 = %{version}
+Requires:       lib%{name}8 = %{version}
 Provides:       lib%{name}-devel
 
 %description    devel
@@ -73,29 +65,31 @@ The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -p1 -n %{name}-src-%{version}
+%autosetup -n %{name}-src-%{version}
 
 %build
-%cmake
+# Relative LIB/INCLUDE_INSTALL_DIR: upstream .pc template prefixes them
+# with ${prefix}, absolute paths yield double slashes (rpmlint E)
+%cmake -DLIB_INSTALL_DIR:PATH=%{_lib} -DINCLUDE_INSTALL_DIR:PATH=include -DBUILD_TESTING=ON
 %cmake_build
+
+%check
+%ctest
 
 %install
 %cmake_install
 
-%post -n lib%{name}6 -p /sbin/ldconfig
+%ldconfig_scriptlets -n lib%{name}8
 
-%postun -n lib%{name}6 -p /sbin/ldconfig
-
-%files -n lib%{name}6
-%defattr(-,root,root,-)
-%doc COPYING
-%{_libdir}/*.so.6*
+%files -n lib%{name}8
+%license COPYING
+%{_libdir}/*.so.8*
 
 %files devel
-%defattr(-,root,root,-)
-%doc COPYING
+%license COPYING
 %{_includedir}/*
 %{_libdir}/*.so
+%{_libdir}/cmake/libspatialindex/
 %{_libdir}/pkgconfig/libspatialindex.pc
 
 %changelog

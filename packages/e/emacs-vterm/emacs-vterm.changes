@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 05 02:53:17 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 724.7092111:
+  * fix: avoid parsing user input as options in emacs-vterm.fish
+  * feat: add DEL for terminal Emacs, handle C-DEL
+  * fix: use current tramp method instead of default
+  * feat: show vterm directory in buffer listings
+  * fix: remove unused resizing flag.
+  * fix: prevent metadata array corruption on reflow-triggered sb_pop.
+  * fix: avoid resize metadata corruption with reflow
+  * feat: enable reflow feature from vterm 0.3+.
+  * Fix backtrack on doubleclick in vterm
+  * Fix return type of `string_bytes`
+
+-------------------------------------------------------------------
 Sat Feb 28 18:47:38 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Update to version 715.a01a289:

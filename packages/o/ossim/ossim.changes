@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:30:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.1:
+  * Steadier RPC coefficient solver with weighted SVD, denominator
+    damping and layered height observations; new ossim-rpcgen
+    controls for layered height planes and fit refinement, plus
+    solver-derived ERR_BIAS/ERR_RAND estimates for RPC00B tags
+  * PPJ frame sensors use complete adjustable definitions with
+    roll/pitch/yaw applied in local camera space
+  * Generated config header uses standard fixed-width integer
+    types, dropping the SIZE_OF checks and unused CMake probes
+  * Widened Applanix ECEF/UTM default adjustable sigmas
+- Drop ossim-long-int-cast.patch (fixed upstream)
+- Add ossim-fix-include-paths.patch from upstream post-2.12.1
+  commit, fixing unbuildable <base/...> and relative includes
+  in the new NITF generic tag sources, plus
+  ossim-fix-test-include-paths.patch with the same fix for
+  the new NITF generic tag test (not covered upstream yet)
+- Fetch sources from the upstream tag archive, as no 2.12.1 release
+  tarball is published
+- Add pkgconfig(uuid) BuildRequires for the new optional libuuid
+  support in ossim::generate_uuid
+- Use /bin/bash shebang in ossim-config instead of /usr/bin/env
+
+-------------------------------------------------------------------
 Sat May 30 13:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop the redundant "Provides: libossim-devel" from the -devel

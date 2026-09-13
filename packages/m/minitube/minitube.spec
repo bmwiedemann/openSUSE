@@ -1,7 +1,7 @@
 #
 # spec file for package minitube
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,34 +17,32 @@
 
 
 Name:           minitube
-Version:        3.9.3
+Version:        4.0
 Release:        0
 Summary:        Native YouTube Client
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Players
 URL:            https://flavio.tordini.org/minitube
 Source:         %{name}-%{version}.tar.xz
 # Manpage written by Jakob Haufe <sur5r@sur5r.net> for the Debian project.
 Source1:        minitube.1
 # PATCH-FIX-OPENSUSE minitube-no-update-check.patch -- Disable build of internal updater
 Patch0:         %{name}-no-update-check.patch
-# PATCH-FIX-UPSTREAM minitube-fix-mpv-api-change.patch -- Fix for mpv api change in mpv >= 0.34 -- gh#flaviotordini/minitube/#217
-Patch1:         minitube-fix-mpv-api-change.patch
+# PATCH-FIX-UPSTREAM minitube-fix-qt6-wayland-display-type.patch -- Fix build: QWaylandApplication::display() returns wl_display*, not Xlib's Display* -- gh#flaviotordini/minitube#257
+Patch1:         %{name}-fix-qt6-wayland-display-type.patch
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-linguist
-BuildRequires:  libqt5-qtdeclarative-devel
-# Have 32bit choice when build with pkgconfig - https://github.com/openSUSE/obs-build/issues/724 - instead pkgconfig(Qt5Script) use libqt5-qtscript-devel 
-BuildRequires:  libqt5-qtscript-devel
 BuildRequires:  pkgconfig
+# Have 32bit choice when build with pkgconfig - https://github.com/openSUSE/obs-build/issues/724 - instead pkgconfig(Qt6Qml) use qt6-qml-devel
+BuildRequires:  qt6-qml-devel
+BuildRequires:  qt6-tools-linguist
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(Qt5Core) >= 5.12
-BuildRequires:  pkgconfig(Qt5DBus)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5X11Extras)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  pkgconfig(Qt6Core)
+BuildRequires:  pkgconfig(Qt6DBus)
+BuildRequires:  pkgconfig(Qt6Network)
+BuildRequires:  pkgconfig(Qt6OpenGLWidgets)
+BuildRequires:  pkgconfig(Qt6Sql)
+BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  pkgconfig(Qt6Xml)
 BuildRequires:  pkgconfig(mpv) >= 0.29.0
 Recommends:     %{name}-lang
 
@@ -66,12 +64,12 @@ FAKE_BUILDDATE="$(LC_ALL=C date -u -d "@${SOURCE_DATE_EPOCH}" '+%%b %%e %%Y')"
 sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/aboutview.cpp
 
 %build
-%qmake5 \
+%{qmake6} \
   PREFIX=%{_prefix}
 %make_build
 
 %install
-%qmake5_install
+%{qmake6_install}
 install -Dpm 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/%{name}.1
 %suse_update_desktop_file -r %{name} AudioVideo Video Player
 # symlink for german translation file de_DE -> de

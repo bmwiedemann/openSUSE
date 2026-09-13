@@ -1,4 +1,119 @@
 -------------------------------------------------------------------
+Wed Sep 02 06:08:23 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 1.37.0:
+  * Migrate to cri-client builder pattern APIs
+  * build(deps): bump the gomod group across 1 directory with 13 updates
+  * ci: pin runc to 1.4.3 for CRI-O tests
+  * build(deps): bump crate-ci/typos from 1.49.0 to 1.50.0
+  * critest: fix image volume subpath test cleanup
+  * build(deps): bump google.golang.org/protobuf
+  * build(deps): bump the gomod group across 1 directory with 6 updates
+  * build(deps): bump the gomod group across 1 directory with 7 updates
+  * chore: retrigger e2e after flake
+  * crictl: shorten stripKeyValueContentEncoding godoc
+  * Fix various correctness issues and cleanup
+  * crictl: simplify missing-config bootstrap check
+  * crictl: allow config to create a missing --config file
+  * build(deps): bump the gomod group with 4 updates
+  * build(deps): bump crate-ci/typos from 1.48.0 to 1.49.0
+  * build(deps): bump google.golang.org/grpc in the gomod group
+  * crictl: Do not advertise base64 env values in JSON schema
+  * build(deps): bump the gomod group with 2 updates
+  * build(deps): bump go.opentelemetry.io/proto/otlp in the gomod group
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1
+  * build(deps): bump github.com/containerd/nri in the gomod group
+  * pkg/validate/pod.go: update expected descriptors
+  * build(deps): bump actions/setup-go from 6.5.0 to 7.0.0
+  * build(deps): bump google.golang.org/grpc in the gomod group
+  * build(deps): bump the gomod group with 3 updates
+  * crictl: Fix CLI flag names in inspect fallback path
+  * crictl: Pre-compile regex patterns for name and namespace filters
+  * build(deps): bump golang.org/x/text in the gomod group
+  * build(deps): bump crate-ci/typos from 1.47.2 to 1.48.0
+  * build(deps): bump google.golang.org/grpc in the gomod group
+  * Late-joining plugin is synchronized with existing pods and containers
+  * failed callbacks on create calls
+  * build(deps): bump actions/cache/restore from 6.0.0 to 6.1.0
+  * build(deps): bump actions/cache/save from 6.0.0 to 6.1.0
+  * container lifecycle failed container
+  * container lifecycle NRI tests
+  * StopPodSandbox contract
+  * build(deps): bump actions/setup-go from 6.4.0 to 6.5.0
+  * fix: touch zizmor binary after extraction to prevent repeated downloads
+  * build(deps): bump github.com/onsi/gomega in the gomod group
+  * build(deps): bump actions/cache from 5.0.5 to 6.0.0
+  * build(deps): bump github.com/onsi/ginkgo/v2 in the gomod group
+  * build(deps): bump actions/checkout from 6.0.3 to 7.0.0
+  * build(deps): bump the gomod group with 4 updates
+  * build(deps): bump github.com/onsi/ginkgo/v2 in the gomod group
+  * build(deps): bump the gomod group with 3 updates
+  * Do not pass err twice
+  * add containerd 2.3 to the CI
+  * task: bump go version to the latest
+  * build(deps): bump actions/checkout from 6.0.2 to 6.0.3
+  * build(deps): bump crate-ci/typos from 1.47.0 to 1.47.2
+  * build(deps): bump github.com/opencontainers/selinux in the gomod group
+  * docs: update version references to v1.36.0, remove archived frakti reference
+  * Enable gosec linter and fix all findings
+  * obsolete note
+  * StopPodSandbox first test case
+  * linter to block fatalf
+  * Add --max-retries flag for connection retry with exponential backoff
+  * build(deps): bump crate-ci/typos from 1.46.3 to 1.47.0
+  * added image volume critest
+  * enable zizmor
+  * Replace Fatal calls with proper error returns in cmd/crictl
+  * Extract pod sandbox cleanup into framework helpers
+  * Consolidate duplicate pull flag definitions
+  * build(deps): bump the gomod group with 4 updates
+  * align local containerized test with CI
+  * critest: test metric and metric descriptors
+  * crictl: deduplicate pull-related CLI flags
+  * crictl: extract generic resourceStatus to deduplicate status functions
+  * Remove accidentally committed crictl binary
+  * crictl: extract shared helpers and fix ContainerStats context
+  * build(deps): bump crate-ci/typos from 1.46.2 to 1.46.3
+  * RunPodSandbox state contract and blocking behavior
+  * add a root span
+  * task: add prettier to dependencies
+  * build(deps): bump the gomod group with 2 updates
+  * crictl: add unit tests for utility functions
+  * crictl: replace sort.Sort types with slices.SortFunc
+  * task: bump ubuntu to latest LTS
+  * crictl: consolidate pull flag definitions
+  * hack/tools: update cri-dockerd to v0.4.3 and go-md2man to v2.0.7
+  * crictl: use sentinel error for empty ID validation
+  * ci: cancel in-progress workflow runs on new push
+  * crictl: encapsulate global config and add client injection for testability
+  * smoke test for NRI integration tests
+  * Bump crate-ci/typos from 1.46.1 to 1.46.2
+  * Bump the gomod group with 2 updates
+  * bump k8s.io dependencies to v0.36.1
+  * Bump google.golang.org/grpc from 1.81.0 to 1.81.1 in the gomod group
+  * ci: declare contents: read across the 4 remaining workflows
+  * Bump Go version to 1.26.3
+  * Bump the gomod group across 1 directory with 3 updates
+  * Bump crate-ci/typos from 1.46.0 to 1.46.1
+  * Bump the gomod group with 3 updates
+  * fix: use full path for go-md2man in verify-docs.sh
+  * bumped linter and made it run on all platforms
+  * Bump github.com/opencontainers/selinux in the gomod group
+  * refactor: move linux-specific validation code to separate files
+  * local dev docker-based containerd environment
+  * improve agent docs and fix zeitgeist for macOS
+  * Bump google.golang.org/grpc from 1.80.0 to 1.81.0 in the gomod group
+  * Bump crate-ci/typos from 1.45.2 to 1.46.0
+  * remove year from boilerplate
+  * Bump the gomod group with 2 updates
+  * Bump crate-ci/typos from 1.45.1 to 1.45.2
+  * Bump the gomod group across 1 directory with 9 updates
+  * bump cri-tools version to v1.36.0 after release
+  * add copyright
+  * crictl: replace docker/docker timestamp dependency
+  * Makefile: Don't explicitly pass GOFLAGS to go commands
+
+-------------------------------------------------------------------
 Mon Apr 27 07:04:48 UTC 2026 - Madhankumar Chellamuthu <madhankumar.chellamuthu@suse.com>
 
 - Update to version 1.36.0:

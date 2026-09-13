@@ -598,4 +598,16 @@ changes. Local builds green on aarch64, main + test flavors
 (7929 passed, 40 skipped).</comment>
     <requestid>1376998</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>3297d7506dfc43849e97c254e1acf51a</srcmd5>
+    <version>2.25.3</version>
+    <time>1789240901</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.25.3.
+
+New /branch command, Git-aware @ mentions, retained-chat worktree restore, private session logs, AGENTS.md under unified harness.
+
+Local aarch64 builds green: main (rpmlint 0 badness), test flavor (7979 passed, 40 skipped).</comment>
+    <requestid>1377490</requestid>
+  </revision>
 </revisionlist>

@@ -446,4 +446,13 @@
 - update to 2.1.0 (bsc#1265425, CVE-2026-41888):</comment>
     <requestid>1376031</requestid>
   </revision>
+  <revision rev="26" vrev="4">
+    <srcmd5>ed900bedd5cf620f6f16ea61bdafcf0d</srcmd5>
+    <version>2.1.0</version>
+    <time>1789240923</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to fix:
+  * bsc#1280110, CVE-2026-53495</comment>
+    <requestid>1377572</requestid>
+  </revision>
 </revisionlist>

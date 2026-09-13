@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.59:
+  * Train bump: core 0.3.339, json 0.1.74, assets-01 0.1.44
+    floors; no code changes upstream, pins only
+
+-------------------------------------------------------------------
 Thu Sep 10 18:46:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.57:

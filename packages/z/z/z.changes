@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:16:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.7.6:
+  * Add -g/-G options to use pigz/lbzip2/pbzip2/pixz if available
+  * Rename -I option to -bz
+  * Honor TMPDIR for temp files instead of hardcoded /tmp
+  * Quote temp file uses
+
+-------------------------------------------------------------------
 Fri Dec 15 14:07:55 UTC 2023 - Joshua Smith <jsmithfpv@gmail.com>
 
 - Update sources

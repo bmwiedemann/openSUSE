@@ -7,4 +7,28 @@
     <comment>Soju is a modern IRCv3 bouncer and a very good alternative to e.g. ZNC.</comment>
     <requestid>1328520</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6f46a6578ea851b790ec5ecd0b2d9d6c</srcmd5>
+    <version>0.11.0</version>
+    <time>1789240876</time>
+    <user>dimstar_suse</user>
+    <comment>- Add GPG keyring for source validation
+- Update to 0.11.0:
+  * Add TLS client authentication support for downstream
+    connections.
+    + Introduce new soju.im/client-cert IRC extension to configure
+      TLS client certificates.
+    + Add support for forwarding downstream client certificates
+      across proxies via PP2_SUBTYPE_SSL_CLIENT_CERT.
+  * labeled-response is now supported for downstream clients,
+    for reliable command/reply matching.
+  * An icon can be set in the configuration file.
+  * Add support for draft/extended-isupport, to advertise
+    bouncer-wide metadata before logging in.
+  * Add support for CHATHISTORY AROUND, to query messages before
+    and after a given timestamp.
+  * Add support for draft/ACCOUNTREQUIRED, to indicate that an
+    account is required.</comment>
+    <requestid>1377426</requestid>
+  </revision>
 </revisionlist>

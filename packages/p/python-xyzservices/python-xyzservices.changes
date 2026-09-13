@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:30:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.9.1:
+  * CartoDB tiles now require an API key
+  * ThunderForest URL update, new Atlas style, fixed
+    from_qms API URL
+  * New Stamen Toner variants in Stadia Maps, HERE API key
+    passthrough fix
+  * HERE API v2 removed, HEREv3 renamed to HERE on API v3
+  * Added UN clear map, BaseMapDE and TopPlusOpen providers
+  * Removed OpenStreetMap.BlackAndWhite
+  * GeoportailFrance moved to data.geopf.fr domain
+  * NASAGIBS additions and BlueMarble URL fixes
+
+-------------------------------------------------------------------
 Fri Dec  1 13:36:57 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 2023.10.1:

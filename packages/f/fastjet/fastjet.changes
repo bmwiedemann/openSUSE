@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 11 11:25:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Build using cmake; this fixes building issues with recent cgal.
+- Add fastjet-cmake-soversion.patch to add so versions to shared
+  objects, consistent with installation using autotools.
+- Build for all supported python flavours.
+- Add fastjet.rpmlintrc to suppress false positive about rpaths in
+  fastjet-config script.
+- Fix a hashbang.
+
+-------------------------------------------------------------------
 Sun Jul  6 22:21:36 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 3.5.1

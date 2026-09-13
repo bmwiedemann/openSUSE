@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 11 22:00:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.1.0.0
+  * Increased planarity functionality (an embedding face listing
+    method)
+  * Increased digraph support (detection, cross edges, directed
+    DFS)
+  * Improved graph I/O support (a writer for GraphML)
+  * Improved generator for random maximal planar graphs
+  * Tightened up handling of integer overflow cases for very large
+    graphs
+  * Improved edge insertion methods
+  * Fixed issue with vertex identification/edge contraction methods
+
+-------------------------------------------------------------------
 Wed Jun 17 18:13:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.0.0.0

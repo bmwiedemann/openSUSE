@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 12 07:14:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.3:
+  * Allow model name and provider tracing metadata override
+    based on gateway response
+
+-------------------------------------------------------------------
 Mon Sep  7 06:35:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.2:

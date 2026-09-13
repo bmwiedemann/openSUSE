@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:17:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.0:
+  * Support Windows file handles (mmap falls back to raw)
+  * Strip {}-quoted fields in tcl file lists
+  * default Home to "home" when File::HomeDir finds none
+- Modernise spec: perl() Requires, SPDX GPL-3.0-only,
+  Term::ProgressBar >= 2.00 floor from upstream use line
+
+-------------------------------------------------------------------
 Mon Feb 22 14:02:51 UTC 2021 - Matthias Mailänder <mailaender@opensuse.org>
 
 - initial packaging of version 0.2.0

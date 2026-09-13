@@ -1707,4 +1707,12 @@
     <comment>Update to 2.1.3</comment>
     <requestid>1369801</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>6bba068fdd0e7dbb4f550ba6f8956c17</srcmd5>
+    <version>2.1.5</version>
+    <time>1789240906</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1377513</requestid>
+  </revision>
 </revisionlist>

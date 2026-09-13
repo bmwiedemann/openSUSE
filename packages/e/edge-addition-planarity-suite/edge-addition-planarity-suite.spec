@@ -18,7 +18,7 @@
 
 %define lname   libplanarity4
 Name:           edge-addition-planarity-suite
-Version:        5.0.0.0
+Version:        5.1.0.0
 Release:        0
 Summary:        Edge Addition Planarity Suite
 License:        GPL-3.0-or-later

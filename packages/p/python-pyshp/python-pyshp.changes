@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:31:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.6:
+  * Python 3.9+ only, src-layout with hatchling build backend
+  * New Shp/Shx/Dbf Reader and Writer classes, stricter
+    Reader/Writer args, pathlib support
+  * Robust unicode handling with opt-in strict mode, atomic
+    record writes
+  * Breaking: trailing whitespace handling when reading text
+    fields changed, ShpWriter.shape returns bytes not words
+- Switch %check to pytest suite, network tests deselected
+- Drop changelog.txt from %doc, gone upstream
+- Drop setuptools/wheel BuildRequires for hatchling
+
+-------------------------------------------------------------------
 Fri May  2 02:45:43 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros.

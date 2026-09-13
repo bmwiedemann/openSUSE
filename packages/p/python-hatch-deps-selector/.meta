@@ -1,0 +1,5 @@
+<package name="python-hatch-deps-selector" project="openSUSE:Factory">
+  <title></title>
+  <description>This package provides a Hatch plugin for configuring &quot;variants&quot; of dependencies according to an environment variable. This can be used e.g. to change the package dependencies for conda-forge vs PyPI builds.</description>
+  <url>https://github.com/jupyter-book/hatch-deps-selector</url>
+</package>

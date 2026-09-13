@@ -1,0 +1,55 @@
+---
+ plugins/CMakeLists.txt                         |    1 +
+ plugins/SISCone/siscone/siscone/CMakeLists.txt |    1 +
+ src/CMakeLists.txt                             |    1 +
+ tools/CMakeLists.txt                           |    1 +
+ 4 files changed, 4 insertions(+)
+
+Index: fastjet-3.5.1/src/CMakeLists.txt
+===================================================================
+--- fastjet-3.5.1.orig/src/CMakeLists.txt
++++ fastjet-3.5.1/src/CMakeLists.txt
+@@ -44,6 +44,7 @@ list(APPEND fastjet_SOURCES
+ #-------------------------------------------------------------------------
+ # main code 
+ add_library(fastjet SHARED ${fastjet_SOURCES})
++set_target_properties(fastjet PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ if (FASTJET_ENABLE_CGAL)
+   target_link_libraries(fastjet PUBLIC CGAL::CGAL)
+ endif()
+Index: fastjet-3.5.1/tools/CMakeLists.txt
+===================================================================
+--- fastjet-3.5.1.orig/tools/CMakeLists.txt
++++ fastjet-3.5.1/tools/CMakeLists.txt
+@@ -20,6 +20,7 @@ list(APPEND fastjettools_SOURCES
+ #-------------------------------------------------------------------------
+ # main code 
+ add_library(fastjettools SHARED ${fastjettools_SOURCES})
++set_target_properties(fastjettools PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ target_link_libraries(fastjettools PUBLIC ${fastjet_LIBRARIES} fastjet)
+ target_include_directories(fastjettools 
+                            PUBLIC 
+Index: fastjet-3.5.1/plugins/CMakeLists.txt
+===================================================================
+--- fastjet-3.5.1.orig/plugins/CMakeLists.txt
++++ fastjet-3.5.1/plugins/CMakeLists.txt
+@@ -73,6 +73,7 @@ set(LIST_ALL_PLUGINS "${LIST_ALL_PLUGINS
+ 
+ # build a local library
+ add_library(fastjetplugins SHARED ${combined_objects})
++set_target_properties(fastjetplugins PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ target_link_libraries(fastjetplugins PUBLIC fastjet)
+ 
+ target_include_directories(fastjetplugins PUBLIC 
+Index: fastjet-3.5.1/plugins/SISCone/siscone/siscone/CMakeLists.txt
+===================================================================
+--- fastjet-3.5.1.orig/plugins/SISCone/siscone/siscone/CMakeLists.txt
++++ fastjet-3.5.1/plugins/SISCone/siscone/siscone/CMakeLists.txt
+@@ -35,6 +35,7 @@ install(FILES area.h
+ #-------------------------------------------------------------------------
+ # main code
+ add_library(siscone SHARED ${siscone_SOURCES})
++set_target_properties(siscone PROPERTIES VERSION 0.0.0 SOVERSION 0)
+ target_include_directories(siscone
+                            PUBLIC
+                             $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}>

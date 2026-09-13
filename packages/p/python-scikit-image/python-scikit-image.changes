@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:41:51 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add few upstream patches to make tests pass:
+  * scipy118.patch
+  * numpy25.patch
+  * ellipse.patch
+  * scipy-spatial.patch
+
+-------------------------------------------------------------------
 Thu May 28 07:47:15 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Skip python311: tifffile dropped support 

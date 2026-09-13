@@ -850,4 +850,12 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
   * Improve header detection for Sphinx documentation projects.</comment>
     <requestid>1362255</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>767d55845b74bea58c42966a20782db2</srcmd5>
+    <version>329</version>
+    <time>1789240922</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1377568</requestid>
+  </revision>
 </revisionlist>

@@ -150,4 +150,12 @@ change; no code.</comment>
     <comment>Forward python-comfyui-workflow-templates-core 0.3.337 to Factory (devel accepted SR1376994).</comment>
     <requestid>1376995</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>679f9737d06439d35b3218d3762b4c97</srcmd5>
+    <version>0.3.339</version>
+    <time>1789240897</time>
+    <user>dimstar_suse</user>
+    <comment>Forward templates-core 0.3.339 (train leaf 1/3).</comment>
+    <requestid>1377497</requestid>
+  </revision>
 </revisionlist>

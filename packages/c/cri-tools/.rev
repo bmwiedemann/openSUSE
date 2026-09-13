@@ -318,4 +318,12 @@
     <comment></comment>
     <requestid>1350941</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>82655e745461b1df9824593201a545b5</srcmd5>
+    <version>1.37.0</version>
+    <time>1789240920</time>
+    <user>dimstar_suse</user>
+    <comment>update to v1.37.0 (forwarded request 1375293 from bgautam)</comment>
+    <requestid>1377567</requestid>
+  </revision>
 </revisionlist>

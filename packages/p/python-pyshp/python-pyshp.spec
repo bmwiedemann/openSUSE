@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyshp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           python-pyshp
-Version:        2.1.0
+Version:        3.1.6
 Release:        0
-License:        MIT
 Summary:        Python library for ESRI Shapefile format
+License:        MIT
 URL:            https://github.com/GeospatialPython/pyshp
 Source:         https://files.pythonhosted.org/packages/source/p/pyshp/pyshp-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -38,8 +37,6 @@ geospatial vector data format.
 
 %prep
 %setup -q -n pyshp-%{version}
-# Fix wrong-file-end-of-line-encoding
-sed -i 's/\r$//' changelog.txt
 
 %build
 %pyproject_wheel
@@ -49,10 +46,10 @@ sed -i 's/\r$//' changelog.txt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_exec shapefile.py
+%pytest tests/test_shapefile.py -m "not network"
 
 %files %{python_files}
-%doc README.md changelog.txt
+%doc README.md
 %license LICENSE.TXT
 %{python_sitelib}/shapefile.py
 %pycache_only %{python_sitelib}/__pycache__/shapefile*.pyc

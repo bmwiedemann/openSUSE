@@ -40,4 +40,12 @@
     <comment>- Update to release 5.0.0.0</comment>
     <requestid>1360086</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>984b37207d061e09f1fc6af67d7f0630</srcmd5>
+    <version>5.1.0.0</version>
+    <time>1789240889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 5.1.0.0</comment>
+    <requestid>1377462</requestid>
+  </revision>
 </revisionlist>

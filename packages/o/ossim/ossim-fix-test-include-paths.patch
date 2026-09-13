@@ -1,0 +1,17 @@
+# Same include-path bug class as upstream commit 2350b999 ("Fix include
+# paths"), but in the test sources, which that commit did not touch: the
+# quoted relative includes only resolve when the workspace build sets
+# OSSIM_INCLUDE_DIR. Use the tree-wide <ossim/...> convention instead.
+--- a/test/src/support_data/ossim-nitf-generic-tag-test.cpp
++++ b/test/src/support_data/ossim-nitf-generic-tag-test.cpp
+@@ -27,8 +27,8 @@
+ #include <iostream>
+ #include <sstream>
+
+-#include "support_data/ossimNitfCephbDes.h"
+-#include "support_data/ossimNitfXmlTag.h"
++#include <ossim/support_data/ossimNitfCephbDes.h>
++#include <ossim/support_data/ossimNitfXmlTag.h>
+
+ using namespace std;
+

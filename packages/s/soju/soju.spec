@@ -17,16 +17,17 @@
 
 
 Name:           soju
-Version:        0.10.1
+Version:        0.11.0
 Release:        0
 Summary:        IRCv3 bouncer
 License:        AGPL-3.0-only
 URL:            https://soju.im/
 Source0:        https://codeberg.org/emersion/soju/releases/download/v%{version}/soju-%{version}.tar.gz
 Source1:        https://codeberg.org/emersion/soju/releases/download/v%{version}/soju-%{version}.tar.gz.sig
-Source2:        vendor.tar.zst
-Source3:        soju-sysusers.conf
-Source4:        soju-tmpfiles.conf
+Source2:        soju.keyring
+Source3:        vendor.tar.zst
+Source4:        soju-sysusers.conf
+Source5:        soju-tmpfiles.conf
 BuildRequires:  golang-packaging
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
@@ -44,18 +45,18 @@ chat history playback and detached channels.
 It is well-suited for both small and large deployments.
 
 %prep
-%autosetup -p1 -a2
+%autosetup -p1 -a3
 
 %build
 %make_build GOFLAGS="-mod=vendor -buildmode=pie -tags=libsqlite3,pam"
 
-%sysusers_generate_pre %{SOURCE3} soju soju.conf
+%sysusers_generate_pre %{SOURCE4} soju soju.conf
 
 %install
 %make_install PREFIX=%{_prefix}
 install -D -m0644 -t %{buildroot}%{_unitdir} contrib/soju.service
-install -D -m0644 %{SOURCE3} %{buildroot}%{_sysusersdir}/soju.conf
-install -D -m0644 %{SOURCE4} %{buildroot}%{_tmpfilesdir}/soju.conf
+install -D -m0644 %{SOURCE4} %{buildroot}%{_sysusersdir}/soju.conf
+install -D -m0644 %{SOURCE5} %{buildroot}%{_tmpfilesdir}/soju.conf
 
 %check
 go test ./...

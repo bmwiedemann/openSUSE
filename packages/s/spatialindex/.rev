@@ -31,4 +31,12 @@
     <comment></comment>
     <requestid>1151651</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>cd35ba41e034eeb3ab42ca232236fb81</srcmd5>
+    <version>2.1.0</version>
+    <time>1789240910</time>
+    <user>dimstar_suse</user>
+    <comment>Forward spatialindex 2.1.0 to Factory. SONAME 6-&gt;8 (libspatialindex6-&gt;libspatialindex8; revdeps PDAL/luanti/Rtree/qgis need rebuild). Native aarch64 build green, %check 2/2, rpmlint clean.</comment>
+    <requestid>1377531</requestid>
+  </revision>
 </revisionlist>

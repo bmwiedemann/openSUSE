@@ -55,4 +55,12 @@
     <comment></comment>
     <requestid>1195132</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>304d8892f24a5faecd0767abc220440c</srcmd5>
+    <version>3.0.1</version>
+    <time>1789240908</time>
+    <user>dimstar_suse</user>
+    <comment>Forward python-affine 3.0.1 to Factory. attrs reimplementation, py3.9 floor. Native aarch64 build green, 84 passed x2 flavors, rpmlint clean.</comment>
+    <requestid>1377527</requestid>
+  </revision>
 </revisionlist>

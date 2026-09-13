@@ -16,16 +16,16 @@
 #
 
 Name:           python-comfyui-workflow-templates
-Version:        0.11.57
+Version:        0.11.59
 Release:        0
 Summary:        ComfyUI workflow templates meta package
 License:        MIT
 URL:            https://github.com/Comfy-Org/workflow_templates
 Source0:        https://files.pythonhosted.org/packages/source/c/comfyui_workflow_templates/comfyui_workflow_templates-%{version}.tar.gz
-BuildRequires:  %{python_module comfyui-workflow-templates-core >= 0.3.337}
-BuildRequires:  %{python_module comfyui-workflow-templates-json >= 0.1.72}
+BuildRequires:  %{python_module comfyui-workflow-templates-core >= 0.3.339}
+BuildRequires:  %{python_module comfyui-workflow-templates-json >= 0.1.74}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-api >= 0.3.84}
-BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-01 >= 0.1.43}
+BuildRequires:  %{python_module comfyui-workflow-templates-media-assets-01 >= 0.1.44}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-image >= 0.3.160}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-other >= 0.3.229}
 BuildRequires:  %{python_module comfyui-workflow-templates-media-video >= 0.3.101}
@@ -41,10 +41,10 @@ BuildRequires:  python-rpm-macros
 # missing asset -- so a floor expresses it exactly, while '=' additionally
 # forbids the harmless newer direction and makes this package uninstallable
 # on every independent bundle release.
-Requires:       python-comfyui-workflow-templates-core >= 0.3.337
-Requires:       python-comfyui-workflow-templates-json >= 0.1.72
+Requires:       python-comfyui-workflow-templates-core >= 0.3.339
+Requires:       python-comfyui-workflow-templates-json >= 0.1.74
 Requires:       python-comfyui-workflow-templates-media-api >= 0.3.84
-Requires:       python-comfyui-workflow-templates-media-assets-01 >= 0.1.43
+Requires:       python-comfyui-workflow-templates-media-assets-01 >= 0.1.44
 Requires:       python-comfyui-workflow-templates-media-image >= 0.3.160
 Requires:       python-comfyui-workflow-templates-media-other >= 0.3.229
 Requires:       python-comfyui-workflow-templates-media-video >= 0.3.101

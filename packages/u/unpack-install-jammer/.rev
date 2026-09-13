@@ -7,4 +7,14 @@
     <comment>required for 010editor</comment>
     <requestid>931840</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>24515dab3459832ca2547ea9834ab6db</srcmd5>
+    <version>0.3.0</version>
+    <time>1789240914</time>
+    <user>dimstar_suse</user>
+    <comment>Forward 0.3.0 to Factory.
+
+Devel Archiving carries 0.3.0 (SR 1377535 accepted). Local aarch64 build green, source_validator clean.</comment>
+    <requestid>1377537</requestid>
+  </revision>
 </revisionlist>

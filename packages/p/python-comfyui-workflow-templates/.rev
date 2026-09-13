@@ -168,4 +168,12 @@ Depends on the -core / -json / -media-assets-01 submissions filed alongside it.<
     <comment>Forward python-comfyui-workflow-templates 0.11.57 to Factory (devel accepted SR1377002; bundle forwards SR1376995/SR1376997/SR1377001 carry its floors).</comment>
     <requestid>1377003</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0ce027cdd67727adec3e0c1b5be68992</srcmd5>
+    <version>0.11.59</version>
+    <time>1789240899</time>
+    <user>dimstar_suse</user>
+    <comment>Forward templates-meta 0.11.59 (train meta, after leaves 1377497/98/99).</comment>
+    <requestid>1377500</requestid>
+  </revision>
 </revisionlist>

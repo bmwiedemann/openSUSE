@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:33:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.0:
+  * SONAME bump 6 -> 8: rename lib subpackage to libspatialindex8
+  * Upstream adopted restore-pkg-config-functionality.patch
+    (PR #201): drop it
+  * Ship CMake package config in devel subpackage
+  * 2.0.0 changes of note: Ball Shape for point neighborhood
+    queries, no more debug lint on stderr, CMake modernization
+    with static-lib support, GTest-based tests
+  * 2.1.0: RTree kNN query overhead reduction, bulk-insert and
+    bulk-query C APIs, in-memory tree construction
+- spec-cleaner pass: drop Group tags, pkgconfig() provider form,
+  %license for COPYING
+- Enable %check (upstream self-contained ctest suite, gtest
+  vendored): pass relative LIB/INCLUDE_INSTALL_DIR so the .pc
+  file has no double slashes
+
+-------------------------------------------------------------------
 Mon Feb 26 13:43:38 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

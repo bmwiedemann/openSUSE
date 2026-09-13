@@ -124,4 +124,12 @@ provider logo. Data-only change.</comment>
     <comment>Forward python-comfyui-workflow-templates-media-assets-01 0.1.43 to Factory (devel accepted SR1377000).</comment>
     <requestid>1377001</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>719578bae164a7e1d03bc9b04e1af730</srcmd5>
+    <version>0.1.44</version>
+    <time>1789240899</time>
+    <user>dimstar_suse</user>
+    <comment>Forward templates-assets-01 0.1.44 (train leaf 3/3).</comment>
+    <requestid>1377499</requestid>
+  </revision>
 </revisionlist>
