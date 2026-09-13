@@ -12533,6 +12533,7 @@ unsorted:
   - libboost_iostreams-devel 
   - libboost_iostreams1_91_0-32bit 
   - libboost_iostreams1_91_0-devel 
+  - libboost_json-devel 
   - libboost_json1_91_0 
   - libboost_json1_91_0-32bit 
   - libboost_json1_91_0-devel 
@@ -16543,7 +16544,7 @@ unsorted:
   - libsoxr-lsr0-32bit 
   - libsoxr0-32bit 
   - libspandsp3-32bit 
-  - libspatialindex6 
+  - libspatialindex8 
   - libspatialite-devel 
   - libspatialite8 
   - libspdlog1_17 
@@ -24279,7 +24280,6 @@ unsorted:
   - python3-dnf-plugins-core 
   - python3-dnf-plugins-extras-common 
   - python3-evemu 
-  - python3-fastjet 
   - python3-fife 
   - python3-gdcm 
   - python3-geis 
@@ -26000,6 +26000,7 @@ unsorted:
   - python313-fastbencode 
   - python313-fasteners 
   - python313-fastimport 
+  - python313-fastjet 
   - python313-fastjsonschema 
   - python313-fastmcp 
   - python313-fastmcp-remote 
@@ -26245,6 +26246,7 @@ unsorted:
   - python313-hatanaka 
   - python313-hatch 
   - python313-hatch-argparse-manpage 
+  - python313-hatch-deps-selector 
   - python313-hatch-fancy-pypi-readme 
   - python313-hatch-jupyter-builder 
   - python313-hatch-requirements-txt 
@@ -30076,6 +30078,7 @@ unsorted:
   - python314-fastbencode 
   - python314-fasteners 
   - python314-fastimport 
+  - python314-fastjet 
   - python314-fastjsonschema 
   - python314-fastmcp 
   - python314-fastmcp-remote 
@@ -30328,6 +30331,7 @@ unsorted:
   - python314-hatanaka 
   - python314-hatch 
   - python314-hatch-argparse-manpage 
+  - python314-hatch-deps-selector 
   - python314-hatch-fancy-pypi-readme 
   - python314-hatch-jupyter-builder 
   - python314-hatch-requirements-txt 
