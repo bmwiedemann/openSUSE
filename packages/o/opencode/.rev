@@ -282,4 +282,14 @@ Built and %check-tested locally on aarch64.</comment>
   so Source2 moves on every bump independently of the tag</comment>
     <requestid>1376544</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>6a5e8ead2ef44376d418e3ec29af977b</srcmd5>
+    <version>1.18.30</version>
+    <time>1789395983</time>
+    <user>anag_factory</user>
+    <comment>opencode 1.18.30: two fixes, supersedes 1377865 (same patch, one more change).
+- Every prompt failed with &quot;undefined is not an object (evaluating 'a.name')&quot; (boo#1280159): circular import between core/src/filesystem.ts and filesystem/search.ts, which bun 1.4.2's bundler orders so a layer dependency is undefined. Backport of upstream PR anomalyco/opencode#48397 (search.ts only). Reproduced on the Factory:ARM RPM in a Tumbleweed container; the patched build answers the same prompt.
+- NO_BRP_STRIP_DEBUG=true in %install: brp-15-strip-debug runs binutils strip (not %__strip) on any ELF `file` calls &quot;not stripped&quot;, which the compiled binary is whenever the bun it was copied from kept its .symtab (any project without the debuginfo flag); that drops the appended payload and %check prints bun's version. Factory only worked because its bun is eu-stripped. Verified with a local --disable-debuginfo build.</comment>
+    <requestid>1377875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 14 11:02:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add opencode-fix-filesystem-cycle.patch: every prompt failed with
+  "undefined is not an object (evaluating 'a.name')" when built
+  with bun 1.4.2, a circular import between core/filesystem.ts and
+  filesystem/search.ts left a layer dependency undefined
+  (boo#1280159, gh#anomalyco/opencode#48397)
+- Set NO_BRP_STRIP_DEBUG=true at install time: brp-15-strip-debug
+  strips the compiled payload off the binary whenever the bun it
+  was built from is not fully stripped, leaving a binary that
+  reports bun's version
+
+-------------------------------------------------------------------
 Wed Sep  9 06:26:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.30:

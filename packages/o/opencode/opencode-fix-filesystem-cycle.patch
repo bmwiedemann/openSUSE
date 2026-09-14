@@ -1,0 +1,39 @@
+From: kernel-oops <300539221+kernel-oops@users.noreply.github.com>
+Subject: fix(core): break filesystem cycle in compiled prompts
+Patch-mainline: Submitted, https://github.com/anomalyco/opencode/pull/48397
+Backported-by: Martin Pluskal <mpluskal@suse.com>
+
+core/src/filesystem.ts reads FileSystemSearch.node at module scope while
+filesystem/search.ts imports FileSystem back from it. bun 1.4's bundler
+evaluates the two bodies the other way round, so the deps array captures
+undefined and every prompt dies in SystemPrompt.environment with
+"undefined is not an object (evaluating 'a.name')" (boo#1280159).
+The search.ts hunk of the upstream PR; its other files are CI and a test
+runner.
+
+diff --git a/packages/core/src/filesystem/search.ts b/packages/core/src/filesystem/search.ts
+index c7738388bcc0..6dcffc084ffb 100644
+--- a/packages/core/src/filesystem/search.ts
++++ b/packages/core/src/filesystem/search.ts
+@@ -5,7 +5,9 @@ import path from "path"
+ import { Context, Effect, Layer, Scope } from "effect"
+ import { Fff } from "#fff"
+ import fuzzysort from "fuzzysort"
+-import { FileSystem } from "../filesystem"
++// Keep the service module type-only: it depends on this module's node during initialisation.
++import type { GlobInput, GrepInput } from "../filesystem"
++import { FileSystem } from "@opencode-ai/schema/filesystem"
+ import { FSUtil } from "../fs-util"
+ import { Location } from "../location"
+ import { Ripgrep } from "../ripgrep"
+@@ -14,8 +16,8 @@ import { Flag } from "../flag/flag"
+ 
+ export interface Interface {
+   readonly find: (input: FileSystem.FindInput) => Effect.Effect<FileSystem.Entry[]>
+-  readonly glob: (input: FileSystem.GlobInput) => Effect.Effect<readonly FileSystem.Entry[]>
+-  readonly grep: (input: FileSystem.GrepInput) => Effect.Effect<readonly FileSystem.Match[]>
++  readonly glob: (input: GlobInput) => Effect.Effect<readonly FileSystem.Entry[]>
++  readonly grep: (input: GrepInput) => Effect.Effect<readonly FileSystem.Match[]>
+ }
+ 
+ export class Service extends Context.Service<Service, Interface>()("@opencode/v2/FileSystem/Search") {}

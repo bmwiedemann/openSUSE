@@ -3,7 +3,7 @@ Maintaining the opencode package
 
 Read this before a version bump. The package is unusual in three ways: the
 sources are generated rather than downloaded, the whole npm dependency tree is
-compiled into one executable, and three of the four patches exist only to stop
+compiled into one executable, and three of the five patches exist only to stop
 the program reaching the network at runtime. None of that is obvious from the
 spec alone.
 
@@ -30,9 +30,10 @@ Then, in order:
    producing something subtly broken - see "OpenTUI" below. If it moved, bump
    the opentui package first and update opentui_version here.
 
-2. Rebase the four patches. They are small and all of them sit in code
+2. Rebase the five patches. They are small and all of them sit in code
    upstream changes rarely, but the grammar patch in particular is a single
-   line in a large file.
+   line in a large file. Drop opencode-fix-filesystem-cycle.patch once the
+   release contains upstream PR 48397 (see "Runtime network access").
 
 3. Build locally, then read %check. It runs the compiled binary, which is the
    only thing that proves the payload survived packaging.
@@ -165,17 +166,29 @@ found and why the behaviour could not simply be configured off.
         when a download fails.
         OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1
 
-The fourth patch, opencode-relax-bun-version.patch, is unrelated and, as of
-1.18.30, inert. Upstream's build script fails unless bun satisfies a caret
-range around the version in the packageManager field: 1.18.30 pins bun@1.3.14
-and Factory has 1.4.2, which satisfies ^1.3.14, so the check passes and the
-patch changes nothing. Keep it anyway. Both versions float independently, a
-distribution ships one bun, and the day either side crosses a major the check
-would stop a build for a reason that is upstream's convenience rather than a
-real incompatibility - the build itself is Bun.build() plus shell calls, and
-%check runs the resulting binary, so a bun that really is too new fails
-visibly on its own. To confirm it is still inert, grep a build log for
-"expected bun@": the warning is absent when the range is satisfied.
+The other two patches are unrelated to the network.
+
+opencode-relax-bun-version.patch is, as of 1.18.30, inert. Upstream's build
+script fails unless bun satisfies a caret range around the version in the
+packageManager field: 1.18.30 pins bun@1.3.14 and Factory has 1.4.2, which
+satisfies ^1.3.14, so the check passes and the patch changes nothing. Keep it
+anyway. Both versions float independently, a distribution ships one bun, and
+the day either side crosses a major the check would stop a build for a reason
+that is upstream's convenience rather than a real incompatibility - the build
+itself is Bun.build() plus shell calls, and %check runs the resulting binary,
+so a bun that really is too new fails visibly on its own. To confirm it is
+still inert, grep a build log for "expected bun@": the warning is absent when
+the range is satisfied.
+
+opencode-fix-filesystem-cycle.patch is a real bug fix (boo#1280159). Two
+modules in packages/core import each other, and filesystem.ts reads a value
+from filesystem/search.ts at module scope, so only one evaluation order
+works. bun 1.3 picked the working one; bun 1.4's bundler picks the other,
+the layer dependency comes out undefined, and every prompt fails with
+"undefined is not an object (evaluating 'a.name')". Upstream builds with a
+pinned bun 1.3.14 and does not see it. The patch is the search.ts hunk of
+upstream PR 48397; drop it when a release contains that PR - if it applies
+with an offset only, it is still needed.
 
 Two things are deliberately left alone:
 
@@ -271,7 +284,12 @@ Things that will surprise you
   - No debuginfo, on purpose. `bun build --compile` appends its payload past
     everything the ELF headers describe. eu-strip rewrites the file, drops
     the payload, and the result aborts at startup. Hence
-    %global debug_package %{nil} and %global __strip /bin/true.
+    %global debug_package %{nil} and %global __strip /bin/true, and
+    NO_BRP_STRIP_DEBUG=true in %install, because brp-15-strip-debug uses
+    binutils strip on any ELF `file` calls "not stripped" - which the
+    compiled binary is whenever the bun it was copied from kept its
+    .symtab (a project built without debuginfo). The symptom is %check
+    printing bun's version instead of opencode's.
 
   - The lockfile is regenerated rather than frozen. bun rewrites the key
     order of trustedDependencies and patchedDependencies, so any bun newer

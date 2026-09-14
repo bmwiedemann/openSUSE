@@ -77,6 +77,8 @@ Patch0:         %{name}-relax-bun-version.patch
 Patch1:         %{name}-no-self-update.patch
 Patch2:         %{name}-no-runtime-npm-install.patch
 Patch3:         %{name}-no-grammar-download.patch
+# PATCH-FIX-UPSTREAM opencode-fix-filesystem-cycle.patch boo#1280159 gh#anomalyco/opencode#48397
+Patch4:         %{name}-fix-filesystem-cycle.patch
 # No floor. Which bun upstream wants changes with every release and Patch0
 # turns a mismatch into a warning; a floor here would be a guess at which
 # older bun still works, and the package is a git snapshot anyway, so
@@ -163,6 +165,12 @@ cd packages/opencode
 bun run ./script/build.ts --single --skip-install --skip-embed-web-ui
 
 %install
+# brp-15-strip-debug runs binutils strip, not %%__strip, on every ELF that
+# `file` reports as not stripped. Whether that is the case depends on how
+# the bun it was compiled from was stripped (a project without debuginfo
+# leaves bun's .symtab in place), and strip rewrites the file just as
+# eu-strip does.
+export NO_BRP_STRIP_DEBUG=true
 install -Dpm 0755 packages/opencode/dist/%{name}-linux-%{node_arch}/bin/%{name} \
     %{buildroot}%{_bindir}/%{name}
 
