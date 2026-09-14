@@ -1,3 +1,12 @@
+gpxsee (16.15) stable; urgency=low
+
+  * Improved Mapsforge maps performance.
+  * Improved Mapsforge maps render theme.
+  * Improved hillshading performance on all vector maps (Mapsforge,
+    IMG, MVT).
+
+ -- Martin Tůma <tumic@gpxsee.org>  Sat, 12 Sep 2026 20:10:42 +0200
+
 gpxsee (16.14) stable; urgency=medium
 
   * Fixed missing patterns in Mapsforge map style (broken in 16.13)
