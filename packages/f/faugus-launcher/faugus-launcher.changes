@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Sun Sep 13 22:08:58 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- Bump to version 2.3.0:
+  * Show missing games in carrousel
+  * Adjusted proton manager scroll
+  * Added support for Proton-Wineland
+  * Simplified the shortcut detection
+  * Improved shortcut detection
+  * Added drag and drop files to create new entry
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Added an option to auto create shortcuts
+  * Update translation template (faugus-launcher.pot)
+  * Ask if the if the created prefixes should be discarded
+  * Update string
+  * Updated string
+  * Allow editing game title
+  * Added fields to search for other steamgriddb assets
+  * Added Run an installer option
+- For version 2.2.2:
+  * Fetch only the selected Proton
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Removed translation tokens from runtimes
+  * Show playtime for Steam games
+  * Added game and prefix location for Steam games
+  * Added shadow to covers and minor fixes
+  * Updated Debian/Ubuntu workflow
+  * Fallback to english
+  * Fixed accent color and color scheme inconsistency
+  * chore(l10n): update translation files
+  * Reorder
+  * Update users games.json
+  * Merge disable umu + Added Auto + Reorder runtimes
+  * Zoom text on the right to better alignment
+  * Add support for Steam Linux Runtime selection
+  * Adjust the carrousel games according to window width
+  * Separated Proton native and Flatpak versions
+  * Commit list changes when confirm dialog.
+
+-------------------------------------------------------------------
 Fri Sep 04 21:07:30 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Bump to version 2.2.1:

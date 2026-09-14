@@ -894,4 +894,41 @@
   * Simplified context menu in carrosel</comment>
     <requestid>1375852</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>a9e2d2af82c2d8235a19b08426ef098c</srcmd5>
+    <version>2.3.0</version>
+    <time>1789395831</time>
+    <user>anag_factory</user>
+    <comment>- Bump to version 2.3.0:
+  * Show missing games in carrousel
+  * Adjusted proton manager scroll
+  * Added support for Proton-Wineland
+  * Simplified the shortcut detection
+  * Improved shortcut detection
+  * Added drag and drop files to create new entry
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Added an option to auto create shortcuts
+  * Update translation template (faugus-launcher.pot)
+  * Ask if the if the created prefixes should be discarded
+  * Update string
+  * Updated string
+  * Allow editing game title
+  * Added fields to search for other steamgriddb assets
+  * Added Run an installer option
+- For version 2.2.2:
+  * Fetch only the selected Proton
+  * chore(l10n): update translation files
+  * Update translation template (faugus-launcher.pot)
+  * Removed translation tokens from runtimes
+  * Show playtime for Steam games
+  * Added game and prefix location for Steam games
+  * Added shadow to covers and minor fixes
+  * Updated Debian/Ubuntu workflow
+  * Fallback to english
+  * Fixed accent color and color scheme inconsistency
+  * chore(l10n): update translation files
+  * Reorder</comment>
+    <requestid>1377789</requestid>
+  </revision>
 </revisionlist>
