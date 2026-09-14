@@ -1,4 +1,1415 @@
 -------------------------------------------------------------------
+Sat Sep 12 08:50:42 CEST 2026 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/7.2.1-001-PCI-host-generic-Fix-NULL-pointer-dereference-o.patch
+  (bsc#1012628 CVE-2026-80917 bsc#1280009).
+- Update
+  patches.kernel.org/7.2.1-002-Bluetooth-RFCOMM-take-rfcomm_mutex-for-the-defe.patch
+  (bsc#1012628 CVE-2026-80819 bsc#1279607).
+- Update
+  patches.kernel.org/7.2.1-003-iommu-tegra241-cmdqv-Fix-CMD_SYNC-use-after-fre.patch
+  (bsc#1012628 CVE-2026-80818 bsc#1279695).
+- Update
+  patches.kernel.org/7.2.1-004-iommu-iommufd-Fix-NULL-pointer-deref-in-iommufd.patch
+  (bsc#1012628 CVE-2026-80817 bsc#1279465).
+- Update
+  patches.kernel.org/7.2.1-005-ALSA-FCP-Use-a-private-URB-for-the-notification.patch
+  (bsc#1012628 CVE-2026-80816 bsc#1279703).
+- Update
+  patches.kernel.org/7.2.1-006-ALSA-scarlett2-Use-a-private-URB-for-the-notifi.patch
+  (bsc#1012628 CVE-2026-80815 bsc#1279700).
+- Update
+  patches.kernel.org/7.2.1-007-rndis_host-add-overflow-check-in-rndis_rx_fixup.patch
+  (bsc#1012628 CVE-2026-80814 bsc#1279705).
+- Update
+  patches.kernel.org/7.2.1-008-nvmet-fix-NULL-pointer-dereference-in-nvmet_exe.patch
+  (bsc#1012628 CVE-2026-80813 bsc#1279537).
+- Update
+  patches.kernel.org/7.2.1-009-futex-pi-Reject-cross-mm-private-futex-owners.patch
+  (bsc#1012628 CVE-2026-80778 bsc#1279587).
+- Update
+  patches.kernel.org/7.2.1-011-futex-pi-Plug-private-futex-exec-race.patch
+  (bsc#1012628 CVE-2026-80777 bsc#1279586).
+- Update
+  patches.kernel.org/7.2.1-012-futex-Avoid-private-hash-use-after-free-on-fina.patch
+  (bsc#1012628 CVE-2026-80758 bsc#1279469).
+- Update
+  patches.kernel.org/7.2.1-013-futex-Fix-race-on-the-initial-mm-futex.phash.re.patch
+  (bsc#1012628 CVE-2026-80775 bsc#1279583).
+- Update
+  patches.kernel.org/7.2.1-016-ALSA-dummy-Check-card-index-validity-at-probe.patch
+  (bsc#1012628 CVE-2026-80812 bsc#1279777).
+- Update
+  patches.kernel.org/7.2.1-017-io_uring-cmd-fix-iovec-leak-when-the-async-cmd-.patch
+  (bsc#1012628 CVE-2026-80811 bsc#1279712).
+- Update
+  patches.kernel.org/7.2.1-019-io_uring-rsrc-fix-folio-size-overflow-in-io_vec.patch
+  (bsc#1012628 CVE-2026-80810 bsc#1279789).
+- Update
+  patches.kernel.org/7.2.1-021-io_uring-defer-eventfd-signaling-when-queued-fr.patch
+  (bsc#1012628 CVE-2026-80920 bsc#1279928).
+- Update
+  patches.kernel.org/7.2.1-022-ocfs2-fix-missing-metadata-reservation-for-larg.patch
+  (bsc#1012628 CVE-2026-80809 bsc#1279606).
+- Update
+  patches.kernel.org/7.2.1-024-kcov-fix-data-corruption-and-race-conditions-on.patch
+  (bsc#1012628 CVE-2026-80916 bsc#1279972).
+- Update
+  patches.kernel.org/7.2.1-025-ext4-stop-retrying-saturated-xattr-cache-entrie.patch
+  (bsc#1012628 CVE-2026-80808 bsc#1279795).
+- Update
+  patches.kernel.org/7.2.1-026-nilfs2-reject-invalid-block-index-in-GC-ioctl.patch
+  (bsc#1012628 CVE-2026-80807 bsc#1279591).
+- Update
+  patches.kernel.org/7.2.1-030-ext4-don-t-enable-DAX-on-new-encrypted-files.patch
+  (bsc#1012628 CVE-2026-80806 bsc#1279589).
+- Update
+  patches.kernel.org/7.2.1-032-xfs-validate-attr-entry-pointer-before-field-ac.patch
+  (bsc#1012628 CVE-2026-80805 bsc#1279580).
+- Update
+  patches.kernel.org/7.2.1-033-xfs-restore-nofs-context-unconditionally-in-xfs.patch
+  (bsc#1012628 CVE-2026-80804 bsc#1279579).
+- Update
+  patches.kernel.org/7.2.1-034-nfc-digital-clamp-SENSF_RES-length-to-the-desti.patch
+  (bsc#1012628 CVE-2026-80803 bsc#1279798).
+- Update
+  patches.kernel.org/7.2.1-035-nfc-fdp-bound-the-device-reported-read-length-a.patch
+  (bsc#1012628 CVE-2026-80802 bsc#1279814).
+- Update
+  patches.kernel.org/7.2.1-036-nfc-microread-validate-target-discovery-payload.patch
+  (bsc#1012628 CVE-2026-80801 bsc#1279815).
+- Update
+  patches.kernel.org/7.2.1-037-nfc-llcp-bound-the-connect_sn-TLV-walk-to-the-s.patch
+  (bsc#1012628 CVE-2026-80800 bsc#1279812).
+- Update
+  patches.kernel.org/7.2.1-038-nfc-llcp-fix-OOB-read-and-u8-offset-wrap-in-TLV.patch
+  (bsc#1012628 CVE-2026-80799 bsc#1279811).
+- Update
+  patches.kernel.org/7.2.1-039-nfc-llcp-reject-PDUs-shorter-than-the-LLCP-head.patch
+  (bsc#1012628 CVE-2026-80798 bsc#1279809).
+- Update
+  patches.kernel.org/7.2.1-040-nfc-pn533-purge-fragmented-skbs-during-cleanup.patch
+  (bsc#1012628 CVE-2026-80797 bsc#1279808).
+- Update
+  patches.kernel.org/7.2.1-041-nfc-st21nfca-validate-ATR_REQ-length-against-th.patch
+  (bsc#1012628 CVE-2026-80823 bsc#1279608).
+- Update
+  patches.kernel.org/7.2.1-042-nfc-nci-add-data_len-bound-checks-to-activation.patch
+  (bsc#1012628 CVE-2026-80796 bsc#1279807).
+- Update
+  patches.kernel.org/7.2.1-043-nfc-nci-fix-out-of-bounds-write-in-nci_target_a.patch
+  (bsc#1012628 CVE-2026-80795 bsc#1279805).
+- Update
+  patches.kernel.org/7.2.1-044-nfc-nci-fix-uninit-value-in-the-RF-discover-act.patch
+  (bsc#1012628 CVE-2026-80794 bsc#1279802).
+- Update
+  patches.kernel.org/7.2.1-046-ipv4-reject-undersized-MTUs-in-ip_do_fragment.patch
+  (bsc#1012628 CVE-2026-80793 bsc#1279799).
+- Update
+  patches.kernel.org/7.2.1-047-ipv6-fix-use-after-free-in-ip6_finish_output2.patch
+  (bsc#1012628 CVE-2026-80792 bsc#1279796).
+- Update
+  patches.kernel.org/7.2.1-048-mailbox-mchp-ipc-sbi-Add-null-check-for-devm_ka.patch
+  (bsc#1012628 CVE-2026-80822 bsc#1279544).
+- Update
+  patches.kernel.org/7.2.1-050-nvmet-auth-zero-the-AUTH_RECEIVE-response-buffe.patch
+  (bsc#1012628 CVE-2026-80791 bsc#1279710).
+- Update
+  patches.kernel.org/7.2.1-051-nvmet-fc-fix-invalid-free-in-LS-IOD-error-path.patch
+  (bsc#1012628 CVE-2026-80790 bsc#1279709).
+- Update
+  patches.kernel.org/7.2.1-052-nvmet-tcp-bound-SGL-data-length-before-allocati.patch
+  (bsc#1012628 CVE-2026-80789 bsc#1279621).
+- Update
+  patches.kernel.org/7.2.1-053-nvmet-tcp-Do-not-WARN-on-remotely-controlled-ov.patch
+  (bsc#1012628 CVE-2026-80788 bsc#1279623).
+- Update
+  patches.kernel.org/7.2.1-054-nvmet-pci-epf-fix-use-after-free-in-nvmet_pci_e.patch
+  (bsc#1012628 CVE-2026-80787 bsc#1279617).
+- Update
+  patches.kernel.org/7.2.1-055-nvmet-pci-epf-put-CQ-ref-on-create_cq-mapping-f.patch
+  (bsc#1012628 CVE-2026-80821 bsc#1279635).
+- Update
+  patches.kernel.org/7.2.1-057-HID-magicmouse-prevent-unbounded-recursion-in-m.patch
+  (bsc#1012628 CVE-2026-80783 bsc#1279605).
+- Update
+  patches.kernel.org/7.2.1-059-HID-magicmouse-do-not-keep-a-stale-msc-input-if.patch
+  (bsc#1012628 CVE-2026-80782 bsc#1279603).
+- Update
+  patches.kernel.org/7.2.1-060-HID-core-fix-OOB-read-of-field-usage-in-hid_set.patch
+  (bsc#1012628 CVE-2026-80781 bsc#1279594).
+- Update
+  patches.kernel.org/7.2.1-061-HID-pidff-fix-OOB-write-when-hid-inputs-is-empt.patch
+  (bsc#1012628 CVE-2026-80780 bsc#1279491).
+- Update
+  patches.kernel.org/7.2.1-062-net-ionic-avoid-OOB-TX-partner-lookup-for-hwsta.patch
+  (bsc#1012628 CVE-2026-80779 bsc#1279590).
+- Update
+  patches.kernel.org/7.2.1-063-HID-asus-fix-missing-hid_is_usb-check.patch
+  (bsc#1012628 CVE-2026-80774 bsc#1279486).
+- Update
+  patches.kernel.org/7.2.1-064-HID-huawei-fix-missing-hid_is_usb-check.patch
+  (bsc#1012628 CVE-2026-80773 bsc#1279478).
+- Update
+  patches.kernel.org/7.2.1-065-HID-nintendo-fix-out-of-bounds-read-in-joycon_c.patch
+  (bsc#1012628 CVE-2026-80772 bsc#1279520).
+- Update
+  patches.kernel.org/7.2.1-066-HID-nintendo-register-input-device-after-capabi.patch
+  (bsc#1012628 CVE-2026-80771 bsc#1279518).
+- Update
+  patches.kernel.org/7.2.1-067-HID-nintendo-stop-device-IO-before-hid_hw_stop-.patch
+  (bsc#1012628 CVE-2026-80770 bsc#1279516).
+- Update
+  patches.kernel.org/7.2.1-068-HID-rapoo-fix-missing-hid_is_usb-check.patch
+  (bsc#1012628 CVE-2026-80769 bsc#1279515).
+- Update
+  patches.kernel.org/7.2.1-069-HID-core-fix-number-pointer-type-confusion-on-l.patch
+  (bsc#1012628 CVE-2026-80918 bsc#1279971).
+- Update
+  patches.kernel.org/7.2.1-070-HID-ft260-fix-stack-use-after-return-write-in-I.patch
+  (bsc#1012628 CVE-2026-80768 bsc#1279508).
+- Update
+  patches.kernel.org/7.2.1-071-HID-sensor-custom-Fix-use-after-free-in-enable_.patch
+  (bsc#1012628 CVE-2026-80767 bsc#1279504).
+- Update
+  patches.kernel.org/7.2.1-072-HID-uclogic-fix-use-after-free-of-inrange_timer.patch
+  (bsc#1012628 CVE-2026-80766 bsc#1279502).
+- Update
+  patches.kernel.org/7.2.1-073-HID-hyperv-validate-initial-device-info-bounds.patch
+  (bsc#1012628 CVE-2026-80765 bsc#1279499).
+- Update
+  patches.kernel.org/7.2.1-075-Bluetooth-hci_event-fix-LE-list-UAF-on-reset.patch
+  (bsc#1012628 CVE-2026-80764 bsc#1279493).
+- Update
+  patches.kernel.org/7.2.1-076-Bluetooth-hci_event-validate-LE-Set-CIG-Paramet.patch
+  (bsc#1012628 CVE-2026-80763 bsc#1279483).
+- Update
+  patches.kernel.org/7.2.1-077-Bluetooth-hci_sync-Fix-accept-list-UAF-during-s.patch
+  (bsc#1012628 CVE-2026-80762 bsc#1279477).
+- Update
+  patches.kernel.org/7.2.1-079-Bluetooth-ISO-zero-the-sockaddr-before-returnin.patch
+  (bsc#1012628 CVE-2026-80761 bsc#1279473).
+- Update
+  patches.kernel.org/7.2.1-080-Bluetooth-MGMT-reject-HCI_CMD_SYNC-params_len-a.patch
+  (bsc#1012628 CVE-2026-80760 bsc#1279472).
+- Update
+  patches.kernel.org/7.2.1-081-Bluetooth-hci_aml-validate-firmware-segment-len.patch
+  (bsc#1012628 CVE-2026-80759 bsc#1279470).
+- Update
+  patches.kernel.org/7.2.3-001-RDMA-rxe-Fix-responder-UAF-on-IB_QP_MAX_DEST_RD.patch
+  (bsc#1012628 CVE-2026-80864 bsc#1279525).
+- Update
+  patches.kernel.org/7.2.3-002-RDMA-rxe-Fix-OOB-in-free_rd_atomic_resources.patch
+  (bsc#1012628 CVE-2026-80863 bsc#1279535).
+- Update
+  patches.kernel.org/7.2.3-003-nvme-tcp-fix-usage-of-page_frag_cache.patch
+  (bsc#1012628 CVE-2026-80862 bsc#1279823).
+- Update
+  patches.kernel.org/7.2.3-009-usb-xhci-bail-out-of-setup-if-the-controller-is.patch
+  (bsc#1012628 CVE-2026-80861 bsc#1279824).
+- Update
+  patches.kernel.org/7.2.3-010-xhci-dbgtty-Fix-unregister-on-tty_register_driv.patch
+  (bsc#1012628 CVE-2026-80923 bsc#1279920).
+- Update
+  patches.kernel.org/7.2.3-012-fuse-fix-race-between-interrupt-and-resend.patch
+  (bsc#1012628 CVE-2026-80860 bsc#1279780).
+- Update
+  patches.kernel.org/7.2.3-013-fuse-fix-missing-barrier-when-checking-io-uring.patch
+  (bsc#1012628 CVE-2026-80859 bsc#1279779).
+- Update
+  patches.kernel.org/7.2.3-014-fuse-publish-io-uring-queues-with-release-seman.patch
+  (bsc#1012628 CVE-2026-80858 bsc#1279776).
+- Update
+  patches.kernel.org/7.2.3-015-fuse-wait-for-FR_FINISHED-on-abort_on_kill-to-p.patch
+  (bsc#1012628 CVE-2026-80857 bsc#1279567).
+- Update
+  patches.kernel.org/7.2.3-016-fuse-fix-invalidate-lock-leak-on-setattr-writeb.patch
+  (bsc#1012628 CVE-2026-80856 bsc#1279566).
+- Update
+  patches.kernel.org/7.2.3-017-fuse-fix-invalidate-lock-leak-on-open-O_TRUNC-D.patch
+  (bsc#1012628 CVE-2026-80855 bsc#1279564).
+- Update
+  patches.kernel.org/7.2.3-019-usb-gadget-f_tcm-keep-port-count-until-LUN-tear.patch
+  (bsc#1012628 CVE-2026-80854 bsc#1279568).
+- Update
+  patches.kernel.org/7.2.3-020-KVM-SEV-Allocate-full-pages-for-DE-EN-CRYPT-ops.patch
+  (bsc#1012628 CVE-2026-80853 bsc#1279571).
+- Update
+  patches.kernel.org/7.2.3-026-tls-device-fix-out-of-bounds-write-in-tls_appen.patch
+  (bsc#1012628 CVE-2026-80852 bsc#1279532).
+- Update
+  patches.kernel.org/7.2.3-027-gtp-serialize-PDP-context-updates.patch
+  (bsc#1012628 CVE-2026-80851 bsc#1279569).
+- Update
+  patches.kernel.org/7.2.3-029-tcp-fix-AO-info-use-after-free-in-tcp_ao_connec.patch
+  (bsc#1012628 CVE-2026-80850 bsc#1279577).
+- Update
+  patches.kernel.org/7.2.3-030-net-tcp-ao-fix-use-after-free-of-current_key-on.patch
+  (bsc#1012628 CVE-2026-80849 bsc#1279582).
+- Update
+  patches.kernel.org/7.2.3-032-xfrm-espintcp-fix-UAF-during-close.patch
+  (bsc#1012628 CVE-2026-80848 bsc#1279581).
+- Update
+  patches.kernel.org/7.2.3-033-tcp-clamp-route-advmss-to-TCP_MIN_MSS.patch
+  (bsc#1012628 CVE-2026-80847 bsc#1279850).
+- Update
+  patches.kernel.org/7.2.3-034-xfrm-drop-ESP-in-TCP-packets-with-no-ingress-de.patch
+  (bsc#1012628 CVE-2026-80846 bsc#1279878).
+- Update
+  patches.kernel.org/7.2.3-035-xfrm-avoid-lock-inversion-in-nat-keepalive-work.patch
+  (bsc#1012628 CVE-2026-80845 bsc#1279787).
+- Update
+  patches.kernel.org/7.2.3-036-xfrm-ah6-validate-routing-header-segments_left.patch
+  (bsc#1012628 CVE-2026-80844 bsc#1279786).
+- Update
+  patches.kernel.org/7.2.3-037-xfrm-fix-xfrm_state_construct-auth-trunc-leak.patch
+  (bsc#1012628 CVE-2026-80843 bsc#1279775).
+- Update
+  patches.kernel.org/7.2.3-039-net-bridge-mcast-fix-use-after-free-of-a-master.patch
+  (bsc#1012628 CVE-2026-80842 bsc#1279888).
+- Update
+  patches.kernel.org/7.2.3-040-vlan-fix-skb_under_panic-and-races-when-togglin.patch
+  (bsc#1012628 CVE-2026-80925 bsc#1280011).
+- Update
+  patches.kernel.org/7.2.3-041-net-packet-defer-vmalloc-TX_RING-free-until-skb.patch
+  (bsc#1012628 CVE-2026-80841 bsc#1279835).
+- Update
+  patches.kernel.org/7.2.3-042-ipv6-seg6-clear-IPv4-control-block-on-IPIP-deca.patch
+  (bsc#1012628 CVE-2026-80840 bsc#1279875).
+- Update
+  patches.kernel.org/7.2.3-043-batman-adv-reject-unrepresentable-multicast-TVL.patch
+  (bsc#1012628 CVE-2026-80839 bsc#1279874).
+- Update
+  patches.kernel.org/7.2.3-044-vxlan-keep-the-last-remote-linked-during-FDB-fl.patch
+  (bsc#1012628 CVE-2026-80838 bsc#1279842).
+- Update
+  patches.kernel.org/7.2.3-046-netfilter-nf_tables-don-t-queue-packet-path-obj.patch
+  (bsc#1012628 CVE-2026-80837 bsc#1279820).
+- Update
+  patches.kernel.org/7.2.3-049-crypto-virtio-bound-the-akcipher-result-length.patch
+  (bsc#1012628 CVE-2026-80836 bsc#1279819).
+- Update
+  patches.kernel.org/7.2.3-051-crypto-qcom-rng-Remove-crypto_rng-interface.patch
+  (bsc#1012628 CVE-2026-80835 bsc#1279817).
+- Update
+  patches.kernel.org/7.2.3-052-crypto-qcom-rng-Allow-zero-as-a-random-number.patch
+  (bsc#1012628 CVE-2026-80922 bsc#1280010).
+- Update
+  patches.kernel.org/7.2.3-053-crypto-sun8i-ce-Remove-crypto_rng-interface.patch
+  (bsc#1012628 CVE-2026-80834 bsc#1279596).
+- Update
+  patches.kernel.org/7.2.3-054-crypto-sun8i-ss-Remove-crypto_rng-interface.patch
+  (bsc#1012628 CVE-2026-80833 bsc#1279599).
+- Update
+  patches.kernel.org/7.2.3-056-crypto-krb5-use-kfree_sensitive-for-derived-key.patch
+  (bsc#1012628 CVE-2026-80924 bsc#1279919).
+- Update
+  patches.kernel.org/7.2.3-057-crypto-qce-fix-CCM-AAD-buffer-underallocation.patch
+  (bsc#1012628 CVE-2026-80832 bsc#1279592).
+- Update
+  patches.kernel.org/7.2.3-059-crypto-mxs-dcp-fix-source-scatterlist-length-ac.patch
+  (bsc#1012628 CVE-2026-80831 bsc#1279616).
+- Update
+  patches.kernel.org/7.2.3-061-KVM-s390-vsie-zero-stale-crypto-bits.patch
+  (bsc#1012628 CVE-2026-80921 bsc#1279926).
+- Update
+  patches.kernel.org/7.2.3-062-usb-core-Add-lock-to-usb_wakeup_notification.patch
+  (bsc#1012628 CVE-2026-80830 bsc#1279816).
+- Update
+  patches.kernel.org/7.2.3-065-ALSA-usb-audio-fix-OOB-write-in-snd_usbmidi_nov.patch
+  (bsc#1012628 CVE-2026-80829 bsc#1279485).
+- Update
+  patches.kernel.org/7.2.3-066-ALSA-usb-audio-Complete-cleanup-after-system-re.patch
+  (bsc#1012628 CVE-2026-80828 bsc#1279614).
+- Update
+  patches.kernel.org/7.2.3-067-USB-serial-option-fix-slab-OOB-read-in-interrup.patch
+  (bsc#1012628 CVE-2026-80827 bsc#1279698).
+- Update
+  patches.kernel.org/7.2.3-069-USB-c67x00-fix-use-after-free-in-c67x00_add_iso.patch
+  (bsc#1012628 CVE-2026-80826 bsc#1279699).
+- Update
+  patches.kernel.org/7.2.3-070-wifi-mt76-mt7925-ensure-tx-headroom-in-usb_sdio.patch
+  (bsc#1012628 CVE-2026-80825 bsc#1279624).
+- Update
+  patches.kernel.org/7.2.3-071-usb-usbfs-fix-use-after-free-of-usb_device-in-u.patch
+  (bsc#1012628 CVE-2026-80824 bsc#1279625).
+- Update
+  patches.kernel.org/7.2.4-340-Bluetooth-ISO-fix-use-after-free-of-listener-so.patch
+  (bsc#1012628 CVE-2026-80914 bsc#1279921).
+- Update
+  patches.kernel.org/7.2.4-440-ptp-vmclock-prevent-read-only-mappings-from-bec.patch
+  (bsc#1012628 CVE-2026-80724 bsc#1277850).
+  suse-add-cves
+- commit 6b7e8a9
+
+-------------------------------------------------------------------
+Fri Sep 11 13:34:45 CEST 2026 - jslaby@suse.cz
+
+- Linux 7.2.5 (bsc#1012628).
+- ksmbd: zero pipe read compound padding (bsc#1012628).
+- PCI: Allow per function PCI slots to fix slot reset on s390
+  (bsc#1012628).
+- PCI: Introduce PCI_SLOT_PLACEHOLDER constant for slot_nr
+  placeholder value (bsc#1012628).
+- mm/damon/vaddr: drop last same folio access check optimization
+  (bsc#1012628).
+- mm/damon/paddr: drop last same folio access check reuse
+  optimization (bsc#1012628).
+- mm/damon/ops-common: use nr_accesses moving sum for quota score
+  (bsc#1012628).
+- mm/damon/core: avoid infinite kdamond_merge_regions() internal
+  loop (bsc#1012628).
+- power: supply: ab8500_fg: fix use-after-free on remove
+  (bsc#1012628).
+- power: supply: ab8500_fg: Remove redundant
+  dev_err()/dev_err_probe() (bsc#1012628).
+- remoteproc: qcom: pas: Guard dtb metadata release with
+  dtb_pas_id check (bsc#1012628).
+- rpcrdma: arm rn_done before publishing the notification
+  (bsc#1012628).
+- bpf: Disable preemption in bpf_get_stackid (bsc#1012628).
+- bpf: Use stack id functions instead of __bpf_get_stackid
+  (bsc#1012628).
+- bpf: Factor stackid_new_bucket from __bpf_get_stackid
+  (bsc#1012628).
+- bpf: Factor stackid_fastpath function from __bpf_get_stackid
+  (bsc#1012628).
+- bpf: Factor stackid_init function from __bpf_get_stackid
+  (bsc#1012628).
+- ksmbd: fix use-after-free in oplock break notification
+  (bsc#1012628).
+- drm/nouveau/gsp: fix vblank interrupts on GB20x (bsc#1012628).
+- drm/nouveau/disp: fix head state readback on GB20x
+  (bsc#1012628).
+- drm/nouveau/disp: fix HDMI GCP AVMute register offsets on GB20x
+  (bsc#1012628).
+- drm/nouveau/disp: fix HDMI vendor infoframes on GB20x
+  (bsc#1012628).
+- drm/nouveau/disp: route GSP-RM display MMIO through
+  nvkm_disp_func hooks (bsc#1012628).
+- drm/nouveau/disp: move the GSP HDMI GCP AVMute write to
+  engine/disp (bsc#1012628).
+- drm/nouveau/disp: move GSP head-timing ISR and vblank helpers
+  to tu102.c (bsc#1012628).
+- drm/nouveau/uvmm: clear the dirty flag when unwinding an
+  OP_UNMAP_SPARSE (bsc#1012628).
+- drm/nouveau/uvmm: fix premature region free on failed
+  OP_UNMAP_SPARSE (bsc#1012628).
+- drm/nouveau/uvmm: fix NULL deref unwinding an OP_MAP_SPARSE op
+  (bsc#1012628).
+- drm/nouveau: Use write-combined maps for coherent (bsc#1012628).
+- drm/nouveau: unsubscribe the channel-kill event before the
+  fence context (bsc#1012628).
+- drm/nouveau/gsp: use per-version DP_CONFIG_STREAM params on
+  r570 firmware (bsc#1012628).
+- drm/nouveau/dmem: fix mismatched DMA unmap size for large folios
+  (bsc#1012628).
+- drm/nouveau/dmem: fix callocated underflow on large folio split
+  (bsc#1012628).
+- drm/pagemap: Fix folio allocation fallback and use-after-put
+  (bsc#1012628).
+- drm/sysfb: ofdrm: Fix is_avivo() constant comparison bug
+  (bsc#1012628).
+- drm/sysfb: ofdrm: Fix integer overflow in fb_size calculation
+  (bsc#1012628).
+- drm/sysfb: simpledrm: Improve stride validation (bsc#1012628).
+- drm/sysfb: simpledrm: Improve panel-size validation
+  (bsc#1012628).
+- drm/sysfb: simpledrm: Improve framebuffer-size validation
+  (bsc#1012628).
+- drm/amdkfd: Reject zero-sized AQL queue allocations after size
+  halving (bsc#1012628).
+- drm/amdkfd: guard against NULL restore_mqd in CRIU queue restore
+  (bsc#1012628).
+- drm/amdkfd: Fix the case that vm range is hole at
+  svm_migrate_copy_to_vram (bsc#1012628).
+- drm/amdkfd: fix scope of mqd_mgr dereference in pqm_debugfs_mqds
+  (bsc#1012628).
+- drm/amdkfd: Fix error path at svm_migrate_copy_to_ram
+  (bsc#1012628).
+- drm/amdkfd: Add TLB flush after MES queue eviction/suspension
+  (bsc#1012628).
+- drm/amdgpu: use AMDGPU_GPU_PAGE_SHIFT instead of PAGE_SHIFT
+  (bsc#1012628).
+- drm/amdgpu: update the fw version for gfx12 userqueues
+  (bsc#1012628).
+- drm/amdgpu: update the fw version for gfx11 userqueues
+  (bsc#1012628).
+- drm/amdgpu: Skip accessing psp rum time db for APUs
+  (bsc#1012628).
+- drm/amdgpu: force complete the MES ring fences on reset
+  (bsc#1012628).
+- drm/amdgpu: force complete the KIQ ring fences on reset
+  (bsc#1012628).
+- drm/amdgpu: fix Idle BOs list in VM debugfs status info
+  (bsc#1012628).
+- drm/amdgpu: fix byte/dword unit mismatch in coredump IB dump
+  (bsc#1012628).
+- drm/amdgpu: fix autosuspend cleanup during removal
+  (bsc#1012628).
+- drm/amdgpu: Disable runtime PM for externally attached dGPUs
+  (bsc#1012628).
+- drm/amdgpu: clamp the isolation index for rings outside a
+  partition (bsc#1012628).
+- drm/amdgpu: delay ttm buffer func enablement on xgmi
+  (bsc#1012628).
+- drm/amdgpu: check thunderbolt before switcheroo registration
+  (bsc#1012628).
+- drm/ttm: Drop tt->restore after successful restore
+  (bsc#1012628).
+- drm: Fix drm_crtc_commit leak if signaled when PAGE_FLIP_EVENT
+  is used (bsc#1012628).
+- drm/msm/dsi: round 6G byte clock rate to the PLL-achievable
+  value (bsc#1012628).
+- drm/gud: validate TV mode names before creating enum property
+  (bsc#1012628).
+- drm/gud: NUL-terminate TV mode names read from the device
+  (bsc#1012628).
+- drm/amdgpu/vcn: fix integer overflow in dec_msg buffer count
+  check (bsc#1012628).
+- drm/amdgpu/gfx8: only apply compute quantums to KCQs
+  (bsc#1012628).
+- drm/amd/display: Set gpuvm min page size to 4K on dcn35/36
+  (bsc#1012628).
+- drm/amd/display: Remove const Qualifier From Non-Pointer Fields
+  (bsc#1012628).
+- drm/amd/display: validate plane degamma LUT size for private
+  color prop (bsc#1012628).
+- drm/amd/display: Fix HPD consideration for VGA/LVDS connectors
+  on DCE (bsc#1012628).
+- drm/amd/display: fix dc_lock leak on GPU reset error paths
+  (bsc#1012628).
+- drm/amd/display: avoid divide-by-zero in __is_lut_linear()
+  (bsc#1012628).
+- drm/hibmc: Use drm_atomic_helper_check_plane_state()
+  (bsc#1012628).
+- drm/hibmc: Fix list of formats on the primary plane
+  (bsc#1012628).
+- drm/nouveau/disp/r535: Add scanline position support + head
+  state support (bsc#1012628).
+- drm/ssd130x: fix column and row end address in partial updates
+  in ssd133x (bsc#1012628).
+- drm/sun4i: fix refcount leak in sun4i_backend_init_sat()
+  (bsc#1012628).
+- drm/ssd130x: fix column and row end address in partial updates
+  for ssd132x (bsc#1012628).
+- drm/i915: Guard against NULL driver_data in i915_pci_probe()
+  (bsc#1012628).
+- drm/i915/display: Clear SEL_FETCH_PLANE_CTL on plane disable
+  (bsc#1012628).
+- drm: fix race between partial drm_dev_register() failure and
+  ioctl (bsc#1012628).
+- drm/panel-edp: fix i2c adapter leak on probe failure
+  (bsc#1012628).
+- drm/bridge: dw-hdmi: fix i2c adapter leak on probe failure
+  (bsc#1012628).
+- drm/panthor: fix firmware control interface bounds checks
+  (bsc#1012628).
+- drm/panthor: harden firmware build-info bounds checks
+  (bsc#1012628).
+- drm/xe/vram: report FLAT_CCS base misalignment (bsc#1012628).
+- drm/amdgpu: avoid force-completing uninitialized UVD rings
+  (bsc#1012628).
+- drm/amdgpu: Fix init ordering in amdgpu_vram_mgr_init()
+  (bsc#1012628).
+- f2fs: fix to zero post-EOF data when extending file size
+  (bsc#1012628).
+- f2fs: fix to pass folio->index to
+  f2fs_sanity_check_node_footer() (bsc#1012628).
+- f2fs: fix to reclaim space in f2fs_allocate_pinning_section()
+  (bsc#1012628).
+- f2fs: fix valid block count leak on data block allocation
+  failure (bsc#1012628).
+- f2fs: protect critical_task_priority updates with s_umount
+  (bsc#1012628).
+- f2fs: fix to clear dirty flag on folio in error path
+  (bsc#1012628).
+- f2fs: fix to off-by-one issue in f2fs_zero_post_eof_page()
+  (bsc#1012628).
+- f2fs: fix to return -EFSCORRUPTED in f2fs_get_node_info()
+  correctly (bsc#1012628).
+- f2fs: fix i_size when pinned fallocate partially fails
+  (bsc#1012628).
+- f2fs: fix to avoid potential deadloop in f2fs_fsync_node_pages()
+  (bsc#1012628).
+- f2fs: fix to migrate all curseg types during free_segment_range
+  (bsc#1012628).
+- f2fs: avoid NULL checkpoint thread access in sysfs
+  (bsc#1012628).
+- f2fs: fix folio_nr_pages() race after put in large folio
+  invalidate (bsc#1012628).
+- f2fs: fix dentry folio leak in find_in_level (bsc#1012628).
+- f2fs: embed f2fs_gc_kthread in f2fs_sb_info (bsc#1012628).
+- f2fs: fix to avoid potential section-unaligned pinfile
+  (bsc#1012628).
+- f2fs: don't drop the top folio order in the f2fs_iostat
+  tracepoint (bsc#1012628).
+- f2fs: limit recovery filename logging to stored length
+  (bsc#1012628).
+- f2fs: return writeback error from collapse range (bsc#1012628).
+- f2fs: use the mount idmap for the owner check in
+  f2fs_xattr_advise_set() (bsc#1012628).
+- f2fs: dirty directory inodes on mtime/ctime update
+  (bsc#1012628).
+- f2fs: validate MOVE_RANGE destination size (bsc#1012628).
+- f2fs: fix to avoid move_range and defragment on device_alias
+  file (bsc#1012628).
+- f2fs: only redirty pinned folios in redirty_blocks
+  (bsc#1012628).
+- f2fs: reject overlapping move range after len expansion
+  (bsc#1012628).
+- f2fs: return symlink writeback errors (bsc#1012628).
+- scsi: qla2xxx: Skip NVMe LS reject IOCB when FW not started
+  (bsc#1012628).
+- scsi: qla2xxx: Zero-init bsg stack buffers to avoid info leak
+  (bsc#1012628).
+- scsi: qla2xxx: Use coherent DMA buffer for D_Port diagnostics
+  (bsc#1012628).
+- scsi: qla2xxx: Hold vport_slock for host map update in report
+  ID acquisition (bsc#1012628).
+- scsi: qla2xxx: Drop vport reference under lock in report ID
+  acquisition (bsc#1012628).
+- scsi: qla2xxx: Fix NVMe abort reference leak on repeated abort
+  (bsc#1012628).
+- scsi: qla2xxx: Avoid req_q_map double-read in
+  qla2x00_error_entry() (bsc#1012628).
+- scsi: qla2xxx: Bound rsp_info_len to avoid OOB sense-data read
+  (bsc#1012628).
+- scsi: qla2xxx: Avoid double completion in async IOCB timeout
+  (bsc#1012628).
+- scsi: qla2xxx: Quiesce response IRQ before freeing request queue
+  (bsc#1012628).
+- scsi: qla2xxx: Fix response queue over-consumption in
+  __qla_consume_iocb() (bsc#1012628).
+- scsi: qla2xxx: Reject non-SCSI SRB on status IOCB fast path
+  (bsc#1012628).
+- scsi: qla2xxx: Don't query firmware state while chip is down
+  (bsc#1012628).
+- scsi: qla2xxx: Fix FCE trace enable parsing in debugfs
+  (bsc#1012628).
+- scsi: qla2xxx: Zero mailbox struct in
+  qla2x00_get_firmware_state() (bsc#1012628).
+- scsi: qla2xxx: Fix FCE trace use-after-free during firmware dump
+  (bsc#1012628).
+- scsi: qla2xxx: Fix cs84xx use-after-free on host teardown
+  (bsc#1012628).
+- scsi: qla2xxx: Serialize flash version read in reset handler
+  (bsc#1012628).
+- scsi: qla2xxx: Clamp MSI-X derived queue counts to avoid
+  truncation (bsc#1012628).
+- scsi: qla2xxx: Hold qpair lock when sending NVMe LS reject
+  (bsc#1012628).
+- scsi: qla2xxx: Bound image count in
+  qla2x00_update_fru_versions() (bsc#1012628).
+- scsi: qla2xxx: Zero dport diagnostics buffer to avoid info leak
+  (bsc#1012628).
+- scsi: qla2xxx: Check entry_status in qla24xx_modify_vp_config()
+  (bsc#1012628).
+- scsi: qla2xxx: Initialize NVMe abort_work once at submission
+  (bsc#1012628).
+- scsi: qla2xxx: Hold vport reference in
+  qla24xx_report_id_acquisition() (bsc#1012628).
+- scsi: qla2xxx: Fix BSG job leak on validate flash image error
+  path (bsc#1012628).
+- scsi: qla2xxx: Fix Name Server logout detection on FWI2 adapters
+  (bsc#1012628).
+- scsi: qla2xxx: edif: Fix NULL pointer deref in RX SA delete
+  check (bsc#1012628).
+- scsi: qla2xxx: Bound i2c->length in I2C bsg handlers
+  (bsc#1012628).
+- scsi: qla2xxx: Zero SFP DMA buffer in FRU/I2C bsg handlers
+  (bsc#1012628).
+- media: chips-media: wave5: Resume device before setting EOS flag
+  (bsc#1012628).
+- media: chips-media: wave5: Fix pipeline stall when queuing fails
+  (bsc#1012628).
+- media: chips-media: wave5: Defer job_finish() only when a
+  DEC_PIC was queued (bsc#1012628).
+- media: chips-media: wave5: Add timeout while stop_streaming
+  (bsc#1012628).
+- media: chips-media: wave5: avoid skipping device_run while
+  VPU has work (bsc#1012628).
+- media: chips-media: wave5: Set inst->std during default format
+  initialization (bsc#1012628).
+- media: chips-media: wave5: Guard bit depth check with
+  initial_info_obtained (bsc#1012628).
+- media: qcom: iris: fix missing hfi_id in gen1 GOP_SIZE cap
+  (bsc#1012628).
+- media: qcom: iris: use disable_irq() during power-off
+  (bsc#1012628).
+- media: qcom: iris: fix state-change debug log printing stale
+  value (bsc#1012628).
+- media: zoran: Avoid freeing a registered video_device twice
+  (bsc#1012628).
+- media: vimc: fix pixel format lookup in enum_framesizes
+  (bsc#1012628).
+- media: video-i2c: fix kthread error pointer left in
+  kthread_vid_cap on failure (bsc#1012628).
+- media: venus: fix payload size calculation in
+  parse_raw_formats() (bsc#1012628).
+- media: venus: fix payload size returned by parse_caps() and
+  parse_alloc_mode() (bsc#1012628).
+- media: v4l2-fwnode: Fix fwnode leak in v4l2_fwnode_parse_link
+  (bsc#1012628).
+- media: v4l2-ctrls: Allow unknown HDR10 white point and luminance
+  (bsc#1012628).
+- media: v4l2-ctrls: validate HEVC EXT SPS RPS counts
+  (bsc#1012628).
+- media: v4l2-async: avoid deleting unlinked ASC entry on link
+  error (bsc#1012628).
+- media: ti: vpe: quiesce overflow recovery before freeing streams
+  (bsc#1012628).
+- media: tda18250: fix possible integer overflow (bsc#1012628).
+- media: saa7164: fix cleanup on resource allocation failure
+  (bsc#1012628).
+- media: s2255: check firmware size before reading trailing marker
+  (bsc#1012628).
+- media: s2255: bound JPEG frame size before copying into the
+  buffer (bsc#1012628).
+- media: rzg2l-cru: Align bytesperline to hardware DMA stride
+  requirement (bsc#1012628).
+- media: rtl2832_sdr: release URBs and stream buffers on
+  start_streaming() failure (bsc#1012628).
+- media: rtl2832_sdr: use vb2_video_unregister_device() on remove
+  to fix DMA leak (bsc#1012628).
+- media: rkvdec: hevc: guard INTER_REF_PIC_SET_PRED index
+  underflow (bsc#1012628).
+- media: rkvdec: hevc: tighten EXT SPS RPS control dimensions
+  (bsc#1012628).
+- media: rkvdec: Propagate platform_get_irq() errors
+  (bsc#1012628).
+- media: rockchip: rga: don't change RGB quantization
+  (bsc#1012628).
+- media: rc: sunxi-cir: Unregister rc device on probe failure
+  (bsc#1012628).
+- media: mali-c55: Fix scaler factor overflow for large crop sizes
+  (bsc#1012628).
+- media: mali-c55: Fix AEXP IHIST disable bit shift (bsc#1012628).
+- media: mali-c55: Fix clock leak on reset deassert failure
+  (bsc#1012628).
+- media: mali-c55: fix dropped last AEC histogram zone weight
+  (bsc#1012628).
+- media: nxp: imx8-isi: Use BIT_ULL() for 64-bit stream masks
+  (bsc#1012628).
+- media: nxp: imx8-isi: Correct color map between V4L2 and ISI
+  (bsc#1012628).
+- media: nxp: imx8-isi: Fix stream ID validation bypass in
+  crossbar routing (bsc#1012628).
+- media: platform: mtk-mdp3: fix NULL deref on failed SCP lookup
+  (bsc#1012628).
+- media: platform: mtk-mdp3: Fix SCP device refcounting
+  (bsc#1012628).
+- media: meson: vdec: fix NULL pointer deref in
+  vdec_try_fmt_common (bsc#1012628).
+- media: iris: Enumerate cap->bus_info to differentiate between
+  encoder and decoder (bsc#1012628).
+- media: ipu-bridge: check all DMI entries when overriding sensor
+  rotation (bsc#1012628).
+- media: intel/ipu6: fix async notifier cleanup leak on parse
+  error (bsc#1012628).
+- media: imx355: Avoid calling imx355_power_off twice in error
+  path (bsc#1012628).
+- media: i2c: vd55g1: Fix media bus code initialization
+  (bsc#1012628).
+- media: i2c: vd55g1: Fix manual digital gain on color variant
+  (bsc#1012628).
+- media: i2c: ov9282: restore flash duration calculation
+  (bsc#1012628).
+- media: i2c: ov7740: fix use-after-destroy in remove
+  (bsc#1012628).
+- media: i2c: ov02a10: fix endpoint parsing use-after-free
+  (bsc#1012628).
+- media: i2c: imx415: Return test pattern write errors
+  (bsc#1012628).
+- media: i2c: imx415: Release runtime PM reference on VBLANK error
+  (bsc#1012628).
+- media: i2c: alvium: Fix: Correct name of register in
+  alvium_set_ctrl_auto_exposure (bsc#1012628).
+- media: go7007: defer the ALSA v4l2 put until card release
+  (bsc#1012628).
+- media: em28xx: fix use-after-free of dev_next->devlist on
+  disconnect (bsc#1012628).
+- media: em28xx: defer audio-only extension registration
+  (bsc#1012628).
+- media: dt-bindings: nxp,imx8-isi: Drop fsl,blk-ctrl requirement
+  for i.MX8ULP (bsc#1012628).
+- media: cx23885: cancel NetUP CI work before teardown
+  (bsc#1012628).
+- media: cx231xx: reject geometry changes while the VBI queue
+  is busy (bsc#1012628).
+- media: cobalt: Avoid freeing ALSA private data twice
+  (bsc#1012628).
+- media: cedrus: fix memory leak in cedrus_init_ctrls()
+  (bsc#1012628).
+- media: cec: Serialize exclusive follower delivery (bsc#1012628).
+- media: cec: meson: ao-cec-g12a: name the CEC core regmap to
+  avoid debugfs clash (bsc#1012628).
+- media: cec: extron-da-hd-4k-plus: add sanity check
+  (bsc#1012628).
+- media: cec: disable delayed work before freeing an interrupted
+  transmit (bsc#1012628).
+- media: cec: core: Fix kmemleak due to missed rc_free_device()
+  call (bsc#1012628).
+- media: bcm2835-unicam: Fix pipeline wrong validation for
+  unpacked formats (bsc#1012628).
+- media: amphion: Remove obsolete frame_count check in
+  venc_start_session (bsc#1012628).
+- media: airspy: use vb2_video_unregister_device() on disconnect
+  to fix NULL deref (bsc#1012628).
+- rust: drm: ioctl: fix unbounded lifetimes in ioctl handler
+  arguments (bsc#1012628).
+- LoongArch: Avoid preempt count underflow without probe
+  (bsc#1012628).
+- LoongArch: Do not save/restore percpu base register in rethook
+  trampoline (bsc#1012628).
+- LoongArch: Do not select HAVE_RUST when KASAN is enabled
+  (bsc#1012628).
+- LoongArch: Fix acpi_package_ids[] array overflow (bsc#1012628).
+- LoongArch: BPF: Fix off-by-one error for insn_is_cast_user()
+  (bsc#1012628).
+- LoongArch: BPF: Move arena register slot below TCC context
+  (bsc#1012628).
+- LoongArch: Expand module virtual address space to 2GB
+  (bsc#1012628).
+- LoongArch: BPF: Refactor jump offset calculation in tail call
+  (bsc#1012628).
+- LoongArch: BPF: Optimize redundant TCC loads in epilogue
+  (bsc#1012628).
+- LoongArch: Add DIRECT_MAP_PHYSMEM_END definition (bsc#1012628).
+- LoongArch: KVM: Validate MSI data before routing it to EIOINTC
+  (bsc#1012628).
+- LoongArch: KVM: Preserve memslot arch flags on KVM_MR_FLAGS_ONLY
+  (bsc#1012628).
+- LoongArch: KVM: Free init resources if kvm_init() fails
+  (bsc#1012628).
+- LoongArch: KVM: Fix TOCTOU race on pv_features (bsc#1012628).
+- LoongArch: KVM: Fix resource leak in kvm_loongarch_env_init()
+  error path (bsc#1012628).
+- LoongArch: KVM: Add unregister helpers for the KVM interrupt
+  devices (bsc#1012628).
+- LoongArch: KVM: Fix PC double advance in kernel MMIO read fast
+  path (bsc#1012628).
+- LoongArch: KVM: Fix uninitialized stack variable issue with
+  dmsintc (bsc#1012628).
+- LoongArch: KVM: Set vcpu->cpu before IN_GUEST_MODE is set
+  (bsc#1012628).
+- KVM: arm64: Correctly cap TLBI Range to the architural limit
+  (bsc#1012628).
+- KVM: arm64: vgic-its: Don't dereference a NULL collection on
+  ITT save (bsc#1012628).
+- KVM: arm64: vgic: Reset in_kernel on private IRQ allocation
+  failure (bsc#1012628).
+- KVM: arm64: vgic: Fix detection of MI on no pending LR
+  (bsc#1012628).
+- KVM: arm64: vgic-v3: take an LPI reference in
+  vgic_v3_save_pending_tables (bsc#1012628).
+- KVM: arm64: Sign-extend VA for range-based TLBI invalidation
+  (bsc#1012628).
+- KVM: arm64: Remove VM-wide VNCR mapping counter (bsc#1012628).
+- KVM: arm64: Make VNCR invalidation participate in MMU
+  invalidation retry (bsc#1012628).
+- KVM: arm64: Handle VNCR TLB invalidation race with vcpu_put()
+  VNCR unmapping (bsc#1012628).
+- KVM: arm64: Correctly handle end of VA space TLBI invalidation
+  (bsc#1012628).
+- KVM: arm64: Handle negative S1 walk levels in VNCR TLB size
+  evaluation (bsc#1012628).
+- KVM: arm64: Consider SCTLR_EL2.M when mapping the L1 VNCR page
+  (bsc#1012628).
+- KVM: s390: Restore sigset on error path (bsc#1012628).
+- KVM: s390: pv: Fix rc/rrc offset for PVM_DUMP (bsc#1012628).
+- KVM: s390: keyop: use mmu_lock to read gmap->asce (bsc#1012628).
+- KVM: s390: Fix memory corruption by not reinjecting CK machine
+  checks (bsc#1012628).
+- KVM: s390: Zero initialize irq in reinject_machine_check
+  (bsc#1012628).
+- KVM: s390: Zero initialize data structures for
+  inject_pfault_token (bsc#1012628).
+- KVM: s390: Take srcu when importing watchpoint data
+  (bsc#1012628).
+- KVM: s390: Free guest debug data on vcpu destroy (bsc#1012628).
+- KVM: s390: Fix old_data leak in guest debug error path
+  (bsc#1012628).
+- KVM: s390: Fix memory leak in guest debug handling
+  (bsc#1012628).
+- KVM: s390: Fix length check __import_wp_info() (bsc#1012628).
+- KVM: x86: Move enabling EFER.SVME and EFER.LMSLE to generic
+  EFER setup (bsc#1012628).
+- KVM: x86: Ensure runtime reads of disabled_quirks are resolved
+  once (bsc#1012628).
+- KVM: x86: Serialize writes to disabled_quirks using kvm->lock
+  (bsc#1012628).
+- KVM: x86: hyper-v: Clamp stimer deadline to avoid livelock
+  (bsc#1012628).
+- KVM: x86/mmu: Consume the locked rmap value in the lockless
+  rmap walk (bsc#1012628).
+- KVM: x86/mmu: Use CMPXCHG when clearing Accessed bit in TDP MMU
+  (bsc#1012628).
+- KVM: nVM: Ensure INVVPID is emulated on the correct physical
+  CPU (bsc#1012628).
+- KVM: nVMX: Service local TLB flushes on failed nested VM-Enter
+  (bsc#1012628).
+- KVM: nVMX: Ensure KVM_REQ_GET_NESTED_STATE_PAGES is cleared
+  on VM-Exit (bsc#1012628).
+- KVM: nVMX: Decouple INVVPID operand checks from flushing of
+  vpid02 (bsc#1012628).
+- KVM: nVMX: Always flush vpid02 on first use (bsc#1012628).
+- KVM: PPC: Book3S HV: Validate arch_compat against host
+  compatibility mode (bsc#1012628).
+- iio: light: opt4001: Fix reversed GENMASK() arguments in fault
+  count mask (bsc#1012628).
+- iio: light: opt4001: Reject integration times with a non-zero
+  seconds part (bsc#1012628).
+- iio: light: opt4001: Fix incompatible pointer type passed to
+  div_u64_rem() (bsc#1012628).
+- iio: light: opt4001: Fix power down clearing bits of the wrong
+  register (bsc#1012628).
+- iio: light: opt4060: Fix incorrect register name in threshold
+  read error message (bsc#1012628).
+- iio: light: opt4060: Reject integration times with a non-zero
+  seconds part (bsc#1012628).
+- iio: ti-ads7138: Disable STATS_EN bit while reading conversion
+  results (bsc#1012628).
+- iio: temperature: hid-sensor-temperature: switch to non-devm
+  iio_device_register() (bsc#1012628).
+- iio: srf04: fix pm_runtime handling on probe error path
+  (bsc#1012628).
+- iio: pressure: mpl115: Fix runtime PM cleanup (bsc#1012628).
+- iio: pressure: dps310: fix NULL pointer dereference on ACPI
+  probe (bsc#1012628).
+- iio: light: ltrf216a: fix runtime PM reference leak in error
+  path (bsc#1012628).
+- iio: light: gp2ap002: Disable regulators on resume failure
+  (bsc#1012628).
+- iio: light: cm32181: return zero after writing calibscale
+  (bsc#1012628).
+- iio: light: apds9306: fix PM reference leak in
+  apds9306_read_data() (bsc#1012628).
+- iio: imu: st_lsm6dsx: Update enable mask when using sensor
+  fusion (bsc#1012628).
+- iio: gyro: mpu3050: fix sign of raw angular velocity readings
+  (bsc#1012628).
+- iio: dac: mcp47feb02: add missing 'select REGMAP_I2C' to Kconfig
+  (bsc#1012628).
+- iio: dac: m62332: Fix regulator reference count imbalance
+  (bsc#1012628).
+- iio: dac: ad5446: fix OF module device table (bsc#1012628).
+- iio: dac: ad3552r-hs: fix scnprintf() buffer bound in data
+  source show (bsc#1012628).
+- iio: chemical: sgp30: Handle IAQ thread creation failure
+  (bsc#1012628).
+- iio: chemical: atlas-sensor: use iio_trigger_poll_nested()
+  to fix remove UAF (bsc#1012628).
+- iio: chemical: atlas-sensor: fix PM reference leak in buffer
+  postenable (bsc#1012628).
+- iio: buffer: Tie IIO dma fence lock lifetime to the fence
+  (bsc#1012628).
+- iio: buffer: Make IIO DMA fence release RCU-safe (bsc#1012628).
+- iio: buffer: Fix potential use-after-free in anonymous buffer
+  release (bsc#1012628).
+- iio: adc: pac1921: fix wrong channel used in trigger handler
+  read (bsc#1012628).
+- iio: adc: max34408: add missing 'select REGMAP_I2C' to Kconfig
+  (bsc#1012628).
+- iio: adc: max14001: add missing 'select REGMAP' to Kconfig
+  (bsc#1012628).
+- iio: adc: adi-axi-adc: add data size support for AD408X backend
+  (bsc#1012628).
+- iio: adc: ad4080: configure backend data size (bsc#1012628).
+- ASoC: tas2783-sdw: sort the register default table
+  (bsc#1012628).
+- ASoC: tas2783-sdw: drop duplicate reg_default entry
+  (bsc#1012628).
+- ASoC: tas2780: sort the register default table (bsc#1012628).
+- ASoC: tas2764: sort the register default table (bsc#1012628).
+- ASoC: tas2552: sort the register default table (bsc#1012628).
+- ASoC: sti-sas: sort the register default table (bsc#1012628).
+- ASoC: sgtl5000: sort the register default table (bsc#1012628).
+- ASoC: samsung: aries_audio_probe: double of_node_put due to
+  direct assignment without of_node_get (bsc#1012628).
+- ASoC: rt721-sdca-sdw: sort the register default table
+  (bsc#1012628).
+- ASoC: rt715: sort the register default table (bsc#1012628).
+- ASoC: rt715-sdca: sort the register default tables
+  (bsc#1012628).
+- ASoC: rt715-sdca: drop duplicate reg_default entries
+  (bsc#1012628).
+- ASoC: rt712-sdca-sdw: sort the register default table
+  (bsc#1012628).
+- ASoC: rt712-sdca-dmic: sort the register default table
+  (bsc#1012628).
+- ASoC: rt711: sort the register default table (bsc#1012628).
+- ASoC: rt711-sdca: sort the register default tables
+  (bsc#1012628).
+- ASoC: rt700: sort the register default table (bsc#1012628).
+- ASoC: rt700: drop duplicate reg_default entry (bsc#1012628).
+- ASoC: rt298: sort the register default table (bsc#1012628).
+- ASoC: rt286: sort the register default table (bsc#1012628).
+- ASoC: rt274: sort the register default table (bsc#1012628).
+- ASoC: rt1318: sort the register default table (bsc#1012628).
+- ASoC: rt1318-sdw: sort the register default table (bsc#1012628).
+- ASoC: rt1316-sdw: sort the register default table (bsc#1012628).
+- ASoC: rt1017-sdca-sdw: sort the register default table
+  (bsc#1012628).
+- ASoC: pm4125-sdw: sort the register default table (bsc#1012628).
+- ASoC: pcm512x: sort the register default table (bsc#1012628).
+- ASoC: ml26124: sort the register default table (bsc#1012628).
+- ASoC: max9860: sort the register default table (bsc#1012628).
+- ASoC: loongson: Fix error handling in ACPI property parsing
+  (bsc#1012628).
+- AsoC: intel: sst: fix PCI device reference leak on probe failure
+  (bsc#1012628).
+- ASoC: hdac_hda: Fix hlink refcount leak on component
+  registration failure (bsc#1012628).
+- ASoC: fsl_easrc: sort the register default table (bsc#1012628).
+- ASoC: fsl_easrc: Use div64_u64 for 64-by-64 division
+  (bsc#1012628).
+- ASoC: fsl: mpc5200-i2s: Free DMA resources on probe failure
+  (bsc#1012628).
+- ASoC: cx2072x: sort the register default table (bsc#1012628).
+- ASoC: cs35l34: drain threaded IRQ before runtime suspend
+  (bsc#1012628).
+- ASoC: cs35l33: drain threaded IRQ before runtime suspend
+  (bsc#1012628).
+- ASoC: adau1761: sort the register default table (bsc#1012628).
+- i2c: mux: demux-pinctrl: fix OF node leak on kstrdup failure
+  (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Drop incorrect BIMC PLL and related
+  clocks (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Fix halt_reg for gcc_apss_axi_clk
+  (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Fix enable_reg for gcc_blsp1_sleep_clk
+  (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Drop incorrect system_noc_bfdcd_clk_src
+  (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Drop incorrect apss_tcu_clk_src
+  (bsc#1012628).
+- clk: rockchip: rk3588: Don't change PLL rates when setting
+  dclk_vop2_src (bsc#1012628).
+- clk: qcom: gcc-msm8939: Fix enable_reg for gcc_blsp1_sleep_clk
+  (bsc#1012628).
+- clk: qcom: gcc-msm8916: Fix enable_reg for gcc_blsp1_sleep_clk
+  (bsc#1012628).
+- clk: microchip: mpfs: fix regmap_update_bits() mask/val order
+  (bsc#1012628).
+- clk: meson: align gxbb_32k_clk_sel number of parents with
+  actual count (bsc#1012628).
+- clk: mediatek: mt8196: Select REGMAP_MMIO for vlpckgen
+  (bsc#1012628).
+- clk: clocking-wizard: fix integer overflow in rate calculation
+  (bsc#1012628).
+- batman-adv: bla: prevent CRC corruptions after claim flush
+  (bsc#1012628).
+- batman-adv: bla: fix freeing of claims on meshif deletion
+  (bsc#1012628).
+- batman-adv: dat: avoid unaligned fault in IP extraction
+  (bsc#1012628).
+- batman-adv: mcast: linearize skbuff for packet generation
+  (bsc#1012628).
+- batman-adv: mcast: ensure unshared skb for multicast packets
+  (bsc#1012628).
+- batman-adv: fix TX priority extraction for BATADV_FORW_MCAST
+  (bsc#1012628).
+- batman-adv: fix stale receive device on merged fragments
+  (bsc#1012628).
+- mtd: rawnand: validate ONFI extended parameter page sections
+  (bsc#1012628).
+- mtd: rawnand: sunxi: fix H6/H616 controller timings
+  (bsc#1012628).
+- mtd: rawnand: sunxi: describe tADL and tWHR delays
+  (bsc#1012628).
+- mtd: rawnand: sunxi: group controller delay tables
+  (bsc#1012628).
+- mtd: rawnand: pl353: Make sure we use the monolithic helpers
+  for raw accesses (bsc#1012628).
+- mtd: nand: realtek-ecc: add missing MODULE_DEVICE_TABLE()
+  (bsc#1012628).
+- mtd: mtdoops: free page bitmap when the backing MTD is removed
+  (bsc#1012628).
+- mtd: afs: validate v2 image info bounds (bsc#1012628).
+- s390/vfio-ap: Fix required lock not held during update of
+  ap_matrix_mdev object (bsc#1012628).
+- s390/vfio-ap: fix potential use of uninitialized apm_filtered
+  bitmap (bsc#1012628).
+- s390/vfio-ap: Fix NULL deref in status_show() during queue probe
+  (bsc#1012628).
+- s390/vfio-ap: Fix missing lock required to access list of
+  ap_matrix_mdev objects (bsc#1012628).
+- s390/vfio-ap: Fix hot-unplug skipped when last AP adapter or
+  domain removed (bsc#1012628).
+- s390/vfio-ap: Fix dereference matrix_mdev->kvm without checking
+  for NULL (bsc#1012628).
+- s390/vfio-ap: Fix control domain removal in
+  vfio_ap_mdev_cfg_remove (bsc#1012628).
+- s390/vfio-ap: Fix stale do_remove flag across iterations in
+  vfio_ap_mdev_cfg_remove (bsc#1012628).
+- s390/vfio-ap: fix stale pqap_hook pointer on error in
+  vfio_ap_mdev_set_kvm() (bsc#1012628).
+- powerpc/crash: stop watchdogs before booting kdump kernel
+  (bsc#1012628).
+- powerpc/pseries: Move H_WATCHDOG definitions to a common header
+  (bsc#1012628).
+- powerpc/pseries: Handle and log pseries-wdt registration
+  failures (bsc#1012628).
+- powerpc/mm: fix wrong addr_pfn tracking in compound vmemmap
+  population (bsc#1012628).
+- powerpc/kexec_file: Prevent kexec range truncation
+  (bsc#1012628).
+- powerpc/kexec_file: Fix null-ptr-def in extra size calculation
+  (bsc#1012628).
+- parisc: Fix alignment of asm statements in head.S (bsc#1012628).
+- parisc: eisa: Fix infinite loop when parsing invalid IRQ value
+  (bsc#1012628).
+- nvdimm/btt: reject an arena whose nfree is below the lane count
+  (bsc#1012628).
+- mm/hugetlb_cgroup: call page_counter_set_max() outside
+  VM_BUG_ON() (bsc#1012628).
+- mm/hugetlb: keep max_huge_pages when dissolving surplus folios
+  (bsc#1012628).
+- mm/hugetlb_cma: fix null nodemask dereference in
+  hugetlb_cma_alloc_frozen_folio (bsc#1012628).
+- mm/hugetlb: fix missing migratable flag on same-node hugetlb
+  migration (bsc#1012628).
+- mm/migrate_device: avoid out-of-bounds writes for compound
+  folios (bsc#1012628).
+- mm: fix incorrect vm_flags usage when checking allowable orders
+  for tmpfs (bsc#1012628).
+- Revert "pmdomain: qcom: rpmhpd: Add missing MXC and MMCX power
+  domains for Eliza" (bsc#1012628).
+- Revert "once: don't use a work queue to reset sleepable static
+  key" (bsc#1012628).
+- Revert "irqchip/mbigen: Fix mbigen node address layout"
+  (bsc#1012628).
+- pmdomain: airoha: fix unselectable AIROHA_CPU_PM_DOMAIN kconfig
+  (bsc#1012628).
+- Update config files.
+- nvmet-tcp: reject unsolicited H2CData PDUs (bsc#1012628).
+- nvmet-tcp: fix out-of-bounds write when receiving an over-long
+  PDU (bsc#1012628).
+- nvmet-auth: Synchronize timeout work during SQ teardown
+  (bsc#1012628).
+- nvme: skip the zoned limits update if the zone info query failed
+  (bsc#1012628).
+- nvme: add missing SRCU grace period in error path (bsc#1012628).
+- nvme-tcp: check the data direction of a C2HData PDU
+  (bsc#1012628).
+- nvme-fc: fix double free of fabrics options when nvme_add_ctrl()
+  fails (bsc#1012628).
+- nvme-fabrics: fix DHCHAP secret leak on parse failure
+  (bsc#1012628).
+- accel/ethosu: fix job completion fence cleanup (bsc#1012628).
+- accel/ethosu: check MMIO mapping errors in probe (bsc#1012628).
+- accel/amdxdna: return early from a zero-length flush
+  (bsc#1012628).
+- ring-buffer: Allow splice reads on static buffers (bsc#1012628).
+- ALSA: pcm: Fix race between non-atomic ops and trigger-start
+  (bsc#1012628).
+- ALSA: harmony: initialize locks before requesting IRQ
+  (bsc#1012628).
+- ALSA: rawmidi: Return the error from snd_rawmidi_input_params()
+  (bsc#1012628).
+- arm64: errata: pass REVIDR when matching target implementation
+  CPUs (bsc#1012628).
+- arm64: Don't read GMID_EL1 when MTE is disabled (bsc#1012628).
+- arm64: mm: Fix the lockless page-table walk in show_pte()
+  (bsc#1012628).
+- i2c: qcom-cci: fix autosuspend cleanup (bsc#1012628).
+- i2c: mux: Fix channel node leak on adapter add failure
+  (bsc#1012628).
+- i2c: core: fix debugfs UAF on adapter removal (bsc#1012628).
+- i2c: qcom-geni: update frequency table to fix timing parameters
+  (bsc#1012628).
+- i2c: designware: Enable interrupt mask workaround for HJMC3001
+  (bsc#1012628).
+- perf: Fix use-after-free when perf mmap() revival races with
+  the last munmap() (bsc#1012628).
+- perf build: Add clang and rust target flags for LoongArch
+  (bsc#1012628).
+- perf hisi-ptt: Fix PTT trace TLP header parsing (bsc#1012628).
+- perf trace: Refactor augmented_raw_syscalls using bpf_for
+  (bsc#1012628).
+- perf trace: Factor out BPF loop body (bsc#1012628).
+- perf/x86/intel: Remove anythread_deprecated bit from
+  perf_capabilities (bsc#1012628).
+- perf/x86/intel: Fix kernel address leakages in LBR stack
+  (bsc#1012628).
+- rtc: rzn1: Disable alarm interrupt before reprogramming alarm
+  registers (bsc#1012628).
+- rtc: rzn1: Handle unset alarm weekday in rzn1_rtc_read_alarm
+  (bsc#1012628).
+- rtc: rzn1: Fix weekday underflow when alarm crosses month
+  boundary (bsc#1012628).
+- rtc: rzn1: Handle EPROBE_DEFER for optional pps interrupt
+  (bsc#1012628).
+- memcg: make the v1 soft limit knob inert (bsc#1012628).
+- memcg: bypass the reclaim and oom killer for dying tasks once
+  oom_reaper is done (bsc#1012628).
+- memcg: keep folio's objcg same as its node (bsc#1012628).
+- mm/mempolicy: fix sleeping allocation in
+  alloc_pages_bulk_weighted_interleave() (bsc#1012628).
+- mm/huge_memory: transfer the pmd dirty bit to the folio on zap
+  (bsc#1012628).
+- misc: fastrpc: don't publish fd before copy_to_user() succeeds
+  (bsc#1012628).
+- kprobes: Protect kprobe_blacklist with RCU (bsc#1012628).
+- irqchip/stm32mp-exti: Fix the unit of the hwspinlock timeout
+  (bsc#1012628).
+- ima: Check for ERR_PTR from dentry_path() in
+  validate_hash_algo() (bsc#1012628).
+- ata: ahci: work around lost interrupts on Marvell 88SE61xx
+  (bsc#1012628).
+- ceph: lock mutex in ceph_mds_check_access() (bsc#1012628).
+- bpf: Fix infinite loop in pcpu_freelist push with one possible
+  CPU (bsc#1012628).
+- bpf, riscv: Make arena support depend on ZACAS (bsc#1012628).
+- block: flag zoned disks with GENHD_FL_NO_PART (bsc#1012628).
+- cpuidle: psci: Fix support for probe deferral by dropping the
+  faux device (bsc#1012628).
+- cpuidle: dt_idle_genpd: kfree() the original name allocation
+  (bsc#1012628).
+- dmaengine: dw-edma: Mark emulated IRQ as level-triggered
+  (bsc#1012628).
+- dmaengine: dw-edma: Initialize IRQ data before requesting IRQs
+  (bsc#1012628).
+- dmaengine: dw-edma: Complete descriptors before pausing
+  (bsc#1012628).
+- dmaengine: dw-edma: Fix HDMA channel status register access
+  (bsc#1012628).
+- dmaengine: fsl-edma: tracing: no ptr dereference during log
+  output (bsc#1012628).
+- dma-direct: return struct page from dma_direct_alloc_from_pool()
+  (bsc#1012628).
+- dma-buf: dma-heap: don't publish fd before copy_to_user()
+  succeeds (bsc#1012628).
+- dm: fix resume-vs-remove race (bsc#1012628).
+- dm: fix race when loading and unloading a table (bsc#1012628).
+- HID: wacom: validate report length in wacom_intuos_pro2_bt_irq
+  (bsc#1012628).
+- HID: rmi: fix OOB access with undersized RMI reports
+  (bsc#1012628).
+- HID: bpf: serialize device reference release in struct_ops
+  destroy path (bsc#1012628).
+- ftrace: Synchronize the initialization of ftrace_ops
+  (bsc#1012628).
+- ftrace: Take trace_array reference before accessing its
+  ftrace_ops (bsc#1012628).
+- futex: Provide rt_mutex_.*_schedule() equivalents for futex
+  scheduling (bsc#1012628).
+- futex: Prevent rcuwait use-after-free during requeue PI
+  (bsc#1012628).
+- mm/secretmem: properly account locked pages (bsc#1012628).
+- mm/damon/core: initialize damos->last_applied (bsc#1012628).
+- mm/damon/core: handle region split failure in
+  apply_min_nr_regions() (bsc#1012628).
+- mm/damon/core-kunit: skip wrong region walk in
+  commit_target_regions() (bsc#1012628).
+- mm/damon/core-kunit: skip wrong quota goal walk in
+  commit_quota_goals() (bsc#1012628).
+- mm/damon/core-kunit: skip wrong dest walk in commit_dests_for()
+  (bsc#1012628).
+- mm/damon/core-kunit: handle region split failure in filter_out()
+  (bsc#1012628).
+- mm/damon/core-kunit: check region count before testing in
+  split_at() (bsc#1012628).
+- mm/damon/sysfs: kobject_del() target (normal), context and
+  kdamond dirs (bsc#1012628).
+- mm/damon/sysfs: kobject_del() region and target (error) dirs
+  (bsc#1012628).
+- mm/damon/sysfs-schemes: kobject_del() scheme region dirs
+  (bsc#1012628).
+- mm/damon/sysfs-schemes: kobject_del() scheme quota goal dirs
+  (bsc#1012628).
+- mm/damon/sysfs-schemes: kobject_del() scheme filter dirs
+  (bsc#1012628).
+- mm/damon/sysfs-schemes: kobject_del() scheme dirs (bsc#1012628).
+- mm/damon/sysfs-schemes: kobject_del() scheme action destination
+  dirs (bsc#1012628).
+- samples/damon/wsse: stop and free damon ctx when damon_call()
+  fails (bsc#1012628).
+- samples/damon/wsse: handle damon_start() failure (bsc#1012628).
+- samples/damon/prcl: stop and free damon ctx when damon_call()
+  fails (bsc#1012628).
+- samples/damon/prcl: handle damon_start() failure (bsc#1012628).
+- samples/damon/mtier: handle damon_stop() failure (bsc#1012628).
+- samples/damon/mtier: handle damon_start() failure (bsc#1012628).
+- mm/damon/vaddr-kunit: check region count in three_regions test
+  (bsc#1012628).
+- mm/damon/tests/core-kunit: catch test failure in
+  test_merge_regions_of() (bsc#1012628).
+- mm/damon/sysfs: read ops_id only once in
+  damon_sysfs_apply_inputs() (bsc#1012628).
+- mm/damon/sysfs: read addr_unit only once in
+  damon_sysfs_apply_inputs() (bsc#1012628).
+- Docs/ABI/damon: fix typo in intervals_goal sysfs path
+  (bsc#1012628).
+- scsi: pm8001: Use rollback index when freeing MSI-X vectors
+  (bsc#1012628).
+- scsi: megaraid_sas: Limit NVMe request size to the PRP chain
+  frame (bsc#1012628).
+- scsi: bsg: Fix TOCTOU in io_uring passthrough command setup
+  (bsc#1012628).
+- scsi: bsg: Cap io_uring sense copy to max_response_len
+  (bsc#1012628).
+- scsi: target: iscsi: Reserve a terminator byte for the login
+  payload (bsc#1012628).
+- spi: Fix DMA mapping ownership on partial map failure
+  (bsc#1012628).
+- spi: bcmbca-hsspi: disable clocks on resume failure
+  (bsc#1012628).
+- spi: bcm63xx: disable clock on resume failure (bsc#1012628).
+- spi: bcm63xx-hsspi: disable clocks on resume failure
+  (bsc#1012628).
+- soc: qcom: geni-se: Use HW PROG_RAM_DEPTH to validate firmware
+  size (bsc#1012628).
+- soc: fsl: qe: Add chained_irq_{enter,exit}() calls in cascade
+  handler (bsc#1012628).
+- ublk: clear VM_MAYWRITE on read-only ublk char device mmap
+  (bsc#1012628).
+- userfaultfd: reset err to be 0 when move_pages_ptes succeeded
+  (bsc#1012628).
+- tracing: Take trace_array reference when opening options file
+  (bsc#1012628).
+- tracing: Have show_event_filters/triggers files take trace
+  array ref (bsc#1012628).
+- tracing/probes: Fix anon_stack check for unnamed bitfields in
+  btf_find_struct_member (bsc#1012628).
+- thermal/drivers/qoriq: Disable clock on resume failure
+  (bsc#1012628).
+- thermal/drivers/imx: Disable clock on runtime resume failure
+  (bsc#1012628).
+- xhci: fix lost bounce buffers on TDs spanning several ring
+  segments (bsc#1012628).
+- staging: rtl8723bs: fix OOB read in rtw_restruct_wmm_ie()
+  (bsc#1012628).
+- staging: rtl8723bs: fix OOB read in rtw_action_frame_parse()
+  (bsc#1012628).
+- staging: rtl8723bs: fix OOB read / stack overflow in
+  rtw_get_wps_attr() (bsc#1012628).
+- usb: gadget: fix null pointer dereference in
+  usb_put_function_instance() (bsc#1012628).
+- USB: gadget: fix NULL pointer dereference in gadget_dev_ioctl()
+  (bsc#1012628).
+- usb: gadget: f_midi: initialize work in f_midi_alloc()
+  (bsc#1012628).
+- usb: gadget: f_midi2: fix use-after-free in string attribute
+  show path (bsc#1012628).
+- usb: gadget: f_mass_storage: fix null pointer dereference in
+  fsg_common_set_num_buffers() (bsc#1012628).
+- usb: gadget: midi2: Fix null-pointer dereference in
+  f_midi2_free_ep_reqs (bsc#1012628).
+- usb: typec: ucsi: displayport: Fix OOB altmode array index
+  (bsc#1012628).
+- usb: typec: tipd: Fix Thunderbolt altmode VDOs for cd321x
+  (bsc#1012628).
+- usb: typec: tcpm: constrain TCPM_SOURCING_VBUS event handling
+  (bsc#1012628).
+- usb: typec: qcom-pmic: cancel reset_work on stop (bsc#1012628).
+- usb: typec: qcom-pmic-typec: drain cc_debounce_dwork if
+  port_start() fails (bsc#1012628).
+- usb: typec: qcom-pmic-typec: disable cc_debounce_dwork on stop
+  (bsc#1012628).
+- usb: typec: mux: Fix typec_switch_match() (bsc#1012628).
+- usb: typec: mux: avoid duplicated mux switches (bsc#1012628).
+- usb: typec: hd3ss3220: track VBUS enable state per consumer
+  (bsc#1012628).
+- usb: storage: realtek_cr: fix use-after-free on disconnect
+  (bsc#1012628).
+- usb: dwc3: clear forceRM when issuing EndTransfer (bsc#1012628).
+- usb: dwc3: google: Initialise probe properties with
+  DWC3_DEFAULT_PROPERTIES (bsc#1012628).
+- usb: f_mass_storage: Bump local buffer size in
+  fsg_common_create_luns() (bsc#1012628).
+- usb: cdnsp: fix wakeup from S3 after controller context loss
+  (bsc#1012628).
+- usb-storage: ene_ub6250: fix race between scan work and probe
+  (bsc#1012628).
+- media: usbtv: keep device alive while ALSA card exists
+  (bsc#1012628).
+- clk: qcom: gcc-mdm9607: Increase delay for USB PHY reset
+  (bsc#1012628).
+- ALSA: usb-audio: fix OOB write in snd_usbmidi_us122l_output()
+  (bsc#1012628).
+- usb: image: mdc800: change kmalloc() to kzalloc() (bsc#1012628).
+- drm/amd/display: fix division by zero in get_estimated_bw()
+  (bsc#1012628).
+- NFSD: Prevent client use-after-free during blocked-lock reaping
+  (bsc#1012628).
+- NFSD: Prevent client use-after-free during close_lru reaping
+  (bsc#1012628).
+- NFSD: Consolidate the revocation-path client unpin
+  (bsc#1012628).
+- NFSD: Prevent client use-after-free during export state
+  revocation (bsc#1012628).
+- NFSD: Guard admin state-revocation walks with NFSD_NET_UP
+  (bsc#1012628).
+- NFSD: Annotate caller preconditions for the state-table walkers
+  (bsc#1012628).
+- KVM: SEV: Forcefully invalidate SNP VMSA if its backing gmem
+  page is zapped (bsc#1012628).
+- KVM: x86/mmu: Use split "zap all fast" helpers when invalidating
+  memslot (bsc#1012628).
+- KVM: x86/mmu: Split kvm_mmu_zap_all_fast() into "front" and
+  "back" halves (bsc#1012628).
+- KVM: x86/mmu: Fold kvm_mmu_zap_memslot() into
+  kvm_arch_flush_shadow_memslot() (bsc#1012628).
+- ACPI: battery: Protect all properties with a separated mutex
+  (bsc#1012628).
+- ACPI: battery: Use kstrtoul() over sscanf("%lu\n")
+  (bsc#1012628).
+- HID: sony: clean up device list on probe failure (bsc#1012628).
+- HID: sony: use guard() and scoped_guard() (bsc#1012628).
+- ceph: properly decrypt filenames in vmalloc() buffers
+  (bsc#1012628).
+- zram: fix slot lock bit position on big-endian 64-bit
+  (bsc#1012628).
+- zram: move lockmap to be per-zram instead per table
+  (bsc#1012628).
+- usb: gadget: f_fs: Fix Use-After-Free in AIO error path
+  (bsc#1012628).
+- USB: gadget: ffs: fix mm lifetime handling (bsc#1012628).
+- mm/page_alloc: don't spin_trylock() in NMI on UP (bsc#1012628).
+- drm/xe: Don't hand out the flat CCS storage as usable VRAM
+  (bsc#1012628).
+- fs/ntfs3: fix slab-out-of-bounds write in ni_create_attr_list()
+  (bsc#1012628).
+- net: skbuff: don't skb_tx_error() the source skb in
+  skb_zerocopy() (bsc#1012628).
+- commit f17db31
+
+-------------------------------------------------------------------
+Wed Sep  9 07:01:27 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/powerpc-Do-not-restore-KUAP-in-arch_exit_to_user_mode_prepare.patch.
+- Refresh
+  patches.suse/powerpc-Don-t-drop-_TIF_RESTOREALL-on-syscall-restart.patch.
+- Refresh
+  patches.suse/powerpc-entry-Fix-irq_soft_mask-corruption-on-replayed-interrupt-exit.patch.
+  Update upstream status by: ./scripts/series_sort -u
+- commit 6761818
+
+-------------------------------------------------------------------
+Tue Sep  8 10:46:12 CEST 2026 - jslaby@suse.cz
+
+- Delete
+  patches.suse/x86-alternative-dump-more-on-failure-in-__text_poke.patch.
+  The bug has been fixed, we do not need this debug aid anymore.
+- commit 016e09e
+
+-------------------------------------------------------------------
+Tue Sep  8 08:09:12 CEST 2026 - jslaby@suse.cz
+
+- Refresh
+  patches.suse/powerpc-Do-not-restore-KUAP-in-arch_exit_to_user_mode_prepare.patch.
+- Refresh
+  patches.suse/powerpc-Don-t-drop-_TIF_RESTOREALL-on-syscall-restart.patch.
+- Refresh
+  patches.suse/powerpc-entry-Fix-irq_soft_mask-corruption-on-replayed-interrupt-exit.patch.
+  Update upstream status (and check in the latest changes).
+- commit e841c45
+
+-------------------------------------------------------------------
 Mon Sep  7 17:57:41 CEST 2026 - jslaby@suse.cz
 
 - Linux 7.2.4 (bsc#1012628).

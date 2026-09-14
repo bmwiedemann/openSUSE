@@ -18,8 +18,8 @@
 
 
 %define srcversion 7.2
-%define patchversion 7.2.4
-%define git_commit eac7913e822e4173ccdb1ffbf447f1d91f5a8a32
+%define patchversion 7.2.5
+%define git_commit 6b7e8a968cce3b45e63d59e1d4981c9b7c5bc6b5
 %define variant %{nil}
 %define compress_modules zstd
 %define compress_vmlinux xz
@@ -40,9 +40,9 @@
 %(chmod +x %_sourcedir/{guards,apply-patches,check-for-config-changes,group-source-files.pl,split-modules,modversions,kabi.pl,arch-symbols,check-module-license,splitflist,mergedep,moddep,modflist,kernel-subpackage-build})
 
 Name:           kernel-vanilla
-Version:        7.2.4
+Version:        7.2.5
 %if 0%{?is_kotd}
-Release:        <RELEASE>.geac7913
+Release:        <RELEASE>.g6b7e8a9
 %else
 Release:        0
 %endif
