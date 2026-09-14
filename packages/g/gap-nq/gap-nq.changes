@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:16:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.6.0
+  * Document the `-C`, `-S` and `-h` options of the standalone
+    program
+  * Update outdated sections of the manual and fix many typos
+
+-------------------------------------------------------------------
 Fri Jan 12 10:17:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.11

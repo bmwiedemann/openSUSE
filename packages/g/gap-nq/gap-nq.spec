@@ -1,7 +1,7 @@
 #
 # spec file for package gap-nq
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           gap-nq
-Version:        2.5.11
+Version:        2.6.0
 Release:        0
 Summary:        GAP: Nilpotent Quotients of Finitely Presented Groups
 License:        GPL-2.0-or-later
 Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/nq/
-
 #Git-Clone:	https://github.com/gap-packages/nq
 Source:         https://github.com/gap-packages/nq/releases/download/v%version/nq-%version.tar.gz
 BuildRequires:  fdupes
