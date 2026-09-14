@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep  8 19:52:40 UTC 2026 - Olav Reinert <seroton10@gmail.com>
+
+- Update to the latest upstream version, fix build
+    * python3.patch: fixed by upstream
+
+-------------------------------------------------------------------
+Tue Sep  8 16:40:53 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Fix the build by running the smoke test with the primary
+  versioned Python interpreter.
+
+-------------------------------------------------------------------
 Mon Feb 26 10:51:42 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

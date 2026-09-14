@@ -1,7 +1,8 @@
 #
 # spec file for package cups-airprint
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +18,10 @@
 
 
 Name:           cups-airprint
-Version:        1.1
+Version:        1.2
 Release:        0
 Summary:        AirPrint for CUPS printers
 License:        MIT
-Group:          Hardware/Printing
 URL:            https://github.com/tjfontaine/airprint-generate
 Source0:        https://raw.githubusercontent.com/tjfontaine/airprint-generate/master/airprint-generate.py
 Source10:       apple.types
@@ -31,8 +31,11 @@ Source21:       CREDITS.txt
 Source22:       README.SUSE
 Source23:       LICENSE.txt
 Patch0:         airprint-generate.patch
-Patch1:         python3.patch
-Patch2:         pdf-support.patch
+Patch1:         pdf-support.patch
+%if 0%{?suse_version} >= 1500 && !0%{?is_opensuse}
+Group:          Hardware/Printing
+BuildRequires:  python3-base
+%endif
 BuildRequires:  python3-pycups
 Requires:       avahi
 # cups-airprint will not work reasonably well with traditional CUPS <= 1.5.4
@@ -69,14 +72,18 @@ AirPrint work; please follow the instructions in:
 cp %{SOURCE0} %{SOURCE10} %{SOURCE11} .
 cp %{SOURCE21} %{SOURCE22} %{SOURCE23} .
 %patch -P 0
-%patch -P 1 -p1
-%patch -P 2 -p1
+%patch -P 1
 
 %build
 
 %install
 mkdir -p %{buildroot}%{_sbindir}
 install airprint-generate.py %{buildroot}%{_sbindir}
+%if %{defined python3_fix_shebang}
+%python3_fix_shebang
+%else
+sed -i -e 's|^#!/usr/bin/env |#!/usr/bin/|' %{buildroot}%{_sbindir}/airprint-generate.py
+%endif
 
 mkdir -p %{buildroot}%{_datadir}/cups/mime
 install -m 644 apple.types local.convs %{buildroot}%{_datadir}/cups/mime
@@ -85,7 +92,11 @@ mkdir -p %{buildroot}%{_mandir}/man8
 install -m 644 %{SOURCE20} %{buildroot}/%{_mandir}/man8
 
 %check
+%if 0%{?suse_version} >= 1500 && !0%{?is_opensuse}
 python3 airprint-generate.py -h
+%else
+python%{python_version} airprint-generate.py -h
+%endif
 
 %files
 %{_sbindir}/airprint-generate.py
