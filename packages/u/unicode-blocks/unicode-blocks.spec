@@ -1,7 +1,7 @@
 #
 # spec file for package unicode-blocks
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,12 +17,11 @@
 
 
 Name:           unicode-blocks
-Version:        12.1.0
+Version:        18.0.0
 Release:        0
 Summary:        Unicode Blocks Chart
 License:        Unicode-DFS-2016
-Group:          Productivity/Publishing/Other
-URL:            http://www.unicode.org/
+URL:            https://www.unicode.org/
 # Unversioned source is at http://unicode.org/Public/UNIDATA/Blocks.txt
 Source:         Blocks.txt
 BuildArch:      noarch

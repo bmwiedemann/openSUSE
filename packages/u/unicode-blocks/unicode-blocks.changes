@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:57:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to Unicode 18.0.0 (Blocks-18.0.0.txt, dated 2026-07-08):
+  * block count grows from 197 to 353, no blocks removed
+  * picks up all blocks added since Unicode 5.2, including Emoticons,
+    Transport and Map Symbols, Chess/Playing Cards symbols and the
+    CJK Unified Ideographs Extensions D through J
+
+-------------------------------------------------------------------
 Thu Jun  6 06:37:13 UTC 2019 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 12.1.0

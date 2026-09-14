@@ -7,4 +7,13 @@
     <comment>dependency of other packages</comment>
     <requestid>708012</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6d50970bbb0610c4ca51f0d72cdbb960</srcmd5>
+    <version>18.0.0</version>
+    <time>1789395731</time>
+    <user>anag_factory</user>
+    <comment>Forward unicode-blocks 18.0.0 to Factory (accepted devel SR 1377715, reviewer: noreview).
+</comment>
+    <requestid>1377717</requestid>
+  </revision>
 </revisionlist>
