@@ -216,4 +216,17 @@
 - Drop papers-CVE-2026-46529.patch: Fixed upstream.</comment>
     <requestid>1355863</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>d038e1bb27323d7926a5a45e61d38863</srcmd5>
+    <version>50.3</version>
+    <time>1789395895</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + Bug fixes:
+    - Make font names valid UTF-8 string
+    - Fix text search in DJVU documents
+    - Make free text and stamp annotations printable by default
+  + Updated translations.</comment>
+    <requestid>1377827</requestid>
+  </revision>
 </revisionlist>
