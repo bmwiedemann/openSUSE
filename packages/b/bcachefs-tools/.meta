@@ -1,0 +1,4 @@
+<package name="bcachefs-tools" project="openSUSE:Factory">
+  <title></title>
+  <description>don't use /pool, no write perms exist and it bypasses all checks</description>
+</package>

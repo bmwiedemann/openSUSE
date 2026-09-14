@@ -1,0 +1,5 @@
+Provides:	multiversion(kernel)
+Enhances:	kernel-%1
+Requires:	kernel-%1
+Supplements:	(kernel-%1 and zfs)
+Recommends:	%{name}-ueficert = %{version}
