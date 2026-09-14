@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sun Sep 13 18:01:40 UTC 2026 - itachi re <xanbenson99@gmail.com>
+
+- Update to version 2.1.5:
+  * Version 2.1.5
+  * Fix for Linux 6.18
+  * Bump to version 2.1.4
+  * Update README
+  * Remove vidioc_g/s callback
+  * Replace queryctrl with query_ext_ctrl
+  * Linux 6.15 support
+  * Drop Kernel versions < 4.0.0
+  * Remove unhelpful and potentially verbose log
+  * Allow USBMUXD overrides
+
+-------------------------------------------------------------------
+Mon Aug 31 12:00:46 UTC 2026 - itachi re <xanbenson99@gmail.com>
+
+- Switch packaging from static tarball to _service (obs_scm + tar +
+  recompress + set_version), matching the automated version-tracking
+  pipeline already used in home:itachi_re
+- Change upstream source from the aramg/droidcam fork to the official
+  dev47apps/droidcam-linux-client repository
+- Update to 2.1.5
+- Drop 0001-Use-icon-installed-to-theme-directory.patch: <verified
+  obsolete against current upstream / no longer applies cleanly>
+- Drop 0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch:
+  <same — state the actual reason once confirmed>
+- Drop README-v4l2loopback.md doc file.
+- Switch appindicator dependency from appindicator3-0.1 to
+  ayatana-appindicator3-0.1 with -DUSE_AYATANA_APPINDICATOR
+- Add libusbmuxd-2.0 pkgconfig fallback for newer libusbmuxd versions
+
+-------------------------------------------------------------------
 Fri Apr  7 09:38:41 UTC 2023 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.9.0

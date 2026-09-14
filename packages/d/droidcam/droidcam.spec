@@ -1,7 +1,7 @@
 #
 # spec file for package droidcam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,79 +17,112 @@
 
 
 Name:           droidcam
-Version:        1.9.0
+Version:        2.1.5
 Release:        0
-Summary:        Program to turn a mobile device into a webcam
+Summary:        Use an Android/iOS device as a webcam on Linux
 License:        GPL-2.0-or-later
 URL:            https://www.dev47apps.com/droidcam/linux/
-Source0:        https://github.com/aramg/droidcam/archive/v%{version}.tar.gz#/droidcam-%{version}.tar.gz
-Source1:        README-v4l2loopback.md
-# PATCH-FIX-OPENSUSE
-Patch2:         0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch
-# PATCH-FIX-OPENSUSE
-Patch3:         0001-Use-icon-installed-to-theme-directory.patch
+Source0:        droidcam-%{version}.tar.zst
+# ---- Build-time dependencies ------------------------------------------------
 BuildRequires:  gcc-c++
+BuildRequires:  make
+BuildRequires:  pkgconfig
+
+# Video / audio decoding (FFmpeg)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libswscale)
+
+# JPEG decoding – system libturbojpeg, NOT the bundled /opt/libjpeg-turbo path
+BuildRequires:  pkgconfig(libjpeg)
+
+# ALSA audio
+BuildRequires:  pkgconfig(alsa)
+
+# Speex audio codec
+BuildRequires:  pkgconfig(speex)
+
+# iOS USB connectivity via usbmuxd
+# libusbmuxd >= 2.0.2 exports "libusbmuxd-2.0"; older versions "libusbmuxd".
+BuildRequires:  libusbmuxd-devel
+
+# GTK3 GUI
+BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(alsa)
-BuildRequires:  pkgconfig(appindicator3-0.1)
-BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(libavutil)
-BuildRequires:  pkgconfig(libjpeg)
-BuildRequires:  pkgconfig(libswscale)
-# libusbmuxd 2.0.2 provides libusbmuxd-2.0, while 1.x/2.0.1 provide libusbmuxd
-# BuildRequires:  pkgconfig(libusbmuxd-2.0)
-BuildRequires:  libusbmuxd-devel
-BuildRequires:  pkgconfig(speex)
-Requires:       hicolor-icon-theme >= 0.17
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
+BuildRequires:  pkgconfig(x11)
+
+# ---- Runtime dependencies ---------------------------------------------------
 Requires:       kmod(v4l2loopback.ko)
-# USB connection uses adb for Android, other
-# options are usbmuxd (iOS) or Wifi
+Requires:       hicolor-icon-theme >= 0.17
 Recommends:     adb
+Recommends:     usbmuxd
 
 %description
-This program turns a mobile device into a webcam.
+DroidCam turns an Android or iOS device into a wireless (or USB) webcam.
+The virtual video device created by v4l2loopback is used by video-conferencing
+and streaming applications (Skype, Zoom, Teams, OBS Studio, etc.).
 
-It can be used with chat programs like Skype, Zoom, Teams, or with
-live streaming programs like OBS.
+This package installs the GTK3 GUI client (droidcam).
+See the droidcam-cli sub-package for the command-line-only client.
 
 %package cli
-Summary:        Command line client for droidcam
+Summary:        Command-line client for DroidCam
 Requires:       kmod(v4l2loopback.ko)
 Recommends:     adb
+Recommends:     usbmuxd
 
 %description cli
-This program turns a mobile device into a webcam.
+DroidCam turns an Android or iOS device into a wireless (or USB) webcam.
 
-It can be used with chat programs like Skype, Zoom, Teams, or with
-live streaming programs like OBS.
+This package installs only the command-line client (droidcam-cli), which
+does not depend on GTK3.  Use it on headless systems or in terminal workflows.
+
+# ---- Prep -------------------------------------------------------------------
 
 %prep
-%autosetup -p1
+%autosetup -n droidcam-%{version}
 
+# ---- Build ------------------------------------------------------------------
 %build
-export USBMUXDLIBS="`pkg-config --silence-errors --libs libusbmuxd-2.0 || pkg-config --silence-errors --libs libusbmuxd`"
-# CC is used for CXXFLAGS
-%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CFLAGS="%{optflags}" droidcam-cli
-%make_build JPEG="-lturbojpeg" USBMUXD=${USBMUXDLIBS} CFLAGS="%{optflags}" droidcam
+# Prefer libusbmuxd-2.0 (>= 2.0.2) pkg-config name; fall back to older name.
+export USBMUXDLIBS="$(pkg-config --silence-errors --libs libusbmuxd-2.0 \
+                      || pkg-config --silence-errors --libs libusbmuxd)"
 
+%make_build \
+    JPEG="-lturbojpeg" \
+    USBMUXD="${USBMUXDLIBS}" \
+    APPINDICATOR="ayatana-appindicator3-0.1" \
+    CFLAGS="%{optflags} -DUSE_AYATANA_APPINDICATOR" \
+    droidcam-cli
+
+%make_build \
+    JPEG="-lturbojpeg" \
+    USBMUXD="${USBMUXDLIBS}" \
+    APPINDICATOR="ayatana-appindicator3-0.1" \
+    CFLAGS="%{optflags} -DUSE_AYATANA_APPINDICATOR" \
+    droidcam
+
+# ---- Install ----------------------------------------------------------------
 %install
-install -D -m 755 -t %{buildroot}%{_bindir} droidcam-cli
-install -D -m 755 -t %{buildroot}%{_bindir} droidcam
-install -D -m 755 icon2.png %{buildroot}%{_datadir}/icons/hicolor/96x96/apps/droidcam.png
-%suse_update_desktop_file -c droidcam droidcam "Virtual Webcam" droidcam droidcam Multimedia Video GTK Utility AudioVideo
-cp %{S:1} ./
+install -D -m 0755 droidcam-cli %{buildroot}%{_bindir}/droidcam-cli
+install -D -m 0755 droidcam %{buildroot}%{_bindir}/droidcam
+install -D -m 0644 icon2.png \
+    %{buildroot}%{_datadir}/icons/hicolor/96x96/apps/droidcam.png
 
+%suse_update_desktop_file -c droidcam "DroidCam" "Use Android/iOS as a webcam" droidcam droidcam AudioVideo Video GTK
+
+# ---- File lists -------------------------------------------------------------
 %files
 %license LICENSE
-%doc README-v4l2loopback.md
+%doc README.md
 %{_bindir}/droidcam
 %{_datadir}/icons/hicolor/*/apps/droidcam.png
 %{_datadir}/applications/droidcam.desktop
 
 %files cli
 %license LICENSE
-%doc README-v4l2loopback.md
+%doc README.md
 %{_bindir}/droidcam-cli
 
 %changelog

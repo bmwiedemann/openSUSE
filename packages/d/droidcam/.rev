@@ -39,4 +39,37 @@
     <comment></comment>
     <requestid>1079400</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7550735c38bcb395545cd5e934d39158</srcmd5>
+    <version>2.1.5</version>
+    <time>1789395787</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.1.5:
+  * Version 2.1.5
+  * Fix for Linux 6.18
+  * Bump to version 2.1.4
+  * Update README
+  * Remove vidioc_g/s callback
+  * Replace queryctrl with query_ext_ctrl
+  * Linux 6.15 support
+  * Drop Kernel versions &lt; 4.0.0
+  * Remove unhelpful and potentially verbose log
+  * Allow USBMUXD overrides
+- Switch packaging from static tarball to _service (obs_scm + tar +
+  recompress + set_version), matching the automated version-tracking
+  pipeline already used in home:itachi_re
+- Change upstream source from the aramg/droidcam fork to the official
+  dev47apps/droidcam-linux-client repository
+- Update to 2.1.5
+- Drop 0001-Use-icon-installed-to-theme-directory.patch: &lt;verified
+  obsolete against current upstream / no longer applies cleanly&gt;
+- Drop 0003-Hack-backwards-compatibility-for-TurboJPEG-2.0.0.patch:
+  &lt;same — state the actual reason once confirmed&gt;
+- Drop README-v4l2loopback.md doc file.
+- Switch appindicator dependency from appindicator3-0.1 to
+  ayatana-appindicator3-0.1 with -DUSE_AYATANA_APPINDICATOR
+- Add libusbmuxd-2.0 pkgconfig fallback for newer libusbmuxd versions
+</comment>
+    <requestid>1377769</requestid>
+  </revision>
 </revisionlist>
