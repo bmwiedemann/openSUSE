@@ -209,4 +209,12 @@
 - extended check for duplicate MD RAID names</comment>
     <requestid>1318994</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ad6c5ba9253e249661894ed04b07e533</srcmd5>
+    <version>0.3.2</version>
+    <time>1789396847</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377893</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:36:01 UTC 2026 - Clemens Famulla-Conrad <cfamullaconrad@suse.com>
+
+- Make auto completion context aware (e.g., volume group names and mount points)
+- Handle devices option when creating RAID from block devices
+- Indicate journal devices in table list
+- Display usage percentage in red for very full file systems
+- Migrate to new functions from libstorage-ng and avoid deprecated APIs
+- Improves the robustness of terminal interactions when
+  prompting for a password in a non-interactive (non-TTY) environment
+- Update translations (Danish, Indonesian, Ukrainian, Macedonian)
+- version 0.3.2
+
+-------------------------------------------------------------------
 Mon Aug 04 09:27:13 CEST 2025 - aschnell@suse.com
 
 - added early check for MD RAID and encryption names
