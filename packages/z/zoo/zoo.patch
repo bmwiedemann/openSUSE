@@ -31,33 +31,24 @@ Index: makefile
  
  #List of all object files created for Zoo
  ZOOOBJS = addbfcrc.o addfname.o basename.o comment.o crcdefs.o \
-@@ -107,10 +107,10 @@ bsdansi:
- convex:
- 	$(MAKE) CFLAGS="-c $(OPTIM) -DBSD4_3 -DANSI_HDRS" $(TARGETS)
- 
--# Linux 0.96c, gcc 2.2.2
-+# Linux 2.0.0, gcc 2.7.2
- linux:
- 	$(MAKE) \
--	CFLAGS="-c -O2 -DBSD4_3 -DANSI_HDRS -DLINUX" \
-+       CFLAGS="-c $(OPTIM) -DBSD4_4 -DANSI_HDRS -DLINUX" \
- 	$(TARGETS)
- 
- # linux as above, static linked
-Index: options.h
-===================================================================
---- options.h.orig
-+++ options.h
-@@ -89,7 +89,7 @@ For documentation about this file, see o
- /***********************************************************************/
- 
- #ifdef BSD4_3
--#define NOSTRCHR /* not really needed for 4.3BSD */
-+/* #define NOSTRCHR */ /* not really needed for 4.3BSD */
- #define FILTER
- #define IO_MACROS
- #define EXISTS(f)		(access(f, 00) == 0)
-Index: various.h
+@@ -238,5 +238,5 @@ convex:
+ portable.o: /usr/include/stdio.h assert.h debug.h machine.h options.h
+ portable.o: portable.h various.h zoo.h zoofns.h zooio.h
+-prterror.o: /usr/include/stdio.h /usr/include/varargs.h options.h various.h
++prterror.o: /usr/include/stdio.h options.h various.h
+ prterror.o: zoofns.h zooio.h
+ sysv.o: /usr/include/sys/stat.h /usr/include/sys/types.h /usr/include/time.h
+@@ -259,3 +259,9 @@
+ zoopack.o: /usr/include/signal.h /usr/include/stdio.h
+ zoopack.o: /usr/include/sys/signal.h errors.i options.h portable.h various.h
+ zoopack.o: zoo.h zoofns.h zooio.h
++
++# Linux target (upstream 2.10pl1 has none; flags as in previous SUSE builds)
++linux:
++	$(MAKE) \
++	CFLAGS="-c $(OPTIM) -DBSD4_4 -DANSI_HDRS -DLINUX" \
++	$(TARGETS)
+ Index: various.h
 ===================================================================
 --- various.h.orig
 +++ various.h

@@ -187,4 +187,12 @@
     <comment>Fix archive header consistency check on 64-bit platforms</comment>
     <requestid>1368958</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>74d1147793e850c24241a2858535be47</srcmd5>
+    <version>2.10.1</version>
+    <time>1789395742</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377768</requestid>
+  </revision>
 </revisionlist>

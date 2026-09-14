@@ -17,12 +17,15 @@
 
 
 Name:           zoo
-Version:        2.10
+Version:        2.10.1
 Release:        0
 Summary:        Pack Program
 License:        SUSE-Public-Domain
 URL:            https://en.wikipedia.org/wiki/Zoo_(file_format)
-Source:         zoo.tar.gz
+# Upstream 2.10 patchlevel 1 (no newer release; author dead since 1993).
+# Original ftp MASTER_SITES are gone; tarball from a distro mirror,
+# sha256 matches FreeBSD/pkgsrc distinfo.
+Source0:        https://distfiles.macports.org/zoo/zoo-2.10pl1.tar.gz
 Patch0:         zoo.patch
 Patch1:         zoo-%{version}-tempfile.patch
 Patch2:         zoo-gcc.patch
@@ -45,7 +48,8 @@ compression rate of gzip is not reached, and thus zoo should only be used
 for decompressing old archives.
 
 %prep
-%autosetup -n zoo -p0
+# Tarball has no top-level directory
+%autosetup -c -p0
 
 %build
 %make_build linux OPTIM="%{optflags} -std=gnu17"

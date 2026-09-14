@@ -93,19 +93,6 @@ Index: zoofilt.c
  
  	while (*++option) {
  		switch (*option) {
-Index: zooext.c
-===================================================================
---- zooext.c.orig
-+++ zooext.c
-@@ -636,7 +636,7 @@ ZOOFILE file;
- 
- /* Ctrl_c() is called if ^C is hit while a file is being extracted.
-    It closes the files, deletes it, and exits. */
--T_SIGNAL ctrl_c()
-+T_SIGNAL ctrl_c(int x)
- {
- #ifndef NOSIGNAL
-    signal (SIGINT, SIG_IGN);     /* ignore any more */
 Index: zoopack.c
 ===================================================================
 --- zoopack.c.orig
@@ -121,34 +108,6 @@ Index: zoopack.c
  #include "zoofns.h"
  #include "errors.i"
  #ifndef NOSIGNAL
-@@ -399,7 +399,7 @@ OSs might not allow renaming of read-onl
- 
- /* handle_break() */
- /* Sets break_hit to 1 when called */
--T_SIGNAL handle_break()
-+T_SIGNAL handle_break(int x)
- {
- #ifndef NOSIGNAL
-    signal (SIGINT, SIG_IGN);     /* ignore future control ^Cs for now */
-Index: zoofns.h
-===================================================================
---- zoofns.h.orig
-+++ zoofns.h
-@@ -42,12 +42,12 @@ char *nextfile PARMS ((int, char *, int)
- int cfactor PARMS ((long, long));
- int chname PARMS ((char *, char *));
- int cmpnum PARMS ((unsigned int, unsigned int, unsigned int, unsigned int));
--T_SIGNAL ctrl_c PARMS ((void));
-+T_SIGNAL ctrl_c PARMS ((int));
- int exists PARMS ((char *));
- int getfile PARMS ((ZOOFILE, ZOOFILE, long, int));
- int getutime PARMS ((char *, unsigned *, unsigned *));
- int gettime PARMS ((ZOOFILE, unsigned *, unsigned *));
--T_SIGNAL handle_break PARMS ((void));
-+T_SIGNAL handle_break PARMS ((int));
- 
- #ifdef USE_ASCII
- int isupper PARMS ((int));
 Index: zoolist.c
 ===================================================================
 --- zoolist.c.orig

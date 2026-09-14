@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep 13 17:13:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.10.1 (upstream 2.10 patchlevel 1).
+- Upstream behavior changes:
+  * New archives use LZH compression (was LZC); old archives
+    still extract fine.
+  * 'zoo l' shows file modes instead of CRCs.
+- Dropped patches (superseded by the version bump):
+  * zoo-2.10-tempfile.patch
+  * zoo-2.10-CAN-2005-2349.patch
+  * zoo-2.10-security-infinite_loop.patch
+- Added patches (dropped ones re-added under versioned names,
+  byte-identical, no content change):
+  * zoo-2.10.1-tempfile.patch
+  * zoo-2.10.1-CAN-2005-2349.patch
+  * zoo-2.10.1-security-infinite_loop.patch
+- Refreshed patches:
+  * zoo.patch: add the missing makefile linux target with the
+    previous build flags, drop the upstream-merged NOSTRCHR
+    hunk and the stale varargs.h dependency.
+  * zoo-gcc.patch and zoo-gcc14.patch: drop the
+    upstream-merged hunks (signal handler prototypes,
+    ctrl_c/handle_break parameter fixes).
+
+-------------------------------------------------------------------
 Fri Jul 31 07:09:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add zoo-64bit-header-check.patch, taken from Debian, to fix the
