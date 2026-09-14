@@ -17,7 +17,7 @@
 
 
 Name:           gemini-cli
-Version:        0.57.0
+Version:        0.59.0
 Release:        0
 Summary:        An AI agent that brings the power of Gemini directly into your terminal
 License:        Apache-2.0
@@ -31,6 +31,7 @@ Requires:       git-core
 Requires:       grep
 Requires:       gzip
 Requires:       tar
+Requires:       xsel
 Requires:       zstd
 Recommends:     codespell
 
