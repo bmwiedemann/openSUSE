@@ -17,7 +17,7 @@
 
 
 Name:           dynamips
-Version:        0.2.24
+Version:        0.2.25
 Release:        0
 Summary:        Cisco router Emulator
 License:        GPL-2.0-or-later

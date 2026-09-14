@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:42:50 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.2.25
+  * Fix CMAKE_REQUIRED_FLAGS handling.
+  * Fix TLB exception and support for ppc32.
+
+-------------------------------------------------------------------
 Sat Apr 18 18:07:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.2.24
