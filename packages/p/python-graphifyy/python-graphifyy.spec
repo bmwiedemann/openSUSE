@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-graphifyy
-Version:        0.9.58
+Version:        0.9.61
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -38,6 +38,9 @@ BuildRequires:  %{python_module rapidfuzz >= 3.0}
 # .robot/.resource extraction parses via robot.api (upstream [robot] extra);
 # absent, those tests skip and only Robot Framework support is lost
 BuildRequires:  %{python_module robotframework >= 4.0}
+# Upstream build wants setuptools >= 83, not yet in the tree (has
+# 80.9): keep the satisfiable floor, plain setuptools.build_meta
+# needs nothing newer.
 BuildRequires:  %{python_module setuptools >= 77}
 # HTTP MCP tests import starlette; extra floor is 1.3.1 (CVE-2026-48818 /
 # CVE-2026-54283)

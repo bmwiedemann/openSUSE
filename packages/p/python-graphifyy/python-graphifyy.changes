@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:55:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.61:
+  * incremental rebuild keeps cross-file concept nodes from
+    untouched files; sequential fallback when the process pool
+    cannot start; Python symbol resolution about 47% faster
+  * Python 3.14 support with version-gated optional dependencies
+    (jieba-py, graspologic-native)
+  * exported-function calls (incl. aliased imports) resolve;
+    package.json exports resolved per importer platform
+  * unclassifiable files are now reported instead of silently
+    dropped; Office/Workspace sidecars survive a gitignored
+    graphify-out/; C/C++ headers without trailing newline parse
+  * graphify.serve imports cleanly on Python 3.12/3.13; git hook
+    keeps its rebuild root inside the repo and rejects
+    symlink-loop or dangling .graphify_root markers
+
+-------------------------------------------------------------------
 Fri Sep 11 06:50:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.58:

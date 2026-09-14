@@ -216,4 +216,16 @@ in all extra. Keeps the timing-fragile mtime test deselected
 (unchanged upstream). Local aarch64 build green, validator clean.</comment>
     <requestid>1377319</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5926ae2b39a7827db77e0f3b1e829158</srcmd5>
+    <version>0.9.61</version>
+    <time>1789395744</time>
+    <user>anag_factory</user>
+    <comment>Forward python-graphifyy 0.9.61 to Factory (accepted in
+devel:languages:python via SR 1377756).
+
+Native aarch64 build green (4576 passed per flavor),
+rpmlint 0 errors 0 badness.</comment>
+    <requestid>1377758</requestid>
+  </revision>
 </revisionlist>
