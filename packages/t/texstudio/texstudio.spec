@@ -17,11 +17,10 @@
 
 
 Name:           texstudio
-Version:        4.9.7
+Version:        4.9.8
 Release:        0
 Summary:        LaTeX Editor
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-3.0-only AND MPL-1.1
-Group:          Productivity/Publishing/TeX/Frontends
 URL:            https://www.texstudio.org
 Source0:        https://github.com/texstudio-org/texstudio/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
@@ -40,6 +39,8 @@ BuildRequires:  pkgconfig(Qt6UiTools)
 BuildRequires:  pkgconfig(poppler-qt6)
 BuildRequires:  pkgconfig(quazip1-qt6)
 Requires:       hunspell
+# Keep the aggregate texlive-latex require: spec-cleaner --tex would expand
+# this into 140+ per-file tex(...) deps, churning on every texlive rebuild.
 Requires:       texlive-latex
 
 %description
