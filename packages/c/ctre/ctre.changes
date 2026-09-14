@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 16:35:40 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Add ctre-cmake-4_4-compat.patch to make builds compatible with
+  cmake 4.4+ by importing the appropriate upstream UUID for
+  `CMAKE_EXPERIMENTAL_CXX_IMPORT_STD`.
+
+-------------------------------------------------------------------
 Fri May 15 15:03:37 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.11.0:

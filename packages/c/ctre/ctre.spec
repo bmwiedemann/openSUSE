@@ -16,6 +16,7 @@
 #
 
 
+%define __builder ninja
 Name:           ctre
 Version:        3.11.0
 Release:        0
@@ -23,8 +24,11 @@ Summary:        Compile time regular expressions library
 License:        Apache-2.0
 URL:            https://compile-time.re
 Source:         https://github.com/hanickadot/compile-time-regular-expressions/archive/refs/tags/v%{version}.tar.gz#/%{name}-%version.tar.gz
+# PATCH-FIX-UPSTREAM ctre-cmake-4_4-compat.patch gh#hanickadot/compile-time-regular-expressions#368 badshah400@gmail.com -- Make build compatible with cmake 4.4 by adding appropriate CMAKE_EXPERIMENTAL_CXX_IMPORT_STD key from upstream cmake [https://github.com/Kitware/CMake/blob/master/Help/dev/experimental.rst]
+Patch0:         ctre-cmake-4_4-compat.patch
 BuildRequires:  cmake
-BuildRequires:  gcc%{?gcc_ver}-c++
+BuildRequires:  gcc-c++
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 
 %description
@@ -40,10 +44,10 @@ developing applications against ctre.
 
 %prep
 %autosetup -p1 -n compile-time-regular-expressions-%{version}
+sed -Ei "s/VERSION 3.9.0/VERSION 3.11.0/" CMakeLists.txt
 
 %build
 %cmake \
-  -DCMAKE_CXX_COMPILER=g++%{?gcc_ver:-%{gcc_ver}} \
   -DCTRE_MODULE:BOOL=OFF \
 	-DCTRE_BUILD_TESTS:BOOL=ON
 %cmake_build
@@ -52,7 +56,6 @@ developing applications against ctre.
 %cmake_install
 
 %check
-export CXX=g++%{?gcc_ver:-%{gcc_ver}}
 %make_build
 
 %files devel
