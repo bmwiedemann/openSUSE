@@ -18,12 +18,14 @@
 
 
 Name:           partclone
-Version:        0.3.49
+Version:        0.3.50
 Release:        0
 Summary:        File System Clone Utilities
 License:        GPL-2.0-or-later
 URL:            https://partclone.org/
 Source:         https://github.com/Thomas-Tsai/partclone/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Keep autoconf/automake as plain names: spec-cleaner --perl would explode
+# them into dozens of perl(...) provider lines.
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  btrfsprogs
@@ -88,14 +90,14 @@ autoreconf -fiv
 %find_lang %{name}
 
 %check
-# Regression test for the BLOCK_GROUP_TREE chunk-root fix - operates on plain
-# files, no loop device or root needed.  The rest of the suite is not run: it
-# wants mkfs helpers Factory does not ship (hfsplus, apfs) or sudo/losetup
-# (btrfs_trees).
+# Regression tests for btrfs fixes - operate on plain files, no loop device
+# or root needed.  The rest of the suite is not run: it wants mkfs helpers
+# Factory does not ship (hfsplus, apfs) or sudo/losetup (btrfs_trees).
 # mkfs.btrfs and btrfs live in /usr/sbin, which is not on abuild's PATH.
 export PATH="%{_sbindir}:$PATH"
-# The test uses automake's exit 77 to signal "skip"; honour it outside the harness.
+# The tests use automake's exit 77 to signal "skip"; honour it outside the harness.
 bash tests/btrfs_bgt.test || test $? -eq 77
+bash tests/btrfs_multilevel.test || test $? -eq 77
 
 %files
 %license COPYING

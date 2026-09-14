@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:54:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.50:
+  * btrfs: stop dropping interior nodes of multi-level trees from the
+    bitmap - clones of such filesystems silently lost whole subtrees
+  * btrfs: stop reading past the node buffer for inline/truncated file
+    extents ("bad eb member start")
+  * Run the new upstream btrfs_multilevel regression test in %check
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.49:

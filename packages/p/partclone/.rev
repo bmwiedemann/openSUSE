@@ -301,4 +301,12 @@ Built locally on aarch64: green, %check passes, rpmlint 0 errors / 0 badness,
 verified to resolve via osc buildinfo on i586, x86_64, Leap 16.0 and 16.1.</comment>
     <requestid>1376103</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>911190d2fa6f1a2061b9edf22097fbc5</srcmd5>
+    <version>0.3.50</version>
+    <time>1789395757</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377764</requestid>
+  </revision>
 </revisionlist>
