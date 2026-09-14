@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:23:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.10.0:
+  * Add --push option to forge pr create (#156)
+  * Add configurable default remote (#160)
+  * Add cross-forge commit ref resolution (#153)
+  * Handle SCP-like URLs not starting with git@ (#157)
+  * Bump github.com/git-pkgs/purl from 0.1.16 to 0.1.19
+  * Build with Go 1.26 toolchain
+
+-------------------------------------------------------------------
 Mon Aug 17 13:29:20 UTC 2026 - msuchanek@suse.de
 
 - Update to version 0.9.0:

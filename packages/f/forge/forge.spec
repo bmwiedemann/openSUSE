@@ -17,7 +17,7 @@
 
 
 Name:           forge
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        A command line tool to interact with git forges
 License:        MIT

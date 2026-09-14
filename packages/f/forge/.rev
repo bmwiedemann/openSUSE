@@ -61,4 +61,18 @@
   * command to retrieve token (#124)</comment>
     <requestid>1371579</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e31377263765ded5b4caa4ddc5f01778</srcmd5>
+    <version>0.10.0</version>
+    <time>1789395927</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.0:
+  * Add --push option to forge pr create (#156)
+  * Add configurable default remote (#160)
+  * Add cross-forge commit ref resolution (#153)
+  * Handle SCP-like URLs not starting with git@ (#157)
+  * Bump github.com/git-pkgs/purl from 0.1.16 to 0.1.19
+  * Build with Go 1.26 toolchain</comment>
+    <requestid>1377832</requestid>
+  </revision>
 </revisionlist>
