@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Tue Sep  8 11:51:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.18.0
+  Upgrade notes
+  * Three turnserver flags removed:
+    + --drop-invalid-packets (#2078).
+    + --no-dtls (#2079).
+    + --no-cli (#2079).
+  * Log format: session id moved from session : prefix to (session)
+    suffix across 36 sites (#2072) — breaks anything anchored on
+    the old prefix.
+  * Wire behavior:
+    + ChannelBind-without-allocation now 437 not 400.
+    + duplicate XOR-PEER-ADDRESS/DATA go first-wins.
+    + attributes after MESSAGE-INTEGRITY ignored.
+    + over-long USERNAME/REALM/NONCE rejected with 400 instead of
+      truncated.
+    + --external-ip applied per address family.
+  What's Changed
+  * fix: shrink oversized stack frames in the test utilities.
+  * clamp software copy length in handle_old_stun_command.
+  * uclient: start the worker pools after session creation, not
+    before.
+  * uclient: stamp per-send metadata into the packet, not a
+    shared buffer.
+  * Ignore a duplicate DATA attribute in Send instead of discarding
+  * Bind the first XOR-PEER-ADDRESS in ChannelBind, not the last.
+  * Size USERNAME, REALM and NONCE limits in bytes per RFC 8489.
+  * Document RFC 8489 and RFC 8656 instead of only the specs they
+    obsolete.
+  * don't release port 65535 when turnports_allocate fails.
+  * Build docker images with optimizations.
+  * Advertise IPv6 allocations under their real relayed transport
+    address.
+  * turnutils_peer: reflect DSCP/TOS on echoed datagrams.
+  * Log only the request line for web-admin HTTP requests.
+  * skip null memcpy on zero-length stun auth attribute.
+  * fix: external ip must valid if the provider responses EDNS.
+  * fix: shrink oversized stack frames flagged by MSVC C6262.
+  * Log only the request line for web-admin HTTP requests.
+  * Make the multiplex-peer example tests request EVEN-PORT never.
+  * Split unauthorized reason.
+  * Move session id out of log message prefixes.
+  * Silently ignore attributes after message-integrity.
+  * Return allocation mismatch for ChannelBind without allocation.
+  * reject 0x1f control character in SASLprep.
+  * hiredis: clean up failed async connection setup.
+  * Deprecate option drop-invalid-packets.
+  * Update help with missing arguments.
+
+-------------------------------------------------------------------
 Thu Aug 27 14:37:43 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Added chaneglog for version 4.16.0
