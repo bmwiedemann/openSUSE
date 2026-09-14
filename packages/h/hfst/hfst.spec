@@ -17,7 +17,7 @@
 
 
 Name:           hfst
-Version:        3.17.2
+Version:        3.17.3
 Release:        0
 Summary:        Helsinki Finite-State Transducer Technology
 License:        Apache-2.0 AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later AND GPL-3.0-only
@@ -33,13 +33,13 @@ BuildRequires:  flex
 BuildRequires:  foma-devel >= 0.9.18+git20210604
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
-BuildRequires:  ncurses-devel
 BuildRequires:  openfst-devel
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(icu-uc) >= 50
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(zlib)
 Requires:       grep
 Requires:       sed
