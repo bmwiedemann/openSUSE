@@ -62,4 +62,14 @@
     <comment></comment>
     <requestid>1343581</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>771d27aa16a3ac91228bfca15e8210d2</srcmd5>
+    <version>1.2.1</version>
+    <time>1789395988</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.1:
+  + Fix pkg-config file: move libsoup-3.0 to Requires.private.
+  + Fix unit test PixbufLoader failure.</comment>
+    <requestid>1377867</requestid>
+  </revision>
 </revisionlist>

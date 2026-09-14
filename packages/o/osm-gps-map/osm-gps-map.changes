@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:37:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.2.1:
+  + Fix pkg-config file: move libsoup-3.0 to Requires.private.
+  + Fix unit test PixbufLoader failure.
+
+-------------------------------------------------------------------
 Fri Mar 27 14:54:01 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.0+38:
