@@ -16,20 +16,23 @@
 #
 
 
+%define oldpython python
 %if 0%{?suse_version} >= 1650
 %bcond_without test
 %else
 %bcond_with test
 %endif
-
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
-%define oldpython python
 Name:           python-dulwich
-Version:        1.2.12
+Version:        1.2.14
 Release:        0
 Summary:        Pure-Python Git Library
 License:        Apache-2.0 OR GPL-2.0-or-later
-Group:          Development/Languages/Python
 URL:            https://www.dulwich.io
 Source0:        https://github.com/jelmer/dulwich/archive/dulwich-%{version}.tar.gz#/dulwich-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
@@ -39,6 +42,17 @@ BuildRequires:  %{python_module setuptools-rust}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-urllib3 >= 1.24.1
+Recommends:     python-fastimport
+Recommends:     python-gpg
+Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
+Requires(post): update-alternatives
+Requires(preun): update-alternatives
+%endif
 %if %{with test}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module fastimport}
@@ -54,15 +68,9 @@ BuildRequires:  openssh-common
 BuildRequires:  python-mock
 %endif
 %endif
-Requires:       python-urllib3 >= 1.24.1
 %if %{python_version_nodots} < 312
 Requires:       python-typing_extensions
 %endif
-Requires(post): update-alternatives
-Requires(preun): update-alternatives
-Recommends:     python-fastimport
-Recommends:     python-gpg
-Obsoletes:      %{oldpython}-dulwich-doc < 0.20.5
 %python_subpackages
 
 %description
@@ -87,11 +95,17 @@ export CFLAGS="%{optflags}"
 %python_clone -a %{buildroot}%{_bindir}/dulwich
 %python_clone -a %{buildroot}%{_bindir}/dul-receive-pack
 %python_clone -a %{buildroot}%{_bindir}/dul-upload-pack
+%python_group_libalternatives dulwich dul-receive-pack dul-upload-pack
 
 %check
 %if %{with test}
 %pytest tests/ -k "not (test_filter_branch_index_filter)"
 %endif
+
+%pre
+%python_libalternatives_reset_alternative dulwich
+%python_libalternatives_reset_alternative dul-receive-pack
+%python_libalternatives_reset_alternative dul-upload-pack
 
 %post
 %python_install_alternative dulwich

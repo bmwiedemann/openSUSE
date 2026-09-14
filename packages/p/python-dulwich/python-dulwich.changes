@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:17:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 1.2.14:
+  * 1.2.14: collapse consecutive `**` wildmatch segments, matching git
+    and avoiding catastrophic regex backtracking on untrusted patterns
+  * 1.2.13: refuse patch targets addressing the .git control directory
+    in apply_patches (previously wrote and ran .git/hooks/pre-commit)
+  * 1.2.13: widen modes for core.sharedRepository as git does, instead
+    of chmodding to a precomputed one (left .git/hooks world-writable)
+  * 1.2.13: do not follow symlinks when writing messages in
+    porcelain.format_patch, mbox.split_mbox and mbox.split_maildir
+  * 1.2.13: extend the verify_leading_dirs symlink guard to
+    update_working_tree (pull, merge, checkout)
+  * 1.2.13: make concurrent PackData reads thread-safe via mmap at
+    explicit offsets; bound fetch negotiation after 256 unacknowledged
+    "have" lines like C git MAX_IN_VAIN
+  * switch from update-alternatives to libalternatives (kept as fallback
+    for SLE-15 targets)
+
+-------------------------------------------------------------------
 Fri Aug 21 20:11:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.2.12:

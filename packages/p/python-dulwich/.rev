@@ -885,4 +885,12 @@
   * Read ``GIT_PROTOCOL`` in porcelain rather than only in the</comment>
     <requestid>1372931</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>c42fbe0b0784a71c172e0e14e184a090</srcmd5>
+    <version>1.2.14</version>
+    <time>1789397301</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377918</requestid>
+  </revision>
 </revisionlist>
