@@ -24,7 +24,7 @@
 %define legacy_folders amiga,atari,include,mac,pine,ppc,sun
 
 Name:           kbd
-Version:        2.9.0
+Version:        2.10.0
 Release:        0
 Summary:        Keyboard and Font Utilities
 # git: git://git.altlinux.org/people/legion/packages/kbd.git
@@ -59,8 +59,6 @@ Patch12:        kbd-2.0.2-fix-bashisms.patch
 Patch13:        kbd-1.15.5-loadkeys-search-path.patch
 # PATCH-FEATURE-OPENSUSE kbdsettings-nox86.patch sbrabec@suse.cz -- Disable "bios" option for NumLock settings on non x86 platforms.
 Patch14:        kbdsettings-nox86.patch
-# PATCH-FIX-OPENSUSE kbd-setfont-check.patch boo1212970 sbrabec@suse.com -- Implement setfont --check that checks for setfont availability without logging errors.
-Patch17:        kbd-setfont-check.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -72,11 +70,18 @@ BuildRequires:  fdupes
 BuildRequires:  flex
 BuildRequires:  gcc >= 4.6
 BuildRequires:  libtool
+# fatal error: xkbcommon/xkbcommon.h: No such file or directory
+BuildRequires:  libxkbcommon-devel
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  suse-module-tools
 BuildRequires:  xkeyboard-config
-BuildRequires:  xz
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(zlib)
+Requires:       xkeyboard-config
 Requires(post): coreutils
 Requires(postun): coreutils
 Requires(pre):  %fillup_prereq
@@ -173,6 +178,7 @@ pushd data/keymaps/i386
 popd
 chmod 755 autogen.sh
 ./autogen.sh
+export CPPFLAGS="$CPPFLAGS $(pkg-config --cflags xkbcommon)"
 %configure \
 	--disable-silent-rules \
 	--datadir=%{kbd} \

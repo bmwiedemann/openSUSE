@@ -1064,4 +1064,17 @@ Fix version typo:
     <comment></comment>
     <requestid>1341578</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>0478984b64f11aa56710cf822926f67f</srcmd5>
+    <version>2.10.0</version>
+    <time>1789395606</time>
+    <user>anag_factory</user>
+    <comment>Please create a custom staging and follow https://bugzilla.suse.com/show_bug.cgi?id=1275314
+This is a re-submit of the nearly unchanged rq#1362280 that caused problems with an image build.
+It needs further check and research and potentially update of the image creation tool.
+
+- Require xkeyboard-config to be able to load XKB based keymaps..
+- Update to version 2.9.0 (boo#1268148)...</comment>
+    <requestid>1377015</requestid>
+  </revision>
 </revisionlist>

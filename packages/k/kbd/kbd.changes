@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Jul 26 14:20:54 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Require xkeyboard-config to be able to load XKB based keymaps.
+  Its data is required to compile these keymaps, and its %posttrans
+  creates /var/lib/xkb/compiled in a way compatible with immutable
+  updates.
+
+-------------------------------------------------------------------
+Mon Jun 22 05:16:09 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.9.0 (boo#1268148):
+  * keymaps:
+    + Add Backtab keysym and update keymaps to use it for
+      Shift+Tab.
+    + Add keymap for Norwegian Apple ISO keyboard.
+    + Adjust Swiss German keyboard mappings.
+  * libkeymap:
+    + Add API to validate keysyms.
+    + Add XKB-aware symbol aliases through the normal synonym
+      tables.
+    + Fix compose table upload limit handling.
+  * utils:
+    + loadkeys: Add support for generating console keymaps from
+      XKB.
+    + loadkeys: Add XKB compose import support.
+    + loadkeys: Add support for XKB group switching, modifier
+      handling, virtual console switching and keypad/editing
+      remaps.
+    + loadkeys: Add diagnostics for XKB keysym coverage.
+    + openvt: make -u process matching more conservative.
+    + setfont: Add setfont --check that checks for setfont
+      availability without logging errors (boo#1212970,
+      obsoletes kbd-setfont-check.patch).
+  * contrib:
+    + Add an XKB keysym coverage diagnostic tool.
+    + Add a VT layout indicator using keyboard LED lock triggers.
+- Refresh kbd-1.15.5-loadkeys-search-path.patch.
+- Enable compressed file loading introduced by the upstream in
+  version 2.9.0.
+- Remove xz from BuildRequires, as it is not needed.
+
+-------------------------------------------------------------------
 Fri Mar 20 16:18:19 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix conversion of h and H fr-afnor xkb keymap for real. The

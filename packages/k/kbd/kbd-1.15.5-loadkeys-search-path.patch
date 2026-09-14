@@ -1,10 +1,10 @@
-Index: kbd-2.7.1/src/loadkeys.c
+Index: kbd-2.10.0/src/loadkeys.c
 ===================================================================
---- kbd-2.7.1.orig/src/loadkeys.c
-+++ kbd-2.7.1/src/loadkeys.c
-@@ -24,7 +24,12 @@
- 
- #include "libcommon.h"
+--- kbd-2.10.0.orig/src/loadkeys.c
++++ kbd-2.10.0/src/loadkeys.c
+@@ -28,7 +28,12 @@
+ #include "xkbsupport.h"
+ #endif
  
 +#define XKBKEYMAPDIR KEYMAPDIR "/xkb"
 +#define LEGACYKEYMAPDIR KEYMAPDIR "/legacy"
