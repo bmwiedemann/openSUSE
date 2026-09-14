@@ -266,4 +266,13 @@ numbers.
   %patchN (forwarded request 1149794 from pgajdos)</comment>
     <requestid>1151768</requestid>
   </revision>
+  <revision rev="14" vrev="3">
+    <srcmd5>61cb070d1940def7f2124c681e072b7e</srcmd5>
+    <version>1.14.0</version>
+    <time>1789396032</time>
+    <user>anag_factory</user>
+    <comment>- Add memkind-fix-jemalloc.diff to fix a build problem with gcc 15
+  and later.</comment>
+    <requestid>1376937</requestid>
+  </revision>
 </revisionlist>

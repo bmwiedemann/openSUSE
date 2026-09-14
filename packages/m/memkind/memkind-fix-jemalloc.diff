@@ -1,0 +1,16 @@
+The bundled jemalloc won't build OOB with gcc >= 15, so just
+use proper c++ here.
+
+Index: jemalloc/src/jemalloc_cpp.cpp
+===================================================================
+--- jemalloc/src/jemalloc_cpp.cpp	2022-07-07 10:26:11.000000000 +0200
++++ jemalloc/src/jemalloc_cpp.cpp	2026-09-10 14:53:23.053672809 +0200
+@@ -87,7 +87,7 @@ handleOOM(std::size_t size, bool nothrow
+ 	}
+ 
+ 	if (ptr == nullptr && !nothrow)
+-		std::__throw_bad_alloc();
++		throw std::bad_alloc();
+ 	return ptr;
+ }
+ 

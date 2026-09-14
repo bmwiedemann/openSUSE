@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 10 13:01:44 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add memkind-fix-jemalloc.diff to fix a build problem with gcc 15
+  and later.
+
+-------------------------------------------------------------------
 Fri Feb 23 10:22:18 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
