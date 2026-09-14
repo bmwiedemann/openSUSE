@@ -32,4 +32,12 @@
   * Use 1-based cursor position on Windows</comment>
     <requestid>1352232</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>da8e34fa59f28615c5265dac31663129</srcmd5>
+    <version>5.7.0</version>
+    <time>1789395856</time>
+    <user>anag_factory</user>
+    <comment>bump to 5.7.0</comment>
+    <requestid>1377798</requestid>
+  </revision>
 </revisionlist>
