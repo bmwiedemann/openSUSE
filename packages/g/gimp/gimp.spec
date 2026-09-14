@@ -41,11 +41,10 @@
 %define cairo_version           1.14.0
 %define cairo_pdf_version       1.14.0
 %define dbus_glib_version       0.70
-%define gdk_pixbuf_version      2.30.8
+%define gdk_pixbuf_version      2.32.0
 %define fontconfig_version      2.12.4
 %define freetype2_version       2.1.7
 %define exiv2_version           0.27.4
-%define gdk_pixbuf_version      2.30.8
 %define gegl_version            0.4.66
 %define gexiv2_min_version      0.14.3
 %define gexiv2_max_version      0.15.0
@@ -86,7 +85,7 @@
 %define pkg_name gimp
 
 Name:           gimp
-Version:        3.2.4
+Version:        3.2.6
 Release:        0
 %global pkg_version %{version}
 Summary:        The GNU Image Manipulation Program
@@ -97,28 +96,12 @@ Source:         https://download.gimp.org/pub/gimp/v3.2/%{pkg_name}-%{pkg_versio
 Source1:        macros.gimp
 # openSUSE palette file
 Source2:        openSUSE.gpl
-# imported from fedora
+# PATCH-FIX-OPENSUSE use display profile from GTK by default - imported from fedora
 Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
+# PATCH-FIX-OPENSUSE use external web browser for help
 Patch2:         gimp-2.99.19-external-help-browser.patch
+# PATCH-FIX-OPENSUSE disable update checks
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
-Patch4:         gimp-CVE-2026-58379.patch
-Patch5:         gimp-CVE-2026-59089.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-66757.patch bsc#1273151 mgorse@suse.com -- fix a signed integer overflow processing SGI images.
-Patch6:         gimp-CVE-2026-66757.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-66758.patch bsc#1273152 mgorse@suse.com -- mitigate overflow in FITS import.
-Patch7:         gimp-CVE-2026-66758.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-66759.patch bsc#1273153 mgorse@suse.com -- mitigate OOB write on ICNS mask data
-Patch8:         gimp-CVE-2026-66759.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-59087.patch bsc#1274809, glgo#GNOME/gimp#16491 alynx.zhou@suse.com -- Fix heap buffer overflow in `file-seattle-filmworks` load
-Patch9:         gimp-CVE-2026-59087.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-59088.patch bsc#1274837, glgo#GNOME/gimp#16492 alynx.zhou@suse.com -- Fix denial of service via signed integer overflow in FLI file processing
-Patch10:        gimp-CVE-2026-59088.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-59090.patch bsc#1274840, glgo#GNOME/gimp#16509 alynx.zhou@suse.com -- Fix arbitrary code execution in PSD plugin due to unsigned underflow
-Patch11:        gimp-CVE-2026-59090.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-59091.patch bsc#1274851, glgo#GNOME/gimp#16510 alynx.zhou@suse.com -- Fix multiple vulnerabilities in file format plugins via crafted image file
-Patch12:        gimp-CVE-2026-59091.patch
-# PATCH-FIX-UPSTREAM gimp-CVE-2026-66757-2.patch bsc#1273151 mgorse@suse.com -- fix allocation of SGI tables.
-Patch13:        gimp-CVE-2026-66757-2.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

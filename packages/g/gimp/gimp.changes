@@ -1,4 +1,290 @@
 -------------------------------------------------------------------
+Thu Sep 10 23:26:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.6
+  - Core:
+    - macOS: Macbook touchpad over-sensitivity now fixed.
+    - Destructive-only filter actions will be made insensitive on
+      all non-raster layers (unless rasterized).
+    - Windows: in release builds, we now attach our standard
+      outputs to the Windows console on certain scenarios only
+      (when there is no interface, or in verbose mode, or when
+      --console-messages is set, or finally when there are batch
+      commands). By default, we are back to how it was before GIMP
+      3.2.0, which is that GIMP doesn't output anything on native
+      shells it was called from.
+    - Fix expand from center which was failing in some cases.
+    - Layers to Image Size only works for raster (or rasterized)
+      layers.
+    - Clipboard brush and pattern max size bumped to 8192 on
+      Aarch64 architecture too (this was changed in 3.2.0 RC2, but
+      only for x86-64 and PPC64).
+    - Dashboard backtraces now work on Windows Aarch64 too
+      (additionally to Windows x86-64).
+    - No pass-through reduction on group layers with
+      non-destructive filters.
+    - Dashboard backtraces now work on macOS with native API
+      without libbacktrace.
+    - MyPaint's custom brush directory ($USERPROFILE/.mypaint)
+      better retrieved on Windows.
+    - XCF:
+      * Visibility lock on paths is now properly saved. Channel
+      * filters were not saved either. XCF is bumped to version 26.
+    - Clear does not affect non-raster layers, unless rasterized.
+    - Improved management of plug-in pipes and process watch. In
+      particular, we avoid various warnings (about empty contexts
+      or broken pipes) when closing GIMP if plug-ins processes
+      didn't end first or just when closing some plug-ins.
+    - Stop noninteractive filters on invisible layers unless the
+      relevant option is enabled in Preferences.
+    - We now verify if a plug-in has been updated since last start
+      by using the changed time (ctime) as fallback when the
+      modified time (mtime) is 0. This is because on some
+      environment (such as ostree, hence flatpak), all files mtimes
+      are set to the UNIX epoch.
+    - Various small changes or fixes were made to prepare for a
+      potential GTK 4 port.
+    - Cache directory on macOS is now in ~/Library/Caches/ (instead
+      of ~/Library/Application Support/).
+    - Added "Rotation" input for dynamics. This gives us support of
+      the Wacom Art Pen 2 stylus at least.
+    - Various performance improvements in text tool and font
+      handling were made.
+    - It is now possible to cut layer groups with a selection
+      (which will cut every children, recursively), as long as
+      every child is writable ("Content Lock" must not be set and
+      the layers must be raster, or rasterized).
+  - Tools:
+    - Warp tool: properly show the warp cursor even when hovering
+      other images from where we started warping.
+    - Crop tool: do not change position of vector layers.
+    - Gradient tool:
+      * The non-linear blending space was always used, even
+        when linear blending was requested.
+      * Fixed transparent areas when the Offset is set to 100%
+      * (1.0) and
+        the Repeat policy is set to Truncate.
+    - Filters: clip setting was lost when editing non-destructive
+      filters.
+    - Text tool: ignore selected layer mask of a text layer when
+      selecting it with the tool to edit the text contents. The
+      layer mask still stays the selected item in such a case.
+    - Heal tool: dark smudge at crop boundaries is fixed.
+    - Color Picker tool: there was an exception ignoring Sample
+      Merged option when a single layer was visible (allowing to
+      retrieve the exact palette color from indexed images). This
+      exception has been further restricted to the absence of
+      filters. Sample Merged, even of single layer images, should
+      return the color after filters are applied.
+    - MyPaint Brush tool: broken initialization was sometimes
+      triggering a stroke being skipped.
+  - Graphical User Interface:
+    - MyPaint brush previews are now loaded at full size instead of
+      48×48.
+    - Alpha Component previews fixed.
+    - Caret/text cursor color now specifically set in our theme to
+      prevent it from being overridden by the system theme.
+    - macOS:
+      * Title bar color scheme now follows the chosen theme scheme.
+      * Transiency of dialogs on macOS was globally broken and is
+      * now
+        being worked around on a case-by-case basis.
+      * Minimize button removed from various dialogs. Fix dockable
+      * windows not floating. GIMP's Spin buttons now respect the
+      * Cmd key. Scrollbars hiding now follows the relevant macOS
+      * system setting to
+        allow always showing them if requested (this is not the
+        default), just like it does with supported DEs.
+      * Use Cmd+` instead of Alt+Tab. Modules and Units are now
+      * listed on the mac menu like in 2.10. Welcome and About
+      * dialogs are redundant from the application menu
+        and were removed.
+      * Ctrl+F2 is used on behalf of Alt. Cmd+Shift+/ opens the
+      * Help menu. Ctrl+Cmd+Space opens the Emoji viewer. Improve
+      * localization for menu items. Fullscreen shortcut is Ctrl +
+      * Cmd + F (F11 is reserved). "Windows" and "Help" menu labels
+      * are now localized. Rename "Preferences" to "Settings" as is
+      * standard on this
+        platform.
+    - Inactive arrow color (e.g. for notebook tabs) is now defined.
+    - GimpColorScale style now moved to proper CSS.
+    - GEGL Graph dialog now shows error messages for the graph in
+      full.
+    - When "Reduce Animation" (or similar accessibility option) is
+      requested in OS settings, our splash will display less text
+      (bigger section titles only) and no progress bar.
+    - Time format is now more consistently displayed on the About
+      dialog.
+    - Tooltips are now given a max width to prevent them from
+      getting overly large.
+    - Size entry in Scale and Print Size dialogs receive the focus
+      by default as a UX enhancement.
+    - Spins of Arbitrary Zoom and Rotation dialogs receive the
+      default focus.
+    - Next tip is the default focus for the Tips dialog.
+    - Space and Enter activate/deactivate modules.
+    - Prefer Dark Theme setting was not correctly saved when the
+      current theme doesn't have a dark theme variant.
+    - Canvas checkerboard is not rotated with the view anymore.
+    - More theme fixes were applied.
+    - Pattern thumbnails are more properly filling their area by
+      tiling them when relevant.
+    - Script-Fu will focus the first widget of every dialog by
+      default, will make it activate the default response if it's
+      an entry subtype, and will make OK the default response.
+    - Various fixes specific to KDE, as well as theme fixes related
+      to GIMP over KDE Breeze.
+    - The "System" theme in Preferences > Themes will now be listed
+      with the actual system theme's name written in between
+      parentheses. E.g.: "System (Adwaita)".
+    - Add accent color support to System theme on Windows and
+      macOS.
+    - Add 150% mark to Font Scaling.
+    - When a system monitor profile is set, mark down its label
+      between parentheses, after "Try to use the system monitor
+      profile" text in Preferences.
+  - Plug-Ins:
+    - Various security bugs fixed: CVE-2026-18301, CVE-2026-18304,
+      CVE-2026-18302, CVE-2026-18303, CVE-2026-18305,
+      CVE-2026-18306, CVE-2026-18307, CVE-2026-18308,
+      CVE-2026-18309, CVE-2026-62438, CVE-2026-62439,
+      ZDI-CAN-29400, #16424, CVE-2026-59087, CVE-2026-59088,
+      CVE-2026-59089, CVE-2026-66757, CVE-2026-59090,
+      CVE-2026-59091, CVE-2026-66758, CVE-2026-66759,
+      CVE-2026-78465, CVE-2026-78475, #16581, CVE-2026-79902,
+      CVE-2026-80101, CVE-2026-82324, CVE-2026-82328,
+      CVE-2026-82330, CVE-2026-82343. Cf.:
+      https://gitlab.gnome.org/Teams/Releng/security/-/wikis/home#gimp
+    - RawTherapee spawned from GIMP's AppImage does not crash
+      anymore.
+    - PDF: multi-page PDF are now loaded with an image size
+      ensuring that all layers are visible (in case of pages of
+      different dimensions).
+    - File-Raw:
+      * Minimum darktable is version 5.6 (the relevant changes
+        happened on darktable side).
+      * New versions of RawTherapee are now detected as well.
+    - Mail: add Windows MAPI support.
+    - NL Filter: now made sensitive on layers with alpha channel
+      too.
+    - Python Console: Tab completion feature was not fully ported
+      to Python 3.
+    - ICO/CUR: frames are now better sorted (with the same weighted
+      scoring as Win32) when exporting. This was a reason why wrong
+      sizes may be picked by some tools.
+    - PNG: Use existing transparent PNG index first when exporting.
+    - Metadata Editor: fix empty Licensor fields.
+    - PS: we default to A4 for unknown images. Though arbitrary,
+      since Postscript traditionally represents printed pages, it
+      is more likely than other form factors.
+    - DDS: support additional mimetype "image/vnd.ms-dds" (used by
+      Microsoft) and "image/x-dds" (used in Linux) to detect DDS
+      files.
+    - Various plug-ins are made transient to the calling core GIMP
+      window.
+    - TIFF:
+      * More Sketchbook layer mode support on load: "Inverse Alpha
+        Mask" (GIMP's "Erase" blend mode) and group layers can now
+        be set as "Pass-Through", defaulting to "Normal (Legacy)",
+        depending on how they are set internally.
+      * Sketchbook TIFF group layer loading improved.
+    - ANI: When metadata fails UTF-8 validation, we fallback to
+      loading it as Windows-1252 (legacy ANI files used this
+      charset). If this fails too, just drop the field and continue
+      loading.
+  - API:
+    - libgimp/PDB:
+      * fix return value of deprecated gimp_drawable_levels().
+    - libgimpcolor:
+      * fix gimp_color_is_out_of_gamut() with grayscale space.
+    - libgimpui:
+      * Fix inconsistent GimpProcedureDialog buttons order on
+      * Windows. Cross-process transiency is now emulated on macOS
+      * (which doesn't
+        have the exact API match) for the
+        gimp_window_set_transient*() functions.
+      * Center plug-in windows relative to the screen on macOS.
+      * GimpProcedureDialog will now use the icon set on the
+      * associated
+        GimpProcedure (likely only visible on platforms showing
+        window icons).
+      * Resource dialogs where not appearing over the calling
+      * plug-in's
+        GimpResourceChooser on macOS.
+      * Cross-process transiency is now emulated on Windows too,
+      * using
+        WinEvent API. Note that similarly to what is done on macOS,
+        it doesn't really make the child window transient to the
+        parent one. But it ensures it is made visible.
+    - libgimpwidgets:
+      * Plug-ins' title bar will now follow dark mode on macOS. Do
+      * not show minimize button on dialogs on macOS. The
+      * GimpPickButton on macOS does not pick on hovering anymore,
+      * but
+        when explicitly clicked, just like on other OSes. It is
+        more consistent and feels much less slow now.
+    - PDB: failing PDB calls only alert through gimp_message() when
+      run interactively. Non-interactive (including from last run)
+      calls don't print (or pop-up) errors anymore and the caller
+      is expected to check return values and process or display
+      errors themselves if relevant.
+  - Utilities:
+    * gimptool can now compile and link GEGL operations with
+      --cflags-geglop, --libs-geglop and --build-geglop CLI
+      options.
+    * gimptool works better on macOS and when it runs on .app
+    * bundle. gimptool sets relocated PKG_CONFIG_PATH on Windows,
+    * macOS and
+      AppImage relocatable bundles.
+  - Build:
+    - New analysis job running Tartan.
+    - Full build CI pipeline for GIMP on macOS now on our Gitlab
+      instance (hence deprecating the old CI on CircleCI, just for
+      the sake of macOS).
+    - .exe installer and MSIX now allows opening multiple images
+      from "Open With".
+    - Make sure our packages for Windows and macOS builds, as well
+      as our AppImage, ship with the required libraries to create
+      plug-ins.
+    - Our minimum Windows version for our MSIX package is now
+      10.0.20348.0 in order to comply with a requirement from MS
+      about fileSystemWriteVirtualization. Note that the installer
+      still works on Windows 10.0.0.0 and up.
+    - Faster in-build GIMP runs where only the required plug-ins
+      are initialized.
+    - Our defcheck utility now has macOS support.
+    - Some jobs are run more conditionally to avoid unecessary and
+      wasteful checks:
+      * file-plug-in-tests are not run on translation commits.
+      * meson-health runs on specific conditions only.
+    - New commit message checks in CI.
+    - Our Windows installer scripts now work with any Python
+      (without hard dependency on MSYS2 as it used to have when we
+      had our 32-bit TWAIN code).
+    - GdkPixbuf minimum requirement bumped to version 2.32.0 in
+      order to drop the deprecated to-pixdata for embedded PNG
+      resources (which triggered a lot of useless WARNING messages
+      about Glycin when building GIMP initially).
+    - clang-format file improved to better match our coding style.
+- drop patches included in update:
+  gimp-CVE-2026-58379.patch gimp-CVE-2026-59087.patch
+  gimp-CVE-2026-59088.patch gimp-CVE-2026-59089.patch
+  gimp-CVE-2026-59090.patch gimp-CVE-2026-59091.patch
+  gimp-CVE-2026-66757.patch gimp-CVE-2026-66757-2.patch
+  gimp-CVE-2026-66758.patch gimp-CVE-2026-66759.patch
+  gimp-CVE-2026-78465.patch gimp-CVE-2026-78475.patch
+  gimp-CVE-2026-79902.patch gimp-CVE-2026-80101.patch
+
+-------------------------------------------------------------------
+Fri Sep  4 03:53:29 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add CVE fixes:
+  + gimp-CVE-2026-78465.patch (bsc#1277378, glgo#GNOME/gimp#16578)
+  + gimp-CVE-2026-78475.patch (bsc#1277380, glgo#GNOME/gimp#16580)
+  + gimp-CVE-2026-79902.patch (bsc#1277381, glgo#GNOME/gimp#16582)
+  + gimp-CVE-2026-80101.patch (bsc#1276911, glgo#GNOME/gimp#16583)
+
+-------------------------------------------------------------------
 Mon Aug 31 19:57:01 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Replace gimp-CVE-2026-66757.patch with the upstream backport.
