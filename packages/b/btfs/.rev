@@ -154,4 +154,14 @@
     gh#johang/btfs#109</comment>
     <requestid>1373146</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>645b48b84d861d1ddfc08510b1bf7309</srcmd5>
+    <version>3.3</version>
+    <time>1789395849</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.3:
+  * Don't fall back to /tmp target directory
+    gh#johang/btfs#111</comment>
+    <requestid>1377791</requestid>
+  </revision>
 </revisionlist>

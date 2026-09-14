@@ -18,7 +18,7 @@
 
 
 Name:           btfs
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        A BitTorrent file system based on FUSE
 License:        GPL-3.0-or-later
