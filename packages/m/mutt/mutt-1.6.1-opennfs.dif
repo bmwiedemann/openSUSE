@@ -1,15 +1,15 @@
 ---
  Makefile.am |    4 -
  mbox.c      |    5 ++
- mh.c        |    9 +++-
+ mh.c        |    8 +++
  mutt.h      |    3 +
  muttlib.c   |    6 ++
  opennfs.c   |  122 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
  sendlib.c   |    4 +
- 7 files changed, 149 insertions(+), 4 deletions(-)
+ 7 files changed, 149 insertions(+), 3 deletions(-)
 
 --- Makefile.am
-+++ Makefile.am	2020-01-14 13:28:45.787807571 +0000
++++ Makefile.am	2026-09-07 12:01:20.256330180 +0000
 @@ -34,7 +34,7 @@ mutt_SOURCES = \
  	edit.c enter.c flags.c init.c filter.c from.c \
  	getdomain.c group.c \
@@ -29,51 +29,50 @@
  mutt_pgpring_DEPENDENCIES = $(LIBOBJS) $(INTLDEPS)
  
 --- mbox.c
-+++ mbox.c	2020-01-14 13:30:35.969760118 +0000
-@@ -893,8 +893,13 @@ static int mbox_sync_mailbox (CONTEXT *c
++++ mbox.c	2026-09-07 12:01:50.683789592 +0000
+@@ -933,8 +933,13 @@ static int mbox_sync_mailbox(CONTEXT *ct
    /* Create a temporary file to write the new version of the mailbox in. */
-   tempfile = mutt_buffer_pool_get ();
-   mutt_buffer_mktemp (tempfile);
+   tempfile = mutt_buffer_pool_get();
+   mutt_buffer_mktemp(tempfile);
 +#if defined(__linux__)
-+  if ((i = opennfs (mutt_b2s (tempfile), O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
-+      (fp = fdopen (i, "w")) == NULL)
++  if ((i = opennfs(mutt_b2s (tempfile), O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
++      (fp = fdopen(i, "w")) == NULL)
 +#else
-   if ((i = open (mutt_b2s (tempfile), O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
-       (fp = fdopen (i, "w")) == NULL)
+   if ((i = open(mutt_b2s(tempfile), O_WRONLY | O_EXCL | O_CREAT, 0600)) == -1 ||
+       (fp = fdopen(i, "w")) == NULL)
 +#endif
    {
      if (-1 != i)
      {
 --- mh.c
-+++ mh.c	2020-01-14 13:28:45.787807571 +0000
-@@ -369,7 +369,11 @@ static int mh_mkstemp (CONTEXT * dest, F
++++ mh.c	2026-09-07 12:03:57.157542505 +0000
+@@ -366,7 +366,11 @@ static int mh_mkstemp(CONTEXT * dest, FI
    {
-     mutt_buffer_printf (path, "%s/.mutt-%s-%d-%d",
-                         dest->path, NONULL (Hostname), (int) getpid (), Counter++);
+     mutt_buffer_printf(path, "%s/.mutt-%s-%d-%d",
+                        dest->path, NONULL(Hostname), (int) getpid(), Counter++);
 +#if defined(__linux__)
-+    if ((fd = opennfs (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++    if ((fd = opennfs(mutt_b2s(path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#else
-     if ((fd = open (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
+     if ((fd = open(mutt_b2s(path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#endif
      {
        if (errno != EEXIST)
        {
-@@ -1559,8 +1563,11 @@ static int maildir_open_new_message (MES
+@@ -1552,7 +1556,11 @@ static int maildir_open_new_message(MESS
+     muttdbg(2, "maildir_open_new_message (): Trying %s.",
+             mutt_b2s(path));
  
-     dprint (2, (debugfile, "maildir_open_new_message (): Trying %s.\n",
- 		mutt_b2s (path)));
--
 +#if defined(__linux__)
-+    if ((fd = opennfs(mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
++    if ((fd = opennfs(mutt_b2s(path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#else
-     if ((fd = open (mutt_b2s (path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
+     if ((fd = open(mutt_b2s(path), O_WRONLY | O_EXCL | O_CREAT, 0666)) == -1)
 +#endif
      {
        if (errno != EEXIST)
        {
 --- mutt.h
-+++ mutt.h	2020-01-14 13:28:45.787807571 +0000
-@@ -1223,4 +1223,7 @@ typedef struct
++++ mutt.h	2026-09-07 12:01:20.260330110 +0000
+@@ -1221,4 +1221,7 @@ typedef struct
  #include "lib.h"
  #include "globals.h"
  
@@ -82,29 +81,29 @@
 +#endif
  #endif /*MUTT_H*/
 --- muttlib.c
-+++ muttlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2562,6 +2562,10 @@ int safe_open (const char *path, int fla
++++ muttlib.c	2026-09-07 12:05:57.587402650 +0000
+@@ -2637,6 +2637,10 @@ int safe_open(const char *path, int flag
    BUFFER *safe_file = NULL;
    BUFFER *safe_dir = NULL;
  
 +#if defined(__linux__)
-+  if ((fd = opennfs (path, flags, 0600)) < 0)
++  if ((fd = opennfs(path, flags, 0600)) < 0)
 +    return fd;
 +#else
    if (flags & O_EXCL)
    {
-     safe_file = mutt_buffer_pool_get ();
-@@ -2590,7 +2594,7 @@ int safe_open (const char *path, int fla
+     safe_file = mutt_buffer_pool_get();
+@@ -2665,7 +2669,7 @@ int safe_open(const char *path, int flag
  
-   if ((fd = open (path, flags & ~O_EXCL, 0600)) < 0)
+   if ((fd = open(path, flags & ~O_EXCL, 0600)) < 0)
      goto cleanup;
 -
 +#endif
    /* make sure the file is not symlink */
-   if (lstat (path, &osb) < 0 || fstat (fd, &nsb) < 0 ||
+   if (lstat(path, &osb) < 0 || fstat(fd, &nsb) < 0 ||
        compare_stat(&osb, &nsb) == -1)
 --- opennfs.c
-+++ opennfs.c	2020-01-14 13:28:45.787807571 +0000
++++ opennfs.c	2026-09-07 12:01:20.260330110 +0000
 @@ -0,0 +1,122 @@
 +#include <errno.h>
 +#include <fcntl.h>
@@ -229,16 +228,16 @@
 +    return open(path, flags, mode);
 +}
 --- sendlib.c
-+++ sendlib.c	2020-01-14 13:28:45.787807571 +0000
-@@ -2591,7 +2591,11 @@ send_msg (const char *path, char **args,
++++ sendlib.c	2026-09-07 12:06:54.982382778 +0000
+@@ -2634,7 +2634,11 @@ send_msg(const char *path, char **args,
        if (SendmailWait >= 0 && tempfile && *tempfile)
        {
- 	/* *tempfile will be opened as stdout */
+         /* *tempfile will be opened as stdout */
 +#if defined(__linux__)
-+	if (opennfs(*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
++        if (opennfs(*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
 +#else
- 	if (open (*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
+         if (open(*tempfile, O_WRONLY | O_APPEND | O_CREAT | O_EXCL, 0600) < 0)
 +#endif
- 	  _exit (S_ERR);
- 	/* redirect stderr to *tempfile too */
- 	if (dup (1) < 0)
+           _exit(S_ERR);
+         /* redirect stderr to *tempfile too */
+         if (dup(1) < 0)

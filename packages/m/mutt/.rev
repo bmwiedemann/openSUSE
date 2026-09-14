@@ -1571,4 +1571,31 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
     NUL characters in URL decoding, which could lead to bypasses or crashes.</comment>
     <requestid>1350952</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>ff70157fac2dd09c5ee6d7b8e28e2956</srcmd5>
+    <version>2.4.2</version>
+    <time>1789395958</time>
+    <user>anag_factory</user>
+    <comment>- Use https://ftp.osuosl.org to download assets: ftp.mutt.org is an
+  alias, but without valid ssl certs.
+- Use http://www.mutt.org as URL: there is no valid cert to
+  advertise https:// to the users.
+
+- Use ftp instead of https for ftp.mutt.org 
+
+- Update to mutt 2.4.2 (Bug fix release)
+  * This is a bug-fix release, fixing several small issues, including
+    a sporadic compose-menu prompt to update attachment encoding
+    occurring with recent Linux kernels
+  * 2.4.1 was a bug-fix release, fixing compilation with OpenSSL 4,
+    Alt keybindings in the foot terminal, a minor crash bug, and a
+    theoretical IMAP overflow bug. See the UPDATING file for more details. 
+  * 2.4.0 was release that has new features and bug fixes.
+    See the UPDATING file, or for more details see the release notes page. 
+  * 2.3.3 was a bug-fix release, fixing a crash bug for deeply nested
+    message types and a configure bug for the bundled-regex option. 
+
+- Fix python macro usage</comment>
+    <requestid>1377855</requestid>
+  </revision>
 </revisionlist>

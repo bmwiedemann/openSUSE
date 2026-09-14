@@ -6,7 +6,7 @@
  4 files changed, 39 insertions(+), 7 deletions(-)
 
 --- configure.ac
-+++ configure.ac	2020-01-14 13:04:28.102878757 +0000
++++ configure.ac	2026-09-07 11:28:13.667631479 +0000
 @@ -298,7 +298,7 @@ main ()
                          mutt_cv_slang=$withval
                          if test -d $withval/include/slang; then
@@ -16,22 +16,22 @@
                                  CPPFLAGS="$CPPFLAGS -I${withval}/include"
                          fi
                          LDFLAGS="$LDFLAGS -L${withval}/lib"
-@@ -747,8 +747,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
- 	  else
+@@ -751,8 +751,12 @@ AC_ARG_WITH(ssl, AS_HELP_STRING([--with-
+           else
              if test "$with_ssl" != "yes"
              then
 -             LDFLAGS="$LDFLAGS -L$withval/lib"
 -             CPPFLAGS="$CPPFLAGS -I$withval/include"
-+             case $withval in /usr|/usr/local) ;;
++             case $with_ssl in /usr|/usr/local) ;;
 +             *)
-+               LDFLAGS="$LDFLAGS -L$withval/lib"
-+               CPPFLAGS="$CPPFLAGS -I$withval/include"
++               LDFLAGS="$LDFLAGS -L$with_ssl/lib"
++               CPPFLAGS="$CPPFLAGS -I$with_ssl/include"
 +               ;;
 +             esac
              fi
              saved_LIBS="$LIBS"
  
-@@ -835,8 +839,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
+@@ -839,8 +843,12 @@ AC_ARG_WITH(sasl, AS_HELP_STRING([--with
  
            if test "$with_sasl" != "yes"
            then
@@ -47,7 +47,7 @@
  
            saved_LIBS="$LIBS"
 --- doc/Muttrc.head
-+++ doc/Muttrc.head	2020-01-14 13:05:31.265704120 +0000
++++ doc/Muttrc.head	2026-09-07 11:21:35.050729687 +0000
 @@ -23,7 +23,7 @@ macro index,pager,attach,compose \cb "\
  "call urlview to extract URLs out of a message"
  
@@ -58,47 +58,47 @@
  # show the incoming mailboxes list (just like "mutt -y") and back when pressing "y"
  # note: these macros have been subsumed by the <browse-mailboxes> function.
 --- imap/auth.c
-+++ imap/auth.c	2020-01-14 13:04:28.102878757 +0000
-@@ -79,6 +79,25 @@ int imap_authenticate (IMAP_DATA* idata)
-       dprint (2, (debugfile, "imap_authenticate: Trying method %s\n", method));
++++ imap/auth.c	2026-09-07 11:32:06.795479596 +0000
+@@ -79,6 +79,25 @@ int imap_authenticate(IMAP_DATA *idata)
+       muttdbg(2, "imap_authenticate: Trying method %s", method);
        authenticator = imap_authenticators;
  
 +#ifdef USE_SASL
 +      /* "login" not supported by SASL */
 +      if (!ascii_strcasecmp ("login", method))
 +      {
-+	while (authenticator->authenticate)
-+	{
-+	  const char *identify = authenticator->method;
-+	  if (identify && !ascii_strcasecmp(identify, method))
-+	    if ((r = authenticator->authenticate(idata, method)) !=
-+		IMAP_AUTH_UNAVAIL)
-+	    {
-+	      FREE(&methods);
-+	      return r;
-+	    }
++       while (authenticator->authenticate)
++       {
++         const char *identify = authenticator->method;
++         if (identify && !ascii_strcasecmp(identify, method))
++           if ((r = authenticator->authenticate(idata, method)) !=
++               IMAP_AUTH_UNAVAIL)
++           {
++             FREE(&methods);
++             return r;
++           }
 +
-+	  authenticator++;
-+	}
++         authenticator++;
++       }
 +      } else {
 +#endif
        while (authenticator->authenticate)
        {
- 	if (!authenticator->method ||
-@@ -93,7 +112,9 @@ int imap_authenticate (IMAP_DATA* idata)
- 	authenticator++;
+         if (!authenticator->method ||
+@@ -93,7 +112,9 @@ int imap_authenticate(IMAP_DATA *idata)
+         authenticator++;
        }
      }
 -
 +#ifdef USE_SASL
 +    }
 +#endif
-     FREE (&methods);
+     FREE(&methods);
    }
    else
 --- mx.c
-+++ mx.c	2020-01-14 13:04:28.102878757 +0000
-@@ -1501,6 +1501,9 @@ void mx_update_context (CONTEXT *ctx, in
++++ mx.c	2026-09-07 11:21:35.050729687 +0000
+@@ -1499,6 +1499,9 @@ void mx_update_context(CONTEXT *ctx, int
    {
      h = ctx->hdrs[msgno];
  

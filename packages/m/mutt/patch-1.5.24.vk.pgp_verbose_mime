@@ -5,8 +5,8 @@
  3 files changed, 16 insertions(+), 4 deletions(-)
 
 --- globals.h
-+++ globals.h	2020-01-14 13:37:00.770606718 +0000
-@@ -284,6 +284,8 @@ WHERE char *PgpDefaultKey;
++++ globals.h	2026-09-07 12:08:12.145011607 +0000
+@@ -285,6 +285,8 @@ WHERE char *PgpDefaultKey;
  WHERE char *PgpSignAs;
  WHERE long  PgpTimeout;
  WHERE char *PgpEntryFormat;
@@ -16,8 +16,8 @@
  WHERE char *PgpDecodeCommand;
  WHERE char *PgpVerifyCommand;
 --- init.h
-+++ init.h	2020-01-14 13:41:15.145875625 +0000
-@@ -3875,9 +3875,18 @@ struct option_t MuttVars[] = {
++++ init.h	2026-09-07 12:09:05.068071138 +0000
+@@ -3877,9 +3877,18 @@ struct option_t MuttVars[] = {
    ** a line quoted text if it also matches $$smileys. This mostly
    ** happens at the beginning of a line.
    */
@@ -36,18 +36,18 @@
 +  ** This option sets the Content-Description used for signature parts in
 +  ** PGP/MIME signed messages.
 +  */
-   { "smime_ask_cert_label",	DT_BOOL, R_NONE, {.l=OPTASKCERTLABEL}, {.l=1} },
+   { "smime_ask_cert_label",     DT_BOOL, R_NONE, {.l=OPTASKCERTLABEL}, {.l=1} },
    /*
    ** .pp
 --- pgp.c
-+++ pgp.c	2020-01-14 13:42:29.880485319 +0000
-@@ -1359,7 +1359,8 @@ BODY *pgp_sign_message (BODY *a)
++++ pgp.c	2026-09-07 12:11:08.673874498 +0000
+@@ -1375,7 +1375,8 @@ BODY *pgp_sign_message(BODY *a)
    t->disposition = DISPNONE;
    t->encoding = ENC7BIT;
    t->unlink = 1; /* ok to remove this file after sending. */
--  mutt_set_parameter ("name", "signature.asc", &t->parameter);
-+  mutt_set_parameter ("name", PgpMimeSignatureFilename, &t->parameter);
-+  t->description = safe_strdup (PgpMimeSignatureDescription);
+-  mutt_set_parameter("name", "signature.asc", &t->parameter);
++  mutt_set_parameter("name", PgpMimeSignatureFilename, &t->parameter);
++  t->description = safe_strdup(PgpMimeSignatureDescription);
  
  cleanup:
-   mutt_buffer_pool_release (&sigfile);
+   mutt_buffer_pool_release(&sigfile);

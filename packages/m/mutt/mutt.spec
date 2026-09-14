@@ -20,15 +20,15 @@
 %bcond_with    mutt_openssl
 %bcond_without mutt_gnutls
 Name:           mutt
-Version:        2.3.2
+Version:        2.4.2
 Release:        0
 Summary:        Mail Program
 # ftp://ftp.mutt.org/mutt/devel/
 # https:///bitbucket.org/mutt/mutt/downloads/%%name-%%version.tar.gz
 License:        GPL-2.0-or-later
 Group:          Productivity/Networking/Email/Clients
-URL:            https://www.mutt.org
-Source0:        https://bitbucket.org/mutt/mutt/downloads/mutt-%{version}.tar.gz
+URL:            http://www.mutt.org
+Source0:        https://ftp.osuosl.org/pub/mutt/mutt-%{version}.tar.gz
 Source1:        Signature_conversion
 Source2:        README.alternates
 Source3:        mutt.png
@@ -38,7 +38,7 @@ Source6:        mutt_oauth2.py-3.6
 Source7:        mutt_oauth2.py.README
 Source8:        backports-datetime-fromisoformat-1.0.0.tar.gz
 Source9:        mutt.mailcap
-Source10:       https://bitbucket.org/mutt/mutt/downloads/mutt-%{version}.tar.gz.asc
+Source10:       https://ftp.osuosl.org/pub/mutt/mutt-%{version}.tar.gz.asc
 Source11:       mutt.keyring
 Patch0:         %{name}-1.13.3.dif
 # http://www.spinnaker.de/mutt/compressed/
@@ -83,6 +83,7 @@ BuildRequires:  pkgconfig(sqlite3)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tex(8r.enc)
 %if 0%{suse_version} >= 1500
+BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
@@ -349,9 +350,9 @@ rm -f %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-notify
 %if 0%{suse_version} >= 1500
 %{_docdir}/%{name}/mutt_oauth2.py
 %{_docdir}/%{name}/mutt_oauth2.py.README
-%if %{?pkg_vcmp:%{pkg_vcmp python3-base < 3.7.0}}%{!?pkg_vcmp:0}
-%{python3_sitearch}/backports
-%{python3_sitearch}/backports_datetime_fromisoformat-1.0.0-py3.6.egg-info
+%if 0%{?python_version_nodots} < 37
+%{python_sitearch}/backports
+%{python_sitearch}/backports_datetime_fromisoformat-1.0.0-py%{python_version}.egg-info
 %endif
 %endif
 
