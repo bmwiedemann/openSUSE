@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:06:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.77.0:
+  * Drop legacy profile aliases and deprecation shims (v1.0.0 prep)
+  * Use CLONE_FILES bootstrap for network-notification sessions
+  * Always re-invoke the credential source for ambient captures
+  * Validate localhost port ranges for zero end and inverted ranges
+  * Fix denied-path review selector (unhandled keys, type-ahead)
+  * Keep legacy ~/.claude.json in sync with CLAUDE_CONFIG_DIR redirects
+  * Disable audit buffer for standalone proxy, fix chunked bodies
+  * Resolve multi-hop symlinks in filesystem grants
+  * Support Git fsmonitor socket via unix_socket_bind
+  * Add Nix flake support
+  * Allow fire-and-forget child processes
+  * Load declarative proxy credentials from profiles
+  * Route CLI tracing warnings to stderr, not stdout
+- Regenerate vendor.tar.zst for the new sources
+- Correct License: re-derived from the statically linked crates
+  (adds BSD-3-Clause, CDLA-Permissive-2.0, ISC, MIT, MPL-2.0 and
+  Unicode-3.0) and document it in a Legal-Review-Notice; the
+  generated shell completion subpackages stay Apache-2.0
+
+-------------------------------------------------------------------
 Thu Sep  3 13:26:53 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Added completion scripts

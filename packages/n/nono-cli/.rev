@@ -15,4 +15,22 @@
     <comment>1</comment>
     <requestid>1375653</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>cda51f431e3d737150515d7833f00305</srcmd5>
+    <version>0.77.0</version>
+    <time>1789395717</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.77.0, with the License tag corrected.
+
+Supersedes 1377707, which carried the bare upstream &quot;Apache-2.0&quot;. The tag is now
+re-derived from the Rust crates actually linked into /usr/bin/nono (351 crates,
+from cargo's unit graph, identical on x86_64 and aarch64): Apache-2.0 AND
+BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND MIT AND MPL-2.0 AND Unicode-3.0.
+MPL-2.0 comes from colored and option-ext. The derivation is documented in a
+Legal-Review-Notice above the tag. The generated shell completion subpackages
+declare Apache-2.0.
+
+Local build green on openSUSE_Tumbleweed/aarch64, rpmlint 0 errors / 0 warnings.</comment>
+    <requestid>1377734</requestid>
+  </revision>
 </revisionlist>
