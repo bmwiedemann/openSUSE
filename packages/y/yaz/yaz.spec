@@ -1,7 +1,7 @@
 #
 # spec file for package yaz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,26 @@
 
 %define         libname libyaz5
 Name:           yaz
-Version:        5.34.2
+Version:        5.38.0
 Release:        0
 Summary:        Z39.50 protocol server and client
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://www.indexdata.com/resources/software/yaz/
-Source:         http://ftp.indexdata.dk/pub/yaz/yaz-%{version}.tar.gz
-Patch0:         yaz-icu-76.patch
-# https://github.com/indexdata/yaz/commit/1eb021946a9603de6c024aa3a5b937e84c5b2270
-# https://github.com/indexdata/yaz/commit/5bfb9370f45de00203b5bc02f528fd96a832d17a
-Patch1:         yaz-gcc15.patch
+Source:         https://download.indexdata.com/pub/yaz/yaz-%{version}.tar.gz
 BuildRequires:  gnutls-devel
-BuildRequires:  libicu-devel
 BuildRequires:  libpcap-devel
 BuildRequires:  libtool
-BuildRequires:  libxslt-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
 BuildRequires:  tcpd-devel
+# pkgconfig(icu-io) trimmed: source uses icu-i18n (pkg-config check)
+# and icu-uc (LIBS), not icu-io (spec-cleaner over-expansion)
+BuildRequires:  pkgconfig(icu-i18n)
+BuildRequires:  pkgconfig(icu-uc)
+BuildRequires:  pkgconfig(libexslt)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libxslt)
 
 %description
 This package contains both a test-server and clients (normal & ssl) for
@@ -47,7 +46,6 @@ clients and servers are also supported.
 
 %package doc
 Summary:        Documentation for %{name} (Z39.50 Library)
-Group:          Documentation/HTML
 BuildArch:      noarch
 
 %description doc
@@ -58,7 +56,6 @@ This package contains the documentation.
 
 %package -n %{libname}
 Summary:        Z39.50 protocol library
-Group:          System/Libraries
 Provides:       libyaz = %{version}
 Obsoletes:      libyaz < %{version}
 
@@ -68,13 +65,16 @@ using the ANSI/NISO Z39.50 protocol for Information Retrieval.
 
 %package -n libyaz-devel
 Summary:        Headers for the Z39.50 protocol library
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       %{name} = %{version}
-Requires:       libicu-devel
-Requires:       libxslt-devel
 Requires:       openssl-devel
 Requires:       tcpd-devel
+# Same trim as BuildRequires: icu-i18n + icu-uc + libexslt + libxslt,
+# no icu-io
+Requires:       pkgconfig(icu-i18n)
+Requires:       pkgconfig(icu-uc)
+Requires:       pkgconfig(libexslt)
+Requires:       pkgconfig(libxslt)
 
 %description -n libyaz-devel
 YAZ is a C library for developing client and server applications

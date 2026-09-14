@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:57:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.38.0:
+  * 5.38.0: JSON json_parser_subst fixes, json_clone_node;
+    yaz-iconv UTF-8 per RFC 3629; HTTP chunked validation;
+    cs_get_error for SSL failures; SSL client cert (-C,
+    cert_fname) and cert checking (-e, check_cert); comstack
+    decoding hardening, max_recv_bytes 128MB to 16MB;
+    yaz_atoi/yaz_atoul overflow handling (new yaz/atoi.h)
+  * 5.37.3: doc CSS, OPACXML schema fixes
+  * 5.37.1: GNUTLS_E_AGAIN fix for blocking SSL sockets
+  * 5.37.0: daemon SIGUSR fix, nmem_printf
+  * 5.36.0: nmem_from_xml_buffer, libxml2 xmlBuffer deprecation
+    fix, musl gethostbyaddr fix
+  * 5.35.x: daemon keepalive waitpid EINTR fix, disable HTTP
+    chunked encoding, CQL transform helpers
+  * 5.34.3-5.34.4: ICU 76.1 build fix, gcc/clang
+    warn_unused_result, C17/C23 and bool fixes
+- SONAME unchanged: libtool version-info 5:0:0 to 9:0:4 keeps
+  SONAME libyaz.so.5, lib package stays libyaz5
+- Switch Source to https://download.indexdata.com/pub/yaz/
+  (old ftp.indexdata.dk redirects there)
+- Drop merged/obsolete patches:
+  * yaz-gcc15.patch (upstream _POSIX_C_SOURCE and
+    yaz_strncasecmp fixes)
+  * yaz-icu-76.patch (upstream fixed ICU 76 build in 5.34.3;
+    remaining Requires tweak not needed)
+
+-------------------------------------------------------------------
 Wed Feb 12 15:52:05 UTC 2025 - pgajdos@suse.com
 
 - added patches
