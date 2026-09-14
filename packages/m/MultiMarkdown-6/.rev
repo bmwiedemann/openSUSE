@@ -161,4 +161,16 @@
   * UPDATED: Update lexers with newer version of re2c</comment>
     <requestid>1135290</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>85f4db53b9d6db6c3a6e217b859e9439</srcmd5>
+    <version>6.8.0</version>
+    <time>1789395728</time>
+    <user>anag_factory</user>
+    <comment>Forward 6.8.0 to Factory (accepted in Publishing as 1377714)
+
+- Upstream tag 6.8.0 (2026-07-29), 18 commits over 6.7.0
+- aarch64 build green, validator/lints clean
+</comment>
+    <requestid>1377716</requestid>
+  </revision>
 </revisionlist>

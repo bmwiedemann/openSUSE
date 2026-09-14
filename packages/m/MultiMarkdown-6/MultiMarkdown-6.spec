@@ -1,7 +1,7 @@
 #
 # spec file for package MultiMarkdown-6
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           MultiMarkdown-6
-Version:        6.7.0
+Version:        6.8.0
 Release:        0
 Summary:        Reference implementation of MultiMarkdown
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  texlive-filesystem
 Requires:       texlive-filesystem
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
+Requires(postun): update-alternatives
 Conflicts:      MultiMarkdown-5
 Provides:       markdown
 
@@ -55,7 +55,7 @@ rm -rf %{buildroot}%{_datadir}/doc/MultiMarkdown
 # Avoid conflict with mtools
 mv %{buildroot}%{_bindir}/mmd  %{buildroot}%{_bindir}/%{name}-mmd
 # multimarkdown is provided by other packages thus we use
-# update-alternatives
+# update-alternatives (libalternatives needs discount converted first)
 mv %{buildroot}%{_bindir}/markdown %{buildroot}%{_bindir}/%{name}-markdown
 install -d %{buildroot}%{_sysconfdir}/alternatives
 touch %{buildroot}%{_sysconfdir}/alternatives/markdown

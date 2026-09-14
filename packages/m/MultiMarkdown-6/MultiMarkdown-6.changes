@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:54:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.8.0:
+  * version bump
+  * UPDATED: Update required CMake version
+  * FIXED: Fix test suite
+  * CHANGED: Apply astyle
+  * Fixes #258 by @DivineDominion
+  * FIXED: Fix edge case in loose vs tight list determination
+  * UPDATED: Rename test suite files to remove spaces
+  * ADDED: Add simple API method
+  * UPDATED: Increase required CMake version to silence warning
+  * FIXED: Fix CMake issue with ARCHS_STANDARD
+  * FIXED: Adjust line token length when deindenting for recursive parsing
+  * FIXED: Require automatic abbreviation search to only match abbreviations > 1 character long, and only if they are a complete word
+  * UPDATED: Update astyle formatting
+  * UPDATED: Update rng.c from Knuth's web site
+  * FIXED: Fix unnecessary underscore escaping in LaTeX (Fixes #250)
+
+-------------------------------------------------------------------
 Wed Dec 27 11:20:41 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.7.0:
