@@ -15,8 +15,8 @@ Index: xemacs-21.5.29/etc/Emacs.ad
 +
 +!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 +!! FontSet for menus when you use --with-xfs or --with-xim=xlib.
-+XEmacs*FontSet			-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*, \
-+				-*-helvetica-bold-r-*--*-120-*-*-*-*-iso10646-1, \
++XEmacs*FontSet			-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*, \
++				-*-helvetica-bold-r-*--*-120-75-75-*-*-iso10646-1, \
 +				*
 +
  ! Set the menubar colors.  This overrides the default foreground and
@@ -26,52 +26,52 @@ Index: xemacs-21.5.29/etc/Emacs.ad
  ! *menubar*FontSet:	-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*, \
  !			-*-*-*-*-*-*-*-120-*-jisx0208.1983-0
  !
--*menubar*Font:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*
--*popup*Font:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*
--*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*, \
+-*menubar*Font:			-*-helvetica-bold-r-*-*-*-120-75-75-*-*-iso8859-*
+-*popup*Font:			-*-helvetica-bold-r-*-*-*-120-75-75-*-*-iso8859-*
+-*menubar*FontSet:		-*-helvetica-bold-r-*-*-*-120-75-75-*-*-iso8859-*, \
 - 			        -*-*-*-*-*-*-*-120-*-iso10646-1, \
 - 			        -*-*-*-*-*-*-*-120-*-jisx0208.1983-0, \
 - 			        -*-*-*-*-*-*-*-120-*-jisx0201.1976-0
--*popup*FontSet:			-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*, \
+-*popup*FontSet:			-*-helvetica-bold-r-*-*-*-120-75-75-*-*-iso8859-*, \
 -   			        -*-*-*-*-*-*-*-120-*-iso10646-1, \
 - 			        -*-*-*-*-*-*-*-120-*-jisx0208.1983-0, \
 - 			        -*-*-*-*-*-*-*-120-*-jisx0201.1976-0
-+*menubar*Font:			-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
-+*popup*Font:			-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
-+*menubar*FontSet:		-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*, \
++*menubar*Font:			-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*
++*popup*Font:			-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*
++*menubar*FontSet:		-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*, \
 + 			        -*-*-*-*-*--*-120-*-iso10646-1, \
 + 			        -*-*-*-*-*--*-120-*-jisx0208.1983-0, \
 + 			        -*-*-*-*-*--*-120-*-jisx0201.1976-0
-+*popup*FontSet:			-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*, \
++*popup*FontSet:			-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*, \
 +   			        -*-*-*-*-*--*-120-*-iso10646-1, \
 + 			        -*-*-*-*-*--*-120-*-jisx0208.1983-0, \
 + 			        -*-*-*-*-*--*-120-*-jisx0201.1976-0
  
  ! Gui elements share this font
  !
--Emacs.gui-element.attributeFont:  -*-helvetica-medium-r-*-*-*-120-*-*-*-*-iso8859-*
-+Emacs.gui-element.attributeFont:  -*-helvetica-medium-r-*--*-120-*-*-*-*-*-*
+-Emacs.gui-element.attributeFont:  -*-helvetica-medium-r-*-*-*-120-75-75-*-*-iso8859-*
++Emacs.gui-element.attributeFont:  -*-helvetica-medium-r-*--*-120-75-75-*-*-*-*
  
  ! Font in the Motif dialog boxes.
  ! (Motif uses `fontList' while most other things use `font' - if you don't
  ! know why you probably don't want to.)
  ! 
--*XmDialogShell*FontList:	-*-helvetica-bold-r-*-*-*-120-*-*-*-*-iso8859-*
--*XmTextField*FontList:		-*-courier-medium-r-*-*-*-120-*-*-*-*-iso8859-*
--*XmText*FontList:		-*-courier-medium-r-*-*-*-120-*-*-*-*-iso8859-*
--*XmList*FontList:		-*-courier-medium-r-*-*-*-120-*-*-*-*-iso8859-*
-+*XmDialogShell*FontList:	-*-helvetica-bold-r-*--*-120-*-*-*-*-*-*
-+*XmTextField*FontList:		-*-fixed-medium-r-*--*-120-*-*-*-*-*-*
-+*XmText*FontList:		-*-fixed-medium-r-*--*-120-*-*-*-*-*-*
-+*XmList*FontList:		-*-fixed-medium-r-*--*-120-*-*-*-*-*-*
+-*XmDialogShell*FontList:	-*-helvetica-bold-r-*-*-*-120-75-75-*-*-iso8859-*
+-*XmTextField*FontList:		-*-courier-medium-r-*-*-*-120-75-75-*-*-iso8859-*
+-*XmText*FontList:		-*-courier-medium-r-*-*-*-120-75-75-*-*-iso8859-*
+-*XmList*FontList:		-*-courier-medium-r-*-*-*-120-75-75-*-*-iso8859-*
++*XmDialogShell*FontList:	-*-helvetica-bold-r-*--*-120-75-75-*-*-*-*
++*XmTextField*FontList:		-*-fixed-medium-r-*--*-120-75-75-*-*-*-*
++*XmText*FontList:		-*-fixed-medium-r-*--*-120-75-75-*-*-*-*
++*XmList*FontList:		-*-fixed-medium-r-*--*-120-75-75-*-*-*-*
  
  ! Font in the Athena dialog boxes.
  ! I think 14-point looks nicer than 12-point.
  ! Some people use 12-point anyway because you get more text, but
  ! there's no purpose at all in doing this for dialog boxes.
  
--*Dialog*Font:			-*-helvetica-bold-r-*-*-*-140-*-*-*-*-iso8859-*
-+*Dialog*Font:			-*-helvetica-bold-r-*--*-140-*-*-*-*-*-*
+-*Dialog*Font:			-*-helvetica-bold-r-*-*-*-140-75-75-*-*-iso8859-*
++*Dialog*Font:			-*-helvetica-bold-r-*--*-140-75-75-*-*-*-*
  
  ! Dialog box translations.
  ! =======================

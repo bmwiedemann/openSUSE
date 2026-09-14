@@ -19,7 +19,7 @@ Index: xemacs-21.5.29/lib-src/gnuclient.c
 ===================================================================
 --- xemacs-21.5.29.orig/lib-src/gnuclient.c
 +++ xemacs-21.5.29/lib-src/gnuclient.c
-@@ -226,7 +226,7 @@ filename_expand (char *fullpath, char *f
+@@ -269,7 +269,7 @@ filename_expand (char *fullpath, char *f
  /* Encase the string in quotes, escape all the backslashes and quotes
     in string.  */
  static char *
@@ -120,7 +120,7 @@ Index: xemacs-21.5.29/lib-src/pop.c
 ===================================================================
 --- xemacs-21.5.29.orig/lib-src/pop.c
 +++ xemacs-21.5.29/lib-src/pop.c
-@@ -129,16 +129,20 @@ static char *find_crlf (char *, int);
+@@ -127,16 +127,20 @@ static char *find_crlf (char *, int);
  #define POP_PORT 110
  #define KPOP_PORT 1109
  #if defined(WIN32_NATIVE) || defined(CYGWIN)
@@ -152,7 +152,7 @@ Index: xemacs-21.5.29/lib-src/vcdiff
 ===================================================================
 --- xemacs-21.5.29.orig/lib-src/vcdiff
 +++ xemacs-21.5.29/lib-src/vcdiff
-@@ -75,7 +75,10 @@ case $# in
+@@ -81,7 +81,10 @@ case $# in
  esac
  
  
@@ -164,7 +164,7 @@ Index: xemacs-21.5.29/lib-src/vcdiff
  trap 'status=2; exit' 1 2 13 15
  trap 'rm -f $rev1 $rev2 || status=2; exit $status' 0
  
-@@ -86,14 +89,14 @@ do
+@@ -100,14 +103,14 @@ do
  	case $f in
  	s.* | */s.*)
  		if
@@ -199,7 +199,7 @@ Index: xemacs-21.5.29/lisp/dumped-lisp.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/dumped-lisp.el
 +++ xemacs-21.5.29/lisp/dumped-lisp.el
-@@ -42,6 +42,7 @@ in dumped-lisp.el and is not itself list
+@@ -43,6 +43,7 @@ in dumped-lisp.el and is not itself list
         "cl"
         "cl-extra"	; also loads cl-macs if we're running interpreted.
         "cl-seq"
@@ -207,7 +207,7 @@ Index: xemacs-21.5.29/lisp/dumped-lisp.el
         "post-gc"
         "version"
         "custom"		; Before the world so everything can be customized
-@@ -300,6 +301,7 @@ in dumped-lisp.el and is not itself list
+@@ -307,6 +308,7 @@ in dumped-lisp.el and is not itself list
          ;;     "sun-eos-debugger-extra"
          ;;     "sun-eos-menubar"))
         "loaddefs"		; <=== autoloads get loaded here
@@ -219,12 +219,12 @@ Index: xemacs-21.5.29/lisp/find-paths.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/find-paths.el
 +++ xemacs-21.5.29/lisp/find-paths.el
-@@ -338,7 +338,7 @@ DEFAULT is the preferred value."
+@@ -337,7 +337,7 @@ DEFAULT is the preferred value."
  
  (defun construct-emacs-version-name ()
    "Construct a string from the raw XEmacs version number."
--  (concat emacs-program-name "-" emacs-program-version))
-+  (concat emacs-program-name "/" emacs-program-version))
+-  (concatenate 'string emacs-program-name "-" emacs-program-version))
++  (concatenate 'string emacs-program-name "/" emacs-program-version))
  
  (defun paths-directories-which-exist (directories)
    "Return the directories among DIRECTORIES.
@@ -232,16 +232,16 @@ Index: xemacs-21.5.29/lisp/mule/cyrillic.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/mule/cyrillic.el
 +++ xemacs-21.5.29/lisp/mule/cyrillic.el
-@@ -31,6 +31,9 @@
- ;; converted to ISO8859-5 internally.
+@@ -29,6 +29,9 @@
+ ;; supported.
  
  ;;; Code:
 +(eval-when-compile
 +  (setq max-lisp-eval-depth (+ 800 max-lisp-eval-depth))
 +  (setq max-specpdl-size (+ 2000 max-specpdl-size)))
  
- ;; Case table:
- (loop
+ (eval-when (:compile-toplevel) (autoload 'setup-case-pairs "general-late"))
+ 
 Index: xemacs-21.5.29/lisp/site-init.el
 ===================================================================
 --- /dev/null
@@ -269,7 +269,7 @@ Index: xemacs-21.5.29/lisp/x-win-xfree86.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/x-win-xfree86.el
 +++ xemacs-21.5.29/lisp/x-win-xfree86.el
-@@ -99,6 +99,11 @@
+@@ -106,6 +106,11 @@
        ;; define also the control, meta, and meta-control versions.
        (loop for mods in '(() (control) (meta) (meta control)) do
  	(define-key function-key-map `[(,@mods ,key)]
@@ -805,16 +805,7 @@ Index: xemacs-21.5.29/src/Makefile.in.in
 ===================================================================
 --- xemacs-21.5.29.orig/src/Makefile.in.in
 +++ xemacs-21.5.29/src/Makefile.in.in
-@@ -574,7 +574,7 @@ $(RAW_EXE): $(link_deps) $(DUMP_ID)
- 	else \
- 		$(CC) -c $(cflags) -DMAX_SIZE=0 $(SRC)/dump-data.c ;\
- 	fi
--	$(LD) $(start_flags) $(ldflags) -o $@ $(start_files) $(objs) $(otherobjs) $(DUMP_ID) dump-data.o $(LIBES)
-+	$(LD) $(start_flags) -Wl,-rpath-link,/usr/X11R6/lib $(ldflags) -o $@ $(start_files) $(objs) $(otherobjs) $(DUMP_ID) dump-data.o $(LIBES)
- #endif
- 
- ## (3) Update the .elc's needed for dumping
-@@ -604,7 +604,7 @@ $(LIB_SRC)/DOC: $(LIB_SRC)/make-docfile
+@@ -562,7 +562,7 @@ $(LIB_SRC)/DOC: $(LIB_SRC)/make-docfile
  	$(TEMACS_BATCH) -l $(LISP)/make-docfile.el -- \
  		-o $(LIB_SRC)/DOC -d $(SRC) -i $(LIB_SRC)/../site-packages \
  		$(obj_src) $(mallocdocsrc) $(rallocdocsrc) \
@@ -827,29 +818,29 @@ Index: xemacs-21.5.29/src/print.c
 ===================================================================
 --- xemacs-21.5.29.orig/src/print.c
 +++ xemacs-21.5.29/src/print.c
-@@ -1104,6 +1104,40 @@ float_to_string (char *buf, double data)
-   Ibyte *cp, c;
+@@ -1276,6 +1276,40 @@ float_to_string (char *buf, double data)
    int width;
+   Bytecount plen;
  
 +  /* Check for plus infinity in a way that won't lose
 +     if there is no plus infinity.  */
 +  if (data == data / 2 && data > 1.0)
 +    {
 +      strcpy (buf, "1.0e+INF");
-+      return;
++      return 8;
 +    }
 +  /* Likewise for minus infinity.  */
 +  if (data == data / 2 && data < -1.0)
 +    {
 +      strcpy (buf, "-1.0e+INF");
-+      return;
++      return 9;
 +    }
 +  /* Check for NaN in a way that won't fail if there are no NaNs.  */
 +  if (! (data * 0.0 >= 0.0))
 +    {
 +      /* Prepend "-" if the NaN's sign bit is negative.
 +	 The sign bit of a double is the bit that is 1 in -0.0.  */
-+      int i;
++      size_t i;
 +      double zero = 0.0;
 +      union { double d; char c[sizeof (double)]; } u_data, u_minus_zero;
 +      u_data.d = data;
@@ -862,7 +853,7 @@ Index: xemacs-21.5.29/src/print.c
 +	  }
 +
 +      strcpy (buf, "0.0e+NaN");
-+      return;
++      return 8;
 +    }
 +
    if (NILP (Vfloat_output_format)
@@ -872,7 +863,7 @@ Index: xemacs-21.5.29/src/regex.c
 ===================================================================
 --- xemacs-21.5.29.orig/src/regex.c
 +++ xemacs-21.5.29/src/regex.c
-@@ -1154,6 +1154,9 @@ print_double_string (re_char *where, re_
+@@ -1232,6 +1232,9 @@ print_double_string (re_char *where, re_
     syntax, so it can be changed between regex compilations.  */
  /* This has no initializer because initialized variables in Emacs
     become read-only after dumping.  */

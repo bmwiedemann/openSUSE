@@ -2,7 +2,7 @@ Index: src/event-Xt.c
 ===================================================================
 --- src/event-Xt.c.orig
 +++ src/event-Xt.c
-@@ -1224,8 +1224,11 @@ x_event_to_emacs_event (XEvent *x_event,
+@@ -2314,8 +2314,11 @@ x_event_to_emacs_event (XEvent *x_event,
  
  	    if (modifiers & XEMACS_MOD_SHIFT)
  	      {

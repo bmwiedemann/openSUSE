@@ -93,7 +93,7 @@ Index: xemacs-21.5.29/src/vm-limit.c
 ===================================================================
 --- xemacs-21.5.29.orig/src/vm-limit.c
 +++ xemacs-21.5.29/src/vm-limit.c
-@@ -61,6 +61,14 @@ check_memory_limits (void)
+@@ -58,6 +58,14 @@ check_memory_limits (void)
    unsigned long data_size;
    void (*save_warn_fun) (const char *);
  

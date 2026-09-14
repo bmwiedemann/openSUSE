@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:40:56 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- site-start.el: disable set-language-unicode-precedence-list 
+
+-------------------------------------------------------------------
+Thu Sep  3 13:15:55 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to beta version XEmacs 21.5.36 "leeks"
+  * Major Features, Bugfixes, and Backward Incompatible Changes
+    see CHANGES-beta
+- Port patches
+  * bugzilla-292811-make-x-make-font-bold-italic-xft-work.patch
+  * bugzilla-301352-fix-wrong-incrementing-in-macros.patch
+  * do-not-create-backups-in-temp-directories.patch
+  * fix-defface-custom-modified-face.patch
+  * menus-always-utf8.patch
+  * reproducible.patch
+  * set-locale-to-c-when-not-supported-by-x.patch
+  * xemacs-21.4.13-ppc64.patch
+  * xemacs-21.4.8-xevent.patch
+  * xemacs-21.5.18-movemail.patch
+  * xemacs-21.5.31-array.patch
+  * xemacs-21.5.34-custom-fonts.patch
+  * xemacs-app-defaults.patch
+  * xemacs-gcc15.patch
+  * xemacs-level3.patch
+  * xemacs-libpng15.patch
+  * xemacs-ptmx.dif
+  * xemacs-tinfo.dif
+  * xemacs.patch
+- Drop patches which seems to be upstream solved
+  * xemacs-21.5.34-Xaw3D_I18N.patch
+  * xemacs-21.5.34-boo1115177.patch
+  * xemacs-21.5.34-fix2038.patch
+  * xemacs-21.5.34-gcc5.patch
+  * xemacs-21.5.34-sbrk.patch
+  * xemacs-21.5.34-strsignal.patch
+- Disable patch set-language-unicode-precedence-list.patch
+  as it does not apply anymmore and I've no idea if it should
+
+-------------------------------------------------------------------
 Wed Jun 25 09:32:46 UTC 2025 - Marguerite Su <i@marguerite.su>
 
 - add xemacs-gcc15.patch, fix TW build

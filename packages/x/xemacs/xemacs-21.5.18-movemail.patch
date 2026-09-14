@@ -1,7 +1,7 @@
 diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.c
 --- xemacs-21.5.20.orig/lib-src/movemail.c	2005-02-14 04:40:45.000000000 +0100
 +++ xemacs-21.5.20/lib-src/movemail.c	2005-05-12 12:44:12.000000000 +0200
-@@ -135,7 +135,7 @@
+@@ -132,7 +132,7 @@
  #undef write
  #undef close
  
@@ -10,7 +10,7 @@ diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.
  static void error (char *, char *, char *);
  static void usage(int);
  static void pfatal_with_name (char *);
-@@ -309,7 +309,7 @@
+@@ -306,7 +306,7 @@
  #endif
  
    if (*outname == 0)
@@ -19,7 +19,7 @@ diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.
  
    VERBOSE(("checking access to output file\n"));
    /* Check access to output file.  */
-@@ -551,7 +551,7 @@
+@@ -550,7 +550,7 @@
      return LOCKING;
  #endif
    else
@@ -28,7 +28,7 @@ diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.
    return 0; /* unreached */
  }
  
-@@ -647,10 +647,10 @@
+@@ -646,10 +646,10 @@
  /* Print error message and exit.  */
  
  static void
@@ -41,7 +41,7 @@ diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.
    exit (1);
  }
  
-@@ -667,16 +667,15 @@
+@@ -666,16 +666,15 @@
  static void
  pfatal_with_name (char *name)
  {
@@ -61,7 +61,7 @@ diff -ru xemacs-21.5.20.orig/lib-src/movemail.c xemacs-21.5.20/lib-src/movemail.
  }
  
  /* Return a newly-allocated string whose contents concatenate those of s1, s2, s3.  */
-@@ -702,7 +701,7 @@
+@@ -701,7 +700,7 @@
  {
    long *result = (long *) malloc (size);
    if (!result)

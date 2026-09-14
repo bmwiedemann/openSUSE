@@ -1,7 +1,7 @@
 #
 # spec file for package xemacs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -53,7 +53,7 @@ BuildRequires:  gpm
 %endif
 %define _id     995257d0c590
 %define _hg     hg%{_id}
-Version:        21.5.34
+Version:        21.5.36
 Release:        0
 Summary:        XEmacs
 License:        GPL-3.0-or-later
@@ -89,30 +89,21 @@ Patch28:        xemacs-21.5.18-movemail.patch
 Patch32:        do-not-create-backups-in-temp-directories.patch
 Patch33:        set-locale-to-c-when-not-supported-by-x.patch
 Patch39:        xemacs-tinfo.dif
-Patch43:        set-language-unicode-precedence-list.patch
+Source43:       set-language-unicode-precedence-list.patch
 Patch45:        fix-defface-custom-modified-face.patch
 Patch50:        menus-always-utf8.patch
 Patch51:        bnc502716-fontmenu.patch
 Patch52:        bnc502716-xft.patch
 Patch53:        xemacs-21.5.31-array.patch
-Patch54:        xemacs-21.5.34-gcc5.patch
 Patch56:        xemacs-libpng15.patch
 Patch292811:    bugzilla-292811-make-x-make-font-bold-italic-xft-work.patch
 Patch301352:    bugzilla-301352-fix-wrong-incrementing-in-macros.patch
-# PATCH-FIX-UPSTREAM bsc#930170
-Patch57:        xemacs-21.5.34-Xaw3D_I18N.patch
 # PATCH-FIX-SUSE bsc#932321
 Patch58:        xemacs-21.5.34-custom-fonts.patch
 # PATCH-FIX-SUSE do wait on alsa
 Patch59:        xemacs-21.5.34-alsaplay.patch
-# PATCH-FIX-SUSE avoid redefinition of sbrk
-Patch60:        xemacs-21.5.34-sbrk.patch
 # PATCH-FIX-SUSE fix make build race
-Patch61:        xemacs-21.5.34-boo1115177.patch
 Patch62:        xemacs-libX11-boo1175028.patch
-# PATCH-FIX-SUSE sys_siglist is deprecated
-Patch63:        xemacs-21.5.34-strsignal.patch
-Patch64:        xemacs-21.5.34-fix2038.patch
 # PATCH-FIX-SUSE drop hostname+timestamp from .elc
 Patch65:        reproducible.patch
 Patch66:        xemacs-gcc15.patch
@@ -184,7 +175,7 @@ echo Use xft, requires X11, Xft, Xrender, freetype, and fontconfig support.
 echo Use xfs, that is XFontSet support for internationalized menubar.
 %endif
 %setup -q
-%patch -P 3 -p1
+%patch -P 3 -p1 -b .adx
 %patch -P 18 -p0 -b .xevent
 %patch -P 20 -p1
 %patch -P 23 -p1
@@ -192,26 +183,21 @@ echo Use xfs, that is XFontSet support for internationalized menubar.
 %patch -P 28 -p1 -b .movemail
 %patch -P 32 -p1
 %patch -P 33 -p1
-%patch -P 39 -p0
-%patch -P 43 -p1
+%patch -P 39 -p0 -b .p39
+#%%patch -P 43 -p1
 %patch -P 45 -p0
-%patch -P 50 -p1
+%patch -P 50 -p1 -b .p50
 %if ! %enable_xfs
 %patch -P 51 -p0
 %patch -P 52 -p0
 %endif
-%patch -P 53 -p0
-%patch -P 54 -p0
-%patch -P 56 -p1
+%patch -P 53 -p0 -b .p53
 %patch -P 292811 -p1
 %patch -P 301352 -p1
-%patch -P 57 -p0
+%patch -P 56 -p0 -p1
 %patch -P 58 -p0
 %patch -P 59 -p1
-%patch -P 60 -p0
-%patch -P 61 -p0
 %patch -P 62 -p0
-%patch -P 63 -p0
 %patch -P 0 -p1
 find lisp/ etc/ -name '*.elc' | xargs -r rm -f
 find . -name CVS -type d | xargs rm -rf
@@ -230,9 +216,8 @@ exit 1
 %endif
 %endif
 %endif
-%patch -P 64 -p1
 %patch -P 65 -p1
-%patch -P 66 -p1
+%patch -P 66 -p1 -b .p66
 
 %build
   cflags ()
@@ -574,12 +559,9 @@ rm -rf %{buildroot}%{_prefix}/lib/xemacs/%{version}/*-suse-linux/include/
 %dir %{_prefix}/lib/xemacs
 %dir %{_prefix}/lib/xemacs/%{version}
 %dir %{_prefix}/lib/xemacs/%{version}/*-suse-linux/
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/DOC
+%{_prefix}/lib/xemacs/%{version}/*-suse-linux/DOC*
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/add-big-package.sh
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/config.values
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/cvtmail
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/digest-doc
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/fakemail
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/gnuserv
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/gzip-el.sh
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/hexl
@@ -588,9 +570,7 @@ rm -rf %{buildroot}%{_prefix}/lib/xemacs/%{version}/*-suse-linux/include/
 %dir %{_prefix}/lib/xemacs/%{version}/*-suse-linux/modules/
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/modules/*.ell
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/movemail
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/profile
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/rcs2log
-%{_prefix}/lib/xemacs/%{version}/*-suse-linux/sorted-doc
 %{_prefix}/lib/xemacs/%{version}/*-suse-linux/vcdiff
 %dir %{_prefix}/lib/xemacs/site-modules/
 %dir %{_docdir}/xemacs/

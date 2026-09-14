@@ -2,7 +2,7 @@ Index: xemacs-21.5.29/src/intl.c
 ===================================================================
 --- xemacs-21.5.29.orig/src/intl.c
 +++ xemacs-21.5.29/src/intl.c
-@@ -84,8 +84,10 @@ Otherwise, returns the locale, or possib
+@@ -82,8 +82,10 @@ Otherwise, returns the locale, or possib
  #ifdef HAVE_X_WINDOWS
    if (!init_x_locale (locale))
      {

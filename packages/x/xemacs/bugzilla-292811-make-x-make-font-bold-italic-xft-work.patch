@@ -2,7 +2,7 @@ Index: xemacs-21.5.29/lisp/x-faces.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/x-faces.el
 +++ xemacs-21.5.29/lisp/x-faces.el
-@@ -198,7 +198,7 @@ If it fails, it returns nil."
+@@ -184,7 +184,7 @@ If it fails, it returns nil."
  				(fc-name-parse font))))
      (if pattern
  	(let ((size (fc-pattern-get-size pattern 0))
@@ -11,7 +11,7 @@ Index: xemacs-21.5.29/lisp/x-faces.el
  	  (fc-pattern-del-weight copy)
  	  (fc-pattern-del-style copy)
  	  (when copy
-@@ -272,7 +272,7 @@ If it fails, it returns nil."
+@@ -258,7 +258,7 @@ If it fails, it returns nil."
  				(fc-name-parse font))))
      (if pattern
        (let ((size (fc-pattern-get-size pattern 0))

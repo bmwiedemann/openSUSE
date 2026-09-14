@@ -2,7 +2,7 @@ Index: xemacs-21.5.31/glyphs-eimage.c
 ===================================================================
 --- xemacs-21.5.31/src/glyphs-eimage.c
 +++ xemacs-21.5.31/src/glyphs-eimage.c
-@@ -911,7 +911,8 @@ png_instantiate (Lisp_Object image_insta
+@@ -992,7 +992,8 @@ png_instantiate (Lisp_Object image_insta
    Lisp_Image_Instance *ii = XIMAGE_INSTANCE (image_instance);
    struct png_unwind_data unwind;
    int speccount = specpdl_depth ();

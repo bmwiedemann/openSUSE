@@ -1,8 +1,13 @@
 Index: xemacs-21.5.29/src/event-Xt.c
 ===================================================================
---- xemacs-21.5.29.orig/src/event-Xt.c
-+++ xemacs-21.5.29/src/event-Xt.c
-@@ -515,8 +515,17 @@ x_key_is_modifier_p (KeyCode keycode, st
+---
+ xemacs-21.5.36/src/event-Xt.c   |   39 +++++++++++++++++++++++++++++++++------
+ xemacs-21.5.36/src/xintrinsic.h |    1 +
+ 2 files changed, 34 insertions(+), 6 deletions(-)
+
+--- xemacs-21.5.36/src/event-Xt.c
++++ xemacs-21.5.36/src/event-Xt.c	2026-09-03 09:21:40.507263185 +0000
+@@ -1614,8 +1614,17 @@ x_key_is_modifier_p (KeyCode keycode, st
    syms = &xd->x_keysym_map [(keycode - xd->x_keysym_map_min_code) *
  			   xd->x_keysym_map_keysyms_per_code];
    for (i = 0; i < xd->x_keysym_map_keysyms_per_code; i++)
@@ -22,51 +27,49 @@ Index: xemacs-21.5.29/src/event-Xt.c
        return 1;
    return 0;
  }
-@@ -872,8 +881,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
+@@ -1976,8 +1985,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
        char dummy[256];
        XLookupString (event, dummy, 200, &keysym, 0);
        *x_keysym_out = keysym;
 -      return (IsModifierKey (keysym) || keysym == XK_Mode_switch )
--	? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
+-	? Qnil : x_keysym_to_emacs_keysym (keysym);
 +      return (IsModifierKey (keysym)
 +#ifdef XK_Mode_switch
-+	|| keysym == XK_Mode_switch
++	   || keysym == XK_Mode_switch
 +#endif
 +#ifdef XK_Num_Lock
-+	|| keysym == XK_Num_Lock
++	   || keysym == XK_Num_Lock
 +#endif
 +#if defined XK_ISO_Lock && defined XK_ISO_Last_Group_Lock
-+	|| (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
++	   || (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
 +#endif
-+	) ? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
++	 ) ? Qnil : x_keysym_to_emacs_keysym (keysym);
      }
  #endif /* ! XIM_MOTIF */
  
-@@ -932,8 +950,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
+@@ -2037,8 +2055,17 @@ x_to_emacs_keysym (XKeyPressedEvent *eve
      case XLookupKeySym:
      case XLookupBoth:
        *x_keysym_out = keysym;
 -      return (IsModifierKey (keysym) || keysym == XK_Mode_switch )
--	? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
+-	? Qnil : x_keysym_to_emacs_keysym (keysym);
 +      return (IsModifierKey (keysym)
 +#ifdef XK_Mode_switch
-+	|| keysym == XK_Mode_switch
++	    || keysym == XK_Mode_switch
 +#endif
 +#ifdef XK_Num_Lock
-+	|| keysym == XK_Num_Lock
++	    || keysym == XK_Num_Lock
 +#endif
-+#if defined XK_ISO_Lock && defined XK_ISO_Last_Group_Lock
-+	|| (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
++#ifdef XK_Mode_switch
++	    || (keysym >= XK_ISO_Lock && keysym <= XK_ISO_Last_Group_Lock)
 +#endif
-+	) ? Qnil : x_keysym_to_emacs_keysym (keysym, simple_p);
++	) ? Qnil : x_keysym_to_emacs_keysym (keysym);
  
      case XLookupChars:
        {
-Index: xemacs-21.5.29/src/xintrinsic.h
-===================================================================
---- xemacs-21.5.29.orig/src/xintrinsic.h
-+++ xemacs-21.5.29/src/xintrinsic.h
-@@ -22,6 +22,7 @@ Boston, MA 02111-1307, USA.  */
+--- xemacs-21.5.36/src/xintrinsic.h
++++ xemacs-21.5.36/src/xintrinsic.h	2026-09-03 09:14:39.942748097 +0000
+@@ -20,6 +20,7 @@ along with XEmacs.  If not, see <http://
  #ifndef INCLUDED_xintrinsic_h_
  #define INCLUDED_xintrinsic_h_
  

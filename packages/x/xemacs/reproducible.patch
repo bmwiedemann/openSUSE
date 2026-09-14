@@ -5,19 +5,20 @@ drop timestamp and build host name from .elc files
 
 Index: xemacs-21.5.34/lisp/bytecomp.el
 ===================================================================
---- xemacs-21.5.34.orig/lisp/bytecomp.el
-+++ xemacs-21.5.34/lisp/bytecomp.el
-@@ -2156,11 +2156,8 @@ docstrings code.")
+---
+ xemacs-21.5.36/lisp/bytecomp.el |    4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
+
+--- xemacs-21.5.36/lisp/bytecomp.el
++++ xemacs-21.5.36/lisp/bytecomp.el	2026-09-03 12:43:45.387465362 +0000
+@@ -2189,9 +2189,7 @@ docstrings code.")
                 finally return res)))
      (setq comments 
  	  (with-string-as-buffer-contents ""
 -	    (insert "\n;;; compiled by "
 -		    (or (and (boundp 'user-mail-address) user-mail-address)
 -			(concat (user-login-name) "@" (system-name)))
--		    " on "
--		    (current-time-string) "\n;;; from file " filename "\n")
 +	    (insert "\n;;; compiled"
-+		    "\n;;; from file " filename "\n")
+ 		    "\n;;; from file " filename "\n")
  	    (insert ";;; emacs version " emacs-version ".\n")
  	    (insert ";;; bytecomp version " byte-compile-version "\n;;; "
- 		    (cond

@@ -72,8 +72,8 @@
 	 (create-variant-language-environment langenv 'utf-8))))
  language-info-alist)
 
-(set-language-unicode-precedence-list
- (get-language-info current-language-environment 'charset))
+;;(set-language-unicode-precedence-list
+;; (get-language-info current-language-environment 'charset))
 
 ;; (when (emacs-version>= 21 5 6)
 ;;   (let ((old-lang (getenv "LANG"))

@@ -2,7 +2,7 @@ Index: xemacs-21.5.29/lisp/files.el
 ===================================================================
 --- xemacs-21.5.29.orig/lisp/files.el
 +++ xemacs-21.5.29/lisp/files.el
-@@ -166,7 +166,9 @@ This variable is relevant only if `backu
+@@ -160,7 +160,9 @@ This variable is relevant only if `backu
  Checks for files in the directory returned by `temp-directory' or specified
  by `small-temporary-file-directory'."
    (let ((temporary-file-directory (temp-directory)))

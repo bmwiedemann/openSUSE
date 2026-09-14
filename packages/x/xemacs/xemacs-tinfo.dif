@@ -1,43 +1,76 @@
+---
+ configure.ac    |   28 +++++++++++++++++++++-------
+ src/config.h.in |    1 +
+ 2 files changed, 22 insertions(+), 7 deletions(-)
+
 --- configure.ac
-+++ configure.ac	2011-11-22 14:21:37.303146192 +0000
-@@ -4946,15 +4946,30 @@ if test "$with_tty" = "yes"  ; then
++++ configure.ac	2026-09-03 09:45:58.681339041 +0000
+@@ -5006,33 +5006,47 @@ if test "$with_tty" = "yes"  ; then
    AC_DEFINE(HAVE_TTY)
  
    dnl Autodetect ncurses.
 +  cf_tgetent=""
    if test -z "$with_ncurses"; then
--    AC_CHECK_LIB(ncurses, tgetent, with_ncurses=yes, with_ncurses=no)
-+    with_ncurses=no;
-+    for lib in tinfo ncurses ncursesw ; do
-+	AC_CHECK_LIB($lib, tgetent, [with_ncurses=yes; cf_tgetent="$lib"; break])
-+    done
+-    if $PKG_CONFIG --exists ncurses; then
++   for lib in tinfo ncursesw ncurses ; do
++    if $PKG_CONFIG --exists $lib; then
+       ac_save_LIBS="$LIBS"
+       auto_ncurses_libs=yes
+-      XE_PREPEND(`pkg-config --libs ncurses`, LIBS);
+-      AC_CHECK_FUNC(tgetent, with_ncurses=yes, with_ncurses=no)
++      XE_PREPEND(`pkg-config --libs $lib`, LIBS);
++      AC_CHECK_FUNC(tgetent, [with_ncurses=yes; cf_tgetent="$lib"; break], with_ncurses=no)
+       if test "$with_ncurses" = "yes"; then
+-        XE_PREPEND(`pkg-config --cflags ncurses`, CFLAGS);
++        XE_PREPEND(`pkg-config --cflags $lib`, CFLAGS);
+       else
+         LIBS="$ac_save_LIBS"
+       fi
+     else
+-      AC_CHECK_LIB(ncurses, tgetent, with_ncurses=yes, with_ncurses=no)
++      AC_CHECK_LIB($lib, tgetent, [with_ncurses=yes; cf_tgetent="$lib"; break], with_ncurses=no)
+       if test "$with_ncurses" = "yes"; then
+         auto_ncurses_libs=yes
+-        XE_PREPEND(-lncurses, LIBS)
++        XE_PREPEND(-l$lib, LIBS)
+       else
+         auto_ncurses_libs=no
+       fi
+     fi
++   done
+   else
+     auto_ncurses_libs=no
    fi
    if test "$with_ncurses" = "yes"; then
-+    if test x$cf_tgetent = x ; then
-+      for lib in tinfo ncurses ncursesw ; do
-+	AC_CHECK_LIB($lib, tgetent, [cf_tgetent="$lib"; break])
-+      done
-+    fi
++   if test x$cf_tgetent = x ; then
++    for lib in tinfo ncursesw ncurses ; do
++      AC_CHECK_LIB($lib, tgetent, [cf_tgetent="$lib"; break])
++    done
++   fi
++   if test "$cf_tgetent" = ncursesw; then
++    AC_DEFINE(HAVE_NCURSESW)
++    AC_CHECK_HEADER(ncursesw/curses.h, curses_h_file=ncursesw/curses.h)
++    AC_CHECK_HEADER(ncursesw/term.h, term_h_file=ncursesw/term.h)
++   else
      AC_DEFINE(HAVE_NCURSES)
--    AC_CHECK_HEADER(ncurses/curses.h, curses_h_file=ncurses/curses.h)
--    AC_CHECK_HEADER(ncurses/term.h, term_h_file=ncurses/term.h)
-+    if test "$cf_tgetent" = ncursesw; then
-+      AC_DEFINE(HAVE_NCURSESW)
-+      AC_CHECK_HEADER(ncursesw/curses.h, curses_h_file=ncursesw/curses.h)
-+      AC_CHECK_HEADER(ncursesw/term.h, term_h_file=ncursesw/term.h)
-+    else
-+      AC_CHECK_HEADER(ncurses/curses.h, curses_h_file=ncurses/curses.h)
-+      AC_CHECK_HEADER(ncurses/term.h, term_h_file=ncurses/term.h)
-+    fi
+     AC_CHECK_HEADER(ncurses/curses.h, curses_h_file=ncurses/curses.h)
+     AC_CHECK_HEADER(ncurses/term.h, term_h_file=ncurses/term.h)
++   fi
      XE_ADD_OBJS(terminfo.o)
--    XE_PREPEND(-lncurses, LIBS)
-+    XE_PREPEND(-l$cf_tgetent, LIBS)
- 
-     if test "$ac_cv_header_ncurses_curses_h" != "yes" ; then
+     if test "$auto_ncurses_libs" = "no"; then
+       if $PKG_CONFIG --exists ncurses; then
+@@ -5041,7 +5055,7 @@ if test "$with_tty" = "yes"  ; then
+         XE_PREPEND(-lncurses, LIBS)
+       fi
+     fi
+-    if test "$ac_cv_header_ncurses_curses_h" != "yes" ; then
++    if test "$ac_cv_header_ncurses_curses_h" != "yes" -a "$ac_cv_header_ncursesw_curses_h" != "yes" ; then
        dnl Try again, and check for the bogus ncurses/ include bug.
+       dnl (i.e. ncurses/curses.h bogusly includes <unctrl.h> instead of
+       dnl <ncurses/unctrl.h>)
 --- src/config.h.in
-+++ src/config.h.in	2011-11-22 14:21:50.939646812 +0000
-@@ -580,6 +580,7 @@ things are arranged in config.h.in.  In
++++ src/config.h.in	2026-09-03 09:28:45.695692932 +0000
+@@ -562,6 +562,7 @@ things are arranged in config.h.in.  In
  
  /* Compile in support for ncurses?  */
  #undef HAVE_NCURSES
