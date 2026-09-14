@@ -1,7 +1,7 @@
 #
 # spec file for package git-subrepo
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,11 +17,10 @@
 
 
 Name:           git-subrepo
-Version:        0.4.6
+Version:        0.4.9
 Release:        0
 Summary:        Git Submodule Alternative
 License:        MIT
-Group:          Development/Tools/Version Control
 URL:            https://github.com/ingydotnet/git-subrepo
 Source:         https://github.com/ingydotnet/git-subrepo/archive/%{version}.tar.gz
 Patch0:         fix-shebangs.patch
@@ -39,7 +38,6 @@ pushed back. Simple.
 
 %package bash-completion
 Summary:        Bash completion for git-subrepo
-Group:          Productivity/File utilities
 Requires:       bash-completion
 Supplements:    (git-subrepo and bash-completion)
 BuildArch:      noarch
@@ -49,7 +47,6 @@ Bash shell completions for git-subrepo
 
 %package zsh-completion
 Summary:        ZSH completion for git-subrepo
-Group:          Productivity/File utilities
 Supplements:    (git-subrepo and zsh)
 BuildArch:      noarch
 

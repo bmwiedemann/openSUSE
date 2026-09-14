@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:17:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.9:
+  * Remove all subrepo refs with clean --force
+  * Allow the error() function to accept multiple arguments
+  * Clone --force no longer changes the tracked branch
+  * Clearer error message when the subrepo parent is not found
+  * Use configured default branch for the init command
+  * Add --force to the fetch command
+  * Fix quoting causing pathname collisions
+  * Drop Group tags
+- Rebase fix-shebangs.patch: drop hunk for sourced-only
+  help-functions.bash, upstream removed its shebang
+
+-------------------------------------------------------------------
 Tue Feb 27 11:00:53 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
