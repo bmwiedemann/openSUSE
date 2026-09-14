@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:12:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260911:
+  * ftm300d: Experimental Yaesu FTM-300DR driver
+  * Update Ukrainian localization
+  * ar8200: Fix importing memories with AM mode
+  * Unify Baofeng setting descriptions across drivers
+  * Add Yaesu FT5D
+  * uvb5: Fix Reverse setting
+
+-------------------------------------------------------------------
 Wed Sep 09 19:37:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260904:
@@ -11,7 +22,7 @@ Fri Aug 21 18:55:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260821:
   * Add Kenwood NX-800 driver
-  * kenwood_itm: Fix DCS parsing
+  * CVE-2026-78136: kenwood_itm: Fix DCS parsing (boo#1280123)
   * tmd710: various bug fixes
   * Add TK-3180E support
   * tk8180: various updates
