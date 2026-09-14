@@ -23,4 +23,12 @@
     <comment>Update to 0.660: fixes CVE-2025-9396, CVE-2025-15570 (UAF in lzma_decompress_buf), CVE-2025-15571 (NULL deref in ucompthread); drop merged fixasmstack.patch; build from upstream GitHub tarball</comment>
     <requestid>1360870</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ca0d4dc04b5b3f98a69cc480ef30fc8d</srcmd5>
+    <version>0.702</version>
+    <time>1789395610</time>
+    <user>anag_factory</user>
+    <comment>Forward lrzip 0.702 to Factory (replaces declined 1377560 which used forbidden Epoch:1). Upstream renumbered 0.660-&gt;0.7.2 which sorts lower in rpmvercmp, so Version 0.702 = 7*100+2 with mapping comment in spec; verified 0.660&lt;0.702 and future 0.703/0.800/0.1000 sort correctly. No Epoch. Native aarch64 build green, %check 93/93.</comment>
+    <requestid>1377595</requestid>
+  </revision>
 </revisionlist>

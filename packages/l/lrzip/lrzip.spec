@@ -18,17 +18,17 @@
 
 
 Name:           lrzip
-Version:        0.660
+# Upstream renumbered 0.660 -> 0.7.2, which sorts older in rpmvercmp;
+# Epoch is forbidden per review, so map upstream 0.7.2 -> 0.702
+# (7*100+2): sorts above 0.660, stays ordered for 0.7.x/0.8.x/0.10.x.
+Version:        0.702
 Release:        0
 Summary:        Very High Ratio and Speed Compression Designed for Large Files
 License:        GPL-2.0-only
 URL:            http://ck.kolivas.org/apps/lrzip/
-Source:         https://github.com/ckolivas/lrzip/archive/refs/tags/v%{version}.tar.gz#/lrzip-%{version}.tar.gz
-BuildRequires:  autoconf
-BuildRequires:  automake
+Source:         https://github.com/ckolivas/lrzip/releases/download/v0.7.2/lrzip-0.7.2.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  libtool
-BuildRequires:  nasm
+BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(liblz4)
@@ -46,28 +46,32 @@ speed optimizations allows for either better compression than even lzma can
 provide, or better speed than gzip, but with bzip2 sized compression levels.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n lrzip-0.7.2
 
 %build
-autoreconf -fiv
-%configure \
-%ifnarch %{ix86} x86_64
-  --disable-asm \
-%endif
-
+%configure
 %make_build
+
+%check
+# SKIP_SLOW drops the 1 GiB parallel/sort cases, too heavy for builders
+SKIP_SLOW=1 %make_build check
 
 %install
 %make_install
 rm -rf "%{buildroot}%{_datadir}/doc"
-rm doc/Makefile*
-chmod 0644 README* COPYING doc/README*
+chmod 0644 README* COPYING doc/README* doc/magic.header.txt doc/lrzip.conf.example
 
 %files
 %license COPYING
 %doc AUTHORS ChangeLog README* TODO WHATS-NEW
-%doc doc/*
-%{_bindir}/*
+%doc doc/README.benchmarks doc/README.lzo_compresses.test.txt
+%doc doc/lrzip.conf.example doc/magic.header.txt
+%{_bindir}/lrzip
+%{_bindir}/lrunzip
+%{_bindir}/lrzcat
+%{_bindir}/lrztar
+%{_bindir}/lrzuntar
+%{_bindir}/lrz
 %{_mandir}/man?/*.?%{?ext_man}
 
 %changelog

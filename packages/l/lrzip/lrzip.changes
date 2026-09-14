@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:28:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Rework to version 0.702 with no Epoch (Epoch forbidden per review):
+  upstream 0.7.2 maps to 0.702 (7*100+2), which sorts above
+  0.660 in rpmvercmp; same mapping holds for 0.7.x/0.8.x/0.10.x
+- Drop Epoch 1 from the declined submission
+
+-------------------------------------------------------------------
+Sat Sep 12 14:26:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.2:
+  * New mostly backward compatible file format, except streamed
+    STDIO and encrypted files (see README-NOT-BACKWARD-COMPATIBLE)
+  * Embedded libzpaq 5.00 -> 7.15 and LZMA SDK -> 26.02 for faster
+    and better compression
+  * Default encryption is now AES-256-GCM + PBKDF2-HMAC-SHA512, add
+    --legacy-encrypt for 0.6-compatible AES-128-CBC
+  * Add -u/ultra mode, lzma filter support, lrztar takes most lrzip
+    options, MacOS build fixes
+- Add Epoch 1: upstream renumbered 0.660 -> 0.7.x, which sorts older
+  in rpmvercmp, so this keeps the update an upgrade
+- Switch to the upstream release tarball (ships configure): drop
+  autoconf/automake/libtool/nasm BuildRequires and the autoreconf step
+- Add perl BuildRequires for pod2man (man pages generate at build time)
+- Run the upstream regression suite in %check (SKIP_SLOW=1)
+
+-------------------------------------------------------------------
 Sun Jun 21 16:57:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.660:
