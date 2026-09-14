@@ -237,4 +237,12 @@
     <comment>update to 0.15.1 (forwarded request 1369132 from ojkastl_buildservice)</comment>
     <requestid>1369225</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9ece60f8ed00c450119d2566e903088d</srcmd5>
+    <version>0.16.0</version>
+    <time>1789395683</time>
+    <user>anag_factory</user>
+    <comment>Forward gitea-tea 0.16.0 to Factory (x/crypto 0.56.0 fixes CVE-2026-56855/56854/78662, boo#1278609). Testreport: local aarch64 build green, source_validator clean.</comment>
+    <requestid>1377649</requestid>
+  </revision>
 </revisionlist>

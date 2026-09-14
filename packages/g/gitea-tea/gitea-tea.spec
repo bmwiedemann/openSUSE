@@ -17,9 +17,9 @@
 
 
 # run go list -f '{{.Version}}' -m gitea.dev/sdk inside the git repo
-%define         sdkversion 1.1.0
+%define         sdkversion 1.2.0
 Name:           gitea-tea
-Version:        0.15.1
+Version:        0.16.0
 Release:        0
 Summary:        A command line tool to interact with Gitea servers
 License:        MIT

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:18:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.0:
+  * login: new status command, no more panic on auto-discovered
+    SSH keys, oauth no longer waits for the browser opener
+  * issues/pulls create honor --output json, description readable
+    from stdin or a file
+  * pulls: report the real reason when a merge is refused
+  * vendored x/crypto 0.54.0 -> 0.56.0, x/net -> 0.57.0,
+    gitea SDK 1.1.0 -> 1.2.0
+- CVE-2026-56855, CVE-2026-56854, CVE-2026-78662: x/crypto/ssh
+  authentication bypass and deadlocks (boo#1278609)
+
+-------------------------------------------------------------------
 Mon Aug  3 05:54:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.15.1:
