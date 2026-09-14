@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 06:17:48 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.8.3:
+  * Fixes --version for packages that are built from source #1073
+
+-------------------------------------------------------------------
 Mon Aug 31 06:35:05 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.8.2:

@@ -230,4 +230,13 @@
   * Fixes zip archives that other tools can't read #1018</comment>
     <requestid>1374790</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3dcaa738650fd98827a7aac05ef8457e</srcmd5>
+    <version>0.8.3</version>
+    <time>1789395884</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.3:
+  * Fixes --version for packages that are built from source #1073</comment>
+    <requestid>1377819</requestid>
+  </revision>
 </revisionlist>
