@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:27:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.7.1:
+  * Add password options for 7z, zip, rar and arj archives
+  * Fix 7z extraction handling
+  * Require Python 3.10+, support 3.12 and 3.13, drop dead
+    Python 2 compat code
+  * Fix .tar.lz type mapping
+  * Magic test for archives with zero-length entry
+- Narrow %files glob to explicit module and dist-info entries
+- Port build to PEP 517 (%python3_pyproject_wheel/_install,
+  setuptools >= 75): upstream 8.7 dropped setup.py, %python3_build
+  no longer works
+- Add %check import smoke test
+- Strip stray shebang from the imported-only dtrx.py module
+- Repair 2008 changelog header rejected by check_dates_in_changes
+  (blank line after separator plus missing ' - ' before author)
+
+-------------------------------------------------------------------
 Tue Jul  9 13:23:53 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 8.5.3:
@@ -81,8 +100,7 @@ Wed Jul 24 20:33:23 UTC 2013 - zaitor@opensuse.org
 - Add BuildArch: norach for opensuse.
 
 -------------------------------------------------------------------
-
-* Mon Oct 20 2008 Pascal Bleser <guru@unixtech.be> 6.3
+* Mon Oct 20 2008 - Pascal Bleser <guru@unixtech.be> 6.3
 - update to 6.3:
   * this release adds support for RAR archives
   * fixes a bug that caused dtrx to crash when extracting certain kinds of

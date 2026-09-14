@@ -1,7 +1,7 @@
 #
 # spec file for package dtrx
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           dtrx
-Version:        8.5.3
+Version:        8.7.1
 Release:        0
 Summary:        Intelligent Archive Extraction Tool
 License:        GPL-3.0-only
@@ -25,7 +25,9 @@ URL:            https://brettcsmith.org/2007/dtrx/
 Source:         https://github.com/dtrx-py/dtrx/releases/download/%{version}/dtrx-%{version}.tar.gz
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-pip
+BuildRequires:  python3-setuptools >= 75
+BuildRequires:  python3-wheel
 Requires:       bzip2
 Requires:       cpio
 Requires:       gzip
@@ -52,17 +54,24 @@ Features:
 
 %prep
 %autosetup
+# dtrx.py is imported, never executed (entry point is %%{_bindir}/dtrx);
+# drop its stray shebang (rpmlint non-executable-script).
+sed -i '1{/^#!/d}' dtrx/dtrx.py
 
 %build
-%python3_build
+%python3_pyproject_wheel
 
 %install
-%python3_install
+%python3_pyproject_install
+
+%check
+PYTHONPATH=%{buildroot}%{python3_sitelib} python3 -B -c "import dtrx.dtrx"
 
 %files
 %license COPYING
 %doc README.md
 %{_bindir}/dtrx
-%{python3_sitelib}/*
+%{python3_sitelib}/dtrx
+%{python3_sitelib}/dtrx-%{version}.dist-info
 
 %changelog
