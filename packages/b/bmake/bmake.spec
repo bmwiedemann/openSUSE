@@ -1,7 +1,7 @@
 #
 # spec file for package bmake
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,7 +23,7 @@
 %endif
 
 Name:           bmake
-Version:        20230723
+Version:        20260824
 Release:        0
 Summary:        The NetBSD make(1) tool
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause
@@ -35,6 +35,9 @@ Source0:        https://ftp.NetBSD.org/pub/NetBSD/misc/sjg/bmake-%{version}.tar.
 Patch0:         allow-overriding-compiler-variables.patch
 # PATCH-FIX-OPENSUSE vs. E: env-script-interpreter meta2deps.py /usr/bin/env python
 Patch1:         bmake-env-script-interpreter.diff
+# unit-tests (%%check) shell out to bc and need zoneinfo for TZ tests
+BuildRequires:  bc
+BuildRequires:  timezone
 
 %description
 bmake, the NetBSD make(1) tool, is a program designed to simplify the
