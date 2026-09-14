@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:55:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.4:
+  * Shell permission checks now require approval for risky syntax
+    and command options that could bypass workspace and denylist
+    controls (CVE-2026-87984, CVE-2026-87985, CVE-2026-87986,
+    CVE-2026-87987, and residual CVE-2026-87988 variants)
+  * Connector discovery excludes raw HTTP connectors without MCP
+    tools; one invalid connector no longer blocks the rest, and
+    over-cap accounts keep a bounded catalog
+  * Automatic session titles use the active model on custom
+    endpoints; ACP clients always list the active mode
+  * Smart-approve appears in the Vibe Desktop mode picker and
+    escalates a repeated risky action to a confirmation prompt
+    with the reason; auto-approved calls show a note, not a warning
+  * @ file mentions resolve against every workspace root including
+    --add-dir ones; --add-dir keeps the working directory in roots
+- All nine patches re-apply cleanly, no rebase needed
+
+-------------------------------------------------------------------
 Sat Sep 12 07:13:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.25.3:

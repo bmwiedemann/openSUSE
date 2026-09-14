@@ -610,4 +610,19 @@ New /branch command, Git-aware @ mentions, retained-chat worktree restore, priva
 Local aarch64 builds green: main (rpmlint 0 badness), test flavor (7979 passed, 40 skipped).</comment>
     <requestid>1377490</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a4b39e321f7560bb0cd5d817f9d5ced9</srcmd5>
+    <version>2.25.4</version>
+    <time>1789395763</time>
+    <user>anag_factory</user>
+    <comment>Update mistral-vibe to 2.25.4.
+
+Upstream v2.25.4: shell permission checks require approval for risky
+syntax/options (CVE-2026-87984, CVE-2026-87985, CVE-2026-87986,
+CVE-2026-87987, residual CVE-2026-87988 variants per upstream notes);
+connector discovery/MCP catalog hardening; @ mentions against all
+workspace roots. All nine patches re-apply cleanly. Local native
+aarch64 builds green (main + test flavors, 8343 passed / 40 skipped).</comment>
+    <requestid>1377760</requestid>
+  </revision>
 </revisionlist>
