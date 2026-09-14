@@ -20,7 +20,7 @@
 
 Name:           libvsgpt
 %define lname	libvsgpt1
-Version:        20260731
+Version:        20260911
 Release:        0
 Summary:        Library and tools to access the GUID Partition Table (GPT) volume system format
 License:        LGPL-3.0-or-later
