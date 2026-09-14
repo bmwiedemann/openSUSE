@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:08:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.6:
+  * TTF parser security hardening: bounds checks for crafted
+    fonts (heap overflow read/write fixes)
+  * Fix missing HPDF_FAILED_TO_ALLOC_MEM error definition
+  * Allow user password equal to owner password
+  * CMake fixes: docs/bindings install dir, Win32 x86 build,
+    WebAssembly support
+  * Includes changes from 2.4.5: load fonts from memory, Mac
+    TTC support, UNITY_BUILD, Ruby bindings and PDF/A fixes
+  * SOVERSION unchanged (2.4), no shared-library policy action
+    needed
+  * Follow upstream install move of README/CHANGES/bindings from
+    /usr/share/libharu to the docdir (drop now-dead fdupes call)
+
+-------------------------------------------------------------------
 Tue Sep 19 05:58:01 UTC 2023 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.4.4:

@@ -1,7 +1,7 @@
 #
 # spec file for package libharu
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,13 @@
 %define relver 2_4
 %define lname   libhpdf%{relver}
 Name:           libharu
-Version:        2.4.4
+Version:        2.4.6
 Release:        0
 Summary:        Library for generating PDF files
 License:        Zlib
-Group:          Productivity/Office/Other
-URL:            http://libharu.org
+URL:            https://libharu.org
 Source0:        https://github.com/libharu/libharu/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake
-BuildRequires:  fdupes
 BuildRequires:  libpng-devel
 BuildRequires:  zlib-devel
 
@@ -45,7 +43,6 @@ It supports the following features:
 
 %package -n %{lname}
 Summary:        Library for generating PDF files
-Group:          System/Libraries
 
 %description -n %{lname}
 libHaru is a library for generating PDF files.
@@ -61,7 +58,6 @@ It supports the following features:
 
 %package        devel
 Summary:        Development files for libharu
-Group:          Development/Libraries/C and C++
 Requires:       %{lname} = %{version}
 Requires:       libpng-devel
 Requires:       zlib-devel
@@ -82,8 +78,8 @@ applications that use %{name}.
 
 %install
 %cmake_install
-
-%fdupes %{buildroot}%{_datadir}/%{name}/
+# Upstream 2.4.5+ installs README/CHANGES/bindings to the docdir
+# (was %{_datadir}/libharu), owned by the devel package below.
 
 %post -n %{lname} -p /sbin/ldconfig
 %postun -n %{lname} -p /sbin/ldconfig
@@ -96,6 +92,6 @@ applications that use %{name}.
 %files devel
 %{_libdir}/libhpdf.so
 %{_includedir}/*.h
-%{_datadir}/%{name}/
+%{_docdir}/%{name}/
 
 %changelog

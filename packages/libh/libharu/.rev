@@ -85,4 +85,12 @@
     <comment></comment>
     <requestid>1112158</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>67570e6d2300b1b1224eb8a93a5ce060</srcmd5>
+    <version>2.4.6</version>
+    <time>1789395736</time>
+    <user>anag_factory</user>
+    <comment>Forward libharu 2.4.6 (incl. comment cleanup). Native aarch64 build green, validator clean.</comment>
+    <requestid>1377745</requestid>
+  </revision>
 </revisionlist>
