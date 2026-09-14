@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:19:06 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.11.0:
+  * chore: release v17.11.0 (#2330)
+  * feat(pkg): make non-interactive when `assume_yes` (#2322)
+  * fix: ignore .DS_Store files when parsing configuration files (#2326)
+  * fix(sheldon): move generic options before `lock --update` (#2329)
+
+-------------------------------------------------------------------
 Fri Sep 11 12:23:55 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.10.1:
