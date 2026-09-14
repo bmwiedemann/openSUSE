@@ -17,11 +17,10 @@
 
 
 Name:           icmake
-Version:        13.05.01
+Version:        13.06.01
 Release:        0
 Summary:        A program maintenance (make) utility using a C-like grammar
 License:        GPL-3.0-only
-Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/icmake
 Source:         %{URL}/-/archive/%{version}/icmake-%{version}.tar.bz2
 BuildRequires:  bison
@@ -68,13 +67,13 @@ popd
 %{_bindir}/icmbuild
 %{_bindir}/icmodmap
 %{_bindir}/icmstart
-%{_mandir}/man1/icmake.1%{ext_man}
-%{_mandir}/man1/icmbuild.1%{ext_man}
-%{_mandir}/man1/icmodmap.1%{ext_man}
-%{_mandir}/man1/icmstart.1%{ext_man}
-%{_mandir}/man7/icmconf.7%{ext_man}
-%{_mandir}/man7/icmstart.rc.7%{ext_man}
-%{_mandir}/man7/icmscript.7%{ext_man}
+%{_mandir}/man1/icmake.1%{?ext_man}
+%{_mandir}/man1/icmbuild.1%{?ext_man}
+%{_mandir}/man1/icmodmap.1%{?ext_man}
+%{_mandir}/man1/icmstart.1%{?ext_man}
+%{_mandir}/man7/icmconf.7%{?ext_man}
+%{_mandir}/man7/icmstart.rc.7%{?ext_man}
+%{_mandir}/man7/icmscript.7%{?ext_man}
 %{_datadir}/icmake
 %dir %{_libdir}/icmake
 %{_libdir}/icmake/icm-comp

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:20:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 13.06.01:
+  * 13.06.00: compiled object files now use a comma-separated
+    directory prefix (like ,version.o) instead of number prefixes,
+    showing source directories in objdump output.
+  * 13.06.01: cosmetic symlink fix, no user-visible changes.
+- Spec cleanup: drop Group tag, use %{?ext_man} (spec-cleaner).
+
+-------------------------------------------------------------------
 Wed Apr 01 09:23:31 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 13.05.01
