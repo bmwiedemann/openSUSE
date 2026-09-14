@@ -175,4 +175,12 @@
     <comment></comment>
     <requestid>1147867</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>38e03c9a462c2eff124e5d1cd7e7d679</srcmd5>
+    <version>2026.27</version>
+    <time>1789395685</time>
+    <user>anag_factory</user>
+    <comment>Update to 2026.27, switch upstream to Phorge (phorgeit/arcanist, maintained successor of dead phacility/arcanist). Local aarch64 build green, source_validator clean.</comment>
+    <requestid>1377651</requestid>
+  </revision>
 </revisionlist>

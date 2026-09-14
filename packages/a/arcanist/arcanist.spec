@@ -1,7 +1,7 @@
 #
 # spec file for package arcanist
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,18 @@
 
 
 Name:           arcanist
-Version:        0.0~git.20220517T162014~85c953e
+Version:        2026.27
 Release:        0
-Summary:        Command-line interface to Phabricator
-License:        Apache-2.0
-URL:            https://secure.phabricator.com/diffusion/ARC/
-Source0:        %{name}-%{version}.tar.xz
+Summary:        Command-line interface to Phorge
+License:        Apache-2.0 AND MIT
+URL:            https://phorge.it/
+Source0:        https://github.com/phorgeit/arcanist/archive/refs/tags/%{version}.tar.gz#/arcanist-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE remove-arc-upgrade.patch -- Remove workflow/ArcanistUpgradeWorkflow.php
 Patch0:         remove-arc-upgrade.patch
-# https://secure.phabricator.com/D21746
+# Silence E_DEPRECATED so runtime deprecations do not break arc (boo#1160681 follow-up; E_STRICT reference dropped, the constant is deprecated since PHP 8.4)
 Patch1:         arcanist-default-error_reporting.patch
 BuildRequires:  ca-certificates
 BuildRequires:  php8-curl
-BuildRequires:  xz
 Requires:       ca-certificates
 Requires:       php8
 Requires:       php8-curl
@@ -41,17 +40,14 @@ Obsoletes:      php7-libphutil < %{version}
 BuildArch:      noarch
 
 %description
-Arcanist is the command-line tool for Phabricator.
-It allows you to interact with Phabricator installs to send code for review,
+Arcanist is the command-line tool for Phorge.
+It allows you to interact with Phorge installs to send code for review,
 download patches, transfer files, view status, make API calls, and various other
 things.
-
-For more information, visit http://www.phabricator.com/docs/arcanist/
 
 %prep
 %autosetup -p1
 
-rm -f scripts/breakout.py
 # Remove 'arc upgrade'
 rm -f src/workflow/ArcanistUpgradeWorkflow.php
 
@@ -61,7 +57,14 @@ find src -name __tests__ -type d -print0 | xargs -0 rm -rf
 # Generate bash completion
 bin/arc shell-complete --generate --
 
+# Placeholder for the generated completion rules
+rm -f support/shell/rules/.keep
+
 %build
+
+%check
+# Smoke test: arc must start on the packaged PHP without network
+php8 bin/arc help | grep -qi "workflow"
 
 %install
 # arcanist
@@ -81,7 +84,7 @@ ln -sf %{_datadir}/phabricator/%{name}/bin/arc %{buildroot}%{_bindir}/arc
 
 # Replace bundled ca-bundle with symlink to system bundle.
 rm %{buildroot}%{_datadir}/phabricator/arcanist/resources/ssl/default.pem
-ln -s /var/lib/ca-certificates/ca-bundle.pem %{buildroot}%{_datadir}/phabricator/arcanist/resources/ssl/default.pem
+ln -s %{_localstatedir}/lib/ca-certificates/ca-bundle.pem %{buildroot}%{_datadir}/phabricator/arcanist/resources/ssl/default.pem
 
 # bash completion
 

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:20:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.27, switch upstream lineage to Phorge:
+  * phacility/arcanist is dead since Phabricator was discontinued
+    in 2021; phorgeit/arcanist is the maintained successor
+  * Drop tar_scm service, fetch the release tarball from the tag
+  * Rebase remove-arc-upgrade.patch, keep dropping self-upgrade
+  * Rebase error_reporting patch: upstream is plain E_ALL now,
+    silence E_DEPRECATED without referencing E_STRICT
+  * License is Apache-2.0 AND MIT (bundled jsonlint in externals)
+- Drop xz BuildRequires, gzip tarball needs none
+- Add %check smoke test (arc help runs on php8), drop .keep stub
+  and dead breakout.py removal (gone upstream)
+
+-------------------------------------------------------------------
 Tue Feb 20 11:19:12 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
