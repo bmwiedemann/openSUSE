@@ -1,7 +1,7 @@
 #
 # spec file for package python-tables
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,6 +17,13 @@
 
 
 %{?sle15_python_module_pythons}
+
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
+
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -44,14 +51,15 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           python-tables%{psuffix}
-Version:        3.10.2
+Version:        3.11.1
 Release:        0
 Summary:        Hierarchical datasets for Python
 License:        BSD-3-Clause
 URL:            https://github.com/PyTables/PyTables
 Source0:        https://files.pythonhosted.org/packages/source/t/tables/tables-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#PyTables/PyTables#1256
-Patch0:         support-numexpr-2.13.0.patch
+# TODO: devendor hdf5-blosc2
+# PATCH-FIX-UPSTREAM blosc2-3-compat.patch https://github.com/Blosc/HDF5-Blosc2/pull/3
+Patch0:         blosc2-3-compat.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  python-rpm-macros
 %if ! %{with test}
@@ -85,10 +93,17 @@ Requires:       python-py-cpuinfo
 Requires:       python-typing-extensions >= 4.4.0
 # boo#1196682
 %requires_eq    hdf5
+%if %{with libalternatives}
+Requires:       alts
+BuildRequires:  alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 Recommends:     bzip2
 Recommends:     lzo
+# Don't build 32-bit because of blosc2
+ExcludeArch:    %arm %ix86
 %python_subpackages
 
 %description
@@ -130,17 +145,15 @@ export VERBOSE=TRUE
 popd
 %endif
 
+%pre
+# If libalternatives is used: Removing old update-alternatives entries.
+%python_libalternatives_reset_alternative pttree
+
 %post
-%python_install_alternative pttree
-%python_install_alternative ptrepack
-%python_install_alternative ptdump
-%python_install_alternative pt2to3
+%python_install_alternative pttree ptrepack ptdump pt2to3
 
 %postun
 %python_uninstall_alternative pttree
-%python_uninstall_alternative ptrepack
-%python_uninstall_alternative ptdump
-%python_uninstall_alternative pt2to3
 
 %if !%{with test}
 %files %{python_files}

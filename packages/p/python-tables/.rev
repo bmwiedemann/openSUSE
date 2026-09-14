@@ -277,4 +277,12 @@
 - Remove Python 3.10 test flavor, add 3.13 and 3.14. Build for 3.13.</comment>
     <requestid>1319857</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>4b7af2381d39a4bf597a05e5f94a796a</srcmd5>
+    <version>3.11.1</version>
+    <time>1789396860</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377908</requestid>
+  </revision>
 </revisionlist>

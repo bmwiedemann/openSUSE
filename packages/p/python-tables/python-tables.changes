@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:35:16 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.11.1:
+  * Fix blosc2 loading
+- Update to 3.11.0:
+  * Add support for Python 3.14
+  * Set Cython "freethreading_compatible" directive. Please refer to
+    https://www.pytables.org/cookbook/threading.html for details about
+    threading support
+  * Python wheel packages are now generated exploiting limited API and
+    stable ABI (abi3)
+- drop support-numexpr-2.13.0.patch, merged upstream
+- add blosc2-3-compat.patch to support blosc2 >= 3.0
+- disable 32-bit builds as blosc2 doesn't support it anymore 
+- use libalternatives on modern distros
+
+-------------------------------------------------------------------
 Tue Nov 25 03:40:49 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 3.10.2:
