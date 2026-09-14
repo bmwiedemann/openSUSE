@@ -1,0 +1,14 @@
+--- a/crates/procdump/build.rs
++++ b/crates/procdump/build.rs
+@@ -104,6 +104,11 @@
+             format!("-I{}", ebpf.display()),
+             target_arch.into(),
+             format!("-I{multiarch_include}"),
++            // Newer clang lowers the byte-wise zeroing loop in
++            // procdump_ebpf.bpf.c into an extern memset() call, which
++            // carries no BTF info and fails the skeleton link with
++            // "failed to find BTF info for global/extern symbol 'memset'".
++            "-fno-builtin-memset".into(),
+             "-D__KERNEL__".into(),
+             "-D__BPF_TRACING__".into(),
+             "-D__linux__".into(),

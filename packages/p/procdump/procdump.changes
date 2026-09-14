@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:05:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.5.3:
+  * Upstream rewrote ProcDump from C++ in Rust; the CLI contract is
+    unchanged (covered by upstream legacy CLI compatibility tests).
+  * Memory leak tracking and reporting (-restrack), multiple signals
+    (-sig), dump-contents filter (-mc), eBPF-based tracing, custom
+    core dumper (corex), .NET counter integration, manual trigger
+    support for restrack snapshots, ARM64 support.
+  * Build switched from plain make to cargo with vendored crates;
+    new BuildRequires on cargo, clang, gcc-c++ and libelf.
+  * ExclusiveArch x86_64 and aarch64 now, the eBPF backend builds
+    only there; no %check (suite needs sudo and a .NET SDK).
+  * License is now BSD-2-Clause AND MIT AND BSD-3-Clause for the
+    bundled blazesym and libbpf crates.
+  * Add procdump-ebpf-no-builtin-memset.patch so current clang keeps
+    the eBPF zeroing loop instead of an extern memset without BTF.
+
+-------------------------------------------------------------------
 Mon Dec  5 20:16:58 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.3
