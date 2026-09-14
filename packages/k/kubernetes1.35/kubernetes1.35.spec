@@ -49,6 +49,10 @@ Patch3:         opensuse-version-checks.patch
 Patch4:         kubeadm-opensuse-flexvolume.patch
 # Patch to revert renaming of coredns image location to match how it's done on download.opensuse.org
 Patch5:         revert-coredns-image-renaming.patch
+# Patch to fix CVE-2026-41178 (go.opentelemetry.io/otel/baggage: no rejection of raw-length headers in baggage parsing allows for DoS via oversized inputs), bsc#1276659, PR open-telemetry/opentelemetry-go#8222
+# ref: https://github.com/open-telemetry/opentelemetry-go/commit/97447f5c54
+# ref: https://github.com/open-telemetry/opentelemetry-go/commit/f02feacf86
+Patch6:         CVE-2026-41178-otel-baggage-upstream.patch
 BuildRequires:  fdupes
 BuildRequires:  git
 BuildRequires:  go >= 1.26.5
@@ -217,6 +221,7 @@ Fish command line completion support for %{name}-client.
 %patch -P 3 -p1
 %patch -P 4 -p0
 %patch -P 5 -p1
+%patch -P 6 -p1
 
 %build
 # This is fixing bug bsc#1065972

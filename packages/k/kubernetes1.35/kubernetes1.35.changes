@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 13 11:16:38 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- New patch: CVE-2026-41178-otel-baggage-upstream.patch 
+  to fix CVE-2026-41178 (go.opentelemetry.io/otel/baggage: no rejection of raw-length headers in baggage parsing allows for DoS via oversized inputs), bsc#1276659
+  ref: https://github.com/open-telemetry/opentelemetry-go/commit/97447f5c54
+  ref: https://github.com/open-telemetry/opentelemetry-go/commit/f02feacf86
+
+-------------------------------------------------------------------
 Mon Aug 24 04:07:41 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - Update to version 1.35.8:
