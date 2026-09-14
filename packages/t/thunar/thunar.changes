@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 06:48:44 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to 4.20.10
+  * Use G_POST_ORDER when refiltering the tree model (#1460)
+  * Fix SIGSEGV in Tree View when renaming directories
+  * Translation Updates
+
+-------------------------------------------------------------------
 Fri Jul 17 12:04:55 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to 4.20.9
