@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep  7 10:19:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.3
+  - Fix degree sine reduction on Windows ARM64 by @ssss141414 in
+    #1809
+  - Various improvements to release pipeline automation by
+    @AnshulPatil2005 in e.g. #1807, #1810
+
+-------------------------------------------------------------------
 Sat Jun 27 13:56:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.5.2

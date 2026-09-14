@@ -130,4 +130,12 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     removing deferred deallocation.</comment>
     <requestid>1362014</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>094809414d8f2bd38aaa39274649fcec</srcmd5>
+    <version>3.5.3</version>
+    <time>1789396002</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1377874</requestid>
+  </revision>
 </revisionlist>
