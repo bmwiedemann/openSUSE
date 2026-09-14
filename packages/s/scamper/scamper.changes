@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Sun Sep  6 17:53:01 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
+
+* update to version 20260902:
+ * scamper:
+  * host: implement RFC10029 - DNS multiple QTYPEs (mqtypes), documented
+ * in scamper manual page:
+ * https://www.caida.org/catalog/software/scamper/man/scamper.1.pdf
+  * host: convert host to use sigs() callback.  host no longer returns ERR
+ * over control socket if source address could not be determined, e.g.
+ * querying IPv6 server on system without IPv6.  instead, you get a host
+ * object with an error message.
+  * host: record OPT records with no elements in warts.
+  * trace: store probe and quote ipid values in IPv4.
+  * ping: store probe tcp-mss and reply tcp-mss values in warts.
+  * ping: do not allow an MSS value of zero in the ping command.
+  * dealias: store ICMP extensions.
+ * libscamperfile:
+  * remove functions that should not have been part of public API:
+ * scamper_ping_reply_tsreply_free()
+ * scamper_ping_v4ts_free()
+ * scamper_ping_reply_v4rr_free()
+ * scamper_file_getfd()
+ * scamper_file_seteof()
+ * scamper_file_free()
+  * fix scamper_ping_reply_v4ts_hasip() and scamper_ping_reply_v4ts_ip_get()
+ * by checking ts-ips, add reference counting to reply_v4ts_t structures.
+  * add accessor functions for more recorded attributes.
+  * bump library version.
+ * libscamperctrl:
+  * set pointers to null to prevent double frees, or referencing pointers
+ * after free.
+  * add scamper_ctrl_remove() to remove a scamper_inst_t from a scamper_ctrl_t.
+  * drop scamper_mux_free() which never got implemented.
+  * internal logic improvements.
+  * bump library version.
+ * sc_remoted:
+  * handle MUX_CHANNEL_CLOSE messages from mux client.
+ * Python:
+  * rename ScamperCtrl.do_ping() recordroute parameter to ip_rr,
+ * add ScamperPingReply.ip_rr attribute that holds recorded route.
+  * add tcp_mss option to ScamperCtrl.do_ping(), add ScamperPing.probe_tcp_mss
+ * and ScamperPingReply.tcp_mss attributes.
+  * add ScamperPingReply icmp_tso, icmp_tsr, icmp_tst attributes.
+  * add ScamperPingReply.probe_sport attribute.
+  * add ScamperPingReplyIPTS class, ScamperPingReply.ip_ts, and
+ * ScamperPing.probe_tsaddrs attributes, and add ip_ts parameter to
+ * ScamperCtrl.do_ping().
+  * add ScamperDealiasReply.icmp_exts attribute.
+  * add ScamperTraceHop.probe_ipid and ScamperTraceHop.icmp_q_ipid.
+  * ScamperCtrl.do_http(): pass userid parameter to http command.
+  * add ScamperCtrl.remove(inst: ScamperInst).
+  * add ScamperInst.is_done().
+  * rework use of ScamperVp attributes by ScamperInst.
+  * add ScamperUdpprobe attempts, stop_count, and wait_probe attributes.
+  * add ScamperHost.mqtypes attribute and ScamperCtrl.do_dns mqtypes parameter.
+  * sync pyi with pyx.
+  * housekeeping on pyx and on documentation:
+ * https://www.caida.org/catalog/software/scamper/python/
+ * tests:
+  * unit_warts: add tests for an ICMP traceroute with probe/quote IPID
+ * values, a ping with icmp-time, and a host with mqtypes.
+  * unit_cmd_host: add mqtypes examples.
+ * throughout:
+  * begin adding internal thunk layers.
+ * sc_rxifd:
+  * fix -4 / -6 option handling on platforms with one but not the other.
+ * sc_wartsdump:
+  * dump host mqtypes, trace probe and quote IPID values.
+
+-------------------------------------------------------------------
 Tue Jul 14 20:07:27 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Update to version 20260713:
