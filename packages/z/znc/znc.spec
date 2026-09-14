@@ -17,13 +17,16 @@
 
 
 Name:           znc
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        Advanced IRC Bouncer
 License:        Apache-2.0
 URL:            https://znc.in
-Source0:        %{url}/releases/%{name}-%{version}.tar.gz
-Source1:        %{url}/releases/%{name}-%{version}.tar.gz.sig
+# Since 1.10.3 upstream links the release tarball from the homepage to
+# files.asokolov.org instead of znc.in/releases/ (verified via the .sig
+# against znc.keyring); keep this URL until znc.in/releases/ carries it again.
+Source0:        https://files.asokolov.org/%{name}-%{version}.tar.gz
+Source1:        https://files.asokolov.org/%{name}-%{version}.tar.gz.sig
 Source2:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0xd5823cacb477191cac0075555ae420cc0209989e#/%{name}.keyring
 Source3:        %{name}.service
 Patch0:         no-timestamp.patch
@@ -34,6 +37,8 @@ BuildRequires:  gcc-c++
 BuildRequires:  gettext
 BuildRequires:  libboost_locale-devel >= 1.70
 BuildRequires:  ninja
+# Keep plain perl deps: spec-cleaner --perl explodes them into hundreds of
+# perl(...) lines on this non-Perl package (accepted deviation).
 BuildRequires:  perl
 BuildRequires:  pkgconfig
 BuildRequires:  swig >= 4.0.1
@@ -46,9 +51,9 @@ BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(tcl)
 BuildRequires:  pkgconfig(zlib)
+Requires(pre):  shadow
 Provides:       group(%{name})
 Provides:       user(%{name})
-Requires(pre):  shadow
 %systemd_ordering
 
 %description

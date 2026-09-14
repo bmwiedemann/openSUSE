@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 13 16:57:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.10.3 (security release):
+  * CVE-2026-82373: use-after-free when unloading modules,
+    triggered by unprivileged users
+  * CVE-2026-82374: null pointer dereference in crypt module,
+    triggered by IRC server
+  * Update bundled jQuery to 3.5.1 (CVE-2020-11022, CVE-2020-11023)
+- Fetch the tarball from https://files.asokolov.org/ (linked from
+  the upstream homepage) until znc.in/releases/ carries 1.10.3
+
+-------------------------------------------------------------------
 Wed Jun  3 14:47:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.10.2:

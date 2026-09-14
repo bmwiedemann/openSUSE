@@ -366,4 +366,12 @@
 - Drop znc-swig-4.4.patch (merged upstream), build with Ninja, znc-doc noarch</comment>
     <requestid>1356999</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f608c0a1d6be131864a1bdcba6eb5cfa</srcmd5>
+    <version>1.10.3</version>
+    <time>1789395765</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377762</requestid>
+  </revision>
 </revisionlist>
