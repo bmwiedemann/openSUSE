@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 13 17:03:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.8.0:
+  * mutate ternary conditions; mutate methods of decorated classes
+  * skip lines excluded from coverage; mutation score badges;
+    Python 3.15 support
+  * process isolation and fork-safe test runners; fix mutants
+    missed when tests clear os.environ
+  * honour "pragma: no mutate" on else/except/finally arms and
+    match/case headers; prune obsolete test names from stats
+- Raise click >= 8.4.2 and setproctitle >= 1.3.7 floors per
+  upstream; keep libcst >= 1.8.5 (1.9.0 not yet in the tree)
+- Deselect
+  test_excluded_lines_reports_only_the_first_line_of_each_statement:
+  it pins coverage.py analysis2 reporting statement-start lines
+  only, but the tree's coverage 7.14.3 reports full excluded
+  statement lines; the expansion unions, so product behaviour
+  is unchanged
+
+-------------------------------------------------------------------
 Fri Jul 31 19:40:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.7.0:

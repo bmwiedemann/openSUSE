@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-mutmut
-Version:        3.7.0
+Version:        3.8.0
 Release:        0
 Summary:        Python mutation testing
 License:        BSD-3-Clause
@@ -33,11 +33,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-click >= 8.0.0
+Requires:       python-click >= 8.4.2
 Requires:       python-coverage >= 7.3.0
+# Upstream wants libcst >= 1.9.0, not yet in the tree (has 1.8.6):
+# 1.9.0 adds only Python 3.15 support and CodemodCommand import
+# helpers, neither used here (libcst imports identical to 3.7.0).
 Requires:       python-libcst >= 1.8.5
 Requires:       python-pytest >= 6.2.5
-Requires:       python-setproctitle >= 1.1.0
+Requires:       python-setproctitle >= 1.3.7
 Requires:       python-textual >= 1.0.0
 BuildArch:      noarch
 %if %{with libalternatives}
@@ -48,13 +51,13 @@ Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
 # SECTION test requirements
-BuildRequires:  %{python_module click >= 8.0.0}
+BuildRequires:  %{python_module click >= 8.4.2}
 BuildRequires:  %{python_module coverage >= 7.3.0}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module libcst >= 1.8.5}
 BuildRequires:  %{python_module pytest >= 6.2.5}
 BuildRequires:  %{python_module pytest-asyncio}
-BuildRequires:  %{python_module setproctitle >= 1.1.0}
+BuildRequires:  %{python_module setproctitle >= 1.3.7}
 BuildRequires:  %{python_module textual >= 1.0.0}
 # mutmut uses git as a soft dependency for change detection; without it the
 # git-based cache-invalidation tests skip
@@ -67,7 +70,8 @@ Python mutation testing.
 
 %prep
 %autosetup -p1 -n mutmut-%{version}
-# Factory ships a newer uv-build than upstream's <0.10.0 build-backend pin
+# Upstream pins uv_build>=0.12.3,<1 but the tree has 0.11.7:
+# relax the pin and build against the system backend.
 sed -i -E 's/"uv_build>=[0-9.]+,<[0-9.]+"/"uv_build"/' pyproject.toml
 
 %build
@@ -81,7 +85,15 @@ sed -i -E 's/"uv_build>=[0-9.]+,<[0-9.]+"/"uv_build"/' pyproject.toml
 %check
 # the e2e type-checking tests shell out to the mypy and pyrefly type checkers
 # (pyrefly is not packaged) and assert on version-specific snapshot output
-%pytest --ignore tests/e2e/test_e2e_type_checking.py
+# test_excluded_lines_reports_only_the_first_line_of_each_statement pins
+# coverage.py analysis2 reporting only statement-start lines; the tree's
+# coverage 7.14.3 reports full excluded statement lines instead (the "if
+# that ever changes" case in the test's own comment). Harmless: the
+# consumer unions the expansion (pragma_handling.expand_to_full_statements
+# returns lines | expanded), so already-full input changes nothing, and
+# the sibling honours-the-projects-coverage-config test still guards
+# the feature end to end.
+%pytest --ignore tests/e2e/test_e2e_type_checking.py --deselect tests/test_code_coverage.py::test_excluded_lines_reports_only_the_first_line_of_each_statement
 
 %post
 %python_install_alternative mutmut

@@ -147,4 +147,16 @@
     <comment>Update to 3.7.0</comment>
     <requestid>1368934</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>09df040d8c482ccda29f005e9240ef9c</srcmd5>
+    <version>3.8.0</version>
+    <time>1789395745</time>
+    <user>anag_factory</user>
+    <comment>Forward python-mutmut 3.8.0 to Factory (accepted in
+devel:languages:python via SR 1377757).
+
+Native aarch64 build green (451/450 passed, 313/314),
+rpmlint 0 errors 0 badness.</comment>
+    <requestid>1377759</requestid>
+  </revision>
 </revisionlist>
