@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:20:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 26.03
+  * Improved support for Joliet ISO images and Compound archives.
+  * Fixed failure to preserve the Mark-of-the-Web when extracting
+    a crafted archive (CVE-2026-58052).
+  * Some bugs and vulnerabilities were fixed.
+
+-------------------------------------------------------------------
 Fri Aug 28 12:34:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 26.02
