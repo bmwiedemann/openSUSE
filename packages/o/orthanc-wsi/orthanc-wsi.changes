@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 19:05:39 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 4.0
+  * framework.patch and cassert.diff removed, part of source code
+  * For detailed changelog see NEWS
+
+-------------------------------------------------------------------
 Thu Apr 16 11:47:53 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - cassert.diff added to fix build for TW
