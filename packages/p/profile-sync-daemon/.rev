@@ -29,4 +29,14 @@
   * Fix surf support (rm wrong '/')</comment>
     <requestid>1170625</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>f0b39552e97f6fd4f22b2c76f6363948</srcmd5>
+    <version>7.04</version>
+    <time>1789395714</time>
+    <user>anag_factory</user>
+    <comment>Forward profile-sync-daemon 7.04 to Factory.
+
+Devel SR 1377687 accepted. Built green natively on aarch64, source_validator clean, rpmlint badness 0.</comment>
+    <requestid>1377689</requestid>
+  </revision>
 </revisionlist>

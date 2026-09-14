@@ -1,7 +1,7 @@
 #
 # spec file for package profile-sync-daemon
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2013-2020 Artem Polishchuk & Christopher Meng
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,7 +19,7 @@
 
 %global shortname psd
 Name:           profile-sync-daemon
-Version:        6.50
+Version:        7.04
 Release:        0
 Summary:        Symlinks and syncs browser profile dirs to RAM thus reducing HDD/SDD calls
 License:        MIT
@@ -30,6 +30,10 @@ BuildRequires:  rsync
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zsh
 Requires:       rsync
+# overlayfs mode needs fuse-overlayfs + fusermount3 (fuse3); soft dep
+# since the default sync mode works without them
+Recommends:     fuse-overlayfs
+Recommends:     fuse3
 BuildArch:      noarch
 
 %description
@@ -40,7 +44,7 @@ use of rsync to maintain back-up and synchronization between the two. One of
 the major design goals of psd is a completely transparent user experience.
 
 %package        zsh-completion
-Summary:        zsh completion for %{name}
+Summary:        Zsh completion for %{name}
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 
@@ -71,7 +75,6 @@ zsh completion for %{name}.
 %license MIT LICENSE
 %{_bindir}/%{name}
 %{_bindir}/%{shortname}
-%{_bindir}/%{shortname}-overlay-helper
 %{_bindir}/%{shortname}-suspend-sync
 %{_datadir}/%{shortname}/
 %{_mandir}/man1/*.1%{?ext_man}

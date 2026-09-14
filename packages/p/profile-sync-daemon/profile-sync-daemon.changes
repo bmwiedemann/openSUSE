@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 7.04:
+  * Overlayfs mode now uses fuse-overlayfs instead of the dropped
+    sudo helper psd-overlay-helper (binary and man page removed);
+    overlayfs mode requires fuse-overlayfs and fuse3
+  * Firefox: follow new profile location, honor XDG_CONFIG_HOME,
+    add Firefox Flatpak support
+  * New contrib browser profiles: floorp, thorium, zen,
+    helium-browser, firefox-flatpak{,-cache}
+  * psd-resync.timer reworked to OnCalendar scheduling
+  * Assign psd to the background systemd slice, reduce crash-recovery I/O
+  * Fix lingering gdbus process, fix bug in enforce()
+- Capitalize zsh-completion subpackage summary (rpmlint
+  summary-not-capitalized)
+
+-------------------------------------------------------------------
 Sun Apr 28 19:01:58 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.50:
