@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:51:13 UTC 2026 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Properly define documentation files
+
+-------------------------------------------------------------------
+Sun Sep 13 15:01:54 UTC 2026 - Ferdinand Thiessen <rpm@fthiessen.de>
+
+- Removed upstream merged CVE-2025-7207.patch
+- Update to 4.0.0
+  - Added
+    - Pattern matching: (`case`/`in`): array, hash, and find patterns,
+      the pin operator (`^var`), guard clauses, one-line `expr in pattern`, and brace-less hash patterns.
+    - `&nil` in parameter lists to explicitly reject block arguments.
+    - Trailing commas allowed in method definition parameters: `def foo(a, b,)`.
+    - `Array`, `Hash`, and `String` subclasses can override `[]` and `[]=` again.
+    - Structs can be initialized with keyword arguments.
+    - New gems: **mruby-task** (cooperative multitasking with preemptive scheduling), **mruby-benchmark**, and **mruby-strftime** (`Time#strftime`).
+    - New methods: `Array#find`, `Array#rfind`, `IO#putc`, `Kernel#putc`.
+    - New platform support: Cosmopolitan Libc; Emscripten now uses native WASM exception handling.
+    - Amalgamation build via `rake amalgam`.
+  - Changed
+    - mirb now ships a custom multi-line editor instead of readline:
+      syntax highlighting, tab completion, auto-indent/dedent, command history,
+      line numbers, UTF-8 input, colored prompts and errors, and automatic light/dark theme detection.
+    - Much lower memory use: built-in classes and most extension gems now use
+      read-only method tables in `.rodata` rather than heap-allocated tables
+    - Faster execution: new fused VM instructions for zero-argument calls,
+      method definitions, `array[0]`, `i += n`, and simple returns
+    - mruby-bigint is significantly faster on large numbers
+    - mruby-random switched from xoshiro to PCG for lower memory use
+  - Breaking
+    - `case`/`in` without an `else` branch now raises `NoMatchingPatternError`.
+    - `Hash#deconstruct_keys` was removed for CRuby compatibility.
+    - `initialize_copy` and `respond_to_missing?` are now private.
+    - C API: `mrb_alloca()` is now `mrb_temp_alloc()`; `mruby/ext/io.h` moved to `mruby/io.h`.
+  - Security
+    - Buffer overflows in bigint addition, Montgomery reduction, `pack_uu`, `IO#ungetc`,
+      `IO.select`, `method_missing`, `String#prepend`, pattern alternation codegen, and `.mrb` loading.
+    - Use-after-free issues in `Set` operations, `Set#join`,
+      `Array` set operations, `Array#sort!`, sorting, and `sprintf` format strings mutated via `to_s` callbacks.
+    - Integer overflows in string length checking and `Integer#lcm`,
+      plus several memory leaks in bigint, `Set`, `Array`, and the Task gem.
+
+-------------------------------------------------------------------
 Wed Jul  9 11:41:30 UTC 2025 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to 3.4.0

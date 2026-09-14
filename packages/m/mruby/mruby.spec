@@ -2,7 +2,7 @@
 #
 # spec file for package mruby
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Pascal Bleser <pascal.bleser@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,9 +19,9 @@
 
 
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%define sover 3_4_0
+%define sover 4_0_0
 Name:           mruby
-Version:        3.4.0
+Version:        4.0.0
 Release:        0
 Summary:        Lightweight Ruby
 License:        MIT
@@ -30,8 +30,6 @@ URL:            https://github.com/mruby/mruby/
 Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE PATCH-FEATURE-UPSTREAM link-with-soname.patch -- Add SONAME to library
 Patch0:         link-with-soname.patch
-# PATCH-FIX-UPSTREAM CVE-2025-7207.patch -- upstream patch for CVE-2025-7207 known as boo#1246138
-Patch1:         https://github.com/mruby/mruby/commit/1fdd96104180cc0fb5d3cb086b05ab6458911bb9.diff#/CVE-2025-7207.patch
 BuildRequires:  bison
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -127,8 +125,8 @@ cp -a include/* "%{buildroot}%{_includedir}/"
 %{_libdir}/libmruby_core.so.%{version}
 
 %files
-%doc AUTHORS CONTRIBUTING.md LEGAL NEWS README.md
-%license LICENSE
+%doc AUTHORS CONTRIBUTING.md README.md doc/mruby4.0.md
+%license LEGAL LICENSE
 %{_bindir}/mirb
 %{_bindir}/mrbc
 %{_bindir}/mruby
