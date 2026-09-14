@@ -1,7 +1,7 @@
 #
 # spec file for package a2ps
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           a2ps
-Version:        4.15.6
+Version:        4.15.8
 Release:        0
 Summary:        Tool to convert ASCII/Latin Text into PostScript
 License:        GPL-3.0-or-later
@@ -35,10 +35,12 @@ Patch6:         a2ps-4.13-include.patch
 Patch8:         a2ps-4.13-base.patch
 Patch9:         a2ps-4.13-utf8.patch
 Patch10:        a2ps-4.13-types.patch
-Patch13:        a2ps-4.14-linker.patch
 Patch17:        a2ps-buildcompare.patch
 # https://savannah.gnu.org/bugs/?66678
 Patch18:        a2ps-gcc15.patch
+# Keep the coarse texlive-latex/texinfo/autoconf/automake deps as-is:
+# spec-cleaner would expand them into tex()/perl() file deps and drop
+# autoconf+automake, but %%build runs autoreconf and texi2html directly.
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -114,7 +116,6 @@ touch -r configure.ac .ref
 %patch -P 8   -b .base
 %patch -P 9   -b .utf8
 %patch -P 10  -b .types
-%patch -P 13 -p1 -b .p13
 %patch -P 17 -p1 -b .p17
 %patch -P 0   -b .p0
 %patch -P 18 -p1

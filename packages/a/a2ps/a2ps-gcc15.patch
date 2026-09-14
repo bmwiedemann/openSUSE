@@ -1,3 +1,6 @@
+# Upstream removed the non-C23 debug code (yyprint prototype) in 4.15.7,
+# so only the missing-include hunks remain (implicit declarations are
+# errors with GCC 15 defaulting to C23).
 diff --git a/liba2ps/parseppd.y b/liba2ps/parseppd.y
 index df4d863..ab24a78 100644
 --- a/liba2ps/parseppd.y
@@ -10,15 +13,6 @@ index df4d863..ab24a78 100644
 
  #define YYDEBUG 1
  #define YYERROR_VERBOSE 1
-@@ -50,7 +51,7 @@ extern struct a2ps_job * job;
-
- /* Local prototypes */
- void yyerror (const char *msg);
--static void yyprint ();
-+static void yyprint (FILE *file, int type, YYSTYPE value);
-
- /* Initilizes the obstacks */
- void ppdlex_initialize (void);
 diff --git a/src/parsessh.y b/src/parsessh.y
 index 0a151c7..395d7f5 100644
 --- a/src/parsessh.y
@@ -31,13 +25,3 @@ index 0a151c7..395d7f5 100644
 
  #define YYDEBUG 1
  #define YYERROR_VERBOSE 1
-@@ -63,7 +64,7 @@ extern const char * sshfilename;
-
- /* Local prototypes */
- void yyerror (const char *msg);
--static void yyprint ();
-+static void yyprint (FILE *file, int type, YYSTYPE value);
-
- /* Initilizes the obstacks */
- void sshlex_initialize (void);
-

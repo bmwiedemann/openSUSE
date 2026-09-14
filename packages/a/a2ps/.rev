@@ -469,4 +469,36 @@
     <comment></comment>
     <requestid>1274911</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>a5c7a0b8e8d3c4f8bbf5da03bb172ffd</srcmd5>
+    <version>4.15.8</version>
+    <time>1789395929</time>
+    <user>anag_factory</user>
+    <comment>Update a2ps to 4.15.8.
+
+Upstream 4.15.8 (2025-12-04, newest by date; also shipped by
+Fedora, Debian, Arch, NixOS, FreeBSD). Tarball GPG-verified
+against the packaged keyring (Good signature, Reuben Thomas).
+Fixes a -E buffer overflow (savannah #67760, no CVE assigned)
+plus build fixes; 4.15.7 removed the non-C23 debug code.
+Patches: drop a2ps-4.14-linker.patch (bundled ltmain.sh was
+re-imported from newer libtool so the hunk no longer applies;
+dead code path on Linux, and autoreconf in %build regenerates
+the file anyway); rebase a2ps-gcc15.patch to the
+missing-include hunks (yyprint code removed upstream).
+All other patches verified to apply. SONAME unchanged
+(liba2ps.so.1), no reverse deps in Factory.
+
+Validation: native aarch64 build GREEN (osc build, Factory:ARM),
+in-%build UTF-8 functional test passed, rpmlint 0E/0 badness
+(only pre-existing no-%check-section note), source_validator
+rc 0, changes-lint clean, soname-check clean.
+
+Note: the .changes carries a one-line sanctioned repair of the
+trailing 1990s headerless entry (dangling separator dropped,
+same remedy as fix_changelog; check_dates_in_changes now
+passes). changes-guard flags it (exit 1) as designed; the diff
+below the new entry is exactly that one line. (forwarded request 1377742 from pluskalm)</comment>
+    <requestid>1377835</requestid>
+  </revision>
 </revisionlist>
