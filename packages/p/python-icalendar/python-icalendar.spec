@@ -21,7 +21,7 @@
 %define	modname icalendar
 %{?sle15_python_module_pythons}
 Name:           python-%{modname}
-Version:        7.2.0
+Version:        7.3.0
 Release:        0
 Summary:        Python parser/generator of iCalendar files package
 License:        BSD-2-Clause
@@ -64,10 +64,13 @@ with Python. It follows the RFC 2445 (iCalendar) specification.
 
 %check
 rm -v src/icalendar/tests/test_funding_json.py
+# generate_windows_to_olson_mapping.py not included in sdist
+rm -v src/icalendar/tests/test_generate_windows_to_olson_mapping.py
 # some dependencies are too old in Leap
 %if 0%{?suse_version} >= 1550
 donttest="(test_timezone_names_are_known and tzp_0-America/Coyhaique)"
 donttest+=" or (test_timezone_names_are_known and tzp_0-Asia/Beijing)"
+donttest+=" or (test_timezone_id_resolves and pytz-/freeassociation.sourceforge.net/Europe/Berlin-Europe/Berlin)"
 %pytest -k "not ($donttest)" src
 %endif
 

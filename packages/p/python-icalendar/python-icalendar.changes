@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep  7 05:23:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Skip a recalcitrant test to allow the testsuite to pass.
+
+-------------------------------------------------------------------
+Tue Sep  1 21:11:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.3.0:
+  * https://github.com/collective/icalendar/blob/v7.3.0/CHANGES.rst
+
+-------------------------------------------------------------------
 Sun Jun 28 10:20:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.2.0:
