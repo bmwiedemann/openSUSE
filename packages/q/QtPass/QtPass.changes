@@ -1,4 +1,853 @@
 -------------------------------------------------------------------
+Sun Sep 13 20:33:15 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.8.0:
+  * Release v1.8.0 (#1664)
+  * Translations update from Hosted Weblate (#1677)
+  * Translations update from Hosted Weblate (#1676)
+  * l10n: best-effort translations for the 1.8.0 strings in sr_RS and sr_Cyrl (#1675)
+  * l10n: fill nl_BE, de_LU, fr_BE, fr_LU from their parent locales (#1674)
+  * l10n: best-effort translations for the 1.8.0 strings, tier C (9 locales) (#1673)
+  * Translations update from Hosted Weblate (#1672)
+  * docs: AI-assistance disclosure and contributor rules (#1671)
+  * fix: toolbar stays in the old theme after a KDE light/dark switch (#1669)
+  * l10n: best-effort translations for the 1.8.0 strings, tier B (11 locales) (#1670)
+  * Translated using Weblate (Polish) (#1668)
+  * l10n: best-effort translations for the 1.8.0 strings, tier A (22 locales) (#1667)
+  * l10n: best-effort translations for the 1.8.0 strings in es (all variants), pt_PT, pt_BR (#1666)
+  * l10n: best-effort translations for the 1.8.0 strings in nl_NL, de_DE, fr_FR, pl, uk, en_GB (#1665)
+  * l10n: refresh translation sources for the 1.8.0 string freeze (#1663)
+  * test: isolate QtPassSettings from the user's live config (#1662)
+  * fix: follow light/dark theme switches at runtime (#1661)
+  * fix: report a qrencode binary that cannot start instead of an empty QR popup (#1659)
+  * test(util): loosen boundedRandom chi-square cutoff to stop rare spurious failures (#1660)
+  * l10n(zh_CN): consistent 配置文件 for "profile", fix doubled 的 in character-set tooltip (#1658)
+  * README: add REUSE compliance badge (#1657)
+  * ci: bump github/codeql-action from 4.37.8 to 4.37.9 (#1639)
+  * Translations update from Hosted Weblate (#1638)
+  * ci: bump github/codeql-action from 4.37.7 to 4.37.8 (#1637)
+  * Translations update from Hosted Weblate (#1636)
+  * Omnummeren en .gitignore dingetje
+  * l10n: refresh translation sources for TOTP strings (companion to #1625) (#1635)
+  * feat: native RFC 6238 TOTP, replacing the pass-otp shell-out (#1625)
+  * ci: bump github/codeql-action from 4.37.6 to 4.37.7 (#1633)
+  * ci: bump italia/publiccode-parser-action from 1.5.1 to 1.6.0 (#1634)
+  * ci: bump dorny/paths-filter from 4.0.2 to 4.0.3 (#1631)
+  * ci: bump github/codeql-action from 4.37.4 to 4.37.6 (#1632)
+  * ci: pin release macOS build to Qt 6.11.1 (#1629)
+  * ci: fix Qt 6.11 install and super-linter status 403 (#1627)
+  * ci: bump coverallsapp/github-action from 2.3.7 to 2.3.8 (#1624)
+  * ci: bump github/codeql-action from 4.37.3 to 4.37.4 (#1623)
+  * ci: bump github/codeql-action from 4.37.1 to 4.37.3 (#1622)
+  * Translated using Weblate (Swedish)
+  * fix(l10n): correct sv/nl translation bugs flagged on #1614 (#1620)
+  * Translations update from Hosted Weblate (#1614)
+  * ci: bump dorny/paths-filter from 4.0.1 to 4.0.2 (#1615)
+  * ci: bump github/codeql-action from 4.36.2 to 4.37.1 (#1618)
+  * ci: bump actions/checkout from 7.0.0 to 7.0.1 (#1619)
+  * Translations update from Hosted Weblate (#1613)
+  * Omnummering
+  * test: GUI end-to-end — edit an entry through the modal PasswordDialog (#1612)
+  * test: GUI end-to-end — selecting a tree entry decrypts into the panel (#1611)
+  * test: e2e coverage for multi-recipient encryption and per-folder re-encryption (#1610)
+  * test: cover UsersDialog key listing and filtering (#1609)
+  * test: add unit tests for PassBackendFactory backend selection (#1608)
+  * fix: keep clipboard autoclear tracking when navigating between entries (#1607)
+  * fix: check process start for stdin-less commands so the queue can't stall (#1606)
+  * fix: prevent PasswordDialog content duplication and premature-save data loss (#1605)
+  * fix: correct ImitatePass git re-encryption recipients, CWD, and broken copy (#1604)
+  * fix: prevent use-after-free of the keygen dialog pointer (#1603)
+  * fix: stop ConfigDialog from silently corrupting saved settings (#1602)
+  * ci: bump super-linter/super-linter from 8.6.0 to 8.7.0 (#1595)
+  * fix: add title elements to icon SVGs for a11y; bump biome schema (#1601)
+  * fix: report gpg keygen start failures instead of hanging (#1598) (#1599)
+  * ci: build macOS on Qt 6.11; keep 6.8 LTS on Linux/Windows (#1600)
+  * ci: bump actions/checkout from 6.0.3 to 7.0.0 (#1596)
+  * Omnummeren
+  * Translations update from Hosted Weblate (#1592)
+  * fix: store regex matches; rename vars; local widget in clear() (#1591)
+  * fix: move protocol regex to file-level static; compute reserve capacity exactly (#1590)
+  * fix: use frameLayout directly; reserve QString capacity in loop (#1589)
+  * docs: explain why fieldHeight is 26px (#1588)
+  * fix: explicit spacer branch in clear() for clarity (#1587)
+  * fix: null-check widget/layout in clear(); cache compiled regex (#1586)
+  * fix(gl): correct Galician 'Tódolos' to 'Todos os' (#1585)
+  * fix: declare QHBoxLayout * instead of QLayout *; comment fieldHeight magic number
+  * fix: escape URLs in password display to prevent XSS (#1584)
+  * Translations update from Hosted Weblate (#1583)
+  * Translations update from Hosted Weblate (#1582)
+  * fix: firstFile returns invalid index on no-file-found; rename line vars; extract fieldHeight (#1581)
+  * fix: close button quits with tray icon when hide-on-close is off (#1580)
+  * refactor: readability tweaks in passworddisplaypanel (#1579)
+  * i18n: fix CodeRabbit-flagged translation bugs from #1576 (#1578)
+  * chore: refresh translation source references (#1576)
+  * chore: untrack compiled test binaries (#1577)
+  * fix: set solid palette on textBrowser context menu (#1574)
+  * chore: ignore .tmp/ build artifacts directory (#1575)
+  * fix(#1508): audit quality sweep — path sep, null-check, timeout, docs, tests (#1572)
+  * fix: code quality audit for imitatepass.cpp and mainwindow.cpp (#1571)
+  * fix: P1 audit findings — executor crash, storemodel guard, getKeysFromFile, sort order, reencryptPath init (#1570)
+  * fix(#1509): replace broken WSL wslpath shell substitution with real wslpath call (#1569)
+  * refactor(#1511): capture QtPassSettings::load() snapshot in ConfigDialog profile init (#1568) (#1568)
+  * refactor(#1511): collapse selectProfile() three-setter block into AppSettings (#1567) (#1567)
+  * refactor(#1511): fold QtPass::init() fresh-install writes into AppSettings (#1566)
+  * refactor(#1511): consolidate initExecutables() into one AppSettings save (#1565) (#1565)
+  * refactor(#1511): delete 3 dead getter wrappers (#1564) (#1564)
+  * refactor(#1511): delete 37 dead setter/getter wrappers (#1563)
+  * refactor(#1511): delete 30 dead getter wrappers from QtPassSettings (#1562)
+  * refactor(#1511): snapshot AppSettings in QtPass destructor and init() (#1561)
+  * refactor(#1511): snapshot AppSettings in MainWindow multi-field read sites (#1560)
+  * refactor(#1511): snapshot AppSettings in QtPass event handlers (#1559)
+  * refactor(#1511): inject Pass*/AppSettings into UsersDialog (#1558)
+  * refactor(#1511): inject Pass* into StoreModel; inject gpgExe into KeygenDialog (#1557)
+  * Apply suggested fix to localization/localization_zh_CN.ts from Copilot Autofix (#1556)
+  * refactor(#1511): wire passStore into static chain; parameterise Util::configIsValid/getDir (#1555)
+  * Translations update from Hosted Weblate (#1554)
+  * refactor(#1511): inject Pass*/AppSettings into dialog layer (#1553)
+  * refactor(#1511): wire AppSettings into ConfigDialog + SshAuthSock (PR B) (#1552)
+  * refactor(pass): inject AppSettings into Pass hierarchy (PR A of #1511) (#1551)
+  * refactor(executor): replace QStringList env with QProcessEnvironment (#1510) (#1550)
+  * refactor(mainwindow): const ref Qt5 slot, rename m_initialShowDone and m_keygenDialog (#1549)
+  * test(passworddisplaypanel): extract shared fixture and tighten assertions (#1547)
+  * test(settings): tighten assertions and simplify cleanup guard (#1546)
+  * test(grepsearchcontroller): assert restoreCursor on subsequent finishSearch (#1548)
+  * Omnummering Localization (#1545)
+  * docs: refresh docs to reflect post-1.7.0 work (#1543)
+  * ci: remove dead Coverity Scan integration (#1544)
+  * Translations update from Hosted Weblate (#1541)
+  * docs: clarify getKeygenDialog returns a non-owning pointer (#1540)
+  * refactor: add QtPassSettings::load/save AppSettings facade (#1511) (#1539)
+  * ci: make Doxygen download resilient to doxygen.nl outages (#1538)
+  * refactor: move tree-root mapping into StoreModel::rootIndexFor (#1512) (#1537)
+  * fix: install event filter once and add UI watchdog (#1512) (#1536)
+  * refactor: extract field rendering into PasswordDisplayPanel (#1512) (#1535)
+  * ci: bump actions/checkout from 6.0.2 to 6.0.3 (#1533)
+  * ci: bump github/codeql-action from 4.36.0 to 4.36.2 (#1532)
+  * ci: bump codecov/codecov-action from 6.0.1 to 7.0.0 (#1534)
+  * refactor: extract grep search state into GrepSearchController (#1512) (#1531)
+  * refactor: extract Pass backend lifecycle into PassBackendFactory (#1513) (#1530)
+  * refactor: migrate ConfigDialog to AppSettings load/save (#1511) (#1529)
+  * refactor: introduce AppSettings struct + SettingsSerializer (#1511) (#1528)
+  * docs: document backend-dependent Grep regex dialect (#1513) (#1527)
+  * refactor: replace executeWrapper override with beforeExecute hook (#1513) (#1526)
+  * refactor: extract template I/O into TemplateIO module (#1514) (#1525)
+  * refactor: extract isPathInStore into PathValidator module (#1514) (#1524)
+  * refactor: extract SSH_AUTH_SOCK logic from Util into SshAuthSock (#1514) (#1523)
+  * refactor: dedup RealPass::Move/Copy via passMoveOrCopy (#1513) (#1522)
+  * refactor: collapse StoreModel drag-drop handlers into one performDrop (#1514) (#1521)
+  * refactor: dedup executeBlocking + clarify isPathInStore guard (#1510) (#1520)
+  * feat: add "Open in browser" button for web URLs (#1516) (#1517)
+  * ci: install Codecov CLI via PyPI to avoid broken GPG verification (#1519)
+  * ci: bump pinned Doxygen 1.16.1 → 1.17.0 (#1518)
+  * Translations update from Hosted Weblate (#1515)
+  * Translations update from Hosted Weblate (#1505)
+  * ci: bump github/codeql-action from 4.35.5 to 4.36.0 (#1506)
+  * ci: bump codecov/codecov-action from 6.0.0 to 6.0.1 (#1507)
+  * ci: bump github/codeql-action from 4.35.4 to 4.35.5 (#1503)
+  * ci: bump peaceiris/actions-gh-pages from 4.0.0 to 4.1.0 (#1504)
+  * test: address five reviewer nits on tst_settings and tst_util (#1502)
+  * test: expand gpgkeystate and storemodel test suites (#1499)
+  * test: expand configdialog and keygendialog test suites (#1501)
+  * ci: bump github/codeql-action from 4.35.3 to 4.35.4 (#1500)
+  * test: expand passwordconfig and filecontent test suites (#1498)
+  * test(executor): add async execute() and environment API tests (#1497)
+  * test: add coverage for readTemplates, writeTemplates, getFolderTemplate (#1496)
+  * test: add edge-case tests for gpgkeystate and passwordconfig (#1495)
+  * test: cover useGrepSearch, showProcessOutput, sshAuthSockOverride settings (#1494)
+  * test: add edge-case tests for simpletransaction and filecontent (#1493)
+  * Omnummeren
+  * test: add UserInfo and ProfileInit unit test suites (#1492)
+  * refactor(test/mainwindow): use QDir::filePath() for .gpg-id path construction (#1491)
+  * fix(test/mainwindow): normalize store path and fix HTML round-trip assertion
+  * fix: apply CodeRabbit auto-fixes
+  * fix(test/mainwindow): pre-set gpg executable to prevent config dialog hang
+  * test(mainwindow): add MainWindow widget test suite
+  * Translated using Weblate (English (United Kingdom))
+  * refactor: drop default arguments from virtual functions (google-default-arguments) (#1488)
+  * chore(clang-tidy): enable three Google-style checks the codebase already passes (#1487)
+  * chore: remove deprecated CFBundlePackageType key from all plists (#1486)
+  * fix: remove duplicate NSPrincipalClass key from plist files (#1485)
+  * Apply suggested fix to tests/auto/configdialog/configdialog.pro from Copilot Autofix (#1482)
+  * ci: disable GIT_COMMITLINT in super-linter (#1484)
+  * chore: NSHighResolutionCapable as a real plist boolean, not <string>True</string> (#1483)
+  * test(configdialog): widget tests for the public useX setting-loaders (#1481)
+  * Apply suggested fix to tests/auto/keygendialog/keygendialog.pro from Copilot Autofix (#1480)
+  * Apply suggested fix to tests/auto/trayicon/trayicon.pro from Copilot Autofix (#1479)
+  * test(passworddialog): nine widget tests for the previously-untested API (#1478)
+  * test(trayicon): widget tests for TrayIcon's parent-window plumbing (#1477)
+  * test(keygendialog): widget tests for the GPG keygen dialog (#1476)
+  * chore: clang-format two over-long QVERIFY2 lines in tst_integration.cpp (#1475)
+  * Apply suggested fix to src/trayicon.cpp from Copilot Autofix (#1473)
+  * i18n(et,pl): four reviewer-flagged fixes (#1474)
+  * test(integration): grep skips files that gpg can't decrypt (#1471)
+  * Translations update from Hosted Weblate (#1470)
+  * cleanup: drop AS_CONST macro + qApp deprecation pragmas (#1472)
+  * test: cover SSH_AUTH_SOCK override soft-validation via Util helper (#1469)
+  * fix: rename internal drag-drop MIME type to RFC 6838 form (#1468)
+  * test: bump tests/tests.pri to c++17, drop legacy make_unique workaround (#1467)
+  * test(storemodel): three regression tests for path-traversal rejection in dropMimeData (#1466)
+  * fix(security): chmod 0600 on .gpg-id after write (#1465)
+  * fix(security): path-traversal hardening in new-file/rename + drag/drop (#1464)
+  * i18n:  fixes for 2 code findings in Hungarian (#1463)
+  * ci: bump github/codeql-action from 4.35.2 to 4.35.3 (#1462)
+  * i18n(cy,es_UY,hu): four reviewer-flagged fixes (#1461)
+  * i18n: promote 31 locales from ≥95% to 100% finished (#1460)
+  * Translations update from Hosted Weblate (#1442)
+  * i18n: finish SSH_AUTH_SOCK translations for sv; add best-effort for sw, ta, te (#1456)
+  * i18n: finish translations for pa_IN, ro, sr_RS, sr_Cyrl (#1454)
+  * i18n: finish translations for cy (Welsh) (#1459)
+  * i18n: finish translations for es_EC, es_UY (#1458)
+  * i18n: finish SSH_AUTH_SOCK translations for th, tr, vi; add best-effort for ur (#1457)
+  * i18n: finish SSH_AUTH_SOCK translations for sk, sl; add best-effort for si (#1455)
+  * i18n: finish SSH_AUTH_SOCK translations for mr, nb, fa, pt_BR, pt_PT (#1453)
+  * i18n: finish translations for ja, ko, lv, lb_LU (#1452)
+  * i18n: finish translations for hi, hu, id (#1451)
+  * i18n: finish translations for de_LU, el, fy_NL (#1450)
+  * i18n: finish translations for fi, fr_BE, fr_LU (#1449)
+  * i18n: finish translations for ca, zh_Hant, hr, cs (#1445)
+  * i18n: finish translations for da, nl_BE, en_GB, et (#1447)
+  * i18n: finish translations for de, fr, it, es variants (#1446)
+  * i18n: finish translations for sq, ar, bn, bg (#1444)
+  * i18n: finish translations for af, gl, lt, nl_NL, uk (#1443)
+  * i18n(zh_CN): "绕过" → "覆盖" for SSH_AUTH_SOCK override (#1441)
+  * Translations update from Hosted Weblate (#1440)
+  * fix(ssh-auth-sock): warn when override path looks bogus (#1439)
+  * feat: auto-probe + override for SSH_AUTH_SOCK (closes #543) (#1438)
+  * refactor(util): use raw-string literal for endsWithGpg regex (#1437)
+  * refactor: 6 reviewer cleanups in util.cpp + qtpass.cpp (#1436)
+  * refactor: enable bugprone-* in clang-tidy + fix narrowing conversions (#1435)
+  * refactor(util): drop redundant check + add 3 missing doc blocks (#1434)
+  * refactor(util): cleaner path construction + brace consistency (#1433)
+  * refactor: clang-tidy cleanup (1 real bug + bulk modernize/performance fixes) (#1432)
+  * i18n(sr_Cyrl): clean up vanished entries (4 reviewer findings) (#1431)
+  * i18n(sr_Cyrl): finalize 4 reviewer-signed-off translations from #1428 (#1430)
+  * i18n(sr_Cyrl): round 12 — typos, grammar, compound word, finalisations (#1428)
+  * i18n(sr_Cyrl): standardize on шифровање/шифровати crypto terminology (#1425)
+  * i18n(sr_Cyrl): finalize 5 reviewer-signed-off translations from #1424 (#1426)
+  * i18n(sr_Cyrl): terminology consistency pass (#1424)
+  * i18n(sr_Cyrl): finalize 4 reviewer-signed-off translations from #1422 (#1423)
+  * i18n(sr_Cyrl): apply 4 reviewer findings (skip vanished entry) (#1422)
+  * ii18n: Potential fixes for 5 code quality findings (#1421)
+  * i18n(sr_Cyrl): fix 5 more typos / spelling errors (#1420)
+  * i18n(sr_Cyrl): finalize 5 reviewer-signed-off translations (#1419)
+  * i18n(sr_Cyrl): finalize 3 + fix 2 mixed-script entries (#1417)
+  * i18n(sr_Cyrl): fix indicative→imperative verb forms (#1415)
+  * Translated using Weblate (Serbian (Cyrillic script)) (#1416)
+  * Translated using Weblate (Catalan) (#1414)
+  * i18n(sr_Cyrl): fix 5 reviewer-flagged typos / spelling errors (#1413)
+  * i18n: round 11 install hint cleanup (4 locales, 4 commits) (#1412)
+  * Translations update from Hosted Weblate (#1411)
+  * Translated using Weblate (Estonian) (#1410)
+  * Omnummeren
+  * i18n(pl): finalize 4 typo / diacritic fixes from #1408 (#1409)
+  * i18n(pl): fix 4 Polish typo / diacritic entries (#1408)
+  * i18n: round 10 audit findings (4 locales, 4 commits) (#1407)
+  * Translated using Weblate (Polish) (#1406)
+  * i18n: round 9 reviewer findings (4 locales, 4 commits, 23 fixes) (#1405)
+  * i18n(bg): extend password charset to include both ASCII and Cyrillic (#1403)
+  * i18n: cross-locale audit cleanup batch (id translations + 15-locale <br> flagging) (#1402)
+  * i18n: extend password charset for 29 locales (3 commits) (#1404)
+  * i18n(ru): fill empty plural forms with best-effort Russian (#1401)
+  * i18n(en_US): fill empty plural forms (#1399)
+  * i18n(pa_IN): restore .gpg-id literal in 3 mangled translations (#1397)
+  * i18n(he): fill empty plural forms with best-effort Hebrew (#1400)
+  * i18n(sq): translate 4 tray menu items left verbatim English (#1398)
+  * i18n(si): fix 2 audit-flagged mistranslations (#1396)
+  * i18n(ta): fix 5 reviewer-flagged mistranslations (round 6) (#1394)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 8) (#1395)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 7) (#1393)
+  * i18n(ta): finalize 5 reviewer-signed-off translations (round 6) (#1392)
+  * i18n(pa_IN): fix 3 reviewer-flagged mistranslations (round 6) (#1391)
+  * i18n(ta): finalize 5 reviewer-signed-off translations (#1390)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 5) (#1389)
+  * i18n(ta): fix 5 reviewer-flagged mistranslations (round 5) (#1388)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 4) (#1387)
+  * i18n(ta): apply round-4 reviewer findings (#1386)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 3) (#1385)
+  * i18n(ta): apply round-3 reviewer findings (#1384)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (round 2) (#1383)
+  * i18n(ta): fix 5 reviewer-flagged mistranslations (round 2) (#1382)
+  * i18n(pa_IN): fix 5 reviewer-flagged mistranslations (#1381)
+  * Translations update from Hosted Weblate (#1380)
+  * i18n(ta): finalize 5 reviewer-fixed mistranslations (#1379)
+  * i18n(pa_IN): fill remaining 5 empty entries with best-effort Punjabi (#1378)
+  * i18n(ta): fix 5 reviewer-flagged mistranslations (#1377)
+  * Translations update from Hosted Weblate (#1376)
+  * i18n: add Marathi (mr) translation skeleton (#1375)
+  * i18n: add Telugu (te) translation skeleton (#1374)
+  * Translated using Weblate (Tamil) (#1373)
+  * i18n: add Punjabi (pa_IN) translation skeleton in Gurmukhi script (#1372)
+  * docs(faq): refresh pinentry guidance, language override, and add v1.7/1.8 entries (#1371)
+  * docs(readme): refresh language count, Qt minimum, and feature list (#1370)
+  * docs(skills): capture super-linter v8 specifics in qtpass-linting (#1369)
+  * chore(ci): silence the yamllint warning fleet (#1368)
+  * test(locale): use QCOMPARE / QCOMPARE_NE for cleaner diagnostics (#1367)
+  * chore(ci): add commitlint config for conventional-commits enforcement (#1366)
+  * chore(ci): tolerate 0.2% codecov noise on coverage.project gate (#1365)
+  * test(locale): improve diagnostics + cover failed-load state-clearing (#1364)
+  * chore(ci): bump super-linter to v8 (clang-format 17 → 21) (#1363)
+  * fix: use QLocale-aware QTranslator::load() for proper locale fallback (#1362)
+  * fix: apply CodeRabbit auto-fixes
+  * i18n: fix translator-introduced HTML whitespace in 13 locales
+  * Translated using Weblate (Vietnamese)
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Swahili)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Urdu)
+  * Translated using Weblate (Thai)
+  * Omnummeren
+  * fix: apply CodeRabbit auto-fixes
+  * fix: correct .gpgid -> .gpg-id filename in user-facing string
+  * Translated using Weblate (Bengali)
+  * Translated using Weblate (Vietnamese)
+  * Translated using Weblate (Urdu)
+  * Translated using Weblate (Thai)
+  * Translated using Weblate (Swahili)
+  * Translated using Weblate (Hindi)
+  * Translated using Weblate (Lithuanian)
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(bn): clean up Qwen MT artifacts
+  * i18n(bn): translations from Qwen
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * i18n: add Vietnamese (vi) translation skeleton
+  * i18n: add Urdu (ur) translation skeleton
+  * i18n: add Thai (th) translation skeleton
+  * i18n: add Swahili (sw) translation skeleton
+  * i18n: add Hindi (hi) translation skeleton
+  * i18n: add Bengali (bn) translation skeleton
+  * Update localization/localization_lt.ts
+  * fix: apply CodeRabbit auto-fixes
+  * chore(i18n): rename single-variant locales to language-only codes
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * docs(skills): clarify fresh-skeleton vs patch-existing localization
+  * fix: apply CodeRabbit auto-fixes
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * fix: apply CodeRabbit auto-fixes
+  * Apply suggested fix to localization/localization_fa.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_fa.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Translated using Weblate (Persian)
+  * Translated using Weblate (Sinhala)
+  * fix: apply CodeRabbit auto-fixes
+  * Apply suggested fix to CLAUDE.md from Copilot Autofix
+  * fix: apply CodeRabbit auto-fixes
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * i18n: add Persian (fa) translation skeleton
+  * i18n(si_LK): fix 3 reviewer-flagged mistranslations
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to qtpass.desktop from Copilot Autofix
+  * Translated using Weblate (Sinhala)
+  * Translated using Weblate (Arabic)
+  * i18n(si_LK): fix 5 reviewer-flagged mistranslations
+  * chore: fill qtpass.desktop translations for stubbed locales
+  * chore(i18n): rename ar_MA → ar (Modern Standard Arabic)
+  * Translated using Weblate (Sinhala)
+  * i18n(si_LK): fix 5 reviewer-flagged mistranslations
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(si_LK): fix 5 reviewer-flagged mistranslations
+  * docs(skills): update localization guidance + add audit skill
+  * i18n(si_LK): fix 5 reviewer-flagged mistranslations
+  * Translated using Weblate (Sinhala)
+  * i18n(si_LK): fill last 16 empty entries + apply 5 reviewer fixes
+  * i18n(si_LK): fix 5 mistranslations (password gen / GPG key pair / Optional)
+  * i18n(si_LK): fix 5 mistranslations (password length / characters / search)
+  * Translated using Weblate (Sinhala)
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Translated using Weblate (Sinhala)
+  * Translated using Weblate (Lithuanian)
+  * i18n(si_LK): fix 5 mistranslations + finalize System
+  * i18n(si_LK): more cleanup on previous Qwen contribution
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * i18n(si_LK): fix '#…' ellipsis + translate 'Copied to clipboard'
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * i18n(si_LK): technical cleanup on Qwen's round 2 contribution
+  * i18n(si_LK): more Sinhala translations from Qwen (round 2)
+  * i18n(lt_LT): fix 5 mistranslations (5th batch)
+  * i18n(lv_LV): standardize 'ASCII armor-formātā' for ASCII-armored
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * i18n(lv_LV): extend krātuve→glabātuve to remaining 3 strings
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * i18n(lv_LV): refine 'priekš' + Export-help wording per follow-up review
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * i18n(sl_SI): fix Timedout + finalize 29 reviewed translations
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * i18n(lt_LT): fix 5 mistranslations (4th batch)
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(lt_LT): fix key/clipboard mistranslations (3rd batch)
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_sl_SI.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lv_LV.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_lt_LT.ts from Copilot Autofix
+  * i18n(sl_SI): apply 22 reviewer-supplied refinements
+  * i18n(lt_LT): refine Optional GPG-key string per follow-up review
+  * i18n(sl_SI): refine clipboard + sign translations per follow-up review
+  * i18n(lt_LT): fix 5 mistranslations (2nd batch)
+  * i18n(lv_LV): fix 5 more mistranslations (7th batch)
+  * i18n(sl_SI): fix 5 mistranslations + fill 29 empty paragraphs
+  * i18n(lv_LV): Atjaunināšana → Pāršifrēšana for Re-encrypting
+  * i18n(lt_LT): fix 5 mistranslations
+  * i18n(lv_LV): fix 5 more mistranslations (6th batch)
+  * i18n(sl_SI): 5 reviewer fixes + Prenesi→Uvozi for Import
+  * Translated using Weblate (Slovenian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Slovenian)
+  * i18n(sl_SI): fix 5 mistranslations (mostly grammar/cross-language)
+  * i18n(lt_LT): fill 9 remaining long-paragraph translations
+  * i18n(lv_LV): finalize 3 + fill 2 long paragraphs (final round)
+  * i18n(sl_SI): fix signing-key term + force-overwrite phrasing
+  * i18n(sl_SI): apply 36 reviewer-supplied translation corrections
+  * i18n(sl_SI): restore login template 3 lines + clear "Pass" wrong translation
+  * i18n(sl_SI): preserve Ctrl+N and Ctrl+G shortcut tokens
+  * i18n(sl_SI): fix CodeRabbit-flagged issues on Qwen's contribution
+  * i18n(lv_LV): finalize 3 + fill 2 (About block, delete warning)
+  * i18n(sl_SI): technical cleanup on Qwen's contribution
+  * i18n(sl_SI): Slovenian translations from Qwen
+  * i18n(lv_LV): finalize 3 + fill 2 long paragraphs
+  * i18n(lv_LV): finalize 2, fill 2, mark 1 with translator-comment
+  * i18n(lv_LV): fix 5 more mistranslations (5th batch)
+  * i18n(lv_LV): pattern-extension fixes round 2 (7 strings)
+  * i18n(lv_LV): pattern-extension fixes from prior PR learnings
+  * i18n(lv_LV): fix 5 more mistranslated strings (4th batch)
+  * i18n(lv_LV): finalize 2 + fill 3 GnuPG-install hints
+  * i18n(lv_LV): fix 5 more mistranslated strings (3rd batch)
+  * i18n(lv_LV): fix 5 more mistranslated config-dialog strings
+  * i18n(lv_LV): fix 5 mistranslated config-dialog strings
+  * i18n(lt_LT): match Repeat pass term to Passphrase
+  * i18n(lv_LV, lt_LT): fill remaining gaps + Latvian quality fixes
+  * i18n(lv_LV): fix Copy to Clipboard, "invalid" verb, status labels
+  * Translated using Weblate (Sinhala)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Latvian)
+  * Apply suggested fix to localization/localization_zh_Hant.ts from Copilot Autofix
+  * Update localization/localization_si_LK.ts
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (Sinhala)
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (Sinhala)
+  * i18n(zh_Hant): homogenise CJK mnemonics to (&L)-at-start convention
+  * i18n(si_LK): translate 4 more Slovenian-leak strings to Sinhala
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * Apply suggested fix to localization/localization_si_LK.ts from Copilot Autofix
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(lt_LT, lv_LV): ellipsis, login template, OTP token
+  * i18n(lt_LT, lv_LV): keyboard shortcuts, abbreviations, numerus
+  * i18n(lt_LT, lv_LV): technical cleanup on Qwen's contribution
+  * i18n(lt_LT, lv_LV): Latvian and Lithuanian translations from Qwen
+  * Translated using Weblate (Sinhala)
+  * Translated using Weblate (Galician)
+  * Omnummering en clenaup
+  * i18n(si_LK): bracket prefixes, drop corrupted, replace Slovenian
+  * i18n(si_LK): restore HTML link + drop mixed-script garbage
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(si_LK): technical cleanup on Kven's contribution
+  * i18n(si_LK): add Sinhala translations from Kven
+  * i18n: fix grammar/calque bugs surfaced by regional-variant audit
+  * i18n(fr_LU): fix "monospaced" → "monospacée"
+  * i18n(fr_BE/fr_FR/fr_LU): shared French typos and grammar fixes
+  * i18n(sq_AL): Pathi→Shtegu, paren spacing, HTML tag spacing, period
+  * i18n: restore Qt mnemonics on 14 locales (24 strings)
+  * i18n(fr_BE): fix wrong-string mappings on Rename folder/password
+  * i18n(sq_AL): restore keyboard mnemonic on Native Git/GPG
+  * i18n(sq_AL): terminology consistency + Use pass mnemonic spacing
+  * i18n: fix placeholder format and wrong-string mappings
+  * Translated using Weblate (Lithuanian)
+  * Translated using Weblate (Latvian)
+  * Translated using Weblate (Slovenian)
+  * Translated using Weblate (Slovak)
+  * Translated using Weblate (Galician)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Serbian)
+  * Translated using Weblate (Norwegian Bokmål)
+  * Translated using Weblate (Croatian)
+  * Translated using Weblate (Japanese)
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Bulgarian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Serbian (Cyrillic script))
+  * Translated using Weblate (Tamil)
+  * Translated using Weblate (Korean)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Hungarian)
+  * Translated using Weblate (Luxembourgish)
+  * Translated using Weblate (Catalan)
+  * Translated using Weblate (English (United Kingdom))
+  * Translated using Weblate (Arabic (Morocco))
+  * Translated using Weblate (Greek)
+  * Translated using Weblate (Finnish)
+  * Translated using Weblate (Afrikaans)
+  * Translated using Weblate (Portuguese (Portugal))
+  * Translated using Weblate (Portuguese (Brazil))
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Indonesian)
+  * i18n(sq_AL): grammar fixes + standardise Clipboard term as klipboard
+  * i18n(zh_Hant): more Simplified→Traditional + 新資料夾 typo
+  * i18n(sr_RS): fix typos and grammar surfaced by transliteration
+  * i18n: partial pass on lt_LT, lv_LV, sl_SI, si_LK
+  * i18n(sr_RS): apply review findings + Latinise mixed-script translations
+  * i18n(zh_Hant): fix language code + Simplified-character contamination
+  * i18n(sq_AL): translate verbatim-English strings flagged in review
+  * i18n(fi_FI): correct Finnish Rename + Exclude verb forms
+  * i18n(zh_Hant): complete "Automatically push" translation
+  * ci: add biome.json so AI reviewers stop linting Qt Linguist .ts files
+  * i18n(zh_Hant): fix inverted "Case-insensitive toggle" framing
+  * i18n(et_EE, gl_ES, ro_RO): address review findings on batch 2b
+  * i18n: translate v1.8.0 + older strings — batch 2c (4 locales)
+  * i18n(sr_RS, sr_Cyrl): use međuspremnik consistently for "clipboard"
+  * i18n: translate v1.8.0 + older strings — batch 2b (5 locales)
+  * i18n: translate v1.8.0 + older strings — batch 2a (5 locales)
+  * i18n: translate v1.8.0 strings — batch 1 (8 locales)
+  * i18n(fi_FI): translate v1.8.0 + search + error strings (230 → 304/304)
+  * i18n(af_ZA): translate v1.8.0 feature strings (255 → 304/304)
+  * i18n(pt_BR, pt_PT): comprehensive Portuguese cleanup round (re-rebased)
+  * i18n(pt_PT, pt_BR): translate v1.8.0 strings + Brazilian/European vocabulary differentiation
+  * i18n(tr_TR): translate v1.8.0 feature strings (290 → 304/304)
+  * i18n(fy_NL): translate v1.8.0 feature strings (267 → 304/304)
+  * fix(sq_AL): restore missing </translation> closing tags
+  * i18n(sq_AL): finish remaining v1.8.0 strings (290 → 304/304)
+  * i18n(fr_BE, fr_LU): fix translation bugs from previous Weblate state
+  * i18n(id_ID): full Bahasa Indonesia translation pass (0 → 304/304)
+  * i18n(nl_BE): repair Bewaarenbare bug + finish openbare sweep
+  * i18n(Dutch): regional vocabulary distinctions beyond pronouns
+  * i18n(Dutch): nl_NL informal je/jouw, nl_BE formal u/uw
+  * i18n: regional vocabulary distinction across Spanish locales
+  * i18n(es_EC, es_MX): switch to informal tú register
+  * i18n: Spanish register consistency sweep across all five locales
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (French (Belgium))
+  * Translated using Weblate (Swedish)
+  * Translated using Weblate (German (Luxembourg))
+  * Translated using Weblate (French (Luxembourg))
+  * Translated using Weblate (English (United States))
+  * Translated using Weblate (Albanian)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Swedish)
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * i18n(es_AR): voseo register in ImportKeyDialog
+  * i18n: register sweeps in es_AR (voseo) and es_ES (formal); es_MX bug fixes
+  * i18n: Spanish polish round (Habilitar/Añadir/comma/subjunctive)
+  * i18n: round-N Spanish/Albanian polish per #1205 review
+  * i18n: Spanish/Albanian/de_LU follow-ups from #1205 review
+  * i18n: catch the same bug-class in es_EC/es_ES/es_MX and fr_FR
+  * i18n: keep <your-key-id> CLI placeholder literal; sq_AL fills; es_UY tidy
+  * i18n: round-N translation polish across da/es_AR/es_UY/fr_LU/pl/uk
+  * i18n(fr_FR): repair the same corrupted GnuPG-Microsoft-Store HTML
+  * i18n: preserve "ASCII-armored" as a literal technical term across locales
+  * i18n: fix translation regressions flagged in #1203 review
+  * i18n: pre-fill regional variants from their base locale
+  * Translated using Weblate (German)
+  * Translated using Weblate (Frisian (fy_NL))
+  * Translated using Weblate (Slovenian)
+  * Translated using Weblate (French)
+  * chore: rename keygenDialog/currentDir/tray to m_-prefixed members
+  * i18n(fr_FR): repair welcome HTML; translate "Import Key" message-box title
+  * i18n(de_DE,fr_FR): more v1.8.0 strings + numerus singular
+  * i18n(de_DE): translate Share submenu, Export Public Key flow, profile-create
+  * i18n: add sl_SI/id_ID/lt_LT/lv_LV; translate v1.8.0 strings in de_DE & fr_FR
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Welsh)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Serbian (Cyrillic script))
+  * Translated using Weblate (French)
+  * Translated using Weblate (Turkish)
+  * Translated using Weblate (Turkish)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Turkish)
+  * Translated using Weblate (Spanish (Ecuador))
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Danish)
+  * Translated using Weblate (Dutch)
+  * Translated using Weblate (Danish)
+  * fix: address review nits — git cp comment, dedupe reencrypt disable, this-> (#1198)
+  * Omnummering
+  * Translations update from Hosted Weblate (#1195)
+  * test: cover storemodel drop dispatch & MIME round-trip (#239) (#1196)
+  * feat: move process output panel to a QDockWidget; add scroll hysteresis (#252) (#1193)
+  * Apply suggested fix to src/mainwindow.cpp from Copilot Autofix (#1194)
+  * fix: move processOutputWidget inside centralWidget so it's actually wired up (#1192)
+  * fix: only set m_initialShowDone after focusInput actually focuses (#1191)
+  * fix: resolve focusInput's QLineEdit through findChild to survive widget rebuild (#1190)
+  * Fix: add ui null check in focusInput to prevent segfault (#1189)
+  * fix: null check in focusInput to prevent segfault (#1188)
+  * fix: don't schedule initial focus pulse before init() completes (#1187)
+  * qt6-base
+  * chore: add .editorconfig and sweep final newlines / trailing whitespace (#1186)
+  * chore: strip trailing whitespace and dangling backslashes in test .pro (#1185)
+  * chore: post-merge cleanups across tests and SettingsConstants (#1184)
+  * Translations update from Hosted Weblate (#1183)
+  * chore: locale updatez
+  * docs: Potential fixes for 3 code quality findings (#1182)
+  * fix: code quality findings from AI analysis (#1181)
+  * docs: clarify legacy clipBoardType key for backward compat
+  * fix: code quality findings from AI analysis (#1179)
+  * docs: clarify squash merge options and recommend force-with-lease (#1177)
+  * docs: update github skill for opencode/qtpass (#1178)
+  * docs: clarify legacy key name in comment (#1174)
+  * docs: clarify squash merge preference and force push guidance
+  * docs: add process output panel to CHANGELOG
+  * docblock: explain default-branch security model
+  * fix: security - filter sensitive commands, use scrollBar for auto-scroll
+  * fix: add GIT_MOVE/GIT_COPY to switch statements
+  * fix: add docblocks, isSensitiveProcess, and fix slider behavior
+  * fix: apply CodeRabbit auto-fixes
+  * fix: relabel GIT_COPY and tidy .ui indentation drift
+  * fix: prefix every line of multi-line process output with the command name
+  * fix: apply CodeRabbit auto-fixes
+  * fix: address review feedback on process output panel (#252)
+  * feat: show executed command name in process output
+  * fix: filter password commands from process output
+  * fix: apply CodeRabbit auto-fixes
+  * fix: remove redundant setParent() call before addPermanentWidget
+  * fix: process output improvements per code review
+  * feat: add process output area to mainwindow (#252)
+  * CodeRabbit Generated Unit Tests: Add unit tests (#1171)
+  * feat: add Import key dialog to UsersDialog for issue #1167 (#1170)
+  * Apply suggested fix to tests/auto/exportpublickeydialog/exportpublickeydialog.pro from Copilot Autofix (#1168)
+  * Apply suggested fix to tests/auto/exportpublickeydialog/exportpublickeydialog.pro from Copilot Autofix (#1166)
+  * Apply suggested fix to tests/auto/exportpublickeydialog/exportpublickeydialog.pro from Copilot Autofix (#1164)
+  * docs: fix QStringList::filter() guidance in qtpass-fixing skill (#1165)
+  * docs: align qtpass-fixing SPDX-year guidance with repo practice (#1163)
+  * feat: wire Share submenu actions to real operations (#422) (#1162)
+  * Potential fixes for 2 code quality findings (#1161)
+  * fix: Yardımcı pilot tamamen Türk gibi davranıyor. (#1160)
+  * fix: Türk yardımcı pilot sonuna kadar gidiyor... (#1159)
+  * feat: Daha fazla yardımcı pilot yerelleştirmesi (#1158)
+  * feat: Yardımcı pilot yerelleştirme  (#1157)
+  * Locale update
+  * test: increase chi-square threshold for boundedRandom (#1156)
+  * test: add profile defaults and fix qWarning tr() usage (#1155)
+  * docs: restore QtPass patterns to AGENTS.md (#1153)
+  * docs: enhance AGENTS.md with build variants and signing guidance (#1152)
+  * fix: address Copilot review findings (round 2) (#1151)
+  * fix: address Copilot review findings (#1150)
+  * docs: update AGENTS.md with niche knowledge (#1149)
+  * docs: add profile git settings and patterns to AGENTS.md (#1147)
+  * AI is adding a lot of words ..
+  * feat: add Share submenu for folders (#1144)
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * fix: apply CodeRabbit auto-fixes
+  * feat: add Ctrl+T to cycle between templates
+  * feat: auto-apply templates when creating new passwords
+  * fix: address remaining review findings
+  * fix: use QT_VERSION_CHECK for Qt5/Qt6 compatibility
+  * fix: add required includes for std::sort
+  * fix: address code review findings
+  * feat: add setAvailableTemplates for file-based templates
+  * feat: add read/write templates to util
+  * feat: Store git options per profile (#112) (#1140)
+  * fix: mark unused 'out' parameter in handleProcessError (#1139)
+  * Translations update from Hosted Weblate (#1137)
+  * fix: apply CodeRabbit auto-fixes
+  * fix: Always allow editing all password fields (#132)
+  * Omnummeren localization
+  * feat: Add status bar to profile creation (#1034)
+  * Fix profile initialization for new directories (#1034) (#1134)
+  * fix: split plural grep status message for correct plural agreement (#1042) (#1133)
+
+-------------------------------------------------------------------
 Sun Aug 23 09:18:30 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Move QtPass from Qt5 to Qt6, as Version 5 is deprecated and eol
