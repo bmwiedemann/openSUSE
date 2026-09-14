@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:05:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Move %config(noreplace) /etc/darrc from the libdar64 subpackage
+  to the main package, it is dar's config, not the library's
+  * Conflicts: libdar64-6000 < 2.8, the old library package still
+    owns /etc/darrc and must go on upgrade
+- Fetch the tarball from SourceForge, upstream's own host has no
+  IPv4 address
+
+-------------------------------------------------------------------
+Sat Sep 12 14:24:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.8.6
+  * libdar API v7, soname 6000 -> 7000 (lib package renamed)
+  * SFTP repositories now use libssh instead of libcurl
+  * new options: -anru, -aefd, -arep, -qcrypto, --enable-thread-stack-size
+  * fixes: dry-run restore attrs, dar_xform slice resize of pre-2.4
+    archives, isolation thread count, DST one-hour shift, gnupg check
+    in sequential-read mode
+- Add BuildRequires libssh and rhash-devel (whirlpool support)
+- Drop tarball signature and keyring: upstream signature host is
+  IPv6-only and unreachable, tarball hash-verified against upstream
+  metadata and matching other distributions
+
+-------------------------------------------------------------------
 Sat Feb 22 15:37:44 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.7.16

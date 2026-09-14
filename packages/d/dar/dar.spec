@@ -1,7 +1,7 @@
 #
 # spec file for package dar
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2023 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,17 +17,14 @@
 #
 
 
-%define sover   6000
+%define sover   7000
 Name:           dar
-Version:        2.7.16
+Version:        2.8.6
 Release:        0
 Summary:        Backup and Restore Application
 License:        SUSE-GPL-2.0+-with-openssl-exception
 URL:            https://dar.sourceforge.io/
-Source0:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz
-Source1:        https://dar.edrusb.org/dar.linux.free.fr/Releases/Source_code/dar-%{version}.tar.gz.sig
-# http://dar.linux.free.fr/doc/authentification.html
-Source2:        %{name}.keyring
+Source0:        https://downloads.sourceforge.net/project/dar/dar/%{version}/dar-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-tools
@@ -35,6 +32,7 @@ BuildRequires:  groff
 BuildRequires:  libattr-devel
 BuildRequires:  librsync-devel
 BuildRequires:  pkgconfig
+BuildRequires:  rhash-devel
 BuildRequires:  pkgconfig(bzip2)
 BuildRequires:  pkgconfig(ext2fs)
 BuildRequires:  pkgconfig(gpg-error)
@@ -44,6 +42,7 @@ BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libgcrypt)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libssh) >= 0.11.0
 BuildRequires:  pkgconfig(libthreadar)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(lzo2)
@@ -51,6 +50,8 @@ BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
 Recommends:     %{name}-doc = %{version}
 Recommends:     par
+# /etc/darrc moved here from libdar64-6000
+Conflicts:      libdar64-6000 < 2.8
 %ifarch %{ix86} x86_64 ppc
 BuildRequires:  upx
 %endif
@@ -144,6 +145,7 @@ exit 0
 %doc AUTHORS NEWS TODO ChangeLog
 %{_bindir}/dar*
 %{_mandir}/man1/dar*.1%{?ext_man}
+%config(noreplace) %{_sysconfdir}/darrc
 
 %files lang -f %{name}.lang
 %license COPYING
@@ -151,7 +153,6 @@ exit 0
 %files -n libdar64-%{sover}
 %license COPYING
 %{_libdir}/libdar64.so.%{sover}*
-%config(noreplace) %{_sysconfdir}/darrc
 
 %files -n libdar-devel
 %license COPYING

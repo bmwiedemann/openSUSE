@@ -458,4 +458,15 @@ The developers of dar included a special exception to link against openSSL (forw
     <comment></comment>
     <requestid>1248048</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>d7116213db6065a5879a3ccb1727b88a</srcmd5>
+    <version>2.8.6</version>
+    <time>1789395964</time>
+    <user>anag_factory</user>
+    <comment>dar 2.8.6 (replaces declined 1377597). Both decline reasons fixed:
+- /etc/darrc conflict with the old libdar64-6000: the main package now carries Conflicts: libdar64-6000 &lt; 2.8 (the 2.7.16 library package still ships the file; nothing else in Factory needs libdar64-6000).
+- Source URL: dar.edrusb.org has only an AAAA record, so factory-auto cannot reach it. Source0 now points at SourceForge, which serves a byte-identical tarball (sha256 d56caeb6...46c5 matches).
+Rebuilt green; rpmlint unchanged vs 2.7.16.</comment>
+    <requestid>1377854</requestid>
+  </revision>
 </revisionlist>
