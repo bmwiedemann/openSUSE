@@ -508,7 +508,9 @@ BuildRequires:  un-fonts
 BuildRequires:  usbutils
 BuildRequires:  util-linux
 BuildRequires:  util-linux-systemd
+%ifnarch armv6l armv6hl
 BuildRequires:  valgrind
+%endif
 BuildRequires:  vim-small
 # libproxy1 requires libpxbackend-1_0; to counter cycles, this exists also as mini (bsc#215290)
 #!BuildConflicts: libpxbackend-1_0-mini
@@ -688,7 +690,7 @@ AutoReqProv:    off
 Summary:        Installation Image Files for %theme
 License:        GPL-2.0-or-later
 Group:          Metapackages
-Version:        17.176
+Version:        17.178
 Release:        0
 Provides:       installation-images = %version-%release
 Conflicts:      otherproviders(installation-images)

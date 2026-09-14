@@ -1993,4 +1993,12 @@ Currently, causes unresolvable builds in Leap 15.0 stagings. (forwarded request 
     <comment>submitted by snwint via jenkins</comment>
     <requestid>1351463</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>6218ebf6de876006f1ed6a0228cc35d3</srcmd5>
+    <version>17.178</version>
+    <time>1789395609</time>
+    <user>anag_factory</user>
+    <comment>submitted by snwint via jenkins</comment>
+    <requestid>1377848</requestid>
+  </revision>
 </revisionlist>
