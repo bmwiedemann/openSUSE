@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:03:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.15.1 (bugfix release):
+  https://typst.app/docs/changelog/0.15.1/
+  * math: fix alignment points in lr/matched delimiters and
+    vertical misalignment of op elements (regressions)
+  * text: update New Computer Modern fonts to 8.1.1 (math
+    calligraphic letterforms fix)
+  * layout: fix gaps in multi-page lists with vertical
+    number-align/marker-align
+  * cli: typst eval now exits 1 when the expression fails
+- Keep hayagriva-bump-strum-version.patch: hayagriva is still
+  0.10.1 and still wants strum 0.26 for its cli feature
+- boo#1254990 (wasmi use-after-free, fixed upstream in 0.14.2):
+  still not affected, vendored wasmi is 1.0.9
+
+-------------------------------------------------------------------
 Sun Jun 21 02:57:08 UTC 2026 - Kyle Scheuing <kyle@kylescheuing.com>
 
 - Update to 0.15.0

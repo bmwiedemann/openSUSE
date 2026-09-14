@@ -17,17 +17,14 @@
 
 
 %global rustflags '-Clink-arg=-Wl,-z,relro,-z,now'
-
 %if 0%{?sle_version} && 0%{?sle_version} < 160000
 # We have to use the same gcc-version that Rust was being built with
 %define force_gcc_version 13
 %endif
-
 %global hayagriva_version 0.10.1
 %global hayagriva_vendor_dir vendor/hayagriva-%{hayagriva_version}
-
 Name:           typst
-Version:        0.15.0
+Version:        0.15.1
 Release:        0
 Summary:        A new markup-based typesetting system that is powerful and easy to learn
 License:        Apache-2.0
@@ -47,9 +44,8 @@ Typst is a new markup-based typesetting system that is designed to be as powerfu
 
 %package        bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and bash-completion)
 Requires:       %{name} = %{version}
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description    bash-completion
@@ -57,9 +53,8 @@ Bash command-line completion support for %{name}.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       %{name} = %{version}
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description    zsh-completion
@@ -67,9 +62,8 @@ Zsh command-line completion support for %{name}.
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       %{name} = %{version}
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description    fish-completion
