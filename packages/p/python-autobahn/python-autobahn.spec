@@ -1,7 +1,7 @@
 #
 # spec file for package python-autobahn
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,32 +23,32 @@
 %endif
 
 Name:           python-autobahn
-Version:        24.4.2
+Version:        26.7.1
 Release:        0
 Summary:        WebSocket and WAMP in Python for Twisted and asyncio
 License:        MIT
 URL:            https://github.com/crossbario/autobahn-python
 Source:         https://files.pythonhosted.org/packages/source/a/autobahn/autobahn-%{version}.tar.gz
-Patch0:         respect-cflags.patch
-Patch1:         intrin-arch.patch
-# PATCH-FIX-UPSTREAM gh#crossbario/autobahn-python#1647
-Patch2:         support-new-pytest-asyncio.patch
-# PATCH-FIX-UPSTREAM gh#crossbario/autobahn-python#1661
-Patch3:         use-plain-twisted.patch
+# PATCH-FIX-OPENSUSE Support s390x intrinics
+Patch0:         intrin-arch.patch
+# PATCH-FIX-OPENSUSE Do not ship flatc wrapper
+Patch1:         no-flatc-entrypoint.patch
 BuildRequires:  %{python_module PyNaCl >= 1.4.0}
 BuildRequires:  %{python_module Twisted >= 24.3.0}
 BuildRequires:  %{python_module argon2-cffi >= 20.1.0}
 BuildRequires:  %{python_module attrs >= 20.3.0}
+BuildRequires:  %{python_module base58 >= 2.1.1}
 BuildRequires:  %{python_module cbor2 >= 5.2.0}
-BuildRequires:  %{python_module cffi >= 1.14.5}
+BuildRequires:  %{python_module cffi >= 2.0.0}
 BuildRequires:  %{python_module cryptography >= 3.4.6}
-BuildRequires:  %{python_module devel >= 3.9}
+BuildRequires:  %{python_module devel >= 3.11}
+BuildRequires:  %{python_module ecdsa >= 0.19.1}
 BuildRequires:  %{python_module flatbuffers >= 22.12.6}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module hyperlink >= 21.0.0}
 BuildRequires:  %{python_module msgpack >= 1.0.2}
 BuildRequires:  %{python_module passlib >= 1.7.4}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module py-ubjson >= 0.16.1}
 BuildRequires:  %{python_module pyOpenSSL >= 20.0.1}
 BuildRequires:  %{python_module pytest >= 2.8.6}
 BuildRequires:  %{python_module pytest-aiohttp}
@@ -56,35 +56,38 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytrie >= 0.4.0}
 BuildRequires:  %{python_module qrcode >= 7.3.1}
 BuildRequires:  %{python_module service_identity >= 18.1.0}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module txaio >= 21.2.1}
+BuildRequires:  %{python_module txaio >= 25.12.2}
 BuildRequires:  %{python_module ujson >= 4.0.2}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  %{python_module wsaccel >= 0.6.3}
 BuildRequires:  %{python_module zope.interface >= 5.2.0}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-PyNaCl >= 1.4.0
-Requires:       python-Twisted >= 24.3.0
-Requires:       python-argon2-cffi >= 20.1.0
-Requires:       python-attrs >= 20.3.0
 Requires:       python-cbor2 >= 5.2.0
-Requires:       python-cffi >= 1.14.5
+Requires:       python-cffi >= 2.0.0
 Requires:       python-cryptography >= 3.4.6
-Requires:       python-flatbuffers >= 22.12.6
 Requires:       python-hyperlink >= 21.0.0
 Requires:       python-msgpack >= 1.0.2
-Requires:       python-passlib >= 1.7.4
-Requires:       python-py-ubjson >= 0.16.1
-Requires:       python-pyOpenSSL >= 20.0.1
-Requires:       python-pytrie >= 0.4.0
-Requires:       python-qrcode >= 7.3.1
-Requires:       python-service_identity >= 18.1.0
-Requires:       python-setuptools
-Requires:       python-txaio >= 21.2.1
+Requires:       python-txaio >= 25.12.2
 Requires:       python-ujson >= 4.0.2
-Requires:       python-wsaccel >= 0.6.3
-Requires:       python-zope.interface >= 5.2.0
+# Because not vendored
+Requires:       python-flatbuffers >= 22.12.6
+# [twisted]
+Suggests:       python-Twisted >= 24.3.0
+Suggests:       python-attrs >= 20.3.0
+Suggests:       python-zope.interface >= 5.2.0
+# [accelerate]
+Suggests:       python-wsaccel >= 0.6.3
+# [encryption]
+Suggests:       python-PyNaCl >= 1.4.0
+Suggests:       python-pyOpenSSL >= 20.0.1
+Suggests:       python-service_identity >= 18.1.0
+Suggests:       python-pytrie >= 0.4.0
+Suggests:       python-base58 >= 2.1.1
+Suggests:       python-ecdsa >= 0.19.1
+Suggests:       python-qrcode >= 7.3.1
+# [scram]
+Suggests:       python-argon2-cffi >= 20.1.0
+Suggests:       python-passlib >= 1.7.4
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %python_subpackages
@@ -97,50 +100,63 @@ asynchronous Remote Procedure Calls and Publish & Subscribe on top of WebSocket.
 %autosetup -p1 -n autobahn-%{version}
 
 # this test relies too much on rng that can behave randomly in obs
-rm autobahn/test/test_rng.py
+rm src/autobahn/test/test_rng.py
 
 %build
 %if %{with nvx_support}
-export AUTOBAHN_USE_NVX=true
+export AUTOBAHN_USE_NVX=1
 %endif
 export CFLAGS="%{optflags}"
 %pyproject_wheel
 
 %install
 %if %{with nvx_support}
-export AUTOBAHN_USE_NVX=true
+export AUTOBAHN_USE_NVX=1
 %endif
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/wamp
-%python_clone -a %{buildroot}%{_bindir}/xbrnetwork
-%python_clone -a %{buildroot}%{_bindir}/xbrnetwork-ui
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
-%if %{with nvx_support}
-# It tries to test NVX, even if disabled
 %check
-export USE_ASYNCIO=true
-export AUTOBAHN_USE_NVX=true
-export PYTHONDONTWRITEBYTECODE=1
-export PY_IGNORE_IMPORTMISMATCH=1
-%pytest_arch
+%if %{with nvx_support}
+export AUTOBAHN_USE_NVX=1
+%else
+export AUTOBAHN_USE_NVX=0
 %endif
+export USE_ASYNCIO=1
+export PY_IGNORE_IMPORTMISMATCH=1
+# We need to ignore twisted tests here
+export PYTEST_ADDOPTS="--ignore=src/autobahn/twisted --ignore=examples"
+%pytest_arch
+# And then run them here
+unset USE_ASYNCIO
+export USE_TWISTED=1
+%{python_expand # line continues
+    pushd %{buildroot}%{$python_sitearch}
+    $python -m twisted.trial --no-recurse \
+        autobahn.test \
+        autobahn.twisted.test \
+        autobahn.websocket.test \
+        autobahn.rawsocket.test \
+        autobahn.wamp.test \
+        autobahn.nvx.test
+    rm -r _trial_temp
+    popd
+}
 
 %post
-%python_install_alternative wamp xbrnetwork xbrnetwork-ui
+%python_install_alternative wamp
 
 %postun
-%python_uninstall_alternative wamp xbrnetwork xbrnetwork-ui
+%python_uninstall_alternative wamp
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
-%{python_sitearch}/_nvx_utf8validator.abi3.so
+%doc README.md
+%{python_sitearch}/_nvx_*cpython-*-linux-gnu*.so
 %{python_sitearch}/autobahn
 %{python_sitearch}/twisted
 %{python_sitearch}/autobahn-%{version}.dist-info
 %python_alternative %{_bindir}/wamp
-%python_alternative %{_bindir}/xbrnetwork
-%python_alternative %{_bindir}/xbrnetwork-ui
 
 %changelog

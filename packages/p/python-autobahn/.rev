@@ -409,4 +409,41 @@
   * Support pytest-asyncio 1.0 changes.</comment>
     <requestid>1294925</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>64389a0b2775e13960ddee3a5de150b9</srcmd5>
+    <version>26.7.1</version>
+    <time>1789395866</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.7.1:
+  ## Security
+  * Fix WebSocket maxMessagePayloadSize being enforced against the compressed
+    on-the-wire frame length instead of the uncompressed reassembled message
+    size when permessage-compress (deflate/bzip2/snappy/brotli) is
+    negotiated.
+  * Fix the permessage-deflate max_message_size receive cap silently
+    truncating an over-limit message and raising a zlib error instead of
+    cleanly rejecting it: the bounded decompress(..., max_length) left the
+    remaining input in unconsumed_tail undrained, so the message was
+    corrupted rather than reported.
+  * Make bounded decompression backend-agnostic: decompress_message_data()
+    gains an optional max_output_len argument and every permessage-compress
+    backend now honours it.
+  * Make the asyncio RawSocket receive size limit configurable, at parity
+    with the Twisted backend. The asyncio WampRawSocketFactory now exposeso
+    setProtocolOptions(maxMessagePayloadSize=...) / resetProtocolOptions()
+    (bounds [512, 2**24], default 16 MB), and the configured value drives
+    both the advertised handshake length exponent and the enforced receive
+    cap (rounded up to the next power of two), matching the Twisted factory.
+  ## WAMP Serialization
+  * py-ubjson (unmaintained, sdist-only) is no longer an unconditional
+    dependency.
+  * The WAMP ubjson serializer is now backed by the maintained bjdata (Binary
+    JData) package, provided as the OPTIONAL autobahn[serialization] extra
+    (it also pulls in numpy), keeping both out of a minimal install
+  ## Build &amp; CI/CD
+  * Fail wheel builds hard when NVX was requested (AUTOBAHN_USE_NVX) but the
+    CFFI extension did not compile, instead of silently degrading to a
+    pure-Python (py3-none-any) wheel.</comment>
+    <requestid>1377805</requestid>
+  </revision>
 </revisionlist>

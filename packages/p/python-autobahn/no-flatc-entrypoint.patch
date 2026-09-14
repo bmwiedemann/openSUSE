@@ -1,0 +1,12 @@
+Index: autobahn-26.7.1/pyproject.toml
+===================================================================
+--- autobahn-26.7.1.orig/pyproject.toml
++++ autobahn-26.7.1/pyproject.toml
+@@ -231,7 +231,6 @@ asyncio = []
+ 
+ [project.scripts]
+ wamp = "autobahn.__main__:_main"
+-flatc = "autobahn._flatc:main"
+ 
+ # Hatchling build configuration
+ [tool.hatch.build.targets.wheel]

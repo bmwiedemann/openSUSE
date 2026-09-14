@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Sep 14 05:53:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 26.7.1:
+  ## Security
+  * Fix WebSocket maxMessagePayloadSize being enforced against the compressed
+    on-the-wire frame length instead of the uncompressed reassembled message
+    size when permessage-compress (deflate/bzip2/snappy/brotli) is
+    negotiated.
+  * Fix the permessage-deflate max_message_size receive cap silently
+    truncating an over-limit message and raising a zlib error instead of
+    cleanly rejecting it: the bounded decompress(..., max_length) left the
+    remaining input in unconsumed_tail undrained, so the message was
+    corrupted rather than reported.
+  * Make bounded decompression backend-agnostic: decompress_message_data()
+    gains an optional max_output_len argument and every permessage-compress
+    backend now honours it.
+  * Make the asyncio RawSocket receive size limit configurable, at parity
+    with the Twisted backend. The asyncio WampRawSocketFactory now exposeso
+    setProtocolOptions(maxMessagePayloadSize=...) / resetProtocolOptions()
+    (bounds [512, 2**24], default 16 MB), and the configured value drives
+    both the advertised handshake length exponent and the enforced receive
+    cap (rounded up to the next power of two), matching the Twisted factory.
+  ## WAMP Serialization
+  * py-ubjson (unmaintained, sdist-only) is no longer an unconditional
+    dependency.
+  * The WAMP ubjson serializer is now backed by the maintained bjdata (Binary
+    JData) package, provided as the OPTIONAL autobahn[serialization] extra
+    (it also pulls in numpy), keeping both out of a minimal install
+  ## Build & CI/CD
+  * Fail wheel builds hard when NVX was requested (AUTOBAHN_USE_NVX) but the
+    CFFI extension did not compile, instead of silently degrading to a
+    pure-Python (py3-none-any) wheel.
+  * Fix NVX native-extension builds breaking under cross-compilation, where
+    the cross toolchain rejected the host-only -march=native flag (unknown
+    value 'native' for '-march'). The default architecture target is now the
+    portable baseline for all build contexts.
+  ## Major Features
+  * new: NVX native XOR masking acceleration for WebSocket frame
+    masking/unmasking.
+  ## Refactoring & Cleanup
+  * fix: Plain twisted utilities are sufficient - removed unnecessary
+    dependencies
+  * fix: Stop using twisted.internet.defer.returnValue - migrate to native
+    return statements
+  * fix: Remove setuptools dependency - modernize to pyproject.toml-based
+    builds
+- Drop patches:
+  * respect-cflags.patch
+  * support-new-pytest-asyncio.patch
+  * use-plain-twisted.patch
+- Refresh patch intrin-arch.patch
+- Add patch no-flatc-entrypoint.patch:
+  * Do not install a flatc wrapper.
+- Run the testsuite twice, once for asyncio, and a second time for Twisted.
+- Clean up Requires.
+
+-------------------------------------------------------------------
 Tue Jul 22 04:49:15 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-plain-twisted.patch:
