@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:17:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 1.5.4:
+  * memory leak and use-after-free fixes in compression,
+    download range, header and index handling
+  * raise meson BuildRequires floor to 0.54.0 per upstream
+- drop Group: tags, modernize suse_version conditional
+  (spec-cleaner)
+
+-------------------------------------------------------------------
 Fri Jan  2 07:52:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.5.3:

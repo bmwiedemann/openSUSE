@@ -21,14 +21,13 @@
 %global libname libzck%{somajor}
 %global devname libzck-devel
 Name:           zchunk
-Version:        1.5.3
+Version:        1.5.4
 Release:        0
 Summary:        Compressed file format that allows easy deltas
 License:        BSD-2-Clause AND MIT
-Group:          Productivity/Archiving/Compression
 URL:            https://github.com/zchunk/zchunk
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  meson >= 0.44.0
+BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libzstd)
@@ -46,7 +45,6 @@ downloaded is in fact the file you wanted.
 
 %package -n %{libname}
 Summary:        Zchunk library
-Group:          System/Libraries
 
 %description -n %{libname}
 zchunk is a compressed file format that splits the file into independent
@@ -59,7 +57,6 @@ This package contains the zchunk library, libzck.
 
 %package -n %{devname}
 Summary:        Headers for building against zchunk
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}-%{release}
 Provides:       %{name}-devel = %{version}-%{release}
 
@@ -87,7 +84,7 @@ rm -rf src/lib/hash/sha*
 # Install dictionary generation script
 mkdir -p %{buildroot}%{_libexecdir}
 install -p contrib/gen_xml_dictionary %{buildroot}%{_libexecdir}/zck_gen_xml_dictionary
-%if %{suse_version} >= 1600
+%if 0%{?suse_version} >= 1600
 %python3_fix_shebang_path %{buildroot}%{_libexecdir}/*
 %endif
 
