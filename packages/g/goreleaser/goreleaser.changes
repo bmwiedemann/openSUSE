@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Sep 07 07:37:28 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.18.1:
+  * chore: schema update
+  * sec(deps): bump golang.org/x/crypto and golang.org/x/mod (#6872)
+  * ci(milestone): assign the lowest open versioned milestone (#6874)
+  * chore(deps): bump docker/buildx-bin from 0.36.1 to 0.37.0 in the docker group across 1 directory (#6865)
+  * fix(cask): deprecate url.verified (#6871)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/feature/s3/transfermanager from 0.3.16 to 0.4.2 in the gomod group (#6867)
+  * ci(deps): bump the actions group with 4 updates (#6868)
+  * fix(git): report repository detection errors (#6869)
+  * chore: auto-update generated files (#6861)
+  * fix(docker): only use wheels of the configured ids (#6860)
+  * fix(gomod): don't read the module path from stderr (#6864)
+  * chore: update to Go 1.27.1 (#6859)
+  * chore(deps): update go-github to v91 (#6858)
+  * fix: map every 32-bit ARM variant to Termux's "arm" (#6857)
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1 (#6856)
+  * test(client): assert the gitlab release link url (#6854)
+  * docs: update
+  * perf(git): ask git once (#6850)
+  * fix(client): apply the commit config per command (#6852)
+  * fix(chocolatey): a skipped chocolatey entry stops the ones after it (#6853)
+  * test(sign): stop running cosign for cases that do not look at it (#6836)
+  * fix(archive): report stripped binary paths (#6820)
+  * ci: merge lint.yml into build.yml (#6849)
+  * test(gitlab): write the download template responses once (#6848)
+  * perf(node): faster dist extraction, and stop leaking it into TMPDIR (#6844)
+  * fix(sign): warn when the signer writes no file, fail in v3 (#6842)
+  * fix(client): stop TestGitLabRateLimitRetryAfter racing the clock (#6846)
+  * fix(cmd): drop setup's unused return value (#6845)
+  * fix(gitlab): own the retries, and honor replace_existing_artifacts (#6843)
+  * docs: fix broken commands, dead links, and inaccurate options (#6841)
+  * test(builders): drop TestBuildSpecificModes (#6834)
+  * test(cmd): stop repeating work the tests already cover (#6831)
+  * test: stop cloning repositories from github (#6835)
+  * test: stop spawning docker to watch it fail slowly (#6838)
+  * test(builders): share zig's global cache between tests (#6829)
+  * perf: skip needless docker probes; make the ko registry test hermetic (#6827)
+  * ci: fetch the nix formatters as release binaries (#6828)
+  * ci: drop the ruleguard job (#6825)
+  * test: faster, hermetic tests (#6823)
+  * ci: speed up the test jobs (#6822)
+  * fix(aursources): clarify error and document source.enabled requirement (#6816)
+  * chore: auto-update generated files (#6812)
+  * ci(deps): bump the actions group with 5 updates (#6819)
+  * chore(deps): bump the gomod group with 2 updates (#6818)
+  * chore(deps): bump anchore/syft from v1.51.0 to v1.51.1 in the docker group across 1 directory (#6817)
+  * chore: auto-update generated files (#6811)
+  * docs: update
+
+-------------------------------------------------------------------
 Mon Aug 24 15:06:31 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Packaging improvements:
