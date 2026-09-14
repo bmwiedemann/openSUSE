@@ -18,17 +18,17 @@
 
 
 %define rizin_plugindir %{_libdir}/rizin/plugins
-
 Name:           rz-libswift
-Version:        0.8.0
+Version:        0.9.0
 Release:        0
 Summary:        Swift Demangling library for Rizin
 License:        Apache-2.0 AND LGPL-3.0-only
 URL:            https://github.com/rizinorg/rz-libswift
 Source:         https://github.com/rizinorg/rz-libswift/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  meson
 BuildRequires:  ninja
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  rizin-devel
 Requires:       rizin
@@ -45,6 +45,11 @@ Swift demangler for RizinOrg, taken from Apple source code.
 
 %install
 %meson_install
+
+%check
+%make_build swift-demangle
+chmod +x tests.sh
+./tests.sh --ci
 
 %files
 %license LICENSES/*
