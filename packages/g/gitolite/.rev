@@ -118,4 +118,14 @@
     setperms (thanks to Jeff from KDE for the idea/need)</comment>
     <requestid>1340792</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>f1ba60b62af91123f2c36671ce7461a4</srcmd5>
+    <version>3.6.15</version>
+    <time>1789395681</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.6.15:
+- allow passing permission and ref to stdin using `access` in batch mode
+- spec-cleaner pass (drop Group, https URL, stanza order)</comment>
+    <requestid>1377643</requestid>
+  </revision>
 </revisionlist>

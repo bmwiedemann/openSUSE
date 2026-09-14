@@ -19,25 +19,24 @@
 %define         gitolite_homedir    /srv/gitolite
 %define         git_user            git
 Name:           gitolite
-Version:        3.6.14
+Version:        3.6.15
 Release:        0
 Summary:        Server for git directory version tracker
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Version Control
-URL:            http://gitolite.com
+URL:            https://gitolite.com
 Source0:        https://github.com/sitaramc/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 Source11:       README.SUSE
-Provides:       group(%{git_user})
-Provides:       user(%{git_user})
 BuildRequires:  git
 Requires:       git
 Conflicts:      gitosis
+Provides:       group(%{git_user})
+Provides:       user(%{git_user})
 BuildArch:      noarch
-%if 0%{?suse_version} >= 1330
-Requires(pre):  user(wwwrun)
-Requires(pre):  user(nginx)
-%endif
 %{perl_requires}
+%if 0%{?suse_version} >= 1330
+Requires(pre):  user(nginx)
+Requires(pre):  user(wwwrun)
+%endif
 
 %description
 Gitolite is an access control layer on top of git, which allows access control
