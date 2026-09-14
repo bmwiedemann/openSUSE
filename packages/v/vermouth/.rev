@@ -377,4 +377,30 @@ It works like Lutris, Heroic, Faugus or Bottles, but is KDE first
   * Update sha</comment>
     <requestid>1375853</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>b40241601cc9219983eb82190a27fd49</srcmd5>
+    <version>2.2.1</version>
+    <time>1789395831</time>
+    <user>anag_factory</user>
+    <comment>- For .spec:
+  * Added KF6Config &amp; KF6ColorScheme as build dependencies
+- Bump to version 2.2.1 Sandbox escape:
+  * fix: Fixes for flatpak package
+  * Update commit sha
+  * Update sha sums
+  * Fix build script issues with selinux
+  * Lights out is OUT, Themes are IN! (#80)
+  * Add buy me a coffee link
+  * Update translation files
+  * Update sha sums/commits
+  * fix: Fix lights out in Plasma
+  * Steam shortcuts README entry
+  * Manual install should trigger exe choosers
+  * feat: Add a setting for the steam shortcut writer
+  * Steam shortcuts (#78)
+  * Update translation files
+  * Install a game (#77)
+  * Update commit shas</comment>
+    <requestid>1377790</requestid>
+  </revision>
 </revisionlist>

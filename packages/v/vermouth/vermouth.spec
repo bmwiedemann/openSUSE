@@ -17,7 +17,7 @@
 
 
 Name:           vermouth
-Version:        2.0.3
+Version:        2.2.1
 Release:        0
 Summary:        A Wine/Proton game launcher for KDE
 License:        MIT
@@ -48,6 +48,8 @@ BuildRequires:  cmake(Qt6Network) >= 6.6.0
 BuildRequires:  cmake(Qt6Quick) >= 6.6.0
 BuildRequires:  cmake(Qt6QuickControls2) >= 6.6.0
 BuildRequires:  cmake(Qt6Widgets) >= 6.6.0
+BuildRequires:  cmake(KF6Config) >= 6.6.0
+BuildRequires:  cmake(KF6ColorScheme) >= 6.6.0
 
 # Runtime deps
 Requires:       kf6-qqc2-desktop-style

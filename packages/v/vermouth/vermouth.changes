@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 13 22:15:16 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
+
+- For .spec:
+  * Added KF6Config & KF6ColorScheme as build dependencies
+- Bump to version 2.2.1 Sandbox escape:
+  * fix: Fixes for flatpak package
+  * Update commit sha
+  * Update sha sums
+  * Fix build script issues with selinux
+  * Lights out is OUT, Themes are IN! (#80)
+  * Add buy me a coffee link
+  * Update translation files
+  * Update sha sums/commits
+  * fix: Fix lights out in Plasma
+  * Steam shortcuts README entry
+  * Manual install should trigger exe choosers
+  * feat: Add a setting for the steam shortcut writer
+  * Steam shortcuts (#78)
+  * Update translation files
+  * Install a game (#77)
+  * Update commit shas
+
+-------------------------------------------------------------------
 Fri Sep 04 21:13:18 UTC 2026 - Jehu Marcos Herrera Puentes <jehuherrerap@hotmail.com>
 
 - Update to version 2.0.3 HUD Up:
