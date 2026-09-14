@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:21:38 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Update to version 1.8.0:
+  * build(deps): bump github.com/stretchr/testify from 1.11.1 to
+    1.12.0 by @dependabot[bot] in #2749
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.36 to 1.32.37 by @dependabot[bot] in #2750
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.107.1 to 1.107.2 by @dependabot[bot] in #2751
+  * build(deps): bump github.com/stretchr/testify from 1.12.0 to
+    1.12.1 by @dependabot[bot] in #2752
+  * docs: fix broken star history chart by @Dessalines39394 in #2742
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.27
+    to 0.0.28 by @dependabot[bot] in #2753
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.37 to 1.32.38 by @dependabot[bot] in #2755
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.107.2 to 1.107.3 by @dependabot[bot] in #2756
+  * build(deps): bump helm-diff to v3.15.12 by @yxxhero in #2759
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.38 to 1.33.1 by @dependabot[bot] in #2762
+  * build(deps): bump github.com/gofrs/flock from 0.13.0 to 0.13.1
+    by @dependabot[bot] in #2761
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.107.3 to 1.109.1 by @dependabot[bot] in #2760
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1 by
+    @dependabot[bot] in #2763
+  * feat: allow helmfile to continue on failed releases by @ceriath
+    in #2616
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.109.1 to 1.110.0 by @dependabot[bot] in #2764
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from 1.33.1
+    to 1.33.2 by @dependabot[bot] in #2765
+  * fix: resolve OCI version constraints before deriving the shared
+    chart cache path by @samifruit514 in #2768
+  * feat: opt-in OpenTelemetry tracing and metrics (experimental)
+    by @yxxhero in #2769
+  * build(deps): bump go.opentelemetry.io/otel from 1.44.0 to 1.46.0
+    by @dependabot[bot] in #2778
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.28 to
+    0.0.29 by @dependabot[bot] in #2776
+  * build(deps): bump go.opentelemetry.io/otel/sdk/metric from 1.44.0
+    to 1.46.0 by @dependabot[bot] in #2777
+  * build(deps): bump go.opentelemetry.io/proto/otlp from 1.10.0 to
+    1.11.0 by @dependabot[bot] in #2774
+  * build(deps): bump go.opentelemetry.io/otel/sdk from 1.44.0 to
+    1.46.0 by @dependabot[bot] in #2775
+  * build(deps): bump gitpython from 3.1.58 to 3.1.59 in /docs by
+    @dependabot[bot] in #2785
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    by @dependabot[bot] in #2784
+  * build(deps): bump google.golang.org/protobuf from
+    1.36.12-0.20260120151049-f2248ac996af to 1.36.12 by
+      @dependabot[bot] in #2783
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0 by
+    @dependabot[bot] in #2782
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.2 to 1.33.3 by @dependabot[bot] in #2781
+  * build(deps): bump go.opentelemetry.io/contrib/exporters/autoexport
+    from 0.67.0 to 0.71.0 by @dependabot[bot] in #2780
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.110.0 to 1.111.0 by @dependabot[bot] in #2779
+  * fix(list): avoid deadlock in helmfile list with more than 100
+    states by @max06 in #2773
+  * chore: bump Helm to v3.22.0 and v4.3.0 by @yxxhero in #2786
+  * build(deps): bump helm-diff to v3.15.13 by @yxxhero in #2788
+  * feat(remote): support wildcards in remote values/secrets file
+    selectors by @hoppla20 in #2787
+  * build(deps): bump helmfile/vals from v0.46.0 to v0.46.1 by
+    @yxxhero in #2789
+
+-------------------------------------------------------------------
 Mon Aug 17 05:01:20 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
 - Update to version 1.7.4:
