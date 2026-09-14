@@ -1,7 +1,7 @@
 #
 # spec file for package cpu-x
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define src_name CPU-X-%version
 Name:           cpu-x
-Version:        5.0.4
+Version:        5.4.0
 Release:        0
 Summary:        Hardware overview utility
 License:        GPL-3.0-or-later
@@ -26,6 +26,7 @@ Group:          System/X11/Utilities
 URL:            https://github.com/TheTumultuousUnicornOfDarkness/CPU-X
 Source:         https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/archive/refs/tags/v%version.tar.gz
 Patch1:         no-no-pie.patch
+Patch2:         0001-bandwidth-repair-wrong-NASM-cpu-declaration.patch
 %if 0%{suse_version} < 1599
 BuildRequires:  gcc12
 BuildRequires:  gcc12-c++
@@ -39,49 +40,28 @@ BuildRequires:  nasm
 BuildRequires:  opencl-headers
 BuildRequires:  (pkgconfig(libproc2) or pkgconfig(libprocps))
 BuildRequires:  pkgconfig(OpenCL)
-BuildRequires:  pkgconfig(glfw3)
+BuildRequires:  pkgconfig(egl) >= 1.4
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.12.0
 BuildRequires:  pkgconfig(gtkmm-3.0) >= 3.12.0
-BuildRequires:  pkgconfig(libcpuid) >= 0.6.0
+BuildRequires:  pkgconfig(libcpuid) >= 0.8.0
 BuildRequires:  pkgconfig(libpci)
 BuildRequires:  pkgconfig(ncursesw)
 BuildRequires:  pkgconfig(vulkan)
 # https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/issues/105
-Provides:       bundled(bandwidth) = 1.5.1
-Provides:       bundled(dmidecode) = 3.5.20230314
+Provides:       bundled(bandwidth) = 1.14.10
+Provides:       bundled(dmidecode) = 3.6.20250725
+Obsoletes:      %name-bash-completion < %version-%release
+Provides:       %name-bash-completion < %version-%release
+Obsoletes:      %name-fish-completion < %version-%release
+Provides:       %name-fish-completion < %version-%release
+Obsoletes:      %name-zsh-completion < %version-%release
+Provides:       %name-zsh-completion < %version-%release
 
 %description
 CPU-X is a software that gathers information about CPU, motherboard
 and peripherals. It is similar to CPU-Z (Windows) and can be used in
 graphical mode by using GTK or in text-based mode by using NCurses. A
 dump mode is present from command line.
-
-%package bash-completion
-Summary:        Bash completion for %name
-Group:          System/Shells
-Supplements:    (%name and bash-completion)
-BuildArch:      noarch
-
-%description bash-completion
-Shell completion definitions from %name for %name.
-
-%package fish-completion
-Summary:        Bash completion for %name
-Group:          System/Shells
-Supplements:    (%name and fish)
-BuildArch:      noarch
-
-%description fish-completion
-Shell completion definitions from %name for %name.
-
-%package zsh-completion
-Summary:        Bash completion for %name
-Group:          System/Shells
-Supplements:    (%name and zsh)
-BuildArch:      noarch
-
-%description zsh-completion
-Shell completion definitions from %name for %name.
 
 %lang_package
 
@@ -112,16 +92,10 @@ for dir in awk grep ; do pushd tests/$dir && ./test_regex.sh && popd ; done
 %_datadir/glib-2.0/
 %_datadir/metainfo/
 %license COPYING
-
-%files bash-completion
 %_datadir/bash-completion/
-
-%files fish-completion
 %_datadir/fish/
+%_datadir/zsh/
 
 %files lang -f %name.lang
-
-%files zsh-completion
-%_datadir/zsh/
 
 %changelog

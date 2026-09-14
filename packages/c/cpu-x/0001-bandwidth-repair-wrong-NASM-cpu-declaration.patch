@@ -1,0 +1,87 @@
+From 3bbc2bb7d61022fbf7b8bebe1e42e4ededa3ef18 Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Wed, 9 Sep 2026 14:56:42 +0200
+Subject: [PATCH] bandwidth: repair wrong NASM cpu declaration
+References: https://github.com/TheTumultuousUnicornOfDarkness/CPU-X/pull/430
+
+Trying to build CPU-X 5.4.0 with nasm-3.02, I am getting errors
+that were not there in CPU-X 5.0.4:
+
+```
+$ cd CPUX/src/core/bandwidth/OOC && /usr/bin/nasm -gdwarf -f elf64
+utility-x86-64bit.asm -o
+CPUX/build/src/core/bandwidth/utility-x86-64bit.o
+
+utility-x86-64bit.asm:84: error: no instruction for this cpu level
+```
+
+The line in question is
+
+```
+push rcx
+```
+
+utility-x86-64bit.asm declares `cpu ia64`, which is a weird thing to
+do, because the IA64 architecture does not have a register named rcx.
+
+Do the same fix as commit 8b8e64253c27a8ad4f35f70db5627cf54ebfdb9c
+did for the remaining files.
+---
+ src/core/bandwidth/OOC/utility-x86-32bit.asm |    2 +-
+ src/core/bandwidth/OOC/utility-x86-64bit.asm |    2 +-
+ src/core/bandwidth/routines-x86-32bit.asm    |    2 +-
+ src/core/bandwidth/routines-x86-64bit.asm    |    2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+Index: CPU-X-5.4.0/src/core/bandwidth/OOC/utility-x86-32bit.asm
+===================================================================
+--- CPU-X-5.4.0.orig/src/core/bandwidth/OOC/utility-x86-32bit.asm
++++ CPU-X-5.4.0/src/core/bandwidth/OOC/utility-x86-32bit.asm
+@@ -20,7 +20,7 @@
+ ;=============================================================================
+ 
+ bits	32
+-cpu	ia64
++cpu	default
+ 
+ global	_get_cpuid1_ecx
+ global	_get_cpuid1_edx
+Index: CPU-X-5.4.0/src/core/bandwidth/OOC/utility-x86-64bit.asm
+===================================================================
+--- CPU-X-5.4.0.orig/src/core/bandwidth/OOC/utility-x86-64bit.asm
++++ CPU-X-5.4.0/src/core/bandwidth/OOC/utility-x86-64bit.asm
+@@ -20,7 +20,7 @@
+ ;=============================================================================
+ 
+ bits	64
+-cpu	ia64
++cpu	default
+ 
+ ; Note:
+ ; Unix ABI says integer param are put in these registers in this order:
+Index: CPU-X-5.4.0/src/core/bandwidth/routines-x86-32bit.asm
+===================================================================
+--- CPU-X-5.4.0.orig/src/core/bandwidth/routines-x86-32bit.asm
++++ CPU-X-5.4.0/src/core/bandwidth/routines-x86-32bit.asm
+@@ -20,7 +20,7 @@
+ ;=============================================================================
+ 
+ bits	32
+-cpu	ia64
++cpu	default
+ 
+ global  IncrementRegisters
+ global  _IncrementRegisters
+Index: CPU-X-5.4.0/src/core/bandwidth/routines-x86-64bit.asm
+===================================================================
+--- CPU-X-5.4.0.orig/src/core/bandwidth/routines-x86-64bit.asm
++++ CPU-X-5.4.0/src/core/bandwidth/routines-x86-64bit.asm
+@@ -38,7 +38,7 @@
+ %endif
+ 
+ bits	64
+-cpu	ia64
++cpu	default
+ 
+ global	CopyWithMainRegisters
+ global	_CopyWithMainRegisters

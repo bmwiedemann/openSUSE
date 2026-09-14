@@ -151,4 +151,12 @@
   BuildRequires.</comment>
     <requestid>1190436</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>721f4b74da1c5ecd93c34a17479d0677</srcmd5>
+    <version>5.4.0</version>
+    <time>1789395653</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 5.4.0</comment>
+    <requestid>1377592</requestid>
+  </revision>
 </revisionlist>

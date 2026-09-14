@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep  9 12:44:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.0
+  * Add support for ARM CPUs
+  * Add support for Raspberry Pi SBCs
+  * Display EFI PK certificate information
+  * Display OpenGL Core and Compatibility profile versions
+  * Add support for Linux x32 ABI
+  * Drop support for AMD Catalyst driver
+- Add 0001-bandwidth-repair-wrong-NASM-cpu-declaration.patch
+
+-------------------------------------------------------------------
 Tue Jul 30 07:29:51 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Support libproc2 (aka procps 4): Add pkgconfig(libproc2)
