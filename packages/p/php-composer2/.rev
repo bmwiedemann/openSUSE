@@ -567,4 +567,12 @@
     <comment>[bsc#1278257], CVE-2026-84361</comment>
     <requestid>1375615</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>7270a67ab3efde80f4da5d7dd93db0d1</srcmd5>
+    <version>2.10.3</version>
+    <time>1789395909</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1279898], CVE-2026-59944</comment>
+    <requestid>1377825</requestid>
+  </revision>
 </revisionlist>
