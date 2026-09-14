@@ -27,6 +27,10 @@ Source0:        https://mkvtoolnix.download/sources/mkvtoolnix-%{version}.tar.xz
 Source1:        https://mkvtoolnix.download/sources/mkvtoolnix-%{version}.tar.xz.sig
 # Sub-key ID 0x74AF00AD F2E32C85 of key ID 0x0F92290A 445B9007 is used for signing
 Source2:        mkvtoolnix.keyring
+# PATCH-FIX-UPSTREAM fix-avilib_memory_allocation_failures.patch -- boo#1280126 / CVE-2026-90783
+Patch0:         fix-avilib_memory_allocation_failures.patch
+# PATCH-FIX-UPSTREAM fix-avilib_heap_overflow.patch -- boo#1280126 / CVE-2026-90783
+Patch1:         fix-avilib_heap_overflow.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes

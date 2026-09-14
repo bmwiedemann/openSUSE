@@ -1644,4 +1644,15 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
     <comment>1</comment>
     <requestid>1373615</requestid>
   </revision>
+  <revision rev="183" vrev="2">
+    <srcmd5>610a9a8f8758430dc843b78a99b29a76</srcmd5>
+    <version>101.0</version>
+    <time>1789396019</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-avilib_memory_allocation_failures.patch and
+  fix-avilib_heap_overflow.patch
+  (fix for boo#1280126 / CVE-2026-90783)
+</comment>
+    <requestid>1377883</requestid>
+  </revision>
 </revisionlist>

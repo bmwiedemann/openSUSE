@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:27:33 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Add fix-avilib_memory_allocation_failures.patch and
+  fix-avilib_heap_overflow.patch
+  (fix for boo#1280126 / CVE-2026-90783)
+
+-------------------------------------------------------------------
 Tue Aug 25 02:48:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 101.0
