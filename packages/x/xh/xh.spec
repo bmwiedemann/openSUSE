@@ -42,8 +42,10 @@ cp %{SOURCE2} .cargo/config
 
 %install
 %{cargo_install}
+install -m 0644 -D doc/xh.1 %{buildroot}%{_mandir}/man1/xh.1
 
 %files
 %{_bindir}/%{name}
+%{_mandir}/man1/xh.1%{?ext_man}
 
 %changelog
