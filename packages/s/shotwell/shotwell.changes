@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Sun Sep 13 19:56:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 33.0:
+  + Fix an issue with system information not showing the OS release
+  + Add system information also to the viewer mode
+  + Fix an issue where "discard" in viewer would not actually
+    discard changes
+  + Updated translations.
+- Changes from version 33.rc:
+  + Clean-up old data and debug/dead code
+  + Fix toolbar auto-hide in fullscreen mode
+  + Fix icons disappearing in slideshow toolbar
+  + Fix setting desktop backgrounds
+  + Allow pop-up of context menu with keyboard
+  + Fix send-to failing when sending many images
+  + Fix spacing in editing tools dialogs
+  + Fix adding face names
+  + Fix highlighting faces
+  + Fix matching random faces with random probabilities
+  + Export image if OpenCV cannot read the original format
+  + Fix tab navigation
+  + Fix crash when saving import results
+  + Set release name
+  + Add debug information to About dialog
+  + Updated translations.
+- Changes from version 33.beta:
+  + Rework printing
+  + Work-around lambda memory leaks
+  + Some clean-up of the codebase
+  + Work-arounds for potential crashes
+  + Fix slideshow settings panel
+  + Fix rating filter selection by keyboard
+  + Add a help overview of the keyboard shortcuts
+  + Publishing:
+    - Add "peek password" icon to Piwigo
+    - Move manual Gtk.Builder code to templated
+    - Show the external authentication wait panel everywhere
+    - Replace the dedicated auth helper app with a simple web
+      server on localhost
+- Changes from version 33.alpha
+  + Port to gtk4
+  + Changes in dependencies:
+    - GExiv2 >= 0.16.0
+    - GTK4 >= 4.22
+  + Other changes:
+    - Forward-port of bugfixes from stable branch
+    - Rename Appdata -> Metainfo
+    - Introduce Toasts to replace simple dialogs
+    - Add support for opening URIs with the viewer
+    - Fix image oversion jumping to top on first use
+    - Remove loads of deprecated GTK api where possible
+    - Remove deprecated calls to GExiv2
+    - Remove import from application infrastructure
+    - Fix missing default menu on sidebar
+    - Fix showing help when running from build folder
+    - Re-add all drag and drop based features
+    - "Asyncify" a lot of functions
+    - Clean up stray debug output left all over the code
+- Switch to meson BuildSystem, automatic BuildRequires.
+
+-------------------------------------------------------------------
 Wed Jun 10 07:14:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.32.17:

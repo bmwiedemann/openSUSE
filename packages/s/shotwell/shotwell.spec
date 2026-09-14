@@ -17,49 +17,22 @@
 
 
 Name:           shotwell
-Version:        0.32.17
+Version:        33.0
 Release:        0
 Summary:        Photo Manager for GNOME
 License:        LGPL-2.1-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            https://wiki.gnome.org/Apps/Shotwell
+URL:            https://gitlab.gnome.org/GNOME/shotwell
 
-Source0:        https://download.gnome.org/sources/shotwell/0.32/%{name}-%{version}.tar.xz
+Source0:        https://download.gnome.org/sources/shotwell/%{version}/%{name}-%{version}.tar.xz
 Source99:       shotwell-rpmlintrc
+BuildSystem:    meson
+BuildOption:    -D install_apport_hook=false
 
-BuildRequires:  AppStream
-BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gettext-devel >= 0.19.7
-BuildRequires:  libraw-devel-static
+BuildRequires:  itstool
 BuildRequires:  meson >= 0.43.0
-BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28.0
-BuildRequires:  yelp-tools
-BuildRequires:  pkgconfig(atk)
-BuildRequires:  pkgconfig(gcr-3)
-BuildRequires:  pkgconfig(gcr-ui-3)
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
-BuildRequires:  pkgconfig(gee-0.8) >= 0.10.0
-BuildRequires:  pkgconfig(gexiv2) >= 0.12.3
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.20
-BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.20
-BuildRequires:  pkgconfig(gstreamer-base-1.0) >= 1.0.0
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= 1.20
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
-BuildRequires:  pkgconfig(gudev-1.0) >= 145
-BuildRequires:  pkgconfig(json-glib-1.0)
-BuildRequires:  pkgconfig(libexif) >= 0.6.16
-BuildRequires:  pkgconfig(libsecret-1)
-BuildRequires:  pkgconfig(libgphoto2) >= 2.5.0
-BuildRequires:  pkgconfig(libportal-gtk3) > 0.5
-BuildRequires:  pkgconfig(libsoup-3.0)
-BuildRequires:  pkgconfig(libwebpdemux)
-BuildRequires:  pkgconfig(libwebp)
-BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.32
-BuildRequires:  pkgconfig(sqlite3) >= 3.5.9
-BuildRequires:  pkgconfig(webkit2gtk-4.1) >= 2.26
 
 %description
 Shotwell is a digital photo organizer designed for the GNOME desktop
@@ -69,28 +42,12 @@ mode, and export them to share with others.
 
 %lang_package
 
-%prep
-%autosetup -p1
+%generate_buildrequires
+%meson_buildrequires
 
-%build
-%meson \
-	-D unity_support=false \
-	-D dupe_detection=false \
-	-D install_apport_hook=false \
-	%{nil}
-%meson_build
-
-%install
-%meson_install
-
+%install -a
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
-
-%check
-%meson_test
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell.desktop
-desktop-file-validate %{buildroot}%{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
-appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
 
 %ldconfig_scriptlets
 
@@ -99,31 +56,24 @@ appstreamcli validate --no-net %{buildroot}%{_datadir}/metainfo/org.gnome.Shotwe
 %doc AUTHORS NEWS THANKS
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/shotwell
-%dir %{_datadir}/metainfo
 %{_datadir}/applications/org.gnome.Shotwell-Viewer.desktop
-%{_datadir}/applications/org.gnome.Shotwell.Auth.desktop
 %{_datadir}/applications/org.gnome.Shotwell.desktop
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell-extras.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.gnome.shotwell.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.yorba.shotwell-extras.gschema.xml
 %{_datadir}/glib-2.0/schemas/org.yorba.shotwell.gschema.xml
 %{_datadir}/icons/hicolor/*/*/org.gnome.Shotwell*
-%{_datadir}/metainfo/org.gnome.Shotwell.appdata.xml
+%{_datadir}/metainfo/org.gnome.Shotwell.metainfo.xml
 %{_libdir}/shotwell/
 # This is not split as the only consumer is shotwell itself.
 %{_libdir}/libshotwell-authenticator.so
-%{_libdir}/libshotwell-authenticator.so.0
-%{_libdir}/libshotwell-authenticator.so.%{version}
+%{_libdir}/libshotwell-authenticator.so.*
 %{_libdir}/libshotwell-plugin-common.so
-%{_libdir}/libshotwell-plugin-common.so.0
-%{_libdir}/libshotwell-plugin-common.so.%{version}
+%{_libdir}/libshotwell-plugin-common.so.*
 %{_libdir}/libshotwell-plugin-dev-1.0.so
-%{_libdir}/libshotwell-plugin-dev-1.0.so.0
-%{_libdir}/libshotwell-plugin-dev-1.0.so.%{version}
+%{_libdir}/libshotwell-plugin-dev-1.0.so.*
 %dir %{_libexecdir}/shotwell
-%{_libexecdir}/shotwell/shotwell-authenticator
 %{_libexecdir}/shotwell/shotwell-settings-migrator
-%{_libexecdir}/shotwell/shotwell-video-metadata-handler
 %{_libexecdir}/shotwell/shotwell-video-thumbnailer
 %{_mandir}/man1/shotwell.1%{?ext_man}
 
