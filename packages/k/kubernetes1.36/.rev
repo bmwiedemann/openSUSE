@@ -42,4 +42,14 @@ Also, includes a changelog entry pointing to the mitigation steps suggested by t
     <comment>Monthly Patch Release – Aug, 2026: Update to version 1.36.4</comment>
     <requestid>1373296</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>66ab8c760d2bb0c97e34ba0aea137f18</srcmd5>
+    <version>1.36.4</version>
+    <time>1789395712</time>
+    <user>anag_factory</user>
+    <comment>fix for CVE-2026-41178, bsc#1276659  
+- ref: https://github.com/open-telemetry/opentelemetry-go/commit/97447f5c54
+- ref: https://github.com/open-telemetry/opentelemetry-go/commit/f02feacf86</comment>
+    <requestid>1377682</requestid>
+  </revision>
 </revisionlist>
