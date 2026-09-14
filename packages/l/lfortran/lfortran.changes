@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:33:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.65.0, 23 releases ahead of 0.42.0:
+  * Coarray progress: FORM/CHANGE TEAM, SYNC TEAM, coshape,
+    lcobound/ucobound, allocatable coarrays, PRIF lowering
+  * Submodules, separate compilation (--separate-compilation,
+    --semantics-only, --rename-symbol)
+  * New intrinsics: rand, sleep, system, iargc/getarg aliases,
+    sinpi/cospi/tanpi family, is_contiguous, compiler_options,
+    selected_logical_kind, idnint
+  * I/O specifiers: iostat/iomsg on open/flush/backspace/endfile/
+    rewind, delim/pad/round/sign/decimal/blank/position/action
+  * VOLATILE attribute, F2023 DATA statement, EQUIVALENCE fixes,
+    unlimited polymorphic variables, user functions may shadow
+    intrinsics
+  * Interactive: per-cell translation units, walrus operator,
+    kernel rich display support
+  * Stack buffer overflow fix in get_local_info_dwarfdump and
+    other hardening; see upstream release notes for the full list
+- Switch Source0 to the GitHub release tarball, the old host no
+  longer serves 0.65.0
+- Build against LLVM 22, the newest version tested by upstream CI
+- Allow aarch64 builds, Debian ships this release on arm64
+- Drop the stale CMAKE_PREFIX_PATH pinning the llvm18 directory
+- Disable WITH_STACKTRACE like Fedora and upstream CI, ON no
+  longer links the standalone liblfortran_parser/liblfortran_c
+  libs (neither LLVM-symbolize nor BFD is linked there)
+- Add test-only BuildRequires python3-toml, link the tests with
+  gcc (clang22 ships no bare clang), package the new
+  ISO_Fortran_binding.h header
+- Skip the one known aarch64-only test failure
+  (lfortran/lfortran#2981, complex evaluator case), full suite
+  still runs on other arches
+
+-------------------------------------------------------------------
 Mon Dec 16 18:53:44 UTC 2024 - Christoph Junghans <junghans@votca.org>
 
 - build with llvm-19
