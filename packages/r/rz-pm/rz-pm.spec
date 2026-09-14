@@ -16,25 +16,23 @@
 #
 
 
-%global git_rev  cee0d0d32ba8161223f06e6cc53707cf00bc0025
-
 Name:           rz-pm
-Version:        0.3.3+git~14~gcee0d0d
+Version:        0.3.6
 Release:        0
 Summary:        Rizin package manager
 License:        LGPL-3.0-only
 URL:            https://github.com/rizinorg/rz-pm
-Source:         https://github.com/rizinorg/rz-pm/archive/%{git_rev}/%{name}-%{version}.tar.gz
+Source:         https://github.com/rizinorg/rz-pm/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
+BuildRequires:  golang(API) >= 1.25
 BuildRequires:  rizin
-BuildRequires:  golang(API) >= 1.22
 Requires:       rizin
 
 %description
 This tool aims to be a cross platform package manager for the reverse engineering framework Rizin.
 
 %prep
-%autosetup -p1 -a1 -n rz-pm-%{git_rev}
+%autosetup -p1 -a1
 
 %build
 go build \

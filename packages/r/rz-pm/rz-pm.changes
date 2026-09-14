@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.6:
+  * Improve operation progress UX
+  * Release the DB lockfile when interrupted with CTRL-C
+  * Refresh vendored Go modules (go-git 5.18.0, x/crypto 0.50.0)
+  * Require golang(API) >= 1.25 matching upstream go directive
+  * Fix android builds in CI
+  * CVE-2025-21613 (bco#1247616): go-git is 5.18.0, above the 5.13.0 fix
+  * CVE-2025-47913 (bsc#1253528): x/crypto is 0.50.0, above the 0.43.0 fix
+  * CVE-2025-47914 (bsc#1253995): x/crypto is 0.50.0, above the 0.45.0 fix
+  * CVE-2025-58181 (bsc#1253884): x/crypto is 0.50.0, above the 0.45.0 fix
+
+-------------------------------------------------------------------
 Tue Aug  5 14:47:31 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Fix bco#1247616 (CVE-2025-21613)
