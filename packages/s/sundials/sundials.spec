@@ -65,13 +65,13 @@ ExclusiveArch:  do_not_build
 %if %{without mpi}
  %define my_prefix %_prefix
  %define my_bindir %_bindir
- %define my_libdir %_libdir
  %define my_incdir %_includedir
+ %define my_libdir %_libdir
 %else
  %define my_prefix %{_libdir}/mpi/gcc/%{mpi_flavor}%{?mpi_ext}
  %define my_bindir %{my_prefix}/bin
- %define my_libdir %{my_prefix}/%_lib
  %define my_incdir %{my_prefix}/include
+ %define my_libdir %{my_prefix}/%_lib
  %define my_suffix -%{mpi_flavor}%{?mpi_ext}
 %endif
 
@@ -96,7 +96,7 @@ ExclusiveArch:  do_not_build
 %define shlib_sunnonlin     libsundials_sunnonlin4%{?my_suffix}
 
 Name:           %{package_name}
-Version:        7.6.0
+Version:        7.9.0
 Release:        0
 Summary:        Suite of nonlinear solvers
 # SUNDIALS is licensed under BSD with some additional (but unrestrictive) clauses.
@@ -145,6 +145,7 @@ Requires:       %{shlib_nvec} = %{version}
 Requires:       %{shlib_sunlinsol} = %{version}
 Requires:       %{shlib_sunmatrix} = %{version}
 Requires:       %{shlib_sunnonlin} = %{version}
+Recommends:     %{pname}-doc = %{version}
 
 %description devel
 SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
@@ -287,6 +288,16 @@ for use in writing mathematical software.
 
 This package provides the sunnonlin shared libraries for SUNDIALS.
 
+%package examples-doc
+Summary:        Suite of nonlinear solvers - combined examples
+BuildArch:      noarch
+
+%description examples-doc
+SUNDIALS is a SUite of Non-linear DIfferential/ALgebraic equation Solvers
+for use in writing mathematical software.
+
+This package provides a collection of examples for all sundials solvers.
+
 %prep
 %autosetup -p1 -n %{pname}-%{version}
 
@@ -299,18 +310,18 @@ This package provides the sunnonlin shared libraries for SUNDIALS.
 %endif
        -DCMAKE_SKIP_RPATH:BOOL=OFF \
        -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
-       -DENABLE_LAPACK:BOOL=ON \
-       -DENABLE_PTHREAD:BOOL=ON \
+       -DSUNDIALS_ENABLE_LAPACK:BOOL=ON \
+       -DSUNDIALS_ENABLE_PTHREAD:BOOL=ON \
        -DENABLE_KLU:BOOL=ON \
        -DKLU_INCLUDE_DIR:PATH=%{_includedir}/suitesparse \
        -DKLU_LIBRARY_DIR:PATH=%{_libdir} \
        -DSUNDIALS_BUILD_WITH_MONITORING:BOOL=ON \
 %if %{without mpi}
-       -DEXAMPLES_INSTALL_PATH=%{_docdir}/%{name}/examples \
-       -DENABLE_MPI:BOOL=OFF
+       -DSUNDIALS_EXAMPLES_INSTALL_PATH=%{_docdir}/sundials/examples \
+       -DSUNDIALS_ENABLE_MPI:BOOL=OFF
 %else
-       -DEXAMPLES_INSTALL:BOOL=OFF \
-       -DENABLE_MPI:BOOL=ON \
+       -DSUNDIALS_ENABLE_EXAMPLES_INSTALL:BOOL=OFF \
+       -DSUNDIALS_ENABLE_MPI:BOOL=ON \
        -DMPI_C_COMPILER=%{my_bindir}/mpicc \
        -DMPI_CXX_COMPILER=%{my_bindir}/mpicxx \
        -DMPI_Fortran_COMPILER=%{my_bindir}/mpif90 \
@@ -362,15 +373,14 @@ fi
 
 %if %{without mpi}
 %files doc
-%doc doc/cvode/cv_examples.pdf
-%doc doc/cvode/cv_guide.pdf
-%doc doc/kinsol/kin_examples.pdf
-%doc doc/kinsol/kin_guide.pdf
-%doc doc/cvodes/cvs_examples.pdf
-%doc doc/cvodes/cvs_guide.pdf
-%doc doc/ida/ida_examples.pdf
-%doc doc/ida/ida_guide.pdf
-%{_docdir}/%{name}/
+%license LICENSE
+%doc doc/*/*_guide.pdf
+
+%files examples-doc
+%license LICENSE
+%dir %{_docdir}/sundials
+%{_docdir}/sundials/examples/
+%doc doc/*/*_examples.pdf
 %endif
 
 %files devel

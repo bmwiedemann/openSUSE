@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sat Sep  5 14:40:20 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 7.9.0:
+  * New features:
+    - Updated the MRIStep module in ARKODE to support extended
+      Super Time Stepping (ExtSTS) methods for multi-physics
+      simulations involving parabolic components, through the
+      MRIStepExtSTSCreate function. 
+    - Added Butcher tables for the classical RK4
+      (ARKODE_KUTTA_RK4a_4_4) and 3/8-rule (ARKODE_KUTTA_RK4b_4_4)
+      methods.
+    - Added CUDA support to the sundials4py Python interface.
+    - The KLU SUNLinearSolver is now available in sundials4py.
+    - sundials4py now has a N_VGetNumpyArray function which should
+      be used instead of N_VGetArrayPointer.
+    - The SUNLinearSolver interface to SuperLU_DIST now supports
+      single precision.
+    - Added the function N_VSetDeviceArrayPointer to the N_Vector
+      API to set the device data pointer for vector
+      implementations with a device memory space.
+    - Added the SUNDIALS_ENABLE_DEPRECATED_WARNINGS CMake option
+      to allow users to disable compiler warnings emitted by
+      deprecated SUNDIALS API annotations.
+  * Bug fixes:
+    - Fixed a bug where the factor provided by ARKodeSetEpsLin was
+      scaled by 0.1. To restore the original behavior, call
+      ARKodeSetEpsLin with an argument of 0.005.
+    - Fixed bug in SUNNonlinearSolver_Auto which resulted in
+      premature switch to Newton from fixed point due to
+      convergence rate check occurring after only one iteration.
+    - Fixed duplicate keys in IDA and IDAS logging output from
+      consistent initial condition solves and order selection
+      diagnostics.
+- Changes from version 7.8.0 and 7.7.0:
+  * Too many to list, see
+    <https://github.com/LLNL/sundials/releases/>.
+- Split off examples into own -examples-doc package and recommend
+  the reference -doc package from -devel package.
+
+-------------------------------------------------------------------
 Wed Feb 18 18:07:13 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 7.6.0:
