@@ -1,0 +1,135 @@
+commit 2f291845bda7c454dab643b1030b16172be841d0
+Author: Wang, Jijun <jijun.wang@intel.com>
+Date:   Thu Feb 5 10:36:58 2026 -0500
+
+    Fixed stream.c build issue
+    
+    - Updated stream.c to use 'omp masked'
+    - Updated changelog
+    - Bumped build number from 150 to 151
+    
+    Signed-off-by: Wang, Jijun <jijun.wang@intel.com>
+
+diff --git IbaTools/stream/stream.c IbaTools/stream/stream.c
+index 256d93680cf0..7da8f7b89b2a 100644
+--- IbaTools/stream/stream.c
++++ IbaTools/stream/stream.c
+@@ -247,7 +247,7 @@ main()
+     printf(HLINE);
+ #pragma omp parallel 
+     {
+-#pragma omp master
++#pragma omp masked
+ 	{
+ 	    k = omp_get_num_threads();
+ 	    printf ("Number of Threads requested = %i\n",k);
+diff --git OpenIb_Host/build.env OpenIb_Host/build.env
+index bfb94f4d72b9..28aec5d30a4c 100644
+--- OpenIb_Host/build.env
++++ OpenIb_Host/build.env
+@@ -1,5 +1,5 @@
+ export PRODUCT=OPENIB_FF
+-export RELEASE_TAG=12_1_0_0_150
++export RELEASE_TAG=12_1_0_0_151
+ export BUILD_CONFIG=${BUILD_CONFIG:-"release"}
+ export BUILD_WITH_STACK=OPENIB
+ export LDENVFS=
+diff --git OpenIb_Host/build_label OpenIb_Host/build_label
+index 8a1d0e8b6d72..d40472626c43 100644
+--- OpenIb_Host/build_label
++++ OpenIb_Host/build_label
+@@ -1 +1 @@
+-Build of OPENIB_FF 06/26/25 23:58 Tag: OPENIB_FF_LINUX_hpc-eth-12_1_12_1_0_0_150
++Build of OPENIB_FF 06/26/25 23:58 Tag: OPENIB_FF_LINUX_hpc-eth-12_1_12_1_0_0_151
+diff --git OpenIb_Host/eth-tools.spec.fedora OpenIb_Host/eth-tools.spec.fedora
+index 12e1d3f187cd..fef94dd7115e 100644
+--- OpenIb_Host/eth-tools.spec.fedora
++++ OpenIb_Host/eth-tools.spec.fedora
+@@ -1,6 +1,6 @@
+ Name: eth-tools
+ Version: 12.1.0.0
+-Release: 150%{?dist}
++Release: 151%{?dist}
+ Summary: Intel Ethernet Fabric Suite basic tools and libraries for fabric management
+ 
+ License: BSD-3-Clause
+@@ -94,6 +94,10 @@ BUILDDIR=%{_builddir} DESTDIR=%{buildroot} LIBDIR=%{_prefix}/lib OpenIb_Host/ff_
+ %config(noreplace) /usr/lib/eth-tools/osid_wrapper
+ 
+ %changelog
++* Thu Feb 5 2026 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-151
++- Added Navix support
++- Updated stream.c to use 'omp masked'
++
+ * Thu Jun 26 2025 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-149
+ - Improved to support RHEL 9.6, 10.0 and SLES 15.7
+ - Improved stability and print of ethudstress
+diff --git OpenIb_Host/eth-tools.spec.ocs OpenIb_Host/eth-tools.spec.ocs
+index 903e958d57ad..e5e5615c5ee7 100644
+--- OpenIb_Host/eth-tools.spec.ocs
++++ OpenIb_Host/eth-tools.spec.ocs
+@@ -1,6 +1,6 @@
+ Name: eth-tools
+ Version: 12.1.0.0
+-Release: 150%{?dist}
++Release: 151%{?dist}
+ Summary: Intel Ethernet Fabric Suite basic tools and libraries for fabric management
+ 
+ License: BSD-3-Clause
+@@ -87,6 +87,10 @@ BUILDDIR=%{_builddir} DESTDIR=%{buildroot} LIBDIR=%{_prefix}/lib OpenIb_Host/ff_
+ %config(noreplace) /usr/lib/eth-tools/osid_wrapper
+ 
+ %changelog
++* Thu Feb 5 2026 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-151
++- Added Navix support
++- Updated stream.c to use 'omp masked'
++
+ * Thu Jun 26 2025 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-149
+ - Improved to support RHEL 9.6, 10.0 and SLES 15.7
+ - Improved stability and print of ethudstress
+diff --git OpenIb_Host/eth-tools.spec.rh OpenIb_Host/eth-tools.spec.rh
+index 0be2e6cc5d3b..d6ca58f8d4fe 100644
+--- OpenIb_Host/eth-tools.spec.rh
++++ OpenIb_Host/eth-tools.spec.rh
+@@ -1,6 +1,6 @@
+ Name: eth-tools
+ Version: 12.1.0.0
+-Release: 150%{?dist}
++Release: 151%{?dist}
+ Summary: Intel Ethernet Fabric Suite basic tools and libraries for fabric management
+ 
+ License: BSD-3-Clause
+@@ -89,6 +89,10 @@ BUILDDIR=%{_builddir} DESTDIR=%{buildroot} LIBDIR=%{_prefix}/lib OpenIb_Host/ff_
+ %config(noreplace) /usr/lib/eth-tools/osid_wrapper
+ 
+ %changelog
++* Thu Feb 5 2026 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-151
++- Added Navix support
++- Updated stream.c to use 'omp masked'
++
+ * Thu Jun 26 2025 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-149
+ - Improved to support RHEL 9.6, 10.0 and SLES 15.7
+ - Improved stability and print of ethudstress
+diff --git OpenIb_Host/eth-tools.spec.sles OpenIb_Host/eth-tools.spec.sles
+index 15b643af6bb8..563fd00acc33 100644
+--- OpenIb_Host/eth-tools.spec.sles
++++ OpenIb_Host/eth-tools.spec.sles
+@@ -1,6 +1,6 @@
+ Name: eth-tools
+ Version: 12.1.0.0
+-Release: 150%{?dist}
++Release: 151%{?dist}
+ Summary: Intel Ethernet Fabric Suite basic tools and libraries for fabric management
+ 
+ License: BSD-3-Clause
+@@ -89,6 +89,10 @@ BUILDDIR=%{_builddir} DESTDIR=%{buildroot} LIBDIR=%{_prefix}/lib OpenIb_Host/ff_
+ %config(noreplace) /usr/lib/eth-tools/osid_wrapper
+ 
+ %changelog
++* Thu Feb 5 2026 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-151
++- Added Navix support
++- Updated stream.c to use 'omp masked'
++
+ * Thu Jun 26 2025 Jijun Wang <jijun.wang@intel.com> - 12.1.0.0-149
+ - Improved to support RHEL 9.6, 10.0 and SLES 15.7
+ - Improved stability and print of ethudstress

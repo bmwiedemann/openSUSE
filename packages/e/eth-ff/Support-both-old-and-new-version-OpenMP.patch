@@ -1,0 +1,34 @@
+commit c58f6da42979c8058d67592df5d49ec92fc56b25
+Author: Wang, Jijun <jijun.wang@intel.com>
+Date:   Mon Feb 9 10:47:01 2026 -0500
+
+    Support both old and new version OpenMP
+    
+    Signed-off-by: Wang, Jijun <jijun.wang@intel.com>
+
+diff --git IbaTools/stream/stream.c IbaTools/stream/stream.c
+index 7da8f7b89b2a..b5782851b092 100644
+--- IbaTools/stream/stream.c
++++ IbaTools/stream/stream.c
+@@ -176,6 +176,12 @@
+ #define STREAM_TYPE double
+ #endif
+ 
++#if defined(_OPENMP) && _OPENMP >= 202011
++#define OMP_MASKED masked
++#else
++#define OMP_MASKED master
++#endif
++
+ static STREAM_TYPE	a[STREAM_ARRAY_SIZE+OFFSET],
+ 			b[STREAM_ARRAY_SIZE+OFFSET],
+ 			c[STREAM_ARRAY_SIZE+OFFSET];
+@@ -247,7 +253,7 @@ main()
+     printf(HLINE);
+ #pragma omp parallel 
+     {
+-#pragma omp masked
++#pragma omp OMP_MASKED
+ 	{
+ 	    k = omp_get_num_threads();
+ 	    printf ("Number of Threads requested = %i\n",k);

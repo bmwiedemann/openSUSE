@@ -90,4 +90,14 @@
     <comment></comment>
     <requestid>1290012</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>423298008ae6f4e853a6d1d18b7141c0</srcmd5>
+    <version>12.1.0.0</version>
+    <time>1789396035</time>
+    <user>anag_factory</user>
+    <comment>- Backport upstream patch to fix compilation issues:
+  - Fixed-stream.c-build-issue.patch
+  - Support-both-old-and-new-version-OpenMP.patch</comment>
+    <requestid>1377902</requestid>
+  </revision>
 </revisionlist>

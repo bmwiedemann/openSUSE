@@ -30,8 +30,11 @@ Group:          Productivity/Networking/System
 URL:            https://github.com/intel/eth-fast-fabric
 Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        eth-ff.rpmlintrc
+Source100:      README.md
 Patch1:         eth-ff-suse-build-fixes.patch
 Patch2:         eth-ff-add-shebang-for-exp-files.patch
+Patch3:         Fixed-stream.c-build-issue.patch
+Patch4:         Support-both-old-and-new-version-OpenMP.patch
 BuildRequires:  gcc-c++
 BuildRequires:  infiniband-diags-devel
 BuildRequires:  libexpat-devel
