@@ -223,4 +223,13 @@
     Server&quot;) out to a separate package and repository named</comment>
     <requestid>1367526</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>1b42094f145dbda7d54d8b297bbbeb73</srcmd5>
+    <version>0.24.0</version>
+    <time>1789395870</time>
+    <user>anag_factory</user>
+    <comment>- Add missing {Build,}Requires on qrcode. 
+</comment>
+    <requestid>1377847</requestid>
+  </revision>
 </revisionlist>

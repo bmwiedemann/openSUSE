@@ -41,6 +41,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-twisted}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module qrcode >= 8.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module spake2 >= 0.9}
 BuildRequires:  %{python_module tqdm >= 4.13.0}
