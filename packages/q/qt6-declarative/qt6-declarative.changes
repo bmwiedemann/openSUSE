@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:24:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Add upstream change (kde#508377)
+  * 0001-QML-engine-Correctly-compare-composites-when-multipl.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 11:48:34 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.2

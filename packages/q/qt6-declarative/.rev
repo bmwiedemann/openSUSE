@@ -522,4 +522,13 @@
     <comment>Qt 6.11.2 (forwarded request 1372096 from krop)</comment>
     <requestid>1372239</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>d1e290d484b06e9b421acff9b4a26486</srcmd5>
+    <version>6.11.2</version>
+    <time>1789395596</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream change (kde#508377)
+  * 0001-QML-engine-Correctly-compare-composites-when-multipl.patch</comment>
+    <requestid>1377514</requestid>
+  </revision>
 </revisionlist>
