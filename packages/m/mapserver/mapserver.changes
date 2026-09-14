@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:31:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 8.6.6 (security release):
+  * WCS 2.0 GetCoverage: reject non-positive RESOLUTION
+  * CGI query path: fix SMOOTHSIA point-shape worker abort
+  * WMS: bound exception response copy, fix interpolation
+    layer heap write and error image sizing
+  * WMS/WFS filters: cap operation count, handle NaN
+    coordinates
+  * FlatGeobuf: reject features failing property decode
+
+-------------------------------------------------------------------
 Sun Jul 12 14:55:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.6.5
