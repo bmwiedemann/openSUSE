@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.8.11
+Version:        1.9.2
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -62,7 +62,6 @@ sed -i '1s|^#!/usr/bin/env python3|#!/usr/bin/python3|' assets/goverlay-steam-sh
 
 %install
 %make_install prefix=%{_prefix} libexecdir=/%{_lib}
-install -d %{buildroot}%{_libexecdir}/goverlay
 sed -i \
     -e 's/^StartupWMClass=.*/StartupWMClass=goverlay/' \
     %{buildroot}%{_datadir}/applications/io.github.benjamimgois.goverlay.desktop
@@ -90,6 +89,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_datadir}/%{name}
 %{_datadir}/applications/*.desktop
 %{_datadir}/icons/hicolor/*/apps/*%{name}.png
+%{_datadir}/icons/hicolor/scalable/apps/io.github.benjamimgois.goverlay.svg
 %{_datadir}/metainfo/io.github.benjamimgois.%{name}.metainfo.xml
 
 %changelog

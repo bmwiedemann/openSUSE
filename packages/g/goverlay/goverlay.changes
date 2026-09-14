@@ -1,4 +1,263 @@
 -------------------------------------------------------------------
+Sun Sep 13 17:58:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.9.2:
+  * fix(packaging): declare scalable SVG icon in RPM spec %files
+  * feat(vksumi): use tar extraction for vksumi .pkg.tar.zst package
+  * chore(metainfo): align summary, branding, screenshots, and scalable SVG with Flathub guidelines
+  * chore: set release version to 1.9.2
+  * fix(flatpak): prevent host implicit Vulkan layer pollution and boot loop
+  * chore: set release channel to stable for 1.9.1
+  * fix(flatpak): create mount directory for lsfgvk vulkan layer extension
+  * feat(lossless): replace method icons and labels with unified banner images
+  * feat(optiscaler): hide log level selector and align comboboxes vertically
+  * fix(lossless): prevent phantom multiplier trackbar handle on frame generation card
+  * fix(lossless): restrict lsfg-vk updates to official stable releases
+  * feat(ui): open config and log directories in file manager from hamburger menu
+  * feat(logging): centralize diagnostic tool logs and real-time synchronization
+  * fix(games): safely restore native backups before deleting game config on uninstall
+  * feat(bgmod): add complete Streamline SDK deployment, backup and auto-healing support
+  * feat(dlssenabler): synchronize optiscaler supporting libraries to dlssenabler cache
+  * feat(optiscaler): add log level combobox and enable optipatcher by default
+  * fix(optiscaler): auto-save FSR version and preferred upscaler on change
+  * fix(upscaler): persist channel selection across game profiles and restarts
+  * fix(ui): remove redundant floating progress banner during updates
+  * feat(optiscaler): add FSR version combobox with centralized downloads
+  * perf(games): update card badge in-place when returning to games tab
+  * fix(lossless): keep controls enabled at 1x multiplier
+  * fix(games): restore MangoHud tabs when selecting game card
+  * feat(finish-dialog): add Lutris platform tab with procedural canvas guidance
+  * feat(home,about): separate lsfg-vk and mako in home libraries and update credits
+  * feat(lossless): add lsfg-vk 2.0 migration assistant, dynamic dll validation, and hamburger menu entry
+  * feat(lossless): migrate to lsfg-vk 2.0 with update notifications and pacing mode fixes
+  * feat(lossless): show Wayland and HDR incompatibility note beside MAKO version
+  * fix(mako): automatic update notifications and asset resolution
+  * feat(lossless): optimize tab loading and support dynamic config/log files
+  * feat(lossless): unify interpolation tab with OptiScaler design and add safe atomic config saving
+  * feat(ui): add 'Open log file' option to tab menu
+  * feat(logging): record OptiScaler, vkSumi, and vkBasalt logs to game logs folder
+  * feat(lossless): record MAKO renderer logs to game logs folder
+  * fix(lossless): align trackbars length, improve hints, and move GPU device to Card 0
+  * docs(lossless): clarify hints for Performance Mode, Ultra Performance and FP16
+  * fix(lossless): keep backing checkboxes hidden in adaptive mode
+  * fix(lossless): cleanup obsolete options and simplify 5x label
+  * feat(lossless): replace lsfg-vk with MAKO renderer
+  * feat: auto-install flatpak vulkan runtimes and vkSumi layer
+  * fix(flatpak): revert steam filesystem permissions to ro and add shortcut info dialog
+  * fix(home): preserve original game DLL backup directories on clear configuration
+  * refactor(mangohud): place visual settings at top and size active gpu combobox to avoid floating pill
+  * feat(mangohud): simplify Active GPU selector with clean market names and index prefixes
+  * feat: add Steam Grid artwork and logo for Steam shortcut integration
+  * fix(preview): honor tool toggles and prevent mangohud/vkbasalt leaking in preview
+  * fix(mangohud): prevent global toggle revert to 1 on tab access
+  * chore(tweaks): update RADV_PERFTEST description to 'Emulates RT on older AMD GPUs'
+  * feat(tweaks): add RADEON red badge and NVIDIA green badge in envvars tab
+  * fix(lossless): ensure pascube is configured in lsfg.toml and synced on open
+  * fix(ui): fix filters trackbars alignment on maximized window
+  * fix: preserve configs on tool toggle-off and sync per-game launch command
+  * feat(tweaks): replace PROTON_PRIORITY_HIGH with game-performance wrapper
+  * fix(mangohud): restore 1-unit increment on FPS color threshold spinedits
+  * feat(games): modernize game card fallback cover icon and background
+  * test(gui): add regression test for global tool toggle persistence across launches
+  * fix(toggles): fix auto-save and state persistence for toggle switches across tabs
+  * feat: migrate OptiScaler tab checkboxes to compact toggle switches
+  * feat: refine OptiScaler and DLSS Enabler logos with solid letters
+  * feat: update DLSS Enabler logo to match two-line design language
+  * feat: update OptiScaler logo to two-line layout in Upscaler card
+  * fix: preserve user-defined MangoHud FPS color thresholds (fps_value)
+  * fix: ensure MangoHud presets always reset metric graph toggles
+  * feat: add metric graph toggles and graphs= config support in MangoHud Metrics tab
+  * fix: enhance position spinedit, fps limit hint and toast popup corners
+  * fix: synchronize toggle switches when selecting MangoHud presets
+  * feat: replicate anti-aliased compact toggle switches across all tabs
+  * feat(mangohud): add frame_timing_detailed option and reorganize information card
+  * fix(envvars): update hints for LowLatency and MESA badges
+  * fix(envvars): clean latency reduction descriptions and move details to hints
+  * style(vkbasalt): modernize toggle switches with antialiasing and shadow depth
+  * feat(envvars): redesign tab with card layout and antialiased toggles
+  * feat(vkbasalt): add visual effect pipeline reordering card
+  * fix(vkbasalt): fix bottom button clipping on tab activation and resize
+  * fix(vkbasalt): prevent duplicate built-in effects and invalid shader file mappings
+  * fix(ci): update Flatpak SDK and runtime to KDE 6.11
+  * feat(appimage): embed standardized update information and publish zsync control files
+  * fix(bgmod): bidirectional timestamp sync for OptiScaler.ini and fakenvapi.ini
+  * chore: remove openspec folder from repository and add to gitignore
+  * style(ui): add modern clean white chevron arrows for comboboxes and spinedits
+  * fix(autosave): trigger autosave for optiscaler method, filter radiogroup and trackbars
+  * fix(ui): refactor floating dock to sleek rounded rectangle and unify dark theme
+  * feat(ui): convert performance filters trackbars to horizontal orientation
+  * fix broken link? why was it that link to begin with????
+  * fix: prevent MangoHud Global Enable from overriding launch command with descriptive text
+  * style: widen finish configuration dialog to improve command visibility
+  * fix: dynamically resolve launch command for finish dialog
+  * build(flatpak): update KDE Platform runtime to 6.11 and source to 1.9.0
+  * update logo image
+  * chore: set release channel to stable for 1.9.0
+  * style(ui): hide video tutorial menu item from settings menu
+  * chore(metadata): update AppStream metainfo for 1.9.0 release
+  * feat(pascube): disallow benchmark execution when Lossless Scaling is active
+  * feat(upscalers): add None method option and modernize method logos
+  * feat(about): add github sponsors donation button
+  * feat(about): modernize about tab layout, add paypal donations, and update branding
+  * feat(brand): enhance layered icon contrast with Sky Blue and Light Sapphire (Option A)
+  * feat(ui): refine splash branding image size to 240px width for elegant compact layout
+  * feat(ui): refine splash screen branding image size to 300px for optimal balance
+  * fix(brand): center splash screen branding logo and remove asymmetric margins
+  * feat(brand): bring splash tagline closer to GOVERLAY logo (Option 1)
+  * feat(brand): align splash screen tagline width exactly to GOVERLAY wordmark
+  * feat(brand): preserve white screen font-height match while keeping uncompressed layer lines and spacing
+  * docs(openspec): archive modernize-layered-icon-branding change and sync specs
+  * feat(ui): maximize sidebar logo width with anti-aliasing and zero letter clipping
+  * feat(brand): apply Option A logo calibration (58px exact cap-height, 6px kerning)
+  * feat(brand): calibrate logo layered icon to exact font cap-height and tighten kerning (Option B)
+  * feat(brand): apply Option 1 refined classic with white screen frame and cascading neon layers
+  * feat(brand): implement modernized classic layered overlay icon, wordmark logo, and splash screen
+  * fix(brand): implement pixel-hinted 16px/24px/32px icon frames to eliminate subpixel thresholding
+  * feat(brand): update HUD brackets and branding accents to Sapphire Blue (#4895EF)
+  * fix(brand): render solid crisp brackets for icon DIB frames to eliminate Qt6 1-bit mask threshold artifacts
+  * fix(brand): generate spec-compliant uncompressed DIB ICO to prevent LCL Range check error
+  * feat(brand): refine brand color to pure electric cyan and eliminate icon quantization artifacts
+  * fix(brand): apply R-B channel compensation in goverlay.ico and form Icon.Data for Qt6 widgetset
+  * fix(brand): fix icon channel swap in titlebar and use uncompressed DIB ICO format
+  * fix(brand): update form icon resource and dynamically load window titlebar icon
+  * feat(brand): modernize application icon, wordmark logo, and splash screen branding
+  * feat(vksumi): decouple vkSumi post-processing flag and automate neutral default detection
+  * feat(ui): use doc icon for config menu, eye icon for preview dock, and confirm game uninstall
+  * feat(dock): add open config file action in hamburger menu across all tabs
+  * fix(lossless): isolate per-game config and fix page control change sync
+  * fix(lossless): trigger auto-save timer and settings saved toast on control changes
+  * fix(upscalers): synchronize preview pill dock visibility between optiscaler and lossless scaling
+  * refactor(ui): remove obsolete vkcube and pascube options from hamburger menu
+  * feat(lossless-scaling): add program icon, 1x-10x trackbar, dll status feedback, and consolidate cards
+  * feat(lossless): enable Disable FP16 by default and add explanatory hint
+  * feat(lossless): use lsfg.toml as single source of truth for lossless scaling
+  * feat(lossless): add 3d preview pill, toml config synthesis and vulkan 1.3 pascube
+  * fix(lsfg): fill full scrollbox viewport height with background panel
+  * fix(flatpak): grant read-write permission for Steam shortcuts and deduplicate paths
+  * fix(startup): defer changelog popup until main window is visible
+  * feat: modernize trackbar styling and value labels across all tabs
+  * feat(home): add lsfg-vk library status and version display
+  * chore(openspec): archive save-lossless-scaling-to-bgmod-conf change
+  * feat(lossless-scaling): add 1x disabled multiplier default and fix dll path text selection
+  * feat(lossless-scaling): persist configuration directly to bgmod.conf [Env] and [Config]
+  * fix(lossless-scaling): use UpdateGenericCardTheme for lossless cards to ensure checkbox transparency
+  * fix(lossless-scaling): remove gray background from checkboxes by ensuring transparency
+  * feat(lossless-scaling): move descriptions to hints, reorganize Configuration into 2 columns, and add HDR Mode
+  * feat(lossless-scaling): make DLL path edit read-only, restore native combobox dropdown arrow, and add 5x and 6x multiplier options
+  * refactor(lossless-scaling): simplify label captions, rename second card to Configuration, and soften valid DLL green styling
+  * style(lossless-scaling): match DLL file path edit and browse button with Log folder style
+  * refactor(lossless-scaling): streamline DLL card title, remove auto-detect button and status label, style edit background green when valid
+  * feat: add Lossless Scaling (lsfg-vk) tab under Upscalers
+  * feat(ui): refine upscaler subcards, gamescope hints and custom command width
+  * fix: isolate dlss-enabler updates per channel and prevent false downgrades
+  * fix: read all of lsmod before deciding a module is missing
+  * test: resolve the sandbox path before trusting the prefix check
+  * test: call RestoreStdoutHook before the sandbox re-exec
+  * feat: modernize games tab action dock and contextual folder management
+  * feat: modernize finish configuration dialog with borderless style and high-contrast command card
+  * fix(ui): center GPU driver auto detect label and maintain visibility
+  * perf(startup): pre-download only stable optiscaler and dlss-enabler
+  * feat(upscalers): add auto option and default to optiscaler menu scale
+  * feat(ui): unify hover and press styling across all floating dock pills
+  * feat(ui): modernize heroic walkthrough animation and strip quotes in wrapper command
+  * feat(ui): modernize steam walkthrough animation in finish dialog
+  * fix(ui): hide floating action dock on home status tab
+  * fix(ui): dynamic layout for filters trackbars and labels on window resize
+  * fix: suppress legacy bottom panel on game select and config save
+  * style(ui): use checkmark icon for finish button on floating dock
+  * feat(mangohud): invert logging folder and toggle positions, hide autoupload and versioning checkboxes
+  * feat(ui): place hamburger menu on left of pill dock and polish extras tab layout
+  * fix(mangohud): align and cluster bottom HUD checkboxes next to toggle key button
+  * chore(openspec): archive expand-cards-vertical-space change and sync specs
+  * feat(ui): expand cards and layout panels to fill vertical space
+  * chore(openspec): archive completed UI floating dock and finish dialog changes
+  * fix(ui): hide floating action dock pill completely on games tab
+  * feat(ui): unify envvars add button into compact floating action dock
+  * feat(ui): refine pill design, streamline dock to Finish, and eliminate border halos
+  * feat(ui): implement floating action dock, finish config dialog, and floating overlays
+  * fix(mangohud): set default background alpha to 0.6 on reset
+  * feat(tweaks): add PROTON_DISCORD_BRIDGE tweak
+  * feat(tweaks): add PROTON_LOCAL_SHADER_CACHE tweak
+  * fix(test): prevent stdout pipe hook deadlock during test re-exec (#381)
+  * fix(test): add strict sandbox path validation and safety guard in test isolation (#382)
+  * fix(build): add pascube as file target and install prerequisite (#386)
+  * fix(apputils): make ExecuteShellCommand synchronous with poWaitOnExit (#387)
+  * fix(upscalers): display update notification on DLSS Enabler status row
+  * i18n(ru): shorten captions that did not fit, and keep the overlay acronyms in Latin
+  * fix(ui): give two labels room for a longer caption
+  * fix(i18n): keep the translator away from Text properties
+  * feat(i18n): add a Russian catalogue
+  * feat(i18n): move message box text into resourcestrings
+  * feat(i18n): wire up LCL translation and ship the string catalogue
+  * fix(optiscaler): carry the update tag next to the notice instead of inside it
+  * fix: stop keying folder removal, packaging and dependency lookups on display text
+  * fix(tweaks): group tweak rows by category id instead of header text
+  * feat(ui): implement POSIX pipe stdout/stderr redirection for real-time startup log capture
+  * feat(ui): keep splash details log form open when boot splash finishes if visible
+  * fix(ui): ensure OnSplashDetailsClick and UpdateBootSplash update Memo with GetGlobalLogs and auto-scroll
+  * feat(ui): hook all 4 FPC text streams (Output, StdOut, ErrOutput, StdErr) in apputils initialization to capture full startup logs for splash details window
+  * feat(ui): hook stdout and stderr to stream full app initialization logs into splash details window
+  * fix(ui): adjust splash status label closer to progress bar and details button to bottom-right corner
+  * fix(ui): use crisp 220x65 goverlay_splash_small.png and restore progress bar layout with percentage at end
+  * fix(ui): reduce splash branding image to 270x80 and enable AntialiasingMode amOn
+  * fix(ui): use data/goverlay_splash.png with reduced dimensions (340x100)
+  * chore(openspec): archive minimalist-boot-splash-redesign
+  * fix(ui): use data/goverlay_logo.png branding banner and 28px custom TPaintBox progress bar with centered text
+  * fix(dlss-enabler): prevent pipe buffer deadlock when executing curl HTML directory scraping
+  * docs: archive dlssenabler-streamline-sdk-integration change
+  * docs: archive dlss-enabler-unified-manifest change
+  * fix(dlss-enabler): eliminate GitHub API rate limits using CDN versions.json & direct HTML tree scraping
+  * docs: sync upscalers-dlss-enabler main spec and archive dlss-enabler-stable-edge-channels change
+  * feat(ui): display DLSS Enabler and active version in Home tab Libraries section
+  * feat(ui): update boot splash labels with concise download status and archive change
+  * style: remove Action label above progress bar from boot splash UI
+  * fix: resolve boot splash infinite loop and GitHub API rate limit download failure for DLSS Enabler
+  * style: translate splash screen labels to English and remove subtitle
+  * feat: add startup boot splash progress UI for OptiScaler and DLSS Enabler pre-downloads
+  * fix(ui): resolve Software Status versions layout and re-enable DLSS Enabler channel selection
+  * fix(bgmod): ensure OptiScaler.ini and fakenvapi.ini are synchronized on launch
+  * feat(dlss-enabler): integrate NVIDIA Streamline SDK and update uninstaller
+  * feat(dlss-enabler): add support for dual channel (stable & trunk) from OptiScaler-builds
+  * fix(gui): wire TCustomEdit controls to debounced auto-save event handler
+  * fix(optiscaler): keep Force Reflex unchecked by default and preserve state on startup
+  * fix(configfile): normalize INI section headers and prevent unbracketed section duplicate appends
+  * fix(optiscaler): set Fsr4Update=auto in cache OptiScaler.ini template upon extraction
+  * feat(optiscaler): update default Fsr4Update value to auto
+  * feat(gui): improve Upscalers controls, command panel layout, and DLSS Enabler updates
+  * test(gui): drive the MangoHud toggle buttons by state, not by caption
+  * build: fix the Default build mode failing with Duplicate identifier "CMEM"
+  * fix: stop deriving the MangoHud config from the remaining control captions
+  * fix: enforce OptiScaler driver restrictions on toggle and sync global config
+  * fix(optipatcher): persist unchecked state of optipatcher checkbox in OptiScaler.ini
+  * style(optiscaler): change Upscaler card title to Method and default OptiPatcher checkbox to checked
+  * fix: do not derive the MangoHud config from button captions
+  * feat(dlss-enabler): full tag rolling update check and status card integration
+  * feat(optipatcher): auto-update rolling release on OptiScaler tab open
+  * feat(ui): centralize design system tokens and standardize typography across tabs
+  * feat(optiscaler): separate Options section into 4 independent sub-cards
+  * fix(tweaks): trigger auto-save when toggling options and custom variables in tweaks tab
+  * feat: implement automatic configuration persistence and remove save button
+  * feat(upscalers): switch DLSS Enabler to stable channel and improve UI alignment
+  * feat(optiscaler): update frame gen options dynamically based on upscaler mode
+  * docs: archive change reorganize-optiscaler-options-card-sections and sync main specs
+  * feat(optiscaler): reorganize options card layout and harmonize section controls
+  * docs: propose change reorganize-optiscaler-options-card-sections
+  * fix(ui): align active GPU controls vertically and style columns buttons in slate-navy
+  * docs: archive change apply-slate-navy-theme-to-edit-controls
+  * style(ui): apply Slate Navy theme to controls and fix tab layouts
+  * feat(upscalers): add FG Input/Output comboboxes and global slate-navy combobox theme
+  * feat(ui): redesign upscalers tab layout to fill viewport and eliminate red background strip
+  * fix(ui): restore channel combobox to stable when switching back to OptiScaler
+  * fix(ui): display -- and gray status dot for DLSS Enabler when OptiScaler is active
+  * docs: archive change fix-dlss-enabler-status-and-updates
+  * fix(optiscaler): correct DLSS Enabler release table parsing and goverlay.vars migration
+  * feat(bgmod): clean game directory on upscaler switch and track upscalertype
+  * feat: update bgmod uninstaller for dlss enabler
+  * feat: add upscalers tab with dlss enabler support
+  * feat(gui): add load config action and bump version to 1.9.0-git
+  * fix(packaging): remove minimum version constraint for libqt6pas6 in DEB package
+
+-------------------------------------------------------------------
 Fri Aug 07 13:15:08 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 1.8.11:
