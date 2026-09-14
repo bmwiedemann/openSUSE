@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 23.1.1 (LLVM 23.1 test-suite runner, syncs with llvmorg-23.1.1):
+  * no upstream changelog shipped in the PyPI sdist
+  * new modules: lit DiffUpdater, InprocBuiltins, ShellEnvironment
+  * new builtin command helper with process launch limits
+- Correct License tag to Apache-2.0 WITH LLVM-exception to match
+  the shipped LICENSE.TXT (NCSA was stale since the LLVM 9 relicense)
+
+-------------------------------------------------------------------
 Mon Sep 22 11:09:06 UTC 2025 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 18.1.8

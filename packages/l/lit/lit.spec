@@ -19,29 +19,27 @@
 %else
 %bcond_with libalternatives
 %endif
-
 Name:           lit
-Version:        18.1.8
+Version:        23.1.1
 Release:        0
 Summary:        A portable tool for executing test suites
-License:        NCSA
-Group:          Development/Tools/Other
-URL:            http://llvm.org/cmds/lit.html
+License:        Apache-2.0 WITH LLVM-exception
+URL:            https://llvm.org/cmds/lit.html
 Source0:        https://files.pythonhosted.org/packages/source/l/lit/lit-%{version}.tar.gz
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       lit = %{version}
+BuildArch:      noarch
 %if %{with libalternatives}
-Requires:       alts
 BuildRequires:  alts
+Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 %endif
-BuildArch:      noarch
-Provides:       lit = %{version}
 %python_subpackages
 
 %description

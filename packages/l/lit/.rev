@@ -56,4 +56,12 @@
     <comment></comment>
     <requestid>1311687</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>710be646138a5907d7335c7e1a312358</srcmd5>
+    <version>23.1.1</version>
+    <time>1789395713</time>
+    <user>anag_factory</user>
+    <comment>Forward lit 23.1.1 to Factory (accepted devel SR 1377684; LLVM 23.1 test-suite runner; local aarch64 build green, source_validator clean)</comment>
+    <requestid>1377688</requestid>
+  </revision>
 </revisionlist>
