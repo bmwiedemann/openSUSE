@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:54:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 50.15.0:
+  + Updated translations
+- Changes from version 50.14.0:
+  + [Reader] OCR Translator: Added DeepL provider
+  + [Servers] JManga (JA): Update
+  + [Servers] Mangas Origines (FR): Update
+  + [Servers] Nix of Nothing (EN): Disabled
+  + [Servers] Read Comics Online (EN): Update
+
+
+-------------------------------------------------------------------
 Tue Sep  1 13:18:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 50.13.0:

@@ -784,4 +784,19 @@
 - Rebase convert-to-modern-colorthief.patch using quilt.</comment>
     <requestid>1375292</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>06706bdda4065ca8b243011b5a789732</srcmd5>
+    <version>50.15.0</version>
+    <time>1789395811</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.15.0:
+  + Updated translations
+- Changes from version 50.14.0:
+  + [Reader] OCR Translator: Added DeepL provider
+  + [Servers] JManga (JA): Update
+  + [Servers] Mangas Origines (FR): Update
+  + [Servers] Nix of Nothing (EN): Disabled
+  + [Servers] Read Comics Online (EN): Update</comment>
+    <requestid>1377784</requestid>
+  </revision>
 </revisionlist>
