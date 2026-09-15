@@ -80,7 +80,7 @@ Summary:        Graph, mesh and hypergraph partitioning library
 License:        CECILL-C
 Group:          Productivity/Scientific/Math
 Name:           %{package_name}
-Version:        7.0.8
+Version:        7.0.15
 Release:        0
 URL:            https://gitlab.inria.fr/scotch/scotch
 Source0:        https://gitlab.inria.fr/scotch/scotch/-/archive/v%{version}/%{base_pname}-v%{version}.tar.gz
@@ -178,6 +178,14 @@ export RPMOPTFLAGS="%(echo '%{optflags}' | sed 's/-D_FORTIFY_SOURCE=3/-D_FORTIFY
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
   -DENABLE_TESTS=%{?with_tests:ON}%{!?with_tests:OFF} \
   %{nil}
+
+# Since 7.0.15 the build runs the freshly built gdump to generate a test
+# source, so it needs to find the libraries just built. Do not use
+# CMAKE_SKIP_INSTALL_RPATH for this: it makes cmake strip only its own
+# build-tree entry from the RUNPATH that the mpich compiler wrapper adds,
+# leaving an empty ":" entry that rpmlint rejects.
+export LD_LIBRARY_PATH="$PWD/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
+
 %cmake_build
 
 %install
