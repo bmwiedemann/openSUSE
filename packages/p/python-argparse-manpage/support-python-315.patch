@@ -1,0 +1,47 @@
+From 7654ed17e243816f6e4acbd8f16be2945ae07045 Mon Sep 17 00:00:00 2001
+From: Alex Muir <wamuir1212@protonmail.com>
+Date: Sat, 16 May 2026 02:20:21 -0700
+Subject: [PATCH 1/2] Changed super(HelpFormatter, self).__init__() to
+ super().__init__(prog)
+
+---
+ argparse_manpage/manpage.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/argparse_manpage/manpage.py b/argparse_manpage/manpage.py
+index b8b344c..dcb7ec1 100644
+--- a/argparse_manpage/manpage.py
++++ b/argparse_manpage/manpage.py
+@@ -362,7 +362,7 @@ def quoted(text):
+ 
+ class _ManpageFormatter(HelpFormatter):
+     def __init__(self, prog, old_formatter, format):
+-        super(HelpFormatter, self).__init__()
++        super().__init__(prog)
+         self._prog = prog
+         self.of = old_formatter
+         assert format in ("pretty", "single-commands-section")
+
+From c9f781fd3812eebeb04408b5ff8a14b4ee40ba2f Mon Sep 17 00:00:00 2001
+From: Alex Muir <wamuir1212@protonmail.com>
+Date: Mon, 18 May 2026 19:50:24 -0700
+Subject: [PATCH 2/2] Changed super call to the explicit version for
+ capatability with python 2 and 3
+
+---
+ argparse_manpage/manpage.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/argparse_manpage/manpage.py b/argparse_manpage/manpage.py
+index dcb7ec1..828b4c2 100644
+--- a/argparse_manpage/manpage.py
++++ b/argparse_manpage/manpage.py
+@@ -362,7 +362,7 @@ def quoted(text):
+ 
+ class _ManpageFormatter(HelpFormatter):
+     def __init__(self, prog, old_formatter, format):
+-        super().__init__(prog)
++        super(_ManpageFormatter, self).__init__(prog)
+         self._prog = prog
+         self.of = old_formatter
+         assert format in ("pretty", "single-commands-section")

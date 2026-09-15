@@ -210,4 +210,13 @@ tools.</comment>
   environments.</comment>
     <requestid>1331091</requestid>
   </revision>
+  <revision rev="22" vrev="3">
+    <srcmd5>0285173779f4151bf33f7702359b9dd5</srcmd5>
+    <version>4.7</version>
+    <time>1789469264</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support Python 3.15 argparse changes.</comment>
+    <requestid>1377797</requestid>
+  </revision>
 </revisionlist>
