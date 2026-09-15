@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep  7 22:01:09 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.2:
+  * Fix `language: node` hooks that contain `"scripts": {"build":
+    ...}` with npm 11.x.
+  * Install `language: node` hooks via `git`.
+  * Fixes npm 12.x compatibility
+  * Set `JULIA_DEPOT_PATH` for `language: julia`.
+  * pre-commit-ci/runner-image#335 issue by @damonbayer.
+  * Produce error on mistyped `--repo` for `pre-commit
+    autoupdate`.
+  * Improve performance of commit existence check in `pre-push`.
+  * Avoid duplicating conflicted filenames during `pre-commit run
+    --all-files`.
+
+-------------------------------------------------------------------
 Sun May 17 21:34:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.6.0:
