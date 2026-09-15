@@ -25,18 +25,21 @@ Version:        2.28.10
 Release:        0
 Summary:        Libraries for crypto and SSL/TLS protocols
 License:        Apache-2.0 OR GPL-2.0-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://tls.mbed.org
 Source:         https://github.com/ARMmbed/mbedtls/archive/v%{version}.tar.gz#/%{_rname}-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM: Fix build with gcc15
+Patch0:         mbedtls-fix-build-with-gcc-15.patch
+# PATCH-FIX-UPSTREAM: mbedtls-fix-CVE-2025-59438.patch boo#1252454 -- fix padding oracle through timing of cipher error reporting (CVE-2025-59438, upstream 3.6 commits 155de2ab/d179dc80/e74b4283/3b380dae/04dfd704/cc908ad0)
+Patch1:         mbedtls-fix-CVE-2025-59438.patch
+# PATCH-FIX-UPSTREAM: mbedtls-fix-CVE-2025-52496.patch boo#1245810 -- fix race condition in AESNI support detection (CVE-2025-52496, upstream commit 8c67ac0f)
+Patch2:         mbedtls-fix-CVE-2025-52496.patch
 BuildRequires:  cmake
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libpkcs11-helper-1)
 BuildRequires:  pkgconfig(zlib)
 %{?suse_build_hwcaps_libs}
-# PATCH-FIX-UPSTREAM: Fix build with gcc15
-Patch0:         mbedtls-fix-build-with-gcc-15.patch
 
 %description
 mbedtls implements the SSL3, TLS 1.0, 1.1 and 1.2 protocols. It
@@ -49,7 +52,6 @@ exchanges.
 
 %package -n %{lib_tls}
 Summary:        Transport Layer Security protocol suite
-Group:          System/Libraries
 
 %description -n %{lib_tls}
 mbedtls implements the SSL 3.0, TLS 1.0, 1.1 and 1.2 protocols. It
@@ -62,7 +64,6 @@ exchanges.
 
 %package -n %{lib_crypto}
 Summary:        Cryptographic base library for mbedtls
-Group:          System/Libraries
 
 %description -n %{lib_crypto}
 This subpackage of mbedtls contains a library that exposes
@@ -71,7 +72,6 @@ AES, MD5, SHA, Elliptic Curves, BigNum, PKCS, ASN.1, BASE64.
 
 %package -n %{lib_x509}
 Summary:        Library to work with X.509 certificates
-Group:          System/Libraries
 
 %description -n %{lib_x509}
 This subpackage of mbedtls contains a library that can read, verify
@@ -80,7 +80,6 @@ and read Certificate Revocation Lists.
 
 %package devel
 Summary:        Development files for mbedtls, a SSL/TLS library
-Group:          Development/Libraries/C and C++
 Requires:       %{lib_crypto} = %{version}
 Requires:       %{lib_tls} = %{version}
 Requires:       %{lib_x509} = %{version}

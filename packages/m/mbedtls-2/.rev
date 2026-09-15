@@ -146,4 +146,16 @@ Requested by @Yoshio_Sato at https://build.opensuse.org/requests/1274997 , who n
     <comment>Reference tracking bugs (boo#1230310, boo#1240051, boo#1240052) for listed CVE fixes</comment>
     <requestid>1360821</requestid>
   </revision>
+  <revision rev="13" vrev="5">
+    <srcmd5>8272d2bf54e6d5670276cff3363d6cc4</srcmd5>
+    <version>2.28.10</version>
+    <time>1789469340</time>
+    <user>anag_factory</user>
+    <comment>Forward CVE-2025-52496 backport for mbedtls-2 (boo#1245810) from security:tls.
+
+Includes CVE-2025-59438 backport (boo#1252454, SR 1377983 superseded).
+
+Backport upstream commit 8c67ac0f to 2.28.10 as mbedtls-fix-CVE-2025-52496.patch. Native aarch64 build green, 113/113 %check pass, sonames unchanged.</comment>
+    <requestid>1378063</requestid>
+  </revision>
 </revisionlist>

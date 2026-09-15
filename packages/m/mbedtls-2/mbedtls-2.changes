@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 15 05:00:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2025-52496: race condition in AESNI support detection, AES key
+  disclosure / GCM forgery in multithreaded programs (boo#1245810)
+  * Add mbedtls-fix-CVE-2025-52496.patch: backport upstream fix
+
+-------------------------------------------------------------------
+Mon Sep 14 17:22:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2025-59438: padding oracle through timing of cipher error
+  reporting (boo#1252454)
+  * Add mbedtls-fix-CVE-2025-59438.patch: backport upstream 3.6 fix
+- Spec cleanup (spec-cleaner): drop obsolete Group tags
+
+-------------------------------------------------------------------
 Sun Jun 21 10:20:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Reference the tracking bugs for the already-listed CVE fixes:
