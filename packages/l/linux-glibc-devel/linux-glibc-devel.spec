@@ -22,7 +22,7 @@ Release:        0
 Summary:        Linux headers for userspace development
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
-URL:            http://www.kernel.org/
+URL:            https://www.kernel.org/
 Source:         %{name}-%{version}.tar.xz
 Source1:        install_all.sh
 BuildRequires:  xz

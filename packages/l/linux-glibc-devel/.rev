@@ -868,4 +868,12 @@
     <comment>- Update to kernel headers 7.2 (forwarded request 1371722 from Andreas_Schwab)</comment>
     <requestid>1371723</requestid>
   </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>cc8b825d5856abb3eff628b85ec7381a</srcmd5>
+    <version>7.2</version>
+    <time>1789469296</time>
+    <user>anag_factory</user>
+    <comment>- use https url</comment>
+    <requestid>1377844</requestid>
+  </revision>
 </revisionlist>
