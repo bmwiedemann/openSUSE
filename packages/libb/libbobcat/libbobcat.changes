@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.15.01:
+  * MultiBuf class redesigned and simplified
+  * Fixed a segfault when using static Pattern objects
+  * Arg no longer uses getopt_long(3); Arg and ArgConfig accept
+    multiple accept characters; Arg::initialize and Arg::instance
+    return const references
+  * Fixed a MemoryAccess segfault when connecting a shared segment
+    by ID and a MemoryBuf 'writtenUntil' computation error
+  * Added the missing Arg::argPointers member
+  * Members in Hostent called by constructors are now static
+- Drop 0001-Fix-build-with-gcc16.patch: adopted upstream
+
+-------------------------------------------------------------------
 Wed Apr  1 08:15:08 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Fix the build for gcc16

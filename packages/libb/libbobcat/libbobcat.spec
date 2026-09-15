@@ -19,40 +19,35 @@
 %global _name bobcat
 %global _lib_name lib%{_name}
 %global _lib_version 6
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %if "%{flavor}" == "light"
 %global psuffix -light
 %else
 %global psuffix %{nil}
 %endif
-
 Name:           %{_lib_name}%{?psuffix}
-Version:        6.11.00
+Version:        6.15.01
 Release:        0
 Summary:        Shared library implementing C++ classes that are frequently used
 License:        GPL-3.0-only
-Group:          Development/Tools/Building
 URL:            https://gitlab.com/fbb-git/bobcat
 Source0:        https://gitlab.com/fbb-git/bobcat/-/archive/%{version}/bobcat-%{version}.tar.gz
 Source1:        initialbobcatlib
-Patch:          0001-Fix-build-with-gcc16.patch
+BuildRequires:  gcc-c++
 %if "%{name}" == "%{_lib_name}"
 BuildRequires:  icmake >= 12.03.00
+# Main package pulls -devel (preamble form: spec-cleaner drops a
+# conditional Requires placed directly before the description section).
+Requires:       %{_lib_name}-devel = %{version}
 %endif
-BuildRequires:  gcc-c++
 
 %package devel-static
 Summary:        Bobcat static library
-Group:          Development/Libraries/C and C++
 %if "%{name}" == "%{_lib_name}-light"
 Conflicts:      %{_lib_name}-devel
 Conflicts:      %{_lib_name}-devel-static
 %endif
-
 %if "%{name}" == "%{_lib_name}"
-Requires:       %{_lib_name}-devel = %{version}
-
 %description
 Bobcat is an acronym of `Brokken's Own Base Classes And Templates'. It is a
 shared library implementing C++ classes that are frequently used in software
@@ -61,7 +56,6 @@ depend on `bobcat'.
 
 %package -n %{_lib_name}%{_lib_version}
 Summary:        Shared library implementing C++ classes that are frequently used
-Group:          Development/Tools/Building
 Provides:       %{_lib_name} = %{version}
 Obsoletes:      %{_lib_name} < %{version}
 
@@ -73,7 +67,6 @@ depend on `bobcat'.
 
 %package devel
 Summary:        Headers and documentation for the Bobcat library
-Group:          Development/Libraries/C and C++
 Requires:       %{_lib_name}%{_lib_version} = %{version}
 
 %description devel
@@ -88,7 +81,6 @@ Bobcat static library
 %autosetup -p1 -n %{_name}-%{version}
 
 %if "%{name}" == "%{_lib_name}"
-
 %build
 # Incase we have to use specific version of gcc:
 export ICMAKE_CPPSTD="--std=c++2b"
