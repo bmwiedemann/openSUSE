@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Mon Sep  7 09:29:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.2.0:
+  * `@with_annotated` argument groups can now contain an
+    `ArgumentBlock`'s arguments. A `Group` member names a
+    command-line argument, and a block expands
+    into one argument per field, so its fields are named:
+    `Group("host", "port")`.
+  * A `Group` member now names an argument rather than a
+    parameter. The two differ only for an `ArgumentBlock`
+    parameter, which is expanded away and has no
+    argument of its own: `Group("conn")` now raises `ValueError`
+    pointing at the block's fields. It previously produced
+    an empty argument group in `groups=` and a `KeyError` in
+    `mutually_exclusive_groups=`. Whether a `Group` member exists
+    is now validated when the parser is built rather than at
+    decoration time, because a block's field names cannot be
+    known without resolving its type hint, and resolving hints
+    eagerly would break forward-referenced annotations. A typo in a
+    member name still raises `ValueError`, but on first use of
+    that command rather than at class definition. The spec-shape
+    rules (a member listed twice, a member in two groups,
+    `required=True` on a plain group, the mutex nesting rules)
+    are unaffected and still hard-fail at decoration time.
+  * Fixed `@with_annotated(base_command=True)` not listing its
+    subcommands under the positional arguments section of the
+    parent command's `--help`, unlike `argparse` and
+    `Cmd2ArgumentParser`. They were placed in an untitled section
+    of their own instead. Passing `subcommand_title` or
+    `subcommand_description` still gives the subcommands a
+    dedicated section
+  * Fix `@with_annotated` decorator so using `ArgumentBlock`
+    works with groups
+  * Fixed bug where already sorted `choices_provider` results
+    were being re-sorted
+  * Added possibility to use rich Text objects to set the
+    description argument of a `Settable`
+  * Removed redundant `ipython` import which slowed application
+    startup time
+  * Fixed a couple type issues that emerged with the upgrade to
+    `mypy` 2.2.0
+  * Async alert messages can now be Rich renderables.
+
+-------------------------------------------------------------------
 Wed Jul  8 11:01:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.1.0:
