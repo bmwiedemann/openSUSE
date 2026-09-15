@@ -17,7 +17,7 @@
 
 
 Name:           gnu_parallel
-Version:        20260722
+Version:        20260822
 Release:        0
 Summary:        Shell tool for executing jobs in parallel
 License:        GPL-3.0-or-later
@@ -69,7 +69,9 @@ perl -i -lpe 's{^(?=use strict)}{BEGIN{\$opt::willcite=1}}' "%buildroot/%_bindir
 cp -a CITATION NEWS README "%buildroot/%_docdir/%name/"
 
 # fix shebang to to not use env & preserve the time stamps
-sed -i.orig "s:^#\!/usr/bin/env\s\+perl\s\?$:#!/usr/bin/perl:" "%buildroot/%_bindir/parallel"
+# the sed pattern matches upstream's literal "#!%_bindir/env perl" shebang
+# text, not our _bindir - spec-cleaner mis-macroifies it, keep it literal
+sed -i.orig "s:^#\!%_bindir/env\s\+perl\s\?$:#!%_bindir/perl:" "%buildroot/%_bindir/parallel"
 touch -r "%buildroot/%_bindir/parallel.orig" "%buildroot/%_bindir/parallel"
 rm "%buildroot/%_bindir/parallel.orig"
 

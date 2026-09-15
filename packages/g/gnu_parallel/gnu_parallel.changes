@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:25:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to release 20260822:
+  * Add {%jq: jq-expression%} as a new replacement string
+  * Call perl via $^X, so remote jobs use the same perl version
+    that started GNU Parallel instead of whatever is first in
+    $PATH
+  * Bug fixes and man page updates
+
+-------------------------------------------------------------------
 Wed Jul 22 15:40:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260722
