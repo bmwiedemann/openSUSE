@@ -1655,4 +1655,27 @@ Fixes a major regression in the gui and some other bugs. As always: A lot of oth
 </comment>
     <requestid>1377883</requestid>
   </revision>
+  <revision rev="184" vrev="1">
+    <srcmd5>c4cf05854c2980eb6bb28cd76be90210</srcmd5>
+    <version>102.0</version>
+    <time>1789469326</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 102.0
+  Bug fixes:
+  * MKVToolNix GUI: executing actions, type &quot;execute a program&quot;:
+    all the variables (`&lt;MTX_…&gt;`) will now be replaced again in
+    the argument list to the program to be executed. This was
+    broken in v100.
+  Security fixes (boo#1280126):
+  * CVE-2026-90783: avilib: fixed potential heap
+    overflows/invalid memory access in the ODML index handling
+    due to unsiged integer multiplication wrapping around
+    (colloquially known as &quot;overflowing&quot;) with specifically
+    crafted AVI files. Affects only mkvmerge as the other tools
+    do not read AVIs.
+- Drop fix-avilib_memory_allocation_failures.patch and
+  fix-avilib_heap_overflow.patch (merged upstream)
+</comment>
+    <requestid>1377970</requestid>
+  </revision>
 </revisionlist>

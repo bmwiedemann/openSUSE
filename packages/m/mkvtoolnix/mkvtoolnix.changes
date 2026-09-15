@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:30:53 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 102.0
+  Bug fixes:
+  * MKVToolNix GUI: executing actions, type "execute a program":
+    all the variables (`<MTX_…>`) will now be replaced again in
+    the argument list to the program to be executed. This was
+    broken in v100.
+  Security fixes (boo#1280126):
+  * CVE-2026-90783: avilib: fixed potential heap
+    overflows/invalid memory access in the ODML index handling
+    due to unsiged integer multiplication wrapping around
+    (colloquially known as "overflowing") with specifically
+    crafted AVI files. Affects only mkvmerge as the other tools
+    do not read AVIs.
+- Drop fix-avilib_memory_allocation_failures.patch and
+  fix-avilib_heap_overflow.patch (merged upstream)
+
+-------------------------------------------------------------------
 Mon Sep 14 09:27:33 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Add fix-avilib_memory_allocation_failures.patch and
