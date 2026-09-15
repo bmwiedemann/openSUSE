@@ -20,7 +20,7 @@
 %bcond_without  onedrive
 
 Name:           gvfs
-Version:        1.60.2
+Version:        1.60.3
 Release:        0
 Summary:        Virtual File System functionality for GLib
 License:        GPL-3.0-only AND LGPL-2.0-or-later
@@ -29,6 +29,11 @@ URL:            https://wiki.gnome.org/Projects/gvfs
 Source0:        %{name}-%{version}.tar.xz
 Source1:        README.SUSE
 Source99:       baselibs.conf
+
+# PATCH-FIX-UPSTREAM gvfs-CVE-2026-84268.patch bsc#1278158, CVE-2026-84268 sckang@suse.com --  sftp: Clamp `read_reply` count to requested buffer size
+Patch0:         gvfs-CVE-2026-84268.patch
+# PATCH-FIX-UPSTREAM gvfs-CVE-2026-84270.patch bsc#1278156, CVE-2026-84270 sckang@suse.com --  mtp: Validate read size returned by device
+Patch1:         gvfs-CVE-2026-84270.patch
 
 ### NOTE: Please, keep SLE-only patches at bottom (starting on 1000).
 # PATCH-FEATURE-SLE gvfs-nds.patch ksamrat@novell.com -- Provides NDS browsing for nautilus

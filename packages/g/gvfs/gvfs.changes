@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:06:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.60.3:
+  + CVE-2026-88924: admin: Set socket ownership before creation
+  + trash: Fix metadata handling when restoring or emptying
+  + dav: Fix response body leaks to prevent hangs
+  + Some other fixes
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep 11 02:04:06 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gvfs-CVE-2026-84268.patch: sftp: Clamp `read_reply` count to
+  requested buffer size (bsc#1278158, CVE-2026-84268).
+- Add gvfs-CVE-2026-84270.patch: mtp: Validate read size returned
+  by device (bsc#1278156, CVE-2026-84270).
+
+-------------------------------------------------------------------
 Fri Jul 31 13:41:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.60.2:
@@ -9,6 +27,16 @@ Fri Jul 31 13:41:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     backends
   + Some other fixes
   + Updated translations.
+- Drop gvfs-CVE-2026-84267.patch: fixed upstream.
+- Drop gvfs-CVE-2026-84269.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jul 29 02:07:11 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add gvfs-CVE-2026-84267.patch: sftp: Validate that reads fully
+  complete before using data (bsc#1278157, CVE-2026-84267).
+- Add gvfs-CVE-2026-84269.patch: afp: Validate reply size in DSI
+  read reply handling (bsc#1278159, CVE-2026-84269).
 
 -------------------------------------------------------------------
 Thu Jul 23 08:46:22 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>

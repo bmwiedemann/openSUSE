@@ -1702,4 +1702,30 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1369837</requestid>
   </revision>
+  <revision rev="212" vrev="1">
+    <srcmd5>77d666cc24cc6c8de8e2172d992f005a</srcmd5>
+    <version>1.60.3</version>
+    <time>1789484967</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.60.3:
+  + CVE-2026-88924: admin: Set socket ownership before creation
+  + trash: Fix metadata handling when restoring or emptying
+  + dav: Fix response body leaks to prevent hangs
+  + Some other fixes
+  + Updated translations.
+
+- Add gvfs-CVE-2026-84268.patch: sftp: Clamp `read_reply` count to
+  requested buffer size (bsc#1278158, CVE-2026-84268).
+- Add gvfs-CVE-2026-84270.patch: mtp: Validate read size returned
+  by device (bsc#1278156, CVE-2026-84270).
+
+- Drop gvfs-CVE-2026-84267.patch: fixed upstream.
+- Drop gvfs-CVE-2026-84269.patch: fixed upstream.
+
+- Add gvfs-CVE-2026-84267.patch: sftp: Validate that reads fully
+  complete before using data (bsc#1278157, CVE-2026-84267).
+- Add gvfs-CVE-2026-84269.patch: afp: Validate reply size in DSI
+  read reply handling (bsc#1278159, CVE-2026-84269).</comment>
+    <requestid>1377828</requestid>
+  </revision>
 </revisionlist>
