@@ -97,4 +97,14 @@
   https://github.com/wannesm/dtaidistance/compare/v2.3.13...v2.4.0</comment>
     <requestid>1349369</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>83c1d6342b1644aa55a62ece39a811be</srcmd5>
+    <version>2.5.1</version>
+    <time>1789469383</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.1:
+  * Addition of Dynamic Subsequence Warping (DSW) to explain
+    (dis)similarities between time series</comment>
+    <requestid>1378053</requestid>
+  </revision>
 </revisionlist>

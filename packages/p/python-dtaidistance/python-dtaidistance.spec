@@ -18,21 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-dtaidistance
-Version:        2.4.0
+Version:        2.5.1
 Release:        0
 Summary:        Dynamic Time Warping (DTW) package
 License:        Apache-2.0
 URL:            https://github.com/wannesm/dtaidistance
 Source:         https://github.com/wannesm/dtaidistance/archive/v%{version}.tar.gz#/dtaidistance-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-numpy
 Recommends:     python-jinja2
 Recommends:     python-matplotlib
-Recommends:     python-numpy
 Recommends:     python-scipy
 Recommends:     python-tqdm
 # SECTION test requirements
@@ -71,8 +73,6 @@ donttest+=" or (test_dtw and test_distance_matrix_block)"
 donttest+=" or (test_dtw2d and test_distances1_fast_parallel)"
 donttest+=" or (test_dtw2d and test_distances2_fast_parallel)"
 
-# Broken tests with latest numpy >= 1.24
-donttest+=" or test_bug3 or test_distance1_a or test_lc_pat3"
 %pytest_arch ${donttest:+ -k "not (${donttest:4})"} -m "not benchmark"
 %endif
 
