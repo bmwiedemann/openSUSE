@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:02:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.24:
+  * Updated the maximum image dimensions for RGBA images
+    (Issue #557)
+  * Added/updated memory allocation checks (Issue #558)
+  * Optimized the page resources dictionary in PDF output
+  * Fixed document depth tracking (Issue #559)
+  * Fixed a crash when generating HTML output from empty HTML
+    input (Issue #560)
+  * Fixed a regression with rendering links in PDF documents
+    (Issue #561)
+  * Fixed a use-after-free when loading an unsupported image
+    format (Issue #562)
+  * Fixed builds when libcups is unavailable or disabled
+    (Issue #565)
+  * Fixed a crash when generating ePub content with --webpage
+    (Issue #567)
+  * Fixed an out-of-bounds read in the roman numeral formatting
+    code (Issue #568)
+  * Fixed proxy support (Issue #570) and --no-localfiles
+    (Issue #571)
+
+-------------------------------------------------------------------
 Tue Feb  3 09:37:10 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.9.23:

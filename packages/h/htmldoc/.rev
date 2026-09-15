@@ -316,4 +316,14 @@ Fixed buffer-overflow CVE-2021-20308 ( boo#1184424 ) (forwarded request 896478 f
     <comment></comment>
     <requestid>1332699</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>2a28aa82a845c7b232099ac94d201220</srcmd5>
+    <version>1.9.24</version>
+    <time>1789484949</time>
+    <user>anag_factory</user>
+    <comment>Forward htmldoc 1.9.24 to Factory (accepted in Publishing as SR 1377720;
+autoforward-gate ELIGIBLE, no explicit maintainer on package or project).
+</comment>
+    <requestid>1377724</requestid>
+  </revision>
 </revisionlist>
