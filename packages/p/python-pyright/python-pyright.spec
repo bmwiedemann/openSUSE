@@ -19,6 +19,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 %{?sle15_python_module_pythons}
+%bcond_without libalternatives
 Name:           python-pyright
 Version:        1.1.411
 Release:        0
