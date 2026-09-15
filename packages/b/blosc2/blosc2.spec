@@ -17,10 +17,10 @@
 
 
 # Adjust baselibs.conf if this changes
-%define major 7
+%define major 9
 %define libname lib%{name}-%{major}
 Name:           blosc2
-Version:        2.23.1
+Version:        3.3.4
 Release:        0
 Summary:        A fast, compressed, persistent binary data store library for C
 License:        BSD-2-Clause AND BSD-3-Clause AND MIT
@@ -31,9 +31,12 @@ Source99:       baselibs.conf
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
+BuildRequires:  zfp-devel
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
+# 32-bit no longer supported: https://github.com/Blosc/c-blosc2/issues/790#issuecomment-4934468722
+ExcludeArch:    %ix86 %arm
 %{?suse_build_hwcaps_libs}
 
 %description
@@ -76,6 +79,7 @@ for %{libname}.
 %ifnarch x86_64_v3
   -DDEACTIVATE_AVX2:BOOL=ON \
 %endif
+  -DBLOSC_DEPENDENCY_MODE=EXTERNAL \
   -DPREFER_EXTERNAL_ZLIB:BOOL=ON \
   -DPREFER_EXTERNAL_ZSTD:BOOL=ON \
   -DPREFER_EXTERNAL_LZ4:BOOL=ON \

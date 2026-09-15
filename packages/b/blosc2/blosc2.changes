@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:50:24 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.3.4:
+  * Bounded-buffer tail compaction in contiguous frames
+  * Sparse frame special chunk file removal
+  * Memory mapping (mmap) fixes and external file growth preservation
+  * New benchmarks and tests
+  * full changelog:
+    https://github.com/Blosc/c-blosc2/blob/v3.3.4/RELEASE_NOTES.md
+- disable 32-bit builds because they are no longer supported
+
+-------------------------------------------------------------------
+Wed Sep  9 15:27:43 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 3.3.3:
+  * Fixed integer and pointer overflow in BloscLZ decompression bounds checks
+  * full changelog until v3.3.3:
+    https://github.com/Blosc/c-blosc2/blob/v3.3.3/RELEASE_NOTES.md
+- bumped sonum to 9
+
+-------------------------------------------------------------------
 Sun Apr 12 17:55:46 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Move another test to singlethread
