@@ -19,7 +19,7 @@
 
 Name:           OpenSMTPD
 %global         name_lowercase %(echo -n "%{name}" | tr '[:upper:]' '[:lower:]')
-Version:        7.8.0p1
+Version:        7.9.0p0
 Release:        0
 Summary:        A free implementation of the server-side SMTP protocol
 License:        BSD-2-Clause AND BSD-3-Clause AND BSD-4-Clause AND ISC
