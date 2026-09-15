@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.5.3:
+  * sources split into doctest/parts, single header still shipped
+  * new doctest.cpp single source for the with-main static lib
+  * upstream installs its own doctest.pc now
+  * stringification, exception translation and warning fixes
+
+-------------------------------------------------------------------
 Thu Sep 11 19:36:07 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.12:

@@ -1,7 +1,7 @@
 #
 # spec file for package doctest
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           doctest
-Version:        2.4.12
+Version:        2.5.3
 Release:        0
 Summary:        Single-header testing framework
 License:        MIT
