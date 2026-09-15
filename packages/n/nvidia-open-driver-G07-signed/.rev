@@ -185,4 +185,24 @@
 - enable -rt kernel flavor for SLE &gt;= 16.1</comment>
     <requestid>1374301</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>06f67e394870da98e64bf22f88748968</srcmd5>
+    <version>595.99.02</version>
+    <time>1789469290</time>
+    <user>anag_factory</user>
+    <comment>- moved the conditional to %prep section; required going back from
+  %autosetup to %setup due to missing -M and -m %autosetup options
+  on SLE15-SP6
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  - re-enable CXL support by moving to old internal kernel
+    interface, which we still use for our CXL backport on SLE16.1
+    (bsc#1280057)
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  * Fixing build of 615.71.09 driver against SLE16.1 Kernel
+
+- update CUDA variant to 615.71.09</comment>
+    <requestid>1377957</requestid>
+  </revision>
 </revisionlist>

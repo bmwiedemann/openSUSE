@@ -23,7 +23,7 @@
 %else
 %define gfx_version 595.99.02
 %endif
-%define cuda_version 610.57.04
+%define cuda_version 615.71.09
 
 %global flavor @BUILD_FLAVOR@%{?nil}
 
@@ -98,9 +98,8 @@ Source14:       group-source-files.pl
 Source15:       kmp-trigger.sh
 Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
-%ifnarch aarch64
-Patch2:         fix-objtool-warnings.patch
-%endif
+Patch0:         fix-objtool-warnings.patch
+Patch1:         Fixing-build-against-SLE16.1-Kernel.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -239,7 +238,15 @@ ls -l %{_sourcedir}
 /bin/sh -x %{_sourcedir}/Check4WrongSupplements.sh %{_rpmdir}
 
 %prep
-%autosetup -p1 -n open-gpu-kernel-modules-%{version}
+%setup -n open-gpu-kernel-modules-%{version}
+%ifnarch aarch64
+%patch -P 0 -p1
+%endif
+%if %{with cuda}
+%if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
+%autopatch -P 1 -p1
+%endif
+%endif
 
 set -- *
 mkdir source

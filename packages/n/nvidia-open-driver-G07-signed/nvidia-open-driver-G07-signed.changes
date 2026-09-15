@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:55:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- moved the conditional to %prep section; required going back from
+  %autosetup to %setup due to missing -M and -m %autosetup options
+  on SLE15-SP6
+
+-------------------------------------------------------------------
+Mon Sep 14 11:58:43 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  - re-enable CXL support by moving to old internal kernel
+    interface, which we still use for our CXL backport on SLE16.1
+    (bsc#1280057)
+
+-------------------------------------------------------------------
+Thu Sep 10 02:14:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  * Fixing build of 615.71.09 driver against SLE16.1 Kernel
+
+-------------------------------------------------------------------
+Wed Sep  9 21:16:24 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update CUDA variant to 615.71.09
+
+-------------------------------------------------------------------
 Thu Aug 27 09:45:00 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - update non-CUDA variant to 595.99.02 (boo#1277068)

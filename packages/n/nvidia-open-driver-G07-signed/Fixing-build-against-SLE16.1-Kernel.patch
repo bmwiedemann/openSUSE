@@ -1,0 +1,42 @@
+diff --git a/kernel-open/common/inc/nv-linux.h b/kernel-open/common/inc/nv-linux.h
+index f377db1e..90d47f27 100644
+--- a/kernel-open/common/inc/nv-linux.h
++++ b/kernel-open/common/inc/nv-linux.h
+@@ -39,7 +39,8 @@
+ #include "nv-platform.h"
+ 
+ #if defined(NV_CXL_CXL_H_PRESENT)
+-#include <cxl/cxl.h>
++#include "../drivers/cxl/cxl.h"
++#include "../drivers/cxl/cxlmem.h"
+ #endif
+ 
+ #ifndef AUTOCONF_INCLUDED
+diff --git a/kernel-open/common/inc/nv-pci.h b/kernel-open/common/inc/nv-pci.h
+index ca120ff2..5fe8d01b 100644
+--- a/kernel-open/common/inc/nv-pci.h
++++ b/kernel-open/common/inc/nv-pci.h
+@@ -29,7 +29,8 @@
+ #include <uapi/linux/pci_regs.h>
+ 
+ #if defined(NV_CXL_CXL_H_PRESENT)
+-#include <cxl/cxl.h>
++#include "../drivers/cxl/cxl.h"
++#include "../drivers/cxl/cxlmem.h"
+ #endif
+ 
+ #if defined(NV_CXL_PCI_H_PRESENT)
+diff --git a/kernel-open/conftest.sh b/kernel-open/conftest.sh
+index 7ecfa4f6..f9f4c12b 100755
+--- a/kernel-open/conftest.sh
++++ b/kernel-open/conftest.sh
+@@ -2282,7 +2282,8 @@ compile_test() {
+             #
+             CODE="
+             #include <linux/pci.h>
+-            #include <cxl/cxl.h>
++            #include "../drivers/cxl/cxl.h"
++            #include "../drivers/cxl/cxlmem.h"
+             #include <cxl/pci.h>
+ 
+             struct nv_conftest_cxl_dev_state {
