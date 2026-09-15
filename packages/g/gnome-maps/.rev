@@ -1001,4 +1001,15 @@
   + Updated translations.</comment>
     <requestid>1372775</requestid>
   </revision>
+  <revision rev="114" vrev="1">
+    <srcmd5>697920596fb037ca1da153ab9148f49a</srcmd5>
+    <version>50.5</version>
+    <time>1789484965</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.5:
+  + Fix showing secondary icon for recent and favorite places in
+    initial search results
+  + Updated translations.</comment>
+    <requestid>1377826</requestid>
+  </revision>
 </revisionlist>
