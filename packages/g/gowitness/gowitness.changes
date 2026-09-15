@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:38:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.0
+  New
+  * Add --chrome-user-data-dir to set an existing Chrome User
+    Directory to use. Useful when you want to pickup existing
+    authenticated context, or have other session reuse needs across
+    gowitness sessions.
+  * Add --no-log-color global flag.
+  Fixed
+  * Finally, actually fix screenshot filename truncation.
+  Other
+  * Small performance improvement, along with better cookie
+    isolation.
+  * Improve go-rod Chrome discovery.
+  * Various dependency bumps.
+
+-------------------------------------------------------------------
 Mon Nov 24 11:57:27 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.1.1
