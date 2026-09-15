@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 12 20:18:38 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 1.202609.0
+  * Add Java output
+  * Add SPV_EXT_cooperative_matrix_maintenance1,
+    SPV_QCOM_bfloat16_muladd, SPV_QCOM_subgroup_size
+
+-------------------------------------------------------------------
 Tue Jul 14 22:18:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to post-snapshot SDK-1.4.350.0 commit 29981f6
