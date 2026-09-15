@@ -1039,4 +1039,12 @@
     <comment>version update to 1.6.58</comment>
     <requestid>1367471</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>c1dc13789467c3ba48b84f190cd8c4a6</srcmd5>
+    <version>1.6.58</version>
+    <time>1789484968</time>
+    <user>anag_factory</user>
+    <comment>- Fix build on armv6 by really disabling neon support (forwarded request 1377329 from Guillaume_G)</comment>
+    <requestid>1377841</requestid>
+  </revision>
 </revisionlist>

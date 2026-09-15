@@ -105,6 +105,10 @@ export CFLAGS="$CFLAGS -Og"
 %endif
 # autoreconf required by Patch1
 autoreconf -f
+%ifarch armv6l armv6hl
+# Neon support is forced for all arm*, so disable it for armv6
+sed -i 's/enable_arm_neon=yes/enable_arm_neon=no/' configure
+%endif
 %configure \
               --enable-hardware-optimizations=yes \
 %ifarch armv6l armv6hl

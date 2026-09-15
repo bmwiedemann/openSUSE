@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:37:59 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix build on armv6 by really disabling neon support
+
+-------------------------------------------------------------------
 Thu Jul 23 14:01:06 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 1.6.58:
