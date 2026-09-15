@@ -1171,4 +1171,41 @@
   - Add support for ``pylock.toml`` ``upload-time`` field, so</comment>
     <requestid>1369235</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>6cadc564d9615cc47a12933543a02499</srcmd5>
+    <version>26.2.1</version>
+    <time>1789469264</time>
+    <user>anag_factory</user>
+    <comment>- update to 26.2.1:
+  * Reallow keyring installed in a (non-activated) virtual
+    environment to be be used via the import provider method while
+    installing build dependencies.
+
+  * Fix an unsupported type annotation on Python 3.10 and earlier.
+  * Fix a regression where truststore would never be used while
+  * Deprecate the no-python-version-warning flag as it has long done
+  * Support PEP 639 License-Expression and License-File metadata
+    fields in JSON output. pip inspect and pip install --report now
+    emit license_expression and license_file fields in the metadata
+    object, if the corresponding fields are present in the installed
+  * Files in the network cache will inherit the read/write permissions
+    of pip’s cache directory (in addition to the current user retaining
+    read/write access). This enables a single cache to be shared among
+  * Return the size, along with the number, of files cleared on pip
+  * Cache python-requires checks while filtering potential installation
+  * Optimize package collection by avoiding unnecessary URL parsing and
+  * Reorder the encoding detection when decoding a requirements file,
+    relying on UTF-8 over the locale encoding by default, matching the
+  * The pip version self check is disabled on EXTERNALLY-MANAGED
+  * Fix a security bug allowing a specially crafted wheel to execute
+  * The inclusion of packaging 24.2 changes how pre-release specifiers
+    with &lt; and &gt; behave. Including a pre-release version with these
+    specifiers now implies accepting pre-releases (e.g., &lt;2.0dev can
+    include 1.0rc1). To avoid implying pre-releases, avoid specifying
+    them (e.g., use &lt;2.0). The exception is !=, which never implies
+  * The --cert and --client-cert command-line options are now
+    respected while installing build dependencies. Consequently, the
+    private _PIP_STANDALONE_CERT environment variable is no longer</comment>
+    <requestid>1377853</requestid>
+  </revision>
 </revisionlist>
