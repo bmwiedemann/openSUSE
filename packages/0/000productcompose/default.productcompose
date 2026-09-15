@@ -2562,8 +2562,8 @@ packagesets:
    - libproc2-1 # reason: dvd:patterns-gnome-gnome
    - libprojectM3 # reason: dvd:patterns-kde-kde
    - libprotobuf-c1 # reason: dvd:patterns-gnome-gnome
-   - libprotobuf-lite34_2_0 # reason: dvd:patterns-kde-kde
-   - libprotobuf34_2_0 # reason: dvd:patterns-gnome-gnome
+   - libprotobuf-lite36_1_0 # reason: dvd:patterns-kde-kde
+   - libprotobuf36_1_0 # reason: dvd:patterns-gnome-gnome
    - libproxy1 # reason: dvd:openSUSE-release
    - libpskc0 # reason: dvd:patterns-gnome-gnome
    - libpsl5 # reason: dvd:openSUSE-release
@@ -2828,7 +2828,7 @@ packagesets:
    - libusbredirhost1 # reason: dvd:patterns-gnome-gnome
    - libusbredirparser1 # reason: dvd:patterns-gnome-gnome
    - libusdm0 # reason: dvd:patterns-media-rest_dvd
-   - libutf8_range-34_2_0 # reason: dvd:patterns-gnome-gnome
+   - libutf8_range-36_1_0 # reason: dvd:patterns-gnome-gnome
    - libutf8proc3 # reason: dvd:patterns-media-rest_dvd
    - libuuid1 # reason: dvd:openSUSE-release
    - libuv1 # reason: dvd:patterns-kde-kde
@@ -3078,6 +3078,8 @@ packagesets:
    - mdevctl # reason: dvd:patterns-media-rest_dvd
    - media-player-info # reason: dvd:patterns-kde-kde
    - memtest86+ # reason: dvd:patterns-media-rest_cd_core
+   - memtest86+-bls # reason: dvd:patterns-media-rest_cd_core
+   - memtest86+-grub2 # reason: common_locks:expansion
    - menulibre # reason: dvd:patterns-xfce-xfce
    - menulibre-lang # reason: dvd:patterns-xfce-xfce
    - meson # reason: dvd:patterns-media-rest_dvd
@@ -5668,6 +5670,7 @@ packagesets:
    - libpango-1_0-0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libparted-fs-resize0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libparted2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libpathrs0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libpci3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpciaccess0 # reason: opensuse_microos:patterns-base-hardware
    - libpcre2-16-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5696,7 +5699,7 @@ packagesets:
    - libppd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libproc2-1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libprojectM3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libprotobuf-lite34_2_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libprotobuf-lite36_1_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libproxy1 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libpskc0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libpsl5 # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -5820,7 +5823,7 @@ packagesets:
    - liburing2 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libusb-1_0-0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libusbmuxd-2_0-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libutf8_range-34_2_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libutf8_range-36_1_0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libuuid1 # reason: opensuse_microos:patterns-base-hardware
    - libva-drm2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libva-wayland2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7470,6 +7473,7 @@ packagesets:
    - libpango-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libparted-fs-resize0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libparted2 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libpathrs0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpci3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpciaccess0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpcre2-16-0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7499,7 +7503,7 @@ packagesets:
    - libppd2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libproc2-1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libprojectM3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libprotobuf-lite34_2_0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libprotobuf-lite36_1_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libproxy1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpskc0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpsl5 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7614,7 +7618,7 @@ packagesets:
    - liburing2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libusb-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libusbmuxd-2_0-7 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libutf8_range-34_2_0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libutf8_range-36_1_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libuuid1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libv4l # reason: opensuse_kalpa:patterns-kalpa-base
    - libv4l1-0 # reason: opensuse_kalpa:patterns-kalpa-base

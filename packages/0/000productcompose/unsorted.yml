@@ -12458,9 +12458,8 @@ unsorted:
   - libblkid1-32bit 
   - libblockdev-devel 
   - libblosc1 
-  - libblosc2-7 
-  - libblosc2-7-32bit 
-  - libblosc2-7-x86-64-v3 
+  - libblosc2-9 
+  - libblosc2-9-x86-64-v3 
   - libbluetooth3-32bit 
   - libbluray-bdj 
   - libbluray-devel 
@@ -15540,7 +15539,6 @@ unsorted:
   - libpasswdqc0 
   - libpathrs-devel 
   - libpathrs-devel-static 
-  - libpathrs0 
   - libpcap-devel 
   - libpcap-devel-32bit 
   - libpcap-devel-static 
@@ -15711,13 +15709,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp1_3 
-  - libprotobuf-lite34_2_0-32bit 
+  - libprotobuf-lite36_1_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf34_2_0-32bit 
+  - libprotobuf36_1_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc34_2_0 
-  - libprotoc34_2_0-32bit 
+  - libprotoc36_1_0 
+  - libprotoc36_1_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -16362,7 +16360,7 @@ unsorted:
   - libscrypt-devel 
   - libscrypt0 
   - libscrypt0-x86-64-v3 
-  - libsdb2_5_0 
+  - libsdb2_5_2 
   - libseafile0 
   - libseagull0 
   - libsearpc-devel 
@@ -17073,7 +17071,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-34_2_0-32bit 
+  - libutf8_range-36_1_0-32bit 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
