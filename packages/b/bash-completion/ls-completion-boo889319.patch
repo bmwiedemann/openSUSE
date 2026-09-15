@@ -2,16 +2,19 @@
  bash-completion-2.12.0/bash_completion |    3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
---- bash-completion-2.12.0/bash_completion
-+++ bash-completion-2.12.0/bash_completion	2024-02-23 07:54:39.219148113 +0000
-@@ -3030,11 +3030,12 @@ _comp_complete_longopt()
+Index: bash-completion-2.17.0/bash_completion
+===================================================================
+--- bash-completion-2.17.0.orig/bash_completion
++++ bash-completion-2.17.0/bash_completion
+@@ -3259,12 +3259,13 @@ _comp_complete_longopt()
  complete -F _comp_complete_longopt -o filenames \
-     a2ps awk base64 bash bc bison cat chroot colordiff cp \
+     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp \
      csplit cut date df diff dir du enscript expand fmt fold gperf \
 -    grep grub head irb ld ldd less ln ls m4 mkdir mkfifo mknod \
 +    grep grub head irb ld ldd less ln m4 mkdir mkfifo mknod \
-     mv nl nm objcopy objdump od paste pr ptx readelf rm rmdir \
-     sed shar sort split strip sum tac tail tee \
+     mv nl nm numfmt objcopy objdump od paste pr ptx readelf \
+     readlink realpath rm rmdir sed shar shred \
+     shuf sort split stat strip sum sync tac tail tee \
      texindex touch tr unexpand uniq vdir wc who
  complete -F _comp_complete_longopt -o default env netstat seq uname units
 +complete -F _comp_complete_longopt -o bashdefault -o default -o filenames ls ll la l ls-l lf

@@ -8,10 +8,11 @@ Subject: Also support .bz2 compressed kernel modules
  completions/modprobe |    2 +-
  3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/completions/insmod b/completions/insmod
---- a/completions/insmod
-+++ b/completions/insmod
-@@ -7,7 +7,7 @@ _comp_cmd_insmod()
+Index: bash-completion-2.17.0/completions/_insmod
+===================================================================
+--- bash-completion-2.17.0.orig/completions/_insmod
++++ bash-completion-2.17.0/completions/_insmod
+@@ -10,7 +10,7 @@ _comp_cmd_insmod()
  
      # do filename completion for first argument
      if ((cword == 1)); then
@@ -20,10 +21,11 @@ diff --git a/completions/insmod b/completions/insmod
      else # do module parameter completion
          _comp_compgen_split -- "$(PATH="$PATH:/sbin" modinfo \
              -p "${words[1]}" 2>/dev/null | cut -d: -f1)"
-diff --git a/completions/modinfo b/completions/modinfo
---- a/completions/modinfo
-+++ b/completions/modinfo
-@@ -43,7 +43,7 @@ _comp_cmd_modinfo()
+Index: bash-completion-2.17.0/completions/_modinfo
+===================================================================
+--- bash-completion-2.17.0.orig/completions/_modinfo
++++ bash-completion-2.17.0/completions/_modinfo
+@@ -46,7 +46,7 @@ _comp_cmd_modinfo()
  
      # do filename completion if we're giving a path to a module
      if [[ $cur == @(*/|[.~])* ]]; then
@@ -32,10 +34,11 @@ diff --git a/completions/modinfo b/completions/modinfo
      else
          _comp_compgen_kernel_modules "$version"
      fi
-diff --git a/completions/modprobe b/completions/modprobe
---- a/completions/modprobe
-+++ b/completions/modprobe
-@@ -83,7 +83,7 @@ _comp_cmd_modprobe()
+Index: bash-completion-2.17.0/completions/_modprobe
+===================================================================
+--- bash-completion-2.17.0.orig/completions/_modprobe
++++ bash-completion-2.17.0/completions/_modprobe
+@@ -86,7 +86,7 @@ _comp_cmd_modprobe()
          insert)
              # do filename completion if we're giving a path to a module
              if [[ $cur == @(*/|[.~])* ]]; then

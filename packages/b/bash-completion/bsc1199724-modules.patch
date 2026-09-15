@@ -2,10 +2,11 @@
  bash_completion |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/bash_completion b/bash_completion
---- a/bash_completion
-+++ b/bash_completion
-@@ -2090,7 +2090,7 @@ _comp_compgen_kernel_modules()
+Index: bash-completion-2.17.0/bash_completion
+===================================================================
+--- bash-completion-2.17.0.orig/bash_completion
++++ bash-completion-2.17.0/bash_completion
+@@ -2312,7 +2312,7 @@ _comp_compgen_kernel_modules()
      local _modpath=/lib/modules/$1
      _comp_compgen_split -- "$(command ls -RL "$_modpath" 2>/dev/null |
          command sed -ne 's/^\(.*\)\.k\{0,1\}o\(\.[gx]z\)\{0,1\}$/\1/p' \

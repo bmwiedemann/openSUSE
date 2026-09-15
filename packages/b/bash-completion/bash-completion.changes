@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep  6 13:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.17.0:
+    * Support -P prefix in _comp_compgen.
+    * Add -f in _filedir to manually suffix / to directories.
+    * New completions: free, fsnotifywait, fsnotifywatch, nload,
+      tmux, fprintd-*, slabtop.
+    * Vastly expanded 3rd-party fallback completion loaders
+      (including asdf, caddy, cosign, delta, jj, just, k9s, tofu,
+      tldr, trash-cli, uv, uvx, zola, and many others).
+    * Added and updated file/archive associations (unzip, zipinfo,
+      bsdtar, wine, xv) for .apk, .apkm, .apks, .xapk, .crx, .hap,
+      .ipa, .vsix, .webp, .pnm, .ogx, .oga.
+    * Enable .java filename completion for the java command.
+      Complete commands and variable assignments in env.
+    * Greatly expanded subcommand, protocol, and argument
+      completions in ip, curl, openssl, ssh-keygen, ssh-keyscan,
+      ssh-copy-id, tar, aptitude, coreutils, set, and others.
+   * Support Python 3.13 versioned executables.
+   * Bug Fixes:
+     - Avoid nounset, localvar_inherit, and pathname expansion
+       errors in various completions.
+     - Always quote special characters in _filedir completions.
+     - Correct cd pattern matching and cdable_vars validation.
+     - Try calling magick for ImageMagick 7 in convert.
+     - Fix remote file/path quoting and backslash issues in ssh,
+       scp, rsync, and sshfs.
+     - Improve BSD-style compatibility/arguments for openssl, patch,
+       truncate, and rsync.
+     - Bash 5.3 compatibility fixes (GLOBSORT and compgen -V).
+     - Cache GNU tar help parsing for improved performance.
+- drop patches (already merged upstream):
+  * tar-completion.patch
+  * bug1246923.patch
+
+-------------------------------------------------------------------
 Tue Sep 23 11:42:26 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - "interdiff" shipped as part of patchutils since version 0.4.3,
@@ -8,7 +44,7 @@ Tue Sep 23 11:42:26 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 Thu Sep 18 13:02:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bug1246923.patch
-  * Skip colon from device names for ethtool (bsc#1246923) 
+  * Skip colon from device names for ethtool (bsc#1246923)
 
 -------------------------------------------------------------------
 Mon Feb 24 13:44:59 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
@@ -27,14 +63,14 @@ Fri Mar 22 13:31:54 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch boo1221414-scp.patch
   * Do not replace the asignment of the array COMPREPLY with
-    the shell function _comp_compgen_split (boo#1221414)  
+    the shell function _comp_compgen_split (boo#1221414)
 
 -------------------------------------------------------------------
 Fri Feb 23 09:56:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Remove also patch
   bash-completion-fix-missing-directory-completion-with-filename-pattern.patch
-  as the problem is fixed upstream 
+  as the problem is fixed upstream
 
 -------------------------------------------------------------------
 Fri Feb 23 09:04:25 UTC 2024 - Dr. Werner Fink <werner@suse.de>
@@ -156,7 +192,7 @@ Fri Feb 23 09:04:25 UTC 2024 - Dr. Werner Fink <werner@suse.de>
   * dict: nounset error when host/port not set (57191e2)
   * dict: protect splitting from custom IFS (b31fe1e)
   * dict: work around bash-4.2 array nounset (d76dd9e)
-  * dict: work around bash-4.3 ${v+"$@"} with custom IFS 
+  * dict: work around bash-4.3 ${v+"$@"} with custom IFS
 Unable to render expression.
   * ${v+"$@"} with custom IFS (cc21298)
   * dmypy: protect against "localvar_inherit" (768ce65)
@@ -167,7 +203,7 @@ Unable to render expression.
   * gdb: remove duplicate candidates (532fc05)
   * gdb: use POSIX-compatible find expression (73938cd)
   * gdb: work around bash 4.4 ${v+"$@"}
-  * get_words: work around bash-4.3 connected ${v+"$@"} 
+  * get_words: work around bash-4.3 connected ${v+"$@"}
   * getent: check noargopts (6143f25)
   * getent: work around localvar_inherit (a12f438)
   * gzip,isort: fix typo _comp_com{gp =&gt; pg}en (462feb3)
@@ -312,7 +348,7 @@ Mon May 23 10:37:27 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 Fri Jan 28 19:19:55 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - remove PS1-completion-boo903362.patch as it breaks on non-bash
-  shells and the original problem in 
+  shells and the original problem in
   bsc#903362#c9 does not occur anymore
 - add versioned dependency to bash versions that have the fix
 
@@ -726,7 +762,7 @@ Fri Mar 13 09:34:01 UTC 2020 - Fabian Vogt <fvogt@suse.com>
 -------------------------------------------------------------------
 Fri Jan 17 09:56:00 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Remove _adb as it seems to be broken anyway (boo#1161136) 
+- Remove _adb as it seems to be broken anyway (boo#1161136)
 
 -------------------------------------------------------------------
 Sun Jan  5 17:01:37 UTC 2020 - Martin Liška <mliska@suse.cz>
@@ -1306,7 +1342,7 @@ Fri Apr 26 08:44:42 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Mar 29 20:13:38 UTC 2019 - Martin Wilck <mwilck@suse.com>
 
-- Removed bts completions (upcoming devscript package contains a 
+- Removed bts completions (upcoming devscript package contains a
   more recent one).
 
 -------------------------------------------------------------------
@@ -1616,13 +1652,13 @@ Thu Dec 15 09:37:52 UTC 2016 - werner@suse.de
 -------------------------------------------------------------------
 Thu Dec 15 07:49:36 UTC 2016 - werner@suse.de
 
-- Fix cut&paste error in final ls completion 
+- Fix cut&paste error in final ls completion
 
 -------------------------------------------------------------------
 Wed Dec 14 12:41:38 UTC 2016 - werner@suse.de
 
 - Add patch tar-completion.patch to allow mixed options with long
-  and short options (boo#1012212) 
+  and short options (boo#1012212)
 
 -------------------------------------------------------------------
 Wed Dec 14 10:46:27 UTC 2016 - werner@suse.de
@@ -1890,13 +1926,13 @@ Wed Apr 27 12:42:50 UTC 2016 - werner@suse.de
 Wed Apr 27 11:54:07 UTC 2016 - werner@suse.de
 
 - Add documentation for this packages below to get the reference
-  of the e.g. the variable COMP_FILEDIR_FALLBACK (boo#977336) 
+  of the e.g. the variable COMP_FILEDIR_FALLBACK (boo#977336)
 
 -------------------------------------------------------------------
 Wed Jan 27 15:42:34 UTC 2016 - werner@suse.de
 
 - Add patch backticks-bsc963140.patch to handle sub commands
-  which will be expanded by backticks (bsc#963140) 
+  which will be expanded by backticks (bsc#963140)
 
 -------------------------------------------------------------------
 Fri Dec 18 09:33:05 UTC 2015 - werner@suse.de
@@ -1912,24 +1948,24 @@ Fri Dec 18 09:33:05 UTC 2015 - werner@suse.de
 Wed Sep 23 11:58:33 UTC 2015 - werner@suse.de
 
 - Add patch LVM-completion-bsc946875.patch to make LVM comands
-  work even without any scan happen (bsc#946875) 
+  work even without any scan happen (bsc#946875)
 
 -------------------------------------------------------------------
 Thu Aug 13 06:53:15 UTC 2015 - werner@suse.de
 
 - Add patch backtick-completion-boo940835.patch to allow correct
-  backtick completion (boo#940835) 
+  backtick completion (boo#940835)
 
 -------------------------------------------------------------------
 Wed Aug 12 13:17:40 UTC 2015 - werner@suse.de
 
-- Correct typo in patch ls-completion-boo889319.patch 
+- Correct typo in patch ls-completion-boo889319.patch
 
 -------------------------------------------------------------------
 Mon Jun 15 08:28:30 UTC 2015 - werner@suse.de
 
 - Add patch ls-completion-boo889319.patch to make ls completion
-  more smart (boo#889319) 
+  more smart (boo#889319)
 
 -------------------------------------------------------------------
 Wed Mar 18 12:45:23 UTC 2015 - werner@suse.de
@@ -1958,13 +1994,13 @@ Mon May 13 07:08:49 UTC 2013 - werner@suse.de
 -------------------------------------------------------------------
 Tue Apr 23 15:42:50 UTC 2013 - werner@suse.de
 
-- Do not ship NetworManager completion file as it is part of NM 
+- Do not ship NetworManager completion file as it is part of NM
 
 -------------------------------------------------------------------
 Tue Apr 23 14:17:43 UTC 2013 - werner@suse.de
 
 - Update to final 2.1 version
-  + See CHANGES for the full list of changes 
+  + See CHANGES for the full list of changes
 - Add patch bash-completion-2.1.patch to avoid blanks after during
   file completion (bnc#717151)
 
@@ -2002,7 +2038,7 @@ Wed Nov 30 15:09:57 CET 2011 - tiwai@suse.de
     chrpath, cppcheck, curl, dmesg, dot, file, gnome-mplayer, gprof,
     hddtemp, host, htpasswd, idn, ionice, jps, lbunzip2, lbzip2,
     lbzcat, prelink, protoc, pwdx, pwgen, reptyr, sum, watch,
-    phing, pinfo 
+    phing, pinfo
   - installed location changed to /usr/share/bash-completion/*
   - see more changes in CHANGES file
 
@@ -2088,19 +2124,19 @@ Fri Sep 26 16:29:52 CEST 2008 - mkoenig@suse.de
 
 - fix problem with readonly vars [bnc#383486]
 - speed up rpm completion [bnc#402659]
-- complete on .spm [bnc#416901] 
+- complete on .spm [bnc#416901]
 
 -------------------------------------------------------------------
 Tue May  6 15:37:54 CEST 2008 - mkoenig@suse.de
 
 - remove default tilde expansion, as this should be configurable
   by the expand-tilde readline setting, even with bash-completion
-  installed [bnc#386844] 
+  installed [bnc#386844]
 
 -------------------------------------------------------------------
 Mon May  5 16:12:47 CEST 2008 - mkoenig@suse.de
 
-- fix mount completion for root [bnc#386459] 
+- fix mount completion for root [bnc#386459]
 
 -------------------------------------------------------------------
 Tue Apr 22 16:30:44 CEST 2008 - mkoenig@suse.de
@@ -2111,12 +2147,12 @@ Tue Apr 22 16:30:44 CEST 2008 - mkoenig@suse.de
 -------------------------------------------------------------------
 Fri Jun  1 16:38:39 CEST 2007 - mkoenig@suse.de
 
-- fix bzip2 completion to handle filenames with spaces [#278608] 
+- fix bzip2 completion to handle filenames with spaces [#278608]
 
 -------------------------------------------------------------------
 Thu Mar  8 12:51:15 CET 2007 - mkoenig@suse.de
 
-- enhance rpm completion [#242123] 
+- enhance rpm completion [#242123]
 
 -------------------------------------------------------------------
 Thu Feb 15 11:43:10 CET 2007 - mkoenig@suse.de
@@ -2129,19 +2165,19 @@ Thu Feb 15 11:43:10 CET 2007 - mkoenig@suse.de
 Wed Feb  7 13:23:19 CET 2007 - mkoenig@suse.de
 
 - update to version 20060301
-  * There were probable bash 3.1 POSIX quote problems if 
-    UserKnownHostsFile or GlobalKnownHostsFile keywords were used 
+  * There were probable bash 3.1 POSIX quote problems if
+    UserKnownHostsFile or GlobalKnownHostsFile keywords were used
     inside ssh config files. Fixed.
   * Added new subversion completion implementation
   * Added minicom completion
-  * --nodigest and --nosignature options must be set in $nodig and 
-    $nosig within _rpm_installed_packages() itself, not just set 
-    in _rpm() before _rpm_installed_packages() is called. This is 
-    because other completion functions also call 
+  * --nodigest and --nosignature options must be set in $nodig and
+    $nosig within _rpm_installed_packages() itself, not just set
+    in _rpm() before _rpm_installed_packages() is called. This is
+    because other completion functions also call
     _rpm_installed_packages().
-  * Minor playmidi and timidity additions for .MID(I) 
+  * Minor playmidi and timidity additions for .MID(I)
     (capital letters) files.
-  * Add kdvi, dvipdf and advi to programs that complete on .dvi 
+  * Add kdvi, dvipdf and advi to programs that complete on .dvi
     files
   * iconv completion improvement
   * Replace invoke-rc.d completion

@@ -4,13 +4,15 @@ Do not replace COMPREPLY with _comp_compgen_split()
  completions/ssh |    2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
---- a/completions/ssh
-+++ b/completions/ssh	2024-03-22 13:27:49.715476006 +0000
-@@ -499,7 +499,7 @@ _comp_xfunc_scp_compgen_remote_files()
-             command sed -e 's/'"$_comp_cmd_scp__path_esc"'/\\\\\\&/g' -e 's/[*@|=]$//g' \
-                 -e 's/[^\/]$/& /g')
-     fi
--    _comp_compgen_split -l -- "$_files"
+Index: bash-completion-2.17.0/completions/ssh
+===================================================================
+--- bash-completion-2.17.0.orig/completions/ssh
++++ bash-completion-2.17.0/completions/ssh
+@@ -584,7 +584,7 @@ _comp_xfunc_scp_compgen_remote_files()
+         command ls -aF1dL "$_path*" 2>/dev/null |
+         _comp_cmd_scp__escape_path ${_dirs_only:+'-d'} -- \
+             "$_escape_replacement")
+-    _comp_compgen -R split -l -- "$_files"
 +    COMPREPLY+=( $_files )
  }
  

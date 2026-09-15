@@ -4,18 +4,20 @@ Due legal issue the unRAR part of 7z had been removed (boo#1077978, boo#1090515)
  bash-completion-2.12.0/completions/7z |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
---- bash-completion-2.12.0/completions/7z
-+++ bash-completion-2.12.0/completions/7z	2024-02-23 08:20:37.142193535 +0000
-@@ -66,7 +66,7 @@ _comp_cmd_7z()
+Index: bash-completion-2.17.0/completions/7z
+===================================================================
+--- bash-completion-2.17.0.orig/completions/7z
++++ bash-completion-2.17.0/completions/7z
+@@ -62,7 +62,7 @@ _comp_cmd_7z()
              else
-                 _comp_compgen -c "${cur:2}" -- -P"${cur:0:2}" -W '7z apm arj
-                     bzip2 cab chm cpio cramfs deb dmg elf fat flv gzip hfs iso
--                    lzh lzma lzma86 macho mbr mslz mub nsis ntfs pe ppmd rar
-+                    lzh lzma lzma86 macho mbr mslz mub nsis ntfs pe ppmd
-                     rpm squashfs swf swfc tar udf vhd wim xar xz z zip'
+                 _comp_compgen -P "-t" -- -W '7z apm arj bzip2 cab chm cpio
+                     cramfs deb dmg elf fat flv gzip hfs iso lzh lzma lzma86
+-                    macho mbr mslz mub nsis ntfs pe ppmd rar rpm squashfs swf
++                    macho mbr mslz mub nsis ntfs pe ppmd rpm squashfs swf
+                     swfc tar udf vhd wim xar xz z zip'
              fi
              return
-@@ -98,7 +98,7 @@ _comp_cmd_7z()
+@@ -94,7 +94,7 @@ _comp_cmd_7z()
          #     (assumption: extensions are all lowercase)
          [[ $mode == w ]] &&
              _comp_compgen -a filedir '@(7z|bz2|swf|?(g)tar|?(t)[bglx]z|tb?(z)2|wim)' ||

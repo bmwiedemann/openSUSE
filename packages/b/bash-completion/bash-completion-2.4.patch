@@ -2,23 +2,25 @@
  bash-completion-2.12.0/bash_completion |   11 ++++++-----
  1 file changed, 6 insertions(+), 5 deletions(-)
 
---- bash-completion-2.12.0/bash_completion
-+++ bash-completion-2.12.0/bash_completion	2024-02-22 14:42:03.923479796 +0000
-@@ -2989,13 +2989,14 @@ _comp_complete_longopt()
+Index: bash-completion-2.17.0/bash_completion
+===================================================================
+--- bash-completion-2.17.0.orig/bash_completion
++++ bash-completion-2.17.0/bash_completion
+@@ -3218,14 +3218,15 @@ _comp_complete_longopt()
      fi
  }
  # makeinfo and texi2dvi are defined elsewhere.
 -complete -F _comp_complete_longopt \
 +complete -F _comp_complete_longopt -o filenames \
-     a2ps awk base64 bash bc bison cat chroot colordiff cp \
--    csplit cut date df diff dir du enscript env expand fmt fold gperf \
-+    csplit cut date df diff dir du enscript expand fmt fold gperf \
+     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp \
+     csplit cut date df diff dir du enscript expand fmt fold gperf \
      grep grub head irb ld ldd less ln ls m4 mkdir mkfifo mknod \
--    mv netstat nl nm objcopy objdump od paste pr ptx readelf rm rmdir \
--    sed seq shar sort split strip sum tac tail tee \
+-    mv netstat nl nm numfmt objcopy objdump od paste pr ptx readelf \
+-    readlink realpath rm rmdir sed seq shar shred \
++    mv nl nm numfmt objcopy objdump od paste pr ptx readelf \
++    readlink realpath rm rmdir sed shar shred \
+     shuf sort split stat strip sum sync tac tail tee \
 -    texindex touch tr uname unexpand uniq units vdir wc who
-+    mv nl nm objcopy objdump od paste pr ptx readelf rm rmdir \
-+    sed shar sort split strip sum tac tail tee \
 +    texindex touch tr unexpand uniq vdir wc who
 +complete -F _comp_complete_longopt -o default env netstat seq uname units
  

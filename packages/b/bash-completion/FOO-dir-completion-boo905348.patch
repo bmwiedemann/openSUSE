@@ -3,17 +3,19 @@
  bash-completion-2.12.0/completions/cd  |   11 ++++++++-
  2 files changed, 48 insertions(+), 1 deletion(-)
 
---- bash-completion-2.12.0/bash_completion
-+++ bash-completion-2.12.0/bash_completion	2024-02-23 07:34:25.733559088 +0000
-@@ -1102,6 +1102,7 @@ _comp_quote_compgen()
+Index: bash-completion-2.17.0/bash_completion
+===================================================================
+--- bash-completion-2.17.0.orig/bash_completion
++++ bash-completion-2.17.0/bash_completion
+@@ -1288,6 +1288,7 @@ _comp_quote_compgen()
  _comp_compgen_filedir()
  {
      _comp_compgen_tilde && return
 +    _comp_compgen_dollar "$cur" || return
  
      local -a toks
-     local _arg=${1-}
-@@ -1775,6 +1776,43 @@ _comp_compgen_tilde()
+     local _dir="" _filenames=""
+@@ -1997,6 +1998,43 @@ _comp_compgen_tilde()
      return 1
  }
  
@@ -57,9 +59,11 @@
  # Expand string starting with tilde (~)
  # We want to expand ~foo/... to /home/foo/... to avoid problems when
  # word-to-complete starting with a tilde is fed to commands and ending up
---- bash-completion-2.12.0/completions/cd
-+++ bash-completion-2.12.0/completions/cd	2024-02-23 07:45:00.565836867 +0000
-@@ -5,7 +5,16 @@
+Index: bash-completion-2.17.0/completions/cd
+===================================================================
+--- bash-completion-2.17.0.orig/completions/cd
++++ bash-completion-2.17.0/completions/cd
+@@ -62,7 +62,16 @@ _comp_cmd_cd__compgen_cdpath()
  _comp_cmd_cd()
  {
      local cur prev words cword comp_args

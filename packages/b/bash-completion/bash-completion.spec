@@ -1,7 +1,7 @@
 #
 # spec file for package bash-completion
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,7 +29,7 @@
 
 %global _name   bash-completion
 Name:           %{_name}%{?nsuffix}
-Version:        2.12.0
+Version:        2.17.0
 Release:        0
 %if %{build_core}
 Summary:        Programmable Completion for Bash
@@ -44,8 +44,6 @@ Source0:        https://github.com/scop/bash-completion/releases/download/%{vers
 Source1:        bash-completion-rpmlintrc
 # PATCH-FIX-UPSTREAM bnc#717151 -- Terminal tab autocompletion error
 Patch0:         %{_name}-2.4.patch
-# PATCH-FIX-SUSE bnc#1012212 -- bash tab-autocompletion hangs on TAR-archiving with --create key
-Patch1:         tar-completion.patch
 # PATCH-FIX-SUSE boo#905348 -- tab completion with shell variable changes command line with backslash
 Patch3:         FOO-dir-completion-boo905348.patch
 # PATCH-FIX-SUSE
@@ -70,8 +68,6 @@ Patch13:        boo1190929-9af4afd0.patch
 Patch14:        bsc1199724-modules.patch
 # PATCH-FIX-SUSE boo#1221414 -- shells/bash-completion: Bug
 Patch15:        boo1221414-scp.patch
-# PATCH-FIX-UPSTREAM bsc#1246923 --  [SLES 16.0] The network name is end with ":" via ethtool auto-completion
-Patch16:        bug1246923.patch
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
 BuildArch:      noarch
@@ -137,6 +133,8 @@ del="$del _adb"
 del="$del insmod insmod.static modinfo modprobe rmmod"
 # shipped as part of patchutils
 del="$del interdiff"
+# shipped as part of tmux
+del="$del tmux"
 
 for i in $del; do
 	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions/$i"

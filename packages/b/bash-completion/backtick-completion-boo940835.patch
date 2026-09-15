@@ -2,9 +2,11 @@
  bash-completion-2.12.0/bash_completion |   15 ++++++++++-----
  1 file changed, 10 insertions(+), 5 deletions(-)
 
---- bash-completion-2.12.0/bash_completion
-+++ bash-completion-2.12.0/bash_completion	2024-02-23 07:56:27.581141856 +0000
-@@ -1784,16 +1784,21 @@ _comp_compgen_tilde()
+Index: bash-completion-2.17.0/bash_completion
+===================================================================
+--- bash-completion-2.17.0.orig/bash_completion
++++ bash-completion-2.17.0/bash_completion
+@@ -2006,16 +2006,21 @@ _comp_compgen_tilde()
  _comp_compgen_dollar()
  {
      local s=""
@@ -30,7 +32,7 @@
      \$\{*)
          COMPREPLY=($(compgen -v -P '${' -S "}$s" -- ${1#??})) ;;
      \$*)
-@@ -1805,7 +1810,7 @@ _comp_compgen_dollar()
+@@ -2027,7 +2032,7 @@ _comp_compgen_dollar()
  
      if ((${#COMPREPLY[@]} > 0)) ; then
          ((${#COMPREPLY[@]} == 1)) && eval COMPREPLY=\(${COMPREPLY[@]}\)
