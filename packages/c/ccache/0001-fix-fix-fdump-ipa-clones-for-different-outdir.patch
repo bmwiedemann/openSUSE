@@ -1,0 +1,32 @@
+From: Jiri Slaby <jirislaby@gmail.com>
+Date: Mon, 14 Sep 2026 10:53:32 +0200
+Subject: fix: fix -fdump-ipa-clones for different outdir
+References: bsc#1280168
+Patch-mainline: Submitted #1810
+
+Fixes #1809.
+
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ src/ccache/argprocessing.cpp | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/src/ccache/argprocessing.cpp b/src/ccache/argprocessing.cpp
+index 3a2d78e17fb8..dd18e653180c 100644
+--- a/src/ccache/argprocessing.cpp
++++ b/src/ccache/argprocessing.cpp
+@@ -2060,7 +2060,10 @@ process_args(Context& ctx)
+ 
+   if (args_info.generating_ipa_clones) {
+     args_info.output_ipa = core::make_relative_path(
+-      ctx, util::add_extension(args_info.orig_input_file, ".000i.ipa-clones"));
++      ctx,
++      args_info.output_obj.parent_path()
++        / util::add_extension(args_info.orig_input_file.filename(),
++                              ".000i.ipa-clones"));
+   }
+ 
+   if (state.xarch_args.size() > 1) {
+-- 
+2.55.0
+

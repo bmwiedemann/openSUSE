@@ -37,6 +37,7 @@ License:        GPL-3.0-or-later
 URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source2:        %{name}.keyring
+Patch0:         0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
 Patch2:         0001-doc-do-not-install-html-and-md-docs.patch
 BuildRequires:  cmake >= 3.18
 BuildRequires:  ninja

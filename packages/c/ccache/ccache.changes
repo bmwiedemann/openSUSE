@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:16:27 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add 0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
+  to fix builds to differnet outdirs (like O= for the kernel)
+  (bsc#1280168)
+
+-------------------------------------------------------------------
 Mon Aug 24 05:33:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.14:

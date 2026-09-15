@@ -948,4 +948,14 @@ passed, rpmlint 0 errors, 0 warnings, 0 badness, no unpackaged files.
 Merged into the devel project as jirislaby/d-t-b-ccache PR #2.</comment>
     <requestid>1373448</requestid>
   </revision>
+  <revision rev="88" vrev="2">
+    <srcmd5>964bb283ee11ac4de75a47b65a5c2e01</srcmd5>
+    <version>4.14</version>
+    <time>1789469267</time>
+    <user>anag_factory</user>
+    <comment>- add 0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
+  to fix builds to differnet outdirs (like O= for the kernel)
+  (bsc#1280168)</comment>
+    <requestid>1377856</requestid>
+  </revision>
 </revisionlist>
