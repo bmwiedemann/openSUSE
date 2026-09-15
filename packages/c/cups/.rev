@@ -1409,4 +1409,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>in cups.changes added missing CVE number CVE-2026-41079 (bsc#1263116) (forwarded request 1353799 from jsmeix)</comment>
     <requestid>1353800</requestid>
   </revision>
+  <revision rev="185" vrev="3">
+    <srcmd5>2574a21ffc4bf08794e78c01e3c631dc</srcmd5>
+    <version>2.4.19</version>
+    <time>1789469273</time>
+    <user>anag_factory</user>
+    <comment>Fix for CVE-2026-87875 bsc#1279945 (forwarded request 1377870 from jsmeix)</comment>
+    <requestid>1377871</requestid>
+  </revision>
 </revisionlist>

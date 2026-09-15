@@ -107,6 +107,16 @@ Patch108:       downgrade-autoconf-requirement.patch
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
 Patch112:       cups-2.4.2-additional_policies.patch
+# Patch113 cups-2.4.19-CVE-2026-87875.patch is based on
+# https://github.com/OpenPrinting/cups/commit/2b1dc178a2d2325135b855142e384f4e8c42d8e4
+# adapted to CUPS 2.4.19 to fix CVE-2026-87875
+# "Heap out-of-bounds read in cupsUTF32ToUTF8() via missing source-length bound
+#  - reachable from SNMP supply-description parsing (backend/snmp-supplies.c)"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-559w-7676-3xrq
+# "heap out-of-bounds read in `cupsUTF32ToUTF8()` due to missing source-length bound
+#  can be reached via the SNMP supply-description parsing"
+# https://bugzilla.suse.com/show_bug.cgi?id=1279945
+Patch113:       cups-2.4.19-CVE-2026-87875.patch
 # Build Requirements:
 BuildRequires:  dbus-1-devel
 BuildRequires:  fdupes
@@ -333,7 +343,17 @@ printer drivers for CUPS.
 %patch -P 108 -b downgrade-autoconf-requirement.orig
 # Patch112 cups-2.4.2-additional_policies.patch adds the 'allowallforanybody' policy to cupsd.conf
 # see SUSE FATE 303515 and https://bugzilla.suse.com/show_bug.cgi?id=936309
-%patch -P 112 -b cups-2.4.2-additional_policies.orig
+%patch -P 112 -b additional_policies.orig
+# Patch113 cups-2.4.19-CVE-2026-87875.patch is based on
+# https://github.com/OpenPrinting/cups/commit/2b1dc178a2d2325135b855142e384f4e8c42d8e4
+# adapted to CUPS 2.4.19 to fix CVE-2026-87875
+# "Heap out-of-bounds read in cupsUTF32ToUTF8() via missing source-length bound
+#  - reachable from SNMP supply-description parsing (backend/snmp-supplies.c)"
+# https://github.com/OpenPrinting/cups/security/advisories/GHSA-559w-7676-3xrq
+# "heap out-of-bounds read in `cupsUTF32ToUTF8()` due to missing source-length bound
+#  can be reached via the SNMP supply-description parsing"
+# https://bugzilla.suse.com/show_bug.cgi?id=1279945
+%patch -P113 -b CVE-2026-87875.orig
 
 %build
 # Remove ".SILENT" rule for verbose build output
