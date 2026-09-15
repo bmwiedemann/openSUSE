@@ -77,6 +77,8 @@ Fri Aug 28 07:17:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Use OpenSSL constant-time comparisons
   * Validate EC inputs before key agreement
   * Fix JWS import allocation handling
+- fixes CVE-2026-53938 [bsc#1279844]
+        CVE-2026-53939 [bsc#1279846]
 
 -------------------------------------------------------------------
 Tue Aug 12 14:14:19 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
