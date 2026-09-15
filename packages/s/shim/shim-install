@@ -444,18 +444,26 @@ fi
 
 prepare_cryptodisk () {
   uuid="$1"
+  local cryptomount_base="cryptomount -u $uuid"
+  if [ "x$GRUB_CRYPTO_HWACCEL" = "xtrue" ]; then
+      echo "if [ x\$feature_gcry_hw_accel = xy ]; then"
+      echo "  set cryptomount_hw_accel_args=-A"
+      echo "fi"
+      cryptomount_base="$cryptomount_base \$cryptomount_hw_accel_args"
+  fi
 
   if [ "x$GRUB_CRYPTODISK_PASSWORD" != x ]; then
-    echo "cryptomount -u $uuid -p \"$GRUB_CRYPTODISK_PASSWORD\""
+    echo "$cryptomount_base -p \"$GRUB_CRYPTODISK_PASSWORD\""
     return
   fi
 
   if [ "x$GRUB_TPM2_SEALED_KEY" = x ]; then
-    echo "cryptomount -u $uuid"
+    echo "$cryptomount_base"
     return
   fi
 
   tpm_sealed_key="${GRUB_TPM2_SEALED_KEY}"
+  tpm_cap_pcr="${GRUB_TPM2_CAP_PCR:-9}"
 
   declare -g TPM_PCR_SNAPSHOT_TAKEN
 
@@ -464,7 +472,7 @@ prepare_cryptodisk () {
 
     # Check if tpm_record_pcrs is available and set the command to
     # grub.cfg.
-    if grep -q "tpm_record_pcrs" ${datadir}/grub2/${arch}-efi/command.lst ; then
+    if grep -q "tpm_record_pcrs" ${datadir}/grub2/${grub_install_target}/command.lst ; then
       echo "tpm_record_pcrs 0-9"
     fi
   fi
@@ -476,9 +484,13 @@ prepare_cryptodisk () {
   fi
 
   cat <<EOF
-tpm2_key_protector_init -a $tpm_srk_alg -T \$prefix/$tpm_sealed_key
-if ! cryptomount -u $uuid --protector tpm2; then
-    cryptomount -u $uuid
+if [ x\$feature_tpm2_cap_pcrs = xy ]; then
+  tpm2_key_protector_init -a $tpm_srk_alg -T \$prefix/$tpm_sealed_key -c $tpm_cap_pcr
+else
+  tpm2_key_protector_init -a $tpm_srk_alg -T \$prefix/$tpm_sealed_key
+fi
+if ! $cryptomount_base --protector tpm2; then
+    $cryptomount_base
 fi
 EOF
 }
@@ -507,19 +519,40 @@ fi
 if [ x$GRUB_ENABLE_CRYPTODISK = xy ]; then
   for uuid in `"${grub_probe}" --target=cryptodisk_uuid --device-map= "${grub_cfg_dirname}"`; do
     prepare_cryptodisk "$uuid"
+    IS_CRYPTO_ROOT=y
   done
 fi
 
-hints="`"${grub_probe}" --target=hints_string "${grub_cfg_dirname}" 2> /dev/null`"
+for hint in `"${grub_probe}" --target=efi_hints "${grub_cfg_dirname}" 2> /dev/null`; do
+  hints="${hints:+$hints }--hint='$hint'"
+done
 
 if [ "x$hints" != x ]; then
-  echo "if [ x\$feature_platform_search_hint = xy ]; then"
-  echo "  search --no-floppy --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
-  echo "else"
-  echo "  search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
-  echo "fi"
+  if [ "x$IS_CRYPTO_ROOT" = xy ]; then
+    echo "if [ x\$feature_search_cryptodisk_only = xy ]; then"
+    echo "  search --no-floppy --cryptodisk-only --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
+    echo "elif [ x\$feature_platform_search_hint = xy ]; then"
+    echo "  search --no-floppy --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
+    echo "else"
+    echo "  search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+    echo "fi"
+  else
+    echo "if [ x\$feature_platform_search_hint = xy ]; then"
+    echo "  search --no-floppy --fs-uuid --set=root ${hints} ${cfg_fs_uuid}"
+    echo "else"
+    echo "  search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+    echo "fi"
+  fi
 else
-  echo "search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+  if [ "x$IS_CRYPTO_ROOT" = xy ]; then
+    echo "if [ x\$feature_search_cryptodisk_only = xy ]; then"
+      echo "search --no-floppy --cryptodisk-only --fs-uuid --set=root ${cfg_fs_uuid}"
+    echo "else"
+      echo "search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+    echo "fi"
+  else
+    echo "search --no-floppy --fs-uuid --set=root ${cfg_fs_uuid}"
+  fi
 fi
 
 cat <<EOF

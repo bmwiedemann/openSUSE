@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 11 01:35:16 UTC 2026 - Joey Lee <jlee@suse.com>
+
+- Add more comment in shim.spec for
+  99bbbdf6fd3e shim-leap.spec: Always put openSUSE Secure Boot CA
+  to target array (bsc#1254679)
+- Moved the following shim-install patches from
+  https://github.com/SUSE/shim-resources.git
+    - 6e49d8d8bd63 Use efi_hints to optimize target probing
+    - 8805129321f5 Restrict root device discovery to unlocked cryptodisks
+    - 5ce8f5a14979 Add TPM2 PCR cap if grub2 supports
+    - 0da391abf9ec Add GRUB_CRYPTO_HWACCEL to enable hardware acceleration
+    - c09d3485e9d2 Fix the path to grub2 command.lst
+
+-------------------------------------------------------------------
 Mon Aug  3 08:35:06 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - shim-install: Do not update fallback on sl-micro when the fallback

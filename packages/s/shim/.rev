@@ -1613,4 +1613,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>shim-install Do not update fallback on sl-micro when the fallback is not in efi default boot path (bsc#1270036)</comment>
     <requestid>1376068</requestid>
   </revision>
+  <revision rev="140" vrev="8">
+    <srcmd5>3098e2fd9472db12574a378b3e00c91c</srcmd5>
+    <version>16.1</version>
+    <time>1789484964</time>
+    <user>anag_factory</user>
+    <comment>Moved some missed shim-install patches from shim-resources github repo</comment>
+    <requestid>1377824</requestid>
+  </revision>
 </revisionlist>

@@ -417,6 +417,10 @@ local TARGET_CERT_HEXES = {
     -- Certificate #2, Microsoft UEFI CA 2023
     "%{microsoft_ca_2023_hex}",
 %if "%{prjissuer_hash}" == "%{opensusesubject_hash}"
+    -- Repacking project of shim (e.g. shim-leap or non-SLE15-SP3 shim)
+    -- always put openSUSE or SLE Secure Boot CA to target db cert array
+    -- because repacking project does not have needssslcertforbuild
+    -- 99bbbdf6fd3e shim-leap.spec: Always put openSUSE Secure Boot CA to target array (bsc1254679)
     -- Certificate #3, openSUSE Secure Boot CA 2013
     "%{opensuse_ca_hex}",
 %endif
