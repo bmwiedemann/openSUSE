@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:34:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- CVE-2026-90558: stack buffer overflow in SIP attribute formatting
+  routines when header values exceed the 255-byte buffer limit.
+  Add 0001-fix-prevent-stack-buffer-overflow-in-SIP-attribute-f.patch
+  (boo#1280297).
+
+-------------------------------------------------------------------
 Sat Jul 25 08:15:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.8.4

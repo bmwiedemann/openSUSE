@@ -27,6 +27,7 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         0001-fix-prevent-stack-buffer-overflow-in-SIP-attribute-f.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  libpcap-devel
