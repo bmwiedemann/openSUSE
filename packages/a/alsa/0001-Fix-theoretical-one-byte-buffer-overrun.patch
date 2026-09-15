@@ -1,0 +1,35 @@
+From 1e27d63ef6d1dcf7d1f1a1e1eca3ea779e7de377 Mon Sep 17 00:00:00 2001
+From: Dirk Müller <dirk@dmllr.de>
+Date: Tue, 2 Jun 2026 11:17:31 +0200
+Subject: [PATCH] Fix theoretical one-byte buffer overrun
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+If 64 (sizeof(buf))= or more characters were provided in the input string,
+this unconditionally writes a null byte to `buf[64]`, which is one byte
+past the end of the array.
+
+Closes: https://github.com/alsa-project/alsa-lib/pull/509
+Signed-off-by: Dirk Müller <dirk@dmllr.de>
+Signed-off-by: Jaroslav Kysela <perex@perex.cz>
+---
+ src/control/ctlparse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/control/ctlparse.c b/src/control/ctlparse.c
+index 3bd86435d0e3..c40de2bd28e5 100644
+--- a/src/control/ctlparse.c
++++ b/src/control/ctlparse.c
+@@ -173,7 +173,7 @@ int __snd_ctl_ascii_elem_id_parse(snd_ctl_elem_id_t *dst, const char *str,
+ 			ptr = buf;
+ 			size = 0;
+ 			while (*str && *str != ',') {
+-				if (size < (int)sizeof(buf)) {
++				if (size < (int)sizeof(buf) - 1) {
+ 					*ptr++ = *str;
+ 					size++;
+ 				}
+-- 
+2.55.0
+
