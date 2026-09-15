@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 11 10:51:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.8.5:
+  + server: Fix double-free in action callback
+
+-------------------------------------------------------------------
 Thu Aug 20 11:21:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.8.4:

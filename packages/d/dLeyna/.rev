@@ -61,4 +61,13 @@
   + Renderer: Potentially fix crash if renderer device disappears</comment>
     <requestid>1372913</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>2b2eb27ccbe0bc0c797d903d8cbe9497</srcmd5>
+    <version>0.8.5</version>
+    <time>1789484959</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.8.5:
+  + server: Fix double-free in action callback</comment>
+    <requestid>1377785</requestid>
+  </revision>
 </revisionlist>
