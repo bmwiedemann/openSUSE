@@ -18,9 +18,9 @@
 
 
 %bcond_with test
-%define appid net.nokyan.Resources
+%define appid org.gnome.Resources
 Name:           resources
-Version:        1.10.2
+Version:        51.0
 Release:        0
 Summary:        Monitor your system processes
 License:        GPL-3.0-or-later
@@ -33,6 +33,7 @@ BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.0
+BuildRequires:  pkgconfig(libsoup-3.0)
 Requires:       dmidecode
 Requires:       polkit
 
@@ -46,7 +47,7 @@ processes, written in Rust and using GTK 4 and libadwaita for its GUI.
 %autosetup -a1
 
 %build
-%meson -Dprofile=default
+%meson -Dprofile=release
 %meson_build
 
 %install

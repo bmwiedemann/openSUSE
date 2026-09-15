@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:57:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 09 13:46:40 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 51.beta+13:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu Jul 30 20:20:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.beta:
+  + Better detection of Steam games and Snap apps
+  + Added utilization, power and performance metrics for AMD NPUs
+  + Added temperature readings for PowerPC CPUs
+  + Accessibility improvements
+  + Revamped sidebar featuring a more space efficient layout and
+    many other small UI improvements
+  + This release also contains an experimental feature to change
+    the metric Resources uses to determine per-process memory
+    usage. This option is not exposed in the GUI but instead is
+    configurable over dconf. The value at
+    /org/gnome/Resources/memory-metric can be set either of
+    "VmSize", "Rss", "RssNoSharedMemory" (default), "RssAnon",
+    "ApproximatePss" and "Pss". I'd appreciate feedback about the
+    different metrics, especially "ApproximatePss".
+
+-------------------------------------------------------------------
 Sun May 17 11:07:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.10.2:
