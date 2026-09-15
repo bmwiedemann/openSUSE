@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 11 14:47:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 1.23.4:
+  * Fix build problem with some compiler versions related to SM4
+    instructions
+  * Fix padding in cSHAKE found by NIST ACVP conformance vectors
+  * Fix RSA PSS handling of huge salt lengths
+  * Validate the length of hashed input for RSA PSS
+  * Improve RSA OAEP decoder correctnes by validating an all-zero
+    padding
+
+-------------------------------------------------------------------
 Tue Sep  1 16:38:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 1.12.3:
