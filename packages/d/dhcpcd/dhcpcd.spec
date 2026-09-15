@@ -29,6 +29,7 @@ Source3:        dhcpcd-sysusers.conf
 Source4:        dhcpcd-tmpfiles.conf
 Source5:        dhcpcd.service
 Source6:        dhcpcd@.service
+Patch0:         dhcpcd-privsep-Fix-daemonising-broken-by-RLIMIT_NOFILE-of-0.patch
 BuildRequires:  sysuser-tools
 %sysusers_requires
 

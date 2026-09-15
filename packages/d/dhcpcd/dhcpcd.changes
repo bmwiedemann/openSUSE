@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:34:40 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Add dhcpcd-privsep-Fix-daemonising-broken-by-RLIMIT_NOFILE-of-0.patch
+  [bsc#1275516]
+
+-------------------------------------------------------------------
 Tue Aug 18 13:13:43 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update to 10.5.2

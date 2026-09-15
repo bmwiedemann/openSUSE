@@ -176,4 +176,13 @@
   * privsep: Fix capsicum support on the control socket</comment>
     <requestid>1371775</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>b5ea6783141c9f82992c876cfe3fd424</srcmd5>
+    <version>10.5.2</version>
+    <time>1789484973</time>
+    <user>anag_factory</user>
+    <comment>- Add dhcpcd-privsep-Fix-daemonising-broken-by-RLIMIT_NOFILE-of-0.patch
+  [bsc#1275516]</comment>
+    <requestid>1377921</requestid>
+  </revision>
 </revisionlist>
