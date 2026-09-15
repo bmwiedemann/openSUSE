@@ -2,12 +2,12 @@
   <service mode="manual" name="obs_scm">
     <!-- ✨ URL of the git repo ✨ -->
     <param name="url">https://github.com/openSUSE/cnf.git</param>
-    <param name="versionformat">@PARENT_TAG@~@TAG_OFFSET@</param>
+    <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="scm">git</param>
     <!-- ✨ The version tag or branch name from git ✨ -->
     <param name="revision">main</param>
     <param name="match-tag">*</param>
-    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)(\+0)?</param>
     <param name="versionrewrite-replacement">\1</param>
     <param name="changesgenerate">enable</param>
     <!-- ✨ Your email here ✨ -->
