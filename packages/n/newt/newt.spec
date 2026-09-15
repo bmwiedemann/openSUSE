@@ -1,7 +1,7 @@
 #
 # spec file for package newt
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,27 +18,22 @@
 
 %define         libname lib%{name}
 %define         libsoname %{libname}0_52
-%{!?python2_sitearch: %global python2_sitearch %(python -c "from distutils.sysconfig import get_python_lib; print get_python_lib(1)")}
-%bcond_without python2
 Name:           newt
 Version:        0.52.25
 Release:        0
 Summary:        A library for text mode user interfaces
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/C and C++
-URL:            https://pagure.io/newt
-Source:         https://fedorahosted.org/releases/n/e/newt/%{name}-%{version}.tar.gz
+URL:            https://gitlab.com/newt-ui/newt
+Source0:        https://gitlab.com/newt-ui/newt/-/archive/%{version}/newt-%{version}.tar.gz
 Source2:        baselibs.conf
-Source10:       %{name}-rpmlintrc
 Patch0:         newt-0.52.20-implicit-pointer-decl.patch
+BuildRequires:  autoconf
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
 BuildRequires:  python3-devel
 BuildRequires:  slang-devel
-%if %{with python2}
-BuildRequires:  python-devel
-%endif
 
 %description
 Newt is a programming library for color text-mode, widget-based user
@@ -101,20 +96,6 @@ interfaces.  Newt can be used to add stacked windows, entry widgets,
 check boxes, radio buttons, labels, plain text fields, scrollbars,
 etc., to text mode user interfaces.
 
-%package -n python2-%{name}
-Summary:        Python bindings for newt
-License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
-Group:          Development/Languages/Python
-Requires:       %{name} = %{version}
-Provides:       python-%{name} = %{version}
-Obsoletes:      python-%{name} < %{version}
-Provides:       %{name}-python = %{version}
-Obsoletes:      %{name}-python < %{version}
-
-%description -n python2-%{name}
-The python-newt package contains the Python bindings for the newt
-library providing a python API for creating text mode interfaces.
-
 %package -n python3-%{name}
 Summary:        Python 3 bindings for newt
 License:        LGPL-2.1-or-later
@@ -132,18 +113,14 @@ providing a python API for creating text mode interfaces.
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
 # gpm support seems to smash the stack
 # --with-gpm-support
+./autogen.sh
 %configure --without-tcl
 ## make depend
-make CPPFLAGS="%{optflags} -fPIC -D_GNU_SOURCE" %{?_smp_mflags} all
+%make_build CPPFLAGS="%{optflags} -fPIC -D_GNU_SOURCE" all
 chmod 0644 peanuts.py popcorn.py
 
 %install
-%if %{with python2}
-pyversions="python%{py_ver}"
-%else
-pyversions=""
-%endif
-pyversions="$pyversions python%{py3_ver}"
+pyversions="python%{py3_ver}"
 make PYTHONVERS="$pyversions" instroot=%{buildroot} DESTDIR=%{buildroot} install install-sh
 # currently we don't support these languages
 for lang in ast bal sr@latin wo; do
@@ -152,45 +129,29 @@ done
 
 %find_lang %{name}
 
-%if %{with python2}
-%py_compile %{buildroot}/%{python_sitearch}
-%py_compile -O %{buildroot}/%{python_sitearch}
-%endif
-%py3_compile %{buildroot}/%{python3_sitearch}
-%py3_compile -O %{buildroot}/%{python3_sitearch}
+%{python3_compile}
 %fdupes %{buildroot}/%{python3_sitearch}
 
 %post -n %{libsoname} -p /sbin/ldconfig
 %postun -n %{libsoname} -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root)
 %license COPYING
 %{_bindir}/whiptail
 %{_mandir}/man1/whiptail.1%{?ext_man}
 
 %files -n %{libsoname}
-%defattr(-,root,root)
 %{_libdir}/%{libname}.so.*
 
 %files devel
-%defattr(-,root,root)
 %{_includedir}/%{name}.h
 %{_libdir}/%{libname}.so
 %{_libdir}/pkgconfig/*.pc
 
 %files static
-%defattr(-,root,root)
 %{_libdir}/%{libname}.a
 
-%if %{with python2}
-%files -n python2-%{name}
-%defattr(-,root,root)
-%{python2_sitearch}/*
-%endif
-
 %files -n python3-%{name}
-%defattr(-,root,root)
 %{python3_sitearch}/*.so
 %{python3_sitearch}/*.py*
 %{python3_sitearch}/__pycache__/*.py*

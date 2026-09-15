@@ -422,4 +422,16 @@ soon-ish so that we can switch the default compiler?  Thanks! (forwarded request
 </comment>
     <requestid>1267841</requestid>
   </revision>
+  <revision rev="54" vrev="2">
+    <srcmd5>49763652f81da85a56344e69884f5ee0</srcmd5>
+    <version>0.52.25</version>
+    <time>1789484970</time>
+    <user>anag_factory</user>
+    <comment>- Fix new home of the project
+- remove python2 support
+- remove dependency on old macros.python3
+- drop rpmlintrc
+</comment>
+    <requestid>1377851</requestid>
+  </revision>
 </revisionlist>

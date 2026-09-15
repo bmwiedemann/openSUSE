@@ -1,7 +1,7 @@
 #
 # spec file for package newt-doc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,8 +22,8 @@ Release:        0
 Summary:        Tutorial for Nifty Erik's Windowing Toolkit
 License:        LGPL-2.1-or-later
 Group:          Documentation/Howto
-URL:            https://pagure.io/newt
-Source:         https://fedorahosted.org/releases/n/e/newt/newt-%{version}.tar.gz
+URL:            https://gitlab.com/newt-ui/newt
+Source:         https://gitlab.com/newt-ui/newt/-/archive/%{version}/newt-%{version}.tar.gz
 # needed for tutorial.pdf
 BuildRequires:  docbook-toys
 BuildRequires:  texlive-courier
