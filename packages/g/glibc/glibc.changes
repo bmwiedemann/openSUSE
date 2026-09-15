@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:56:20 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- strfmon-right-just.patch: stdlib: Fix right-justification in strfmon
+  (CVE-2026-19499, bsc#1276892, BZ #34510)
+- tdelete-oob-write.patch: misc: Fix out-of-bounds array write in tdelete
+  (CVE-2026-19542, bsc#1276946, BZ #34506)
+- sjisx-pending-char-reset.patch: iconvdata: SHIFT_JISX0213 decoding lacks
+  pending character reset (CVE-2026-77117, bsc#1277921, BZ #34556)
+- eucjisx-pending-char-reset.patch: iconvdata: EUC_JISX0213 decoding lacks
+  pending character reset (CVE-2026-80489, bsc#1277922, BZ #34568)
+- libio-fopen-ccs.patch: libio: Fix CVE-2026-18374 heap buffer overflow in
+  ccs= handling (CVE-2026-18374, bsc#1277262, BZ #34574)
+
+-------------------------------------------------------------------
+Thu Aug 27 17:10:09 UTC 2026 - Giuliano Belinassi <giuliano.belinassi@suse.com>
+
+- Add -flive-patching=inline-clone to avoid untraceable inter-procedural
+  optimizations (bsc#1277247).
+
+-------------------------------------------------------------------
 Tue Aug 18 09:46:17 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - dt-d-rule.patch: Makerules: Make the .dt to .d conversion safe against

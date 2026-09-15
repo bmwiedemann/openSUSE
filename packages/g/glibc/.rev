@@ -3284,4 +3284,24 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   for cross-object IFUNC relocations (BZ #34428) (forwarded request 1371785 from Andreas_Schwab)</comment>
     <requestid>1371787</requestid>
   </revision>
+  <revision rev="308" vrev="2">
+    <srcmd5>1e3439944f7109bd2957875c9b725311</srcmd5>
+    <version>2.44</version>
+    <time>1789469291</time>
+    <user>anag_factory</user>
+    <comment>- strfmon-right-just.patch: stdlib: Fix right-justification in strfmon
+  (CVE-2026-19499, bsc#1276892, BZ #34510)
+- tdelete-oob-write.patch: misc: Fix out-of-bounds array write in tdelete
+  (CVE-2026-19542, bsc#1276946, BZ #34506)
+- sjisx-pending-char-reset.patch: iconvdata: SHIFT_JISX0213 decoding lacks
+  pending character reset (CVE-2026-77117, bsc#1277921, BZ #34556)
+- eucjisx-pending-char-reset.patch: iconvdata: EUC_JISX0213 decoding lacks
+  pending character reset (CVE-2026-80489, bsc#1277922, BZ #34568)
+- libio-fopen-ccs.patch: libio: Fix CVE-2026-18374 heap buffer overflow in
+  ccs= handling (CVE-2026-18374, bsc#1277262, BZ #34574)
+
+- Add -flive-patching=inline-clone to avoid untraceable inter-procedural
+  optimizations (bsc#1277247). (forwarded request 1377842 from Andreas_Schwab)</comment>
+    <requestid>1377843</requestid>
+  </revision>
 </revisionlist>

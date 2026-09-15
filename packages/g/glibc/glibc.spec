@@ -351,6 +351,16 @@ Patch1001:      math-sinh-worst-case-results.patch
 Patch1002:      math-x86-64-tanh-floatn-aliases.patch
 # PATCH-FIX-UPSTREAM elf: Honour skip_ifunc for cross-object IFUNC relocations (BZ #34428)
 Patch1003:      elf-honor-skip-ifunc-for-ifunc-relocations.patch
+# PATCH-FIX-UPSTREAM stdlib: Fix right-justification in strfmon (CVE-2026-19499, BZ #34510)
+Patch1004:      strfmon-right-just.patch
+# PATCH-FIX-UPSTREAM misc: Fix out-of-bounds array write in tdelete (CVE-2026-19542, BZ #34506)
+Patch1005:      tdelete-oob-write.patch
+# PATCH-FIX-UPSTREAM iconvdata: SHIFT_JISX0213 decoding lacks pending character reset (CVE-2026-77117, BZ #34556)
+Patch1006:      sjisx-pending-char-reset.patch
+# PATCH-FIX-UPSTREAM iconvdata: EUC_JISX0213 decoding lacks pending character reset (CVE-2026-80489, BZ #34568)
+Patch1007:      eucjisx-pending-char-reset.patch
+# PATCH-FIX-UPSTREAM libio: Fix CVE-2026-18374 heap buffer overflow in ccs= handling (CVE-2026-18374, BZ #34574)
+Patch1008:      libio-fopen-ccs.patch
 %endif
 
 ###

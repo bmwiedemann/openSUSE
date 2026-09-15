@@ -1,4 +1,4 @@
-From a4b0acf5c85f303aa7c8ebc0f1c9b890b1451320 Mon Sep 17 00:00:00 2001
+From dd8e26e7d170bb7d1b81d9f2a4ab704f3b08a746 Mon Sep 17 00:00:00 2001
 From: Giuliano Belinassi <gbelinassi@suse.de>
 Date: Fri, 18 Apr 2025 14:22:49 -0300
 Subject: [PATCH] Add Userspace Livepatch prologue into ASM functions
@@ -179,13 +179,13 @@ index 2fe7980fc9..552e61853e 100644
  RELEASE=`sed -n -e 's/^#define RELEASE "\([^"]*\)"/\1/p' < $srcdir/version.h`
  AC_SUBST(VERSION)
 diff --git a/sysdeps/powerpc/powerpc64/le/Makefile b/sysdeps/powerpc/powerpc64/le/Makefile
-index b77775cf95..8340a8e02f 100644
+index b77775cf95..a8250947fd 100644
 --- a/sysdeps/powerpc/powerpc64/le/Makefile
 +++ b/sysdeps/powerpc/powerpc64/le/Makefile
 @@ -1,3 +1,11 @@
 +# Add flags for Userspace Livepatching support.
 +ifeq (yes,$(enable-userspace-livepatch))
-++cflags += -fpatchable-function-entry=14,13
+++cflags += -fpatchable-function-entry=14,13 -flive-patching=inline-clone
 +ifeq (yes,$(supports-msplit-patch-nops))
 ++cflags += -msplit-patch-nops
 +endif
@@ -277,13 +277,13 @@ index 26cccbf269..6ce22bc8d5 100644
  #define ENTRY(name, ...)			\
  	ENTRY_TOCLESS(name, ## __VA_ARGS__)
 diff --git a/sysdeps/x86_64/Makefile b/sysdeps/x86_64/Makefile
-index ff0463d7ca..3d81acbcfa 100644
+index ff0463d7ca..6b01b14475 100644
 --- a/sysdeps/x86_64/Makefile
 +++ b/sysdeps/x86_64/Makefile
 @@ -1,3 +1,8 @@
 +# Add flags for Userspace Livepatching support.
 +ifeq (yes,$(enable-userspace-livepatch))
-++cflags += -fpatchable-function-entry=16,14
+++cflags += -fpatchable-function-entry=16,14 -flive-patching=inline-clone
 +endif
 +
  # The i387 `long double' is a distinct type we support.
