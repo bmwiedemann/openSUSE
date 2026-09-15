@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Tue Sep 15 00:51:46 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.18.0~2:
+  * Add experimental concurrent cache support
+  * chore: Remove dependency status badge (#2856)
+  * Don't hand the jobserver to children that can't use it
+  * dist: refuse to trim rlibs from crates that also emit a cdylib
+  * fix(cache): avoid duplicate multilevel reads
+  * Strip basedirs from the compiler arguments too
+  * tests/integration: replace MinIO with Silo
+  * ci: dump sccache logs on integration failures
+  * multilevel: a chain with any writable level is writable
+  * Fix parsing of #line directives
+  * Release 0.18.0
+  * daemonize: use an allow-list approach to inherited FDs
+  * gcc, clang: make the assembler part of the cache key
+  * support cl.exe /openmp:llvm
+  * support all current /fsanitize*, /fsanitize-coverage*, and /fno-sanitize* args
+  * support MSVC /feature argument
+  * msvc: support lots of flags (#2832)
+  * Update shlex dependency to version 2 (#2836)
+  * gcc: mark flags as TooHard if need to cache something else (#2833)
+  * clang: support more CLI options (#2834)
+  * msvc: support arm64EC and fastfail flags (#2830)
+  * chore: fix typo in comment (#2829)
+  * nvcc: accept the --diag-error/--diag-suppress/--diag-warn family (#2816)
+  * cache: allow skipping capability checks (#2822)
+  * Bump opendal to 0.58.1 and fix fallout (fixes local GCS cache usage) (#2715)
+  * nvcc (Windows): protect escaped quotes in dryrun lines before flattening backslashes (#2811)
+  * Add an agent (#2812)
+  * Add support for d20bforceinline. (#2807)
+  * feat: add Microsoft Entra ID (passwordless) auth for the Azure Blob backend (#2802)
+  * Bump MSRV to 1.91.0 (#2793)
+  * Fix `nvcc` dryrun parsing for CUDA 13.3 (#2722)
+  * test: Fixed hardcoded binary path in test
+
+-------------------------------------------------------------------
 Thu Aug 13 04:14:42 UTC 2026 - William Brown <william.brown@suse.com>
 
 - bsc#1274146 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
