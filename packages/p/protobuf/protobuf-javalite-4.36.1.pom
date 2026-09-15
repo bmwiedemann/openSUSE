@@ -4,7 +4,7 @@
   <parent>
     <groupId>com.google.protobuf</groupId>
     <artifactId>protobuf-parent</artifactId>
-    <version>4.34.2</version>
+    <version>4.36.1</version>
   </parent>
 
   <artifactId>protobuf-javalite</artifactId>
@@ -12,8 +12,9 @@
 
   <name>Protocol Buffers [Lite]</name>
   <description>
-    Lite version of Protocol Buffers library. This version is optimized for code size, but does
-    not guarantee API/ABI stability.
+    Lite version of Protocol Buffers library. This version is targeted for mobile client use
+    rather than server side use. It is optimized for code size, but does not guarantee API/ABI
+    stability.
   </description>
   <dependencies>
     

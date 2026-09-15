@@ -998,4 +998,26 @@ fix baselibs</comment>
     <comment></comment>
     <requestid>1355224</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>a5f6b1671a5f643f1800b58d9ddc0bef</srcmd5>
+    <version>36.1</version>
+    <time>1789484941</time>
+    <user>anag_factory</user>
+    <comment>Update protobuf to 36.1 (C++ 36.1, Python 7.36.1, Java 4.36.1).
+
+SONAME bump: libprotobuf34_2_0 (+lite/protoc/utf8_range) become
+libprotobuf36_1_0 etc.; baselibs.conf updated. rdeps.sh lists ~306
+reverse build-dep edges that rebuild once this lands.
+
+Fixes CVE-2026-0994 (Python json_format.ParseDict recursion-limit
+bypass via nested Any, DoS).
+
+Local native aarch64 builds (openSUSE:Factory:ARM): main,
+python-protobuf and protobuf-java flavors green, rpmlint badness 0,
+soname-check.sh clean, source_validator rc 0.
+
+Note: python-protobuf.changes keeps the python-rpm-macros entry below
+the new one (a plain pre_checkin.sh cp would have dropped it).</comment>
+    <requestid>1377638</requestid>
+  </revision>
 </revisionlist>

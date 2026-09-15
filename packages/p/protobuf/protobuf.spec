@@ -20,12 +20,10 @@
 %define tarname protobuf
 # see cmake/abseil-cpp.cmake and src/google/protobuf/port_def.inc
 %define abseil_min_version 20250512.1
-%global         sover 34_2_0
+%global         sover 36_1_0
 %if 0%{?gcc_version} < 11
 %define with_gcc 11
 %endif
-# requires gmock, which is not yet in the distribution
-%bcond_with    check
 %global protoc_arch %{_arch}
 %ifarch x86_64 %{?x86_64}
 %global protoc_arch x86_64
@@ -65,12 +63,13 @@
 %ifarch sparc64
 %global protoc_arch sparc_64
 %endif
+# requires gmock, which is not yet in the distribution
+%bcond_with    check
 Name:           protobuf
-Version:        34.2
+Version:        36.1
 Release:        0
 Summary:        Protocol Buffers - Google's data interchange format
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://github.com/protocolbuffers/protobuf/releases/download/v%{version}/%{tarname}-%{version}.tar.gz
 Source1:        baselibs.conf
@@ -127,7 +126,6 @@ RPC protocols and file formats.
 
 %package -n libprotobuf%{sover}
 Summary:        Protocol Buffers - Google's data interchange format
-Group:          System/Libraries
 
 %description -n libprotobuf%{sover}
 Protocol Buffers are a way of encoding structured data in an efficient yet
@@ -136,7 +134,6 @@ RPC protocols and file formats.
 
 %package -n libprotoc%{sover}
 Summary:        Protocol Buffers - Google's data interchange format
-Group:          System/Libraries
 
 %description -n libprotoc%{sover}
 Protocol Buffers are a way of encoding structured data in an efficient yet
@@ -145,7 +142,6 @@ RPC protocols and file formats.
 
 %package -n libprotobuf-lite%{sover}
 Summary:        Protocol Buffers - Google's data interchange format
-Group:          System/Libraries
 
 %description -n libprotobuf-lite%{sover}
 Protocol Buffers are a way of encoding structured data in an efficient yet
@@ -154,7 +150,6 @@ RPC protocols and file formats.
 
 %package -n libutf8_range-%{sover}
 Summary:        UTF-8 validation libraries from Protobuf
-Group:          System/Libraries
 
 %description -n libutf8_range-%{sover}
 UTF-8 string validation library with optional SIMD acceleration (armv8a NEON,
@@ -162,7 +157,6 @@ SSE4 and AVX2).
 
 %package devel
 Summary:        Header files, libraries and development documentation for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       libprotobuf%{sover} = %{version}
 Requires:       libprotobuf-lite%{sover} = %{version}
 Requires:       libutf8_range-%{sover} = %{version}
@@ -203,7 +197,7 @@ export CC=gcc-%{with_gcc}
 %install
 %cmake_install
 install -Dm 0644 editors/proto.vim %{buildroot}%{_datadir}/vim/site/syntax/proto.vim
-install -D java/core/src/main/resources/google/protobuf/java_features.proto %{buildroot}%{_includedir}/java/core/src/main/resources/google/protobuf/java_features.proto
+install -D -m 0644 java/core/src/main/resources/google/protobuf/java_features.proto %{buildroot}%{_includedir}/java/core/src/main/resources/google/protobuf/java_features.proto
 
 # create maven metadata for the protoc executable
 install -dm 0755 %{buildroot}%{_datadir}/maven-metadata

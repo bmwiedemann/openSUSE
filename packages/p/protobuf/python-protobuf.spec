@@ -17,14 +17,13 @@
 #
 
 
-%define baseversion 34.2
+%define baseversion 36.1
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
 Version:        7.%{baseversion}
 Release:        0
 Summary:        Python Bindings for Google Protocol Buffers
 License:        BSD-3-Clause
-Group:          Development/Libraries/Python
 URL:            https://github.com/protocolbuffers/protobuf
 Source0:        https://files.pythonhosted.org/packages/source/p/protobuf/protobuf-%{version}.tar.gz
 BuildRequires:  %{python_module devel}

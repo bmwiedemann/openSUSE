@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:24:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 36.1 (C++ 36.1, Python bindings 7.36.1, Java 4.36.1):
+  * Shlib packages renamed for the SONAME bump: libprotobuf34_2_0 and
+    siblings become libprotobuf36_1_0 etc. (baselibs.conf follows;
+    reverse deps need rebuilds).
+  * CVE-2026-0994: Python json_format.ParseDict recursion-limit bypass
+    via nested Any messages (DoS); depth now tracked via ConvertMessage.
+  * protoc: path traversal guard in WriteAllToZip; new --<lang>_prefix
+    option; Edition 2026 groundwork (naming enforcement, proto limits,
+    STRICT default symbol visibility).
+  * C++: RepeatedPtrField overflow and arena bounds checks, UTF-8
+    validation fix, TimeUtil spec-limit validation.
+  * Java: standard gencode no longer uses sun.misc.Unsafe; BigDecimal
+    parse length cap; negative-size mergeDelimitedFrom rejected.
+  * Python: MapIterator heap-use-after-free and descriptor memleak
+    fixed; Struct/Value JSON depth enforcement; free-threading fixes.
+- Install the java_features.proto copy without the exec bit.
+- Refresh the protobuf-java lite source list from upstream LITE_SRCS
+  (drop BinaryReader/Writer, ByteBufferWriter, Reader, SchemaFactory,
+  Writer; add DoNotInline, InternalLazyField,
+  InvalidProtobufRuntimeException).
+- Generate Java from the new json_options.proto and
+  json_enumvalue_options.proto in the protobuf-java core build.
+
+-------------------------------------------------------------------
 Sat May 23 19:15:51 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 34.2:
