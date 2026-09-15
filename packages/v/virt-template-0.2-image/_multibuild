@@ -1,0 +1,4 @@
+<multibuild>
+    <package>apiserver</package>
+    <package>controller</package>
+</multibuild>
