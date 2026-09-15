@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 02:48:24 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-django-6.1.patch:
+  * Support BigAutoField changes for Django 6.1.
+- Add patch remove-six.patch:
+  * Remove use of six.
+
+-------------------------------------------------------------------
 Mon Jan  5 11:56:41 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 1.12

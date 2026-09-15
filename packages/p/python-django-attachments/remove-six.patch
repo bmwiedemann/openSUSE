@@ -1,0 +1,44 @@
+Index: django_attachments-1.12/attachments/models.py
+===================================================================
+--- django_attachments-1.12.orig/attachments/models.py
++++ django_attachments-1.12/attachments/models.py
+@@ -7,7 +7,6 @@ from django.contrib.contenttypes.fields
+ from django.contrib.contenttypes.models import ContentType
+ from django.db import models
+ from django.utils.translation import gettext_lazy as _
+-from six import python_2_unicode_compatible
+ 
+ 
+ def attachment_upload(instance, filename):
+@@ -26,7 +25,6 @@ class AttachmentManager(models.Manager):
+         return self.filter(content_type__pk=object_type.id, object_id=obj.pk)
+ 
+ 
+-@python_2_unicode_compatible
+ class Attachment(models.Model):
+     objects = AttachmentManager()
+ 
+Index: django_attachments-1.12/attachments/tests/test_integrity.py
+===================================================================
+--- django_attachments-1.12.orig/attachments/tests/test_integrity.py
++++ django_attachments-1.12/attachments/tests/test_integrity.py
+@@ -1,6 +1,6 @@
+ from django.core.management import call_command
+ from django.test import TestCase
+-from six import StringIO
++from io import StringIO
+ 
+ 
+ class IntegrityTestCase(TestCase):
+Index: django_attachments-1.12/setup.cfg
+===================================================================
+--- django_attachments-1.12.orig/setup.cfg
++++ django_attachments-1.12/setup.cfg
+@@ -28,7 +28,6 @@ include_package_data = True
+ zip_safe = False
+ install_requires = 
+ 	django>=1.11
+-	six
+ 	mock
+ 
+ [options.extras_require]

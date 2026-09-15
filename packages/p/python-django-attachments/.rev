@@ -82,4 +82,15 @@
   * Modernize test matrix</comment>
     <requestid>1325395</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>4e43c3a93b21b0a0c79ba40dd8b96f35</srcmd5>
+    <version>1.12</version>
+    <time>1789469376</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-django-6.1.patch:
+  * Support BigAutoField changes for Django 6.1.
+- Add patch remove-six.patch:
+  * Remove use of six.</comment>
+    <requestid>1378059</requestid>
+  </revision>
 </revisionlist>

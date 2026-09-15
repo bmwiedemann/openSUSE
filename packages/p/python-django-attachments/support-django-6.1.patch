@@ -1,0 +1,35 @@
+From 690f51b84061e376497821780fde6d7b04405043 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 15 Sep 2026 12:28:41 +1000
+Subject: [PATCH] Support Django 6.1 by setting DEFAULT_AUTO_FIELD
+
+Django 6.1 will automatically write migrations to BigAutoField, which
+makes the integrity test fail. To ease debugging, I have also switched
+it to using self.AssertIn().
+---
+ attachments/tests/test_integrity.py   | 2 +-
+ attachments/tests/testapp/settings.py | 4 ++++
+ 2 files changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/attachments/tests/test_integrity.py b/attachments/tests/test_integrity.py
+index 68ac80c..5a51cfa 100644
+--- a/attachments/tests/test_integrity.py
++++ b/attachments/tests/test_integrity.py
+@@ -16,4 +16,4 @@ def test_no_pending_migrations(self):
+         call_command(
+             "makemigrations", "--dry-run", interactive=False, stdout=output
+         )
+-        self.assertTrue("No changes detected" in output.getvalue())
++        self.assertIn("No changes detected", output.getvalue())
+diff --git a/attachments/tests/testapp/settings.py b/attachments/tests/testapp/settings.py
+index 503daac..7c58dd5 100644
+--- a/attachments/tests/testapp/settings.py
++++ b/attachments/tests/testapp/settings.py
+@@ -78,3 +78,7 @@
+         },
+     }
+ ]
++
++# Prevent Django 6.1 and above from auto-generating migrations to upgrade
++# the testapp's existing AutoField primary keys.
++DEFAULT_AUTO_FIELD = "django.db.models.AutoField"

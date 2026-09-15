@@ -21,21 +21,22 @@ Version:        1.12
 Release:        0
 Summary:        Attach files to any Django model
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/bartTC/django-attachments
 Source:         https://files.pythonhosted.org/packages/source/d/django_attachments/django_attachments-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#atodorov/django-attachments#117
+Patch0:         support-django-6.1.patch
+# PATCH-FIX-OPENSUSE Remove six
+Patch1:         remove-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-django >= 1.11
-Requires:       python-six
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module django >= 1.11}
 BuildRequires:  %{python_module pytest-django}
-BuildRequires:  %{python_module six}
 # /SECTION
 %python_subpackages
 
@@ -43,7 +44,7 @@ BuildRequires:  %{python_module six}
 django-attachments is generic Django application to attach Files (Attachments) to any model.
 
 %prep
-%setup -q -n django_attachments-%{version}
+%autosetup -p1 -n django_attachments-%{version}
 sed -i '/mock/d;/-cov/d;/flakes/d' setup.cfg
 sed -i 's/import mock/from unittest import mock/' attachments/tests/test_views.py
 
