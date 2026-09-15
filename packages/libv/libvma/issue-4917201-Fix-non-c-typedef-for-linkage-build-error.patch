@@ -1,0 +1,35 @@
+commit 9ae463b8db103a4f7a0b5ce014daaf899b04d1df
+Author: Tomer Cabouly <tcabouly@nvidia.com>
+Date:   Thu Mar 5 07:55:33 2026 +0000
+
+    issue: 4917201 Fix non-c-typedef-for-linkage build error
+    
+    Name anonymous structs socket_stats_t and socket_instance_block_t
+    to fix -Werror=non-c-typedef-for-linkage with newer compilers.
+    Structs with member functions require a tag name for C++ linkage.
+    Matches the existing pattern used by sh_mem_t in the same file.
+    
+    Signed-off-by: Thomas Cabouly <tcabouly@nvidia.com>
+
+diff --git src/vma/util/vma_stats.h src/vma/util/vma_stats.h
+index 3d7f6026eb72..5613843d58a4 100644
+--- src/vma/util/vma_stats.h
++++ src/vma/util/vma_stats.h
+@@ -139,7 +139,7 @@ typedef struct {
+ 	uint32_t    n_tx_dummy;
+ } socket_counters_t;
+ 
+-typedef struct {
++typedef struct socket_stats_t {
+ 	int         fd;
+ 	uint32_t                     inode;
+ 	uint32_t                     tcp_state;   // enum tcp_state
+@@ -184,7 +184,7 @@ typedef struct {
+ 	};
+ } socket_stats_t;
+ 
+-typedef struct {
++typedef struct socket_instance_block_t {
+ 	bool            b_enabled;
+ 	socket_stats_t  skt_stats;
+ 

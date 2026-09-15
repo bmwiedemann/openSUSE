@@ -30,6 +30,9 @@ Source0:        %{name}-%{version}%{git_ver}.tar.gz
 Source1:        vma.service
 Source100:      README.md
 Patch1:         harden_vma.service.patch
+Patch2:         issue-4917201-Fix-non-c-typedef-for-linkage-build-error.patch
+Patch3:         issue-4917201-Fix-more-unused-but-set-warnings-w-enable-opt-log-no.patch
+Patch4:         issue-4917201-Fix-unused-but-set-warnings-in-ring_simple-ring_tap.patch
 URL:            https://github.com/Mellanox/libvma
 BuildRequires:  autoconf
 BuildRequires:  automake

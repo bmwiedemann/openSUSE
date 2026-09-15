@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:42:27 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Backport upstream fixes for GCC16:
+  - issue-4917201-Fix-more-unused-but-set-warnings-w-enable-opt-log-no.patch
+  - issue-4917201-Fix-non-c-typedef-for-linkage-build-error.patch
+  - issue-4917201-Fix-unused-but-set-warnings-in-ring_simple-ring_tap.patch
+
+-------------------------------------------------------------------
 Thu Jan 15 08:59:31 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to 9.8.84

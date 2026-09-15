@@ -185,4 +185,15 @@ Since previous request:
     - RM #4607536 Improve VMA stability</comment>
     <requestid>1328277</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>34f1c5a38cf1eddb480a12f9279b761a</srcmd5>
+    <version>9.8.84</version>
+    <time>1789469317</time>
+    <user>anag_factory</user>
+    <comment>- Backport upstream fixes for GCC16
+  - issue-4917201-Fix-more-unused-but-set-warnings-w-enable-opt-log-no.patch
+  - issue-4917201-Fix-non-c-typedef-for-linkage-build-error.patch
+  - issue-4917201-Fix-unused-but-set-warnings-in-ring_simple-ring_tap.patch</comment>
+    <requestid>1377877</requestid>
+  </revision>
 </revisionlist>

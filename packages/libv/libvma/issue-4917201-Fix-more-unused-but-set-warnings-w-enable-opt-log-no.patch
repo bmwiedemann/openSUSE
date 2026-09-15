@@ -1,0 +1,59 @@
+commit e02b9cb22e45ee66e6394c9d98e47be7ed899385
+Author: Tomer Cabouly <tcabouly@nvidia.com>
+Date:   Mon May 11 12:09:58 2026 +0000
+
+    issue: 4917201 Fix more unused-but-set warnings w/ --enable-opt-log=no
+    
+    Build with --enable-opt-log=no compiles __log_funcall / __if_dbg /
+    si_udp_logfunc to ((void)0), and the BURST variant of
+    vma_ibv_modify_qp_rate_limit drops its mask argument, leaving variables
+    assigned but unread and breaking -Werror=unused-but-set-variable.
+    
+    - verbs_extra.cpp::priv_ibv_modify_qp_ratelimit: NOT_IN_USE(attr_mask)
+      after the modify call (mask is dropped by the macro under
+      DEFINED_IBV_QP_SUPPORT_BURST).
+    - io_mux_call.cpp::polling_loops: NOT_IN_USE(poll_counter) after the
+      trailing __if_dbg (only consumer when log levels are enabled).
+    - sockinfo_udp.cpp::rx_request_notification:
+      NOT_IN_USE(ring_armed_count) before si_udp_logfunc (only consumer when
+      log levels are enabled).
+    
+    Signed-off-by: Tomer Cabouly <tcabouly@nvidia.com>
+
+diff --git src/vma/ib/base/verbs_extra.cpp src/vma/ib/base/verbs_extra.cpp
+index e7c1a8538e42..444adb949eb6 100644
+--- src/vma/ib/base/verbs_extra.cpp
++++ src/vma/ib/base/verbs_extra.cpp
+@@ -317,6 +317,7 @@ int priv_ibv_modify_qp_ratelimit(struct ibv_qp *qp, struct vma_rate_limit_t &rat
+ 		return -2;
+ 	} ENDIF_VERBS_FAILURE;
+ 	BULLSEYE_EXCLUDE_BLOCK_END
++	NOT_IN_USE(attr_mask); /* vma_ibv_modify_qp_rate_limit may drop mask under DEFINED_IBV_QP_SUPPORT_BURST */
+ #ifdef DEFINED_IBV_QP_SUPPORT_BURST
+ 	vlog_printf(VLOG_DEBUG, "qp was set to rate limit %d, burst size %d, packet size %d\n",
+ 			rate_limit.rate, rate_limit.max_burst_sz, rate_limit.typical_pkt_sz);
+diff --git src/vma/iomux/io_mux_call.cpp src/vma/iomux/io_mux_call.cpp
+index 99ed4f7f2c62..39bae13d1866 100644
+--- src/vma/iomux/io_mux_call.cpp
++++ src/vma/iomux/io_mux_call.cpp
+@@ -368,6 +368,7 @@ void io_mux_call::polling_loops()
+ 	}
+ 
+ 	__if_dbg("2nd scenario exit (loop %d, elapsed %d)", poll_counter, m_elapsed.tv_usec);
++	NOT_IN_USE(poll_counter); /* to suppress warning in case VMA_MAX_DEFINED_LOG_LEVEL */
+ }
+ 
+ void io_mux_call::blocking_loops()
+diff --git src/vma/sock/sockinfo_udp.cpp src/vma/sock/sockinfo_udp.cpp
+index 41d315c28ebb..8438b5f79200 100644
+--- src/vma/sock/sockinfo_udp.cpp
++++ src/vma/sock/sockinfo_udp.cpp
+@@ -1498,6 +1498,8 @@ int sockinfo_udp::rx_request_notification(uint64_t poll_sn)
+ 	}
+ 	m_rx_ring_map_lock.unlock();
+ 
++    // to suppress warning in case si_udp_logfunc is compiled out
++	NOT_IN_USE(ring_armed_count);
+ 	si_udp_logfunc("armed or busy %d ring(s) and %d ring are pending processing", ring_armed_count, ring_ready_count);
+ 	return ring_ready_count;
+ }
