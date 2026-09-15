@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:17:13 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Add unversioned "virt" machine in riscv64 ovmf descriptor (bsc#1280108)
+
+-------------------------------------------------------------------
 Fri Sep  4 09:01:36 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Update to edk2-stable202608
