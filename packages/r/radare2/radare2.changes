@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.2.2:
+  * Analysis: new JNI plugin with typed interface tables, arm64
+    Swift float calling conventions, DWARF prototype linking,
+    jump-table and switch-case fixes
+  * Core: fix RAnalOp leaks in disasm/diff/debug loops, aoj memory
+    use, partial-read handling, fp variable recovery
+  * Bundle sdb 2.5.2 (upstream pin): rename shlib to libsdb2_5_2
+- Add test-cc-default.patch: make the new variadic-marker unit
+  test hermetic by setting the amd64 default cc explicitly instead
+  of relying on the installed cc database
+
+-------------------------------------------------------------------
 Fri Aug  7 20:44:11 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 6.2.0:

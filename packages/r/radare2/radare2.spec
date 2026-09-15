@@ -16,21 +16,16 @@
 #
 
 
-%global sdb_rev    2.5.0
-%global sdb_soname 2_5_0
-
+%global sdb_rev    2.5.2
+%global sdb_soname 2_5_2
 %global zydis_rev  4.1.0
-
 %global qjs_rev 9d15fb60b67c45fd0de413bb49e48f8dacebac16
-
 %global tests_rev d6a4529fd6c8439a309abbcf00bb7a9efc9e8271
-
 Name:           radare2
-Version:        6.2.0
+Version:        6.2.2
 Release:        0
 Summary:        Reverse Engineering Framework
 License:        GPL-3.0-only AND LGPL-3.0-only
-Group:          Development/Tools/Debuggers
 URL:            https://www.radare.org
 Source0:        https://github.com/radareorg/radare2/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/radareorg/sdb/archive/%{sdb_rev}/sdb-%{sdb_rev}.tar.gz
@@ -38,6 +33,7 @@ Source2:        https://github.com/quickjs-ng/quickjs/archive/%{qjs_rev}/quickjs
 Source3:        https://github.com/radareorg/radare2-testbins/archive/%{tests_rev}/radare2-testbins-%{tests_rev}.tar.gz
 Source4:        https://github.com/zyantific/zydis/releases/download/v%{zydis_rev}/zydis-amalgamated.tar.gz#/zydis-%{zydis_rev}.tar.gz
 Patch0:         pkgconfig.patch
+Patch1:         test-cc-default.patch
 BuildRequires:  chrpath
 BuildRequires:  dos2unix
 BuildRequires:  fdupes
@@ -45,11 +41,6 @@ BuildRequires:  file-devel
 BuildRequires:  git-core
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-%if 0%{?suse_version} == 1500
-BuildRequires:  python311
-%else
-BuildRequires:  python3
-%endif
 BuildRequires:  pkgconfig(capstone)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(libuv)
@@ -57,6 +48,11 @@ BuildRequires:  pkgconfig(libxxhash)
 BuildRequires:  pkgconfig(libzip)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
+%if 0%{?suse_version} == 1500
+BuildRequires:  python311
+%else
+BuildRequires:  python3
+%endif
 
 %description
 Opensource tools to disassemble, debug, analyze and manipulate binary files.
@@ -64,7 +60,6 @@ Opensource tools to disassemble, debug, analyze and manipulate binary files.
 %package devel
 Summary:        Devel files for radare2
 License:        LGPL-3.0-only
-Group:          Development/Tools/Debuggers
 Requires:       %{name} = %{version}
 Requires:       file-devel
 Requires:       pkgconfig(capstone)
@@ -90,6 +85,8 @@ zsh shell completions for %{name}.
 Summary:        Simple string key/value database
 License:        GPL-3.0-only AND LGPL-3.0-only
 Provides:       libsdb-%{sdb_soname}
+Obsoletes:      libsdb2_5_0 < %{version}-%{release}
+Provides:       libsdb2_5_0 = %{version}-%{release}
 
 %description -n libsdb%{sdb_soname}
 sdb is a simple string key/value database based on djb's cdb disk
@@ -118,7 +115,7 @@ tar   -C test/bins --strip-components=1 -x -f %{SOURCE3}
 %build
 %if 0%{?suse_version} == 1500
 mkdir my-bin
-ln -s /usr/bin/python3.11 my-bin/python3
+ln -s %{_bindir}/python3.11 my-bin/python3
 export PATH=$PWD/my-bin:$PATH
 %endif
 %{__meson} subprojects packagefiles --apply

@@ -174,4 +174,12 @@
 - Drop CVE-2026-8695.patch: upstreamed in 6.1.6</comment>
     <requestid>1370348</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>fccbcf59c66221f3419dd9f45d486d89</srcmd5>
+    <version>6.2.2</version>
+    <time>1789469342</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377988</requestid>
+  </revision>
 </revisionlist>

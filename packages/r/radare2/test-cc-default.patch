@@ -1,0 +1,15 @@
+Index: radare2-6.2.2/test/unit/test_anal_function.c
+===================================================================
+--- radare2-6.2.2.orig/test/unit/test_anal_function.c
++++ radare2-6.2.2/test/unit/test_anal_function.c
+@@ -270,6 +270,10 @@ bool test_r_core_anal_fcn_variadic_marke
+ 	r_config_set (core->config, "asm.arch", "x86");
+ 	r_config_set_i (core->config, "asm.bits", 64);
+ 	r_config_set_b (core->config, "anal.esil", false);
++	/* variadic-marker detection keys off the amd64 calling convention,
++	   which normally comes from the installed cc database; set it
++	   explicitly so the test also passes on uninstalled build trees */
++	r_anal_set_cc_default (core->anal, "amd64");
+ 
+ 	mu_assert_true (r_core_anal_fcn (core, addr, UT64_MAX,
+ 		R_ANAL_REF_TYPE_NULL, 1), "analyze clobbered marker function");
