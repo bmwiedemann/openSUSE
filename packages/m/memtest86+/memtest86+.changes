@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu May 28 07:40:37 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Add grub2 subpackage for GRUB2 menu entries
+- Add bls subpackage for systemd-boot and GRUB2-EFI menu entries
+
+-------------------------------------------------------------------
 Sun May 17 17:50:27 UTC 2026 - Dennis Duda <seri@seri.tools>
 
 - Update to 8.10

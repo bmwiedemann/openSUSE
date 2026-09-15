@@ -26,6 +26,7 @@ Group:          System/Boot
 URL:            https://www.memtest.org
 Source:         https://github.com/memtest86plus/memtest86plus/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        20_memtest86
+Source2:        memtest86plus.conf
 #!BuildIgnore:  gcc-PIE
 Obsoletes:      memtest86 <= 3.2
 Provides:       memtest86 > 3.2
@@ -35,12 +36,32 @@ BuildRequires:  glibc-devel-32bit
 %endif
 BuildRequires:  pesign-obs-integration
 %define _binary_payload w1.gzdio
-BuildRequires:  update-bootloader-rpm-macros
-%{?update_bootloader_requires}
+Requires:       %{name}-bls = %{version}-%{release}
+Requires:       (%{name}-grub2 if grub2-common)
 
 %description
 Memtest86 is an image that can be booted instead of a real OS. Once booted,
 it can be used to test the computer's memory.
+
+%package grub2
+Summary:        Menu entry for GRUB2 bootloader
+Requires:       %{name} = %{version}-%{release}
+BuildRequires:  update-bootloader-rpm-macros
+%{?update_bootloader_requires}
+BuildArch:      noarch
+
+%description grub2
+Generates the menu entry for GRUB2 bootloader
+
+%package bls
+Summary:        Menu entry for BLS bootloader
+Requires:       %{name} = %{version}-%{release}
+Requires(postun): udev
+Requires(posttrans): udev
+BuildArch:      noarch
+
+%description bls
+Generates the menu entry for BLS bootloaders (GRUB2-EFI, systemd-boot)
 
 %prep
 %setup -q -n memtest86plus-%{version}
@@ -55,22 +76,32 @@ cd build/i586
 make
 
 %install
-# Script to generate memtest86+ menu entry
-mkdir -p %{buildroot}/%{_sysconfdir}/grub.d
-install -m 755 %{SOURCE1} %{buildroot}/%{_sysconfdir}/grub.d/
+# Script to generate memtest86+ menu entry (GRUB2)
+mkdir -p %{buildroot}%{_sysconfdir}/grub.d
+install -m 755 %{SOURCE1} %{buildroot}%{_sysconfdir}/grub.d/
+
+# BLS menu entry
+install -Dpm 0644 %{SOURCE2} %{buildroot}%{_prefix}/lib/memtest86/memtest86plus.conf
+sed -i 's/\$VERSION\$/%{version}-%{release}/' %{buildroot}%{_prefix}/lib/memtest86/memtest86plus.conf
+
+# Create file for sdbootutil
+mkdir -p %{buildroot}%{_prefix}/lib/sdbootutil/entries.d
+echo "# Menu entry and EFI binary for memtest86+" >> %{buildroot}%{_prefix}/lib/sdbootutil/entries.d/memtest86+.conf
+echo "EFI=%{_prefix}/lib/memtest86/mt86plus.efi" >> %{buildroot}%{_prefix}/lib/sdbootutil/entries.d/memtest86+.conf
+echo "ENTRY=%{_prefix}/lib/memtest86/memtest86plus.conf" >> %{buildroot}%{_prefix}/lib/sdbootutil/entries.d/memtest86+.conf
+
 %ifarch x86_64
 cd build/x86_64
 %else
 cd build/i586
 %endif
-install -Dpm 0644 mt86plus \
-  %{buildroot}%{_prefix}/lib/memtest86/mt86plus.efi
+install -Dpm 0644 mt86plus %{buildroot}%{_prefix}/lib/memtest86/mt86plus.efi
 export BRP_PESIGN_FILES="*.efi"
 
-%post
+%post grub2
 %update_bootloader_check_type_refresh_post grub2 grub2-efi
 
-%posttrans
+%posttrans grub2
 %update_bootloader_posttrans
 
 %files
@@ -79,7 +110,16 @@ export BRP_PESIGN_FILES="*.efi"
 %doc doc
 %dir %{_prefix}/lib/memtest86
 %{_prefix}/lib/memtest86/mt86plus.efi
+
+%files grub2
 %dir %{_sysconfdir}/grub.d
 %config(noreplace) %{_sysconfdir}/grub.d/20_memtest86
+
+%files bls
+%dir %{_prefix}/lib/memtest86
+%config(noreplace) %{_prefix}/lib/memtest86/memtest86plus.conf
+%dir %{_prefix}/lib/sdbootutil
+%dir %{_prefix}/lib/sdbootutil/entries.d
+%config(noreplace) %{_prefix}/lib/sdbootutil/entries.d/memtest86+.conf
 
 %changelog
