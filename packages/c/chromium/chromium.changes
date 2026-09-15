@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 14 11:06:29 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- adapt llvm version build requirements to not pin patch level 
+
+-------------------------------------------------------------------
+Sun Sep 13 23:20:07 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- update INSTALL.sh to changes in desktop file
+  (replace desktop_exec and desktop_icon) 
+
+-------------------------------------------------------------------
+Sun Sep 13 13:39:33 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- adapt llvm version for factory from 23.1.0 to 23.1.1
+
+-------------------------------------------------------------------
+Wed Sep  9 08:48:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Adjust llvm23 conditional to not include slfo-1.3
+
+-------------------------------------------------------------------
 Wed Sep  9 04:29:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 153 promoted to stable channel

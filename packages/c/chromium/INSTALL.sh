@@ -180,6 +180,8 @@ sed \
     -e "s#@@PACKAGE#${PACKAGE}#g" \
     -e "s#@@uri_scheme#${URI_SCHEME}#g" \
     -e "s#@@extra_desktop_entries#${EXTRA_DESKTOP_ENTRIES}#g" \
+    -e "s#@@desktop_exec#/usr/bin/${PACKAGE}#g" \
+    -e "s#@@desktop_icon#${PACKAGE}#g" \
     "chrome/installer/linux/common/desktop.template" > "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 chmod 644 "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 

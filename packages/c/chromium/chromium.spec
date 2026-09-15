@@ -61,16 +61,18 @@
 %define ffmpeg_version 59
 %bcond_with system_zstd
 # LLVM version
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} >= 1699
 # LLVM version
 %define llvm_version 23
-%define llvm_version_long 23.1.0
+%define llvm_version_long 23.1
+%define llvm_version_long_plus 23.2
 # RUST version
 %define rust_version 1.94
 %else
 # LLVM version
 %define llvm_version 19
-%define llvm_version_long 19.1.7
+%define llvm_version_long 19.1
+%define llvm_version_long_plus 19.2
 # RUST version
 %define rust_version 1.92
 %endif
@@ -531,10 +533,10 @@ BuildRequires:  clang%{llvm_version}
 BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
 %else
 BuildRequires:  clang%{llvm_version}-devel
-BuildRequires:  libc++.so = %{llvm_version_long}
-BuildRequires:  libc++1 = %{llvm_version_long}
-BuildRequires:  libc++abi.so = %{llvm_version_long}
-BuildRequires:  libc++abi1 = %{llvm_version_long}
+BuildRequires:  (libc++.so >= %{llvm_version_long} with libc++.so < %{llvm_version_long_plus})
+BuildRequires:  (libc++1 >= %{llvm_version_long} with libc++1 < %{llvm_version_long_plus})
+BuildRequires:  (libc++abi.so >= %{llvm_version_long} with libc++abi.so < %{llvm_version_long_plus})
+BuildRequires:  (libc++abi1 >= %{llvm_version_long} with libc++abi1 < %{llvm_version_long_plus})
 %endif
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
