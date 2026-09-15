@@ -17,20 +17,12 @@
 
 
 Name:           xmlstarlet
-Version:        1.6.1
+Version:        1.7.0
 Release:        0
 Summary:        Command Line Tool to Process XML Documents
 License:        MIT
-URL:            https://sourceforge.net/projects/xmlstar/
-Source:         http://prdownloads.sourceforge.net/xmlstar/xmlstarlet-%{version}.tar.gz
-Patch2:         %{name}-xml_depyx.c.diff
-Patch3:         %{name}-libxml2-2.14.patch
-# PATCH-FIX-OPENSUSE xmlstarlet-fix-fo-exit-code.patch boo#1231165 -- "xml fo" returned the byte count from xmlOutputBufferClose() as exit status instead of 0
-Patch4:         %{name}-fix-fo-exit-code.patch
-# PATCH-FIX-UPSTREAM xmlstarlet-fix-unesc-dquot.patch (via Debian #837122) -- unesc mishandles &quot;/&apos; due to an off-by-one on the entity name length
-Patch5:         %{name}-fix-unesc-dquot.patch
-# PATCH-FIX-UPSTREAM xmlstarlet-fix-format-security.patch (via Debian) -- pass string-literal format arguments to satisfy -Werror=format-security
-Patch6:         %{name}-fix-format-security.patch
+URL:            https://github.com/xmlstarlet/xmlstarlet
+Source:         https://github.com/xmlstarlet/xmlstarlet/releases/download/%{version}/xmlstarlet-%{version}.tar.gz
 BuildRequires:  pkgconfig
 BuildRequires:  sgml-skel
 BuildRequires:  pkgconfig(libexslt)
@@ -54,7 +46,7 @@ export CFLAGS="%{optflags} -W -Wall"
 %make_build
 
 %check
-%make_build tests
+%make_build check
 
 %install
 %make_install

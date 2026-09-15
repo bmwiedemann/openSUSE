@@ -234,4 +234,12 @@
     <comment>Fix incorrect exit code from 'xml fo' (returned bytes-written from xmlOutputBufferClose() instead of 0, boo#1231165); backport two fixes collected by Debian (unesc &amp;quot;/&amp;apos; off-by-one #837122, format-security); drop stale rpmlintrc; modernize BuildRequires (forwarded request 1360876 from pluskalm)</comment>
     <requestid>1360877</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2ce7c7da968105179b621c77125db26e</srcmd5>
+    <version>1.7.0</version>
+    <time>1789484950</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377725</requestid>
+  </revision>
 </revisionlist>

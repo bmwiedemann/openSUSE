@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:01:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.0 (first release since 1.6.1 in 2014,
+  from the new upstream home on GitHub):
+  * libxml2/libxslt modernization for 2.9-2.15 compatibility
+    and 3.0 readiness, pkg-config detection with *-config
+    fallback
+  * Bug fixes in ed, sel, stdin "-" handling, depyx infinite
+    loop, unesc off-by-one, and memory-safety fixes from the
+    new fuzzing harness
+  * fo --omit-decl exit status locked (boo#1231165)
+  * Broad CI matrix, modernized Windows cross-build
+- Switch Source and URL to the GitHub project; 1.7.0 is not
+  published on SourceForge
+- Fix %check: run "make check" (91 PASS, 2 XFAIL, 0 FAIL);
+  the old "make tests" target no longer exists upstream
+- Drop merged/obsolete patches:
+  * xmlstarlet-fix-fo-exit-code.patch (upstream PR #21)
+  * xmlstarlet-fix-unesc-dquot.patch (upstream a722816)
+  * xmlstarlet-libxml2-2.14.patch (upstream defines
+    ATTRIBUTE_UNUSED itself)
+  * xmlstarlet-xml_depyx.c.diff (depyx rewritten upstream)
+  * xmlstarlet-fix-format-security.patch (stale 2014 backport;
+    1.7.0 builds clean with -Werror=format-security, remaining
+    spots fixed differently upstream)
+
+-------------------------------------------------------------------
 Sun Jun 21 18:20:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add xmlstarlet-fix-fo-exit-code.patch: "xml fo" (format) returned
