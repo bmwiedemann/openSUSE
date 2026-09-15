@@ -5882,7 +5882,7 @@ packagesets:
    - libxcb1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libxcvt0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxkbcommon-x11-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libxkbcommon0 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - libxkbcommon0 # reason: opensuse_microos:patterns-base-hardware
    - libxkbfile1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxkbregistry0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libxml++-3_0-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -6304,7 +6304,7 @@ packagesets:
    - xf86-input-libinput # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xfsprogs # reason: opensuse_microos:patterns-microos-onlyDVD
    - xkbcomp # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - xkeyboard-config # reason: opensuse_microos:patterns-microos-onlyDVD
+   - xkeyboard-config # reason: opensuse_microos:patterns-base-hardware
    - xmessage # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xmlcharent # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - xorg-x11-fonts-core # reason: opensuse_microos_desktop:patterns-microos-desktop-kde

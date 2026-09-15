@@ -1408,6 +1408,8 @@ unsorted:
   - bbe 
   - bbswitch 
   - bbswitch-kmp-default 
+  - bcachefs-kmp-default 
+  - bcachefs-tools 
   - bcal 
   - bcc-devel 
   - bcc-docs 
@@ -2784,10 +2786,7 @@ unsorted:
   - cppzmq-devel 
   - cpr-devel 
   - cpu-x 
-  - cpu-x-bash-completion 
-  - cpu-x-fish-completion 
   - cpu-x-lang 
-  - cpu-x-zsh-completion 
   - cpufetch 
   - cpuid 
   - cpuinfo 
@@ -13029,7 +13028,7 @@ unsorted:
   - libdSFMT2_2 
   - libdaemon-devel 
   - libdar-devel 
-  - libdar64-6000 
+  - libdar64-7000 
   - libdat2-2 
   - libdatachannel-devel 
   - libdatachannel0_24 
@@ -15023,8 +15022,8 @@ unsorted:
   - libmpv2 
   - libmrss-devel 
   - libmrss0 
-  - libmruby3_4_0 
-  - libmruby_core3_4_0 
+  - libmruby4_0_0 
+  - libmruby_core4_0_0 
   - libmseed-devel 
   - libmseed3 
   - libmsgpack-c2 
@@ -35237,6 +35236,7 @@ unsorted:
   - sundanese-unicode-fonts 
   - sundials-devel 
   - sundials-doc 
+  - sundials-examples-doc 
   - sundials-mvapich2-devel 
   - sundials-openmpi4-devel 
   - sundials-openmpi5-devel 
