@@ -19,20 +19,23 @@
 %define sover 3
 %bcond_with fenced_code
 Name:           discount
-Version:        3.0.1.2
+Version:        3.0.2.0
 Release:        0
 Summary:        Markdown text to HTML converter
 License:        BSD-3-Clause
-Group:          Productivity/Text/Convertors
 URL:            https://www.pell.portland.or.us/~orc/Code/discount/
 Source:         https://github.com/Orc/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         discount-disable_ldconfig.patch
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
-Provides:       markdown
+# Stays on update-alternatives: MultiMarkdown-6 registers the same
+# generic /usr/bin/markdown name that way, so a one-sided move to
+# libalternatives would fail installcheck (real-vs-ghost mismatch).
+# Convert both sides together once MultiMarkdown-6 migrates.
 BuildRequires:  update-alternatives
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+Provides:       markdown
 
 %description
 Discount is an implementation of John Gruber’s Markdown text to HTML language
@@ -41,7 +44,6 @@ of Markdown.
 
 %package -n libmarkdown%{sover}
 Summary:        Markdown text to HTML converter library
-Group:          Development/Libraries/C and C++
 
 %description -n libmarkdown%{sover}
 Discount is an implementation of John Gruber’s Markdown text to HTML language
@@ -50,7 +52,6 @@ of Markdown.
 
 %package -n libmarkdown-devel
 Summary:        Markdown text to HTML converter library
-Group:          Development/Libraries/C and C++
 Requires:       libmarkdown%{sover} = %{version}
 
 %description -n libmarkdown-devel

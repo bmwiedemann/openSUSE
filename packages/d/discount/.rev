@@ -160,4 +160,31 @@
     <comment></comment>
     <requestid>1348391</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>43ce632f5484bd5ffea178601dedab65</srcmd5>
+    <version>3.0.2.0</version>
+    <time>1789484951</time>
+    <user>anag_factory</user>
+    <comment>Update discount to 3.0.2.0.
+
+Upstream 3.0.2.0 (2026-08-29, newest by date; also shipped by
+Arch, Alpine, FreeBSD) caps parser nesting depth (MAX_RECURSION,
+default 200, --with-recursion tunable), fixing CVE-2026-4833
+(uncontrolled recursion in compile() on deeply nested input).
+Fix verified present in the tarball (markdown.c, generate.c).
+3.0.1.3 delta also covered (blockquote section_break, fenced
+code fixes). SONAME unchanged (libmarkdown.so.3); only reverse
+build-dep is qemu. ldconfig-suppression patch still applies.
+
+Validation: native aarch64 build GREEN (osc build, Factory:ARM),
+%check 456 ok / 0 fail, rpmlint 0E/0W/0 badness, source_validator
+rc 0, changes-lint/guard clean, soname-check clean.
+
+Kept update-alternatives (no libalternatives move): MultiMarkdown-6
+registers the same generic /usr/bin/markdown name via
+update-alternatives, so a one-sided migration would fail
+installcheck; both sides must move together.
+</comment>
+    <requestid>1377732</requestid>
+  </revision>
 </revisionlist>

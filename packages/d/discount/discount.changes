@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:21:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.2.0:
+  * CVE-2026-4833: uncontrolled recursion in compile() on
+    deeply nested input, leading to stack exhaustion and
+    crash; the parser now caps nesting depth (default 200,
+    tunable via --with-recursion).
+  * Changes from version 3.0.1.3: keep contents of adjacent
+    blockquote chunks together, fenced code handling fixes.
+- Drop Group: tags (deprecated).
+
+-------------------------------------------------------------------
 Wed Apr 15 11:34:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly BuildRequire update-alternatives and mark it as being
