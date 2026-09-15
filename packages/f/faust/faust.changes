@@ -1,4 +1,146 @@
 -------------------------------------------------------------------
+Sun Sep 13 22:49:08 UTC 2026 - Konstantin Voinov <kv@kott.no-ip.biz>
+
+- update to 2.88.0
+- update .spec
+- switch to tar_scm source service
+  - New
+
+  * cpp vector backend: a read-write table keeps its write and its reads in one loop.
+  * cpp vector backend: a shared delayed read at a non-simple delay gets a loop of its own.
+  * cpp vector backend: the loops of a level are emitted by creation rank, not by address.
+  * cpp vector backend: a recursive read reserves its delay line and defers the write.
+  * Parallelize ARM64 Docker build.
+  * Produce a properly code signed .mxo in faust2max6, and stop leaving temporaries.
+  * tests: heatmap.py names an elected set that is a leg by the leg.
+  * tests: the generated bodies go outside the source tree by default.
+  * tests: remeasure.sh times the elected option sets with the bench instrument.
+  * tests: summary.py reads the legs by header, not by position.
+  * tests: heatmap.py runs with the python that has matplotlib.
+  * tests: the bench measures named legs, heat-maps of the efficiency per grid.
+  * tests: the bench summary reports the efficiency per unit of work.
+  * tests: a bench round lasts at least 100 ms.
+  * tests: a bench for the synthetic tests, cpp against ocpp per family.
+  * tests: synthetic tests, one file of named entry points and a checker.
+  * emitter: Int32 add, sub and mul wrap through the faust_wrap_* helpers.
+  * cpp compiler: members stored in topological order, past reads by interval.
+  * cpp compiler: a further access to a pending line only uses its name.
+  * emitter: the soundfile pointer is declared initialized.
+  * emitter: non-finite real constants take their macros.
+  * emitter: a read at delay 0 is the signal itself.
+  * emitter: a negation read delayed takes the cache route.
+  * scheduling: the frequency sorts of the shape classes get a total order.
+  * -sig --signature : the program's static signature becomes an option.
+  * scheduling: the shape colour is the shape tree's serial, not its address.
+  * the branch's environment variables are gone : 67 FAUST_* names, three families.
+  * loop split: the harvested display tail is emitted on the split path.
+  * loop split: keep the displays -- no harvest under -ls, widgets in the tail cost.
+  * help: every shipped scheduling option gets its line.
+  * genetic: expose the search hyper-parameters and a gene restriction.
+  * -rp --ring-preload: the ring-preload regime gets its flag.
+  * fine-grain tail cost: do not walk descriptor branches as signals.
+  * treeorder sweep completed on master-dev-kept consumers (merge wave A-bis).
+  * the auto-pilot and the harness (merge wave J).
+  * the scheduled emitter, whole (merge wave F2+G+H+I).
+  * the guarded regimes, two gathering completions, and a B+C erratum (merge wave F1).
+  * the gathering: reveal, kernel normal form, and their ocpp emission (merge wave E).
+  * the signals library and the fixpoint typing, decoupled together (merge wave B+C).
+  * the tlib socle, and the determinism gate armed (merge wave A).
+  * impulse-tests: two witnesses shaped like their bugs (merge wave T).
+  * Add oteyPiano examples.
+  * Updated with matched noise and improvements.
+  * Backends and constant folding: explicit wrapping int semantics.
+  * Fix WASM build with current Emscripten.
+  * Make wasmtime embeddable and cut host-call cost on math imports.
+  * Declare a Faust instrument as an instrument, not an audio effect.
+  * Rebuild the dynamic CLAP path on a working threading model.
+  * Rework faust2clap into a working faust2xx tool.
+  * Document FTZ exponent masks.
+  * Add NNX backend and migrate JAX backend to Linen (-lang nnx / -lang linen).
+  * tlib: sync with standalone library (explicit init, local deBruijn2Sym memo).
+  * tlib: faster version of the Tree library (array-based make, non-virtual Garbageable).
+  * Introduction of a binary memoization primitive : property2.
+  * tlib+propagate: lazy per-node properties, fast-path slot, tuple memoization.
+  * make CTree/Symbol hash tables grow instead of fixed-size.
+  * faust2daisy improvements & bugs fixed. Support for Patch, PatchSM, hardward PWM,
+    soundfile, and serial communication.
+
+  - Deprecated
+
+  * Remove -fwrapv C++ compiler option since the C/C++ generated code now correctly
+    wraps int32 type.
+  * Replace the remaining deprecated -Ofast in the tools and impulse tests.
+  * Replace the deprecated -Ofast by -O3 -ffast-math in faustoptflags.
+  * Remove the obsolete Max5 tools: faust2msp and faust2w32msp.
+  * Remove the -diff automatic-differentiation feature.
+
+  - Fixed bugs
+
+  * Destroy the Max/MSP OSCUI when the DSP is reallocated.
+  * Rebuild the Max/MSP multichannel adapter when the DSP is replaced.
+  * Serialize GUI registry access in the Max/MSP architecture.
+  * getErrorAfterException : say nothing when there is no message to say.
+  * fmod gets its own algebra operation : it is real, % on integers is not.
+  * Hash in a 64-bit word, not in a size_t : unbreak the wasm build.
+  * Avoid MSVC option parser nesting limit.
+  * evaluator: the compile thread gets a 256 MB stack.
+  * ocpp: refuse -sch cleanly instead of asserting.
+  * Fix faustbench: main() silently stripped out on recent macOS SDKs.
+  * Fix faust2clap: support single-dash -help like its sibling tools.
+  * Fix build against LLVM 23 (devel snapshot) API changes.
+  * Fade the second half of a stolen voice in, not only the first half out.
+  * Synchronize faustgen OSC UI lifecycle.
+  * Fix faustgen polyphony teardown order.
+  * Include the memory model in the wasm DSP factory cache key.
+  * Timothy Sikes polyphonic voice stealing order fix.
+  * Guard Windows code with _WIN32 rather than WIN32 in the compiler.
+  * Do not return an unwritten buffer from the Windows realpath() shim.
+  * Report ignored -I / -A directories instead of dropping them silently.
+  * Fix Faust library path resolution on Windows (#1283).
+  * poly-dsp.h: Fix division by zero when computing one frame and fading out.
+  * Correct math hyperbolic functions generation in AssemblyScript backend.
+  * Fix heap underrun in pathToContent when the file cannot be opened.
+  * Fix GCC and MSVC builds of the wasmtime runtime.
+  * Review pass over architecture/clap: leaks, bounds, state and size.
+  * implement bitcastinst for rust to make -ftz 2 work in rust.
+  * Set the JIT target before initJIT(), not after.
+  * Use isPythonBackend() for the negated backend checks too.
+  * Restore Windows Garbageable cleanup behavior.
+  * Add Windows faust path diagnostics.
+  * Fail Windows release on faustgen errors.
+  * Fix boxCos() and boxFmod() returning the abs primitive (#1264).
+
+  - Libraries
+
+  * rangeOf: affine rules for exact-rational ranges — add/sub a constant,
+    divide by a constant.
+  * motion.lib: two new pairs of envelopes, motionEnvelopeRange/totalAccelRange
+    (dead-zone given by its two endpoints instead of a threshold plus gain) and
+    motionEnvelopeUD/totalAccelUD (peak follower cascaded with a symmetric smoother, suited to slow gestures).
+  * Add a windowed-tap transposer and a live granulator to misceffects.lib.
+  * Add parametric and HRIR binaural rendering to spats.lib.
+  * Add LMS/NLMS adaptive filters and filter-bank spectral descriptors.
+  * Add EBU R128 loudness metering and true peak to analyzers.lib.
+  * Add mid/side encoding and dithered requantization to misceffects.lib.
+  * Define fi.hilbert, the approximate Hilbert transform.
+  * Add a window function family to analyzers.lib.
+  * Add ba.processArray to basics.lib.
+  * Add interpolators and mel helpers.
+
+  - Deprecated:
+
+  * Mark the remaining music.lib leftovers (de.delay1s..fdelay43s,
+    ba.millisec/time1s..time43s, ef.echo1s..echo43s) as deprecated.
+
+  - Fixed bugs:
+
+  * motion.lib: mo.scale no longer clips the caller's dead-zone above 0.99,
+    which silently rewrote a narrow dead-zone into one ten times too wide with no diagnostic.
+  * Repair boundFactor, which disabled the tube table interpolation in tubes.lib.
+  * Fix wa.highshelf2, which carried the lowshelf coefficient formulas verbatim and boosted the wrong band.
+  * Repair mm.atodb in maxmsp.lib.
+ 
+-------------------------------------------------------------------
 Sun Jul 19 13:28:27 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - update to 2.85.9

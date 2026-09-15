@@ -18,13 +18,13 @@
 %define _lto_cflags %{nil}
 
 Name:           faust
-Version:        2.85.9
+Version:        2.88.0
 Release:        0
 Summary:        Functional Programming Language for Real Time Signal Processing
 License:        GPL-2.0-only
 Group:          Development/Languages/Other
 URL:            https://faust.grame.fr/
-Source:         https://github.com/grame-cncm/faust/releases/download/%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Patch0:         01-fix-no-return.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -138,22 +138,30 @@ cd build
 
 for f in \
   %{buildroot}%{_bindir}/faust2atomsnippets \
-  %{buildroot}%{_bindir}/faust2clap.py \
+  %{buildroot}%{_bindir}/faust2clap \
   %{buildroot}%{_bindir}/faust2md \
   %{buildroot}%{_bindir}/faust2sc.py \
   %{buildroot}%{_bindir}/faust2sublimecompletions \
   %{buildroot}%{_bindir}/faust2tidalcycles \
+  %{buildroot}%{_bindir}/faust2wwise.py \
   %{buildroot}%{_datadir}/faust/wwise/orchestrator.py ; do
   sed -i '1s|^#! */usr/bin/env python3|#!/usr/bin/python3|' "$f"
 done
+
+for f in \
+  %{buildroot}%{_bindir}/faust2cpalrust \
+  %{buildroot}%{_bindir}/faust2jackrust \
+  %{buildroot}%{_bindir}/faust2portaudiorust \
+  %{buildroot}%{_datadir}/faust/smartKeyboard/android/gradlew ; do
+  sed -i '1s|^#! */usr/bin/env bash|#!/usr/bin/bash|' "$f"
+done
+
 sed -i '1s|^#! */usr/bin/env ruby|#!/usr/bin/ruby|' %{buildroot}%{_bindir}/faust2sc
-sed -i '1s|^#! */usr/bin/env bash|#!/usr/bin/bash|' %{buildroot}%{_datadir}/faust/smartKeyboard/android/gradlew
 
 # Drop empty placeholders that trigger rpmlint
 find %{buildroot}%{_datadir}/faust/esp32/drivers/*/component.mk -type f -size 0 -print -delete
 
 # Ensure installed scripts are executable
-chmod 0755 %{buildroot}%{_datadir}/faust/autodiff/autodiff.sh
 chmod 0755 %{buildroot}%{_datadir}/faust/smartKeyboard/android/gradlew
 chmod 0755 %{buildroot}%{_datadir}/faust/wwise/orchestrator.py
 
@@ -179,7 +187,7 @@ DEVEL_DATA=%{_builddir}/%{name}-%{version}.lists/devel_datadir.files
 # Collect Android/iOS files from datadir
 if [ -d "%{buildroot}%{_datadir}/faust" ]; then
   find -L "%{buildroot}%{_datadir}/faust" -type f -ipath '*android*' -print >> "$ANDROID_LIST"
-  find -L "%{buildroot}%{_datadir}/faust" -type f -ipath '*ios*'     -print >> "$IOS_LIST"
+  find -L "%{buildroot}%{_datadir}/faust" -type f -ipath '*ios*' -not -path '*android*' -print >> "$IOS_LIST"
 
   find -L "%{buildroot}%{_datadir}/faust" -type f -print \
     | grep -vFf "$ANDROID_LIST" \

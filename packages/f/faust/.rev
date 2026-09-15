@@ -27,4 +27,13 @@ I updated it to the latest version which fixes the build issues :)</comment>
     <comment></comment>
     <requestid>1366603</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ba5ade976986c893f8356e7f84c7b8e0</srcmd5>
+    <version>2.88.0</version>
+    <time>1789469372</time>
+    <user>anag_factory</user>
+    <comment>add missing _service
+change source URL to local file</comment>
+    <requestid>1378049</requestid>
+  </revision>
 </revisionlist>
