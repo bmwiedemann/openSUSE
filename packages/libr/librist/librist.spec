@@ -1,7 +1,7 @@
 #
 # spec file for package librist
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,21 +20,25 @@
 %define sover   4
 %define libname %{name}%{sover}
 Name:           librist
-Version:        0.2.11
+Version:        0.2.20
 Release:        0
 Summary:        Reliable Internet Stream Transport protocol
 License:        BSD-2-Clause
 URL:            https://code.videolan.org/rist/librist
 Source0:        https://code.videolan.org/rist/librist/-/archive/v%{version}/librist-v%{version}.tar.gz
 Source99:       baselibs.conf
-Patch0:         librist-const-correctness.patch
+#PATCH-FIX-OPENSUSE Add missing headers for EAP (bsc#1257934)
+Patch1:         librist-EAP-headers.patch
+#PATCH-FIX-OPENSUSE Exclude multicast tests as UDP are silently dropped by the kernel in isolated build envs (bsc#1257934)
+Patch2:         librist-skip-multicast-tests-in-buildenvs.patch
 Group:          Development/Libraries/C and C++
+BuildRequires:  gnutls-devel
+BuildRequires:  libnettle-devel
 BuildRequires:  meson >= 0.47
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
-BuildRequires:  gnutls-devel
-BuildRequires:  libnettle-devel
 BuildRequires:  pkgconfig(libcjson)
+BuildRequires:  pkgconfig(libmicrohttpd)
 
 %description
 A library that can be used to speak the RIST protocol (as defined by Video
@@ -68,13 +72,16 @@ This package contains the user tools for the RIST protocol library.
 %autosetup -n %{name}-v%{version} -p1
 
 %build
-%meson -Duse_nettle=true -Duse_mbedtls=false
+%meson -Duse_gnutls=true -Duse_nettle=true -Duse_mbedtls=false
 %meson_build
 
 %install
 %meson_install
 chmod -x %{buildroot}%{_includedir}/%{name}/*.h
 chmod -x docs/*
+
+%check
+%meson_test
 
 %ldconfig_scriptlets -n %{libname}
 
@@ -84,6 +91,7 @@ chmod -x docs/*
 %doc README.md
 %doc docs
 %{_bindir}/rist*
+%{_bindir}/udp2udp
 
 %files -n %{libname}
 %license COPYING

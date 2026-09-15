@@ -1,0 +1,14 @@
+Index: librist-v0.2.20/src/proto/eap.h
+===================================================================
+--- librist-v0.2.20.orig/src/proto/eap.h
++++ librist-v0.2.20/src/proto/eap.h
+@@ -8,6 +8,9 @@
+ #ifndef _EAP_H_
+ #define _EAP_H_
+ 
++#include "librist/librist.h"
++#include "rist-private.h"
++#include "peer.h"
+ #include "common/attributes.h"
+ #include "config.h"
+ #include "crypto/srp.h"

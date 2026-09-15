@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 10 08:13:46 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.2.20:
+  * Added support for Nettle 4.0 (bsc#1257934)
+  * Enable the test suite.
+  * Lots of new features, bug fixes and security audits between
+    versions 0.2.11 and 0.2.20, for a full list of changes, see:
+    - code.videolan.org/rist/librist/tags
+  * Remove librist-const-correctness.patch fixed upstream
+  * Add patches:
+    - librist-EAP-headers.patch
+    - librist-skip-multicast-tests-in-buildenvs.patch
+
+-------------------------------------------------------------------
 Tue Jun 16 15:02:27 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Switch from mbedtls to gnutls
