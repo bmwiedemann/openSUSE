@@ -26,11 +26,10 @@
 %define _python3_version %{?python311_version}
 %endif
 Name:           duplicity
-Version:        3.2.0.1
+Version:        3.2.0.2
 Release:        0
 Summary:        Encrypted bandwidth-efficient backup using the rsync algorithm
 License:        GPL-3.0-or-later
-Group:          Productivity/Archiving/Backup
 URL:            https://duplicity.gitlab.io/
 Source:         https://gitlab.com/%{name}/%{name}/-/archive/rel.%{version}/%{name}-rel.%{version}.tar.bz2
 BuildRequires:  %{_python}-devel
@@ -68,13 +67,13 @@ links.
 
 %prep
 %autosetup -p1 -n %{name}-rel.%{version}
-sed -i -e 's|/usr/bin/env python3|/usr/bin/%{_python}|g' duplicity/__main__.py
+sed -i -e 's|%{_bindir}/env python3|%{_bindir}/%{_python}|g' duplicity/__main__.py
 
 %build
 %if 0%{?suse_version} > 1500
 %python3_build
 %else
-%python311_build
+%{python311_build}
 %endif
 
 %install

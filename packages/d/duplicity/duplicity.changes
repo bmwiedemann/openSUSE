@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 15:45:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.2.0.2:
+  * Packaging-only release: require python3-gnupg in debian control
+    and raise the Python floor to 3.10 (spec already requires
+    python-gnupg since the previous entry).
+  * Version and date stamp refresh, no code changes.
+- Drop Group tag (spec-cleaner cleanup).
+
+-------------------------------------------------------------------
 Fri Aug 21 07:30:40 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - Packaging:
