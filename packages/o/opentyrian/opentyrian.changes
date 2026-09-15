@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:45:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.20260913
+  * Configuration and saved game files are stored in the same
+    directory as the executable if opentyrian.cfg is already there.
+- Drop patch:
+  * fix-make-install.patch
+
+-------------------------------------------------------------------
 Sun Sep 13 12:13:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.20260912

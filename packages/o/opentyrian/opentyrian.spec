@@ -17,7 +17,7 @@
 
 
 Name:           opentyrian
-Version:        2.1.20260912
+Version:        2.1.20260913
 Release:        0
 Summary:        An arcade-style vertical scrolling shooter
 License:        GPL-2.0-or-later
@@ -26,7 +26,6 @@ URL:            https://github.com/opentyrian/opentyrian
 Source:         https://github.com/opentyrian/opentyrian/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM https://github.com/opentyrian/opentyrian/pull/13
 Patch0:         appdata.patch
-Patch1:         fix-make-install.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
