@@ -224,4 +224,12 @@
     <comment></comment>
     <requestid>1361566</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>245437fa3259faefa76986db29e16b07</srcmd5>
+    <version>1.8.2</version>
+    <time>1789469409</time>
+    <user>anag_factory</user>
+    <comment>jq.changes: add missing CVE citation</comment>
+    <requestid>1378140</requestid>
+  </revision>
 </revisionlist>
