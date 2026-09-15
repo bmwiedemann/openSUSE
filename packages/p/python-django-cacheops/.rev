@@ -150,4 +150,13 @@
   * Support Python 3.14 pickle changes. (bsc#1266046)</comment>
     <requestid>1355723</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>17a239d95a2c908e910f823194574360</srcmd5>
+    <version>7.2</version>
+    <time>1789469374</time>
+    <user>anag_factory</user>
+    <comment>- Kill redis-server at the end of %check to avoid stuck builds
+- Add patch django-6.1-compat.patch</comment>
+    <requestid>1378054</requestid>
+  </revision>
 </revisionlist>

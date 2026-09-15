@@ -25,6 +25,8 @@ URL:            http://github.com/Suor/django-cacheops
 Source:         https://files.pythonhosted.org/packages/source/d/django_cacheops/django_cacheops-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#Suor/django-cacheops#511
 Patch0:         support-python-314.patch
+# PATCH-FIX-UPSTREAM django-6.1-compat.patch - restore Django 6.1 template tag and Subquery annotation support
+Patch1:         django-6.1-compat.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -64,7 +66,11 @@ filesystem for simple time-invalidated one.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-/usr/sbin/redis-server &
+# redis must not outlive %%check: as a daemon holding the build log pipe it
+# keeps the build from ever finishing.
+/usr/sbin/redis-server --save '' &> redis-server.log &
+redis_pid=$!
+trap 'kill $redis_pid 2>/dev/null || true' EXIT
 export DJANGO_SETTINGS_MODULE=tests.settings
 %pytest
 

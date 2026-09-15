@@ -1,0 +1,102 @@
+Date: 2026-09-10
+Fix build with Django 6.1
+  * Drop the takes_context argument of parse_bits(), removed in Django 6.1.
+  * Detect Subquery annotations that Django 6.1 resolves down to a bare
+    Query, so they are invalidated again.
+  * Build the test_subquery subquery with values() rather than only();
+    Django 6.1 cannot resolve an output_field for the latter.
+
+Index: django_cacheops-7.2/cacheops/templatetags/cacheops.py
+===================================================================
+--- django_cacheops-7.2.orig/cacheops/templatetags/cacheops.py
++++ django_cacheops-7.2/cacheops/templatetags/cacheops.py
+@@ -1,7 +1,7 @@
+-from inspect import getfullargspec, unwrap
++from inspect import getfullargspec, signature, unwrap
+ from functools import partial
+ 
+-from django.template import Library
++from django.template import Library, TemplateSyntaxError
+ from django.template.library import TagHelperNode, parse_bits
+ 
+ import cacheops
+@@ -10,6 +10,16 @@ from cacheops.utils import carefully_str
+ 
+ __all__ = ['CacheopsLibrary', 'invalidate_fragment']
+ 
++# Django 6.1 dropped parse_bits()' takes_context argument, leaving it to the
++# caller to strip the context parameter.
++_PARSE_BITS_TAKES_CONTEXT = 'takes_context' in signature(parse_bits).parameters
++
++
++def _parse_bits(parser, bits, params, varargs, varkw, defaults, kwonly, kwonly_defaults, name):
++    legacy = (False,) if _PARSE_BITS_TAKES_CONTEXT else ()
++    return parse_bits(parser, bits, params, varargs, varkw, defaults,
++                      kwonly, kwonly_defaults, *legacy, name)
++
+ 
+ class CacheopsLibrary(Library):
+     def decorator_tag(self, func=None, takes_context=False):
+@@ -19,6 +29,15 @@ class CacheopsLibrary(Library):
+         name = func.__name__
+         params, varargs, varkw, defaults, kwonly, kwonly_defaults, _ = getfullargspec(unwrap(func))
+ 
++        if takes_context:
++            if params and params[0] == 'context':
++                params = params[1:]
++            else:
++                raise TemplateSyntaxError(
++                    "%r is decorated with takes_context=True so it must have a first "
++                    "argument of 'context'" % name
++                )
++
+         def _compile(parser, token):
+             # content
+             nodelist = parser.parse(('end' + name,))
+@@ -26,9 +45,9 @@ class CacheopsLibrary(Library):
+ 
+             # args
+             bits = token.split_contents()[1:]
+-            args, kwargs = parse_bits(
++            args, kwargs = _parse_bits(
+                 parser, bits, params, varargs, varkw, defaults,
+-                kwonly, kwonly_defaults, takes_context, name,
++                kwonly, kwonly_defaults, name,
+             )
+             return CachedNode(func, takes_context, args, kwargs, nodelist)
+ 
+Index: django_cacheops-7.2/cacheops/tree.py
+===================================================================
+--- django_cacheops-7.2.orig/cacheops/tree.py
++++ django_cacheops-7.2/cacheops/tree.py
+@@ -157,11 +157,13 @@ def dnfs(qs):
+     else:
+         dnfs_ = query_dnf(qs.query)
+ 
+-    # Add any subqueries used for annotation
++    # Add any subqueries used for annotation.
++    # Django 6.1 resolves a Subquery annotation down to its inner Query.
+     if qs.query.annotations:
+-        subqueries = (query_dnf(getattr(q, 'query', None))
+-                      for q in qs.query.annotations.values() if isinstance(q, Subquery))
+-        dnfs_.update(join_with(lcat, subqueries))
++        subqueries = (q.query if isinstance(q, Subquery) else q
++                      for q in qs.query.annotations.values()
++                      if isinstance(q, (Subquery, Query)))
++        dnfs_.update(join_with(lcat, (query_dnf(q) for q in subqueries)))
+ 
+     return dnfs_
+ 
+Index: django_cacheops-7.2/tests/tests.py
+===================================================================
+--- django_cacheops-7.2.orig/tests/tests.py
++++ django_cacheops-7.2/tests/tests.py
+@@ -180,7 +180,7 @@ class BasicTests(BaseTestCase):
+             list(Post.objects.filter(category=2).cache())
+ 
+     def test_subquery(self):
+-        categories = Category.objects.cache().filter(title='Django').only('id')
++        categories = Category.objects.cache().filter(title='Django').values('id')
+         Post.objects.cache().filter(category__in=Subquery(categories)).count()
+ 
+     def test_rawsql(self):
