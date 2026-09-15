@@ -98,8 +98,10 @@ BuildRequires:  unzip
 BuildRequires:  pkgconfig(OpenEXR)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(libavif)
 BuildRequires:  pkgconfig(libdc1394-2)
 BuildRequires:  pkgconfig(libgphoto2)
+BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libtiff-4)
@@ -373,6 +375,7 @@ Group:          Development/Libraries/Python
 Requires:       libopencv_highgui%{so_ver} = %{version}
 %if %{qt_ver} == 5
 %if "%{python_flavor}" == "python3" || "%{python_provides}" == "python3"
+Requires:       python-numpy
 Provides:       python-%{name}-qt5 = %{version}
 Obsoletes:      python-%{name}-qt5 < %{version}
 %endif
@@ -389,6 +392,7 @@ License:        BSD-3-Clause
 Group:          Development/Libraries/Python
 %if %{with gui}
 %if 0%{?qt_ver} == 5
+Requires:       python3-numpy
 Provides:       python3-%{name}-qt5 = %{version}
 Obsoletes:      python3-%{name}-qt5 < %{version}
 %endif
@@ -458,6 +462,7 @@ pushd $PWD
       -DWITH_XINE=ON \
       -DWITH_IPP=OFF \
       -DWITH_TBB=ON \
+      -DWITH_JPEGXL=ON \
 %if %{without gapi}
       -DWITH_ADE=OFF \
       -DWITH_opencv_gapi=OFF \

@@ -1504,4 +1504,12 @@
     <comment>Update to version 4.1.3.0 (compatible with eigen3 &gt;= 5.0); add gtk3 flavour; drop upstreamed patches.</comment>
     <requestid>1332044</requestid>
   </revision>
+  <revision rev="111" vrev="2">
+    <srcmd5>d93654a3c046f95bdb3c675306f5d99e</srcmd5>
+    <version>4.13.0</version>
+    <time>1789484958</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1377773</requestid>
+  </revision>
 </revisionlist>
