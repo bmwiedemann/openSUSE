@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 13:56:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.15:
+  * First release on GitHub (devexp-db/docbook-utils),
+    autotools files updated for newer toolchains.
+  * Switch Source URL to the GitHub release tarball.
+  * Rebase fix-bashisms patch for upstream's quoted test
+    expressions.
+- Drop docbook-utils-0.6.14-fix-bashisms.patch (superseded
+  by the 0.6.15 rebase below).
+- Add docbook-utils-0.6.15-fix-bashisms.patch (rebased for
+  0.6.15).
+
+-------------------------------------------------------------------
 Mon Feb 26 08:05:52 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.

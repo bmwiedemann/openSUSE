@@ -156,4 +156,12 @@
     <comment></comment>
     <requestid>1152091</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>15c5027ae0c56c019ac2ae9a4edbd7b3</srcmd5>
+    <version>0.6.15</version>
+    <time>1789484955</time>
+    <user>anag_factory</user>
+    <comment>Forward docbook-utils 0.6.15 to Factory (replaces declined 1377719; patch rename now documented as drop/add).</comment>
+    <requestid>1377749</requestid>
+  </revision>
 </revisionlist>

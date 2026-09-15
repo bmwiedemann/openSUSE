@@ -1,7 +1,7 @@
 #
 # spec file for package docbook-utils
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,24 +17,27 @@
 
 
 Name:           docbook-utils
-BuildRequires:  automake
-BuildRequires:  docbook-dsssl-stylesheets
-BuildRequires:  openjade
-BuildRequires:  perl-SGMLS
-BuildRequires:  sgml-skel
+Version:        0.6.15
+Release:        0
 Summary:        Small Wrapper Scripts for Processing DocBook Files
 License:        LGPL-2.1-or-later
-Group:          Productivity/Publishing/DocBook
-Version:        0.6.14
-Release:        0
-Requires:       %{name}-minimal
-Requires:       texlive-jadetex
-Source:         https://src.fedoraproject.org/repo/pkgs/docbook-utils/%{name}-%{version}.tar.gz/6b41b18c365c01f225bc417cf632d81c/%{name}-%{version}.tar.gz
+URL:            https://github.com/devexp-db/docbook-utils
+Source:         https://github.com/devexp-db/docbook-utils/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Patch0:         docbook-utils-catalog-jw.patch
-Patch1:         docbook-utils-0.6.14-fix-bashisms.patch
+Patch1:         docbook-utils-0.6.15-fix-bashisms.patch
 # PATCH-FIX-TO-UPSTREAM
 Patch2:         support_source_date_epoch.patch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  docbook-dsssl-stylesheets
+BuildRequires:  openjade
+BuildRequires:  sgml-skel
+# Keep the tool package names: spec-cleaner --perl explodes them into
+# the full provided perl() module list, which is noise.
+BuildRequires:  automake
+BuildRequires:  perl-SGMLS
+Requires:       %{name}-minimal
+# Keep the texlive package name: the tex() file deps resolve to the
+# same package but hide which backend the scripts actually need.
+Requires:       texlive-jadetex
 BuildArch:      noarch
 
 %description
@@ -49,15 +52,15 @@ Tasks they currently accomplish are: * jw: convert SGML files to
 
 %package minimal
 Summary:        Small Wrapper Scripts for Processing DocBook Files
-Group:          Productivity/Publishing/DocBook
 Requires:       docbook-dsssl-stylesheets
 Requires:       docbook_3
 Requires:       docbook_4
 Requires:       iso_ent
 Requires:       openjade
 Requires:       opensp
-Requires:       perl-SGMLS
 Requires:       sgml-skel
+# Keep the tool package name, see the BuildRequires comment above.
+Requires:       perl-SGMLS
 
 %description minimal
 The docbook-utils package is a set of a few small programs intended to
@@ -78,43 +81,42 @@ Tasks they currently accomplish are: * jw: convert SGML files to
 %build
 autoreconf -i -f
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=$RPM_BUILD_ROOT install
-mv $RPM_BUILD_ROOT/usr/doc/html/docbook* html
+%make_install
+mv %{buildroot}%{_prefix}/doc/html/docbook* html
 
 %files minimal
-%defattr (-,root,root)
-%doc README COPYING TODO html
-%_bindir/docbook2html
-%_bindir/docbook2man
-%_bindir/docbook2rtf
-%_bindir/jw
-%_bindir/sgmldiff
-%_bindir/docbook2txt
-%dir %{_prefix}/share/sgml/docbook/utils-%{version}
-%dir %{_prefix}/share/sgml/docbook/utils-%{version}/backends
-%{_prefix}/share/sgml/docbook/utils-%{version}/frontends
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/html
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/man
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/rtf
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/txt
-%{_prefix}/share/sgml/docbook/utils-%{version}/docbook-utils.dsl
-%{_prefix}/share/sgml/docbook/utils-%{version}/helpers
+%license COPYING
+%doc README TODO html
+%{_bindir}/docbook2html
+%{_bindir}/docbook2man
+%{_bindir}/docbook2rtf
+%{_bindir}/jw
+%{_bindir}/sgmldiff
+%{_bindir}/docbook2txt
+%dir %{_datadir}/sgml/docbook/utils-%{version}
+%dir %{_datadir}/sgml/docbook/utils-%{version}/backends
+%{_datadir}/sgml/docbook/utils-%{version}/frontends
+%{_datadir}/sgml/docbook/utils-%{version}/backends/html
+%{_datadir}/sgml/docbook/utils-%{version}/backends/man
+%{_datadir}/sgml/docbook/utils-%{version}/backends/rtf
+%{_datadir}/sgml/docbook/utils-%{version}/backends/txt
+%{_datadir}/sgml/docbook/utils-%{version}/docbook-utils.dsl
+%{_datadir}/sgml/docbook/utils-%{version}/helpers
 
 %files
-%defattr (-,root,root)
-%_bindir/docbook2ps
-%_bindir/docbook2dvi
-%_bindir/docbook2pdf
-%_bindir/docbook2tex
-%_bindir/docbook2texi
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/tex
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/texi
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/dvi
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/ps
-%{_prefix}/share/sgml/docbook/utils-%{version}/backends/pdf
+%{_bindir}/docbook2ps
+%{_bindir}/docbook2dvi
+%{_bindir}/docbook2pdf
+%{_bindir}/docbook2tex
+%{_bindir}/docbook2texi
+%{_datadir}/sgml/docbook/utils-%{version}/backends/tex
+%{_datadir}/sgml/docbook/utils-%{version}/backends/texi
+%{_datadir}/sgml/docbook/utils-%{version}/backends/dvi
+%{_datadir}/sgml/docbook/utils-%{version}/backends/ps
+%{_datadir}/sgml/docbook/utils-%{version}/backends/pdf
 %{_mandir}/man?/*
 
 %changelog
