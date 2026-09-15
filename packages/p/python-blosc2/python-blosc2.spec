@@ -16,12 +16,13 @@
 #
 
 
+%bcond_without libalternatives
 %{?sle15_python_module_pythons}
 # See CMakeLists.txt
-%define miniexpr_commit 37bf6982bf9619036b47f095b7005bc3c87a7447
+%define miniexpr_commit f0b8c94771cd21d3c9029d6ccec204ab3a67584f
 %define minicc_commit 41208bdc85612042f363f425cda4601b3ed90d64
 Name:           python-blosc2
-Version:        4.1.2
+Version:        4.13.0
 Release:        0
 Summary:        Python wrapper for the C-Blosc2 library
 License:        BSD-3-Clause
@@ -35,26 +36,46 @@ BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module numpy-devel >= 1.26}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build-core}
+BuildRequires:  alts
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(blosc2) >= 2.14.1
+BuildRequires:  pkgconfig(blosc2) >= 3.3.0
+Requires:       alts
+Requires:       python-httpx
 Requires:       python-msgpack
 Requires:       python-ndindex
 Requires:       python-numexpr >= 2.14.1
 Requires:       python-numpy >= 1.26
+Requires:       python-pydantic
 Requires:       python-requests
+Requires:       python-rich
+Requires:       python-threadpoolctl
+# blosc2[parquet]
+Recommends:     python-pyarrow
+# blosc2[tui]
+Suggests:       python-textual
+# blosc2[fsspec]
+Suggests:       python-fsspec
+# blosc2[zarr]
+Recommends:     python-zarr
 # SECTION test requirements
 BuildRequires:  %{python_module msgpack}
+BuildRequires:  %{python_module httpx}
+BuildRequires:  %{python_module moto}
 BuildRequires:  %{python_module ndindex}
 BuildRequires:  %{python_module numexpr >= 2.14.1}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pydantic}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-xdist}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
+BuildRequires:  %{python_module textual}
 # /SECTION
+ExcludeArch:    %ix86 %arm
 %python_subpackages
 
 %description
@@ -91,14 +112,14 @@ export SKBUILD_CMAKE_DEFINE
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
+%python_clone -a %{buildroot}%{_bindir}/b2view
+%python_clone -a %{buildroot}%{_bindir}/parquet-to-blosc2
+%python_clone -a %{buildroot}%{_bindir}/b2nd-to-zarr
+%python_clone -a %{buildroot}%{_bindir}/blosc2-to-zarr
 
 %check
 # segfault without TCC_JIT
 donttest="test_dsl_save_clamp"
-%ifarch %ix86 %arm32
-# too large for address memory
-donttest="$donttest or (test_pack and int64)"
-%endif
 # https://lists.opensuse.org/archives/list/buildservice@lists.opensuse.org/thread/WZC3YN2NFHGJJPUTFBF4LFYXDM7MJEZT
 # Don't test on Python 3.14, it crashes on OBS, disable and test locally to be sure it works for users.
 python314_donttest="--setup-only"
@@ -107,6 +128,10 @@ python314_donttest="--setup-only"
 %files %{python_files}
 %doc README.rst
 %license LICENSE.txt miniexpr-%{miniexpr_commit}/LICENSE miniexpr-%{miniexpr_commit}/LICENSE-TINYEXPR miniexpr-%{miniexpr_commit}/THIRD_PARTY_NOTICES.md
+%python_alternative %{_bindir}/b2view
+%python_alternative %{_bindir}/parquet-to-blosc2
+%python_alternative %{_bindir}/b2nd-to-zarr
+%python_alternative %{_bindir}/blosc2-to-zarr
 %{python_sitearch}/blosc2
 %{python_sitearch}/blosc2-%{version}.dist-info
 

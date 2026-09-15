@@ -1,6 +1,6 @@
 Index: miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
 ===================================================================
---- a/miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
+--- a/miniexpr-f0b8c94771cd21d3c9029d6ccec204ab3a67584f/CMakeLists.txt
 +++ b/miniexpr-37bf6982bf9619036b47f095b7005bc3c87a7447/CMakeLists.txt
 @@ -404,13 +404,6 @@ if(MINIEXPR_BUILD_STATIC)
    set_target_properties(miniexpr_static PROPERTIES OUTPUT_NAME miniexpr)
