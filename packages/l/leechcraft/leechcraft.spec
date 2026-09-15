@@ -120,9 +120,6 @@ BuildRequires:  pkgconfig(libmaxminddb)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnl-3.0)
 BuildRequires:  pkgconfig(libotr) >= 4
-%if %{with ffmpeg}
-BuildRequires:  pkgconfig(libpostproc)
-%endif
 %ifarch %ix86 x86_64 ppc64 ppc64le
 %if %{with ProjectM-Qt6}
 BuildRequires:  projectM-qt6-devel >= 4

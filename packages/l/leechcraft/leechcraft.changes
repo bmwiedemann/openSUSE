@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:38:33 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Drop requirement for libpostproc (unused and dropped from ffmpeg8+)
+
+-------------------------------------------------------------------
 Sun Sep  6 12:51:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Build with modern ffmpeg
