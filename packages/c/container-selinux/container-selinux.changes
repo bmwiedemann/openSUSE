@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 14 11:40:17 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
+
+- Update to version 2.251.0:
+  * Allow spc_t permissions for container_runtime_domain directory management
+  * Allow sshd_session_t to launch containers
+  * Add missing contexts for Docker's containerd-snapshotter
+  * Add container_runtime_nnp_domtrans interface
+
+-------------------------------------------------------------------
 Thu Jul  2 11:07:51 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 2.250.0:
