@@ -1153,4 +1153,12 @@ known issue: KMPs not yet propetly supported</comment>
     <comment>update longterm</comment>
     <requestid>1375546</requestid>
   </revision>
+  <revision rev="145" vrev="1">
+    <srcmd5>92681d426b5f6f0021437057602619be</srcmd5>
+    <version>6.18.51</version>
+    <time>1789484957</time>
+    <user>anag_factory</user>
+    <comment>update longterm</comment>
+    <requestid>1377772</requestid>
+  </revision>
 </revisionlist>
