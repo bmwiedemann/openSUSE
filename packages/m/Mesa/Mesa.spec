@@ -57,6 +57,7 @@
 %define with_rusticl 0
 %define with_vulkan 0
 %define with_llvm 0
+%define with_teflon 0
 
 %ifarch %{ix86} x86_64 %{arm} aarch64 loongarch64 ppc64 ppc64le riscv64
   %define gallium_loader 1
@@ -116,6 +117,14 @@
 %if 0%{?suse_version} >= 1550 && 0%{with_opencl}
   %define with_rusticl 1
 %endif
+  # TensorFlow Lite delegate (Teflon) for NPUs; needs an NPU-capable Gallium
+  # driver such as rocket (Rockchip NPUs, currently RK3588) or etnaviv
+  # (Vivante NPUs)
+  %ifarch aarch64
+    %if 0%{?suse_version} >= 1550
+    %define with_teflon 1
+    %endif
+  %endif
 %else
   # No llvm dependencies
   %define with_llvm 0
@@ -182,6 +191,7 @@ Patch100:       U_fix-mpeg1_2-decode-mesa-20.2.patch
 Patch800:       u_d3d12.patch
 Patch1222041:   u_mesa-CVE-2023-45919.patch
 Patch1222042:   u_mesa-CVE-2023-45922.patch
+Patch10023:     llvm23.patch
 
 %ifarch %{ix86} x86_64
 BuildRequires:  DirectX-Headers >= 1.613.0
@@ -563,6 +573,17 @@ This package contains vc4_dri.so, which is necessary for 3D
 acceleration on the Raspberry Pi to work. It is packaged separately
 since it is still experimental.
 
+%if 0%{with_teflon}
+%package -n Mesa-teflon-delegate
+Summary:        TensorFlow Lite delegate for NPUs supported by Mesa
+Group:          System/Libraries
+
+%description -n Mesa-teflon-delegate
+Teflon is an external TensorFlow Lite delegate (libteflon.so) which offloads
+supported subgraphs to NPUs driven by Mesa Gallium drivers, currently
+rocket for Rockchip NPUs and etnaviv for VeriSilicon Vivante NPUs.
+%endif
+
 %package -n libgbm1
 Summary:        Generic buffer management API
 Group:          System/Libraries
@@ -777,6 +798,7 @@ cp %{SOURCE22} subprojects/packagecache/
 %patch -P 800 -p1
 %patch -P 1222041 -p1
 %patch -P 1222042 -p1
+%patch -P 10023 -p1
 # Remove requires to vulkan libs from baselibs.conf on platforms
 # where vulkan build is disabled; ugly ...
 %if 0%{?with_vulkan} == 0
@@ -866,7 +888,7 @@ egl_platforms=x11,wayland
   %ifarch %{arm} aarch64
 %if 0%{?suse_version} >= 1550
           %ifarch aarch64
-            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,asahi,zink \
+            -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,panfrost,v3d,svga,tegra,asahi,rocket,zink \
           %else
           %ifarch armv6l armv6hl
             -Dgallium-drivers=r300,r600,radeonsi,nouveau,softpipe,llvmpipe,virgl,iris,freedreno,vc4,etnaviv,lima,v3d,svga,tegra,zink \
@@ -893,6 +915,9 @@ egl_platforms=x11,wayland
 %endif
 %ifarch aarch64 x86_64 ppc64le s390x riscv64
             -Dvalgrind=enabled \
+%endif
+%if 0%{with_teflon}
+            -Dteflon=true \
 %endif
             -Db_ndebug=true \
             -Dc_args="%{optflags}" \
@@ -1095,6 +1120,11 @@ echo "The \"Mesa\" package does not have the ability to render, but is supplemen
 %ifarch aarch64 %{arm}
 %files -n Mesa-dri-vc4
 %{_libdir}/dri/vc4_dri.so
+%endif
+
+%if 0%{with_teflon}
+%files -n Mesa-teflon-delegate
+%{_libdir}/libteflon.so
 %endif
 
 # drivers

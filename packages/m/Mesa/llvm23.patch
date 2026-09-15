@@ -1,0 +1,36 @@
+From 90f653e8521ac3ab58dc51d006ba35a0a42a44eb Mon Sep 17 00:00:00 2001
+From: Andreas Schwab <schwab@suse.de>
+Date: Thu, 10 Sep 2026 09:36:06 +0200
+Subject: [PATCH] llvm23
+
+---
+ src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp b/src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp
+index 9a02de3b945..7a1c305d4fb 100644
+--- a/src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp
++++ b/src/gallium/auxiliary/gallivm/lp_bld_init_orc.cpp
+@@ -341,6 +341,11 @@ LPJit::LPJit() :jit_dylib_count(0) {
+          .setJITTargetMachineBuilder(std::move(JTMB))
+ #ifdef USE_JITLINK
+          .setObjectLinkingLayerCreator(
++#if LLVM_VERSION_MAJOR >= 23
++            [&](ExecutionSession &ES, llvm::jitlink::JITLinkMemoryManager &MemMgr) {
++               return std::make_unique<ObjectLinkingLayer>(ES, MemMgr);
++            })
++#else
+ #if LLVM_VERSION_MAJOR >= 21
+             /* LLVM 21 removed the Triple argument */
+             [&](ExecutionSession &ES) {
+@@ -350,6 +355,7 @@ LPJit::LPJit() :jit_dylib_count(0) {
+                return std::make_unique<ObjectLinkingLayer>(
+                   ES, ExitOnErr(llvm::jitlink::InProcessMemoryManager::Create()));
+             })
++#endif
+ #else
+ #if LLVM_USE_INTEL_JITEVENTS
+          .RegisterJITEventListener(
+-- 
+2.55.0
+

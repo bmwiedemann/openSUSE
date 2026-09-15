@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 10 07:43:05 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- llvm23.patch: fix build with LLVM 23
+
+-------------------------------------------------------------------
+Mon Sep  7 03:21:39 UTC 2026 - Gakuto Furuya <g.furuya@gaato.net>
+
+- Enable the rocket Gallium driver (Rockchip NPUs) on aarch64 and
+  build the Teflon TensorFlow Lite delegate; ship libteflon.so in
+  new subpackage Mesa-teflon-delegate
+
+-------------------------------------------------------------------
 Fri Sep  4 06:22:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Adjust crate download URLs to http://static.crates.io/crates:
