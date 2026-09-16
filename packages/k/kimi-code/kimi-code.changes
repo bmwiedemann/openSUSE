@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.43.0:
+  * Web session titles always on (generated after the first turn,
+    regenerable from the rename field); sessions deletable from
+    the picker (Ctrl+X, y to confirm)
+  * MCP: preserve undeliverable attachments, per-server "deferred"
+    loading via select_tools when the model supports dynamic tool
+    loading (experimental tool-select flag)
+  * Add loop_control.compaction_max_attempts (default 5),
+    KIMI_CODE_PERMISSION_MODE_REMINDER=0 to stop permission-mode
+    reminders, server token in the Remote Control Local UI link,
+    goal budgets ignore closed-session time with no 24-hour cap,
+    rm -rf in /tmp|/temp without confirmation, steering messages
+    interrupt background-task waits
+  * Web fixes: bracket/backslash sessions stuck loading, streaming
+    stutter in long sessions, send button disabled on new session,
+    unread/notify mis-marks, formulas/links/tool results stutter,
+    Settings restructure (Account after General, Agents & Sessions,
+    About, privacy into General), About agreement/privacy entries,
+    frontmatter cards, Changes menu while diff open, segment flash
+  * Fix crash on retried LLM requests with partial tool calls, and
+    Remote Control upload >~3.5MB 400s plus asset retransfer
+
+-------------------------------------------------------------------
 Wed Sep  9 16:32:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.42.0:

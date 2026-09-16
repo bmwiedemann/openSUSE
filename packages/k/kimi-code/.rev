@@ -104,4 +104,13 @@ search, image and dashboard improvements.
 Devel SR 1376654 accepted; devel carries 0.42.0.</comment>
     <requestid>1376657</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>6676d52a7515743b8390f406d90fefec</srcmd5>
+    <version>0.43.0</version>
+    <time>1789573326</time>
+    <user>anag_factory</user>
+    <comment>Forward kimi-code 0.43.0 to Factory (from devel:tools).
+</comment>
+    <requestid>1378100</requestid>
+  </revision>
 </revisionlist>
