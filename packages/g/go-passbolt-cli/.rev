@@ -120,4 +120,32 @@
 </comment>
     <requestid>1364953</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>50eea5e70760158a3a057994298006b0</srcmd5>
+    <version>0.5.2</version>
+    <time>1789573343</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.5.2:
+  * PB-54306 - Prepare CLI and SDK release
+  * PB-53937 - Update changelog
+  * PB-53937 - BumpSDK to v0.8.3
+  * PB-53937 - testenv: sign the metadata private key payload with a timestamp
+  * PB-53915 - Bump SDK to v0.8.2
+  * PB-53915 - Surface custom field functions in SDK
+  * PB-54031 - Add changelog files to SDK and CLI
+  * chore: adapt renovate config
+  * PB-54017 - Fix deprecated function call
+  * PB-54022 - Use go 1.25 syntax
+  * PB-54017 - Update dependencies in SDK and CLI
+  * PB-53686 - Update Go CLI documentation to add minimal supported API version
+  * PB-53929 - Minor upgrade for github.com/moby/go-archive (High)
+  * PB-53919 - Bump go version to 1.26.6
+  * PB-53914 - Remove community disclaimer from go cli
+  * feature/PB-53788_Update-devcontainer-version-in-go-CI
+  * PB-53356 - Minor upgrade for github.com/google/cel-go (Medium)
+  * PB-53335 - Fix crypto/tls CVE-2026-42505 - MEDIUM CVSS3.1
+  * PB-53334 - Minor upgrade for golang.org/x/text (High)
+  * Add renovate.json</comment>
+    <requestid>1378147</requestid>
+  </revision>
 </revisionlist>
