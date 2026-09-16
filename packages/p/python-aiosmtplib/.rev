@@ -248,4 +248,56 @@
 </comment>
     <requestid>1372852</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>189eaa09f7c193a33ebf2f9c7e0c5fb7</srcmd5>
+    <version>5.1.3</version>
+    <time>1789573279</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.1.3 (fixes CVE-2026-90467 (bsc#1280277)):
+  * Security: reject addresses containing whitespace or angle brackets outside
+    of a quoted local part in mail, rcpt, vrfy, expn and sendmail.
+    Previously, a caller supplied address such as
+    user@example.com&gt; AUTH=&lt;attacker@example.com could smuggle additional ESMTP
+    parameters onto the command line. This is a follow up to the fix in 5.1.1 for
+    CVE-2026-53533 (GHSA-v3q9-hj7j-63hq), which only rejected control characters.
+    sendmail now validates all addresses before sending any commands.
+  * Bugfix: reject local_hostname values (and the hostname argument to
+    helo/ehlo) containing whitespace or control characters, so a hostname
+    such as me.example.com XCLIENT ADDR=1.2.3.4 can no longer smuggle extra
+    parameters onto the EHLO/HELO command line. Surrounding whitespace is stripped.
+  * Bugfix: raise SMTPAuthenticationError instead of binascii.Error when the
+    server sends a malformed (non-base64) CRAM-MD5 challenge, so login can fall
+    back to the next auth method
+  * Bugfix: prevent SMTP command/response desync from unsolicited server data (thanks
+    @Charisn for contributing)
+  * Bugfix: handle protocol connection lost callback arriving after reconnect
+  * Bugfix: close connection on async context manager exit in cases of a server error response
+  * Bugfix: release connection lock on connect timeout
+  * Bugfix: re-derive the default port on each connect() so changing
+    use_tls/start_tls between connects no longer reuses a stale default.
+    Defaulted port/hostname are now resolved per-connect rather than
+    written back onto the instance, so they read back as None when unset
+  * Bugfix: typeerror in latest ty
+  * Bugfix: mark response waiter exceptions as retrieved when they are set, so
+    Future exception was never retrieved is no longer logged on free-threaded
+    builds where the previous __del__ based cleanup ran too late
+  * CI: test on free-threaded 3.14 and on 3.15 (standard and free-threaded)
+  * Bugfix: the SIZE parameter sent with MAIL FROM now reports the number
+    of octets as the message will be transmitted (with CRLF line endings), rather
+    than the raw length of the message argument
+  * Bugfix: data arriving on the transport after the connection is lost is now
+    dropped instead of raising RuntimeError from the protocol callback
+  * Bugfix: SMTPProtocol now records that it is using TLS after a successful
+    start_tls, so a second upgrade attempt on the protocol is rejected
+  * Bugfix: starttls now validates its TLS options before sending EHLO, so
+    invalid options raise ValueError without touching the connection
+  * Bugfix: helo no longer records a failed response as last_helo_response,
+    so a rejected HELO does not leave the session looking as if a greeting succeeded
+  * Bugfix: bytearray and memoryview values are no longer silently passed
+    through the auth encoding helpers; only str and bytes are accepted, as
+    the type annotations already stated
+  * Bugfix: TLS context setup now run in thread (thanks @tr4nt0r)
+</comment>
+    <requestid>1378082</requestid>
+  </revision>
 </revisionlist>

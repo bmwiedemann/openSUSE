@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-aiosmtplib
-Version:        5.1.2
+Version:        5.1.3
 Release:        0
 Summary:        Python asyncio SMTP client
 License:        MIT
@@ -39,8 +39,8 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module aiosmtpd >= 1.4.2}
 BuildRequires:  %{python_module hypothesis >= 6.56}
-BuildRequires:  %{python_module pytest >= 7.2}
-BuildRequires:  %{python_module pytest-asyncio >= 0.20.1}
+BuildRequires:  %{python_module pytest >= 8.2}
+BuildRequires:  %{python_module pytest-asyncio >= 1.4.0}
 # /SECTION
 %python_subpackages
 
