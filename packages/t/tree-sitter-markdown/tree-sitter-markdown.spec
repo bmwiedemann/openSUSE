@@ -24,7 +24,10 @@ Summary:        Markdown grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-markdown
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter >= 0.25.3
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}=tree-sitter-%{_name} %{_name}-inline=tree-sitter-%{_name}-inline
 
 %description
@@ -36,12 +39,18 @@ BuildRequires:  tree-sitter >= 0.25.3
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 
 %files
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %changelog
