@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>716d2d0c4967f60f6baeac020fb38d1d</srcmd5>
+    <version>0.2.0</version>
+    <time>1789573318</time>
+    <user>anag_factory</user>
+    <comment>New package tree-sitter-diff 0.2.0 (maintainer pluskalm): the diff grammar for tree-sitter from github.com/tree-sitter-grammars/tree-sitter-diff (MIT), built with the %treesitter_* macros like the other editors:tree-sitter packages: shared library, -devel sources, noarch -wasm module and -queries subpackage and the Python binding (python-tree-sitter-diff). Fills a gap in the languages opencode's highlighter knows; all of it comes from the upstream sources at build time.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter, on top of the still open sr#1378013) and the other new tree-sitter-&lt;lang&gt; packages.</comment>
+    <requestid>1378133</requestid>
+  </revision>
+</revisionlist>
