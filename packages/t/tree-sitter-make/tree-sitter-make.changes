@@ -1,0 +1,8 @@
+-------------------------------------------------------------------
+Tue Sep 15 06:29:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 1.1.1: the grammar as a shared
+  library, a WebAssembly module (-wasm), the upstream queries
+  (-queries), the grammar sources (-devel) and the Python
+  binding (python-tree-sitter-make)
+
