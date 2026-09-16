@@ -1,7 +1,7 @@
 #
 # spec file for package automake
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,16 +26,16 @@
 %define nsuffix %{nil}
 %endif
 Name:           automake%{nsuffix}
-Version:        1.18.1
+Version:        1.19
 Release:        0
 Summary:        A Program for Automatically Generating GNU-Style Makefile.in Files
 # docs ~> GFDL, sources ~> GPLv2+, mkinstalldirs ~> PD and install-sh ~> MIT
-License:        GFDL-1.3-or-later AND GPL-2.0-or-later AND SUSE-Public-Domain AND MIT
+License:        GFDL-1.3-or-later AND GPL-2.0-or-later AND LicenseRef-SUSE-Public-Domain AND MIT
 Group:          Development/Tools/Building
 URL:            https://www.gnu.org/software/automake
 Source0:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
-# taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=automake&download=1
+# https://ftp.gnu.org/gnu/gnu-keyring.gpg
 Source2:        automake.keyring
 Source3:        automake-rpmlintrc
 Patch100:       automake-suse-vendor.patch

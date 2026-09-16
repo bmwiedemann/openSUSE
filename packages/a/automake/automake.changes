@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:46:06 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Update to 1.19
+  * New features added
+    - New autoconf macro AM_OPTIONAL_AUTOMAKE.
+  * Bugs fixed
+    - Recognize COPYINGv2, COPYINGv3, COPYING.LESSERv2 and COPYING.LESSERv3
+      as license files;
+    - `make dist' no longer propagates its internal distribution-directory
+      cleanup override to recursive makes run while constructing distdir.
+    - `make dist-bzip2 dist-xz' now succeeds.  They share the intermediate
+      uncompressed tarball as a result of another fix.
+    - Non-zero exit codes of compressors for the dist tarballs no longer abort
+      the job in a state where the empty files are left behind.
+    - Busybox tar no longer assumed to be GNU tar just because it
+      supports --version.
+    - `make dist' now fails when tar fails, instead of exiting
+      successfully with a truncated archive.
+    - The filename-length-max=N option no longer rejects file names of
+      exactly N characters.
+    - The manual no longer presents 99 characters as the portable limit
+      for file names in any archive format.
+    - A file that is not currently present is still a part of the distribution
+      if a `Makefile.am' rule can build it.
+    - The `check-DEJAGNU' recipe now honors silent rules (in the non-V=1
+      scenario).
+    - Objective C and Objective C++ sources built with Libtool are now
+      compiled and linked with `--tag=OBJC' and `--tag=OBJCXX', when the
+      installed Libtool announces support for those tags (Libtool 2.6.0
+      and newer).
+- Adapt patch automake-suse-vendor.patch
+- Update the keyring with gnu upstream
+
+-------------------------------------------------------------------
 Fri Jun 27 05:44:11 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.18.1

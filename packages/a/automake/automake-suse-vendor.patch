@@ -299,7 +299,7 @@ index f6d217a49..67f9aa0fb 100755
  	;;
      mips:Linux:*:* | mips64:Linux:*:*)
  	set_cc_for_build
-@@ -1135,57 +1146,57 @@ EOF
+@@ -1135,61 +1146,61 @@ EOF
  	test "x$CPU" != x && { echo "$CPU${MIPS_ENDIAN}-unknown-linux-$LIBCABI"; exit; }
  	;;
      mips64el:Linux:*:*)
@@ -368,12 +368,17 @@ index f6d217a49..67f9aa0fb 100755
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
 +	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
  	;;
+     sw_64:Linux:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
++	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
+ 	;;
      tile*:Linux:*:*)
 -	GUESS=$UNAME_MACHINE-unknown-linux-$LIBC
 +	GUESS=$UNAME_MACHINE-${VENDOR}-linux-$LIBC
  	;;
      vax:Linux:*:*)
  	GUESS=$UNAME_MACHINE-dec-linux-$LIBC
+ 	;;
 @@ -1215,7 +1226,7 @@ EOF
  	GUESS=$CPU-pc-linux-$LIBCABI
  	;;
@@ -501,7 +506,7 @@ index f6d217a49..67f9aa0fb 100755
  	;;
      *:*VMS:*:*)
  	UNAME_MACHINE=`(uname -p) 2>/dev/null`
-@@ -1584,19 +1595,19 @@ EOF
+@@ -1584,22 +1595,22 @@ EOF
  	GUESS=$UNAME_MACHINE-pc-fiwix
  	;;
      *:AROS:*:*)
@@ -520,9 +525,12 @@ index f6d217a49..67f9aa0fb 100755
 -	GUESS=$UNAME_MACHINE-unknown-unleashed$UNAME_RELEASE
 +	GUESS=$UNAME_MACHINE-${VENDOR}-unleashed$UNAME_RELEASE
  	;;
-     *:Ironclad:*:*)
--	GUESS=$UNAME_MACHINE-unknown-ironclad
-+	GUESS=$UNAME_MACHINE-${VENDOR}-ironclad
+     x86_64:[Ii]ronclad:*:*|i?86:[Ii]ronclad:*:*)
+ 	GUESS=$UNAME_MACHINE-pc-ironclad-$LIBC
+ 	;;
+     *:[Ii]ronclad:*:*)
+-	GUESS=$UNAME_MACHINE-unknown-ironclad-$LIBC
++	GUESS=$UNAME_MACHINE-${VENDOR}-ironclad-$LIBC
  	;;
  esac
  
