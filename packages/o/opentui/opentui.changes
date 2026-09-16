@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 14 19:39:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Use the tree-sitter-javascript-wasm, -typescript-wasm,
+  -markdown-wasm and -zig-wasm packages for the highlighter's
+  grammar modules: the copies in the source tree become symlinks
+  to them (Requires on the devel subpackage)
+
+-------------------------------------------------------------------
 Sun Aug  9 18:47:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package: opentui 0.4.5, a library for building terminal user

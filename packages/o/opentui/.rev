@@ -23,4 +23,13 @@ Everything else is unchanged from #1370385. Builds on x86_64 and aarch64,
 drives the full TUI.</comment>
     <requestid>1370419</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ae2e30049984ee68f57605b205bbbdf2</srcmd5>
+    <version>0.4.5</version>
+    <time>1789573278</time>
+    <user>anag_factory</user>
+    <comment>opentui 0.4.5: the highlighter's grammar modules in opentui-devel become symlinks to the tree-sitter-{javascript,typescript,markdown,zig}-wasm packages' modules (Requires on the devel subpackage) instead of the copies in the source tree. Local build green; the three tests.terminal_test failures seen locally are pre-existing (unmodified r2 fails them here too, OBS passes).
+INTERDEPENDENT REQUESTS - please stage together (will not build until these land): sr#1378013 tree-sitter, sr#1378025 tree-sitter-javascript, sr#1378034 tree-sitter-typescript, sr#1378029 tree-sitter-markdown, sr#1378039 tree-sitter-zig.</comment>
+    <requestid>1378041</requestid>
+  </revision>
 </revisionlist>

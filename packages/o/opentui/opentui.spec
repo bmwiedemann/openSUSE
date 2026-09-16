@@ -54,6 +54,12 @@ Patch0:         opentui-build-id.patch
 Patch1:         opentui-baseline-cpu.patch
 BuildRequires:  binutils
 BuildRequires:  python3-base
+# The grammar modules the highlighter ships: symlinked to the
+# tree-sitter-<lang>-wasm packages' files below, checked at build time.
+BuildRequires:  tree-sitter-javascript-wasm
+BuildRequires:  tree-sitter-markdown-wasm
+BuildRequires:  tree-sitter-typescript-wasm
+BuildRequires:  tree-sitter-zig-wasm
 BuildRequires:  zig = %{zig_version}
 BuildRequires:  zstd
 Provides:       bundled(miniaudio) = 0.11.24
@@ -74,6 +80,10 @@ opentui-devel.
 %package        devel
 Summary:        TypeScript sources for OpenTUI
 Requires:       %{name} = %{version}
+Requires:       tree-sitter-javascript-wasm
+Requires:       tree-sitter-markdown-wasm
+Requires:       tree-sitter-typescript-wasm
+Requires:       tree-sitter-zig-wasm
 
 %description    devel
 The TypeScript half of OpenTUI: the core bindings, the keymap library and
@@ -196,6 +206,22 @@ for pkg in core keymap solid; do
       # packages are installed side by side, so pin the sibling to the
       # version that is actually here, which is what npm publish would do.
       sed -i 's/"workspace:\*"/"%{version}"/g' package.json )
+done
+
+# The highlighter's grammar modules (tree-sitter-<lang>.wasm) are the
+# tree-sitter-<lang>-wasm packages' files, built from the grammar sources;
+# the copies in the tree become symlinks to them. The queries next to them
+# stay upstream's. Every module in the tree must have a packaged
+# counterpart, so a grammar upstream adds fails here until its package is
+# in BuildRequires and the devel Requires.
+assets=%{buildroot}%{_libdir}/%{name}/@opentui/core/src/lib/tree-sitter/assets
+for wasm in "$assets"/*/tree-sitter-*.wasm; do
+    sys=%{_datadir}/tree-sitter/wasm/$(basename "$wasm")
+    if ! test -f "$sys"; then
+        echo "no packaged module for ${wasm#%{buildroot}}: add its tree-sitter-<lang>-wasm package" >&2
+        exit 1
+    fi
+    ln -sf "$sys" "$wasm"
 done
 
 # Nothing above may delete a file the packages advertise. Everything a

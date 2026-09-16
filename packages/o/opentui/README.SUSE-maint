@@ -57,6 +57,15 @@ Bumping the version
    unversioned zig is green on both architectures and is 0.15.2 as well.
    Revisit if that changes.
 
+4. Check the highlighter's grammar modules. packages/core/src/lib/tree-sitter/
+   parsers-config.ts pins the grammar releases upstream downloaded the
+   .wasm files from; the package replaces them with the tree-sitter-<lang>-
+   wasm packages' modules (see "What gets installed"). A grammar upstream
+   adds fails %install until its package exists and is listed; a moved pin
+   means re-checking the highlights.scm/injections.scm next to the module
+   against the packaged grammar version (load the module and the query with
+   web-tree-sitter; a query naming a node the grammar lacks throws).
+
 4. Drop the old tarballs, osc addremove, build, submit.
 
 
@@ -125,6 +134,21 @@ This layout serves both ways a consumer can find OpenTUI:
 The TypeScript is in %{_libdir} rather than %{_datadir}, and opentui-devel is
 not noarch, because it sits in the same tree as the native package it has to
 resolve alongside.
+
+One part of that tree is not upstream's file: the syntax highlighter's
+grammar modules, packages/core/src/lib/tree-sitter/assets/<lang>/
+tree-sitter-<lang>.wasm (javascript, typescript, markdown, markdown_inline,
+zig), which upstream commits as downloads from the grammars' releases. The
+distribution builds every tree-sitter grammar to WebAssembly in a
+tree-sitter-<lang>-wasm subpackage (%treesitter_wasm_* macros, clang, lld
+and wasi-libc through the tree-sitter CLI's own wasi-sdk invocation), so
+%install turns those five files into symlinks to /usr/share/tree-sitter/wasm
+and opentui-devel requires the four packages. The loop walks the asset
+directories: a grammar upstream adds fails the build until its package is
+in BuildRequires and the devel Requires. The highlight queries next to the
+modules stay upstream's; they were checked against the packaged grammar
+versions (javascript 0.23.1 and markdown 0.5.3 where upstream pins 0.25.0
+and 0.5.1) when this was introduced, and belong on the bump checklist.
 
 
 The build does not need bun
