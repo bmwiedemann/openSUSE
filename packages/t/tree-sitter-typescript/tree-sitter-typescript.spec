@@ -30,10 +30,13 @@ BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  clang
 BuildRequires:  fdupes
+BuildRequires:  lld
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-javascript)
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name} tsx
 %python_subpackages
 
@@ -54,10 +57,13 @@ with the Language()/Parser() API from python-tree-sitter.
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 %treesitter_python_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 %treesitter_devel_install common/define-grammar.js
 %treesitter_python_install typescript typescript tsx
 
@@ -65,6 +71,9 @@ with the Language()/Parser() API from python-tree-sitter.
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %files %{python_files %{name}}
