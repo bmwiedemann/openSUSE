@@ -15,4 +15,13 @@
     <comment>- Remove redundant Neovim workaround</comment>
     <requestid>1336818</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>8ec0161b1f79e58ff8d78ec371c80ace</srcmd5>
+    <version>0.0.12</version>
+    <time>1789573284</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-clojure: build the grammars to WebAssembly modules as well (new noarch tree-sitter-clojure-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-clojure-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378016, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378104</requestid>
+  </revision>
 </revisionlist>

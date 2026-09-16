@@ -24,7 +24,10 @@ Summary:        Clojure(Script) grammar for tree-sitter
 License:        CC0-1.0
 URL:            https://github.com/sogaiu/tree-sitter-clojure
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}
 
 %description
@@ -36,15 +39,21 @@ BuildRequires:  tree-sitter
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 %treesitter_devel_install
 
 %files
 %license COPYING.txt
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %changelog
