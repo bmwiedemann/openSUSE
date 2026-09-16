@@ -19,4 +19,13 @@ INTERDEPENDENT REQUESTS - please stage together:
 Needed for python-graphifyy.</comment>
     <requestid>1372206</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>c2684807055dca3ede46a7b30b2b591f</srcmd5>
+    <version>0.3.5</version>
+    <time>1789573290</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-elixir: build the grammars to WebAssembly modules as well (new noarch tree-sitter-elixir-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-elixir-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378042, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378108</requestid>
+  </revision>
 </revisionlist>
