@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>1efaaf2a338a097528a964fca32d9679</srcmd5>
+    <version>0.3.0</version>
+    <time>1789573322</time>
+    <user>anag_factory</user>
+    <comment>New package tree-sitter-nix 0.3.0 (maintainer pluskalm): the Nix grammar for tree-sitter from github.com/nix-community/tree-sitter-nix (MIT), built with the %treesitter_* macros like the other editors:tree-sitter packages: shared library, -devel sources, noarch -wasm module and -queries subpackage. Fills a gap in the languages opencode's highlighter knows; all of it comes from the upstream sources at build time.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter, on top of the still open sr#1378013) and the other new tree-sitter-&lt;lang&gt; packages.</comment>
+    <requestid>1378136</requestid>
+  </revision>
+</revisionlist>
