@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:20:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the grammar queries in a new noarch -queries subpackage
+  (highlights.scm and friends, next to the -wasm modules)
+
+-------------------------------------------------------------------
+Mon Sep 14 18:14:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the grammars to WebAssembly modules as well (BuildRequires
+  clang, lld and wasi-libc): new -wasm subpackage for
+  web-tree-sitter consumers
+
+-------------------------------------------------------------------
 Thu Aug 20 08:51:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the upstream Python binding as pythonXYZ flavor
