@@ -1,4 +1,4 @@
-policy_module(container, 2.250.0)
+policy_module(container, 2.251.0)
 
 gen_require(`
 	class passwd rootok;
@@ -830,6 +830,7 @@ allow spc_t container_file_type:file execmod;
 admin_pattern(spc_t, kubernetes_file_t)
 
 allow spc_t container_runtime_domain:fifo_file manage_fifo_file_perms;
+manage_dirs_pattern(spc_t, container_runtime_domain, container_runtime_domain)
 allow spc_t { container_ro_file_t container_file_t }:system module_load;
 
 allow container_runtime_domain spc_t:process { dyntransition setsched signal_perms };
@@ -1689,6 +1690,17 @@ tunable_policy(`sshd_launch_containers',`
 
 	container_runtime_domtrans(sshd_t)
 	dontaudit systemd_logind_t iptables_var_run_t:dir read;
+')
+
+# OpenSSH 9.8+ split sshd into sshd (listener) + sshd-session (post-auth).
+# Forwarding now runs as sshd_session_t instead of sshd_t.
+optional_policy(`
+	tunable_policy(`sshd_launch_containers',`
+		gen_require(`
+			type sshd_session_t;
+		')
+		container_runtime_domtrans(sshd_session_t)
+	')
 ')
 
 role container_user_r;

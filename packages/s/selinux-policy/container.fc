@@ -81,6 +81,9 @@
 /var/lib/docker/init(/.*)?		gen_context(system_u:object_r:container_ro_file_t,s0)
 /var/lib/docker/overlay(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 /var/lib/docker/overlay2(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
+# For Docker's embedded/supervised containerd instance.
+/var/lib/docker/containerd/daemon/[^/]*/snapshots(/.*)?	gen_context(system_u:object_r:container_file_t,s0)
+/var/lib/docker/containerd/daemon/[^/]*/sandboxes(/.*)?	gen_context(system_u:object_r:container_ro_file_t,s0)
 
 /var/lib/containerd(/.*)?	gen_context(system_u:object_r:container_var_lib_t,s0)
 # The "snapshots" directory of containerd and BuildKit must be writable, as it is used as an upperdir as well as a lowerdir.

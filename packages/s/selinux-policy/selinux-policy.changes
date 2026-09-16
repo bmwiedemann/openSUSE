@@ -1,4 +1,100 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:50:28 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20260914:
+  * Label charon-nm as ipsec_exec_t (bsc#1278135)
+  * Fix corrupted formatting in files.if
+  * Allow nsswitch_domain connect to read xdm pid socket files
+  * nsresourced fixes for mkosi (bsc#1279902)
+  * Allow sshd-session connect to gnome remote desktop port
+  * Allow sshd-session to connect to all generic ports
+  * Allow sshd-session connect to port 443/tcp (http_port_t)
+  * Allow sshd-session connect to tcp/22 (ssh_port_t)
+  * Allow rsync to getattr pipes and sockes if rsync_export_all_ro is set (bsc#1279051)
+  * Introduce files_getattr_non_auth_sockets
+  * Introduce files_getattr_non_auth_pipes interface
+  * Allow rsync to read var_t (bsc#1279565)
+  * Update udev_manage_pid_files() to include symlinks read
+  * Support vfs_snapper to work with samba_share_t (bsc#1265400)
+  * vfs_samba uses dbus to communicate with snapper (bsc#1265400)
+  * fix NetworkManager dnsmasq-forwarders.conf labeling (bsc#1260038)
+  * Allow cupsd_t to communicate with fprintd via dbus (bsc#1268366)
+  * Allow kmscon read cocpit's pid files
+  * fix vpnc_t setpgid permission for openconnect (bsc#1272934)
+  * Allow systemd-sysctl to create /run/sysctl.d
+  * Allow systemd to create /run/udev/control
+  * Allow systemd-coredumpd to create /run/systemd/coredumpd/kernel
+  * Allow bootupcl nnp transition to mount_t
+  * Networkmanager: Remove files_manage_etc_files for console_t
+  * Networkmanager: Allow NM to manage files under /run
+  * Allow login_userdomain read/write kmscon devpts chr_files
+  * Support console version of initial-setup
+  * ssh-session accesses gitolite ssh config files (bsc#1277259)
+  * Allow kmscon use netlink permissions (#3368)
+  * Fix NFS mount with xprtsec=tls / xprtsec=mtls (bsc#1275783)
+  * Allow ssh_agent_type manage ssh_home_t files and sock_files
+  * Allow sshd-session manage ssh_home_t socke files
+  * Allow sshd-session X11 forwarding
+  * Allow lsmd-plugin read udev pid files
+  * Allow virtstoraged domain transition on iscsiadm execution
+  * Revert "Allow virtqemud domain transition on iscsiadm execution"
+  * Allow rhsmcertd search gconf home data dirs
+  * Allow rhsmcertd read gconf home files
+  * Revert "Allow rhsmcertd read gconf home files"
+  * Allow postmap read aliases
+  * Allow lsmd-plugin use libStorageMgmt to provision storage
+  * Update dhcpc-hook policy
+  * Allow virtqemud domain transition on iscsiadm execution
+  * Allow virtqemud domain transition on udev execution
+  * Allow virtqemud relabelfrom its private fifo files
+  * Support gnome-remote-desktop's smartcard redirection support
+  * Allow qatlib manage hugetlbfs directories
+  * Allow sanlock the sys_admin capability
+  * Allow rhsmcertd read gconf home files
+  * Allow rhsmcertd read insights-client config files
+  * Allow insights-client read install_t process state
+  * Allow insights-client read the process state of the init scripts
+  * Allow namespace_init_t execute generic programs in bin directories
+  * Update the ssh_server_template() template
+  * Add rules for sshd vsock socket read/write
+  * Allow dhcpc hook query the chronyd service
+  * Allow insights-client read gconf home files
+  * Allow login_userdomain mount, remount, unmount all mount points
+  * Allow login_userdomain mount on all mount points
+  * Revert "Allow userdomain get attributes of files on an nsfs filesystem"
+  * Allow accountsd create and use its private tmpfs files
+  * Add the anaconda_read_state_install() interface
+  * Update qatlib policy
+  * Allow rhsmcertd read the file_contexts files
+  * rhsmcertd: allow bootc/ostree transient package persistence detection
+  * Allow virtproxyd connect to systemd-homed over a unix stream socket
+  * Allow system_mail_t read procmail home content
+  * Label malware-detection-config.yml with insights_client_etc_rw_t
+  * Add bcachefs as a SELinux capable filesystem
+  * Allow unconfined_service_t nnp_transition to container_runtime_t
+  * Add the files_write_system_conf_files() interface
+  * Allow haveged (entropyd_t)  create and use its private tmpfs files
+  * Allow ctdbd manage access to Samba PID directories
+  * Allow rhsmcertd read selinux config and default file contexts
+  * Allow staff_t and user_t execute udev without a domain transition
+  * Allow mpd dbus chat with avahi
+  * Allow init_t nnp domain transition to mpd_t
+  * Update tuned-ppd policy
+  * Update policy for virsh_ssh_t to help with live migration
+  * Update sysadm policy for encrypted volumes usage
+  * Allow bootupd read all passwd sources
+  * Allow local login and sshd-session signull cockpit-session
+  * Allow sysadm_t read/write kvm devices
+  * Allow sysadm user run fail2ban-client
+  * Add 2 interfaces helping to handle cloud-what cache files
+  * Allow all domains to use inherited sshd-session pipes
+  * Dontaudit tlp_t dac_override (bsc#1272935)
+- Syncing with upstream rawhide selinux-policy up to:
+  * dc63e37474fac5e8f74560acfc1bfdb0f785ec24
+- Update embedded container-selinux version to commit:
+  * 4ac019955c8885496ffbd978520c905434d4273e (v2.251.0)
+
+-------------------------------------------------------------------
 Fri Sep 11 10:23:48 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260910:
