@@ -25,7 +25,10 @@ License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-xml
 # Source0:        %%{url}/archive/v%%{version}.tar.gz#/%%{name}-%%{version}.tar.xz
 Source0:        %{name}-%{version}.tar.xz
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name} dtd
 
 %description
@@ -37,15 +40,21 @@ BuildRequires:  tree-sitter
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install xml=queries/xml dtd=queries/dtd
 %treesitter_devel_install
 
 %files
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %changelog
