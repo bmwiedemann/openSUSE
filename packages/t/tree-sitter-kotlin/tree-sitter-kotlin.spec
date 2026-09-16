@@ -25,14 +25,17 @@ Summary:        Kotlin grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-kotlin
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  tree-sitter
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  clang
+BuildRequires:  fdupes
+BuildRequires:  lld
+BuildRequires:  python-rpm-macros
+BuildRequires:  tree-sitter
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}
 %python_subpackages
 
@@ -53,16 +56,20 @@ with the Language()/Parser() API from python-tree-sitter.
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 %treesitter_python_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
 %treesitter_devel_install
 %treesitter_python_install
 
 %files
 %license LICENSE
 %treesitter_files
+
+%treesitter_wasm_package
 
 %treesitter_devel_package
 
