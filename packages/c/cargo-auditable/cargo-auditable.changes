@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 15 00:39:45 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.7.6~0:
+  * Fill in changelog, bump version
+  * Require target_abi before naming a device-family Apple platform
+  * Emit no build version for unrecognised Apple targets
+  * Emit LC_BUILD_VERSION in Mach-O metadata objects
+  * auditable-info: bump version to 0.10.1
+  * Upgrade miniz_oxide to 0.9
+  * Change example script location to XDG location
+  * add example for rustup +toolchain syntax when replacing cargo
+  * Add a link to Ubuntu
+  * wording
+  * Document Ubuntu adoption
+
+-------------------------------------------------------------------
 Wed May 27 04:13:51 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.7.5~0:
