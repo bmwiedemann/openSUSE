@@ -1,0 +1,68 @@
+Index: pytest_examples-0.0.18/pytest_examples/eval_example.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/eval_example.py
++++ pytest_examples-0.0.18/pytest_examples/eval_example.py
+@@ -1,7 +1,8 @@
+ from __future__ import annotations as _annotations
+ 
++from collections.abc import Callable
+ from pathlib import Path
+-from typing import TYPE_CHECKING, Any, Callable
++from typing import TYPE_CHECKING, Any
+ 
+ import pytest
+ from _pytest.assertion.rewrite import AssertionRewritingHook
+Index: pytest_examples-0.0.18/pytest_examples/run_code.py
+===================================================================
+--- pytest_examples-0.0.18.orig/pytest_examples/run_code.py
++++ pytest_examples-0.0.18/pytest_examples/run_code.py
+@@ -7,12 +7,12 @@ import importlib.util
+ import inspect
+ import re
+ import sys
+-from collections.abc import Sequence
++from collections.abc import Callable, Sequence
+ from dataclasses import dataclass
+ from importlib.abc import Loader
+ from pathlib import Path
+ from textwrap import indent
+-from typing import TYPE_CHECKING, Any, Callable
++from typing import TYPE_CHECKING, Any
+ from unittest.mock import patch
+ 
+ import pytest
+@@ -27,7 +27,7 @@ if TYPE_CHECKING:
+ 
+ __all__ = 'run_code', 'InsertPrintStatements', 'IncludePrint'
+ 
+-parent_frame_id = 4 if sys.version_info >= (3, 8) else 3
++parent_frame_id = 4
+ IncludePrint = Callable[[Path, inspect.FrameInfo, Sequence[Any]], bool]
+ 
+ 
+Index: pytest_examples-0.0.18/tests/test_run_examples.py
+===================================================================
+--- pytest_examples-0.0.18.orig/tests/test_run_examples.py
++++ pytest_examples-0.0.18/tests/test_run_examples.py
+@@ -1,5 +1,4 @@
+ import re
+-import sys
+ 
+ import pytest
+ 
+@@ -16,7 +15,6 @@ def test_find_run_examples(example: Code
+ """
+ 
+ 
+-@pytest.mark.skipif(sys.version_info < (3, 8), reason='traceback different on 3.7')
+ def test_run_example_ok_fail(pytester: pytest.Pytester):
+     pytester.makefile(
+         '.md',
+@@ -259,7 +257,6 @@ def test_find_run_examples(example: Code
+     ]
+ 
+ 
+-@pytest.mark.skipif(sys.version_info < (3, 8), reason='traceback different on 3.7')
+ def test_run_directly(tmp_path, eval_example):
+     # language=Python
+     python_code = """\

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:34:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Make it compatible with python3.14 and pytest 9.1
+- Add upstream patches:
+  * python314.patch gh#pydantic/pytest-examples#67
+  * 0001-Make-compatible-with-pytest-9.1.patch gh#pydantic/pytest-examples#79
+
+-------------------------------------------------------------------
 Tue Jul 28 02:27:28 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update patch ruff.patch:

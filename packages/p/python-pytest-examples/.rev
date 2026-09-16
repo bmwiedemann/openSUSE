@@ -135,4 +135,15 @@
   * Support both ruff 0.15 and 0.16.</comment>
     <requestid>1368110</requestid>
   </revision>
+  <revision rev="14" vrev="5">
+    <srcmd5>7ccb7a5162f3b0cc68b34abc7ba00c9c</srcmd5>
+    <version>0.0.18</version>
+    <time>1789573259</time>
+    <user>anag_factory</user>
+    <comment>- Make it compatible with python3.14 and pytest 9.1
+- Add upstream patches:
+  * python314.patch gh#pydantic/pytest-examples#67
+  * 0001-Make-compatible-with-pytest-9.1.patch gh#pydantic/pytest-examples#79</comment>
+    <requestid>1378157</requestid>
+  </revision>
 </revisionlist>
