@@ -23,13 +23,13 @@
 %define plugindir %{_prefix}/lib/munin/plugins
 %define active_by_default 0
 Name:           munin
-Version:        2.0.75
+Version:        2.0.76+git14.68213d60
 Release:        0
 Summary:        Network-wide graphing framework (grapher/gatherer)
 License:        GPL-2.0-only
 Group:          System/Monitoring
 URL:            https://munin-monitoring.org/
-Source0:        https://codeload.github.com/munin-monitoring/munin/tar.gz/refs/tags/%{version}#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar
 Source1:        Makefile.config
 Source2:        munin-node.rc
 Source3:        munin.cron.d
@@ -53,6 +53,8 @@ Source17:       munin.keyring
 Patch1:         perl526.patch
 # PATCH-FIX-UPSTREAM Use IO::Socket::IP instead of IO::Socket::INET[6]
 Patch2:         munin-remove-deprecated-INET6.patch
+# PATCH-FIX-UPSTREAM munin-fix-rrdtool-version-check.patch gh#munin-monitoring/munin#1684 -- fix graphing with rrdtool >= 1.10 https://github.com/munin-monitoring/munin/pull/1690
+Patch3:         munin-fix-rrdtool-version-check.patch
 BuildRequires:  firewall-macros
 BuildRequires:  html2text
 BuildRequires:  htmldoc
@@ -158,6 +160,7 @@ unzip %{SOURCE12}
 unzip %{SOURCE13}
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 
 %build
 %__make HOSTNAME=yourhostname

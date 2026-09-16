@@ -1,0 +1,13 @@
+<services>
+ <service name="obs_scm" mode="manual">
+   <param name="url">https://github.com/munin-monitoring/munin</param>
+   <param name="filename">munin</param>
+   <param name="revision">stable-2.0</param>
+   <param name="match-tag">[0-9]*</param>
+   <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+   <param name="scm">git</param>
+   <param name="changesgenerate">enable</param>
+ </service>
+ <service name="set_version" mode="manual"/>
+ <service name="tar" mode="buildtime"/>
+</services>

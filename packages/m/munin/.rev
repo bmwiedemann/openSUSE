@@ -566,4 +566,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1297094</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>f3647eb2d0a04702774b4bbe27ac1fba</srcmd5>
+    <version>2.0.76+git14.68213d60</version>
+    <time>1789573241</time>
+    <user>anag_factory</user>
+    <comment>Add munin-fix-rrdtool-version-check.patch to fix graphing with
+  rrdtool &gt;= 1.10 (gh#munin-monitoring/munin#1684, boo#1280358)
+- Improve munin-remove-deprecated-INET6.patch to work with both
+  IPv4+v6
+
+- Update to version 2.0.76+git14.68213d60:
+  * Correct Postgres version logic for postgres_checkpoints
+  * Correct Postgres version logic for postgres_bgwriter
+  * node: Do not write plain text version response to TLS socket
+  * Support TLS certificate chain files.
+  * plugins/nut_*: emit 'U' if value is not seen in upsc output
+  * Update postgres_checkpoints plugin for PostgreSQL 17
+  * Fixes #1643, updated query was taken from https://github.com/munin-monitoring/contrib/issues/1483
+  * Prevent log spam with nut plugins
+  * 2.0.76
+  * fix irqstats
+  * plugins/postgres: use standard category &quot;db&quot; instead of &quot;PostgreSQL&quot;
+  * Backport #562 to stable-2.0.</comment>
+    <requestid>1378055</requestid>
+  </revision>
 </revisionlist>

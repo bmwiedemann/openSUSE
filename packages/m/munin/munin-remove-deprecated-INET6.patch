@@ -159,7 +159,15 @@ IO::Socket::INET6 to IO::Socket::IP but that silently changed the meaning
 of our default local_address 0 from :: to 0.0.0.0
 which made IPv6-connections fail by default.
 
-By explicitly defaulting to :: we fix IPv6 connections to munin-node.
+By defaulting to :: (as the upstream PR proposed) IPv6 connections work,
+but IO::Socket::IP then refuses to connect to IPv4-only node addresses
+such as 127.0.0.1, because it only pairs local and peer addresses of the
+same family. munin-update then dies with
+  [FATAL] Socket read from <host> failed.  Terminating process.
+
+So do not pass any LocalAddr by default (undef) and let IO::Socket::IP
+pick the address family from the peer address. This works for IPv4,
+IPv6 and dual-stack node addresses.
 
 Fixes #1402
 
@@ -174,7 +182,7 @@ index a943ee5..ac5953b 100644
  		graph_strategy   => 'cron',
  		groups           => {},
 -		local_address    => 0,
-+		local_address    => '::',
++		local_address    => undef,
  		logdir           => $Munin::Common::Defaults::MUNIN_LOGDIR,
  		max_processes    => 16,
  		rundir           => $Munin::Common::Defaults::MUNIN_STATEDIR,
