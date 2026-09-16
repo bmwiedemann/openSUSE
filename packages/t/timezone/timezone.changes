@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 12 09:16:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Updat to 2026d:
+  * Canada’s Northwest Territories moved to permanent -06 on
+    2026-08-21
+  * Obsolescent settings like TZ="EST5EDT" now conform better to
+    POSIX
+  * Fix security, performance and porting bugs in zic and localtime
+
+-------------------------------------------------------------------
 Mon Aug 17 22:03:50 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Install "right" files in SLES/Leap 16.x (bsc#1273508)
