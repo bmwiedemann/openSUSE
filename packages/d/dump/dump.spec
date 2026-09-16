@@ -17,11 +17,10 @@
 
 
 Name:           dump
-Version:        0.4b53
+Version:        0.4b55
 Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
-Group:          Productivity/Archiving/Backup
 URL:            http://dump.sourceforge.net
 Source0:        http://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        ermt.1.in
@@ -34,14 +33,15 @@ Patch1:         %{name}-0.4b46-rmt-ermt.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  e2fsprogs-devel
-BuildRequires:  libbz2-devel
-BuildRequires:  libselinux-devel
 BuildRequires:  libtool
-BuildRequires:  lzo-devel
 BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig
 BuildRequires:  readline-devel
-BuildRequires:  sqlite3-devel
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(bzip2)
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(lzo2)
+BuildRequires:  pkgconfig(sqlite3)
+BuildRequires:  pkgconfig(zlib)
 Suggests:       %{name}-rmt = %{version}
 Suggests:       mt
 
@@ -54,12 +54,11 @@ restore a full backup of a file system.
 
 %package	rmt
 Summary:        Provides certain programs with access to remote tape devices
-Group:          Productivity/Archiving/Backup
-%if %{suse_version} <= 1600 || %{suse_version} >= 1699
+Conflicts:      rmt
+Provides:       rmt
+%if 0%{?suse_version} <= 1600 || 0%{?suse_version} >= 1699
 Requires(post): update-alternatives
 %endif
-Provides:       rmt
-Conflicts:      rmt
 
 %description	rmt
 The rmt utility provides remote access to tape devices for programs
@@ -90,7 +89,7 @@ mv examples/encrypted_rmt .
 ln -s %{_bindir}/ermt %{buildroot}%{_bindir}/rmt
 ln -s %{_mandir}/man1/ermt.1 %{buildroot}%{_mandir}/man1/rmt.1
 
-%if %{suse_version} <= 1600 || %{suse_version} >= 1699
+%if 0%{?suse_version} <= 1600 || 0%{?suse_version} >= 1699
 %post rmt
 if [ ! -f %{_bindir}/ermt ] ; then
    "%{_sbindir}/update-alternatives" --remove rmt %{_bindir}/ermt

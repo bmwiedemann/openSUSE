@@ -9,8 +9,7 @@ Index: b/rmt/Makefile.am
 ===================================================================
 --- a/rmt/Makefile.am
 +++ b/rmt/Makefile.am
-@@ -1,17 +1,23 @@
- AM_CPPFLAGS = -I$(top_srcdir)/common
+@@ -1,16 +1,22 @@
  DISTCLEANFILES =
  EXTRA_DIST =
 +bin_PROGRAMS =

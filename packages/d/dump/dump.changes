@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:23:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4b55:
+  * Fix buffer overrun in the rmt protocol
+  * Remove Kerberos support (relied on Kerberos-4 krcmd)
+  * Remove rcmd support, only rsh remains
+  * Drop old-style fscript support, unused for ~25 years
+  * Add --debug=ffffffff full debugging without recompiling
+  * Include cleanups without functional change (0.4b54)
+- Rebase dump-0.4b46-rmt-ermt.patch for upstream include cleanups
+- Spec cleanup: drop Group tags, pkgconfig-style BuildRequires,
+  no-op spec-cleaner canonicalization
+
+-------------------------------------------------------------------
 Mon Mar  2 18:34:30 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Remove update-alternatives %post scripts for SLES 16.x future releases
