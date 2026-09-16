@@ -285,4 +285,13 @@
     <comment></comment>
     <requestid>1359843</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>1905314e2c83a08b131377c61b2654fb</srcmd5>
+    <version>0.8.2</version>
+    <time>1789573338</time>
+    <user>anag_factory</user>
+    <comment>Forward libcpuid 0.8.2 to Factory (from utilities).
+</comment>
+    <requestid>1378098</requestid>
+  </revision>
 </revisionlist>

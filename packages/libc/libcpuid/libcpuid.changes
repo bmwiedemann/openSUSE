@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:21:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.8.2:
+  * Support AMD Shimada Peak
+  * Fix detection of AMD Ryzen/Threadripper PRO
+  * Make greater use of GNUInstallDirs with CMake
+  * Add technology node information for several i486 processors
+  * Fix a missing comma in Zhaoxin CPU entry
+  * Fix detection for AMD Carrizo
+  * Fix stack buffer overflow in Windows driver
+  * Do not report core voltage for Zen 5 CPUs
+- Rebase 1001-fix-soversion.patch (bsc#1268056): upstream still
+  ships LIBCPUID_CURRENT=18 in 0.8.2, so the soversion fix is
+  still needed
+
+-------------------------------------------------------------------
 Thu Jun 11 23:36:08 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Fix soversion to 18 [1001-fix-soversion.patch] (bsc#1268056)
