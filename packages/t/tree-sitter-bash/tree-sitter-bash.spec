@@ -24,17 +24,19 @@ Summary:        Bash grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/tree-sitter/tree-sitter-bash
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  tree-sitter
-
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module installer}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 42}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  clang
 BuildRequires:  fdupes
 BuildRequires:  gcc
+BuildRequires:  lld
 BuildRequires:  python-rpm-macros
+BuildRequires:  tree-sitter
 BuildRequires:  tree-sitter-devel
+BuildRequires:  wasi-libc
 Suggests:       python-tree-sitter >= 0.24
 %treesitter_grammars %{_name}
 %python_subpackages
@@ -55,11 +57,14 @@ with the Language()/Parser() API from python-tree-sitter.
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %treesitter_python_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 %treesitter_devel_install
 
 %treesitter_python_install
@@ -68,6 +73,9 @@ with the Language()/Parser() API from python-tree-sitter.
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %files %{python_files %{name}}
