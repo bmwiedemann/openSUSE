@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon Sep 14 15:35:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.3.4 (commit e4ef13d6, the source of
+  the npm release): photon compiled to WebAssembly with the
+  distribution's wasm-bindgen for Node.js style consumers
+  (opencode's image resizing)

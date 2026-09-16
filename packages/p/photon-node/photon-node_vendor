@@ -1,0 +1,41 @@
+#!/bin/sh
+# Regenerates vendor.tar.zst and Cargo.lock for photon-node. Run in the
+# package checkout on a version bump, with network access:
+#
+#     ./photon-node_vendor photon-<version>+git.<sha>.tar.gz
+#
+# Why not the cargo_vendor service: the wasm-bindgen crate that gets compiled
+# into the module must be exactly the version of the wasm-bindgen CLI that
+# writes the JavaScript glue (%wasm_bindgen_version in the spec), and the
+# service cannot pin it. Pinning goes through web-sys, whose releases carry
+# an exact "=" requirement on the matching js-sys and wasm-bindgen, so one
+# --precise on it moves the whole family together.
+set -eu
+tarball=${1:?source tarball}
+wasm_bindgen=${WASM_BINDGEN:-0.2.100}
+web_sys=${WEB_SYS:-0.3.77}
+out=$PWD
+tmp=$(mktemp -d)
+trap 'rm -rf "$tmp"' EXIT
+tar -xzf "$tarball" -C "$tmp"
+cd "$tmp"/photon-*
+rm -f Cargo.lock
+cargo generate-lockfile
+cargo update -p web-sys --precise "$web_sys"
+locked=$(grep -A1 '^name = "wasm-bindgen"$' Cargo.lock | sed -n 's/^version = "\(.*\)"/\1/p')
+if [ "$locked" != "$wasm_bindgen" ]; then
+    echo "lock resolved wasm-bindgen $locked, wanted $wasm_bindgen: pick the web-sys release that pins it" >&2
+    exit 1
+fi
+cargo vendor --locked vendor >/dev/null
+mkdir -p .cargo
+cat > .cargo/config.toml <<EOF
+[source.crates-io]
+replace-with = "vendored-sources"
+
+[source.vendored-sources]
+directory = "vendor"
+EOF
+cp Cargo.lock "$out/Cargo.lock"
+tar --zstd -cf "$out/vendor.tar.zst" .cargo vendor
+echo "wrote vendor.tar.zst and Cargo.lock (wasm-bindgen $wasm_bindgen, web-sys $web_sys)"

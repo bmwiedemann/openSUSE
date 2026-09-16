@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>b08e9383931db3eb59413159e8465615</srcmd5>
+    <version>0.3.4</version>
+    <time>1789573275</time>
+    <user>anag_factory</user>
+    <comment>New package photon-node 0.3.4 (noarch): the photon image-processing library compiled to WebAssembly with the distribution's rust and wasm-bindgen, plus the Node.js glue, as the @silvia-odwyer/photon-node npm package ships it. opencode builds against it.
+INTERDEPENDENT REQUESTS - please stage together: fff, bun-pty (new), opencode (BuildRequires this one at = 0.3.4).
+Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
+    <requestid>1377979</requestid>
+  </revision>
+</revisionlist>
