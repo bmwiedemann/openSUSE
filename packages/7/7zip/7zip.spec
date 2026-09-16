@@ -17,15 +17,14 @@
 #
 
 
-%define stripped_version 2602
+%define stripped_version 2603
 Name:           7zip
-Version:        26.02
+Version:        26.03
 Release:        0
 Summary:        Command-line file archiver with high compression ratio
 # CPP/7zip/Compress/LzfseDecoder.cpp is under the BSD-3-Clause
 # C/Sha1.c and C/Sha256.c are in the public domain
 License:        BSD-3-Clause AND LGPL-2.1-or-later AND LicenseRef-SUSE-Public-Domain
-Group:          Productivity/Archiving/Compression
 URL:            https://www.7-zip.org/
 Source:         https://www.7-zip.org/a/7z%{stripped_version}-src.tar.xz
 Source1:        p7zip
@@ -41,7 +40,7 @@ Provides:       p7zip = %{version}
 Provides:       p7zip-full = %{version}
 Obsoletes:      p7zip < %{version}
 Obsoletes:      p7zip-full < %{version}
-%ifarch x86_64 %ix86 %x86_64
+%ifarch x86_64 %{ix86} %{x86_64}
 BuildRequires:  uasm
 %endif
 
@@ -58,23 +57,19 @@ chmod -x DOC/*.txt
 
 # Remove -Werror to make build succeed
 sed -i 's/-Werror//' CPP/7zip/7zip_gcc.mak
-%if 0%{?suse_version} < 1550
-# (gcc 7.x) Remove -Waddress-of-packed-member to make build succeed
-sed -i -e 's/-Waddress-of-packed-member//' -e 's/-Wcast-align=strict//' -e 's/-Wmissing-attributes//' C/warn_gcc.mak CPP/7zip/warn_gcc.mak
-%endif
 # Inject CFLAGS
 sed -i 's/^ -fPIC/ -fPIC %{optflags}/' CPP/7zip/7zip_gcc.mak
 sed -i 's/LFLAGS_ALL = -s/LFLAGS_ALL =/' CPP/7zip/7zip_gcc.mak
-%ifarch x86_64 %ix86 %x86_64
+%ifarch x86_64 %{ix86} %{x86_64}
 sed -i 's/$(CXX) -o $(PROGPATH)/$(CXX) -Wl,-z,noexecstack -o $(PROGPATH)/' CPP/7zip/7zip_gcc.mak
 %endif
 
 %build
 cd CPP/7zip/Bundles/Alone2
-%ifarch x86_64 %x86_64
+%ifarch x86_64 %{x86_64}
 %make_build -f ../../cmpl_gcc_x64.mak MY_ASM=uasm
 %else
-%ifarch %ix86
+%ifarch %{ix86}
 %make_build -f ../../cmpl_gcc_x86.mak MY_ASM=uasm
 %else
 %ifarch aarch64
@@ -89,10 +84,10 @@ sed -i -e 's/USE_ASM=1/USE_ASM=/' ../../var_gcc_arm64.mak
 %endif
 
 %install
-%ifarch x86_64 %x86_64
+%ifarch x86_64 %{x86_64}
 install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x64/7zz %{buildroot}%{_bindir}/7zz
 %else
-%ifarch %ix86
+%ifarch %{ix86}
 install -Dm 755 CPP/7zip/Bundles/Alone2/b/g_x86/7zz %{buildroot}%{_bindir}/7zz
 %else
 %ifarch aarch64
