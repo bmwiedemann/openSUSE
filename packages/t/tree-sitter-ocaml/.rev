@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8df0a17d10938f99e20cfad95475d262</srcmd5>
+    <version>0.26.0</version>
+    <time>1789573323</time>
+    <user>anag_factory</user>
+    <comment>New package tree-sitter-ocaml 0.26.0 (maintainer pluskalm): the OCaml grammar for tree-sitter from github.com/tree-sitter/tree-sitter-ocaml (MIT), built with the %treesitter_* macros like the other editors:tree-sitter packages: shared library, -devel sources, noarch -wasm module and -queries subpackage and the Python binding (python-tree-sitter-ocaml). Fills a gap in the languages opencode's highlighter knows; all of it comes from the upstream sources at build time.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter, on top of the still open sr#1378013) and the other new tree-sitter-&lt;lang&gt; packages.</comment>
+    <requestid>1378137</requestid>
+  </revision>
+</revisionlist>

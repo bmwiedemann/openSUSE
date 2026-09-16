@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Sep 15 06:29:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.26.0: the ocaml, ocaml_interface
+  and ocaml_type grammars as shared libraries, WebAssembly
+  modules (-wasm), the upstream queries (-queries), the
+  grammar sources (-devel) and the Python binding
+  (python-tree-sitter-ocaml)
+
