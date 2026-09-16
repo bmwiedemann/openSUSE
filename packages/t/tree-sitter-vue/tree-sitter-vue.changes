@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:20:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the grammar queries in a new noarch -queries subpackage
+  (highlights.scm and friends, next to the -wasm modules)
+
+-------------------------------------------------------------------
+Mon Sep 14 18:14:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the grammars to WebAssembly modules as well (BuildRequires
+  clang, lld and wasi-libc): new -wasm subpackage for
+  web-tree-sitter consumers
+
+-------------------------------------------------------------------
 Sat Apr 11 08:30:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Supply corrected `binding.gyp` so `src/scanner.c` is linked into
@@ -8,7 +21,9 @@ Sat Apr 11 08:30:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 Thu Apr 09 20:22:15 UTC 2026 - mcepl@cepl.eu
 
 - Update to version 0+20260124.ce8011a:
-  * 
+  - fix(scanner): support Windows line endings
+  - fix(scanner): correct UB when deleting old tag Tags
+  - feat(queries): sync with nvim-treesitter
 
 -------------------------------------------------------------------
 Thu Mar  5 21:53:14 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>

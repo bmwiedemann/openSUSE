@@ -25,8 +25,11 @@ License:        MIT
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-vue
 Source0:        %{name}-%{version}.tar.gz
 Source1:        binding.gyp
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter
 BuildRequires:  treesitter_grammar_src(tree-sitter-html)
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}
 
 %description
@@ -39,15 +42,21 @@ cp %{SOURCE1} binding.gyp
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install vue=queries/vue
 %treesitter_devel_install
 
 %files
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %changelog
