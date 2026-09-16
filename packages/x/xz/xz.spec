@@ -24,11 +24,10 @@
 %bcond_with static
 %endif
 Name:           xz
-Version:        5.8.3
+Version:        5.8.4
 Release:        0
 Summary:        A Program for Compressing Files with the Lempel–Ziv–Markov algorithm
 License:        0BSD AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
-Group:          Productivity/Archiving/Compression
 URL:            https://tukaani.org/xz/
 Source0:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz
 Source1:        https://github.com/tukaani-project/xz/releases/download/v%{version}/xz-%{version}.tar.xz.sig
@@ -60,7 +59,6 @@ The xz command is a program for compressing files.
 %package -n liblzma5
 Summary:        Lempel–Ziv–Markov chain algorithm compression library
 License:        0BSD
-Group:          System/Libraries
 
 %description -n liblzma5
 Library for encoding/decoding LZMA files.
@@ -68,7 +66,6 @@ Library for encoding/decoding LZMA files.
 %package devel
 Summary:        Development package for the LZMA library
 License:        0BSD
-Group:          Development/Libraries/C and C++
 Requires:       liblzma5 = %{version}
 Provides:       lzma-devel = %{version}
 Obsoletes:      lzma-devel < %{version}
@@ -83,8 +80,7 @@ compiling programs using the LZMA library.
 %package static-devel
 Summary:        Static version of LZMA library
 License:        LicenseRef-SUSE-Public-Domain
-Group:          Development/Libraries/C and C++
-Requires:       xz-devel = %{version}
+Requires:       pkgconfig(liblzma) = %{version}
 
 %description static-devel
 Static library for the LZMA library

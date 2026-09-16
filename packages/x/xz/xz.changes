@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Sep 12 08:16:15 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 5.8.4:
+  * Fix an invalid memory access in lzma_alone_decoder(),
+    lzma_lzip_decoder(), lzma_auto_decoder(), and
+    lzma_microlzma_decoder() after a failed allocation is
+    followed by decoder reinitialization; could crash
+    (GHSA-5qpq-xqfv-j9pg, CVE pending, affects all versions
+    since 5.0.0)
+  * Fix wrong error code/assertion failure in
+    lzma_stream_buffer_decode() on truncated input
+  * Fix a performance issue and a theoretical integer
+    overflow in lzma_index_cat(), used by "xz --list"
+  * Fix bogus/too-low memory usage reporting in
+    lzma_index_decoder()
+  * Fix lzma_index_dup() copying the wrong check type
+  * Fix a missing synchronization in the threaded .xz
+    decoder affecting lzma_get_progress()
+  * xz: fix two use-after-free bugs (--files/--files0 via
+    XZ_OPT/XZ_DEFAULTS, and --verbose with redirected stderr)
+  * Add Landlock ABI 9 support on Linux
+  * Fix "xz --list" totals overflow check, an xzgrep option-
+    injection quoting bug, and an ARM64/LoongArch unaligned-
+    read issue; see upstream's release notes for the full list
+- spec-cleaner cleanup: drop Group: tags, convert
+  static-devel's Requires to pkgconfig(liblzma)
+
+-------------------------------------------------------------------
 Fri Apr  3 05:38:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 5.8.3:
