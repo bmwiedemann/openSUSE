@@ -1,4 +1,158 @@
 -------------------------------------------------------------------
+Tue Sep 15 12:37:39 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Firefox Extended Support Release 153.3.0 ESR
+  * Fixed: Various security fixes.
+- Mozilla Firefox ESR 153.3.0
+  https://www.mozilla.org/security/advisories/mfsa2026-93
+  MFSA 2026-93 (boo#1280371)
+  * CVE-2026-92005 (bmo#2056051)
+    Use-after-free in the Audio/Video: Web Codecs component
+  * CVE-2026-92006 (bmo#2057121)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92007 (bmo#2058064)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92008 (bmo#2058065)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92009 (bmo#2058066)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92010 (bmo#2058067)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92011 (bmo#2058068)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92012 (bmo#2058069)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92013 (bmo#2058078)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92015 (bmo#2060235)
+    Privilege escalation in the WebExtensions component
+  * CVE-2026-92035 (bmo#2061245)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics component
+  * CVE-2026-92016 (bmo#2061327)
+    Use-after-free in the Disability Access APIs component
+  * CVE-2026-92017 (bmo#2061777)
+    Privilege escalation in the DOM: Service Workers component
+  * CVE-2026-92018 (bmo#2064287)
+    Sandbox escape in the DOM: Core & HTML component
+  * CVE-2026-92019 (bmo#2065636)
+    Mitigation bypass in the Remote Settings Client component
+  * CVE-2026-92020 (bmo#2066329)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: WebRender component
+  * CVE-2026-92022 (bmo#2068059)
+    Use-after-free in the DOM: HTML Parser component
+  * CVE-2026-92023 (bmo#2068342)
+    Use-after-free in the XML component
+  * CVE-2026-92024 (bmo#2068354)
+    Use-after-free in the SVG component
+  * CVE-2026-92025 (bmo#2068361)
+    Use-after-free in the DOM: Navigation component
+  * CVE-2026-92026 (bmo#2068378)
+    Use-after-free in the Networking component
+  * CVE-2026-92027 (bmo#2068433)
+    Use-after-free in the DOM: Streams component
+  * CVE-2026-92028 (bmo#2068440)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-92029 (bmo#2068445)
+    Use-after-free in the SVG component
+  * CVE-2026-92038 (bmo#2068952)
+    Mitigation bypass in the Remote Settings Client component
+  * CVE-2026-92039 (bmo#2001265)
+    Mitigation bypass in the DOM: Notifications component
+  * CVE-2026-92041 (bmo#2029482)
+    Mitigation bypass in the DOM: Networking component
+  * CVE-2026-92042 (bmo#2049342)
+    Race condition in the DOM: Content Processes component
+  * CVE-2026-92043 (bmo#2050150)
+    Privilege escalation due to incorrect boundary conditions in
+    the Audio/Video component
+  * CVE-2026-92044 (bmo#2051466)
+    Information disclosure in the Networking: HTTP component
+  * CVE-2026-92045 (bmo#2054622)
+    Sandbox escape due to incorrect boundary conditions in the
+    WebRTC component
+  * CVE-2026-92030 (bmo#2058417)
+    Mitigation bypass in the DOM: Copy & Paste and Drag & Drop
+    component
+  * CVE-2026-92046 (bmo#2058618)
+    Use-after-free in the Graphics component
+  * CVE-2026-92047 (bmo#2059021)
+    Privilege escalation in the Crash Reporting component
+  * CVE-2026-92048 (bmo#2061235)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92049 (bmo#2061295)
+    Use-after-free in the Widget: Win32 component
+  * CVE-2026-92052 (bmo#2061499)
+    Privilege escalation due to uninitialized memory in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-92053 (bmo#2061503)
+    Privilege escalation in the Graphics: CanvasWebGL component
+  * CVE-2026-92054 (bmo#2062551)
+    Privilege escalation in the Memory component
+  * CVE-2026-92055 (bmo#2063652)
+    Privilege escalation in the DevTools component
+  * CVE-2026-92056 (bmo#2065346)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-92057 (bmo#2065646)
+    Mitigation bypass in the Enterprise Policies component
+  * CVE-2026-92031 (bmo#2067971)
+    Information disclosure in the Graphics: ImageLib component
+  * CVE-2026-92032 (bmo#2068437)
+    Sandbox escape due to invalid pointer in the Graphics
+    component
+  * CVE-2026-92058 (bmo#2068438)
+    Use-after-free in the Graphics component
+  * CVE-2026-92059 (bmo#2068442)
+    Incorrect boundary conditions in the DOM: Editor component
+  * CVE-2026-92060 (bmo#2027336)
+    Use-after-free in the Internationalization component
+  * CVE-2026-92062 (bmo#2054670)
+    Privilege escalation in the Session Restore component
+  * CVE-2026-92064 (bmo#2057990)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92065 (bmo#2058018)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92067 (bmo#2058664)
+    Use-after-free in the Widget: Gtk component
+  * CVE-2026-92068 (bmo#2058790)
+    Site isolation issue in the Reader Mode component
+  * CVE-2026-92069 (bmo#2059196)
+    Spoofing issue in the DOM: Navigation component
+  * CVE-2026-92070 (bmo#2060220)
+    Information disclosure in the Networking component
+  * CVE-2026-92071 (bmo#2061231)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92072 (bmo#2061257)
+    Incorrect boundary conditions in the Safe Browsing component
+  * CVE-2026-92073 (bmo#2062527)
+    Privilege escalation in the Enterprise Policies component
+  * CVE-2026-92074 (bmo#2063539)
+    Mitigation bypass in the Popup Blocker component
+  * CVE-2026-92075 (bmo#2063814)
+    Mitigation bypass in the Networking component
+  * CVE-2026-92076 (bmo#2064026)
+    Incorrect boundary conditions in the Networking component
+  * CVE-2026-92077 (bmo#2064601)
+    Denial-of-service in the SVG component
+  * CVE-2026-92078 (bmo#2066736)
+    Denial-of-service in the Security component
+  * CVE-2026-92079 (bmo#2067531)
+    Mitigation bypass in the Widget: Win32 component
+
+-------------------------------------------------------------------
 Tue Sep  1 14:50:33 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Disable PGO when a reproducible build is wanted (boo#1040589)

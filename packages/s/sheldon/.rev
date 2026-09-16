@@ -90,4 +90,12 @@
  * Fix SSH agent authentication not used when cloning submodules</comment>
     <requestid>1295150</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>6a2d8d2dbc3eeb5916a0710cf0b439f0</srcmd5>
+    <version>0.8.5</version>
+    <time>1789573437</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378184</requestid>
+  </revision>
 </revisionlist>

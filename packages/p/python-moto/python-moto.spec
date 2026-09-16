@@ -18,19 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-moto
-Version:        5.2.1
+Version:        5.2.3
 Release:        0
 Summary:        Library to mock out tests based on AWS
 License:        Apache-2.0
 URL:            https://github.com/getmoto/moto
 Source:         https://files.pythonhosted.org/packages/source/m/moto/moto-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 40.6.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-Jinja2 >= 2.10.1
 Requires:       python-Werkzeug >= 0.5
 Requires:       python-boto3 >= 1.9.201
 Requires:       python-botocore >= 1.20.88
@@ -48,7 +47,6 @@ BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module Flask without (%python-Flask >= 2.2.0 with %python-Flask < 2.2.2)}
 BuildRequires:  %{python_module Flask-Cors}
-BuildRequires:  %{python_module Jinja2 >= 2.10.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module antlr4-python3-runtime}
 BuildRequires:  %{python_module aws-xray-sdk >= 0.93}
@@ -139,9 +137,8 @@ done
 # unpin exact version
 sed -i '/py-partiql-parser/ s/==/>=/' setup.cfg
 
-# https://github.com/getmoto/moto/issues/9976
-mv moto/ec2/resources moto/ec2/models
-sed -i 's@../resources@resources@' moto/ec2/models/*.py
+mkdir -p moto/eresources
+echo '{}' | gzip -c > moto/eresources/instance_types.json.gz
 
 %build
 %pyproject_wheel
@@ -165,6 +162,11 @@ donttest="network"
 donttest+=" or test_passthrough_calls_for_entire_service"
 donttest+=" or test_passthrough_calls_for_specific_url"
 donttest+=" or test_passthrough_calls_for_wildcard_urls"
+donttest+=" or test_json_validate_successful"
+donttest+=" or test_json_with_tabs_validate_successful"
+donttest+=" or test_yaml_validate_successful"
+donttest+=" or test_yaml_validate_template_url_successful"
+donttest+=" or test_validate_yaml_using_short_func_refs"
 # no connection -- no such file -- we don't have the test containers
 donttest+=" or test_terminate_job or test_cancel_running_job or test_cancel_pending_job"
 donttest+=" or (test_batch_jobs and (test_dependencies or test_container_overrides))"

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:16:59 UTC 2026 - Boychev <svetlin.boychev@suse.com>
+
+- updated to 0.1.82: (jsc#ECO-3319)
+    - Add KylinSecServer6 OS baseline support 
+    - Add new product for Ubuntu 26.04 and a default profile
+    - Create RHEL 10 STIG control file
+    - Debian13 20260702
+    - Various updates for SLE 12/15/16
+    - Various updates for SLEM 5/6
+ 
+
+-------------------------------------------------------------------
 Tue Jun  2 09:28:47 UTC 2026 - Boychev <svetlin.boychev@suse.com>
 
 - Add Hummingbird product support 

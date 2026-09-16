@@ -334,7 +334,7 @@ Thu Sep  7 13:42:19 UTC 2023 - Martin Hauke <mardnh@gmx.de>
   * Simpler and faster transpose.
   * Simple and efficient implementation of walk/1.
   * Remove deprecated filters leaf_paths, recurse_down.
-  * Fixes CVE-2025-9403
+  * Fixes CVE-2025-9403 (bsc#1248600)
   * PED-16516
 - Adjust URL/Source - new upstream
   https://github.com/stedolan/jq -> https://github.com/jqlang

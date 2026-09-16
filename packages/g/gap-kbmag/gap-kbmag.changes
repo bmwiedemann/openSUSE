@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:31:23 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.1
+  * Added support for the mingw platform
+
+-------------------------------------------------------------------
+Sun Aug 16 09:51:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.0
+  * Call the external programs with `Process` instead of `Exec`,
+    and check their exit status, so that a failure is reported as
+    one.
+  * Fix a Knuth-Bendix run aborting with "Could not open output of
+    external Knuth-Bendix program" when a word grew too long while
+    being reduced.
+  * Fix a failed `AutomaticStructureOnCosets` reporting success,
+    when an earlier successful run had left its files behind.
+  * Fix several crashes caused by writing past the end of a
+    fixed-size buffer
+  * Pass the options record on to the coset programs, which
+    ignored it.
+  * Tidy less often as the number of equations grows: long
+    Knuth-Bendix runs were quadratic in it.
+
+-------------------------------------------------------------------
 Sat Mar 23 21:53:30 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.5.11

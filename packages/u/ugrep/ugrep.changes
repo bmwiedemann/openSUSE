@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:09:07 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 7.8.5:
+  * update option --encoding=CP437 to retain LF (10) and CR (13)
+    codes in the output
+  * fix a rare edge case for the --encoding option when internally
+    converting a specified code page or a utf-encoding to UTF-8
+  * update option -z (--decompress) for reasonable xz/lzma decoding
+    limits
+  * update matching mode flags -E, -F, -G, and -P to respect order
+    on the command line to permit overriding (like BSD grep)
+  * output an error message when regex matching mode flags are used
+    in a config file, instead of silently ignoring them
+
+-------------------------------------------------------------------
 Wed Aug  5 16:45:36 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 7.8.4:

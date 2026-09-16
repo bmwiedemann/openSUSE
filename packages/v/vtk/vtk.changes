@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Aug 30 11:24:22 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Update to version 9.7.0, see:
+  https://gitlab.kitware.com/vtk/vtk/-/blob/v9.7.0/Documentation/release/9.7.md
+- Switch Qt version to Qt6 for Tumbleweed
+- Fix broken SMP CMake option, keep upstream default std::thread
+  backend, instead of sequential (single threaded). Also enable
+  OpenMP backend, which can be selected at runtime.
+
+-------------------------------------------------------------------
 Thu May 21 18:17:50 UTC 2026 - Kavin Teenakul <andythe_great@protonmail.com>
 
 - Add tbb build conditional and use it to select VTK's TBB SMP

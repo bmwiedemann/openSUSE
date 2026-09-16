@@ -135,4 +135,13 @@
 - skip python 3.6 (no networkx anymore)</comment>
     <requestid>1349439</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>53af905f88e31b122454ab2778ae4db1</srcmd5>
+    <version>0.6.6</version>
+    <time>1789573494</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pands-3.patch:
+  * Use argument 'q' rather than 'quantile' in one paramaterized test.</comment>
+    <requestid>1378233</requestid>
+  </revision>
 </revisionlist>

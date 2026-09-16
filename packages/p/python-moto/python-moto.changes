@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Wed Sep 16 00:42:19 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.2.3:
+  ## General:
+  * Dropped support for the Panorama service, following the removal by
+    botocore
+  ## New Services:
+  * Clean Rooms
+  * DevOps Agent
+  * Payment Cryptography
+  ## Miscellaneous:
+  * AppMesh: list_gateway_routes()/list_virtual_gateways() now support
+    pagination
+  * CloudFormation: create_stack_instances() is now idempotent for existing
+    instances
+  * CloudFront: list_distributions() now returns all DistributionConfig
+    attributes
+  * CloudTrail: start_logging()/stop_logging() now support a supplied Trail
+    ARN as well as a Name
+  * Config: get_resource_config_history() now correctly returns SNS tags
+  * DynamoDB: scan() now validates and honors the Select-parameter
+  * DynamoDB: update_item() now correctly preserves decimal precision in
+    SET-operations
+  * EC2: describe_instances() now correctly filters by 'availability-zone'
+  * ECS: run_task() now supports the capacityProviderStrategy-parameter
+  * EMRServerless: get_job_run() now returns the ExecutionRole-attribute
+  * Events: list_event_buses() now supports pagination
+  * Firehose: create_delivery_stream() now supports the
+    IcebergDestinationConfiguration-parameter
+  * Glue: get_partitions() now supports empty Expression-attributes,
+    returning everything
+  * Kinesis: list_stream_consumers() now supports pagination
+  * RDS: create_db_instance() now validates the combination of the
+    MonitoringRoleArn/MonitoringInterval parameters
+  * S3: generate_presigned_url() now supports the Response*-headers
+  * Transfer: describe_connector/describe_server() no longer returns
+    null-fields, matching AWS behaviour
+  * ACM: import_certificate() now accepts certificates without a CN
+  * ACM: request_certificate() now preserves the default options when not all
+    are provided
+  * CloudFormation: update_stack_instances() now validates that a
+    StackInstance exists
+  * Events: create_partner_event_source() now returns the
+    EventSourceArn-attribute
+  * Route53: list_resource_record_sets() no longer returns a TTL for aliases
+  * S3: completed_multipart_upload() is now compatible with external tools
+    like PyArrow
+  * S3: get_object() now supports all Response* headers
+
+-------------------------------------------------------------------
 Wed May 13 11:30:31 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 5.2.1

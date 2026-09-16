@@ -18,7 +18,7 @@
 
 %bcond_with lsp
 Name:           asymptote
-Version:        3.09
+Version:        3.15
 Release:        0
 Summary:        2D & 3D TeX-Aware vector graphics language
 License:        LGPL-3.0-or-later
@@ -49,6 +49,7 @@ BuildRequires:  texlive-dvips-bin
 BuildRequires:  texlive-kpathsea-bin
 BuildRequires:  texlive-latex-bin-bin
 BuildRequires:  xz
+BuildRequires:  pkgconfig(atomic_ops)
 BuildRequires:  pkgconfig(bdw-gc)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gl)
@@ -57,6 +58,8 @@ BuildRequires:  pkgconfig(glut)
 BuildRequires:  pkgconfig(gsl)
 BuildRequires:  pkgconfig(libglvnd)
 BuildRequires:  pkgconfig(libtirpc)
+BuildRequires:  libglfw-devel
+BuildRequires:  pkgconfig(vulkan)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  tex(media9.sty)
@@ -65,6 +68,7 @@ BuildRequires:  tex(type1cm.sty)
 Conflicts:      texlive-asymptote
 Conflicts:      texlive-asymptote-bin
 Conflicts:      texlive-asymptote-doc
+Provides:       bundled(glew) = 2.2.0
 
 %description
 Asymptote is a descriptive vector graphics language for technical
@@ -82,20 +86,27 @@ if [ ! -e configure ]; then autoreconf -fiv; fi
 %make_build
 
 %install
+b="%buildroot"
 %make_install
-mv "%buildroot/usr/local/share"/* "%buildroot/%_datadir/"
-chmod a-x "%buildroot/%_datadir/asymptote/shaders"/*.glsl
-find "%buildroot/%_datadir/asymptote/GUI" -type f -name "*.py" \
+mv -v "$b/usr/local/share"/* "$b/%_datadir/"
+chmod a-x "$b/%_datadir/asymptote/shaders"/*.glsl
+find "$b/%_datadir/asymptote/GUI" -type f -name "*.py" \
 	-exec perl -i -lpe "s{^#!/usr/bin/env python3}{#!/usr/bin/python%python3_bin_suffix}g" {} +
+
+mkdir -pv "$b/%_libdir" "$b/%_datadir/licenses"
+mv -v "$b/%_docdir/asymptote/licenses" "$b/%_datadir/licenses/%name"
+# move misplaced dlopened extensions
+mv -v "$b/%_datadir/%name"/libasy*.so "$b/%_libdir/"
 
 %files
 %_bindir/asy
 %_bindir/xasy
+%_libdir/libasy*.so
 %_datadir/%name/
 %_datadir/texmf/
 %_docdir/%name/
 %_infodir/asy*
 %_mandir/*/*asy.1*
-%license LICENSE*
+%_datadir/licenses/*
 
 %changelog

@@ -7,4 +7,19 @@
     <comment>Connects various LLM providers like openAI, anthropic and also ollama via one python API</comment>
     <requestid>1362708</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85f4aa5f69e0390d490572222a62df1b</srcmd5>
+    <version>1.101.0</version>
+    <time>1789573456</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.101.0i fix bsc#1278303 (CVE-2026-84377):
+  * New core runtime dependencies:
+    - python-boto3 &gt;= 1.43.1 (new in 1.101.0, non-optional)
+    - python-pydantic-settings &gt;= 2.14.1
+  * Bumped runtime floors to match the 1.101.0   
+  * 1.101.0 switched the PEP 517 backend to maturin to build a new Rust
+    extension (litellm.rust_bridge._native) which is opt-in.
+    keep the pure-Python noarch wheel and build it with uv_build</comment>
+    <requestid>1378206</requestid>
+  </revision>
 </revisionlist>

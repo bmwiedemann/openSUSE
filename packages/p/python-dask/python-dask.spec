@@ -17,8 +17,6 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
-%global skip_python310 1
-%global skip_python311 1
 %{?sle15_python_module_pythons}
 %if "%{flavor}" == ""
 %define psuffix %{nil}
@@ -27,9 +25,6 @@
 %bcond_without test
 %define psuffix -%{flavor}
 %if 0%{suse_version} >= 1599
-%if "%{flavor}" != "test-py310"
-%define skip_python310 1
-%endif
 %if "%{flavor}" != "test-py311"
 %define skip_python311 1
 %endif
@@ -56,7 +51,7 @@ ExclusiveArch:  donotbuild
 
 Name:           python-dask%{psuffix}
 # ===> Note: python-dask MUST be updated in sync with python-distributed! <===
-Version:        2026.6.0
+Version:        2026.8.0
 Release:        0
 Summary:        Minimal task scheduling abstraction
 License:        BSD-3-Clause
@@ -144,6 +139,7 @@ BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module xarray if %python-base >= 3.12}
 BuildRequires:  %{python_module zarr if %python-base >= 3.12}
 # /SECTION
+ExcludeArch:    %ix86 %arm
 %endif
 %python_subpackages
 

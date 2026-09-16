@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 14 20:49:53 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 11.2.3:
+  * Added linear-response TDDFT to ultra long-range (experimental)
+  * Fixed a problem with the tesseral tensor moments
+  * Reintroduced the 'frozen-core approximation'; set 'frzncore'
+    to .true.
+  * Changed the default approximate kinetic energy density (KED)
+    functional to type 51; this is the Thomas-Fermi functional
+    derivative scaled to match the exact tau; used for partially
+    deorbitalised meta-GGA functionals
+  * Changed the sign of the dipole hyperfine field to match
+    convention
+  * Added the variable 'rminall'; this sets the smallest radial
+    mesh point for all species
+  * Added new 'task' -1 which causes the code to idle for 'tidle'
+    seconds, set to 3600 by default
+  * Improved various convergence tolerances
+  * Various optimisations and minor improvements
+- Incompatible with wannier90 >=4, so build without wannier90
+  support.
+- Changes from previous versions:
+  * See https://sourceforge.net/p/elk/news/
+
+-------------------------------------------------------------------
 Mon Oct 23 11:41:04 UTC 2023 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Drop support for obsolete openmpi[123]

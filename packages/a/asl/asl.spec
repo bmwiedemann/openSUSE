@@ -16,7 +16,7 @@
 #
 
 
-%define rev 310
+%define rev 312
 Name:           asl
 Version:        1.42_bld%{rev}
 Release:        0

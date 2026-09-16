@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Sep 16 02:15:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.15.0:
+  * Outlier-robust covariance estimation.
+  * ccf can optionally return confidence intervals.
+  * Plot cross-correlations and the auto/cross-correlation matrix.
+  * Plot the prediction curve over a scatter plot in
+    GLMGamResults.plot_partial.
+  * Add MultivariateLS.
+  * Faster computation of state space revision impacts.
+  * Two-sample z-test, unequal-variances case.
+  * Improve lag selection in pacf.
+  * Add Cython 3 compatibility.
+  * GLM models now save the names of input pandas Series.
+  * Robust: additional tools and norms.
+  * Add CovDetMCD, CovDetMM, RLMDetSMM, and related estimators.
+  * Add a "one-sided" alternative for proportion_confint.
+  * Add an alternative option to confint_poisson.
+  * Add optional parameters to summary_col to indicate fixed effects.
+  * Ensure returned arrays are owned (not views).
+  * Improve precision of a diagnostic printout (mean_diff:.3g).
+  * Add the Leybourne-McCabe stationarity test.
+  * Add a sample-size calculation for Wilcoxon/Mann-Whitney tests.
+  * More reliable casting of pandas data.
+  * Add an abstracted formula engine supporting patsy and formulaic.
+  * x13_arima_analysis can produce seasonality fit diagnostics.
+  * Allow the ARDL model to use a "ctt" trend.
+  * Add plot keyword arguments to qqplot_2samples.
+  * x13_arima_analysis gained an optional raw spec parameter.
+  * Support array-like and pandas-like data more broadly.
+  * Add a “no cross terms” option to White’s heteroscedasticity test.
+  * Add a seasonal diagnostic plot to graphics.tsaplots.
+  * Make tsa.statespace Cython usage compatible with SciPy ILP64 builds.
+  * Allow seasonal-differencing-only models with non-seasonal estimators.
+  * Add add_ellipse to graphics, and support passing x/y arrays.
+  * Add order validation to the Hannan-Rissanen estimator.
+  * Consistently use rng to move towards SPEC-007.
+  * Add the partial cross-correlation function pccf and plot_pccf.
+  * Add the Hamilton filter.
+  * Add a delete-k (block) jackknife estimator.
+  * Allow pre-calculated error bands to be passed to the IRF plots.
+  * Support fixed_params in innovations_mle.
+  * Add a min_diag option to cov_nearest for zero or negative diagonal
+    entries.
+  * acf/pacf accept a list of lags in addition to maxlag.
+  * Return NamedTuple results in place of variable-length tuples.
+  * Accept Polars DataFrame/Series input in models and the formula API.
+  * Add the Jonckheere-Terpstra ordered trend test.
+  * Add the Diebold-Mariano test of equal predictive accuracy.
+  * Add the Pesaran-Timmermann test of directional predictive accuracy.
+  * Add local false discovery rate estimation (local_fdr_correction).
+  * Add LocalProjections, a Jorda local-projections estimator for impulse
+    response functions with Newey-West HAC standard errors.
+  * Implement an L1-penalized solver for GLM.
+  * Add CRV3 (cluster-jackknife) cluster-robust inference for OLS/ WLS.
+  * Warn when exog is (numerically) singular in the *LS model family, instead
+    of silently returning an unreliable fit.
+  * Make the ndim check in array_like orthogonal to maxdim, so the two can be
+    combined instead of one silently overriding the other.
+  * NominalGEE accepts non-numeric groups labels (for example strings),
+    instead of failing to cast them to float64 internally.
+  * Robust linear model (RLM) scale-estimator callables passed via scale_est
+    may now optionally accept the fitted model and residuals, in addition to
+    the previously-supported single-argument (residuals only) form, which
+    continues to work unchanged.
+  * Add fit_regularized to HurdleCountModel.
+  * MICEData is now iterable: each iteration step advances the chain by one
+    update cycle and yields the current imputed dataset, so
+    itertools.islice(mice_data, n) produces n successive imputed datasets.
+
+-------------------------------------------------------------------
 Tue Mar  3 16:29:20 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.14.6

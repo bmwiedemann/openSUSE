@@ -42,4 +42,12 @@
   testsuites with e.g. WAV files.</comment>
     <requestid>1376011</requestid>
   </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>dc06db35cbbf97859f11c10c069ce7b5</srcmd5>
+    <version>9.0.1</version>
+    <time>1789573485</time>
+    <user>anag_factory</user>
+    <comment>add bugrefs</comment>
+    <requestid>1378220</requestid>
+  </revision>
 </revisionlist>

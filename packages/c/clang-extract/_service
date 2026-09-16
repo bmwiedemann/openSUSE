@@ -1,15 +1,15 @@
 <services>
-	<service name="tar_scm" mode="manual">
-		<param name="scm">git</param>
-		<param name="url">https://github.com/SUSE/clang-extract</param>
-		<param name="revision">63e5c9b734deaabe139200ba8cd8fb63ca3ac8a3</param>
-		<param name="versionformat">0~%cd.%h</param>
-		<param name="changesgenerate">enable</param>
-        <param name="changesauthor">giuliano.belinassi@suse.com</param>
-	</service>
-	<service name="recompress" mode="manual">
-		<param name="file">*.tar</param>
-		<param name="compression">xz</param>
-	</service>
-	<service name="set_version" mode="manual"/>
+  <service name="tar_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/SUSE/clang-extract</param>
+    <param name="versionformat">0~%cd.%h</param>
+    <param name="changesgenerate">enable</param>
+    <param name="changesauthor">giuliano.belinassi@suse.com</param>
+    <param name="revision">main</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
 </services>

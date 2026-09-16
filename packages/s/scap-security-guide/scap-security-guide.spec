@@ -42,7 +42,7 @@
 %endif
 
 Name:           scap-security-guide
-Version:        0.1.81
+Version:        0.1.82
 Release:        0
 Summary:        XCCDF files for SUSE Linux and openSUSE
 License:        BSD-3-Clause
@@ -248,6 +248,7 @@ cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DSSG_PRODUCT_JRE=OFF \
         -DSSG_PRODUCT_MACOS1015=OFF \
         -DSSG_PRODUCT_OCP4=OFF \
+        -DSSG_PRODUCT_KYLINSECSERVER6=OFF \
         -DSSG_PRODUCT_KYLINSERVER10=OFF \
         -DSSG_PRODUCT_OL7=ON \
         -DSSG_PRODUCT_OL8=ON \
@@ -272,6 +273,7 @@ cmake   -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DSSG_PRODUCT_UBUNTU1804=ON \
         -DSSG_PRODUCT_UBUNTU2004=ON \
         -DSSG_PRODUCT_UBUNTU2204=ON \
+        -DSSG_PRODUCT_UBUNTU2604=OFF \
         -DSSG_PRODUCT_UOS20=OFF \
         -DSSG_PRODUCT_VSEL=OFF \
         -DSSG_PRODUCT_EKS=OFF \

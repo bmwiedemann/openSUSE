@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 15 15:16:24 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version 1.101.0i fix bsc#1278303 (CVE-2026-84377):
+  * New core runtime dependencies:
+    - python-boto3 >= 1.43.1 (new in 1.101.0, non-optional)
+    - python-pydantic-settings >= 2.14.1
+  * Bumped runtime floors to match the 1.101.0   
+  * 1.101.0 switched the PEP 517 backend to maturin to build a new Rust
+    extension (litellm.rust_bridge._native) which is opt-in.
+    keep the pure-Python noarch wheel and build it with uv_build 
+
+-------------------------------------------------------------------
 Tue Jun 16 13:30:00 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Update to version 1.89.1:

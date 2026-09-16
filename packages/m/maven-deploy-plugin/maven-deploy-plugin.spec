@@ -17,7 +17,7 @@
 
 
 Name:           maven-deploy-plugin
-Version:        3.1.4
+Version:        3.2.0
 Release:        0
 Summary:        Maven Deploy Plugin
 License:        Apache-2.0

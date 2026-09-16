@@ -7,4 +7,12 @@
     <comment>restore @ v149.4.0</comment>
     <requestid>1363537</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>656c6b7fdaee9ec45db10fcd673bbc53</srcmd5>
+    <version>149.4.0</version>
+    <time>1789573346</time>
+    <user>anag_factory</user>
+    <comment>Drop -C incremental=false to make package build reproducible (boo#1231548)</comment>
+    <requestid>1378149</requestid>
+  </revision>
 </revisionlist>

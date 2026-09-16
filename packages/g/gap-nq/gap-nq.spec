@@ -17,7 +17,7 @@
 
 
 Name:           gap-nq
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        GAP: Nilpotent Quotients of Finitely Presented Groups
 License:        GPL-2.0-or-later

@@ -232,4 +232,12 @@
     <comment>jq.changes: add missing CVE citation</comment>
     <requestid>1378140</requestid>
   </revision>
+  <revision rev="25" vrev="3">
+    <srcmd5>243d9e2feda9b0d51fb084071523f429</srcmd5>
+    <version>1.8.2</version>
+    <time>1789573486</time>
+    <user>anag_factory</user>
+    <comment>jq.changes: add missing corresponding bsc citation to CVE citation</comment>
+    <requestid>1378311</requestid>
+  </revision>
 </revisionlist>

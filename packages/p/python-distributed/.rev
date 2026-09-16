@@ -1243,4 +1243,12 @@
   * Fix tests vs. NumPy nightly builds @crusaderky</comment>
     <requestid>1359663</requestid>
   </revision>
+  <revision rev="93" vrev="1">
+    <srcmd5>91695b3d87c40841b9f50a853a2b7d27</srcmd5>
+    <version>2026.8.0</version>
+    <time>1789573528</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378242</requestid>
+  </revision>
 </revisionlist>

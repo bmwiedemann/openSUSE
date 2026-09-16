@@ -942,4 +942,12 @@ SPDX format (note that it should CDDL-1.1 if the (c) owner and license steward i
     <comment>1.10.18</comment>
     <requestid>1377308</requestid>
   </revision>
+  <revision rev="105" vrev="2">
+    <srcmd5>6b730d461f8c0f3ef01ae3c85918cbcc</srcmd5>
+    <version>1.10.18</version>
+    <time>1789573489</time>
+    <user>anag_factory</user>
+    <comment>Add bug number</comment>
+    <requestid>1378394</requestid>
+  </revision>
 </revisionlist>

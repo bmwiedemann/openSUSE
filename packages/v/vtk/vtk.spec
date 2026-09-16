@@ -32,6 +32,12 @@
 
 %define pkgname vtk
 
+%if 0%{?suse_version} > 1600
+%define qt_ver 6
+%else
+%define qt_ver 5
+%endif
+
 # pugixml in Leap 15.x is too old
 # fmt in Leap 15.x is too old
 # Need haru/hpdf version with HPDF_SHADING, i.e. >= 2.4.0
@@ -49,12 +55,7 @@
 %bcond_without pugixml
 %bcond_without nlohmann
 %bcond_without cli11
-# fmt in Factory is too new
-%if 0%{?suse_version} <= 1600
 %bcond_without fmt
-%else
-%bcond_with fmt
-%endif
 %define have_strip_nondeterminism 1
 %endif
 
@@ -103,9 +104,9 @@
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
-Version:        9.6.1
+Version:        9.7.0
 Release:        0
-%define series  9.6
+%define series  9.7
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -136,7 +137,6 @@ Patch21:        0001-Link-jawt-unconditionally-on-all-platforms.patch
 BuildRequires:  cgns-devel
 BuildRequires:  chrpath
 BuildRequires:  cmake >= 3.12
-BuildRequires:  double-conversion-devel
 BuildRequires:  fdupes
 %if 0%{?suse_version} <= 1500
 BuildRequires:  gcc14-c++
@@ -154,17 +154,19 @@ BuildRequires:  libmysqlclient-devel
 BuildRequires:  libtiff-devel
 BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
-BuildRequires:  python3-qt5-devel
+BuildRequires:  python3-qt%{qt_ver}-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  cmake(Verdict)
 BuildRequires:  cmake(nlohmann_json)
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5OpenGL)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Core)
+BuildRequires:  pkgconfig(Qt%{qt_ver}OpenGL)
+%if %{qt_ver} == 5
 BuildRequires:  pkgconfig(Qt5OpenGLExtensions)
-BuildRequires:  pkgconfig(Qt5Sql)
-BuildRequires:  pkgconfig(Qt5Widgets)
+%endif
+BuildRequires:  pkgconfig(Qt%{qt_ver}Sql)
+BuildRequires:  pkgconfig(Qt%{qt_ver}Widgets)
 BuildRequires:  pkgconfig(eigen3) >= 3.3.9
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(freetype2) >= 2.11.0
@@ -197,7 +199,6 @@ BuildRequires:  pkgconfig(CLI11)
 %endif
 %if %{with fmt}
 BuildRequires:  fmt-devel > 11.0
-BuildConflicts: fmt-devel >= 12
 %endif
 %if %{with gl2ps}
 BuildRequires:  gl2ps-devel > 1.4.0
@@ -265,7 +266,6 @@ Requires:       %{name}-qt = %{version}
 Requires:       %{shlib} = %{version}
 Requires:       cgns-devel
 Requires:       cmake >= 3.4
-Requires:       double-conversion-devel
 %{?with_fmt:Requires:       fmt-devel}
 Requires:       gcc-c++
 %{?with_gl2ps:Requires:       gl2ps-devel}
@@ -282,11 +282,13 @@ Requires:       utfcpp-devel
 %{?with_fast_float:Requires:       cmake(FastFloat)}
 Requires:       cmake(Verdict)
 Requires:       cmake(nlohmann_json)
-Requires:       pkgconfig(Qt5Core)
-Requires:       pkgconfig(Qt5OpenGL)
+Requires:       pkgconfig(Qt%{qt_ver}Core)
+Requires:       pkgconfig(Qt%{qt_ver}OpenGL)
+%if %{qt_ver} == 5
 Requires:       pkgconfig(Qt5OpenGLExtensions)
-Requires:       pkgconfig(Qt5Sql)
-Requires:       pkgconfig(Qt5Widgets)
+%endif
+Requires:       pkgconfig(Qt%{qt_ver}Sql)
+Requires:       pkgconfig(Qt%{qt_ver}Widgets)
 Requires:       pkgconfig(expat)
 Requires:       pkgconfig(freetype2)
 Requires:       pkgconfig(gl)
@@ -383,7 +385,7 @@ Requires:       %{name}-qt = %{version}
 Requires:       %{shlib} = %{version}
 %{?with_mpi:Requires:       python3-mpi4py}
 Requires:       python3-numpy
-Requires:       python3-qt5
+Requires:       python3-qt%{qt_ver}
 Conflicts:      python3-vtk-compat_gl
 
 %description -n python3-%{name}
@@ -546,9 +548,9 @@ export CXXFLAGS="%{optflags}"
     -DVTK_MODULE_USE_EXTERNAL_VTK_sqlite:BOOL=ON \
     -DVTK_MODULE_USE_EXTERNAL_VTK_token:BOOL=OFF \
     -DVTK_MODULE_USE_EXTERNAL_VTK_verdict=%{?with_verdict:ON}%{!?with_verdict:OFF} \
+    -DVTK_SMP_ENABLE_OPENMP:BOOL=ON \
+    -DVTK_SMP_ENABLE_TBB:BOOL=%{?with_tbb:ON}%{!?with_tbb:OFF} \
     -DVTK_OPENGL_USE_GLES:BOOL=%{?with_gles:ON}%{!?with_gles:OFF} \
-    -DVTK_PYTHON_VERSION=3 \
-    -DVTK_SMP_IMPLEMENTATION_TYPE=%{?with_tbb:TBB}%{!?with_tbb:Sequential} \
     -DVTK_USE_EXTERNAL:BOOL=ON \
     -DVTK_WRAP_JAVA:BOOL=%{?with_java:ON}%{!?with_java:OFF} \
     -DVTK_WRAP_PYTHON:BOOL=ON \
@@ -654,16 +656,12 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %ctest
 %endif
 
-%post   -n %{shlib} -p /sbin/ldconfig
-%postun -n %{shlib} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{shlib}
 %if %{with java}
-%post   java -p /sbin/ldconfig
-%postun java -p /sbin/ldconfig
+%ldconfig_scriptlets java
 %endif
-%post   qt -p /sbin/ldconfig
-%postun qt -p /sbin/ldconfig
-%post   -n python3-%{name} -p /sbin/ldconfig
-%postun -n python3-%{name} -p /sbin/ldconfig
+%ldconfig_scriptlets qt
+%ldconfig_scriptlets -n python3-%{name}
 
 %files -n %{shlib}
 %license Copyright.txt

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 15:48:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1.7:
+  * Borg warnings fail backups by default; monitoring hooks only
+    send logs when explicitly enabled.
+  * Experimental "browse" action with console UI for backups.
+  * New "diff" and "config show" actions; Watchgoose monitoring hook.
+  * MariaDB/MySQL hooks dump events, routines, tablespaces.
+  * Borg 2 repo-create/transfer flags; Cronhub hook removed upstream.
+  * Fixes for ZFS unmounts, restore port lookup, diff excludes.
+- Drop obsolete setup.py %prep fixups and the Leap <= 15.0 service hack.
+- Add test BuildRequires for the new browse/pytest plugins.
+- Upstream license now declared GPL-3.0-or-later.
+
+-------------------------------------------------------------------
 Fri Aug  7 05:42:53 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Remove unneeded BuildRequires on the py module.

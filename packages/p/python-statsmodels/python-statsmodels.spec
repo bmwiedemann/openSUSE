@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-statsmodels%{psuffix}
-Version:        0.14.6
+Version:        0.15.0
 Release:        0
 Summary:        A Python module that allows users to explore data
 License:        BSD-3-Clause
@@ -35,16 +35,17 @@ URL:            https://github.com/statsmodels/statsmodels
 Source:         https://files.pythonhosted.org/packages/source/s/statsmodels/statsmodels-%{version}.tar.gz
 BuildRequires:  %{python_module Cython >= 3.0.10 with %python-Cython < 4}
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module numpy-devel >= 1.22.3}
+BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module numpy-devel >= 2.0.0}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module scipy >= 1.8}
+BuildRequires:  %{python_module scipy >= 1.13}
 BuildRequires:  %{python_module setuptools >= 0.69.0.2}
 BuildRequires:  %{python_module setuptools_scm >= 8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  python-rpm-macros
-Requires:       python-numpy >= 1.22.3
+Requires:       python-numpy >= 1.23.5
 Requires:       python-packaging >= 21.3
 Requires:       python-pandas >= 1.4
 Requires:       python-patsy >= 0.5.6
@@ -60,6 +61,7 @@ BuildRequires:  %{python_module matplotlib >= 3}
 # SECTION test requirements
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module pytest >= 7.0.1}
+BuildRequires:  %{python_module pytest-randomly}
 BuildRequires:  %{python_module pytest-xdist}
 # /SECTION
 %endif
@@ -78,14 +80,12 @@ and data analysis in Python.
 %autosetup -p1 -n statsmodels-%{version}
 
 rm -rf statsmodels/.pytest_cache
-find . -type f -name "*.py" -exec sed -i -e '1{/env python/ d}' -e 's/\r$//' {} \;
-find . -type f -exec chmod a-x {} \;
+find . -type f -name "*.py" -not -path '*/_build/*' -exec sed -i -e '1{/env python/ d}' -e 's/\r$//' {} \;
+find . -type f -not -path '*/_build/*' -exec chmod a-x {} \;
 find . -type f -name "*.ipynb" -exec sed -i 's/\r$//' {} \;
 find . -type f -name "*.csv" -exec sed -i 's/\r$//' {} \;
 sed -i 's/\r$//' COPYRIGHTS.txt
 sed -i 's/\r$//' LICENSE.txt
-sed -i 's/\r$//' README.rst
-sed -i 's/\r$//' README_l1.txt
 
 %build
 %if !%{with test}
@@ -106,7 +106,7 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 testdir=/tmp/%{name}-testdir
 rm -rf $testdir
 mkdir $testdir
-cp setup.cfg $testdir
+cp pyproject.toml $testdir
 pushd $testdir
 # test results not packaged: https://github.com/statsmodels/statsmodels/issues/8928, test_stl see below
 donttest="test_mstl"
@@ -126,7 +126,7 @@ rm -r $testdir
 
 %if !%{with test}
 %files %{python_files}
-%doc README.rst README_l1.txt
+%doc README.md
 %doc examples/
 %license COPYRIGHTS.txt LICENSE.txt
 %{python_sitearch}/statsmodels/

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:33:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.0
+  Fixes
+  * out_curses: use xcalloc instead of a fixed buffer. #54
+  * curses: Fix seperator lines. #64
+  * fix segfault on element removal. #102
+  * fix: Fix memory leaks in module_set(). #122
+  * fix: Convert usage of strdup/free to xstrdup/xfree. #124
+  Features
+  * Allow numeric colors in bmonrc.
+  * curses: Add CTRL-N/CTRL-P for next/previous element.
+  * feat: Add IPv4/IPv6 addresses to additional info.
+  * feat: Add configure option to disable IPv6 in netlink module.
+  * feat: Add ability to toggle TC elements.
+  * curses: render graphs with Braille cells.
+  * display filters for TC ingress and egress.
+  * Add support for JSON output.
+  * Remove the 'Really quit' dialog and just exit cleanly.
+- Update URL
+
+-------------------------------------------------------------------
 Tue Dec 13 11:10:12 UTC 2016 - idonmez@suse.com
 
 - Update to version 4.0

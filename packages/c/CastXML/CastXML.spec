@@ -24,6 +24,8 @@ License:        Apache-2.0
 URL:            https://github.com/CastXML/CastXML
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM CastXML-llvm-23-compat.patch gh#CastXML/CastXML#298 badshah400@gmail.com -- Port to LLVM/Clang Git 23
+Patch0:         CastXML-llvm-23-compat.patch
 BuildRequires:  clang-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -48,7 +50,8 @@ CastXML is a C-family abstract syntax tree XML output tool.
 %cmake -DCastXML_INSTALL_MAN_DIR:PATH=%{_mandir} \
        -DCastXML_INSTALL_DOC_DIR:PATH=%{_docdir}/%{name} \
        -DCLANG_LINK_CLANG_DYLIB:BOOL=ON \
-       -DBUILD_TESTING:BOOL=ON \
+       -DCMAKE_EXE_LINKER_FLAGS:STRING="%{optflags} -lm" \
+			 -DBUILD_TESTING:BOOL=ON \
        -DSPHINX_HTML:BOOL=ON \
        -DSPHINX_MAN:BOOL=ON
 

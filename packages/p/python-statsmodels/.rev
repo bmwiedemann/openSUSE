@@ -207,4 +207,41 @@ Needed by python-seaborn, see request 436927</comment>
     <comment></comment>
     <requestid>1336294</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>fa3e34003d388cb71c2c5b31faa1850d</srcmd5>
+    <version>0.15.0</version>
+    <time>1789573491</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.0:
+  * Outlier-robust covariance estimation.
+  * ccf can optionally return confidence intervals.
+  * Plot cross-correlations and the auto/cross-correlation matrix.
+  * Plot the prediction curve over a scatter plot in
+    GLMGamResults.plot_partial.
+  * Add MultivariateLS.
+  * Faster computation of state space revision impacts.
+  * Two-sample z-test, unequal-variances case.
+  * Improve lag selection in pacf.
+  * Add Cython 3 compatibility.
+  * GLM models now save the names of input pandas Series.
+  * Robust: additional tools and norms.
+  * Add CovDetMCD, CovDetMM, RLMDetSMM, and related estimators.
+  * Add a &quot;one-sided&quot; alternative for proportion_confint.
+  * Add an alternative option to confint_poisson.
+  * Add optional parameters to summary_col to indicate fixed effects.
+  * Ensure returned arrays are owned (not views).
+  * Improve precision of a diagnostic printout (mean_diff:.3g).
+  * Add the Leybourne-McCabe stationarity test.
+  * Add a sample-size calculation for Wilcoxon/Mann-Whitney tests.
+  * More reliable casting of pandas data.
+  * Add an abstracted formula engine supporting patsy and formulaic.
+  * x13_arima_analysis can produce seasonality fit diagnostics.
+  * Allow the ARDL model to use a &quot;ctt&quot; trend.
+  * Add plot keyword arguments to qqplot_2samples.
+  * x13_arima_analysis gained an optional raw spec parameter.
+  * Support array-like and pandas-like data more broadly.
+  * Add a “no cross terms” option to White’s heteroscedasticity test.
+  * Add a seasonal diagnostic plot to graphics.tsaplots.</comment>
+    <requestid>1378231</requestid>
+  </revision>
 </revisionlist>

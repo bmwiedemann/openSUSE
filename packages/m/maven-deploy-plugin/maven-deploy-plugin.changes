@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:18:12 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 3.2.0
+  * New features and improvements
+    + Cache projectsWithDeployExecution to fix O(N²) reactor scan
+  * Bug Fixes
+    + Backport security audit fixes to 3.x (f004-f008, f010, f012)
+  * Documentation updates
+    + Clarify deploy without editing this projects POM
+    + Restore the plain form of the ASF licence header
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+  * Maintenance
+    + Simplify remote repository creation
+    + Restore the plain form of the ASF licence header
+    + enable build with Maven 4
+    + Add AGENTS.md + SECURITY.md security-model pointer for scanner
+      discoverability
+    + Migration to JUnit 5 - avoid using AbstractMojoTestCase
+    + Migration to JUnit 5 - avoid using AbstractMojoTestCase in
+      DeployFileMojoTest
+    + Bump m-invoker-p to 3.9.1
+    + Feature/apt to md 3.x
+  * Build
+    + update deployAtEnd ITs to match latest 4 behaviour
+  * Dependency updates
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump org.apache.maven.plugins:maven-plugins from 44 to 49
+    + Bump mavenVersion from 3.9.9 to 3.9.16
+    + Bump resolverVersion from 1.9.22 to 1.9.27
+    + Bump org.apache.maven.plugin-testing
+      :maven-plugin-testing-harness from 3.3.0 to 3.5.1
+    + Update Plugins to 44 (3.x branch)
+- Modified patch:
+  * plexus-xml4-compat.patch
+    + rediff to changed context
+
+-------------------------------------------------------------------
 Sun Jul 19 13:51:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:

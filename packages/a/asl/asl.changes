@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:25:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld312
+  Changes
+  * Avoid printing an odd number of bytes or words per line in the
+    listing.
+  Additions
+  * Rework SH target:
+    + Add SH4(A) and SH2A instructions.
+    + Add FPU instructions.
+    + Add DSP instructions.
+
+-------------------------------------------------------------------
+Wed Sep  2 18:56:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld311
+  Additions
+  * CP-1600: Allow PC/SP as alias for R7/R6.
+  * CP-1600: Allow usage of register symbols.
+  * CP-1600: Add question mark marking of unknown bit fields in
+    listing.
+  Bugfixes
+  * TMS320C3x: Resolve yet another parallelism issue
+  * CP-1600: Assure only bits 0..7 are set in hi-byte instruction
+    word of SDBD.
+  * CP-1600: correct instruction alias (BLGE instead of BLGT for BC)
+
+-------------------------------------------------------------------
 Sat Jul  4 06:40:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 142-bld310

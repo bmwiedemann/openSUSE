@@ -2,17 +2,18 @@
 Thu Sep 10 19:38:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.10.18
+  * Fixes: bsc#1280015 (CVE-2026-78254)
   * Breaking changes:
     + the default value for <ftp>'s useSecureDataChannel has been
       changed to true which means using ftps now also tries to use
       an encrypted data channel by default.
     + the <ftp> and <scp> tasks have new allowFilesToEscapeDest
-    attributes. When set to false - which is the default - the tasks
-    will not download files or create directories outside the
-    designated destination directory when downloading from the
-    remote server. In the unlikely case you need the old bahaviour
-    of writing outside the destination directory you must set the
-    value to true explicitly.
+      attributes. When set to false - which is the default - the
+      tasks will not download files or create directories outside
+      the designated destination directory when downloading from the
+      remote server. In the unlikely case you need the old bahaviour
+      of writing outside the destination directory you must set the
+      value to true explicitly.
   * Other changes:
     + when using the SOURCE_DATE_EPOCH environment variable to set
       the time for <tstamp> the timezone will now be set to UTC for

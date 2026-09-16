@@ -384,4 +384,41 @@
     <comment></comment>
     <requestid>1353140</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ac1364c9f80fecfeab7f68eab6c9b1a0</srcmd5>
+    <version>5.2.3</version>
+    <time>1789573484</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.2.3:
+  ## General:
+  * Dropped support for the Panorama service, following the removal by
+    botocore
+  ## New Services:
+  * Clean Rooms
+  * DevOps Agent
+  * Payment Cryptography
+  ## Miscellaneous:
+  * AppMesh: list_gateway_routes()/list_virtual_gateways() now support
+    pagination
+  * CloudFormation: create_stack_instances() is now idempotent for existing
+    instances
+  * CloudFront: list_distributions() now returns all DistributionConfig
+    attributes
+  * CloudTrail: start_logging()/stop_logging() now support a supplied Trail
+    ARN as well as a Name
+  * Config: get_resource_config_history() now correctly returns SNS tags
+  * DynamoDB: scan() now validates and honors the Select-parameter
+  * DynamoDB: update_item() now correctly preserves decimal precision in
+    SET-operations
+  * EC2: describe_instances() now correctly filters by 'availability-zone'
+  * ECS: run_task() now supports the capacityProviderStrategy-parameter
+  * EMRServerless: get_job_run() now returns the ExecutionRole-attribute
+  * Events: list_event_buses() now supports pagination
+  * Firehose: create_delivery_stream() now supports the
+    IcebergDestinationConfiguration-parameter
+  * Glue: get_partitions() now supports empty Expression-attributes,
+    returning everything
+  * Kinesis: list_stream_consumers() now supports pagination</comment>
+    <requestid>1378230</requestid>
+  </revision>
 </revisionlist>

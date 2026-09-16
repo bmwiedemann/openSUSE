@@ -18,10 +18,10 @@
 
 %define pythons python3
 Name:           borgmatic
-Version:        1.9.5
+Version:        2.1.7
 Release:        0
 Summary:        Automation tool for borgbackup
-License:        GPL-3.0-only
+License:        GPL-3.0-or-later
 URL:            https://torsion.org/borgmatic
 Source:         https://github.com/borgmatic-collective/borgmatic/archive/%{version}.tar.gz#/borgmatic-%{version}.tar.gz
 BuildRequires:  %{python_module PyYAML}
@@ -29,6 +29,7 @@ BuildRequires:  %{python_module appdirs}
 BuildRequires:  %{python_module apprise}
 BuildRequires:  %{python_module attrs}
 BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module binaryornot}
 BuildRequires:  %{python_module click}
 BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module flake8}
@@ -39,11 +40,14 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pluggy}
 BuildRequires:  %{python_module pycodestyle}
 BuildRequires:  %{python_module pyflakes}
+BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module ruamel.yaml}
 BuildRequires:  %{python_module setuptools}
+BuildRequires:  %{python_module textual}
 BuildRequires:  %{python_module toml}
 BuildRequires:  borgbackup
 BuildRequires:  fdupes
@@ -73,10 +77,6 @@ common errors.
 %prep
 %autosetup -p1
 
-%if 0%{?suse_version} <= 1500
-sed -i -e "s/^LogRateLimitIntervalSec=/#LogRateLimitIntervalSec=/" sample/systemd/borgmatic.service
-%endif
-
 # Make sample files use the borgmatic command on /usr/bin, not /usr/local/bin
 perl -pi -e "s,PATH=\\$PATH:%{_prefix}/local/bin /root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/cron/borgmatic
 perl -pi -e "s,/root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/systemd/borgmatic.service
@@ -84,8 +84,6 @@ perl -pi -e "s,/root/.local/bin/borgmatic,%{_bindir}/borgmatic," sample/systemd/
 perl -pi -e "s,=sleep,=%{_bindir}/sleep," sample/systemd/borgmatic.service
 perl -pi -e "s,=sleep,=%{_bindir}/sleep," sample/systemd/borgmatic-user.service
 perl -pi -e "s,=systemd-inhibit,=%{_bindir}/systemd-inhibit," sample/systemd/borgmatic.service
-perl -pi -e "s/ruamel.yaml>0.15.0,<0.17.0/ruamel.yaml/" setup.py
-perl -pi -e "s/packages=find_packages\(\)/packages=find_packages(exclude=('tests*',))/" setup.py
 
 %build
 %pyproject_wheel
@@ -117,7 +115,7 @@ ln -s %{_sbindir}/service %{buildroot}%{_sbindir}/rcborgmatic
 export LANG=en_US.UTF-8
 %python_exec -m venv --system-site-packages --without-pip borgmatic-env
 source borgmatic-env/bin/activate
-%python_exec -m pip install --disable-pip-version-check --no-compile --ignore-installed --no-deps --no-index --find-links ./build borgmatic==1.9.5
+%python_exec -m pip install --disable-pip-version-check --no-compile --ignore-installed --no-deps --no-index --find-links ./build borgmatic==2.1.7
 PYTHONPATH=$(pwd):%{buildroot} py.test -v --pyargs borgmatic tests
 
 %post

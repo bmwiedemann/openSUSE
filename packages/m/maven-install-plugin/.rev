@@ -63,4 +63,12 @@
     <comment>A security fix without CVE number</comment>
     <requestid>1249283</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>8d4167ff2554fa7a2771020cbea15346</srcmd5>
+    <version>3.2.0</version>
+    <time>1789573350</time>
+    <user>anag_factory</user>
+    <comment>3.2.0</comment>
+    <requestid>1378161</requestid>
+  </revision>
 </revisionlist>

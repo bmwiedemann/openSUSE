@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep  4 10:29:59 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Drop -C incremental=false to make package build reproducible (boo#1231548)
+
+-------------------------------------------------------------------
 Sat Jun 27 15:02:43 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Update to version 149.4.0:

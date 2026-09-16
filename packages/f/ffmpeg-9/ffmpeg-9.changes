@@ -46,6 +46,8 @@ Wed Aug 12 13:52:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     (CVE-2026-75146, bsc#1276412)
   * avformat/rtpenc_av1: bound OBU size in the keyframe search loop.
     (CVE-2026-75147, bsc#1276413)
+  * avcodec/tdsc: remove double stride adjustment
+    (CVE-2026-18393, bsc#1277377)
 
 -------------------------------------------------------------------
 Wed Aug  5 17:37:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 12 15:51:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.6:
+  * Fix scheduler crash when a profile no longer exists
+  * Run schedules past Qt's ~24.8 day timer ceiling by re-arming
+    a deadline timer in chunks
+  * Detect resume from sleep on systems without logind
+  * Release the main window's native window when it is closed
+  * Scheduler groundwork: persistent job store and pauses that
+    survive a restart
+  * Resync all locales via pylupdate6, improve Swedish translation
+  * Convert archive, source file and log tables to QTableView models
+  * Split ArchiveTab helpers and MiscTab settings into own modules
+- Add missing runtime dependency on python-packaging (imported by
+  the borg compatibility layer and the scheduler)
+
+-------------------------------------------------------------------
 Sat May 30 10:33:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.5:

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:15:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2026.2 (development line with LLVM code generator):
+  * bug fixes across compiler, runtime and Basis library
+  * new inline bit operations on words, Trilean structure in SML/NJ lib
+  * build.sh supports -install directory, macOS installers notarized
+- Switch to per-arch upstream source tarballs with bundled boot files;
+  drop obsolete pack_new_version.sh, urlgetter.sh and MLRISC.diff
+  (uninstalled doc helper with wrong perl path)
+- Narrow ExclusiveArch to x86_64 and aarch64 (upstream supports
+  64-bit Unix only); adds native aarch64 support
+- Build compiles the bundled LLVM code generator; new build
+  requirements on cmake, autoconf, automake and python3
+
+-------------------------------------------------------------------
 Sun May  5 21:03:34 UTC 2024 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to 110.95.5:

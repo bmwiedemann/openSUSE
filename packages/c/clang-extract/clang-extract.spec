@@ -16,32 +16,41 @@
 #
 
 
+%if   0%{?sle_version} == 150700 || 0%{suse_version} == 1570
+%define llvm_version    19
+%else
+%if   0%{?sle_version} == 150600 || 0%{suse_version} == 1560
+%define llvm_version    17
+%endif
+%endif
+
 Name:           clang-extract
-Version:        0~20260529.63e5c9b
+Version:        0~20260915.950c2c9
 Release:        0
 Summary:        A tool to extract code content from source files
 License:        Apache-2.0 WITH LLVM-exception AND NCSA
 URL:            https://github.com/SUSE/clang-extract
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  clang >= 17
-BuildRequires:  clang-devel >= 17
-#BuildRequires:  clang-tools
-#BuildRequires:  cmake
-BuildRequires:  ninja
+BuildRequires:  clang%{?llvm_version}
+BuildRequires:  clang%{?llvm_version}-devel
 BuildRequires:  libelf-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  zlib-devel
-# At least 16 is needed but 18 has some fixes that we like.
-# Leap 15.6 has only 17.
-#BuildRequires:  llvm-devel
-BuildRequires:  llvm >= 17
+BuildRequires:  llvm%{?llvm_version}
 BuildRequires:  meson
 BuildRequires:  ninja
+BuildRequires:  ninja
+BuildRequires:  python3
+BuildRequires:  zlib-devel
 
 %description
 A tool to extract code content from source files using the clang and LLVM infrastructure.
 
 %prep
+# Check if we have the python3 binary.
+if [ ! -x %{_bindir}/python3 ]; then
+  ln -s %{_bindir}/python%{python3_version} %{_bindir}/python%{python3_version}
+fi
+
 %autosetup -p1
 
 %build

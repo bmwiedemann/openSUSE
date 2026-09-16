@@ -219,6 +219,22 @@ Sat May  9 09:36:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2026-30997, bsc#1262047)
   * avcodec/rasc: fix heap use-after-free in decode_move().
     (CVE-2026-12706, bsc#1268595)
+  * avcodec/tdsc: remove double stride adjustment.
+    (CVE-2026-18393, bsc1277377)
+  * libswscale/utils: prevent division by zero for chroma width 8
+    (CVE-2026-38345, bsc#1277376)
+  * swscale/output: Fixes integer overflow in yuv2planeX_8_c.
+    (CVE-2026-38346, bsc#1277375)
+  * swscale/alphablend: don't overread alpha plane on subsampled odd size.
+    (CVE-2026-38347, bsc#1277373)
+  * swscale/utils: Check *Inc.
+    (CVE-2026-38348, bsc#1277368)
+  * swscale/output: Fix integer overflow in alpha in yuv2rgba64_1_c_template()
+    (CVE-2026-38349, bsc#1277369)
+  * swscale/output: Fix all bilinear integer overflows.
+    (CVE-2026-38350, bsc#1277370)
+  * swscale/output: Fix integer overflow with lum/chr/alpha filter.
+    (CVE-2026-38350, bsc#1277370)
 
 -------------------------------------------------------------------
 Thu Apr 30 19:22:32 UTC 2026 - Mia Herkt <mia@0x0.st>
@@ -278,6 +294,8 @@ Sat Jan 10 19:47:20 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
     initializing
   * avformat/dhav: Fix off by length of read element error
   * avcodec/ffv1enc: Consider variation in slice sizes
+  * avformat/hls: Be more picky on extensions.
+    (CVE-2023-6602, bsc#1220546, CVE-2023-6604, bsc#1220549)
 
 -------------------------------------------------------------------
 Sun Aug 24 07:09:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>

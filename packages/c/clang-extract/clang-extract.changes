@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:59:46 UTC 2026 - giuliano.belinassi@suse.com
+
+- Update to version 0~20260915.950c2c9:
+  * Remove <filesystem> includes.
+
+-------------------------------------------------------------------
+Tue Sep 15 08:12:23 UTC 2026 - giuliano.belinassi@suse.com
+
+- Update to version 0~20260914.6d30ac4:
+  * Add support for macro comments
+  * Add support for LLVM-23
+  * Add new `projecthack` policy.
+  * Add deduplication of headers
+  * Fix path of DSC files in CC mode.
+  * Add new `-DCE_CC=<path_to_c_compiler>` option
+  * Parse "Callgraph removal" nodes in .ipa-clones
+  * Merge update IPA clones callgraph with information from the source code.
+  * Disable warning stating that '-c' is ignored.
+  * Fix missing complete definition of structs referenced by other structs
+
+-------------------------------------------------------------------
 Sat May 30 16:35:45 UTC 2026 - giuliano.belinassi@suse.com
 
 - Update to version 0~20260529.63e5c9b:

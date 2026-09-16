@@ -1,7 +1,7 @@
 #
 # spec file for package vtkdata
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,9 +17,9 @@
 
 
 Name:           vtkdata
-Version:        9.5.1
+Version:        9.7.0
 Release:        0
-%define series  9.5
+%define series  9.7
 Summary:        Kitware VTK Library Data
 License:        BSD-3-Clause
 Group:          Productivity/Scientific/Other

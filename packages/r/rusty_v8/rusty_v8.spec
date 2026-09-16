@@ -26,9 +26,9 @@
 %endif
 
 %if %{with mold}
-%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "strip=none" "-A" "warnings"
 %else
-%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/ld.lld -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none" "-A" "warnings"
+%global build_rustflags "-C" "linker=clang++" "-C" "link-arg='-fuse-ld=/usr/bin/ld.lld -Wl,-z,relro,-z,now,-zstack-size=8388608'" "-C" "debuginfo=2" "-C" "strip=none" "-A" "warnings"
 %endif
 
 
@@ -151,7 +151,6 @@ rm -rf .github
 rm -f .gitignore .gitmodules
 rm .prettierrc.json
 rm .rustfmt.toml
-rm -rf false
 rm -rf vendor
 rm -rf target
 rm -rf third_party/rust-toolchain

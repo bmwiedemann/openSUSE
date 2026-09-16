@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:45:06 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2026.8.0:
+  * Await Bokeh dashboard shutdown
+  * Remove obsolete shuffle test type ignores
+  * Extend the fix from ab72092
+  * Repair test-report tooling
+  * Don't lose worker startup exception when its process exit is observed
+    first (flaky test_local_cluster_redundant_kwarg)
+  * Don't leave Nanny stuck in closing status when worker kill times out (fix
+    flaky test_chaos_rechunk)
+  * Don't dedupe span metadata by id() (fix flaky test_collections_metadata)
+  * Fix flaky test_many_Progress
+  * test_processing_chain: handle Pandas4Warning in nightly CI
+  * Update guidance on AI-assisted PRs
+  * Simplify pixi.toml for cuda
+
+-------------------------------------------------------------------
 Mon Jun 15 13:33:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6.0:

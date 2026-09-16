@@ -18,6 +18,7 @@
 #!BuildTag: opensuse/bci/python:%%py313_ver%%-base-%RELEASE%
 #!BuildTag: opensuse/bci/python:%%py313_ver%%-base
 #!BuildTag: opensuse/bci/python:3.13-base
+#!BuildTag: opensuse/bci/python:3.13
 #!BcntSyncTag: python-3.13-image
 
 FROM opensuse/tumbleweed:latest

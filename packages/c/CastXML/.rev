@@ -207,4 +207,13 @@ test: Fix expected cc-gnu predefined macro ordering
     <comment>Unresolvable (in devel project) until cmake is rebuilt against libuv</comment>
     <requestid>1335791</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>db848e667faa45f8554e839675483da1</srcmd5>
+    <version>0.7.0</version>
+    <time>1789573678</time>
+    <user>anag_factory</user>
+    <comment>* Add CastXML-llvm-23-compat.patch for compatibility with llvm&gt;=23; upstream master commit 315fbac (gh#CastXML/CastXML#298).
+* Pass `-lm` to linker flags to fix linking math libs when building binary.</comment>
+    <requestid>1378390</requestid>
+  </revision>
 </revisionlist>

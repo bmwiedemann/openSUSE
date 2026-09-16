@@ -231,4 +231,12 @@
     <comment>Update to 0.11.5 (0.11.4 + 0.11.5 fixes). Declare the bundled vorta.desktop as Source1 -- it was shipped but unreferenced, the factory-auto orphaned-source check that declined the previous request. Modernize: drop deprecated %suse_update_desktop_file in favour of an explicit install; drop Group tag.</comment>
     <requestid>1356030</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>0da920b7462021471bd94adc7a20fbe0</srcmd5>
+    <version>0.11.6</version>
+    <time>1789573671</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378319</requestid>
+  </revision>
 </revisionlist>

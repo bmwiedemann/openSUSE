@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           vorta
-Version:        0.11.5
+Version:        0.11.6
 Release:        0
 Summary:        Desktop Backup Client based on BorgBackup
 License:        Apache-2.0 AND GPL-3.0-only AND OFL-1.1
@@ -47,6 +47,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  python-rpm-macros
 Requires:       %{python_flavor}-PyQt6
 Requires:       %{python_flavor}-SecretStorage
+Requires:       %{python_flavor}-packaging
 Requires:       %{python_flavor}-peewee
 Requires:       %{python_flavor}-platformdirs
 Requires:       %{python_flavor}-psutil

@@ -47,4 +47,12 @@
     <comment>Make maven-deploy-plugin buildable with plexus-xml 3.x and 4.x alike</comment>
     <requestid>1366607</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3cfe556dd50a4d586b045f707d260afe</srcmd5>
+    <version>3.2.0</version>
+    <time>1789573350</time>
+    <user>anag_factory</user>
+    <comment>3.2.0</comment>
+    <requestid>1378162</requestid>
+  </revision>
 </revisionlist>

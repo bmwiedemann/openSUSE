@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 02:52:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pands-3.patch:
+  * Use argument 'q' rather than 'quantile' in one paramaterized test.
+
+-------------------------------------------------------------------
 Sun Apr 26 20:05:05 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.6:

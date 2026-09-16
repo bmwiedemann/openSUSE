@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:22:59 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2026.8.0:
+  * docs: fix duplicated-word typos in docstrings
+  * docs: fix broken cross-references in expr-system docs
+  * Suppress Pandas4Warning in nightly CI caused by PyArrow
+  * Fix pixi compatibility with upstream distributed
+  * Update guidance on AI-assisted PRs
+- don't build test flavors on 32-bit as blosc2 no longer supports it
+  (through python-tables)
+
+-------------------------------------------------------------------
 Mon Jun 15 13:28:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.6.0:

@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package elk
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -50,8 +50,11 @@ ExclusiveArch:  do_not_build
 %endif
 # /SECTION
 
+# Incompatible with wannier90 >= 4.0
+%bcond_with wannier90
+
 Name:           %{pname}%{?my_suffix}
-Version:        8.7.2
+Version:        11.2.3
 Release:        0
 Summary:        An all-electron full-potential linearised augmented-planewave code
 License:        GPL-3.0-or-later
@@ -63,16 +66,18 @@ BuildRequires:  fdupes
 BuildRequires:  gcc-fortran
 BuildRequires:  lapack-devel
 BuildRequires:  pkgconfig
-BuildRequires:  wannier90%{?my_suffix}-devel
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(libxc)
+%if %{with wannier90}
+BuildRequires:  wannier90%{?my_suffix}-devel
+# Needed to break degeneracies between multiple openmpi flavours
+Requires:       wannier90%{?my_suffix}-devel
+%endif
 %if %{with mpi}
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-devel
 BuildRequires:  %{mpi_flavor}%{mpi_vers}-macros-devel
 %openmpi_requires
 %endif
-# Needed to break degeneracies between multiple openmpi flavours
-Requires:       wannier90%{?my_suffix}-devel
 
 %description
 An all-electron full-potential linearised augmented-plane wave
@@ -136,10 +141,14 @@ F90_OPTS  = %{optflags} %{?_fmoddir:-I%{_fmoddir}} -fopenmp
 %endif
 F90_LIB   = -llapack -lblas -lfftw3 -lfftw3f
 SRC_FFT   = zfftifc_fftw.f90 cfftifc_fftw.f90
-LIB_LIBXC = -lxc -lxcf90
-SRC_LIBXC = libxcf90.f90 libxcifc.f90
-LIB_W90   = -lwannier
+LIB_LIBXC = -lxc -lxcf03
+SRC_LIBXC = libxcf03.f90 libxcifc.f90
+%if %{with wannier90}
 SRC_W90S  =
+LIB_W90   = `pkg-config --libs wannier90`
+%else
+SRC_W90S = w90_stub.f90
+%endif
 
 # We do not use MKL, BLIS, or OBLAS
 SRC_MKL   = mkl_stub.f90

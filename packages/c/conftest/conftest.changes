@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:46:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.70.0:
+  * New Features
+    - bbee10c: feat(parser): add Groovy and Jenkinsfile support
+      (#1387)
+    - 314b873: feat: add --github-hide-passed to skip passing files
+      in GitHub output (#1355)
+    - c149d81: feat: name stdin input in test output (#1386)
+  * Bug Fixes
+    - 64da8a2: fix(output): escape ':' and ',' in GitHub workflow
+      command file names (#1399)
+    - fa119bc: fix(sarif): percent-encode artifact paths (#1419)
+    - 944ef69: fix: accept underscores in textproto message names
+      (#1421)
+    - 82ba002: fix: allow --update to clone into a pre-existing
+      --policy directory (#1383)
+    - 49f36aa: fix: apply ignore regex to explicit files (#1413)
+    - c30bc1a: fix: make test policy updates repeatable (#1379)
+    - de66600: fix: preserve non-finite INI values as strings
+      (#1420)
+    - 3a575a7: fix: propagate plugin exit code to conftest process
+      (#1345)
+    - 2f28498: fix: return CycloneDX parser errors (#1335)
+  * OPA Changes
+    - 1b97ec7: build(deps): bump github.com/open-policy-agent/opa
+      from 1.19.0 to 1.20.2 (#1418)
+  * Other Changes
+    - b476e49: build(deps): bump github.com/CycloneDX/cyclonedx-go
+      (#1412)
+    - 6f3b7dc: build(deps): bump github.com/hashicorp/go-getter
+      from 1.8.6 to 1.8.8 (#1401)
+    - da2b32a: build(deps): bump github.com/hashicorp/go-getter
+      from 1.8.8 to 1.8.9 (#1416)
+    - 74d8677: build(deps): bump github.com/magiconair/properties
+      (#1378)
+    - 6a3fd60: build(deps): bump github.com/moby/buildkit from
+      0.30.0 to 0.32.2 (#1392)
+    - 6274003: build(deps): bump github.com/moby/buildkit from
+      0.32.2 to 0.33.0 (#1415)
+    - 85485c0: build(deps): bump golang from 1.26.5-alpine to
+      1.26.6-alpine (#1400)
+    - c0ac6cd: build(deps): bump golang from 1.26.6-alpine to
+      1.27.1-alpine (#1417)
+    - c93d486: build(deps): bump js-yaml from 4.2.0 to 4.3.0 in
+      /examples/ts (#1377)
+    - 9c54228: build(deps): bump js-yaml from 4.3.0 to 4.3.1 in
+      /examples/ts (#1391)
+    - 04eb67e: chore: Update flake.lock (#1407)
+    - 87f727c: chore: disable goconst in Go test files (#1406)
+    - fc7d7d7: refactor(parser): Add Remarshal() helper (#1411)
+
+-------------------------------------------------------------------
 Mon Aug 03 10:48:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.69.0:

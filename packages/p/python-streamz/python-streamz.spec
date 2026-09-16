@@ -25,6 +25,8 @@ URL:            https://github.com/python-streamz/streamz/
 Source:         https://files.pythonhosted.org/packages/source/s/streamz/streamz-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE streamz-opensuse-python-exec.patch -- call tests with correct flavor
 Patch0:         streamz-opensuse-python-exec.patch
+# PATCH-FIX-OPENSUSE Support Pandas 3.0
+Patch1:         support-pands-3.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
