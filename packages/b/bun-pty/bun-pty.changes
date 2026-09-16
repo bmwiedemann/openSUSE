@@ -1,0 +1,5 @@
+-------------------------------------------------------------------
+Mon Sep 14 15:35:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.4.8: librust_pty, the pseudo-terminal
+  library the bun-pty Bun binding dlopens (opencode's shell tool)

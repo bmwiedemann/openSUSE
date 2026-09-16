@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6eee47da9dc4dd47b988b981bbb7295e</srcmd5>
+    <version>0.4.8</version>
+    <time>1789573274</time>
+    <user>anag_factory</user>
+    <comment>New package bun-pty 0.4.8: librust_pty, the pseudo-terminal library the bun-pty Bun binding dlopens (portable-pty, Rust). Lets opencode's shell tool load it from the distribution.
+INTERDEPENDENT REQUESTS - please stage together: fff, photon-node (new), opencode (requires this one at = 0.4.8).
+Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
+    <requestid>1377978</requestid>
+  </revision>
+</revisionlist>
