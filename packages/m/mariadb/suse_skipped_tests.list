@@ -63,3 +63,8 @@ main.xml                                         : since 11.8.6 - armv7l
 main.xa                                          : since 12.3.2 - all
 innodb_fts.crash_recovery                        : since 12.3.2 - aarch64
 
+perfschema.func_file_io                          : since 12.3.2 - armv7l
+perfschema.func_mutex                            : since 12.3.2 - armv7l
+perfschema.global_read_lock                      : since 12.3.2 - armv7l
+perfschema.mdl_func                              : since 12.3.2 - armv7l
+perfschema.setup_objects                         : since 12.3.2 - armv7l

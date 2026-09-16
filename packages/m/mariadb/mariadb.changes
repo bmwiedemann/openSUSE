@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:28:51 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Ignore multiple perfschema.* tests on armv7
+
+-------------------------------------------------------------------
 Wed Jun 10 17:26:23 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 12.3.2:
