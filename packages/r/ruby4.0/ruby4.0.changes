@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:20:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.0.7
+  - Bug #22188: addr2line doesn't find symbols when compiled with
+    GCC LTO - Ruby - Ruby Issue Tracking System
+  - Bug #22210: Check if issue #19969 is still reproducible /
+    re-opened in 4.0.x - Ruby - Ruby Issue Tracking System
+  - Bug #22217: Segmentation fault when resuming execution with
+    Coverage.start and ruby/debug - Ruby - Ruby Issue Tracking
+    System
+  - Fix formatting in ObjectSpace._id2ref error path by eregon ·
+    Pull Request #18206
+  - Bug #22200: ObjectSpace._id2ref can return a different object
+    than the id's owner on Ruby 4.0 (stale id2ref_tbl entry for
+    objects with generic fields) - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22123: Ruby::Box + BUNDLER_SETUP can evaluate gemspecs
+    before main-box RubyGems initialization - Ruby - Ruby Issue
+    Tracking System
+  - Bump ERB to 6.0.7 by k0kubun · Pull Request #18282
+  - Bug #22237: GC.auto_compact corrupts a String or segfaults from
+    String#tr with dup or gsub - Ruby - Ruby Issue Tracking System
+  - Bug #22243: Change fork behavior when Process._fork raises an
+    exception during fork with a block argument - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22223: Socket.tcp with connect_timeout returns a phantom
+    "connected" socket for a refused connection on macOS 27 (kernel
+    answers EISCONN on connect retry; SO_ERROR never consulted) -
+    Ruby - Ruby Issue Tracking System
+  - Bug #22220: Performance regression when requiring aws-sdk-ec2
+    in Ruby 4.0.6 - Ruby - Ruby Issue Tracking System
+  - Bug #22218: Line TracePoint misses executed loop condition
+    after a guard - Ruby - Ruby Issue Tracking System
+  - Bug #22198: win32: heap overflow in Kernel#system - Ruby - Ruby
+    Issue Tracking System
+  - Bug #22196: Heap-use-after-free in fiber_switch with
+    transfer-terminated async tasks on 3.4.10 - Ruby - Ruby Issue
+    Tracking System
+  - Bug #22190: Class#subclasses does not include clones of classes
+    that include modules - Ruby - Ruby Issue Tracking System
+  - Bug #11438: native_thread_init_stack() get machine.stack_start
+    unequal to thread's stack start address, x86 win32 - Ruby -
+    Ruby Issue Tracking System
+  - Bug #22257: Prepending a module to an already-included module
+    leaves stale super caches - Ruby - Ruby Issue Tracking System
+  - Bug #22242: SEGV in method dispatch
+    (vm_call_iseq_setup_kwparm_nokwarg / def_iseq_ptr) on Ruby
+    4.0.6 — Rails CI - Ruby - Ruby Issue Tracking System
+  - Bug #22269: Coverage.line_stub clobbers already-collected
+    coverage data - Ruby - Ruby Issue Tracking System
+  - Bug #22290: Adding instance variables to anonymous object may
+    bloat all future classes - Ruby - Ruby Issue Tracking System
+  - Bug #22292: YJIT/ZJIT: Struct accessor crashes after an
+    instance variable is set on a Struct that exactly fills the
+    largest GC slot - Ruby - Ruby Issue Tracking System
+  - Bug #20958: fix ENV.keys encoding on windows - Ruby - Ruby
+    Issue Tracking System
+  - Bug #22259: Arrays sharding a buffer segfault when
+    concatenating with each other - Ruby - Ruby Issue Tracking
+    System
+  - Bug #22264: Warning missing from parse.y hash literals - Ruby -
+    Ruby Issue Tracking System
+  - Bug #22303: EncodingError from interpolating symbol crashes
+    whole process - Ruby - Ruby Issue Tracking System
+  - Bug #22224: YJIT: rb_yjit_invalidate_ep_is_bp takes the VM lock
+    stopping Ractors on every Proc materialization; multi-Ractor
+    throughput collapses (up to ~150x) - Ruby - Ruby Issue Tracking
+    System
+
+-------------------------------------------------------------------
 Mon Aug 31 12:58:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Do not disable static support as it blocks extensions from static

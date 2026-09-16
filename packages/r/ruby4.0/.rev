@@ -300,4 +300,12 @@ Binary file ruby-4.0.1.tar.xz (revision 4) deleted</comment>
   linking intree libraries (boo#1276559)</comment>
     <requestid>1376895</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>97f00f1e40dbdb50f2e2b0347941e20e</srcmd5>
+    <version>4.0.7</version>
+    <time>1789573255</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.7</comment>
+    <requestid>1378091</requestid>
+  </revision>
 </revisionlist>
