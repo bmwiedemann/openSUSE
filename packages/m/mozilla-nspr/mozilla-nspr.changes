@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep  6 21:52:29 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Add Make-x86-assembly-files-compatible-with-SHSTK-IBT.patch to
+  support -fcf-protection in assembly sources.
+
+-------------------------------------------------------------------
 Tue Sep  1 17:15:21 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to version 4.40

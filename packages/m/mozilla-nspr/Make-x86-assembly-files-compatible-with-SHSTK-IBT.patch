@@ -1,0 +1,249 @@
+From 61d9f2bdf7bc169893f96e770622f283c4c14a32 Mon Sep 17 00:00:00 2001
+From: Aaron Puchert <aaronpuchert@alice-dsl.net>
+Date: Sun, 6 Sep 2026 23:25:51 +0200
+Subject: [PATCH] Make x86 assembly files compatible with SHSTK/IBT
+
+Compiling with -fcf-protection applies the protection to all object
+files compiled from C sources, but we have to ensure compatibility of
+assembly files manually, and add the corresponding .note.gnu.property
+section to signal compatibility to the linker.
+
+The section is most easily added by including <cet.h>, but this requires
+preprocessing, which is done by changing the file ending from .s to .S,
+which in turn requires some changes to the build system. The header also
+defines a macro for the endbr{32,64} instruction.
+
+Shadow stack compatibility is easily verified. For indirect branch
+tracking we need to mark all functions as possible indirect jump targets,
+because they're exported and could thus be called from other libraries
+via indirect calls.
+---
+ config/rules.mk                                  |  4 ++++
+ configure                                        | 10 ++++++----
+ configure.in                                     | 10 ++++++----
+ pr/src/md/unix/objs.mk                           |  2 +-
+ .../md/unix/{os_Linux_x86.s => os_Linux_x86.S}   | 16 ++++++++++++++++
+ .../{os_Linux_x86_64.s => os_Linux_x86_64.S}     | 15 +++++++++++++++
+ 6 files changed, 48 insertions(+), 9 deletions(-)
+ rename pr/src/md/unix/{os_Linux_x86.s => os_Linux_x86.S} (87%)
+ rename pr/src/md/unix/{os_Linux_x86_64.s => os_Linux_x86_64.S} (88%)
+
+diff --git a/config/rules.mk b/config/rules.mk
+index 8f3f9260..6ed3475a 100644
+--- a/config/rules.mk
++++ b/config/rules.mk
+@@ -449,6 +449,10 @@ $(OBJDIR)/%.$(OBJ_SUFFIX): %.s
+ 	@$(MAKE_OBJDIR)
+ 	$(AS) -o $@ $(ASFLAGS) -c $<
+ 
++$(OBJDIR)/%.$(OBJ_SUFFIX): %.S
++	@$(MAKE_OBJDIR)
++	$(AS) -o $@ $(ASFLAGS) -c $<
++
+ %.i: %.c
+ 	$(CC) -C -E $(CFLAGS) $< > $*.i
+ 
+diff --git a/configure b/configure
+index 09dd6acb..b8606cbf 100755
+--- a/configure
++++ b/configure
+@@ -7379,24 +7379,26 @@ tools are selected during the Xcode/Developer Tools installation." "$LINENO" 5
+         CXXFLAGS="$CXXFLAGS -mieee"
+         ;;
+     i*86)
++        ASM_SUFFIX=S
+         printf "%s\n" "#define i386 1" >>confdefs.h
+ 
+-        PR_MD_ASFILES=os_Linux_x86.s
++        PR_MD_ASFILES=os_Linux_x86.S
+         ;;
+     ia64)
+         PR_MD_ASFILES=os_Linux_ia64.s
+         ;;
+     x86_64)
++        ASM_SUFFIX=S
+         if test -n "$USE_64"; then
+-            PR_MD_ASFILES=os_Linux_x86_64.s
++            PR_MD_ASFILES=os_Linux_x86_64.S
+         elif test -n "$USE_X32"; then
+-            PR_MD_ASFILES=os_Linux_x86_64.s
++            PR_MD_ASFILES=os_Linux_x86_64.S
+             CC="$CC -mx32"
+             CXX="$CXX -mx32"
+         else
+             printf "%s\n" "#define i386 1" >>confdefs.h
+ 
+-            PR_MD_ASFILES=os_Linux_x86.s
++            PR_MD_ASFILES=os_Linux_x86.S
+             CC="$CC -m32"
+             CXX="$CXX -m32"
+         fi
+diff --git a/configure.in b/configure.in
+index 613a45c2..e30e4d0d 100644
+--- a/configure.in
++++ b/configure.in
+@@ -1422,22 +1422,24 @@ tools are selected during the Xcode/Developer Tools installation.])
+         CXXFLAGS="$CXXFLAGS -mieee"
+         ;;
+     i*86)
++        ASM_SUFFIX=S
+         AC_DEFINE(i386)
+-        PR_MD_ASFILES=os_Linux_x86.s
++        PR_MD_ASFILES=os_Linux_x86.S
+         ;;
+     ia64)
+         PR_MD_ASFILES=os_Linux_ia64.s
+         ;;
+     x86_64)
++        ASM_SUFFIX=S
+         if test -n "$USE_64"; then
+-            PR_MD_ASFILES=os_Linux_x86_64.s
++            PR_MD_ASFILES=os_Linux_x86_64.S
+         elif test -n "$USE_X32"; then
+-            PR_MD_ASFILES=os_Linux_x86_64.s
++            PR_MD_ASFILES=os_Linux_x86_64.S
+             CC="$CC -mx32"
+             CXX="$CXX -mx32"
+         else
+             AC_DEFINE(i386)
+-            PR_MD_ASFILES=os_Linux_x86.s
++            PR_MD_ASFILES=os_Linux_x86.S
+             CC="$CC -m32"
+             CXX="$CXX -m32"
+         fi
+diff --git a/pr/src/md/unix/objs.mk b/pr/src/md/unix/objs.mk
+index 77eaa6d1..f084ed24 100644
+--- a/pr/src/md/unix/objs.mk
++++ b/pr/src/md/unix/objs.mk
+@@ -27,5 +27,5 @@ CSRCS	+= $(PR_MD_CSRCS)
+ ASFILES += $(PR_MD_ASFILES)
+ 
+ OBJS += $(addprefix md/unix/$(OBJDIR)/,$(CSRCS:.c=.$(OBJ_SUFFIX)))  \
+-	$(addprefix md/unix/$(OBJDIR)/,$(ASFILES:.s=.$(OBJ_SUFFIX)))
++	$(addprefix md/unix/$(OBJDIR)/,$(ASFILES:.${ASM_SUFFIX}=.$(OBJ_SUFFIX)))
+ 
+diff --git a/pr/src/md/unix/os_Linux_x86.s b/pr/src/md/unix/os_Linux_x86.S
+similarity index 87%
+rename from pr/src/md/unix/os_Linux_x86.s
+rename to pr/src/md/unix/os_Linux_x86.S
+index bd19dc30..bd1a56ec 100644
+--- a/pr/src/md/unix/os_Linux_x86.s
++++ b/pr/src/md/unix/os_Linux_x86.S
+@@ -3,6 +3,17 @@
+ // License, v. 2.0. If a copy of the MPL was not distributed with this
+ // file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
++// Include section to mark as compatible with Intel CET if enabled.
++#if defined(__has_include)
++#if __has_include(<cet.h>)
++#include <cet.h>
++#endif
++#endif
++
++#ifndef _CET_ENDBR
++#define _CET_ENDBR
++#endif
++
+ // PRInt32 _PR_x86_AtomicIncrement(PRInt32 *val)
+ //
+ // Atomically increment the integer pointed to by 'val' and return
+@@ -12,6 +23,7 @@
+     .globl _PR_x86_AtomicIncrement
+     .align 4
+ _PR_x86_AtomicIncrement:
++    _CET_ENDBR
+     movl 4(%esp), %ecx
+     movl $1, %eax
+     lock
+@@ -28,6 +40,7 @@ _PR_x86_AtomicIncrement:
+     .globl _PR_x86_AtomicDecrement
+     .align 4
+ _PR_x86_AtomicDecrement:
++    _CET_ENDBR
+     movl 4(%esp), %ecx
+     movl $-1, %eax
+     lock
+@@ -45,6 +58,7 @@ _PR_x86_AtomicDecrement:
+ //   .globl _PR_x86_AtomicSet
+ //   .align 4
+ //_PR_x86_AtomicSet:
++//   _CET_ENDBR
+ //   movl 4(%esp), %ecx
+ //   movl 8(%esp), %edx
+ //   movl (%ecx), %eax
+@@ -58,6 +72,7 @@ _PR_x86_AtomicDecrement:
+     .globl _PR_x86_AtomicSet
+     .align 4
+ _PR_x86_AtomicSet:
++    _CET_ENDBR
+     movl 4(%esp), %ecx
+     movl 8(%esp), %eax
+     xchgl %eax, (%ecx)
+@@ -72,6 +87,7 @@ _PR_x86_AtomicSet:
+     .globl _PR_x86_AtomicAdd
+     .align 4
+ _PR_x86_AtomicAdd:
++    _CET_ENDBR
+     movl 4(%esp), %ecx
+     movl 8(%esp), %eax
+     movl %eax, %edx
+diff --git a/pr/src/md/unix/os_Linux_x86_64.s b/pr/src/md/unix/os_Linux_x86_64.S
+similarity index 88%
+rename from pr/src/md/unix/os_Linux_x86_64.s
+rename to pr/src/md/unix/os_Linux_x86_64.S
+index b9310dd5..57844d96 100644
+--- a/pr/src/md/unix/os_Linux_x86_64.s
++++ b/pr/src/md/unix/os_Linux_x86_64.S
+@@ -3,6 +3,17 @@
+ // License, v. 2.0. If a copy of the MPL was not distributed with this
+ // file, You can obtain one at http://mozilla.org/MPL/2.0/.
+ 
++// Include section to mark as compatible with Intel CET if enabled.
++#if defined(__has_include)
++#if __has_include(<cet.h>)
++#include <cet.h>
++#endif
++#endif
++
++#ifndef _CET_ENDBR
++#define _CET_ENDBR
++#endif
++
+ // PRInt32 _PR_x86_64_AtomicIncrement(PRInt32 *val)
+ //
+ // Atomically increment the integer pointed to by 'val' and return
+@@ -13,6 +24,7 @@
+     .type _PR_x86_64_AtomicIncrement, @function
+     .align 4
+ _PR_x86_64_AtomicIncrement:
++    _CET_ENDBR
+     movl $1, %eax
+     lock
+     xaddl %eax, (%rdi)
+@@ -30,6 +42,7 @@ _PR_x86_64_AtomicIncrement:
+     .type _PR_x86_64_AtomicDecrement, @function
+     .align 4
+ _PR_x86_64_AtomicDecrement:
++    _CET_ENDBR
+     movl $-1, %eax
+     lock
+     xaddl %eax, (%rdi)
+@@ -47,6 +60,7 @@ _PR_x86_64_AtomicDecrement:
+     .type _PR_x86_64_AtomicSet, @function
+     .align 4
+ _PR_x86_64_AtomicSet:
++    _CET_ENDBR
+     movl %esi, %eax
+     xchgl %eax, (%rdi)
+     ret
+@@ -62,6 +76,7 @@ _PR_x86_64_AtomicSet:
+     .type _PR_x86_64_AtomicAdd, @function
+     .align 4
+ _PR_x86_64_AtomicAdd:
++    _CET_ENDBR
+     movl %esi, %eax
+     lock
+     xaddl %eax, (%rdi)
+-- 
+2.55.0
+

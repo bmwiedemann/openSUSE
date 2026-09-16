@@ -39,6 +39,8 @@ Obsoletes:      mozilla-nspr-64bit
 Source:         https://ftp.mozilla.org/pub/nspr/releases/v%{version}/src/nspr-%{version}.tar.gz
 Source1:        baselibs.conf
 Source99:       %{name}.changes
+# PATCH-FIX-UPSTREAM -- https://github.com/mozilla/nspr/pull/43
+Patch1:         Make-x86-assembly-files-compatible-with-SHSTK-IBT.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
@@ -65,6 +67,10 @@ memory management (malloc and free), and shared library linking.
 
 %prep
 %setup -n nspr-%{version} -q
+
+pushd nspr
+%patch -P1 -p1
+popd
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
