@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:27:44 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Add upstream patch fix-doctest-modules.patch
+  gh#jllorencetti/pytest-deadfixtures#60
+
+-------------------------------------------------------------------
 Mon Jan 26 09:03:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:

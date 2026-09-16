@@ -17,4 +17,13 @@
     from being reported as unused</comment>
     <requestid>1329203</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>d593fda93d354f4f94048b6016760f75</srcmd5>
+    <version>3.1.0</version>
+    <time>1789573254</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream patch fix-doctest-modules.patch
+  gh#jllorencetti/pytest-deadfixtures#60</comment>
+    <requestid>1378083</requestid>
+  </revision>
 </revisionlist>

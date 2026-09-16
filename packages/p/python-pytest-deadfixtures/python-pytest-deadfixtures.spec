@@ -23,6 +23,8 @@ Summary:        A simple plugin to list unused fixtures in pytest
 License:        MIT
 URL:            https://github.com/jllorencetti/pytest-deadfixtures
 Source:         https://github.com/jllorencetti/pytest-deadfixtures/archive/refs/tags/%{version}.tar.gz#/pytest_deadfixtures-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM fix-doctest-modules.patch gh#jllorencetti/pytest-deadfixtures#60
+Patch0:         fix-doctest-modules.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
