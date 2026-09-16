@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:13:16 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.4.1:
+  * Release v1.4.1
+  * Update Cargo.lock.
+  * implement dumping of pqc artifacts
+  * Use the password cache to unlock keys on the softkey backend.
+  * Change try_decrypt to take a reference to the key.
+  * Use the reference time, not now.
+  * Update h2.
+  * Update sequoia-openpgp.
+
+-------------------------------------------------------------------
 Mon Aug 17 09:12:23 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Legal review Change main license to LGPL-2.0-or-later from GPL-2.0-only
