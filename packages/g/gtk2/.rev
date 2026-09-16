@@ -1440,4 +1440,12 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment>Scripted push from GNOME:Next (forwarded request 1304923 from dimstar)</comment>
     <requestid>1305471</requestid>
   </revision>
+  <revision rev="195" vrev="19">
+    <srcmd5>2c0a54318869dde5921b0bc524a420ae</srcmd5>
+    <version>2.24.33</version>
+    <time>1789573224</time>
+    <user>anag_factory</user>
+    <comment>- Rebase automake-1.17.patch to allow usage of automake-1.19.x.</comment>
+    <requestid>1378156</requestid>
+  </revision>
 </revisionlist>
