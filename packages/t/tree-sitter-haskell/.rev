@@ -44,4 +44,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333361</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>7aeaad2fce653abadaaa2b9b1f3995c2</srcmd5>
+    <version>0.23.1</version>
+    <time>1789573293</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-haskell: build the grammars to WebAssembly modules as well (new noarch tree-sitter-haskell-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-haskell-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378021, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378110</requestid>
+  </revision>
 </revisionlist>
