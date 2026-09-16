@@ -29,6 +29,9 @@ BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
+BuildRequires:  clang
+BuildRequires:  lld
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}
 %if 0%{?suse_version} >= 1699
 # Only for the functional test in %%check; python-tree-sitter does not
@@ -55,9 +58,12 @@ shipped in %{name} and exposes it to python-tree-sitter via language().
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 %treesitter_devel_install
 %treesitter_python_install
 
@@ -78,6 +84,9 @@ test -f %{buildroot}%{_treesitter_grammardir}/libtree-sitter-%{_name}.so
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %files %{python_files %{name}}
