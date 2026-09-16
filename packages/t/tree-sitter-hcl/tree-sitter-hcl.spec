@@ -25,7 +25,10 @@ License:        Apache-2.0
 URL:            https://github.com/tree-sitter-grammars/tree-sitter-hcl
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        binding.gyp
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}=src terraform=dialects
 
 %description
@@ -40,12 +43,16 @@ cp %{SOURCE1} binding.gyp
 tree-sitter generate
 (cd dialects/terraform; tree-sitter generate)
 %treesitter_build
+%treesitter_wasm_build terraform=dialects/terraform
 
 %install
 %treesitter_install
+%treesitter_wasm_install
 
 %files
 %license LICENSE
 %treesitter_files
+
+%treesitter_wasm_package
 
 %changelog

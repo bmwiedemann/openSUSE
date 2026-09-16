@@ -32,4 +32,13 @@
   a corrected binding.gyp.</comment>
     <requestid>1350403</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>b1d0e68958713c960ea3c8c9985c741a</srcmd5>
+    <version>1.2.0</version>
+    <time>1789573276</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-hcl: build the grammars to WebAssembly modules as well, into a new noarch tree-sitter-hcl-wasm subpackage (/usr/share/tree-sitter/wasm) for web-tree-sitter consumers such as opencode's highlighter. Uses the %treesitter_wasm_* macros from tree-sitter sr#1378013; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378013 (tree-sitter) and the other tree-sitter-&lt;lang&gt; -wasm requests.</comment>
+    <requestid>1378022</requestid>
+  </revision>
 </revisionlist>

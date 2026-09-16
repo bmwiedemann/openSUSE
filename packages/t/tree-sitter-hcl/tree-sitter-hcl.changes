@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 14 18:14:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the grammars to WebAssembly modules as well (BuildRequires
+  clang, lld and wasi-libc): new -wasm subpackage for
+  web-tree-sitter consumers
+
+-------------------------------------------------------------------
 Fri May  1 19:43:42 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Support multi-grammar build (HCL and Terraform) using
