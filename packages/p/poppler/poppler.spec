@@ -24,7 +24,7 @@
 %endif
 # Actual version of poppler-data:
 %define poppler_data_version 0.4.11
-%define poppler_sover 162
+%define poppler_sover 164
 %define poppler_cpp_sover 3
 %define poppler_glib_sover 8
 %define poppler_qt5_sover 1
@@ -32,7 +32,7 @@
 %define poppler_api 0.18
 %define poppler_apipkg 0_18
 Name:           poppler%{?psuffix}
-Version:        26.07.0
+Version:        26.09.0
 Release:        0
 Summary:        PDF Rendering Library
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -60,6 +60,7 @@ BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.42
 BuildRequires:  pkgconfig(glib-2.0) >= 2.80
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.41
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libjpeg)
@@ -291,16 +292,11 @@ echo "libpoppler-glib%{poppler_glib_sover}" >> %{SOURCE99}
 echo "libpoppler-cpp%{poppler_cpp_sover}" >> %{SOURCE99}
 %endif
 
-%post -n libpoppler%{poppler_sover} -p /sbin/ldconfig
-%postun -n libpoppler%{poppler_sover} -p /sbin/ldconfig
-%post -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
-%postun -n libpoppler-glib%{poppler_glib_sover} -p /sbin/ldconfig
-%post -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
-%postun -n libpoppler-cpp%{poppler_cpp_sover} -p /sbin/ldconfig
-%post -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
-%postun -n libpoppler-qt5-%{poppler_qt5_sover} -p /sbin/ldconfig
-%post -n libpoppler-qt6-%{poppler_qt6_sover} -p /sbin/ldconfig
-%postun -n libpoppler-qt6-%{poppler_qt6_sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libpoppler%{poppler_sover}
+%ldconfig_scriptlets -n libpoppler-glib%{poppler_glib_sover}
+%ldconfig_scriptlets -n libpoppler-cpp%{poppler_cpp_sover}
+%ldconfig_scriptlets -n libpoppler-qt5-%{poppler_qt5_sover}
+%ldconfig_scriptlets -n libpoppler-qt6-%{poppler_qt6_sover}
 
 %if "%{flavor}" == "qt5"
 %files -n libpoppler-qt5-%{poppler_qt5_sover}
