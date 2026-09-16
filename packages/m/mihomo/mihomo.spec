@@ -17,7 +17,7 @@
 
 
 Name:           mihomo
-Version:        1.19.30
+Version:        1.19.31
 Release:        0
 Summary:        The universal proxy platform
 # Legal-Review-Notice: mihomo's own code is GPL-3.0-only, but the Go binary
@@ -25,11 +25,12 @@ Summary:        The universal proxy platform
 # set. Copyleft actually linked into the shipped binary (derived from
 # "go list -deps" for linux/amd64+arm64 with -tags with_gvisor, mapped onto
 # vendor/modules.txt): GPL-3.0-or-later (the metacubex/sing* family, fswatch,
-# randv2, enfein/mieru, sina-ghaderi/*) - absorbed by GPL-3.0-only - and
-# MPL-2.0 (metacubex/zerotier-go, metacubex/mipstack, metacubex/yamux,
-# hashicorp/golang-lru). MPL-2.0 section 3.2 source availability is satisfied
-# by vendor.tar.gz shipping in the src.rpm.
-License:        GPL-3.0-only AND MPL-2.0
+# randv2, enfein/mieru, sina-ghaderi/*) - absorbed by GPL-3.0-only -,
+# LGPL-3.0-only (easytier/easytier-go for the EasyTier outbound, new
+# in 1.19.31) and MPL-2.0 (metacubex/zerotier-go, metacubex/mipstack,
+# metacubex/yamux, hashicorp/golang-lru). MPL-2.0 section 3.2 source
+# availability is satisfied by vendor.tar.gz shipping in the src.rpm.
+License:        GPL-3.0-only AND LGPL-3.0-only AND MPL-2.0
 URL:            https://github.com/MetaCubeX/mihomo
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -83,7 +84,7 @@ go test -mod=vendor -tags with_gvisor -skip V2RayInterop ./... >gotest.log 2>&1 
 }
 cat gotest.log
 # A suite that collects zero tests also exits 0, so assert it really ran
-# (55 packages report "ok" as of 1.19.30).
+# (57 packages report "ok" as of 1.19.31).
 test "$(grep -c '^ok ' gotest.log)" -ge 50
 
 %pre

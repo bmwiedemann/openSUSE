@@ -68,4 +68,13 @@ No patches in this package, so none to rebase or drop.
 Built and tested locally against openSUSE_Factory/aarch64.</comment>
     <requestid>1371504</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3e22504718eb48570b203c039a754987</srcmd5>
+    <version>1.19.31</version>
+    <time>1789573337</time>
+    <user>anag_factory</user>
+    <comment>Forward mihomo 1.19.31 to Factory (from server:proxy).
+</comment>
+    <requestid>1378099</requestid>
+  </revision>
 </revisionlist>

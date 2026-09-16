@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:50:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.31:
+  * Add an EasyTier outbound (#3194); this pulls in
+    easytier/easytier-go (LGPL-3.0-only), so widen License to
+    "GPL-3.0-only AND LGPL-3.0-only AND MPL-2.0"
+  * Support "stack: mips" in the tun configuration and
+    "identity-secret" for ZeroTier
+  * Improve OpenVPN: derive the tls-auth HMAC digest from auth
+    instead of hard-coding SHA-1 (#3189) and no longer rely on
+    the underlying conn deadline functions
+  * Fix hysteria v1 UDP handling (#3178), hysteria2 UDP sessions
+    not closed on connection close, VLESS decryption cleanup
+    panic (#3195), WireGuard nil dereference on init (#3148),
+    AmneziaWG v3 RandomPaddingAddition/DisableCookies, DomainSet
+    wildcard matching with overlapping rules, shadowsocks "none"
+    NeedHandshake, mieru listener "listen" (#3205), xhttp IPv6
+    URL parsing (#3160), trusttunnel TCP connect wait, Tailscale
+    UserDial for upstream TCP DNS and split-DNS UDP in tsnet
+    mode, plus connection-error-handling closes across kcptun,
+    mkcp, snell, doq, tuic and listener paths
+  * Maintenance: tailscale to v1.102.3, sudoku to v0.5.0 (#3187),
+    mieru update (#3119), yaml library to go.yaml.in/yaml/v3,
+    mipstack/gvisor memory and API work, DomainSet/Map rework,
+    REALITY ML-KEM option (#3199)
+
+-------------------------------------------------------------------
 Mon Aug 17 05:52:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.30:
