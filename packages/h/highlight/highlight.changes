@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Wed Sep  9 10:41:21 UTC 2026 - munix9@googlemail.com
+
+- Update to version 4.21:
+  * updated astyle lib to version 3.6.18
+  * added Svelte language definition
+  * added KDL language definition
+  * added AnsiIndex theme attribute
+  * added terminal output sanitation of user input
+  * CLI: added --indent-guides option
+  * CLI: added --skip-leading-cols option
+  * fixed vue.js nested section highlighting
+  * fixed NXC nested section highlighting
+  * fixed RTF header and footer generation to allow plugin insertions
+  * fixed string highlighting of nested command substitutions in
+    shellscript definition
+  * fixed regular expressions in CMake and PHP definitions
+  * fixed out_of_range crash in nested syntax definitions
+  * fixed minor performance issues
+  * updated chinese GUI translation
+
+- Update to version 4.20:
+  * updated astyle lib to version 3.6.16
+  * fixed undefined lua upvalue in shellscript language definition
+  * added C# Unity language definition
+  * updated RPM Language definition
+  * refactored cmake build script
+  * refactored code to make use of C++17 features
+
+- Update to version 4.19:
+  * updated astyle lib to version 3.6.14
+  * fixed warn_unused_result warnings on pipe() call
+  * added MiniScript language definition
+
+- Switch gui from Qt 5 to Qt 6
+- Switch from update-desktop-files to desktop-file-utils
+
+-------------------------------------------------------------------
 Sat Nov 22 13:17:05 UTC 2025 - Antoine Belvire <antoine.belvire@opensuse.org>
 
 - Update to version 4.18:

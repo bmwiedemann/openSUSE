@@ -1,7 +1,7 @@
 #
 # spec file for package highlight
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %bcond_without gui
 Name:           highlight
-Version:        4.18
+Version:        4.21
 Release:        0
 Summary:        Universal Source Code to Formatted Text Converter
 License:        GPL-3.0-or-later
@@ -52,9 +52,9 @@ configuration and themes.
 %package gui
 Summary:        Graphical Interface for %{name}
 Group:          Development/Tools/Other
+BuildRequires:  desktop-file-utils
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libqt5-qtbase-devel
-BuildRequires:  update-desktop-files
+BuildRequires:  qt6-base-devel
 Requires:       %{name}-common = %{version}
 
 %description gui
@@ -110,14 +110,16 @@ export CFLAGS="%{optflags}"
 # as it leads to concurrency issues.
 %make_build gui                 \
   doc_dir="%{_docdir}/" \
-  QMAKE="qmake-qt5 QMAKE_CXXFLAGS=\"%{optflags}\""
+  QMAKE="qmake6 QMAKE_CXXFLAGS=\"%{optflags}\""
 %endif
 
 %install
 %makeinstall doc_dir="%{_docdir}/" \
 %if %{with gui}
   install-gui
-%suse_update_desktop_file -G "Text converter" -r %{name} Utility TextEditor
+desktop-file-edit --set-generic-name="Text converter" \
+	--remove-key=Categories --add-category=Utility --add-category=TextEditor \
+	%{buildroot}%{_datadir}/applications/%{name}.desktop
 %find_lang %{name} --with-qt
 %endif
 
