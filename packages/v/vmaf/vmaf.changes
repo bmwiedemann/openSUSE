@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:35:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.1
+  * libvmaf/speed_chroma: remove bilinear prescale index/weight
+    computation from per-pixel loop.
+  * Add ARM NEON implementation for 8-bit integer motion feature.
+
+-------------------------------------------------------------------
 Sat Jun 20 07:12:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.2.0
