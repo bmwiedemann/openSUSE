@@ -336,4 +336,25 @@ required by mycroft-core</comment>
   * Add support for pytest 9.</comment>
     <requestid>1320317</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>257ddf6e7e8624dcdee37078df7db579</srcmd5>
+    <version>1.4.0</version>
+    <time>1789573250</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.4.0:
+  * Overriding the event_loop_policy fixture is deprecated. Use the
+    pytest_asyncio_loop_factories hook instead.
+  * Added the pytest_asyncio_loop_factories hook to parametrize asyncio tests
+    with custom event loop factories.
+  * Improved the readability of the warning message that is displayed when
+    asyncio_default_fixture_loop_scope is unset
+  * Only import asyncio.AbstractEventLoopPolicy for type checking to avoid
+    raising a DeprecationWarning.
+  * Updated minimum supported pytest version to v8.4.0.
+  * Fixed a ResourceWarning: unclosed event loop warning that could occur when
+    a synchronous test called asyncio.run() or otherwise unset the current
+    event loop after pytest-asyncio had run an async test or fixture.
+- add pytest-9.1.patch to fix test with pytest 9.1</comment>
+    <requestid>1378071</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 14 14:39:41 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.4.0:
+  * Overriding the event_loop_policy fixture is deprecated. Use the
+    pytest_asyncio_loop_factories hook instead.
+  * Added the pytest_asyncio_loop_factories hook to parametrize asyncio tests
+    with custom event loop factories.
+  * Improved the readability of the warning message that is displayed when
+    asyncio_default_fixture_loop_scope is unset
+  * Only import asyncio.AbstractEventLoopPolicy for type checking to avoid
+    raising a DeprecationWarning.
+  * Updated minimum supported pytest version to v8.4.0.
+  * Fixed a ResourceWarning: unclosed event loop warning that could occur when
+    a synchronous test called asyncio.run() or otherwise unset the current
+    event loop after pytest-asyncio had run an async test or fixture.
+- add pytest-9.1.patch to fix test with pytest 9.1
+
+-------------------------------------------------------------------
 Tue Nov 25 01:17:19 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.3.0:
