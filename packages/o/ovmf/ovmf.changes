@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 13:44:23 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
+
+- Remove DEBUG_TO_MEM build option for AArch64 (bsc#1272814)
+  - The option causes softdog reboot failures on AArch64, so keep it only
+  for the x86_64 builds. 
+
+-------------------------------------------------------------------
 Mon Sep 14 15:17:13 UTC 2026 - Richard Lyu <richard.lyu@suse.com>
 
 - Add unversioned "virt" machine in riscv64 ovmf descriptor (bsc#1280108)

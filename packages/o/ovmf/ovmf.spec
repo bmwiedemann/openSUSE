@@ -279,7 +279,6 @@ BUILD_OPTIONS_AA64=" \
 	$OVMF_FLAGS \
 	-D SECURE_BOOT_ENABLE \
 	-D NETWORK_TLS_ENABLE \
-	-D DEBUG_TO_MEM \
 	-a AARCH64 \
 	-p ArmVirtPkg/ArmVirtQemu.dsc \
 	-b DEBUG \
