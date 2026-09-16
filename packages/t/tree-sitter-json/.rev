@@ -63,4 +63,13 @@ INTERDEPENDENT REQUESTS - please stage together:
  * sr#1372054 - tree-sitter (new Python binding macros this set needs)</comment>
     <requestid>1372191</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>8a1910b0106162a6da305d47a526e43d</srcmd5>
+    <version>0.24.8</version>
+    <time>1789573297</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-json: build the grammars to WebAssembly modules as well (new noarch tree-sitter-json-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-json-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378026, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378114</requestid>
+  </revision>
 </revisionlist>
