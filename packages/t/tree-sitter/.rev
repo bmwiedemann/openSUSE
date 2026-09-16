@@ -354,4 +354,14 @@ Superceed previous request.</comment>
   bytes-1.12.1 to fix bsc#1274132, CVE-2026-25541).</comment>
     <requestid>1374625</requestid>
   </revision>
+  <revision rev="30" vrev="6">
+    <srcmd5>ab0e4905dd1412629fb099b4719261f5</srcmd5>
+    <version>0.26.8</version>
+    <time>1789573256</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter 0.26.8: new %treesitter_wasm_* and %treesitter_queries_* macros (supersedes sr#1378013, which had the wasm half only). A grammar package that calls them gets a noarch -wasm subpackage (every grammar compiled to a WebAssembly module under /usr/share/tree-sitter/wasm by the tree-sitter CLI's own wasi-sdk invocation, pointed at the distribution's clang/lld/wasi-libc through a two-line shim) and a noarch -queries subpackage (the queries the grammar carries, highlights.scm and friends, under /usr/share/tree-sitter/queries/&lt;grammar&gt;); the package owns both directories. tree-sitter-target.py also matches nested grammar source directories (grammars/&lt;name&gt;), which tree-sitter-ocaml needs. Consumers: opencode/opentui (web-tree-sitter highlighter) instead of building grammars in-package or fetching modules and queries from the web at run time.
+Verified locally: the modules parse identically to upstream's release modules under web-tree-sitter 0.25.10 and are byte-identical across builds.
+INTERDEPENDENT REQUESTS - please stage together: this one first, then the tree-sitter-&lt;lang&gt; requests (30 existing packages, 7 new ones) that use the macros; each of them names this request.</comment>
+    <requestid>1378101</requestid>
+  </revision>
 </revisionlist>

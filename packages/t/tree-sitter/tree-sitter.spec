@@ -125,6 +125,8 @@ ln -sf lib%{name}.so.%{majorver} %{buildroot}%{_libdir}/lib%{name}.so
 # stupid workaround for "integrating" the grammars into neovim
 install -d %{buildroot}%{_treesitter_grammardir}
 install -d %{buildroot}%{_treesitter_grammar_develdir}
+install -d %{buildroot}%{_treesitter_wasmdir}
+install -d %{buildroot}%{_treesitter_queriesdir}
 
 #fix pkgconfig file
 for i in lib include; do
@@ -157,6 +159,9 @@ EOF
 %dir %{_includedir}/%{_treesitter_base_name}
 %dir %{_treesitter_grammar_develdir}
 %dir %{_treesitter_grammardir}
+%dir %{_datadir}/%{_treesitter_base_name}
+%dir %{_treesitter_wasmdir}
+%dir %{_treesitter_queriesdir}
 
 %files -n lib%{name}%{somajor}
 %license LICENSE

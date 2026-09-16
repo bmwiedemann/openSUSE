@@ -5,8 +5,104 @@
 %_treesitter_grammardir %{_libdir}/tree-sitter
 %_treesitter_grammar_develdir %{_includedir}/%{_treesitter_base_name}/grammars
 %_treesitter_grammar_base_libname lib%{_treesitter_base_name}
+%_treesitter_wasmdir %{_datadir}/%{_treesitter_base_name}/wasm
+%_treesitter_queriesdir %{_datadir}/%{_treesitter_base_name}/queries
 %treesitter_target() %{_rpmconfigdir}/tree-sitter-target.py
 %treesitter_set_flags export NODE_PATH="${NODE_PATH:+${NODE_PATH}:}%{_treesitter_grammar_develdir}:$PWD"; mkdir -p node_modules; for grammar in %{_treesitter_grammar_develdir}/tree-sitter-*; do [ -d "$grammar" ] || continue; ln -sfn "$grammar" "node_modules/$(basename "$grammar")"; done
+
+# --[[
+#    Optional -wasm subpackage: every grammar of the package compiled to a
+#    WebAssembly module, for consumers that run tree-sitter in a WebAssembly
+#    runtime (web-tree-sitter; opencode's highlighter is the first). The
+#    tree-sitter CLI builds it exactly as it would with wasi-sdk -- one clang
+#    call, no libc -- and %%treesitter_wasm_set_sdk points it at the
+#    distribution's clang, lld and wasi-libc through a two-line shim, because
+#    without TREE_SITTER_WASI_SDK_PATH the CLI downloads wasi-sdk. The module
+#    is arch-independent bytecode, so the subpackage is noarch (-DNDEBUG keeps
+#    a scanner's assert() text, the only host-specific input, out of it; the
+#    CLI compiles relative paths from the grammar's src/, so nothing else could
+#    leak). Files land in
+#    %%{_treesitter_wasmdir} as tree-sitter-<grammar>.wasm, named after the
+#    grammar's own name (grammar.json), which is what the CLI and consumers
+#    expect (markdown-inline yields tree-sitter-markdown_inline.wasm).
+#
+#    Usage -- the three BuildRequires must be literal: the OBS scheduler
+#    resolves BuildRequires before macros.treesitter is installed, so a
+#    macro from this file cannot carry them.
+#
+#    BuildRequires:  clang
+#    BuildRequires:  lld
+#    BuildRequires:  wasi-libc
+#
+#    %%build
+#    %%treesitter_wasm_build
+#
+#    %%install
+#    %%treesitter_wasm_install
+#
+#    %%treesitter_wasm_package
+#
+#    A grammar whose directory is not what %%treesitter_grammars names as its
+#    source (that source is a binding.gyp path prefix for %%treesitter_build,
+#    which can differ) gets the directory as an argument, grammar=dir:
+#    tree-sitter-hcl declares terraform=dialects and builds its module with
+#    %%treesitter_wasm_build terraform=dialects/terraform
+# --]]
+%treesitter_wasm_set_sdk mkdir -p .wasi-sdk/bin; { echo '#!/bin/sh'; echo "exec %{_bindir}/clang --sysroot=%{_datadir}/wasi-sysroot -isystem %{_datadir}/wasi-sysroot/include/wasm32-wasip1 -DNDEBUG "'"$@"'; } > .wasi-sdk/bin/clang; chmod 0755 .wasi-sdk/bin/clang; export TREE_SITTER_WASI_SDK_PATH="$PWD/.wasi-sdk"
+
+%__treesitter_wasm_package_name() %name-wasm
+%treesitter_wasm_package \
+%package -n %{__treesitter_wasm_package_name} \
+Summary: WebAssembly modules of the %{name} grammars \
+BuildArch: noarch \
+%{treesitter_wasm_provides} \
+%description -n %{__treesitter_wasm_package_name} \
+The grammars of %{name} compiled to WebAssembly, for consumers that run \
+tree-sitter in a WebAssembly runtime such as web-tree-sitter. The modules \
+live in %{_treesitter_wasmdir}. \
+%files -n %{__treesitter_wasm_package_name} \
+%{treesitter_wasm_files}
+
+# --[[
+#    Optional -queries subpackage: the queries upstream ships with the
+#    grammar (highlights.scm and friends) installed to
+#    %%{_treesitter_queriesdir}/<grammar>/, keyed like the -wasm modules
+#    (grammar.json name, so markdown-inline -> queries/markdown_inline/).
+#    Consumers: opencode's highlighter with the -wasm modules, or any editor
+#    pointed at that directory. Every *.scm in the grammar's query directory
+#    goes in; the directory must hold a highlights.scm or the build fails.
+#
+#    The query directory is found at build time: queries/ next to the
+#    grammar's src/ (single-grammar packages), else <source>/queries (a
+#    multi-grammar package whose grammars keep their own), else the shared
+#    top-level queries/ (typescript's tsx, php). Layouts the search cannot
+#    guess take grammar=dir arguments, and grammar= (empty) skips a grammar
+#    that has none:
+#
+#    %%install
+#    %%treesitter_queries_install
+#    %%treesitter_queries_install xml=queries/xml dtd=queries/dtd
+#    %%treesitter_queries_install terraform=
+#
+#    %%treesitter_queries_package
+#
+#    %%treesitter_queries_package must come after %%treesitter_queries_install
+#    in the spec (as %%treesitter_devel_package does): the install macro records
+#    which grammars got queries and the package template reads that.
+# --]]
+%__treesitter_queries_package_name() %name-queries
+%treesitter_queries_package \
+%package -n %{__treesitter_queries_package_name} \
+Summary: Tree-sitter queries of the %{name} grammars \
+BuildArch: noarch \
+%{treesitter_queries_provides} \
+%description -n %{__treesitter_queries_package_name} \
+The queries upstream ships for the grammars of %{name} (highlights.scm and \
+whatever else the grammar carries), in %{_treesitter_queriesdir}/<grammar>/, \
+for consumers that highlight with the grammar's own queries: opencode with \
+the -wasm modules, or an editor pointed at that directory. \
+%files -n %{__treesitter_queries_package_name} \
+%{treesitter_queries_files}
 
 %__treesitter_devel_package_name() %name-devel
 %treesitter_devel_package \

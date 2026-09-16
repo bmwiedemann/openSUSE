@@ -118,8 +118,11 @@ def buildCompileCommand(target: Dict, grammars: Optional[List[str]] = None) -> D
             if str(source) in seen_sources:
                 continue
 
-            # Only include if it belongs to the grammar (or default 'src')
-            if _grammar == "src" or source.parts[0] == _grammar:
+            # Only include if it belongs to the grammar (or default 'src').
+            # The grammar is a path prefix, possibly nested (grammars/ocaml),
+            # so compare as many leading components as it has.
+            grammar_parts = Path(_grammar).parts
+            if _grammar == "src" or (grammar_parts and source.parts[:len(grammar_parts)] == grammar_parts):
                 if any(source.name.endswith(s) for s in suffixes_cc):
                     command += ['-xc++', str(source)]
                     seen_sources.add(str(source))

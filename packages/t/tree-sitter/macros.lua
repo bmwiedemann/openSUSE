@@ -173,6 +173,166 @@ function treesitter_files()
 end
 
 --[[
+   Optional -wasm package: each grammar compiled to a WebAssembly module
+   (see the usage block in macros.in).
+
+   %%build
+   %%treesitter_wasm_build
+
+   %%install
+   %%treesitter_wasm_install
+
+   %%treesitter_wasm_package
+--]]
+
+function treesitter_wasm_build()
+	--[[
+      Build every grammar to a WebAssembly module with the tree-sitter CLI,
+      pointed at the distribution's wasm toolchain. Arguments of the form
+      grammar=dir override the directory the CLI is given for that grammar.
+      The CLI already refuses a scanner that imports symbols web-tree-sitter
+      cannot provide; the grep proves the module exports the grammar's entry
+      point (anchored so markdown does not pass on markdown_inline).
+   --]]
+	rpm.expand("%_treesitter_macro_init")
+	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
+	local grammar_sources = rpm.expand("%{treesitter_grammar_sources}"):split()
+	local dirs = {}
+	for _, spec in ipairs(arg_compat(arg)) do
+		local name, dir = spec:match("^([^=]+)=(.+)$")
+		if name then
+			dirs[name] = dir
+		end
+	end
+
+	print(rpm.expand("%treesitter_wasm_set_sdk"))
+	print("\n")
+	for i, name in ipairs(grammar_names) do
+		local source = dirs[name] or grammar_sources[i] or "src"
+		if source == "src" then
+			source = "."
+		end
+		local module = treesitter_wasm_module(name)
+		local symbol = "tree_sitter_" .. name:gsub("-", "_")
+		print("tree-sitter build --wasm -o " .. module .. " " .. source)
+		print("\n")
+		print("LC_ALL=C grep -qP '" .. symbol .. "(?![A-Za-z0-9_])' " .. module)
+		print("\n")
+	end
+end
+
+function treesitter_wasm_provides()
+	--[[
+      One Provides line per grammar, printed rather than stored in a macro:
+      a macro body defined from Lua keeps only its first line, so a
+      multi-grammar package would otherwise advertise only its first grammar.
+   --]]
+	rpm.expand("%_treesitter_macro_init")
+	local base_name = rpm.expand("%_treesitter_base_name")
+	for _, name in ipairs(rpm.expand("%{treesitter_grammar_names}"):split()) do
+		print("Provides: treesitter_grammar_wasm(" .. base_name .. "-" .. name .. ")\n")
+	end
+end
+
+function treesitter_wasm_install()
+	rpm.expand("%_treesitter_macro_init")
+	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
+	local install_path = rpm.expand("%{buildroot}%{_treesitter_wasmdir}")
+	for _, name in ipairs(grammar_names) do
+		local module = treesitter_wasm_module(name)
+		print("install -Dm644 " .. module .. " " .. install_path .. "/" .. module)
+		print("\n")
+	end
+end
+
+function treesitter_wasm_files()
+	rpm.expand("%_treesitter_macro_init")
+	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
+	local wasmdir = rpm.expand("%{_treesitter_wasmdir}")
+
+	print(rpm.expand("%dir " .. wasmdir:dirname() .. "\n"))
+	print(rpm.expand("%dir " .. wasmdir .. "\n"))
+	for _, name in ipairs(grammar_names) do
+		print(rpm.expand(wasmdir .. "/" .. treesitter_wasm_module(name) .. "\n"))
+	end
+end
+
+--[[
+   Optional -queries package: the grammar's own queries, next to the -wasm
+   modules (see the usage block in macros.in).
+
+   %%install
+   %%treesitter_queries_install [grammar=dir ...] [grammar= ...]
+
+   %%treesitter_queries_package
+--]]
+
+function treesitter_queries_install()
+	--[[
+      Install every *.scm of each grammar's query directory to
+      %%{_treesitter_queriesdir}/<grammar.json name>/. grammar=dir names
+      the directory, grammar= skips the grammar. Records the grammars that
+      got queries in %%_treesitter_queries_grammars for the files and
+      provides macros.
+   --]]
+	rpm.expand("%_treesitter_macro_init")
+	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
+	local grammar_sources = rpm.expand("%{treesitter_grammar_sources}"):split()
+	local dirs = {}
+	local skip = {}
+	for _, spec in ipairs(arg_compat(arg)) do
+		local name, dir = spec:match("^([^=]+)=(.*)$")
+		if name then
+			if dir == "" then
+				skip[name] = true
+			else
+				dirs[name] = dir
+			end
+		end
+	end
+	local install_root = rpm.expand("%{buildroot}%{_treesitter_queriesdir}")
+	local installed = {}
+	for i, name in ipairs(grammar_names) do
+		if not skip[name] then
+			local source = grammar_sources[i] or "src"
+			local candidates
+			if dirs[name] then
+				candidates = { dirs[name] }
+			elseif source == "src" then
+				candidates = { "queries" }
+			else
+				candidates = { source .. "/queries", "queries" }
+			end
+			local dest = install_root .. "/" .. treesitter_queries_key(name)
+			print("tsq_dir=''; for tsq_d in " .. table.concat(candidates, " ") .. "; do test -f \"$tsq_d/highlights.scm\" && { tsq_dir=$tsq_d; break; }; done\n")
+			print("test -n \"$tsq_dir\" || { echo 'error: no highlights.scm for grammar " .. name .. " (looked in " .. table.concat(candidates, ", ") .. "); pass " .. name .. "=<dir> or " .. name .. "= to treesitter_queries_install' >&2; exit 1; }\n")
+			print("install -d " .. dest .. "\n")
+			print("install -m 0644 \"$tsq_dir\"/*.scm " .. dest .. "/\n")
+			table.insert(installed, name)
+		end
+	end
+	rpm.define("_treesitter_queries_grammars " .. table.concat(installed, " "))
+end
+
+function treesitter_queries_provides()
+	rpm.expand("%_treesitter_macro_init")
+	local base_name = rpm.expand("%_treesitter_base_name")
+	for _, name in ipairs(rpm.expand("%{?_treesitter_queries_grammars}%{!?_treesitter_queries_grammars:%{treesitter_grammar_names}}"):split()) do
+		print("Provides: treesitter_grammar_queries(" .. base_name .. "-" .. name .. ")\n")
+	end
+end
+
+function treesitter_queries_files()
+	rpm.expand("%_treesitter_macro_init")
+	local queriesdir = rpm.expand("%{_treesitter_queriesdir}")
+	print(rpm.expand("%dir " .. queriesdir:dirname() .. "\n"))
+	print(rpm.expand("%dir " .. queriesdir .. "\n"))
+	for _, name in ipairs(rpm.expand("%{?_treesitter_queries_grammars}%{!?_treesitter_queries_grammars:%{treesitter_grammar_names}}"):split()) do
+		print(rpm.expand(queriesdir .. "/" .. treesitter_queries_key(name) .. "\n"))
+	end
+end
+
+--[[
    Optional -devel package for grammars that are needed for other grammars to be built.
 
    If the -devel package is needed it should look like this:

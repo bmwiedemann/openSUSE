@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:20:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add the %treesitter_queries_install, %treesitter_queries_files
+  and %treesitter_queries_package macros: ship the queries a
+  grammar carries (highlights.scm and friends) in a noarch -queries
+  subpackage under %_datadir/tree-sitter/queries/<grammar>, keyed
+  like the -wasm modules, for consumers highlighting with the
+  grammar's own queries
+- Own %_datadir/tree-sitter/queries
+- tree-sitter-target.py: match a nested grammar source directory
+  (grammars/<name>) as a path prefix, not only a top-level one
+
+-------------------------------------------------------------------
+Mon Sep 14 18:07:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add the %treesitter_wasm_build, %treesitter_wasm_install,
+  %treesitter_wasm_files and %treesitter_wasm_package macros: build
+  every grammar of a package to a WebAssembly module with the
+  distribution's clang, lld and wasi-libc (the tree-sitter CLI's
+  own wasi-sdk invocation) into a noarch -wasm subpackage under
+  %_datadir/tree-sitter/wasm, for consumers running web-tree-sitter
+- Own %_datadir/tree-sitter/wasm
+
+-------------------------------------------------------------------
 Sat Aug 29 17:33:38 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Revendored to the latest versions of dependencies (including

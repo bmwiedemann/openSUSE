@@ -120,3 +120,16 @@ function treesitter_devel_package_json(module_name, install_path, main)
 	print(table.concat(commands, " && "))
 	print("\n")
 end
+
+function treesitter_wasm_module(name)
+	-- The CLI names a WebAssembly module after the grammar's own name from
+	-- grammar.json, which is an identifier: a dash in the rpm-side grammar
+	-- name (markdown-inline) is an underscore there.
+	return "tree-sitter-" .. name:gsub("-", "_") .. ".wasm"
+end
+
+function treesitter_queries_key(name)
+	-- Queries are keyed like the WebAssembly modules: by the grammar's own
+	-- name, an identifier, so a dash in the rpm-side name is an underscore.
+	return (name:gsub("-", "_"))
+end
