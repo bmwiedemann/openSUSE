@@ -1,6 +1,6 @@
 The syntax highlighting table in packages/tui/src/parsers-config.ts is 34
-entries, and 29 of them are plain https URLs: the tree-sitter grammar is a
-.wasm fetched from a GitHub release and the highlight queries come from
+entries, all of them plain https URLs: the tree-sitter grammar is a .wasm
+fetched from a GitHub release and the highlight queries come from
 raw.githubusercontent.com. opentui downloads and caches them under
 ~/.local/share/opentui/tree-sitter the first time a file of that type is
 rendered, then loads the .wasm into the process. There is no env var and no
@@ -11,7 +11,8 @@ at runtime, and the query URLs point at the master branch of
 nvim-treesitter rather than a tag, so what is fetched changes over time.
 
 The five grammars @opentui/core ships as real assets - javascript,
-typescript, markdown, markdown_inline, zig - are local paths and are kept.
+typescript, markdown, markdown_inline, zig - are not in that table and keep
+working.
 Everything else renders as unhighlighted text, which is what
 loadFiletypeParser already does when a download fails, so this is a path
 upstream handles rather than a new one.

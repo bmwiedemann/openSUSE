@@ -30,15 +30,30 @@ Then, in order:
    producing something subtly broken - see "OpenTUI" below. If it moved, bump
    the opentui package first and update opentui_version here.
 
-2. Rebase the five patches. They are small and all of them sit in code
+2. Rebase the six patches. They are small and all of them sit in code
    upstream changes rarely, but the grammar patch in particular is a single
    line in a large file. Drop opencode-fix-filesystem-cycle.patch once the
    release contains upstream PR 48397 (see "Runtime network access").
+   opencode-native-tree-sitter.patch replaces the parser() block of
+   packages/opencode/src/tool/shell.ts; if upstream changes what shell.ts
+   reads from a node, shell-native.ts (added by the patch) must grow with it.
 
-3. Build locally, then read %check. It runs the compiled binary, which is the
+3. Check the native pins. %prep fails if the vendor tree's @ff-labs/fff-bun,
+   bun-pty, @silvia-odwyer/photon-node or @parcel/watcher moved away from
+   fff_version, bun_pty_version, photon_version or parcel_watcher_version;
+   bump the fff, bun-pty and photon-node packages first (their ABIs are
+   private to the TypeScript in the tree, so the Requires are exact). The
+   grammar modules follow the tree-sitter-<lang>-wasm packages: the
+   BuildRequires are exact on ts_*_version, so a tree-sitter-<lang>
+   update in Factory makes this package unresolvable until the pin (and
+   the bundled() version it feeds) follows - by design. On an opentui
+   bump re-check its parsers-config.ts pins and highlight queries
+   against those versions. See "Native code" below.
+
+4. Build locally, then read %check. It runs the compiled binary, which is the
    only thing that proves the payload survived packaging.
 
-4. Re-run the licence check described under "Licensing".
+5. Re-run the licence check described under "Licensing".
 
 
 Why the sources are generated
@@ -156,15 +171,44 @@ found and why the behaviour could not simply be configured off.
         OPENCODE_ALLOW_NPM_INSTALL=1
 
   opencode-no-grammar-download.patch
-        29 of the 34 syntax highlighting grammars in
+        All 34 syntax highlighting grammars in
         packages/tui/src/parsers-config.ts are https URLs; the .wasm comes
         from a GitHub release and the highlight queries from the master
         branch of nvim-treesitter, so what gets fetched changes over time.
         The five grammars @opentui/core ships as real assets - javascript,
-        typescript, markdown, markdown_inline, zig - still work; other
-        filetypes render unhighlighted, which is what upstream already does
-        when a download fails.
+        typescript, markdown, markdown_inline, zig - are not in that table
+        and still work; other filetypes render unhighlighted, which is what
+        upstream already does when a download fails.
         OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1
+
+31 of the 34 languages that paragraph is about now come from the
+distribution instead: %prep rewrites packages/tui/src/parsers-config.ts so
+that each descriptor's wasm and highlights point at
+/usr/share/tree-sitter/wasm/tree-sitter-<grammar>.wasm and
+/usr/share/tree-sitter/queries/<grammar>/highlights.scm (the loader takes a
+local path exactly as it takes a URL, and a missing file means plain text
+for that language, nothing worse), and the package Recommends the
+tree-sitter-<lang>-wasm and -queries pair for each of them
+(opencode_system_grammars in the spec; csharp's grammar is c_sharp in
+tree-sitter-c-sharp; cpp's descriptor lists the C highlights before its
+own, as upstream's tree-sitter-cpp query set is a delta on top of them).
+The rewrite also drops the locals entries: nothing in @opentui/core reads
+them, and they would otherwise keep web URLs in descriptors the download
+block no longer filters. Three upstream entries stay blocked on purpose:
+hcl, whose packaged grammar ships no queries; kotlin, where Factory
+packages another grammar than the fwcd one upstream pins, also without
+queries; and vue, whose highlights.scm inherits html_tags (upstream lists
+two sources, the rewrite handles exactly one) and ends in a #set! with a
+capture argument that web-tree-sitter 0.25 rejects, so it would never
+compile. The rewrite asserts exactly one upstream highlights source and no
+injections or locals left per descriptor; a descriptor that grows another
+kind of entry needs the rewrite extended first.
+%check loads every listed module with its queries in the web-tree-sitter
+runtime opencode ships, so a query naming a node the packaged grammar lacks
+fails the build rather than the highlighter. On a bump, diff upstream's
+descriptor list against opencode_system_grammars: a new language needs its
+grammar packaged (with -wasm and -queries) before it is added; until then
+Patch3 keeps it blocked.
 
 The other two patches are unrelated to the network.
 
@@ -243,39 +287,61 @@ opencode-vendor-keep.txt means the closure did not move at all and the counts
 above must still hold - but a changed one only tells you where to look.
 
 
-Prebuilt binaries
------------------
+Native code
+-----------
 
-Some dependencies ship compiled code with no source in the tree, and it ends
-up inside the executable. This is the part of the package a reviewer should
-look at hardest. On aarch64 the embedded blobs are:
+Everything compiled into the executable that is not JavaScript is built
+from source, in three ways:
 
-    @ff-labs/fff-bin-linux-arm64-gnu  libfff_c.so       4.7 MB  no source
-    @silvia-odwyer/photon-node        photon_rs_bg.wasm 1.8 MB  no source
-    bun-pty                           librust_pty.so    0.5 MB  no source
-    tree-sitter-bash                  .node and .wasm   2.7 MB  parser.c present
-    tree-sitter-powershell            .wasm             0.9 MB  parser.c present
-    @parcel/watcher-linux-arm64-glibc watcher.node      0.4 MB  C++ in sibling
-    @opentui/core                     5 grammar .wasm   3.1 MB  no source
-    web-tree-sitter                   tree-sitter.wasm  0.2 MB  no source
+  - Loaded from a package at run time (like libopentui.so): libfff_c.so
+    from the fff package (the file finder behind the @ file picker,
+    OPENCODE_DISABLE_FFF falls back to an internal walk) and librust_pty.so
+    from the bun-pty package (the pty behind the shell tool). %prep rewrites
+    the two npm loaders to those literal paths and removes the npm binaries,
+    so bun has nothing to embed. Both ABIs are unversioned and private to
+    the TypeScript shipped here, hence the exact Requires.
 
-What they do: fff is the fast file finder (OPENCODE_DISABLE_FFF falls back to
-an internal walk), photon resizes images for vision models, bun-pty is the
-pty behind the shell tool, and the tree-sitter pieces parse shell commands
-for the permission system as well as highlighting.
+  - Embedded, built here from source: @parcel/watcher's watcher.node from the
+    C++ in its own npm package (binding.gyp's Linux branch, node-addon-api
+    headers from Source11).
 
-opencode_vendor removes everything of this kind that the two supported
-architectures cannot run - foreign prebuilds/ directories, .dylib, .dll,
-.exe, the Windows and x86_64 clipboardy fallbacks, web-tree-sitter's debug
-build, and the .tgz copies some packages keep of themselves inside dist/.
-That is 10.8 MB and it changes nothing about the result. What is listed above
-is what remains after that, and it is genuinely used.
+  - Embedded, taken from packages: the five grammar modules @opentui/core
+    highlights with (javascript, typescript, markdown, markdown_inline, zig)
+    are the tree-sitter-<lang>-wasm subpackages' files, copied over the
+    asset directories before bun build. Those packages build every Factory
+    grammar to WebAssembly with the %treesitter_wasm_* macros (clang, lld,
+    wasi-libc through the tree-sitter CLI's own wasi-sdk invocation); the
+    modules parse identically to upstream's release modules under the
+    web-tree-sitter runtime opencode ships and accept opentui's highlight
+    queries (checked when this was introduced, against javascript 0.23.1
+    and markdown 0.5.3 where opentui pins 0.25.0 and 0.5.1).
 
-Reducing it further means building those artefacts from source: the
-tree-sitter grammars have their parser.c and could be compiled, though the
-.wasm form needs emscripten; fff, bun-pty and photon are Rust with no source
-in the tree at all and would each need their crate closure vendored
-separately.
+  - Embedded, taken from a package: photon_rs_bg.wasm and its glue from
+    photon-node (image resizing for vision models). The glue must be the one
+    the same wasm-bindgen wrote, so the whole npm package directory is
+    replaced by the package's files and upstream's two edits to the glue
+    (patches/@silvia-odwyer%2Fphoton-node@*.patch: bundle under bun, read
+    the module from where opencode embeds it) are re-applied by %prep.
+
+The shell tool's command parser no longer goes through wasm at all:
+opencode-native-tree-sitter.patch loads libtree-sitter and the
+tree-sitter-bash / tree-sitter-powershell packages' grammars through
+bun:ffi, with libopencode-tsshim.so (Source12, installed under %_libdir)
+walking the tree, because TSNode is returned by value and bun:ffi cannot
+receive that. %check parses a pipeline through the shipped shim.
+
+One module is still the npm file: web-tree-sitter's tree-sitter.wasm
+(205 KB, MIT), used by @opentui/core's highlighter. Its build needs
+emscripten (MAIN_MODULE dynamic linking plus generated JavaScript glue),
+which the distribution does not have. It is declared as
+bundled(web-tree-sitter). Retiring it means either packaging emscripten or
+giving the highlighter the same native treatment as the shell parser.
+
+%check reads bun's embedded-file table out of the executable and asserts it
+lists exactly watcher.node, the five grammar modules, photon's module and
+tree-sitter.wasm, and that the files built here are in the payload byte
+for byte. (Counting ELF headers does not work: bun's own executable
+contains the magic three times.)
 
 
 Things that will surprise you

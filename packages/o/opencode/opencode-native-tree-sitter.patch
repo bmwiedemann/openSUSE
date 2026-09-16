@@ -1,0 +1,160 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Parse shell commands with the system tree-sitter
+
+The permission system parses every shell command with tree-sitter. Upstream
+does that through web-tree-sitter, whose runtime module can only be built
+with emscripten, plus the grammar wasm files from the tree-sitter-bash and
+tree-sitter-powershell npm packages. The distribution build loads
+libtree-sitter and the grammar packages' shared objects through bun:ffi
+instead. TSNode is passed by value in the C API, which bun:ffi cannot
+receive, so opencode-tsshim.c walks the tree and hands over one JSON dump
+per parse; shell-native.ts turns that into the Node subset shell.ts reads.
+Placeholders @OPENCODE_LIBDIR@ and @TREE_SITTER_GRAMMARS@ are filled in by
+the spec. Distribution-specific, not for upstream.
+
+diff -Naur a/packages/opencode/src/tool/shell-native.ts b/packages/opencode/src/tool/shell-native.ts
+--- a/packages/opencode/src/tool/shell-native.ts	1970-01-01 01:00:00.000000000 +0100
++++ b/packages/opencode/src/tool/shell-native.ts	2026-09-14 17:51:24.493274369 +0200
+@@ -0,0 +1,95 @@
++// Native tree-sitter for the shell tool: bun:ffi over the system libtree-sitter,
++// with a C shim (opencode-tsshim.c) doing the tree walk because TSNode is
++// returned by value, which bun:ffi cannot receive. Exposes the subset of the
++// web-tree-sitter Node API that shell.ts reads: type, text, parent, children,
++// descendantsOfType.
++
++import { CString, FFIType, dlopen, ptr } from "bun:ffi"
++
++const SHIM = process.env.OPENCODE_TSSHIM ?? "@OPENCODE_LIBDIR@/libopencode-tsshim.so"
++
++const shim = dlopen(SHIM, {
++  ocshim_parser_new: { args: [FFIType.ptr], returns: FFIType.ptr },
++  ocshim_parser_delete: { args: [FFIType.ptr], returns: FFIType.void },
++  ocshim_parse: { args: [FFIType.ptr, FFIType.ptr, FFIType.u32], returns: FFIType.ptr },
++  ocshim_free: { args: [FFIType.ptr], returns: FFIType.void },
++  ocshim_abi_version: { args: [FFIType.ptr], returns: FFIType.u32 },
++})
++
++export function loadLanguage(path: string, symbol: string): number {
++  const lib = dlopen(path, { [symbol]: { args: [], returns: FFIType.ptr } })
++  const lang = lib.symbols[symbol]() as number
++  if (!lang) throw new Error(`${symbol} returned NULL`)
++  return lang
++}
++
++export class NativeNode {
++  children: NativeNode[] = []
++  constructor(
++    readonly type: string,
++    readonly isNamed: boolean,
++    readonly startIndex: number,
++    readonly endIndex: number,
++    readonly parent: NativeNode | null,
++    private readonly buf: Buffer,
++  ) {}
++  get text(): string {
++    return this.buf.subarray(this.startIndex, this.endIndex).toString("utf8")
++  }
++  get namedChildren(): NativeNode[] {
++    return this.children.filter((c) => c.isNamed)
++  }
++  get childCount(): number {
++    return this.children.length
++  }
++  child(index: number): NativeNode | null {
++    return this.children[index] ?? null
++  }
++  descendantsOfType(types: string | string[]): NativeNode[] {
++    const set = new Set(Array.isArray(types) ? types : [types])
++    const out: NativeNode[] = []
++    const walk = (n: NativeNode) => {
++      if (set.has(n.type)) out.push(n)
++      for (const c of n.children) walk(c)
++    }
++    walk(this)
++    return out
++  }
++  toString(): string {
++    return this.isNamed ? `(${this.type}${this.children.filter((c) => c.isNamed).map((c) => " " + c.toString()).join("")})` : ""
++  }
++}
++
++type Raw = [string, number, number, number, Raw[]]
++
++// The C side frees the tree before returning, so there is nothing to
++// release here; delete() exists because shell.ts calls it.
++export class NativeTree {
++  constructor(readonly rootNode: NativeNode) {}
++  delete(): void {}
++}
++
++export class NativeParser {
++  private p: number
++  constructor(lang: number) {
++    const p = shim.symbols.ocshim_parser_new(lang) as number
++    if (!p) throw new Error(`ts_parser_set_language failed (grammar ABI ${shim.symbols.ocshim_abi_version(lang)})`)
++    this.p = p
++  }
++  parse(src: string): NativeTree {
++    const buf = Buffer.from(src, "utf8")
++    const out = shim.symbols.ocshim_parse(this.p, ptr(buf), buf.length) as number
++    if (!out) throw new Error("ts_parser_parse_string failed")
++    const json = new CString(out).toString()
++    shim.symbols.ocshim_free(out)
++    const build = (a: Raw, parent: NativeNode | null): NativeNode => {
++      const n = new NativeNode(a[0], a[1] === 1, a[2], a[3], parent, buf)
++      n.children = a[4].map((c) => build(c, n))
++      return n
++    }
++    return new NativeTree(build(JSON.parse(json) as Raw, null))
++  }
++  delete() {
++    shim.symbols.ocshim_parser_delete(this.p)
++  }
++}
+diff -Naur a/packages/opencode/src/tool/shell.ts b/packages/opencode/src/tool/shell.ts
+--- a/packages/opencode/src/tool/shell.ts	2026-09-14 17:27:48.650152184 +0200
++++ b/packages/opencode/src/tool/shell.ts	2026-09-14 17:27:48.718159827 +0200
+@@ -6,7 +6,7 @@
+ import { containsPath, type InstanceContext } from "../project/instance-context"
+ import { InstanceState } from "@/effect/instance-state"
+ import { lazy } from "@/util/lazy"
+-import { Language, type Node } from "web-tree-sitter"
++import { NativeParser, loadLanguage, type NativeNode as Node } from "./shell-native"
+ 
+ import { FSUtil } from "@opencode-ai/core/fs-util"
+ import { fileURLToPath } from "url"
+@@ -309,29 +309,11 @@
+   })
+ }
+ const parser = lazy(async () => {
+-  const { Parser } = await import("web-tree-sitter")
+-  const { default: treeWasm } = await import("web-tree-sitter/tree-sitter.wasm" as string, {
+-    with: { type: "wasm" },
+-  })
+-  const treePath = resolveWasm(treeWasm)
+-  await Parser.init({
+-    locateFile() {
+-      return treePath
+-    },
+-  })
+-  const { default: bashWasm } = await import("tree-sitter-bash/tree-sitter-bash.wasm" as string, {
+-    with: { type: "wasm" },
+-  })
+-  const { default: psWasm } = await import("tree-sitter-powershell/tree-sitter-powershell.wasm" as string, {
+-    with: { type: "wasm" },
+-  })
+-  const bashPath = resolveWasm(bashWasm)
+-  const psPath = resolveWasm(psWasm)
+-  const [bashLanguage, psLanguage] = await Promise.all([Language.load(bashPath), Language.load(psPath)])
+-  const bash = new Parser()
+-  bash.setLanguage(bashLanguage)
+-  const ps = new Parser()
+-  ps.setLanguage(psLanguage)
++  // The distribution build parses with the system libtree-sitter and the
++  // tree-sitter-bash / tree-sitter-powershell grammar packages instead of
++  // the wasm copies from npm; see shell-native.ts.
++  const bash = new NativeParser(loadLanguage("@TREE_SITTER_GRAMMARS@/libtree-sitter-bash.so", "tree_sitter_bash"))
++  const ps = new NativeParser(loadLanguage("@TREE_SITTER_GRAMMARS@/libtree-sitter-powershell.so", "tree_sitter_powershell"))
+   return { bash, ps }
+ })
+ 

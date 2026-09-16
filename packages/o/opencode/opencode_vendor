@@ -178,6 +178,18 @@ echo "==> removing prebuilt binaries that the distribution builds itself"
 # from source. The shims next to it (index.js, package.json) stay, because
 # that is how @opentui/core locates the library.
 find "$store" -name 'libopentui.so' -delete -printf '    removed %P\n'
+# The same goes for the rest of the native code, see README.SUSE-maint
+# "Native code": libfff_c.so and librust_pty.so come from the fff and bun-pty
+# packages at run time, photon's module and glue from photon-node, and
+# watcher.node and the highlighter's grammar modules are compiled in %build.
+# The shell tool parses with the system tree-sitter, so its two grammar
+# packages' wasm and node prebuilds are unreferenced; web-tree-sitter's lib/
+# copy and the source maps are unreachable through its exports map.
+find "$store" \( -name 'libfff_c.so' -o -name 'librust_pty*.so' -o -name 'watcher.node' \
+    -o -name 'photon_rs_bg.wasm' -o -name 'photon_rs.js' -o -name 'photon_rs_bg.js' \
+    -o -name 'tree-sitter-*.wasm' -o -name 'tree-sitter.wasm.map' \) -delete -printf '    removed %P\n'
+find "$store" -path '*/tree-sitter-bash/prebuilds' -prune -exec rm -rf {} \; -printf '    removed %P\n'
+find "$store" -path '*/web-tree-sitter/lib/tree-sitter.wasm*' -delete -printf '    removed %P\n'
 
 echo "==> packing the dependency tree"
 # The per-workspace node_modules are symlink farms into node_modules/.bun and

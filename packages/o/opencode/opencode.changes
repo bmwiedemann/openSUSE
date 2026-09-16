@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:32:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Highlight 31 of the languages the TUI used to download grammars
+  for from the distribution instead: their descriptors now point
+  at the tree-sitter-<lang>-wasm module and the -queries
+  highlights.scm (Recommends; cpp also takes c's, upstream's cpp
+  query is a delta on it), and %check loads and compiles every
+  pair in the bundled web-tree-sitter runtime. hcl, kotlin and vue
+  stay blocked: no packaged queries (hcl, kotlin), a query the
+  runtime rejects (vue)
+
+-------------------------------------------------------------------
+Mon Sep 14 19:35:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Take the highlighter's five grammar modules from the
+  tree-sitter-javascript-wasm, -typescript-wasm, -markdown-wasm and
+  -zig-wasm packages instead of building them from grammar tarballs
+  here, so the grammar versions follow the packaged releases
+  (javascript 0.23.1, markdown 0.5.3); drop those tarballs and the
+  clang, lld and wasi-libc build dependencies
+
+-------------------------------------------------------------------
+Mon Sep 14 15:34:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the native code the executable carries from source, or load
+  it from the distribution:
+  * Use the fff and bun-pty packages (required at the pinned
+    versions) for the file finder and the shell pty, loaded at
+    run time
+  * Take photon's WebAssembly module and glue from photon-node
+  * Compile @parcel/watcher's addon from its own sources
+  * Build the highlighter's five tree-sitter grammar modules from
+    the grammar sources with clang, lld and wasi-libc
+- Add opencode-native-tree-sitter.patch: parse shell commands with
+  libtree-sitter and the tree-sitter-bash and
+  tree-sitter-powershell packages through bun:ffi, with a small C
+  shim (opencode-tsshim.c) installed under libdir;
+  web-tree-sitter's runtime stays only for the highlighter and is
+  declared bundled
+
+-------------------------------------------------------------------
 Mon Sep 14 11:02:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add opencode-fix-filesystem-cycle.patch: every prompt failed with
