@@ -25,16 +25,19 @@ Summary:        PowerShell grammar for tree-sitter
 License:        MIT
 URL:            https://github.com/airbus-cert/tree-sitter-powershell
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  %{python_module base}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree-sitter
-BuildRequires:  %{python_module base}
+BuildRequires:  clang
+BuildRequires:  lld
+BuildRequires:  wasi-libc
+%treesitter_grammars %{_name}
 %if 0%{?suse_version} >= 1699
 # Only for the functional test in %%check; python-tree-sitter does not
 # exist in Leap 16.0, and gating the test keeps that repo resolvable.
 BuildRequires:  %{python_module tree-sitter}
 %endif
-%treesitter_grammars %{_name}
 %python_subpackages
 
 %description
@@ -55,9 +58,12 @@ shipped in %{name} and exposes it to python-tree-sitter via language().
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install
 %treesitter_devel_install
 %treesitter_python_install
 
@@ -78,6 +84,9 @@ test -f %{buildroot}%{_treesitter_grammardir}/libtree-sitter-%{_name}.so
 %license LICENSE
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %treesitter_devel_package
 
 %files %{python_files %{name}}
