@@ -27,7 +27,10 @@ Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM add-binding.gyp-for-rpm-build.patch gh#tree-sitter-grammars/tree-sitter-vim!59 mcepl@suse.com
 # adds missing binding.gyp file
 Patch0:         add-binding.gyp-for-rpm-build.patch
+BuildRequires:  clang
+BuildRequires:  lld
 BuildRequires:  tree-sitter
+BuildRequires:  wasi-libc
 %treesitter_grammars %{_name}
 
 %description
@@ -39,13 +42,19 @@ BuildRequires:  tree-sitter
 %build
 %treesitter_configure
 %treesitter_build
+%treesitter_wasm_build
 
 %install
 %treesitter_install
+%treesitter_wasm_install
+%treesitter_queries_install vim=queries/vim
 
 %files
 %license LICENSE
 %doc README.md
 %treesitter_files
 
+%treesitter_wasm_package
+
+%treesitter_queries_package
 %changelog

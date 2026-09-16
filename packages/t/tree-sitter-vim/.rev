@@ -84,4 +84,13 @@
   binding.gyp (gh#tree-sitter-grammars/tree-sitter-vim!59).</comment>
     <requestid>1350418</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>1de105b425a1842b5cfa0d1c03ee6a96</srcmd5>
+    <version>0.8.1</version>
+    <time>1789573311</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-vim: build the grammars to WebAssembly modules as well (new noarch tree-sitter-vim-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-vim-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378035, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378127</requestid>
+  </revision>
 </revisionlist>

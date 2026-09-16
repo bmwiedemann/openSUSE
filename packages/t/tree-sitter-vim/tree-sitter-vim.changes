@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:20:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Ship the grammar queries in a new noarch -queries subpackage
+  (highlights.scm and friends, next to the -wasm modules)
+
+-------------------------------------------------------------------
+Mon Sep 14 18:20:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Build the grammars to WebAssembly modules as well (BuildRequires
+  clang, lld and wasi-libc): new -wasm subpackage for
+  web-tree-sitter consumers
+
+-------------------------------------------------------------------
 Sun Apr  5 21:18:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.8.1
