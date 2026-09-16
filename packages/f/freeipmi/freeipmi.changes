@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 14 15:19:36 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 1.6.19 and fix:
+  * bsc#1278719 - CVE-2026-85504
+    stack-based buffer overflow via malformed Fujitsu SEL long-text responses.
+  * bsc#1278721 CVE-2026-85506
+    Arbitrary code execution via stack-based buffer overflow in ipmi-oem
+  * bsc#1278722 CVE-2026-85505
+    Denial of Service via stack-based buffer over-read in ipmi-oem
+  * bsc#1278724 CVE-2026-85507
+    stack-based buffer overflow in _output_dell_system_info_cmc_info
+  * bsc#1278726 CVE-2026-85508
+    stack-based buffer overflow in _output_dell_system_info_cmc_ipv6_info
+  * bsc#1278727 CVE-2026-85509
+    stack-based buffer overflow when a BMC returns more bytes than requested
+
+-------------------------------------------------------------------
 Mon Jun  8 20:19:03 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Update to version 1.6.18:

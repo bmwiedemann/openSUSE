@@ -37,7 +37,7 @@
 %{!?_initddir: %global _initddir %{_sysconfdir}/init.d}
 
 Name:           freeipmi
-Version:        1.6.18
+Version:        1.6.19
 Release:        0%{release}
 URL:            http://www.gnu.org/software/freeipmi/
 Source0:        http://ftp.gnu.org/gnu/freeipmi/%{name}-%{srcversion}.tar.gz
@@ -46,9 +46,7 @@ Source2:        %{name}.keyring
 Summary:        IPMI Service Processor, BMC management tool
 License:        GPL-3.0-or-later
 Group:          System/Management
-%if 0%{?suse_version} > 1010
 BuildRequires:  fdupes
-%endif
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
 BuildRequires:  pkg-config
