@@ -1,0 +1,9 @@
+-------------------------------------------------------------------
+Tue Sep 15 06:29:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.3.12: the fsharp and
+  fsharp_signature grammars as shared libraries, WebAssembly
+  modules (-wasm), the upstream queries (-queries) and the
+  grammar sources (-devel); no Python binding, upstream's
+  does not fit the shared macro
+
