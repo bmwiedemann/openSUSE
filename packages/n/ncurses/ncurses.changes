@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Sep 14 09:38:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Work around common name in certificate of www.invisible-island.net 
+
+-------------------------------------------------------------------
+Mon Sep 14 06:36:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260912
+  + build-fix for sizeof(mmask_t) configure check (cf:20260829).
+  + review/fix teraterm* (report by Jakub Horky)
+  + modify flash for vt525 to use DECRARA (patch by Branden Robinson)
+  + update config.guess, config.sub
+- Add ncurses patch 20260905
+  + modify endwin() and doupdate() to save/restore keypad and meta modes
+    (report by Ferenc Wagner).
+  + improve range-checks for xterm X10 and SGR mouse protocol.
+  + correct modifier-masking for buttons 6-11 in mouse version 3
+    (report by Ravi Arnan Irianto).
+  + build-fix for Ada95 with ABI 7 (report by Branden Robinson)
+- Add ncurses patch 20260829
+  + add configure check to ensure that mmask_t is large enough for the
+    configured mouse version (report by Ravi Arnan Irianto)
+  + add mouse-parsing for extended buttons with mouse version 3 (report
+    by Ravi Arnan Irianto).
+
+-------------------------------------------------------------------
+Fri Sep  4 13:37:32 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260822
+  + add a limit-check in wborder (patch by Bjoern Foersterling).
+  + improve limit-checks for trace calls in read_entry.c (report by Yeo
+    JooHo).
+  + improve tic warnings regarding the empty smir/rmir strings which
+    may be added in dump_entry.c for termcap if ich/ich1 are present but 
+    smir/rmir are not.
+  + add sun+fkeys -TD
+  + add dtterm-sk, dtterm+sk -TD
+  + add ich1 to several entries, providing for support of non-curses
+    applications via termcap only -TD
+  + add dch/dch1 to rxvt-basic -TD
+  + drop redundant xterm=setaf2 (patch by Branden Robinson)
+  + documentation improvements (patches by Branden Robinson).
+    + improve color discussion in man pages
+    + improve formatting/style of man pages
+  > improve wide-character support with UCRT (patches by Liu Hao)
+    + use UCRT's wcrtomb rather than _nc_wctomb
+    + skip trailing cells of double-width characters
+
+-------------------------------------------------------------------
 Mon Aug 17 08:05:11 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260815

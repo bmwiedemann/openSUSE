@@ -46,6 +46,7 @@
 %global basevers 6.6
 %global tackvers 1.11
 %global tacklvl  20251210
+%global download invisible-island.net
 # ${!...} and pushd is bash-specific
 %define _buildshell /bin/bash
 
@@ -93,18 +94,18 @@ Summary:        Terminal control library
 License:        MIT
 Group:          System/Base
 URL:            https://www.invisible-island.net/ncurses/ncurses.html
-Source0:        https://www.invisible-island.net/archives/ncurses/ncurses-%{basevers}.tar.gz
+Source0:        https://%{download}/archives/ncurses/ncurses-%{basevers}.tar.gz
 Source1:        ncurses-%{basevers}-patches.tar.bz2
 Source2:        handle.linux
 Source3:        README.devel
 Source4:        ncurses-rpmlintrc
 # Latest tack can be found at ftp://ftp.invisible-island.net/pub/ncurses/current/
-Source5:        https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz
+Source5:        https://%{download}/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz
 Source6:        edit.sed
 Source7:        baselibs.conf
 Source8:        cursescheck
-Source9:        https://www.invisible-island.net/archives/ncurses/ncurses-%{basevers}.tar.gz.asc
-Source10:       https://www.invisible-island.net/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz.asc
+Source9:        https://%{download}/archives/ncurses/ncurses-%{basevers}.tar.gz.asc
+Source10:       https://%{download}/archives/ncurses/current/tack-%{tackvers}-%{tacklvl}.tgz.asc
 Source11:       ncurses.keyring
 Source12:       ncursesnt
 Source42:       termerase.c

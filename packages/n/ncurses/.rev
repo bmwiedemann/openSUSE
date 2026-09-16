@@ -5839,4 +5839,41 @@
     a non-source tree (report by Bruno Haible).</comment>
     <requestid>1371662</requestid>
   </revision>
+  <revision rev="339" vrev="112">
+    <srcmd5>b867959c8899df806f11d755257a2364</srcmd5>
+    <version>unknown</version>
+    <time>1789573272</time>
+    <user>anag_factory</user>
+    <comment>- Work around common name in certificate of www.invisible-island.net 
+
+- Add ncurses patch 20260912
+  + build-fix for sizeof(mmask_t) configure check (cf:20260829).
+  + review/fix teraterm* (report by Jakub Horky)
+  + modify flash for vt525 to use DECRARA (patch by Branden Robinson)
+  + update config.guess, config.sub
+- Add ncurses patch 20260905
+  + modify endwin() and doupdate() to save/restore keypad and meta modes
+    (report by Ferenc Wagner).
+  + improve range-checks for xterm X10 and SGR mouse protocol.
+  + correct modifier-masking for buttons 6-11 in mouse version 3
+    (report by Ravi Arnan Irianto).
+  + build-fix for Ada95 with ABI 7 (report by Branden Robinson)
+- Add ncurses patch 20260829
+  + add configure check to ensure that mmask_t is large enough for the
+    configured mouse version (report by Ravi Arnan Irianto)
+  + add mouse-parsing for extended buttons with mouse version 3 (report
+    by Ravi Arnan Irianto).
+
+- Add ncurses patch 20260822
+  + add a limit-check in wborder (patch by Bjoern Foersterling).
+  + improve limit-checks for trace calls in read_entry.c (report by Yeo
+    JooHo).
+  + improve tic warnings regarding the empty smir/rmir strings which
+    may be added in dump_entry.c for termcap if ich/ich1 are present but 
+    smir/rmir are not.
+  + add sun+fkeys -TD
+  + add dtterm-sk, dtterm+sk -TD
+  + add ich1 to several entries, providing for support of non-curses</comment>
+    <requestid>1377857</requestid>
+  </revision>
 </revisionlist>
