@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0b248a80f9d801e992f53f54e82b9537</srcmd5>
+    <version>1.3.3</version>
+    <time>1789573317</time>
+    <user>anag_factory</user>
+    <comment>New package tree-sitter-agda 1.3.3 (maintainer pluskalm): the Agda grammar for tree-sitter from github.com/tree-sitter/tree-sitter-agda (MIT), built with the %treesitter_* macros like the other editors:tree-sitter packages: shared library, -devel sources, noarch -wasm module and -queries subpackage and the Python binding (python-tree-sitter-agda). Fills a gap in the languages opencode's highlighter knows; all of it comes from the upstream sources at build time.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter, on top of the still open sr#1378013) and the other new tree-sitter-&lt;lang&gt; packages.</comment>
+    <requestid>1378132</requestid>
+  </revision>
+</revisionlist>
