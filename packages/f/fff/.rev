@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>0bbb7f1f5399ba0a3adc430521d0d049</srcmd5>
+    <version>0.9.4</version>
+    <time>1789573273</time>
+    <user>anag_factory</user>
+    <comment>New package fff 0.9.4: libfff_c, the C ABI of the fff fuzzy file finder (Rust), linked against the distribution's libgit2. Lets opencode load the finder through bun:ffi instead of the copy inside the npm package.
+INTERDEPENDENT REQUESTS - please stage together: bun-pty, photon-node (new), opencode (requires this one at = 0.9.4).
+Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
+    <requestid>1377977</requestid>
+  </revision>
+</revisionlist>

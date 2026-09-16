@@ -1,0 +1,6 @@
+<services>
+  <service name="cargo_vendor" mode="manual">
+    <param name="srctar">fff-0.9.4.tar.gz</param>
+    <param name="compression">zst</param>
+  </service>
+</services>

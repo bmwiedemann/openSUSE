@@ -1,0 +1,7 @@
+-------------------------------------------------------------------
+Mon Sep 14 15:35:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 0.9.4: libfff_c, the C ABI of the fff
+  fuzzy file finder, built against the distribution's libgit2
+  (opencode's file search loads it through bun:ffi); fff-c's unit
+  tests run, fff-core's integration tests do not
