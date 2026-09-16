@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:09:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.14:
+  * Package-operation errors use the standard diagnostics, and their
+    exit codes now reflect the cause (1 for expected failures, 2 for
+    operational and internal ones)
+  * Resume interrupted downloads with HTTP Range requests
+  * Add the `uv export --batch` preview feature for exporting several
+    selections from a shared lockfile at once
+  * Fix the resolver combining incompatible wheel coverage across
+    forks with required-environments
+  * Refresh the vendored crates (clap, quinn, rustls, jiff and others
+    move forward; is_ci and the supports-* helpers are gone); the
+    licence set is unchanged
+
+-------------------------------------------------------------------
 Fri Sep 11 06:52:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.13:

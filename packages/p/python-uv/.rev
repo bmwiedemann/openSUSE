@@ -3213,4 +3213,15 @@ Built green natively on aarch64 (main + test flavors),
 source_validator clean.</comment>
     <requestid>1377333</requestid>
   </revision>
+  <revision rev="123" vrev="1">
+    <srcmd5>b1abc4ba01f9400e5f2657dfa73250a1</srcmd5>
+    <version>0.12.14</version>
+    <time>1789573340</time>
+    <user>anag_factory</user>
+    <comment>Forward python-uv 0.12.14 to Factory (accepted in devel:languages:python as SR 1378143).
+
+aarch64 build GREEN, source_validator/lint/guard clean.
+</comment>
+    <requestid>1378145</requestid>
+  </revision>
 </revisionlist>
