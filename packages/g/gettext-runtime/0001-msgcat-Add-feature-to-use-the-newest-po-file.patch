@@ -402,6 +402,90 @@ index a98db95..933295b 100644
  
  #ifdef __cplusplus
  }
+diff --git a/gettext-tools/src/Makefile.in b/gettext-tools/src/Makefile.in
+index 64eeb80..90256fa 100644
+--- a/gettext-tools/src/Makefile.in
++++ b/gettext-tools/src/Makefile.in
+@@ -625,7 +625,7 @@ am__libgettextsrc_la_SOURCES_DIST = message.c pos.c po-error.c \
+ 	po-charset.c read-po.c read-properties.c read-stringtable.c \
+ 	open-catalog.c dir-list.c str-list.c read-catalog-special.c \
+ 	read-catalog.c read-catalog-file.c write-catalog.c \
+-	write-properties.c write-stringtable.c write-po.c msgl-ascii.c \
++	write-properties.c write-stringtable.c write-po.c msgl-age.c msgl-ascii.c \
+ 	msgl-ofn.c msgl-iconv.c msgl-equal.c msgl-cat.c msgl-header.c \
+ 	msgl-english.c msgl-check.c file-list.c msgl-charset.c \
+ 	msgl-fsearch.c lang-table.c po-time.c plural-exp.c \
+@@ -735,7 +735,7 @@ am_libgettextsrc_la_OBJECTS = $(am__objects_3) \
+ 	libgettextsrc_la-write-catalog.lo \
+ 	libgettextsrc_la-write-properties.lo \
+ 	libgettextsrc_la-write-stringtable.lo \
+-	libgettextsrc_la-write-po.lo libgettextsrc_la-msgl-ascii.lo \
++	libgettextsrc_la-write-po.lo libgettextsrc_la-msgl-age.lo libgettextsrc_la-msgl-ascii.lo \
+ 	libgettextsrc_la-msgl-ofn.lo libgettextsrc_la-msgl-iconv.lo \
+ 	libgettextsrc_la-msgl-equal.lo libgettextsrc_la-msgl-cat.lo \
+ 	libgettextsrc_la-msgl-header.lo \
+@@ -1070,6 +1070,7 @@ am__depfiles_remade =  \
+ 	./$(DEPDIR)/libgettextsrc_la-lang-table.Plo \
+ 	./$(DEPDIR)/libgettextsrc_la-locating-rules.Plo \
+ 	./$(DEPDIR)/libgettextsrc_la-message.Plo \
++	./$(DEPDIR)/libgettextsrc_la-msgl-age.Plo \
+ 	./$(DEPDIR)/libgettextsrc_la-msgl-ascii.Plo \
+ 	./$(DEPDIR)/libgettextsrc_la-msgl-cat.Plo \
+ 	./$(DEPDIR)/libgettextsrc_la-msgl-charset.Plo \
+@@ -4671,7 +4672,7 @@ noinst_HEADERS = \
+   write-catalog.h write-po.h write-properties.h write-stringtable.h \
+   dir-list.h file-list.h read-po-gram.h cldr-plural.h \
+   cldr-plural-exp.h locating-rules.h its.h search-path.h \
+-  msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
++  msgl-age.h msgl-charset.h msgl-equal.h msgl-iconv.h msgl-ascii.h msgl-ofn.h msgl-cat.h \
+   msgl-header.h msgl-english.h msgl-check.h msgl-fsearch.h msgl-merge.h \
+   msgfmt.h msgunfmt.h \
+   plural-count.h plural-eval.h plural-distrib.h \
+@@ -4806,6 +4807,7 @@ libgettextsrc_la_SOURCES = \
+   read-catalog-special.c \
+   read-catalog.c read-catalog-file.c \
+   write-catalog.c write-properties.c write-stringtable.c write-po.c \
++  msgl-age.c \
+   msgl-ascii.c \
+   msgl-ofn.c \
+   msgl-iconv.c \
+@@ -5698,6 +5700,7 @@ distclean-compile:
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-lang-table.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-locating-rules.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-message.Plo@am__quote@ # am--include-marker
++@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-msgl-age.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-msgl-ascii.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-msgl-cat.Plo@am__quote@ # am--include-marker
+ @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/libgettextsrc_la-msgl-charset.Plo@am__quote@ # am--include-marker
+@@ -6173,6 +6176,12 @@ libgettextsrc_la-write-po.lo: write-po.c
+ @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+ @am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgettextsrc_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libgettextsrc_la-write-po.lo `test -f 'write-po.c' || echo '$(srcdir)/'`write-po.c
+ 
++libgettextsrc_la-msgl-age.lo: msgl-age.c
++@am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgettextsrc_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libgettextsrc_la-msgl-age.lo -MD -MP -MF $(DEPDIR)/libgettextsrc_la-msgl-age.Tpo -c -o libgettextsrc_la-msgl-age.lo `test -f 'msgl-age.c' || echo '$(srcdir)/'`msgl-age.c
++@am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgettextsrc_la-msgl-age.Tpo $(DEPDIR)/libgettextsrc_la-msgl-age.Plo
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	$(AM_V_CC)source='msgl-age.c' object='libgettextsrc_la-msgl-age.lo' libtool=yes @AMDEPBACKSLASH@
++@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
++@am__fastdepCC_FALSE@	$(AM_V_CC@am__nodep@)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgettextsrc_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o libgettextsrc_la-msgl-age.lo `test -f 'msgl-age.c' || echo '$(srcdir)/'`msgl-age.c
+ libgettextsrc_la-msgl-ascii.lo: msgl-ascii.c
+ @am__fastdepCC_TRUE@	$(AM_V_CC)$(LIBTOOL) $(AM_V_lt) --tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libgettextsrc_la_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT libgettextsrc_la-msgl-ascii.lo -MD -MP -MF $(DEPDIR)/libgettextsrc_la-msgl-ascii.Tpo -c -o libgettextsrc_la-msgl-ascii.lo `test -f 'msgl-ascii.c' || echo '$(srcdir)/'`msgl-ascii.c
+ @am__fastdepCC_TRUE@	$(AM_V_at)$(am__mv) $(DEPDIR)/libgettextsrc_la-msgl-ascii.Tpo $(DEPDIR)/libgettextsrc_la-msgl-ascii.Plo
+@@ -8197,6 +8206,7 @@ distclean: distclean-am
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-lang-table.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-locating-rules.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-message.Plo
++	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-age.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-ascii.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-cat.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-charset.Plo
+@@ -8431,6 +8441,7 @@ maintainer-clean: maintainer-clean-am
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-lang-table.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-locating-rules.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-message.Plo
++	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-age.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-ascii.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-cat.Plo
+ 	-rm -f ./$(DEPDIR)/libgettextsrc_la-msgl-charset.Plo
 -- 
 2.52.0
 

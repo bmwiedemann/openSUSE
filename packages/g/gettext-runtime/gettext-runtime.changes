@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 13:32:54 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix for automake1.19: Update patch
+  0001-msgcat-Add-feature-to-use-the-newest-po-file.patch
+  with Makefile.in so the build doesn't try to regenerate this file
+  with automake-1.18
+
+-------------------------------------------------------------------
 Wed Mar 25 14:54:04 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove autoreconf call, not needed anymore.
-
 
 -------------------------------------------------------------------
 Mon Feb  2 14:39:45 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
