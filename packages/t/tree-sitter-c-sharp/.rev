@@ -191,4 +191,13 @@ INTERDEPENDENT REQUESTS - please stage together:
 </comment>
     <requestid>1372186</requestid>
   </revision>
+  <revision rev="8" vrev="3">
+    <srcmd5>ce1131e05d8f3466d6d6ff3ab9f2d6dc</srcmd5>
+    <version>0.23.5</version>
+    <time>1789573287</time>
+    <user>anag_factory</user>
+    <comment>tree-sitter-c-sharp: build the grammars to WebAssembly modules as well (new noarch tree-sitter-c-sharp-wasm, /usr/share/tree-sitter/wasm) and ship the grammar queries (new noarch tree-sitter-c-sharp-queries, /usr/share/tree-sitter/queries/&lt;grammar&gt;) for web-tree-sitter consumers such as opencode's highlighter. Supersedes sr#1378018, which had the wasm half only. Uses the %treesitter_wasm_* and %treesitter_queries_* macros from tree-sitter sr#1378101; nothing else changes.
+INTERDEPENDENT REQUESTS - please stage together with sr#1378101 (tree-sitter) and the other tree-sitter-&lt;lang&gt; requests.</comment>
+    <requestid>1378106</requestid>
+  </revision>
 </revisionlist>
