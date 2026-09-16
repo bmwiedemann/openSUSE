@@ -16,10 +16,12 @@
 #
 
 
-%define sover 0
-%define driver_version 10.2.0
+# Upstream sets SOVERSION to major.minor since 0.26.0 (libscap.so.0.26),
+# so the runtime packages carry it dotted-to-underscore per the Shared
+# Library Policy: libscap0_26, libsinsp0_26.
+%define sover 0_26
 Name:           falco-libs
-Version:        0.25.4
+Version:        0.26.0
 Release:        0
 Summary:        Libraries for system inspection (libscap and libsinsp)
 License:        Apache-2.0
@@ -27,7 +29,8 @@ URL:            https://github.com/falcosecurity/libs
 Source0:        https://github.com/falcosecurity/libs/archive/%{version}.tar.gz#/falco-libs-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM support-bshoshany-thread-pool-v5.patch -- build against
 # bshoshany-thread-pool v5 (BS::thread_pool is now a class template) while
-# staying compatible with v4
+# staying compatible with v4; still needed at 0.26.0, upstream keeps the
+# v4-only spelling
 Patch0:         support-bshoshany-thread-pool-v5.patch
 # abseil-cpp-devel is pulled in transitively by re2's headers
 BuildRequires:  abseil-cpp-devel
@@ -37,8 +40,6 @@ BuildRequires:  clang
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gmock
-BuildRequires:  gtest
 BuildRequires:  libbpf-devel
 BuildRequires:  ninja
 BuildRequires:  nlohmann_json-devel
@@ -47,6 +48,10 @@ BuildRequires:  tbb-devel
 # uthash-devel does NOT provide pkgconfig(uthash) in openSUSE; keep the -devel
 BuildRequires:  uthash-devel
 BuildRequires:  valijson-devel
+BuildRequires:  pkgconfig(gmock)
+BuildRequires:  pkgconfig(gmock_main)
+BuildRequires:  pkgconfig(gtest)
+BuildRequires:  pkgconfig(gtest_main)
 BuildRequires:  pkgconfig(jsoncpp)
 BuildRequires:  pkgconfig(libelf)
 BuildRequires:  pkgconfig(re2)
@@ -64,6 +69,10 @@ The falcosecurity libs are the core libraries behind Falco and sysdig:
 
 %package -n libscap%{sover}
 Summary:        System capture library of the falcosecurity libs
+# 0.26.0 renamed the runtimes (SOVERSION 0 -> 0.26); obsolete the
+# Tumbleweed-shipped names so dup replaces rather than parallels them
+# (the unversioned libpman/event_schema/platform libs share paths).
+Obsoletes:      libscap0 < %{version}
 
 %description -n libscap%{sover}
 libscap reads system events from the falcosecurity drivers and from
@@ -71,6 +80,9 @@ scap capture files.
 
 %package -n libsinsp%{sover}
 Summary:        System inspection library of the falcosecurity libs
+Obsoletes:      libsinsp0 < %{version}
+# Exact pin: both libs build from this same tarball and ship in one SR,
+# so the pin cannot dangle on either package updating alone.
 Requires:       libscap%{sover} = %{version}
 
 %description -n libsinsp%{sover}
@@ -106,13 +118,10 @@ building against the falcosecurity libs (libscap and libsinsp).
   -DUSE_BUNDLED_GTEST=OFF \
   -DENABLE_THREAD_POOL=ON \
   -DBUILD_LIBSCAP_MODERN_BPF=ON \
-  -DBUILD_LIBSCAP_GVISOR=ON \
   -DBUILD_DRIVER=OFF \
-  -DBUILD_BPF=OFF \
   -DCREATE_TEST_TARGETS=ON \
   -DBUILD_LIBSINSP_EXAMPLES=OFF \
   -DFALCOSECURITY_LIBS_VERSION=%{version} \
-  -DFALCOSECURITY_LIBS_DRIVER_VERSION=%{driver_version} \
   -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -Wl,--as-needed -Wl,-z,now" \
   -Wno-dev
 %cmake_build
@@ -130,7 +139,7 @@ rm -f %{buildroot}%{_libdir}/libscap_engine_test_input.so
 %check
 # run the libsinsp gtest unit suite via upstream's make target (tests are not
 # registered with ctest); libscap/driver tests need a real kernel, so skip them
-cd %__builddir
+cd %{__builddir}
 %cmake_build run-unit-test-libsinsp
 
 %ldconfig_scriptlets -n libscap%{sover}

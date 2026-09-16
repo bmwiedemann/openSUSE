@@ -15,4 +15,16 @@
     <comment>Adapt to bshoshany-thread-pool v5 (BS::thread_pool now a class template); patch is v4/v5-compatible</comment>
     <requestid>1361458</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>27936a656132cde501660a605be7ab10</srcmd5>
+    <version>0.26.0</version>
+    <time>1789573342</time>
+    <user>anag_factory</user>
+    <comment>Forward falco-libs 0.26.0 to Factory (accepted in devel:tools as SR 1378144).
+
+aarch64 build GREEN (929 unit tests pass), source_validator/lint/guard/soname-check clean.
+Note: shlib rename libscap0/libsinsp0 -&gt; libscap0_26/libsinsp0_26 (upstream SOVERSION now major.minor).
+</comment>
+    <requestid>1378146</requestid>
+  </revision>
 </revisionlist>

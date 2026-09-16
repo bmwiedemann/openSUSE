@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:11:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.26.0:
+  * Shared-library SOVERSION is now major.minor (libscap.so.0.26),
+    so the runtime packages are renamed to libscap0_26 and
+    libsinsp0_26 per the Shared Library Policy, obsoleting the old
+    names for a clean upgrade
+  * This userspace only accepts drivers built from 11.0.0+driver
+    (driver API 11.0.0, schema 4.5.2)
+  * scap_get_device_by_mount_id() signature changed, is_cloned()
+    removed in favour of is_shared(), filter values with NUL bytes
+    are rejected
+  * New modern-BPF driver counters and BPF-atomics probe fallback
+    for kernels before 5.12; container plugin upgraded to 0.7.4
+  * Fix out-of-bounds access on malformed savefile replay, a
+    use-after-free in the fd table cache, and enforce the
+    filter-parser recursion limit
+  * Keep support-bshoshany-thread-pool-v5.patch (still applies,
+    upstream keeps the v4-only spelling); drop the dead
+    FALCOSECURITY_LIBS_DRIVER_VERSION, BUILD_LIBSCAP_GVISOR and
+    BUILD_BPF cmake flags, which upstream does not define
+
+-------------------------------------------------------------------
 Tue Jun 23 14:47:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add support-bshoshany-thread-pool-v5.patch: build against
