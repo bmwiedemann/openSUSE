@@ -386,4 +386,19 @@ Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
     <comment>Update to R79: uncompressed mkv output in vspipe, adaptive caching for long cyclical request patterns, zimg api version check fixed. sonames unchanged (libvapoursynth4, libvsscript0); the existing zimg-devel &gt;= 3.0.6+20260720 floor still holds. Built and verified on aarch64 (openSUSE_Factory_ARM): rpmlint 0 errors / 1 warning (no-%check-section, baseline) / 0 badness, source_validator clean, vapoursynth-fhs-install.patch rebased.</comment>
     <requestid>1370305</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>720a6252dbe4816736d3b269b3619ee4</srcmd5>
+    <version>80</version>
+    <time>1789651286</time>
+    <user>anag_factory</user>
+    <comment>Update to version R80:
+- GPU support via the Vulkan 1.4 API
+- Free-threaded Python support
+- Stop storing nodes and function types as frame properties (could deadlock)
+- Fix compilation on systems without _Float16
+- Fix timecode files with too many decimals (broke mkvmerge)
+- expr falls back to the interpreter if executable memory cannot be allocated
+Rebase vapoursynth-fhs-install.patch: use system glslang instead of wrap-git. BuildRequires pkgconfig(vulkan), glslang-devel and cmake.</comment>
+    <requestid>1378405</requestid>
+  </revision>
 </revisionlist>

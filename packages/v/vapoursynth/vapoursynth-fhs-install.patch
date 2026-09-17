@@ -1,6 +1,26 @@
 --- a/meson.build
 +++ b/meson.build
-@@ -223,7 +223,7 @@
+@@ -183,10 +183,15 @@
+     dependency('zimg', version: '>=3.0.5'),
+ ]
+ 
+-# Runtime GLSL to SPIR-V compilation: glslang is embedded statically and always present,
+-# taken from the wrap rather than the system so the accepted dialect stays a pinned
+-# platform property instead of following whatever glslang the machine happens to have.
+-glslang_dep = subproject('glslang').get_variable('glslang_dep')
++# Distro builds against the system glslang (C API + default resource limits)
++# rather than the wrap-git subproject, which would fetch at configure time.
++# glslang_default_resource lives in libglslang-default-resource-limits.
++glslang_dep = declare_dependency(
++    dependencies: [
++        dependency('glslang'),
++        cxx.find_library('glslang-default-resource-limits'),
++    ],
++)
+ 
+ soversion = is_win ? '' : run_command(
+     'grep',
+@@ -287,7 +286,7 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
@@ -9,7 +29,7 @@
      name_prefix: '',
      soversion: soversion,
  )
-@@ -262,7 +262,8 @@
+@@ -330,7 +329,8 @@
      gnu_symbol_visibility: 'hidden',
      include_directories: incdir,
      install: true,
@@ -19,7 +39,7 @@
  )
  
  vsscript_dep = declare_dependency(
-@@ -288,7 +289,7 @@
+@@ -358,7 +358,7 @@
      dependencies: vsscript_dep,
      gnu_symbol_visibility: 'hidden',
      install: true,
@@ -28,11 +48,12 @@
      install_rpath: '$ORIGIN',
      link_args: link_args,
  )
-@@ -494,15 +495,19 @@
+@@ -569,15 +569,20 @@
+ install_subdir(
      'include',
      exclude_directories: 'cython',
-     exclude_files: ['VapourSynth.h', 'VSHelper.h'],
 -    install_dir: install_dir,
++    exclude_files: ['VapourSynth.h', 'VSHelper.h'],
 +    strip_directory: true,
 +    install_dir: get_option('includedir') / 'vapoursynth',
  )

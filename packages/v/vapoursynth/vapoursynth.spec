@@ -18,16 +18,18 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        79
+Version:        80
 Release:        0
 Summary:        A video processing framework
 License:        LGPL-2.1-only
 URL:            https://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
-# PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, give libvsscript a soversion, and emit FHS-correct prefix/includedir/libdir (and a Libs line) in vapoursynth.pc
+# PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, give libvsscript a soversion, emit FHS-correct prefix/includedir/libdir (and a Libs line) in vapoursynth.pc, and use system glslang instead of the wrap-git subproject
 Patch0:         vapoursynth-fhs-install.patch
 BuildRequires:  chrpath
+BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  glslang-devel
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
@@ -41,6 +43,9 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(tesseract)
+# R80 GPU path: headers only at build time (loader is dlopened); glslang C API
+# for runtime GLSL->SPIR-V. Wrap-git subprojects cannot fetch in OBS.
+BuildRequires:  pkgconfig(vulkan)
 # R78 uses zfilter_graph_builder_params.chromatic_adaptation, which zimg
 # only gained in its 2026-07-20 master snapshot; zimg.pc still reports
 # 3.0.6, so the constraint has to be expressed on the package instead of

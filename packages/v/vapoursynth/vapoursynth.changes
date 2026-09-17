@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 14:59:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version R80:
+  * GPU support via the Vulkan 1.4 API
+  * Free-threaded Python support
+  * Stop storing nodes and function types as frame properties
+    (could deadlock)
+  * Fix compilation on systems without the _Float16 type
+  * Fix timecode files with too many decimals, which made
+    mkvmerge unable to use them
+  * expr falls back to the interpreter if executable memory
+    cannot be allocated
+- Rebase vapoursynth-fhs-install.patch: use system glslang
+  instead of the wrap-git subproject (OBS is offline)
+- BuildRequires: pkgconfig(vulkan), glslang-devel and cmake
+  (meson finds glslang via cmake; there is no glslang.pc)
+
+-------------------------------------------------------------------
 Sat Aug  8 05:00:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version R79:
