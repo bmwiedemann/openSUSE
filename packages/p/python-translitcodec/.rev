@@ -46,4 +46,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282530</requestid>
   </revision>
+  <revision rev="6" vrev="3">
+    <srcmd5>aa7f1488106d5dba03b0606bb3ce45e9</srcmd5>
+    <version>0.7.0</version>
+    <time>1789651467</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-315.patch:
+  * Support Python 3.15 codec changes.</comment>
+    <requestid>1378492</requestid>
+  </revision>
 </revisionlist>

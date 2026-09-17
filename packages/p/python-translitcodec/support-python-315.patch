@@ -1,0 +1,78 @@
+From c27de1b9f47b939501cda1c3d58857d8fe674651 Mon Sep 17 00:00:00 2001
+From: Filipe Rosset <rosset.filipe@gmail.com>
+Date: Wed, 29 Jul 2026 12:56:32 -0300
+Subject: [PATCH] Fixes translitcodec-0.7.0 build with Python 3.15
+
+In Python 3.15, codec name lookup normalization behavior was updated.
+This broke translitcodec registration logic because it was expecting
+the delimiter to be either / or _ and strictly based on a
+sys.version_info > (3, 9) condition.
+
+This patch dynamically detects the delimiter (/ or _) used in the
+lookup name to ensure it correctly resolves on all Python versions.
+
+Signed-off-by: Filipe Rosset <rosset.filipe@gmail.com>
+---
+ translitcodec/__init__.py | 48 ++++++++++++++++++++-------------------
+ 1 file changed, 25 insertions(+), 23 deletions(-)
+
+diff --git a/translitcodec/__init__.py b/translitcodec/__init__.py
+index c8367c3..7613c20 100644
+--- a/translitcodec/__init__.py
++++ b/translitcodec/__init__.py
+@@ -196,30 +196,32 @@ def trans_search(encoding):
+     # translit/one
+     # translit/short/ascii
+ 
+-    delim = '/'
+-    if sys.version_info > (3, 9):
++    if encoding.startswith('translit/'):
++        delim = '/'
++    elif encoding.startswith('translit_'):
+         delim = '_'
+-
+-    if encoding.startswith('translit' + delim):
+-        parts = encoding.split(delim)
+-        if parts[1] == 'long':
+-            encoder = long_encode
+-        elif parts[1] == 'short':
+-            encoder = short_encode
+-        elif parts[1] == 'one':
+-            encoder = single_encode
+-        else:
+-            return None
+-
+-        if len(parts) == 2:
+-            pass
+-        elif len(parts) == 3:
+-            byte_enc = parts[2]
+-            byte_encoder = codecs.lookup(byte_enc).encode
+-            encoder = _double_encoding_factory(encoder, byte_encoder, byte_enc)
+-        else:
+-            return None
+-        return codecs.CodecInfo(encoder, no_decode)
++    else:
++        return None
++
++    parts = encoding.split(delim)
++    if parts[1] == 'long':
++        encoder = long_encode
++    elif parts[1] == 'short':
++        encoder = short_encode
++    elif parts[1] == 'one':
++        encoder = single_encode
++    else:
++        return None
++
++    if len(parts) == 2:
++        pass
++    elif len(parts) == 3:
++        byte_enc = parts[2]
++        byte_encoder = codecs.lookup(byte_enc).encode
++        encoder = _double_encoding_factory(encoder, byte_encoder, byte_enc)
++    else:
++        return None
++    return codecs.CodecInfo(encoder, no_decode)
+     return None
+ 
+ codecs.register(trans_search)
