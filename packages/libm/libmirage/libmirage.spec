@@ -19,8 +19,8 @@
 Name:           libmirage
 %define lname   libmirage12
 %define pname	3_3
-%define typlibver 3_2
-Version:        3.3.2
+%define typlibver 3_2 %{dnl uses its own counting, unrelated to pname}
+Version:        3.3.3
 Release:        0
 Summary:        A CD-ROM image access library
 License:        GPL-2.0-or-later

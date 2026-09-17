@@ -272,4 +272,12 @@
     <comment>- Enable CHD file reader</comment>
     <requestid>1371293</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>de99090e560878564beb80e11c45d1f3</srcmd5>
+    <version>3.3.3</version>
+    <time>1789651257</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.3.3</comment>
+    <requestid>1378368</requestid>
+  </revision>
 </revisionlist>
