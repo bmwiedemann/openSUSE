@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 16:06:50 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- deselected the syrupy snapshot tests in tests/test_cloud_monitoring.py
+  as they fail in build envs
+
+-------------------------------------------------------------------
 Wed Apr 29 14:53:41 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - initial commit of python-opentelemetry-exporter-gcp-monitoring 1.11.0a0
