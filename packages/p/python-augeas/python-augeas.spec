@@ -1,7 +1,7 @@
 #
 # spec file for package python-augeas
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,7 @@ configuration files.
 %doc AUTHORS README.md
 %license COPYING
 %{python_sitearch}/augeas
-%{python_sitearch}/_augeas.abi3.so
+%{python_sitearch}/_augeas.abi3*.so
 %{python_sitearch}/python_augeas-%{version}.dist-info
 
 %changelog

@@ -113,4 +113,12 @@
 - No more greedy globs in %files.</comment>
     <requestid>1227679</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>c0de909eab91d870d1a4649740f060eb</srcmd5>
+    <version>1.2.0</version>
+    <time>1789651471</time>
+    <user>anag_factory</user>
+    <comment>- Support multiarch tuples in the built filename.</comment>
+    <requestid>1378493</requestid>
+  </revision>
 </revisionlist>
