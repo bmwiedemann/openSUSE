@@ -12,8 +12,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/xai-org/grok-build.git</param>
     <param name="scm">git</param>
-    <param name="revision">72a61251fcffb464bcc687aeb5a998e5a98ec0c9</param>
-    <param name="versionformat">1.0.16+git%cd.%h</param>
+    <param name="revision">482711333c7195dc16a272777f86086d615e2afb</param>
+    <param name="versionformat">1.0.32+git%cd.%h</param>
     <param name="changesgenerate">disable</param>
   </service>
   <service name="tar" mode="manual"/>
@@ -25,6 +25,8 @@
   <service name="cargo_vendor" mode="manual">
     <param name="src">grok-build</param>
     <param name="compression">zst</param>
-    <param name="update">true</param>
+    <!-- update=true floats crates past Cargo.lock and this snapshot's
+         aws-smithy-json 0.63 cannot compile against smithy-types 1.7. -->
+    <param name="update">false</param>
   </service>
 </services>

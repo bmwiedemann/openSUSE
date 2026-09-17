@@ -1,10 +1,11 @@
 <constraints>
-  <!-- The Rust workspace links a large binary and a single rustc (xai-grok-shell)
-       peaks around 7 GB RSS; low-RAM workers OOM-kill it. Require enough physical
-       memory to hold the peak plus the parallel job fan-out. -->
+  <!-- Rust workspace: the xai-grok-shell rustc alone was OOM-killed at 14 GB
+       RSS with 8 parallel jobs on a 23 GB worker (and at 8.6 GB with 4 jobs on
+       a 16 GB one); the spec caps the jobs at one per 8 GB of memory+swap
+       (%limit_build -m 8000). -->
   <hardware>
     <physicalmemory>
-      <size unit="G">16</size>
+      <size unit="G">32</size>
     </physicalmemory>
   </hardware>
 </constraints>

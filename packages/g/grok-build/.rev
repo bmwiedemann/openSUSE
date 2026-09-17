@@ -259,4 +259,52 @@ re-vendored tree (1018 in graph, 1256 vendored); no newly vendored crate
 introduces a licence outside the existing License: tag.</comment>
     <requestid>1376231</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>2df07ef0ca595531fd9c7cbeeed5f9e9</srcmd5>
+    <version>1.0.32+git20260915.4827113</version>
+    <time>1789651218</time>
+    <user>anag_factory</user>
+    <comment>- Update to git snapshot 1.0.32+git20260915.4827113 (upstream
+  1.0.17 through 1.0.32):
+  * Security: folder-trust now gates project instructions and
+    skills; auto mode uses a fail-closed allowlist for routine
+    git operations; a permission-denied open of a mode-000 path
+    is no longer treated as a sandbox spoof
+  * Typed tool-approval gate (on by construction for desktop and
+    daemon hosts); turns authenticate against the current
+    workspace daemon
+  * Plan keep, review gate and execute_plan; post-turn plan
+    review UI
+  * Images on user messages, /btw, interjections and session
+    prompts
+  * MCP: surface structuredContent, record how each tool call
+    ended, label errors, tell the server when a call is abandoned
+  * Memory: deleting memories, /memory modal empty/disabled
+    states, isolated v2 memory storage
+  * Hub-only workspace for every non-sandbox host; multi-folder
+    grok-workspaced daemon
+  * Esc no longer cancels a running turn (hints at Ctrl+C);
+    honour DISABLE_TELEMETRY for product telemetry
+  * Fix aarch64 musl CLI SIGILL on CPUs without SHA-512
+  * Many more TUI, MCP, subagent, dashboard and daemon fixes;
+    see upstream's release notes for the full list
+- Refresh the vendored Rust crate dependencies (1018 -&gt; 1009
+  crates in the shipped binary's graph, 1256 -&gt; 1245 vendored);
+  the licence set is unchanged (same eight MPL-2.0 crates plus
+  the statically linked libgit2 sources)
+- Pin cargo_vendor to Cargo.lock (update=false): floating crates
+  made aws-smithy-json 0.63 fail to compile against smithy-types 1.7
+
+cargo_vendor update=false is intentional: update=true FTBFS (aws-smithy-json 0.63 vs smithy-types 1.7).
+CVE-2026-47128 / boo#1271921 is NOT fixed: upstream still pins nono =0.53.0.
+- Fix the build being OOM-killed: the xai-grok-shell rustc alone
+  needs 14 GB with 8 parallel jobs (28 GB with 32), which the old
+  16 GB constraint and job cap never held. Require 32 GB, cap the
+  jobs at one per 8 GB so the cap binds there, and limit the
+  debuginfo to line tables (-C debuginfo=1), which halves the
+  peak memory of every crate and the debuginfo package
+
+Supersedes sr#1378213 (declined: failed to build in devel:tools). r17 is green in devel:tools on every repo, including the three that were OOM-killed (openSUSE_Tumbleweed x86_64, openSUSE_Slowroll, 16.1 aarch64).</comment>
+    <requestid>1378337</requestid>
+  </revision>
 </revisionlist>

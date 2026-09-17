@@ -1,8 +1,7 @@
 diff --git a/crates/codegen/xai-grok-shell/src/agent/config.rs b/crates/codegen/xai-grok-shell/src/agent/config.rs
-index 66ede58..0517ddd 100644
 --- a/crates/codegen/xai-grok-shell/src/agent/config.rs
 +++ b/crates/codegen/xai-grok-shell/src/agent/config.rs
-@@ -2447,6 +2447,11 @@ impl Config {
+@@ -2342,6 +2342,11 @@
          self.is_feature_enabled(Feature::TwoPassCompaction)
      }
      pub(crate) fn resolve_telemetry_mode(&self) -> Resolved<TelemetryMode> {

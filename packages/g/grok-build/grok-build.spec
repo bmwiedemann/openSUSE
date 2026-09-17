@@ -17,13 +17,13 @@
 
 
 Name:           grok-build
-Version:        1.0.16+git20260901.72a61251
+Version:        1.0.32+git20260915.4827113
 Release:        0
 Summary:        Terminal AI coding agent by xAI
 # Legal-Review-Notice (boo#1273104): licences of the statically linked Rust
 # dependencies, verified against the vendored tree with
-# "cargo tree -p xai-grok-pager-bin -e normal" (1018 crates in this graph,
-# 1256 vendored):
+# "cargo tree -p xai-grok-pager-bin -e normal" (1009 crates in this graph,
+# 1245 vendored):
 #  - pdf_oxide IS shipped (pulled with its "rendering" feature), but it is
 #    "MIT OR Apache-2.0" and carries no GPL code. Its src/decoders/jbig2.rs is
 #    a pass-through stub ("no actual decoding performed"); its sole GPL-3.0
@@ -83,10 +83,14 @@ rm -f rust-toolchain.toml
 rm -f bin/protoc
 
 %build
-# A single rustc (xai-grok-shell) peaks around 7 GB; %%cargo_build otherwise
-# fans out one job per CPU, which OOM-kills the build on many-core, low-RAM
-# workers. Cap the job count by available memory (paired with _constraints).
-%limit_build -m 2000
+# Memory: the xai-grok-shell rustc alone grows with the parallel LLVM
+# threads it gets from the cargo jobserver (28 GB RSS with 32 jobs, OOM-killed
+# at 14 GB with 8); the shipped debuginfo is limited to line tables (the last
+# -C debuginfo wins), which halves every crate's peak, and the job count is
+# capped at one per 8 GB so that it binds on the 32 GB workers _constraints
+# asks for (memory + swap in MB / 8000).
+%global build_rustflags %{build_rustflags} -C debuginfo=1
+%limit_build -m 8000
 export PROTOC=%{_bindir}/protoc
 # The xai-grok-tools and xai-grok-shell build scripts embed a ripgrep binary
 # and otherwise download it from GitHub at build time. Point both at the
