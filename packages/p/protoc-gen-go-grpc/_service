@@ -1,0 +1,21 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/grpc/grpc-go</param>
+    <param name="scm">git</param>
+    <param name="filename">protoc-gen-go-grpc</param>
+    <param name="revision">v1.78.0</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+  <service name="go_modules" mode="manual">
+    <param name="compression">xz</param>
+    <param name="subdir">cmd/protoc-gen-go-grpc</param>
+  </service>
+  <service mode="manual" name="format_spec_file"/>
+</services>
