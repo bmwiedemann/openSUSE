@@ -6700,4 +6700,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
 - Adjust llvm23 conditional to not include slfo-1.3</comment>
     <requestid>1377887</requestid>
   </revision>
+  <revision rev="547" vrev="1">
+    <srcmd5>6d54d23b12940bccf11ef41c7c955519</srcmd5>
+    <version>153.0.8010.47</version>
+    <time>1789651084</time>
+    <user>anag_factory</user>
+    <comment>Chromium 153.0.8010.47 (boo#1280687)</comment>
+    <requestid>1378234</requestid>
+  </revision>
 </revisionlist>
