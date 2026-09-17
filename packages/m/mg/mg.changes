@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:34:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.1:
+  * UTF-8 editing in UTF-8 locales, with double-width CJK and
+    emoji measured per Unicode 17
+  * Syntax highlighting (font-lock-mode) for C, shell, Python,
+    Markdown, YAML, git-commit, diff, conf, makefile, and text
+  * Visual mark mode; shift-arrow and shift-PgUp/PgDn selection
+  * Side-by-side windows (C-x 3), windmove, and balance-windows
+  * New line-wrap-mode (off by default)
+  * git-commit-mode with Magit-like C-c C-c / C-c C-k
+  * meta-key-mode off by default so 8-bit input works
+    out of the box
+  * use-short-answers on by default; new require-final-newline
+  * Sync with OpenBSD (Mar 2026): replace-regexp infinite loop,
+    scratch-buffer save prompt, memory leaks, and -flto externs
+  * Fix ~/.mg errors being hidden on the echo line (issue #41)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Spec cleanup:
+  * Use %autosetup; drop Group and autoreconf (release tarball
+    ships configure)
+  * Ship %{_datadir}/mg/tutorial.gz for C-h t
+
+-------------------------------------------------------------------
 Sun Aug 13 14:52:59 UTC 2023 - Tomasz Hołubowicz <services@alternateved.com> - 3.7
 
 - Update to version 3.7:

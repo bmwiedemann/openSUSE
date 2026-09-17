@@ -1,7 +1,7 @@
 #
 # spec file for package mg
 #
-# Copyright (c) 2022-2023 Tomasz Hołubowicz <alternateved@pm.me>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,42 +12,45 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
+
+
 Name:           mg
-Version:        3.7
+Version:        4.1
 Release:        0
 Summary:        Micro GNU Emacs clone
 License:        Unlicense
-Group:          Productivity/Text/Editors
 URL:            https://man.troglobit.com/man1/mg.1.html
-Source:         https://github.com/troglobit/mg/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  autoconf automake
-BuildRequires:  ncurses-devel
+Source0:        https://github.com/troglobit/mg/releases/download/v%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  gzip
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 Mg is micro GNU Emacs clone without lisp interpreter.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
-autoreconf -i
-%configure
+%configure --docdir=%{_docdir}/%{name}
 %make_build
 
 %install
 %make_install
-mkdir -p %{buildroot}%{_docdir}/
-mv -f %{buildroot}%{_datadir}/doc/%{name}/ %{buildroot}%{_docdir}/%{name}/
-
-rm %{buildroot}/usr/share/mg/tutorial.gz
-rm %{buildroot}/usr/share/doc/packages/mg/.mg
-rm %{buildroot}/usr/share/doc/packages/mg/UNLICENSE
+rm -f %{buildroot}%{_docdir}/%{name}/UNLICENSE
+# hidden example rc; rpmlint hidden-file-or-dir
+rm -f %{buildroot}%{_docdir}/%{name}/.mg
 
 %files
 %license UNLICENSE
-%doc README.md ChangeLog.md tutorial
-%doc %{_docdir}/mg/
+%{_docdir}/%{name}/
 %{_bindir}/mg
 %{_mandir}/man1/mg.1%{?ext_man}
+%dir %{_datadir}/mg
+%{_datadir}/mg/tutorial.gz
 
 %changelog
