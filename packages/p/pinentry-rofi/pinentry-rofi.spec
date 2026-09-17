@@ -17,16 +17,16 @@
 
 
 Name:           pinentry-rofi
-Version:        2.1.0
+Version:        3.1.0
 Release:        0
 Summary:        Rofi frontend to pinentry
 License:        GPL-3.0-or-later+
 URL:            https://git.sr.ht/~mcepl/pinentry-rofi
 Source0:        pinentry-rofi-%{version}.tar.gz
 BuildRequires:  lua
-Requires:       rofi-launcher
-Requires:       lua
 Requires:       gpg
+Requires:       lua
+Requires:       rofi-launcher
 BuildArch:      noarch
 
 %description
@@ -42,7 +42,7 @@ pinentry-program in the ~/.gnupg/gpg-agent.conf. Note that you
 need to use the full path to the binary.
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q
 
 
 %build

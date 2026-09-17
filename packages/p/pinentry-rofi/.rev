@@ -32,4 +32,15 @@
   * docs: some more resources on the pinentry programming.</comment>
     <requestid>1304728</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>48eeffc836448eb0c61270fd1a4d0919</srcmd5>
+    <version>3.1.0</version>
+    <time>1789657186</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.0:
+  * Allow disabling debug logging via DISABLE_LOGGING
+  * Make logging actually secure (mode 0600, redact PIN data)
+  * Handle GETINFO pid</comment>
+    <requestid>1378511</requestid>
+  </revision>
 </revisionlist>

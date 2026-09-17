@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:30:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.1.0:
+  * Allow disabling debug logging via DISABLE_LOGGING
+  * Make logging actually secure (mode 0600, redact PIN data)
+  * Handle GETINFO pid
+
+-------------------------------------------------------------------
 Sun Sep 14 22:04:35 UTC 2025 - mcepl@cepl.eu
 
 - Update to version 2.1.0:
