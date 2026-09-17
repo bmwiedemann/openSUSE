@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 15 12:25:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.32
+  * pahole: Fixed a segfault when using -C -T options
+  * pahole: Fixed a segfault when using --unions --packable options
+  * pfunct: Added support for split BTF
+  * dwarf_loader: Support for DW_TAG_subprogram in
+    DW_TAG_enumeration, for DW_TAG_variant_part, for
+    DW_TAG_GNU_annotation, and for DW_TAG_imported_unit for
+    same-file partial units
+  * dwarf_loader: Handle DW_AT_location attrs containing
+    DW_OP_plus_uconst
+
+-------------------------------------------------------------------
 Mon Nov 17 16:46:34 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.31:
