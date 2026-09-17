@@ -171,4 +171,13 @@
   + See https://www.firefox.com/en-US/firefox/140.15.0/releasenotes/</comment>
     <requestid>1375290</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>1b02666ababfab810d8e9323c317c7db</srcmd5>
+    <version>140.16.0</version>
+    <time>1789650960</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 140.16.0:
+  + See https://www.firefox.com/en-US/firefox/140.16.0/releasenotes/</comment>
+    <requestid>1378330</requestid>
+  </revision>
 </revisionlist>
