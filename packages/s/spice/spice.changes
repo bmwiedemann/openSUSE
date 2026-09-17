@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:28:41 MDT 2026 - carnold@suse.com
+
+- bsc#1278684 - Core dump messages when a vm is shut down on
+  KVM/Qemu.
+  Fix-keyboard-and-mouse-state-leaks-on-interface-removal.patch
+
+-------------------------------------------------------------------
 Tue Jul 22 15:29:56 MDT 2025 - carnold@suse.com
 
 - Update to v0.16.0 release

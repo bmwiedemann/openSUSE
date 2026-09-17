@@ -1,7 +1,7 @@
 #
 # spec file for package spice
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,6 +34,7 @@ Source2:        %{name}.keyring
 Source99:       %{name}.rpmlintrc
 # PATCH-FIX-UPSTREAM fix-build-with-gstreamer-1.24.patch alarrosa@suse.com
 Patch1:         fix-build-with-gstreamer-1.24.patch
+Patch2:         Fix-keyboard-and-mouse-state-leaks-on-interface-removal.patch
 
 BuildRequires:  gcc-c++
 BuildRequires:  libjpeg-devel
