@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:55:01 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.10.3
+  * new   : factorised some pickers
+  * new   : ledger quicksearch support multi terms search
+  * new   : ledger quicksearch support " for exact search
+    (terms with space)
+  * new   : completed translation of 60 languages using Claude AI
+  * new   : full available languages rise from 20 to 80
+  * change: code naming sanitize > *item to *abvtype
+  * change: code naming sanitize > *entry to *abvtype
+  * change: code naming sanitize > archive to template
+  * change: code naming sanitize > operation to transaction
+  * change: speed optimisation with file of 14M txn, 60k
+    acc/pay/cat/tag/tpl/sch/asg
+  * change: account manager could be slow due to template
+    ComboBoxText in Behavior tab
+  * change: template manager merge dialog could be slow due to
+    template ComboBoxText
+  * change: removed the date exclusion for filter
+  * bugfix: duplicate a template was not changing its key
+  * bugfix: lp#2162840 exclude date filter in statistics report
+    does not work
+  * bugfix: lp#2162690 filter transaction type do not fully
+    separate normal/transfer
+  * bugfix: lp#2162642 balance report list shows incomes in red
+  * bugfix: lp#2161855 "This Year" preset date filter fail when
+    fiscal year is set to Aug 1st
+  * bugfix: lp#2161830 Bugdet option "Include transfer" is not
+    persisted
+  * bugfix: lp#2161453 changes not always propagate when multiple
+    ledger are opened
+  * bugfix: lp#2161266 "Result" and "Detail" to clipboard and CSV
+    menu items are missing verbs and "â€¦"
+  * bugfix: lp#2161226 Remove G_GNUC_CONST from
+    *get_type declarations
+  * bugfix: lp#2160080 inherit always enabled and crash if no
+    transaction selected
+  * bugfix: lp#2159561 slowness of dialog to appear when edit
+    a transaction
+  * bugfix: lp#2159560 ledger quicksearch match
+    unwanted transaction
+  * bugfix: lp#2159010 summary page shows account in
+    red * bugfix: #
+
+-------------------------------------------------------------------
 Thu Jul  2 16:33:10 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 5.10.2
