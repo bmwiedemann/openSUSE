@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:41:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.2.2:
+  * New --overwrite flag wherever --append is accepted, naming
+    the current default before appending becomes the default;
+    passing it together with --append is a usage error.
+  * Fixed the ambiguous-name probe test reading the dispatch
+    verdict instead of log substrings (false failure with
+    GCC-mentioning environments, upstream issue #716).
+  * Lockfile refresh (serde-saphyr 1.2.0 and other
+    semver-compatible updates, no advisories).
+  * Man page dated for the release.
+- Regenerate vendor.tar.zst via cargo_vendor service.
+
+-------------------------------------------------------------------
 Wed Sep  2 09:45:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop no-BUILD_ALWAYS.patch: it reverted BUILD_ALWAYS in

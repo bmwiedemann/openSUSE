@@ -164,4 +164,12 @@ change I made is the added changelog entry. Factory x86_64 and aarch64 both
 build green on the submitted revision.</comment>
     <requestid>1375348</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>ff930f74c22a3cfa2b5578213f6628ce</srcmd5>
+    <version>4.2.2</version>
+    <time>1789651209</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378323</requestid>
+  </revision>
 </revisionlist>
