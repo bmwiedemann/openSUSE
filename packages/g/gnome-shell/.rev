@@ -2739,4 +2739,29 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations.</comment>
     <requestid>1369982</requestid>
   </revision>
+  <revision rev="293" vrev="1">
+    <srcmd5>b2a48b8f68d3484ca97d37473c4c8f0e</srcmd5>
+    <version>50.5</version>
+    <time>1789650959</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.5:
+  + Fix keynav on unlock dialog
+  + Fix glitch when switching workspaces with direct scanout
+  + Support building with libical4
+  + Refuse to unlock screen after screen time limit was reached
+  + Fix blocking when toggling wireless toggle
+  + Don't show busy cursor when activating actions
+  + Fix glitch when cancelling lock screen prompt with Esc
+  + Track magnifier mouse position without polling
+  + Limit parallel texture loading operations
+  + Open windows created via new-window action on correct workspace
+  + Don't duplicate locale keyboard layout
+  + Cancel mount password dialogs when locking screen
+  + Validate serialized image data before creating pixbuf
+  + Fixed crash
+  + Plugged leaks
+  + Misc. bug fixes and cleanups
+  + Updated translations.</comment>
+    <requestid>1378329</requestid>
+  </revision>
 </revisionlist>
