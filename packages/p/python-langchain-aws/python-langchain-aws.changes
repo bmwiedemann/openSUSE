@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:23:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.7:
+  * ChatBedrockConverse can opt into LangSmith Gateway with
+    LANGSMITH_GATEWAY without changing application code
+  * Skip Claude's optional cache point after a reasoning block
+    so Bedrock does not reject the request
+  * Preserve invalid tool calls as empty-input toolUse blocks
+    so Bedrock replay stays valid after a mid-call stream
+  * Reject incomplete Bedrock Converse streams that never
+    deliver messageStop, raising ConnectionError for retry
+  * Refreshed the bundled Bedrock model profile data
+  * Raise langchain-core requirement to >= 1.6.3
+
+-------------------------------------------------------------------
 Fri Sep 11 06:50:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.6:

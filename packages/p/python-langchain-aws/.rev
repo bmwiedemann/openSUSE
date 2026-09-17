@@ -159,4 +159,22 @@ passed per flavour (py313/py314), rpmlint 0 badness.</comment>
     <comment>Forward python-langchain-aws 1.7.6 to Factory (home-&gt;devel SR 1377311 accepted, autoforward-gate ELIGIBLE).</comment>
     <requestid>1377315</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>15f1032a158a4fd60a1d28b2089e4e24</srcmd5>
+    <version>1.7.7</version>
+    <time>1789651184</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.7:
+  * ChatBedrockConverse can opt into LangSmith Gateway with
+    LANGSMITH_GATEWAY without changing application code
+  * Skip Claude's optional cache point after a reasoning block
+    so Bedrock does not reject the request
+  * Preserve invalid tool calls as empty-input toolUse blocks
+    so Bedrock replay stays valid after a mid-call stream
+  * Reject incomplete Bedrock Converse streams that never
+    deliver messageStop, raising ConnectionError for retry
+  * Refreshed the bundled Bedrock model profile data
+  * Raise langchain-core requirement to &gt;= 1.6.3</comment>
+    <requestid>1378293</requestid>
+  </revision>
 </revisionlist>
