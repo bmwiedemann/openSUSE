@@ -371,4 +371,12 @@
   * require Protobuf 6.33.5+ (#17743) (forwarded request 1371028 from glaubitz)</comment>
     <requestid>1371053</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e670b2b0e863f9dd147f1f5af8195dd2</srcmd5>
+    <version>1.75.3</version>
+    <time>1789651511</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1378571</requestid>
+  </revision>
 </revisionlist>
