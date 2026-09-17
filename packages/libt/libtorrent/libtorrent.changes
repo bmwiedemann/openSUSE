@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 16 10:25:10 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.23
+  * Fixed a 32-bit overflow in FileList::chunk_index_position().
+  * Fixed a stale iterator use in UdpRouter::transfer.
+  * Fixed Block m_notStalled double decrement.
+
+-------------------------------------------------------------------
 Thu Sep  3 09:37:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.22
