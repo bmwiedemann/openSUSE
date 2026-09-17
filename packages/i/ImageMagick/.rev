@@ -4660,4 +4660,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1374829</requestid>
   </revision>
+  <revision rev="349" vrev="1">
+    <srcmd5>88c6d40c10997c6d8e9ac4e7f31829b0</srcmd5>
+    <version>7.1.2.31</version>
+    <time>1789650924</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1279696], [bsc#1279711], [bsc#1279785], [bsc#1279794], [bsc#1279797], CVE-2026-86420, CVE-2026-86421, CVE-2026-86423, CVE-2026-86424, CVE-2026-86425, GHSA-2w4h-697j-4vrm, GHSA-3rjr-534c-8v67, GHSA-4fq9-vrx7-gv92, GHSA-4gg2-hfgh-6f5c, GHSA-5rg6-j44q-q892, GHSA-6xf5-c3jx-rp39, GHSA-7hjx-392p-f8cm, GHSA-89wq-f8f6-2j2v, GHSA-92rw-c5mw-27v4, GHSA-jvjm-9f73-fhpq, GHSA-p6j5-2qwh-6486, GHSA-qr53-hc3p-fc62, GHSA-r868-pmwh-fv2c, GHSA-v45j-x8p4-3mh4, GHSA-vcjj-32hg-qpx5</comment>
+    <requestid>1378159</requestid>
+  </revision>
 </revisionlist>

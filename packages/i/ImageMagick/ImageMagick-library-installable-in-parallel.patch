@@ -1,8 +1,8 @@
-Index: ImageMagick-7.1.2-18/configure
+Index: ImageMagick-7.1.2-31/configure
 ===================================================================
---- ImageMagick-7.1.2-18.orig/configure
-+++ ImageMagick-7.1.2-18/configure
-@@ -37296,7 +37296,9 @@ fi
+--- ImageMagick-7.1.2-31.orig/configure
++++ ImageMagick-7.1.2-31/configure
+@@ -37298,7 +37298,9 @@ fi
  
  
  # Subdirectory to place architecture-dependent configuration files
