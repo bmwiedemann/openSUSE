@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 04:25:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch reads-return-bytestrings.patch:
+  * read() returns a bytestring, not a string.
+
+-------------------------------------------------------------------
 Fri Jun  5 02:31:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Initial release of 1.0.0.

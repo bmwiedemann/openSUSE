@@ -1,0 +1,40 @@
+Index: pytest-pook-a7c2d0ca4287af671ebd065b0f6415bb4110f338/tests/test_plugin.py
+===================================================================
+--- pytest-pook-a7c2d0ca4287af671ebd065b0f6415bb4110f338.orig/tests/test_plugin.py
++++ pytest-pook-a7c2d0ca4287af671ebd065b0f6415bb4110f338/tests/test_plugin.py
+@@ -56,7 +56,7 @@ def test_mark_starts_active_pook(pyteste
+             http = HTTPConnection("example.com:80")
+             http.request("GET", "/")
+             res = http.getresponse()
+-            assert res.read() == "Hello from pook"
++            assert res.read() == b"Hello from pook"
+     """
+     )
+ 
+@@ -86,7 +86,7 @@ def test_pook_not_active(pytester: pytes
+             http = HTTPConnection("example.com:80")
+             http.request("GET", "/")
+             res = http.getresponse()
+-            assert res.read() == "Hello from pook"
++            assert res.read() == b"Hello from pook"
+     """
+     )
+ 
+@@ -145,7 +145,7 @@ def test_isolation(pytester: pytest.Pyte
+             http = HTTPConnection("example.com:80")
+             http.request("GET", "/")
+             res = http.getresponse()
+-            assert res.read() == "Hello from pook"
++            assert res.read() == b"Hello from pook"
+     """
+     )
+ 
+@@ -177,7 +177,7 @@ def test_isolation_within_suite(pytester
+             http = HTTPConnection("example.com:80")
+             http.request("GET", "/")
+             res = http.getresponse()
+-            assert res.read() == "Hello from pook"
++            assert res.read() == b"Hello from pook"
+     """
+     )
+ 

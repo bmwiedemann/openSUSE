@@ -25,6 +25,8 @@ Summary:        Pytest plugin for pook
 License:        LGPL-3.0
 URL:            https://git.sr.ht/~sara/pytest-pook
 Source:         https://git.sr.ht/~sara/pytest-pook/archive/%{git_sha}.tar.gz#/pytest_pook-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE read() returns a bytestring, not a string
+Patch0:         reads-return-bytestrings.patch
 BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

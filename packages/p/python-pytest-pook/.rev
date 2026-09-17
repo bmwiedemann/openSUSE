@@ -7,4 +7,13 @@
     <comment>- Initial release of 1.0.0.</comment>
     <requestid>1357198</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a95b0da4e3120b10a0f38c7f4e31b9ee</srcmd5>
+    <version>1.0.0</version>
+    <time>1789651086</time>
+    <user>anag_factory</user>
+    <comment>- Add patch reads-return-bytestrings.patch:
+  * read() returns a bytestring, not a string.</comment>
+    <requestid>1378236</requestid>
+  </revision>
 </revisionlist>
