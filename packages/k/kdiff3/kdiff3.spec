@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kdiff3
-Version:        1.12.5
+Version:        1.12.6
 Release:        0
 Summary:        Code Comparison Utility
 License:        GPL-2.0-or-later
