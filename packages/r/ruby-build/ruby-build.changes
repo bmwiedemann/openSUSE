@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 10:52:23 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
+
+- Update to version 20260916.
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260916
+  * Set -x flag for release script to show commands being run by @eregon in #2639
+  * Hide dup3() and pipe2() from configure on macOS older than 27 by @hsbt in #2641
+- Changes from version 20260915:
+  Changelog: https://github.com/rbenv/ruby-build/releases/tag/v20260915
+  * Added 4.0.7
+
+-------------------------------------------------------------------
 Wed Sep  2 14:18:13 UTC 2026 - Lukas Müller <expeehaa@outlook.com>
 
 - Update to version 20260902.
