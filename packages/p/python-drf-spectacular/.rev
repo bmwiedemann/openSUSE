@@ -114,4 +114,14 @@
     [Benedikt Bauer]</comment>
     <requestid>1372747</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>c1cbcedf3bf071257f06b62de3cbc7a7</srcmd5>
+    <version>0.30.0</version>
+    <time>1789651462</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-django-oauth-toolkit-3.4.patch:
+  * Silence new errors from django-oauth-toolkit 3.4+
+- Ship license and README in the built packages.</comment>
+    <requestid>1378489</requestid>
+  </revision>
 </revisionlist>

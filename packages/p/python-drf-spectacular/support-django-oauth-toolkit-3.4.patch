@@ -1,0 +1,16 @@
+Index: drf_spectacular-0.30.0/tests/conftest.py
+===================================================================
+--- drf_spectacular-0.30.0.orig/tests/conftest.py
++++ drf_spectacular-0.30.0/tests/conftest.py
+@@ -116,7 +116,10 @@ def pytest_configure(config):
+         DEFAULT_AUTO_FIELD='django.db.models.AutoField',
+         SILENCED_SYSTEM_CHECKS=[
+             'rest_framework.W001', 'fields.E210', 'security.W001', 'security.W002',
+-            'security.W003', 'security.W009', 'security.W012'
++            'security.W003', 'security.W009', 'security.W012',
++            'oauth2_provider.W001', 'oauth2_provider.W002', 'oauth2_provider.W003',
++            'oauth2_provider.W004', 'oauth2_provider.W005', 'oauth2_provider.W006',
++            'oauth2_provider.W007', 'oauth2_provider.W008'
+         ],
+     )
+ 

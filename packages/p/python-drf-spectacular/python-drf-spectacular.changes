@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 00:31:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-django-oauth-toolkit-3.4.patch:
+  * Silence new errors from django-oauth-toolkit 3.4+
+- Ship license and README in the built packages.
+
+-------------------------------------------------------------------
 Fri Aug 21 09:50:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.30.0:
