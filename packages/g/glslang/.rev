@@ -523,4 +523,12 @@
     <comment>- Update to release 16.5.0</comment>
     <requestid>1370750</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>305f5bb29a207405da745e2d589f5ae3</srcmd5>
+    <version>16.6.0</version>
+    <time>1789650922</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 16.6.0</comment>
+    <requestid>1378158</requestid>
+  </revision>
 </revisionlist>

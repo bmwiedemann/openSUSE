@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:35:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 16.6.0
+  * Implemented `GL_EXT_cooperative_matrix_maintenance1`,
+    `GL_EXT_optional_input_attachment_index`,
+    and `DebugEntryPoint` for `NonSemantic.Shader.DebugInfo` 102.
+
+-------------------------------------------------------------------
 Mon Aug  3 19:03:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 16.5.0
