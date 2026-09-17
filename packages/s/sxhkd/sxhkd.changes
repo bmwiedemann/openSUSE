@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:24:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.3:
+  * Hardcode Mode_switch as Mod5 so bindings work with
+    xkeyboard-config >= 2.37
+  * Enable XKB detectable auto-repeat (ignore extra KeyRelease)
+  * Export SXHKD_PID; SIGALRM aborts the current chord chain
+  * Close the command log fd before exec
+  * Add XF86Keyboard/WWAN/RFKill/AudioPreset/RotationLockToggle/
+    FullScreen keysyms
+  * Warn on interfering hotkeys; document brace escaping
+- Add pkgconfig(xcb-xkb) BuildRequires (now linked)
+- Spec cleanup: drop Group, add gcc/make
+
+-------------------------------------------------------------------
 Fri Jan 15 18:54:45 UTC 2021 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.6.2:

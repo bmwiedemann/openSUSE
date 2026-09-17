@@ -1,7 +1,7 @@
 #
 # spec file for package sxhkd
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 Luke Jones, luke.nukem.jones@gmail.com
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,18 +18,20 @@
 
 
 Name:           sxhkd
-Version:        0.6.2
+Version:        0.6.3
 Release:        0
 Summary:        Simple X hotkey daemon
 License:        BSD-2-Clause
-Group:          System/GUI/Other
 URL:            https://github.com/baskerville/sxhkd
 Source0:        https://github.com/baskerville/sxhkd/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/baskerville/bspwm/master/examples/sxhkdrc
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-keysyms)
 BuildRequires:  pkgconfig(xcb-util)
+BuildRequires:  pkgconfig(xcb-xkb)
 
 %description
 sxhkd is a simple X hotkey daemon with a powerful and compact configuration syntax.
