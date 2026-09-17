@@ -1,4 +1,95 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:17:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.1:
+  * Bug Fixes
+    - Fixed a bug where zizmor would crash on pre-commit inputs
+      that reference a GitHub URL with an explicit .git suffix
+      (#2363)
+    - Fixed a bug where self-repository auto-fixes were incorrectly
+      marked as "safe" instead of "unsafe" (#2373)
+  * Dependencies
+    - chore(deps): bump the cargo group with 3 updates (#2355)
+    - chore(deps): bump the github-actions group with 3 updates
+      (#2356)
+    - chore(deps-dev): bump zensical from 0.0.53 to 0.0.57 in the
+      uv group (#2357)
+- Update to version 1.30.0:
+  * New Features
+    - New audit: self-repository detects usages of the old
+      "workspace-relative" form for local reusable workflows and
+      actions and recommends the new "self-repository" form instead
+      (#2271)
+  * Enhancements
+    - The impostor-commit audit now supports pre-commit config
+      inputs (#2256)
+    - The forbidden-uses audit now supports pre-commit config
+      inputs (#2263)
+    - The adhoc-packages audit now detects more ad-hoc package
+      management patterns, including bundle add and yarn add
+    - The archived-uses audit now supports pre-commit config inputs
+      (#2272)
+    - The ref-confusion audit now supports pre-commit config inputs
+      (#2274)
+    - The cache-poisoning audit now produces more detailed and more
+      precise diagnostics (#2330)
+    - The cache-poisoning audit now handles and exposes auto-fixes
+      in a more general manner (#2332)
+    - zizmor now recognizes sethvargo/ratchet version comments when
+      evaluating ref pinning (#2319)
+    - The unpinned-tools audit now produces more detailed and more
+      precise diagnostics (#2339)
+    - The unpinned-tools audit now detects usages of
+      extractions/setup-just (#2339)
+    - The unpinned-tools audit now detects usages of
+      extractions/setup-crate (#2340)
+    - The archived-uses audit now detects several more archived
+      repositories (#2340)
+    - The ref-version-mismatch audit now supports uses: that
+      reference reusable workflows (#2344)
+    - The stale-action-refs audit now supports uses: that reference
+      reusable workflows (#2345)
+  * Bug Fixes
+    - Fixed a bug where zizmor would reject a
+      .pre-commit-config.yml input containing a prek-specific
+      builtin section (#2259)
+    - Fixed a bug where the unpinned-uses audit would fail to honor
+      ignore comments within the same step scope (#2289)
+    - Fixed a bug where zizmor would reject a dependabot.yml
+      containing a goproxy-server registry definition (#2300)
+    - Fixed a bug where zizmor would reject pre-commit
+      configurations containing prek-specific glob patterns in
+      files or exclude (#2308)
+    - Fixed a handful of unsound patch bugs when performing YAML
+      add and/or replace operations (#2295)
+    - Fixed a bug where the cache-poisoning audit would incorrectly
+      flag newer astral-sh/setup-uv versions that disable caching
+      behavior automatically (#2330)
+    - Fixed a bug where the ref-version-mismatch audit would
+      produce a misleading diagnostic when an action has
+      overlapping branch and tag names (#2337)
+    - Fixed a bug where the artipacked audit would incorrectly flag
+      the with: clauses of unrelated actions (#2339)
+    - Fixed a class of bugs where zizmor would incorrectly match an
+      action's commit to a sibling action's tag (#2247)
+    - Fixed a bug where zizmor would crash on deeply nested GitHub
+      Actions expressions (#2349)
+  * Dependencies
+    - chore(deps): bump pymdown-extensions from 11.0 to 11.0.1
+      (#2338)
+    - chore(deps): bump the cargo group with 3 updates (#2334)
+    - chore(deps): bump the cargo group with 5 updates (#2313)
+    - chore(deps-dev): bump zensical from 0.0.52 to 0.0.53 in the
+      uv group (#2314)
+    - chore(deps): bump the cargo group across 1 directory with 9
+      updates (#2305)
+    - chore(deps-dev): bump zensical from 0.0.51 to 0.0.52 in the
+      uv group (#2293)
+    - chore(deps): bump jsonschema from 0.48.5 to 0.49.1 in the
+      cargo group (#2265)
+    - chore(deps-dev): bump the uv group with 3 updates (#2267)
+
+-------------------------------------------------------------------
 Mon Aug 03 05:52:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.0:
