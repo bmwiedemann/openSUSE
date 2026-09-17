@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:35:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 8.30+0:
+  * Add --vmaf to calculate VMAF of the encoded video
+  * Add --vpp-kfm inverse telecine, --vpp-rtgmc deinterlace and
+    --vpp-degrain
+  * Add further VPP filters (bm3d, dehaze, clahe, lenscorrection
+    and others)
+  * Support track exclusion with ! for audio/subtitle/data
+    selection
+  * Follow mid-stream input resolution changes
+    (--adapt-resolution)
+  * Default --avsync to vfr to reduce audio desync on TS drops
+  * Multi-thread OpenCL pipeline on Ice Lake and later
+  * Improve Linux support with the Intel Xe kernel driver
+  * Fix OpenCL artifacts with --avhw, y4m timestamps and P010
+    10-bit output
+  * Many more filters, fixes and performance work; see upstream's
+    release notes for the full list
+- Switch the Linux build from configure to meson
+- Pass -Wl,-z,noexecstack (replaces the old configure extra-ldflags)
+- Drop QSVEnc-remove-git.patch and QSVEnc-enable-vulkan.patch
+- Add QSVEnc-system-libs.patch: use system libvpl, skip bundled
+  libhdr10plus-rs, and accept Factory VapourSynth V4-only headers
+- Enable Vulkan, libplacebo and VMAF via meson options
+- Convert obs_scm and set_version service modes from disabled to
+  manual
+
+-------------------------------------------------------------------
 Wed Jan 07 04:37:12 UTC 2026 - malcolmlewis@opensuse.org
 
 - Update to version 8.04+0:

@@ -18,49 +18,66 @@
 
 
 Name:           QSVEnc
-Version:        8.04+0
+Version:        8.30+0
 Release:        0
 Summary:        HW encoder (QSV) testing
 License:        MIT
 URL:            https://github.com/rigaya/QSVEnc
 Source0:        %{name}-%{version}.tar.xz
-#PATCH-FIX-OPENSUSE QSVEnc-remove-git.patch malcolmlewis@opensuse.org -- Remove git call for ENCODER_REV
-Patch0:         QSVEnc-remove-git.patch
-#PATCH-FIX-OPENSUSE QSVEnc-enable-vulkan.patch malcolmlewis@opensuse.org -- Enable Vulkan and Placebo.
-Patch1:         QSVEnc-enable-vulkan.patch
-BuildRequires:  cmake
+# PATCH-FIX-OPENSUSE QSVEnc-system-libs.patch -- System libvpl; skip bundled hdr10plus; VapourSynth V4-only
+Patch0:         QSVEnc-system-libs.patch
 BuildRequires:  gcc-c++
-BuildRequires:  git
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  opencl-headers
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dovi)
 BuildRequires:  pkgconfig(libass)
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavdevice)
+BuildRequires:  pkgconfig(libavfilter)
+BuildRequires:  pkgconfig(libavformat)
+BuildRequires:  pkgconfig(libavutil)
+BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libplacebo)
+BuildRequires:  pkgconfig(libswresample)
 BuildRequires:  pkgconfig(libva)
+BuildRequires:  pkgconfig(libva-drm)
+BuildRequires:  pkgconfig(libva-x11)
+BuildRequires:  pkgconfig(libvmaf)
 BuildRequires:  pkgconfig(vapoursynth)
+BuildRequires:  pkgconfig(vpl)
 BuildRequires:  pkgconfig(vulkan)
-ExclusiveArch:  %ix86 x86_64
+ExclusiveArch:  %{ix86} x86_64
 
 %description
 Investigate performance and image quality of HW encoder (QSV) of Intel.
 
 %prep
-%autosetup
+%autosetup -p1
 # Fix end of line encoding warning
 sed -i 's/\r//' QSVEncC_Options.en.md;
 sed -i 's/\r//' ReleaseNotes.md;
 
 %build
-./configure --prefix=%{_prefix} \
-            --disable-avisynth \
-            --disable-dtl \
-            --enable-lto \
-            --extra-ldflags="-Wl,-z,noexecstack"
-%make_build
+%meson \
+  -Dc_link_args=-Wl,-z,noexecstack \
+  -Dcpp_link_args=-Wl,-z,noexecstack \
+  -Denable_avisynth=false \
+  -Denable_vapoursynth=true \
+  -Denable_libass=true \
+  -Dlibass_static=false \
+  -Denable_libplacebo=true \
+  -Dlibplacebo_static_link=false \
+  -Denable_vulkan=true \
+  -Denable_vmaf=enabled \
+  -Dlibvmaf_static=false \
+  -Denable_openvino=false \
+  -Denable_libvship=disabled
+%meson_build
 
 %install
-install -d -m 0755 %{buildroot}%{_bindir}
-install -m 0755 qsvencc %{buildroot}%{_bindir}/qsvencc
+%meson_install
 
 %files
 %license license.txt
