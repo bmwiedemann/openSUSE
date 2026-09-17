@@ -270,7 +270,7 @@ This package provides the tensorflow-lite frontend for OpenVINO.
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-openvino-telemetry
-Requires:       (python-numpy >= 1.16.6 with python-numpy <= 2.5.2)
+Requires:       (python-numpy >= 1.16.6 with python-numpy <= 2.5.4)
 
 %description -n python-openvino
 OpenVINO is an open-source toolkit for optimizing and deploying AI inference.

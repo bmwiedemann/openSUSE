@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 14:54:43 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+-Fix: Problem since Tue Sep  8 16:07:23 2026:
+  Uninstallable: nothing provides (python3-numpy>= .16.6 with 
+  python3-numpy<=2.5.2) needed by python3-openvino-2026.3.1.x86_64
+
+-------------------------------------------------------------------
 Fri Aug 28 01:45:13 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Update to 2026.3.1
