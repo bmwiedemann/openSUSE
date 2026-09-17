@@ -19,7 +19,7 @@
 %define executable_name hcloud
 
 Name:           hcloud-cli
-Version:        1.67.0
+Version:        1.68.0
 Release:        0
 Summary:        A command-line interface for Hetzner Cloud
 License:        MIT
@@ -28,8 +28,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.8
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.24
 Provides:       hcloud = %{version}
 
 %description

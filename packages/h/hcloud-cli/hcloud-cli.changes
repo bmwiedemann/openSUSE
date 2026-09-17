@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:51:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.68.0:
+  * Features
+    - print deprecated Load Balancer Type information (#1461)
+      (22a60bc)
+    - add api command (#1457) (bd9f704)
+    - image: print deprecated Image information (#1485) (c7badc0)
+  * Bug Fixes
+    - server: missing firewalls in describe (#1482) (93f8381)
+  * Dependencies
+    - deps: update dependency go to v1.26.8 (#1480)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.48.0 (#1484)
+    - deps: update golang.org/x/ (#1465)
+    - deps: update module github.com/cheggaaa/pb/v3 to v3.2.1
+      (#1472)
+    - deps: update module github.com/stretchr/testify to v1.12.1
+      (#1473)
+    - deps: update dependency go to v1.26.7 (#1470)
+    - deps: update module github.com/stretchr/testify to v1.12.0
+      (#1469)
+    - deps: update dependency jdx/mise to v2026.8.4 (#1468)
+    - deps: update github actions (#1467)
+    - deps: update module github.com/hetznercloud/hcloud-go/v2 to
+      v2.47.0 (#1459)
+    - deps: update dependency jdx/mise to v2026.7.12 (#1455)
+    - deps: update module github.com/jedib0t/go-pretty/v6 to v6.8.3
+      (#1462)
+
+-------------------------------------------------------------------
 Mon Jul 27 04:58:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.67.0:
