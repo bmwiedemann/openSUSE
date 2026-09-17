@@ -2548,7 +2548,7 @@ packagesets:
    - libpoppler-cpp3 # reason: dvd:patterns-gnome-gnome
    - libpoppler-glib8 # reason: dvd:patterns-gnome-gnome
    - libpoppler-qt6-3 # reason: dvd:patterns-kde-kde
-   - libpoppler162 # reason: dvd:openSUSE-release
+   - libpoppler164 # reason: dvd:openSUSE-release
    - libpopt0 # reason: dvd:openSUSE-release
    - libpopt0-32bit # reason: dvd:patterns-media-rest_dvd
    - libportal-gtk3-1 # reason: dvd:patterns-gnome-gnome
@@ -5693,7 +5693,7 @@ packagesets:
    - libpolkit-qt6-1-1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-cpp3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpoppler-qt6-3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libpoppler162 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libpoppler164 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libpopt0 # reason: opensuse_microos:patterns-base-hardware
    - libppd # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libppd2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7497,7 +7497,7 @@ packagesets:
    - libpoppler-cpp3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpoppler-glib8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpoppler-qt6-3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libpoppler162 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libpoppler164 # reason: opensuse_kalpa:patterns-kalpa-base
    - libpopt0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libppd # reason: opensuse_kalpa:patterns-kalpa-base
    - libppd2 # reason: opensuse_kalpa:patterns-kalpa-base

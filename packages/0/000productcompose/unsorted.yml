@@ -1815,6 +1815,7 @@ unsorted:
   - bumblebee-status-module-zfs 
   - bumblebee-status-theme-powerline 
   - bun 
+  - bun-pty 
   - bup 
   - busybox-adduser 
   - busybox-attr 
@@ -4217,6 +4218,7 @@ unsorted:
   - ffado-devel 
   - ffado-mixer 
   - ffcall 
+  - fff 
   - fflas-ffpack-devel 
   - fflas-ffpack-doc 
   - ffmpeg 
@@ -15673,7 +15675,7 @@ unsorted:
   - libpoppler-qt5-1 
   - libpoppler-qt5-devel 
   - libpoppler-qt6-devel 
-  - libpoppler162-32bit 
+  - libpoppler164-32bit 
   - libportal-devel 
   - libportal-gtk3-devel 
   - libportal-gtk4-devel 
@@ -16344,7 +16346,7 @@ unsorted:
   - libscamperctrl4 
   - libscamperfile-devel 
   - libscamperfile13 
-  - libscap0 
+  - libscap0_26 
   - libscca-devel 
   - libscca-tools 
   - libscca1 
@@ -16454,7 +16456,7 @@ unsorted:
   - libsigsegv2 
   - libsingular_resources-4_4_1 
   - libsingular_resources-devel 
-  - libsinsp0 
+  - libsinsp0_26 
   - libsioclient1 
   - libsirocco0 
   - libsispmctl0 
@@ -23190,6 +23192,7 @@ unsorted:
   - phonon4qt5-backend-mpv 
   - phonon4qt6-backend-mpv 
   - phoronix-test-suite 
+  - photon-node 
   - photoqt 
   - photorec 
   - php-composer 
@@ -28259,10 +28262,12 @@ unsorted:
   - python313-translationstring 
   - python313-translitcodec 
   - python313-tree-sitter 
+  - python313-tree-sitter-agda 
   - python313-tree-sitter-bash 
   - python313-tree-sitter-c 
   - python313-tree-sitter-c-sharp 
   - python313-tree-sitter-cpp 
+  - python313-tree-sitter-diff 
   - python313-tree-sitter-elixir 
   - python313-tree-sitter-fortran 
   - python313-tree-sitter-go 
@@ -28273,10 +28278,13 @@ unsorted:
   - python313-tree-sitter-julia 
   - python313-tree-sitter-kotlin 
   - python313-tree-sitter-lua 
+  - python313-tree-sitter-make 
   - python313-tree-sitter-objc 
+  - python313-tree-sitter-ocaml 
   - python313-tree-sitter-php 
   - python313-tree-sitter-powershell 
   - python313-tree-sitter-python 
+  - python313-tree-sitter-r 
   - python313-tree-sitter-ruby 
   - python313-tree-sitter-rust 
   - python313-tree-sitter-scala 
@@ -32399,10 +32407,12 @@ unsorted:
   - python314-translationstring 
   - python314-translitcodec 
   - python314-tree-sitter 
+  - python314-tree-sitter-agda 
   - python314-tree-sitter-bash 
   - python314-tree-sitter-c 
   - python314-tree-sitter-c-sharp 
   - python314-tree-sitter-cpp 
+  - python314-tree-sitter-diff 
   - python314-tree-sitter-elixir 
   - python314-tree-sitter-fortran 
   - python314-tree-sitter-go 
@@ -32413,10 +32423,13 @@ unsorted:
   - python314-tree-sitter-julia 
   - python314-tree-sitter-kotlin 
   - python314-tree-sitter-lua 
+  - python314-tree-sitter-make 
   - python314-tree-sitter-objc 
+  - python314-tree-sitter-ocaml 
   - python314-tree-sitter-php 
   - python314-tree-sitter-powershell 
   - python314-tree-sitter-python 
+  - python314-tree-sitter-r 
   - python314-tree-sitter-ruby 
   - python314-tree-sitter-rust 
   - python314-tree-sitter-scala 
@@ -45799,17 +45812,27 @@ unsorted:
   - trash-cli 
   - tre-devel 
   - tree-sitter 
+  - tree-sitter-agda 
+  - tree-sitter-agda-devel 
+  - tree-sitter-agda-queries 
+  - tree-sitter-agda-wasm 
   - tree-sitter-arduino 
   - tree-sitter-arduino-devel 
   - tree-sitter-bash 
   - tree-sitter-bash-devel 
+  - tree-sitter-bash-queries 
+  - tree-sitter-bash-wasm 
   - tree-sitter-bicep 
   - tree-sitter-bicep-devel 
   - tree-sitter-bitbake 
   - tree-sitter-c 
   - tree-sitter-c-devel 
+  - tree-sitter-c-queries 
   - tree-sitter-c-sharp 
   - tree-sitter-c-sharp-devel 
+  - tree-sitter-c-sharp-queries 
+  - tree-sitter-c-sharp-wasm 
+  - tree-sitter-c-wasm 
   - tree-sitter-cairo 
   - tree-sitter-capnp 
   - tree-sitter-capnp-devel 
@@ -45817,28 +45840,44 @@ unsorted:
   - tree-sitter-chatito-devel 
   - tree-sitter-clojure 
   - tree-sitter-clojure-devel 
+  - tree-sitter-clojure-queries 
+  - tree-sitter-clojure-wasm 
   - tree-sitter-commonlisp 
   - tree-sitter-commonlisp-devel 
   - tree-sitter-cpon 
   - tree-sitter-cpon-devel 
   - tree-sitter-cpp 
   - tree-sitter-cpp-devel 
+  - tree-sitter-cpp-queries 
+  - tree-sitter-cpp-wasm 
   - tree-sitter-css 
   - tree-sitter-css-devel 
+  - tree-sitter-css-queries 
+  - tree-sitter-css-wasm 
   - tree-sitter-csv 
   - tree-sitter-cuda 
   - tree-sitter-cuda-devel 
   - tree-sitter-devel 
+  - tree-sitter-diff 
+  - tree-sitter-diff-devel 
+  - tree-sitter-diff-queries 
+  - tree-sitter-diff-wasm 
   - tree-sitter-doxygen 
   - tree-sitter-doxygen-devel 
   - tree-sitter-elixir 
   - tree-sitter-elixir-devel 
+  - tree-sitter-elixir-queries 
+  - tree-sitter-elixir-wasm 
   - tree-sitter-firrtl 
   - tree-sitter-firrtl-devel 
   - tree-sitter-fortran 
   - tree-sitter-fortran-devel 
   - tree-sitter-fountain 
   - tree-sitter-fountain-devel 
+  - tree-sitter-fsharp 
+  - tree-sitter-fsharp-devel 
+  - tree-sitter-fsharp-queries 
+  - tree-sitter-fsharp-wasm 
   - tree-sitter-func 
   - tree-sitter-gitattributes 
   - tree-sitter-gitattributes-devel 
@@ -45846,8 +45885,10 @@ unsorted:
   - tree-sitter-glsl-devel 
   - tree-sitter-go 
   - tree-sitter-go-devel 
+  - tree-sitter-go-queries 
   - tree-sitter-go-sum 
   - tree-sitter-go-sum-devel 
+  - tree-sitter-go-wasm 
   - tree-sitter-gomod 
   - tree-sitter-gomod-devel 
   - tree-sitter-gpg-config 
@@ -45859,33 +45900,49 @@ unsorted:
   - tree-sitter-hare 
   - tree-sitter-hare-devel 
   - tree-sitter-haskell 
+  - tree-sitter-haskell-queries 
+  - tree-sitter-haskell-wasm 
   - tree-sitter-hcl 
+  - tree-sitter-hcl-wasm 
   - tree-sitter-hlsl 
   - tree-sitter-hlsl-devel 
   - tree-sitter-html 
   - tree-sitter-html-devel 
+  - tree-sitter-html-queries 
+  - tree-sitter-html-wasm 
   - tree-sitter-hyprlang 
   - tree-sitter-hyprlang-devel 
   - tree-sitter-java 
   - tree-sitter-java-devel 
+  - tree-sitter-java-queries 
+  - tree-sitter-java-wasm 
   - tree-sitter-javascript 
   - tree-sitter-javascript-devel 
+  - tree-sitter-javascript-queries 
+  - tree-sitter-javascript-wasm 
   - tree-sitter-jinja2 
   - tree-sitter-jinja2-devel 
   - tree-sitter-json 
   - tree-sitter-json-devel 
+  - tree-sitter-json-queries 
+  - tree-sitter-json-wasm 
   - tree-sitter-julia 
   - tree-sitter-julia-devel 
+  - tree-sitter-julia-queries 
+  - tree-sitter-julia-wasm 
   - tree-sitter-kconfig 
   - tree-sitter-kconfig-devel 
   - tree-sitter-kdl 
   - tree-sitter-kdl-devel 
   - tree-sitter-kotlin 
   - tree-sitter-kotlin-devel 
+  - tree-sitter-kotlin-wasm 
   - tree-sitter-linkerscript 
   - tree-sitter-linkerscript-devel 
   - tree-sitter-lua 
   - tree-sitter-lua-devel 
+  - tree-sitter-lua-queries 
+  - tree-sitter-lua-wasm 
   - tree-sitter-luadoc 
   - tree-sitter-luadoc-devel 
   - tree-sitter-luap 
@@ -45894,10 +45951,24 @@ unsorted:
   - tree-sitter-luau-devel 
   - tree-sitter-mail 
   - tree-sitter-mail-devel 
+  - tree-sitter-make 
+  - tree-sitter-make-devel 
+  - tree-sitter-make-queries 
+  - tree-sitter-make-wasm 
   - tree-sitter-markdown 
+  - tree-sitter-markdown-queries 
+  - tree-sitter-markdown-wasm 
   - tree-sitter-meson 
+  - tree-sitter-nix 
+  - tree-sitter-nix-devel 
+  - tree-sitter-nix-queries 
+  - tree-sitter-nix-wasm 
   - tree-sitter-objc 
   - tree-sitter-objc-devel 
+  - tree-sitter-ocaml 
+  - tree-sitter-ocaml-devel 
+  - tree-sitter-ocaml-queries 
+  - tree-sitter-ocaml-wasm 
   - tree-sitter-odin 
   - tree-sitter-odin-devel 
   - tree-sitter-org 
@@ -45906,6 +45977,8 @@ unsorted:
   - tree-sitter-pem-devel 
   - tree-sitter-php 
   - tree-sitter-php-devel 
+  - tree-sitter-php-queries 
+  - tree-sitter-php-wasm 
   - tree-sitter-po 
   - tree-sitter-po-devel 
   - tree-sitter-poe-filter 
@@ -45914,6 +45987,8 @@ unsorted:
   - tree-sitter-pony-devel 
   - tree-sitter-powershell 
   - tree-sitter-powershell-devel 
+  - tree-sitter-powershell-queries 
+  - tree-sitter-powershell-wasm 
   - tree-sitter-printf 
   - tree-sitter-printf-devel 
   - tree-sitter-properties 
@@ -45924,11 +45999,17 @@ unsorted:
   - tree-sitter-pymanifest-devel 
   - tree-sitter-python 
   - tree-sitter-python-devel 
+  - tree-sitter-python-queries 
+  - tree-sitter-python-wasm 
   - tree-sitter-qmldir 
   - tree-sitter-qmldir-devel 
   - tree-sitter-qmljs 
   - tree-sitter-query 
   - tree-sitter-query-devel 
+  - tree-sitter-r 
+  - tree-sitter-r-devel 
+  - tree-sitter-r-queries 
+  - tree-sitter-r-wasm 
   - tree-sitter-re2c 
   - tree-sitter-re2c-devel 
   - tree-sitter-readline 
@@ -45945,10 +46026,16 @@ unsorted:
   - tree-sitter-rst-devel 
   - tree-sitter-ruby 
   - tree-sitter-ruby-devel 
+  - tree-sitter-ruby-queries 
+  - tree-sitter-ruby-wasm 
   - tree-sitter-rust 
   - tree-sitter-rust-devel 
+  - tree-sitter-rust-queries 
+  - tree-sitter-rust-wasm 
   - tree-sitter-scala 
   - tree-sitter-scala-devel 
+  - tree-sitter-scala-queries 
+  - tree-sitter-scala-wasm 
   - tree-sitter-scheme 
   - tree-sitter-scheme-devel 
   - tree-sitter-scss 
@@ -45965,6 +46052,8 @@ unsorted:
   - tree-sitter-svelte-devel 
   - tree-sitter-swift 
   - tree-sitter-swift-devel 
+  - tree-sitter-swift-queries 
+  - tree-sitter-swift-wasm 
   - tree-sitter-tablegen 
   - tree-sitter-tablegen-devel 
   - tree-sitter-tcl 
@@ -45975,8 +46064,12 @@ unsorted:
   - tree-sitter-thrift-devel 
   - tree-sitter-toml 
   - tree-sitter-toml-devel 
+  - tree-sitter-toml-queries 
+  - tree-sitter-toml-wasm 
   - tree-sitter-typescript 
   - tree-sitter-typescript-devel 
+  - tree-sitter-typescript-queries 
+  - tree-sitter-typescript-wasm 
   - tree-sitter-udev 
   - tree-sitter-udev-devel 
   - tree-sitter-ungrammar 
@@ -45986,10 +46079,14 @@ unsorted:
   - tree-sitter-verilog 
   - tree-sitter-verilog-devel 
   - tree-sitter-vim 
+  - tree-sitter-vim-queries 
+  - tree-sitter-vim-wasm 
   - tree-sitter-vimdoc 
   - tree-sitter-vimdoc-devel 
   - tree-sitter-vue 
   - tree-sitter-vue-devel 
+  - tree-sitter-vue-queries 
+  - tree-sitter-vue-wasm 
   - tree-sitter-wgsl 
   - tree-sitter-wgsl-bevy 
   - tree-sitter-wgsl-bevy-devel 
@@ -46000,12 +46097,18 @@ unsorted:
   - tree-sitter-xcompose-devel 
   - tree-sitter-xml 
   - tree-sitter-xml-devel 
+  - tree-sitter-xml-queries 
+  - tree-sitter-xml-wasm 
   - tree-sitter-yaml 
   - tree-sitter-yaml-devel 
+  - tree-sitter-yaml-queries 
+  - tree-sitter-yaml-wasm 
   - tree-sitter-yuck 
   - tree-sitter-yuck-devel 
   - tree-sitter-zig 
   - tree-sitter-zig-devel 
+  - tree-sitter-zig-queries 
+  - tree-sitter-zig-wasm 
   - treefetch 
   - treelayout 
   - treelayout-demo 
