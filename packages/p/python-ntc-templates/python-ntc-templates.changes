@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 18:45:33 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 9.3.0
+  * Add mikrotik_routeros_interface_lte_apn_print_terse.
+  * Add cisco_xr_show_running-config_interface.
+  * Remove EOL spaces from XR sh run-cfg int.
+  * Add external PSU support to ios sh env power all.
+  * Fix alcatel_sros gnss ports with less columns.
+  * Add error directive to arista_eos show inventory.
+
+-------------------------------------------------------------------
 Thu Jul  9 07:13:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 9.2.0
