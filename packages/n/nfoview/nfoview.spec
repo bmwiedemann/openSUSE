@@ -1,7 +1,7 @@
 #
 # spec file for package nfoview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,19 +17,24 @@
 
 
 Name:           nfoview
-Version:        1.99
+Version:        2.1
 Release:        0
 Summary:        Simple Viewer for NFO Files
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Utilities
 URL:            https://otsaloma.io/nfoview/
 Source:         https://github.com/otsaloma/nfoview/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  desktop-file-utils
 BuildRequires:  gettext
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
-BuildRequires:  update-desktop-files
-Recommends:     terminus-font
+BuildRequires:  make
+BuildRequires:  python3-base
+Requires:       python3
+Requires:       python3-cairo
+Requires:       python3-gobject-Gdk
+Requires:       typelib(Gtk) = 4.0
+Requires:       typelib(Pango) = 1.0
+Requires:       typelib(PangoCairo) = 1.0
+Recommends:     saja-cascadia-code-fonts
 BuildArch:      noarch
 
 %description
@@ -44,12 +49,22 @@ clickable hyperlinks.
 %autosetup -p1
 
 %build
-%make_build
+%make_build PREFIX=%{_prefix}
 
 %install
-%make_install PREFIX=/usr
-%suse_update_desktop_file -r io.otsaloma.nfoview Office Viewer
+%make_install PREFIX=%{_prefix}
+sed -i '1s|#!%{_bindir}/env python3|#!%{_bindir}/python3|' %{buildroot}%{_bindir}/%{name}
+desktop-file-install --add-category="Office" --delete-original \
+  --dir=%{buildroot}%{_datadir}/applications \
+  %{buildroot}%{_datadir}/applications/io.otsaloma.nfoview.desktop
 %find_lang %{name}
+python3 -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{_datadir}/%{name}
+
+%check
+# import nfoview pulls GTK 4 and segfaults without a display (upstream
+# disabled pytest for the same reason). Compile-check the installed modules.
+python3 -m py_compile %{buildroot}%{_datadir}/%{name}/nfoview/*.py
+desktop-file-validate %{buildroot}%{_datadir}/applications/io.otsaloma.nfoview.desktop
 
 %files
 %doc AUTHORS.md NEWS.md README.md
@@ -59,9 +74,7 @@ clickable hyperlinks.
 %{_datadir}/metainfo/io.otsaloma.nfoview.appdata.xml
 %{_datadir}/applications/io.otsaloma.nfoview.desktop
 %{_datadir}/icons/hicolor/*/apps/io.otsaloma.nfoview*.svg
-%{_mandir}/man?/*
-%{python3_sitelib}/%{name}
-%{python3_sitelib}/*.egg-info
+%{_mandir}/man1/%{name}.1%{?ext_man}
 
 %files lang -f %{name}.lang
 

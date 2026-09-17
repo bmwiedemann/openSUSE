@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:36:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.1:
+  * Restore export to PNG functionality
+  * Add runtime dependencies on python-cairo and Pango
+  * Update translations
+- Changes from 2.0.1:
+  * Don't make the build depend on flake8
+- Changes from 2.0:
+  * Switch installation to Makefile with a private package
+    under /usr/share/nfoview (drop setup.py / sitelib)
+- Drop python3-setuptools and python3-devel BuildRequires
+- Recommend saja-cascadia-code-fonts instead of terminus-font
+- Add a py_compile %check (GTK import segfaults without a display)
+- Use /usr/bin/python3 shebang instead of env
+
+-------------------------------------------------------------------
 Sat Nov 25 22:32:36 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.99:
