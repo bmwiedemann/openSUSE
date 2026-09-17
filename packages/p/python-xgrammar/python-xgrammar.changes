@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:24:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.7:
+  * Add DeepSeek V4.1 structural tag (deepseek_v4_1 /
+    deepseek_v4_1_xml) for spaced DSML tags; correlate
+    string="true|false" with the parameter value type and
+    memoize $ref rules so recursive references terminate
+  * Add MiniMax M3 tool-call structural tag (minimax_m3_xml)
+    with DynamicTag capture/backreference for runtime XML
+    names
+  * Add parallel_tool_calls for builtin structural tags so
+    engines can honor OpenAI's at-most-one-call constraint
+  * Add canonical recursive Any support for Cohere XML and
+    memoize Cohere parameter wrappers so self-referential
+    $ref unions no longer overflow the stack
+  * Honor additionalProperties value schema when propertyNames
+    is also present
+  * Compile FromLark under C++20
+- Require cmake >= 3.18, matching cmake_minimum_required
+
+-------------------------------------------------------------------
 Wed Sep  9 06:21:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.6:

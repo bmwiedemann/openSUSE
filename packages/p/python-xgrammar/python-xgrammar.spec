@@ -17,7 +17,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-xgrammar
-Version:        0.2.6
+Version:        0.2.7
 Release:        0
 Summary:        Efficient, Flexible and Portable Structured Generation
 License:        Apache-2.0
@@ -35,7 +35,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module torch >= 1.10.0}
 BuildRequires:  %{python_module transformers >= 4.38.0}
 BuildRequires:  %{python_module typing_extensions >= 4.9.0}
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.18
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 # numpy only Recommends an OpenBLAS runtime; pull one explicitly so torch/numpy
