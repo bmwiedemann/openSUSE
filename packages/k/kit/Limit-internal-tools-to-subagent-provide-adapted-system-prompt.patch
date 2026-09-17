@@ -1,0 +1,50 @@
+From: Egbert Eich <eich@suse.com>
+Date: Mon Jun 29 08:48:15 2026 +0200
+Subject: Limit internal tools to subagent, provide adapted system prompt
+Patch-mainline: N/A
+Git-repo: https://github.com/mark3labs/kit
+Git-commit: 845715044b419fc40249aafdd0acf4ff93ae5659
+References: 
+
+When kit starts and does not find a config file in any of its
+locations, it will create one in the user's home.
+For security reasons, we want to restrict the kit internal tools
+to the `subagent` tool and instead provide security-hardened
+replacements through MCP servers.
+
+Signed-off-by: Egbert Eich <eich@suse.com>
+Signed-off-by: Egbert Eich <eich@suse.de>
+---
+ internal/config/config.go | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
+diff --git a/internal/config/config.go b/internal/config/config.go
+index 343bf209..c577c7ef 100644
+--- a/internal/config/config.go
++++ b/internal/config/config.go
+@@ -545,6 +545,26 @@ mcpServers:
+ #       topP: 0.95
+ #       topK: 40
+ #       systemPrompt: "You are a helpful local assistant."
++
++# SUSE-specific:
++# Disable all kit-internal core tools except subagent:
++include-core-tools:
++  - subagent
++
++system-prompt: "You are an expert coding assistant operating inside kit, a coding agent harness. You help users by reading files, executing commands, editing code, and writing new files.
++
++You may be given a list of tools to list, find or grep files, as well as to read, write or edit files.
++
++Guidelines:
++- Prefer a file grep tool, a file find tool or a file list tool for file exploration (faster, respects .gitignore).
++- Use a read file tool to examine files before editing.
++- Use an edit tool for precise changes (old text must match exactly, including whitespace).
++- Use write file tool only for new files or complete rewrites.
++- When summarizing your actions, output plain text directly.
++- Do not expect a tool which allows you to execute arbitray commands.
++- Be concise in your responses
++- Show file paths clearly when working with files
++"
+ `
+ 
+ 	_, err = file.WriteString(content)

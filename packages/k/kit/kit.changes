@@ -1,0 +1,435 @@
+-------------------------------------------------------------------
+Wed Sep 16 13:14:53 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update to version v0.107.0
+  * feat(cmd): support HTTP headers in --mcp for remote servers
+- Form version v0.106.0:
+  * feat(sdk): durability seams for external SessionManager
+    implementations
+- From version v0.105.0:
+  * feat(auth): start without API keys and add /connect key dialog
+  * feat(skills): activate skills with / and close agentskills.io
+    spec gaps
+  * fix(docs):compare live ToolName to "shell", not the legacy
+    "bash" name.
+  * fix(ui): render autocomplete badge as a theme-colored chip and
+    keep cursor-row description visible.
+- From version v0.104.0:
+  * feat(cli): add --mcp flag to load an MCP server without a
+    config file.
+  * fix(daemon): start new sessions on the connected host from
+    the picker.
+- From version v0.103.0:
+  * feat(daemon): replace Rust kit-tunnel sidecar with in-process
+    go-iroh transport.
+  * feat(models): send x-opencode-session header to opencode providers.
+  * fix(ci): scope continue-on-error to the staticcheck step.
+  * fix(daemon): address CodeRabbit review on go-iroh transport.
+  * fix(models): route gpt-6+ models to the OpenAI Responses API.
+  * fix(sdk): address CodeRabbit review on ErrNoSession and deprecations.
+  * fix(sdk): scope provider endpoint overrides to their provider on
+    model switch.
+  * chore(deps): update go deps and refresh embedded model catalog.
+  * chore: remove dead exported symbols in internal/.
+  * refactor(cmd): split runNormalMode into phase functions.
+  * refactor(models): drop gpt-6 Responses-routing hack, use fantasy
+    v0.43.1 native support.
+  * refactor: SDK hygiene, dedup clusters, split bridge/generate.
+  * core: make the shell configurable and name the tool after it.
+  * core: simplify the empty-element check with slices.Contains.
+  * extensions: scope the shell tool's earlier name to the core tool.
+  * extensions: take the runner lock when reading extensions.
+- From version 0.102.1:
+  * docs(prompts): drop bogus issue arg from /create-pr reference.
+  * docs(prompts): handle CodeRabbit rate limits in resolve-reviews
+  * fix(popup-terminal): probe tmux on the server it created the session
+    on.
+- From version 0.102.0:
+  * feat(extensions): add popup-terminal example with persistent shell.
+  * feat(models): catalog-driven reasoning levels, tiered pricing, status.
+  * fix(daemon): tell the session which multiplexer the client runs in.
+  * fix(extensions): keep extMu in sync with extensions on hot-reload.
+  * build(deps): update all dependencies and require Go 1.27.
+  * chore(models): refresh model catalog and prune dead aliases.
+- From version 101.3:
+  * fix(daemon): publish clipboard images beside their destination.
+- From version 101.2:
+  * fix(daemon): list remote sessions on attach, forward client terminal.
+  * docs: document cross-host attach picker and terminal forwarding.
+- From version 101.1:
+  * fix(daemon): address CodeRabbit review on cancellation handling
+  * fix(daemon): address CodeRabbit review on cancellation reporting.
+  * fix(daemon): address CodeRabbit review on context propagation.
+  * fix(daemon): hand the terminal back, keep the alt screen, and never
+    orphan a sidecar.
+  * fix(daemon): regrow a shared session when its smallest client
+    leaves.
+  * fix(daemon): tie the terminal reader to the client context.
+- From version 101.0:
+  * feat(daemon): local sessions, a session multiplexer, and a
+    multi-host hub.
+  * fix(daemon): keep same-daemon choices local.
+  * fix(daemon): keep the connection alive across a session switch.
+  * fix(daemon): keep the detach chord armed across the kitty
+    Ctrl-X release.
+  * fix(daemon): make process signalling portable.
+  * fix(daemon): propagate attach cancellation and bound the local
+    dial.
+  * fix(daemon): shut sessions down deterministically across daemon
+    restarts.
+  * fix(daemon): unblock stdin after a picker closes; keep the
+    alt screen.
+  * docs: document detachable sessions and the Ctrl+] keymap.
+  * docs: document local sessions and the Ctrl-] session prefix.
+  * refactor(daemon): route frames through a transport-agnostic
+    connection set.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:08:51 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- From v0.100.0
+  * feat(daemon): detach, reattach and shared multi-client sessions.
+  * feat(daemon): image paste over remote sessions.
+  * feat(daemon): pairing-based client access (protocol v3, wip).
+  * feat(daemon): pairing-based remote access (protocol v3).
+  * feat(daemon): render the image preview for remote pastes.
+  * feat: daemon mode with iroh remote sessions (kit daemon / kit --remote).
+  * feat: daemon single-instance lock, 'kit daemon status', systemd user
+    service.
+  * feat: multi-session daemon over one endpoint, per-session teardown,
+    embedded sidecar.
+  * fix(ci): map windows/arm64 to a Rust target for the sidecar.
+  * fix(ci): stage a macOS SDK for the darwin sidecar cross builds.
+  * fix(ci): stop persisting checkout credentials in test jobs.
+  * fix(daemon): address CodeRabbit re-review on pairing model.
+  * fix(daemon): address CodeRabbit review on pairing model.
+  * fix(daemon): address CodeRabbit review on remote image paste.
+  * fix(daemon): address CodeRabbit review on remote sessions.
+  * fix(daemon): deliver an idle Escape without waiting for more input.
+  * fix(daemon): flush a lone Escape on idle time, not chunk arrival.
+  * fix(daemon): harden keyScanner escape-sequence handling.
+  * fix(daemon): intercept Ctrl-V under the kitty keyboard protocol.
+  * fix(daemon): reject approvals queued after the pairing window expires.
+  * fix(tunnel): bound concurrent over-cap rejection tasks.
+  * fix(tunnel): bound over-cap rejection tasks.
+  * fix(tunnel): expire pre-authentication slot reservations.
+  * fix(tunnel): time out accept_bi to release stalled session slots.
+  * fix: check f.Close error in ReadStatus probe.
+  * fix: clean client terminal after remote session exit.
+  * fix: task dev builds the kit-tunnel sidecar.
+  * docs: document detach, reattach and shared remote sessions.
+  * docs: document remote sessions (kit daemon / kit --remote).
+  * build: release pipeline ships the embedded kit-tunnel sidecar.
+  * chore(tunnel): document the wire protocol as v1.
+  * chore(tunnel): fix unused-mut and dead-code warnings.
+  * chore: remove stray embedded sidecar binary from contrib.
+  * refactor(ui): avoid string concatenation in WriteString calls.
+- From v0.99.0
+  * feat: add --bare for running without project context.
+  * fix(cmd): keep non-JSON output off stdout in --json mode.
+  * fix(core): drain the pipe when bash streaming hits an oversized line.
+  * fix(core): guard the bash streaming test callback against concurrent
+    append.
+  * fix(core): stop cmd.Wait truncating bash output mid-drain.
+  * fix(kit): address CodeRabbit review on bare mode.
+  * fix(session): address CodeRabbit follow-up review on bare mode.
+  * fix(ui): count only extension tools in the extension tool count.
+  * chore: apply modernize fixes for Go 1.26.
+- From  v0.98.0
+feat(ui): draw transcript image previews with kitty graphics
+chore(deps): update go deps and refresh embedded model catalog
+- From v0.97.0
+  * feat(extensions): load extensions from a system-wide directory.
+  * feat(ui): render image previews with the Kitty graphics protocol.
+  * feat(ui): use the graphics protocol for transcript image previews.
+  * fix(extensions): address CodeRabbit review on system extension dirs.
+  * fix(ui): address CodeRabbit review on graphics capability and image
+    cleanup.
+  * fix(ui): decide the preview mode from resolved capabilities, not the
+    environment.
+  * docs(cli): describe graphics-protocol image previews.
+- From v0.96.3
+  fix(models): route opencode gpt-* and grok-* to the Responses wire.
+- From v0.96.2
+  chore(deps): update go and web deps, refresh embedded model catalog
+- From v0.96.1
+  feat(examples): rebuild subagent-monitor around ShowOverlay.
+  fix(ui): relayout when the activity row appears or disappears.
+  docs(agents): require ASD-STE100 simplified technical english.
+- From v0.96.0
+  * feat(extensions): add ctx.GetTheme() for reading the active theme.
+- From v0.95.0
+  * feat(extensions): add custom widget rendering and fix dead UI fields.
+  * feat(extensions): harden keyboard shortcut registration and dispatch.
+  * docs: document shortcut key handling and fix callout syntax.
+- From v0.94.0
+  * feat(ui): polish message nav inspector and fix markdown theme.
+  * feat(ui): resolve terminal capabilities lazily and per-client.
+  * fix(app): address CodeRabbit review on session store.
+  * fix(ui): address CodeRabbit review on session snapshot refactor.
+  * fix(ui): correct SetTerminalCapabilities goroutine-safety contract.
+  * docs(app): address CodeRabbit review on Event union docs.
+  * refactor(app): expose session state as value snapshots.
+  * refactor(app): type event fan-out with sealed Event union.
+  * refactor(ui): move session discovery and file I/O to app layer.
+- From v0.93.0
+  * repaint scrollback when the theme changes.
+  * fix(www): drop npm lockfile and patch 11 high-severity advisories.
+  * chore(www): re-record cyberpunk demo with scrollback repaint.
+refactor(ui): drive animations from a shared frame clock
+- From v0.92.1
+  * feat(www): add cyberpunk terminal demo and VHS recording setup.
+- From v0.92.0
+  * feat(ui): animate the startup wordmark with a shine and scanner sweep.
+- From v0.91.1
+  * fix(ui): keep the activity row alive across message navigation.
+- From  v0.91.0
+  *  feat(extensions): add terminal size, thinking level, and turn state APIs.
+  * feat(extensions): expose model pricing and OAuth status.
+  * fix(examples): close check-then-render race in status-footer.
+  * fix(models): distinguish unpriced models from free ones.
+  * fix(ui): accumulate token usage across all steps in a turn.
+  * fix(ui): give every transcript block one shared geometry.
+  * fix(ui): stop blocks drawing a gutter beside trailing blank rows.
+  * fix(ui): stop the diff overflowing narrow terminals, unify tool
+    body geometry.
+  * docs(examples): add status-footer extension.
+  * docs(ui): correct UTF-8 byte count in padRight test comment.
+  * docs: credit @nunix for the status footer design.
+  * docs: document model pricing and OAuth status in extensions guide.
+  * docs: document pricing, OAuth, and chrome APIs across doc surfaces
+  * chore(deps): update indirect deps and refresh models.dev snapshot.
+- From  v0.90.0
+  * fix(ui): address CodeRabbit review on message navigation overlays.
+  * fix(ui): stop duplicating response after an interrupted turn.
+  * Add message navigation and inspector (Ctrl+X m).
+  * Composite all overlays over the view instead of replacing it.
+  * Make the inspector show all of a grep or ls result.
+  * Show full tool arguments in the message inspector (@ezynda3)
+  * Write tool argument parts directly into the builder
+- From  v0.89.0
+  * feat(extensions): show agent name in subagent monitor panes.
+  * feat(ui): derive syntax colors from the theme; fix palette collisions.
+  * feat(ui): give live activity its own row; quiet the surrounding chrome.
+  * feat(ui): one gutter vocabulary, quieter tool receipts, scalable splash.
+  * feat: make bash tool timeouts configurable via kit.yml.
+  * chore(deps): update go dependencies and refresh models.dev snapshot.
+  * refactor(ui): drop input-hint state left dead by the composer rework.
+  *refactor(ui): drop the splash stripe.
+- From v0.88.0
+  * feat(ui): display subagent type in StreamComponent spinner.
+  * chore(deps): bump fantasy to v0.38.1 and refresh models.dev snapshot.
+  * perf(ui): optimize agent name validation with compiled regexp (@kskarthik)
+  *security(ui): sanitize agent name in spinner display.
+- From v0.87.0
+   * chore(deps): update go dependencies and models.dev snapshot.
+   * refactor: seal SDK type leaks and deduplicate auth/UI/extension paths.
+- From v0.86.0
+  * chore(deps): update go dependencies and models.dev snapshot.
+  * Add WithProviderWire functional option for SDK parity.
+  * Add explicit wire protocol declarations for providers.
+  * Document provider wire overrides across all doc surfaces.
+  * perf(ui): fix memory leaks, deadlocks, and hot-path rendering costs.
+- From v0.85.1
+  * feat(agents): named agent definitions with per-agent tool restrictions.
+  * feat(compaction): adaptive budgets, full-part token estimation, anchored
+    summaries.
+  * feat(compaction): auto-compact and retry on context overflow errors.
+  * feat(hooks): expose per-step ToolChoice via OnPrepareStep.
+  * feat(subagent): link child sessions to parent and support resume.
+  * fix(agents): deep-copy agent getters, wire --no-agents flag, clarify
+  * tools contract.
+  * fix(compaction): address coderabbit review on overflow recovery.
+  * fix(compaction): preserve API token baseline after compaction.
+  * fix(extbridge): preserve run error and fire OnComplete on nil subagent
+    result.
+  * fix(extensions): implement non-blocking subagent spawn with usable handle.
+  * fix(session): address CodeRabbit review on subagent session linking.
+  * fix(session): fsync temp file before rename in SetParentLink.
+  * fix: normalize .wav MIME type to audio.
+  * docs(agents): note allowlist intersection on SubagentConfig.Tools
+  * chore(deps): update go dependencies and models.dev snapshot.
+  * chore(deps): update go dependencies and models.dev snapshot.
+  * chore(prompts): add /resolve-reviews bot-review polling loop.
+  * perf(ui): fix memory leaks, deadlocks, and hot-path rendering costs/
+- From  v0.85.0
+  * feat(agents): named agent definitions with per-agent tool restrictions.
+  * feat(compaction): adaptive budgets, full-part token estimation, anchored
+    summaries.
+  * feat(compaction): auto-compact and retry on context overflow errors.
+  * feat(hooks): expose per-step ToolChoice via OnPrepareStep.
+  * feat(subagent): link child sessions to parent and support resume.
+  * fix(agents): deep-copy agent getters, wire --no-agents flag, clarify
+    tools contract.
+  * fix(compaction): address coderabbit review on overflow recovery.
+  * fix(compaction): preserve API token baseline after compaction.
+  * fix(extbridge): preserve run error and fire OnComplete on nil subagent
+    result.
+  * fix(extensions): implement non-blocking subagent spawn with usable handle.
+  * fix(session): address CodeRabbit review on subagent session linking.
+  * fix(session): fsync temp file before rename in SetParentLink.
+  * fix: normalize .wav MIME type to audio/wav
+- From v0.84.0
+  * feat(ui): warn when provider reports no token usage
+- From v0.83.1
+  * fix(sandbox): make nix discoverable on default PATH for all users.
+  * fix(skills): route collision logs to file at info level.
+  * build(sandbox): add go developer tooling to sandbox image.
+  * build(sandbox): add nix flakes and direnv to sandbox image.
+
+-------------------------------------------------------------------
+Mon Jun 29 04:57:46 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.83.0
+  * feat(sandbox): official Kit sandbox image + GHCR workflow.
+  * fix(cmd): avoid nil pointer panic when OAuth handler init fails.
+  * fix(subagent): prevent duplicate MCP tool names and redundant.
+    reloads.
+  * build(sandbox): pre-install uv and bun in sandbox image.
+- From version 0.82.1:
+  * fix(agent): honor AddTools/RemoveTools mid-turn at next LLM
+    step.
+- From version 0.82.0:
+  * feat(ui): add /undo slash command to roll back the last turn
+  * feat(pkg/kit): expose runtime add/remove of native Go tools
+- From version 0.81.0:
+  * feat(kit): Add option for mutually exclusive
+    include/exclude-core-tools lists.
+- From version 0.80.0:
+  * feat(sdk): harden pkg/kit embedder surface with scoped
+    additions.
+  * refactor(sdk): drop unreachable kit.AgentConfig surface.
+- From version 0.79.1:
+  * fix(app): make ctx.NewSession wait for agent idle.
+  * build(deps): bump go module dependencies.
+  * chore(models): refresh embedded models database from models.dev.
+- From version 0.79.0:
+  * feat(models): add apiModelName field to custom model config.
+  * feat(ui): support /new and ctx.NewSession for phase handoffs.
+- From version 0.78.0:
+  * feat(github): make GitHub integration work end-to-end via core
+    command + action.
+- From version 0.77.0:
+  * feat(cmd): add kit github install command.
+- From version 0.76.0:
+  * cmd: add --no-skills, --skill, and --skills-dir CLI flags
+    & config.
+- From version 0.75.1:
+  * refactor: dedupe cross-package logic and remove dead code from
+    audit.
+- From version 0.75.0:
+  * Feat/copilot login.
+  * Make subagent inherit tools from parent.
+- From version 0.74.1:
+  * fix(cmd): route prefixed models through custom wire when
+    --provider-url is set.
+- From version 0.74.0:
+  * feat(ui): add /edit slash command with fuzzy file picker.
+  * feat(ui): add /retry slash command for resubmitting last user
+    message.
+  * refactor(ui): standardize all popups on shared PopupList.
+- From version 0.73.0:
+  * feat(models): resolve SDK default URLs for all registered
+    providers.
+  * refactor: address code audit findings across SDK, cmd, and
+    internals.
+- From version 0.72.0:
+  * feat(ui): render half-block thumbnails for attached images.
+  * fix(ui): show pasted image previews in input and transcript.
+  * chore(models): update embedded model database from models.dev.
+- From version 0.71.0:
+  * feat(kit): isolate viper config per Kit instance + add NewAgent.
+  * fix(models): route auto-discovered providers by wire protocol.
+  * docs(config): add example support of custom headers for mcp
+    servers.
+  * CLI & Config changes to support disabling core tools.
+- Modify default config created by kit when none is found to
+  disable all internal tools except for the `subagent` tool.
+  The internal tools do not provide ways to limit what they
+  will be able to access.
+  Instead, we will provide a list of tools through MCP which
+  are security hardened sufficiently.
+
+-------------------------------------------------------------------
+Fri May 22 19:31:42 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Update to version 0.70.4
+  * fix(agent): track tool call args per `ToolCallID` for parallel
+    calls.
+- Changes from earlier versions:
+  * chore(models): refresh embedded models.dev snapshot.
+  * perf(session): parallelize session list extraction.
+  * fix(app): deliver trailing widget update so layout resets
+    after removal.
+  * fix(ui): correct mouse selection drift with extension widgets.
+  * feat(prompts): auto-reload prompts and extensions from XDG
+    config.
+  * feat(ui): list loaded extensions in startup banner.
+  * chore: move go-edit-lint extension to global scope.
+  * feat(ui): add /copy slash command to copy last message.
+  * fix(ui): eliminate mouse copy-selection drift during
+    streaming.
+  * fix(mcp): surface MCP tool failures as soft errors, not
+    critical aborts.
+  * fix(sdk): stop leaking fantasy types through
+    `pkg/kit.AgentConfig`.
+  * feat(ui): autocomplete /skill: slash commands.
+  * fix(app): flush queued messages after /compact completes.
+  * fix(cmd): nil-guard CLI when emitting system-prompt notice in
+    quiet mode.
+  * fix(kit): resolve system-prompt file path before
+    `PromptBuilder`.
+  * fix(cmd): wrap bare fn refs in `extensions.Context` as
+    closures.
+  * fix(session): strip illegal characters from windows session
+    dir.
+  * docs(session): correct `DefaultSessionDir` convention comment.
+  * feat(mcp): add MCP Tasks support at the SDK level.
+  * fix(mcp): validate `tasksMode` and inherit task options in
+    `Subagent`.
+  * docs(mcp): document MCP Tasks support.
+  * fix(models): auto-register new OpenAI models for Responses API
+    routing.
+  * fix(extensions): return nil error for blocked/disabled tools
+    so LLM sees the reason.
+  * feat(app): update token counts and context fill after every
+    step.
+  * perf(ui): cache item heights in ScrollList to eliminate
+    redundant renders.
+  * feat(sdk): add missing LLM type aliases and remove fantasy
+    dependency leakage.
+  * feat(sdk): expose remaining Fantasy lifecycle callbacks as
+    events and hooks.
+  * fix(kit): enable streaming for subagent child instances.
+  * fix(sdk): infer `ToolResponse.Type` for binary data in
+    `NewTool`/`NewParallelTool`
+  * fix(ui): reduce TUI visual noise and improve layout.
+  * feat(events): mirror Fantasy tool input streaming callbacks
+    as Kit events.
+  * docs: document `noOAuth` MCP server config field.
+  * feat(config): add `noOAuth` flag to skip OAuth on public MCP
+    servers.
+  * fix(cmd): fix character encoding in OAuth success page.
+  * fix(ui): require double `ctrl+c` to quit, matching double-esc
+    pattern.
+  * fix(ui): wrap reasoning blocks to terminal width to prevent
+    clipping.
+  * feat(cmd): add `--set-default` flag and improve auth error
+    messages.
+  * fix(models): add gpt-5.4 reasoning level support with
+    auto-adjustment.
+  *  fix(session): prevent circular parent references in tree
+     session.
+  * fix(ui): make `ctrl+c` clear input before quitting.
+  * fix(subagent): remove biased model example from tool schema.
+- Integrate vulnchecker into %check stage (optional).
+- Fix CVE-2026-39827, CVE-2026-39834, CVE-2026-39828, CVE-2026-39829,
+  CVE-2026-39831, CVE-2026-42508, CVE-2026-39833, CVE-2026-39830,
+  CVE-2026-39832, CVE-2026-46597, CVE-2026-46598, CVE-2026-46595,
+  CVE-2026-39835 (bsc#1266049)
+  Update golang.org/x/crypto to v0.52.0.
+
+-------------------------------------------------------------------
+Tue Apr 21 12:30:08 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Initial version of kit: 0.56.1
