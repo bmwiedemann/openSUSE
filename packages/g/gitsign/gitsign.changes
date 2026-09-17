@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:15:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.17.1:
+  * Print "Generating ephemeral keys..." during keyless identity flow (#852)
+
+-------------------------------------------------------------------
 Thu Jul 30 05:37:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.17.0:
