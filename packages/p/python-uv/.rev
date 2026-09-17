@@ -3224,4 +3224,19 @@ aarch64 build GREEN, source_validator/lint/guard clean.
 </comment>
     <requestid>1378145</requestid>
   </revision>
+  <revision rev="124" vrev="1">
+    <srcmd5>22cb0bc51f7800cbb0906eb7fa330096</srcmd5>
+    <version>0.12.15</version>
+    <time>1789651539</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.15:
+  * Restore uv pip install --system and --target on symlink
+    destinations (regression from 0.12.14)
+  * Batch HTTP cache writes for faster cold-cache resolution
+    and revalidation
+  * Refresh the vendored crates (synstructure 0.14 is new;
+    clap_complete, rustix, zlib-rs and others move forward);
+    the licence set is unchanged</comment>
+    <requestid>1378555</requestid>
+  </revision>
 </revisionlist>

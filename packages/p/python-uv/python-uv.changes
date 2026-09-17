@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:58:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.15:
+  * Restore uv pip install --system and --target on symlink
+    destinations (regression from 0.12.14)
+  * Batch HTTP cache writes for faster cold-cache resolution
+    and revalidation
+  * Refresh the vendored crates (synstructure 0.14 is new;
+    clap_complete, rustix, zlib-rs and others move forward);
+    the licence set is unchanged
+
+-------------------------------------------------------------------
 Tue Sep 15 10:09:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.14:
