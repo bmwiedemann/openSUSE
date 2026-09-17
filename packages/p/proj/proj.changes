@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:33:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 9.9.0:
+  * tinshift: support TIN GeoPackage files
+  * Transverse Mercator Zoned Grid System (EPSG:32600/32700)
+  * Seismic bin grid methods (EPSG:9666 and EPSG:1049)
+  * IVEA DSEA, hourglass, interrupted and Snyder
+    polyhedral projections
+  * Add proj_create_linear_3D_affine_parametric_conversion()
+    and proj_crs_is_dynamic(); DerivedProjectedCRS
+    registration
+  * Database: update to EPSG v13.102
+  * Limit JSON parse recursion to avoid stack overflow
+    on hostile data
+  * Thread-safe time parsing and leap-year fix
+  * Raise CMake minimum from 3.16 to 3.22.1
+- Update proj-data to 1.25:
+  * Colombian geoid model QGeoidCOL2023
+  * Greenland GLLAT/GLMSL 2025 and Norwegian HREF2025A
+    grids
+- Add proj-data-co subpackage for the Colombia grids
+
+-------------------------------------------------------------------
 Tue Jun  2 18:45:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Drop the dead gcc13 fallback and the matching %build compiler

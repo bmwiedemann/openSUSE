@@ -16,19 +16,19 @@
 #
 
 
-%define data_version 1.24
+%define data_version 1.25
 %define sover   25
 %define libname lib%{name}%{sover}
 Name:           proj
-Version:        9.8.1
+Version:        9.9.0
 Release:        0
 Summary:        Cartographic projection software
 License:        MIT
 URL:            https://proj.org/
-# Download from GitHub, osgeo.org appears to be slow and flaky at the moment
+# Library tarball from GitHub; proj-data 1.25 has no GitHub release asset yet
 Source0:        https://github.com/OSGeo/PROJ/releases/download/%{version}/%{name}-%{version}.tar.gz
-Source1:        https://github.com/OSGeo/PROJ-data/releases/download/%{data_version}.0/%{name}-data-%{data_version}.tar.gz
-BuildRequires:  cmake >= 3.16
+Source1:        https://download.osgeo.org/proj/%{name}-data-%{data_version}.tar.gz
+BuildRequires:  cmake >= 3.22.1
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig >= 0.9.0
 BuildRequires:  sqlite3
@@ -90,6 +90,7 @@ License:        MIT
 %data_subpkg -c br -n Brasil
 %data_subpkg -c ca -n Canada
 %data_subpkg -c ch -n Switzerland
+%data_subpkg -c co -n Colombia
 %data_subpkg -c de -n Germany
 %data_subpkg -c dk -n Denmark -e DK
 %data_subpkg -c es -n Spain
