@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:14:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.14.1~git.20260723:
+  * Fix c_len buffer overflow on crafted Huffman tree data
+  * Support C23 (prototypes, parameter lists)
+  * Fix build with autoconf 2.72
+  * Fix many clang warnings (const qualifiers, format, prototypes)
+  * Improve kanji-code specification (#42)
+  * Fix infinite loop on EOF at overwrite prompt (#43)
+  * Replace egrep with grep -E in testsuite
+  * Update lha.1 man page
+- Drop lha-gcc15.patch (fixed upstream)
+
+-------------------------------------------------------------------
 Thu Jun 19 10:28:23 UTC 2025 - pgajdos@suse.com
 
 - added patches

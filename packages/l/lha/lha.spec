@@ -1,7 +1,7 @@
 #
 # spec file for package lha
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,12 @@
 
 
 Name:           lha
-Version:        1.14.1~git.20230329
+Version:        1.14.1~git.20260723
 Release:        0
 Summary:        Pack Program
 License:        SUSE-Public-Domain
 URL:            http://lha.sourceforge.jp/
 Source:         %{name}-%{version}.tar.gz
-# fix build with gcc15
-Patch0:          lha-gcc15.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 # Conflict with another lha implementation:
