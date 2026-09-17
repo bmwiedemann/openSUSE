@@ -1540,4 +1540,18 @@ Please note that the boo#1226676 fix does not completely fix the issue on its ow
     <comment>- drop unconditional calibrate BuildRequires</comment>
     <requestid>1351231</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>b5861e003794d711a750bf590d0c397f</srcmd5>
+    <version>2.1.10</version>
+    <time>1789650973</time>
+    <user>anag_factory</user>
+    <comment>- upgrade to version 2.1.10
+  * calibrate: measure per-cpu requirements 
+  * kdumptool calibrate: take KDUMP_CPUS into account for PPC
+  * PPC: round up KDUMP_CPUS on SMT systems to nearest threads-per-cpu 
+  * Set default KDUMP_CPUs to 4 (jsc#PED-16732, bsc#1239999)
+  * add KDUMP_USE_CMA: experimental support for CMA reservation (jsc#PED-14553)
+- update calibrate values</comment>
+    <requestid>1378408</requestid>
+  </revision>
 </revisionlist>
