@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 16 22:14:02 UTC 2026 - Libor Pechacek <lpechacek@gmx.com>
+
+- Fix build tests after GEOS update to 3.15
+  Added patches
+    TST-change-test_remove_repeated_points_invalid_resul.patch
+    TST-fix-test_set_precision_collapse-with-normalized-.patch
+    TST_update_tests_for_GEOS_3_15.patch
+
+-------------------------------------------------------------------
 Wed Mar 25 09:20:28 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
 
 - update to 2.1.2

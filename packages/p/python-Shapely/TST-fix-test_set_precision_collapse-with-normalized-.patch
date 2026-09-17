@@ -1,0 +1,27 @@
+From 703df27ec61bef4e2ebacfc791c0c01947ae47a8 Mon Sep 17 00:00:00 2001
+From: Mike Taves <mwtoews@gmail.com>
+Date: Mon, 13 Apr 2026 20:30:54 +1200
+Subject: [PATCH] TST: fix test_set_precision_collapse with normalized
+ geometries (#2433)
+
+---
+ shapely/tests/test_geometry.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/shapely/tests/test_geometry.py
++++ b/shapely/tests/test_geometry.py
+@@ -612,12 +612,8 @@ def test_set_precision_grid_size_nan():
+ def test_set_precision_collapse(geometry, mode, expected):
+     """Lines and polygons collapse to empty geometries if vertices are too close"""
+     actual = shapely.set_precision(geometry, 1, mode=mode)
+-    assert_geometries_equal(
+-        # force to 2D because of various dimension issues; GEOS GH-1152
+-        shapely.force_2d(actual),
+-        expected,
+-        normalize=shapely.geos_version == (3, 9, 0),
+-    )
++    # force to 2D because of various dimension issues; GEOS GH-1152
++    assert_geometries_equal(shapely.force_2d(actual), expected, normalize=True)
+ 
+ 
+ def test_set_precision_intersection():

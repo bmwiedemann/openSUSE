@@ -1,0 +1,77 @@
+From 639ff48319ac008841f02be597fd5fae3ddb4f23 Mon Sep 17 00:00:00 2001
+From: Joris Van den Bossche <jorisvandenbossche@gmail.com>
+Date: Wed, 29 Jul 2026 08:40:41 +0200
+Subject: [PATCH] TST: update tests for upstream changes in GEOS 3.15 (#2473)
+
+---
+ shapely/tests/legacy/test_split.py | 13 +++++++++++++
+ shapely/tests/test_constructive.py |  6 ++++--
+ 2 files changed, 17 insertions(+), 2 deletions(-)
+
+--- a/shapely/tests/legacy/test_split.py
++++ b/shapely/tests/legacy/test_split.py
+@@ -2,6 +2,7 @@ import unittest
+ 
+ import pytest
+ 
++from shapely import geos_version
+ from shapely.errors import GeometryTypeError
+ from shapely.geometry import (
+     LineString,
+@@ -146,6 +147,9 @@ class TestSplitLine(TestSplitGeometry):
+         splitter = MultiPoint([(1, 1), (1.5, 1.5), (1, 1)])
+         self.helper(self.ls, splitter, 3)
+ 
++    @pytest.mark.xfail(
++        geos_version >= (3, 15, 0), reason="TODO split with line broken in GEOS 3.15"
++    )
+     def test_split_line_with_line(self):
+         # crosses at one point --> return 2 segments
+         splitter = LineString([(0, 1), (1, 0)])
+@@ -174,6 +178,9 @@ class TestSplitLine(TestSplitGeometry):
+         assert splitter.touches(self.ls)
+         self.helper(self.ls, splitter, 2)
+ 
++    @pytest.mark.xfail(
++        geos_version >= (3, 15, 0), reason="TODO split with line broken in GEOS 3.15"
++    )
+     def test_split_line_with_multiline(self):
+         # crosses at one point --> return 2 segments
+         splitter = MultiLineString([[(0, 1), (1, 0)], [(0, 0), (2, -2)]])
+@@ -196,6 +203,9 @@ class TestSplitLine(TestSplitGeometry):
+         splitter = MultiLineString([[(0, 1), (0, 2)], [(1, 0), (2, 0)]])
+         self.helper(self.ls, splitter, 1)
+ 
++    @pytest.mark.xfail(
++        geos_version >= (3, 15, 0), reason="TODO split with line broken in GEOS 3.15"
++    )
+     def test_split_line_with_polygon(self):
+         # crosses at two points --> return 3 segments
+         splitter = Polygon([(1, 0), (1, 2), (2, 2), (2, 0), (1, 0)])
+@@ -213,6 +223,9 @@ class TestSplitLine(TestSplitGeometry):
+         )
+         self.helper(self.ls, splitter, 4)
+ 
++    @pytest.mark.xfail(
++        geos_version >= (3, 15, 0), reason="TODO split with line broken in GEOS 3.15"
++    )
+     def test_split_line_with_multipolygon(self):
+         poly1 = Polygon(
+             [(0, 0), (2, 0), (2, 2), (0, 2), (0, 0)]
+--- a/shapely/tests/test_constructive.py
++++ b/shapely/tests/test_constructive.py
+@@ -199,10 +199,12 @@ def test_make_valid_none():
+     "geom,expected",
+     [
+         (point, point),  # a valid geometry stays the same (but is copied)
+-        # an L shaped polygon without area is converted to a multilinestring
++        # an L shaped polygon without area is converted to a (multi)linestring
+         (
+             Polygon([(0, 0), (1, 1), (1, 2), (1, 1), (0, 0)]),
+-            MultiLineString([((1, 1), (1, 2)), ((0, 0), (1, 1))]),
++            LineString([(0, 0), (1, 1), (1, 2)])
++            if shapely.geos_version >= (3, 15, 0)
++            else MultiLineString([((1, 1), (1, 2)), ((0, 0), (1, 1))]),
+         ),
+         # a polygon with self-intersection (bowtie) is converted into polygons
+         (

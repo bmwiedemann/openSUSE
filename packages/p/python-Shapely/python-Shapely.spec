@@ -24,6 +24,12 @@ Summary:        Geospatial geometries, predicates, and operations
 License:        BSD-3-Clause
 URL:            https://github.com/shapely/shapely
 Source:         https://files.pythonhosted.org/packages/source/s/shapely/shapely-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM TST_update_tests_for_GEOS_3_15.patch -- based on commit 639ff48319ac008841f02be597fd5fae3ddb4f23
+Patch0:         TST_update_tests_for_GEOS_3_15.patch
+# PATCH-FIX-UPSTREAM TST-fix-test_set_precision_collapse-with-normalized-.patch -- based on commit 703df27ec61bef4e2ebacfc791c0c01947ae47a8
+Patch1:         TST-fix-test_set_precision_collapse-with-normalized-.patch
+# PATCH-FIX-UPSTREAM TST-change-test_remove_repeated_points_invalid_resul.patch -- based on commit 9cca2e074cd9f695a99e3c884919eb18f99328d6
+Patch2:         TST-change-test_remove_repeated_points_invalid_resul.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel >= 3.8}
 BuildRequires:  %{python_module numpy-devel >= 1.25}
@@ -58,7 +64,7 @@ but can be readily integrated with packages that are like WorldMill
 and pyproj.
 
 %prep
-%autosetup -n shapely-%{version}
+%autosetup -p 1 -n shapely-%{version}
 
 %build
 CFLAGS="%{optflags} `geos-config --cflags` LDFLAGS=`geos-config --clibs`"

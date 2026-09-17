@@ -1,0 +1,27 @@
+From 9cca2e074cd9f695a99e3c884919eb18f99328d6 Mon Sep 17 00:00:00 2001
+From: Mike Taves <mwtoews@gmail.com>
+Date: Fri, 12 Dec 2025 20:53:06 +1300
+Subject: [PATCH] TST: change test_remove_repeated_points_invalid_result for
+ GEOS 3.15 (#2366)
+
+---
+ shapely/tests/test_constructive.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+--- a/shapely/tests/test_constructive.py
++++ b/shapely/tests/test_constructive.py
+@@ -474,8 +474,12 @@ def test_remove_repeated_points(geom, ex
+ def test_remove_repeated_points_invalid_result(geom, tolerance):
+     # Requiring GEOS 3.12 instead of 3.11
+     # (GEOS 3.11 had a bug causing this to intermittently not fail)
+-    with pytest.raises(shapely.GEOSException, match="Invalid number of points"):
+-        shapely.remove_repeated_points(geom, tolerance)
++    if shapely.geos_version >= (3, 15, 0):
++        result = shapely.remove_repeated_points(geom, tolerance)
++        assert result.wkt == "POLYGON EMPTY"
++    else:
++        with pytest.raises(shapely.GEOSException, match="Invalid number of points"):
++            shapely.remove_repeated_points(geom, tolerance)
+ 
+ 
+ @pytest.mark.skipif(shapely.geos_version < (3, 11, 0), reason="GEOS < 3.11")
