@@ -56,9 +56,8 @@ echo "DONE preparing the webassets"
 
 echo "##########"
 echo "Vendoring the go modules"
-patch -i "$working_directory/bump-x_net.patch" -p1 || exit 30
 pushd collector/ || exit 31
-go mod download || exit 33
+go mod download || exit 34
 go mod vendor || exit 35
 echo "Verifying"
 go mod verify || exit 37
