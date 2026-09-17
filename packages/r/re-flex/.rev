@@ -95,4 +95,18 @@ Other packaging changes:
   now derives the soversion from the project version instead of hardcoding it.</comment>
     <requestid>1374117</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>5819a05f4123acdeb48f11cf190f304a</srcmd5>
+    <version>6.5.0</version>
+    <time>1789651186</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 6.5.0:
+  * fix an extra byte inserted when converting file input encodings
+    to UTF-8 at a buffer-window boundary; CP437 preserves LF/CR
+  * fix reflex -i (case-insensitive) inverted character classes in
+    non-Unicode mode that produced a syntax error (#246)
+- Rename libreflex6_4 to libreflex6_5 and libreflexmin6_4 to
+  libreflexmin6_5: soversion tracks major.minor</comment>
+    <requestid>1378278</requestid>
+  </revision>
 </revisionlist>

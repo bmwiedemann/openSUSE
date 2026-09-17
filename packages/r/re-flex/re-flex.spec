@@ -28,17 +28,18 @@
 
 # upstream promises no ABI stability between releases (its CMake package
 # version file is ExactVersion), so the soversion tracks major.minor
-%define soversion 6.4
-%define sover     6_4
+%define soversion 6.5
+%define sover     6_5
 Name:           re-flex
-Version:        6.4.0
+Version:        6.5.0
 Release:        0
 Summary:        C++ regex library and lexical analyzer generator with Unicode support
 License:        BSD-3-Clause
 URL:            https://www.genivia.com/doc/reflex/html/
 Source:         %{name}-%{version}.tar.xz
-# ship only the shared libreflex/libreflexmin and give them a soversion;
-# upstream's CMake build sets none and also installs the static archives
+# PATCH-FIX-OPENSUSE reflex-shared-soversion.patch -- ship only the
+# shared libreflex/libreflexmin and give them a soversion; upstream's
+# CMake build sets none and also installs the static archives
 Patch0:         reflex-shared-soversion.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake

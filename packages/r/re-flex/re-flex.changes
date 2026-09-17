@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:28:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.5.0:
+  * fix an extra byte inserted when converting file input encodings
+    to UTF-8 at a buffer-window boundary; CP437 preserves LF/CR
+  * fix reflex -i (case-insensitive) inverted character classes in
+    non-Unicode mode that produced a syntax error (#246)
+- Rename libreflex6_4 to libreflex6_5 and libreflexmin6_4 to
+  libreflexmin6_5: soversion tracks major.minor
+
+-------------------------------------------------------------------
 Thu Aug 27 18:26:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.4.0:
