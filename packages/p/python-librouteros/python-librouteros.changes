@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:27:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.2.2
+  * Parse RouterOS version strings.
+  * Close the transport when login fails in connect().
+  * Fix file-read offset advancing.
+  * Return an empty id from Path.add when RouterOS omits =ret=.
+  * Close the transport when login fails in connect().
+
+-------------------------------------------------------------------
 Tue Sep  8 06:12:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.2.1
