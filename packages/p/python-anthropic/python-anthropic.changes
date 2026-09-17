@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:25:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.0:
+  * beta: compaction parameter and signed compaction blocks; web
+    fetch tool gains url_sources
+  * user-profile methods take workspace_id; data-residency geo
+    fields become enums
+  * client supports async credential token providers
+  * honour Retry-After values above 60s and ignore invalid ones;
+    async client retries connection errors
+  * require anyio >= 4.1.0
+
+-------------------------------------------------------------------
 Fri Sep 11 06:50:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.0:

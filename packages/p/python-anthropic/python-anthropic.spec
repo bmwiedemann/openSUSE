@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-anthropic
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        The official Python library for the Anthropic API
 # Legal-Review-Notice: ships vendored httpx_aiohttp (BSD-3-Clause)
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-anyio >= 3.5.0
+Requires:       python-anyio >= 4.1.0
 Requires:       python-docstring-parser >= 0.15
 Requires:       python-httpx2 >= 2.0.0
 Requires:       python-jiter >= 0.4.0
@@ -40,7 +40,7 @@ Requires:       python-sniffio >= 1
 Requires:       python-typing_extensions >= 4.14
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module anyio >= 3.5.0}
+BuildRequires:  %{python_module anyio >= 4.1.0}
 BuildRequires:  %{python_module docstring-parser >= 0.15}
 BuildRequires:  %{python_module httpx2 >= 2.0.0}
 BuildRequires:  %{python_module jiter >= 0.4.0}

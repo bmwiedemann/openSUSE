@@ -218,4 +218,20 @@ requires_dist floors already in spec). Local native aarch64
 build green, source_validator clean.</comment>
     <requestid>1377312</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ffbe4fa154f05de3af18629b8baee96c</srcmd5>
+    <version>1.6.0</version>
+    <time>1789651182</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.6.0:
+  * beta: compaction parameter and signed compaction blocks; web
+    fetch tool gains url_sources
+  * user-profile methods take workspace_id; data-residency geo
+    fields become enums
+  * client supports async credential token providers
+  * honour Retry-After values above 60s and ignore invalid ones;
+    async client retries connection errors
+  * require anyio &gt;= 4.1.0</comment>
+    <requestid>1378286</requestid>
+  </revision>
 </revisionlist>
