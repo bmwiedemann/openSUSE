@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.26:
+  * build(deps): bump github.com/stretchr/testify from 1.11.1 to
+    1.12.1 (#2050)
+  * build(deps): bump github.com/package-url/packageurl-go (#2052)
+  * build(deps): bump cloud.google.com/go/storage from 1.64.0 to
+    1.65.0 (#2053)
+  * build(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.2
+    (#2059)
+  * build(deps): bump github.com/containerd/containerd/v2 (#2060)
+
+-------------------------------------------------------------------
 Fri Aug 14 05:24:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.25:
