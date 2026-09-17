@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:34:53 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build for Leap 16. shadowsocks-libev needs mbedtls-devel, not
+  mbedtls-3-devel
+
+-------------------------------------------------------------------
 Wed Jun 24 15:00:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build against the mbedtls 3.6 LTS line: switch BuildRequires from

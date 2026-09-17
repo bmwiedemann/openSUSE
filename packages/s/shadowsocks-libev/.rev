@@ -247,4 +247,13 @@
     <comment>Switch BuildRequires mbedtls-devel -&gt; mbedtls-3-devel. mbedtls 4.x (now in Factory) removed the legacy mbedtls_cipher_* abstraction layer that shadowsocks-libev's stream.c uses, so track the mbedtls 3.6 LTS package (mbedtls-3) which keeps the stable public API. NOTE: will be unresolvable until mbedtls-3 lands in Factory (currently in staging). (forwarded request 1361606 from pluskalm)</comment>
     <requestid>1361916</requestid>
   </revision>
+  <revision rev="29" vrev="4">
+    <srcmd5>90243154cdf00cb197489f2f706071f2</srcmd5>
+    <version>3.3.6</version>
+    <time>1789651540</time>
+    <user>anag_factory</user>
+    <comment>- Fix build for Leap 16. shadowsocks-libev needs mbedtls-devel, not
+  mbedtls-3-devel (forwarded request 1378611 from hillwood)</comment>
+    <requestid>1378612</requestid>
+  </revision>
 </revisionlist>

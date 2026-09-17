@@ -64,7 +64,6 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  libapparmor-devel
-BuildRequires:  mbedtls-3-devel
 BuildRequires:  pkgconfig
 BuildRequires:  selinux-policy-devel
 BuildRequires:  shadowsocks-common-selinux
@@ -75,6 +74,11 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libsodium) >= 1.0.4
+%if 0%{?suse_version} > 1600
+BuildRequires:  mbedtls-3-devel
+%else
+BuildRequires:  pkgconfig(mbedtls)
+%endif
 BuildRequires:  pkgconfig(openssl)
 Requires(pre):  shadowsocks-sysuser
 Requires(pre):  shadow
