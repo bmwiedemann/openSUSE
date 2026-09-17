@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 13:37:59 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.52.6:
+  + Security fixes for local privilege escalation to root
+    involving:
+    - Quote break-out via the 'user' string property written into
+      /run/nm-l2tp-<uuid>/ppp-options (CVE-2026-75131)
+    - Partial strtol() on mtu/mru/mrru properties allow trailing
+      string injection written into /run/nm-l2tp-<uuid>/ppp-options
+      (CVE-2026-75883)
+* Updated translations.
+
+-------------------------------------------------------------------
 Thu Aug 20 07:09:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.52.4:
