@@ -16,7 +16,7 @@
 #
 
 
-%define lname libSPIRV-Tools-2026_3_rc1
+%define lname libSPIRV-Tools-2026_4_rc2
 
 # Leap 15 and SLES 15 defaults to GCC 7, which does not have stable C++17 ABI.
 # See https://bugzilla.suse.com/show_bug.cgi?id=1235697
@@ -25,8 +25,8 @@
 %endif
 
 Name:           spirv-tools
-Version:        2026.3~rc1
-%define rversion 2026.3.rc1
+Version:        2026.4~rc2
+%define rversion 2026.4.rc2
 Release:        0
 Summary:        API and commands for processing SPIR-V modules
 License:        Apache-2.0
@@ -42,7 +42,7 @@ BuildRequires:  gcc%{?gcc_version}-c++ >= 9
 BuildRequires:  pkg-config
 BuildRequires:  python3-base
 BuildRequires:  python3-xml
-BuildRequires:  spirv-headers >= 1.6.4+sdk350.1+g26
+BuildRequires:  spirv-headers >= 1.202609.0
 
 %description
 The package includes an assembler, binary module parser,

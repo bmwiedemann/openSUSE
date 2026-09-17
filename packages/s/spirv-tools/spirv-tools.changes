@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 12 19:58:39 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.4~rc2
+  * Support for SPV_QCOM_image_processing3
+  * opt: Fix crash in strip-debug with non-semantic info
+  * Fix UAF when eliminating dead functions
+  * opt: Fix invalid vector constant folding size
+  * opt: Fix invalid OpSelect folding in spirv-opt
+  * Hardened spirv-opt against a few potential ID overflows
+
+-------------------------------------------------------------------
 Thu Jul 16 11:01:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.3~rc1
