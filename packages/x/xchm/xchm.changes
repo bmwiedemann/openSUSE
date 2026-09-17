@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:41:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.40
+  * Fixed a bug in character encoding detection for the text
+    appearing in the contents tree.
+
+-------------------------------------------------------------------
 Tue Apr 14 12:10:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.39
