@@ -61,10 +61,10 @@ Tue Sep  1 10:23:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
       @satheeshaGowda (#4104)
     - Reject invalid slot import ranges when loading an RDB, so
       corrupted files can no longer create bad migration jobs by
-      @enjoy-binbin (#4229)
+      @enjoy-binbin (#4229) (CVE-2026-86227, boo#1279804)
     - Reject RDB slot import records with an invalid job name
       length, preventing an out-of-bounds read at startup by
-      @quanyeyang (#4210)
+      @quanyeyang (#4210) (CVE-2026-85522, boo#1279803)
     - MOVE and COPY now check ACL access to the current database,
       so users can no longer exfiltrate keys from an unauthorized
       DB by @cjx-zar (#4155)
