@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:34:48 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260917.eab338e3:
+  * docs(ui_node): document node maintenance behavior
+  * feat(ui_node): support local-node default and multiple nodes for `node maintenance`
+  * feat(ui_node): deprecate `node ready` command
+  * feat(ui_node): add on|off option to `node maintenance` command
+
+-------------------------------------------------------------------
+Wed Sep 16 08:45:51 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20260916.8f04e767:
+  * test(features): should not inherit stdin in feature tests
+  * fix(sh): ShellUtils.get_stdout_stderr need to handle empty input_s differently to unspecified input_s
+  * refactor(utils): combine LoggerUtils.confirm into utils.ask (#2196)
+  * test(sbd): mock time.sleep in _fix_fence_sbd tests
+  * feat(qdevice): validate QNetd network interface separation from Corosync links (#2184)
+  * feat(bootstrap): allow specifying default answer in confirm (#2184)
+  * refactor(bootstrap): rename `Arguments.args` to `Arguments.remaining_args`
+  * refactor(sbd): avoid passing `diskless_sbd` around with `GlobalVariables`
+  * refactor(bootstrap): rename memory state-populating helpers to populate_*
+  * refactor(bootstrap): avoid modifying parsed arguments when determining IP version
+  * refactor(bootstrap): split Context class into Arguments and GlobalVariables
+  * style(sbd): docstring should use triple double quotes
+  * refactor(qdevice): introduce callback for issuing validation messages and overrides
+
+-------------------------------------------------------------------
+Wed Sep 09 09:27:14 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260909.688b0680:
+  * fix(ui_resource): validate operation and interval in resource trace
+  * refactor(xmlutil): use crm_mon XML for resource location
+  * refactor(xmlutil): rename CrmMonXmlParser to CrmMonXMLParser
+
+-------------------------------------------------------------------
+Fri Sep 04 10:57:57 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260904.7193bcdd:
+  * docs(sbd): document SBD_DELAY_START set to no for bare metal environment
+
+-------------------------------------------------------------------
+Tue Sep 01 09:43:33 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260901.e016e85f:
+  * feat(report): collect OCFS2 volume details
+
+-------------------------------------------------------------------
+Tue Sep 01 07:55:39 UTC 2026 - nicholas.yang@suse.com
+
+- Update to version 5.1.0+20260901.0bb7784b:
+  * ci(workflow): fix weekly cache key week number mismatch
+
+-------------------------------------------------------------------
 Fri Aug 28 06:23:52 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260828.be794583:
