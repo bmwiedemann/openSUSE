@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:25:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.8.2:
+  * Let libjpeg manage screenshot memory
+  * Write to stdout when the output path is "-"
+  * Require C++17 (needed for ICU >= 76) and CMake 3.10
+  * Stop linking slop against GLX and X11
+- Drop use_cxx17_standard.patch: C++17 is now upstream
+- Drop unused gengetopt and pkgconfig(gl) BuildRequires
+
+-------------------------------------------------------------------
 Tue Jun 10 12:22:14 UTC 2025 - Nathan Cutler <ncutler@suse.com>
 
 - Apply "use_cxx17_standard.patch" on 16.0, which is now shipping

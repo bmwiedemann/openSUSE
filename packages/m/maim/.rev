@@ -74,4 +74,18 @@
     <comment></comment>
     <requestid>1284726</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>3d48acfbe4d85a176502965d251f0ce4</srcmd5>
+    <version>5.8.2</version>
+    <time>1789651446</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.8.2:
+  * Let libjpeg manage screenshot memory
+  * Write to stdout when the output path is &quot;-&quot;
+  * Require C++17 (needed for ICU &gt;= 76) and CMake 3.10
+  * Stop linking slop against GLX and X11
+- Drop use_cxx17_standard.patch: C++17 is now upstream
+- Drop unused gengetopt and pkgconfig(gl) BuildRequires</comment>
+    <requestid>1378452</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package maim
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,22 +16,18 @@
 #
 
 
-# See also http://en.opensuse.org/openSUSE:Specfile_guidelines
 Name:           maim
-Version:        5.8.0
+Version:        5.8.2
 Release:        0
 Summary:        Flexible screenshotting utility
 License:        GPL-3.0-or-later
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/naelstrof/maim
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  cmake >= 3.7
+BuildRequires:  cmake >= 3.10
 BuildRequires:  gcc-c++
-BuildRequires:  gengetopt
-BuildRequires:  glm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  slop-devel >= 7
-BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glm)
 BuildRequires:  pkgconfig(icu-uc)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng)
@@ -40,10 +36,6 @@ BuildRequires:  pkgconfig(xcomposite)
 BuildRequires:  pkgconfig(xfixes)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(zlib)
-%if 0%{?suse_version} >= 1600
-# We must use the C++17 standard if we're using ICU >= 75
-Patch0:         use_cxx17_standard.patch
-%endif
 
 %description
 maim (Make Image) is a utility that takes screenshots of the desktop
@@ -51,7 +43,7 @@ using EGL. It is meant to overcome shortcomings of the "scrot"
 utility and performs better in several ways.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %cmake
