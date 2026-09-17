@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:26:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.62:
+  * Terraform local module sources resolve to directory-scoped
+    module nodes; Lua bare require() emits imports
+  * Ruby implicit-self calls resolve up the inheritance chain;
+    Markdown inline code spans emit unique-symbol references
+  * TOKENS.md-style prose is no longer treated as a credential
+    dump; sourceless external stubs no longer get spurious
+    calls edges
+  * module-level IIFE/callback calls attributed to the file;
+    JS destructured exports emit one node per name
+  * C# cross-repo merge respects namespace/using scoping
+  * PreToolUse guard hooks time out; Unicode path segments
+    keep stable ids; git guard-hooks honor GRAPHIFY_OUT
+  * cohesion_score excludes self-loops; graph.json replace
+    uses the atomic-write fallback; semantic-cache recovers
+    malformed source_file by basename; file-only communities
+    counted as thin in the report
+- Ignore tests/test_terraform_modules.py (needs unpackaged
+  python-tree-sitter-hcl, same as test_terraform.py)
+
+-------------------------------------------------------------------
 Sun Sep 13 16:55:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.61:

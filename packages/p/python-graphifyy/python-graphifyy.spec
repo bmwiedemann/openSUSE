@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-graphifyy
-Version:        0.9.61
+Version:        0.9.62
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT
@@ -221,6 +221,8 @@ sed -i '1{/^#!/d}' graphify/callflow_html.py
 # for the installed package
 # the additionally ignored files need network access (DNS) or an
 # unsandboxed HOME; both are unavailable in the build environment
+# test_terraform.py / test_terraform_modules.py need python-tree-sitter-hcl
+# (optional [terraform] extra), not in Factory
 # test_label_communities_batches_when_over_batch_size asserts batch
 # completion order [100, 100, 50], but label_communities runs batches
 # concurrently (max_concurrency=4), so the observed order is racy
@@ -233,7 +235,7 @@ sed -i '1{/^#!/d}' graphify/callflow_html.py
 # slower hosts exceed it and the file wrongly stays unqueued (upstream
 # test-fragility, same result on 0.9.55: test and detect.py identical)
 export PYTEST_ADDOPTS="--basetemp=%{_tmppath}/gfytmp"
-%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload or test_same_size_rewrite_in_one_tick_is_requeued)"
+%pytest --ignore tests/test_skillgen.py --ignore tests/test_hooks.py --ignore tests/test_terraform.py --ignore tests/test_terraform_modules.py --ignore tests/test_security.py --ignore tests/test_home_sandbox.py --ignore tests/test_manifest_ingest.py --ignore tests/test_llm_backends.py --ignore tests/test_install_strings.py --ignore tests/test_detect.py -k "not (anthropic or openai or gemini or bedrock or ollama or test_label_communities_batches_when_over_batch_size or test_built_wheel_ships_the_full_skill_payload or test_same_size_rewrite_in_one_tick_is_requeued)"
 
 %pre
 %python_libalternatives_reset_alternative graphify

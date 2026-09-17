@@ -228,4 +228,30 @@ Native aarch64 build green (4576 passed per flavor),
 rpmlint 0 errors 0 badness.</comment>
     <requestid>1377758</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>9fe7f0e9a779eeca686813b810cb8502</srcmd5>
+    <version>0.9.62</version>
+    <time>1789651182</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.62:
+  * Terraform local module sources resolve to directory-scoped
+    module nodes; Lua bare require() emits imports
+  * Ruby implicit-self calls resolve up the inheritance chain;
+    Markdown inline code spans emit unique-symbol references
+  * TOKENS.md-style prose is no longer treated as a credential
+    dump; sourceless external stubs no longer get spurious
+    calls edges
+  * module-level IIFE/callback calls attributed to the file;
+    JS destructured exports emit one node per name
+  * C# cross-repo merge respects namespace/using scoping
+  * PreToolUse guard hooks time out; Unicode path segments
+    keep stable ids; git guard-hooks honor GRAPHIFY_OUT
+  * cohesion_score excludes self-loops; graph.json replace
+    uses the atomic-write fallback; semantic-cache recovers
+    malformed source_file by basename; file-only communities
+    counted as thin in the report
+- Ignore tests/test_terraform_modules.py (needs unpackaged
+  python-tree-sitter-hcl, same as test_terraform.py)</comment>
+    <requestid>1378291</requestid>
+  </revision>
 </revisionlist>
