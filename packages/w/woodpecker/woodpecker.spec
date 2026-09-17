@@ -18,15 +18,12 @@
 
 %define cli_package_name woodpecker-cli
 %define cli_executable_name woodpecker-cli
-
 %define agent_package_name woodpecker-agent
 %define agent_executable_name woodpecker-agent
-
 %define server_package_name woodpecker-server
 %define server_executable_name woodpecker-server
-
 Name:           woodpecker
-Version:        3.18.0
+Version:        3.18.1
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0

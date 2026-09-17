@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.18.1:
+  * Bug Fixes
+    - Fix workflow-level when status so failure-only workflows no
+      longer run on success [#7091]
+    - Fix injecting additional variables for substituting [#7077]
+    - Speed up the deduplicate-log-entries migration [#7068]
+    - Use group path instead of name for GitLab membership lookup
+      [#7086]
+    - Log expected log-stream close failures and filtered webhooks
+      at debug instead of error [#7117, #7116]
+    - Add timezone data to docker images [#7093]
+  * Security
+    - Fix docs securityscan [#7094]
+
+-------------------------------------------------------------------
 Fri Aug 28 07:15:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.18.0:
