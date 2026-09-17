@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:23:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.97.5:
+  * [SCAN-177] Purge secret parts from verification cache (#5318)
+  * Add elasticsearch source documentation (#5284)
+  * Add filesystem source documentation (#5285)
+  * Add documentation for CircleCI source (#5268)
+  * perf(engine): lowercase prefilter chunks as ASCII in a pooled
+    buffer (#5291)
+  * Introduce a new optional detector interface that will allow us
+    to verify credentials not in the cache (#5298)
+  * ci: avoid Node 20 BuildPulse action (#5266)
+  * fix(detectors/ngrok): broaden valid bearer tokens matching
+    (#5152)
+  * Postgres: drop non-connection URI params before verifying
+    (#5296)
+  * Adding no-ignore flag to allow reporting of "ignored" secrets
+    (#5297)
+  * Low-memory Git Scanning (#5257)
+  * Clean up use of wasilibs/go-re2 (#5273)
+  * feat(detectors): add Resend detector (#5103)
+  * Object filtering in S3 (#5286)
+  * [INT-942] Add HumioAPIToken detector (#5258)
+  * Make GitHub App installationId optional when scanning all
+    installations (#5275)
+  * Update dependency golangci/golangci-lint to v2.13.2 (#5251)
+  * Update github-actions (#5250)
+  * Update module github.com/rabbitmq/amqp091-go to v1.13.0
+    [SECURITY] (#5274)
+- Update to version 3.97.4:
+  * added tests for twilio detector fixes (#5271)
+  * Improve the `json-enumerator` source (#5265)
+  * Made retry exaustion indeterminate for Twilio secrets and
+    twilioapikeys (#5267)
+- Update to version 3.97.3:
+  * Revert "De-base64 SourceUnit.UnitData in the GitHub Source
+    (#5248)" (#5269)
+  * fix(s3): cut a child context per object so key/size log values
+    don't pile up (#5236)
+- Update to version 3.97.2:
+  * Retry git clone on secondary rate limit (bare 403/429) (#5260)
+  * Update link to Truffle Security documentation (#5256)
+  * Implement Enumerate for the Jenkins source (#5229)
+  * De-base64 SourceUnit.UnitData in the GitHub Source (#5248)
+  * expand result code in pagerduty detector (#5230)
+  * [INS-377] Add V2 for weights and biases detector (#4951)
+  * Add SOURCE_TYPE_AWS_SECRETS_MANAGER source type (#5234)
+  * Update module github.com/aws/smithy-go to v1.27.9 (#5174)
+  * Update aws-sdk-go-v2 monorepo (#5173)
+  * Update github-actions (#5197)
+  * Update github.com/trufflesecurity/ldap-verify digest to aa52b46
+    (#5172)
+  * ci: let Renovate bump the golangci-lint pin in scripts/lint.sh
+    (#5231)
+  * Update dependency trufflesecurity/.github to v1.0.4 (#5228)
+  * detectors/github/v2: differentiate token type in ExtraData
+    (#5223)
+
+-------------------------------------------------------------------
 Fri Aug 28 07:11:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.97.1:
