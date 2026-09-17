@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:27:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.30rc1+git.20250217:
+  * gcc 15 compatibility via prototyped function declarations
+  * Make trigger windows InputOutput so -resurface works
+  * Honor -completeregion* edges when mapping the pointer
+  * Add -win-output and -win-transparent for windows too close
+    to the screen edge
+- Drop x2x-gcc15.patch: adopted upstream
+- Convert _service from mode=disabled to mode=manual
+- Spec cleanup: drop unused pkgconfig(xscrnsaver) and stale
+  CPPFLAGS=-Wno-unprototyped-calls; add gcc, make, autoconf-archive
+
+-------------------------------------------------------------------
 Fri Feb 14 13:00:39 UTC 2025 - pgajdos@suse.com
 
 - fix build with gcc 15

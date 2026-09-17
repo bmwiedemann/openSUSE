@@ -162,4 +162,21 @@ keymap.c and x2x.c seem to make it necessary to license under GPL-2.0+ irrespect
     <comment></comment>
     <requestid>1246440</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>35754f6ee2c39fabcccf8cdcd1ea843f</srcmd5>
+    <version>1.30rc1+git.20250217</version>
+    <time>1789657159</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.30rc1+git.20250217:
+  * gcc 15 compatibility via prototyped function declarations
+  * Make trigger windows InputOutput so -resurface works
+  * Honor -completeregion* edges when mapping the pointer
+  * Add -win-output and -win-transparent for windows too close
+    to the screen edge
+- Drop x2x-gcc15.patch: adopted upstream
+- Convert _service from mode=disabled to mode=manual
+- Spec cleanup: drop unused pkgconfig(xscrnsaver) and stale
+  CPPFLAGS=-Wno-unprototyped-calls; add gcc, make, autoconf-archive</comment>
+    <requestid>1378468</requestid>
+  </revision>
 </revisionlist>
