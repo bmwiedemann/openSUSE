@@ -1,4 +1,109 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:22:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * refactor(build)!: WithCompressedLayerFile takes its value
+    (#2503)
+- Update to version 1.4.0:
+  * feat(build): single-pass layer compression behind
+    WithCompressedLayerFile (#2479)
+
+-------------------------------------------------------------------
+Thu Sep 17 05:12:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.1:
+  * build(deps): bump chainguard.dev/sdk from 0.1.248 to 0.1.257
+    (#2489)
+  * fix: redact runtime repository credentials (#2220)
+  * Typo fix to README.md (#998)
+  * Addressing processor architecture in documentation (#988)
+  * docs(README): add alternative installation method using mise
+    (#1923)
+  * Fix: Respect --log-level flag for SBOM deduplication logs
+    (#1901)
+  * fix(build): clone opts before appending to avoid cross-config
+    stomp in concurrent resolves (#2487)
+- Update to version 1.3.0:
+  * feat(metrics): record compression cache hits and misses (#2486)
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+    (#2474)
+  * build(deps): bump golang.org/x/sys from 0.47.0 to 0.48.0
+    (#2473)
+  * build(deps): bump go.step.sm/crypto from 0.89.0 to 0.90.0
+    (#2475)
+  * build(deps): bump golang.org/x/time from 0.15.0 to 0.16.0
+    (#2472)
+  * build(deps): bump chainguard.dev/sdk from 0.1.245 to 0.1.248
+    (#2476)
+  * build(deps): bump golang.org/x/oauth2 from 0.36.0 to 0.37.0
+    (#2477)
+
+-------------------------------------------------------------------
+Thu Sep 17 05:05:09 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.2.45:
+  * fix(build): reapply pgzip concurrency cap after Reset, fix
+    layer fd leak (#2478)
+  * apk: bound global caches with LRU eviction (#2463)
+  * apk: stop bypassing the resolver cache for superseded indexes
+    (#2462)
+  * build(deps): bump github.com/klauspost/compress from 1.19.2 to
+    1.20.0 (#2470)
+  * build(deps): bump chainguard.dev/sdk from 0.1.228 to 0.1.245
+    (#2469)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.22.0 to 0.22.1 (#2468)
+  * build(deps): bump google.golang.org/api from 0.296.0 to 0.297.0
+    (#2471)
+  * build(deps): bump google.golang.org/api from 0.295.0 to 0.296.0
+    (#2459)
+  * build(deps): bump chainguard.dev/sdk from 0.1.224 to 0.1.228
+    (#2460)
+- Update to version 1.2.44:
+  * build(deps): bump docker/setup-qemu-action from 4.2.0 to 4.3.0
+    (#2461)
+  * apk: keep dir mode bits and ownership in the streaming install
+    path (#2458)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.33 to 1.6.34 (#2457)
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.2 to 0.6.3
+    (#2453)
+  * build(deps): bump step-security/harden-runner from 2.21.0 to
+    2.21.1 (#2452)
+  * erofs: share one inode per hardlink, and fix the stale mode-bit
+    comments (#2422)
+  * build: honor pre-computed ELF metadata during ld.so.cache
+    generation (#2454)
+  * erofs: restore multi-layer splitting, with the bugs review
+    found fixed (#2418)
+  * erofs: small cleanups to erofsmount tool (#2426)
+  * build(deps): bump google.golang.org/api from 0.294.0 to 0.295.0
+    (#2450)
+  * build(deps): bump chainguard.dev/sdk from 0.1.213 to 0.1.224
+    (#2445)
+  * build(deps): bump the codeql group with 2 updates (#2447)
+  * build(deps): bump k8s.io/apimachinery from 0.36.4 to 0.37.0
+    (#2443)
+  * build(deps): bump go.opentelemetry.io/otel from 1.45.0 to
+    1.46.0 (#2446)
+  * build(deps): bump google.golang.org/api from 0.293.0 to 0.294.0
+    (#2442)
+- Update to version 1.2.43:
+  * build: honor an explicitly empty pre-resolved set; refuse
+    foreign-arc… (#2449)
+  * build: install a pre-resolved package list from supplied
+    contents (#2448)
+  * apk: feed installation from an abstract PackageContents (#2441)
+- Update to version 1.2.42:
+  * build(deps): bump chainguard.dev/sdk from 0.1.212 to 0.1.213
+    (#2437)
+  * build(deps): bump chainguard-dev/actions/setup-registry from
+    1.6.32 to 1.6.33 (#2438)
+  * build(deps): bump github.com/google/go-containerregistry from
+    0.21.9 to 0.22.0 (#2436)
+  * sbom: make internal SPDX relationships reproducible (#2439)
+
+-------------------------------------------------------------------
 Fri Aug 28 05:54:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.2.41:
