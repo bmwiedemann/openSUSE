@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:17:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.19.0:
+  * Git DAG: inline graph viewer in the commit list, gravatar
+    flicker/hi-DPI fixes, no more QSslSocket log spam
+  * Commit message reloads from .git/GIT_COLA_MSG on refresh,
+    upstream-branch push option is now persisted
+  * Fetch/Pull/Push dialogs show remote URLs, Branches tool
+    gains hover tooltips, safer diff-editor context menu
+  * Python 3.9 is now the minimum supported version
+  * Diff editor supports word/char intra-line diff modes,
+    git reftable ref storage is supported
+  * Drop obsolete Group tag
+
+-------------------------------------------------------------------
 Fri Jan  2 10:19:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.17.0:

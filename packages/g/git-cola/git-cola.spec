@@ -18,11 +18,10 @@
 
 
 Name:           git-cola
-Version:        4.17.0
+Version:        4.19.0
 Release:        0
 Summary:        A GUI for Git
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Version Control
 URL:            https://git-cola.github.io/
 Source:         https://github.com/%{name}/%{name}/archive/v%{version}.tar.gz
 BuildRequires:  dos2unix
