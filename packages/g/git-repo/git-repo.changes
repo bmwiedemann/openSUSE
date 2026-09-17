@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 09 07:10:49 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- Update to version 2.67:
+  * project: check upstream ref ancestry for non-shallow clones
+  * project: gate the default-branch query by Git version
+  * git_superproject: resolve one negotiation ref directly
+  * upload: reuse the worker current-branch result
+  * version: read describe and date in one Git call
+  * cherry_pick: resolve and read commits in one process
+  * rebase: delegate automatic stashing to Git
+  * git_config: recognize only complete object IDs
+  * sync: tell apart same-path submanifest projects
+  * project: carry current state from the ref snapshot
+  * project: reuse ref OIDs in branch maintenance
+  * project: centralize safe branch and commit resolution
+  * project: reuse loaded refs when resolving HEAD
+  * git_refs: load HEAD with the ref snapshot on Git 2.45
+  * upload: prune ref scans for untouched projects and specific branches
+  * project: read HEAD directly in-memory to avoid subprocesses
+  * sync: skip submodules removed from their parent
+  * sync: fetch submodules after their parent repository
+  * sync: check out submodules at the parent's new revision
+  * project: don't use dest-branch or tags as SHA-1 upstream fallback
+  * hooks: add --fix option to auto-apply hook fixes
+  * Add detailed upload context to Trace2 telemetry
+  * project: allow re-reading submodule gitlinks
+
+-------------------------------------------------------------------
 Tue Aug 11 17:04:07 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - Update to version 2.66.1:
