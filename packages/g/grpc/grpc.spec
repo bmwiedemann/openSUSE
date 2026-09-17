@@ -16,17 +16,18 @@
 #
 
 
-%define lver 51
-%define lverp 1_76
-%define src_install_dir /usr/src/%name
+%define lver 56
+%define lverp 1_84
+%define src_install_dir %_prefix/src/%name
 Name:           grpc
-Version:        1.76.0
+Version:        1.84.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
 Group:          Development/Tools/Building
 URL:            https://grpc.io/
 Source:         https://github.com/grpc/grpc/archive/v%version.tar.gz
+Source1:        https://github.com/grpc/grpc-proto/archive/ec30f589e2519d595688b9a42f88a91bdd6b733f.tar.gz
 Source2:        %name-rpmlintrc
 Patch1:         terminate.patch
 Patch2:         link-failure.patch
@@ -35,15 +36,10 @@ Patch4:         telemetry.patch
 Patch5:         sse.patch
 Patch14:        ARM-Unaligned-access-fixes.patch
 Patch15:        Fix-compilation-on-RHEL-7-ppc64le-gcc-4.8.patch
-Patch16:        grpc_missing_includes.patch
 BuildRequires:  abseil-cpp-devel >= 20240722
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1550
-BuildRequires:  gcc12-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  opencensus-proto-source
 BuildRequires:  pkg-config
 BuildRequires:  pkgconfig(libcares) >= 1.19.1
@@ -99,7 +95,6 @@ in an arena (note: the arena can live in stack or static memory if desired).
 Summary:        Development files for grpc, a HTTP/2 Remote Procedure Call implementation
 Group:          Development/Tools/Building
 Requires:       libgrpc%lver = %version
-Requires:       libgrpc%lverp = %version
 Requires:       libgrpc++%lverp = %version
 Requires:       libupb%lver = %version
 Requires:       pkgconfig(libcares)
@@ -133,6 +128,8 @@ This subpackage contains source code of the gRPC reference implementation.
 
 %prep
 %autosetup -p1
+# github-generated archives do not include submodules
+tar -xzf %SOURCE1 -C third_party/grpc-proto --strip-components=1 --wildcards 'grpc-proto-*/grpc'
 
 find "." -type f -exec grep -l '/usr/bin/python' {} + |
 	xargs -r perl -i -lpe \
@@ -146,16 +143,12 @@ find "." -type f -exec grep -l '/usr/bin/env ' {} + |
 rm -Rf third_party/abseil-cpp/
 
 %build
-%if 0%{?suse_version} < 1600
-export CC=gcc-12
-export CXX=g++-12
-%endif
 %define _lto_cflags %nil
 
 # protoc is invoked strangely; make it happy with this dir or it will assert()
 mkdir -p third_party/protobuf/src
 
-cp -a /usr/src/opencensus-proto third_party/
+cp -a %_prefix/src/opencensus-proto third_party/
 export CFLAGS="%optflags -Wno-error"
 export CXXFLAGS="$CFLAGS"
 find "." -type f -exec grep '/usr/bin/env ' {} + || :
@@ -168,7 +161,7 @@ s="$PWD"
        -DgRPC_PROTOBUF_PROVIDER=package   \
        -DgRPC_RE2_PROVIDER=package        \
        -DgRPC_SSL_PROVIDER=package        \
-       -DZLIB_LIBRARY=%{_libdir}/libz.so  \
+       -DZLIB_LIBRARY="%_libdir/libz.so" \
        -DgRPC_ZLIB_PROVIDER=package \
        -DCMAKE_CXX_STANDARD=17
 %cmake_build

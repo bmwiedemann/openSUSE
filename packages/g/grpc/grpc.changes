@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.84.0:
+  * Core SOVERSION 51 -> 56, C++ SOVERSION 1.76 -> 1.84; rename
+    libgrpc51/libupb51 to libgrpc56/libupb56 and
+    libgrpc1_76/libgrpc++1_76 to libgrpc1_84/libgrpc++1_84
+  * TLS key exchange defaults to post-quantum cryptography
+  * Fix proxy bypass via incorrect no_proxy hostname suffix match
+  * Fix completion queue shutdown race on weak memory models (ARM)
+  * Add SNI override to the C++ channel credentials API
+  * Core upgrades to protobuf 35
+- Drop grpc_missing_includes.patch (fixed upstream)
+- Rebase telemetry.patch and return-values.patch (channelz.h hunk
+  fixed upstream; add missing return in EntityTypeToKind for gcc 15)
+- Drop pre-Leap 16 compiler conditionals
+- Vendor the pinned grpc-proto commit as Source1 (reflection protos
+  moved to that submodule; the main archive ships it empty)
+
+-------------------------------------------------------------------
 Mon Jan 19 18:50:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add sse.patch

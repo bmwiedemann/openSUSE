@@ -706,4 +706,12 @@ fixed in that other package, after which it will trickle down.</comment>
 send to staging:F</comment>
     <requestid>1328141</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>61cd5612ba864a55c2c1764f10cc01ca</srcmd5>
+    <version>1.84.0</version>
+    <time>1789650936</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.84.0:</comment>
+    <requestid>1378180</requestid>
+  </revision>
 </revisionlist>

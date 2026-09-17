@@ -58,9 +58,9 @@ Index: grpc-1.76.0/src/core/channelz/channelz.h
 ===================================================================
 --- grpc-1.76.0.orig/src/core/channelz/channelz.h
 +++ grpc-1.76.0/src/core/channelz/channelz.h
-@@ -173,6 +173,7 @@ class BaseNode : public DualRefCounted<B
-       case EntityType::kResourceQuota:
-         return "resource_quota";
+@@ -181,6 +181,7 @@ class BaseNode : public DualRefCounted<B
+       case EntityType::kMetricsDomainStorage:
+         return "metrics_domain_storage";
      }
 +    return "unknown";
    }
