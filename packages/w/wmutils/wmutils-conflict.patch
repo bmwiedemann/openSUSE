@@ -1,8 +1,8 @@
-Index: core-1.5/Makefile
+Index: core-1.7/Makefile
 ===================================================================
---- core-1.5.orig/Makefile
-+++ core-1.5/Makefile
-@@ -40,6 +40,7 @@ $(OBJ): $(HDR) util.o
+--- core-1.7.orig/Makefile
++++ core-1.7/Makefile
+@@ -43,6 +43,7 @@ $(OBJ): $(HDR) util.o
  install: $(BIN)
  	mkdir -p $(DESTDIR)$(PREFIX)/bin/
  	cp -f $(BIN) $(DESTDIR)$(PREFIX)/bin/
@@ -10,11 +10,11 @@ Index: core-1.5/Makefile
  	cd man; $(MAKE) install
  
  uninstall:
-Index: core-1.5/man/Makefile
+Index: core-1.7/man/Makefile
 ===================================================================
---- core-1.5.orig/man/Makefile
-+++ core-1.5/man/Makefile
-@@ -21,6 +21,7 @@ MAN =           \
+--- core-1.7.orig/man/Makefile
++++ core-1.7/man/Makefile
+@@ -23,6 +23,7 @@ MAN =           \
  install: $(MAN)
  	mkdir -p $(DESTDIR)$(MANPREFIX)/man1/
  	cp -f $(MAN) $(DESTDIR)$(MANPREFIX)/man1/
@@ -22,10 +22,35 @@ Index: core-1.5/man/Makefile
  
  uninstall:
  	@echo "uninstalling manpages"
-Index: core-1.5/man/wtf.1
+Index: core-1.7/man/wmutils.1
 ===================================================================
---- core-1.5.orig/man/wtf.1
-+++ core-1.5/man/wtf.1
+--- core-1.7.orig/man/wmutils.1
++++ core-1.7/man/wmutils.1
+@@ -31,10 +31,10 @@ show window's attributes
+ move the mouse pointer
+ .It wmv
+ move a window
++.It wm_wtf
++focus a window
+ .It wrs
+ resize a window
+-.It wtf
+-focus a window
+ .It wtp
+ teleport a window
+ .It atomx
+@@ -59,6 +59,6 @@ variable.
+ .Xr wmv 1 ,
+ .Xr wname 1 ,
+ .Xr wrs 1 ,
+-.Xr wtf 1 ,
++.Xr wm_wtf 1 ,
+ .Xr wtp 1 ,
+ .Xr atomx 1
+Index: core-1.7/man/wtf.1
+===================================================================
+--- core-1.7.orig/man/wtf.1
++++ core-1.7/man/wtf.1
 @@ -1,11 +1,11 @@
  .Dd December 13, 2014
 -.Dt WTF 1
@@ -41,27 +66,3 @@ Index: core-1.5/man/wtf.1
  .Ar wid
  .Sh DESCRIPTION
  .Nm
-Index: core-1.5/man/wmutils.1
-===================================================================
---- core-1.5.orig/man/wmutils.1
-+++ core-1.5/man/wmutils.1
-@@ -29,10 +29,10 @@ show window's attributes
- move the mouse pointer
- .It wmv
- move a window
-+.It wm_wtf
-+focus a window
- .It wrs
- resize a window
--.It wtf
--focus a window
- .It wtp
- teleport a window
- .El
-@@ -54,5 +54,5 @@ variable.
- .Xr wmv 1 ,
- .Xr wname 1 ,
- .Xr wrs 1 ,
--.Xr wtf 1 ,
-+.Xr wm_wtf 1 ,
- .Xr wtp 1

@@ -23,4 +23,20 @@
     <comment></comment>
     <requestid>1148337</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b811c98ebd892b42f7436239c324d136</srcmd5>
+    <version>1.7</version>
+    <time>1789657788</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7:
+  * New tools: atomx (get/set/delete X atoms) and pdw (print
+    decoration window)
+  * atomx: multiple windows, more atom types, no atom name in
+    output, arg-count segfault fix
+  * Add atomx(1) and pdw(1) manpages
+- Rebase wmutils-cflags.patch and wmutils-conflict.patch
+- Install pdw.1, omitted from upstream man/Makefile
+- Add gcc and make BuildRequires; drop Group; use %make_build (forwarded request 1378472 from pluskalm)</comment>
+    <requestid>1378616</requestid>
+  </revision>
 </revisionlist>

@@ -1,8 +1,8 @@
-Index: core-1.4/Makefile
+Index: core-1.7/Makefile
 ===================================================================
---- core-1.4.orig/Makefile
-+++ core-1.4/Makefile
-@@ -30,12 +30,12 @@ binutils: $(BIN)
+--- core-1.7.orig/Makefile
++++ core-1.7/Makefile
+@@ -33,12 +33,12 @@ binutils: $(BIN)
  $(OBJ): $(HDR) util.o
  
  .o:

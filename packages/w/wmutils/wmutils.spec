@@ -1,7 +1,7 @@
 #
 # spec file for package wmutils
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,17 +17,18 @@
 
 
 Name:           wmutils
-Version:        1.5
+Version:        1.7
 Release:        0
 Summary:        Set of tools for X windows manipulation
 License:        ISC
-Group:          System/X11/Utilities
 URL:            https://github.com/wmutils/core
 Source:         https://github.com/%{name}/core/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE wmutils-cflags.patch fixes spurious "compiled without $RPM_OPT_FLAGS" warning -- aloisio@gmx.com
 Patch0:         wmutils-cflags.patch
 # PATCH-FIX-OPENSUSE wmutils-conflict.patch fixes conflict with wtf from bsd-games -- aloisio@gmx.com
 Patch1:         wmutils-conflict.patch
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xcb-cursor)
@@ -41,22 +42,26 @@ Each tool only has one purpose.
 %autosetup -p1 -n core-%{version}
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install \
   PREFIX=%{_prefix}    \
   MANPREFIX=%{_mandir}
+# v1.7 ships man/pdw.1 but omits it from man/Makefile
+install -m 0644 man/pdw.1 %{buildroot}%{_mandir}/man1/pdw.1
 
 %files
 %license LICENSE
 %doc README.md
+%{_bindir}/atomx
 %{_bindir}/chwb
 %{_bindir}/chwso
 %{_bindir}/ignw
 %{_bindir}/killw
 %{_bindir}/lsw
 %{_bindir}/mapw
+%{_bindir}/pdw
 %{_bindir}/pfw
 %{_bindir}/slw
 %{_bindir}/wattr
@@ -65,20 +70,22 @@ make %{?_smp_mflags}
 %{_bindir}/wm_wtf
 %{_bindir}/wrs
 %{_bindir}/wtp
-%{_mandir}/man1/chwb.1%{ext_man}
-%{_mandir}/man1/chwso.1%{ext_man}
-%{_mandir}/man1/ignw.1%{ext_man}
-%{_mandir}/man1/killw.1%{ext_man}
-%{_mandir}/man1/lsw.1%{ext_man}
-%{_mandir}/man1/mapw.1%{ext_man}
-%{_mandir}/man1/pfw.1%{ext_man}
+%{_mandir}/man1/atomx.1%{?ext_man}
+%{_mandir}/man1/chwb.1%{?ext_man}
+%{_mandir}/man1/chwso.1%{?ext_man}
+%{_mandir}/man1/ignw.1%{?ext_man}
+%{_mandir}/man1/killw.1%{?ext_man}
+%{_mandir}/man1/lsw.1%{?ext_man}
+%{_mandir}/man1/mapw.1%{?ext_man}
+%{_mandir}/man1/pdw.1%{?ext_man}
+%{_mandir}/man1/pfw.1%{?ext_man}
 %{_mandir}/man1/slw.1%{?ext_man}
-%{_mandir}/man1/wattr.1%{ext_man}
-%{_mandir}/man1/wmp.1%{ext_man}
-%{_mandir}/man1/wmutils.1%{ext_man}
-%{_mandir}/man1/wmv.1%{ext_man}
-%{_mandir}/man1/wm_wtf.1%{ext_man}
-%{_mandir}/man1/wrs.1%{ext_man}
-%{_mandir}/man1/wtp.1%{ext_man}
+%{_mandir}/man1/wattr.1%{?ext_man}
+%{_mandir}/man1/wmp.1%{?ext_man}
+%{_mandir}/man1/wmutils.1%{?ext_man}
+%{_mandir}/man1/wmv.1%{?ext_man}
+%{_mandir}/man1/wm_wtf.1%{?ext_man}
+%{_mandir}/man1/wrs.1%{?ext_man}
+%{_mandir}/man1/wtp.1%{?ext_man}
 
 %changelog

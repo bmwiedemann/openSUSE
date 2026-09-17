@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:28:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7:
+  * New tools: atomx (get/set/delete X atoms) and pdw (print
+    decoration window)
+  * atomx: multiple windows, more atom types, no atom name in
+    output, arg-count segfault fix
+  * Add atomx(1) and pdw(1) manpages
+- Rebase wmutils-cflags.patch and wmutils-conflict.patch
+- Install pdw.1, omitted from upstream man/Makefile
+- Add gcc and make BuildRequires; drop Group; use %make_build
+
+-------------------------------------------------------------------
 Tue Feb 20 15:11:58 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
