@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.4:
+  - Port to Qt 6, drop Qt 5 build dependency
+  - Add system tray icon with tooltip
+  - Support newer icecc after message refactor
+  - Fix flow table view repaints
+  - Manpage is now generated with pandoc: ship pre-generated
+    icemon.1 and add make-pandoc-optional.patch, as pandoc is
+    not available in Factory
+  - Drop docbook2x and xsltproc build dependencies
+  - Drop deprecated %suse_update_desktop_file
+
+-------------------------------------------------------------------
 Thu Sep 12 14:49:53 UTC 2019 - Lubos Lunak <l.lunak@centrum.cz>
 
 - Update to version 3.3:

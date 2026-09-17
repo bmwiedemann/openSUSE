@@ -1,0 +1,16 @@
+Upstream requires pandoc unconditionally (TYPE REQUIRED plus
+FATAL_ON_MISSING_REQUIRED_PACKAGES), but pandoc is not available on
+all distributions. Allow configuring without it; a pre-generated
+icemon.1 can be installed instead.
+
+--- a/doc/CMakeLists.txt
++++ b/doc/CMakeLists.txt
+@@ -12,7 +12,7 @@
+ )
+ mark_as_advanced(pandoc_EXECUTABLE)
+ set_package_properties(pandoc PROPERTIES
+-    TYPE REQUIRED
++    TYPE OPTIONAL
+     DESCRIPTION "A universal document converter. Used for generating manpages."
+     URL "https://pandoc.org/"
+ )

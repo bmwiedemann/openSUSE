@@ -1,7 +1,7 @@
 #
 # spec file for package icecream-monitor
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,28 @@
 
 
 Name:           icecream-monitor
-Version:        3.3
+Version:        3.4
 Release:        0
 Summary:        Monitor Program for the icecream Compile Farm
 License:        GPL-2.0-or-later
-Group:          Development/Tools/Building
 URL:            https://github.com/icecc/icemon
 Source0:        icemon-%{version}.tar.xz
+Source1:        icemon.1
+Patch0:         make-pandoc-optional.patch
 BuildRequires:  cmake
-BuildRequires:  docbook2x
 BuildRequires:  extra-cmake-modules
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  lzo-devel
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  xsltproc
-BuildRequires:  cmake(Qt5Widgets)
+BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  pkgconfig(icecc)
+BuildRequires:  pkgconfig(lzo2)
 
 %description
 icecream is the next generation distcc. This package provides a monitor
 program.
 
 %prep
-%setup -q -n icemon-%{version}
+%autosetup -p1 -n icemon-%{version}
 
 %build
 %cmake
@@ -48,7 +46,8 @@ program.
 
 %install
 %cmake_install
-%suse_update_desktop_file icemon Development Building
+# manpage pre-generated with pandoc 3.5, which is not in Factory
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_mandir}/man1/icemon.1
 
 %files
 %{_bindir}/icemon
