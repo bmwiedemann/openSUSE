@@ -209,4 +209,26 @@ from the previous version.</comment>
     <comment>Forward comfyui 0.35.0 to Factory (devel accepted SR1377004; cone forwards SR1376991/SR1376995/SR1376997/SR1377001/SR1377003 carry its floors).</comment>
     <requestid>1377005</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fb2dfb87ce8017e5bfb2b3c00d68eaed</srcmd5>
+    <version>0.36.0</version>
+    <time>1789651058</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.36.0:
+  * New model support: Marigold v2 depth/albedo and Yue2 music
+  * Generic Loops and a Video Concatenate node; ImageColorSpace
+    gained a linear option
+  * MiniMax-H3 VAE uses less VRAM; llama-based models take
+    comfy-kitchen apply_rope kernels
+  * API nodes: Microsoft MAI Image 2.6, Gemini 3.8 Flash and
+    GeminiNodeV3, Tripo v3/P2 plus Smart Segment, Bria image-edit
+    and Video Eraser, BFL Flux Video Edit, Pruna P-Video-2
+  * Add Noise to Image no longer touches the alpha channel
+  * Floors follow the train to kitchen 0.2.34 and
+    workflow-templates 0.11.62; frontend security floor stays
+    &gt;= 1.50.6
+  * Both downstream patches apply unrebased; no new third-party
+    dependencies (requirements.txt diff is the three train pins)</comment>
+    <requestid>1378282</requestid>
+  </revision>
 </revisionlist>

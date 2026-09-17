@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.35.0
+Version:        0.36.0
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -59,19 +59,19 @@ Requires:       %{primary_python}-blake3
 # re-export shim. comfy-aimdo and comfy-kitchen are both imported at module
 # scope, so an API removal in either is an import-time failure -- but no
 # such break is known: the one comfy-kitchen minor bump so far (0.1 to
-# 0.2) removed no exported names, and 0.35.0 still speaks comfy-aimdo's
+# 0.2) removed no exported names, and 0.36.0 still speaks comfy-aimdo's
 # 0.4.9/0.4.10 fallback protocols, which 0.5.3 honours. A speculative
 # upper bound would simply recreate
 # the unresolvable state this floor exists to fix, so none is set; a real
 # break gets a bound then, with the evidence.
 Requires:       %{primary_python}-comfy-aimdo >= 0.5.3
-Requires:       %{primary_python}-comfy-kitchen >= 0.2.33
+Requires:       %{primary_python}-comfy-kitchen >= 0.2.34
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.11
 # Security floor, not a compatibility pin: 1.50.6 carries the XSS fixes
 # GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Do not
 # lower it to whatever upstream's requirements.txt happens to name.
 Requires:       %{primary_python}-comfyui-frontend-package >= 1.50.6
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.57
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.62
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0

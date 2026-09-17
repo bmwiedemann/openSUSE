@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:27:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.36.0:
+  * New model support: Marigold v2 depth/albedo and Yue2 music
+  * Generic Loops and a Video Concatenate node; ImageColorSpace
+    gained a linear option
+  * MiniMax-H3 VAE uses less VRAM; llama-based models take
+    comfy-kitchen apply_rope kernels
+  * API nodes: Microsoft MAI Image 2.6, Gemini 3.8 Flash and
+    GeminiNodeV3, Tripo v3/P2 plus Smart Segment, Bria image-edit
+    and Video Eraser, BFL Flux Video Edit, Pruna P-Video-2
+  * Add Noise to Image no longer touches the alpha channel
+  * Floors follow the train to kitchen 0.2.34 and
+    workflow-templates 0.11.62; frontend security floor stays
+    >= 1.50.6
+  * Both downstream patches apply unrebased; no new third-party
+    dependencies (requirements.txt diff is the three train pins)
+
+-------------------------------------------------------------------
 Thu Sep 10 18:47:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.35.0:
