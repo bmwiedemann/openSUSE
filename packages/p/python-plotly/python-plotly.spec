@@ -17,9 +17,10 @@
 
 
 %bcond_without  libalternatives
-%define distversion 6.7
+# cut all zeros
+%define distversion 7
 Name:           python-plotly
-Version:        6.7.0
+Version:        7.0.0
 Release:        0
 Summary:        Interactive, browser-based graphing library for Python
 License:        MIT
@@ -128,9 +129,7 @@ find . -name __init__.py -exec touch -m -r plotly/__init__.py '{}' ';'
 %python_clone -a %{buildroot}%{_bindir}/plotly_get_chrome
 
 %check
-# API parameter mismatch
-donttest="test_described_subscript_error_on_type_error"
-%pytest tests/test_core -k "not ($donttest)"
+%pytest tests/test_core
 # not available
 donttest="test_kaleido"
 donttest="$donttest or test_px_input and (vaex or polars)"
@@ -138,12 +137,10 @@ donttest="$donttest or test_px_input and (vaex or polars)"
 donttest="$donttest or test_matplotlylib"
 # flaky timing error
 donttest="$donttest or test_fast_track_finite_arrays"
-# no scikit-image for python311 anymore
-python311_donttest=" or TestTernarycontour"
 # Optional dependencies not yet in openSUSE, requires python-polars
 # --ignore doesn't work because the import is in the conftest.py
 rm -rf tests/test_optional/test_px/
-%pytest tests/test_optional -k "not ($donttest ${$python_donttest})"
+%pytest tests/test_optional -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE.txt

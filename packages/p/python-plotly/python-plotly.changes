@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 14 10:00:20 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 7.0.0
+  * Update plotly.js from version 3.6.0 to version 4.0.0. This is
+    a major-version release with many changes.
+  * Drop support for MathJax v2, and add support for v4.
+  * Fix hex_to_rgb parsing of 3-digit shorthand hexadecimal colors.
+  * Fix mpl_to_plotly silently dropping matplotlib path collections
+    in data coordinates.
+  * More changes, see upstream CHANGELOG.md
+
+-------------------------------------------------------------------
 Sat May 30 10:27:57 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Skip testing with scikit-image and xarray for python311:
