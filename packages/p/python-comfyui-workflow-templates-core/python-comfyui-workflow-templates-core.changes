@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.351:
+  * Manifest now lists 571 templates: new FastVideo FastH3 i2v
+    and t2v entries
+  * No code or dependency change: loader.py byte-identical,
+    sdist still declares no install dependencies
+
+-------------------------------------------------------------------
+Tue Sep 15 12:19:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.343:
+  * Manifest now lists 569 templates: new flux video edit,
+    yue2 music cover and text2music, marigold v2 albedo, depth
+    and surface-normal entries
+  * No code or dependency change: loader.py byte-identical,
+    sdist still declares no install dependencies
+
+-------------------------------------------------------------------
 Sat Sep 12 07:18:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.339:

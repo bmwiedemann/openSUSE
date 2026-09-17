@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.339
+Version:        0.3.351
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
