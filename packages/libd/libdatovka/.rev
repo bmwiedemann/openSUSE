@@ -152,4 +152,15 @@
     datovka-test.gov.cz.</comment>
     <requestid>1371890</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>f76f5d4d882cc8705db5cf34ff655a72</srcmd5>
+    <version>0.7.4</version>
+    <time>1789651118</time>
+    <user>anag_factory</user>
+    <comment>- fix License
+  * libdatovka is LGPL-3.0-or-later
+  * gettext.h is GPL-3.0-or-later
+  * multipart-parser-c is MIT</comment>
+    <requestid>1378263</requestid>
+  </revision>
 </revisionlist>

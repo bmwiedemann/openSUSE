@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:50:09 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- fix License
+  * libdatovka is LGPL-3.0-or-later
+  * gettext.h is GPL-3.0-or-later
+  * multipart-parser-c is MIT
+
+-------------------------------------------------------------------
 Wed Aug 19 05:42:57 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 0.7.4

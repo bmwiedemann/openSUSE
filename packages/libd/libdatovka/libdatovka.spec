@@ -21,7 +21,7 @@ Name:           libdatovka
 Version:        0.7.4
 Release:        0
 Summary:        Library for accessing the Czech Data Boxes
-License:        GPL-3.0-or-later
+License:        LGPL-3.0-or-later AND GPL-3.0-or-later AND MIT
 Group:          System/Libraries
 URL:            https://www.datovka.cz/cs/pages/libdatovka.html
 Source0:        https://datovka.nic.cz/%{name}/%{name}-%{version}.tar.xz
