@@ -116,4 +116,23 @@ Local aarch64 build green (308 passed x2 flavors, rpmlint 0E/0 badness),
 source_validator clean.</comment>
     <requestid>1376808</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>a840f0a7ed2e0353bacc6fb54f3bdda1</srcmd5>
+    <version>0.4.3</version>
+    <time>1789651197</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.3:
+  * Agent listing requires a read-scoped token and raises 403
+    OperationNotAllowed instead of returning an empty list
+  * MCP list pagination uses the requested page_number/page_size
+    when the service omits them, and rejects invalid page numbers
+  * Agent-IDP signing components are validated as ASCII without
+    '|'; Unicode encoding failures become E3021 InvalidParameter
+  * MCP list CLI drops the unsupported status column; HTTP-200
+    error envelopes decode to typed exceptions
+  * Re-export legacy modelscope SDK constants from
+    modelscope_hub.constants
+- Require pytest &gt;= 7.0 to match upstream's test extra</comment>
+    <requestid>1378300</requestid>
+  </revision>
 </revisionlist>

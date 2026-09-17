@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:24:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.3:
+  * Agent listing requires a read-scoped token and raises 403
+    OperationNotAllowed instead of returning an empty list
+  * MCP list pagination uses the requested page_number/page_size
+    when the service omits them, and rejects invalid page numbers
+  * Agent-IDP signing components are validated as ASCII without
+    '|'; Unicode encoding failures become E3021 InvalidParameter
+  * MCP list CLI drops the unsupported status column; HTTP-200
+    error envelopes decode to typed exceptions
+  * Re-export legacy modelscope SDK constants from
+    modelscope_hub.constants
+- Require pytest >= 7.0 to match upstream's test extra
+
+-------------------------------------------------------------------
 Thu Sep 10 05:44:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.2:
