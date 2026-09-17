@@ -176,4 +176,15 @@ Depends on the -core / -json / -media-assets-01 submissions filed alongside it.<
     <comment>Forward templates-meta 0.11.59 (train meta, after leaves 1377497/98/99).</comment>
     <requestid>1377500</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ee059fa7693b13bfb424033730041faf</srcmd5>
+    <version>0.11.63</version>
+    <time>1789651066</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.63:
+- Pull in FastVideo FastH3 text-to-video and image-to-video templates; YuE2 templates marked local-only
+- Raise the bundle floors: -core 0.3.351, -json 0.1.86, -media-assets-01 0.1.47; the other four unchanged
+Supersedes sr#1378179. Unblocks comfyui 0.36.0 (sr#1378282) which Requires python313-comfyui-workflow-templates &gt;= 0.11.62.</comment>
+    <requestid>1378350</requestid>
+  </revision>
 </revisionlist>

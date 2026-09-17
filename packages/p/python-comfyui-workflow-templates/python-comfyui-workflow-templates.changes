@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.63:
+  * Pull in FastVideo FastH3 text-to-video and image-to-video
+    templates; YuE2 templates marked local-only
+- Raise the bundle floors upstream moved: -core 0.3.351, -json
+  0.1.86, -media-assets-01 0.1.47; the other four are unchanged
+
+-------------------------------------------------------------------
+Tue Sep 15 12:19:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.60:
+  * Train bump: core 0.3.343, json 0.1.78, assets-01 0.1.45
+    floors; no code changes upstream, pins only
+
+-------------------------------------------------------------------
 Sat Sep 12 07:24:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.59:
