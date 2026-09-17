@@ -18,7 +18,7 @@
 
 Name:           lkl
 # Downstream made-up version number, reflects corrseponding kernel version.
-Version:        0.6.4+git.4863.9c68545add5d
+Version:        0.6.4+git.5183.7acc1ed53411
 Release:        0
 Summary:        EXPERIMENTAL: Linux Kernel Library (LKL) utilities
 License:        GPL-2.0-only
@@ -159,7 +159,7 @@ getent passwd lklfuse >/dev/null || \
   useradd -g lklfuse --no-create-home -r -s /sbin/nologin lklfuse
 
 %post -n lklfuse
-cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release}-experimental << EOF
+cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release} << EOF
 
 WARNING: lklfuse is EXPERIMENTAL; using it could cause data corruption!
 

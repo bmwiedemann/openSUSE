@@ -144,4 +144,14 @@ https://lists.opensuse.org/archives/list/factory@lists.opensuse.org/thread/S4HJD
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1374786</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f0595c5e8cde8c6aba670955b3ddb137</srcmd5>
+    <version>0.6.4+git.5183.7acc1ed53411</version>
+    <time>1789651221</time>
+    <user>anag_factory</user>
+    <comment>- Merge opensuse-kernel/SLE15-SP6-LTSS 687b3d156ac658
+- lkl: fix incremental build via tools/lkl
+- Skip installed header read when sizes differ</comment>
+    <requestid>1378339</requestid>
+  </revision>
 </revisionlist>
