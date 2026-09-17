@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:38:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.6.6:
+  * Add position to UpdateUI event fields in Scintilla.iface.
+  * Fix data race in multi-threaded word wrap introduced in
+    5.6.4 (bug #2515).
+- Changes from version 5.6.5:
+  * Add SC_UPDATE_TEXT and SC_UPDATE_LINE_COUNT flags to
+    SCN_UPDATEUI notifications.
+  * Increase interior width of MarkerSymbol::Plus and Minus
+    to match stroke width.
+  * Improve fold-discovery performance by styling larger
+    blocks of lines.
+  * Avoid std::async/std::future in single-threaded
+    situations, fixing crashes with some runtimes (Geany
+    issue #4620).
+- Changes from version 5.6.4:
+  * Add SCI_SETSCALETECHNIQUE for pixel-aligned scaling.
+  * Optimize empty SCI_CHANGEINSERTION so it does not
+    produce an empty undo action (feature #1588).
+- Drop obsolete BuildRoot tag and add make BuildRequires.
+
+-------------------------------------------------------------------
 Wed Jun 10 17:52:57 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.3:

@@ -17,8 +17,8 @@
 
 
 %define so_ver 5.6
-%define _ver %{so_ver}.3
-%define tar_ver 563
+%define _ver %{so_ver}.6
+%define tar_ver 566
 %define libname libscintilla5
 Name:           scintilla
 Version:        %{_ver}
@@ -31,10 +31,10 @@ Source:         https://sourceforge.net/projects/scintilla/files/scintilla/%{ver
 Patch0:         %{name}-shared.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 Scintilla is a code editing component. It includes features for
@@ -85,7 +85,7 @@ mkdir -p %{buildroot}%{_libdir}
 libtool --mode=install install bin/libscintilla.la %{buildroot}%{_libdir}
 # Delete libtool archive and static lib
 find %{buildroot}%{_libdir} -name "*.a" -delete -print
-find %{buildroot}%{_libdir} -name "*.la" -delete -print
+find %{buildroot} -type f -name "*.la" -delete -print
 
 rmdir %{buildroot}%{_includedir}/%{name}/src || :
 
