@@ -1239,4 +1239,18 @@
   resulting from this change.</comment>
     <requestid>1375637</requestid>
   </revision>
+  <revision rev="78" vrev="1">
+    <srcmd5>135c0dedc537feb7ff326a8866be4709</srcmd5>
+    <version>6.3.3</version>
+    <time>1789651119</time>
+    <user>anag_factory</user>
+    <comment>- VERSION 06.03.03 - 2026-09-10
+- BUG FIX: remind: The filedir() function could return a string with an
+  invalid internal representation, resulting in concatenation operators
+  failing.  Bug reported by Alexander Möller
+- BUG FIX / UPDATE: contrib/remind-conf-mode: The Emacs remind-conf-mode
+  files have been updated to work with Emacs 31.  Also, auto-complete now
+  works properly.</comment>
+    <requestid>1378261</requestid>
+  </revision>
 </revisionlist>

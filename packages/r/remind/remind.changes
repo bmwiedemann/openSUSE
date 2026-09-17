@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:39:07 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.03 - 2026-09-10
+
+- BUG FIX: remind: The filedir() function could return a string with an
+  invalid internal representation, resulting in concatenation operators
+  failing.  Bug reported by Alexander Möller
+
+- BUG FIX / UPDATE: contrib/remind-conf-mode: The Emacs remind-conf-mode
+  files have been updated to work with Emacs 31.  Also, auto-complete now
+  works properly. 
+
+-------------------------------------------------------------------
 Thu Sep  3 14:58:23 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 -  VERSION 06.03.02 - 2026-09-03
