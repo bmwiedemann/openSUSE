@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:18:08 UTC 2026 - Stefan Schubert <schubi@suse.de>
+
+- Adding Swap partition (belongs to jsc#PED-10703).
+- 20260916
+
+-------------------------------------------------------------------
 Fri Aug 14 06:30:52 UTC 2026 - Jiri Srain <jsrain@suse.com>
 
 - use patterns-base-hardware instead of patterns-microos-hardware
