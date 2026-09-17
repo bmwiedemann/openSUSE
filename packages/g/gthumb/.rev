@@ -1118,4 +1118,15 @@
 - Convert to tar.xz and run tar/compress locally.</comment>
     <requestid>1342462</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>a0449b1244dc7e533e30c432a7dd467c</srcmd5>
+    <version>3.12.11</version>
+    <time>1789651213</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.11:
+  + Bugfixes: Fixed potential crash when compiled with optimization
+    level 3
+  + Updated translations.</comment>
+    <requestid>1378331</requestid>
+  </revision>
 </revisionlist>
