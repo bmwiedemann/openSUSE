@@ -18,7 +18,7 @@
 
 
 Name:           pbuilder
-Version:        0.231.1
+Version:        0.231.3
 Release:        0
 Summary:        Personal package builder for .deb packages
 License:        GPL-2.0-or-later

@@ -142,4 +142,12 @@ See http://lists.opensuse.org/opensuse-factory/2012-05/msg00164.html for a littl
 - add man to BuildRequires, testsuite requires it</comment>
     <requestid>1325207</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bee201d120dba4f8213b29086a08a68b</srcmd5>
+    <version>0.231.3</version>
+    <time>1789651220</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378341</requestid>
+  </revision>
 </revisionlist>
