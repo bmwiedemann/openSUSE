@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Sep 16 19:28:26 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 12.0.1:
+  * FIX: BetterEm: fix a case with new logic.
+- additional changes from version 12.0:
+  * BREAK: BetterEm: Complete rewrite. CommonMark compliant.
+  * BREAK: Tilde, Caret, Mark: Rewritten and now built upon
+    the latest BetterEm logic.
+  * NEW: Details, Blocks.Details, Blocks.Admonitions: Allow
+    and handle headers specially in titles.
+  * NEW: Quotes: Allow and handle headers specially in callout
+    titles.
+  * NEW: BracketSpan: New extension that allows for the creation
+    of spans using a Pandoc style bracket notation.
+  * NEW: Arithmatex: Remove deprecated
+    inline_mathjax_preview_format, inline_mathjax_format, and
+    inline_generic_format. Use arithmatex_inline_format instead.
+  * NEW: Arithmatex: Remove deprecated
+    fence_mathjax_preview_format, fence_mathjax_format, and
+    fence_generic_format. Use arithmatex_fenced_format instead.
+  * NEW: Emoji: Remove undocumented and deprecated "old style"
+    custom emoji index logic.
+  * NEW: Slugs: Remove deprecated uslugify, uslugify_encoded,
+    uslugify_cased, uslugify_cased_encoded, gfm, and gfm_encoded.
+
+-------------------------------------------------------------------
 Mon Aug 24 07:44:30 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 11.0.2:
