@@ -108,6 +108,7 @@ This package provides the shared library for wannier90.
 
 %package devel
 Summary:        Library for generating Wannier functions - headers and development files
+Requires:       %{libname} = %{version}
 
 %description devel
 Wannier90 is a library for generating maximally-localized Wannier functions and

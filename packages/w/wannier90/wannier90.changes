@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 14 20:06:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Packaging fix: requires shared library from devel package.
+
+-------------------------------------------------------------------
 Sun Sep  6 15:44:28 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Disable %check for openmpi5, since tests deadlock and eventually

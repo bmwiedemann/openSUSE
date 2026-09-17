@@ -60,4 +60,13 @@
 </comment>
     <requestid>1376181</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>1ae2215439bcc57201ba652569119867</srcmd5>
+    <version>4.0.2</version>
+    <time>1789651035</time>
+    <user>anag_factory</user>
+    <comment>- Packaging fix: requires shared library from devel package.
+</comment>
+    <requestid>1377998</requestid>
+  </revision>
 </revisionlist>
