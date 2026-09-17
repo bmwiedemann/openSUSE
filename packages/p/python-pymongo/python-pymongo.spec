@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pymongo
-Version:        4.17.0
+Version:        4.18.1
 Release:        0
 Summary:        Python driver for MongoDB
 License:        Apache-2.0
@@ -30,6 +30,7 @@ BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module dnspython >= 2.6.1}
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module hatch_vcs}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-asyncio >= 0.24.0}
 BuildRequires:  %{python_module pytest}
