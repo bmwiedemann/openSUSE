@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:01:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.121.0:
+  * Features
+    - Revamped udash login
+    - yaml resource: new createmissingkey and appendtoarray options
+    - Age filtering for the gitcommit source and gitlab
+      branch/release/tag
+    - Dependency cooldown for githubaction autodiscovery and npm
+    - Better display of config templating issues
+  * Bug Fixes
+    - github: don't close a pullrequest containing changes
+    - npm/age: skip instead of erroring when no version matches
+    - yaml: stop retrying unrecoverable decode errors in condition
+    - autodiscovery/helmfile: relative file paths in manifests
+    - Hash the full source spec for the cache key
+  * Build with Go 1.27, matching upstream's go.mod minimum
+
+-------------------------------------------------------------------
 Fri Aug 28 07:26:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.120.1:
