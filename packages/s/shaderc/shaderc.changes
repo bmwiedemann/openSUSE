@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:33:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2026.4
+  * Incorporate fixes for SPV_KHR_abort abortEXT(...)
+  * glslc: option -fshader-stage now accepts all shader stage names
+    as allowed in #pragma shader_stage(<stage>)> This includes ray
+    tracing, task, and mesh shader stages.
+
+-------------------------------------------------------------------
 Fri Jul 17 11:19:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2026.3

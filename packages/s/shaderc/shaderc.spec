@@ -23,7 +23,7 @@
 %endif
 
 Name:           shaderc
-Version:        2026.3
+Version:        2026.4
 Release:        0
 Summary:        A collection of tools, libraries and tests for shader compilation
 License:        Apache-2.0
@@ -36,11 +36,11 @@ Patch1:         0001-Use-system-third-party-libs.patch
 BuildRequires:  cmake >= 2.8.12
 BuildRequires:  gcc%{?gcc_version} >= 13
 BuildRequires:  gcc%{?gcc_version}-c++ >= 13
-BuildRequires:  glslang-devel >= 16
+BuildRequires:  glslang-devel >= 16.6
 BuildRequires:  glslang-nonstd-devel
 BuildRequires:  python3-base
-BuildRequires:  spirv-headers >= 1.6.4+sdk350.1+g26
-BuildRequires:  spirv-tools-devel >= 2026.3~rc1
+BuildRequires:  spirv-headers >= 1.202609.0
+BuildRequires:  spirv-tools-devel >= 2026.4~rc2
 
 %description
 A collection of tools, libraries and tests for shader compilation.
