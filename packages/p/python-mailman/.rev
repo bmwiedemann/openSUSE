@@ -382,4 +382,15 @@
     <comment></comment>
     <requestid>1324686</requestid>
   </revision>
+  <revision rev="36" vrev="4">
+    <srcmd5>bde04f5ed9b560eb038ff10249389158</srcmd5>
+    <version>3.3.10</version>
+    <time>1789651215</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-header-obj-directly.patch
+  * Pass a Header object as is to decode_header()
+- Add patch support-click-8.4.patch:
+  * Support changes required for Click 8.4.</comment>
+    <requestid>1378334</requestid>
+  </revision>
 </revisionlist>

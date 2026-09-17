@@ -87,11 +87,12 @@ Source31:       python-mailman.rpmlintrc
 #
 # PATCH-FIX-UPSTREAM mailman-fix-python-313-posixpath.patch https://gitlab.com/mailman/mailman/-/commit/685d9a7bdbd382d9e8d4a2da74bd973e93356e05.patch
 Patch0:         mailman-fix-python-313-posixpath.patch
-#
-BuildRequires:  %{python_module pdm}
+# PATCH-FIX-UPSTREAM https://gitlab.com/mailman/mailman/-/commit/8e60f319009726c0014c2f2b7b3955c4fcb3d1ee
+Patch1:         use-header-obj-directly.patch
+# PATCH-FIX-UPSTREAM Based on https://gitlab.com/mailman/mailman/-/merge_requests/1526
+Patch2:         support-click-8.4.patch
 BuildRequires:  %{python_module pdm-backend}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  sysuser-tools

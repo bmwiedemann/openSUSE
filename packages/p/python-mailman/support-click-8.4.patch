@@ -1,0 +1,44 @@
+From a883f3d7a79737eed78fc7cdb0b1a8c0597b2ebc Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 15 Sep 2026 14:25:03 +1000
+Subject: [PATCH] Remove upper pin of click
+
+Since click is pinned, we don't notice failures when a new version is
+released. Remove the pin, and update the two tests that fail with Click
+8.4.
+---
+ pyproject.toml                        |  2 +-
+ src/mailman/bin/tests/test_mailman.py | 10 ++++++++--
+ 2 files changed, 9 insertions(+), 3 deletions(-)
+
+diff --git a/src/mailman/bin/tests/test_mailman.py b/src/mailman/bin/tests/test_mailman.py
+index c39a5c803..0cf0eaab7 100644
+--- a/src/mailman/bin/tests/test_mailman.py
++++ b/src/mailman/bin/tests/test_mailman.py
+@@ -66,7 +66,10 @@ class TestMailmanCommand(unittest.TestCase):
+         # "main" instead of "mailman" because of the way the click runner
+         # works.  It does actually show the correct program when run from the
+         # command line.
+-        self.assertEqual(lines[0], 'Usage: main [OPTIONS] COMMAND [ARGS]...')
++        self.assertRegex(
++            lines[0],
++            r'^Usage: main \[OPTIONS\] \[?COMMAND\]? \[ARGS\]\.\.\.$'
++        )
+         # The help output includes a list of subcommands, in sorted order.
+         commands = {}
+         add_components('commands', ICLISubCommand, commands)
+@@ -85,7 +88,10 @@ class TestMailmanCommand(unittest.TestCase):
+         # "main" instead of "mailman" because of the way the click runner
+         # works.  It does actually show the correct program when run from the
+         # command line.
+-        self.assertEqual(lines[0], 'Usage: main [OPTIONS] COMMAND [ARGS]...')
++        self.assertRegex(
++            lines[0],
++            r'^Usage: main \[OPTIONS\] \[?COMMAND\]? \[ARGS\]\.\.\.$'
++        )
+ 
+     @patch('mailman.bin.mailman.os')
+     @patch('mailman.bin.mailman.initialize')
+-- 
+GitLab
+

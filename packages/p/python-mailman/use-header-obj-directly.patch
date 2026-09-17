@@ -1,0 +1,59 @@
+From 8e60f319009726c0014c2f2b7b3955c4fcb3d1ee Mon Sep 17 00:00:00 2001
+From: SATOH Fumiyasu <fumiyas@osstech.co.jp>
+Date: Fri, 3 Apr 2026 17:10:50 +0900
+Subject: [PATCH] refactor: subject_prefix: Pass a Header object as is to
+ decode_header()
+
+email.header.decode_header() can take a Header object.
+---
+ src/mailman/handlers/subject_prefix.py            | 6 +++---
+ src/mailman/handlers/tests/test_subject_prefix.py | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/src/mailman/handlers/subject_prefix.py b/src/mailman/handlers/subject_prefix.py
+index ffaa50e9c..ff8d9fe26 100644
+--- a/src/mailman/handlers/subject_prefix.py
++++ b/src/mailman/handlers/subject_prefix.py
+@@ -35,7 +35,7 @@ EMPTYSTRING = ''
+ def ascii_header(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+     if mlist.preferred_language.charset not in ASCII_CHARSETS:
+         return None
+-    for chunk, charset in decode_header(subject.encode()):
++    for chunk, charset in decode_header(subject):
+         if charset not in ASCII_CHARSETS:
+             return None
+     subject_text = EMPTYSTRING.join(str(subject).splitlines())
+@@ -67,7 +67,7 @@ def ascii_header(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+ def all_same_charset(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+     list_charset = mlist.preferred_language.charset
+     chunks = []
+-    for chunk, charset in decode_header(subject.encode()):
++    for chunk, charset in decode_header(subject):
+         if charset is None:
+             charset = 'us-ascii'
+         if isinstance(chunk, str):
+@@ -113,7 +113,7 @@ def all_same_charset(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+ 
+ def mixed_charsets(mlist, msgdata, subject, prefix, prefix_pattern, ws):
+     list_charset = mlist.preferred_language.charset
+-    chunks = decode_header(subject.encode())
++    chunks = decode_header(subject)
+     # This code was:
+     # if len(chunks) == 0:
+     #     with _.using(mlist.preferred_language.code):
+diff --git a/src/mailman/handlers/tests/test_subject_prefix.py b/src/mailman/handlers/tests/test_subject_prefix.py
+index 0fefaf673..01675abf5 100644
+--- a/src/mailman/handlers/tests/test_subject_prefix.py
++++ b/src/mailman/handlers/tests/test_subject_prefix.py
+@@ -283,7 +283,7 @@ class TestSubjectPrefix(unittest.TestCase):
+         decoded = decode_header(msg['Subject'])
+         self.assertEqual(decoded,
+                          [(b'[Test] ', 'us-ascii'),
+-                          (b'\xd6\xd0\xce\xc4', 'eucgb2312_cn')])
++                          (b'\xd6\xd0\xce\xc4', 'gb2312')])
+ 
+     def test_non_ascii_list_folded_subject(self):
+         # Test a folded subject header on a list with non-ascii
+-- 
+GitLab
+
