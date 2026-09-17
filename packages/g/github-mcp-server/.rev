@@ -182,4 +182,15 @@ dependency. Local aarch64 build green, %check runs the full offline suite
 </comment>
     <requestid>1376542</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>c9432e8308630abf4a9eca19d89c15b5</srcmd5>
+    <version>1.12.2</version>
+    <time>1789651285</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.12.2:
+- Add update_issue_comment tool
+- Add remove_issue_reaction, remove_issue_comment_reaction and remove_pull_request_review_comment_reaction to the granular issues and pull-requests toolsets
+Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
+    <requestid>1378404</requestid>
+  </revision>
 </revisionlist>

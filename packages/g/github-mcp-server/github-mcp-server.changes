@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 14:58:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.2:
+  * Add update_issue_comment tool
+  * Add remove_issue_reaction, remove_issue_comment_reaction
+    and remove_pull_request_review_comment_reaction to the
+    granular issues and pull-requests toolsets
+- Vendored Go modules are unchanged (go.mod/go.sum identical
+  to 1.12.1).
+
+-------------------------------------------------------------------
 Wed Sep  9 06:20:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.12.1:
