@@ -252,13 +252,13 @@ packagesets:
    - busybox-ed # reason: dvd:patterns-server-lamp_server
    - busybox-gawk # reason: dvd:patterns-base-sw_management
    - busybox-grep # reason: dvd:openSUSE-release
-   - busybox-gzip # reason: dvd:openSUSE-release
+   - busybox-gzip # reason: dvd:grub2
    - busybox-man # reason: dvd:patterns-gnome-gnome
    - busybox-psmisc # reason: dvd:patterns-yast-yast2_server
    - busybox-sed # reason: dvd:openSUSE-release
    - busybox-static # reason: dvd:patterns-gnome-gnome
    - busybox-which # reason: dvd:patterns-kde-kde_edutainment
-   - busybox-xz # reason: dvd:openSUSE-release
+   - busybox-xz # reason: dvd:grub2
    - bzip2 # reason: dvd:patterns-kde-kde
    - ca-certificates # reason: dvd:openSUSE-release
    - ca-certificates-mozilla # reason: dvd:openSUSE-release
@@ -303,7 +303,7 @@ packagesets:
    - coreutils-systemd # reason: dvd:patterns-gnome-gnome
    - cpio # reason: dvd:openSUSE-release
    - cpio-lang # reason: dvd:openSUSE-release
-   - cpio-mt # reason: dvd:patterns-gnome-gnome_yast
+   - cpio-mt # reason: dvd:openSUSE-release
    - cpp # reason: dvd:patterns-kde-kde
    - cpp16 # reason: dvd:patterns-kde-kde
    - cppcheck # reason: dvd:patterns-media-rest_dvd
@@ -749,7 +749,7 @@ packagesets:
    - gwenview # reason: dvd:patterns-kde-kde
    - gwenview-lang # reason: dvd:patterns-kde-kde
    - gxditview # reason: dvd:patterns-base-console
-   - gzip # reason: dvd:patterns-kde-kde
+   - gzip # reason: dvd:openSUSE-release
    - hack-fonts # reason: dvd:patterns-kde-kde
    - hdparm # reason: dvd:patterns-kde-kde
    - heaptrack # reason: dvd:patterns-media-rest_dvd
@@ -1577,7 +1577,7 @@ packagesets:
    - libSDL3-0 # reason: dvd:openSUSE-release
    - libSDL_gfx16 # reason: dvd:patterns-gnome-gnome
    - libSM6 # reason: dvd:openSUSE-release
-   - libSPIRV-Tools-2026_3_rc1 # reason: dvd:openSUSE-release
+   - libSPIRV-Tools-2026_4_rc2 # reason: dvd:openSUSE-release
    - libSoundTouch1 # reason: dvd:patterns-gnome-gnome
    - libSvtAv1Enc4 # reason: dvd:openSUSE-release
    - libUsageEnvironment3 # reason: dvd:patterns-kde-kde
@@ -3988,9 +3988,9 @@ packagesets:
    - systemsettings6-lang # reason: dvd:patterns-kde-kde
    - sysuser-shadow # reason: dvd:openSUSE-release
    - sysvinit-tools # reason: dvd:patterns-kde-kde
-   - tar # reason: dvd:patterns-gnome-gnome_yast
-   - tar-lang # reason: dvd:patterns-gnome-gnome_yast
-   - tar-rmt # reason: dvd:patterns-gnome-gnome_yast
+   - tar # reason: dvd:openSUSE-release
+   - tar-lang # reason: dvd:openSUSE-release
+   - tar-rmt # reason: dvd:openSUSE-release
    - tcl # reason: dvd:patterns-gnome-gnome
    - technisat-usb2-firmware # reason: dvd:technisat-usb2-firmware
    - tecla-keyboard-layout-viewer # reason: dvd:patterns-gnome-gnome
@@ -4164,7 +4164,7 @@ packagesets:
    - unrar_wrapper # reason: dvd:patterns-server-mail_server
    - unzip # reason: dvd:patterns-gnome-gnome
    - unzip-doc # reason: dvd:patterns-gnome-gnome
-   - update-alternatives # reason: dvd:patterns-gnome-gnome
+   - update-alternatives # reason: dvd:openSUSE-release
    - update-bootloader # reason: dvd:openSUSE-release
    - upower # reason: dvd:patterns-gnome-gnome
    - upower-lang # reason: dvd:patterns-gnome-gnome
@@ -4422,8 +4422,8 @@ packagesets:
    - xwayland # reason: dvd:patterns-gnome-gnome
    - xwaylandvideobridge # reason: dvd:patterns-kde-kde
    - xxd # reason: dvd:patterns-kde-kde
-   - xz # reason: dvd:patterns-gnome-gnome
-   - xz-lang # reason: dvd:patterns-gnome-gnome
+   - xz # reason: dvd:openSUSE-release
+   - xz-lang # reason: dvd:openSUSE-release
    - yast2 # reason: dvd:patterns-gnome-gnome_yast
    - yast2-add-on # reason: dvd:patterns-kde-kde
    - yast2-alternatives # reason: dvd:patterns-kde-kde
@@ -4557,7 +4557,7 @@ packagesets:
    - zisofs-tools # reason: dvd:patterns-gnome-gnome
    - zoo # reason: dvd:patterns-server-mail_server
    - zsh # reason: dvd:patterns-media-rest_dvd
-   - zstd # reason: dvd:patterns-gnome-gnome_yast
+   - zstd # reason: dvd:openSUSE-release
    - zypper # reason: dvd:patterns-gnome-gnome
    - zypper-log # reason: dvd:patterns-gnome-gnome
    - zypper-needs-restarting # reason: dvd:patterns-gnome-gnome
@@ -5238,7 +5238,7 @@ packagesets:
    - libSDL2-2_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libSDL3-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libSM6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libSPIRV-Tools-2026_3_rc1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libSPIRV-Tools-2026_4_rc2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libSvtAv1Enc4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libUsageEnvironment3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libX11-6 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -7057,7 +7057,7 @@ packagesets:
    - libSDL2-2_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libSDL3-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libSM6 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libSPIRV-Tools-2026_3_rc1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libSPIRV-Tools-2026_4_rc2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libSvtAv1Enc4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libUsageEnvironment3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libX11-6 # reason: opensuse_kalpa:patterns-kalpa-base
