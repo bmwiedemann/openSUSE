@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Thu Sep 17 05:05:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.34.0:
+  * Highlights
+    - The new timoni bundle update command brings
+      Renovate/Dependabot-style automation to bundles, updating the
+      module versions and digests according to the
+      @timoni(update:...) policies declared on each module
+      reference.
+    - The timoni mod vet command validates the rendered custom
+      resources against their CRD schemas and CEL rules, see custom
+      resource validation.
+    - The timoni mod vendor crd command can select kinds and
+      versions with --kind and --version, list them with --list,
+      and remove stale definitions with --prune, see custom
+      resources.
+    - The timoni apply --diff and timoni bundle apply --diff
+      commands exit with code 1 when drift is detected, allowing
+      their use as drift checks in CI, see diff upgrade.
+    - The Timoni GitHub Action installs the release matching the
+      action ref and verifies the build provenance attestation with
+      gh attestation verify.
+    - The Timoni agent skill can be installed with gh skill install
+      stefanprodan/timoni.
+  * What's Changed
+    - refactor(e2e): Rework the e2e workflow to deploy the fleet
+      bundle in #638
+    - feat(cli): exit 1 when applying with --diff to signal drift
+      in #640
+    - feat(action): Verify attestations and pin the version to the
+      GitHub Action ref in #641
+    - docs: add gh skill install to agents guide in #642
+    - feat(engine): vet resources against their CRD schemas and CEL
+      rules in #643
+    - feat(mod): add kind, version, list and prune flags to mod
+      vendor crd in #644
+    - build(deps): bump the ci group across 1 directory with 3
+      updates in #639
+    - feat: add bundle update command for automating module version
+      updates in #645
+
+-------------------------------------------------------------------
 Fri Aug 28 07:06:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.0:
