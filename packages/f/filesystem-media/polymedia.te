@@ -1,0 +1,8 @@
+module polymedia 1.0;
+
+require {
+	type mnt_t;
+}
+
+files_poly(mnt_t)
+files_poly_parent(mnt_t)

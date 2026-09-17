@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Aug 31 10:48:13 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Add custom SELinux module (polymedia.te) for polyinstantiated /media
+  (bsc#1273214) 
+
+-------------------------------------------------------------------
 Thu Apr  3 16:19:08 UTC 2025 - Stanislav Brabec <sbrabec@suse.com>
 
 - Never alter /usr/etc and /usr/lib/pam.d. Create a copy in /etc,

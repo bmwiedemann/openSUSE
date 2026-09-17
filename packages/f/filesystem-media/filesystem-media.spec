@@ -1,7 +1,7 @@
 #
 # spec file for package filesystem-media
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,13 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} >= 1699
+%bcond_without selinux
+%endif
+%global modulename polymedia
+%global selinuxtype targeted
+%global selinuxbooleans polyinstantiation_enabled=1
 
 %if ! %{defined _distconfdir}
 %define support_distconfdir 0
@@ -32,9 +39,14 @@ Group:          System/Fhs
 Source1:        %{name}.README
 Source2:        %{name}.init
 Source3:        %{name}-rpmlintrc
+Source4:        %{modulename}.te
 BuildRequires:  pam
 BuildRequires:  pam-devel
+BuildRequires:  pkgconfig(systemd)
 Requires:       acl
+%if %{with selinux}
+Requires:       (%{name}-selinux if selinux-policy-%{selinuxtype})
+%endif
 Requires(post): pam
 #Supplements:    udisks2
 BuildArch:      noarch
@@ -43,6 +55,20 @@ BuildArch:      noarch
 The Filesystem Hierarchy Standard defines /media as a directory for removable
 media. This package provides an udisks compatible /media directory.
 
+%if %{with selinux}
+# SELinux subpackage
+%package selinux
+Summary:        SELinux policy for filesystem-media
+BuildArch:      noarch
+Requires:       selinux-policy-%{selinuxtype}
+Requires(post): selinux-policy-%{selinuxtype}
+BuildRequires:  selinux-policy-devel
+%{?selinux_requires}
+
+%description selinux
+Custom SELinux policy module for filesystem-media
+%endif
+
 %prep
 %setup -q -c -T
 cp %{SOURCE1} README
@@ -50,10 +76,22 @@ cp %{SOURCE2} .
 
 %build
 
+%if %{with selinux}
+mkdir selinux
+cp -p %{SOURCE4} selinux/
+
+make -f %{_datadir}/selinux/devel/Makefile %{modulename}.pp
+bzip2 -9 %{modulename}.pp
+%endif
+
 %install
 mkdir %{buildroot}/media
 mkdir -p %{buildroot}%{_confdir}/security/namespace.d
 install %{name}.init %{buildroot}%{_confdir}/security/namespace.d/
+
+%if %{with selinux}
+install -D -m 0644 %{modulename}.pp.bz2 %{buildroot}%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+%endif
 
 %triggerin -- pam xdm gdm util-linux lxdm sddm
 RC=0
@@ -127,6 +165,29 @@ if test $1 -eq 0 ; then
 	done
 fi
 
+%if %{with selinux}
+# SELinux contexts are saved so that only affected files can be
+# relabeled after the policy module installation
+%pre selinux
+%selinux_relabel_pre -s %{selinuxtype}
+
+%post selinux
+%selinux_modules_install -s %{selinuxtype} %{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.bz2
+if [ $1 -eq 1 ]; then
+    %selinux_set_booleans -s %{selinuxtype} %{selinuxbooleans}
+fi
+
+%postun selinux
+if [ $1 -eq 0 ]; then
+    %selinux_modules_uninstall -s %{selinuxtype} %{modulename}
+    %selinux_unset_booleans -s %{selinuxtype} %{selinuxbooleans}
+fi
+
+%posttrans selinux
+%selinux_relabel_post -s %{selinuxtype}
+# if with_selinux
+%endif
+
 %files
 %doc README
 /media
@@ -134,6 +195,12 @@ fi
 %if ! %{support_distconfdir}
 # FIXME: should be owned by pam
 %dir %{_confdir}/security/namespace.d
+%endif
+
+%if %{with selinux}
+%files selinux
+%{_datadir}/selinux/packages/%{selinuxtype}/%{modulename}.pp.*
+%ghost %dir %attr(0700,root,root) %verify(not md5 size mode mtime) %{_selinux_store_path}/%{selinuxtype}/active/modules/200/%{modulename}
 %endif
 
 %changelog

@@ -7,4 +7,12 @@
     <comment>After fixing of distconfdir support, re-adding previously dropped package.</comment>
     <requestid>1267893</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>16b2479635f348c6a655bf16836cf418</srcmd5>
+    <version>0.1</version>
+    <time>1789651083</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378225</requestid>
+  </revision>
 </revisionlist>
