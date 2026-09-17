@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 14 12:27:17 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- don't pull in python-tables as it is no longer building for 32-bit
+- split into multibuild flavors for tests
+
+-------------------------------------------------------------------
 Sun Sep 14 21:24:56 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.3.1:

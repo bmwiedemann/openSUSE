@@ -1,7 +1,7 @@
 #
 # spec file for package python-apptools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,16 @@
 
 
 %define         X_display         ":98"
-%define         skip_python2      1
-%ifarch ppc ppc64 ppc64le s390x
-%bcond_with     test
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
 %else
-%bcond_without  test
+%define psuffix %{nil}
+%bcond_with test
 %endif
-Name:           python-apptools
+
+Name:           python-apptools%{psuffix}
 Version:        5.3.1
 Release:        0
 Summary:        Application tools in Python
@@ -46,9 +49,9 @@ Recommends:     python-tables
 BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
+BuildRequires:  %{python_module apptools = %{version}}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module tables}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
 %endif
@@ -64,6 +67,7 @@ Part of the Enthought Tool Suite (ETS).
 %prep
 %autosetup -p1 -n apptools-%{version}
 
+%if !%{with test}
 %build
 %pyproject_wheel
 # Remove duplicates now so we can let rpm install it later
@@ -75,6 +79,7 @@ Part of the Enthought Tool Suite (ETS).
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 %fdupes %{buildroot}%{$python_sitelib}
 }
+%endif
 
 %if %{with test}
 %check
@@ -86,11 +91,13 @@ sleep 10
 %pyunittest -v
 %endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst CHANGES.txt
 %doc examples/
 %license LICENSE.txt image_LICENSE*.txt
 %{python_sitelib}/apptools/
 %{python_sitelib}/apptools-%{version}.dist-info
+%endif
 
 %changelog

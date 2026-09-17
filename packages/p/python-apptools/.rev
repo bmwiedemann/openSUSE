@@ -97,4 +97,12 @@
   * Fix a test that was broken in the presence of Mayavi / TVTK. (#352)</comment>
     <requestid>1304693</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>0c8c84e411319a22ab753c72b6147823</srcmd5>
+    <version>5.3.1</version>
+    <time>1789651535</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378590</requestid>
+  </revision>
 </revisionlist>
