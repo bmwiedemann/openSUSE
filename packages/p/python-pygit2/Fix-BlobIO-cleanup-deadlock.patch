@@ -1,0 +1,56 @@
+From be67bec299cf38517fe23ec1fb6652ee82cef906 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Michal=20Koutn=C3=BD?= <mkoutny@suse.com>
+Date: Thu, 10 Sep 2026 15:16:33 +0200
+Subject: [PATCH] Fix BlobIO cleanup deadlock
+
+When reading less than 8 KiB from the blob's data
+(io.DEFAULT_BUFFER_SIZE), the close() method would hang.
+
+Namely, close() thread would wait for self._writer_closed
+but the writer thread that'd set this is blocked by waiting
+in Blob__write_to_queue/.../blob_filter_stream_write/queue.put.
+The queue remains "full" (maxsize=1) because of unread data and no
+progress happens.
+
+Fix this by switching to "busy" wait for _writer_closed thus we empty
+the queue from the main thread and writer thread can proceed to its
+termination.
+
+Fixes #1488
+Assisted-by: sonnet-5
+---
+ pygit2/blob.py | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+
+diff --git a/pygit2/blob.py b/pygit2/blob.py
+index 1ee6a9eb..cb496c53 100644
+--- a/pygit2/blob.py
++++ b/pygit2/blob.py
+@@ -86,10 +86,20 @@ class _BlobIO(io.RawIOBase):
+ 
+     def close(self) -> None:
+         try:
+-            self._ready.wait()
+-            self._writer_closed.wait()
+-            while self._queue is not None and not self._queue.empty():
+-                self._queue.get()
++            # The writer thread may be blocked in queue.put() because the
++            # queue (maxsize=1) still holds a chunk that was never consumed
++            # (e.g. the reader stopped before reaching EOF). Draining the
++            # queue must happen *before* (not after) waiting for
++            # `_writer_closed`, otherwise the writer can never make progress
++            # to reach its close callback and this would deadlock.
++            while True:
++                self._ready.wait()
++                while self._queue is not None and not self._queue.empty():
++                    self._queue.get()
++                if self._writer_closed.is_set():
++                    # Done
++                    break
++                self._ready.clear()
+             self._thread.join()
+         except KeyboardInterrupt:
+             pass
+-- 
+2.51.0
+

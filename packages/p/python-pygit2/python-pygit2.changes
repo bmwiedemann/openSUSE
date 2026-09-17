@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 07:06:00 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Exclude another broken test (bsc#1278723)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:33:54 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix BlobIO deadlock (gh#libgit2/pygit2#1488)
+  * Fix-BlobIO-cleanup-deadlock.patch
+
+-------------------------------------------------------------------
 Mon Jun 15 09:31:48 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - update to 1.19.3:

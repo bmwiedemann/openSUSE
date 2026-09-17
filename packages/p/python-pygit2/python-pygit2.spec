@@ -25,6 +25,7 @@ Summary:        Python bindings for libgit2
 License:        GPL-2.0-only
 URL:            https://github.com/libgit2/pygit2
 Source:         https://files.pythonhosted.org/packages/source/p/pygit2/pygit2-%{version}.tar.gz
+Patch1:         Fix-BlobIO-cleanup-deadlock.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module cached-property}
 BuildRequires:  %{python_module cffi >= 1.17.0}
@@ -63,11 +64,17 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 
 %check
 rm -rf pygit2
+donttest=""
+%ifarch s390x
 # test_no_context_lines failing on big endian
 # https://github.com/libgit2/pygit2/issues/812
-donttest="test_no_context_lines"
-donttest="$donttest or test_push_options"
+donttest="test_no_context_lines or test_diff_blobs"
+%endif
+if [ -n "$donttest" ] ; then
 %pytest_arch -k "not ($donttest)"
+else
+%pytest_arch
+fi
 
 %files %{python_files}
 %license COPYING

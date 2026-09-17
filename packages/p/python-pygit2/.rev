@@ -563,4 +563,12 @@ Update to pygit2 1.17.0 and make sure it builds with libgit2 1.9.
   * Documentation and annotation fixes #410 #1289 #1323 #1333 #1458 #1460</comment>
     <requestid>1359492</requestid>
   </revision>
+  <revision rev="47" vrev="2">
+    <srcmd5>296734acef6cc98c279b3116037b3c0c</srcmd5>
+    <version>1.19.3</version>
+    <time>1789657199</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378557</requestid>
+  </revision>
 </revisionlist>
