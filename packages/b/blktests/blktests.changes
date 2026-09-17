@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:43:59 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
+
+- Update to version 0+20260917.678a07a:
+  * Relicense block/029, block/030, block/031 and block/040 from
+    GPL-2.0 to GPL-3.0+, resolving their incompatibility with the
+    GPL-3.0+ common code they source
+  * nvme: add support for nvme-cli 3.x's grouped/plugin commands via
+    an indirection layer (nvme-cli 2.x commands keep working)
+  * nvme/054: adapt to the nvme-cli ECN132 regctl -> regstrnt rename
+  * Fix several flaky/incorrect test results: dmesg marker collisions
+    on repeated runs, an nvme/068 module-refcount race, queue/scheduler
+    sysfs EBUSY on concurrent writes, common/nvme truncating the FULL
+    log on disconnect, and block/035 and common/scsi_debug silently
+    reporting success on fio/module-param failures
+  * src/Makefile: fix the HAVE_C_DEF probe breaking under a non-bash
+    /bin/sh, which silently skipped the miniublk build
+  * src/dio-offsets.c: fix a missing-header build failure
+  * block/045: respect dma_alignment
+  * Add new tests: block/045 (full-trim bvec alignment), block/046
+    (bounced-read double-unpin), block/047 (concurrent IO scheduler
+    switching), block/048 (lost mmap write), throtl/009 (cgroup
+    removal with queued IO), and nvme support for multiple host ports
+- Spec cleanup: reorder the conditional liburing-devel BuildRequires
+  per spec-cleaner (no functional change)
+
+-------------------------------------------------------------------
 Mon Jul 27 12:09:27 UTC 2026 - Sebastian Chlad <sebastian.chlad@suse.com>
 
 - Update to version 0+20260724.6f5a1dc:

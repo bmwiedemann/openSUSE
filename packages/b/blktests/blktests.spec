@@ -17,7 +17,7 @@
 
 
 Name:           blktests
-Version:        0+20260724.6f5a1dc
+Version:        0+20260917.678a07a
 Release:        0
 Summary:        Linux kernel block layer testing framework
 License:        GPL-2.0-or-later
@@ -25,9 +25,6 @@ URL:            https://github.com/osandov/blktests
 Source:         %{name}-%{version}.tar.xz
 Patch0:         0001-tests-md-allow-overriding-minimum-kernel-version-via.patch
 BuildRequires:  gcc-c++
-%if 0%{?suse_version} > 1500
-BuildRequires:  liburing-devel >= 2.2
-%endif
 Requires:       fio
 Requires:       gawk
 Requires:       gcc
@@ -38,6 +35,9 @@ Recommends:     e2fsprogs
 Recommends:     multipath-tools
 Recommends:     nvme-cli
 Recommends:     xfsprogs
+%if 0%{?suse_version} > 1500
+BuildRequires:  liburing-devel >= 2.2
+%endif
 
 %description
 blktests is a test framework for the Linux kernel block layer and
