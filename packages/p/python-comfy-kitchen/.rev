@@ -74,4 +74,12 @@ in this CPU-only build. The cpu-only-build patch still applies unchanged.
 Factory's comfyui floor (&gt;= 0.2.31) satisfied.</comment>
     <requestid>1376111</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>cbc4dcf08b392777152fcfa69c9820ae</srcmd5>
+    <version>0.2.34</version>
+    <time>1789651057</time>
+    <user>anag_factory</user>
+    <comment>Forward 0.2.34 to Factory (CPU-only eager build; aarch64 green).</comment>
+    <requestid>1378170</requestid>
+  </revision>
 </revisionlist>

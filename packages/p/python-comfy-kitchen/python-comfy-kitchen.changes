@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:21:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.34:
+  * Eager backend: new conv3d and group_norm_pad3d modules plus
+    persistent RoPE allocation handling; faster
+    apply_rope_split_half1
+  * CUDA/HIP MiniMax H3 VAE kernels (fused encoder pad/norm,
+    fp16 conv3d/GEMM, int8 residual epilogue); not shipped in
+    this CPU-only build
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.33:

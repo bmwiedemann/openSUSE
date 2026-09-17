@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-kitchen
-Version:        0.2.33
+Version:        0.2.34
 Release:        0
 Summary:        Fast kernel library for ComfyUI (CPU/eager backend)
 # Legal-Review-Notice: NOTICE names the NVIDIA CUDA runtime EULA for a
