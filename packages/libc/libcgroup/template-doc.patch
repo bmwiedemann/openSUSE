@@ -3,15 +3,15 @@ Date: Thu, 19 Sep 2013 08:33:12 +0200
 Subject: Updating template documentation to match template code (Closes: #682748).
 
 Last-Update: 2014-07-26
+
 ---
- doc/man/cgrules.conf.5 | 12 ++++++------
+ doc/man/cgrules.conf.5 |   12 ++++++------
  1 file changed, 6 insertions(+), 6 deletions(-)
 
 diff --git a/doc/man/cgrules.conf.5 b/doc/man/cgrules.conf.5
-index 7a89fb5..29061b9 100644
 --- a/doc/man/cgrules.conf.5
 +++ b/doc/man/cgrules.conf.5
-@@ -58,12 +58,12 @@ can be:
+@@ -59,12 +59,12 @@ can be:
      - path relative to the controller hierarchy (ex. pgrp1/gid1/uid1)
      - following strings called "\fBtemplates\fR" and will get expanded
  
@@ -28,5 +28,5 @@ index 7a89fb5..29061b9 100644
 +          %p     pid
 +          %P     process name, pid if name not available
  
-           '\\' can be used to escape '%'
- .fi
+     - '\\' can be used to escape '%'
+     - quotation marks '"' can be used for names and/or paths with spaces

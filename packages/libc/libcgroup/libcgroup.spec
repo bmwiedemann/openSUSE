@@ -1,7 +1,7 @@
 #
 # spec file for package libcgroup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,11 +23,11 @@
 
 %define lname	libcgroup3
 Name:           libcgroup
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        Tools and libraries to control and monitor control groups
 License:        LGPL-2.1-only
-Url:            https://github.com/libcgroup/libcgroup
+URL:            https://github.com/libcgroup/libcgroup
 Source:         https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/%{name}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        libcgroup.keyring
@@ -48,11 +48,11 @@ BuildRequires:  flex
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
 BuildRequires:  permissions
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(pam)
-BuildRequires:  pkgconfig(pkgconf)
 BuildRequires:  pkgconfig(pkg-config)
-BuildRequires:  sysuser-tools
+BuildRequires:  pkgconfig(pkgconf)
 %if ! %{defined _pam_moduledir}
 %define _pam_moduledir /%{_lib}/security
 %endif
@@ -65,6 +65,7 @@ administrate and monitor control groups and the associated controllers.
 
 %package -n %{lname}
 Summary:        Control groups management library
+
 %description -n %{lname}
 
 The shared library libcgroup 3.1.0 its self.
@@ -121,9 +122,9 @@ processes to pre-configured control group.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
+%patch -P1 -p1 -b .p1
 %patch -P2 -p1
-%patch -P3 -p1
+%patch -P3 -p1 -b .p3
 %patch -P4
 %patch -P5
 

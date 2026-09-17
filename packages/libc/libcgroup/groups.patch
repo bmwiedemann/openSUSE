@@ -4,7 +4,7 @@
 
 --- src/tools/cgexec.c
 +++ src/tools/cgexec.c	2024-10-02 13:10:56.264649618 +0000
-@@ -164,6 +164,12 @@ int main(int argc, char *argv[])
+@@ -167,6 +167,12 @@ int main(int argc, char *argv[])
  		return -1;
  	}
  

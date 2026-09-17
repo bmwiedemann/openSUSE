@@ -6,26 +6,23 @@ Hyphens used as minus signs must be escaped.
 
 Last-Update: 2015-10-02
 ---
- doc/man/cgclassify.1     |  8 +++---
- doc/man/cgclear.1        | 16 ++++++------
- doc/man/cgconfig.conf.5  | 66 ++++++++++++++++++++++++------------------------
- doc/man/cgconfigparser.8 | 30 +++++++++++-----------
- doc/man/cgcreate.1       | 24 +++++++++---------
- doc/man/cgdelete.1       | 10 ++++----
- doc/man/cgexec.1         | 18 ++++++-------
- doc/man/cgget.1          | 30 +++++++++++-----------
- doc/man/cgred.conf.5     |  6 ++---
- doc/man/cgrulesengd.8    | 32 +++++++++++------------
- doc/man/cgset.1          |  8 +++---
- doc/man/cgsnapshot.1     | 20 +++++++--------
- doc/man/lscgroup.1       |  4 +--
- doc/man/lssubsys.1       | 28 ++++++++++----------
- 14 files changed, 150 insertions(+), 150 deletions(-)
+ libcgroup-3.2.0/doc/man/cgclassify.1     |    8 +--
+ libcgroup-3.2.0/doc/man/cgconfig.conf.5  |   66 +++++++++++++++----------------
+ libcgroup-3.2.0/doc/man/cgconfigparser.8 |   30 +++++++-------
+ libcgroup-3.2.0/doc/man/cgcreate.1       |   46 ++++++++++-----------
+ libcgroup-3.2.0/doc/man/cgdelete.1       |   10 ++--
+ libcgroup-3.2.0/doc/man/cgexec.1         |   18 ++++----
+ libcgroup-3.2.0/doc/man/cgget.1          |   30 +++++++-------
+ libcgroup-3.2.0/doc/man/cgred.conf.5     |    6 +-
+ libcgroup-3.2.0/doc/man/cgrulesengd.8    |   32 +++++++--------
+ libcgroup-3.2.0/doc/man/cgset.1          |   18 ++++----
+ libcgroup-3.2.0/doc/man/cgsnapshot.1     |   20 ++++-----
+ libcgroup-3.2.0/doc/man/lscgroup.1       |    4 -
+ libcgroup-3.2.0/doc/man/lssubsys.1       |   28 ++++++-------
+ 13 files changed, 158 insertions(+), 158 deletions(-)
 
-Index: libcgroup/doc/man/cgclassify.1
-===================================================================
---- libcgroup.orig/doc/man/cgclassify.1
-+++ libcgroup/doc/man/cgclassify.1
+--- libcgroup-3.2.0/doc/man/cgclassify.1
++++ libcgroup-3.2.0/doc/man/cgclassify.1	2026-09-16 12:48:58.908502962 +0000
 @@ -6,7 +6,7 @@
  cgclassify \- move running task(s) to given cgroups
  
@@ -62,11 +59,9 @@ Index: libcgroup/doc/man/cgclassify.1
  If this option is used, the daemon of service cgred (cgrulesengd process)
  can automatically change both the specified \fBpidlist\fR and their child
  tasks to the right cgroup based on \fB/etc/cgrules.conf\fR.
-Index: libcgroup/doc/man/cgconfig.conf.5
-===================================================================
---- libcgroup.orig/doc/man/cgconfig.conf.5
-+++ libcgroup/doc/man/cgconfig.conf.5
-@@ -280,7 +280,7 @@ inside. It corresponds to the following
+--- libcgroup-3.2.0/doc/man/cgconfig.conf.5
++++ libcgroup-3.2.0/doc/man/cgconfig.conf.5	2026-09-16 12:48:58.968501893 +0000
+@@ -327,7 +327,7 @@ inside. It corresponds to the following
  .RS
  .nf
  mkdir /sys/fs/cgroup/cpu
@@ -75,7 +70,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  .fi
  .RE
  
-@@ -323,8 +323,8 @@ following operations:
+@@ -370,8 +370,8 @@ following operations:
  .RS
  .nf
  mkdir /sys/fs/cgroup/cpu
@@ -86,7 +81,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  mkdir /sys/fs/cgroup/cpu/daemons
  echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
-@@ -432,7 +432,7 @@ which are little bit trickier to emulate
+@@ -479,7 +479,7 @@ which are little bit trickier to emulate
  .RS
  .nf
  mkdir /sys/fs/cgroup/cpu
@@ -95,7 +90,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  mkdir /sys/fs/cgroup/cpu/daemons
  
-@@ -442,23 +442,23 @@ chown root:webmaster /sys/fs/cgroup/cpu/
+@@ -489,23 +489,23 @@ chown root:webmaster /sys/fs/cgroup/cpu/
  echo 1000 > /sys/fs/cgroup/cpu/daemons/www/cpu.shares
  
   # + chmod the files so the result looks like:
@@ -131,7 +126,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  
  mkdir /sys/fs/cgroup/cpu/daemons/ftp
-@@ -467,23 +467,23 @@ chown root:ftpmaster /sys/fs/cgroup/cpu/
+@@ -514,23 +514,23 @@ chown root:ftpmaster /sys/fs/cgroup/cpu/
  echo 500 > /sys/fs/cgroup/cpu/daemons/ftp/cpu.shares
  
   # + chmod the files so the result looks like:
@@ -167,7 +162,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  .fi
  .RE
-@@ -537,8 +537,8 @@ It corresponds to the following operatio
+@@ -584,8 +584,8 @@ It corresponds to the following operatio
  .nf
  mkdir /sys/fs/cgroup/cpu
  mkdir /sys/fs/cgroup/cpuacct
@@ -178,7 +173,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  mkdir /sys/fs/cgroup/cpu/daemons
  mkdir /sys/fs/cgroup/cpuacct/daemons
-@@ -604,8 +604,8 @@ It corresponds to the following operatio
+@@ -651,8 +651,8 @@ It corresponds to the following operatio
  .nf
  mkdir /sys/fs/cgroup/cpu
  mkdir /sys/fs/cgroup/cpuacct
@@ -189,7 +184,7 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  mkdir /sys/fs/cgroup/cpuacct/daemons
  mkdir /sys/fs/cgroup/cpu/daemons
-@@ -702,7 +702,7 @@ It corresponds to the following operatio
+@@ -749,7 +749,7 @@ It corresponds to the following operatio
  .RS
  .nf
  mkdir /sys/fs/cgroup/cpu
@@ -198,10 +193,8 @@ Index: libcgroup/doc/man/cgconfig.conf.5
  
  chown root:operator /sys/fs/cgroup/cpu/*
  chown root:operator /sys/fs/cgroup/cpu/tasks
-Index: libcgroup/doc/man/cgconfigparser.8
-===================================================================
---- libcgroup.orig/doc/man/cgconfigparser.8
-+++ libcgroup/doc/man/cgconfigparser.8
+--- libcgroup-3.2.0/doc/man/cgconfigparser.8
++++ libcgroup-3.2.0/doc/man/cgconfigparser.8	2026-09-16 12:48:59.024500895 +0000
 @@ -7,61 +7,61 @@
  cgconfigparser \- setup control group file system
  
@@ -279,10 +272,8 @@ Index: libcgroup/doc/man/cgconfigparser.8
  defines the default owner of tasks file of the defined control
  group. I.e. this user and members
  of this group have write access to the file.
-Index: libcgroup/doc/man/cgcreate.1
-===================================================================
---- libcgroup.orig/doc/man/cgcreate.1
-+++ libcgroup/doc/man/cgcreate.1
+--- libcgroup-3.2.0/doc/man/cgcreate.1
++++ libcgroup-3.2.0/doc/man/cgcreate.1	2026-09-16 12:48:59.084499826 +0000
 @@ -5,54 +5,54 @@
  cgcreate \- create new cgroup(s)
  
@@ -394,10 +385,8 @@ Index: libcgroup/doc/man/cgcreate.1
  defines the name of the user and the group, which owns tasks
  file of the defined control group. I.e. this user and members
  of this group have write access to the file.
-Index: libcgroup/doc/man/cgdelete.1
-===================================================================
---- libcgroup.orig/doc/man/cgdelete.1
-+++ libcgroup/doc/man/cgdelete.1
+--- libcgroup-3.2.0/doc/man/cgdelete.1
++++ libcgroup-3.2.0/doc/man/cgdelete.1	2026-09-16 12:48:59.140498828 +0000
 @@ -7,7 +7,7 @@
  cgdelete \- remove control group(s)
  
@@ -430,10 +419,8 @@ Index: libcgroup/doc/man/cgdelete.1
  Recursively remove all subgroups.
  
  .SH ENVIRONMENT VARIABLES
-Index: libcgroup/doc/man/cgexec.1
-===================================================================
---- libcgroup.orig/doc/man/cgexec.1
-+++ libcgroup/doc/man/cgexec.1
+--- libcgroup-3.2.0/doc/man/cgexec.1
++++ libcgroup-3.2.0/doc/man/cgexec.1	2026-09-16 12:48:59.200497759 +0000
 @@ -7,7 +7,7 @@
  cgexec \- run the task in given control groups
  
@@ -499,10 +486,8 @@ Index: libcgroup/doc/man/cgexec.1
  .ft R
  .fi
  runs command \fBls -l\fR in control group test1
-Index: libcgroup/doc/man/cgget.1
-===================================================================
---- libcgroup.orig/doc/man/cgget.1
-+++ libcgroup/doc/man/cgget.1
+--- libcgroup-3.2.0/doc/man/cgget.1
++++ libcgroup-3.2.0/doc/man/cgget.1	2026-09-16 12:48:59.268496548 +0000
 @@ -7,11 +7,11 @@
  cgget \- print parameter(s) of given group(s)
  
@@ -595,10 +580,8 @@ Index: libcgroup/doc/man/cgget.1
  Unified Mode (Cgroup v2 only).
  
  .fi
-Index: libcgroup/doc/man/cgred.conf.5
-===================================================================
---- libcgroup.orig/doc/man/cgred.conf.5
-+++ libcgroup/doc/man/cgred.conf.5
+--- libcgroup-3.2.0/doc/man/cgred.conf.5
++++ libcgroup-3.2.0/doc/man/cgred.conf.5	2026-09-16 12:48:59.324495550 +0000
 @@ -21,13 +21,13 @@ variable specifies the file to which log
  
  .TP
@@ -616,10 +599,8 @@ Index: libcgroup/doc/man/cgred.conf.5
  .LP
  
  
-Index: libcgroup/doc/man/cgrulesengd.8
-===================================================================
---- libcgroup.orig/doc/man/cgrulesengd.8
-+++ libcgroup/doc/man/cgrulesengd.8
+--- libcgroup-3.2.0/doc/man/cgrulesengd.8
++++ libcgroup-3.2.0/doc/man/cgrulesengd.8	2026-09-16 12:48:59.384494481 +0000
 @@ -22,40 +22,40 @@ The daemon opens a standard unix socket
  
  .SH OPTIONS
@@ -677,23 +658,28 @@ Index: libcgroup/doc/man/cgrulesengd.8
  
  .SH ENVIRONMENT VARIABLES
  .TP
-Index: libcgroup/doc/man/cgset.1
-===================================================================
---- libcgroup.orig/doc/man/cgset.1
-+++ libcgroup/doc/man/cgset.1
+--- libcgroup-3.2.0/doc/man/cgset.1
++++ libcgroup-3.2.0/doc/man/cgset.1	2026-09-16 12:51:51.509427679 +0000
 @@ -7,9 +7,9 @@
  cgset \- set the parameters of given cgroup(s)
  
  .SH SYNOPSIS
--\fBcgset\fR [\fB-b\fR] [\fB-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
-+\fBcgset\fR [\fB\-b\fR] [\fB\-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
+-\fBcgset\fR [\fB-b\fR] [\fB-R\fR] [\fB-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
++\fBcgset\fR [\fB\-b\fR] [\fB\-R\fR] [\fB\-r\fR <\fIname=value\fR>] <\fBcgroup_path\fR> ...
  .br
--\fBcgset\fR [\fB-b\fR] \fB--copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
-+\fBcgset\fR [\fB\-b\fR] \fB\-\-copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
+-\fBcgset\fR [\fB-b\fR] [\fB-R\fR] \fB--copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
++\fBcgset\fR [\fB\-b\fR] [\fB\-R\fR] \fB\-\-copy-from\fR <\fIsource_cgroup_path\fR> <\fBcgroup_path\fR> ...
  
  .SH DESCRIPTION
  Set the parameters of input cgroups.
-@@ -26,13 +26,13 @@ constructs the path of the control group
+@@ -20,24 +20,24 @@ is the name of the cgroup which should b
+ This parameter can be used multiple times.
+ 
+ .TP
+-.B -b
++.B \-b
+ ignores the default systemd delegated hierarchy path and
+ constructs the path of the control groups relative to the
  cgroup root hierarchy.
  
  .TP
@@ -704,15 +690,34 @@ Index: libcgroup/doc/man/cgset.1
  This parameter can be used multiple times.
  
  .TP
+-.B -R
+-recursively sets variable settings passed with -r option
++.B \-R
++recursively sets variable settings passed with \-r option
+ to cgroup_path and its descendant cgroups.
+ 
+ .TP
 -.B --copy-from <source_cgroup_path>
 +.B \-\-copy-from <source_cgroup_path>
  defines the name of the cgroup whose parameters will be
  copied to the input cgroup.
  
-Index: libcgroup/doc/man/cgsnapshot.1
-===================================================================
---- libcgroup.orig/doc/man/cgsnapshot.1
-+++ libcgroup/doc/man/cgsnapshot.1
+@@ -49,11 +49,11 @@ controls verbosity of the tool. Allowed
+ 
+ .SH EXAMPLES
+ .TP
+-.B cgset -r cpuset.cpus=0-1 student
++.B cgset \-r cpuset.cpus=0-1 student
+ set variable cpus in control group student (controller cpuset) to 0-1
+ 
+ .TP
+-.B cgset --copy-from group1/ group2/
++.B cgset \-\-copy-from group1/ group2/
+ copy all parameters of group group1 to group group2
+ (for all path where both cgroups are defined)
+ 
+--- libcgroup-3.2.0/doc/man/cgsnapshot.1
++++ libcgroup-3.2.0/doc/man/cgsnapshot.1	2026-09-16 12:48:59.596490703 +0000
 @@ -7,8 +7,8 @@
  cgsnapshot \- generate the configuration file for given controllers
  
@@ -777,10 +782,8 @@ Index: libcgroup/doc/man/cgsnapshot.1
  flag is used, the variable which is not on the allowlist is
  not displayed.
  
-Index: libcgroup/doc/man/lscgroup.1
-===================================================================
---- libcgroup.orig/doc/man/lscgroup.1
-+++ libcgroup/doc/man/lscgroup.1
+--- libcgroup-3.2.0/doc/man/lscgroup.1
++++ libcgroup-3.2.0/doc/man/lscgroup.1	2026-09-16 12:48:59.660489564 +0000
 @@ -7,9 +7,9 @@
  lscgroup \- list all cgroups
  
@@ -793,10 +796,8 @@ Index: libcgroup/doc/man/lscgroup.1
  
  .SH DESCRIPTION
  List all/chosen cgroups.
-Index: libcgroup/doc/man/lssubsys.1
-===================================================================
---- libcgroup.orig/doc/man/lssubsys.1
-+++ libcgroup/doc/man/lssubsys.1
+--- libcgroup-3.2.0/doc/man/lssubsys.1
++++ libcgroup-3.2.0/doc/man/lssubsys.1	2026-09-16 12:48:59.720488493 +0000
 @@ -7,13 +7,13 @@
  lssubsys \- list hierarchies containing given subsystem
  

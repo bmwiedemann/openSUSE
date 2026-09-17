@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 16 13:02:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to libcgroup-3.2.0
+  * Add cgroup_get_cgroup_name() to exported symbols map
+  * Add cgroup_is_systemd_enabled() to exported symbols map
+  * Add cgroup_attach_thread_tid() to exported symbols map
+  * Add cgroup_get_threads() to exported symbols map
+  * Add cgroup_attach_thread_tid() to exported symbols map
+  * Add recursive option, '-R', to cgset and cgxset
+  * Add ignore_rt option to cgrulesengd
+  * Add support for any whitespace characters in cgrules configuration files
+  * Fix issue where cgroup creation failed due to disabled controllers
+  * Various cleanups in the systemd code, especially for when it is undefined
+  * Various changes in the continuous integration actions
+    Switch to using Github-hosted runners
+    Add a checkpatch Github action
+  * Various fixes for issues reported by Coverity
+- Port patches
+  * Syntax-fixes-for-man-pages.patch
+  * cgroup-directory.patch
+  * groups.patch
+  * libcgroup.spec
+  * template-doc.patch
+
+-------------------------------------------------------------------
 Wed Oct  2 13:43:06 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Clean up package
