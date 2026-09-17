@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:01:41 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.4.7:
+  * v2.4.7 (#5042)
+  * Backport security-flagged dependency bumps (x/crypto, grpc, containerd, go-git, x/net) (#5040)
+
+-------------------------------------------------------------------
 Thu Sep 10 12:48:10 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Pin go version to 1.26 due to https://github.com/grpc/grpc-go/issues/9206

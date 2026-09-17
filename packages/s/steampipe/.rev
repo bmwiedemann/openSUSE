@@ -341,4 +341,14 @@
   * Bump Go toolchain to 1.26.7 to remediate CVE-2026-39821 (GO-2026-5026) (#5031) (#5033) (forwarded request 1376947 from ph03nix)</comment>
     <requestid>1376953</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7a6338b3730ece76bee7b8453ddafe0f</srcmd5>
+    <version>2.4.7</version>
+    <time>1789651248</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.4.7:
+  * v2.4.7 (#5042)
+  * Backport security-flagged dependency bumps (x/crypto, grpc, containerd, go-git, x/net) (#5040) (forwarded request 1378357 from ph03nix)</comment>
+    <requestid>1378374</requestid>
+  </revision>
 </revisionlist>
