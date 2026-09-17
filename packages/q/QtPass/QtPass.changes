@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:11:36 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.8.1:
+  * Release v1.8.1 (#1749)
+  * Backport: fix copying an entry onto a folder in the native backend (#1735) (#1748)
+  * ci: run the workflows for the 1.8 maintenance branch too (#1745)
+  * CHANGELOG: 1.8.1 entries for the gpgHome fallback (#1741) and the agent-safe test (#1739) (#1743)
+  * Backport: ignore a configured GPG home that does not exist (#1711) (#1741)
+  * test: stop tst_executor from killing the developer's gpg-agent (1.8) (#1739)
+  * Translations update from Hosted Weblate (#1729)
+  * ci: cache the Qt installs, drop the 6.11.1 pin (#1732)
+  * CHANGELOG: 1.8.1 security and bugfix backports; SECURITY.md versions (#1733)
+  * fix: surface unset executables instead of wedging the command queue (#1682) (#1691) (#1716)
+  * Backport: Pass --no-encrypt-to on every gpg encrypt call (#1709) (#1725)
+  * Backport: Harden the single-instance IPC (#1709) (#1728)
+  * Backport: Only link launchable http(s) URLs in inline anchors (#1709) (#1726)
+  * Clamp passwordCharsSelection when loading settings (#1682) (#1724)
+  * Backport: Run WSL commands with --exec instead of the default shell (#1709) (#1723)
+  * fix: keep PasswordDialog inert until the decrypt lands (#1682) (#1690) (#1722)
+  * Backport: keep the keygen passphrase out of the template box (#1709) (#1718)
+  * Backport: quit on cancelled first-run wizard, re-ask when invalid (#1709) (#1717)
+  * Backport: seed new-folder .gpg-id from parent recipients (#1709) (#1714)
+  * Backport: keep untracked files out of backup commit, stage .gpg-id in Init (#1709) (#1713)
+  * Stop dropping .gpg-id recipients gpg would accept (#1682) (#1684) (#1710)
+  * Backport: password pane and URL tooltip HTML entity fixes (#1709) (#1712)
+  * Flatpak CI: build the checkout under review, not the pinned tag (#1727)
+  * skills: post-release checklist for the downstream packages we maintain (#1708)
+  * Flatpak: manifest, CI build, and the upstream metadata Flathub requires (#1680)
+  * ci: build and test on FreeBSD 14 (Qt 6) (#1681)
+  * scripts: sign-release-assets tolerates source archives already uploaded as assets (#1678)
+
+-------------------------------------------------------------------
 Sun Sep 13 20:33:15 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.8.0:

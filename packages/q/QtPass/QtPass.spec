@@ -18,7 +18,7 @@
 
 %define         _name qtpass
 Name:           QtPass
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
@@ -64,6 +64,7 @@ install -Dpm0644 %{_name}.1 %{buildroot}%{_mandir}/man1/%{_name}.1
 %{_bindir}/%{_name}
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{_name}-icon.svg
+%{_datadir}/icons/hicolor/512x512/apps/%{_name}-icon.png
 %{_datadir}/metainfo/%{_name}.appdata.xml
 %{_mandir}/man?/%{_name}.?%{ext_man}
 
