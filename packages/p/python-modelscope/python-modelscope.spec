@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-modelscope
-Version:        1.40.0
+Version:        1.40.1
 Release:        0
 Summary:        ModelScope hub and library core (Model-as-a-Service SDK)
 # Legal-Review-Notice: The sdist vendors non-free NVIDIA EG3D/StyleGAN
@@ -34,7 +34,7 @@ Source:         https://files.pythonhosted.org/packages/source/m/modelscope/mode
 Patch0:         fix-CVE-2026-84202.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module filelock}
-BuildRequires:  %{python_module modelscope-hub >= 0.3.0}
+BuildRequires:  %{python_module modelscope-hub >= 0.4.2}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module requests >= 2.25}
@@ -45,7 +45,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-filelock
-Requires:       python-modelscope-hub >= 0.3.0
+Requires:       python-modelscope-hub >= 0.4.2
 Requires:       python-packaging
 Requires:       python-requests >= 2.25
 Requires:       python-setuptools

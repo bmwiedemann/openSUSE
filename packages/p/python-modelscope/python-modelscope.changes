@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:26:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.40.1:
+  * Add JAEC native inference pipeline (audio/AEC)
+  * Add FLA-TF-Locoformer and FLA-T-SepReformer 2-speaker
+    8 kHz speech separators, with ONNX export
+  * Add Agent IDP (key rotation, signed tokens) and MCP
+    Studio OpenAPI (deploy_mcp_server / undeploy_mcp_server)
+  * Require python-modelscope-hub >= 0.4.2
+
+-------------------------------------------------------------------
 Wed Sep  9 06:23:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.40.0:

@@ -15,4 +15,18 @@
     <comment>Forward python-modelscope 1.40.0 to Factory. Fixes CVE-2026-84202 (boo#1278007, SafeLoader for remote model config); hub&gt;=0.3.0 floor; console scripts moved to python-modelscope-hub. Native aarch64 build green, source_validator clean. NOTE: /usr/bin/modelscope+ms absent until python-modelscope-hub restores them.</comment>
     <requestid>1376571</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0f69e3b174e004386ce26a79b21118d8</srcmd5>
+    <version>1.40.1</version>
+    <time>1789651196</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.40.1:
+  * Add JAEC native inference pipeline (audio/AEC)
+  * Add FLA-TF-Locoformer and FLA-T-SepReformer 2-speaker
+    8 kHz speech separators, with ONNX export
+  * Add Agent IDP (key rotation, signed tokens) and MCP
+    Studio OpenAPI (deploy_mcp_server / undeploy_mcp_server)
+  * Require python-modelscope-hub &gt;= 0.4.2</comment>
+    <requestid>1378298</requestid>
+  </revision>
 </revisionlist>
