@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Wed Sep 16 23:36:22 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 5.2.2
+  - 9d74a7bdafa Fix: Compositor asset shelf tabs not working
+  - 7c84b429df0 UI: add a "Trusted Source" toggle when dropping a
+    blend file
+  - 9cb7c2718da PyAPI: resolve the directory in
+    bpy.path.is_autoexec
+  - 9ab11408e7c UI: add an "auto_keymap" argument to
+    WindowManager.invoke_popup
+  - 3d87b772631 PyAPI: add bpy.path.is_autoexec
+  - d03bb4c9587 Fix #163256: error where filling curves with holes
+    only output a hole
+  - 1b64749d8b1 Fix: error where CDT output could differ between
+    platforms
+  - 545d917e836 Fix #163610: VSE: Can't drag and drop multiple
+    files in the preview area
+  - 795faccdc1b Release: Bump to 5.2.2 candidate
+  - 9f39ff71e77 Fix #163150: False straight line detection in
+    Grease Pencil plane normal
+  - b1ba5aefb5c Fix #163762: Mesh merge doesn't propagate multires
+    data
+  - 8d47b72f2cf Fix #163761: Distribute points crash with negative
+    Density Max
+  - c9328921460 Fix #163662: Blender cli: asset_listing download
+    fails
+  - 961b3311ead Fix #163596: OBJ import missing vertex groups
+  - 17ce5fe07ed Fix #163707: Crash using Channel Key and Color
+    Spill nodes
+  - fc19649d6d0 Fix #163402: Crash during rendering with pre-render
+    handler
+  - f5dde00b6ba Fix: Node Wrangler: Various link transfer issues
+    with `Reset Nodes`
+  - c6d7dadaa30 macOS: Do not display app icon in the Dock when
+    started in background mode
+  - dc2a2de2b9f Fix #162908: Cycles: Copy correct number of pass
+    components
+  - d7a4cdf5919 Fix #163471: Cycles GPU crash with shadow caustics
+    and AO pass
+  - 5f506bf404c Fix #162710: Cancelling edit mode transform deletes
+    existing keyframes
+  - 22af9b504be Fix: Depsgraph: missing relations for collection
+    under excluded ancestor
+  - 668bd1b2b9e Fix #163313: Crash when using Mask brush toggle
+    with size pressure
+  - 12cd41dcafd Fix #163273: Push pose for quaternion properties
+    didn't work
+  - e69de18a488 Fix: studio light names could contain non UTF8
+    characters
+  - 3d43f0ff41f Fix: out-of-bounds read loading vector fonts,
+    stripping UTF8 string
+  - 54524d20992 Fix: VSE: Crash when setting speed where retiming
+    key is not clamped properly
+  - d194bddc7f0 Fix: Anim: Cache File Dopesheet mode was broken for
+    10 years
+  - 0e06f99510a Fix #161564: Node tools: Mesh edit mode crash with
+    active attribute
+  - 81f2808b749 Fix #159584: Cycles, Compositor: Do not bundle UR
+    Level Zero v1 adapter
+  - a434b369ff5 Fix #160613: Python error when right clicking with
+    filter tool
+  - 8676126a665 Fix #162066: Crash selecting object in outliner
+  - 0e122704499 Fix: crashes passing None arguments into
+    ActionChannelbag methods
+  - 4166697b6eb Fix: UV circle & lasso select can select hidden
+    faces
+  - d5c0558fff5 Fix: out-of-bounds read adding a vertex color layer
+    in edit-mode
+  - c80666d23e0 Fix: error where Mesh.vertex_colors.new() returned
+    the wrong layer
+  - 4e2bcf30920 Fix: Images: ICC profile incorrectly embedded in
+    grayscale output
+  - 6a908e8082f Fix: Color Management: g24_rec2020_display missing
+    ICC profile and gamut
+  - 63a6cad7d5e Fix: Color Management: Add back blender prefix for
+    g24_rec2020_display
+  - 23e1dedd88e Color Management: Improve display color interop IDs
+  - c7a048d70e1 Fix #162256: Grease pencil: Draw on Back corrupts
+    stroke data when trimming thin trailing points
+  - dbec94b04d8 Fix: BKE_image_walk_all_users static cast bugs
+  - cee2db6e709 Fix #162664: VSE compositor Set Alpha incorrect
+    result
+  - 5757e9ab37b Fix #162605: LineArt: Add deps to objects that have
+    animated visibility
+  - bcfe4ce3b16 Release: Update license.md
+  - b787619620d Release: Remove CC0 reference for public domain
+    libraries
+
+-------------------------------------------------------------------
 Tue Aug 25 15:59:41 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 5.2.1
