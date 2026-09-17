@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:31:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.3.1:
+  * Socket API on $XDG_RUNTIME_DIR/darkman/control.sock;
+    custom D-Bus control API is deprecated
+  * New "darkman watch" command and --verbose flag
+  * Unified scripts in $XDG_DATA_DIRS/darkman/; legacy
+    dark-mode.d/light-mode.d still work until v3
+  * Run transition scripts concurrently
+  * Configuration errors are fatal; empty or missing
+    config files are allowed
+  * Structured log levels; log the loaded config path
+  * Drop rxhash (cached state is invalidated once)
+  * Man pages shipped as mdoc, plus darkman.conf(5)
+  * Fix detection of the executable bit on scripts
+- Drop 0001-fix-dependencies.patch: upstream go.mod is
+  already Go 1.21 and tidy
+- Install bash/zsh/fish completions, darkman.desktop and
+  example scripts; drop the darkmanctl symlink (removed
+  upstream in 2.0.0)
+- Re-derive License from vendored Go modules:
+  Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MIT
+
+-------------------------------------------------------------------
 Tue Feb 18 18:47:27 UTC 2025 - Viacheslav Ostroukh <opensuse-dev@slavouti.ch> - 2.0.1
 
 - Update to version 2.0.1
