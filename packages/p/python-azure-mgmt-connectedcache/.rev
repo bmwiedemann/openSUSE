@@ -15,4 +15,16 @@
     <comment>yet another Azure SDK package</comment>
     <requestid>1335446</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ef8d09ffa292a3819a12b9c4dd172394</srcmd5>
+    <version>1.0.0</version>
+    <time>1789657529</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1378591 from glaubitz)</comment>
+    <requestid>1378598</requestid>
+  </revision>
 </revisionlist>
