@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:46:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * New Features
+    - d77ba90: feat(resolvers): bind queries to a source address
+      with -b/--source (#250)
+    - a0dd1da: feat(trace): add iterative DNS delegation tracing
+  * Bug fixes
+    - 08ee9ec: fix(ci): migrate to globalping-go v0.2.0 and bump Go
+      to 1.26.6
+    - 4a540ab: fix(cli): add missing flags to shell completions
+      (#257)
+    - 3111835: fix(darwin): use and report domain-specific scutil
+      resolvers (#253)
+    - 80946ad: fix(deps): adapt to globalping-go v0.3.0 Probe.State
+      pointer (#258)
+    - ece94db: fix(output): write EDNS footer through color.Output
+      (#256)
+    - 895174d: fix(resolvers): harden --source binding across
+      transports
+    - e9166ee: fix(resolvers): size UDP receive buffer for non-EDNS
+      queries (#251)
+    - 7647a7e: fix(trace): harden invalid invocation handling
+
+-------------------------------------------------------------------
 Fri Aug 07 11:06:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.0:
