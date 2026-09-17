@@ -107,4 +107,20 @@
     <comment></comment>
     <requestid>1149959</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>4d0f8e1382028f3ce55197e101a96e92</srcmd5>
+    <version>1.3</version>
+    <time>1789657158</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.3:
+  * Add -windowed option that creates its own desktop window
+  * Stop warning about missing charsets on UTF-8 systems
+  * Provide a Makefile, so xmkmf/imake is no longer needed
+- Rebase default-fontset.patch and root-tail-1.2-shade.diff
+- Add makefile-link-order.patch: link libraries after objects
+  for --as-needed (Debian #930581)
+- BuildRequire pkgconfig(xfixes) for the new -windowed mode
+- Spec cleanup: SPDX license, drop Group/BuildRoot/%clean</comment>
+    <requestid>1378467</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,13 @@
+Index: root-tail-1.3/Makefile
+===================================================================
+--- root-tail-1.3.orig/Makefile
++++ root-tail-1.3/Makefile
+@@ -14,7 +14,7 @@ SOURCES = root-tail.c
+ all: root-tail man
+ 
+ root-tail: $(SOURCES) config.h
+-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $(SOURCES)
++	$(CC) $(CFLAGS) $(CPPFLAGS) -o $@ $(SOURCES) $(LDFLAGS)
+ 
+ man: root-tail.1.gz
+ 

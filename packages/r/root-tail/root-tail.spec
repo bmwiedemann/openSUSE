@@ -1,7 +1,7 @@
 #
 # spec file for package root-tail
 #
-# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,26 +12,31 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
 Name:           root-tail
-BuildRequires:  imake
-BuildRequires:  pkgconfig(x11)
-BuildRequires:  pkgconfig(xext)
-Provides:       roottail
-Obsoletes:      roottail
-Version:        1.2
+Version:        1.3
 Release:        0
 Summary:        Print Text Directly to the X Window System Root Window
-License:        GPL-2.0+
-Group:          System/X11/Utilities
-Source:         %name-%version.tar.bz2
+License:        GPL-2.0-or-later
+URL:            https://software.schmorp.de/pkg/root-tail.html
+Source0:        https://dist.schmorp.de/root-tail/%{name}-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE default-fontset.patch -- usable default fontset instead of "*"
 Patch0:         default-fontset.patch
-Patch1:         %name-%version-shade.diff
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
-Url:            http://goof.com/pcg/marc/root-tail.html
+# PATCH-FEATURE-OPENSUSE root-tail-1.2-shade.diff -- configurable shade offsets (-offsets)
+Patch1:         root-tail-1.2-shade.diff
+# PATCH-FIX-UPSTREAM makefile-link-order.patch -- libs after objects for --as-needed (Debian #930581)
+Patch2:         makefile-link-order.patch
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xext)
+BuildRequires:  pkgconfig(xfixes)
+Provides:       roottail
+Obsoletes:      roottail
 
 %description
 Tails a given file anywhere on your X Window System root window with a
@@ -39,25 +44,20 @@ transparent background. It is customizable with regards to font, color,
 and more.
 
 %prep
-%setup
-%patch -P 0 -p1 -b .default-fontset
-%patch -P 1 -p1 -b .shade
+%autosetup -p1
 
 %build
-xmkmf -a
-make CFLAGS="$CFLAGS $RPM_OPT_FLAGS"
+%make_build CFLAGS="%{optflags} -Wall" \
+            LDFLAGS="%{build_ldflags} $(pkg-config --libs x11 xext xfixes)" \
+            root-tail
 
 %install
-make "DESTDIR=$RPM_BUILD_ROOT" install
-make "DESTDIR=$RPM_BUILD_ROOT" install.man
+install -D -m 0755 root-tail %{buildroot}%{_bindir}/root-tail
+install -D -m 0644 root-tail.man %{buildroot}%{_mandir}/man1/root-tail.1
 
 %files
-%defattr(-,root,root)
 %doc README Changes
-%{_bindir}/*
-%{_mandir}/*/*
-
-%clean
-rm -rf $RPM_BUILD_ROOT
+%{_bindir}/root-tail
+%{_mandir}/man1/root-tail.1%{?ext_man}
 
 %changelog
