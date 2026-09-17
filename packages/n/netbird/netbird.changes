@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 01:19:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 0.78.2
+  - [client] Bump wireguard-go to 8bf8fa968f1a by @pappz in #7538
+
+-------------------------------------------------------------------
 Fri Sep  4 11:22:13 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 0.78.1
