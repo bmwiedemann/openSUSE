@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 08:56:56 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix powerpc build (bsc#1176085)
+  * refresh powerpc.patch
+
+-------------------------------------------------------------------
 Tue Jun 10 15:01:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
@@ -7,7 +13,7 @@ Tue Jun 10 15:01:50 UTC 2025 - Markéta Machová <mmachova@suse.com>
 Fri Oct  7 07:39:38 UTC 2022 - Markéta Machová <mmachova@suse.com>
 
 - Add patch dont-check-builddir.patch
-  * The check whether the tests run in builddir is broken, turn it off 
+  * The check whether the tests run in builddir is broken, turn it off
     and assume everything is fine (we would see it if not).
 
 -------------------------------------------------------------------
