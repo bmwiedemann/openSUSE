@@ -1,7 +1,7 @@
 #
 # spec file for package bluez
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010-2020 B1 Systems GmbH, Vohburg, Germany
 #
 # All modifications and additions to the file contributed by third parties
@@ -35,7 +35,7 @@
 %endif
 
 Name:           bluez
-Version:        5.82
+Version:        5.87
 Release:        0
 Summary:        Bluetooth Stack for Linux
 License:        GPL-2.0-or-later
@@ -58,17 +58,8 @@ Patch3:         bluez-no-cups-devel-buildreq.patch
 Patch4:         bluez-disable-broken-tests.diff
 # disable tests for bypass boo#1078285
 Patch12:        disable_some_obex_tests.patch
-# bsc#1015171 CVE-2016-9917
-Patch15:        hcidump-Fix-memory-leak-with-malformed-packet.patch
-# bsc#1013712 CVE-2016-9798
-Patch16:        hcidump-Fixed-malformed-segment-frame-length.patch
-# Bug 1259656 - systemd 259.3 causes timeout in starting home-assistant using podman systemd unit / quadlet
-Patch17:        bluez-mainloop-Only-connect-to-NOTIFY_SOCKET-if-STATUS-Sta.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
 # => PATCH-FIX-OPENSUSE for those two :-)
-# fix some memory leak with malformed packet (reported upstream but not yet fixed)
-Patch101:       CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
-Patch102:       CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch
 # Move 43xx firmware path for RPi3 bluetooth support bsc#1140688 bsc#995059 bsc#1094902
 Patch201:       0001-rpi3-bcm43xx-The-UART-speed-must-be-reset-after-the-firmw.patch
 # mesh-cfgtest only compiles with gcc8 or newer, Leap 15 has gcc7.5.0 as default
@@ -436,11 +427,14 @@ done
 %{_mandir}/man1/bluetoothctl-monitor.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-player.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-scan.1%{?ext_man}
+%{_mandir}/man1/bluetoothctl-telephony.1%{?ext_man}
 %{_mandir}/man1/bluetoothctl-transport.1%{?ext_man}
-%{_mandir}/man1/btmgmt.1%{?ext_man}
 %{_mandir}/man5/org.bluez.*.5%{?ext_man}
 %{_mandir}/man7/hci.7%{?ext_man}
 %{_mandir}/man7/sco.7%{?ext_man}
+%{_mandir}/man7/btsnoop.7%{?ext_man}
+%{_mandir}/man7/iso.7%{?ext_man}
+%{_mandir}/man7/mgmt.7%{?ext_man}
 %{_datadir}/dbus-1/system.d/bluetooth.conf
 # not packaged, boo#1151518
 ###%%{_datadir}/dbus-1/system.d/bluetooth-mesh.conf
@@ -477,8 +471,6 @@ done
 %{_bindir}/ciptool
 %{_bindir}/hciattach
 %{_bindir}/hciconfig
-%{_bindir}/hcidump
-%{_mandir}/man1/hcidump.1%{?ext_man}
 %{_mandir}/man1/hciattach.1%{?ext_man}
 %{_mandir}/man1/hciconfig.1%{?ext_man}
 %{_mandir}/man1/hcitool.1%{?ext_man}

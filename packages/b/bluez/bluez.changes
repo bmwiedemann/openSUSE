@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Fri Sep 11 19:20:55 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- ver 5.87:
+  * Patches removed: 
+    hcidump-Fix-memory-leak-with-malformed-packet.patch (Source file does not exist anymore)
+    hcidump-Fixed-malformed-segment-frame-length.patch (Source file does not exist anymore)
+    bluez-mainloop-Only-connect-to-NOTIFY_SOCKET-if-STATUS-Sta.patch (included in upstream)
+    CVE-2016-9800-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch (Source file does not exist anymore)
+    CVE-2016-9804-tool-hcidump-Fix-memory-leak-with-malformed-packet.patch (Source file does not exist anymore)
+    upstream changes:
+	Fix issue with GATT database and out of sync errors.
+	Fix issue with BASS and setting a stream to idle.
+	Fix issue with BASS and rescanning broadcast sources.
+	Fix issue with BAP and broadcast sink cleanup.
+	Fix issue with BAP and endpoint configuration.
+	Fix issue with BAP and ASE control point properties.
+	Fix issue with BAP and BIG/BIS receiver QoS structures.
+	Fix issue with AVRCP and tracking of TG and CT events.
+	Fix issue with PBAP and Database Identifier length.
+	Fix issue with MCP and ATT disconnect events.
+
+  ver 5.86:
+	Fix issue with number of retries on authentication failures.
+	Fix issue with G.722 @ 16 kHz codec ID value reported by transport.
+	Add support for Telephony interface.
+	Add support for Ranging profile.
+	Add support for GMAP service.
+	Add support for TMAP service.
+
+  ver 5.85:
+	Fix issue with handling display of battery charge level.
+	Fix issue with BASS permissions not requiring encryption.
+	Fix issue with handling abort for OBEX SRM operation.
+	Fix issue with handling device privacy.
+	Add support for HFP call answer support.
+	Add support for HFP simple 3-way call support.
+
+  ver 5.84:
+	Fix issue with AVRCP and handling invalid UTF-8 item name.
+	Fix issue with exposing coordinate sets if LE Audio is disabled.
+	Fix issue with BAP and not responding to SetConfiguration.
+	Add support for BAP unicast endpoint reconfiguration.
+	Add support for BASS and encrypted broadcast source.
+	Add support for HFP and Call Line Identification.
+
+  ver 5.83:
+	Fix issue with handling BAP and removal of PAC.
+	Fix issue with handling SID for broadcast receiver.
+	Fix issue with handling HSP/HFP reconnection policy.
+	Fix issue with handling cable pairing and Sixaxis controllers.
+	Fix issue with handling virtual cable unplug for HID devices.
+	Fix issue with handling service records for HID devices.
+	Add support for AVDTP and TX timestamps.
+
+-------------------------------------------------------------------
 Tue Apr  7 05:33:16 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add bluez-mainloop-Only-connect-to-NOTIFY_SOCKET-if-STATUS-Sta.patch
