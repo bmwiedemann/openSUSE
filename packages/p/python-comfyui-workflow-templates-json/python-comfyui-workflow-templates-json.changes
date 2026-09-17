@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.86:
+  * Two new template JSONs matching the core manifest:
+    FastH3 i2v/t2v; refreshed index localisations; YuE2
+    entries marked local-only
+
+-------------------------------------------------------------------
+Tue Sep 15 12:19:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.78:
+  * Six new template JSONs matching the core manifest: flux
+    video edit, yue2 music cover and text2music, marigold v2
+    albedo, depth and surface-normal; refreshed index
+    localisations
+  * Fix mage_flow turbo t2i int8 template to the renamed
+    mage_flow_turbo_int8_convrot checkpoint
+
+-------------------------------------------------------------------
 Sat Sep 12 07:20:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.74:

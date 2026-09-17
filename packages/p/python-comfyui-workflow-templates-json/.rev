@@ -140,4 +140,14 @@ change.</comment>
     <comment>Forward templates-json 0.1.74 (train leaf 2/3).</comment>
     <requestid>1377498</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>8336fa6be4e192964cef14e813065081</srcmd5>
+    <version>0.1.86</version>
+    <time>1789651064</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.86:
+- Two new template JSONs matching the core manifest: FastH3 i2v/t2v; refreshed index localisations; YuE2 entries marked local-only
+Supersedes sr#1378172. Pair with templates 0.11.63 for comfyui 0.36.0.</comment>
+    <requestid>1378348</requestid>
+  </revision>
 </revisionlist>
