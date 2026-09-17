@@ -21,7 +21,7 @@ Thu Sep 10 19:38:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
       where the locale now also defaults to en_US unless it (or the
       timezone) have been set explicitly.
     + Upgraded the jakarta.mail dependency to 2.0.2 because of
-      CVE-2025-7962.
+      bsc#1246873, CVE-2025-7962.
     + the SOURCE_DATE_EPOCH environment variable as well as the
       magic ant.tstamp.now and ant.tstamp.now.iso properties now
       also affect the timestamp added to a properties file written
