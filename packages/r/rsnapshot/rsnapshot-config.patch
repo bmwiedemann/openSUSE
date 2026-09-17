@@ -1,7 +1,7 @@
-Index: rsnapshot-1.4.5/rsnapshot.conf.default.in
+Index: rsnapshot-1.5.1/rsnapshot.conf.default.in
 ===================================================================
---- rsnapshot-1.4.5.orig/rsnapshot.conf.default.in
-+++ rsnapshot-1.4.5/rsnapshot.conf.default.in
+--- rsnapshot-1.5.1.orig/rsnapshot.conf.default.in
++++ rsnapshot-1.5.1/rsnapshot.conf.default.in
 @@ -37,7 +37,7 @@ snapshot_root	/.snapshots/
  #
  # See the README file or the man page for more details.
@@ -68,6 +68,6 @@ Index: rsnapshot-1.4.5/rsnapshot.conf.default.in
  #
 -#use_lazy_deletes	0
 +use_lazy_deletes	1
- 
- # Number of rsync re-tries. If you experience any network problems or
+
+ # Number of rsync tries. If you experience any network problems or
  # network card issues that tend to cause ssh to fail with errors like

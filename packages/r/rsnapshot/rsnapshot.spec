@@ -1,7 +1,7 @@
 #
 # spec file for package rsnapshot
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,17 @@
 
 
 Name:           rsnapshot
-Version:        1.4.5
+Version:        1.5.1
 Release:        0
 Summary:        Backup program using hardlinks
 License:        GPL-2.0-or-later
-Group:          Productivity/Archiving/Backup
 URL:            https://rsnapshot.org/
 Source0:        https://github.com/rsnapshot/rsnapshot/releases/download/%{version}/%{name}-%{version}.tar.gz
 Source1:        rsnapshot.logrotate
 Patch1:         rsnapshot-config.patch
-Patch3:         remove-dead-external-css-link.patch
 Patch4:         backup_pgsql.patch
 Patch5:         fix-tests-path.patch
+# spec-cleaner --perl skipped: explodes BuildRequires: perl into hundreds of perl(...) lines
 BuildRequires:  logrotate
 BuildRequires:  openssh
 BuildRequires:  perl
@@ -61,11 +60,11 @@ again.
 find docs utils *pl *md *in -type f -exec sed -i "s|usr/local|usr|g" {} +
 
 %configure
-make %{?_smp_mflags}
+%make_build
 
 %check
 cp -a t /tmp
-make %{?_smp_mflags} test
+%make_build test
 
 %install
 %make_install

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 12 14:23:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.1:
+  * rotate only when a new <interval>.0 folder will exist
+  * new rsync_wait_between_tries option, fix rsync_numtries validation
+  * use POSIX::lchown, drop legacy no-lchown workarounds
+  * new utils/backup_sqlite.sh helper script
+  * check retval for termination by signal
+  * docs converted to markdown
+- Drop remove-dead-external-css-link.patch (HTML HOWTO gone upstream)
+
+-------------------------------------------------------------------
 Sun Jan 28 18:51:56 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.5:
