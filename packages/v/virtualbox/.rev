@@ -2950,4 +2950,12 @@ we must have vb7.1.10.</comment>
 - add kernel-7.3.patch to fix build against kernel 7.3.</comment>
     <requestid>1375889</requestid>
   </revision>
+  <revision rev="316" vrev="1">
+    <srcmd5>86a61e1159925d3d87f21253ff84cddd</srcmd5>
+    <version>7.2.18</version>
+    <time>1789650971</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.18</comment>
+    <requestid>1378359</requestid>
+  </revision>
 </revisionlist>

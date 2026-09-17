@@ -69,7 +69,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.16
+Version:        7.2.18
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -80,7 +80,7 @@ Group:          System/Emulators/PC
 %endif
 URL:            https://www.virtualbox.org/
 # Replenish by running ./virtualbox-patch-source.sh VirtualBox-%%{version}.tar.bz2
-#Source:        https://download.virtualbox.org/virtualbox/7.2.16/VirtualBox-7.2.16.tar.bz2
+#Source:        https://download.virtualbox.org/virtualbox/7.2.18/VirtualBox-7.2.18.tar.bz2
 Source0:        VirtualBox-%{version}-patched.tpxz
 Source1:        UserManual.pdf
 Source3:        virtualbox-60-vboxguest.rules
@@ -130,7 +130,6 @@ Patch11:        cxx17.patch
 Patch12:        host-source.patch
 Patch20:        gentoo-C23.patch
 Patch30:        kernel-longterm_6-18-44.patch
-Patch31:        kernel-7.3.patch
 Patch32:        Leap-16.1.patch
 #
 # Common BuildRequires for both virtualbox and virtualbox-kmp
@@ -765,7 +764,7 @@ echo INFO: Transitioning between virtualbox 7.2.8-or-earlier and 7.2.10-or-newer
 %post vnc
 EXTPACK="%_datadir/virtualbox/extensions/VNC-%version.vbox-extpack"
 ACCEPT="$(tar --to-stdout -xf "${EXTPACK}" ./ExtPack-license.txt | sha256sum | head --bytes=64)"
-VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" > /dev/null
+VBoxManage extpack install --replace "${EXTPACK}" --accept-license="${ACCEPT}" </dev/null >/dev/null
 
 %preun
 %service_del_preun vboxautostart-service.service vboxdrv.service

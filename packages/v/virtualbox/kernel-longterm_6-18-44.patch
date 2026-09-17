@@ -6,16 +6,20 @@ under openSUSE with kernel-longterm >= 6.18.44.
 
 References: https://github.com/VirtualBox/virtualbox/issues/812
 
-diff --git a/src/VBox/Additions/linux/drm/vbox_fb.c b/src/VBox/Additions/linux/drm/vbox_fb.c
-index 16970bed2ee..3850be24cf9 100644
---- a/src/VBox/Additions/linux/drm/vbox_fb.c
-+++ b/src/VBox/Additions/linux/drm/vbox_fb.c
-@@ -335,7 +335,7 @@ int vboxfb_create(struct drm_fb_helper *helper,
+---
+ src/VBox/Additions/linux/drm/vbox_fb.c |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Index: VirtualBox-7.2.18/src/VBox/Additions/linux/drm/vbox_fb.c
+===================================================================
+--- VirtualBox-7.2.18.orig/src/VBox/Additions/linux/drm/vbox_fb.c
++++ VirtualBox-7.2.18/src/VBox/Additions/linux/drm/vbox_fb.c
+@@ -335,7 +335,7 @@ int vboxfb_create(struct drm_fb_helper *
  		return ret;
  	}
  
--#if RTLNX_VER_MIN(6,19,0) || RTLNX_RHEL_RANGE(9,9, 9,99)
-+#if RTLNX_VER_MIN(6,18,44) || RTLNX_RHEL_RANGE(9,9, 9,99)
+-#if RTLNX_VER_MIN(6,19,0) || RTLNX_VER_RANGE(6,12,103, 6,13,0) || RTLNX_RHEL_RANGE(9,9, 9,99)
++#if RTLNX_VER_MIN(6,18,44) || RTLNX_VER_RANGE(6,12,103, 6,13,0) || RTLNX_RHEL_RANGE(9,9, 9,99)
  	info = helper->info;
  #elif RTLNX_VER_MIN(6,2,0) || RTLNX_RHEL_RANGE(8,9, 8,99) || RTLNX_RHEL_RANGE(9,3, 9,99)
  	info = drm_fb_helper_alloc_info(helper);
