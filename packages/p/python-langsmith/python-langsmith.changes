@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:25:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.5:
+  * Report the configured tracing sample rate on every run so
+    sampled traces still recover the client's total trace potential
+  * ADK traces carry stable tool-call ids so results pair instead
+    of rendering as Unknown
+  * Sandbox run() no longer waits ~1s on the server's TCP close
+    after the command has already exited
+  * openai-agents guardrail and subagent spans are tagged
+    structurally instead of leaking into the conversation as root
+  * Sandbox exceptions keep the API error_id so support tickets
+    can quote it
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.4:

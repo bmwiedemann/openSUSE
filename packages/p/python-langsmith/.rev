@@ -318,4 +318,22 @@ passed per flavour (python313, python314), rpmlint 0 errors/0 warnings/
 - Local native aarch64 build green, 656 passed x2 flavors, rpmlint 0 errors/0 warnings</comment>
     <requestid>1376811</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>26a1ef96b849ecbaa8cf17babb57cade</srcmd5>
+    <version>0.12.5</version>
+    <time>1789651062</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.5:
+  * Report the configured tracing sample rate on every run so
+    sampled traces still recover the client's total trace potential
+  * ADK traces carry stable tool-call ids so results pair instead
+    of rendering as Unknown
+  * Sandbox run() no longer waits ~1s on the server's TCP close
+    after the command has already exited
+  * openai-agents guardrail and subagent spans are tagged
+    structurally instead of leaking into the conversation as root
+  * Sandbox exceptions keep the API error_id so support tickets
+    can quote it</comment>
+    <requestid>1378295</requestid>
+  </revision>
 </revisionlist>
