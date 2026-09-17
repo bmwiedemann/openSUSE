@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:30:49 UTC 2026 - Aleksei Burlakov <aburlakov@suse.com>
+
+- Update to version 2.7.2+git.1789128469.a738abc1 (bsc#1267909):
+  * Test: enable new attributes in test_check_cluster_configuration
+  * Dev: update RSC_DEFAULTS and clone defaults
+
+-------------------------------------------------------------------
 Fri Sep 04 12:54:09 UTC 2026 - aburlakov@suse.com
 
 - Update to version 2.7.2+git.1788518533.7d4dadd6 (bsc#1275019):
