@@ -132,4 +132,14 @@ provider logo. Data-only change.</comment>
     <comment>Forward templates-assets-01 0.1.44 (train leaf 3/3).</comment>
     <requestid>1377499</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>885fbfb97fd56cd8bc9108d496907894</srcmd5>
+    <version>0.1.47</version>
+    <time>1789651065</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.47:
+- Two new preview webp for the FastH3 templates; asset-only, no code
+Supersedes sr#1378173. Pair with templates 0.11.63 for comfyui 0.36.0.</comment>
+    <requestid>1378349</requestid>
+  </revision>
 </revisionlist>
