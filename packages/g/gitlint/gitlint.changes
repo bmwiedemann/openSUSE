@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:19:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.19.1:
+  * Python 3.6 support dropped, sh lib kept as opt-in fallback
+    only (disabled by default since 0.18.0)
+  * --commits accepts a single commit, FILE/TERMINAL encoding
+    split for unicode, ignore-by-author-name --staged fix
+  * Upstream sdist renamed gitlint-core- to gitlint_core- and
+    switched to the hatchling/hatch-vcs build backend
+- Drop dead update-alternatives Requires, no scriptlet uses it
+- Add hatchling/hatch-vcs BuildRequires, feed the version to
+  the VCS-based backend via SETUPTOOLS_SCM_PRETEND_VERSION
+
+-------------------------------------------------------------------
 Fri Feb 23 09:20:15 UTC 2024 - Oliver Kurz <okurz@suse.com>
 
 - Fix missing setuptools dependency

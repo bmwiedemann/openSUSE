@@ -1,7 +1,7 @@
 #
 # spec file for package gitlint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,16 +16,17 @@
 #
 
 
-%global pythons %primary_python
+%global pythons %{primary_python}
 Name:           gitlint
-Version:        0.18.0
+Version:        0.19.1
 Release:        0
 Summary:        Git commit message linter checking
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/jorisroovers/%{name}
-Source:         https://pypi.io/packages/source/g/%{name}-core/%{name}-core-%{version}.tar.gz
+Source:         https://pypi.io/packages/source/g/%{name}-core/%{name}_core-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatch-vcs}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -34,8 +35,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-arrow >= 1
 Requires:       python-click >= 8
 Requires:       python-sh >= 1.13.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -47,9 +46,10 @@ found useful throughout the years. Gitlint has sane defaults, but you can
 also easily customize it to your own liking.
 
 %prep
-%setup -q -n %{name}-core-%{version}
+%setup -q -n %{name}_core-%{version}
 
 %build
+export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %pyproject_wheel
 
 %install
@@ -59,6 +59,7 @@ also easily customize it to your own liking.
 %files %{python_files}
 %license LICENSE
 %{_bindir}/gitlint
-%{python_sitelib}/*
+%{python_sitelib}/gitlint
+%{python_sitelib}/gitlint_core-%{version}*-info
 
 %changelog

@@ -85,4 +85,12 @@
     <comment>Fix missing setuptools dependency</comment>
     <requestid>1149776</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>aef47c8c965e700d2d78826d97f21fcf</srcmd5>
+    <version>0.19.1</version>
+    <time>1789651504</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378559</requestid>
+  </revision>
 </revisionlist>
