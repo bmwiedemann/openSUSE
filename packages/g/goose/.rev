@@ -118,4 +118,17 @@ Built locally on aarch64 against openSUSE:Factory:ARM: rpmlint 0 errors,
     <comment>Forward goose 1.50.0 to Factory. Native aarch64 build green, rpmlint 0/0/0, source_validator clean, license re-derived (1333 vendored crates).</comment>
     <requestid>1376569</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>71fdffad26ccfba2248601df8f4576e6</srcmd5>
+    <version>1.50.1</version>
+    <time>1789651498</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.50.1:
+  * roll back MCP default protocol version selection
+  * revert model-catalog updates
+- Re-derive the License tag from the new vendored crate graph (1334
+  crates vendored, 611 linked): the 13 SPDX identifiers are
+  unchanged</comment>
+    <requestid>1378543</requestid>
+  </revision>
 </revisionlist>

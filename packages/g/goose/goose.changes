@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 07:04:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.50.1:
+  * roll back MCP default protocol version selection
+  * revert model-catalog updates
+- Re-derive the License tag from the new vendored crate graph (1334
+  crates vendored, 611 linked): the 13 SPDX identifiers are
+  unchanged
+
+-------------------------------------------------------------------
 Wed Sep  9 06:28:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.50.0:
