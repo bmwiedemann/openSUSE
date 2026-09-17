@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 16 23:38:58 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.5.14
+  - 80f9ddbd5fd Fix: BKE_image_walk_all_users static cast bugs
+  - a516993326c Release: Bump to 4.5.14 candidate
+  - 7d7ce3eeab1 Release: Update license.md
+  - f42f58ab222 Release: Remove CC0 reference for public domain
+    libraries
+
+-------------------------------------------------------------------
 Tue Aug 25 15:58:28 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.5.13
