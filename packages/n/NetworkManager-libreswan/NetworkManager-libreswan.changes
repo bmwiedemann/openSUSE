@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 08:29:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.2.31:
+  + Fix the support of leftsubnets and rightsubnets.
+  + Allow subnet-to-subnet tunnels without a mode config address.
+  + Default rightsubnet from leftsubnets as well as leftsubnet.
+  + Support mixed address family (4in6 and 6in4) tunnels.
+  + Improve tunnel address family detection.
+  + Handle established tunnel gracefully on ipsec up exit status.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Dec 16 07:33:16 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.2.30:

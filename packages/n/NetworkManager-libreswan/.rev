@@ -165,4 +165,19 @@ This depends on recently checked into tw rpmlint whitelisting - should be &quot;
   + Updated translations. (forwarded request 1323061 from iznogood)</comment>
     <requestid>1323142</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>677684a9e9aaea1bc43fc29a08e7ae18</srcmd5>
+    <version>1.2.31</version>
+    <time>1789650963</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.31:
+  + Fix the support of leftsubnets and rightsubnets.
+  + Allow subnet-to-subnet tunnels without a mode config address.
+  + Default rightsubnet from leftsubnets as well as leftsubnet.
+  + Support mixed address family (4in6 and 6in4) tunnels.
+  + Improve tunnel address family detection.
+  + Handle established tunnel gracefully on ipsec up exit status.
+  + Updated translations.</comment>
+    <requestid>1378332</requestid>
+  </revision>
 </revisionlist>
