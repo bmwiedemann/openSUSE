@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:20:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.3:
+  * Forward SIGTERM, SIGINT, SIGHUP and SIGQUIT to child jobs
+  * Propagate mtime of newest input of phony targets
+  * Fix default maxjob detection
+  * Clearer error message when reading from the signal pipe
+
+-------------------------------------------------------------------
 Mon Jun  9 23:41:32 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to 1.2+git41.737f702
