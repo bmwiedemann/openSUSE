@@ -1,4 +1,69 @@
 -------------------------------------------------------------------
+Wed Sep 16 16:12:13 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
+
+- Update to version 34.0.4:
+  * Improve clang-format configuration
+    (gh#nextcloud/desktop#10676)
+  * Set CMake variable APPLICATION_REV_DOMAIN_INSTALLER
+    (gh#nextcloud/desktop#10706)
+  * Ensure compilation without warnings with GCC 16
+    (gh#nextcloud/desktop#10710)
+  * Guide contributors to follow proper conduct when working on
+    major features
+    (gh#nextcloud/desktop#10712)
+  * Fix compilation and clang-format issues
+    (gh#nextcloud/desktop#10713)
+  * Reuse Clang builds for clang-tidy
+    (gh#nextcloud/desktop#10714)
+  * Cancel obsolete pull request workflows
+    (gh#nextcloud/desktop#10716)
+  * Only acquire shares for the target path
+    (gh#nextcloud/desktop#10731)
+  * Avoid warnings caused by invalid joinPath parameters
+    (gh#nextcloud/desktop#10744)
+  * Include error messages in update download notifications
+    (gh#nextcloud/desktop#10755)
+  * Improve clang-tidy integration
+    (gh#nextcloud/desktop#10743)
+  * Add document translation placeholders
+    (gh#nextcloud/desktop#10774)
+  * Remove obsolete tray window
+    (gh#nextcloud/desktop#10779)
+  * Remove orphaned QML components
+    (gh#nextcloud/desktop#10777)
+  * Remove legacy tray backend
+    (gh#nextcloud/desktop#10778)
+  * Run AppImage and Flatpak builds only for Linux-labeled PRs
+    (gh#nextcloud/desktop#10785)
+  * Match tray menu icons to the current palette
+    (gh#nextcloud/desktop#10784)
+  * Expand terminology and documentation guidance
+    (gh#nextcloud/desktop#10789)
+  * Skip expensive checks for backports
+    (gh#nextcloud/desktop#10793)
+  * Generalize GUI testing guidance
+    (gh#nextcloud/desktop#10797)
+  * Repair account creation via the command line
+    (gh#nextcloud/desktop#10800)
+  * Fix compiler warnings
+    (gh#nextcloud/desktop#10799)
+  * Handle visited and unvisited directories correctly
+    (gh#nextcloud/desktop#10803)
+  * Wrap mnemonic text in the E2EE dialog
+    (gh#nextcloud/desktop#10804)
+  * Scroll to the top when opening the activity window
+    (gh#nextcloud/desktop#10808)
+  * Enhance settings dialog fallback for Linux systems without
+    tray menus
+    (gh#nextcloud/desktop#10818)
+  * Do not use ENGINE_get_default_RSA
+    (gh#nextcloud/desktop#10821)
+  * Treat 404 responses for items pending deletion as valid
+    (gh#nextcloud/desktop#10827)
+  * Fix deletion of files in read-only sync folders
+    (gh#nextcloud/desktop#10835) 
+
+-------------------------------------------------------------------
 Wed Aug 26 11:42:10 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 34.0.3:

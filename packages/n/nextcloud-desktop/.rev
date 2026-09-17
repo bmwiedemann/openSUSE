@@ -921,4 +921,43 @@
     <comment>1</comment>
     <requestid>1374159</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>c2baa4e4dbe1a1578ae6059219211c32</srcmd5>
+    <version>34.0.4</version>
+    <time>1789651493</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1378413 from stacheldrahtje
+
+- Update to version 34.0.4:
+  * Improve clang-format configuration
+    (gh#nextcloud/desktop#10676)
+  * Set CMake variable APPLICATION_REV_DOMAIN_INSTALLER
+    (gh#nextcloud/desktop#10706)
+  * Ensure compilation without warnings with GCC 16
+    (gh#nextcloud/desktop#10710)
+  * Guide contributors to follow proper conduct when working on
+    major features
+    (gh#nextcloud/desktop#10712)
+  * Fix compilation and clang-format issues
+    (gh#nextcloud/desktop#10713)
+  * Reuse Clang builds for clang-tidy
+    (gh#nextcloud/desktop#10714)
+  * Cancel obsolete pull request workflows
+    (gh#nextcloud/desktop#10716)
+  * Only acquire shares for the target path
+    (gh#nextcloud/desktop#10731)
+  * Avoid warnings caused by invalid joinPath parameters
+    (gh#nextcloud/desktop#10744)
+  * Include error messages in update download notifications
+    (gh#nextcloud/desktop#10755)
+  * Improve clang-tidy integration
+    (gh#nextcloud/desktop#10743)
+  * Add document translation placeholders
+    (gh#nextcloud/desktop#10774)
+  * Remove obsolete tray window
+    (gh#nextcloud/desktop#10779)
+  * Remove orphaned QML components
+    (gh#nextcloud/desktop#10777)</comment>
+    <requestid>1378525</requestid>
+  </revision>
 </revisionlist>
