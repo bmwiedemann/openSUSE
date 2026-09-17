@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 15 18:15:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.5:
+  + Make software cursor overlay visibility per-view
+  + Fix multiple monitors being reported as primary
+  + Fix desaturated SDR content in HDR mode
+  + Fix offscreen effect glitches on resource scale changes
+  + Fix hang on external monitor hotplug
+  + Fix direct scanout handling for captures without dma-buf
+  + Prevent modifier release from stopping key repeat
+  + Do not require EDID to generate device color profile
+  + Handle cross GPU buffer scanout
+  + Fix listing all supported fallback resolutions
+  + Fixed crashes
+  + Plugged leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
 Tue Aug  4 17:41:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:

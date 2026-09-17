@@ -2500,4 +2500,25 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1369981</requestid>
   </revision>
+  <revision rev="270" vrev="1">
+    <srcmd5>3a23e996c17446a42856b1ae2101ca6b</srcmd5>
+    <version>50.5</version>
+    <time>1789650957</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.5:
+  + Make software cursor overlay visibility per-view
+  + Fix multiple monitors being reported as primary
+  + Fix desaturated SDR content in HDR mode
+  + Fix offscreen effect glitches on resource scale changes
+  + Fix hang on external monitor hotplug
+  + Fix direct scanout handling for captures without dma-buf
+  + Prevent modifier release from stopping key repeat
+  + Do not require EDID to generate device color profile
+  + Handle cross GPU buffer scanout
+  + Fix listing all supported fallback resolutions
+  + Fixed crashes
+  + Plugged leaks
+  + Updated translations.</comment>
+    <requestid>1378328</requestid>
+  </revision>
 </revisionlist>
