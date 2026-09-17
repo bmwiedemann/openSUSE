@@ -80,4 +80,22 @@
     <comment></comment>
     <requestid>1344687</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>975da9683877856cd81a2accce45ffec</srcmd5>
+    <version>2.7.0</version>
+    <time>1789657160</time>
+    <user>anag_factory</user>
+    <comment>- Install hu_HU/sk_SK locales as hu/sk so find-lang keeps them
+- Update to 2.7.0:
+  * drop optional python-keyutils dependency; password cache now
+    uses libkeyutils via ctypes
+  * handle empty (null) sections in the config file
+  * use translated labels in the password dialog
+  * ignore systemd sysexts and confexts by default
+  * add Georgian and Hungarian translations
+- Recommend libkeyutils1 instead of python3-keyutils
+- Drop unused python3-setuptools and python3-xml Requires
+- Enable unit tests in %check</comment>
+    <requestid>1378477</requestid>
+  </revision>
 </revisionlist>

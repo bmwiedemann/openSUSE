@@ -17,36 +17,37 @@
 
 
 Name:           udiskie
-Version:        2.6.1
+Version:        2.7.0
 Release:        0
 Summary:        Removable disk automounter for udisks
 License:        MIT
-Group:          System/GUI/Other
 URL:            https://github.com/coldfix/udiskie
 Source:         https://files.pythonhosted.org/packages/source/u/%{name}/%{name}-%{version}.tar.gz
 BuildRequires:  asciidoc
 BuildRequires:  fdupes
+BuildRequires:  gettext-tools
 # Needed for typelib() - Requires.
 BuildRequires:  gobject-introspection
 BuildRequires:  hicolor-icon-theme
+BuildRequires:  libkeyutils1
 BuildRequires:  libxslt-tools
+BuildRequires:  make
 BuildRequires:  python-rpm-macros
 # Runtime dependencies:
+BuildRequires:  python3-PyYAML
 BuildRequires:  python3-gobject
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-setuptools >= 42
 BuildRequires:  typelib(Gtk) = 3.0
 BuildRequires:  typelib(Notify)
 Requires:       gdk-pixbuf-loader-rsvg
 Requires:       python3-PyYAML
 Requires:       python3-docopt
 Requires:       python3-gobject
-Requires:       python3-setuptools
-Requires:       python3-xml
 Requires:       udisks2
 Requires:       typelib(Gtk) = 3.0
 Recommends:     %{name}-lang
-# this package does not exist on Tumbleweed and conflicts with python311-keyring-keyutils whose module is also named 'keyutils'
-Recommends:     python3-keyutils
+# password cache (optional): ctypes wrapper around libkeyutils
+Recommends:     libkeyutils1
 BuildArch:      noarch
 
 %description
@@ -66,9 +67,7 @@ or flash drives from userspace. Its features include:
 %lang_package
 
 %prep
-%autosetup
-# work-around Python error in easy_install.py (setuptools)
-sed -e '/ScriptWriter.template/s/^/#/g' -i setup.py
+%autosetup -p1
 
 %build
 %python3_build
@@ -86,7 +85,23 @@ done
 %fdupes %{buildroot}%{python3_sitelib}/%{name}/
 %fdupes %{buildroot}%{_mandir}/man8/
 
+# filesystem ships hu/sk, not hu_HU/sk_SK; find-lang.sh drops the latter
+for pair in hu_HU:hu sk_SK:sk; do
+  src=${pair%%:*}
+  dst=${pair##*:}
+  if [ -d %{buildroot}%{_datadir}/locale/${src} ]; then
+    mkdir -p %{buildroot}%{_datadir}/locale/${dst}/LC_MESSAGES
+    mv %{buildroot}%{_datadir}/locale/${src}/LC_MESSAGES/* \
+       %{buildroot}%{_datadir}/locale/${dst}/LC_MESSAGES/
+    rm -rf %{buildroot}%{_datadir}/locale/${src}
+  fi
+done
+
 %find_lang %{name}
+
+%check
+export PYTHONPATH=%{buildroot}%{python3_sitelib}
+python3 -m unittest discover -s test -v
 
 %files
 %doc CHANGES.rst README.rst

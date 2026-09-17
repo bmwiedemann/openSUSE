@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:43:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Install hu_HU/sk_SK locales as hu/sk so find-lang keeps them
+
+-------------------------------------------------------------------
+Wed Sep 16 20:26:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.7.0:
+  * drop optional python-keyutils dependency; password cache now
+    uses libkeyutils via ctypes
+  * handle empty (null) sections in the config file
+  * use translated labels in the password dialog
+  * ignore systemd sysexts and confexts by default
+  * add Georgian and Hungarian translations
+- Recommend libkeyutils1 instead of python3-keyutils
+- Drop unused python3-setuptools and python3-xml Requires
+- Enable unit tests in %check
+
+-------------------------------------------------------------------
 Sat Feb 21 14:56:51 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 2.6.1:
