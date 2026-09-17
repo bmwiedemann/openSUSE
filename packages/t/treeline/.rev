@@ -206,4 +206,27 @@
     <comment></comment>
     <requestid>1111904</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>f5a6395d680f93ecc1370c33b1cd59ef</srcmd5>
+    <version>3.2.1</version>
+    <time>1789651288</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.1:
+  * Port to Qt6/PyQt6 6.4+
+  * Add a word-count function for math field types
+  * Add an easily selectable light-colored theme
+  * Improve multi-line text handling on generic XML import
+  * Drop deprecated string escapes used when formatting numbers
+  * Fix window close when the same file is open in another window
+  * Fix filter view when the tree icon is set to none
+  * Fix drag-and-drop of nodes and files
+  * Fix setting some page sizes for printing
+  * Fix print preview and time-edit appearance under a dark theme
+  * Fix minimize-to-system-tray
+- Switch the runtime dependency from python3-qt5 to python3-qt6
+- Spec cleanup:
+  * Drop Group and deprecated %suse_update_desktop_file
+  * Add an import smoke test</comment>
+    <requestid>1378420</requestid>
+  </revision>
 </revisionlist>

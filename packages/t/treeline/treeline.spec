@@ -1,7 +1,7 @@
 #
 # spec file for package treeline
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           treeline
-Version:        3.1.6
+Version:        3.2.1
 Release:        0
 Summary:        Versatile Tree-Style Outliner for Defining Custom Data Schemas
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://treeline.bellz.org
 Source0:        https://github.com/doug-101/TreeLine/releases/download/v%{version}/%{name}-%{version}.tar.gz
 Source1:        x-%{name}.desktop
 Source2:        x-%{name}-gz.desktop
 Source3:        x-treepad.desktop
 BuildRequires:  fdupes
-BuildRequires:  perl
-BuildRequires:  python3-devel
-BuildRequires:  update-desktop-files
-Requires:       python3-qt5
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  python3
+BuildRequires:  python3-qt6 >= 6.4
+Requires:       python3-qt6 >= 6.4
 BuildArch:      noarch
 
 %description
@@ -56,14 +55,14 @@ toolkit, which makes it very portable.
 %prep
 %setup -q -n TreeLine
 for i in source/*.py; do
-  sed -i "s|#!%{_bindir}/env python|#!%{_bindir}/python|g" "$i"
+  sed -i "s|#!%{_bindir}/env python3|#!%{_bindir}/python3|" "$i"
 done
 
 find source/ -type f -name '*.py' | while read f; do
     case $f in
     */treeline.py) continue;;
     esac
-    perl -i -n -e 'print unless m,^#!, and 1..1' "$f"
+    sed -i '1{/^#!/d}' "$f"
 done
 
 %build
@@ -75,9 +74,8 @@ python3 install.py -x \
    -d "%{_docdir}/%{name}" \
    -b %{buildroot}
 
-python3 -c "import compileall; compileall.compile_dir('%{buildroot}%{_libexecdir}/treeline',2,ddir='%{_libexecdir}/treeline')"
-
-%suse_update_desktop_file -i treeline Office ProjectManagement
+python3 -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash \
+    %{buildroot}%{_datadir}/%{name}
 
 install -d "%{buildroot}%{_datadir}/mimelnk/application"
 install -m0644 \
@@ -90,13 +88,12 @@ install -m0644 \
 
 rm -f %{buildroot}%{_docdir}/%{name}/{INSTALL,LICENSE}
 
+%check
+PYTHONPATH=%{buildroot}%{_datadir}/%{name} python3 -B -c \
+    "import treeline; assert treeline.__version__ == '%{version}'"
+
 %files
 %license doc/LICENSE
-%dir %{_datadir}/icons/hicolor
-%dir %{_datadir}/icons/hicolor/48x48
-%dir %{_datadir}/icons/hicolor/48x48/apps
-%dir %{_datadir}/icons/hicolor/scalable
-%dir %{_datadir}/icons/hicolor/scalable/apps
 %dir %{_datadir}/mimelnk
 %dir %{_datadir}/mimelnk/application
 %doc %{_docdir}/%{name}
