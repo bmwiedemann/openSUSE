@@ -633,4 +633,16 @@
   + Updated translations.</comment>
     <requestid>1369843</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c7d4c9a4c217be4d9392512f70426d0a</srcmd5>
+    <version>1.9.4</version>
+    <time>1789650955</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9.4:
+  + AdwAnimation: Fix AdwCallbackAnimationTarget annotations
+  + AdwActionRow: Ensure :use-markup property is set in
+    constructed()
+  + AdwTabBar/AdwTabGrid: Clear a dangling idle callback in dispose</comment>
+    <requestid>1378314</requestid>
+  </revision>
 </revisionlist>
