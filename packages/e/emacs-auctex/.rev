@@ -689,4 +689,41 @@
     <comment>- Switch to TeXLive 2026</comment>
     <requestid>1346799</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>e3763a227741f7b1c2ea0953dcca1a59</srcmd5>
+    <version>14.2.0</version>
+    <time>1789657551</time>
+    <user>anag_factory</user>
+    <comment>- Generate auctex-14.2.0-auto-TL-2026.tar.xz for TeXLive 2026
+- Require lzip at build time to be able to fetch a version
+  specific source tar ball
+- Add a _service file to allow osc to verify the source tar ball
+
+- Update to AUCTeX ELPA version 14.2.0:
+  Added
+  * Add more control over preview-latex snippets: The new option
+    preview-visibility-style controls how previews and their source
+    are displayed relative to point. The option
+    preview-at-point-placement controls the placement of the
+    at-point preview relative to its source. Finally, the boolean
+    option preview-keep-stale-images determines how the preview is
+    updated after the source is changed.
+  * Activate new TeX xref backend (tex-etags) provided by Emacs 31.
+  * Add support for in-buffer completion of citation keys for various
+    \cite macros. The length of the annotations attached to the keys
+    is controlled by the new option LaTeX-bib-annotation-max-length.
+    The annotations are offered only when RefTeX-mode in activated.
+    Multicite commands (Qualified Citation Lists) from the biblatex
+    package are not supported.
+  * Improve in-buffer completion of referencing macros.
+  * Add new support files style/bigfoot.el, style/handstroke.el,
+    style/lineno.el, style/lua-unicode-math.el, style/manyfoot.el,
+    style/perpage.el, style/sourcesans.el and style/sourceserif.el.
+  Changed
+  * Change behavior of TeX-output-dir for security considerations.
+    The value can be set to a subdirectory of the master file,
+    otherwise the user is asked for permission.
+  * Support new language names provided by babel-german v2.99.</comment>
+    <requestid>1378607</requestid>
+  </revision>
 </revisionlist>

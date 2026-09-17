@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:43:43 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Generate auctex-14.2.0-auto-TL-2026.tar.xz for TeXLive 2026
+- Require lzip at build time to be able to fetch a version
+  specific source tar ball
+- Add a _service file to allow osc to verify the source tar ball
+
+-------------------------------------------------------------------
+Thu Sep 17 08:27:04 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to AUCTeX ELPA version 14.2.0:
+  Added
+  * Add more control over preview-latex snippets: The new option
+    preview-visibility-style controls how previews and their source
+    are displayed relative to point. The option
+    preview-at-point-placement controls the placement of the
+    at-point preview relative to its source. Finally, the boolean
+    option preview-keep-stale-images determines how the preview is
+    updated after the source is changed.
+  * Activate new TeX xref backend (tex-etags) provided by Emacs 31.
+  * Add support for in-buffer completion of citation keys for various
+    \cite macros. The length of the annotations attached to the keys
+    is controlled by the new option LaTeX-bib-annotation-max-length.
+    The annotations are offered only when RefTeX-mode in activated.
+    Multicite commands (Qualified Citation Lists) from the biblatex
+    package are not supported.
+  * Improve in-buffer completion of referencing macros.
+  * Add new support files style/bigfoot.el, style/handstroke.el,
+    style/lineno.el, style/lua-unicode-math.el, style/manyfoot.el,
+    style/perpage.el, style/sourcesans.el and style/sourceserif.el.
+  Changed
+  * Change behavior of TeX-output-dir for security considerations.
+    The value can be set to a subdirectory of the master file,
+    otherwise the user is asked for permission.
+  * Support new language names provided by babel-german v2.99.
+  * Remove --jobname argument from default LuaLaTeX invocation.
+    If this causes trouble for you, we first recommend to update your
+    (very old) TeX distribution. But if you can't do that for some
+    reason, add the following entry to the customize option
+    TeX-engine-alist:
+  * (luatex "LuaTeX" "luatex" "lualatex --jobname=%(s-filename-only)" "luatex")
+  * Change default value of ConTeXt-Mark-version to XL which is the
+    current ConTeXt version. Internally, there is no difference for
+    Mark XL and Mark IV behavior.
+  Fixed
+  * Fix parsing of error messages for ConTeXt LMTX.
+  * Fix indentation for macros with arguments in ConTeXt mode.
+
+-------------------------------------------------------------------
+Thu Sep 17 08:14:39 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update Source URLs to append a pseudo-filename for version-less
+  upstream paths.
+
+-------------------------------------------------------------------
+Wed Sep 16 17:58:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to AUCTeX ELPA version 14.1.2:
+  * Recognize and ignore non-error LuaTeX messages that differ from
+    pdfTeX.
+  * Add command LaTeX-repeat-recent-math to copy a recent display
+    math construct.
+  * Add style/floatflt.el, style/fontawesome7.el and
+    style/ltx-talk.el.
+  * Add preview-dvisvgm-command to generate SVG preview images.
+  * Rename preview-dvipng-command and preview-dvipng-image-type to
+    preview-dvi*-command and preview-dvi*-image-type (command may
+    now be a function); preview-image-creators and
+    preview-gs-image-type-alist use dvi* instead of dvipng.
+  * Respect font-latex-fontify-sectioning when fontifying
+    slide-title (beamer and ltx-talk).
+  * Ignore typesetting-engine "ignored error" messages so needed
+    recompilation is not aborted.
+- Drop auctex-14.1.0-dinbrief.patch: merged upstream
+- Generate auctex-14.1.2-auto-TL-2026.tar.xz for TeXLive 2026
+- Spec cleanup: drop Group tag
+
+-------------------------------------------------------------------
 Tue Apr 14 07:34:23 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Switch to TeXLive 2026

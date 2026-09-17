@@ -16,57 +16,56 @@
 #
 
 
-%bcond_with     tex4auto
 %define tlversion 2026
 %if %{undefined ext_el}
 %define ext_el  .gz
 %endif
-
+%bcond_with     tex4auto
 Name:           emacs-auctex
-Obsoletes:      ge_auc
-Provides:       auc-tex
-Provides:       auctex
-Provides:       ge_auc
+Version:        14.2.0
+Release:        0
+Summary:        AUC TeX: An Emacs Extension
+License:        GPL-3.0-or-later
+URL:            https://www.gnu.org/software/auctex
+Source0:        https://elpa.gnu.org/packages/auctex-%{version}.tar.lz
+Source1:        https://elpa.gnu.org/packages/auctex-%{version}.tar.sig
+Source2:        auctex.keyring
+Source3:        auctex-%{version}-auto-TL-%{tlversion}.tar.xz
+Source4:        emacs-auctex-rpmlintrc
+# Allows to select printer instance
+# PATCH-FEATURE-UPSTREAM dvips.patch
+Patch0:         dvips.patch
+# PATCH-FIX-OPENSUSE auctex-14.0.7-texinfo.patch -- build with current texinfo
+Patch1:         auctex-14.0.7-texinfo.patch
+BuildRequires:  emacs-x11
+BuildRequires:  lzip
+BuildRequires:  makeinfo
+BuildRequires:  texinfo
 Requires:       emacs
 Requires:       texlive-latex
 Requires:       texlive-tools
 Requires:       emacs(ELPA)
 Recommends:     texlive-preview
 Supplements:    (texlive and emacs)
-BuildRequires:  emacs-x11
-BuildRequires:  makeinfo
-BuildRequires:  texinfo
+Obsoletes:      ge_auc
+Provides:       auc-tex
+Provides:       auctex
+Provides:       ge_auc
+BuildArch:      noarch
 %if %{with tex4auto}
 BuildRequires:  ghostscript_any
-BuildRequires:  texlive >= %tlversion
-BuildRequires:  texlive-collection-latexextra >= %tlversion
-BuildRequires:  texlive-latex >= %tlversion
-BuildRequires:  texlive-tex >= %tlversion
-BuildRequires:  texlive-texinfo >= %tlversion
+BuildRequires:  texlive >= %{tlversion}
+BuildRequires:  texlive-collection-latexextra >= %{tlversion}
+BuildRequires:  texlive-latex >= %{tlversion}
+BuildRequires:  texlive-tex >= %{tlversion}
+BuildRequires:  texlive-texinfo >= %{tlversion}
 %endif
-Version:        14.1.0
-Release:        0
-Summary:        AUC TeX: An Emacs Extension
-License:        GPL-3.0-or-later
-Group:          Productivity/Editors/Emacs
-Source0:        https://elpa.gnu.org/packages/auctex-%{version}.tar
-Source1:        https://elpa.gnu.org/packages/auctex-%{version}.tar.sig
-Source2:        auctex.keyring
-Source3:        auctex-%{version}-auto-TL-%{tlversion}.tar.xz
-Source4:        emacs-auctex-rpmlintrc
-URL:            https://www.gnu.org/software/auctex
-# Allows to select printer instance
-# PATCH-FEATURE-UPSTREAM dvips.patch
-Patch0:         dvips.patch
-Patch1:         auctex-14.0.7-texinfo.patch
-Patch2:         auctex-14.1.0-dinbrief.patch
-BuildArch:      noarch
 
 %description
 These macros make it easier for you to write TeX documents with GNU
 Emacs.	Documentation can be found under:
 
-/usr/share/doc/packages/emacs-auctex/
+%{_docdir}/emacs-auctex/
 
 and in the dvi files math-ref.dvi and tex-ref.dvi (reference cards) and
 in the info file auctex in emacs info-mode.
@@ -76,10 +75,9 @@ in the info file auctex in emacs info-mode.
 %define _smp_mflags -j1
 
 %prep
-%setup -n auctex-%{version}
+%setup -q -n auctex-%{version}
 %patch -P0
 %patch -P1
-%patch -P2
 
 %build
     unset ${!LC_*}
@@ -100,11 +98,18 @@ in the info file auctex in emacs info-mode.
 	--eval "(setq TeX-ignore-file ${ignore})" \
 	--eval "(setq TeX-auto-global \"${PWD}/auto\")" \
 	-l tex-site -l tex -l latex -l plain-tex -f TeX-auto-generate-global
+    emacs -batch -Q -L ${PWD} \
+	--eval "(setq byte-compile-warnings nil)" \
+	-f batch-byte-compile auto/*.el
+    (cat > auto.list)<<-'EOF'
+	%{_aucdir}/auto/*.el%{ext_el}
+	%{_aucdir}/auto/*.elc
+	EOF
 %else
-    TLVERSION=$(rpm -q --qf '%%{VERSION}' -f /etc/texmf)
+    TLVERSION=$(rpm -q --qf '%%{VERSION}' -f %{_sysconfdir}/texmf)
     if test %{tlversion} -eq ${TLVERSION%%%%.*}
     then
-	tar --use-compress-program=xz -xf %{S:3} -C ${PWD}/auto/
+	tar --use-compress-program=xz -xf %{SOURCE3} -C ${PWD}/auto/
 	(cat > auto.list)<<-'EOF'
 	%{_aucdir}/auto/*.el%{ext_el}
 	%{_aucdir}/auto/*.elc
@@ -112,7 +117,7 @@ in the info file auctex in emacs info-mode.
     else
 	> auto.list
 %if %{defined leap_version}
-        if test %leap_version = "0"
+        if test %{leap_version} = "0"
         then
 	    echo Rerun with %%bcond_without tex4auto to generate new
 	    echo auctex-%{version}-auto-TL-${TLVERSION%%%%.*}.tar.xz
@@ -226,17 +231,16 @@ then
 fi
 
 %post
-for f in %info_files; do
+for f in %{info_files}; do
  %install_info --info-dir=%{_infodir} %{_infodir}/$f.gz
 done
 
 %postun
-for f in %info_files; do
+for f in %{info_files}; do
   %install_info_delete --info-dir=%{_infodir} %{_infodir}/$f.gz
 done
 
 %files -f auto.list
-%defattr(-, root, root)
 %license COPYING
 %doc README doc/*.pdf ChangeLog
 %dir %{_sitedir}/
@@ -245,7 +249,7 @@ done
 %dir %{_aucdir}/auto/
 %dir %{_aucdir}/images/
 %dir %{_aucdir}/style/
-%doc %{_infodir}/*.info*.gz
+%{_infodir}/*.info*.gz
 %{_aucdir}/*.el
 %{_aucdir}/*.el%{ext_el}
 %ghost %verify(not mode) %attr(0644,root,root) %{_aucdir}/font-latex.elc
