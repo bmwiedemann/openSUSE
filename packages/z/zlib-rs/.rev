@@ -16,4 +16,13 @@ c_variadic feature. No headers are shipped, so the package cannot collide
 with zlib-devel.</comment>
     <requestid>1369334</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>1c4a35c4966944c75350dff78acdc9bd</srcmd5>
+    <version>0.6.8</version>
+    <time>1789651170</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.6.8:
+  * Add Deflate from config constructor</comment>
+    <requestid>1378280</requestid>
+  </revision>
 </revisionlist>

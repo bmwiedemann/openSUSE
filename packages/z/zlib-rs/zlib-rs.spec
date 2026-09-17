@@ -21,7 +21,7 @@
 # so the library is libz_rs.so.1.3.0 with an soname of libz_rs.so.1.
 %define sover 1
 Name:           zlib-rs
-Version:        0.6.7
+Version:        0.6.8
 Release:        0
 Summary:        Memory-safe zlib implementation written in Rust
 License:        Zlib

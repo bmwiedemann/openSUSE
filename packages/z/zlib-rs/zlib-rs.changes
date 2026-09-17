@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:27:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.6.8:
+  * Add Deflate from config constructor
+
+-------------------------------------------------------------------
 Mon Aug  3 20:35:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.6.7)

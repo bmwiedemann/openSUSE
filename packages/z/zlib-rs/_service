@@ -2,8 +2,8 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/trifectatechfoundation/zlib-rs.git</param>
     <param name="scm">git</param>
-    <param name="revision">v0.6.7</param>
-    <param name="version">0.6.7</param>
+    <param name="revision">v0.6.8</param>
+    <param name="version">0.6.8</param>
     <param name="changesgenerate">disable</param>
     <!-- 21 MB of the 24 MB checkout is the Silesia benchmark corpus, used only
          by "cargo bench", plus the fuzzing harness and CI config. None of it is
