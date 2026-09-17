@@ -516,4 +516,31 @@
   (bsc#1272014)</comment>
     <requestid>1368197</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>826338e7b844156a6da7a3843ed4a4d9</srcmd5>
+    <version>4.7.1</version>
+    <time>1789651217</time>
+    <user>anag_factory</user>
+    <comment>- updating to v4.7.1 with the following changes
+ * wwctl power no longer falls back to the local BMC for nodes with no
+   ipmi: ipaddr:, which could power off the Warewulf server itself
+ * wwclient is built with GOAMD64=v1 and no longer fails with an illegal
+   instruction on older nodes
+ * prevent image and overlay corruption from 64-bit inode numbers
+   truncating in cpio
+ * fix kernel version detection for releases with a version-like suffix
+   after the dist tag
+ * several fixes for IPv6-only servers and nodes: dracut boot,
+   wwctl node status, dnsmasq, NetworkManager
+ * remove dsa from the default ssh: key types, which could leave nodes
+   with no usable host keys on EL9
+ * mount non-root filesystems before image extraction during
+   provision-to-disk
+ * overlay template fixes for parent directories and symbolic links
+  * dependency updates, including go-jose 4.1.4 for CVE-2026-34986
+  * updated go-chi to v5.3.2 to fix CVE-2026-72815, CVE-2026-72816 and
+    CVE-2026-72817 (IP spoofing: authentication bypass, authorization
+    override, and log forgery) (bsc#1276100)</comment>
+    <requestid>1378333</requestid>
+  </revision>
 </revisionlist>

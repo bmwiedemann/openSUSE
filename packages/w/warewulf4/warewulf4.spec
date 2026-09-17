@@ -35,7 +35,7 @@ BuildRequires:  govulncheck-vulndb
 ExclusiveArch:  x86_64 aarch64
 
 Name:           warewulf4
-Version:        4.7.0
+Version:        4.7.1
 Release:        0
 Summary:        A suite of tools for clustering
 License:        BSD-3-Clause
