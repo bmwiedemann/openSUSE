@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:07:18 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.7.0:
+  Added:
+  * Support multi-line menu items #259
+  * Add caret (cursor) to search widget #268
+  * Add the following configuration options:
+    + respect_workarea to optionally ignore the _NET_WORKAREA when
+      position_mode=pointer #227 #260
+    + sep_text_height to specify the height of separators with text
+      (defined by ^sep(text)) #261
+    + focus_on_open to focus the first selectable item when opening the
+      menu #263
+  Fixed:
+  * Fix NetBSD build errors #269 #272
+  * Fix search widget pango markup handling #237 #262
+
+-------------------------------------------------------------------
 Mon Aug 10 07:07:40 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.6.0:
