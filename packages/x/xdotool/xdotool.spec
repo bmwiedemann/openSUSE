@@ -1,7 +1,7 @@
 #
 # spec file for package xdotool
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,13 @@
 
 
 Name:           xdotool
-Version:        4.20251130.1
+Version:        4.20260303.1
 Release:        0
 Summary:        Fake keyboard/mouse input
 License:        BSD-3-Clause
-Group:          System/X11/Utilities
 URL:            https://www.semicomplete.com/projects/xdotool/
-Source:         https://github.com/jordansissel/xdotool/releases/download/v%{version}/%{name}-%{version}.tar.gz
-BuildRequires:  gcc-c++
+Source:         https://github.com/jordansissel/xdotool/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
 BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
@@ -39,7 +38,6 @@ extension and other Xlib functions.
 
 %package devel
 Summary:        Development and Library files
-Group:          Development/Libraries/X11
 Requires:       %{name} = %{version}
 Requires:       pkgconfig(x11)
 
@@ -57,7 +55,7 @@ Library and Header files for %{name}
 # Fix file permissions
 chmod 0644 examples/ffsp.sh
 export WARNFLAGS="%{optflags}"
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install \
@@ -74,9 +72,10 @@ chmod 0644 examples/*
 
 %files
 %{_bindir}/%{name}
-%doc CHANGELIST COPYRIGHT README.md
+%license COPYRIGHT
+%doc CHANGELIST README.md
 %doc examples
-%{_mandir}/man1/%{name}.1%{ext_man}
+%{_mandir}/man1/%{name}.1%{?ext_man}
 %{_libdir}/libxdo.so.*
 
 %files devel

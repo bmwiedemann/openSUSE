@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:25:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.20260303.1:
+  * XSendEvent now correctly sets the modifier mask when sending
+    key combinations (regression in 4.20251130.1, #495, #505)
+  * Keystroke delays less than 50ms now work correctly for type
+    and key commands (regression in 4.20251130.1, #496, #498, #506)
+- Use GitHub tag archive as Source (no release tarball)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Wed Dec 17 09:50:15 UTC 2025 - Stefan Dirsch <sndirsch@suse.com>
 
 - update to 4.20251130.1

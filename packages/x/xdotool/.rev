@@ -128,4 +128,18 @@
     <comment></comment>
     <requestid>1323312</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>028f8a06aed96a1f713ef6a6ee9fb062</srcmd5>
+    <version>4.20260303.1</version>
+    <time>1789651439</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.20260303.1:
+  * XSendEvent now correctly sets the modifier mask when sending
+    key combinations (regression in 4.20251130.1, #495, #505)
+  * Keystroke delays less than 50ms now work correctly for type
+    and key commands (regression in 4.20251130.1, #496, #498, #506)
+- Use GitHub tag archive as Source (no release tarball)
+- Spec cleanup</comment>
+    <requestid>1378449</requestid>
+  </revision>
 </revisionlist>
