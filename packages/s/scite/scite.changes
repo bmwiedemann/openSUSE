@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:38:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.6.6:
+  * Add margin.cursor property to set the mouse pointer over
+    the margins.
+  * On GTK, change Make Selection Uppercase to Ctrl+Alt+U so
+    it does not clash with Unicode entry.
+  * On GTK, Find in Files uses threads instead of an extra
+    SciTE process, avoiding shell-significant characters.
+- Changes from version 5.6.5:
+  * On GTK, fix Find in Files for text containing shell
+    characters such as '$', '"', and '`'.
+  * Quote variables in command properties so file names with
+    spaces work.
+  * Add unsafe.path.characters to block shell commands on
+    unsafe paths.
+- Changes from version 5.6.4:
+  * Add allow.local.script, allow.script.lexer, and
+    properties.local.enable to reduce risk from untrusted
+    code; protect SciteDefaultHome and SciteUserHome from
+    local or directory options (bug #2389).
+- Bundled Lexilla 5.5.3:
+  * Progress: typed [annotations] as SCE_ABL_TYPEDANNOTATION.
+  * JavaScript: only treat '/' as a regex literal when
+    followed by another '/' on the same line.
+  * XML/HTML: style CDATA contents as SCE_H_CDATA.
+  * Baan: fix stack out-of-bounds write on long preprocessor
+    tokens and identifiers.
+- Require libscintilla-devel >= 5.6.6.
+- Add make BuildRequires.
+
+-------------------------------------------------------------------
 Wed Jun 10 17:57:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.6.3:
