@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-apache-tvm-ffi
-Version:        0.1.13.post3
+Version:        0.1.14
 Release:        0
 Summary:        Minimal FFI runtime and ABI for machine learning systems
 License:        Apache-2.0
@@ -31,16 +36,21 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module scikit-build-core >= 0.10.0}
 BuildRequires:  %{python_module setuptools-scm}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module typing_extensions >= 4.5}
+BuildRequires:  %{python_module typing_extensions >= 4.13}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  cmake >= 3.26
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  ninja >= 1.11
 BuildRequires:  python-rpm-macros
-Requires:       python-typing_extensions >= 4.5
+Requires:       python-typing_extensions >= 4.13
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -67,7 +77,9 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 %python_expand rm -f %{buildroot}%{$python_sitearch}/tvm_ffi/.gitignore
 # Register the console entry points through the singlespec alternatives.
 %python_clone -a %{buildroot}%{_bindir}/tvm-ffi-config
+%python_group_libalternatives tvm-ffi-config
 %python_clone -a %{buildroot}%{_bindir}/tvm-ffi-stubgen
+%python_group_libalternatives tvm-ffi-stubgen
 %python_expand %fdupes %{buildroot}%{$python_sitearch}/tvm_ffi
 
 %check
@@ -77,6 +89,10 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # practical here. Fall back to an import smoke test that loads the compiled
 # Cython core extension and the bundled runtime shared library.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -Bc "import tvm_ffi; print(tvm_ffi.__version__)"
+
+%pre
+%python_libalternatives_reset_alternative tvm-ffi-config
+%python_libalternatives_reset_alternative tvm-ffi-stubgen
 
 %post
 %python_install_alternative tvm-ffi-config

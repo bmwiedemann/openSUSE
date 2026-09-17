@@ -55,4 +55,24 @@ source_validator clean.</comment>
     <comment>Update to 0.1.13.post3: build release wheels for the GIL-enabled CPython 3.14 build (previously only the free-threaded cp314t wheel), and relax the shared-DAG hash scaling threshold in the test suite from 4x to 10x so microsecond-scale timing noise no longer fails it. Built green locally for openSUSE_Tumbleweed/aarch64 (0 rpmlint errors, 0 badness); import smoke test passes for both python313 and python314 flavours.</comment>
     <requestid>1370577</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5fdad6633cccf4a271b92e77bb849d87</srcmd5>
+    <version>0.1.14</version>
+    <time>1789651061</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.14:
+  * Add structural_map, StructuralVisit/Mutate and var_remap APIs,
+    with UnchangedOr to skip no-op refcount traffic
+  * Make ffi.Error picklable and stabilize Python annotation
+    metadata
+  * Add a core opaque-pointer handler map for third-party types
+    that cannot define __tvm_ffi_opaque_ptr__
+  * Publish native layout traits from ObjectDef; stubgen gained
+    a --check mode, prefix namespaces and a Rust backend
+  * Object::unique() now requires no weak references
+  * Support free-threaded Python cross-builds
+  * Raise typing-extensions floor to 4.13
+- Switch from update-alternatives to libalternatives</comment>
+    <requestid>1378289</requestid>
+  </revision>
 </revisionlist>
