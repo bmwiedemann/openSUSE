@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20260610.3b5a868c%{git_version}
+Version:        84.87+git20260916.e122202%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -76,6 +76,8 @@ Group:          System/Fhs
 Requires:       %{name} = %{version}
 Requires:       /usr/bin/find
 Requires:       cpio
+Requires:       gzip
+Requires:       tar
 Requires(post): fillup
 Provides:       aaa_base:/etc/DIR_COLORS
 
@@ -251,13 +253,9 @@ fi
 /usr/etc/profile.d/alias.tcsh
 /usr/etc/profile.d/ls.tcsh
 /usr/etc/profile.d/ls.bash
-/usr/etc/profile.d/ls.zsh
 /usr/etc/profile.d/terminal.sh
 /usr/etc/profile.d/terminal.csh
-%dir /usr/etc/security/
-%dir /usr/etc/security/pam_env.conf.d/
 /usr/etc/security/pam_env.conf.d/xdg.conf
-%dir /usr/lib/environment.d
 /usr/lib/environment.d/50-xdg.conf
 /usr/lib/systemd/system/soft-reboot-cleanup.service
 /usr/libexec/soft-reboot-cleanup

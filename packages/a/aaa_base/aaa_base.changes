@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:20:09 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 84.87+git20260916.e122202:
+  * For new GNU Emacs 31.1: use lexical-binding
+  * Let us now fix this syntax error in ls.bash
+
+-------------------------------------------------------------------
+Wed Aug 12 09:58:59 UTC 2026 - Ruediger Oertel <ro@suse.com>
+
+- Update to version 84.87+git20260812.c6d42af:
+  * added requires for gzip and tar to aaa_base-extras (boo#1274604)
+  * fix(ls): deprecate ls.zsh
+  * fix(ls.bash): use alias, func breaks sudo alias
+  * fix(ls.bash): avoid breaking sudo alias expansion
+  * drop dirs from the specfile, they live in the filesystem package
+
+-------------------------------------------------------------------
 Wed Jun 10 10:20:31 UTC 2026 - ro@suse.com
 
 - Update to version 84.87+git20260610.3b5a868c:

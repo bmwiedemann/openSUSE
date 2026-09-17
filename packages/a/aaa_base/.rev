@@ -4392,4 +4392,21 @@
   * Add missing &quot;=&quot; in alljava.csh (boo#1267423)</comment>
     <requestid>1358507</requestid>
   </revision>
+  <revision rev="520" vrev="1">
+    <srcmd5>8d77d985c6931551757dae2506fa9525</srcmd5>
+    <version>84.87+git20260916.e122202</version>
+    <time>1789650909</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260916.e122202:
+  * For new GNU Emacs 31.1: use lexical-binding
+  * Let us now fix this syntax error in ls.bash
+
+- Update to version 84.87+git20260812.c6d42af:
+  * added requires for gzip and tar to aaa_base-extras (boo#1274604)
+  * fix(ls): deprecate ls.zsh
+  * fix(ls.bash): use alias, func breaks sudo alias
+  * fix(ls.bash): avoid breaking sudo alias expansion
+  * drop dirs from the specfile, they live in the filesystem package</comment>
+    <requestid>1378310</requestid>
+  </revision>
 </revisionlist>
