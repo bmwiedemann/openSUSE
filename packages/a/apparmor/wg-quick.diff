@@ -1,17 +1,23 @@
 https://gitlab.com/apparmor/apparmor/-/merge_requests/2123
 
-commit d778b15fa21e14a418c1df4cb099728078e1d1f8
+commit c48f36315e923ae7a21a3f543e3e97b39759b6e9 (HEAD -> cboltz-wg-quick)
+Author: ChrisWi <chris@computersalat.de>
+Date:   Mon Sep 7 20:45:56 2026 +0200
+
+    complete fix for DNS= and wg-quick
+
+commit 960aaea79c25f77d2bf0add01bf84263e35ab98d
 Author: Christian Boltz <apparmor@cboltz.de>
 Date:   Mon May 25 13:24:57 2026 +0200
 
     Fix wg-quick to work on openSUSE and with DNS= option
-    
+
     Yes, it really (ab)uses mount etc.
-    
+
     Fixes: https://bugzilla.opensuse.org/show_bug.cgi?id=1265394
 
 diff --git a/profiles/apparmor.d/wg-quick b/profiles/apparmor.d/wg-quick
-index cf04a0a11..83122b092 100644
+index cf04a0a11..f5604d9da 100644
 --- a/profiles/apparmor.d/wg-quick
 +++ b/profiles/apparmor.d/wg-quick
 @@ -1,6 +1,7 @@
@@ -62,7 +68,7 @@ index cf04a0a11..83122b092 100644
  
      # Network access rules
      network netlink raw,
-@@ -89,15 +93,15 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+@@ -89,16 +93,16 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
      file r /usr/share/iproute2/rt_tables,
      file r @{run}/netns/{,**},
    }
@@ -78,17 +84,22 @@ index cf04a0a11..83122b092 100644
      # Allow executable mapping and read for the binary
      file mr /usr/sbin/sysctl,
 - 
+-    file w @{PROC}/sys/net/ipv4/conf/all/src_valid_mark,
 +
-     file w @{PROC}/sys/net/ipv4/conf/all/src_valid_mark,
++    file rw @{PROC}/sys/net/ipv4/conf/all/src_valid_mark,
    }
  
-@@ -110,6 +114,103 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
+   # wireguard configuration and key files
+@@ -110,6 +114,143 @@ profile wg-quick /usr/bin/wg-quick flags=(attach_disconnected) {
    # Process-specific access
    file r @{PROC}/@{pid}/net/ip_tables_names,
  
++  /etc/nsswitch.conf r,
++  /usr/etc/nsswitch.conf r,
++  /etc/passwd r,
 +
 +  # alts (actually /usr/sbin/iptables-save)
-+  /usr/bin/alts Cx -> wg-quick//alts,
++  /usr/bin/alts Cx -> alts,
 +  profile alts {
 +    include <abstractions/base>
 +
@@ -100,7 +111,23 @@ index cf04a0a11..83122b092 100644
 +    /usr/share/libalternatives/iptables-save/ r,
 +    /usr/share/libalternatives/iptables-save/*.conf r,
 +
++    /usr/sbin/xtables-legacy-multi Px -> wg-quick//xtables-legacy-multi,
 +    /usr/sbin/xtables-nft-multi Px -> wg-quick//xtables-nft-multi,
++  }
++
++  profile xtables-legacy-multi {
++    include <abstractions/base>
++
++    capability net_admin,
++    capability net_raw,
++
++    network inet raw,
++    network inet6 raw,
++
++    @{PROC}/@{pid}/net/ip_tables_names r,
++    @{PROC}/@{pid}/net/ip6_tables_names r,
++
++    /usr/sbin/xtables-legacy-multi r,
 +  }
 +
 +  profile xtables-nft-multi {
@@ -124,6 +151,8 @@ index cf04a0a11..83122b092 100644
 +
 +    capability sys_admin,
 +
++    mount options=(rw, rshared) -> /,
++
 +    /{usr/,}bin/bash Px -> wg-quick//unshare-bash,
 +    /usr/bin/unshare r,
 +  }
@@ -138,7 +167,10 @@ index cf04a0a11..83122b092 100644
 +
 +    /{usr/,}lib/bash/ r,
 +
++    /{usr/,}etc/nsswitch.conf r,
++
 +    /etc/ r,
++    /etc/passwd r,
 +    /etc/resolv.conf r,
 +
 +    /dev/shm/resolv.conf w, # r needed?
@@ -147,10 +179,13 @@ index cf04a0a11..83122b092 100644
 +    @{PROC}/filesystems r,
 +  }
 +
-+  profile unshare-mount {
++  profile unshare-mount flags=(attach_disconnected) {
 +    include <abstractions/base>
 +
 +    capability sys_admin,
++
++    mount options=(rw, move) -> /dev/shm/,
++    mount options=(rw, move) -> @{run}/netconfig/resolv.conf,
 +
 +    /{usr/,}bin/mount r,
 +
@@ -163,13 +198,23 @@ index cf04a0a11..83122b092 100644
 +    @{PROC}/filesystems r,
 +
 +    /dev/shm/ r,
++
++    /sys/devices/virtual/block/dm-*/dm/name r,
 +  }
 +
 +
 +  # umount private /dev/shm/ on VPN shutdown
 +  /{usr/,}bin/umount Cx -> umount,
 +  profile umount {
++    include <abstractions/base>
++
 +    capability sys_admin,
++    capability setgid,
++    capability setuid,
++
++    umount @{run}/netconfig/resolv.conf,
++
++    /etc/fstab r,
 +
 +    /{usr/,}bin/umount r,
 +
@@ -180,6 +225,9 @@ index cf04a0a11..83122b092 100644
 +
 +    @{PROC}/@{pid}/mountinfo r,
 +    @{PROC}/filesystems r,
++
++    /sys/block/ r,
++    /sys/devices/virtual/block/dm-*/dm/name r,
 +  }
 +
 +

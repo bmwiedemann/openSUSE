@@ -3235,4 +3235,12 @@ Detailed changelog:
 - add dovecot.diff with several dovecot profile updates (boo#1265453) (forwarded request 1373664 from cboltz)</comment>
     <requestid>1373665</requestid>
   </revision>
+  <revision rev="242" vrev="3">
+    <srcmd5>bf111e43a019e293366481f67abf8672</srcmd5>
+    <version>5.0.2</version>
+    <time>1789650938</time>
+    <user>anag_factory</user>
+    <comment>- update wg-quick.diff to fix setting DNS (boo#1265394) (forwarded request 1378194 from cboltz)</comment>
+    <requestid>1378195</requestid>
+  </revision>
 </revisionlist>
