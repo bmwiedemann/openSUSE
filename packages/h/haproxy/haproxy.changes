@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Tue Sep 15 01:07:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.3.0+git0.4d52326:
+  * VERSION: otel: bumped filter version to 2.3.0
+  * DOC: otel: shortened the repeated passages of the implementation guide
+  * BUG/MINOR: otel: left a baggage pair out when its sample yielded nothing
+  * DOC: otel: completed the stream stop notes and the function reference
+  * DOC: otel: added the load-time warnings and missing rules to the guides
+  * DOC: otel: corrected stale statements across the guides and notes
+  * DOC: otel: corrected and completed the keyword guides
+  * CLEANUP: otel: marked the code that cannot run with a NOTE comment
+  * CLEANUP: otel: described the invalid-character check modes
+  * MINOR: otel: checked the context field key against the W3C rules
+  * DOC: otel: added an overview of the tests
+  * MINOR: otel: reported the event pairings on the line that completes them
+  * MINOR: otel: warned about an otel-scope that never runs
+  * MINOR: otel: enforced the root span rules
+  * MINOR: otel: validated the span and context names of every reference
+  * MINOR: otel: enforced the rules of the inject and extract context names
+  * MINOR: otel: bound the instrument lines of one name to a single owner
+  * MINOR: otel: let a key repeat once per condition, first match applied
+  * MINOR: otel: gave the 'link' keyword a condition and let it repeat
+  * MINOR: otel: allowed the 'otel-stop' keyword to be repeated
+  * MINOR: otel: ended a sample list at a repeated clause of the same line
+  * MINOR: otel: separated a repeated span line from a redefinition
+  * MINOR: otel: checked the metric instrument line against the SDK rules
+  * MINOR: otel: allowed each otel-instrumentation keyword only once
+  * MINOR: otel: required the configuration to live inside an OTel scope
+  * MINOR: otel: allowed the configuration sections in any order
+  * MINOR: otel: rejected a bare 'if' or 'unless' with no ACL term
+  * MINOR: otel: made an ACL name unique within its section
+  * BUG/MINOR: otel: allowed a condition to mix ACLs from the three lists
+  * MINOR: otel: refused the reserved words as names and limited the length
+  * MINOR: otel: named the sample key where the value stands on its own
+  * BUG/MINOR: otel: read the whole filter line before its configuration
+  * BUG/MINOR: otel: allowed a repeated sample expression in one value
+  * BUG/MINOR: otel: stopped measuring a sample expression as a name
+  * BUG/MINOR: otel: named the 'config' keyword in its own parse error
+  * CLEANUP: otel: compared the baggage carrier key without case folding
+  * CLEANUP: otel: replaced the word 'verbatim' in the comments and guides
+  * CLEANUP: otel: added the entry traces to the functions that lacked them
+  * CLEANUP: otel: collected the repeated error messages into macros
+  * MINOR: otel: test: added the configuration parser test
+  * DOC: otel: added the keyword definition rules and updated the guides
+  * CLEANUP: otel: replaced the word 'gate' in the comments and guides
+  * MINOR: otel: warned about the events the filter placement never fires
+  * BUG/MINOR: otel: kept a backend filter from re-running the frontend rules
+  * BUG/MINOR: otel: fired on-server-unavailable when no server was reached
+  * BUG/MINOR: otel: armed the idle timer for a filter of a backend section
+  * MINOR: otel: required every otel-group to be named on a 'groups' line
+  * BUG/MINOR: otel: cleared the section state after an aborted parse
+  * BUG/MINOR: otel: gave the events that run on no channel a usable direction
+  * CLEANUP: otel: used the span event dump macro where the events are handled
+  * MINOR: otel: checked 'extract use-headers' against the scope event
+  * BUG/MINOR: otel: kept the session alive when a root scope is skipped
+  * CLEANUP: otel: collected the session disabling into one function
+
+-------------------------------------------------------------------
+Wed Sep 09 11:35:20 UTC 2026 - varkoly@suse.com
+
+- Update haproxy-opentelemetry to version 2.2.0+git4.5137bce:
+  * LICENSE: otel: added the LICENSE file and moved the headers to the GPL
+  * MINOR: otel: added a sampler level to the speed test
+  * MINOR: otel: evaluated the samples in a trash buffer
+  * MEDIUM: otel: skipped the samples of a span that records nothing
+
+-------------------------------------------------------------------
 Thu Aug 27 15:38:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.4.4+git0.7f03ae65c:
