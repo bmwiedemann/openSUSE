@@ -1,7 +1,7 @@
 #
 # spec file for package python-azure-iot-deviceupdate
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-iot-deviceupdate
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Azure Device Update for IoT Hub client library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure-iot-deviceupdate/azure-iot-deviceupdate-%{version}.zip
-Source1:        LICENSE.txt
+Source:         https://files.pythonhosted.org/packages/source/a/azure_iot_deviceupdate/azure_iot_deviceupdate-%{version}.tar.gz
 BuildRequires:  %{python_module azure-iot-nspkg >= 1.0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-BuildRequires:  unzip
 Requires:       python-azure-iot-nspkg >= 1.0.1
-Requires:       (python-azure-core >= 1.24.0 with python-azure-core < 2.0.0)
+Requires:       (python-azure-core >= 1.37.0 with python-azure-core < 2.0.0)
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Conflicts:      python-azure-sdk <= 2.0.0
 %if 0%{?sle_version} >= 150400
@@ -50,10 +48,9 @@ and then deploy these updates to their devices (approve updates to groups
 of devices managed and provisioned in IoT Hub).
 
 %prep
-%setup -q -n azure-iot-deviceupdate-%{version}
+%setup -q -n azure_iot_deviceupdate-%{version}
 
 %build
-install -m 644 %{SOURCE1} %{_builddir}/azure-iot-deviceupdate-%{version}
 %pyproject_wheel
 
 %install
@@ -68,7 +65,7 @@ rm -rf %{buildroot}%{$python_sitelib}/azure/__pycache__
 
 %files %{python_files}
 %doc CHANGELOG.md README.md
-%license LICENSE.txt
+%license LICENSE
 %{python_sitelib}/azure/iot/deviceupdate
 %{python_sitelib}/azure_iot_deviceupdate-*.dist-info
 
