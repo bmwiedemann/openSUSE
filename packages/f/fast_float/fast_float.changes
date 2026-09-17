@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 15 21:06:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.3.0
+  * New `chars_format::javascript` and
+    `chars_format::javascript_sloppy` formats
+  * Faster integer-part scanning (4-digit SWAR on GCC) and skipping
+    the rounding-mode probe for long mantissas
+
+-------------------------------------------------------------------
 Sun Jun 14 15:44:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.2.10

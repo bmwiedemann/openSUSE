@@ -17,13 +17,13 @@
 
 
 Name:           fast_float
-Version:        8.2.10
+Version:        8.3.0
 Release:        0
 Summary:        Re-implementation of std::from_chars for parsing strings into numbers
 License:        Apache-2.0 OR BSL-1.0 OR MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/fastfloat/fast_float
-Source:         https://github.com/fastfloat/fast_float/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         https://github.com/fastfloat/fast_float/archive/refs/tags/v%version.tar.gz
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  cmake(doctest)
@@ -34,7 +34,7 @@ from_chars functions for float and double types as well as integer types.
 
 %package devel
 BuildArch:      noarch
-Summary:        Development and header files for %{name}
+Summary:        Development and header files for %name
 
 %description devel
 The fast_float library provides fast header-only implementations for the C++
@@ -45,10 +45,9 @@ from_chars functions for float and double types as well as integer types.
 
 %build
 %cmake \
-  -DFASTFLOAT_TEST:BOOL=ON \
-  -DFASTFLOAT_SUPPLEMENTAL_TESTS:BOOL=OFF \
-  -DSYSTEM_DOCTEST:BOOL=ON \
-  %{nil}
+	-DFASTFLOAT_TEST:BOOL=ON \
+	-DFASTFLOAT_SUPPLEMENTAL_TESTS:BOOL=OFF \
+	-DSYSTEM_DOCTEST:BOOL=ON
 %cmake_build
 
 %install
@@ -60,7 +59,7 @@ from_chars functions for float and double types as well as integer types.
 %files devel
 %license LICENSE-APACHE LICENSE-BOOST LICENSE-MIT
 %doc README.md
-%{_includedir}/fast_float
-%{_datadir}/cmake/
+%_includedir/fast_float
+%_datadir/cmake/
 
 %changelog

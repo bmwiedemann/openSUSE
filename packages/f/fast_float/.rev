@@ -87,4 +87,12 @@
     <comment>- Update to release 8.2.10</comment>
     <requestid>1359273</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fccad89c592879a76e4ba355486a4052</srcmd5>
+    <version>8.3.0</version>
+    <time>1789650946</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 8.3.0</comment>
+    <requestid>1378223</requestid>
+  </revision>
 </revisionlist>
