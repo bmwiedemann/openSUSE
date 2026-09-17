@@ -1,7 +1,7 @@
 #
-# spec file
+# spec file for package bazel-rules-pkg
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,17 +16,17 @@
 #
 
 
-%define src_install_dir /usr/src/%{name}
+%define src_install_dir %{_prefix}/src/%{name}
 %define base_name bazel-rules-pkg
-
+# Tag 1.3 ships artifact version 1.3.0
+%define upstream_tag 1.3
 Name:           %{base_name}
-Version:        0.7.0
+Version:        1.3.0
 Release:        0
 Summary:        Bazel rules for building tar, zip, deb, and rpm for packages
 License:        Apache-2.0
-Group:          Development/Tools/Building
 URL:            https://github.com/bazelbuild/rules_pkg
-Source0:        https://github.com/bazelbuild/rules_pkg/releases/download/0.7.0/rules_pkg-%{version}.tar.gz
+Source0:        https://github.com/bazelbuild/rules_pkg/releases/download/%{upstream_tag}/rules_pkg-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 BuildRequires:  unzip

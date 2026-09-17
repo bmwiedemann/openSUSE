@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:10:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.3.0 (upstream release tag 1.3):
+- Bzlmod support via MODULE.bazel; runfiles now carry workspace name
+- New pkg_install rule for tree artifacts with destdir, symlink support
+- pkg_rpm: pkg_sub_rpm subpackages, debuginfo and Epoch support,
+  Obsoletes/conflicts, posttrans/postun scriptlets, empty RPMs,
+  data attribute, relocatable rpmbuild
+- pkg_deb: md5sums control file, Multi-Arch field, variables in
+  package name, changelog and provides/replaces files, zst data
+- pkg_tar: duplicate paths allowed, optional mtime and permission
+  preservation, configurable compression including xz, txz extension
+- pkg_zip: configurable compression and symlink support
+- Providers split out into separately released rules_pkg_providers
+- Drop Group tag, point Source0 at the versioned release asset
+
+-------------------------------------------------------------------
 Sun Jun  4 15:39:12 UTC 2023 - Fuminobu Takeyama <ftake@geeko.jp> - 0.7.0
 
 - Initial package 
