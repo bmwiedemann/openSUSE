@@ -16,6 +16,12 @@
 #
 
 
+%if 0%{?suse_version} > 1600
+%define qt_ver 6
+%else
+%define qt_ver 5
+%endif
+
 Name:           QCSXCAD
 Version:        0.6.3
 Release:        0
@@ -35,8 +41,12 @@ BuildRequires:  lzma-devel
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+%if %{qt_ver} == 6
+BuildRequires:  cmake(Qt%{qt_ver}Core5Compat)
+%endif
+BuildRequires:  cmake(Qt%{qt_ver}OpenGLWidgets)
+BuildRequires:  cmake(Qt%{qt_ver}Widgets)
+BuildRequires:  cmake(Qt%{qt_ver}Xml)
 BuildRequires:  pkgconfig(eigen3)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(python3)

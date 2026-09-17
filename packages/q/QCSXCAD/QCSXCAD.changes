@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:16:45 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use Qt6 on Tumbleweed, i.e. same version as used by VTK.
+
+-------------------------------------------------------------------
 Wed Aug 19 11:43:37 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Fix build with GCC16/libstdc++, add
