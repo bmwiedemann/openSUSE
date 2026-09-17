@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-comfy-aimdo
-Version:        0.5.3
+Version:        0.5.5
 Release:        0
 Summary:        AI Model Dynamic Offloader for ComfyUI (pure-Python fallback)
 License:        GPL-3.0-only
@@ -64,7 +64,7 @@ export SETUPTOOLS_SCM_PRETEND_VERSION=%{version}
 # device through the native aimdo.so, which this build does not compile.
 # Confirm instead that the shipped modules import and the loader leaves
 # lib unset (torch.py excluded: it imports torch at module scope).
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfy_aimdo.control, comfy_aimdo.host_buffer, comfy_aimdo.malloc_graph, comfy_aimdo.model_mmap, comfy_aimdo.model_vbar, comfy_aimdo.vram_buffer; assert comfy_aimdo.control.lib is None"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import comfy_aimdo.control, comfy_aimdo.host_buffer, comfy_aimdo.malloc_graph, comfy_aimdo.model_mmap, comfy_aimdo.model_vbar, comfy_aimdo.storage, comfy_aimdo.vram_buffer; assert comfy_aimdo.control.lib is None"
 # Patch0: without a CUDA or ROCm PyTorch, init() must report failure rather
 # than guess a vendor, and it must not emit a warning while doing so.
 cat > test_no_vendor.py <<'EOF'

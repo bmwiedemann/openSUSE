@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:24:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.5:
+  * Windows disk-speed detection for model storage (new
+    comfy_aimdo.storage.fast_disk plus native src-win/disk-id.c).
+    The C helper is Windows-only; this package ships the Python
+    wrapper, which returns None on Linux
+  * Native malloc-graph search no longer skips overlapping alias
+    ranges, so a later allocation can reuse those physical pages;
+    it lives in the native allocator, which this build does not
+    compile
+- Extend %check to import the new comfy_aimdo.storage module
+
+-------------------------------------------------------------------
 Thu Sep 10 18:34:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.3:

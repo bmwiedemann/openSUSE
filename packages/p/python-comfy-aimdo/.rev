@@ -119,4 +119,21 @@ unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.
     <comment>Forward python-comfy-aimdo 0.5.3 to Factory (devel accepted SR1376990).</comment>
     <requestid>1376991</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>65a95681fd35fe93c7be1d2ac62d8344</srcmd5>
+    <version>0.5.5</version>
+    <time>1789651060</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.5:
+  * Windows disk-speed detection for model storage (new
+    comfy_aimdo.storage.fast_disk plus native src-win/disk-id.c).
+    The C helper is Windows-only; this package ships the Python
+    wrapper, which returns None on Linux
+  * Native malloc-graph search no longer skips overlapping alias
+    ranges, so a later allocation can reuse those physical pages;
+    it lives in the native allocator, which this build does not
+    compile
+- Extend %check to import the new comfy_aimdo.storage module</comment>
+    <requestid>1378284</requestid>
+  </revision>
 </revisionlist>
