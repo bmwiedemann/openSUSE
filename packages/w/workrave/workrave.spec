@@ -1,7 +1,7 @@
 #
 # spec file for package workrave
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,100 +16,119 @@
 #
 
 
-%define upstream_version    1_10_54
+%define upstream_version    1_11_1
 Name:           workrave
-Version:        1.10.54
+Version:        1.11.1
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
-License:        GPL-3.0-only
-Group:          Productivity/Other
-URL:            http://www.workrave.org
+License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND HPND
+URL:            https://www.workrave.org
 Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
-Source2:        %{name}-rpmlintrc
-BuildRequires:  autoconf
-BuildRequires:  autoconf-archive
-BuildRequires:  automake
+# PATCH-FIX-UPSTREAM fix-appstream-id-case.patch gh#rcaelers/workrave#710 -- AppStream id must match desktop-id case
+Patch0:         fix-appstream-id-case.patch
 BuildRequires:  boost-devel
+BuildRequires:  cmake
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  gobject-introspection-devel
-BuildRequires:  gstreamer-devel
-BuildRequires:  gtk4-devel
+BuildRequires:  gettext
 BuildRequires:  intltool
-BuildRequires:  libpulse-devel
-BuildRequires:  libtool
+BuildRequires:  libboost_date_time-devel
+BuildRequires:  libboost_program_options-devel
+BuildRequires:  libboost_serialization-devel
+BuildRequires:  pkgconfig
 BuildRequires:  python3-Jinja2
-BuildRequires:  update-desktop-files
-BuildRequires:  pkgconfig(gdk-3.0)
+BuildRequires:  cmake(fmt)
+BuildRequires:  cmake(spdlog)
+BuildRequires:  pkgconfig(ayatana-appindicator3-0.1)
+BuildRequires:  pkgconfig(ayatana-indicator3-0.4)
+BuildRequires:  pkgconfig(dbusmenu-glib-0.4)
+BuildRequires:  pkgconfig(dbusmenu-gtk3-0.4)
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.4)
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(ice)
-BuildRequires:  pkgconfig(sigc++-2.0)
+BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libpulse-mainloop-glib)
 BuildRequires:  pkgconfig(sm)
+BuildRequires:  pkgconfig(wayland-client)
+BuildRequires:  pkgconfig(wayland-scanner)
+BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xtst)
 
 %description
-Workrave is a program that assists in the recovery and prevention of Repetitive Strain Injury (RSI). The program frequently alerts you to take micro-pauses, rest breaks and restricts you to your daily limit.
+Workrave is a program that assists in the recovery and prevention of
+Repetitive Strain Injury (RSI). The program frequently alerts you to
+take micro-pauses, rest breaks and restricts you to your daily limit.
 
 %package devel
-Summary:        Development Files for %{name}
-Group:          Development/Libraries/Other
+Summary:        Development files for %{name}
+BuildArch:      noarch
 
 %description devel
-This package contains header files needed for developing plugins for
-Workrave.
+GObject introspection files for developing Workrave applets.
 
 %prep
-%setup -q -n %{name}-%{upstream_version}
+%autosetup -p1 -n %{name}-%{upstream_version}
 
 %build
-./autogen.sh
-%configure --disable-static --enable-gnome45
-%make_build
+%cmake \
+  -DWITH_GNOME45:BOOL=ON \
+  -DWITH_GNOME_CLASSIC_PANEL:BOOL=OFF \
+  -DWITH_MATE:BOOL=OFF \
+  -DWITH_XFCE4:BOOL=OFF \
+  -DWITH_DBUS:BOOL=ON \
+  -DWITH_GSTREAMER:BOOL=ON \
+  -DWITH_PULSE:BOOL=ON \
+  -DWITH_DBUSMENU:BOOL=ON \
+  -DWITH_INDICATOR:BOOL=ON \
+  -DWITH_APPINDICATOR:BOOL=ON \
+  -DWITH_WAYLAND:BOOL=ON \
+  -DWITH_TESTS:BOOL=OFF \
+  -DCMAKE_INSTALL_SYSCONFDIR:PATH=%{_sysconfdir}
+%cmake_build
 
 %install
-%make_install
-find %{buildroot}/%{_libdir} -type f -name "*.la" -delete
-%suse_update_desktop_file %{name}
-rm -f %{buildroot}/%{_libdir}/libworkrave-gtk4-private-1.0.so
-rm -f %{buildroot}/%{_libdir}/libworkrave-private-1.0.so
-%fdupes %{buildroot}/%{_prefix}
+%cmake_install
+# GIR is generated only with indicator support; the panel plugin is not shipped
+rm -rf %{buildroot}%{_libdir}/ayatana-indicators3 \
+       %{buildroot}%{_libdir}/indicators3
+rm -f %{buildroot}%{_libdir}/libworkrave-gtk4-private-1.0.so \
+      %{buildroot}%{_libdir}/libworkrave-private-1.0.so
+%fdupes %{buildroot}%{_prefix}
 %find_lang %{name}
 
-%post   -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%check
+desktop-file-validate %{buildroot}%{_datadir}/applications/org.workrave.Workrave.desktop
+desktop-file-validate %{buildroot}%{_sysconfdir}/xdg/autostart/org.workrave.Workrave.desktop
+
+%ldconfig_scriptlets
 
 %files -f %{name}.lang
 %license COPYING
-%doc AUTHORS NEWS README.md ABOUT-NLS
+%doc AUTHORS NEWS README.md
 %{_bindir}/workrave
-%dir %{_datadir}/%{name}
-%{_datadir}/applications/%{name}.desktop
-%{_datadir}/dbus*/*
-%dir %{_datadir}/sounds/%{name}
-%{_datadir}/sounds/%{name}/*
-%{_datadir}/%{name}/*
+%{_datadir}/applications/org.workrave.Workrave.desktop
+%{_datadir}/dbus-1/services/org.workrave.Workrave.service
+%{_datadir}/glib-2.0/schemas/org.workrave.*.xml
+%{_datadir}/icons/hicolor/
+%{_datadir}/%{name}/
+%{_datadir}/sounds/%{name}/
+%{_datadir}/metainfo/org.workrave.Workrave.metainfo.xml
+%config %{_sysconfdir}/xdg/autostart/org.workrave.Workrave.desktop
 %dir %{_datadir}/gnome-shell
 %dir %{_datadir}/gnome-shell/extensions
-%dir %{_datadir}/gnome-shell/extensions/workrave@workrave.org
-%{_datadir}/gnome-shell/extensions/workrave@workrave.org/*
-%if 0%{?suse_version} > 1140
-%{_datadir}/glib-2.0/schemas/org.workrave.enums.xml
-%{_datadir}/glib-2.0/schemas/org.workrave.gschema.xml
-%{_datadir}/glib-2.0/schemas/org.workrave.gui.gschema.xml
-%else
-%{_libdir}/bonobo/servers/Workrave-Applet.server
-%{_datadir}/gnome-2.0/ui/GNOME_WorkraveApplet.xml
-%endif
-%{_datadir}/icons/hicolor/
-%{_datadir}/metainfo/workrave.appdata.xml
-%{_datadir}/cinnamon/applets/workrave@workrave.org/applet.js
-%{_datadir}/cinnamon/applets/workrave@workrave.org/metadata.json
-%dir /usr/share/cinnamon/
-%dir /usr/share/cinnamon/applets/
-%dir /usr/share/cinnamon/applets/workrave@workrave.org/
+%{_datadir}/gnome-shell/extensions/workrave@workrave.org/
+%dir %{_datadir}/cinnamon
+%dir %{_datadir}/cinnamon/applets
+%{_datadir}/cinnamon/applets/workrave@workrave.org/
 %{_libdir}/libworkrave-private-1.0.so.*
 %{_libdir}/libworkrave-gtk4-private-1.0.so.*
 %{_libdir}/girepository-1.0/Workrave-*.typelib

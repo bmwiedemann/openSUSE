@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:41:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.1:
+  * First stable 1.11 release (1.11.1 is Windows-installer-only)
+  * Timed operation-mode changes
+  * High-DPI support on Xorg
+  * StatusNotifierItem tray icons
+  * Redesigned GNOME Shell extension (GNOME 45-50, experimental
+    Wayland, high-DPI/fractional scaling)
+  * Follow the XDG Base Directory specification
+  * Autostart on all Linux desktops
+  * Ignore idle inhibitors when possible
+  * New sounds; default theme is now Subtle
+  * Networking support removed
+  * Wayland activity monitoring on KDE and better layer-shell
+    support
+  * Crash fixes for powered-off monitors and wlroots compositors
+  * Tray icon fixes for waybar, swaybar and wf-shell
+  * Rest Break window position in "No Lock" mode
+  * Atomic save of state and daily statistics
+  * New Georgian and Tamil translations; many translation updates
+  * Switch the build from autotools to CMake
+- Enable Wayland, AppIndicator and PulseAudio; use system
+  fmt/spdlog
+- Add fix-appstream-id-case.patch
+- Drop workrave-rpmlintrc
+- Update License to GPL-3.0-or-later AND LGPL-2.0-or-later AND HPND
+
+-------------------------------------------------------------------
 Sat Oct 18 15:18:19 UTC 2025 - Sebastian Wagner <sebix@sebix.at>
 
 - update to version 1.10.54:

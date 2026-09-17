@@ -1,0 +1,22 @@
+From 7bcdae9a7d5b2dd11decdb3adf23736622b5aab8 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?=C5=81ukasz=20Wojni=C5=82owicz?=
+ <lukasz.wojnilowicz@gmail.com>
+Date: Sat, 25 Jul 2026 20:51:49 +0200
+Subject: [PATCH] Fix appstream id case
+
+---
+ ui/app/workrave.metainfo.xml | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/ui/app/workrave.metainfo.xml b/ui/app/workrave.metainfo.xml
+index 794541993..866aaa332 100644
+--- a/ui/app/workrave.metainfo.xml
++++ b/ui/app/workrave.metainfo.xml
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <component type="desktop-application">
+-  <id>org.workrave.workrave</id>
++  <id>org.workrave.Workrave</id>
+   <name>Workrave</name>
+   <summary>Workrave assists in the recovery and prevention of Repetitive Strain Injury (RSI)</summary>
+   <metadata_license>CC-BY-3.0</metadata_license>
