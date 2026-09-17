@@ -108,4 +108,17 @@
 - Switch to using cargo-packaging, and cargo_vendor.</comment>
     <requestid>1325520</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>169fe515903b212e6189714c5f44d92e</srcmd5>
+    <version>0.6.11</version>
+    <time>1789651473</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.11:
+  * Bump pyo3 to 0.29.0, drop unsupported 3.13t
+  * Rust extension declares gil_used = false so it runs under free-threaded
+    (no-GIL) Python
+  * Added concurrent stress test for get_display under free-threaded builds
+  * Set requires-python = &quot;&gt;=3.9&quot; explicitly in pyproject.toml</comment>
+    <requestid>1378494</requestid>
+  </revision>
 </revisionlist>

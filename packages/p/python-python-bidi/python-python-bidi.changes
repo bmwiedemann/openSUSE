@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 02:58:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.6.11:
+  * Bump pyo3 to 0.29.0, drop unsupported 3.13t
+  * Rust extension declares gil_used = false so it runs under free-threaded
+    (no-GIL) Python
+  * Added concurrent stress test for get_display under free-threaded builds
+  * Set requires-python = ">=3.9" explicitly in pyproject.toml
+
+-------------------------------------------------------------------
 Tue Jan  6 05:02:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.6.7:

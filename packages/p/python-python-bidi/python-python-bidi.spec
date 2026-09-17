@@ -18,18 +18,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-bidi
-Version:        0.6.7
+Version:        0.6.11
 Release:        0
 Summary:        BiDi layout algorithm
 License:        LGPL-3.0-only
 URL:            https://github.com/MeirKriheli/python-bidi
 Source:         https://files.pythonhosted.org/packages/source/p/python_bidi/python_bidi-%{version}.tar.gz
 Source1:        vendor.tar.xz
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module maturin > 1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
