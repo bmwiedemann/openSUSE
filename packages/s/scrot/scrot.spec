@@ -1,7 +1,7 @@
 #
 # spec file for package scrot
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,21 @@
 
 
 Name:           scrot
-Version:        1.12.1
+Version:        2.0.0
 Release:        0
 Summary:        Screenshot Capture Utility
 License:        SUSE-Scrot
-Group:          Productivity/Graphics/Other
 URL:            https://github.com/resurrecting-open-source-projects/scrot
 Source:         https://github.com/resurrecting-open-source-projects/scrot/releases/download/%{version}/%{name}-%{version}.tar.gz
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(imlib2) >= 1.11.0
 BuildRequires:  pkgconfig(libbsd)
-BuildRequires:  pkgconfig(xcomposite)
-BuildRequires:  pkgconfig(xcursor)
-BuildRequires:  pkgconfig(xext)
-BuildRequires:  pkgconfig(xfixes)
-BuildRequires:  pkgconfig(xinerama)
-BuildRequires:  pkgconfig(zlib)
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xcomposite) >= 0.2.0
+BuildRequires:  pkgconfig(xfixes) >= 5.0.1
+BuildRequires:  pkgconfig(xrandr) >= 1.5
 Requires:       imlib2
 
 %description
@@ -41,7 +40,6 @@ the dynamic loaders of imlib2.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
@@ -51,7 +49,6 @@ The official bash completion script for %{name}
 
 %package zsh-completion
 Summary:        ZSH Completion for %{name}
-Group:          System/Shells
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
@@ -62,16 +59,12 @@ The official zsh completion script for %{name}
 %autosetup -p1
 
 %build
-%configure --with-libbsd
+%configure
 %make_build
 
 %install
 %make_install
-mkdir -p %{buildroot}/%{_datadir}/pixmaps/
-# Install the shell autocomplete files
-install -Dm 644 %{_builddir}/%{name}-%{version}/etc/bash-completion/%{name} %{buildroot}%{_datadir}/bash-completion/completions/%{name}
-install -Dm 644 %{_builddir}/%{name}-%{version}/etc/zsh-completion/_%{name} %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-rm -rf %{buildroot}/%{_datadir}/doc/scrot
+rm -rf %{buildroot}%{_datadir}/doc/scrot
 
 %files
 %doc AUTHORS ChangeLog README.md
