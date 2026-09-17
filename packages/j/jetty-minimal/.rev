@@ -263,4 +263,12 @@
     <comment>bsc#1272393, CVE-2026-10050</comment>
     <requestid>1370872</requestid>
   </revision>
+  <revision rev="34" vrev="6">
+    <srcmd5>a9f3363f67dd85852437f1a8846d2059</srcmd5>
+    <version>9.4.58</version>
+    <time>1789651433</time>
+    <user>anag_factory</user>
+    <comment>bsc#1280034 (CVE-2026-12611)</comment>
+    <requestid>1378421</requestid>
+  </revision>
 </revisionlist>

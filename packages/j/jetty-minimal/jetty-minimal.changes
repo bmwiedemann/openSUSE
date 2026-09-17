@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 16 15:51:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Added patch:
+  * jetty-CVE-2026-12611.patch
+    + backport of upstream patch fixing bsc#1280034
+      (CVE-2026-12611): Threads blocked in reset HTTP/2 requests
+
+-------------------------------------------------------------------
 Wed Aug 12 12:53:58 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Added patch:
