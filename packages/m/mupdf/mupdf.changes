@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:29:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.4:
+  * Restore mutool poster (broken in 1.28.0 through 1.28.2)
+  * Fix a double free in find_most_recent_common_ancestor
+    (ghostscript bug 709504)
+  * Parse font attributes in SVG <g> elements so nested
+    elements inherit them (ghostscript bug 709475)
+- Rename the shared library subpackage from libmupdf28_3 to
+  libmupdf28_4, following the SONAME libmupdf.so.28.4 which
+  upstream derives from the release version
+
+-------------------------------------------------------------------
 Thu Aug 27 05:55:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.3:

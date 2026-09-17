@@ -896,4 +896,20 @@ dropped.
 Built locally for aarch64 against openSUSE:Factory.</comment>
     <requestid>1373923</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>794cdc6c4c1b1037c904f4937a9d0d43</srcmd5>
+    <version>1.28.4</version>
+    <time>1789651172</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.28.4:
+  * Restore mutool poster (broken in 1.28.0 through 1.28.2)
+  * Fix a double free in find_most_recent_common_ancestor
+    (ghostscript bug 709504)
+  * Parse font attributes in SVG &lt;g&gt; elements so nested
+    elements inherit them (ghostscript bug 709475)
+- Rename the shared library subpackage from libmupdf28_3 to
+  libmupdf28_4, following the SONAME libmupdf.so.28.4 which
+  upstream derives from the release version</comment>
+    <requestid>1378276</requestid>
+  </revision>
 </revisionlist>
