@@ -1,0 +1,9 @@
+<package name="ocaml-optint" project="openSUSE:Factory">
+  <title>Efficient integer types on 64-bit architectures</title>
+  <description>This library provides two new integer types, `Optint.t` and `Int63.t`, which
+guarantee efficient representation on 64-bit architectures and provide a
+best-effort boxed representation on 32-bit architectures.
+
+Implementation depends on target architecture.</description>
+  <url>https://opam.ocaml.org/packages/optint/</url>
+</package>
