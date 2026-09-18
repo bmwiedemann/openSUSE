@@ -1,7 +1,7 @@
 #
 # spec file for package perl-DateTime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,23 +18,24 @@
 
 %define cpan_name DateTime
 Name:           perl-DateTime
-Version:        1.660.0
+Version:        1.670.0
 Release:        0
-# 1.66 -> normalize -> 1.660.0
-%define cpan_version 1.66
+# 1.67 -> normalize -> 1.670.0
+%define cpan_version 1.67
 License:        Artistic-2.0
 Summary:        Date and time object for Perl
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/D/DR/DROLSKY/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
-BuildRequires:  perl(CPAN::Meta::Check) >= 0.11.0
+BuildRequires:  perl(CPAN::Meta::Check) >= 0.11
 BuildRequires:  perl(CPAN::Meta::Requirements)
-BuildRequires:  perl(DateTime::Locale) >= 1.06
+BuildRequires:  perl(DateTime::Locale) >= 1.60
 BuildRequires:  perl(DateTime::TimeZone) >= 2.440
-BuildRequires:  perl(Dist::CheckConflicts) >= 0.02
-BuildRequires:  perl(Params::ValidationCompiler) >= 0.26
+BuildRequires:  perl(Dist::CheckConflicts) >= 0.20
+BuildRequires:  perl(Params::ValidationCompiler) >= 0.260
 BuildRequires:  perl(Specio) >= 0.500
 BuildRequires:  perl(Specio::Declare)
 BuildRequires:  perl(Specio::Exporter)
@@ -44,15 +45,15 @@ BuildRequires:  perl(Specio::Library::String)
 BuildRequires:  perl(Specio::Subs)
 BuildRequires:  perl(Test::Fatal)
 BuildRequires:  perl(Test::More) >= 0.96
-BuildRequires:  perl(Test::Warnings) >= 0.5.0
+BuildRequires:  perl(Test::Warnings) >= 0.5
 BuildRequires:  perl(Test::Without::Module)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(namespace::autoclean) >= 0.190
 BuildRequires:  perl(parent)
-Requires:       perl(DateTime::Locale) >= 1.06
+Requires:       perl(DateTime::Locale) >= 1.60
 Requires:       perl(DateTime::TimeZone) >= 2.440
-Requires:       perl(Dist::CheckConflicts) >= 0.02
-Requires:       perl(Params::ValidationCompiler) >= 0.26
+Requires:       perl(Dist::CheckConflicts) >= 0.20
+Requires:       perl(Params::ValidationCompiler) >= 0.260
 Requires:       perl(Specio) >= 0.500
 Requires:       perl(Specio::Declare)
 Requires:       perl(Specio::Exporter)
@@ -92,7 +93,7 @@ how dates are often written using "BCE/CE" or "BC/AD".
 For infinite datetimes, please see the DateTime::Infinite module.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version} -p1
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 find . -type f ! -path "*/t/*" ! -name "*.pl" ! -path "*/bin/*" ! -path "*/script/*" ! -path "*/scripts/*" ! -name "configure" -print0 | xargs -0 chmod 644
 
@@ -109,7 +110,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS leaptab.txt README.md TODO
+%doc Changes CODE_OF_CONDUCT.md CONTRIBUTING.md CREDITS GOVERNANCE.md leaptab.txt README.md SECURITY.md SUPPORT.md TODO
 %license LICENSE
 
 %changelog

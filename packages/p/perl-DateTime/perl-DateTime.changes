@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:38:42 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.670.0 (1.67)
+   see /usr/share/doc/packages/perl-DateTime/Changes
+
+  1.67   2026-08-30
+
+  - Documented that the `truncate` method can throw a fatal error if the truncation produces a
+    datetime that doesn't exist in the local time zone. This can happen when truncating to a day (or
+    more) in a time zone with a DST transition at midnight. Reported by @tsadok. GH #155.  -
+  - Documented that `rfc3339` does not include nanoseconds. Reported by @n1vux (Bill Ricker). GH #150.
+  - Fixed docs for `strftime` to remove the bit that said it returned the same values as the POSIX
+    `strftime`. This hasn't been the case for a long time. Reported by @jimav (Jim Avera). GH #148.
+
+-------------------------------------------------------------------
 Wed Feb 19 05:32:22 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.660.0 (1.66)
