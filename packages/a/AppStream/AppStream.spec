@@ -18,8 +18,6 @@
 
 %define min_qt_version 6.4.2
 
-%bcond_without vala
-#
 %if 0%{?suse_version} == 1600
 %bcond_without gcc15
 %endif
@@ -31,9 +29,9 @@
 %define rname AppStream
 %define libappstream_sover 5
 %define libAppStreamQt_sover 3
-%define libappstream_compose_sover 0
+%define libappstream_compose_sover 1
 Name:           AppStream
-Version:        1.1.5
+Version:        1.2.0
 Release:        0
 Summary:        Tools and libraries to work with AppStream metadata
 License:        LGPL-2.1-or-later
@@ -41,46 +39,40 @@ URL:            https://www.freedesktop.org/software/appstream/docs/
 Source0:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz
 Source1:        https://www.freedesktop.org/software/appstream/releases/%{rname}-%{version}.tar.xz.asc
 Source2:        AppStream.keyring
-BuildRequires:  cairo-devel
 BuildRequires:  docbook5-xsl-stylesheets
 %if %{with gcc15}
 BuildRequires:  gcc15
 BuildRequires:  gcc15-PIE
 BuildRequires:  gcc15-c++
 %endif
-%if 0%{?suse_version} > 1600
-BuildRequires:  bubblewrap
-BuildRequires:  glycin-loaders
-%else
-BuildRequires:  gdk-pixbuf-loader-rsvg
-%endif
 BuildRequires:  gettext-devel
 BuildRequires:  gperf
 BuildRequires:  itstool
-BuildRequires:  meson >= 0.59
+BuildRequires:  meson
 BuildRequires:  pkgconfig
-%if %{with vala}
 BuildRequires:  vala
-%endif
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(bash-completion) >= 2.0
-BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
+BuildRequires:  pkgconfig(cairo) >= 1.12
+BuildRequires:  pkgconfig(fontconfig)
+BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.62
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 %if %{with libblake3}
 BuildRequires:  pkgconfig(libblake3)
 %endif
-BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
-BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libfyaml)
-BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libcurl) >= 7.62
+BuildRequires:  pkgconfig(libfyaml) >= 0.8
 BuildRequires:  pkgconfig(libsystemd)
 BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(Qt6Core) >= %{min_qt_version}
+BuildRequires:  pkgconfig(Qt6Test) >= %{min_qt_version}
+BuildRequires:  pkgconfig(vips) >= 8.14
+BuildRequires:  pkgconfig(wayland-client) >= 1.15
 BuildRequires:  pkgconfig(xmlb) >= 0.3.14
-BuildRequires:  pkgconfig(wayland-client)
 Recommends:     curl
 
 %description
@@ -117,11 +109,6 @@ The main library for AppStream.
 Summary:        Support for appstreamcli compose
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Requires:       AppStream = %{version}
-%if 0%{?suse_version} > 1600
-Requires:       glycin-loaders
-%else
-Requires:       gdk-pixbuf-loader-rsvg
-%endif
 
 %description compose
 This package contains all necessary files, libraries,
@@ -172,7 +159,6 @@ This package contains the documentation files for AppStream.
 %package -n typelib-1_0-AppStream-compose-1.0
 Summary:        Introspection bindings for  AppStream Compose
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n typelib-1_0-AppStream-compose-1.0
 GObject introspection bindings for interfaces provided by AppStream Compose
@@ -180,7 +166,6 @@ GObject introspection bindings for interfaces provided by AppStream Compose
 %package -n typelib-1_0-AppStream-1.0
 Summary:        Introspection bindings for AppStream
 License:        LGPL-2.1-or-later
-Group:          System/Libraries
 
 %description -n typelib-1_0-AppStream-1.0
 GObject introspection bindings for interfaces provided by AppStream.
@@ -192,18 +177,14 @@ GObject introspection bindings for interfaces provided by AppStream.
 
 %build
 %define common_options -Ddocs=false -Dapidocs=false -Dstemming=false
-%if %{with vala}
-%define build_vapi true
-%else
-%define build_vapi false
-%endif
+
 %if %{with libblake3}
 %define blake3_support true
 %else
 %define blake3_support false
 %endif
 
-%define options -Dqt=true -Dcompose=true -Dvapi=%{build_vapi} -Dblake3-support=%{blake3_support}
+%define options -Dqt=true -Dcompose=true -Dvapi=true -Dblake3-support=%{blake3_support}
 
 %if %{with gcc15}
 export CC=gcc-15 CXX=g++-15
@@ -259,6 +240,8 @@ export PATH=~/bin:$PATH
 
 %files compose
 %{_datadir}/metainfo/org.freedesktop.appstream.compose.metainfo.xml
+%dir %{_libdir}/ascompose
+%{_libdir}/ascompose/asc-mediaworker
 %{_libexecdir}/appstreamcli-compose
 %{_mandir}/man1/appstreamcli-compose*.1.gz
 
@@ -278,12 +261,10 @@ export PATH=~/bin:$PATH
 %{_includedir}/appstream/
 %{_datadir}/gir-1.0/AppStream-1.0.gir
 %{_datadir}/gettext/
-%if %{with vala}
 %dir %{_datadir}/vala/
 %dir %{_datadir}/vala/vapi/
 %{_datadir}/vala/vapi/appstream.deps
 %{_datadir}/vala/vapi/appstream.vapi
-%endif
 
 %files doc
 %{_datadir}/doc/appstream

@@ -685,4 +685,12 @@ Features:
     <comment>Update to 1.1.5</comment>
     <requestid>1367809</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>84b9dd1d3439968f50569ec08db82091</srcmd5>
+    <version>1.2.0</version>
+    <time>1789761808</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.0 (forwarded request 1374669 from krop)</comment>
+    <requestid>1375046</requestid>
+  </revision>
 </revisionlist>
