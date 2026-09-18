@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 17 07:02:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.16.8:
+  * Bug fixes: functional TypedDict keyword arguments, SIM117
+    nested async with, SIM109 operand order, UP040 multiline
+    parentheses, skip TypeVarTuple/ParamSpec conversions with
+    bounds (UP040/UP046/UP047)
+  * Rule changes: __lazy_modules__ (including conditionals),
+    PEP 728 TypedDict class keywords, quoted types in
+    typing.TypeForm, TC001/TC002/TC003 prefer lazy imports on
+    Python 3.15+, UP040 fix always unsafe, UP035 no longer
+    suggests ByteString, RUF064/PTH103 parent_mode, RUF043
+    detects \Z in pytest.raises()
+  * CLI: formatter incompatibility warnings now include the
+    rule name and code
+  * Configuration: flake8-tidy-imports extend-banned-api
+- Re-vendor the Rust dependencies and re-derive the licence
+  set of the statically linked crates: unchanged at MIT AND
+  MPL-2.0, same three MPL-2.0 crates (colored, option-ext,
+  version-ranges); 25 permissive crates moved (patch/minor);
+  tinyvec_macros dropped; linked-crate count 298 -> 297
+
+-------------------------------------------------------------------
 Fri Sep 11 06:53:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.7:
