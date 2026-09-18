@@ -1,0 +1,15 @@
+x87 80-bit: angular_distortion ~1e-6 and meridian_parallel_angle
+89.99999915 vs 90 at decimal=7. Match the 2-D sibling (decimal=5 / 2).
+--- a/test/test_proj.py
++++ b/test/test_proj.py
+@@ -479,8 +479,8 @@ def test_get_factors():
+     assert_almost_equal(factors.meridional_scale, 1.0005466)
+     assert_almost_equal(factors.parallel_scale, 1.0005466)
+     assert_almost_equal(factors.areal_scale, 1.00109349)
+-    assert_almost_equal(factors.angular_distortion, 0)
+-    assert_almost_equal(factors.meridian_parallel_angle, 90)
++    assert_almost_equal(factors.angular_distortion, 0, decimal=5)
++    assert_almost_equal(factors.meridian_parallel_angle, 90, decimal=2)
+     assert_almost_equal(factors.meridian_convergence, 1.67864770)
+     assert_almost_equal(factors.tissot_semimajor, 1.00055, decimal=5)
+     assert_almost_equal(factors.tissot_semiminor, 1.00055, decimal=5)

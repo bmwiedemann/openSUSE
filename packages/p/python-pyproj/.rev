@@ -314,4 +314,86 @@ My fault that the package failed Factory acceptance tests. I originally download
     <comment></comment>
     <requestid>1356041</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>eab5a41594cfda3fddd74bd4af626ef2</srcmd5>
+    <version>3.8.0</version>
+    <time>1789761861</time>
+    <user>anag_factory</user>
+    <comment>- Add test-get-factors-i586-decimal.patch: i586 x87 leaves
+  angular_distortion at ~1e-6 and meridian_parallel_angle at
+  89.99999915; use decimal=5 / 2 like the 2-D sibling
+- Update to 3.8.0
+  * DEP: Minimum supported Python version 3.12 by @snowman2
+    in #1629
+  * WHL: Wheels contain PROJ 9.8.1 by @snowman2 in #1630
+  * WHL: Remove MacOS 13 (X86_64) wheels by @snowman2 in #1533
+  * WHL: Update to MacOS 15 (x86_64) wheels by @snowman2 in #1543
+  * BLD: update build-time dependencies by @neutrinoceros
+    in #1575
+  * BLD: cleanup redundant instructions in MANIFEST.in by
+    @neutrinoceros in #1576
+  * MNT: Use dependency-groups (PEP 735) instead of requirements
+    files by @mwtoews in #1602
+  * WHL: upgrade cibuildwheel to 4.1.0 by @neutrinoceros in #1599
+  * PERF: improve single point transform and remove warning
+    from numpy scalars by @greglucas in #1616
+  * ENH: Add query_geodetic_crs_from_datum by @jjimenezshaw
+    in #1390
+  * ENH: add pivot_crs and grid_check args to TransformerGroup
+    (#1554) by @phaarnes in #1555
+  * ENH: TransformerGroup: add option to ignore CRS extents
+    (Fixes #1497) by @phaarnes in #1538
+  * ENH: add always_xy arg to from_pipeline method by @phaarnes
+    in #1566
+  * BUG: Fix use-after-free when ContextManager frees a
+    context on anothe... by @Troppy2 in #1626 (This resolved
+    multithreading issues)
+  * BUG: Clear CONTEXT_THREAD_KEY when destroying the PJ_CONTEXT
+    by @dgburr in #1541
+  * BUG: Default skew angle for CF grid mapping oblique mercator
+    to 90 by @snowman2 in #1544
+  * BUG: Fix linting issues by @dgburr in #1542
+  * BUG: fix TransformerGroup crash when
+    proj_normalize_for_visualization() returns NULL by @phaarnes
+    in #1556
+  * BUG: Update and fix linting by @mwtoews in #1603
+  * BUG: Fix CRS.to_2d() on CustomConstructorCRS subclasses
+    by @dylanpulver in #1625
+  * TYP: Type the Geod.npts method and some crs dict typings
+    by @jack-volantautonomy in #1594
+  * TST: Fix tests for PROJ 9.7.0 and newer by @phaarnes in #1557
+  * TST: Fix tests for RGF93 v1 -&gt; ETRS89-FRA [RGF93 v1]
+    by @phaarnes in #1560
+  * TST: Update tests with new transformations in PROJ 9.8 by
+    @phaarnes in #1568
+  * TST: Fix tests and workflows by @phaarnes in #1571
+  * TST: Adjust transformer tests for PROJ 9.8 behavior changes
+    by @xylar in #1581
+  * TST: Add Python 3.14 to the testing by @cclauss in #1608
+  * TST: update for PROJ 9.8.1 by @snowman2 in #1628
+  * TST: update for PROJ 9.9 by @snowman2 in #1631 &amp; #1632
+  * MNT: Update release instructions with more details by
+    @djhoese in #1517
+  * MNT: Update wheels to proj 9.7.1 by @phaarnes in #1573
+  * DOC: fix tiny typo in docstring by @steveberardi in #1587
+  * DOC: Spelling fix in test function names by @kratzert
+    in #1589
+  * DOC: Fix typos by @schwehr in #1590
+  * DOC: Update fiona CRS compatibility for fiona 1.9+ by
+    @HugoFara in #1609
+  * DOC: add CPython 3.14 support trove classifier by
+    @neutrinoceros in #1598
+  * DOC: Fix doubled word in transformer docstring by @latent-9
+    in #1615
+  * DOC: added windows specfic intructions for building
+    documentation by @Troppy2 in #1583
+- Drop upstream patches:
+  * v3.7.2-Adjust-transformer-tests-for-PROJ-9.8-behavior-chang.patch
+  * v3.7.2-Fix-tests-and-workflows-5.patch
+  * v3.7.2-Fix-tests-for-PROJ-9.7.0-and-newer-1557.patch
+  * v3.7.2-TST-Fix-tests-after-PROJ-9.8.1-EPSG-database-revert.patch
+  * v3.7.2-TST-Fix-tests-for-RGF93-v1-ETRS89-FRA-RGF93-v1-1560.patch
+  * v3.7.2-TST-Update-tests-with-new-transformations-in-PROJ-9..patch</comment>
+    <requestid>1378641</requestid>
+  </revision>
 </revisionlist>
