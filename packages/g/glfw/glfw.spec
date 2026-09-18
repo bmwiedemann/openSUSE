@@ -45,18 +45,18 @@ BuildRequires:  doxygen >= 1.9.8
 BuildRequires:  fdupes
 %endif
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig
-BuildRequires:  vulkan-devel
-BuildRequires:  pkgconfig(gl)
-BuildRequires:  pkgconfig(glu)
-BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(xkbcommon)
 %if %{with geany}
 BuildRequires:  geany
 %endif
+BuildRequires:  pkg-config
+BuildRequires:  pkgconfig(gl)
+BuildRequires:  pkgconfig(glu)
+BuildRequires:  pkgconfig(vulkan)
+BuildRequires:  pkgconfig(wayland-protocols)
 BuildRequires:  pkgconfig(xcursor)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
+BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xrandr)
 
 %description
@@ -77,20 +77,21 @@ single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%package -n libglfw-devel
+%package devel
 Summary:        Development files for GLFW, an OpenGL application framework
 Group:          Development/Libraries/C and C++
 Requires:       cmake
 Requires:       libglfw%{sover} = %{version}
 Requires:       pkgconfig(gl)
+Obsoletes:      libglfw-devel < %{version}-%{release}
+Provides:       libglfw-devel = %{version}-%{release}
 
-%description -n libglfw-devel
+%description devel
 GLFW is a framework for OpenGL application development. It is a
 single library providing a powerful, portable API for otherwise
 operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
-%if %{with html_docs}
 %package doc
 Summary:        Documentation for GLFW, an OpenGL application framework
 Group:          Documentation/HTML
@@ -103,11 +104,10 @@ operating system specific tasks such as opening an OpenGL window, and
 reading keyboard, time, mouse and joystick input.
 
 This subpackage contains GLFW's documentation in html format.
-%endif
 
 %prep
 %autosetup -p1 -n glfw-%{version}
-find . -type f | xargs sed -i 's/\r//'
+find . -type f -exec sed -i 's/\r//' {} +
 
 # temp geany config directory for allow geany to generate tags
 mkdir -p geany_config
@@ -135,15 +135,14 @@ install -d %{buildroot}/%{_datadir}/geany/tags/
 install -m0644 glfw.c.tags %{buildroot}/%{_datadir}/geany/tags/
 %endif
 
-%post   -n libglfw%{sover} -p /sbin/ldconfig
-%postun -n libglfw%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libglfw%{sover}
 
 %files -n libglfw%{sover}
 %license LICENSE.md
 %doc README.md
 %{_libdir}/libglfw.so.%{sover}*
 
-%files -n libglfw-devel
+%files devel
 %doc examples/*.c
 %{_includedir}/GLFW/
 %{_libdir}/cmake/glfw3

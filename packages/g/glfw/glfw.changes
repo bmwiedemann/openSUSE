@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 14:06:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Use SRPM base name for devel subpackage
+- Modernize spec macros
+
+-------------------------------------------------------------------
 Sat Aug  1 08:50:37 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.5.1
