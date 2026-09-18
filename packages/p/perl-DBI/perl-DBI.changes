@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:24:44 UTC 2026 - Tina Müller <tina.mueller@suse.com>
+
+- Add back Provides entries that got lost due to an upstream bug
+  https://github.com/perl5-dbi/dbi/issues/194
+
+-------------------------------------------------------------------
 Thu Sep 10 09:44:45 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.653.0 (1.653)

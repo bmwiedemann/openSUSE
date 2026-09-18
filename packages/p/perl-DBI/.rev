@@ -580,4 +580,13 @@
       * Fix !Caller2 caller loss when $^P is set (PR#184) (Thanks Paul)</comment>
     <requestid>1376905</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>cdffbcc003073e64cd746c39676dc66c</srcmd5>
+    <version>1.653.0</version>
+    <time>1789761802</time>
+    <user>anag_factory</user>
+    <comment>- Add back Provides entries that got lost due to an upstream bug
+  https://github.com/perl5-dbi/dbi/issues/194</comment>
+    <requestid>1378632</requestid>
+  </revision>
 </revisionlist>
