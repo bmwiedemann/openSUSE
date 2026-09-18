@@ -17,7 +17,7 @@
 
 
 Name:           gap-curlinterface
-Version:        2.4.4
+Version:        2.5.0
 Release:        0
 Summary:        GAP: Web Access via curl
 License:        GPL-2.0-or-later

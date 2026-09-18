@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 18 13:00:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.5.0
+  * Add a `targetFile` option which writes the response body
+    directly to a file, so downloads are no longer bounded by
+    available memory.
+  * Fix inverted `verifyCert` check which disabled TLS certificate
+    verification by default.
+
+-------------------------------------------------------------------
 Tue Jul 21 14:36:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.4.4
