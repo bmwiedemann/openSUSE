@@ -1,4 +1,130 @@
 -------------------------------------------------------------------
+Wed Sep 16 18:14:16 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.29:
+  * rendervulkan: allow eight composite layers
+  * steamcompmgr: keep every mapped ancestor override beneath the pick
+  * steamcompmgr: reroll focus on WM_NORMAL_HINTS only when the hints change
+  * steamcompmgr: only raise the input focus over mapped windows
+  * steamcompmgr: ignore InputOnly children in the SDL fullscreen check
+  * render: add composite_timing GPU timestamps per filter
+  * render: run RCAS at one pixel per thread on Adreno
+  * steamcompmgr: add scaling_filter and scaling_sharpness commands
+  * mangoapp: report the selected and active upscale filter
+  * render: add Snapdragon™ Game Super Resolution 1 upscaling
+  * backends: gate composition on the base layer's filter
+  * shaders: fix the sampleBilinear gather origin for normalized coordinates
+  * steamcompmgr: snapshot the upscale sharpness per frame
+  * WaylandBackend: destroy buffer params when the import fails
+  * wlserver: destroy presentation feedbacks in the discard path too
+  * layer: don't destroy an unowned surface
+  * rendervulkan: don't reject every DRM format on devices without modifiers
+  * wlserver: un-hardcode the protocol version number in create_gamescope_control()
+  * build: make the switch-enum diagnostic a compile-time error when building gamescopectl
+  * gamescope-control: expose the keyboard layout request
+  * OpenVRBackend: round scaled overlay extents
+  * build: bump meson required version to 0.60
+  * wlserver: follow the keyboard layout Steam gives us
+  * layer: recognize Gamescope sockets through container aliases
+  * WaylandBackend: clear Frog transfer on passthrough
+  * steamcompmgr: keep nested menus visible and correctly stacked
+  * steamcompmgr: Don't follow appid-less transient overrides when in PerAppId mode
+  * steamcompmgr: preserve dropdowns under forwarded VR mouse focus
+  * OpenVRBackend: Add vr_cursor_size_in_meters
+  * OpenVRBackend: Fix rendering of physical mouse input's cursor + respect cursor images from apps
+  * tools: remove subproject husks older deploys left on the device
+  * tools: keep device-fetched subprojects across deploys
+  * steamcompmgr: clear PipeWire focus on window teardown
+  * wlserver: check wlr_xwayland_server_create for failure
+  * steamcompmgr: allow uncapped frame rates with adaptive sync
+  * HACK: scripts: use the software backlight on the Legion Go 2
+  * HACK: steamcompmgr: emulate the backlight in software while the output is in PQ
+  * waitable: dispatch EPOLLPRI events to waitables
+  * scripts: Add Lenovo Legion Go 2 as a known device
+  * DRMBackend: fall back to EDID for HDR luminance metadata when scripts omit it
+  * steamcompmgr: Add content-driven HDR output mode
+  * Process: Drop capabilities when spawning processes
+  * main: prevent nested clients from escaping to host Wayland compositors
+  * WaylandBackend: Ignore more libdecor pointer events
+  * rendervulkan: make the shared output images on first use
+  * steamcompmgr: spawn per-connector mangoapps only while the overlay shows
+  * steamcompmgr: only spawn a mangoapp for a connector with a focus window
+  * steamcompmgr: relay mangohudctl to hidden mangoapps too
+  * steamcompmgr: hold the pointer still while a client drags its own window
+  * steamcompmgr: keep a focus window that fits the screen inside it
+  * OpenVRBackend: release a held press whose button up lands on another overlay
+  * wlserver: release touch buttons even when the focus surface is gone
+  * ime: keep one interpret in the generated keymap
+  * steamcompmgr: relay mangohudctl messages to every mangoapp
+  * steamcompmgr: spawn a mangoapp per virtual connector
+  * steamcompmgr: read the mangoapp msg-type window tag
+  * commit: carry a typed mangoapp stream on each commit
+  * mangoapp: support typed per-connector stat streams
+  * HACK: steamcompmgr: treat Steam Frame's Sharp filter as FSR
+  * OpenVRBackend: composite into the connector's own image pool
+  * steamcompmgr: refit the cached base plane after an output size change
+  * steamcompmgr: draw the cached base plane from its painted texture
+  * steamcompmgr: scale absolute input by the window, not the drawn layer
+  * steamcompmgr: rotate the pre-emptive upscale image pool
+  * rendervulkan: track descriptor set and upload ring lifetimes
+  * steamcompmgr: upscale pre-emptively per connector
+  * steamcompmgr: publish the MangoHud snapshot from one connector
+  * steamcompmgr: hold the base and fade planes per connector
+  * steamcompmgr: derive the upscale settings per connector
+  * steamcompmgr: pass the focus into the paint helpers
+  * steamcompmgr: hoist the held commit, base layer and upscale image types
+  * OpenVRBackend: keep the cursor out of the composite
+  * OpenVRBackend: log overlay creation failures
+  * gamescopereaper: do not wait on a child spawned after a kill signal
+  * steamcompmgr: reject out of range scaling filter and scaler values
+  * steamcompmgr: reset only the focus pick on a reroll
+  * steamcompmgr: clear a destroyed window from every connector's external overlay
+  * ime: free the pending string when the IME goes away
+  * ime: remove the per-IME timers when the IME goes away
+  * steamcompmgr: derive the touch mapping from the mouse focus connector
+  * OpenVRBackend: move keyboard focus to the overlay a click lands on
+  * steamcompmgr: raise the mouse pick's base window under its override
+  * steamcompmgr: honor the connector key in secondary Xwayland focus picks
+  * steamcompmgr: don't abort on X11 I/O error while shutting down
+  * steamcompmgr: exempt VR app windows from the frame limiter during VR sessions
+  * steamcompmgr: publish frame limiter state on the X11 root windows
+  * protocol: add gamescope_limiter for frame limiter state
+  * steamcompmgr: only pace FIFO commits for windows the limiter covers
+  * steamcompmgr: exempt forwarded VR overlay windows from the frame limiter
+  * subprojects: update libdisplay-info to 0.4.0
+  * main: reject negative --nested-refresh
+  * backend: remove ShouldFitWindows
+  * OpenVRBackend: fit override redirects again
+  * steamcompmgr: decide the override fit target once per paint
+  * tools: fix quotes in paths and passwords breaking our deploy tools
+  * tools: add a command for removing source copies from a device
+  * tools: give every source tree its own copy on the device
+  * tools: restore cap_sys_nice when installing on the device
+  * OpenVRBackend: Return the force left-click hack for Steam apps
+  * OpenVRBackend: Fix being able to set touch modes from Steam Input in VR
+  * OpenVRBackend: Default off trackpad mode
+  * wlserver: Handle multiple confine boxes + clear confine region
+  * steamcompmgr: Fix setting touch pointer emulation value
+  * steamcompmgr: Fix always considering pointer is relative in nested mode when pointer constraint exists but is not active
+  * OpenVRBackend: Fix mouse control through sources besides VR laser mouse.
+  * steamcompmgr: filter Baldr Sky from relative mouse mode
+  * layer: make sure layer gets deployed.
+  * OpenVRBackend: send feature update when the refresh rate changes.
+  * OpenVRBackend: Disable nudge to visible by default
+  * steamcompmgr: Increment GAMESCOPE_VROVERLAY_FORWARDING version for compat.
+  * tools: Disable zenity for SteamOS builds
+  * wlserver: Resolve toplevel for content overrides at wire time
+  * steamcompmgr, wlserver: Link overrides at window creation time
+  * wlserver: Ensure pending commits get all their data cached at the right time
+  * tools: Install all runtime contents in our install scripts
+  * timeline: Add logging for drmSyncobj call errors
+  * build: Allow disabling zenity intergration at build time
+  * tasks: Disable password on device_password
+  * backend: Fix race for timeline release
+  * OpenVRBackend: Abort on backend init failure
+- Add %check section
+
+-------------------------------------------------------------------
 Mon Aug 31 13:58:42 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.28:

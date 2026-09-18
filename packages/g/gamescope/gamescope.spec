@@ -18,7 +18,7 @@
 
 %bcond_without  intree_libs
 Name:           gamescope
-Version:        3.16.28
+Version:        3.16.29
 Release:        0
 Summary:        Micro-compositor optimized for running video games on Wayland
 License:        BSD-2-Clause
@@ -136,6 +136,9 @@ meson subprojects packagefiles --apply
 %install
 %meson_install --skip-subprojects
 %fdupes %{buildroot}/%{_datadir}
+
+%check
+%meson_test
 
 %post   -p /sbin/ldconfig
 %postun -p /sbin/ldconfig
