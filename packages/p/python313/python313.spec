@@ -167,7 +167,7 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.13.14
+Version:        3.13.15
 %define         tarversion %{version}
 %define         tarname    Python-%{tarversion}
 Release:        0
@@ -233,36 +233,24 @@ Patch42:        gh126985-mv-pyvenv.cfg2getpath.patch
 Patch43:        bsc1243155-sphinx-non-determinism.patch
 # PATCH-FIX-OPENSUSE gh139257-Support-docutils-0.22.patch gh#python/cpython#139257 daniel.garcia@suse.com
 Patch45:        gh139257-Support-docutils-0.22.patch
+# PATCH-FIX-OPENSUSE sphinx9-runtime-node.patch mcepl@suse.com
+# Import Node at runtime because Sphinx 9 evaluates extension annotations.
+Patch46:        sphinx9-runtime-node.patch
 # PATCH-FIX-UPSTREAM pass-test_write_read_limited_history.patch bsc#[0-9]+ mcepl@suse.com
 # Fix readline history truncation when length is reduced
 Patch48:        pass-test_write_read_limited_history.patch
 # PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
 # improve testing of the presence of IPPROTO_UDPLITE support
 Patch53:        test_UDPLITE_support.patch
-# PATCH-FIX-UPSTREAM CVE-2025-15366-imap-ctrl-chars.patch bsc#1257044 mcepl@suse.com
-# Reject control characters in wsgiref.headers.Headers
-Patch54:        CVE-2025-15366-imap-ctrl-chars.patch
 # PATCH-FIX-UPSTREAM CVE-2025-15366-pop3-ctrl-chars.patch bsc#1257041 mcepl@suse.com
 # Reject control characters in POP3 commands
 Patch55:        CVE-2025-15366-pop3-ctrl-chars.patch
-# PATCH-FIX-UPSTREAM CVE-2026-11940-tarfile-escape.patch bsc#1268977 mcepl@suse.com
-# Fix symlink escape via tarfile hardlink-extraction fallback
-Patch56:        CVE-2026-11940-tarfile-escape.patch
-# PATCH-FIX-UPSTREAM reproducible_stencils.patch gh#python/cpython!154988 mcepl@suse.com
-# make jit_stencils.h reproducible
-Patch57:        reproducible_stencils.patch
-# PATCH-FIX-UPSTREAM CVE-2026-0864-normalize-LFTAB-configparser.patch bsc#1269066 mcepl@suse.com
-# Normalize all line endings (CR, CRLF, and LF) in configparser
-Patch58:        CVE-2026-0864-normalize-LFTAB-configparser.patch
-# PATCH-FIX-UPSTREAM CVE-2026-11972-tarfile-Stream-seek-EOF.patch bsc#1269788 mcepl@suse.com
-# Make tarfile._Stream.seek break at EOF
-Patch59:        CVE-2026-11972-tarfile-Stream-seek-EOF.patch
-# PATCH-FIX-UPSTREAM CVE-2026-4360-filter_function-TarFile-extractone.patch bsc#1269959 mcepl@suse.com
-# Pass filter_function to TarFile._extract_one() during .extract()
-Patch60:        CVE-2026-4360-filter_function-TarFile-extractone.patch
-# PATCH-FIX-UPSTREAM CVE-2026-15308-HTMLParser-CPU-exhaust.patch bsc#1271192 mcepl@suse.com
-# Fix quadratic complexity in incremental parsing in HTMLParser
-Patch61:        CVE-2026-15308-HTMLParser-CPU-exhaust.patch
+# PATCH-FIX-UPSTREAM CVE-2026-17084-unicode-rfc3454.patch bsc#1276226 Matej Cepl <mcepl@suse.com>
+# Don't consider Unicode codepoint attributes outside RFC 3454
+Patch56:        CVE-2026-17084-unicode-rfc3454.patch
+# PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
+# in tarfile, handle a member that leaves the destination and comes back
+Patch57:        CVE-2026-19672-tarfile-outside-dirs.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

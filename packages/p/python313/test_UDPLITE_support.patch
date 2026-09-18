@@ -2,11 +2,11 @@
  Lib/test/test_socket.py |   18 +++++++++++++++++-
  1 file changed, 17 insertions(+), 1 deletion(-)
 
-Index: Python-3.13.14/Lib/test/test_socket.py
+Index: Python-3.13.15/Lib/test/test_socket.py
 ===================================================================
---- Python-3.13.14.orig/Lib/test/test_socket.py	2026-06-17 15:09:05.649370164 +0200
-+++ Python-3.13.14/Lib/test/test_socket.py	2026-06-17 15:26:46.425345602 +0200
-@@ -168,6 +168,22 @@
+--- Python-3.13.15.orig/Lib/test/test_socket.py	2026-08-05 14:25:43.000000000 +0200
++++ Python-3.13.15/Lib/test/test_socket.py	2026-09-09 23:30:10.477769166 +0200
+@@ -175,6 +175,22 @@
      return (cid is not None)
  
  
@@ -29,7 +29,7 @@ Index: Python-3.13.14/Lib/test/test_socket.py
  def _have_socket_bluetooth():
      """Check whether AF_BLUETOOTH sockets are supported on this host."""
      try:
-@@ -264,7 +280,7 @@
+@@ -271,7 +287,7 @@
  
  HAVE_SOCKET_VSOCK = _have_socket_vsock()
  
