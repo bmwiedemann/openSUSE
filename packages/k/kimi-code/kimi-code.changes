@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:58:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0:
+  * Add /desktop (alias /install-desktop) and kimi install-app
+    to open the Kimi Code desktop app page in the browser
+  * Render mermaid diagrams in the terminal (off via /settings
+    or mermaid = "off" in tui.toml) and highlight diff blocks
+  * Upload images to Kimi as file references; drop oldest media
+    when the request size budget is exceeded, with a warning
+  * Fix a crash when canceling a turn, duplicate/replaced
+    steered messages, @-mention path glitches, and missing
+    slash commands or attachments while steering
+  * Fix OAuth never starting for MCP servers that allow
+    anonymous discovery but reject tool calls with 401
+  * Limit memory growth from finished subagents; report
+    timed-out, stopped or interrupted subagents as cancelled
+- Changes from version 0.43.1:
+  * Update the terminal UI engine: wrapped-table link colors,
+    @ file-completion order, native clipboard on Linux X11
+  * Fix subagent memory leaks, swarm rendering slowdowns,
+    Ctrl+C exiting the whole CLI, tower-mode roster mixups,
+    and deleted sessions lingering in global search
+
+-------------------------------------------------------------------
 Tue Sep 15 09:57:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.43.0:
