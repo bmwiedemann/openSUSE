@@ -1,0 +1,173 @@
+From ff227c3fd8bc468ae5953a633b0982dda0ae5f22 Mon Sep 17 00:00:00 2001
+From: Marek Czernek <marek.czernek@suse.com>
+Date: Thu, 17 Sep 2026 10:54:45 +0200
+Subject: [PATCH] Stabilize testsuite (#784)
+
+* Fix repo URL that had expired gpg key
+
+* Fix behavior on SUSE vs openSUSE systems
+
+* Fix test_http
+
+* Fix flaky test_log_sanitize[ls] by draining child output
+
+The test called term.recv() once and immediately asserted on caplog.text,
+which races against the child producing output. echo wrote to stdout
+quickly enough to be captured; ls 123456 wrote to stderr after a stat()
+delay and was missed, leaving caplog.text empty.
+
+Drain the child with the canonical 'while term.has_unread_data: recv()'
+loop used elsewhere in the codebase.
+
+---------
+
+Co-authored-by: Daniel A. Wozniak <dwozniak@broadcom.com>
+---
+ .../functional/states/pkgrepo/test_suse.py    | 16 +++++++-------
+ tests/pytests/functional/states/test_user.py  | 22 ++++++++++++++-----
+ tests/pytests/unit/utils/test_vt.py           |  3 ++-
+ tests/unit/utils/test_http.py                 | 14 +++++++++++-
+ 4 files changed, 39 insertions(+), 16 deletions(-)
+
+diff --git a/tests/pytests/functional/states/pkgrepo/test_suse.py b/tests/pytests/functional/states/pkgrepo/test_suse.py
+index d21a9aeb9d..b864352dfd 100644
+--- a/tests/pytests/functional/states/pkgrepo/test_suse.py
++++ b/tests/pytests/functional/states/pkgrepo/test_suse.py
+@@ -33,9 +33,9 @@ def suse_state_tree(grains, pkgrepo, state_tree):
+         - humanname: openSUSE Tumbleweed OSS
+         - gpgkey: https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key
+     {% else %}
+-        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
+-        - humanname: openSUSE Backports for SLE 15 SP4
+-        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
++        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/
++        - humanname: openSUSE Backports for SLE 15 SP7
++        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/repodata/repomd.xml.key
+     {% endif %}
+     """
+ 
+@@ -58,9 +58,9 @@ def suse_state_tree(grains, pkgrepo, state_tree):
+         - humanname: Salt modified OSS
+         - gpgkey: https://download.opensuse.org/tumbleweed/repo/oss/repodata/repomd.xml.key
+     {% else %}
+-        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/
++        - baseurl: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/
+         - humanname: Salt modified Backports
+-        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key
++        - gpgkey: https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/repodata/repomd.xml.key
+     {% endif %}
+     """
+ 
+@@ -202,12 +202,12 @@ def test_pkgrepo_managed_modify(grains, modules, subtests, suse_state_tree):
+                 "comments": {"new": ["# Salt Test (modified)"], "old": None},
+                 "refresh": {"new": 1, "old": None},
+                 "gpgkey": {
+-                    "new": "https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP4/standard/repodata/repomd.xml.key",
++                    "new": "https://download.opensuse.org/repositories/openSUSE:/Backports:/SLE-15-SP7/standard/repodata/repomd.xml.key",
+                     "old": None,
+                 },
+                 "name": {
+                     "new": "Salt modified Backports",
+-                    "old": "openSUSE Backports for SLE 15 SP4",
++                    "old": "openSUSE Backports for SLE 15 SP7",
+                 },
+             }
+             assert state.comment.startswith(
+@@ -223,7 +223,7 @@ def test_pkgrepo_managed_modify(grains, modules, subtests, suse_state_tree):
+             assert state.changes == {
+                 "name": {
+                     "new": "Salt modified Backports",
+-                    "old": "openSUSE Backports for SLE 15 SP4",
++                    "old": "openSUSE Backports for SLE 15 SP7",
+                 }
+             }
+             assert state.comment == "Configured package repo 'salttest'"
+diff --git a/tests/pytests/functional/states/test_user.py b/tests/pytests/functional/states/test_user.py
+index 4060e049d0..0064f61b1e 100644
+--- a/tests/pytests/functional/states/test_user.py
++++ b/tests/pytests/functional/states/test_user.py
+@@ -138,10 +138,14 @@ def test_user_present_nondefault(grains, modules, states, username, user_home):
+     if not salt.utils.platform.is_darwin() and not salt.utils.platform.is_windows():
+         assert user_home.is_dir()
+ 
+-    if grains["os_family"] == "Suse" and not (
+-        grains.get("transactional", False)
+-        or grains.get("osmajorrelease", 0) >= 16
+-        or grains.get("osrelease_info", ()) >= (15, 6)
++    if (
++        grains["os_family"] == "Suse"
++        and not grains.get("transactional", False)
++        and grains.get("osmajorrelease", 0) < 16
++        and (
++            grains.get("osrelease_info", ()) < (15, 6)
++            or grains.get("osfullname", "") == "SLES"
++        )
+     ):
+         expected_group_name = "users"
+     elif grains["os_family"] == "MacOS":
+@@ -392,7 +396,10 @@ def test_user_present_change_groups(
+     if grains["os_family"] == "Suse" and (
+         grains.get("transactional", False)
+         or grains.get("osmajorrelease", 0) >= 16
+-        or grains.get("osrelease_info", ()) >= (15, 6)
++        or (
++            grains.get("osrelease_info", ()) >= (15, 6) 
++            and grains.get("osfullname", "") != "SLES"
++        ) 
+     ):
+         expected_groups.append(username)
+ 
+@@ -428,7 +435,10 @@ def test_user_present_change_optional_groups(
+     if grains["os_family"] == "Suse" and (
+         grains.get("transactional", False)
+         or grains.get("osmajorrelease", 0) >= 16
+-        or grains.get("osrelease_info", ()) >= (15, 6)
++        or (
++            grains.get("osrelease_info", ()) >= (15, 6) 
++            and grains.get("osfullname", "") != "SLES"
++        )
+     ):
+         expected_groups.append(username)
+ 
+diff --git a/tests/pytests/unit/utils/test_vt.py b/tests/pytests/unit/utils/test_vt.py
+index c31b25e623..6444ac6ed9 100644
+--- a/tests/pytests/unit/utils/test_vt.py
++++ b/tests/pytests/unit/utils/test_vt.py
+@@ -51,6 +51,7 @@ def test_log_sanitize(test_cmd, caplog):
+         stream_stderr=False,
+     )
+     with caplog.at_level(logging.DEBUG):
+-        ret = term.recv()
++        while term.has_unread_data:
++            term.recv()
+     assert password not in caplog.text
+     assert "******" in caplog.text
+diff --git a/tests/unit/utils/test_http.py b/tests/unit/utils/test_http.py
+index 31dbff2654..c3ae1c2557 100644
+--- a/tests/unit/utils/test_http.py
++++ b/tests/unit/utils/test_http.py
+@@ -223,8 +223,20 @@ class HTTPPostTestCase(TestCase):
+         }
+ 
+         mock_curl = MagicMock()
++        class MockContextManager:
++            def __init__(self, cls, args=None, kwargs=None, **_):
++                self.cls = cls
++                self.args = args or []
++                self.kwargs = kwargs or {}
++
++            def __enter__(self):
++                return self.cls(*self.args, **self.kwargs)
++
++            def __exit__(self, *args):
++                pass
++
+         def mock_sync_wrapper(cls, args=None, kwargs=None, **_):
+-            return cls(*args or [], **kwargs or {})
++            return MockContextManager(cls, args, kwargs)
+ 
+         with patch("salt.utils.http.SyncWrapper", side_effect=mock_sync_wrapper), patch(
+             "tornado.httpclient.AsyncHTTPClient.fetch", mock_curl
+-- 
+2.55.0
+

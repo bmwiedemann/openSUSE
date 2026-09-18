@@ -1,0 +1,86 @@
+From 733b8f2120f7207d9bb2c7a92a68e95dfe1b7174 Mon Sep 17 00:00:00 2001
+From: Victor Zhestkov <vzhestkov@suse.com>
+Date: Fri, 18 Sep 2026 09:34:00 +0200
+Subject: [PATCH] Ignore release if not specified in the pkg state
+ (bsc#1280289)
+
+* Ignore relese on verification if not specified in state
+
+* Add tests with release either in installed or required packages
+---
+ salt/states/pkg.py                    | 11 +++++++++++
+ tests/pytests/unit/states/test_pkg.py | 28 +++++++++++++++++++++++++++
+ 2 files changed, 39 insertions(+)
+
+diff --git a/salt/states/pkg.py b/salt/states/pkg.py
+index a605b231076..27096c2277b 100644
+--- a/salt/states/pkg.py
++++ b/salt/states/pkg.py
+@@ -222,7 +222,18 @@ def _fulfills_version_spec(versions, oper, desired_version, ignore_epoch=None):
+     if salt.utils.platform.is_freebsd():
+         if isinstance(versions, dict) and "version" in versions:
+             versions = versions["version"]
++
++    # If desired version is missing a release, but not the installed
++    # The versions would be equal, ignore the release.
++    # This can happen on checking if a package version 3.2 is satisfied by
++    # 3.2-1.0 or 3.2-2.1
++    ignore_release = "-" not in desired_version
++
+     for ver in versions:
++        if ignore_release and "-" in ver:
++            # Strip release part from the installed package version
++            # if release was not specified as desired
++            ver = ver[: ver.find("-")]
+         if (
+             oper == "==" and fnmatch.fnmatch(ver, desired_version)
+         ) or salt.utils.versions.compare(
+diff --git a/tests/pytests/unit/states/test_pkg.py b/tests/pytests/unit/states/test_pkg.py
+index f58be11011f..7d1ea1bfdd6 100644
+--- a/tests/pytests/unit/states/test_pkg.py
++++ b/tests/pytests/unit/states/test_pkg.py
+@@ -285,6 +285,24 @@ def test_parse_version_string(version_string, expected_version_conditions):
+         ("> 15.0.0", ["16.0.0"], True),
+         ("15.0.0", [], False),
+         ("15.0.0", ["15.0.0"], True),
++        # Combinations with release present for either installed or required
++        ("1.2.3", ["1.2.3-1.1"], True),
++        ("1.2.3", ["1.2.3-2.1"], True),
++        ("= 1.2.3", ["1.2.3-2.1"], True),
++        ("!= 1.2.3", ["1.2.3-2.1"], False),
++        ("!= 1.2.3", ["1.2.2-1.1"], True),
++        ("1.2.3", ["1.2.2-2.1"], False),
++        ("1.2.3", ["1.2.4-2.1"], False),
++        ("1.2.2", ["1.2.3-2.1"], False),
++        ("1.2.4", ["1.2.3-2.1"], False),
++        (">= 1.2.3", ["1.2.3-2.1"], True),
++        (">= 1.2.3", ["1.2.3-4.2"], True),
++        (">= 1.2.3-1.3", ["1.2.3-1.2"], False),
++        ("> 1.2.3", ["1.2.3-2.1"], False),
++        ("> 1.2.3", ["1.2.3-3.1"], False),
++        ("1.2.3-2.1", ["1.2.3"], False),
++        ("1.2.2-2.1", ["1.2.3"], False),
++        ("1.2.4-2.1", ["1.2.3"], False),
+         # No version specified, whatever version installed. This is threated like ANY version installed fulfills.
+         ("", ["15.0.0"], True),
+         # No version specified, no version installed.
+@@ -312,6 +330,16 @@ def test_fulfills_version_string(version_string, installed_versions, expected_re
+         (["1.0.0", "14.0.1", "16.0.0", "2.0.0"], "==", "17.0.0", False),
+         (["1.0.0"], "!=", "1.0.0", False),
+         ([], "==", "17.0.0", False),
++        # Combinations with release present for either installed or required
++        (["1.2.3-1.2"], "==", "1.2.3", True),
++        (["1.2.3"], "==", "1.2.3-1.2", False),
++        (["1.2.3-1.2"], ">=", "1.2.3-1.3", False),
++        (["1.2.3-1.2", "1.2.2-1.1"], "==", "1.2.3", True),
++        (["1.2.3", "1.2.2-1.1"], "==", "1.2.3-1.2", False),
++        (["1.2.3", "1.2.2-1.1"], ">=", "1.2.3-1.2", False),
++        (["1.2.3-1.2"], ">=", "1.2.3", True),
++        (["1.2.3-1.2"], ">=", "1.2.3-1.3", False),
++        (["1.2.1-1.2"], "!=", "1.2.3", True),
+     ],
+ )
+ def test_fulfills_version_spec(installed_versions, operator, version, expected_result):
+-- 
+2.55.0
+

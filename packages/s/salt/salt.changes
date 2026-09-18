@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:56:27 UTC 2026 - Victor Zhestkov <vzhestkov@suse.com>
+
+- Ignore release if not specified in the pkg state (bsc#1280289)
+
+- Added:
+  * ignore-release-if-not-specified-in-the-pkg-state-bsc.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 11:15:50 UTC 2026 - Marek Czernek <marek.czernek@suse.com>
+
+- Stabilize testsuite
+
+- Added:
+  * stabilize-testsuite-784.patch
+
+-------------------------------------------------------------------
 Fri Sep 11 14:27:22 UTC 2026 - Pablo Suárez Hernández <pablo.suarezhernandez@suse.com>
 
 - tornado: httputil: Apply multipart limit earlier (bsc#1280008)
