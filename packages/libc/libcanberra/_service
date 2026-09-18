@@ -2,18 +2,17 @@
 <services>
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
-    <param name="url">http://git.0pointer.net/clone/libcanberra.git</param>
+    <param name="url">https://github.com/Distrotech/libcanberra.git</param>
     <param name="revision">master</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)(\+0)?</param>
     <param name="versionrewrite-replacement">\1</param>
-<!--    <param name="changesgenerate">enable</param> -->
+    <!--    <param name="changesgenerate">enable</param> -->
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual"/>
 </services>
-

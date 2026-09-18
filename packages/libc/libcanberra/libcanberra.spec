@@ -24,7 +24,7 @@ Summary:        Portable sound event library
 License:        LGPL-2.1-or-later
 Group:          Development/Libraries/GNOME
 URL:            http://0pointer.de/lennart/projects/libcanberra
-Source:         %{name}-%{version}.tar.zst
+Source:         %{name}-%{version}.tar.xz
 Source1:        libcanberra-gtk-module.sh
 Source99:       baselibs.conf
 # PATCH-FIX-UPSTREAM libcanberra-multi-backend.patch boo#753243 fdo#51662 dimstar@opensuse.org -- Set the multi backend as default and allow it actually to work.

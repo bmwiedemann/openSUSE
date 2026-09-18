@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 16 19:57:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Fri May 23 13:52:05 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop obsolete update-desktop-files BuildRequires and macro.

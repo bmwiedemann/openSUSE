@@ -389,4 +389,12 @@
     <comment> (forwarded request 1279621 from iznogood)</comment>
     <requestid>1280029</requestid>
   </revision>
+  <revision rev="52" vrev="4">
+    <srcmd5>befe15c557b03af599381efbb7b16e7d</srcmd5>
+    <version>0.30+2</version>
+    <time>1789761789</time>
+    <user>anag_factory</user>
+    <comment>- Migrate to xz compression and manual service run</comment>
+    <requestid>1378527</requestid>
+  </revision>
 </revisionlist>
