@@ -873,4 +873,12 @@ fixed baselibs.conf compared to previous version</comment>
 - openmpi5 is not available on 32b systems</comment>
     <requestid>1266212</requestid>
   </revision>
+  <revision rev="90" vrev="3">
+    <srcmd5>7108469e2c7d0888e1438b0b50c095d9</srcmd5>
+    <version>1.14.6</version>
+    <time>1789761809</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378774</requestid>
+  </revision>
 </revisionlist>

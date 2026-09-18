@@ -1,7 +1,7 @@
 #
 # spec file for package hdf5
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -285,7 +285,7 @@ cat > %{_sourcedir}/baselibs.conf << EOF
 libhdf5-%{sonum}%{?my_suffix}
 libhdf5_hl%{sonum}%{?my_suffix}
 libhdf5_fortran%{sonum}%{?my_suffix}
-libhdf5hl_fortran%{sonum}%{?my_suffix}
+libhdf5_hl_fortran%{sonum}%{?my_suffix}
 libhdf5_cpp%{sonum}%{?my_suffix}
 libhdf5_hl_cpp%{sonum}%{?my_suffix}
 libhdf5_tools%{sonum}%{?my_suffix}
@@ -294,7 +294,7 @@ hdf5%{?my_suffix}-devel
    requires "libhdf5-%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_hl%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_fortran%{sonum}%{?my_suffix}-<targettype> = <version>"
-   requires "libhdf5hl_fortran%{sonum}%{?my_suffix}-<targettype> = <version>"
+   requires "libhdf5_hl_fortran%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_cpp%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_hl_cpp%{sonum}%{?my_suffix}-<targettype> = <version>"
    requires "libhdf5_tools%{sonum}%{?my_suffix}-<targettype> = <version>"

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:47:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Fix typo from libhdf5hl_fortran to libhdf5_hl_fortran 
+
+-------------------------------------------------------------------
 Mon Mar 24 13:12:38 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Disable and remove support for gnu-hpc build flavours (bsc#1239982)
