@@ -18,10 +18,10 @@
 
 %define cpan_name Finance-Quote
 Name:           perl-Finance-Quote
-Version:        1.690.0
+Version:        1.710.0
 Release:        0
-# 1.69 -> normalize -> 1.690.0
-%define cpan_version 1.69
+# 1.71 -> normalize -> 1.710.0
+%define cpan_version 1.71
 #Upstream: GPL-1.0-or-later
 License:        GPL-2.0-or-later
 Summary:        Get stock and mutual fund quotes from various exchanges
@@ -58,7 +58,6 @@ BuildRequires:  perl(IO::Uncompress::Unzip)
 BuildRequires:  perl(JSON)
 BuildRequires:  perl(LWP::Protocol::http)
 BuildRequires:  perl(LWP::Protocol::https)
-BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(LWP::UserAgent) >= 6.480
 BuildRequires:  perl(Module::CPANTS::Analyse)
 BuildRequires:  perl(Module::Load) >= 0.36
@@ -100,7 +99,6 @@ Requires:       perl(IO::Uncompress::Unzip)
 Requires:       perl(JSON)
 Requires:       perl(LWP::Protocol::http)
 Requires:       perl(LWP::Protocol::https)
-Requires:       perl(LWP::Simple)
 Requires:       perl(LWP::UserAgent) >= 6.480
 Requires:       perl(Module::Load) >= 0.36
 Requires:       perl(Mozilla::CA)
@@ -116,7 +114,6 @@ Requires:       perl(Web::Scraper)
 Requires:       perl(XML::LibXML)
 Requires:       perl(YAML::PP::Perl)
 Provides:       perl(Finance::Quote) = %{version}
-Provides:       perl(Finance::Quote::AEX) = %{version}
 Provides:       perl(Finance::Quote::ASEGR) = %{version}
 Provides:       perl(Finance::Quote::ASX) = %{version}
 Provides:       perl(Finance::Quote::AlphaVantage) = %{version}
@@ -133,22 +130,23 @@ Provides:       perl(Finance::Quote::CurrencyRates::CurrencyFreaks) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::ECB) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::FinanceAPI) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::Fixer) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::Frankfurter) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::OpenExchange) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::TwelveData) = %{version}
+Provides:       perl(Finance::Quote::CurrencyRates::UniRate) = %{version}
 Provides:       perl(Finance::Quote::CurrencyRates::YahooJSON) = %{version}
 Provides:       perl(Finance::Quote::Deka) = %{version}
 Provides:       perl(Finance::Quote::FTfunds) = %{version}
 Provides:       perl(Finance::Quote::FinanceAPI) = %{version}
 Provides:       perl(Finance::Quote::Finanzpartner) = %{version}
+Provides:       perl(Finance::Quote::Finnhub) = %{version}
 Provides:       perl(Finance::Quote::Fondsweb) = %{version}
 Provides:       perl(Finance::Quote::Fool) = %{version}
 Provides:       perl(Finance::Quote::GoldMoney) = %{version}
 Provides:       perl(Finance::Quote::GoogleWeb) = %{version}
 Provides:       perl(Finance::Quote::IndiaMutual) = %{version}
 Provides:       perl(Finance::Quote::MarketWatch) = %{version}
-Provides:       perl(Finance::Quote::MorningstarCH) = %{version}
 Provides:       perl(Finance::Quote::MorningstarJP) = %{version}
-Provides:       perl(Finance::Quote::MorningstarUK) = %{version}
 Provides:       perl(Finance::Quote::NSEIndia) = %{version}
 Provides:       perl(Finance::Quote::NZX) = %{version}
 Provides:       perl(Finance::Quote::OnVista) = %{version}

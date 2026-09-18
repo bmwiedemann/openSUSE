@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Aug 31 11:39:53 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.710.0 (1.71)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+
+  1.71      2026-08-30 10:48:34-07:00 America/Los_Angeles
+  	* NZX.pm - Fixed JSON mapping - Issue #586
+  	* IndiaMutual.pm: Update AMFI NAV file parsing to 8-column format with Plan and Option fields.
+  	* Removed MorningstarCH.pm - Issue #582
+  	* Removed MorningstarUK.pm - Issue #579
+  	* IndiaMutual.pm: Add support for SIF quotes from AMFI.
+  	* FTfunds.pm: added useragent, cloned from BVB.pm.
+
+-------------------------------------------------------------------
+Mon Jun 22 10:51:55 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.700.0 (1.70)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+
+  1.70      2026-06-21 11:34:56-07:00 America/Los_Angeles
+  	* New module, Finnhub.pm. Fetches quotes from https://finnhub.io using a free personal-use API key.
+  	* GoogleWeb.pm: adapt to the redesigned Google Finance site.
+  	* Tradegate.pm: remove explicit "our $VERSION" assignment that collided
+  	  with the dzil-injected version, producing a duplicate declaration and
+  	  an "our variable $VERSION redeclared" warning. Use a bare # VERSION
+  	  marker like the other modules.
+  	* Tradegate.pm: trim whitespace before parsing date and time
+  	* Added CurrencyRates/Frankfurter
+  	* Removed AEX.pm - Euronext.com added JavaScript based anti-webscraping.
+  	* Added CurrencyRates/UniRate.pm.
+
+-------------------------------------------------------------------
 Sun Apr 19 06:55:14 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.690.0 (1.69)

@@ -578,4 +578,34 @@ See https://bugzilla.novell.com/show_bug.cgi?id=800797 for more.
   	* Added CurrencyRates/TwelveData.pm.</comment>
     <requestid>1353853</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>89cabb8ada1ae435f8e22170f79d1faa</srcmd5>
+    <version>1.710.0</version>
+    <time>1789761844</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.710.0 (1.71)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+  1.71      2026-08-30 10:48:34-07:00 America/Los_Angeles
+  	* NZX.pm - Fixed JSON mapping - Issue #586
+  	* IndiaMutual.pm: Update AMFI NAV file parsing to 8-column format with Plan and Option fields.
+  	* Removed MorningstarCH.pm - Issue #582
+  	* Removed MorningstarUK.pm - Issue #579
+  	* IndiaMutual.pm: Add support for SIF quotes from AMFI.
+  	* FTfunds.pm: added useragent, cloned from BVB.pm.
+
+- updated to 1.700.0 (1.70)
+   see /usr/share/doc/packages/perl-Finance-Quote/Changes
+  1.70      2026-06-21 11:34:56-07:00 America/Los_Angeles
+  	* New module, Finnhub.pm. Fetches quotes from https://finnhub.io using a free personal-use API key.
+  	* GoogleWeb.pm: adapt to the redesigned Google Finance site.
+  	* Tradegate.pm: remove explicit &quot;our $VERSION&quot; assignment that collided
+  	  with the dzil-injected version, producing a duplicate declaration and
+  	  an &quot;our variable $VERSION redeclared&quot; warning. Use a bare # VERSION
+  	  marker like the other modules.
+  	* Tradegate.pm: trim whitespace before parsing date and time
+  	* Added CurrencyRates/Frankfurter
+  	* Removed AEX.pm - Euronext.com added JavaScript based anti-webscraping.
+  	* Added CurrencyRates/UniRate.pm.</comment>
+    <requestid>1378663</requestid>
+  </revision>
 </revisionlist>
