@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug  6 03:38:39 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Add atlascpp-gcc16-cxx20-equality.patch: fix build with GCC 16
+
+-------------------------------------------------------------------
 Fri May 16 09:58:14 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix changelog format: the dashed line indicates the beginning of

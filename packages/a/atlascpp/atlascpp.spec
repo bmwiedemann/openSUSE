@@ -25,6 +25,8 @@ License:        GPL-2.0-or-later AND LGPL-2.1-only
 Group:          Development/Languages/C and C++
 URL:            http://www.worldforge.org/index.php/components/atlas-cpp/
 Source:         http://downloads.sourceforge.net/worldforge/Atlas-C++-%{version}.tar.bz2
+# PATCH-FIX-OPENSUSE atlascpp-gcc16-cxx20-equality.patch -- fix C++20 ambiguous operator== with GCC 16
+Patch0:         atlascpp-gcc16-cxx20-equality.patch
 BuildRequires:  gcc-c++
 BuildRequires:  libbz2-devel
 BuildRequires:  libstdc++-devel
@@ -60,7 +62,7 @@ by the WorldForge project. This library is suitable for linking to either
 clients or servers.
 
 %prep
-%setup -q -n Atlas-C++-%{version}
+%autosetup -p1 -n Atlas-C++-%{version}
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing"

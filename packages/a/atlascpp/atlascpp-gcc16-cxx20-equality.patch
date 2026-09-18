@@ -1,0 +1,21 @@
+Fix build with GCC 16 (default -std=gnu++20).
+
+In C++20, comparing two DataType<C> objects via the member
+operator==(const C&) (through the operator C&() conversion) becomes
+ambiguous with its own argument-reversed candidate, which -Wall
+diagnoses and -Werror rejects in Element.cpp. Give DataType a direct
+operator==(const DataType&) overload so the comparison is an exact
+match; this mirrors what upstream did in the worldforge monorepo
+(libs/atlas Element.h).
+
+--- a/Atlas/Message/Element.h
++++ b/Atlas/Message/Element.h
+@@ -474,6 +474,8 @@
+ 
+         bool operator==(const C& c) const {return _data == c;}
+ 
++        bool operator==(const DataType& c) const {return _data == c._data;}
++
+         void ref() {++_refcount;}
+         void unref() {if(--_refcount == 0) delete this;}
+ 

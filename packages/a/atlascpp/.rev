@@ -43,4 +43,14 @@
     <comment></comment>
     <requestid>1284316</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>a267a9ae9f75609c9b272d1845b082bd</srcmd5>
+    <version>0.6.4</version>
+    <time>1789762557</time>
+    <user>anag_factory</user>
+    <comment>Add atlascpp-gcc16-cxx20-equality.patch: fix build with GCC 16
+
+(not with fixed .changes formatting)</comment>
+    <requestid>1378838</requestid>
+  </revision>
 </revisionlist>
