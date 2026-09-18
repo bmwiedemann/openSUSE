@@ -21,7 +21,6 @@ Version:        2.44
 Release:        0
 Summary:        RSS/Atom Feed Reader for Text Terminals
 License:        MIT
-Group:          Productivity/Networking/Web/Browsers
 URL:            https://newsboat.org
 Source:         https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.xz
 Source1:        https://newsboat.org/releases/%{version}/%{name}-%{version}.tar.xz.asc
@@ -34,20 +33,24 @@ BuildRequires:  expected-lite-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gettext-devel
 BuildRequires:  glibc-devel
-BuildRequires:  libcurl-devel >= 7.18.0
-BuildRequires:  libjson-c-devel >= 0.11
-BuildRequires:  libopenssl-devel
 BuildRequires:  libstdc++-devel
-BuildRequires:  libstfl-devel >= 0.21
-BuildRequires:  libxml2-devel
 # Replacements of vendored C++ libraries
 BuildRequires:  nlohmann_json-devel
 #BuildRequires:  libboost_program_options-devel
 BuildRequires:  optional-lite-devel
 BuildRequires:  pkgconfig
 BuildRequires:  rust >= 1.90.0
-BuildRequires:  sqlite3-devel >= 3.5
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(json) >= 0.11
+BuildRequires:  pkgconfig(json-c) >= 0.11
+BuildRequires:  pkgconfig(libcrypto)
+BuildRequires:  pkgconfig(libcurl) >= 7.18.0
+BuildRequires:  pkgconfig(libopenssl)
+BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(libxml-2.0)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(sqlite3) >= 3.5
+BuildRequires:  pkgconfig(stfl) >= 0.21
+BuildRequires:  pkgconfig(zlib)
 BuildRequires:  rubygem(asciidoctor)
 Recommends:     %{name}-lang
 Suggests:       web_browser
@@ -80,7 +83,7 @@ done
 %build
 ./config.sh
 
-%make_build OPTFLAGS="%{optflags} -Wno-unused-result"
+%make_build OPTFLAGS="%{optflags} -Wno-unused-result" WARNFLAGS="-Wall -Wextra -Wunreachable-code"
 
 %install
 %make_install prefix="%{_prefix}" docdir=%{_docdir}/%{name}

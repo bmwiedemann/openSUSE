@@ -38,4 +38,15 @@
   * Authentication error (`&quot;error&quot;: &quot;INCORRECT_USAGE&quot;`) with TT-RSS (#3373)</comment>
     <requestid>1360907</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0cf0cb6087397a76f653fe3337abdf50</srcmd5>
+    <version>2.44</version>
+    <time>1789762556</time>
+    <user>anag_factory</user>
+    <comment>- Disable hardcoded -Werror to fix compilation failure on
+  json-c system header unused-function warnings
+- Run spec-cleaner to remove deprecated Group tag
+  and transition to pkgconfig BuildRequires</comment>
+    <requestid>1378875</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 17:46:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Disable hardcoded -Werror to fix compilation failure on
+  json-c system header unused-function warnings
+- Run spec-cleaner to remove deprecated Group tag
+  and transition to pkgconfig BuildRequires
+
+-------------------------------------------------------------------
 Mon Jun 22 05:37:51 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.44:

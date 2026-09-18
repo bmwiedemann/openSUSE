@@ -7,5 +7,6 @@ make it a perfect choice for people that need a slick and fast
 feed reader that can be completely controlled via keyboard.
 
 </description>
+  <devel project="network:utilities" package="newsboat"/>
   <url>https://newsboat.org</url>
 </package>
