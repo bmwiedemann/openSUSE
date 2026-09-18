@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:55:21 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 1.25.0
+  * Allow chaining ssserver to another SOCKS5/HTTP/HTTPS proxy
+  * Expose user_key() on CryptoStream and ProxyServerStream, lets callers
+    identify which multi-user identity was authenticated after an AEAD-2022 handshake
+  * EIH (Extended Identity Header) support
+  * local-http: Support HTTP Basic auth
+  * service: Outbound UDP relay through SOCKS5-only chains. UDP traffic can
+    now be relayed through proxy chains when all hops are SOCKS5. Chains containing
+    HTTP/HTTPS hops will emit a startup warning and UDP traffic will bypass the chain.
+  * socket2::Socket with socket2::SockRef
+  * Fix bugs
+    * CVE-2026-25541 and boo#1274441
+
+-------------------------------------------------------------------
 Mon May 18 13:18:23 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
 
 - Comprehensive systemd service hardening (bnc#1212862 and boo#1263916)
@@ -60,7 +76,7 @@ Sun May  4 12:59:48 UTC 2025 - Hillwood Yang <hillwood@opensuse.org>
   * local-tun: Disable TCP package receive checksum for improving performance
   * local-tun: Buffer for receiving/sending packets from/to tun device are 
     cached globally
-  * Fix some issues
+  * Fix some issues (CVE-2025-3416, boo#1242615)
 
 -------------------------------------------------------------------
 Mon Apr  7 09:33:03 UTC 2025 - Marguerite Su <i@marguerite.su>

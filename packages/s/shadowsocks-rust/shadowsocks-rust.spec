@@ -19,7 +19,7 @@
 %global selinuxtype targeted
 
 Name:           shadowsocks-rust
-Version:        1.24.0
+Version:        1.25.0
 Release:        0
 Summary:        Rust port of Shadowsocks
 License:        MIT
