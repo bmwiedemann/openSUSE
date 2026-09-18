@@ -1,0 +1,16 @@
+From: Kim DaeHyun <kernalix7@kodenet.io>
+Subject: [PATCH] meson: use frozen Cargo dependencies for offline builds
+
+Use the vendored dependencies without network access or Cargo.lock updates.
+
+--- a/meson.build
++++ b/meson.build
+@@ -55,7 +55,7 @@
+   cargo_build = custom_target('cargo-build',
+     command: ['sh', '-c', '"$@" && touch "@OUTPUT@"', '_',
+-              cargo, 'build'] + cargo_args + cargo_packages,
++              cargo, 'build', '--frozen'] + cargo_args + cargo_packages,
+     output: 'cargo-build.stamp',
+     build_always_stale: true,
+     console: true,
+     build_by_default: true,

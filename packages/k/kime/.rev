@@ -17,4 +17,12 @@ Linux in Korean (Hangul) users mostly use this program, but not package exist on
     <comment>- Fix vendor checksum to build other arch. package for 3.1.1</comment>
     <requestid>1325907</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9149844bc6f3e1c5fe22aca0bef854b1</srcmd5>
+    <version>3.2.0</version>
+    <time>1789761832</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378609</requestid>
+  </revision>
 </revisionlist>

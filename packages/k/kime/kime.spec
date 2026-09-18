@@ -16,22 +16,23 @@
 #
 
 Name:           kime
-Version:        3.1.1
-Release:        2
+Version:        3.2.0
+Release:        0
 Summary:        Korean IME
 License:        GPL-3.0-or-later
 Group:          System/I18n/Korean
 URL:            https://github.com/Riey/kime
 Source:         https://github.com/Riey/kime/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.xz
+Patch0:         0001-meson-cargo-frozen.patch
 
 BuildRequires:  cargo
 BuildRequires:  clang
 BuildRequires:  clang-devel
-BuildRequires:  cmake
 BuildRequires:  libqt5-qtbase-private-headers-devel
 BuildRequires:  llvm-devel
-BuildRequires:  make
+BuildRequires:  meson
+BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(fontconfig)
@@ -92,7 +93,7 @@ Supplements:    (%{name} and libQt6Gui6)
 Qt6 input module for kime Korean Input Method Engine.
 
 %prep
-%autosetup -a1
+%autosetup -p1 -a1
 
 # Fix vendor checksum for config.guess/config.sub (non-x86_64 builds)
 # Define function once, call multiple times
@@ -108,15 +109,6 @@ fix_vendor_checksums() {
     done
 }
 fix_vendor_checksums
-
-mkdir -p src/frontends/qt6/src
-cp src/frontends/qt5/src/{*.cc,*.hpp,kime.json} src/frontends/qt6/src/
-mv src/frontends/qt6/src/kime-qt5.hpp src/frontends/qt6/src/kime-qt6.hpp
-
-sed -i 's/kime-qt5\.hpp/kime-qt6.hpp/g' src/frontends/qt6/src/*.cc src/frontends/qt6/src/*.hpp
-sed -i 's/QPlatformInputContextFactoryInterface_iid/"org.qt-project.Qt.QPlatformInputContextFactoryInterface.5.1"/g' src/frontends/qt6/src/plugin.hpp
-sed -i 's|../qt5/src/plugin.cc ../qt5/src/input_context.cc|src/plugin.cc src/input_context.cc|g' src/frontends/qt6/CMakeLists.txt
-sed -i 's|target_include_directories(kime-qt6 PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS}|target_include_directories(kime-qt6 PRIVATE ${Qt6Gui_PRIVATE_INCLUDE_DIRS} ${Qt6Core_PRIVATE_INCLUDE_DIRS} ${Qt6_DIR}/../../../include/qt6/QtGui/${Qt6_VERSION} ${Qt6_DIR}/../../../include/qt6/QtGui/${Qt6_VERSION}/QtGui ${Qt6_DIR}/../../../include/qt6/QtCore/${Qt6_VERSION} ${Qt6_DIR}/../../../include/qt6/QtCore/${Qt6_VERSION}/QtCore|g' src/frontends/qt6/CMakeLists.txt
 
 sed -i 's|#!/usr/bin/env sh|#!/bin/sh|g' res/kime-xdg-autostart
 
@@ -137,41 +129,33 @@ fix_vendor_checksums() {
 }
 
 fix_vendor_checksums
-cargo build --release --locked -p kime-engine-capi -p kime-engine-cffi
-export LIBRARY_PATH="$PWD/target/release:$LIBRARY_PATH"
 
-cargo build --release --locked \
-    -p kime -p kime-check -p kime-indicator \
-    -p kime-candidate-window -p kime-xim -p kime-wayland
-
-mkdir -p build && cd build
-cmake ../src \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_INSTALL_PREFIX=%{_prefix} \
-    -DCMAKE_INSTALL_LIBDIR=%{_libdir} \
-    -DENABLE_GTK3=ON -DENABLE_GTK4=ON \
-    -DENABLE_QT5=ON -DENABLE_QT6=ON
-%make_build
+%meson \
+    -Dgtk3=enabled \
+    -Dgtk4=enabled \
+    -Dqt5=enabled \
+    -Dqt6=enabled \
+    -Dcheck=enabled \
+    -Dindicator=enabled \
+    -Dcandidate_window=enabled \
+    -Dxim=enabled \
+    -Dwayland=enabled \
+    -Dsystem_engine=false \
+    -Dcargo_profile=release \
+    -Dinstall_headers=true \
+    -Dinstall_docs=false \
+    -Dqt5_plugindir=%{_libdir}/qt5/plugins \
+    -Dqt6_plugindir=%{_libdir}/qt6/plugins
+%meson_build
 
 %install
-for bin in kime kime-check kime-indicator kime-candidate-window kime-xim kime-wayland; do
-    install -Dm755 target/release/$bin %{buildroot}%{_bindir}/$bin
-done
-install -Dm755 res/kime-xdg-autostart %{buildroot}%{_bindir}/kime-xdg-autostart
-
-install -Dm755 target/release/libkime_engine.so %{buildroot}%{_libdir}/libkime_engine.so
-install -Dm644 src/engine/cffi/kime_engine.h %{buildroot}%{_includedir}/kime_engine.h
-install -Dm644 src/engine/cffi/kime_engine.hpp %{buildroot}%{_includedir}/kime_engine.hpp
-
-install -Dm644 res/kime.desktop %{buildroot}%{_datadir}/applications/kime.desktop
-install -Dm644 res/kime.desktop %{buildroot}%{_sysconfdir}/xdg/autostart/kime.desktop
-install -Dm644 res/icons/64x64/*.png -t %{buildroot}%{_datadir}/icons/hicolor/64x64/apps/
+%meson_install
+mv %{buildroot}%{_libdir}/gtk-3.0/3.0.0/immodules/libim-kime.so \
+   %{buildroot}%{_libdir}/gtk-3.0/3.0.0/immodules/im-kime.so
 %suse_update_desktop_file %{buildroot}%{_datadir}/applications/kime.desktop
 
-install -Dm755 build/lib/libkime-gtk3.so %{buildroot}%{_libdir}/gtk-3.0/3.0.0/immodules/im-kime.so
-install -Dm755 build/lib/libkime-gtk4.so %{buildroot}%{_libdir}/gtk-4.0/4.0.0/immodules/libkime-gtk4.so
-install -Dm755 build/lib/libkime-qt5.so %{buildroot}%{_libdir}/qt5/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so
-install -Dm755 build/lib/libkime-qt6.so %{buildroot}%{_libdir}/qt6/plugins/platforminputcontexts/libkimeplatforminputcontextplugin.so
+%check
+cargo test --frozen -p kime-engine-core
 
 %post -p /sbin/ldconfig
 %postun -p /sbin/ldconfig

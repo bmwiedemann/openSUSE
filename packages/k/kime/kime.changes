@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 05:46:37 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
+
+- Update to official version 3.2.0.
+- Migrate from CMake to Meson while preserving all six subpackages
+  and existing installed paths.
+- Add 0001-meson-cargo-frozen.patch to build with frozen vendored
+  Cargo dependencies; run kime-engine-core tests with --frozen.
+- Remove obsolete Qt6 source-copy, IID and private-include workarounds
+  now supplied by upstream Meson.
+- Retain Qt5/Qt6 private-header build dependencies for automatic
+  private-ABI dependency generation and rebuild tracking.
+
+-------------------------------------------------------------------
 Thu Jan  8 05:44:34 UTC 2026 - Kim DaeHyun <kernalix7@kodenet.io>
 
 - Fix vendor checksum to build other arch. package for 3.1.1
