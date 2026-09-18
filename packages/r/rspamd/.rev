@@ -610,4 +610,12 @@ added https://github.com/rspamd/rspamd/commit/ccb45df90df60fae36b9438cfb2b0088e5
     <comment>- Update to 4.1.5</comment>
     <requestid>1371307</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>a37a3457372b3d43a905f8e3b446b693</srcmd5>
+    <version>4.2.0</version>
+    <time>1789762148</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.2.0</comment>
+    <requestid>1378848</requestid>
+  </revision>
 </revisionlist>

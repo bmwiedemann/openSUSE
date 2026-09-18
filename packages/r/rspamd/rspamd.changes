@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Fri Sep 18 17:01:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.0
+  - Incompatible changes
+    - Public suffix list: host TLDs, free-text URL discovery,
+      multimap's top filter and RBL URL composition maps now all
+      resolve through the new public suffix lookup instead of the
+      old TLD tables. ! exception rules are honoured, a host that
+      is itself a public suffix resolves to the whole host, and
+      maps used with top must list full suffixes (com.au instead of
+      au). Free-text URL discovery runs in two passes (static
+      matcher plus dot-anchored suffix labels), and the
+      10.5k-pattern TLD hyperscan database is gone from the
+      scanner.
+    - symcache: one scheduler now runs over the dependency graph —
+      every item gets a stage and a level at init, and a dependency
+      edge moves its target instead of being executed from the
+      wrong stage.
+    - fuzzy: redis hashes are counted with a periodic SCAN instead
+      of a counter maintained by the update script; negative
+      counters left by older versions are reported as 0.
+  - Features
+    - Attachment content extraction: SVG attachments yield content
+      and smuggling indicators (SVG_CONTENT, SVG_SCRIPT,
+      SVG_FOREIGN_OBJECT, SVG_DATA_URI, SVG_FORM and friends), XLSX
+      and PPTX yield relationship-level facts (OOXML_MACROS,
+      OOXML_OLE_OBJECT, OOXML_REMOTE_TEMPLATE,
+      OOXML_EXTERNAL_DATA), and DOCX gets bounded content
+      extraction plus a flag for unprocessable attachments. HTML
+      parts can also be injected from Lua, so decoded payloads go
+      through the regular HTML parser.
+    - Public suffix lookup: a new component with full public suffix
+      list semantics (wildcards, exceptions, ICANN/private split),
+      exposed to Lua as rspamd_tld_lookup (including custom
+      suffix-like rule sets), url:get_public_suffix() with match
+      flags, and the get_public_suffix selector transform.
+    - Symbol dependencies: selector extractors declare the symbols
+      they need, and ratelimit, multimap, rbl and reputation
+      register them as dependencies. Prefilters may now depend on
+      filters, hoisting the filter and its own dependencies to the
+      prefilter stage.
+    - dkim: From alignment is decided in the module that actually
+      knows about it and reported as R_DKIM_ALIGNED (R_DKIM_ALLOW
+      goes from -0.2 to -0.1, the rest moves to R_DKIM_ALIGNED).
+    - css: compound selectors and combinators are evaluated
+      (div.mainbox, div p, div > p, h1 + p, h1 ~ p).
+    - fuzzy: sampled storage statistics from the count scan
+      (count_scan.stats_sample), published in /fuzzystat and
+      printed by rspamadm fuzzystat, plus lazy per-source stats for
+      keys with a configurable cap (max_ips_per_key, per-key
+      max_ips) and an overflow guard.
+    - Untrusted UCL input: ucl.untrusted_parser(),
+      parser:set_limits() and parser:get_limits() in the Lua API,
+      and bounded UCL parsing of untrusted network input
+      (controller and proxy bodies, checkv3 metadata in JSON and
+      msgpack).
+    - lua_aliases: mailbox identity and equivalent domain classes
+      for comparing addresses.
+    - WebUI: fuzzy storages can be pinged
+      (fuzzy_check.ping_storage_all, /plugins/fuzzy/status) with
+      per-server liveness marks, down badges and an on-demand Check
+      button, and the storage table shows unavailable storages.
+      Bayes gets a learns balance bar and a min_learns status
+      badge. The Status servers table gains three-state health, a
+      per-server details row, load and latency, version and config
+      drift, a Writable badge, an informative All SERVERS cluster
+      row derived from cluster data, and the git build id.
+    - Misc: ClickHouse data-skipping indexes for point lookups
+      (schema 12), a redis_list pusher in metadata_exporter, and
+      upstream pinning for lua_redis requests.
+  - Bug fixes
+    - Hardening against hostile input: libucl bounds container
+      nesting for every parse type and frees trees iteratively (a
+      deeply nested document crashed while being freed); the rdns
+      reply parser is hardened against malformed packets (out of
+      bounds name and RDATA reads, a wrapping TXT counter,
+      recursion on TCP reads); PDF parsing and text extraction
+      bound resource amplification (CMap bytes, object totals,
+      deadlines, memoised streams); and lua_compress bounds
+      decompression output and memory (zstd passed the
+      attacker-controlled frame size straight to g_malloc).
+    - symcache: dependency cycles are broken at init (stack
+      overflow in rspamd_symcache_get_max_timeout), connfilter and
+      prefilter dependencies on filter symbols are forbidden with
+      every rejected edge actually dropped, symbols registered
+      after cache init are planned, leaked async counters no longer
+      spin, and ignore_passthrough symbols run after a pre-result
+      from a prefilter.
+    - maps: destroyed regexp helpers are dropped from the hyperscan
+      compilation queue (worker crash on a freed helper), the
+      reread of a just-truncated map file is deferred, and cold
+      passive workers converge on HTTP maps quickly instead of
+      sleeping a full poll interval with no data. lua_maps keys
+      url-list maps by their effective type, so a glob map is no
+      longer served as a hash map.
+    - css/html: selector matching is bounded with a document-wide
+      budget, ending the combinatorial backtracking on deep
+      nesting; a repeated selector keeps its own cascade entry and
+      only the winning rule is allocated; a grouped selector that
+      cannot be evaluated is dropped instead of registering its
+      first part; relative and shorthand font sizes no longer hide
+      visible text (line-height taken as the size, misspelled vw/vh
+      units, unresolved percent sizes) and a unitless zero is
+      accepted as the font shorthand size; a transparent tag's
+      content is read from the buffer it was written to
+      (R_WHITE_ON_WHITE on messages that also carry hidden text);
+      and layout padding is ignored in hidden text checks, with
+      substantial hidden content penalised.
+    - settings: custom apply keys survive layer merges, actions are
+      applied the same way as on the single-layer path, actions
+      from higher layers are re-enabled, and ip_map/client_ip_map
+      actually match.
+    - mime: nested SVG payloads are charged to the shared payload
+      budget, injected HTML parts get the regular URL pipeline,
+      OOXML relationship-only parts are kept ahead of story
+      truncation with xlIntlMacrosheet parsed, OOXML processing
+      resources are bounded, and the DOCX content symbol scores are
+      registered.
+    - fuzzy: customer keys take precedence over IP bans (the source
+      policy is applied after decryption), key expiry time fields
+      are initialized before mktime and failed date parses
+      rejected, the unkeyed aggregate stats survive with per-IP
+      tracking disabled, write servers are pinged with the write
+      keypair (and the keypair is only overridden when the server
+      lists are actually shared), and empty storages are reported
+      in /stat.
+    - Sender authentication: dkim requires a single author before
+      reporting alignment, spf returns permerror when a domain
+      publishes multiple SPF records and matches the version
+      section as RFC 7208 4.5 defines it without reading past a
+      short TXT string, and forged_recipients compares addresses by
+      mailbox identity instead of as raw strings.
+    - Modules: chartable handles language diacritics correctly,
+      including non-Latin ones, with hardened Unicode spoof
+      detection; greylist uses the lowest passthrough priority for
+      its pre-result; milter no longer inserts a bogus space after
+      the header colon (SMFIP_HDR_LEADSPC is negotiated);
+      url_redirector honours redirectors_only, which previously
+      followed every redirect target; and url_suspect restricts the
+      html_entities obfuscation pattern to ASCII and derives the
+      public suffix through the suffix lookup instead of stripping
+      a label from the eSLD.
+    - WebUI and tools: stat refresh cycles are ordered by start
+      rather than completion, the stale-rate threshold is raised
+      above the largest auto-refresh preset, and the -n description
+      in the rspamadm fuzzy_ping help is fixed.
+
+-------------------------------------------------------------------
 Sat Aug 15 14:26:15 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.1.5
