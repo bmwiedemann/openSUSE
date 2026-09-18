@@ -5158,4 +5158,17 @@ https://build.opensuse.org/requests/1354518
     https://libvirt.org/news.html#v12-7-0-2026-09-01</comment>
     <requestid>1375858</requestid>
   </revision>
+  <revision rev="448" vrev="2">
+    <srcmd5>43d41a23419e8ddef31e45aff4489c17</srcmd5>
+    <version>12.7.0</version>
+    <time>1789761798</time>
+    <user>anag_factory</user>
+    <comment>- qemu: Fix missing audit record and shutdown lifecycle event of
+  VMs with shutdown times exceeding 40 seconds
+  bsc#1280884
+
+- qemu: Fix hot plugged host CPUs not being used
+  bsc#1279562</comment>
+    <requestid>1378619</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:09:16 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix missing audit record and shutdown lifecycle event of
+  VMs with shutdown times exceeding 40 seconds
+  bsc#1280884
+
+-------------------------------------------------------------------
+Tue Sep  8 21:02:19 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- qemu: Fix hot plugged host CPUs not being used
+  bsc#1279562
+
+-------------------------------------------------------------------
 Fri Sep  4 21:14:15 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - Update to libvirt 12.7.0
