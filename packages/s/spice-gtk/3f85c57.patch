@@ -1,0 +1,70 @@
+From 3f85c575b0fc7acd0c024ae0f331e09aa7ae0813 Mon Sep 17 00:00:00 2001
+From: Alex <stp.blgm@gmail.com>
+Date: Wed, 16 Sep 2026 12:13:08 +0300
+Subject: [PATCH] spice-widget: update cairo scale when output scale changes
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The cairo surface device scale is set when the primary surface is created.
+On Wayland, moving a SpiceDisplay between outputs with different scale factors
+updates GtkWidget:scale-factor without recreating the cairo surface. The
+surface therefore keeps the old device scale and renders the guest framebuffer
+at the wrong size on the destination output.
+
+Listen for notify::scale-factor, reapply the current device scale to an existing
+cairo surface, and refresh the normal scaling state.
+
+Fixes: https://gitlab.freedesktop.org/spice/spice-gtk/-/work_items/204
+Signed-off-by: Alex <stp.blgm@gmail.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+---
+ src/spice-widget.c | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+
+diff --git a/src/spice-widget.c b/src/spice-widget.c
+index 22cc5be2..9ccb0076 100644
+--- a/src/spice-widget.c
++++ b/src/spice-widget.c
+@@ -204,6 +204,29 @@ static void scaling_updated(SpiceDisplay *display)
+     update_size_request(display);
+ }
+ 
++static void scale_factor_changed(SpiceDisplay *display,
++                                 GParamSpec *pspec G_GNUC_UNUSED,
++                                 gpointer user_data G_GNUC_UNUSED)
++{
++    SpiceDisplayPrivate *d = display->priv;
++    gint scale_factor = gtk_widget_get_scale_factor(GTK_WIDGET(display));
++
++    /* The cairo surface persists while a Wayland window moves between
++     * outputs. Re-apply its device scale when GTK changes the widget scale
++     * factor so display scaling stays correct on mixed-DPI setups. */
++    if (d->canvas.surface != NULL) {
++        cairo_surface_set_device_scale(d->canvas.surface, scale_factor, scale_factor);
++    }
++
++#ifdef HAVE_EGL
++    if (egl_enabled(d)) {
++        spice_egl_resize_display(display, d->ww * scale_factor, d->wh * scale_factor);
++    }
++#endif
++
++    scaling_updated(display);
++}
++
+ static void update_size_request(SpiceDisplay *display)
+ {
+     SpiceDisplayPrivate *d = display->priv;
+@@ -718,6 +741,8 @@ static void spice_display_init(SpiceDisplay *display)
+     g_signal_connect(display, "drag-data-received",
+                      G_CALLBACK(drag_data_received_callback), NULL);
+     g_signal_connect(display, "size-allocate", G_CALLBACK(size_allocate), NULL);
++    g_signal_connect(display, "notify::scale-factor",
++                     G_CALLBACK(scale_factor_changed), NULL);
+ 
+     gtk_widget_add_events(widget,
+                           GDK_POINTER_MOTION_MASK |
+-- 
+GitLab
+

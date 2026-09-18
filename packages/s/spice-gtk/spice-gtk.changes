@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:59:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 3f85c57.patch: spice-widget: update cairo scale when output
+  scale changes.
+
+-------------------------------------------------------------------
 Fri Aug  7 10:40:21 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.43:

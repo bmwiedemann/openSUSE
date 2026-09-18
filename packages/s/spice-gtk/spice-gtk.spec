@@ -28,6 +28,7 @@ Source0:        %{name}-%{version}.tar.xz
 Source3:        README.SUSE
 # PATCH-FIX-OPENSUSE spice-gtk-polkit-privs.patch bnc#804184 dimstar@opensuse.org -- Set the polkit defaults to auth_admin
 Patch0:         spice-gtk-polkit-privs.patch
+Patch1:         https://gitlab.freedesktop.org/spice/spice-gtk/-/commit/3f85c57.patch
 BuildRequires:  cyrus-sasl-devel
 BuildRequires:  gi-docgen
 BuildRequires:  gstreamer-plugins-bad
