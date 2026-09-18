@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:28:47 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- config.sh: Drop more Leap 15.6 specific code
+- config.sh: Make fixupbootloader.service work with KIWI >= 10
+  (gh#OSInside/kiwi#2783)
+
+-------------------------------------------------------------------
+Thu Sep 17 13:06:58 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Explicitly set the grub console to gfxterm (gh#OSInside/kiwi#2494)
+
+-------------------------------------------------------------------
 Wed Jun  3 08:13:53 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - *: Drop Leap 15.x specific code and support Leap 16

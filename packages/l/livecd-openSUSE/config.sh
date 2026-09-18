@@ -120,10 +120,6 @@ rm -rf /lib/firmware/{amdgpu/{gc_,isp,psp}*,amdnpu,liquidio,netronome,qca,qed,mr
 if [ "$(arch)" == "aarch64" ]; then
 	# Keep some qcom firmware for Lenovo X13s and delete others (save ~50MiB)
 	rm -rf /lib/firmware/qcom/{apq8016,apq8096,qcm2290,qrb4210,sdm845,sm8250,venus*,vpu*}
-	# On Leap 15.x this doesn't work anyway so delete it as well (save ~43MiB)
-	if grep -q '15\.6' /etc/os-release; then
-		rm -rf /lib/firmware/qcom/x1e80100/
-	fi
 else
 	rm -rf /lib/firmware/qcom
 fi
@@ -229,6 +225,8 @@ cat >/etc/systemd/system/fixupbootloader.service <<EOF
 [Unit]
 Description=Remove LOADER_TYPE from /etc/sysconfig/bootloader
 Before=systemd-user-sessions.service
+# Kiwi >= 10 no longer creates this file itself
+ConditionPathExists=/etc/sysconfig/bootloader
 
 [Service]
 Type=oneshot
