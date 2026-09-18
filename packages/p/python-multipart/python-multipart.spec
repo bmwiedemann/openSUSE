@@ -17,7 +17,7 @@
 
 
 Name:           python-multipart
-Version:        1.3.1
+Version:        2.0.0
 Release:        0
 Summary:        Parser for multipart/form-data
 License:        MIT

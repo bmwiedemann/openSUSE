@@ -1,0 +1,126 @@
+From: HATAYAMA Daisuke <d.hatayama@fujitsu.com>
+Date: Tue, 26 Sep 2023 02:55:49 -0400
+Subject: trace: Support module memory layout change on Linux 6.4
+Git-repo: https://github.com/fujitsu/crash-trace.git
+Git-commit: c5913a960dfa07d64397e6b591e6f0d40ea0b503
+References: bsc#1262945
+
+Linux kernel introduced new module memory layout on Linux 6.4 at the
+commit ac3b432 (module: replace module_layout with module_memory) and
+crash utility supported it at the commit 7750e61 (Support module
+memory layout change on Linux 6.4).
+
+In the change, crash utility changed definition and usage of data
+structure for kernel modules. However, crash trace also refers to the
+data structures. As a result, with the crash utility with the change,
+crash trace command results in segmentation fault:
+
+  crash> extend trace.so
+  /usr/lib64/crash/extensions/trace.so: shared object loaded
+  crash> trace show
+  Segmentation fault (core dumped)
+
+To fix this issue, let's support the new definition and usage of
+struct load_module in crash trace. This is at the same time intended
+for crash trace to support the new module memory layout of the Linux
+kernel.
+
+On the other hand, there is still inevitable dependency left to size
+of struct load_module, one of the data structures of crash utility, in
+crash trace. struct symbol_table_data holds an array of objects of
+struct load_module in member variable load_modules and we need to know
+size of struct load_module in advance to refer to its elements.
+
+  struct symbol_table_data {
+  ...snip...
+        int mods_installed;
+        struct load_module *current;
+        struct load_module *load_modules;
+
+Due to this, once crash trace is built with the defs.h including
+change of size of struct load_module, it can never be used with the
+older crash utility that was built with a different size of struct
+load_module.
+
+Because there is no preferable way to tackle the dependency without
+altering implementation of crash utility, we have no choice but accept
+breaking backward-compatibility for the time being.
+
+Signed-off-by: HATAYAMA Daisuke <d.hatayama@fujitsu.com>
+Signed-off-by: Tony Jones <tonyj@suse.de>
+---
+ trace.c | 49 +++++++++++++++++++++++++++++++++++++++++++++----
+ 1 file changed, 45 insertions(+), 4 deletions(-)
+
+diff --git a/trace.c b/trace.c
+index c33907f..9e51707 100644
+--- a/trace.c
++++ b/trace.c
+@@ -2219,14 +2219,11 @@ fail:
+ 	return -1;
+ }
+ 
+-static int save_proc_kallsyms(int fd)
++static void __save_proc_kallsyms_mod_legacy(void)
+ {
+ 	int i;
+ 	struct syment *sp;
+ 
+-	for (sp = st->symtable; sp < st->symend; sp++)
+-		tmp_fprintf("%lx %c %s\n", sp->value, sp->type, sp->name);
+-
+ 	for (i = 0; i < st->mods_installed; i++) {
+ 		struct load_module *lm = &st->load_modules[i];
+ 
+@@ -2239,6 +2236,50 @@ static int save_proc_kallsyms(int fd)
+ 					sp->name, lm->mod_name);
+ 		}
+ 	}
++}
++
++#ifdef MODULE_MEMORY
++static void __save_proc_kallsyms_mod_v6_4(void)
++{
++	int i, t;
++	struct syment *sp;
++
++        for (i = 0; i < st->mods_installed; i++) {
++                struct load_module *lm = &st->load_modules[i];
++
++                for_each_mod_mem_type(t) {
++                        if (!lm->symtable[t])
++				continue;
++
++                        for (sp = lm->symtable[t]; sp <= lm->symend[t]; sp++) {
++                                if (!strncmp(sp->name, "_MODULE_", strlen("_MODULE_")))
++                                        continue;
++
++                                /* Currently sp->type for modules is not trusted */
++                                tmp_fprintf("%lx %c %s\t[%s]\n", sp->value, 'm',
++                                            sp->name, lm->mod_name);
++                        }
++                }
++	}
++}
++#else
++#define MODULE_MEMORY() (0)
++static inline void __save_proc_kallsyms_mod_v6_4(void)
++{
++}
++#endif
++
++static int save_proc_kallsyms(int fd)
++{
++	struct syment *sp;
++
++	for (sp = st->symtable; sp < st->symend; sp++)
++		tmp_fprintf("%lx %c %s\n", sp->value, sp->type, sp->name);
++
++	if (MODULE_MEMORY())
++		__save_proc_kallsyms_mod_v6_4();
++	else
++		__save_proc_kallsyms_mod_legacy();
+ 
+ 	if (tmp_file_record_size4(fd))
+ 		return -1;
+

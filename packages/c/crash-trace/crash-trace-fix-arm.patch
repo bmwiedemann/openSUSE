@@ -1,0 +1,21 @@
+From: Petr Tesarik <ptesarik@suse.com>
+Subject: Fix build for 32-bit arm
+Upstream: submitted, https://github.com/fujitsu/crash-trace/pull/5
+
+---
+ Makefile |    4 ++++
+ 1 file changed, 4 insertions(+)
+
+--- a/Makefile
++++ b/Makefile
+@@ -30,6 +30,10 @@ ifeq ($(shell arch), aarch64)
+   TARGET=ARM64
+   TARGET_CFLAGS=
+ endif
++ifeq ($(patsubst arm%,arm,$(shell arch)), arm)
++  TARGET=ARM
++  TARGET_CFLAGS=
++endif
+ 
+ INCDIR=/usr/include/crash
+ 

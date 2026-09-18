@@ -1,0 +1,104 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Mon, 1 Jun 2026 05:38:11 +0000
+Subject: x86_64: Fix "bt" command to use correct ORC register values on Linux
+ 7.1 and later
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: d0ee428664f90beaf498fa0edc129cdead204abc
+Patch-mainline: yes
+
+Kernel commit 1735858caa4b ("objtool/x86: Reorder ORC register numbering")
+changed the ORC register numbering.  Without the patch, crash can interpret ORC
+entry incorrectly and the "bt" command may generate broken backtraces on Linux
+7.1 and later kernels like this:
+
+  crash> bt 1
+  PID: 1        TASK: ffff8ab0009cd100  CPU: 2    COMMAND: "systemd"
+   #0 [ffffd2218003b9c8] __schedule at ffffffffaa9d862b
+   #1 [ffffd2218003ba20] schedule at ffffffffaa9d8993
+   #2 [ffffd2218003ba30] schedule_hrtimeout_range_clock at ffffffffaa9df77b
+   #3 [ffffd2218003bab0] ep_poll at ffffffffaa1231e4
+   #4 [ffffd2218003bb50] do_epoll_wait at ffffffffaa123272
+   #5 [ffffd2218003bb88] __x64_sys_epoll_wait at ffffffffaa123b1f
+   #6 [ffffd2218003bbd8] do_syscall_64 at ffffffffaa9cca6c
+   #7 [ffffd2218003bc58] __memcg_slab_free_hook at ffffffffaa079da3
+   #8 [ffffd2218003bcf0] __memcg_slab_free_hook at ffffffffaa079da3
+   #9 [ffffd2218003bd50] __x64_sys_gettid at ffffffffa9ce1656
+  #10 [ffffd2218003bd58] do_syscall_64 at ffffffffaa9ccaa4
+  #11 [ffffd2218003bdc0] update_cfs_rq_load_avg at ffffffffa9d1bf59
+  #12 [ffffd2218003be00] __update_blocked_fair at ffffffffa9d214b8
+  #13 [ffffd2218003be70] sched_clock at ffffffffa9c460dc
+  #14 [ffffd2218003be78] sched_clock_cpu at ffffffffa9d4aeab
+  #15 [ffffd2218003be98] irqtime_account_irq at ffffffffa9d3af0d
+  #16 [ffffd2218003bec0] handle_softirqs at ffffffffa9cce5ac
+  #17 [ffffd2218003bf40] entry_SYSCALL_64_after_hwframe at ffffffffa9a0012b
+
+Fix this by making ORC_REG_SP and ORC_REG_PREV_SP depend on kernel version, as
+no other way was found.
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ defs.h   |  6 ++++--
+ x86_64.c | 11 +++++++++++
+ 2 files changed, 15 insertions(+), 2 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index 4a42bc962817..a4f70b773cd7 100644
+--- a/defs.h
++++ b/defs.h
+@@ -6650,6 +6650,8 @@ struct ORC_data {
+ 	orc_entry orc_entry_data;
+ 	int has_signal;
+ 	int has_end;
++	int reg_sp;
++	int reg_prev_sp;
+ };
+ 
+ #define ORC_TYPE_CALL                   ((machdep->flags & ORC_6_4) ? 2 : 0)
+@@ -6660,11 +6662,11 @@ struct ORC_data {
+ #define UNWIND_HINT_TYPE_RESTORE        4
+ 
+ #define ORC_REG_UNDEFINED               0
+-#define ORC_REG_PREV_SP                 1
++#define ORC_REG_PREV_SP                 (machdep->machspec->orc.reg_prev_sp)
+ #define ORC_REG_DX                      2
+ #define ORC_REG_DI                      3
+ #define ORC_REG_BP                      4
+-#define ORC_REG_SP                      5
++#define ORC_REG_SP                      (machdep->machspec->orc.reg_sp)
+ #define ORC_REG_R10                     6
+ #define ORC_REG_R13                     7
+ #define ORC_REG_BP_INDIRECT             8
+diff --git a/x86_64.c b/x86_64.c
+index ff283ed68191..55648697baf3 100644
+--- a/x86_64.c
++++ b/x86_64.c
+@@ -999,6 +999,8 @@ x86_64_dump_machdep_table(ulong arg)
+ 		fprintf(fp, "                    module_ORC: %s\n", ms->orc.module_ORC ? "TRUE" : "FALSE");
+ 		fprintf(fp, "                    has_signal: %s\n", ms->orc.has_signal ? "TRUE" : "FALSE");
+ 		fprintf(fp, "                       has_end: %s\n", ms->orc.has_end    ? "TRUE" : "FALSE");
++		fprintf(fp, "                        reg_sp: %d\n", ms->orc.reg_sp);
++		fprintf(fp, "                   reg_prev_sp: %d\n", ms->orc.reg_prev_sp);
+ 		fprintf(fp, "             lookup_num_blocks: %d\n", ms->orc.lookup_num_blocks);
+ 		fprintf(fp, "         __start_orc_unwind_ip: %lx\n", ms->orc.__start_orc_unwind_ip);
+ 		fprintf(fp, "          __stop_orc_unwind_ip: %lx\n", ms->orc.__stop_orc_unwind_ip);
+@@ -6734,6 +6736,15 @@ x86_64_ORC_init(void)
+ 	if (orc->has_signal && !orc->has_end)
+ 		machdep->flags |= ORC_6_4;
+ 
++	/* See kernel commit 1735858caa4b */
++	if (THIS_KERNEL_VERSION >= LINUX(7,1,0)) {
++		ORC_REG_SP = 3;
++		ORC_REG_PREV_SP = 8;
++	} else {
++		ORC_REG_SP = 5;
++		ORC_REG_PREV_SP = 1;
++	}
++
+ 	machdep->flags |= ORC;
+ }
+ 
+-- 
+2.55.0
+

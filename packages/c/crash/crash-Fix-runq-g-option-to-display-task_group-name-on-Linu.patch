@@ -1,0 +1,56 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Wed, 8 Jul 2026 02:45:50 +0000
+Subject: Fix "runq -g" option to display task_group name on Linux 6.15 and
+ later
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: f336dfa79ed94895914e132c31f2db7e09bf4ab1
+Patch-mainline: yes
+
+Kernel commit 633488947ef66 ("kernfs: Use RCU to access
+kernfs_node::parent.") changed the "parent" member name in struct
+kernfs_node to "__parent".
+
+Without the patch, the "rung -g" option cannot display task_group's
+name:
+  crash> runq -g
+  CPU 0
+    CURRENT: PID: 5687   TASK: ffff8b0bc175a2c0  COMMAND: "bash"
+    ROOT_TASK_GROUP: ffffffff93a55600  CFS_RQ: ffff8b0cf8232240
+       TASK_GROUP: ffff8b0b942a1e00  CFS_RQ: fffff1b5ffc0d540
+          TASK_GROUP: ffff8b0bc0f27900  CFS_RQ: fffff1b5ffc23f80
+             TASK_GROUP: ffff8b0b862fcc00  CFS_RQ: fffff1b5ffc29f00
+                [120] PID: 5687   TASK: ffff8b0bc175a2c0  COMMAND: "bash" [CURRENT]
+
+With the patch:
+  crash> runq -g
+  CPU 0
+    CURRENT: PID: 5687   TASK: ffff8b0bc175a2c0  COMMAND: "bash"
+    ROOT_TASK_GROUP: ffffffff93a55600  CFS_RQ: ffff8b0cf8232240
+       TASK_GROUP: ffff8b0b942a1e00  CFS_RQ: fffff1b5ffc0d540 <user.slice>
+          TASK_GROUP: ffff8b0bc0f27900  CFS_RQ: fffff1b5ffc23f80 <user-0.slice>
+             TASK_GROUP: ffff8b0b862fcc00  CFS_RQ: fffff1b5ffc29f00 <session-2.scope>
+                [120] PID: 5687   TASK: ffff8b0bc175a2c0  COMMAND: "bash" [CURRENT]
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ task.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/task.c b/task.c
+index b95d3d7fb2af..a4118766fb42 100644
+--- a/task.c
++++ b/task.c
+@@ -9879,6 +9879,8 @@ task_group_offset_init(void)
+ 		MEMBER_OFFSET_INIT(cgroup_kn, "cgroup", "kn");
+ 		MEMBER_OFFSET_INIT(kernfs_node_name, "kernfs_node", "name");
+ 		MEMBER_OFFSET_INIT(kernfs_node_parent, "kernfs_node", "parent");
++		if (INVALID_MEMBER(kernfs_node_parent))
++			MEMBER_OFFSET_INIT(kernfs_node_parent, "kernfs_node", "__parent");
+ 
+ 		MEMBER_OFFSET_INIT(task_group_siblings, "task_group", "siblings");
+ 		MEMBER_OFFSET_INIT(task_group_children, "task_group", "children");
+-- 
+2.55.0
+

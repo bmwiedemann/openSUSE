@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 17:35:35 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260916
+  * Support for Bitlocker Used Disk Space Only encryption.
+  * Support for AES-CBC with Elephant diffuser
+
+-------------------------------------------------------------------
 Thu Sep  3 09:00:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 20260903

@@ -1,0 +1,5 @@
+<package name="ocaml-tar" project="openSUSE:Factory">
+  <title>Decode and encode tar format files</title>
+  <description>tar is a library to read and write tar files with an emphasis on streaming.</description>
+  <url>https://opam.ocaml.org/packages/tar/</url>
+</package>

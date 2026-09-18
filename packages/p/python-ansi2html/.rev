@@ -83,4 +83,19 @@
     <comment>- Use better expression to get version.</comment>
     <requestid>1286722</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>555506861b0a9c684f945b67c61796f9</srcmd5>
+    <version>1.9.5</version>
+    <time>1789762044</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.5:
+  * truecolor: only add each color once
+  * Remove misleading license entry from packaging metadata
+  * Support alive Python versions
+  * CVE-2026-92973: osc8: ensure proper escaping (bsc#1281118)
+  * chore: Get rid of pkg_resources
+- Switch to using the pypi tarball.
+- Refresh patch opensuse-test.patch</comment>
+    <requestid>1378748</requestid>
+  </revision>
 </revisionlist>

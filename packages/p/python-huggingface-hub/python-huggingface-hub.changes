@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:26:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.32.0:
+  * Cache: shared blob store deduplicates Xet files across repos
+    (HF_HUB_DISABLE_SHARED_BLOBS=1 to opt out); hf cache rm accepts
+    hf:// file URIs; kernel repos show in hf cache ls/rm/prune
+  * hf jobs uv run reads optional [tool.hf-jobs] from a UV script's
+    PEP 723 header (image, flavor, python, timeout, env, secrets,
+    labels, volumes); CLI flags win, maps merge entry by entry
+  * Sandbox hardening: per-sandbox capability tokens, pool-host
+    validation, digest-pinned sbx-server, secrets kept out of argv,
+    bounded transfer/output, per-host pool teardown
+  * load_state_dict_from_file defaults to safe=True (safetensors)
+    and pickle weights_only=True; path_in_repo rejects embedded
+    ".." segments; repo_id validation restricted to ASCII
+  * Faster imports via lazy huggingface_hub.utils, HfApi, and CLI
+  * hf --skills alias for hf skills preview; --format human
+    overrides agent auto-detection; Inference Endpoints take
+    --container-registry-{username,password}
+  * Fixes: get_session() race, save_torch_state_dict cleanup regex,
+    RepoCard/SpaceRuntime null fields, card serialization, bucket
+    copy mtime, doubled colon in snapshot progress bar
+
+-------------------------------------------------------------------
 Thu Sep 10 18:27:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.31.0:

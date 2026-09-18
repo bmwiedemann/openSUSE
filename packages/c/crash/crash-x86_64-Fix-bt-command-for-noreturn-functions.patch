@@ -1,0 +1,182 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Fri, 29 May 2026 05:00:03 +0000
+Subject: x86_64: Fix "bt" command for noreturn functions
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: 7b3f6e0f60be1dd2d4c1b20175be96137cf61438
+Patch-mainline: yes
+
+On x86_64, the "bt" command resolves saved return addresses with
+value_search(textaddr).  However, a return address is the instruction
+pointer after the call, not the call site itself.
+
+This becomes a problem when the caller ends with a call to a noreturn
+function.  In that case, the saved return address can match the start
+address of the following symbol, and "bt" loses track of the call chain
+and this can lead to very long session initialization.
+
+The same issue also affects symbol+offset formatting, line number
+lookup, and ORC-based frame size resolution.
+
+Fix it by resolving normal backtrace return addresses with textaddr-1,
+while keeping exact textaddr handling for real RIP values saved in
+exception frames.  Add value_to_symstr_trace() so the displayed
+symbol+offset still reflects the original return address value.
+
+Suggested-by: Kosuke Tatsukawa <tatsu-ab1@nec.com>
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ defs.h    |  1 +
+ symbols.c | 24 +++++++++++++++++++++---
+ x86_64.c  | 31 ++++++++++++++++++++++++++-----
+ 3 files changed, 48 insertions(+), 8 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index 6373ee1831af..4a42bc962817 100644
+--- a/defs.h
++++ b/defs.h
+@@ -5807,6 +5807,7 @@ struct syment *prev_symbol(char *, struct syment *);
+ void get_symbol_data(char *, long, void *);
+ int try_get_symbol_data(char *, long, void *);
+ char *value_to_symstr(ulong, char *, ulong);
++char *value_to_symstr_trace(ulong, char *, ulong);
+ char *value_symbol(ulong);
+ ulong symbol_value(char *);
+ ulong symbol_value_module(char *, char *);
+diff --git a/symbols.c b/symbols.c
+index c0285058c5cb..78e400ba3756 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -104,6 +104,7 @@ static void free_structure(struct struct_elem *);
+ static unsigned char is_right_brace(const char *);
+ static struct struct_elem *find_node(struct struct_elem *, char *);
+ static void dump_node(struct struct_elem *, char *, unsigned char, unsigned char);
++static char *_value_to_symstr(ulong value, char *buf, ulong radix, int trace);
+ 
+ static int module_mem_type(ulong, struct load_module *);
+ static ulong module_mem_end(ulong, struct load_module *);
+@@ -5973,14 +5974,25 @@ generic_machdep_value_to_symbol(ulong value, ulong *offset)
+ 	return NULL;
+ }	
+ 
++char *
++value_to_symstr(ulong value, char *buf, ulong radix)
++{
++	return _value_to_symstr(value, buf, radix, 0);
++}
++
++char *
++value_to_symstr_trace(ulong value, char *buf, ulong radix)
++{
++	return _value_to_symstr(value, buf, radix, 1);
++}
+ 
+ /*
+  *  For a given value, format a string containing the nearest symbol name
+  *  plus the offset if appropriate.  Display the offset in the specified
+  *  radix (10 or 16) -- if it's 0, set it to the current pc->output_radix.
+  */
+-char *
+-value_to_symstr(ulong value, char *buf, ulong radix)
++static char *
++_value_to_symstr(ulong value, char *buf, ulong radix, int trace)
+ {
+         struct syment *sp;
+         ulong offset;
+@@ -5996,7 +6008,13 @@ value_to_symstr(ulong value, char *buf, ulong radix)
+ 	if ((radix != 10) && (radix != 16))
+ 		radix = 16;
+ 
+-        if ((sp = value_search(value, &offset))) {
++	if (trace) {
++		sp = value_search(value-1, &offset);
++		offset++;
++	} else
++		sp = value_search(value, &offset);
++
++	if (sp) {
+                 if (offset)
+                         sprintf(buf, radix == 16 ? "%s+0x%lx" : "%s+%ld",
+ 				sp->name, offset);
+diff --git a/x86_64.c b/x86_64.c
+index b2cddbf8ba3d..ff283ed68191 100644
+--- a/x86_64.c
++++ b/x86_64.c
+@@ -3229,14 +3229,23 @@ x86_64_print_stack_entry(struct bt_info *bt, FILE *ofp, int level,
+ 	if (!(bt->flags & BT_SAVE_EFRAME_IP))
+ 		bt->eframe_ip = 0;
+ 	offset = 0;
+-	sp = value_search(text, &offset);
++	if (bt->flags & BT_SAVE_EFRAME_IP)
++		sp = value_search(text, &offset);
++	else {
++		sp = value_search(text-1, &offset);
++		offset++;
++	}
+ 	if (!sp)
+ 		return BACKTRACE_ENTRY_IGNORED;
+ 
+ 	name = sp->name;
+ 
+ 	if (offset && (bt->flags & BT_SYMBOL_OFFSET))
+-		name_plus_offset = value_to_symstr(text, buf2, bt->radix);
++		if (bt->flags & BT_SAVE_EFRAME_IP)
++			name_plus_offset = value_to_symstr(text, buf2, bt->radix);
++		else
++			/* text-1 is used in the function */
++			name_plus_offset = value_to_symstr_trace(text, buf2, bt->radix);
+ 	else
+ 		name_plus_offset = NULL;
+ 
+@@ -3337,7 +3346,10 @@ x86_64_print_stack_entry(struct bt_info *bt, FILE *ofp, int level,
+ 	fprintf(ofp, "\n");
+ 
+         if (bt->flags & BT_LINE_NUMBERS) {
+-                get_line_number(text, buf1, FALSE);
++		if (bt->flags & BT_SAVE_EFRAME_IP)
++			get_line_number(text, buf1, FALSE);
++		else
++			get_line_number(text-1, buf1, FALSE);
+                 if (strlen(buf1))
+                         fprintf(ofp, "    %s\n", buf1);
+ 	}
+@@ -3864,8 +3876,10 @@ in_exception_stack:
+ 			}
+ 
+ 			level++;
++			bt->flags |= BT_SAVE_EFRAME_IP;
+ 			if ((framesize = x86_64_get_framesize(bt, bt->instptr, rsp, NULL)) >= 0)
+ 				rsp += framesize;
++			bt->flags &= ~BT_SAVE_EFRAME_IP;
+ 		}
+ 	}
+ 
+@@ -8811,7 +8825,13 @@ x86_64_get_framesize(struct bt_info *bt, ulong textaddr, ulong rsp, char *stack_
+ 			return 0;
+ 	}
+ 
+-        if (!(sp = value_search(textaddr, &offset))) {
++	if (bt->flags & BT_SAVE_EFRAME_IP)
++		sp = value_search(textaddr, &offset);
++	else {
++		sp = value_search(textaddr-1, &offset);
++		offset++;
++	}
++	if (!sp) {
+ 		if (!(bt->flags & BT_FRAMESIZE_DEBUG))
+ 			bt->flags |= BT_FRAMESIZE_DISABLE;
+                 return 0;
+@@ -8887,7 +8907,8 @@ x86_64_get_framesize(struct bt_info *bt, ulong textaddr, ulong rsp, char *stack_
+ 	if ((sp->value >= kt->init_begin) && (sp->value < kt->init_end))
+ 		return 0;
+ 
+-	if ((machdep->flags & ORC) && (korc = orc_find(textaddr))) {
++	if ((machdep->flags & ORC) &&
++	    (korc = orc_find(bt->flags & BT_SAVE_EFRAME_IP ? textaddr : textaddr-1))) {
+ 		if (CRASHDEBUG(1)) {
+ 			struct ORC_data *orc = &machdep->machspec->orc;
+ 			fprintf(fp, 
+-- 
+2.55.0
+

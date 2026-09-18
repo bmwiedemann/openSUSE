@@ -151,4 +151,12 @@
     <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274197 from AndreasStieger)</comment>
     <requestid>1274221</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>13abab553cd27bd350145530685d355f</srcmd5>
+    <version>20260917</version>
+    <time>1789761928</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260917</comment>
+    <requestid>1378677</requestid>
+  </revision>
 </revisionlist>

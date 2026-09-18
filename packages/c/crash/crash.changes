@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Aug 14 06:10:08 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- add crash-symbols-use-non-debug-BFD-to-retrieve-.rodata.patch
+
+-------------------------------------------------------------------
+Wed Aug 12 08:53:28 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- support kernel 7.1 + 7.2 -- add:
+  * crash-support-kernel-7.x-and-8.x.patch
+  * crash-Fix-compound_head-and-bt-F-option-on-Linux-7.1-and-l.patch
+  * crash-Fix-failure-of-runq-g-option-on-Linux-7.2-and-later-.patch
+  * crash-Fix-kmem-i-option-to-display-swap-usage-on-Linux-6.1.patch
+  * crash-Fix-kmem-s-command-on-Linux-7.1-and-later.patch
+  * crash-Fix-runq-g-option-to-display-task_group-name-on-Linu.patch
+  * crash-Fix-swap-command-on-Linux-7.1-and-later.patch
+  * crash-symbols-Add-support-for-mod-symtab-with-combined-GPL.patch
+  * crash-x86_64-Fix-bt-command-for-noreturn-functions.patch
+  * crash-x86_64-Fix-bt-command-to-use-correct-ORC-register-va.patch
+  * crash-x86_64-Make-ORC_REG_SP-and-ORC_REG_PREV_SP-independe.patch
+
+-------------------------------------------------------------------
 Mon Jun 22 13:36:47 UTC 2026 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
 - Require kernel-rt-devel on suse_version >= 1610, while

@@ -938,4 +938,12 @@
     <comment>August 2026 CSPU fixes</comment>
     <requestid>1374846</requestid>
   </revision>
+  <revision rev="118" vrev="2">
+    <srcmd5>eec8341b50fa1c981f8406431dd87f27</srcmd5>
+    <version>1.8.0.504</version>
+    <time>1789762068</time>
+    <user>anag_factory</user>
+    <comment>bsc#1280690 and bsc#1241704</comment>
+    <requestid>1378781</requestid>
+  </revision>
 </revisionlist>

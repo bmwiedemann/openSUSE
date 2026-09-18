@@ -25,6 +25,11 @@ Group:          Development/Tools/Debuggers
 URL:            https://github.com/fujitsu/crash-trace
 Source:         https://github.com/fujitsu/crash-trace/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch1:         %{name}-fix-aarch64-ppc64le.patch
+Patch2:         %{name}-fix-arm.patch
+Patch3:         %{name}-fix-riscv64.patch
+Patch4:         %{name}-Makefile-set-DT_SONAME-to-trace.so.patch
+Patch5:         %{name}-Support-module-memory-layout-change-on-Linux-6.4.patch
+Patch6:         %{name}-Fix-segmentation-fault-during-executing-trace-dump-s.patch
 BuildRequires:  crash-devel
 Requires:       trace-cmd
 

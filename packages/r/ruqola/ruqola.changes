@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 12 15:39:54 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 2.8.1
+  * No changelog
+- Changes in 2.8.0
+  * Improve offline Mode
+  * Allow to open saved file.
+  * Allow to rotate image in show image dialog
+  * Add new room info in notification history dialog.
+  * Use new textmessagewidget for error notification
+  * Implement Draft message sorting channel.
+  * Implement Banned Users list dialog.
+  * Implement Banned/Unbanned Users.
+- Update BuildRequires kf6_version and qt6_version
+
+-------------------------------------------------------------------
 Thu Feb 12 14:40:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.6.1. No changelog

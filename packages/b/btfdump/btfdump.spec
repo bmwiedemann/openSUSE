@@ -1,7 +1,7 @@
 #
 # spec file for package btfdump
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define binary_name btf
 Name:           btfdump
-Version:        0.0.4~0
+Version:        0.0.5
 Release:        0
 Summary:        BTF introspection tool
 License:        BSD-2-Clause

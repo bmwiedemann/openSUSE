@@ -42,4 +42,16 @@
 - Update Requires from pyproject.toml (forwarded request 1339584 from glaubitz)</comment>
     <requestid>1339586</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>5d0de8afe0176462d947050446f617d4</srcmd5>
+    <version>1.0.0</version>
+    <time>1789761874</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override (forwarded request 1378603 from glaubitz)</comment>
+    <requestid>1378643</requestid>
+  </revision>
 </revisionlist>

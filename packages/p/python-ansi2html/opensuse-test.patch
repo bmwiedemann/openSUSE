@@ -2,11 +2,11 @@
  tests/test_ansi2html.py |    5 +++--
  1 file changed, 3 insertions(+), 2 deletions(-)
 
-Index: ansi2html-1.9.2/tests/test_ansi2html.py
+Index: ansi2html-1.9.5/tests/test_ansi2html.py
 ===================================================================
---- ansi2html-1.9.2.orig/tests/test_ansi2html.py	2024-06-22 19:22:24.000000000 +0200
-+++ ansi2html-1.9.2/tests/test_ansi2html.py	2025-06-18 16:25:45.121652936 +0200
-@@ -50,6 +50,7 @@
+--- ansi2html-1.9.5.orig/tests/test_ansi2html.py
++++ ansi2html-1.9.5/tests/test_ansi2html.py
+@@ -50,6 +50,7 @@ _here = dirname(abspath(__file__))
  
  class TestAnsi2HTML:
      maxDiff = None
@@ -14,7 +14,7 @@ Index: ansi2html-1.9.2/tests/test_ansi2html.py
  
      def test_linkify(self) -> None:
          ansi = "http://threebean.org#foobar"
-@@ -465,7 +466,7 @@
+@@ -486,7 +487,7 @@ class TestAnsi2HTML:
          assert target in html
  
      def test_command_script(self) -> None:
@@ -23,7 +23,7 @@ Index: ansi2html-1.9.2/tests/test_ansi2html.py
          assert result.returncode == 0
  
      def test_command_input_output_encoding(self) -> None:
-@@ -480,7 +481,7 @@
+@@ -501,7 +502,7 @@ class TestAnsi2HTML:
  
          with Popen(
              [

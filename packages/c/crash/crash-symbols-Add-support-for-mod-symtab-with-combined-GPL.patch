@@ -1,0 +1,78 @@
+From: Alexander Egorenkov <egorenar@linux.ibm.com>
+Date: Tue, 28 Apr 2026 12:16:37 +0200
+Subject: symbols: Add support for mod symtab with combined GPL and non-GPL
+ symbols
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: 3a415c07a18a465df2580365b43b4d8f8a5d815b
+Patch-mainline: yes
+
+The commit b4760ff2a5e4 ("module: deprecate usage of *_gpl sections in module loader")
+eliminated separate GPL symbol sections representing GPL only symbols.
+Therefore, depending on whether the member gpl_syms is present
+in struct module, decide whether GPL module symbols are separated or not.
+
+https://lore.kernel.org/all/20260326-kflagstab-v5-4-fa0796fe88d9@google.com
+
+Signed-off-by: Alexander Egorenkov <egorenar@linux.ibm.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ kernel.c  | 13 ++++++++-----
+ symbols.c |  9 +++++++--
+ 2 files changed, 15 insertions(+), 7 deletions(-)
+
+diff --git a/kernel.c b/kernel.c
+index 6dfc8714a1ff..eb9754c5e082 100644
+--- a/kernel.c
++++ b/kernel.c
+@@ -3635,9 +3635,11 @@ module_init(void)
+ 	case KMOD_V2: 
+ 		MEMBER_OFFSET_INIT(module_num_syms, "module", "num_syms");
+ 		MEMBER_OFFSET_INIT(module_list, "module", "list");
+-        	MEMBER_OFFSET_INIT(module_gpl_syms, "module", "gpl_syms");
+-        	MEMBER_OFFSET_INIT(module_num_gpl_syms, "module", 
+-			"num_gpl_syms");
++		if (MEMBER_EXISTS("module", "gpl_syms")) {
++			MEMBER_OFFSET_INIT(module_gpl_syms, "module", "gpl_syms");
++			MEMBER_OFFSET_INIT(module_num_gpl_syms, "module",
++				"num_gpl_syms");
++		}
+ 
+ 		if (MEMBER_EXISTS("module", "mem")) {	/* 6.4 and later */
+ 			kt->flags2 |= KMOD_MEMORY;	/* MODULE_MEMORY() can be used. */
+@@ -3831,8 +3833,9 @@ module_init(void)
+                 	nsyms = UINT(modbuf + OFFSET(module_nsyms));
+ 			break;
+ 		case KMOD_V2: 
+-                	nsyms = UINT(modbuf + OFFSET(module_num_syms)) +
+-				UINT(modbuf + OFFSET(module_num_gpl_syms));
++			nsyms = UINT(modbuf + OFFSET(module_num_syms));
++			if (VALID_MEMBER(module_num_gpl_syms))
++				nsyms += UINT(modbuf + OFFSET(module_num_gpl_syms));
+ 			break;
+ 		}
+ 
+diff --git a/symbols.c b/symbols.c
+index 8eb8b37abc23..3c62f54d4a93 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -1979,9 +1979,14 @@ store_module_symbols_6_4(ulong total, int mods_installed)
+ 			"module buffer", FAULT_ON_ERROR);
+ 
+ 		syms = ULONG(modbuf + OFFSET(module_syms));
+-		gpl_syms = ULONG(modbuf + OFFSET(module_gpl_syms));
+ 		nsyms = UINT(modbuf + OFFSET(module_num_syms));
+-		ngplsyms = UINT(modbuf + OFFSET(module_num_gpl_syms));
++		if (VALID_MEMBER(module_gpl_syms)) {
++			gpl_syms = ULONG(modbuf + OFFSET(module_gpl_syms));
++			ngplsyms = UINT(modbuf + OFFSET(module_num_gpl_syms));
++		} else {
++			gpl_syms = 0;
++			ngplsyms = 0;
++		}
+ 
+ 		nksyms = UINT(modbuf + OFFSET(module_num_symtab));
+ 
+-- 
+2.55.0
+

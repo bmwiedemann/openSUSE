@@ -21,7 +21,7 @@
 %define cacti_dir %{datadir}/cacti
 
 Name:           cacti
-Version:        1.2.31+git14.396480d3
+Version:        1.2.31+git128.263b4c1c
 %global base_version %(echo %{version} | sed 's/+[^+]*//')
 %global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0
@@ -97,7 +97,9 @@ find locales -type f -name "*.sh" -delete
 
 # fix env interpreter lines
 sed -i 's|%{_bindir}/env perl|%{_bindir}/perl|g' $(find * -name "*.pl")
-sed -i 's|%{_bindir}/env php|%{_bindir}/php|g' include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules
+if [ -f include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules ]; then
+  sed -i 's|%{_bindir}/env php|%{_bindir}/php|g' include/vendor/cldr-to-gettext-plural-rules/bin/export-plural-rules
+fi
 sed -i 's|%{_bindir}/env bash|%{_bindir}/bash|g' $(find * -name "*.sh")
 sed -i 's|/usr/local/spine/bin/spine|%{_bindir}/spine|' install/functions.php
 
@@ -203,7 +205,7 @@ systemctl --quiet disable %{name}-cron.service || :
 %doc quickstart.txt
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/lib/%{name}
 %attr(-,%{apache_user},%{apache_group}) %dir %{_localstatedir}/log/%{name}
-%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/include/vendor/csrf/csrf-secret.php
+#%%attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/include/vendor/csrf/csrf-secret.php
 %attr(-,%{apache_user},%{apache_group}) %{cacti_dir}/log
 %{cacti_dir}/log
 %config(noreplace) %{cacti_dir}/include/config.php

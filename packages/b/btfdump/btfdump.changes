@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:46:55 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.0.5:
+  * build: sync Cargo.lock with object 0.40.0
+  * build(deps): update object requirement from 0.39.0 to 0.40.0
+  * build(deps): bump actions/checkout from 6 to 7
+  * btfdump: bump version to 0.0.5
+  * build: check in Cargo.lock
+  * c_dumper: emit INT64_MIN enumerators as an expression
+  * c_dumper: escape tag strings for C output
+  * c_dumper: emit decl tags
+  * types: parse kind layout and tolerate unknown kinds
+  * types: widen kind to 7 bits and vlen to 24 bits
+  * c_dumper: fix type tag emission
+  * types: honor enum signedness
+  * types: fix ENUM64 value reconstruction
+  * types: take raw BTF byte order from the magic
+  * stat: order equally-sized kinds deterministically
+  * stat: accept raw BTF files
+  * c_dumper: drop redundant references in formatting
+  * build(deps): update object requirement from 0.38.0 to 0.39.0
+  * ci: fix clippy warnings
+  * build(deps): update object requirement from 0.37.0 to 0.38.0
+  * build(deps): bump actions/checkout from 5 to 6
+  * build(deps): bump actions/checkout from 4 to 5
+  * btfdump: cargo clippy fixes
+  * btfdump: fix clippy warnings
+  * build(deps): update scroll_derive requirement from 0.12.1 to 0.13.0
+  * build(deps): update object requirement from 0.36.0 to 0.37.0
+  * build(deps): update goblin requirement from 0.9.2 to 0.10.0
+  * build(deps): update scroll requirement from 0.12.0 to 0.13.0
+  * Run `cargo clippy --fix`
+  * Remove `--allow clippy::unused_unit`
+  * Avoid trying to mmap sysfs
+  * Add clippy to CI
+  * Replace memmap with memmap2
+  * Replace lazy-static with standard library
+  * btfdump: Allow to dump from /sys/kernel/btf/vmlinux
+  * build(deps): update goblin requirement from 0.8.0 to 0.9.2
+  * Update README.md
+  * build(deps): update object requirement from 0.35.0 to 0.36.0
+  * build(deps): update object requirement from 0.34.0 to 0.35.0
+  * build(deps): update object requirement from 0.33.0 to 0.34.0
+  * build(deps): update object requirement from 0.32.1 to 0.33.0
+  * build(deps): update scroll_derive requirement from 0.11.0 to 0.12.0
+  * build(deps): update scroll requirement from 0.11.0 to 0.12.0
+  * build(deps): update goblin requirement from 0.7.1 to 0.8.0
+  * tests: add basic integration test
+
+-------------------------------------------------------------------
 Sun Dec 15 17:00:58 UTC 2024 - Alessio Biancalana <alessio.biancalana@suse.com>
 
 - Add initial btfdump package

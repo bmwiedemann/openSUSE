@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:38:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.4:
+  * Fix polaris vulnerabilities (#1243)
+- Update to version 10.2.3:
+  * INS-2921: Polaris kubernetes test is broken (#1241)
+  * Update all non-major dependencies (#1239)
+  * Update all non-major dependencies to v0.37.0 (#1237)
+  * Bump nanoid from 3.3.7 to 3.3.18 in /docs (#1234)
+  * Bump browserslist from 4.23.2 to 4.28.8 in /docs (#1236)
+  * Bump brace-expansion from 1.1.11 to 1.1.18 in /docs (#1223)
+  * Update module github.com/sirupsen/logrus to v1.10.2 (#1235)
+  * Update all non-major dependencies (#1232)
+  * INS-2845: Prepare polaris for unifying circleci (#1228)
+  * Update all non-major dependencies (#1231)
+  * Update cimg/go Docker tag to v1.26.6 (#1229)
+  * Update module github.com/sirupsen/logrus to v1.10.0 (#1227)
+  * INS-2798: Refactor polaris to make it more compatible with
+    other oss projects (#1226)
+  * Update module github.com/stretchr/testify to v1.12.0 (#1224)
+
+-------------------------------------------------------------------
 Tue Aug 11 06:34:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.2.2:

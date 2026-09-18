@@ -161,4 +161,31 @@ HfFileSystem unsafe-path rejection. rpmlint 0 badness,
 import smoke py313/py314.</comment>
     <requestid>1376987</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>3be696b42134158f470b13459c2279aa</srcmd5>
+    <version>1.32.0</version>
+    <time>1789761911</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.32.0:
+  * Cache: shared blob store deduplicates Xet files across repos
+    (HF_HUB_DISABLE_SHARED_BLOBS=1 to opt out); hf cache rm accepts
+    hf:// file URIs; kernel repos show in hf cache ls/rm/prune
+  * hf jobs uv run reads optional [tool.hf-jobs] from a UV script's
+    PEP 723 header (image, flavor, python, timeout, env, secrets,
+    labels, volumes); CLI flags win, maps merge entry by entry
+  * Sandbox hardening: per-sandbox capability tokens, pool-host
+    validation, digest-pinned sbx-server, secrets kept out of argv,
+    bounded transfer/output, per-host pool teardown
+  * load_state_dict_from_file defaults to safe=True (safetensors)
+    and pickle weights_only=True; path_in_repo rejects embedded
+    &quot;..&quot; segments; repo_id validation restricted to ASCII
+  * Faster imports via lazy huggingface_hub.utils, HfApi, and CLI
+  * hf --skills alias for hf skills preview; --format human
+    overrides agent auto-detection; Inference Endpoints take
+    --container-registry-{username,password}
+  * Fixes: get_session() race, save_torch_state_dict cleanup regex,
+    RepoCard/SpaceRuntime null fields, card serialization, bucket
+    copy mtime, doubled colon in snapshot progress bar</comment>
+    <requestid>1378665</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           skaffold
-Version:        2.24.0
+Version:        2.25.0
 Release:        0
 Summary:        Easy and Repeatable Kubernetes Development
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go1.26 >= 1.26.4
+BuildRequires:  go1.27 >= 1.27.1
 BuildRequires:  zsh
 
 %description

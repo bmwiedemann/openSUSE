@@ -336,4 +336,14 @@ passed per flavour (python313, python314), rpmlint 0 errors/0 warnings/
     can quote it</comment>
     <requestid>1378295</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a9ecb70da7cac254881e9b97cd94ce29</srcmd5>
+    <version>0.12.6</version>
+    <time>1789761913</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.6:
+  * LiveKit traces keep system instructions alongside history -
+    gen_ai.input.messages was shadowing the merged prompt at ingest</comment>
+    <requestid>1378668</requestid>
+  </revision>
 </revisionlist>

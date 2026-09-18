@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-kubernetesconfiguration-fluxconfigurations
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Kubernetesconfiguration-fluxconfigurations Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_kubernetesconfiguration_fluxconfigurations/azure_mgmt_kubernetesconfiguration_fluxconfigurations-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_kubernetesconfiguration_fluxconfigurations/azure_mgmt_kubernetesconfiguration_fluxconfigurations-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-kubernetesconfiguration}
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
@@ -37,7 +35,7 @@ BuildRequires:  python-rpm-macros
 Requires:       python-azure-mgmt-nspkg >= 3.0.0
 Requires:       python-azure-nspkg >= 3.0.0
 Requires:       (python-azure-common >= 1.1 with python-azure-common < 2.0.0)
-Requires:       (python-azure-mgmt-core >= 1.5.0 with python-azure-mgmt-core < 2.0.0)
+Requires:       (python-azure-mgmt-core >= 1.6.0 with python-azure-mgmt-core < 2.0.0)
 Requires:       python-azure-mgmt-kubernetesconfiguration
 Requires:       (python-isodate >= 0.6.1 with python-isodate < 1.0.0)
 Requires:       python-typing_extensions >= 4.6.0
@@ -52,7 +50,7 @@ This is the Microsoft Azure Kubernetesconfiguration-fluxconfigurations Managemen
 This package has been tested with Python 3.9+.
 
 %prep
-%setup -q -n azure_mgmt_kubernetesconfiguration_fluxconfigurations-%{realversion}
+%setup -q -n azure_mgmt_kubernetesconfiguration_fluxconfigurations-%{version}
 
 %build
 %pyproject_wheel

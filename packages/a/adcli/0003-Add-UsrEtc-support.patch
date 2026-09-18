@@ -1,0 +1,72 @@
+From 6c1589a3f04c46b53933427505308c458ec67b6e Mon Sep 17 00:00:00 2001
+From: Samuel Cabrero <scabrero@suse.com>
+Date: Wed, 16 Sep 2026 12:54:49 +0200
+Subject: [PATCH] Add UsrEtc support
+
+New configure option '--with-vendordir' to search for krb5.conf in case
+$(sysconfdir)/krb5.conf does not exist.
+
+Doc: https://en.opensuse.org/openSUSE:Packaging_UsrEtc
+Doc: https://github.com/uapi-group/specifications/blob/main/specs/configuration_files_specification.md
+
+Signed-off-by: Samuel Cabrero <scabrero@suse.com>
+---
+ configure.ac  | 15 +++++++++++++++
+ tools/tools.c | 14 ++++++++++++++
+ 2 files changed, 29 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index b0be041..822e4c9 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -201,6 +201,21 @@ AC_ARG_WITH([vendor-error-message],
+                     )],
+               [])
+ 
++# --------------------------------------------------------------------
++# Vendor directory
++
++AC_ARG_WITH([vendordir],
++              [AS_HELP_STRING([--with-vendordir=DIR],
++                              [Directory for distribution provided configuration files]
++                              )],
++              [AS_IF([test "x$withval" != "x" && test "x$withval" != "xyes" && test "x$withval" != "xno"],
++                     [AC_DEFINE_UNQUOTED([VENDOR_DIR],
++                                         ["$withval"],
++                                         [Directory for distribution provided configuration files])],
++                     [AC_MSG_ERROR([--with-vendordir requires an argument])]
++                     )],
++              [])
++
+ # --------------------------------------------------------------------
+ # Documentation options
+ 
+diff --git a/tools/tools.c b/tools/tools.c
+index 444485c..b185346 100644
+--- a/tools/tools.c
++++ b/tools/tools.c
+@@ -375,7 +375,21 @@ setup_krb5_conf_directory (adcli_conn *conn)
+ 	if (stat (krb5_conf, &sb) < 0) {
+ 		if (errno != ENOENT)
+ 			warn ("couldn't access file: %s", krb5_conf);
++#ifdef VENDOR_DIR
++		else {
++			/* Fall-back to the vendor provided configuration file */
++			krb5_conf = VENDOR_DIR "/krb5.conf";
++			if (stat(krb5_conf, &sb) < 0) {
++				if (errno != ENOENT)
++					warn("couldn't access file: %s", krb5_conf);
++				krb5_conf = NULL;
++			} else {
++				_adcli_info("Using vendor provided %s", krb5_conf);
++			}
++		}
++#else
+ 		krb5_conf = NULL;
++#endif
+ 	}
+ 
+ 	if (asprintf (&directory, "%s%sadcli-krb5-XXXXXX", parent,
+-- 
+2.55.0
+

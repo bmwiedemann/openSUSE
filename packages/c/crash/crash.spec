@@ -79,9 +79,14 @@ Source98:       %{name}-kmp-preamble
 Source99:       crash-rpmlintrc
 Source100:      %{name}-gdb-10.2.series
 Source101:      %{name}-gdb-gnulib-define-warndecl.patch
+Patch0:         %{name}-symbols-Add-support-for-mod-symtab-with-combined-GPL.patch
 Patch1:         %{name}-make-emacs-default.diff
 Patch2:         %{name}-sles9-quirk.patch
+Patch3:         %{name}-symbols-use-non-debug-BFD-to-retrieve-.rodata.patch
 Patch4:         %{name}-sles9-time.patch
+Patch5:         %{name}-support-kernel-7.x-and-8.x.patch
+Patch6:         %{name}-Fix-compound_head-and-bt-F-option-on-Linux-7.1-and-l.patch
+Patch7:         %{name}-Fix-kmem-s-command-on-Linux-7.1-and-later.patch
 Patch9:         %{name}-debuginfo-compressed.patch
 Patch10:        %{name}_enable_lzo_support.patch
 Patch11:        %{name}-compressed-booted-kernel.patch
@@ -93,6 +98,13 @@ Patch23:        %{name}-SLE15-SP1-With-Linux-4.19-rc1-up-MAX_PHYSMEM_BITS-to-128
 Patch24:        %{name}-SLE15-SP1-Fix-for-PPC64-kernel-virtual-address-translation-in.patch
 Patch30:        %{name}-enable-zstd-support.patch
 Patch32:        %{name}-extensions-rule-for-defs.patch
+Patch33:        %{name}-x86_64-Fix-bt-command-for-noreturn-functions.patch
+Patch34:        %{name}-x86_64-Fix-bt-command-to-use-correct-ORC-register-va.patch
+Patch35:        %{name}-Fix-kmem-i-option-to-display-swap-usage-on-Linux-6.1.patch
+Patch36:        %{name}-Fix-swap-command-on-Linux-7.1-and-later.patch
+Patch37:        %{name}-Fix-failure-of-runq-g-option-on-Linux-7.2-and-later-.patch
+Patch38:        %{name}-Fix-runq-g-option-to-display-task_group-name-on-Linu.patch
+Patch39:        %{name}-x86_64-Make-ORC_REG_SP-and-ORC_REG_PREV_SP-independe.patch
 Patch90:        %{name}-sial-ps-2.6.29.diff
 Patch99:        %{name}-usrmerge.patch
 Patch100:       gcore-fix-use-of-set_context.patch
@@ -237,15 +249,27 @@ Authors:
 %prep
 %setup -q -a 2 -a 4
 ln -s %{SOURCE1} .
+%patch -P 0 -p1
 %patch -P 1 -p1
 %patch -P 2 -p1
+%patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 5 -p1
+%patch -P 6 -p1
+%patch -P 7 -p1
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
 %patch -P 13 -p1
 %patch -P 18 -p1
 %patch -P 21 -p1
+%patch -P 33 -p1
+%patch -P 34 -p1
+%patch -P 35 -p1
+%patch -P 36 -p1
+%patch -P 37 -p1
+%patch -P 38 -p1
+%patch -P 39 -p1
 # Patches for SLE 15 SP1 potentially break support for SLE15 and SLE 12 SP4
 # Don't apply on these (and earlier) versions - see bsc#1148197
 %if 0%{?sle_version} > 120400 && 0%{?sle_version} != 150000

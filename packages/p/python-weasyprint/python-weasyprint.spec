@@ -18,7 +18,7 @@
 
 %global brotli_min_version     1.0.1
 %global cffi_min_version       0.6
-%global cssselect2_min_version 0.8.0
+%global cssselect2_min_version 0.10.0
 %global fonttools_min_version  4.59.2
 %global tinyhtml5_min_version  2.0.0
 %global Pillow_min_version     12.1.0
@@ -35,7 +35,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-weasyprint
-Version:        69.0
+Version:        70.0
 Release:        0
 Summary:        Python module to convert web documents to PDF
 License:        BSD-3-Clause
@@ -84,6 +84,8 @@ BuildRequires:  %{python_module tinyhtml5 >= %{tinyhtml5_min_version}}
 BuildRequires:  %{python_module zopfli >= %{zopfli_min_version}}
 BuildRequires:  dejavu-fonts
 BuildRequires:  gs
+BuildRequires:  harfbuzz-devel
+
 BuildRequires:  libgobject-2_0-0
 BuildRequires:  pango
 BuildRequires:  xorg-x11-server
@@ -114,7 +116,7 @@ export PYTHONPATH=$PWD
 %python_clone -a %{buildroot}%{_bindir}/weasyprint
 
 %check
-%pytest -k 'not test_linear_gradients and (5 or 12)'  tests
+%pytest -k 'not test_emoji_text_svg'
 
 %pre
 # removing old update-alternatives entries

@@ -1,0 +1,183 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Wed, 8 Jul 2026 02:45:50 +0000
+Subject: Fix failure of "runq -g" option on Linux 7.2 and later kernels
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: 82039b0f21de4231d1fc03e8819c868a84b213f8
+Patch-mainline: yes
+
+Kernel commit b8fea7af0e40 ("sched/fair: Allocate cfs_tg_state with
+percpu allocator") changed task_group.cfs_rq from a pointer array to a
+per-cpu variable allocated by the per-cpu allocator.
+
+Without the patch, the "runq -g" option fails with the following error
+on the first time, and with a segmentation fault on the second time.
+
+  crash> runq -g
+  CPU 0
+    CURRENT: PID: 5687   TASK: ffff8b0bc175a2c0  COMMAND: "bash"
+    ROOT_TASK_GROUP: ffffffff93a55600  CFS_RQ: 0
+  runq: invalid kernel virtual address: 58  type: "curr"
+  crash> runq -g
+  Segmentation fault (core dumped)
+
+Since there is no way to determine whether it is a per-cpu variable,
+check wthether it is a pointer array or not.
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ defs.h    |  2 ++
+ kernel.c  | 14 ++++++++++++++
+ symbols.c | 27 +++++++++++++++++++++++++++
+ task.c    | 30 ++++++++++++++++++++++--------
+ 4 files changed, 65 insertions(+), 8 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index d7bcdd083671..e3027e2b9141 100644
+--- a/defs.h
++++ b/defs.h
+@@ -691,6 +691,7 @@ struct new_utsname {
+ #define KMOD_PAX                  (0x100ULL)
+ #define KMOD_MEMORY               (0x200ULL)
+ #define IRQ_DESC_TREE_MAPLE       (0x400ULL)
++#define PER_CPU_CFS_RQ            (0x800ULL)
+ 
+ #define XEN()       (kt->flags & ARCH_XEN)
+ #define OPENVZ()    (kt->flags & ARCH_OPENVZ)
+@@ -5886,6 +5887,7 @@ void parse_for_member_extended(struct datatype_member *, ulong);
+ void add_to_downsized(char *);
+ int is_downsized(char *);
+ int is_string(char *, char *);
++int is_ptrptr(char *, char *);
+ struct syment *symbol_complete_match(const char *, struct syment *);
+ 
+ /*  
+diff --git a/kernel.c b/kernel.c
+index eb9754c5e082..e53038d5d8db 100644
+--- a/kernel.c
++++ b/kernel.c
+@@ -400,6 +400,18 @@ kernel_init()
+ 	MEMBER_OFFSET_INIT(task_group_rt_rq, "task_group", "rt_rq");
+ 	MEMBER_OFFSET_INIT(task_group_parent, "task_group", "parent");
+ 
++	/*
++	 * task_group.cfs_rq was changed from a pointer array to a per-cpu
++	 * variable at Linux 7.2 (b8fea7af0e40).  Since there is no way to
++	 * determine it, we check whether it is a pointer array or not.
++	 *   -       struct cfs_rq           **cfs_rq;
++	 *   +       struct cfs_rq __percpu  *cfs_rq;
++	 */
++	if (VALID_MEMBER(task_group_cfs_rq)) {
++		if (!is_ptrptr("task_group", "cfs_rq"))
++			kt->flags2 |= PER_CPU_CFS_RQ;
++	}
++
+        /*
+         *  In 2.4, smp_send_stop() sets smp_num_cpus back to 1
+         *  in some, but not all, architectures.  So if a count
+@@ -6362,6 +6374,8 @@ dump_kernel_table(int verbose)
+ 		fprintf(fp, "%sKMOD_PAX", others++ ? "|" : "");
+ 	if (kt->flags2 & KMOD_MEMORY)
+ 		fprintf(fp, "%sKMOD_MEMORY", others++ ? "|" : "");
++	if (kt->flags2 & PER_CPU_CFS_RQ)
++		fprintf(fp, "%sPER_CPU_CFS_RQ", others++ ? "|" : "");
+ 	fprintf(fp, ")\n");
+ 
+         fprintf(fp, "         stext: %lx\n", kt->stext);
+diff --git a/symbols.c b/symbols.c
+index 78e400ba3756..03511c8cbe8c 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -7933,6 +7933,33 @@ is_string(char *structure, char *member)
+         return retval;
+ }
+ 
++int
++is_ptrptr(char *structure, char *member)
++{
++	int retval;
++	char *t;
++	char buf[BUFSIZE];
++
++	retval = FALSE;
++	open_tmpfile();
++	whatis_datatype(structure, STRUCT_REQUEST, pc->tmpfile);
++	rewind(pc->tmpfile);
++	while (fgets(buf, BUFSIZE, pc->tmpfile)) {
++		if (!(t = strstr(buf, "**")))
++			continue;
++		t += 2;
++		if (t != strstr(t, member))
++			continue;
++		t += strlen(member);
++		if (*t == ';') {
++			retval = TRUE;
++			break;
++		}
++	}
++	close_tmpfile();
++
++	return retval;
++}
+ 
+ /*
+  *  Generic function for dumping data structure declarations, with a small
+diff --git a/task.c b/task.c
+index 7dacb05b2406..b95d3d7fb2af 100644
+--- a/task.c
++++ b/task.c
+@@ -9542,8 +9542,12 @@ print_parent_task_group_fair(void *t, int cpu)
+ 	readmem(tgi->task_group + OFFSET(task_group_cfs_rq),
+ 		KVADDR, &cfs_rq_c, sizeof(ulong),
+ 		"task_group cfs_rq", FAULT_ON_ERROR);
+-	readmem(cfs_rq_c + cpu * sizeof(ulong), KVADDR, &cfs_rq_p,
+-		sizeof(ulong), "task_group cfs_rq", FAULT_ON_ERROR);
++
++	if (kt->flags2 & PER_CPU_CFS_RQ)
++		cfs_rq_p = cfs_rq_c + kt->__per_cpu_offset[cpu];
++	else
++		readmem(cfs_rq_c + cpu * sizeof(ulong), KVADDR, &cfs_rq_p,
++			sizeof(ulong), "task_group cfs_rq", FAULT_ON_ERROR);
+ 
+ 	print_group_header_fair(tgi->depth, cfs_rq_p, tgi);
+ 	tgi->use = 0;
+@@ -9569,8 +9573,13 @@ dump_tasks_in_lower_dequeued_cfs_rq(int depth, ulong cfs_rq, int cpu,
+ 		readmem(tgi_array[i]->task_group + OFFSET(task_group_cfs_rq),
+ 			KVADDR, &cfs_rq_c, sizeof(ulong), "task_group cfs_rq",
+ 			FAULT_ON_ERROR);
+-		readmem(cfs_rq_c + cpu * sizeof(ulong), KVADDR, &cfs_rq_p,
+-			sizeof(ulong), "task_group cfs_rq", FAULT_ON_ERROR);
++
++		if (kt->flags2 & PER_CPU_CFS_RQ)
++			cfs_rq_p = cfs_rq_c + kt->__per_cpu_offset[cpu];
++		else
++			readmem(cfs_rq_c + cpu * sizeof(ulong), KVADDR, &cfs_rq_p,
++				sizeof(ulong), "task_group cfs_rq", FAULT_ON_ERROR);
++
+ 		if (cfs_rq == cfs_rq_p)
+ 			continue;
+ 
+@@ -10433,10 +10442,15 @@ dump_tasks_by_task_group(void)
+ 			readmem(rt_rq + cpu * sizeof(ulong), KVADDR,
+ 				&rt_rq_p, sizeof(ulong), "task_group rt_rq",
+ 				FAULT_ON_ERROR);
+-		if (cfs_rq)
+-			readmem(cfs_rq + cpu * sizeof(ulong), KVADDR,
+-				&cfs_rq_p, sizeof(ulong), "task_group cfs_rq",
+-				FAULT_ON_ERROR);
++		if (cfs_rq) {
++			if (kt->flags2 & PER_CPU_CFS_RQ)
++				cfs_rq_p = cfs_rq + kt->__per_cpu_offset[cpu];
++			else
++				readmem(cfs_rq + cpu * sizeof(ulong), KVADDR,
++					&cfs_rq_p, sizeof(ulong),
++					"task_group cfs_rq", FAULT_ON_ERROR);
++		}
++
+ 		fprintf(fp, "%sCPU %d", displayed++ ? "\n" : "", cpu);
+ 
+ 		if (hide_offline_cpu(cpu)) {
+-- 
+2.55.0
+

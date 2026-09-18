@@ -219,4 +219,23 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1333991</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>261025e24ca69c292b1676c19d5a3a4b</srcmd5>
+    <version>2.8.1</version>
+    <time>1789761968</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.8.1
+  * No changelog
+- Changes in 2.8.0
+  * Improve offline Mode
+  * Allow to open saved file.
+  * Allow to rotate image in show image dialog
+  * Add new room info in notification history dialog.
+  * Use new textmessagewidget for error notification
+  * Implement Draft message sorting channel.
+  * Implement Banned Users list dialog.
+  * Implement Banned/Unbanned Users.
+- Update BuildRequires kf6_version and qt6_version (forwarded request 1378436 from Kieltux)</comment>
+    <requestid>1378685</requestid>
+  </revision>
 </revisionlist>

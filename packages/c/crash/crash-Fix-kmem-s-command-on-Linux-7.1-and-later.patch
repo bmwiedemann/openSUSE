@@ -1,0 +1,122 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Fri, 24 Jul 2026 01:27:22 +0000
+Subject: Fix "kmem [-s]" command on Linux 7.1 and later
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: bb9a3fa67a79309fac6c805584c5b092c480c09a
+Patch-mainline: yes
+
+Kernel commit 5ba6bc27b1f9 ("slab: decouple pointer to barn from
+kmem_cache_node") changed kmem_cache.node array into struct
+kmem_cache_per_node_ptrs kmem_cache.per_node array.
+
+Without the patch, "kmem <slab address>" and "kmem -s" option fail with
+the following error.
+
+  crash> kmem -s
+
+  kmem: invalid structure member offset: kmem_cache_local_node
+        FILE: memory.c  LINE: 19563  FUNCTION: get_kmem_cache_slub_data()
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Acked-by: Tao Liu <ltao@redhat.com>
+Acked-by: Dave Young <yangrr.2009@tsinghua.org.cn>
+Signed-off-by: Dave Young <ruirui.yang@linux.dev>
+Signed-off-by: Jiri Slaby <jslaby@suse.cz>
+---
+ defs.h    |  3 +++
+ memory.c  | 19 +++++++++++++++----
+ symbols.c |  4 ++++
+ 3 files changed, 22 insertions(+), 4 deletions(-)
+
+diff --git a/defs.h b/defs.h
+index 88b7bbeb2372..ef34db90113f 100644
+--- a/defs.h
++++ b/defs.h
+@@ -2291,6 +2291,8 @@ struct offset_table {                    /* stash of commonly-used offsets */
+ 	long hrtimer_clock_base_index;
+ 	long klp_patch_list;
+ 	long page_compound_info;
++	long kmem_cache_per_node;
++	long kmem_cache_per_node_ptrs_node;
+ };
+ 
+ struct size_table {         /* stash of commonly-used sizes */
+@@ -2470,6 +2472,8 @@ struct size_table {         /* stash of commonly-used sizes */
+ 	long cpumask_t;
+ 	long task_struct_exit_state;
+ 	long bpf_ringbuf_map;
++	long page_compound_order;
++	long kmem_cache_per_node_ptrs;
+ };
+ 
+ struct array_table {
+diff --git a/memory.c b/memory.c
+index 5163ee663641..f2304f3ffe2f 100644
+--- a/memory.c
++++ b/memory.c
+@@ -871,6 +871,8 @@ vm_init(void)
+ 		MEMBER_OFFSET_INIT(kmem_cache_inuse, "kmem_cache", "inuse");
+ 		MEMBER_OFFSET_INIT(kmem_cache_align, "kmem_cache", "align");
+ 		MEMBER_OFFSET_INIT(kmem_cache_node, "kmem_cache", "node");
++		if (INVALID_MEMBER(kmem_cache_node))
++			MEMBER_OFFSET_INIT(kmem_cache_per_node, "kmem_cache", "per_node");
+ 		MEMBER_OFFSET_INIT(kmem_cache_cpu_slab, "kmem_cache", "cpu_slab");
+ 		MEMBER_OFFSET_INIT(kmem_cache_list, "kmem_cache", "list");
+ 		MEMBER_OFFSET_INIT(kmem_cache_red_left_pad, "kmem_cache", "red_left_pad");
+@@ -922,7 +924,12 @@ vm_init(void)
+ 			if (INVALID_MEMBER(page_objects))
+ 				ANON_MEMBER_OFFSET_INIT(page_objects, "slab", "objects");
+ 		}
+-		if (VALID_MEMBER(kmem_cache_node)) {
++		if (VALID_MEMBER(kmem_cache_per_node)) { /* Linux 7.1 and later */
++			MEMBER_OFFSET_INIT(kmem_cache_per_node_ptrs_node,
++					"kmem_cache_per_node_ptrs", "node");
++			STRUCT_SIZE_INIT(kmem_cache_per_node_ptrs, "kmem_cache_per_node_ptrs");
++			vt->flags |= CONFIG_NUMA;
++		} else if (VALID_MEMBER(kmem_cache_node)) {
+                 	ARRAY_LENGTH_INIT(len, NULL, "kmem_cache.node", NULL, 0);
+ 			vt->flags |= CONFIG_NUMA;
+ 		}
+@@ -19555,9 +19562,13 @@ get_kmem_cache_slub_data(long cmd, struct meminfo *si)
+ 	for (n = 0; n < vt->numnodes; n++) {
+ 		if (vt->flags & CONFIG_NUMA) {
+ 			nt = &vt->node_table[n];
+-			node_ptr = ULONG(si->cache_buf +
+-				OFFSET(kmem_cache_node) +
+-				(sizeof(void *) * nt->node_id));
++			if (VALID_MEMBER(kmem_cache_per_node)) /* Linux 7.1 and later */
++				node_ptr = ULONG(si->cache_buf + OFFSET(kmem_cache_per_node) +
++						(SIZE(kmem_cache_per_node_ptrs) * nt->node_id) +
++						OFFSET(kmem_cache_per_node_ptrs_node));
++			else
++				node_ptr = ULONG(si->cache_buf + OFFSET(kmem_cache_node) +
++						(sizeof(void *) * nt->node_id));
+ 		} else
+ 			node_ptr = si->cache + 
+ 				OFFSET(kmem_cache_local_node);
+diff --git a/symbols.c b/symbols.c
+index 1b734d775361..1515385d5724 100644
+--- a/symbols.c
++++ b/symbols.c
+@@ -10933,6 +10933,9 @@ dump_offset_table(char *spec, ulong makestruct)
+                 OFFSET(kmem_cache_oo));
+         fprintf(fp, "             kmem_cache_random: %ld\n",
+                 OFFSET(kmem_cache_random));
++	fprintf(fp, "           kmem_cache_per_node: %ld\n", OFFSET(kmem_cache_per_node));
++
++	fprintf(fp, " kmem_cache_per_node_ptrs_node: %ld\n", OFFSET(kmem_cache_per_node_ptrs_node));
+ 
+         fprintf(fp, "    kmem_cache_node_nr_partial: %ld\n",
+                 OFFSET(kmem_cache_node_nr_partial));
+@@ -12044,6 +12047,7 @@ dump_offset_table(char *spec, ulong makestruct)
+         fprintf(fp, "                    kmem_cache: %ld\n", SIZE(kmem_cache));
+         fprintf(fp, "               kmem_cache_node: %ld\n", SIZE(kmem_cache_node));
+         fprintf(fp, "                kmem_cache_cpu: %ld\n", SIZE(kmem_cache_cpu));
++	fprintf(fp, "      kmem_cache_per_node_ptrs: %ld\n", SIZE(kmem_cache_per_node_ptrs));
+ 
+         fprintf(fp, "              swap_info_struct: %ld\n", 
+ 		SIZE(swap_info_struct));
+-- 
+2.55.0
+

@@ -2519,4 +2519,14 @@
   + window-list: Only perform allowed window actions</comment>
     <requestid>1371786</requestid>
   </revision>
+  <revision rev="154" vrev="1">
+    <srcmd5>efaeabadba6e4184539b07df6768f7ca</srcmd5>
+    <version>50.4</version>
+    <time>1789762042</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.4:
+  + window-list: Fix reappearing after unfullscreening
+  + Updated translations.</comment>
+    <requestid>1378742</requestid>
+  </revision>
 </revisionlist>

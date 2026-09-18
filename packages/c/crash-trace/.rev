@@ -16,4 +16,18 @@
 </comment>
     <requestid>1036892</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>5865b643a76f3573a2d55d4ba6be1758</srcmd5>
+    <version>3.0</version>
+    <time>1789762092</time>
+    <user>anag_factory</user>
+    <comment>- Update crash-trace to latest upstream (bsc#1262945)
+  New patch: [primary fix] crash-trace-Fix-segmentation-fault-during-executing-trace-dump-s.patch
+  New patch: crash-trace-Makefile-set-DT_SONAME-to-trace.so.patch
+  New patch: crash-trace-Support-module-memory-layout-change-on-Linux-6.4.patch
+
+- crash-trace-fix-arm.patch: Fix build for 32-bit Arm.
+- crash-trace-fix-riscv64.patch: Fix build for RISCV64.</comment>
+    <requestid>1378814</requestid>
+  </revision>
 </revisionlist>

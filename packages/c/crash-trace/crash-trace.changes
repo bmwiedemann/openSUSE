@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 14 22:09:15 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Update crash-trace to latest upstream (bsc#1262945)
+  New patch: [primary fix] crash-trace-Fix-segmentation-fault-during-executing-trace-dump-s.patch
+  New patch: crash-trace-Makefile-set-DT_SONAME-to-trace.so.patch
+  New patch: crash-trace-Support-module-memory-layout-change-on-Linux-6.4.patch
+
+-------------------------------------------------------------------
+Thu May 29 08:10:33 UTC 2025 - Petr Tesařík <ptesarik@suse.com>
+
+- crash-trace-fix-arm.patch: Fix build for 32-bit Arm.
+- crash-trace-fix-riscv64.patch: Fix build for RISCV64.
+
+-------------------------------------------------------------------
 Sat Nov 19 20:53:37 UTC 2022 - Petr Tesařík <ptesarik@suse.com>
 
 - The "trace show" command requires trace-cmd.

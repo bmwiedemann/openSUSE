@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:30:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.12:
+  * Bugfixes
+    - Fixed bug with runner configuration on registration step.
+
+-------------------------------------------------------------------
 Fri Aug 28 08:28:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.11 (.9 and .10 were not released):

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:32:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.6:
+  * Features:
+    - image mod support for user, workdir, and author. (PR 1101)
+    - Support RC releases. (PR 1126)
+  * Fixes:
+    - Add limits and controls to ReadAll. (PR 1096)
+    - Skip local check on requests going through a proxy. (PR 1099)
+    - URLs passed to ProxyFromEnvironment require a scheme. (PR
+      1104)
+    - Avoid a panic if http.DefaultTransport is altered. (PR 1109)
+    - Handle docker schema v1 with ocidir. (PR 1111)
+    - Do not checkout main branch for releases. (PR 1127)
+    - Pin Go version for regctl mod commands. (PR 1130)
+    - Improve reproducibility with tags on main branch. (PR 1131)
+    - Do not sign SBOMs. (PR 1133)
+  * Other changes:
+    - Add copyright headers. (PR 1102)
+    - Improve error messages in ocidir scheme. (PR 1106)
+    - Upgrade osv-scanner to v2. (PR 1115)
+    - Remove go reportcard. (PR 1119)
+
+-------------------------------------------------------------------
 Fri May 29 07:04:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.5:

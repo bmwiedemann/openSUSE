@@ -1,7 +1,7 @@
 #
 # spec file for package ruqola
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,14 +16,14 @@
 #
 
 
-%define kf6_version 6.11.0
-%define qt6_version 6.8.0
+%define kf6_version 6.22.0
+%define qt6_version 6.9.0
 
 %bcond_without released
 # Disabled in the KDE:Extra repo for plain 16.0
 %bcond_without textautogeneratetext
 Name:           ruqola
-Version:        2.6.1
+Version:        2.8.1
 Release:        0
 Summary:        Rocket.chat Client
 License:        GPL-2.0-or-later
@@ -103,6 +103,9 @@ available from Rocket.Chat project.
 %install
 %kf6_install
 
+# remove ruqola-symbolic.svg
+rm %{buildroot}%{_datadir}/ruqola/icons/hicolor/22x22/apps/ruqola-symbolic.svg
+
 %find_lang %{name} --with-html
 
 %ldconfig_scriptlets
@@ -115,10 +118,10 @@ available from Rocket.Chat project.
 %attr(0644,-,-) %{_kf6_applicationsdir}/org.kde.ruqola.desktop
 %{_kf6_appstreamdir}/org.kde.ruqola.appdata.xml
 %{_kf6_bindir}/ruqola
+%{_kf6_configkcfgdir}/ruqolaglobalconfig.kcfg
 %{_kf6_debugdir}/ruqola.categories
 %{_kf6_debugdir}/ruqola.renamecategories
 %{_kf6_iconsdir}/hicolor/*/*/ruqola.png
-%{_kf6_libdir}/libcmark-rc-copy.so.*
 %{_kf6_libdir}/librocketchatrestapi-qt.so.*
 %{_kf6_libdir}/libruqolacore.so.*
 %{_kf6_libdir}/libruqolawidgets.so.*

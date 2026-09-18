@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:27:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.6:
+  * LiveKit traces keep system instructions alongside history -
+    gen_ai.input.messages was shadowing the merged prompt at ingest
+
+-------------------------------------------------------------------
 Wed Sep 16 07:25:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.5:

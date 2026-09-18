@@ -1799,4 +1799,25 @@
 - Update to crash 9.0.2</comment>
     <requestid>1361294</requestid>
   </revision>
+  <revision rev="200" vrev="2">
+    <srcmd5>a9714eea380098f6a59d3b6b3044576a</srcmd5>
+    <version>9.0.2</version>
+    <time>1789762091</time>
+    <user>anag_factory</user>
+    <comment>- add crash-symbols-use-non-debug-BFD-to-retrieve-.rodata.patch
+
+- support kernel 7.1 + 7.2 -- add:
+  * crash-support-kernel-7.x-and-8.x.patch
+  * crash-Fix-compound_head-and-bt-F-option-on-Linux-7.1-and-l.patch
+  * crash-Fix-failure-of-runq-g-option-on-Linux-7.2-and-later-.patch
+  * crash-Fix-kmem-i-option-to-display-swap-usage-on-Linux-6.1.patch
+  * crash-Fix-kmem-s-command-on-Linux-7.1-and-later.patch
+  * crash-Fix-runq-g-option-to-display-task_group-name-on-Linu.patch
+  * crash-Fix-swap-command-on-Linux-7.1-and-later.patch
+  * crash-symbols-Add-support-for-mod-symtab-with-combined-GPL.patch
+  * crash-x86_64-Fix-bt-command-for-noreturn-functions.patch
+  * crash-x86_64-Fix-bt-command-to-use-correct-ORC-register-va.patch
+  * crash-x86_64-Make-ORC_REG_SP-and-ORC_REG_PREV_SP-independe.patch</comment>
+    <requestid>1378796</requestid>
+  </revision>
 </revisionlist>

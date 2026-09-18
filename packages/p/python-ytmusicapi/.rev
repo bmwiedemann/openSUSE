@@ -127,4 +127,19 @@
     <comment>Update to 1.12.2</comment>
     <requestid>1370470</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>744e8d9b7b44f6b5c1aa694770ef9446</srcmd5>
+    <version>1.12.3</version>
+    <time>1789761965</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.12.3:
+  * fix: tolerate missing thumbnails in all parsers
+  * fix(parsers): tolerate playlist headers without secondSubtitle
+  * Parse isAvailable for song/video search results
+  * fix: resolve flaky search, explore, and podcast tests
+  * Handle untimed mobile lyrics payloads
+  * fix(browsing): skip unavailable homepage cards
+  * fix(search): mark unavailable episode search results with isAvailable</comment>
+    <requestid>1378684</requestid>
+  </revision>
 </revisionlist>

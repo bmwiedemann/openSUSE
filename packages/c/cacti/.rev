@@ -589,4 +589,12 @@ CVE-2023-51448 boo#1218381
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1369586</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5aeb516a8793c67b7f84d9a20a25a2dc</srcmd5>
+    <version>1.2.31+git128.263b4c1c</version>
+    <time>1789761920</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378671</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,87 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:16:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.0:
+  * Welcome to the v0.56.0 of Inspektor Gadget. These are the most
+    important changes:
+    - Kubernetes multi-tenancy (experimental) — an opt-in mode that
+      authenticates every kubectl-gadget request through Kubernetes
+      (TokenReview) and restricts gadgets to the namespaces
+      authorized by RBAC (SubjectAccessReview). Enforcement runs in
+      the gadget service via KubeManager and covers detached
+      instance list/attach/delete (#5679).
+    - Rootless ig image commands — ig image
+      build/list/inspect/push/pull now run as a normal user against
+      a per-user OCI store at ~/.ig/oci-store. sudo ig run
+      --oci-store-user uses that user store read-only, so gadgets
+      built as your user can be executed without polluting ~ with
+      root-owned files (#5578).
+    - Stripped Go binary uprobes — uprobetracer falls back to Go's
+      .gopclntab (including Go 1.26+ .go.module) when the ELF
+      symbol table is missing, so uprobes can attach to stripped Go
+      binaries such as a production kubelet (#5742). Hardened ELF
+      parsing (safeelf bounded symbol iterator,
+      gopclntab/USDT/debuginfod size limits, container ID
+      validation) prevents crafted binaries from causing large
+      allocations in the privileged IG process (#5568, #5762).
+    - Kubelet /configz via HTTPS — container runtime socket
+      auto-detection now talks to the kubelet's /configz directly
+      and requires nodes/configz instead of the broader nodes/proxy
+      (Kubernetes v1.33+; earlier clusters fall back to the
+      configured socket path) (#5343).
+    - Container-hook reliability — the fanotify container hook is
+      hardened against freezes and lost events (#5730), and
+      FAN_MARK_IGNORED_SURV_MODIFY is added to ignore marks so they
+      take effect even when config.json is open for write (#5733).
+  * Breaking Changes
+    - deploy: Replace nodes/proxy with nodes/configz in #5343
+    - Rootless image commands in #5578
+  * General Improvements
+    - feat: add multi-tenancy support (namespace based) in #5679
+    - uprobetracer: Support stripped Go binaries via .gopclntab
+      fallback in #5742
+    - pkg/signature: Add some checks in #5568
+    - charts: Allow overrding tolerations in #5684
+    - gadgets/trace_mount: Report network namespace in mount gadget
+      in #5758
+  * Bug Fixes
+    - container-hook: harden the fanotify hook against freezes and
+      lost events in #5730
+    - pkg/container-hook: Add FAN_MARK_IGNORED_SURV_MODIFY to
+      ignore marks in #5733
+    - pkg/types, pkg/utils/safeelf: Fix staticcheck issues in #5762
+    - build: Fix broken .PHONY declarations in Makefiles in #5784
+  * Documentation Improvements
+    - docs: Document privileges needed to deploy Inspektor Gadget
+      in k8s. in #5731
+    - docs: Drop the benchmark workflow for a removed package in
+      #5746
+    - docs/gadget-devel: Compile-test the hello-world guide code in
+      #5771
+    - readme: Remove Go Report Card in #5728
+  * Testing and Continuous Integration
+    - gadgets: Serialize gadget push/sign on OCI registries and
+      retry flaky errors in #5719
+    - tests: gadgets/profile_cpu: Run OTel stacks workload in a
+      container in #5747
+    - Artifact Hub: Update gadgets version to v0.55.0 in #5729
+    - Artifact Hub: Update gadgets version to v0.55.1 in #5764
+  * Dependencies updates
+    - Dockerfiles: bump debian from 7b140f3 to abd67ff in
+      /Dockerfiles in #5732
+    - golang: Update to 1.26.6 with @Copilot in #5751
+    - go: Update x/crypto to v0.55.0 in #5780
+    - go.mod: Bump golang.org/x/mod to v0.40.0 in #5761
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      in #5702
+    - go: bump google.golang.org/grpc from 1.82.1 to 1.83.1 in
+      #5787
+    - go: bump google.golang.org/grpc from 1.82.1 to 1.83.1 in
+      /examples in #5783
+    - go: bump google.golang.org/grpc from 1.82.1 to 1.83.1 in
+      /tools/testjson2md in #5785
+
+-------------------------------------------------------------------
 Fri Aug 28 08:06:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.55.1:

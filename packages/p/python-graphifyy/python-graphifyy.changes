@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:25:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.63:
+  * Elixir alias/import/require/use resolve onto the defmodule
+    node across files; nested modules stay unindexed
+  * Rust self.method() resolves across split impl blocks of
+    the same type
+  * Ruby obj.foo on a known-type receiver resolves to an
+    inherited superclass method
+  * import-family edges to stdlib/third-party modules mint
+    typed external stub nodes; sourceless call targets stay
+    suppressed
+  * Markdown code-span mention edges survive incremental
+    rebuilds; dotted spans keep their qualifiers
+- Drop the test_same_size_rewrite skip: upstream now pins
+  mtime so the collision is deterministic
+
+-------------------------------------------------------------------
 Wed Sep 16 07:26:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.62:

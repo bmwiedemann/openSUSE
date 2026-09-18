@@ -177,4 +177,15 @@ passed per flavour (py313/py314), rpmlint 0 badness.</comment>
   * Raise langchain-core requirement to &gt;= 1.6.3</comment>
     <requestid>1378293</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3d798db3a3d58ecbebe956f824f8327c</srcmd5>
+    <version>1.7.8</version>
+    <time>1789761890</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.8:
+  * ChatBedrock and ChatBedrockConverse now expose a
+    read-only .model property that returns model_id
+  * Refreshed the bundled Bedrock model profile data</comment>
+    <requestid>1378669</requestid>
+  </revision>
 </revisionlist>

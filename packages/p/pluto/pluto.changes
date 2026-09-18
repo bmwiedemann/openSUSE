@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:38:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.24.4:
+  * INS-2927: Fix vulnerabilities for pluto (#621)
+  * INS-2846: Prepare pluto for unifying circleci (#614)
+  * docs: remove broken links
+
+-------------------------------------------------------------------
 Tue Aug 11 06:33:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.24.3 (.2 was not released):

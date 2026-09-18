@@ -1021,4 +1021,16 @@
     ANNOUNCE or https://www.lyx.org/announce/2_5_2.txt</comment>
     <requestid>1371594</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>f626fc6dabc8c93a2ebe3677be27c9db</srcmd5>
+    <version>2.5.3</version>
+    <time>1789761971</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.5.3:
+  * Most important fix is the one to restore captions in starred
+    environments
+  * Maintenance release. For details see included ANNOUNCE or
+    https://www.lyx.org/announce/2_5_3.txt</comment>
+    <requestid>1378686</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,72 @@
 -------------------------------------------------------------------
+Wed Sep 16 12:39:51 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 70.0 (fixes CVE-2026-55073 (bsc#1279942)):
+  ## Security
+  * Don’t render EPS images.
+  * Always use original URL fetcher when available.
+  ## Features
+  * #2905: Add initial support of CSS Notes, with financial support from NLnet
+  * #2731, #2781: Log an error on unknown render and write_pdf options
+  * #2802, #2805: Create immutable releases on GitHub
+  * #2809, #2810: Switch to MSYS2 UCRT64 environment for Windows tests and
+    executables
+  * #2777, #2814: Support COLR emoji fonts
+  * #2667, #2744: Support context paint in SVG markers
+  * #1862, #2844: Improve filename detection for attachments
+  * #2816, #2827: Set SVG title as alternative text
+  * #2718: Provide a 'onedir' Windows executable
+  * #2863: Support box-shadow
+  * #2755: Support RTL SVG text anchoring
+  * #2866: Don’t use f-strings in logs
+  ## Bug fixes
+  * #2799: Keep HarfBuzz font faces alive during PDF subsetting
+  * #2764, #2793: Accept Path as base URL in CSS
+  * #2800, #2801: Fix position of raster emojis
+  * #2782, #2807: Use POSIX paths in Fontconfig
+  * #2766, #2779: Use response bytes when image file path doesn’t exist
+  * #2277, #2728: Honor page breaks on floated elements
+  * #2789, #2818: Use base URL when solving pending properties
+  * #2820: Ignore unresolvable math in image slices
+  * #2901, #2825: Transform SVG size into CSS to apply CSS sizing algorithm
+  * #2819: Resolve calc() division by zero to infinity
+  * #2824: Remove old deprecation warnings
+  * #2762, #2780: Set SVG gradient color before path construction
+  * #2761: Handle split tables with captions
+  * #2215, #2747: Discard broken at-rules
+  * #2736, #2738: Apply transformations to SVG opacity groups
+  * #2830: Use a stack to draw simple borders
+  * #2831: Fix line_height() crash on calc() values
+  * #2784, #2832: Set fallback font for Unicode test
+  * #2726, #2881: Improve accessibility of PDF forms
+  * #2803: Fix inline width after backtracked line breaks
+  * #2833: Store root style in anonymous style
+  * #2815, #2836: Remove flex placeholders added when setting item width
+  * #2843: Avoid double free for font configuration
+  * #2614: Fix break point value used to break lines
+  * #2828: Don’t let a deferred float inflate its block formatting context
+  * #2851, #2890: Handle spaces and newlines in URLs
+  * #2855: Improve blockification of various inline boxes
+  * #2873, #2875: Fix drawing of collapsed borders for tables with footers
+  * #2874, #2879: Always add nested lists tags after list items tags
+  * #2882, #2883: Mark box shadows as PDF artifacts
+  * #2872: Write explicit color-space objects for shading and transparency
+    groups
+  * #2853: Fix cleared float layout after page breaks
+  * #2857, #2888: Transform running elements into relatively positioned boxes
+  * #2877, #2889: Harmonize page break management in tables
+  * #2842: Handle rounding errors when calculating width of colspan cells
+  * #2714, #2892: Remove nested placeholders when removing placeholders
+  * #2914, #2915: Restore nested SVG viewport size on the SVG object
+  ## Performance
+  * #2813: Share computed styles between elements
+  * #2886: Add deprecation warnings when using fontTools for subsetting
+  * #2526, #2776: Use stroked dashes for uniform dotted and dashed borders
+  * #2913: Increase SVG paths parsing speed
+  ## Documentation
+  * #1360, #2865: Document automatic PDF regeneration on source changes
+
+-------------------------------------------------------------------
 Fri Jul 10 04:09:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 69.0:

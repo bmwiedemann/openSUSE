@@ -4,6 +4,8 @@
     <param name="scm">git</param>
     <param name="exclude">.git</param>
     <param name="revision">1.2.x</param>
+    <!-- Forces Git to only look at release/ tags and ignore the rel* warning tag -->
+    <param name="match-tag">release/*</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
     <!-- Removes "release/" from the beginning of the version string -->
     <param name="versionrewrite-pattern">release/(.*)</param>

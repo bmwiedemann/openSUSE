@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:48:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.0:
+  * change: Dropped support for Python 3.8 and 3.9 (both EOL), added
+    support for Python 3.14
+  * change: Accessing :attr:`MultipartSegment.size` before the segment
+    is complete now raises :exc:`ParserStateError`. The new attribute
+    :attr:`MultipartSegment.bytes_received` provides the in-progress
+    segment body byte count previously exposed by
+    :attr:`MultipartSegment.size`.
+  * change: :class:`PushMultipartParser` now emits :class:`bytes`
+    instead of :class:`bytearray` for part body chunks. Update your
+    isinstance checks if you have any.
+  * change: Enforce part_limit (128 by default) for url-encoded data in
+    parse_form_data(). This is consistent with multipart handling and
+    an important safeguard against denial of service attacks.
+  * change: New strict-mode check to reject extremely large boundaries.
+  * change: Raise more helpful :exc:`ParserStateError` instead of
+    implicit :exc:`AssertionError` or :exc:`TypeError` when the parser
+    is used incorrectly.
+  * change: The boundary delimiter must not appear inside a segment
+    body (RFC-7578 4.1). This triggers a fatal error now.
+
+-------------------------------------------------------------------
 Fri Mar 13 09:08:01 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - CVE-2026-28356: exponential backtracking (ReDoS), bsc#1259610
@@ -37,4 +61,4 @@ Fri Mar 14 09:39:57 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 -------------------------------------------------------------------
 Fri Nov 15 01:27:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Initial release of 1.1.0. 
+- Initial release of 1.1.0.

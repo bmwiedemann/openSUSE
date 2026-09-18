@@ -1,0 +1,41 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Wed, 3 Jun 2026 07:12:57 +0000
+Subject: Fix "kmem -i" option to display swap usage on Linux 6.18 and later
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: c894f05d3cdc5d3e61775c3f67bd6a0a24362a92
+Patch-mainline: yes
+
+Kernel commit 8578e0c00dcf ("mm, swap: use the swap table to track the
+swap count"), which is contained in Linux 6.18 and later kernels,
+removed swapper_spaces symbol.
+
+As a result, "kmem -i" skips swap usage output because the existing
+check only looks for swapper_space/swapper_spaces.
+
+Also check for the swap_info symbol so dump_swap_info() is called on
+newer kernels as well.
+
+Signed-off-by: Kazuhito Hagko <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ memory.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/memory.c b/memory.c
+index 38c6a139e984..15946c58eaf2 100644
+--- a/memory.c
++++ b/memory.c
+@@ -8871,7 +8871,8 @@ dump_kmeminfo(struct meminfo *mi)
+          *  get swap data from dump_swap_info().
+          */
+ 	fprintf(fp, "\n");
+-	if (symbol_exists("swapper_space") || symbol_exists("swapper_spaces")) {
++	if (symbol_exists("swap_info") ||
++	    symbol_exists("swapper_space") || symbol_exists("swapper_spaces")) {
+ 		if (dump_swap_info(RETURN_ON_ERROR, &totalswap_pages, 
+ 		    &totalused_pages)) {
+ 			fprintf(fp, "%13s  %7ld  %11s         ----\n", 
+-- 
+2.55.0
+

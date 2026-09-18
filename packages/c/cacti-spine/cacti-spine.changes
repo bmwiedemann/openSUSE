@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 17 15:18:09 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Changed .spec file %verify(not mode caps) %{_bindir}/spine
+  to fix TW builds as a result of bsc#1263098
+
+-------------------------------------------------------------------
+Mon Aug  3 03:03:03 UTC 2026 - olaf@aepfle.de
+
+- Enable use of capabilities to use cap_net_raw (bsc#1273300)
+- Remove README.md because it contains just build instructions.
+
+-------------------------------------------------------------------
 Tue Jun 16 14:03:50 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - cacti-spine1.2.31

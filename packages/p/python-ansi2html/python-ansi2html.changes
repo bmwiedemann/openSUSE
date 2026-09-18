@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 18 06:37:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.5:
+  * truecolor: only add each color once
+  * Remove misleading license entry from packaging metadata
+  * Support alive Python versions
+  * CVE-2026-92973: osc8: ensure proper escaping (bsc#1281118)
+  * chore: Get rid of pkg_resources
+- Switch to using the pypi tarball.
+- Refresh patch opensuse-test.patch
+
+-------------------------------------------------------------------
 Wed Jun 18 14:27:04 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Use better expression to get version.

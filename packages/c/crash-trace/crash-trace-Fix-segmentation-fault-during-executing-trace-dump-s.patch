@@ -1,0 +1,105 @@
+From: HATAYAMA Daisuke <d.hatayama@fujitsu.com>
+Date: Wed, 5 Mar 2025 07:14:51 +0000
+Subject: Fix segmentation fault during executing trace dump -s
+Git-repo: https://github.com/fujitsu/crash-trace.git
+Git-commit: 2106a9d04020192f6f286171a060c4d2300059b7
+References: bsc#1262945
+
+Currently, trace dump -s results in segmentation fault on the vmcore
+corresponding to kernel-core-6.13.5-200.fc41.x86_64:
+
+  crash> trace dump -s trace_dump_dir
+  Segmentation fault (core dumped)
+
+This is caused by the commit c5913a960dfa07d64397e6b591e6f0d40ea0b503
+(trace: Support module memory layout change on Linux 6.4) that added
+support of the module memory layout change on Linux kernel 6.4, where
+the implementation on function dump_kallsyms() was overlooked.
+
+Fix this issue by introducing a new version of dump_kallsyms() for the
+new module memory layout.
+
+Signed-off-by: Tony Jones <tonyj@suse.de>
+---
+ trace.c | 53 ++++++++++++++++++++++++++++++++++++++++++++++++++---
+ 1 file changed, 50 insertions(+), 3 deletions(-)
+
+diff --git a/trace.c b/trace.c
+index 9e51707..dc5252e 100644
+--- a/trace.c
++++ b/trace.c
+@@ -1628,7 +1628,52 @@ static int dump_saved_cmdlines(const char *dump_tracing_dir)
+ 	return 0;
+ }
+ 
+-static int dump_kallsyms(const char *dump_tracing_dir)
++#ifdef MODULE_MEMORY
++static int dump_kallsyms_mod_v6_4(const char *dump_tracing_dir)
++{
++	char path[PATH_MAX];
++	FILE *out;
++	int i, t;
++	struct syment *sp;
++
++	snprintf(path, sizeof(path), "%s/kallsyms", dump_tracing_dir);
++	out = fopen(path, "w");
++	if (out == NULL)
++		return -1;
++
++	for (sp = st->symtable; sp < st->symend; sp++)
++		fprintf(out, "%lx %c %s\n", sp->value, sp->type, sp->name);
++
++	for (i = 0; i < st->mods_installed; i++) {
++		struct load_module *lm = &st->load_modules[i];
++
++		for_each_mod_mem_type(t) {
++			if (!lm->symtable[t])
++				continue;
++
++			for (sp = lm->symtable[t]; sp <= lm->symend[t]; sp++) {
++				if (!strncmp(sp->name, "_MODULE_", strlen("_MODULE_")))
++					continue;
++
++				/* Currently sp->type for modules is not trusted */
++				fprintf(out, "%lx %c %s\t[%s]\n", sp->value, 'm',
++					sp->name, lm->mod_name);
++			}
++		}
++	}
++
++	fclose(out);
++	return 0;
++}
++#else
++#define MODULE_MEMORY() (0)
++static int dump_kallsyms_mod_v6_4(const char *dump_tracing_dir)
++{
++	return 0;
++}
++#endif
++
++static int dump_kallsyms_legacy(const char *dump_tracing_dir)
+ {
+ 	char path[PATH_MAX];
+ 	FILE *out;
+@@ -1700,7 +1745,10 @@ static int populate_ftrace_dir_tree(struct trace_instance *ti,
+ 
+ 	if (flags & FTRACE_DUMP_SYMBOLS) {
+ 		/* Dump all symbols of the kernel */
+-		dump_kallsyms(root);
++		if (MODULE_MEMORY())
++			dump_kallsyms_mod_v6_4(root);
++		else
++			dump_kallsyms_legacy(root);
+ 	}
+ 
+ 	return TRUE;
+@@ -2263,7 +2311,6 @@ static void __save_proc_kallsyms_mod_v6_4(void)
+ 	}
+ }
+ #else
+-#define MODULE_MEMORY() (0)
+ static inline void __save_proc_kallsyms_mod_v6_4(void)
+ {
+ }
+

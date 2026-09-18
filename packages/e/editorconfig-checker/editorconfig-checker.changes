@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 04:46:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.11.3:
+  * fix: setup one last v3 patch release, for the people who cannot
+    instantly upgrade
+
+-------------------------------------------------------------------
 Fri Aug 28 06:17:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.2:

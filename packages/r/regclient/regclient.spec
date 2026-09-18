@@ -17,7 +17,7 @@
 
 
 Name:           regclient
-Version:        0.11.5
+Version:        0.11.6
 Release:        0
 Summary:        OCI Registry Client in Go and tooling using those libraries
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  git
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
 Client interface for the registry API. This packages includes regctl for a

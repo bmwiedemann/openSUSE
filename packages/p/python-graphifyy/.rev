@@ -254,4 +254,25 @@ rpmlint 0 errors 0 badness.</comment>
   python-tree-sitter-hcl, same as test_terraform.py)</comment>
     <requestid>1378291</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7e40f67e71a8d13acd418d5d4738056b</srcmd5>
+    <version>0.9.63</version>
+    <time>1789761891</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.9.63:
+  * Elixir alias/import/require/use resolve onto the defmodule
+    node across files; nested modules stay unindexed
+  * Rust self.method() resolves across split impl blocks of
+    the same type
+  * Ruby obj.foo on a known-type receiver resolves to an
+    inherited superclass method
+  * import-family edges to stdlib/third-party modules mint
+    typed external stub nodes; sourceless call targets stay
+    suppressed
+  * Markdown code-span mention edges survive incremental
+    rebuilds; dotted spans keep their qualifiers
+- Drop the test_same_size_rewrite skip: upstream now pins
+  mtime so the collision is deterministic</comment>
+    <requestid>1378675</requestid>
+  </revision>
 </revisionlist>

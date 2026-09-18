@@ -28,7 +28,7 @@
 %define npm_name gen-ai
 %define npm_scope @picsart
 Name:           picsart-gen-ai
-Version:        2.76.0
+Version:        2.78.0
 Release:        0
 Summary:        Picsart AI CLI for generating images, video and audio
 # Legal-Review-Notice: the CLI itself is MIT. The published cli.js is a bundle
@@ -41,9 +41,9 @@ Summary:        Picsart AI CLI for generating images, video and audio
 License:        MIT AND ISC AND Apache-2.0 AND BlueOak-1.0.0
 URL:            https://github.com/PicsArt/gen-ai-cli
 Source0:        https://registry.npmjs.org/%{npm_scope}/%{npm_name}/-/%{npm_name}-%{version}.tgz
-# The npm artifact ships no licence file; this is upstream's LICENSE, taken
-# from the git tag the release was built from.
-Source2:        https://raw.githubusercontent.com/PicsArt/gen-ai-cli/v%{version}/LICENSE
+# The npm artifact ships no licence file. 2.78.0 has no git tag (newest is
+# v2.77.0), so this is LICENSE from that tag — a v%%{version} URL 404s.
+Source2:        https://raw.githubusercontent.com/PicsArt/gen-ai-cli/v2.77.0/LICENSE
 # The upstream git tree cannot be built downstream: its tsup config inlines
 # @pulse/core and @pulse/server, which live in a private registry and are not
 # publishable to npm, so only the published bundle is buildable. Its runtime

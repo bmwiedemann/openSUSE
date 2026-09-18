@@ -26,15 +26,14 @@ Release:        0
 Summary:        Threaded poller for Cacti written in C
 License:        LGPL-2.1-or-later
 URL:            https://www.cacti.net/spine_info.php
-Group:          System/Monitoring
 Source:         https://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-# https://github.com/Cacti/spine/issues/368
-#Patch0:          cacti-spine-gcc15.patch
 BuildRequires:  help2man
 BuildRequires:  libtool
 BuildRequires:  mysql-devel
 BuildRequires:  net-snmp-devel
 BuildRequires:  openssl-devel
+BuildRequires:  pkgconfig(libcap)
+Requires(post): permissions
 Requires:       cacti >= %{base_version}
 Requires:       cacti < %{next_base_version}
 Requires:       rrdtool
@@ -48,17 +47,25 @@ excellent performance.
 
 %build
 ./bootstrap
-%configure
+%configure \
+	--enable-lcap \
+	%nil
 %make_build
 
 %install
 %make_install
 
+%post
+%set_permissions %{_bindir}/spine
+
+%verifyscript
+%verify_permissions -e %{_bindir}/spine
+
 %files
 %license LICENSE
-%doc CHANGELOG README.md
+%doc CHANGELOG
 %config %{_sysconfdir}/spine.conf.dist
-%{_bindir}/spine
+%verify(not mode caps) %{_bindir}/spine
 %{_mandir}/man1/spine*
 
 %changelog

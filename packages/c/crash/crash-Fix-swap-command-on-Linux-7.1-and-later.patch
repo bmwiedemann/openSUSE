@@ -1,0 +1,55 @@
+From: Kazuhito Hagio <k-hagio-ab@nec.com>
+Date: Wed, 3 Jun 2026 07:12:58 +0000
+Subject: Fix "swap" command on Linux 7.1 and later
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: fdb94ed20ac85e8354224b0d691af342f4b63922
+Patch-mainline: yes
+
+Kernel commit 0d6af9bcf383 ("mm, swap: use the swap table to track the
+swap count"), which is contained in Linux 7.1 and later kernels, removed
+swap_info_struct.swap_map member.
+
+As a result, the "swap" command and "kmem -i" option fail with the
+following error:
+
+  swap: invalid structure member offset: swap_info_struct_swap_map
+        FILE: memory.c  LINE: 16293  FUNCTION: dump_swap_info()
+
+Fix it by referencing swap_info_struct.swap_map only for SWAPINFO_V1,
+where it is actually needed.  Newer kernels no longer have that member,
+and the command can use the existing inuse_pages handling instead.
+
+Signed-off-by: Kazuhito Hagio <k-hagio-ab@nec.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ memory.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/memory.c b/memory.c
+index 15946c58eaf2..3f3aa274ab5a 100644
+--- a/memory.c
++++ b/memory.c
+@@ -16290,9 +16290,6 @@ dump_swap_info(ulong swapflags, ulong *totalswap_pages, ulong *totalused_pages)
+ 					OFFSET(swap_info_struct_inuse_pages));
+ 		}
+ 
+-		swap_map = ULONG(vt->swap_info_struct +
+-			OFFSET(swap_info_struct_swap_map));
+-
+ 		if (swap_file) {
+ 			if (VALID_MEMBER(swap_info_struct_swap_vfsmnt)) {
+                 		vfsmnt = ULONG(vt->swap_info_struct +
+@@ -16322,6 +16319,9 @@ dump_swap_info(ulong swapflags, ulong *totalswap_pages, ulong *totalused_pages)
+ 		if (vt->flags & SWAPINFO_V1) {
+ 			smap = (ushort *)GETBUF(sizeof(ushort) * max);
+ 
++			swap_map = ULONG(vt->swap_info_struct +
++				OFFSET(swap_info_struct_swap_map));
++
+ 			if (!readmem(swap_map, KVADDR, smap, 
+ 			    sizeof(ushort) * max, "swap_info swap_map data",
+ 			    RETURN_ON_ERROR|QUIET)) {
+-- 
+2.55.0
+

@@ -203,4 +203,30 @@ tarball is gen-ai-2.75.0.tgz (Source0).</comment>
   71 vendored packages still holds</comment>
     <requestid>1376282</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>668037489a86cb4b5fafcb8f923c0a10</srcmd5>
+    <version>2.78.0</version>
+    <time>1789761893</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.78.0:
+  * Keep a credentials file per API host: production stays
+    credentials.json, and any other GEN_AI_API_URL gets
+    credentials.&lt;api-host&gt;.json so a stage login no longer
+    evicts production
+  * Warn (and fail non-interactively) when stored credentials
+    were issued for a different API host than the command
+    currently targets
+- Update to version 2.77.0:
+  * Accept --flag true|false and --flag=true|false on boolean
+    flags, rewriting them to oclif's --flag / --no-flag so
+    --generate-audio false no longer dies as an unexpected
+    argument
+- Pin Source2 LICENSE to the v2.77.0 git tag: 2.78.0 has no
+  matching tag and the npm tarball still ships no licence file
+- Re-vendor: six @inquirer/* tarballs and brace-expansion move up
+  one patch each, get-east-asian-width 1.6.0 -&gt; 1.7.0; nothing was
+  added or removed, and the licence set of the 71 vendored packages
+  still holds</comment>
+    <requestid>1378676</requestid>
+  </revision>
 </revisionlist>

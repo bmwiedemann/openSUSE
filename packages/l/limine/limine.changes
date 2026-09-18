@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 11 09:44:43 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.9.0:
+  * Read the ISO 9660 volume identifier as a filesystem label, so
+    `fslabel()` can name whole-disk volumes such as optical media.
+  * Match filesystem labels case insensitively.
+  * Many miscellaneous bug fixes
+
+-------------------------------------------------------------------
 Tue Sep  1 20:08:11 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.7.0:

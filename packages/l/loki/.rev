@@ -1078,4 +1078,31 @@ update to 3.7.6</comment>
 - Update to version 3.7.7:</comment>
     <requestid>1375238</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>8da73b82036954794704f67d42e2af7f</srcmd5>
+    <version>3.7.8</version>
+    <time>1789761930</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1378653 from darix
+
+- Update to version 3.7.8:
+  * build: Bump go version to 1.26.6 (#24582)
+  * docs: Update Helm Charts docs [release-3.7.x] (#24503)
+  * docs: Check the deploy meta-monitoring topic for accuracy 🤖🤖🤖 [release-3.7.x] (#24474)
+  * docs: Check compactor scaling topic for accuracy 🤖🤖🤖 [release-3.7.x] (#24473)
+  * docs: Check meta-monitoring metrics topic for accuracy 🤖🤖🤖  [release-3.7.x] (#24472)
+  * docs: Backport 24300 (#24426)
+  * fix(security/MEDIUM/): Update module github.com/containerd/containerd/v2 to v2.2.8 [SECURITY] (release-3.7.x) (#24460)
+  * docs: Fix /config mode value from diffs to diff [release-3.7.x] (#24450)
+  * docs: Release Notes 3.6.16  [release-3.7.x] (#24447)
+  * docs: Release Notes 3.7.7  [release-3.7.x] (#24445)
+  * fix(security/HIGH/pkg/push): Update module google.golang.org/grpc to v1.83.2 [SECURITY] (release-3.7.x) (#24433)
+  * fix(security/UNKNOWN/pkg/push): Update module golang.org/x/net to v0.56.0 [SECURITY] (release-3.7.x) (#23422)
+  * fix(security/UNKNOWN/pkg/push): Update module google.golang.org/grpc to v1.83.1 [SECURITY] (release-3.7.x) (#23416)
+  * fix(security/HIGH/): Update module google.golang.org/grpc to v1.83.2 [SECURITY] (release-3.7.x) (#24429)
+  * fix(security/UNKNOWN/): Update module golang.org/x/crypto to v0.56.0 [SECURITY] (release-3.7.x) (#24335)
+  * fix(security/HIGH/): Update module google.golang.org/grpc to v1.83.1 [SECURITY] (release-3.7.x) (#24328)
+  * chore(release-3.7.x): Release 3.7.7 (#24098)</comment>
+    <requestid>1378681</requestid>
+  </revision>
 </revisionlist>

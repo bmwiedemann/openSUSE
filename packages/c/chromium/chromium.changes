@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Sep 18 04:03:43 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 153.0.8010.52 (boo#1281123):
+  * CVE-2026-93374: Use after free in Dawn
+  * CVE-2026-93372: Buffer overflow in WebGL
+  * CVE-2026-93375: Incorrect reference resolution in Tracing
+  * CVE-2026-93382: Use after free in PDFium
+  * CVE-2026-93387: Improper state validation in Skia
+  * CVE-2026-93373: Use after free in Extensions
+  * CVE-2026-93381: Buffer overflow in PDFium
+  * CVE-2026-93379: Incorrect authorization in ORB
+  * CVE-2026-93377: Type confusion in V8
+  * CVE-2026-93380: Race condition in FileSystem
+  * CVE-2026-93384: Server-side request forgery in Omnibox
+  * CVE-2026-93383: Information leak in Permissions
+  * CVE-2026-93376: Out of bounds read in DataTransfer
+  * CVE-2026-93378: Missing authorization in Storage
+  * CVE-2026-93385: Information leak in Paint
+  * CVE-2026-93386: UI misrepresentation in WebAppInstalls
+
+-------------------------------------------------------------------
 Wed Sep 16 02:53:44 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 153.0.8010.47 (boo#1280687):

@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Sep  9 16:49:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.29.0 (needs python-torch 2.14, not yet in the tree):
+  * ABI-stable against torch 2.14: upstream states torchvision
+    0.29 stays compatible with future torch releases
+  * Deprecate the torchvision.io image decoders and encoders,
+    moved to TorchCodec >= 0.16 (removal in a future release)
+  * Fix deformable convolution kernels always running on the
+    default stream; gradient overaccumulation in ROI ops on MPS;
+    JPEG transform on non-contiguous batches
+- Require python-torch >= 2.14 and < 2.15 for build and runtime
+  (upstream PyPI metadata pins torch == 2.14.0)
+
+-------------------------------------------------------------------
+Sun Aug 30 10:34:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.28.0 (built against python-torch 2.13.0):
+  * Quantized nms/roi_align moved off torch's deprecated
+    quantized dtypes onto new torchvision::qnms /
+    torchvision::qroi_align ops dispatched from Python:
+    torch.ops.torchvision.nms() no longer takes quantized
+    tensors, and the quantized paths no longer script
+  * v2 geometry and auto-augment transforms accept interpolation
+    as a string and now default to the equivalent strings rather
+    than InterpolationMode members
+  * Fix F.resize on tv_tensors.Mask ignoring its interpolation
+    argument, silently downgrading NEAREST_EXACT to NEAREST
+  * wrap() keeps metadata for custom TVTensor subclasses
+- Drop fix-gif-decoder-oob.patch: merged upstream in 0.28.0,
+  already shipped here as a backport in 0.27.0
+- Require python-torch >= 2.13.0 and < 2.14 for build and runtime:
+  rpm sees only unversioned libtorch_cpu.so()/libc10.so(), and
+  libtorch's C++ ABI moves at torch minor boundaries in practice
+
+-------------------------------------------------------------------
 Fri Aug 21 08:56:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.27.0 (matches Factory python-torch 2.12.0):

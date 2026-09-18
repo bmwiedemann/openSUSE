@@ -16,9 +16,19 @@
 #
 
 
+# rpm sees only unversioned libtorch_cpu.so()/libc10.so(), so nothing catches a
+# mismatched torch. libtorch's C++ ABI moves at torch minor boundaries in
+# practice (upstream guarantees none) - the granularity upstream's README matrix
+# pairs at - hence a range, not "=": a torch patch release stays installable,
+# 2.14 does not. Upstream ships PYTORCH_VERSION_GE/_LT for exactly this
+# third-party case. Not expressible in Requires-Dist: our python-torch's wheel
+# version is a pre-release string (e.g. 2.13.0a0+gitunknown), so a PEP 440
+# pin there is unsatisfiable.
+%define torch_ver_ge 2.14.0
+%define torch_ver_lt 2.15
 %{?sle15_python_module_pythons}
 Name:           python-torchvision
-Version:        0.27.0
+Version:        0.29.0
 Release:        0
 Summary:        Image datasets, models and transforms for PyTorch
 # Legal-Review-Notice: ships a bundled giflib 5.2.2 (MIT) under
@@ -26,17 +36,16 @@ Summary:        Image datasets, models and transforms for PyTorch
 License:        BSD-3-Clause AND MIT
 URL:            https://github.com/pytorch/vision
 Source0:        https://github.com/pytorch/vision/archive/refs/tags/v%{version}.tar.gz#/torchvision-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-gif-decoder-oob.patch gh#pytorch/vision#9520
-# Backport of 4e05dc22f5 (0.28): GIF decoder heap OOB read/write. GHSA-vp9x-48wq-4wc3.
-Patch0:         fix-gif-decoder-oob.patch
 BuildRequires:  %{python_module Pillow >= 5.3.0}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module torch-devel}
-BuildRequires:  %{python_module torch}
+BuildRequires:  %{python_module torch < %{torch_ver_lt}}
+BuildRequires:  %{python_module torch >= %{torch_ver_ge}}
+BuildRequires:  %{python_module torch-devel < %{torch_ver_lt}}
+BuildRequires:  %{python_module torch-devel >= %{torch_ver_ge}}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  gcc
@@ -51,7 +60,8 @@ BuildRequires:  pkgconfig(libwebp)
 # setuptools wheel; declare them by hand.
 Requires:       python-Pillow
 Requires:       python-numpy
-Requires:       python-torch
+Requires:       python-torch < %{torch_ver_lt}
+Requires:       python-torch >= %{torch_ver_ge}
 # Match Factory python-torch (ExcludeArch: %%ix86 %%{arm})
 ExcludeArch:    %{ix86} %{arm}
 %python_subpackages

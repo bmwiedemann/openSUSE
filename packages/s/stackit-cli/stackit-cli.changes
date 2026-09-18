@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:30:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.73.0:
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/cdn (#1600)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/edge (#1599)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/vpn (#1598)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/valkey (#1597)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1596)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/loadbalancer
+    (#1595)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/git (#1594)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1593)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/kms (#1592)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sfs (#1591)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand
+    (#1584)
+  * chore(deps): bump k8s.io/client-go from 0.36.4 to 0.37.0
+    (#1585)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/valkey (#1582)
+  * chore(deps): bump golang.org/x/mod from 0.39.0 to 0.40.0
+    (#1581)
+  * docs(ske): fix table layout of ske kubeconfig login command
+    (#1589)
+  * feat(ske): support stateless WIF kubeconfig login (#1477)
+  * feat(redis): deprecate Redis service (#1562)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/postgresflex
+    from 1.12.0 to 1.13.0 (#1575)
+  * feat(albwaf): onboard albwaf config (#1563)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#1579)
+  * chore(deps): bump k8s.io/client-go from 0.36.3 to 0.36.4
+    (#1577)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/rabbitmq
+    (#1576)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/albwaf (#1573)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/runcommand
+    (#1572)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.8.2 to
+    6.8.3 (#1571)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/redis (#1570)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceaccount
+    (#1569)
+  * feat(valkey): onboard valkey (#1530)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1568)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1567)
+  * chore(deps): bump k8s.io/client-go from 0.36.2 to 0.36.3
+    (#1566)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#1565)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/kms from 1.11.0
+    to 1.13.0 (#1557)
+
+-------------------------------------------------------------------
 Fri Aug 28 07:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.72.0:

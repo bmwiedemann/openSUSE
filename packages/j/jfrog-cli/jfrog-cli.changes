@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:08:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.124.0:
+  *  No changes
+- Update to version 2.123.0:
+  * New Features
+    - [build-info-go] Rteco 1539 cargo implementation phase 1 #399
+    - [build-info-go] RTECO-1574 - Implementation of NuGet FlexPack
+      support #415
+    - [jfrog-cli] Rteco 1539 cargo implementation phase 1 #3608
+    - [jfrog-cli] RTECO-1986 - Add e2e tests for --path auto-create
+      #3680
+    - [jfrog-cli-artifactory] Add --priority for RBv2 distribute
+      and remote-delete #534
+    - [jfrog-cli-artifactory] Rteco 1539 cargo implementation phase
+      1 #510
+    - [jfrog-cli-artifactory] RTECO-1648 - Implement jf agent apm
+      command #518
+    - [jfrog-cli-artifactory] XRAY-145659 - Add opt-in Zero Touch
+      Remediation for npm install #544
+    - [jfrog-cli-artifactory] RTECO-1574 - Implementation of Nuget
+      Support for client - #532
+    - [jfrog-cli-core] Add priority field to distribution rules
+      #1612
+    - [jfrog-cli-core] add cargo as const in project config #1583
+    - [jfrog-cli-core] RTECO-1648 - Add Apm project type #1593
+    - [jfrog-cli-security] Services (Missconfiguration) scan for
+      source code #815
+    - [jfrog-client-go] Add RBv2 distribute and remote-delete
+      priority support #1379
+    - [jfrog-client-go] Xray component resolution #1355
+    - [jfrog-client-go] RTDEV-97165 - Add limit/cursor params to
+      ListVersions #1381
+  * Bug Fixes
+    - [jfrog-cli] Bugfix/jgc 540 fail api docs on stub #3694
+    - [jfrog-cli-artifactory] Fix misleading security scan status
+      message in jf skills publish #541
+    - [jfrog-cli-artifactory] RTDEV-97165 - Add limit and
+      pagination support in skills ListVersion function #538
+    - [jfrog-cli-core] Resolve AI client from host app and tighten
+      session detectors #1613
+  * Internal Changes
+    - [jfrog-cli] RTECO-2020 - Improve agent plugins tests #3686
+    - [jfrog-cli] Bump version to 2.123.0 #3696
+    - [jfrog-cli-security] Bump default Xray-Lib plugin version to
+      1.5.0 #862
+  * Other Changes
+    - [jfrog-cli] Retry GetBuildInfo to absorb Artifactory index
+      propagation lag #3682
+    - [jfrog-cli] RTECO - 1649 apm e2e tests final #3665
+    - [jfrog-cli] RTECO-1574 - Implementation of Nuget Support for
+      client - #3664
+    - [jfrog-cli-artifactory] RTECO-1986 - Create missing --path
+      dir instead of erroring #537
+    - [jfrog-cli-core] Expend Xray Manager creation #1575
+
+-------------------------------------------------------------------
 Fri Aug 28 07:54:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.122.0:

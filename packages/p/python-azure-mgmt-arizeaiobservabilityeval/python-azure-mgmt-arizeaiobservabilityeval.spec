@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-arizeaiobservabilityeval
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Microsoft Azure Arizeaiobservabilityeval Management Client Library for Python
 License:        MIT

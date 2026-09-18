@@ -68,4 +68,12 @@
   0002-Fix-build-with-glibc-2.43.patch</comment>
     <requestid>1337893</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>df857e1b1668ad902cf774a667bf07ad</srcmd5>
+    <version>0.9.3.1</version>
+    <time>1789762065</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378778</requestid>
+  </revision>
 </revisionlist>

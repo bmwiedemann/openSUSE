@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:41:39 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260911.6454091f:
+  * staging_accept: update Factory version in devel:ARM:Factory:ARMv9 on accept
+  * staging_accept: update Factory version in LegacyARM port on accept
+
+-------------------------------------------------------------------
+Thu Sep 10 14:29:29 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260910.2da304ae:
+  * dashboard: Add LegacyARM and ARMv9
+
+-------------------------------------------------------------------
+Thu Sep 10 09:11:24 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260910.71fb706c:
+  * gocd: Add configuration for openSUSE:Factory:LegacyARM
+
+-------------------------------------------------------------------
+Fri Sep 04 12:08:10 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260904.0a94d671:
+  * container_cleaner.py: Always log packages being deleted
+
+-------------------------------------------------------------------
+Fri Sep 04 09:39:46 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260904.a50a34d6:
+  * container_cleaner.py: Handle multibuild flavors separately
+
+-------------------------------------------------------------------
+Wed Sep 02 09:33:57 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260902.9b3f47fc:
+  * check_source.py: Do not skip unchanged URLs
+
+-------------------------------------------------------------------
+Tue Sep 01 14:27:25 UTC 2026 - opensuse-releaseteam@opensuse.org
+
+- Update to version 20260901.eb52bd92:
+  * gocd: Enable productcompose pkglist-generation for Staging
+
+-------------------------------------------------------------------
 Mon Aug 24 10:59:52 UTC 2026 - opensuse-releaseteam@opensuse.org
 
 - Update to version 20260824.b49927f7:

@@ -1,0 +1,74 @@
+From: Tao Liu <ltao@redhat.com>
+Date: Tue, 4 Aug 2026 15:20:33 +1200
+Subject: x86_64: Make ORC_REG_SP and ORC_REG_PREV_SP independent from kernel
+ version
+References: kernel 7.1
+Git-repo: https://github.com/crash-utility/crash
+Git-commit: bfce25840cffabf0574825e796b0284ed36276bb
+Patch-mainline: yes
+
+Previously ORC_REG_SP and ORC_REG_PREV_SP will depend on kernel version
+for their value, however this is fragile since distributions will
+backport the upstream patch to a lower kernel version, thus break the
+version assumption.
+
+This patch fixes by checking the value of ORC_REG_PREV_SP, which can be
+get from orc_fp_entry. ORC_REG_PREV_SP's value can work as the indicator
+of whether the current kernel have applied the upstream patch 1735858caa4b
+("objtool/x86: Reorder ORC register numbering").
+
+Fixes: d0ee428664f9 ("x86_64: Fix "bt" command to use correct ORC register
+	values on Linux 7.1 and later")
+
+Reviewed-by: HAGIO KAZUHITO <k-hagio-ab@nec.com>
+Reviewed-by: MUKESH KUMAR PILANIYA <mpilaniy@redhat.com>
+Reviewed-by: Dave Young <yangrr.2009@tsinghua.org.cn>
+Signed-off-by: Tao Liu <ltao@redhat.com>
+Signed-off-by: Jiri Slaby <jirislaby@gmail.com>
+---
+ x86_64.c | 29 ++++++++++++++++++++++-------
+ 1 file changed, 22 insertions(+), 7 deletions(-)
+
+diff --git a/x86_64.c b/x86_64.c
+index 55648697baf3..62b27762a41f 100644
+--- a/x86_64.c
++++ b/x86_64.c
+@@ -6736,13 +6736,28 @@ x86_64_ORC_init(void)
+ 	if (orc->has_signal && !orc->has_end)
+ 		machdep->flags |= ORC_6_4;
+ 
+-	/* See kernel commit 1735858caa4b */
+-	if (THIS_KERNEL_VERSION >= LINUX(7,1,0)) {
+-		ORC_REG_SP = 3;
+-		ORC_REG_PREV_SP = 8;
+-	} else {
+-		ORC_REG_SP = 5;
+-		ORC_REG_PREV_SP = 1;
++	/* Try get ORC_REG_(PREV)_SP */
++	ORC_REG_SP = 5;
++	ORC_REG_PREV_SP = 1;
++
++	if (kernel_symbol_exists("orc_fp_entry")) {
++		/*
++		 * kernel_orc_entry_6_4 & kernel_orc_entry have the same
++		 * offset of bp_reg.
++		 */
++		kernel_orc_entry_6_4 entry = {0};
++		if (try_get_symbol_data("orc_fp_entry", sizeof(entry), &entry)) {
++			/*
++			 * orc_fp_entry.bp_reg = ORC_REG_PREV_SP
++			 * See kernel commit 1735858caa4b. Use ORC_REG_PREV_SP
++			 * as the indicator of the commit.
++			 */
++			if (entry.bp_reg == 8) {
++				ORC_REG_SP = 3;
++				ORC_REG_PREV_SP = 8;
++			}
++		} else
++			error(WARNING, "Cannot get orc_fp_entry.bp_reg info");
+ 	}
+ 
+ 	machdep->flags |= ORC;
+-- 
+2.55.0
+

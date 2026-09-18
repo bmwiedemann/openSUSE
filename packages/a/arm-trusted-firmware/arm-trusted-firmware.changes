@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 14 08:05:59 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Update to 2.12.15:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.15/docs/change-log.md
+- Skipped:
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.14/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.13/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.12/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.11/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.10/docs/change-log.md
+  * Changelog: https://git.trustedfirmware.org/TF-A/trusted-firmware-a.git/+/refs/tags/lts-v2.12.9/docs/change-log.md
+- Disable a80x0_mcbin as it fails to build
+
+-------------------------------------------------------------------
 Mon Jul 27 16:00:43 UTC 2026 - Matwey Kornilov <matwey.kornilov@gmail.com>
 
 - Add open source rk3568 arm-trusted-firmware

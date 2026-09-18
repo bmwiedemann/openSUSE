@@ -1,0 +1,7 @@
+<package name="ocaml-decompress" project="openSUSE:Factory">
+  <title>Implementation of Zlib and GZip</title>
+  <description>Decompress is an implementation of Zlib and GZip.
+
+It provides a pure non-blocking interface to inflate and deflate data flow.</description>
+  <url>https://opam.ocaml.org/packages/decompress/</url>
+</package>

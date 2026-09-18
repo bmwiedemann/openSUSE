@@ -1,0 +1,5 @@
+<package name="ocaml-checkseum" project="openSUSE:Factory">
+  <title>Adler-32, CRC32 and CRC32-C implementation</title>
+  <description>Checkseum is a library to provide implementation of Adler-32, CRC32 and CRC32-C.</description>
+  <url>https://opam.ocaml.org/packages/checkseum/</url>
+</package>

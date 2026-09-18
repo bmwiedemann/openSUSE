@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:37:51 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
+
+- Update to version 0.27.0
+- Breaking changes:
+  * Remove deprecated UWSM_NO_TWEAKS
+- Features:
+  * Editable export/cleanup lists
+  * Add UWSM_DEBUG variable to control debug
+- Fixes:
+  * Drop timeout constant, make raise traceable
+  * Remove error flag in exception in app-daemon
+  * Pre-check shell syntax before sourcing env scripts,
+    discard a set of extensions
+  * Recover app-daemon when client dies mid-handshake
+  * Reap pipekiller before exec/exit in uwsm-app
+  * Print Varnames set modification delta
+  * Cancel PIPE trap when triggered in uwsm-app
+
+-------------------------------------------------------------------
 Mon Aug 24 01:23:10 UTC 2026 - Alexey Kolos <lioli7k@gmail.com>
 
 - Update to version 0.26.7:

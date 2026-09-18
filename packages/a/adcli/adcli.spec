@@ -39,7 +39,9 @@ Source1:        https://gitlab.freedesktop.org/-/project/1196/uploads/%{sighash}
 Source3:        %{name}.keyring
 Patch1:         0001-enroll-fix-issues-if-default-keytab-is-used.patch
 Patch2:         0002-Fix-build-with-glibc-2.43.patch
+Patch3:         0003-Add-UsrEtc-support.patch
 BuildRequires:  automake
+BuildRequires:  libtool
 BuildRequires:  libxslt-tools
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
@@ -85,13 +87,15 @@ This package contains the documentation for adcli.
 %autosetup -p1
 
 %build
+autoreconf -fiv
 %configure \
 %if %{without selinux}
 	--disable-selinux-support \
 %endif
 	--disable-static \
 	--disable-silent-rules \
-	--enable-strict
+	--enable-strict \
+	--with-vendordir=/usr/etc
 %make_build
 
 %install

@@ -21,7 +21,7 @@
 %endif
 
 Name:           lyx
-Version:        2.5.2
+Version:        2.5.3
 Release:        0
 Summary:        WYSIWYM (What You See Is What You Mean) document processor
 License:        GPL-2.0-or-later

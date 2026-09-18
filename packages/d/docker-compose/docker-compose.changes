@@ -1,4 +1,106 @@
 -------------------------------------------------------------------
+Fri Sep 18 04:46:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.5.1:
+  * Improvements
+    - Feat(hooks): capture and surface lifecycle hook output in
+      #14091
+    - Feat(tracing): surface otel shutdown errors via --debug in
+      #14152
+  * Fixes
+    - Fix(events): validate service names before subscribing to
+      events in #14076
+    - Fix: bake target names collision for services differing by .
+      vs _ in #14058
+    - Fix(watch): sync into a symlinked directory instead of
+      failing in #14084
+    - Fix(hooks): include hook output in the error when a hook
+      fails in #14088
+    - Fix(build): TTY progress on Windows — hand the real stdout to
+      buildkit in #14090
+    - Fix(watch): sync all files on initial_sync, regardless of
+      mtime in #14096
+    - Fix(network): pass IPAM options when creating networks in
+      #14094
+    - Fix(ps): honor psFormat from Docker CLI config when no
+      --format flag given in #14095
+    - Fix: dependency wait timeout surfaced only by luck in #14105
+    - Fix: hold startMx on the start path actually exercised in
+      #14106
+    - Fix(watch): exclude Dockerfile and compose files from initial
+      sync in #14117
+    - Fix(display): stop ttyWriter.Done from hanging after context
+      cancel in #14119
+    - Fix(build): honor provenance/sbom false in per-service bake
+      attest in #14112
+    - Fix(compose): reject unknown subcommands under
+      bridge/transformations in #14143
+    - Fix(plugins): honor PATHEXT for provider lookup on Windows in
+      #14159
+    - Fix(watch): stop swallowing SetRecursive errors via nolint in
+      #14165
+    - Fix(bridge): confirm before wiping non-empty convert output
+      dir in #14174
+    - Fix(down): spare dangling images of orphaned services, like
+      their tagged image in #14154
+  * Internal
+    - CI: raise e2e go-test timeout to 20m in #14072
+    - Lint: replace gocyclo with gocognit in #14057
+    - Test(e2e): prepend provider bin dir to PATH in provider tests
+      in #14079
+    - Refactor: dismantle the gocognit hotspots, one concern per
+      function in #14060
+    - Test(e2e): declarative Scenario layer, project files under
+      testdata// in #14087
+    - Docs: document engine container event sequences in up monitor
+      in #14024
+    - E2E: fix test resource isolation and make standalone
+      parallelism configurable in #14073
+    - API: ScaleOptions carries the replica counts in #14077
+    - Chore: explicit, unique, greppable internal names in #14049
+    - Docs: update CONTRIBUTING.md to reflect current tooling and
+      practices in #14098
+    - API: option structs document what the implementation actually
+      honors in #14078
+    - Test: unit-lock the imperative start path in #14104
+    - CLI: display.Mode always resolves to the mode actually
+      rendered in #14103
+    - CI: validate generated mocks are in sync in #14102
+    - Docs(sdk): document the EventProcessor API that actually
+      exists in #14131
+    - Test(e2e): gate the e2e suite behind the build tag the docs
+      already promise in #14132
+    - Build: error messages name the real remedy, not a removed
+      builder in #14133
+    - Docs(contributing): legibility guidelines — comments state
+      behavior, not history in #14135
+    - Test(docs): compile the sdk.md examples in #14136
+    - Chore(compose): rename convergence.go, whose convergence
+      engine no longer exists in #14129
+    - Chore(compose): comments state behavior, not history in
+      #14130
+    - Test(build): re-enable wrong ssh key id test in #14120
+    - Chore(compose): orphan semantics stated where up and down
+      diverge in #14142
+    - Refactor: NewGraph stops mutating the project in #14124
+    - Test(e2e): bump compose-bridge images to v0.0.7 in #14170
+  * Dependencies
+    - Remove buildx as a Go dependency in #14123
+    - Chore(deps): github.com/sirupsen/logrus v1.10.2,
+      google.golang.org/grpc v1.83.2 in #14137
+    - Build: bump golangci-lint to v2.13.2 in #14164
+    - Update to go1.26.8 in #14172
+    - Feat(deps): github.com/moby/buildkit v0.33.0 in #14171
+    - Build(deps): golang.org/x/crypto v0.56.0 in #14173
+    - Bump compose-go to version v2.15.0 in #14178
+    - build(deps): github.com/gofrs/flock v0.13.1
+    - build(deps): go.opentelemetry.io/otel v1.46.0, contrib
+      v0.71.0
+    - build(deps): bump github/codeql-action/upload-sarif
+    - fix(deps): google.golang.org/grpc v1.83.2
+    - chore(deps): github.com/sirupsen/logrus v1.10.2
+
+-------------------------------------------------------------------
 Fri Aug 28 06:17:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.5.0:

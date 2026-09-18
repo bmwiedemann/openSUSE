@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 17 19:21:22 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.12.3:
+  * fix: tolerate missing thumbnails in all parsers
+  * fix(parsers): tolerate playlist headers without secondSubtitle
+  * Parse isAvailable for song/video search results
+  * fix: resolve flaky search, explore, and podcast tests
+  * Handle untimed mobile lyrics payloads
+  * fix(browsing): skip unavailable homepage cards
+  * fix(search): mark unavailable episode search results with isAvailable
+
+-------------------------------------------------------------------
 Mon Aug 10 06:34:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.12.2

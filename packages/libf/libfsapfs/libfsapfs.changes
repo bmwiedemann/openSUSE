@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:49:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260917
+  * Recognize LZFSE and RAW compression
+  * Recognize key bag values
+
+-------------------------------------------------------------------
 Sun May  4 08:00:46 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)

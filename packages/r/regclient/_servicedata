@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/regclient/regclient</param>
-              <param name="changesrevision">2bc542b4a19d6e4fd939be150f1443da2395690c</param></service></servicedata>
+              <param name="changesrevision">2bc542b4a19d6e4fd939be150f1443da2395690c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/regclient/regclient.git</param>
+              <param name="changesrevision">c2f83e99bd90e92e40d08307acf13138321a4a30</param></service></servicedata>

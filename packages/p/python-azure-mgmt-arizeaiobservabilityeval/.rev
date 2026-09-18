@@ -15,4 +15,15 @@
     <comment>yet another Azure SDK package</comment>
     <requestid>1290664</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>964803864f76292ffc22cd37a354ec7b</srcmd5>
+    <version>1.0.2</version>
+    <time>1789761881</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.2
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1378747 from glaubitz)</comment>
+    <requestid>1378800</requestid>
+  </revision>
 </revisionlist>

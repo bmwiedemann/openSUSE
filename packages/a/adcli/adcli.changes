@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:41:51 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Add UsrEtc support; (bsc#1279849); Add patch
+  0003-Add-UsrEtc-support.patch
+
+-------------------------------------------------------------------
 Tue Feb 24 12:25:23 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Split selinux policy to its own package

@@ -154,12 +154,8 @@
 %bcond_without bootstrap
 %bcond_with zero
 # Turn on/off some features depending on openSUSE version
-%if 0%{?suse_version} >= 1130
 %if ! %{with zero}
 %global with_systemtap 1
-%else
-%global with_systemtap 0
-%endif
 %else
 %global with_systemtap 0
 %endif
@@ -305,27 +301,14 @@ BuildRequires:  krb5-devel
 %if %{with zero}
 BuildRequires:  libffi-devel
 %endif
-%if 0%{?suse_version} <= 1130
-BuildRequires:  xorg-x11-devel
-%else
 BuildRequires:  libX11-devel
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libXi-devel
 BuildRequires:  libXinerama-devel
 BuildRequires:  libXt-devel
 BuildRequires:  libXtst-devel
-%endif
 # runtime certificates generation available in 11.3+ - bnc#596177
-%if 0%{?suse_version} >= 1130
 BuildRequires:  java-ca-certificates
-Requires(post): file
-Requires(post): java-ca-certificates
-%else
-BuildRequires:  openssl-certs
-# the certificates will converted in a prep to standard keystore file - cacerts
-# The openssl requirment seems to be necessary for build only.
-Requires:       openssl
-%endif
 %if %{with_systemtap}
 BuildRequires:  systemtap-sdt-devel
 %endif
@@ -350,6 +333,10 @@ Requires:       jpackage-utils
 # java.io.FileNotFoundException: /usr/lib64/libnss3.so
 #was bnc#634793
 Requires:       mozilla-nss
+%if 0%{?suse_version} >= 1130
+Requires(posttrans): file
+Requires(posttrans): java-ca-certificates
+%endif
 # Standard JPackage base provides.
 Provides:       java-%{javaver}-headless = %{version}-%{release}
 Provides:       java-headless = %{javaver}
@@ -425,9 +412,7 @@ Requires:       jpackage-utils
 # Standard JPackage javadoc provides.
 Provides:       java-%{javaver}-javadoc = %{version}-%{release}
 Provides:       java-javadoc = %{version}-%{release}
-%if 0%{?suse_version} >= 1120
 BuildArch:      noarch
-%endif
 %if %{without libalternatives}
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
@@ -477,12 +462,6 @@ export LANG=C
 export NUM_PROC=`%{_bindir}/getconf _NPROCESSORS_ONLN 2> /dev/null || :`
 export NUM_PROC=${NUM_PROC:-1}
 
-# handle zlib packages without pkg-config file
-%if 0%{?suse_version} <= 1130
-export ZLIB_CFLAGS=" "
-export ZLIB_LIBS="-L/%{_lib} -lz"
-%endif
-
 CFLAGS=$(rpm -E '%{optflags}' | sed 's/-Wall\>//')
 CFLAGS="$CFLAGS -Wno-error"
 CXXFLAGS=${CFLAGS}
@@ -510,7 +489,7 @@ sh autogen.sh
         --with-pkgversion="build %{javaver}_%{updatever}-b%{buildver} suse-0%{?suse_version}-%{_arch}" \
         --disable-nss \
         --enable-sysconf-nss \
-        --enable-non-nss-curves \
+        --with-curves=all \
 %if %{with bootstrap}
         --enable-bootstrap \
 %else
@@ -525,10 +504,6 @@ sh autogen.sh
 %if %{with zero}
         --enable-zero \
         --disable-jfr \
-%endif
-%if 0%{?suse_version} <= 1110
-        --disable-system-gio \
-        --disable-system-gconf \
 %endif
 %if %{with_system_lcms}
         --enable-system-lcms \
@@ -621,18 +596,6 @@ export JAVA_HOME=$(pwd)/%{buildoutputdir}images/j2sdk-image
 if [ -f %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts ]; then
         rm -f %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts
 fi
-
-%if 0%{?suse_version} < 1130
-# ========== a default keystore ==========
-# a cacerts generation - 11.3+ use java-ca-certificates package
-for PEM in %{_sysconfdir}/ssl/certs/*.pem; do
-    ALIAS=$(basename ${PEM} .pem)
-    awk '/-----BEGIN CERTIFICATE-----/,/-----END CERTIFICATE-----/{ print $0; }' ${PEM} > ${ALIAS}.pem
-
-    yes | $JAVA_HOME/jre/bin/keytool -import -alias ${ALIAS} -keystore %{buildoutputdir}images/j2sdk-image/jre/lib/security/cacerts -storepass 'changeit' -file ${ALIAS}.pem || :
-    rm ${ALIAS}.pem
-done
-%endif
 
 # Check debug symbols are present and can identify code
 SERVER_JVM="$JAVA_HOME/jre/lib/%{archinstall}/server/libjvm.so"
@@ -847,15 +810,6 @@ strip-nondeterminism --type zip --timestamp=${SOURCE_DATE_EPOCH:-1494270000} \
 %fdupes -s %{buildroot}/%{_jvmdir}/%{sdkdir}/demo
 %fdupes -s %{buildroot}%{_javadocdir}/%{sdklnk}
 
-%if 0%{?suse_version} <= 1130
-# bnc496378 - check the size of installed cacerts
-# 32 bytes means a default empty one
-if [[ $(stat -c "%%s" %{buildroot}/%{cacerts}) == "32" ]]; then
-    echo "ERROR: Default keystore seems empty"
-    exit 1
-fi
-%endif
-
 touch %{name}.files-headless
 touch %{name}.files-devel
 
@@ -965,7 +919,6 @@ then
 fi
 %endif
 
-%if 0%{?suse_version} >= 1130
 %posttrans headless
 # bnc#781690#c11: don't trust user defined JAVA_HOME and use the current VM
 # XXX: this might conflict between various versions of openjdk
@@ -973,7 +926,7 @@ export JAVA_HOME=%{_jvmdir}/%{jrelnk}
 
 # check if the java-cacerts is a valid keystore (bnc#781690)
 if [ X"`%{_bindir}/file --mime-type -b %{javacacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
 %if 0%{?suse_version} <= 1310
     # workaround for bnc#847952 - pre 13.1 keyring.jar attempts to load invalid keystore and fail on it
     rm -f "%{javacacerts}"
@@ -989,12 +942,11 @@ fi
 # if cacerts does exists, neither does not contain/point to a
 # valid keystore (bnc#781690) ...
 if [ X"`%{_bindir}/file --mime-type -b -L %{cacerts}`" \
-    != "Xapplication/x-java-keystore;" ]; then
+    != "Xapplication/x-java-keystore" ]; then
     # bnc#727223
     rm -f %{cacerts}
     ln -s %{javacacerts} %{cacerts}
 fi
-%endif
 
 %post devel
 ext=.gz
@@ -1219,9 +1171,7 @@ fi
 %{_jvmjardir}/%{jrelnk}
 %{_jvmprivdir}/*
 %{jvmjardir}
-%if 0%{?suse_version} <= 1130
-%config(noreplace) %{cacerts}
-%endif
+
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.policy
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/java.security
 %config(noreplace) %{_jvmdir}/%{jredir}/lib/security/blacklisted.certs

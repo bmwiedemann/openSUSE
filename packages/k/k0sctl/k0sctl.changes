@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:07:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.0:
+  * fix(files): stop re-downloading unchanged URL sources (#1165)
+  * smoke: wait for sshd before the first bare bootloose ssh
+    (#1171)
+  * ci: make the triage pick one category, and hang the re-run on
+    it (#1172)
+  * ci: scope the GITHUB_TOKEN in the workflows that never declared
+    one (#1170)
+  * ci: make the triage read the diff, and say less (#1169)
+  * ci: fix smoke triage first run findings (#1168)
+  * ci: add agentic triage for failed smoke runs (#1161)
+  * Add a smoke test step that captures the ubuntu26 uutils issue
+    (#1150)
+  * chore(deps): bump github.com/k0sproject/rig to v2.2.0 (#1160)
+  * chore(deps): bump go to v1.27.1 (#1159)
+  * build(deps): bump github.com/sirupsen/logrus from 1.10.1 to
+    1.10.2 (#1151)
+  * build(deps): bump k8s.io/client-go from 0.36.4 to 0.37.0
+    (#1154)
+  * ci: test against latest and previous bootloose images (#1149)
+  * build(deps): bump k8s.io/client-go from 0.36.3 to 0.36.4
+    (#1145)
+  * build(deps): bump k8s.io/apimachinery from 0.36.3 to 0.36.4
+    (#1144)
+  * build(deps): bump github.com/stretchr/testify from 1.12.0 to
+    1.12.1 (#1141)
+  * build(deps): bump github.com/sirupsen/logrus from 1.9.4 to
+    1.10.1 (#1146)
+  * fix: restart controllers one at a time when the config changes
+    (#1148)
+  * fix: read the existing k0s config with sudo (#1143)
+  * build(deps): bump golang.org/x/text from 0.40.0 to 0.41.0
+    (#1136)
+  * Use per hosts SANs for controllers in ConfigureK0S phase
+    (#1128)
+
+-------------------------------------------------------------------
 Wed Jul 29 05:07:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.32.2:
