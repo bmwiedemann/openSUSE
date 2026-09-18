@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 05:54:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.23.0:
+  * chore(deps): rustls 0.23.45 (RUSTSEC-2026-0285).
+  * feat: implement RFC 5837 ICMP interface and next-hop
+    identification.
+
+-------------------------------------------------------------------
 Tue Sep  1 12:37:04 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.22.0:
