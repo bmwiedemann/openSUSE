@@ -433,4 +433,38 @@
   	  wrapping the buffer pointer. Now checked as 0 or &gt; remaining length.</comment>
     <requestid>1376324</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>78bb6ba2390e5cd5941b665e877a6c33</srcmd5>
+    <version>4.520.0</version>
+    <time>1789761843</time>
+    <user>anag_factory</user>
+    <comment>- updated to 4.520.0 (4.52)
+   see /usr/share/doc/packages/perl-Cpanel-JSON-XS/Changes
+  4.52 2026-09-12 (rurban)
+  	- OSX 10.9 fix for SIMD UTF-8 (Christian Carey)
+  	- Change my maintainer email to reini.urban@gmail.com
+  4.51 2026-09-11 (rurban)
+  	- Add faster SIMD UTF-8 validation (GH #213, Zhang Boyang)
+  	  https://github.com/cyb70289/utf8, MIT.
+  	- Fix tests for yath (GH #255, with H.Merijn Brand): the test files now
+  	  work with Test2::Harness instead of only Test::Harness, and a yath
+  	  run is added to `make xtest` when yath is installed.
+  	- Skip one t/117_numbers.t test on Perls with 32-bit IVs (GH #254,
+  	  Jeremy Hansen).
+  4.50 2026-09-08 (rurban)
+  	- Add $json-&gt;encode_to($fh, $data, [$type]) to stream encoded JSON directly
+  	  to a filehandle instead of building the whole result in memory
+  	  (GH #250, requested by yairlenga. designed 2016 in GH #58).
+  	  Internally flushes a bounded 8k chunk buffer as it fills, keeping
+  	  peak memory bounded for large data structures.
+  	- Encoder performance improvements suggested in GH #237 (17dec):
+  	  * Large-integer encoding now uses a 100-digit lookup table instead of
+  	    snprintf, roughly 2x faster for integers outside the existing
+  	    branchless small-integer fast path (|value| &gt; 59000).
+  	  * encode_str now bulk-copies runs of consecutive bytes that need no
+  	    escaping instead of a need()+store per byte, notably faster for
+  	    strings with few or no characters to escape.
+            Added eg/bench_large.pl with results.</comment>
+    <requestid>1378662</requestid>
+  </revision>
 </revisionlist>
