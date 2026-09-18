@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 06:57:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.2
+  * Detect strerror_r return type at configure time.
+  * Ensure we only free the context when allocated.
+
+-------------------------------------------------------------------
 Wed Apr 15 17:38:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.3.1
