@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:47:24 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.78
+   see /usr/share/doc/packages/perl-Prima/Changes
+
+  1.78 2026-08-22
+   - render_underline produces better quality underlines
+     -- PodView uses smart underlines
+   - Image load_binary and save_binary operate on a scalar
+   - Hint logic delegated to perl for easier overloading
+   - Plot wavy lines with Prima::Drawable::Wave
+
+-------------------------------------------------------------------
 Tue Oct 14 12:22:22 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.77

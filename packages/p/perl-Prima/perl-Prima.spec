@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Prima
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,9 @@
 
 %define cpan_name Prima
 Name:           perl-Prima
-Version:        1.77000
+Version:        1.78000
 Release:        0
-%define cpan_version 1.77
+%define cpan_version 1.78
 #Upstream: SUSE-Public-Domain
 License:        AGPL-3.0-only AND BSD-2-Clause
 Summary:        Perl graphic toolkit
@@ -98,6 +98,7 @@ Provides:       perl(Prima::Drawable::Pod)
 Provides:       perl(Prima::Drawable::PolyTextBlock)
 Provides:       perl(Prima::Drawable::Subcanvas)
 Provides:       perl(Prima::Drawable::TextBlock)
+Provides:       perl(Prima::Drawable::Wave)
 Provides:       perl(Prima::DriveComboBox)
 Provides:       perl(Prima::DriveComboBox::InputLine)
 Provides:       perl(Prima::Edit)

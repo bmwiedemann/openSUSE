@@ -460,4 +460,19 @@
    - add examples/emoji.pl</comment>
     <requestid>1312562</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>2028b46e879e76dc2bfe8fe041774a4d</srcmd5>
+    <version>1.78000</version>
+    <time>1789761841</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.78
+   see /usr/share/doc/packages/perl-Prima/Changes
+  1.78 2026-08-22
+   - render_underline produces better quality underlines
+     -- PodView uses smart underlines
+   - Image load_binary and save_binary operate on a scalar
+   - Hint logic delegated to perl for easier overloading
+   - Plot wavy lines with Prima::Drawable::Wave</comment>
+    <requestid>1378627</requestid>
+  </revision>
 </revisionlist>
