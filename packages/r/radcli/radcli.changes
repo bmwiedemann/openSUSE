@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:26:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  * Introduced a new API, provided by the libradcli2 library, built
+    around opaque structures so the library can evolve without
+    breaking ABI, and which drops the legacy/unnecessary APIs. The
+    existing libradcli library and its rc_*() API remain available
+    unchanged for backwards compatibility, and now use libradcli2
+    internally.
+  * Added RFC 5176 Dynamic Authorization support (CoA and Disconnect
+    requests), including delivery over RadSec (RADIUS/TLS and
+    RADIUS/DTLS).
+  * The new API natively supports several modern attribute types
+    from RFC 8044: text, ifid, and 64-bit integers, including
+    RFC 2869 Gigawords handled transparently as 64-bit counters.
+  * The new API supports asynchronous request handling, allowing an
+    application to send requests and poll for replies without
+    blocking on network I/O; see src/radexample-async-dae.c for a
+    complete example.
+  * Simplified server configuration for modern deployments: the new
+    API is built around a single configured RADIUS server, with
+    failover handled via DNS resolution (e.g., multiple A/AAAA
+    records) rather than manually configured server lists.
+- Add subpackage for radcli2.
+
+-------------------------------------------------------------------
 Wed Sep  2 06:44:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.5.3

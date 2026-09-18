@@ -19,7 +19,7 @@
 
 %define sover 10
 Name:           radcli
-Version:        1.5.3
+Version:        2.0.0
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT
@@ -47,10 +47,21 @@ approach is to allow writing RADIUS-aware application in less than 50 lines
 of C code. It was based originally on freeradius-client and is source compatible
 with it.
 
+%package -n libradcli2_1
+Summary:        A RADIUS client library
+Group:          System/Libraries
+
+%description -n libradcli2_1
+The radcli library is a library for writing RADIUS Clients. The library's
+approach is to allow writing RADIUS-aware application in less than 50 lines
+of C code. It was based originally on freeradius-client and is source compatible
+with it.
+
 %package devel
 Summary:        Header files for libradcli
 Group:          Development/Libraries/C and C++
 Requires:       libradcli%{sover} = %{version}
+Requires:       libradcli2_1 = %{version}
 
 %description devel
 This package contains libraries and header files for developing applications
@@ -74,7 +85,6 @@ This package contains the compatibility headers and libraries for freeradius-cli
 %build
 %meson \
   -Dtls=enabled \
-  -Dnettle=enabled \
   -Dlegacy-compat=true \
   -Dstatic=false \
   -Ddocs=disabled
@@ -88,6 +98,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 %make_build check || (find . -name test-suite.log -exec cat {} +)
 
 %ldconfig_scriptlets -n libradcli%{sover}
+%ldconfig_scriptlets -n libradcli2_1
 
 %files
 %license COPYRIGHT
@@ -102,12 +113,19 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}/%{_libdir}
 %files -n libradcli%{sover}
 %{_libdir}/libradcli.so.%{sover}*
 
+%files -n libradcli2_1
+%{_libdir}/libradcli2.so.1*
+
 %files devel
 %dir %{_includedir}/radcli
+%{_includedir}/radcli/radcli-defs.h
 %{_includedir}/radcli/radcli.h
+%{_includedir}/radcli/radcli2.h
 %{_includedir}/radcli/version.h
 %{_libdir}/libradcli.so
+%{_libdir}/libradcli2.so
 %{_libdir}/pkgconfig/radcli.pc
+%{_libdir}/pkgconfig/radcli2.pc
 %{_mandir}/man3/*.3%{?ext_man}
 
 %files compat-devel
