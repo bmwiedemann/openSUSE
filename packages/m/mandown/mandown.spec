@@ -17,11 +17,10 @@
 
 
 Name:           mandown
-Version:        1.1.0
+Version:        1.1.1
 Release:        0
 Summary:        A man page generator for markdown markup files
 License:        Apache-2.0
-Group:          Development/Tools/Doc Generators
 URL:            https://gitlab.com/kornelski/mandown
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -40,7 +39,10 @@ Mandown is a tool that generates man pages from markdown markup files.
 %{cargo_build}
 
 %install
-%{cargo_install}
+%cargo_install
+
+%check
+%{cargo_test}
 
 %files
 %license LICENSE

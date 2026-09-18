@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.1.1:
+  * Escape backslashes and line-leading apostrophes in text
+  * Fix stdin input ignoring the title argument
+  * Replace mdoc .Bl/.El with man .IP list macros
+  * Build with edition 2024
+- Run upstream unit tests in %check
+- Spec cleanup: drop obsolete Group tag
+
+-------------------------------------------------------------------
 Mon Apr 20 21:31:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - udpate to 1.1.0:
