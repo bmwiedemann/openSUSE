@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:15:40 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
+
+- Update to version 1.6.9:
+  * This is a bugfix release that is API and ABI compatible with
+    the previous 1.6.x releases.
+  * Highlights
+    - Improve JACK object callbacks, avoid reporting old removed
+      objects.
+    - Tweak the resampler cutoff frequencies to preserve more high
+      frequencies when upsampling.
+    - More small fixes and improvements.
+  * Modules
+    - Fix RAOP encryption for OpenSSL >= 3. (#5370 (closed))
+    - Fix netjack2 discovery timeout.
+    - Fix potential truncated audio in RAOP.
+    - Fix potential metadata update problems. (#5445 (closed))
+    - Fix RAOP over TCP.
+    - Fix potential overflows in client node buffer checks. (#5462)
+    - Add node.network=true to network sinks and sources so that
+      pavucontrol and others don't wake them up. (#3268 (closed))
+  * SPA
+    - Fix opus audio info type.
+    - Tweak the upsample cutoff frequencies to preserve more high
+      frequencies when upsampling. (#5390 (closed))
+    - Fix filter-graph property notification in some cases.
+    - Remove limits on filter-graph descriptions in audioconvert.
+    - Improve dynamic reconfiguration of filter-graphs in
+      audioconvert.
+    - Improve passthrough format handling in audioconvert.
+    - Improve the FC and LFE volumes when upmixing is enabled.
+    - Fix v4l2 controls when one can not be read.
+    - Require 0.6.0 libcamera now.
+    - Improve format filtering in v4l2.
+  * Pulse-server
+    - Don't let a pending sibling message starve capture.
+    - Fix name of ALSA source.
+    - Fix potential crash with the active_port_name.
+      (#5435 (closed))
+  * Bluetooth
+    - Fix a potential leak when transport fails to start.
+    - Fix potential crash when cleaning up iso-io transport.
+  * JACK
+    - Rework the object lookups to avoid removed objects from
+      leaking. (#5356 (closed))
+  * GStreamer
+    - Add fixes for state changes and other lockups.
+  * ALSA Plugin
+    - Generate poll errors when stopping. (#5444 (closed))
+  * Tools
+    - Handle EOF correctly for encoded files in pw-cat.
+    - Fix loopback channel and position handling.
+    - Fix mp3 encoding in pw-record.
+    - Support A-law in pw-record.
+- Disable libcamera support when building in Leap 16.1 or older
+  since pipewire now needs at least libcamera 0.6.0 .
+
+-------------------------------------------------------------------
 Mon Aug 17 05:01:01 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add pipewire-tests subpackage with installed tests

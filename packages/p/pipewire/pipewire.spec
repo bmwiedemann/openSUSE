@@ -40,7 +40,7 @@
 
 %bcond_with roc
 
-%if 0%{?suse_version} > 1500
+%if 0%{?suse_version} > 1610
 %bcond_without libcamera
 %else
 %bcond_with libcamera
@@ -71,7 +71,7 @@
 %bcond_with aptx
 
 Name:           pipewire
-Version:        1.6.8
+Version:        1.6.9
 Release:        0
 Summary:        A Multimedia Framework designed to be an audio and video server and more
 License:        MIT
@@ -132,7 +132,7 @@ BuildRequires:  %{ffmpeg_pref}-mini-devel
 %endif
 BuildRequires:  pkgconfig(lc3)
 %if %{with libcamera}
-BuildRequires:  libcamera-devel >= 0.2.0
+BuildRequires:  libcamera-devel >= 0.6.0
 %endif
 %if %{with apparmor}
 BuildRequires:  pkgconfig(libapparmor)
