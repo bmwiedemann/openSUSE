@@ -1,7 +1,7 @@
 #
 # spec file for package lout
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,32 +16,13 @@
 #
 
 
-%define tarver  3.41
-%define tardate 2023_06_19
 Name:           lout
-Version:        3.41.0
+Version:        3.43.4
 Release:        0
 Summary:        A document formatting system
-License:        GPL-2.0-or-later
-Group:          Productivity/Publishing/PS
-URL:            http://jeffreykingston.id.au/lout/
-Source0:        http://jeffreykingston.id.au/lout/lout-%{tarver}.tar.gz
-# PATCH-FIX-UPSTREAM opensuse-build.patch mcepl@suse.com
-# Make package building in OpenSUSE OBS
-Patch0:         opensuse-build.patch
-# PATCH-FIX-UPSTREAM Fix-for-CVE-2019-19917-and-CVE-2019-19918.patch mcepl@suse.com
-# Fix for CVE-2019-19918 and CVE-2019-19918
-# Patch from https://lists.nongnu.org/archive/html/lout-users/2020-10/msg00013.html
-Patch1:         fix-for-CVE-2019-19917-and-CVE-2019-19918.patch
-# PATCH-FIX-UPSTREAM tblf-fix-typo-in-PaintBox-PDF-backend.patch mcepl@suse.com
-# Patch from https://github.com/william8000/lout/commit/a8833f63f2b7.patch
-# fix typo in @PaintBox PDF backend
-Patch2:         tblf-fix-typo-in-PaintBox-PDF-backend.patch
-# PATCH-FIX-UPSTREAM avoid-calling-catclose-with-an-invalid-argument.patch mcepl@suse.com
-# Patch from https://github.com/william8000/lout/commit/5e7b8f9e7d44.patch
-# avoid calling catclose with an invalid argument
-Patch3:         avoid-calling-catclose-with-an-invalid-argument.patch
-Patch4:         reproducible.patch
+License:        GPL-3.0-or-later
+URL:            https://github.com/william8000/lout
+Source0:        https://github.com/william8000/lout/archive/refs/tags/%{version}.tar.gz#/lout-%{version}.tar.gz
 BuildRequires:  fdupes
 BuildRequires:  ghostscript
 
@@ -53,12 +34,17 @@ limited but working (e.g. no graphics). Either of these may be
 fed to a printer. Lout is offered in multiple languages.
 
 %prep
-%autosetup -p1 -n lout-%{tardate}
+%autosetup
 
 find . -name README -exec chmod 0644 '{}' \;
 
 %build
-make COPTS="%{optflags}" \
+# NOTE: CFLAGS must come via the environment, not the make command
+# line: command-line variables are immune to the makefile's
+# CFLAGS += config defines (-DLIB_DIR etc.) and the build then fails.
+# %%{optflags} reach the makefile through ?= honoring the environment.
+export CFLAGS="%{optflags}"
+%make_build \
      BINDIR=%{_bindir} \
      LOUTLIBDIR=%{_datadir}/%{name} \
      LOUTDOCDIR=%{_datadir}/%{name}/doc \
@@ -104,6 +90,9 @@ make BINDIR=%{buildroot}%{_bindir} \
      LOUTDOCDIR=%{buildroot}%{_datadir}/%{name}/doc \
      MANDIR=%{buildroot}%{_mandir}/man1 \
      install installman installdoc
+# Upstream installdoc leaves executable bits on doc files
+# (rpmlint E: script-without-shebang); nothing under doc/ is runnable
+find %{buildroot}%{_datadir}/%{name}/doc -type f -perm -111 -exec chmod a-x '{}' +
 %fdupes %{buildroot}%{_datadir}/%{name}
 
 %check

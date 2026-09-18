@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:09:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.43.4 (maintained fork by William Bader, same lineage
+  as used in 2021-2024; Arch, NixOS and FreeBSD ship it):
+  * PDF/bitmap image embedding, segmented PostScript, CM unit
+    accuracy, webp image support
+  * Compiler warning fixes for gcc 13/14/15 and clang 17/19/21
+  * lout accepts --help and --version
+  * Full list: https://github.com/william8000/lout/blob/3.43.4/whatsnew
+- Switch Source0/URL to the fork (Kingston's 3.41 tarball is
+  unmaintained since June 2023); the tarball unpacks as
+  lout-3.43.4, adjust %prep accordingly
+- Drop all patches, merged upstream:
+  * opensuse-build.patch (DESTDIR, BINDIR creation and install
+    flags are in the fork makefile since 3.42.1)
+  * fix-for-CVE-2019-19917-and-CVE-2019-19918.patch (fixed in
+    fork 3.41)
+  * tblf-fix-typo-in-PaintBox-PDF-backend.patch (fixed in 3.42.2)
+  * avoid-calling-catclose-with-an-invalid-argument.patch
+    (fixed in 3.43)
+  * reproducible.patch (SOURCE_DATE_EPOCH support merged in 3.43.2)
+- Pass CFLAGS instead of the removed COPTS variable to make
+- License is now GPL-3.0-or-later (fork COPYING, same as Arch
+  and FreeBSD carry)
+
+-------------------------------------------------------------------
 Wed Apr 30 02:27:03 UTC 2025 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Add reproducible.patch to override build date (boo#1047218)
