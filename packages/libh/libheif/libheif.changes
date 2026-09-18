@@ -103,6 +103,14 @@ Thu Aug 27 16:25:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
   * heif_image_add_plane() returns an error instead of aborting
     for bit depths outside 1..128 or interleaved component counts
     outside 1..255
+- fixes CVE-2026-84383 [bsc#1279443]
+        CVE-2026-84384 [bsc#1279445]
+        CVE-2026-84447 [bsc#1279446]
+        CVE-2026-84446 [bsc#1279447]
+        CVE-2026-84444 [bsc#1279448]
+        CVE-2026-84450 [bsc#1280002]
+        GHSA-2jg2-4ch7-h545 [bsc#1279444]
+        CVE-2026-84448 [bsc#1279449]
 
 -------------------------------------------------------------------
 Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
@@ -136,7 +144,8 @@ Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
         CVE-2026-62291 [bsc#1273080]
         CVE-2026-62292 [bsc#1273081]
         CVE-2026-62377 [bsc#1273082]
-        GHSA-46rp-pcq2-rpmr) [bsc#1273083]
+        GHSA-46rp-pcq2-rpmr [bsc#1273083]
+        CVE-2026-84451 [bsc#1280001]
 
 -------------------------------------------------------------------
 Tue Jun  2 06:19:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
