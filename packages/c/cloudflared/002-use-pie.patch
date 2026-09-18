@@ -1,11 +1,11 @@
-diff -Nur cloudflared-2025.4.2/Makefile cloudflared-2025.4.2-new/Makefile
---- cloudflared-2025.4.2/Makefile	2025-04-30 21:15:20.000000000 +0800
-+++ cloudflared-2025.4.2-new/Makefile	2025-05-04 16:59:06.748522662 +0800
-@@ -134,7 +134,7 @@
+diff -Nur cloudflared-2026.9.1/Makefile cloudflared-2026.9.1-new/Makefile
+--- cloudflared-2026.9.1/Makefile	2026-09-11 04:52:23.000000000 +0800
++++ cloudflared-2026.9.1-new/Makefile	2026-09-17 22:13:06.218757447 +0800
+@@ -146,7 +146,7 @@
  ifeq ($(FIPS), true)
  	$(info Building cloudflared with go-fips)
  endif
--	GOOS=$(TARGET_OS) GOARCH=$(TARGET_ARCH) $(ARM_COMMAND) go build -mod=vendor $(GO_BUILD_TAGS) $(LDFLAGS) $(IMPORT_PATH)/cmd/cloudflared
+-	GOOS=$(TARGET_OS) GOARCH=$(TARGET_ARCH) $(ARM_COMMAND) go build -mod=readonly $(GO_BUILD_TAGS) $(LDFLAGS) $(IMPORT_PATH)/cmd/cloudflared
 +	GOOS=$(TARGET_OS) GOARCH=$(TARGET_ARCH) $(ARM_COMMAND) go build -mod=vendor -buildmode=pie $(GO_BUILD_TAGS) $(LDFLAGS) $(IMPORT_PATH)/cmd/cloudflared
  ifeq ($(FIPS), true)
  	./check-fips.sh cloudflared

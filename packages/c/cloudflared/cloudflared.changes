@@ -1,8 +1,21 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:57:29 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 2026.9.1
+  * Update vendor (boo#1278643, CVE-2026-56854, CVE-2026-78662, CVE-2026-56855)
+  * Propagate edge registration errors over QUIC and fix supervisor error
+    classification
+  * Negotiate protected mode during Quick Tunnel provisioning
+
+-------------------------------------------------------------------
 Tue Aug 25 13:35:53 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 2026.8.2
-  * Update vendor (boo#1276196, CVE-2026-72815, CVE-2026-72816, CVE-2026-72817)
+  * Update vendor (boo#1276196, CVE-2026-72815, CVE-2026-72816, CVE-2026-72817,
+    boo#1266208, CVE-2026-39827, CVE-2026-39834, CVE-2026-39828, CVE-2026-39829, 
+    CVE-2026-39831, CVE-2026-42508, CVE-2026-39833, CVE-2026-39830, CVE-2026-39832, 
+    CVE-2026-46597, CVE-2026-46598, CVE-2026-46595, CVE-2026-39835, boo#1276703,
+    CVE-2026-41178)
   * Add OpenRC support
   * Migrate config renovate.json
   * Fix bugs
@@ -15,7 +28,7 @@ Fri May 29 14:11:34 UTC 2026 - Hillwood Yang <hillwoodroc@gmail.com>
   * Update tail command to use /management/logs endpoint
   * Add cloudflared management token command
   * Fix bugs
-  * Update golang.org/x/net to 0.55.0 (boo#1266794, boo#1265920, CVE-2026-39821
+  * Update golang.org/x/net to 0.55.0 (boo#1266794, boo#1265920, boo#CVE-2026-39821
     CVE-2026-33814)
 - Drop update-crypto.patch, fixed by upstream
 
