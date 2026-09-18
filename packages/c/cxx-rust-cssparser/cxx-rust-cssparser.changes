@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 10 10:17:37 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.1.0:
+  * cmake: bump version to 1.1.0 in master branch
+  * Make an option for toggling using corrosion for bridge building
+  * Correct the include path used by the non-corrosion cxxbridge
+  * Fix the empty KDE License
+  * Fix leaking stylesheet
+  * rust: Update cargo packages to latest version
+  * Simplify building by removing the option to build with corrosion_add_cxxbridge
+  * Support parsing the ::part() pseudo-element selector
+  * rust: Support parsing the ":state()" pseudo-class function as pseudo class
+- Drop patches, now upstream:
+  * Fix_offline_build.patch
+
+-------------------------------------------------------------------
 Tue May 19 09:50:41 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Switch back to full use of corrosion, fixes build on 16.0

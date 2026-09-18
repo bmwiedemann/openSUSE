@@ -7,4 +7,12 @@
     <comment>Add cxx-rust-cssparser. Needed by plasma 6.7</comment>
     <requestid>1354075</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>02c70ad47485cd2eac4eb519afcab3c9</srcmd5>
+    <version>1.1.0</version>
+    <time>1789761829</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1378587</requestid>
+  </revision>
 </revisionlist>

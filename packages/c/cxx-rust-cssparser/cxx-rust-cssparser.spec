@@ -21,7 +21,7 @@
 %bcond_without released
 
 Name:           cxx-rust-cssparser
-Version:        1.0.0
+Version:        1.1.0
 Release:        0
 Summary:        Library for parsing CSS using the Rust cssparser crate
 License:        LGPL-2.1-or-later
@@ -32,8 +32,6 @@ Source1:        https://download.kde.org/stable/%{name}/%{name}-%{version}.tar.x
 Source2:        cxx-rust-cssparser.keyring
 %endif
 Source3:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM
-Patch0:         Fix_offline_build.patch
 BuildRequires:  corrosion
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 BuildRequires:  zstd
@@ -88,4 +86,3 @@ export CARGO_HOME=$PWD/rust
 %{_kf6_libdir}/libcxx-rust-cssparser.so
 
 %changelog
-
