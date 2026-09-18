@@ -1,7 +1,7 @@
 #
 # spec file for package perl-ExtUtils-CppGuess
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,16 @@
 
 %define cpan_name ExtUtils-CppGuess
 Name:           perl-ExtUtils-CppGuess
-Version:        0.270.0
+Version:        0.271.0
 Release:        0
-%define cpan_version 0.27
+# 0.271 -> normalize -> 0.271.0
+%define cpan_version 0.271
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Guess C++ compiler and flags
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/E/ET/ETJ/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Capture::Tiny)
@@ -50,7 +52,7 @@ It can generate the necessary options to the Module::Build constructor or
 to ExtUtils::MakeMaker's 'WriteMakefile' function.
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor OPTIMIZE="%{optflags}"

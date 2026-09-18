@@ -103,4 +103,16 @@
 </comment>
     <requestid>1156475</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>2f7932b8f8c298edd42293fe71d53fc1</srcmd5>
+    <version>0.271.0</version>
+    <time>1789762113</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.271.0 (0.271)
+   see /usr/share/doc/packages/perl-ExtUtils-CppGuess/Changes
+  0.271 2026-07-27
+  - 002_icpp.t had problems on macOS since clang pretends to be &quot;gcc&quot; (#31) - thanks @johannessen for report
+  - 002_icpp.t had problems when no &quot;cc&quot; available (#30 #32) - thanks @johannessen for fix</comment>
+    <requestid>1378803</requestid>
+  </revision>
 </revisionlist>
