@@ -20,4 +20,17 @@
             https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/75995a1c8112322024d5c04a5eac27813aeb46f0...6648e8194c69697b2e1a15fe76a06a480b183a51</comment>
     <requestid>1372842</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>1941345967dd4291b9941db763c5124a</srcmd5>
+    <version>1.39.0</version>
+    <time>1789761842</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.39.0 (1.039)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+  1.039     2026-09-09 22:03:38Z
+          - new &quot;skip_tests&quot; feature, using the same format as &quot;todo_tests&quot;
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/6648e8194c69697b2e1a15fe76a06a480b183a51...f6fd52a0a95472e079cbfc6ef7f089702b80e045</comment>
+    <requestid>1378628</requestid>
+  </revision>
 </revisionlist>

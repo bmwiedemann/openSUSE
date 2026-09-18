@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 09:48:33 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.39.0 (1.039)
+   see /usr/share/doc/packages/perl-Test-JSON-Schema-Acceptance/Changes
+
+  1.039     2026-09-09 22:03:38Z
+          - new "skip_tests" feature, using the same format as "todo_tests"
+          - updated test suite:
+            https://github.com/json-schema-org/JSON-Schema-Test-Suite/compare/6648e8194c69697b2e1a15fe76a06a480b183a51...f6fd52a0a95472e079cbfc6ef7f089702b80e045
+
+-------------------------------------------------------------------
 Sun Aug 16 05:44:13 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.38.0 (1.038)

@@ -18,10 +18,10 @@
 
 %define cpan_name Test-JSON-Schema-Acceptance
 Name:           perl-Test-JSON-Schema-Acceptance
-Version:        1.38.0
+Version:        1.39.0
 Release:        0
-# 1.038 -> normalize -> 1.38.0
-%define cpan_version 1.038
+# 1.039 -> normalize -> 1.39.0
+%define cpan_version 1.039
 License:        MIT
 Summary:        Acceptance testing for JSON-Schema based validators
 URL:            https://metacpan.org/release/%{cpan_name}
