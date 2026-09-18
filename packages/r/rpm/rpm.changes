@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Aug 26 18:13:47 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don’t be dependent on python3-base, it is perfectly OK to use
+  any Python interpreter for python-rpm-packaging.
+- Remove obsolete Python2-based removal of Python directories
+  (why?)
+
+-------------------------------------------------------------------
 Tue Jul  7 14:46:32 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add Requires: (rpm-plugin-selinux if selinux-policy)

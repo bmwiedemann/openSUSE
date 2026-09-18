@@ -1,7 +1,7 @@
 #
 # spec file for package rpm
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -211,7 +211,7 @@ Requires:       cpio
 Requires:       file
 # Mandatory generators
 Requires:       (%{name}-build-perl if perl-base)
-Requires:       (%{name}-build-python if python3-base)
+Requires:       (%{name}-build-python if python(abi))
 # The point of the split
 Conflicts:      rpm < 4.15.0
 
@@ -413,7 +413,6 @@ popd
 install -m 755 build-aux/config.guess %{buildroot}/usr/lib/rpm
 install -m 755 build-aux/config.sub %{buildroot}/usr/lib/rpm
 %endif
-rm -rf %{buildroot}/%{_libdir}/python%{py_ver}
 bash %{buildroot}/usr/lib/rpm/find-lang.sh %{buildroot} rpm
 # On arm the kernel architecture is ignored. Not the best idea, but lets stay compatible with other distros
 %ifarch armv7hl armv6hl
