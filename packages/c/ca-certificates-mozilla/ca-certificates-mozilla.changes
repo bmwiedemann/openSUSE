@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Thu Sep 10 12:34:57 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- Updated to 2.90 state (bsc#1279961)
+  - Removed:
+    - AffirmTrust Commercial
+    - AffirmTrust Networking
+    - AffirmTrust Premium
+    - AffirmTrust Premium ECC
+    - certSIGN ROOT CA
+    - Entrust Root Certification Authority
+    - PKI Root Certification Authority
+    - FIRMAPROFESIONAL CA ROOT-A WEB
+    - GLOBALTRUST 2020
+    - Secure Global CA
+    - SecureSign Root CA12
+    - SecureTrust CA
+    - TeliaSonera Root CA v1
+    - Trustwave Global Certification Authority
+    - Trustwave Global ECC P256 Certification Authority
+    - Trustwave Global ECC P384 Certification Authority
+    - XRamp Global Certification Authority
+  - Added:
+    - SECOM SMIME RSA Root CA 2024
+    - SECOM TLS ECC Root CA 2024
+    - SECOM TLS RSA Root CA 2024
+    - SecureSign Root CA16
+    - Telia EC Email Root CA v3
+    - Telia EC TLS Root CA v3
+    - Telia RSA Email Root CA v3
+    - Telia RSA TLS Root CA v3
+
+-------------------------------------------------------------------
 Tue Feb 10 12:24:31 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - Updated to 2.84 state (bsc#1258002)

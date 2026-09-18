@@ -939,4 +939,39 @@
     - TrustAsia TLS RSA Root CA (forwarded request 1332268 from msmeissn)</comment>
     <requestid>1332269</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>c9a7688c64c1da7b20a12bf220a78e20</srcmd5>
+    <version>2.90</version>
+    <time>1789761800</time>
+    <user>anag_factory</user>
+    <comment>- Updated to 2.90 state (bsc#1279961)
+  - Removed:
+    - AffirmTrust Commercial
+    - AffirmTrust Networking
+    - AffirmTrust Premium
+    - AffirmTrust Premium ECC
+    - certSIGN ROOT CA
+    - Entrust Root Certification Authority
+    - PKI Root Certification Authority
+    - FIRMAPROFESIONAL CA ROOT-A WEB
+    - GLOBALTRUST 2020
+    - Secure Global CA
+    - SecureSign Root CA12
+    - SecureTrust CA
+    - TeliaSonera Root CA v1
+    - Trustwave Global Certification Authority
+    - Trustwave Global ECC P256 Certification Authority
+    - Trustwave Global ECC P384 Certification Authority
+    - XRamp Global Certification Authority
+  - Added:
+    - SECOM SMIME RSA Root CA 2024
+    - SECOM TLS ECC Root CA 2024
+    - SECOM TLS RSA Root CA 2024
+    - SecureSign Root CA16
+    - Telia EC Email Root CA v3
+    - Telia EC TLS Root CA v3
+    - Telia RSA Email Root CA v3
+    - Telia RSA TLS Root CA v3 (forwarded request 1378630 from msmeissn)</comment>
+    <requestid>1378631</requestid>
+  </revision>
 </revisionlist>
