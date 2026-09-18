@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:26:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.19.13:
+  https://github.com/ansible/ansible/blob/v2.19.13/changelogs/CHANGELOG-v2.19.rst
+  * Minor Changes
+    - mask_url function in module_utils to allow for masking of
+      auth data embedded in urls.
+  * Bugfixes
+    - apt_key module now masks authentication information in all
+      displays and returns of uri information.
+    - get_url module now masks authentication information in all
+      displays and returns of uri information.
+    - module_utils - mask_url now masks the password in URLs that
+      contain a password but no username, such as
+      redis://:password@host, instead of returning them unmasked.
+    - module_utils.urls now all errors mask in line url
+      authentication information.
+    - rpm_key module now masks authentication information in all
+      displays and returns of uri information.
+    - tempfile - reject prefix and suffix values that contain path
+      components to prevent path traversal.
+    - uri module now masks authentication information in all
+      displays and returns of uri information.
+    - url lookup now masks authentication information in all
+      displays and returns of uri information.
+
+-------------------------------------------------------------------
 Tue Aug 11 07:22:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.19.12:
