@@ -1,0 +1,95 @@
+---
+ Makefile |   47 ++++++++++++++++++++++++-----------------------
+ 1 file changed, 24 insertions(+), 23 deletions(-)
+
+Index: fedora-crypto-policies-20250714.cd6043a/Makefile
+===================================================================
+--- fedora-crypto-policies-20250714.cd6043a.orig/Makefile	2026-08-10 21:14:12.518728729 +0200
++++ fedora-crypto-policies-20250714.cd6043a/Makefile	2026-08-10 21:17:56.706001640 +0200
+@@ -12,7 +12,8 @@
+ LIBEXEC_SCRIPTS=fips-crypto-policy-overlay fips-setup-helper
+ UNITS=fips-crypto-policy-overlay.service
+ NUM_PROCS = $$(getconf _NPROCESSORS_ONLN)
+-PYVERSION = -3
++PYVERSION? = 3
++PYTHON?=python$(PYVERSION)
+ DIFFTOOL?=meld
+ ASCIIDOC?=asciidoc
+ XSLTPROC?=xsltproc
+@@ -26,7 +27,7 @@
+ 
+ build: $(MAN7PAGES) $(MAN8PAGES)
+ 	mkdir -p output
+-	python/build-crypto-policies.py --reloadcmds policies output
++	$(PYTHON) python/build-crypto-policies.py --reloadcmds policies output
+ 
+ install: $(MANPAGES)
+ 	mkdir -p $(DESTDIR)$(MANDIR)
+@@ -57,8 +58,8 @@
+ 	@find -name '*.py' | grep -v krb5check | xargs flake8 --config .flake8
+ 
+ runpylint:
+-	PYTHONPATH=. pylint$(PYVERSION) --rcfile=pylintrc python
+-	PYTHONPATH=. pylint$(PYVERSION) --rcfile=pylintrc tests
++	PYTHONPATH=. pylint-$(PYVERSION) --rcfile=pylintrc python
++	PYTHONPATH=. pylint-$(PYVERSION) --rcfile=pylintrc tests
+ 	@echo "[ OK ]"
+ 
+ runcodespell:
+@@ -66,15 +67,15 @@
+ 
+ check:
+ 	@mkdir -p output/compare
+-	python/build-crypto-policies.py --strict --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy FIPS:OSPP --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy FIPS:ECDHE-ONLY --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy FIPS:NO-ENFORCE-EMS --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy DEFAULT:GOST --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy GOST-ONLY --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy LEGACY:AD-SUPPORT --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --strict --policy DEFAULT:NO-PQ --test --flat policies tests/outputs
+-	python/build-crypto-policies.py --policy DEFAULT:TEST-PQ --test --flat policies tests/outputs  # not strict
++	$(PYTHON) python/build-crypto-policies.py --strict --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy FIPS:OSPP --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy FIPS:ECDHE-ONLY --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy FIPS:NO-ENFORCE-EMS --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy DEFAULT:GOST --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy GOST-ONLY --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy LEGACY:AD-SUPPORT --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --strict --policy DEFAULT:NO-PQ --test --flat policies tests/outputs
++	$(PYTHON) python/build-crypto-policies.py --policy DEFAULT:TEST-PQ --test --flat policies tests/outputs  # not strict
+ 	# # FEDORA43 === DEFAULT
+ 	# diff policies/FEDORA43.pol policies/DEFAULT.pol
+ 	# # FEDORA43:NO-PQ == FEDORA42 == FEDORA43:TEST-PQ:NO-PQ
+@@ -97,21 +98,21 @@
+ 	@rm -rf output/alt
+ 	@mkdir -p output
+ 	cp -r tests/outputs output/alt
+-	python/build-crypto-policies.py --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy FIPS:OSPP --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy FIPS:ECDHE-ONLY --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy FIPS:NO-ENFORCE-EMS --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy GOST-ONLY --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy LEGACY:AD-SUPPORT --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy DEFAULT:GOST --test --flat tests/alternative-policies output/alt
+-	python/build-crypto-policies.py --policy DEFAULT:TEST-PQ --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy FIPS:OSPP --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy FIPS:ECDHE-ONLY --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy FIPS:NO-ENFORCE-EMS --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy GOST-ONLY --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy LEGACY:AD-SUPPORT --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy DEFAULT:GOST --test --flat tests/alternative-policies output/alt
++	$(PYTHON) python/build-crypto-policies.py --policy DEFAULT:TEST-PQ --test --flat tests/alternative-policies output/alt
+ 	@rm -rf output/alt
+ 
+ doctest:
+-	@python3 -Werror -m pytest -vv --doctest-modules python/
++	@$(PYTHON) -Werror -m pytest -vv --doctest-modules python/
+ 
+ unittest:
+-	@python3 -Werror -m pytest -vv tests/unit/
++	@$(PYTHON) -Werror -m pytest -vv tests/unit/
+ 
+ covtest: #doctest unittest
+ 	@# FIXME: only covers python/cryptopolicies/ files so far

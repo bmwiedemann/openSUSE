@@ -20,6 +20,18 @@
 %bcond_with testsuite
 %bcond_with manbuild
 %global _python_bytecompile_extra 0
+%global python %{?primary_python}%{!?primary_python:python3}
+%global _pyver %{lua: \
+  local ver = string.sub(rpm.expand("%python"), string.len("python") + 1, -1); \
+  if ver == "3" or ver:find("%.") then \
+    print(ver); \
+  else \
+    print(string.format("%s.%s", string.sub(ver, 1, 1), string.sub(ver, 2, -1))); \
+  end; \
+}
+%global _pyexec %{lua: \
+  print(rpm.expand("%{_bindir}/python%_pyver")); \
+}
 
 Name:           crypto-policies
 Version:        20250714.cd6043a
@@ -59,13 +71,18 @@ Patch7:         crypto-policies-Allow-openssl-other-policies-in-FIPS-mode.patch
 Patch8:         crypto-policies-OpenSSH-PQC.patch
 #PATCH-FIX-UPSTREAM Disable umac-128 (bsc#1259515)
 Patch9:         crypto-policies-Disable-umac-128-in-DEFAULT-FUTURE-and-BSI-openssh-policies.patch
-BuildRequires:  python3-base >= 3.11
+# PATCH-FIX-OPENSUSE configure-python-interpreter.patch mcepl@suse.com
+# make the Python version configurable
+Patch10:        configure-python-interpreter.patch
+BuildRequires:  %{python}-base >= 3.11
 %if %{with manbuild}
 BuildRequires:  asciidoc
 %endif
 %if %{with testsuite}
 # The following packages are needed for the testsuite
 BuildRequires:  bind
+BuildRequires:  %{python}-devel >= 3.11
+BuildRequires:  %{python}-pytest
 BuildRequires:  crypto-policies-scripts
 BuildRequires:  gnutls
 BuildRequires:  java-devel
@@ -74,8 +91,6 @@ BuildRequires:  mozilla-nss-tools
 BuildRequires:  openssh-clients
 BuildRequires:  openssl
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-devel >= 3.11
-BuildRequires:  python3-pytest
 BuildRequires:  systemd-rpm-macros
 %else
 # Avoid cycle with python-rpm-macros
@@ -139,7 +154,7 @@ sed -i '/MAN8PAGES=update-crypto-policies.8/s/$/ fips-finish-install.8 fips-mode
 sed -i '/SCRIPTS=update-crypto-policies/s/$/ fips-finish-install fips-mode-setup/g' Makefile
 %endif
 
-%make_build
+%make_build PYVERSION="%{_pyver}"
 
 %install
 mkdir -p -m 755 %{buildroot}%{_datarootdir}/crypto-policies/
@@ -151,7 +166,7 @@ mkdir -p -m 755 %{buildroot}%{_sysconfdir}/crypto-policies/policies/
 mkdir -p -m 755 %{buildroot}%{_sysconfdir}/crypto-policies/policies/modules/
 mkdir -p -m 755 %{buildroot}%{_bindir}
 
-make DESTDIR=%{buildroot} DIR=%{_datarootdir}/crypto-policies MANDIR=%{_mandir} %{?_smp_mflags} install
+make PYVERSION="%{_pyver}" DESTDIR=%{buildroot} DIR=%{_datarootdir}/crypto-policies MANDIR=%{_mandir} %{?_smp_mflags} install
 
 install -p -m 644 default-config %{buildroot}%{_sysconfdir}/crypto-policies/config
 touch %{buildroot}%{_sysconfdir}/crypto-policies/state/current
@@ -195,16 +210,26 @@ for d in LEGACY DEFAULT FUTURE FIPS BSI ; do
 done
 
 for f in %{buildroot}%{_datarootdir}/crypto-policies/DEFAULT/* ; do
-    ln -sf %{_datarootdir}/crypto-policies/DEFAULT/$(basename $f) %{buildroot}%{_sysconfdir}/crypto-policies/back-ends/$(basename $f .txt).config
+    ln -sf %{_datarootdir}/crypto-policies/DEFAULT/$(basename $f) \
+        %{buildroot}%{_sysconfdir}/crypto-policies/back-ends/$(basename $f .txt).config
 done
 
 # Fix shebang env in python scripts
-for f in %{buildroot}%{_datadir}/crypto-policies/python/*.py
-do
-    sed -i 's|^#!/usr/bin/env python3$|#!/usr/bin/python3|' $f
+for f in %{buildroot}%{_datadir}/crypto-policies/python/*.py ; do \
+  if test -f "$f" -a  -x "$f" -a -w "$f"
+  then
+    # in i586, sed fails when following symlinks to long paths, so
+    # changing to the target directory avoid this problem
+    (
+    cd "$(dirname "$f")"
+    sed -i -e '1s@^#!.*python[0-9.]*@#!%{_pyexec}@'  "$(basename "$f")"
+    )
+  fi
 done
-
-%py3_compile %{buildroot}%{_datadir}/crypto-policies/python
+for d in %{buildroot}%{_datadir}/crypto-policies/python ; do
+    find $d -name '*.pyc' -exec rm -f {} ";"
+    %_pyexec -c "import sys, os, compileall; br='%{buildroot}'; compileall.compile_dir(sys.argv[1], ddir=br and (sys.argv[1][len(os.path.abspath(br)):]+'/') or None)" $d
+done
 
 # Install README.SUSE to %%doc
 install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
@@ -212,7 +237,7 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/crypto-policies
 %check
 %if %{with testsuite}
 export OPENSSL_CONF=''
-%make_build test SKIP_LINTING=1
+%make_build PYVERSION="%{_pyver}" test SKIP_LINTING=1
 %endif
 
 %post -p <lua>

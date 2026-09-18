@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Aug 10 19:24:25 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add configure-python-interpreter.patch removing dependency on
+  `python3-base`, all Python scripts are now dependent on the
+  primary Python interpreter directly without `/usr/bin/python3`
+  mediation.
+
+-------------------------------------------------------------------
 Fri Jul 31 00:58:13 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Disable umac-128* in DEFAULT, FUTURE and BSI openssh policies (bsc#1259515)
