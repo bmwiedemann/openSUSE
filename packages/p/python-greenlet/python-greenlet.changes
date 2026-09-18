@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:23:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.5.6
+  * Correct a race condition that could lead to garbage collection
+    unintentionally being disabled. See PR 529 by Yurii.
+
+-------------------------------------------------------------------
 Mon Aug 17 08:46:47 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.5.5
