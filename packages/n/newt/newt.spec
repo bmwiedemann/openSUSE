@@ -120,7 +120,7 @@ providing a python API for creating text mode interfaces.
 chmod 0644 peanuts.py popcorn.py
 
 %install
-pyversions="python%{py3_ver}"
+pyversions="python%{python3_version}"
 make PYTHONVERS="$pyversions" instroot=%{buildroot} DESTDIR=%{buildroot} install install-sh
 # currently we don't support these languages
 for lang in ast bal sr@latin wo; do

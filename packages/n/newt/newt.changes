@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 16 04:55:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Use %python3_version instead of the obsolete %py3_ver.
+
+-------------------------------------------------------------------
 Fri Sep 11 22:34:24 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Fix new home of the project
