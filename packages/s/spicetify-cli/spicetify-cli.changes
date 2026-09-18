@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:57:05 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.45.1:
+  * fix(wrapper): restore popup modal layout & sizing
+  * fix(wrapper): restore menu items on Spotify `1.3.0`
+  * fix(css-map): add Spotify `1.3.0` dialog mapping
+  * feat(install): make user repair their installation rather than re-download
+  * fix(css-map): remove `actionsButtons-divider` mapping
+  * feat(css-map): map dj button (#3929)
+  * fix(css-map): added various classes for 1.3.0 (#3926)
+
+-------------------------------------------------------------------
 Thu Sep 10 07:07:20 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.45.0:
