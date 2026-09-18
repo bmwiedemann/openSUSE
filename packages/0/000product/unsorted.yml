@@ -4282,6 +4282,7 @@ unsorted:
   - filelight 
   - filelight-lang 
   - filesystem-media 
+  - filesystem-media-selinux 
   - filezilla 
   - filezilla-devel 
   - filezilla-lang 
@@ -10423,6 +10424,10 @@ unsorted:
   - kismet-logtools 
   - kissfft 
   - kissfft-devel 
+  - kit 
+  - kit-bash-completion 
+  - kit-fish-completion 
+  - kit-zsh-completion 
   - kitemmodels-devel 
   - kitemmodels-imports 
   - kitemviews-devel 
@@ -10899,8 +10904,6 @@ unsorted:
   - kunitconversion-devel 
   - kup-backup 
   - kup-backup-lang 
-  - kup-client 
-  - kup-server 
   - kupfer 
   - kured 
   - kured-k8s-yaml 
@@ -11788,7 +11791,7 @@ unsorted:
   - libSM-devel 
   - libSM-devel-32bit 
   - libSM6-32bit 
-  - libSPIRV-Tools-2026_3_rc1-32bit 
+  - libSPIRV-Tools-2026_4_rc2-32bit 
   - libSampleICC-devel 
   - libSampleICC2 
   - libSavitar-devel 
@@ -13980,9 +13983,9 @@ unsorted:
   - libgretl-1_0-51 
   - libgromacs11 
   - libgromacs_mpi11 
-  - libgrpc++1_76 
-  - libgrpc1_76 
-  - libgrpc51 
+  - libgrpc++1_84 
+  - libgrpc1_84 
+  - libgrpc56 
   - libgsequencer0 
   - libgsf-devel 
   - libgsf-tools 
@@ -15060,7 +15063,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_3 
+  - libmupdf28_4 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -16097,8 +16100,8 @@ unsorted:
   - libredwg-devel 
   - libredwg-tools 
   - libredwg0 
-  - libreflex6_4 
-  - libreflexmin6_4 
+  - libreflex6_5 
+  - libreflexmin6_5 
   - libregf-devel 
   - libregf-tools 
   - libregf1 
@@ -16892,7 +16895,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent50 
+  - libtorrent51 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17034,7 +17037,7 @@ unsorted:
   - libunwind-setjmp0 
   - libunwind-setjmp0-32bit 
   - libunwind8-32bit 
-  - libupb51 
+  - libupb56 
   - libupnp-devel 
   - libupnpp-devel 
   - libupnpp17 
@@ -23860,6 +23863,7 @@ unsorted:
   - proj-data-br 
   - proj-data-ca 
   - proj-data-ch 
+  - proj-data-co 
   - proj-data-de 
   - proj-data-dk 
   - proj-data-es 
@@ -23934,6 +23938,7 @@ unsorted:
   - protobuf-maven-plugin-javadoc 
   - protobuf21-devel 
   - protoc-gen-go 
+  - protoc-gen-go-grpc 
   - proton-vpn 
   - proton-vpn-cli 
   - protontricks 
@@ -24837,7 +24842,6 @@ unsorted:
   - python313-allpairspy 
   - python313-alsa 
   - python313-altair 
-  - python313-altair-widgets 
   - python313-altcha 
   - python313-altgraph 
   - python313-amqp 
@@ -28393,8 +28397,6 @@ unsorted:
   - python313-vcversioner 
   - python313-vdf 
   - python313-vdirsyncer 
-  - python313-vega 
-  - python313-vega_datasets 
   - python313-vegas 
   - python313-venusian 
   - python313-venusian-doc 
@@ -28897,7 +28899,6 @@ unsorted:
   - python314-allpairspy 
   - python314-alsa 
   - python314-altair 
-  - python314-altair-widgets 
   - python314-altcha 
   - python314-altgraph 
   - python314-amqp 
@@ -32540,8 +32541,6 @@ unsorted:
   - python314-vcver 
   - python314-vcversioner 
   - python314-vdirsyncer 
-  - python314-vega 
-  - python314-vega_datasets 
   - python314-vegas 
   - python314-venusian 
   - python314-venusian-doc 
