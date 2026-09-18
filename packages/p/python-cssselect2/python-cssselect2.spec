@@ -16,10 +16,9 @@
 #
 
 
-%define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-cssselect2
-Version:        0.9.0
+Version:        0.10.0
 Release:        0
 Summary:        CSS selectors for Python ElementTree
 License:        BSD-3-Clause
@@ -51,7 +50,7 @@ not have all the correctness corner cases that are hard or impossible to fix in
 cssselect.
 
 %prep
-%setup -q -n cssselect2-%{version}
+%autosetup -p1 -n cssselect2-%{version}
 
 %build
 %pyproject_wheel
