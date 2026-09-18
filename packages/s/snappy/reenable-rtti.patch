@@ -1,8 +1,8 @@
-Index: snappy-1.1.9/CMakeLists.txt
+Index: b/CMakeLists.txt
 ===================================================================
---- snappy-1.1.9.orig/CMakeLists.txt
-+++ snappy-1.1.9/CMakeLists.txt
-@@ -53,8 +53,8 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -58,8 +58,8 @@ if(MSVC)
    add_definitions(-D_HAS_EXCEPTIONS=0)
  
    # Disable RTTI.
@@ -10,10 +10,10 @@ Index: snappy-1.1.9/CMakeLists.txt
 -  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR-")
 +  # string(REGEX REPLACE "/GR" "" CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}")
 +  # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /GR-")
- else(MSVC)
-   # Use -Wall for clang and gcc.
-   if(NOT CMAKE_CXX_FLAGS MATCHES "-Wall")
-@@ -83,8 +83,8 @@
+ 
+   # Support static MSVC runtime when building static library.
+   option(SNAPPY_MSVC_STATIC_RUNTIME "Link to static MSVC runtime (/MT or /MTd)" OFF)
+@@ -103,8 +103,8 @@ else(MSVC)
    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-exceptions")
  
    # Disable RTTI.

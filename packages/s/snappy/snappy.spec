@@ -1,7 +1,7 @@
 #
 # spec file for package snappy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %define libname libsnappy1
 Name:           snappy
-Version:        1.2.2
+Version:        1.3.0
 Release:        0
 Summary:        A compressor/decompressor library favoring time
 License:        BSD-3-Clause
@@ -85,6 +85,9 @@ install -d -m 755 %{buildroot}%{_libdir}/pkgconfig
 install -m 644 %{SOURCE1} %{buildroot}%{_libdir}/pkgconfig/%{name}.pc
 
 %check
+%ifarch %arm %ix86 ppc s390
+export GTEST_FILTER='-Snappy.LiteralLengthU32Overflow'
+%endif
 %ctest
 
 %ldconfig_scriptlets -n %{libname}

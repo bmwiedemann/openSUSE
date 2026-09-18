@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 18:50:26 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.3.0:
+  * Fixed a uint32_t overflow when decompressor accepted an input with incorrect format
+  * Significant RISC-V efficiency improvements
+  * New API on providing your own memory context
+  * Supporting compression levels (1-2) in C API
+  * Various other small fixes
+- Refresh reenable-rtti.patch
+- Disable LiteralLengthU32Overflow test in 32 bit architectures
+
+-------------------------------------------------------------------
 Sun Jun 29 11:18:27 UTC 2025 - Christoph G <foss@grueninger.de>
 
 - update to 1.2.2
