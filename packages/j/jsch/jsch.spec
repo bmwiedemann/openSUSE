@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           jsch
-Version:        0.2.22
+Version:        2.28.7
 Release:        0
 Summary:        Pure Java implementation of SSH2
 License:        BSD-3-Clause

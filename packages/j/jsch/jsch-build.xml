@@ -11,7 +11,7 @@
   <property name="project.artifactId" value="jsch"/>
   <property name="project.version" value="specify_on_command_line"/>
 
-  <property name="spec.version" value="0.2"/>
+  <property name="spec.version" value="2.28"/>
   <property name="versionWithoutMinus" value="${project.version}"/>
 
   <property name="compiler.release" value="8"/>
@@ -36,6 +36,12 @@
   <property name="build.mrSrcDir.15" value="src/main/java15"/>
   <property name="build.mrOutputDir.16" value="${build.mrOutputDir}/16"/>
   <property name="build.mrSrcDir.16" value="src/main/java16"/>
+  <property name="build.mrOutputDir.19" value="${build.mrOutputDir}/19"/>
+  <property name="build.mrSrcDir.19" value="src/main/java19"/>
+  <property name="build.mrOutputDir.23" value="${build.mrOutputDir}/23"/>
+  <property name="build.mrSrcDir.23" value="src/main/java23"/>
+  <property name="build.mrOutputDir.24" value="${build.mrOutputDir}/24"/>
+  <property name="build.mrSrcDir.24" value="src/main/java24"/>
   <property name="reporting.outputDirectory" value="${build.dir}/site"/>
 
   <!-- ====================================================================== -->
@@ -80,6 +86,18 @@
     <javaversion atleast="16"/>
   </condition>
   
+  <condition property="build19">
+    <javaversion atleast="19"/>
+  </condition>
+  
+  <condition property="build23">
+    <javaversion atleast="23"/>
+  </condition>
+  
+  <condition property="build24">
+    <javaversion atleast="24"/>
+  </condition>
+  
   <target name="compile" description="Compile the code">
     <echo>Java/JVM version: ${ant.java.version}</echo> 
     <mkdir dir="${build.genSrcDir}"/>
@@ -99,6 +117,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            release="${compiler.release}"
            verbose="false"
            fork="false">
@@ -119,6 +138,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            source="${compiler.source}"
            target="${compiler.target}"
            verbose="false"
@@ -138,6 +158,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            release="9"
            verbose="false"
            fork="false">
@@ -160,6 +181,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            source="${compiler.source}"
            target="${compiler.target}"
            verbose="false"
@@ -182,6 +204,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            source="${compiler.source}"
            target="${compiler.target}"
            verbose="false"
@@ -204,6 +227,7 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            source="${compiler.source}"
            target="${compiler.target}"
            verbose="false"
@@ -226,12 +250,82 @@
            debug="true"
            optimize="false"
            deprecation="true"
+           encoding="utf-8"
            source="${compiler.source}"
            target="${compiler.target}"
            verbose="false"
            fork="false">
       <src>
         <pathelement location="${build.mrSrcDir.16}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile19" description="Compile the overrides for Java 19+" if="build19">
+    <!-- Override classes for Java 19+ -->
+    <mkdir dir="${build.mrOutputDir.19}"/>
+    <javac destdir="${build.mrOutputDir.19}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           encoding="utf-8"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.19}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile23" description="Compile the overrides for Java 23+" if="build23">
+    <!-- Override classes for Java 23+ -->
+    <mkdir dir="${build.mrOutputDir.23}"/>
+    <javac destdir="${build.mrOutputDir.23}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           encoding="utf-8"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.23}"/>
+      </src>
+      <classpath>
+        <path refid="build.classpath"/>
+        <pathelement location="${build.outputDir}"/>
+      </classpath>
+    </javac>
+  </target>
+
+  <target name="compile24" description="Compile the overrides for Java 24+" if="build24">
+    <!-- Override classes for Java 24+ -->
+    <mkdir dir="${build.mrOutputDir.24}"/>
+    <javac destdir="${build.mrOutputDir.24}"
+           nowarn="true"
+           debug="true"
+           optimize="false"
+           deprecation="true"
+           encoding="utf-8"
+           source="${compiler.source}"
+           target="${compiler.target}"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.mrSrcDir.24}"/>
       </src>
       <classpath>
         <path refid="build.classpath"/>
@@ -248,6 +342,7 @@
     <javadoc sourcepath="${build.srcDir}"
              destdir="${reporting.outputDirectory}/apidocs"
              access="protected"
+             encoding="utf-8"
              source="${compiler.source}"
              verbose="false"
              version="true"
@@ -261,7 +356,6 @@
              nohelp="false"
              nonavbar="false"
              serialwarn="false"
-             charset="ISO-8859-1"
              linksource="false"
              breakiterator="false">
       <classpath refid="build.classpath"/>
@@ -272,7 +366,7 @@
   <!-- Package target                                                         -->
   <!-- ====================================================================== -->
 
-  <target name="package" depends="compile,compile9,compile10,compile11,compile15,compile16" description="Package the application">
+  <target name="package" depends="compile,compile9,compile10,compile11,compile15,compile16,compile19,compile24" description="Package the application">
     <jar jarfile="${build.dir}/${build.finalName}.jar"
          compress="true"
          index="false"
@@ -280,15 +374,16 @@
          excludes="**/package.html">
       <manifest>
         <attribute name="Bundle-Description" value="JSch is a pure Java implementation of SSH2"/>
-        <attribute name="Bundle-License" value="https://github.com/mwiede/jsch/blob/master/LICENSE.JZlib.txt,https://github.com/mwiede/jsch/blob/master/LICENSE.jBCrypt.txt,https://github.com/mwiede/jsch/blob/master/LICENSE.txt"/>
+        <attribute name="Bundle-License" value="ISC;link=&quot;https://github.com/mwiede/jsch/blob/master/LICENSE.jBCrypt.txt&quot;,Revised BSD;link=&quot;https://github.com/mwiede/jsch/blob/master/LICENSE.JZlib.txt&quot;,Revised BSD;link=&quot;https://github.com/mwiede/jsch/blob/master/LICENSE.txt&quot;"/>
         <attribute name="Bundle-ManifestVersion" value="2"/>
         <attribute name="Bundle-Name" value="JSch"/>
-        <attribute name="Bundle-SymbolicName" value="com.jcraft.jsch"/>
+        <attribute name="Bundle-SymbolicName" value="com.github.mwiede.jsch"/>
         <attribute name="Bundle-Version" value="${project.version}"/>
         <attribute name="Export-Package" value="com.jcraft.jsch;version=&quot;${project.version}&quot;"/>
         <attribute name="Implementation-Title" value="JSch"/>
         <attribute name="Implementation-Version" value="${project.version}"/>
-        <attribute name="Import-Package" value="com.sun.jna.platform.win32;resolution:=optional,com.sun.jna;resolution:=optional,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,org.bouncycastle.crypto.digests;resolution:=optional,org.bouncycastle.crypto.engines;resolution:=optional,org.bouncycastle.crypto.generators;resolution:=optional,org.bouncycastle.crypto.macs;resolution:=optional,org.bouncycastle.crypto.modes;resolution:=optional,org.bouncycastle.crypto.params;resolution:=optional,org.bouncycastle.crypto.signers;resolution:=optional,org.bouncycastle.crypto;resolution:=optional,org.ietf.jgss;resolution:=optional,org.slf4j;resolution:=optional"/>
+        <attribute name="Import-Package" value="com.sun.jna.platform.win32;version=&quot;[5.0,6)&quot;;resolution:=optional,com.sun.jna;version=&quot;[5.0,6)&quot;;resolution:=optional,javax.crypto,javax.crypto.interfaces,javax.crypto.spec,org.apache.logging.log4j;version=&quot;[2.0,4)&quot;;resolution:=optional,org.bouncycastle.crypto.digests;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.engines;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.generators;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.kems;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.macs;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.modes;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.params;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto.signers;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.crypto;version=&quot;[1.84,2)&quot;;resolution:=optional,org.bouncycastle.pqc.crypto.ntruprime;version=&quot;[1.84,2)&quot;;resolution:=optional,org.ietf.jgss;resolution:=optional,org.newsclub.net.unix;resolution:=optional,org.slf4j;version=&quot;[1.7,3)&quot;;resolution:=optional"/>
+        <attribute name="Java-Version" value="${compiler.release}"/>
         <attribute name="Multi-Release" value="true"/>
         <attribute name="Require-Capability" value="osgi.ee;filter:=&quot;(&amp;(osgi.ee=JavaSE)(version=${compiler.target}))&quot;"/>
         <attribute name="Specification-Title" value="JSch"/>

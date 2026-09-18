@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Wed Sep 16 11:26:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.28.7
+  * Changes of 2.28.7:
+    + Add Session accessors for the negotiated algorithms
+    + As per RFC 8268, enforce range checks on DH public keys.
+    + add bounds checks while parsing K_S.
+      ~ #1127: add bounds checks when parsing SFTP vendor-specific
+        extensions.
+      ~ Treat the reserved field in certs as an opaque byte array
+        instead of a String.
+  * Changes of 2.28.6:
+    + Fix #1091: Parse certificate-form revoked host keys
+      (bsc#1279889, CVE-2026-86231)
+    + Fix #1099: Respect known_hosts markers
+  * Changes of 2.28.5:
+    + Refactor: Remove unreachable code in ChannelSftp._put() method
+    + #1084: add support for reporting exit-signal.
+    + Accept RSA-CA-signed OpenSSH host certificates
+  * Changes of 2.28.4:
+    + Add FFM version of Pageant AgentConnector
+  * Changes of 2.28.3:
+    + Fix ChannelAgentForwarding: move rbuf.reset() and fix skip()
+      in unknown message handler
+  * Changes of 2.28.2:
+    + Fix #1045: RSA certificate auth ignores negotiated signature
+      algorithm
+  * Changes of 2.28.1:
+    + Add impsort-maven-plugin to organize imports correctly
+      according to Google Java Style.
+    + Fix unit tests when run in certain timezones.
+    + Fix integration test failures on Apple Silicon by using Alpine
+      3.7.
+    + Run tests on Java 26.
+    + Update to Maven 3.9.15.
+    + Bump org.bouncycastle:bcprov-jdk18on from 1.83 to 1.84
+    + Update for new deprecations in Bouncy Castle 1.84.
+    + #1037 deprecate JSch.addIdentity(), KeyPair.decrypt() &
+      Session.setPassword() methods that take String inputs instead
+      of byte[] inputs for passphrases/passwords.
+  * Changes of 2.28.0:
+    + Add support for OpenSSH certificates
+    + Restrict length of decompressed packets
+  * Changes of 2.27.9:
+    + ProxySOCKS5 fixes & improvements
+    + Improve error message when receiving non-EOF status code
+      during read
+  * Changes of 2.27.8:
+    + Update readme with info about other projects leveraging Jsch
+    + Add support for OpenSSH-Agent on Windows
+    + Fix multi-release jar to avoid API differences between
+      versions.
+    + Update Error Prone compilerArgs.
+    + Infinite loop fix on checkServerExtInfo()
+  * Changes of 2.27.7:
+    + SftpATTRS constructor should be public
+  * Changes of 2.27.6:
+    + Fix logging a 'port is null' error when parsing openssh config
+      file
+  * Changes of 2.27.5:
+    + Throw JSchException if an incorrect passphrase is provided to
+      JSch.addIdentity()
+  * Changes of 2.27.4:
+    + Slowness due to blocked threads in Channel.getChannel call
+    + Update to latest Maven Wrapper
+    + Switch to using Java 25 for builds
+    + Update forbiddenapis with newly added support for Java 25
+    + fix for infinite looping issue
+    + Store Channel objects associated with a particular Session with
+      the Session instance in order to try and improve performance of
+      Channel lookups by id.
+  * Changes of 2.27.3:
+    + Update to Maven 3.9.11.
+    + Update to latest Java (24.0.2) release.
+    + Ensure that bnd-maven-plugin doesn't add java package imports
+      into OSGi imports.
+    + Run Dependabot on Wednesdays since Github is frequently
+      overloaded on Mondays & fails.
+    + Drop unneeded compiler-annotations dependency.
+    + Generate SPDX SBOM.
+    + #852 Fix ChannelAgentForwarding when an unknown agent message
+      type is received immediately preceding a known agent message
+      type.
+    + Consistently use Temurin JDK for all Github workflows.
+    + Add --enable-native-access=ALL-UNNAMED that will be required
+      for JNA and junixsocket to function in future Java releases.
+    + Remove additional extraneous dependencies for log4j-core-test.
+    + Use toolchains plugin to select JDK to allow eventual Maven 4
+      support.
+  * Changes of 2.27.0:
+    + switch to semver scheme
+    + Fix decryption of OpenSSH V1 keys that use AEAD ciphers.
+    + Add support for writing OpenSSH V1 key files.
+  * Changes of 0.2.26:
+    + Follow lead from OpenSSH and prefer AES-GCM ciphers to AES-CTR
+      ciphers
+    + Catch LinkageError in order to better handle cases in which
+      classes cannot be loaded via reflection
+  * Changes of 0.2.25:
+    + Add support for mlkem768x25519-sha256, mlkem768nistp256-sha256
+      & mlkem1024nistp384-sha384 KEX algorithms using JEP 496.
+    + Stop abusing the packet buffer for signature verification.
+    + Fix intermittent KEX errors with hybrid PQ/EC algorithms: the
+      EC shared secret should not be stripped of unnecessary leading
+      zero bytes since they are concatenated with the PQ secret and
+      encoded as a string.
+    + Support custom ThreadFactory.
+  * Changes of 0.2.24:
+    + Make more use of dedicated exceptions
+    + SSH server comparison the channel id from INT_MAX for a signed
+      value
+  * Changes of 0.2.23:
+    + #752: Add getKeys to JSch which makes access to all the config
+      values possible for troubleshooting
+    + #560 treat openssh config values ConnectTimeout and
+      ServerAliveInterval as seconds.
++ Modified patch:
+  * jsch-junixsocket.patch
+    + rediff
+
+-------------------------------------------------------------------
 Tue Jan 14 08:17:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 0.2.22
@@ -207,7 +328,7 @@ Sat Jun  3 11:03:46 UTC 2023 - Fridrich Strba <fstrba@suse.com>
       OpenSSH 7.4 tests, #227
     + generate osgi bundle manifest data for jar #248, #249
   * Changes of 0.2.4
-    + Improved excepton handling by @norrisjeremy in #200
+    + Improved excepton handling
   * Changes of 0.2.3
     + #188 fix private key length checks for ssh-ed25519 and
       ssh-ed448, #189
@@ -492,5 +613,5 @@ Tue Oct 16 08:39:25 UTC 2012 - mvyskocil@suse.com
 -------------------------------------------------------------------
 Tue Apr 28 11:23:11 CEST 2009 - mvyskocil@suse.cz
 
-- Initial SUSE packaging of version 0.1.40 (from jpp5) 
+- Initial SUSE packaging of version 0.1.40 (from jpp5)
 
