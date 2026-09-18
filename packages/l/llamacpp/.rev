@@ -584,4 +584,12 @@
     support for row IDs and expert count, cross_entropy_loss op.</comment>
     <requestid>1376340</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f115f224763fa8f91d033123c93ebacf</srcmd5>
+    <version>0.4.1</version>
+    <time>1789762102</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378793</requestid>
+  </revision>
 </revisionlist>

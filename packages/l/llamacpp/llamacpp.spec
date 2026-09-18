@@ -18,7 +18,8 @@
 
 
 %global backend_dir %{_libdir}/ggml
-%global upstream_build 10809
+%global upstream_build 10964
+%global license_dir %{_datadir}/licenses
 
 %global llama_sover        %{version}
 %global llama_sover_suffix 0
@@ -26,7 +27,7 @@
 %global mtmd_sover         %{llama_sover}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.23.0
+%global ggml_sover         0.24.0
 %global ggml_sover_suffix  0
 
 %if 0%{?suse_version} == 1500
@@ -42,13 +43,16 @@
 %endif
 
 Name:           llamacpp
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
-License:        MIT
+License:        Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MPL-2.0
 URL:            https://github.com/ggml-org/llama.cpp
 Source:         %{URL}/archive/refs/tags/v%{version}/%{name}-%{version}.tar.gz
 Source1:        %{URL}/releases/download/b%{upstream_build}/llama-b%{upstream_build}-ui.tar.gz
+Source2:        llamacpp-third-party-licenses.txt
+Source3:        LICENSE-Apache-2.0.txt
+Source4:        LICENSE-MPL-2.0.txt
 Patch0:         skip-sme-variants-when-unsupported.patch
 Patch1:         fix-negative-top-n.patch
 BuildRequires:  cmake >= 3.14
@@ -222,6 +226,9 @@ Library to handle multimodal inputs for llama.cpp.
 %autosetup -p1 -n llama.cpp-%{version}
 mkdir -p tools/ui/dist
 tar -xzf %{SOURCE1} --strip-components=1 -C tools/ui/dist
+install -D -m 0644 %{SOURCE2} licenses/LICENSE-packaged-third-party
+install -D -m 0644 %{SOURCE3} licenses/LICENSE-Apache-2.0.txt
+install -D -m 0644 %{SOURCE4} licenses/LICENSE-MPL-2.0.txt
 
 %build
 
@@ -273,9 +280,41 @@ mkdir -p %{_libdir}
 %install
 %cmake_install
 
+for package in \
+    %{name} \
+    %{name}-devel \
+    libllama%{llama_sover_suffix} \
+    libllama-common%{llama_sover_suffix} \
+    libggml%{ggml_sover_suffix} \
+    libggml-base%{ggml_sover_suffix} \
+    libggml-cpu \
+    libggml-vulkan \
+%if %{with opencl}
+    libggml-opencl \
+%endif
+%if %{with openvino}
+    libggml-openvino \
+%endif
+    ggml-devel \
+    libmtmd%{mtmd_sover_suffix}
+do
+    install -D -m 0644 LICENSE \
+        %{buildroot}%{license_dir}/$package/LICENSE
+    install -D -m 0644 licenses/LICENSE-packaged-third-party \
+        %{buildroot}%{license_dir}/$package/THIRD_PARTY_NOTICES
+    install -D -m 0644 licenses/LICENSE-Apache-2.0.txt \
+        %{buildroot}%{license_dir}/$package/LICENSE-Apache-2.0.txt
+    install -D -m 0644 licenses/LICENSE-MPL-2.0.txt \
+        %{buildroot}%{license_dir}/$package/LICENSE-MPL-2.0.txt
+done
+
 %files
 %doc README.md
-%license LICENSE
+%dir %{license_dir}/%{name}
+%license %{license_dir}/%{name}/LICENSE
+%license %{license_dir}/%{name}/THIRD_PARTY_NOTICES
+%license %{license_dir}/%{name}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/%{name}/LICENSE-MPL-2.0.txt
 %{_bindir}/llama
 %{_bindir}/llama-*
 # private libraries
@@ -289,7 +328,11 @@ mkdir -p %{_libdir}
 %{_libdir}/libllama-server-impl.so
 
 %files devel
-%license LICENSE
+%dir %{license_dir}/%{name}-devel
+%license %{license_dir}/%{name}-devel/LICENSE
+%license %{license_dir}/%{name}-devel/THIRD_PARTY_NOTICES
+%license %{license_dir}/%{name}-devel/LICENSE-Apache-2.0.txt
+%license %{license_dir}/%{name}-devel/LICENSE-MPL-2.0.txt
 %{_includedir}/llama*
 %{_includedir}/mtmd*
 %{_libdir}/cmake/llama
@@ -305,47 +348,83 @@ mkdir -p %{_libdir}
 %{_libdir}/libllama-common.so.0
 
 %files -n libllama%{llama_sover_suffix}
-%license LICENSE
+%dir %{license_dir}/libllama%{llama_sover_suffix}
+%license %{license_dir}/libllama%{llama_sover_suffix}/LICENSE
+%license %{license_dir}/libllama%{llama_sover_suffix}/THIRD_PARTY_NOTICES
+%license %{license_dir}/libllama%{llama_sover_suffix}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libllama%{llama_sover_suffix}/LICENSE-MPL-2.0.txt
 %{_libdir}/libllama.so.%{llama_sover}
 
 %files -n libllama-common%{llama_sover_suffix}
-%license LICENSE
+%dir %{license_dir}/libllama-common%{llama_sover_suffix}
+%license %{license_dir}/libllama-common%{llama_sover_suffix}/LICENSE
+%license %{license_dir}/libllama-common%{llama_sover_suffix}/THIRD_PARTY_NOTICES
+%license %{license_dir}/libllama-common%{llama_sover_suffix}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libllama-common%{llama_sover_suffix}/LICENSE-MPL-2.0.txt
 %{_libdir}/libllama-common.so.%{llama_sover}
 
 %files -n libggml%{ggml_sover_suffix}
-%license LICENSE
+%dir %{license_dir}/libggml%{ggml_sover_suffix}
+%license %{license_dir}/libggml%{ggml_sover_suffix}/LICENSE
+%license %{license_dir}/libggml%{ggml_sover_suffix}/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml%{ggml_sover_suffix}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml%{ggml_sover_suffix}/LICENSE-MPL-2.0.txt
 %{_libdir}/libggml.so.%{ggml_sover}
 
 %files -n libggml-base%{ggml_sover_suffix}
-%license LICENSE
+%dir %{license_dir}/libggml-base%{ggml_sover_suffix}
+%license %{license_dir}/libggml-base%{ggml_sover_suffix}/LICENSE
+%license %{license_dir}/libggml-base%{ggml_sover_suffix}/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-base%{ggml_sover_suffix}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-base%{ggml_sover_suffix}/LICENSE-MPL-2.0.txt
 %{_libdir}/libggml-base.so.%{ggml_sover}
 
 %files -n libggml-cpu
-%license LICENSE
+%dir %{license_dir}/libggml-cpu
+%license %{license_dir}/libggml-cpu/LICENSE
+%license %{license_dir}/libggml-cpu/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-cpu/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-cpu/LICENSE-MPL-2.0.txt
 %dir %{backend_dir}
 %{backend_dir}/libggml-cpu-*.so
 
 %files -n libggml-vulkan
-%license LICENSE
+%dir %{license_dir}/libggml-vulkan
+%license %{license_dir}/libggml-vulkan/LICENSE
+%license %{license_dir}/libggml-vulkan/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-vulkan/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-vulkan/LICENSE-MPL-2.0.txt
 %dir %{backend_dir}
 %{backend_dir}/libggml-vulkan.so
 
 %if %{with opencl}
 %files -n libggml-opencl
-%license LICENSE
+%dir %{license_dir}/libggml-opencl
+%license %{license_dir}/libggml-opencl/LICENSE
+%license %{license_dir}/libggml-opencl/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-opencl/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-opencl/LICENSE-MPL-2.0.txt
 %dir %{backend_dir}
 %{backend_dir}/libggml-opencl.so
 %endif
 
 %if %{with openvino}
 %files -n libggml-openvino
-%license LICENSE
+%dir %{license_dir}/libggml-openvino
+%license %{license_dir}/libggml-openvino/LICENSE
+%license %{license_dir}/libggml-openvino/THIRD_PARTY_NOTICES
+%license %{license_dir}/libggml-openvino/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libggml-openvino/LICENSE-MPL-2.0.txt
 %dir %{backend_dir}
 %{backend_dir}/libggml-openvino.so
 %endif
 
 %files -n ggml-devel
-%license LICENSE
+%dir %{license_dir}/ggml-devel
+%license %{license_dir}/ggml-devel/LICENSE
+%license %{license_dir}/ggml-devel/THIRD_PARTY_NOTICES
+%license %{license_dir}/ggml-devel/LICENSE-Apache-2.0.txt
+%license %{license_dir}/ggml-devel/LICENSE-MPL-2.0.txt
 %{_includedir}/ggml*.h
 %{_includedir}/gguf.h
 %{_libdir}/cmake/ggml
@@ -355,7 +434,11 @@ mkdir -p %{_libdir}
 %{_libdir}/libggml-base.so.0
 
 %files -n libmtmd%{mtmd_sover_suffix}
-%license LICENSE
+%dir %{license_dir}/libmtmd%{mtmd_sover_suffix}
+%license %{license_dir}/libmtmd%{mtmd_sover_suffix}/LICENSE
+%license %{license_dir}/libmtmd%{mtmd_sover_suffix}/THIRD_PARTY_NOTICES
+%license %{license_dir}/libmtmd%{mtmd_sover_suffix}/LICENSE-Apache-2.0.txt
+%license %{license_dir}/libmtmd%{mtmd_sover_suffix}/LICENSE-MPL-2.0.txt
 %{_libdir}/libmtmd.so.%{mtmd_sover}
 
 %changelog
