@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 16:25:06 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove bashisms from entrypoint script
+
+-------------------------------------------------------------------
 Mon Aug 31 16:26:00 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - fix access permissions of rpmdb
