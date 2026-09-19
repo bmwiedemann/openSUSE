@@ -16,6 +16,12 @@
 #
 
 
+# LIFECYCLE values: beta pre maintained unmaintained
+%define LIFECYCLE maintained
+%define SUSE_PROD openSUSE
+%define RELEASENOTES_DIR %{buildroot}%{_datadir}/doc/release-notes/%{SUSE_PROD}
+%define INSTALL %{__install} -m 0644 -D
+
 Name:           release-notes-openSUSE
 Version:        84.87.20180228.827b030
 Release:        0
@@ -23,42 +29,39 @@ Summary:        Release Notes for openSUSE
 License:        GFDL-1.3
 Group:          Documentation/SUSE
 Url:            https://github.com/openSUSE/release-notes-openSUSE
+Source:         %{name}-%{version}.tar.xz
 BuildRequires:  daps
-BuildRequires:  suse-xsl-stylesheets
-BuildRequires:  xmlformat
-BuildRequires:  w3m
 BuildRequires:  gettext-tools
 BuildRequires:  itstool
+BuildRequires:  suse-xsl-stylesheets
+BuildRequires:  w3m
 BuildRequires:  xmlcharent
+BuildRequires:  xmlformat
 BuildRequires:  xsltproc
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Provides:       release-notes = %{version}
-Source:         %{name}-%{version}.tar.xz
 
 %description
 This package contains the release notes with the most important changes
 for openSUSE Tumbleweed.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-%define SUSE_PROD openSUSE
 make linguas
-# values for LIFECYCLE: beta pre maintained unmaintained
-make all LIFECYCLE=maintained VERSION='%{version}'
+make all LIFECYCLE=%{LIFECYCLE} VERSION='%{version}'
 
 %install
-rnpath=%{buildroot}%{_datadir}/doc/release-notes/%{SUSE_PROD}
-%{__install} -m 0644 -D LICENSE ${rnpath}/LICENSE
-for file in build/release-notes.*; do
-	lang=$(echo "$file" | awk -F '.' '{print $2}')
-	%{__install} -m 0644 -D "${file}/single-html/release-notes.${lang}/release-notes.${lang}.html" "${rnpath}/RELEASE-NOTES.${lang}.html"
-	%{__cp} -R "${file}/single-html/release-notes.${lang}/static/" "${rnpath}"
-	%{__install} -m 0644 -D "${file}/yast-html/release-notes.${lang}.html" "${rnpath}/RELEASE-NOTES.${lang}.rtf"
-	%{__install} -m 0644 -D "${file}/release-notes.${lang}_color_$lang.pdf" "${rnpath}/RELEASE-NOTES.${lang}.pdf"
-	%{__install} -m 0644 -D "${file}/release-notes.${lang}.txt" "${rnpath}/RELEASE-NOTES.${lang}.txt"
+%{INSTALL} LICENSE %{RELEASENOTES_DIR}/LICENSE
+for dir in build/release-notes.*; do
+	lang=$(echo "$dir" | cut -d '.' -f 2)
+	%{INSTALL} "${dir}/single-html/release-notes.${lang}/release-notes.${lang}.html" "%{RELEASENOTES_DIR}/RELEASE-NOTES.${lang}.html"
+	%{__cp} -R "${dir}/single-html/release-notes.${lang}/static/"                    "%{RELEASENOTES_DIR}"
+	%{INSTALL} "${dir}/yast-html/release-notes.${lang}.html"                         "%{RELEASENOTES_DIR}/RELEASE-NOTES.${lang}.rtf"
+	%{INSTALL} "${dir}/release-notes.${lang}_${lang}.pdf"                            "%{RELEASENOTES_DIR}/RELEASE-NOTES.${lang}.pdf" ||
+	%{INSTALL} "${dir}/release-notes.${lang}_color_${lang}.pdf"                      "%{RELEASENOTES_DIR}/RELEASE-NOTES.${lang}.pdf" # daps 4.x pdf output dropped the _color
+	%{INSTALL} "${dir}/release-notes.${lang}.txt"                                    "%{RELEASENOTES_DIR}/RELEASE-NOTES.${lang}.txt"
 done
 
 %files

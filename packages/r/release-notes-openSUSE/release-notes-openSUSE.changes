@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Aug  5 10:20:29 UTC 2026 - Yunus Acar <yunus.acar@suse.com>
+
+- Modernize/cleanup spec file.
+  * Use %autosetup.
+  * Improve %install section readability.
+- Add daps 4.x compatibility fix to the %install section.
+- Trim whitespace in .changes file.
+
+-------------------------------------------------------------------
 Wed Feb 28 19:27:33 UTC 2018 - git@opensuse.org
 
 - Update to version 84.87.20180228.827b030:
@@ -381,7 +390,7 @@ Thu Jul  5 15:32:35 UTC 2012 - ke@suse.de
 * Link html to rtf for the graphical yast.
 * New entries: sysvinit Deprecated (bnc#769570).
 * Changed entries: Booting with Deprecated sysvinit (bnc#727092 and
-  bnc#769570). 
+  bnc#769570).
 
 -------------------------------------------------------------------
 Fri Jun 15 14:07:27 UTC 2012 - ke@suse.de
@@ -1133,7 +1142,7 @@ Tue Jan 17 10:04:48 CET 2006 - ke@suse.de
 -------------------------------------------------------------------
 Fri Sep 30 08:30:23 CEST 2005 - dmueller@suse.de
 
-- add %defattr 
+- add %defattr
 
 -------------------------------------------------------------------
 Thu Sep 29 02:56:52 CEST 2005 - dmueller@suse.de
@@ -1402,7 +1411,7 @@ Wed Oct  6 16:42:11 CEST 2004 - tiwai@suse.de
 -------------------------------------------------------------------
 Wed Oct  6 16:22:59 CEST 2004 - ro@suse.de
 
-- fix typos in "cs" translation (by Klara) 
+- fix typos in "cs" translation (by Klara)
 
 -------------------------------------------------------------------
 Wed Oct  6 14:21:51 CEST 2004 - ke@suse.de
