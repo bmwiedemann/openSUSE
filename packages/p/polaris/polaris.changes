@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 19 06:16:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 10.2.5:
+  * INS-2916: rolebindingRolePodExecAttach treats an ommited role
+    namespace as globally matchable (#1244)
+
+-------------------------------------------------------------------
 Fri Sep 18 05:38:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 10.2.4:
