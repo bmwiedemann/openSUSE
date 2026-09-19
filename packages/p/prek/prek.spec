@@ -17,7 +17,7 @@
 
 
 Name:           prek
-Version:        0.5.0
+Version:        0.5.3
 Release:        0
 Summary:        Reimagined version of pre-commit, built in Rust
 License:        MIT
@@ -32,7 +32,7 @@ BuildRequires:  fish
 BuildRequires:  zsh
 
 # [  521s] rustc-LLVM ERROR: out of memory
-ExcludeArch:   %{ix86} armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
+ExcludeArch:    %{ix86} armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
 
 %description
 prek is a reimagined version of pre-commit, built in Rust. It is designed to be
@@ -54,7 +54,6 @@ shared between hooks.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -65,7 +64,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       fish
 Supplements:    (%{name} and fish)
@@ -76,7 +74,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       zsh
 Supplements:    (%{name} and zsh)
