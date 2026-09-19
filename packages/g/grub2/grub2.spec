@@ -531,6 +531,9 @@ Requires(post): %{name}-common = %{version}
 Requires:       %{name} = %{version}
 Requires(post): %{name} = %{version}
 %endif
+%if "%{platform}" == "ieee1275"
+Provides:       %{name}-%{grubarch}-sbat = %{sbat_generation_grub}
+%endif
 %{?update_bootloader_requires}
 
 %description %{grubarch}
@@ -589,6 +592,7 @@ Requires(post): %{name} = %{version}
 %{?fde_tpm_update_requires}
 Provides:       %{name}-efi = %{version}-%{release}
 Obsoletes:      %{name}-efi < %{version}-%{release}
+Provides:       %{name}-%{grubefiarch}-sbat = %{sbat_generation_grub}
 
 %description %{grubefiarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
@@ -601,6 +605,7 @@ provides support for EFI systems.
 Summary:        Image for Boot Loader Specification (BLS) support on %{grubefiarch}
 Group:          System/Boot
 BuildArch:      noarch
+Provides:       %{name}-%{grubefiarch}-bls-sbat = %{sbat_generation_grub}
 
 %description %{grubefiarch}-bls
 Custom EFI build tailored for Boot Loader Specification (BLS) support.

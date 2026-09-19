@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 08:05:43 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Add SBAT Provides to support shim SBAT dependency checks (bsc#1278729)
+
+-------------------------------------------------------------------
 Thu Aug 27 08:24:15 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Backport merged upstream patch
