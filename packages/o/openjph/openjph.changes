@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 18 06:46:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.32.0:
+  * Fix: raw_in reads every .raw file as signed, and zero-extends signed 16-bit samples #336
+  * Cs3d/truncated decode graceful 0.30.1 #331
+  * Warning fix #342
+  * Add POWER8 support for the VSX kernels #351
+  * Makes qfactor a floating-point number #343
+  * fix(build): fix building AVX-512 runtime dispatch code with Clang/MSVC #358
+  * README.md: use HTTPS for PDF links #369
+  * Update fuzzing commands to run on Windows and Linux #368
+  * Allow TLM to span multiple marker segments #367
+  * Adding NLT type 2 and experimental type 4 #356
+  * A bug fix for s390 #373
+
+-------------------------------------------------------------------
 Mon Jul 27 13:39:30 UTC 2026 - Michael Vetter <jubalh@iodoru.org>
 
 - Update to 0.31.0:
