@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Sep 19 06:52:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 2.4.1:
+  This patch release fixes the panic on Garage start when using
+  Consul or Kubernetes discovery (#1416, #1473, #1526, #1527,
+  #1528). No other changes in Garage itself are included since
+  v2.4.0.
+- update to 2.4.0:
+  This release is a stable release. There are no breaking changes
+  when migrating from Garage v2.3.0.
+  Warning
+  We are aware of garage crashing with a panic if the consul
+  discovery is used, see #1526
+  * New features:
+    - add NO_COLOR env var to disable logs colors (#1250, #1503)
+    - K2V: provide monotonic reads by default, with a flag to
+      opt-out (#1452)
+    - Add garage health CLI subcommand (#1373)
+    - admin api: return full layout computation statistics as json
+      (#1428, #1435)
+    - admin api: add fields to GetNodeInfo result (#1429, #1434)
+  * Improvements:
+    - Better handling of wildcards in CORS rules (#1105, #1516)
+    - deregister from consul on shutdown (#1062, #1507)
+    - fix: avoid rewriting peer list file when unchanged (#1488)
+    - refactor db wrapper to introduce TypedTree (#1456)
+    - k2v-client: misc fixes (#1463)
+    - Add details to read file errors (#1475)
+    - replace Crdt impl on Option by explicit CancelingOption and
+      MergingOption types (#1451)
+    - bg vars: return "never" when scrub never ran (#1421, #1430)
+    - cli: hide secret env values in help (#1418)
+    - Replace the existential lifetime in sqlite adapter with a
+      static one (#1407)
+  * Bug fixes:
+    - api/s3: don't panic when a version has no blocks (#1522)
+    - Admin API: correctly return aliased buckets for keys even if
+      they have no permissions (#1498)
+    - fix(s3): allow UTF-8 in PostObject form field values (#1489,
+      #1492)
+    - fix(s3): report non-existent keys as deleted in bulk
+      DeleteObjects (#1460, #1469)
+    - fix reflected xss when returning errors on web endpoint
+      (#1471)
+    - fix(cors): include Access-Control-Allow-Headers in permissive
+      OPTIONS placeholder (#1450)
+    - admin api: properly eliminate irrelevant role deletions
+      (#1427, #1431)
+    - fix(cors): return single matching origin instead of multiple
+      values in Access-Control-Allow-Origin (#1419)
+    - collapse sequential whitespace in canonical SigV4 header
+      values (#1424)
+  * CI, build and testing:
+    - Update dependencies post-2.3.0 release (#1415)
+    - Fuzz testing for CRDTs (#1438, #1439, #1444, #1443, #1440,
+      #1442, #1437, #1411)
+    - fix: enable compilation on OpenBSD by removing keepalive
+      interval (#1413, #1453)
+    - set some flaky tests as #[ignore] (#1432)
+    - CI: revert spurrious changed introduced in #1487 that broke
+      CI for main-v2 (#1499)
+    - fix: prevent depending on aws-lc via reqwest (#1412)
+    - Drop parse_duration for fundu-systemd (#1246, #1468)
+  * Kubernetes:
+    - helm: make garage.toml bind addresses configurable via values
+      (#1383)
+  * Documentation:
+    - add SECURITY.md, CONTRIBUTING.md and GOVERNANCE.md (#1406,
+      #1423, #1493)
+    - documentation updates (#1513, #1496, #1494, #1495, #1491,
+      #1487)
+    - Update Redoc to latest version (#1448)
+
+-------------------------------------------------------------------
 Sat Apr 18 06:31:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.3.0:
