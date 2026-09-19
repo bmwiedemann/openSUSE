@@ -15,9 +15,9 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%if 0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550
+%if (0%{?sle_version} >= 150400 || 0%{?suse_version} >= 1550) && !0%{?is_opensuse}
 # Enable livepatching support for SLE15-SP4 onwards. It requires
-# compiler support introduced there.
+# compiler support introduced there. Excludes openSUSE Factory.
 %define livepatchable 1
 
 # Set variables for livepatching.
@@ -206,7 +206,8 @@ cp -a %{SOURCE12} .
 %build
 bash ./pam-login_defs-check.sh
 %if %{livepatchable}
-CFLAGS="$CFLAGS -fpatchable-function-entry=16,14 -fdump-ipa-clones"
+%define _lto_cflags %{nil}
+CFLAGS="%{optflags} -fpatchable-function-entry=16,14 -fdump-ipa-clones"
 %endif
 
 %meson -Dvendordir=%{_distconfdir} \

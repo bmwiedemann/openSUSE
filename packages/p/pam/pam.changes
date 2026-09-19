@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 14 13:43:22 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Apply livepatching only for SLES, not for Factory. Keeping lto
+  optimisation for openSUSE.
+  * On Factory `%meson` will use `%set_build_flags`, that will set CFLAGS. 
+
+-------------------------------------------------------------------
+Sun Sep 13 21:46:53 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Make sure we don't lose distribution compiler flags.
+
+-------------------------------------------------------------------
 Thu Jul 30 15:08:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 1.7.2+git48:
