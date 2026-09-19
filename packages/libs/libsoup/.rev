@@ -1489,4 +1489,15 @@
   for gnome-desktop-testing-runner</comment>
     <requestid>1373439</requestid>
   </revision>
+  <revision rev="173" vrev="9">
+    <srcmd5>015518006714002fa842a73b9cc18a9d</srcmd5>
+    <version>3.6.6</version>
+    <time>1789849177</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libsoup-CVE-2026-85534.patch: Never send more body bytes than
+  nghttp2 requested (bsc#1279239, CVE-2026-85534)
+- Add libsoup-CVE-2026-85197.patch: fix crash in on_data_read after
+  connection has been destroyed (bsc#1279238, CVE-2026-85197)</comment>
+    <requestid>1378744</requestid>
+  </revision>
 </revisionlist>

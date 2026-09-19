@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:35:12 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add libsoup-CVE-2026-85534.patch: Never send more body bytes than
+  nghttp2 requested (bsc#1279239, CVE-2026-85534)
+- Add libsoup-CVE-2026-85197.patch: fix crash in on_data_read after
+  connection has been destroyed (bsc#1279238, CVE-2026-85197)
+
+-------------------------------------------------------------------
 Mon Aug 24 15:06:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Fix runtime dependency of libsoup-tests, correctly requiring

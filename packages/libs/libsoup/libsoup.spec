@@ -42,6 +42,10 @@ Patch6:         libsoup-CVE-2026-4271.patch
 Patch7:         fix-samsung-tv-playback.patch
 # PATCH-FIX-UPSTREAM libsoup-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
 Patch8:         libsoup-CVE-2026-12548.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-85534.patch bsc#1279239 xwang@suse.com -- Never send more body bytes than nghttp2 requested
+Patch9:         libsoup-CVE-2026-85534.patch
+# PATCH-FIX-UPSTREAM libsoup-CVE-2026-85197.patch bsc#1279238 xwang@suse.com -- fix crash in on_data_read after connection has been destroyed
+Patch10:        libsoup-CVE-2026-85197.patch
 
 # PATCH-FIX-SLE libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch qzhao@suse.com -- Revert upstream e315cf2d to make libsoup build with meson 0.54 for SLE-15-SP4/SP5.
 Patch1000:      libsoup-revert-dep-meson-0.62-shim01-e315cf2d.patch
