@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:18:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.117.0 (includes 1.116.0):
+  * attach: upload and reference local files with --attach
+  * df firewall proxy: npm wrapper and pm runner with env-proxy
+    engine, pypi/ruby/yarn managers, gem/maven/pypi matchers
+  * df: JVM PKCS#12 truststore helper, fsx temp-file helper
+  * telemetry: report coding agent, CLI version, platform,
+    endpoint and HTTP method
+  * config: help generated from KeySchema, schema aliases,
+    glab_pager and debug settings
+  * auth fixes: honor login flags and default host,
+    access-token-only OAuth2 helpers, pre-18.9 token URL
+  * alias list shows the full command, repo create honors
+    --skipGitInit, MCP schemas advertise inherited flags
+  * docs: single environment variable reference, CLI content
+    moved to the docs site
+- Build with Go 1.27, upstream go.mod now requires go >= 1.27:
+  go1.26/golang 1.26.3 floors raised to go1.27/golang 1.27.
+- Trim glab-disable_update_check.patch to the schema.go hunk:
+  upstream moved commands/ to internal/commands/, so the bundled
+  commands/config/config.go never compiled and was never built.
+
+-------------------------------------------------------------------
 Wed Aug 26 04:26:43 UTC 2026 - Pavel Dostál <pdostal@suse.com>
 
 - Update to version 1.115.0:

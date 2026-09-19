@@ -18,7 +18,7 @@
 
 
 Name:           glab
-Version:        1.115.0
+Version:        1.117.0
 Release:        0
 Summary:        A GitLab command line tool
 License:        MIT
@@ -33,10 +33,10 @@ BuildRequires:  zsh
 Suggests:       glab-doc
 %if 0%{?fedora_version} || 0%{?rhel_version} || 0%{?centos_version} || 0%{?almalinux_version} || 0%{?rocky_version}
 BuildRequires:  git
-BuildRequires:  golang >= 1.26.3
+BuildRequires:  golang >= 1.27
 %else
 BuildRequires:  git-core
-BuildRequires:  go1.26 >= 1.26.3
+BuildRequires:  go1.27 >= 1.27
 BuildRequires:  golang-packaging
 %endif
 
