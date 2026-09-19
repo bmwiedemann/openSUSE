@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 18 22:23:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1789770186.a0963169:
+  * feat: Improve example rate limiting configuration
+  * fix(render.js): Generate link to log for JOBID instead of "latest"
+  * chore(deps): Dependency cron 2026-09-16
+  * fix(worker): reset podman runroot on reboot
+  * feat(worker): Always use `Retry-After` header if present
+  * feat(worker): Retry artifact uploads when rate limited
+  * chore(tidy): Update to 20260826
+  * docs(worker): Avoid cgroup v1 terminology in slice detection comments
+  * test(worker): Fix mock leak in cgroup slice detection test
+  * fix(worker): Drop redundant $pid definedness check
+  * fix(worker): Detect cgroup slice on pure cgroup v2 hosts
+  * feat: Make read-only bug-related API routes consistently public
+
+-------------------------------------------------------------------
+Tue Sep 08 05:03:05 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1788843772.c7dfffe8:
+  * chore(deps): Dependency cron 2026-09-08
+  
+-------------------------------------------------------------------
 Sat Sep 05 10:53:00 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1788605562.29b45941:

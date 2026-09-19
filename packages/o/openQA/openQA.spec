@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1788605562.29b45941
+Version:        5.1789770186.a0963169
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -585,7 +585,6 @@ fi
 %service_del_postun %{openqa_extra_services}
 # reload AppArmor profiles
 %apparmor_reload %{_sysconfdir}/apparmor.d/usr.share.openqa.script.openqa
-%apparmor_reload %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.openqa
 
 %postun worker
 # reload AppArmor profiles
@@ -656,13 +655,14 @@ fi
 %config %{_sysconfdir}/nginx/vhosts.d/openqa-llm.conf.template
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-assets.inc
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-endpoints.inc
+%config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-limiting.inc
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-locations.inc
 %config(noreplace) %{_sysconfdir}/nginx/vhosts.d/openqa-upstreams.inc
 # apparmor profile
 %dir %{_sysconfdir}/apparmor.d
-%config %{_sysconfdir}/apparmor.d/usr.share.openqa.script.openqa
+%config(noreplace) %{_sysconfdir}/apparmor.d/usr.share.openqa.script.openqa
 %dir %{_sysconfdir}/apparmor.d/local
-%config %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.openqa
+%config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.share.openqa.script.openqa
 # init
 %dir %{_unitdir}
 %{_unitdir}/openqa-webui.service
