@@ -1065,4 +1065,32 @@
     cli/compare/v0.57.0...v0.58.0</comment>
     <requestid>1377879</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>cf3ee78f93fea84c8b95b9eb6db52605</srcmd5>
+    <version>0.60.0</version>
+    <time>1789849361</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.60.0:
+  * fix(core): improve destination validation and connection
+    routing in web fetch utilities
+  * fix(core): enforce RFC 9207 issuer identification in MCP
+    OAuth flow
+  * fix(cli): isolate temporary directory for macOS Seatbelt
+    sandbox
+  * feat(extensions): harden path resolution and boundary
+    validation in extension loader
+  * fix(core): sanitize and remove hardcoded Google CrUX API key
+    in chrome-devtools-mcp
+  * fix(extensions): prompt for consent on environment changes
+    and sanitize runtime-altering environment variables
+  * fix(core): enhance workspace path boundary checks and symlink
+    resolution in command safety and file discovery
+  * fix(config): enforce strict permission and ownership checks
+    on system-wide configuration paths
+  * fix(core): mitigate NTFS 8.3 short name (SFN) path
+  * fix(cli): isolate settings directory in sandbox containers
+  * fix(core): enforce envelope metadata provenance for untrusted
+    tool outputs</comment>
+    <requestid>1378997</requestid>
+  </revision>
 </revisionlist>
