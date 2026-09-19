@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 19:58:19 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
+
+- Update to 1.9.0:
+  * context: reset before reconnectDaemon
+  * context: remove stray return in void function
+  * server: do not return incorrect default devices
+  * server: cleanup findByName a bit
+  * Extract and install Qt metatypes
+
+-------------------------------------------------------------------
 Mon Mar  2 21:08:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 1.8.1

@@ -80,4 +80,17 @@
     <comment>Update to 1.8.1</comment>
     <requestid>1335918</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4e4dbfd826178c9af01267f8f7468c5e</srcmd5>
+    <version>1.9.0</version>
+    <time>1789849171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.9.0:
+  * context: reset before reconnectDaemon
+  * context: remove stray return in void function
+  * server: do not return incorrect default devices
+  * server: cleanup findByName a bit
+  * Extract and install Qt metatypes (forwarded request 1378688 from Vogtinator)</comment>
+    <requestid>1378691</requestid>
+  </revision>
 </revisionlist>

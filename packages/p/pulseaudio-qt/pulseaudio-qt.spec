@@ -20,7 +20,7 @@
 %if "%flavor" == "qt6"
 %define pkg_suffix 6
 %define qt6 1
-%define kf6_version 6.0.0
+%define kf6_version 6.27.0
 %define qt6_version 6.7.0
 %define library_name libKF6PulseAudioQt5
 %else
@@ -30,7 +30,7 @@ ExclusiveArch:  do_not_build
 %define rname pulseaudio-qt
 %bcond_without released
 Name:           pulseaudio-qt%{?pkg_suffix}
-Version:        1.8.1
+Version:        1.9.0
 Release:        0
 Summary:        Qt bindings for PulseAudio
 License:        LGPL-2.1-or-later
@@ -102,6 +102,7 @@ PulseAudio.
 %{_kf6_includedir}/pulseaudioqt_version.h
 %{_kf6_libdir}/libKF6PulseAudioQt.so
 %{_kf6_pkgconfigdir}/KF6PulseAudioQt.pc
+%{_qt6_metatypesdir}/qt6kf6pulseaudioqt_metatypes.json
 %endif
 
 %changelog
