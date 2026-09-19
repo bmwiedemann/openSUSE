@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-apple-support
 #
-# Copyright (c) 2019 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,18 +12,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           bazel-apple-support
-Version:        0.7.1
+Version:        2.8.2
 Release:        0
 Summary:        Bazel rules to support Apple platforms
 License:        Apache-2.0
-Url:            https://github.com/bazelbuild/apple_support
+URL:            https://github.com/bazelbuild/apple_support
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
@@ -56,4 +55,3 @@ cp -r * %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-

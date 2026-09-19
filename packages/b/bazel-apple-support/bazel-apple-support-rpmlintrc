@@ -1,2 +1,8 @@
-# Ignore the following warnings in the source package
-addFilter("bazel-apple-support-source.* suse-filelist-forbidden-fhs23")
+# /usr/src payload by design (sources consumed by Bazel, not installed bins)
+addFilter("bazel-apple-support-source.* filelist-forbidden-fhs23")
+# upstream scripts use /usr/bin/env for macOS portability, shipped as data
+addFilter("bazel-apple-support-source.* env-script-interpreter")
+# upstream test helper shipped as data, not executed
+addFilter("bazel-apple-support-source.* non-executable-script")
+# intentionally empty Bazel package markers
+addFilter("bazel-apple-support-source.* zero-length")
