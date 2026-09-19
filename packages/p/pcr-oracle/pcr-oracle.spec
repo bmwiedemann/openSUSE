@@ -18,7 +18,7 @@
 
 
 Name:           pcr-oracle
-Version:        0.6.5
+Version:        0.6.6
 Release:        0
 Summary:        Predict TPM PCR values
 License:        GPL-2.0-or-later
@@ -49,12 +49,15 @@ make CCOPT="%optflags"
 make install DESTDIR=%{buildroot}
 install -d %{buildroot}/%{_bindir}
 mv %{buildroot}/bin/pcr-oracle %{buildroot}/%{_bindir}
+mv %{buildroot}/bin/tpm2key-tool %{buildroot}/%{_bindir}
 rmdir %{buildroot}/bin
 
 %files
 %defattr(-,root,root)
 %doc README.md
 %{_bindir}/pcr-oracle
+%{_bindir}/tpm2key-tool
 %{_mandir}/man8/pcr-oracle.8*
+%{_mandir}/man8/tpm2key-tool.8*
 
 %changelog

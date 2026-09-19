@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 18 06:37:50 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.6.6
+  + Add --nvindex option by
+  + Remove tagged policy check on TPM Owner handle (bsc#1279916)
+  + Introduce tpm2key-tool to parse and compare tpm2.0 key files
+    (bsc#1279917)
+  + Add load-test action for SRK detection (bsc#1279917)
+
+-------------------------------------------------------------------
 Mon Aug  3 01:48:39 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.6.5
