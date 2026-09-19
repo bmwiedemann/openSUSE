@@ -381,4 +381,41 @@
     <comment>Add bsc reference bsc#1268240</comment>
     <requestid>1359517</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>acfd9accc9187ad1474925a6d71e2097</srcmd5>
+    <version>2.910.0</version>
+    <time>1789849194</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 2.910.0 (2.91)
+   see /usr/share/doc/packages/perl-GD/ChangeLog
+  2.91    * t/affine.t: compare affineInvert(scale(2,3))'s result with an
+            epsilon (1e-6) instead of exact is_deeply, since -Duselongdouble
+            perls compute the division in extended precision, giving a
+            last-few-ULP-different 1/3 than a plain double (GH #68).
+          * Bumped $VERSION in GD::Image, GD::Image_pm.PL and GD::Polygon to
+            2.91, in sync with GD.pm; these were left un-bumped in 2.90.
+  2.90    * Add JXL, UHDR support for new libgd-2.4.0 (from git)
+            - JXL: newFromJxl/newFromJxlData readers, jxl() writer
+              (lossless/distance/effort), magic-byte autodetection in new().
+            - UHDR: new GD::UHDR class (newFromFile/newFromData, width/height/
+              hasGainMap, resize/crop/rotate/mirror, file/write, getSdr).
+            - Work around libgd 2.4.0 gd.h no longer declaring gdImageBoundsSafe().
+          * IMAGEQUANT: trueColorToPaletteSetMethod/SetQuality and the
+            GD_QUANT_* constants for the libimagequant-backed quantizer.
+  	  Guard for installations without libimagequant.
+            Fix imagequant feature autodetection in Makefile.PL (libimagequant
+            surfaces in gdlib.pc's Libs.private, not Requires.private).
+          * Embed rpath (Linux) and fix stale blib/lib/GD/Image.pm so
+            'make test' reliably exercises the just-configured libgd
+            (GH #21 test infra); fix GD_LIQ detection from the deprecated
+            gdlib-config script.
+          * Add Affine transformations (GH #21): GD::Image affine matrix
+            builders (affineIdentity/Scale/Rotate/ShearHorizontal/
+            ShearVertical/Translate/Concat/Invert/Flip/Expansion/
+            Rectilinear/Equal/ApplyToPoint) and transformAffineGetImage/
+            transformAffineCopy/transformAffineBoundingBox, wrapping
+            gdAffine*/gdTransformAffine* (libgd &gt;= 2.1.0). Fix GD_AFFINE_*
+            constant visibility (same enum/#ifdef issue as GD_QUANT_*).</comment>
+    <requestid>1378804</requestid>
+  </revision>
 </revisionlist>

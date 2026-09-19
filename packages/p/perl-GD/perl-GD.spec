@@ -18,10 +18,10 @@
 
 %define cpan_name GD
 Name:           perl-GD
-Version:        2.860.0
+Version:        2.910.0
 Release:        0
-# 2.86 -> normalize -> 2.860.0
-%define cpan_version 2.86
+# 2.91 -> normalize -> 2.910.0
+%define cpan_version 2.91
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl interface to the libgd graphics library
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -40,7 +40,7 @@ BuildRequires:  perl(Test::NoWarnings) >= 1.0
 Provides:       perl(GD) = %{version}
 Provides:       perl(GD::Group) = 1.0.0
 Provides:       perl(GD::Image) = %{version}
-Provides:       perl(GD::Polygon) = 2.820.0
+Provides:       perl(GD::Polygon) = %{version}
 Provides:       perl(GD::Polyline) = 0.200.0
 Provides:       perl(GD::Simple)
 %undefine       __perllib_provides
