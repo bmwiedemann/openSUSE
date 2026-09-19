@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:04:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.7.10
+  * feat(bindings): add signature_public_key_type to Connection (#6076)
+  * fix: bounds-check cert pkey type before array indexing (#6054)
+  * fix(integration): replace BoringSSL fork git dependency with btls crate (#6067)
+  * feat(s2n-tls-metrics): Add hello_retry_request_count (#6078)
+  * fix: always free async offload op during connection teardown (#6080)
+  * fix: enforce JA4 list limit when building fingerprint (#6047)
+  * fix: zero-initialize s2n_tls13_keys in PSK binder functions (#6048)
+  * fix: free encoded point on write failure in s2n_ecc_evp_write_params_point (#5964)
+  * fix: free client pub_key on all error paths in server shared secret (#6063)
+  * feat(metrics-subscriber): expose compatibility profile allow-lists (#6086)
+
+-------------------------------------------------------------------
 Fri Sep 11 06:52:53 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.7.9
