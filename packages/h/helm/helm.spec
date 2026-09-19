@@ -17,7 +17,7 @@
 
 
 Name:           helm
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -25,7 +25,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch1:         CVE-2026-63308.patch
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh

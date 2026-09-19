@@ -1317,4 +1317,35 @@ is intentional and requested by the SUSE product security team. This
 changes the CVE reference from the (what was previously the helm bug and is now the trackerbug) to the helm specific bug.</comment>
     <requestid>1376244</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>19f8c89e3ebd9bd41174de5617bf6b0f</srcmd5>
+    <version>4.3.0</version>
+    <time>1789849203</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 4.3.0:
+  * feat: Add duration functions
+  * feat(engine): add debug logging when lookup returns empty
+  * feat: add ownership verification before deleting resources
+  * feat: honor SOURCE_DATE_EPOCH for chart archives
+  * feat(rollback): add --description flag to provide rollback
+    reason
+  * fix (internal/plugin): remove zero-width spaces from plugin
+    name comment
+  * fix(loader): do not drop values files ending at a 4096-byte
+    boundary
+  * fix(chart): normalize StampModTimes timestamp to UTC/truncate
+    + Chart.lock reproducibility test
+  * fix(provenance): support GnuPG keybox (pubring.kbx) keyrings
+  * fix(template): regression - route registry messages to stderr
+    in template and show
+  * refactor: lower resync period from one hour to 3 minutes
+  * perf: enable concurrent status computation to prevent
+    multi-minute delays
+- drop CVE-2026-63308.patch: merged upstream
+- update vendor.tar. to fix:
+  * bsc#1281426, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: helm:
+    golang.org/x/crypto/ssh: authentication bypass and deadlocks
+    in the crypto/ssh library</comment>
+    <requestid>1378874</requestid>
+  </revision>
 </revisionlist>
