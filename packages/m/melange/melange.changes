@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sat Sep 19 07:10:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.0:
+  * build(deps): bump chainguard.dev/apko to v1.4.3 for
+    GHSA-3fqg-8hpf-5682 (#2658)
+  * build(deps): bump the actions group across 1 directory with 2
+    updates (#2654)
+  * split/manpages: add paths and preserve-path inputs, and fix
+    merging two man roots (#2657)
+  * feat(compile): accept --pipeline-dirs like build and test
+    (#2656)
+- Update to version 0.60.0:
+  * feat(pipelines): auto-inject pipeline-declared capabilities;
+    xcover requests CAP_SYS_ADMIN (#2607)
+  * fix(linter): detect DWARF sections in the strip linter (#2652)
+  * build(deps): bump the gomod group across 1 directory with 9
+    updates (#2647)
+- Update to version 0.59.4:
+  * build: keep setuid/setgid/sticky on unpacked directories
+    (#2646)
+  * build(deps): bump the actions group across 1 directory with 3
+    updates (#2640)
+  * pre-commit: drop .git suffix from repo URL (#2644)
+- Update to version 0.59.4:
+  * build(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1
+    (#2638)
+  * sca: add support for new Chainguard Go 1.27 toolchains (#2643)
+  * git-checkout: disable git auto background maintenance (#2639)
+- Update to version 0.59.4:
+  * build(deps): bump the gomod group across 1 directory with 3
+    updates (#2628)
+  * Upgrade to go1.27 (#2627)
+  * build(deps): bump the actions group with 2 updates (#2626)
+
+-------------------------------------------------------------------
 Fri Aug 28 06:07:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.59.2:
