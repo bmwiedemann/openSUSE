@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 19 07:43:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.12.1:
+  * INS-2928: Fix vulnerabilities for nova (#482)
+  * INS-2847: Prepare nova for unifying circleci (#478)
+  * Update CircleCI configuration to use GCP Docker login instead
+    of Quay.io (#459)
+  * fix env injection for nova release (#458)
+
+-------------------------------------------------------------------
 Thu Apr 30 05:43:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.12.0:

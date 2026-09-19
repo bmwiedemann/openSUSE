@@ -17,14 +17,14 @@
 
 
 Name:           nova
-Version:        3.12.0
+Version:        3.12.1
 Release:        0
 Summary:        Find outdated or deprecated Helm charts running in your cluster
 License:        Apache-2.0
 URL:            https://github.com/FairwindsOps/nova
 Source:         nova-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.26 >= 1.26.0
+BuildRequires:  go1.27 >= 1.27.1
 
 # found conflict of nova-3.4.0-1.1.x86_64 with python3-novaclient-17.6.0-1.2.noarch
 #   /usr/bin/nova
