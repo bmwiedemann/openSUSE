@@ -1,5 +1,13 @@
 # This is a source package and /usr/src is a correct path to install files.
-addFilter("bazel-rules-android-source.* suse-filelist-forbidden-fhs23")
-# fdupes should get rid of all duplicates, for some reason it didn't, but...
-# it's a source package, so it's not a big problem
+addFilter("bazel-rules-android-source.* filelist-forbidden-fhs23")
+# Verbatim upstream Bazel ruleset: files are executed by Bazel, not the
+# system, so modes, shebangs, empty marker files and test fixtures must
+# stay exactly as upstream ships them.
+addFilter("bazel-rules-android-source.* zero-length")
+addFilter("bazel-rules-android-source.* script-without-shebang")
+addFilter("bazel-rules-android-source.* non-executable-script")
+addFilter("bazel-rules-android-source.* version-control-internal-file")
+addFilter("bazel-rules-android-source.* hidden-file-or-dir")
+# Identical test fixtures and resources shipped in multiple places;
+# bare fdupes only lists them, content must stay as upstream ships it.
 addFilter("bazel-rules-android-source.* files-duplicate")

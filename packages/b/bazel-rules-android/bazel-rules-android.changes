@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.3:
+  * Starlark implementations of all Android rules and providers
+  * Compatibility with Bazel 7, Bazel 8 and Bazel 9, via Bzlmod
+    or WORKSPACE
+  * android_ndk_repository moved to rules_android_ndk,
+    android_instrumentation_test moved to rules_utp
+  * Bazel Android Tools migrated from the Bazel repository
+  * Fully integrated mobile-install v3
+  * Migration flags experimental_enable_android_migration_apis
+    and experimental_google_legacy_api no longer required
+  * Pass min_sdk_version to R8 and raise its memory limit
+  * License stays Apache-2.0, install scheme unchanged
+  * Refresh rpmlint filters for renamed tags and upstream fixtures
+  * See upstream release notes for the full list
+
+-------------------------------------------------------------------
 Sat Jul  3 20:26:48 UTC 2021 - Andreas Färber <afaerber@suse.de>
 
 - Initial (v0.1.1)

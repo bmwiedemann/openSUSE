@@ -1,6 +1,7 @@
 #
 # spec file for package bazel-rules-android
 #
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2021 SUSE Software Solutions Germany GmbH, Nuernberg, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -12,19 +13,17 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           bazel-rules-android
-Version:        0.1.1
+Version:        0.7.3
 Release:        0
 Summary:        Bazel rules for Android
-Group:          Development/Tools/Building
 License:        Apache-2.0
-Url:            https://github.com/bazelbuild/rules_android
+URL:            https://github.com/bazelbuild/rules_android
 Source0:        https://github.com/bazelbuild/rules_android/archive/v%{version}.tar.gz#/rules_android-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
@@ -35,7 +34,6 @@ Bazel rules to build software for Android.
 
 %package source
 Summary:        Source code of bazel-rules-android
-Group:          Development/Sources
 
 %description source
 Bazel rules to build software for Android.
@@ -58,4 +56,3 @@ fdupes %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-
