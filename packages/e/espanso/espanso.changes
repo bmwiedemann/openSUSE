@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:31:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4.1:
+  * Fix parsing of unquoted YAML flow-collection values that
+    start with :, > or |, which 2.4.0 rejected after the
+    serde_yaml to serde_norway switch
+  * Install the Linux desktop file and icon
+- Re-derive License: GPL-3.0-only AND MPL-2.0
+- Restrict to %{rust_tier1_arches}
+
+-------------------------------------------------------------------
 Wed Jul 22 06:55:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.4.0:

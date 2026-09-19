@@ -17,30 +17,31 @@
 
 
 %define         __rustflags -Clink-arg=-I/usr/include/libxkbcommon
-
 Name:           espanso
-Version:        2.4.0
+Version:        2.4.1
 Release:        0
 Summary:        A cross-platform Text Expander written in Rust
-License:        GPL-3.0-only
-URL:            https://github.com/federico-terzi/espanso
+License:        GPL-3.0-only AND MPL-2.0
+URL:            https://github.com/espanso/espanso
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging
 BuildRequires:  gcc-c++
-BuildRequires:  libXtst-devel
 BuildRequires:  libnotify4
-BuildRequires:  libopenssl-devel
-BuildRequires:  libxkbcommon-devel
-BuildRequires:  libxkbcommon-x11-devel
+BuildRequires:  pkgconfig
 BuildRequires:  wxGTK3-devel >= 3.0
 BuildRequires:  xdotool-devel
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(xkbcommon)
+BuildRequires:  pkgconfig(xkbcommon-x11)
+BuildRequires:  pkgconfig(xtst)
+Requires:       xclip
+Requires:       xdotool
+ExclusiveArch:  %{rust_tier1_arches}
 %if 0%{?suse_version} < 1600
 BuildRequires:  libstdc++6-devel-gcc13
 %endif
-Requires:       xclip
-Requires:       xdotool
 
 %description
 A cross-platform Text Expander written in Rust. espanso detects when you type a
@@ -48,6 +49,7 @@ keyword and replaces it while you're typing.
 
 %prep
 %autosetup -a 1 -p 1
+rm -f rust-toolchain.toml
 
 %build
 export CFLAGS="${optflags} -I/usr/include/libxkbcommon"
@@ -56,10 +58,14 @@ export CXXFLAGS="${optflags} -I/usr/include/libxkbcommon"
 
 %install
 install -Dm0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
+install -Dm0644 espanso/src/res/linux/espanso.desktop %{buildroot}%{_datadir}/applications/espanso.desktop
+install -Dm0644 espanso/src/res/linux/espanso.png %{buildroot}%{_datadir}/pixmaps/espanso.png
 
 %files
 %license LICENSE
 %doc README.md SECURITY.md
 %{_bindir}/%{name}
+%{_datadir}/applications/espanso.desktop
+%{_datadir}/pixmaps/espanso.png
 
 %changelog
