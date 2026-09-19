@@ -18,7 +18,7 @@
 
 %define lname	libjemalloc2
 Name:           jemalloc
-Version:        5.3.1
+Version:        5.4.0
 Release:        0
 Summary:        General-purpose scalable concurrent malloc implementation
 License:        BSD-2-Clause

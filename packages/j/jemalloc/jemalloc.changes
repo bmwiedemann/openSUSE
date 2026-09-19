@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 17 19:46:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.4.0
+  * Added `EXTENT_ALLOC_FLAG_PINNED` so custom extent-allocation
+    hooks can mark non-reclaimable mappings, such as HugeTLB pages,
+    for preferential reuse outside the decay and purge pipeline.
+  * Allow resuming per-CPU arena selection via thread.arena.
+  * Replace the runtime `experimental_infallible_new` option with
+    the compile-time `--enable-cxx-infallible-new` option.
+  * `errno` is preserved now across `free`, `free_sized`,
+    `free_aligned_sized`, and across `process_madvise`-based page
+    purging.
+  * Accept NULL in `free_sized()` and `free_aligned_sized()`
+    (C23 correctness).
+
+-------------------------------------------------------------------
 Tue Apr 14 13:25:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.3.1
