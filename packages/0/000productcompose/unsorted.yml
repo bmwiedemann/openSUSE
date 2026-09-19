@@ -7350,6 +7350,7 @@ unsorted:
   - glew-devel 
   - glew_EGL 
   - glew_EGL-devel 
+  - glfw-devel 
   - glfw-doc 
   - glfw2-devel 
   - gli-devel 
@@ -12216,7 +12217,7 @@ unsorted:
   - libappindicator-devel 
   - libappindicator1 
   - libappindicator3-devel 
-  - libappstream-compose0 
+  - libappstream-compose1 
   - libapr-util1-0-dbd-mysql 
   - libapr-util1-0-dbd-pgsql 
   - libapr-util1-0-dbd-sqlite3 
@@ -13792,7 +13793,6 @@ unsorted:
   - libglbinding-aux3 
   - libglbinding3 
   - libgle3 
-  - libglfw-devel 
   - libglfw2 
   - libglfw3 
   - libglib-testing-0-0 
@@ -14170,6 +14170,7 @@ unsorted:
   - libhdf5_hl_cpp310-openmpi4 
   - libhdf5_hl_cpp310-openmpi5 
   - libhdf5_hl_fortran310 
+  - libhdf5_hl_fortran310-32bit 
   - libhdf5_hl_fortran310-mvapich2 
   - libhdf5_hl_fortran310-openmpi4 
   - libhdf5_hl_fortran310-openmpi5 
@@ -14589,8 +14590,6 @@ unsorted:
   - liblaszip_api8 
   - liblayout 
   - liblayout-javadoc 
-  - liblazy-devel 
-  - liblazy1 
   - liblbxutil-devel 
   - liblbxutil1 
   - liblc3-1-32bit 
@@ -16042,6 +16041,7 @@ unsorted:
   - librabbitmq-devel 
   - librabbitmq4 
   - libradcli10 
+  - libradcli2_1 
   - librados-devel 
   - libradospp-devel 
   - libraft0 
@@ -20500,6 +20500,8 @@ unsorted:
   - ocaml-camlp-streams-devel 
   - ocaml-camlp5 
   - ocaml-camlp5-devel 
+  - ocaml-checkseum 
+  - ocaml-checkseum-devel 
   - ocaml-cmdliner 
   - ocaml-cmdliner-devel 
   - ocaml-compiler-libs 
@@ -20514,6 +20516,8 @@ unsorted:
   - ocaml-cudf-devel 
   - ocaml-curses 
   - ocaml-curses-devel 
+  - ocaml-decompress 
+  - ocaml-decompress-devel 
   - ocaml-dose 
   - ocaml-dose-devel 
   - ocaml-dune 
@@ -20565,6 +20569,8 @@ unsorted:
   - ocaml-ocamlgraph-devel 
   - ocaml-opam-0install-cudf 
   - ocaml-opam-0install-cudf-devel 
+  - ocaml-optint 
+  - ocaml-optint-devel 
   - ocaml-ounit 
   - ocaml-ounit-devel 
   - ocaml-parmap 
@@ -20606,6 +20612,8 @@ unsorted:
   - ocaml-stdlib-shims-devel 
   - ocaml-swhid_core 
   - ocaml-swhid_core-devel 
+  - ocaml-tar 
+  - ocaml-tar-devel 
   - ocaml-uutf 
   - ocaml-uutf-devel 
   - ocaml-xml-light 
@@ -47368,7 +47376,6 @@ unsorted:
   - wsdl4j 
   - wsdl4j-javadoc 
   - wshowlyrics 
-  - wsjtx 
   - wsl-appx 
   - wsl-firstboot 
   - wslay 
