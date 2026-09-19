@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 19 07:10:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.36.4+rke2r1:
+  * This release updates Kubernetes to v1.36.4, and fixes a number
+    of issues.
+  * Details see
+    https://github.com/rancher/rke2/releases/tag/v1.36.4+rke2r1
+
+-------------------------------------------------------------------
 Tue Aug 25 06:44:12 UTC 2026 - Dan Čermák <dcermak@suse.com>
 
 - sync ldflags with upstream
