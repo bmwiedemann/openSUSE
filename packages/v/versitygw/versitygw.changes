@@ -1,4 +1,113 @@
 -------------------------------------------------------------------
+Sat Sep 19 05:52:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.8.0:
+  * fix: include common prefixes in ListObjectsV2 key count
+  * rdma: gate the RC data plane behind a dedicated flag
+  * rdma: keep RC route XML fidelity
+  * rdma: authenticate RC routes through the terminal error path
+  * rdma: test RC route errors through the production server
+  * rdma: map RC transport errors to protocol codes
+  * rdma: serialize RC route errors at the route boundary
+  * fix: s3proxy sends bodyless CreateBucket when the configuration
+    is empty
+  * feat: accept principal ARNs in bucket policies under standalone
+    IAM
+  * fix: use constant-time comparisons for SigV4 signatures
+  * feat: support admin/access logs on standard streams
+  * fix: use dir permissions option for temporary directories
+  * feat: add standalone iam service to systemd config setup
+  * test: separate download and install for linux/apt config
+  * feat: add the hipobj-rc-v2 control routes to the vgwrdma
+    gateway
+  * fix: drain unread request bodies before closing the connection
+  * fix: infer UserName from the calling access key in the
+    access-key APIs
+  * fix: support proxy
+  * fix: role last-used tracking, and record S3 requests in
+    last-used metadata
+  * fix: authorize every key in a DeleteObjects batch after a
+    bucket-policy deny
+  * fix: harden posix conditional publish locking
+  * chore(deps): bump github/codeql-action from 4.37.8 to 4.37.9
+  * test: allow versitygw command customization, website testing,
+    s3 config fix
+  * chore: add rdma/librcserver.a to .gitignore
+  * chore(deps): bump the dev-dependencies group with 23 updates
+  * chore(deps): bump actions/checkout from 6 to 7
+  * chore(deps): bump actions/setup-go from 6 to 7
+  * rdma: add the Go binding for the RC session server
+  * rdma: add the RC session server C ABI
+  * fix: make --chuid/--chgid usable with the standalone IAM
+    service
+  * feat: govern GetBucketVersioning with the regular access checks
+  * rdma: port the hipObject v2 RC session core
+  * auth: add GetUserAccountFresh to bypass the IAM cache
+  * fix: add integeration tests
+  * fix: apply default Content-Type in POSTObject
+  * feat: allow supplying an external IAM service implementation to
+    embedgw
+  * fix: build failure from conflicting merges
+  * feat: add configurable file permissions for new objects
+  * feat(azure): carry Azure blob marker in continuation token for
+    pagination
+  * feat(azure): server-side copy with download+reupload fallback
+  * feat: add IAM OIDC provider tagging actions
+  * feat: add IAM role tagging actions
+  * feat: add IAM user tagging actions
+  * feat: add standalone IAM support in WebGUI
+  * chore(deps): bump the dev-dependencies group across 1 directory
+    with 20 updates
+  * fix(posix): return empty config for GetBucketVersioning when
+    unconfigured
+  * feat: add Helm chart support for the standalone IAM service
+  * feat: version the private IAM protocol between gateway and
+    standalone service
+  * feat: integrate standalone IAM service with S3 gateway for
+    identity-based policy enforcement
+  * feat: add live GitHub OIDC end-to-end test for
+    AssumeRoleWithWebIdentity
+  * chore(deps): bump github/codeql-action from 4.37.7 to 4.37.8
+  * feat: add STS web identity federation, IAM policy Condition
+    support, and access control enforcement
+  * feat: add IAM OIDC provider CRUD
+  * feat: add IAM role inline policy CRUD
+  * feat: add IAM Role CRUD
+  * feat: add IAM user inline policy CRUD
+  * feat: add IAM user access key management
+  * feat: add AWS-compatible standalone IAM service
+  * fix: newer gofmt for s3api
+  * cumiddleware: cover RC token boundary and legacy-precedence
+    cases
+  * cumiddleware: reject unsupported RC token schemes with 501
+  * chore(deps): bump github/codeql-action from 4.37.6 to 4.37.7
+  * Bugfix: url-encoded chars on the website listener
+  * test: install script improvements
+  * chore(deps): bump the dev-dependencies group with 27 updates
+  * fix(posix): make conditional PUT evaluation and publication
+    atomic per key
+  * chore(deps): bump the dev-dependencies group with 19 updates
+  * chore(deps): bump github/codeql-action from 4.37.4 to 4.37.6
+  * test: parallel docker testing, some misc cleanup/fixes
+  * fix: add license header to rdma files
+  * Check versioning on init
+  * feat: add new vgwrdma service for cuObject compatible server
+  * chore(deps): bump github/codeql-action from 4 to 4.37.4
+  * chore(deps): bump the dev-dependencies group with 21 updates
+  * feat: add optional data-integrity ETag mode for posix/scoutfs
+  * feat: add best-effort O_DIRECT support for posix put/get-object
+    put-part
+  * test: website - initial tests
+  * fix: honor mpMaxParts across partNumber validation
+  * chore(deps): bump the dev-dependencies group with 22 updates
+  * test: bucket setup/resetting cleanup, go virtual path handling,
+    s3api profile setup
+  * chore(deps): bump the dev-dependencies group with 9 updates
+  * chore(deps): bump actions/setup-go from 6 to 7
+  * test: bucket resetting code cleanup
+  * feat: add helm chart admin and webui ingress support
+
+-------------------------------------------------------------------
 Wed Jul 15 04:50:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.7.0:
