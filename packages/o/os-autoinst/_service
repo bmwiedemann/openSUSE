@@ -12,6 +12,7 @@
     <param name="revision">master</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">okurz@suse.com</param>
+    <param name="filename">os-autoinst</param>
   </service>
   <service name="set_version" mode="disabled" />
   <service name="tar" mode="buildtime" />

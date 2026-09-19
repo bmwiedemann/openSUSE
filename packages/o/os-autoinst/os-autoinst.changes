@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Sep 18 15:02:29 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1789452256.93a96a0:
+  * chore(tidy): Update to 20260826
+  * Revert "fix: Prevent command corruption from DSR/CPR loop on serial xterm consoles"
+  * fix: Prevent command corruption from DSR/CPR loop on xterm consoles
+  * test(myjsonrpc): Add test for newline handling
+  * feat: Avoid problems with pretty serial markers and multiline commands
+  * chore: Update Perl-Tidy to 20260808
+
+-------------------------------------------------------------------
 Mon Sep 07 08:15:05 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1788768889.879c500:
