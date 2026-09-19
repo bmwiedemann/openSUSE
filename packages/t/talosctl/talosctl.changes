@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Sat Sep 19 06:26:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.1:
+  * Changes
+    - siderolabs/tools@a404efb chore: bump util-linux 2.42.3
+    - siderolabs/tools@3c49a3c feat: bump go to 1.26.8
+  * Dependency Changes
+    - github.com/containerd/containerd/v2 v2.3.4 -> v2.3.5
+    - github.com/containerd/platforms v1.0.0-rc.4 -> v1.0.0-rc.5
+    - github.com/siderolabs/gen v0.8.7 -> v0.8.8
+    - github.com/siderolabs/pkgs v1.14.0-15-g2f03590 ->
+      v1.14.0-25-gf694e1b
+    - github.com/siderolabs/talos/pkg/machinery v1.14.0 -> v1.14.1
+    - github.com/siderolabs/tools v1.14.0-5-g87316ca ->
+      v1.14.0-7-ga404efb
+- update to 1.14.0:
+  Big update for TalosLinux, please see the changelog at
+  https://github.com/siderolabs/talos/releases/tag/v1.14.0
+  * Unified --namespace Flag
+    talosctl containers, logs, stats and restart now select the
+    containerd namespace through the same --namespace flag and
+    vocabulary already used by talosctl image and talosctl debug:
+    system (the default), cri for Kubernetes workloads, and
+    taloscontainers for containers declared via a ContainerConfig
+    document.
+    The --kubernetes/-k flag is deprecated in favor of --namespace
+    cri.
+    talosctl image list also supports --namespace taloscontainers,
+    to inspect images pulled for ContainerConfig containers.
+    talosctl debug does not support the taloscontainers namespace.
+  * b34be14e9 fix: cli.md codeblock generation
+- update to 1.13.10:
+  * Changes
+    - 591c53aac fix: use os.Root in the talosctl extract path
+    - c36d99001 fix: escape output in the talosctl dashboard
+    - c6edc3911 chore: bump sigstore/rekor to v1.5.4
+  * Dependency Changes
+    - github.com/Azure/azure-sdk-for-go/sdk/azcore v1.21.1 ->
+      v1.22.0
+    - github.com/Azure/azure-sdk-for-go/sdk/azidentity v1.13.1 ->
+      v1.14.0
+    - github.com/aws/aws-sdk-go-v2 v1.41.7 -> v1.43.0
+    - github.com/aws/aws-sdk-go-v2/config v1.32.17 -> v1.32.31
+    - github.com/aws/aws-sdk-go-v2/feature/ec2/imds v1.18.23 ->
+      v1.18.31
+    - github.com/aws/aws-sdk-go-v2/service/kms v1.52.0 -> v1.55.0
+    - github.com/aws/smithy-go v1.25.1 -> v1.27.3
+    - github.com/cosi-project/runtime v1.14.1 -> v1.16.3
+    - github.com/docker/cli v29.4.3 -> v29.5.3
+    - github.com/fatih/color v1.18.0 -> v1.19.0
+    - github.com/google/go-containerregistry v0.21.6 -> v0.21.7
+    - github.com/grpc-ecosystem/go-grpc-middleware/v2 v2.3.3 ->
+      v2.3.4
+    - github.com/insomniacslk/dhcp 5adc3eb26f91 -> 234b97448fae
+    - github.com/klauspost/compress v1.18.7 -> v1.19.2
+    - github.com/mattn/go-isatty v0.0.20 -> v0.0.24
+    - github.com/prometheus/procfs v0.20.1 -> v0.22.0
+    - github.com/siderolabs/pkgs v1.13.0-60-gf541ca4 ->
+      v1.13.0-65-g9b044c5
+    - github.com/siderolabs/talos/pkg/machinery v1.13.9 -> v1.13.10
+    - github.com/siderolabs/tools v1.13.0-9-ga201d19 ->
+      v1.13.0-12-gc70be08
+    - github.com/sigstore/sigstore v1.10.8 -> v1.10.9
+    - github.com/sirupsen/logrus v1.9.4 -> v1.10.2
+    - github.com/stretchr/testify v1.11.1 -> v1.12.1
+    - go.etcd.io/etcd/api/v3 v3.6.12 -> v3.6.14
+    - go.etcd.io/etcd/client/pkg/v3 v3.6.12 -> v3.6.14
+    - go.etcd.io/etcd/client/v3 v3.6.12 -> v3.6.14
+    - go.etcd.io/etcd/etcdutl/v3 v3.6.12 -> v3.6.14
+    - go.yaml.in/yaml/v4 v4.0.0-rc.4 -> v4.0.0-rc.6
+    - google.golang.org/grpc v1.82.1 -> v1.83.2
+    - google.golang.org/protobuf f2248ac996af -> v1.36.12
+
+-------------------------------------------------------------------
 Fri Aug 28 07:33:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.13.9:
