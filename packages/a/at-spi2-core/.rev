@@ -2867,4 +2867,15 @@
   + Remove G_GNUC_CONST from *_get_type_declarations</comment>
     <requestid>1369842</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>d17ba9800ab8436c4fa07c25302d741c</srcmd5>
+    <version>2.60.7</version>
+    <time>1789849175</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.60.7:
+  + libatspi: Fix transfer annotation on
+    atspi_document_get_text_selections.
+  + atk-bridge: Release disconnected direct connections.</comment>
+    <requestid>1378743</requestid>
+  </revision>
 </revisionlist>
