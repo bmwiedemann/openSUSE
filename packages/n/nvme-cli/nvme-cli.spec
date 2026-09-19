@@ -19,7 +19,7 @@
 %bcond_without check
 
 Name:           nvme-cli
-Version:        3.0+6.g1ac60ca4b
+Version:        3.1
 Release:        0
 Summary:        NVM Express user space tools
 License:        GPL-2.0-only

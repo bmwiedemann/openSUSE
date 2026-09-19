@@ -1,4 +1,155 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:31:09 UTC 2026 - Daniel Wagner <dwagner@suse.de>
+
+- Update to version 3.1:
+  * Release v3.1
+  * doc: Regenerate all docs for v3.1
+  * tests: NUL-terminate literals copied into dc_entry_is_self() test data
+  * plugin: fix out-of-bounds read of argv[1] in help() with no sub-argument
+  * libnvme: fix NBFT entry list leak in libnvmf_discover_nbft()
+  * huawei: guard against a null list_items in huawei_json_print_list_items()
+  * solidigm: also guard against a null ilog in ilog_dump_identify_page()
+  * plugins/sandisk: fix uninitialized market_name_len in enc_drive_capabilities
+  * plugins/exclusion: fix errno reliance in read_file()
+  * plugins/sandisk: update version
+  * plugins/sandisk: use nvme_get_pci_ids
+  * plugins/sandisk: port vs-smart-add-log from wdc
+  * libnvme: reject a persona hostnqn with no hostid
+  * shared: drop the retry loop from shr_read_file()/shr_read_file_as_string()
+  * shared: return error codes from shr_read_file() and shr_read_file_as_string()
+  * tests: bound the interface name copy in mock-ifaddrs init_entry()
+  * wdc: use shr_getrandom() for the send/receive correlation handle
+  * rpmb: use shr_getrandom() for the authentication nonce
+  * keys: check chmod() return value in append_keyfile()
+  * shared: add shr_getrandom()
+  * solidigm: fix NULL DMA target in ilog_dump_pel()
+  * tests: fix unit mismatch in test_admin_fw_download_cb's data check
+  * innogrit: remove dead fclose() guards before the first fopen() in getcdump
+  * solidigm: fix unreachable error-recovery path in parse_tracker_chunk_json()
+  * nvme: fix nvme_decide_retry() always returning false
+  * nbft: fix truncated PCI segment number in pci_sbdf_to_string()
+  * ocp: check ocp_get_uuid_index() before issuing the get-log command
+  * tests,tree-fabrics: check and acknowledge return values
+  * mi-mctp: fix endian conversion direction for MPR retry time
+  * fs-util: restore path separator unconditionally in shr_mkdir_p()
+  * tests: check write() return value in test_read_all()
+  * wdc: bound the device-reported Capture Diagnostics log length
+  * solidigm: replace read_file2buffer() with shared file-reading helpers
+  * sandisk: fix 32-bit overflow and unchecked realloc in sndk_do_cap_udui
+  * mi-mctp-ae: bound the AE number before indexing the enabled-events map
+  * shared: use memmove() for the sha256 intra-buffer carry-over copy
+  * fabrics: fix NULL dereference in dc_log_decision()
+  * netapp: fix NULL format string in netapp_smdevices_print_regular()
+  * tests: fix NULL dereference in mi-mctp aem_handler()
+  * ocp: fix NULL dereference and zero-fill bug in parse_event_fifo()
+  * nvme-print: bound-check FDP config descriptor walk against log size
+  * nvme-print: fix endian bugs and bound the EOM descriptor walk
+  * nvme-print: fix integer overflow in EOM descriptor offset
+  * shared: add shr_buf_has_room()
+  * tests: fix dangling pointer in test_nvmf_sanitize_addrs()
+  * tests: use shr_read_file_as_string() in shr_table tests
+  * tests: fix uninitialized buffer and NULL %s in check_normalize()
+  * shared: add shr_read_file_as_string()
+  * scaleflux: fix scandir(3) result leak in nvme_expand_cap
+  * wdc: fix out-of-bounds read of pre-v4 cloud smart log hardware revision
+  * nvme-print,fabrics: fix uninitialized reads
+  * utils: fix allocation leak in copy_options()
+  * shannon: fix file descriptor leak in set_additional_feature()
+  * rpmb: validate config block size before write
+  * discoverd: honor persistent=force against EPCSD=0
+  * resv-plugin: size the resv report from the registrant count
+  * ccan: cast pointers to void * in fprintf for %p format specifier
+  * libnvme: pick the right self entry on a multi-homed DC
+  * discoverd: use __cleanup_tid in two loops
+  * sandisk: fix stack buffer overflow in C2 marketing-name parser
+  * discoverd: validate DLPE target before host-side inheritance
+  * nvme-models: fix pci.ids parser line loss
+  * tests: check errno after rewind in capture helpers
+  * huawei: null-check root/devices in huawei_json_print_list_items
+  * solidigm: guard ilog->cfg dereference in ilog_dump_identify_page
+  * libnvme: initialize TLS key IDs
+  * exclusion: preserve errno across free/fclose in read_file
+  * nvme-print-json: fix leaks in json_phy_rx_eom_descs
+  * wdc: close output file via __cleanup_file in wdc_enc_get_log
+  * lm: fix double fclose in lm_migration_send
+  * completions: document no-trailing-space insertion checks in TESTING.md
+  * completions: test the generator against a synthetic fixture
+  * nvme-print-json: use CAP property fields string table
+  * nvme-print: add CAP property fields string table
+  * nvme-print-json: combine obj_add_str and obj_add_string duplicated
+  * nvme-print: change string variables as constant
+  * nvme-print-json: fix to output alloc_error
+  * nvme-print-stdout: use libnvme API to print CAP property
+  * nvme-types-base: fix CAP property NSSRS bit name
+  * nvme-types-base: add CAP property NSSES bit
+  * nvme-types-base: change file header description NVMe revision to 2.4
+  * micron: clamp num_entries in vs-fw-activate-history to the table size
+  * seagate: clamp supported-log-pages count and keep JSON clean
+  * libnvme: add test for var_size_tags 32B guard sts range
+  * tests: cover invalid_tags() STS-too-wide rejection
+  * libnvme: fix undefined shifts in nvme_init_var_size_tags() 32B guard case
+  * nvme: reject out-of-range storage tag size in invalid_tags()
+  * shared: drop dead `at_line_start = true` in shr_print_word_wrapped()
+  * solidigm: drop dead initializer in telemetry_log_data_area_get_offset()
+  * solidigm: report failure restoring workload-tracker config
+  * huawei: check libnvme_get_nsid() failure in huawei_get_nvme_info()
+  * micron: drop dead `err = 0` in micron_telemetry_log()
+  * ocp: fix empty-description case in parse_ocp_telemetry_string_log()
+  * ocp: drop dead m_512_sz/m_512_off initial stores in get_telemetry_dump()
+  * sandisk: drop dead stores flagged by clang-analyze
+  * sandisk: fix telemetry write error handling, drop a dead store
+  * wdc: fix telemetry write error handling, drop dead stores
+  * huawei: skip a list entry if its JSON object fails to allocate
+  * micron: don't let closedir() clobber errno in RemoveDirRecursive()
+  * exclusion: set errno on malloc failure in read_file()
+  * libnvme/tests: clear peer->tx_data before mi-mctp helper returns
+  * tests: check tmpfile() return in capture() helpers
+  * nvme: fix nvmf_resolve_addr() leak, and simplify its API while here
+  * libnvme: check dirfd() before using it in registry.c
+  * solidigm: guard against negative error_bits in bucket_pos2us()
+  * scaleflux: initialize capacity in sfx_status()
+  * nvme-keys: check freopen() return before importing from stdin
+  * memblaze: guard ioLatencyHistogramOutput() against a NULL FILE*
+  * ocp: guard reason-identifier parse against NULL ptelemetry_buffer
+  * nvme-print-json: fix invalid free() in json_eom_printable_eye()
+  * nvme-print-json: print unique capability LBA formats in id-ns
+  * micron: define log file names in single location
+  * micron: fix error reporting for bad package paths
+  * micron: add metadata files to vs-internal-log package
+  * samsung: Fix dump staging directory access security
+  * samsung: Fix command injection in the dump archiving
+  * samsung: Fix path traversal from the drive-supplied serial number
+  * shared: add shr_sanitize_name()
+  * log: fix overflow for very large telemetry logs
+  * mi-types: add nvme_mi_mi_opcode definitions missing
+  * libnvme: fix %ld format specifier for size_t key_len
+  * tests: fix ocp_smart_add_log_test unsupported-drive detection under -o json
+  * libnvme: normalize NVMe-oF URI scheme/protocol to lower case
+  * shared, libnvme: normalize UUID-format host NQN case from NBFT
+  * shared: add shr_buf2str() for use in the discovery log output
+  * libnvme: correct the key-class comment above keys[]
+  * discoverd: unit test the discovery log page dispatch
+  * libnvme: test that DUPRETINFO does not affect the persistence decision
+  * discoverd: do not skip log page entries with DUPRETINFO set
+  * libnvme: drop the DUPRETINFO check on referral entries
+  * doc: add remaining feature commands
+  * tests: silence the plugin-availability help probe
+  * nvme: match Invalid Field by status code alone in init_pi_tags
+  * nvme: require root for gen-hostnqn
+  * libnvme: add the machine ID as a host identifier source
+  * shared: derive an application-specific UUID from the machine ID
+  * shared: add SHA-256 and HMAC-SHA256 without OpenSSL
+  * seagate: clamp fw-activate-history entry count and bound JSON string copy
+  * libnvme, tests, completions: always decode text as UTF-8
+  * nvme: free the plugin command groups at exit
+  * nvme-print: add asynchronous event configuration fields strings
+  * nvme-print-json: add spec v2.4 Asynchronous Event Configuration fields
+  * nvme-types-base: add spec v2.4 Asynchronous Event Configuration fields
+  * nvme-print: always show feature fields
+  * completions: update completions
+  * feat: add remaining feature commands
+
+-------------------------------------------------------------------
 Wed Sep  9 09:35:08 UTC 2026 - Daniel Wagner <dwagner@suse.de>
 
 - drop the 'v' from the version string
