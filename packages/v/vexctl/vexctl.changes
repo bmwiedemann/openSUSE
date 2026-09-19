@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 19 16:04:18 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- Update to version 0.4.4+git91.839fbf5:
+  * build(deps): Bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * build(deps): Bump the all group with 2 updates
+  * Normalize document products once when attesting
+  * Resolve image digests concurrently and honor context in attest
+  * Preallocate slices and drop redundant stat before MkdirAll
+  * Read SARIF report from stdin without a temp file
+  * Index VEX statements by vulnerability when filtering SARIF reports
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+  * build(deps): Bump github.com/carabiner-dev/collector in the all group
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+  * build(deps): Bump chainguard-dev/actions/boilerplate in the all group
+
+-------------------------------------------------------------------
 Wed Sep 09 15:30:10 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - Update to version 0.4.4+git70.36f6f3a:
