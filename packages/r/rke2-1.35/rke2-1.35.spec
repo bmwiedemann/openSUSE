@@ -18,7 +18,7 @@
 
 %define directory_name rke2
 %define binary_name rke2
-%define kubernetes_version v1.35.7
+%define kubernetes_version v1.35.8
 %define kubernetes_version_major_minor 1.35
 %define kubernetes_version_next 1.36
 # check the upstream dependency file and adapt according to the 'golang: upstream version'
@@ -27,14 +27,14 @@
 # example:
 # result of the command 1.22.2 => golang_version go1.22 (including go prefix, without patch version)
 # result of the command 1.22.2 => min_required_golang_minor_version 1.22.2
-%define golang_version go1.25
-%define min_required_golang_minor_version 1.25.12
+%define golang_version go1.26
+%define min_required_golang_minor_version 1.26.5
 
 #
-%define hardened_etcd_version build20260723
+%define hardened_etcd_version build20260819
 
 Name:           rke2-1.35
-Version:        1.35.7+rke2r1
+Version:        1.35.8+rke2r1
 Release:        0
 Summary:        Rancher Kubernetes Engine
 License:        Apache-2.0
@@ -106,6 +106,8 @@ go build \
     -X github.com/k3s-io/k3s/pkg/version.Program=${PROG} \
     -X github.com/k3s-io/k3s/pkg/version.Version=%{version} \
     -X github.com/k3s-io/k3s/pkg/version.UpstreamGolang=${VERSION_GOLANG} \
+    -X github.com/k3s-io/k3s/pkg/cloudprovider.DefaultLBImage=rancher/klipper-lb:${KLIPPERLB_VERSION} \
+    -X github.com/k3s-io/helm-controller/pkg/controllers/chart.DefaultJobImage=rancher/klipper-helm:${KLIPPERHELM_VERSION} \
     -X github.com/rancher/rke2/pkg/images.DefaultRegistry=docker.io \
     -X github.com/rancher/rke2/pkg/images.DefaultEtcdImage=rancher/hardened-etcd:${ETCD_VERSION}-%{hardened_etcd_version} \
     -X github.com/rancher/rke2/pkg/images.DefaultKubernetesImage=rancher/hardened-kubernetes:${KUBERNETES_IMAGE_TAG} \
