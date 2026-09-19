@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/yonahd/kor</param>
-              <param name="changesrevision">d6986c937ce72d331fef965c1b103fab69b4ea93</param></service></servicedata>
+              <param name="changesrevision">d6986c937ce72d331fef965c1b103fab69b4ea93</param></service><service name="tar_scm">
+                <param name="url">https://github.com/yonahd/kor.git</param>
+              <param name="changesrevision">2ac1fcf39ceab83daf39e6e119d2827fe0d9e1ce</param></service></servicedata>
