@@ -36,6 +36,7 @@ BuildRequires:  llvm-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(zlib)
+Requires:       alts
 
 %description
 Rtags is Clang based source file indexer supporting C/C++/Objective-C(++) code.
@@ -54,6 +55,14 @@ tar -xf %{SOURCE1} --strip-components=1 -C src/rct
 
 %install
 %cmake_install
+# Keep the RTags client available directly as well as through libalternatives.
+mv %{buildroot}%{_bindir}/rc %{buildroot}%{_bindir}/rc-rtags
+ln -s alts %{buildroot}%{_bindir}/rc
+mkdir -p %{buildroot}%{_datadir}/libalternatives/rc
+cat > %{buildroot}%{_datadir}/libalternatives/rc/20.conf <<EOF
+binary=%{_bindir}/rc-rtags
+man=rc.7
+EOF
 mkdir -p %{buildroot}%{_sitedir} %{buildroot}%{_scriptdir}
 install -m 0755 -t %{buildroot}%{_scriptdir} bin/*.sh
 chmod 0755 %{buildroot}%{_bindir}/gcc-rtags-wrapper.sh
@@ -70,11 +79,13 @@ chmod 0755 %{buildroot}%{_bindir}/gcc-rtags-wrapper.sh
 %license LICENSE.txt
 %{_bindir}/rdm
 %{_bindir}/rc
+%{_bindir}/rc-rtags
 %{_bindir}/rp
 %{_bindir}/gcc-rtags-wrapper.sh
 %{_mandir}/man7/rc.7%{?ext_man}
 %{_mandir}/man7/rdm.7%{?ext_man}
 %{_sitedir}/rtags
 %{_scriptdir}
+%{_datadir}/libalternatives/rc
 
 %changelog

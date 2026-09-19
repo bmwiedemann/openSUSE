@@ -115,4 +115,12 @@
     <comment>Update to 2.46. Upstream published no release tarball for 2.45/2.46, so sources are now the git tag archive plus a pinned src/rct submodule tarball. Drops the dead ncurses BuildRequires and corrects the cmake floor to 3.8.2. Build green, rpmlint 0 badness.</comment>
     <requestid>1371290</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>d5f1e04a4aade41a2f99b6414239e680</srcmd5>
+    <version>2.46</version>
+    <time>1789849343</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1378985</requestid>
+  </revision>
 </revisionlist>

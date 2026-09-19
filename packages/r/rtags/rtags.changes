@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 21:38:11 UTC 2026 - Matej Cepl <mcepl@suse.com>
+
+- Use libalternatives for /usr/bin/rc, with an alts dependency and
+  priority 20 configuration pointing to /usr/bin/rc-rtags.
+
+-------------------------------------------------------------------
 Sat Aug 15 05:45:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.46:
