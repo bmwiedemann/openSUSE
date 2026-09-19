@@ -18,6 +18,7 @@ osc up "${p}_meta"
 rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
 lockfile -l 3600 .pkglock
+trap 'rm -f .pkglock' EXIT # also on the early exits below
 tmpgit=.sync-tmp-git
 mkdir -p $tmpgit
 find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -afl --parent ARGS $tmpgit
@@ -36,4 +37,3 @@ git add packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
 scripts/tagrelease
 [ -z "$SSH_AUTH_SOCK" ] || git push --all
-rm -f .pkglock
