@@ -38,6 +38,7 @@ Patch5:         update-golang-image-2.patch
 Patch6:         update-golang-net.patch
 Patch7:         update-go-crypto.patch
 Patch8:         fix-go-1.26.patch
+Patch9:         update-aws-sdk.patch
 BuildRequires:  fdupes
 BuildRequires:  go1.26
 BuildRequires:  golang-packaging

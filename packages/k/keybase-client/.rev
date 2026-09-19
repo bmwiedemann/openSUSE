@@ -406,4 +406,13 @@
   * Add fix-go-1.26.patch to fix build issues with go 1.26.</comment>
     <requestid>1375968</requestid>
   </revision>
+  <revision rev="42" vrev="5">
+    <srcmd5>739307ba0d3801134cf6ac2bda63b40b</srcmd5>
+    <version>6.6.3</version>
+    <time>1789849245</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-89090: Denial of Service due to Panic in AWS SDK for Go v2 SDK EventStream Decoder
+  * Add update-aws-sdk.patch to update affected dependencies (bsc#1280628).</comment>
+    <requestid>1378886</requestid>
+  </revision>
 </revisionlist>

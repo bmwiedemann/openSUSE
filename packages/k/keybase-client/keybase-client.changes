@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 17:00:43 UTC 2026 - Matthias Bach <marix@marix.org>
+
+- CVE-2026-89090: Denial of Service due to Panic in AWS SDK for Go v2 SDK EventStream Decoder
+  * Add update-aws-sdk.patch to update affected dependencies (bsc#1280628).
+
+-------------------------------------------------------------------
 Sat Sep  5 17:57:12 UTC 2026 - Matthias Bach <marix@marix.org>
 
 - CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: authentication bypass and deadlocks in the crypto/ssh library 
