@@ -19,7 +19,7 @@
 
 %define lname	libadns1
 Name:           adns
-Version:        1.6.2
+Version:        1.7.0
 Release:        0
 Summary:        Advanced Easy-to-Use Asynchronous-Capable DNS Utilities
 License:        GPL-2.0-or-later
@@ -59,7 +59,7 @@ Libadns-devel includes the header file and static library to develop
 programs with libads support.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 cp %{SOURCE3} .
 
 %build

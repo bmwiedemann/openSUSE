@@ -271,4 +271,12 @@
 - added libadns.so.1 to filelist</comment>
     <requestid>1351302</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>8a78482632f7a4b4b833329ea67721b2</srcmd5>
+    <version>1.7.0</version>
+    <time>1789849216</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1378853</requestid>
+  </revision>
 </revisionlist>

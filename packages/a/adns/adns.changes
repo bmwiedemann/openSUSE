@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 16 18:35:50 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to 1.7.0:
+  * Select query IDs randomly using getentropy, if we can.
+    See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=1145407.
+  * Test harness: minor tidying up re input file reading.
+  * README: Ask for bugs to go to Debian.
+- Refresh patches
+  * adns-1.4-configure.patch
+  * adns-visibility.patch
+
+-------------------------------------------------------------------
 Wed May  6 20:30:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.6.2:
