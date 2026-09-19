@@ -17,7 +17,7 @@
 
 
 Name:           termscp
-Version:        1.1.1
+Version:        1.2.0
 Release:        0
 Summary:        Feature rich terminal UI file transfer and explorer
 License:        MIT

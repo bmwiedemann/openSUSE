@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/veeso/termscp</param>
-              <param name="changesrevision">5cee1184dc4e20e3641bd3bc9beb15cc5a8edd35</param></service></servicedata>
+              <param name="changesrevision">5cee1184dc4e20e3641bd3bc9beb15cc5a8edd35</param></service><service name="tar_scm">
+                <param name="url">https://github.com/veeso/termscp.git</param>
+              <param name="changesrevision">f54c50f6efc8d58e98389119374e4adcc08c14fd</param></service></servicedata>
