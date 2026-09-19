@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:20:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.2:
+  * 1.9.2 reverts the copy_file allow_symlink default for
+    non-executables and narrows Starlark flag default scope from
+    universal to target; CI covers Bazel 9, Bazel 6 dropped
+  * 1.9.1 was skipped upstream over a CI failure; 1.9.0 had
+    optimized copy_file and raised the rules_go dependency for
+    Bazel 9 compatibility
+  * New since 1.0.3: expand_template, copy_directory and
+    directory rules, subpackages module, dicts.omit/dicts.pick,
+    paths is_normalized/starts_with, repeatable_string_flag,
+    module-extension helpers, bzlmod support and a stable
+    Gazelle plugin for Starlark
+  * Incompatible changes: native_binary/native_test use symlinks
+    and build in target configuration; copy_file keeps
+    non-executables out of default_runfiles; structs.to_dict
+    ignores deprecated to_json/to_proto methods
+  * Build settings exposed as Make variables; unittest and
+    analysistest gains (doc params, toolchain argument,
+    loadingtest); see upstream release notes for the full list
+
+-------------------------------------------------------------------
 Wed Sep  1 07:19:40 UTC 2021 - Egbert Eich <eich@suse.com>
 
 - Add support for versioned packages. This allows to provide

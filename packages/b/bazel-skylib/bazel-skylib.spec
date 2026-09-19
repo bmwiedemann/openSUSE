@@ -1,7 +1,7 @@
 #
-# spec file for package bazel
+# spec file for package bazel-skylib
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,18 @@
 
 
 %define set_ver_suffix 0
-
 %define shortname bazel-skylib
-%define src_install_dir /usr/src/%{shortname}
+%define src_install_dir %{_prefix}/src/%{shortname}
 # set by service set_version:
-%define version_unconverted 1.0.3
-
+%define version_unconverted 1.9.2
 %if 0%{set_ver_suffix}
-%define n_suffix %version_unconverted
+%define n_suffix %{version_unconverted}
 %endif
-
 Name:           %{shortname}%{?n_suffix}
-Version:        1.0.3
+Version:        1.9.2
 Release:        0
 Summary:        Set of functions for writing Bazel build rules with Skylark
 License:        Apache-2.0
-Group:          Development/Tools/Building
 URL:            https://github.com/bazelbuild/bazel-skylib
 Source:         https://github.com/bazelbuild/bazel-skylib/archive/%{version}.tar.gz#/%{shortname}-%{version}.tar.gz
 
@@ -43,11 +39,10 @@ Bazel.
 
 %package source
 Summary:        Source code of bazel-skylib
-Group:          Development/Sources
 BuildArch:      noarch
 %if 0%{set_ver_suffix}
-Provides:       %{shortname}-source = %version
 Conflicts:      %{shortname}-source
+Provides:       %{shortname}-source = %{version}
 %endif
 
 %description source
