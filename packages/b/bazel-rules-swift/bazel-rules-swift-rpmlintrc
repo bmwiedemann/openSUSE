@@ -1,0 +1,13 @@
+# Verbatim upstream source dump: the findings below are inherent to the
+# shipped tree, not packaging defects.
+# /usr/src is the agreed install location for Bazel rules source packages.
+addFilter("bazel-rules-swift-source.* filelist-forbidden-fhs23")
+# Duplicate example/test fixtures are upstream's own files.
+addFilter("bazel-rules-swift-source.* files-duplicate")
+# Upstream test/tool scripts use /usr/bin/env shebangs, kept pristine.
+addFilter("bazel-rules-swift-source.* env-script-interpreter")
+# Empty fixture files (BUILD, .swift) are intentional upstream testdata.
+addFilter("bazel-rules-swift-source.* zero-length")
+# Docs and templates are not installed as executables.
+addFilter("bazel-rules-swift-source.* non-executable-script")
+addFilter("bazel-rules-swift-source.* script-without-shebang")

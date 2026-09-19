@@ -1,10 +1,10 @@
 <services>
-  <service mode="disabled" name="obs_scm">
+  <service mode="manual" name="obs_scm">
     <param name="url">https://github.com/bazelbuild/rules_swift</param>
     <param name="scm">git</param>
     <param name="filename">bazel-rules-swift</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="revision">0.13.0</param>
+    <param name="revision">4.0.1</param>
   </service>
   <service mode="buildtime" name="tar" />
   <service mode="buildtime" name="recompress">

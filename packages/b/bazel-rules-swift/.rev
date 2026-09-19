@@ -7,4 +7,12 @@
     <comment>new package with Bazel rules</comment>
     <requestid>761159</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>708194720a33b687b4c706878316a425</srcmd5>
+    <version>4.0.1</version>
+    <time>1789849219</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1378863</requestid>
+  </revision>
 </revisionlist>

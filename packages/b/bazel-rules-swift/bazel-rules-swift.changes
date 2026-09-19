@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:23:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.0.1, covering six years of upstream releases.
+- WORKSPACE support removed: Bzlmod is now required.
+- Drop support for Bazel 7; Bazel 8.x/9.x LTS or rolling is needed.
+- Remove swift.vfs_overlay, use swift.use_explicit_swift_module_map.
+- Add opt-in explicit modules support.
+- Add opt-in layering check via the swift.layering_check_swift feature.
+- Add hermetic Swift toolchain support via a Bzlmod extension.
+- Add swift_binary with linkshared for building shared libraries.
+- Support cross-compiling to Android and WebAssembly with a Swift SDK.
+- Build and test Swift natively on a Windows host.
+- Add swift.emit_localized_strings feature for string extraction.
+- Support the Swift 6 language mode.
+- Switch the obs_scm fetch service from obsolete disabled to manual mode.
+- Add rpmlintrc filtering findings inherent to the verbatim source dump.
+- See upstream's release notes for the full list of changes.
+
+-------------------------------------------------------------------
 Mon Jan  6 12:59:10 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Initial release
