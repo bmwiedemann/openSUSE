@@ -28,7 +28,7 @@ COPY --from=target / /target
 
 RUN set -euo pipefail; \
     export PERMCTL_ALLOW_INSECURE_MODE_IF_NO_PROC=1 SOURCE_DATE_EPOCH=0; \
-    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl iproute2 kubevirt1.9-container-disk kubevirt1.9-virt-handler nftables qemu-img system-user-qemu tar util-linux-systemd
+    zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl iproute2 kubevirt1.9-container-disk kubevirt1.9-virt-handler nftables procps qemu-img system-user-qemu tar util-linux-systemd
 # sanity check that the version from the tag is equal to the version of kubevirt1.9-virt-handler that we expect
 RUN set -euo pipefail; \
     [ "$(rpm --root /target -q --qf '%{version}' kubevirt1.9-virt-handler | \
