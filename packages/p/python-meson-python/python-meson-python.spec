@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-meson-python
-Version:        0.20.0
+Version:        0.21.1
 Release:        0
 Summary:        Meson Python build backend (PEP 517)
 License:        MIT
@@ -29,7 +29,7 @@ Source0:        https://files.pythonhosted.org/packages/source/m/meson_python/me
 Patch11:        mesonpy-trim-deps.patch
 # PATCH-FEATURE-OPENSUSE mesonpy-reproducible.patch gh#openSUSE/python-rpm-macros#182
 Patch12:        mesonpy-reproducible.patch
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module packaging >= 23.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pyproject-metadata >= 0.9.0}
@@ -89,6 +89,6 @@ $python -m pytest -v -k "not ($donttest)"
 %license LICENSE
 %doc README.rst
 %{python_sitelib}/mesonpy
-%{python_sitelib}/meson_python-%{version}*-info
+%{python_sitelib}/meson_python-%{version}.dist-info
 
 %changelog

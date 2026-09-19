@@ -192,4 +192,22 @@
   * Add support for targeting the Android platform.</comment>
     <requestid>1359289</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>78f67ed5cdc2b65a88f47a39bae5b612</srcmd5>
+    <version>0.21.1</version>
+    <time>1789849171</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.21.1:
+  * Restore compatibility with Python interpreters not implementing PEP 3149.
+  * Add support for the stable ABI for free-threaded interpreters (abi3t).
+  * Add support for the stable ABI extension modules' platform-specific
+    filename suffixes introduced in Python 3.15.
+  * Allow specifying editable-verbose in pyproject.toml.
+  * Improve the default behavior of editable installs by capturing and
+    reporting build errors when rebuilding.
+  * Use .start files (PEP 829) instead of .pth files to implement editable
+    wheels for Python 3.15 and later.
+- Refresh patch mesonpy-reproducible.patch</comment>
+    <requestid>1378702</requestid>
+  </revision>
 </revisionlist>

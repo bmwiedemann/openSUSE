@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 18 04:26:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.21.1:
+  * Restore compatibility with Python interpreters not implementing PEP 3149.
+  * Add support for the stable ABI for free-threaded interpreters (abi3t).
+  * Add support for the stable ABI extension modules' platform-specific
+    filename suffixes introduced in Python 3.15.
+  * Allow specifying editable-verbose in pyproject.toml.
+  * Improve the default behavior of editable installs by capturing and
+    reporting build errors when rebuilding.
+  * Use .start files (PEP 829) instead of .pth files to implement editable
+    wheels for Python 3.15 and later.
+- Refresh patch mesonpy-reproducible.patch
+
+-------------------------------------------------------------------
 Sun Jun 14 18:18:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.20.0:
