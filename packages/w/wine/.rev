@@ -5992,4 +5992,17 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.17 release</comment>
     <requestid>1376012</requestid>
   </revision>
+  <revision rev="501" vrev="1">
+    <srcmd5>8369f0a7c042f2324cfda05af9437f25</srcmd5>
+    <version>11.18</version>
+    <time>1789849364</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.18 release
+  - More NTOSKRNL support for kernel drivers.
+  - A wide range of fixes for various code correctness issues.
+  - Some compatibility fixes in standard C headers.
+  - Various bug fixes.
+- update staging to 11.18 release</comment>
+    <requestid>1379004</requestid>
+  </revision>
 </revisionlist>

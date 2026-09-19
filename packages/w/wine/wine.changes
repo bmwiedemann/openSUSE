@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep 19 10:25:18 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.18 release
+  - More NTOSKRNL support for kernel drivers.
+  - A wide range of fixes for various code correctness issues.
+  - Some compatibility fixes in standard C headers.
+  - Various bug fixes.
+- update staging to 11.18 release
+
+-------------------------------------------------------------------
 Sun Sep  6 10:47:47 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.17 release
