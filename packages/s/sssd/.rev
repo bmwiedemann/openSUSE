@@ -1344,4 +1344,14 @@ goes in line with 946250</comment>
   (OAuth2/OpenID Connect) support. Also enables the krb5 idp plugin.</comment>
     <requestid>1367813</requestid>
   </revision>
+  <revision rev="154" vrev="3">
+    <srcmd5>337d1c047fc09ada213456ffc96b9898</srcmd5>
+    <version>2.13.1</version>
+    <time>1789849193</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix IDP provider cross-user impersonation; (bsc#1279915);
+  (CVE-2026-87853); Add patch
+  0018-IDP-fix-user-matching-in-eval_access_token_buf.patch</comment>
+    <requestid>1378788</requestid>
+  </revision>
 </revisionlist>

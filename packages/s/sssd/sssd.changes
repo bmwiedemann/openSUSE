@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 09:22:31 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
+
+- Fix IDP provider cross-user impersonation; (bsc#1279915);
+  (CVE-2026-87853); Add patch
+  0018-IDP-fix-user-matching-in-eval_access_token_buf.patch
+
+-------------------------------------------------------------------
 Sun Jul 26 03:29:44 UTC 2026 - Perry Naseck <opensuse@perrynaseck.com>
 
 - Enable sssd-idp. This provides external Identity Provider
