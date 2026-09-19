@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:11:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * Bug Fixes
+    - Update (d6f37f6)
+  * Documentation
+    - Document cordoned-node taint caveat for --ignore-taints
+      (2a3af6f)
+  * Features
+    - Add windows/amd64 release build and krew platform entry
+      (42102cf)
+    - Add json output format (-o json) (3cb65d6)
+  * Dependencies
+    - fix(deps): update
+    - chore(deps): bump kube from 4.0.0 to 4.2.0 (#349)
+    - chore(deps): bump serde from 1.0.228 to 1.0.229 (#348)
+    - chore(deps): bump tokio from 1.52.3 to 1.53.1 (#350)
+    - chore(deps): bump serde_json from 1.0.150 to 1.0.151 (#351)
+    - chore(deps): bump futures from 0.3.32 to 0.3.33 (#352)
+
+-------------------------------------------------------------------
 Tue Jul 07 05:47:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.2:
