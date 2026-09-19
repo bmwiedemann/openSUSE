@@ -88,20 +88,24 @@ for line in watchtail(sys.stdin):
         pass
     subprocess.call(["tail", "-10", "/mounts/work/SRC/openSUSE:Factory/"+package+"/.rev"], shell=False);
     subprocess.call(["lockfile", "-l", "3600", ".pkglock"], shell=False)
-    subprocess.call(["scripts/syncone", package], shell=False)
-    mappedpkg = pkgmap(package)
-    subprocess.call(["git", "add", mappedpkg], shell=False)
-    process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
-    process.communicate(info.encode('utf-8'))
-    subprocess.call(["/usr/local/bin/sendmailslack", package, info])
-    if os.path.isdir(mappedpkg+'/.git'):
-        subprocess.call(["git", "add", "."], cwd=mappedpkg, shell=False)
-        process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE, cwd=mappedpkg)
+    if subprocess.call(["scripts/syncone", package], shell=False) != 0:
+        # leave the package alone and let the next change - or the next
+        # full scripts/sync run - pick it up again
+        print("syncone failed for "+package+" - not committing")
+    else:
+        mappedpkg = pkgmap(package)
+        subprocess.call(["git", "add", mappedpkg], shell=False)
+        process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE)
         process.communicate(info.encode('utf-8'))
-        subprocess.call(["git", "pull", "--rebase"], cwd=mappedpkg)
-        subprocess.call(["git", "rebase", "--skip"], cwd=mappedpkg) # handle conflict
-        subprocess.call(["git", "push", "--set-upstream", "origin", "master"], cwd=mappedpkg)
-        subprocess.call(["scripts/pagure-set-projectoptions", package], shell=False)
+        subprocess.call(["/usr/local/bin/sendmailslack", package, info])
+        if os.path.isdir(mappedpkg+'/.git'):
+            subprocess.call(["git", "add", "."], cwd=mappedpkg, shell=False)
+            process = subprocess.Popen(["git", "commit", "-F", "-"], stdin=subprocess.PIPE, cwd=mappedpkg)
+            process.communicate(info.encode('utf-8'))
+            subprocess.call(["git", "pull", "--rebase"], cwd=mappedpkg)
+            subprocess.call(["git", "rebase", "--skip"], cwd=mappedpkg) # handle conflict
+            subprocess.call(["git", "push", "--set-upstream", "origin", "master"], cwd=mappedpkg)
+            subprocess.call(["scripts/pagure-set-projectoptions", package], shell=False)
     count += 1
     #if os.environ.get('SSH_AUTH_SOCK') and (count%4) == 0:
     #    subprocess.call(["git", "push"])
