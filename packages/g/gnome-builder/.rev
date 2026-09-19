@@ -733,4 +733,29 @@
   + Updated translations.</comment>
     <requestid>1363890</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>cfc2716d9f15d3e24f7c1ba433b28aa3</srcmd5>
+    <version>50.0+39</version>
+    <time>1789849201</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 50.0+39:
+  + main: make sure libdex is initialized early
+  + plugin/newcomers:
+    - Add Fractal
+    - Add Loupe
+    - Add Showtime
+    - Add Contacts
+    - Remove unused Photos icons
+    - Remove Boxes
+    - Remove gitg
+    - Remove Sound Recorder
+  + plugins/editorui:
+    - 'Go to line' sends focus to page
+    - Import GObject class in Python
+    - Use camelized file name as object name in Python
+    - Install properties
+    - Use macro in `finalize()` 
+  + Updated translations.</comment>
+    <requestid>1378873</requestid>
+  </revision>
 </revisionlist>

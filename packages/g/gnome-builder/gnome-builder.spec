@@ -21,7 +21,7 @@
 %define glib_version 2.85
 
 Name:           gnome-builder
-Version:        50.0
+Version:        50.0+39
 Release:        0
 Summary:        A toolsmith for GNOME-based applications
 License:        CC-BY-SA-3.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND LGPL-3.0-or-later AND LGPL-2.1-or-later
