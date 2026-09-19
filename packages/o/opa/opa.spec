@@ -17,7 +17,7 @@
 
 
 Name:           opa
-Version:        1.20.1
+Version:        1.20.2
 Release:        0
 Summary:        Open source, general-purpose policy engine
 License:        Apache-2.0
