@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 15 09:05:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.451
+  * hfsfuse will now write logs to stderr instead of syslog when
+    in foreground mode (the `-f` option).
+  * hfsfuse and hfsdump now log an error if a directory entry
+    contains invalid unicode.
+- from version 0.444
+  * Fixes writing binary files and xattrs with the hfsdump util
+    on Windows.
+- from version 0.443
+  * Fixes reading on Windows for the non-FUSE tools.
+  * Other minor bugfixes and improvements, mainly to the hfsdump util.
+
+-------------------------------------------------------------------
 Thu Aug 13 08:17:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.435
