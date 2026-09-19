@@ -20,13 +20,12 @@
 %define sover 1
 %define libname libze_intel_npu%{sover}
 Name:           linux-npu-driver
-Version:        1.35.0
+Version:        1.38.0
 Release:        0
 Summary:        Driver for Intel NPU device
 License:        MIT
 URL:            https://github.com/intel/linux-npu-driver
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         https://github.com/intel/linux-npu-driver/commit/84819fb90b5786fcde13552df772467f9d6b7ffe.patch#/fix-resource-cleaner-overflow.patch
 BuildRequires:  cmake
 BuildRequires:  git
 %if 0%{?suse_version} >= 1600 && 0%{?is_opensuse}
@@ -76,7 +75,7 @@ export CXX=g++-12
 %cmake \
 	-DENABLE_NPU_COMPILER_BUILD=OFF \
         -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON \
-        -DCMAKE_EXE_LINKER_FLAGS:STRING="-pie" \
+        -DCMAKE_EXE_LINKER_FLAGS:STRING="%{?build_ldflags} -pie -Wl,-z,noexecstack" \
         -DCMAKE_C_FLAGS:STRING="%{optflags} -fcf-protection=none" \
         -DCMAKE_CXX_FLAGS:STRING="%{optflags} -fcf-protection=none -Wno-error=missing-field-initializers"
 

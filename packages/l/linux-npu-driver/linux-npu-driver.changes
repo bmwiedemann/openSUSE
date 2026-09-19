@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Sep 19 04:29:12 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Update to version 1.38.0
+- Remove fix-resource-cleaner-overflow.patch 
+
+-------------------------------------------------------------------
 Wed Aug 19 02:22:49 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 -  Add fix-resource-cleaner-overflow.patch to resolve
