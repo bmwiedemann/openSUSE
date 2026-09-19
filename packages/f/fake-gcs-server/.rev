@@ -123,4 +123,29 @@ Update to 1.52.2:
   architectures (bsc#1242242).</comment>
     <requestid>1277893</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>222231330fb5497ad74a2c72269ae36c</srcmd5>
+    <version>1.56.1</version>
+    <time>1789849228</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.56.1:
+  * Bucket listing pagination, move-instead-of-copy object delete,
+    generation parameter on object ACL endpoints
+  * Compose overwriting an object mints a new generation, deleting
+    a specific object generation supported, no duplicate archive
+    on same-generation rewrites
+  * Honour ifGenerationMatch in simple uploads,
+    destinationPredefinedAcl on copy/compose, response-*
+    download parameters, fully qualified Pub/Sub topic names
+  * gcloud CLI resumable uploads, env vars for all config
+    options, retention CRUD, per-bucket pub/sub notification API
+  * Storage class in patch/compose, X-Goog-Stored-Content-Length
+    header, SelfLink in bucket responses, fakeserver honours Stop
+  * Drop update-golang-oauth2.patch, upstream ships oauth2
+    v0.36.0 (CVE-2025-22868, bsc#1239200)
+  * Vendored x/net v0.58.0, above the CVE-2023-45288 (bsc#1236521)
+    and CVE-2023-39325 fixes
+  * Upstream now needs Go 1.26: raise the golang(API) floor</comment>
+    <requestid>1378872</requestid>
+  </revision>
 </revisionlist>

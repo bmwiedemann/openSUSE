@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.56.1:
+  * Bucket listing pagination, move-instead-of-copy object delete,
+    generation parameter on object ACL endpoints
+  * Compose overwriting an object mints a new generation, deleting
+    a specific object generation supported, no duplicate archive
+    on same-generation rewrites
+  * Honour ifGenerationMatch in simple uploads,
+    destinationPredefinedAcl on copy/compose, response-*
+    download parameters, fully qualified Pub/Sub topic names
+  * gcloud CLI resumable uploads, env vars for all config
+    options, retention CRUD, per-bucket pub/sub notification API
+  * Storage class in patch/compose, X-Goog-Stored-Content-Length
+    header, SelfLink in bucket responses, fakeserver honours Stop
+  * Drop update-golang-oauth2.patch, upstream ships oauth2
+    v0.36.0 (CVE-2025-22868, bsc#1239200)
+  * Vendored x/net v0.58.0, above the CVE-2023-45288 (bsc#1236521)
+    and CVE-2023-39325 fixes
+  * Upstream now needs Go 1.26: raise the golang(API) floor
+
+-------------------------------------------------------------------
 Thu May 15 16:31:21 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
 
 - Drop BuildRequires: golang-packaging. The original macros for
