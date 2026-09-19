@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 09:22:45 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 1.28.2
+  * pymupdf.Document.__init__(): new arg `archive` to support documents
+    with archives.
+  * pymupdf.Document.convert_to_pdf(): also generate links.
+  * pymupdf.Document.save() now saves non-PDF documents in PDF format.
+  * New method pymupdf.Document.apply_css().
+  * Use MuPDF-1.28.2.
+  * Output warning when legacy `fitz` module is imported.
+  * Cope better with markdown containing illegal utf8 sequences.
+  * Fixed building with PYMUPDF_SETUP_MUPDF_VS_UPGRADE.
+  * pymupdf.Page.find_tables() improvements
+- Enable multiflavor build and support libalternatives
+- CVE-2026-82035: a path traversal vulnerability in the font branch
+  of extract_objects() in src/__main__.py (bsc#1280486)
+  * CVE-2026-82035.patch
+
+-------------------------------------------------------------------
 Sun Aug 23 06:03:47 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Make the build reproducible: the bundled mupdf static library

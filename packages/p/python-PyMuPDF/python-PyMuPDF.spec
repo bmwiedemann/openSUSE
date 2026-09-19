@@ -19,24 +19,26 @@
 # Python 2 build fails always
 %define skip_python2 1
 %define pypi_name pymupdf
-%define mupdf_version 1.27.2
+%define mupdf_version 1.28.2
 %{?sle15_python_module_pythons}
-#python3-clangxx is only available for python 3.13
-%define pythons python313
+%bcond_without libalternatives
 Name:           python-PyMuPDF
-Version:        1.27.2.2
+Version:        1.28.2
 Release:        0
 Summary:        Python binding for MuPDF, a PDF and XPS viewer
 License:        AGPL-3.0-only
 Group:          Development/Libraries/Python
 URL:            https://github.com/pymupdf/PyMuPDF
 Source:         https://files.pythonhosted.org/packages/source/P/PyMuPDF/pymupdf-%{version}.tar.gz
-Source1:        mupdf-%{mupdf_version}-source.tar.gz
+Source1:        https://casper.mupdf.com/downloads/archive/mupdf-%{mupdf_version}-source.tar.gz
+# PATCH-FIX-UPSTREAM CVE-2026-82035.patch bsc#1280486
+Patch0:         CVE-2026-82035.patch
 BuildRequires:  %{python_module certifi}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module pipcl}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  clang19-devel
 %if 0%{?suse_version} >= 1699
 BuildRequires:  llvm21-libclang13
@@ -56,6 +58,7 @@ BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libopenjp2)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(zlib)
+Requires:       alts
 Provides:       bundled(mupdf) = %version
 # mupdf has bundled() on its own, too, so kinda bad
 %python_subpackages
@@ -83,10 +86,13 @@ export CFLAGS="%{optflags} -ffat-lto-objects -frandom-seed=%{version} -I/usr/inc
 export ARCHFLAGS="%{optflags}"
 # -D makes .a files deterministic
 export AR="ar -D"
+# desperate attempt to make it build, dunno why it worked
+export PYTHONPATH=%{python3_sitelib}
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_clone -a %{buildroot}%{_bindir}/pymupdf
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 %check
@@ -100,7 +106,7 @@ cd /tmp
 %{python_sitearch}/[Pp]y[Mm]u[Pp][Dd][Ff]-%{version}*info
 %{python_sitearch}/fitz/
 %{python_sitearch}/pymupdf/
-%{_bindir}/pymupdf
+%python_alternative %{_bindir}/pymupdf
 %exclude %{python_sitearch}/pymupdf/mupdf-devel/
 
 %files %{python_files devel}
