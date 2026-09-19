@@ -205,4 +205,12 @@
 - update CUDA variant to 615.71.09</comment>
     <requestid>1377957</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>d4db7034a57f40b0ebda83905c1b2357</srcmd5>
+    <version>595.99.02</version>
+    <time>1789849185</time>
+    <user>dimstar_suse</user>
+    <comment>- fixed build on SLE16.1</comment>
+    <requestid>1378765</requestid>
+  </revision>
 </revisionlist>

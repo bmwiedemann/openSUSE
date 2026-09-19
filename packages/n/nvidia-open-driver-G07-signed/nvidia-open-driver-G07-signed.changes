@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 03:04:25 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build on SLE16.1
+
+-------------------------------------------------------------------
 Mon Sep 14 14:55:10 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - moved the conditional to %prep section; required going back from

@@ -244,7 +244,7 @@ ls -l %{_sourcedir}
 %endif
 %if %{with cuda}
 %if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
-%autopatch -P 1 -p1
+%patch -P 1 -p1
 %endif
 %endif
 
