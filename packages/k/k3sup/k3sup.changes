@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:06:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.13.13:
+  * Bump go modules and GitHub Actions to Go 1.26
+  * Update upload-assets action to 0.5.0
+  * Note ce overlap commands
+  * Remove one more note
+  * Correct k3sup pro to k3sup-pro command
+  * Bump go.mod
+  * Bump to Go 1.26
+  * Updates on asking for sponsors
+  * Add ascii diagram
+  * Make intro a link
+
+-------------------------------------------------------------------
 Thu Mar 05 06:54:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.12:

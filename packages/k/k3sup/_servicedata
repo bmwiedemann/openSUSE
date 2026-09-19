@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/alexellis/k3sup</param>
-              <param name="changesrevision">ce927dd148cbc42f75fb3dd44f8836b4d3f9a0e0</param></service></servicedata>
+              <param name="changesrevision">ce927dd148cbc42f75fb3dd44f8836b4d3f9a0e0</param></service><service name="tar_scm">
+                <param name="url">https://github.com/alexellis/k3sup.git</param>
+              <param name="changesrevision">2fa773c9db8995a193d9ec7a79db00944931525e</param></service></servicedata>
