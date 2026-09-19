@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:22:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.1.2:
+  * Support new style Bazel platforms
+  * New Go CLI rbe_configs_gen generating C++/Java toolchain
+    configs; old Starlark rules and legacy pre-generated configs
+    deprecated and mostly removed (package shrank accordingly)
+  * Pre-generated toolchain configs for Bazel 2.0.0 through 5.1.x
+  * Java platformization support, changeable C++ toolchain
+  * Apache-2.0 license text shipped with generated configs
+  * Config generation and uploader work on Windows, cloud
+    monitoring and e2e tests added
+  * Rename exec_properties to internal_exec_properties
+  * Refresh bazelrc files for recent Bazel releases
+
+-------------------------------------------------------------------
 Mon Jan 06 17:57:14 UTC 2020 - mrostecki@opensuse.org
 
 - Update to version 2.0.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-toolchains
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,13 @@
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           bazel-toolchains
-Version:        2.0.0
+Version:        5.1.2
 Release:        0
 Summary:        Set of Bazel toolchain configurations
 License:        Apache-2.0
-Group:          Development/Tools/Building
-Url:            https://github.com/bazelbuild/bazel-toolchains
+URL:            https://github.com/bazelbuild/bazel-toolchains
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  fdupes
 
@@ -35,7 +33,6 @@ via a remote execution environment.
 
 %package source
 Summary:        Source code of bazel-toolchains
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source

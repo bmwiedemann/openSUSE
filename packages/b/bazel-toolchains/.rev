@@ -53,4 +53,12 @@
   * Release commit list update (#761) (forwarded request 765218 from mrostecki)</comment>
     <requestid>765219</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>bd87c0c48163358905eed6995b3e3c83</srcmd5>
+    <version>5.1.2</version>
+    <time>1789849221</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1378866</requestid>
+  </revision>
 </revisionlist>
