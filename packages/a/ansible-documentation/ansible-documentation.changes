@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 05:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.4:
+  * ci: refresh dev dependencies (#3937)
+  * Fix a typo within the sample spec (#3927) (#3931)
+  * docs: add Secure Development Practice (#3735) (#3928)
+  * docs: backport cross-links and forum references (from #3916)
+    (#3924)
+  * [PR #3721/c77ebb1b backport][stable-2.21] docs: add Ansible
+    Security Policy (#3922)
+  * docs: add Vulnerability Management Policy (#3734) (#3918)
+  * ci: refresh dev dependencies (#3914)
+  * ci: refresh dev dependencies (#3908)
+  * typo: unit tests are in tests/unit (#3888) (#3902)
+  * ci: refresh dev dependencies (#3893)
+  * Fix noxfile's session assignments. (#3898) (#3899)
+  * Add the Ansible community 14.3.0 porting guide (#3885) (#3886)
+
+-------------------------------------------------------------------
 Tue Aug 11 07:23:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.3:
