@@ -308,4 +308,41 @@
     <comment></comment>
     <requestid>1369490</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>512bb56841064ab144e4e46d02380764</srcmd5>
+    <version>3.5.1</version>
+    <time>1789849232</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.5.1
+  * Add opt-in built-in OSS JSON/JSONL listings with bounded pages and resumable
+    cursors, structured errors with recovery guidance, and non-interactive
+    confirmation handling (#1452).
+  * Add offline validation and read-only plans for single-file uploads and
+    single-object deletion; record exact failed targets in exclusive JSONL
+    manifests for cp/sync and expose sync deletion-phase state (#1452).
+  * Fix the OSS bridge to preserve option order and `--`, propagate parser and
+    service errors, pass profile region/timeouts/retry budgets, and refresh host
+    credentials at request time without injecting them into argv (#1454).
+  * Stop replaying writes after ambiguous transport or server failures; classify
+    retries with jittered backoff, join workers before closing reports, and fix
+    progress data races and failure-report filename collisions (#1452).
+  * Enforce the host safety policy for legacy OSS operations and reject
+    unsupported preview combinations (#1452, #1454).
+  * Harden policy parsing and environment overrides to fail closed on invalid
+    configuration; explicit deny rules cannot be bypassed by `--force`, `--yes`,
+    or AI mode.
+  * Enforce the safety policy before built-in extension dispatch
+    (cliext/safety.go).
+  * Restrict legacy FNF request-signing compatibility to a product allowlist (#1447).
+  * API alias canonicalization was reverted and held: aliases and PascalCase/
+    kebab-case spellings remain separate policy matches, matching command
+    spelling exactly as typed.
+  * Version AI-mode OpenAPI and OSS error envelopes with `schemaVersion: &quot;v1&quot;`,
+    and return structured startup configuration errors (#1453).
+  * Add ALIBABA_CLOUD_CLI_AGENT_INTEGRATION controls for automatic AI mode;
+    expand agent detection, User-Agent attribution, and Qoder China CLI
+    detection (#1445, #1455).
+  * Support case-insensitive product routing for in-process OpenAPI commands (#1445). (forwarded request 1378879 from glaubitz)</comment>
+    <requestid>1378881</requestid>
+  </revision>
 </revisionlist>

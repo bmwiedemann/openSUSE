@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Sep 18 18:13:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 3.5.1
+  * Add opt-in built-in OSS JSON/JSONL listings with bounded pages and resumable
+    cursors, structured errors with recovery guidance, and non-interactive
+    confirmation handling (#1452).
+  * Add offline validation and read-only plans for single-file uploads and
+    single-object deletion; record exact failed targets in exclusive JSONL
+    manifests for cp/sync and expose sync deletion-phase state (#1452).
+  * Fix the OSS bridge to preserve option order and `--`, propagate parser and
+    service errors, pass profile region/timeouts/retry budgets, and refresh host
+    credentials at request time without injecting them into argv (#1454).
+  * Stop replaying writes after ambiguous transport or server failures; classify
+    retries with jittered backoff, join workers before closing reports, and fix
+    progress data races and failure-report filename collisions (#1452).
+  * Enforce the host safety policy for legacy OSS operations and reject
+    unsupported preview combinations (#1452, #1454).
+  * Harden policy parsing and environment overrides to fail closed on invalid
+    configuration; explicit deny rules cannot be bypassed by `--force`, `--yes`,
+    or AI mode.
+  * Enforce the safety policy before built-in extension dispatch
+    (cliext/safety.go).
+  * Restrict legacy FNF request-signing compatibility to a product allowlist (#1447).
+  * API alias canonicalization was reverted and held: aliases and PascalCase/
+    kebab-case spellings remain separate policy matches, matching command
+    spelling exactly as typed.
+  * Version AI-mode OpenAPI and OSS error envelopes with `schemaVersion: "v1"`,
+    and return structured startup configuration errors (#1453).
+  * Add ALIBABA_CLOUD_CLI_AGENT_INTEGRATION controls for automatic AI mode;
+    expand agent detection, User-Agent attribution, and Qoder China CLI
+    detection (#1445, #1455).
+  * Support case-insensitive product routing for in-process OpenAPI commands (#1445).
+  * Expose regional and VPC product endpoints through queryable product Help (#1448).
+  * Support camel RPC flat arrays (#1456) and prefer product prefix/substring
+    suggestions over edit distance in "Did you mean" output.
+  * Upgrade JMESPath to support `json.Number`, preserving large-number
+    comparison and sorting precision and fixing empty-array average semantics.
+  * Dispatch newly installed metadata plugins in-process (#1439).
+  * Harden plugin archive extraction, package replacement/rollback, and download
+    URL diagnostics (#1442).
+  * Redact JSON and form bodies based on content while preserving the encoding
+    of original form stars; keep raw and unparseable dry-run bodies intact
+    (#1440, #1449).
+  * Prefer native macOS architecture packages in install.sh (#1433).
+  * Keep prerelease tags off the stable latest pointer and fail closed when
+    release asset downloads are incomplete (#1437).
+  * Include cliext in required checks, fix cross-platform test failures (#1446),
+    restore single-file entrypoint builds, and stabilize language tests.
+  * Update the aliyun-openapi-meta submodule and release jobs.
+  * Add the OSS automation guide (en / zh-CN), document startup errors, exit
+    statuses and command-spelling safety matching (#1450), and add the v3.5.1
+    CHANGELOG entry.
+- from version 3.5.0
+  * docs: add StsToken credential mode to README by @yndu13 in (#1403)
+  * Built-in plugin and AI MODE enhancement by @yndu13 in (#1411)
+  * Update Aliyun OpenAPI meta data
+
+-------------------------------------------------------------------
 Tue Aug  4 07:43:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.4.11
