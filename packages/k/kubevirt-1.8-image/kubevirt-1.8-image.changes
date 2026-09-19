@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 17:37:23 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- remove virt- prefix from pr-helper
+
+-------------------------------------------------------------------
 Tue Sep  8 17:34:36 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - add qemu-hw-display-virtio-gpu-pci
