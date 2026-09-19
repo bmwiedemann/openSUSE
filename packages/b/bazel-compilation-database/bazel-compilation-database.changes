@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:21:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.5.2:
+  * Rewrite generate.sh in Python as generate.py, fixing JSON
+    processing issues.
+  * Support clang-tidy checks through the aspect.
+  * Add a tool to obtain the dynamic Bazel output_base value instead
+    of relying on realpath.
+  * Pass extra options on to Bazel after `--` and allow overriding
+    the target query expression.
+  * Propagate the aspect through filegroup rules and collect sources
+    from non_arc_srcs attributes.
+  * Handle generated headers and virtual_includes via the
+    header_files output group.
+  * Assume header-only libraries are C++ and omit targets without
+    compilation commands.
+  * Replace removed ObjCProvider APIs for Bazel 4.0 compatibility.
+  * Honor local defines, defines containing spaces, and read the
+    Bazel binary path from an environment variable.
+- Switch _service tar_scm/recompress/set_version from legacy
+  mode="disabled" to mode="manual".
+
+-------------------------------------------------------------------
 Mon Dec 23 12:13:38 UTC 2019 - Jaime Caamaño Ruiz <jcaamano@suse.com>
 
 - Initial release 0.4.1 
