@@ -74,4 +74,21 @@
     <comment></comment>
     <requestid>906023</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e480b80070c9f2ac68a1f344153ffea</srcmd5>
+    <version>0.63.0</version>
+    <time>1789849229</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 0.63.0:
+  * Upstream moved to the bazel-contrib organisation.
+  * Bzlmod (MODULE.bazel) support alongside WORKSPACE.
+  * Requires Bazel &gt;= 6.5.0 and a Go SDK &gt;= 1.20.
+  * Default Go toolchain is 1.26.6.
+  * Reproducible builds via -ffile-prefix-map path mapping.
+  * nogo gained an [&quot;all&quot;] scope, go_source preserves race mode.
+- Switch source services from disabled to manual mode.
+- Spec cleanup: drop Group tags, macro-ise install dir, modernise
+  shebang fixups, fix stale rpmlint filter.</comment>
+    <requestid>1378998</requestid>
+  </revision>
 </revisionlist>

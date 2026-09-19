@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-rules-go
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,15 +16,13 @@
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           bazel-rules-go
-Version:        0.20.3
+Version:        0.63.0
 Release:        0
 Summary:        Go rules for Bazel
 License:        Apache-2.0
-Group:          Development/Tools/Building
-URL:            https://github.com/bazelbuild/rules_go
+URL:            https://github.com/bazel-contrib/rules_go
 Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
@@ -42,7 +40,6 @@ Bazel rules which support building software written in Go, specifically:
 
 %package source
 Summary:        Source code of bazel-rules-go
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source
@@ -69,8 +66,8 @@ cp -R * %{buildroot}%{src_install_dir}
 # Fix hidden-dile-or-dir warning.
 find %{buildroot}%{src_install_dir} -name ".*" -exec rm -rf "{}" +
 # Fix env-script-interpreter error.
-find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!/usr/bin/env python|#!/usr/bin/python3|' "{}" +
-find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!/usr/bin/env bash|#!/bin/bash|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.py" -exec sed -i 's|#!%{_bindir}/env python.*|#!%{_bindir}/python3|' "{}" +
+find %{buildroot}%{src_install_dir} -type f -name "*.sh" -exec sed -i 's|#!%{_bindir}/env bash|#!/bin/bash|' "{}" +
 
 %fdupes %{buildroot}%{src_install_dir}
 

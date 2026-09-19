@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:21:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.63.0:
+  * Upstream moved to the bazel-contrib organisation.
+  * Bzlmod (MODULE.bazel) support alongside WORKSPACE.
+  * Requires Bazel >= 6.5.0 and a Go SDK >= 1.20.
+  * Default Go toolchain is 1.26.6.
+  * Reproducible builds via -ffile-prefix-map path mapping.
+  * nogo gained an ["all"] scope, go_source preserves race mode.
+- Switch source services from disabled to manual mode.
+- Spec cleanup: drop Group tags, macro-ise install dir, modernise
+  shebang fixups, fix stale rpmlint filter.
+
+-------------------------------------------------------------------
 Thu Jul  8 04:10:47 UTC 2021 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update shebangs for Python scripts to be python3.
