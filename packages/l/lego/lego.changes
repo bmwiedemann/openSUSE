@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 19 08:20:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.5.1:
+  * 6a1a178 fix: add KeyType to RenewOptions
+- Update to version 5.5.0:
+  * f38820a Add DNS provider for DNSMint (#3264)
+  * 2195984 Add DNS provider for FENO (#3251)
+  * 3c5302d Add DNS provider for Myra (#3236)
+  * 9e14d2e Add DNS provider for Webglobe (#3277)
+  * a1a6bb0 docs: fix some examples (#3276)
+  * ccd2703 dynadot: fix request bodies (#3268)
+  * 4a044be feat(cli): display account URL in the human-readable
+    accounts list (#3244)
+  * d638164 feat(lib): add UseARICertID to RenewOptions (#3273)
+  * 7111f64 fix(cli): Punycode encoding domains for during renewal
+    (#3257)
+  * fbb3aff fix: FormattableDuration on 32bits arch (#3255)
+  * 0671c9b gcloud: support access token (#3220)
+  * f6b0685 websupport: fix get records filter (#3259)
+  * 1ea1809 xinnet: remove URL trailing slash (#3270)
+- Update to version 5.4.1:
+  * 9a650d9 fix(lib): add EnableCommonName to RenewOptions (#3246)
+  * 30facfd fix: LEGO_EXPERIMENTAL_DNS_TCP_ONLY support (#3243)
+
+-------------------------------------------------------------------
 Fri Aug 28 06:08:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.4.0:
