@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 15:46:07 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1699_20260917:
+  * profiles: added CAP_PERFMON for ksystemstats_xe_helper (bsc#1280113)
+  * profiles: document nvidia-modprobe's special case
+
+-------------------------------------------------------------------
 Mon Aug 10 10:49:24 UTC 2026 - Matthias Gerstner <matthias.gerstner@suse.com>
 
 - Update to version 1699_20260806:
