@@ -1,13 +1,12 @@
 #!/usr/bin/perl -w
+# bring one package in the monorepo working tree up to date with Factory
 use strict;
-our $tmpgit;
-our $mappedpkg;
+use FindBin;
+use lib $FindBin::Bin;
+use pkglib;
 my $pkg=shift;
-my $first=lc(substr($pkg, 0, 1));
-
-{
 die "usage: $0 PKGNAME" unless $pkg;
-die "invalid pkg" if $pkg =~ m/[^a-zA-Z0-9._+-]/;
+checkpkg($pkg);
 
 my @rsync=qw"rsync -a
   --max-size=999000k
@@ -16,23 +15,15 @@ my @rsync=qw"rsync -a
   --delete
   --delete-missing-args
   --delete-excluded";
-system(@rsync, "/mounts/work/SRC/openSUSE\:Factory/$pkg", "in/");
+system(@rsync, ($ENV{FACTORY} // "/mounts/work/SRC/openSUSE:Factory")."/$pkg", "in/");
 die "rsync of $pkg failed" unless $? == 0;
-$tmpgit = ".tmp-$pkg-git";
-$mappedpkg=(glob("packages/$first*/$pkg"))[0];
-if($mappedpkg) {
-    rename("$mappedpkg/.git", $tmpgit);
-    system(qw"rm -rf", $mappedpkg);
-} elsif(1) {
-    system("scripts/pagure-new-package", $pkg);
-    system(qw"git clone", "https://code.opensuse.org/package/$pkg.git", $tmpgit);
-    system("mv", <$tmpgit/.git/*>, $tmpgit); # move one level up
-    rmdir("$tmpgit/.git");
-}
 $ENV{PKG}=$pkg;
+system("$FindBin::Bin/mappkgs.pl", "in", "packages") == 0 or die "mappkgs failed for $pkg";
+my $dir = pkgdir($pkg);
+die "$dir/.git exists - package repos live in refs/pkg/, see pkgimport" if -e "$dir/.git";
+# stage adds, changes and deletions
+if(-d $dir) {
+  git_ok("add", "-A", "--", $dir) or die "git add $dir failed";
+} else {
+  git_ok("rm", "-r", "-q", "--cached", "--ignore-unmatch", "--", $dir) or die "git rm $dir failed";
 }
-do("./scripts/mappkgs.pl");
-$mappedpkg=(glob("packages/$first*/$pkg"))[0];
-system "git add $mappedpkg";
-rename($tmpgit, "$mappedpkg/.git") or
-    system(qw'rm -rf', $tmpgit);

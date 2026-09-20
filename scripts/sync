@@ -1,4 +1,7 @@
 #!/bin/sh
+# hourly full sync of Factory into the monorepo and the package repos.
+# FACTORY overrides the source path (for tests). Exit codes: 4 rsync failed,
+# 5 Factory looks empty, 6 mapping failed, 7 leftover nested package repo
 : ${SKIP:=false}
 $SKIP || tail -200 /home/opensuserabbit/dumprabbit.json | tac | timeout 30m scripts/rabbithandle-single.py
 
@@ -8,7 +11,8 @@ rsync="rsync -a \
   --exclude=.osc \
   --delete \
   --delete-excluded"
-$rsync /mounts/work/SRC/openSUSE\:Factory/ in/
+$rsync "${FACTORY:-/mounts/work/SRC/openSUSE:Factory}/" in/
+case $? in 0|23|24) ;; *) exit 4 ;; esac  # partial transfer, vanished files: fine
 p="openSUSE:Factory/_project"
 test -e $p || osc co "$p"
 osc up "$p"
@@ -17,23 +21,35 @@ test -e ${p}_meta || osc co -M "$p" -o ${p}_meta
 osc up "${p}_meta"
 rsync -a "./${p}_meta/"* in/_project/
 mkdir -p ~/.cache
+# refuse to go on when Factory looks empty or much smaller than what we
+# have, e.g. because the NFS mount is gone: this runs before anything is
+# removed from the working tree
+n=$(ls in | wc -l)
+m=$(git ls-tree HEAD packages/*/ | wc -l)
+if [ $n -le 10000 ] || [ $((n*100)) -le $((m*95)) ] ; then
+  echo "only $n packages in in/ but $m in HEAD - not syncing" >&2
+  exit 5
+fi
+# a package directory holding nothing but a nested .git would be recorded
+# as a gitlink by git add, and git add never descends into an existing
+# gitlink: package repos live in refs/pkg/ now, see pkgimport
+if find packages -mindepth 3 -maxdepth 3 -name .git -print -quit | grep -q . ; then
+  echo "nested .git left in packages/ - run scripts/pkgimport" >&2
+  exit 7
+fi
+if git ls-files -s packages | grep -q '^160000 ' ; then
+  echo "gitlink in the index - run scripts/pkgimport" >&2
+  exit 7
+fi
 lockfile -l 3600 .pkglock
-trap 'rm -f .pkglock' EXIT # also on the early exits below
-tmpgit=.sync-tmp-git
-mkdir -p $tmpgit
-find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -afl --parent ARGS $tmpgit
-rm -rf packages
-scripts/mappkgs.pl in packages
-[[ $(find packages/ |wc -l) -gt 100000 ]] || exit 5
-(cd $tmpgit ; find packages/ -mindepth 3 -maxdepth 3 -name .git | xargs -IARGS cp -afl --parent  ARGS ../) # FIXME for deleted pkgs
-rm -rf $tmpgit
-for p in packages/*/* ; do
-  p2=/data/openSUSE-test/$p
-  if ! [ -e $p/.git -a -e $p2/.git ] ; then
-    cp -afl $p2/.git $p/
-  fi
-done
-git add packages/*
-git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
+trap 'rm -f .pkglock' EXIT
+scripts/mappkgs.pl in packages || exit 6
+git add -A packages
+git commit -q -m "update $(date -u +"%Y-%m-%d %H:%M")"
+rm -f .pkglock
+trap - EXIT
+# package repo commits and pushes; can take long and needs no lock, as a
+# concurrent pkgcommit run for one package is caught by its update-ref
+scripts/pkgcommit
 scripts/tagrelease
 [ -z "$SSH_AUTH_SOCK" ] || git push --all
