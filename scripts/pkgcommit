@@ -1,0 +1,318 @@
+#!/usr/bin/perl -w
+# Keep the package repos in step with the monorepo.
+#
+# A package repo is the ref refs/pkg/<pkg>.git in this repository. Its
+# commits are made from the package's subtree in HEAD, so the tree of a
+# package commit is always exactly what the monorepo holds for that package.
+# refs/pkg-pushed/<pkg>.git records what code.opensuse.org last accepted.
+#
+# usage: pkgcommit [--commit-only] [PKG...]
+#   no PKG:        reconcile every package (all subtrees against all refs)
+#   --commit-only: local work only (commit-tree/update-ref), no network
+#   env PAGURE_BASE     where the package repos live
+#                       (default https://code.opensuse.org/package)
+#       PKGCOMMIT_PACE  seconds to wait between pushes (default 1)
+use strict;
+use FindBin;
+use lib $FindBin::Bin;
+use pkglib;
+use Getopt::Long;
+use File::Temp qw(tempfile);
+
+my $commitonly = 0;
+my $pace = $ENV{PKGCOMMIT_PACE} // 1;
+my $maxfail = 10;   # give up after this many pushes in a row failed to reach the server
+my $timeout = "10m"; # for one network operation
+GetOptions("commit-only" => \$commitonly) or die "usage: $0 [--commit-only] [PKG...]\n";
+# the package repos mirror master; on any other HEAD they would all be
+# "corrected" to it and pushed
+my $branch = git_out("symbolic-ref", "-q", "HEAD") // "";
+die "HEAD is '$branch', not refs/heads/master - not touching package repos\n" unless $branch eq "refs/heads/master";
+
+# HEAD is read after the refs, in both loaders: a ref that was made from a
+# newer HEAD than ours must never be "corrected" back to our older subtree
+my $head;
+my %subtree; # pkg => tree in HEAD
+my %ref;     # pkg => [commit, tree]
+my %pushed;  # pkg => commit last pushed
+my ($ncommit, $npush, $nfail, $nboot) = (0, 0, 0, 0);
+my $consecutivefail = 0;
+
+sub load_all
+{
+  my $refs = git_out("for-each-ref", "--format=%(refname) %(objectname) %(tree)",
+                     "refs/pkg/", "refs/pkg-pushed/") // "";
+  for(split(/\n/, $refs)) {
+    my ($r, $commit, $tree) = split(" ");
+    my $pkg = refpkg($r) // next;
+    if($r =~ m!^refs/pkg/!) { $ref{$pkg} = [$commit, $tree] }
+    else { $pushed{$pkg} = $commit }
+  }
+  $head = git_out("rev-parse", "HEAD") or die "no HEAD";
+  my $trees = git_out("ls-tree", "-r", "-d", $head, $pkglib::outdir) // "";
+  for(split(/\n/, $trees)) {
+    my ($mode, $type, $hash, $path) = m/^(\d+) (\w+) ([0-9a-f]+)\t(.*)$/ or next;
+    my @c = split("/", $path);
+    next unless @c == 3;
+    # git add never descends into such an entry, so the package would look
+    # deleted from here on. pkgimport drops them
+    die "$path is a gitlink in HEAD - run scripts/pkgimport\n" if $type eq "commit";
+    $subtree{$c[2]} = $hash;
+  }
+}
+
+sub load_one($)
+{
+  my $pkg = shift;
+  my $r = pkgref($pkg);
+  my $commit = git_out("rev-parse", "-q", "--verify", $r);
+  if($commit) {
+    $ref{$pkg} = [$commit, git_out("rev-parse", "$commit^{tree}")];
+  } else {
+    delete $ref{$pkg};
+  }
+  my $p = git_out("rev-parse", "-q", "--verify", "refs/pkg-pushed/$pkg.git");
+  if($p) { $pushed{$pkg} = $p } else { delete $pushed{$pkg} }
+  $head = git_out("rev-parse", "HEAD") or die "no HEAD";
+  my $tree = git_out("rev-parse", "-q", "--verify", "$head:".pkgdir($pkg));
+  if($tree) { $subtree{$pkg} = $tree } else { delete $subtree{$pkg} }
+}
+
+# author, dates and message of the monorepo commit that last touched the
+# package - the package commit mirrors it
+sub metadata($$)
+{
+  my ($pkg, $tree) = @_;
+  my $log = git_out("log", "-1", "--format=%an%x00%ae%x00%aI%x00%cI%x00%B", $head, "--", pkgdir($pkg)) // "";
+  my ($an, $ae, $ad, $cd, $msg) = split("\0", $log, 5);
+  if($tree eq EMPTY_TREE and !(defined $msg and $msg =~ m/^Delete \Q$pkg\E(?:\s|$)/)) {
+    # the commit that removed the directory is some unrelated one, such as
+    # an hourly update: say what this commit is about instead
+    return (undef, undef, undef, undef, "Delete $pkg\n");
+  }
+  die "no monorepo commit touches ".pkgdir($pkg)."\n" unless defined $msg;
+  return ($an, $ae, $ad, $cd, $msg);
+}
+
+# a package commit for $pkg with the given tree and parents; returns its id
+sub commit_tree($$@)
+{
+  my ($pkg, $tree, @parents) = @_;
+  my ($an, $ae, $ad, $cd, $msg) = metadata($pkg, $tree);
+  local %ENV = %ENV;
+  delete @ENV{qw(GIT_AUTHOR_NAME GIT_AUTHOR_EMAIL GIT_AUTHOR_DATE GIT_COMMITTER_DATE)};
+  $ENV{GIT_AUTHOR_NAME} = $an if defined $an;
+  $ENV{GIT_AUTHOR_EMAIL} = $ae if defined $ae;
+  $ENV{GIT_AUTHOR_DATE} = $ad if defined $ad;
+  $ENV{GIT_COMMITTER_DATE} = $cd if defined $cd;
+  my ($fh, $file) = tempfile("pkgcommit-XXXXXX", TMPDIR => 1);
+  print $fh $msg;
+  close($fh);
+  my $new = git_out("commit-tree", $tree, (map {("-p", $_)} @parents), "-F", $file);
+  unlink($file);
+  die "commit-tree failed for $pkg\n" unless $new;
+  return $new;
+}
+
+# bring refs/pkg/<pkg>.git to the package's tree in HEAD. Retries when the
+# ref moved under us (another pkgcommit run), which the compare-and-swap in
+# update-ref detects.
+sub commit_pkg($)
+{
+  my $pkg = shift;
+  my $r = pkgref($pkg);
+  for my $try (1..3) {
+    my $tree = $subtree{$pkg} // EMPTY_TREE;
+    my ($old, $oldtree) = @{$ref{$pkg} // [undef, undef]};
+    # a foreign commit on code.opensuse.org, fetched by push_pkg or
+    # bootstrap_pkg, is kept in the history as a second parent
+    my $remote = git_out("rev-parse", "-q", "--verify", "refs/pkg-remote/$pkg.git");
+    if($remote and defined $old and git_ok("merge-base", "--is-ancestor", $remote, $old)) {
+      git_ok("update-ref", "-d", "refs/pkg-remote/$pkg.git");
+      $remote = undef;
+    }
+    return 1 if !$remote and defined $oldtree and $oldtree eq $tree;
+    return 1 if !defined $old and $tree eq EMPTY_TREE; # never existed
+    my @parents = defined $old ? ($old) : ();
+    push(@parents, $remote) if $remote;
+    my $new = eval { commit_tree($pkg, $tree, @parents) };
+    unless($new) {
+      warn "$pkg: $@";
+      $nfail++;
+      return 0;
+    }
+    if(git_ok("update-ref", "-m", "pkgcommit", $r, $new, $old // "")) {
+      $ref{$pkg} = [$new, $tree];
+      git_ok("update-ref", "-d", "refs/pkg-remote/$pkg.git") if $remote;
+      $ncommit++;
+      print "$pkg: committed $new".($remote ? " (merge)" : "")."\n";
+      return 1;
+    }
+    print "$pkg: ref moved, retrying\n";
+    load_one($pkg);
+  }
+  warn "$pkg: could not update $r\n";
+  $nfail++;
+  return 0;
+}
+
+# stderr of a git command that talks to the network, undef on success
+sub git_net_err
+{
+  my ($fh, $file) = tempfile("pkgcommit-err-XXXXXX", TMPDIR => 1);
+  close($fh);
+  my $pid = fork() // die "fork: $!";
+  if(!$pid) {
+    open(STDERR, ">", $file) or die "$file: $!";
+    exec("timeout", $timeout, "git", @_) or die "exec git: $!";
+  }
+  waitpid($pid, 0);
+  my $rc = $? >> 8;
+  open($fh, "<", $file) or die "$file: $!";
+  my $err = do { local $/; <$fh> } // "";
+  close($fh);
+  unlink($file);
+  return undef if $rc == 0;
+  $err =~ s/\n\z//;
+  return "timed out after $timeout" if $rc == 124;
+  return $err eq "" ? "exit status $rc" : $err;
+}
+
+# git's stderr says the server could not be reached at all
+sub unreachable($)
+{
+  return $_[0] =~ m/Failed to connect|Could not resolve|Connection refused|returned error: 5\d\d|timed out/i;
+}
+
+# git's stderr says the repository does not exist on the server
+sub repo_missing($)
+{
+  my $err = shift;
+  return 0 if unreachable($err);
+  return $err =~ m/not found|does not appear to be a git repository|No such file or directory/i;
+}
+
+# a network operation failed; the package stays unpushed for the next run
+sub failed($$$)
+{
+  my ($pkg, $what, $err) = @_;
+  $err =~ s/\n/ | /g;
+  warn "$pkg: $what failed: $err\n";
+  $nfail++;
+  $consecutivefail++ if unreachable($err);
+  return 0;
+}
+
+sub fetch_remote($)
+{
+  my $pkg = shift;
+  return git_net_err("fetch", "-q", "--no-tags", pagure_url($pkg), "+refs/heads/master:refs/pkg-remote/$pkg.git");
+}
+
+# a package without a ref: take the history from code.opensuse.org, and
+# create the repo there when it does not exist yet
+sub bootstrap_pkg($)
+{
+  my $pkg = shift;
+  my $r = pkgref($pkg);
+  my $err = fetch_remote($pkg);
+  if(defined $err and repo_missing($err)) {
+    return 0 unless $subtree{$pkg}; # gone from Factory and never had a repo
+    print "$pkg: creating package repo\n";
+    if(system("$FindBin::Bin/pagure-new-package", $pkg) != 0) {
+      return failed($pkg, "pagure-new-package", "exit status ".($? >> 8));
+    }
+    $err = fetch_remote($pkg);
+  }
+  # a repo without a master: another run may be creating it right now and
+  # has not pushed its first commit yet, so look again before taking this
+  # as an empty repo, which our commit would then be the root of
+  for(my $i = 0; defined $err and $err =~ m/couldn't find remote ref/i and $i < 5; $i++) {
+    sleep(2);
+    $err = fetch_remote($pkg);
+  }
+  if(defined $err) {
+    return 1 if $err =~ m/couldn't find remote ref/i;
+    return failed($pkg, "fetch", $err);
+  }
+  if($ref{$pkg}) {
+    # the ref exists after all (the repo was re-created on the server, or
+    # was never pushed): commit_pkg merges what the server has
+    return 1;
+  }
+  my $remote = git_out("rev-parse", "refs/pkg-remote/$pkg.git");
+  if(git_ok("update-ref", "-m", "pkgcommit bootstrap", $r, $remote, "")) {
+    git_ok("update-ref", "refs/pkg-pushed/$pkg.git", $remote);
+    git_ok("update-ref", "-d", "refs/pkg-remote/$pkg.git");
+    $nboot++;
+    print "$pkg: took package repo from ".pagure_url($pkg)."\n";
+  } # else a concurrent run made the ref meanwhile; commit_pkg merges if needed
+  load_one($pkg);
+  return 1;
+}
+
+sub push_pkg($)
+{
+  my $pkg = shift;
+  my $url = pagure_url($pkg);
+  for my $try (1..2) {
+    my $commit = $ref{$pkg}[0];
+    my $err = git_net_err("push", "-q", $url, "$commit:refs/heads/master");
+    if(!defined $err) {
+      git_ok("update-ref", "refs/pkg-pushed/$pkg.git", $commit);
+      $pushed{$pkg} = $commit;
+      $npush++;
+      $consecutivefail = 0;
+      print "$pkg: pushed $commit\n";
+      return 1;
+    }
+    return failed($pkg, "push", $err) if $try > 1;
+    if($err =~ m/non-fast-forward|fetch first|\[rejected\]/i) {
+      # someone committed to the package repo on code.opensuse.org, or a
+      # concurrent run pushed first: take what is there and try once more
+      my $ferr = fetch_remote($pkg);
+      return failed($pkg, "fetch after rejected push", $ferr) if defined $ferr;
+      load_one($pkg);
+      return 0 unless commit_pkg($pkg);
+      next;
+    }
+    if(repo_missing($err)) {
+      # deleted on the server: create it again
+      return 0 unless bootstrap_pkg($pkg) and commit_pkg($pkg);
+      next;
+    }
+    return failed($pkg, "push", $err);
+  }
+  return 0;
+}
+
+# main
+my @pkgs = @ARGV;
+if(@pkgs) {
+  load_one($_) for @pkgs;
+} else {
+  load_all();
+  my %all = (%subtree, %ref);
+  @pkgs = sort keys %all;
+}
+
+for my $pkg (@pkgs) {
+  # a package without a ref needs the network first: see below
+  commit_pkg($pkg) if $ref{$pkg};
+}
+unless($commitonly) {
+  for my $pkg (@pkgs) {
+    last if $consecutivefail >= $maxfail;
+    unless($ref{$pkg}) {
+      next unless bootstrap_pkg($pkg);
+      next unless commit_pkg($pkg) and $ref{$pkg};
+    }
+    next if defined $pushed{$pkg} and $pushed{$pkg} eq $ref{$pkg}[0];
+    push_pkg($pkg);
+    sleep($pace) if $pace and @pkgs > 1;
+  }
+  warn "giving up: the server could not be reached $consecutivefail times in a row\n" if $consecutivefail >= $maxfail;
+}
+git_ok("pack-refs", "--all") unless @ARGV;
+print "pkgcommit: committed $ncommit, pushed $npush, bootstrapped $nboot, failed $nfail\n";
+exit($nfail ? 1 : 0);
