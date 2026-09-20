@@ -2468,7 +2468,7 @@ packagesets:
    - libopeniscsiusr0 # reason: dvd:patterns-media-rest_cd_core
    - libopenjp2-7 # reason: dvd:openSUSE-release
    - libopenjp2-7-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libopenjph0_31 # reason: dvd:patterns-gnome-gnome
+   - libopenjph0_32 # reason: dvd:patterns-gnome-gnome
    - libopenmpt0 # reason: dvd:openSUSE-release
    - libopenobex2 # reason: dvd:patterns-xfce-xfce
    - libopenraw9 # reason: dvd:patterns-xfce-xfce
@@ -5657,7 +5657,7 @@ packagesets:
    - libopenh264-8 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopeniscsiusr0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libopenjp2-7 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libopenjph0_31 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libopenjph0_32 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenmpt0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libopenssl3 # reason: opensuse_microos:patterns-base-hardware
    - libopus0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7460,7 +7460,7 @@ packagesets:
    - libopencv413 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenh264-8 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenjp2-7 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libopenjph0_31 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libopenjph0_32 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenmpt0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenssl3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopus0 # reason: opensuse_kalpa:patterns-kalpa-base
