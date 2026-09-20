@@ -15368,7 +15368,7 @@ unsorted:
   - libopenhpi4 
   - libopenhtj2k0 
   - libopenjp2-7-32bit 
-  - libopenjph0_31-32bit 
+  - libopenjph0_32-32bit 
   - libopenlibm4 
   - libopenmpt-devel 
   - libopenmpt-modplug-devel 
@@ -27149,6 +27149,7 @@ unsorted:
   - python313-pip-requirements-parser 
   - python313-pip-run 
   - python313-pip-wheel 
+  - python313-pipcl 
   - python313-pipdeptree 
   - python313-pipreqs 
   - python313-pipx 
@@ -28732,6 +28733,8 @@ unsorted:
   - python314-PyMeeus 
   - python314-PyMeta3 
   - python314-PyMsgBox 
+  - python314-PyMuPDF 
+  - python314-PyMuPDF-devel 
   - python314-PyMySQL 
   - python314-PyNaCl 
   - python314-PyNamecheap 
@@ -31254,6 +31257,7 @@ unsorted:
   - python314-pip-requirements-parser 
   - python314-pip-run 
   - python314-pip-wheel 
+  - python314-pipcl 
   - python314-pipdeptree 
   - python314-pipreqs 
   - python314-pipx 
