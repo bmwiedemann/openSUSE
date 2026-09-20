@@ -1,0 +1,72 @@
+#!/bin/bash
+# One-off migration: turn the package repos that live as nested .git
+# directories in the working tree (and in a lagging copy of it, given as
+# $1: /data/openSUSE-test on the production host) into refs/pkg/<pkg>.git
+# and refs/pkg-pushed/<pkg>.git of this repository, remove the nested
+# directories and drop the gitlinks they left in the index.
+# refs/pkg-pushed only ever names what code.opensuse.org has, so it is
+# taken from origin/master; refs/pkg takes the local master when that is
+# ahead of it (or when the repo was never pushed), else origin/master too:
+# commits of a diverged local repo are dropped, their content is in the
+# monorepo and pkgcommit re-commits it. Refs that already exist are left
+# alone, so this can be re-run.
+#
+# Run with syncloop and the rabbithandle service (opensusegit1) stopped.
+# Afterwards run scripts/pkgcommit --commit-only once by hand - the first
+# run makes a commit for nearly every package - and only then start the
+# services again.
+set -u
+extra=${1:-}
+n=0
+failed=0
+fetch() {
+  # unpack instead of storing a new pack: all trees and blobs exist already
+  git -c gc.auto=0 -c transfer.unpackLimit=2000000000 -c fetch.fsckObjects=false \
+      fetch -q --no-tags "$@"
+}
+import_one() {
+  local repo=$1 pkg=${1%/.git}
+  pkg=${pkg##*/}
+  local ref=refs/pkg/$pkg.git
+  if git rev-parse -q --verify "$ref" >/dev/null ; then
+    rm -rf "$repo"
+    return 0
+  fi
+  local pushed local_
+  pushed=$(git -C "$repo" rev-parse -q --verify refs/remotes/origin/master) || pushed=
+  local_=$(git -C "$repo" rev-parse -q --verify refs/heads/master) || local_=
+  if [ -z "$pushed" ] && [ -z "$local_" ] ; then
+    echo "$pkg: no commits, dropped"
+    rm -rf "$repo"
+    return 0
+  fi
+  if [ -n "$pushed" ] ; then
+    fetch "$repo" "+refs/remotes/origin/master:refs/pkg-pushed/$pkg.git" || { echo "$pkg: fetch failed" >&2; failed=$((failed+1)); return 1; }
+  fi
+  if [ -n "$local_" ] && { [ -z "$pushed" ] || git -C "$repo" merge-base --is-ancestor "$pushed" "$local_" ; } ; then
+    fetch "$repo" "+refs/heads/master:$ref" || { echo "$pkg: fetch failed" >&2; failed=$((failed+1)); return 1; }
+    [ -n "$pushed" ] || echo "$pkg: never pushed, will be merged with code.opensuse.org"
+  else
+    git update-ref "$ref" "$pushed"
+  fi
+  rm -rf "$repo"
+  echo "$pkg: imported"
+  n=$((n+1))
+  if [ $((n % 500)) = 0 ] ; then git repack -q -d ; fi
+}
+for g in packages/*/*/.git ; do
+  [ -e "$g" ] && import_one "$g"
+done
+if [ -n "$extra" ] ; then
+  for g in "$extra"/packages/*/*/.git ; do
+    [ -e "$g" ] && import_one "$g"
+  done
+fi
+find packages -mindepth 2 -maxdepth 2 -type d -empty -delete
+# git add never descends into a gitlink, so the next sync would take those
+# packages for deleted
+git ls-files -s packages | sed -n 's/^160000 [0-9a-f]* [0-9]\t//p' | xargs -r -d '\n' git rm -q --cached --
+git repack -q -d
+git pack-refs --all
+echo "imported $n package repos, $failed failed"
+[ $failed = 0 ]
