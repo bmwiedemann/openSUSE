@@ -17,7 +17,7 @@
 
 
 Name:           istioctl
-Version:        1.30.4
+Version:        1.31.0
 Release:        0
 Summary:        CLI for the istio servic mesh in Kubernetes
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fdupes
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 
 %description
 The istioctl tool is a configuration command line utility that allows service

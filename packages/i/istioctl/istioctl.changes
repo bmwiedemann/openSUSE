@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:20:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.31.0:
+  https://istio.io/latest/news/releases/1.31.x/announcing-1.31/
+  https://istio.io/latest/news/releases/1.31.x/announcing-1.31/upgrade-notes/
+  https://istio.io/latest/news/releases/1.31.x/announcing-1.31/change-notes/
+  * Installation and operability
+    - istioctl manifest generate -o flag writes generated manifests
+      to a file instead of stdout.
+  * Plus much more
+    - istioctl analyze warnings for conflicting ServiceEntry
+      protocols and outdated Gateway API CRDs
+
+-------------------------------------------------------------------
 Fri Aug 28 12:17:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.30.4:
