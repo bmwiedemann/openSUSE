@@ -1,0 +1,53 @@
+From a1e09865cc2560378b7c89f42a2e74fd16ff5efa Mon Sep 17 00:00:00 2001
+From: Vladimir Belyavsky <belyavskyv@gmail.com>
+Date: Wed, 9 Sep 2026 15:37:33 +0300
+Subject: Fix renderer crash when registering ICU encoding names
+
+TextCodecIcu::RegisterEncodingNames registered names with
+`canonical_name.Ascii().c_str()`, a pointer into a temporary
+std::string. Since the 140-based TextEncodingNameMap stores raw `const
+char*`, the map kept a dangling pointer and any page whose charset is
+handled by TextCodecIcu (windows-125x, ISO-8859-x, KOI8-R, TIS-620, ...)
+later crashed in NewTextCodec.
+
+Register the long-lived `standard_name` instead (same value for the
+ASCII-only encoding names); canonical_name is kept for
+ShouldSkipEncoding().
+
+This amends 68a4c08d7100f3ab7dc9a9af0df6fb44ebf4481d.
+
+Fixes: QTBUG-149435
+Fixes: QTBUG-149946
+Task-number: QTBUG-147923
+Change-Id: I795fd1bce9b89beafb09ec4b4b5dfd3c96165d4d
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/768932
+Reviewed-by: Moss Heim <moss.heim@qt.io>
+---
+ .../third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc    | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc b/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+index e874aea2953..14ffc47f434 100644
+--- a/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
++++ b/src/3rdparty/chromium/third_party/blink/renderer/platform/wtf/text/text_codec_icu.cc
+@@ -166,7 +166,7 @@ void TextCodecIcu::RegisterEncodingNames(EncodingNameRegistrar registrar) {
+       continue;
+     }
+ 
+-    registrar(standard_name, canonical_name.Ascii().c_str());
++    registrar(standard_name, standard_name);
+ 
+     UErrorCode error = U_ZERO_ERROR;
+ 
+@@ -178,7 +178,7 @@ void TextCodecIcu::RegisterEncodingNames(EncodingNameRegistrar registrar) {
+         const char* alias = ucnv_getAlias(name, j, &error);
+         DCHECK(U_SUCCESS(error));
+         if (U_SUCCESS(error) && alias != standard_name && IncludeAlias(alias)) {
+-          registrar(alias, canonical_name.Ascii().c_str());
++          registrar(alias, standard_name);
+         }
+       }
+     }
+-- 
+cgit v1.2.3
+

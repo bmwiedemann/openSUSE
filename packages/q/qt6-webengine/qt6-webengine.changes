@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:40:42 UTC 2026 - Wolfgang Bauer <wbauer1@a1.net>
+
+- Add upstream patch to fix renderer crash on sites that use
+  encodings other than utf-8 (QTBUG-149435, QTBUG-149946):
+  * Fix-renderer-crash-when-registering-ICU-encoding-names.patch
+- Add upstream patch to fix huge memory usage due to an ineffective
+  garbage collector (QTBUG-150026):
+  * enable-memory-barriers.patch
+
+-------------------------------------------------------------------
 Tue Aug 18 11:49:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.11.2

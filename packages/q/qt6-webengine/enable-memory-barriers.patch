@@ -1,0 +1,36 @@
+From 62f90830c0750182d2b40be60e2e5f9c2f31c4c9 Mon Sep 17 00:00:00 2001
+From: Allan Sandfeld Jensen <allan.jensen@qt.io>
+Date: Mon, 14 Sep 2026 15:13:27 +0200
+Subject: [fixup] Fix QtWebEngine build on Windows
+
+Memory barriers are needed for GC now. So restore Chromium
+default settings where they compile. Fix Windows builds next.
+
+Task-number: QTBUG-141377
+Task-number: QTBUG-147960
+Task-number: QTBUG-149846
+Task-number: QTBUG-150024
+Task-number: QTBUG-150026
+Change-Id: I2e0d026aa4c4dbdbde0144f5e45ace0cb4641fab
+Reviewed-on: https://codereview.qt-project.org/c/qt/qtwebengine-chromium/+/770837
+Reviewed-by: Moss Heim <moss.heim@qt.io>
+---
+ chromium/v8/BUILD.gn | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/chromium/v8/BUILD.gn b/chromium/v8/BUILD.gn
+index 4c6f7fb4b13..9af2f032ebb 100644
+--- a/src/3rdparty/chromium/v8/BUILD.gn
++++ b/src/3rdparty/chromium/v8/BUILD.gn
+@@ -292,7 +292,7 @@ declare_args() {
+ 
+   # Disable write barriers when GCs are non-incremental and
+   # heap has single generation.
+-  v8_disable_write_barriers = true
++  v8_disable_write_barriers = is_win
+ 
+   # Ensure that write barriers are always used.
+   # Useful for debugging purposes.
+-- 
+cgit v1.2.3
+
