@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:05:08 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_xkb-Check-the-keysym-range-in-_XkbReadKeyActions-CVE.patch
+  * libX11 XkbGetMap Reply Heap-based Buffer Overflow
+    (CVE-2026-88806, ZDI-CAN-32061, bsc#1280910)
+
+-------------------------------------------------------------------
 Sun Feb  8 07:56:01 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to 1.8.13; this release includes

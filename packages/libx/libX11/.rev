@@ -757,4 +757,14 @@ additions, including new UTF-8 compose sequences for:
 - supersedes libX11-ignore-incompatible-XkbMapNotify.patch</comment>
     <requestid>1331892</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>99c6e922eae37dcf957df9f6a1588fa8</srcmd5>
+    <version>1.8.13</version>
+    <time>1789984860</time>
+    <user>anag_factory</user>
+    <comment>- u_xkb-Check-the-keysym-range-in-_XkbReadKeyActions-CVE.patch
+  * libX11 XkbGetMap Reply Heap-based Buffer Overflow
+    (CVE-2026-88806, ZDI-CAN-32061, bsc#1280910)</comment>
+    <requestid>1378818</requestid>
+  </revision>
 </revisionlist>
