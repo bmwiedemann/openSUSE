@@ -6575,4 +6575,41 @@ I cannot test locally unfortunately.
     bmo#2055007, bmo#2055681, bmo#2057107, bmo#2057108, bmo#2057114,</comment>
     <requestid>1375538</requestid>
   </revision>
+  <revision rev="394" vrev="1">
+    <srcmd5>6fb73b0095c10099e65b899148aba7b9</srcmd5>
+    <version>140.16.0</version>
+    <time>1789984955</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Thunderbird 140.16.0 ESR
+  MFSA 2026-95 (bsc#1280371)
+  * CVE-2026-92238 (bmo#2060601)
+    Ambiguous parsing of mail headers
+  * CVE-2026-92239 (bmo#2060488)
+    Buffer overrun in IMAP
+  * CVE-2026-92240 (bmo#2069113)
+    Out-of-bounds read in IMAP response parser
+  * CVE-2026-92005 (bmo#2056051)
+    Use-after-free in the Audio/Video: Web Codecs component
+  * CVE-2026-92006 (bmo#2057121)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92007 (bmo#2058064)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92008 (bmo#2058065)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92009 (bmo#2058066)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92010 (bmo#2058067)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92011 (bmo#2058068)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92012 (bmo#2058069)
+    Privilege escalation due to incorrect boundary conditions in</comment>
+    <requestid>1379126</requestid>
+  </revision>
 </revisionlist>

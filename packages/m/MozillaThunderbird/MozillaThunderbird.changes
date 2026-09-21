@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Tue Sep 15 07:56:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 140.16.0 ESR
+  MFSA 2026-95 (bsc#1280371)
+  * CVE-2026-92238 (bmo#2060601)
+    Ambiguous parsing of mail headers
+  * CVE-2026-92239 (bmo#2060488)
+    Buffer overrun in IMAP
+  * CVE-2026-92240 (bmo#2069113)
+    Out-of-bounds read in IMAP response parser
+  * CVE-2026-92005 (bmo#2056051)
+    Use-after-free in the Audio/Video: Web Codecs component
+  * CVE-2026-92006 (bmo#2057121)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92007 (bmo#2058064)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92008 (bmo#2058065)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92009 (bmo#2058066)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92010 (bmo#2058067)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92011 (bmo#2058068)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92012 (bmo#2058069)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92013 (bmo#2058078)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92014 (bmo#2060000)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics component
+  * CVE-2026-92015 (bmo#2060235)
+    Privilege escalation in the WebExtensions component
+  * CVE-2026-92016 (bmo#2061327)
+    Use-after-free in the Disability Access APIs component
+  * CVE-2026-92017 (bmo#2061777)
+    Privilege escalation in the DOM: Service Workers component
+  * CVE-2026-92018 (bmo#2064287)
+    Sandbox escape in the DOM: Core & HTML component
+  * CVE-2026-92019 (bmo#2065636)
+    Mitigation bypass in the Remote Settings Client component
+  * CVE-2026-92020 (bmo#2066329)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: WebRender component
+  * CVE-2026-92021 (bmo#2067208)
+    Use-after-free in the JavaScript Engine: JIT component
+  * CVE-2026-92022 (bmo#2068059)
+    Use-after-free in the DOM: HTML Parser component
+  * CVE-2026-92023 (bmo#2068342)
+    Use-after-free in the XML component
+  * CVE-2026-92024 (bmo#2068354)
+    Use-after-free in the SVG component
+  * CVE-2026-92025 (bmo#2068361)
+    Use-after-free in the DOM: Navigation component
+  * CVE-2026-92026 (bmo#2068378)
+    Use-after-free in the Networking component
+  * CVE-2026-92027 (bmo#2068433)
+    Use-after-free in the DOM: Streams component
+  * CVE-2026-92028 (bmo#2068440)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-92029 (bmo#2068445)
+    Use-after-free in the SVG component
+  * CVE-2026-92030 (bmo#2058417)
+    Mitigation bypass in the DOM: Copy & Paste and Drag & Drop component
+  * CVE-2026-92031 (bmo#2067971)
+    Information disclosure in the Graphics: ImageLib component
+  * CVE-2026-92032 (bmo#2068437)
+    Sandbox escape due to invalid pointer in the Graphics component
+
+-------------------------------------------------------------------
 Sun Aug 30 10:25:54 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Thunderbird 140.15.0 ESR
