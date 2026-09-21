@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:13:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.16.0:
+  * Requires Zig 0.16.0, lower zig/zig-rpm-macros floor to 0.16.0
+  * Implement workspace/symbol request (project-wide symbol search)
+  * Rework cross-file symbol references (find all references, rename)
+  * Track each build module separately for accurate @import resolution
+  * Folding ranges for sequences of @import() declarations
+  * Completion improvements (branching types, error sets, deprecated
+    and defaulted fields sorted last)
+  * Go to definition on container types jumps to the @This() alias
+  * Build-on-save diagnostics now include @compileLog output
+  * Hover popups expand comptime-dependent (branching) types
+  * Refresh vendored dependencies (known-folders, diffz, lsp-kit)
+  * Resolve vendored deps offline via --system (zig 0.16 fetches
+    despite a pre-seeded global cache dir)
+  * Pre-compile zig's translate-c tool in %check, the cimport test
+    spawns it and a cold build outlasts the test timeout
+- Drop Group: tag, use braced zig macro calls (spec-cleaner)
+
+-------------------------------------------------------------------
 Wed Jan 28 11:26:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Be a bit less strict on the zig version: newer than 0.15.1 is
