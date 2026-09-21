@@ -1,4 +1,104 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:00:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.1 (2.6.0 was not released):
+  The one user-facing change in this release hardens cmctl inspect
+  secret. To report revocation status, that command fetches the
+  OCSP and CRL URLs written inside the certificate you are
+  inspecting. It previously trusted those URLs. A certificate from
+  an untrusted source could therefore make cmctl contact any
+  address, including one on your internal network, and could hang
+  it indefinitely. Requests now time out after 10 seconds, do not
+  follow redirects, stop reading after 1 MiB, and accept only http
+  and https for OCSP. Certificates from a trusted source behave as
+  before. Thanks to @FelixPhipps, who reported and fixed this.
+  Everything else is routine maintenance. This release moves from
+  cert-manager v1.20.2 to v1.21.2 and takes 120 dependency and CI
+  updates.
+  * Why there is no v2.6.0 release
+    We tagged v2.6.0 first, but the release build never ran. The CI
+    runner it used had been removed, so the tag produced no
+    binaries and no container image.
+    By the time we found out, v2.6.0 was already recorded in the Go
+    checksum database. Moving a tag that the checksum database has
+    already seen breaks go install for anyone who fetches direct
+    from GitHub, so we left it alone and released v2.6.1 instead.
+    The v2.6.0 tag still exists and the code at that tag is fine.
+    It is a usable Go module version, but there is nothing to
+    download and no image to pull. Please use v2.6.1.
+  * What's Changed
+    - fix: harden OCSP/CRL revocation checks against SSRF and DoS
+      in #517
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.1
+    - fix(deps): update module helm.sh/helm/v4 to v4.3.0
+    - fix(deps): update module golang.org/x/crypto to v0.57.0
+    - fix(deps): update module github.com/cert-manager/cert-manager
+      to v1.21.2
+    - chore(deps): update module google.golang.org/grpc to v1.83.2
+      [security]
+    - fix(deps): update golang.org/x deps
+    - fix(deps): update module sigs.k8s.io/gateway-api to v1.6.2
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.0
+    - fix(deps): update module golang.org/x/crypto to v0.56.0
+      [security]
+    - chore(deps): update module google.golang.org/grpc to v1.83.1
+      [security]
+    - chore(deps): update module go.etcd.io/etcd/client/pkg/v3 to
+      v3.7.1 [security]
+    - fix(deps): update kubernetes go deps to v0.37.0
+    - fix(deps): update module github.com/stretchr/testify to
+      v1.12.1
+    - fix(deps): update kubernetes go patches to v0.36.4
+    - chore(deps): update module github.com/google/cel-go to
+      v0.30.0 [security]
+    - chore(deps): update module go.etcd.io/etcd/client/pkg/v3 to
+      v3.6.14 [security]
+    - fix(deps): update misc go deps
+    - fix(deps): update module golang.org/x/crypto to v0.55.0
+    - fix(deps): update module golang.org/x/mod to v0.40.0
+      [security]
+    - fix(deps): update module golang.org/x/mod to v0.39.0
+    - chore(deps): update misc github actions
+    - fix(deps): update k8s.io/utils digest to cf1189d
+    - chore(deps): update module oras.land/oras-go/v2 to v2.6.2
+      [security]
+    - Update module github.com/cert-manager/cert-manager to v1.21.1
+      (#550)
+    - fix(deps): update misc go deps
+    - chore(deps): update actions/setup-go action to v7
+    - fix(deps): update module k8s.io/kubectl to v0.36.3
+    - fix(deps): update kubernetes go patches to v0.36.3
+    - fix(deps): update module golang.org/x/crypto to v0.54.0
+    - chore(deps): update module golang.org/x/text to v0.39.0
+      [security]
+    - chore(deps): update module golang.org/x/net to v0.56.0
+      [security]
+    - fix(deps): update module sigs.k8s.io/gateway-api to v1.6.1
+    - fix(deps): update module golang.org/x/mod to v0.38.0
+    - fix(deps): update module golang.org/x/sync to v0.22.0
+    - fix(deps): update module sigs.k8s.io/gateway-api to v1.6.0
+    - fix(deps): update module github.com/cert-manager/cert-manager
+      to v1.20.3
+    - chore(deps): update misc github actions to v7
+    - fix(deps): update misc go deps to v4.2.2
+    - fix(deps): update kubernetes go patches to v0.36.2
+    - fix(deps): update misc go deps to v4.2.1
+    - fix(deps): update golang.org/x deps
+    - fix(deps): update k8s.io/utils digest to ff6756f
+    - chore(deps): update module golang.org/x/net to v0.55.0
+      [security]
+    - chore(deps): update docker/login-action action to v4.2.0
+    - fix(deps): update module golang.org/x/crypto to v0.52.0
+    - fix(deps): update module helm.sh/helm/v4 to v4.2.0
+    - fix(deps): update kubernetes go patches to v0.36.1
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.24.1
+    - fix(deps): update module golang.org/x/crypto to v0.51.0
+    - fix(deps): update module golang.org/x/mod to v0.36.0
+
+-------------------------------------------------------------------
 Fri May 01 07:45:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.5.0:
