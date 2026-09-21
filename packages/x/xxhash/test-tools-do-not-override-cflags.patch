@@ -5,14 +5,14 @@ Date: 2024-05-05 19:35:03+0000
  Makefile |    4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Index: xxHash-0.8.3/Makefile
+Index: xxHash-0.8.4/Makefile
 ===================================================================
---- xxHash-0.8.3.orig/Makefile
-+++ xxHash-0.8.3/Makefile
-@@ -483,8 +483,8 @@ test-all: test test32 test-unicode clang
+--- xxHash-0.8.4.orig/Makefile
++++ xxHash-0.8.4/Makefile
+@@ -539,8 +539,8 @@ test-all: test test32 test-unicode clang
  
  .PHONY: test-tools
- test-tools:
+ test-tools: check-version
 -	CFLAGS=-Werror $(MAKE) -C tests/bench
 -	CFLAGS=-Werror $(MAKE) -C tests/collisions check
 +	$(MAKE) -C tests/bench

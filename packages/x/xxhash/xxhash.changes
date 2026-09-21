@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Sep 19 23:09:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.8.4
+  * This release adds vectorized implementations for the RISC-V
+    Vector extension and LoongArch LASX.
+  * Prefer NEON over SVE on AArch64, improving XXH3 speed by
+    25–40%.
+  * `xxhsum` can now receive a full 64-bit seed through option `-s`.
+  * When processing a list of files, read errors no longer prevent
+    subsequent files from being processed.
+
+-------------------------------------------------------------------
 Mon Dec 30 19:52:02 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.8.3

@@ -1,7 +1,7 @@
 #
 # spec file for package xxhash
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xxhash
-Version:        0.8.3
+Version:        0.8.4
 Release:        0
 Summary:        Non-cryptographic hash algorithm
 License:        BSD-2-Clause AND GPL-2.0-only
@@ -26,7 +26,7 @@ URL:            https://github.com/Cyan4973/xxHash
 Source:         https://github.com/Cyan4973/xxHash/archive/v%version.tar.gz
 Patch1:         test-tools-do-not-override-cflags.patch
 Patch2:         inline.patch
-BuildRequires:  gcc-c++
+BuildRequires:  c++_compiler
 BuildRequires:  pkg-config
 BuildRequires:  time
 %{?suse_build_hwcaps_libs}
