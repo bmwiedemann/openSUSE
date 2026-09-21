@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:04:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.5:
+  * add --unreachable-script callback to filter unreachable branch
+    and MC/DC expressions
+  * llvm2lcov supports llvm/22
+  * man and HTML documentation generated from RST sources
+  * various bug fixes and test coverage improvements
+- Add python3-Sphinx and python3-sphinx_rtd_theme BuildRequires for
+  the new RST documentation build and ship the new llvm2lcov,
+  perl2lcov, py2lcov and spreadsheet.py man pages plus HTML docs.
+  Deduplicate the HTML fonts with fdupes and drop .buildinfo.
+
+-------------------------------------------------------------------
 Sat Jan 31 16:36:13 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.4:

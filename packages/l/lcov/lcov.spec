@@ -17,13 +17,16 @@
 
 
 Name:           lcov
-Version:        2.4
+Version:        2.5
 Release:        0
 Summary:        A Graphical GCOV Front-end
 License:        GPL-2.0-or-later
 URL:            https://github.com/linux-test-project/lcov
 Source0:        %{name}-%{version}.tar.xz
 Source1:        lcov.rpmlintrc
+BuildRequires:  fdupes
+BuildRequires:  python3-Sphinx
+BuildRequires:  python3-sphinx_rtd_theme
 Requires:       findutils
 Requires:       gcc
 Requires:       perl-Capture-Tiny
@@ -59,6 +62,8 @@ sed -i 's,#!%{_bindir}/env ,#!/usr/bin/,' bin/gen* bin/xml2lcovutil.py bin/*lcov
 %install
 %make_install PREFIX=%{_prefix} CFG_DIR=%{_sysconfdir} LIB_DIR=%{_datadir}/%{name}/lib/
 rm -rf %{buildroot}%{_datadir}/%{name}/tests/
+rm -f %{buildroot}%{_datadir}/%{name}/html/.buildinfo
+%fdupes %{buildroot}%{_datadir}/%{name}/html
 find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -x {} \;
 
 %files
@@ -68,6 +73,10 @@ find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -
 %{_mandir}/man1/geninfo.1%{?ext_man}
 %{_mandir}/man1/genpng.1%{?ext_man}
 %{_mandir}/man1/gendesc.1%{?ext_man}
+%{_mandir}/man1/llvm2lcov.1%{?ext_man}
+%{_mandir}/man1/perl2lcov.1%{?ext_man}
+%{_mandir}/man1/py2lcov.1%{?ext_man}
+%{_mandir}/man1/spreadsheet.py.1%{?ext_man}
 %{_mandir}/man5/lcovrc.5%{?ext_man}
 %{_bindir}/lcov
 %{_bindir}/genhtml
@@ -80,6 +89,7 @@ find %{buildroot}%{_datadir}/%{name}/support-scripts/ -name "*.pm" -exec chmod -
 %{_bindir}/xml2lcov
 %{_bindir}/xml2lcovutil.py
 %dir %{_datadir}/%{name}
+%{_datadir}/%{name}/html/
 %{_datadir}/%{name}/lib/
 %{_datadir}/%{name}/support-scripts
 
