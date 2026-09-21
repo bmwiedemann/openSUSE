@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:51:10 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 1.104:
+  * new contrib DynamicR, v 1.0.2
+- Changes from version 1.103:
+  * new contrib DISGenkt, v 1.1.0
+- Changes from version 1.102:
+  * update of QCDAwarePlugin to version 2.0.0, which adds support
+    for photon splittings to leptons, and coupling factors
+- Changes from version 1.101:
+  * new contrib SDFPlugin, v. 1.0.1
+  * new contrib GHSAlgo, v. 1.0.0
+  * small fixes to build system
+- Changes from version 1.100:
+  * new functionality to allow for dependencies between contribs
+    - new contrib template now uses FJCONTRIB.cfg file to specify
+      version and dependencies, and Makefile template has been 
+      updated to indicate where to place dependencies
+    - in new-format contribs, the include files should be placed
+      in include/fastjet/contrib. This reduces the chances of
+      conflicts with system headers when a contrib is used as a
+      dependency and ensures that example programs use header
+      locations that are consistent with those that would be
+      available from an installed version of the contrib
+  * inclusion of new IFNPlugin 1.0.4, for interleaved flavour
+    neutralisation jet algorithm
+  * inclusion of new CMPPlugin 1.0.0, for the
+    Czakon-Mitov-Poncelet flavour jet algorithm
+  * update of RecursiveTools to version 2.0.4, which moves it into
+    the new contrib format.
+  * update of LundPlane to version 2.1.2, resolving some linking
+    issues and moving to the new contrib format
+
+-------------------------------------------------------------------
 Tue Dec 17 07:58:09 UTC 2024 - ming li <mli@suse.com>
 
 - update to 1.054:
