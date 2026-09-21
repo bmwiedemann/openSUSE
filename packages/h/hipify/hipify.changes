@@ -1,0 +1,91 @@
+-------------------------------------------------------------------
+Tue Jul 28 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Sun Jan 25 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Fri Sep 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+  Modified: 0001-prepare-hipify-cmake-for-fedora.patch
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jun 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix hipify-clang rpath
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Fri Apr  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use rocm clang
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Dec 17 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Build with system clang
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+  * Add 0001-prepare-hipify-cmake-for-fedora.patch
