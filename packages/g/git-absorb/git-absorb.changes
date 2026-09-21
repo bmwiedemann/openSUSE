@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:18:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.0:
+  * Add --no-limit option to extend the absorb stack as far as possible
+  * Add --squash flag and createSquashCommits option for squash commits
+  * Add --force-author/forceAuthor and --force-detach/forceDetach options
+  * Overhaul user-facing messages to human-readable format
+  * Fix rebase handling in worktrees; --dry-run no longer rebases
+  * Keep debug-level logging in release builds
+- Switch source services from disabled to manual mode
+- Build man page from asciidoc source (upstream ships .adoc only)
+- Add git-core BuildRequires for %check (tests spawn git rebase)
+
+-------------------------------------------------------------------
 Fri Jan 10 01:08:58 UTC 2025 - litma Leung <pirateclip@protonmail.com>
 
 - Update to 0.6.17

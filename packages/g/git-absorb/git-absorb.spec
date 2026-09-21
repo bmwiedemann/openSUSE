@@ -1,7 +1,7 @@
 #
 # spec file for package git-absorb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           git-absorb
-Version:        0.6.17
+Version:        0.9.0
 Release:        0
 Summary:        git commit --fixup, but automatic
 License:        BSD-3-Clause
@@ -25,8 +25,11 @@ URL:            https://github.com/tummychow/git-absorb
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Requires:       git-core
+BuildRequires:  asciidoc
 BuildRequires:  cargo >= 1.79
 BuildRequires:  cargo-packaging
+# tests spawn git rebase
+BuildRequires:  git-core
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
@@ -74,9 +77,15 @@ The official zsh completion script for git-absorb, generated during the build.
 %autosetup -p1 -a1
 
 %build
+# NOTE: do NOT use `make -C Documentation` — its `$(shell command -v a2x)`
+# check breaks on SLE15's make 4.2.1, which execs `command` directly instead
+# of via a shell and wrongly reports a2x missing. Call a2x directly.
+cd Documentation
+GA_VERSION=%{version} a2x -L -d manpage -f manpage git-absorb.adoc --attribute man-version=%{version}
+cd ..
 
 %install
-%{cargo_install}
+%cargo_install
 
 install -D Documentation/git-absorb.1 %{buildroot}%{_mandir}/man1/git-absorb.1
 chmod -x %{buildroot}%{_mandir}/man1/git-absorb.1

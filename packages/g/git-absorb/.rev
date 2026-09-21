@@ -44,4 +44,12 @@ to completion packages</comment>
  * Bump git2 to fix various issues</comment>
     <requestid>1236752</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>0a5363107756d82169f80dea1cc05a7e</srcmd5>
+    <version>0.9.0</version>
+    <time>1789986025</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379257</requestid>
+  </revision>
 </revisionlist>
