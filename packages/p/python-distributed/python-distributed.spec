@@ -36,6 +36,9 @@
 %if "%{flavor}" != "test-py314"
 %define skip_python314 1
 %endif
+%if "%{flavor}" != "test-py315"
+%define skip_python315 1
+%endif
 %else
 %if "%{pythons}" == "python311" && "%{flavor}" != "test-py311"
 # Hardcoded assumption: SLE15 pythons module has python311

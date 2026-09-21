@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 21 01:50:36 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Prepare for Python 3.15, remove Python 3.12 from multibuild.
+
+-------------------------------------------------------------------
 Tue Sep 15 11:45:06 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2026.8.0:
