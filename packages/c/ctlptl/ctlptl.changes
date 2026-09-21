@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 20 05:58:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.9.6:
+  * test: add idempotence tests to the e2e tests (#427)
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    (#426)
+  * registry: only compare the env vars the spec asks for (#425)
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1
+    (#423)
+  * vendor: update k8s deps to 1.37 (#422)
+
+-------------------------------------------------------------------
 Fri Aug 28 12:02:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.9.5:
