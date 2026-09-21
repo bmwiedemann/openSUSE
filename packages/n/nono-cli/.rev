@@ -33,4 +33,12 @@ declare Apache-2.0.
 Local build green on openSUSE_Tumbleweed/aarch64, rpmlint 0 errors / 0 warnings.</comment>
     <requestid>1377734</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>cfc852fd20866ffe4727ca3b7bd5bdf3</srcmd5>
+    <version>0.77.0</version>
+    <time>1789984872</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378850</requestid>
+  </revision>
 </revisionlist>

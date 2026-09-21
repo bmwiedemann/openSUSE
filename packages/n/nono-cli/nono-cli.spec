@@ -94,13 +94,12 @@ Fish command line completion support for %{name}.
 %install
 install -D -d -m 0755 %{buildroot}%{_bindir}
 install -m 0755 target/release/nono %{buildroot}%{_bindir}/nono
-# Filter a warning incorrectly emitted to stdout; https://github.com/nolabs-ai/nono/issues/1777
 install -d %{buildroot}%{_datadir}/bash-completion/completions
-%{buildroot}%{_bindir}/nono completion bash | grep -v 'Ignoring invalid XDG_CONFIG_HOME' > %{buildroot}%{_datadir}/bash-completion/completions/nono
+%{buildroot}%{_bindir}/nono completion bash > %{buildroot}%{_datadir}/bash-completion/completions/nono
 install -d %{buildroot}%{_datadir}/zsh/site-functions
-%{buildroot}%{_bindir}/nono completion zsh | grep -v 'Ignoring invalid XDG_CONFIG_HOME' > %{buildroot}%{_datadir}/zsh/site-functions/_nono
+%{buildroot}%{_bindir}/nono completion zsh > %{buildroot}%{_datadir}/zsh/site-functions/_nono
 install -d %{buildroot}%{_datadir}/fish/vendor_completions.d
-%{buildroot}%{_bindir}/nono completion fish | grep -v 'Ignoring invalid XDG_CONFIG_HOME' > %{buildroot}%{_datadir}/fish/vendor_completions.d/nono.fish
+%{buildroot}%{_bindir}/nono completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/nono.fish
 
 %check
 # would be nice, currently failing

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:15:02 UTC 2026 - Robert Munteanu <rombert@apache.org>
+
+- Drop workaround for upstream issue #1777, fixed in release 0.77.0
+
+-------------------------------------------------------------------
 Sun Sep 13 12:06:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.77.0:
