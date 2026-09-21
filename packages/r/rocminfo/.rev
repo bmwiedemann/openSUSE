@@ -7,4 +7,33 @@
     <comment>A new ROCm package to printout information about GPU's installed</comment>
     <requestid>1306307</requestid>
   </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>9f25b10c186bc2af68b7483163fa5264</srcmd5>
+    <version>7.2.0</version>
+    <time>1789993762</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes
+
+- Add --with preview
+
+- Update license
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Fix OpenSUSE
+
+- Add --with compat
+
+- Update to 7.1.0
+  Remove: 0002-fix-buildtype-detection.patch
+
+- Update to 7.0.1
+- Fix python path on SUSE
+  Add: 0001-adjust-CMAKE_CXX_FLAGS.patch</comment>
+    <requestid>1378491</requestid>
+  </revision>
 </revisionlist>

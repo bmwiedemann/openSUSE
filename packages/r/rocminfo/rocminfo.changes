@@ -1,7 +1,54 @@
 -------------------------------------------------------------------
-Sat Sep 20 00:58:20 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
 
-- Fix python head in rocm_agent_enumerator
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun  2 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.coM>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Thu Mar  5 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Thu Feb 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jan  1 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix OpenSUSE
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Remove: 0002-fix-buildtype-detection.patch
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+- Fix python path on SUSE
 
 -------------------------------------------------------------------
 Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
@@ -32,4 +79,5 @@ Sat Dec  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 Sat Nov  9 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 
 - Stub for tumbleweed
+  Add: 0001-adjust-CMAKE_CXX_FLAGS.patch
 

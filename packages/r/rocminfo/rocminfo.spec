@@ -1,6 +1,19 @@
 #
 # spec file for package rocminfo
 #
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright Fedora Project Authors.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,36 +34,53 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
 
 
 %global upstreamname rocminfo
-%global rocm_release 6.4
+
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.14
 %global rocm_patch 0
+%global pkg_src therock-%{rocm_release}
+%else
+%global rocm_release 7.2
+%global rocm_patch 0
+%global pkg_src rocm-%{rocm_release}.%{rocm_patch}
+%endif
+
 %global rocm_version %{rocm_release}.%{rocm_patch}
 
-Name:           rocminfo
+%bcond_with compat
+%if %{with compat}
+%global pkg_prefix %{_prefix}/lib64/rocm/rocm-%{rocm_release}
+%global pkg_skip_rpath OFF
+%global pkg_rpath %{_prefix}/lib64/rocm/rocm-%{rocm_release}/lib
+%global pkg_suffix %{rocm_release}
+%else
+%global pkg_prefix %{_prefix}
+%global pkg_skip_rpath ON
+%global pkg_rpath %{nil}
+%global pkg_suffix %{nil}
+%endif
+%global pkg_name rocminfo%{pkg_suffix}
+
+Name:           %{pkg_name}
 Version:        %{rocm_version}
-Release:        3%{?dist}
+%if %{with preview}
+Release:        0%{?dist}
+%else
+Release:        5%{?dist}
+%endif
+
 Summary:        ROCm system info utility
 
-License:        NCSA
-URL:            https://github.com/ROCm/rocminfo
-Source0:        %{url}/archive/rocm-%{version}.tar.gz#/%{upstreamname}-%{rocm_version}.tar.gz
-Patch0:         0001-adjust-CMAKE_CXX_FLAGS.patch
-Patch1:         0002-fix-buildtype-detection.patch
+License:        MIT AND NCSA
+# Main license is NCSA
+# This file is MIT
+#   rocm_agent_enumerator
+URL:            https://github.com/ROCm/rocm-systems
+Source0:        %{url}/releases/download/%{pkg_src}/%{upstreamname}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 
 ExclusiveArch:  x86_64
 
@@ -58,16 +88,18 @@ BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  make
 BuildRequires:  python3-devel
-BuildRequires:  rocm-runtime-devel >= %{rocm_release}.0
+BuildRequires:  rocm-runtime%{pkg_suffix}-devel
 
 # rocminfo calls lsmod to check the kernel mode driver status
 Requires:       kmod
+Requires:       rocm-filesystem%{pkg_suffix}
+Requires:       rocm-runtime%{pkg_suffix}
 
 %description
 ROCm system info utility
 
 %prep
-%autosetup -n %{name}-rocm-%{version} -p1
+%autosetup -p1 -n %{upstreamname}
 
 %if 0%{?fedora} || 0%{?rhel}
 %{__python3} %{_rpmconfigdir}/redhat/pathfix.py -i %{__python3} rocm_agent_enumerator
@@ -77,21 +109,29 @@ sed -i -e 's@/usr/bin/env python3@/usr/bin/python3@' rocm_agent_enumerator
 %endif
 
 %build
-%cmake -DROCM_DIR=/usr
+%cmake \
+    -DROCM_DIR=%{pkg_prefix} \
+    -DCMAKE_INSTALL_PREFIX=%{pkg_prefix} \
+    -DCMAKE_INSTALL_RPATH=%{pkg_rpath} \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_SKIP_INSTALL_RPATH=%{pkg_skip_rpath}
+
 %cmake_build
 
 %install
 %cmake_install
 
 #FIXME:
-chmod 755 %{buildroot}%{_bindir}/*
+chmod 755 %{buildroot}%{pkg_prefix}/bin/*
+
+# Extra licenses
+rm -f %{buildroot}%{pkg_prefix}/share/doc/*/License.txt
+rm -f %{buildroot}%{pkg_prefix}/share/doc/*/*/License.txt
 
 %files
 %doc README.md
 %license License.txt
-%{_bindir}/rocm_agent_enumerator
-%{_bindir}/rocminfo
-#Duplicated files:
-%exclude %{_docdir}/*/License.txt
+%{pkg_prefix}/bin/rocm_agent_enumerator
+%{pkg_prefix}/bin/rocminfo
 
 %changelog
