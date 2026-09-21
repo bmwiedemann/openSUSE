@@ -635,4 +635,12 @@ Record past entry:
   * CVE-2026-78136: kenwood_itm: Fix DCS parsing (boo#1280123) (forwarded request 1377778 from AndreasStieger)</comment>
     <requestid>1377779</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>828b6539b63199f095aa9fe6d661e36b</srcmd5>
+    <version>20260918</version>
+    <time>1789984895</time>
+    <user>anag_factory</user>
+    <comment>chirp 20260918 (forwarded request 1379050 from AndreasStieger)</comment>
+    <requestid>1379051</requestid>
+  </revision>
 </revisionlist>
