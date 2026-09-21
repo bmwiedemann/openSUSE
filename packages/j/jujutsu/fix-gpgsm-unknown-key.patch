@@ -1,0 +1,72 @@
+From: pederbe <peder.bergan@gmail.com>
+Subject: gpg: accept GnuPG 2.5.22 metadata in unknown-key tests
+References: https://github.com/jj-vcs/jj/commit/c5ba4ea0b011fbc8d532d74b6cf8493911618cf5
+
+GnuPG 2.5.22 reports the serial number and issuer of a missing X.509
+certificate in NO_PUBKEY. The parser already preserves this metadata, but
+gpgsm_unknown_key expects no key. Accept either the older absent key or
+the exact serial/issuer for the test fixture while still requiring
+Unknown status and no display name.
+diff --git a/lib/src/gpg_signing.rs b/lib/src/gpg_signing.rs
+index 24ecca5d7..1c2968bb8 100644
+--- a/lib/src/gpg_signing.rs
++++ b/lib/src/gpg_signing.rs
+@@ -405,6 +405,24 @@ mod tests {
+         );
+     }
+ 
++    #[test]
++    fn gpgsm_verify_unknown_signature_with_issuer() {
++        assert_eq!(
++            parse_gpg_verify_output(
++                b"[GNUPG:] NO_PUBKEY #7C6DDB3D1978999B/CN=JJ,O=X509+Signing+Test\n\
++                  [GNUPG:] ERROR verify.findkey 50331657\n",
++                true,
++            )
++            .unwrap()
++            .unwrap(),
++            Verification::new(
++                SigStatus::Unknown,
++                Some("#7C6DDB3D1978999B/CN=JJ,O=X509+Signing+Test".into()),
++                None,
++            ),
++        );
++    }
++
+     #[test]
+     fn gpgsm_verify_invalid_signature_format() {
+         assert_matches!(
+diff --git a/lib/tests/test_gpg.rs b/lib/tests/test_gpg.rs
+index 7238a8f10..a28681567 100644
+--- a/lib/tests/test_gpg.rs
++++ b/lib/tests/test_gpg.rs
+@@ -440,20 +440,16 @@ fn gpgsm_unknown_key() -> TestResult {
+     xiNbRmGtEonl9d8JS/IAAAAAAAA=
+     -----END SIGNED MESSAGE-----
+     ";
+-    assert_debug_snapshot!(backend.verify(b"hello world", signature)?, @r#"
+-    Verification {
+-        status: Unknown,
+-        key: None,
+-        display: None,
++    for data in ["hello world", "so bad"] {
++        let check = backend.verify(data.as_bytes(), signature)?;
++        assert_eq!(check.status, SigStatus::Unknown);
++        assert_eq!(check.display, None);
++        // GnuPG 2.5.22 added the missing certificate's serial number and issuer.
++        assert_matches!(
++            check.key.as_deref(),
++            None | Some("#7C6DDB3D1978999B/CN=JJ,O=X509+Signing+Test")
++        );
+     }
+-    "#);
+-    assert_debug_snapshot!(backend.verify(b"so bad", signature)?, @r#"
+-    Verification {
+-        status: Unknown,
+-        key: None,
+-        display: None,
+-    }
+-    "#);
+     Ok(())
+ }
+ 

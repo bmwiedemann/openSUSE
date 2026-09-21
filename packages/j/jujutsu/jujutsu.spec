@@ -17,26 +17,28 @@
 
 
 %define binary_name jj
-
 Name:           jujutsu
-Version:        0.44.0
+Version:        0.45.1
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
 URL:            https://github.com/jj-vcs/jj
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# Upstream post-0.45.1 test fixes: allow duplicate inline snapshots
+# under plain cargo test; accept GnuPG 2.5.22 NO_PUBKEY metadata.
+Patch0:         fix-converge-duplicate-snapshot.patch
+Patch1:         fix-gpgsm-unknown-key.patch
+BuildRequires:  bash-completion
 BuildRequires:  cargo >= 1.89
 BuildRequires:  cargo-packaging
+BuildRequires:  fish
+# git-core provides the git binary used by tests, not perl modules
 BuildRequires:  git-core
 BuildRequires:  gnupg
 BuildRequires:  gpgme
 BuildRequires:  openssh-common
-# dependencies for completion subpackages
-BuildRequires:  bash-completion
-BuildRequires:  fish
 BuildRequires:  zsh
-
 # serde_bser fails to compile on s390x
 # error[E0599]: no method named `put_f64_be` found for struct `Vec<u8>` in the current scope
 #
@@ -71,7 +73,6 @@ unusable for your particular use.
 
 %package -n %{name}-bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -82,7 +83,6 @@ Bash command line completion support for %{name}.
 
 %package -n %{name}-fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and fish)
 BuildArch:      noarch
@@ -92,7 +92,6 @@ Fish command line completion support for %{name}.
 
 %package -n %{name}-zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
 Requires:       %{name} = %{version}
 Supplements:    (%{name} and zsh)
 BuildArch:      noarch

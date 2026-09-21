@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:20:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 0.45.1 (includes 0.45.0):
+  * Release highlights
+    - New jj converge command auto-resolves divergent commits,
+      combining them with heuristics or prompting when unclear.
+    - 0.45.1 fixes jj-core crate publishing and restores
+      building without Cargo.lock after the bisync yank.
+  * Breaking changes
+    - jj config edit/set/unset --user now targets the first
+      loaded user config file instead of prompting; use
+      --file <PATH> to target a specific file.
+    - jj git import in non-colocated repos no longer imports
+      from a detached Git HEAD.
+  * New features
+    - jj config edit/set/unset gained --file <PATH>.
+    - Git HEAD state is now tracked per worktree.
+    - jj bisect reports ambiguous first-bad revision on skips.
+  * Fixed bugs
+    - immutable_heads() now includes untracked_remote_tags().
+    - jj arrange keeps the selection visible on tall stacks.
+    - Default pager flags gained -K, Ctrl-C exits less cleanly.
+    - Conflict side ending in CR no longer loses that byte.
+    - workspace update-stale resets Git HEAD correctly.
+    - jj run stops after a nonzero exit code.
+    - Fixed jj log crash on hidden revisions and stale
+      cache-tree duplicateEntries after external git add.
+    - SHA-256 repo signatures stored under gpgsig-sha256 header.
+- add fix-converge-duplicate-snapshot.patch (upstream post-0.45.1):
+  allow duplicate inline snapshots so the parameterized converge
+  test passes under plain cargo test.
+- add fix-gpgsm-unknown-key.patch (upstream post-0.45.1): accept
+  the serial/issuer GnuPG 2.5.22 reports for unknown X.509 keys.
+- spec cleanup: drop obsolete Group tags, sort BuildRequires.
+
+-------------------------------------------------------------------
 Thu Aug  6 05:20:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.44.0:
