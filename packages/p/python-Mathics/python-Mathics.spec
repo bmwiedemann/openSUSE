@@ -30,16 +30,13 @@
 
 %define pyname Mathics3
 Name:           python-Mathics%{psuffix}
-Version:        10.0.0
+Version:        10.0.1
 Release:        0
 Summary:        A general-purpose computer algebra system
 # Mathics itself is licensed as GPL-3.0 but it includes third-party software with MIT, BSD-3-Clause, and Apache-2.0 Licensing; also includes data from wikipedia licensed under CC-BY-SA-3.0 and GFDL-1.3
 License:        Apache-2.0 AND BSD-3-Clause AND GPL-3.0-only AND MIT
 URL:            https://mathics.github.io/
 Source0:        https://github.com/Mathics3/mathics-core/releases/download/%{version}/%{pyname}-%{version}.tar.gz
-# Manually include files missed from source tarball but required for tests [gh#Mathics3/mathics-core#1830]
-Source1:        https://raw.githubusercontent.com/Mathics3/mathics-core/refs/tags/10.0.0/test/format/format_tests.yaml
-Source2:        https://raw.githubusercontent.com/Mathics3/mathics-core/refs/heads/master/test/format/makeboxes_tests.yaml
 BuildRequires:  %{python_module Mathics-Scanner >= 2.0.0}
 BuildRequires:  %{python_module colorama}
 BuildRequires:  %{python_module devel >= 3.10}
@@ -94,8 +91,6 @@ free, lightweight alternative to Mathematica.
 %prep
 %autosetup -p1 -n mathics3-%{version}
 
-cp %{SOURCE1} %{SOURCE2} ./test/format/
-
 # REMOVE SHEBANGS FROM FILES INSTALLED TO NON-EXEC LOCATIONS
 pushd mathics
 for d in `find ./ -prune -type d`
@@ -103,9 +98,6 @@ do
   find ${d} -name "*.py" -exec sed -i "1,4{/\/usr\/bin\/env/d}" '{}' \;
 done
 popd
-
-# Unnecessary exec perms
-chmod -x ./mathics/Packages/Rubi/Show{StepFormatting,StepRoutines}.m
 
 %build
 %if %{without test}

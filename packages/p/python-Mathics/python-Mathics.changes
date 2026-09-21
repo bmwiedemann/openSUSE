@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 19 16:41:58 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 10.0.1:
+  * Fix packaging to add some test YAML files.
+- Drop yaml files now included in tarball: `format_tests.yaml` and
+  `makeboxes_tests.yaml`.
+
+-------------------------------------------------------------------
 Tue May  5 18:01:47 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 10.0.0:
