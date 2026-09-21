@@ -1,7 +1,7 @@
 #
 # spec file for package dex
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,35 +17,40 @@
 
 
 Name:           dex
-Version:        0.9.0
+Version:        0.10.1
 Release:        0
 Summary:        DesktopEntry Execution
 License:        GPL-3.0-or-later
-Group:          System/X11/Utilities
 URL:            https://github.com/jceb/dex
 Source:         https://github.com/jceb/dex/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+BuildRequires:  make
 BuildRequires:  python3-Sphinx
+BuildRequires:  python3-base
 Requires:       python3
 BuildArch:      noarch
 
 %description
-A simple utility to handle XDG autostart entries.
+A program to generate and execute Desktop Entry files of type Application
+and to process XDG autostart entries.
 
 %prep
-%setup -q
+%autosetup
 
 %build
-make %{?_smp_mflags} V=1
+# Makefile defaults VERSION to `git tag`; there is no git in the build.
+%make_build VERSION=%{version}
 
 %install
-%make_install \
-  PREFIX=%{_prefix}            \
-  DOCPREFIX=%{_docdir}/%{name} \
-  MANPREFIX=%{_mandir}
+%make_install PREFIX=%{_prefix} DOCPREFIX=%{_docdir}/%{name} MANPREFIX=%{_mandir} VERSION=%{version}
+rm -rf %{buildroot}%{_docdir}/%{name}
+sed -i '1s|#!%{_bindir}/env python3|#!%{_bindir}/python3|' %{buildroot}%{_bindir}/%{name}
+
+%check
+%{buildroot}%{_bindir}/%{name} --test -v
 
 %files
-%defattr(-,root,root)
-%doc %{_docdir}/%{name}/
+%license LICENSE
+%doc README.rst CHANGELOG.md
 %{_bindir}/%{name}
 %{_mandir}/man1/%{name}.1%{?ext_man}
 

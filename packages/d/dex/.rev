@@ -15,4 +15,24 @@
     <comment></comment>
     <requestid>830875</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>51f8c34b99572cba6460ad1ee0a1d43c</srcmd5>
+    <version>0.10.1</version>
+    <time>1789986166</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 0.10.1:
+  * Support additional application actions (--action)
+  * --term now also applies to autostart (-a)
+  * Honour XDG_CURRENT_DESKTOP for autostart environment
+  * --property to print DesktopEntry key values
+  * Always respect OnlyShowIn and NotShowIn
+  * Skip missing autostart directories instead of failing
+  * Track seen autostart files with a set; scan with os.scandir
+- Pass VERSION to make so the man page is versioned without git
+- Enable the upstream --test self-test in %check
+- Rewrite shebang to /usr/bin/python3 (env-script-interpreter)
+- Spec cleanup</comment>
+    <requestid>1379371</requestid>
+  </revision>
 </revisionlist>
