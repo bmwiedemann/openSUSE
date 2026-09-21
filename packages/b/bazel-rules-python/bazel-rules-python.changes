@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep 20 15:19:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.3, seven years past the 0.0.1 snapshot:
+  * Upstream moved to the bazel-contrib organization; minimum
+    supported Bazel is 7.4.1, tested against 7.x-9.x.
+  * Bzlmod-first: MODULE.bazel flag aliases, explicit_init_py tag
+    class, default Python version from pyproject.toml.
+  * PyPI handling rebuilt around pip.parse and whl_library with
+    uv lock support and SRI digests for all hash algorithms.
+  * New experimental py_extension macro for C/C++ extensions and
+    an opt-in guard against empty py_test targets.
+  * Bundled toolchain and setuptools updates, including the
+    CVE-2025-47273 fix; see upstream's release notes for the
+    full list.
+- Switch to the upstream release tarball and drop the obs_scm git
+  snapshot service with its .obscpio and .obsinfo artifacts.
+- Install via tar extract so dotfiles ship in /usr/src as well;
+  drop the obsolete executable-bit fixup for docs/*.md.
+- Refresh the rpmlintrc for the verbatim tree: filter the script
+  policy findings that must stay as upstream ships them, and use
+  the current filelist-forbidden-fhs23 check name.
+- Modernize the spec: drop the obsolete Group tag, macro-ize the
+  /usr/src path, switch Url to URL and refresh the header.
+
+-------------------------------------------------------------------
 Mon Mar  9 09:54:54 UTC 2020 - Michał Rostecki <mrostecki@opensuse.org>
 
 - Initial release

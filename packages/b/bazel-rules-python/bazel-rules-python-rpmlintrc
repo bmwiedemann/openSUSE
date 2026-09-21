@@ -1,2 +1,14 @@
 # This is a source package and /usr/src is a correct path to install files.
-addFilter("bazel-rules-python-source.* suse-filelist-forbidden-fhs23")
+addFilter("bazel-rules-python-source.* filelist-forbidden-fhs23")
+# Verbatim upstream Bazel ruleset: files are executed by Bazel, not the
+# system, so modes, env-shebangs, CRLF .bat templates, empty marker files
+# and test fixtures must stay exactly as upstream ships them.
+addFilter("bazel-rules-python-source.* zero-length")
+addFilter("bazel-rules-python-source.* env-script-interpreter")
+addFilter("bazel-rules-python-source.* script-without-shebang")
+addFilter("bazel-rules-python-source.* non-executable-script")
+addFilter("bazel-rules-python-source.* wrong-script-interpreter")
+addFilter("bazel-rules-python-source.* wrong-script-end-of-line-encoding")
+addFilter("bazel-rules-python-source.* version-control-internal-file")
+addFilter("bazel-rules-python-source.* hidden-file-or-dir")
+addFilter("bazel-rules-python-source.* bin-sh-syntax-error")

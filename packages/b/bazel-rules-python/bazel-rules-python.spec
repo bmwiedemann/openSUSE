@@ -1,7 +1,7 @@
 #
 # spec file for package bazel-rules-python
 #
-# Copyright (c) 2020 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,19 +12,18 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define src_install_dir /usr/src/%{name}
-
+%define src_install_dir %{_prefix}/src/%{name}
 Name:           bazel-rules-python
-Version:        0.0.1
+Version:        2.3.3
 Release:        0
 Summary:        Python rules for Bazel
 License:        Apache-2.0
-Url:            https://github.com/bazelbuild/rules_python
-Source0:        %{name}-%{version}.tar.xz
+URL:            https://github.com/bazel-contrib/rules_python
+Source0:        https://github.com/bazel-contrib/rules_python/releases/download/%{version}/rules_python-%{version}.tar.gz
 Source1:        %{name}-rpmlintrc
 BuildRequires:  fdupes
 
@@ -33,7 +32,6 @@ Bazel rules for packaging and distributing software written in Python.
 
 %package source
 Summary:        Source code of bazel-rules-python
-Group:          Development/Sources
 BuildArch:      noarch
 
 %description source
@@ -42,15 +40,13 @@ Bazel rules for packaging and distributing software written in Python.
 This package contains source code of bazel-rules-python.
 
 %prep
-%setup -q
-# Yes, someone really added an executable bit to markdown files...
-chmod -x docs/*.md
+%setup -q -n rules_python-%{version}
 
 %build
 
 %install
 mkdir -p %{buildroot}%{src_install_dir}
-cp -R * %{buildroot}%{src_install_dir}
+tar -xzf %{SOURCE0} --strip-components=1 -C %{buildroot}%{src_install_dir}
 %fdupes %{buildroot}%{src_install_dir}
 
 %files source
@@ -59,4 +55,3 @@ cp -R * %{buildroot}%{src_install_dir}
 %{src_install_dir}
 
 %changelog
-
