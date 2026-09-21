@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:35:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.6:
+  * Recognise .har files as JSON
+  * Fix mouse-wheel scrolling in the diff viewer
+  * Fix editor tabs not being selectable while they appear
+    selectable
+  * Fix flickering when reordering editor tabs
+  * Fix window scale updates from the settings tab
+  * Fix cursor style inconsistencies
+- Build and install the real lapce-proxy binary instead of
+  copying lapce
+- Export RELEASE_TAG_NAME so the binary reports a stable version
+- Re-derive License from the vendored crate set (add Unicode-3.0
+  and Apache-2.0 WITH LLVM-exception)
+- Require rust >= 1.87 (workspace MSRV)
+- Spec cleanup
+
+-------------------------------------------------------------------
 Sun Jan 04 14:49:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.4.5:

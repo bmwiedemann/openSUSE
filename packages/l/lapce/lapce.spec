@@ -19,41 +19,28 @@
 %if 0%{?suse_version} && 0%{?suse_version} < 1550
 %global force_gcc_version 13
 %endif
-
 %if 0%{?suse_version} > 1600
 %bcond_without mold
 %else
 %bcond_with    mold
 %endif
-
 %if %{with mold}
-%global build_rustflags "-C" "linker=clang" "-C" "link-arg='-fuse-ld=/usr/bin/mold -Wl,-z,relro,-z,now'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none"
+%global build_rustflags "-C" "linker=clang" "-C" "link-arg='-fuse-ld=%{_bindir}/mold -Wl,-z,relro,-z,now'" "-C" "debuginfo=2" "-C" "incremental=false" "-C" "strip=none"
 %endif
-
 Name:           lapce
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Lightning-fast and Powerful Code Editor written in Rust
+# Legal-Review-Notice: ittapi (GPL-2.0-only OR BSD-3-Clause) is not shipped
+License:        Apache-2.0 AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND (Apache-2.0 WITH LLVM-exception) AND (Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT) AND (Artistic-2.0 OR CC0-1.0) AND BSD-2-Clause AND (BSD-2-Clause OR Apache-2.0 OR MIT) AND BSD-3-Clause AND ((Apache-2.0 OR MIT) AND BSD-3-Clause) AND CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND MPL-2.0-or-later AND Unicode-3.0 AND ((Apache-2.0 OR MIT) AND Unicode-DFS-2016) AND Zlib AND (0BSD OR Apache-2.0 OR MIT)
 URL:            https://github.com/lapce/lapce
-License:        (0BSD OR Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR BSL-1.0) AND (Apache-2.0 OR ISC OR MIT) AND (Apache-2.0 OR MIT) AND (Apache-2.0 OR MIT OR Zlib) AND MIT AND (Artistic-2.0 OR CC0-1.0) AND BSD-2-Clause AND BSD-3-Clause AND BSL-1.0 AND CC0-1.0 AND ISC AND MIT AND (MIT OR Unlicense) AND MPL-2.0 AND MPL-2.0+ AND Zlib AND zlib-acknowledgement AND Apache-2.0
-Group:          Productivity/Text/Editors
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-%if 0%{?suse_version} > 1600
-BuildRequires:  c++_compiler
-BuildRequires:  c_compiler
-BuildRequires:  clang
-BuildRequires:  mold
-%else
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-BuildRequires:  libstdc++6-devel-gcc13
-%endif
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  python3
-BuildRequires:  rust
+BuildRequires:  rust >= 1.87
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(atk) >= 2.18
 BuildRequires:  pkgconfig(cairo) >= 1.14
@@ -68,28 +55,39 @@ BuildRequires:  pkgconfig(pango) >= 1.38
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xkbcommon)
 ExclusiveArch:  %{rust_tier1_arches}
+%if 0%{?suse_version} > 1600
+BuildRequires:  c++_compiler
+BuildRequires:  c_compiler
+BuildRequires:  clang
+BuildRequires:  mold
+%else
+BuildRequires:  gcc13
+BuildRequires:  gcc13-c++
+BuildRequires:  libstdc++6-devel-gcc13
+%endif
 
 %description
-Lapce is written in pure Rust, with the UI in Druid
-It uses Xi-Editor's Rope Science for text editing, and the
-Wgpu Graphics API for rendering.
+Lapce is written in pure Rust, with the UI in Floem.
+It uses rope-based text editing and the wgpu graphics API for rendering.
 
 %prep
 %autosetup -a1
+# Distro rust; do not let cargo invoke rustup for channel = "stable".
+rm -f rust-toolchain.toml
 
 %build
 %if 0%{?force_gcc_version}
 export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
-# We disable default feature as they include auto-update.
-# For reference:
-# https://github.com/lapce/lapce/blob/0ded46c988d72b563bd78b29cc11107d4e2248bc/lapce-ui/Cargo.toml#L48
-%{cargo_build} --no-default-features -p lapce-app
+# Bake a stable version string (otherwise the binary reports Nightly).
+export RELEASE_TAG_NAME="v%{version}"
+# Default features include the auto-updater; keep it off for distro builds.
+%{cargo_build} --no-default-features -p lapce-app -p lapce-proxy
 
 %install
 install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}
-install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name} %{buildroot}%{_bindir}/%{name}-proxy
+install -Dm 0755 %{_builddir}/%{name}-%{version}/target/release/%{name}-proxy %{buildroot}%{_bindir}/%{name}-proxy
 install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/linux/dev.%{name}.%{name}.metainfo.xml %{buildroot}%{_datadir}/metainfo/dev.%{name}.%{name}.metainfo.xml
 install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/linux/dev.%{name}.%{name}.desktop %{buildroot}%{_datadir}/applications/dev.%{name}.%{name}.desktop
 install -Dm 0644 %{_builddir}/%{name}-%{version}/extra/images/logo.png %{buildroot}%{_datadir}/pixmaps/dev.%{name}.%{name}.png

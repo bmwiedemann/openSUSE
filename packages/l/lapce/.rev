@@ -317,4 +317,12 @@
   * Fix rendering issues when using custom scale display</comment>
     <requestid>1329279</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>4feb3f29b4ef11ad4a0a01c2afc95d2a</srcmd5>
+    <version>0.4.6</version>
+    <time>1789986037</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379263</requestid>
+  </revision>
 </revisionlist>
