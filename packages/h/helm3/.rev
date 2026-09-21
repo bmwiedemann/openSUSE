@@ -242,4 +242,41 @@
   * bsc#1278688, CVE-2026-84445</comment>
     <requestid>1375681</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>3cf9c6e81a19aa2956e383043aecf63b</srcmd5>
+    <version>3.22.0</version>
+    <time>1789985608</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.22.0 (
+      bsc#1281104, CVE-2026-85731,
+      bsc#1281112, CVE-2026-85732):
+  * chore(deps): bump the k8s-io group across 1 directory with 6 updates
+  * bump version to 3.22 (#32606)
+  * fix: set [pull,push] scope when helm push to a registry(use token auth) (backport) (#32362)
+  * chore(deps): bump the k8s-io group with 7 updates (#32573)
+  * chore(deps): bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#32563)
+  * chore(deps): bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#32554)
+  * chore(deps): bump golang.org/x/crypto from 0.54.0 to 0.55.0 (#32542)
+  * [dev-v3 backport] deps: bump google.golang.org/grpc@v1.82.1 for GO-2026-6061 (#32536)
+  * fix: bump go.opentelemetry.io/otel@v1.44.0 for GO-2026-5158 (#32535)
+  * chore(deps): bump github.com/santhosh-tekuri/jsonschema/v6
+  * fix(provenance): migrate to ProtonMail/go-crypto to resolve GO-2026-5932
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump github/codeql-action/upload-sarif (#32449)
+  * chore(deps): bump github/codeql-action/analyze from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/autobuild from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/init from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/autobuild from 4.37.0 to 4.37.1 (#32381)
+  * chore(deps): bump github/codeql-action/upload-sarif (#32382)
+  * ci: auto-label PRs targeting dev-v3 (#32340)
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 (#32331)
+  * chore(deps): bump github.com/mattn/go-shellwords from 1.0.13 to 1.0.14 (#32332)
+  * chore(deps): bump github/codeql-action/analyze from 3.26.6 to 4.37.0 (#32357)
+  * chore(deps): bump github/codeql-action/upload-sarif (#32360)
+  * chore(deps): bump github/codeql-action/init from 3.26.6 to 4.37.0 (#32359)
+  * chore(deps): bump golang/govulncheck-action from 1.0.4 to 1.1.0 (#32356)
+  * chore(deps): bump golangci/golangci-lint-action from 6.1.1 to 9.3.0 (#32354)
+  * chore(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.3 (#32353)</comment>
+    <requestid>1379237</requestid>
+  </revision>
 </revisionlist>

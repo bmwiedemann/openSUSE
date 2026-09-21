@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Sun Sep 20 11:33:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.22.0 (
+      bsc#1281104, CVE-2026-85731,
+      bsc#1281112, CVE-2026-85732):
+  * chore(deps): bump the k8s-io group across 1 directory with 6 updates
+  * bump version to 3.22 (#32606)
+  * fix: set [pull,push] scope when helm push to a registry(use token auth) (backport) (#32362)
+  * chore(deps): bump the k8s-io group with 7 updates (#32573)
+  * chore(deps): bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#32563)
+  * chore(deps): bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#32554)
+  * chore(deps): bump golang.org/x/crypto from 0.54.0 to 0.55.0 (#32542)
+  * [dev-v3 backport] deps: bump google.golang.org/grpc@v1.82.1 for GO-2026-6061 (#32536)
+  * fix: bump go.opentelemetry.io/otel@v1.44.0 for GO-2026-5158 (#32535)
+  * chore(deps): bump github.com/santhosh-tekuri/jsonschema/v6
+  * fix(provenance): migrate to ProtonMail/go-crypto to resolve GO-2026-5932
+  * chore(deps): bump the k8s-io group with 7 updates
+  * chore(deps): bump github/codeql-action/upload-sarif (#32449)
+  * chore(deps): bump github/codeql-action/analyze from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/autobuild from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/init from 4.37.1 to 4.37.2
+  * chore(deps): bump github/codeql-action/autobuild from 4.37.0 to 4.37.1 (#32381)
+  * chore(deps): bump github/codeql-action/upload-sarif (#32382)
+  * ci: auto-label PRs targeting dev-v3 (#32340)
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.1 to 2.6.2 (#32331)
+  * chore(deps): bump github.com/mattn/go-shellwords from 1.0.13 to 1.0.14 (#32332)
+  * chore(deps): bump github/codeql-action/analyze from 3.26.6 to 4.37.0 (#32357)
+  * chore(deps): bump github/codeql-action/upload-sarif (#32360)
+  * chore(deps): bump github/codeql-action/init from 3.26.6 to 4.37.0 (#32359)
+  * chore(deps): bump golang/govulncheck-action from 1.0.4 to 1.1.0 (#32356)
+  * chore(deps): bump golangci/golangci-lint-action from 6.1.1 to 9.3.0 (#32354)
+  * chore(deps): bump ossf/scorecard-action from 2.4.0 to 2.4.3 (#32353)
+  * chore(deps): bump golang.org/x/text from 0.38.0 to 0.40.0 (#32310)
+  * chore(deps): bump golang.org/x/crypto from 0.53.0 to 0.54.0 (#32308)
+  * chore(deps): bump golang.org/x/term from 0.44.0 to 0.45.0 (#32306)
+  * fix(engine): prevent Files.Lines panic on empty file
+  * Apply suggestions from code review
+  * fix: drop containerd v1 dep to resolve govulncheck CVEs
+  * chore(deps): bump github.com/containerd/containerd from 1.7.32 to 1.7.33
+  * chore(deps): bump github.com/cyphar/filepath-securejoin
+  * chore(deps): bump the k8s-io group with 2 updates
+  * fixes
+  * chore(deps): bump the k8s-io group across 1 directory with 2 updates
+  * fix(registry): keep credentials on plain-HTTP fallback with oras-go v2.6.1
+  * chore(deps): bump oras.land/oras-go/v2 from 2.6.0 to 2.6.1
+  * chore(deps): bump golang.org/x/crypto from 0.52.0 to 0.53.0
+  * chore(deps): bump golang.org/x/term from 0.43.0 to 0.44.0
+  * chore(deps): bump golang.org/x/text from 0.37.0 to 0.38.0
+  * Update .github/env
+  * ci: bump golangci-lint to v2.11.3 for go 1.26
+  * chore: bump go to 1.26
+  * chore(deps): bump github.com/lib/pq from 1.11.2 to 1.12.3
+  * chore(deps): bump github.com/distribution/distribution/v3
+  * chore(deps): bump github.com/containerd/containerd from 1.7.30 to 1.7.32
+  * chore(deps): bump github.com/Masterminds/semver/v3 from 3.4.0 to 3.5.0
+  * chore(deps): bump github.com/mattn/go-shellwords from 1.0.12 to 1.0.13
+  * chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+  * fix(deps): bump golang.org/x/net to v0.55.0 to address GO-2026-5026
+  * chore(deps): bump k8s.io/klog/v2 from 2.130.1 to 2.140.0
+  * chore(deps): bump golang.org/x/text from 0.35.0 to 0.37.0
+  * [v3] Bump to version v3.21 (#32103)
+  * [v3 backport] Fix rollback for missing resources
+  * fix(action): avoid nil REST client getter panic when installing CRDs
+- drop CVE-2026-63308.patch: merged upstream
+
+-------------------------------------------------------------------
 Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to fix
@@ -765,8 +831,6 @@ Sat May 18 09:20:56 UTC 2024 - opensuse_buildservice@ojkastl.de
   * validation fix 8e6a514 (Matt Farina)
   * bug: add proxy support for oci getter 94c1dea (Ricardo
     Maraschini)
-  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 cbab6d6
-    (dependabot[bot])
   * chore(deps): bump github/codeql-action from 3.23.0 to 3.23.1
     de332ae (dependabot[bot])
   * chore(deps): bump github.com/containerd/containerd from 1.7.11
@@ -777,8 +841,6 @@ Sat May 18 09:20:56 UTC 2024 - opensuse_buildservice@ojkastl.de
   * chore(deps): bump github.com/DATA-DOG/go-sqlmock from 1.5.0 to
     1.5.2 5f9533f (dependabot[bot])
   * Improve release action 4790bb9 (George Jenkins)
-  * chore(deps): bump actions/setup-go from 4.1.0 to 5.0.0 f980ad3
-    (dependabot[bot])
   * Fix grammatical error c25736c (Matt Carr)
   * Updated for review comments d2cf8c6 (MichaelMorris)
   * Add robustness to wait status checks fc74964 (MichaelMorris)

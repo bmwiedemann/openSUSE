@@ -19,7 +19,7 @@
 %define goipath helm.sh/helm/v3
 %define git_dirty clean
 Name:           helm3
-Version:        3.21.3
+Version:        3.22.0
 Release:        0
 Summary:        The Kubernetes Package Manager
 License:        Apache-2.0
@@ -27,7 +27,6 @@ Group:          Development/Languages/Other
 URL:            https://github.com/helm/helm
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-Patch1:         CVE-2026-63308.patch
 Provides:       helm = %{version}
 BuildRequires:  fish
 BuildRequires:  golang-packaging
