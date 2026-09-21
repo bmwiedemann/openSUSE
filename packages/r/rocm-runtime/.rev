@@ -7,4 +7,41 @@
     <comment>The low level hip runtime package</comment>
     <requestid>1304319</requestid>
   </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>ab248f225a5f254ab151dff759eac1ca</srcmd5>
+    <version>7.2.1</version>
+    <time>1789993759</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes
+
+- Add requires for kfdtest
+
+- Update to 7.2.1
+
+- Add --with preview
+
+- Update license
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with static
+- Disable packaging libhsakmt.a on SUSE
+
+- Enable --with compat
+
+- Enable hsakmt
+
+- Fix misreported gfx1151 memory size
+
+- Update to 7.1.1
+
+- Update to 7.1.0
+
+- Update to 7.0.2</comment>
+    <requestid>1378487</requestid>
+  </revision>
 </revisionlist>

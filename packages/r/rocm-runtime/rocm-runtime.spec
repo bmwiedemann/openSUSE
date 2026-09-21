@@ -1,6 +1,19 @@
 #
 # spec file for package rocm-runtime
 #
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright Fedora Project Authors.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,69 +35,85 @@
 # THE SOFTWARE.
 #
 
-# Copyright (c) 2025 SUSE LLC and contributors
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
+%global upstreamname rocr-runtime
 
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.14
+%global rocm_patch 0
+%global pkg_src therock-%{rocm_release}
+%else
+%global rocm_release 7.2
+%global rocm_patch 1
+%global pkg_src rocm-%{rocm_release}.%{rocm_patch}
+%endif
+
+%global rocm_version %{rocm_release}.%{rocm_patch}
+
+%bcond_with compat
+%if %{with compat}
+%global pkg_libdir lib
+%global pkg_prefix %{_prefix}/lib64/rocm/rocm-%{rocm_release}/
+%global pkg_suffix %{rocm_release}
+%else
+%global pkg_libdir %{_lib}
+%global pkg_prefix %{_prefix}
+%global pkg_suffix %{nil}
+%endif
 
 %if 0%{?suse_version}
 # 15.6
 # rocm-runtime.x86_64: E: shlib-policy-name-error (Badness: 10000) libhsa-runtime64-1
 # Your package contains a single shared library but is not named after its SONAME.
-%global runtime_name libhsa-runtime64-1
+%global pkg_name libhsa-runtime64-1%{pkg_suffix}
+# [  130s] libhsa-runtime64-1-static.x86_64: E: lto-no-text-in-archive (Badness: 10000) /usr/lib64/libhsakmt.a
+# [  130s] This archive does not contain a non-empty .text section.  The archive was not
+# [  130s] created with -ffat-lto-objects option.
+#
+# Disable building static on SUSE
+%bcond_with static
 %else
-%global runtime_name rocm-runtime
+%global pkg_name rocm-runtime%{pkg_suffix}
+%bcond_without static
 %endif
-%global forge_name rocm-runtime
-
-#Image support is x86 only
-%ifarch x86_64
-%global enableimage 1
-%endif
-%global rocm_release 6.4
-%global rocm_patch 2
-%global rocm_version %{rocm_release}.%{rocm_patch}
 
 %bcond_without kfdtest
 
-%bcond_with compat_gcc
-%if %{with compat_gcc}
-%global compat_gcc_major 13
-%global gcc_major_str -13
-%else
-%global compat_gcc_major %{nil}
-%global gcc_major_str %{nil}
-%endif
-
-Name:           %{runtime_name}
+Name:           rocm-runtime%{pkg_suffix}
 Version:        %{rocm_version}
-Release:        5%{?dist}
+%if %{with preview}
+Release:        0%{?dist}
+%else
+Release:        4%{?dist}
+%endif
 Summary:        ROCm Runtime Library
 
-License:        NCSA
-URL:            https://github.com/ROCm/ROCR-Runtime
-Source0:        %{url}/archive/rocm-%{version}.tar.gz#/%{forge_name}-%{version}.tar.gz
+License:        BSD-2-Clause AND MIT AND BSD-3-Clause AND NCSA AND GPL-2.0-only WITH Linux-syscall-note
+# Main license is NCSA AND BSD-3-Clause
+# libhsakmt is MIT AND BSD-2-Clause
+# Misc files:
+#  libhsakmt/include/hsakmt/linux/udmabuf.h
+#  GPL-2.0-only WITH Linux-syscall-note
+URL:            https://github.com/ROCm/rocm-systems
+Source0:        %{url}/releases/download/%{pkg_src}/%{upstreamname}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 
 ExclusiveArch:  x86_64
 
+# Image support is x86 only
+%ifarch x86_64
+%global enableimage 1
+%endif
+
 BuildRequires:  cmake
-BuildRequires:  gcc%{compat_gcc_major}-c++
+BuildRequires:  gcc-c++
 BuildRequires:  libdrm-devel
 BuildRequires:  libffi-devel
 BuildRequires:  libzstd-devel
-BuildRequires:  rocm-compilersupport-macros
-BuildRequires:  rocm-device-libs
-BuildRequires:  rocm-llvm-static
+BuildRequires:  rocm-compilersupport%{pkg_suffix}-macros
+BuildRequires:  rocm-device-libs%{pkg_suffix}
+BuildRequires:  rocm-filesystem%{pkg_suffix}
+BuildRequires:  rocm-llvm%{pkg_suffix}-static
 
 %if 0%{?suse_version}
 BuildRequires:  libelf-devel
@@ -101,9 +130,7 @@ BuildRequires:  numactl-devel
 BuildRequires:  vim-common
 %endif
 
-Provides:       rocm-runtime = %{version}-%{release}
-Obsoletes:      hsakmt < 6.3
-Provides:       hsakmt = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description
 The ROCm Runtime Library is a thin, user-mode API that exposes the necessary
@@ -112,20 +139,41 @@ driver set and the AMDKFD kernel driver. Together they enable programmers to
 directly harness the power of AMD discrete graphics devices by allowing host
 applications to launch compute kernels directly to the graphics hardware.
 
+%if 0%{?suse_version}
+%package -n %{pkg_name}
+Summary:        Shared libraries for %{name}
+Requires:       rocm-filesystem%{pkg_suffix}
+Provides:       %{name}%{?_isa} = %{version}-%{release}
+Provides:       %{name}%{pkg_suffix} = %{version}-%{release}
+
+%description -n %{pkg_name}
+%{summary}
+%endif
+
 %package devel
 Summary:        ROCm Runtime development files
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Provides:       hsakmt-devel = %{version}-%{release}
-Obsoletes:      hsakmt-devel < 6.3
-Provides:       rocm-runtime-devel = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description devel
 ROCm Runtime development files
 
+%if %{with static}
+%package static
+Summary:        ROCm Runtime hsakmt development files
+Requires:       %{name}-devel%{?_isa} = %{version}-%{release}
+Provides:       %{name}%{pkg_suffix}-static = %{version}-%{release}
+
+%description static
+%{summary}
+%endif
+
 %if %{with kfdtest}
 %package -n kfdtest
 Summary:        Test suite for ROCm's KFD kernel module
-Requires:       rocm-smi
+Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
+Requires:       rocm-smi%{pkg_suffix}
 
 %description -n kfdtest
 This package includes ROCm's KFD kernel module test suite (kfdtest), the list of
@@ -133,7 +181,7 @@ excluded tests for each ASIC, and a convenience script to run the test suite.
 %endif
 
 %prep
-%autosetup -n ROCR-Runtime-rocm-%{version} -p1
+%autosetup -n %{upstreamname} -p3
 
 # Use llvm's static libs kfdtest
 sed -i -e 's@LLVM_LINK_LLVM_DYLIB@0@' libhsakmt/tests/kfdtest/CMakeLists.txt
@@ -141,17 +189,22 @@ sed -i -e 's@LLVM_LINK_LLVM_DYLIB@0@' libhsakmt/tests/kfdtest/CMakeLists.txt
 # gcc 15 include cstdint
 sed -i '/#include <memory>.*/a#include <cstdint>' runtime/hsa-runtime/core/inc/amd_elf_image.hpp
 
+# Remove source we are not using to make license review easier
+rm -rf rocrtst
+rm -f clang-format-diff.py
+
+# libhsakmt license
+cp -p libhsakmt/LICENSE.md LICENSE_libhsakmt.md
+
 %build
 
 export PATH=%{rocmllvm_bindir}:$PATH
 
-export CC=/usr/bin/gcc%{gcc_major_str}
-export CXX=/usr/bin/g++%{gcc_major_str}
-
 %cmake \
     -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_LIBDIR=%{pkg_libdir} \
+    -DCMAKE_INSTALL_PREFIX=%{pkg_prefix} \
     -DCMAKE_PREFIX_PATH=%{rocmllvm_cmakedir}/.. \
-    -DCMAKE_INSTALL_LIBDIR=%{_lib} \
     -DCMAKE_SHARED_LINKER_FLAGS=-ldrm_amdgpu \
     -DINCLUDE_PATH_COMPATIBILITY=OFF \
     %{?!enableimage:-DIMAGE_SUPPORT=OFF}
@@ -165,7 +218,11 @@ export LIBHSAKMT_PATH=$(pwd)/build/libhsakmt/archive
 export LIBHSAKMT_PATH=$(pwd)/%__cmake_builddir/libhsakmt/archive
 %endif
 cd libhsakmt/tests/kfdtest
-%cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_SKIP_RPATH=ON -DLLVM_DIR=%{rocmllvm_cmakedir}
+%cmake \
+    -DCMAKE_BUILD_TYPE=RelWithDebInfo \
+    -DCMAKE_INSTALL_PREFIX=%{pkg_prefix} \
+    -DCMAKE_SKIP_RPATH=ON \
+    -DLLVM_DIR=%{rocmllvm_cmakedir}
 %cmake_build
 
 %endif
@@ -178,32 +235,44 @@ cd libhsakmt/tests/kfdtest
 %cmake_install
 %endif
 
-rm -f %{buildroot}%{_prefix}/share/doc/hsa-runtime64/LICENSE.md
-rm -f %{buildroot}%{_prefix}/share/doc/packages/%{name}/LICENSE.md
-rm -f %{buildroot}%{_libdir}/libhsakmt.*
-rm -rf %{buildroot}%{_libdir}/cmake/hsakmt
-rm -f %{buildroot}%{_libdir}/pkgconfig/libhsakmt.pc
+# Extra licenses
+rm -f %{buildroot}%{pkg_prefix}/share/doc/hsa-rocr/LICENSE.md
+rm -f %{buildroot}%{pkg_prefix}/share/doc/packages/%{name}/LICENSE.md
+rm -f %{buildroot}%{pkg_prefix}/share/doc/rocr/LICENSE.md
 
-%ldconfig_scriptlets
+%if %{without static}
+rm -f %{buildroot}%{pkg_prefix}/%{pkg_libdir}/libhsakmt.a
+rm -rf %{buildroot}%{pkg_prefix}/%{pkg_libdir}/cmake/hsakmt/
+rm -f %{buildroot}%{pkg_prefix}/%{pkg_libdir}/pkgconfig/libhsakmt.pc
+%endif
 
-%files
+%ldconfig_scriptlets -n %{pkg_name}
+
+%files -n %{pkg_name}
 %doc README.md
-%license LICENSE.txt
-%{_libdir}/libhsa-runtime64.so.1{,.*}
+%license LICENSE.txt LICENSE_libhsakmt.md
+%{pkg_prefix}/%{pkg_libdir}/libhsa-runtime64.so.1{,.*}
 
 %files devel
-%{_includedir}/hsa/
-%{_includedir}/hsakmt
-%{_libdir}/libhsa-runtime64.so
-%{_libdir}/cmake/hsa-runtime64/
+%{pkg_prefix}/include/hsa/
+%{pkg_prefix}/include/hsakmt
+%{pkg_prefix}/%{pkg_libdir}/libhsa-runtime64.so
+%{pkg_prefix}/%{pkg_libdir}/cmake/hsa-runtime64/
+
+%if %{with static}
+%files static
+%{pkg_prefix}/%{pkg_libdir}/libhsakmt.a
+%{pkg_prefix}/%{pkg_libdir}/cmake/hsakmt/
+%{pkg_prefix}/%{pkg_libdir}/pkgconfig/libhsakmt.pc
+%endif
 
 %if %{with kfdtest}
 %files -n kfdtest
 %doc libhsakmt/tests/kfdtest/README.txt
 %license libhsakmt/tests/kfdtest/LICENSE.kfdtest
-%{_bindir}/kfdtest
-%{_bindir}/run_kfdtest.sh
-%{_datadir}/kfdtest
+%{pkg_prefix}/bin/kfdtest
+%{pkg_prefix}/bin/run_kfdtest.sh
+%{pkg_prefix}/share/kfdtest
 %endif
 
 %changelog

@@ -1,4 +1,91 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun  2 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Thu Apr 30 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add requires for kfdtest
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Thu Mar  5 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Thu Feb 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jan  1 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with static
+- Disable packaging libhsakmt.a on SUSE
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable --with compat
+
+-------------------------------------------------------------------
+Fri Dec 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable hsakmt
+
+-------------------------------------------------------------------
+Mon Dec  8 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix misreported gfx1151 memory size
+
+-------------------------------------------------------------------
+Wed Nov 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+- Remove compat gcc
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
 Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Simiplify file removal
