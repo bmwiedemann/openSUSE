@@ -1,7 +1,7 @@
 #
 # spec file for package pijul
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,18 +16,17 @@
 #
 
 
-%define dlver   1.0.0-beta.9
-
+%define dlver   1.0.0-beta.23
 Name:           pijul
-Version:        1.0.0~beta.9
+Version:        1.0.0~beta.23
 Release:        0
 Summary:        Distributed version control system based on a theory of patches
 License:        GPL-2.0-only
-Group:          Development/Tools/Version Control
 URL:            https://pijul.org/
 Source0:        https://crates.io/api/v1/crates/pijul/%{dlver}/download#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(openssl)
 
@@ -37,10 +36,9 @@ based on a theory of patches, which makes it really distributed.
 
 %package bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and bash-completion)
 Requires:       %{name} = %{version}
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
@@ -48,10 +46,9 @@ Bash command-line completion support for %{name}.
 
 %package fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       %{name} = %{version}
 Requires:       fish
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description fish-completion
@@ -59,10 +56,9 @@ Fish command-line completion support for %{name}.
 
 %package zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       %{name} = %{version}
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description zsh-completion
@@ -78,7 +74,7 @@ Zsh command-line completion support for %{name}.
 %{cargo_test}
 
 %install
-%{cargo_install}
+%cargo_install
 for sh in bash zsh fish; do
   ./target/release/%{name} completion $sh > %{name}.$sh
 done

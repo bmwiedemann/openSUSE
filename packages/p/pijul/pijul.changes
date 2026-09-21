@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:23:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to upstream version 1.0.0-beta.23:
+  * Conflict and corruption repair fixes (repair_zombies
+    algorithm, repair_up pass, thread-safe change file cache)
+  * libpijul crate renamed to pijul-core
+  * HTTP stack upgraded to hyper 1.x
+  * Change signatures moved to sshsig, keyring dependency dropped
+  * CVE-2025-3416 (boo#1242634): vendored openssl 0.10.63
+    -> 0.10.81, above the 0.10.72 fix
+  * CVE-2026-25541 (boo#1274435): vendored bytes 1.5.0
+    -> 1.12.1, above the 1.11.1 fix
+  * CVE-2022-50237 (boo#1247066): vulnerable ed25519-dalek
+    1.0.1 no longer in the dependency tree
+- Spec cleanup via spec-cleaner (drop Group tags)
+
+-------------------------------------------------------------------
 Mon May 27 16:50:28 UTC 2024 - Joshua Smith <smolsheep@opensuse.org>
 
 - Enabled tests
