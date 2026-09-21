@@ -1,0 +1,32 @@
+diff -uNr openvino.original/cmake/developer_package/frontends/frontends.cmake openvino/cmake/developer_package/frontends/frontends.cmake
+--- openvino.original/cmake/developer_package/frontends/frontends.cmake	2026-09-19 02:22:37.448794588 -0300
++++ openvino/cmake/developer_package/frontends/frontends.cmake	2026-09-19 16:54:00.244188364 -0300
+diff --git a/thirdparty/dependencies.cmake b/thirdparty/dependencies.cmake
+--- a/thirdparty/dependencies.cmake
++++ b/thirdparty/dependencies.cmake
+@@ -390,6 +390,9 @@ if(ENABLE_OV_PADDLE_FRONTEND OR ENABLE_OV_ONNX_FRONTEND OR ENABLE_OV_TF_FRONTEND)
+             # otherwise, fallback to existing default
+             find_package(Protobuf 5.26.0 REQUIRED ${protobuf_config})
+         endif()
++
++        # Newer system protobuf headers require Abseil libraries.
++        find_package(absl CONFIG QUIET)
+ 
+         # with newer protobuf versions (4.22 and newer), we use CONFIG first
+         # so, the Protobuf_PROTOC_EXECUTABLE variable must be checked explicitly,
+diff --git a/cmake/developer_package/frontends/frontends.cmake b/cmake/developer_package/frontends/frontends.cmake
+--- a/cmake/developer_package/frontends/frontends.cmake
++++ b/cmake/developer_package/frontends/frontends.cmake
+@@ -261,6 +261,11 @@ macro(ov_add_frontend)
+ 
+         ov_link_system_libraries(${TARGET_NAME} PRIVATE ${protobuf_target_name})
+ 
++        if(ENABLE_SYSTEM_PROTOBUF AND
++           TARGET absl::log AND TARGET absl::hash)
++            target_link_libraries(${TARGET_NAME} PRIVATE absl::log absl::hash)
++        endif()
++
+         # GCC emits warnings even from SYSTEM includes of header-only libraries
+         if(CMAKE_COMPILER_IS_GNUCXX)
+             target_compile_options(${TARGET_NAME} PRIVATE
+

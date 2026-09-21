@@ -18,13 +18,6 @@
 #
 
 
-%if 0%{?suse_version} < 1600
-%define isLeap %nil
-%else
-%undefine isLeap
-%endif
-
-# Compilation takes ~1 hr on OBS for a single python, don't try all supported flavours
 %if %{defined isLeap}
 %define x86_64 x86_64
 %define pythons python311
@@ -32,13 +25,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2631
+%define so_ver 2640
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2026.3.1
+Version:        2026.4.0
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
@@ -52,8 +45,10 @@ Patch0:         openvino-fix-install-paths.patch
 Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
 Patch2:         openvino-fix-build-sample-path.patch
-# PATCH-FIX-UPSTREAM Fix build with OpenCL-CLHPP >= 2026.05.29
-Patch3:         openvino-fix-opencl-clhpp.patch
+# PATCH-FIX-UPSTREAM openvino-link-system-protobuf-abseil.patch @opensuse.org -- Locate Abseil and link absl::log and absl::hash
+Patch3:         openvino-link-system-protobuf-abseil.patch
+# PATCH-FIX-UPSTREAM openvino-gcc16-aarch64-autovec.patch @opensuse.org -- Fix AArch64 auto-vectorization flag compatibility with GCC 16
+Patch4:         openvino-gcc16-aarch64-autovec.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -63,30 +58,27 @@ BuildRequires:  opencl-cpp-headers
 # an older version of protoc which is incompatible with your Protocol Buffer
 # headers. Please regenerate this file with a newer version of protoc.
 #BuildRequires:  cmake(ONNX)
-BuildRequires:  pkgconfig
+%if %{undefined isLeap}
+BuildRequires:  abseil-cpp-devel
+%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  zstd
+BuildRequires:  pkgconfig(OpenCL-Headers)
 BuildRequires:  pkgconfig(flatbuffers)
 BuildRequires:  pkgconfig(libva)
 BuildRequires:  pkgconfig(nlohmann_json)
 BuildRequires:  pkgconfig(ocl-icd)
-BuildRequires:  pkgconfig(protobuf) < 22
+BuildRequires:  pkgconfig(protobuf) >= 5.26.0
 BuildRequires:  pkgconfig(pugixml)
-%if %{defined isLeap}
-BuildRequires:  gcc12-c++
-BuildRequires:  opencl-headers
-BuildRequires:  snappy-devel
-BuildRequires:  tbb-devel
-%else
-BuildRequires:  pkgconfig(OpenCL-Headers)
 BuildRequires:  pkgconfig(snappy)
 BuildRequires:  pkgconfig(tbb)
-%endif
 BuildRequires:  pkgconfig(zlib)
 %ifarch %{arm64}
 BuildRequires:  scons
@@ -267,6 +259,14 @@ OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
 
 This package provides the tensorflow-lite frontend for OpenVINO.
 
+%package -n lib%{name}_gguf_frontend%{so_ver}
+Summary:        GGUF frontend for OpenVINO toolkit
+
+%description -n lib%{name}_gguf_frontend%{so_ver}
+OpenVINO is an open-source toolkit for optimizing and deploying AI inference.
+
+This package provides the gguf frontend for OpenVINO.
+
 %package -n python-openvino
 Summary:        Python module for openVINO toolkit
 Requires:       python-openvino-telemetry
@@ -293,9 +293,6 @@ This package provides some samples for use with openVINO.
 %set_build_flags
 export CFLAGS="$CFLAGS -Wno-error=free-nonheap-object"
 export CXXFLAGS="$CXXFLAGS -Wno-error=free-nonheap-object"
-%if %{defined isLeap}
-export CC=gcc-12 CXX=g++-12
-%endif
 # Otherwise intel_cpu plugin declares an executable stack
 %ifarch %{x86_64}
 %define build_ldflags -Wl,-z,noexecstack
@@ -324,6 +321,10 @@ export CC=gcc-12 CXX=g++-12
       -DENABLE_SYSTEM_SNAPPY=ON \
 %if %{defined isLeap}
       -DENABLE_TBBBIND_2_5=OFF \
+%else
+      -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
+      -Dprotobuf_MODULE_COMPATIBLE=ON \
+      -DProtobuf_DIR=%{_libdir}/cmake/protobuf \
 %endif
       -DENABLE_SYSTEM_TBB=ON \
       -DONNX_USE_PROTOBUF_SHARED_LIBS=ON \
@@ -378,6 +379,7 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 %ldconfig_scriptlets -n lib%{name}_pytorch_frontend%{so_ver}
 %ldconfig_scriptlets -n lib%{name}_tensorflow_lite_frontend%{so_ver}
 %ldconfig_scriptlets -n lib%{name}_tensorflow_frontend%{so_ver}
+%ldconfig_scriptlets -n lib%{name}_gguf_frontend%{so_ver}
 
 %files -n %{shlib}
 %license LICENSE
@@ -443,6 +445,9 @@ rm -fr %{buildroot}%{_datadir}/licenses/*
 
 %files -n lib%{name}_tensorflow_lite_frontend%{so_ver}
 %{_libdir}/libopenvino_tensorflow_lite_frontend.so.*
+
+%files -n lib%{name}_gguf_frontend%{so_ver}
+%{_libdir}/libopenvino_gguf_frontend.so.*
 
 %files -n %{name}-sample
 %license LICENSE

@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:04:00 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Add ldconfig_scriptlets in .spec file
+
+-------------------------------------------------------------------
+Thu Sep 17 15:25:50 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+- Add openvino-gcc16-aarch64-autovec.patch Fix AArch64
+  auto-vectorization flag compatibility with GCC 16
+- Add openvino-link-system-protobuf-abseil.patch Created to
+  locate Abseil and link absl::log and absl::hash to
+  OpenVINO frontends that use the system Protobuf.
+- Remove openvino-fix-opencl-clhpp.patch (No longer necessary)
+- Update to 2026.4.0
+- Summary of major features and improvements  
+  * More GenAI coverage and framework integrations to minimize
+    code changes
+    + New models supported:
+      - On CPU: Gemma-3n
+      - On CPU, GPU: Kokoro-82M, Qwen3-VL-4B with EAGLE-3,
+        Qwen3-ASR, Muse Glimmer 30B, Qwen3.8 27B, Gemma 4 12B,
+        Hy-MT2-1.8B, DeepSeek OCR-2, and Granite 4.0 H Micro
+      - On NPUs: FLUX.2-Klein 4B and Kokoro-82M
+    + Additional CPU and GPU-enabled models available as early
+      releases: Qwen-Image, Z-Image-Turbo, Granite 4.0 H Tiny,
+      Fun-ASR-Nano, LFM2.5-8B-A1B, MiniCPM5-2B, RF-DETR,
+      BGE Reranker-V2-M3, and BGE M3
+  * Broader LLM model support and more model compression techniques
+    - OpenVINO™ GenAI adds Multi-Token Prediction (MTP) speculative
+      decoding for Gemma 4, Qwen3.5, and Qwen3.6 on CPUs and GPUs,
+      enabling higher throughput and lower latency without
+      sacrificing accuracy.
+    - Preview: OpenVINO™ GenAI introduces DFlash acceleration for
+      Qwen models on GPUs, and visual-token support to reduce
+      latency and speed up GenAI pipelines on Intel® Core™ Ultra
+      Series 3 processors.
+    - With Tree Drafting (Top-K) for EAGLE-3 now supported in
+      OpenVINO™ GenAI, developers can unlock higher throughput
+      on VLM pipelines compared to Chain Drafting (Top-1).
+    - Xe3 integrated graphics optimizations in OpenVINO™ GenAI
+      improve AI inference performance for Gemma 4 models
+      processing long-context inputs on Intel® Core™ Ultra
+      Series 3 processors.
+    - OpenVINO extends Instrumentation and Tracing Technology
+      (ITT) profiling support to the NPU, enabling developers
+      to use Intel® VTune™ Profiler to analyze CPU, GPU, and
+      NPU execution through one consistent toolchain.
+  * More portability and performance to run AI at the edge,
+    in the cloud, or locally.
+    - OpenVINO™ GenAI introduces support for ASRPipeline
+      in Node.js, enabling JavaScript developers to run
+      automatic speech recognition (such as Whisper and
+      Qwen3-ASR) with streaming and performance metrics
+      using a pipeline API similar to C++ and Python.
+    - Preview: Bounded dynamic-shape support on NPUs now extends
+      to vision workloads such as image super-resolution.
+      This capability has been validated with the ESPCN model.
+    - Preview: OpenVINO™ Model Server now includes preview
+      support for idle model management, which unloads models
+      when they are not in use to reduce memory usage.
+    - OpenVINO™ Model Server adds support for new agentic
+      models such as Muse Glimmer 30B and Qwen3.8 27B.
+
+-------------------------------------------------------------------
 Wed Sep 16 14:54:43 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 -Fix: Problem since Tue Sep  8 16:07:23 2026:
