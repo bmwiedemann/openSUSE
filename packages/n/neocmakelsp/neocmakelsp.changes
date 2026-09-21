@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:38:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.1:
+  * Breaking: rework config fields (snippets default off;
+    etcetera for config directory)
+  * Add Run and Build subcommands
+  * Cache local cmake commands weekly and project info under
+    .cache/neocmakelsp
+  * Faster highlight/iteration via tree-sitter queries
+  * Path and subdirectory completion, including paths with /
+  * Signature help for builtin cmake commands; complete and
+    jump to function/macro arguments
+  * Code action to fix function and macro name case
+  * Hover shows more via fileapi target file; expose
+    neocmakelsp/cmake_targets
+  * Fix format-and-save, option completions, <LANG> builtin
+    variables, and a possible deadlock
+  * Fix builtin-commands generator panic without cmake; better
+    package scan (e.g. llvm)
+  * Send null version in publishDiagnostics
+  * Switch from chrono to jiff
+- Re-derive License from vendored crates: Apache-2.0 AND MIT
+  AND Unicode-3.0
+- Raise cargo BuildRequires floor to 1.89 (upstream rust-version)
+- Restrict to rust_tier1 arches
+
+-------------------------------------------------------------------
 Sun Feb 15 12:14:42 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.9.0:

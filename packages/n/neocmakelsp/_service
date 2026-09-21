@@ -3,11 +3,9 @@
     <param name="src">https://github.com/neocmakelsp/neocmakelsp</param>
     <param name="update">false</param>
     <param name="respect-lockfile">true</param>
-    <param name="revision">v0.9.0</param>
+    <param name="revision">v0.11.1</param>
     <param name="versionrewriteregex">^v?(.*)</param>
     <param name="versionrewritepattern">$1</param>
-    <param name="changesgenerate">true</param>
-    <param name="changesauthor">Soc Virnyl Estela</param>
-    <param name="changesemail">uncomfyhalomacro@opensuse.org</param>
+    <param name="changesgenerate">false</param>
   </service>
 </services>

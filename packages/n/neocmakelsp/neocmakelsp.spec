@@ -17,25 +17,31 @@
 
 
 Name:           neocmakelsp
-Version:        0.9.0
+Version:        0.11.1
 Release:        0
 Summary:        CMake LSP implementation based on Tower and Tree-sitter
+# Legal-Review-Notice: neocmakelsp itself is MIT. The shipped binary
+# statically links Apache-2.0 (sync_wrapper via tower) and Unicode-3.0
+# (icu_* via idna/url/tower-lsp-f). No copyleft crate is in the
+# cargo-tree -e normal graph; r-efi (MIT OR Apache-2.0 OR
+# LGPL-2.1-or-later) is vendored but not linked on Linux. tiny-keccak
+# (CC0-1.0) is compile-time-only via const-random-macro.
+License:        Apache-2.0 AND MIT AND Unicode-3.0
 URL:            https://github.com/neocmakelsp/neocmakelsp
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-License:        MIT
-BuildRequires:  cargo > 1.82
-BuildRequires:  cargo-packaging
-BuildRequires:  zsh
-BuildRequires:  fish
 BuildRequires:  bash
+BuildRequires:  cargo >= 1.89
+BuildRequires:  cargo-packaging
+BuildRequires:  fish
+BuildRequires:  zsh
+ExclusiveArch:  %{rust_tier1_arches}
 
 %package        fish-completion
 Summary:        Fish Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and fish)
 Requires:       %{name}
 Requires:       fish
+Supplements:    (%{name} and fish)
 BuildArch:      noarch
 
 %description    fish-completion
@@ -43,10 +49,9 @@ Fish command-line completion support for %{name}.
 
 %package        zsh-completion
 Summary:        Zsh Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and zsh)
 Requires:       %{name}
 Requires:       zsh
+Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description    zsh-completion
@@ -54,10 +59,9 @@ Zsh command-line completion support for %{name}.
 
 %package        bash-completion
 Summary:        Bash Completion for %{name}
-Group:          System/Shells
-Supplements:    (%{name} and bash-completion)
 Requires:       %{name}
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description    bash-completion
@@ -87,16 +91,15 @@ export CARGO_TARGET_DIR="%{_builddir}/%{buildsubdir}/target"
 
 %install
 export CARGO_TARGET_DIR="%{_builddir}/%{buildsubdir}/target"
-%{cargo_install}
+%cargo_install
 install -Dpm 0644 -t %{buildroot}%{_datadir}/bash-completion/completions/%{name}    completions/bash/%{name}
 install -Dpm 0644 -t %{buildroot}%{_datadir}/zsh/site-functions/_%{name}            completions/zsh/_%{name}
 install -Dpm 0644 -t %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish completions/fish/%{name}.fish
 
 %files
 %license LICENSE
-%doc     README.md
+%doc README.md
 %{_bindir}/%{name}
-
 
 %files bash-completion
 %dir %{_datadir}/bash-completion
