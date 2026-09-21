@@ -1,4 +1,170 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:11:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.14.2:
+  * fix(driver): preserve DKMS installations during driver install
+    in #1089
+  * chore(deps): Bump the gomod group across 1 directory with 8
+    updates in #1081
+  * chore(deps): Bump golang.org/x/net from 0.58.0 to 0.59.0 in
+    #1083
+  * chore(deps): Bump golang.org/x/term from 0.45.0 to 0.46.0 in
+    #1085
+  * chore(deps): Bump golang.org/x/crypto from 0.56.0 to 0.57.0 in
+    #1088
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.110.0 to 1.113.0 in #1087
+  * chore(deps): Bump golang.org/x/oauth2 from 0.36.0 to 0.37.0 in
+    #1082
+- Update to version 0.14.1:
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.109.1 to 1.110.0 in #1068
+  * chore(deps): Bump github.com/docker/cli from
+    29.7.2+incompatible to 29.8.0+incompatible in #1069
+  * chore(deps): Bump k8s.io/apimachinery from 0.36.3 to 0.37.0 in
+    #1070
+  * chore(deps): Bump google.golang.org/api from 0.293.0 to 0.297.0
+    in #1072
+  * chore(deps): Bump github.com/onsi/gomega from 1.42.1 to 1.43.0
+    in #1075
+  * chore(deps): Bump golang.org/x/crypto from 0.55.0 to 0.56.0 in
+    #1077
+  * chore(deps): Bump the actions group with 2 updates in #1078
+  * chore(deps): Bump github.com/go-oauth2/oauth2/v4 from 4.5.4 to
+    4.6.0 in #1071
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/config from
+    1.32.36 to 1.33.3 in #1073
+  * chore(deps): Bump github.com/google/go-containerregistry from
+    0.21.9 to 0.22.1 in #1076
+  * chore(deps): Bump cloud.google.com/go/storage from 1.65.0 to
+    1.67.0 in #1074
+- Update to version 0.14.0:
+  * docs(OWNERS): move maxgio92 to emeritus approvers in #972
+  * chore(deps): bump k8s.io/apimachinery to 0.36.0 and
+    golangci-lint to v2.11.4 in #971
+  * chore(deps): Bump golang.org/x/sys from 0.43.0 to 0.44.0 in
+    #982
+  * chore(deps): Bump the gomod group across 1 directory with 6
+    updates in #983
+  * chore(deps): Bump the actions group across 1 directory with 8
+    updates in #990
+  * chore(deps): Bump golangci/golangci-lint-action from 7.0.0 to
+    9.2.1 in #992
+  * chore(deps): Bump github.com/onsi/gomega from 1.40.0 to 1.41.0
+    in #989
+  * chore(deps): Bump the actions group with 2 updates in #991
+  * chore(deps): Bump github.com/docker/cli from
+    29.4.2+incompatible to 29.5.2+incompatible in #988
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 from 2.28.3 to
+    2.29.0 in #986
+  * chore(deps): Bump golang.org/x/sys from 0.44.0 to 0.45.0 in
+    #987
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.100.1 to 1.101.0 in #980
+  * chore(deps): Bump google.golang.org/api from 0.277.0 to 0.282.0
+    in #985
+  * chore(deps): Bump github.com/in-toto/in-toto-golang from 0.10.0
+    to 0.11.0 in #974
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.101.0 to 1.103.2 in #999
+  * chore(deps): Bump golang.org/x/crypto from 0.51.0 to 0.52.0 in
+    #997
+  * chore(deps): Bump the gomod group across 1 directory with 9
+    updates in #1000
+  * chore(deps): Bump google.golang.org/api from 0.282.0 to 0.284.0
+    in #1005
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2 from 1.41.12 to
+    1.42.0 in #1010
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 from 2.29.0 to
+    2.31.0 in #1008
+  * chore(deps): Bump the actions group across 1 directory with 3
+    updates in #1014
+  * chore(deps): Bump the gomod group across 1 directory with 9
+    updates in #1012
+  * chore(deps): Bump github.com/onsi/gomega from 1.41.0 to 1.42.1
+    in #1007
+  * chore(deps): Bump github.com/sigstore/rekor from 1.5.1 to 1.5.2
+    in #1015
+  * chore(deps): Bump github.com/sigstore/fulcio from 1.8.5 to
+    1.8.6 in #1016
+  * chore(deps): Bump github.com/sigstore/timestamp-authority/v2
+    from 2.0.6 to 2.1.0 in #1017
+  * chore(deps): Bump the actions group with 7 updates in #1018
+  * chore(deps): Bump the gomod group with 2 updates in #1020
+  * chore(deps): Bump github.com/onsi/ginkgo/v2 from 2.31.0 to
+    2.32.0 in #1023
+  * chore(deps): Bump cloud.google.com/go/storage from 1.62.3 to
+    1.63.0 in #1021
+  * chore(deps): Bump google.golang.org/api from 0.285.0 to 0.287.0
+    in #1026
+  * utils: reject symlink and hardlink entries in ExtractTarGz in
+    #1035
+  * chore(deps): Bump actions/checkout from 6.0.2 to 7.0.0 in #1019
+  * chore(deps): Bump github.com/cilium/ebpf from 0.21.0 to 0.22.0
+    in #1025
+  * chore(deps): Bump aws-actions/configure-aws-credentials from
+    6.2.1 to 6.2.2 in the actions group across 1 directory in #1028
+  * chore(deps): Bump github.com/docker/cli from
+    29.5.3+incompatible to 29.6.1+incompatible in #1022
+  * chore(deps): Bump github.com/sigstore/sigstore-go from 1.1.4 to
+    1.2.0 in #1027
+  * chore(deps): Bump golang.org/x/net from 0.56.0 to 0.57.0 in
+    #1030
+  * chore(deps): Bump golang.org/x/crypto from 0.53.0 to 0.54.0 in
+    #1032
+  * chore(deps): Bump golang.org/x/term from 0.44.0 to 0.45.0 in
+    #1034
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.103.2 to 1.106.0 in #1033
+  * utils: reject extraction through pre-existing symlinks in dest
+    in #1037
+  * chore(deps): Bump google.golang.org/grpc from 1.81.1 to 1.82.1
+    in #1040
+  * chore(deps): Bump the gomod group across 1 directory with 4
+    updates in #1039
+  * chore(deps): Bump cloud.google.com/go/storage from 1.63.0 to
+    1.64.0 in #1043
+  * chore(deps): Bump the gomod group with 2 updates in #1041
+  * chore(deps): Bump google.golang.org/api from 0.287.1 to 0.290.0
+    in #1042
+  * chore(deps): Bump the actions group with 3 updates in #1044
+  * chore(deps): Bump actions/setup-go from 6.5.0 to 7.0.0 in #1045
+  * chore(deps): Bump github.com/sigstore/sigstore-go from 1.2.0 to
+    1.2.1 in #1047
+  * chore(deps): Bump the gomod group with 3 updates in #1048
+  * chore(deps): Bump google.golang.org/api from 0.290.0 to 0.291.0
+    in #1049
+  * chore(deps): Bump github.com/docker/cli from
+    29.6.2+incompatible to 29.7.0+incompatible in #1050
+  * chore(deps): Bump docker/login-action from 4.5.1 to 4.6.0 in
+    the actions group in #1051
+  * Skip index entries without a platform in RawManifest in #1046
+  * chore(deps): Bump the gomod group across 1 directory with 10
+    updates in #1055
+  * chore(deps): Bump google.golang.org/api from 0.291.0 to 0.293.0
+    in #1063
+  * chore(deps): Bump golang.org/x/net from 0.57.0 to 0.58.0 in
+    #1058
+  * chore(deps): Bump golang.org/x/crypto from 0.54.0 to 0.55.0 in
+    #1059
+  * chore(deps): Bump cloud.google.com/go/storage from 1.64.0 to
+    1.65.0 in #1060
+  * chore(deps): Bump the actions group across 1 directory with 2
+    updates in #1064
+  * chore(deps): Bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.106.2 to 1.109.1 in #1061
+  * chore(deps): Bump github.com/stretchr/testify from 1.11.1 to
+    1.12.1 in #1062
+  * chore(deps): Bump github.com/moby/go-archive from 0.1.0 to
+    0.3.0 in #1056
+  * chore(deps): Bump github.com/moby/go-archive from 0.1.0 to
+    0.3.0 in #1067
+  * chore(deps): Bump google.golang.org/grpc from 1.83.0 to 1.83.1
+    in #1066
+  * chore(deps): drop the direct github.com/docker/docker
+    dependency in #1065
+
+-------------------------------------------------------------------
 Mon May 04 16:54:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.13.0:
