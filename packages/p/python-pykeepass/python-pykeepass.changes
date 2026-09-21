@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:50:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.2.0:
+  * Fixed [gh#libkeepass/pykeepass219] - seeds not regenerated on
+    save
+
+-------------------------------------------------------------------
 Thu Apr 10 13:14:23 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - update to 4.1.1.post1:
