@@ -1,6 +1,19 @@
 #
 # spec file for package rocm-core
 #
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright Fedora Project Authors.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -22,48 +35,66 @@
 # THE SOFTWARE.
 #
 
-# Copyright (c) 2025 SUSE LLC and contributors
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
-
-
-%if 0%{?suse_version}
-# 15.6
-# rocm-core.x86_64: E: shlib-policy-name-error (Badness: 10000) librocm-core1
-# Your package contains a single shared library but is not named after its SONAME.
-%global core_name librocm-core1
-%else
-%global core_name rocm-core
-%endif
 
 %global upstreamname rocm-core
-%global rocm_release 6.4
-%global rocm_patch 3
+
+%global pkg_library_name %{upstreamname}
+%global pkg_library_version 1
+
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.14
+%global rocm_patch 0
+%global pkg_src therock-%{rocm_release}
+%else
+%global rocm_release 7.2
+%global rocm_patch 2
+%global pkg_src rocm-%{rocm_release}.%{rocm_patch}
+%endif
+
 %global rocm_version %{rocm_release}.%{rocm_patch}
 
-Name:           rocm-core
-Version:        %{rocm_version}
-Release:        2%{?dist}
-Summary:        A utility to get the ROCm release version
-URL:            https://github.com/ROCm/%{upstreamname}
-License:        MIT
+%bcond_with compat
+%if %{with compat}
+%global pkg_libdir lib
+%global pkg_prefix %{_prefix}/lib64/rocm/rocm-%{rocm_release}/
+%global pkg_suffix %{rocm_release}
+%global pkg_module rocm%{pkg_suffix}
+%else
+%global pkg_libdir %{_lib}
+%global pkg_prefix %{_prefix}
+%global pkg_suffix %{nil}
+%global pkg_module default
+%endif
 
-Source0:        %{url}/archive/rocm-%{rocm_version}.tar.gz#/%{upstreamname}-%{rocm_version}.tar.gz
+%if 0%{?suse_version}
+%global pkg_name lib%{pkg_library_name}%{pkg_library_version}%{pkg_suffix}
+%else
+%global pkg_name %{NAME}
+%endif
+
+Name:           rocm-core%{pkg_suffix}
+Version:        %{rocm_version}
+%if %{with preview}
+Release:        0%{?dist}
+%else
+Release:        4%{?dist}
+%endif
+Summary:        A utility to get the ROCm release version
+License:        MIT
+URL:            https://github.com/ROCm/rocm-systems
+Source0:        %{url}/releases/download/%{pkg_src}/%{upstreamname}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
+BuildRequires:  rocm-filesystem%{pkg_suffix}
+
+%if 0%{?suse_version}
+Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+%endif
 
 Provides:       rocm-core = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 # Only x86_64 works right now:
 ExclusiveArch:  x86_64
@@ -72,50 +103,73 @@ ExclusiveArch:  x86_64
 %{summary}
 
 %if 0%{?suse_version}
-%package -n %{core_name}
-Summary:        Shared libraries for %{name}
+%package -n %{pkg_name}
+Summary:        Runtime for %{name}
 
-%description -n %{core_name}
-%{summary}
+%description -n %{pkg_name}
+%summary
 
-%ldconfig_scriptlets -n %{core_name}
+%ldconfig_scriptlets -n %{pkg_name}
 %endif
 
 %package devel
 Summary:        Libraries and headers for %{name}
-Requires:       %{core_name}%{?_isa} = %{version}-%{release}
+Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description devel
 %{summary}
 
 %prep
-%autosetup -p1 -n %{upstreamname}-rocm-%{version}
+%autosetup -p1 -n %{upstreamname}
 
 %build
-%cmake -DROCM_VERSION=%{rocm_version}
+%cmake \
+    -DROCM_VERSION=%{rocm_version} \
+    -DCMAKE_INSTALL_LIBDIR=%{pkg_libdir} \
+    -DCMAKE_INSTALL_PREFIX=%{pkg_prefix}
+
 %cmake_build
 
 %install
 %cmake_install
 
-rm -rf %{buildroot}/%{_prefix}/.info
-rm -rf %{buildroot}/%{_libdir}/rocmmod
-rm -rf %{buildroot}/%{_docdir}/*/LICENSE.txt
-rm -rf %{buildroot}/%{_libexecdir}/%{name}
+rm -rf %{buildroot}/%{pkg_prefix}/.info
+rm -rf %{buildroot}/%{pkg_prefix}/%{pkg_libdir}/rocmmod
+rm -rf %{buildroot}/%{pkg_prefix}/share/rdhc
+# Extra licenses
+rm -f %{buildroot}/%{pkg_prefix}/share/doc/*/LICENSE.md
+rm -f %{buildroot}/%{pkg_prefix}/share/doc/*/*/LICENSE.md
 
-mv  %{buildroot}/%{_includedir}/rocm-core/*.h %{buildroot}/%{_includedir}/
-rm -rf %{buildroot}/%{_includedir}/rocm-core
+# Use the system include path
+mv  %{buildroot}/%{pkg_prefix}/include/rocm-core/*.h %{buildroot}/%{pkg_prefix}/include/
+rm -rf %{buildroot}/%{pkg_prefix}/include/rocm-core
 
 find %{buildroot} -type f -name 'runpath_to_rpath.py' -exec rm {} \;
 
-%files -n %{core_name}
-%license copyright
-%{_libdir}/librocm-core.so.*
+%if 0%{?suse_version}
+%files
+%{pkg_prefix}/bin/rdhc
+%{pkg_prefix}/libexec/rocm-core/
+
+%files -n %{pkg_name}
+%doc README.md
+%license LICENSE.md
+%{pkg_prefix}/%{pkg_libdir}/lib%{pkg_library_name}.so.%{pkg_library_version}{,.*}
+
+%else
+
+%files
+%doc README.md
+%license LICENSE.md
+%{pkg_prefix}/%{pkg_libdir}/lib%{pkg_library_name}.so.%{pkg_library_version}{,.*}
+%{pkg_prefix}/bin/rdhc
+%{pkg_prefix}/libexec/rocm-core/
+%endif
 
 %files devel
-%dir %{_libdir}/cmake/rocm-core
-%{_includedir}/*.h
-%{_libdir}/librocm-core.so
-%{_libdir}/cmake/rocm-core/*.cmake
+%{pkg_prefix}/include/*.h
+%{pkg_prefix}/%{pkg_libdir}/lib%{pkg_library_name}.so
+%{pkg_prefix}/%{pkg_libdir}/cmake/rocm-core/
 
 %changelog

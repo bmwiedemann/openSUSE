@@ -7,4 +7,38 @@
     <comment>rocm-core is a simple package to provide a version api</comment>
     <requestid>1313731</requestid>
   </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>e87fcb8bfc782442783b99ca587e17f8</srcmd5>
+    <version>7.2.2</version>
+    <time>1789993758</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes
+
+- Generate suse package name
+
+- Update to 7.2.2
+
+- Update to 7.2.1
+
+- Add --with preview
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Fix OpenSUSE
+
+- Add --with compat
+
+- Update to 7.1.1
+
+- Update to 7.1.0
+
+- Update to 7.0.2
+
+- Update to 7.0.1</comment>
+    <requestid>1378483</requestid>
+  </revision>
 </revisionlist>
