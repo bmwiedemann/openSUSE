@@ -258,4 +258,14 @@ Update to 1.3.1 (forwarded request 231381 from Zaitor)</comment>
   + Updated translations.</comment>
     <requestid>1372893</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>766538d4898acee26e70007d53356bf2</srcmd5>
+    <version>1.6.6</version>
+    <time>1789984863</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.6.6:
+  + Reverted one of the changes that was added with 1.6.4 (sorry,
+    no indication by upstream WHAT exactly was reverted).</comment>
+    <requestid>1378871</requestid>
+  </revision>
 </revisionlist>

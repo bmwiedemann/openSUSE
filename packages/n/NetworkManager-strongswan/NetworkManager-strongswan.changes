@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 11 07:56:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.6.6:
+  + Reverted one of the changes that was added with 1.6.4 (sorry,
+    no indication by upstream WHAT exactly was reverted).
+
+-------------------------------------------------------------------
 Thu Aug 20 11:31:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.6.5:
