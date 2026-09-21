@@ -5,6 +5,7 @@
 
 conflict rocm
 
+setenv        ROCM_PATH     /usr
 setenv        ROCM_BIN      /usr/bin
 setenv        ROCM_LIB      /usr/lib64
 setenv        ROCM_INCLUDE  /usr/include

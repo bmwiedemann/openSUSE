@@ -1,4 +1,70 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Mar 10 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Fri Feb  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+- Reduce rccl list
+
+-------------------------------------------------------------------
+Sun Dec 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix rocm-7.1 libpath
+
+-------------------------------------------------------------------
+Wed Dec 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add rocm-7.1 compat module
+
+-------------------------------------------------------------------
+Mon Dec  8 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reduce hipblaslt list
+
+-------------------------------------------------------------------
+Sat Dec  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update hipblaslt list
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update rccl list
+
+-------------------------------------------------------------------
+Fri Nov  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx1036
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.0
+
+-------------------------------------------------------------------
 Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Add Fedora copyright

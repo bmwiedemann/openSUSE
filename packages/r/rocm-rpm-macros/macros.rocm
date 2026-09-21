@@ -1,8 +1,8 @@
 %rocm_gpu_list default
 
-%rocm_gpu_list_default "gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx942;gfx950;gfx1010;gfx1012;gfx1030;gfx1031;gfx1035;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1153;gfx1200;gfx1201"
-%rocm_gpu_list_hipblaslt "gfx90a:xnack+;gfx90a:xnack-;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201"
-%rocm_gpu_list_rccl "gfx90a:xnack+;gfx90a:xnack-;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201"
+%rocm_gpu_list_default "gfx900;gfx906:xnack-;gfx908:xnack-;gfx90a:xnack+;gfx90a:xnack-;gfx942;gfx950;gfx1010;gfx1012;gfx1030;gfx1031;gfx1035;gfx1036;gfx1100;gfx1101;gfx1102;gfx1103;gfx1150;gfx1151;gfx1152;gfx1153;gfx1200;gfx1201"
+%rocm_gpu_list_hipblaslt "gfx1100;gfx1101;gfx1151;gfx1200;gfx1201"
+%rocm_gpu_list_rccl "gfx906;gfx908;gfx90a;gfx942;gfx950;gfx1030;gfx1100;gfx1101;gfx1102;gfx1200;gfx1201"
 %rocm_gpu_list_test "gfx1100;gfx1101;gfx1201"
 
 %__cc_rocm hipcc

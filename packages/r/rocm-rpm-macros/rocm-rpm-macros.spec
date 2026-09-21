@@ -1,6 +1,19 @@
 #
 # spec file for package rocm-rpm-macros
 #
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright Fedora Project Authors.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,29 +34,43 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 #
-# Copyright (c) 2025 SUSE LLC and contributors
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
-#
 
 
-Name:           rocm-rpm-macros
-Version:        6.4.2
-Release:        2%{?dist}
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.14
+%global rocm_patch 0
+%else
+%global rocm_release 7.2
+%global rocm_patch 0
+%endif
+
+%global rocm_version %{rocm_release}.%{rocm_patch}
+
+%bcond_with compat
+%if %{with compat}
+%global pkg_suffix %{rocm_release}
+%else
+%global pkg_suffix %{nil}
+%endif
+%global pkg_name rocm-rpm-macros%{pkg_suffix}
+
+Name:           %{pkg_name}
+Version:        %{rocm_version}
+%if %{with preview}
+Release:        0%{?dist}
+%else
+Release:        3%{?dist}
+%endif
 Summary:        ROCm RPM macros
 License:        GPL-2.0-or-later
 
 URL:            https://github.com/trixirt/rocm-rpm-macros
+%if %{with preview}
+Source0:        macros.rocm.preview
+%else
 Source0:        macros.rocm
+%endif
 Source1:        GPL
 # Modules
 Source2:        default
@@ -64,6 +91,8 @@ Source16:       gfx1103
 Source17:       default.rhel
 Source18:       gfx12
 Source19:       gfx950
+Source30:       rocm-7.1
+Source31:       rocm-7.2
 
 # Just some files
 %global debug_package %{nil}
@@ -91,9 +120,9 @@ Summary:        ROCm enviroment modules
 Requires:       Modules
 %else
 Requires:       cmake-filesystem
-Requires:       rocm-llvm-filesystem
 Requires:       environment(modules)
 %endif
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description modules
 This package contains ROCm environment modules for switching
@@ -101,7 +130,7 @@ between different GPU families.
 
 %prep
 %setup -cT
-install -pm 644 %{SOURCE0} .
+install -pm 644 %{SOURCE0} macros.rocm
 install -pm 644 %{SOURCE1} .
 mkdir modules
 %if 0%{?rhel}
@@ -125,10 +154,13 @@ install -pm 644 %{SOURCE15} modules
 install -pm 644 %{SOURCE16} modules
 install -pm 644 %{SOURCE18} modules
 install -pm 644 %{SOURCE19} modules
+# compat modules
+install -pm 644 %{SOURCE30} modules
+install -pm 644 %{SOURCE31} modules
 
 %install
 mkdir -p %{buildroot}%{_rpmmacrodir}/
-install -Dpm 644 %{SOURCE0} %{buildroot}%{_rpmmacrodir}/
+install -Dpm 644 %{SOURCE0} %{buildroot}%{_rpmmacrodir}/macros.rocm
 %if 0%{?suse_version}
 mkdir -p %{buildroot}%{_datadir}/modules/rocm/
 cp -p modules/* %{buildroot}%{_datadir}/modules/rocm/

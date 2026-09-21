@@ -7,4 +7,37 @@
     <comment>This is a set of rpm macros for building most of the ROCm packages</comment>
     <requestid>1304106</requestid>
   </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>a4a06282d09bc9d25f90563dc3d6ff3d</srcmd5>
+    <version>7.2.0</version>
+    <time>1789993757</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- Add --with preview
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with compat
+- Reduce rccl list
+
+- Fix rocm-7.1 libpath
+
+- Add rocm-7.1 compat module
+
+- Reduce hipblaslt list
+
+- Update hipblaslt list
+
+- Update rccl list
+
+- Add gfx1036
+
+- Update to 7.1.0
+
+- Update to 7.0.0</comment>
+    <requestid>1378380</requestid>
+  </revision>
 </revisionlist>
