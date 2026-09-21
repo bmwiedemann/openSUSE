@@ -17,7 +17,7 @@
 
 
 Name:           gap-guava
-Version:        3.21
+Version:        3.22
 Release:        0
 Summary:        GAP package for computing with error-correcting codes
 License:        GPL-2.0-or-later
@@ -25,10 +25,10 @@ Group:          Productivity/Scientific/Math
 URL:            https://gap-packages.github.io/guava/
 #Git-Clone:     https://github.com/gap-packages/guava
 Source:         https://github.com/gap-packages/guava/releases/download/v%version/guava-%version.tar.gz
-BuildRequires:  gap-devel >= 4.8.0
+BuildRequires:  gap-devel >= 4.11
 BuildRequires:  gap-rpm-devel
 BuildRequires:  libtool
-Requires:       gap-core >= 4.8.0
+Requires:       gap-core >= 4.11
 Requires:       gap-sonata >= 2.3
 
 %description
@@ -45,16 +45,13 @@ are integrated in the GAP kernel.
 %autosetup -n guava-%version
 
 %build
+export CFLAGS="%optflags"
 ./configure "%gapdir"
-cd src/leon/
-export CFLAGS="%optflags -Wno-error=return-type"
-%configure
-cd -
-%make_build -j1
+%make_build
 
 %install
 %gappkg_simple_install
-rm -Rf "%buildroot/$moddir/src"
+rm -Rf "%buildroot/$moddir/src" "%buildroot/$moddir/obj"
 
 %files -f %name.files
 

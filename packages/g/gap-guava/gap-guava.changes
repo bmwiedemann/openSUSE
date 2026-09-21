@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sat Sep 19 21:35:04 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.22
+  * Decode and Decodeword now agree on which word they return:
+    Decode gives the information word, Decodeword the nearest
+    codeword. Every special decoder - Hamming, cyclic, BCH and
+    generalized Reed-Solomon - had returned the wrong one of the
+    two in some case.
+  * Fix the generalized Reed-Solomon interpolation decoder, which
+    used the two halves of the interpolating polynomial the wrong
+    way round and so returned a word unrelated to the input.
+  * The BCH decoder no longer divides by zero, or silently returns
+    a word that is not in the code, when given more than (d-1)/2
+    errors.
+  * Decode BCH codes whose roots do not start at a^1, which
+    previously failed with "no method found".
+  * Fix Codeword looping forever on an empty list, which encoding
+    the zero information word into a cyclic code ran into.
+  * RootsCode computes the BCH bound it always claimed to. It
+    compared cyclotomic cosets where it meant exponents, so the
+    bound came out as 2 whatever the input; over a non-prime field,
+    it had also collected the wrong roots entirely.
+  * CyclotomicCosets(q,1) returns the one class there is rather
+    than failing, so RootsCode accepts 1 as the only root
+  * A code with a single generator knows its minimum distance, its
+    codewords being that generator's scalar multiples.
+    GeneratorMatCode also records the least generator weight as an
+    upper bound.
+  * CodeDistanceEnumerator now takes the word as a plain list like
+    the documentation specified it.
+  * Use the library's CosetLeadersMatFFE on GAP 4.16.0 and later,
+    where the bugs GUAVA's copy worked around are fixed. The copy
+    is an order of magnitude slower over fields of size 4 to 255.
+  * Minimum weight computation no longer truncates lengths and
+    counts to 16 bits, which made codes longer than 65535 report 0
+    or crash.
+
+-------------------------------------------------------------------
 Tue Feb 17 09:24:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.21
