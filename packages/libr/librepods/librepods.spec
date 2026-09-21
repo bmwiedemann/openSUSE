@@ -18,18 +18,23 @@
 
 %define         appid me.kavishdevar.librepods
 Name:           librepods
-Version:        0.1.0
+Version:        0.1.0+git20260515.672e65a
 Release:        0
 Summary:        AirPods liberated from Apple's ecosystem
 License:        AGPL-3.0-only
-# Legal-Review-Notice: according to the flatpak metainfo, the project is AGPL-3.0-only
-# you can find that file in linux-rust/flatpak
+# Legal-Review-Notice: app is AGPL-3.0-only (linux-rust/flatpak metainfo).
+# Vendored crates are MIT/Apache-2.0/BSD/Zlib/CC0/ISC/Unicode-3.0;
+# self_cell is Apache-2.0 OR GPL-2.0-only (Apache-2.0 taken). No MPL/EPL/CDDL linked.
 URL:            https://github.com/kavishdevar/librepods
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+# PATCH-FIX-OPENSUSE use-dejavu-sans.patch -- SF Pro is not redistributable
+Patch0:         use-dejavu-sans.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig
+BuildRequires:  rust >= 1.88
+BuildRequires:  pkgconfig(dbus-1) >= 1.6
 BuildRequires:  pkgconfig(libpulse)
 ExcludeArch:    %{arm32} %{ix86}
 
@@ -40,9 +45,12 @@ aid, customized transparency mode, battery status, and more - all the premium
 features you paid for but Apple locked to their ecosystem.
 
 %prep
-%autosetup -a1 -n %{name}-%{version}/linux-rust
+%autosetup -p1 -a1 -n %{name}-%{version}/linux-rust
+# keep DWARF for debuginfo; upstream release profile sets strip = true
+sed -i 's/^strip = true$/strip = "none"/' Cargo.toml
 
 %build
+export CARGO_PROFILE_RELEASE_STRIP=none
 %{cargo_build}
 
 %install

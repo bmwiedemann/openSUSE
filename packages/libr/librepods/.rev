@@ -27,4 +27,27 @@
   for legal review (Leap16.0) (forwarded request 1334442 from rrahl0)</comment>
     <requestid>1334443</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b5f37b0293441a9b516a7cab5334a801</srcmd5>
+    <version>0.1.0+git20260515.672e65a</version>
+    <time>1789986164</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 0.1.0+git20260515.672e65a (linux/rust snapshot; GitHub
+  v0.2.5 is the Android app and does not ship linux-rust):
+  * Show battery in the window and optional text in the tray
+  * Parse AirPods Max single-battery reports
+  * Stem-press track control and headless mode
+  * Retry L2CAP send on ENOTCONN during BlueZ handshake
+  * Handle disconnections and fix device rename
+  * Prevent PulseAudio panics from crashing the app
+  * Clear stale tray battery on device switch
+  * CVE-2026-25541: bytes BytesMut::reserve integer overflow
+    (boo#1274429)
+- Add use-dejavu-sans.patch: embed DejaVu Sans instead of Apple
+  SF Pro
+- Require rust &gt;= 1.88 (iced 0.14) and pkgconfig(dbus-1) &gt;= 1.6
+- Keep DWARF for debuginfo (neutralize upstream strip = true)</comment>
+    <requestid>1379370</requestid>
+  </revision>
 </revisionlist>

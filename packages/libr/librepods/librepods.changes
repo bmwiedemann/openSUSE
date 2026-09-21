@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 21:09:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.0+git20260515.672e65a (linux/rust snapshot; GitHub
+  v0.2.5 is the Android app and does not ship linux-rust):
+  * Show battery in the window and optional text in the tray
+  * Parse AirPods Max single-battery reports
+  * Stem-press track control and headless mode
+  * Retry L2CAP send on ENOTCONN during BlueZ handshake
+  * Handle disconnections and fix device rename
+  * Prevent PulseAudio panics from crashing the app
+  * Clear stale tray battery on device switch
+  * CVE-2026-25541: bytes BytesMut::reserve integer overflow
+    (boo#1274429)
+- Add use-dejavu-sans.patch: embed DejaVu Sans instead of Apple
+  SF Pro
+- Require rust >= 1.88 (iced 0.14) and pkgconfig(dbus-1) >= 1.6
+- Keep DWARF for debuginfo (neutralize upstream strip = true)
+
+-------------------------------------------------------------------
 Mon Feb 23 09:55:47 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update License to the correct AGPL-3.0-only tag and add a notice

@@ -3,11 +3,12 @@
   <service name="obs_scm" mode="manual">
     <param name="scm">git</param>
     <param name="url">https://github.com/kavishdevar/librepods.git</param>
-    <param name="revision">refs/tags/linux-v0.1.0</param>
-    <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">linux-v(.*)</param>
+    <!-- linux-v0.1.0 is the last linux-rust tag; v0.2.5 is Android-only and drops linux-rust. Pin linux/rust HEAD. -->
+    <param name="revision">672e65ad36eebf21ff1c1a508066f9197ee56d17</param>
+    <param name="versionformat">0.1.0+git%cd.%h</param>
     <param name="changesgenerate">disable</param>
     <param name="filename">librepods</param>
+    <param name="exclude">linux-rust/assets/font/sf_pro.otf</param>
   </service>
   <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">

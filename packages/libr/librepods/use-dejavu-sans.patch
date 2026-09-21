@@ -1,0 +1,17 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: Use bundled DejaVu Sans instead of Apple SF Pro
+Patch-mainline: no, SUSE-specific (SF Pro is not redistributable)
+
+--- a/src/ui/window.rs
++++ b/src/ui/window.rs
+@@ -53,8 +53,8 @@
+     .title(App::title)
+     .settings(Settings {
+         id: Some("librepods".to_string()),
+-        fonts: vec![include_bytes!("../../assets/font/sf_pro.otf").as_slice().into()],
+-        default_font: Font::with_name("SF Pro Text"),
++        fonts: vec![include_bytes!("../../assets/font/DejaVuSans.ttf").as_slice().into()],
++        default_font: Font::with_name("DejaVu Sans"),
+         ..Settings::default()
+     })
+     .run()
