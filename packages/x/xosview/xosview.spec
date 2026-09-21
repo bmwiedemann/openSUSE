@@ -1,7 +1,7 @@
 #
 # spec file for package xosview
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,10 @@
 
 %define _appdefdir  %{_datadir}/X11/app-defaults
 Name:           xosview
-Version:        1.24
+Version:        1.25
 Release:        0
 Summary:        System Load Information
 License:        GPL-2.0-or-later
-Group:          System/Monitoring
 URL:            https://github.com/hills/%{name}
 Source:         https://github.com/hills/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        rc.config.xosview
@@ -35,12 +34,8 @@ Patch10:        xosview-1.19-appdef.patch
 Patch11:        xosview-1.16-diskstat.patch
 # PATCH-FIX-SUSE: allow more than one maybe not exsting lmstemp resource entry
 Patch12:        xosview-1.21-lmstemp.patch
-# PATCH-FIX-SUSE: The numbers seen in temp*_label might not continuously growing
-Patch13:        xosview-1.24-coretemp-labels.patch
-# PATCH-FIX-SUSE: Avoid crash on missing/disabled cores in CPU package
-Patch14:        xosview-1.24-coretemp-pkg.patch
-BuildRequires:  autoconf
 BuildRequires:  gcc-c++
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xpm)
@@ -65,8 +60,6 @@ and, if desired, netpacket statistics in a graphical manner.
 %patch -P 10  -b .appdef
 %patch -P 11  -b .diskstat
 %patch -P 12  -b .lmst
-%patch -P 13  -b .coretemp
-%patch -P 14  -b .cpupkg
 %patch -P 0   -b .p0
 
 %build
@@ -114,6 +107,7 @@ do
 done
 
 %files
+%license COPYING COPYING.GPL COPYING.BSD
 %{_datadir}/pixmaps/xosview.png
 %dir %{_datadir}/icons/hicolor/
 %dir %{_datadir}/icons/hicolor/32x32/

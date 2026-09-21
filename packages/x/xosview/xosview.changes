@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:24:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.25:
+  * Fix LTO type mismatch for defaultXResourceString
+  * Fix coretemp crash on non-contiguous Intel core numbers
+  * Skip empty/disabled CPU packages for average/maximum coretemp
+  * Replace acute accents in the man page with proper quotes
+- Drop patches merged upstream:
+  * xosview-1.24-coretemp-labels.patch
+  * xosview-1.24-coretemp-pkg.patch
+- Spec cleanup: drop unused autoconf, add make, ship license files
+
+-------------------------------------------------------------------
 Mon Feb 26 12:16:09 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %patch -P N instead of deprecated %patchN.
