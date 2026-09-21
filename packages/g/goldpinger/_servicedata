@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/bloomberg/goldpinger</param>
-              <param name="changesrevision">6f2fec60743f13d2235345b09ffc4f797d617bd9</param></service></servicedata>
+              <param name="changesrevision">6f2fec60743f13d2235345b09ffc4f797d617bd9</param></service><service name="tar_scm">
+                <param name="url">https://github.com/bloomberg/goldpinger.git</param>
+              <param name="changesrevision">2475792dbdd0c893982fda0750a473e2d093d67c</param></service></servicedata>
