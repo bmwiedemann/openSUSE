@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:37:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.0.57:
+  * Kill lint process groups so lint-on-change cannot forkbomb
+  * Add format-ignore-exit-code configuration
+  * Compare document URIs case-insensitively
+  * Avoid reporting a fake formatter error
+  * Fix panics: position boundary off-by-one, unknown
+    lint-category-map types, and lint after shutdown
+  * Fix data races between handler and lint goroutines
+  * Keep debounced lint requests for other files
+  * Handle didChange with multiple content changes
+  * Use symbol-formats for documentSymbol; drop duplicates
+  * Support %e/%k diagnostic end positions
+  * Fix formatting edits on CRLF files and files without a
+    trailing newline
+  * Publish same-file diagnostics under the client's URI
+  * Honour the -loglevel flag; ignore unknown notifications
+  * Update jsonrpc2 and errorformat dependencies
+- Require golang(API) >= 1.23 to match go.mod
+- Switch prep to %autosetup and enable unit tests
+- Add a go_modules source service
+
+-------------------------------------------------------------------
 Wed Dec 18 07:40:28 UTC 2024 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - Update to version 0.0.54:

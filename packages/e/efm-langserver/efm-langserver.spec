@@ -1,7 +1,7 @@
 #
 # spec file for package efm-langserver
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           efm-langserver
-Version:        0.0.54
+Version:        0.0.57
 Release:        0
 Summary:        General purpose language server
 License:        MIT
@@ -26,14 +26,14 @@ Source0:        https://github.com/mattn/efm-langserver/archive/refs/tags/v%{ver
 Source1:        vendor.tar.zst
 BuildRequires:  c_compiler
 BuildRequires:  zstd
-BuildRequires:  golang(API) >= 1.20
+BuildRequires:  golang(API) >= 1.23
 
 %description
 General purpose Language Server that can use specified error message format generated from specified command e.g.
 using linters and other tooling that supports the LSP specification.
 
 %prep
-%setup -qa1
+%autosetup -p1 -a1
 
 %build
 %ifarch ppc64
@@ -46,6 +46,9 @@ go build -v -x -mod=vendor $BUILDMOD -a -ldflags "-s -X main.version=%{version} 
 
 %install
 install -Dm755 %{name} %{buildroot}%{_bindir}/%{name}
+
+%check
+go test -mod=vendor ./...
 
 %files
 %{_bindir}/%{name}
