@@ -1,7 +1,7 @@
 #
 # spec file for package python-casacore
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -20,7 +20,7 @@
 %define pythons python3
 %global modname casacore
 Name:           python-casacore
-Version:        3.7.1
+Version:        3.8.1
 Release:        0
 Summary:        A wrapper around CASACORE, the radio astronomy library
 License:        LGPL-3.0-or-later
@@ -57,6 +57,11 @@ rm pyrap/images.py
 
 # Unnecessary hashbang
 sed -Ei "1{\@/usr/bin/env python@d}" casacore/tables/wxtablebrowser.py
+
+# Unnecessary exec perms
+chmod -x \
+  ./casacore/{fitting,functionals,measures,tables}/__init__.py \
+	./casacore/tables/{table,tableutil,wxtablebrowser}.py
 
 %build
 export CFLAGS="%{optflags}"

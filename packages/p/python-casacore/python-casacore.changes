@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sat Sep 19 18:16:36 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.8.1:
+  * General
+    - Fix performance regression - avoid/defer construction of
+      instances in MCFrame: [gh#casacorecasacore#1454].
+    - Cleanup and improvement of AlwaysAssert and DebugAssert:
+      [gh#casacorecasacore#1467].
+    - Clean up the Block class and deprecate the PtrBlock class:
+      [gh#casacorecasacore#1471].
+    - Remove Block::prohibitChangingAllocator() and
+      Block::permitChangingAllocator() as they were not used.
+    - Switch to new EOP files for Measures:
+      [gh#casacorecasacore#1476].
+  * Storage manager related
+    - Fix read/write of array Adios2StMan columns by rows
+    - Added write-after-read mode in Sisco:
+      [gh#casacorecasacore#1463].
+    - Fixes in StokesIStMan: [gh#casacorecasacore#1469].
+    - Added a Sisco Stokes I mode: [gh#casacorecasacore#1470].
+    - Build Sisco by default: [gh#casacorecasacore#1481],
+      [gh#casacorecasacore#1483].
+- Changes from version 3.8.0:
+  * General
+    - Updates for compatibility with more recent compiler
+      versions: [gh#casacorecasacore#1418,
+      gh#casacorecasacore#1419, gh#casacorecasacore#1435]
+    - Updates related to measures data tarball:
+      [gh#casacorecasacore#1413, gh#casacorecasacore#1429,
+      gh#casacorecasacore#1411]
+    - Improvements to thread safety, particularly in Measures:
+      [gh#casacorecasacore#1421, gh#casacorecasacore#1422,
+      gh#casacorecasacore#1423, gh#casacorecasacore#1425,
+      gh#casacorecasacore#1426, gh#casacorecasacore#1430,
+      gh#casacorecasacore#1424, gh#casacorecasacore#1431]
+    - Improvements to MSConcat: [gh#casacorecasacore#1433,
+      gh#casacorecasacore#1443]
+    - Fix math within FFTServer for non-integer shifts:
+      [gh#casacorecasacore#1282]
+    - Avoid overflow in LatticeStatistics:
+      [gh#casacorecasacore#1441]
+    - Various small improvements: [gh#casacorecasacore#1428,
+      gh#casacorecasacore#1437, gh#casacorecasacore#1444,
+      gh#casacorecasacore#1445, gh#casacorecasacore#1412]
+  * Storage manager related
+    - Fix an indexing bug in DataManInfo::removeDminfoColumns:
+      [gh#casacorecasacore#1410]
+    - Allow MPI data updates to tiled column data:
+      [gh#casacorecasacore#1308]
+    - New storage manager named Sisco for (simulated) data without
+      noise: [gh#casacorecasacore#1436, gh#casacorecasacore#1438,
+      gh#casacorecasacore#1439, gh#casacorecasacore#1446,
+      gh#casacorecasacore#1447]
+    - Improve metadata compression: [gh#casacorecasacore#1409]
+
+-------------------------------------------------------------------
 Fri Apr 25 13:54:04 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.7.1:
