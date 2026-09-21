@@ -17,7 +17,7 @@
 
 
 Name:           xfd
-Version:        1.1.5
+Version:        1.1.6
 Release:        0
 Summary:        Utility to display all the characters in an X font
 License:        X11
@@ -56,7 +56,8 @@ character metrics, and a grid containing one glyph per cell.
 
 %files
 %defattr(-,root,root)
-%doc ChangeLog COPYING README.md
+%doc ChangeLog README.md
+%license COPYING
 %{_bindir}/xfd
 %dir %{_datadir}/X11/app-defaults
 %{_datadir}/X11/app-defaults/Xfd

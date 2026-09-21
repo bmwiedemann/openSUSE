@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 20 21:19:08 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to version 1.1.6
+  * This release fixes a build failure using meson on systems like
+    NetBSD which require linking with libintl to call gettext(), and
+    clears a compiler warning when building with -Wtrailing-whitespace
+    enabled.
+
+-------------------------------------------------------------------
 Sun Jan 25 17:41:08 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.1.5

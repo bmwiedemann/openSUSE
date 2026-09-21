@@ -111,4 +111,16 @@
 - switched to meson build</comment>
     <requestid>1329083</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>ca9aa940bfca44097014152db8011506</srcmd5>
+    <version>1.1.6</version>
+    <time>1789986097</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.6
+  * This release fixes a build failure using meson on systems like
+    NetBSD which require linking with libintl to call gettext(), and
+    clears a compiler warning when building with -Wtrailing-whitespace
+    enabled.</comment>
+    <requestid>1379323</requestid>
+  </revision>
 </revisionlist>
