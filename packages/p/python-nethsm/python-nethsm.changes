@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 20 11:23:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.0.0:
+  https://github.com/Nitrokey/nethsm-sdk-py/compare/v2.1.2...v3.0.0
+  * Breaking Changes
+    - Return FullClusterJoinData instead of ClusterJoinData from
+      add_cluster_member (requires NetHSM v5)
+  * Changes
+    - Update for NetHSM v5:
+      - Add State.FAILED variant
+      - Update clustering functionality:
+        - Add FullClusterJoinData, ClusterDiagnostics,
+          ClusterLogItem, ClusterState and ClusterSnapshot classes
+        - Change NetHSM.join_cluster to also accept
+          FullClusterJoinData
+        - Add force_new_cluster, get_cluster_diagnostics,
+          promote_cluster_member functions to NetHSM
+        - Add learner field to ClusterMember
+      - Add support for key labels:
+        - Add label argument to add_key, add_key_pem, generate_key,
+          list_keys functions
+        - Add NetHSM.set_key_label function
+        - Add optional label field to Key
+      - Add support for NTP configuration:
+        - Add NtpConfig class
+        - Add get_config_ntp, set_ntp_config functions to NetHSM
+
+-------------------------------------------------------------------
 Tue Jun 23 05:10:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.1.2:

@@ -95,4 +95,12 @@
     <comment></comment>
     <requestid>1361253</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>10c71c71b5c9a1f0fae7c4571956245d</srcmd5>
+    <version>3.0.0</version>
+    <time>1789986223</time>
+    <user>anag_factory</user>
+    <comment>update to 3.0.0, required by pynitrokey</comment>
+    <requestid>1379359</requestid>
+  </revision>
 </revisionlist>
