@@ -15,4 +15,29 @@
     <comment>0.5.8</comment>
     <requestid>1277095</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c70ccd1907ba60955ef81bb535f575bb</srcmd5>
+    <version>0.5.10</version>
+    <time>1789986153</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 0.5.10:
+  * rewrite config parser for Python 3.14 (#2130832)
+  * CLI accepts time strings such as 1h10m10s and
+    option synonyms (--userlist, --userinfo)
+  * optional journald logging
+  * lock sessions via the logind manager interface
+  * LockedHint is optional; TTY-switch and leftover
+    process killing are now off by default
+  * fix D-Bus names for usernames with @ and . (#2160176)
+  * fix unlimited-time notifications when only
+    weekly or monthly limits apply
+  * timekpra exits non-zero on request errors
+  * translations: en_GB, fr_CA, Lao
+  * support dynamic users not listed in passwd
+- Recommend python3-systemd for journald logging
+- Require python3-psutil &gt;= 3.4
+- Spec cleanup</comment>
+    <requestid>1379364</requestid>
+  </revision>
 </revisionlist>

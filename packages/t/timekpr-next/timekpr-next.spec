@@ -18,8 +18,8 @@
 %define         _confdir %{?_distconfdir}%{!?_distconfdir:%{_sysconfdir}}
 %define         _sitelib %( echo %{python3_sitelib} | cut -c 10- )
 Name:           %{shortname}-next
-Version:        0.5.8
-Release:        
+Version:        0.5.10
+Release:        0
 Summary:        Keep control of computer usage
 License:        GPL-3.0-only
 URL:            https://launchpad.net/%{shortname}-next
@@ -27,16 +27,17 @@ Source0:        https://launchpad.net/%{name}/stable/%{version}/+download/%{name
 Source1:        system-group-%{shortname}.conf
 Source2:        README.SUSE.md
 BuildRequires:  appstream-glib
-BuildRequires:  sysuser-tools
 BuildRequires:  python3-base
-Requires(pre):  system-group-%{shortname} = %{version}
-Requires(post): systemd
+BuildRequires:  sysuser-tools
 Requires:       python3-dbus-python
-Requires:       python3-psutil
+Requires:       python3-psutil >= 3.4
 Requires:       typelib-1_0-AppIndicator3-0_1
+Requires(post): systemd
+Requires(pre):  system-group-%{shortname} = %{version}
+Recommends:     logrotate
 Recommends:     pkexec
 Recommends:     python3-espeak
-Recommends:     logrotate
+Recommends:     python3-systemd
 BuildArch:      noarch
 
 %description
@@ -128,6 +129,6 @@ systemctl reload dbus
 %dir %{_datadir}/locale/*/*
 
 %files -n system-group-%{shortname}
-%_sysusersdir/system-group-%{shortname}.conf
+%{_sysusersdir}/system-group-%{shortname}.conf
 
 %changelog
