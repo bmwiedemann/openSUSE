@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:10:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.27:
+  * build(deps): bump golang.org/x/oauth2 from 0.36.0 to 0.37.0
+    (#2065)
+  * build(deps): bump github.com/anchore/stereoscope from 0.3.0 to
+    0.3.1 (#2064)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.13.0 to 2.16.0
+    (#2063)
+  * build(deps): bump golang.org/x/time from 0.15.0 to 0.16.0
+    (#2062)
+
+-------------------------------------------------------------------
 Thu Sep 17 05:04:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.26:
