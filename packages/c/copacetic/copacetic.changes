@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Sun Sep 20 05:59:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.15.0:
+  Copacetic v0.15.0 expands support for minimal and
+  application-centric workloads, led by Ubuntu Chiseled image
+  patching and experimental Helm chart-aware patching. This release
+  also adds SLES 16 support and includes substantial correctness,
+  reproducibility, and performance improvements.
+  * Highlights
+    - Ubuntu Chiseled image patching
+      Copa can now patch both common Ubuntu Chiseled image layouts:
+      - Apt-less images that retain a full /var/lib/dpkg/status
+        support targeted updates from scanner reports and
+        comprehensive updates without a report. Copa applies
+        updates through external Ubuntu tooling while preserving
+        the full-status representation; the final image does not
+        gain /var/lib/dpkg/status.d, apt, dpkg, BusyBox, or a
+        shell.
+      - Native images containing /var/lib/chisel/manifest.wall
+        support comprehensive re-cuts of their selected Chisel
+        slices. Copa validates the manifest and resulting
+        filesystem, preserves paths not owned by the original
+        manifest and unaffected platform descriptors, rejects
+        downgrades, and records the resolved Chisel release as OCI
+        provenance.
+      Native Chisel release selection can be inferred from
+      /etc/os-release or overridden with --chisel-release. The CLI
+      and bulk mode accept a named release, local release
+      directory, or pinned HTTPS Git source; the BuildKit frontend
+      accepts a named release or a supplied local build context and
+      rejects Git URLs.
+      See the Ubuntu Chiseled image documentation and #1667.
+    - Experimental Helm chart-aware patching
+      The experimental chart mode renders a Helm chart with its
+      default values, discovers images from supported Kubernetes
+      workload locations, patches those images, and publishes a
+      self-contained wrapper chart containing the patched image
+      overrides. Patched images remain in their original
+      repositories in single-chart mode; bulk PatchConfig supports
+      a separate image target registry and explicit value-path
+      overrides where automatic resolution is ambiguous.
+      Chart mode requires the Helm CLI, COPA_EXPERIMENTAL=1,
+      --push, and credentials that can push both the patched images
+      and wrapper chart.
+      See the bulk and Helm chart patching documentation and #1547.
+    - SLES 16 support
+      Copa now supports SLES 16 BCI images and recognizes the
+      SQLite RPM database used by SLES 16 alongside the existing
+      NDB and Berkeley DB formats. Multi-platform fixtures and
+      package-manager coverage were added for the new release.
+      See #1621.
+  * Patching correctness and reliability
+    - Local image resolution — Docker and Podman inspection is
+      preferred before registry fallback, improving support for
+      local-only images and avoiding unnecessary remote lookups.
+      (#1614)
+    - Reliable RPM repatching — successive updates now compute
+      changes from the current patched state, preventing stale
+      files from being reintroduced. (#1589)
+    - Bounded image inspection — media-type discovery now honors
+      patch cancellation and timeout contexts instead of allowing
+      daemon or registry calls to block indefinitely. (#1587)
+    - Platform and VEX correctness — platform discovery no longer
+      panics on descriptors without platform metadata, and
+      generated OpenVEX documents now include the required
+      vulnerability name field for schema compliance. (#1672)
+  * Application-level Go patching
+    Experimental Go patching is more reliable and reproducible:
+    - go mod tidy -e allows CVE-relevant updates to proceed when an
+      upstream project has unrelated module-graph problems. (#1602)
+    - Pre-modules major-version dependencies such as
+      github.com/docker/docker receive the required +incompatible
+      suffix. (#1682)
+    - Copa skips stale scanner fixes that would downgrade or
+      reinstall an equal Go dependency and avoids claiming those
+      skipped findings as remediated in VEX output. (#1683)
+    - Go update lists, generated go.mod requirements, and rebuild
+      steps are emitted deterministically. (#1680)
+  * Performance and maintenance
+    - VEX generation, VEX file output, tar hardlink rewriting,
+      BuildKit progress forwarding, and terminal progress
+      bookkeeping now use substantially fewer allocations and less
+      CPU in large workloads. (#1639)
+      The release also updates BuildKit to 0.31.1 (#1675),
+      containerd to 2.2.5 (#1631), Go to 1.25.13 (#1673), and gRPC
+      to 1.83.1 (#1694), while expanding unit, integration, and
+      end-to-end coverage across patching paths.
+  * Important usage notes
+    - Native manifest.wall Chiseled images currently support
+      comprehensive patching only; do not pass a vulnerability
+      report. Trivy does not yet inventory packages from
+      manifest.wall.
+    - Updating an apt-less full-status Chiseled image installs
+      content from complete .deb archives and can add dependency
+      packages or package-owned files that were not present in the
+      original image. Maintainer scripts and dpkg triggers are
+      disabled, lifecycle-package updates such as dpkg, apt, or
+      bash are rejected, and the resulting filesystem and
+      application should be validated before deployment.
+    - Initial native Chisel support resolves public Ubuntu archives
+      only. Ubuntu Pro, ESM, FIPS, private mirrors, and
+      authenticated archives are not forwarded.
+    - Native Chisel patching does not support linux/arm/v6.
+    - Helm chart-aware patching remains experimental. Single-chart
+      mode has no custom values-file input, so it discovers only
+      images visible in the default render and supported workload
+      shapes. Digest-pinned images and ambiguous value paths are
+      rejected rather than silently publishing unsafe overrides.
+  * Dependencies
+    - chore: bump github.com/Masterminds/semver/v3 from 3.4.0 to
+      3.5.0 (#1689)
+    - chore: bump github.com/testcontainers/testcontainers-go from
+      0.40.0 to 0.44.0 (#1568)
+    - chore: bump the all group across 1 directory with 18 updates
+      (#1659)
+    - chore: bump github.com/moby/buildkit from 0.28.1 to 0.31.1
+      (#1675)
+    - chore: bump github.com/moby/go-archive from 0.2.0 to 0.3.0
+      (#1674)
+    - fix: update Go to 1.25.13 (#1673)
+    - chore: bump the all group across 1 directory with 7 updates
+      (#1658)
+    - chore: bump github.com/containerd/containerd/v2 from 2.2.1 to
+      2.2.5 (#1631)
+    - chore: bump actions/checkout from 6.0.3 to 7.0.0 in the all
+      group (#1630)
+    - chore: bump the all group across 1 directory with 11 updates
+      (#1626)
+    - chore: bump the all group in /website with 2 updates (#1619)
+    - fix: update x/crypto for govulncheck (#1617)
+    - chore: bump the all group across 1 directory with 2 updates
+      (#1603)
+    - chore: bump github.com/in-toto/in-toto-golang from 0.10.0 to
+      0.11.0 (#1600)
+    - chore: bump github.com/moby/moby/api from 1.54.1 to 1.54.2
+      (#1584)
+    - chore: bump the all group across 1 directory with 12 updates
+      (#1606)
+    - fix: govuln fix - update go version to 1.25.10 (#1608)
+
+-------------------------------------------------------------------
 Fri Jul 03 05:11:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.14.2:
