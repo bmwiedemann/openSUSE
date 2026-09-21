@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:04:08 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 2.1.4:
+  * Added:
+    - Plotting: reinstate tick-mark toggles.
+    - Plotting: added support for positioning legends with respect
+      to ratio-panel coordindates
+  * Fixed:
+    - `numeric_limits::min` -> `numeric_limits::lowest`.
+    - Add missing `std::` prefix to `vector` tests.
+    - Fix issue in the legacy YODA1 reader where the binning of
+      YODA1-style Histo2D objects may not have been correctly
+      reconstructed
+- Changes from version 2.1.3:
+  * Added:
+    - `xEdges()`, `yEdges()` and `zEdges()` are now propagated
+      from C++ to the Python API for discrete axes, so
+      discrete-axis bin edges can be queried directly from Python.
+    - Binned objects now provide a `shape()` method returning a
+      tuple of the bin counts, with an optional Boolean to include
+      or exclude overflows.
+    - A multiplication operator is now defined for binned objects
+      and `Counter`s.
+    - API arrays are now returned as NumPy arrays when NumPy is
+      available.
+    - `RatioYMax`/`RatioYMin` now also work in deviation mode.
+    - `yodadiff` now works for objects with more than three
+      dimensions.
+  * Fixed:
+    - Fixed a bug whereby rebinning analysis objects via the
+      Python API could leave the Python and C++ representations of
+      the internal binning out of sync.
+    - Fixed a small bug affecting 2D histograms in the `yoda2root`
+      script.
+    - $y$-axis maximum/minimum values are no longer affected by
+      `NaN`s representing empty bins.
+  * Changed:
+    - Reinstate auto-numpy-wrapping for Python API.
+    - Adapt `read_symmetric` to interpret error as signed for
+      `Estimates`.
+    - `BinnedDbn`s now use global Neff, rather than per-bin
+      variant. Thanks to Jonas Hahnfeld for the report!
+    - `effNumEntries` for binned histograms and profiles is now
+      calculated from the total $\sum w$ and $\sum w^2$ rather
+      than the per-bin values.
+    - NumPy warnings about all-`NaN` arrays (which can arise from
+      empty histograms) are now silenced.
+- Add LICENSE file as additional source; it is missed from tagged
+  tarball as of current version.
+
+-------------------------------------------------------------------
 Sun Nov 16 05:52:30 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 2.1.2:

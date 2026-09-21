@@ -1,7 +1,7 @@
 #
 # spec file for package YODA
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,14 +24,16 @@
 %endif
 %define so_name lib%{name}-%(echo %{version} | tr '.' '_')
 Name:           YODA
-Version:        2.1.2
+Version:        2.1.4
 Release:        0
 Summary:        A small set of data analysis classes for MC event generator validation analyses
 License:        GPL-2.0-only
 Group:          Development/Libraries/C and C++
 URL:            https://gitlab.com/hepcedar/yoda
-Source0:        https://www.hepforge.org/archive/yoda/%{name}-%{version}.tar.bz2
+Source0:        https://yoda.hepforge.org/downloader?f=%{name}-%{version}.tar.bz2#/%{name}-%{version}.tar.bz2
 Source1:        %{name}.rpmlintrc
+# Missed LICENSE file from tarball
+Source2:        https://gitlab.com/hepcedar/yoda/-/raw/release-2-1-x/LICENSE
 Patch0:         sover.diff
 BuildRequires:  autoconf
 BuildRequires:  bash-completion
@@ -141,6 +143,8 @@ sed -E -i "s|^#! /usr/bin/env bash|#! /bin/bash|" bin/yoda-config*
 # REMOVE AN UNNECESSARY ONE
 sed -E -i "1{s|^#! /usr/bin/env python||}" pyext/yoda/search.py
 
+cp %{SOURCE2} ./
+
 %build
 export PYTHON_VERSION=%{py3_ver}
 autoreconf -fi
@@ -168,8 +172,8 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/libYODA-*.so
 
 %files devel
-%doc AUTHORS ChangeLog
-%license COPYING
+%doc AUTHORS CHANGELOG.md
+%license LICENSE
 %{_bindir}/yoda-config
 %{_libdir}/libYODA.so
 %{_libdir}/pkgconfig/yoda.pc
