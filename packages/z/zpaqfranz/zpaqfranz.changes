@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:44:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.1:
+  * New mount command, which exposes a zpaq archive as a
+    read-only filesystem. It needs -DZPAQMOUNT and libfuse3 and
+    upstream calls it untested on Unix, so it is not enabled here
+  * New xx command, the sequential-write extraction that was
+    reachable only as x -recover; faster on rotating media and
+    salvages more from a damaged archive
+  * New x -backupdir, which moves every file that would be
+    overwritten into a timestamped folder instead of erasing it
+  * The -franzen option no longer writes a cleartext .zpaq
+    beside the encrypted .zpaq.franzen
+  * w -ramdisk can extract a file larger than the chunk, in
+    sequential RAM windows; the chunk counter no longer loops
+    forever on such a file
+  * v no longer reports a file as FAILED on every run after a
+    metadata-only change
+  * t and pp -ssd decode the .franzen container first and exit 2
+    when that pre-check fails
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Extend the Legal-Review-Notice: the upstream credits block
+  grew to 27 entries. The two new ones, libfuse and WinFsp,
+  belong to the mount command, which is not compiled here, so
+  the License tag is unchanged.
+
+-------------------------------------------------------------------
 Sat Aug  8 20:29:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 64.8:

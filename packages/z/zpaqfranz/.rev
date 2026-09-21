@@ -83,4 +83,28 @@ The arch-specific compile flags are carried over unchanged and deliberately: x86
 Built and verified on x86_64: rpmlint 0 errors / 0 warnings / 0 badness, %check autotest 'OK 16 ERROR 0' plus the round trip, source_validator clean.</comment>
     <requestid>1370361</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>470ab129e0ace39069641cb389bfff2f</srcmd5>
+    <version>65.1</version>
+    <time>1789993769</time>
+    <user>anag_factory</user>
+    <comment>- Update to 65.1:
+  * New mount command exposing an archive as a read-only FUSE
+    filesystem (not enabled here: upstream calls it untested on
+    Unix, and it would pull libfuse into the licence)
+  * New xx command for sequential-write extraction
+  * x -backupdir moves files aside instead of erasing them on
+    overwrite
+  * -franzen no longer writes a cleartext .zpaq
+  * w -ramdisk extracts files larger than the chunk in sequential
+    RAM windows, and its chunk counter no longer runs away
+  * v no longer reports a file FAILED forever after a
+    metadata-only change
+  * t and pp -ssd pre-check the .franzen container
+
+Upstream did not update CHANGELOG.md for this release; the bullets
+come from the release notes. Licence unchanged, since the FUSE code
+is not compiled. Upstream self-test passes.</comment>
+    <requestid>1379320</requestid>
+  </revision>
 </revisionlist>

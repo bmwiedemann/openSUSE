@@ -17,13 +17,13 @@
 
 
 Name:           zpaqfranz
-Version:        64.8
+Version:        65.1
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
 # embeds a large amount of third-party code. Upstream enumerates every piece
 # in the "Credits and copyrights and licenses" block of zpaqfranz.cpp
-# (25 entries); the tag below is the union of what that block declares,
+# (27 entries); the tag below is the union of what that block declares,
 # after electing the permissive side of the two dual-licensed pieces:
 #  - zpaqfranz itself and libdivsufsort, Embedded Artistry, nilsimsa, zsfx
 #    and ascii-art: MIT (LICENSE is the MIT text),
@@ -42,6 +42,10 @@ Summary:        A journaling, incremental, deduplicating archiver
 # libssh code is linked into the binary, so it is not part of this tag.
 # The Sha1Opt.asm / 7zAsm.asm public-domain code (entry 5) is Windows-only
 # and never compiled here.
+# Entries 25 (libfuse, LGPL) and 26 (WinFsp, GPL-3.0 with a FLOSS exception)
+# belong to the new "mount" command, which exists only under -DZPAQMOUNT.
+# That is not defined below, so no FUSE code is compiled and neither entry
+# is part of this tag.
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
