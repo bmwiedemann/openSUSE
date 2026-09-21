@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:53:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.20.2:
+  * Fix
+    - fix: Return a dict for unhandled GitLab API response codes
+      (a176100)
+
+-------------------------------------------------------------------
 Sat Aug 29 07:05:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.20.1:
