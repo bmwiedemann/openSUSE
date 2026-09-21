@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 20 05:25:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.76.0:
+  * Features
+    - add case-insensitive-condition-tracking feature gate (#7801)
+      (8043316)
+    - build: show low-level operations time summary in debug mode
+      (#7675) (4f65aef)
+  * Bug Fixes
+    - build, buildah: prevent parallel recovery failures (#7774)
+      (fd5758d)
+    - build: avoid panicking on late worker logs (#7785) (4a89693)
+    - docker: prevent race reports during Docker builds (#7777)
+      (6d6af8d)
+    - optimize release get (8043316)
+- Update to version 2.75.4:
+  * Bug Fixes
+    - build, buildah: retry pull when cached image id is missing
+      (#7669) (9d64035)
+    - build, buildah: serialize concurrent base image pulls (#7664)
+      (6eb9144)
+    - build, stapel: make service script executable regardless of
+      umask (#7720) (8b67264), closes #2339
+    - build: drop empty image digest warnings from the build report
+      (#7717) (24babbb), closes #7667
+    - build: make repo-built from:scratch images readable by dive
+      (#7765) (54b0921)
+
+-------------------------------------------------------------------
 Thu Aug 06 12:07:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.75.3:
