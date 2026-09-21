@@ -39,11 +39,6 @@ cd "${BASENAME}" || exit 23
 ls -lah
 
 echo "##########"
-echo "Cloning gha-bump"
-GHABUMP_COMMIT="$(awk '/^require github.com\/alexellis\/gha-bump/ {print $NF}' go.mod)"
-git clone https://github.com/alexellis/gha-bump ../gha-bump || exit 25
-
-echo "##########"
 echo "Vendoring the go modules"
 go mod tidy
 go mod download || exit 33
