@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:21:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.10:
+  * Build switched from homegrown Makefile to Autotools, use the
+    upstream dist tarball carrying generated configure and man page
+  * Hook scripts returning failure codes now fail the run
+  * VCSH_* variables are exported to hooks
+  * vcsh status prints paths relative to $HOME
+  * New flag to prefix vcsh foreach output with the repo name
+  * write-ignore no longer requires a repo argument
+  * Bash completion added, ZSH completion fixed
+- Drop disable-tests.patch, the patched Makefile is gone upstream;
+  pass --disable-tests to configure instead as perl(Shell::Command)
+  is not in Factory
+- ZSH completion moved to /usr/share/zsh/site-functions, matching
+  upstream; ship new bash-completion subpackage
+- Correct license to GPL-2.0-or-later per upstream SPDX tag
+
+-------------------------------------------------------------------
 Tue Feb 20 13:20:17 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
