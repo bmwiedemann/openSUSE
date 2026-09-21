@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:29:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 24.05:
+  * Switch to calendar versioning
+  * Generate GIR and VAPI; applets no longer use libpeas
+  * Merge StatusNotifier (sntray) in-tree; not built without
+    appmenu-glib-translator
+  * Add flowtasks applet
+  * Wayland monitor selection; rename layer-shell backend
+    to wayland platform
+  * Fix pkgconfig so third-party applets (appmenu) find headers
+  * Fix bottom-panel size, launchbar leaks, netmon crash,
+    remote-command, GNOME Settings 42
+- Drop 52f40ce779cfa224266dd427cfe57afd83a28362.diff: fixed
+  upstream
+- Add workaround-vala-gir.patch: Vala GIR omits ValaPanel.launch
+- Correct License to LGPL-3.0-or-later
+- Move netmon applet into plugins-base
+
+-------------------------------------------------------------------
 Tue May  3 13:11:11 UTC 2022 - Ferdinand Thiessen <rpm@fthiessen.de>
 
 - Update to version 0.5.0
