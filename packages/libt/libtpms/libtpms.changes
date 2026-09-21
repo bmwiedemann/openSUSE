@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 18 18:35:22 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- CVE-2026-85769: Fixed heap out-of-bounds read in TPM2 state
+  unmarshalling via unchecked block_skip_read() blocksize (bsc#1279628)
+  - libtpms-CVE-2026-85769.patch
+
+-------------------------------------------------------------------
 Wed Mar 18 12:38:14 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to version 0.10.2:

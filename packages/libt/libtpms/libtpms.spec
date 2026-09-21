@@ -26,6 +26,7 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/stefanberger/libtpms
 Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
 Patch0:         libtpms-fix-const-correctness.patch
+Patch1:         libtpms-CVE-2026-85769.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes
