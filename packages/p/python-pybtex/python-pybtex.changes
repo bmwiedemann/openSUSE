@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sun Sep 13 14:25:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.26.1:
+  * Support @software, @patent and @dataset entries, external_href
+    links, BibliographyData.preamble_list
+  * Fix formatting bibliographies with crossrefs, runtime plugin
+    registration, Entry.__repr__
+  * Drop Python 2 support, require Python >= 3.8
+  * Hatchling build backend, ruff linting, docs moved to Grebedoc
+  * Full list: https://docs.pybtex.org/history.html
+- Drop python-pybtex-no-six.patch, merged upstream (six support
+  removed in 0.25.0)
+- Drop python-pyparsing Requires/BuildRequires, no longer used
+  upstream
+- Switch build to hatchling (BuildRequires python-hatchling,
+  drop setuptools/wheel)
+- Regenerate man pages at build time with help2man (upstream no
+  longer ships prebuilt ones)
+- Convert update-alternatives to libalternatives
+- Add missing python-PyYAML Requires (rpmlint W:
+  python-missing-require)
+- Fix /usr/bin/env shebang in the make_charwidths.py helper
+  (rpmlint E: env-script-interpreter)
+
+-------------------------------------------------------------------
 Wed Jun 25 01:47:57 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

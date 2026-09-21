@@ -1,7 +1,7 @@
 #
 # spec file for package python-pybtex
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2010 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,30 +18,27 @@
 
 
 %define oname   pybtex
+%bcond_without libalternatives
 Name:           python-pybtex
-Version:        0.24.0
+Version:        0.26.1
 Release:        0
 Summary:        BibTeX-compatible Bibliography Processor in Python
 License:        MIT
-Group:          Productivity/Publishing/TeX/Utilities
 URL:            https://pybtex.org/
 Source0:        https://files.pythonhosted.org/packages/source/p/pybtex/pybtex-%{version}.tar.gz
-# https://bitbucket.org/pybtex-devs/pybtex/commits/6afabe217af95995d595de493cf9bc5120f85ca7
-Patch0:         python-pybtex-no-six.patch
 BuildRequires:  %{python_module PyYAML >= 3.0.1}
 BuildRequires:  %{python_module devel}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module latexcodec}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pyparsing}
 BuildRequires:  %{python_module pytest}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
+BuildRequires:  help2man
 BuildRequires:  python-rpm-macros
+Requires:       alts
+Requires:       python-PyYAML
 Requires:       python-latexcodec
-Requires:       python-pyparsing
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -56,7 +53,10 @@ Furthermore, Pybtex provides an interface for Python applications which need to
 process the above formats.
 
 %prep
-%autosetup -p1 -n %{oname}-%{version}
+%autosetup -n %{oname}-%{version}
+# make_charwidths.py is a build-time helper with a /usr/bin/env shebang
+# (rpmlint E: env-script-interpreter); point it at the system python
+sed -i '1s|^.*$|#!%{_bindir}/python3|' src/pybtex/charwidths/make_charwidths.py
 
 %build
 %pyproject_wheel
@@ -64,36 +64,29 @@ process the above formats.
 %install
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
-%python_expand rm -rf %{buildroot}%{$python_sitelib}/tests
-# install man
+# Upstream no longer ships prebuilt man pages (docs/generate_manpages.py
+# needs the unpublished pybtex-doctools); regenerate them from --help
+export PYTHONPATH=%{buildroot}%{python_sitelib}
 for man in %{oname} %{oname}-convert %{oname}-format ; do
-  install -Dpm 0644 docs/man1/${man}.1 %{buildroot}%{_mandir}/man1/${man}.1
+  help2man -N --version-string=%{version} --output=${man}.1 %{buildroot}%{_bindir}/${man}
+  install -Dpm 0644 ${man}.1 %{buildroot}%{_mandir}/man1/${man}.1
 done
+unset PYTHONPATH
 %python_clone -a %{buildroot}%{_mandir}/man1/%{oname}-format.1
 %python_clone -a %{buildroot}%{_mandir}/man1/%{oname}-convert.1
 %python_clone -a %{buildroot}%{_mandir}/man1/%{oname}.1
 %python_clone -a %{buildroot}%{_bindir}/%{oname}-format
 %python_clone -a %{buildroot}%{_bindir}/%{oname}-convert
 %python_clone -a %{buildroot}%{_bindir}/%{oname}
+%python_group_libalternatives %{oname}-format %{oname}-convert %{oname}
 
 %check
 %pytest
 
-%post
-%python_install_alternative %{oname}-format.1
-%python_install_alternative %{oname}-convert.1
-%python_install_alternative %{oname}.1
-%python_install_alternative %{oname}-format
-%python_install_alternative %{oname}-convert
-%python_install_alternative %{oname}
-
-%postun
-%python_uninstall_alternative %{oname}-format.1
-%python_uninstall_alternative %{oname}-convert.1
-%python_uninstall_alternative %{oname}.1
-%python_uninstall_alternative %{oname}-format
-%python_uninstall_alternative %{oname}-convert
-%python_uninstall_alternative %{oname}
+%pre
+%python_libalternatives_reset_alternative %{oname}-format
+%python_libalternatives_reset_alternative %{oname}-convert
+%python_libalternatives_reset_alternative %{oname}
 
 %files %{python_files}
 %python_alternative %{_mandir}/man1/%{oname}-format.1%{ext_man}
