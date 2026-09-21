@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-maxminddb
-Version:        3.1.1
+Version:        3.2.0
 Release:        0
 Summary:        Reader for the MaxMind DB format
 License:        Apache-2.0
@@ -64,6 +64,9 @@ export MAXMINDDB_REQUIRE_EXTENSION=1
 %check
 # else the extension tests skip themselves when the .so is missing
 export MM_FORCE_EXT_TESTS=1
+# else the 3.2.0 resource-limit tests fail instead of skipping against
+# system libmaxminddb < 1.14.0 (upstream keys the skip off this var)
+export MAXMINDDB_USE_SYSTEM_LIBMAXMINDDB=1
 %pytest_arch
 
 %files %{python_files}

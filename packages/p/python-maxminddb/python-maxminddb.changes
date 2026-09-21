@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 12 11:30:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.2.0:
+  * pure Python DoS hardening: decode limits (65536 values, 512 nesting
+    levels, 2 MiB string/bytes payload), oversized integer rejection,
+    invalid search tree sizes rejected at open
+  * truncated reads that raised IndexError/struct.error now raise
+    InvalidDatabaseError
+  * vendored libmaxminddb 1.14.0 adds the same limits to the C extension;
+    shipped extension still builds against system libmaxminddb, not the
+    vendored copy
+  * faster pure Python lookups
+- Export MAXMINDDB_USE_SYSTEM_LIBMAXMINDDB in %check so the extension
+  resource-limit tests skip (as upstream intends) until system
+  libmaxminddb reaches 1.14.0, instead of failing
+
+-------------------------------------------------------------------
 Thu Sep  3 17:15:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.1.1:
