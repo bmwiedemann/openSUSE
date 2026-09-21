@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Sun Sep 20 11:09:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0:
+  * Bump API dependency for v1.0.0- #4718 (#4718)
+  * Docs: Rationalize and document local-config annotation in the
+    book (#4679)
+  * fix: Improve CEL conditional execution consistency and test
+    coverage (#4713)
+  * Refactor: Move setup-go-kpt composite action from porch to kpt
+    (#4709)
+  * Docs: use Docsy alert shortcode for notes and warnings (#4703)
+  * Remove internal dir from sonar reposrting (#4712)
+  * Add sonar fix and debug logging (#4706)
+  * feat: Add CEL-based conditional function execution (#4388)
+    (#4469)
+  * Add needs step to save PR num (#4699)
+  * Docs: Enforce documentation style guide with spelling check and
+    style fixes (#4690)
+  * Docs: Clarify the use of --reconcile-timeout in getting-started
+    guide (#4689)
+  * Docs: Migrate internal links to relref and fix spelling errors
+    (#4700)
+  * Remove local VERSIONING.md in favour of governance reference
+    (#4687)
+
+-------------------------------------------------------------------
+Fri Aug 14 05:34:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.0~beta.68:
+  * update api version in main module (#4697)
+  * fixed render displaying sub packages without any pipelines
+    (#4683)
+  * Allow config references by resource name (#4667)
+  * Exclude fn-config from owning function's input in fn render
+    (#4673)
+  * Add sonar gen workflow (#4686)
+  * docs(#4556): Add comprehensive 3-way merge guide (#4654)
+  * Show independent/dependent package type in pkg tree output
+    (#4668)
+  * Docs: Document .krmignore file behaviour (#4688)
+  * Add --delete-propagation-policy and --delete-timeout flags to
+    kpt live destroy (#4665)
+  * Docs: Added documentation for resource config refs (#4681)
+  * Improve logging of render pipeline execution (part 1) (#4678)
+  * Bump Homebrew formula to v1.0.0-beta.67 (#4684)
+  * Add upstream push protection to go-upgrade script (#4659)
+  * Upgrade Go to 1.26.5 (#4664)
+  * Clarify path annotation semantics and link to metadata schema
+    reference (#4666)
+  * fixed stale fnconfig bug (#4675)
+  * Unhide --as and --as-group flags for kpt live commands (#4680)
+  * added e2e tests for examples (#4672)
+  * Adding AGENTS.md (#4573)
+  * Add go.mod replace directive guard to release workflows (#4671)
+  *  Standardize annotation prefix: use config.kubernetes.io for
+     kpt-resource-id (#4663)
+  * Docs: fix broken links and spelling mistakes (#4662)
+  * Add multi-repo upgrade and dependency maintenance utility
+    (#4651)
+  * Add a check for namespace existence in kpt live apply (#4653)
+  * Kpt repo cleanup 1 (#4640)
+  * Use custom usage template to avoid duplicate flag info in help
+    output (#4649)
+  * Remove unnecessary conversion functions, vendor in whole
+    group_version.go (#4633)
+  * Show meaningful paths in kpt pkg diff output (#4646)
+  * Remove obsolete prototype-controller.md (#4645)
+  * Remove dead --keywords/-k flag from kpt fn eval (#4648)
+  * Exclude fn-config from function input items in kpt fn eval
+    (#4639)
+  * chore: regenerate CLI docs from markdown sources (#4641)
+  * Remove legacy Firebase vanity server infrastructure (#4642)
+  * Remove unused healthcheck module (#4643)
+  * Remove trailing slash from default GHCR prefix (#4637)
+  * Chapter 5 update (#4625)
+
+-------------------------------------------------------------------
 Tue Jul 14 05:08:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0~beta.67:
