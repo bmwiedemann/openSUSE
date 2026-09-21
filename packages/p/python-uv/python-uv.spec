@@ -36,13 +36,13 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.12.15
+Version:        0.12.17
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
 # statically links the vendored Rust dependencies. Re-derived on this
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
-# tree (514 unique name-version nodes); the copyleft licences in the linked graph are:
+# tree (507 unique name-version nodes); the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
 #    (the last via shellexpand -> dirs -> dirs-sys),
 #  - priority-queue, which is "LGPL-3.0-or-later OR MPL-2.0" - we elect
@@ -171,10 +171,10 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 
 %if %{with test}
 %check
-# The test flavour runs the Rust workspace suite: 67 of the 70 workspace
+# The test flavour runs the Rust workspace suite: 70 of the 73 workspace
 # members. Three crates are excluded, each for a reason that no amount of
 # packaging can fix:
-#  - uv, the CLI integration suite (78 test files under crates/uv/tests).
+#  - uv, the CLI integration suite (81 test files under crates/uv/tests).
 #    It resolves against the real package index and downloads managed
 #    CPython interpreters; an OBS build chroot has no network.
 #  - uv-dev, whose generate_sysconfig_mappings test fetches

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:46:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.17:
+  * Stop required-environments from selecting wheels that need a
+    newer macOS than the configured Darwin baseline
+  * Set the minimum glibc and musl versions a universal
+    resolution must support with minimum-libc-version (preview)
+  * Reject unsupported Git archive paths in a lockfile with a
+    clear error instead of panicking during a frozen export
+- Update to 0.12.16:
+  * Verify downloaded wheels and source distributions against
+    hashes supplied by the package index
+  * Redact Azure shared access signatures from displayed and
+    logged URLs
+  * Stop panicking on unsupported Git URL schemes, malformed
+    index URLs and proxy URLs with no host
+  * Add Pyodide 314.0.7, 0.29.5 and 0.27.8 to managed Python
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Refresh the vendored crates (the ICU segmenter, rand 0.9 and
+  several image codec backends drop out); the linked licence set
+  is unchanged
+- Not affected by CVE-2026-92987 (boo#1281170): roxmltree enters
+  the vendor tree only through uv-dev's resvg and is absent from
+  the linked crate graph
+
+-------------------------------------------------------------------
 Thu Sep 17 06:58:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.15:

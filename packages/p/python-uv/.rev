@@ -3239,4 +3239,26 @@ aarch64 build GREEN, source_validator/lint/guard clean.
     the licence set is unchanged</comment>
     <requestid>1378555</requestid>
   </revision>
+  <revision rev="125" vrev="1">
+    <srcmd5>0b60d0dd1a5e709bcb7ee8fe77a504c6</srcmd5>
+    <version>0.12.17</version>
+    <time>1789986182</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.12.17 (includes 0.12.16):
+  * Verify hashes of downloaded wheels and source distributions
+  * Redact Azure SAS tokens from logs and error output
+  * Turn panics into errors on malformed Git, index and proxy URLs
+  * New minimum-libc-version preview setting
+  * Fix the Darwin baseline in required-environments
+  * Ship Pyodide builds
+  * Many more changes; see upstream's release notes
+- Not affected by CVE-2026-92987 (boo#1281170): roxmltree is only
+  reachable through uv-dev's optional render feature, which is not
+  enabled
+
+Licence re-derived over the regenerated vendor tree (507 linked
+crates); the expression is unchanged. Both Python flavors build green
+with the full test suite (1411 passed).</comment>
+    <requestid>1379356</requestid>
+  </revision>
 </revisionlist>
