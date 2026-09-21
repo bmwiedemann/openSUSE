@@ -1,0 +1,34 @@
+From f49602b60c633c6c77787db664520b9827fd503b Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 18 Sep 2025 10:55:43 -0700
+Subject: [PATCH] rocm-compilersupport force hip runtime detection
+
+---
+ clang/lib/Driver/ToolChains/AMDGPU.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/clang/lib/Driver/ToolChains/AMDGPU.cpp b/clang/lib/Driver/ToolChains/AMDGPU.cpp
+index 4f30b532bec5..4ba91edfdfd9 100644
+--- a/clang/lib/Driver/ToolChains/AMDGPU.cpp
++++ b/clang/lib/Driver/ToolChains/AMDGPU.cpp
+@@ -453,6 +453,9 @@ void RocmInstallationDetector::detectHIPRuntime() {
+     if (!HIPPathEnv->empty())
+       HIPSearchDirs.emplace_back(std::move(*HIPPathEnv));
+   }
++#if 1
++    HasHIPRuntime = true;
++#else
+   if (HIPSearchDirs.empty())
+     HIPSearchDirs.append(getInstallationPathCandidates());
+   auto &FS = D.getVFS();
+@@ -511,6 +514,7 @@ void RocmInstallationDetector::detectHIPRuntime() {
+     }
+   }
+   HasHIPRuntime = false;
++#endif
+ }
+ 
+ void RocmInstallationDetector::print(raw_ostream &OS) const {
+-- 
+2.52.0
+

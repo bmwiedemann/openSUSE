@@ -1,5 +1,3 @@
-# Remove third-party
-rm -rf third-party
 # Force clang to be shared
 sed -i -e 's@if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY OR ARG_INSTALL_WITH_TOOLCHAIN)@if (ARG_SHARED AND (NOT LLVM_INSTALL_TOOLCHAIN_ONLY OR ARG_INSTALL_WITH_TOOLCHAIN))@' clang/cmake/modules/AddClang.cmake
 # Force lld to be shared
@@ -10,7 +8,7 @@ sed -i -e 's@if (NOT LLVM_INSTALL_TOOLCHAIN_ONLY OR ARG_INSTALL_WITH_TOOLCHAIN)@
 #Remove redundant includes:
 sed -i '/Args.push_back("-isystem");/,+3d' amd/comgr/src/comgr-compiler.cpp
 #Source hard codes the libdir too:
-sed -i 's/lib\(\/clang\)/%{_lib}\1/' amd/comgr/src/comgr-compiler.cpp
+sed -i 's/lib\(\/clang\)/%{pkg_libdir}\1/' amd/comgr/src/comgr-compiler.cpp
 
 # Fixup finding /opt/llvm
 sed -i -e 's@sys::path::append(LLVMPath, "llvm");@//sys::path::append(LLVMPath, "llvm");@' amd/comgr/src/comgr-env.cpp
@@ -26,36 +24,42 @@ sed -i -e "/add_comgr_test(compile_source_with_device_libs_to_bc_test/d" \
         -e "/add_comgr_test(nested_kernel_test/d" \
         amd/comgr/test/CMakeLists.txt
 
-# Fix script shebang (Fedora doesn't allow using "env"):
-sed -i -e 's@env perl@perl@' amd/hipcc/bin/hipcc.pl
-sed -i -e 's@env perl@perl@' amd/hipcc/bin/hipconfig.pl
 # ROCm upstream uses /opt for rocm-runtime, but Fedora uses /usr
 # Don't include it again since /usr/include is already included:
 sed -i '/" -isystem " + hsaPath + "\/include"/d' amd/hipcc/src/hipBin_amd.h
-# Same thing for hipcc.pl:
-sed -i '/^# Add paths to common HIP includes:/,/^$HIPCFLAGS/d' \
-        amd/hipcc/bin/hipcc.pl
 
 sed -i -e 's@env python3@python3@' clang-tools-extra/clang-tidy/tool/run-clang-tidy.py
 sed -i -e 's@env python@python3@' clang-tools-extra/clang-include-fixer/find-all-symbols/tool/run-find-all-symbols.py
+sed -i -e 's@env python@python3@' clang/tools/scan-build/bin/scan-build
+sed -i -e 's@env python@python3@' clang/tools/scan-view/bin/scan-view
 
 # Default rocm path is _prefix
-sed -i -e 's@/opt/rocm@%{_prefix}@' amd/hipcc/bin/hipvars.pm
-sed -i -e 's@/opt/rocm@%{_prefix}@' amd/hipcc/src/hipBin_base.h
+sed -i -e 's@/opt/rocm@%{pkg_prefix}@' amd/hipcc/src/hipBin_base.h
 
 LLVM_BINDIR=%{bundle_prefix}/bin
-
-echo "s@\$ROCM_PATH/lib/llvm/bin@${LLVM_BINDIR}@" > pm.sed
-sed -i -f pm.sed amd/hipcc/bin/hipvars.pm
 
 echo "s@hipClangPath /= \"lib/llvm/bin\"@hipClangPath = \"${LLVM_BINDIR}\"@" > h.sed
 sed -i -f h.sed amd/hipcc/src/hipBin_amd.h
 
+#
+# Device libs path
 # Fix up the path to the device libs hipcc uses
-sed -i -e 's@amdgcnBitcode = roccmPath@amdgcnBitcode = "%{_prefix}/%{amd_device_libs_prefix}/"@' amd/hipcc/src/hipBin_amd.h
-
+sed -i -e 's@amdgcnBitcode = roccmPath@amdgcnBitcode = "%{amd_device_libs_prefix}/"@' amd/hipcc/src/hipBin_amd.h
 # Fix up the location AMD_DEVICE_LIBS_PREFIX
-sed -i 's|@AMD_DEVICE_LIBS_PREFIX_CODE@|set(AMD_DEVICE_LIBS_PREFIX "%{_prefix}/%{amd_device_libs_prefix}")|' amd/device-libs/AMDDeviceLibsConfig.cmake.in
+sed -i 's|@AMD_DEVICE_LIBS_PREFIX_CODE@|set(AMD_DEVICE_LIBS_PREFIX "%{amd_device_libs_prefix}")|' amd/device-libs/AMDDeviceLibsConfig.cmake.in
+#  // Find device libraries in <LLVM_DIR>/lib/clang/<ver>/lib/amdgcn/bitcode
+#  LibDevicePath = D.ResourceDir;
+#  llvm::sys::path::append(LibDevicePath, CLANG_INSTALL_LIBDIR_BASENAME,
+#                          "amdgcn", "bitcode");
+# Make sure CLANG_INSTALL_LIBDIR_BASENAME is lib and not lib64
+sed -i 's@LibDevicePath, CLANG_INSTALL_LIBDIR_BASENAME,@LibDevicePath, "lib",@' clang/lib/Driver/ToolChains/AMDGPU.cpp
+
+# Change out looking for /opt/rocm-X.Y to looking for usr/lib64/rocm/rocm-X.Y
+#           File = D.getVFS().dir_begin(D.SysRoot + "/opt", EC),
+sed -i 's@D.SysRoot + "/opt", EC@D.SysRoot + "%{pkg_prefix}", EC@' clang/lib/Driver/ToolChains/AMDGPU.cpp
+#    ROCmSearchDirs.emplace_back(D.SysRoot + "/opt/" + LatestROCm,
+sed -i 's@D.SysRoot + "/opt/" + LatestROCm@D.SysRoot + "%{pkg_prefix}" + LatestROCm@' clang/lib/Driver/ToolChains/AMDGPU.cpp
+
 
 # default hash to both
 sed -i 's@gnuHash = false@gnuHash = true@' lld/ELF/Config.h

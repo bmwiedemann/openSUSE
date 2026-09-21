@@ -1,18 +1,18 @@
-From 54ba86345412add14d7e911037a42478cd206ea6 Mon Sep 17 00:00:00 2001
+From 62c0ac9c782d3476e7a019f52e4339d879473094 Mon Sep 17 00:00:00 2001
 From: Tom Rix <Tom.Rix@amd.com>
-Date: Wed, 16 Apr 2025 09:24:34 -0700
-Subject: [PATCH] comgr link with static llvm
+Date: Thu, 16 Jul 2026 07:09:30 -0700
+Subject: [PATCH] preview comgr link with static llvm
 
 ---
  amd/comgr/CMakeLists.txt | 53 +++++++++++++++++++---------------------
  1 file changed, 25 insertions(+), 28 deletions(-)
 
 diff --git a/amd/comgr/CMakeLists.txt b/amd/comgr/CMakeLists.txt
-index 21a544402c48..41f65fb8a5f7 100644
+index c05a4afb7d80..1b453943ba1d 100644
 --- a/amd/comgr/CMakeLists.txt
 +++ b/amd/comgr/CMakeLists.txt
-@@ -430,31 +430,27 @@ else()
-   set(SPIRV_STATIC_LIB "SPIRVAMDLib")
+@@ -538,31 +538,27 @@ else()
+   set(SPIRV_STATIC_LIB "")
  endif()
  
 -if (LLVM_LINK_LLVM_DYLIB)
@@ -64,7 +64,7 @@ index 21a544402c48..41f65fb8a5f7 100644
  
  target_link_options(amd_comgr
    PUBLIC
-@@ -464,9 +460,10 @@ target_link_options(amd_comgr
+@@ -572,9 +568,10 @@ target_link_options(amd_comgr
  
  target_link_libraries(amd_comgr
    PRIVATE
@@ -76,8 +76,8 @@ index 21a544402c48..41f65fb8a5f7 100644
 +  ${LLVM_LIBS}
 +)
  
- if (NOT UNIX)
-   target_link_libraries(amd_comgr
+ # hotswap transpiler link edge — must come after the curated LLVM set above so
+ # static-archive resolution pulls in the full set (incl. LLVMCodeGen's -mcpu
 -- 
-2.52.0
+2.54.0
 

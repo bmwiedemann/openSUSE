@@ -1,0 +1,49 @@
+From 1535da76981c5ee7e9d9897dd0b0a0f53ad20198 Mon Sep 17 00:00:00 2001
+From: Simon Pilgrim <llvm-dev@redking.me.uk>
+Date: Mon, 6 Oct 2025 11:26:51 +0100
+Subject: [PATCH] SemaConcept.cpp - fix MSVC "not all control paths return a
+ value" warnings. NFC. (#162060)
+
+---
+ clang/lib/Sema/SemaConcept.cpp | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/clang/lib/Sema/SemaConcept.cpp b/clang/lib/Sema/SemaConcept.cpp
+index 11d2d5c3938c..999e302c0253 100644
+--- a/clang/lib/Sema/SemaConcept.cpp
++++ b/clang/lib/Sema/SemaConcept.cpp
+@@ -1049,6 +1049,7 @@ ExprResult ConstraintSatisfactionChecker::Evaluate(
+   case NormalizedConstraint::ConstraintKind::Compound:
+     return Evaluate(static_cast<const CompoundConstraint &>(Constraint), MLTAL);
+   }
++  llvm_unreachable("Unknown ConstraintKind enum");
+ }
+ 
+ static bool CheckConstraintSatisfaction(
+@@ -2141,6 +2142,7 @@ bool SubstituteParameterMappings::substitute(NormalizedConstraint &N) {
+     return substitute(Compound.getRHS());
+   }
+   }
++  llvm_unreachable("Unknown ConstraintKind enum");
+ }
+ 
+ } // namespace
+@@ -2561,7 +2563,6 @@ FormulaType SubsumptionChecker::Normalize(const NormalizedConstraint &NC) {
+   };
+ 
+   switch (NC.getKind()) {
+-
+   case NormalizedConstraint::ConstraintKind::Atomic:
+     return {{find(&static_cast<const AtomicConstraint &>(NC))}};
+ 
+@@ -2601,6 +2602,7 @@ FormulaType SubsumptionChecker::Normalize(const NormalizedConstraint &NC) {
+     return Res;
+   }
+   }
++  llvm_unreachable("Unknown ConstraintKind enum");
+ }
+ 
+ void SubsumptionChecker::AddUniqueClauseToFormula(Formula &F, Clause C) {
+-- 
+2.52.0
+

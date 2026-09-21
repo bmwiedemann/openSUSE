@@ -1,0 +1,26 @@
+From 82eaa017263911119f0f0f4d77160a5b3c2e7dfb Mon Sep 17 00:00:00 2001
+From: trix <trix@localhost.localdomain>
+Date: Fri, 19 Sep 2025 17:34:31 -0700
+Subject: [PATCH] rocm-compilersupport simplify use runtime wrapper check
+
+---
+ clang/lib/Driver/ToolChains/AMDGPU.cpp | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
+
+diff --git a/clang/lib/Driver/ToolChains/AMDGPU.cpp b/clang/lib/Driver/ToolChains/AMDGPU.cpp
+index 4ba91edfdfd9..0929960ada2f 100644
+--- a/clang/lib/Driver/ToolChains/AMDGPU.cpp
++++ b/clang/lib/Driver/ToolChains/AMDGPU.cpp
+@@ -525,8 +525,7 @@ void RocmInstallationDetector::print(raw_ostream &OS) const {
+ 
+ void RocmInstallationDetector::AddHIPIncludeArgs(const ArgList &DriverArgs,
+                                                  ArgStringList &CC1Args) const {
+-  bool UsesRuntimeWrapper = VersionMajorMinor > llvm::VersionTuple(3, 5) &&
+-                            !DriverArgs.hasArg(options::OPT_nohipwrapperinc);
++  bool UsesRuntimeWrapper = !DriverArgs.hasArg(options::OPT_nohipwrapperinc);
+   bool HasHipStdPar = DriverArgs.hasArg(options::OPT_hipstdpar);
+ 
+   if (!DriverArgs.hasArg(options::OPT_nobuiltininc)) {
+-- 
+2.52.0
+

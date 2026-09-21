@@ -7,4 +7,41 @@
     <comment>Various AMD ROCm LLVM related services</comment>
     <requestid>1301081</requestid>
   </revision>
+  <revision rev="2" vrev="13">
+    <srcmd5>f5f8805b45e31e4eadd315e189c2a128</srcmd5>
+    <version>22</version>
+    <time>1789993758</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+- Add preview 7.14 patch: 0001-clang-23-link-libamdhip64.patch
+- Add preview 7.14 patch: 0001-preview-comgr-link-with-static-llvm.patch
+
+- Check version of rocminfo is recent enough
+
+- Add conflicts for rocm-compilersupport-macros
+
+- Merge rocm-compilersupport7.2 changes back
+
+- use suse ldconfig_scriptlets
+- move clang-tidy include dir to filesystem package
+- add static provides for clang runtime
+- Break down amd/ licenses
+- Obsolete libcxx
+- Install license files in more packages
+
+- Reduce build diskspace pressure
+
+- Update to 7.2.1
+
+- Change define to global build dirs
+- Fix dangling symlinks
+- Fix whitespace
+- Fix py3 shebangs
+- Fix dir ownships
+
+- Move building libc++ to --with libcxx option
+- llvm filesystem requires rocm filesystem
+- suse use ldconfig</comment>
+    <requestid>1378486</requestid>
+  </revision>
 </revisionlist>

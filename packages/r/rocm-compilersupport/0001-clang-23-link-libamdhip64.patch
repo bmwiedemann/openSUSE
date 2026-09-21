@@ -1,0 +1,36 @@
+From 7e1604b19501052c98ac64004b88c27a24c70433 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 16 Jul 2026 07:14:44 -0700
+Subject: [PATCH] clang 23 link libamdhip64
+
+---
+ clang/lib/Driver/ToolChains/Linux.cpp | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
+
+diff --git a/clang/lib/Driver/ToolChains/Linux.cpp b/clang/lib/Driver/ToolChains/Linux.cpp
+index 80b72abda812..9d5686ec9f64 100644
+--- a/clang/lib/Driver/ToolChains/Linux.cpp
++++ b/clang/lib/Driver/ToolChains/Linux.cpp
+@@ -1113,7 +1113,7 @@ void Linux::addOffloadRTLibs(unsigned ActiveKinds, const ArgList &Args,
+ 
+   llvm::SmallVector<std::pair<StringRef, StringRef>> Libraries;
+   if (ActiveKinds & Action::OFK_HIP)
+-    Libraries.emplace_back(RocmInstallation->getLibPath(), "libamdhip64.so");
++    CmdArgs.push_back("-lamdhip64");
+   else if (ActiveKinds & Action::OFK_SYCL)
+     Libraries.emplace_back(SYCLInstallation->getSYCLRTLibPath(),
+                            "libLLVMSYCL.so");
+@@ -1131,10 +1131,6 @@ void Linux::addOffloadRTLibs(unsigned ActiveKinds, const ArgList &Args,
+     CmdArgs.push_back(Args.MakeArgString(p));
+   }
+ 
+-  // FIXME: The ROCm builds implicitly depends on this being present.
+-  if (ActiveKinds & Action::OFK_HIP)
+-    CmdArgs.push_back(
+-        Args.MakeArgString(StringRef("-L") + RocmInstallation->getLibPath()));
+ }
+ 
+ void Linux::AddIAMCUIncludeArgs(const ArgList &DriverArgs,
+-- 
+2.54.0
+

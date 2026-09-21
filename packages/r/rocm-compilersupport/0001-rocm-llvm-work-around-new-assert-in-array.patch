@@ -1,4 +1,4 @@
-From 77b60432f85502270252ad997bc7f1086eca422c Mon Sep 17 00:00:00 2001
+From 6e3ee79b52e9578d7e152d99ddfc79fdf2a80948 Mon Sep 17 00:00:00 2001
 From: Tom Rix <Tom.Rix@amd.com>
 Date: Tue, 11 Mar 2025 07:32:44 -0700
 Subject: [PATCH] rocm-llvm: work around new assert in array
@@ -11,10 +11,10 @@ Signed-off-by: Tom Rix <Tom.Rix@amd.com>
  create mode 100644 clang/lib/Headers/cuda_wrappers/array
 
 diff --git a/clang/lib/Headers/CMakeLists.txt b/clang/lib/Headers/CMakeLists.txt
-index 66c3e5c8f617..937adc8a3f5a 100644
+index 3cde8a024e9d..c96290da4d2c 100644
 --- a/clang/lib/Headers/CMakeLists.txt
 +++ b/clang/lib/Headers/CMakeLists.txt
-@@ -288,6 +288,7 @@ set(files
+@@ -340,6 +340,7 @@ set(files
  
  set(cuda_wrapper_files
    cuda_wrappers/algorithm
@@ -68,5 +68,5 @@ index 000000000000..41c1263d8b3b
 +
 +#endif // include guard
 -- 
-2.48.1
+2.52.0
 

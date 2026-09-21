@@ -1,4 +1,167 @@
 -------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+- Add preview 7.14 patch: 0001-clang-23-link-libamdhip64.patch
+- Add preview 7.14 patch: 0001-preview-comgr-link-with-static-llvm.patch
+
+-------------------------------------------------------------------
+Mon May 18 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Check version of rocminfo is recent enough
+
+-------------------------------------------------------------------
+Thu May  7 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add conflicts for rocm-compilersupport-macros
+
+-------------------------------------------------------------------
+Thu Apr 30 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Merge rocm-compilersupport7.2 changes back
+
+-------------------------------------------------------------------
+Fri Apr 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- use suse ldconfig_scriptlets
+- move clang-tidy include dir to filesystem package
+- add static provides for clang runtime
+- Break down amd/ licenses
+- Obsolete libcxx
+- Install license files in more packages
+
+-------------------------------------------------------------------
+Wed Mar 25 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Reduce build diskspace pressure
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Mon Mar 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change define to global build dirs
+- Fix dangling symlinks
+- Fix whitespace
+- Fix py3 shebangs
+- Fix dir ownships
+
+-------------------------------------------------------------------
+Sat Mar 14 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Move building libc++ to --with libcxx option
+- llvm filesystem requires rocm filesystem
+- suse use ldconfig
+- add static provides
+
+-------------------------------------------------------------------
+Wed Mar  4 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to --with preview
+
+-------------------------------------------------------------------
+Mon Feb 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix build on TW
+- Fix dir ownership of clang-analyzer
+  Add: 0001-SemaConcept.cpp-fix-MSVC-not-all-control-paths-retur.patch
+
+-------------------------------------------------------------------
+Thu Feb 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- hipcc requires rocminfo to find its default gpu
+
+-------------------------------------------------------------------
+Thu Feb  5 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+- Use rocm-filesystem via rocm-cmake
+- Modify: 0001-rocm-llvm-work-around-new-assert-in-array.patch
+          0001-comgr-link-with-static-llvm.patch
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jan 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve requires for static analysis
+
+-------------------------------------------------------------------
+Tue Jan  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Turn on static analysis
+
+-------------------------------------------------------------------
+Sun Dec 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Tue Dec  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Change llvm_version_suffix to .rocm
+- Remove lld-wasm
+  Remove: 0001-Replace-use-of-mktemp-with-mkstemp.patch
+          0001-Remove-err_drv_duplicate_config-check.patch
+
+-------------------------------------------------------------------
+Wed Nov 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+  Add: 0001-lld-workaround-.gnu.version-change.patch
+
+-------------------------------------------------------------------
+Thu Nov 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Mon Oct  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Adjust array workaround for RHEL 10.2
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add base llvm license
+- Force hip runtime detection
+  Add: 0001-rocm-compilersupport-force-hip-runtime-detection.patch
+       0001-rocm-compilersupport-simplify-use-runtime-wrapper-ch.patch
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.0
+- Remove --with perl
+- Remove: b0baa1d8bd68a2ce2f7c5f2b62333e410e9122a1.patch
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
 Tue Aug  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Remove bootstrap logic
@@ -78,6 +241,7 @@ Thu Apr 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
 
 - Update to 6.4.0
+  Add: b0baa1d8bd68a2ce2f7c5f2b62333e410e9122a1.patch
 
 -------------------------------------------------------------------
 Tue Apr  8 00:00:00 UTC 2025 - Dennis Gilmore <dennis@ausil.us>
@@ -88,6 +252,7 @@ Tue Apr  8 00:00:00 UTC 2025 - Dennis Gilmore <dennis@ausil.us>
 Tue Mar 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Workaround gcc 15 assert in array
+  Add: 0001-rocm-llvm-work-around-new-assert-in-array.patch
 
 -------------------------------------------------------------------
 Fri Feb 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
@@ -170,6 +335,7 @@ Sat Dec 28 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 Sun Dec 22 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 
 - Update to 6.3.1
+  Add: 0001-comgr-link-with-static-llvm.patch
 
 -------------------------------------------------------------------
 Wed Dec 18 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
