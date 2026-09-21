@@ -1,4 +1,318 @@
 -------------------------------------------------------------------
+Mon Sep 21 04:50:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.5:
+  Big update, please see the full details here:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.1.5
+  * Features
+    - feat: Adding tg-login experiment in #6759
+    - feat(azure): assign blob data role on bootstrap in Azure in
+      #6764
+    - feat: Add ability to open browser for approval in #6793
+    - feat: Adding CLI poll for login approval in #6795
+    - feat: Adding token storage in #6801
+  * Bug Fixes
+    - fix(cliconfig): isolate cloned helpers and hosts in #6782
+    - fix: Check duplicate dependency config path in #6834
+    - fix: Writing more generated files atomically in #6776
+    - fix(config): harden dependency state output fetching in #6794
+    - fix(provider-cache): Fix provider cache configuration
+      selection in #6789
+    - fix: Sanitizing some untrusted input in #6802
+    - fix: restore AWS IMDS credential fallback for container
+      environments in #6837
+    - fix(gcs): read dependency outputs from state with
+      external_account creds in #6815
+    - fix: Expand include_in_copy/exclude_from_copy globs through
+      symlinked directories in #6817
+    - fix: Fixing stack dependency unit output cty access in #6839
+    - fix: adding --source-map and --no-auto-init to terragrunt
+      exec in #6792
+    - fix(config): restore v1.1.3 base64gzip output by default in
+      #6835
+    - fix(getter): pin S3-compatible endpoint independently of URL
+      credentials in #6857
+    - fix: Fixing catalog nil logger panic in #6871
+    - fix: Fixing render --json expansion logic in #6763
+    - fix: populate run report cause for units that fail before
+      tofu/terraform runs in #6819
+    - fix: Use partial parse when possible for backend commands in
+      #6790
+    - fix(config): use backend assume_role for direct dependency
+      state reads in #6883
+    - fix: Preventing Windows flag usage panic in tests in #6877
+    - fix: Adding store repair for corrupted CAS stores in #6872
+    - fix: Fixing accessing nested stack outputs in stack
+      dependencies in #6892
+    - fix: Fixing mutable-generate tmp file leak in #6895
+    - fix(amazonsts): stop json-out-dir IAM self-assume in #6899
+  * Performance
+    - perf: Pre-compile color table with a generate script in #6780
+    - perf: Use git cat-file --batch instead of multiple git
+      cat-file calls per blob in #6838
+    - perf: Tuning FS concurrency in #6854
+    - perf: Inline git rev-parse --show-toplevel as a Go func in
+      #6867
+    - perf: Streaming buffered output in #6761
+    - perf: Using singleflight cached CAS probe in #6841
+    - perf: Using a sync.Pool for hot buffers in #6769
+    - perf: Reuse already-parsed configs when discovering
+      dependents in #6849
+    - perf: Improving worktree performance in #6864
+    - perf: Avoid tracking reading when unnecessary in #6862
+    - perf: Improve CAS store hygiene in #6843
+  * Documentation
+    - docs: Bumping Bun to v1.4 in #6762
+    - docs: Updating docs for supported flags on dag graph in #6788
+    - docs: Updating block-iteration documentation in #6844
+    - docs(changelog): note report Cause for prerun failures in
+      #6878
+    - docs: Adding sign-commits to the use of
+      peter-evans/create-pull-request for docs clean-up PRs in
+      #6891
+    - docs: Closing gaps in recent feature docs in #6893
+    - docs: Addressing feedback from #6892 in #6896
+    - docs: Fixing docs build in #6897
+  * Chores
+    - chore: Adding exec sandboxed logic to seatbelt in #6760
+    - chore: Collapse runner packages in #6765
+    - chore: Running go fix ./... on all tags in #6766
+    - chore: dependencies update in #6719
+    - chore: Validating device auth duration better in #6779
+    - chore: Moving integration tests to in-memory CLI tests in
+      #6771
+    - chore: Moving discovery tests in-memory in #6774
+    - chore: Typed stack validation errors and consistent
+      generated-path comparison in #6777
+    - chore: Adding injectable cap to speed up
+      TestUnitPathsFromStackDir_DepthCapReturnsError test in #6781
+    - chore: Modernizing with new Go 1.27 constructs in #6772
+    - chore: Fixing lints on main in #6785
+    - chore: go mod fixes in #6786
+    - chore: Deterministic dependency order for find --dependencies
+      --json in #6800
+    - chore(deps): bump google.golang.org/grpc from 1.83.0 to
+      1.83.1 in #6808
+    - chore(deps): bump the js-dependencies group across 1
+      directory with 11 updates in #6806
+    - chore(deps): bump go dependencies in #6820
+    - chore: Adding test coverage for filters with block iteration
+      in #6830
+    - chore: Improving expansion diagnostics in #6833
+    - chore: Cover object and tuple for_each in the expansion
+      engine tests in #6829
+    - chore: Enabling nolintlint in #6803
+    - chore: Adding explicit capacity hints in #6825
+    - chore: Adding full block-iteration lifecycle tests in #6846
+    - chore: Addressing review feedback from #6854 in #6865
+    - chore: Fixing cloud credentials test env semantics in #6826
+    - chore: Fixing sandbox tests in #6882
+    - chore(deps): bump astro from 7.2.7 to 7.2.8 in /docs in #6855
+    - chore(deps): bump the js-dependencies group across 1
+      directory with 8 updates in #6885
+    - chore: Clean-up partial worktrees on failure in #6884
+    - chore: Bumping go-runewidth to v0.0.30 in #6879
+    - chore: Bumping go-getter to v2.2.4 in #6881
+    - chore: Generating .terraform directory on-demand instead of
+      leaving it committed in the repo in #6887
+    - chore: Globally replacing xsync.Map with a map and mutex in
+      #6880
+    - chore: General clean-up from recent PRs in #6886
+    - chore: Revert to materializing worktrees with git checkout
+      instead of git archive in #6890
+- Update to version 1.1.4:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.1.4
+  * Features
+    - feat: Adding interactive scaffold form in #6615
+    - feat(azure): End to end Azure CICD in #6574
+    - feat: Adding bare enabled to unit and stack blocks in #6714
+    - feat: Keying stack output addresses by iteration key in #6715
+    - feat: Adding render preview for expansion in #6737
+    - feat: remote state reading for GCP and Azure in #6710
+  * Bug Fixes
+    - fix: Strip credentials before local CLI config write in #6678
+    - fix: Tightening file permissions for generated files in #6675
+    - fix: Reject oci:// sources with docker-style name suffixes
+      instead of resolving latest in #6696
+    - fix: Escape interpolation in string inputs when type is
+      verified in #6685
+    - fix: Fixing local copies when symlinks exist from provider
+      caching in #6684
+    - fix(provider-cache): fixed handling arguments in urls in
+      #6680
+    - fix(cas): strip go-getter depth query parameter before
+      invoking git in #6513
+    - fix(cas): use venvtest helper in depth query param tests in
+      #6712
+    - fix(test): fix for failing test
+      TestNewSignalsForwarderMultipleUnix in #6713
+    - fix: prevent nil pointer panic on invalid if_disabled in
+      #6718
+    - fix: Fixing --queue-construct-as resulting in empty
+      tokenization in #6720
+    - fix: Fixing render --write when no --format is supplied in
+      #6724
+    - fix: Preventing extremely small or large float exponents from
+      crashing Terragrunt in #6727
+    - fix: Handling situation when diagnostics contain nil range in
+      #6729
+    - fix: Addressing nil Range and Snippet in SourceSnippets in
+      #6731
+    - fix: Propagating flag parse errors instead of swallowing them
+      in #6732
+    - fix: Use the appropriate absolute path to unit config file,
+      not basename when checking version constraints in #6728
+    - fix(security): upgrade Go to 1.27 in #6736
+    - fix(test): pass config fixture to setupTest in #6738
+    - fix: Fixing info strict list without --all in #6725
+    - fix: Fixing deprecated TG_HCLVALIDATE_STRICT_VALIDATE env var
+      in #6730
+    - fix: Fixing hcl fmt with --stdin combined with --check and/or
+      --diff in #6726
+    - fix: autoinclude config path fixes in #6711
+    - fix: Normalize paths using ToSlash to hande old/new prefix
+      appropriately in #6744
+    - fix: Fixing tofu/terraform binary selection for run --all
+      usage in #6753
+    - fix: Updating render --write file permissions in #6756
+  * Performance
+    - perf: Refactor default --tf-path resolution in #6651
+  * Documentation
+    - docs: give each environment its own state backup path in the
+      Terralith guide in #6683
+    - docs: serve the Google tag container first-party in #6699
+    - docs: proxy CORS-less GTM tags so they load under Partytown
+      in #6704
+    - docs: Clean-up for v1.1.4 changelog in #6747
+  * Chores
+    - chore: tests coverage increase in #6668
+    - chore(deps): update aws-sdk-go-v2 in #6655
+    - chore: runner pool test coverage in #6647
+    - chore: A lot more venv plumbing in #6644
+    - chore(deps): bump @astrojs/vercel from 11.0.0 to 11.0.3 in
+      /docs in #6658
+    - chore: docs sync in #6676
+    - chore: venv plumbing for cloud SDKs in #6645
+    - chore: Plumbing venv into cloud getters in #6650
+    - chore(deps): update OpenTelemetry SDK to v1.45.0 in #6686
+    - chore: Resolve env var defined flags from venv in #6652
+    - chore: Increasing discovery boundary test coverage in #6671
+    - chore: Wire expansion into dependency parse in #6679
+    - chore: Virtualizing util.file.go functions in #6653
+    - chore: Upgrading go to 1.26.6 in #6697
+    - chore: Nesting the dependency cty map by iteration key in
+      #6689
+    - chore(deps): bump github.com/moby/go-archive from 0.2.0 to
+      0.3.0 in #6705
+    - chore: Increasing venv coverage further in #6677
+    - chore: Adding integration coverage for expanded dependencies
+      in #6693
+    - chore: Use local catalog for
+      TestCatalogWithLocalDefaultTemplate in #6700
+    - chore: Updating TestNewSignalsForwarderMultipleUnix to
+      actually check for the signal in #6701
+    - chore: Use an injectable cap in
+      TestPartialEval_DeeplyNestedExpressionReturnsTypedError in
+      #6702
+    - chore: Moving the
+      TestDiscovery_GraphConcurrentConfigAccessWithRacing in-memory
+      in #6703
+    - chore: Wiring expansion into the unit and stack parse in
+      #6694
+    - chore: Completing venv abstraction in #6698
+    - chore: addressing PR #6736 comemtns in #6741
+    - chore: Adding sandboxed unit tests in CI in #6742
+    - chore: Isolate TestDependencyOutputSkipDependencyOutputsFlag
+      fixtures in #6740
+    - chore: Preventing flakes from
+      TestNewSignalsForwarderMultipleUnix in #6750
+    - chore: Adding FS sandboxed unit tests in CI in #6754
+    - chore: Running go fix ./... in #6758
+- Update to version 1.1.3:
+  https://github.com/gruntwork-io/terragrunt/releases/tag/v1.1.3
+  * Features
+    - feat: Adding graph boundary via () syntax in #6365
+    - feat: Adding --discovery-boundary flag in #6355
+    - feat(getter): OpenTofu CLI-config credentials for oci://
+      sources in #6531
+    - feat: Adding browse in #6219
+    - feat: Adding mutable attribute to the generate block in #6563
+    - feat: Adding md format for catalog in #6608
+    - feat: Add --skip-dependency-outputs flag to skip dependency
+      output resolution in #6422
+  * Bug Fixes
+    - fix(providercache): log -lockfile=readonly skip at debug
+      level in #6577
+    - fix: Fixing handling of EOF in generate blocks in #6592
+    - fix: Fixing the --config= form of flags used in the tflint
+      hook in #6591
+    - fix: Fixing fast-copy ancestor directory permissions in #6593
+    - fix: Addressing providers lock -platform usage with space
+      delimited values in #6597
+    - fix: Fixing bug with negation | positive expression in the
+      same query. in #6598
+    - fix: Fixing provider cache server archive dir race in #6620
+    - fix: Fixing scaffold on units and stacks in #6607
+    - fix: Addressing feedback from #6565 and #6605 in #6628
+    - fix: autoinclude values override for inputs in #6626
+    - fix: Fixing md format catalog escaping in #6638
+    - fix: Plumbing through evalCtx for discovery boundary in #6632
+    - fix: Fixing stack dependency mock outputs in #6530
+    - fix: Fixing issue where dependency mock outputs aren't used
+      when bootstrapping hasn't run yet. in #6534
+  * Performance
+    - perf: Reducing allocations in tree parse in #6648
+  * Documentation
+    - docs: Add call out for terragrunt scale in quick start in
+      #6583
+    - docs: document oci module sources, authentication, and
+      caching in #6636
+    - docs: Cleaning up changelog for v1.1.3 in #6669
+    - docs: Cleaning up experiment docs in #6627
+    - docs: address review feedback on the oci and autoinclude docs
+      in #6643
+  * Chores
+    - chore: Pin exact provider versions for terralith to
+      terragrunt guide in #6578
+    - chore: Using vfs handle for ParseFromFile in #6561
+    - chore: Walk in discovery with vfs in #6564
+    - chore: Registring catalog-format experiment in #6582
+    - chore(deps): update AWS, Azure, GCP SDKs in #6590
+    - chore: Continuing clean-up of go test ./... on a fresh clone
+      of the repo in #6553
+    - chore: Fixing usage of deprecated aws sdk in #6600
+    - chore: Cleaning up profile tests per feedback in #6553 in
+      #6599
+    - chore: Clean-up in #6584
+    - chore: Addressing feedback from #6365 and #6355 in #6603
+    - chore: Register the block-iteration experiment in #6562
+    - chore: address review feedback from #6531 in #6609
+    - chore: Addressing flake in
+      TestCatalogJSONLFormatCleansUpOnEarlyExit in #6613
+    - chore: updated
+      TestDiscovery_GraphConcurrentConfigAccessWithRacing to use
+      VFS in #6622
+    - chore: Adding expansion detection and internal expansion
+      logic in #6565
+    - chore: Adding expansion blocks to the configs that accept
+      expansion in #6605
+    - chore: Threading venv through getters and hcl fmt in #6621
+    - chore: Addressing feedback from #6621 in #6633
+    - chore: Fixing experiment tag in sidebar in #6635
+    - chore: Updating mem exec so that it fails closed in #6634
+    - chore: Gate real hg usage test behind the exec build flag in
+      #6637
+    - chore: Replacing aws provider with null provider in
+      init-cache fixture in #6639
+    - chore: Cleaning up NewParsingContext constructor by passing
+      in venv as a param in #6630
+    - chore: Addressing lint finding in #6649
+    - chore: Refactoring markdown deps into internal/md in #6640
+    - chore: Adding unit tests for internal packages in #6660
+    - chore: Bumping Go to 1.26.5 (#6664) in #6666
+    - chore: Dropping stale tree parse test case in #6672
+
+-------------------------------------------------------------------
 Thu Jul 30 06:06:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.1.2:

@@ -1,7 +1,7 @@
 .ONESHELL:
 
 NAME = terragrunt
-GOLANG_EXECUTABLE_VERSION = 1.26
+GOLANG_EXECUTABLE_VERSION = 1.27
 
 mkfile_path := $(abspath $(lastword $(MAKEFILE_LIST)))
 mkfile_dir := $(dir $(mkfile_path))

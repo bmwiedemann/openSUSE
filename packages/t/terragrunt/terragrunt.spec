@@ -17,7 +17,7 @@
 
 
 Name:           terragrunt
-Version:        1.1.2
+Version:        1.1.5
 Release:        0
 Summary:        Thin wrapper for Terraform for working with multiple Terraform modules
 License:        MIT
@@ -27,10 +27,8 @@ Source1:        vendor.tar.gz
 Source2:        Makefile
 Source3:        PACKAGING_README.md
 BuildRequires:  bash-completion
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
-# hack to fix errors on 16.0, which has 1.26rc3... :-(
-BuildRequires:  go1.26 >= 1.26.0
-#BuildRequires:  golang(API) >= 1.26
 
 %description
 Terragrunt is a thin wrapper for Terraform that provides extra tools for
