@@ -18,7 +18,7 @@
 
 %bcond_without doc
 Name:           form
-Version:        5.0.0
+Version:        5.0.2
 Release:        0
 Summary:        A Symbolic Manipulation System
 License:        GPL-3.0-or-later

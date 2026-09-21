@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:29:01 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.0.2:
+  * Add: Print a warning if script setup commands are ignored
+    due to being provided out of order (gh#form-dev/form#879).
+  * Changes:
+    - Tamed the scaling of the threadbuckets with MaxTermSize,
+      greatly reducing FORM's memory allocation size for larger
+      values (gh#form-dev/form#829).
+    - On SortVerbose; also prints the maximal term size
+      encountered during processing (gh#form-dev/form#875).
+  * Performance improvements:
+    - Added an extra level to TFORM's parallel merge,
+      parallelising term comparisons and writing expressions to
+      disk.
+    - Worth 0-7% depending on code and system characteristics
+      (gh#form-dev/form#903).
+    - Improved performance of CopySpectator in TFORM.
+    - Worth 0-100% depending on code and system characteristics
+      (gh#form-dev/form#905).
+  * Fixes:
+    - Fixed problems when removing non-symbol content from input
+      before creating extrasymbols and calling polynomial routines
+      (gh#form-dev/form#814).
+    - SEVERE Fixed a bug in the FLINT interface, which lost
+      overall factors of univariate polynomials in modules which
+      change FORM's sort ordering (On highfirst;) and also call
+      FactArg (gh#form-dev/form#860).
+    - Fixed erroneous truncation of the Hide file when expressions
+      are read from it in InParallel; mode (gh#form-dev/form#865).
+    - Fixed misaligned stats print when expression names are very
+      long (gh#form-dev/form#872).
+    - Fixed crashes and erroneous output when making replacements
+      in nested function arguments (gh#form-dev/form#874).
+    - Fixed units error in On HumanStats; (#896)
+    - Fixed memory error when using Transform argument wildcards
+      (gh#form-dev/form#894).
+    - Fixed incorrect termination when using GRCC's maximal number
+      of couplings, and increased the default number of couplings
+      and legs. (#901]
+    - Properly clean up expressions which are redefined multiple
+      times in a single module (gh#form-dev/form#901).
+    - Fixed crashes due to products of vector wildcards
+      (gh#form-dev/form#901).
+    - Use of InExpression now works correctly for expressions
+      which were redefined in the current module
+      (gh#form-dev/form#901).
+    - Fixed an issue which caused large amounts of unnecessary
+      file overwriting when using TableBase AddTo
+      (gh#form-dev/form#907).
+    - Fixed an issue which caused replace_ to be applied to
+      multiple or nested denominator functions too early and for
+      denominators containing only numbers to not be properly
+      normalized (gh#form-dev/form#912).
+- Changes from version 5.0.1:
+  * See
+    https://github.com/form-dev/form/wiki/Release-Notes-FORM-5.0#v5.0.1
+- Update form-dont-use-DATE.patch for version 5.0.2.
+
+-------------------------------------------------------------------
 Wed Feb 18 11:01:45 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.0.0:
