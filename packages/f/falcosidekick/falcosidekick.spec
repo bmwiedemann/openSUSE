@@ -17,7 +17,7 @@
 
 
 Name:           falcosidekick
-Version:        2.34.1
+Version:        2.35.0
 Release:        0
 Summary:        A simple daemon for connecting Falco to your ecosystem
 License:        Apache-2.0

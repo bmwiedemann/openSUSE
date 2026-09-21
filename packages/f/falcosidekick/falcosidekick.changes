@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:12:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.35.0:
+  * Enhancement
+    - Add a TLS field and allow to set the CA cert for the OTLP
+      Traces/OTLP Metrics/OTLP Logs outputs (PR#1389)
+    - Add the MessageThreadID and Host settings for the Telegram
+      output (PR#1393)
+    - Upgrade the Azure Event Hubs SDK to v2 (PR#1399)
+    - Add the documentation for the OTLP outputs (PR#1414)
+  * Fix
+    - Fix a race condition when multiple outputs are configured
+      (PR#1390)
+    - Handle the CheckCert setting correctly for the OTLP outputs
+      (PR#1389)
+    - Emit an RFC 5322-compliant Date header for the SMTP output
+      (PR#1382)
+    - Prevent a panic with non-string output_fields in the
+      Dynatrace output (PR#1387)
+    - Handle numeric output_fields without a string assertion
+      (PR#1413)
+    - Send a checksum with the PutObject calls for the AWS S3
+      output (PR#1415)
+    - Use Unix epoch seconds for the timestamps of the
+      PolicyReports (PR#1425)
+  * Dependencies
+    - build(deps): bump cloud.google.com/go/pubsub
+    - build(deps): bump github.com/aws/aws-sdk-go-v2/service/sqs
+    - build(deps): bump cloud.google.com/go/pubsub from 1.50.1 to
+      1.51.0
+    - build(deps): bump
+      github.com/aws/aws-sdk-go-v2/service/cloudwatchlogs
+
+-------------------------------------------------------------------
 Fri Jun 05 05:43:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.34.1:

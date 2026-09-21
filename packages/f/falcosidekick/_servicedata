@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/falcosecurity/falcosidekick</param>
-              <param name="changesrevision">03364bc26b2262439a5ddeb57e1e354742727e11</param></service></servicedata>
+              <param name="changesrevision">03364bc26b2262439a5ddeb57e1e354742727e11</param></service><service name="tar_scm">
+                <param name="url">https://github.com/falcosecurity/falcosidekick.git</param>
+              <param name="changesrevision">09883e3f55dade3c2ab2a471736ea5519aeac418</param></service></servicedata>
