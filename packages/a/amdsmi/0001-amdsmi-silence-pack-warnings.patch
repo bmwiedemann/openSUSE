@@ -1,0 +1,29 @@
+From 18316b10f1008652539722f631a12401edcfbd91 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Wed, 17 Jun 2026 12:25:53 -0700
+Subject: [PATCH] amdsmi silence pack warnings
+
+---
+ py-interface/amdsmi_wrapper.py | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+diff --git a/py-interface/amdsmi_wrapper.py b/py-interface/amdsmi_wrapper.py
+index 6f1524862694..807192a717f7 100644
+--- a/py-interface/amdsmi_wrapper.py
++++ b/py-interface/amdsmi_wrapper.py
+@@ -27,6 +27,12 @@ import os
+ #
+ import ctypes
+ 
++# silence warning for _pack_ needing _layout_ set to 'ms'
++import warnings
++warnings.filterwarnings(
++    "ignore",
++    category=DeprecationWarning,
++message=".*memory layout compatible with MSVC.*"   )
+ 
+ c_int128 = ctypes.c_ubyte*16
+ c_uint128 = c_int128
+-- 
+2.53.0
+

@@ -1,0 +1,222 @@
+-------------------------------------------------------------------
+Wed Jul 22 00:00:00 UTC 2026 - Python Maint <python-maint@redhat.com>
+
+- Rebuilt for Python 3.15.0b4 ABI change
+
+-------------------------------------------------------------------
+Wed Jul 15 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jul  9 00:00:00 UTC 2026 - Pavel Simovec <psimovec@redhat.com>
+
+- Fix license typo: NSCA -> NCSA
+
+-------------------------------------------------------------------
+Wed Jun 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Silence _pack_ warnings
+
+-------------------------------------------------------------------
+Wed Jun  3 00:00:00 UTC 2026 - Python Maint <python-maint@redhat.com>
+
+- Rebuilt for Python 3.15
+
+-------------------------------------------------------------------
+Fri Apr 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package names
+
+-------------------------------------------------------------------
+Tue Apr 14 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with static
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Sat Mar 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Merge back amdsmi7.2
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+- Change URL to rocm-systems
+
+-------------------------------------------------------------------
+Thu Feb 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jan  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix Tumbleweed
+  Add: 0001-Fix-compilation-with-libdrm-2.4.130.patch
+  Removed: 0001-Include-cstdint-for-gcc-15.patch
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Wed Nov 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SUSE 15.6 build, remove unneeded include
+
+-------------------------------------------------------------------
+Mon Nov 10 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- update and re-enable gcc15 include patch for upstream 7.1.0 so test subpackage builds
+- removed extra dir in test subpackage
+  Modified: 0003-test-client-includes-for-gcc-15.patch
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Fri Sep 19 00:00:00 UTC 2025 - Python Maint <python-maint@redhat.com>
+
+- Rebuilt for Python 3.14.0rc3 bytecode
+
+-------------------------------------------------------------------
+Tue Sep 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.0
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Fri Aug 15 00:00:00 UTC 2025 - Python Maint <python-maint@redhat.com>
+
+- Rebuilt for Python 3.14.0rc2 bytecode
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Build -test on SUSE
+
+-------------------------------------------------------------------
+Wed Jul 23 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Wed Jun 18 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- update so that test subpackage builds cleanly in mock and runs outside of build environment
+  Add: 0002-option-use-system-gtest.patch
+       0003-test-client-includes-for-gcc-15.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 00:00:00 UTC 2025 - Python Maint <python-maint@redhat.com>
+
+- Rebuilt for Python 3.14
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Tue Mar 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Adjust install of python for fedora
+
+-------------------------------------------------------------------
+Thu Feb 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Install amd_smi-config.cmake
+
+-------------------------------------------------------------------
+Wed Feb 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.3
+
+-------------------------------------------------------------------
+Wed Jan 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup for suse
+
+-------------------------------------------------------------------
+Thu Jan 16 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan  8 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Include cstdint for gcc 15
+
+-------------------------------------------------------------------
+Tue Dec 31 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Require pyyaml
+
+-------------------------------------------------------------------
+Sun Dec 22 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Sat Dec  7 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov  3 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
