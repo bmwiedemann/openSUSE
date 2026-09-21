@@ -1,7 +1,7 @@
 #
 # spec file for package python-hdf5plugin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %bcond_without systemlibs
 Name:           python-hdf5plugin
-Version:        6.0.0
+Version:        7.1.0
 Release:        0
 Summary:        Compression filters for h5py
 License:        BSD-2-Clause AND MIT AND BSD-3-Clause AND CC-BY-3.0 AND Zlib
 URL:            https://github.com/silx-kit/hdf5plugin
 Source:         https://files.pythonhosted.org/packages/source/h/hdf5plugin/hdf5plugin-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-bzip2-name.patch https://github.com/silx-kit/hdf5plugin/pull/367
-Patch0:         fix-bzip2-name.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module blosc2}
 BuildRequires:  %{python_module h5py >= 3.0.0}
@@ -111,7 +109,7 @@ for l in \
   lib/SZ3/copyright-and-BSD-license.txt \
   lib/H5Z-ZFP/LICENSE \
   lib/zfp/LICENSE \
-  lib/HDF5Plugin-Zstandard/LICENSE
+  lib/zstd/LICENSE
 do
   d=$(dirname $l)
   mkdir -p pluginlicenses/$d
