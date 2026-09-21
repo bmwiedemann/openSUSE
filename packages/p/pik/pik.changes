@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:28:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1:
+  * Add support for docker container processes
+- Version 1.0.0:
+  * Breaking: embed default config and merge it with the
+    user config (partial override; inspect with pik -P)
+  * Add print-config command
+  * Add contains match type
+  * Add TUI notifications
+  * Shift+Tab selects the previous item
+- Version 0.29.0:
+  * Add force-kill process action
+- Version 0.28.1:
+  * Cap FPS at 60 to lower CPU usage
+- Restrict to ExclusiveArch %{rust_tier1_arches}
+- Re-derive License to MIT AND MPL-2.0 (option-ext)
+
+-------------------------------------------------------------------
 Sun Jan 18 08:13:06 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Update to version 0.28.0:

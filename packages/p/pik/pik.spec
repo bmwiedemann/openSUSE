@@ -1,7 +1,7 @@
 #
 # spec file for package pik
 #
-# Copyright (c) 2026 mantarimay
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 
 %bcond_without test
 Name:           pik
-Version:        0.28.0
+Version:        1.0.1
 Release:        0
 Summary:        Process Interactive Kill
-License:        MIT
+# Legal-Review-Notice: MPL-2.0 comes from option-ext (via dirs-sys);
+# vendor.tar.zst in the src.rpm satisfies MPL-2.0 §3.2.
+License:        MIT AND MPL-2.0
 URL:            https://github.com/jacek-kurlit/pik
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 Process Interactive Kill is a command line tool that helps to find and kill

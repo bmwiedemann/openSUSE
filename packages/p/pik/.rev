@@ -111,4 +111,27 @@
     <comment></comment>
     <requestid>1327906</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>422b09512613757f09d3e086671c2ba1</srcmd5>
+    <version>1.0.1</version>
+    <time>1789986144</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 1.0.1:
+  * Add support for docker container processes
+- Version 1.0.0:
+  * Breaking: embed default config and merge it with the
+    user config (partial override; inspect with pik -P)
+  * Add print-config command
+  * Add contains match type
+  * Add TUI notifications
+  * Shift+Tab selects the previous item
+- Version 0.29.0:
+  * Add force-kill process action
+- Version 0.28.1:
+  * Cap FPS at 60 to lower CPU usage
+- Restrict to ExclusiveArch %{rust_tier1_arches}
+- Re-derive License to MIT AND MPL-2.0 (option-ext)</comment>
+    <requestid>1379362</requestid>
+  </revision>
 </revisionlist>
