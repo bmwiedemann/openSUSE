@@ -196,4 +196,20 @@ No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
 * Reject NaN in numeric range validators</comment>
     <requestid>1376809</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b864f751a074e968d1099b6907df4c6f</srcmd5>
+    <version>4.25.3</version>
+    <time>1789986273</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.25.3:
+  * Fix nested JSON object parsing by routing JSON object tokens
+    through the Argument layer
+  * Recognise a JSON object token for types whose fields consume
+    all tokens
+  * Explain unhashable element types when converting to set or
+    frozenset
+
+</comment>
+    <requestid>1379421</requestid>
+  </revision>
 </revisionlist>

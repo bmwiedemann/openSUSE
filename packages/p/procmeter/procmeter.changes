@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Aug 21 10:25:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.6+svn420:
+  + Applied patch to replace int with time_t (from openSUSE).
+  + Remove very old, surely obsolete, warning message.
+  + Fix a race condition in parallel builds.
+  + Change strncpy and sprintf to snprintf to avoid GCC warnings
+    and possible bugs/overflows.
+- Drop procmeter-avoid-build-race.patch: merged upstream.
+
+-------------------------------------------------------------------
 Thu Feb  8 15:53:11 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Prepare for RPM 4.20: use autosetup.
@@ -325,7 +336,6 @@ Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
 
 ----------------------------------------------------------------------------
 Thu Jan 16 09:42:29 MET 1997 - maddin@suse.de
-----------------------------------------------------------------------------
 
 - first S.u.S.E. version 2.2
 - changed paths

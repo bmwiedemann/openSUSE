@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Sep 20 18:59:01 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.12.0:
+  * chore: release v17.12.0 (#2332)
+  * refactor: make setting cwd to tempdir more robust (#2361)
+  * refactor: use temporary directory for all steps (#2358)
+  * chore(deps): update release-plz/action action to v0.5.139 (#2350)
+  * feat(uv): add `cache_force` option to force cache pruning (#2359)
+  * fix(mise): fix errors from mise self-update confirmation (#2357)
+  * fix(microsoft_office): remove unnecessary 10 minute wait (#2360)
+  * feat(step): add Zed (#2353)
+  * docs: fix typos and grammatical errors across docs, workflows, and code (#2348)
+  * feat(skills): support `yarn dlx` and adjust configuration options (#2346)
+  * chore(deps): update release-plz/action action to v0.5.137 (#2317)
+  * chore(deps): update github/codeql-action action to v4.38.0 (#2314)
+  * chore(deps): update dtolnay/rust-toolchain digest to 02cb101 (#2323)
+  * chore(deps): lock file maintenance (#2336)
+  * chore(deps): temporarily pin rust-i18n-support to avoid MSRV bump (#2344)
+  * refactor: use `Itertools::join` and friends wherever possible (#2342)
+  * refactor: replace unnecessary `OnceLock` with `LazyLock` (#2341)
+  * refactor: utilize `which` in `require` (#2340)
+  * fix: crash when `dnf --version` fails
+  * refactor: change return type of `which` to `Result<Option<PathBuf>>`
+  * refactor(require_one): use `which` instead of `require`
+  * refactor: use `which_one` in `get_arch_package_manager` (#2335)
+  * refactor: add `which_one` (#2334)
+  * refactor: add ExecutorOutput::unwrap_wet (#2331)
+
+-------------------------------------------------------------------
 Sun Sep 13 08:19:06 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.11.0:

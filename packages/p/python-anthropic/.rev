@@ -234,4 +234,25 @@ build green, source_validator clean.</comment>
   * require anyio &gt;= 4.1.0</comment>
     <requestid>1378286</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8e275cbe9817f51f029c7b7e9e689183</srcmd5>
+    <version>1.7.0</version>
+    <time>1789986271</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.7.0:
+  * Add group with display_name to rate limits and deprecate
+    group_type
+  * Add compact_before_next_turn() to the tool runner, and tidy
+    its state and failure handling
+  * Raise an API error for Bedrock eventstream exception and
+    error frames
+  * Accept &quot;X | Y&quot; union types when parsing responses, and stop
+    raising TypeError for such fields carrying unknown data
+  * Join multiple anthropic-beta values with a comma and no space
+- Require pydantic &gt;= 1.10.0, following upstream
+
+-------------------------------------------------------------------
+</comment>
+    <requestid>1379419</requestid>
+  </revision>
 </revisionlist>

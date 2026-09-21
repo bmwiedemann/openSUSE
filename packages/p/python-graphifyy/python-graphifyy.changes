@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:49:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.9.65 (includes 0.9.64):
+  * Fix incremental update refusing every change: the rebuild
+    purged AST nodes it had just reported as kept, deadlocking
+    the shrink guard
+  * Fix graph.html crashing vis-network with a stack overflow on
+    large graphs
+  * Show special characters in node and edge tooltips literally
+    instead of raw HTML entities
+  * Go interface and Swift protocol method requirements attach to
+    the interface or protocol node, so calls resolve to them
+  * Fix Java enum body members being attached to the file node
+    instead of the enum, so intra-enum calls resolve
+  * Scope JavaScript and TypeScript let/const to their own block,
+    so a block-local binding no longer suppresses a genuine
+    indirect_call edge elsewhere in the function
+  * Resolve Kotlin receiver methods, C++ scope-qualified static
+    calls and Rust self.method() across files, and npm subpath
+    imports to the same node as the bare package import
+  * Index JavaScript inside an inline <script> block of a PHP
+    file as JS under the PHP file node
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- CVE-2026-54058: upstream floors Pillow at 12.3.0 in its svg and
+  all extras, neither of which is built here. Pillow still arrives
+  as a hard dependency through networkx and matplotlib, and
+  Factory ships 12.3.0, at the fix floor
+
+-------------------------------------------------------------------
 Thu Sep 17 16:25:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.9.63:

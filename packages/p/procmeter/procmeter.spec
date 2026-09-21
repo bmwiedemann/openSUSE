@@ -17,7 +17,7 @@
 
 
 Name:           procmeter
-Version:        3.6+svn415
+Version:        3.6+svn420
 Release:        0
 Summary:        Utility to display current system parameters
 License:        GPL-2.0-or-later
@@ -27,8 +27,6 @@ Source:         procmeter3-%{version}.tar.xz
 Source1:        procmeter3.desktop
 # PATCH-FIX-UPSTREAM procmeter3-loff_t.patch
 Patch0:         procmeter3-loff_t.patch
-# PATCH-FIX-UPSTREAM boo#1102408
-Patch1:         procmeter-avoid-build-race.patch
 BuildRequires:  libsensors4-devel
 BuildRequires:  update-desktop-files
 Provides:       procmtr

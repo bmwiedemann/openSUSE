@@ -1253,4 +1253,41 @@
   works properly.</comment>
     <requestid>1378261</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>95c6c8208a15cba9413b8d9ac4f34a8c</srcmd5>
+    <version>6.3.4</version>
+    <time>1789986266</time>
+    <user>anag_factory</user>
+    <comment>- VERSION 06.03.04 - 2026-09-19
+- NEW FEATURE: remind: Any time the Remind parser accepts a quoted
+  string, it will also accept multiple quoted strings with &quot;+&quot; signs
+  between them, and concatenate the result.  This mirrors the
+  expression parser and can be used to split long INFO strings.  For
+  example:
+    REM INFO &quot;Location: 49 Adams Avenue, &quot; + \
+             &quot;Toronto, ON M0K 3S2 &quot; + \
+             &quot;Canada&quot;  MSG Event
+  Is equivalent to:
+    REM INFO &quot;Location: 49 Adams Avenue, Toronto, ON M0K 3S2 Canada&quot;  MSG Event
+- CHANGE: rem2html: If the system locale is a UTF-8 locale, then the
+  --utf8 flag is assumed automatically.
+- CHANGE: Remind will not build on Omarchy.
+- BUG FIX: remind: The code that reported errors in expressions with
+  the &quot;^-- here&quot; marker could prematurely end the expression printout;
+  this has been fixed.
+- BUG FIX: remind: Remind caches the definition of a function and does
+  not re-parse it if the FSET is at the same line and file as the
+  previous definition.  This could break in certain rare edge-cases
+  and has been fixed.  Here's an example of such an edge-case:
+      IF (today() - '1990-01-01') % 2
+          SET args &quot;x, y&quot;
+      ELSE
+          SET args &quot;y, x&quot;
+      ENDIF
+      FSET silly([args]) x * 10 + y
+      REM MSG [silly(3, 4)]
+  When producing a calendar, older versions of Remind would simply use
+  whichever definition was created the first time around, whereas this</comment>
+    <requestid>1379405</requestid>
+  </revision>
 </revisionlist>

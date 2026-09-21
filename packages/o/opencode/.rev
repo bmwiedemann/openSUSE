@@ -301,4 +301,37 @@ Built and %check-tested locally on aarch64.</comment>
 INTERDEPENDENT REQUESTS - please stage together (will not build until these land): sr#1378101 (tree-sitter), sr#1378132 (tree-sitter-agda), sr#1378102 (tree-sitter-bash), sr#1378103 (tree-sitter-c), sr#1378104 (tree-sitter-clojure), sr#1378105 (tree-sitter-cpp), sr#1378106 (tree-sitter-c-sharp), sr#1378107 (tree-sitter-css), sr#1378133 (tree-sitter-diff), sr#1378108 (tree-sitter-elixir), sr#1378134 (tree-sitter-fsharp), sr#1378109 (tree-sitter-go), sr#1378110 (tree-sitter-haskell), sr#1378111 (tree-sitter-html), sr#1378112 (tree-sitter-java), sr#1378113 (tree-sitter-javascript), sr#1378114 (tree-sitter-json), sr#1378115 (tree-sitter-julia), sr#1378116 (tree-sitter-lua), sr#1378135 (tree-sitter-make), sr#1378117 (tree-sitter-markdown), sr#1378136 (tree-sitter-nix), sr#1378137 (tree-sitter-ocaml), sr#1378118 (tree-sitter-php), sr#1378119 (tree-sitter-powershell), sr#1378120 (tree-sitter-python), sr#1378138 (tree-sitter-r), sr#1378121 (tree-sitter-ruby), sr#1378122 (tree-sitter-rust), sr#1378123 (tree-sitter-scala), sr#1378124 (tree-sitter-swift), sr#1378125 (tree-sitter-toml), sr#1378126 (tree-sitter-typescript), sr#1378127 (tree-sitter-vim), sr#1378128 (tree-sitter-vue), sr#1378129 (tree-sitter-xml), sr#1378130 (tree-sitter-yaml), sr#1378131 (tree-sitter-zig).</comment>
     <requestid>1378139</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e9289c27d5cd5b4d859ab8936542c6ce</srcmd5>
+    <version>1.18.31</version>
+    <time>1789986241</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.31:
+  * Restore the ACP session model, effort, mode and reasoning chunk
+    boundaries when loading, resuming or forking a session
+  * Show remote config authentication errors during startup and
+    exit with a failure status
+  * Request summarized adaptive thinking for GitHub Copilot models
+- Retrace the vendor keep list (510 to 511 store entries): the
+  @ai-sdk/gateway bump to 3.0.191 pulls in @ai-sdk/provider 3.0.16
+  and @ai-sdk/provider-utils 4.0.51, and ai-gateway-provider 3.2.0
+  and gitlab-ai-provider 6.15.0 each collapse from two peer
+  resolutions to one. Three packages added, none removed, all
+  Apache-2.0; the SPDX set is unchanged and still has no copyleft
+- Refresh the models.dev catalogue snapshot: it is a live fetch,
+  so Source2 moves on every bump independently of the tag
+
+The licence record in the spec and README.SUSE-maint is rederived for this
+release from the declared license field of all 510 packages in the vendor
+tarball. No copyleft; the SPDX expression is unchanged.
+
+Note on devel:tools: opencode reads &quot;unresolvable&quot; there for aarch64 only
+because the published Tumbleweed ARM snapshot has not yet carried the noarch
+tree-sitter-*-wasm/-queries subpackages. Factory builds this package on
+standard/x86_64 only and that is green; the aarch64 build was verified
+locally against those subpackages, and the resulting RPM was exercised in a
+container (runs a prompt end to end).
+</comment>
+    <requestid>1379398</requestid>
+  </revision>
 </revisionlist>

@@ -49,4 +49,14 @@
   * Support Python 3.14's grammar changes.</comment>
     <requestid>1345107</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>db52bd68f7909f490c804fc9f8722033</srcmd5>
+    <version>0.3.0</version>
+    <time>1789986238</time>
+    <user>anag_factory</user>
+    <comment>- Refresh support-python-313.patch
+- Replace patch support-python-314.patch with support-python-315.patch:
+  * Support Python 3.14 and 3.15's grammar changes.</comment>
+    <requestid>1379388</requestid>
+  </revision>
 </revisionlist>

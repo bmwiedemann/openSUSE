@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:27:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.0:
+  * Add group with display_name to rate limits and deprecate
+    group_type
+  * Add compact_before_next_turn() to the tool runner, and tidy
+    its state and failure handling
+  * Raise an API error for Bedrock eventstream exception and
+    error frames
+  * Accept "X | Y" union types when parsing responses, and stop
+    raising TypeError for such fields carrying unknown data
+  * Join multiple anthropic-beta values with a comma and no space
+- Require pydantic >= 1.10.0, following upstream
+
+-------------------------------------------------------------------
 Wed Sep 16 07:25:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.0:

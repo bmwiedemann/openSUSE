@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:40:58 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.04 - 2026-09-19
+
+- NEW FEATURE: remind: Any time the Remind parser accepts a quoted
+  string, it will also accept multiple quoted strings with "+" signs
+  between them, and concatenate the result.  This mirrors the
+  expression parser and can be used to split long INFO strings.  For
+  example:
+
+    REM INFO "Location: 49 Adams Avenue, " + \
+             "Toronto, ON M0K 3S2 " + \
+             "Canada"  MSG Event
+
+  Is equivalent to:
+
+    REM INFO "Location: 49 Adams Avenue, Toronto, ON M0K 3S2 Canada"  MSG Event
+
+- CHANGE: rem2html: If the system locale is a UTF-8 locale, then the
+  --utf8 flag is assumed automatically.
+
+- CHANGE: Remind will not build on Omarchy.
+
+- BUG FIX: remind: The code that reported errors in expressions with
+  the "^-- here" marker could prematurely end the expression printout;
+  this has been fixed.
+
+- BUG FIX: remind: Remind caches the definition of a function and does
+  not re-parse it if the FSET is at the same line and file as the
+  previous definition.  This could break in certain rare edge-cases
+  and has been fixed.  Here's an example of such an edge-case:
+
+      IF (today() - '1990-01-01') % 2
+          SET args "x, y"
+      ELSE
+          SET args "y, x"
+      ENDIF
+
+      FSET silly([args]) x * 10 + y
+      REM MSG [silly(3, 4)]
+
+  When producing a calendar, older versions of Remind would simply use
+  whichever definition was created the first time around, whereas this
+  version correctly redefines the function each iteration through the
+  calendar.  I don't encourage this sort of trickery.
+
+- BUG FIX: remind: The filedir() function would return the wrong value
+  for a file in the root directory (like /foo.rem).  While this is an
+  unlikely scenario, it's best to fix it!
+
+-------------------------------------------------------------------
 Wed Sep 16 06:39:07 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.03.03 - 2026-09-10

@@ -7,4 +7,25 @@
     <comment>New package, part of the FastMCP stack required by python-bugzilla-mcp (an MCP server for Bugzilla). Maintained in devel:languages:python.</comment>
     <requestid>1360606</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d7c195e307eacc742db86ddafa28eb99</srcmd5>
+    <version>0.4.6</version>
+    <time>1789986273</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.6:
+  * Add FileTreeStore.cull() to reclaim the disk space of expired
+    entries, which are otherwise only removed when something
+    reads the key, and fix a get() race
+  * Pass the username through in RedisStore
+  * A key literally named &quot;info&quot; is no longer silently hidden
+- Require aiofile &gt;= 3.12.3, following upstream, and require
+  typing_extensions: it is an unconditional dependency whose
+  imports are unguarded, and nothing pulled it in on the Python
+  flavours we build
+
+-------------------------------------------------------------------
+Fri Jun 19 06:15:18 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
+</comment>
+    <requestid>1379422</requestid>
+  </revision>
 </revisionlist>

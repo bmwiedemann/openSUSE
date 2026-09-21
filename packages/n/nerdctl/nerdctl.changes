@@ -1,4 +1,210 @@
 -------------------------------------------------------------------
+Mon Sep 21 04:58:53 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 2.4.0:
+  * update RootlessKit (3.2.0)
+  * go.mod: github.com/rootless-containers/rootlesskit/v3 v3.2.0
+  * fix(top): handle stopped and paused containers
+  * build(deps): bump the docker group with 2 updates
+  * build(deps): bump docker/setup-buildx-action from 4.3.0 to 4.4.0
+  * build(deps): bump docker/setup-qemu-action from 4.3.0 to 4.4.0
+  * build(deps): bump docker/build-push-action from 7.3.0 to 7.4.0
+  * test: wait for the compose services to be up before listing them
+  * test: wait for the auto-removed container to actually be gone
+  * test: wait for the log binary to have written before reading it
+  * test: do not let the kubo healthcheck fight our own ipfs commands
+  * save: wait for the archive to be fully written before returning
+  * mod/soigneur: test the collector, on every branch it has
+  * mod/soigneur: fix the workflow filter
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.3 to 0.6.4
+  * go.mod: github.com/containerd/containerd/v2 v2.4.0
+  * go.mod: fix groupification
+  * CI: fix zizmor failure
+  * fix(compose): allow detached runs with default interactive setting
+  * update containerd (2.4.0)
+  * update Docker (29.8.1)
+  * update kubo (0.43.1)
+  * fix: allow removing containers without network annotations
+  * ci: report gosocialcheck findings as GitHub Actions annotations
+  * feat(mount): support --mount type=image with image-subpath
+  * fix(network): combine repeated name filters with OR
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/moby/sys/userns in the moby-sys group
+  * build(deps): bump golang.org/x/net in the golang-x group
+  * CI: publish a weekly flaky test dashboard
+  * mod/soigneur: reusable flaky test dashboard
+  * Makefile: fix lint-licenses failing on MPL-2.0 (filepath-securejoin) (#5199)
+  * Makefile: refer to ltag by its release (v0.3.0)
+  * update go-licenses (2.0.1)
+  * Makefile: refer to git-validation by its release (v1.2.2)
+  * update gotestsum (1.13.0)
+  * update golangci-lint (2.13.2); silence new errors
+  * update Docker (29.8.0)
+  * update CNI plugins used by the unit tests (1.9.1)
+  * update Windows CNI plugins (0.3.3)
+  * update containerd for Windows (2.4.0-beta.0)
+  * update containerd 1.7 (1.7.35)
+  * update kind (0.33.0)
+  * update kubo (0.43.0)
+  * update soci-snapshotter (0.15.0)
+  * update Nydus (2.4.5)
+  * update fuse-overlayfs (1.18)
+  * update imgcrypt (2.0.3)
+  * update BuildKit (0.33.0)
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.2 to 0.6.3
+  * CI: use GitHub's dedicated self-repository syntax
+  * fix: match ps --filter keys exactly instead of by prefix
+  * gomodjail: update to v2.0.1, enforce static analysis in CI
+  * update RootlessKit (3.2.0-beta.0)
+  * go.mod: github.com/rootless-containers/rootlesskit/v3 v3.2.0-beta.0
+  * build(deps): bump github.com/containerd/log from 0.1.0 to 0.2.0
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the golang-x group with 2 updates
+  * build(deps): bump github.com/klauspost/compress from 1.19.2 to 1.20.0
+  * build(deps): bump the docker group across 1 directory with 3 updates
+  * build(deps): bump tags.cncf.io/container-device-interface
+  * build(deps): bump golang.org/x/crypto in the golang-x group
+  * feat: support image volumes
+  * test(restart): drop outdated containerd 1.x plugin requirement from restart tests
+  * build(deps): bump docker/setup-qemu-action from 4.2.0 to 4.3.0
+  * Implement rootless systemd cgroup discovery
+  * build(deps): bump github.com/containernetworking/cni from 1.3.0 to 1.3.1
+  * build(deps): bump github.com/containerd/go-cni from 1.1.13 to 1.1.14
+  * feat(system): add nerdctl system df
+  * build(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1
+  * build: print the image ID with --quiet when the image is not loaded
+  * ci: print daemon logs after test failures
+  * build(deps): bump github.com/containerd/containerd/api
+  * docs: fix typos in command reference, cosign and gpu docs
+  * dockercompat: key inspect Networks by real CNI network name
+  * fix: preserve equals signs in image label filter values
+  * /var/lib/journal -> /var/log/journal
+  * feat(image): add --tree flag to image list
+  * fix(image): truncate the output file of save and export
+  * feat: add volume-nocopy
+  * Update RootlessKit (3.1.0)
+  * fix(login): gate hub alias on standard port, normalize bracketed IPv6
+  * build(deps): bump github.com/Microsoft/hcsshim
+  * build(deps): bump docker/setup-buildx-action from 4.2.0 to 4.3.0
+  * feat(logging): add --log-file to persist nerdctl's own log
+  * Fix foreground stdio deadlock when the internal logging process stops consuming
+  * build(deps): bump github.com/containerd/platforms
+  * ci: upgrade containerd to v2.4.0-beta.0
+  * fix(image): pin the image a container runs to its digest
+  * feat(push): support --all-tags to push all tags
+  * Fix typos in docs and a comment
+  * test: migrate testutil.Namespace to nerdtest.Namespace
+  * test: migrate testutil.Require* to nerdtest requirements
+  * test: complete migration of testutil.Identifier to data.Identifier
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/containerd/containerd/v2
+  * build(deps): bump github.com/moby/sys/userns in the moby-sys group
+  * build(deps): bump the golang-x group with 3 updates
+  * docs: document volume :z and :Z SELinux options
+  * Remove unused functions
+  * build(deps): bump github.com/docker/cli
+  * build(deps): bump github.com/cilium/ebpf from 0.17.3 to 0.22.0
+  * fix: do not require CNI plugins for compose projects that avoid CNI
+  * build(deps): bump actions/attest-build-provenance from 4.1.1 to 4.2.2
+  * build(deps): bump github.com/klauspost/compress from 1.19.1 to 1.19.2
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v3
+  * fix(login): accept equivalent registry hosts in auth creds callback
+  * optimize: reduce unnecessary function calls
+  * refactor: migrate compose cosign verify test to nerdtest
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.1 to 0.6.2
+  * fix(network): stop injecting ipRange into the CNI config
+  * test: clean up compose run containers with compose rm
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * build(deps): bump the docker group with 2 updates
+  * feat(image): adopt Docker v29 output for images list
+  * feature: support to print snapshot info for container
+  * CI: drop ppa:criu/ppa
+  * feature: support to print snapshot info for image
+  * Add tests for identifiers.ValidateDockerCompat
+  * fix: image ls with a bare repository name should match all tags
+  * build(deps): bump github.com/docker/go-connections from 0.8.0 to 0.8.1
+  * build(deps): bump the docker group across 1 directory with 2 updates
+  * build(deps): bump docker/login-action from 4.5.1 to 4.6.0
+  * build(deps): bump go.yaml.in/yaml/v3 from 3.0.4 to 3.0.5
+  * pkg/portutil/procnet: support big-endian hosts in ParseAddress
+  * refactor container_list_windows_test.go to use Tigron
+  * build(deps): bump docker/login-action from 4.4.0 to 4.5.1
+  * build(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+  * fix: suppress spurious hostsstore NotFound warning on container removal
+  * build(deps): bump github.com/mattn/go-isatty from 0.0.23 to 0.0.24
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.0 to 0.6.1
+  * test: convert compose run linux test to Tigron framework
+  * feat(network): support --aux-address on network create
+  * build(deps): bump github.com/containerd/imgcrypt/v2 from 2.0.2 to 2.0.3
+  * build(deps): bump github.com/klauspost/compress from 1.19.0 to 1.19.1
+  * build(deps): bump actions/checkout from 7.0.0 to 7.0.1
+  * events: rename Status field to Action to match Docker v29
+  * Refactor container_run_network_linux_test.go to use Tigron
+  * Refactor container_kill_linux_test.go to use Tigro
+  * test: convert TestRunCustomRootfs to Tigron framework
+  * test: refactor container_run_cgroup_linux_test.go to use Tigron
+  * test: refactor container_run_linux_test.go to use Tigron
+  * CI: ipv6: consistently use Ubuntu 26.04
+  * update runc (1.5.1)
+  * build(deps): bump github.com/docker/cli
+  * update BuildKit (0.31.2)
+  * bump github.com/mattn/go-isatty from 0.0.22 to 0.0.23
+  * bump actions/setup-go from 6.5.0 to 7.0.0
+  * Refractor container_run_mount_windows_test.go to use Tigron
+  * feat(mount): support --mount type=image
+  * compose: guard x-nerdctl-* extension type assertions
+  * build(deps): bump zizmorcore/zizmor-action from 0.5.7 to 0.6.0
+  * update: fix --cpus writing cpuset instead of quota/period
+  * test: refactor container_cp_linux_test.go to use Tigron
+  * Allocate a free host port from the range for a single container port
+  * image: align erofs convert with containerd
+  * save: add --quiet/-q to suppress progress output
+  * ci: add IPv6 target to rootless test matrix
+  * rootless: enable IPv6 in RootlessKit and update detection API
+  * feat(run): add support for --expose and --publish-all
+  * update containerd (2.3.3)
+  * update RootlessKit (3.0.2)
+  * build(deps): bump github.com/rootless-containers/rootlesskit/v3
+  * build(deps): bump github.com/containerd/containerd/v2
+  * test: refactor container_list_linux_test.go to use Tigron
+  * feat(network): add --ipv4 to allow IPv6-only networks
+  * mount: support the Docker v25 form of recursive read-only (RRO) mounts
+  * build(deps): bump the golang-x group with 6 updates
+  * test: refactor container_run_network_base_test.go to use Tigron
+  * CI: update Ubuntu (26.04)
+  * test: skip TestIssue3016 for Docker with the containerd image store
+  * build(deps): bump github.com/ipfs/go-cid from 0.6.1 to 0.6.2
+  * tigron: hide env from logs by default
+  * feature: label-based filtering added
+  * build(deps): bump github.com/pelletier/go-toml/v2 from 2.4.2 to 2.4.3
+  * build(deps): bump golang.org/x/text
+  * test: refactor container_run_mount_linux_test.go to use Tigron
+  * test: extend EnsureContainerExited deadline to fix flaky restart tests
+  * run, exec: fix `-i` hanging when stdin reaches EOF during task creation
+  * CI: smoke test the image built by the image workflow
+  * Dockerfile: run the entrypoint command only after the daemons are ready
+  * CI: run test-integration[-rootless] directly on hosts and Lima guests
+  * test: adapt to running directly on hosts
+  * test: TestBuildFromStdin: do not assume direct export to the image store
+  * test: fix the SELinux tests
+  * test-integration.sh: do not print the output of the non-failing tests
+  * rootless: fix containerd startup when the host has run a rootful containerd v2
+  * build(deps): bump docker/login-action from 4.3.0 to 4.4.0
+  * build(deps): bump docker/setup-buildx-action from 4.1.0 to 4.2.0
+  * build(deps): bump docker/login-action from 4.2.0 to 4.3.0
+  * build(deps): bump docker/metadata-action from 6.1.0 to 6.2.0
+  * build(deps): bump github.com/klauspost/compress from 1.18.7 to 1.19.0
+  * build(deps): bump docker/setup-qemu-action from 4.1.0 to 4.2.0
+  * build(deps): bump docker/build-push-action from 7.2.0 to 7.3.0
+  * build(deps): bump github.com/klauspost/compress from 1.18.6 to 1.18.7
+  * CI: update Docker (29.6.1)
+  * fix: hide internal alias flags from help output
+  * build(deps): bump github.com/Microsoft/hcsshim
+  * build(deps): bump github.com/compose-spec/compose-go/v2
+  * fix(network): match each ip-range to its subnet for dual-stack
+  * refactor: migrate container_run_network_windows_test.go to nerdtest.Setup
+
+-------------------------------------------------------------------
 Tue Jul 21 04:59:32 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 2.3.5

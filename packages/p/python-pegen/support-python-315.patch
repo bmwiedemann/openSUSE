@@ -1,0 +1,831 @@
+From 30839512f752c69fcec5d63c23ae7b9e46c151a3 Mon Sep 17 00:00:00 2001
+From: Alexander Sulfrian <alexander@sulfrian.net>
+Date: Fri, 2 Jan 2026 16:31:24 +0100
+Subject: [PATCH 01/28] Improve SyntaxError messages for pattern captures
+
+python/cpython@23f159ae711d84177e8ce34cd9a6c8a762de64ac improved the
+SyntaxError messages for invalid pattern targets. This adds support for the
+more detailed messages in Python 3.14 and above.
+---
+ data/python.gram                                  | 7 +++++--
+ tests/python_parser/test_syntax_error_handling.py | 2 +-
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+Index: pegen-0.3.0/data/python.gram
+===================================================================
+--- pegen-0.3.0.orig/data/python.gram
++++ pegen-0.3.0/data/python.gram
+@@ -594,9 +594,9 @@ simple_stmts[list]:
+ simple_stmt (memo):
+     | assignment
+     | &"type" type_alias
++    | &('import' | 'from' | "lazy") import_stmt
+     | e=star_expressions { ast.Expr(value=e, LOCATIONS) }
+     | &'return' return_stmt
+-    | &('import' | 'from') import_stmt
+     | &'raise' raise_stmt
+     | 'pass' { ast.Pass(LOCATIONS) }
+     | &'del' del_stmt
+@@ -713,14 +713,31 @@ import_stmt[ast.Import]:
+ # Import statements
+ # -----------------
+ 
+-import_name[ast.Import]: 'import' a=dotted_as_names { ast.Import(names=a, LOCATIONS) }
++import_name[ast.Import]: lazy="lazy"? 'import' a=dotted_as_names {
++    ast.Import(names=a, is_lazy=1 if lazy else 0, LOCATIONS)
++    if sys.version_info >= (3, 15) else
++    self.check_version((3, 15), "Lazy imports are", ast.Import(names=a, LOCATIONS))
++    if lazy else
++    ast.Import(names=a, LOCATIONS)
++ }
+ 
+ # note below: the ('.' | '...') is necessary because '...' is tokenized as ELLIPSIS
+ import_from[ast.ImportFrom]:
+-    | 'from' a=('.' | '...')* b=dotted_name 'import' c=import_from_targets {
++    | invalid_import_from
++    | lazy="lazy"? 'from' a=('.' | '...')* b=dotted_name 'import' c=import_from_targets {
++        ast.ImportFrom(module=b, names=c, level=self.extract_import_level(a), is_lazy=1 if lazy else 0, LOCATIONS)
++        if sys.version_info >= (3, 15) else
++        self.check_version((3, 15), "Lazy imports are",
++            ast.ImportFrom(module=b, names=c, level=self.extract_import_level(a), LOCATIONS))
++        if lazy else
+         ast.ImportFrom(module=b, names=c, level=self.extract_import_level(a), LOCATIONS)
+      }
+-    | 'from' a=('.' | '...')+ 'import' b=import_from_targets {
++    | lazy="lazy"? 'from' a=('.' | '...')+ 'import' b=import_from_targets {
++        ast.ImportFrom(names=b, level=self.extract_import_level(a), is_lazy=1 if lazy else 0, LOCATIONS)
++        if sys.version_info >= (3, 15) else
++        self.check_version((3, 15), "Lazy imports are",
++            ast.ImportFrom(names=b, level=self.extract_import_level(a), LOCATIONS))
++        if lazy else
+         ast.ImportFrom(names=b, level=self.extract_import_level(a), LOCATIONS)
+         if sys.version_info >= (3, 9) else
+         ast.ImportFrom(module=None, names=b, level=self.extract_import_level(a), LOCATIONS)
+@@ -937,7 +954,7 @@ param_maybe_default[Tuple[ast.arg, Any]]
+     | a=param c=default? tc=TYPE_COMMENT? &')' { (self.set_arg_type_comment(a, tc), c) }
+ param: a=NAME b=annotation? { ast.arg(arg=a.string, annotation=b, LOCATIONS) }
+ param_star_annotation: a=NAME b=star_annotation {
+-    ast.arg(arg=a.string, annotations=b, LOCATIONS)
++    ast.arg(arg=a.string, annotation=b, LOCATIONS)
+  }
+ annotation: ':' a=expression { a }
+ star_annotation: ':' a=star_expression { a }
+@@ -1047,16 +1064,25 @@ try_stmt[ast.Try]:
+ 
+ except_block[ast.ExceptHandler]:
+     | invalid_except_stmt_indent
++    | invalid_except_stmt
+     | 'except' e=expression t=['as' z=NAME { z.string }] ':' b=block {
+         ast.ExceptHandler(type=e, name=t, body=b, LOCATIONS) }
+     | 'except' ':' b=block { ast.ExceptHandler(type=None, name=None, body=b, LOCATIONS) }
+-    | invalid_except_stmt
++    | 'except' e=expressions ':' b=block {
++        ast.ExceptHandler(type=e, name=None, body=b, LOCATIONS)
++        if self.py_version >= (3, 14)
++        else None }
+ except_star_block[ast.ExceptHandler]:
+     | invalid_except_star_stmt_indent
++    | invalid_except_stmt
+     | 'except' '*' e=expression t=['as' z=NAME { z.string }] ':' b=block {
+         ast.ExceptHandler(type=e, name=t, body=b, LOCATIONS)
+      }
+-    | invalid_except_stmt
++    | 'except' '*' e=expressions ':' b=block {
++        ast.ExceptHandler(type=e, name=None, body=b, LOCATIONS)
++        if self.py_version >= (3, 14)
++        else None
++     }
+ finally_block[list]:
+     | invalid_finally_stmt
+     | 'finally' &&':' a=block { a }
+@@ -1183,7 +1209,7 @@ pattern_capture_target[str]:
+     | !"_" name=NAME !('.' | '(' | '=') { name.string }
+ 
+ wildcard_pattern["ast.MatchAs"]:
+-    | "_" { ast.MatchAs(pattern=None, target=None, LOCATIONS) }
++    | "_" { ast.MatchAs(pattern=None, name=None, LOCATIONS) }
+ 
+ value_pattern["ast.MatchValue"]:
+     | attr=attr !('.' | '(' | '=') { ast.MatchValue(value=attr, LOCATIONS) }
+@@ -1218,7 +1244,7 @@ maybe_star_pattern:
+ 
+ star_pattern:
+     | '*' target=pattern_capture_target { ast.MatchStar(name=target, LOCATIONS) }
+-    | '*' wildcard_pattern { ast.MatchStar(target=None, LOCATIONS) }
++    | '*' wildcard_pattern { ast.MatchStar(name=None, LOCATIONS) }
+ 
+ mapping_pattern:
+     | '{' '}' { ast.MatchMapping(keys=[], patterns=[], rest=None, LOCATIONS) }
+@@ -1762,22 +1788,38 @@ for_if_clause[ast.comprehension]:
+     | invalid_for_target
+ 
+ listcomp[ast.ListComp]:
+-    | '[' a=named_expression b=for_if_clauses ']' { ast.ListComp(elt=a, generators=b, LOCATIONS) }
+     | invalid_comprehension
++    | '[' a=named_expression b=for_if_clauses ']' { ast.ListComp(elt=a, generators=b, LOCATIONS) }
++    | '[' a=starred_expression b=for_if_clauses ']' {
++        ast.ListComp(elt=a, generators=b, LOCATIONS)
++        if self.py_version >= (3, 15)
++        else None }
+ 
+ setcomp[ast.SetComp]:
+-    | '{' a=named_expression b=for_if_clauses '}' { ast.SetComp(elt=a, generators=b, LOCATIONS) }
+     | invalid_comprehension
++    | '{' a=named_expression b=for_if_clauses '}' { ast.SetComp(elt=a, generators=b, LOCATIONS) }
++    | '{' a=starred_expression b=for_if_clauses '}' {
++        ast.SetComp(elt=a, generators=b, LOCATIONS)
++        if self.py_version >= (3, 15)
++        else None }
+ 
+ genexp[ast.GeneratorExp]:
+-    | '(' a=( assignment_expression | expression !':=') b=for_if_clauses ')' {
+-        ast.GeneratorExp(elt=a, generators=b, LOCATIONS)
+-     }
+     | invalid_comprehension
++    | '(' a=(assignment_expression | expression !':=') b=for_if_clauses ')' {
++        ast.GeneratorExp(elt=a, generators=b, LOCATIONS) }
++    | '(' a=starred_expression b=for_if_clauses ')' {
++        ast.GeneratorExp(elt=a, generators=b, LOCATIONS)
++        if self.py_version >= (3, 15)
++        else None }
+ 
+ dictcomp[ast.DictComp]:
+-    | '{' a=kvpair b=for_if_clauses '}' { ast.DictComp(key=a[0], value=a[1], generators=b, LOCATIONS) }
+     | invalid_dict_comprehension
++    | '{' a=kvpair b=for_if_clauses '}' {
++        ast.DictComp(key=a[0], value=a[1], generators=b, LOCATIONS) }
++    | '{' '**' a=bitwise_or b=for_if_clauses '}' {
++        ast.DictComp(key=a, value=None, generators=b, LOCATIONS)
++        if self.py_version >= (3, 15)
++        else None }
+ 
+ # FUNCTION CALL ARGUMENTS
+ # =======================
+@@ -2076,6 +2118,8 @@ invalid_block[NoReturn]:
+ invalid_comprehension[NoReturn]:
+     | ('[' | '(' | '{') a=starred_expression for_if_clauses {
+         self.raise_syntax_error_known_location("iterable unpacking cannot be used in comprehension", a)
++        if self.py_version < (3, 15)
++        else None
+      }
+     | ('[' | '{') a=star_named_expression ',' b=star_named_expressions for_if_clauses {
+         self.raise_syntax_error_known_range(
+@@ -2090,6 +2134,8 @@ invalid_comprehension[NoReturn]:
+ invalid_dict_comprehension[NoReturn]:
+     | '{' a='**' bitwise_or for_if_clauses '}' {
+         self.raise_syntax_error_known_location("dict unpacking cannot be used in dict comprehension", a)
++        if self.py_version < (3, 15)
++        else None
+      }
+ invalid_parameters[NoReturn]:
+     | a="/" ',' {
+@@ -2215,6 +2261,12 @@ invalid_import:
+             "Did you mean to use 'from ... import ...' instead?", a
+         )
+      }
++invalid_import_from:
++    | 'from' ('.' | '...')* dotted_name a="lazy" 'import' import_from_targets {
++        self.raise_syntax_error_known_location(
++            "use 'lazy from ... ' instead of 'from ... lazy import'", a
++        )
++     }
+ invalid_import_from_targets[NoReturn]:
+     | import_from_as_names ',' NEWLINE {
+         self.raise_syntax_error("trailing comma not allowed without surrounding parentheses")
+@@ -2255,8 +2307,28 @@ invalid_try_stmt[NoReturn]:
+         )
+      }
+ invalid_except_stmt[None]:
+-    | 'except' '*'? a=expression ',' expressions ['as' NAME ] ':' {
+-        self.raise_syntax_error_starting_from("multiple exception types must be parenthesized", a)
++    | 'except' '*'? a=expression ',' expressions 'as' t=NAME ':' {
++        self.raise_syntax_error_known_range(
++            "multiple exception types must be parenthesized when using 'as'"
++            if self.py_version >= (3, 14)
++            else "multiple exception types must be parenthesized",
++            a,
++            t,
++        )
++     }
++    | 'except' '*'? a=expression ',' b=expressions ':' {
++        self.raise_syntax_error_known_range(
++            "multiple exception types must be parenthesized",
++            a,
++            b,
++        )
++        if self.py_version < (3, 14)
++        else None
++     }
++    | 'except' '*'? expression a=',' {
++        self.raise_syntax_error_known_location("invalid syntax", a)
++        if self.py_version < (3, 14)
++        else None
+      }
+     | a='except' '*'? expression ['as' NAME ] NEWLINE { self.raise_syntax_error("expected ':'") }
+     | a='except' '*'? NEWLINE { self.raise_syntax_error("expected ':'") }
+@@ -2314,8 +2386,11 @@ invalid_as_pattern[NoReturn]:
+     | or_pattern 'as' a="_" {
+         self.raise_syntax_error_known_location("cannot use '_' as a target", a)
+      }
+-    | or_pattern 'as' !NAME a=expression {
+-        self.raise_syntax_error_known_location("invalid pattern target", a)
++    | or_pattern 'as' a=expression {
++        self.raise_syntax_error_known_location(
++            f"cannot use {self.get_expr_name(a)} as pattern target", a)
++        if self.py_version >= (3, 14)
++        else self.raise_syntax_error_known_location("invalid pattern target", a)
+      }
+ invalid_class_pattern[NoReturn]:
+     | name_or_attr '(' a=invalid_class_argument_pattern  {
+Index: pegen-0.3.0/tests/python_parser/test_syntax_error_handling.py
+===================================================================
+--- pegen-0.3.0.orig/tests/python_parser/test_syntax_error_handling.py
++++ pegen-0.3.0/tests/python_parser/test_syntax_error_handling.py
+@@ -1,4 +1,5 @@
+ """Test syntax errors for cases where the parser can generate helpful messages."""
++import ast
+ import sys
+ 
+ import pytest
+@@ -45,7 +46,14 @@ def parse_invalid_syntax(
+     if sys.version_info >= min_python_version:
+         # This fails for Python < 3.10.5 but keeping the fix for a patch version is not
+         # worth it
+-        assert message in py_exc.args[0]
++        py_msg = py_exc.args[0]
++        if sys.version_info >= (3, 15):
++            py_msg = (
++                py_msg.replace("parameter", "argument")
++                .replace("* may appear only once", "* argument may appear only once")
++                .replace("dict unpacking", "double starred expression")
++            )
++        assert message in py_msg or message in py_exc.args[0]
+ 
+     print(str(e.exconly()))
+     assert message in str(e.exconly())
+@@ -417,9 +425,17 @@ def test_invalid_del_statements(
+ def test_invalid_comprehension(
+     python_parse_file, python_parse_str, tmp_path, source, message, start, end
+ ):
+-    parse_invalid_syntax(
+-        python_parse_file, python_parse_str, tmp_path, source, SyntaxError, message, start, end
+-    )
++    if sys.version_info >= (3, 15) and message in (
++        "iterable unpacking cannot be used in comprehension",
++        "dict unpacking cannot be used in dict comprehension",
++    ):
++        ast_pegen = python_parse_str(source, "exec")
++        ast_cpython = ast.parse(source)
++        assert ast.dump(ast_pegen) == ast.dump(ast_cpython)
++    else:
++        parse_invalid_syntax(
++            python_parse_file, python_parse_str, tmp_path, source, SyntaxError, message, start, end
++        )
+ 
+ 
+ @pytest.mark.parametrize(
+@@ -976,26 +992,34 @@ def test_invalid_try_stmt(
+                 sys.version_info < (3, 11), reason="Syntax unsupported before 3.11+"
+             ),
+         ),
+-        (
++        pytest.param(
+             "try:\n\tpass\nexcept ValueError, IndexError:",
+             SyntaxError,
+             "multiple exception types must be parenthesized",
+             (3, 8),
+             (3, 30),
++            marks=pytest.mark.skipif(
++                sys.version_info >= (3, 14),
++                reason="PEP 758 allows unparenthesized except and except* blocks",
++            ),
+         ),
+-        (
++        pytest.param(
+             "try:\n\tpass\nexcept ValueError, IndexError,:",
+             SyntaxError,
+             "multiple exception types must be parenthesized",
+             (3, 8),
+             (3, 31),
++            marks=pytest.mark.skipif(
++                sys.version_info >= (3, 14),
++                reason="PEP 758 allows unparenthesized except and except* blocks",
++            ),
+         ),
+         (
+             "try:\n\tpass\nexcept ValueError, IndexError, a=1:",
+             SyntaxError,
+             "invalid syntax",
+-            (3, 18),
+-            (3, 19),
++            (3, 33) if sys.version_info >= (3, 14) else (3, 18),
++            (3, 34) if sys.version_info >= (3, 14) else (3, 19),
+         ),
+         (
+             "try:\n\tpass\nexcept Exception\npass",
+@@ -1156,7 +1180,11 @@ def test_invalid_case_stmt(
+         (
+             "match a:\n\tcase 1 as 1+1:\n\t\tpass",
+             SyntaxError,
+-            "invalid pattern target",
++            (
++                "cannot use expression as pattern target"
++                if sys.version_info >= (3, 14)
++                else "invalid pattern target"
++            ),
+             (2, 12),
+             (2, 15),
+         ),
+Index: pegen-0.3.0/src/pegen/python_generator.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/python_generator.py
++++ pegen-0.3.0/src/pegen/python_generator.py
+@@ -26,7 +26,7 @@ from pegen.grammar import (
+ from pegen.parser_generator import ParserGenerator
+ 
+ MODULE_PREFIX = """\
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ # @generated by pegen from {filename}
+ 
+ import ast
+Index: pegen-0.3.0/.github/workflows/test.yml
+===================================================================
+--- pegen-0.3.0.orig/.github/workflows/test.yml
++++ pegen-0.3.0/.github/workflows/test.yml
+@@ -13,7 +13,7 @@ jobs:
+     runs-on: ubuntu-latest
+     strategy:
+       matrix:
+-        python-version: ['3.8','3.9','3.10', '3.11', '3.12', '3.13']
++        python-version: ['3.9','3.10', '3.11', '3.12', '3.13', '3.14', '3.15-dev']
+     steps:
+     - uses: actions/checkout@v4
+     - name: Get history and tags for SCM versioning to work
+Index: pegen-0.3.0/pyproject.toml
+===================================================================
+--- pegen-0.3.0.orig/pyproject.toml
++++ pegen-0.3.0/pyproject.toml
+@@ -3,7 +3,7 @@
+ name = "pegen"
+ description = "CPython's PEG parser generator"
+ readme = "README.md"
+-requires-python = ">=3.8, <4"
++requires-python = ">=3.9, <4"
+ license = {file = "LICENSE"}
+ authors = [
+   {name = "Guido van Rossum"},
+@@ -18,12 +18,13 @@ classifiers = [
+     "Intended Audience :: Developers",
+     "Topic :: Software Development :: Compilers",
+     "License :: OSI Approved :: MIT License",
+-    "Programming Language :: Python :: 3.8",
+     "Programming Language :: Python :: 3.9",
+     "Programming Language :: Python :: 3.10",
+     "Programming Language :: Python :: 3.11",
+     "Programming Language :: Python :: 3.12",
+     "Programming Language :: Python :: 3.13",
++    "Programming Language :: Python :: 3.14",
++    "Programming Language :: Python :: 3.15",
+     "Programming Language :: Python :: 3 :: Only",
+ ]
+ keywords = ["parser", "CPython", "PEG", "pegen"]
+@@ -54,7 +55,7 @@ build-backend = "setuptools.build_meta"
+ 
+ [tool.black]
+ line-length = 99
+-target_version = ['py38']
++target_version = ['py39']
+ exclude = '''
+ (
+           /pegen/grammar_parser.py            # generated file
+@@ -103,4 +104,4 @@ strict_optional = false
+ module = [
+     "psutil"
+ ]
+-ignore_missing_imports = true
+\ No newline at end of file
++ignore_missing_imports = true
+Index: pegen-0.3.0/tests/python_parser/test_unsupported_syntax.py
+===================================================================
+--- pegen-0.3.0.orig/tests/python_parser/test_unsupported_syntax.py
++++ pegen-0.3.0/tests/python_parser/test_unsupported_syntax.py
+@@ -197,3 +197,37 @@ def test_generic_class_statement(python_
+         pp.parse("file")
+ 
+     assert "Type parameter lists are" in e.exconly()
++
++
++# unparenthesized except 3.14
++@pytest.mark.parametrize("source", ["try:\n\tpass\nexcept ValueError, IndexError:\n\tpass"])
++def test_unparenthesized_except(python_parser_cls, source):
++    temp = io.StringIO(source)
++    tokengen = tokenize.generate_tokens(temp.readline)
++    tokenizer = Tokenizer(tokengen, verbose=False)
++    pp = python_parser_cls(tokenizer, py_version=(3, 13))
++    with pytest.raises(SyntaxError) as e:
++        pp.parse("file")
++
++    assert "multiple exception types must be parenthesized" in e.exconly()
++
++
++# comprehension unpacking 3.15
++@pytest.mark.parametrize(
++    "source, message",
++    [
++        ("[*a for a in b]", "iterable unpacking cannot be used in comprehension"),
++        ("{*a for a in b}", "iterable unpacking cannot be used in comprehension"),
++        ("(*a for a in b)", "iterable unpacking cannot be used in comprehension"),
++        ("{**a for a in b}", "dict unpacking cannot be used in dict comprehension"),
++    ],
++)
++def test_comprehension_unpacking(python_parser_cls, source, message):
++    temp = io.StringIO(source)
++    tokengen = tokenize.generate_tokens(temp.readline)
++    tokenizer = Tokenizer(tokengen, verbose=False)
++    pp = python_parser_cls(tokenizer, py_version=(3, 14))
++    with pytest.raises(SyntaxError) as e:
++        pp.parse("file")
++
++    assert message in e.exconly()
+Index: pegen-0.3.0/tests/test_pegen.py
+===================================================================
+--- pegen-0.3.0.orig/tests/test_pegen.py
++++ pegen-0.3.0/tests/test_pegen.py
+@@ -339,7 +339,7 @@ def test_left_recursive() -> None:
+ 
+ def test_python_expr() -> None:
+     grammar = """
+-    start: expr NEWLINE? $ { ast.Expression(expr, LOCATIONS) }
++    start: expr NEWLINE? $ { ast.Expression(expr) }
+     expr: ( expr '+' term { ast.BinOp(expr, ast.Add(), term, LOCATIONS) }
+           | expr '-' term { ast.BinOp(expr, ast.Sub(), term, LOCATIONS) }
+           | term { term }
+@@ -664,7 +664,7 @@ def test_unreachable_implicit3() -> None
+ 
+ def test_locations_in_alt_action_and_group() -> None:
+     grammar = """
+-    start: t=term NEWLINE? $ { ast.Expression(t, LOCATIONS) }
++    start: t=term NEWLINE? $ { ast.Expression(t) }
+     term:
+         | l=term '*' r=factor { ast.BinOp(l, ast.Mult(), r, LOCATIONS) }
+         | l=term '/' r=factor { ast.BinOp(l, ast.Div(), r, LOCATIONS) }
+Index: pegen-0.3.0/tests/python_parser/test_ast_parsing.py
+===================================================================
+--- pegen-0.3.0.orig/tests/python_parser/test_ast_parsing.py
++++ pegen-0.3.0/tests/python_parser/test_ast_parsing.py
+@@ -23,6 +23,13 @@ import pytest
+         "async.py",
+         "call.py",
+         "comprehensions.py",
++        pytest.param(
++            "comprehensions_unpacking.py",
++            marks=pytest.mark.skipif(
++                sys.version_info < (3, 15),
++                reason="Unpacking in comprehensions allowed only in Python 3.15+",
++            ),
++        ),
+         "expressions.py",
+         "fstrings.py",
+         "function_def.py",
+@@ -108,3 +115,64 @@ def test_parser(python_parse_file, pytho
+     p = ast.dump(python_parse_file(path), **kwargs)
+     diff = "\n".join(difflib.unified_diff(o.split("\n"), p.split("\n"), "cpython", "python-pegen"))
+     assert not diff
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 10), reason="Pattern matching allowed only in Python 3.10+"
++)
++def test_pattern_matching_wildcard_ast(python_parse_str):
++    source = "match x:\n    case _:\n        pass\n    case [*_]:\n        pass\n"
++    tree = python_parse_str(source, "exec")
++    assert isinstance(tree.body[0].cases[0].pattern, ast.MatchAs)
++    assert tree.body[0].cases[0].pattern.name is None
++    assert tree.body[0].cases[0].pattern.pattern is None
++    assert isinstance(tree.body[0].cases[1].pattern, ast.MatchSequence)
++    assert isinstance(tree.body[0].cases[1].pattern.patterns[0], ast.MatchStar)
++    assert tree.body[0].cases[1].pattern.patterns[0].name is None
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 11), reason="Star unpack in annotations allowed only in Python 3.11+"
++)
++def test_star_annotation_ast(python_parse_str):
++    source = "def f(*args: *Ts):\n    pass\n"
++    tree = python_parse_str(source, "exec")
++    assert tree.body[0].args.vararg.annotation is not None
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 14), reason="PEP 758 unparenthesized except only in Python 3.14+"
++)
++def test_unparenthesized_except_ast(python_parse_str):
++    source = "try:\n    pass\nexcept ValueError, IndexError:\n    pass\n"
++    tree = python_parse_str(source, "exec")
++    handler = tree.body[0].handlers[0]
++    assert isinstance(handler.type, ast.Tuple)
++    assert len(handler.type.elts) == 2
++
++
++@pytest.mark.skipif(
++    sys.version_info < (3, 14), reason="PEP 758 unparenthesized except* only in Python 3.14+"
++)
++def test_unparenthesized_except_star_ast(python_parse_str):
++    source = "try:\n    pass\nexcept* ValueError, IndexError:\n    pass\n"
++    tree = python_parse_str(source, "exec")
++    handler = tree.body[0].handlers[0]
++    assert isinstance(handler.type, ast.Tuple)
++    assert len(handler.type.elts) == 2
++
++
++@pytest.mark.skipif(sys.version_info < (3, 15), reason="is_lazy added in Python 3.15+")
++def test_lazy_imports_ast(python_parse_str):
++    tree = python_parse_str("import foo\nfrom bar import baz\n", "exec")
++    assert tree.body[0].is_lazy == 0
++    assert tree.body[1].is_lazy == 0
++
++
++@pytest.mark.skipif(sys.version_info < (3, 15), reason="Lazy imports added in Python 3.15+")
++def test_explicit_lazy_imports_ast(python_parse_str):
++    tree = python_parse_str("lazy import foo\nlazy from bar import baz\n", "exec")
++    assert tree.body[0].is_lazy == 1
++    assert tree.body[1].is_lazy == 1
++    ast_cpython = ast.parse("lazy import foo\nlazy from bar import baz\n")
++    assert ast.dump(tree) == ast.dump(ast_cpython)
+Index: pegen-0.3.0/tests/python_parser/data/comprehensions_unpacking.py
+===================================================================
+--- /dev/null
++++ pegen-0.3.0/tests/python_parser/data/comprehensions_unpacking.py
+@@ -0,0 +1,10 @@
++a = [*k for k in g]
++
++
++b = {*k for k in g}
++
++
++c = (*k for k in g)
++
++
++d = {**k for k in g}
+Index: pegen-0.3.0/scripts/download_pypi_packages.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/download_pypi_packages.py
++++ pegen-0.3.0/scripts/download_pypi_packages.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import json
+Index: pegen-0.3.0/scripts/find_max_nesting.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/find_max_nesting.py
++++ pegen-0.3.0/scripts/find_max_nesting.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ """Find the maximum amount of nesting for an expression that can be parsed
+ without causing a parse error.
+ 
+Index: pegen-0.3.0/scripts/grammar_grapher.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/grammar_grapher.py
++++ pegen-0.3.0/scripts/grammar_grapher.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ """ Convert a grammar into a dot-file suitable for use with GraphViz
+ 
+Index: pegen-0.3.0/scripts/joinstats.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/joinstats.py
++++ pegen-0.3.0/scripts/joinstats.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ """Produce a report about the most-memoable types.
+ 
+Index: pegen-0.3.0/scripts/show_parse.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/show_parse.py
++++ pegen-0.3.0/scripts/show_parse.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ """Show the parse tree for a given program, nicely formatted.
+ 
+Index: pegen-0.3.0/scripts/test_parse_directory.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/test_parse_directory.py
++++ pegen-0.3.0/scripts/test_parse_directory.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import ast
+Index: pegen-0.3.0/scripts/test_pypi_packages.py
+===================================================================
+--- pegen-0.3.0.orig/scripts/test_pypi_packages.py
++++ pegen-0.3.0/scripts/test_pypi_packages.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import os
+Index: pegen-0.3.0/src/pegen/__main__.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/__main__.py
++++ pegen-0.3.0/src/pegen/__main__.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ """pegen -- PEG Generator.
+ 
+Index: pegen-0.3.0/src/pegen/first_sets.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/first_sets.py
++++ pegen-0.3.0/src/pegen/first_sets.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import pprint
+Index: pegen-0.3.0/src/pegen/grammar_parser.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/grammar_parser.py
++++ pegen-0.3.0/src/pegen/grammar_parser.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ # @generated by pegen from src/pegen/metagrammar.gram
+ 
+ import ast
+@@ -41,6 +41,7 @@ from pegen.grammar import (
+ 
+ # Keywords and soft keywords are listed at the end of the parser definition.
+ class GeneratedParser(Parser):
++
+     @memoize
+     def start(self) -> Optional[Grammar]:
+         # start: grammar $
+Index: pegen-0.3.0/stories/story2/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story2/main.py
++++ pegen-0.3.0/stories/story2/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import sys
+ from tokenize import generate_tokens
+Index: pegen-0.3.0/stories/story3/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story3/main.py
++++ pegen-0.3.0/stories/story3/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import sys
+ from tokenize import generate_tokens
+Index: pegen-0.3.0/stories/story4/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story4/main.py
++++ pegen-0.3.0/stories/story4/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import sys
+ from tokenize import generate_tokens
+Index: pegen-0.3.0/stories/story5/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story5/main.py
++++ pegen-0.3.0/stories/story5/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import os
+Index: pegen-0.3.0/stories/story6/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story6/main.py
++++ pegen-0.3.0/stories/story6/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import os
+Index: pegen-0.3.0/stories/story7/main.py
+===================================================================
+--- pegen-0.3.0.orig/stories/story7/main.py
++++ pegen-0.3.0/stories/story7/main.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3.8
++#!/usr/bin/env python3
+ 
+ import argparse
+ import os
+Index: pegen-0.3.0/tox.ini
+===================================================================
+--- pegen-0.3.0.orig/tox.ini
++++ pegen-0.3.0/tox.ini
+@@ -1,14 +1,16 @@
+ [tox]
+-envlist = py38, py39, py310, py311, py312, py38-cov, py39-cov, py310-cov, py311-cov, py312-cov, lint, regen, docs
++envlist = py39, py310, py311, py312, py313, py314, py315, py39-cov, py310-cov, py311-cov, py312-cov, py313-cov, py314-cov, py315-cov, lint, regen, docs
+ isolated_build = true
+ 
+ [gh-actions]
+ python =
+-    3.8: py38-cov, lint, regen, docs
+-    3.9: py39-cov
++    3.9: py39-cov, lint, regen, docs
+     3.10: py310-cov
+     3.11: py311-cov
+     3.12: py312-cov
++    3.13: py313-cov
++    3.14: py314-cov
++    3.15: py315-cov
+ 
+ [testenv]
+ setenv = COVERAGE_FILE={toxworkdir}/.coverage.{envname}
+@@ -34,7 +36,7 @@ deps = black
+ commands = make regen-metaparser
+            make regen-metaparser
+ 
+-[testenv:py38-cov]
++[testenv:py39-cov]
+ usedevelop = True
+ commands = {[testenv]commands_cov}
+ 
+Index: pegen-0.3.0/src/pegen/parser_generator.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/parser_generator.py
++++ pegen-0.3.0/src/pegen/parser_generator.py
+@@ -239,7 +239,7 @@ def compute_nullables(rules: Dict[str, R
+ 
+ 
+ def compute_left_recursives(
+-    rules: Dict[str, Rule]
++    rules: Dict[str, Rule],
+ ) -> Tuple[Dict[str, AbstractSet[str]], List[AbstractSet[str]]]:
+     graph = make_first_graph(rules)
+     sccs = list(sccutils.strongly_connected_components(graph.keys(), graph))
+Index: pegen-0.3.0/src/pegen/sccutils.py
+===================================================================
+--- pegen-0.3.0.orig/src/pegen/sccutils.py
++++ pegen-0.3.0/src/pegen/sccutils.py
+@@ -50,7 +50,7 @@ def strongly_connected_components(
+ 
+ 
+ def topsort(
+-    data: Dict[AbstractSet[str], Set[AbstractSet[str]]]
++    data: Dict[AbstractSet[str], Set[AbstractSet[str]]],
+ ) -> Iterable[AbstractSet[AbstractSet[str]]]:
+     """Topological sort.
+ 
+Index: pegen-0.3.0/tests/python_parser/conftest.py
+===================================================================
+--- pegen-0.3.0.orig/tests/python_parser/conftest.py
++++ pegen-0.3.0/tests/python_parser/conftest.py
+@@ -1,4 +1,4 @@
+-""""Conftest for pure python parser."""
++"""Conftest for pure python parser."""
+ from pathlib import Path
+ 
+ import pytest
+Index: pegen-0.3.0/releasenotes.rst
+===================================================================
+--- pegen-0.3.0.orig/releasenotes.rst
++++ pegen-0.3.0/releasenotes.rst
+@@ -1,6 +1,12 @@
+ Release notes
+ ==============
+ 
++2026-09-15: unreleased
++----------------------
++
++- Support Python 3.13, 3.14, and 3.15 (#117)
++- Drop Python 3.8 (#117)
++
+ 2023-11-14: Version 0.3.0
+ -------------------------
+ 
+@@ -26,4 +32,4 @@ Release notes
+ 2021-09-06: Version 0.1.0
+ -------------------------
+ 
+-First numbered release
+\ No newline at end of file
++First numbered release

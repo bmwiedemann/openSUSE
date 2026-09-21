@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 19 05:55:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.6:
+  * Update tera version to support component implicit params
+- update to 0.23.5:
+  * Fix text_direction not being wired up correctly and causing
+    compilation errors when used in templates
+  * Fix get_taxonomy_url in templated content not finding anything
+  * Fix get_taxonomy, get_taxonomy_term and get_taxonomy_url not
+    finding taxonomies via names if they differ when slugified
+  * Update tera, adding back locale param to the date filter
+  * Fix dark borders around PNG when resizing images
+  * Cache results of get_hash
+  * Rebuild whole site on any template change in zola serve, a
+    smarter reload will come later
+
+-------------------------------------------------------------------
+Fri Aug 28 08:15:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.23.4:
+  * Update archive.md to reflect removal of concat in Tera 2 in
+    #3244
+  * archive.md: fix build fail in #3245
+
+-------------------------------------------------------------------
 Wed Aug 12 06:00:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.23.3:

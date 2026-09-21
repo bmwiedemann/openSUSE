@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:01:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.2.0:
+  * Features
+    - runner: add 'CI_COMMIT_TIMESTAMP' revision timestamp
+      (9ea502c)
+  * Bug Fixes
+    - yaml: support 'options' inputs without explicit default value
+      (305abbf)
+  * Documentation
+    - readme: add 'mise-en-place' badge header (afd3eba)
+  * Cleanups
+    - mise: create 'mise-en-place' configuration for 'gcil'
+      (e790f26)
+    - mise: require 'pre-commit-crocodile' dependency and
+      activation (ba00ad5)
+    - mise: alias 'make' to 'mise run' for generic use cases
+      (a97896e)
+    - mise: migrate 'changelog' task to generate with 'git-cliff'
+      (7b9ca6d)
+    - mise: create 'pull' task to pull upstream sources (2d0091d)
+    - mise: create 'gcil' task for CI/CD use cases (19f2e86)
+
+-------------------------------------------------------------------
 Mon Aug 24 06:34:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.1.0:

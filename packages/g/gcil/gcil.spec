@@ -1,7 +1,7 @@
 #
 # spec file for package gcil
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gcil
-Version:        13.1.0
+Version:        13.2.0
 Release:        0
 Summary:        Launch .gitlab-ci.yml jobs locally
 License:        Apache-2.0

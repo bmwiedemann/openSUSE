@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:30:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.25.3:
+  * Fix nested JSON object parsing by routing JSON object tokens
+    through the Argument layer
+  * Recognise a JSON object token for types whose fields consume
+    all tokens
+  * Explain unhashable element types when converting to set or
+    frozenset
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.25.2:

@@ -135,4 +135,50 @@ source_validator clean.</comment>
 - Require pytest &gt;= 7.0 to match upstream's test extra</comment>
     <requestid>1378300</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>e88ed3ff10e18e1fd3c1b14a7e236ac4</srcmd5>
+    <version>0.4.5</version>
+    <time>1789986279</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.5:
+  * Add &quot;ms agent install&quot;, which fetches an agent into its
+    framework's local workspace through a plugin published as a
+    model repository. The plugin source must be named explicitly
+    and its owner must be on a compile-time allow-list checked
+    before any download; files are then verified against the
+    manifest's content_sha256 and the plugin runs in-process,
+    with no per-invocation trust opt-in
+  * A retryable commit failure re-commits already-uploaded files
+    without re-transferring blobs, a policy rejection is split by
+    halving down to a single file, and a resumed upload re-plans
+    only the files not yet committed
+  * Commit batches close on 256 operations or an estimated 8 MiB
+    body, clamped to the server's 2000-action ceiling, with LFS
+    pointers excluded and the tail batch rebalanced
+  * LFS routing threshold drops from 1 MiB to 64 KiB
+  * A terminal commit failure now raises StorageError instead of
+    being lost silently, and HTTP 200 carrying Success: false
+    raises too
+  * Treat a 409 &quot;branch changed&quot; and a policy-rejected commit as
+    retryable; capacity pre-checks warn instead of failing
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Changes from version 0.4.4:
+  * Uploading with path_in_repo=&quot;.&quot; no longer fails: the Hub
+    rejected every commit with E3021. &quot;.&quot;, &quot;./&quot;, &quot;/&quot; and empty
+    now all mean the repository root, redundant separators and
+    &quot;.&quot;/&quot;..&quot; segments are collapsed, and a path escaping the root
+    is refused
+- MODELSCOPE_UPLOAD_LFS_FORCE_THRESHOLD_MB is deprecated for
+  MODELSCOPE_UPLOAD_LFS_FORCE_THRESHOLD, where a bare number now
+  means BYTES, not megabytes; suffixes such as 32KiB are accepted
+  and 0 forces LFS for every file
+- Deselect test_log_execution_records_the_build_before_import: it
+  asserts on caplog, which never sees the record because the
+  package logger sets propagate = False once initialised; the
+  audit line itself is still emitted
+
+</comment>
+    <requestid>1379432</requestid>
+  </revision>
 </revisionlist>

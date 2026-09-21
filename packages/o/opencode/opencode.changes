@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 21 06:20:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.31:
+  * Restore the ACP session model, effort, mode and reasoning chunk
+    boundaries when loading, resuming or forking a session
+  * Show remote config authentication errors during startup and
+    exit with a failure status
+  * Request summarized adaptive thinking for GitHub Copilot models
+- Retrace the vendor keep list (510 to 511 store entries): the
+  @ai-sdk/gateway bump to 3.0.191 pulls in @ai-sdk/provider 3.0.16
+  and @ai-sdk/provider-utils 4.0.51, and ai-gateway-provider 3.2.0
+  and gitlab-ai-provider 6.15.0 each collapse from two peer
+  resolutions to one. Three packages added, none removed, all
+  Apache-2.0; the SPDX set is unchanged and still has no copyleft
+- Refresh the models.dev catalogue snapshot: it is a live fetch,
+  so Source2 moves on every bump independently of the tag
+
+-------------------------------------------------------------------
 Tue Sep 15 06:32:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Highlight 31 of the languages the TUI used to download grammars

@@ -87,8 +87,8 @@ something a reviewer should have to work out.
 The keep list
 -------------
 
-opencode-vendor-keep.txt names the 510 store entries the vendor tarball
-keeps, out of the 995 that are left once the filtered install has had the
+opencode-vendor-keep.txt names the 511 store entries the vendor tarball
+keeps, out of the 1000 that are left once the filtered install has had the
 platforms we do not build for removed. It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
@@ -103,7 +103,7 @@ or @parcel/watcher-linux-x64-glibc. A plain run notices - the script's keep
 list check stops with "keep list names packages the install did not produce"
 - but --retrace is what the list is regenerated with, and the counterpart
 step described below can only add packages the install produced. Without
-these flags it writes a 507-entry list instead of 510 and the x86_64 build
+these flags it writes a 508-entry list instead of 511 and the x86_64 build
 on OBS, which is not the architecture this is generated on, is what finds
 out. The step after the install prunes the platforms we really do not want
 back out.
@@ -258,10 +258,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 1.18.30,
-across the 508 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 1.18.31,
+across the 510 shipped packages:
 
-    MIT 293, Apache-2.0 112, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
+    MIT 292, Apache-2.0 115, ISC 75, BSD-2-Clause 9, BlueOak-1.0.0 9,
     BSD-3-Clause 6, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither

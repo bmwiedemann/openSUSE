@@ -17,28 +17,30 @@
 
 
 Name:           python-py-key-value-aio
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        Async key-value store abstraction with multiple backends
 License:        Apache-2.0
 URL:            https://github.com/strawgate/py-key-value
-Source:         https://files.pythonhosted.org/packages/source/p/py-key-value-aio/py_key_value_aio-%{version}.tar.gz
-BuildRequires:  %{python_module aiofile >= 3.5.0}
+Source:         https://files.pythonhosted.org/packages/source/p/py_key_value_aio/py_key_value_aio-%{version}.tar.gz
+BuildRequires:  %{python_module aiofile >= 3.12.3}
 BuildRequires:  %{python_module anyio >= 4.4.0}
 BuildRequires:  %{python_module beartype >= 0.20.0}
 BuildRequires:  %{python_module cachetools >= 5.0.0}
 BuildRequires:  %{python_module keyring >= 25.6.0}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module typing_extensions >= 4.15.0}
 BuildRequires:  %{python_module uv-build}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-# uv-backend wheels don't expose deps to pythondistdeps, so require them by hand
-Requires:       python-aiofile >= 3.5.0
+# dist-info deps are not turned into RPM Requires, so list them by hand
+Requires:       python-aiofile >= 3.12.3
 Requires:       python-anyio >= 4.4.0
 Requires:       python-beartype >= 0.20.0
 Requires:       python-cachetools >= 5.0.0
 Requires:       python-keyring >= 25.6.0
+Requires:       python-typing_extensions >= 4.15.0
 BuildArch:      noarch
 %python_subpackages
 
@@ -59,7 +61,7 @@ over multiple backends (in-memory, filesystem, keyring, and more).
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import key_value.aio"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import key_value.aio.stores.memory"
 
 %files %{python_files}
 %doc README.md

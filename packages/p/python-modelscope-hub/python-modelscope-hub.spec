@@ -19,7 +19,7 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-modelscope-hub
-Version:        0.4.3
+Version:        0.4.5
 Release:        0
 Summary:        Official Python client for ModelScope Hub
 License:        Apache-2.0
@@ -81,7 +81,13 @@ commands.
 # The six test_openapi_coverage spec-drift guards read
 # tests/data/openapi.json, which the sdist does not ship; the rest of
 # that module checks the registry->method binding and still runs.
-%pytest -m "not remote" --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
+# test_log_execution_records_the_build_before_import asserts on
+# caplog.text, but utils/logger.py sets propagate = False on the
+# package logger, so nothing reaches pytest's root handler once any
+# earlier test has initialised it. The line IS emitted (it shows in
+# captured stderr) -- the assertion is order-dependent upstream, not a
+# defect here. Drop this deselect once upstream makes it order-safe.
+%pytest -m "not remote" --deselect tests/test_agent_plugin.py::test_log_execution_records_the_build_before_import --deselect tests/test_openapi_coverage.py::test_every_covered_operation_is_registered --deselect tests/test_openapi_coverage.py::test_registry_has_no_unknown_operations --deselect tests/test_openapi_coverage.py::test_registry_does_not_claim_deferred_tags --deselect tests/test_openapi_coverage.py::test_every_tag_is_accounted_for --deselect tests/test_openapi_coverage.py::test_spec_is_the_expected_document --deselect tests/test_openapi_coverage.py::test_covered_tags_account_for_every_registered_entry
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import modelscope_hub"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/modelscope-%{$python_bin_suffix} --help
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/ms-hub-%{$python_bin_suffix} --help

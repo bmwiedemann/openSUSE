@@ -188,4 +188,18 @@
     <comment>Prepare for RPM 4.20</comment>
     <requestid>1145247</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>a0ff593e437e0fd8c424d5ebad3210e4</srcmd5>
+    <version>3.6+svn420</version>
+    <time>1789986263</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.6+svn420:
+  + Applied patch to replace int with time_t (from openSUSE).
+  + Remove very old, surely obsolete, warning message.
+  + Fix a race condition in parallel builds.
+  + Change strncpy and sprintf to snprintf to avoid GCC warnings
+    and possible bugs/overflows.
+- Drop procmeter-avoid-build-race.patch: merged upstream.</comment>
+    <requestid>1379399</requestid>
+  </revision>
 </revisionlist>

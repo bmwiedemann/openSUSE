@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 18 06:07:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.24
+  * Some raw samples would be misdetected as an SNES BRR sample on
+    load. Also reduced the chance of raw samples being misdetected
+    as MP3/OGG/FLAC, although this was extremely unlikely to begin
+    with.
+  * Smp.Ed.: The filter preview didn't work as expected on looping
+    waveforms.
+  * Smp.Ed.: The filter preview duration has been lowered to 1
+    second.
+
+-------------------------------------------------------------------
 Tue Sep  1 14:20:05 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to versoin 2.23

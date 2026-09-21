@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:03:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.4.12:
+  Features:
+  * zones can now be specified by their offset
+  * named input formats can be dates only
+  * allow to overspecify ywd dates
+  Bugfixes:
+  * differences absolutely less than 24 hours but on different days are
+    calculated correctly
+  * differences on epoch based timestamps are implemented
+  * check if input fulfils %V/%W specs
+  * always ignore time zone fixups when using the "now" special
+  * when reading epochs do not treat 0 specially
+  * leap second transitions are detected properly
+  * datetest --isvalid also checks for fix-ups
+
+-------------------------------------------------------------------
 Fri Jan 26 06:36:10 UTC 2024 - jun wang <jgwang@suse.com>
 
 - Updat to version 0.4.11 

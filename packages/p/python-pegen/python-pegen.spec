@@ -25,8 +25,8 @@ URL:            https://github.com/we-like-parsers/pegen
 Source:         https://files.pythonhosted.org/packages/source/p/pegen/pegen-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM gh#we-like-parsers/pegen#104
 Patch0:         support-python-313.patch
-# PATCH-FIX-UPSTREAM gh#we-like-parsers/pegen#112
-Patch1:         support-python-314.patch
+# PATCH-FIX-UPSTREAM Based on gh#we-like-parsers/pegen#117
+Patch1:         support-python-315.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}

@@ -346,4 +346,25 @@ their well-known cousins (e.g. dtest vs. test, or dgrep vs. grep).</comment>
     <comment></comment>
     <requestid>1141918</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>6bcd0f8cdead9dc748c4153439001e02</srcmd5>
+    <version>0.4.12</version>
+    <time>1789986275</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.4.12:
+  Features:
+  * zones can now be specified by their offset
+  * named input formats can be dates only
+  * allow to overspecify ywd dates
+  Bugfixes:
+  * differences absolutely less than 24 hours but on different days are
+    calculated correctly
+  * differences on epoch based timestamps are implemented
+  * check if input fulfils %V/%W specs
+  * always ignore time zone fixups when using the &quot;now&quot; special
+  * when reading epochs do not treat 0 specially
+  * leap second transitions are detected properly
+  * datetest --isvalid also checks for fix-ups</comment>
+    <requestid>1379425</requestid>
+  </revision>
 </revisionlist>

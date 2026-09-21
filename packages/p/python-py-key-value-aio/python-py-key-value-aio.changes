@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:34:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.6:
+  * Add FileTreeStore.cull() to reclaim the disk space of expired
+    entries, which are otherwise only removed when something
+    reads the key, and fix a get() race
+  * Pass the username through in RedisStore
+  * A key literally named "info" is no longer silently hidden
+- Require aiofile >= 3.12.3, following upstream, and require
+  typing_extensions: it is an unconditional dependency whose
+  imports are unguarded, and nothing pulled it in on the Python
+  flavours we build
+
+-------------------------------------------------------------------
 Fri Jun 19 06:15:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.4.5)
