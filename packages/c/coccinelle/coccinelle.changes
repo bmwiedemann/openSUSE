@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:03:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.3:
+  * Clean up unused label and guard arguments in predmaker
+    and asttoctl2
+  * Cache satLabel results by predicate identity for faster
+    rule evaluation
+  * Minor documentation updates
+
+-------------------------------------------------------------------
 Sun Aug 23 23:23:23 UTC 2026 - ohering@suse.de
 
 - Update to version 1.3.2 (fe6931b57)

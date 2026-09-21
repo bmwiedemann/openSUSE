@@ -36,7 +36,7 @@
     <param name="exclude">tools/obsolete</param>
     <param name="exclude">tools/spgen/.gitignore</param>
     <param name="filename">coccinelle</param>
-    <param name="revision">fe6931b57746efa8912adfed9b47b9a8a903325d</param>
+    <param name="revision">11b93adb6516a358a6687051e5762136666626e0</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.inria.fr/coccinelle/coccinelle.git</param>

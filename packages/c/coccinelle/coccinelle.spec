@@ -1,7 +1,7 @@
 #
 # spec file for package coccinelle
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,7 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 %define     pkg coccinelle
 %global _buildshell /bin/bash
 Name:           %pkg%nsuffix
-Version:        1.3.2
+Version:        1.3.3
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Semantic patch utility
@@ -65,6 +65,7 @@ BuildRequires:  pkgconfig(python3)
 Requires:       findutils
 Requires:       grep
 Requires:       which
+
 %description
 Coccinelle is a program matching and transformation engine which
 provides the language SmPL (Semantic Patch Language) for specifying
@@ -84,6 +85,9 @@ fixing bugs in systems code.
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  hevea
+BuildRequires:  texlive-latex
+BuildRequires:  texlive-metafont
+BuildRequires:  texlive-mfware
 BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(parmap)
@@ -92,12 +96,15 @@ BuildRequires:  tex(8r.enc)
 BuildRequires:  tex(alltt.sty)
 BuildRequires:  tex(amsmath.sty)
 BuildRequires:  tex(amssymb.sty)
+BuildRequires:  tex(babel-english.tex)
 BuildRequires:  tex(boxedminipage.sty)
 BuildRequires:  tex(color.sty)
 BuildRequires:  tex(colortbl.sty)
 BuildRequires:  tex(comment.sty)
 BuildRequires:  tex(endnotes.sty)
+BuildRequires:  tex(english.ldf)
 BuildRequires:  tex(epsfig.sty)
+BuildRequires:  tex(fancyhdr.sty)
 BuildRequires:  tex(fancyvrb.sty)
 BuildRequires:  tex(fontenc.sty)
 BuildRequires:  tex(fullpage.sty)
@@ -120,12 +127,7 @@ BuildRequires:  tex(url.sty)
 BuildRequires:  tex(wrapfig.sty)
 BuildRequires:  tex(xspace.sty)
 BuildRequires:  tex(xy.sty)
-BuildRequires:  tex(babel-english.tex)
-BuildRequires:  tex(fancyhdr.sty)
-BuildRequires:  tex(english.ldf)
-BuildRequires:  texlive-latex
-BuildRequires:  texlive-metafont
-BuildRequires:  texlive-mfware
+
 %description
 Coccinelle is a program matching and transformation engine which
 provides the language SmPL (Semantic Patch Language) for specifying
@@ -136,6 +138,7 @@ desired matches and transformations in C code.
 BuildRequires:  %pkg = %version
 BuildRequires:  ocaml(ocaml.opt)
 BuildRequires:  ocamlfind(findlib)
+
 %description
 %endif
 
