@@ -1,4 +1,814 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:12:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.14:
+  * fix(opaprocessor): fix AllResources data race in
+    celParamObjectFinder (#3787)
+  * feat(fleet): add cross-cluster control matrix and fleet report
+    types (#3774)
+  * fix(printer): route SARIF, GitLab-SAST, HTML, and CSV fix-path
+    values through --show-secrets redaction (#3759)
+  * feat(mcpserver): introduce structured machine-readable error
+    responses (#3776)
+  * fix(httphandler): gracefully shut down HTTP server and scan
+    worker (#3769)
+  * fix(printer): honor --show-evidence in control and resource
+    views (#3775)
+  * chore: remove unused 1.png (#3772)
+  * test(cel): check the vendored bundle against the digests pinned
+    in the Makefile (#3742)
+  * fix(fix): warn when --output-dir is ignored for file-based
+    reports (#3767)
+  * ci: bump go.opentelemetry.io/otel/exporters/otlp/otlptrace
+    (#3762)
+  * ci: bump github.com/quay/claircore from 1.5.35 to 1.5.54
+    (#3764)
+  * ci: bump github.com/armosec/armoapi-go from 0.0.757 to 0.0.760
+    (#3766)
+  * ci: bump google.golang.org/api from 0.280.0 to 0.297.0 (#3761)
+  * fix(policyhandler): route mixed Framework/Control scan
+    identifiers by their own kind (#3768)
+  * feat(rules): add host-users-root-workload-v1 rule prototype
+    (#3754)
+  * ci: bump Codium-ai/pr-agent from 0.44.0 to 0.45.0 (#3765)
+  * ci: bump k8s.io/apimachinery from 0.36.2 to 0.37.0 (#3709)
+  * fix(diff): do not print usage when --fail-on-new fails (#3756)
+  * fix(scan): normalize kind case and support short names in
+    workload scan (#3730)
+  * fix(printer): generalize evidence redaction beyond
+    Secret-kind-only (#3752)
+  * fix(exposure): model GRPCRoute exposure paths with v1beta1
+    fallback (#3728)
+  * ci: bump docker/setup-qemu-action from 4.2.0 to 4.3.0 (#3750)
+  * chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0
+    (#3746)
+  * ci: bump Codium-ai/pr-agent from 0.43.0 to 0.44.0 (#3749)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.58.0 to
+    1.0.0 (#3747)
+  * ci: bump helm/kind-action from 1.14.0 to 1.15.0 (#3751)
+  * chore(deps): bump helm.sh/helm/v3 from 3.20.2 to 3.21.4 (#3748)
+  * fix(mcpserver): return explicit error for unsupported
+    resource_kind in scan_resource_slice (#3740)
+  * fix(git): use hex encoding for hashRepoURL instead of raw bytes
+    (#3720)
+  * fix(rbacgraph): order escalation results instead of reading map
+    order (#3739)
+  * docs: point ARMO guide at verified installer, drop stale copies
+    (#3731)
+  * fix(resourcehandler): retrieve single workload via Get instead
+    of List (#3722)
+  * fix(resultshandling): rebuild namespace rollup after severity
+    filtering (#3726)
+  * fix: do not print scan usage when --severity-threshold fails
+    (#3716) (#3717)
+  * feat(rules): detect Azure AKS Workload Identity in
+    provider-iam-assumption-v1 (#3724)
+  * feat(scan): extend --kube-contexts fleet mode to
+    framework/control/workload (#3440)
+  * feat(list): add --framework and --search filters to list
+    controls (#3623) (#3718)
+  * ci: bump sigstore/cosign-installer from 3.5.0 to 3.10.1
+  * chore(deps): fix Dependabot security vulnerabilities in Go
+    dependencies (#3715)
+  * feat(fix): select which controls to remediate with
+    --include-controls and --skip-controls (#3714)
+  * test: add vulnerability identity and deduplication test
+    coverage (#3653)
+  * fix(printer): include the scanned platform in GitLab finding
+    ids (#3713)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2 from 1.43.7 to
+    1.45.1 (#3711)
+  * chore(deps): bump github.com/mattn/go-isatty from 0.0.21 to
+    0.0.24 (#3710)
+  * Add URL context to repository scanner error messages (#3650)
+  * ci: bump mikepenz/action-junit-report from 6.4.2 to 6.5.0
+    (#3708)
+  * feat(scan): add per-namespace compliance rollup (#3704)
+  * feat(rbacgraph): model multi-hop RBAC privilege-escalation
+    paths (#3681)
+  * feat(scan): wire up sequential multi-cluster scanning via
+    --kube-contexts (#3438)
+  * feat(exposure): model spec.externalIPs, flag unconfirmed
+    cross-namespace backendRef as unclear (#3679)
+  * chore(deps): bump google.golang.org/protobuf (#3690)
+  * chore(deps): bump github.com/maruel/natural from 1.1.1 to 1.3.0
+    (#3696)
+  * refactor: consolidate httphandler into root Go module (#3706)
+  * chore(deps): bump github.com/go-openapi/runtime in /httphandler
+    (#3685)
+  * chore(deps): bump github.com/kubescape/backend in /httphandler
+    (#3684)
+  * fix(ci): prevent shell injection in tag-action composite action
+    (#3700)
+  * feat(fix): support cluster scan reports by printing patched
+    manifests (#3705)
+  * ci: bump anchore/sbom-action/download-syft from 0.24.0 to
+    0.24.2 (#3689)
+  * fix(score): route dead telemetry scorer output to
+    logger.L().Debug (#3702)
+  * ci: bump github/codeql-action/upload-sarif from 4.37.7 to
+    4.37.9 (#3691)
+  * ci: bump actions/setup-python from 5.6.0 to 7.0.0 (#3688)
+  * feat(scan): emit CycloneDX and SPDX SBOMs from posture scans
+    with --scan-images (#3698)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.57.0 to
+    0.58.0 (#3692)
+  * chore(deps): bump k8s.io/apimachinery in /httphandler (#3687)
+  * chore(deps): bump github.com/armosec/armoapi-go in /httphandler
+    (#3686)
+  * chore(deps): bump github.com/kubescape/go-logger from 0.0.28 to
+    0.0.34 (#3695)
+  * ci: bump golangci/golangci-lint-action from 9.2.0 to 9.3.0
+    (#3693)
+  * fix(getter): give custom rules a base score instead of leaving
+    it zero (#3676)
+  * feat(printer): include evidence paths in GitHub Actions
+    annotation messages (#3677)
+  * feat(printer): surface failed-path evidence values in JSON/YAML
+    output (#3256)
+  * fix(core): ensure OpenTelemetry spans are ended across all exit
+    and error paths (#3665)
+  * perf: stream JSON outputs instead of massive byte array
+    allocations in memory (#3670)
+  * feat(vap): list embedded admission policies and the controls
+    they implement (#3674)
+  * feat(resourcehandler): collect via namespaced endpoints under
+    --include-namespaces (#3683)
+  * feat(scan): scan multiple images in one run sharing the
+    vulnerability database (#3682)
+  * feat(exposure): model external exposure via Ingress, Gateway
+    API, and Service type (#3648)
+- Update to version 4.0.13:
+  * test(resourcehandler): add a synthetic-cluster collector memory
+    harness (#3614)
+  * test(cel): compare Rego and CEL verdicts for the converted
+    controls (#3603)
+  * feat(scan): record contract runner input digests (#3640)
+  * fix(opaprocessor): match CIS section numbers in
+    --skip-controls/--include-controls (#3658)
+  * feat(scan): send Microsoft Teams Adaptive Card notifications
+    for --notify webhooks (#3645)
+  * feat(config): add cached config validation (#3663)
+  * feat(mcpserver): add scan_workload tool for single-resource
+    scanning (#3669)
+  * fix(anonymizer): pseudonymize image-scan results under
+    --hide/--encrypt (#3661)
+  * fix(cel): honor an equivalent matchPolicy when scoping a policy
+    to a scanned object (#3673)
+  * fix(download): accept plural and alias target arguments (#3666)
+    (#3667)
+  * fix(mapreconcile): a policy gated by matchConditions is not a
+    confirmed match (#3654)
+  * fix(resourcesprioritization): don't drop attack tracks when a
+    resource matches more than one (#3659)
+  * fix(fixhandler): cross-control fix promotion checks the value,
+    not just the path (#3634)
+  * feat(networkpolicy,vulnexposure): correlate vulnerabilities
+    with NetworkPolicy exposure (#3632)
+  * fix(scancache): reset dirty flag after Flush writes cache file
+    (#3515)
+  * feat(config): support --format / -f flag in config view (#3641)
+    (#3642)
+  * fix(mapreconcile): match the subresource form of a resource
+    rule (#3646)
+  * feat(sarif): add stable scan fingerprints (#3639)
+  * feat(printer): add github-actions output format for inline PR
+    annotations (#3637)
+  * feat(scan): add SARIF contract validation output (#3622)
+  * fix(opaprocessor): evaluate rules against full input after
+    enumeration (#3628)
+  * feat(policy): scaffold custom Rego rules and refresh test
+    fixtures from rule output (#3635)
+  * feat(diff): add aggregate summary outputs (#3626)
+  * refactor: migrate gorilla/mux to net/http ServeMux (#3620)
+  * feat(telemetry): report image DB freshness (#3604)
+  * fix(anonymizer): anonymize Secret/ConfigMap names referenced
+    via spec.volumes (#3619)
+  * feat(list): filter controls by framework and search (#3624)
+  * fix(cel): evaluate every matchCondition, not just up to the
+    first false (#3630)
+  * feat: support --format json for the update command (#3617)
+  * feat(scan): add contract report provenance (#3607)
+  * feat(mapreconcile): add MutatingAdmissionPolicy discovery and
+    impact matching (#3606)
+  * fix: validate URLs in config set (#3585)
+  * refactor(resourcehandler): partition streaming collector items
+    as the pager yields them (#3613)
+  * fix(anonymizer): hide scan path, host and cluster identity
+    under --hide and --encrypt (#3611)
+  * fix(scan): enforce compliance-threshold in scan workload
+    (#3610) (#3612)
+  * feat(fixhandler): apply fixes to JSON manifests (#3608)
+  * fix(resourcehandler): do not report a kind's other served
+    versions as unexamined (#3609)
+  * [LFX 2026] chore(deps): bump opa-utils to v0.0.312 for
+    alertOnly exception semantics (#3615)
+  * feat(networkpolicy): add real NetworkPolicy reachability engine
+    (#3601)
+  * fix(vap): report a namespace selector that cannot narrow a
+    policy's cluster-scoped resources (#3597)
+  * refactor: remove deprecated FailedPath from codebase (#3598)
+  * fix: deduplicate included namespaces in splitNamespaces (#3599)
+  * feat(coverage): report resource kinds no control examined
+    (#3588)
+  * feat(cel): honor VAP spec.failurePolicy for validation
+    expression errors (#3583)
+  * feat(containerscan): validate layers, layer hashes, and
+    vulnerability names in `ScanResultReport.Validate()` (#3591)
+  * test(printer): add regression test for sensitive data exposure
+    in res… (#3582)
+  * fix(vapreconcile): correct binding-scope coverage for
+    cluster-scoped resources and Namespaces (#3592)
+  * fix(patch): filesystem-safe intermediate filenames and
+    update-all nil guard (#3596)
+  * fix(resultshandling): deterministic AssociatedControls ordering
+    across scans (#3590)
+  * feat(image): surface VEX status in reports (#3594)
+  * feat(list): show the control configuration a scan evaluates
+    against (#3586)
+  * fix(fixhandler): check the error from closing a fixed file, not
+    just writing it (#3580)
+  * feat(scan): add Slack webhook notifications (#3571)
+  * fix(anonymizer): restore reference-backed env var name
+    anonymization (#3579)
+  * feat(version): add yaml output format support (#3542) (#3543)
+  * feat(printer): support initContainers and ephemeralContainers
+    in assisted remediation paths (#3578)
+  * fix(cel): resolve a cluster-scoped paramRef, and refuse one
+    that selects params (#3575)
+  * feat(printer): generate a posture exceptions baseline from scan
+    results (#3560)
+  * feat(markdown): support image scan reports (#3573)
+  * fix(mcpserver): prefer ScanCoverage over the seeded summary
+    when flagging unevaluated controls (#3574)
+  * feat(mcpserver): add apply_remediation tool for deterministic
+    AI auto-patching (#3568)
+  * chore(cel): bump the pinned CEL policy library to v0.14 and
+    sync the bundle (#3556)
+  * fix(hostsensorutils): record a status when reported CRD items
+    cannot be read (#3561)
+  * fix(opaprocessor): guard InfoMap read against concurrent writes
+    in hasUnreachableDependency (#3563)
+  * fix(imagescan): bound GCP GetImagesScanStatus pagination loop
+    (#3566)
+  * feat(vapreconcile): add per-resource VAPBinding scope coverage
+    (#3570)
+  * fix(scan-coverage): surface skipped manifests in coverage and
+    fail gate (#3555)
+  * fix(opaprocessor): honor ResourceEnumerator output in scan path
+    (#3559)
+  * fix(opaprocessor): quote inline exception designator attributes
+    (#3558)
+  * chore(printer): clarify strings import dependency in
+    policyreportprinter.go (#3550)
+  * feat(getter): load custom rules from the standard rule
+    directory layout (#3553)
+  * feat(scan): apply repository scan contracts (#3537)
+  * chore(deps): bump github.com/kubescape/go-git-url from 0.0.31
+    to 0.0.33 (#3529)
+  * chore(deps): bump github.com/zclconf/go-cty from 1.17.0 to
+    1.19.0 (#3531)
+  * chore(deps): bump github.com/aws/aws-sdk-go-v2/config (#3528)
+  * chore(deps): bump github.com/owenrumney/go-sarif/v2 from 2.2.0
+    to 2.3.3 (#3523)
+  * chore(deps): bump github.com/jedib0t/go-pretty/v6 from 6.7.8 to
+    6.8.3 (#3530)
+  * test(policy): validate all in-tree rule fixtures in CI (#3546)
+  * test(printer): add edge case coverage for
+    AssistedRemediationPathsToString (#3548)
+  * ci: bump github.com/stretchr/testify in /httphandler (#3525)
+  * fix(storage): recover missing workload posture controls (#3545)
+  * ci: bump Codium-ai/pr-agent from 0.35.0 to 0.43.0 (#3535)
+  * chore(deps): bump github.com/kubescape/opa-utils in
+    /httphandler (#3524)
+  * fix(resourcehandler): a namespace filter naming no namespace
+    silently skips every namespaced query (#3539)
+  * fix: scope cluster size estimation to included namespaces
+    (#3538)
+  * chore(deps): bump github.com/kubescape/go-logger in
+    /httphandler (#3522)
+  * ci: bump docker/setup-buildx-action from 4.2.0 to 4.3.0 (#3534)
+  * fix(junit): distinguish image scan platforms (#3544)
+  * fix(opaprocessor): hard error when --include-controls matches
+    no known control (#3552)
+  * fix(config): make config set keys case-insensitive and accept
+    kebab-case (#3540) (#3541)
+  * chore(deps): bump github.com/armosec/armoapi-go in /httphandler
+    (#3526)
+  * fix(core): close output writers when Scan fails (#3232)
+  * ci: bump helm/kind-action from 1.10.0 to 1.14.0 (#3532)
+  * ci: bump mikepenz/action-junit-report from 5.6.2 to 6.4.2
+    (#3533)
+  * chore(deps): bump k8s.io/apimachinery in /httphandler (#3527)
+  * feat(scan): add generic webhook notifications (#3504)
+  * ci: bump rajatjindal/krew-release-bot from 0.0.47 to 0.0.51
+    (#3536)
+  * feat(scan): wire CEL ValidatingAdmissionPolicy evaluation into
+    the scan pipeline (#3513)
+  * fix(scan): validate --label-selector in ValidateCommonScanFlags
+    (#3502)
+  * feat(telemetry): export scan traces and metrics to an OTLP
+    collector (#3521)
+  * fix(opaprocessor): apply --skip-controls/--include-controls on
+    the streaming path (#3520)
+  * fix(vap): refuse a parameter reference that does not match the
+    bound policy's paramKind (#3511)
+  * fix(opaprocessor): make --skip-controls and --include-controls
+    case-insensitive (#3508)
+  * fix: initialize all vulnerability severities with placeholders
+    (#3498)
+  * fix(opaprocessor): honor namespace scope on incremental cache
+    hits (#3501)
+  * docs(cel): correct the authorizer skip scope and make the
+    verification recipe reproducible (#3496)
+  * fix(mcpserver): scan_resource_slice returns [] not null for an
+    empty result set (#3506)
+  * fix(hostsensor): enforce bounded decompression read in cache to
+    prevent OOM (CWE-400) (#3490)
+  * fix(metrics): export ResetForTest so external packages can
+    rebind instruments (#3483)
+  * fix(printer): restore missing strings import and add YAML
+    SetWriter tests (#3493)
+  * feat(scan): validate repository scan contracts (#3481)
+  * feat: Add GCP and Azure support for DescribeRepositories and
+    ListEnti… (#2573)
+  * chore(deps): bump opa-utils to v0.0.309 to pick up the NewScore
+    singleton fix (#3416)
+  * fix(opaprocessor): make scope-less exceptions apply to
+    resource-backed findings too (#3427)
+  * feat(policy): add kubescape policy test to run rule fixtures
+    against the real evaluator (#3477)
+  * fix(printer): restore missing strings import in
+    policyreportprinter.go (#3503)
+  * fix(cel): refuse a control whose paramKind the scan has no
+    binding to resolve (#3495)
+  * feat(mcpserver): add SSE transport and advanced MCP tools for
+    LLMs (#3375)
+  * fix(opaprocessor): stop caching rules that read resource status
+    (#3482)
+  * fix(imagescan): bound registry API responses (#3473)
+  * fix(httphandler): add optional bearer auth and trust boundary
+    docs for /v1 endpoints (#3461)
+  * fix(printer): centralize output path resolution (#3492)
+  * fix(printer): sanitize cluster and namespace identifiers in
+    PolicyReport names and labels (#3470)
+  * fix(anonymizer): anonymize env var names referencing fieldRef
+    and resourceFieldRef (#3484)
+  * feat(operator): add findings-driven targeting to the remediate
+    CLI (#3474)
+  * fix(scan): add --skip-controls and --include-controls flags for
+    selective control execution (#3480)
+  * fix: remove secrets from cluster size estimation to tighten
+    RBAC (#3478)
+  * Fix memory allocation spikes during opa evaluations (#2920)
+  * fix(imagescan): stop stalled GitLab pagination (#3472)
+  * feat: Add context-aware VAP for ActorTemplate and WorkerPool
+    (#3466)
+  * fix(install): quote paths and limit cleanup to canonical
+    locations (#3464)
+  * fix(vap): stop create-policy-binding silently rewriting the
+    label selector it was given (#3468)
+  * fix(scan): clarify --min-severity is output-only and warn about
+    thresholds (#3458)
+  * fix(resultshandling): apply severity filters to framework
+    control maps (#3455)
+  * fix(anonymizer): anonymize container names and images on
+    scanned workloads (#3463)
+  * fix(scan): fail explicitly on unmatched severity threshold
+    (#3456)
+  * fix: implement chunked pagination for namespace counting
+    (#3467)
+  * ci(comments): gate pr_agent on trusted commenter
+    author_association (#3449)
+  * fix(printer): stop printTopComponents eating the dash on empty
+    severities (#3450) (#3451)
+  * fix(resourcehandler): treat an undecided access review as
+    unchecked, not denied (#3446)
+  * fix(mcpserver): guard getPolicyGetter's lazy init, matching its
+    siblings (#3445)
+  * feat(scan): add --exclude-controls to drop controls from a
+    framework scan (#3441)
+  * fix(printer): support multiple image SBOM generation in
+    CycloneDX and SPDX printers (#3399) (#3400)
+  * feat: Streaming OpenVEX / CSAF Attestation Engine (#3294)
+  * fix(resourcehandler): resolve the core API group spelling on
+    live cluster scans (#3426)
+  * core: add ScanImageContext, closing the last explicit-context
+    gap from #3237 (#3442) (#3443)
+  * feat: support downloading all controls when no ID is specified
+    (#3435)
+  * feat: incremental scan caching to skip unchanged resources
+    (--incremental) (#3412)
+  * feat: Implement global chunked pagination for Kubernetes
+    resource retrieval (#3428)
+  * fix: enforce per-file size limit on file-scan path (#3453)
+  * feat(coverage): flag frameworks scored 100% purely from
+    irrelevant controls (#3421)
+  * fix(resultshandling): recompute score and counters after
+    severity filtering (#3436)
+  * feat(getter): support --custom-rules for user-authored Rego
+    rules (#3419)
+  * feat(scan): add --exclude-path and .kubescapeignore for local
+    scans (#3422)
+  * core: add ScanContext, an explicit-context scan entry point
+    (#3237) (#3432)
+  * fix(vapreconcile): credit admission enforcement to the policy a
+    binding names (#3433)
+  * ci: bound pr-scanner job runtime with timeout-minutes (#3431)
+  * ci: pin golangci-lint to v2.12.2 to avoid v2.13.0 staticcheck
+    timeout (#3429)
+  * fix(cautils): propagate scan errors from splitYAMLDocuments
+    instead of truncating silently (#3423)
+  * fix(reportcrypto): bind AEAD ciphertexts to the report that
+    owns them (#3414)
+  * feat(anonymizer): detect pseudo-ID collisions in
+    Mapping.GetOrCreate (#3417)
+  * fix: Add chunked pagination to SecurityException CRD retrieval
+    (#3393)
+  * feat(imagescan): add --skip-db-update flag for offline image
+    scanning (#3387)
+  * fix: accept key==value label selectors in vap
+    create-policy-binding (#3404)
+  * fix(anonymizer): transform env var names referencing
+    secrets/configmaps (#3364)
+  * feat(opaprocessor): add inline exception suppression via
+    resource annotations (#3392)
+  * fix: diff --severity-threshold fails closed on unresolvable
+    severity (#3406)
+  * fix: check SetWriter's error in writeBaselineHeadReport (#3410)
+  * fix: PolicyReportPrinter.CloseWriter now returns the close
+    error (#3408)
+  * fix(scan): apply the resource kind filters before collection,
+    not after (#3411)
+  * feat(scan): add --include-kinds and --exclude-kinds resource
+    kind filters (#3372)
+  * feat(imagescan): scan the correct platform for multi-arch
+    images (#3345)
+  * fix(printer): aggregate multiple image scan runs in SARIF
+    report printer (#3395) (#3396)
+  * fix(printer): normalize resource object before evidence path
+    extraction (#3397)
+  * test(cautils): skip helm chart symlink test when symlinks are
+    unavailable (#3398)
+  * fix(preflight): skip Kubescape-served resources in dry-run
+    access review (#3391)
+  * fix(vap): reject a resource rule the bound policy can never
+    match (#3394)
+  * fix(resultshandling): filter per-resource findings by severity,
+    not the unused Report.Results field (#3388)
+  * fix(krew): make .krew.yaml renderable and match published asset
+    names (#3389)
+  * fix(printer): show assisted-remediation paths in control-view
+    resource list (#3359)
+  * fix(diff): emit CI regression artifacts (#3379)
+  * feat: baseline drift detection for live cluster scans
+    (--baseline) (#3353)
+  * feat(rules): add approve-csr-v1 (#3298)
+  * fix(reportcrypto): derive the report master key with Argon2id
+    (#3382)
+  * fix(printer): prevent out-of-bounds slice index panic in
+    getSortedControlsIDs (#3363) (#3365)
+  * fix(printer): dedupe enriched failed paths against bare delete
+    paths (#3358)
+  * fix(printer): format N/A and percentage compliance score
+    correctly in… (#3362)
+  * fix(printer): resolve indexed paths when lists are
+    []map[string]any (#3357)
+  * fix: count manual-control exceptions in the exception audit
+    (#3371)
+  * feat: emit exception-match events for file/cloud exceptions too
+    (#3373)
+  * fix: subsume CRD exceptions with a scope-less cloud exception
+    (#3370)
+  * test: skip directory permission test on windows (#3380)
+  * feat: surface vulnerability DB freshness in image-scan results
+    (#3356)
+  * fix: repair master build breaks from module v4 bump and
+    min-severity PR (#3361)
+  * chore(goreleaser): embed E2E hook as single script (#3299)
+  * fix: Terraform loader now recurses into subdirectories, like
+    Helm/Kustomize (#3349)
+  * perf(opaprocessor): cache LARGE_CLUSTER_SIZE threshold per
+    OPAProcessor (#3342)
+  * feat(scan): extend --min-severity to all output formats and add
+    --max-severity (#3337)
+  * fix: compare --output file extensions case-insensitively
+    (#3334)
+  * Keep CRD exceptions that a narrower cloud exception does not
+    actually cover (#3351)
+  * fix(release): sign release assets with keyless cosign (#3344)
+  * fix(resourcehandler): skip discovered resources that do not
+    support list (#3346)
+  * fix(cel): match CRD plurals the kind guess spells wrong (#3355)
+  * fix(gomod): bump module path to /v4 to match release tags
+    (#3350)
+  * chore(deps): bump github.com/kubescape/rbac-utils from
+    0.0.21-0.20230806101615-07e36f555520 to 0.0.21 (#3170)
+  * chore(deps): bump github.com/mark3labs/mcp-go from 0.29.0 to
+    0.57.0 (#3168)
+  * fix(imagescan): tighten gitlab imageMatches suffix check
+    (#3340)
+  * feat(rules): add weak-namespace-token-access-v1 (#3339)
+  * fix: embed HTML report logo instead of loading it from GitHub
+    (#3336)
+  * fix(printer): add container names to HTML/SARIF evidence paths
+    (#3301)
+  * fix(prettyprinter): stop treating resource-derived text as a
+    format string (#3333)
+  * chore(deps): bump github.com/open-policy-agent/opa from 1.14.1
+    to 1.19.0 (#3167)
+  * chore(deps): bump go.opentelemetry.io/otel/sdk/metric (#3164)
+  * chore(deps): bump sigs.k8s.io/kustomize/api from 0.20.1 to
+    0.21.1 (#3162)
+  * feat(rules): add modify-node-status-v1 (#3330)
+  * feat(rules): add modify-pod-status-v1 (#3332)
+  * feat(scan): implement missing controls listing in ScanAll
+    functionality (#3300)
+  * fix: enforce keep-local/omit-raw-resources and submit flag
+    mutual exclusivity for all scan commands (#3307)
+  * fix: avoid multiple and empty setNotBusy calls (#3311)
+  * fix: normalize namespace '*' to empty string for cluster-wide
+    scans (#3087)
+  * fix(hostsensor): stop caching empty host sensor collections
+    (#3324)
+  * ci: bump ossf/scorecard-action from 2.4.3 to 2.4.4 (#3319)
+  * ci: bump actions/attest-build-provenance from 2.4.0 to 4.2.2
+    (#3320)
+  * ci: bump docker/setup-buildx-action from 3.12.0 to 4.2.0
+    (#3321)
+  * ci: bump actions/create-github-app-token from 1.12.0 to 3.2.0
+    (#3322)
+  * ci: bump github/codeql-action/upload-sarif from 4.37.6 to
+    4.37.7 (#3323)
+  * ci: bump github.com/armosec/armoapi-go in /httphandler (#3318)
+  * ci: bump github.com/go-openapi/runtime in /httphandler (#3315)
+  * ci: bump github.com/kubescape/go-logger in /httphandler (#3317)
+  * fix(opaprocessor): flag Passed verdicts reached on incomplete
+    RBAC-dependent data (#3183)
+  * fix(makefile): verify sync-vap downloads against pinned SHA256
+    digests (#3036)
+  * fix(rules): handle empty resourceNames in
+    modify-privileged-pods-v1 (#3313)
+  * fix(download): handle nested output directory creation and
+    error wrapping (#3305) (#3306)
+  * fix(exceptions): error on zero-match namespaceSelector in
+    ClusterSecurityException (#3310)
+  * feat(vap): scope a generated policy binding to specific
+    resources (#3283)
+  * fix(diff): detect evidence-level regressions (#3275)
+  * docs(opaprocessor): add process flow documentation and package
+    comment (#3290)
+  * fix(resourcehandler): dedupe served-version aliases in
+    streaming collector (#3303)
+  * test(mcpserver): treat CallTool namespace '*' as cluster-wide
+    (#3212)
+  * fix(cautils): use sync.Once to safely stop PortForwarder
+    without dropping stop signals (#3272) (#3273)
+  * fix(ci): refresh expired SECURITY-INSIGHTS.yml and enforce its
+    freshness (#3285)
+  * fix(scan): keep CRD policy clients target-scoped (#3262)
+  * fix: add missing CronJob, ReplicaSet, and Job support to MCP
+    get_configuration_drift tool (#3282)
+  * fix(results): preserve exception audit in programmatic JSON
+    (#3277)
+  * fix(scan): report parse failures suppressed by "{{" content
+    sniff (#3274)
+  * ci: bump docker/setup-qemu-action from 3.7.0 to 4.2.0 (#3160)
+  * ci: bump docker/login-action from 3.7.0 to 4.6.0 (#3156)
+  * ci: bump goreleaser/goreleaser-action from 6.4.0 to 7.2.3
+    (#3158)
+  * chore(deps): bump
+    go.opentelemetry.io/contrib/instrumentation/github.com/gorilla/mux/otelmux
+    (#3169)
+  * feat(rules): add modify-service-status-v1 (#3291)
+  * fix(vap): validate the --from-release tag before building the
+    release URL (#3296)
+  * fix(scan): fail closed on unknown-severity findings in
+    --severity-threshold (#3281)
+  * fix(scan): preserve exact manifest file selection (#3270)
+  * feat(scan): add --show-evidence (-E) and --show-secrets flags
+    (#3220)
+  * fix(streaming): report complete resource telemetry (#3260)
+  * fix(cache): preserve rolling fallback across pinned scans
+    (#3258)
+  * fix(scan): collect a resource once when several API versions
+    serve it (#3297)
+  * fix(scan): reject trailing JSON manifest data (#3264)
+  * fix(printer): annotate init/ephemeral container names on
+    evidence paths (#3292)
+  * feat(printer): render map/slice values in AssistedRemediation
+    evidence (#3254)
+  * fix(patch): close intermediate scan file and guarantee cleanup
+    on error (#3269) (#3271)
+  * feat(sarif): resolve each FailedPath to its own relatedLocation
+    (#3257)
+  * fix(scan): reject NaN posture thresholds (#3279)
+  * fix(config): mask the cached access key in `config view` output
+    (#3266)
+  * feat(vap): allow a policy binding to declare multiple
+    validation actions (#3295)
+  * fix(rules): guard privilege-escalation RBAC rules with
+    resourceNames (#3201)
+  * feat(vapreconcile): add dynamic discovery and fallback for VAP
+    versions (#2880)
+  * feat(gitlab-sast): populate Solution field with fix paths and
+    current values (#3182)
+  * fix(cel): honor matchConstraints rule scope when scoping
+    offline VAP evaluation (#3251)
+  * fix(reporter): split report before first result exceeds limit
+    (#3137)
+  * feat(imagescan): add native GitLab vulnerability adaptor
+    (#3210)
+  * fix(decrypt): restore complete encrypted reports (#3198)
+  * feat: Add eBPF telemetry correlation interface (#3226)
+  * feat: add PolicyReport/ClusterPolicyReport (wgpolicyk8s.io)
+    output format (#3125)
+  * feat(cel): evaluate VAP matchConditions offline instead of
+    refusing the control (#3222)
+  * fix(http): add graceful shutdown to watchForScan goroutine
+    (#3195)
+  * feat: parallelize OPA control evaluation (#2825)
+  * feat(imagescan): add native Harbor vulnerability adaptor
+    (#3209)
+  * fix(diff): propagate output errors (#3191)
+  * fix(core): pin policy handler during collection (#3250)
+  * fix(mcpserver): return marshal errors from
+    get_configuration_drift (#3211)
+  * fix(results): preserve scan ID in posture reports (#3239)
+  * fix(core): return finalized data with OPA errors (#3243)
+  * feat(mcp): add scan_controls, scan_local_iac_controls,
+    list_frameworks, and list_controls tools (#3252)
+  * fix(anonymizer): stop a Windows drive letter from masking
+    sourcePath (#3202)
+  * fix: prevent panic in getLastLineOfResource for empty yaml
+    files (#3203)
+  * feat(rules): add steal-privileged-pods-v1 (#3224)
+  * fix(cautils): add cluster-context isolation helper for
+    sequential multi-cluster scans (#3218)
+  * fix(metrics): report latest resource counts (#3248)
+  * fix(mcpserver): detach new callers from canceled scans (#3176)
+  * feat(vapreconcile): discover the served VAP API version instead
+    of assuming v1 (#3196)
+  * perf(printer): dedupe image scan summary in O(N) via a shared
+    helper (#3178)
+  * fix(scan): treat zero loaded controls as a coverage failure
+    (#3200)
+  * test(cel): assert every params.settings key a bundle policy
+    reads is shipped (#3205)
+  * fix(core): report cached exceptions as degraded (#3241)
+  * fix(http): handle JSON marshal errors in responseToBytes
+    (#3193)
+  * refactor(resourcehandler): count streaming namespaces in place
+    (#3236)
+  * fix(policyhandler): bypass shared cache for local policies
+    (#3234)
+  * fix(printer): migrate v2 report printers to return errors from
+    CloseWriter (#3214) (#3215)
+  * fix(getter): propagate context to cloud requests (#3246)
+  * test(config): assert view flags are passed to ViewConfig
+    (#3216)
+  * test(diff): cover --fail-on-new and severity-threshold gating
+    (#3213)
+  * fix(ksinit): resolve the kubeconfig home directory with
+    os.UserHomeDir (#3197)
+  * fix(reporter): make posture report chunking deterministic
+    (#3230)
+  * fix(cautils): make config serialization non-mutating (#3228)
+  * fix(cel): resolve CRD resource plurals the kind guess cannot
+    reach (#3177)
+  * fix(reporter): clean up generated credentials on all early
+    returns (#3180)
+  * fix(anonymizer): widen --hide pseudonym suffix past the 32-bit
+    collision bound (#3221)
+  * fix(imagescan): reject invalid exception target regexes (#3192)
+  * fix(junit): include image findings in combined scans (#3190)
+  * fix(imagescan): use match metadata for severity gates (#3189)
+  * fix(update): make version-check handler injectable for unit
+    tests (#3152)
+  * docs(workflows): correct default branch and stale CI process in
+    workflows README (#3118)
+  * feat(rules): add assign-serviceaccount-to-pod-v1 (#3148)
+  * feat(rules): add issue-token-secrets-v1 (#3174)
+  * fix(storage): implement control merge strategy for
+    WorkloadConfigurationScan (#3107)
+  * fix(host-cache): isolate concurrent temporary files (#3108)
+  * fix(resourcehandler): use path aliases for containment (#3064)
+  * Add opt-in audit for posture exceptions (#3095)
+  * fix(hostsensor): emit error when CRD list is empty but nodes
+    exist (#3172)
+  * feat(rules): add weak-namespace-pod-rce-v1 (#3147)
+  * chore(deps): bump k8s.io/apimachinery in /httphandler (#3165)
+  * ci: bump actions/upload-artifact from 4.6.2 to 7.0.1 (#3159)
+  * feat(rules): add provider-iam-assumption-v1 (#3149)
+  * chore(deps): bump github.com/armosec/armoapi-go in /httphandler
+    (#3161)
+  * fix(reporter): thread context to HTTP submissions to allow
+    cancellation (#3153)
+  * feat(rules): add modify-privileged-pods-v1 (#3146)
+  * chore(deps): bump github.com/kubescape/k8s-interface in
+    /httphandler (#3166)
+  * fix(opaprocessor): add C-0261 to whole-cluster control fallback
+    (#3150)
+  * chore(deps): bump go.opentelemetry.io/otel in /httphandler
+    (#3163)
+  * ci: bump actions/setup-go from 5.6.0 to 7.0.0 (#3157)
+  * fix(opaprocessor): redact ConfigMap binaryData (#3132)
+  * fix(version): propagate text output errors (#3129)
+  * test(imagescan): add DI-based Login and pagination coverage for
+    Azure/ECR adaptors (#3035)
+  * fix(scan): validate minimum severity for subcommands (#3131)
+  * fix(scan): reject invalid persistent flag values (#3130)
+  * fix(terraform): map sysctl blocks to Kubernetes sysctls (#3133)
+  * fix(output): keep combined renderers from mutating scan data
+    (#3139)
+  * fix(resourcehandler): scan Terraform-only directories (#3135)
+  * fix(output): return explicit output setup errors (#3140)
+  * fix(hostsensor): return nil handler on initialization error
+    (#3119)
+  * fix(hostsensor): remove dead protobuf config code for dynamic
+    client (#3115)
+  * fix: validate layers and vulnerabilities in ScanResultReport
+    (#3126)
+  * test: fix macOS CI by evaluating TempDir symlinks in
+    excludeFilesUnderDirectories (#3124)
+  * fix(portforward): preserve kubeconfig server URL (#3103)
+  * chore(hostsensor): delete leftover empty json.go file (#3121)
+  * fix(junit): disambiguate duplicate testcase names with control
+    ID (#3141)
+  * fix(ci): restore valid YAML in dependabot.yaml and guard it
+    (#3128)
+  * fix(containerscan): make IsRCE classification case-insensitive
+    (#3143)
+  * fix(cel): populate request.resource plural from the same guess
+    appliesTo scopes with (#3099)
+  * fix(patch): read registry credentials from the environment
+    (#3145)
+  * feat(scan): add --dry-run RBAC preflight check (#3083)
+  * fix(prometheus): escape dynamic label values (#3104)
+  * security: remediate gosec v2.27.1 SAST findings (#3114)
+  * Add RBAC-police rules for issue #916: impersonate, token-mint,
+    escalate, bind, node-proxy, PV create (#3093)
+  * fix(core): stop TestGetDownloadReleasedPolicy failing on
+    transient GitHub 5xx (#3122)
+  * fix(fixhandler): reject yq expression syntax in report fix
+    paths (#3096)
+  * fix(mcpserver): add concurrency limits for expensive scans
+    (#3089)
+  * fix: Windows absolute paths parse correctly when document index
+    is omitted (#3070)
+  * feat: surface skipped manifests at scan completion (#3031)
+  * fix(imagescan): add guards for empty Hash and Tag in ECR
+    adaptor (#3058)
+  * fix: stringify error before json.Marshal in RecoverFunc to
+    avoid empty body (#3075)
+  * fix(cautils): validate file-scan YAML manifests against the
+    client-go scheme (#3078)
+  * fix: guard mergeMaps against nil new parameter for defensive
+    nil-safety (#3072)
+  * fix(cel): honor failurePolicy Fail for validation eval errors
+    (#3082)
+  * feat(config): add config view output formats (#3055)
+  * fix(cel): derive remediation paths through concatenated
+    container lists (#3079)
+  * fix: use C-0035 instead of C-0016 for RBAC scanning (#3085)
+  * fix(scan): re-register --fail-threshold as hidden deprecated
+    flag (#3066)
+  * fix(scan): resolve markdown output paths with the .md extension
+    (#3073)
+  * fix(httphandler): stop honoring client-supplied
+    account/accessKey in scan requests (#3068)
+  * fix(opaprocessor): evaluate whole-cluster controls once after
+    per-namespace batching (#3080)
+  * fix(install): verify downloaded binaries against the release
+    checksum manifest (#3067)
+  * fix(gitlabsast): reject absolute paths filepath.IsAbs does not
+    recognise (#3076)
+  * perf(fileutils): resolve directory ownership by ancestor lookup
+    instead of scanning every directory (#3092)
+  * fix(mcpserver): log policy-store initialization errors at
+    startup (#3091)
+  * test(printer): close leaked file handles and skip POSIX mode
+    check on Windows (#3077)
+  * fix(opaprocessor): deduplicate merged paths for resources
+    evaluated in every scope (#3060)
+  * feat(sarif): show current field values in evidence paths
+    (#3062)
+  * Add C-0298: detect subjects that can attach ephemeral
+    containers to pods (#3017)
+  * fix(httphandler): prevent metrics scrapes from hijacking latest
+    scan status and results (#3034)
+  * fix(scan): propagate combined image scan failures (#2965)
+  * fix(printer): truncate control names on rune boundaries to
+    avoid inva… (#3048)
+  * refactor: extract shared image adaptor boilerplate  (#3026)
+  * feat: add --min-severity flag to filter JSON scan output by
+    severity (#3053)
+  * fix(imagescan): prevent Grafeas filter injection via
+    resourceURL (#3052)
+  * fix(resourcehandler): block Secret reads via single-resource
+    scan (#2892)
+
+-------------------------------------------------------------------
 Wed Aug 12 11:13:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.12:
