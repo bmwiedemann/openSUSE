@@ -1,4 +1,285 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:10:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.75:
+  * Added
+    - md093: add opt-in rule for inline formatting in headings
+      (ed627ef)
+  * Fixed
+    - md013: add opt-in link text wrapping (effdb6a)
+    - MD013: protect opt-in bracket display math during reflow
+      (e2c7fe8)
+    - MD044: add opt-in whole-word matching for identifiers
+      (013621e)
+
+-------------------------------------------------------------------
+Sat Sep 19 17:02:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- License: MIT AND MPL-2.0 (MPL-2.0 from the colored crate)
+- ExclusiveArch %{rust_tier1_arches}; drop rust-toolchain.toml;
+  keep DWARF (CARGO_PROFILE_RELEASE_STRIP=none)
+
+-------------------------------------------------------------------
+Sat Sep 19 07:57:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.74:
+  * Added
+    - code-block-tools: add explicit rumdl, oxfmt, djlint, and
+      shuck modes (77f0e55)
+  * Fixed
+    - MD092: allow scoped suppression of documented conflicts
+      (6f9a6cb)
+    - MD032: keep parent list items open after nested lists
+      (952c507)
+    - MD026: delete a setext heading's trailing punctuation where
+      it stands (7f0981c)
+    - parser: keep link reference definitions out of a setext
+      heading (80fdfc3)
+    - parser: read the whole paragraph as a setext heading
+      (5d7b046)
+    - parser: lint the headings a short or quoted setext underline
+      makes (e183924)
+    - parser: keep a container open below a block written inside it
+      (e2c13b7)
+    - parser: read an empty list item under a paragraph as its text
+      (68a04ae)
+    - MD013: write one space at a soft break after a trailing space
+      (6388794)
+    - MD013: keep a whole-line display math expression on its own
+      line (cc518ab)
+    - MD013: read no math span through a code span (f069246)
+    - MD013: keep a definition-list marker written on its own line
+      (7e11b9e)
+    - MD013: split a CJK sentence only where its delimiter runs
+      pair (06ba814)
+    - MD013: keep a closing bracket with the CJK sentence it ends
+      (a2a82de)
+    - MD057: require the link target's exact case on
+      case-insensitive filesystems (202da50)
+    - MD057: check inline links whose text wraps onto another line
+      (943d1de)
+    - parser: read a link label to the bracket the inline parse
+      closes it at (8ace221)
+    - parser: read no setext heading inside an HTML block (9eebbd3)
+    - parser: end a paragraph at an MDX flow expression (8f2def2)
+    - MD090: report a break under the underline of an equals setext
+      heading (b78d5eb)
+    - MD065: keep the underline of a quoted setext heading
+      (320b7d0)
+    - parser: detect setext headings that start with markup or sit
+      in a blockquote (5513bb8)
+    - lsp: apply only the fixes rumdl fmt applies in Fix all
+      (1c7aabe)
+    - discovery: match a rooted Windows path without a drive
+      against absolute exclude patterns (a021a02)
+    - mdx: pass the MDX recovery tests in builds without debug
+      assertions (adb5d17)
+    - cli: mark fixed the finding the fix resolved when another
+      says the same thing (9061b88)
+    - stdin: write a piped document back unchanged when no fix
+      applies (6ed5b5b)
+    - cli: keep a diff out of JSON Lines output (15a575b)
+    - cli: list beside a diff the findings it leaves unfixed
+      (c5a5c7a)
+    - cli: keep each Rust doc comment line's prefix when a fix adds
+      or removes lines (b48d4b6)
+    - cli: state each summary count once, with singular nouns for
+      one (fc451cb)
+    - stdin: honor fmt --check, fmt --diff and check --diff for
+      piped documents (bb95a6d)
+    - cli: print --diff and fmt --check output as a patch git apply
+      accepts (48af0f0)
+    - discovery: exclude a named or piped file whenever a directory
+      walk would skip it (009e440)
+    - stdin: apply exclude patterns to --stdin-filename and
+      --stdin-batch paths (6cf7b89)
+- Update to version 0.2.73:
+  * Fixed
+    - MD022,MD031,MD032,MD058: count a comment-only line as a blank
+      line (b394e30)
+    - MD057: stop requiring index.md for directory links in
+      filesystem mode (c04ae4e)
+    - MD051: validate fragments in repository-absolute cross-file
+      links (ead5f39)
+    - parser: stop reading headings inside blocks whose body is not
+      Markdown (59958b1)
+    - MD077: carry a code block's interior indentation when
+      reindenting its fence (00c578d)
+- Update to version 0.2.72:
+  * Added
+    - MD090: add rule flagging horizontal rules directly before
+      headings (09dcae5)
+  * Fixed
+    - MD013: end a sentence after a closing marker run of any shape
+      (e63206c)
+- Update to version 0.2.71:
+  * Fixed
+    - MD034: do not report the tail of a schemed URI as a bare
+      email (a8df862)
+    - lsp: write the mailto scheme when converting a bare email to
+      a link (600e229)
+    - config: measure suggestion distance in characters, not bytes
+      (eabdf80)
+    - MD034: emit a link, not an autolink, when fixing bare URLs in
+      MDX (98a6255)
+    - config: suggestion panics on multibyte characters (dd88a4a)
+- Update to version 0.2.70:
+  * Fixed
+    - mdx: recover instead of crashing on unclosed JSX in a link
+      label (35de79c)
+    - lsp: index links whose paths contain parentheses (bc5adc0)
+    - MD057: handle balanced parentheses in link paths (b2a9ce9)
+    - MD032: respect suppression at each list boundary (9aeb5f3)
+    - MD087,inline-config: ignore directives inside inline code
+      spans (749a7ea)
+    - stdin: preserve original bytes when formatting is unchanged
+      (2c84470)
+    - MD046: align fence repairs with diagnostic edits (443892e)
+    - MD032: preserve line endings in document fixes (60bae56)
+  * Performance
+    - MD024: avoid cloned keys and redundant diagnostic work
+      (ffebf4e)
+- Update to version 0.2.69:
+  * Fixed
+    - MD032: recognize spaced nested blockquotes (974540f)
+    - MD032: separate lists from standalone code fences (e335c58)
+    - mdx: avoid parser panic on malformed Setext headings
+      (5e4a387)
+    - preserve markdown containing merge conflicts (8aabd3d)
+    - deps: remove unmaintained paste and atomic-polyfill (e2ab5cb)
+- Update to version 0.2.68:
+  * Fixed
+    - MDX: recognize Markdown links and images inside JSX elements,
+      including generated reference tables, without requiring blank
+      lines. This removes false MD091 warnings and lets normal link
+      rules check the content. JavaScript expressions, JSX
+      attributes, comments, and code are excluded, and link fixes
+      preserve source labels and positions (#801).
+  * Performance
+    - Reduce regex locking and redundant rule work.
+    - Precompute proper-name lookups and streamline regex caching.
+- Update to version 0.2.67:
+  * Fixed
+    - code-block-tools: survive a tool that exits without reading
+      its input (a3f2b15)
+    - MD042: do not report an image with an unparseable destination
+      as an empty link (600236e)
+    - code-block-tools: report missing tool binaries instead of
+      passing silently (fd83c4b)
+    - code-block-tools: report tool failures from the format path
+      (4f92370)
+- Update to version 0.2.66:
+  * Fixed
+    - MD051: GitHub-style anchors match GitHub.com for a § in the
+      heading and for an emoji not surrounded by spaces (#854)
+      (d530737). A link written to the old slug is now reported,
+      and MD073 regenerates the TOC entry of such a heading on its
+      next fix; MD080 and the LSP heading rename use the same slug.
+    - MD063: recognize an ordinal wrapped in punctuation (473bf51)
+    - MD013: keep a link-only line inside the sentence it continues
+      (3e767ee)
+    - MD013: read require-sentence-capital when counting sentences
+      (8706780)
+  * Added
+    - config: apply inline --config overrides to the non-rule
+      sections (7737dca)
+    - cli: accept format as a hidden alias for fmt (0cd9168)
+- Update to version 0.2.65:
+  * Added
+    - MD091: add opt-in rule for markdown inside HTML blocks
+      (4333acf)
+    - cli: add --no-code-block-tools and --only-code-block-tools
+      mode flags (#829) (fc410f7)
+    - config: show every configuration section in rumdl config
+      (#851) (4dc0d30)
+  * Fixed
+    - config: parse [tool.rumdl.code-block-tools] in pyproject.toml
+      (#851) (87b159d)
+    - config: report a malformed code-block-tools section (ed1b7c5)
+    - config: report the line length MD013 enforces (a4bf2a7)
+    - config: state that an empty section in rumdl config is empty
+      (cac7b76)
+    - config: print each code-block-tools setting on one line
+      (02ba15d)
+    - MD046: preserve code blocks during style conversion (9f13f3b)
+    - MD063: preserve the English first-person pronoun in
+      sentence-case headings (#845) (35b2df9)
+    - MD063: honor pronoun boundaries and explicit ignores
+      (0604c03)
+- Update to version 0.2.64:
+  * Added
+    - flavor: add preview support for GitHub Agentic Workflows
+      (gh-aw), including imports and current conditional branch
+      syntax (39f7263)
+    - Rust API: add MarkdownFlavor::GhAw; downstream exhaustive
+      matches must handle the new variant
+    - MD089: add opt-in cjk-spacing rule (50f40a2)
+    - MD089: add configuration for cjk-spacing symbol sets
+      (868e933)
+    - unicode: add is_cjk_letter predicate (087e518)
+  * Fixed
+    - MD013: handle sentences ending before code spans in
+      sentence-per-line reflow (#811, #812) (576e2c1)
+    - MD022: accept per-level arrays during validation (976087c)
+    - MD051: slug headings with the whitespace an anchor element
+      leaves (04cbfc2)
+    - MD057: exclude Markdown-looking frontmatter strings from body
+      link validation and workspace indexing (39f7263)
+    - MD041: never move or promote headings across GitHub Agentic
+      Workflow control boundaries (39f7263)
+    - MD063: capitalize opening link labels in sentence case
+      (88ea8b7)
+    - MD073: skip TOC entries for headings that slug to nothing
+      (41e2312)
+    - docs: improve responsive accessibility (4b54ce5)
+- Update to version 0.2.63:
+  * Added
+    - brand: refine wordmark typography (e871dcb)
+    - playground: rebuild browser editor (35e27df)
+    - analytics: classify aggregate referral sources (3cc0ef2)
+    - brand: add social previews and npm identity (d6971f6)
+    - docs: restore terminal capture colors (eccf710)
+    - docs: frame terminal capture (084fc30)
+    - docs: use real terminal capture (e417bae)
+    - docs: replace hero proof with real terminal (6c66a07)
+    - docs: sharpen homepage activation path (a60b622)
+    - docs: expose private adoption snapshot (da299bb)
+    - brand: adopt Heading Pulse identity (1a05c28)
+    - docs: activate adoption analytics and reporting (3a0b64f)
+    - docs: improve website and product documentation (ad4ebf9)
+  * Fixed
+    - deps: update vulnerable development dependencies (8489019)
+    - MD051: register HTML anchors as browsers resolve them
+      (e4615b0)
+    - MD063: preserve every inline HTML tag in headings (e5de9cf)
+    - MD073: read TOC markers and heading anchors as rendered
+      (6a8eba2)
+    - MD061: preserve matched term casing in diagnostics (11bf7cd)
+    - MD029: check parenthesized markers and ordered-only documents
+      (c67c96c)
+    - MD041: promote only paragraph lines and measure title length
+      in characters (faba034)
+    - MD026: keep entity and emoji shortcode delimiters in headings
+      (ab0886d)
+    - MD009: honor br-spaces below 2 as no line-break exception
+      (39bba7c)
+    - docs: sharpen closing invitation (32f8e33)
+    - docs: clarify repository check actions (136eb57)
+    - docs: restore homepage documentation gateway (db5ae8f)
+    - output: show full Windows paths without the verbatim prefix
+      (2dbfd15)
+    - output: drop the Windows verbatim prefix from SARIF artifact
+      URIs (c9a8758)
+    - output: harden machine-readable formats (3e2816d)
+    - docs: ignore out-of-contract adoption rows (473620d)
+    - docs: enforce analytics event contract (cc7d4c8)
+    - docs: make uvx the primary trial command (3fc2727)
+    - cli: honour --disable all and disable = ["all"] in rumdl
+      check (22a3b37)
+    - docs: bind production analytics dataset (33f26c9)
+    - docs: make homepage links verifiable (df67325)
+
+-------------------------------------------------------------------
 Fri Aug 28 08:50:43 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.62:

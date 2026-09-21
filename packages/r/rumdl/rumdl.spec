@@ -17,20 +17,19 @@
 
 
 Name:           rumdl
-Version:        0.2.62
+Version:        0.2.75
 Release:        0
 Summary:        Markdown Linter written in Rust
-License:        MIT
+# Legal-Review-Notice: MPL-2.0 from the colored crate (statically linked).
+# vendor.tar.zst in the src.rpm satisfies MPL-2.0 §3.2.
+License:        MIT AND MPL-2.0
 URL:            https://github.com/rvben/rumdl
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo-packaging
-
-# rumdl@0.1.43 requires rustc 1.94.0
+# rust-version = "1.94.0"
 BuildRequires:  cargo >= 1.94
-
-# out-of-memory errors
-ExcludeArch:    %{ix86} %{arm} ppc64le
+BuildRequires:  cargo-packaging
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 rumdl is a high-performance Markdown linter and formatter that helps ensure
@@ -50,11 +49,14 @@ It offers:
 - Modern CLI with detailed error reporting
 - CI/CD friendly with non-zero exit code on errors
 
-
 %prep
 %autosetup -p 1 -a 1
+# Distro rust; the pin would invoke rustup.
+rm -f rust-toolchain.toml
 
 %build
+# Upstream release profile sets strip = true; keep DWARF for debuginfo.
+export CARGO_PROFILE_RELEASE_STRIP=none
 %{cargo_build}
 
 %install
