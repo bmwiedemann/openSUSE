@@ -306,4 +306,41 @@
     - tvazteca: added new plugin (forwarded request 1369690 from rrahl0)</comment>
     <requestid>1369691</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>23dee885b0129b803085ec3a0610bde0</srcmd5>
+    <version>8.6.1</version>
+    <time>1789985003</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 8.6.1:
+  + Fixed: compatibility with urllib3 2.8.0
+- Update to version 8.6.0:
+  + SECURITY: fixed arbitrary local file read via HTTP(S) redirection to
+    file:// URL
+  + SECURITY: fixed insecure cross-scheme redirection (HTTPS -&gt; HTTP)
+  + Added: official support for Python 3.15
+  + Added: support for HLS packed audio streams
+  + Added: HLSSegment.{get,iter}_content() and
+    HLSStreamWriter.{get,iter}_segment_content() for being able to
+    modify segment data
+  + Added: itsoffset option to FFMPEGMuxer
+  + Added: nextjs_inline_rsc() to validate API
+  + Fixed: HTTP server of --player-http/--player-continuous-http
+    binding to all interfaces
+  + Fixed: zero or negative duration values in HLS dateranges
+  + Fixed: incorrect t attribute evaluation in DASH SegmentTimeline.S nodes
+  + Updated plugins:
+    - ard_live: removed plugin
+    - ard_mediathek: rewritten and fixed plugin
+    - atresplayer: refactored stream retrieval
+    - bigo: added MPEG-TS packet header decryption due to Bigo's web-protection
+    - bigo: worked around account requirements
+    - cdnbg: fixed player_url schema
+    - douyu: fixed API call failures on systems with unsynced clocks
+    - filmon: updated URL matcher and switched to v2 APIs
+    - goodgame: fixed stream retrieval
+    - kick: fixed VODs
+    - nimotv: fixed access to streams
+    - okru: fixed metadata schema (forwarded request 1379129 from rrahl0)</comment>
+    <requestid>1379130</requestid>
+  </revision>
 </revisionlist>
