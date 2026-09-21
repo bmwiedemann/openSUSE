@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/Canop/dysk</param>
-              <param name="changesrevision">b8c61ea5f565759b12785658a1c6a80f3b13722c</param></service></servicedata>
+              <param name="changesrevision">b8c61ea5f565759b12785658a1c6a80f3b13722c</param></service><service name="tar_scm">
+                <param name="url">https://github.com/Canop/dysk.git</param>
+              <param name="changesrevision">c9f480f21f017822bda46602821f9ce5a41d85ed</param></service></servicedata>

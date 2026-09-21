@@ -113,4 +113,12 @@
 - Re-run service, which triggered vendor tarball update. (forwarded request 1374875 from dimstar)</comment>
     <requestid>1376592</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>27cc2e6c7c68bca92d9f3e2a9879197e</srcmd5>
+    <version>3.7.0</version>
+    <time>1789985336</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379175</requestid>
+  </revision>
 </revisionlist>
