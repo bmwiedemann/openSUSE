@@ -1,7 +1,7 @@
 #
 # spec file for package go-for-it
 #
-# Copyright (c) 2018 SUSE LINUX GmbH, Nuernberg, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -12,30 +12,38 @@
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
 
-# Please submit bugfixes or comments via http://bugs.opensuse.org/
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
-%define _name com.github.jmoerman.go-for-it
+%define appid com.github.jmoerman.go-for-it
+%define sover 0
 Name:           go-for-it
-Version:        1.6.3
+Version:        1.9.2
 Release:        0
 Summary:        A to-do list with built-in productivity timer
-License:        GPL-3.0
-Group:          Productivity/Office/Organizers
-Url:            https://github.com/mank319/Go-For-It
-Source:         https://github.com/mank319/Go-For-It/archive/%{version}.tar.gz
-BuildRequires:  cmake >= 2.8
+%define libname lib%{name}-%{sover}
+License:        GPL-3.0-only
+URL:            https://github.com/mank319/Go-For-It
+Source0:        https://github.com/mank319/Go-For-It/archive/%{version}.tar.gz
+# PATCH-FIX-UPSTREAM vala-0.56-update-interval-visibility.patch https://github.com/JMoerman/Go-For-It/pull/173
+Patch0:         vala-0.56-update-interval-visibility.patch
+BuildRequires:  cmake >= 2.8.9
 BuildRequires:  fdupes
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
+BuildRequires:  gettext-tools >= 0.19.7
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  intltool
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
-BuildRequires:  vala >= 0.26
-BuildRequires:  pkgconfig(glib-2.0)
+# valac (cmake FindVala); spec-cleaner rewrites this to vapigen*.pc
+BuildRequires:  vala >= 0.36.15
+BuildRequires:  xvfb-run
+BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
-BuildRequires:  pkgconfig(libnotify)
+BuildRequires:  pkgconfig(libcanberra)
+BuildRequires:  pkgconfig(libpeas-1.0)
+BuildRequires:  pkgconfig(libpeas-gtk-1.0)
 Recommends:     %{name}-lang
 
 %description
@@ -46,39 +54,73 @@ on a regular basis.
 
 %lang_package
 
+%package -n %{libname}-%{sover}
+Summary:        Shared library for Go For It!
+
+%description -n %{libname}-%{sover}
+Shared library used by the Go For It! to-do list application and its plugins.
+
+%package devel
+Summary:        Development files for Go For It!
+Requires:       %{libname}-%{sover} = %{version}
+Requires:       pkgconfig(gtk+-3.0)
+Requires:       pkgconfig(libpeas-1.0)
+
+%description devel
+Header files, pkg-config metadata and Vala bindings for the Go For It!
+shared library.
+
 %prep
-%setup -q -n Go-For-It-%{version}
+%autosetup -p1 -n Go-For-It-%{version}
 
 %build
-%cmake
-make %{?_smp_mflags} V=1
+# cmake 4 rejects cmake_minimum_required() < 3.5
+%cmake \
+  -DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
+  -DAPP_SYSTEM_NAME=%{name} \
+  -DICON_UPDATE:BOOL=OFF \
+  -DGSETTINGS_COMPILE:BOOL=OFF \
+  -DBUILD_TESTS:BOOL=ON
+%cmake_build
 
 %install
 %cmake_install
-%suse_update_desktop_file -r %{_name} Utility DesktopUtility
-%find_lang %{_name}
+# keep the reverse-DNS name from 1.6.3 as a compatibility symlink
+ln -s %{name} %{buildroot}%{_bindir}/%{appid}
+%find_lang %{appid}
 %fdupes %{buildroot}%{_datadir}
 
-%if 0%{?suse_version} < 1330
-%post
-%desktop_database_post
-%icon_theme_cache_post
+%check
+export NO_AT_BRIDGE=1
+export GTK_A11Y=none
+xvfb-run -a build/tests/%{appid}-tests
 
-%postun
-%desktop_database_postun
-%icon_theme_cache_postun
-%endif
+%ldconfig_scriptlets -n %{libname}-%{sover}
 
 %files
-%doc AUTHORS CHANGELOG.md COPYING README.md
-%{_bindir}/%{_name}
-%{_datadir}/%{_name}/
-%{_datadir}/applications/%{_name}.desktop
-%{_datadir}/icons/hicolor/*/*/%{_name}*
-# Own this directory for legacy reasons
-%dir %{_datadir}/metainfo/
-%{_datadir}/metainfo/%{_name}.appdata.xml
+%license COPYING
+%doc AUTHORS CHANGELOG.md CONFIGURING.md README.md
+%{_bindir}/%{name}
+%{_bindir}/%{appid}
+%{_datadir}/%{name}/
+%{_datadir}/applications/%{appid}.desktop
+%{_datadir}/icons/hicolor/*/*/%{appid}*
+%{_datadir}/metainfo/%{appid}.appdata.xml
+%{_datadir}/glib-2.0/schemas/%{appid}.gschema.xml
+%dir %{_libdir}/%{name}
+%{_libdir}/%{name}/plugins/
 
-%files lang -f %{_name}.lang
+%files -n %{libname}-%{sover}
+%license COPYING
+%{_libdir}/%{libname}.so.%{sover}*
+
+%files devel
+%{_libdir}/%{libname}.so
+%{_libdir}/pkgconfig/%{name}-%{sover}.pc
+%{_includedir}/%{name}-%{sover}.h
+%{_datadir}/vala/vapi/%{name}-%{sover}.vapi
+%{_datadir}/vala/vapi/%{name}-%{sover}.deps
+
+%files lang -f %{appid}.lang
 
 %changelog

@@ -47,4 +47,34 @@
     <comment></comment>
     <requestid>576414</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>a75d7bb71479d1d25b7499e7220f8e16</srcmd5>
+    <version>1.9.2</version>
+    <time>1789986167</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 1.9.2:
+  * Switch settings to GLib.Settings/dconf; old key files are
+    imported on first start
+  * Split into a shared library and application
+  * Plugin support (LauncherEntry remaining-time plugin)
+  * Break/work notification sounds via libcanberra
+  * Configurable shortcuts and custom/pomodoro timer schedules
+  * Per-task duration:Xh-Ym estimates with overtime notification
+  * Pick todo.txt files directly; optional CSV activity log
+  * Sort by priority; creation/completion dates; Ctrl+Q to quit
+  * Timer no longer drifts across suspend or clock changes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Add vala-0.56-update-interval-visibility.patch: fix FTBFS with
+  valac 0.56 (JMoerman/Go-For-It#173)
+- BuildRequires: libcanberra and libpeas; raise vala &gt;= 0.36.15
+  and glib-2.0 &gt;= 2.40; drop libnotify (GLib notifications)
+- Enable unit tests under xvfb
+- Spec cleanup: SPDX license, drop Group and legacy scriptlets
+- Split libgo-for-it-0-0 / go-for-it-devel; install as go-for-it
+  (APP_SYSTEM_NAME) with a compatibility symlink for the
+  reverse-DNS binary name</comment>
+    <requestid>1379372</requestid>
+  </revision>
 </revisionlist>
