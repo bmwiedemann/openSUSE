@@ -27,7 +27,7 @@
 %endif
 
 Name:           heroic-games-launcher
-Version:        2.22.1
+Version:        2.22.3
 Release:        0
 Summary:        Native Games launcher for GOG, Epic and Amazon
 License:        GPL-3.0-only
@@ -49,7 +49,8 @@ BuildRequires:  nodejs-electron
 BuildRequires:  nodejs-electron-devel
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SPIRV-Tools) >= 2026.2
+BuildRequires:  spirv-tools
+BuildRequires:  libLLVMSPIRVLib-devel
 BuildRequires:  pnpm
 BuildRequires:  protobuf-devel
 BuildRequires:  vulkan-devel

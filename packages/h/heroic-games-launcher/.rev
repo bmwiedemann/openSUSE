@@ -296,4 +296,14 @@ via pnpm overrides to fix embedded dependency.</comment>
   * [i18n] Updated Translations by @weblate in #5806</comment>
     <requestid>1373257</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f5b3f4724a07aeb26bb5fbf89562a607</srcmd5>
+    <version>2.22.3</version>
+    <time>1789984892</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.22.3 &quot;Hotifix #3&quot;
+  * fix: Don't nest umu if steamRuntime ends up enabled on a non-native game
+    by @CommandMC in #5894 </comment>
+    <requestid>1379043</requestid>
+  </revision>
 </revisionlist>
