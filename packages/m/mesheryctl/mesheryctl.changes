@@ -1,4 +1,205 @@
 -------------------------------------------------------------------
+Sun Sep 20 08:08:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.0.70:
+  * General
+    - Bump colord from 2.9.3 to 2.10.0 in
+      /install/docker-extension/ui (#21860)
+    - Update ADOPTERS.md with new and removed entries (#21871)
+  * Meshery CLI
+    - [mesheryctl] Add traceability tags to Half A BATS tests
+      (#21863)
+    - fix(mesheryctl): prevent nil response panic in auth update
+      (#21682)
+  * Maintenance
+    - build(deps): bump fast-uri from 3.1.4 to 3.1.5 in
+      /provider-ui (#21122)
+    - [mesheryctl] Add traceability tags to Half A BATS tests
+      (#21863)
+    - Bump joi from 18.2.3 to 18.2.8 in /provider-ui (#21862)
+    - Bump joi from 18.2.1 to 18.2.8 in /ui (#21861)
+  * Documentation
+    - [Docs] Add mesheryctl-axi to the extensions catalog (#21944)
+    - [Docs] Update details of the Istio adapter (#21942)
+    - Enhance documentation for Meshery Adapters (#21941)
+    - Revise Consul adapter documentation for clarity (#21943)
+    - [Docs] Add relationship testing, validation, and contribution
+      best practices (#19663)
+    - docs(contributing): enable section-index page titles (#21219)
+- update to 1.0.69:
+  * General
+    - fix(server): stop auto-registration from proceeding after
+      machine init fails (#20872)
+    - [Docs] Add Meshery project vision (#21639)
+    - Bump github.com/gorilla/websocket from 1.5.0 to 1.5.3 in
+      /install/docker-extension (#21604)
+    - ROADMAP.md: v1.1.0 Revision (#21600)
+    - [Docs] Fix typo in Docker Desktop extension authentication
+      message (#21585)
+    - [server] Fix malformed doc comments in server/models (batch
+      3) (#21579)
+    - [server] Fix malformed doc comments in server/models (batch
+      2) (#21578)
+    - Update ROADMAP.md with detailed version links (#21598)
+  * Meshery CLI
+    - fix(mesheryctl): update next_error_code for
+      ErrModelNotFoundCode causing duplicate code error (#21705)
+    - [mesheryctl] Fix GetCleanPodName panic on pod names with
+      fewer than 2 hyphens (#21657)
+    - [server][mesheryctl] Fix malformed doc comments across the
+      repo (consolidated) (#21626)
+    - feat(mesheryctl): support selecting a single model from CSV
+      directory… (#21424)
+    - [mesheryctl] Standardize capitalization of command Short
+      descriptions (#21504)
+    - [Docs] Add copy button to mesheryctl reference command blocks
+      (#21651)
+    - [mesheryctl] Fix inverted server version check in system
+      check (#21592)
+    - [mesheryctl] Fix dead code in adapter name parsing (#21608)
+  * Maintenance
+    - [CI] Document reusable-workflow traps for external callers,
+      and fix three live instances (#21745)
+    - Feat/improve model workflow (#21603)
+    - [Models] Fix Ingress v1 backend paths; add Ingress and
+      cert-manager relationship coverage (#21491)
+    - [CI] Add raw error and run link to model-generator failure
+      email (#21606)
+    - Fix Welcome First-Time Contributors workflow failure (#21530)
+  * Documentation
+    - fix(docs): make embedded videos responsive (#21628)
+    - [CI] Document reusable-workflow traps for external callers,
+      and fix three live instances (#21745)
+    - fix(docs): update broken AWS EC2 tutorial catalog links
+      (#21712)
+    - feat(mesheryctl): support selecting a single model from CSV
+      directory… (#21424)
+    - docs: fix typo arguements -> arguments (#21671)
+    - fix(server): return error instead of exiting process on
+      logger init failure in connection machine actions (#21311)
+    - docs(windows): fix broken Docker Desktop installation link
+      (#21642)
+    - [Docs] Add copy button to mesheryctl reference command blocks
+      (#21651)
+    - [Models] Fix Ingress v1 backend paths; add Ingress and
+      cert-manager relationship coverage (#21491)
+    - [Docs] Fix code block alignment on command reference pages
+      (#21609)
+    - [Docs] Improve responsiveness for embedded iframes and images
+      (#21419)
+- update to 1.0.68:
+  * Documentation
+    - fix(server): stop fatal boot panic seeding models under a
+      pinned PROVIDER (#21586)
+- update to 1.0.67:
+  * General
+    - [server] Fix malformed doc comments in
+      models/remote_provider.go (#21554)
+    - Add Infor as an adopter with testimonial (#21529)
+    - docs: remove unsupported Go Report Card badge from README
+      (#21204)
+    - [Server] fix: handle negative pagination page size (#20965)
+  * Meshery CLI
+    - [mesheryctl] Fix malformed doc comments in pkg/utils (#21549)
+    - fix(server): repair dependsOn resolution and withhold
+      dependents of a failed component (#21459)
+    - docs(mesheryctl): fix grammatical typos in README (#21442)
+    - Fix guide reference in mesheryctl model init output (#21434)
+    - ci(server): enforce gorm ORDER BY sanitization in the lint
+      gate (#21454)
+    - [UI] Add confirmation prompt before deleting credentials
+      (#21216)
+    - fix(mesheryctl): update broken documentation links (#20976)
+    - [mesheryctl] Report the auth error instead of crashing on
+      adapter validate (#21253)
+    - fix(mesheryctl): add HTTP timeout to version check and
+      improve test error message (#20436)
+    - Fix/filter list count flag (#21243)
+    - docs(mesheryctl): fix grammatical typos in README (#21442)
+  * Maintenance
+    - Add security-self-assessment doc and update self-assessment
+      status in security-insights.yml (#21509)
+    - [Docs] Fix YouTube embed horizontal overflow on mobile
+      devices (#21520) (#21527)
+    - fix/update-navigation-link (#21535)
+    - [CI] Fix build-docs-preview: add setup-go step for Hugo
+      module resolution (#21526)
+    - fix(server): repair dependsOn resolution and withhold
+      dependents of a failed component (#21459)
+    - ci(server): enforce gorm ORDER BY sanitization in the lint
+      gate (#21454)
+    - [fix]: add install to sparse checkout to support Go
+      validation (#21438)
+    - [CI] Add first-time contributor welcome workflow (#21426)
+    - fix(mesheryctl): add HTTP timeout to version check and
+      improve test error message (#20436)
+  * Documentation
+    - [Server]: Reset Database never restores local provider
+      permissions (#21455)
+    - [Docs] Fix YouTube embed horizontal overflow on mobile
+      devices (#21520) (#21527)
+    - Added prerequisites section to Quick Start guide (#19782)
+    - [UI] Gate the design configurator on the View Designs
+      permission (#21495)
+    - [Docs] Update broken meshery-performance-action links to
+      layer5io repository (#21465)
+    - [UI] Fix Connection Status dropdown layout constraints
+      (#21023)
+    - fix(server): repair dependsOn resolution and withhold
+      dependents of a failed component (#21459)
+    - docs: fix missing mesheryctl exp reference data in table
+      (#21356)
+    - [Server] Hard-enforce PROVIDER so Local cannot be selected
+      (#21447)
+    - ci(server): enforce gorm ORDER BY sanitization in the lint
+      gate (#21454)
+    - [Docs] fix: Delete Sample Apps page and all references to it
+      (#21452)
+    - [Docs] Fix hero logo and title obscured by sticky navbar on
+      docs homepage (#21257)
+    - docs: correct USE_GO_POLICY_ENGINE default (#21358)
+    - docs: fix typos in guides and extensions (#21437)
+    - docs: fix typos in concepts documentation (#21436)
+    - [Docs] fix typo in Meshery Adapters documentation (#21431)
+    - [Docs] Add extension trust and hardening to production
+      deployment guidance (#21416)
+    - docs: add operator upgrade troubleshooting guide (#21382)
+    - fix(mesheryctl): add HTTP timeout to version check and
+      improve test error message (#20436)
+    - ci(ui): wire e2e remote-provider auth to a real secret and
+      fail fast when it is missing (#21373)
+    - [Docs] Fix docs sidebar theme colors and mobile background
+      opacity (#20534)
+    - [Docs] Fix Helm Snapshot logo theme awareness (#21203)
+  * Security
+    - Add security-self-assessment doc and update self-assessment
+      status in security-insights.yml (#21509)
+- update to 1.0.66:
+  * General
+    - [skills] cut-release: correct it for meshery/meshery and
+      verify the publish (#21197)
+  * Meshery CLI
+    - fix: handle formatter error before use in design view
+      (#21222)
+  * Maintenance
+    - Fixes the column visibility resets after page navigation
+      (#20868)
+    - [Server] Pin operator deployment to a published Meshery
+      Operator chart (#21206)
+  * Documentation
+    - fix: tolerate every persisted credential secret shape on read
+      (#21339)
+    - Fix historical compatibility matrix redirects (#20822)
+    - chore: refine shared build targets and npm scripts across
+      docs and academy repos (#21251)
+    - fix: make connection status not found automatic-only (#21154)
+    - [Docs] Align connect-time docs with operator chart-version
+      resolution (#21229)
+    - [Server] Pin operator deployment to a published Meshery
+      Operator chart (#21206)
+    - [Server][UI] Repoint schemas-owned contracts at (#21191)
+
+-------------------------------------------------------------------
 Fri Aug  7 05:20:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.0.65:
