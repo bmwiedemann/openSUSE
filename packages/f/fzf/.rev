@@ -1372,4 +1372,41 @@ varienvironment able.
 </comment>
     <requestid>1371625</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>3412273b69fa3763bd7d7befdaa96f81</srcmd5>
+    <version>0.74.4</version>
+    <time>1789986099</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.74.4:
+  * Fixed an escape sequence split across reads being parsed as a
+    fragment, which leaked the rest into the query (#4899)
+  * Fixed --tiebreak=pathname not detecting the last path
+    separator when the line contains a non-ASCII character before it (#4902)
+  * Fixed progress in the --listen status payload staying at 100
+    while a new search was running, which made a snapshot with a
+    new query and the previous result set look complete (#4903)
+  * Fixed adaptive height not reserving a line for the divider of
+    an inline header or footer border, so the list came up one
+    line short for each of them (#4904)
+  * Fixed fzf erasing the line the prompt was on when it exits,
+    which made the last line of the prompt flicker in fish, bash,
+    and nushell (#4913)
+  * Fixed fzf exiting with status 2 while waiting for a key, when
+    --listen is used and 100+ signals interrupt the wait (#4917)
+  * vim: fzf no longer blocks the editor, so live previews keep
+    working while fzf is open
+  * vim: The popup layout now works under Zellij
+  * vim: Added popup as a synonym of the tmux layout key
+  * vim: fzf now opens in a tmux or Zellij floating pane by
+    default, so the window it was started from stays visible and
+    can be used while fzf is running
+  * fish: Fixed custom CTRL-T command not using the prefixed
+    target directory in some cases (#4498)
+  * fish: Optimized description alignment of completion items (#4910)
+  * nushell: Added key bindings for Helix editing modes, on
+    nushell 0.115.0 or above (#4914)
+  * nushell: Fixed CTRL-T inserting the selected paths unquoted
+</comment>
+    <requestid>1379326</requestid>
+  </revision>
 </revisionlist>
