@@ -1,7 +1,7 @@
 #
 # spec file for package eaglemode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,65 +17,68 @@
 
 
 Name:           eaglemode
-Version:        0.96.2
+Version:        0.96.4
 Release:        0
 Summary:        A zoomable user interface (ZUI) with file manager, file viewers, games, etc.
 License:        GPL-3.0-only
-Group:          Development/Tools/Other
 URL:            https://eaglemode.sourceforge.net/
-Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}/%{name}-%{version}.tar.bz2
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}/%{name}-%{version}.tar.xz
 Source1:        %{name}-icons.tar
 Source2:        %{name}.desktop
 Source3:        %{name}-rpmlintrc
+# PATCH-FIX-OPENSUSE 01-eaglemode.patch -- noninteractive continue=yes on optional plugin failures
 Patch0:         01-eaglemode.patch
+# spec-cleaner --perl explodes BuildRequires/Requires: perl into core modules; keep the package name
 BuildRequires:  gcc-c++
-BuildRequires:  libjpeg-devel
-BuildRequires:  libpng-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  perl
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(gtk+-3.0)
+BuildRequires:  pkgconfig(libjpeg)
+BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(libwebp)
 Requires:       abiword
 Requires:       xorg-x11
-%if 0%{?sles_version}
-BuildRequires:  gtk2-devel
-%else
-BuildRequires:  pkgconfig(gtk+-2.0)
-%endif
 %if 0%{?suse_version}
 BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
-BuildRequires:  libpoppler-glib-devel
-BuildRequires:  librsvg-devel
 BuildRequires:  update-desktop-files
-BuildRequires:  vlc-devel
+BuildRequires:  pkgconfig(librsvg-2.0)
+BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(poppler-glib)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xt)
 %endif
 %if 0%{?mandriva_version}
-BuildRequires:  libpoppler-glib-devel
 BuildRequires:  librsvg2-devel
-BuildRequires:  libxine-devel
 BuildRequires:  x11-server-devel
+BuildRequires:  pkgconfig(libxine)
+BuildRequires:  pkgconfig(poppler-glib)
 %endif
 %if 0%{?fedora_version}
-BuildRequires:  libX11-devel
 BuildRequires:  librsvg2-devel
 BuildRequires:  poppler-glib-devel
 BuildRequires:  xine-lib-devel
+BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(x11-xcb)
 %endif
 %if 0%{?suse_version}
 Requires:       binutils
 Requires:       bzip2
+Requires:       curl
 Requires:       gcc
 Requires:       gedit
 Requires:       ghostscript-x11
 Requires:       gzip
 Requires:       lzop
 Requires:       perl
+Requires:       pigz
 Requires:       tar
 Requires:       texlive-bin-dvilj
 Requires:       transfig
 Requires:       unzip
+Requires:       xz
 Requires:       zip
 # Remove when p7zip-full is in all products
 %if 0%{?suse_version} > 1500

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:32:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- update to 0.96.4:
+  * Extended the file panel plugin interface so more image types
+    can be used as bookmark icons
+  * Added saving of BMP, JPEG, PNG, PNM, TGA, TIFF, and XPM files
+  * Added emJson JSON parser library
+  * Faster archives via pigz and 7z
+  * Dropped emPs plugin; PostScript uses temporary conversion
+  * Migrated PDF viewer from GTK2 to GTK3
+  * Reworked OpenStreetMap viewer
+  * New API classes: emJob, emJobQueue, emOwnPtr, emOwnArrayPtr,
+    emOwnPtrArray, and emRefTarget
+- Rebase 01-eaglemode.patch
+- Switch source archive to tar.xz
+- Build against GTK 3 and libwebp; Require pigz, curl, and xz
+- Drop dangling changelog separator so dates parse
+
+-------------------------------------------------------------------
 Sat Jun 29 20:56:38 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.96.2:
@@ -324,5 +343,3 @@ Sat Jan  9 00:00:00 CET 2010 - joop.boonen@opensuse.org
 Sun Nov  8 00:00:00 CET 2009 - joop.boonen@opensuse.org
 
 - Build version 0.75.1
-
--------------------------------------------------------------------

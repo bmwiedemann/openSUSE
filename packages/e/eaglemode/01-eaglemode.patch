@@ -1,7 +1,8 @@
-diff -Naurd orig/make.pl mod/make.pl
---- orig/make.pl	2010-05-04 09:26:13.000000000 +0200
-+++ mod/make.pl	2010-05-04 16:48:12.000000000 +0200
-@@ -621,30 +621,30 @@
+Index: eaglemode-0.96.4/make.pl
+===================================================================
+--- eaglemode-0.96.4.orig/make.pl
++++ eaglemode-0.96.4/make.pl
+@@ -627,30 +627,30 @@ sub Build
  				);
  				for (my $again=1; $again eq 1;) {
  					STDOUT->flush();

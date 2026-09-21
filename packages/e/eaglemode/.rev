@@ -189,4 +189,27 @@
     <comment></comment>
     <requestid>1186899</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>21e70ab1d32b4612ee8903d08957deef</srcmd5>
+    <version>0.96.4</version>
+    <time>1789986155</time>
+    <user>anag_factory</user>
+    <comment>
+- update to 0.96.4:
+  * Extended the file panel plugin interface so more image types
+    can be used as bookmark icons
+  * Added saving of BMP, JPEG, PNG, PNM, TGA, TIFF, and XPM files
+  * Added emJson JSON parser library
+  * Faster archives via pigz and 7z
+  * Dropped emPs plugin; PostScript uses temporary conversion
+  * Migrated PDF viewer from GTK2 to GTK3
+  * Reworked OpenStreetMap viewer
+  * New API classes: emJob, emJobQueue, emOwnPtr, emOwnArrayPtr,
+    emOwnPtrArray, and emRefTarget
+- Rebase 01-eaglemode.patch
+- Switch source archive to tar.xz
+- Build against GTK 3 and libwebp; Require pigz, curl, and xz
+- Drop dangling changelog separator so dates parse</comment>
+    <requestid>1379365</requestid>
+  </revision>
 </revisionlist>
