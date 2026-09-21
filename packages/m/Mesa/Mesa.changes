@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 00:16:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 26.2.3 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.3
+
+-------------------------------------------------------------------
 Thu Sep 10 07:43:05 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - llvm23.patch: fix build with LLVM 23
