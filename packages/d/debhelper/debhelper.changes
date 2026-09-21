@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 21 11:11:36 UTC 2026 - Jan Baier <jbaier@suse.com>
+
+- update to 14.5:
+  * Revert some changes per agreement with CTTE while they
+    discuss #1141909 to enable backports.
+    - Revert "dh_installsystemd: also add tmpfiles deps in
+      compat 12"
+    - Revert "dh_installtmpfiles: add dependency on tmpfiles
+      implementation"
+- update to 14.4:
+  * meson: Use meson install --no-rebuild by default for compat 14+
+    (Closes: #1142577)
+  * Improve automated substvar injection documentation
+  * Note that `dh_installdocs` does not copy empty files.
+  * autoscripts/postinst-init-nostart: missing DPKG_ROOT
+  * dh_installsystemduser: Avoid warnings when unit is declared unrestartable
+  * dh_computeautosubstvars: Improve auto-detection for Commands field
+    (Closes: #114716)
+  * Revert "Remove mention of `single-binary` from compat 15 - it happens in 14"
+  * Improve warning message for implicit `single-binary` addon.
+    Thanks to Andrey Rakhmatullin <wrar@debian.org> and
+    Jeremy Bicha <jbicha@debian.org> (Closes: #1144222)
+  * upgrade-checklist: update note on user units handling (Closes: #1142730)
+  * Update on Portuguese translation of the man pages (Closes: #1142220)
+
+-------------------------------------------------------------------
 Tue Jul 14 07:10:40 UTC 2026 - Jan Baier <jbaier@suse.com>
 
 - update to 14.3

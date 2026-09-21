@@ -17,7 +17,7 @@
 
 
 Name:           debhelper
-Version:        14.3
+Version:        14.5
 Release:        0
 Summary:        Helper programs for debian/rules
 License:        GPL-2.0-or-later
