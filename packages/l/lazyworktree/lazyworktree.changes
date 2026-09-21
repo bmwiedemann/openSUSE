@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:31:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.50.0:
+  This release adds PR and MR reviewer details directly to the Info
+  pane, improves cleanup safety by automatically skipping worktrees
+  with uncommitted changes, expands the random branch name
+  generator, and fixes text pasting across modal inputs.
+  * Features
+    - PR/MR Reviewers in Info Pane: Display reviewers who have
+      submitted feedback on the selected PR/MR alongside their
+      review verdict (approved, changes requested, or commented),
+      bot indicators, and avatar badges. Reviewer display can be
+      configured using pr_reviewers: auto|never.
+    - Safe Worktree Cleanup: Interactive and non-interactive
+      cleanup commands now skip worktrees containing uncommitted
+      changes, untracked files, or dirty submodules to prevent data
+      loss (#98). Skipped items and their reasons are reported in
+      CLI summaries and --json output.
+    - Expanded Random Branch Names: Expanded the curated dictionary
+      of adjectives and nouns used for auto-generated branch names
+      to over 58,000 safe combinations (#97).
+  * Bug Fixes
+    - Pasting in Input Fields: Fixed bracketed paste handling so
+      pasted text correctly routes into focused text inputs in
+      modal screens, search boxes, and filter fields.
+    - Quiet Fetch for Fork PRs: Quietly handle initial branch fetch
+      attempts when updating existing worktrees for fork PRs,
+      avoiding spurious error messages before falling back to pull
+      request references.
+  * Maintenance
+    - Redesigned the project documentation website and landing page
+      with a clean, flat system-font layout.
+    - Updated AI integration examples and scripts to reference
+      gemini-3.5-flash-lite and gemini-3.6-flash.
+    - Updated test coverage and fixed linter configuration syntax
+      in .golangci.yml.
+  * Dependencies
+    - Upgraded alexellis/setup-arkade to v4.
+    - Updated Go dependencies including charm.land/bubbles,
+      charm.land/bubbletea, and charm.land/lipgloss.
+
+-------------------------------------------------------------------
 Wed Jul 22 06:34:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.49.0:
