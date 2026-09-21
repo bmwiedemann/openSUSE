@@ -24,16 +24,15 @@
 %global provider_prefix %{provider}.%{provider_tld}/%{project}
 %global import_path     %{provider_prefix}/%{repo}
 Name:           act
-Version:        0.2.84
+Version:        0.2.89
 Release:        0
 Summary:        Run your GitHub Actions locally
 License:        MIT
-Group:          Development/Tools/Other
 URL:            https://github.com/nektos/act
 Source0:        %{name}-%{version}.tar.xz
 Source1:        vendor.tar.gz
 BuildRequires:  golang-packaging
-BuildRequires:  golang(API) >= 1.16
+BuildRequires:  golang(API) >= 1.25
 Requires:       (docker or podman)
 %{go_nostrip}
 %{go_provides}

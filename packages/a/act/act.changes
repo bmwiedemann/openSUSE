@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 08:18:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.2.89:
+  * dependency updates: go-git 5.16.5, go-billy 5.9.0, circl 1.6.3,
+    otel/sdk 1.43.0
+  * pin 11 unpinned actions
+  * update GitHub Actions for Node.js 20 deprecation
+- Raise golang(API) floor to 1.25 per upstream go.mod
+
+-------------------------------------------------------------------
 Fri Jan 16 12:06:02 UTC 2026 - Alice Brooks <alice.brooks@suse.com>
 
 - Remove update-crypto-cve-2025-47913.patch: This was fixed upstream in v0.2.84
