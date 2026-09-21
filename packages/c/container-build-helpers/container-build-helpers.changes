@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Mar 12 14:39:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- clean more
+
+-------------------------------------------------------------------
 Wed Oct 30 14:21:39 UTC 2024 - Dan Čermák <dcermak@suse.com>
 
 - Don't remove all logfiles, only those that are safe to delete

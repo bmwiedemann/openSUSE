@@ -1,4 +1,10 @@
 #!/bin/bash
 
-zypper -n clean
+zypper -n clean -a
 rm -rf /var/log/{alternatives.log,lastlog,tallylog,zypper.log,zypp/history,YaST2}
+rm -rf /run/*
+rm -f /etc/{shadow-,group-,passwd-,.pwd.lock}
+rm -f /usr/lib/sysimage/rpm/.rpm.lock
+rm -f /var/lib/zypp/AnonymousUniqueId
+rm -f /var/lib/zypp/AutoInstalled
+rm -f /var/cache/ldconfig/aux-cache

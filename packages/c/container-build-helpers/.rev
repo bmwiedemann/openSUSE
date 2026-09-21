@@ -15,4 +15,12 @@
     <comment>Don't remove all logfiles, only those that are safe to delete</comment>
     <requestid>1219587</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>936432b05aa2ead7f236c591c6a28689</srcmd5>
+    <version>0.0.1</version>
+    <time>1789993782</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1379423</requestid>
+  </revision>
 </revisionlist>
