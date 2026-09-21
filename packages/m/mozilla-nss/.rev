@@ -3757,4 +3757,41 @@
                   Markdown (automated)</comment>
     <requestid>1375537</requestid>
   </revision>
+  <revision rev="246" vrev="1">
+    <srcmd5>c248fe434e26fda82e6231a600727ea6</srcmd5>
+    <version>3.128</version>
+    <time>1789984806</time>
+    <user>anag_factory</user>
+    <comment>- update to NSS 3.128
+  * bmo#2063360 - Rejoin the table cells the conversion wrapped mid-construct
+  * bmo#2063360 - Generate heading anchors and stop the headings
+                  linking to themselves
+  * bmo#2063360 - Unlink the self-linking headings in the release notes
+  * bmo#2063360 - Point documentation cross-references at the dashed anchors
+  * bmo#2063360 - Fix doc-lint in the release process
+  * bmo#2066375 - Make fuzz tasks selectable with try syntax
+  * bmo#2066375 - Build Cryptofuzz in its own CI task
+  * bmo#2066604 - fix EC public key encoding in sftk_PutPubKey
+  * bmo#2066183 - set CKA_ID on imported private keys
+  * bmo#2017925 - Hash prfs need to be evaluated for indicators
+  * bmo#2066327 - rename libcrux gyp target
+  * bmo#2066415 - Update BoGo tests to disable ML_DSA Default test
+  * bmo#2065354 - unify the two clang-format docker images
+  * bmo#2056265 - -trust-cert for TLS BoGo tests
+  * bmo#2056235 - DTLS1.2/1.3 - silently discard invalid records
+  * bmo#2052273 - Adding -trust-cert support for BoGo DTLS tests
+  * bmo#2063443 - nullify dangling pointers in libssl, pk11wrap, and softoken
+  * bmo#2027768 - Fix build failure due to missing gcm stubs if on big endian
+  * bmo#2065354 - clang-format everything
+  * bmo#2065354 - Update clang-format version to 22
+  * bmo#2054818 - make mach try work with git-cinnabar checkouts
+  * bmo#2054696 - avoid integer overflow in PK11SDR_EncryptWithMechanism
+  * bmo#2056778 - fix slot over-release in PK11_FindCertFromDERCertItem
+  * bmo#2056789 - fix missing BAD_PARAM_CAST in NSC_DeriveKey
+                  CKM_DES3_CBC_ENCRYPT_DATA branch
+  * bmo#2064946 - additional ML-DSA ssl gtests
+  * bmo#2064644 - ml_dsat.h: portable comments should use block comment style
+  * bmo#1983320 - ml-dsa tls tests</comment>
+    <requestid>1379125</requestid>
+  </revision>
 </revisionlist>

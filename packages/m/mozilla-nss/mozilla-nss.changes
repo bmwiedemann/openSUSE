@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Tue Sep 15 20:37:31 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.128
+  * bmo#2063360 - Rejoin the table cells the conversion wrapped mid-construct
+  * bmo#2063360 - Generate heading anchors and stop the headings
+                  linking to themselves
+  * bmo#2063360 - Unlink the self-linking headings in the release notes
+  * bmo#2063360 - Point documentation cross-references at the dashed anchors
+  * bmo#2063360 - Fix doc-lint in the release process
+  * bmo#2066375 - Make fuzz tasks selectable with try syntax
+  * bmo#2066375 - Build Cryptofuzz in its own CI task
+  * bmo#2066604 - fix EC public key encoding in sftk_PutPubKey
+  * bmo#2066183 - set CKA_ID on imported private keys
+  * bmo#2017925 - Hash prfs need to be evaluated for indicators
+  * bmo#2066327 - rename libcrux gyp target
+  * bmo#2066415 - Update BoGo tests to disable ML_DSA Default test
+  * bmo#2065354 - unify the two clang-format docker images
+  * bmo#2056265 - -trust-cert for TLS BoGo tests
+  * bmo#2056235 - DTLS1.2/1.3 - silently discard invalid records
+  * bmo#2052273 - Adding -trust-cert support for BoGo DTLS tests
+  * bmo#2063443 - nullify dangling pointers in libssl, pk11wrap, and softoken
+  * bmo#2027768 - Fix build failure due to missing gcm stubs if on big endian
+  * bmo#2065354 - clang-format everything
+  * bmo#2065354 - Update clang-format version to 22
+  * bmo#2054818 - make mach try work with git-cinnabar checkouts
+  * bmo#2054696 - avoid integer overflow in PK11SDR_EncryptWithMechanism
+  * bmo#2056778 - fix slot over-release in PK11_FindCertFromDERCertItem
+  * bmo#2056789 - fix missing BAD_PARAM_CAST in NSC_DeriveKey
+                  CKM_DES3_CBC_ENCRYPT_DATA branch
+  * bmo#2064946 - additional ML-DSA ssl gtests
+  * bmo#2064644 - ml_dsat.h: portable comments should use block comment style
+  * bmo#1983320 - ml-dsa tls tests
+  * bmo#2056787 - hold handshake locks longer in SSL_ResetHandshake
+  * bmo#1983320 - ML-DSA tests for Sign/Verify, certificates and pkcs12
+  * bmo#2056786 - take smime profile lock while updating profile data
+  * bmo#2062824 - add defensive null checks in PK11_Encapsulate and
+                  PK11_Decapsulate
+  * bmo#2062822 - nulled slot in pk11_loadPrivKeyWithFlags leads to token
+                  object leak
+  * bmo#2062802 - handle ML-KEM in stfk_CopyTokenPrivateKey and
+                  stfk_CopyTokenPublicKey
+  * bmo#2062450 - Allow unknown hashAlg with ML-DSA in VFY_VerifyDataDirect
+  * bmo#2062379 - additional ML-KEM tests
+  * bmo#2062375 - handle unknown ML-KEM parameter sets in
+                  PK11_ExtractPublicKey
+  * bmo#2062373 - missing CKP_NSS_ML_KEM_768 branches in seckey helper
+                  functions
+  * bmo#2062372 - remove unused sftk_kyber_AllocCiphertextItem function
+  * bmo#2060302 - additional ML-DSA tests
+  * bmo#2060358 - add wycheproof tests for ML-KEM and ML-DSA
+  * bmo#2060302 - vendor libcrux ML-DSA and enable the ML-DSA freebl backend
+  * bmo#2060301 - bump libcrux and re-vendor ML-KEM from the combined
+                  C extraction
+  * bmo#2027352 - validate IV length for CKM_RC2_CBC in
+                  pk11_ParamFromIVWithLen
+  * bmo#1983320 - ml-dsa tls patch
+  * bmo#2056775 - protect nssPKIObject.cryptoContext with a lock
+- rebase add-relro-linker-option.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 17:36:44 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.127
