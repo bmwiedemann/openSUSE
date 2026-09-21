@@ -23,10 +23,11 @@
 %bcond_without test
 %else
 %define psuffix %{nil}
+BuildArch:      noarch
 %bcond_with test
 %endif
 
-Name:           python-apptools%{psuffix}
+Name:           python-apptools%{?psuffix}
 Version:        5.3.1
 Release:        0
 Summary:        Application tools in Python
@@ -42,18 +43,21 @@ BuildRequires:  %{python_module traits}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-configobj
 Requires:       python-traits
+Recommends:     python-configobj
 Recommends:     python-pandas
 Recommends:     python-tables
-BuildArch:      noarch
 %if %{with test}
 BuildRequires:  %{python_module Pygments}
 BuildRequires:  %{python_module apptools = %{version}}
+BuildRequires:  %{python_module configobj}
 BuildRequires:  %{python_module pandas}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module traitsui}
 BuildRequires:  xorg-x11-server
+%ifnarch %ix86 %arm
+BuildRequires:  %{python_module tables}
+%endif
 %endif
 %python_subpackages
 
@@ -67,13 +71,15 @@ Part of the Enthought Tool Suite (ETS).
 %prep
 %autosetup -p1 -n apptools-%{version}
 
-%if !%{with test}
 %build
+%if !%{with test}
 %pyproject_wheel
 # Remove duplicates now so we can let rpm install it later
 %fdupes examples/
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %{python_expand $python -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/
 $python -O -m compileall -d %{$python_sitelib} %{buildroot}%{$python_sitelib}/apptools/

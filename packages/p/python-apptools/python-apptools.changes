@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 20 17:09:37 UTC 2026 - Ben Greiner <code@bnavigator.de>
+
+- Reenable tests with tables for non-32-bit platforms
+- Remove configobj from mandatory requirements
+
+-------------------------------------------------------------------
 Mon Sep 14 12:27:17 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - don't pull in python-tables as it is no longer building for 32-bit
