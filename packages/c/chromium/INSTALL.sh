@@ -12,6 +12,7 @@ done
 SHLIB_PERMS="755"
 PROGNAME="chrome"
 PACKAGE="chromium-browser"
+WMCLASS="Chromium-browser"
 MAINTMAIL="chromium-dev@chromium.org"
 PROJECT_LICENSE="BSD-3-Clause and LGPL-2.1+ and Apache-2.0 and IJG and MIT and GPL-2.0+ and ISC and OpenSSL and (MPL-1.1 or GPL-2.0 or LGPL-2.0)"
 SHORTDESC="The web browser from Chromium project"
@@ -182,6 +183,7 @@ sed \
     -e "s#@@extra_desktop_entries#${EXTRA_DESKTOP_ENTRIES}#g" \
     -e "s#@@desktop_exec#/usr/bin/${PACKAGE}#g" \
     -e "s#@@desktop_icon#${PACKAGE}#g" \
+    -e "s#@@startup_wm_class#${WMCLASS}#g" \
     "chrome/installer/linux/common/desktop.template" > "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 chmod 644 "${STAGEDIR}/usr/share/applications/${PACKAGE}.desktop"
 
