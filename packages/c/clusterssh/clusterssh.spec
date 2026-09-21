@@ -1,7 +1,7 @@
 #
 # spec file for package clusterssh
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,19 +16,17 @@
 #
 
 
-%define dullver 4.18
+%define dullver 4.19
 Name:           clusterssh
-Version:        4.18
+Version:        4.19
 Release:        0
 Summary:        Multiplex SSH sessions onto many hosts using multiple terminals
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Productivity/Networking/SSH
 URL:            https://github.com/duncs/clusterssh/wiki
 Source:         https://github.com/duncs/clusterssh/archive/v%{dullver}.tar.gz
-Source2:        %{name}-rpmlintrc
 Patch1:         perl_shebang.patch
+BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(CPAN::Changes)
 BuildRequires:  perl(Exception::Class)
@@ -48,8 +46,6 @@ BuildRequires:  perl(Tk)
 BuildRequires:  perl(Try::Tiny)
 BuildRequires:  perl(X11::Protocol)
 BuildRequires:  perl(X11::Protocol::WM)
-# Test::PerlTidy not available atm
-Requires:       perl(Test::PerlTidy)
 Requires:       xorg-x11-fonts-100dpi
 Requires:       xorg-x11-fonts-75dpi
 Requires:       xterm
@@ -75,6 +71,8 @@ Requires:       perl(Socket)
 Requires:       perl(Sort::Naturally)
 Requires:       perl(Sys::Hostname)
 Requires:       perl(Test::Differences)
+# Test::PerlTidy not available atm
+Requires:       perl(Test::PerlTidy)
 Requires:       perl(Test::Pod)
 Requires:       perl(Test::Pod::Coverage)
 Requires:       perl(Test::Trap)
@@ -108,10 +106,6 @@ perl Build.PL installdirs=vendor
 %check
 # rm t/changes.t
 
-# Readme is not in the tarball
-# couldn't open README for reading: No such file or directory at t/boilerplate.t line 9.
-rm t/boilerplate.t
-
 ./Build test
 
 %install
@@ -122,10 +116,25 @@ install -D -m 0644 %{buildroot}/%{_bindir}/clusterssh_bash_completion.dist \
         %{buildroot}/%{_datadir}/bash-completion/completions/clusterssh
 rm %{buildroot}/%{_bindir}/clusterssh_bash_completion.dist
 
+desktop-file-install --dir=%{buildroot}%{_datadir}/applications \
+        --set-key=Exec --set-value=cssh \
+        --set-key=Categories --set-value="Network;RemoteAccess;" \
+        data/clusterssh.desktop
+install -D -m 0644 data/clusterssh.metainfo.xml \
+        %{buildroot}%{_datadir}/metainfo/clusterssh.metainfo.xml
+install -D -m 0644 data/icons/hicolor/scalable/apps/clusterssh.svg \
+        %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/clusterssh.svg
+
 %files
-%doc AUTHORS Changes THANKS TODO
+%doc AUTHORS Changes README THANKS TODO
 %{_bindir}/c*
+%{_datadir}/applications/clusterssh.desktop
 %{_datadir}/bash-completion/
+%dir %{_datadir}/icons/hicolor
+%dir %{_datadir}/icons/hicolor/scalable
+%dir %{_datadir}/icons/hicolor/scalable/apps
+%{_datadir}/icons/hicolor/scalable/apps/clusterssh.svg
+%{_datadir}/metainfo/clusterssh.metainfo.xml
 %{_mandir}/man1/*
 %{_mandir}/man3/*
 %{perl_vendorlib}/*

@@ -127,4 +127,24 @@
     <comment></comment>
     <requestid>1240418</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>466acb935c21aa9b636b51532debbcf9</srcmd5>
+    <version>4.19</version>
+    <time>1789986163</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 4.19:
+  * Add --no-autoclose
+  * Paste from PRIMARY, then CLIPBOARD
+  * Add main_window_font / --main-window-font / -M
+  * Ship desktop file, AppStream metainfo and icon
+  * Fix SSH config Include relative paths and globs
+  * Add -P/--preserve-host-order
+  * Allow repeated --configfile/-C
+  * Move ccon --master short option from -M to -m
+  * Add host_sort_command for custom host ordering
+- Drop clusterssh-rpmlintrc: unused perl5-naming-policy-not-applied
+  filter</comment>
+    <requestid>1379369</requestid>
+  </revision>
 </revisionlist>

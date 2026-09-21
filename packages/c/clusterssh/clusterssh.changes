@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:30:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.19:
+  * Add --no-autoclose
+  * Paste from PRIMARY, then CLIPBOARD
+  * Add main_window_font / --main-window-font / -M
+  * Ship desktop file, AppStream metainfo and icon
+  * Fix SSH config Include relative paths and globs
+  * Add -P/--preserve-host-order
+  * Allow repeated --configfile/-C
+  * Move ccon --master short option from -M to -m
+  * Add host_sort_command for custom host ordering
+- Drop clusterssh-rpmlintrc: unused perl5-naming-policy-not-applied
+  filter
+
+-------------------------------------------------------------------
 Sat Jan 25 14:45:43 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to new upstream release v4.18
