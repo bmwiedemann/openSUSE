@@ -1,0 +1,218 @@
+From 79aaa421ff8a6beb339ddc4e8c0e1dec65c27f9a Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Thu, 3 Sep 2026 13:40:41 +0200
+Subject: [PATCH] Remove tests passing NULL to sem_timedwait() and
+ clock_gettime()
+
+Some functests/test_clock_contract.sh tests failed with glibc on
+x86_64 Linux:
+
+    Begin functests/test_clock_contract.sh
+    # PLATFORM=linuxlike
+    out=2020-06-15 12:00:00 realtime clock should honor absolute configuration - ok
+    out=2020 fractional realtime values should retain the calendar second - ok
+    out=ok monotonic clock should not move backwards - ok
+    out=ok short relative sleep should return - ok
+    out=ok invalid clock id should fail - ok
+    out= null clock output should fail with EFAULT expected=clock_gettime(NULL) returned EFAULT - bad
+    out=realtime and monotonic past deadlines returned ETIMEDOUT past realtime and monotonic deadlines should time out - ok
+    out= semaphore timed-wait contract should be preserved expected=semaphore realtime, monotonic, and null handling passed - bad
+    out= semaphore timed-wait contract should be preserved expected=semaphore realtime, monotonic, and null handling passed - bad
+    out= semaphore timed-wait contract should be preserved expected=semaphore realtime, monotonic, and null handling passed - bad
+    out=positive poll timeout was preserved positive poll timeout should not be truncated to zero - ok
+    out=select, pselect, and ppoll timeout contracts passed select, pselect, and ppoll timeout contracts should be preserved - ok
+    # functests/test_clock_contract.sh summary: 8 succeeded, 4 failed
+    # End functests/test_clock_contract.sh - BAD
+
+These 4 tests pass a NULL pointer to a syscall and expect that -1 with
+an approriate errno is returned. But that's not true for glibc on
+x86_64 Linux: clock_gettime() is implemented as VDSO and segfaults
+instead, sem_timedwait() also segfaults.
+
+This patch removes the affected tests.
+
+Resolve: #554
+---
+ test/Makefile                         |  9 +++------
+ test/Makefile.OSX                     |  9 +++------
+ test/clock_error_test.c               | 28 ---------------------------
+ test/functests/test_clock_contract.sh |  9 ---------
+ test/sem_contract_test.c              | 11 -----------
+ 5 files changed, 6 insertions(+), 60 deletions(-)
+ delete mode 100644 test/clock_error_test.c
+
+diff --git a/test/Makefile b/test/Makefile
+index 87530b6..c1314df 100644
+--- a/test/Makefile
++++ b/test/Makefile
+@@ -10,7 +10,7 @@ OBJ = ${SRC:.c=.o}
+ TEST_SNIPPETS = $(notdir $(basename $(wildcard snippets/*.c)))
+ EXPECTATIONS = $(notdir $(basename $(wildcard snippets/*.variable)))
+ 
+-ALL_TESTS = timetest test shm_layout_test abi_info_test set_mtime time_ops_test clock_consistency_test clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test
++ALL_TESTS = timetest test shm_layout_test abi_info_test set_mtime time_ops_test clock_consistency_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test
+ 
+ TIME64_CFLAGS = -D_FILE_OFFSET_BITS=64 -D_TIME_BITS=64
+ IS_GLIBC := $(shell if $(CC) -dM -E -include features.h - < /dev/null 2>/dev/null | grep -q '^#define __GLIBC__ '; then echo 1; else echo 0; fi)
+@@ -90,9 +90,6 @@ time_ops_test: time_ops_test.c ../src/time_ops.h
+ clock_consistency_test: clock_consistency_test.c
+ 	${CC} -o $@ ${CFLAGS} $<
+ 
+-clock_error_test: clock_error_test.c
+-	${CC} -o $@ ${CFLAGS} $<
+-
+ wait_contract_test: wait_contract_test.c
+ 	${CC} -o $@ ${CFLAGS} $< ${LDFLAGS}
+ 
+@@ -129,7 +126,7 @@ syscall_contract_test: syscall_contract_test.c
+ futex_contract_test: futex_contract_test.c
+ 	${CC} -o $@ ${CFLAGS} $<
+ 
+-test: timetest abi_info_test shm_layout_test time64_contract_test time_ops_test clock_consistency_test set_mtime clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.so ${RANDOM_TEST_DEP} ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} ${SYSCALL_TEST_DEP} ${FUTEX_TEST_DEP} functest
++test: timetest abi_info_test shm_layout_test time64_contract_test time_ops_test clock_consistency_test set_mtime wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.so ${RANDOM_TEST_DEP} ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} ${SYSCALL_TEST_DEP} ${FUTEX_TEST_DEP} functest
+ 	@echo
+ 	@./abi_info_test
+ 	@./time64_contract_test
+@@ -179,7 +176,7 @@ use_lib_%: _use_lib_test.c snippets/%.c lib%.so
+ ## cleanup and metainformation
+ 
+ clean:
+-	@rm -f ${OBJ} timetest shm_layout_test abi_info_test time64_contract_test set_mtime time_ops_test clock_consistency_test clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test futex_contract_test init_reentry.so fake_pid_test fake_pid_contract_test random_test file_timestamp_test syscall_contract_test getrandom_test syscall_test $(foreach f,${TEST_SNIPPETS},use_lib_${f} lib${f}.so run_${f}) variadic_promotion variadic/*.o repeat_random libmallocintercept.so
++	@rm -f ${OBJ} timetest shm_layout_test abi_info_test time64_contract_test set_mtime time_ops_test clock_consistency_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test timerfd_contract_test asan_preload_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test futex_contract_test init_reentry.so fake_pid_test fake_pid_contract_test random_test file_timestamp_test syscall_contract_test getrandom_test syscall_test $(foreach f,${TEST_SNIPPETS},use_lib_${f} lib${f}.so run_${f}) variadic_promotion variadic/*.o repeat_random libmallocintercept.so
+ 
+ distclean: clean
+ 	@echo
+diff --git a/test/Makefile.OSX b/test/Makefile.OSX
+index 30341a7..39b0d11 100644
+--- a/test/Makefile.OSX
++++ b/test/Makefile.OSX
+@@ -14,7 +14,7 @@ ifneq ($(filter -DFAKE_PID,${CFLAGS}),)
+ FAKE_PID_TEST_DEP = fake_pid_contract_test
+ endif
+ 
+-all: timetest abi_info_test shm_layout_test set_mtime time_ops_test clock_consistency_test macos_clock_test clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} test
++all: timetest abi_info_test shm_layout_test set_mtime time_ops_test clock_consistency_test macos_clock_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} test
+ 
+ .c.o:
+ 	${CC} -c ${CFLAGS} $<
+@@ -37,9 +37,6 @@ time_ops_test: time_ops_test.c ../src/time_ops.h
+ clock_consistency_test: clock_consistency_test.c
+ 	${CC} -o $@ ${CFLAGS} $<
+ 
+-clock_error_test: clock_error_test.c
+-	${CC} -o $@ ${CFLAGS} $< ../src/libfaketime.1.dylib
+-
+ wait_contract_test: wait_contract_test.c
+ 	${CC} -o $@ ${CFLAGS} $<
+ 
+@@ -76,7 +73,7 @@ fake_pid_contract_test: fake_pid_contract_test.c
+ macos_clock_test: macos_clock_test.c
+ 	${CC} -o $@ ${CFLAGS} $< ../src/libfaketime.1.dylib
+ 
+-test: timetest abi_info_test shm_layout_test time_ops_test clock_consistency_test set_mtime macos_clock_test clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib ${RANDOM_TEST_DEP} ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} functest
++test: timetest abi_info_test shm_layout_test time_ops_test clock_consistency_test set_mtime macos_clock_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib ${RANDOM_TEST_DEP} ${FILE_TIMESTAMP_TEST_DEP} ${FAKE_PID_TEST_DEP} functest
+ 	@echo
+ 	@./abi_info_test
+ 	@./time_ops_test
+@@ -87,7 +84,7 @@ functest:
+ 	./testframe.sh functests
+ 
+ clean:
+-	@rm -f ${OBJ} timetest abi_info_test shm_layout_test set_mtime time_ops_test clock_consistency_test macos_clock_test clock_error_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib file_timestamp_test fake_pid_contract_test
++	@rm -f ${OBJ} timetest abi_info_test shm_layout_test set_mtime time_ops_test clock_consistency_test macos_clock_test wait_contract_test wait_api_contract_test sem_contract_test wait_timeout_contract_test fd_leak_test fd_liveness_test emfile_clock_test timezone_contract_test init_reentry.dylib file_timestamp_test fake_pid_contract_test
+ 
+ distclean: clean
+ 	@echo
+diff --git a/test/clock_error_test.c b/test/clock_error_test.c
+deleted file mode 100644
+index 43842a0..0000000
+--- a/test/clock_error_test.c
++++ /dev/null
+@@ -1,28 +0,0 @@
+-#include <errno.h>
+-#include <stdint.h>
+-#include <stdio.h>
+-#include <stdlib.h>
+-#include <time.h>
+-
+-#ifdef __APPLE__
+-int macos_clock_gettime(clockid_t clk_id, struct timespec *tp);
+-#define test_clock_gettime macos_clock_gettime
+-#else
+-#define test_clock_gettime clock_gettime
+-#endif
+-
+-int main(void)
+-{
+-  int (*clock_gettime_fn)(clockid_t, struct timespec *) = test_clock_gettime;
+-  struct timespec *output = (struct timespec *)(uintptr_t)0;
+-
+-  errno = 0;
+-  if (clock_gettime_fn(CLOCK_REALTIME, output) != -1 || errno != EFAULT)
+-  {
+-    fprintf(stderr, "clock_gettime(NULL) returned errno %d\n", errno);
+-    return EXIT_FAILURE;
+-  }
+-
+-  puts("clock_gettime(NULL) returned EFAULT");
+-  return EXIT_SUCCESS;
+-}
+diff --git a/test/functests/test_clock_contract.sh b/test/functests/test_clock_contract.sh
+index 1425889..e7afe02 100644
+--- a/test/functests/test_clock_contract.sh
++++ b/test/functests/test_clock_contract.sh
+@@ -20,7 +20,6 @@ run()
+ 	run_testcase monotonic_is_non_decreasing
+ 	run_testcase sleep_returns
+ 	run_testcase invalid_clock_id_fails
+-	run_testcase null_clock_output_fails
+ 	run_testcase past_wait_deadlines_timeout
+ 	run_testcase semaphore_deadlines
+ 	run_testcase semaphore_deadlines_absolute
+@@ -118,14 +117,6 @@ invalid_clock_id_fails()
+ 	asserteq "$result" "ok" "invalid clock id should fail"
+ }
+ 
+-null_clock_output_fails()
+-{
+-	typeset result
+-	result=$(fakecmd "+0" ./clock_error_test)
+-	asserteq "$result" "clock_gettime(NULL) returned EFAULT" \
+-		"null clock output should fail with EFAULT"
+-}
+-
+ past_wait_deadlines_timeout()
+ {
+ 	typeset result
+diff --git a/test/sem_contract_test.c b/test/sem_contract_test.c
+index e72f00f..6d20102 100644
+--- a/test/sem_contract_test.c
++++ b/test/sem_contract_test.c
+@@ -87,7 +87,6 @@ int main(void)
+   char name[64];
+   sem_t *semaphore;
+   struct timespec deadline;
+-  int (*sem_timedwait_fn)(sem_t *, const struct timespec *) = sem_timedwait;
+ 
+   (void)snprintf(name, sizeof(name), "/libfaketime-sem-%ld", (long)getpid());
+   sem_unlink(name);
+@@ -117,16 +116,6 @@ int main(void)
+     return EXIT_FAILURE;
+   }
+ 
+-  report_case("null-deadline");
+-  errno = 0;
+-  if (sem_timedwait_fn(semaphore, NULL) != -1 || errno != EINVAL)
+-  {
+-    fprintf(stderr, "null semaphore deadline returned errno %d\n", errno);
+-    sem_close(semaphore);
+-    sem_unlink(name);
+-    return EXIT_FAILURE;
+-  }
+-
+   report_case("realtime-future");
+   if (check_future_realtime_wait(semaphore) != EXIT_SUCCESS)
+   {
+-- 
+2.55.0
+

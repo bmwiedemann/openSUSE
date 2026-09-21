@@ -16,19 +16,17 @@
 #
 
 
+# LTO: fixed upstream after 0.9.13, gh#wolfcw/libfaketime#557
 %define _lto_cflags %{nil}
-
 Name:           libfaketime
-Version:        0.9.12
+Version:        0.9.13
 Release:        0
 Summary:        FakeTime Preload Library
 License:        GPL-2.0-only
 URL:            https://github.com/wolfcw/libfaketime
 Source:         %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-build-with-ISO_C23.patch gh#wolfcw/libfaketime#524
-Patch0:         fix-build-with-ISO_C23.patch
-# PATCH-FIX-UPSTREAM fix-build-with-gcc-16.patch gh#wolfcw/libfaketime#528
-Patch1:         fix-build-with-gcc-16.patch
+# PATCH-FIX-UPSTREAM remove-NULL-contract-tests.patch gh#wolfcw/libfaketime#555
+Patch0:         remove-NULL-contract-tests.patch
 BuildRequires:  bash
 BuildRequires:  gcc
 BuildRequires:  make
@@ -62,7 +60,8 @@ export FAKETIME_COMPILE_CFLAGS="-DFORCE_PTHREAD_NONVER"
 %ifarch riscv64
 export FAKETIME_COMPILE_CFLAGS="-DFORCE_MONOTONIC_FIX -DFORCE_PTHREAD_NONVER"
 %endif
-make PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name} -C test
+# -j1: the test 'all' target runs the suite while helpers still build
+%make_build -j1 PREFIX=%{_prefix} LIBDIRNAME=/%{_lib}/%{name} -C test
 
 %files
 %doc NEWS README
