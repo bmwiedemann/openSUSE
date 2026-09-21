@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Sep 20 01:22:28 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.12
+  * New `--format` string `%{progress-conemu}`, and option
+    `--conemu`, to show progress in the terminal title tab on
+    terminals with ConEmu OSC 9;4 support. (ConEmu is a terminal
+    for Windows.)
+
+-------------------------------------------------------------------
 Sun Jun 14 08:42:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.11.0
