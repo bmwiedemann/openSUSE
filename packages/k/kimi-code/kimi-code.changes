@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:09:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.2:
+  * Fix new messages occasionally landing at an old position in
+    the conversation after resuming a session
+  * Fix compaction failing after switching to a model with a
+    smaller context window
+  * The agent no longer assumes the working directory is the
+    project root
+- Changes from version 2.0.1:
+  * Providers can read their API key from a named environment
+    variable (api_key_env in config.toml or the provider API)
+  * Rename the "kimi install-app" subcommand to
+    "kimi install-desktop"; the old name stays as a hidden alias
+  * Stop workspace file watchers scanning an unbounded project
+    root, and add [watch] enabled and KIMI_CODE_WATCH to turn
+    watching off entirely
+  * Stop asking for approval of bash commands that cannot be
+    statically analysed in Ask When Needed permission mode
+  * Remove the system-prompt rule that forbade all file access
+    outside the working directory
+  * Faster startup, session listing, resume and transcript
+    serving, and a compacted session index on startup
+  * Many more fixes and performance improvements; see upstream's
+    release notes for the full list
+
+-------------------------------------------------------------------
 Thu Sep 17 06:58:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.0:
