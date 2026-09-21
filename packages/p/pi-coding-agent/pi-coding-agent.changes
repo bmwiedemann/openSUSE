@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:11:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.86.1:
+  * Meta (Muse subscription) login via /login meta, with automatic
+    Model API key refresh, and META_API_KEY support
+  * Restore the OSC 52 clipboard fallback when no display is
+    available, fixing copy in containers and under WSL
+  * Recognise inherited z.ai "Prompt too long" errors as context
+    overflow
+  * Stop inherited Cerebras models advertising unsupported strict
+    tool schemas, which returned HTTP 400 when strict and
+    non-strict tools were mixed
+  * /bug descriptions keep line breaks from pasted diagnostics,
+    and its hints no longer appear for user cancellations
+- Changes from version 0.86.0:
+  * Prompt cache warming keeps valuable caches alive during long
+    tool runs, with cost-aware refreshes
+  * Report problems with /bug using redacted diagnostics, an
+    optional transcript or an exported ZIP
+  * Instruction and tool changes survive resume and branch
+    navigation while cached prefixes are retained
+  * Offline Radius model catalogue, overlaid with the live one
+    when available
+  * Per-model compaction budgets for reserved and recent tokens
+  * Breaking for extension authors: provider stream inputs take a
+    normalized TranscriptContext, ToolCall.arguments and
+    ToolResultMessage.details are restricted to JSON-compatible
+    values, and user_bash now fails closed
+  * Many more fixes and improvements; see upstream's CHANGELOG.md
+    for the full list
+- Upstream replaced the @mariozechner/clipboard optional addon with
+  helpers bundled in @earendil-works/pi-tui, including a prebuilt
+  linux-x11 .node that a noarch package cannot ship. It is dropped
+  in %build, so xclip, xsel and wl-clipboard are the only local
+  clipboard mechanism here; xsel is now recommended too, as pi's
+  own error text names it
+- Refresh package-lock.json (integrity filled in for the five
+  @earendil-works siblings, 26 esbuild platform entries stripped)
+  and the vendored node_modules archive to match: 127 to 116
+  shipped modules, the @aws-crypto and fast-xml-parser sets gone,
+  proxy-agent-negotiate new, license union unchanged
+
+-------------------------------------------------------------------
 Mon Sep  7 06:48:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.85.1:

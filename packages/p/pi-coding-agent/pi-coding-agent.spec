@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        0.85.1
+Version:        0.86.1
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 127 vendored dependencies are
-# MIT (59), Apache-2.0 (44), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Legal-Review-Notice: pi itself is MIT. The 116 vendored dependencies are
+# MIT (56), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense
@@ -48,10 +48,13 @@ BuildRequires:  nodejs >= 22.19.0
 BuildRequires:  nodejs-packaging
 Requires:       nodejs >= 22.19.0
 Recommends:     %{name}-examples = %{version}-%{release}
-# The bundled native clipboard addon is dropped (see %%build), so clipboard
-# support comes from pi's own fallback to these command line tools.
+# On Linux dist/utils/clipboard.js drives these tools directly -- copying
+# skips pi-tui's native X11 helper entirely and reading only falls back to it
+# after they fail -- and %%build drops that helper (see there), so these are
+# the local clipboard route here. pi's own error text names xclip and xsel.
 Recommends:     wl-clipboard
 Recommends:     xclip
+Recommends:     xsel
 # cln builds an unrelated Archimedes' constant demo from its own pi.cc and
 # installs it as /usr/bin/pi next to libcln.so, so the two cannot be
 # co-installed. Upstream cln's "make install" does not ship that binary.
@@ -130,22 +133,25 @@ npm pkg delete devDependencies
 cd %{name}
 # --omit=optional: every optionalDependency in this tree is a per-architecture
 # prebuilt binary, which would make the payload of this noarch package differ
-# between build hosts. @mariozechner/clipboard is a .node addon that
-# loadClipboardNative() already wraps in try/catch, with dist/utils/clipboard.js
-# falling back to the xclip and wl-clipboard tools recommended above; since
-# 0.85.0 @earendil-works/chord pulls in esbuild, whose 26 platform packages are
-# ~11 MB of prebuilt linker each. esbuild is reached only from chord/bundler,
-# which nothing in the shipped tree imports -- pi's only use of chord is
-# pi-agent-core pulling in chord/context -- so its JavaScript wrapper is inert
-# here. Source10 has the same entries stripped, so they are not carried in the
-# source RPM either.
+# between build hosts. Since 0.85.0 @earendil-works/chord pulls in esbuild,
+# whose 26 platform packages are ~11 MB of prebuilt linker each; since 0.86.0
+# they are the only optionalDependencies left, upstream having replaced the
+# @mariozechner/clipboard addon with helpers bundled in pi-tui. esbuild is
+# reached only from chord/bundler, which nothing in the shipped tree imports
+# -- pi's only use of chord is pi-agent-core pulling in chord/context -- so
+# its JavaScript wrapper is inert here. Source10 has the same entries
+# stripped, so they are not carried in the source RPM either.
 local-npm-registry %{_sourcedir} install --omit=dev --omit=optional --ignore-scripts
 rm -f npm-shrinkwrap.json package-lock.json
 
-# Prebuilt binaries with no corresponding source. pi-tui/native holds only
-# darwin and win32 .node addons, which are never loaded on Linux. photon-node
-# is loaded lazily behind a try/catch and only powers image conversion, so it
-# degrades gracefully.
+# Prebuilt .node addons. 0.86.0 moved the clipboard helpers in-tree and added
+# native/linux/prebuilds/linux-{x64,arm64}/linux-platform-x11.node (libxcb),
+# which native-platform.js DOES load on Linux -- a noarch package cannot ship
+# an ELF addon, and its C source would need libxcb-devel and an arch-dependent
+# package, so it goes and clipboard.js falls back to the xclip/wl-clipboard
+# tools recommended above. The darwin and win32 addons are never loaded here.
+# photon-node is loaded lazily behind a try/catch and only powers image
+# conversion, so it degrades gracefully.
 rm -rf node_modules/@earendil-works/pi-tui/native
 rm -f node_modules/@silvia-odwyer/photon-node/photon_rs_bg.wasm
 
