@@ -33,4 +33,28 @@
     <comment></comment>
     <requestid>1289183</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>adfcc0f97ba3d77ecef168dd33f2f345</srcmd5>
+    <version>14.0</version>
+    <time>1789986169</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 14.0:
+  * Add seekable zstd trace compression (and non-seekable zstd read)
+  * Add GL_EXT_mesh_shader support
+  * Default to EGL when tracing if built without X11
+  * Re-enable GL window-system cleanup for Mesa utrace
+  * Fix glGetTextureHandle and glProgramUniformHandle replay
+  * Fix glReadPixels crash on large width/height
+  * GUI: human-readable GUIDs, remember last API, fix Surfaces tab
+  * Ignore GL_MAP_COHERENT_BIT when FLUSH_EXPLICIT is also set
+  * Reset locked array count on unlock
+  * Presume GL_RGBA when --snapshot-alpha is given
+- Rebase 001-no-submodules.patch
+- Rebase 002-no-static-libbacktrace.patch
+- Add zstd-1.5.7.tar.gz for contrib seekable format (not in libzstd)
+- Build against system libzstd &gt;= 1.4.0, libbrotli &gt;= 1.0.7, zlib &gt;= 1.2.6
+- License: MIT AND BSD-3-Clause (zstd seekable contrib)</comment>
+    <requestid>1379373</requestid>
+  </revision>
 </revisionlist>

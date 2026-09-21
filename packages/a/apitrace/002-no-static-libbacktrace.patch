@@ -1,9 +1,8 @@
-diff -rub apitrace-13.0/thirdparty/CMakeLists.txt apitrace-13.0-patched/thirdparty/CMakeLists.txt
---- apitrace-13.0/thirdparty/CMakeLists.txt	2025-06-26 14:43:44.000000000 +0200
-+++ apitrace-13.0-patched/thirdparty/CMakeLists.txt	2025-06-29 13:53:51.815981158 +0200
-@@ -55,10 +55,6 @@
-     include_with_scope (brotli.cmake)
- endif ()
+--- a/thirdparty/CMakeLists.txt
++++ b/thirdparty/CMakeLists.txt
+@@ -63,10 +63,6 @@
+ 
+ target_optimize(zstd_seekable)
  
 -if (CMAKE_EXECUTABLE_FORMAT STREQUAL "ELF")
 -    include_with_scope (libbacktrace.cmake)
