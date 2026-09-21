@@ -673,4 +673,39 @@
 </comment>
     <requestid>1369336</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>86c17a173e89438d90ad7d0ca7d89dc7</srcmd5>
+    <version>9.3.0</version>
+    <time>1789985013</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.3.0.
+  * Require dune version 3.21.0 to support the rocq.theory stanza.
+  * New notion of Rocq package and installation layout supported by
+    a new command-line option -package DEP that automatically adds
+    the correct -Q options for DEP and its transitive dependencies.
+    For backwards compatibility, the old installation scheme
+    targeting the coq/user-contrib directory is kept (see also Rocq
+    makefile documentation for --rocq-package).
+  * New syntactic sugar {| t with n := v |} to provide default
+    values for omitted fields in a record value.
+  * New OCaml-inspired @@ and |&gt; notations in Ltac2.
+  * New syntactic sugar for match with one interesting case. For
+    example `if g is c then t else e` stands for `match g with c =&gt;
+    t | _ =&gt; e end`.
+  * New syntactic sugars `&amp; T` for anonymous binders `(_ : T)` and
+    `of T &amp; ... &amp; T` for anonymous binders in constructors,
+    enabling Variant `t := C1 of a &amp; b &amp; c | C2 x y of P x &amp; Q y`.
+  * SSReflect rewrite tactic renamed into `rw`, the old name is
+    still available via `Import ssreflect`.
+  * New `AllocLimit` and `alloc_limit` to enforce allocation limits
+    during execution.
+  * Extend generation of eliminators to handle nesting with
+    Primitive Arrays.
+  * New Alectryon Markdown backend for `rocq doc`.
+  * Fixed confusion between section variables and goal hypotheses
+    with the same name, which made clearing section variables very
+    buggy.
+</comment>
+    <requestid>1379139</requestid>
+  </revision>
 </revisionlist>

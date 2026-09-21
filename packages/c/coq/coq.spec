@@ -28,7 +28,7 @@
 %endif
 
 Name:           coq
-Version:        9.2.0
+Version:        9.3.0
 Release:        0
 Summary:        Proof Assistant based on the Calculus of Inductive Constructions
 License:        LGPL-2.1-only
@@ -46,7 +46,7 @@ BuildRequires:  fdupes
 BuildRequires:  make >= 3.81
 BuildRequires:  ocaml >= 4.09.0
 BuildRequires:  ocaml-camlp5-devel >= 5.08
-BuildRequires:  ocaml-dune >= 3.8.3
+BuildRequires:  ocaml-dune >= 3.21.0
 BuildRequires:  ocaml-rpm-macros
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(zarith)
