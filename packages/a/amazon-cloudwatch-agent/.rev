@@ -74,4 +74,31 @@
     <comment>- Update go.opentelemetry.io/otel to v1.44.0 (bsc#1276739, CVE-2026-41178) (forwarded request 1373785 from glaubitz)</comment>
     <requestid>1373809</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>26d4b1c1d15c3b72b972fde4c0d04280</srcmd5>
+    <version>1.300072.0</version>
+    <time>1789985596</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.300072.0
+  * [DatabaseInsights] Enable PostgreSQL execution plan collection
+    by @AshuSrv in (#2225)
+  * [DatabaseInsights] Add workload detection for PostgreSQL database
+    servers by @Paamicky in (#2220)
+  * [ApplicationSignals] Preserve jvm.gc.name attribute in GC runtime
+    metrics to differentiate collector types by @ezhang6811 in (#2218)
+  * [DatabaseInsights] Split PostgreSQL per-resource metrics to a dedicated
+    60s receiver to reduce collection overhead by @EduVencovsky in (#2232)
+  * [Agent] Bump grpc and golang.org/x/net dependencies
+    by @dependabot in (#2217) and @movence in (#2242)
+  * [Agent] Fix AKS cloud.resource_id derivation to use the cluster
+    resource group by @jefchien in (#2237)
+- Lock github.com/prometheus/common at v0.62.0
+- Update google.golang.org/grpc to v1.83.2 (bsc#1279235, CVE-2026-84304)
+  (bsc#1279393, CVE-2026-84445) (bsc#1279334, CVE-2026-84303)
+
+- Update github.com/grpc-ecosystem/grpc-gateway to v2.30.0
+  (bsc#1277995, CVE-2026-37236)
+- Update go.opentelemetry.io/otel to v1.46.0 (forwarded request 1378975 from glaubitz)</comment>
+    <requestid>1379219</requestid>
+  </revision>
 </revisionlist>
