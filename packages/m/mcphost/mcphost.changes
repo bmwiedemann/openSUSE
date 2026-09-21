@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 18 07:28:10 UTC 2026 - Egbert Eich <eich@suse.com>
+
+- Fix
+  * a potential DoS via crash due to missing ':authority' and
+    'Host' headers in gRPC-Go xDS servers CVE-2026-84445 (bsc#1278853),
+  * a potential heap memory exhaustion via HTTP/2 DATA frame
+     fragmentation CVE-2026-84304 (bsc#1279396),
+  * a potential bypass of authorization policies via mixed-case
+    or canonical-case header matches due to an xDS RBAC HTTP filter
+    implementation issue CVE-2026-84303 (bsc#1279274)
+  by updating google.golang.org/grpc to v1.83.2
+- Remove replacement of golang.org/x/net to @v0.57.0 as the update
+  of google.golang.org/grpc already requires @v0.58.0
+
+-------------------------------------------------------------------
 Wed Sep  2 06:03:05 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Update github.com/mark3labs/mcp-go/server to v0.56.0 to fix

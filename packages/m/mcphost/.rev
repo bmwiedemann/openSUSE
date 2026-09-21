@@ -191,4 +191,22 @@
   dependencies.</comment>
     <requestid>1375281</requestid>
   </revision>
+  <revision rev="14" vrev="11">
+    <srcmd5>800ab6c209745d4efe94bb0cce56c6fe</srcmd5>
+    <version>0.34.0</version>
+    <time>1789986135</time>
+    <user>anag_factory</user>
+    <comment>- Fix
+  * a potential DoS via crash due to missing ':authority' and
+    'Host' headers in gRPC-Go xDS servers CVE-2026-84445 (bsc#1278853),
+  * a potential heap memory exhaustion via HTTP/2 DATA frame
+     fragmentation CVE-2026-84304 (bsc#1279396),
+  * a potential bypass of authorization policies via mixed-case
+    or canonical-case header matches due to an xDS RBAC HTTP filter
+    implementation issue CVE-2026-84303 (bsc#1279274)
+  by updating google.golang.org/grpc to v1.83.2
+- Remove replacement of golang.org/x/net to @v0.57.0 as the update
+  of google.golang.org/grpc already requires @v0.58.0</comment>
+    <requestid>1379337</requestid>
+  </revision>
 </revisionlist>
