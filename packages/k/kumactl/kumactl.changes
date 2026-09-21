@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Sat Sep 19 09:22:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.14.5:
+  No kumactl-related changes
+  Dependency updates
+  * chore(deps/dev): bump npm:@redocly/cli from 2.31.2 to 2.33.2
+    (#18794)
+  * chore(deps): security update (#18779)
+  * chore(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    (#18592)
+  * chore(deps): bump golang.org/x/crypto from 0.55.0 to 0.56.0
+    (#18360)
+  * chore(deps/dev): bump go from 1.27.0 to 1.27.1 (#18325)
+- Update to version 2.14.5:
+  No kumactl-related changes
+  Dependency updates
+  * chore(deps): bump coredns to v1.14.7 (#18320)
+  * chore(deps): security update (#18305)
+  * chore(deps): bump envoy from 1.38.3 to 1.38.4 (#18225)
+  * chore(deps/dev): bump go from 1.26.6 to 1.27.0 (#18170)
+  * chore(deps): bump envoy from 1.38.2 to 1.38.3 (#18157)
+  * chore(deps): bump github.com/google/cel-go from 0.29.0 to
+    0.30.0 (#18139)
+  * chore(deps): bump github.com/moby/go-archive from 0.2.0 to
+    0.3.3 (#18110)
+  * chore(deps): bump github.com/cilium/ebpf from 0.21.0 to 0.22.0
+    (#18107)
+  * chore(deps/dev): bump go from 1.26.5 to 1.26.6 (#18084)
+  * chore(deps): security update (#18064)
+
+-------------------------------------------------------------------
 Wed Aug 12 06:39:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.14.3:
