@@ -20,11 +20,10 @@
 %define pythons python3
 %{?sle15_python_module_pythons}
 Name:           scons
-Version:        4.10.1
+Version:        4.11.1
 Release:        0
 Summary:        Replacement for Make
 License:        MIT
-Group:          Development/Tools/Building
 URL:            https://www.scons.org/
 Source:         http://prdownloads.sourceforge.net/scons/SCons-%{version}.tar.gz
 # site_init based on https://github.com/SCons/scons/pull/4261 for reproducible builds
@@ -45,9 +44,6 @@ full power of Python to control compilation.
 
 %prep
 %autosetup -p1
-
-sed -i -e '/QT3_LIBPATH = os.path.join.*QT3DIR/s/lib/%{_lib}/' \
-    SCons/Tool/qt3.py
 
 %build
 %pyproject_wheel

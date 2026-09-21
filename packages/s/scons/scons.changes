@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sun Sep 13 06:19:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.11.1:
+  * Drop obsolete qt3 multilib sed from %prep, upstream removed
+    the qt3 tool module in 4.11.0.
+  * Deprecated Python 3.7 and 3.8 support and the legacy job
+    scheduler.
+  * Tool search order now prefers clang over gcc on FreeBSD
+    and OpenBSD.
+  * Subst() performance improvements.
+  * 4.11.1 reverts the 4.11.0 change to reading saved-Variables
+    files, top-relative paths are disallowed again.
+  * Fixes for --debug=includes with multiple sources, CacheDir
+    races, AddOption arguments with spaces and -n with the
+    ninja tool.
+
+-------------------------------------------------------------------
 Fri Aug 28 12:34:06 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Re-add site_init.py to pass through SOURCE_DATE_EPOCH

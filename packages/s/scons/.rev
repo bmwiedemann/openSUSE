@@ -457,4 +457,12 @@ Re-add site_init.py to pass through SOURCE_DATE_EPOCH
   CC @AndreasStieger in case there was a reason and it was just never documented.</comment>
     <requestid>1374597</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>f82456b32b36c31458f72aa3e729d37f</srcmd5>
+    <version>4.11.1</version>
+    <time>1789984862</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1378864</requestid>
+  </revision>
 </revisionlist>
