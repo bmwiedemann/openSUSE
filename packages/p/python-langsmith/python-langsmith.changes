@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 20 15:33:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.0:
+  * evaluate()/aevaluate() take disable_evaluator_tracing, so the
+    evaluator's own runs can be kept out of the trace project when
+    only the target's traces are wanted
+  * Sandbox proxy and mount credentials can come from an AWS IAM
+    role_arn instead of static access keys
+  * Sandbox exec takes a run_config, which deprecates the env and
+    cwd arguments; combining them now raises
+  * Non-PTY sandbox commands close stdin at spawn, so the command
+    sees EOF and send_input() raises unless run(close_input=False)
+  * Sandbox exec reads file ranges and searches natively
+  * Sandbox commands can stream over the SSE exec endpoints
+    instead of the websocket, behind the new
+    LANGSMITH_EXPERIMENTAL_FEATURES=sandbox_sse_exec toggle
+  * The client logs which source its API URL was resolved from,
+    so a misrouted endpoint points back at the env var, profile
+    or argument that set it
+  * proxy_config()'s no_proxy argument is deprecated and ignored;
+    the sandbox runtime intercepts all egress
+
+-------------------------------------------------------------------
 Thu Sep 17 16:27:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.6:

@@ -346,4 +346,29 @@ passed per flavour (python313, python314), rpmlint 0 errors/0 warnings/
     gen_ai.input.messages was shadowing the merged prompt at ingest</comment>
     <requestid>1378668</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>69e80353eb929bd7b595ce336085354b</srcmd5>
+    <version>0.13.0</version>
+    <time>1789986060</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.13.0:
+  * evaluate()/aevaluate() take disable_evaluator_tracing
+  * Sandbox proxy and mount credentials can come from an AWS IAM
+    role_arn instead of static access keys
+  * Sandbox exec takes a run_config, which deprecates the env and
+    cwd arguments; combining them now raises
+  * Non-PTY sandbox commands close stdin at spawn, so the command
+    sees EOF and send_input() raises unless run(close_input=False)
+  * Opt-in SSE exec transport behind
+    LANGSMITH_EXPERIMENTAL_FEATURES=sandbox_sse_exec
+  * proxy_config()'s no_proxy argument is deprecated and ignored
+
+No dependency changes: 0.13.0's Requires-Dist set and requires-python
+are identical to 0.12.6. Both singlespec flavors build green with the
+full test suite.
+
+Supersedes sr#1379286, whose changelog described the stdin default
+change as an optional capability and omitted the env/cwd deprecation.</comment>
+    <requestid>1379306</requestid>
+  </revision>
 </revisionlist>
