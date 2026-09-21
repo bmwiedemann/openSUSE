@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:11:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.1:
+  * build(deps): bump
+    go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp
+    (#2659)
+  * fix(git-checkout): retry the tag fetch, not just the clone
+    (#2661)
+
+-------------------------------------------------------------------
 Sat Sep 19 07:10:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.0:
