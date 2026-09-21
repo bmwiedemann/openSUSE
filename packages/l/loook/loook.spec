@@ -1,7 +1,7 @@
 #
 # spec file for package loook
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           loook
-Version:        0.9.0
+Version:        0.9.1
 Release:        0
 Summary:        Search strings in ODF documents
 License:        GPL-2.0-or-later
-Group:          Productivity/Office/Other
 URL:            https://mechtilde.de/Loook/
-Source0:        http://mechtilde.de/Loook/Downloads/%{name}-%{version}.tar.gz
+Source0:        https://mechtilde.de/Loook/Downloads/%{name}-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM loook-loook.desktop.patch (email)
 Patch0:         %{name}-%{name}.desktop.patch
 BuildRequires:  update-desktop-files
@@ -40,7 +39,8 @@ also search in documents created by Microsoft Word, Excel or PowerPoint
 from the 2007 version in an OOXML format.
 
 %prep
-%autosetup -c
+# Upstream 0.9.1 tarball ships a top-level loook/ directory
+%autosetup -n %{name}
 
 %build
 
@@ -55,9 +55,12 @@ mkdir -p %{buildroot}%{_bindir}
 ln -s %{_datadir}/%{name}/%{name}.py %{buildroot}%{_bindir}/%{name}
 
 # install messages
-for m in cs de en es fr it nl ; do
+# Note: upstream loook.pt-br.po installs as pt_BR (the locale dir owned
+# by filesystem; %%find_lang prunes anything else)
+for m in cs de en es fr it nl pt-br ; do
+    case $m in pt-br) l=pt_BR;; *) l=$m;; esac
     msgfmt %{name}.${m}.po -o %{name}-%{version}.${m}.mo
-    install -Dm 0644 %{name}-%{version}.${m}.mo %{buildroot}%{_datadir}/locale/${m}/LC_MESSAGES/%{name}-%{version}.mo
+    install -Dm 0644 %{name}-%{version}.${m}.mo %{buildroot}%{_datadir}/locale/${l}/LC_MESSAGES/%{name}-%{version}.mo
 done
 %find_lang %{name}-%{version} %{name}.lang
 
