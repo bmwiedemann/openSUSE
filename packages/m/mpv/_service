@@ -9,6 +9,7 @@
     <param name="scm">git</param>
     <param name="filename">mpv</param>
     <param name="revision">master</param>
+    <param name="match-tag">v*</param>
     <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>

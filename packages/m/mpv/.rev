@@ -3599,4 +3599,41 @@
     <comment></comment>
     <requestid>1357515</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>a4c1848f2e17bbbaa68561c5a58cd6f0</srcmd5>
+    <version>0.41.0+git20260918.e76a35ec95</version>
+    <time>1789984915</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.41.0+git20260918.e76a35ec95:
+  * DOCS/contribute.md: disallow LLM in commit messages
+  * vf_format: luminance data is also carried by HDR10+ now
+  * demux_lavf: read HLS and DASH manifests through the stream
+  * ytdl_hook: pass a default format again
+  * ci/win32: link synchronization.lib with subrandr
+  * ci/mac: pin homebrew for macOS 14 runner to last working version
+  * hwdec_aimagereader: improve error handling
+  * hwdec_aimagereader: reduce maxImages for reader to 3
+  * osdep/path-win: expand `~~exe_dir/` on portable mode
+  * player/loadfile: don't replace external chapters file on runtime update
+  * demux: don't set DEMUX_EVENT_ALL on open
+  * stream_file: don't report a size for pipes and sockets
+  * stream_curl: use the Content-Disposition file name as the filename
+  * options/options: add DSD audio extensions
+  * ci: bump cross-platform-actions/action from 1.4.0 to 1.5.0
+  * audio: add DSD-over-PCM pass-through
+  * ao_wasapi: add DSD-over-PCM (DoP) output support
+  * f_autoconvert: don't resample into a raw DSD output format
+  * demux_lavf: probe DSD streams as raw DSD
+  * ad_lavc: request the raw bitstream from DSD decoders
+  * audio/format: add raw DSD sample format
+  * player/audio: treat all non-PCM formats as passthrough
+  * audio/format: add DSD-over-PCM (DoP) sample format
+  * wayland: defer config sequence application
+  * wayland: trigger redraw after every configure sequence
+  * etc/mpv.desktop: add Russian search keywords
+  * vo_kitty: include leading slash in shm name payload
+  * vo_gpu_next: keep hwdec frames mapped while the queue holds them
+  * hwdec: add per use access hooks to mappers and use them in hwdec_vulkan</comment>
+    <requestid>1379069</requestid>
+  </revision>
 </revisionlist>

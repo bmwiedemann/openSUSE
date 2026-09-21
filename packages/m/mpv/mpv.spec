@@ -21,7 +21,7 @@
 
 %define lname   libmpv2
 Name:           mpv
-Version:        0.41.0+git20260309.07c3ff3725
+Version:        0.41.0+git20260918.e76a35ec95
 Release:        0
 Summary:        Advanced general-purpose multimedia player
 License:        GPL-2.0-or-later
@@ -94,6 +94,8 @@ BuildConflicts: ffmpeg-7-mini-devel
 BuildConflicts: ffmpeg-7-mini-libs
 BuildConflicts: ffmpeg-8-mini-devel
 BuildConflicts: ffmpeg-8-mini-libs
+BuildConflicts: ffmpeg-9-mini-devel
+BuildConflicts: ffmpeg-9-mini-libs
 # Used via Lua scripts
 Recommends:     yt-dlp
 Conflicts:      mpv-plugin-mpris < 0.4

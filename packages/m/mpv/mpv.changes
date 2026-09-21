@@ -1,4 +1,783 @@
 -------------------------------------------------------------------
+Sat Sep 19 20:28:00 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.41.0+git20260918.e76a35ec95:
+  * DOCS/contribute.md: disallow LLM in commit messages
+  * vf_format: luminance data is also carried by HDR10+ now
+  * demux_lavf: read HLS and DASH manifests through the stream
+  * ytdl_hook: pass a default format again
+  * ci/win32: link synchronization.lib with subrandr
+  * ci/mac: pin homebrew for macOS 14 runner to last working version
+  * hwdec_aimagereader: improve error handling
+  * hwdec_aimagereader: reduce maxImages for reader to 3
+  * osdep/path-win: expand `~~exe_dir/` on portable mode
+  * player/loadfile: don't replace external chapters file on runtime update
+  * demux: don't set DEMUX_EVENT_ALL on open
+  * stream_file: don't report a size for pipes and sockets
+  * stream_curl: use the Content-Disposition file name as the filename
+  * options/options: add DSD audio extensions
+  * ci: bump cross-platform-actions/action from 1.4.0 to 1.5.0
+  * audio: add DSD-over-PCM pass-through
+  * ao_wasapi: add DSD-over-PCM (DoP) output support
+  * f_autoconvert: don't resample into a raw DSD output format
+  * demux_lavf: probe DSD streams as raw DSD
+  * ad_lavc: request the raw bitstream from DSD decoders
+  * audio/format: add raw DSD sample format
+  * player/audio: treat all non-PCM formats as passthrough
+  * audio/format: add DSD-over-PCM (DoP) sample format
+  * wayland: defer config sequence application
+  * wayland: trigger redraw after every configure sequence
+  * etc/mpv.desktop: add Russian search keywords
+  * vo_kitty: include leading slash in shm name payload
+  * vo_gpu_next: keep hwdec frames mapped while the queue holds them
+  * hwdec: add per use access hooks to mappers and use them in hwdec_vulkan
+  * vo: keep late redraw requests only when the next draw is not certain
+  * vo_gpu[_next]/vulkan: enable extensions required for vf_fruc_vulkan
+  * ao_coreaudio: register hotplug after succesful audiounit init
+  * ao_coreaudio: cleanup ao on init failure
+  * ci: enable DVD-A build
+  * ci/mac: pin homebrew for macOS 15 intel runner to last working version
+  * ci/mac: add back -werror for compiling only for test build
+  * ci/mac: remove test and -werror on build tests for lowest taget
+  * ci/mac: remove old unneeded travis build remnants
+  * mp_image: keep all peak-detected HDR metadata across frame updates
+  * player/discnav: allow window dragging on menu
+  * player: drop the enhancement-layer pairing when the media has no EL
+  * stream_dvdnav: clamp number of buttons to array size
+  * demux_disc: mark streams the current program does not carry
+  * demux: let a demuxer mark a stream as absent
+  * f_output_chain: restore the chain ends manual connections on relink
+  * discnav: poll the disc VM while playback idles
+  * demux_disc: reset the slave demuxer in place on BD time seeks
+  * stream_bluray: treat unannounced repositions as jumps
+  * demux_disc: gate slave reopens on buffered stream data
+  * stream_bluray: drain queued events before holding a still
+  * stream_dvdnav: fix seek positioning
+  * stream_dvdnav: reset a stale selected button on menu changes
+  * demux_disc: hold BD jump boundaries for the player's resync seek
+  * demux_disc: map timestamps with per-stream timeline generations
+  * stream: auto-detect .iso DVD-Video, DVD-Audio and Blu-ray images
+  * demux_disc: handle slideshow DVD titles
+  * demux_disc: follow the disc's initial audio stream selection
+  * stream_dvdnav: resync disc-initiated jumps through the seek path
+  * player: rejoin the restart for a video frame after a transient EOF
+  * player: fix timing of sparse still-image video streams
+  * demux: allow demuxers to update still_image during demuxing
+  * stream_dvda: expose DVD-Audio still images as a cover-art video track
+  * demux: read sparse still-image streams lazily
+  * osdep/w32_register: add a DVD-Audio AutoPlay handler
+  * stream_dvda: add DVD-Audio playback support
+  * stream_dvdnav: lock event processing
+  * stream_bluray: remove BD_EVENT_POPUP and menu-event tracking
+  * stream: turn the highlight fields into mp_dvdnav_highlight
+  * sub/osd_state: rename external2 to image_overlay
+  * stream_bluray: route logs through mp_log
+  * stream_dvdnav: route logs from libdvdnav through mp_log
+  * stream_dvdnav: keep cached duration in native time base
+  * stream_bluray: rename BD_TIME_TO_MP to BD_TIME_TO_S
+  * demux_lavf: seek avfc only on seekable streams in drop_buffers
+  * demux_disc: only add the menu edition for streams with menu support
+  * demux_disc: keep one-shot DVD menu subpictures deliverable
+  * demux: parent chapter metadata to the chapter list
+  * demux_disc: soft-reload the slave demuxer on DVD discontinuities
+  * stream_dvdnav: emit a one-shot EOF at source jump boundaries
+  * demux_lavf: clear sticky avio EOF in drop_buffers
+  * stream_bluray: rework fill_buffer around bd_read_ext
+  * stream_bluray: add support for still frames
+  * stream_dvdnav: add support for still frames
+  * stream_bluray: lock all controls that read cached disc state
+  * stream_bluray: use 1-based angle, same as in DVD
+  * demux: adapt caching to interactive disc navigation
+  * stream_bluray: add BD-J menu support
+  * discnav: sync track selection state with VM
+  * demux_disc: set partially_seekable to true
+  * player/command: add discnav command and bind default keys
+  * player/command: add `disc-menu-active` property
+  * player/loadfile: react to runtime chapter/edition list updates
+  * player/loadfile: auto-select default tracks added after initial open
+  * player: add disc-menu state holder and overlay support
+  * sub/osd: add OSDTYPE_DISC_MENU
+  * demux_disc: add a synthetic "Disc Menu" edition
+  * demux_disc: reopen slave demuxer on disc-nav hops
+  * stream_bluray: implement HDMV menu navigation
+  * stream_dvdnav: implement DVD menu navigation
+  * options: add `disc-menu` option
+  * stream: add disc-nav actions and states
+  * demux: allow updating duration, chapters and editions during playback
+  * demux_disc: drop "PTS discontinuity" logs to verbose
+  * sd_lavc: add support for DVD sub highlight
+  * stream_dvdnav: read VTS event payload from the right buffer
+  * sub/osd: change osd_set_external2 into generic osd_set_bitmaps
+  * stream_dvdnav: remove unused mousex/mousey
+  * demux_lavf: parent mp_codec_params members to it
+  * stream_dvdnav,demux_disc: clean up log messages
+  * command: add colorspace and luminance arguments to overlay-add
+  * vo_gpu_next: support per-part overlay colorspace
+  * sub/sd_lavc: zero-initialize sub_bitmap entries
+  * vo_gpu_next: use video colorspace for overlays only when requested
+  * sub/packer: preserve video_color_space when packing to RGBA
+  * vo_gpu_next: split update_overlays into helper functions
+  * vo_gpu_next: don't read libass.color for non-libass parts
+  * select.lua: fix some incorrect boolean values in the property menu
+  * f_enhancement_pair: keep retained frames within the hw surface budget
+  * f_decoder_wrapper: add mp_decoder_wrapper_set_extra_hw_frames()
+  * f_enhancement_pair: don't emit BL-only frames before the EL warms up
+  * ci: port BSD jobs to new cross-platform-actions syntax
+  * osdep/subprocess-win: terminate environment block
+  * demux_lavf: select initial edition only by the program's variant_bitrate
+  * script_format_time: fix typo in comment
+  * ci: bump cross-platform-actions/action from 1.3.0 to 1.4.0
+  * demux/ebml: interpret zero-length elements as their default value
+  * TOOLS/matroska.py: use named attributes for optional element fields
+  * ra_pl: add x2bgr10/x2rgb10 special RA formats
+  * wayland: handle null output in wl_surface.enter event
+
+-------------------------------------------------------------------
+Sun Aug 09 11:31:15 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.41.0+git20260809.513d3407d4:
+  * wayland: wait for initial surface configure before attaching buffer
+  * osc.lua: ignore seek ranges without usable duration
+  * bash-completion: fix '=' for *-clr/*-help and --help=
+  * hwdec_d3d11egl: fix EGL_EXT_device_query availability check
+  * ci/cleanup_caches: prune setup-msys2 package caches
+  * ci/cleanup_caches: rewrite the selection as a single jq program
+  * ci/cleanup_caches: group all cleanup runs together
+  * ci/mingw: add second download URL for iconv and freetype
+  * build: use --output option for rst2man
+  * ad_spdif: only warn for required codec parameters
+  * ad_spdif: recreate spdif muxer on reset
+  * vd_lavc: derive hwdec surface pool size from VO requirements
+  * vo: add number of referenced frames to queue params
+  * demux: interrupt blocking reads whose result would be discarded
+  * hwdec_vulkan: propagate the queue creation flags to ffmpeg
+  * demux: fail probing when the stream cannot be rewound to the start
+  * stream_curl: only offer compression for full unbounded requests
+  * stream_curl: validate that the server honored a requested start offset
+  * stream_curl: fix racy read of request_start when setting initial pos
+  * DOCS/man/options: clarify --playlist expansion behavior
+  * DOCS/man/options: clarify how --shuffle option works
+  * DOCS/man: mention when options are marked as file-local
+  * DOCS/man/input: use connect terminology for file-local options
+  * options: add --playlist-inherit-options option
+  * player/loadfile: inherit file-local options when resolving playlist file
+  * common/playlist: add playlist_set_params function
+  * wayland: don't leak wl_fixes on uninit
+  * input/ipc-win: allow Windows handles for --input-ipc-client
+  * wayland: use wl_fixes.ack_global_remove on global_remove
+  * console.lua: limit how many completions are printed to the terminal
+  * player/lua: pre-allocate tables of known size
+  * options/m_property: avoid repacking list nodes if we can just steal it
+  * console.lua: add coroutine to filter selectable items asynchronously
+  * console.lua: speed up filtering of selectable items
+  * fzy.lua: use lookup table for precompute_bonus
+  * fzy.lua: add filter_range() for interactive filtering of large lists
+  * fzy.lua: optimize main compute() a little
+  * fzy.lua: do byte comparision instead string ones
+  * vo_wlshm: fix leak on in flight buffer on unint
+  * vo/context_wayland: fix memory leaks on failed init
+  * vo/opengl/context: fix memory leaks on failed init
+  * options: add secondary-sub-scale
+  * player/command: don't refresh sub stream on UPDATE_SUB option updates
+  * ci/build-mingw64: remove --enable-libshaderc flag
+
+-------------------------------------------------------------------
+Tue Jul 14 07:25:46 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to version 0.41.0+git20260710.e5486b96d7:
+  * ao_pipewire: treat init timeout as failure instead of success
+  * demux_mkv: init `ff-index` for backward compatibility
+  * demux: remove falsification of `ff-index`
+  * player/command: make `track-list/N/ff-index` optional
+  * video/vdpau: throttle reinit in all cases
+  * osc.lua: fix duration when it becomes available
+  * player/command: reset playback state of edition changes
+  * demux_lavf: sort AVProgram array by id
+  * demux_lavf: change demuxer-lavf-{probesize,buffersize} to OPT_BYTE_SIZE
+  * vo_gpu_next: use pl_color_transfer_is_hdr consistently
+  * vo_gpu_next: disable auto reference white on onlder libplacebo version
+  * vo_gpu_next: make subtitles / osd also follow system reference white
+  * vo_gpu_next: ignore reference white for screenshots
+  * video/out/hwdec_cuda: use mp_msg for ffnvcodec logging
+  * osxbundle: fix vulkan loader search path check
+  * osxbundle: fix a wrong vulkan search path
+  * osdep/compiler: don't use __has_builtin for __builtin_mul_overflow
+  * ci/freebsd: bump freebsd version to 15.1
+  * vo/opengl/context_drm_egl: init fd to -1
+  * vo/drm_common: init fd to -1
+  * vo/vulkan/context_display: init fd to -1
+  * DOCS/man/vo: remove mentions of 'experimental' for vo_dmabuf_wayland
+  * vo_libmpv: use the VO_CAP of the renderer backend instead of the VO
+  * options: store audio/sub delay in doubles instead of floats
+  * vo: prefer dmabuf_wayland over other fallback VOs
+  * audio/filter: implement lavfi-tempo leveraging lavfi's atempo/ascale
+  * path-unix: only accept absolute paths
+  * stream_env: add new stream to read from environment variables
+  * stream_memory: split out bstr logic
+  * stream: drop unneeded include fcntl.h
+  * command: plug another slop faucet
+  * demux_mkv: map hvcE into side-data
+  * mp_image: don't use deprecated pl_avdovi_metadata_supported
+  * vo: bump size of pass desc string
+  * demux_mkv: group EL+BL dovi tracks
+  * demux_disc: mirror lavf demuxer stream groups to parent
+  * demux_lavf: handle AV_STREAM_GROUP_PARAMS_DOLBY_VISION
+  * demux_mkv: add support for splitting EL track from in-band
+  * demux_lavf: add support for splitting EL track from in-band
+  * demux/dovi_split: add helper to split interleaved HEVC with BL and EL
+  * vo_gpu_next: upload/map EL frame
+  * vo_gpu_next: parametrize frame upload/map
+  * f_output_chain: pair BL+EL and output as single frame
+  * f_enhancement_pair: add filter to match frames of separate video tracks
+  * mp_image: add no_dovi / no_enhancement_layer params
+  * vf_format: add `vf=format=enhancement-layer` option
+  * mp_image: add enhancement_layer child image
+  * loadfile: reselect dependent tracks only when selected by user
+  * demux: propagate track selection only from base track
+  * video/img_format: make mp_imgfmt_desc_get_num_comps input param const
+  * stream_curl: fix libavformat version checks
+  * vf_d3d11vpp: enable NVIDIA RTX Video only for SDR input
+  * select.lua: add property_set getter
+  * {select,console}.lua: release memory of menu items after menu closing
+  * ci: bump cross-platform-actions/action from 1.2.0 to 1.3.0
+  * ci: bump actions/cache from 5 to 6
+  * vo_gpu_next: follow reference white system setting
+  * vulkan/context_win: implement target_ref_luma
+  * vo/gpu/context: add preferred_ref_luma function
+  * d3d11/context: implement target_ref_luma
+  * vo/gpu/context: add target_ref_luma function
+  * vo/win32/d3d11_helpers: add mp_dxgi_sdr_white_level_from_hwnd()
+  * vo/win32/displayconfig: add mp_w32_displayconfig_get_sdr_white_level
+  * stream_curl: add support for Icecast metadata
+  * stream_lavf: use common Icecast metadata parser
+  * stream/network: add Icecast metadata parser
+  * vo_gpu{,_next}: use mp_basename_bstr()
+  * misc/path_utils: rename bstr_strip_ext() to mp_strip_ext()
+  * misc/path_utils: rename bstr_get_ext() to mp_get_ext()
+  * misc/path_utils: remove mp_splitext()
+  * various: replace mp_splitext() with bstr_get_ext()
+  * misc/path_utils: remove mp_strip_ext()
+  * various: replace mp_strip_ext() with bstr_strip_ext()
+  * misc/path_utils: make bstr_strip_ext() and bstr_get_ext() accurate
+  * misc/path_utils: add split_ext()
+  * bstr: don't make bstr_splice() add to NULL
+  * misc/path_utils: add mp_basename_bstr()
+  * vo_gpu{,_next}: use bstr_strip_ext()
+  * ao_pipewire: convert pw_time.queued from bytes to frames
+  * select.lua: register not yet evaluated properties to item
+  * f_swresample: guard invalid memory access also in NDEBUG
+  * osdep/compiler: make MP_ASSERT_UNREACHABLE no return
+  * meson: try `vapoursynth-script` first
+  * test/avio_crypto: add test for stream decryption
+  * demux/avio_crypto: add AES decryption
+  * msg: strip raw C1 controls and skip valid UTF-8 in sanitize
+  * demux_mkv: support demuxing native VC-1 streams
+  * select.lua: make property list more in line with the desc in the manual
+  * demux_edl: fix signed integer overflow in HLS bitrate
+  * common/common: add saturating multiply macro
+  * osdep/compiler: add MP_CKD_MUL
+  * demux_mkv: remove redundant size checks
+  * TOOLS/matroska.py: add size constraint for fixed size binary data
+  * demux/ebml: fix error path on data reject
+  * menu.conf: compare aspect overrides more strictly
+  * hwdec_d3d11va: support 4:4:4 and high bit depth zero-copy formats
+  * video/d3d: exclude VP9 on known broken Intel drivers
+  * video/d3d: exclude HEVC on known crashing Intel drivers
+  * vd_lavc: allow disabling codec hwdec per-device
+  * ytdl_hook: defer loading until the formats become available
+  * stream_curl: strip parameters from content type
+  * stream_curl: fix initial stream pos when offset is used
+  * stream_curl: require libcurl 7.88.0
+  * stream_curl: extend version checks that enable curl by default
+  * osdep: fix MP_NO_ASAN definition
+  * select.lua: fix selecting the default subtitle line
+  * ci: bump actions/checkout from 6 to 7
+  * github/workflows/docs: update package index to fix install failures
+  * ytdl_hook: use native http-proxy option instead of lavf option
+  * demux_mkv: don't apply AVI b-frame delay compensation to VfW tracks
+  * osc.lua: don't reinit on duration changes
+  * DOCS/man/commands: rename COMMANDS to CONSOLE COMMANDS
+  * f_auto_filters: destroy deint filter immediately on format change
+  * af_scaletempo: avoid memcpy with disabled overlap
+  * vulkan/context: guard for null --vulkan-device param
+  * bitmap_packer: drop fprintf logging
+  * bitmap_packer: return -1 instead of aborting on invalid bitmap size
+  * subprocess-posix: skip macro guard in reset_signals_child
+  * subprocess-posix: fix uninitialized stacks in fork path
+  * subprocess-posix: avoid using mmap
+  * subprocess-posix: use rfork_thread on FreeBSD
+  * subprocess-posix: handle detach inside spawn_process
+  * subprocess-posix: use clone when available
+  * select.lua: add keep-open argument to select bindings
+  * ci: bump cross-platform-actions/action from 1.1.0 to 1.2.0
+  * player: fix cover-art-files overriding embedded video tracks
+  * context_menu.lua: don't open disabled submenus on hover
+  * console.lua: do not allow typing newlines when searching for menu items
+  * input.conf: bind right click to context menu
+  * demux_timeline: fix Twitch VOD timestamps being offset by ~60 seconds
+  * video/gpu/lcms: remove stray pointer from video profile handle
+  * video/gpu/lcms,vo_gpu_next: avoid returning bool from pointer functions
+  * test/language: replace accidental octal literal
+  * video/vf_amf: fix use-after-free on AMF_INPUT_FULL
+  * sub/sd_ass: fix animated state indexing for reordered packets
+  * stream/lavf: check child_next return value before dereference
+  * stream/dvb: initialize parsing buffers for VDR-style configs
+  * osdep/subprocess-posix: restore signal mask on detached fork failure
+  * input/ipc-win: fix uninitialized handle and missing client NULL check
+  * input: remove unused mp_input_src_feed_cmd_text()
+  * filters/f_lavfi: compare height in is_vformat_ok
+  * demux/disc: avoid timestamp shift on unknown duration
+  * demux/packet: fix OOB read in ITU-T T.35 UK parsing
+  * filters/frame: use correct check for mp_frame_set_pts
+  * filters/filter: fix dropping request logging
+  * video/filter/vf_amf: fix profile option
+  * video/filter/vf_format: fix changing gamma check
+  * input/sdl_gamepad: move controller null check to front
+  * stream/stream_bluray: fix chapter range check
+  * video/filter/vf_gpu_vulkan: parent opts to ctx
+  * video/filter/vf_gpu_vulkan: remove redundant frees
+  * lcms: avoid NaN when building BT.1886 transfer curves
+  * sub/sd_sbr: make margin changes trigger redraw
+  * sub/packer: correctly offset instance bitmap pointer in `pack_subrandr`
+  * sub/sd_sbr: fix zooming
+  * meson: consider only 'v0.*' tags when computing the version
+  * ci/win32: enable building without Git Bash shell
+  * meson: properly escape backslashes when setting CONFIGURATION macro
+  * ci/build.yml: add publish job for git prerelease
+  * various: use fopen wrapper for cloexec handling
+  * osdep/io: fix fdopen mode flag
+  * osdep/io: use mp_fopen on all platforms
+  * osc: reevaluate mouse state after leaving never
+  * osc: fix thumbnails clearing on visibility change
+  * osc: only clear thumbnails when hiding
+  * menu.conf: make quit-watch-later item name more user-friendly
+  * console.lua: take position indicator into account when calculating width
+  * demux_lavf: select non-empty edition by default
+  * player/misc: rate limit taskbar progress update rate
+  * DOCS/compile-windows.md: update guide to mention missing pieces
+  * ci: fix comment workflow permissions
+  * stream_curl: expose redirect location to lavf
+  * demux: don't mark mid-stream cache ranges as BOF
+  * ci/msys2: workaround crashing whisper.cpp after unload
+  * swresample: pass input layout in mpv's order via custom channel order
+  * swresample: remove dead fudge_layout_conversion
+  * demux_lavf: migrate to AVStreamGroupLayeredVideo
+  * vf_vapoursynth: improve backward compatibility
+  * Revert "vf_vapoursynth: improve backward compatibility"
+  * sub/sd_ass: subtitle timing rounding errors
+  * stream_curl: log user friendly message when TLS verification fails
+  * options: enable `tls-verify` by default
+  * stream_curl: tell libcurl to use the native CA store
+  * wayland: map ICtCp coefficients to BT.2100 HLG as well
+  * hwdec_vulkan: fix partial failure edge cases in error paths
+  * hwdec_cuda: fix partial failure edge cases in error paths
+  * stream_curl: support offset/end_offset passed in AVDictionary
+  * ci: bump cross-platform-actions/action from 1.0.0 to 1.1.0
+  * ao_pipewire: avoid passing NULL to mp_msg
+  * ao_pipewire: avoid deadlock when starting thread loop
+  * ytdl_hook.lua: map ass/srt subtitles
+  * demux_cue: fix audio file lookup inside subdirectory
+  * command: add support for printing sub-lines
+  * osc: add back hover-sec in draw-preview
+  * demux_libarchive: apply --directory-filter-types to files in archives
+  * msg: don't allow any escapes in --term-title
+  * video/out/x11_common: set the source indication to 1 in vo_x11_minimize
+  * video/out/x11_common: add --focus-on support in X11
+  * video/decode: enable APV hwdec by default
+  * ci: fix comment workflow permissions
+  * vulkan/context: don't activate descriptor buffers after ffmpeg 8.1
+  * vulkan/context: activate runtime array indexing and non-uniform accesses
+  * meson: bump libcurl minimum version to 7.87.0
+  * ci: fix necessary permissions for cleanup_caches and comment
+  * ci: clarify that cleanup_caches and comment don't use token permissions
+  * docs/comments: fix more doubled-word typos
+  * stream_curl: disable by default on libavformat < 62.15.101
+  * stream_curl: add `--curl-enabled` option
+  * meson: add `curl` to summary
+  * stream_curl: use for ftp/ftps
+  * stream: don't drop data on stream_read_more
+  * ytdl_hook.lua: use the new curl-max-request-size option if needed
+  * stream_curl: build protocol list based on libcurl state
+  * demux_lavf: route nested HTTP opens through the curl backend
+  * stream_curl: allow reading cookies not only from a local file
+  * stream_curl: add libcurl-based stream backend
+  * ci/build-win32.ps1: disable libpsl tests build
+  * ci/mingw: add libcurl
+  * ci: install curl
+  * stream: split shared network options into their own sub-options
+  * options: fix stream_lavf options struct name
+  * ytdl_hook.lua: write cookies via cookies-file instead of stream-lavf-o
+  * stream/cookies: allow reading cookies not only from a local file
+  * docs/comments: fix doubled-word typos
+  * ci/build-win32.ps1: bump ffmpeg to 8.1 branch
+  * vd_lavc: disallow hwdec for grouped streams
+  * ci/mingw: cache tar downloads
+  * wayland: fix typo
+  * wayland: remove stray spaces before function call parenthesis
+  * wayland: return bool values for bool type create_input function
+  * wayland: convert create_xdg_surface to bool
+  * wayland: convert create_viewports to bool
+  * wayland: convert spawn_cursor to bool
+  * wayland: convert check_for_resize to bool
+  * wayland: log current preferred scale, not older stale one
+  * wayland: null-check before munmap call
+  * wayland: fix resize edge boundary checks
+  * wayland: fix condition for tablet tool cursor shape device destroy
+  * wayland: fix mapping for PAL/NTSC primaries
+  * f_output_chain: don't lose EOF frame on filter failures
+  * select.lua: preserve empty subtitle lines
+  * f_decoder_wrapper: disable non-copy hardware decoding for stream groups
+  * video: merge the tiles of grid heif and avif images
+  * f_decoder_wrapper: add support for N -> 1 stream merging
+  * demux: select all tracks represented by the stream group
+  * demux/stheader: add sh_stream_group representing stream group
+  * vo_gpu_next: always cache frames in paused state and never interpolate
+  * vo_gpu_next: respect `interpolation-preserve` option for cache flush
+  * options/m_property: only get m_option info when needed
+  * options/m_property: use mp_require for log
+  * options/m_property: simplify m_property_multiply/m_property_switch
+  * options/m_property: try to get constricted type in m_property_do
+  * options/m_property: add log null check to m_property_multiply
+  * options/m_property: extract m_property_switch to a function
+  * f_decoder_wrapper: output EOF when decoder is unavailable
+  * player/loadfile: fix stack-overflow on EDL metadata track
+  * osc.lua: hide 0 duration
+  * input.conf: make rotate keybindings repeatable
+  * sub/sd_sbr: implement `get_lines`
+  * sub/sd_sbr: implement `get_text`
+  * ci/mingw: switch to zlib-ng
+  * ci/mingw: refactor tar downloading
+  * DOCS/man/mpv: add usage hint alternative for pseudo-gui profile
+  * options: make player-operation-mode readable as a property
+  * wayland: use lrint for keepaspect window sizing
+  * wayland: force redraw on every configure when in toplevel resize state
+  * ci/mingw: some small cleanups and updates
+  * select.lua: split multi-line subtitles
+  * demux: add `--demuxer-hysteresis-bytes`
+  * demux/packet_pool: incrementally free old packets on pop
+  * ci/build-win32.ps1: update shaderc patch
+  * ytdl_hook.lua: remove track selection hack
+  * TOOLS/matroska.py: plumb some type hints to make new mypy happy
+  * ra_gl: fix memory leak
+  * test/libmpv_common: wait for all clients and player to be destroyed
+  * player/lua: fix autofree ctx leak on exit() call
+  * mp_image: refine check for supported Dolby Vision metadata
+  * vo_gpu_next: fix upload synchronization
+  * ao_pulse: fix subscribe_cb using wrong bitmask for event type
+  * osdep/win32/smtc: fix client handle leak
+  * player/external_files: remove handling related to update sub exts
+  * input/dnd: move --drag-and-drop handling to dnd client
+  * input/dnd: move built-in drag and drop handling to mpv client
+  * command: add dropped-file property
+  * input: add --input-builtin-drag-and-drop option
+  * input: rename notify_touch_update to notify_event_update
+  * command: use string list helper for option-info
+  * options/m_property: add SUB_PROP_STRING_LIST
+  * input: rename mp_event_drop_files to mp_input_drop_files
+  * demux_lavf: add support for stream groups
+  * etc/builtin.conf: change gui mode to idle=yes
+  * test/libmpv_test_track_selection: add test for program mappings
+  * test/libmpv_common: print property in checks
+  * demux_lavf: support multiple program mappings per stream
+  * options/m_option: add m_option_type_prop_array
+  * player/command: hide dependent tracks
+  * test/libmpv_test_track_selection: add test for `--flatten-editions`
+  * demux_{lavf,timeline}: add `--flatten-editions`
+  * vo_gpu_next: only flush cache on render options update
+  * mp_image: force stride to be multiple of bpp
+  * demux_lavf: map `comment` to stream title
+  * demux_lavf: remove track flags duplication from title
+  * vulkan/context: avoid printing incorrect error on vulkan-device fail
+  * stream_dvdnav: don't leak times in STREAM_CTRL_GET_CHAPTER_TIME
+  * stream_dvdnav: use named definition for return val
+  * stream_dvdnav: fix STREAM_CTRL_SET_ANGLE return value
+  * ao_wasapi: fix retry budget on DEVICE_INVALIDATED
+  * demux/packet: refactor demux_packet_add_blockadditional
+  * demux/packet: add support for LCEVC ITU-T35 payloads
+  * vo_gpu_next: don't spam render queue underrun logs on frame->still
+  * demux_{lavf,timeline}: consider audio only HLS when selecting edition
+  * ytdl_hook.lua: convert metadata values to string
+  * osc.lua: add box width option for box and slimbox layouts
+  * player/loadfile: filter tracks without edition when there are matches
+  * player/loadfile: remove preferred_program from track selection
+  * demux: enrich edition titles with codec/resolution/bitrate info
+  * wayland: only update toplevel state values if we have a valid state
+  * osc.lua: use the cached chapter_list instead or retrieving chapters
+  * select.lua: add select-secondary-subtitle-line
+  * TOOLS/dylib_unhell.py: simplify the otool output processing
+  * osc.lua: always observe duration
+  * osc.lua: hide thumbnails when setting visibility to never
+  * osc.lua: don't write to user-data on every render
+  * select.lua: use sub-lines instead of forking to ffmpeg
+  * sub/dec_sub: de-duplicate overlapping sub lines
+  * sub: add sub-lines property
+  * Revert "player/core: increase number of past_frames to 1000"
+  * player/core: increase number of past_frames to 1000
+  * player/video: rewrite display-sync audio drift compensation
+  * player/command: add more precision to avsync pretty print
+  * player/command: add more precision to av speed correction pretty print
+  * vf_vapoursynth: improve backward compatibility
+  * wayland: parse toplevel states before geometry_configured check
+  * context_menu.lua: add background_alpha script-opt
+  * wayland: implement session management
+  * ytdl_hook.lua: remove outdated comment
+  * ytdl_hook.lua: set metadata with use_manifests=yes
+  * msg: don't filter PU{1,2} we use them internally
+  * vf_vapoursynth: update for VapourSynth R74
+  * ci: ensure winget is available on windows-11-arm
+  * demux_playlist: add support for 'strm' playlist
+  * w32_common: support initial --fs and --window-maximized
+  * w32_common: keep client size on window state changes
+  * misc/codepoint_width: handle partially ill-formed UTF-8
+  * DOCS/man/options: remove all_formats=yes warning
+  * ytdl_hook.lua: default to all_formats=yes
+  * osc.lua: make window control buttons action customizable
+  * osc.lua: add option to configure skip_forward/backward buttons
+  * osc.lua: fix frame stepping with skip_backward/forward buttons
+  * console.lua: use `terminal_display_width` when picking longest menu item
+  * player/{lua,javascript}: add `mp.utils.terminal_display_width` function
+  * w32_common: clear window_minimized flag on minimize->maximize
+  * vf_d3d11vpp: fix print index value
+  * osc.lua: use the cached chapter-list for chapter markers
+  * osc.lua: cache observed properties
+  * msg: sanitize term title and block C1 controls and DEL
+  * vo_gpu_next: don't dither scRGB
+  * vo_gpu: support parameters in RPN expressions
+  * DOCS/man/options: add missing RPN operators
+  * video/out/filter_kernels: mark kernel-compatible windows as resizable
+  * video/out/filter_kernels: fall back to nearest tap when sum is zero
+  * demux_timeline: prefer editions with default video track
+  * demux/packet: fix version check for SMPTE 2094-50 metadata
+  * defaults.lua: remove mp.use_suspend dead code
+  * player/command: remove inaccurate comment in cmd_mouse
+  * Revert "player/command: don't send mouse move event on mouse leave request"
+  * DOCS/man/input: fix mouse-pos/hover documentation
+  * wayland: use av_gcd instead of implementing our own gcd function
+  * command: log menu-data changes at trace level instead of verbose
+  * osc.lua: show the first selected audio track id with --lavfi-complex
+  * demux/packet: add support for SMPTE 2094-50 metadata
+  * command: allow metadata to be set manually
+  * wayland: always override surface local coordinates on reconfig
+  * osc: define and add support for "preview" api
+  * osc.lua: set no_video correctly
+  * osc.lua: merge the current-tracks/video observer into track-list's
+  * video/out: use predefined pl_color_space_srgb
+  * osc.lua: add observe_cached() helper
+  * vo_gpu/utils: add gpu_get_auto_param()
+  * vo_gpu: add support for ENUM parameters
+  * vo_gpu: add support for DEFINE parameters
+  * vo_gpu: initial support for tunable parameters
+  * shader_cache: add gl_sc_uniform_{f,i}_bstr()
+  * vo_gpu: skip invalid component overwrite
+  * user_shaders: reject nonsense COMPONENTS values
+  * ytdl_hook.lua: set the title in metadata
+  * context_menu.lua: set user-data/mpv/context-menu/open
+  * DOCS/man/vf: fix parameter separator in EBNF
+  * vo_gpu_next: add image-subs-hdr-peak=video-dynamic/video-static
+  * vo_gpu_next: fix image subtitle hdr peak
+  * select.lua: add confirmation on "Clear history"
+  * demux_edl: support global_tags with delay_open
+  * gpu/utils: fix null pointer arithmetic UB in mp_log_source
+  * menu.conf: add OSC layout selection
+  * options.lua: stop searching in lua-settings
+  * osc.lua: make buttons clickable from the horizontal edges
+  * osc.lua: reduce floatingalpha a little
+  * ytdl_hook.lua: tag variants with program_id
+  * demux_timeline: add support for programs
+  * demux_lavf: add support for programs
+  * osc.lua: fix track indexing
+  * player/command: simplify and fix new-line handling
+  * player/external_files: do not log for 0 priority files
+  * player/external_files: fix --cover-art-whitelist priority
+  * options/m_option: use bstr_find_in_list0
+  * misc/bstr: move str_in_list to this file
+  * misc/bstr: add bstr_find_in_list0 function
+  * player/main: don't use atoi
+  * various: don't check if endptr is null for strto[udll]
+  * player/scripting: use strcasecmp for comparing script files
+  * player/external_files: use natural sort for comparing filenames
+  * player/external_files: rename subtitle references to external file
+  * osdep/io: expand relative path only if it contains directory separator
+  * osdep/io: use static string for dlopen errors
+  * mpv-osd-symbols: center fluent icons only vertically
+  * DOCS/man/options: fix description for testing with all hwdec methods
+  * vd_lavc: remove Vulkan hwdec from auto-safe selection
+  * mpv.metainfo.xml: Update screenshot URL
+  * ci: bump cross-platform-actions/action from 0.32.0 to 1.0.0
+  * player: fix leak on client-message send failure
+  * wayland: override surface local when setting geometry or window scale
+  * wayland: override surface local coordinates on reconfigures
+  * wayland_common: use only supported primaries when inferring from raw
+  * context_menu.lua: enable runtime script-opt updates
+  * osc.lua: make all the height of bar lines clickable
+  * osc.lua: allow clicking window controls from the top
+  * DOCS/man/input: add note on env case-sensitivity
+  * osdep/io: make getenv case insensitive on windows
+  * demux_playlist: only autocreate on regular file
+  * ytdl_hook.lua: use _name key for mp.command_native
+  * select.lua: use _name key for mp.command_native
+  * defaults.lua: use _name key for mp.command_native
+  * defaults.js: use _name key for mp.command_native
+  * TOOLS/lua/command-test.lua: use _name key for mp.command_native
+  * DOCS/man: use _name key for mp.command_native
+  * input/cmd: use _name for command name in mpv_command_node
+  * DOCS/man/options: document @ syntax for --input-ipc-server
+  * input/ipc-unix: don't delete file for abstract sockets
+  * DOCS/man/options: add note about %tX behavior change
+  * player/screenshot: support %s date format on all platforms
+  * player/screenshot: validate strftime format string
+  * player/screenshot: fix null dereference when failing to get time
+  * command: fix race in reading pad_buttons_pressed
+  * input: fix out of bound read/write in pad_buttons_pressed
+  * options: preparse --shuffle
+  * player/command: use m_property_read_sub_validate when suitable
+  * player/command: rename to mp_property_list_editions
+  * player/command: use m_property_read_sub for mouse-pos
+  * SECURITY.md: add security policy
+  * commands.lua: use the new choices field in command-list
+  * vo_gpu: use actual (not logical) texture dimension
+  * options/m_option: fix valid format in geometry option help message
+  * options/m_option: allow /WS geometry parameter usable without XYWH
+  * video/out/x11_common: fix BadAtom error when getting atom name
+  * Meson: add appropriate install_tag to each target
+  * Meson: specify license files
+  * vo_gpu_next: remove swdec from upload frame pass description
+  * w32_common: update DWM corners state in when toggling fullscreen
+  * lua: remove the deprecated error field from end-file
+  * command: remove the deprecated time-start property
+  * player/command: fix update-clipboard text-primary
+  * DOCS/interface-changes: add newline at end of file
+  * player/command: add default-value/choices arg fields to command-list
+  * osc.lua: show window controls in idle
+  * osc.lua: use window title for window controls from mpv core
+  * vo_gpu_next: add few cpu timers
+  * vo_gpu_next: add sw upload time to stats
+  * player/command: add env property
+  * DOCS/man/input: document dummy properties
+  * vo_drm: use drmModeDestroyDumbBuffer instead of using the ioctl directly
+  * vo_drm: use drmModeMapDumbBuffer instead of using the ioctl directly
+  * vo_drm: use drmModeCreateDumbBuffer instead of using the ioctl directly
+  * drm_prime: use GEM_CLOSE wrapper instead of using ioctl directly
+  * meson: bump minimum libdrm version to 2.4.114
+  * drm_common: change type of framebuffer.size from uint32_t to uint64_t
+  * DOCS: remove behavior changes before version 0.38
+  * wayland: don't always use surface local coordinates in toplevel config
+  * wayland: don't use surface local coordinates if we haven't received them
+  * m_option: don't allow m_geometry_apply to make a coordinate 0
+  * video/out/win_state: don't allow apply_autofit to return 0
+  * vo: officially deprecate vo_vaapi
+  * wayland: scale edge pixel threshold by scaling factor
+  * wayland: document that wayland-edge-pixels-touch only affects CSD
+  * wayland: use wayland-edge-pixels-pointer for tablet input resize zone
+  * DOCS/man/options: clarify --directory-filter-types docs
+  * demux_playlist: don't get config group again when checking shuffle
+  * vulkan/context: remove pl_swapchain_resize in set_color
+  * meson: build mpv.com with -Os
+  * vo_dmabuf_wayland: place video surface on the top
+  * wayland: directly use surface local coords for viewport when possible
+  * wayland: alphabetize static function definition
+  * wayland: use designated initializers for protocol listeners
+  * wayland: fix typo in log message
+  * wayland: wrap color mgmt functions in ifdefs instead of their bodies
+  * wayland: remove set_img_desc goto from set_color_management
+  * wayland: validate metadata before set_luminance
+  * wayland: reduce branching when printing log for unsupported prim/tf
+  * wayland: reduce branching in color-management info_done
+  * menu.conf: don't check Hardware decoding with no video track
+  * options: target-gamut now accepts custom CIE xy primaries
+  * w32_common: latch force position until it is actually applied
+  * misc/io_utils: allow mp_save_to_file writing empty files
+  * osc.lua: make title wider in floating layout
+  * w32_common: fix Windows 10 workaround for initial window pos
+  * af_scaletempo: limit options to resonable range
+  * vo_gpu_next: add stereo osd support
+  * video/out/win_state: don't move window when force-window-position=no
+  * vo_gpu_next: add timer for hwdec frame mapping
+  * player/configfiles: use mp_hash_to_bstr
+  * video/out/gpu/lcms: use mp_hash_to_bstr
+  * video/out/gpu/shader_cache: use mp_hash_to_bstr
+  * misc/hash: add mp_hash_to_bstr function
+  * video/out/opengl/utils: remove redundant imports
+  * vd_lavc: ensure decoder state is valid after reinit
+  * demux_lavf: mark packets with keyframe for wrapped avframes too
+  * wayland: move last_zero_copy to fback_pool
+  * mac/window: fix white lines around screen with non-native fullscreen
+  * w32_common: respect C{X,Y}MIN system metrics
+  * w32_common: fix handling of WM_SIZING
+  * w32_common: set max window track size
+  * clipboard-{x11,wayland}: replace static const with enum
+  * misc/io_utils: rename cache
+  * video/out/gpu/shader_cache: use mp_save_to_file
+  * video/out/gpu/lcms: use mp_save_to_file
+  * player/configfiles: check error before copying mtime
+  * player/configfiles: use mp_save_to_file
+  * menu.conf: use update-clipboard command
+  * console.lua: use update-clipboard command
+  * input.conf: use update-clipboard command
+  * clipboard-wayland: notify clipboard updates to update-data waiters
+  * clipboard-wayland: support update_data
+  * clipboard-wayland: disable automatic content fetching
+  * clipboard-x11: notify clipboard updates to update-data waiters
+  * clipboard-x11: support update_data
+  * clipboard-x11: disable automatic content fetching when not monitoring
+  * command: add update-clipboard command
+  * clipboard: make clipboard_ctx persistent
+  * Revert "osc.lua: fix window controls showing in fullscreen"
+  * input: only allocate key name if we've printing trace level messages
+  * input: fix leaking tablet tool key name
+  * wayland: guess best containing primary from raw primaries
+  * vo_gpu_next: move get_best_prim_container to csputils
+  * w32_common: force DWMWA_EXTENDED_FRAME_BOUNDS to work on init
+  * w32_common: add missing title bar height calc back
+  * ci/freebsd: bump to FreeBSD 15.0
+  * ci/{freebsd,openbsd,linux-old}: clone the latest supported libplacebo
+  * meson: bump min libplacebo version to v7.360.1
+  * hwdec_vulkan: guard deprecated AVVulkanDeviceContext.lock/unlock_queue
+  * wayland: fix alpha mode mapping for color-representation
+  * various: fix `Wdiscarded-qualifiers` warnings
+  * wayland: don't try to do anything on data_device.motion
+  * DOCS/man/mpv: use admonition for slice protocol examples
+  * DOCS/man/mpv: document archive protocol
+  * video/vaapi: mark nvidia-vaapi-driver as emulated driver
+  * osc.lua: fix typo
+  * osc.lua: use fluent icons by default for floating layout
+  * osc.lua: add `floating` layout
+  * osc.lua: add `osc-icon_style` option
+  * mpv-osd-symbols: add some Fluent UI System Icons to mpv font
+  * w32_common: refactor window resizing
+  * win32: remove SC_RESTORE handling
+  * win32: don't override fs user option
+  * win32: change resize window event logs to trace
+  * video/out/win_state: allow internal size constraint for window_geometry
+  * video/out/win_state: pass opts as argument
+  * osc.lua: set `sub_margins` to no
+  * osc.lua: use dedicated options to control SUB/OSD offset
+  * ci: bump actions/cache from 4 to 5
+  * ci: bump actions/upload-artifact from 5 to 7
+  * ci: bump cross-platform-actions/action from 0.30.0 to 0.32.0
+  * ci: add dependabot to update actions for us
+  * command: avoid crashing the player with mmap
+  * osdep/io: add mp_dup_cloexec()
+  * osdep/io: remove redundant errno setting
+  * osdep/io: fix error check
+  * osc.lua: move {audio,sub}_track_count into state
+  * osc.lua: update track state only when track-list changes
+  * osc.lua: remove pause_state()
+  * osc.lua: increase deadzoneszie to 0.75
+  * osc.lua: fix window controls showing in fullscreen
+  * osc.lua: don't retrieve display-fps at startup
+  * f_decoder_wrapper: fix decoder name/desc allocation parent
+  * osc.lua: add `osd-margin` option
+  * osc.lua: add `sub-margin` option
+  * osc.lua: add `dynamic_margins` option
+  * osc.lua: fix always visibility
+  * DOCS/man/osc: fix boxvideo description
+  * vf_d3d11vpp: allow more future/past frames
+  * osc.lua: hide osc or wc when leaving its area
+  * player/command: don't send mouse move event on mouse leave request
+  * osc.lua: always wipe osc when idle
+
+-------------------------------------------------------------------
 Fri Jun  5 09:29:15 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Remove BuildRequires on vapoursynth-script, package has been 
