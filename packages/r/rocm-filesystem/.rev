@@ -7,4 +7,14 @@
     <comment>- Add rocm-filesystem to Factory as dependency.</comment>
     <requestid>1348167</requestid>
   </revision>
+  <revision rev="2" vrev="8">
+    <srcmd5>0f829a351f0bb0127a30d1df0d65390f</srcmd5>
+    <version>7.2.0</version>
+    <time>1789993755</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes</comment>
+    <requestid>1378375</requestid>
+  </revision>
 </revisionlist>

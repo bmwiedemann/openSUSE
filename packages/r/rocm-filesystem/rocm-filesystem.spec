@@ -1,6 +1,19 @@
 #
 # spec file for package rocm-filesystem
 #
+# Copyright (c) 2026 SUSE LLC and contributors
+#
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
+
+# Please submit bugfixes or comments via https://bugs.opensuse.org/
+#
 # Copyright Fedora Project Authors.
 #
 # Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,20 +33,6 @@
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
-#
-
-# Copyright (c) 2026 SUSE LLC and contributors
-#
-# All modifications and additions to the file contributed by third parties
-# remain the property of their copyright owners, unless otherwise agreed
-# upon. The license for this file, and modifications and additions to the
-# file, is the same license as for the pristine package itself (unless the
-# license for the pristine package is not an Open Source License, in which
-# case the license is the MIT License). An "Open Source License" is a
-# license that conforms to the Open Source Definition (Version 1.9)
-# published by the Open Source Initiative.
-
-# Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
 
@@ -58,7 +57,7 @@
 
 Name:           rocm-filesystem%{pkg_suffix}
 Version:        %{rocm_version}
-Release:        6%{?dist}
+Release:        8%{?dist}
 
 Summary:        ROCm directories
 
@@ -107,8 +106,10 @@ mkdir -p %{buildroot}%{pkg_prefix}/%{pkg_libdir}/rocm/include
 mkdir -p %{buildroot}%{pkg_prefix}/bin
 mkdir -p %{buildroot}%{pkg_prefix}/include
 mkdir -p %{buildroot}%{pkg_prefix}/libexec
-mkdir -p %{buildroot}%{pkg_prefix}/share
+mkdir -p %{buildroot}%{pkg_prefix}/share/cmake
+mkdir -p %{buildroot}%{pkg_prefix}/share/pkgconfig
 mkdir -p %{buildroot}%{pkg_prefix}/%{pkg_libdir}/cmake
+mkdir -p %{buildroot}%{pkg_prefix}/%{pkg_libdir}/pkgconfig
 %endif
 
 %files
@@ -118,8 +119,11 @@ mkdir -p %{buildroot}%{pkg_prefix}/%{pkg_libdir}/cmake
 %dir %{pkg_prefix}/include
 %dir %{pkg_prefix}/libexec
 %dir %{pkg_prefix}/share
+%dir %{pkg_prefix}/share/cmake
+%dir %{pkg_prefix}/share/pkgconfig
 %dir %{pkg_prefix}/%{pkg_libdir}
 %dir %{pkg_prefix}/%{pkg_libdir}/cmake
+%dir %{pkg_prefix}/%{pkg_libdir}/pkgconfig
 %endif
 %dir %{pkg_prefix}/%{pkg_libdir}/rocm
 %dir %{pkg_prefix}/%{pkg_libdir}/rocm/bin
