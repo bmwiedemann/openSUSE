@@ -526,4 +526,27 @@
     <comment></comment>
     <requestid>1369486</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>2dc3408784dbfa4305ca778799cfef0b</srcmd5>
+    <version>20260918.01</version>
+    <time>1789985600</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260918.01
+  * Update SR-IOV udev rule for idpf network devices.
+- from version 20260916.00
+  * nic-naming: Fix IDPF VF device rename
+- from version 20260915.00
+  * Remove build.sh file
+- from version 20260914.00
+  * set_multiqueue: stop setting XPS at all on a4x/a5x
+- from version 20260911.00
+  * No public description
+- from version 20260910.00
+  * set_multiqueue: fix awk parsing for idpf ring len
+- from version 20260819.00
+  * set_multiqueue: Set IDPF ring length to 4096 by default
+- from version 20260804.00
+  * nic-naming: improve handling of BM IRDMA devices (forwarded request 1378984 from glaubitz)</comment>
+    <requestid>1379220</requestid>
+  </revision>
 </revisionlist>
