@@ -1,7 +1,7 @@
 #
 # spec file for package nedit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,29 @@
 
 
 Name:           nedit
-Version:        5.7
+Version:        5.8
 Release:        0
 Summary:        A GUI text editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Text/Editors
-URL:            http://sourceforge.net/projects/nedit/
-Source0:        http://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.gz
+URL:            https://sourceforge.net/projects/nedit/
+Source0:        https://downloads.sourceforge.net/%{name}/%{name}-%{version}-src.tar.bz2
 Source1:        %{name}-icon.png
 Source2:        %{name}.desktop
-#PATCH-FIX-OPENSUSE Use optflags for build
+# PATCH-FIX-OPENSUSE Use optflags for build
 Patch1:         %{name}-5.5CVS-makefiles.patch
-#PATCH-FIX-OPENSUSE Do not use tmpnam
+# PATCH-FIX-OPENSUSE Do not use tmpnam
 Patch2:         %{name}-5.5CVS-security.patch
-#PATCH-FIX-OPENSUSE Change nc to nedit-client to avoid conflict with netcat
+# PATCH-FIX-OPENSUSE Change nc to nedit-client to avoid conflict with netcat
 Patch3:         %{name}-5.5CVS-nc-manfix.patch
-#PATCH-FIX-UPSTREAM Set "Default" visual to avoid crashes
+# PATCH-FIX-UPSTREAM Set "Default" visual to avoid crashes
 Patch4:         %{name}-5.5-visfix.patch
-#PATCH-FIX-OPENSUSE do not use UTF-8 by default, as it is not supported
+# PATCH-FIX-OPENSUSE do not use UTF-8 by default, as it is not supported
 Patch5:         %{name}-5.5CVS-utf8.patch
-#PATCH-FIX-OPENSUSE do not include data and time in binary
-Patch6:         %{name}-5.6_builddate_fix.patch
+# PATCH-FIX-OPENSUSE gcc15 function-pointer prototypes
 Patch7:         %{name}-5.7-gcc15.patch
 BuildRequires:  bison
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  openmotif-devel
 BuildRequires:  update-desktop-files
 Requires(post): update-desktop-files
@@ -58,21 +58,20 @@ and a lot other nice features (and extensions for programmers).
 %patch -P 3 -p1
 %patch -P 4 -p1
 %patch -P 5
-%patch -P 6 -p1
 %patch -P 7 -p1
 
 %build
-make -j1 RPM_OPT_FLAGS="%{optflags}" linux
+%make_build -j1 RPM_OPT_FLAGS="%{optflags}" linux
 
 pushd doc
-make -j1 all
+%make_build -j1 all
 popd
 
 %install
 install -d -m 755 %{buildroot}%{_bindir}
 install -d -m 755 %{buildroot}%{_mandir}/man1
 mv source/nc source/nedit-client
-install -s -m 755 source/nedit source/nedit-client %{buildroot}%{_bindir}
+install -m 755 source/nedit source/nedit-client %{buildroot}%{_bindir}
 install -m 644 doc/nedit.man %{buildroot}%{_mandir}/man1/nedit.1x
 mv doc/nc.man doc/nedit-client.man
 install -m 644 doc/nedit-client.man %{buildroot}%{_mandir}/man1/nedit-client.1x
@@ -89,7 +88,7 @@ install -m 644 %{SOURCE2} %{buildroot}%{_datadir}/applications/
 %desktop_database_postun
 
 %files
-%defattr(-,root,root)
+%license COPYRIGHT
 %doc doc/nedit.doc README ReleaseNotes
 %{_bindir}/nedit
 %{_bindir}/nedit-client

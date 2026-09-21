@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:41:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.8:
+  * Optional tab drag-and-drop (X resources nedit.dragDropTabs,
+    nedit.dragDropTabsAnimation)
+  * File menu Save All (Shift+Ctrl+S)
+  * Multi-row tabs keep more of each filename visible and no
+    longer rotate the active row to the bottom
+  * Treat Motif 2.2.3 through 2.3.8 as known-good
+  * Honor SOURCE_DATE_EPOCH; drop link-time stamps from the
+    binary
+  * Skip WM_SAVE_YOURSELF when the window manager does not
+    support it
+  * Recognize ARM/ARM64 in the compiled-on string
+- Drop nedit-5.6_builddate_fix.patch: SOURCE_DATE_EPOCH and
+  linkdate removal are upstream
+- Rebase nedit-5.5CVS-makefiles.patch for the C89 linux flags
+- Source0 is now nedit-5.8-src.tar.bz2
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Jun 16 18:36:38 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - nedit-5.7-gcc15.patch: fix build with gcc15
