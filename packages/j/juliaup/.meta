@@ -1,6 +1,0 @@
-<package name="juliaup" project="openSUSE:Factory">
-  <title>juliaup</title>
-  <description>Julia installer and version multiplexer</description>
-  <devel project="science" package="juliaup"/>
-  <url>https://github.com/JuliaLang/juliaup</url>
-</package>
