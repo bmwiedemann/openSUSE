@@ -7,4 +7,34 @@
     <comment>CMake modules for common build and development tasks for ROCm</comment>
     <requestid>1301082</requestid>
   </revision>
+  <revision rev="2" vrev="4">
+    <srcmd5>8bc6bdd4135dba2d289d36eefd020aa6</srcmd5>
+    <version>7.2.0</version>
+    <time>1789993756</time>
+    <user>anag_factory</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- Add --with preview
+
+- Fix changelog
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with compat
+
+- Update to 7.1.0
+
+- Update to 7.0.1
+
+- Update to 7.0.0
+
+- Add Fedora copyright
+
+- Simplify file removal
+
+  Add: 0001-rocm-cmake-follow-cmake-install-rules.patch</comment>
+    <requestid>1378378</requestid>
+  </revision>
 </revisionlist>
