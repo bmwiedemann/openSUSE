@@ -1,4 +1,118 @@
 -------------------------------------------------------------------
+Sun Sep 20 05:21:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.111:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.54
+- Update to version 3.17.110:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.53
+- Update to version 3.17.109:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.16
+- Update to version 3.17.108:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.53
+- Update to version 3.17.107:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.51
+- Update to version 3.17.106:
+  * only changes to GitHub actions
+- Update to version 3.17.105:
+  * only changes to GitHub actions
+- Update to version 3.17.104:
+  * only changes to GitHub actions
+- Update to version 3.17.103:
+  * only changes to GitHub actions
+- Update to version 3.17.102:
+  * only changes to GitHub actions
+- Update to version 3.17.101:
+  * chore(deps): upgrade jenkins-x-plugins/jx-health to version
+    0.0.90
+- Update to version 3.17.100:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.27
+- Update to version 3.17.99:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.15
+- Update to version 3.17.98:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.14
+
+-------------------------------------------------------------------
+Sun Sep 20 05:03:44 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.17.97:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.50
+- Update to version 3.17.96:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.13
+- Update to version 3.17.95:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.26
+- Update to version 3.17.94:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.25
+- Update to version 3.17.93:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.11
+- Update to version 3.17.92:
+  * chore(deps): upgrade jenkins-x-plugins/jx-application to
+    version 0.3.15
+- Update to version 3.17.91:
+  * chore(deps): upgrade jenkins-x-plugins/jx-secret to version
+    0.4.27
+- Update to version 3.17.90:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.96
+- Update to version 3.17.89:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.23
+- Update to version 3.17.88:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.22
+- Update to version 3.17.87:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.52
+- Update to version 3.17.86:
+  * chore(deps): upgrade jenkins-x-plugins/jx-project to version
+    0.2.95
+- Update to version 3.17.85:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.21
+- Update to version 3.17.84:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.36
+- Update to version 3.17.83:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.51
+- Update to version 3.17.82:
+  * chore(deps): upgrade jenkins-x-plugins/jx-changelog to version
+    0.10.33
+- Update to version 3.17.81:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.35
+- Update to version 3.17.80:
+  * chore(deps): upgrade jenkins-x-plugins/jx-promote to version
+    0.6.50
+- Update to version 3.17.79:
+  * chore(deps): upgrade jenkins-x-plugins/jx-preview to version
+    0.7.20
+- Update to version 3.17.78:
+  * chore(deps): upgrade jenkins-x-plugins/jx-admin to version
+    0.3.34
+- Update to version 3.17.77:
+  * chore(deps): upgrade jenkins-x-plugins/jx-release-version to
+    version 2.10.7
+- Update to version 3.17.76:
+  * chore(deps): upgrade jenkins-x-plugins/jx-pipeline to version
+    0.7.46
+- Update to version 3.17.75:
+  * chore(deps): upgrade jenkins-x-plugins/jx-gitops to version
+    1.4.10
+
+-------------------------------------------------------------------
 Mon Aug 03 06:23:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.17.74:
