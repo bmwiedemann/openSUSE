@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:26:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 43:
+  * Add --dump-summary for JSON output on stdout
+  * cobertura-writer: unique class names for newer Jenkins plugins
+  * Support Go binaries on macOS
+  * python-helper: drop pre-3.4 deprecated imp module code
+  * Improve positional argument handling
+  * cmake: use CURL imported target, correct FindXXX names
+- Drop link_order.patch: upstream reordered link libraries,
+  patch no longer applies
+
+-------------------------------------------------------------------
 Fri Feb 20 14:54:16 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
 
 - Also link to libsframe on sp4 (bsc#1258658)

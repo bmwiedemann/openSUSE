@@ -17,14 +17,12 @@
 
 
 Name:           kcov
-Version:        42
+Version:        43
 Release:        0
 Summary:        Code coverage tool without special compilation options
 License:        APSL-2.0 AND GPL-2.0-only
-Group:          Development/Tools/Other
 URL:            https://github.com/SimonKagstrom/kcov
 Source0:        https://github.com/SimonKagstrom/kcov/archive/v%{version}.tar.gz
-Patch0:         link_order.patch
 BuildRequires:  binutils-devel
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
