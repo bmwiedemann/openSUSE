@@ -17,7 +17,7 @@
 
 
 Name:           systemtap-docs
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Documents and examples for systemtap
 License:        GPL-2.0-or-later
@@ -37,8 +37,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  latex2html
 BuildRequires:  libdw-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-devel
-BuildRequires:  python3-setuptools
+BuildRequires:  python3-base
 BuildRequires:  texlive-amsfonts
 BuildRequires:  texlive-babel-english
 BuildRequires:  texlive-collection-fontsrecommended
@@ -66,11 +65,12 @@ This package contains the documents and examples for systemtap.
 find testsuite examples -name "*.stp" | xargs -n1 sed -i -e 's, /bin/env, %{_bindir}/env,'
 find testsuite examples -type f | xargs chmod 644
 autoreconf -fi
-%configure --docdir=%{_docdir}/systemtap --disable-nls --with-python3
+# --without-python3-probes means we can drop python3-devel/python3-setuptools buildrequires
+%configure --docdir=%{_docdir}/systemtap --disable-nls --with-python3 --without-python3-probes
 make %{?_smp_mflags}
 
 %install
-make DESTDIR=%{buildroot} install %{?_smp_mflags} doc
+make DESTDIR=%{buildroot} install %{?_smp_mflags}
 # COPYING packaged by main spec
 cp README AUTHORS NEWS %{buildroot}%{_docdir}/systemtap/
 # remove binaries and runtime stuff

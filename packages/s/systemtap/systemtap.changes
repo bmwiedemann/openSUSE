@@ -1,4 +1,89 @@
 -------------------------------------------------------------------
+Fri Sep 18 19:51:32 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Update to version 5.6
+
+  * SystemTap frontend (stap) changes
+    - New `--debug` option builds the generated kernel module (.ko) or
+      dyninst module (.so) with maximum debugging information
+      (CONFIG_DEBUG_INFO, -g, gcc -save-temps=obj) and runs pahole(1)
+      when available. (PR34169)
+    - Statement-by-statement script execution tracing via
+      `stap -D STP_EXECTRACE` (not yet available with --bpf). (PR34166)
+    - New `--semantic-keep-going` option: continue pass-2 elaboration after
+      semantic errors, dump a tab-separated SEMANTIC_ERROR catalog at the end
+      of the failing pass, and still exit non-zero. Aimed at machine testing.
+    - Optimizer work for multiple probe handlers on the same probe point.
+      (PR34161)
+    - Pass-2 elaboration derives DWARF probe points concurrently within each
+      stapfile and shares per-CU/function caches; capped by STAP_NTHREADS,
+      if elfutils is compiled with multithreading support. (PR34432)
+    - DW_OP_entry_value location expressions are now honored, improving
+      $parm$/$var$ pretty-printing and @entry() access for entry-only locals.
+    
+  * SystemTap backend changes
+    - LSM (Linux Security Module) hook support for the BPF runtime
+      (lsm.bprm_check_security, lsm.file_open, lsm.socket_create, and many
+      others). Use `$ctx` with `@cast()` and `$return` to allow/deny.
+      Requires kernel 5.7+, CONFIG_BPF_LSM=y. (PR34126)
+    - XDP packet-processing probes for the BPF runtime: attach to network
+      interfaces to inspect incoming packets and return a pass/drop/tx verdict.
+      Requires kernel 4.8+, CONFIG_BPF_SYSCALL=y. (PR34583)
+    - BTF-based `kernel.tracepoint("name")` and
+      `module("mod").tracepoint("name")` probes discover tracepoints from
+      `btf_trace_*` typedefs without trace headers/tracefs. Handler args are
+      positional ($arg1, ...). Separate from `kernel.trace("system:name")`.
+      Requires vmlinux.h / CONFIG_DEBUG_INFO_BTF for kernel probes.
+      (PR34632)
+    - Kernel build IDs are now extracted from compressed/non-ELF vmlinuz on
+      aarch64 and s390x, feeding dwfl/debuginfod. (PR34488)
+    - Runtime handler errors now include a short call-site stack through
+      nested functions and the active probe point. (PR34320)
+    - Runtime/tapset porting for Linux 7.2-rc kernels (and continued
+      enterprise back-compat). (PR34318)
+    - Python HelperSDT modernization; deprecate/remove Python 2 probing
+      support. (PR34292, PR34293)
+    
+  * SystemTap script-language changes
+    - `@cast()` operations now see through typedefs. (PR34199)
+    - New `@enumname()` operator: map an integral value to its DWARF
+      enumerator name string (the reverse of `@enum()`). Unknown values
+      render as decimal. (PR34499)
+    - Short-circuit evaluation of `@defined()` ternaries during variable
+      expansion. (PR34414)
+    
+  * SystemTap tapset changes
+    - `tp_syscall.*` / `syscall_any` prefer
+      `kernel.tracepoint("sys_enter")` / `sys_exit` when BTF vmlinux
+      tracepoints are available, with `kernel.trace(...)` fallbacks;
+      `tp_syscall("name")' includes amazingly fast dispatch for
+      arbitrary probed-syscall subsets; `tp_syscall("name").return`
+      supports `@entry()`. (PR34153)
+    - Python probing split into per-minor-version tapsets (3.9 through
+      3.15); Python 2 probes removed. Python 3.13 tapset added and py3execdir
+      probing fixed. (PR33037)
+    - process.data hardware watchpoints now work under --runtime=dyninst,
+      including process.data("SYMBOL") with run-time name resolution;
+      print_ubacktrace* uses a third-party stackwalk symbolized with elfutils.
+    - Numerous NFS/VFS/socket/SCSI/signal/futex adaptations for Linux 7.2
+      API drift.
+    
+  * Developer / packaging changes
+    - REMOVED legacy `systemtap-service` / `systemtap.service` initscript
+      infrastructure upstream. Standalone `stap-onboot` (for initramfs
+      embedding) is retained; [the new systemd `stap@.service`/
+      `staprun@.service` templates are not packaged in openSUSE.] (PR34128)
+
+    - Optional ML-DSA module signing (Secure Boot / MOK and staprun privilege
+      signatures) alongside default RSA; set SYSTEMTAP_MOK_KEY_TYPE /
+      SYSTEMTAP_SIGN_KEY_TYPE. Requires OpenSSL 3.5+ / NSS CKM_ML_DSA.
+    - New `--enable-debug` configure option and `--enable-glibcxx-debug`
+      command-line option. (PR31683)
+    - Probe javac against HelperSDT before enabling Java support. (PR34475)
+    - Testsuite speedups and listing_mode timeout fixes; show SystemTap
+      version in generated docs. (PR34152, PR34303, PR33105)
+
+-------------------------------------------------------------------
 Fri May 1 18:45:42 UTC 2026 - Tony Jones <tonyj@suse.com>
 
 - Update to version 5.5

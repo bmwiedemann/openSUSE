@@ -20,7 +20,7 @@
 %define _rundir %{_localstatedir}/run
 %endif
 Name:           systemtap
-Version:        5.5
+Version:        5.6
 Release:        0
 Summary:        Instrumentation System
 License:        GPL-2.0-or-later
@@ -148,6 +148,7 @@ install -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}
 %{_bindir}/stap-profile-annotate
 %{_bindir}/stap-jupyter-container
 %{_bindir}/stap-jupyter-install
+%{_bindir}/stap-onboot
 %{_mandir}/man[17]/*
 %{_mandir}/cs/man[17]/*
 %dir %{_datadir}/%{name}
@@ -167,12 +168,13 @@ install -m 644 %{SOURCE6} %{buildroot}%{_tmpfilesdir}
 %{_libexecdir}/%{name}/stapio
 %{_libexecdir}/%{name}/stap-env
 %{_libexecdir}/%{name}/stap-authorize-cert
+%{_libexecdir}/%{name}/stap-service-prepare
 %{_mandir}/man8/staprun.8*
-%{_mandir}/man8/systemtap-service.8*
 %{_mandir}/cs/man8/systemtap.8*
 %{_mandir}/man8/stapsh.8*
 %{_mandir}/cs/man8/stapsh.8*
 %{_mandir}/man8/stapbpf.8*
+%{_mandir}/man8/stap-onboot.8*
 
 %files server
 %dir %{_tmpfilesdir}
