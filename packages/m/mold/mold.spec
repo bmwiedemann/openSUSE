@@ -1,7 +1,6 @@
 #
 # spec file for package mold
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,44 +17,30 @@
 
 
 Name:           mold
-Version:        2.41.0
+Version:        2.42.1
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
-Group:          Development/Tools/Building
 URL:            https://github.com/rui314/mold
 Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
-Patch0:         build-blake-3-as-static.patch
-BuildRequires:  cmake
-%if %{suse_version} < 1550
-BuildRequires:  gcc11-c++
-%else
-# These libraries are not present for openSUSE Leap
-BuildRequires:  gcc-c++
 BuildRequires:  clang
+BuildRequires:  cmake
+BuildRequires:  gcc-c++
+BuildRequires:  gdb
+BuildRequires:  glibc-devel-static
 BuildRequires:  libdwarf-tools
 BuildRequires:  llvm
 BuildRequires:  llvm-gold
+BuildRequires:  pkgconfig
 BuildRequires:  tbb-devel
+BuildRequires:  valgrind
+BuildRequires:  zstd
+BuildRequires:  pkgconfig(libzstd)
+BuildRequires:  pkgconfig(zlib)
+Suggests:       update-alternatives
+OrderWithRequires(pre): update-alternatives
 %ifarch x86_64
 BuildRequires:  gcc-32bit
-%endif
-%endif
-BuildRequires:  gdb
-BuildRequires:  glibc-devel-static
-BuildRequires:  libzstd-devel
-%ifnarch ppc64
-BuildRequires:  valgrind
-%endif
-BuildRequires:  zlib-devel
-BuildRequires:  zstd
-OrderWithRequires(pre): update-alternatives
-Suggests:       update-alternatives
-
-%if %{suse_version} < 1600
-%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DCMAKE_INSTALL_DOCDIR:PATH=%{_docdir}/%{name}
-%else
-%define build_args -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_MIMALLOC=OFF -DMOLD_USE_SYSTEM_TBB=ON
 %endif
 
 %description
@@ -69,27 +54,20 @@ build time especially in rapid debug-edit-rebuild cycles.
 %autosetup -p1
 
 %build
-%if %{suse_version} < 1550
-export CC=gcc-11
-export CXX=g++-11
-%endif
-%cmake %{build_args}
+%cmake \
+  -DMOLD_USE_MIMALLOC=OFF \
+  -DMOLD_USE_SYSTEM_TBB=ON
 %cmake_build
 
 %install
 %cmake_install
 
 %check
-%if %{suse_version} < 1550
-export TEST_CC=gcc-11
-export TEST_CXX=g++-11
-export TEST_GXX=g++-11
-%endif
 %ctest
 
 %pre
 if [ $1 -eq 2 ] && [ -f %{_sbindir}/update-alternatives ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
-  "%_sbindir/update-alternatives" --remove ld "%_bindir/ld.mold"
+  "%{_sbindir}/update-alternatives" --remove ld "%{_bindir}/ld.mold"
 fi
 
 %files
@@ -99,9 +77,9 @@ fi
 %{_libexecdir}/mold/ld
 %dir %{_libexecdir}/mold
 %{_libdir}/mold/mold-wrapper.so
-%{_mandir}/man1/mold.1.gz
-%{_mandir}/man1/ld.mold.1.gz
+%{_mandir}/man1/mold.1%{?ext_man}
+%{_mandir}/man1/ld.mold.1%{?ext_man}
 %dir %{_docdir}/mold
-%doc %{_docdir}/mold/LICENSE
+%license %{_docdir}/mold/LICENSE
 
 %changelog

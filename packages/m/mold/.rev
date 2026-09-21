@@ -1266,4 +1266,34 @@
   zero-initializations and parallelizing more of the index generation. (forwarded request 1349990 from rguenther)</comment>
     <requestid>1349991</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>3e962d2e3b94d82bee66157a6f20e215</srcmd5>
+    <version>2.42.1</version>
+    <time>1789984939</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.42.1:
+  * Faster linking on many-core machines, more new optimizations.
+  * Temporary local symbols (.L*) are now discarded by default,
+    --discard-none restores the old behaviour.
+  * New options: --pack-dyn-relocs=android(+relr),
+    -w/--no-warnings, -Ttext-segment; --compress-debug-sections
+    takes a compression level.
+  * SFrame v3 unwinding sections merged into PT_GNU_SFRAME output.
+  * Fix ICF folding functions with different exception tables,
+    preemptible-symbol and alignment handling.
+  * Fix COMDAT/LTO selection, shared-library symver alias binding.
+  * 2.42.1: fix aborts during C++ exception handling caused by an
+    empty unwind record hiding a handler.
+  * Likely last C++ release before Rust rewrite (mold 3.0).
+- Drop build-blake-3-as-static.patch: upstream builds the bundled
+  BLAKE3 static itself (BUILD_SHARED_LIBS off before it is added).
+- Drop the Leap 15 conditionals (gcc11, docdir override, bundled
+  TBB): the lowest target is 16.0. Pass the cmake flags inline and
+  drop the duplicated one; sort the unconditional BuildRequires
+  first, the valgrind one is no longer conditional (no ppc64
+  target left); spec-cleaner (Group, pkgconfig deps).
+- Use %autosetup -p1.
+</comment>
+    <requestid>1379128</requestid>
+  </revision>
 </revisionlist>
