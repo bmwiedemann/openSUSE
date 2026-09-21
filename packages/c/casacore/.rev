@@ -106,4 +106,15 @@
     <comment></comment>
     <requestid>1328138</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>063aa3bbbd0a422fd96f453fce7778cb</srcmd5>
+    <version>3.8.1</version>
+    <time>1789986086</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1379157 from badshah400
+
+* Update to version 3.8.1.
+* Add new BuildRequires: libboost_filesystem-devel, libboost_test-devel, and libdeflate-devel.</comment>
+    <requestid>1379311</requestid>
+  </revision>
 </revisionlist>

@@ -60,7 +60,7 @@
 # /SECTION
 
 Name:           %{pname}
-Version:        3.8.0
+Version:        3.8.1
 Release:        0
 Summary:        A suite of C++ libraries for radio astronomy data processing
 License:        LGPL-2.0-or-later
@@ -77,8 +77,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  gcc-fortran
 BuildRequires:  hdf5%{?my_suffix}-devel
 BuildRequires:  lapack-devel
+BuildRequires:  libboost_filesystem-devel
 BuildRequires:  libboost_headers-devel
 BuildRequires:  libboost_python3-devel
+BuildRequires:  libboost_test-devel
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python3-devel
@@ -87,6 +89,7 @@ BuildRequires:  readline-devel
 BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(libdeflate) >= 1.19
 BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(wcslib)
 BuildRequires:  pkgconfig(zlib)

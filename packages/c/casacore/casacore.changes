@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sat Sep 19 18:31:01 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.8.1:
+  * General
+    - Fix performance regression - avoid/defer construction of
+      instances in MCFrame (gh#casacorecasacore#1454).
+    - Cleanup and improvement of AlwaysAssert and DebugAssert
+      (gh#casacorecasacore#1467).
+    - Clean up the Block class and deprecate the PtrBlock class
+      (gh#casacorecasacore#1471).
+    - Remove Block::prohibitChangingAllocator() and
+      Block::permitChangingAllocator() as they were not used.
+    - Switch to new EOP files for Measures
+      (gh#casacorecasacore#1476).
+  * Storage manager related
+    - Fix read/write of array Adios2StMan columns by rows
+    - Added write-after-read mode in Sisco
+      (gh#casacorecasacore#1463).
+    - Fixes in StokesIStMan (gh#casacorecasacore#1469).
+    - Added a Sisco Stokes I mode (gh#casacorecasacore#1470).
+    - Build Sisco by default (gh#casacorecasacore#1481,
+      gh#casacorecasacore#1483).
+- Add new BuildRequires: libboost_filesystem-devel,
+  libboost_test-devel, and libdeflate-devel.
+
+-------------------------------------------------------------------
 Fri Jan 16 04:27:34 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.8.0:
