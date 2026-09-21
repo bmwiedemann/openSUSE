@@ -270,4 +270,13 @@
     <comment></comment>
     <requestid>1301457</requestid>
   </revision>
+  <revision rev="23" vrev="5">
+    <srcmd5>e245cee6a60b7b0efbf1d76b569e94c0</srcmd5>
+    <version>4.1.8</version>
+    <time>1789986221</time>
+    <user>anag_factory</user>
+    <comment>- Add fix-gcc16-compilation-errors.patch to fix compilation
+  errors with GCC &gt;= 16</comment>
+    <requestid>1379375</requestid>
+  </revision>
 </revisionlist>

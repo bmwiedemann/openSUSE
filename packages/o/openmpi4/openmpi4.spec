@@ -90,12 +90,14 @@ Source0:        openmpi-%{version}%{git_ver}.tar.bz2
 Source2:        openmpi4-rpmlintrc
 Source4:        mpivars.sh
 Source5:        mpivars.csh
+Source100:      README.md
 Patch1:         orted-mpir-add-version-to-shared-library.patch
 Patch2:         btl-openib-Add-VF-support-for-ConnectX-4-5-and-6.patch
 Patch3:         openmpi4-C99.diff
 Patch4:         test-datatype-partial.c-fix-compiler-warnings.patch
 Patch5:         mtl-ofi-fix-missing-definition-of-container_of.patch
 Patch6:         Fix-type-mismatch-error.patch
+Patch7:         fix-gcc16-compilation-errors.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  autoconf
@@ -108,6 +110,7 @@ BuildRequires:  libfabric-devel
 BuildRequires:  libibumad-devel
 BuildRequires:  libibverbs-devel
 BuildRequires:  libtool
+ExcludeArch:    %ix86
 # net-tools is required to run hostname
 BuildRequires:  net-tools
 %if 0%{?testsuite}

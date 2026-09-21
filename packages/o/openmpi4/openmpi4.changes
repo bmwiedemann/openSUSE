@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 06:00:16 UTC 2026 - Nicolas Morey <nicolas.morey@suse.com>
+
+- Add fix-gcc16-compilation-errors.patch to fix compilation
+  errors with GCC >= 16
+
+-------------------------------------------------------------------
 Tue Aug  5 18:47:33 UTC 2025 - Nicolas Morey <nicolas.morey@suse.com>
 
 - Enable Grid Cluster Scheduler support (jsc#PED-13373)
