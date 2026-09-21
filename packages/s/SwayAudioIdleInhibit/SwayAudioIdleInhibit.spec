@@ -1,7 +1,7 @@
 #
 # spec file for package SwayAudioIdleInhibit
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,28 +15,28 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 Name:           SwayAudioIdleInhibit
-Version:        0.1.1
+Version:        0.2.0
 Release:        0
 Summary:        Prevents swayidle from sleeping while outputting or receiving audio
 License:        GPL-3.0-or-later
 URL:            https://github.com/ErikReider/SwayAudioIdleInhibit
-Source0:        %{name}-%{version}.tar.gz
-BuildRequires:  meson
+Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  gcc-c++
-BuildRequires:  pkgconfig(wayland-protocols)
-BuildRequires:  pkgconfig(wlroots)
-BuildRequires:  pkgconfig(libpulse)
-BuildRequires:  pipewire-devel
-BuildRequires:  systemd-devel
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libpulse) >= 15.0
+BuildRequires:  pkgconfig(libsystemd)
 Requires:       pipewire-pulseaudio
 
 %description
-Prevents swayidle from sleeping while any application is outputting or receiving audio. Should work with all Wayland desktops that support the zwp_idle_inhibit_manager_v1 protocol but only tested in Sway
-This only works for Pulseaudio / Pipewire Pulse
+Prevents swayidle/hypridle from sleeping while any application is outputting
+or receiving audio. Uses systemd/elogind idle inhibit. Only works with
+PulseAudio / PipeWire Pulse.
 
 %prep
-%autosetup -a0 -p0
+%autosetup
 
 %build
 %meson

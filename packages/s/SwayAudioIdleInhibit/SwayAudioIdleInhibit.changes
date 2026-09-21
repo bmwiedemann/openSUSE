@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:26:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0:
+  * Inhibit idle via systemd/elogind instead of the Wayland
+    idle-inhibit protocol; works with swayidle and hypridle
+  * Prevent crash when an audio device disconnects
+  * Fixes for PipeWire 0.3.77
+  * Add --ignore-source-outputs to skip named source outputs
+  * Document Waybar integration (--dry-print-both-waybar)
+- Switch BuildRequires to pkgconfig(libsystemd) and
+  pkgconfig(libpulse) >= 15.0; drop unused wayland-protocols,
+  wlroots and pipewire-devel
+
+-------------------------------------------------------------------
 Tue Jun  4 11:28:11 UTC 2024 - Dawid Adam <nyslay@gmail.com>
 
 - Update to 0.1.1:
