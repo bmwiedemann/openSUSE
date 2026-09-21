@@ -19,15 +19,14 @@
 %define executable_name fleet
 
 Name:           fleet-cli
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        CLI for the Rancher Fleet GitOps tooling
 License:        Apache-2.0
 URL:            https://github.com/rancher/fleet
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-# 16.0 fails with go.mod requires go >= 1.26.0 (running go 1.26rc3; GOTOOLCHAIN=local)
-BuildRequires:  go1.26 >= 1.26.0
+BuildRequires:  go1.26 >= 1.26.8
 # for the shell completions
 BuildRequires:  bash-completion
 BuildRequires:  fish
