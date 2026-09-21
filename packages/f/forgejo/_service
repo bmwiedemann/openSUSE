@@ -5,5 +5,6 @@
     <param name="cpio">node_modules.obscpio</param>
     <param name="output">node_modules.spec.inc</param>
     <param name="source-offset">10000</param>
+    <param name="legacy-container">true</param>
   </service>
 </services>

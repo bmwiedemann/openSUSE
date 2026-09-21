@@ -1036,4 +1036,19 @@ Bug fixes:
     <comment>- update to 16.0.3: (forwarded request 1372291 from darix)</comment>
     <requestid>1372714</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>573ea076a5dbfd54f50ced0629e0e81e</srcmd5>
+    <version>16.0.5</version>
+    <time>1789985756</time>
+    <user>anag_factory</user>
+    <comment>- update to 16.0.5:
+  - Security bug fixes: prevent ApplyDiffPatch from mutating the bare
+    repo config (remote code execution on the Forgejo host via a
+    crafted patch, a variation of the PR 13705 issue fixed in 15.0.6),
+    and prevent CSRF attacks on OpenID identity associations
+  - Bug fixes and translation updates; see the upstream release notes
+
+Supersedes sr#1379248 (16.0.4), which is obsoleted by this release.</comment>
+    <requestid>1379269</requestid>
+  </revision>
 </revisionlist>

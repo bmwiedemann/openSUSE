@@ -25,18 +25,16 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo
-Version:        16.0.3
+Version:        16.0.5
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
-Group:          Development/Tools/Version Control
 URL:            https://forgejo.org
 Source0:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz
 Source1:        https://codeberg.org/forgejo/forgejo/releases/download/v%{version}/forgejo-src-%{version}.tar.gz.asc
 Source2:        https://keys.openpgp.org/vks/v1/by-fingerprint/EB114F5E6C0DC2BCDD183550A4B61A2DC5923710#/forgejo.keyring
 Source3:        https://codeberg.org/forgejo/forgejo/raw/tag/v%{version}/package-lock.json
 Source4:        node_modules.spec.inc
-%include        %{_sourcedir}/node_modules.spec.inc
 Source5:        forgejo.service
 Source6:        forgejo.sysusers
 Source7:        forgejo.fc
@@ -48,14 +46,6 @@ Source12:       forgejo-abstraction.apparmor
 Source13:       forgejo-hooks-abstraction.apparmor
 Source99:       README.SUSE
 Patch0:         custom-app.ini.patch
-BuildRequires:  golang(API) >= 1.25
-## node >= 20
-%if 0%{?suse_version} == 1500
-BuildRequires:  nodejs-devel-default
-BuildRequires:  npm-default
-%else
-BuildRequires:  nodejs-packaging
-%endif
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
@@ -63,28 +53,37 @@ BuildRequires:  local-npm-registry
 BuildRequires:  make
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
+BuildRequires:  golang(API) >= 1.25
 Requires:       git-core
 Requires:       git-lfs
 Requires:       (forgejo-apparmor if apparmor-abstractions)
 Requires:       (forgejo-firewalld if firewalld)
 Requires:       (forgejo-selinux if selinux-policy-targeted)
 Conflicts:      forgejo-longterm
+%include        %{_sourcedir}/node_modules.spec.inc
+%systemd_requires
+%sysusers_requires
+## node >= 20
+%if 0%{?suse_version} == 1500
+BuildRequires:  nodejs-devel-default
+BuildRequires:  npm-default
+%else
+BuildRequires:  nodejs-packaging
+%endif
 %if %{with apparmor}
 BuildRequires:  apparmor-abstractions
 BuildRequires:  apparmor-rpm-macros
-BuildRequires:  libapparmor-devel
+BuildRequires:  pkgconfig(libapparmor)
 %endif
 %if %{with selinux}
 BuildRequires:  checkpolicy
 BuildRequires:  selinux-policy-devel
 %endif
-%{systemd_requires}
-%{sysusers_requires}
 
 %package firewalld
 Summary:        Firewalld profile for %{name}
-BuildArch:      noarch
 Conflicts:      forgejo-longterm-firewalld
+BuildArch:      noarch
 
 %description firewalld
 This package adds a firewalld service profile to %{name}
@@ -92,9 +91,9 @@ This package adds a firewalld service profile to %{name}
 %if %{with apparmor}
 %package apparmor
 Summary:        Apparmor profile for %{name}
-BuildArch:      noarch
-Conflicts:      forgejo-longterm-apparmor
 Requires:       %{name} = %{version}-%{release}
+Conflicts:      forgejo-longterm-apparmor
+BuildArch:      noarch
 
 %description apparmor
 This package adds the Apparmor profile to %{name}
@@ -103,10 +102,10 @@ This package adds the Apparmor profile to %{name}
 %if %{with selinux}
 %package selinux
 Summary:        Selinux support for %{name}
-BuildArch:      noarch
-Conflicts:      forgejo-longterm-selinux
 Requires:       %{name} = %{version}-%{release}
 Requires:       selinux-policy-targeted
+Conflicts:      forgejo-longterm-selinux
+BuildArch:      noarch
 
 %description selinux
 This package adds SELinux enforcement to %{name}.
@@ -114,8 +113,8 @@ This package adds SELinux enforcement to %{name}.
 
 %package environment-to-ini
 Summary:        Configuration params via environment variables for %{name}
-Conflicts:      forgejo-longterm-environment-to-ini
 Requires:       %{name} = %{version}-%{release}
+Conflicts:      forgejo-longterm-environment-to-ini
 
 %description environment-to-ini
 OCI Container users can change arbitrary configuration
