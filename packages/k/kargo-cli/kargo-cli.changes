@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:35:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.4:
+  * chore(deps): bump the go-patch group across 1 directory with 6
+    updates (#6993)
+  * chore(deps): bump google.golang.org/grpc to v1.82.1 (#6930)
+  * chore: use latest go for anything that ships (#6922)
+- Update to version 1.11.3:
+  * chore(deps): update dependencies to reduce vulnerabilities
+    (#6899)
+
+-------------------------------------------------------------------
 Fri Aug 28 08:06:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.2:
