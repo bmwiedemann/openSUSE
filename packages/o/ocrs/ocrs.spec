@@ -1,7 +1,7 @@
 #
 # spec file for package ocrs
 #
-# Copyright (c) 2026 mantarimay
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,13 +16,8 @@
 #
 
 
-%ifarch s390x
-%bcond_with test
-%else
-%bcond_without test
-%endif
 Name:           ocrs
-Version:        0.12.1
+Version:        0.13.1
 Release:        0
 Summary:        A modern OCR engine written in Rust
 License:        Apache-2.0 AND MIT
@@ -30,7 +25,8 @@ URL:            https://github.com/robertknight/ocrs
 Source0:        %{url}/archive/ocrs-v%{version}/ocrs-ocrs-v%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.89
+BuildRequires:  rust >= 1.94
+ExclusiveArch:  %{rust_tier1_arches}
 
 %description
 ocrs is CLI tool for extracting text from images, also known as OCR
@@ -40,15 +36,14 @@ ocrs is CLI tool for extracting text from images, also known as OCR
 %autosetup -n ocrs-ocrs-v%{version} -a1 -p1
 
 %build
-%{cargo_build} --features clipboard
+# clipboard+onnx are ocrs-cli features; workspace also has ocrs-capi (unshipped)
+%{cargo_build} -p ocrs-cli --features clipboard,onnx
 
 %install
 install -Dm755 target/release/ocrs -t %{buildroot}%{_bindir}
 
-%if %{with test}
 %check
-%{cargo_test}
-%endif
+%{cargo_test} -p ocrs-cli --features clipboard,onnx
 
 %files
 %license LICEN*

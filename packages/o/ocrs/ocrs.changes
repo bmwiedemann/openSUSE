@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:32:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.13.1:
+  + Enabled ONNX-format models by default; CLI uses ONNX
+    versions of the detection and recognition models
+    (.rten format remains supported)
+- version 0.13.0:
+  + Updated to rten v0.26: 15-20% faster text recognition,
+    MSRV is now Rust 1.94
+  + Fixed --clipboard on Wayland
+- version 0.12.2:
+  + Added support for reading images from stdin in the CLI
+- Restrict ExclusiveArch to rust tier-1 (x86_64 aarch64)
+- Build only the ocrs-cli crate with clipboard and onnx
+  features (workspace now includes unshipped ocrs-capi)
+- Vendor rustls 0.23.45 (RUSTSEC-2026-0285)
+
+-------------------------------------------------------------------
 Sat Feb 21 22:23:27 UTC 2026 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 
 - Removed cargo_audit from _service due that contains vendor now

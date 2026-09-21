@@ -47,4 +47,26 @@
     <comment></comment>
     <requestid>1334310</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>9a9ad0a96b1e2f4d1a74dd0a2ae7d2e2</srcmd5>
+    <version>0.13.1</version>
+    <time>1789986158</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 0.13.1:
+  + Enabled ONNX-format models by default; CLI uses ONNX
+    versions of the detection and recognition models
+    (.rten format remains supported)
+- version 0.13.0:
+  + Updated to rten v0.26: 15-20% faster text recognition,
+    MSRV is now Rust 1.94
+  + Fixed --clipboard on Wayland
+- version 0.12.2:
+  + Added support for reading images from stdin in the CLI
+- Restrict ExclusiveArch to rust tier-1 (x86_64 aarch64)
+- Build only the ocrs-cli crate with clipboard and onnx
+  features (workspace now includes unshipped ocrs-capi)
+- Vendor rustls 0.23.45 (RUSTSEC-2026-0285)</comment>
+    <requestid>1379366</requestid>
+  </revision>
 </revisionlist>
