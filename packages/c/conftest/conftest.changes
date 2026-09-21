@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:00:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.70.1:
+  * New Features
+    - 0b42cb5: feat: Sign build artifacts (#1424)
+  * Bug Fixes
+    - f01cab0: fix: share inter-query cache across all queries in
+      an Engine (#1423)
+  * Documentation Updates
+    - 634260c: docs: clarify private OCI registry URLs (#1395)
+
+-------------------------------------------------------------------
 Wed Sep 16 05:46:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.70.0:
