@@ -1984,4 +1984,12 @@
     <comment>1</comment>
     <requestid>1378257</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>0b7a8d475af914ac449161ea27bc5811</srcmd5>
+    <version>2026.8.0</version>
+    <time>1789986118</time>
+    <user>anag_factory</user>
+    <comment>- Prepare for Python 3.15, remove Python 3.12 from multibuild.</comment>
+    <requestid>1379334</requestid>
+  </revision>
 </revisionlist>
