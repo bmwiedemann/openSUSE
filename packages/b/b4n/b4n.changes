@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:42:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * Bug Fixes
+    - fix themes and plugins directories detection when b4n is
+      installed via WinGet
+    - clicking on backdrop while asking user about copying assets
+      no longer counts as a decision
+- Update to version 1.0.0:
+  This is the 1.0.0 release of the b4n app. From now on, SemVer
+  will be used for versioning.
+  I believe b4n reached Minimum Viable Product some time ago and
+  now has all the features I need for daily use.
+  * Features
+    - Alt+↑ and Alt+↓ now work with selections
+    - Ctrl+→ and Ctrl+← now jump to the start of the word
+    - remember selection for undo and redo actions in edit mode
+    - ask user to copy assets if there are no themes and plugins
+      directories
+  * Bug Fixes
+    - fix undo for whole-line selection removal when the last line
+      is deleted
+
+-------------------------------------------------------------------
 Fri Aug 28 05:46:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.7:

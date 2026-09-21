@@ -17,7 +17,7 @@
 
 
 Name:           b4n
-Version:        0.5.7
+Version:        1.0.1
 Release:        0
 Summary:        Terminal user interface (TUI) for Kubernetes API written in Rust
 License:        MIT
