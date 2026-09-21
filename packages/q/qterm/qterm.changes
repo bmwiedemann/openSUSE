@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:30:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.8.2:
+  * Drop Qt4 support and add Qt6 support
+  * Read PKCS8/PKCS#12 private keys via the OpenSSL EVP API
+  * Add more SSH KEX and MAC hash algorithms
+  * Fix SSH channel-request recipient id
+  * Tighten permissions on the user address book
+  * Deduplicate saved sites by protocol, address and port
+  * Update the newsmth host
+  * Optional SSH debug logging
+- Build with Qt6; QtScript-based scripting is unavailable
+- Drop qterm-qt5qcollectiongenerator.patch: upstream calls
+  qhelpgenerator on Qt6
+
+-------------------------------------------------------------------
 Tue Feb 20 14:03:02 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated

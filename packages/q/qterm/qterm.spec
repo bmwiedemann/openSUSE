@@ -1,7 +1,7 @@
 #
 # spec file for package qterm
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,30 +17,31 @@
 
 
 Name:           qterm
-Version:        0.7.4
+Version:        0.8.2
 Release:        0
-Summary:        QTerm is BBS client
+Summary:        BBS client based on Qt
 License:        GPL-2.0-or-later
-Group:          System/X11/Terminals
 URL:            https://github.com/qterm/qterm
-Source0:        https://github.com/qterm/%{name}/archive/%{version}.tar.gz#./%{name}-%{version}.tar.gz
+Source0:        https://github.com/qterm/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        qterm.desktop
-#PATCH-FIX-UPSTREAM marguerite@opensuse.org - qcollectiongenerator has been merged into qhelpgenerator in Qt 5.12.0
-Patch0:         qterm-qt5qcollectiongenerator.patch
 BuildRequires:  cmake
 BuildRequires:  fdupes
+BuildRequires:  gcc-c++
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(Qt5Core)
-BuildRequires:  pkgconfig(Qt5Gui)
-BuildRequires:  pkgconfig(Qt5Help)
-BuildRequires:  pkgconfig(Qt5Multimedia)
-BuildRequires:  pkgconfig(Qt5Network)
-BuildRequires:  pkgconfig(Qt5PrintSupport)
-BuildRequires:  pkgconfig(Qt5Script)
-BuildRequires:  pkgconfig(Qt5Widgets)
-BuildRequires:  pkgconfig(Qt5Xml)
+BuildRequires:  qt6-tools-helpgenerators
+BuildRequires:  cmake(Qt6Core)
+BuildRequires:  cmake(Qt6Core5Compat)
+BuildRequires:  cmake(Qt6Gui)
+BuildRequires:  cmake(Qt6Help)
+BuildRequires:  cmake(Qt6LinguistTools)
+BuildRequires:  cmake(Qt6Network)
+BuildRequires:  cmake(Qt6PrintSupport)
+BuildRequires:  cmake(Qt6Tools)
+BuildRequires:  cmake(Qt6Widgets)
+BuildRequires:  cmake(Qt6Xml)
 BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(x11)
 
 %description
 QTerm is a full featured BBS client written in Qt.
@@ -49,18 +50,20 @@ QTerm is a full featured BBS client written in Qt.
 %autosetup -p1
 
 %build
-%cmake -DQT5=YES
-%make_build
+%cmake
+%cmake_build
 
 %install
 %cmake_install
-install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
 %fdupes -s %{buildroot}
 
 %files
-%{_datadir}/qterm
-%{_datadir}/applications/*
-%{_datadir}/icons/hicolor/*/apps/*.png
-%{_bindir}/*
+%license COPYRIGHT
+%doc README.rst RELEASE_NOTES
+%{_bindir}/qterm
+%{_datadir}/qterm/
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/*/apps/qterm.png
 
 %changelog

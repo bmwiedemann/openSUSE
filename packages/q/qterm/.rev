@@ -234,4 +234,24 @@
     <comment></comment>
     <requestid>1148366</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>afd0256bec951990a4dae84ae1c7ff42</srcmd5>
+    <version>0.8.2</version>
+    <time>1789986151</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to 0.8.2:
+  * Drop Qt4 support and add Qt6 support
+  * Read PKCS8/PKCS#12 private keys via the OpenSSL EVP API
+  * Add more SSH KEX and MAC hash algorithms
+  * Fix SSH channel-request recipient id
+  * Tighten permissions on the user address book
+  * Deduplicate saved sites by protocol, address and port
+  * Update the newsmth host
+  * Optional SSH debug logging
+- Build with Qt6; QtScript-based scripting is unavailable
+- Drop qterm-qt5qcollectiongenerator.patch: upstream calls
+  qhelpgenerator on Qt6</comment>
+    <requestid>1379363</requestid>
+  </revision>
 </revisionlist>
