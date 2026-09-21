@@ -98,4 +98,31 @@
 - Don’t create symlink in no-longer-packaged /etc/mpv directory</comment>
     <requestid>1325795</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>1b9a70774bfd84fd1e72a50b34215a43</srcmd5>
+    <version>1.3</version>
+    <time>1789984914</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.3
+  * Use mpv’s audio-client-name as the player’s display name.
+  * Always include a unique instance suffix in the D-Bus player
+    name, and handle custom names containing special characters or
+    long strings.
+  * Fix play/pause toggling and report CanPlay and CanPause
+    correctly when mpv is idle.
+  * Fix seeking in locales that use decimal commas and improve seek
+    position precision.
+  * Use MPRIS-compliant track IDs and fix creation-date metadata
+    formatting.
+  * Fix a crash when freeing cached artwork and report the correct
+    MIME type for embedded images.
+  * Skip embedded artwork extraction from pipes and devices to
+    avoid consuming playback input.
+  * Fix YouTube short-link matching for thumbnails.
+  * Improve resource cleanup, memory management, and handling of
+    session bus initialization failures.
+  * Update tests for instance-suffixed player names and remove the
+    executable-permission requirement for test plugins.</comment>
+    <requestid>1379065</requestid>
+  </revision>
 </revisionlist>
