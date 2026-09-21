@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Sun Sep 20 08:37:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.3.5:
+  * Reject alternate form of unsupported PRAGMA commands
+  * Handle negative trailing logs
+  * Sync access to last backup time at http layer
+  * Set the "Served by" header before first backup byte
+  * Set DB load response time for all formats
+  * Fix HTTP logic error for queued statements
+  * Minor web console fixes
+- includes changes from 10.0.4:
+  * Do not emit rolled-back events over CDC
+- includes changes from 10.0.3:
+  * Refactor busy timeout methods
+  * Fix edge-case bugs detected by GPT-6 Astra
+  * Switch to quay.io/minio/minio:latest for testing purposes
+  * Fix removing a node with different ID, but same Raft address
+  * Use correct Foreign Key setting when recovering node
+  * Only dump the indexes and triggers of the selected tables
+  * Detect DB changes during Request(RETURNING)
+  * Snapshot Open() first checks for failed reap
+  * Sync snapshot plan directory
+  * Propagate WAL stat errors
+  * Clean up cancelled snapshots
+  * Reject incomplete snapshot headers
+  * Validate restore database header
+  * Only reap a sole fullsnapshot if it has zero WALs
+  * Keep database dumps consistent during writes to the database
+  * Roll back DB Requests on statement-prepare errors
+- includes changes from 10.0.2:
+  * Upgrade SQLite driver
+  * Unit test reaping an installed Snapshot and streamed Snapshot combo
+  * Use distinct Snapshot Namer type
+  * Replace breaking-pragma regexes with ASCII prefix scanning
+  * Consolidate pragma and txStatus reads onto a single connection per pool
+  * Fix some magic strings in db package
+
+-------------------------------------------------------------------
 Fri Sep 04 05:17:34 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.3.1:
