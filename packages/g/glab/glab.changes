@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Sun Sep 20 10:45:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.118.0:
+  * Features
+    - 25090286: feat(auth): guide self-managed OAuth setup
+      interactively
+    - 9ba91ba8: feat(config): add GLAB_ names for the unprefixed
+      variables
+    - 097347cc: feat(df): add gradle wrapper command behind the
+      firewall proxy
+    - 13275f1c: feat(df): add maven wrapper command behind the
+      firewall proxy
+    - 888552a7: feat(df): add pnpm wrapper command behind the
+      firewall proxy
+    - 0ce82469: feat(df): add pypi wrapper commands behind the
+      firewall proxy
+    - 75066e9c: feat(df): add rubygems wrapper commands behind the
+      firewall proxy
+  * Bug Fixes
+    - a489f81d: fix(api): error on bracketed field names, send
+      every query array value
+    - 6a6419fe: fix(api): follow the pagination Link URL without
+      rebuilding the query
+    - 41de0467: fix(auth): skip login prompts answered by
+      environment variables
+    - 5f925319: fix(orbit): forward --help to the Orbit binary once
+      it is installed
+    - a0aa51d8: fix(skills): stop the bundled skill using :iid,
+      which is not a placeholder
+    - ea37fd93: fix(update): keep the update check error short when
+      GitLab is down
+    - 2fc3a328: fix(update): name gitlab.com directly in the update
+      check error
+  * Dependencies
+    - a11463a4: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.29
+    - 8d6e643e: chore(deps): update module
+      github.com/modelcontextprotocol/go-sdk to v1.8.0
+    - 3223c801: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go to v3
+    - 5af4347c: chore(deps): update module golang.org/x/crypto to
+      v0.56.0
+    - 8fd217ea: chore(deps): update module golang.org/x/sync to
+      v0.23.0
+    - c176f4fc: chore(deps): update module golang.org/x/sys to
+      v0.48.0
+  * Maintenance
+    - ed87e3bc: chore(docs): use even newer documentation linting
+      tools
+    - f679ecb2: chore(lint): add comment noise tooling and enable
+      gocritic
+    - 7ed0e7b3: chore(lint): allow footnote definitions in
+      ReferenceLinks Vale rule
+    - cffb151c: refactor(df): tidy policy fake and add
+      verdict.Allowed constant
+    - 055843e3: refactor(update): use errors.AsType for the API
+      error check
+  * Others
+    - eb28adfc: perf(mr): skip fetch in checkout when MR head is
+      already local
+
+-------------------------------------------------------------------
 Sun Sep 13 08:18:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.117.0 (includes 1.116.0):
