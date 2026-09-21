@@ -1,7 +1,7 @@
 #
 # spec file for package libXrender
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ URL:            http://cgit.freedesktop.org/xorg/lib/libXrender/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXrender/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1280911:   u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  pkgconfig
@@ -68,6 +69,7 @@ in %lname.
 
 %prep
 %setup -q
+%patch -P 1280911 -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

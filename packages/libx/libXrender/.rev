@@ -133,4 +133,16 @@
   * Ensure XRenderInfo pointers are appropriately aligned</comment>
     <requestid>1230913</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>ca501e8026a148aaf4b99e238ebaffc5</srcmd5>
+    <version>0.9.12</version>
+    <time>1789984858</time>
+    <user>anag_factory</user>
+    <comment>- u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch
+  * A malicious server could reply to XRenderQueryFormat with a
+    numSubpixels count greater than the number of screens, causing
+    an OOB write into screen-&gt;subpixel which was allocated using
+    numScreens (CVE-2026-88807, ZDI-CAN-32093, bsc#1280911)</comment>
+    <requestid>1378816</requestid>
+  </revision>
 </revisionlist>

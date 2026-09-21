@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 18 12:56:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- u_Check-numSubpixel-against-numScreens-to-avoid-OOB-wr.patch
+  * A malicious server could reply to XRenderQueryFormat with a
+    numSubpixels count greater than the number of screens, causing
+    an OOB write into screen->subpixel which was allocated using
+    numScreens (CVE-2026-88807, ZDI-CAN-32093, bsc#1280911)
+
+-------------------------------------------------------------------
 Fri Dec 13 21:36:12 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 0.9.12
