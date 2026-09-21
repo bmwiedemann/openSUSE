@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:10:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.4:
+  * build(deps): bump chainguard.dev/sdk from 0.1.266 to 0.1.271
+    (#2509)
+  * build(deps): bump google.golang.org/api from 0.297.0 to 0.298.0
+    (#2510)
+  * paths: tolerate rare incomplete reads in the concurrency test
+    (#2512)
+  * apk: pin the pre-planted cache entry case; correct a sysctl
+    attribution (#2508)
+  * build(deps): bump chainguard.dev/sdk from 0.1.262 to 0.1.266
+    (#2505)
+
+-------------------------------------------------------------------
+Sun Sep 20 05:39:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.3:
+  * https://github.com/chainguard-dev/apko/commit/59da166d5b46bb374a4062b18827c748e11f624c
+    CVE-2026-54174 (GHSA-fpg8-7664-jc5q, 8d34c75) added a datahash
+    check to doFetchExpandAndVerify, but only the fetch path got
+    it. cachedPackage recomputes and checks the control section's
+    SHA-1 against the Q1 checksum from the signed index, then
+    locates the data section purely by filename and populates
+    PackageHash with hex.DecodeString of the value it was looking
+    for. Nothing measures the bytes.
+- Update to version 1.4.2:
+  * apk: reject control characters in data written to the installed
+    database (#2507)
+  * build(deps): bump golang.org/x/term from 0.45.0 to 0.46.0
+    (#2499)
+  * build(deps): bump chainguard.dev/sdk from 0.1.257 to 0.1.262
+    (#2500)
+  * build(deps): bump the codeql group with 2 updates (#2501)
+  * build(deps): bump zizmorcore/zizmor-action from 0.6.3 to 0.6.4
+    (#2502)
+
+-------------------------------------------------------------------
 Thu Sep 17 05:22:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.1:
