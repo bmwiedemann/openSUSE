@@ -1,7 +1,91 @@
 -------------------------------------------------------------------
+Fri Sep 18 00:00:00 UTC 2026 - Jeremy Newton <Jeremy.Newton@amd.com>
+
+- Add reproducible.patch to fix reproducible builds
+
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun  2 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Thu Mar  5 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Mon Jan 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Wed Nov 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix building on SUSE 15.6
+  Add: 0001-rocclr-replace-std-filesystem-exists-with-access.patch
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Add: 0001-rocclr-long-variants-for-__ffsll.patch
+  Remove: 0001-add-long-variants-for-__ffsll.patch
+
+-------------------------------------------------------------------
+Sat Oct 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use SUSE cppheaderparser name
+
+-------------------------------------------------------------------
+Sun Oct 19 22:37:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
+
+- enable generation of the profiling header in all cases
+  SUSE has the package just with a different name.
+
+-------------------------------------------------------------------
 Mon Oct 13 21:08:44 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 
 - Do not use url in patch name
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Mon Sep 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
 
 -------------------------------------------------------------------
 Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
@@ -101,4 +185,5 @@ Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 Tue Sep 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 
 - A placeholder for rhel 9
+  Add: 909fa3dcb644f7ca422ed1a980a54ac426d831b1.patch
 

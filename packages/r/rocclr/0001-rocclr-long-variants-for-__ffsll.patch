@@ -1,0 +1,38 @@
+From 43d7164df0ec0e9d0c52870db07efb367ae9ce82 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 30 Oct 2025 11:32:12 -0700
+Subject: [PATCH] rocclr long variants for __ffsll
+
+---
+ hipamd/include/hip/amd_detail/amd_device_functions.h | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/hipamd/include/hip/amd_detail/amd_device_functions.h b/hipamd/include/hip/amd_detail/amd_device_functions.h
+index cf331225707b..26bb04ca630d 100644
+--- a/hipamd/include/hip/amd_detail/amd_device_functions.h
++++ b/hipamd/include/hip/amd_detail/amd_device_functions.h
+@@ -68,6 +68,10 @@ __device__ static inline int __ffsll(unsigned long long int input) {
+   return (input == 0 ? -1 : __builtin_ctzll(input)) + 1;
+ }
+ 
++__device__ static inline unsigned int __ffsll(unsigned long int input) {
++    return ( input == 0 ? -1 : __builtin_ctzll(input) ) + 1;
++}
++
+ __device__ static inline int __ffs(int input) {
+   return (input == 0 ? -1 : __builtin_ctz(input)) + 1;
+ }
+@@ -76,6 +80,10 @@ __device__ static inline int __ffsll(long long int input) {
+   return (input == 0 ? -1 : __builtin_ctzll(input)) + 1;
+ }
+ 
++__device__ static inline unsigned int __ffsll(long int input) {
++    return ( input == 0 ? -1 : __builtin_ctzll(input) ) + 1;
++}
++
+ // Given a 32/64-bit value exec mask and an integer value base (between 0 and WAVEFRONT_SIZE),
+ // find the n-th (given by offset) set bit in the exec mask from the base bit, and return the bit
+ // position. If not found, return -1.
+-- 
+2.51.0
+

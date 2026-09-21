@@ -7,4 +7,41 @@
     <comment>rocclr provides hip and opencl runtime for amd gpus</comment>
     <requestid>1311253</requestid>
   </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>291c418e6b344856ef3051445c908477</srcmd5>
+    <version>7.2.2</version>
+    <time>1789993764</time>
+    <user>anag_factory</user>
+    <comment>- Add reproducible.patch to fix reproducible builds
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes
+
+- Update to 7.2.1
+
+- Add --with preview
+
+- Cleanup specfile
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Add --with compat
+
+- Update to 7.1.1
+
+- Fix building on SUSE 15.6
+  Add: 0001-rocclr-replace-std-filesystem-exists-with-access.patch
+
+- Update to 7.1.0
+  Add: 0001-rocclr-long-variants-for-__ffsll.patch
+  Remove: 0001-add-long-variants-for-__ffsll.patch
+
+- Use SUSE cppheaderparser name
+
+- enable generation of the profiling header in all cases</comment>
+    <requestid>1379138</requestid>
+  </revision>
 </revisionlist>

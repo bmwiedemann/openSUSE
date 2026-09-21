@@ -1,0 +1,18 @@
+Avoid adding randomness into hip_pch.o
+
+via
+/usr/lib64/rocm/llvm/lib/cmake/llvm/../../../bin/llvm-mc -o hip_pch.o /tmp/hip_pch.$PID/hip_pch.mcin --filetype=obj
+
+diff --git a/hipamd/src/hip_embed_pch.sh b/hipamd/src/hip_embed_pch.sh
+index 6c92d43..0a15078 100755
+--- a/hipamd/src/hip_embed_pch.sh
++++ b/hipamd/src/hip_embed_pch.sh
+@@ -100,7 +100,7 @@ EOF
+ }
+ 
+ generate_pch() {
+-  tmp=$tmpdir/hip_pch.$$
++  tmp=$tmpdir/hip_pch.x
+   mkdir -p $tmp
+ 
+   create_hip_macro_file $tmp/hip_macros.h

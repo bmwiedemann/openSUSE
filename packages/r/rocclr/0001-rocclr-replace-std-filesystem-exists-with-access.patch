@@ -1,0 +1,37 @@
+From e1bad556ca529cfd92897e0a5b79c042b2de80fc Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Wed, 19 Nov 2025 09:59:59 -0800
+Subject: [PATCH] rocclr replace std::filesystem::exists with access
+
+---
+ hipamd/src/hip_library.cpp | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/hipamd/src/hip_library.cpp b/hipamd/src/hip_library.cpp
+index 42b3c203e765..1460660687f3 100644
+--- a/hipamd/src/hip_library.cpp
++++ b/hipamd/src/hip_library.cpp
+@@ -20,10 +20,10 @@ OUT OF OR INN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ THE SOFTWARE.
+ */
+ 
+-#include <filesystem>
+ #include <mutex>
+ #include <string>
+ #include <vector>
++#include <unistd.h>
+ 
+ #include "hip/hip_runtime.h"
+ #include "hip_library.hpp"
+@@ -132,7 +132,7 @@ hipError_t hipLibraryLoadFromFile(hipLibrary_t* library, const char* fname,
+                                   void** libraryOptionValues, unsigned int numLibraryOptions) {
+   HIP_INIT_API(hipLibraryLoadFromFile, library, fname, jitOptions, jitOptionsValues, numJitOptions,
+                libraryOptions, libraryOptionValues, numLibraryOptions);
+-  if (library == nullptr || !std::filesystem::exists(fname) || numJitOptions > 0) {
++  if (library == nullptr || access(fname, F_OK) || numJitOptions > 0) {
+     HIP_RETURN(hipErrorInvalidValue);
+   }
+   auto* l = new hip::LibraryContainer(std::string(fname));
+-- 
+2.51.1
+
