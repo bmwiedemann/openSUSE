@@ -1,0 +1,39 @@
+From b393d03ab652ec5e18d5facb84b907b66def4366 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Mon, 21 Sep 2026 13:56:20 +1000
+Subject: [PATCH] Explicitly support Django 6.0
+
+Add 3.13, 3.14 and Django 6.0 to the test matrix, and make the code
+changes to support it. Drive by tidying up setup.py.
+---
+ .github/workflows/tests.yml         | 16 ++++++++++++++--
+ graphene_django/filter/filterset.py |  2 ++
+ setup.py                            |  5 ++---
+ tox.ini                             |  7 ++++++-
+ 4 files changed, 24 insertions(+), 6 deletions(-)
+
+Index: graphene-django-3.2.3/graphene_django/filter/filterset.py
+===================================================================
+--- graphene-django-3.2.3.orig/graphene_django/filter/filterset.py
++++ graphene-django-3.2.3/graphene_django/filter/filterset.py
+@@ -11,6 +11,8 @@ from .filters import GlobalIDFilter, Glo
+ 
+ GRAPHENE_FILTER_SET_OVERRIDES = {
+     models.AutoField: {"filter_class": GlobalIDFilter},
++    models.BigAutoField: {"filter_class": GlobalIDFilter},
++    models.SmallAutoField: {"filter_class": GlobalIDFilter},
+     models.OneToOneField: {"filter_class": GlobalIDFilter},
+     models.ForeignKey: {"filter_class": GlobalIDFilter},
+     models.ManyToManyField: {"filter_class": GlobalIDMultipleChoiceFilter},
+Index: graphene-django-3.2.3/setup.py
+===================================================================
+--- graphene-django-3.2.3.orig/setup.py
++++ graphene-django-3.2.3/setup.py
+@@ -18,7 +18,6 @@ tests_require = [
+     "pytest-cov",
+     "pytest-random-order",
+     "coveralls",
+-    "mock",
+     "pytz",
+     "django-filter>=22.1",
+     "pytest-django>=4.5.2",

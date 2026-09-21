@@ -136,4 +136,14 @@
 </comment>
     <requestid>1377402</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>7c40e9f0a4298d0ac34915c62ec49e67</srcmd5>
+    <version>3.2.3</version>
+    <time>1789986103</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-django-6.patch:
+  * Add changes required to support Django 6.
+- Remove upper pin on Django.</comment>
+    <requestid>1379333</requestid>
+  </revision>
 </revisionlist>

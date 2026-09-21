@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 04:02:08 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-django-6.patch:
+  * Add changes required to support Django 6.
+- Remove upper pin on Django.
+
+-------------------------------------------------------------------
 Fri Sep 11 13:07:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Restrict to Django < 6

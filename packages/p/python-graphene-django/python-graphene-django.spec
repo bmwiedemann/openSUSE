@@ -23,14 +23,15 @@ Summary:        Graphene Django integration
 License:        MIT
 URL:            https://github.com/graphql-python/graphene-django
 Source:         https://github.com/graphql-python/graphene-django/archive/v%{version}.tar.gz#/graphene-django-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#graphql-python/graphene-django#1562
+Patch0:         support-django-6.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  tree
-# Restrict Django to <6 https://github.com/graphql-python/graphene-django/pull/1560
-Requires:       (python-Django >= 3.2 with python-Django < 6)
+Requires:       python-Django >= 3.2
 Requires:       python-graphene >= 3.0
 Requires:       python-graphql-core >= 3.1.0
 Requires:       python-graphql-relay >= 3.1
@@ -39,7 +40,7 @@ Requires:       python-text-unidecode
 Suggests:       python-djangorestframework >= 3.6.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Django >= 3.2 with %python-Django < 6}
+BuildRequires:  %{python_module Django >= 3.2}
 BuildRequires:  %{python_module django-filter >= 22.1}
 BuildRequires:  %{python_module djangorestframework >= 3.6.3}
 BuildRequires:  %{python_module graphene >= 3.0}
@@ -52,18 +53,14 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module text-unidecode}
 # /SECTION
-#!BuildConflicts: %{python_module Django >= 6}
 %python_subpackages
 
 %description
 Graphene Django integration.
 
 %prep
-%setup -q -n graphene-django-%{version}
-sed -i 's/from mock import MagicMock/from unittest.mock import MagicMock/' graphene_django/filter/tests/conftest.py
-
-sed -i 's/py\.test/pytest/g' graphene_django/tests/*.py graphene_django/tests/issues/*.py graphene_django/*/tests/*.py
-
+%autosetup -p1 -n graphene-django-%{version}
+# No pytest-random-order
 rm setup.cfg
 sed -i '/pytest-runner/d' setup.py
 
