@@ -18,14 +18,14 @@
 
 %global __requires_exclude typelib\\(Meta\\)
 Name:           FocusTimer
-Version:        1.1.4
+Version:        1.1.5
 Release:        0
 Summary:        A time management utility for GNOME
 License:        GPL-3.0-or-later
 Group:          Productivity/Office/Other
 URL:            https://github.com/focustimerhq/FocusTimer
 Source:         https://github.com/focustimerhq/FocusTimer/archive/refs/tags/%{version}.tar.gz
-BuildRequires:  (gnome-shell >= 46 with gnome-shell < 51)
+BuildRequires:  (gnome-shell >= 46 with gnome-shell < 52)
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-utils
 BuildRequires:  gettext-devel >= 0.19.6
@@ -33,7 +33,6 @@ BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala >= 0.28
 BuildRequires:  pkgconfig(appstream-glib) >= 0.7.3
-BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.50
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.10.1

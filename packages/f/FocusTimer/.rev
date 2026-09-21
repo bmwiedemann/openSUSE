@@ -22,4 +22,17 @@
   * Fix higher CPU usage when opening window in Stats view</comment>
     <requestid>1373325</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c3854f5fcc92e8412390f74c9a422147</srcmd5>
+    <version>1.1.5</version>
+    <time>1789986237</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.1.5:
+  * Added a dialog for installing the GNOME Shell extension
+  * Automation panel is now available in the Flatpak version
+  * Added a right-click context menu in compact mode
+  * Updated runtime to GNOME 51
+  * Removed dependency on cairo</comment>
+    <requestid>1379393</requestid>
+  </revision>
 </revisionlist>

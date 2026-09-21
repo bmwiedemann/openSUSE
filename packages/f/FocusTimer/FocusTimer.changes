@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 21 06:26:35 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.1.5:
+  * Added a dialog for installing the GNOME Shell extension
+  * Automation panel is now available in the Flatpak version
+  * Added a right-click context menu in compact mode
+  * Updated runtime to GNOME 51
+  * Removed dependency on cairo
+
+-------------------------------------------------------------------
 Mon Aug 24 06:32:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.1.4:
