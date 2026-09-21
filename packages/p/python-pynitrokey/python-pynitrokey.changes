@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 20 11:21:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.0.0:
+  This release adds support for NethHSM v5 and the fido2
+  provision-credential command, updates the minimum Python version
+  to 3.11 and fixes some bugs.
+  * PIV factory-reset: show proper error message when the PIN isn't
+    locked in #771
+  * Windows versioninfo and version format in #774
+  * pre-registration for entra in #783
+  * nethsm generate-key: Fix interactive mechanism selection in
+    #784
+  * PIV import and PUK fixes in #766
+  * fido2: plug some resource leaks in the client in #781
+  * Add NetHSM features from Nethsm v3.0.0rc in #787
+  * Entra provision in #789
+  * Update clustering features for NetHSM v5.0 and release
+    v0.13.0rc1 in #788
+- allow cryptography < 53, see
+  https://github.com/Nitrokey/pynitrokey/pull/798
+  https://github.com/Nitrokey/pynitrokey/issues/797
+
+-------------------------------------------------------------------
 Fri Jun 19 05:04:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 0.12.3:
