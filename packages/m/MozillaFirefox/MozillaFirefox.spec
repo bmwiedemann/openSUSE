@@ -28,9 +28,9 @@
 # orig_suffix b3
 # major 69
 # mainver %%major.99
-%define major          155
-%define mainver        %major.0.1
-%define orig_version   155.0.1
+%define major          156
+%define mainver        %major.0
+%define orig_version   156.0
 %define orig_suffix    %{nil}
 %define update_channel release
 %define branding       1
@@ -130,7 +130,7 @@ BuildRequires:  libiw-devel
 BuildRequires:  libproxy-devel
 BuildRequires:  makeinfo
 BuildRequires:  mozilla-nspr-devel >= 4.40
-BuildRequires:  mozilla-nss-devel >= 3.127
+BuildRequires:  mozilla-nss-devel >= 3.128
 BuildRequires:  nasm >= 2.14
 BuildRequires:  nodejs >= 12.22.12
 %if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000

@@ -8486,4 +8486,41 @@
     <comment>1</comment>
     <requestid>1375849</requestid>
   </revision>
+  <revision rev="502" vrev="1">
+    <srcmd5>5d85dcccc1ceb41c66d43bebe8802c65</srcmd5>
+    <version>156.0</version>
+    <time>1789984813</time>
+    <user>anag_factory</user>
+    <comment>- Mozilla Firefox 156.0
+  https://www.firefox.com/en-US/firefox/156.0/releasenotes/
+  MFSA 2026-90 (bsc#1280371)
+  * CVE-2026-92033 (bmo#2047339)
+    Privilege escalation in Firefox for Android
+  * CVE-2026-92005 (bmo#2056051)
+    Use-after-free in the Audio/Video: Web Codecs component
+  * CVE-2026-92006 (bmo#2057121)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92007 (bmo#2058064)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92008 (bmo#2058065)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92009 (bmo#2058066)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92010 (bmo#2058067)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92011 (bmo#2058068)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92012 (bmo#2058069)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics: CanvasWebGL component
+  * CVE-2026-92013 (bmo#2058078)
+    Privilege escalation due to incorrect boundary conditions in</comment>
+    <requestid>1379127</requestid>
+  </revision>
 </revisionlist>
