@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 20 05:22:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.2:
+  * Bug Fixes
+    - fix: `werf.io/deploy-dependency` didn't work if no readiness
+      operation in plan or if `namespace=releasens`
+- Update to version 1.26.1:
+  * Bug Fixes
+    - fix: `werf.io/resource-policy` should only respect
+      skip-delete from live
+
+-------------------------------------------------------------------
+Tue Aug 11 11:22:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.26.0:
+  * Features
+    - add werf.io/resource-policy annotation (5a2517f)
+
+-------------------------------------------------------------------
 Tue Jul 21 12:12:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.25.3:
