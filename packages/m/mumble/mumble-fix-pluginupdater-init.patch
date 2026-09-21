@@ -1,0 +1,16 @@
+diff -Nur mumble-1.5.915-orig/src/mumble/PluginUpdater.cpp mumble-1.5.915/src/mumble/PluginUpdater.cpp
+--- mumble-1.5.915-orig/src/mumble/PluginUpdater.cpp	2026-09-20 18:35:51.089783759 +0200
++++ mumble-1.5.915/src/mumble/PluginUpdater.cpp	2026-09-20 18:50:22.587671663 +0200
+@@ -45,7 +45,11 @@
+ 				QUrl updateURL = plugin->getUpdateDownloadURL();
+ 
+ 				if (updateURL.isValid() && !updateURL.isEmpty() && !updateURL.fileName().isEmpty()) {
+-					UpdateEntry entry = { plugin->getID(), updateURL, updateURL.fileName(), 0 };
++					UpdateEntry entry;
++					entry.pluginID  = plugin->getID();
++					entry.updateURL  = updateURL;
++					entry.fileName   = updateURL.fileName();
++					entry.redirects  = 0;
+ 					m_pluginsToUpdate << entry;
+ 				}
+ 			}
