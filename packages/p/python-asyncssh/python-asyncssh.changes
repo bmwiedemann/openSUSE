@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:18:36 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.24.0 (fixes CVE-2026-62949 (bsc#1280972))
+  * Added support for creating and validating SSHSIG signatures, as well as
+    OpenSSH "allowed signers" files.
+  * Added support for ML-KEM key exchange from the PyCA cryptography package
+    when it is available. This avoids the need to have the liboqs library
+    installed to use ML-KEM. However, liboqs is still required to support
+    SNTRUP kex exchange.
+  * Fixed an issue with handling of SSH maximum packet size when opening a new
+    SSH channel, aborting with a protocol error if a peer attempts to set this
+    size to 0.
+  * Fixed an issue with include directives in OpenSSH config files.
+
+-------------------------------------------------------------------
 Tue Jun 16 10:54:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 2.23.1
