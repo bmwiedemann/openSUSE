@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Tue Sep 15 16:06:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.12:
+  + Allow specifying appstream-compose image format and fix tests
+    with appstream >=1.2.0
+  + Various improvements to tests to ensure enough debug
+    information is available when they fail
+
+-------------------------------------------------------------------
+Tue Sep 15 09:07:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.4.11:
+  + Skip pre-migrated entry during locale migration
+  + Abort on invalid checksum strings in archive and file sources
+    early
+  + Ensure no source can escape base_dir in sandboxed mode
+    (GHSA-484h-v688-jq5j).
+  + Validate existence of URL during parsing early in bzr, svn
+    sources
+  + Disable git hooks completely when applying patches
+    (CVE-2026-86320)
+
+-------------------------------------------------------------------
 Thu Aug 20 11:47:54 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.4.10:

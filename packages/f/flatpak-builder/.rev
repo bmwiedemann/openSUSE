@@ -397,4 +397,27 @@
     GLIBC 2.43</comment>
     <requestid>1372896</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>7f109460d5e094ec39b3056297199932</srcmd5>
+    <version>1.4.12</version>
+    <time>1790085252</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.12:
+  + Allow specifying appstream-compose image format and fix tests
+    with appstream &gt;=1.2.0
+  + Various improvements to tests to ensure enough debug
+    information is available when they fail
+
+- Update to version 1.4.11:
+  + Skip pre-migrated entry during locale migration
+  + Abort on invalid checksum strings in archive and file sources
+    early
+  + Ensure no source can escape base_dir in sandboxed mode
+    (GHSA-484h-v688-jq5j).
+  + Validate existence of URL during parsing early in bzr, svn
+    sources
+  + Disable git hooks completely when applying patches
+    (CVE-2026-86320)</comment>
+    <requestid>1379684</requestid>
+  </revision>
 </revisionlist>
