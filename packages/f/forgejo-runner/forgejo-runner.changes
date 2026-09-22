@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Sep 19 00:17:31 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 13.2.0
+  - features
+    - PR: feat: efficient actions repo fetching
+    - PR: feat: Upload Job summary
+  - bug fixes
+    - PR: fix(jobparser): incomplete job definition triggers
+      pre-execution-error inside a reusable workflow
+    - PR: fix: don't panic when ctx cancellation occurs early in
+      job startup
+    - PR: fix(plugin): respect job timeout for environment lifetime
+    - PR: fix(cleanup): remove a step's working copy, regardless of
+      if the job ran
+  - other
+    - PR: Update dependency buildx to v0.37.1
+    - PR: Update module github.com/docker/cli to
+      v29.8.1+incompatible
+    - PR: Update module mvdan.cc/gofumpt to v0.12.0
+    - PR: Update module golang.org/x/sys to v0.48.0
+    - PR: Update module connectrpc.com/connect to v1.21.0
+    - PR: Update module tags.cncf.io/container-device-interface to
+      v1.1.1
+    - PR: Update module github.com/moby/moby/client to v0.6.0
+    - PR: Update module github.com/moby/moby/api to v1.56.0
+    - PR: Update go toolchain directive to v1.26.8
+    - PR: Update module github.com/docker/cli to
+      v29.8.0+incompatible
+    - PR: Update https://data.forgejo.org/actions/setup-forgejo
+      action to v3.2.5
+    - PR: Update module
+      github.com/golangci/golangci-lint/v2/cmd/golangci-lint to
+      v2.13.2
+    - PR: Update forgejo-runner to v13.1.0
+
+-------------------------------------------------------------------
 Mon Aug 31 17:10:16 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 13.1.0 
