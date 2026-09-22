@@ -21,7 +21,7 @@
 
 Name:           libfsapfs
 %define lname   libfsapfs1
-Version:        20260917
+Version:        20260921
 Release:        0
 Summary:        Library and tools to access the Apple File System (APFS)
 License:        LGPL-3.0-only
@@ -60,6 +60,30 @@ BuildRequires:  pkgconfig(zlib) >= 1.2.5
 # Various notes: https://en.opensuse.org/libyal
 
 %description
+A library and tools for read access to Apple File Systems (APFS).
+
+%package devel
+Summary:        Development files for libfsapfs
+Group:          Development/Languages/C and C++
+Requires:       %lname = %version
+Requires:       libbfio-devel
+
+%description devel
+Development files for %name.
+
+%package tools
+Summary:        Tools for reading the Apple File System format
+License:        LGPL-3.0-or-later
+Group:          Productivity/File utilities
+
+%description tools
+Tools to inspect Apple File System (APFS) images.
+
+%package -n %lname
+Summary:        Library for reading the Apple File System (APFS)
+Group:          System/Libraries
+
+%description -n %lname
 libfsapfs is a library to access the Apple File System (APFS).
 
 Read-only supported APFS formats:
@@ -81,30 +105,6 @@ Unsupported APFS format features:
 * "uncompressed", compression methods 1, 9 and 10
 * T2 encryption
 
-%package devel
-Summary:        Development files for libfsapfs
-Group:          Development/Languages/C and C++
-Requires:       %lname = %version
-Requires:       libbfio-devel
-
-%description devel
-Development files for %name.
-
-%package tools
-Summary:        Tools to access the Apple File System format
-License:        LGPL-3.0-or-later
-Group:          Productivity/File utilities
-
-%description tools
-Tools to inspect Apple File System (APFS) images.
-
-%package -n %lname
-Summary:        Library for access to the Apple File System (APFS)
-Group:          System/Libraries
-
-%description -n %lname
-%lname is a library for access to the Apple File System (APFS).
-
 %prep
 %autosetup -p1
 
@@ -115,9 +115,9 @@ export CFLAGS="%optflags"
 %{python_expand #
 echo "V_%version { global: *; };" >v.sym
 %configure --disable-static \
-  --enable-wide-character-type \
-  --enable-verbose-output \
-  --enable-debug-output \
+	--enable-wide-character-type \
+	--enable-verbose-output \
+	--enable-debug-output \
 	--enable-python PYTHON_VERSION="%{$python_bin_suffix}" \
 	LDFLAGS="-Wl,--version-script=$PWD/v.sym"
 grep ' '' ''local' config.log && exit 1
