@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:09:15 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790071740.8a090f85:
+  * chore(deps): Dependency cron 2026-09-22
+  * fix(packaging): skip fixture test on SLE <= 1500
+  * feat(workers): Add worker reservation system
+  * feat(dev): introduce mock test environment
+  * fix: Fix typo in NGINX config
+  * fix: Include missing `PATCH` in rate limiting config example
+
+-------------------------------------------------------------------
 Mon Sep 21 16:32:24 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790003470.1faa32c9:
