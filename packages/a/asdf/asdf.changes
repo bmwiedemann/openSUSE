@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:31:32 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 0.20.1:
+  * chore: release 0.20.1 (#2295)
+  * fix: override urfave/cli built-in help printer for top level asdf -h/--help (#2328)
+  * fix: never generate a shim named "asdf" during reshim (#2307)
+  * fix: prevent incomplete installations from being shown as installed (#2303)
+  * chore: bump @types/node from 26.1.2 to 26.4.0 in /docs in the docs group (#2320)
+  * docs: fix the ordering of paragraphs in the versions page (#2318)
+  * docs: explain env vars for dashed tool names (#2317)
+  * chore: bump github.com/go-git/go-git/v5 from 5.19.1 to 5.19.2 (#2312)
+  * chore: bump postcss from 8.5.12 to 8.5.25 in /docs (#2310)
+  * chore: bump the docs group in /docs with 2 updates (#2309)
+  * chore: bump actions/setup-node from 6 to 7 (#2300)
+  * chore: bump actions/setup-python from 6 to 7 (#2302)
+  * chore: bump actions/setup-go from 6 to 7 (#2301)
+  * fix: Print stderr for list-all / latest-stable callbacks
+  * fix: always update local Git repsitory in git.Update even if repositories have diverged (#2298)
+  * chore: bump golang.org/x/crypto from 0.51.0 to 0.52.0 (#2296)
+  * fix: remove urlfave/cli built-in `-h` flag that is causing confusing behavior (#2294)
+
+-------------------------------------------------------------------
 Tue Jul 07 14:33:16 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 0.20.0:
