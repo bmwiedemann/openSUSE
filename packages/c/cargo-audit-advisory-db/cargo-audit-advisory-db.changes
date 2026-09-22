@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:01:57 UTC 2026 - william.brown@suse.com
+
+- Update to version 20260922:
+  * Assigned RUSTSEC-2026-0296 to unzip, RUSTSEC-2026-0297 to unzip
+  * address comments and add an unmaintained advisory
+  * some readme changes
+  * unzip advisory
+  * Assigned RUSTSEC-2026-0295 to z3
+  * Add advisory for z3 ApplyResult UAF (#3229)
+  * Assigned RUSTSEC-2026-0294 to iceoryx2-bb-container
+  * Add advisory for unsound String API in iceoryx2-bb-container
+  * Assigned RUSTSEC-2026-0293 to ringbuf
+  * Add advisory for ringbuf: panic-safety double-free in Consumer::skip/clear
+
+-------------------------------------------------------------------
 Thu Aug 13 03:51:15 UTC 2026 - william.brown@suse.com
 
 - Update to version 20260813:
