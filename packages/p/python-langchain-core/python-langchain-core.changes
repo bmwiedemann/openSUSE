@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.4:
+  * BaseChatMessageHistory and InMemoryChatMessageHistory are
+    deprecated and scheduled for removal in 2.0.0
+  * BaseChatMessageHistory defines a cooperative __init__, so
+    subclasses that also derive from pydantic BaseModel keep
+    accepting their field keyword arguments
+
+-------------------------------------------------------------------
 Sat Sep 12 07:14:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.3:
