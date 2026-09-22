@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Wed Sep 16 11:45:04 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Change name to google-extension-manager per request from Google
+
+-------------------------------------------------------------------
+Wed Sep 16 11:29:09 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to version 20260903.01: (#jsc-PED-15389)
+  * Re-introduce the windows service changes.
+  * Rollback windows service changes to prepare for next release. This will be re-merged after a package is built.
+  * Update Go module dependencies.
+  * Add MWLID credentials test for guest agent.
+  * Fix countLastNLinesBytes
+  * Validate username
+  * Update generated proto files
+  * Adapt guest_agent logger to use parameterless NewStderrBackend and update dependencies
+  * Update go.mod and go.sum to latest dependencies.
+  * Ignore `SIGTERM` on Windows if the binary is running as a service.
+
+-------------------------------------------------------------------
+Mon Aug 10 12:48:08 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update spec to include new extensions for telemetry and work load id
+- Remove compat manager
+
+-------------------------------------------------------------------
+Fri Aug  7 14:29:29 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to google-guest-agent-20260805.00_dd7c8ce
+  + No upstream changelog
+  + Do not ship the core-plugin
+
+-------------------------------------------------------------------
+Tue Mar 10 11:29:20 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Update to google-guest-agent-20260309.00_7dcb60e
+  + Remove unnecessary IP route check
+  + Move agentcrypto module to late stage for now.
+  + Skip workload cert refresher service management on SLES
+  + If the plugin is already installed and shouldn't be re-installed, make
+    sure to run the OnReady function
+  + Add support for forcing socket connection types for plugins
+  + Initialize logger early in core plugin's initialization so that
+    errors/timings with the plugin server initialization can be captured
+    in logging
+  + Force-reconnect the primary NIC for NetworkManager
+
+-------------------------------------------------------------------
+Thu Feb 19 13:26:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Initial import of google-guest-agent 20260213.00_69dff6c (jsc#PED-15389)

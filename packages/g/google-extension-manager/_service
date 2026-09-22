@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/GoogleCloudPlatform/google-guest-agent</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="versionformat">20260903.01</param>
+    <param name="revision">20260903.01</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="recompress" mode="disabled">
+    <param name="file">google-guest-agent-*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">google-guest-agent</param>
+  </service>
+  <service name="go_modules" mode="disabled">
+    <param name="archive">google-guest-agent-20260903.01.tar.gz</param>
+  </service>
+</services>
