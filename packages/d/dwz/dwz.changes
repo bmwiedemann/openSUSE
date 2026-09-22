@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 12 16:07:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.17:
+  * Handle compressed debug sections on input, both gABI
+    SHF_COMPRESSED (ZLIB and ZSTD) and legacy GNU .zdebug_*;
+    sections are re-emitted in the scheme they were read in
+  * Name the --max-die-limit value in Too many DIEs errors
+  * 0.16 (skipped): version 9 .gdb_index support as produced
+    by gdb-add-index since GDB 15; double free fix in
+    compute_abbrevs [swo#32934]; testsuite improvements
+- Drop patches adopted upstream in 0.16:
+  * dwz-add-support-for-version-9-gdb-index.patch
+  * dwz-fix-double-free-in-compute-abbrevs.patch
+  * dwz-make-dejagnu-logs-more-elaborate.patch
+  * dwz-make-dejagnu-test-names-environment-insensitive.patch
+  * dwz-testsuite-fix-finding-gdb-without-which.patch
+- Run spec-cleaner: drop Group tags, libelf-devel to
+  pkgconfig(libelf), make to %make_build, drop %defattr
+
+-------------------------------------------------------------------
 Mon May 12 13:54:07 UTC 2025 - Tom de Vries <tdevries@suse.com>
 
 - Add patch (backport from upstream trunk) [swo#32934]: 

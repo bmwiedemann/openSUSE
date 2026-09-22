@@ -1,7 +1,7 @@
 #
 # spec file for package dwz
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,57 +17,48 @@
 
 
 %define flavor @BUILD_FLAVOR@%{nil}
-
 %bcond_with ringdisabled
-
-%if "%flavor" == "testsuite"
+%if "%{flavor}" == "testsuite"
+%define build_main 0
+%define build_testsuite 1
+%define debug_package %{nil}
+%define name_suffix -%{flavor}
 %if %{with ringdisabled}
 ExclusiveArch:  do_not_build
 %endif
-%define build_main 0
-%define build_testsuite 1
 %else
 %define build_main 1
 %define build_testsuite 0
-%endif
-
-%if %{build_testsuite}
-%define debug_package %{nil}
-%endif
-
-%if %{build_main}
 %define name_suffix %{nil}
-%else
-%define name_suffix -%{flavor}
 %endif
-
 Name:           dwz%{name_suffix}
-Version:        0.15
+Version:        0.17
 Release:        0
+URL:            https://sourceware.org/dwz/
+#Git-Clone:	git://sourceware.org/git/dwz
+#Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
+Source:         dwz-%{version}.tar.xz
+Source1:        dwz-rpmlintrc
+Source2:        tramp3d-v4.cpp.xz
+Patch1:         dwz-enable-odr-by-default.patch
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig
+BuildRequires:  xxhash-devel
+BuildRequires:  xz
+BuildRequires:  pkgconfig(libelf)
 %if %{build_main}
 Summary:        DWARF optimization and duplicate removal tool
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          Development/Tools/Building
 %endif
 %if %{build_testsuite}
 Summary:        Testsuite results from DWZ
 License:        GPL-2.0-or-later AND LGPL-2.0-or-later
-Group:          Development/Tools/Building
 %endif
-#Git-Clone:	git://sourceware.org/git/dwz
-#Git-Web:	https://sourceware.org/git/?p=dwz.git;a=summary
-Source:         dwz-%{version}.tar.xz
-URL:            https://sourceware.org/dwz/
-BuildRequires:  gcc-c++
-BuildRequires:  libelf-devel
-BuildRequires:  xxhash-devel
-BuildRequires:  xz
 %if %{build_testsuite}
 BuildRequires:  dejagnu
 BuildRequires:  elfutils
 BuildRequires:  gdb
 %endif
-
 %if !%{build_main}
 # It's a bit pointless to ship two identical source packages, one for dwz and
 # one for dwz-testsuite.  So we make the second one small by excluding the
@@ -75,17 +66,6 @@ BuildRequires:  gdb
 # gain is smaller there and looks more cumbersome to maintain.
 NoSource:       0
 %endif
-
-Source1:        dwz-rpmlintrc
-Source2:        tramp3d-v4.cpp.xz
-
-Patch1:         dwz-enable-odr-by-default.patch
-Patch3:         dwz-make-dejagnu-logs-more-elaborate.patch
-Patch4:         dwz-make-dejagnu-test-names-environment-insensitive.patch
-Patch5:         dwz-testsuite-fix-finding-gdb-without-which.patch
-Patch6:         dwz-add-support-for-version-9-gdb-index.patch
-Patch7:         dwz-fix-double-free-in-compute-abbrevs.patch
-
 %if %{build_main}
 %description
 dwz optimizes DWARF debugging information contained in ELF shared
@@ -127,12 +107,12 @@ cp t1 t2
 cp t1 t3
 cp t1 t4
 ./dwz -j 1 -m tmp.debug t1 t2 t3 t4
-make clean
+%make_build clean
 %make_build CFLAGS="%{flags} -fprofile-use" LDFLAGS="-fprofile-use"
 
 %check
 %if %{build_testsuite}
-make -k check
+%make_build -k check
 %endif
 
 %install
@@ -149,7 +129,6 @@ make -k check
 
 %if %{build_testsuite}
 %files
-%defattr(-,root,root)
 %doc dwz.sum
 %doc dwz.log
 %endif
