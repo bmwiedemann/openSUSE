@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Mon Sep 21 14:35:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260917.00
+  * Validate username using unicode.IsSpace to reject
+    all Unicode whitespace characters (#637)
+  * Update dependencies to latest (#636)
+  * fix octal digit comparison in morePermissive (#631)
+  * Remove KillMode from google-guest-agent-manager (#629)
+  * Fix SUSE Linux Micro 6+ (#628) (bsc#1253357)
+  * Exclude irrelevant tests on FreeBSD (#625)
+  * Replace abandoned serial dependency (#624)
+  * Add build rules for MWLID extension
+
+-------------------------------------------------------------------
+Wed Sep 16 11:09:19 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Undo changes for the -fallback package creation
+  + After additional conversations with Google it was agreed to keep the
+    "old sources", i.e. guest-agent in the google-guest-agent RPM package
+    and not create a -fallback package. The "new sources", i.e. 
+    google-guest-agent, will be added via a new google-guest-agent-manager
+    package
+
+-------------------------------------------------------------------
+Wed Sep 16 09:06:43 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update golang.org/x/crypto to v0.57.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+
+--------------------------------------------------------------------
+Mon Sep 14 12:49:29 UTC 2026 - Robert Schweikert <rjschwei@suse.com>
+
+- Introduce -fallback package using the guest-agent sources (#jsc-PED-15389)
+- Ship gce-workload-cert-refresh.timer (bsc#1273192)
+
+-------------------------------------------------------------------
 Thu Sep 10 14:03:00 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
@@ -63,6 +99,14 @@ Mon Jul 20 08:49:10 UTC 2026 - Markéta Machová <mmachova@suse.com>
   Punycode-encoded labels allows for validation bypass and privilege
   escalation (bsc#1266603)
   * CVE-2026-39821.patch
+- CVE-2026-56852: golang.org/x/text/unicode/norm: infinite loop on
+  truncated/invalid UTF-8 input (bsc#1272118)
+  * CVE-2026-56852.patch
+
+-------------------------------------------------------------------
+Wed Jun 17 10:09:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Drop CVE-2026-33186.patch, merged upstream
 
 -------------------------------------------------------------------
 Mon Jun  1 10:48:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -111,6 +155,12 @@ Wed May 13 21:18:38 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
     This information is embedded in binaries with go1.18+ and
     available via go version -m or runtime/debug.ReadBuildInfo().
   * Drop mod=vendor, go1.14+ will detect vendor dir and auto-enable
+
+-------------------------------------------------------------------
+Wed May 13 10:17:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Add CVE-2026-33186.patch to fix authorization bypass in grpc-go due to improper
+  validation of the HTTP/2 :path pseudo-header (bsc#1260264, CVE-2026-33186)
 
 -------------------------------------------------------------------
 Mon May  4 11:35:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
@@ -1274,6 +1324,11 @@ Wed Jun  4 06:14:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * Update startup/shutdown services to launch compat manager (#503)
   * Bundle new gce metadata script runner binary in agent package (#502)
   * Revert "Revert bundling new binaries in the package (#509)" (#511)
+
+-------------------------------------------------------------------
+Fri May 23 08:32:58 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20250506.01 (bsc#1243254, bsc#1243505)
 
 -------------------------------------------------------------------
 Tue May 13 13:55:18 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>

@@ -19,7 +19,7 @@
 %define shortname guest-agent
 
 Name:           google-guest-agent
-Version:        20260903.01
+Version:        20260917.00
 Release:        0
 Summary:        Google Cloud Guest Agent
 License:        Apache-2.0

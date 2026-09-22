@@ -1152,4 +1152,12 @@
   CVE-2026-56854, CVE-2026-56855, CVE-2026-78662) (forwarded request 1376945 from glaubitz)</comment>
     <requestid>1376954</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>e15947b0aca706bc437f1a98e2aba5d9</srcmd5>
+    <version>20260917.00</version>
+    <time>1790085030</time>
+    <user>anag_factory</user>
+    <comment>- Add missing Bugzilla reference for bsc#1253357 (forwarded request 1379632 from glaubitz)</comment>
+    <requestid>1379663</requestid>
+  </revision>
 </revisionlist>
