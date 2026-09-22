@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Wed Apr 22 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package names
+
+-------------------------------------------------------------------
+Tue Apr 14 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.2
+
+-------------------------------------------------------------------
+Thu Mar 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Mon Feb 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix ldconfig
+- Fix whitespace
+
+-------------------------------------------------------------------
+Sat Feb  7 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jan  3 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SUSE
+
+-------------------------------------------------------------------
+Thu Jan  1 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with debug
+
+-------------------------------------------------------------------
+Thu Dec 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Thu Aug  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix building test subpackage - 6.4.0-3
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sun Jun 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check of ldconfig
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Mon Feb 24 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Specialize python-cppheaderparser for tw
+
+-------------------------------------------------------------------
+Thu Feb 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Wed Feb  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix TW build
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- fix gpu list
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
