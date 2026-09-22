@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:30:24 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Align license with what's being shipped after legal review
+  * Use GPL-2.0-or-later AND GPL-2.0-only AND LGPL-2.1-or-later 
+
+-------------------------------------------------------------------
 Wed Aug 27 00:00:00 CEST 2025 - dsterba@suse.cz
 
 - Update to version 1.1.1+git.20250802:

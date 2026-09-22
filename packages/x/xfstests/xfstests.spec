@@ -1,7 +1,7 @@
 #
 # spec file for package xfstests
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,7 +31,7 @@ Name:           xfstests
 Version:        1.1.1+git.20251118
 Release:        0
 Summary:        Filesystem regression test suite
-License:        GPL-2.0-or-later
+License:        GPL-2.0-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Filesystems
 URL:            https://git.kernel.org/pub/scm/fs/xfs/xfstests-dev.git/
 Source:         xfstests-%{version_unconverted}.tar.gz
