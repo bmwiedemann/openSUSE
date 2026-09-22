@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Sun Sep 13 15:34:18 UTC 2026 - chris@computersalat.de
+
+- Update to 15.0.8
+  https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.8.md
+  * Security bug fixes
+    + fix: prevent template expansion from interfering with git repo initialization.
+       When generating a new repository from a template repository, Forgejo clones the
+       template repository, removes the .git folder, performs variable template expansion
+       on files listed in .forgejo/template, and initializes a new git repository. During
+       this process, variable template expansion could be misused in order to create a new
+       .git folder, which git would adopt and incorporate during its initialization of a
+       new git repository. A malicious template repository could be used to read arbitrary
+       data from the Forgejo host, and to execute arbitrary processes on the Forgejo host,
+       as a remote code execution attack. To address this issue, after variable expansion
+       is completed, any existing .git folder is removed from the directory before the git
+       repository is initialized.
+    + ensure authorization reducer is accessed when checking editable PRs in APIs. When
+       editing a git repo contents through Forgejo's API, a specialized security control
+       is used to permit repository maintainers to edit branches that they do not own when
+       an open pull request with the "allow maintainer edit" option is present. This
+       specialized security control did not take into account API-specific security
+       restrictions, such as repo-specific access tokens. As a result, it was possible for
+       an API access token with restricted permission to make modifications outside of that
+       restricted permission. The specialized security control has been updated to take
+       into account API authentication security restrictions.
+  * Bug fixes
+    + fix: centralize recalculation of 'access' table, fix restricted user inconsistencies
+    + fix(quota): avoid double-counting package blobs
+    + fix: show job logs if there are any
+    + fix: codepaths where git repos are not closed correctly, may relate to leaking git
+       cat-file --batch[-check] commands
+    + fix: organization team set as 'admin' is granted 'owner' permission over related repositories
+  * Security changes without a feature or bug label
+    + Users with only read permission on a repository (including unauthenticated callers
+       on public repositories) could retrieve the metadata and the full contents of
+       attachments belonging to draft releases, even though draft releases are hidden from
+       them. The GetReleaseAttachment API endpoint and the web attachment download route
+       (ServeAttachment) did not check whether the release is a draft, while GetRelease and
+       ListReleaseAttachments already do. This is the same class of issue fixed upstream by
+       Gitea in CVE-2026-27660 and GHSA-q9pg-jj6x-j9p6.
+  * Included for completeness but not user-facing (chores, etc.)
+    + Update dependency svgo to v4.1.0 [SECURITY] (v15.0/forgejo)
+    + fix(dev): update gitignore e2e for new branding
+    + chore: remove legacy generateRepoCommit
+    + fix: simplify concurrency in GetContributorStats
+    + Update module golang.org/x/crypto to v0.56.0 [SECURITY] (v15.0/forgejo)
+    + chore(tests): /user/events notifications shows in the UI
+    + chore: upgrade go language directive to go1.26
+    + Update forgejo go-chi packages (v15.0/forgejo)
+    + chore(tests): increase doRepoWikiGitOperationInner from 2 to 60 seconds
+    + fix(ci): semgrep duplicate id
+    + Update module xorm.io/xorm to v1.4.1 (v15.0/forgejo)
+    + chore(ci): use oci/ci:3 instead of oci/playwright:latest for e2e
+  * Update node modules
+
+-------------------------------------------------------------------
+Sat Aug 22 18:51:30 UTC 2026 - chris@computersalat.de
+
+- Update to 15.0.7
+  https://codeberg.org/forgejo/forgejo/src/branch/forgejo/release-notes-published/15.0.7.md
+  * Security bug fixes
+    + fix: public-only and repo-specific access to /repos/{owner}/{repo}/pulls/{index}/update
+    + fix: expand local reusable workflows from base branch w/ pull_request_target
+    + fix: disallow owner as collaboration access mode
+  * Bug fixes
+    + fix(api): unblock fall-through to urlencoded names in wiki
+    + fix: error when replying to comments on removed lines-of-code in review
+    + fix: expire task logs even if there is no log file
+    + fix: prevent Actions trigger pull_request from drifting
+    + fix: exclude deleted artifacts when calculating storage consumption
+    + fix: comment placement in pull request reviews
+    + fix: trigger Actions for original commits (#13706)
+    + fix: prevent panic by returning error if dbfs file does not exist
+  * Included for completeness but not user-facing (chores, etc.)
+    + Update go toolchain directive to v1.26.7 (v15.0/forgejo)
+    + Update module golang.org/x/image to v0.45.0 [SECURITY] (v15.0/forgejo)
+    + Update golang.org/x/mod (indirect) to v0.40.0 [SECURITY] (v15.0/forgejo) - autoclosed
+    + Update go toolchain directive to v1.26.6 [SECURITY] (v15.0/forgejo)
+    + Fix TestCannotCreatePrivateKey in Guix container.
+    + retry diff page load on TestPullRequestCommentPlacement when expected commit isn't matched
+    + Update dependency mermaid to v11.16.1 [SECURITY] (v15.0/forgejo)
+    + Update dependency postcss to v8.5.23 [SECURITY] (v15.0/forgejo)
+
+-------------------------------------------------------------------
 Fri Jul 31 05:33:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 15.0.6:

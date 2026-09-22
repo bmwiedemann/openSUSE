@@ -230,4 +230,12 @@
   + fix: add forgejo_runtime_token to actions context (forwarded request 1368729 from rrahl0)</comment>
     <requestid>1368730</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>19dad87f540a9ef3b549cd3a08b51306</srcmd5>
+    <version>15.0.8</version>
+    <time>1790085168</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379590</requestid>
+  </revision>
 </revisionlist>

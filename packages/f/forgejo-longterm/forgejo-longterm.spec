@@ -25,7 +25,7 @@
 %bcond_without apparmor
 %endif
 Name:           forgejo-longterm
-Version:        15.0.6
+Version:        15.0.8
 Release:        0
 Summary:        Self-hostable forge
 License:        GPL-3.0-or-later
