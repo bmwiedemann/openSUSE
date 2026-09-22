@@ -126,4 +126,12 @@
     <comment>- Use pyproject macros to build and install. (forwarded request 1286478 from StevenK)</comment>
     <requestid>1287231</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>7e06f2054014df4e06812ff4f9d74554</srcmd5>
+    <version>20260730</version>
+    <time>1790101829</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 20260730</comment>
+    <requestid>1379703</requestid>
+  </revision>
 </revisionlist>

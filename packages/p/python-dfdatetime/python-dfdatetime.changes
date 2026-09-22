@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:41:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Switch Version: field from 0~20260730 to 20260730. The
+  libyal-related projects have used this scheme consistently in
+  releases for a few years now.
+
+-------------------------------------------------------------------
+Fri Sep 18 10:21:24 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0~20260730
+  * Removed end-of-life Python 3.7 support
+  * Do not set undefined time zone for copy from string
+  * Added NewFromDeltaAndDate method
+  * Changes to CopyToPosixTimestampWithFractionOfSecond
+  * Added method to serialize DateTimeValues
+  * Extended serializer with TimeElementsInNanoseconds support
+
+-------------------------------------------------------------------
 Wed Jun 18 04:04:17 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.

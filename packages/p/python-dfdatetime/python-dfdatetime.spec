@@ -1,7 +1,7 @@
 #
 # spec file for package python-dfdatetime
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,16 @@
 
 %{?sle15_python_module_pythons}
 
-%define timestamp 20230225
 %define modname dfdatetime
 Name:           python-dfdatetime
-Version:        0~%{timestamp}
+Version:        20260730
 Release:        0
 Summary:        Digital Forensics date and time (dfDateTime)
 License:        Apache-2.0
 Group:          Development/Languages/Python
 URL:            https://github.com/log2timeline/dfdatetime
-Source:         https://github.com/log2timeline/%{modname}//releases/download/%{timestamp}/%{modname}-%{timestamp}.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
+Source:         https://github.com/log2timeline/%modname/releases/download/%version/%modname-%version.tar.gz
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -42,7 +41,7 @@ dfDateTime, or Digital Forensics date and time, provides date and time
 objects to preserve accuracy and precision.
 
 %prep
-%setup -q -n %{modname}-%{timestamp}
+%autosetup -p1 -n %modname-%version
 
 %build
 %pyproject_wheel
@@ -58,8 +57,8 @@ rm -rfv %{buildroot}%{_datadir}/doc/%{modname}
 
 %files %{python_files}
 %license LICENSE
-%doc ACKNOWLEDGEMENTS AUTHORS README
+%doc ACKNOWLEDGEMENTS AUTHORS README.md
 %{python_sitelib}/dfdatetime
-%{python_sitelib}/dfdatetime-%{timestamp}.dist-info
+%python_sitelib/dfdatetime-%version.dist-info
 
 %changelog
