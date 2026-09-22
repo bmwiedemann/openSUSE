@@ -68,4 +68,29 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1286370</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>903676d8ae9ad9e0059b5cf08205ce7b</srcmd5>
+    <version>2.2.4</version>
+    <time>1790085154</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.4:
+  * Fix memory leak in _DynamicCapabilityClient._send_helper()
+  * Fix SIGSEGV (NULL pointer dereference) on malformed Text field
+  * Update default bundled capnproto to 1.4.0
+  * Consolidate configurations into pyproject.toml
+  * Fix test failures on Python 3.14
+  * Revert Data fields to bytes and add get_data_as_view for zero-copy access
+  * Fix use-after-free in async write causing corruption with large payloads
+  * Make message.to_dict() return bytes for DATA type field
+  * Add binary support in dictionaries via base64 encoding
+  * Add structure-free read_multiple_bytes_packed
+  * Support python custom message builder and make Data field's type return
+    MemoryView
+  * Add Python 3.13 support
+  * Upgrade to Cython version 3
+  * Remove usage of deprecated kj::mvCapture functions
+  * Make license information SPDX-compatible
+  * Generate a new certificate that is compatible with strict x509 checking</comment>
+    <requestid>1379578</requestid>
+  </revision>
 </revisionlist>

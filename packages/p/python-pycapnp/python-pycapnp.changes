@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:38:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.2.4:
+  * Fix memory leak in _DynamicCapabilityClient._send_helper()
+  * Fix SIGSEGV (NULL pointer dereference) on malformed Text field
+  * Update default bundled capnproto to 1.4.0
+  * Consolidate configurations into pyproject.toml
+  * Fix test failures on Python 3.14
+  * Revert Data fields to bytes and add get_data_as_view for zero-copy access
+  * Fix use-after-free in async write causing corruption with large payloads
+  * Make message.to_dict() return bytes for DATA type field
+  * Add binary support in dictionaries via base64 encoding
+  * Add structure-free read_multiple_bytes_packed
+  * Support python custom message builder and make Data field's type return
+    MemoryView
+  * Add Python 3.13 support
+  * Upgrade to Cython version 3
+  * Remove usage of deprecated kj::mvCapture functions
+  * Make license information SPDX-compatible
+  * Generate a new certificate that is compatible with strict x509 checking
+
+-------------------------------------------------------------------
 Tue Jun 17 09:25:58 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

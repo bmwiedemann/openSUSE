@@ -1,7 +1,7 @@
 #
 # spec file for package python-pycapnp
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,15 +19,15 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-pycapnp
-Version:        2.0.0
+Version:        2.2.4
 Release:        0
 Summary:        Cython wrapping of the C++ Cap'n Proto library
 License:        BSD-2-Clause
 URL:            https://github.com/capnproto/pycapnp
 Source:         https://github.com/capnproto/pycapnp/archive/refs/tags/v%{version}.tar.gz#/pycapnp-%{version}.tar.gz
-BuildRequires:  %{python_module Cython with %python-Cython < 3}
+BuildRequires:  %{python_module Cython >= 3}
 BuildRequires:  %{python_module Jinja2}
-BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest-asyncio}
@@ -41,6 +41,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(capnp)
 Requires:       alts
+Requires:       python-Jinja2
 %python_subpackages
 
 %description
@@ -57,7 +58,7 @@ export CFLAGS="%{optflags}"
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/capnpc-cython
-%{python_expand rm %{buildroot}%{$python_sitearch}/capnp/helpers/*.h
+%{python_expand rm %{buildroot}%{$python_sitearch}/capnp/{includes,helpers,lib}/*.{h,cpp}
 %fdupes %{buildroot}%{$python_sitearch}
 }
 
