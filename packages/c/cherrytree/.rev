@@ -1662,4 +1662,41 @@
     <comment>Push from SCM</comment>
     <requestid>1343022</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7d7a6c19fc987d2294efe102d49e69f4</srcmd5>
+    <version>1.7.2</version>
+    <time>1790085199</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.7.2:
+  + fixed crash introduced with word count changes in v1.7.1
+  + moved tree explorer auxiliary icon (e.g. indicating read only)
+    between node icon and node name
+  + fixed selecting a word via double click in a codebox or table
+    cell not working
+  + improved search in node name and tags to support multiple words
+    across both
+  + improved pasting rich text from mismatching theme (e.g. from
+    dark theme source to locally configured light theme)
+  + fixed embedded files cannot be opened anymore with custom
+    action on windows
+  + added support for pasting web content containing .webp images
+    on windows
+  + fixed LatexBox containing non ASCII characters loses end bytes
+    after saving in SQLite/reopening
+  + fixed crash selecting syntax highlighting language id 'def' not
+    meant to be in the list
+  + fixed regression after indent/unindent multiple list items in a
+    selection - if the selection included non list items, those
+    were not indented
+  + when a numbered list is split by pressing enter twice at the
+    end of an intermediate list item, the second part of the list
+    now decrements as the temporary  intermediate list item is
+    removed
+  + increased margin at the bottom of the tree explorer to prevent
+    the hovering horizontal scrollbar from hiding the last node
+  + when pasting rich text which results empty, automatically
+    fallback to the plain text clipboard target
+  + Updated translations.</comment>
+    <requestid>1379630</requestid>
+  </revision>
 </revisionlist>
