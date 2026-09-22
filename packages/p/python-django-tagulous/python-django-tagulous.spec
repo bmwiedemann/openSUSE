@@ -17,22 +17,22 @@
 
 
 Name:           python-django-tagulous
-Version:        2.1.1
+Version:        2.2.3
 Release:        0
 License:        BSD-3-Clause
 Summary:        Fabulous Tagging for Django
 URL:            http://radiac.net/projects/django-tagulous/
-Group:          Development/Languages/Python
 Source:         https://github.com/radiac/django-tagulous/archive/refs/tags/v%{version}.tar.gz#/django-tagulous-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/radiac/django-tagulous/pull/188 Fix issue with serializers monkeypatching in Django 5.2b1
-Patch:          django52b1.patch
 BuildRequires:  %{python_module Django}
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module django-dropulous >= 0.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest-cov}
 BuildRequires:  %{python_module pytest-django}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-Django
+Requires:       python-django-dropulous >= 0.1
 Suggests:       python-jasmine
 Suggests:       python-psycopg2
 Suggests:       python-mysqlclient
@@ -56,13 +56,13 @@ Fabulous Tagging for Django.
 
 %check
 export PYTHONPATH=${PWD}
-# two of test_dump_load tests fail with Django 5.2 https://github.com/radiac/django-tagulous/issues/187
-%pytest -k "not test_dump_load"
+%pytest
 
 %files %{python_files}
 %doc README.md
 %license LICENSE
-%{python_sitelib}/tagulous/
-%{python_sitelib}/django_tagulous-%{version}*info/
+%{python_sitelib}/tagulous
+%{python_sitelib}/django_tagulous
+%{python_sitelib}/django_tagulous-%{version}.dist-info
 
 %changelog

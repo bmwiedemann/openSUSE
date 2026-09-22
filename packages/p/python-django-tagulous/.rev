@@ -41,4 +41,35 @@
     input field</comment>
     <requestid>1341711</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d7373be668bc6be76449e81a903036a1</srcmd5>
+    <version>2.2.3</version>
+    <time>1790085120</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.2.3:
+  ## Feature:
+  * Add Dropulous adaptor support for formset:form-add event dispatched by
+    django-fancy-formset and others.
+  * Support Django 5.2 to 6.1
+  * Add can_create tag option to restrict tag creation to existing tags, with
+    support for logic to control it in forms.
+  * Add django_tagulous.admin.list_display_tag_links() helper to render tags
+    as links to their admin change views in list_display.
+  * Add bulk_add_tag_to_instances(tag_name, instances, batch_size=1000) to
+    efficiently tag many instances with the same tag in a fixed number of
+    queries rather than one set of queries per instance.
+  * Introduce django-dropulous support as a replacement for select2
+  * Global defaults can be set with settings.TAGULOUS_DEFAULT_TAG_OPTIONS
+  ## Bugfix:
+  * Select2 v4 adaptor now fires a change event on the original field when a
+    tag is added or removed, matching Dropulous
+  * Fix backwards compatibility shim for tagulous rename to django-tagulous
+  * Select2 v4 adaptor now correctly handles pagination
+  * Select2 v4 adaptor now correctly handles new values in the input field
+  * Restores missing files from packaging issue in 2.0.0
+  * Form field has_changed now correctly detects if a TagField has changed
+  * Admin enhance ensures list_display is a tuple
+- Drop patch django52b1.patch, merged upstream.</comment>
+    <requestid>1379558</requestid>
+  </revision>
 </revisionlist>
