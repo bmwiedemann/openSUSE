@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 21 20:57:14 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
+
+- Update to version 1.16:
+  * added plugin system
+  * finalized GUID support
+  * upgraded hlsdl to SDL3
+  * many new api and upgrades for DirectX12
+  * bugfixes and improvements
+  * and much more
+- Refresh 0001-fix-rpath.patch
+- Drop implement_hl_debug_break_for_more_architectures.patch
+
+-------------------------------------------------------------------
 Tue Jun 23 21:38:54 UTC 2026 - Jaime Marquínez Ferrándiz <jaime.marquinez.ferrandiz@fastmail.net>
 
 - Require mbedtls-devel < 4 since newer versions are not supported

@@ -140,4 +140,21 @@ final releases.
 </comment>
     <requestid>1361985</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>f5defab2ff0e71a059e25f2329abec8e</srcmd5>
+    <version>1.16</version>
+    <time>1790103156</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.16:
+  * added plugin system
+  * finalized GUID support
+  * upgraded hlsdl to SDL3
+  * many new api and upgrades for DirectX12
+  * bugfixes and improvements
+  * and much more
+- Refresh 0001-fix-rpath.patch
+- Drop implement_hl_debug_break_for_more_architectures.patch
+</comment>
+    <requestid>1379738</requestid>
+  </revision>
 </revisionlist>

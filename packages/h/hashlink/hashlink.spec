@@ -20,7 +20,7 @@
 %define with_vm 1
 %endif
 Name:           hashlink
-Version:        1.15
+Version:        1.16
 Release:        0
 Summary:        A virtual machine for Haxe
 License:        MIT
@@ -28,12 +28,11 @@ URL:            https://hashlink.haxe.org/
 Source0:        https://github.com/HaxeFoundation/%{name}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE
 Patch0:         0001-fix-rpath.patch
-# PATCH-FIX-UPSTREAM https://github.com/HaxeFoundation/hashlink/pull/765
-Patch1:         implement_hl_debug_break_for_more_architectures.patch
+BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  haxe >= 4.0
 BuildRequires:  (mbedtls-devel >= 3 with mbedtls-devel < 4)
-BuildRequires:  cmake(sdl2)
+BuildRequires:  cmake(SDL3)
 BuildRequires:  pkgconfig(glu)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libturbojpeg)
