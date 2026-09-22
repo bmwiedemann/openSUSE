@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:53:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.38.0:
+  * New headroom-cache-ttl command: offline estimator that turns
+    recorded cache observations into a learned TTL table for
+    providers that do not publish a cache TTL
+  * Bound decompressed request bodies and cap the
+    /admin/runtime-env request body at 64 KiB, closing two proxy
+    denial-of-service paths
+  * New headroom telemetry command prints what the opt-out
+    beacon sends; the beacon payload widens to cache, session
+    and configuration counters
+  * Match the Bearer auth scheme case-insensitively (RFC 7235)
+  * Proxy accepts the OpenAI Responses shape on the gateway turn
+    and enforces budget limits on the OpenAI and Gemini routes
+  * Compression preserves Bash control flow and pauses AST
+    compression per language after repeated invalid-syntax
+    discards; file-read tool output stays byte-exact
+  * Dashboard gains a Cost Saved headline card, routing savings
+    and keyboard-operable controls
+  * Write per-port proxy logs so concurrent instances stop
+    truncating each other
+  * Vendored rustls updated to 0.23.45 for RUSTSEC-2026-0285 and
+    tree-sitter to 0.27.0
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Follow upstream and raise the litellm requirement to 1.96.2,
+  now unconditional on the Python version
+
+-------------------------------------------------------------------
 Tue Sep  8 16:36:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package 0.37.0: core CLI built with maturin (pyo3

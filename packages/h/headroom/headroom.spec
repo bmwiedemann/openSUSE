@@ -20,12 +20,12 @@
 # the distribution primary interpreter.
 %define pythons %{primary_python}
 Name:           headroom
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        Context optimization layer for LLM applications
 # Legal-Review-Notice: headroom-ai is Apache-2.0. The shipped artefact is
 # the maturin cdylib from crates/headroom-py (cargo tree --offline
-# -p headroom-py -e normal, 277 crates over 539 vendored). The only
+# -p headroom-py -e normal, 277 crates over 538 vendored). The only
 # copyleft licence in that graph is MPL-2.0 from option-ext 0.2.0 (via
 # hf-hub -> dirs -> dirs-sys). r-efi offers LGPL-2.1-or-later but is
 # UEFI-target-only and is not in the Linux graph. aws-lc-sys is vendored
@@ -38,7 +38,7 @@ Source1:        vendor.tar.zst
 BuildRequires:  %{python_module PyYAML >= 6.0}
 BuildRequires:  %{python_module click >= 8.3.3}
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module litellm >= 1.86.2}
+BuildRequires:  %{python_module litellm >= 1.96.2}
 BuildRequires:  %{python_module maturin >= 1.5}
 BuildRequires:  %{python_module opentelemetry-api >= 1.24.0}
 BuildRequires:  %{python_module pip}
@@ -58,7 +58,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  rust >= 1.80
 Requires:       %{primary_python}-PyYAML >= 6.0
 Requires:       %{primary_python}-click >= 8.3.3
-Requires:       %{primary_python}-litellm >= 1.86.2
+Requires:       %{primary_python}-litellm >= 1.96.2
 Requires:       %{primary_python}-opentelemetry-api >= 1.24.0
 Requires:       %{primary_python}-pydantic >= 2.0.0
 Requires:       %{primary_python}-rich >= 13.0.0
@@ -144,6 +144,7 @@ export PATH=%{buildroot}%{_bindir}:$PATH
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -P -c "import headroom, headroom._core; print(headroom.__version__)"
 headroom --version
 headroom --help
+headroom-cache-ttl --help
 # Offline unit tests that only need the core runtime (click).
 %pytest_arch tests/cli/test_utils.py
 
@@ -151,6 +152,7 @@ headroom --help
 %license LICENSE NOTICE
 %doc README.md CHANGELOG.md
 %{_bindir}/headroom
+%{_bindir}/headroom-cache-ttl
 %{python_sitearch}/headroom
 %{python_sitearch}/headroom_ai-%{version}.dist-info
 
