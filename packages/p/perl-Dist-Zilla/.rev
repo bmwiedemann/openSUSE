@@ -458,4 +458,30 @@
             (thanks, Leon Timmermans)</comment>
     <requestid>1331906</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>1360b5969d99cba7b129307b098da004</srcmd5>
+    <version>6.39.0</version>
+    <time>1790084944</time>
+    <user>anag_factory</user>
+    <comment>- updated to 6.39.0 (6.039)
+   see /usr/share/doc/packages/perl-Dist-Zilla/Changes
+  6.039     2026-09-13 21:39:01+10:00 Australia/Melbourne
+          - PkgVersion warns when a file declares a perl v5.38 class, which it
+            cannot version because PPI cannot parse class syntax (github #742)
+          - AutoPrereqs no longer lists the dist's own main module as a prereq
+            when main_module lives outside lib/ (github #672, rt.cpan.org #55680)
+          - add a security policy in SECURITY.md (github #736)
+          - Dist::Zilla::Tester now uses autodie correctly, so in rare cases you
+            might get an exception where previously something failed silently
+          - the test suite no longer leaves a tmp directory behind
+          - copyright_year may now be any string, not just an integer, and
+            the string $this_year in it is replaced with the current year, so
+            &quot;2008 - $this_year&quot; works (thanks, Dave Rolsky; github #578)
+          - the copyright_year in the %Rights stash is now a Str, not an Int
+  6.038     2026-09-05 17:05:22+09:30 Australia/Adelaide
+          - now requires v5.22.0 (now ten years old), which was effectively true
+            because of some upstream libraries already
+          - switch from Params::Util to Params::SomeUtil</comment>
+    <requestid>1379463</requestid>
+  </revision>
 </revisionlist>

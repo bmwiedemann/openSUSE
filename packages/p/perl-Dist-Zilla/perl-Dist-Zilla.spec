@@ -18,10 +18,10 @@
 
 %define cpan_name Dist-Zilla
 Name:           perl-Dist-Zilla
-Version:        6.37.0
+Version:        6.39.0
 Release:        0
-# 6.037 -> normalize -> 6.37.0
-%define cpan_version 6.037
+# 6.039 -> normalize -> 6.39.0
+%define cpan_version 6.039
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Distribution builder; installer not included!
 URL:            https://metacpan.org/release/%{cpan_name}
@@ -77,7 +77,7 @@ BuildRequires:  perl(MooseX::Types)
 BuildRequires:  perl(MooseX::Types::Moose)
 BuildRequires:  perl(MooseX::Types::Perl)
 BuildRequires:  perl(PPI::Document) >= 1.222
-BuildRequires:  perl(Params::Util)
+BuildRequires:  perl(Params::SomeUtil)
 BuildRequires:  perl(Path::Tiny) >= 0.52
 BuildRequires:  perl(Perl::PrereqScanner) >= 1.16
 BuildRequires:  perl(Pod::Simple)
@@ -151,7 +151,7 @@ Requires:       perl(MooseX::Types)
 Requires:       perl(MooseX::Types::Moose)
 Requires:       perl(MooseX::Types::Perl)
 Requires:       perl(PPI::Document) >= 1.222
-Requires:       perl(Params::Util)
+Requires:       perl(Params::SomeUtil)
 Requires:       perl(Path::Tiny) >= 0.52
 Requires:       perl(Perl::PrereqScanner) >= 1.16
 Requires:       perl(Pod::Simple)
@@ -213,7 +213,6 @@ Provides:       perl(Dist::Zilla::MintingProfile::Default) = %{version}
 Provides:       perl(Dist::Zilla::Path) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::AutoPrereqs) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::AutoVersion) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::BrokenPlugin)
 Provides:       perl(Dist::Zilla::Plugin::CPANFile) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::ConfirmRelease) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::DistINI) = %{version}
@@ -229,7 +228,6 @@ Provides:       perl(Dist::Zilla::Plugin::GatherDir::Template) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::GatherFile) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::GenerateFile) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::InlineFiles) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::JustForManifestSkipTests)
 Provides:       perl(Dist::Zilla::Plugin::License) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::MakeMaker) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::MakeMaker::Runner) = %{version}
@@ -243,7 +241,6 @@ Provides:       perl(Dist::Zilla::Plugin::MetaTests) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::MetaYAML) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::ModuleBuild) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::ModuleShareDirs) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::MungerThatPrunesPodFiles)
 Provides:       perl(Dist::Zilla::Plugin::NextRelease) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::PkgDist) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::PkgVersion) = %{version}
@@ -257,13 +254,8 @@ Provides:       perl(Dist::Zilla::Plugin::Readme) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::RemovePrereqs) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::ShareDir) = %{version}
 Provides:       perl(Dist::Zilla::Plugin::TemplateModule) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::TestArchiveBuilder)
-Provides:       perl(Dist::Zilla::Plugin::TestAutoLicense)
-Provides:       perl(Dist::Zilla::Plugin::TestAutoName)
 Provides:       perl(Dist::Zilla::Plugin::TestRelease) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::TestReleaseProvider)
 Provides:       perl(Dist::Zilla::Plugin::UploadToCPAN) = %{version}
-Provides:       perl(Dist::Zilla::Plugin::Versioned) = 1.234.0
 Provides:       perl(Dist::Zilla::PluginBundle::Basic) = %{version}
 Provides:       perl(Dist::Zilla::PluginBundle::Classic) = %{version}
 Provides:       perl(Dist::Zilla::PluginBundle::FakeClassic) = %{version}
@@ -315,7 +307,6 @@ Provides:       perl(Dist::Zilla::Role::StubBuild) = %{version}
 Provides:       perl(Dist::Zilla::Role::TestRunner) = %{version}
 Provides:       perl(Dist::Zilla::Role::TextTemplate) = %{version}
 Provides:       perl(Dist::Zilla::Role::VersionProvider) = %{version}
-Provides:       perl(Dist::Zilla::Stash::Heap)
 Provides:       perl(Dist::Zilla::Stash::Mint) = %{version}
 Provides:       perl(Dist::Zilla::Stash::PAUSE) = %{version}
 Provides:       perl(Dist::Zilla::Stash::Rights) = %{version}
@@ -328,7 +319,6 @@ Provides:       perl(Dist::Zilla::Util::AuthorDeps) = %{version}
 Provides:       perl(Test::DZil) = %{version}
 %undefine       __perllib_provides
 Recommends:     perl(App::cpanminus)
-Recommends:     perl(Data::OptList) >= 0.110
 Recommends:     perl(Term::ReadLine::Gnu)
 %{perl_requires}
 # MANUAL BEGIN
@@ -363,7 +353,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc Changes README
+%doc Changes README SECURITY.md
 %license LICENSE
 
 %changelog
