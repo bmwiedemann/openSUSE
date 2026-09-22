@@ -16,7 +16,7 @@
 #
 
 Name:           google-noto-serif-cjk-fonts
-Version:        2.002
+Version:        2.003
 Release:        0
 Summary:        Noto Serif CJK Font Families
 License:        OFL-1.1
