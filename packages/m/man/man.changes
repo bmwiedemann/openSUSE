@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 18 13:13:07 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Enable multi compression with libzio 
+
+-------------------------------------------------------------------
 Thu May 28 08:14:12 UTC 2026 - Werner Fink <werner@suse.de>
 
 - Change patch man-db-2.7.1-zio.dif to avoid Heisenbug (boo#1262477)

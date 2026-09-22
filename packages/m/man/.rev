@@ -1196,4 +1196,12 @@
     <comment>- Change patch man-db-2.7.1-zio.dif to avoid Heisenbug (boo#1262477)</comment>
     <requestid>1355607</requestid>
   </revision>
+  <revision rev="113" vrev="8">
+    <srcmd5>907373cb3ef23be947e42b1551f1cdee</srcmd5>
+    <version>2.13.1</version>
+    <time>1790084923</time>
+    <user>anag_factory</user>
+    <comment>- Enable multi compression with libzio</comment>
+    <requestid>1378823</requestid>
+  </revision>
 </revisionlist>

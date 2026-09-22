@@ -64,6 +64,7 @@ Patch9:         man-db-2.6.3-man0.dif
 # PATCH-FEATURE-OPENSUSE -- Propose to read man pages online
 Patch12:        man-propose-online.patch
 BuildRequires:  automake
+BuildRequires:  bzip2
 BuildRequires:  flex
 BuildRequires:  gdbm-devel
 BuildRequires:  gettext-runtime
@@ -71,12 +72,17 @@ BuildRequires:  gettext-tools
 BuildRequires:  groff
 BuildRequires:  less
 BuildRequires:  libalternatives-devel
+BuildRequires:  libbz2-devel
 BuildRequires:  libpipeline-devel >= 1.5.0
-BuildRequires:  libzio-devel >= 1.12
+BuildRequires:  libzio-devel >= 1.17
+BuildRequires:  libzstd-devel
 BuildRequires:  lzip
+BuildRequires:  lzlib-devel
 BuildRequires:  man-pages
 BuildRequires:  pkgconfig
 BuildRequires:  po4a
+BuildRequires:  xz
+BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(systemd)
