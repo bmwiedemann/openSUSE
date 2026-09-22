@@ -1,0 +1,15 @@
+diff --git a/crates/codegen/xai-grok-shell/src/agent/config.rs b/crates/codegen/xai-grok-shell/src/agent/config.rs
+--- a/crates/codegen/xai-grok-shell/src/agent/config.rs
++++ b/crates/codegen/xai-grok-shell/src/agent/config.rs
+@@ -2342,6 +2342,11 @@
+         self.is_feature_enabled(Feature::TwoPassCompaction)
+     }
+     pub(crate) fn resolve_telemetry_mode(&self) -> Resolved<TelemetryMode> {
++        // openSUSE: telemetry is disabled unconditionally for the distribution
++        // build so it can never be turned on via config, environment or
++        // server-pushed remote settings.
++        return Resolved::new(TelemetryMode::Disabled, ConfigSource::Default);
++        #[allow(unreachable_code)]
+         if let Some(mode) = self.requirements.telemetry.pinned() {
+             return Resolved::new(mode, ConfigSource::Requirement);
+         }
