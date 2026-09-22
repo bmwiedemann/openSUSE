@@ -17,17 +17,22 @@
 
 
 Name:           cockpit-files
-Version:        43
+Version:        44
 Release:        0
 Summary:        Cockpit component for File Manager
 License:        LGPL-2.1-or-later
 URL:            https://github.com/cockpit-project/cockpit-files
 Source:         https://github.com/cockpit-project/cockpit-files/releases/download/%{version}/cockpit-files-%{version}.tar.xz
 Source10:       package-lock.json
-Source11:       node_modules.spec.inc
+#!CreateArchive
+Source11:       node_modules
 Source12:       update_version.sh
+# CVE-2026-91202, CVE-2026-91203, CVE-2026-91205
+Patch1:         prevent-filename-directory-names-misinterpreation.patch
+Patch2:         never-derefernce-a-symlink.patch
+Patch3:         premissions-spell-out-commandline-options.patch
+Patch4:         apply-no-derefernce-to-chmod.patch 
 Patch10:        load-css-overrides.patch
-%include %_sourcedir/node_modules.spec.inc
 BuildArch:      noarch
 BuildRequires:  cockpit-devel >= 346
 BuildRequires:  local-npm-registry
@@ -39,7 +44,7 @@ File manager as a cockipit component
 %prep
 %autosetup -p1 -n "%name"
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --include=dev --ignore-scripts
+local-npm-registry %{_sourcedir}/node_modules install --include=dev --ignore-scripts
 echo "{}" > package-lock.json
 
 %build

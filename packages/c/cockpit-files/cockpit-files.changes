@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:21:11 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
+
+- update to 44
+    * update translations
+- add patches 
+    * apply-no-derefernce-to-chmod.patch
+    * never-derefernce-a-symlink.patch
+    * prevent-filename-directory-names-misinterpreation.patch 
+    * premissions-spell-out-commandline-options.patch
+  to fix CVE-2026-91202, CVE-2026-91203, CVE-2026-91205 (boo#1282010 boo#1282010 boo#1282016)
+
+-------------------------------------------------------------------
 Fri Aug  7 08:21:51 UTC 2026 - Luna D Dragon <luna.dragon@suse.com>
 
 - create cockpit-files package at version 43

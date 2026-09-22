@@ -7,4 +7,19 @@
     <comment>Initial submission</comment>
     <requestid>1375121</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>85e7a9a7de0cf23bc7631d72473e877f</srcmd5>
+    <version>44</version>
+    <time>1790085230</time>
+    <user>anag_factory</user>
+    <comment>- update to 44
+    * update translations
+- add patches 
+    * apply-no-derefernce-to-chmod.patch
+    * never-derefernce-a-symlink.patch
+    * prevent-filename-directory-names-misinterpreation.patch 
+    * premissions-spell-out-commandline-options.patch
+  to fix CVE-2026-91202, CVE-2026-91203, CVE-2026-91205 (boo#1282010 boo#1282010 boo#1282016)</comment>
+    <requestid>1379674</requestid>
+  </revision>
 </revisionlist>

@@ -48,13 +48,12 @@ diff cockpit-files/node_modules/.package.json cockpit-files/package.json
 cp cockpit-files/node_modules/.package-lock.json package-lock.json
 
 # update node_modules
-curl -Lo cockpit-files-$newVersion.tar.gz https://github.com/cockpit-project/cockpit-files/archive/refs/tags/$newVersion.tar.gz
-
+curl -Lo cockpit-files-$newVersion.tar.xz https://github.com/cockpit-project/cockpit-files/releases/download/$newVersion/cockpit-files-$newVersion.tar.xz
 # Updating version in spec file
 sed -i -e "s,^\(\s*Version:\s*\)\(.*\)\s*$,\1${newVersion}," cockpit-files.spec
 
 # update modules
-osc add cockpit-files-$newVersion.tar.gz
-osc rm  cockpit-files-$curVersion.tar.gz
+git add cockpit-files-$newVersion.tar.xz
+git rm  cockpit-files-$curVersion.tar.xz
 osc service mr
 

@@ -1,0 +1,83 @@
+From d8e84ab2c296d0eaea760756e7dc28ca153fa4e3 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jvanderwaa@redhat.com>
+Date: Tue, 1 Sep 2026 09:58:44 +0200
+Subject: [PATCH] dialogs: Never de-reference a symlink when changing
+ permissions
+
+Changing the mode/owner on the target of symlink is unexpected behaviour
+in creating a file, directory, changing permissions of a file or copy
+pasting unexpected behaviour.
+
+Fixes: COCKPIT-1900, COCKPIT-1901, COCKPIT-1904
+---
+ src/dialogs/copyPasteOwnership.tsx | 1 +
+ src/dialogs/create-file.tsx        | 2 +-
+ src/dialogs/mkdir.tsx              | 2 +-
+ src/dialogs/permissions.tsx        | 2 +-
+ src/upload-button.tsx              | 2 +-
+ 5 files changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/src/dialogs/copyPasteOwnership.tsx b/src/dialogs/copyPasteOwnership.tsx
+index ecc80887..2b4bb2e7 100644
+--- a/src/dialogs/copyPasteOwnership.tsx
++++ b/src/dialogs/copyPasteOwnership.tsx
+@@ -44,6 +44,7 @@ async function pasteAsOwner(clipboard: ClipboardInfo,
+         if (ownerStr !== "original") {
+             await cockpit.spawn([
+                 "chown",
++                "--no-dereference",
+                 "--recursive",
+                 "--",
+                 ownerStr,
+diff --git a/src/dialogs/create-file.tsx b/src/dialogs/create-file.tsx
+index 46608dd5..64c3fd67 100644
+--- a/src/dialogs/create-file.tsx
++++ b/src/dialogs/create-file.tsx
+@@ -42,7 +42,7 @@ async function create_file(filename: string, content?: string, owner?: string |
+ 
+     if (owner) {
+         try {
+-            await cockpit.spawn(["chown", "--", owner, filename], { superuser: "require" });
++            await cockpit.spawn(["chown", "--no-dereference", "--", owner, filename], { superuser: "require" });
+         } catch (err) {
+             console.warn("Cannot chown new file", err);
+             try {
+diff --git a/src/dialogs/mkdir.tsx b/src/dialogs/mkdir.tsx
+index d4eb97a5..622696b9 100644
+--- a/src/dialogs/mkdir.tsx
++++ b/src/dialogs/mkdir.tsx
+@@ -42,7 +42,7 @@ async function create_directory(path: string, owner?: string) {
+     if (owner !== undefined) {
+         const opts = { err: "message", superuser: "require" } as const;
+         await cockpit.spawn(["mkdir", "--", path], opts);
+-        await cockpit.spawn(["chown", "--", owner, path], opts);
++        await cockpit.spawn(["chown", "--no-dereference", "--", owner, path], opts);
+     } else {
+         await cockpit.spawn(["mkdir", "--", path], { err: "message" });
+     }
+diff --git a/src/dialogs/permissions.tsx b/src/dialogs/permissions.tsx
+index 1d6e5f2a..02028f74 100644
+--- a/src/dialogs/permissions.tsx
++++ b/src/dialogs/permissions.tsx
+@@ -170,7 +170,7 @@ const EditPermissionsModal = ({ dialogResult, items, path } : {
+             await cockpit.spawn(["chmod", "-R", "--", mode_to_args(mode), full_path],
+                                 { superuser: "try", err: "message" });
+ 
+-            await cockpit.spawn(["chown", "-R", "--", owner + ":" + group, full_path],
++            await cockpit.spawn(["chown", "-R", "--no-dereference", "--", owner + ":" + group, full_path],
+                                 { superuser: "try", err: "message" });
+ 
+             dialogResult.resolve();
+diff --git a/src/upload-button.tsx b/src/upload-button.tsx
+index c51348d4..2e42a957 100644
+--- a/src/upload-button.tsx
++++ b/src/upload-button.tsx
+@@ -265,7 +265,7 @@ export const UploadButton = ({
+                 // a stable interface.
+                 try {
+                     await cockpit.file(destination, { superuser: "try" }).replace("");
+-                    await cockpit.spawn(["chown", "--", owner, destination], { superuser: "try" });
++                    await cockpit.spawn(["chown", "--no-dereference", "--", owner, destination], { superuser: "try" });
+                     const { tag } = await fsinfo(destination, ['tag'], { superuser: "try" });
+                     options = { superuser: "try", tag };
+                     const stat = await cockpit.spawn(["stat", "--format", "%a", "--", destination],

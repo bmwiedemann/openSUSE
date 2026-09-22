@@ -1,0 +1,27 @@
+From af18aa8c699d6a8744695d4936f4739631afead6 Mon Sep 17 00:00:00 2001
+From: Jelle van der Waa <jvanderwaa@redhat.com>
+Date: Tue, 8 Sep 2026 08:40:30 +0200
+Subject: [PATCH] permissions: Spell out command line options
+
+While everyone knows `-R` making it explicit by spelling it out.
+---
+ src/dialogs/permissions.tsx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/dialogs/permissions.tsx b/src/dialogs/permissions.tsx
+index 02028f74..3959fe06 100644
+--- a/src/dialogs/permissions.tsx
++++ b/src/dialogs/permissions.tsx
+@@ -167,10 +167,10 @@ const EditPermissionsModal = ({ dialogResult, items, path } : {
+ 
+     const spawnEncloseFiles = async () => {
+         try {
+-            await cockpit.spawn(["chmod", "-R", "--", mode_to_args(mode), full_path],
++            await cockpit.spawn(["chmod", "--recursive", "--", mode_to_args(mode), full_path],
+                                 { superuser: "try", err: "message" });
+ 
+-            await cockpit.spawn(["chown", "-R", "--no-dereference", "--", owner + ":" + group, full_path],
++            await cockpit.spawn(["chown", "--recursive", "--no-dereference", "--", owner + ":" + group, full_path],
+                                 { superuser: "try", err: "message" });
+ 
+             dialogResult.resolve();
