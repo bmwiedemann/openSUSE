@@ -1,0 +1,195 @@
+-------------------------------------------------------------------
+Thu Aug  6 05:12:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Fix build failure caused by host hardening flags reaching the amdgcn
+  device compilation:
+  * %toolchain and %build_cxxflags are Fedora rpm machinery that
+    openSUSE does not implement, so the existing -Xarch_host guard had
+    no effect here and %cmake passed %optflags to amdclang++ verbatim
+  * rewrite %optflags itself on openSUSE, confining -fcf-protection,
+    -fstack-protector-strong and -fstack-clash-protection to the host
+    pass with -Xarch_host
+  * without this the device pass fails with "option
+    'cf-protection=return' cannot be specified on this target"
+
+-------------------------------------------------------------------
+Fri Mar  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Fri Feb 13 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+- Cleanup whitespace
+
+-------------------------------------------------------------------
+Sat Jan 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Dec 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+- Remove --with generic
+
+-------------------------------------------------------------------
+Wed Dec 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix debug install
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+- -test fails fedora-review, turn off
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2025 - Benjamin A. Beasley <code@musicinmybrain.net>
+
+- Rebuilt for gtest 1.17.0
+
+-------------------------------------------------------------------
+Wed Nov 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild for gfx1036
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- better handling of shared library on opensuse
+
+-------------------------------------------------------------------
+Thu Oct  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable -test for fedora
+- Remove check
+
+-------------------------------------------------------------------
+Mon Sep 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild
+
+-------------------------------------------------------------------
+Thu Sep 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Thu Aug 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Build -test on TW
+
+-------------------------------------------------------------------
+Tue Jul 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialog cflag
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove experimental gfx950
+- Remove debian dir
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Tue Jun 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- updated logic to adhere to desired test and check behavior
+
+-------------------------------------------------------------------
+Mon May 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix gfx950 mock build
+
+-------------------------------------------------------------------
+Sat May 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add experimental gfx950
+
+-------------------------------------------------------------------
+Sun Apr 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing on suse
+
+-------------------------------------------------------------------
+Fri Apr 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add generic gpus
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Wed Apr  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja build
+
+-------------------------------------------------------------------
+Mon Feb 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove split building
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
