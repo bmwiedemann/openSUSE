@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:39:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.50.1:
+  This release resolves an issue preventing Homebrew cask updates
+  during automated releases, updates the Go toolchain to 1.26, and
+  updates project dependencies.
+  * Bug Fixes
+    - Ensure Homebrew cask updates publish successfully during the
+      release workflow by using an automation token with protected
+      branch access and verifying the published version (#102).
+  * Maintenance
+    - Update Go version to 1.26.0.
+    - Update release notes generation script to use the latest
+      Gemini flash model endpoint.
+  * Dependencies
+    - Bump github.com/urfave/cli/v3 to v3.13.0.
+    - Bump project dependencies, including testify,
+      golang.org/x/sys, and golang.org/x/term.
+
+-------------------------------------------------------------------
 Sun Sep 20 07:31:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.50.0:

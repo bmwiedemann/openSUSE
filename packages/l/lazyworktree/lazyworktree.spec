@@ -17,7 +17,7 @@
 
 
 Name:           lazyworktree
-Version:        1.50.0
+Version:        1.50.1
 Release:        0
 Summary:        Easy Git worktree management for the terminal
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 Requires:       git-core
 Recommends:     gh
 Recommends:     glab
