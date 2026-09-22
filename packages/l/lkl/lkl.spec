@@ -114,16 +114,22 @@ WARNING: LKL is EXPERIMENTAL; using it could cause data corruption!
 %autosetup -p1
 
 %build
+cat >.env <<'EOF'
 # for reproducible builds results (boo#1237474)
-export KBUILD_BUILD_TIMESTAMP=$(date -d @${SOURCE_DATE_EPOCH:-$(stat --format=%%Y COPYING)})
+export KBUILD_BUILD_TIMESTAMP="$(date -d @${SOURCE_DATE_EPOCH:-$(stat --format=%%Y COPYING)})"
 export KBUILD_BUILD_USER=geeko
 export KBUILD_BUILD_HOST=buildhost
+# unpinned, init/build-version increments .version on every make invocation
+export KBUILD_BUILD_VERSION=1
+EOF
+. ./.env
 
 # TODO: binaries are statically linked against liblkl.a
 #       there should be an option link against liblkl.so
 %make_build -C tools/lkl KCONFIG=opensuse_defconfig
 
 %install
+. ./.env
 %make_install -C tools/lkl \
         BINDIR=%{_bindir} \
         INCDIR=%{_includedir} \
@@ -159,7 +165,7 @@ getent passwd lklfuse >/dev/null || \
   useradd -g lklfuse --no-create-home -r -s /sbin/nologin lklfuse
 
 %post -n lklfuse
-cat >> %{_localstatedir}/adm/update-messages/%{name}-%{version}-%{release} << EOF
+cat >> %{_localstatedir}/adm/update-messages/lklfuse-%{version}-%{release} << EOF
 
 WARNING: lklfuse is EXPERIMENTAL; using it could cause data corruption!
 
