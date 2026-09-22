@@ -17,7 +17,7 @@
 
 
 Name:           ibus-typing-booster
-Version:        2.31.0
+Version:        2.31.1
 Release:        0
 Summary:        An input completion utility
 License:        GPL-3.0-or-later
@@ -58,7 +58,7 @@ Requires:       enchant-1-backend
 #
 Requires:       ibus >= 1.5.3
 Requires:       m17n-lib
-Requires:       python3 >= 3.6
+Requires:       python3 >= 3.9
 Requires:       python3-distro
 Requires:       python3-pyenchant
 Requires:       python3-pyxdg
