@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 22 19:00:12 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- Update _feh zsh completion URL
+
+-------------------------------------------------------------------
+Wed Sep 16 20:29:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.13.1:
+  * Improve --scale-down in tiling WMs (no flicker on newly loaded
+    images)
+  * Switch default font to bundled NotoSans Medium; keep yudit.ttf
+    for existing themes
+  * Reject unescaped %f/%n in --action/--info (use %F/%N)
+    to prevent command injection via untrusted filenames
+  * Display embedded cover art for audio/mpeg files
+  * Support non-ASCII caption input and DOS-style filelists
+  * Fix Xwayland menu focus and --draw-exif clobbering --draw-info
+  * Handle XOpenIM/XCreateIC failures; fix zoom_fit centering
+  * Do not skip URLs when using --sort mtime
+- Rebase feh-makefile_optflags.patch, feh-makefile_app.patch and
+  feh-add_jxl_support.patch
+- Enable the upstream non-X test suite
+- Add OFL-1.1 for bundled NotoSans-Medium.ttf
+- Spec cleanup
+
+-------------------------------------------------------------------
 Mon Sep  1 16:54:24 UTC 2025 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to 3.11.1:

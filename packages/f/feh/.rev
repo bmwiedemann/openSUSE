@@ -528,4 +528,30 @@
     <comment></comment>
     <requestid>1303251</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>8dd24f61220416c09a8f0871c8d9373f</srcmd5>
+    <version>3.13.1</version>
+    <time>1790107117</time>
+    <user>dimstar_suse</user>
+    <comment>- Update _feh zsh completion URL
+- Update to 3.13.1:
+  * Improve --scale-down in tiling WMs (no flicker on newly loaded
+    images)
+  * Switch default font to bundled NotoSans Medium; keep yudit.ttf
+    for existing themes
+  * Reject unescaped %f/%n in --action/--info (use %F/%N)
+    to prevent command injection via untrusted filenames
+  * Display embedded cover art for audio/mpeg files
+  * Support non-ASCII caption input and DOS-style filelists
+  * Fix Xwayland menu focus and --draw-exif clobbering --draw-info
+  * Handle XOpenIM/XCreateIC failures; fix zoom_fit centering
+  * Do not skip URLs when using --sort mtime
+- Rebase feh-makefile_optflags.patch, feh-makefile_app.patch and
+  feh-add_jxl_support.patch
+- Enable the upstream non-X test suite
+- Add OFL-1.1 for bundled NotoSans-Medium.ttf
+- Spec cleanup
+</comment>
+    <requestid>1379752</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package feh
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,27 +17,31 @@
 
 
 Name:           feh
-Version:        3.11.1
+Version:        3.13.1
 Release:        0
 Summary:        X11 image viewer
-License:        LGPL-2.0-or-later AND MIT
+# Legal-Review-Notice: bundled NotoSans-Medium.ttf is SIL OFL-1.1
+# (share/fonts/OFL.txt); yudit.ttf uses the same MIT license as feh.
+License:        LGPL-2.0-or-later AND MIT AND OFL-1.1
 URL:            https://feh.finalrewind.org/
 Source:         https://feh.finalrewind.org/%{name}-%{version}.tar.bz2
 Source1:        https://feh.finalrewind.org/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source3:        jpegexiforient.c
-Source4:        https://git.finalrewind.org/zsh/plain/etc/completions/_feh
+Source4:        https://git.finalrewind.org/derf/dotfiles-zsh/raw/branch/master/etc/completions/_feh
 Source99:       feh-rpmlintrc
 # PATCH-FIX-OPENSUSE feh-makefile_optflags.patch https://github.com/derf/feh/issues/71 pascal.bleser@opensuse.org -- pass OPTFLAGS to make instead of hard-coded -O2 -g
 Patch1:         feh-makefile_optflags.patch
 # PATCH-FIX-UPSTREAM https://github.com/derf/feh/pull/337
 Patch6:         feh-makefile_app.patch
 Patch7:         feh-add_jxl_support.patch
-BuildRequires:  curl-devel
-BuildRequires:  libpng-devel
+BuildRequires:  gcc
+BuildRequires:  make
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(imlib2)
+BuildRequires:  pkgconfig(libcurl)
 BuildRequires:  pkgconfig(libexif)
+BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xt)
@@ -48,6 +52,12 @@ Requires(post): desktop-file-utils
 Requires(post): hicolor-icon-theme
 Requires(postun): desktop-file-utils
 Requires(postun): hicolor-icon-theme
+# perl-Test-Command is Factory-only; skip the suite on Leap 16.x
+%if 0%{?suse_version} >= 1690
+BuildRequires:  imlib2-loaders
+BuildRequires:  perl-Test-Harness
+BuildRequires:  perl(Test::Command)
+%endif
 
 %description
 feh is an X11 image viewer aimed mostly at console users. It does not
@@ -83,6 +93,11 @@ cp %{SOURCE3} .
 
 gcc %{optflags} -fwhole-program jpegexiforient.c -o jpegexiforient
 
+%if 0%{?suse_version} >= 1690
+%check
+%make_build test
+%endif
+
 %install
 %make_install \
     PREFIX="%{_prefix}" \
@@ -95,7 +110,7 @@ install -D -m0755 jpegexiforient %{buildroot}%{_bindir}/jpegexiforient
 install -Dm0644 %{SOURCE4} %{buildroot}/%{_datadir}/zsh/site-functions/_%{name}
 
 %files
-%license COPYING
+%license COPYING share/fonts/OFL.txt
 %doc AUTHORS ChangeLog README.md TODO
 %{_bindir}/feh
 %{_bindir}/jpegexiforient
