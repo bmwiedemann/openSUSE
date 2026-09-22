@@ -1,7 +1,7 @@
 #
 # spec file for package wget2
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,8 +17,8 @@
 
 
 Name:           wget2
-%define lname libwget4
-Version:        2.2.1
+%define lname libwget5
+Version:        2.3.0
 Release:        0
 Summary:        A Tool for Mirroring FTP and HTTP Servers
 License:        GPL-3.0-or-later AND LGPL-3.0-or-later
@@ -46,13 +46,11 @@ BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-Wget enables you to retrieve WWW documents or FTP files from a
-server. This can be done in script files or via the command line.
+Wget can retrieve WWW documents or FTP files from a server. This can
+be done in script files or via the command line.
 
-In many cases Wget2 downloads much faster than Wget1.x due to HTTP
-zlib compression, parallel connections and use of If-Modified-Since
-HTTP header. HTTP/2 has been implemented. Wget2 also consumes less
-system and user CPU cycles than Wget1.x.
+Wget2 can use HTTP/2, zlib compression, parallel connections, and use
+the If-Modified-Since HTTP header.
 
 %package -n %lname
 Summary:        A library to download and mirror FTP/HTTP sites
@@ -60,8 +58,8 @@ License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
 %description -n %lname
-Wget enables you to retrieve WWW documents or FTP files from a
-server. This can be done in script files or via the command line.
+Wget can retrieve WWW documents or FTP files from a server. This can
+be done in script files or via the command line.
 
 libwget which provides an interface to many useful functions used by
 Wget2.
@@ -75,8 +73,7 @@ Obsoletes:      libwget-devel < %version-%release
 Provides:       libwget-devel = %version-%release
 
 %description devel
-libwget which provides an interface to many useful functions used by
-Wget2.
+libwget which provides an interface to functions used by Wget2.
 
 This subpackage contains the header files for application wanting
 to build against libwget.
@@ -85,7 +82,6 @@ to build against libwget.
 %autosetup -p1
 
 %build
-#./bootstrap --no-git --gnulib-srcdir="$PWD/gnulib"
 %configure --disable-static
 %make_build
 

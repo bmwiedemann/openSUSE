@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 22 15:14:46 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3.0
+  * Fixed combo of --page-requisites --no-parent --level 0 /
+    --mirror
+  * --convert-links now processes CSS files too
+  * Added Content-Length: 0 to POST, PUT, PATCH, following RFC 9110
+  * Fixed combining --domains with --span-hosts
+  * Fixed --directory-prefix/-P to be wget1.x compatible
+  * File names are now truncated if too long
+  * Fixed URL unescaping to be Wget1 compatible
+  * Fixed https proxy authentication via CONNECT
+  * No longer escapes Location URLs
+  * No longer sending If-Modified-Since when resuming download
+  * Now prints headers without download via --spider -S
+  * Improved compatibility of --accept/--reject with wget1.x
+  * Filename from Content-Disposition are sanitized
+  * Use the Content-Disposition: basename as filename
+  * Only accepts secure cookies from HTTPS
+  * Now continues bulk downloads with -i after error
+  * Implemented 1xx response skipping for HTTP/2
+  * No longer fetches robots.txt with --no-robots and
+    --no-follow-sitemaps
+  * Implemented --progress=dot
+
+-------------------------------------------------------------------
 Wed Jan  7 08:03:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.2.1
