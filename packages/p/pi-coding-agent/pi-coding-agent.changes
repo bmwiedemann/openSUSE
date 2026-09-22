@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:49:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.87.0:
+  * Model context can be edited append-only without rewriting
+    history, and extensions get actionable turn_end and
+    agent_before_settle lifecycle boundaries
+  * New context_with_system extension event runs on the full
+    transcript including system messages
+  * Removed the shouldStopAfterTurn agent option; use finishTurn
+    and return an end action instead
+  * SessionManager is now canonical for AgentSession provider
+    context, and ContextEditEntry joins the SessionEntry union
+  * Fixed context handlers that filter or slice messages
+    dropping the prompt and tool declarations, leaving requests
+    without built-in tools
+  * /bug no longer uploads in offline mode; local zip exports
+    are kept
+  * Fixed text files beginning with GIF being misclassified as
+    images and omitted from read and CLI @file input
+  * Fixed unknown OpenAI-compatible Chat Completions endpoints
+    receiving strict tool schemas unless they advertise support
+  * Many more fixes; see the upstream release notes
+
+-------------------------------------------------------------------
 Mon Sep 21 07:11:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.86.1:

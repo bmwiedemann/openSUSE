@@ -206,4 +206,31 @@ Mon Sep  7 06:48:38 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1379414</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>66288f785863850ff80cbc7e05483a73</srcmd5>
+    <version>0.87.0</version>
+    <time>1790101824</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.87.0.
+
+Append-only model-context edits, a new context_with_system extension
+event, the removal of the shouldStopAfterTurn agent option in favour
+of finishTurn, and fixes for context handlers that dropped the prompt
+and tool declarations, for text files beginning with GIF being
+misclassified as images, and for unknown OpenAI-compatible endpoints
+receiving strict tool schemas.
+
+The vendored node_modules archive and package-lock.json are refreshed
+in lockstep: only the five @earendil-works siblings move 0.86.1 to
+0.87.0, with no dependency added, removed or changed major version,
+and the vendored licence union is unchanged.
+
+Upstream's per-model image resizing is deliberately not claimed: it
+runs entirely through photon, whose prebuilt WASM blob this package
+does not ship, so the path is inert here.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
+0 badness across 3 packages.</comment>
+    <requestid>1379699</requestid>
+  </revision>
 </revisionlist>
