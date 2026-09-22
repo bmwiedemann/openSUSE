@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.12:
+  * interrupt() takes a response_schema describing the value
+    expected on resume; a pydantic model, TypedDict or dataclass
+    also validates the resumed value and is what interrupt()
+    returns, while a plain JSON Schema dict is only surfaced
+  * Interrupt carries that schema, so a client can render a typed
+    input form for the resume value
+  * Subgraphs are detected by walking a node function's bytecode
+    instead of parsing its source, so nodes whose source cannot
+    be read are no longer skipped
+  * The on-demand v3 stream projections updates, custom,
+    checkpoints, debug and tasks are declared on the run stream
+    objects, and reading one whose transformer was not registered
+    raises an AttributeError naming the registered projections
+
+-------------------------------------------------------------------
 Tue Aug 18 03:01:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Avoid variations from --nocheck (boo#1227364)
