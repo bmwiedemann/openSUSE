@@ -19,7 +19,7 @@
 %define library_version %{version}
 %define library_soversion 1
 Name:           aws-c-common
-Version:        0.14.5
+Version:        1.0.0
 Release:        0
 Summary:        Core C99 package for AWS SDK for C
 License:        Apache-2.0
@@ -36,11 +36,12 @@ ExcludeArch:    s390x
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
 configuration, data structures, and error handling.
 
-%package -n lib%{name}%{library_soversion}
+%package -n lib%{name}%{library_soversion}_0
 Summary:        Core C99 package for AWS SDK for C
 Group:          System/Libraries
+Obsoletes:      lib%{name}1 < %{version}
 
-%description -n lib%{name}%{library_soversion}
+%description -n lib%{name}%{library_soversion}_0
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
 configuration, data structures, and error handling.
 
@@ -49,7 +50,7 @@ This package contains the dynamically linked library.
 %package devel
 Summary:        Development files for aws-c-common library
 Group:          Development/Libraries/C and C++
-Requires:       lib%{name}%{library_soversion} = %{version}
+Requires:       lib%{name}%{library_soversion}_0 = %{version}
 
 %description devel
 Core C99 package for AWS SDK for C. It includes cross-platform primitives,
@@ -72,18 +73,22 @@ This package contains the development files.
 %check
 %ctest
 
-%ldconfig_scriptlets -n lib%{name}%{library_soversion}
+%ldconfig_scriptlets -n lib%{name}%{library_soversion}_0
 
-%files -n lib%{name}%{library_soversion}
+%files -n lib%{name}%{library_soversion}_0
 %doc NOTICE README.md
 %license LICENSE
-%{_libdir}/*.so.%{library_soversion}
-%{_libdir}/*.so.%{library_version}
+%{_libdir}/lib%{name}.so.%{library_soversion}.0
+%{_libdir}/lib%{name}.so.%{library_version}
 
 %files devel
 %license LICENSE
 %{_libdir}/cmake/
-%{_libdir}/*.so
-%{_includedir}/*
+%{_libdir}/lib%{name}.so
+%dir %{_includedir}/aws
+%dir %{_includedir}/aws/common
+%dir %{_includedir}/aws/testing
+%{_includedir}/aws/common/*
+%{_includedir}/aws/testing/*
 
 %changelog

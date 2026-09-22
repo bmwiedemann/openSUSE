@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:19:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.0.0
+  * Clean up docs by @azkrishpy in (#1263)
+  * Suppress MSAN false positive by @sfod in (#1264)
+  * chore(release): add governance files by @azkrishpy in (#1267)
+- Add Obsoletes for previous shared library version
+- Prefer explicit path and filenames over wildcards in %files section
+
+-------------------------------------------------------------------
 Thu Aug 13 09:35:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.14.5
