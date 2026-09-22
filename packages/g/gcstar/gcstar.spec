@@ -16,19 +16,17 @@
 #
 
 
+%global _name   GCstar
 Name:           gcstar
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Application to manage collections
 License:        GPL-2.0-or-later
-URL:            https://www.gcstar.org/
-Source0:        https://gitlab.com/Kerenoc/GCstar/-/archive/v%{version}/GCstar-v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-
+URL:            https://gitlab.com/GCstar/GCstar
+Source0:        %{_name}-%{version}.tar.xz
 BuildRequires:  fdupes
 BuildRequires:  perl
 BuildRequires:  update-desktop-files
-BuildRequires:  perl(Cwd)
-BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Cwd)
 BuildRequires:  perl(Data::Dumper)
 BuildRequires:  perl(Digest::MD5)
@@ -38,7 +36,6 @@ BuildRequires:  perl(Exporter)
 BuildRequires:  perl(File::Basename)
 BuildRequires:  perl(File::Copy)
 BuildRequires:  perl(File::Find)
-BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Path)
 BuildRequires:  perl(File::Spec)
 BuildRequires:  perl(File::Temp)
@@ -57,7 +54,6 @@ BuildRequires:  perl(LWP::Simple)
 BuildRequires:  perl(List::Util)
 BuildRequires:  perl(Net::SMTP)
 BuildRequires:  perl(POSIX)
-BuildRequires:  perl(POSIX)
 BuildRequires:  perl(Storable)
 BuildRequires:  perl(Text::Wrap)
 BuildRequires:  perl(URI::Escape)
@@ -69,11 +65,7 @@ BuildRequires:  perl(threads)
 BuildRequires:  perl(threads::shared)
 BuildRequires:  typelib(GdkPixdata) = 2.0
 BuildRequires:  typelib(Gtk) = 3.0
-BuildArch:      noarch
-
 # Mandatory dependencies
-Requires:       perl(Cwd)
-Requires:       perl(Cwd)
 Requires:       perl(Cwd)
 Requires:       perl(Data::Dumper)
 Requires:       perl(Digest::MD5)
@@ -83,7 +75,6 @@ Requires:       perl(Exporter)
 Requires:       perl(File::Basename)
 Requires:       perl(File::Copy)
 Requires:       perl(File::Find)
-Requires:       perl(File::Path)
 Requires:       perl(File::Path)
 Requires:       perl(File::Spec)
 Requires:       perl(File::Temp)
@@ -102,7 +93,6 @@ Requires:       perl(LWP::Simple)
 Requires:       perl(List::Util)
 Requires:       perl(Net::SMTP)
 Requires:       perl(POSIX)
-Requires:       perl(POSIX)
 Requires:       perl(Storable)
 Requires:       perl(Text::Wrap)
 Requires:       perl(URI::Escape)
@@ -112,7 +102,6 @@ Requires:       perl(XML::Simple)
 Requires:       perl(filetest)
 Requires:       perl(threads)
 Requires:       perl(threads::shared)
-
 # Optional dependencies (It's probably a good idea to figure out what can be
 #                        split this between Recommends and Suggests)
 Recommends:     liberation-fonts
@@ -136,6 +125,7 @@ Recommends:     perl(MP3::Tag)
 Recommends:     perl(Net::FreeDB)
 Recommends:     perl(Ogg::Vorbis::Header::PurePerl)
 Recommends:     perl(Time::Piece)
+BuildArch:      noarch
 
 %description
 GCstar is a free open source application for managing collections of
@@ -147,7 +137,7 @@ search and filter your collection by many criteria.
 Documentation can be found at https://gcstar.gitlab.io/gcstar_docs/en/
 
 %prep
-%autosetup -n GCstar-v%{version}
+%autosetup -n GCstar-%{version}
 
 %build
 # Nothing to build here.
@@ -184,6 +174,7 @@ mkdir -p %{buildroot}%{_datadir}/applications
 %fdupes %{buildroot}%{_datadir}
 
 %files
+%doc LICENSE gcstar/CHANGELOG
 %{_bindir}/gcstar
 %{_prefix}/lib/gcstar/
 %{_datadir}/applications/gcstar.desktop

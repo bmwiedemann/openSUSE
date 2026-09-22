@@ -146,4 +146,16 @@
     <comment></comment>
     <requestid>1093065</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>144e9303f7af11fd84dea97895ec2ff0</srcmd5>
+    <version>1.8.1</version>
+    <time>1790085202</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.1:
+  + Release to consolidate multiple modifications to GCstar and its
+    plugins. No breaking changes since 1.8.0.
+  + For more details, see the packaged CHANGELOG.
+- convert package to be _service managed</comment>
+    <requestid>1379634</requestid>
+  </revision>
 </revisionlist>
