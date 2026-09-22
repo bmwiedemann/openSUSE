@@ -21,9 +21,9 @@
 
 %define lname	libfshfs1
 Name:           libfshfs
-Version:        20260826
+Version:        20260922
 Release:        0
-Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
+Summary:        Library and tools for reading Mac OS Hierarchical File Systems
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
 Group:          Productivity/File utilities
 URL:            https://github.com/libyal/libfshfs
@@ -57,30 +57,11 @@ BuildRequires:  pkgconfig(zlib)
 # Various notes: https://en.opensuse.org/libyal
 
 %description
-Read-only supported HFS formats:
-
-* HFS+, Mac OS 10.3 and later (Unicode 3.2 case-insensitive)
-* HFSX, Mac OS 10.3 and later (Unicode 3.2 case-sensitive)
-
-Unsupported HFS formats:
-
-* (traditional) HFS
-* HFS+, Mac OS 8.1 through 10.2 (Unicode 2.1 case-insensitive)
-* HFSX, Mac OS 8.1 through 10.2 (Unicode 2.1 case-sensitive)
-
-Supported HFS format features:
-
-* ZLIB (DEFLATE) compression
-* LZVN compression
-* extended attributes
-
-Unsupported HFS format features:
-
-* LZFSE compression, compression methods 11 and 12
-* "uncompressed", compression methods 1, 9 and 10
+A library and tools for read access to Mac OS Hierarchical File
+Systems.
 
 %package -n %lname
-Summary:        Library and tools to access the Mac OS Hierarchical File System (HFS)
+Summary:        Library for reading Mac OS Hierarchical File Systems (HFS)
 License:        LGPL-3.0-or-later
 Group:          System/Libraries
 
@@ -108,7 +89,7 @@ Unsupported HFS format features:
 * "uncompressed", compression methods 1, 9 and 10
 
 %package tools
-Summary:        Tools to access the Mac OS Hierarchical File System (HFS)
+Summary:        Tools for reading Mac OS Hierarchical File Systems (HFS)
 License:        LGPL-3.0-or-later
 Group:          Productivity/File utilities
 Requires:       %lname = %version
