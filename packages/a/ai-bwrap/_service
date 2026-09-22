@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/didvc/ai-bwrap.git</param>
+    <param name="scm">git</param>
+    <param name="revision">4bdb112c4e7121e25eeaa0f475b009be0d3fb37a</param>
+    <param name="versionformat">0.1.1~git%cd.%h</param>
+    <param name="exclude">.git*</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

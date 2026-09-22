@@ -1,0 +1,24 @@
+-------------------------------------------------------------------
+Mon Sep 21 08:54:12 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- updated to latest git-tree release which includes the kernel 
+  overlayfs and global config
+- removed enable-global-configuration.patch and
+  use-overlayfs-for-transparent-writing.patch as incoperated upstream
+
+-------------------------------------------------------------------
+Wed Sep 16 17:01:58 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- added use-overlayfs-for-transparent-writing.patch in order to add
+  the --overlay use-overlayfs-for-transparent-writing
+- added enable-global-configuration.patch and config.sh to have a
+  system wide condifuration and openSUSE/SUSE specfic TLS store
+
+-------------------------------------------------------------------
+Fri Sep 11 15:23:04 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- New package ai-bwrap (unversioned):
+  * Run AI coding agents (Claude Code, opencode, Grok, or a plain shell)
+    inside a bubblewrap sandbox
+
+
