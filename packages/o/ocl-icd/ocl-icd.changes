@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:05:03 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrShare-twopaths-2.3.4-v2.patch
+  * finally fixed previous n_UsrShare-twopaths.patch with
+    the help of chatgpt ...
+    --> https://chatgpt.com/share/6ab280ef-87c0-83eb-904f-951915b5213f
+  * supersedes non-working and non-applied n_UsrShare-twopaths.patch
+  * supersedes also n_UsrShare.patch
+
+-------------------------------------------------------------------
 Sat Sep 20 08:13:41 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.4

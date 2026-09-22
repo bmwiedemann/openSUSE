@@ -1,7 +1,7 @@
 #
 # spec file for package ocl-icd
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,11 +25,7 @@ Group:          System/Libraries
 URL:            https://github.com/OCL-dev/ocl-icd
 Source:         https://github.com/OCL-dev/ocl-icd/archive/v%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
-# PATCH-FEATURE-OPENSUSE n_UsrShare.patch boo#1173005, comment#8
-Patch0:         n_UsrShare.patch
-%ifarch dummy
-Patch1:         n_UsrShare-twopaths.patch
-%endif
+Patch0:         n_UsrShare-twopaths-2.3.4-v2.patch
 BuildRequires:  libtool
 BuildRequires:  opencl-headers >= 2.2
 BuildRequires:  pkgconfig
