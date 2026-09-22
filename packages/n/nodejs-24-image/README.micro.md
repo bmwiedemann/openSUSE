@@ -1,4 +1,4 @@
-# Node.js 24 development container image
+# Node.js 24 micro runtime container image
 
 ![Redistributable](https://img.shields.io/badge/Redistributable-Yes-green)
 
