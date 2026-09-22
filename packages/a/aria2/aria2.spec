@@ -26,6 +26,8 @@ URL:            https://aria2.github.io
 Source0:        https://github.com/aria2/aria2/releases/download/release-%{version}/%{name}-%{version}.tar.xz
 #PATCH-FIX-UPSTREAM bsc#1257934 Fix build with Nettle 4.0
 Patch0:         aria2-Fix-build-with-nette4.patch
+#PATCH-FIX-UPSTREAM CVE-2026-75421 boo#1276754 https://github.com/aria2/aria2/pull/2376
+Patch1:         aria2-Fix-stack-buffer-underflow-in-IOFile-getLine.patch
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cppunit)

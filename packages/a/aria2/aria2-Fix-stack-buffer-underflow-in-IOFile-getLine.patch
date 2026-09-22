@@ -1,0 +1,22 @@
+From cc516929944474e9c992d6d9bcd8ed217e04fb5f Mon Sep 17 00:00:00 2001
+From: Zhai Liangliang <zhailiangliang@loongson.cn>
+Date: Fri, 7 Aug 2026 17:05:07 +0800
+Subject: [PATCH] stack-buffer-underflow in function aria2::IOFile::getLine
+
+---
+ src/IOFile.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/IOFile.cc b/src/IOFile.cc
+index 3302dda2c5..edc6cafdb2 100644
+--- a/src/IOFile.cc
++++ b/src/IOFile.cc
+@@ -87,7 +87,7 @@ std::string IOFile::getLine()
+   while (gets(buf.data(), buf.size())) {
+     size_t len = strlen(buf.data());
+     bool lineBreak = false;
+-    if (buf[len - 1] == '\n') {
++    if (len > 0 && buf[len - 1] == '\n') {
+       --len;
+       lineBreak = true;
+     }

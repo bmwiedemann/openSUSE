@@ -810,4 +810,49 @@ SPDX format for this license - which has an openssl exception (forwarded request
     <comment></comment>
     <requestid>1365619</requestid>
   </revision>
+  <revision rev="87" vrev="3">
+    <srcmd5>ac0a4aed1622eb675903700a54757b15</srcmd5>
+    <version>1.37.0</version>
+    <time>1790101854</time>
+    <user>dimstar_suse</user>
+    <comment>Fix CVE-2026-75421 (boo#1276754): stack buffer underflow in
+IOFile::getLine().
+
+src/IOFile.cc reads buf[len - 1] after strlen(), with no len &gt; 0 guard.
+A line whose first byte is NUL gives len == 0 and reads one byte below a
+4 KiB stack array. Both NsCookieParser and ServerStatMan reach getLine(),
+so --load-cookies and --server-stat-if are the reachable paths.
+
+The patch is upstream PR #2376, taken as the raw commit
+(cc516929944474e9c992d6d9bcd8ed217e04fb5f) and verified byte-identical to
+what GitHub serves. One line:
+
+    -    if (buf[len - 1] == '\n') {
+    +    if (len &gt; 0 &amp;&amp; buf[len - 1] == '\n') {
+
+Note the PR is still OPEN upstream after about six weeks, so the spec
+comment points at the PR rather than a merge commit and the patch cannot
+be dropped on a fixed-upstream basis yet. No other distribution carries
+it. 1.37.0 is still the latest release, so there is nothing to bump to.
+
+Verified rather than assumed: an ASAN harness built from the shipped
+function body reports &quot;stack-buffer-overflow ... READ of size 1 ...
+underflows this variable&quot; on a NUL-leading line as shipped, and exits
+clean with the guard. The patched aria2c then parsed the same input
+through both --load-cookies and --server-stat-if without crashing.
+
+Worth flagging separately, and deliberately NOT fixed here because
+upstream's patch does not touch it: the sibling IOFile::getsn() has the
+same missing guard and writes rather than reads out of bounds
+(ptr[len - 1] = '\0'). It is unreachable in practice - no shipped aria2
+code calls it, only the test suite, and IOFile.h is not installed - but
+the symbol is exported from libaria2.so.0. It is owed an upstream report.
+
+Built and checked locally on aarch64: rpmlint 5 packages, 0 errors,
+0 badness. The three warnings are pre-existing and unrelated. The test
+suite was run out of band against the patched tree - 986 of 988 pass
+offline, the two failures being LPD multicast tests that need a network;
+%check stays disabled as it ships.</comment>
+    <requestid>1379734</requestid>
+  </revision>
 </revisionlist>
