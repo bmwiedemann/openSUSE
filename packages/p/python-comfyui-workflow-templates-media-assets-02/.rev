@@ -1,0 +1,45 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6984bf18aa4775eb0bd170b5d7ae1fd0</srcmd5>
+    <version>0.1.4</version>
+    <time>1790101863</time>
+    <user>dimstar_suse</user>
+    <comment>New package: comfyui-workflow-templates-media-assets-02 0.1.4.
+
+This is the sixth media bundle of the ComfyUI workflow-templates set, which
+openSUSE already carries as -core, -json, -media-api, -media-image,
+-media-other, -media-video and -media-assets-01. The spec is the
+media-assets-01 spec with the name and version changed; the only other
+difference is one extra sentence in the Legal-Review-Notice recording that
+this dist's own PKG-INFO declares License-Expression: MIT.
+
+Contents: 17 webp template previews plus five provider logos. Every file was
+checked by magic number rather than extension, and each image container was
+parsed to confirm zero trailing bytes, so there is no executable, archive or
+appended payload.
+
+Why now, and what requires it: nothing yet. It is a prerequisite for the
+pending python-comfyui-workflow-templates 0.11.68 bump, which lists
+comfyui-workflow-templates-media-assets-02==0.1.4 as an unconditional
+dependency. Both that package and this one currently sit at the older
+version, so this leaf lands first and is unreferenced until the meta bump
+follows.
+
+Two things a reviewer may ask, answered up front:
+
+templates/logo/ carries third-party provider marks (Meta, HeyGen, Fish
+Audio, Pruna, sync.so) under upstream's MIT grant. Four of the five are
+byte-identical to files already shipped in Factory by media-assets-01, so
+this adds one new logo to an accepted precedent rather than new legal
+surface.
+
+Those same four logos are therefore duplicated across the two subpackages,
+about 67 KB in total. That is upstream's own split of the asset set, and the
+install prefixes differ, so there is no file conflict between them.
+
+Built and checked locally on aarch64: rpmlint 3 packages, 0 errors, 0
+warnings, 0 badness; %check imports the module under both python3.13 and
+python3.14.</comment>
+    <requestid>1379731</requestid>
+  </revision>
+</revisionlist>

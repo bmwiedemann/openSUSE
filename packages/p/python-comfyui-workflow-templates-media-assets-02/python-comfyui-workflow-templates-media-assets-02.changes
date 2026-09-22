@@ -1,0 +1,11 @@
+-------------------------------------------------------------------
+Tue Sep 22 17:18:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package (version 0.1.4): second media assets bundle for
+  ComfyUI workflow templates:
+  * 17 webp preview images for the Tripo P2, Pruna video, Tencent
+    HY image 3.5, Qwen Image 2.1 and MoGe3 templates
+  * Five provider logos (webp, png and jpg)
+  * Pulled in unconditionally by comfyui-workflow-templates
+    0.11.68
+
