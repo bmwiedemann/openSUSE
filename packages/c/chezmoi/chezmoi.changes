@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 21 14:42:12 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.72.2:
+  - Features
+    * feat: Allow private_ attribute to apply to external_ dirs
+    * feat: Ignore common localhost.localdomain values when determining hostname
+
+-------------------------------------------------------------------
 Fri Sep  4 16:46:34 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.72.1:

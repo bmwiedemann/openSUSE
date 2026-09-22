@@ -1272,4 +1272,16 @@
 </comment>
     <requestid>1375830</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>63c73deefc8349c5c9911587ba347a99</srcmd5>
+    <version>2.72.2</version>
+    <time>1790085035</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.72.2:
+  - Features
+    * feat: Allow private_ attribute to apply to external_ dirs
+    * feat: Ignore common localhost.localdomain values when determining hostname
+</comment>
+    <requestid>1379490</requestid>
+  </revision>
 </revisionlist>
