@@ -1,0 +1,3 @@
+u    shairport-sync  -      "shairport Sync Daemon"   /run/shairport-sync
+g    shairport-sync
+m    shairport-sync      audio

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 18 13:31:48 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.5.2
+  * This update improves compatibility with Version 27 of Apple software,
+    e.g. macOS 27, iOS 27, etc
+- Use sysuser to create daemon user instead of script in %pre
+
+-------------------------------------------------------------------
 Tue May  6 08:43:38 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Replace obsolete gnome-common with libtool BuildRequires.
