@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:39:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.33.1:
+  * build(deps): bump github.com/k0sproject/rig/v2 from 2.2.0 to
+    2.2.1 (#1194)
+  * build(deps): bump github.com/creasty/defaults from 1.10.0 to
+    1.11.0 (#1192)
+  * chore(deps): reduce rig dependabot cooldown to 0 days and
+    others to 2 (#1193)
+  * fix(phase): create temp files as root when they are written as
+    root (#1187)
+  * build(deps): bump github.com/creasty/defaults from 1.9.0 to
+    1.10.0 (#1182)
+  * Add tests for KubeNodeReadyFunc and K0sDynamicConfigReadyFunc
+    (#1158)
+  * build(deps): bump github.com/creasty/defaults from 1.8.0 to
+    1.9.0 (#1178)
+  * Dedupe initLogging and initSilentLogging (#1153)
+  * Add test for GetResources not-found error path (#1157)
+
+-------------------------------------------------------------------
 Fri Sep 18 05:07:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.33.0:
