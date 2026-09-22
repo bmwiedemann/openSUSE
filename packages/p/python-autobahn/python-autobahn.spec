@@ -141,6 +141,7 @@ export USE_TWISTED=1
         autobahn.wamp.test \
         autobahn.nvx.test
     rm -r _trial_temp
+    rm -f twisted/plugins/dropin.cache
     popd
 }
 

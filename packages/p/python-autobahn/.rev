@@ -446,4 +446,13 @@
     pure-Python (py3-none-any) wheel.</comment>
     <requestid>1377805</requestid>
   </revision>
+  <revision rev="33" vrev="2">
+    <srcmd5>95d62643fdcd0ecf7aa1312188ff6154</srcmd5>
+    <version>26.7.1</version>
+    <time>1790085152</time>
+    <user>anag_factory</user>
+    <comment>- Do not ship twisted/plugins/dropin.cache to make package build reproducible
+- Add CVE/bug reference</comment>
+    <requestid>1379569</requestid>
+  </revision>
 </revisionlist>

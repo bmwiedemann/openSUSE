@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 21 04:46:55 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Do not ship twisted/plugins/dropin.cache to make package build reproducible
+
+-------------------------------------------------------------------
 Mon Sep 14 05:53:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 26.7.1:
@@ -11,7 +16,7 @@ Mon Sep 14 05:53:56 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
     truncating an over-limit message and raising a zlib error instead of
     cleanly rejecting it: the bounded decompress(..., max_length) left the
     remaining input in unconsumed_tail undrained, so the message was
-    corrupted rather than reported.
+    corrupted rather than reported. (CVE-2026-77528, bsc#1281477)
   * Make bounded decompression backend-agnostic: decompress_message_data()
     gains an optional max_output_len argument and every permessage-compress
     backend now honours it.
