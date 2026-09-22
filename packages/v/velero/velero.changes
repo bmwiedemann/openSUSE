@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:38:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.3:
+  * Avoid duplicated InitContainer names generated in velero
+    install CLI. (#10396)
+  * Add support for matching PVCs by volume mode and access mode in
+    resource policies, and introduce the
+    --global-backup-volume-policies-configmap server flag to merge
+    cluster-wide backup volume policies into every backup. (#10012)
+  * Add operation context to user-facing error messages in CR
+    statuses and CLI output (#10474)
+  * Dependencies
+    - Bump Golang and dependencies versions. (#10489)
+    - Bump base images and Go version to fix CVEs
+    - Bump dependencies in restic patch to fix CVEs
+    - Bump google.golang.org/grpc to v1.82.1 to fix CVE
+    - chore(deps): bump golang.org/x libs to fix CVEs
+      (release-1.18)
+
+-------------------------------------------------------------------
 Sun Jun 28 07:10:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.2:
