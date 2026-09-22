@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:39:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.12:
+  * Document 71 more nodes, 947 to 1018, including the Bria and
+    block-sparse-attention families
+  * Refresh the existing node documentation and its translations
+
+-------------------------------------------------------------------
 Sat Aug 29 07:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.11:

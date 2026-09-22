@@ -44,4 +44,27 @@ V3, FishAudio, Flux video upscale); 431 existing en.md refreshed and
 translations regenerated for all 12 locales.</comment>
     <requestid>1374578</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bc480ba58ccf0bdcf7952c8c922d8800</srcmd5>
+    <version>0.5.12</version>
+    <time>1790112304</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.12.
+
+Documented-node directories grow from 947 to 1018: 71 added, none
+removed, plus 4805 pre-existing files revised across English and 11
+locales. The added set includes the Bria, Tripo and Pixverse V6
+families.
+
+Independent of the rest of the comfyui train and can land at any point.
+Factory's comfyui 0.36.0 requires &gt;= 0.5.11, which 0.5.12 satisfies, and
+the payload is pure data read through importlib.resources, so the
+addition is purely additive.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 badness. The
+two python-doc-in-package warnings are structural to a package whose
+entire payload is documentation. Verified on the artefact: rpm -qlp
+counts exactly 1018 node directories, and no file ships executable.</comment>
+    <requestid>1379748</requestid>
+  </revision>
 </revisionlist>
