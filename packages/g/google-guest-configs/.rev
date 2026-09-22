@@ -549,4 +549,12 @@
   * nic-naming: improve handling of BM IRDMA devices (forwarded request 1378984 from glaubitz)</comment>
     <requestid>1379220</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>29c7bece9b59ac2304566fb36a08e385</srcmd5>
+    <version>20260918.01</version>
+    <time>1790085221</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260918.01 (bsc#1281946) (forwarded request 1379633 from glaubitz)</comment>
+    <requestid>1379664</requestid>
+  </revision>
 </revisionlist>

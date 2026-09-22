@@ -1,7 +1,7 @@
 -------------------------------------------------------------------
 Sat Sep 19 09:01:14 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
-- Update to version 20260918.01
+- Update to version 20260918.01 (bsc#1281946)
   * Update SR-IOV udev rule for idpf network devices.
 - from version 20260916.00
   * nic-naming: Fix IDPF VF device rename
