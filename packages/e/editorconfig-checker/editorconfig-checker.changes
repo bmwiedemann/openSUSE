@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:29:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.2:
+  * Bug Fixes
+    - encoding: detect 7-bit content with control characters as
+      ASCII (#629) (289dc53), closes #627
+    - keep the file's existing line ending when adding a final
+      newline (#622) (cea460f)
+- Update to version 4.0.1:
+  * Bug Fixes
+    - bump golang.org/x/mod to v0.40.0 (3d2215c)
+    - ci: build docker images for all our platforms (a34a6ee)
+    - update pre-commit-config to use v4 of our repo (fcd68bf)
+- Update to version 4.0.0:
+  * BREAKING CHANGES
+    - internalize our packages (#619)
+      It will no longer be possible to import our internal packages
+      in your code. If you rely on one of our packages please let
+      us know by opening an issue.
+    - migrate to goreleaser dockers_v2. (#617)
+      This means we stop publishing the arch-suffixed images like
+      3.11.2-amd64 or 3.11.2-arm64v8. All these architectures are
+      still provided in the multiarch tag 3.11.2.
+    - rename ec to editorconfig-checker (#371)
+    - .ecrc is no longer discovered as a default config file name.
+      Rename .ecrc to .editorconfig-checker.json, or pass the file
+      explicitly with --config .ecrc.
+    - Docker image tags no longer carry a leading v. Pull 3.12.0,
+      3.12 and 3 instead of v3.12.0, v3.12 and v3
+    - the deprecated SpacesAftertabs configuration key has been
+      removed, use SpacesAfterTabs instead.
+    - stop accepting latin1 files as utf-8. (#598)
+      Previously charset=utf-8 was satisfied with files encoded as
+      latin1. While most of the latin1 range is identical to utf-8,
+      not all is. If you request utf-8 but have latin1 encoded
+      files expect these files to be reported as violations now.
+  * Features
+    - add safe EditorConfig autofixes (#612) (2f4962c)
+    - auto-detect github-actions output format in CI (#606)
+      (271c500)
+    - remove support for the deprecated .ecrc config file name
+      (#603) (2062751)
+  * Bug Fixes
+    - add missing space in wrong indentation type error message
+      (#610) (e0f1b56)
+    - allow builds with Go 1.26 (#615) (343018a)
+    - consolidate error blocks that are interleaved with other
+      errors (#601) (76b6313)
+    - correct end line in codeclimate formatter output (#602)
+      (2476e7c)
+    - correct the -disable-end-of-line flag description (#600)
+      (1615efc)
+    - drop a path whose content type could not be read (#599)
+      (46995b1)
+    - handle unset for end_of_line and insert_final_newline (#594)
+      (123ba31), closes #580
+    - remove ambiguity between potential folder and file matches
+      (#611) (4c4f7d4)
+    - remove leading v from Docker image tags (#607) (3827a6c)
+    - remove retired goreportcard badge (2a9dd32)
+    - stop accepting latin1 files as utf-8. (#598)
+      Previously charset=utf-8 was satisfied with files encoded as
+      latin1.  While most of the latin1 range is identical to
+      utf-8, not all is. If you request utf-8 but have latin1
+      encoded files expect these files to be reported as violations
+      now. (4d84a77)
+    - typo in config, SpacesAftertabs => SpacesAfterTabs (#604)
+      (bbc3f03)
+  * Miscellaneous Chores
+    - internalize our packages (#619)
+      It will no longer be possible to import our internal packages
+      in your code. If you rely on one of our packages please let
+      us know by opening an issue. (d42bcb7)
+    - rename ec to editorconfig-checker (#371) (0e3b27f)
+  * Continuous Integration
+    - migrate to goreleaser dockers_v2. (#617)
+      This means we stop publishing the arch-suffixed images like
+      3.11.2-amd64 or 3.11.2-arm64v8. All these architectures are
+      still provided in the multiarch tag 3.11.2. (d4c1442)
+
+-------------------------------------------------------------------
 Fri Sep 18 04:46:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.11.3:

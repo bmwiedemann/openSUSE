@@ -16,10 +16,8 @@
 #
 
 
-%define executable_name ec
-
 Name:           editorconfig-checker
-Version:        3.11.3
+Version:        4.0.2
 Release:        0
 Summary:        Tool to verify that your files are in harmony with your .editorconfig
 License:        MIT
@@ -49,17 +47,17 @@ go build \
    -mod=vendor \
    -buildmode=pie \
    -ldflags="-X main.version=v%{version}" \
-   -o bin/%{executable_name} ./cmd/%{name}
+   -o bin/%{name} ./cmd/%{name}
 
 %install
-install -D -m 0755 bin/%{executable_name} %{buildroot}/%{_bindir}/%{executable_name}
+install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 
 %check
-%{buildroot}/%{_bindir}/%{executable_name} -version | grep v%{version}
+%{buildroot}/%{_bindir}/%{name} -version | grep v%{version}
 
 %files
 %doc README.md
 %license LICENSE
-%{_bindir}/%{executable_name}
+%{_bindir}/%{name}
 
 %changelog
