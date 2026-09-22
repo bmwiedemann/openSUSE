@@ -17,7 +17,7 @@
 
 
 Name:           agama-yast
-Version:        24
+Version:        24.devel79.19b44f04f
 Release:        0
 %define mod_name agama-yast
 %define mod_full_name %{mod_name}-%{version}
