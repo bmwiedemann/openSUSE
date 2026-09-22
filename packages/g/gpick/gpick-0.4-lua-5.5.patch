@@ -1,0 +1,15 @@
+diff -up gpick-274745c23398554acc3cf40fefb2ce5ce3c21197/CMakeLists.txt.lua55 gpick-274745c23398554acc3cf40fefb2ce5ce3c21197/CMakeLists.txt
+--- gpick-274745c23398554acc3cf40fefb2ce5ce3c21197/CMakeLists.txt.lua55	2026-03-02 18:55:35.060294420 -0500
++++ gpick-274745c23398554acc3cf40fefb2ce5ce3c21197/CMakeLists.txt	2026-03-02 18:56:37.684031999 -0500
+@@ -46,9 +46,9 @@ if (PkgConfig_FOUND)
+ 		unset(Lua_FOUND CACHE)
+ 	endif()
+ 	if (NOT LUA_TYPE STREQUAL "C")
+-		pkg_search_module(Lua REQUIRED lua5.4-c++>=5.4 lua5-c++>=5.4 lua-c++>=5.4 lua5.3-c++>=5.3 lua5-c++>=5.3 lua-c++>=5.3 lua5.2-c++>=5.2 lua5-c++>=5.2 lua-c++>=5.2)
++		pkg_search_module(Lua REQUIRED lua5.5-c++>=5.5 lua5-c++>=5.5 lua-c++>=5.5 lua5.4-c++>=5.4 lua5-c++>=5.4 lua-c++>=5.4 lua5.3-c++>=5.3 lua5-c++>=5.3 lua-c++>=5.3 lua5.2-c++>=5.2 lua5-c++>=5.2 lua-c++>=5.2)
+ 	else()
+-		pkg_search_module(Lua REQUIRED lua5.4>=5.4 lua5>=5.4 lua>=5.4 lua5.3>=5.3 lua5>=5.3 lua>=5.3 lua5.2>=5.2 lua5>=5.2 lua>=5.2)
++		pkg_search_module(Lua REQUIRED lua5.5>=5.5 lua5>=5.5 lua>=5.5 lua5.4>=5.4 lua5>=5.4 lua>=5.4 lua5.3>=5.3 lua5>=5.3 lua>=5.3 lua5.2>=5.2 lua5>=5.2 lua>=5.2)
+ 	endif()
+ 	set(CURRENT_LUA_TYPE ${LUA_TYPE} CACHE INTERNAL "")
+ 	pkg_search_module(Expat REQUIRED expat>=1.0)

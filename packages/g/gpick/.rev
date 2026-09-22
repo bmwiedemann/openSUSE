@@ -155,4 +155,40 @@ summarize licenses - bulk are BSD-3-Clause (forwarded request 137821 from dimsta
     <comment></comment>
     <requestid>1308165</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>b5071c841769579bf722c65e3b16bbd8</srcmd5>
+    <version>0.4</version>
+    <time>1790085219</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.4:
+  + Bug Fixes: Fix broken color name editing.
+  + Features:
+    - Add Oklab and Oklch color space support
+    - Add background color picker tool
+    - Add edit dialog for multiple selected colors
+    - Add equalize tool for palette colors
+    - Add name input to add/edit dialog
+    - Add option to use current palette in closest colors tool
+    - Add pie chart layouts
+    - Add screenshot button to palette from image tool
+    - Add temporary palette window support
+    - Allow search in palette by partial color code or name
+    - Save/restore palette column widths
+    - Update display filters while configuring
+- Drop patches merged upstream:
+  + fix-boost-184.patch
+  + fix-version-check.patch
+  + import-missing-scons.patch
+- Drop no longer needed patches:
+  + revert-cpp-lua.patch
+  + gpick-boost-without-systemd.patch
+- Add patches:
+  + gpick-0.4-crash-on-start.patch: Fix crash on startup when
+    settings are empty
+  + gpick-0.4-lua-5.5.patch: Add support for lua 5.5
+- Drop obsolete update-desktop-files BuildRequires and conditional
+  post(un) handling for older versions of openSUSE.
+- Drop COPYRIGHT as source, tarball contains a proper license file.</comment>
+    <requestid>1379657</requestid>
+  </revision>
 </revisionlist>

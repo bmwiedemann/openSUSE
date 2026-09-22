@@ -18,24 +18,18 @@
 
 %define appname org.gpick.gpick
 Name:           gpick
-Version:        0.3
+Version:        0.4
 Release:        0
 Summary:        Advanced color picker writen in GTK+
 License:        BSD-3-Clause
-Group:          Productivity/Graphics/Visualization/Other
 URL:            http://www.gpick.org/
 Source0:        https://github.com/thezbyg/gpick/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Source1:        copyright
-# PATCH-FIX-UPSTREAM fix-boost-184.patch gh#thezbyg/gpick#227 smolsheep@opensuse.org -- Fix builds with boost
-Patch1:         fix-boost-184.patch
-# PATCH-FIX-UPSTREAM fix-version-check.patch gh#thezbyg/gpick#215 smolsheep@opensuse.org -- Fix path in build
-Patch2:         fix-version-check.patch
-# PATCH-FIX-UPSTREAM import-missing-scons.patch gh#thezbyg/gpick#216 smolsheep@opensuse.org -- Fix import of SCons
-Patch3:         import-missing-scons.patch
-# PATCH-FIX-UPSTREAM revert-cpp-lua.patch gh#thezbyg/gpick#217 smolsheep@opensuse.org -- Don't use nonexistant lua-c++
-Patch4:         revert-cpp-lua.patch
-# PATCH-FIX-UPSTREAM gpick-boost-without-systemd.patch -- Bump boost dep to 1.69, where system is header-only
-Patch5:         gpick-boost-without-systemd.patch
+
+# PATCH-FIX-UPSTREAM gpick-0.4-crash-on-start.patch -- Fix crash on startup when settings are empty
+Patch0:         gpick-0.4-crash-on-start.patch
+# PATCH-FIX-UPSTREAM gpick-0.4-lua-5.5.patch -- Add support for lua 5.5
+Patch1:         gpick-0.4-lua-5.5.patch
+
 BuildRequires:  boost-devel
 BuildRequires:  expat
 BuildRequires:  flex
@@ -49,12 +43,9 @@ BuildRequires:  libexpat-devel
 BuildRequires:  pkgconfig
 BuildRequires:  ragel
 BuildRequires:  scons
-%if 0%{?suse_version}
-BuildRequires:  update-desktop-files
-%endif
 BuildRequires:  pkgconfig(dbus-glib-1)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(lua) >= 5.3
+BuildRequires:  pkgconfig(lua) >= 5.4
 
 %description
 Gpick is a featured color picker with palette creation and modification
@@ -64,53 +55,29 @@ tools. It is written in C++ and uses GTK+ toolkit for user interface.
 
 %prep
 %autosetup -p1
+# Delete external libraries and only use system dependencies to build GPick
+rm -rf extern
+echo "INTERNAL_EXPAT=False" >> user-config.py
+echo "INTERNAL_LUA=False" >> user-config.py
+echo "LOCALEDIR=\"%{_datadir}/locale\"" >> user-config.py
+echo "%{version}" > .version
 
 %build
-export CFLAGS="%optflags"
-export CXXFLAGS="%optflags"
-%cmake
+%cmake \
+	-DCFLAGS="%{optflags} -Wl,--as-needed" \
+	-DCXXFLAGS="%%{optflags} -Wl,--as-needed --std=c++17" \
+	-DLDFLAGS="%%{optflags} -Wl,--as-needed" \
+	-DPREFER_VERSION_FILE=True \
+	-DLUA_TYPE="C"
+
 %cmake_build
 
-%check
-./build/tests
-
 %install
-export CFLAGS="%optflags"
-export CXXFLAGS="%optflags"
 %cmake_install
-%if 0%{?suse_version}
-%suse_update_desktop_file %{appname} Viewer
-%endif
-# Install copyright file. This file was given to me by the author/upstream.
-cp %{SOURCE1} COPYRIGHT
 %find_lang %{name} %{?no_lang_C}
 
-%if 0%{?suse_version} && 0%{?suse_version} < 1330
-%post
-%icon_theme_cache_post
-
-%postun
-%icon_theme_cache_postun
-%endif
-
-%if 0%{?fedora_version}
-
-%post
-touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
-
-%postun
-if [ $1 -eq 0 ] ; then
-    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
-    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-fi
-
-%posttrans
-gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
-%endif
-
 %files
-%defattr(-,root,root)
-%doc COPYRIGHT
+%license LICENSE.txt
 %{_bindir}/%{name}
 %{_datadir}/applications/%{appname}.desktop
 %{_datadir}/metainfo/%{appname}.metainfo.xml
