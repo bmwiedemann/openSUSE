@@ -1348,4 +1348,12 @@ changes the CVE reference from the (what was previously the helm bug and is now 
     in the crypto/ssh library</comment>
     <requestid>1378874</requestid>
   </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>edb0803fb0e65db6fb843b5636e75f62</srcmd5>
+    <version>4.3.0</version>
+    <time>1790085046</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0 (bsc#1281112, CVE-2026-85732):</comment>
+    <requestid>1379518</requestid>
+  </revision>
 </revisionlist>
