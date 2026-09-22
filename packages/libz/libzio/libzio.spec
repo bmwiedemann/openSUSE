@@ -18,7 +18,7 @@
 
 Name:           libzio
 %define lname   libzio1
-Version:        1.15
+Version:        1.17
 Release:        0
 Summary:        A Library for Accessing Compressed Text Files
 License:        GPL-2.0-or-later
@@ -30,6 +30,8 @@ BuildRequires:  bzip2
 BuildRequires:  gzip
 BuildRequires:  libbz2-devel
 BuildRequires:  libzstd-devel
+BuildRequires:  lzip
+BuildRequires:  lzlib-devel
 BuildRequires:  xz
 BuildRequires:  xz-devel
 BuildRequires:  zlib-devel
@@ -69,7 +71,7 @@ make %{?_smp_mflags} noweak
 
 %check
 make testt tests testx
-for comp in gzip bzip2 lzma xz zstd
+for comp in gzip bzip2 lzma xz zstd lzip
 do
     case $comp in
     gzip) x=g ;;
@@ -77,6 +79,7 @@ do
     lzma) x=l ;;
     xz) x=x ;;
     zstd) x=s ;;
+    lzip) x=L ;;
     esac
     $comp -c < fzopen.3.in > fzopen.test
     ./testt fzopen.test | cmp fzopen.3.in -

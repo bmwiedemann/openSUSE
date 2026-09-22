@@ -425,4 +425,20 @@
     buffer in fzopen and _knowntype_fdzopen to reduce overhead.</comment>
     <requestid>1361705</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>c21c216f43e160bfd01a8096ac5d40f5</srcmd5>
+    <version>1.17</version>
+    <time>1790084923</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.17
+  * Mention lzip in manual page as well
+  * Implement lzlib support as well
+  * Add Debian package build tree
+
+- Update to version 1.16
+  e2k arch support: makecontext() is unavailable on e2k arch since
+  makecontext_e2k() allocates additional stacks so freecontext_e2k()
+  is required where the given ucp.uc_stack gets either freed or reused.</comment>
+    <requestid>1378797</requestid>
+  </revision>
 </revisionlist>

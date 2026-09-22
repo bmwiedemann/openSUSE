@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 18 10:59:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.17
+  * Mention lzip in manual page as well
+  * Implement lzlib support as well
+  * Add Debian package build tree
+
+-------------------------------------------------------------------
+Thu Sep 17 11:00:31 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to version 1.16
+  e2k arch support: makecontext() is unavailable on e2k arch since
+  makecontext_e2k() allocates additional stacks so freecontext_e2k()
+  is required where the given ucp.uc_stack gets either freed or reused.
+
+-------------------------------------------------------------------
 Thu Jun 25 08:35:01 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to version 1.15
