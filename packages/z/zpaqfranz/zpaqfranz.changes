@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:09:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 65.2:
+  * New zip command: write an archive out as one single ZIP64
+    file, with the same filters, -until and -range as x. Stored
+    and multithreaded by default
+  * zip -deflate (alias -zip) compresses the entries with a
+    DEFLATE encoder written for the purpose, so no zlib is
+    linked. Already-compressed extensions and tiny files stay
+    stored
+  * zip -all writes one VER<n> folder per version, each a full
+    snapshot; -range picks which ones, and the space and memory
+    cost is estimated before anything is written
+  * Quoted wildcards are expanded internally on Linux and BSD,
+    so "/tmp/nas*" matches instead of being taken literally
+  * dir matches its pattern against the file name, not against
+    the whole path
+  * An archive can be a franzen file with no cleartext .zpaq side
+  * copy with several sources no longer counts and copies the
+    same file once per source
+- Add zpaqfranz-qualify-std-string.patch: 65.2 declares two new
+  globals as bare string before using std::string, so g++ cannot
+  compile it
+
+-------------------------------------------------------------------
 Sun Sep 20 19:44:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.1:

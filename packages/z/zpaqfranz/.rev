@@ -107,4 +107,44 @@ come from the release notes. Licence unchanged, since the FUSE code
 is not compiled. Upstream self-test passes.</comment>
     <requestid>1379320</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>70e76b067600d4b32011a3a27d56e6f2</srcmd5>
+    <version>65.2</version>
+    <time>1790107124</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 65.2.
+
+New zip command writing an archive out as one ZIP64 file, with -deflate
+using a DEFLATE encoder written for the purpose rather than linking
+zlib, -all writing one full-snapshot folder per version, and internal
+expansion of quoted wildcards on Linux and BSD.
+
+Carries a new downstream patch, zpaqfranz-qualify-std-string.patch,
+because 65.2 does not compile with g++: it declares two new file-scope
+globals as bare string at lines 4953 and 5117 while using std::string
+does not appear until line 20673. Every neighbouring global in those
+blocks is already qualified, so this reads as an oversight; MSVC
+presumably accepts it through Windows header name-pulling. Reported
+upstream as gh#fcorbelli/zpaqfranz#287 with the diff inline - their
+repository is maintained by direct file uploads, so an issue rather
+than a pull request.
+
+The credited zip behaviour was exercised on the built RPM rather than
+read from release notes: STORED ZIP64 verified with unzip -t, -deflate
+compressing, -all producing VER00000000 and VER00000001 snapshot
+folders with a pre-write space and memory estimate, quoted wildcards
+expanding, and copy with duplicate sources counting each file once.
+Windows-only items in the release - the mount rework, WinFsp, filename
+sanitising and the rd changes - are deliberately not credited, since
+this build defines neither ZPAQMOUNT nor _WIN32.
+
+The licence position is unchanged: the credits block is byte-identical
+to 65.1, the DEFLATE encoder is upstream's own code and no zlib is
+linked, so the License tag, the Legal-Review-Notice and every
+Provides: bundled() entry still hold.
+
+Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
+0 errors, 0 warnings, 0 badness.</comment>
+    <requestid>1379756</requestid>
+  </revision>
 </revisionlist>

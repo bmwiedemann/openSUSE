@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        65.1
+Version:        65.2
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
@@ -49,6 +49,8 @@ Summary:        A journaling, incremental, deduplicating archiver
 License:        Apache-2.0 AND BSD-2-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM zpaqfranz-qualify-std-string.patch mpluskal@suse.com -- gh#fcorbelli/zpaqfranz#287 -- 65.2 declares two new globals as bare string before using std::string, so g++ rejects them
+Patch0:         zpaqfranz-qualify-std-string.patch
 BuildRequires:  gcc-c++
 # libcurl and libssh are dlopened by name at run time for the URL and SFTP
 # features; the binary does not link them, so these stay weak dependencies.
@@ -67,7 +69,7 @@ steroids,with deduplicated "snapshots" (versions). Conceptually similar to Mac
 time machine, but much more efficiently.
 
 %prep
-%autosetup
+%autosetup -p1
 # Upstream ships these two with CRLF line endings, which rpmlint rejects.
 sed -i 's/\r$//' CHANGELOG.md COPYING
 
