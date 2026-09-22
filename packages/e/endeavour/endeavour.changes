@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 19 16:36:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Normalize version to @PARENT_TAG@+git@TAG_OFFSET@. The version is
+  thus changed from 43.0.git.167 to 43.0+git167, which is
+  interpreted the same way by RPM/zypper"
+  > zypper vcmp 43.0.git.167 43.0+git167
+    43.0.git.167 matches 43.0+git167
+
+-------------------------------------------------------------------
 Wed Apr  1 19:06:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Correct minimum version of libadwaita BuildRequires.

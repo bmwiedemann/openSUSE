@@ -18,7 +18,7 @@
 
 
 Name:           endeavour
-Version:        43.0.git.170
+Version:        43.0+git193
 Release:        0
 Summary:        Personal task manager for GNOME
 License:        GPL-3.0-or-later

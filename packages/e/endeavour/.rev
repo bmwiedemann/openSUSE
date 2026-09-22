@@ -32,4 +32,16 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345335</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>ec4a14fc476b7a22cc130bc653530932</srcmd5>
+    <version>43.0+git193</version>
+    <time>1790085204</time>
+    <user>anag_factory</user>
+    <comment>- Normalize version to @PARENT_TAG@+git@TAG_OFFSET@. The version is
+  thus changed from 43.0.git.167 to 43.0+git167, which is
+  interpreted the same way by RPM/zypper&quot;
+  &gt; zypper vcmp 43.0.git.167 43.0+git167
+    43.0.git.167 matches 43.0+git167</comment>
+    <requestid>1379638</requestid>
+  </revision>
 </revisionlist>
