@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 22 10:13:29 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.14.0
+
+- Update to 5.14.0
+  * Core improvements
+    - #25090, #25076 Show percentage of report total in AI Chatbot reports.
+    - #25175, #25115 Forecast unique visitors and distinct counts from period-level history.
+    - #24928 Render pie charts as perfect circles with clean slice edges.
+    - #24969 Show aggregated real-time counters when Visits Log is disabled.
+    - #25056 Report empty login fields instead of disabling the sign-in button.
+    - #25057 Refresh the login and invitation page layout.
+    - #25058 Add a “What’s New” panel to the login layout.
+    - #25084 Show the selected goal’s conversions in bar, pie and evolution charts.
+    - #25093 Align PDF report label linking with the HTML report renderer.
+    - #25116 Add events to customise the no data page.
+    - #25133 Show percentages on subpages of a searched report.
+    - #25152, #3426 Split All Websites out of the Compliance page website selector.
+    - #25179 Restore the period tooltip on redesigned sparkline cards.
+    - #25207 Speed up loading of the Marketplace page.
+    - #25228 Stop widget controls squeezing the report header title.
+    - #25280 Size sparkline card images from the measured container instead of scaling.
+  * Matomo Tag Manager
+    - #1145, #123, #1148 Improve help icon position on card hover.
+    - #1152, #123 Update variable name change handling.
+    - #1155 Update mobile left-menu screenshot for the search-input restyle.
+    - #1157 Fix error when creating new tags by publishing a default container version.
+    - #1184 Fix loader not displaying correctly in dark mode.
+    - #1190 Type tag, trigger and variable type parameters as plugin settings.
+    - #1153 Clarify the preview mode notification.
+
+-------------------------------------------------------------------
 Mon Aug 17 08:04:16 UTC 2026 - ecsos <ecsos@opensuse.org> - 5.13.0
 
 - Update to 5.13.0
