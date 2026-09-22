@@ -17,7 +17,7 @@ Wed Jul 15 07:26:15 UTC 2026 - Tina Müller <timueller+perl@suse.de>
   9.48  2026-07-14
     - Fixed a security issue where CSRF tokens were vulnerable to BREACH attacks. Tokens are now masked with a fresh
       random value on every request, instead of being reused for the whole lifetime of a session.
-      CVE-2026-15747 bsc#1271431
+      CVE-2026-15747 bsc#1271431 CVE-2026-77568 bsc#1281638
 
 -------------------------------------------------------------------
 Mon Jul  6 09:12:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
@@ -33,7 +33,7 @@ Mon Jul  6 09:12:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
     - Added query_ok method to Test::Mojo.
     - Fixed a security issue where the pure-Perl implementation of Mojo::JSON could exhaust all available memory when
       decoding deeply nested data. Decoding is now limited to 512 levels of nesting, to match the default of
-      Cpanel::JSON::XS.
+      Cpanel::JSON::XS. CVE-2026-68914 bsc#1281637
     - Fixed a memory leak in Morbo. (heikojansen)
     - Fixed Mojo::File::list_tree to no longer follow symbolic links to directories.
 

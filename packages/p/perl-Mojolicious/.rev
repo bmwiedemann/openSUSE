@@ -1801,4 +1801,13 @@ Tons of changes, just the peak of the ice berg:
     - Added EXPERIMENTAL partitioned attributes to Mojo::Cookie::Response and Mojolicious::Sessions.</comment>
     <requestid>1371815</requestid>
   </revision>
+  <revision rev="188" vrev="2">
+    <srcmd5>bb16a72060023c787ff6112ef9862c02</srcmd5>
+    <version>9.490.0</version>
+    <time>1790084945</time>
+    <user>anag_factory</user>
+    <comment>      CVE-2026-15747 bsc#1271431 CVE-2026-77568 bsc#1281638
+      Cpanel::JSON::XS. CVE-2026-68914 bsc#1281637</comment>
+    <requestid>1379464</requestid>
+  </revision>
 </revisionlist>
