@@ -414,4 +414,39 @@ Supersedes sr#1375609 (0.153.0), which this replaces rather than follows.
     <comment>Forward openai-codex 0.154.0 to Factory. Devel carries 0.154.0, local aarch64 build green, rpmlint 0/0, source_validator clean.</comment>
     <requestid>1376913</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>ee0e5f964d7f448efc74f7a646be0394</srcmd5>
+    <version>0.155.1</version>
+    <time>1790103141</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.155.1.
+
+Security: the vendored rustls is pulled forward to 0.23.45 for
+RUSTSEC-2026-0285 (GHSA-2mjx-qc3c-rqvc), which has no CVE alias. The
+fix is real for this package: rustls is in the linked graph via
+aws-smithy-http-client, aws-smithy-runtime, aws-config and
+codex-aws-auth. That pull also moves rustls-webpki, aws-lc-rs and
+aws-lc-sys, so Provides: bundled(aws-lc) follows 1.71.0 to 5.7.0.
+
+boo#1281061 (CVE-2026-63127, CVE-2026-63128, CVE-2026-64684) is
+recorded as not affected: the vendored and linked rmcp is 3.2.0 and
+the fixes landed in 2.0.0 and 2.1.0. The bug itself is untouched.
+
+Two upstream features are deliberately not claimed because this RPM
+cannot run them: /voice spawns a separate codex-voice-host binary the
+package does not build, which requires a bundled GStreamer runtime and
+a package layout an RPM install does not have; and the managed-daemon
+lifecycle, including &quot;codex app-server daemon update&quot;, only drives the
+standalone install upstream's own installer lays down.
+
+source_validator emits the usual advisory that the cargo_vendor
+service lacks update=true. That is deliberate and answered at length
+in _service: update=true would re-resolve the whole lockfile rather
+than carry the four audited pull-forwards. Only those four crates move
+relative to upstream's own lockfile.
+
+Built and checked locally on aarch64: 798 tests pass, rpmlint 0
+errors, 0 warnings, 0 badness across 5 packages.</comment>
+    <requestid>1379727</requestid>
+  </revision>
 </revisionlist>

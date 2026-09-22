@@ -13,7 +13,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -24,9 +24,7 @@
+@@ -25,9 +25,7 @@
      "install-context",
      "codex-backend-openapi-models",
      "code-mode",
@@ -23,16 +23,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -101,8 +99,7 @@
-     "otel-trace-websocket",
+@@ -104,7 +102,6 @@
      "tui",
+     "user-verification",
      "tools",
 -    "v8-poc",
      "websocket-client",
      "windows-sandbox-service",
      "worktree",
-     "workload-identity",
-@@ -185,7 +182,6 @@
+@@ -191,7 +188,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
@@ -40,15 +39,15 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
  codex-websocket-client = { path = "websocket-client" }
-@@ -290,7 +286,6 @@
- codex-utils-stream-parser = { path = "utils/stream-parser" }
+@@ -299,7 +295,6 @@
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
+ codex-user-verification = { path = "user-verification" }
 -codex-v8-poc = { path = "v8-poc" }
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  core_test_support = { path = "core/tests/common" }
-@@ -501,7 +496,6 @@
+@@ -517,7 +512,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
@@ -56,7 +55,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
-@@ -562,7 +556,6 @@
+@@ -578,7 +572,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",

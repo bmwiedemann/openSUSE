@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:56:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.155.1:
+  * New local TUI sessions leave reasoning summaries disabled by
+    default, so providers that do not support them stop
+    rejecting the request; explicit settings are still respected
+- Changes from version 0.155.0:
+  * The TUI shows live reasoning summaries in the status row and
+    completion timestamps after successful turns
+  * Task hiding, archiving and deletion in the agents overview,
+    plus worktree ownership details and confirmed deletion of
+    clean managed worktrees
+  * Amazon Bedrock can take AWS credentials from a configured
+    command, with caching and expiry-based refresh
+  * Automatic approval reviews keep complete actions and
+    authorization evidence, retry transient failures and tell
+    review failures apart from unsafe-action findings
+  * Fixed missed tmux resizes, transcript viewport restoration
+    and stale history showing up after a thread switch
+  * Accepted prompts are saved even when compaction fails before
+    a turn starts
+  * MCP servers report expired OAuth credentials accurately and
+    say how to reconnect when a token refresh fails
+  * Switching accounts invalidates remote-control sessions,
+    cached WebSocket state and the model catalogue of the old
+    identity
+  * Brokered shell snapshots are hardened against credential
+    exposure
+- Upstream's two headline 0.155.0 features are not reachable
+  here: /voice needs a separate codex-voice-host helper and a
+  bundled GStreamer runtime, neither of which is built, and
+  "codex app-server daemon update" only drives the standalone
+  install upstream's own installer lays down
+- Pull rustls 0.23.45 into the vendored tree: 0.23.36 accepts
+  TLS 1.3 handshake messages across encryption level boundaries
+  (RUSTSEC-2026-0285, GHSA-2mjx-qc3c-rqvc). It is linked through
+  aws-smithy-http-client, aws-config and codex-aws-auth, and
+  unlike the four linked advisories recorded in _service its fix
+  is semver-compatible, so it can be pulled forward
+- That pull moves three more crates, because rustls 0.23.45
+  floors aws-lc-rs at 1.18: aws-lc-rs 1.16.2 to 1.18.1,
+  aws-lc-sys 0.39.0 to 0.45.0 and rustls-webpki 0.103.13 to
+  0.103.15. The statically linked aws-lc goes 1.71.0 to 5.7.0,
+  so bundled(aws-lc) follows
+- cargo-audit on a bare copy of the lockfile reports six
+  advisories at 0.155.1; five remain in the shipped tree,
+  unchanged in status from 0.154.0 and all documented in _service
+- CVE-2026-63127 (boo#1281061): not affected, the vendored and
+  linked rmcp is 3.2.0 and the fix landed in 2.0.0
+- CVE-2026-63128 (boo#1281061): not affected, the vendored and
+  linked rmcp is 3.2.0 and the fix landed in 2.0.0
+- CVE-2026-64684 (boo#1281061): not affected, the vendored and
+  linked rmcp is 3.2.0 and the fix landed in 2.1.0
+- Legal-Review-Notice: linked-crate count 880/882 to 884/886 on
+  aarch64/x86_64, of which 751 are third-party on aarch64 (was
+  750, the addition is rand_regex) and 133 are codex workspace
+  members (was 130). The licence set is unchanged - the tally
+  moves only by Apache-2.0 651 to 654 and MIT 176 to 177 - and
+  the only bundled() version that moves is aws-lc, above
+- Rebase codex-drop-v8-code-mode.patch: upstream added a
+  user-verification workspace member next to the entries it
+  drops
+
+-------------------------------------------------------------------
 Thu Sep 10 05:53:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.154.0:
