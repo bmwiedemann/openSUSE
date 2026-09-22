@@ -24,7 +24,7 @@
 %endif
 
 Name:           s390-tools
-Version:        2.44.0
+Version:        2.44.1
 Release:        0
 Summary:        S/390 tools like zipl and dasdfmt for s390x (plus selected tools for x86_64)
 License:        MIT
@@ -92,9 +92,6 @@ Source200:      vendor.tar.zst
 
 ###
 # IBM patches
-Patch101:       s390-tools-zkey-Harden-KMS-config-directory-handling.patch
-Patch102:       s390-tools-zkey-Harden-zkey-kms-unbind-command.patch
-Patch103:       s390-tools-zkey-ekmfweb-zkey-kmip-Harden-KMS-plugin-file-handling.patch
 ###
 # SUSE patches
 Patch900:       s390-tools-combined.patch
