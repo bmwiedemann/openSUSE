@@ -20,7 +20,7 @@
 %global force_gcc_version 12
 %endif
 Name:           gerbera
-Version:        3.2.1
+Version:        3.3.0
 Release:        0
 Summary:        UPnP Media Server
 License:        GPL-2.0-only
@@ -36,8 +36,6 @@ Source90:       README.SUSE
 Patch0:         harden_gerbera.service.patch
 # PATCH-FIX-OPENSUSE - build executables as PIE
 Patch1:         gerbera-cmake-pie.patch
-# PATCH-FIX-UPSTREAM gh#gerbera/gerbera#3890 - fix config generator tests with pugixml >= 1.16
-Patch2:         gerbera-pugixml-1.16-tests.patch
 BuildRequires:  apache-rpm-macros
 BuildRequires:  ccache
 BuildRequires:  cmake >= 3.25
@@ -58,6 +56,7 @@ BuildRequires:  pkgconfig(gtest_main)
 BuildRequires:  pkgconfig(icu-i18n) >= 65.1
 BuildRequires:  pkgconfig(jsoncpp) >= 1.7.4
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(libcurl)

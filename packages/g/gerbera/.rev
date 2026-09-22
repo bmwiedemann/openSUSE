@@ -362,4 +362,959 @@ Sorry - I missed that on the previous fixup. Now we should be good for sysusers 
 </comment>
     <requestid>1376867</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>c5312384789dacccda00cd9d20172bfd</srcmd5>
+    <version>3.3.0</version>
+    <time>1790085182</time>
+    <user>anag_factory</user>
+    <comment>- Add missing libavfilter buildrequires.
+- Update to 3.3.0
+  * Changes
+    Gerbera 3.3.0 (#3934)
+    Doxygen: silence warnings (#3930)
+    Make Layout Options consistent (#3895)
+    Refactor Sql hash codes (#3877)
+    Bump master (#3835)
+  * Features
+    Add internal Transcoding (#3867)
+    Add server flags for dynamic description (#3904)
+    Add quirk NoSecNamespace for Universum DAB+ Internet Radio (#3901)
+    Database selection from command line (#3879)
+    Add ImportMode to AutoScan settings (#3876)
+    Add support for cuesheets (#3840)
+  * Bug Fixes
+    Fix stack exhaustion via nested search criteria (#3936)
+    Fix SQL injection via search container (#3924)
+    Fix search for multiple properties (#3920)
+    add missing headers (#3889)
+    Handle url decoding correctly for npupnp (#3882)
+    Fix mysql migration 29 (#3878)
+    Fix potential nullptr dereference (#3875)
+    Fix SQLDatabase::getRefObjects SQL on MySQL/MariaDB (#3865)
+    Extend length of lyrics (#3863)
+    Fix SQL injection via search parameters (#3860)
+    Fix for SQL Error when using postgresql (#3854)
+    Fix sqlite resource migration (#3850)
+    Fix saving some config properties from ui (#3847)
+    Fix includes (#3841)
+  * Dependencies
+    Bump adm-zip from 0.6.0 to 0.6.1 in /gerbera-web (#3938)
+    Drop EOL distros (#3932)
+    Update to pupnp 22.1.0 (#3931)
+    Update to taglib 2.3.2 (#3929)
+    Bump serialize-javascript and mocha in /gerbera-web (#3928)
+    Bump fast-uri from 3.1.5 to 3.1.7 in /gerbera-web (#3927)
+    Update Build Environment (#3917)
+    Update to pupnp 22.0.6 (#3916)
+    Update to googletest 1.18.0 (#3914)
+    Bump fast-uri from 3.1.4 to 3.1.5 in /gerbera-web (#3913)
+    Bump ip-address from 10.2.0 to 10.4.0 in /gerbera-web (#3912)
+    Bump shell-quote and concurrently in /gerbera-web (#3910)
+    Update to taglib 2.3.1 (#3908)
+    Bump actions/setup-node from 6 to 7 (#3906)
+    Bump actions/setup-python from 6 to 7 (#3907)
+    Update to pupnp 22.0.4 (#3905)
+    Bump actions/cache from 5 to 6 (#3900)
+    Use latest utfcpp directly (#3896)
+    Bump form-data from 4.0.5 to 4.0.6 in /gerbera-web (#3892)
+    Bump actions/checkout from 6 to 7 (#3893)
+    Update to pupnp 2.0.2 - pugixml 1.16 - fmt 12.2.0 (#3890)
+    Bump shell-quote and concurrently in /gerbera-web (#3887)
+    Collected Updates (#3886)
+    Bump tmp from 0.2.5 to 0.2.7 in /gerbera-web (#3872)
+    build support for resolute raccoon (#3871)
+    Bump qs and body-parser in /gerbera-web (#3869)
+    Bump js-cookie from 3.0.5 to 3.0.7 in /gerbera-web (#3868)
+    Update to taglib 2.3 (#3866)
+    Bump @babel/plugin-transform-modules-systemjs from 7.29.0 to 7.29.4 in /gerbera-web (#3862)
+    Bump fast-uri from 3.1.0 to 3.1.2 in /gerbera-web (#3861)
+    Bump axios from 1.15.0 to 1.16.0 in /gerbera-web (#3858)
+    Bump ip-address from 10.1.0 to 10.2.0 in /gerbera-web (#3857)
+    Update to pupnp 1.18.5 (#3855)
+    Bump follow-redirects from 1.15.11 to 1.16.0 in /gerbera-web (#3852)
+    Bump axios from 1.13.6 to 1.15.0 in /gerbera-web (#3846)
+    Bump basic-ftp from 5.2.1 to 5.2.2 in /gerbera-web (#3845)
+    Bump basic-ftp from 5.2.0 to 5.2.1 in /gerbera-web (#3843)
+    Bump lodash from 4.17.23 to 4.18.1 in /gerbera-web (#3842)
+    Bump picomatch from 2.3.1 to 2.3.2 in /gerbera-web (#3837)
+- Drop gerbera-pugixml-1.16-tests.patch because now in upstream.
+- Add gerbera-pugixml-1.16-tests.patch to fix ExampleConfigGeneratorTest
+  with pugixml &gt;= 1.16, which prints empty elements as &lt;node /&gt; instead
+  of &lt;node&gt;&lt;/node&gt; (gh#gerbera/gerbera#3890).
+- Update to 3.2.1
+  * Features
+    - Run cmake-format (#3829)
+    - Add autolabeler (#3824)
+  * Bug Fixes
+    - Fix init with disabled ffmpegthumbnailer (#3834)
+    - Fix SQL Migration Statement (#3823)
+  * Dependencies
+    - Update to jsoncpp 1.9.7 (#3830)
+    - Bump flatted from 3.4.1 to 3.4.2 in /gerbera-web (#3831)
+    - Run cmake-format (#3829)
+    - Update/autolabeler (#3828)
+    - Update to pupnp 1.18.3 (#3826)
+    - Add Autolabeler (#3827) 
+    - Add Autolabeler (#3825)
+    - Bump ReleaseDrafter from 6 to 7 (#3821)
+- Update to 3.2.0
+  * NEW Features
+    - Split config files into modules (from-file)
+    - Export and import changed objects
+    - Extract Matroska metadata also with taglib 2.2.1
+    - Select content type for import library to reduce import time
+  * FIXES
+    - Timeouts in transcoding or other read errors leading to broken responses
+    - LastFM with rest API
+    - Configuration for FFmpeg stream data import to reduce import times
+    - Error return codes to LibPUPnP
+  * Code Improvements
+    - Remove prefix for location type in database
+    - Object Flags refactored to enum
+    - Update maximum versions of npupnp (6.2.3), cmake (4.2.3), pupnp (1.18.2), taglib (2.2.1), libexiv2 (0.28.8)
+    - cxxopts was updated to version 3.3.1 and can now be updated like any library
+  * Changes
+    - Gerbera 3.2.0 (#3817)
+    - Update cxxopts to 3.3.1 (#3816)
+    - Fix entryType for builtin layout (#3815)
+    - Convert ObjectFlags to enum (#3813)
+    - Upgrade broken check-socket stuff (#3807)
+    - Bump docker/setup-buildx-action from 3 to 4 (#3808)
+    - Bump docker/setup-qemu-action from 3 to 4 (#3809)
+    - Bump docker/build-push-action from 6 to 7 (#3810)
+    - Bump docker/login-action from 3 to 4 (#3811)
+    - Bump docker/metadata-action from 5 to 6 (#3812)
+    - More configuration of online content (#3806)
+    - Improve configuration of online content (#3804)
+    - Threading and Transcoding with better configuration (#3803)
+    - Bump actions/upload-artifact from 6 to 7 (#3801)
+    - Update libexiv2 to 0.28.8 (#3799)
+    - Update npm and web ui tests (#3798)
+    - Bump minimatch in /gerbera-web (#3797)
+    - xsd improvement (#3796)
+    - Reduce almost duplicate methods (#3794)
+    - Bump basic-ftp from 5.1.0 to 5.2.0 in /gerbera-web (#3795)
+    - Split off Database Migrations (#3793)
+    - Refactor FFMpegThumbnailer (#3791)
+    - Extend content type filter configuration (#3789)
+    - FFmpeg: configuration for stream data import (#3788)
+    - Update to pupnp 1.18.0 (#3784)
+    - Upgrade to taglib 2.2 with new file type and filtering (#3782)
+    - Use entry_type instead of location prefix (#3781)
+    - Bump qs from 6.14.1 to 6.14.2 in /gerbera-web (#3780)
+    - Update to pupnp 1.14.29 (#3779)
+    - Update to pupnp 1.14.27 (#3777)
+    - Update to pupnp 1.14.26 (#3775)
+    - Export and import changed object from database (#3772)
+    - Show changed items in UI (#3771)
+    - Keep track of changed objects (#3770)
+    - Bump lodash from 4.17.21 to 4.17.23 in /gerbera-web (#3768)
+    - Update npupnp to 6.2.3 (#3767)
+    - Document MARIADB_TLS_DISABLE_PEER_VERIFICATION (#3766)
+    - Load Config file modules (#3764)
+    - Bump master (#3763)
+- Update to 3.1.1
+  * FIXES
+    - docker startup under default user
+  * Code Improvements
+    - Update maximum versions of wavpack (5.9.0), cmake (4.2.1)
+  * Changes
+    - Gerbera 3.1.1 (#3762)
+    - Update wavpack to 5.9.0 (#3759)
+    - cope with su-exec breaking change (#3757)
+    - Bump master (#3758)
+- Update to 3.1.0
+  - accumulate to join
+  - Add community scripts
+  - add missing array headers
+  - add missing headers from headers
+  - Align transcoding flag documentation and code
+  - Avoid string_view conversion
+  - Bump actions/cache from 4 to 5
+  - Bump actions/checkout from 5 to 6
+  - Bump actions/upload-artifact from 5 to 6
+  - Bump js-yaml from 4.1.0 to 4.1.1 in /gerbera-web
+  - Bump min-document from 2.19.0 to 2.19.2 in /gerbera-web
+  - CI: Add debug docker image
+  - CI: Add test to docker
+  - Clean up obsolete includes
+  - don't use references for node()
+  - enable i2i for HAVE_CURL
+  - Extract default database configuration strings
+  - fix compilation under OmniOS
+  - fix definition of client-without-flag
+  - fix edit for container
+  - fix error handling in string_converter
+  - fix sortKey for extra long numbers
+  - fix typos in documentation
+  - Fix Wavpack context
+  - Fix Wavpack importer
+  - Gerbera welcomes 2026
+  - github CI: add loongarch64
+  - header removals and destructor fix.
+  - Improve date parsing
+  - improve Samsung TVs quirks
+  - JS: allow disabling boxes in initals audio layout
+  - More CI checks
+  - More FFMPeg Resource Information
+  - more pugi forward declarations
+  - Negation of client-flags
+  - New import scripts for images and videos
+  - Refactor Quirks to enum
+  - remove unique_ptr from std::vector
+  - remove unique_ptr from xml_document
+  - remove various string_view data usages
+  - replaced lock_guard with scoped_lock
+  - samsung bookmark save/restore
+  - simplify using quirks
+  - transcoding: filtering of clients without flags
+  - UI: Add ZIP download of container
+  - Update Alpine to v3.23
+  - Update Conan integration
+  - Update ffmpegthumbnailer to 2.2.4
+  - Update ffmpegthumbnailer to 2.3.0
+  - Update screenshots
+  - Update spdlog to 1.17.0
+  - use correct name for boxlayout enabled years
+  - use more fmt::join
+  - use optional instead of unique_ptr
+  - use Quirk::DCM10 flag
+- Update to 3.0.0
+  - Add support for libsystemd
+  - Add Test for formatSizeValue
+  - Allow masking arguments
+  - Block client group
+  - Build for ubuntu-25.10
+  - Bump actions/setup-node from 5 to 6
+  - Bump actions/upload-artifact from 4 to 5
+  - Bump github/codeql-action from 3 to 4
+  - Check Headers in Quirks
+  - CI Tests: Try more alpine versions
+  - clazy fixes
+  - Command line option for even more config details
+  - Command line option to drop database tables
+  - Config XML Schemas
+  - Configure searchable flags via BoxLayout
+  - Documentation on Return Path Filtering
+  - Enable ICU for MacOS
+  - Fix derivedFrom search handling
+  - Fix docker libqxx library pattern
+  - Fix dynamic folders for lowercase trees
+  - Fix formatSizeValue on 32-bit systems
+  - Fix help message for option &quot;-c&quot;
+  - Fix help test
+  - Fix ProxyUrl for external items
+  - Fix title from wrong stream
+  - Fixing Searchable flag in import script
+  - forward declare pugixml classes
+  - Handle title from nfo correctly
+  - Hide boxkey values
+  - Implement new Client Quirk to force SortCriteria 'title'
+  - Improve MacOS build
+  - Introduce sphinx toolbox
+  - New PostgreSQL database backend
+  - nproc missing on MacOS
+  - Quirk to block protocolInfo in CaptionInfoEx
+  - Reduce code duplication in XmlBuilder
+  - Remove loading complete scripts to create virutal layout
+  - remove unique_ptr from ProcListItem vector
+  - Restrict number of subtitle bytes to read
+  - Rotation of thumbnails by ffmpegthumbnailer
+  - Track unused config file entries
+  - Unify doxygen tags
+  - Update CMakeLists.txt for ICU on APPLE
+  - Update to exiv2 v0.28.6
+  - Update to exiv2 v0.28.7
+  - Update to fmt 12.0.0
+  - Update to fmt 12.1.0
+  - Update to pupnp 1.14.25
+  - Update to spdlog 1.16.0
+  - Use new confval links in help
+  - various small cleanups
+  - WavPack under MacOS
+  - WebUI: Show referenced items in details
+  - WebUI: Show spinner on loading
+- Remove upstreamed patch f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch
+- Use --preset to build standard release build with NPUPNP
+- BuildRequires minimum versions supported by upstream (rather than
+  recommended versions) to allow building on older Leap versions
+- Don't cap versions of external libraries to tested ones upstream
+  as this doesn't work well with a rolling release (like Tumbleweed)
+  and isn't needed for stable Leap releases
+- Fix rpmlint errors/warnings
+  + add gerbera.rpmlintrc
+  + add gerbera-cmake-pie.patch
+- Fix build error with newer fmt.
+  Add patch f8e158bc72986e46b93d05358c29db0c10f2fe9f.patch.
+- Update to 2.6.1
+  * FIXES
+    - Configuration error when creating MySQL from scratch
+    - Internal subtitles seem to be broken on older ffmpeg
+  * NEW Features
+    - Inotify support for script folders allows developing scripts without restarting the server
+  * Code Improvements
+    - Increased size of debug-mode config option to unsigned long long to avoid overflow. Includes new very long integer config option.
+    - Support for loading scripts in tests is dropped in preperation of dropping the feature completely.
+  * Changes
+    - Gerbera 2.6.1 (#3565)
+    - Catch exceptions from metadata handlers (#3563)
+    - Remove test support for loading scripts (#3562)
+    - Fix MySQL database upgrade from 23 to 24 (#3558)
+    - Bump docker/build-push-action from 5 to 6 (#3561)
+    - Bump peter-evans/dockerhub-description from 3 to 4 (#3560)
+    - Bump DoozyX/clang-format-lint-action from 0.18 to 0.20 (#3559)
+    - Update Actions (#3556)
+    - Fix for MultiInsert statement (#3555)
+    - Fix resource file pattern with braces (#3554)
+    - Pull config dependencies (#3549)
+    - Inotify for scripts: reload without server restart (#3548)
+    - Bump tmp from 0.2.3 to 0.2.4 in /gerbera-web (#3547)
+    - Fix MySql config load (#3545)
+    - Bump master (#3544)
+- Update to 2.6.0
+  * Deprecation Info
+    The scripting interface will soon support the import-function-approach only.
+    This means that entries like import-script and playlist-script will not work anymore
+    and the respective scripts will be loaded on startup with no argument.
+    Instead the defaults of import-function/audio-file will be applied.
+    To prepare your config file run gerbera --check-config -c &lt;YourConfigFile&gt;.
+    If you get deprecation warnings, run gerbera --create-config=Import and merge the output into your config file.
+  * NEW Features
+    - Support &quot;natural&quot; file sorting for numbers in file names
+    - Support transliteration of texts depending on device output
+    - Extract multiple stream information in ffmpeg handler including embedded subtitles
+    - Filter resources by mimetype instead of extension
+    - Artwork support for dsf files with taglib 2.0
+    - &quot;PC Directory&quot; can be configured with &lt;boxlayout&gt;
+    - MySql: Configuration of engine, charset and collation before first run
+    - User defined virtual layout sub trees
+  * FIXES
+    - Changing autoscans via ui failed in some cases
+    - Failing import including stale objects
+  * Code Improvements
+    - Use JsonCpp to generate responses in web request handlers
+    - Sql database code uses enum properties instead of column names
+    - Database initialisation does tables only, initial root values are in code
+    - Upgrade documentation build environment to sphinx 8.2 with python 3.12
+    - Update versions of npupnp (6.2.1), fmtlib (11.2.0), spdlog (1.15.3), googletest (1.17.0), pupnp (1.14.24), taglib (2.1.1)
+    - Install script for cmake
+  * Changes
+    - Gerbera 2.6.0 (#3538)
+    - some more cleanups (#3542)
+    - clang-tidy cleanups (#3541)
+    - ci: deb-s3 clean does not allow --arch (#3540)
+    - ci: fix up pruning old deb packages (#3539)
+    - Clean up builds (#3537)
+    - Code layout in ui tests (#3534)
+    - Check for LIBICONV_PLUG (#3533)
+    - Add taglib support for pcm files (#3532)
+    - Fix subdir logic (#3531)
+    - Edit SortKey on web ui (#3527)
+    - Extract metadata from substreams with ffmpeg (#3529)
+    - Bump form-data from 4.0.2 to 4.0.4 in /gerbera-web (#3528)
+    - Do not send internal subtitles as UPnP resources (#3526)
+    - Fix captionInfoCount handling (#3523)
+    - Properly support ipv6-only environments (#3517)
+    - Fix Support for non-root user in docker image (#3516)
+    - Restore owner of config file in docker (#3514)
+    - Mark some options as deprecated (#3513)
+    - Fix inotify for files (#3509)
+    - Update taglib to 2.1.1 (#3512)
+    - Fix subtitle detection in import (#3508)
+    - Execinfo for stack traces in error log (#3507)
+    - User Defined virtual tree parts (#3504)
+    - Changed OpenWRT Installation note (#3501)
+    - Allow hiding PC directory in web view (#3499)
+    - Refactor ConfigSetup code for complex types (#3497)
+    - Update PUpnp to 1.14.24 (#3495)
+    - Make ImportService stable for multiple calls (#3493)
+    - Update PUpnp to 1.14.23 (#3492)
+    - Fix issue with stale objects in autoscan (#3488)
+    - MySql: Allow configuration of engine, charset and collation (#3486)
+    - Fix upload for bionic (#3485)
+    - Fix upload for bionic (#3484)
+    - Update PUpnp to 1.14.22 and taglib to 2.1 (#3483)
+    - Fill database on startup (#3481)
+    - Configure limit of sql strings (#3476)
+    - Fix timed playlist import (#3475)
+    - Quirks for Freebox Player (#3473)
+    - Add taglib and artwork support for dsf files (#3466)
+    - Fix resources for containers (#3465)
+    - Extend details extracted by WavPack handler (#3464)
+    - Update spdlog to 1.15.3 (#3463)
+    - Filter resources by mimetype (#3462)
+    - Update fmtlib to 11.2.0 (#3458)
+    - Update googletest to 1.17.0 (#3454)
+    - Get correct ffmpeg subtitle stream (#3453)
+    - Upgrade documentation build environment (#3452)
+    - Get multiple streams in FFMpeg handler (#3451)
+    - Fix import and xml (#3447)
+    - Provide bash completion file (#3445)
+    - Limit strings to column size (#3441)
+    - Add support for transliterating device output strings (#3438)
+    - Update spdlog to 1.15.2 (#3435)
+    - Add missing jsoncpp to Dockerfiles (#3433)
+    - Remove legacy compile option SQLITE_BACKUP_ENABLED (#3430)
+    - Support &quot;natural&quot; file sorting (#3429)
+    - Fix SQL for changing persistent object flag in database (#3427)
+    - Improve compile info output (#3425)
+    - Tweak for old Samsung TV (#3424)
+    - Reorganise installation scripts (#3421)
+    - Update NPUPnP (#3420)
+    - Bump axios from 1.7.9 to 1.8.3 in /gerbera-web (#3419)
+    - Use JsonCpp for web JSON output (#3418)
+    - Bump master (#3417)
+- Update to 2.5.0
+  The following changes are noteworthy:
+  - Changed default for layout to js if built with JavaScript support.
+  - The new autoscan mode manual in conjunction with the action Scan
+    Now replaces the action to add individual folders.
+  * NEW Features
+    - All configuration options for autoscan directories are available in the web UI now,
+      including scripts and storage in the database.
+    - New configuration option for autoscan directories to rescan files
+      that ended up as plain object in the first run.
+    - Several script options to control audio layout
+    - Harmonisation of metadata handling for wavpack and matroska media handlers
+    - Fabricated comment on import in media handlers (incl. configuration)
+    - Resource attribute pixelFormat for videos.
+    - Additional Resources (thumbnail, subtitle) for External Urls
+    - New UI command Scan Now and minor improvement
+    - Manual autoscan to replace Add Items in filesystem view
+  * FIXES
+    - Album art and structure in builtin layout
+    - Autoscan objects in scripts
+    - Metadata in builtin layout, album artist in default js layout
+    - Commands in UI show descriptive tooltips
+    - Child items of autoscan folder in UI
+  * Code Improvements
+    - Removed static from ConfigDefinition
+    - Update versions of pugixml (1.15), libexif (v0.6.25), wavpack (5.8.1), fmt (11.1.4),
+      spdlog (1.15.1), wavpack (1.8.1), googletest (1.16.0), libexiv2 (0.28.5)
+  * Detailled Changes
+    - Gerbera 2.5.0 (#3415)
+    - Fix shutdown issue (#3414)
+    - Build with fmt 11.1.4 (#3413)
+    - Autoscan fixes (#3410)
+    - Update libexiv2 to 0.28.5 (#3409)
+    - Add manual autoscan option (#3408)
+    - Web UI: properly encode arguments (#3407)
+    - Add Run Scan action in Web UI (#3406)
+    - Fix config load (#3405)
+    - Refactor WebRequests (#3403)
+    - Debian Build for arm64 (#3400)
+    - Update libexiv2 to 0.28.4 (#3399)
+    - Support Resources for External Items (#3398)
+    - Populate playlist item titles (#3397)
+    - Fix update of playlists (#3395)
+    - Update to googletest 1.16.0 (#3393)
+    - Extract Pixelformat for videos (#3392)
+    - UI: Make details collapsable in items editor detail view (#3390)
+    - Rework autoscan list handling (#3389)
+    - Sqlite: Exit after multiple exceptions (#3384)
+    - Fix management auf autoscans in list (#3385)
+    - Generate Comment from Metadata During Scan (#3368)
+    - Update wavpack (#3380)
+    - Build with fmt 11.1.3 (#3323)
+    - Downgrade docker builder as well (#3379)
+    - work around build issue (#3378)
+    - Cleanup tree and autoscan commands (#3374)
+    - Build correct Autoscan Type (#3371)
+    - Add Options to Scripts (#3365)
+    - Fix UpnpMap logic (#3364)
+    - Set more metadata in builtin layout (#3359)
+    - Improve logging of string conversion (#3355)
+    - Update Library Versions (#3354)
+    - Focal: Freeze more aws-sdk versions (#3353)
+    - Focal: freeze ruby aws-sdk versions used for package upload (#3352)
+    - Fix cors host without ipv6 address (#3349)
+    - Remap metadata fields when parsing virtual-directories keys (#3351)
+    - Autoscan: Add missing properties to web UI and database (#3346)
+    - Force Reread of unknown files (#3345)
+    - JS: Fix config autoscan object in scripts (#3344)
+    - Fix album art in builtin layout (#3341)
+    - Refactor static code from ConfigDefinition (#3338)
+    - Bump master (#3337)
+- Fix boo#1235893 (CVE-2025-23386)
+  - Privilege escalation from user gerbera to root because of
+    insecure %post script.
+- Update to 2.4.1
+  * Changes
+    - Fix Dockerfile (#3335)
+- Update to 2.4.0
+  Rerun gerbera --create-config=&quot;Boxlayout|DynamicContainer&quot;
+  and merge changes to the boxlayout and containers the get support for upnp shortcut list feature.
+  There are some noteworthy new features in this release:
+  - the search page: Query your database with UPnP search statements in Web UI,
+  - the dark mode for the Web UI,
+  - access permissions for files: Restrict access to directories via client groups,
+  - support for UPnP filters in requests,
+  - support for UPnP CONTAINER_SHORTCUTS feature.
+  * NEW Features
+    - Configuration of ui handler to allow hosting of docs and doxygen output
+    - Support for UPnP filters
+    - Support for UPnP shortcuts
+    - Search page in web UI
+    - Command line options --create-config and --create-example-config support arguments
+    - Provide packages for Ubuntu-24.10
+    - Allow deleting of client entries immediately
+  * FIXES
+    - Logic exceptions are reported
+    - Handling of logging command line options
+    - Handling of checkbox values on web ui
+    - Access to cache option if thumbnailer is disabled
+    - Container creation in web ui
+    - Handling of multi-valued tags in virtual paths
+    - Increase of pupnp threadpool size
+    - Drop Build Support for Ubuntu 23.04 and 23.10
+  * Code Improvements
+    - Build without ffmpeg leaves option unset
+    - Compatibility with ffmpeg &gt; 6.0
+    - Logging of build info with --compile-info
+    - Update versions of libpupnp (1.14.20), spdlog (1.15.0)
+    - Update Build Environment
+    - Update versions of js vendor files jquery-ui (v1.13.2 -&gt; v1.14.1), js-cookie (v3.0.1 -&gt; v3.0.5), @popperjs/core (v2.11.6 -&gt; v2.11.8)
+  * Changes
+    - Gerbera 2.4.0 (#3330)
+    - Fix Artist Image in Virtual Layout (#3333)
+    - Set correct image size for xx-large pictures (#3332)
+    - Enhance xsd (#3329)
+    - Validate XSD CI workflow (#3328)
+    - Gerbera welcomes 2025 (#3327)
+    - Fix container filters (#3325)
+    - Handle int parse error in config (#3324)
+    - Debian: pack postinst file (#3320)
+    - Fix SIMPLE_DATE (#3318)
+    - Mention systemd as optional package (#3317)
+    - Web UI: Add dark mode (#3309)
+    - Fix config2.xsd: The QName value upnp-properties does not resolve to … (#3314)
+    - Dynamic banner colour in Readme (#3308)
+    - Update build for openSuSE (#3307)
+    - Fix parsing enum config values (#3304)
+    - Update docker settings (#3301)
+    - Clients: Support deleting entries (#3299)
+    - Debian: create changelog file (#3297)
+    - Fix systemd detection (#3295)
+    - ConfigGenerator: Export defaults for more entries (#3293)
+    - UPnP filters: provided defaults for filter properties (#3292)
+    - Scripting: Clean up property handling (#3290)
+    - Update and refactor MySQL code (#3289)
+    - Improve compile info contents (#3286)
+    - actions: clang-format 18 (#3257)
+    - deps: Fix build with ffmpeg 6.1 (#3256)
+    - Fix CodeQL messages (#3285)
+    - Config: Unify path handling (#3282)
+    - Add workflow for Release Drafter (#3277)
+    - Test: Fix CMake commands (#3284)
+    - Drop Build Support for Ubuntu 23.04 (#3283)
+    - Web UI: Cleanup display of item number (#3280)
+    - Handle broken ContainerImage (#3278)
+    - Update Release Template (#3276)
+    - Drop Build Support for Ubuntu 23.10 (#3275)
+    - Update js vendor files (#3274)
+    - Add variables to docker images (#3267)
+    - Fix Handling command line options (#3273)
+    - UPnP Shortcuts feature (#3261)
+    - Access permissions for files by client (#3255)
+    - Fix autoscan issue with empty filename (#3254)
+    - Update Build Environment (#3252)
+    - Resource directory configuration and cleanup collection (#3251)
+    - Bump cookie, express and socket.io in /gerbera-web (#3249)
+    - Web UI: Fix detail display (#3247)
+    - Increase size of pupnp threadpool (#3244)
+    - Web UI: Add Search page (#3242)
+    - Improve handling multivalue tags in virtual paths (#3241)
+    - Fix creating containers in web ui (#3240)
+    - UPnP: Add support for filters (#3233)
+    - Fix access to cache option if thumbnailer disabled (#3232)
+    - Fix build without ffmpeg (#3231)
+    - Fix handling of checkbox values on web ui (#3229)
+    - Config: UI handler mimetypes and CSP (#3227)
+    - Bump master (#3226)
+- Fix some errors in post section from spec file.
+- Fix rights for config and log directories and files.
+- Fix wrong group in gerbera.sysusers.in
+- Move sqlite gerbera.db from /etc/gerbera to /var/lib/gerbera for new installations.
+- Remove fmt &lt;11.1 requirements since spdlog now builds fine with it.
+- Fix build error with fmt version. gerbera does not build with fmt &gt;= 11.1
+  Upstream spdlog version 1.15.0 use bundled fmt version 11.0.2.
+- Add some hints to config.xml.
+- Create config.xml automatically in the psot section,
+  because config.xml is much too old and udn para is static and not
+  unique.
+- Also generate a config-example.xml, a new config-new.xml
+  and a config-diff.xml which show the new parameter in a newer
+  gerbera version.
+- Add README.SUSE.
+- Add vhost configuration for apache nginx.
+- Fix suse-logrotate-user-writable-log-dir /var/log/gerbera gerbera:gerbera 0755
+- update to 2.3.0:
+  NEW
+    * Higher cross site scripting security in web ui
+    * Styles for xml documents when shown in browser
+    * Configuration of additional target mimetype properties for transcoding (e.g. needed for PCM output)
+    * Configuration of DLNA profile mappings for a client
+    * Display media details in web ui
+    * Image and thumbnail profiles support PNG images
+    * Page layout of items page with splitter and resize button
+    * Orientation for images and videos in resource attributes
+    * Additional client filtering options with friendlyName, modelName, manufacturer
+    * Configuration option to block clients
+    * Upnp classes are assigned to containers in physical tree (PC Directory) depending on the majority of children (only in grb-mode)
+    * Nested iterations are now supported in Config UI
+    * UPnP Search support for integer and date comparison
+    * Failed UPnP requests return error messages
+  FIXES
+    * Warning in case import function does not return new ids.
+    * Config values &lt;online-content fetch-buffer-size=&quot;262144&quot; fetch-buffer-fill-size=&quot;0&quot;&gt; are implemented now.
+    * Renaming of files or folders in grb-mode
+    * Nested arrays can be shown in config ui.
+    * Made UDN mandatory for UPnP announcements to work
+- update to 2.2.0:
+  NEW
+    * Configuration for case sensitive media tags (allow making them insensitive)
+    * Configuration options for playlist layout
+    * Configuration option to activate IN_ATTRIB event for, e.g. permission changes on disk incl. retry if that fails
+    * WebUI: New design for home page and login screen
+    * Allow metadata handler to be disabled, add charset support
+    * UPnP specification files (description.xml, cds.xml) now reflect client quirks
+    * Search for upnp:lastPlaybackTime, upnp:playbackCount and play_group
+    * Additional command line options for logging (--syslog and --rotatelog)
+    * TagLib messages are logged with gerbera now. They also show up with debug-mode=&quot;taglib&quot;.
+    * LibExiv2 messages are logged with gerbera now. They also show up with debug-mode=&quot;exiv2&quot;.
+    * LibExif messages are logged with gerbera now. They also show up with debug-mode=&quot;exif&quot;.
+    * ffmpeg messages are logged with gerbera now. They also show up with debug-mode=&quot;ffmpeg&quot;.
+  FIXES
+    * Album artist handling in default js layout
+    * Build with ffmpegthumbnailer but without ffmpeg
+    * Changed repository for ubuntu and debian to https://pkg.gerbera.io/
+    * Autologout from UI
+    * Finally SIGHUP can be used to reload gerbera without restarting
+- update to 2.1.0:
+  * Add ctypes include
+  * Add issue template
+  * Autoscan: avoid errors from parent directories
+  * Avoid crash when parent was not created yet.
+  * Bring back custom headers as client specific headers
+  * BUGFIX: common.js boxSetup check Video/AllDates for Dates
+  * Build Support for NPUPNP
+  * Bump express from 4.18.2 to 4.19.2 in /gerbera-web
+  * Bump follow-redirects from 1.15.3 to 1.15.4 in /gerbera-web
+  * Bump follow-redirects from 1.15.4 to 1.15.6 in /gerbera-web
+  * Bump xml2js and parse-bmfont-xml in /gerbera-web
+  * clang-tidy and cppcheck fixes
+  * clang-tidy fixes
+  * Cleanup FileRequestHandler
+  * CMake: Use presets
+  * Config: Refactor handling of integer types
+  * Correct two typos.
+  * debian12: fix script error
+  * Docker image usability
+  * Docker: update alpine version
+  * Enhances default javascript files to check config file
+    options
+  * Expand firewall advice in docs
+  * Fix build-deb.sh for releases
+  * Fix findAutoscanDirectory
+  * Gerbera welcomes 2024
+  * Gerbera-web: update chromedriver for tests
+  * github workflows: make cmake stuff consistent
+  * Import: Safely handle second scan
+  * Import: Safely handle second scan - 2
+  * matroska_handler: update API calls to work with
+    libebml/libmatroska 2.0
+  * MetadataHandler: Refactor static methods
+  * Metafile: handle instance
+  * Minor fixes to RST documentation
+  * Provide BoxKeys also for scripts
+  * Refactor config and enums to reduce nesting
+  * Refactor parser files
+  * Safely handle suppressed file types
+  * Scripting: print2 function with log level support
+  * some fixes
+  * Sqlite: Harden delete
+  * Take configuration into account when creating virtual-layout
+    (built-in + JS)
+  * Update Conan to v2
+  * Update screenshots to latest version
+  * Update various library versions
+  * Update workflow actions
+  * WebUI: Add Item View
+  * Webui: update vendor libraries
+- Generate the pre script usingn sysusers_generate.
+- Actually run the generated sysusers script as part of pre (do not
+  manually provide the user() symbol, taken care of bu
+  rpm/sysusers.
+- Adapt to RPM 4.19 on Tumbleweed.
+- Update to 2.0.0:
+  NEW:
+    * Staged importing that allows updating the virtual layout instead of deleting
+      and recreating it each time (import-mode=&quot;grb&quot;)
+    * Config options as command line arguments (--set-option OPT=VAL with --print-options)
+    * Allow configuration of follow-symlinks per autoscan directory
+    * Configuration of containers in virtual layout: title can be changed, some nodes can be disabled
+    * New mode of loading Javascript plugins with cleanup of global variables
+    * Generation of example configuration via command line option --create-example-config
+    * Case insensitive sorting for databases
+    * New config options for URL handling and host redirection
+    * Use .nomedia to hide directory, incl. config option
+    * Support for UPnP commands GetFeatureList and GetSortExtensionCapabilities
+  FIXES:
+    * Autoscan: Keep track of renamed directories
+    * Runtime issues in request handling
+    * Configurable handling of HOME directory
+    * Transcoding: parsing issue of requests
+    * Stability for sqlite database access
+    * Browsing on Samsung devices
+- Drop upstreamed gerbera-1.12.1-buildfix-support-fmtlib-10.patch.
+- fix build on Tumbleweed with fmtlib 10 (boo#1218445)
+  add gerbera-1.12.1-buildfix-support-fmtlib-10.patch
+- Use better macro for selecting a newer GCC on Leap.
+- Fix usage of %sysusers_create_package: the macro takes two
+  parameters.
+- Update to 1.12.1:
+  * Debug options for specialized messages
+  * Configure offset of lastPlayedPosition (aka Samsung bookmark)
+  * Calling null IOHandler
+  * Encoding of ticks ' as &amp;apos; for Bose
+  * ffmpeg and transcoding in docker container
+  * Tests failing on openSuSE &gt; 15.3 and others
+- Drop 2759.patch
+- Add 2759.patch: fix tests execution issues.
+- Remove disable-test.patch
+- Update to 1.12.0:
+  * Support for NFO files as additional resources: Set up in resources
+    and place nfo-files (https://kodi.wiki/view/NFO_files/Templates) next to your media files.
+  * Tweaking mimetypes for clients
+  * Editing Flags in web UI
+  * More statistics on web UI
+  * Add support for ip subnets in client config
+  * Defaults for virtual container upnp class
+  * Configuration for SQLite database modes
+  * Offline mode for initial scan large libraries
+- Add disable-test.patch until https://github.com/gerbera/gerbera/issues/2755
+  is fixed. These two tests (UpnpClientsTest.getHostName and ParserTest.SortTrackNumber)
+  were added with this release.
+- Remove 2635.patch
+- Remove fix-fmt9.patch
+- Add fix-fmt9.patch
+- Update 2635.patch
+- Add 2635.patch: this fixes and issue on i586 and x86
+- Update to 1.11.0:
+  * New features:
+    - Database: Clients and statistics are stored database so restart
+      does not empty client list. Client grouping for play statistics.
+    - Search: Support searching playlists containers
+    - Search: Respect ContainerID when performing search
+    - Import: item class filtering and mapping by file properties
+      allows more sophisticated virtual structure
+    - Transcoding: Support filtering transcoding profiles by resource properties
+      (like codecs) avoids transcoding if client can play files
+    - DLNA: Detect DNLA profiles by resource attributes to specify more detailled
+      profile for handling in client
+    - File type support for WavPack improved: More metadata read with
+      special library if compiled in.
+  * Fixes:
+    - Playlist: Fix parser error
+    - Playlist: Handle end of file properly
+    - Browsing: Sort containers first
+    - Search: search result is sort by title now
+    - Import: Timestamps in future are not stored for containers
+    - Lots of others fixes: https://github.com/gerbera/gerbera/releases/tag/v1.11.0
+- Update to 1.10.0:
+  * show subdir of recursive autoscan in directory tree
+  * add screenshots for grid view
+  * add all metadata to search capabilities
+  * search title in metadata instead of file name
+  * reuse Request Handler
+  * lots of other fixes: https://github.com/gerbera/gerbera/releases/tag/v1.10.0
+- Remove fix_for_smt_gt8.patch
+- Use %sysusers_create_package on Tumbleweed
+- Add fix_for_smt_gt8.patch
+- Update to 1.9.2:
+* Titles of search results can be configured
+* Containers in virtual layout can be defined as search result, so,
+  e.g. albums, located in several places are only found once
+* Metadata, like artist, appearing multiple times are now stored
+  in that way and can be sent to UPnP clients as separate entries
+  as well or addressed in layout scripts. If you have a custom js
+  import script which updates metadata you have to modify it using
+  the new properties (see doc on scripting)
+* DLNA profile can be configured using video and audio codec,
+  allow devices to pick supported streams
+* DLNA profile can be set for transcoding
+- Fix spec file
+- Add config.xml
+- Remove unneeded tmpfile
+- Added hardening to systemd service(s) (bsc#1181400). Added patch(es):
+  * harden_gerbera.service.patch
+- Update to 1.9.1:
+  * lots of small code-related fixes
+    https://github.com/gerbera/gerbera/releases/tag/v1.9.1
+- Update to 1.9.0:
+  * New or Improved features:
+    + Many more things have been added to configuration (order of
+      resources for album art, DLNA profiles, upnp properties).
+      Please consult https://docs.gerbera.io/en/stable/config-overview.html
+      for the exact usage
+    + Gerbera now can display dynamic containers, i.e. its contents
+      are calculated as you click. This may show you recently add
+      or changed media
+    + Gerbera now supports client specific transcoding, i.e. video
+      is only transcode for your older devices, newer can stream it
+      as it is
+    + The compatibility with Samsung TV sets was increase again
+    + Minor media and upnp additions in search allow you to make
+      the most out of your files
+  * Refactoring of Code in Database Layer: this means that after
+    the upgrade to 1.9.0 it's not possible to downgrade
+  * Lots of small bug fixed
+    (https://github.com/gerbera/gerbera/releases/tag/v1.9.0)
+- Update to 1.8.2:
+  * Enhance structured layout with configuration
+  * string_view to string conversions
+  * pass SearchLexer by value
+  * return std::nullopt for std::optional
+  * remove pointless const_cast
+  * Improve handling of default config values
+  * several clang-tidy and manual cleanups
+  * Fix parseSortStatement
+  * mostly pass by value changes
+  * Revert last_write_time to seconds since 1970
+  * Encoding of web editor arguments
+  * clang-analyzer and misc
+  * Search query sign from beginning
+  * manual destructor changes
+  * Fix double truncation of playlist name
+  * Generate correct statement for metadata table
+  * Make transactions for SQLite thread safe
+- Update to 1.8.1:
+  * Mysql transactions
+  * Support creation_time on FFmpeg handler
+  * Bump lodash from 4.17.19 to 4.17.21 in /gerbera-web
+  * Synchronize threads properly
+  * add missing optional header for GCC11
+  * remove several implicit fs::path conversions
+  * Concatenate multivalue field with entrySeparator
+  * remove push_back branch
+  * change some size_t to bool
+  * remove some pointless lambdas
+  * remove std::distance where empty is sufficient
+  * Implement SAMSUNG X_GetFeatureList
+  * More chrono optimizations
+  * algorithm cleanups
+  * Determine container art image from files
+  * massive std::chrono conversion
+  * string_view conversions
+  * Add support for Windows Media Player
+  * Conan: Tidy up CMake conan integration
+  * Implement UPnP SortCriteria
+  * Avoid needless process elevation requirement on illumos
+  * Only use music tracks as container art source
+  * Work around undefined syscalls on solaroid systems
+  * Documentation for exiv2 meta data usage
+  * Clean compilation and errno fix
+  * Enable ContainerArt for PC Directory
+  * auto&amp;&amp; conversions
+  * fs::path conversions
+  * Cleanup path handling
+  * add -d, -u and -P commandline options to docs
+  * Fixed required versions of libupnp and libnpupnp
+  * fix UPNP_USING_CHUNKED breaks npupnp compatibility
+  * clang-tidy: replace typedef with using
+  * Add cmdline options -u, -d and -P
+  * Fix transcoded media ends before file is complete
+- Update to 1.8.0:
+  * Significant improvement in import speeds with large collections
+  * Handle Samsung X_SetBookmark action, for saving position of viewed
+    media, when enabled by flag
+  * New search support for containers, i.e. Albums, Artists and Genres
+  * Extract metadata information from mp3 files with ID3v1 tags,
+    not just v2
+  * Added a retry when binding to interfaces, should make Gerbera
+    much more reliable to start with slow network startup.
+  * Fix build with GCC11
+  * Beautify titles which are generated from file names
+- Gerbera requires GCC &gt;= 8.0 to compile, therefore we need to specify
+  a higher version than the default one (7.5.0) on 15.sp3
+- Update to 1.7.0:
+  * display thumbnails, album art and container images
+  * set additional import options for directories on filesystem page
+  * page to edit configuration (most of it), your settings
+    are stored in the database
+  * charset can be specific to import library
+  * resource configuration can be used for container images
+  * additional metadata stored from import scan
+  * multiple disks distinguished by part_number field
+  * modification time for autoscan directories now reflects sub directories
+    and reduces startup footprint
+  * All functions have been moved to common.js
+  * A custom script file can be set in config.xml. It may contain
+    additional functions or overwrites for the existing ones - if needed
+  * Most entries from configuration can be accessed via
+    new global variable config.
+  * lots of fixes:
+    https://github.com/gerbera/gerbera/releases/tag/v1.7.0
+- Update to 1.6.4:
+  * Fix regression introduced in 1.6.2 in SQL generation
+  * Fix a regression introduced in 1.6.2 when adding resources
+  * Fixed a regression where some files could be removed from the
+    library on a restart due to a race
+  * Fixed a crash in ffmpeg hander where metadata date field
+    was non-numeric
+  * Add Samsung X_SetBookmark stub
+  * Bump jimp
+  * UI: Dont update mimetype to empty
+  * minor fixes
+- Update to 1.6.1:
+  * fixed mime type retrieval for symlinks with libmagic
+  * Actions: Run docker build on tags too
+  * Bump js stuff to fix security warnings
+  * Color folders with children instead of badges saying true
+  * Improve Resource Handling
+  * Add subtitle as resource and update entries with resources attached,
+    improve ContentHandler
+  * Bump elliptic from 6.5.2 to 6.5.3 in /gerbera-web
+  * fix upnp header include
+  * std::algorithm conversions
+  * v1.6.0: https://github.com/gerbera/gerbera/releases/tag/v1.6.0
+- Generalize description. Use %autosetup.
+- Update to 1.5.0
+  * Client Auto detection and DLNA quirks always enabled
+  * C++ Standardisation
+  * UI Enhancements
+  * Transcoding Enhancements
+  * Expat has been replaced with pugixml
+  * Spdlog is now used for logging
+  * upnp min version 1.12.0
+  * Lots of bug fixes and improvements all around
+Detailed changelong: https://github.com/gerbera/gerbera/releases/tag/v1.5.0
+- Update to version 1.3.2:
+  * Allow to set the manufacturer and the modelURL via config file (#477), thanks @joerg-krause
+  * Fix find_program taglib-config when cross-compiling (#476), thanks @joerg-krause
+  * Update config-import.rst (#475), thanks @ghlupe2
+  * Add Gerbera version to UI (#469), thanks @elmodaddyb
+  * cmake/FindFFMPEG: do not quieten messages when using pkg-config (#466), thanks @joerg-krause
+  * Fixture upgrade (#465), thanks @elmodaddyb
+  * Update js cookie (#464), thanks @elmodaddyb
+  * Add virtualUrl to AlbumArt resource for consistent resource URIs (#460), thanks @elmodaddyb
+  * Use exiv2 header that include all headers (#457), thanks @nicolas-s
+  * Update vendor dependencies (#455), thanks @elmodaddyb
+  * Docs: Bump version (#452), thanks @v00d00
+  * feat: provide a way to toggle DLNA-seeking with a config (#450), thanks @rtm-ctrlz
+  * main: bugfix interface CLI option (#451), thanks @edzius
+  * Generate config.xml with XML Declaration (#447), thanks @elmodaddyb
+- Update to version 1.3.1:
+  * Build system improvements, thanks @ffontaine
+  * Fixes for DLNA Headers handling
+  * Add support for TXXX AuxData extraction from MP3
+  * Fix External URL resource generation, thanks @elmodaddyb
+  * Latest NPM Updates, thanks @elmodaddyb
+- Do not build against mysql - sqlite3 for tiny db is enough
+- Use exiv2 instead of exif
+- Update to gerbera.conf.in
+- Initial package
+</comment>
+    <requestid>1379615</requestid>
+  </revision>
 </revisionlist>

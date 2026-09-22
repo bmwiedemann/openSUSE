@@ -1,4 +1,83 @@
 -------------------------------------------------------------------
+Tue Sep 22 07:48:23 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add missing libavfilter buildrequires.
+
+-------------------------------------------------------------------
+Sun Sep 20 10:14:47 UTC 2026 - ecsos <ecsos@opensuse.org> - 3.3.0
+
+- Update to 3.3.0
+  * Changes
+    Gerbera 3.3.0 (#3934)
+    Doxygen: silence warnings (#3930)
+    Make Layout Options consistent (#3895)
+    Refactor Sql hash codes (#3877)
+    Bump master (#3835)
+  * Features
+    Add internal Transcoding (#3867)
+    Add server flags for dynamic description (#3904)
+    Add quirk NoSecNamespace for Universum DAB+ Internet Radio (#3901)
+    Database selection from command line (#3879)
+    Add ImportMode to AutoScan settings (#3876)
+    Add support for cuesheets (#3840)
+  * Bug Fixes
+    Fix stack exhaustion via nested search criteria (#3936)
+    Fix SQL injection via search container (#3924)
+    Fix search for multiple properties (#3920)
+    add missing headers (#3889)
+    Handle url decoding correctly for npupnp (#3882)
+    Fix mysql migration 29 (#3878)
+    Fix potential nullptr dereference (#3875)
+    Fix SQLDatabase::getRefObjects SQL on MySQL/MariaDB (#3865)
+    Extend length of lyrics (#3863)
+    Fix SQL injection via search parameters (#3860)
+    Fix for SQL Error when using postgresql (#3854)
+    Fix sqlite resource migration (#3850)
+    Fix saving some config properties from ui (#3847)
+    Fix includes (#3841)
+  * Dependencies
+    Bump adm-zip from 0.6.0 to 0.6.1 in /gerbera-web (#3938)
+    Drop EOL distros (#3932)
+    Update to pupnp 22.1.0 (#3931)
+    Update to taglib 2.3.2 (#3929)
+    Bump serialize-javascript and mocha in /gerbera-web (#3928)
+    Bump fast-uri from 3.1.5 to 3.1.7 in /gerbera-web (#3927)
+    Update Build Environment (#3917)
+    Update to pupnp 22.0.6 (#3916)
+    Update to googletest 1.18.0 (#3914)
+    Bump fast-uri from 3.1.4 to 3.1.5 in /gerbera-web (#3913)
+    Bump ip-address from 10.2.0 to 10.4.0 in /gerbera-web (#3912)
+    Bump shell-quote and concurrently in /gerbera-web (#3910)
+    Update to taglib 2.3.1 (#3908)
+    Bump actions/setup-node from 6 to 7 (#3906)
+    Bump actions/setup-python from 6 to 7 (#3907)
+    Update to pupnp 22.0.4 (#3905)
+    Bump actions/cache from 5 to 6 (#3900)
+    Use latest utfcpp directly (#3896)
+    Bump form-data from 4.0.5 to 4.0.6 in /gerbera-web (#3892)
+    Bump actions/checkout from 6 to 7 (#3893)
+    Update to pupnp 2.0.2 - pugixml 1.16 - fmt 12.2.0 (#3890)
+    Bump shell-quote and concurrently in /gerbera-web (#3887)
+    Collected Updates (#3886)
+    Bump tmp from 0.2.5 to 0.2.7 in /gerbera-web (#3872)
+    build support for resolute raccoon (#3871)
+    Bump qs and body-parser in /gerbera-web (#3869)
+    Bump js-cookie from 3.0.5 to 3.0.7 in /gerbera-web (#3868)
+    Update to taglib 2.3 (#3866)
+    Bump @babel/plugin-transform-modules-systemjs from 7.29.0 to 7.29.4 in /gerbera-web (#3862)
+    Bump fast-uri from 3.1.0 to 3.1.2 in /gerbera-web (#3861)
+    Bump axios from 1.15.0 to 1.16.0 in /gerbera-web (#3858)
+    Bump ip-address from 10.1.0 to 10.2.0 in /gerbera-web (#3857)
+    Update to pupnp 1.18.5 (#3855)
+    Bump follow-redirects from 1.15.11 to 1.16.0 in /gerbera-web (#3852)
+    Bump axios from 1.13.6 to 1.15.0 in /gerbera-web (#3846)
+    Bump basic-ftp from 5.2.1 to 5.2.2 in /gerbera-web (#3845)
+    Bump basic-ftp from 5.2.0 to 5.2.1 in /gerbera-web (#3843)
+    Bump lodash from 4.17.23 to 4.18.1 in /gerbera-web (#3842)
+    Bump picomatch from 2.3.1 to 2.3.2 in /gerbera-web (#3837)
+- Drop gerbera-pugixml-1.16-tests.patch because now in upstream.
+
+-------------------------------------------------------------------
 Thu Sep 10 08:32:59 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Add gerbera-pugixml-1.16-tests.patch to fix ExampleConfigGeneratorTest
@@ -251,7 +330,7 @@ Tue Aug 19 08:55:26 UTC 2025 - ecsos <ecsos@opensuse.org> - 2.6.1
     - Increased size of debug-mode config option to unsigned long long to avoid overflow. Includes new very long integer config option.
     - Support for loading scripts in tests is dropped in preperation of dropping the feature completely.
   * Changes
-    - Gerbera 2.6.1 (#3565), thanks @KarlStraussberger
+    - Gerbera 2.6.1 (#3565)
     - Catch exceptions from metadata handlers (#3563)
     - Remove test support for loading scripts (#3562)
     - Fix MySQL database upgrade from 23 to 24 (#3558)
