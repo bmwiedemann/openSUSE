@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Sun Sep 20 10:16:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.10.1:
+  * Add AIX, Hurd, Platform and sysinfo to the package keywords,
+    and the Programming Language :: Python :: 3.15 classifier.
+  * Run the test suite without click-extra or pytest-xdist, as
+    distribution builds do: the readme mindmap test now skips
+    instead of stopping collection, and the xdist_group marker no
+    longer warns.
+- update to 13.10.0:
+  * Add Shell.executables and Shell.executable_names: the file
+    names a shell's binary goes by, pwsh and powershell_ise for
+    PowerShell and nu for Nushell.
+  * Add shell_from_path() to resolve a shell binary path, like the
+    value of SHELL, to its Shell.
+  * Fix current_shell(), current_shell_path() and Shell.info()
+    overlooking a running pwsh or nu parent process, which they
+    matched by ID alone.
+- update to 13.9.0:
+  * Detect Solus through the solus ID its own /etc/os-release
+    carries.
+- update to 13.8.0:
+  * Detect CRUX and NuTyX, two source-based Linux distributions,
+    through the crux and nutyx IDs their own /etc/os-release
+    carries.
+- update to 13.7.1:
+  * Fix current_platform() raising on illumos, where is_solaris()
+    matched too: illumos inherits the Solaris-2.11 release string
+    from OpenSolaris.
+  * Detect i86pc, the machine string Solaris and illumos report, as
+    X86_64 instead of an unrecognized architecture.
+  * Name the installer in the ImportError raised when the pytest
+    extra is missing: it now prints uv pip install
+    'extra-platforms[pytest]'.
+  * Add a benchmark marker to test_import_time, so a build on a
+    slow or emulated architecture can exclude the wall-clock budget
+    with -m "not benchmark".
+- update to 13.7.0:
+  * Identify a Linux distribution through systemd-hostnamed when
+    neither /etc/os-release nor /usr/lib/os-release is readable.
+  * Add agent detection for OpenAI Codex, GitHub Copilot CLI,
+    Crush, Gemini CLI and Pi: CODEX, COPILOT_CLI, CRUSH, GEMINI_CLI
+    and PI.
+  * Report an unrecognized agent at WARNING level when the generic
+    AI_AGENT variable is set, as LLM already did.
+  * Drop the Codecov integration and its readme badge. Coverage is
+    now gated by a local [tool.coverage] report.fail_under floor.
+  * Sync CI workflows with repomatic 7.14.0; no functional changes
+    to the package.
+  * Document the platform_info module on the platforms page,
+    covering os_release_id(), linux_info(), macos_info() and
+    windows_info().
+  * Collect the codebase's future-work notes as todo admonitions,
+    surfaced on the documentation's todo-list page.
+
+-------------------------------------------------------------------
 Tue Aug  4 07:44:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.6.0:
