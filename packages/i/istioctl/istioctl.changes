@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:43:15 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.31.1:
+  * Istio CVEs
+    - GHSA-qm8v-g4f9-qhjx (CVSS score 6.8, Moderate): BackendTLSPolicy
+      fails open to plaintext on sidecar proxies when its CA reference
+      is unresolved.
+  * Fixed istioctl analyze building Kubernetes clients directly from
+    istio-system multicluster secrets without sanitizing the
+    kubeconfig, which could allow a crafted secret to run an exec
+    credential plugin (or read local files via other unsafe auth
+    fields) on the machine running istioctl. The kubeconfig is now
+    sanitized the same way istiod already sanitizes these secrets.
+
+-------------------------------------------------------------------
 Sat Sep 19 09:20:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.31.0:
