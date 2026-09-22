@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 19 08:35:23 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- _service: set update=true for cargo-vendor service
+- update to 0.71.0:
+  * Diffing
+    + Improved performance, particularly for line-based diffs or
+      pathological cases (e.g. an extremely long line).
+    + Linear diffs (used in line-based diffs and word highlighting) have
+      changed from the Wu-Manber algorithm to the Histogram algorithm. This
+      is a modest runtime improvement and a large improvement for memory
+      usage in worst case scenarios.
+    + Some diff results have slightly changed, although the diff quality
+      should be similar. (Please file bugs if not.)
+  * Parsing
+    + Improved C++, Dockerfile, Haskell, JavaScript, Makefile, Perl, Ruby,
+      Rust, Scala and TypeScript.
+    + Improved heuristics and the default globs used for language detection.
+    + Removed Hare support (upstream parser is no longer maintained).
+  * Command Line Interface
+    + `--context` can now be set with the short flag `-c`.
+  * Release
+    + Prebuilt binaries attached to releases now include the version in the
+      filename.
+
+-------------------------------------------------------------------
 Sat Aug  8 09:54:16 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - update to 0.70.0:
