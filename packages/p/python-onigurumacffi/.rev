@@ -35,4 +35,12 @@
   * enable free-threaded builds</comment>
     <requestid>1334420</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>23019b5c2ca6353876118354e922a9b1</srcmd5>
+    <version>1.5.0</version>
+    <time>1790085155</time>
+    <user>anag_factory</user>
+    <comment>- Relax shared library path, 3.15 uses multiarch triplets.</comment>
+    <requestid>1379583</requestid>
+  </revision>
 </revisionlist>

@@ -59,7 +59,7 @@ export CFLAGS="%{optflags}"
 %doc README.md
 %license LICENSE
 %{python_sitearch}/onigurumacffi.py
-%{python_sitearch}/_onigurumacffi.abi3.so
+%{python_sitearch}/_onigurumacffi.abi3*.so
 %{python_sitearch}/__pycache__/onigurumacffi*
 %{python_sitearch}/onigurumacffi-%{version}.dist-info/
 
