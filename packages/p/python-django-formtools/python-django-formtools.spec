@@ -24,6 +24,8 @@ Summary:        A set of high-level abstractions for Django forms
 License:        BSD-3-Clause
 URL:            https://github.com/jazzband/django-formtools
 Source:         https://files.pythonhosted.org/packages/source/d/django-formtools/django_formtools-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM https://github.com/jazzband/django-formtools/pull/304 Fix test_manipulated_cookie to work with Django 6.1's cookie signing
+Patch0:         django61.patch
 BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
@@ -39,7 +41,7 @@ Django's "formtools" is a set of high-level abstractions for Django forms.
 Currently for form previews and multi-step forms.
 
 %prep
-%setup -q -n django_formtools-%{version}
+%autosetup -p1 -n django_formtools-%{version}
 
 %build
 %pyproject_wheel

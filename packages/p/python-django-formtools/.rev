@@ -133,4 +133,12 @@
     <comment></comment>
     <requestid>1365395</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>908044551babde37e40a6bd0ba62745d</srcmd5>
+    <version>2.7</version>
+    <time>1790085228</time>
+    <user>anag_factory</user>
+    <comment>- Add django61.patch to fix test failure with Django 6.1</comment>
+    <requestid>1379673</requestid>
+  </revision>
 </revisionlist>
