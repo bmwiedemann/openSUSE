@@ -119,4 +119,47 @@ version is below the pinned one. Factory's comfyui floor (&gt;= 1.50.6, the XSS
 security floor) is satisfied, so no comfyui change is needed.</comment>
     <requestid>1376109</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>26dbe7eb33a12bb8452095fc1aa9faa1</srcmd5>
+    <version>1.54.7</version>
+    <time>1790101864</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.54.7 (crossing 1.53.6; those are the only two PyPI
+releases in the range, the other tags carry no artefact).
+
+Worth flagging for review: 1.54.7 introduces a behaviour regression for
+local installs. A graph containing any API node - anything with
+api_node: true, so the built-in OpenAI, Kling, Luma, Veo and Recraft
+nodes - refuses to run until a Comfy account is signed in, and auto-queue
+is blocked too. The gate defaults on.
+
+The only input that disables it is the partner_run_gate_enabled server
+feature flag, and the changelog names it without giving a recipe on
+purpose. On the ComfyUI we ship (0.34.2) that flag is absent from
+CLI_FEATURE_FLAG_REGISTRY, so _coerce_flag_value() passes the raw string
+through and &quot;--feature-flag partner_run_gate_enabled=false&quot; delivers the
+string &quot;false&quot;, which is truthy in JavaScript, leaving the gate on. The
+form that happens to work relies on that same backend defect, so
+documenting it in a permanent changelog would become false the moment
+upstream fixes the coercion. An upstream issue against ComfyUI is owed.
+
+Upstream's new Comfy Agent side panel is deliberately not credited: it is
+cloud-only and dead-code-eliminated from this build. The shipped bundle
+contains the constant-folded branch
+&quot;function useAgentDockMount(){return{docked:M(()=&gt;!1),DockedAgentPanel:null}}&quot;,
+no panel chunk, and build-manifest.json reports distribution &quot;localhost&quot;.
+
+No CVE or GHSA appears anywhere in the 524-commit range, and the three
+known advisories for this project are all patched below 1.50.6 and
+already cited. The one security-labelled commit, centralising sanitised
+HTML rendering, is credited.
+
+The consumer floor in science:machinelearning/comfyui is
+&gt;= 1.50.6, a deliberate security floor rather than a compatibility pin,
+so no lockstep bump is owed.
+
+Built and checked locally on aarch64: rpmlint 3 packages, 0 errors, 0
+warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
+    <requestid>1379732</requestid>
+  </revision>
 </revisionlist>

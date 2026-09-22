@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:11:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.54.7:
+  * API nodes now gate the Run button and auto-queue on local
+    installs: a graph containing one refuses to run until a Comfy
+    account is signed in. The gate defaults on, and the
+    partner_run_gate_enabled server flag is the only way off
+  * Upstream's new Comfy Agent side panel is cloud-only and is
+    compiled out of this build
+  * German added as a UI language
+  * Node help, text previews, markdown widgets and update toasts
+    render HTML through one central sanitising component
+  * Subgraph links that reference a missing node or slot are
+    rejected before the subgraph is unpacked
+  * Image upload widgets now accept .exr next to image/*
+  * Node render geometry is cached and the progress overlay only
+    redraws when it changes
+  * Primitive node widget values survive a workflow reload, and a
+    non-numeric value in a persisted numeric widget no longer
+    stops the canvas render loop
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Mon Sep  7 06:38:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.52.7:
