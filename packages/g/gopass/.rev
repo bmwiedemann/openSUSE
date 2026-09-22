@@ -194,4 +194,21 @@
   - ci: Fix broken script snippet in release workflow</comment>
     <requestid>1377400</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>dfa4ca4070341a0bbbb85dc496b15f6b</srcmd5>
+    <version>1.17.3</version>
+    <time>1790112306</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.17.3:
+  - Changed
+    - deps: move HIBP client into pkg/hibp to break the module
+      cycle (#3603)
+  - Fixed
+    - age: send waiting on plugin message to stderr (#3613)
+    - config: Avoid overwriting the config when there is no need
+      (#3602) (#3593)
+    - tempfile: avoid hdiutil deprecation warning on macOS 27
+      (#3610)</comment>
+    <requestid>1379751</requestid>
+  </revision>
 </revisionlist>
