@@ -565,4 +565,18 @@
     <comment>- Update dlc.dat and geoip.dat (forwarded request 1373827 from hillwood)</comment>
     <requestid>1373828</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>2e57829f78081a69e021b18e3ded30d7</srcmd5>
+    <version>5.54.2</version>
+    <time>1790085255</time>
+    <user>anag_factory</user>
+    <comment>- Update version to 5.54.2
+  * Add iOS Client Support Bundle: Packet Bridge Receiver, Subscription
+    Improvment, DNS and other udp improvement
+  * Add Wireguard Chain Proxy Support
+  * Fix bugs
+  * Update vendor (boo#1266787, CVE-2026-39821, boo#1278801, CVE-2026-84445, 
+    boo#1279262, CVE-2026-84303, boo#1279411, CVE-2026-84304) (forwarded request 1379685 from hillwood)</comment>
+    <requestid>1379686</requestid>
+  </revision>
 </revisionlist>

@@ -25,7 +25,7 @@
 %define   import_path     github.com/v2fly/v2ray-core/v5
 
 Name:           v2ray-core
-Version:        5.53.0
+Version:        5.54.2
 Release:        0
 Summary:        Network tools for building a computer network
 License:        MIT
@@ -36,7 +36,7 @@ Source1:        vendor.tar.gz
 Source2:        v2ray.service
 Source3:        v2ray@.service
 Source4:        https://github.com/v2fly/geoip/releases/download/202608050239/geoip.dat
-Source5:        https://github.com/v2fly/domain-list-community/releases/download/20260826065759/dlc.dat
+Source5:        https://github.com/v2fly/domain-list-community/releases/download/20260922112956/dlc.dat
 Source6:        https://github.com/v2fly/v2ray-core/releases/download/v%{version}/v2ray-extra.zip
 Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes

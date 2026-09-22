@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:02:48 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Update version to 5.54.2
+  * Add iOS Client Support Bundle: Packet Bridge Receiver, Subscription
+    Improvment, DNS and other udp improvement
+  * Add Wireguard Chain Proxy Support
+  * Fix bugs
+  * Update vendor (boo#1266787, CVE-2026-39821, boo#1278801, CVE-2026-84445, 
+    boo#1279262, CVE-2026-84303, boo#1279411, CVE-2026-84304)
+
+-------------------------------------------------------------------
 Wed Aug 26 13:47:02 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update dlc.dat and geoip.dat 
