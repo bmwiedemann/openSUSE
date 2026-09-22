@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:02:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.31.1:
+  + After the last huge CVE and security fix releases finally a
+    simple papercut fix release.
+  + Most notable user visible changes:
+    - xfreerdp image clipboard now better handles conversion of
+      host images to bitmap (CF_DIB the default windows exchange
+      format)
+    - Improved keyboard mapping for sdl-freerdp (some more exotic
+      keys are properly mapped now)
+    - xfreerdp RAILS: better transparency support with windows 11
+    - Fix C23 macro definitions for GCC
+
+-------------------------------------------------------------------
 Thu Aug 27 19:36:21 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.31.0:
