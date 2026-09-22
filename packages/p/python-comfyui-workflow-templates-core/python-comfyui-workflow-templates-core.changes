@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:06:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.3.359:
+  * Loader registers a sixth media bundle, media-assets-02,
+    which carries the previews for the 11 new templates and
+    also takes over four provider logos from media-assets-01.
+    Needs python-comfyui-workflow-templates-media-assets-02,
+    newly packaged alongside this update; without it those
+    assets do not resolve
+  * Manifest now lists 582 templates (was 571): 11 added,
+    none removed, 26 checksums refreshed
+
+-------------------------------------------------------------------
 Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.3.351:

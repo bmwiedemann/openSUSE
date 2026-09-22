@@ -169,4 +169,36 @@ change; no code.</comment>
 Supersedes sr#1378171. Needed with templates 0.11.63 so comfyui 0.36.0 (Requires templates &gt;= 0.11.62) is installable in adi:20.</comment>
     <requestid>1378346</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>4bf7d025308d7deca8008f3e547f0162</srcmd5>
+    <version>0.3.359</version>
+    <time>1790112300</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.359.
+
+The loader registers a sixth media bundle, media-assets-02, and the
+manifest grows from 571 to 582 templates: 11 added, none removed, 26
+checksum entries refreshed.
+
+LANDING ORDER - this is invisible to tooling, so stating it here is the
+only way a reviewer learns it. media-assets-02 carries the previews for
+the 11 new templates and also takes over four provider logos from
+media-assets-01. It is packaged as python-comfyui-workflow-templates-
+media-assets-02 and submitted separately as request 1379731. This request
+should land after that one; in the interim 22 assets do not resolve.
+Nothing breaks at install time - this package declares no bundle
+Requires, and Factory's meta package keeps floors that stay satisfied
+throughout - so the degradation is bounded and self-healing.
+
+This must land together with python-comfyui-workflow-templates-json
+0.1.94: the json package alone raises KeyError for the 11 new template
+ids against the old manifest, and upstream's meta 0.11.68 pins exactly
+core==0.3.359 and json==0.1.94.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings, 0
+badness. Verified by running the shipped loader with the new bundle in
+place: all 33 assets routed to media-assets-02 resolve and their sha256
+values match the manifest.</comment>
+    <requestid>1379745</requestid>
+  </revision>
 </revisionlist>
