@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:43:13 UTC 2026 - Axel Braun <axel.braun@gmx.de>
+
+- version 11.0
+  * DB schema revision: 11
+  * Added an index on AttachedFiles uuids to speed-up the SDK calls 
+    SetAttachmentCustomData and GetAttachmentCustomData that are used by,
+    notably, the advanced-storage plugin.
+  * Small update of the "DeleteResource" function to avoid a warning when multiple
+    clients are trying to delete the same resource at the same time.
+
+-------------------------------------------------------------------
 Sun Aug 23 18:14:50 UTC 2026 - Axel Braun <axel.braun@gmx.de>
 
 - version 10.3
