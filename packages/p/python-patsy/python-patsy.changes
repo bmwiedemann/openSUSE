@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 01:46:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.0.3:
+  * Added official support for Python 3.14.
+  * Fixed constraint tokenizer compatibility with Python 3.15 pre-releases.
+
+-------------------------------------------------------------------
 Mon Nov 17 21:13:17 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.2:

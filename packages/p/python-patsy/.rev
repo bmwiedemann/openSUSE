@@ -140,4 +140,14 @@ Needed by python-seaborn, see request 436927</comment>
   * Fixed compatibility with Pandas 3's new StringDtype.</comment>
     <requestid>1318328</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c2364a08c59ed5177a685694cee61a15</srcmd5>
+    <version>1.0.3</version>
+    <time>1790085077</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.3:
+  * Added official support for Python 3.14.
+  * Fixed constraint tokenizer compatibility with Python 3.15 pre-releases.</comment>
+    <requestid>1379549</requestid>
+  </revision>
 </revisionlist>
