@@ -23,7 +23,7 @@
 %define         psuffix %nil
 %endif
 Name:           secrets%{psuffix}
-Version:        13.0.1
+Version:        14.0
 Release:        0
 Summary:        A password manager for GNOME
 License:        GPL-3.0-only
@@ -38,7 +38,7 @@ BuildRequires:  python3-PyKCS11
 BuildRequires:  python3-base >= 3.8.0
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-Gdk
-BuildRequires:  python3-pykeepass >= 4.1.1
+BuildRequires:  python3-pykeepass >= 4.2.0
 BuildRequires:  python3-pyotp >= 2.4.0
 BuildRequires:  python3-pytest
 BuildRequires:  python3-python-yubico
