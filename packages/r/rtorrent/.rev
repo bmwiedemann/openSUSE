@@ -330,4 +330,12 @@
     <comment>- Update to release 0.16.23</comment>
     <requestid>1378377</requestid>
   </revision>
+  <revision rev="42" vrev="1">
+    <srcmd5>f86ff85a47f01dfbc15971cf3bb633b4</srcmd5>
+    <version>0.16.24</version>
+    <time>1790107139</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 0.16.24</comment>
+    <requestid>1379754</requestid>
+  </revision>
 </revisionlist>

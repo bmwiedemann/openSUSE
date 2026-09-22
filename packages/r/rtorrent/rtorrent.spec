@@ -17,7 +17,7 @@
 
 
 Name:           rtorrent
-Version:        0.16.23
+Version:        0.16.24
 Release:        0
 Summary:        Console-based BitTorrent client
 License:        SUSE-GPL-2.0+-with-openssl-exception
@@ -57,7 +57,7 @@ run in the background with the help of e.g. GNU screen.
 export CXX=g++-13
 %endif
 # It's full of type pun violations
-export CFLAGS="%optflags -fno-strict-aliasing"
+export CFLAGS="%optflags -fno-strict-aliasing -O0 -ggdb3"
 export CXXFLAGS="$CFLAGS"
 autoreconf -fiv
 %configure --with-xmlrpc-tinyxml2 --enable-ipv6

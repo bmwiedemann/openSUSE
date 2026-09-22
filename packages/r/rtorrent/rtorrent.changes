@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 16:59:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.24
+  * Removed the custom ip%device syntax for binding to a specific
+    device, and replaced it with with network.bind_device.set and
+    `network.bind_device.ipv{4,6}.set` commands.
+
+-------------------------------------------------------------------
 Wed Sep 16 12:52:59 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.23
