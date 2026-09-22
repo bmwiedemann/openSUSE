@@ -1,7 +1,7 @@
 #
 # spec file for package ldap-yp-tools
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           ldap-yp-tools
-Version:        1.13
+Version:        1.14
 Release:        0
 Summary:        LDAP YP Tools
 License:        BSD-2-Clause

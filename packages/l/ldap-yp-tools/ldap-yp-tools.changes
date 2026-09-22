@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 12:31:21 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update ldap-yp-tools to version 1.14
+
+-------------------------------------------------------------------
 Thu Feb 29 14:27:26 UTC 2024 - pgajdos@suse.com
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
