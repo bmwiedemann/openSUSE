@@ -28,6 +28,7 @@ URL:            https://www.nongnu.org/lzip/lzlib.html
 Source:         https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz
 Source2:        https://download.savannah.gnu.org/releases/lzip/lzlib/%name-%version.tar.gz.sig
 Source3:        %name.keyring
+Source9:        baselibs.conf
 PreReq:         %install_info_prereq
 
 %description
@@ -63,32 +64,32 @@ This subpackage contains libraries and header files for developing
 applications that want to make use of libcerror.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 # not autoconf!
 # don't use the configure macro here, as it will cause the configure script to
 # skip parameters as soon as it encounters one that it doesn't understand
 mkdir build
-pushd build/
+cd build/
 ../configure --prefix="%_prefix" --bindir="%_bindir" --datadir="%_datadir" \
 	--includedir="%_includedir" --infodir="%_infodir" --libdir="%_libdir" \
 	--mandir="%_mandir" --sysconfdir="%_sysconfdir" --enable-shared \
 	CC="%__cc" CFLAGS="%optflags" CXX="%__cxx" CXXFLAGS="%optflags"
 %make_build
-popd
+cd -
 
 %install
-pushd build/
+cd build/
 %make_install LDCONFIG=true
-popd
+cd -
 # configure had no --disable-static
 rm -f "%buildroot/%_libdir"/*.a
 
 %check
-pushd build/
+cd build/
 %make_build check
-popd
+cd -
 
 %ldconfig_scriptlets -n %lname
 

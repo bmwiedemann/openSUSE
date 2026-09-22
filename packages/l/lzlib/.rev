@@ -131,4 +131,13 @@
     <comment>- Update to release 1.16</comment>
     <requestid>1343705</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>9bff13b50999bf694f7e4f4558efef99</srcmd5>
+    <version>1.16</version>
+    <time>1790084925</time>
+    <user>anag_factory</user>
+    <comment>- Add baselibs.conf so that libzio can depend on lzlib
+- Make build recipe POSIX sh compatible</comment>
+    <requestid>1379448</requestid>
+  </revision>
 </revisionlist>
