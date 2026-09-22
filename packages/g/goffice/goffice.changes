@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:39:17 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.10.62:
+  + Use C99 isfinite()/isnan() instead of BSD legacy ones.
+  + Reject -ffast-math and -ffinite-math-only.
+  + Fix build on musl, which lacks isnanl().
+  + Rename finiteD() to isfiniteD().  [--with-decimal64]
+  + Plug leaks.
+  + Fix pango markup issues.
+  + Fix pixbuf problem.  [Gnumeric #892] [Gnumeric #886]
+  + Tentative fix for [Gnumeric #896] (via claude.ai)
+
+-------------------------------------------------------------------
 Thu Apr 30 06:55:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 0.10.61:

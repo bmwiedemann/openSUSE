@@ -957,4 +957,20 @@ The canonical license of the spec file should be GPL-2.0 (forwarded request 1011
   + Fix various issued with text canvas item.</comment>
     <requestid>1350828</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>bed54e42d49a161c86b81ca5f7ceb244</srcmd5>
+    <version>0.10.62</version>
+    <time>1790085179</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.10.62:
+  + Use C99 isfinite()/isnan() instead of BSD legacy ones.
+  + Reject -ffast-math and -ffinite-math-only.
+  + Fix build on musl, which lacks isnanl().
+  + Rename finiteD() to isfiniteD().  [--with-decimal64]
+  + Plug leaks.
+  + Fix pango markup issues.
+  + Fix pixbuf problem.  [Gnumeric #892] [Gnumeric #886]
+  + Tentative fix for [Gnumeric #896] (via claude.ai)</comment>
+    <requestid>1379611</requestid>
+  </revision>
 </revisionlist>
