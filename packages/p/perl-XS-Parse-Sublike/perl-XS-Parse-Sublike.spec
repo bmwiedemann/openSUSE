@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XS-Parse-Sublike
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name XS-Parse-Sublike
 Name:           perl-XS-Parse-Sublike
-Version:        0.410.0
+Version:        0.420.0
 Release:        0
-# 0.41 -> normalize -> 0.410.0
-%define cpan_version 0.41
+# 0.42 -> normalize -> 0.420.0
+%define cpan_version 0.42
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XS functions to assist in parsing sub-like syntax
 URL:            https://metacpan.org/release/%{cpan_name}

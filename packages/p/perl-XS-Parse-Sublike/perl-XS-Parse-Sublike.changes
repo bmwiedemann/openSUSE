@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Sep 17 10:02:19 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.420.0 (0.42)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+
+  0.42    2026-09-16
+          [CHANGES]
+           * Use PNf/PNfARG in unit tests to avoid needing to call PadnameSV()
+
+          [BUGFIXES]
+           * Fix for perl 5.45.3 - need to invoke
+             class_method_parse_post_blockstart() during parse time
+
+-------------------------------------------------------------------
 Wed Dec 10 05:38:05 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.410.0 (0.41)

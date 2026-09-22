@@ -57,4 +57,19 @@
            * Support named refalias parameters</comment>
     <requestid>1323812</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>7f056cf3ff5ad65bbf460bb608bcc655</srcmd5>
+    <version>0.420.0</version>
+    <time>1790084939</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.420.0 (0.42)
+   see /usr/share/doc/packages/perl-XS-Parse-Sublike/Changes
+  0.42    2026-09-16
+          [CHANGES]
+           * Use PNf/PNfARG in unit tests to avoid needing to call PadnameSV()
+          [BUGFIXES]
+           * Fix for perl 5.45.3 - need to invoke
+             class_method_parse_post_blockstart() during parse time</comment>
+    <requestid>1379460</requestid>
+  </revision>
 </revisionlist>
