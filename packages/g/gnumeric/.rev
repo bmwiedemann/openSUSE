@@ -1163,4 +1163,27 @@
   + Print using pango context from GtkPrintContext for consistency.</comment>
     <requestid>1350829</requestid>
   </revision>
+  <revision rev="140" vrev="1">
+    <srcmd5>d2729195062925b333a1c125c341cec6</srcmd5>
+    <version>1.12.62</version>
+    <time>1790085181</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.12.62:
+  + Test improvements
+  + New functions PHI, GAUSS, PERCENTOF, REGEXTEST, REGEXEXTRACT,
+    REGEXREPLACE, NETWORKDAYS.INTL, WORKDAY.INTL, and PARTITIONS.
+  + Add export option &quot;formulas=true&quot; to txt and csv.
+  + Improve xlsx export.
+  + Improve xl compatibility for multiple functions.
+  + Improve GEOMEAN accuracy.
+  + Fix problem with sylk importer.  [#878]
+  + Improve xl compatibility for complex functions.
+  + Fix problems with blanks for database functions.  [#887]
+  + Fix auto-filter problem.  [#891]
+  + Avoid Wayland auto-filter warnings.
+  + Eliminate reliance on deprecated pango functions.
+  + Eliminate reliance on deprecated python functions.
+  + Fix R.PST in the log case.</comment>
+    <requestid>1379612</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:27:45 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.62:
+  + Test improvements
+  + New functions PHI, GAUSS, PERCENTOF, REGEXTEST, REGEXEXTRACT,
+    REGEXREPLACE, NETWORKDAYS.INTL, WORKDAY.INTL, and PARTITIONS.
+  + Add export option "formulas=true" to txt and csv.
+  + Improve xlsx export.
+  + Improve xl compatibility for multiple functions.
+  + Improve GEOMEAN accuracy.
+  + Fix problem with sylk importer.  [#878]
+  + Improve xl compatibility for complex functions.
+  + Fix problems with blanks for database functions.  [#887]
+  + Fix auto-filter problem.  [#891]
+  + Avoid Wayland auto-filter warnings.
+  + Eliminate reliance on deprecated pango functions.
+  + Eliminate reliance on deprecated python functions.
+  + Fix R.PST in the log case.
+
+-------------------------------------------------------------------
 Thu Apr 30 07:00:37 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.12.61:
