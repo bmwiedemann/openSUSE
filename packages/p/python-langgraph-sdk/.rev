@@ -41,4 +41,22 @@ registering a catch-all; deployments using action-scoped handlers should
 add a global default-deny handler. 510 tests pass.</comment>
     <requestid>1374581</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>3a27bae4cabda2dbc3924872390bcaf8</srcmd5>
+    <version>0.4.5</version>
+    <time>1790107115</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.5.
+
+One shipped change: Interrupt gains an optional response_schema field, the
+client-side counterpart of python-langgraph 1.2.12's typed interrupt
+support. Everything else in the release is test-only or a lint-pin bump.
+
+This is a pairing rather than a hard floor - langgraph 1.2.12 does not
+require this version - so the two can land independently.
+
+Built and checked locally on aarch64: 510 tests pass, rpmlint 0 errors,
+0 warnings, 0 badness.</comment>
+    <requestid>1379742</requestid>
+  </revision>
 </revisionlist>

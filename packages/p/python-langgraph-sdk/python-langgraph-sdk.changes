@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.5:
+  * The Interrupt schema carries an optional response_schema, the
+    JSON Schema a graph attaches to describe the value it expects
+    on resume
+
+-------------------------------------------------------------------
 Sat Aug 29 07:19:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.4:
