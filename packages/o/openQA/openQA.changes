@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Sep 21 16:32:24 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790003470.1faa32c9:
+  * feat(workers): Add worker reservation system
+  * fix: Fix typo in NGINX config
+  * fix: Include missing `PATCH` in rate limiting config example
+  * fix(test): print developer console log on timeout failure
+  * refactor(test): isolate concurrent full-stack test databases
+  * feat: Add expand/collapse all rows buttons
+
+-------------------------------------------------------------------
+Mon Sep 21 08:58:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1789981105.050ec7ba:
+  * refactor(test): isolate concurrent full-stack test databases
+  
+-------------------------------------------------------------------
 Fri Sep 18 22:23:18 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1789770186.a0963169:
@@ -14,7 +31,7 @@ Fri Sep 18 22:23:18 UTC 2026 - okurz@suse.com
   * fix(worker): Drop redundant $pid definedness check
   * fix(worker): Detect cgroup slice on pure cgroup v2 hosts
   * feat: Make read-only bug-related API routes consistently public
-
+  
 -------------------------------------------------------------------
 Tue Sep 08 05:03:05 UTC 2026 - okurz@suse.com
 
