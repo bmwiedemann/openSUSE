@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 22 11:58:16 UTC 2026 - munix9@googlemail.com
+
+- Update to version 20260922
+  * chore(deps): bump actions/checkout from 6 to 7
+  * feat: Add rule for Amlogic
+  * fix: route Huawei/Motorola adb PIDs through adb labels
+  * feat: Add rule for SpacemiT
+  * fix: remove dead rules and resolve conflicting Samsung PIDs
+
+- Add %check section with "udevadm verify" (Factory/TW)
+
+-------------------------------------------------------------------
 Thu Apr 23 16:07:08 UTC 2026 - munix9@googlemail.com
 
 - Update to version 20260423

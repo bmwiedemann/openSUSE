@@ -229,4 +229,19 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1350284</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>bcb397ca0d7221358a0178f8e67c2209</srcmd5>
+    <version>20260922</version>
+    <time>1790103149</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 20260922
+  * chore(deps): bump actions/checkout from 6 to 7
+  * feat: Add rule for Amlogic
+  * fix: route Huawei/Motorola adb PIDs through adb labels
+  * feat: Add rule for SpacemiT
+  * fix: remove dead rules and resolve conflicting Samsung PIDs
+- Add %check section with &quot;udevadm verify&quot; (Factory/TW)
+</comment>
+    <requestid>1379724</requestid>
+  </revision>
 </revisionlist>

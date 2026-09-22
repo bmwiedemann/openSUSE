@@ -17,7 +17,7 @@
 
 
 Name:           android-udev-rules
-Version:        20260423
+Version:        20260922
 Release:        0
 Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later
@@ -48,6 +48,13 @@ such as /dev/android*.
 %install
 install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
 install -D -m 0644 -t %{buildroot}%{_udevrulesdir} 51-android.rules
+
+%if 0%{?suse_version} >= 1699
+# error in leap 16:
+# udevadm: symbol lookup error: udevadm: undefined symbol: sym_kmod_unref, version SD_SHARED
+%check
+udevadm verify --resolve-names=never 51-android.rules
+%endif
 
 %pre -f adbusers.pre
 
