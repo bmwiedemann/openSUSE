@@ -52,6 +52,8 @@ RUN set -euo pipefail; mkdir -p /usr/local/lib/guestfs/appliance && \
     qemu-img convert -c -O qcow2 root root.qcow2 && \
     mv root.qcow2 root && \
     rm -rf /var/tmp/.guestfs-*
+# uninstall supermin and dependencies
+RUN set -euo pipefail; rpm --root /target --nodeps -e zypper rpm libzypp libsolv-tools-base supermin
 
 
 # cleanup logs and temporary files
