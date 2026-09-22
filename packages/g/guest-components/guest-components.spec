@@ -20,7 +20,7 @@
 %define user_coco_cdh coco_cdh
 
 Name:           guest-components
-Version:        0.21.0~git0.da8d93f2
+Version:        0.22.0~git0.eae0bf63
 Release:        0
 Summary:        Confidential Containers Guest Tools and Components
 License:        Apache-2.0
@@ -79,6 +79,8 @@ System user %user_coco_cdh for Confidential Data Hub
 %autosetup -p1
 
 %build
+sed -i~ '/"nvidia-attester"/d' attestation-agent/attester/Cargo.toml
+diff -u "$_"~ "$_" && exit 123
 find * -type f -exec grep -l 'build::BUILD_TIME' '{}' + | xargs --no-run-if-empty --verbose sed -i 's|build::BUILD_TIME|"Meaningless"|'
 find * -type f -exec grep -l 'build::COMMIT_HASH' '{}' + | xargs --no-run-if-empty --verbose sed -i 's|build::COMMIT_HASH|"%name %version"|'
 find * -type f -exec grep -l 'build::LAST_TAG' '{}' + | xargs --no-run-if-empty --verbose sed -i 's|build::LAST_TAG|"%name"|'

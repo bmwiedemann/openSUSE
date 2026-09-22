@@ -29,7 +29,7 @@
     <param name="exclude">tools</param>
     <param name="filename">guest-components</param>
     <param name="match-tag">*</param>
-    <param name="revision">da8d93f2797088a5f0636c8c1eeb31da73784fe8</param>
+    <param name="revision">eae0bf63a3a9db7721f86e0a2b0b9941a7fcba3a</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
     <param name="url">https://github.com/confidential-containers/guest-components</param>
