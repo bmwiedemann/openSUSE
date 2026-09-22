@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:44:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.18.32:
+  * Pass image attachments to Amazon Bedrock only for the models
+    that accept them (Claude, Nova and Llama 4)
+  * Fix streaming token usage reporting for Together AI
+- Drop opencode-fix-filesystem-cycle.patch: upstream broke the
+  filesystem search import cycle itself in this release, so the
+  backport no longer applies (boo#1280159)
+- Retrace the vendor keep list (511 to 512 store entries): the
+  @ai-sdk/togetherai bump to 2.0.68 resolves to another
+  @ai-sdk/openai-compatible (2.0.62) and gitlab-ai-provider
+  6.15.0 to a different peer set. One package added, none
+  removed, Apache-2.0; the SPDX set is unchanged and still has
+  no copyleft
+- Refresh the models.dev catalogue snapshot: it is a live fetch,
+  so Source2 moves on every bump independently of the tag
+
+-------------------------------------------------------------------
 Mon Sep 21 06:20:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.31:

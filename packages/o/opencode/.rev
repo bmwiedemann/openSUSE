@@ -334,4 +334,38 @@ container (runs a prompt end to end).
 </comment>
     <requestid>1379398</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>9c96ecfa8cc98bda858b753384620f65</srcmd5>
+    <version>1.18.32</version>
+    <time>1790101841</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 1.18.32.
+
+Upstream fixes Bedrock image attachments so they are hoisted only for
+the models that accept them, and streaming token usage reporting for
+Together AI.
+
+opencode-fix-filesystem-cycle.patch is dropped: upstream broke the
+filesystem search import cycle itself in this release, so the
+backport no longer applies. That patch was the fix for boo#1280159,
+so the drop was checked rather than assumed - upstream's change makes
+the ../filesystem import type-only and takes Entry and Match from
+@opencode-ai/schema/filesystem, and the built RPM was exercised
+through the SystemPrompt.environment path that crashed at 1.18.30.
+
+The four sibling packages stay where they are: opencode 1.18.32 pins
+fff 0.9.4, bun-pty 0.4.8, photon-node 0.3.4 and opentui 0.4.5,
+unchanged, and those follow opencode's pins rather than upstream
+latest because they cross private FFI ABIs.
+
+All native code is still built from source; the only binary in the
+vendor tree is web-tree-sitter's tree-sitter.wasm, unchanged and
+declared with Provides: bundled(web-tree-sitter).
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 badness.
+The one warning is the pre-existing
+position-independent-executable-suggested, inherent to
+bun build --compile.</comment>
+    <requestid>1379713</requestid>
+  </revision>
 </revisionlist>

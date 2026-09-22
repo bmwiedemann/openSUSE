@@ -56,18 +56,19 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.31
+Version:        1.18.32
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.31 from the declared license field
-# of all 510 unique packages in the vendor tarball (511 store entries, one of
+# Legal-Review-Notice: rederived for 1.18.32 from the declared license field
+# of all 511 unique packages in the vendor tarball (512 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set is unchanged from 1.18.30; this release gained three Apache-2.0
-# packages (@ai-sdk/gateway, @ai-sdk/provider and @ai-sdk/provider-utils) and
-# lost none. Two conclusions are not visible from the packages themselves:
+# SPDX set is unchanged from 1.18.31; this release gained one Apache-2.0
+# package (another @ai-sdk/openai-compatible, 2.0.62, that the updated
+# @ai-sdk/togetherai resolves to) and lost none. Two conclusions are not
+# visible from the packages themselves:
 # poe-oauth 0.0.8 declares no licence and ships no text, its MIT grant comes
 # from the upstream repository root; caniuse-lite is CC-BY-4.0, whose
 # attribution clause is why %%prep installs its LICENSE separately.
@@ -90,7 +91,7 @@ Source5:        %{name}-vendor-keep.txt
 Source6:        README.SUSE-maint
 # Header-only N-API wrapper @parcel/watcher's addon is compiled against.
 Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{node_addon_api_version}.tgz
-# C side of the native shell parser (Patch5).
+# C side of the native shell parser (Patch4).
 Source12:       %{name}-tsshim.c
 # Upstream's build script fails unless bun satisfies a caret range around the
 # version it pins. It pins 1.3.14 and Factory has 1.4.2, so the check passes
@@ -104,12 +105,10 @@ Patch0:         %{name}-relax-bun-version.patch
 Patch1:         %{name}-no-self-update.patch
 Patch2:         %{name}-no-runtime-npm-install.patch
 Patch3:         %{name}-no-grammar-download.patch
-# PATCH-FIX-UPSTREAM opencode-fix-filesystem-cycle.patch boo#1280159 gh#anomalyco/opencode#48397
-Patch4:         %{name}-fix-filesystem-cycle.patch
 # Parses shell commands with the system libtree-sitter and grammar packages
 # through bun:ffi; the wasm route needs a runtime module only emscripten can
 # build. Placeholders are filled in below.
-Patch5:         %{name}-native-tree-sitter.patch
+Patch4:         %{name}-native-tree-sitter.patch
 # No floor. Which bun upstream wants changes with every release and Patch0
 # turns a mismatch into a warning; a floor here would be a guess at which
 # older bun still works, and the package is a git snapshot anyway, so
@@ -386,7 +385,7 @@ s = s.replace(old, "const path = globalThis.__OPENCODE_PHOTON_WASM_PATH || requi
 open(p, "w").write(s)
 EOF
 
-# Patch5's placeholders, and the npm modules the shell tool no longer loads.
+# Patch4's placeholders, and the npm modules the shell tool no longer loads.
 sed -i 's|@OPENCODE_LIBDIR@|%{_libdir}/%{name}|; s|@TREE_SITTER_GRAMMARS@|%{_libdir}/tree-sitter|' \
     packages/opencode/src/tool/shell.ts packages/opencode/src/tool/shell-native.ts
 grep -q '%{_libdir}/tree-sitter/libtree-sitter-bash.so' packages/opencode/src/tool/shell.ts
