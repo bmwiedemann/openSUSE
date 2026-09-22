@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           xwaylandvideobridge
-Version:        0.5.2
+Version:        0.5.3
 Release:        0
 Summary:        XWayland Video Bridge
 License:        GPL-2.0-only OR GPL-3.0-or-later

@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 20 04:24:24 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 0.5.3: 
+  * Fix deprecation warnings
+  * Shrink the idle window
+  * Fixup comments
+  * clear WM_TAKE_FOCUS from window flags
+  * Move the WM_TAKE_FOCUS removal to syncWindowId()
+  * Request autostart through the Background portal in Flatpak
+  * Show the bridge in the application menu
+  * Tidy up translatable strings
+  * Fix build with KPipeWire older than 6.7
+  * Document how to install the bridge
+
+-------------------------------------------------------------------
 Tue Sep  1 14:27:51 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to version 0.5.2:
