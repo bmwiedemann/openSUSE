@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.6.3:
+  * Token counting recognises the gpt-6 model family, selecting
+    the o200k_base encoding and the same per-message overhead
+    already used for gpt-5
+  * A gpt-6 model invoked with tools is routed through the
+    Responses API
+  * use_responses_api is resolved when the model is constructed,
+    so it reads True whenever the instance settings already force
+    the Responses API instead of staying None
+- Raise the langchain-core requirement to 1.6.4, as upstream does
+
+-------------------------------------------------------------------
 Thu Sep 10 05:42:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.6.2:

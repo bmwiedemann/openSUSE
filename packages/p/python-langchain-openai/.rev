@@ -136,4 +136,26 @@ Devel accepts: sr#1372135 (core), sr#1372136 (openai), sr#1372137 (anthropic).
     <comment>Forward python-langchain-openai 1.6.2 to Factory. Local aarch64 build green (532 passed x2 flavors), rpmlint 0/0, source_validator clean.</comment>
     <requestid>1376915</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>905a1a9023b9b8527f3d2134fed33716</srcmd5>
+    <version>1.6.3</version>
+    <time>1790107113</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6.3.
+
+gpt-6 token counting (o200k_base plus gpt-5's per-message overhead),
+gpt-6 with tools routed through the Responses API, and use_responses_api
+resolved at construction.
+
+COORDINATED SUBMISSION - landing order matters. Upstream raises the
+langchain-core floor to &gt;= 1.6.4 and Factory has 1.6.3, so this request is
+unresolvable until python-langchain-core 1.6.4 lands. That is submitted as
+request 1379737; please stage this after it, or both together. The floor is
+encoded in both Requires and BuildRequires so OBS holds the build rather
+than starting one that can only fail.
+
+Built and checked locally on aarch64 against a locally built langchain-core
+1.6.4: 565 tests pass, rpmlint 0 errors, 0 warnings, 0 badness.</comment>
+    <requestid>1379739</requestid>
+  </revision>
 </revisionlist>
