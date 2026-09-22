@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:25:39 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.2:
+  + Collections integrated into the main window.
+  + Collection information and paths improved.
+  + Extensive GTK4 modernization.
+  + Keyboard shortcuts and menus revised.
+  + Files-pane interaction improved.
+  + Image display and rendering corrected.
+  + Metadata and color handling improved.
+  + File operations and dialogs refined.
+  + Layout and general UI fixes.
+  + Shutdown and memory fixes.
+  + Build, packaging, and testing updated.
+  + Documentation, translations, and internal cleanup.
+  + Revised Bash completions
+
+-------------------------------------------------------------------
 Wed Sep  2 15:38:44 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.1:

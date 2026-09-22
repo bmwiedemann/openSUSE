@@ -401,4 +401,25 @@
     pkgconfig(gtk4), pkgconfig(shumate-1.0), pkgconfig(pango)</comment>
     <requestid>1375924</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7415ff82c6918c10ddb69fe24437b9e2</srcmd5>
+    <version>3.2</version>
+    <time>1790085178</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.2:
+  + Collections integrated into the main window.
+  + Collection information and paths improved.
+  + Extensive GTK4 modernization.
+  + Keyboard shortcuts and menus revised.
+  + Files-pane interaction improved.
+  + Image display and rendering corrected.
+  + Metadata and color handling improved.
+  + File operations and dialogs refined.
+  + Layout and general UI fixes.
+  + Shutdown and memory fixes.
+  + Build, packaging, and testing updated.
+  + Documentation, translations, and internal cleanup.
+  + Revised Bash completions</comment>
+    <requestid>1379609</requestid>
+  </revision>
 </revisionlist>
