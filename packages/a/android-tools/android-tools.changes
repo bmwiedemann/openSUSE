@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:02:50 UTC 2026 - munix9@googlemail.com
+
+- Add fix-rust-based-mDNS-backend.patch
+  * Add option to enable new Rust based mDNS backend
+- Add fix-protobuf-36-absl-log-macros.patch
+  * adb: keep libbase logging macros after protobuf includes
+- Add vendor.tar.zst for rust based mDNS backend
+- Add prepare.sh - helper script for creating vendor.tar.zst
+  (required until the next version includes PR 209)
+- Create specpart with "Provides: bundled(rust-crate:_name_) = x.y"
+- Remove fix-mdns-references.patch (obsolete)
+
+-------------------------------------------------------------------
 Sat Aug  1 05:29:35 UTC 2026 - munix9@googlemail.com
 
 - Update to version 37.0.0

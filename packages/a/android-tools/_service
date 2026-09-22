@@ -1,0 +1,9 @@
+<services>
+  <service name="download_files" mode="manual"/>
+  <service name="cargo_vendor" mode="manual">
+    <param name="src">android-tools-*.tar.xz</param>
+    <param name="custom-root">vendor/adb/client/adbmdns</param>
+    <param name="update">true</param>
+    <param name="filter">true</param>
+  </service>
+</services>

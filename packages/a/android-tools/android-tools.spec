@@ -23,6 +23,11 @@
 %bcond_with     bundled_libfmt
 %bcond_with     bundled_libusb
 %endif
+%if 0%{?suse_version} < 1699
+%bcond_without  bundled_corrosion
+%else
+%bcond_with     bundled_corrosion
+%endif
 
 Name:           android-tools
 Version:        37.0.0
@@ -32,13 +37,20 @@ License:        Apache-2.0 AND MIT
 # https://developer.android.com/tools/releases/platform-tools
 URL:            https://github.com/nmeum/android-tools
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
-# PATCH-FIX-OPENSUSE fix-mdns-references.patch munix9@googlemail.com -- Remove all references to mDNS from the man page
-Patch0:         fix-mdns-references.patch
+Source1:        vendor.tar.zst
+Source99:       prepare.sh
+# PATCH-FEATURE-UPSTREAM fix-rust-based-mDNS-backend.patch -- based on PR 209
+Patch0:         fix-rust-based-mDNS-backend.patch
+# PATCH-FIX-OPENSUSE fix-protobuf-36-absl-log-macros.patch -- based on arch linux patch
+# https://gitlab.archlinux.org/archlinux/packaging/packages/android-tools/-/raw/03fecd370e9633927b8157ab94a7db11e7b8cf16/protobuf-36-absl-log-macros.patch
+Patch1:         fix-protobuf-36-absl-log-macros.patch
+BuildRequires:  cargo
 BuildRequires:  cmake >= 3.12
 BuildRequires:  llvm-gold
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
+BuildRequires:  zstd
 BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libbrotlicommon)
 BuildRequires:  pkgconfig(liblz4)
@@ -57,10 +69,11 @@ Obsoletes:      %{name}-python3 < %{version}
 Provides:       adb = 1.0.41
 Provides:       avbtool = 1.4.0
 Provides:       sload_f2fs = 1.16.0
-Provides:       bundled(boringssl)
+Provides:       bundled(boringssl) = 0.20260113.d32c35e
 ExcludeArch:    ppc ppc64 s390x
 %if 0%{?suse_version} < 1600
-BuildRequires:  clang15
+BuildRequires:  gcc11
+BuildRequires:  gcc11-PIE
 BuildRequires:  gcc11-c++
 BuildRequires:  python311-base
 Requires:       python311-base
@@ -68,6 +81,9 @@ Requires:       python311-base
 BuildRequires:  clang
 BuildRequires:  python3-base
 Requires:       python3-base
+%endif
+%if %{without bundled_corrosion}
+BuildRequires:  cmake(Corrosion) >= 0.6.1
 %endif
 %if %{with bundled_libfmt}
 Provides:       bundled(fmt) = 12.0.0
@@ -101,7 +117,7 @@ Requires:       %{name} = %{version}
 This package contains the Android dynamic partition tools.
 
 %prep
-%autosetup -p1
+%autosetup -a1 -p1
 
 # fix empty adb man page title
 %define man_date %(LC_ALL=C date -u -d@$SOURCE_DATE_EPOCH '+%%B %%Y')
@@ -112,14 +128,18 @@ sed -e 's/^\.TH .*/.TH ADB "1" "%{man_date}" "%{name} %{version}" "User Commands
 %define __builder ninja
 %cmake \
 %if 0%{?suse_version} < 1600
-	-DCMAKE_C_COMPILER=clang-15 \
-	-DCMAKE_CXX_COMPILER=clang++-15 \
+	-DCMAKE_C_COMPILER=gcc-11 \
+	-DCMAKE_CXX_COMPILER=g++-11 \
 %else
 	-DCMAKE_C_COMPILER=clang \
 	-DCMAKE_CXX_COMPILER=clang++ \
 %endif
 %ifarch %{ix86}
 	-DOPENSSL_NO_ASM=ON \
+%endif
+	-DANDROID_TOOLS_ADB_ENABLE_MDNS=ON \
+%if %{with bundled_corrosion}
+	-DANDROID_TOOLS_USE_BUNDLED_CORROSION=ON \
 %endif
 %if %{with bundled_libfmt}
 	-DANDROID_TOOLS_USE_BUNDLED_FMT=ON \
@@ -131,6 +151,17 @@ sed -e 's/^\.TH .*/.TH ADB "1" "%{man_date}" "%{name} %{version}" "User Commands
 	-DBUILD_SHARED_LIBS=OFF
 %cmake_build
 
+# create specpart with "Provides: bundled(rust-crate:_name_) = x.y.z"
+# (based in part on fedora's %%cargo_vendor_manifest)
+pushd ../vendor/adb/client/adbmdns
+CARGO_HOME=.cargo cargo tree --workspace --offline --edges normal,build \
+	--no-dedupe --all-features --prefix none --format "{p}" \
+	| grep -v "$(pwd)" | sed -e "s: (proc-macro)::" | sort -u \
+	| sed -E -e 's/^(.*) v(.*)$/Provides: bundled(rust-crate:\1) =\n\2/' \
+	| sed -e '1n;s/-/_/g;n' | sed -e 'N;s/\n/ /' | tee rust-crate.specpart
+test -d "%{?specpartsdir}" && cp -p rust-crate.specpart %{specpartsdir}
+popd
+
 %install
 %cmake_install
 
@@ -140,6 +171,7 @@ ln -sf %{_datadir}/%{name}/mkbootimg/mkbootimg.py %{buildroot}%{_bindir}/mkbooti
 # fix non-executable-script
 chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
+# note: check when support for Leap < 16.0 (sle?) can be removed (eol)
 # fix env-script-interpreter (Leap < 16.0 requires special handling)
 %if 0%{?suse_version} < 1600
 %define python3_fix_shebang_path(+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_-=) \

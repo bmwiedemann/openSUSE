@@ -243,4 +243,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1370316</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>0b71fa55a1fe40efdb0ec7ec5776d990</srcmd5>
+    <version>37.0.0</version>
+    <time>1790103150</time>
+    <user>dimstar_suse</user>
+    <comment>- Add fix-rust-based-mDNS-backend.patch
+  * Add option to enable new Rust based mDNS backend
+- Add fix-protobuf-36-absl-log-macros.patch
+  * adb: keep libbase logging macros after protobuf includes
+- Add vendor.tar.zst for rust based mDNS backend
+- Add prepare.sh - helper script for creating vendor.tar.zst
+  (required until the next version includes PR 209)
+- Create specpart with &quot;Provides: bundled(rust-crate:_name_) = x.y&quot;
+- Remove fix-mdns-references.patch (obsolete)
+</comment>
+    <requestid>1379725</requestid>
+  </revision>
 </revisionlist>
