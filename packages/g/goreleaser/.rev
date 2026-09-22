@@ -1205,4 +1205,84 @@
   * docs: update (forwarded request 1377833 from ph03nix)</comment>
     <requestid>1377895</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>966bd10266aadafd86cd06351e20b3a9</srcmd5>
+    <version>2.18.2</version>
+    <time>1790084930</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.18.2:
+  * fix(sbom,sign): disambiguate every target variant in default names (#7144)
+  * fix(winget): do not allow multiple wingets with the same name (#7147)
+  * docs: Add Kronk in USERS.md (#7151)
+  * test(gitea): cover release lookup for tags containing a slash (#7145)
+  * fix(nix): template the description only once (#7146)
+  * fix(docker): keep arm64 minor variants above the v8 baseline (#7149)
+  * fix(docker): a bare platform means the baseline CPU variant (#7148)
+  * fix(aur): tell users how to fix a duplicate architecture (#7141)
+  * fix(blob): stream unencrypted uploads instead of buffering files (#7134)
+  * chore(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2 (#7139)
+  * chore(deps): bump the gomod group across 1 directory with 13 updates (#7131)
+  * chore(deps): bump github.com/google/go-github to v92 (#7138)
+  * ci(deps): bump the actions group across 1 directory with 6 updates (#7137)
+  * chore(deps): bump docker/buildx-bin from 0.37.0 to 0.37.1 in the docker group across 1 directory (#7130)
+  * test(blob): pull minio image from quay.io (#7136)
+  * sec(builds): redact secrets from builder subprocess output
+  * chore: auto-update generated files (#7129)
+  * fix(git): force column.ui=never so tag output is not columnized (#7127)
+  * fix(git): tag not in the local repository is not an error (#7124)
+  * chore: auto-update generated files (#7123)
+  * test(docker): fix flake (#7117)
+  * fix(builder/go): give a single ellipsis main an exact output path (#7114)
+  * chore: update schema
+  * fix(builder/go): register the generated C header after compiling (#7113)
+  * test: reduce pipeline test overhead (#7109)
+  * fix(builder/go): keep override env entries in a stable order (#7112)
+  * fix(project): evaluate name candidates lazily (#7111)
+  * test(nfpm): close the temp binary in TestSkipSign (#7116)
+  * docs(builder/go): explain that ellipsis discovery uses the host context (#7115)
+  * fix(github): honor short Retry-After delays (#7110)
+  * ci: enable verbose test output (#7108)
+  * fix: address regressions since v2.18.1 (#7107)
+  * fix(exec,publish): cancellation, empty commands, SRPM artifacts and upload URLs (#7093)
+  * fix(builder/node,builder/bun): per-target SEA config, prebuild templates and target aliases (#7088)
+  * fix(mcp): support package transport URLs (#7090)
+  * fix(healthcheck): panic on dependency commands that are only shell syntax (#7106)
+  * fix(brew,cask): formula escaping, token matching and binary stanzas (#7086)
+  * fix(sign,sbom,universalbinary): universal binary signing, per-variant names and duplicate slices (#7091)
+  * fix(cmd): auto-snapshot ordering, schema error reporting and --output selection (#7103)
+  * fix(flatpak,docker): quote install paths and respect project environment (#7085)
+  * fix(builder/uv,builder/poetry): match built artifact filenames (#7084)
+  * fix(winget,krew): manifest validation and executable paths (#7087)
+  * fix(healthcheck): handle blank and space-containing signer commands (#7076)
+  * fix(builders,partial): canonical artifact architectures and target matching (#7083)
+  * fix(env,log): redact secrets across writes and honour force_token (#7104)
+  * fix(build): resolve dependent hook environment entries and hook dir templates (#7078)
+  * chore: fix lint on main (#7105)
+  * fix(builder/rust,builder/zig): toolchain context and wrapped binary copying (#7080)
+  * fix(git,changelog): metadata quoting, dirty detection, key cleanup and mailmap (#7102)
+  * fix(tmpl): deduplicate aggregate errors and stop mutating input (#7075)
+  * fix(archive,sourcearchive,gio): backups, ZIP metadata, mtime and CPU variants (#7089)
+  * fix(aur): several PKGBUILD and SRCINFO generation bugs (#7100)
+  * fix(slack,smtp,config): cancellation, message escaping and block round-trips (#7092)
+  * fix(docker): v2 build context, annotations and ARM64 handling (#7095)
+  * chore: lint fixes
+  * fix(gitea,gitlab): pagination, subpath URLs, default branch, links and cancellation (#7097)
+  * fix(blob): KMS encryption limits and bucket lifetime on error (#7101)
+  * fix(github): UTF-8 safe truncation, draft reuse, asset replacement and token override (#7094)
+  * fix(nfpm): per-format Lintian overrides and colliding filenames (#7099)
+  * fix(gomod): scope proxying to Go builds and validate the right module (#7096)
+  * fix(nix): formatter output, string escaping and post_install (#7082)
+  * fix(cmd): correct check counting and init gitignore and failure handling (#7081)
+  * fix(ko): repository image names, digest ordering and signing references (#7079)
+  * fix(docker): v1 wheel build IDs, push flags and empty manifests (#7077)
+  * fix(docker): quote entrypoint paths and forward arguments verbatim (#7073)
+  * fix(scripts): correct pre-commit hook exit status, quoting and restaging (#7074)
+  * chore: cc maintainer on winget pull requests (#7071)
+  * test: make tests deterministic and repair fuzz tasks (#7067)
+  * docs: fix configuration examples and reference mismatches (#7066)
+  * refactor: simplify internal code and test setup (#7068)
+  * ci: remove notify-goreleaser-cross (#7069)
+  * chore: auto-update generated files (#7070) (forwarded request 1379406 from ph03nix)</comment>
+    <requestid>1379445</requestid>
+  </revision>
 </revisionlist>
