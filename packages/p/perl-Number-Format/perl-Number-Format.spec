@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Number-Format
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +18,23 @@
 
 %define cpan_name Number-Format
 Name:           perl-Number-Format
-Version:        1.76
+Version:        1.790.0
 Release:        0
+# 1.79 -> normalize -> 1.790.0
+%define cpan_version 1.79
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Perl extension for formatting numbers
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
+BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
+BuildRequires:  perl(Test::More) >= 0.96
+Provides:       perl(Number::Format) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -51,12 +58,14 @@ parameters are:
   KILO_SUFFIX       - suffix to add when format_bytes formats kilobytes (trad)
   MEGA_SUFFIX       -    "    "  "    "        "         "    megabytes (trad)
   GIGA_SUFFIX       -    "    "  "    "        "         "    gigabytes (trad)
+  TERA_SUFFIX       -    "    "  "    "        "         "    terabytes (trad)
   KIBI_SUFFIX       - suffix to add when format_bytes formats kibibytes (iec)
   MEBI_SUFFIX       -    "    "  "    "        "         "    mebibytes (iec)
   GIBI_SUFFIX       -    "    "  "    "        "         "    gibibytes (iec)
+  TEBI_SUFFIX       -    "    "  "    "        "         "    tebibytes (iec)
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
@@ -71,6 +80,7 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%doc CHANGES README TODO
+%doc Changes README TODO
+%license LICENSE
 
 %changelog

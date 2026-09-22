@@ -37,4 +37,13 @@
     <comment></comment>
     <requestid>1090356</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>fcddc78e60b9d31ae679bc4f55b1c443</srcmd5>
+    <version>1.790.0</version>
+    <time>1790084941</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.790.0 (1.79)
+   see /usr/share/doc/packages/perl-Number-Format/Changes</comment>
+    <requestid>1379461</requestid>
+  </revision>
 </revisionlist>
