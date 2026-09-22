@@ -188,4 +188,29 @@ passed per flavour (py313/py314), rpmlint 0 badness.</comment>
   * Refreshed the bundled Bedrock model profile data</comment>
     <requestid>1378669</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>d981c6be1c0761719025ebb1a4c41ed1</srcmd5>
+    <version>1.7.9</version>
+    <time>1790107113</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.9.
+
+MemoryDB/Valkey text-filter value escaping, the RediSearch tag escaper now
+covering the pipe character, distance_threshold=0 honoured instead of
+treated as unset, and a Bedrock reasoning_content block with empty
+reasoning_text no longer raising while keeping its redacted content.
+
+The escaping work is unnamed upstream hardening - there is no CVE or GHSA
+anywhere in the range, and langchain-aws has no published advisories at
+all - so it is described factually rather than credited with an identifier.
+
+Two upstream features are deliberately not claimed because the built RPM
+cannot run them: create_web_search_toolkit needs bedrock-agentcore and
+ChatBedrockNovaSonic.model needs aws_sdk_bedrock_runtime, neither of which
+is in Factory. Both degrade rather than break.
+
+Built and checked locally on aarch64: 673 tests pass, rpmlint 0 errors,
+0 warnings, 0 badness.</comment>
+    <requestid>1379740</requestid>
+  </revision>
 </revisionlist>

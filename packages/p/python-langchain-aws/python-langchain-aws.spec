@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.7.8
+Version:        1.7.9
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT
