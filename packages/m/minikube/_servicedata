@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubernetes/minikube/</param>
-              <param name="changesrevision">c93a4cb9311efc66b90d33ea03f75f2c4120e9b0</param></service></servicedata>
+              <param name="changesrevision">c93a4cb9311efc66b90d33ea03f75f2c4120e9b0</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubernetes/minikube.git</param>
+              <param name="changesrevision">7a9f6a841470a207de8cf4bafcccee0969d8ba10</param></service></servicedata>
