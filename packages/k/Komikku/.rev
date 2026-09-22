@@ -799,4 +799,29 @@
   + [Servers] Read Comics Online (EN): Update</comment>
     <requestid>1377784</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>8eac485568fb34b261418b01c63c2d01</srcmd5>
+    <version>51.0.1</version>
+    <time>1790085192</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.0.1:
+  + Back to GNOME 50 runtime until some OSK input regressions are
+    fixed.
+
+- Update to version 51.0.0:
+  + Updated to GNOME 51 runtime
+  + [Library/Explorer/History] Fixed search through typing on the
+    keyboard
+  + [OCR Translator] Added OCR support for French and Spanish
+    languages
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaKawaii (FR): Update
+  + [Servers] Rncalation (ES): Update
+  + [Servers] SkyMangas (ES): Update
+  + [Servers] Kavita: Fixed an issue where series with no read
+    history could not be opened
+  + Updated translations.
+- Migrate package to be _service managed.</comment>
+    <requestid>1379619</requestid>
+  </revision>
 </revisionlist>

@@ -18,13 +18,13 @@
 
 %define         appid info.febvre.Komikku
 Name:           Komikku
-Version:        50.15.0
+Version:        51.0.1
 Release:        0
 Summary:        A manga reader for GNOME
 # appdata.xml is CC-BY-4.0
 License:        CC-BY-4.0 AND GPL-3.0-or-later
 URL:            https://codeberg.org/valos/Komikku
-Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.xz
 Patch0:         convert-to-modern-colorthief.patch
 BuildRequires:  WebKitGTK-6.0
 BuildRequires:  cmake
@@ -139,7 +139,7 @@ Keys features
 %lang_package
 
 %prep
-%autosetup -p1 -n komikku
+%autosetup -p1
 
 %build
 %meson

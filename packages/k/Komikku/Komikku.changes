@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 19 14:23:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0.1:
+  + Back to GNOME 50 runtime until some OSK input regressions are
+    fixed.
+
+-------------------------------------------------------------------
+Fri Sep 18 08:28:13 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.0.0:
+  + Updated to GNOME 51 runtime
+  + [Library/Explorer/History] Fixed search through typing on the
+    keyboard
+  + [OCR Translator] Added OCR support for French and Spanish
+    languages
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaKawaii (FR): Update
+  + [Servers] Rncalation (ES): Update
+  + [Servers] SkyMangas (ES): Update
+  + [Servers] Kavita: Fixed an issue where series with no read
+    history could not be opened
+  + Updated translations.
+- Migrate package to be _service managed.
+
+-------------------------------------------------------------------
 Fri Sep 11 10:54:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 50.15.0:
@@ -9,7 +34,6 @@ Fri Sep 11 10:54:26 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
   + [Servers] Mangas Origines (FR): Update
   + [Servers] Nix of Nothing (EN): Disabled
   + [Servers] Read Comics Online (EN): Update
-
 
 -------------------------------------------------------------------
 Tue Sep  1 13:18:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
