@@ -719,4 +719,16 @@
     Both now get an icon.</comment>
     <requestid>1374887</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>39bbc93ef1e4438298abd87718d66e3c</srcmd5>
+    <version>5.2.0</version>
+    <time>1790085200</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.2.0:
+  + Stops selecting a token from copying it, and gets the tray menu
+    working outside KDE Plasma
+  + https://github.com/paolostivanin/OTPClient/releases/tag/v5.2.0
+    for detailed information.</comment>
+    <requestid>1379631</requestid>
+  </revision>
 </revisionlist>

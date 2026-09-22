@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 16 19:31:02 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.2.0:
+  + Stops selecting a token from copying it, and gets the tray menu
+    working outside KDE Plasma
+  + https://github.com/paolostivanin/OTPClient/releases/tag/v5.2.0
+    for detailed information.
+
+-------------------------------------------------------------------
 Mon Aug 31 13:03:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to 5.1.8:
