@@ -1,4 +1,307 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:44:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.3.0:
+  * k6 v2.3.0 is here! This release includes:
+    - A --scenario flag to run selected parts of a test without
+      editing the script.
+    - A --once flag to reuse load-test scripts for smoke and
+      functional testing.
+    - Experimental async group() support that keeps metrics in the
+      right group across await.
+    - Built-in byte encoding, Set operations, and raw JSON values.
+    - Opt-in fetching of missing TLS certificates for servers that
+      work in browsers but fail in k6.
+    - Static labels for Prometheus remote write, nanosecond log
+      timestamps, and WebSocket ready-state constants.
+  * New features
+    - Run selected scenarios #6360
+      When a script tests several services or user journeys, you
+      may only need to run the part you are working on. The new
+      --scenario flag lets you select named scenarios without
+      editing the script, adding environment-variable selection
+      code, or splitting it into separate scripts. This addresses
+      the long-standing request to run a subset of scenarios.
+      For example, this script defines two workloads:
+
+        import http from 'k6/http';
+
+        export const options = {
+          scenarios: {
+            homepage: {
+              executor: 'shared-iterations',
+              exec: 'homepage',
+              vus: 2,
+              iterations: 10,
+            },
+            contacts: {
+              executor: 'shared-iterations',
+              exec: 'contacts',
+              vus: 1,
+              iterations: 5,
+            },
+          },
+        };
+
+        export function homepage() {
+          http.get('https://test.k6.io/');
+        }
+
+        export function contacts() {
+          http.get('https://test.k6.io/contacts.php');
+        }
+
+      Run only the homepage workload, keeping its two VUs and ten
+      total iterations:
+
+        k6 run --scenario homepage script.js
+
+      Select multiple scenarios with comma-separated names:
+
+        k6 run --scenario homepage,contacts script.js
+
+      Each selected scenario keeps its executor, load, timing,
+      function, environment, tags, and browser options. Without the
+      flag, k6 runs all configured scenarios. Selection also works
+      with k6 cloud run and k6 archive; archives retain the
+      selected configuration.
+      Names must match configured scenarios. Load shortcuts such as
+      --vus and --duration cannot be combined with selection; set
+      the workload in each scenario instead. k6 warns and skips
+      thresholds tagged for configured scenarios you exclude, while
+      keeping global thresholds and other filters. See the scenario
+      documentation for details.
+    - Run a script once with --once #6338
+      The --once flag is now the recommended way to run a script
+      once, for both protocol and browser tests, while preserving
+      the scenario's function and browser configuration. It
+      supports scripts with at most one scenario and works with k6
+      run, k6 cloud run, and k6 archive. For example, this
+      configuration runs checkout() repeatedly with ten VUs for 30
+      seconds:
+
+        export const options = {
+          scenarios: {
+            checkout: {
+              executor: 'constant-vus',
+              exec: 'checkout',
+              vus: 10,
+              duration: '30s',
+            },
+          },
+        };
+        // The rest of the script defines checkout().
+
+        k6 run --once script.js
+
+      With --once, k6 changes this scenario to shared-iterations
+      with one VU and one iteration, calling checkout() once
+      instead of repeatedly for 30 seconds. Previously, shortcuts
+      such as --vus 1 --iterations 1 replaced the script's
+      scenarios with a default scenario, discarding settings such
+      as the selected function and browser options. This broke
+      browser scripts because the configuration needed to launch
+      Chromium was missing; --once keeps that configuration. To
+      combine scenario selection with --once, see Run each selected
+      scenario once.
+    - Keep metrics grouped across asynchronous calls #6340, #6341, #6342, #6343, #6344
+      You can now use an async function in group() by enabling the
+      experimental async-metric-context feature. Requests and
+      checks after an await keep their group, and group_duration
+      measures until the callback's returned promise settles.
+      Previously, group() rejected async functions, and promise
+      callbacks could lose the group tag.
+
+        import { check, group } from 'k6';
+        import http from 'k6/http';
+
+        export default async function () {
+          await group('browse', async () => {
+            const response = await http.asyncRequest('GET', 'https://test.k6.io/');
+            check(response, { 'page loaded': (r) => r.status === 200 });
+            await http.asyncRequest('GET', 'https://test.k6.io/contacts.php');
+          });
+        }
+
+        k6 run --features async-metric-context script.js
+
+      Both requests and the check belong to browse, including the
+      work after the first await. The feature also preserves custom
+      tags and metadata across promises, timer callbacks,
+      k6/websockets listeners, and gRPC stream listeners. Changes
+      inside a group or callback stay local to that work and its
+      asynchronous descendants instead of leaking into unrelated
+      work.
+    - Fetch missing TLS certificates #6137
+      Some HTTPS servers work in browsers but fail in k6 because
+      they omit an intermediate certificate. The new tlsAIAFetch
+      option lets k6 fetch that missing certificate while still
+      verifying the server's identity:
+
+      export const options = {
+        tlsAIAFetch: true,
+      };
+
+      This is opt-in and works with HTTP and gRPC connections.
+    - Static labels for Prometheus remote write #6071
+      When several k6 instances send metrics to the same Prometheus
+      server, labels let you tell their results apart. Use
+      K6_PROMETHEUS_RW_LABELS to identify the job, environment, or
+      server on every time series sent by that output:
+
+        K6_PROMETHEUS_RW_LABELS="environment=production,server=srv1" \
+        k6 run --out experimental-prometheus-rw script.js
+
+    - Nanosecond log timestamps #6310
+      Logs with second-precision timestamps can lose their order
+      when a log service sorts messages emitted within the same
+      second. Enable nanosecond timestamps with --log-ns-timestamps
+      to make those messages easier to order and correlate:
+
+        k6 --log-ns-timestamps --log-format=json run script.js
+
+      This also works with plain-text logs when --no-color is set.
+    - WebSocket ready-state constants #6306
+      The WebSocket constructor and its instances now expose the
+      same connection-state constants as browsers: CONNECTING,
+      OPEN, CLOSING, and CLOSED. For an existing socket, you can
+      check its state before sending a message:
+
+        if (socket.readyState === WebSocket.OPEN) {
+          socket.send('hello');
+        }
+
+    - Encode bytes and compare sets with JavaScript built-ins #6382
+      You can now convert Uint8Array data to and from hex or base64
+      with built-in methods, and compare sets with operations such
+      as difference(), intersection(), and union(). Use them to
+      prepare binary test data or check which fields are missing
+      from a response.
+
+        const bytes = Uint8Array.fromHex('6b36');
+        console.log(bytes.toBase64()); // azY=
+
+        const expected = new Set(['id', 'name', 'email']);
+        const received = new Set(['id', 'name']);
+        console.log([...expected.difference(received)]); // ["email"]
+
+      The Sobek update also adds Error.isError(), JSON.rawJSON(),
+      and JSON.isRawJSON(). For example, JSON.rawJSON() lets you
+      include an exact numeric value in a JSON payload without
+      rounding it to a JavaScript Number first:
+
+        JSON.stringify({ id: JSON.rawJSON('9007199254740993') });
+        // '{"id":9007199254740993}'
+
+    - Read the execution result before k6 exits #6388
+      When k6 stays alive with --linger, tools monitoring the
+      process cannot use its exit status to tell whether the test
+      finished successfully or aborted. The REST API's /v1/status
+      response now includes execution_result, with the test's exit
+      code once it is known. Before then, the field is null.
+      For example, query a lingering process after a script calls
+      exec.test.abort():
+
+        curl -s http://localhost:6565/v1/status | jq '.data.attributes.execution_result'
+
+        {
+          "exit_code": 108
+        }
+
+  * UX improvements and enhancements
+    - #6408 Explains how to enable experimental async support when
+      group() rejects an async callback.
+    - #6402 Fixes a missing space in the --no-usage-report help
+      text.
+    - #6339 Adds login and token-configuration guidance when
+      Grafana Cloud commands return an authentication error.
+  * Bug fixes
+    - #6414 Stops screenshot capture from waiting until the page
+      closes when a browser command does not respond, so scripts
+      can catch the timeout and continue cleanup.
+    - #6412 Lets waits for hidden or detached browser elements
+      finish when the element is already absent, instead of timing
+      out or throwing an error.
+    - #6368 Makes crypto.getRandomValues() throw a catchable
+      TypeError instead of crashing k6 when called without an
+      argument or with a typed array whose length was overridden to
+      a negative value.
+    - #6327 Fixes a data race when closing a browser context while
+      other browser operations access it.
+    - #6351 Prevents clearing an expired timer from running a later
+      timeout or interval too early, and fixes VUs hanging when a
+      k6/websockets connection is closed before its handshake
+      finishes.
+    - #6349 Fixes inflated http_req_sending and http_req_duration
+      values when making HTTPS requests through an HTTPS proxy.
+    - #5922 Stops the test with an error when a ramping-VU scenario
+      cannot start a VU, instead of silently stopping the scenario
+      and reporting success.
+    - #6163 Preserves Web Vitals from intermediate pages when a
+      browser test navigates several times in the same tab, so
+      results include those pages as well as the last one.
+    - #6355 Prevents a response-body leak when reading a digest
+      authentication challenge fails.
+    - #5949 Supports sending metrics to InfluxDB behind a reverse
+      proxy with a URL path prefix, such as
+      https://host/influxdb/database.
+    - #6235 Uses forward slashes in remote screenshot paths on
+      Windows.
+    - #6238 Sends null and undefined form fields as empty values
+      instead of the string <nil>, and warns when a nested object
+      cannot be encoded as a form field.
+    - #6279 Fixes browser tests stalling when VUs share a remote
+      Chrome instance, so pages can run concurrently.
+    - #6298 Preserves browser trace spans that were lost when a
+      test ended.
+    - #6385 Fixes an integer overflow that prevented compilation on
+      32-bit ARM and x86 systems.
+  * Maintenance and internal improvements
+    - #6413 Updates the browser role-selector test fixture for
+      Chromium's image-map rendering.
+    - #6369, #6370 Adds the binary's build origin and a locally
+      stored random installation ID to usage reports, helping
+      distinguish build sources and measure active installations.
+      Both respect --no-usage-report.
+    - #6209 Simplifies the internal handling of Cloud commands.
+    - #6236 Adds a smoke test before publishing browser Docker
+      images to catch missing or broken Chromium installations.
+    - #6245 Enables CI on the v1 maintenance branch.
+    - #6246, #6277 Automates approvals and merging for eligible
+      dependency updates.
+    - #6256, #6271 Improves contributor acknowledgments and the
+      release checklist.
+    - #6270 Restores Debian package publishing after bzip2 was
+      removed from the packaging base image.
+    - #6301, #6373 Corrects the TC39 test-package path and built-in
+      module locations in contributor documentation.
+    - #6312, #6380, #6394, #6398 Uses shared CI workflows, lint
+      configuration, and Go test versions, and fixes findings from
+      the newer linter.
+    - #6409 Updates Test262 expectations for Unicode tests that
+      pass with the newer Go version.
+    - #6325 Moves browser option parsing into the JavaScript
+      mapping layer without changing script behavior.
+  * Dependencies
+    - chore(deps): update golang docker tag to v1.27.1 (#6376)
+    - fix(deps): update module google.golang.org/grpc to v1.84.0
+      (#6478)
+    - fix(deps): update module github.com/klauspost/compress to
+      v1.20.0 (#6266)
+    - fix(deps): update module github.com/andybalholm/brotli to
+      v1.2.3 (#6357)
+    - fix(deps): update module google.golang.org/grpc to v1.83.2
+      (#6358)
+    - fix(deps): update otel to v1.46.0 (#6267)
+    - fix(deps): update module github.com/evanw/esbuild to v0.28.2
+      (#6303)
+    - chore(deps): update golang docker tag to v1.27.0 (#6331)
+    - fix(deps): update googles (#6304)
+    - fix(deps): update module github.com/stretchr/testify to
+      v1.12.1 (#6332)
+    - fix(deps): update golangx (#6265)
+
+-------------------------------------------------------------------
 Tue Aug 11 07:00:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.2.0:
