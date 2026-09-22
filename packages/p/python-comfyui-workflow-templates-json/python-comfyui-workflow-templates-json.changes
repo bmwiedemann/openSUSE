@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:06:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.94:
+  * Add 11 template definitions matching the core manifest:
+    Pruna video i2v and t2v, Tencent HunyuanImage 3.5 t2i
+    and image edit, Tripo P2 text, image and multiview to
+    3D model, Qwen-Image 2.1 t2i, image edit and background
+    removal, MoGe-3 geometry estimation
+  * Revise 12 existing templates, the picker index and its
+    11 locale variants, the MCP index and the logo list:
+    Gemini and ByteDance reference nodes move to V3 and V2,
+    Topaz enhance to V2, Meshy 7 to 7.1, and Wan Animate 2
+    gains loop support
+  * Preview images for the 11 new templates, and the Pruna
+    logo, come from the media-assets-02 bundle, newly packaged
+    alongside this update
+
+-------------------------------------------------------------------
 Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.86:

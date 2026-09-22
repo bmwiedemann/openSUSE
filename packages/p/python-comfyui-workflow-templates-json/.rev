@@ -150,4 +150,27 @@ change.</comment>
 Supersedes sr#1378172. Pair with templates 0.11.63 for comfyui 0.36.0.</comment>
     <requestid>1378348</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>6a78193c37b5ccee58d611a2e167c4d0</srcmd5>
+    <version>0.1.94</version>
+    <time>1790112301</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.94.
+
+11 template definitions added to match the core manifest, 12 existing
+templates revised along with the picker index, its 11 locale variants,
+the MCP index and the logo list.
+
+LANDING ORDER - must go together with python-comfyui-workflow-templates-
+core 0.3.359, and after python-comfyui-workflow-templates-media-assets-02
+(request 1379731). This package alone raises KeyError for the 11 new
+template ids against the old manifest, and upstream's meta 0.11.68 pins
+exactly core==0.3.359 and json==0.1.94. Preview images for the new
+templates, and the Pruna logo, live in media-assets-02.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings, 0
+badness. The built RPM carries 582 template JSONs, matching the core
+manifest's 582 entries exactly.</comment>
+    <requestid>1379746</requestid>
+  </revision>
 </revisionlist>
