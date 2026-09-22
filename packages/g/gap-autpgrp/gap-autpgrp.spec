@@ -17,7 +17,7 @@
 
 
 Name:           gap-autpgrp
-Version:        1.12.0
+Version:        1.13.0
 Release:        0
 Summary:        GAP: Computing the Automorphism Group of a p-Group
 License:        GPL-2.0-or-later

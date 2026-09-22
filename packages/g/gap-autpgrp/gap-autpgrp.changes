@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:59:30 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.13.0
+  * Faster automorphism groups for p-groups whose automorphism
+    group is small compared to the general linear group of the
+    Frattini quotient; such groups took hours or ran out of memory
+    and now take well under a second (`SmallGroup(512, 10481128)`,
+    `SmallGroup(6561, 282763)`).
+  * Added the option `OrbitLimit` to `AutomorphismGroupPGroup`,
+    which returns `fail` once an orbit exceeds the given length.
+  * `InfoAutGrp` level 2 reports orbit lengths, method and time per
+    step.
+  * Store the transversal of the orbit enumeration as a Schreier
+    vector instead of one word per orbit point.
+
+-------------------------------------------------------------------
 Tue May 19 01:04:42 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.12.0
