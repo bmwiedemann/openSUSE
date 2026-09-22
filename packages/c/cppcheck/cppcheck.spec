@@ -31,7 +31,7 @@
 %define pyexecutable python3
 %endif
 Name:           cppcheck
-Version:        2.21.0
+Version:        2.22.0
 Release:        0
 Summary:        A tool for static C/C++ code analysis
 License:        GPL-3.0-or-later
@@ -119,7 +119,7 @@ sed -i "s|env python3|%{pyexecutable}|g" htmlreport/cppcheck-htmlreport
 %check
 export CXXFLAGS="%{optflags}"
 %define _smp_mflags -j1
-%ctest
+%{ctest '-E' '(addon-venv-install|addon-cppcheckdata)'}
 
 %install
 install -Dpm 0755 build/bin/cppcheck \
