@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 21 14:19:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260918.01
+  * bump grpc package to new version (#1057)
+- from version 20260918.00
+  * bump some dependencies across few modules (#1056)
+- Remove stale Go module version overrides in _service file
+
+-------------------------------------------------------------------
+Wed Sep 16 07:10:15 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260911.00
+  * Add support for all possible SCALIBR os extractor for linux (#1052)
+- Update golang.org/x/crypto to v0.57.0 (bsc#1278597,
+  CVE-2026-56854, CVE-2026-56855, CVE-2026-78662)
+- Add missing Bugzilla and CVE reference for go.opentelemetry.io/otel
+
+-------------------------------------------------------------------
 Thu Sep 10 15:37:55 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update golang.org/x/crypto to v0.55.0 (bsc#1278597,
@@ -34,6 +52,8 @@ Tue Aug  4 08:20:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 
 - Update to version 20260803.00
   * Bump cloud.google.com/go/auth from 0.18.0 to 0.22.0 (#1032)
+    This also updates go.opentelemetry.io/otel from v1.43.0
+    to v1.44.0 (bsc#1276722, CVE-2026-41178)
 - from version 20260730.00
   * Bump golang.org/x/crypto from 0.52.0 to 0.54.0 (#1028)
 - from version 20260729.02

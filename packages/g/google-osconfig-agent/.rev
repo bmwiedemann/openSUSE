@@ -1035,4 +1035,16 @@
   CVE-2026-56854, CVE-2026-56855, CVE-2026-78662) (forwarded request 1376970 from glaubitz)</comment>
     <requestid>1376977</requestid>
   </revision>
+  <revision rev="63" vrev="1">
+    <srcmd5>478a4e8ae29946d81827a14d00abb130</srcmd5>
+    <version>20260918.01</version>
+    <time>1790085029</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260918.01
+  * bump grpc package to new version (#1057)
+- from version 20260918.00
+  * bump some dependencies across few modules (#1056)
+- Remove stale Go module version overrides in _service file (forwarded request 1379480 from glaubitz)</comment>
+    <requestid>1379481</requestid>
+  </revision>
 </revisionlist>
