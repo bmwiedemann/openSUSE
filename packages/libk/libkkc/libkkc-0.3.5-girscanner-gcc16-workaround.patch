@@ -1,0 +1,12 @@
+--- libkkc-0.3.5/marisa-glib/Makefile.am.gcc16	2014-12-19 11:40:01.000000000 +0900
++++ libkkc-0.3.5/marisa-glib/Makefile.am	2026-07-30 15:30:37.801999323 +0900
+@@ -37,7 +37,8 @@ INTROSPECTION_SCANNER_ARGS = --add-inclu
+ INTROSPECTION_COMPILER_ARGS = --includedir=$(srcdir)
+ 
+ Marisa.gir: libmarisa-glib.la
+-Marisa_gir_SCANNERFLAGS = --pkg-export=marisa-glib --pkg=marisa --namespace=Marisa $(MARISA_GLIB_STATIC_DEPENDENCIES)
++MARISA_GLIB_STATIC_DEPENDENCIES_1	= $(shell echo $(MARISA_GLIB_STATIC_DEPENDENCIES) | sed -e 's/-latomic_asneeded//')
++Marisa_gir_SCANNERFLAGS = --pkg-export=marisa-glib --pkg=marisa --namespace=Marisa $(MARISA_GLIB_STATIC_DEPENDENCIES_1)
+ Marisa_gir_INCLUDES = GLib-2.0 GObject-2.0 Gio-2.0
+ Marisa_gir_CFLAGS = $(libmarisa_glib_la_CFLAGS)
+ Marisa_gir_LIBS = libmarisa-glib.la

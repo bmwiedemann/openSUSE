@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:24:46 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Add patch from Fedora to fix build with GCC16:
+  * libkkc-0.3.5-girscanner-gcc16-workaround.patch
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Mar 31 09:13:28 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Update libkkc.spec:

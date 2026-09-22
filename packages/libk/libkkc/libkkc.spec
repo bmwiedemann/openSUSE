@@ -33,6 +33,8 @@ Patch0:         libkkc-typelib-sharelib.patch
 Patch1:         libkkc-gettext.patch
 # PATCH-FIX-UPSTREAM marguerite@opensuse.org - public some classes to make vala 0.38 happy
 Patch2:         libkkc-public.patch
+# PATCH-FIX-OPENSUSE
+Patch3:         libkkc-0.3.5-girscanner-gcc16-workaround.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} < 1600
 BuildRequires:  gcc15-c++
@@ -49,7 +51,6 @@ BuildRequires:  marisa-devel
 BuildRequires:  pkg-config
 BuildRequires:  vala >= 0.16.0
 BuildRequires:  xz
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
 libkkc provides a converter from Japanese Kana-string to Kana-Kanji-mixed-string.
@@ -145,7 +146,6 @@ popd
 %postun -n %{name}%{soname} -p /sbin/ldconfig
 
 %files -n %{name}%{soname} -f %{name}.lang
-%defattr(-,root,root)
 %doc README
 %license COPYING
 %{_bindir}/kkc
@@ -154,15 +154,12 @@ popd
 %{_datadir}/libkkc/
 
 %files -n typelib-1_0-kkc-1_0
-%defattr(-,root,root)
 %{_libdir}/girepository-1.0/Kkc-1.0.typelib
 
 %files -n kkc-data
-%defattr(-,root,root)
 %{_libdir}/%{name}/
 
 %files devel
-%defattr(-,root,root)
 %{_bindir}/kkc-package-data
 %{_includedir}/libkkc/
 %{_libdir}/libkkc.so
