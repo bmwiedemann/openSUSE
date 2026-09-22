@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Parse-ANSIColor-Tiny
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,19 +18,24 @@
 
 %define cpan_name Parse-ANSIColor-Tiny
 Name:           perl-Parse-ANSIColor-Tiny
-Version:        0.700
+Version:        0.800.0
 Release:        0
+# 0.800 -> normalize -> 0.800.0
+%define cpan_version 0.800
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Determine attributes of ANSI-Colored string
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RW/RWSTAUNER/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Test::Differences)
 BuildRequires:  perl(Test::More) >= 0.96
 BuildRequires:  perl(Test::Requires)
+Provides:       perl(Parse::ANSIColor::Tiny) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -42,8 +47,9 @@ that in some instances you'd like to preserve.
 
 This module is essentially the inverse of Term::ANSIColor. The array refs
 returned from parse can be passed back in to 'Term::ANSIColor::colored'.
-The strings may not match exactly due to different ways the attributes can
-be specified, but the end result should be colored the same.
+(True color attributes require Term::ANSIColor 5.01 or later.) The strings
+may not match exactly due to different ways the attributes can be
+specified, but the end result should be colored the same.
 
 This is a '::Tiny' module... it attempts to be correct for most cases with
 a small amount of code. It may not be 100% correct, especially in complex
@@ -55,7 +61,7 @@ you can disable this by passing 'remove_escapes => 0' to the constructor.
 If you do find bugs please submit tickets (with patches, if possible).
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor

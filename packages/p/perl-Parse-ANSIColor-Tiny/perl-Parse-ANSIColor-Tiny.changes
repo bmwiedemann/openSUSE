@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep  9 09:48:12 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.800.0 (0.800)
+   see /usr/share/doc/packages/perl-Parse-ANSIColor-Tiny/Changes
+
+  0.800     2026-09-08T22:21:14Z
+
+    - Add support for 24-bit (true color) sequences.
+      Attributes are named as in Term::ANSIColor: "r255g136b0", "on_r0g10b20".
+
+-------------------------------------------------------------------
 Sun Oct 23 03:11:40 UTC 2022 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.700

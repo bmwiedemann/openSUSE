@@ -15,4 +15,16 @@
     <comment></comment>
     <requestid>1034520</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5ce866d300322c6041b949c5cc4fb54d</srcmd5>
+    <version>0.800.0</version>
+    <time>1790084942</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.800.0 (0.800)
+   see /usr/share/doc/packages/perl-Parse-ANSIColor-Tiny/Changes
+  0.800     2026-09-08T22:21:14Z
+    - Add support for 24-bit (true color) sequences.
+      Attributes are named as in Term::ANSIColor: &quot;r255g136b0&quot;, &quot;on_r0g10b20&quot;.</comment>
+    <requestid>1379462</requestid>
+  </revision>
 </revisionlist>
