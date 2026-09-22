@@ -22,19 +22,19 @@
 %define skip_python2 1
 
 Name:           python-nautilus
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Python bindings for Nautilus
 License:        GPL-2.0-or-later
 Group:          Development/Libraries/Python
 URL:            https://wiki.gnome.org/Projects/NautilusPython
-Source:         https://download.gnome.org/sources/nautilus-python/4.1/%{_name}-%{version}.tar.xz
+Source:         https://download.gnome.org/sources/nautilus-python/4.2/%{_name}-%{version}.tar.xz
 # PATCH-FIX-OPENSUSE: fix-hwcaps.patch -- bsc#1212474
 Patch1:         fix-hwcaps.patch
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  gtk-doc
-BuildRequires:  meson
+BuildRequires:  meson >= 0.62.0
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(libnautilus-extension-4) >= 43.beta
