@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.0:
+  * Runs can be addressed to an agent instead of a project:
+    traceable(), tracing_context(), RunTree and the client's
+    create_run()/update_run() take agent_id and
+    agent_environment, also read from LANGSMITH_AGENT_ID and
+    LANGSMITH_AGENT_ENVIRONMENT; naming both an agent and a
+    project in one call is rejected. Beta, per workspace
+  * Feedback is addressable the same way, copied from the run it
+    describes rather than read from the environment
+  * An ambient agent configuration no longer leaks into an
+    evaluation; its runs and feedback stay project-addressed
+  * OpenTelemetry export sets gen_ai.tool.name and
+    gen_ai.tool.call.id on tool runs, falls back to a top-level
+    stop_reason or finish_reason, and emits
+    gen_ai.response.finish_reasons as a list, not a joined string
+  * Sandboxes take an access_delegation grant so that code inside
+    calls the LangSmith API as their creator, with every
+    permission or a named subset
+  * Sandbox service URLs can be gated by LangSmith login instead
+    of a token, as ServiceLoginURL
+
+-------------------------------------------------------------------
 Sun Sep 20 15:33:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.13.0:

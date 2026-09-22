@@ -371,4 +371,31 @@ Supersedes sr#1379286, whose changelog described the stdin default
 change as an optional capability and omitted the env/cwd deprecation.</comment>
     <requestid>1379306</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e5cc348860a4c87cf43bff2824df33b8</srcmd5>
+    <version>0.14.0</version>
+    <time>1790112298</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.14.0.
+
+Agent addressing for runs and for feedback, with evaluations staying
+project-addressed; OpenTelemetry tool attributes and finish-reason
+handling; sandbox access delegation; and ServiceLoginURL.
+
+The OTel work is credited because python-opentelemetry-sdk and its
+siblings are in Factory. The Claude SDK run changes are deliberately not
+credited: python-claude-agent-sdk is not in Factory, and that integration
+is opt-in and imported nowhere else, so the RPM cannot run it.
+
+Upstream also advertises a soupsieve ReDoS dependency fix. That is not
+credited either - soupsieve appears only in uv.lock, is absent from
+requires-dist, and does not appear in the built RPM's Requires. The two
+GHSAs concerned are soupsieve's own, not langsmith's.
+
+The three previously-cited VUL bugs are not re-cited.
+
+Built and checked locally on aarch64: 692 tests pass, rpmlint 0 errors,
+0 warnings, 0 badness.</comment>
+    <requestid>1379743</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.13.0
+Version:        0.14.0
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
