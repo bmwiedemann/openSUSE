@@ -19,11 +19,10 @@
 #
 %global flavor @BUILD_FLAVOR@%{nil}
 
-%define ver 1.91.0
-%define _ver 1_91_0
+%define ver 1.92.0
+%define _ver 1_92_0
 
 %bcond_with    build_docs
-%bcond_without package_pdf
 %bcond_without build_quickbook
 %bcond_with    boost_devel
 
@@ -59,16 +58,15 @@ ExclusiveArch:  do_not_build
 %define base_name boost%{?name_suffix}
 
 Name:           %{base_name}
-Version:        1.91.0
+Version:        1.92.0
 Release:        0
-%define library_version 1_91_0
+%define library_version 1_92_0
 Summary:        Boost C++ Libraries
 License:        BSL-1.0
 Group:          Development/Libraries/C and C++
 URL:            https://www.boost.org
 Source0:        https://archives.boost.io/release/%{version}/source/boost_%{_ver}.tar.bz2
 Source1:        boost-rpmlintrc
-Source3:        https://downloads.sourceforge.net/project/boost/boost-docs/1.56.0/boost_1_56_pdf.tar.bz2
 Source4:        existing_extra_docs
 Source10:       exception.objdump
 Source11:       __init__.py
@@ -89,6 +87,7 @@ Patch18:        dynamic_linking.patch
 Patch20:        python_library_name.patch
 Patch21:        boost-remove-cmakedir.patch
 Patch25:        boost-no-exception.patch
+Patch29:        boost-mpi-pr180.patch
 %{?suse_build_hwcaps_libs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -195,7 +194,7 @@ Requires:       libboost_python-py3-%{library_version}-devel
 %description -n %{package_name}-devel
 This package contains all that is needed to develop/compile
 applications that use the Boost C++ libraries. For documentation see
-the documentation packages (html, man or pdf).
+the documentation packages (html or man).
 
 %package     -n %{package_name}-python3
 Summary:        Boost.MPI Python 3.x serialization library
@@ -238,15 +237,6 @@ BuildArch:      noarch
 %description    doc-man
 This package contains the documentation of the boost dynamic libraries
 as man pages.
-
-%package      -n %{package_name}-doc-pdf
-Summary:        PDF documentation for the Boost C++ Libraries
-Group:          Development/Libraries/C and C++
-BuildArch:      noarch
-
-%description  -n %{package_name}-doc-pdf
-This package contains the documentation of the boost dynamic libraries
-in PDF format.
 
 %package     -n libboost_atomic%{library_version}
 Summary:        Boost.Atomic runtime library
@@ -387,6 +377,8 @@ This package contains the Boost Date.DateTime runtime libraries.
 %package     -n libboost_date_time%{library_version}-devel
 Summary:        Development headers for Boost.DateTime library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
+Requires:       libboost_container%{library_version}-devel = %{version}
 Requires:       libboost_date_time%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
@@ -463,7 +455,9 @@ Summary:        Development headers for Boost.Graph library
 Group:          Development/Libraries/C and C++
 Requires:       libboost_graph%{library_version} = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
+Requires:       libboost_math%{library_version}-devel = %{version}
 Requires:       libboost_regex%{library_version}-devel = %{version}
+Requires:       libboost_serialization%{library_version}-devel = %{version}
 Requires:       libstdc++-devel
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_graph-devel-impl
@@ -549,6 +543,7 @@ Summary:        Development headers for Boost.Math libraries
 Group:          Development/Libraries/C and C++
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_math%{library_version} = %{version}
+Requires:       libboost_random%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_math-devel-impl
 Conflicts:      libboost_math1_66_0-devel
@@ -743,7 +738,10 @@ bindings.
 %package     -n libboost_python-py3-%{library_version}-devel
 Summary:        Development headers for Boost.Python library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
+Requires:       libboost_chrono%{library_version}-devel = %{version}
 Requires:       libboost_container%{library_version}-devel = %{version}
+Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_graph%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_python-py3-%{library_version} = %{version}
@@ -790,8 +788,13 @@ This package contains the Boost.Serialization runtime library.
 %package     -n libboost_serialization%{library_version}-devel
 Summary:        Development headers for Boost.Serialization library
 Group:          Development/Libraries/C and C++
+Requires:       libboost_atomic%{library_version}-devel = %{version}
+Requires:       libboost_chrono%{library_version}-devel = %{version}
+Requires:       libboost_container%{library_version}-devel = %{version}
+Requires:       libboost_date_time%{library_version}-devel = %{version}
 Requires:       libboost_headers%{library_version}-devel = %{version}
 Requires:       libboost_serialization%{library_version} = %{version}
+Requires:       libboost_thread%{library_version}-devel = %{version}
 Conflicts:      boost-devel < 1.63
 Conflicts:      libboost_serialization-devel-impl
 Conflicts:      libboost_serialization1_66_0-devel
@@ -1076,7 +1079,7 @@ documentation using simple rules and markup for simple formatting
 tasks.
 
 %prep
-%setup -q -n boost_%{library_version} -b 3
+%setup -q -n boost_%{library_version}
 #everything in the tarball has the executable flag set ...
 find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {} +
 %patch -P 1 -p1
@@ -1093,6 +1096,7 @@ find -type f ! \( -name \*.sh -o -name \*.py -o -name \*.pl \) -exec chmod -x {}
 %patch -P 20 -p1
 %patch -P 21 -p1
 %patch -P 25
+%patch -P 29
 
 %build
 find . -type f -exec chmod u+w {} +
@@ -1329,7 +1333,6 @@ rm -rf %{buildroot}%{my_docdir}/boost
 #ln -s %%{_includedir}/boost %%{buildroot}%%{my_docdir}
 #ln -s ../LICENSE_1_0.txt %%{buildroot}%%{my_docdir}/libs
 find %{buildroot}%{my_docdir} -name \*.py -exec chmod -x {} +
-chmod -x ../boost_1_56_pdf/*.pdf
 
 %if %{with build_quickbook}
 mkdir -p %{buildroot}%{_bindir}
@@ -1364,6 +1367,7 @@ rm %{buildroot}%{_libdir}/libboost_exception.so.%{version}
 # not used or duplicated in boost-extra flavor
 rm -r %{buildroot}%{_libdir}/cmake/boost_exception-*
 rm -r %{buildroot}%{_libdir}/cmake/boost_graph_parallel-%{version}
+rm -r %{buildroot}%{_libdir}/cmake/boost_regex_old-*
 
 %fdupes %{buildroot}%{_includedir}/boost
 mkdir -p %{buildroot}%{my_docdir}
@@ -1378,11 +1382,11 @@ rm -r %{buildroot}%{_libdir}/cmake/boost_headers-%{version}
 rm -rf %{buildroot}%{_libdir}/cmake/boost_{w,}serialization-%{version}
 rm -r %{buildroot}%{_libdir}/cmake/boost_container-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_container.so*
-%if %{with mpi}
 # atomic is a header-only library with GCC 16, force remove it
 # so the build doesn't fail when the directory is missing
 rm -rf %{buildroot}%{_libdir}/cmake/boost_atomic-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_atomic.so*
+%if %{with mpi}
 rm -r %{buildroot}%{_libdir}/cmake/boost_filesystem-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_filesystem.so*
 %endif
@@ -1390,10 +1394,18 @@ rm -r %{buildroot}%{_libdir}/cmake/boost_graph-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_graph.so*
 rm -r %{buildroot}%{_libdir}/cmake/boost_random-%{version}
 rm -f %{buildroot}%{_libdir}/libboost_random.so*
-%if %{with mpi}
-rm -r %{buildroot}%{_libdir}/cmake/boost_regex-%{version}
-rm -f %{buildroot}%{_libdir}/libboost_regex.so*
-%endif
+rm -r %{buildroot}%{_libdir}/cmake/boost_chrono-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_chrono.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_date_time-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_date_time.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_math-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_math.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_math_c99*-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_math_c99*.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_math_tr1*-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_math_tr1*.so*
+rm -r %{buildroot}%{_libdir}/cmake/boost_thread-%{version}
+rm -f %{buildroot}%{_libdir}/libboost_thread.so*
 
 # strip RPATH
 find %{buildroot} -type f -executable -exec patchelf --remove-rpath {} \;
@@ -1403,6 +1415,8 @@ rm -f %{buildroot}%{_libdir}/libboost_{w,}serialization*
 rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %fdupes %{buildroot}%{my_docdir}
 %endif
+
+rm -r %{buildroot}%{_datadir}/boost_predef
 
 %if %{build_base}
 %ldconfig_scriptlets -n libboost_atomic%{library_version}
@@ -1700,17 +1714,21 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %{_libdir}/libboost_stacktrace_addr2line.so.%{version}
 %{_libdir}/libboost_stacktrace_basic.so.%{version}
 %{_libdir}/libboost_stacktrace_noop.so.%{version}
+%{_libdir}/libboost_stacktrace_dump.so.%{version}
 
 %files -n libboost_stacktrace%{library_version}-devel
 %dir %{_libdir}/cmake/boost_stacktrace_addr2line-%{version}
 %dir %{_libdir}/cmake/boost_stacktrace_basic-%{version}
 %dir %{_libdir}/cmake/boost_stacktrace_noop-%{version}
+%dir %{_libdir}/cmake/boost_stacktrace_dump-%{version}
 %{_libdir}/cmake/boost_stacktrace_addr2line-%{version}/*
 %{_libdir}/cmake/boost_stacktrace_basic-%{version}/*
 %{_libdir}/cmake/boost_stacktrace_noop-%{version}/*
+%{_libdir}/cmake/boost_stacktrace_dump-%{version}/*
 %{_libdir}/libboost_stacktrace_addr2line.so
 %{_libdir}/libboost_stacktrace_basic.so
 %{_libdir}/libboost_stacktrace_noop.so
+%{_libdir}/libboost_stacktrace_dump.so
 
 %files -n libboost_thread%{library_version}
 %{_libdir}/libboost_thread.so.%{version}
@@ -1821,11 +1839,6 @@ rmdir --ignore-fail-on-non-empty %{buildroot}%{_libdir}
 %{_mandir}/man3/*.3%{?ext_man}
 %{_mandir}/man7/*.7%{?ext_man}
 %{_mandir}/man9/*.9%{?ext_man}
-%endif
-
-%if %{with package_pdf}
-%files -n %{package_name}-doc-pdf
-%doc ../boost_1_56_pdf/*.pdf
 %endif
 
 %if %{with build_quickbook}

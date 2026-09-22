@@ -1,97 +1,19 @@
 On Linux the boost exception library is a stub and no package is
 generated for it. See comments in spec file.
 
---- libs/coroutine/build.jam.orig
-+++ libs/coroutine/build.jam
-@@ -10,7 +10,6 @@
-     /boost/config//boost_config
-     /boost/context//boost_context
-     /boost/core//boost_core
--    /boost/exception//boost_exception
-     /boost/move//boost_move
-     /boost/system//boost_system
-     /boost/throw_exception//boost_throw_exception
-diff --git a/build.jam b/build.jam
-index d0caf573..bd3c231b 100644
---- libs/thread/build.jam.orig
-+++ libs/thread/build.jam
-@@ -16,7 +16,6 @@ constant boost_dependencies :
-     /boost/container_hash//boost_container_hash
-     /boost/core//boost_core
-     /boost/date_time//boost_date_time
--    /boost/exception//boost_exception
-     /boost/function//boost_function
-     /boost/io//boost_io
-     /boost/move//boost_move
-diff --git a/build/Jamfile.v2 b/build/Jamfile.v2
-index dbaa83a..5b11d12 100644
---- libs/log/build/Jamfile.v2.orig
-+++ libs/log/build/Jamfile.v2
-@@ -69,7 +69,6 @@ constant boost_log_public_deps :
- constant boost_log_private_deps :
-     <library>/boost/align//boost_align
-     <library>/boost/bind//boost_bind
--    <library>/boost/exception//boost_exception
-     <library>/boost/interprocess//boost_interprocess
-     <library>/boost/optional//boost_optional
-     <library>/boost/spirit//boost_spirit
-@@ -101,7 +100,6 @@ constant boost_log_setup_public_deps :
- constant boost_log_setup_private_deps :
-     <library>/boost/bind//boost_bind
-     <library>/boost/date_time//boost_date_time
--    <library>/boost/exception//boost_exception
-     <library>/boost/filesystem//boost_filesystem
-     <library>/boost/io//boost_io
-     <library>/boost/log//boost_log
-@@ -116,7 +114,6 @@ constant boost_log_setup_private_deps :
- 
- constant boost_log_support_public_deps :
-     <library>/boost/log//boost_log
--    <library>/boost/exception//boost_exception
-     <library>/boost/spirit//boost_spirit
-     <library>/boost/xpressive//boost_xpressive
-     ;
-diff --git a/build.jam b/build.jam
-index dd6db1f8..2062c760 100644
---- libs/test/build.jam
-+++ libs/test/build.jam
-@@ -12,7 +12,6 @@ constant boost_dependencies :
-     /boost/config//boost_config
-     /boost/core//boost_core
-     /boost/detail//boost_detail
--    /boost/exception//boost_exception
-     /boost/function//boost_function
-     /boost/io//boost_io
-     /boost/iterator//boost_iterator
-diff --git a/build.jam b/build.jam
-index a33b5f0..c4d7b96 100644
---- libs/process/build.jam
-+++ libs/process/build.jam
-@@ -22,7 +22,6 @@ constant boost_dependencies :
-     /boost/move//boost_move
-     /boost/optional//boost_optional
-     /boost/system//boost_system
+--- libs/accumulators/build.jam
++++ libs/accumulators/build.jam
+@@ -21,7 +21,6 @@
+     /boost/preprocessor//boost_preprocessor
+     /boost/range//boost_range
+     /boost/serialization//boost_serialization
 -    /boost/throw_exception//boost_throw_exception
-     /boost/tokenizer//boost_tokenizer
-     /boost/type_index//boost_type_index
+     /boost/tuple//boost_tuple
      /boost/type_traits//boost_type_traits
-diff --git a/build.jam b/build.jam
-index 9a3ae769..117808ac 100644
---- libs/regex/build.jam
-+++ libs/regex/build.jam
-@@ -11,7 +11,6 @@ constant boost_dependencies :
-     /boost/config//boost_config
-     /boost/predef//boost_predef
-     /boost/static_assert//boost_static_assert
--    /boost/throw_exception//boost_throw_exception
-     /boost/type_traits//boost_type_traits ;
- 
- project /boost/regex
-diff --git a/build.jam b/build.jam
-index 33b7323..22c6218 100644
+     /boost/typeof//boost_typeof ;
 --- libs/algorithm/build.jam
 +++ libs/algorithm/build.jam
-@@ -12,13 +12,11 @@ constant boost_dependencies :
+@@ -12,13 +12,11 @@
      /boost/concept_check//boost_concept_check
      /boost/config//boost_config
      /boost/core//boost_core
@@ -105,3 +27,618 @@ index 33b7323..22c6218 100644
      /boost/tuple//boost_tuple
      /boost/type_traits//boost_type_traits
      /boost/unordered//boost_unordered ;
+--- libs/any/build.jam
++++ libs/any/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_index//boost_type_index ;
+ 
+ project /boost/any
+--- libs/array/build.jam
++++ libs/array/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/array ;
+--- libs/assign/build.jam
++++ libs/assign/build.jam
+@@ -13,7 +13,6 @@
+     /boost/preprocessor//boost_preprocessor
+     /boost/ptr_container//boost_ptr_container
+     /boost/range//boost_range
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits ;
+ 
+--- libs/beast/build.jam
++++ libs/beast/build.jam
+@@ -23,7 +23,6 @@
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/static_string//boost_static_string
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_index//boost_type_index
+     /boost/type_traits//boost_type_traits
+     /boost/winapi//boost_winapi ;
+--- libs/bimap/build.jam
++++ libs/bimap/build.jam
+@@ -15,7 +15,6 @@
+     /boost/mpl//boost_mpl
+     /boost/multi_index//boost_multi_index
+     /boost/preprocessor//boost_preprocessor
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+ 
+--- libs/bloom/build.jam
++++ libs/bloom/build.jam
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/container_hash//boost_container_hash
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     ;
+ 
+--- libs/chrono/build.jam
++++ libs/chrono/build.jam
+@@ -15,7 +15,6 @@
+     /boost/predef//boost_predef
+     /boost/ratio//boost_ratio
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/typeof//boost_typeof
+     /boost/utility//boost_utility
+--- libs/circular_buffer/build.jam
++++ libs/circular_buffer/build.jam
+@@ -11,7 +11,6 @@
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/move//boost_move
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/circular_buffer
+--- libs/cobalt/build.jam
++++ libs/cobalt/build.jam
+@@ -23,7 +23,6 @@
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/static_string//boost_static_string
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/variant2//boost_variant2 ;
+ 
+ project /boost/cobalt
+--- libs/compat/build.jam
++++ libs/compat/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/compat ;
+--- libs/compute/build.jam
++++ libs/compute/build.jam
+@@ -27,7 +27,6 @@
+     /boost/range//boost_range
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/thread//boost_thread
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+     /boost/typeof//boost_typeof
+--- libs/contract/build.jam
++++ libs/contract/build.jam
+@@ -10,7 +10,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/exception//boost_exception
+     /boost/function//boost_function
+     /boost/function_types//boost_function_types
+     /boost/mpl//boost_mpl
+--- libs/core/build.jam
++++ libs/core/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/core ;
+--- libs/coroutine/build.jam
++++ libs/coroutine/build.jam
+@@ -10,10 +10,8 @@
+     /boost/config//boost_config
+     /boost/context//boost_context
+     /boost/core//boost_core
+-    /boost/exception//boost_exception
+     /boost/move//boost_move
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+ 
+--- libs/date_time/build.jam
++++ libs/date_time/build.jam
+@@ -15,7 +15,6 @@
+     /boost/numeric_conversion//boost_numeric_conversion
+     /boost/range//boost_range
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tokenizer//boost_tokenizer
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility
+--- libs/dll/build.jam
++++ libs/dll/build.jam
+@@ -12,7 +12,6 @@
+     /boost/filesystem//boost_filesystem
+     /boost/predef//boost_predef
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_index//boost_type_index
+     /boost/winapi//boost_winapi ;
+ 
+--- libs/exception/build.jam
++++ libs/exception/build.jam
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits ;
+ 
+--- libs/flyweight/build.jam
++++ libs/flyweight/build.jam
+@@ -17,7 +17,6 @@
+     /boost/parameter//boost_parameter
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/flyweight
+--- libs/format/build.jam
++++ libs/format/build.jam
+@@ -11,7 +11,6 @@
+     /boost/core//boost_core
+     /boost/optional//boost_optional
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/utility//boost_utility ;
+ 
+ project /boost/format
+--- libs/function/build.jam
++++ libs/function/build.jam
+@@ -10,7 +10,6 @@
+     /boost/bind//boost_bind
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/function ;
+--- libs/geometry/build.jam
++++ libs/geometry/build.jam
+@@ -32,7 +32,6 @@
+     /boost/rational//boost_rational
+     /boost/serialization//boost_serialization
+     /boost/thread//boost_thread
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tokenizer//boost_tokenizer
+     /boost/tuple//boost_tuple
+     /boost/variant//boost_variant
+--- libs/graph/build.jam
++++ libs/graph/build.jam
+@@ -38,7 +38,6 @@
+     /boost/serialization//boost_serialization
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/spirit//boost_spirit
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tti//boost_tti
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+--- libs/histogram/build.jam
++++ libs/histogram/build.jam
+@@ -16,7 +16,6 @@
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/mp11//boost_mp11
+-    /boost/throw_exception//boost_throw_exception
+     /boost/variant2//boost_variant2 ;
+ 
+ project /boost/histogram
+--- libs/integer/build.jam
++++ libs/integer/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/integer
+--- libs/iostreams/build.jam
++++ libs/iostreams/build.jam
+@@ -22,7 +22,6 @@
+     /boost/range//boost_range
+     /boost/regex//boost_regex
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+ 
+--- libs/log/build/Jamfile.v2
++++ libs/log/build/Jamfile.v2
+@@ -69,7 +69,6 @@
+ constant boost_log_private_deps :
+     <library>/boost/align//boost_align
+     <library>/boost/bind//boost_bind
+-    <library>/boost/exception//boost_exception
+     <library>/boost/interprocess//boost_interprocess
+     <library>/boost/optional//boost_optional
+     <library>/boost/spirit//boost_spirit
+@@ -101,7 +100,6 @@
+ constant boost_log_setup_private_deps :
+     <library>/boost/bind//boost_bind
+     <library>/boost/date_time//boost_date_time
+-    <library>/boost/exception//boost_exception
+     <library>/boost/filesystem//boost_filesystem
+     <library>/boost/io//boost_io
+     <library>/boost/log//boost_log
+@@ -116,7 +114,6 @@
+ 
+ constant boost_log_support_public_deps :
+     <library>/boost/log//boost_log
+-    <library>/boost/exception//boost_exception
+     <library>/boost/spirit//boost_spirit
+     <library>/boost/xpressive//boost_xpressive
+     ;
+--- libs/mpi/build.jam
++++ libs/mpi/build.jam
+@@ -19,7 +19,6 @@
+     /boost/optional//boost_optional
+     /boost/serialization//boost_serialization
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/mpi
+--- libs/multi_index/build.jam
++++ libs/multi_index/build.jam
+@@ -15,7 +15,6 @@
+     /boost/mp11//boost_mp11
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+--- libs/mysql/build.jam
++++ libs/mysql/build.jam
+@@ -20,7 +20,6 @@
+     /boost/optional//boost_optional
+     /boost/pfr//boost_pfr
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/variant2//boost_variant2 ;
+ 
+ project /boost/mysql
+--- libs/numeric/conversion/build.jam
++++ libs/numeric/conversion/build.jam
+@@ -11,7 +11,6 @@
+     /boost/core//boost_core
+     /boost/mpl//boost_mpl
+     /boost/preprocessor//boost_preprocessor
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/numeric_conversion
+--- libs/numeric/odeint/build.jam
++++ libs/numeric/odeint/build.jam
+@@ -19,7 +19,6 @@
+     /boost/ublas//boost_ublas
+     /boost/preprocessor//boost_preprocessor
+     /boost/range//boost_range
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/units//boost_units
+     /boost/utility//boost_utility ;
+--- libs/optional/build.jam
++++ libs/optional/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/optional ;
+--- libs/outcome/build.jam
++++ libs/outcome/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/exception//boost_exception
+     /boost/system//boost_system
+     /boost/throw_exception//boost_throw_exception ;
+ 
+--- libs/pool/build.jam
++++ libs/pool/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/integer//boost_integer
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/winapi//boost_winapi ;
+ 
+--- libs/process/build.jam
++++ libs/process/build.jam
+@@ -22,7 +22,6 @@
+     /boost/move//boost_move
+     /boost/optional//boost_optional
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tokenizer//boost_tokenizer
+     /boost/type_index//boost_type_index
+     /boost/type_traits//boost_type_traits
+--- libs/program_options/build.jam
++++ libs/program_options/build.jam
+@@ -14,7 +14,6 @@
+     /boost/iterator//boost_iterator
+     /boost/lexical_cast//boost_lexical_cast
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/program_options
+--- libs/property_map/build.jam
++++ libs/property_map/build.jam
+@@ -16,7 +16,6 @@
+     /boost/lexical_cast//boost_lexical_cast
+     /boost/mpl//boost_mpl
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_index//boost_type_index
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+--- libs/property_tree/build.jam
++++ libs/property_tree/build.jam
+@@ -17,7 +17,6 @@
+     /boost/optional//boost_optional
+     /boost/range//boost_range
+     /boost/serialization//boost_serialization
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/property_tree
+--- libs/qvm/test/Jamfile.v2
++++ libs/qvm/test/Jamfile.v2
+@@ -6,7 +6,6 @@
+ project
+     : requirements
+         <library>/boost/core//boost_core
+-        <library>/boost/exception//boost_exception
+         <library>/boost/test//included
+     ;
+ 
+--- libs/random/build.jam
++++ libs/random/build.jam
+@@ -13,7 +13,6 @@
+     /boost/integer//boost_integer
+     /boost/io//boost_io
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+ 
+--- libs/rational/build.jam
++++ libs/rational/build.jam
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/integer//boost_integer
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+ 
+--- libs/regex/build.jam
++++ libs/regex/build.jam
+@@ -10,7 +10,6 @@
+     /boost/concept_check//boost_concept_check
+     /boost/config//boost_config
+     /boost/predef//boost_predef
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/regex
+--- libs/serialization/build.jam
++++ libs/serialization/build.jam
+@@ -22,7 +22,6 @@
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/spirit//boost_spirit
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility
+     /boost/variant//boost_variant
+--- libs/signals2/build.jam
++++ libs/signals2/build.jam
+@@ -17,7 +17,6 @@
+     /boost/parameter//boost_parameter
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+     /boost/variant//boost_variant ;
+--- libs/smart_ptr/build.jam
++++ libs/smart_ptr/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/smart_ptr ;
+--- libs/spirit/build.jam
++++ libs/spirit/build.jam
+@@ -37,7 +37,6 @@
+     /boost/regex//boost_regex
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/thread//boost_thread
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/typeof//boost_typeof
+     /boost/unordered//boost_unordered
+--- libs/static_string/build.jam
++++ libs/static_string/build.jam
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/container_hash//boost_container_hash
+     /boost/core//boost_core
+-    /boost/throw_exception//boost_throw_exception
+     /boost/utility//boost_utility ;
+ 
+ project /boost/static_string
+--- libs/system/build.jam
++++ libs/system/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/compat//boost_compat
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     /boost/variant2//boost_variant2
+     /boost/winapi//boost_winapi
+     ;
+--- libs/test/build.jam
++++ libs/test/build.jam
+@@ -12,7 +12,6 @@
+     /boost/config//boost_config
+     /boost/core//boost_core
+     /boost/detail//boost_detail
+-    /boost/exception//boost_exception
+     /boost/function//boost_function
+     /boost/io//boost_io
+     /boost/iterator//boost_iterator
+--- libs/thread/build.jam
++++ libs/thread/build.jam
+@@ -16,7 +16,6 @@
+     /boost/container_hash//boost_container_hash
+     /boost/core//boost_core
+     /boost/date_time//boost_date_time
+-    /boost/exception//boost_exception
+     /boost/function//boost_function
+     /boost/io//boost_io
+     /boost/move//boost_move
+@@ -25,7 +24,6 @@
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/system//boost_system
+-    /boost/throw_exception//boost_throw_exception
+     /boost/tuple//boost_tuple
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility
+--- libs/tokenizer/build.jam
++++ libs/tokenizer/build.jam
+@@ -9,7 +9,6 @@
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+     /boost/iterator//boost_iterator
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/tokenizer
+--- libs/type_erasure/build.jam
++++ libs/type_erasure/build.jam
+@@ -15,7 +15,6 @@
+     /boost/mpl//boost_mpl
+     /boost/preprocessor//boost_preprocessor
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/typeof//boost_typeof
+     /boost/vmd//boost_vmd ;
+--- libs/unordered/build.jam
++++ libs/unordered/build.jam
+@@ -12,7 +12,6 @@
+     /boost/core//boost_core
+     /boost/mp11//boost_mp11
+     /boost/predef//boost_predef
+-    /boost/throw_exception//boost_throw_exception
+     ;
+ 
+ project /boost/unordered ;
+--- libs/utility/build.jam
++++ libs/utility/build.jam
+@@ -11,7 +11,6 @@
+     /boost/core//boost_core
+     /boost/io//boost_io
+     /boost/preprocessor//boost_preprocessor
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/utility
+--- libs/uuid/build.jam
++++ libs/uuid/build.jam
+@@ -8,7 +8,6 @@
+ constant boost_dependencies :
+     /boost/assert//boost_assert
+     /boost/config//boost_config
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     ;
+ 
+--- libs/variant/build.jam
++++ libs/variant/build.jam
+@@ -14,7 +14,6 @@
+     /boost/integer//boost_integer
+     /boost/mpl//boost_mpl
+     /boost/preprocessor//boost_preprocessor
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_index//boost_type_index
+     /boost/type_traits//boost_type_traits
+     /boost/utility//boost_utility ;
+--- libs/wave/build.jam
++++ libs/wave/build.jam
+@@ -22,7 +22,6 @@
+     /boost/serialization//boost_serialization
+     /boost/smart_ptr//boost_smart_ptr
+     /boost/spirit//boost_spirit
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits ;
+ 
+ project /boost/wave
+--- libs/xpressive/build.jam
++++ libs/xpressive/build.jam
+@@ -10,7 +10,6 @@
+     /boost/config//boost_config
+     /boost/conversion//boost_conversion
+     /boost/core//boost_core
+-    /boost/exception//boost_exception
+     /boost/fusion//boost_fusion
+     /boost/integer//boost_integer
+     /boost/iterator//boost_iterator
+@@ -22,7 +21,6 @@
+     /boost/proto//boost_proto
+     /boost/range//boost_range
+     /boost/smart_ptr//boost_smart_ptr
+-    /boost/throw_exception//boost_throw_exception
+     /boost/type_traits//boost_type_traits
+     /boost/typeof//boost_typeof
+     /boost/utility//boost_utility ;

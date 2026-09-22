@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Sep 21 15:20:52 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- removed outdated documentation (see
+  https://build.opensuse.org/request/show/1379439)
+- boost_1_56_pdf.tar.bz2: removed
+
+-------------------------------------------------------------------
+Thu Sep 17 15:17:03 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to 1.92.0
+  * for details on all changes see,
+    https://www.boost.org/releases/1.92.0/
+- boost-no-exception.patch: updated
+- boost-mpi-pr180.patch: added
+
+-------------------------------------------------------------------
 Wed Aug  5 13:17:08 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Also install the CMake package config for the header-only
