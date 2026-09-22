@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 22 04:39:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.46.1:
+  This patch release includes dependency updates and security fixes
+  addressing multiple CVEs and improving dependency security. It
+  also includes fixes for tar layer allocation, TLS handling, and
+  plugin validation to improve overall security and reliability.
+  * [release-v0.46.x] bump google.golang.org/protobuf from
+    1.36.12-0.20260120151049-f2248ac996af to 1.36.12 in #3150
+  * [release-v0.46.x] bump github.com/google/go-containerregistry
+    from 0.21.8 to 0.21.9 in #3147
+  * [release-v0.46.x] bump the all group with 4 updates in #3153
+  * [release-v0.46.x] bump the go-k8s-dependencies group with 3
+    updates in #3171
+  * [release-v0.46.x] bump the all group with 3 updates in #3175
+  * [release-v0.46.x] bump the all group with 3 updates in #3198
+  * [release-v0.46.x] bump google.golang.org/grpc from 1.82.1 to
+    1.82.2 in #3196
+  * [release-v0.46.x] bump the all group with 3 updates in #3217
+  * [release-v0.46.x] bump github.com/go-jose/go-jose/v4 from 4.1.4
+    to 4.1.5 in #3215
+  * [cherry-pick: release-v0.46.x] fix: prevent unbounded tar layer
+    allocation in #3228
+  * [cherry-pick: release-v0.46.x] fix(bundle): gate name.Insecure
+    behind --remote-skip-tls (CWE-319) in #3232
+  * [release-v0.46.x] fix(plugins): reject relative plugin dirs to
+    prevent cwd fallback (CWE-426) in #3220
+  * [cherry-pick: release-v0.46.x] fix: add execute-bit check in
+    FindPlugin in #3238
+  * [release-v0.46.x] bump chainguard-dev/actions/kind-diag from
+    1.6.34 to 1.6.35 in the all group in #3262
+  * [release-v0.46.x] chore: add rebase and cherry-pick slash
+    command workflows in #3224
+  * chore(deps): update Go and deps to fix CVEs in #3276
+
+-------------------------------------------------------------------
 Wed Aug 05 10:35:26 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.46.0:
