@@ -226,7 +226,7 @@ packagesets:
    - bluez-obexd # reason: dvd:patterns-gnome-gnome
    - bluez-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - bolt # reason: dvd:patterns-gnome-gnome
-   - boost-license1_91_0 # reason: dvd:openSUSE-release
+   - boost-license1_92_0 # reason: dvd:openSUSE-release
    - branding-openSUSE # reason: dvd:patterns-gnome-gnome
    - breeze6 # reason: dvd:patterns-kde-kde
    - breeze6-cursors # reason: dvd:patterns-kde-kde
@@ -1745,18 +1745,18 @@ packagesets:
    - libblogger2 # reason: dvd:patterns-kde-kde
    - libbluetooth3 # reason: dvd:openSUSE-release
    - libbluray3 # reason: dvd:openSUSE-release
-   - libboost_filesystem1_91_0 # reason: dvd:openSUSE-release
-   - libboost_filesystem1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_iostreams1_91_0 # reason: dvd:openSUSE-release
-   - libboost_iostreams1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_locale1_91_0 # reason: dvd:openSUSE-release
-   - libboost_locale1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_program_options1_91_0 # reason: dvd:patterns-media-rest_dvd
-   - libboost_program_options1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_python-py3-1_91_0 # reason: dvd:patterns-kde-kde_edutainment
-   - libboost_python-py3-1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
-   - libboost_thread1_91_0 # reason: dvd:openSUSE-release
-   - libboost_thread1_91_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_filesystem1_92_0 # reason: dvd:openSUSE-release
+   - libboost_filesystem1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_iostreams1_92_0 # reason: dvd:openSUSE-release
+   - libboost_iostreams1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_locale1_92_0 # reason: dvd:openSUSE-release
+   - libboost_locale1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_program_options1_92_0 # reason: dvd:patterns-media-rest_dvd
+   - libboost_program_options1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_python-py3-1_92_0 # reason: dvd:patterns-kde-kde_edutainment
+   - libboost_python-py3-1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libboost_thread1_92_0 # reason: dvd:openSUSE-release
+   - libboost_thread1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libbox2d2 # reason: dvd:openSUSE-release
    - libbpf1 # reason: dvd:openSUSE-release
    - libbrlapi0_8 # reason: dvd:patterns-gnome-gnome
@@ -4629,7 +4629,7 @@ packagesets:
    - bluez-cups # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bluez-firmware # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - bolt # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - boost-license1_91_0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - boost-license1_92_0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - branding-openSUSE # reason: opensuse_microos:patterns-containers-runtime_podman
    - breeze6 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - breeze6-cursors # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -5367,8 +5367,8 @@ packagesets:
    - libblogger2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbluetooth3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbluray3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libboost_filesystem1_91_0 # reason: opensuse_microos:patterns-microos-base-zypper
-   - libboost_thread1_91_0 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libboost_filesystem1_92_0 # reason: opensuse_microos:patterns-microos-base-zypper
+   - libboost_thread1_92_0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbpf1 # reason: opensuse_microos:patterns-base-hardware
    - libbrotlicommon1 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbrotlidec1 # reason: opensuse_microos:patterns-containers-runtime_podman
@@ -6476,7 +6476,7 @@ packagesets:
    - bluez-firmware # reason: opensuse_kalpa:patterns-kalpa-base
    - bluez-obexd # reason: opensuse_kalpa:patterns-kalpa-base
    - bolt # reason: opensuse_kalpa:patterns-kalpa-base
-   - boost-license1_91_0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - boost-license1_92_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - branding-openSUSE # reason: opensuse_kalpa:patterns-kalpa-base
    - breeze6 # reason: opensuse_kalpa:patterns-kalpa-base
    - breeze6-cursors # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7185,7 +7185,7 @@ packagesets:
    - libblogger2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbluetooth3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbluray3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libboost_thread1_91_0 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libboost_thread1_92_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbpf1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbrotlicommon1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbrotlidec1 # reason: opensuse_kalpa:patterns-kalpa-base
