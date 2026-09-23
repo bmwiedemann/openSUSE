@@ -8,14 +8,14 @@ Signed-off-by: Martin Wilck <mwilck@suse.com>
  sys-utils/mount.8 |   28 +++++++++++++++++++++++++++-
  1 file changed, 27 insertions(+), 1 deletion(-)
 
-Index: util-linux-2.42.2/sys-utils/mount.8
+Index: util-linux-2.42.3/sys-utils/mount.8
 ===================================================================
---- util-linux-2.42.2.orig/sys-utils/mount.8
-+++ util-linux-2.42.2/sys-utils/mount.8
-@@ -219,6 +219,32 @@ The \fBuser\fP mount option is accepted
- When using the legacy \fBmount\fP(2) syscall (on older kernels without the new mount API), the mount target path is resolved by the kernel at syscall time. This means there is an inherent time\-of\-check\-to\-time\-of\-use (TOCTOU) window between the permission verification and the actual mount operation. If an ancestor directory of the mount target is writable by the unprivileged user, a path component could be swapped to redirect the mount to an unintended location. The new mount API (available since Linux 5.2) eliminates this issue by using file\-descriptor\-based target resolution. Administrators should ensure that mount target paths for \fBuser\fP mounts do not traverse directories writable by unprivileged users.
- .sp .5v
- .RE
+--- util-linux-2.42.3.orig/sys-utils/mount.8
++++ util-linux-2.42.3/sys-utils/mount.8
+@@ -223,6 +223,32 @@ When using the legacy \fBmount\fP(2) sys
+ For mount source paths, \fBmount\fP(8) only canonicalizes (resolves symlinks) paths starting with \fI/dev/\fP for unprivileged users and verifies the result stays within \fI/dev/\fP. Source paths outside \fI/dev/\fP (e.g. disk images in user\-writable directories) are kept as\-is from \fIfstab\fP.
+ .sp
+ Filesystem type auto\-detection for unprivileged users relies exclusively on \fBudev\fP metadata rather than direct device probing; this means file images that are not registered with udev require an explicit filesystem type in \fIfstab\fP.
 +.SS Blacklisted file systems
 +In the Linux kernel, file system types are implemented as kernel
 +modules. While many of these file systems are well maintained,
@@ -45,7 +45,7 @@ Index: util-linux-2.42.2/sys-utils/mount.8
  .SS "Bind mount operation"
  .sp
  Remount part of the file hierarchy somewhere else. The call is:
-@@ -2772,4 +2798,4 @@ For bug reports, use the \c
+@@ -2778,4 +2804,4 @@ For bug reports, use the \c
  .SH "AVAILABILITY"
  .sp
  The \fBmount\fP command is part of the util\-linux package which can be downloaded from \c

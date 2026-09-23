@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sun Sep 20 16:29:05 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.42.3:
+  * Security fixes:
+    * CVE-2026-76642 - mount(8) post-mount hooks execute after
+      helper failure.
+      When an external mount.<type> helper exits nonzero,
+      post-mount hooks (X-mount.idmap, X-mount.owner/group/mode)
+      still execute as if the mount had succeeded, allowing
+      privileged operations on the pre-existing target filesystem
+      (bsc#1274864, bsc#1278349).
+    * CVE-2026-78410 - mount(8) TOCTOU race on source path.
+      In restricted (SUID, non-root) mode, the source path is
+      canonicalized with realpath() as euid=0, following symlinks
+      through user-writable directories.  Additionally, open_tree()
+      follows symlinks in intermediate path components.  A local
+      attacker can redirect a privileged mount or post-mount
+      ownership change to an arbitrary path (bsc#1274864,
+      bsc#1278347).
+    * CVE-2026-78409 - mount(8) X-mount.subdir symlink escape.
+      The open_tree() call used to open a subdirectory on a
+      detached mount follows symlinks in intermediate path
+      components, allowing escape from the detached tree
+      (bsc#1274864, bsc#1278346).
+    * CVE-2026-78408 - nsenter(1), unshare(1) file descriptor leak.
+      File descriptors in nsenter and unshare were not created with
+      O_CLOEXEC, potentially leaking them across exec.  Added
+      O_CLOEXEC as defense in depth (bsc#1274864, bsc#1278348).
+ * wall(1), write(1) - hostname escape sequence injection.
+   The CVE-2024-28085 fix sanitized only message bodies; the banner
+   headers still interpolated the system hostname without
+   sanitization. An unprivileged user can inject terminal escape
+   sequences via a user namespace hostname.
+   Additional fix for CVE-2024-28085.
+   Reported-by: Skyler Ferrante
+  * agetty: fix spurious issue file reprinting on reload
+  * col:
+    * guard c_width sign before size_t cast in BS branch
+    * fix cur_col underflow on backspace over a wide char
+  * disk-utils: fix memory leak in execute function
+  * hexdump: stop after stdout write errors
+  * libblkid:
+    * befs fix possible load of misaligned address
+    * befs fix possible too large shift
+    * dos fix 32-bit overflow in partition start/size [coverity
+      CID 503517, 503518]
+    * (iso9660) fix out-of-bounds read of root dir record
+  * libfdisk: fix OOM on GPT with huge partition entries array
+  * libmount:
+    * skip post-mount hooks after failed mount helper
+      [CVE-2026-76642]
+    * pin source path with openat2() for restricted users
+      [CVE-2026-78410]
+    * restrict source path canonicalization for non-root users
+      [CVE-2026-78410]
+    * fix X-mount.subdir symlink following on detached tree
+      [CVE-2026-78409]
+    * reuse existing act fd in mnt_update_start on ro retry
+    * properly end act file in mnt_free_update
+    * don't ignore "/" target in mount --all when target
+      prefix is set
+  * lscpu:
+    * remove mmu reference not available in stable/v2.42
+    * add NULL guards for RISC-V ISA functions [coverity
+      CID 503785]
+  * mbsalign: check remaining buffer space before writing
+    hex escapes
+  * more: fix out-of-bounds write in get_line() on invalid
+    multibyte input
+  * nsenter, unshare: add O_CLOEXEC to all open() calls
+    [CVE-2026-78408]
+  * pg: fix out-of-bounds access past wbuf on a trailing tab
+  * unshare: Fix --map-auto regression
+  * wall, write: sanitize hostname in banner header
+- Refresh
+  Add-documentation-on-blacklisted-modules-to-mount-8-.patch.
+
+-------------------------------------------------------------------
 Mon Aug  3 02:28:52 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
 - Fix post installation message conditions (bsc#1268886#c17).
@@ -16,7 +94,7 @@ Mon Jul 13 11:51:37 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 - INCOMAPTIBLE CHANGE:
   LIBMOUNT_FORCE_MOUNT2 is ignored for unprivileged users for safety
   reasons.
-- Update to version 2.42.2:
+- Update to version 2.42.2 (PED-16740):
   * Security fixes:
     * CVE-2026-53613 - mount(8) TOCTOU race on target path.  The
       SUID mount does not pin the mount target directory, allowing
@@ -74,7 +152,7 @@ Mon Jul 13 11:51:37 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
   * readprofile: replace popen() with fork/exec for .gz map files
 - Refreshed
   Add-documentation-on-blacklisted-modules-to-mount-8-.patch.
-- If needed, display post installation message.
+- If needed, display post installation message (bsc#1268886#c17).
 
 -------------------------------------------------------------------
 Mon Jul 13 11:21:30 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>

@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.42.2
+Version:        2.42.3
 Release:        0
 License:        GPL-2.0-or-later
 #Git-Clone:     https://github.com/util-linux/util-linux
