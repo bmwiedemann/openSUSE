@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Sep 21 19:58:25 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 1.32.4:
+  * Fixed:
+    + Revert the extra type parameter added to
+      BuildHookInterface in 1.32.3, which broke plugins
+      that subscripted the interface with a single argument
+      (e.g. BuildHookInterface[MyConfig]) by raising TypeError at
+      import time. BuilderConfig is likewise no longer generic,
+      restoring the pre-1.32.3 plugin interface.
+    + Strip spaces around version metadata when using original
+      input for CalVer to keep leading zeroes.
+
+-------------------------------------------------------------------
 Fri Sep 18 18:12:59 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 1.32.3:
