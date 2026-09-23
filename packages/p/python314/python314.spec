@@ -237,6 +237,17 @@ Patch51:        CVE-2025-15367-poplib-ctrl-chars.patch
 # PATCH-FIX-OPENSUSE bsc1260884-llvm21-support.patch bsc#1260884 mcepl@suse.com
 # update JIT builds to use LLVM 21
 Patch57:        bsc1260884-llvm21-support.patch
+# PATCH-FIX-UPSTREAM CVE-2026-17084-stringprep-rfc3454.patch bsc#1276226 Matej Cepl <mcepl@suse.com>
+# Don't consider Unicode codepoint attributes outside RFC 3454
+Patch58:        CVE-2026-17084-stringprep-rfc3454.patch
+# PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
+# in tarfile, handle a member that leaves the destination and comes back
+Patch59:        CVE-2026-19672-tarfile-outside-dirs.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15310-bound-zipfile-decompression.patch bsc#1277111 mcepl@suse.com
+# Bound zipfile decompression for bzip2/LZMA/Zstandard (gh#python/cpython!156003)
+Patch60:         CVE-2026-15310-bound-zipfile-decompression.patch
+# Keep reading through third-party zipfile decompressors (gh#python/cpython!157180)
+Patch61:         CVE-2026-15310-keep-through-3rd-party-decomp.patch
 #### Python 3.14 END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

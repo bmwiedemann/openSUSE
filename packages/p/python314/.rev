@@ -2949,4 +2949,23 @@ jsc#PED-15851</comment>
       number of interim (1xx) responses it will skip to 100.</comment>
     <requestid>1370390</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>934fb8d91dd08fcffacd2252c55dac02</srcmd5>
+    <version>3.14.7</version>
+    <time>1790166742</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-15310: bound zipfile decompression for
+  bzip2/LZMA/Zstandard (bsc#1277111, gh#python/cpython#156002)
+  CVE-2026-15310-bound-zipfile-decompression.patch
+  CVE-2026-15310-keep-through-3rd-party-decomp.patch
+
+- CVE-2026-19672: in tarfile, handle a member that leaves the
+  destination and comes back  (bsc#1276227, gh#python/cpython#156000)
+  CVE-2026-19672-tarfile-outside-dirs.patch
+
+- CVE-2026-17084: Don't consider Unicode codepoint attributes
+   outside RFC 3454 (bsc#1276226)
+   CVE-2026-17084-stringprep-rfc3454.patch</comment>
+    <requestid>1379535</requestid>
+  </revision>
 </revisionlist>
