@@ -1,0 +1,191 @@
+From 882577451e764a515df2a386a055012e8f075a16 Mon Sep 17 00:00:00 2001
+From: Lianmin Zheng <lianminzheng@gmail.com>
+Date: Thu, 17 Sep 2026 01:09:55 -0700
+Subject: [PATCH] Restrict SafeUnpickler standard-library globals (#39858)
+
+Co-authored-by: jiayisuse <jiayisuse@fb.com>
+---
+ python/sglang/srt/utils/common.py             | 69 +++++++++---------
+ .../unit/utils/test_safe_unpickler.py         | 72 +++++++++++++++++++
+ 2 files changed, 105 insertions(+), 36 deletions(-)
+ create mode 100644 test/registered/unit/utils/test_safe_unpickler.py
+
+diff --git a/python/sglang/srt/utils/common.py b/python/sglang/srt/utils/common.py
+index 5509adfdeca0..6aed66de2153 100644
+--- a/python/sglang/srt/utils/common.py
++++ b/python/sglang/srt/utils/common.py
+@@ -2967,16 +2967,38 @@ def normalize_serialized_named_tensor_payloads(
+ 
+ 
+ class SafeUnpickler(pickle.Unpickler):
+-    ALLOWED_MODULE_PREFIXES = {
++    # Standard-library modules expose powerful callables alongside harmless data
++    # types. Keep these globals exact so a newly added callable is denied by
++    # default instead of silently expanding the unpickling attack surface.
++    ALLOWED_GLOBALS = {
+         # --- Python types ---
+-        "builtins.",
+-        "collections.",
+-        "copyreg.",
+-        "functools.",
+-        "itertools.",
+-        "operator.",
+-        "types.",
+-        "weakref.",
++        ("builtins", "bool"),
++        ("builtins", "bytearray"),
++        ("builtins", "bytes"),
++        ("builtins", "complex"),
++        ("builtins", "dict"),
++        ("builtins", "float"),
++        ("builtins", "frozenset"),
++        ("builtins", "int"),
++        ("builtins", "list"),
++        ("builtins", "range"),
++        ("builtins", "set"),
++        ("builtins", "slice"),
++        ("builtins", "str"),
++        ("builtins", "tuple"),
++        ("collections", "OrderedDict"),
++        ("collections", "defaultdict"),
++        ("collections", "deque"),
++        ("functools", "partial"),
++        ("itertools", "chain"),
++        ("itertools", "repeat"),
++        ("multiprocessing.reduction", "_rebuild_partial"),
++        ("multiprocessing.reduction", "_rebuild_socket"),
++        ("multiprocessing.resource_sharer", "DupFd"),
++        ("types", "SimpleNamespace"),
++    }
++
++    ALLOWED_MODULE_PREFIXES = {
+         # --- PyTorch types ---
+         "torch.",
+         "torch._tensor.",
+@@ -2990,10 +3012,6 @@ class SafeUnpickler(pickle.Unpickler):
+         "torch._C._distributed_c10d.",
+         "torch._C._distributed_fsdp.",
+         "torch.distributed.optim.",
+-        # --- multiprocessing ---
+-        "multiprocessing.resource_sharer.",
+-        "multiprocessing.reduction.",
+-        "pickletools.",
+         # --- PEFT / LoRA ---
+         "peft.",
+         "transformers.",
+@@ -3009,35 +3027,14 @@ class SafeUnpickler(pickle.Unpickler):
+         "torch_npu.",
+     }
+ 
+-    DENY_CLASSES = {
+-        ("builtins", "eval"),
+-        ("builtins", "exec"),
+-        ("builtins", "compile"),
+-        ("os", "system"),
+-        ("subprocess", "Popen"),
+-        ("subprocess", "run"),
+-        ("codecs", "decode"),
+-        ("types", "CodeType"),
+-        ("types", "FunctionType"),
+-    }
+-
+     def find_class(self, module, name):
+-        # Block deterministic attacks
+-        if (module, name) in self.DENY_CLASSES:
+-            raise RuntimeError(
+-                f"Blocked unsafe class loading ({module}.{name}), "
+-                f"to prevent exploitation of CVE-2025-10164"
+-            )
+-        # Allowlist of safe-to-load modules.
+-        if any(
++        if (module, name) in self.ALLOWED_GLOBALS or any(
+             (module + ".").startswith(prefix) for prefix in self.ALLOWED_MODULE_PREFIXES
+         ):
+             return super().find_class(module, name)
+ 
+-        # Block everything else. (Potential attack surface)
+         raise RuntimeError(
+-            f"Blocked unsafe class loading ({module}.{name}), "
+-            f"to prevent exploitation of CVE-2025-10164"
++            f"Blocked unsafe global ({module}.{name}) during pickle deserialization"
+         )
+ 
+ 
+diff --git a/test/registered/unit/utils/test_safe_unpickler.py b/test/registered/unit/utils/test_safe_unpickler.py
+new file mode 100644
+index 000000000000..441c5c8b7a67
+--- /dev/null
++++ b/test/registered/unit/utils/test_safe_unpickler.py
+@@ -0,0 +1,72 @@
++import pickle
++import unittest
++from collections import OrderedDict, defaultdict, deque
++from functools import partial
++from types import SimpleNamespace
++
++import torch
++
++from sglang.srt.utils.common import MultiprocessingSerializer, safe_pickle_loads
++from sglang.test.ci.ci_register import register_cpu_ci
++from sglang.test.test_utils import CustomTestCase
++
++register_cpu_ci(est_time=2, suite="base-a-test-cpu")
++
++
++class TestSafeUnpickler(CustomTestCase):
++    def test_rejects_dangerous_builtin_globals(self):
++        for name in ("__import__", "getattr", "eval", "exec", "compile", "open"):
++            with (
++                self.subTest(name=name),
++                self.assertRaisesRegex(
++                    RuntimeError, rf"Blocked unsafe global \(builtins\.{name}\)"
++                ),
++            ):
++                # GLOBAL resolves the callable but does not invoke it. This exercises
++                # the deserialization boundary without constructing an exploit chain.
++                safe_pickle_loads(f"cbuiltins\n{name}\n.".encode())
++
++    def test_rejects_unlisted_standard_library_globals(self):
++        for module, name in (
++            ("copyreg", "_reconstructor"),
++            ("operator", "attrgetter"),
++            ("types", "FunctionType"),
++        ):
++            with (
++                self.subTest(module=module, name=name),
++                self.assertRaisesRegex(
++                    RuntimeError, rf"Blocked unsafe global \({module}\.{name}\)"
++                ),
++            ):
++                safe_pickle_loads(f"c{module}\n{name}\n.".encode())
++
++    def test_round_trips_safe_standard_library_types(self):
++        value = SimpleNamespace(
++            values=OrderedDict([("items", deque([1, 2]))]),
++            factory=defaultdict(list, {"items": [3]}),
++            index=slice(1, 4),
++            parser=partial(int, base=10),
++        )
++
++        restored = safe_pickle_loads(
++            pickle.dumps(value, protocol=pickle.HIGHEST_PROTOCOL)
++        )
++
++        self.assertEqual(restored.values, value.values)
++        self.assertEqual(restored.factory, value.factory)
++        self.assertEqual(restored.index, value.index)
++        self.assertEqual(restored.parser("11"), 11)
++
++    def test_round_trips_tensor_payload(self):
++        value = [("weight", torch.arange(6).reshape(2, 3))]
++
++        restored = MultiprocessingSerializer.deserialize(
++            MultiprocessingSerializer.serialize(value)
++        )
++
++        self.assertEqual(restored[0][0], "weight")
++        self.assertTrue(torch.equal(restored[0][1], value[0][1]))
++
++
++if __name__ == "__main__":
++    unittest.main()

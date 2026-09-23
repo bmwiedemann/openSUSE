@@ -101,6 +101,7 @@ BuildRequires:  libtool
 BuildRequires:  mpi-selector
 BuildRequires:  python3-devel
 BuildRequires:  hwloc-devel >= 2.0
+ExcludeArch:    %ix86
 
 %if "%{build_flavor}" == "ofi"
 BuildRequires:  libfabric-devel

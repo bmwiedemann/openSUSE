@@ -16,6 +16,7 @@
 #
 
 
+%bcond_without libalternatives
 Name:           python-mistral-common
 Version:        1.11.7
 Release:        0
@@ -27,24 +28,35 @@ Source0:        https://files.pythonhosted.org/packages/source/m/mistral_common/
 # pyproject.toml points at LICENSE which is omitted from the tarball); carry
 # the Apache-2.0 text from the upstream git tag.
 Source1:        LICENSE
+BuildRequires:  %{python_module Pillow >= 10.3.0}
+BuildRequires:  %{python_module jsonschema >= 4.21.1}
+BuildRequires:  %{python_module numpy >= 1.25}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pycountry >= 23}
+BuildRequires:  %{python_module pydantic >= 2.7}
+BuildRequires:  %{python_module pydantic-extra-types >= 2.10.5}
+BuildRequires:  %{python_module requests >= 2.0.0}
 BuildRequires:  %{python_module setuptools >= 42}
+BuildRequires:  %{python_module tiktoken >= 0.7.0}
+BuildRequires:  %{python_module typing_extensions >= 4.11.0}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-Pillow >= 10.3.0
 Requires:       python-jsonschema >= 4.21.1
 Requires:       python-numpy >= 1.25
 # mistral_common[image] extra (required by vllm); satisfied by the cv2
 # module from the Factory opencv package.
 Requires:       python-opencv
+# pydantic-extra-types[pycountry] extra, needed by language_code
+Requires:       python-pycountry >= 23
 Requires:       python-pydantic >= 2.7
 Requires:       python-pydantic-extra-types >= 2.10.5
 Requires:       python-requests >= 2.0.0
 Requires:       python-tiktoken >= 0.7.0
 Requires:       python-typing_extensions >= 4.11.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,21 +80,19 @@ cp %{SOURCE1} .
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/mistral_common
+%python_group_libalternatives mistral_common
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-# The full pytest suite is not run: several hard runtime dependencies
-# (python-pydantic-extra-types) and test-only helpers are not available in
+# The full pytest suite is not run: test-only helpers are not available in
 # Factory, and many tests download tokenizer/model assets from the network.
-# Restrict to a smoke import of the top-level package, which only reads the
-# installed distribution metadata.
+# Smoke-import the package and the tokenizer, which pulls in every hard
+# runtime dependency (pycountry via pydantic_extra_types.language_code).
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "import mistral_common; print(mistral_common.__version__)"
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -B -c "from mistral_common.tokens.tokenizers.mistral import MistralTokenizer"
 
-%post
-%python_install_alternative mistral_common
-
-%postun
-%python_uninstall_alternative mistral_common
+%pre
+%python_libalternatives_reset_alternative mistral_common
 
 %files %{python_files}
 %license LICENSE

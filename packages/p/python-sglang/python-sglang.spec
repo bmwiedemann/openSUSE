@@ -17,7 +17,7 @@
 
 
 Name:           python-sglang
-Version:        0.5.19
+Version:        0.5.20
 Release:        0
 Summary:        Fast serving framework for large language models
 # Legal-Review-Notice: sgl-model-gateway and CUDA AOT kernels
@@ -48,6 +48,10 @@ Patch1:         sglang-cpu-triton-stub.patch
 Patch2:         sglang-cpu-rust-exts.patch
 # PATCH-FIX-OPENSUSE sglang-grpc-system-protoc.patch -- use system protoc instead of protoc-bin-vendored
 Patch3:         sglang-grpc-system-protoc.patch
+# PATCH-FIX-UPSTREAM sglang-safe-unpickler-stdlib-globals.patch boo#1280091 -- CVE-2026-86793: sgl-project/sglang commit 882577451e (PR 39858), replace SafeUnpickler's standard-library module prefixes with exact globals
+Patch4:         sglang-safe-unpickler-stdlib-globals.patch
+# PATCH-FIX-UPSTREAM sglang-safe-unpickler-explicit-globals.patch boo#1280091 -- CVE-2026-86793: sgl-project/sglang commit 5b42d10edf (PR 40259), drop the remaining module prefixes and route torch.storage._load_from_bytes through a weights_only torch.load
+Patch5:         sglang-safe-unpickler-explicit-globals.patch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module SoundFile}
@@ -227,13 +231,19 @@ export PROTOC=%{_bindir}/protoc
 pushd python
 %pyproject_install
 popd
+# multimodal_gen/runtime/disaggregation pickles requests straight off a bound
+# ZeroMQ socket with no authentication (CVE-2026-93088). The runtime it belongs
+# to needs diffusers and cache_dit, neither of which is packaged, so nothing
+# here can reach it -- drop it rather than ship a live gadget.
 %{python_expand \
 rm -rf %{buildroot}%{$python_sitearch}/sglang/test \
        %{buildroot}%{$python_sitearch}/sglang/kernels/aot \
        %{buildroot}%{$python_sitearch}/sglang/multimodal_gen/test \
+       %{buildroot}%{$python_sitearch}/sglang/multimodal_gen/runtime/disaggregation \
        %{buildroot}%{$python_sitelib}/sglang/test \
        %{buildroot}%{$python_sitelib}/sglang/kernels/aot \
-       %{buildroot}%{$python_sitelib}/sglang/multimodal_gen/test
+       %{buildroot}%{$python_sitelib}/sglang/multimodal_gen/test \
+       %{buildroot}%{$python_sitelib}/sglang/multimodal_gen/runtime/disaggregation
 # CPU flavour never JIT-compiles these; shipping them scores
 # devel-file-in-non-devel-package (badness 50 each) and fails rpmlint.
 find %{buildroot} -type f \( \

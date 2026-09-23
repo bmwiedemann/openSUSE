@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:05:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 40:
+  * Breaking changes
+    + Replace nicoulaj checksum plugin with maveniverse checksum
+      plugin
+    + #586: Use RAT0.18 and remove commons-lang3 configuration for
+      JDK25
+    + Property version.maven-surefire was removed in #588, should be
+      replaced by version.maven-surefire-plugin,
+      version.maven-failsafe-plugin or
+      version.maven-surefire-report-plugin
+  * New features and improvements
+    + Fix several version property issues
+  * Documentation updates
+    + Update documentation for push-to-atr profile
+    + Restore the common wording on the download page
+  * Maintenance
+    + Add local maven configuration for ATR project name override
+    + Remove custom name-template for release-drafter
+    + Port the site documentation from APT to Markdown
+  * Dependency updates
+    + Bump org.apache.maven.plugins:maven-deploy-plugin from 3.1.4
+      to 3.2.0
+    + Bump org.apache.maven.plugins:maven-install-plugin from 3.1.4
+      to 3.2.0
+    + Bump org.apache.maven.plugins:maven-plugin-tools from 3.15.2
+      to 3.16.0
+    + Bump surefire-plugin, failsafe-plugin, surefire-report-plugin
+      from 3.5.6 to 3.6.0
+    + Bump org.apache.tooling:atr-maven-plugin from 1.0.0-alpha-1 to
+      1.0.0-beta-1
+    + Bump org.apache.maven.plugins:maven-compiler-plugin from
+      3.15.0 to 3.16.0
+    + Bump org.apache.maven.plugins:maven-jar-plugin from 3.5.0 to
+      3.5.1
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump org.apache.maven.plugins:maven-help-plugin from 3.5.1 to
+      3.5.2
+
+-------------------------------------------------------------------
 Mon Jun 29 06:26:54 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 39:

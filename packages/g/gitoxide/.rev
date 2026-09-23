@@ -127,4 +127,12 @@ openSUSE_Tumbleweed aarch64&quot;: green, %check ok, rpmlint 0 errors /
   Legal-Review-Notice above it was updated to record the derivation.</comment>
     <requestid>1373556</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>d0c50cdce588ee6f3b8072bc8e9be703</srcmd5>
+    <version>0.58.0</version>
+    <time>1790174407</time>
+    <user>anag_factory</user>
+    <comment>Fix CVE-2026-91986 (boo#1281749): backport upstream gix-transport commit 3e7f1857 rejecting NUL/LF in git-daemon connect requests (GHSA-rc7h-wp5f-w3g5).</comment>
+    <requestid>1379942</requestid>
+  </revision>
 </revisionlist>

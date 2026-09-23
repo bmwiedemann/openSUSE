@@ -1,5 +1,10 @@
 -------------------------------------------------------------------
-Thu Aug 13 04:13:13 UTC 2026 - William Brown <william.brown@suse.com>
+Wed Sep 23 02:27:56 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1282256 - CVE-2026-93599,CVE-2026-93602,CVE-2026-93601,CVE-2026-93600 - rustls-webpki multiple issues
+
+-------------------------------------------------------------------
+Wed Sep 23 02:19:52 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
 
 - bsc#1274444 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
 

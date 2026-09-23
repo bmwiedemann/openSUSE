@@ -100,4 +100,24 @@ python314. rpmlint is at the accepted 0.5.18 baseline (6 errors /
 the outlines Suggests). source_validator clean.</comment>
     <requestid>1376136</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>6005af6043edef9e82a3c4f5e45badc7</srcmd5>
+    <version>0.5.20</version>
+    <time>1790166971</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.20.
+
+Security:
+- CVE-2026-86793 (boo#1280091): backport of upstream's SafeUnpickler fix
+  (commits 882577451e and 5b42d10edf, PRs 39858/40259). 0.5.20 was tagged
+  between the two merges, so the tarball carries neither.
+- CVE-2026-93088 (boo#1282323): the multimodal_gen disaggregation runtime is
+  not shipped.
+- Not affected by CVE-2026-94570, CVE-2026-93838 and CVE-2026-93688: the KV
+  transfer backends they need are not packaged.
+- CVE-2026-92972 (boo#1281407) stays open: its unauthenticated bootstrap
+  listener can still start.
+- Vendored rustls is now 0.23.45 (RUSTSEC-2026-0285).</comment>
+    <requestid>1379916</requestid>
+  </revision>
 </revisionlist>

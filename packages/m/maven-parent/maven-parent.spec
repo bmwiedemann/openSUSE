@@ -17,7 +17,7 @@
 
 
 Name:           maven-parent
-Version:        49
+Version:        50
 Release:        0
 Summary:        Apache Maven parent POM
 License:        Apache-2.0

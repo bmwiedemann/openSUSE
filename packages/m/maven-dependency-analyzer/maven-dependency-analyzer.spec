@@ -17,7 +17,7 @@
 
 
 Name:           maven-dependency-analyzer
-Version:        1.17.1
+Version:        1.17.2
 Release:        0
 Summary:        Maven dependency analyzer
 License:        Apache-2.0
@@ -32,6 +32,8 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  maven-lib
+BuildRequires:  maven-resolver-api
+BuildRequires:  maven-resolver-util
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-xml
 BuildRequires:  sisu-inject
@@ -67,6 +69,8 @@ build-jar-repository -s lib \
     maven/maven-artifact \
     maven/maven-core \
     maven/maven-model \
+    maven-resolver/maven-resolver-api \
+    maven-resolver/maven-resolver-util \
     objectweb-asm/asm \
     org.eclipse.sisu.inject \
     plexus/xml \

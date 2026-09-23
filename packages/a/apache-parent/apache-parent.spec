@@ -17,7 +17,7 @@
 
 
 Name:           apache-parent
-Version:        39
+Version:        40
 Release:        0
 Summary:        Parent POM file for Apache projects
 License:        Apache-2.0
@@ -40,10 +40,13 @@ This package contains the parent pom file for apache projects.
 %pom_remove_plugin :maven-remote-resources-plugin
 %pom_remove_plugin :maven-enforcer-plugin
 
+# Too many things depend on this one currently
+%pom_xpath_inject pom:project/pom:properties "<version.maven-surefire>\${surefire.version}</version.maven-surefire>"
+
 %install
 # pom
 install -dm 755 %{buildroot}%{_mavenpomdir}
-install -pm 644 pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom
 
 %files -f .mfiles

@@ -38,6 +38,8 @@ License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/GitoxideLabs/gitoxide
 Source0:        https://github.com/GitoxideLabs/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM gix-transport-reject-control-bytes.patch GHSA-rc7h-wp5f-w3g5 (upstream commit 3e7f1857) -- reject NUL/LF in git-daemon connect request (CVE-2026-91986, boo#1281749)
+Patch0:         gix-transport-reject-control-bytes.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

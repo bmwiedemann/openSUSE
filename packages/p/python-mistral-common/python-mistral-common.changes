@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:12:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add the missing python-pycountry dependency: the tokenizers
+  import pydantic_extra_types.language_code, which needs it
+- Switch from update-alternatives to libalternatives
+- Extend %check to import the tokenizer, catching missing runtime
+  dependencies
+
+-------------------------------------------------------------------
 Wed Jul 29 06:38:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.11.7:

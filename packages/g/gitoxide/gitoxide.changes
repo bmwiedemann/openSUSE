@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:33:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-91986: gix-transport CR/LF/NUL injection into
+  git-daemon connect request via crafted git URL path,
+  allowing virtual-host spoofing (boo#1281749)
+  * gix-transport-reject-control-bytes.patch
+
+-------------------------------------------------------------------
 Tue Aug 25 07:57:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.58.0:

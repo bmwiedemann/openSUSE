@@ -28,4 +28,18 @@
     <comment>Update to 1.11.7</comment>
     <requestid>1368303</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>eeebad6ba891810df0894d599a823273</srcmd5>
+    <version>1.11.7</version>
+    <time>1790166969</time>
+    <user>anag_factory</user>
+    <comment>Add the missing python-pycountry dependency. Upstream requires
+pydantic-extra-types[pycountry], and the spec dropped the extra, so any tokenizer
+import failed with 'The language_code module requires &quot;pycountry&quot;'. This broke
+consumers such as python-sglang (via gguf).
+
+Also switch to libalternatives, and extend %check to import the tokenizer so a
+missing runtime dependency fails the build.</comment>
+    <requestid>1379915</requestid>
+  </revision>
 </revisionlist>

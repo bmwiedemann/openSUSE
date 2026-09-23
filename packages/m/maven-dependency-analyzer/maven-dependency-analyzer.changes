@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 11 08:03:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.17.2
+  * New features and improvements
+    + Preserve exact dependency class names containing dollar signs
+  * Bug Fixes
+    + Account for non-test transitive dependency scopes
+  * Maintenance
+    + Fix Javadoc warnings
+    + Port the site documentation from APT to Markdown
+  * Dependency updates
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /maven-verify.yml from 4 to 5
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /stale.yml from 4 to 5
+    + Bump org.apache.maven.shared:maven-shared-components from 48
+      to 49
+    + Bump org.ow2.asm:asm from 9.9.1 to 9.10.1
+    + Bump mavenVersion from 3.9.15 to 3.9.16
+
+-------------------------------------------------------------------
 Mon May 18 09:29:47 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.17.1

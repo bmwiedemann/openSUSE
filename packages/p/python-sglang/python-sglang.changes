@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Tue Sep 22 19:29:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-86793: SafeUnpickler gated pickle deserialization on
+  a module-prefix allowlist, and a prefix admits every name
+  below it, leaving builtins.getattr, builtins.__import__ and
+  torch.storage._load_from_bytes reachable from the
+  unauthenticated /update_weights_from_tensor endpoint and from
+  the encoder and weight-cache channels; backport upstream's
+  two-part fix, which replaces the prefixes with an exact
+  (module, name) allowlist and serves _load_from_bytes through
+  torch.load(weights_only=True) with a storage type check
+  (boo#1280091)
+  * sglang-safe-unpickler-stdlib-globals.patch, commit
+    882577451e (PR 39858)
+  * sglang-safe-unpickler-explicit-globals.patch, commit
+    5b42d10edf (PR 40259)
+
+-------------------------------------------------------------------
+Tue Sep 22 18:17:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.20:
+  * /v1/responses no longer stores results unless the server is
+    started with --enable-response-store; retrieval,
+    previous_response_id chaining and background requests are
+    rejected without it
+  * Prefill context parallelism v1 and its SGLANG_ENABLE_CP_V2
+    gate are gone; the strategy-based path is the only one left
+  * Seventeen deprecated CLI flags are removed,
+    get_global_server_args() now raises, and ServerArgs is no
+    longer a dataclass, so dataclasses.asdict on it stops working
+  * Sampling-mask capacity moves to --sampling-mask-max-tokens
+    (default 4096); the old environment variable is rejected
+  * The unified radix tree keeps the sliding-window state where
+    requests fork from a shared prefix, so branches reuse it
+  * gRPC: GetIsReady is replaced by a WatchEngineState stream
+    carrying health, pause state, instance id and discovery
+  * The Rust multimodal preprocessor's per-request media budget
+    rises from 256 MiB to 1.25 GiB
+  * Most of the rest is CUDA, ROCm and NPU kernel work that this
+    CPU build does not compile
+- Rebase sglang-relax-cpu-requirements.patch for the reshuffled
+  pyproject_cpu.toml; it also drops the newly added torchcodec
+  dependency, which is not in Factory
+- Regenerate vendor.tar.zst
+  * The crate set advances to rustls 0.23.45, which fixes
+    RUSTSEC-2026-0285
+- This build is not affected by three open prefill/decode
+  disaggregation issues: sglang/srt/disaggregation ships intact
+  and 0.5.20 leaves the code paths unchanged from 0.5.19, but
+  all three run in KV manager threads that start only under
+  the prefill or decode --disaggregation-mode (default null),
+  and no manager is ever constructed - each needs a KV transfer
+  backend whose transport library is not packaged, so mooncake
+  raises ImportError as the model runner starts, nixl inside
+  NixlKVManager, mori already at module import and ascend
+  without memfabric_hybrid, while fake has no ZeroMQ rank port
+  and starts no threads
+  * CVE-2026-94570 (boo#1282324): missing input validation for
+    AUX_DATA ZeroMQ control messages in the decode worker, read
+    only by the Mooncake and Mori decode threads
+  * CVE-2026-93838 (boo#1281937): unbounded memory allocation
+    in handle_staging_req, called only from the Mooncake and
+    NIXL decode threads
+  * CVE-2026-93688 (boo#1281936): unvalidated bootstrap_room
+    values in the Mooncake prefill bootstrap thread
+
+-------------------------------------------------------------------
+Tue Sep 22 18:14:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-93088: the disaggregated-diffusion orchestrator read
+  pickles off an unauthenticated bound ZeroMQ socket, allowing
+  arbitrary code execution; stop installing
+  sglang/multimodal_gen/runtime/disaggregation (boo#1282323)
+  * Costs nothing: that runtime imports the unpackaged diffusers
+    and cache_dit modules, so it could never start here
+
+-------------------------------------------------------------------
 Mon Sep  7 06:45:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.19:

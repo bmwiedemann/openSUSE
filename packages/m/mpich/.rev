@@ -423,4 +423,12 @@
   removed because it was merged upstream</comment>
     <requestid>1348247</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>71481781aab8bdac9e6fdea0e216f3ee</srcmd5>
+    <version>5.0.1</version>
+    <time>1790166980</time>
+    <user>anag_factory</user>
+    <comment>- Disable ix86 builds</comment>
+    <requestid>1379932</requestid>
+  </revision>
 </revisionlist>
