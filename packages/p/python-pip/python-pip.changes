@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 17 08:24:47 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Remove the usage of ensurepip to build the package, uses the source
+  pip instead.
+
+-------------------------------------------------------------------
 Mon Sep 14 08:53:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 26.2.1:

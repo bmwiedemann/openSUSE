@@ -1208,4 +1208,12 @@
     private _PIP_STANDALONE_CERT environment variable is no longer</comment>
     <requestid>1377853</requestid>
   </revision>
+  <revision rev="78" vrev="2">
+    <srcmd5>ada537f8e1c3843c2d86d248c728e650</srcmd5>
+    <version>26.2.1</version>
+    <time>1790166752</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379589</requestid>
+  </revision>
 </revisionlist>

@@ -115,22 +115,16 @@ rm -v src/pip/_vendor/distlib/*.exe
 
 %build
 %if !%{with test}
-%{python_expand # bootstrap with built-in pip
-$python -m venv build/env
-build/env/bin/python -m ensurepip
-export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
-%{$python_pyproject_wheel}
-}
+export PYTHONPATH=$PWD/src
+%{pyproject_wheel}
 %endif
 
 %install
 %if !%{with test}
-%{python_expand # use pip bootstrapped above
-export PYTHONPATH=build/env/lib/python%{$python_bin_suffix}/site-packages
-%{$python_pyproject_install}
-install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
-%fdupes %{buildroot}%{$python_sitelib}
-}
+export PYTHONPATH=$PWD/src
+%{pyproject_install}
+%python_expand install -D -m 0644 -t %{buildroot}%{$python_sitelib}/../wheels dist/*.whl
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %{python_expand # Fix shebang path for "pip3.XX" binaries
 sed -i "1s|#\!.*python.*|#\!%{_bindir}/$python|" %{buildroot}%{_bindir}/pip%{$python_bin_suffix}
