@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:30:32 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.9.2
+  * FIX: Fix issue where :is() and :where() were not accounting for empty
+    selectors in the max selector count as they should.
+  * FIX: Fix issue where :has() was allowing empty selectors in some
+    circumstances even though it is not forgiving.
+  * FIX: Reduce selector object size when :is() and :where() contain empty
+    selectors.
+- Update to 2.9.1
+  * FIX: Correct [attr^=""], [attr$=""], and [attr*=""] to match nothing when
+    the value is empty, per CSS Selectors Level 4 substring matching, which
+    previously matched any element merely having the attribute.
+- Update to 2.9.0 (fixes CVE-2026-85999 (bsc#1281119),
+  CVE-2026-86000 (bsc#1281120))
+  * NEW: Drop Python 3.9 support.
+  * NEW: Lazy compile selector patterns to improve initial import speed.
+  * FIX: Correct :nth-child/:nth-of-type (and -last- variants) for An+B values
+    whose sequence steps onto index 0 or onto the last child
+    (e.g. :nth-child(2n-2), :nth-child(n-1), :nth-child(n+5)), which
+    previously matched the wrong elements or nothing at all.
+  * FIX: More efficient CSS ID matching.
+  * FIX: Fix inefficient trimming of comments and white space.
+
+-------------------------------------------------------------------
 Sun Jul  5 10:39:45 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.4:
