@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:28:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 6.16:
+  * New hacks: floppy, graphstat, amigajuggler and polarnight.
+  * New display modes in hypertorus.
+  * X11: Updates for systemd inhibitors on KDE Plasma 6.5.
+- Drop xscreensaver-systemd.patch: adopted upstream.
+- Rebase xscreensaver-screenfade.patch.
+- Add floppy, graphstat, amigajuggler and polarnight to
+  xscreensaver-data-extra.list.
+- Spec cleanup: drop Group, add gcc/make BuildRequires, and
+  require pkgconfig(libsystemd) >= 221.
+
+-------------------------------------------------------------------
 Sat Jun  6 22:00:46 UTC 2026 - Jonas Kvinge <jonaski@opensuse.org>
 
 - Add xscreensaver-screenfade.patch: don't abort in
