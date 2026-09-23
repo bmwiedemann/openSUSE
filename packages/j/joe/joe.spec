@@ -17,72 +17,63 @@
 
 
 Name:           joe
-Version:        4.6
+Version:        4.8
 Release:        0
 Summary:        A Text Editor
 License:        GPL-2.0-or-later
-Group:          Productivity/Text/Editors
-URL:            http://sourceforge.net/projects/joe-editor
-Source:         http://downloads.sf.net/joe-editor/%{name}-%{version}.tar.gz
-Source2:        de.po
-Source3:        joe-rpmlintrc
+URL:            https://joe-editor.sourceforge.net
+Source:         https://downloads.sf.net/joe-editor/%{name}-%{version}.tar.gz
 Patch2:         joe-3.1-fix_isblanck_argument.patch
 Patch3:         joe-3.3-warnings.patch
-Patch7:         joe-3.7-additional_key_mappings.patch
-Patch8:         joe-3.7-spec_association.patch
 Patch10:        joe-sigiot.patch
 Patch12:        joe-4.6-nonvoid-functions.patch
-Patch13:        CVE-2026-13412.patch
-BuildRequires:  automake
-BuildRequires:  libselinux-devel
-BuildRequires:  ncurses-devel
+BuildRequires:  gcc
+BuildRequires:  make
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libselinux)
+BuildRequires:  pkgconfig(ncurses)
 
 %description
 Joe is a powerful, easy to use, modeless text editor. It uses the same
 WordStar keybindings used in Borland's development environment.
 
 %prep
-%setup -q
-%patch -P 2
-%patch -P 3
-%patch -P 7
-%patch -P 8
-%patch -P 10
-%patch -P 12 -p1
-%patch -P 13 -p1
+%autosetup -p1
 
 %build
-autoreconf -fiv
 export CFLAGS="%{optflags} -W -Wno-unused"
 %configure \
   --docdir=%{_defaultdocdir}/%{name}
-make %{?_smp_mflags}
+%make_build
 
 %install
 %make_install
 for i in jmacs jpico jstar rjoe; do
   ln -s joe.1.gz %{buildroot}%{_mandir}/man1/$i.1.gz
 done
-rm -rf %{buildroot}/%{_datadir}/%{name}/lang
 
-# Remove desktop entries to follow openSUSE guidelines for console applications
-# See: https://lists.opensuse.org/opensuse-factory/2019-02/msg00377.html
+# Console app: no .desktop (opensuse-factory 2019-02/msg00377)
 rm -rf %{buildroot}%{_datadir}/applications/*.desktop
 
 %files
+%license COPYING
 %doc %{_defaultdocdir}/%{name}
 %{_mandir}/man1/*
 %{_mandir}/*/man1/*
-%config %{_sysconfdir}/joe/*
 %dir %{_sysconfdir}/joe
+%config(noreplace) %{_sysconfdir}/joe/*
 %dir %{_datadir}/%{name}
 %dir %{_mandir}/ru
 %dir %{_mandir}/ru/man1
-%{_bindir}/*
+%{_bindir}/joe
+%{_bindir}/jmacs
+%{_bindir}/jpico
+%{_bindir}/jstar
+%{_bindir}/rjoe
 %{_datadir}/%{name}/charmaps
 %dir %{_datadir}/%{name}/syntax
-%config(noreplace) %{_datadir}/%{name}/syntax/*
-%{_datadir}/joe/colors
-%{_datadir}/joe/colors/*.jcf
+%{_datadir}/%{name}/syntax/*
+%{_datadir}/%{name}/lang
+%{_datadir}/%{name}/colors
 
 %changelog

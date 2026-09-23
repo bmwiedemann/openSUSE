@@ -2,11 +2,9 @@
  joe/bw.c |    1 +
  1 file changed, 1 insertion(+)
 
-Index: joe/bw.c
-===================================================================
---- joe/bw.c.orig
-+++ joe/bw.c
-@@ -231,6 +231,7 @@ void bwfllw(W *w)
+--- a/joe/bw.c
++++ b/joe/bw.c
+@@ -240,6 +240,7 @@ void bwfllw(W *w)
  static HIGHLIGHT_STATE get_highlight_state(BW *w, P *p, off_t line)
  {
  	HIGHLIGHT_STATE state;

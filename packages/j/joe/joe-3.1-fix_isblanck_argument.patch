@@ -2,11 +2,9 @@
  joe/b.c |    6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-Index: joe/b.c
-===================================================================
---- joe/b.c.orig
-+++ joe/b.c
-@@ -638,9 +638,10 @@ int piseow(P *p)
+--- a/joe/b.c
++++ b/joe/b.c
+@@ -637,9 +637,10 @@ int piseow(P *p)
  int pisblank(P *p)
  {
  	P *q = pdup(p, "pisblank");
@@ -18,7 +16,7 @@ Index: joe/b.c
  		pgetb(q);
  	if (piseol(q)) {
  		prm(q);
-@@ -672,9 +673,10 @@ off_t pisindent(P *p)
+@@ -671,9 +672,10 @@ off_t pisindent(P *p)
  {
  	P *q = pdup(p, "pisindent");
  	off_t col;

@@ -271,4 +271,12 @@
 - Add CVE-2026-13412.patch</comment>
     <requestid>1366232</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>400b2bd945cb5210acc1d835adf39143</srcmd5>
+    <version>4.8</version>
+    <time>1790166796</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379261</requestid>
+  </revision>
 </revisionlist>

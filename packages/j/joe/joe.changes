@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:40:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 4.8:
+  * XDG dirs: state in ~/.local/state/joe, config in ~/.config/joe
+    (old locations still work)
+  * Full navigation/edit keys; Ctrl-arrow selection changed
+  * Visible whitespace mode; hex/binary via filename,START,SIZE
+  * Unicode 17.0.0; 24-bit color via terminfo Tc
+  * Highlighters: Verilog, SystemVerilog, C/C++, PHP, Markdown,
+    Python, Debian
+  * Syntax debug tooltips; -purify now strips excess whitespace
+  * Fix destructive multi-line bracketed paste; stdin/pipe fixes
+  * Revert ^K Q behavior
+  * parserr_homeonly; notmod in prompt windows
+  * Fix tags-file command execution (CVE-2026-13412, bsc#1269379)
+- Drop CVE-2026-13412.patch
+- Drop joe-3.7-additional_key_mappings.patch
+- Drop joe-3.7-spec_association.patch
+- Drop de.po
+- Drop joe-rpmlintrc
+- Install upstream language files
+- Rebase remaining patches
+
+-------------------------------------------------------------------
 Thu Jul 16 17:38:36 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix bsc#1269379 / CVE-2026-13412

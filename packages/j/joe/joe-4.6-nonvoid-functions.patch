@@ -1,8 +1,6 @@
-Index: joe-4.6/joe/util/checkwidths.c
-===================================================================
---- joe-4.6.orig/joe/util/checkwidths.c
-+++ joe-4.6/joe/util/checkwidths.c
-@@ -188,4 +188,5 @@ int main()
+--- a/joe/util/checkwidths.c
++++ b/joe/util/checkwidths.c
+@@ -188,4 +188,5 @@ int main(int argc, char **argv)
      }
  
      tcsetattr(fileno(stdin), TCSADRAIN, &org_attr);
