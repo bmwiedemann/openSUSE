@@ -1,0 +1,38 @@
+Index: hotdoc-0.18.3/hotdoc/meson.build
+===================================================================
+--- hotdoc-0.18.3.orig/hotdoc/meson.build
++++ hotdoc-0.18.3/hotdoc/meson.build
+@@ -27,14 +27,25 @@
+     preserve_path: true,
+ )
+ 
+-bootstrap_theme = subproject('hotdoc_bootstrap_theme',
+-    default_options: [
+-        'less_include_path=@0@'.format(meson.current_source_dir() / 'less'),
+-        'install=true',
+-    ]
+-)
+-
+-theme_dist_dir = bootstrap_theme.get_variable ('theme_dir')
++fs = import('fs')
++prebuilt_dist = meson.current_source_dir() / 'hotdoc_bootstrap_theme/dist'
++if fs.is_dir(prebuilt_dist)
++    # Offline/distro build: install the prebuilt theme instead of fetching
++    # npm dependencies over the network through the theme subproject.
++    install_subdir('hotdoc_bootstrap_theme/dist',
++        install_dir: py.get_install_dir() / 'hotdoc/hotdoc_bootstrap_theme',
++    )
++    theme_dist_dir = prebuilt_dist
++else
++    bootstrap_theme = subproject('hotdoc_bootstrap_theme',
++        default_options: [
++            'less_include_path=@0@'.format(meson.current_source_dir() / 'less'),
++            'install=true',
++        ]
++    )
++
++    theme_dist_dir = bootstrap_theme.get_variable ('theme_dir')
++endif
+ 
+ subdir('core')
+ subdir('extensions')

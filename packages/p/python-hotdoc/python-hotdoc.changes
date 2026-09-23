@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 13 12:10:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.18.3:
+  * Meson-python build backend: add meson, ninja, meson-python and
+    pkgconfig BuildRequires; drop unused libxslt-devel and
+    libyaml-devel; add a C-extension import smoke test
+  * New runtime requirement python-feedgen >= 1.0.0; drop
+    python-faust-cchardet and python-backports.entry_points_selectable,
+    removed upstream
+  * Raise dependency floors to upstream minimums
+  * Drop fix-cmake-min-version.patch and fix-function-prototypes.patch:
+    adopted upstream
+  * Carry the default HTML theme as a prebuilt dist tarball (Source1)
+    with new use-prebuilt-theme-dist.patch: upstream no longer ships
+    dist/ in the sdist and the meson theme subproject needs npm and
+    network access at configure time
+  * gi extension supports Python 3.13; gst, devhelp and c scanner fixes
+- Switch from update-alternatives to libalternatives
+
+-------------------------------------------------------------------
 Thu Aug 14 14:06:21 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Add fix-cmake-min-version.patch for cmake compatibility
