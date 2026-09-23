@@ -475,4 +475,17 @@ Drop sphinx doctrees for reproducible builds</comment>
     <comment></comment>
     <requestid>1359753</requestid>
   </revision>
+  <revision rev="44" vrev="1">
+    <srcmd5>7727fda801f42fa501d0a026085844ad</srcmd5>
+    <version>1.8.11</version>
+    <time>1790166745</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.8.11:
+  - CVE-2026-54770: WebOb no longer uses urllib.parse.urljoin and
+    instead ships its own RFC 3986 urljoin implementation to
+    prevent open redirects via Location normalization smuggling
+    (bsc#1275917, GHSA-6hx8-3wjj-gr8g).
+</comment>
+    <requestid>1379547</requestid>
+  </revision>
 </revisionlist>

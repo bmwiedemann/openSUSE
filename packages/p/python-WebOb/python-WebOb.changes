@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 21 23:30:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 1.8.11:
+  - CVE-2026-54770: WebOb no longer uses urllib.parse.urljoin and
+    instead ships its own RFC 3986 urljoin implementation to
+    prevent open redirects via Location normalization smuggling
+    (bsc#1275917, GHSA-6hx8-3wjj-gr8g).
+
+-------------------------------------------------------------------
 Tue Jun 16 08:39:48 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.8.10 (fices CVE-2026-44889, bsc#1268324)
