@@ -101,4 +101,17 @@
   + minor improvements to base64 decoding.</comment>
     <requestid>1377786</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>576b016ca743dcc20b32509e760dd021</srcmd5>
+    <version>9.2.0</version>
+    <time>1790166758</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.2.0:
+  + arm64: test comparison masks with vmaxvq_u32 instead of
+    shrn+fcmp
+  + add detailed results to safe UTF conversions
+- Update lib_ver to 36.0.0 and so_ver to 36: follow upstream
+  changes.</comment>
+    <requestid>1379636</requestid>
+  </revision>
 </revisionlist>
