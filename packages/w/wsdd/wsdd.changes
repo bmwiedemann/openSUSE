@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Sep 22 12:01:42 UTC 2026 - Branislav Klocok <branislav.klocok@orava.sk>
+
+- Do not chroot into /run/wsdd (boo#1282139): CPython imports parts
+  of the standard library lazily, so the first such import after the
+  chroot fails with ModuleNotFoundError and the daemon exits. Also
+  drop the CAP_SYS_CHROOT ambient capability that only existed for
+  it. The runtime directory still comes from the tmpfiles entry and
+  the remaining systemd hardening is kept.
+
+-------------------------------------------------------------------
 Wed Sep 24 10:18:37 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Drop rcwsdd symlink [jsc#PED-266]
