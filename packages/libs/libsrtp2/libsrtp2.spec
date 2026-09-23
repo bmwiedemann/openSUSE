@@ -18,13 +18,12 @@
 
 Name:           libsrtp2
 %define lname	libsrtp2-1
-Version:        2.8.0
+Version:        2.8.1
 Release:        0
 Summary:        Secure Real-Time Transport Protocol (SRTP) library v2
 License:        BSD-3-Clause
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/cisco/libsrtp
-
 Source:         https://github.com/cisco/libsrtp/archive/v%version.tar.gz
 Source99:       baselibs.conf
 Patch1:         libsrtp2-test-verbose.patch
@@ -77,8 +76,7 @@ This subpackage contains the development headers.
 %check
 %make_build runtest
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files -n %lname
 %_libdir/libsrtp2.so.1

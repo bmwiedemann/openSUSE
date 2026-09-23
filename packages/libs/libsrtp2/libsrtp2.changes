@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:25:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.8.1
+  * Add API to require cryptex
+  * Treat cryptex and enc xtn hdr as an invalid combination
+
+-------------------------------------------------------------------
 Sat Mar 14 10:29:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.8
