@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:39:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.97.6:
+  * analyzer/github: include is_fine_grained metadata and make gist
+    enumeration non-fatal (#5332)
+  * fix(gitparse): cheaper low-memory git scan, stop losing
+    trailing commits (#5331)
+  * Add git source documentation (#5326)
+  * Clarify security policy (#5295)
+
+-------------------------------------------------------------------
 Thu Sep 17 05:23:00 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.97.5:

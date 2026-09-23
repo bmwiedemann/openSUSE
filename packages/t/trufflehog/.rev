@@ -2799,4 +2799,12 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.97.5 (forwarded request 1378508 from ojkastl_buildservice)</comment>
     <requestid>1378606</requestid>
   </revision>
+  <revision rev="132" vrev="1">
+    <srcmd5>d79ef127686c757c1fe79603ee011ed5</srcmd5>
+    <version>3.97.6</version>
+    <time>1790180290</time>
+    <user>anag_factory</user>
+    <comment>update to 3.97.6 (forwarded request 1379810 from ojkastl_buildservice)</comment>
+    <requestid>1379971</requestid>
+  </revision>
 </revisionlist>
