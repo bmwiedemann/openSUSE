@@ -1,0 +1,15 @@
+-------------------------------------------------------------------
+Wed Sep 23 14:46:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- New package graphifyy 0.9.66, successor of the
+  python-graphifyy multibuild package (now Obsoleted): single
+  flavour built against the default Python 3
+  * Five new language extractors: COBOL, VB.NET, R, Solidity,
+    Erlang (R/Erlang need their extras, not packaged)
+  * Go interface requirements resolve to the interface; Rust
+    self.method() calls resolve across files
+  * graph.json now deterministic across runs (PYTHONHASHSEED
+    pin); same-relation edge collisions keep EXTRACTED
+  * Intra-module Go imports_from edges repoint onto real file
+    nodes; Cargo introspection finds subdir manifests
+

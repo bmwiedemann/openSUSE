@@ -1,0 +1,4 @@
+<package name="graphifyy" project="openSUSE:Factory">
+  <title>Code knowledge graph builder and query CLI for AI assistants</title>
+  <description>Graphify turns a codebase into a queryable knowledge graph and registers a /graphify skill with AI coding assistants. Single-flavour application built against the distribution's default Python 3 (successor of the python-graphifyy multibuild package).</description>
+</package>
