@@ -470,4 +470,41 @@
 - Add UCS-add-missing-include-for-UCS_INFINITY.patch to fix build issue on ARM/S390</comment>
     <requestid>1364050</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>e376dd5ba23fdfb6ebf66da6b5022134</srcmd5>
+    <version>1.22.0</version>
+    <time>1790166852</time>
+    <user>anag_factory</user>
+    <comment>- Update to v1.22.0
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added plugin infrastructure for IB token query and plugin-provided RC extended operations
+    - Added per-endpoint RC transmit queue reservation for resource checks
+    - Added IB/MLX5 initiator small-fence WQE control flag
+    - Applied ECE returned by ibv_query_ece by default
+    - Enabled relaxed ordering by default for Vera CPU platforms
+    - Fixed GGA GET zcopy purge completion
+    - Fixed GDA DMA-BUF offsets and on-demand DMA-BUF checks
+    - Fixed GDAKI Direct NIC matrix selection
+    - Fixed IB DEVX handling for UARs without WC support
+    - Fixed RoCE reachability for RTN_LOCAL routes
+    - Reverted ARM Neon BlueFlame writes in IB transport
+    - Fixed MLX5 DDP PUT fencing
+    - Fixed IB port-speed query logging for unsupported devices
+    - Fixed Direct NIC sibling matching when HCAs have no active ports
+    - Fixed DONT_FORK handling for kernels that support RDMA copy-on-fork
+    - Fixed GGA MMO fence ordering
+    - Restricted EMR relaxed ordering to device memory
+  - Shared Memory
+    - Fixed POSIX reachability failure logging in containers
+  - TCP
+    - Fixed TCP negative connect-test timeout
+  - Tools
+    - Added software GET responder progress support in perftest
+    - Fixed perftest ZE allocator thread safety and device routing
+    - Fixed I/O demo data-size range parsing
+  - UCM
+    - Propagated memory attributes in allocation events
+  - UCP</comment>
+    <requestid>1379410</requestid>
+  </revision>
 </revisionlist>

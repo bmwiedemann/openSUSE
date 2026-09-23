@@ -1,4 +1,80 @@
 -------------------------------------------------------------------
+Wed Aug 12 09:16:46 UTC 2026 - Nicolas Morey <nmorey@suse.com>
+
+- Update to v1.22.0
+  - RDMA CORE (IB, ROCE, etc.)
+    - Added plugin infrastructure for IB token query and plugin-provided RC extended operations
+    - Added per-endpoint RC transmit queue reservation for resource checks
+    - Added IB/MLX5 initiator small-fence WQE control flag
+    - Applied ECE returned by ibv_query_ece by default
+    - Enabled relaxed ordering by default for Vera CPU platforms
+    - Fixed GGA GET zcopy purge completion
+    - Fixed GDA DMA-BUF offsets and on-demand DMA-BUF checks
+    - Fixed GDAKI Direct NIC matrix selection
+    - Fixed IB DEVX handling for UARs without WC support
+    - Fixed RoCE reachability for RTN_LOCAL routes
+    - Reverted ARM Neon BlueFlame writes in IB transport
+    - Fixed MLX5 DDP PUT fencing
+    - Fixed IB port-speed query logging for unsupported devices
+    - Fixed Direct NIC sibling matching when HCAs have no active ports
+    - Fixed DONT_FORK handling for kernels that support RDMA copy-on-fork
+    - Fixed GGA MMO fence ordering
+    - Restricted EMR relaxed ordering to device memory
+  - Shared Memory
+    - Fixed POSIX reachability failure logging in containers
+  - TCP
+    - Fixed TCP negative connect-test timeout
+  - Tools
+    - Added software GET responder progress support in perftest
+    - Fixed perftest ZE allocator thread safety and device routing
+    - Fixed I/O demo data-size range parsing
+  - UCM
+    - Propagated memory attributes in allocation events
+  - UCP
+    - Added SGL datatype support for non-blocking PUT operations
+    - Added GET and PUT rendezvous protocols for RMA operations
+    - Added fault-tolerance recovery foundation
+    - Added AM, zcopy, multi, and PSN protocol failover support
+    - Added endpoint flush failover and first-fragment retransmission support
+    - Added multi-lane support for device operations
+    - Added memory registration flags to UCP/UCT/UCS APIs
+    - Enabled v2 operations on proxy and wireup endpoints
+    - Added transport and wireup debugging table dumps during context and endpoint creation
+    - Set four rails by default for Vera platforms
+    - Fixed endpoint fault-tolerance discard and failover flows
+    - Fixed fallback handling when no more lanes are available
+    - Fixed AM reply endpoint lookup during initialization
+    - Fixed memory release crash in active-message path
+    - Fixed rcache validity check before memory handle invalidation
+    - Fixed context creation when only accelerator devices are available
+    - Fixed error reporting when the transport/device resource limit is exceeded
+    - Fixed RMA rendezvous rkey size assertion
+    - Fixed bandwidth formatting macros
+    - Fixed single network-device filtering to use minimum distance
+    - Fixed protocol assertions and short selection diagnostics
+    - Fixed zero-length memory handle packing in trace logging
+    - Fixed rendezvous remote-memory flag estimation from rkey memory-domain maps
+    - Disabled RMA rendezvous protocols on non-Vera platforms
+    - Fixed active-message lane selection to preserve latency priority
+    - Fixed rendezvous multi-lane protocol selection to preserve combined minimum sizes
+    - Fixed unnecessary rendezvous PUT fences on ordered transports
+  - UCS
+    - Added table builder debug API
+    - Added ucs_string_buffer_vappendf utility
+    - Added numeric range support for device configuration
+    - Added Vera CPU support
+    - Fixed stale async file descriptor event filtering
+    - Fixed IPv6 scope formatting
+    - Fixed time initialization to be multi-thread safe
+    - Fixed namespace identifier sizing for portability
+    - Fixed portability issues for non-glibc and clang environments
+  - UCT
+    - Added UCT v2 capability flags for SGL zcopy operations
+    - Enhanced endpoint connectivity checks
+- Refresh patches:
+  - openucx-s390x-support.patch
+
+-------------------------------------------------------------------
 Mon Jul 06 10:46:59 UTC 2026 - Nicolas Morey <nmorey@suse.com>
 
 - Update to v1.21.0
