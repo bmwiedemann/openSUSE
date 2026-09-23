@@ -584,4 +584,14 @@
     <comment></comment>
     <requestid>1335241</requestid>
   </revision>
+  <revision rev="20" vrev="6">
+    <srcmd5>dbd48404103cfd234e644d59aecd5055</srcmd5>
+    <version>2.3.1</version>
+    <time>1790166885</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-Cython-3.1.patch:
+  * Support changes required by Cython 3.
+- Remove upper pin on Cython.</comment>
+    <requestid>1379781</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,61 @@
+From 81e867736edd5f4586ec121305a145646ed4212b Mon Sep 17 00:00:00 2001
+From: Mirko Galimberti <me@mirkogalimberti.com>
+Date: Tue, 13 May 2025 21:35:00 +0200
+Subject: [PATCH] Remove old Python 2 long from Cython files, fixes build with
+ Cython 3.1.x
+
+---
+ kivy/graphics/context_instructions.pyx | 2 +-
+ kivy/graphics/opengl.pyx               | 4 ++--
+ kivy/weakproxy.pyx                     | 3 ---
+ 3 files changed, 3 insertions(+), 6 deletions(-)
+
+diff --git a/kivy/graphics/context_instructions.pyx b/kivy/graphics/context_instructions.pyx
+index a1c0d332ef..b96db0d848 100644
+--- a/kivy/graphics/context_instructions.pyx
++++ b/kivy/graphics/context_instructions.pyx
+@@ -85,7 +85,7 @@ cdef tuple rgb_to_hsv(float r, float g, float b):
+ 
+ cdef tuple hsv_to_rgb(float h, float s, float v):
+     if s == 0.0: return v, v, v
+-    cdef long i = long(h * 6.0)
++    cdef long i = <long>(h * 6.0)
+     cdef float f = (h * <float>6.0) - i
+     cdef float p = v * (<float>1.0 - s)
+     cdef float q = v * (<float>1.0 - s * f)
+diff --git a/kivy/graphics/opengl.pyx b/kivy/graphics/opengl.pyx
+index bcca708429..f535c62a62 100644
+--- a/kivy/graphics/opengl.pyx
++++ b/kivy/graphics/opengl.pyx
+@@ -689,7 +689,7 @@ def glDrawElements(GLenum mode, GLsizei count, GLenum type, indices):
+     cdef void *ptr = NULL
+     if isinstance(indices, bytes):
+         ptr = <void *>(<char *>(<bytes>indices))
+-    elif isinstance(indices, (long, int)):
++    elif isinstance(indices, int):
+         ptr = <void *>(<unsigned int>indices)
+     else:
+         raise TypeError("Argument 'indices' has incorrect type (expected bytes or int).")
+@@ -1539,7 +1539,7 @@ def glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean norma
+     cdef void *ptr = NULL
+     if isinstance(data, bytes):
+         ptr = <void *>(<char *>(<bytes>data))
+-    elif isinstance(data, (long, int)):
++    elif isinstance(data, int):
+         ptr = <void *>(<unsigned int>data)
+     else:
+         raise TypeError("Argument 'data' has incorrect type (expected bytes or int).")
+diff --git a/kivy/weakproxy.pyx b/kivy/weakproxy.pyx
+index 1ef345c122..aa3a5068cc 100644
+--- a/kivy/weakproxy.pyx
++++ b/kivy/weakproxy.pyx
+@@ -249,9 +249,6 @@ cdef class WeakProxy(object):
+     def __int__(self):
+         return int(self.__ref__())
+ 
+-    def __long__(self):
+-        return long(self.__ref__())
+-
+     def __float__(self):
+         return float(self.__ref__())
+ 

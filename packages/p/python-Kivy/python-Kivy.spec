@@ -37,8 +37,10 @@ Source99:       python-Kivy.rpmlintrc
 Patch0:         pytest_compatibility.patch
 # PATCH-FIX-UPSTREAM https://github.com/kivy/kivy/pull/9157 lang/parser.py: Remove Python 3.6 abstract syntax tree workaround
 Patch1:         py314.patch
+# PATCH-FIX-UPSTREAM https://github.com/kivy/kivy/pull/9056
+Patch2:         support-Cython-3.1.patch
 BuildRequires:  %{mypython}-Sphinx
-BuildRequires:  %{python_module Cython with %python-Cython < 3}
+BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module devel >= 3.7}

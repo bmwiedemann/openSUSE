@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 23 02:20:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-Cython-3.1.patch:
+  * Support changes required by Cython 3.
+- Remove upper pin on Cython.
+
+-------------------------------------------------------------------
 Mon Feb 23 15:05:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add py314.patch to fix compatibility with Python 3.14
