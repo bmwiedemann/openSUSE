@@ -1,0 +1,146 @@
+From 75f6dcf3bca4da53a4101890bbacf1ebededce50 Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Mon, 21 Sep 2026 15:57:11 +0000
+Subject: [PATCH] compat: fix shlex.quote Python 2.7 incompatibility
+
+shlex.quote() was introduced in Python 3.3. The 3.26.6 security fix that
+replaced hand-rolled quoting with shlex.quote() broke Python 2.7 users of
+the ui4 (PyQt4) interface, where pipes.quote() is the equivalent.
+
+Replace `import shlex` / `shlex.quote(p)` with a compatibility shim:
+
+    try:
+        from shlex import quote as shell_quote   # Python 3.3+
+    except ImportError:
+        from pipes import quote as shell_quote   # Python 2.7 fallback
+
+Applied to both ui4/printsettingstoolbox.py (PyQt4, Python 2.7/3.x) and
+ui5/printsettingstoolbox.py (PyQt5, Python 3.x) for consistency.
+
+compat: fix shlex.quote Python 2.7 incompatibility in fax/filters/pstotiff
+
+Same issue as ui4/ui5/printsettingstoolbox: shlex.quote() is Python 3.3+,
+but this script already has a PY3 guard showing it runs on Python 2.7 too.
+
+Replace `import shlex` / `shlex.quote()` with the same compatibility shim
+used in the printsettingstoolbox fix.
+---
+ fax/filters/pstotiff        |  7 +++++--
+ ui4/printsettingstoolbox.py | 11 +++++++----
+ ui5/printsettingstoolbox.py | 11 +++++++----
+ 3 files changed, 19 insertions(+), 10 deletions(-)
+
+diff --git a/fax/filters/pstotiff b/fax/filters/pstotiff
+index 3774342..1808567 100755
+--- a/fax/filters/pstotiff
++++ b/fax/filters/pstotiff
+@@ -2,7 +2,10 @@
+ 
+ import os
+ import os.path
+-import shlex
++try:
++    from shlex import quote as shell_quote   # Python 3.3+
++except ImportError:
++    from pipes import quote as shell_quote   # Python 2.7 fallback
+ import time 
+ import sys
+ import tempfile
+@@ -15,7 +18,7 @@ total_bytes_read = 0
+ temp_in_file = "-"
+ 
+ if (len(sys.argv) > 6):
+-   temp_in_file = shlex.quote(sys.argv[6])  # HPLIP-2026-008: quote argv[6] before shell execution.
++   temp_in_file = shell_quote(sys.argv[6])  # HPLIP-2026-008: quote argv[6] before shell execution.
+ 
+ temp_out_handle, temp_out_fname = tempfile.mkstemp()
+ 
+diff --git a/ui4/printsettingstoolbox.py b/ui4/printsettingstoolbox.py
+index 566c372..4f1090c 100644
+--- a/ui4/printsettingstoolbox.py
++++ b/ui4/printsettingstoolbox.py
+@@ -21,7 +21,10 @@
+ 
+ # Std Lib
+ import sys
+-import shlex
++try:
++    from shlex import quote as shell_quote   # Python 3.3+
++except ImportError:
++    from pipes import quote as shell_quote   # Python 2.7 fallback
+ 
+ # Local
+ from base.g import *
+@@ -265,7 +268,7 @@ class PrintSettingsToolbox(QToolBox):
+ 
+             if utils.which('lpr'):
+                 if alt_nup:
+-                    cmd = ' '.join(['psnup', '-%d' % nup, shlex.quote(p), '| lpr -P', self.cur_printer])
++                    cmd = ' '.join(['psnup', '-%d' % nup, shell_quote(p), '| lpr -P', self.cur_printer])
+                 else:
+                     cmd = ' '.join(['lpr -P', self.cur_printer])
+ 
+@@ -274,7 +277,7 @@ class PrintSettingsToolbox(QToolBox):
+ 
+             else: # lp
+                 if alt_nup:
+-                    cmd = ' '.join(['psnup', '-%d' % nup, shlex.quote(p), '| lp -c -d', self.cur_printer])
++                    cmd = ' '.join(['psnup', '-%d' % nup, shell_quote(p), '| lp -c -d', self.cur_printer])
+                 else:
+                     cmd = ' '.join(['lp -c -d', self.cur_printer])
+ 
+@@ -343,7 +346,7 @@ class PrintSettingsToolbox(QToolBox):
+                     cmd = ' '.join([cmd, '-o HOLD=OFF'])
+ 
+             if not alt_nup:
+-                cmd = cmd + ' ' + shlex.quote(p)  # HPLIP-2026-010: quote path before shell execution.
++                cmd = cmd + ' ' + shell_quote(p)  # HPLIP-2026-010: quote path before shell execution.
+ 
+             print_commands.append(cmd)
+ 
+diff --git a/ui5/printsettingstoolbox.py b/ui5/printsettingstoolbox.py
+index e7d684b..1eada4e 100644
+--- a/ui5/printsettingstoolbox.py
++++ b/ui5/printsettingstoolbox.py
+@@ -21,7 +21,10 @@
+ 
+ # Std Lib
+ import sys
+-import shlex
++try:
++    from shlex import quote as shell_quote   # Python 3.3+
++except ImportError:
++    from pipes import quote as shell_quote   # Python 2.7 fallback
+ 
+ # Local
+ from base.g import *
+@@ -264,7 +267,7 @@ class PrintSettingsToolbox(QToolBox):
+ 
+             if utils.which('lpr'):
+                 if alt_nup:
+-                    cmd = ' '.join(['psnup', '-%d' % nup, shlex.quote(p), '| lpr -P', self.cur_printer])
++                    cmd = ' '.join(['psnup', '-%d' % nup, shell_quote(p), '| lpr -P', self.cur_printer])
+                 else:
+                     cmd = ' '.join(['lpr -P', self.cur_printer])
+ 
+@@ -273,7 +276,7 @@ class PrintSettingsToolbox(QToolBox):
+ 
+             else: # lp
+                 if alt_nup:
+-                    cmd = ' '.join(['psnup', '-%d' % nup, shlex.quote(p), '| lp -c -d', self.cur_printer])
++                    cmd = ' '.join(['psnup', '-%d' % nup, shell_quote(p), '| lp -c -d', self.cur_printer])
+                 else:
+                     cmd = ' '.join(['lp -c -d', self.cur_printer])
+ 
+@@ -342,7 +345,7 @@ class PrintSettingsToolbox(QToolBox):
+                     cmd = ' '.join([cmd, '-o HOLD=OFF'])
+ 
+             if not alt_nup:
+-                cmd = cmd + ' ' + shlex.quote(p)  # HPLIP-2026-010: quote path before shell execution.
++                cmd = cmd + ' ' + shell_quote(p)  # HPLIP-2026-010: quote path before shell execution.
+ 
+             print_commands.append(cmd)
+ 
+-- 
+2.55.0
+

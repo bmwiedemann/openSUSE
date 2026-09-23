@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Sep 22 21:26:53 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- hpmud.rules: use SYSTEMD_WANTS for firmware upload to USB printers
+  (boo#1274562)
+  * add hpmud.rules-use-SYSTEMD_WANTS-rather-than-RUN.patch
+
+-------------------------------------------------------------------
+Tue Sep 22 21:22:28 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Fix download of propietary plugin for 3.26.6
+  * add pluginhandler.py-add-fallback-location-for-3.26.6.patch
+
+-------------------------------------------------------------------
+Tue Sep 22 10:57:11 UTC 2026 - Martin Wilck <mwilck@suse.com>
+
+- Update to HPLIP 3.26.6
+
+- Fix hplip CVEs (bsc#1282051):
+
+  * CVE-2026-91097 (bsc#1281303)
+  * CVE-2026-91098 (bsc#1281304)
+  * CVE-2026-91099 (bsc#1281305)
+  * CVE-2026-91100 (bsc#1281306)
+  * CVE-2026-91101 (bsc#1281307)
+  * CVE-2026-91102 (bsc#1281308)
+  * CVE-2026-91103 (bsc#1281309)
+  * CVE-2026-91105 (bsc#1281310)
+  * CVE-2026-91104 (bsc#1281313)
+  * CVE-2026-91106 (bsc#1281314)
+
+- Add support for the following new printers:
+
+  * HP ScanJet Enterprise Flow N9000 sn1
+  * HP ScanJet Enterprise Flow 9000 s1
+  * HP ScanJet Pro 4200 s1
+  * HP LaserJet Pro 4006dn printer
+  * HP LaserJet Pro 4006dw printer
+  * HP LaserJet Pro 4006n printer
+  * HP LaserJet Pro 4002d printer
+  * HP LaserJet Pro 4007dw printer
+  * HP LaserJet Pro 4007n printer
+  * HP LaserJet Pro 4008d
+  * HP LaserJet Pro 4008dn
+  * HP LaserJet Pro 4008dw
+  * HP LaserJet Pro MFP 4112dw printer
+  * HP LaserJet Pro MFP 4112fdn printer
+  * HP LaserJet Pro MFP 4112fdw printer
+  * HP LaserJet Pro MFP 4113dw printer
+  * HP LaserJet Pro MFP 4113dwg printer
+  * HP LaserJet Pro MFP 4113fdn printer
+  * HP LaserJet Pro MFP 4113fdng printer
+  * HP LaserJet Pro MFP 4113fdw printer
+  * HP LaserJet Pro MFP 4113fdwg printer
+  * HP LaserJet Pro MFP 4114dw
+  * HP LaserJet Pro MFP 4114fdn
+  * HP LaserJet Pro MFP 4114fdw
+
+- Remove hp-pkservice
+
+- Add compat-fix-shlex.quote-Python-2.7-incompatibility.patch
+
+-------------------------------------------------------------------
 Wed Jun  3 18:10:49 UTC 2026 - Martin Wilck <mwilck@suse.com>
 
 - hp-plugin: fix plugin installation from local file (lp#2154206)

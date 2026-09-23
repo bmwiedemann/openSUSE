@@ -1673,4 +1673,12 @@ Fixes build in Staging_A (python 3.13) - and seems to address the real reaason w
     <comment>Add missing patch reference (forwarded request 1358043 from mwilck)</comment>
     <requestid>1358044</requestid>
   </revision>
+  <revision rev="170" vrev="1">
+    <srcmd5>3e079423c7d6dc08f836bb5174d6a098</srcmd5>
+    <version>3.26.6</version>
+    <time>1790166775</time>
+    <user>anag_factory</user>
+    <comment>Update to 3.26.6, fixes for recent CVEs - note: hp plugin not yet available!</comment>
+    <requestid>1379766</requestid>
+  </revision>
 </revisionlist>

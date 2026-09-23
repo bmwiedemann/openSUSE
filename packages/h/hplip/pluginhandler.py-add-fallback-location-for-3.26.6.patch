@@ -1,0 +1,24 @@
+From aa0e7c700db131cef9544960963996e36a2c1e8b Mon Sep 17 00:00:00 2001
+From: Martin Wilck <mwilck@suse.com>
+Date: Tue, 22 Sep 2026 23:17:03 +0200
+Subject: [PATCH] pluginhandler.py: add fallback location for 3.26.6
+
+---
+ installer/pluginhandler.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/installer/pluginhandler.py b/installer/pluginhandler.py
+index 3fe35c1..5574266 100755
+--- a/installer/pluginhandler.py
++++ b/installer/pluginhandler.py
+@@ -46,6 +46,7 @@ PLUGIN_FALLBACK_URLS = {
+     '3.25.6': 'https://developers.hp.com/sites/default/files/2025-08/hplip-3.25.6-plugin.run',
+     '3.25.8': 'https://developers.hp.com/sites/default/files/2025-11/hplip-3.25.8-plugin.run',
+     '3.26.4': 'https://developers.hp.com/sites/default/files/2026-05/hplip-3.26.4-plugin.run',
++    '3.26.6': 'https://developers.hp.com/sites/default/files/2026-09/hplip-3.26.6-plugin.run',
+ }
+ 
+ WGET_FALLBACK_HEADERS = (
+-- 
+2.55.0
+

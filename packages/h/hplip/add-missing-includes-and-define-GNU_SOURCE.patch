@@ -1,18 +1,18 @@
-From 935b009caf6de3071675894f4756f99f8e3d46ff Mon Sep 17 00:00:00 2001
+From 9ae9649ab07087391ff02994e93781e7f5673915 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Fri, 15 Sep 2023 18:27:13 +0200
-Subject: [PATCH 04/33] add missing includes and define GNU_SOURCE
+Subject: [PATCH] add missing includes and define GNU_SOURCE
 
 ---
  common/utils.c      | 5 +++++
  io/hpmud/jd.c       | 1 +
  protocol/hp_ipp.c   | 4 ++++
  scan/sane/bb_ledm.c | 1 +
- scan/sane/sclpml.c  | 5 +++++
- 5 files changed, 16 insertions(+)
+ scan/sane/sclpml.c  | 4 ++++
+ 5 files changed, 15 insertions(+)
 
 diff --git a/common/utils.c b/common/utils.c
-index d8ecee9..6f5cef9 100644
+index f5b1482..19db7a6 100644
 --- a/common/utils.c
 +++ b/common/utils.c
 @@ -1,9 +1,14 @@
@@ -31,7 +31,7 @@ index d8ecee9..6f5cef9 100644
  extern int errno;
  
 diff --git a/io/hpmud/jd.c b/io/hpmud/jd.c
-index 94474c8..f86f96a 100644
+index d97c7e1..75461ff 100644
 --- a/io/hpmud/jd.c
 +++ b/io/hpmud/jd.c
 @@ -31,6 +31,7 @@
@@ -43,7 +43,7 @@ index 94474c8..f86f96a 100644
  #include "hpmudi.h"
  
 diff --git a/protocol/hp_ipp.c b/protocol/hp_ipp.c
-index 6e60ac0..e7d4b8c 100644
+index d48cff0..6c49f7b 100644
 --- a/protocol/hp_ipp.c
 +++ b/protocol/hp_ipp.c
 @@ -18,6 +18,10 @@ Boston, MA 02110-1301, USA.
@@ -58,7 +58,7 @@ index 6e60ac0..e7d4b8c 100644
  #include <cups/language.h>
  #include <cups/ppd.h>
 diff --git a/scan/sane/bb_ledm.c b/scan/sane/bb_ledm.c
-index 4b18af8..eaf1299 100644
+index 739354f..3259e69 100644
 --- a/scan/sane/bb_ledm.c
 +++ b/scan/sane/bb_ledm.c
 @@ -27,6 +27,7 @@
@@ -70,10 +70,10 @@ index 4b18af8..eaf1299 100644
  
  # define _STRINGIZE(x) #x
 diff --git a/scan/sane/sclpml.c b/scan/sane/sclpml.c
-index 9a5975f..3250541 100644
+index c81a6a8..febb9af 100644
 --- a/scan/sane/sclpml.c
 +++ b/scan/sane/sclpml.c
-@@ -25,11 +25,16 @@
+@@ -25,6 +25,10 @@
  
  \************************************************************************************/
  
@@ -84,12 +84,6 @@ index 9a5975f..3250541 100644
  #include <stdio.h>
  #include <string.h>
  #include <unistd.h>
- #include <fcntl.h>
- #include <string.h>
-+#include <sys/time.h>
- #include "sane.h"
- #include "saneopts.h"
- #include "common.h"
 -- 
-2.52.0
+2.55.0
 

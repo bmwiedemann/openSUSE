@@ -1,17 +1,17 @@
-From 4ce96ef1d4ec67f6032b4e8e31839456b71b0a7e Mon Sep 17 00:00:00 2001
+From 1ccf6aa6d11b48bd8494b516a29b92c99bec62f0 Mon Sep 17 00:00:00 2001
 From: Martin Wilck <mwilck@suse.com>
 Date: Tue, 3 Feb 2026 17:57:27 +0100
-Subject: [PATCH 13/33] hplip: remove imageprocessor
+Subject: [PATCH] hplip: remove imageprocessor
 
 ---
- Makefile.am | 14 ++------------
- 1 file changed, 2 insertions(+), 12 deletions(-)
+ Makefile.am | 16 +++-------------
+ 1 file changed, 3 insertions(+), 13 deletions(-)
 
 diff --git a/Makefile.am b/Makefile.am
-index 5381a24..a03b2bf 100644
+index 072c969..ad4d62d 100644
 --- a/Makefile.am
 +++ b/Makefile.am
-@@ -167,7 +167,7 @@ if !HPLIP_CLASS_DRIVER
+@@ -179,7 +179,7 @@ if !HPLIP_CLASS_DRIVER
  dist_hplip_SCRIPTS = hpssd.py __init__.py hpdio.py
  endif #HPLIP_CLASS_DRIVER
  
@@ -20,16 +20,16 @@ index 5381a24..a03b2bf 100644
  
  dist_noinst_DATA += prnt/ipp-usb/HPLIP.conf
  dist_noinst_SCRIPTS += dat2drv.py install.py  hplip-install init-suse-firewall init-iptables-firewall class_rpm_build.sh hplipclassdriver.spec createPPD.sh Makefile_dat2drv hpijs-drv
-@@ -598,7 +598,7 @@ hpcups_SOURCES = prnt/hpcups/HPCupsFilter.cpp prnt/hpcups/HPCupsFilter.h prnt/hp
- 	prnt/hpcups/ImageProcessor.h
- 
- hpcups_CXXFLAGS = $(APDK_ENDIAN_FLAG) $(DBUS_CFLAGS)
+@@ -605,7 +605,7 @@ hpcups_SOURCES = prnt/hpcups/HPCupsFilter.cpp prnt/hpcups/HPCupsFilter.h prnt/hp
+ hpcups_CPPFLAGS = -I$(srcdir)/prnt/hpcups -I$(srcdir)/prnt -I$(srcdir)/common -D_GNU_SOURCE
+ hpcups_CXXFLAGS = $(APDK_ENDIAN_FLAG) $(DBUS_CFLAGS) $(AM_CXXFLAGS)
+ hpcups_LDFLAGS = $(AM_LDFLAGS)
 -hpcups_LDADD = -L./prnt/hpcups/ -ljpeg -ldl -lImageProcessor -lcups -lcupsimage -lz $(DBUS_LIBS)
 +hpcups_LDADD = -L./prnt/hpcups/ -ljpeg -ldl -lcups -lcupsimage -lz $(DBUS_LIBS)
  #else
  #hpcupsdir = $(cupsfilterdir)
  #hpcups_PROGRAMS = hpcups
-@@ -696,16 +696,6 @@ endif #HPLIP_CLASS_DRIVER
+@@ -707,16 +707,6 @@ endif #HPLIP_CLASS_DRIVER
  
  install-data-hook:
  if HPLIP_BUILD
@@ -46,6 +46,15 @@ index 5381a24..a03b2bf 100644
  	if [ -d "/usr/share/ipp-usb/quirks/" ]; then \
  		echo "ipp-usb directory exists"; \
  		cp prnt/ipp-usb/HPLIP.conf /usr/share/ipp-usb/quirks/ ; \
+@@ -732,7 +722,7 @@ if !HPLIP_CLASS_DRIVER
+ 		  echo "Adding hpaio entry to /etc/sane.d/dll.conf." ; \
+ 		  echo hpaio >>$(DESTDIR)/etc/sane.d/dll.conf ; \
+ 	   fi; \
+- 	   if [ \( "$(UNAME)" = "x86_64" -a  -d "$(libdir)/x86_64-linux-gnu/sane" \) ]; then \
++	   if [ \( "$(UNAME)" = "x86_64" -a  -d "$(libdir)/x86_64-linux-gnu/sane" \) ]; then \
+ 	  	ln -sf $(libdir)/sane/libsane-hpaio.so $(libdir)/x86_64-linux-gnu/sane/ ; \
+ 	  	ln -sf $(libdir)/sane/libsane-hpaio.so.1 $(libdir)/x86_64-linux-gnu/sane/ ; \
+ 	   fi; \
 -- 
-2.52.0
+2.55.0
 

@@ -66,7 +66,7 @@
 %global drvdir %{_datadir}/cups/drv
 
 Name:           hplip
-Version:        3.26.4
+Version:        3.26.6
 Release:        0
 Summary:        HP's Printing, Scanning, and Faxing Software
 License:        BSD-3-Clause AND GPL-2.0-or-later AND MIT
@@ -98,6 +98,7 @@ Source1000:     %{name}-rpmlintrc
 # Patch100... is for special Suse patches:
 # Patch101 change-udev-rules.patch changes the udev rules file 56-hpmud.rules
 Patch101:       hplip-change-udev-rules.patch
+Patch102:       hpmud.rules-use-SYSTEMD_WANTS-rather-than-RUN.patch
 # Patch106 disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for security reasons,
 # see https://bugzilla.novell.com/show_bug.cgi?id=853405
 # To upgrade HPLIP an openSUSE software package manager like YaST or zypper should be used.
@@ -150,10 +151,12 @@ Patch614:       hplip-sane-fix-compilation-with-gcc-15.patch
 Patch615:       hplip-fix-handling-of-ConfigParser-.readfp-vs.-read_.patch
 # lp#2154206, fixup for patch 607
 Patch616:       pluginhandler-fix-plugin-installation-from-local-fil.patch
+Patch617:       pluginhandler.py-add-fallback-location-for-3.26.6.patch
 
 # Compatibility patches for old SUSE releases
 Patch701:       hpcups-fix-compilation-on-SLE12.patch
 Patch703:       Fix-two-compiler-warnings-that-cause-build-failure-o.patch
+Patch704:       compat-fix-shlex.quote-Python-2.7-incompatibility.patch
 
 # cups-rpm-helper is now pulled in indirectly via cups-devel.
 # This causes the "postscriptdriver" provides to be generated.
@@ -469,6 +472,9 @@ This package is only required by developers.
 
 # Patch101 change-udev-rules.patch changes the udev rules file 56-hpmud.rules
 %patch -P 101 -p1 -b .change-udev-rules.orig
+%if 0%{?suse_version} >= 1699
+%patch -P 102 -p1
+%endif
 # Patch106 disable_hp-upgrade.patch disables hp-upgrade/upgrade.py for security reasons,
 # see https://bugzilla.novell.com/show_bug.cgi?id=853405
 # To upgrade HPLIP an openSUSE software package manager like YaST or zypper should be used.
@@ -508,6 +514,7 @@ This package is only required by developers.
 %patch -P 614 -p1
 %patch -P 615 -p1
 %patch -P 616 -p1
+%patch -P 617 -p1
 %if 0%{?suse_version} < 1500
 # python2 compatibility
 %patch -P 701 -p1
@@ -517,6 +524,10 @@ This package is only required by developers.
 %patch -P 701 -p1
 %endif
 %patch -P 703 -p1
+%if 0%{?suse_version} < 1500
+# python2 compatibility
+%patch -P 704 -p1
+%endif
 
 # replace "env" shebang and "/usr/bin/python" with real executable
 find . -name '*.py' -o -name pstotiff | \
@@ -756,7 +767,6 @@ exit 0
 %{_bindir}/hp-toolbox
 %{_bindir}/hp-wificonfig
 # Fixme: these tools are useless on openSUSE.
-%{_bindir}/hp-pkservice
 %{_bindir}/hp-uninstall
 %{_bindir}/hp-upgrade
 %doc %{_defaultdocdir}/%{name}/
@@ -819,6 +829,9 @@ exit 0
 %dir %attr(0775,root,lp) %{_localstatedir}/log/hp/tmp
 # Use fixed "/var/lib/hp" because this is hardcoded in the HPLIP sources:
 %dir %{_localstatedir}/lib/hp
+%if 0%{?suse_version} >= 1699
+%{_unitdir}/hp-firmware@.service
+%endif
 
 %files -n libhplip0
 %{_libdir}/libhpip.so.*
