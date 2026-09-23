@@ -412,4 +412,41 @@ update to 6.1.0</comment>
     link to that capture in the source, refreshed by refresh-directives.</comment>
     <requestid>1376836</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e06f07c4d2d35dcf5a0b7197017628aa</srcmd5>
+    <version>9.3.3</version>
+    <time>1790166952</time>
+    <user>anag_factory</user>
+    <comment>- Drop patches, merged upstream:
+  * do-not-use-bare-python.patch
+  * monkeypatch-shutil-correctly.patch
+
+- update to 9.3.3:
+  * Fix from click_extra import * emitting Click's deprecation
+    warnings for get_binary_stream and get_text_stream under Click
+    8.5. Like Click's own star import, it no longer binds them:
+    import them by name instead.
+- update to 9.3.2:
+  * Deprecated: Make select_columns, select_row and
+    render_columns_markdown_table importable from click_extra.table
+    again, as aliases of their click_extra.columns versions until
+    10.0.0.
+  * Add corner_header to click_extra.table, naming both axes of a
+    two-axis table in its top-left cell.
+  * Name both axes in the top-left cell of matrix tables, like
+    click-extra ↴ \ cloup →.
+  * Keep the first column of a corner-labeled table on one line in
+    Sphinx builds: a narrow screen scrolls the table instead of
+    wrapping its row labels.
+  * Drop the Released column of matrix tables: add :show-date: to
+    follow each row label with its first release date instead.
+  * Bin the columns of matrix dependency tables by release: each
+    covers a run of PyPI releases that every range treats alike,
+    labeled like 3.0.1 → 3.0.4.
+  * Support cloup 4.0: re-export its ArgumentKwargs and
+    OptionKwargs, and stop import click_extra from emitting Click
+    deprecation warnings, which BaseCommand, MultiCommand,
+    OptionParser and the stream getters now emit only when used.</comment>
+    <requestid>1379829</requestid>
+  </revision>
 </revisionlist>

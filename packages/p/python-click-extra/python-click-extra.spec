@@ -27,21 +27,17 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        9.1.0
+Version:        9.3.3
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
 URL:            https://github.com/kdeldycke/click-extra
 Source:         https://github.com/kdeldycke/click-extra/archive/v%{version}.tar.gz#/%{module_name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#kdeldycke/click-extra#1933
-Patch0:         do-not-use-bare-python.patch
-# PATCH-FIX-UPSTREAM gh#kdeldycke/click-extra#1934
-Patch1:         monkeypatch-shutil-correctly.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module uv-build}
 # SECTION Build dependencies
 # https://github.com/kdeldycke/click-extra/blob/v6.0.3/pyproject.toml#L73
-BuildRequires:  %{python_module boltons >= 20.0.0}
+BuildRequires:  %{python_module boltons >= 26.2.0}
 BuildRequires:  %{python_module click >= 8.4.1}
 BuildRequires:  %{python_module cloup >= 3.0.7}
 BuildRequires:  %{python_module deepmerge >= 1.0.1}
@@ -50,12 +46,13 @@ BuildRequires:  %{python_module tabulate >= 0.10}
 BuildRequires:  %{python_module tomli >= 2 if %python-base < 3.11}
 BuildRequires:  %{python_module tomlkit >= 0.13}
 BuildRequires:  %{python_module wcmatch >= 10.0}
-BuildRequires:  %{python_module wcwidth >= 0.2}
+BuildRequires:  %{python_module wcwidth >= 0.8.3}
 # optional dependencies
 BuildRequires:  %{python_module PyYAML >= 6.0.3}
 BuildRequires:  %{python_module hjson >= 3.1}
 BuildRequires:  %{python_module json5 >= 0.12.1}
 BuildRequires:  %{python_module mkdocs >= 1.4}
+BuildRequires:  %{python_module numpy}
 BuildRequires:  %{python_module pygments >= 2.14}
 BuildRequires:  %{python_module pygments-ansi-color >= 0.3}
 BuildRequires:  %{python_module pymdown-extensions >= 10}
@@ -70,18 +67,17 @@ BuildRequires:  %{python_module pytest >= 9.0.0}
 BuildRequires:  %{python_module pytest-httpserver >= 1.1.0}
 BuildRequires:  %{python_module pytest-randomly >= 4.0.0}
 BuildRequires:  %{python_module requests >= 2.34}
-BuildRequires:  %{python_module wcwidth}
 # /SECTION
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-boltons >= 20.0.0
+Requires:       python-boltons >= 26.2.0
 Requires:       python-click >= 8.4.1
 Requires:       python-cloup >= 3.0.7
 Requires:       python-deepmerge >= 1.0.1
 Requires:       python-extra-platforms >= 13.4
 Requires:       python-tabulate >= 0.10
 Requires:       python-wcmatch >= 10.0
-Requires:       python-wcwidth >= 0.2
+Requires:       python-wcwidth  >= 0.8.3
 Requires:       (python-tomli >= 2 if python-base < 3.11)
 Suggests:       python-PyYAML >= 6.0.3
 Suggests:       python-pygments >= 2.14
@@ -142,6 +138,10 @@ IGNORED_CHECKS+=" or test_patch_mkdocs_click_idempotent"
 IGNORED_CHECKS+=" or test_patch_mkdocs_click_plain_options"
 IGNORED_CHECKS+=" or test_full_build_renders_ansi_colors"
 IGNORED_CHECKS+=" or test_on_config_registers_stylesheet"
+# Broken with Click 8.4+
+IGNORED_CHECKS+=" or test_command_listing_is_not_cut_by_an_abbreviation"
+# Broken with extra-platforms 13.10+
+IGNORED_CHECKS+=" or test_screen_drawn_with_color"
 
 %pytest --import-mode=importlib -k "not (${IGNORED_CHECKS})"
 
