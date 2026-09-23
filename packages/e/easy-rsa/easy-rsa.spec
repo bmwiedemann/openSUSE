@@ -19,7 +19,7 @@
 
 %define         pname EasyRSA
 Name:           easy-rsa
-Version:        3.2.6
+Version:        3.2.7
 Release:        0
 Summary:        CLI utility to build and manage a PKI CA
 License:        GPL-2.0-or-later

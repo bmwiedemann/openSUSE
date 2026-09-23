@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 12:19:36 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 3.2.7
+  - Chores: Fixed a typo in easy-rsa/easyrsa3/easyrsa shell output in #1445
+  - default_vars(): If defined, set EASYRSA_SAN_CRIT to 'critical,' for use in #1448
+  - verify_working_env(): Do not reset '$require_pki' and '$require_ca' in #1450
+  - write: Load all variables before calling 'write()' in #1451
+  - Fix git bash 4win by in #1454
+  - check_serial_unique(); Do not export EASYRSA_SSL_CONF for LibreSSL in #1466
+
+-------------------------------------------------------------------
 Sun Mar 15 14:49:24 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.2.6:
