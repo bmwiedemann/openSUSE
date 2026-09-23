@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 06:27:32 UTC 2026 - Charles Arnold <carnold@suse.com>
+
+- Update to version 1.48.1:
+  * Version 1.48.1.
+  * golang: Ignore Flush called from pwrite + FUA
+  * golang: Fix read/write mutex usage
+  * docs/nbdkit-protocol.pod: Update export safe list
+  * map: Fix comments
+  * make: force dist file comparison to use C sort ordering
+  * indexed-gzip: Fix restart at non-byte-aligned access points
+  * tests/test-sparse-random-blocksize.sh: Reduce maximum block size
+
+-------------------------------------------------------------------
 Thu Aug 06 21:28:06 UTC 2026 - Charles Arnold <carnold@suse.com>
 
 - Update to version 1.48.0:
