@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:20:06 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- spec: Skip vishtest test in qemu emulation
+
+-------------------------------------------------------------------
 Wed Sep 16 21:09:16 UTC 2026 - James Fehlig <jfehlig@suse.com>
 
 - qemu: Fix missing audit record and shutdown lifecycle event of

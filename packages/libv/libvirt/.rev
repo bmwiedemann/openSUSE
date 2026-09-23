@@ -5171,4 +5171,12 @@ https://build.opensuse.org/requests/1354518
   bsc#1279562</comment>
     <requestid>1378619</requestid>
   </revision>
+  <revision rev="449" vrev="3">
+    <srcmd5>b4bc481a30f48a33ae6e55bae2ccb7cd</srcmd5>
+    <version>12.7.0</version>
+    <time>1790166739</time>
+    <user>anag_factory</user>
+    <comment>- spec: Skip vishtest test in qemu emulation</comment>
+    <requestid>1379514</requestid>
+  </revision>
 </revisionlist>

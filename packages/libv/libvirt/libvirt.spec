@@ -1181,6 +1181,10 @@ mv %{buildroot}/%{_datadir}/systemtap/tapset/libvirt_qemu_probes.stp \
 %endif
 
 %check
+%if 0%{?qemu_user_space_build}
+# Skip virshtest in qemu emulation due to missing get_mempolicy syscall
+echo 'int main() { return 77; }' > tests/virshtest.c
+%endif
 export VIR_TEST_DEBUG=1
 %meson_test -t 5 --no-suite syntax-check
 
