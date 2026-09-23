@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:39:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.76:
+  * Added
+    - MD094: report each invalid UTF-8 sequence, with its position
+      (6c25d76)
+    - encoding: lint files containing invalid UTF-8 instead of
+      skipping them (f531bf4)
+  * Fixed
+    - MD013: leave definition lists as written when reflowing,
+      instead of moving a definition's later paragraph out of the
+      list (93ab135)
+    - MD013: keep every block of consecutive mkdocstrings blocks
+      out of reflow (7199b0a)
+    - MD013: recognize mkdocstrings blocks whose identifier has no
+      dot (31b56ea)
+    - cli: report a skipped file on the same stream as the run's
+      other findings, not always stderr (9558bc5)
+    - MD092: follow the invocation's rule selection (b0dfbe2)
+    - lint-context: record only CommonMark headings as headings
+      (1479a1e)
+    - cli: name every ignore file --respect-gitignore controls
+      (268a54d)
+    - discovery: attribute empty runs to .markdownlintignore
+      separately (834e10c)
+
+-------------------------------------------------------------------
 Mon Sep 21 05:10:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.75:
