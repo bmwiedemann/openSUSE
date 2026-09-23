@@ -104,4 +104,18 @@
     <comment></comment>
     <requestid>843170</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>d2258ce0c8fe0a69294b23375b864bd1</srcmd5>
+    <version>1.90.0</version>
+    <time>1790166862</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.90.0 (1.09)
+   see /usr/share/doc/packages/perl-Clone-PP/Changes
+  1.09 2026-09-13 NEILB
+      - Use `our` rather than `use vars`.
+      - Clean up whitespace.
+      - Fix tests to be warnings and strict compatible.
+      - All from HAARG++</comment>
+    <requestid>1379455</requestid>
+  </revision>
 </revisionlist>

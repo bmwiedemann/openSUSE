@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:08:26 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.90.0 (1.09)
+   see /usr/share/doc/packages/perl-Clone-PP/Changes
+
+  1.09 2026-09-13 NEILB
+      - Use `our` rather than `use vars`.
+      - Clean up whitespace.
+      - Fix tests to be warnings and strict compatible.
+      - All from HAARG++
+
+-------------------------------------------------------------------
 Wed Oct 21 03:09:29 UTC 2020 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 1.08

@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Clone-PP
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,20 +16,23 @@
 #
 
 
-Name:           perl-Clone-PP
-Version:        1.08
-Release:        0
 %define cpan_name Clone-PP
-Summary:        Recursively copy Perl datatypes
+Name:           perl-Clone-PP
+Version:        1.90.0
+Release:        0
+# 1.09 -> normalize -> 1.90.0
+%define cpan_version 1.09
 License:        Artistic-1.0 OR GPL-1.0-or-later
-Group:          Development/Libraries/Perl
+Summary:        Recursively copy Perl datatypes
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/N/NE/NEILB/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  perl
 BuildRequires:  perl-macros
+Provides:       perl(Clone::PP) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -57,11 +60,11 @@ further processing. Alternately, if an object provides a method named
 'clone_init', it is called on the copied object before it is returned.
 
 %prep
-%setup -q -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
-make %{?_smp_mflags}
+%make_build
 
 %check
 make test
@@ -72,7 +75,6 @@ make test
 %perl_gen_filelist
 
 %files -f %{name}.files
-%defattr(-,root,root,755)
 %doc Changes README
 
 %changelog
