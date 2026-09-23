@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 23 15:31:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.1
+  * Fixed out-of-bounds reads and malformed-input handling across
+    FLEX, FLEX_NEXT, CLIP, EAS, X10, and APRS, including the
+    RF-triggerable FLEX issue reported by @router0mail in #271.
+  * Fixed generator bounds, argument truncation, and binary payload
+    handling.
+  * Fixed POCSAG JSON object reuse and memory leaks in JSON output.
+  * Fixed invalid shift operations when formatting unknown Morse
+    sequences.
+  * Added feature-tested compiler and linker hardening on supported
+    platforms.
+
+-------------------------------------------------------------------
 Tue Jul 28 08:21:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.0
