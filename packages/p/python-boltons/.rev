@@ -146,4 +146,41 @@
   * Use shiny new pathlib arguments for the collection hooks.</comment>
     <requestid>1322887</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>e5597913df5413e560d493f303710d6a</srcmd5>
+    <version>26.2.0</version>
+    <time>1790166950</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.2.0:
+  * Added statsutils.mode to return the most common value, breaking ties by
+    first appearance
+  * Fixed setutils.IndexedSet.update adding the iterables themselves instead
+    of their elements when given multiple inputs
+  * Added strutils.ellipsize for word-boundary-aware text truncation with an
+    ellipsis
+  * Fixed funcutils.wraps passing arguments positionally to wrappers that
+    only accept them as keywords
+  * Fixed tableutils.Table.to_text crashes on empty tables, None headers, and
+    short header rows
+  * Fixed timeutils.isoparse misreading fractional seconds
+  * Fixed timeutils.daterange looping forever on non-advancing steps
+  * Fixed jsonutils.JSONLIterator hanging when a seek lands past the last
+    newline, and negative rel_seek values seeking past EOF (sign bug)
+  * Fixed iterutils.xfrange yielding nothing for descending ranges
+  * Fixed dictutils.OrderedMultiDict.addlist dropping values from one-shot
+    iterables, including the vendored copy in urlutils
+  * Fixed ecoutils.get_profile looking up identifying host, username, and
+    working-directory information when scrub=True
+  * Fixed timeutils.USTimeZone handling of repeated and missing DST hours,
+    including fold on UTC conversion
+  * Fixed mathutils.Bits empty binary, hexadecimal, and byte round trips
+  * Sped up setutils.IndexedSet bulk difference and intersection updates with
+    a single-pass rebuild
+  * Fixed listutils.BarrelList insertion clamping across multiple internal
+    lists
+  * Fixed jsonutils.JSONLIterator relative seeking in binary streams
+  * Fixed statsutils.Stats.get_histogram_counts division by zero for data
+    with no interquartile spread</comment>
+    <requestid>1379827</requestid>
+  </revision>
 </revisionlist>

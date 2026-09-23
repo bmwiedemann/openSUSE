@@ -1,7 +1,7 @@
 #
 # spec file for package python-boltons
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-boltons
-Version:        25.0.0
+Version:        26.2.0
 Release:        0
 Summary:        The "Boltons" utility package for Python
 License:        BSD-3-Clause
 URL:            https://github.com/mahmoud/boltons
 Source:         https://files.pythonhosted.org/packages/source/b/boltons/boltons-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#mahmoud/boltons#391
-Patch0:         support-pytest-9.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
@@ -54,7 +52,7 @@ http://boltons.readthedocs.org.
 
 %files %{python_files}
 %license LICENSE
-%doc README.md CHANGELOG.md docs/*.rst
+%doc README.md CHANGELOG.md
 %{python_sitelib}/boltons
 %{python_sitelib}/boltons-%{version}.dist-info
 

@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:59:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 26.2.0:
+  * Added statsutils.mode to return the most common value, breaking ties by
+    first appearance
+  * Fixed setutils.IndexedSet.update adding the iterables themselves instead
+    of their elements when given multiple inputs
+  * Added strutils.ellipsize for word-boundary-aware text truncation with an
+    ellipsis
+  * Fixed funcutils.wraps passing arguments positionally to wrappers that
+    only accept them as keywords
+  * Fixed tableutils.Table.to_text crashes on empty tables, None headers, and
+    short header rows
+  * Fixed timeutils.isoparse misreading fractional seconds
+  * Fixed timeutils.daterange looping forever on non-advancing steps
+  * Fixed jsonutils.JSONLIterator hanging when a seek lands past the last
+    newline, and negative rel_seek values seeking past EOF (sign bug)
+  * Fixed iterutils.xfrange yielding nothing for descending ranges
+  * Fixed dictutils.OrderedMultiDict.addlist dropping values from one-shot
+    iterables, including the vendored copy in urlutils
+  * Fixed ecoutils.get_profile looking up identifying host, username, and
+    working-directory information when scrub=True
+  * Fixed timeutils.USTimeZone handling of repeated and missing DST hours,
+    including fold on UTC conversion
+  * Fixed mathutils.Bits empty binary, hexadecimal, and byte round trips
+  * Sped up setutils.IndexedSet bulk difference and intersection updates with
+    a single-pass rebuild
+  * Fixed listutils.BarrelList insertion clamping across multiple internal
+    lists
+  * Fixed jsonutils.JSONLIterator relative seeking in binary streams
+  * Fixed statsutils.Stats.get_histogram_counts division by zero for data
+    with no interquartile spread
+  * Fixed jsonutils.reverse_iter_lines ignoring explicit and stream encodings
+  * Fixed jsonutils.reverse_iter_lines detaching the caller's text stream,
+    preventing later reads and context-manager cleanup
+  * Fixed cacheutils.ThresholdCounter.update ignoring mapping and keyword
+    counts
+  * Fixed urlutils.URL.get_authority dropping passwords when the username is
+    empty
+  * Fixed strutils.args2sh and strutils.args2cmd ignoring the sep argument
+  * Fixed statsutils.Stats.pearson_type division by zero at the exact
+    coefficient boundary, preserving the existing Normal and Gamma cases
+  * Fixed strutils.pluralize handling of words ending in x, such as box
+  * Fixed [strutils.singularize][strutils.singularize] mangling words ending
+    in 'ss'
+  * Fixed fileutils.AtomicSaver to accept os.PathLike
+  * Sped up strutils.MultiReplace match lookup
+  * Fixed setutils.IndexedSet out-of-range negative indexing wrapping around
+  * Fixed setutils.IndexedSet slicing after removals
+  * Added funcutils.once decorator for one-time function execution
+  * Added strutils.human_readable_list for formatting lists as human-readable
+    strings
+  * Extended iterutils.partition to accept multiple predicates
+  * Added cache option to iterutils.remap and iterutils.research
+  * Fixed iterutils.split maxsplit=0 wrapping source object instead of its
+    values
+  * Fixed listutils.BarrelList insert() raising IndexError on large negative
+    indices (now clamps like built-in list)
+  * Fixed listutils.BarrelList sort() with multiple internal lists
+  * Fixed tbutils.ParsedException.from_string IndexError on truncated
+    tracebacks
+  * Fixed tableutils.Table.to_text column sizing
+  * Fixed strutils.html2text handling
+  * Added Python 3.14 support
+- Drop patch support-pytest-9.patch, merged upstream.
+
+-------------------------------------------------------------------
 Mon Dec 15 03:45:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-pytest-9.patch:
