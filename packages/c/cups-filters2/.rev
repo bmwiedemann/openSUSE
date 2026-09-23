@@ -7,4 +7,12 @@
     <comment>New package cups-filters2 major version upgrade to version 2.x partially backward incompatible so as separated RPM cups-filters2 to keep version 1.x in cups-filters also installable</comment>
     <requestid>1280477</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ed856f1d790e264935cc3c99e00ba37e</srcmd5>
+    <version>2.0.1</version>
+    <time>1790180272</time>
+    <user>anag_factory</user>
+    <comment>disable-universal-cups-filter because it fails when there is more than one single driver filter (forwarded request 1379938 from jsmeix)</comment>
+    <requestid>1379939</requestid>
+  </revision>
 </revisionlist>

@@ -95,13 +95,19 @@ Cf. https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
 #   which can execute basically arbitary commands indirectly via the foomatic-rip tool
 #   cf. https://github.com/OpenPrinting/cups-filters/security/advisories/GHSA-p9rh-jxmq-gq47
 #   and https://github.com/OpenPrinting/cups-filters/issues/599
-# --enable-universal-cups-filter : use a single, universal CUPS filter executable for all filter functions
+# --disable-universal-cups-filter : do not use a single, universal CUPS filter executable for all filter functions
+#   see https://github.com/OpenPrinting/cups-filters/discussions/727 therein in particular Till Kamppeter's comment
+#   https://github.com/OpenPrinting/cups-filters/discussions/727#discussioncomment-18357065 which reads (excerpts)
+#   "certain drivers with too complex filter chains which made universal fail"
+#   "I generally recommend not to use universal in distros, for maximum compatibility with all drivers"
+#   "there were 2 filters in the chain which come from the proprietary driver package,
+#    but universal only supports a chain of libcupsfilters' filter functions plus one single driver filter"
 %configure --disable-static \
            --enable-shared \
            --disable-silent-rules \
            --disable-mutool \
            --disable-foomatic \
-           --enable-universal-cups-filter \
+           --disable-universal-cups-filter \
            --docdir=%{_defaultdocdir}/%{name}
 make %{?_smp_mflags}
 
