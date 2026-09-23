@@ -205,4 +205,19 @@
              from a void-returning function (RT170345)</comment>
     <requestid>1310532</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>d08b34fa00f4407886d537ea026ad307</srcmd5>
+    <version>0.500.0</version>
+    <time>1790166859</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.500.0 (0.50)
+   see /usr/share/doc/packages/perl-XS-Parse-Keyword/Changes
+  0.50    2026-09-10
+          [BUGFIXES]
+           * Use `SvROK` not `SvRV` to check for values being references
+             (CVE-2026-85644)
+           * Avoid putting #ifdef inside the arguments to `boolSV()`, that may
+             itself be a macro (RT170453)</comment>
+    <requestid>1379453</requestid>
+  </revision>
 </revisionlist>
