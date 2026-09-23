@@ -3877,4 +3877,28 @@ Petr</comment>
 - Drop Qt 5 support in SLFO and Tumbleweed (related: boo#1277445)</comment>
     <requestid>1375450</requestid>
   </revision>
+  <revision rev="325" vrev="2">
+    <srcmd5>18f45fe4b76714e9a056c0e04aeb4551</srcmd5>
+    <version>26.8.0.3</version>
+    <time>1790166773</time>
+    <user>anag_factory</user>
+    <comment>- Add dbaccess-no-firebird-default-crash.patch: fix the SIGSEGV in
+  the Base &quot;Create Database&quot; wizard.
+  The wizard hardcodes Firebird as the default entry of the data
+  source type list, but Tumbleweed has no firebird package so we build
+  with --disable-firebird-sdbc and the entry does not exist.
+  The list then has no selection at all and FillItemSet() indexes
+  m_aURLPrefixes with -1. Fall back to the first available type and
+  bounds-check the index.
+- Delete unused files:
+  * b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
+  * dtoa-20180411.tgz
+
+- Rework external library handling into one %enable_X/%bundle_X/
+  %support_X/%version_X macro block per library, with everything
+  else (Source/Provides/BuildRequires/configure flags) derived
+  from it instead of repeating %if 0%{?suse_version} checks.
+  No change to which libraries are bundled vs. system.</comment>
+    <requestid>1379744</requestid>
+  </revision>
 </revisionlist>

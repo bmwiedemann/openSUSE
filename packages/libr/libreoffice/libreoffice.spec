@@ -65,31 +65,770 @@
 %bcond_with firebird
 %endif
 
-# Disable system abseil-cpp on versions lower than TW / SLE16
+# ============================================================================
+# External library configuration
+#
+# Exactly one if/else per library, and it decides everything about that
+# library:
+#
+#   %enable_X    1 = the library is built at all, 0 = --disable-X
+#   %bundle_X    1 = build the external tarball, 0 = link the system copy
+#   %support_X   the literal configure switch (may be %{nil})
+#   %version_X   version download.lst would fetch, whatever %bundle_X says
+#
+# Everything further down is derived from these: the Source/Provides block
+# after the patches keys off %bundle_X, and configure is handed %support_X.
+# Do not add a system-vs-bundled decision anywhere else in this file.
+#
+# LibreOffice only has an --enable-X/--disable-X for a handful of these,
+# and spells most of them differently from the library (libeot is
+# --disable-eot, rhino is --disable-scripting-javascript, and so on). Where
+# no such option exists the library is mandatory: %enable_X is pinned to 1
+# and %support_X carries only the system-vs-bundled half. Never invent an
+# --enable-X; autoconf accepts unknown ones, warns, and ignores them.
+#
+# Libraries that are only consumed by another one do not get their own
+# distro test; they follow their driver's %bundle_X.
+#
+# %version_X is the version that goes into Provides: bundled(X). Source:
+# lines use it when the tarball name contains it verbatim, and spell the
+# name out otherwise.
+# ============================================================================
+
+# --- libraries with a real system-vs-bundled choice -------------------------
+
+# ---- abseil (header-only; LibreOffice carries an internal copy, there is no tarball)
+%global enable_abseil            1
 %if 0%{?suse_version} < 1600
-%bcond_with system_abseil_cpp
+%global bundle_abseil            1
+%global support_abseil           --without-system-abseil
 %else
-%bcond_without system_abseil_cpp
+%global bundle_abseil            0
+%global support_abseil           --with-system-abseil
 %endif
-
-%if 0%{?suse_version} >= 1300
-%bcond_without system_harfbuzz
+# ---- afdko
+%global version_afdko            4.0.3
+%global enable_afdko             1
+%global bundle_afdko             1
+%global support_afdko            --without-system-afdko
+# ---- argon2
+%global version_argon2           20190702
+%global enable_argon2            1
+%if 0%{?suse_version} < 1500
+%global bundle_argon2            1
+%global support_argon2           --without-system-argon2
 %else
-%bcond_with system_harfbuzz
+%global bundle_argon2            0
+%global support_argon2           --with-system-argon2
 %endif
-
-# Use system gpgme and curl on TW and SLE15-SP4 or newer
-%if 0%{?suse_version} > 1500
-%bcond_without system_gpgme
-%bcond_without system_curl
+# ---- beanshell
+%global enable_beanshell         1
+%global bundle_beanshell         0
+%global support_beanshell        --enable-scripting-beanshell --with-system-beanshell
+# ---- boost
+%global version_boost            1.89.0
+%global enable_boost             1
+%if 0%{?suse_version} < 1550
+%global bundle_boost             1
+%global support_boost            --without-system-boost
 %else
+%global bundle_boost             0
+%global support_boost            --with-system-boost
+%endif
+# ---- box2d
+%global enable_box2d             1
+%global bundle_box2d             0
+%global support_box2d            --with-system-box2d
+# ---- cairo
+%global enable_cairo             1
+%global bundle_cairo             0
+%global support_cairo            --with-system-cairo
+# ---- clucene
+%global enable_clucene           1
+%global bundle_clucene           0
+%global support_clucene          --with-system-clucene
+# ---- cppunit
+%global enable_cppunit           1
+%global bundle_cppunit           0
+%global support_cppunit          --with-system-cppunit
+# ---- curl
+%global version_curl             8.14.1
+%global enable_curl              1
+%if 0%{?suse_version} <= 1500
+%global bundle_curl              1
+%global support_curl             --without-system-curl
+%else
+%global bundle_curl              0
+%global support_curl             --with-system-curl
+%endif
+# ---- dragonbox
+%global enable_dragonbox         1
+%global bundle_dragonbox         0
+%global support_dragonbox        --with-system-dragonbox
+# ---- epoxy
+%global enable_epoxy             1
+%global bundle_epoxy             0
+%global support_epoxy            --with-system-epoxy
+# ---- expat
+%global enable_expat             1
+%global bundle_expat             0
+%global support_expat            --with-system-expat
+# ---- fast_float
+%global version_fast_float       8.2.10
+%global enable_fast_float        1
+%global bundle_fast_float        0
+%global support_fast_float       --with-system-fast-float
+# ---- fontconfig
+%global version_fontconfig       2.17.1
+%global enable_fontconfig        1
+%if 0%{?suse_version} < 1500
+%global bundle_fontconfig        1
+%global support_fontconfig       --without-system-fontconfig
+%else
+%global bundle_fontconfig        0
+%global support_fontconfig       --with-system-fontconfig
+%endif
+# ---- freetype
+%global version_freetype         2.13.3
+%global enable_freetype          1
+%if 0%{?suse_version} < 1500
+%global bundle_freetype          1
+%global support_freetype         --without-system-freetype
+%else
+%global bundle_freetype          0
+%global support_freetype         --with-system-freetype
+%endif
+# ---- frozen
+%global version_frozen           1.2.0
+%global enable_frozen            1
+%global bundle_frozen            0
+%global support_frozen           --with-system-frozen
+# ---- glm
+%global enable_glm               1
+%global bundle_glm               0
+%global support_glm              --with-system-glm
+# ---- gpgme
+%global version_gpgme            1.24.3
+%global enable_gpgme             1
+%if 0%{?suse_version} <= 1500
+%global bundle_gpgme             1
+%global support_gpgme            --enable-gpgmepp --without-system-gpgmepp
+%else
+%global bundle_gpgme             0
+%global support_gpgme            --enable-gpgmepp --with-system-gpgmepp
+%endif
+# ---- harfbuzz
+%global version_harfbuzz         11.4.3
+%global enable_harfbuzz          1
+%if 0%{?suse_version} < 1300
+%global bundle_harfbuzz          1
+%global support_harfbuzz         --without-system-harfbuzz
+%else
+%global bundle_harfbuzz          0
+%global support_harfbuzz         --with-system-harfbuzz
+%endif
+# ---- graphite (graphite2 is only consumed by harfbuzz; it follows it)
+%global version_graphite         1.3.14
+%global enable_graphite          1
+%if %{bundle_harfbuzz}
+%global bundle_graphite          1
+%global support_graphite         --without-system-graphite
+%else
+%global bundle_graphite          0
+%global support_graphite         --with-system-graphite
+%endif
+# ---- hsqldb (the system version does not work with LibreOffice)
+%global version_hsqldb           1.8.0
+%global enable_hsqldb            1
+%global bundle_hsqldb            1
+%global support_hsqldb           --without-system-hsqldb
+# ---- hunspell
+%global enable_hunspell          1
+%global bundle_hunspell          0
+%global support_hunspell         --with-system-hunspell
+# ---- icu
+%global version_icu              77.1
+%global enable_icu               1
+%if 0%{?suse_version} < 1500
+%global bundle_icu               1
+%global support_icu              --without-system-icu
+%else
+%global bundle_icu               0
+%global support_icu              --with-system-icu
+%endif
+# ---- java_websocket
+%global version_java_websocket   1.6.0
+%global enable_java_websocket    1
+%global bundle_java_websocket    1
+%global support_java_websocket   --without-system-java-websocket
+# ---- jfreereport (eleven separate zips, see the derived Source block; bsc#1195634)
+%global enable_jfreereport       1
+%global bundle_jfreereport       1
+%global support_jfreereport      --enable-report-builder --without-system-jfreereport
+# ---- lcms2
+%global enable_lcms2             1
+%global bundle_lcms2             0
+%global support_lcms2            --with-system-lcms2
+# ---- libabw
+%global enable_libabw            1
+%global bundle_libabw            0
+%global support_libabw           --with-system-libabw
+# ---- libcdr
+%global enable_libcdr            1
+%global bundle_libcdr            0
+%global support_libcdr           --with-system-libcdr
+# ---- libcmis
+%global version_libcmis          0.6.2
+%global enable_libcmis           1
+%if 0%{?suse_version} < 1550
+%global bundle_libcmis           1
+%global support_libcmis          --without-system-libcmis
+%else
+%global bundle_libcmis           0
+%global support_libcmis          --with-system-libcmis
+%endif
+# ---- libebook
+%global enable_libebook          1
+%global bundle_libebook          0
+%global support_libebook         --with-system-libebook
+# ---- libeot
+%global enable_libeot            1
+%global bundle_libeot            0
+%global support_libeot           --enable-eot --with-system-libeot
+# ---- libepubgen
+%global enable_libepubgen        1
+%global bundle_libepubgen        0
+%global support_libepubgen       --with-system-libepubgen
+# ---- libetonyek
+%global enable_libetonyek        1
+%global bundle_libetonyek        0
+%global support_libetonyek       --with-system-libetonyek
+# ---- libexttextcat
+%global enable_libexttextcat     1
+%global bundle_libexttextcat     0
+%global support_libexttextcat    --with-system-libexttextcat
+# ---- libfixmath (no tarball in download.lst)
+%global enable_libfixmath        1
+%global bundle_libfixmath        0
+%global support_libfixmath       --with-system-libfixmath
+# ---- libfreehand
+%global enable_libfreehand       1
+%global bundle_libfreehand       0
+%global support_libfreehand      --with-system-libfreehand
+# ---- libjpeg (libjpeg-turbo)
+%global enable_libjpeg           1
+%global bundle_libjpeg           0
+%global support_libjpeg          --with-system-jpeg
+# ---- liblangtag
+%global enable_liblangtag        1
+%global bundle_liblangtag        0
+%global support_liblangtag       --with-system-liblangtag
+# ---- libnumbertext
+%global enable_libnumbertext     1
+%global bundle_libnumbertext     0
+%global support_libnumbertext    --with-system-libnumbertext
+# ---- libpng
+%global enable_libpng            1
+%global bundle_libpng            0
+%global support_libpng           --with-system-libpng
+# ---- libtiff
+%global version_libtiff          4.7.0
+%global enable_libtiff           1
+%if 0%{?suse_version} < 1550
+%global bundle_libtiff           1
+%global support_libtiff          --without-system-libtiff
+%else
+%global bundle_libtiff           0
+%global support_libtiff          --with-system-libtiff
+%endif
+# ---- libwebp
+%global enable_libwebp           1
+%global bundle_libwebp           0
+%global support_libwebp          --with-system-libwebp
+# ---- libxml (covers libxml2 and libxslt)
+%global enable_libxml            1
+%global bundle_libxml            0
+%global support_libxml           --with-system-libxml
+# ---- libzmf
+%global enable_libzmf            1
+%global bundle_libzmf            0
+%global support_libzmf           --with-system-libzmf
+# ---- lpsolve
+%global enable_lpsolve           1
+%global bundle_lpsolve           0
+%global support_lpsolve          --enable-lpsolve --with-system-lpsolve
+# ---- lzma (xz)
+%global version_lzma             5.8.3
+%global enable_lzma              1
+%global bundle_lzma              0
+%global support_lzma             --with-system-lzma
+# ---- mariadb
+%global enable_mariadb           1
+%global bundle_mariadb           0
+%global support_mariadb          --enable-mariadb-sdbc --with-system-mariadb
+# ---- md4c
+%global version_md4c             0.5.3
+%global enable_md4c              1
+%global bundle_md4c              0
+%global support_md4c             --with-system-md4c
+# ---- mdds
+%global version_mdds             3.2.1
+%global enable_mdds              1
+%global bundle_mdds              0
+%global support_mdds             --with-system-mdds
+# ---- mspub
+%global enable_mspub             1
+%global bundle_mspub             0
+%global support_mspub            --with-system-libmspub
+# ---- mwaw
+%global enable_mwaw              1
+%global bundle_mwaw              0
+%global support_mwaw             --with-system-libmwaw
+# ---- mythes
+%global enable_mythes            1
+%global bundle_mythes            0
+%global support_mythes           --with-system-mythes
+# ---- nss
+%global enable_nss               1
+%global bundle_nss               0
+%global support_nss              --enable-nss --with-system-nss
+# ---- odfgen
+%global enable_odfgen            1
+%global bundle_odfgen            0
+%global support_odfgen           --with-system-libodfgen
+# ---- openjpeg (no tarball in download.lst; --without-system-openjpeg means no openjpeg at all)
+%global enable_openjpeg          1
+%if 0%{?suse_version} < 1500
+%global bundle_openjpeg          1
+%global support_openjpeg         --without-system-openjpeg
+%else
+%global bundle_openjpeg          0
+%global support_openjpeg         --with-system-openjpeg
+%endif
+# ---- openldap
+%global enable_openldap          1
+%global bundle_openldap          0
+%global support_openldap         --enable-ldap --with-system-openldap
+# ---- openssl (curl >= 8.20 needs OpenSSL >= 3.0, which SLE-15 does not ship by default)
+%global version_openssl          3.5.7
+%global enable_openssl           1
+%global bundle_openssl           0
+%global support_openssl          --enable-openssl --with-system-openssl
+# ---- orcus
+%global version_orcus            0.21.0
+%global enable_orcus             1
+%global bundle_orcus             0
+%global support_orcus            --with-system-orcus
+# ---- pagemaker
+%global enable_pagemaker         1
+%global bundle_pagemaker         0
+%global support_pagemaker        --with-system-libpagemaker
+# ---- poppler
+%global version_poppler          25.09.0
+%global enable_poppler           1
+%if 0%{?suse_version} < 1550
+%global bundle_poppler           1
+%global support_poppler          --enable-poppler --without-system-poppler
+%else
+%global bundle_poppler           0
+%global support_poppler          --enable-poppler --with-system-poppler
+%endif
+# ---- postgresql
+%global enable_postgresql        1
+%global bundle_postgresql        0
+%global support_postgresql       --enable-postgresql-sdbc --with-system-postgresql
+# ---- qxp
+%global enable_qxp               1
+%global bundle_qxp               0
+%global support_qxp              --with-system-libqxp
+# ---- redland (covers raptor2 and rasqal)
+%global enable_redland           1
+%global bundle_redland           0
+%global support_redland          --with-system-redland
+# ---- revenge
+%global enable_revenge           1
+%global bundle_revenge           0
+%global support_revenge          --with-system-librevenge
+# ---- rhino
+%global enable_rhino             1
+%global bundle_rhino             0
+%global support_rhino            --enable-scripting-javascript --with-system-rhino
+# ---- sqlite3
+%global version_sqlite3          3.53.4
+%global enable_sqlite3           1
+%global bundle_sqlite3           0
+%global support_sqlite3          --with-system-sqlite3
+# ---- staroffice
+%global enable_staroffice        1
+%global bundle_staroffice        0
+%global support_staroffice       --with-system-libstaroffice
+# ---- visio
+%global enable_visio             1
+%global bundle_visio             0
+%global support_visio            --with-system-libvisio
+# ---- wpd
+%global enable_wpd               1
+%global bundle_wpd               0
+%global support_wpd              --with-system-libwpd
+# ---- wpg
+%global enable_wpg               1
+%global bundle_wpg               0
+%global support_wpg              --with-system-libwpg
+# ---- wps
+%global enable_wps               1
+%global bundle_wps               0
+%global support_wps              --with-system-libwps
+# ---- xmlsec (SLE stages xmlsec1-1.3.12.tar.gz but builds against system xmlsec1-nss)
+%global version_xmlsec           1.3.12
+%global enable_xmlsec            1
+%global bundle_xmlsec            0
+%global support_xmlsec           --with-system-xmlsec
+# ---- zlib
+%global enable_zlib              1
+%global bundle_zlib              0
+%global support_zlib             --with-system-zlib
+# ---- zstd
+%global enable_zstd              1
+%global bundle_zstd              0
+%global support_zstd             --with-system-zstd
+# ---- zxcvbn
+%global enable_zxcvbn            1
+%global bundle_zxcvbn            0
+%global support_zxcvbn           --with-system-zxcvbn
+# ---- zxing
+%global enable_zxing             1
+%global bundle_zxing             0
+%global support_zxing            --enable-zxing --with-system-zxing
+
+# --- python: the switch is --enable-python, not --with-system-python --------
+
+# ---- python
+%global version_python           3.13.15
+%global enable_python            1
+%global bundle_python            0
+%global support_python           --enable-python=system
+
+# --- always bundled: no --with-system-* option exists ------------------------
+
+# ---- antlr4 (build dependency of afdko)
+%global version_antlr4           4.13.2
+%global enable_antlr4            1
+%if %{bundle_afdko}
+%global bundle_antlr4            1
+%global support_antlr4           %{nil}
+%else
+%global bundle_antlr4            0
+%global support_antlr4           %{nil}
+%endif
+# ---- icu_data
+%global version_icu_data         77.1
+%global enable_icu_data          1
+%if %{bundle_icu}
+%global bundle_icu_data          1
+%global support_icu_data         %{nil}
+%else
+%global bundle_icu_data          0
+%global support_icu_data         %{nil}
+%endif
+# ---- libassuan
+%global version_libassuan        3.0.2
+%global enable_libassuan         1
+%if %{bundle_gpgme}
+%global bundle_libassuan         1
+%global support_libassuan        %{nil}
+%else
+%global bundle_libassuan         0
+%global support_libassuan        %{nil}
+%endif
+# ---- libgpgerror
+%global version_libgpgerror      1.55
+%global enable_libgpgerror       1
+%if %{bundle_gpgme}
+%global bundle_libgpgerror       1
+%global support_libgpgerror      %{nil}
+%else
+%global bundle_libgpgerror       0
+%global support_libgpgerror      %{nil}
+%endif
+# ---- libffi (only needed by the internal Python)
+%global version_libffi           3.5.2
+%global enable_libffi            1
+%if %{bundle_python}
+%global bundle_libffi            1
+%global support_libffi           %{nil}
+%else
+%global bundle_libffi            0
+%global support_libffi           %{nil}
+%endif
+# ---- lxml (only needed by the internal Python)
+%global version_lxml             6.1.1
+%global enable_lxml              1
+%if %{bundle_python}
+%global bundle_lxml              1
+%global support_lxml             %{nil}
+%else
+%global bundle_lxml              0
+%global support_lxml             %{nil}
+%endif
+# ---- meson (build tool for the bundled harfbuzz / fontconfig / freetype)
+%global version_meson            1.8.0
+%global enable_meson             1
+%if %{bundle_harfbuzz} || %{bundle_fontconfig} || %{bundle_freetype}
+%global bundle_meson             1
+%global support_meson            %{nil}
+%else
+%global bundle_meson             0
+%global support_meson            %{nil}
+%endif
+# ---- odfvalidator (integration tests; inert while --without-export-validation is passed)
+%global version_odfvalidator     0.9.0
+%global enable_odfvalidator      1
+%global bundle_odfvalidator      1
+%global support_odfvalidator     %{nil}
+# ---- officeotron (integration tests; inert while --without-export-validation is passed)
+%global version_officeotron      0.7.4
+%global enable_officeotron       1
+%global bundle_officeotron       1
+%global support_officeotron      %{nil}
+# ---- pdfium (bundled everywhere)
+%global version_pdfium           7681
+%ifarch %{aarch64}
+%if 0%{?suse_version} < 1550
+%global enable_pdfium            0
+%global support_pdfium           --disable-pdfium
+%else
+%global enable_pdfium            1
+%global support_pdfium           --enable-pdfium
+%endif
+%else
+%global enable_pdfium            1
+%global support_pdfium           --enable-pdfium
+%endif
+%global bundle_pdfium            1
+# ---- poppler_data
+%global version_poppler_data     0.4.12
+%global enable_poppler_data      1
+%if %{bundle_poppler}
+%global bundle_poppler_data      1
+%global support_poppler_data     %{nil}
+%else
+%global bundle_poppler_data      0
+%global support_poppler_data     %{nil}
+%endif
+# ---- skia (part of chromium; upstream ships it monorepo-style only)
+%global version_skia             m147
+%ifnarch s390x ppc64 ppc %{ix86}
+%global enable_skia              1
+%global support_skia             --enable-skia
+%else
+%global enable_skia              0
+%global support_skia             --disable-skia
+%endif
+%global bundle_skia              1
+# ---- xsltml (needed by wiki-publisher)
+%global version_xsltml           2.1.2
+%global enable_xsltml            1
+%global bundle_xsltml            1
+%global support_xsltml           %{nil}
+
+# --- in download.lst but not reachable in this build -------------------------
+
+# ---- breakpad: crash reporting is not enabled
+%global enable_breakpad          0
+%global bundle_breakpad          0
+%global support_breakpad         --disable-breakpad
+# ---- bzip2: only used by --enable-online-update-mar or the internal Python, and both take the system copy via --with-system-libs
+%global enable_bzip2             0
+%global bundle_bzip2             0
+%global support_bzip2            %{nil}
+# ---- coinmp: no coinmp packages to build against
+%global enable_coinmp            0
+%global bundle_coinmp            0
+%global support_coinmp           --disable-coinmp
+# ---- epm: LibreOffice's own packaging code, superfluous under rpmbuild
+%global enable_epm               0
+%global bundle_epm               0
+%global support_epm              --disable-epm
+# ---- firebird: follows the firebird bcond at the top of this file
+%if %{with firebird}
+%global enable_firebird          1
+%global support_firebird         --enable-firebird-sdbc
+%else
+%global enable_firebird          0
+%global support_firebird         --disable-firebird-sdbc
+%endif
+%global bundle_firebird          0
+# ---- hyphen: --with-system-dicts plus --with-external-hyph-dir
+%global enable_hyphen            0
+%global bundle_hyphen            0
+%global support_hyphen           %{nil}
+# ---- iaccessible2: Windows only
+%global enable_iaccessible2      0
+%global bundle_iaccessible2      0
+%global support_iaccessible2     %{nil}
+# ---- langtagreg: only used with a bundled liblangtag
+%global enable_langtagreg        0
+%global bundle_langtagreg        0
+%global support_langtagreg       %{nil}
+# ---- libatomic_ops: only used by the internal firebird on non-Intel
+%global enable_libatomic_ops     0
+%global bundle_libatomic_ops     0
+%global support_libatomic_ops    %{nil}
+# ---- libtommath: only used by the internal firebird
+%global enable_libtommath        0
+%global bundle_libtommath        0
+%global support_libtommath       %{nil}
+# ---- mdnsresponder: Windows only
+%global enable_mdnsresponder     0
+%global bundle_mdnsresponder     0
+%global support_mdnsresponder    %{nil}
+# ---- onlineupdate: the distribution updates LibreOffice, not LibreOffice itself
+%global enable_onlineupdate      0
+%global bundle_onlineupdate      0
+%global support_onlineupdate     --disable-online-update
+# ---- pixman: only used with a bundled cairo
+%global enable_pixman            0
+%global bundle_pixman            0
+%global support_pixman           %{nil}
+# ---- python_bootstrap: Windows only
+%global enable_python_bootstrap  0
+%global bundle_python_bootstrap  0
+%global support_python_bootstrap %{nil}
+# ---- quickjs: experimental QuickJS scripting (LO 26.8 download.lst only)
+%global enable_quickjs           0
+%global bundle_quickjs           0
+%global support_quickjs          --disable-quickjs
+# ---- raptor: only used with a bundled redland
+%global enable_raptor            0
+%global bundle_raptor            0
+%global support_raptor           %{nil}
+# ---- rasqal: only used with a bundled redland
+%global enable_rasqal            0
+%global bundle_rasqal            0
+%global support_rasqal           %{nil}
+# ---- twain_dsm: Windows only
+%global enable_twain_dsm         0
+%global bundle_twain_dsm         0
+%global support_twain_dsm        %{nil}
+# ---- verapdf: --without-export-validation (LO 26.8 download.lst only)
+%global enable_verapdf           0
+%global bundle_verapdf           0
+%global support_verapdf          %{nil}
+# ---- yrs: --with-yrs is not passed
+%global enable_yrs               0
+%global bundle_yrs               0
+%global support_yrs              %{nil}
+
+# ---- fonts: --without-fonts, we use the distribution font packages
+%global enable_font_agdasima     0
+%global bundle_font_agdasima     0
+%global support_font_agdasima    %{nil}
+%global enable_font_alef         0
+%global bundle_font_alef         0
+%global support_font_alef        %{nil}
+%global enable_font_amiri        0
+%global bundle_font_amiri        0
+%global support_font_amiri       %{nil}
+%global enable_font_bacasime_antique 0
+%global bundle_font_bacasime_antique 0
+%global support_font_bacasime_antique %{nil}
+%global enable_font_belanosima   0
+%global bundle_font_belanosima   0
+%global support_font_belanosima  %{nil}
+%global enable_font_caladea      0
+%global bundle_font_caladea      0
+%global support_font_caladea     %{nil}
+%global enable_font_caprasimo    0
+%global bundle_font_caprasimo    0
+%global support_font_caprasimo   %{nil}
+%global enable_font_carlito      0
+%global bundle_font_carlito      0
+%global support_font_carlito     %{nil}
+%global enable_font_culmus       0
+%global bundle_font_culmus       0
+%global support_font_culmus      %{nil}
+%global enable_font_dejavu       0
+%global bundle_font_dejavu       0
+%global support_font_dejavu      %{nil}
+%global enable_font_gentium      0
+%global bundle_font_gentium      0
+%global support_font_gentium     %{nil}
+%global enable_font_liberation   0
+%global bundle_font_liberation   0
+%global support_font_liberation  %{nil}
+%global enable_font_liberation_narrow 0
+%global bundle_font_liberation_narrow 0
+%global support_font_liberation_narrow %{nil}
+%global enable_font_libre_hebrew 0
+%global bundle_font_libre_hebrew 0
+%global support_font_libre_hebrew %{nil}
+%global enable_font_linlibertineg 0
+%global bundle_font_linlibertineg 0
+%global support_font_linlibertineg %{nil}
+%global enable_font_lugrasimo    0
+%global bundle_font_lugrasimo    0
+%global support_font_lugrasimo   %{nil}
+%global enable_font_lumanosimo   0
+%global bundle_font_lumanosimo   0
+%global support_font_lumanosimo  %{nil}
+%global enable_font_lunasima     0
+%global bundle_font_lunasima     0
+%global support_font_lunasima    %{nil}
+%global enable_font_noto_kufi_arabic 0
+%global bundle_font_noto_kufi_arabic 0
+%global support_font_noto_kufi_arabic %{nil}
+%global enable_font_noto_naskh_arabic 0
+%global bundle_font_noto_naskh_arabic 0
+%global support_font_noto_naskh_arabic %{nil}
+%global enable_font_noto_sans    0
+%global bundle_font_noto_sans    0
+%global support_font_noto_sans   %{nil}
+%global enable_font_noto_sans_arabic 0
+%global bundle_font_noto_sans_arabic 0
+%global support_font_noto_sans_arabic %{nil}
+%global enable_font_noto_sans_armenian 0
+%global bundle_font_noto_sans_armenian 0
+%global support_font_noto_sans_armenian %{nil}
+%global enable_font_noto_sans_georgian 0
+%global bundle_font_noto_sans_georgian 0
+%global support_font_noto_sans_georgian %{nil}
+%global enable_font_noto_sans_hebrew 0
+%global bundle_font_noto_sans_hebrew 0
+%global support_font_noto_sans_hebrew %{nil}
+%global enable_font_noto_sans_lao 0
+%global bundle_font_noto_sans_lao 0
+%global support_font_noto_sans_lao %{nil}
+%global enable_font_noto_sans_lisu 0
+%global bundle_font_noto_sans_lisu 0
+%global support_font_noto_sans_lisu %{nil}
+%global enable_font_noto_serif   0
+%global bundle_font_noto_serif   0
+%global support_font_noto_serif  %{nil}
+%global enable_font_noto_serif_armenian 0
+%global bundle_font_noto_serif_armenian 0
+%global support_font_noto_serif_armenian %{nil}
+%global enable_font_noto_serif_georgian 0
+%global bundle_font_noto_serif_georgian 0
+%global support_font_noto_serif_georgian %{nil}
+%global enable_font_noto_serif_hebrew 0
+%global bundle_font_noto_serif_hebrew 0
+%global support_font_noto_serif_hebrew %{nil}
+%global enable_font_noto_serif_lao 0
+%global bundle_font_noto_serif_lao 0
+%global support_font_noto_serif_lao %{nil}
+%global enable_font_reem         0
+%global bundle_font_reem         0
+%global support_font_reem        %{nil}
+%global enable_font_scheherazade 0
+%global bundle_font_scheherazade 0
+%global support_font_scheherazade %{nil}
+
+%if %{bundle_gpgme}
 # Hack in the bundled libs to not pop up on requires/provides to avoid
 # faking libreoffice provide some system packages
 %global __provides_exclude_from ^%{_libdir}/libreoffice/program/lib(gpg|assuan).*\\.so.*$
 %global __requires_exclude_from ^%{_libdir}/libreoffice/program/lib(gpg|assuan).*\\.so.*$
 %global __requires_exclude ^libgpgmepp\\.so.*$
-%bcond_with system_gpgme
-%bcond_with system_curl
 %endif
 Name:           libreoffice
 Version:        26.8.0.3
@@ -110,37 +849,6 @@ Source6:        SUSE.soc
 Source98:       %{name}.keyring
 Source99:       %{name}-rpmlintrc
 Source100:      %{name}.changes
-# prebuilt extensions
-Source402:      %{external_url}/b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
-# external sources we always need
-Source403:      %{external_url}/afdko-4.0.3.tar.gz
-Source404:      %{external_url}/antlr4-cpp-runtime-4.13.2-source.zip
-# hsqldb simply does not work with new system version, but luckily we migrate to firebird
-Source2002:     %{external_url}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
-Provides:       bundled(hsqldb) = 1.8.0
-# Needed for wiki-published and always taken as bundled
-Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip
-# Needed for integration tests
-Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
-Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
-# PDFium is bundled everywhere
-Source2008:     %{external_url}/pdfium-7681.tar.bz2
-# Single C file with patches from LO
-Source2009:     %{external_url}/dtoa-20180411.tgz
-# Skia is part of chromium and bundled everywhere as by google only way is monorepo way
-Source2010:     %{external_url}/skia-m147-ad8ecedbfdef9f4ae4b1e73347b6dd56e6637d38.tar.xz
-# The following dependencies are for building JFreeReport, this fixes bsc#1195634
-Source2011:     %{external_url}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
-Source2012:     %{external_url}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip
-Source2013:     %{external_url}/d8bd5eed178db6e2b18eeed243f85aa8-flute-1.1.6.zip
-Source2014:     %{external_url}/97b2d4dba862397f446b217e2b623e71-libloader-1.1.6.zip
-Source2015:     %{external_url}/ace6ab49184e329db254e454a010f56d-libxml-1.1.7.zip
-Source2016:     %{external_url}/3404ab6b1792ae5f16bbd603bd1e1d03-libformula-1.1.7.zip
-Source2017:     %{external_url}/3bdf40c0d199af31923e900d082ca2dd-libfonts-1.1.6.zip
-Source2018:     %{external_url}/8ce2fcd72becf06c41f7201d15373ed9-librepository-1.1.6.zip
-Source2019:     %{external_url}/f94d9870737518e3b597f9265f4e9803-libserializer-1.1.6.zip
-Source2101:     %{external_url}/db60e4fde8dd6d6807523deb71ee34dc-liblayout-0.2.10.zip
-Source2102:     %{external_url}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
 # change user config dir name from ~/.libreoffice/3 to ~/.libreoffice/3-suse
 # to avoid BerkleyDB incompatibility with the plain build
 Patch1:         scp2-user-config-suse.diff
@@ -158,6 +866,8 @@ Patch11:        fix_webp_on_sle12_sp5.patch
 Patch15:        fix-sdk-idl.patch
 # PATCH-FIX-UPSTREAM detect system box2d without a pkg-config file
 Patch16:        box2d-detection.patch
+# PATCH-FIX-UPSTREAM do not crash in the Base wizard when Firebird is not built
+Patch17:        dbaccess-no-firebird-default-crash.patch
 # try to save space by using hardlinks
 Patch990:       install-with-hardlinks.diff
 # save time by relying on rpm check rather than doing stupid find+grep
@@ -168,6 +878,169 @@ Patch992:       python34-no-f-strings.patch
 Patch995:       reproducible-clucene.patch
 # Add .key (Apple Keynote) files to Bash completion (tdf#167995)
 Patch996:       bash-completion-key.patch
+# ============================================================================
+# Derived from the external library configuration
+#
+# Every block here is guarded by a single %bundle_* macro from that region.
+# Nothing here may test %suse_version to decide bundled-vs-system; the only
+# distro tests left are about how a system package happens to be split up.
+#
+# Source numbers are historical and carry no meaning beyond uniqueness.
+# ============================================================================
+%if %{bundle_afdko}
+Source403:      %{external_url}/afdko-%{version_afdko}.tar.gz
+%endif
+%if %{bundle_antlr4}
+Source404:      %{external_url}/antlr4-cpp-runtime-%{version_antlr4}-source.zip
+%endif
+%if %{bundle_hsqldb}
+Source2002:     %{external_url}/17410483b5b5f267aa18b7e00b65e6e0-hsqldb_1_8_0.zip
+Provides:       bundled(hsqldb) = %{version_hsqldb}
+%endif
+%if %{bundle_xsltml}
+Source2005:     %{external_url}/a7983f859eafb2677d7ff386a023bc40-xsltml_2.1.2.zip
+%endif
+%if %{bundle_officeotron}
+Source2006:     https://dev-www.libreoffice.org/extern/8249374c274932a21846fa7629c2aa9b-officeotron-0.7.4-master.jar
+%endif
+%if %{bundle_odfvalidator}
+Source2007:     https://dev-www.libreoffice.org/extern/odfvalidator-0.9.0-RC2-SNAPSHOT-jar-with-dependencies-2726ab578664434a545f8379a01a9faffac0ae73.jar
+%endif
+%if %{bundle_pdfium}
+Source2008:     %{external_url}/pdfium-%{version_pdfium}.tar.bz2
+%endif
+%if %{bundle_skia}
+Source2010:     %{external_url}/skia-m147-ad8ecedbfdef9f4ae4b1e73347b6dd56e6637d38.tar.xz
+%endif
+%if %{bundle_jfreereport}
+Source2101:     %{external_url}/eeb2c7ddf0d302fba4bfc6e97eac9624-libbase-1.1.6.zip
+Source2102:     %{external_url}/d8bd5eed178db6e2b18eeed243f85aa8-flute-1.1.6.zip
+Source2103:     %{external_url}/97b2d4dba862397f446b217e2b623e71-libloader-1.1.6.zip
+Source2104:     %{external_url}/ace6ab49184e329db254e454a010f56d-libxml-1.1.7.zip
+Source2105:     %{external_url}/3404ab6b1792ae5f16bbd603bd1e1d03-libformula-1.1.7.zip
+Source2106:     %{external_url}/3bdf40c0d199af31923e900d082ca2dd-libfonts-1.1.6.zip
+Source2107:     %{external_url}/8ce2fcd72becf06c41f7201d15373ed9-librepository-1.1.6.zip
+Source2108:     %{external_url}/f94d9870737518e3b597f9265f4e9803-libserializer-1.1.6.zip
+Source2109:     %{external_url}/db60e4fde8dd6d6807523deb71ee34dc-liblayout-0.2.10.zip
+Source2110:     %{external_url}/ba2930200c9f019c2d93a8c88c651a0f-flow-engine-0.9.4.zip
+Source2111:     %{external_url}/39bb3fcea1514f1369fcfc87542390fd-sacjava-1.3.zip
+%endif
+%if %{bundle_curl}
+Source2013:     %{external_url}/curl-%{version_curl}.tar.xz
+Provides:       bundled(curl) = %{version_curl}
+%else
+BuildRequires:  curl-devel >= 7.68.0
+%endif
+# curl >= 8.20 requires OpenSSL >= 3.0 and SLE-15 only offers 1.1.1 by
+# default, so build the bundled curl against a bundled OpenSSL too
+%if %{bundle_boost}
+Source2020:     %{external_url}/boost_1_89_0.tar.xz
+Provides:       bundled(boost) = %{version_boost}
+%else
+BuildRequires:  libboost_date_time-devel
+BuildRequires:  libboost_filesystem-devel
+BuildRequires:  libboost_iostreams-devel
+BuildRequires:  libboost_locale-devel
+# boost_system stopped being a separate library after 1.69
+%if 0%{?suse_version} <= 1550
+BuildRequires:  libboost_system-devel
+%endif
+%endif
+%if %{bundle_icu}
+Source2021:     %{external_url}/icu4c-77_1-src.tgz
+Provides:       bundled(icu) = %{version_icu}
+%else
+# the genbrk binary is required
+BuildRequires:  icu
+BuildRequires:  pkgconfig(icu-i18n)
+%endif
+%if %{bundle_icu_data}
+Source2022:     %{external_url}/icu4c-77_1-data.zip
+%endif
+%if %{bundle_poppler}
+Source2023:     %{external_url}/poppler-%{version_poppler}.tar.xz
+Provides:       bundled(poppler) = %{version_poppler}
+%else
+BuildRequires:  pkgconfig(poppler) >= 21.01.0
+BuildRequires:  pkgconfig(poppler-cpp)
+%endif
+%if %{bundle_poppler_data}
+Source2024:     %{external_url}/poppler-data-%{version_poppler_data}.tar.gz
+Provides:       bundled(poppler-data) = %{version_poppler_data}
+%endif
+%if %{bundle_harfbuzz}
+Source2025:     %{external_url}/harfbuzz-%{version_harfbuzz}.tar.xz
+Provides:       bundled(harfbuzz) = %{version_harfbuzz}
+%else
+BuildRequires:  pkgconfig(harfbuzz) >= 5.1.0
+BuildRequires:  pkgconfig(harfbuzz-icu) >= 5.1.0
+%endif
+%if %{bundle_graphite}
+Source2026:     %{external_url}/graphite2-minimal-%{version_graphite}.tgz
+Provides:       bundled(graphite2) = %{version_graphite}
+%else
+BuildRequires:  pkgconfig(graphite2) >= 0.9.3
+%endif
+%if %{bundle_argon2}
+Source2027:     %{external_url}/phc-winner-argon2-%{version_argon2}.tar.gz
+%else
+BuildRequires:  argon2-devel
+%endif
+%if %{bundle_fontconfig}
+Source2028:     %{external_url}/fontconfig-%{version_fontconfig}.tar.xz
+%endif
+%if %{bundle_freetype}
+Source2029:     %{external_url}/freetype-%{version_freetype}.tar.xz
+%endif
+%if %{bundle_libtiff}
+Source2030:     %{external_url}/tiff-%{version_libtiff}.tar.xz
+Provides:       bundled(tiff) = %{version_libtiff}
+%else
+BuildRequires:  pkgconfig(libtiff-4) >= 4.0.10
+%endif
+%if %{bundle_libcmis}
+Source2031:     %{external_url}/libcmis-%{version_libcmis}.tar.xz
+Provides:       bundled(libcmis) = %{version_libcmis}
+%else
+BuildRequires:  libcmis-devel
+%endif
+%if %{bundle_meson}
+Source2032:     %{external_url}/meson-%{version_meson}.tar.gz
+BuildRequires:  meson >= 0.55
+BuildRequires:  ninja
+%endif
+%if %{bundle_gpgme}
+Source1000:     %{external_url}/gpgme-%{version_gpgme}.tar.bz2
+Provides:       bundled(gpgme) = %{version_gpgme}
+%else
+BuildRequires:  libgpgmepp-devel >= 1.14
+%endif
+%if %{bundle_libgpgerror}
+Source1001:     %{external_url}/libgpg-error-%{version_libgpgerror}.tar.bz2
+Provides:       bundled(libgpg-error) = %{version_libgpgerror}
+%endif
+%if %{bundle_libassuan}
+Source1002:     %{external_url}/libassuan-%{version_libassuan}.tar.bz2
+Provides:       bundled(libassuan) = %{version_libassuan}
+%endif
+%if %{bundle_java_websocket}
+Source3000:     %{external_url}/Java-WebSocket-%{version_java_websocket}.tar.gz
+%endif
+BuildRequires:  fast_float-devel
+BuildRequires:  md4c-devel
+BuildRequires:  python3-lxml
+BuildRequires:  python3-xml
+BuildRequires:  pkgconfig(liborcus-0.21) >= 0.21.0
+BuildRequires:  pkgconfig(mdds-3.0)
+BuildRequires:  pkgconfig(python3)
+BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.35
+%if !%{bundle_openjpeg}
+BuildRequires:  pkgconfig(libopenjp2)
+%endif
+%if !%{bundle_abseil}
+BuildRequires:  abseil-cpp-devel
+%endif
+# ============================================================================
 BuildRequires:  %{name}-share-linker
 BuildRequires:  ant
 BuildRequires:  autoconf
@@ -175,35 +1048,23 @@ BuildRequires:  awk
 BuildRequires:  bison
 BuildRequires:  bsh2
 BuildRequires:  cups-devel
-BuildRequires:  fast_float-devel
 BuildRequires:  fixmath-devel
 BuildRequires:  libwebp-devel
-BuildRequires:  md4c-devel
 %if 0%{?suse_version} > 1500
 BuildRequires:  strip-nondeterminism
 %endif
 BuildRequires:  zlib-devel
 BuildRequires:  zxcvbn-devel
-%if %{with system_curl}
-BuildRequires:  curl-devel >= 7.68.0
-%else
-Source2100:     %{external_url}/curl-8.14.1.tar.xz
-Provides:       bundled(curl) = 8.14.1
-%endif
 # Needed for tests
 BuildRequires:  dejavu-fonts
 BuildRequires:  doxygen >= 1.8.4
+BuildRequires:  dragonbox-devel
 BuildRequires:  fdupes
 BuildRequires:  flex >= 2.6.0
 BuildRequires:  flute
 BuildRequires:  fontforge
 BuildRequires:  frozen-devel
 BuildRequires:  glm-devel
-# Needed for tests
-%if %{with system_abseil_cpp}
-BuildRequires:  abseil-cpp-devel
-%endif
-BuildRequires:  dragonbox-devel
 BuildRequires:  google-carlito-fonts
 BuildRequires:  gperf >= 3.1
 BuildRequires:  graphviz
@@ -226,8 +1087,6 @@ BuildRequires:  lpsolve-devel
 BuildRequires:  make
 BuildRequires:  openldap2-devel
 BuildRequires:  pkgconfig
-BuildRequires:  python3-lxml
-BuildRequires:  python3-xml
 BuildRequires:  rhino
 BuildRequires:  sac
 BuildRequires:  ucpp
@@ -253,20 +1112,6 @@ BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gssrpc)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
-%if %{with system_harfbuzz}
-BuildRequires:  pkgconfig(graphite2) >= 0.9.3
-BuildRequires:  pkgconfig(harfbuzz) >= 5.1.0
-BuildRequires:  pkgconfig(harfbuzz-icu) >= 5.1.0
-%else
-Source2025:     %{external_url}/harfbuzz-11.4.3.tar.xz
-Source2026:     %{external_url}/graphite2-minimal-1.3.14.tgz
-Source2032:     %{external_url}/meson-1.8.0.tar.gz
-Provides:       bundled(graphite2) = 1.3.14
-Provides:       bundled(harfbuzz) = 8.5.0
-BuildRequires:  ninja
-%endif
-# Java-WebSocket
-Source3000:     %{external_url}/Java-WebSocket-1.6.0.tar.gz
 BuildRequires:  pkgconfig(hunspell)
 BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(lcms2)
@@ -284,7 +1129,6 @@ BuildRequires:  pkgconfig(libmspub-0.1) >= 0.1
 BuildRequires:  pkgconfig(libmwaw-0.3) >= 0.3.21
 BuildRequires:  pkgconfig(libnumbertext) >= 1.0.6
 BuildRequires:  pkgconfig(libodfgen-0.1) >= 0.1.4
-BuildRequires:  pkgconfig(liborcus-0.21) >= 0.21.0
 BuildRequires:  pkgconfig(libpagemaker-0.0)
 BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libpq)
@@ -299,14 +1143,11 @@ BuildRequires:  pkgconfig(libwps-0.4) >= 0.4.11
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(libzmf-0.0)
-BuildRequires:  pkgconfig(mdds-3.0)
 BuildRequires:  pkgconfig(mythes)
 BuildRequires:  pkgconfig(nspr) >= 4.8
 BuildRequires:  pkgconfig(nss) >= 3.9.3
-BuildRequires:  pkgconfig(python3)
 BuildRequires:  pkgconfig(redland)
 BuildRequires:  pkgconfig(sane-backends)
-BuildRequires:  pkgconfig(xmlsec1-nss) >= 1.2.35
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xt)
 BuildRequires:  pkgconfig(zxing)
@@ -336,51 +1177,15 @@ Provides:       %{name}-icon-theme-crystal = %{version}
 Obsoletes:      %{name}-icon-theme-crystal < %{version}
 Provides:       %{name}-icon-theme-oxygen = %{version}
 Obsoletes:      %{name}-icon-theme-oxygen < %{version}
-%if 0%{?suse_version} < 1550
-# Too old boost on the system
-Source2020:     %{external_url}/boost_1_89_0.tar.xz
-Source2023:     %{external_url}/poppler-25.09.0.tar.xz
-Source2024:     %{external_url}/poppler-data-0.4.12.tar.gz
-Source2030:     %{external_url}/tiff-4.7.0.tar.xz
-Source2031:     %{external_url}/libcmis-0.6.2.tar.xz
-Provides:       bundled(boost) = 1.89.0
-Provides:       bundled(libcmis) = 0.6.2
-Provides:       bundled(poppler) = 25.09.0
-Provides:       bundled(poppler-data) = 0.4.12
-Provides:       bundled(tiff) = 4.7.0
-%else
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_filesystem-devel
-BuildRequires:  libboost_iostreams-devel
-BuildRequires:  libboost_locale-devel
-%if 0%{?suse_version} <= 1550
-BuildRequires:  libboost_system-devel
-%endif
-BuildRequires:  libcmis-devel
-BuildRequires:  pkgconfig(libtiff-4) >= 4.0.10
-BuildRequires:  pkgconfig(poppler) >= 21.01.0
-BuildRequires:  pkgconfig(poppler-cpp)
-%endif
+# Not a bundling decision: these system packages were simply renamed/split.
 %if 0%{?suse_version} < 1500
-# Too old icu on the system
-Source2021:     %{external_url}/icu4c-77_1-src.tgz
-Source2022:     %{external_url}/icu4c-77_1-data.zip
-Source2027:     %{external_url}/phc-winner-argon2-20190702.tar.gz
-Source2028:     %{external_url}/fontconfig-2.17.1.tar.xz
-Source2029:     %{external_url}/freetype-2.13.3.tar.xz
-Provides:       bundled(icu) = 77.1
 BuildRequires:  libBox2D-devel
 BuildRequires:  libmysqlclient-devel
 Requires(post): update-desktop-files
 Requires(postun): update-desktop-files
 %else
-# genbrk binary is required
-BuildRequires:  icu
-BuildRequires:  argon2-devel
 BuildRequires:  libbox2d-devel
 BuildRequires:  libmariadb-devel
-BuildRequires:  pkgconfig(icu-i18n)
-BuildRequires:  pkgconfig(libopenjp2)
 %endif
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -388,16 +1193,6 @@ BuildRequires:  java-devel >= 1.8
 %if 0%{?suse_version}
 # needed by python3_sitelib
 BuildRequires:  python-rpm-macros
-%endif
-%if %{with system_gpgme}
-BuildRequires:  libgpgmepp-devel >= 1.14
-%else
-Source1000:     %{external_url}/gpgme-1.24.3.tar.bz2
-Source1001:     %{external_url}/libgpg-error-1.55.tar.bz2
-Source1002:     %{external_url}/libassuan-3.0.2.tar.bz2
-Provides:       bundled(gpgme) = 1.24.3
-Provides:       bundled(libassuan) = 3.0.2
-Provides:       bundled(libgpg-error) = 1.55
 %endif
 %if %{with firebird}
 BuildRequires:  pkgconfig(fbclient)
@@ -1132,6 +1927,7 @@ Provides %{langname} translations and additional resources (help files, etc.) fo
 %endif
 %patch -P 15 -p1
 %patch -P 16 -p1
+%patch -P 17 -p1
 %patch -P 990 -p1
 %patch -P 991 -p1
 %if 0%{?suse_version} < 1550
@@ -1218,7 +2014,6 @@ export NOCONFIGURE=yes
 ./autogen.sh
 %configure \
         $(echo %{?_smp_mflags} | sed 's/-j/--with-parallelism=/') \
-        --enable-eot \
         --enable-ld=bfd \
 %if %{with lto}
         --enable-lto \
@@ -1230,15 +2025,10 @@ export NOCONFIGURE=yes
         --with-system-libs \
         --with-system-jars \
         --with-system-dicts \
-        --with-system-libpng \
-        --with-system-dragonbox \
-        --with-system-libfixmath \
         --with-vendor=SUSE \
         --with-lang=ALL \
         --disable-fetch-external \
         --with-external-tar="$RPM_SOURCE_DIR" \
-        --disable-epm \
-        --disable-online-update \
         --enable-gstreamer-1-0 \
         --enable-gtk3 \
 %if %{with qt6}
@@ -1267,13 +2057,10 @@ export NOCONFIGURE=yes
         --enable-split-opt-features \
         --enable-cairo-canvas \
         --enable-largefile \
-        --enable-python=system \
         --enable-randr \
         --without-fonts \
         --without-myspell-dicts \
         --with-jdk-home=$JAVA_HOME \
-        --without-system-java-websocket \
-        --without-system-afdko \
         --with-webdav=curl \
         --with-beanshell-jar=%{_datadir}/java/bsh2/bsh.jar \
         --with-ant-home=%{_datadir}/ant \
@@ -1283,70 +2070,15 @@ export NOCONFIGURE=yes
         --with-help=html \
         --without-export-validation \
         --enable-odk \
-%if %{with system_gpgme}
-        --with-system-gpgmepp \
-%else
-        --without-system-gpgmepp \
-%endif
-%if %{with firebird}
-        --enable-firebird-sdbc \
-%else
-        --disable-firebird-sdbc \
-%endif
-%if %{with system_abseil_cpp}
-        --with-system-abseil \
-%else
-        --without-system-abseil \
-%endif
-%if 0%{?suse_version} < 1550
-        --without-system-boost \
-        --without-system-poppler \
-        --without-system-libtiff \
-        --without-system-libcmis \
-%endif
-%if 0%{?suse_version} < 1500
-        --without-system-argon2 \
-        --without-system-icu \
-        --without-system-openjpeg \
-%else
-        --with-system-openjpeg \
-%endif
-%if %{with system_curl}
-        --with-system-curl \
-%else
-        --without-system-curl \
-%endif
-%if %{with system_harfbuzz}
-        --with-system-harfbuzz \
-        --with-system-graphite \
-%else
-        --without-system-harfbuzz \
-        --without-system-graphite \
-%endif
         --enable-evolution2 \
         --enable-dbus \
         --enable-ext-nlpsolver \
-        --enable-ext-numbertext \
         --enable-ext-wiki-publisher \
-        --enable-scripting-beanshell \
-        --enable-scripting-javascript \
         --enable-build-opensymbol \
         --disable-ccache \
-        --disable-coinmp \
         --enable-symbols \
         --with-gdrive-client-secret="${google_default_client_secret}" \
         --with-gdrive-client-id="${google_default_client_id}" \
-%ifnarch s390x ppc64 ppc %{ix86}
-        --enable-skia \
-%else
-        --disable-skia \
-%endif
-%ifarch %{aarch64}
-%if 0%{?suse_version} < 1550
-        --disable-pdfium \
-%endif
-%endif
-        --without-system-jfreereport \
         --with-libbase-jar=/usr/share/java/libbase.jar \
         --with-libxml-jar=/usr/share/java/libxml.jar \
         --with-flute-jar=/usr/share/java/flute.jar \
@@ -1355,7 +2087,93 @@ export NOCONFIGURE=yes
         --with-libformula-jar=/usr/share/java/libformula.jar \
         --with-librepository-jar=/usr/share/java/librepository.jar \
         --with-libfonts-jar=/usr/share/java/libfonts.jar \
-        --with-libserializer-jar=/usr/share/java/libserializer.jar
+        --with-libserializer-jar=/usr/share/java/libserializer.jar \
+        %{support_abseil} \
+        %{support_afdko} \
+        %{support_argon2} \
+        %{support_beanshell} \
+        %{support_boost} \
+        %{support_box2d} \
+        %{support_breakpad} \
+        %{support_cairo} \
+        %{support_clucene} \
+        %{support_coinmp} \
+        %{support_cppunit} \
+        %{support_curl} \
+        %{support_dragonbox} \
+        %{support_epm} \
+        %{support_epoxy} \
+        %{support_expat} \
+        %{support_fast_float} \
+        %{support_firebird} \
+        %{support_fontconfig} \
+        %{support_freetype} \
+        %{support_frozen} \
+        %{support_glm} \
+        %{support_gpgme} \
+        %{support_graphite} \
+        %{support_harfbuzz} \
+        %{support_hsqldb} \
+        %{support_hunspell} \
+        %{support_icu} \
+        %{support_java_websocket} \
+        %{support_jfreereport} \
+        %{support_lcms2} \
+        %{support_libabw} \
+        %{support_libcdr} \
+        %{support_libcmis} \
+        %{support_libebook} \
+        %{support_libeot} \
+        %{support_libepubgen} \
+        %{support_libetonyek} \
+        %{support_libexttextcat} \
+        %{support_libfixmath} \
+        %{support_libfreehand} \
+        %{support_libjpeg} \
+        %{support_liblangtag} \
+        %{support_libnumbertext} \
+        %{support_libpng} \
+        %{support_libtiff} \
+        %{support_libwebp} \
+        %{support_libxml} \
+        %{support_libzmf} \
+        %{support_lpsolve} \
+        %{support_lzma} \
+        %{support_mariadb} \
+        %{support_md4c} \
+        %{support_mdds} \
+        %{support_mspub} \
+        %{support_mwaw} \
+        %{support_mythes} \
+        %{support_nss} \
+        %{support_odfgen} \
+        %{support_onlineupdate} \
+        %{support_openjpeg} \
+        %{support_openldap} \
+        %{support_openssl} \
+        %{support_orcus} \
+        %{support_pagemaker} \
+        %{support_pdfium} \
+        %{support_poppler} \
+        %{support_postgresql} \
+        %{support_python} \
+        %{support_quickjs} \
+        %{support_qxp} \
+        %{support_redland} \
+        %{support_revenge} \
+        %{support_rhino} \
+        %{support_skia} \
+        %{support_sqlite3} \
+        %{support_staroffice} \
+        %{support_visio} \
+        %{support_wpd} \
+        %{support_wpg} \
+        %{support_wps} \
+        %{support_xmlsec} \
+        %{support_zlib} \
+        %{support_zstd} \
+        %{support_zxcvbn} \
+        %{support_zxing}
 # no coinormp packages for coinmp
 
 # just call make here as we added the jobs in configure

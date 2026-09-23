@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 20 22:20:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Add dbaccess-no-firebird-default-crash.patch: fix the SIGSEGV in
+  the Base "Create Database" wizard.
+  The wizard hardcodes Firebird as the default entry of the data
+  source type list, but Tumbleweed has no firebird package so we build
+  with --disable-firebird-sdbc and the entry does not exist.
+  The list then has no selection at all and FillItemSet() indexes
+  m_aURLPrefixes with -1. Fall back to the first available type and
+  bounds-check the index.
+- Delete unused files:
+  * b7cae45ad2c23551fd6ccb8ae2c1f59e-numbertext_0.9.5.oxt
+  * dtoa-20180411.tgz
+
+-------------------------------------------------------------------
+Wed Sep 16 11:29:02 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Rework external library handling into one %enable_X/%bundle_X/
+  %support_X/%version_X macro block per library, with everything
+  else (Source/Provides/BuildRequires/configure flags) derived
+  from it instead of repeating %if 0%{?suse_version} checks.
+  No change to which libraries are bundled vs. system.
+
+-------------------------------------------------------------------
 Tue Sep  1 03:51:55 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Update to 26.8.0.3:
