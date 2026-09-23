@@ -24,7 +24,7 @@
 %endif
 
 Name:           python-ansible-compat
-Version:        26.8.0
+Version:        26.9.0
 Release:        0
 Summary:        Compatibility shim for Ansible 2.9 and newer
 License:        MIT
