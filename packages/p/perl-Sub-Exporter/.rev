@@ -163,4 +163,16 @@
 </comment>
     <requestid>1156508</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>aa64248c0df5e07b1cb940ccf9569dd5</srcmd5>
+    <version>0.992.0</version>
+    <time>1790166864</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.992.0 (0.992)
+   see /usr/share/doc/packages/perl-Sub-Exporter/Changes
+  0.992     2026-09-05 16:47:10+09:30 Australia/Adelaide
+          - replace Params::Util with Params::SomeUtil
+          - docs: fix typo in tutorial (thanks, Kıvanç Yazan!)</comment>
+    <requestid>1379456</requestid>
+  </revision>
 </revisionlist>

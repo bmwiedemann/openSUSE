@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Sep  5 09:12:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.992.0 (0.992)
+   see /usr/share/doc/packages/perl-Sub-Exporter/Changes
+
+  0.992     2026-09-05 16:47:10+09:30 Australia/Adelaide
+          - replace Params::Util with Params::SomeUtil
+          - docs: fix typo in tutorial (thanks, Kıvanç Yazan!)
+
+-------------------------------------------------------------------
 Fri Mar  8 23:04:37 UTC 2024 - Tina Müller <tina.mueller@suse.com>
 
 - Fix disabling of __perllib_provides

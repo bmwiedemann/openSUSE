@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Sub-Exporter
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,25 +18,27 @@
 
 %define cpan_name Sub-Exporter
 Name:           perl-Sub-Exporter
-Version:        0.991.0
+Version:        0.992.0
 Release:        0
-%define cpan_version 0.991
+# 0.992 -> normalize -> 0.992.0
+%define cpan_version 0.992
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Sophisticated exporter for custom-built routines
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(Data::OptList) >= 0.100
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
-BuildRequires:  perl(Params::Util) >= 0.14
-BuildRequires:  perl(Sub::Install) >= 0.92
+BuildRequires:  perl(Params::SomeUtil) >= 0.140
+BuildRequires:  perl(Sub::Install) >= 0.920
 BuildRequires:  perl(Test::More) >= 0.96
 Requires:       perl(Data::OptList) >= 0.100
-Requires:       perl(Params::Util) >= 0.14
-Requires:       perl(Sub::Install) >= 0.92
+Requires:       perl(Params::SomeUtil) >= 0.140
+Requires:       perl(Sub::Install) >= 0.920
 Provides:       perl(Sub::Exporter) = %{version}
 Provides:       perl(Sub::Exporter::Util) = %{version}
 %undefine       __perllib_provides
@@ -47,7 +49,7 @@ Provides:       perl(Sub::Exporter::Util) = %{version}
 Sub::Exporter::Tutorial first!
 
 %prep
-%autosetup  -n %{cpan_name}-%{cpan_version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
