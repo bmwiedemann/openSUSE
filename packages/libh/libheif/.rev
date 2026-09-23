@@ -473,4 +473,41 @@
     <comment>1</comment>
     <requestid>1378608</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>b4bbf5ea648ee798e0a5683b0deb7b01</srcmd5>
+    <version>1.23.5</version>
+    <time>1790166740</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.23.5:
+  * (GHSA-v8qw-hwjv-44hw) Memory exhaustion
+    through a mismatch between the container and the bitstream
+    image size. A crafted image can declare a small size in its
+    ispe property while the bitstream declares a much larger
+    coded frame. The container-level checks used the ispe size,
+    so the oversized bitstream reached the decoder, which
+    allocated a frame buffer for the in-band size before libheif
+    rejected the mismatch. The advisory demonstrated this for AV1
+    with the libaom backend (a 351-byte AVIF declaring 64x64 but
+    coding up to 27648x27648, allocating hundreds of MB to more
+    than 10 GB), but the same class affects every codec whose
+    real frame size lives in the bitstream. The coded size is now
+    checked against max_image_size_pixels in the codec-
+    independent decode path, before any bytes reach a decoder
+    plugin: all AV1 sequence headers, all HEVC/AVC/VVC SPS NAL
+    units (including those carried in the item data, not only the
+    ones in the configuration record), the JPEG SOF marker and
+    the JPEG 2000 SIZ reference grid are scanned for the largest
+    coded size. (high)
+  * (GHSA-qwpf-5wf7-r996) Heap use-after-free and
+    double free when encoding an image that carries a TAI
+    timestamp, including transcoding a file with an itai
+    property. ImageDescription shallow-copied its raw
+    heif_tai_timestamp_packet pointer, and a temporary in
+    ImageItem::encode_to_bitstream_and_boxes() freed the packet
+    while the item and the source image still held it. The
+    timestamp is now stored by value. (medium)
+  * (GHSA-9c75-9g8r-4728) Memory amplification
+    through a JPEG 2000 pclr box declaring zero palette columns.</comment>
+    <requestid>1379534</requestid>
+  </revision>
 </revisionlist>

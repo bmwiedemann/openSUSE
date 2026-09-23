@@ -47,7 +47,7 @@
 %bcond_with heif_view
 
 Name:           libheif%{?psuffix}
-Version:        1.23.4
+Version:        1.23.5
 Release:        0
 Summary:        HEIF/AVIF file format decoder and encoder
 License:        LGPL-3.0-only AND MIT
