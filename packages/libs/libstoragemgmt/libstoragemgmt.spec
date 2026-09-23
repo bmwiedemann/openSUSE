@@ -19,7 +19,7 @@
 %define libname %{name}1
 %bcond_with test
 Name:           libstoragemgmt
-Version:        1.10.3
+Version:        1.11.0
 Release:        0
 Summary:        Storage array management library
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -54,6 +54,7 @@ BuildRequires:  chrpath
 BuildRequires:  libtool
 BuildRequires:  perl
 BuildRequires:  procps
+BuildRequires:  python3-pytest
 BuildRequires:  valgrind
 BuildRequires:  pkgconfig(check)
 %endif
@@ -256,8 +257,7 @@ fi
 %pre -f libstoragemgmt.pre
 %service_add_pre %{name}.service
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %post
 %service_add_post %{name}.service

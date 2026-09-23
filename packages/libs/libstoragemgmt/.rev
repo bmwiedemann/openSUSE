@@ -382,4 +382,29 @@
     <comment>Update to 1.10.3: drop Python 2 support and python-six, use sysusers.d for the user/group, snprintf/bitmask/string fixes. Use the upstream-shipped sysusers.d file, remove dead python2 spec conditionals, rebase move_to_run.patch.</comment>
     <requestid>1356786</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>a0a92ed8b534577c184de3a801f203fa</srcmd5>
+    <version>1.11.0</version>
+    <time>1790166825</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.11.0:
+  * Add NVMe and EUI-64 support for disk and VPD83 identification,
+    with relaxed vpd83 validation
+  * megaraid: fix NVMe JSON parsing, RAID type parsing, RAID 50/60
+    with odd disk counts, and retry the DG lookup after
+    volume_raid_create
+  * Fix use-after-free, NULL dereferences, buffer over- and
+    underreads, integer overflow, memory and fd leaks, and Python
+    C-extension refcount bugs across the daemon, the IPC layer and
+    the simc, hpsa, arcconf, nfs and smis plugins
+  * Harden input validation and daemon signal handling (EINTR,
+    FD_SETSIZE, SIGHUP)
+  * Make ledmon optional at configure time
+- Add python3-pytest to the test-flavor BuildRequires
+- Use %ldconfig_scriptlets instead of hand-written scriptlets
+
+SONAME is unchanged (libstoragemgmt.so.1), so no subpackage rename and
+no file moved between subpackages. No CVEs in the crossed range.</comment>
+    <requestid>1379357</requestid>
+  </revision>
 </revisionlist>

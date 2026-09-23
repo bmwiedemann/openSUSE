@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:41:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to release 1.11.0:
+  * Add NVMe and EUI-64 support for disk and VPD83
+    identification in local_disk and the hpsa plugin; relax
+    vpd83 format validation
+  * megaraid: fix NVMe JSON parsing, RAID type parsing, retry
+    the DG lookup after volume_raid_create and handle RAID
+    50/60 with an odd disk count
+  * Fix use-after-free, NULL dereferences, buffer over- and
+    underreads, integer overflow, memory and fd leaks and
+    refcount bugs across the daemon, the IPC layer and the
+    simc, hpsa, arcconf, nfs and smis plugins
+  * Add bounds checks to sense-data and VPD parsing, check
+    strtol/snprintf return values, validate IP addresses and
+    replace bare except: clauses in the Python plugins
+  * daemon: fix EINTR handling in the main loop, guard against
+    FD_SETSIZE, reset plugin state on SIGHUP and make the
+    signal handling async-signal-safe
+  * ledmon support is now optional at configure time
+  * Fall back to the standard systemd unit, sysusers and
+    tmpfiles directories when pkgconfig does not report them
+  * Numerous test suite fixes and new IPC and megaraid tests
+- Add python3-pytest to the test-only BuildRequires, the test
+  suite now runs part of itself under pytest
+- Use %ldconfig_scriptlets for the library subpackage
+
+-------------------------------------------------------------------
 Tue Jun  2 17:21:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to release 1.10.3:
