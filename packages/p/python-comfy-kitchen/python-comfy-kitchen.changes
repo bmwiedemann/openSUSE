@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:09:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.35:
+  * New gated-delta (DeltaNet) decode ops in the package
+    namespace: gated_delta_decode_fused, deltanet_conv_step and
+    a gated_delta_decode_is_available probe. The kernels behind
+    them are CUDA and HIP only, so the probe reports False on
+    this build
+  * Remainder of the release is CUDA and HIP kernel work, which
+    this build does not compile: it ships the pure-Python eager
+    backend only
+
+-------------------------------------------------------------------
 Tue Sep 15 07:21:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.34:

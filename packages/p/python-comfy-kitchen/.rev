@@ -82,4 +82,37 @@ Factory's comfyui floor (&gt;= 0.2.31) satisfied.</comment>
     <comment>Forward 0.2.34 to Factory (CPU-only eager build; aarch64 green).</comment>
     <requestid>1378170</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>c2d46cae17fed38d9b0630540344192b</srcmd5>
+    <version>0.2.35</version>
+    <time>1790166874</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.35.
+
+Adds gated-delta (DeltaNet) decode ops to the package namespace:
+gated_delta_decode_fused, deltanet_conv_step and a
+gated_delta_decode_is_available probe. The kernels behind them are CUDA
+and HIP only, and is_available() short-circuits on
+torch.cuda.is_available(), so the probe reports False on this build and
+the ops raise if called. That is stated plainly in the changelog rather
+than credited as a feature this package delivers.
+
+The remainder of the release is CUDA and HIP kernel work that this build
+does not compile - it ships the pure-Python eager backend only, and the
+diff touches no eager-backend file.
+
+No dependency floor moved: upstream's pyproject diff is the version line
+alone and declares no dependencies. The spec's torch &gt;= 2.7.0 is a
+pre-existing downstream floor above upstream's 2.5.0.
+
+Relevant to the pending comfyui 0.37.0 request 1379750, which
+deliberately keeps comfy-kitchen &gt;= 0.2.34: once this lands the floor
+can be raised to match upstream's pin, but purely for alignment. On
+Factory it buys nothing functionally, because the fused path is gated on
+CUDA and Factory's python-torch is CPU-only.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 badness. The
+two warnings are the documented python-leftover-require for torch.</comment>
+    <requestid>1379757</requestid>
+  </revision>
 </revisionlist>
