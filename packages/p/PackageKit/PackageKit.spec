@@ -27,7 +27,7 @@
 %endif
 
 Name:           PackageKit
-Version:        1.3.6
+Version:        1.4.0
 Release:        0
 Summary:        Simple software installation management software
 License:        GPL-2.0-or-later
@@ -42,10 +42,6 @@ Source99:       PackageKit.keyring
 Patch0:         PackageKit-systemd-timers.patch
 # PATCH-FIX-OPENSUSE PackageKit-remove-polkit-rules.patch bsc#1125434 sckang@suse.com -- Remove polkit rules file
 Patch1:         PackageKit-remove-polkit-rules.patch
-# PATCH-FIX-OPENSUSE PackageKit-alias-dnf-to-dnf5.patch ngompa@opensuse.org -- Handle replacing dnf with dnf5
-Patch2:         PackageKit-alias-dnf-to-dnf5.patch
-# PATCH-FIX-UPSTREAM PackageKit-zypp-respect-libzypp-package-locks.patch bsc#1263252, gh#PackageKit/PackageKit/commit/1263252 sckang@suse.com -- zypp: respect libzypp package locks
-Patch3:         PackageKit-zypp-respect-libzypp-package-locks.patch
 
 BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  fdupes
@@ -277,7 +273,6 @@ sed -e "s/5.2.17.0/5.2.14.0/g" -i backends/dnf5/meson.build
         %{?with_dnf5:-Ddnf_vendor=opensuse} \
         %{!?with_cnf:-Dbash_command_not_found=false} \
         -Dcron=false \
-        -Dlocal_checkout=false \
         -Ddbus_sys=%{_datadir}/dbus-1/system.d \
         -Dlegacy_tools=true
 %meson_build
@@ -338,7 +333,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %files
 %license COPYING
 %doc AUTHORS CONTRIBUTING NEWS README.md
-%doc policy/org.freedesktop.packagekit.rules
+%doc data/policy/org.freedesktop.packagekit.rules
 %dir %{_sysconfdir}/PackageKit
 %dir %{_datadir}/PackageKit
 %dir %{_datadir}/PackageKit/helpers
@@ -403,7 +398,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 
 %files devel
 %doc %{_datadir}/gtk-doc/html/PackageKit
-%dir %{_includedir}/PackageKit
+%dir %{_includedir}/packagekit
 # Test backends are not useful, except for developers
 %{_libdir}/packagekit-backend/libpk_backend_test_fail.so
 %{_libdir}/packagekit-backend/libpk_backend_test_nop.so
@@ -414,7 +409,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %{_datadir}/PackageKit/helpers/test_spawn/search-name.sh
 
 %files -n libpackagekit-glib2-18
-%license lib/packagekit-glib2/COPYING
+%license lib/COPYING
 %{_libdir}/libpackagekit-glib2.so.*
 
 %files -n typelib-1_0-PackageKitGlib-1_0
@@ -423,8 +418,8 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_prefix}/lib/tmpfiles.d/%{name}.conf
 %files -n libpackagekit-glib2-devel
 %{_libdir}/libpackagekit-glib2.so
 %{_libdir}/pkgconfig/packagekit-glib2.pc
-%dir %{_includedir}/PackageKit
-%{_includedir}/PackageKit/packagekit-glib2/
+%dir %{_includedir}/packagekit
+%{_includedir}/packagekit/packagekit-glib2/
 %{_datadir}/gir-1.0/PackageKitGlib-1.0.gir
 %dir %{_datadir}/vala/vapi
 %{_datadir}/vala/vapi/packagekit-glib2.vapi

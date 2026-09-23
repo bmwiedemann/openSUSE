@@ -2196,4 +2196,41 @@ Pushing GNOME 45.rc packages</comment>
   gh#PackageKit/PackageKit/commit/4c1994d).</comment>
     <requestid>1374287</requestid>
   </revision>
+  <revision rev="249" vrev="1">
+    <srcmd5>28bde4d6d94793046af77cb6a445699b</srcmd5>
+    <version>1.4.0</version>
+    <time>1790166855</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.4.0:
+  + Backends:
+    - zypp: respect libzypp package locks
+    - Drop unmaintained DNF backend
+    - Various changes/fixes for alpm, dnf5 and eopkg
+  + Bugfixes:
+    - pkgcli: Skip blocked updates in full upgrade too
+    - python: Use a raw string for regex
+    - lib: Tighten the pk-client-helper mainloop spin fix
+    - lib: Prevent mainloop spin in pk-debconf-helper by
+      dispatching on POLLHUP and POLLERR
+    - lib: Close gaps in the public header include guards
+    - Pass daemon config on the command line, so test binaries are
+      identical to production
+    - Refactor, so daemon run in test-mode never touches the host's
+      state
+    - offline-update: Never let a Trigger call disarm or replace an
+      armed trigger
+    - Drop dead error macros for nonexistent types
+    - spawn: Reject stdin-protocol delimiters in caller-supplied
+      strings
+    - Validate a distro-ID in UpgradeSystem for invalid characters
+  + Miscellaneous:
+    - Move the Python backend module to the top level
+    - Flatten the client library into lib/
+    - Install headers into $includedir/packagekit
+    - Autoformat the source code in (almost) its original style
+    - Add security policy
+- Drop PackageKit-CVE-2026-19816.patch,
+  PackageKit-zypp-respect-libzypp-package-locks.patch and</comment>
+    <requestid>1379427</requestid>
+  </revision>
 </revisionlist>
