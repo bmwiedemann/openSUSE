@@ -39,7 +39,7 @@
 
 %bcond_without test
 Name:           molecule
-Version:        26.8.0
+Version:        26.9.0
 Release:        0
 Summary:        Aids in the development and testing of Ansible roles
 License:        MIT
@@ -69,6 +69,7 @@ BuildRequires:  %{ansible_python}-yamllint
 BuildRequires:  %{ansible_python}-base >= 3.10
 BuildRequires:  ansible-core >= 2.18.0
 BuildRequires:  %{ansible_python}-ansible-compat >= 25.1.4
+BuildRequires:  %{ansible_python}-bracex
 BuildRequires:  (%{ansible_python}-click >= 8.0 with %{ansible_python}-click < 9)
 BuildRequires:  %{ansible_python}-enrich >= 1.2.7
 BuildRequires:  %{ansible_python}-jsonschema >= 4.9.1

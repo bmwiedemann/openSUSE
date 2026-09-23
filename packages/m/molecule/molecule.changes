@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:38:29 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.9.0:
+  * Features
+    - feat: add lima to the allowed driver names (#4698)
+  * Fixes
+    - fix: validation error messages being truncated by markup
+      regex (#4685)
+    - fix: recognize git worktree root in find_vcs_root() (#4640)
+    - fix(state): reload before change_state so a stale snapshot
+      cannot revert a sibling State write (#4694)
+    - fix: write only recorded connection vars for managed
+      instances (#4702)
+    - fix: display errors when schema validation fails (#4623)
+  * Documentation
+    - chore(docs): User Pathways and Role Getting Started Guide
+      (#4691)
+    - chore: document shared state for standalone role testing
+      (#4695)
+    - Improve documentation on container image selection with
+      Podman (#4687)
+  * Maintenance
+    - chore: Add SECURITY.md (#4693)
+    - chore(deps): update all dependencies and pep621 (#4681,
+      #4682, #4699, #4700)
+    - test: model one ephemeral directory per scenario in the unit
+      fixture (#4701)
+  * What's Changed
+    - chore(deps): update all dependencies in #4681
+    - chore: Add SECURITY.md in #4693
+    - fix: validation error messages being truncated by markup
+      regex in #4685
+    - chore(deps): update pep621 in #4682
+    - chore(docs): User Pathways and Role Getting Started Guide in
+      #4691
+    - chore: document shared state for standalone role testing in
+      #4695
+    - Improve documentation with paragraph about selection of
+      container images to use with Podman in #4687
+    - fix: recognize git worktree root in find_vcs_root() in #4640
+    - feat: Add lima to the allowed driver names in #4698
+    - fix(state): reload before change_state so a stale snapshot
+      can't revert a sibling State's write in #4694
+    - fix: write only recorded connection vars for managed
+      instances in #4702
+    - fix: display errors when schema validation fails in #4623
+    - chore(deps): update all dependencies in #4699
+    - chore(deps): update pep621 in #4700
+    - test: model one ephemeral directory per scenario in the unit
+      fixture in #4701
+
+-------------------------------------------------------------------
 Wed Aug 12 07:37:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.8.0:
