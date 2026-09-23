@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:15:44 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Text-Diff/Changes
+
+  1.46 2026-09-13 NEILB
+      - Removed duplicated code. PR from HAARG++
+
+-------------------------------------------------------------------
 Sat May 10 23:22:51 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - Normalize CPAN version

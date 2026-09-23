@@ -143,4 +143,15 @@
 </comment>
     <requestid>1276530</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a0a73e91979ef4892fff5b2e6aea3341</srcmd5>
+    <version>1.460.0</version>
+    <time>1790166865</time>
+    <user>anag_factory</user>
+    <comment>- updated to 1.460.0 (1.46)
+   see /usr/share/doc/packages/perl-Text-Diff/Changes
+  1.46 2026-09-13 NEILB
+      - Removed duplicated code. PR from HAARG++</comment>
+    <requestid>1379457</requestid>
+  </revision>
 </revisionlist>
