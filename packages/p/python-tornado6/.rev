@@ -355,4 +355,41 @@
   * Run test_multi_process in a fresh subprocess to avoid a warning.</comment>
     <requestid>1374988</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>22e1bd9f81c4305b74ef99de90b3b44b</srcmd5>
+    <version>6.5.10</version>
+    <time>1790166838</time>
+    <user>anag_factory</user>
+    <comment>- update to 6.5.10:
+  - tornado.web: The allowed_symlink_directory argument of
+    StaticFileHandler may now be a list of directories instead of just
+    a single directory. This feature has been adjusted to improve
+    compatibility with Jupyter, which would fail to load with Tornado
+    6.5.9.
+- 6.5.9:
+  # Security fixes
+  - .StaticFileHandler no longer follows symlinks outside of the
+    static root directory. Applications that wish to continue the
+    previous behavior may set the new argument
+    allowed_symlink_directory to the directory (an ancestor of the
+    static root) that should be used for symlink validation. Thanks to
+    Yasha-ops and iaohkut-from-NightWolf-Team for reporting this
+    issue.
+  - curl_httpclient has a new max_body_size argument (default 100MB,
+    same as for simple_httpclient). This limit is enforced on all
+    requests, whether or not streaming_callback is used.
+    curl_httpclient now also controls its memory usage when
+    decompressing response bodies. Thanks to afldl,
+    iaohkut-from-NightWolf-Team, and aoto-tech for reporting this
+    issue.
+  - simple_httpclient now correctly applies the max_body_size limit to
+    responses using HTTP/1.0 format (no Content-Length or
+    Transfer-Encoding). Previously it silently truncated such
+    responses at max_buffer_size instead. Thanks to afldl for
+    reporting this issue.
+  - simple_httpclient now rejects responses that use more than 10 100
+    Continue responses, which could previously cause stack overflow
+    errors. Thanks to afldl for reporting this issue.</comment>
+    <requestid>1379400</requestid>
+  </revision>
 </revisionlist>
