@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sun Sep 20 14:10:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to _service managed package. This results in us now using
+  the git tag as version number, which happens to be 2.1.0.
+  Technically, this is exactly the same as was published by
+  upstream as Geany 2.1.
+
+-------------------------------------------------------------------
 Fri Aug  8 05:11:13 UTC 2025 - anenasa <anenasaa@yahoo.com>
 
 - Update to 2.1:

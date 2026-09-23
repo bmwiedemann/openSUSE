@@ -17,13 +17,13 @@
 
 
 Name:           geany
-Version:        2.1
+Version:        2.1.0
 Release:        0
 Summary:        GTK-based integrated development environment
 License:        GPL-2.0-or-later
 Group:          Development/Tools/IDE
 URL:            https://geany.org
-Source0:        https://download.geany.org/%{name}-%{version}.tar.bz2
+Source0:        %{name}-%{version}.tar.xz
 Source1:        %{name}-rpmlintrc
 
 # PATCH-FIX-UPSTREAM geany-appstream.patch gh#geany/geany#1142 badshah400@gmail.com -- Downstream created appstream file, submitted upstream

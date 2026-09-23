@@ -546,4 +546,15 @@
     <comment></comment>
     <requestid>1298733</requestid>
   </revision>
+  <revision rev="47" vrev="1">
+    <srcmd5>ac8728d0c929d59e7fb4801e3a5f0fa9</srcmd5>
+    <version>2.1.0</version>
+    <time>1790166804</time>
+    <user>anag_factory</user>
+    <comment>- Migrate to _service managed package. This results in us now using
+  the git tag as version number, which happens to be 2.1.0.
+  Technically, this is exactly the same as was published by
+  upstream as Geany 2.1.</comment>
+    <requestid>1379291</requestid>
+  </revision>
 </revisionlist>
