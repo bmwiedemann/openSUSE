@@ -37,7 +37,7 @@
 %define lname	libinput10
 %define pname	libinput
 Name:           libinput%{?xsuffix}
-Version:        1.31.3
+Version:        1.32
 Release:        0
 Summary:        Input device and event processing library
 License:        MIT
@@ -45,11 +45,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.freedesktop.org/wiki/Software/libinput/
 #Git-Web:	https://gitlab.freedesktop.org/libinput/libinput/
 #DL-URL:        https://gitlab.freedesktop.org/libinput/libinput/-/releases
-Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/%version/libinput-%version.tar.gz
+Source:         https://gitlab.freedesktop.org/libinput/libinput/-/archive/%version.0/libinput-%version.0.tar.gz
 Source3:        baselibs.conf
 Source5:        libinput-rpmlintrc
-Patch1:         kill-env.diff
-
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 %if %{with documentation}
@@ -133,7 +131,7 @@ This package contains all necessary include files and libraries needed
 to develop applications that require libinput.
 
 %prep
-%autosetup -p1 -n %pname-%version
+%autosetup -p1 -n %pname-%version.0
 
 %build
 %meson \
@@ -164,7 +162,7 @@ done
 
 %fdupes %buildroot/%_prefix
 %if %{suse_version} >= 1600
-%python3_fix_shebang_path %{buildroot}%{_libexecdir}/libinput/*
+%python3_fix_shebang_path %buildroot/%_libexecdir/libinput/*
 %endif
 
 %ldconfig_scriptlets -n %lname

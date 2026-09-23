@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 17 22:00:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.32
+  * Circular scrolling on circular touchpads (e.g. Panasonic
+    CF-SV1)
+  * New convenience features, e.g. dragging on a touchpad
+    automatically enables a drag lock if the finger near the edge.
+  * On touchpads, disable-while-typing no longer cancels ongoing
+    interactions.
+  * For tablets, we now allow the physical eraser button to be
+    mapped to any button.
+  * `libinput record` now allows a `--no-events` flag.
+- Delete kill-env.diff (no longer needed,
+  %python3_fix_shebang_path already takes care of it)
+
+-------------------------------------------------------------------
 Thu Jun  4 01:55:06 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.31.3

@@ -1143,4 +1143,12 @@ Peter Hutterer (3):
     <comment>- Update to release 1.31.3</comment>
     <requestid>1357044</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>c89ab6f1c5d235c451013e1f45e6c094</srcmd5>
+    <version>1.32</version>
+    <time>1790166802</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 1.32</comment>
+    <requestid>1379288</requestid>
+  </revision>
 </revisionlist>
