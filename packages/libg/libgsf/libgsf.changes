@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:43:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.59:
+  * Fix some OLE2 edge cases
+  + Plug leak
+  + Improve thread safety of GSF_CLASS_FULL
+  + Fix zip read for corrupted stream
+  + Fix ole2 leaks
+  + Protect ole2 loader from crazy recursion.
+
+-------------------------------------------------------------------
 Fri May  1 09:50:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.14.58:

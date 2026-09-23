@@ -624,4 +624,18 @@
   + Ole performace improvements with loads of children.</comment>
     <requestid>1350827</requestid>
   </revision>
+  <revision rev="82" vrev="1">
+    <srcmd5>bc3910ce1eee14caac5881078bca8151</srcmd5>
+    <version>1.14.59</version>
+    <time>1790166754</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.59:
+  * Fix some OLE2 edge cases
+  + Plug leak
+  + Improve thread safety of GSF_CLASS_FULL
+  + Fix zip read for corrupted stream
+  + Fix ole2 leaks
+  + Protect ole2 loader from crazy recursion.</comment>
+    <requestid>1379610</requestid>
+  </revision>
 </revisionlist>
