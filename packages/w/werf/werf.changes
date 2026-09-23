@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:39:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.77.2:
+  * Bug Fixes
+    - build, stapel: stop panicking when the base image is gone at
+      commit (#7819) (17f71c5)
+    - build: ignore a cache repo pointing at the primary repo
+      (#7820) (d02c20c)
+    - docs: update shell pattern matching url (#7813) (81cf51d)
+    - host-cleanup: report the real retention of pruned dangling
+      images (#7822) (958f84c)
+- Update to version 2.77.1:
+  * Bug Fixes
+    - build, buildah: stop imports failing on symlinked paths like
+      /bin (#7763) (f38a885)
+- Update to version 2.77.0:
+  * Features
+    - cleanup: add registry-side cleanup report (#7806) (8a6250b)
+
+-------------------------------------------------------------------
 Sun Sep 20 05:25:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.76.0:
