@@ -27,20 +27,22 @@
 %endif
 %define origname thin-provisioning-tools
 Name:           %{origname}%{psuffix}
-Version:        1.3.3
+Version:        1.3.4
 Release:        0
 Summary:        Thin Provisioning Tools
 # Legal-Review-Notice: upstream itself is GPL-3.0-only (COPYING), but every
 # shipped tool is a symlink to one statically linked Rust binary
 # (pdata_tools), so the binary also contains the vendored crates.
 # Re-derived on this re-vendor with "cargo tree --offline -p thinp -e normal"
-# over the refreshed vendor.tar.zst: 77 of the 212 vendored crates are
+# over the refreshed vendor.tar.zst: 77 of the 203 vendored crates are
 # actually linked. Build-only and dev-only crates are deliberately excluded
 # because their code is not in the binary - notably bindgen (BSD-3-Clause),
 # clang-sys (Apache-2.0) and libloading (ISC), which devicemapper-sys uses
 # only to generate FFI bindings at build time, and r-efi, whose
 # LGPL-2.1-or-later option is UEFI-target-only and absent from the Linux
-# graph.
+# graph. New in 1.3.4: flate2 1.1.10 drags zlib-rs (Zlib) into the
+# lockfile as an optional backend, but the default backend is still
+# miniz_oxide, so zlib-rs is vendored without being linked.
 # Where a crate offers a choice we elect MIT: it is on offer from every
 # dual/multi-licensed crate in the linked set, so a single election covers
 # all of them and no Zlib, 0BSD, BSD-2-Clause, Unlicense or BSL-1.0
@@ -53,7 +55,7 @@ Summary:        Thin Provisioning Tools
 #  - Apache-2.0    exitcode 1.1.2, which offers no alternative
 #  - MPL-2.0       devicemapper 0.34.8 and devicemapper-sys 0.3.3, reached
 #                  through the thin_migrate tool
-#  - Unicode-3.0   unicode-ident 1.0.24, whose expression is an AND
+#  - Unicode-3.0   unicode-ident 1.0.26, whose expression is an AND
 # Compatibility, flagged rather than silently assumed: Apache-2.0 and
 # MPL-2.0 are each one-way compatible with GPLv3, so the combined binary is
 # distributable and is effectively GPL-3.0-only as a whole; the reverse
@@ -66,13 +68,6 @@ License:        Apache-2.0 AND GPL-3.0-only AND MIT AND MPL-2.0 AND Unicode-3.0
 URL:            https://github.com/jthornber/thin-provisioning-tools/
 Source0:        %{origname}-%{version}.tar.zst
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM thin-provisioning-tools-tests-clap-single-alias.patch gh#jthornber/thin-provisioning-tools#328
-# clap 4.6.2 renders "alias" rather than "aliases" for an option with
-# exactly one alias, and tests/thin_delta.rs hardcodes the old wording.
-# Upstream CI never sees it because it builds from the committed
-# Cargo.lock, which pins clap 4.6.1; we re-resolve (cargo_vendor
-# update=true), so we get the newer clap and the two help assertions fail.
-Patch0:         thin-provisioning-tools-tests-clap-single-alias.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  clang-devel
 BuildRequires:  pkgconfig

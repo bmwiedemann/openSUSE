@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 20 19:13:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.3.4:
+  * thin_dump: fix panics when btree nodes point beyond the end
+    of the metadata device
+  * thin_check, cache_check and the other tools: fix overflows
+    in IoEngine block range tracking and offset calculation,
+    which caused panics or reads at the wrong offset on damaged
+    metadata
+  * fix an integer overflow in space map boundary checks
+  * remove redundant leaf insertions in LeafWalker
+  * update bundled dependencies to their latest compatible
+    releases
+- Drop thin-provisioning-tools-tests-clap-single-alias.patch:
+  merged upstream, which now also requires clap 4.6.
+- Refresh the vendored Rust crates: 48 changed version, zlib-rs
+  added, windows_i686_gnullvm dropped.
+- Re-derive License from the crates actually linked into the
+  shipped binary: unchanged. zlib-rs is vendored but stays
+  unlinked, since flate2 still defaults to miniz_oxide, so no
+  Zlib obligation is taken on.
+
+-------------------------------------------------------------------
 Sat Aug 15 20:08:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Refresh the vendored Rust crates: 62 changed version, two
