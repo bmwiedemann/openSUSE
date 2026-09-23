@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:03:14 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Update to 0.7.9
+  + Handle the return value of pcr-oracle when signing the key
+    (bsc#1279917)
+  + Properly detect the sealed key in tpm-activate/tpm-enable
+    (bsc#1279917)
+  + search for fde password also in EFI grub.cfg
+  + ensure keyfile is not dropped if reencryption failed
+
+-------------------------------------------------------------------
 Tue Aug 11 07:18:17 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Update to 0.7.7
