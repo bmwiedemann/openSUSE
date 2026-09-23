@@ -8089,6 +8089,8 @@ unsorted:
   - grantlee-editor-lang 
   - grantleetheme-devel 
   - graphene-tests 
+  - graphifyy 
+  - graphifyy-mcp 
   - graphite2 
   - graphite2-devel 
   - graphviz 
@@ -14453,6 +14455,7 @@ unsorted:
   - libjxrglue0 
   - libkColorPicker-Qt5-0 
   - libkImageAnnotator-Qt5-0 
+  - libkainjow-mustache-devel 
   - libkasten-lang 
   - libkate-devel 
   - libkate-tools 
@@ -15431,6 +15434,7 @@ unsorted:
   - liborcania2_3 
   - liborcus-devel 
   - liborcus-tools 
+  - liborigami1 
   - liborigin-devel 
   - liborigin-doc 
   - liborigin-tools 
@@ -15724,13 +15728,13 @@ unsorted:
   - libprofiler0 
   - libproj25 
   - libprometheus-cpp1_3 
-  - libprotobuf-lite36_1_0-32bit 
+  - libprotobuf-lite36_2_0-32bit 
   - libprotobuf-lite3_21_12 
   - libprotobuf-nanopb0 
-  - libprotobuf36_1_0-32bit 
+  - libprotobuf36_2_0-32bit 
   - libprotobuf3_21_12 
-  - libprotoc36_1_0 
-  - libprotoc36_1_0-32bit 
+  - libprotoc36_2_0 
+  - libprotoc36_2_0-32bit 
   - libprotoc3_21_12 
   - libproxy-devel 
   - libproxy-devel-doc 
@@ -17089,7 +17093,7 @@ unsorted:
   - libusrp1 
   - libusrsctp2 
   - libut1 
-  - libutf8_range-36_1_0-32bit 
+  - libutf8_range-36_2_0-32bit 
   - libuuid-devel 
   - libuuid-devel-32bit 
   - libuuid-devel-static 
@@ -25698,6 +25702,7 @@ unsorted:
   - python313-cymem 
   - python313-cymruwhois 
   - python313-cyrtranslit 
+  - python313-cysignals 
   - python313-cytoolz 
   - python313-czifile 
   - python313-dacite 
@@ -29778,6 +29783,7 @@ unsorted:
   - python314-cymem 
   - python314-cymruwhois 
   - python314-cyrtranslit 
+  - python314-cysignals 
   - python314-cytoolz 
   - python314-czifile 
   - python314-dacite 
@@ -33799,6 +33805,8 @@ unsorted:
   - robinhood-tests 
   - robinhood-tools 
   - robinhood-webgui 
+  - rocdecode-devel 
+  - rocdecode-libs 
   - rocfft-devel 
   - rocjpeg-devel 
   - rockdodger 
@@ -33832,6 +33840,7 @@ unsorted:
   - rocm-omp-devel 
   - rocm-opencl 
   - rocm-opencl-devel 
+  - rocm-origami-devel 
   - rocm-rpm-macros 
   - rocm-rpm-macros-modules 
   - rocm-runtime-devel 
