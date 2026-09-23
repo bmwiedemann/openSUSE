@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 21 09:00:03 UTC 2026 - okurz@suse.de
+
+- Update to version 5.1789981151.7bec2f0e9:
+  * ci: Remove `perl-TAP-Harness-JUnit` from devel container again
+
+-------------------------------------------------------------------
 Sat May 09 02:59:23 UTC 2026 - okurz@suse.de
 
 - Update to version 5.1778257070.d9915684e:
