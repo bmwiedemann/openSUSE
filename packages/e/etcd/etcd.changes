@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 21:29:55 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 3.7.2:
+  * dependency: bump google.golang.org/grpc to v1.83.2
+  * fileutil: close locked files when purging fails
+  * fix: fsync snap directory when saving a received snapshot db
+  * etcdctl: remove duplicate RaftTerm in endpoint status fields output The fields output for endpoint status currently prints RaftTerm twice, once from the response header and the other from the status body. Both of them come from the same raft term, so the second one is redundant.
+  * Update MinimalEtcdVersion to read latest snapshot entry from WAL
+  * dependency: bump go.opentelemetry.io/otel to v1.44.0
+
+-------------------------------------------------------------------
 Thu Jul 23 20:49:30 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 3.7.1:
