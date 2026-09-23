@@ -359,4 +359,16 @@
   + Documentation improvements</comment>
     <requestid>1374288</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>d23145e14eb2bc81b55f8648082a1cb3</srcmd5>
+    <version>2.8.1</version>
+    <time>1790166962</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.8.1:
+  + tar.py: Always use extraction filter
+  + Fix soft workspace reset not persisting
+  + Fixes for the source tests
+  + Performance optimizations</comment>
+    <requestid>1379906</requestid>
+  </revision>
 </revisionlist>
