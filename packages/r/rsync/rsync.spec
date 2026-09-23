@@ -28,8 +28,16 @@
 %bcond_with gcc11
 %endif
 
+%if 0%{?suse_version} >= 1600
+%define use_python %{primary_python}
+%define python_binary %{_bindir}/python%{python_bin_suffix}
+%else
+%define use_python python311
+%define python_binary %{_bindir}/python3.11
+%endif
+
 Name:           rsync
-Version:        3.4.3
+Version:        3.5.1
 Release:        0
 Summary:        Versatile tool for fast incremental file transfer
 License:        GPL-3.0-or-later
@@ -52,17 +60,18 @@ Patch2:         rsync-run-dir.patch
 # https://github.com/RsyncProject/rsync/pull/639
 Patch3:         rsyncd-return-from-list-command-with-0.patch
 Patch4:         rsync-python-3.6-tests.patch
-Patch5:         rsync-openat2-glibc-missing.patch
-
+Patch5:         use-sys.executable.patch
+BuildRequires:  %{use_python}-base
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  c++_compiler
 BuildRequires:  libacl-devel
+BuildRequires:  libidn2-devel
 BuildRequires:  liblz4-devel
 BuildRequires:  libzstd-devel
 BuildRequires:  pkgconfig
 BuildRequires:  popt-devel
-BuildRequires:  python3-base
+BuildRequires:  python-rpm-macros
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zlib-devel
 %if %{with xxhash}
@@ -101,6 +110,7 @@ export CXX=g++-11
 export CFLAGS="%{optflags} -fPIC -DPIC -fPIE"
 export CXXFLAGS="$CFLAGS"
 export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
+export PYTHON3=%{python_binary}
 
 %configure \
   --with-included-popt=no \
@@ -121,6 +131,7 @@ export LDFLAGS="-Wl,-z,relro,-z,now -fPIE -pie"
 %make_build
 
 %check
+perl -p -i -e 's|/usr/bin/env python3|%{python_binary}|g' $(grep -lr 'env python3' testsuite/ support/) runtests.py
 chmod +x support/*
 %make_build check
 chmod -x support/*

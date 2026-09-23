@@ -1,0 +1,42 @@
+Index: rsync-3.5.0/testsuite/copy-xattrs-symlink-race_test.py
+===================================================================
+--- rsync-3.5.0.orig/testsuite/copy-xattrs-symlink-race_test.py
++++ rsync-3.5.0/testsuite/copy-xattrs-symlink-race_test.py
+@@ -23,6 +23,7 @@ import os
+ import platform
+ import subprocess
+ import time
++import sys
+ 
+ from rsyncfns import (
+     race_budget, SCRATCHDIR, rmtree, rsync_argv, test_fail, test_skipped,
+@@ -131,7 +132,7 @@ flip_code = (
+     "    except OSError:\n"
+     "        pass\n"
+ )
+-flip = subprocess.Popen(['python3', '-c', flip_code, str(sub), str(link)])
++flip = subprocess.Popen([sys.executable, '-c', flip_code, str(sub), str(link)])
+ try:
+     deadline = time.monotonic() + race_budget(10.0)
+     while time.monotonic() < deadline:
+Index: rsync-3.5.0/testsuite/rename-fullpath-symlink-race_test.py
+===================================================================
+--- rsync-3.5.0.orig/testsuite/rename-fullpath-symlink-race_test.py
++++ rsync-3.5.0/testsuite/rename-fullpath-symlink-race_test.py
+@@ -19,6 +19,7 @@
+ import os
+ import subprocess
+ import time
++import sys
+ 
+ from rsyncfns import race_budget, SCRATCHDIR, rmtree, rsync_argv, test_fail
+ 
+@@ -82,7 +83,7 @@ flip_code = (
+     "    except OSError:\n"
+     "        pass\n"
+ )
+-flip = subprocess.Popen(['python3', '-c', flip_code, str(sub), str(link)])
++flip = subprocess.Popen([sys.executable, '-c', flip_code, str(sub), str(link)])
+ try:
+     deadline = time.monotonic() + race_budget(10.0)
+     while time.monotonic() < deadline:

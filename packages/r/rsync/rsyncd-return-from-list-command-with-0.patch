@@ -15,11 +15,11 @@ Signed-off-by: Georg Pfuetzenreuter <mail@georg-pfuetzenreuter.net>
  clientserver.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Index: rsync-3.4.0/clientserver.c
+Index: rsync-3.5.0/clientserver.c
 ===================================================================
---- rsync-3.4.0.orig/clientserver.c
-+++ rsync-3.4.0/clientserver.c
-@@ -1377,7 +1377,7 @@ int start_daemon(int f_in, int f_out)
+--- rsync-3.5.0.orig/clientserver.c
++++ rsync-3.5.0/clientserver.c
+@@ -1561,7 +1561,7 @@ int start_daemon(int f_in, int f_out)
  		rprintf(FLOG, "module-list request from %s (%s)\n",
  			host, addr);
  		send_listing(f_out);

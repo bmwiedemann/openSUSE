@@ -1,8 +1,8 @@
-Index: rsync-3.4.0/clientserver.c
+Index: rsync-3.5.0/clientserver.c
 ===================================================================
---- rsync-3.4.0.orig/clientserver.c
-+++ rsync-3.4.0/clientserver.c
-@@ -1261,10 +1261,16 @@ static void send_listing(int fd)
+--- rsync-3.5.0.orig/clientserver.c
++++ rsync-3.5.0/clientserver.c
+@@ -1400,10 +1400,16 @@ static int proxy_peer_allowed(int fd)
  static int load_config(int globals_only)
  {
  	if (!config_file) {
@@ -21,11 +21,11 @@ Index: rsync-3.4.0/clientserver.c
  	}
  	return lp_load(config_file, globals_only);
  }
-Index: rsync-3.4.0/configure.ac
+Index: rsync-3.5.0/configure.ac
 ===================================================================
---- rsync-3.4.0.orig/configure.ac
-+++ rsync-3.4.0/configure.ac
-@@ -175,7 +175,7 @@ AC_ARG_WITH(rsync-path,
+--- rsync-3.5.0.orig/configure.ac
++++ rsync-3.5.0/configure.ac
+@@ -197,7 +197,7 @@ AC_ARG_WITH(rsync-path,
  AC_DEFINE_UNQUOTED(RSYNC_PATH, "$RSYNC_PATH", [location of rsync on remote machine])
  
  AC_ARG_WITH(rsyncd-conf,
@@ -34,7 +34,7 @@ Index: rsync-3.4.0/configure.ac
  	[ if test ! -z "$with_rsyncd_conf" ; then
  		case $with_rsyncd_conf in
  			yes|no)
-@@ -193,7 +193,27 @@ AC_ARG_WITH(rsyncd-conf,
+@@ -215,7 +215,27 @@ AC_ARG_WITH(rsyncd-conf,
  	fi ],
  	[ RSYNCD_SYSCONF="/etc/rsyncd.conf" ])
  
@@ -63,11 +63,11 @@ Index: rsync-3.4.0/configure.ac
  
  AC_ARG_WITH(rsh,
  	AS_HELP_STRING([--with-rsh=CMD],[set remote shell command to CMD (default: ssh)]))
-Index: rsync-3.4.0/rsyncd.conf.5.md
+Index: rsync-3.5.0/rsyncd.conf.5.md
 ===================================================================
---- rsync-3.4.0.orig/rsyncd.conf.5.md
-+++ rsync-3.4.0/rsyncd.conf.5.md
-@@ -1242,7 +1242,7 @@ The /etc/rsyncd.secrets file would look
+--- rsync-3.5.0.orig/rsyncd.conf.5.md
++++ rsync-3.5.0/rsyncd.conf.5.md
+@@ -1441,7 +1441,7 @@ The /etc/rsyncd.secrets file would look
  
  ## FILES
  

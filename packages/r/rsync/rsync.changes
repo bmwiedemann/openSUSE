@@ -1,4 +1,564 @@
 -------------------------------------------------------------------
+Mon Sep 21 12:10:18 UTC 2026 - David Anes <david.anes@suse.com>
+
+- Update to 3.5.1
+  - Protocol:
+    - The protocol number was changed to 33.
+  - Bug fixes:
+    - Fixed several path-handling regressions from 3.5.0. Explicit
+      sender paths can again traverse symlinked ancestors without
+      weakening confinement of paths found during recursive scans.
+      Local and remote-shell `--files-from` paths are handled as
+      operator-supplied paths rather than paths beneath the transfer
+      root.
+    - Fixed access to `/dev/stdin`, `/dev/stdout`, `/dev/stderr` and
+      `/dev/fd/N` when they refer to pipes or descriptors inside user
+      namespaces. Reading batch data from a FIFO or process
+      substitution works again.
+    - Restored `--max-alloc=0` as a spelling for the parser's maximum
+      allocation limit rather than disabling that limit.
+    - Fixed restricted-root paths in `rrsync` and detection of an
+      inetd connection when a daemon is started with a local socket on
+      standard input, as can happen under ADB without a PTY.
+    - Allowed `--contimeout` for daemon connections made through
+      `--rsh` without applying it to ordinary remote-shell transfers.
+    - Tightened validation of partial-directory state and
+      alternate-destination paths on the receiver. An
+      alternate-destination leaf symlink is no longer followed as a
+      basis file.
+    - Fixed undefined shifts in the bundled zlib code and a FreeBSD
+      amd64 build failure involving the assembly and SIMD objects.
+  - Enhancements:
+    - Added support for internationalised domain names when the
+      required library is available at build time.
+    - Added the number of 4 KiB logical blocks touched to `--stats`.
+      This counts distinct logical file regions written by the
+      receiver, not physical disk blocks or disk I/O. It is reported
+      when both peers negotiate protocol 33.
+  - Build and tests:
+    - `install-strip` now honours `STRIP` including during
+      cross-compilation.
+    - Updated platform tests and fleet-test coverage for the 3.5.0
+      fixes.
+- Activate IDN (internationalised domain name) support by adding
+  BuildRequires: libidn2-devel
+- Drop rsync-fix-protected-regultar-test.patch (already upstream)
+
+-------------------------------------------------------------------
+Fri Aug 14 07:09:48 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
+
+- Fix test suit protected-regular test 
+  * Added rsync-fix-protected-regultar-test.patch 
+
+-------------------------------------------------------------------
+Thu Aug 13 14:19:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- explicitly require python-rpm-macros to not rely on any indirect
+  requires. Fixes build on SLE 16.0
+
+-------------------------------------------------------------------
+Thu Aug 13 02:26:23 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.5.0
+  - Security update (bsc#1269060, rsync 3.5.0 security backports):
+    - CVE-2026-53783, bsc#1269041: rrsync restricted-directory escape (validation-vs-exec race + unsafe option allowlist)
+    - CVE-2026-53784, bsc#1269042: Daemon module-root chdir escape under "use chroot = no"
+    - CVE-2026-53785, bsc#1269043: --relative implied-parent creation escapes the destination tree
+    - CVE-2026-53786, bsc#1269044: Daemon --filter merge file bypasses the module filter list
+    - CVE-2026-53788, bsc#1269046: Daemon name-converter accepts newline-bearing names into its line protocol
+    - CVE-2026-53789, bsc#1269047: Malicious sender expands --delete scope by reclassifying an implied parent
+    - CVE-2026-53790, bsc#1269048: Command / argument injection via unquoted peer- or host-controlled values
+    - CVE-2026-53791, bsc#1269049: PROXY-protocol mode lets a direct client spoof the daemon's source address
+    - CVE-2026-53792, bsc#1269050: Receiver-supplied zero checksum block length drives sender matching negative
+    - CVE-2026-53793, bsc#1269051: Chroot "/./" inner-module escape via a parent-component symlink
+    - CVE-2026-53794, bsc#1269052: Remote peer disables the per-allocation sanity cap via --max-alloc=0
+    - CVE-2026-53795, bsc#1269053: Receiver write escape via an absolute --temp-dir / --link-dest disabling rename/link confinement
+    - CVE-2026-53796, bsc#1269054: Non-daemon receiver destination-chdir symlink race (TOCTOU)
+    - CVE-2026-53797, bsc#1269055: Sender source-tree parent-component symlink race -> out-of-tree disclosure
+    - CVE-2026-53798, bsc#1269045: Daemon name-converter empty response maps an unknown name to uid/gid 0
+    - CVE-2026-53799, bsc#1269056: Receiver ACL/xattr application follows a symlink-race -> arbitrary ACL set (local privilege escalation)
+    - CVE-2026-53800, bsc#1269057: Sender --remove-source-files unlink follows a parent-component symlink race -> arbitrary file deletion outside the source tree
+    - CVE-2026-53801, bsc#1269058: Sender/daemon directory-scan enumeration escapes the transfer root / module -> out-of-tree disclosure
+    - CVE-2026-53802, bsc#1269039: Arbitrary file read / transfer-shaping via symlinked operator-supplied input files
+    - CVE-2026-53803, bsc#1269040: Arbitrary file write / privilege escalation via symlinked operator-supplied output paths
+    - CVE-2026-70463, bsc#1273430: "auth users" ignores documented comma-only parsing, silently skipping a deny/read-only rule
+    - CVE-2026-70462, bsc#1273431: Peer-supplied MSG_IO_TIMEOUT defeats the client's own I/O timeout (signed overflow, and a non-positive value)
+    - CVE-2026-70461, bsc#1273432: Peer-driven one-byte heap out-of-bounds write in add_implied_include()
+    - CVE-2026-70460, bsc#1273433: Daemon module-root escape through a peer-supplied --partial-dir / --backup-dir resolving via an in-module symlink
+    - CVE-2026-70459, bsc#1273434: Per-connection daemon child crash from a crafted first incremental file list with a non-directory transfer root
+    - CVE-2026-70458, bsc#1273435: Out-of-bounds write from a FLAG_HLINKED file entry accepted without -H
+    - CVE-2026-70457, bsc#1273436: Attacker-chosen-offset write in parse_size_arg() error formatting
+    - CVE-2026-70456, bsc#1273437: Remote out-of-bounds heap write in read_args() when the argument count lands exactly on maxargs
+    - CVE-2026-70454, bsc#1273439: rsync-ssl establishes an unauthenticated TLS connection (no CA verification; no stunnel hostname binding)
+    - CVE-2026-70453, bsc#1273440: Quadratic CPU exhaustion in hash_search() from a crafted equal-weak-checksum chain
+    - CVE-2026-70464, bsc#1273429: Unauthenticated pre-transfer handshake DoS locks out an rsync daemon module
+    - CVE-2026-70455, bsc#1273438: Peer-controlled Zstandard worker exhaustion on an rsync daemon
+    - CVE-2026-70452, bsc#1273441: `hosts deny` fails OPEN when a configured hostname cannot be resolved, admitting the host it was meant to block
+  - Rejected CVEs (duplicates, resolved to canonical CVEs above):
+    - CVE-2026-44507, bsc#1271931: duplicate of CVE-2026-43617
+    - CVE-2026-44508, bsc#1271932: duplicate of CVE-2026-43618
+    - CVE-2026-44509, bsc#1271933: duplicate of CVE-2026-43619
+    - CVE-2026-44510, bsc#1271934: duplicate of CVE-2026-43620
+  - Security update:
+    - CVE-2025-10158, bsc#1254441: Out of bounds array access via negative index
+    - CVE-2026-41035, bsc#1262223: count of entries mismatch can lead to a use-after-free
+    - CVE-2026-43617, bsc#1264515: Authorization Bypass via Hostname Resolution
+    - CVE-2026-29518, bsc#1264512: Integer Overflow Information Disclosure
+    - CVE-2026-43619, bsc#1264514: Symlink Race Condition via Path-Based Syscalls
+    - CVE-2026-43620, bsc#1264513: Out-of-Bounds Array Read via recv_files()
+    - CVE-2026-45232, bsc#1265296: Off-by-one stack OOB write in HTTP CONNECT proxy response parsing
+  
+  - SECURITY FIXES:
+    - This release fixes 33 security issues found during a focused
+      audit of rsync's path handling and daemon protocol, a
+      companion daemon-protocol fuzzing pass, and reports from
+      external researchers -- plus several robustness hardenings.
+      CVE IDs were assigned by VulnCheck (CNA); the precise
+      "introduced in" version ranges accompany each advisory, and
+      many are much narrower than "everything before 3.5.0". Every
+      fix ships with a regression test in the test suite that fails
+      on the unfixed tree. Many thanks to the external researchers
+      credited below.
+    - Link following (CWE-59/61) -- a local user who controls a
+      path component plants a symlink that a privileged rsync then
+      follows:
+    - CVE-2026-53802 (HIGH): Arbitrary file read / transfer-shaping
+      via symlinked operator-supplied input files. rsync followed
+      attacker-planted symlinks in --filter merge files (including
+      per-directory merges and -C .cvsignore), --files-from /
+      --include-from / --exclude-from, and the client
+      --password-file / daemon secrets file -- reading an arbitrary
+      file as filter rules, or sending a victim file's contents as
+      the daemon authentication response. Operator-supplied paths
+      are now resolved component-by-component with
+      openat(O_PATH|O_NOFOLLOW), allowing a symlink component only
+      when it is owned by uid 0 or the effective uid.
+    - CVE-2026-53803 (HIGH): Arbitrary file write / privilege
+      escalation via symlinked operator-supplied output paths --
+      --log-file, --write-batch/--read-batch, and the daemon's motd
+      / lock / early-input / --config opens. A planted symlink (or
+      parent component) could redirect the write, e.g. append the
+      log to authorized_keys; --read-batch could also feed chosen
+      bytes to the protocol parser. Same trusted-owner path walk,
+      plus an S_ISREG check on the --read-batch file.
+    - CVE-2026-53785 (HIGH): Under --relative, the receiver's
+      implied-parent creation (make_path()) built the parent chain
+      with a plain mkdir() on the full path, so a planted parent
+      symlink placed the new directories and file outside the
+      destination tree. make_path() now creates each component
+      through the held-directory-fd primitive. Reported by Omar
+      Elsayed (seks99x).
+    - CVE-2026-53784 (HIGH): Daemon module-root chdir escape under
+      use chroot = no: a plain chdir() followed a planted
+      parent-component symlink, serving files from outside the
+      module. The module-root chdir now goes through the secure
+      resolver.
+    - CVE-2026-53793 (HIGH): Chroot /./ inner-module escape -- a
+      symlinked parent component inside the inner module reached a
+      sibling outside it (the generator basis stat, the receiver
+      write/finish path, the module chdir, and the receiver's
+      delta-basis open). The secure resolver is now engaged for all
+      of those paths.
+    - CVE-2026-53795 (HIGH): An absolute --temp-dir or --link-dest
+      disabled the receiver's rename/link confinement.
+      do_rename_at()/do_link_at() bailed to the unconfined
+      path-based call whenever either path was absolute, so an
+      absolute source (the temp file, or the link-dest basis) let
+      finish_transfer()'s tmp->final rename -- or a hard-link
+      create -- follow a destination parent component an attacker
+      flipped to a symlink mid-transfer, writing the file outside
+      the tree. Each side is now confined independently. Reported
+      by Omar Elsayed (seks99x).
+    - CVE-2026-53796 (MEDIUM): A non-daemon receiver's one-time
+      chdir() into the operator-named destination was not fully
+      confined (a relative destination took a plain chdir()), so an
+      attacker who raced the named destination from a directory to
+      a symlink moved the receiver's CWD -- and every file it then
+      created -- outside the tree. The destination chdir now uses
+      the same ownership-checked O_NOFOLLOW walk as the daemon
+      module chdir (see BEHAVIOR CHANGES). Reported by Omar Elsayed
+      (seks99x).
+    - CVE-2026-53797 (MEDIUM): A non-daemon sender opened each
+      transferred file's content by path (leaf O_NOFOLLOW only), so
+      a source parent component an unprivileged user raced to a
+      symlink after the file-list scan was followed -- reading a
+      file from outside the source tree into an attacker-readable
+      destination. The content open is now anchored at the transfer
+      root with secure_relative_open(); -L / --copy-unsafe-links /
+      -k still follow, and --insecure-links restores the legacy
+      open.
+    - CVE-2026-53799 (MEDIUM): Receiver ACL/xattr metadata
+      application followed a symlink race -> arbitrary ACL
+      set (local privilege escalation). When preserving metadata
+      (-A/--acls, -X/--xattrs, or fake-super ACL-as-xattr), the
+      receiver applied each entry's ACL/xattrs by path via
+      acl_set_file() / setxattr(). A local user who raced a
+      just-received entry (or a parent) into a symlink before the
+      apply could redirect an attacker-chosen ACL -- the bytes are
+      carried in the source entry -- onto a victim inode outside
+      the destination tree, granting rwx on a root-owned file. The
+      apply now pins each entry's inode with an O_RDONLY|O_NOFOLLOW
+      fd and sets all metadata on the held inode (Linux 6.13+
+      *xattrat syscalls, or a patched libacl's *_at bindings, else
+      the /proc/self/fd compat path). Where neither primitive
+      exists (the BSDs, Solaris, macOS, or a /proc-less Linux
+      container) it falls back to the path-based apply to keep
+      --acls functional -- a documented residual, refusable via
+      refuse options = acls.
+    - CVE-2026-53800 (MEDIUM): Sender --remove-source-files unlink
+      followed a parent-component symlink race -> arbitrary
+      file deletion outside the source tree. The post-send unlink
+      and its same-file safety re-stat resolved by path relative to
+      the process CWD, so an unprivileged user who raced a source
+      parent into a symlink after the file was sent could make a
+      higher-authority sender (a root --remove-source-files run, or
+      a daemon module not refusing the option) delete a file
+      outside the served tree. The removal is now resolved through
+      the secure held-dirfd walk anchored at the served module root
+      (daemon) or transfer-root CWD (local sender), the safety
+      re-stat is confined likewise, and the per-file dev/ino is
+      only computed when --remove-source-files is in effect.
+    - CVE-2026-53801 (MEDIUM): Sender/daemon directory-scan
+      enumeration escaped the transfer root / module ->
+      out-of-tree disclosure. The sender enumerated each source
+      directory with a plain opendir() on the accumulated path, not
+      through the secure resolver (the enumeration sibling of the
+      previous item, which confined only the content open). A
+      parent component raced to a symlink between the file-list
+      scan and the recursive opendir() -- or, in daemon following
+      mode (-L/--copy-dirlinks/--copy-unsafe-links), an in-module
+      symlinked directory pointing outside the module -- let a
+      higher-authority sender enumerate an out-of-tree directory
+      and copy its entry names, metadata and symlink targets. The
+      directory scan is now confined through a held opendir fd
+      anchored at the transfer root / module.
+    - support/rrsync (the restricted SSH wrapper):
+    - CVE-2026-53783 (HIGH): rrsync restricted-directory escape. It
+      validated each argument with realpath() and then exec'd rsync
+      against the same name (a TOCTOU window), and left dangerous
+      options enabled in a restricted subdir. rrsync now inode-pins
+      the validated path and roots the argument it hands rsync at
+      that pinned fd, denies --copy-unsafe-links, forces --no-D,
+      and refuses a symlinked --log-file. The pin relies on Linux's
+      /proc/self/fd magic links being bound to the open inode, so
+      it is Linux-only; on the BSDs, macOS, Solaris and Cygwin
+      rrsync passes the realpath()-validated name as it
+      always did. Two limits are worth stating: under --relative
+      only the anchor the transmitted name starts from is pinned,
+      so a component below it can still be raced, and the final
+      component of an ordinary sender argument is not pinned either
+      (rsync does not follow a symlink there, and the options that
+      would change that are refused in a restricted dir).
+    - A filter rule that failed to parse was echoed back verbatim,
+      including when the rule came from a merge file's contents. A
+      per-directory merge rule names a file the peer chooses and
+      travels over the protocol rather than in an argument, so this
+      let a peer read back any line of any file the server process
+      could open that is not valid filter syntax -- through an
+      rrsync restricted account as well as a daemon module, since
+      neither confined a merge open that the wrapper never sees. A
+      syntax error in a rule read from a file now reports the file
+      and line rather than the text; a rule given as an argument is
+      still shown. The --debug=FILTER traces print the same
+      file-derived text, so rrsync now refuses a peer-selected
+      --debug (a stock client never sends one). An operator who
+      turns debugging on for their own server still sees the rule
+      text.
+    - Redacting those diagnostics did not close the merge route on
+      its own, because the worst shape produces no diagnostic at
+      all: an exclude-only merge (the - modifier) makes every line
+      of the file a pattern, so nothing fails to parse and the peer
+      reads the contents off which of its own names went missing
+      from the file list. Through an rrsync restricted account that
+      needs no --delete and no verbosity on a pull. The open is now
+      confined rather than the disclosure suppressed: rsync gained
+      --confine-root=DIR, which refuses an operator- or
+      peer-supplied path that resolves outside DIR, and rrsync
+      passes its restricted directory. A merge file inside that
+      directory keeps working. A daemon already had this through
+      its module root and is unaffected.
+    - Daemon protocol / identity:
+    - CVE-2026-53786 (MEDIUM): A client-supplied --filter merge
+      file bypassed the module filter list (it was checked against
+      the module-prefixed path, which never matched a module rule).
+      The module-dir prefix is now stripped before the check.
+      Reported by Mitchell Benjamin (Revamp Studio).
+    - CVE-2026-53798 (MEDIUM): The daemon name converter mapped an
+      unknown name to uid/gid 0 (an empty response was read as
+      atol("") == 0); with fake super = yes the stored metadata
+      became root-owned. An empty/non-numeric response is now
+      treated as a lookup failure. Reported by Mitchell Benjamin
+      (Revamp Studio).
+    - CVE-2026-53788 (MEDIUM): A peer-controlled name containing a
+      newline/CR was written verbatim into the name-converter line
+      protocol, allowing request injection. Converter tokens
+      containing control characters are now rejected. Reported by
+      Mitchell Benjamin (Revamp Studio).
+    - CVE-2026-53789 (MEDIUM): A malicious daemon-sender could
+      widen --delete scope by omitting the "no content dir" flag on
+      an implied parent, making the receiver run delete_in_dir() on
+      it. Implied-parent directories are now forced non-content on
+      the receiver. Reported by Mitchell Benjamin (Revamp Studio).
+    - CVE-2026-53791 (CRITICAL): With proxy protocol = true, a
+      client connecting directly (not via the trusted proxy) could
+      send a PROXY header to spoof its source address and bypass
+      host-based access control. A forwarded address is now
+      honoured only from a configured trusted-proxy peer.
+    - Injection and memory safety:
+    - CVE-2026-53790 (HIGH): Command / argument injection via
+      unquoted peer- or host-controlled values -- the
+      RSYNC_CONNECT_PROG %H host substitution, the daemon exec-hook
+      %RSYNC_*% expansions, rsync-ssl hostspecs, and a missing
+      newline/CR in remote-shell argument quoting. Each sink is now
+      quoted or validated (the hook escaping is confined to the
+      shell-executed hooks, so ordinary daemon string parameters
+      such as path are unaffected).
+    - CVE-2026-53792 (MEDIUM): A malicious receiver sending a
+      checksum header with a block count > 0 but block length == 0
+      drove the sender's rolling-match arithmetic negative. A zero
+      block length is now rejected.
+    - CVE-2026-53794 (MEDIUM): --max-alloc=0 disabled the
+      per-allocation size cap (the defense behind CVE-2024-12084)
+      and could be forwarded on the wire to an unpatched daemon. A
+      zero max-alloc is now rejected at both the client and the
+      daemon. Reported by Azizcan Dastan (Milenium Security).
+    - Peer-triggerable memory corruption in the daemon protocol,
+      found by a daemon-protocol fuzzing pass and reported by Greg
+      Kroah-Hartman. Each is a WRITE reachable from the wire, which
+      is why these were split out from the crash-only findings in
+      the same pass:
+    - CVE-2026-70461 (HIGH): a one-byte heap out-of-bounds write in
+      add_implied_include(), driven by a peer-supplied filter rule
+      whose trailing backslash was not counted when sizing the
+      copy.
+    - CVE-2026-70458 (HIGH): an out-of-bounds write from a file
+      entry marked FLAG_HLINKED that the receiver accepted even
+      though -H was not in effect, so the hard-link extra slots it
+      then wrote were never allocated.
+    - CVE-2026-70456 (HIGH): an out-of-bounds heap write in
+      read_args() when the peer's argument count lands exactly on
+      maxargs -- the trailing NULL went one past the end of the
+      array.
+    - CVE-2026-70457 (MEDIUM): an attacker-chosen-offset write in
+      parse_size_arg()'s error formatting, reachable through an
+      over-large --max-size / --min-size / --max-alloc forwarded to
+      a daemon.
+    - CVE-2026-70459 (MEDIUM): a wild-pointer read crashing the
+      per-connection daemon child, from a crafted first incremental
+      file list whose transfer root is "." with a non-directory
+      mode -- parent_ndx stayed 0 while dir_flist was still empty,
+      so the generator dereferenced a never-written slot. Companion
+      to CVE-2026-43620; reproduced on released 3.2.7, 3.4.0 and
+      3.4.1.
+    - Daemon availability and access control:
+    - CVE-2026-70464 (HIGH): an unauthenticated peer could complete
+      the @RSYNCD greeting and then stall forever -- sending a line
+      with no terminator, or trickling NUL-terminated arguments
+      into read_args() one byte at a time -- holding a
+      per-connection child open past the module's max connections
+      limit. The timeout parameter did not cover it, because
+      set_io_timeout() ran after the read_args() calls that needed
+      covering. A separate deadline now spans both, and the
+      early-protocol argument count is bounded. Reported
+      independently by Chamal De Silva and by Michal Ruprich (Red
+      Hat QE).
+    - CVE-2026-70455 (HIGH): a daemon client could request an
+      arbitrary Zstandard worker count via --compress-threads; 256
+      was measured as 257 threads in a single connection. Now
+      capped at 8 on a daemon, while local and remote-shell
+      invocations keep the operator's value. Reported, fixed and
+      tested by Filipe Casal of Trail of Bits, in collaboration
+      with OpenAI.
+    - CVE-2026-70453 (HIGH): quadratic CPU exhaustion in
+      hash_search() from a crafted chain of equal weak checksums.
+      The chain walk is now bounded. First reported as a
+      performance problem in public rsync issue #217 by heyciao
+      (2021); recognised as a security issue, bounded and
+      regression-tested by Stuart Inglis. This one was already
+      public and was not embargoed.
+    - CVE-2026-70452 (HIGH): hosts deny failed OPEN when a
+      configured hostname could not be resolved -- with forward
+      lookup enabled, which is the default, an unresolvable deny
+      token admitted the host it was meant to block. It now fails
+      closed. Sibling of CVE-2026-43617. Reported by Leonid Bugaev.
+    - CVE-2026-70463 (HIGH): auth users ignored its documented
+      comma-only parsing. With a leading comma the split should be
+      on commas alone, so that a group name containing a space can
+      be written; it split on whitespace too, so a deny or :ro rule
+      naming such a group was broken into two meaningless tokens
+      and never fired. Reported by Andres Berbescu.
+    - CVE-2026-70460 (HIGH): a peer-supplied --partial-dir or
+      --backup-dir was resolved by pathname, so an in-module
+      symlink could redirect it and place files outside the
+      daemon's module root. Those paths are now confined. Reported
+      by Omar Elsayed (seks99x).
+  - Client-side:
+    - CVE-2026-70462 (MEDIUM): a peer-supplied MSG_IO_TIMEOUT
+      defeated the client's own I/O timeout -- a large value
+      overflowed signed arithmetic, and a non-positive value
+      disabled the timeout outright. The value is now capped on
+      receipt and the arithmetic made overflow-safe. Reported by
+      Z3R0S! (z3r0s6); the non-positive case was reported by Leonid
+      Bugaev.
+    - CVE-2026-70454 (MEDIUM): rsync-ssl established an
+      unauthenticated TLS connection. In stunnel mode it neither
+      required CA verification nor bound the certificate to the
+      requested hostname, so an active network attacker could
+      impersonate the server; the openssl backend had a matching
+      hostname gap in 3.2.0 through 3.2.3 (found and fixed in 2020
+      by Matt McCutchen). stunnel mode now requires certificate
+      verification and hostname binding unless an explicit insecure
+      opt-out is set, and the GnuTLS backend is refused
+      conservatively rather than used unverified (Greg
+      Kroah-Hartman).
+    - Robustness hardening (no CVE assigned): the RSYNC_PROXY
+      CONNECT request and proxy response headers are
+      length-bounded, and peer-requested xattr expansion is capped.
+    - A second-pass source audit (reported by Leonid Bugaev)
+      hardened several memory- safety and robustness paths: the
+      hashtable and file-list size computations are guarded against
+      a 32-bit integer overflow that a peer's entry count could
+      otherwise wrap into an under-allocation, and the SIGUSR2
+      handler is now async-signal-safe (it only sets a flag,
+      deferring the summary/close-out work to safe poll points).
+      Separately, the xattr/ACL metadata copy now reads the source
+      through a held no-follow fd as well as writing the
+      destination through one -- closing a parent-symlink race on
+      the --copy-dest and backup source -- and the cross-tree
+      operator-path metadata apply is now fd-pinned under
+      --fake-super too (previously it fell back to a path-based set
+      for a fake super = yes daemon staging through an absolute
+      --temp-dir/--backup-dir).
+  - SECURITY RELATED:
+    - Mask a peer-supplied I/O-error value to the defined IOERR_*
+      bits, both the incoming MSG_IO_ERROR message (io.c) and the
+      file-list trailer (flist.c), so a malicious peer cannot set
+      arbitrary (undefined) error flags that would be stored in the
+      local io_error and re-forwarded upstream. (Undefined bits
+      never reached the exit code, which maps only the defined
+      bits.) Reported by Leonid Bugaev.
+    - Escape control characters in filenames written to the log
+      file (CWE-117 log injection): a transferred name containing
+      control bytes -- C0 (tab excepted) and C1 0x80-0x9f,
+      including CSI 0x9b -- could otherwise inject terminal escape
+      sequences into an administrator's terminal when the log is
+      viewed. Reported by Leonid Bugaev.
+    - Stop safe_arg() leaking an uninitialized byte into a quoted
+      filename. In filename mode the writer suppresses the escaping
+      backslash before a wildcard, but the counter that sized the
+      buffer reserved a slot for every backslash, so the two
+      disagreed and left an uninitialized heap byte in the returned
+      string -- which is handed to the remote shell when
+      --protect-args is off. The counter now mirrors the writer,
+      and guarding the wildcard test with f[1] also fixes a
+      trailing backslash (previously strchr() matched the string
+      terminator, so the backslash was not doubled). Reported by
+      Leonid Bugaev.
+    - Close a --safe-links bypass in --backup: when symlinks can be
+      hard-linked, make_backup()'s link/rename fast path
+      hard-linked an unsafe (out-of-tree) symlink into the backup
+      area and skipped the safe_symlinks check the copy path
+      applies, silently preserving a link --safe-links was meant to
+      drop. The safe-links check now runs before the fast path, and
+      a symlink whose target is unreadable is failed closed rather
+      than backed up unchecked. Reported by Leonid Bugaev.
+    - Extend the operator-directory ownership walk to the backup
+      leaf sinks: do_symlink_at() (backing a symlink up into an
+      operator --backup-dir) and do_rmdir_at() (removing a
+      pre-existing backup directory) now resolve their parent
+      through the same ownership walk, so a foreign-owned parent
+      symlink no longer redirects the backup symlink-create or
+      directory-removal outside the backup tree. --insecure-links
+      (or a module's insecure links = yes) restores the legacy
+      follow. Reported by Omar Elsayed (seks99x).
+    - Confine an absolute operator source/destination through the
+      ownership walk in robust_rename()'s cross-filesystem (EXDEV)
+      copy fallback, so a raced parent symlink cannot redirect the
+      fallback copy or its source unlink out of the tree. Reported
+      by Leonid Bugaev.
+    - Bound the number of equal-weak-checksum blocks examined per
+      offset in hash_search() (issue #217), so a crafted or
+      degenerate checksum set with a very long equal-checksum chain
+      cannot drive the sender's per-offset match-verify into a
+      quadratic blow-up (CPU DoS). Fix by Stuart Inglis.
+  - BUG FIXES:
+    - Fix an off-by-one in clean_fname()'s ..-collapse path
+      normalization. Reported by Leonid Bugaev.
+    - The AVX2 rolling-checksum assembly (--enable-roll-asm) read
+      up to 64 bytes past the end of the buffer it was given. The
+      loop is software-pipelined and preloaded the 64 bytes after
+      the ones it was folding in, so its last iteration always
+      reached beyond the data -- the remainder is by construction
+      under 64 bytes. It normally landed in slack inside rsync's
+      map window and went unnoticed; where the buffer ended at a
+      page boundary it was a SIGSEGV mid transfer, reported on
+      macOS x86-64 by Roland Kletzing. Reported checksums are
+      unchanged.
+    - --link-dest no longer fails the transfer when the destination
+      refuses to hard-link a symlink, device node, FIFO or socket.
+      Whether rsync hard-links those at all was decided at build
+      time, on whatever filesystem the source tree happened to sit
+      on, and one host can hold both answers -- macOS builds on
+      APFS, which can, and backs up to HFS+, which returns ENOTSUP.
+      Such an entry is now copied, exactly as it already is in a
+      build that cannot link them and as a regular file in the same
+      position already was; the run used to exit 23 even though the
+      entry was then created correctly. The fallback covers any
+      refusal, since the error does not identify one on its own:
+      link(2) documents EPERM both for a filesystem without hard
+      links and for a permission refusal. Still outstanding: under
+      -H, a group of such entries hard-linked to each other also
+      needs a link within the destination, and where the
+      destination cannot hard-link the type at all, the members
+      after the first are still lost.
+    - --out-format / --log-file-format now emit a literal % for %%
+      instead of mis-parsing the following character (added by
+      Leonid Bugaev); a follow-up bounds log_format_has()'s
+      width-digit scan to match log_formatted(), closing a %C read
+      past the checksum field.
+    - A CVS .cvsignore (or -C) file containing a ! clear-list token
+      no longer aborts with a spurious "rule has trailing
+      characters" error. Reported by Leonid Bugaev.
+    - --chmod=a+s now sets both the setuid and setgid bits,
+      matching chmod(1) (it previously set setuid only). Reported
+      by Leonid Bugaev.
+    - Case-insensitive wildcard matching (used by daemon hosts
+      allow/hosts deny rules) now folds characters inside a [...]
+      bracket expression, not just literal pattern characters.
+      Reported by Leonid Bugaev.
+  - BEHAVIOR CHANGES:
+    - A non-daemon receiver follows an operator-named symlinked
+      destination directory only when the symlink is owned by root
+      or the running user (e.g. rsync -a src/ /backup/ where
+      /backup -> /mnt/disk); a destination symlinked by another uid
+      is now refused, closing a chdir TOCTOU where an attacker
+      raced the named destination into a symlink. --insecure-links
+      restores the unconditional follow.
+    - On platforms without a race-safe way to create a unix socket
+      in a subdirectory (the BSDs, macOS, Solaris, which lack
+      bindat()), a nested socket transferred under --specials is
+      skipped with a warning instead of failing the whole transfer.
+      Top-level sockets are unaffected.
+    - proxy protocol = true with no proxy protocol hosts rejects
+      all connections (fail-closed); the daemon now warns about
+      this at startup.
+    - support/rrsync in a restricted subdirectory forces --no-D
+      (device/special semantics are stripped, so a plain rsync -a
+      still works) and denies --copy-unsafe-links.
+    - The path resolver now follows in-tree directory symlinks
+      uniformly on every platform via a single race-free
+      per-component O_NOFOLLOW walk, so -K / -L / -k and -R through
+      an in-tree symlinked parent behave the same everywhere.
+- refresh patches
+  rsync-python-3.6-tests.patch
+  rsync-usr-etc.patch
+  rsyncd-return-from-list-command-with-0.patch
+- drop rsync-openat2-glibc-missing.patch
+- switch to use a modern python on sle 15 for the testsuite
+- add use-sys.executable.patch:
+  don't assume python3 is the binary name. use sys.executable.
+
+-------------------------------------------------------------------
 Tue Jun  9 21:24:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Add missing python3-base BR
@@ -12,7 +572,7 @@ Thu May 21 06:37:59 UTC 2026 - David Anes <david.anes@suse.com>
   - rsync-python-3.6-tests.patch:
     Small patch to support running tests on python 3.6+:
   - rsync-openat2-glibc-missing.patch:
-    Small patch to build on kernels >= 5.6+ where openat2 
+    Small patch to build on kernels >= 5.6+ where openat2
     is not defined in glibc.
 
 - Removed patches already upstream:
@@ -22,61 +582,61 @@ Thu May 21 06:37:59 UTC 2026 - David Anes <david.anes@suse.com>
   - rsync341-gcc15-bool.patch
 
 - Removed support for the unmaintained rsync-patches archive,
-  which in turn removes support for SLP. These patches are not 
+  which in turn removes support for SLP. These patches are not
   being shipped anymore.
 
 - Update to 3.4.3:
 
   - SECURITY FIXES:
 
-    Six CVEs are fixed in this release. Three of the six 
-    (CVE-2026-29518, CVE-2026-43617, CVE-2026-43619) require 
+    Six CVEs are fixed in this release. Three of the six
+    (CVE-2026-29518, CVE-2026-43617, CVE-2026-43619) require
     non-default daemon configuration to reach: the first and
     third need use chroot = no for a module, the second needs
-    daemon chroot = ... set in rsyncd.conf. 
-    
+    daemon chroot = ... set in rsyncd.conf.
+
     Two (CVE-2026-43618, CVE-2026-43620) are reachable from a
-    normal pull or a normal authenticated daemon connection. 
-    The sixth (CVE-2026-45232) is reachable only when RSYNC_PROXY 
-    is set and the proxy (or a MITM) returns a pathological 
+    normal pull or a normal authenticated daemon connection.
+    The sixth (CVE-2026-45232) is reachable only when RSYNC_PROXY
+    is set and the proxy (or a MITM) returns a pathological
     response.
 
     Complete list of changes: https://download.samba.org/pub/rsync/NEWS#3.4.3
 
     - CVE-2026-29518, bsc#1264511: Symlink-Race TOCTOU in Daemon (use chroot = no)
 
-      TOCTOU symlink race condition allowing local privilege 
+      TOCTOU symlink race condition allowing local privilege
       escalation in daemon mode without chroot. An rsync daemon
-      configured with "use chroot = no" was exposed to a 
+      configured with "use chroot = no" was exposed to a
       time-of-check / time-of-use race on parent path components.
 
     - CVE-2026-43617, bsc#1264515: Authorization Bypass via Hostname Resolution
-    
+
       Hostname/ACL bypass on an rsync daemon configured with
       daemon chroot = /X in rsyncd.conf when the chroot tree
-      lacks DNS resolution support. The reverse-DNS lookup of 
+      lacks DNS resolution support. The reverse-DNS lookup of
       the connecting client was performed after the daemon chroot
-      had been entered; if /X did not contain the libc resolver 
+      had been entered; if /X did not contain the libc resolver
       fixtures (/etc/resolv.conf, /etc/nsswitch.conf, /etc/hosts,
-      NSS service modules) the lookup failed and the connecting 
-      hostname was set to "UNKNOWN", causing hostname-based deny 
-      rules to silently fail open. IP-based ACLs are unaffected. 
-      The per-module use chroot setting is unrelated to this 
+      NSS service modules) the lookup failed and the connecting
+      hostname was set to "UNKNOWN", causing hostname-based deny
+      rules to silently fail open. IP-based ACLs are unaffected.
+      The per-module use chroot setting is unrelated to this
       issue. The fix performs the lookup before entering the
       daemon chroot.
 
     - CVE-2026-43618, bsc#1264512:  Integer Overflow Information Disclosure
-    
+
       Integer overflow in the compressed-token decoder enabling
       remote memory disclosure to an authenticated daemon peer.
-            
+
       Workaround for older releases: refuse options = compress in rsyncd.conf.
 
     - CVE-2026-43619, bsc#1264514: Symlink Race Condition via Path-Based Syscalls
-    
+
       Symlink races on path-based system calls in "use chroot=no"
       daemon mode (generalisation of CVE-2026-29518). Earlier
-      fixes for symlink races on the receiver's open() call 
+      fixes for symlink races on the receiver's open() call
       missed the same race class on every other path-based system
       call: chmod, lchown, utimes, rename, unlink, mkdir, symlink,
       mknod, link, rmdir and lstat.
@@ -84,36 +644,36 @@ Thu May 21 06:37:59 UTC 2026 - David Anes <david.anes@suse.com>
       Default "use chroot = yes" is not exposed.
 
     - CVE-2026-43620, bsc#1264513: Out-of-Bounds Array Read via recv_files()
-      
-      Out-of-bounds read in the receiver's recv_files() enabling 
-      remote denial-of-service of any client pulling from a 
-      malicious server (incomplete fix of commit 797e17f). 
-      
+
+      Out-of-bounds read in the receiver's recv_files() enabling
+      remote denial-of-service of any client pulling from a
+      malicious server (incomplete fix of commit 797e17f).
+
       Workaround for older releases: --no-inc-recursive on the client.
 
-    - CVE-2026-45232, bsc#1265296: Off-by-one stack OOB write in HTTP CONNECT proxy 
+    - CVE-2026-45232, bsc#1265296: Off-by-one stack OOB write in HTTP CONNECT proxy
       response parsing
-    
-      Off-by-one out-of-bounds stack write in the rsync client's 
+
+      Off-by-one out-of-bounds stack write in the rsync client's
       HTTP CONNECT proxy handler (establish_proxy_connection() in
-      socket.c). The fix detects the "buffer filled without finding 
-      \n" case explicitly by position and refuses the response with 
+      socket.c). The fix detects the "buffer filled without finding
+      \n" case explicitly by position and refuses the response with
       "proxy response line too long".
 
-    - In addition to the six CVE fixes, this release adds defence-in-depth 
+    - In addition to the six CVE fixes, this release adds defence-in-depth
       hardening on several adjacent paths.
 
   - BUG FIXES:
 
     - Fixed a regression introduced by the 3.4.0 secure_relative_open().
 
-- Complete list of fixes in version 3.4.2:  
+- Complete list of fixes in version 3.4.2:
   - https://download.samba.org/pub/rsync/NEWS#3.4.2
-  
+
 -------------------------------------------------------------------
 Tue May 07 16:06:15 UTC 2026 - David Anes <david.anes@suse.com>
 
-- Security update (CVE-2026-41035, bsc#1262223): rsync: count of 
+- Security update (CVE-2026-41035, bsc#1262223): rsync: count of
   entries mismatch can lead to a use-after-free
   - Add rsync-CVE-2026-41035.patch
 
@@ -139,7 +699,7 @@ Fri Jan 17 08:26:55 UTC 2025 - ecsos <ecsos@opensuse.org>
 
 - Update to 3.4.1
   * BUG FIXES:
-    - fixed handling of -⁠H flag with conflict in internal flag values
+    - fixed handling of -H flag with conflict in internal flag values
     - fixed a user after free in logging of failed rename
     - fixed build on systems without openat()
     - removed dependency on alloca() in bundled popt
@@ -260,13 +820,13 @@ Thu Apr 18 08:22:02 UTC 2024 - David Anes <david.anes@suse.com>
     - Make sure that a local transfer marks the sender side as
       trusted.
     - Change the argv handling to work with a newer popt library
-      -⁠-⁠ one that likes to free more data than it used to.
+      -- one that likes to free more data than it used to.
     - Rsync now calls OpenSSL_add_all_algorithms() when compiled
       against an older openssl library.
     - Fixed a problem in the daemon auth for older protocols
       (29 and before) if the openssl library is being used to
       compute MD4 checksums.
-    - Fixed rsync -VV on Cygwin -⁠-⁠ it needed a flush of stdout.
+    - Fixed rsync -VV on Cygwin -- it needed a flush of stdout.
     - Fixed an old stats bug that counted devices as symlinks.
 
   * ENHANCEMENTS:
@@ -1559,4 +2119,3 @@ Tue May 12 11:29:45 MEST 1998 - ro@suse.de
 Mon Nov 10 22:38:30 MET 1997 - kfr@suse.de
 
 - first version for S.u.S.E. (1.6.3)
-
