@@ -11,6 +11,8 @@ Type=oneshot
 RemainAfterExit=no
 User=root
 ExecStart=@LIBEXECDIR@/selinux/cleanoldsepoldir.sh
+# this is for the cases where snapper is not installed, so retry next boot:
+SuccessExitStatus=5
 TimeoutSec=300
 StandardOutput=journal
 StandardError=journal

@@ -272,8 +272,10 @@ else
             fi
         fi
     else
-        echo "ERROR: snapper command not found on a Btrfs system. This script requires snapper for Btrfs." >&2
-        exit 1
+        echo "<4>WARNING: snapper command not found on a Btrfs system. This script requires snapper for Btrfs." >&2
+        echo "<4>WARNING: Cannot verify that all snapshots are migrated, keeping /var/lib/selinux and trying again next boot." >&2
+        # Exit as NOTINSTALLED, will allow cleanoldsepoldir systemd service to exit with success status and retry next time
+        exit 5
     fi
 fi
 
