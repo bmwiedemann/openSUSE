@@ -48,7 +48,7 @@
 %define         acl_version 52.6.0
 %bcond_without  libalternatives
 Name:           python-vllm%{psuffix}
-Version:        0.29.0
+Version:        0.30.0
 Release:        0
 Summary:        A high-throughput and memory-efficient inference and serving engine for LLMs
 License:        Apache-2.0
@@ -68,6 +68,8 @@ Source12:       https://github.com/ARM-software/ComputeLibrary/archive/refs/tags
 Patch0:         vllm-relax-cpu-requirements.patch
 # PATCH-FIX-OPENSUSE vllm-cpu-disable-rust-frontend.patch -- do not build the ~575-crate Rust frontend (unvendorable offline; runtime-optional)
 Patch1:         vllm-cpu-disable-rust-frontend.patch
+# PATCH-FIX-UPSTREAM vllm-thinking-budget-scan-cursor.patch boo#1280982 mpluskal@suse.com -- CVE-2026-92365: resume the thinking-budget marker search from a cursor so a generation is not quadratic in its own length
+Patch2:         vllm-thinking-budget-scan-cursor.patch
 BuildRequires:  %{python_module Jinja2}
 # Runtime modules imported eagerly by "import vllm" (needed for the %%check smoke test).
 BuildRequires:  %{python_module cachetools}
@@ -119,7 +121,7 @@ Requires:       python-depyf >= 0.20.0
 Requires:       python-einops
 Requires:       python-fastapi >= 0.133.0
 Requires:       python-filelock >= 3.16.1
-Requires:       python-huggingface-hub >= 1.28.0
+Requires:       python-huggingface-hub >= 1.31.0
 Requires:       python-ijson
 Requires:       python-jsonschema >= 4.23.0
 Requires:       python-lark >= 1.2.2
@@ -127,13 +129,18 @@ Requires:       python-llguidance >= 1.7.0
 # One of the optional structured-output backends, LazyLoader-imported only when
 # a request selects it.
 Requires:       python-lm-format-enforcer >= 0.11.3
+# Upstream asks for mcp >= 2.0.0 because 0.30.0 reads the SDK 2.x snake_case
+# tool schema (Tool.input_schema, InitializeResult.server_info).  Factory only
+# carries 1.28.1, and an unsatisfiable Requires would leave this package
+# uninstallable, so keep it unversioned: mcp is imported lazily and solely by
+# the optional "--tool-server" integration, the one feature that needs 2.x.
 Requires:       python-mcp
 Requires:       python-mistral-common >= 1.11.6
 Requires:       python-model-hosting-container-standards >= 0.1.14
 Requires:       python-msgspec
 Requires:       python-numba >= 0.65.0
 Requires:       python-numpy
-Requires:       python-openai >= 2.0.0
+Requires:       python-openai >= 2.25.0
 Requires:       python-openai-harmony >= 0.0.3
 Requires:       python-opencv >= 4.13.0
 Requires:       python-opentelemetry-api >= 1.27.0
@@ -288,7 +295,7 @@ rm -f $sd/vllm/distributed/kv_transfer/kv_connector/v1/hf3fs/utils/hf3fs_utils.c
 rm -f $sd/vllm/distributed/kv_transfer/disagg_prefill_workflow.jpg
 rm -f $sd/vllm/vllm_flash_attn/.gitkeep
 # These modules carry a #!/usr/bin/env python shebang but are imported, not run.
-sed -i '1{/^#!/d}' $sd/vllm/entrypoints/grpc_server.py
+sed -i '1{/^#!/d}' $sd/vllm/entrypoints/launchers/grpc_server.py
 sed -i '1{/^#!/d}' $sd/vllm/entrypoints/launchers/dp_supervisor.py
 %fdupes $sd
 }

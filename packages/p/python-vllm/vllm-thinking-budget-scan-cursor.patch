@@ -1,0 +1,107 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] Bound the thinking-budget marker search with a resume cursor
+References: CVE-2026-92365, boo#1280982
+
+The thinking_token_budget state machine looks for the reasoning start/end
+markers with _find_last_sequence_index(), a backwards linear scan.  While a
+marker has not been seen yet the cached position stays -1, so _update_think_state
+re-runs that scan over the *entire* accumulated output on every decode step.
+scan_offset only moves when a thinking section completes, so it does not bound
+the common case: a request whose output simply never contains the markers, or
+one still inside a long thinking section, rescans everything each step.
+
+That makes a single generation O(L^2) in its own length, and the cost is paid
+inside the sampler step, which is shared and serialised for the whole batch --
+so an unauthenticated client can set thinking_token_budget with a large
+max_tokens and degrade latency for every co-tenant request.  Measured on the
+sampler path alone, 4000 decode steps inspect 16,004,000 candidate positions
+and spend 6.1 s.
+
+A miss proves no occurrence begins at or before the last position tested, so
+the next step only has to look at the tokens appended since (plus the
+len(marker)-1 tail a marker can straddle).  Record that position per marker and
+resume from it: the search becomes O(len(marker)) per step, the same 4000 steps
+inspect 8000 positions in 47 ms, and the resulting state is unchanged -- the
+scan still returns the last occurrence, because there is provably none earlier.
+
+The cursor is clamped to scan_offset, so completing a thinking section still
+invalidates it, and a shorter output (rejected speculative tokens) falls back
+to a full scan of the current section.
+
+--- a/vllm/v1/sample/thinking_budget_state.py
++++ b/vllm/v1/sample/thinking_budget_state.py
+@@ -168,6 +168,37 @@
+                 return i
+         return -1
+ 
++    def _scan_for_marker(
++        self, state: dict[str, Any], cursor_key: str, token_ids: list[int]
++    ) -> int:
++        """Last index of ``token_ids`` in ``output_tok_ids``, resuming a cursor.
++
++        Only reached while the cached position is still -1, and a miss proves no
++        occurrence begins at or before the last position already tested.  Storing
++        that position lets the next step look only at the tokens appended since,
++        so the marker search costs O(len(token_ids)) per decode step instead of
++        rescanning the whole output -- which is what made a single long
++        generation quadratic in its own length and let one client stall every
++        co-tenant request sharing the sampler step.
++        """
++        if not token_ids:
++            return -1
++        output = state.get("output_tok_ids", [])
++        scan_offset = state.get("scan_offset", 0)
++        # Highest index a match could start at, plus one.
++        resume_limit = len(output) - len(token_ids) + 1
++        start = max(state.get(cursor_key, 0), scan_offset)
++        if start > resume_limit:
++            # Output is shorter than when the cursor was stored (rejected
++            # speculative tokens); the cursor is stale, rescan the section.
++            start = scan_offset
++        if start < resume_limit:
++            found = self._find_last_sequence_index(output[start:], token_ids)
++            if found >= 0:
++                return found + start
++        state[cursor_key] = max(start, resume_limit)
++        return -1
++
+     def _init_state_entry(
+         self, prompt_tok_ids: list[int] | None, thinking_token_budget: int
+     ) -> dict[str, Any]:
+@@ -225,6 +256,8 @@
+             "bonus_token_forced": False,
+             "continue_thinking": continue_thinking,
+             "scan_offset": 0,
++            "start_scan_pos": 0,
++            "end_scan_pos": 0,
+         }
+ 
+     def _update_think_state(self, state: dict[str, Any]) -> None:
+@@ -237,23 +270,13 @@
+             return
+ 
+         if state["start_thinking"] == -1:
+-            scan_offset = state.get("scan_offset", 0)
+-            output_slice = state.get("output_tok_ids", [])[scan_offset:]
+-            start_thinking = self._find_last_sequence_index(
+-                output_slice, self.think_start_token_ids
++            state["start_thinking"] = self._scan_for_marker(
++                state, "start_scan_pos", self.think_start_token_ids
+             )
+-            if start_thinking >= 0:
+-                start_thinking += scan_offset
+-            state["start_thinking"] = start_thinking
+         if state["end_thinking"] == -1:
+-            scan_offset = state.get("scan_offset", 0)
+-            output_slice = state.get("output_tok_ids", [])[scan_offset:]
+-            end_thinking = self._find_last_sequence_index(
+-                output_slice, self.think_end_token_ids
++            state["end_thinking"] = self._scan_for_marker(
++                state, "end_scan_pos", self.think_end_token_ids
+             )
+-            if end_thinking >= 0:
+-                end_thinking += scan_offset
+-            state["end_thinking"] = end_thinking
+ 
+         if (
+             not state.get("in_end", False)

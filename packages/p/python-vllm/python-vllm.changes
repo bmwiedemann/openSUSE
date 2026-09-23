@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Sep 22 21:42:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.30.0:
+  * New DeepSeek-V4 CPU backend kernels and AMX-FP8 attention
+    kernels for Diamond Rapids CPUs
+  * Validation error responses are truncated, closing a large
+    response amplification from a small request body
+  * prompt_embeds and the image/video/audio _embeds inputs are
+    rejected by declared dense size before densification,
+    closing a memory amplification DoS (the limit is
+    VLLM_MAX_EMBED_DECODE_BYTES)
+  * Per-request video sampling is capped for the GLMGA and
+    Qwen2/3-VL backends (640/768 frames, 30 fps)
+  * Scale-out endpoints are no longer registered by a plain
+    "vllm serve" (pass --enable-scale-out); their multimodal
+    features are now bounds-checked against the prompt before
+    the engine sees them
+  * Late-interaction (ColBERT-style) scoring keys its query cache
+    by a server-generated id instead of the client's X-Request-Id,
+    so a client can no longer overwrite another client's cached
+    query embeddings
+  * routed_experts_prompt_start is checked against the prompt
+    length at the frontend; with --enable-return-routed-experts
+    an out-of-range value from an API client tripped an engine
+    core assert and took the engine down
+  * Integers in vllm_xargs outside the 64-bit range are rejected
+    with a validation error; they used to fail only after the
+    request was registered, leaking its state in the API server
+    on every such request
+  * "vllm bench serve" redacts --header values (e.g. auth tokens)
+    when printing its arguments and saving results
+  * Dropped: VLLM_PREFIX_CACHE_RETENTION_INTERVAL,
+    VLLM_MM_HASHER_ALGORITHM, use_fp4_indexer_cache, and
+    support for GPTQ checkpoints with desc_act=True
+  * YaRN is aligned with Transformers: rope_type yarn,
+    deepseek_yarn and deepseek_llama_scaling no longer re-scale
+    max_model_len, so context length drops for some models
+  * Many more changes; see upstream's release notes
+- CVE-2026-92365: rescanning the whole output for the reasoning
+  markers on every decode step makes the thinking_token_budget
+  state machine quadratic in the generated length, letting an
+  unauthenticated client degrade latency for co-tenant requests
+  sharing the sampler step (boo#1280982)
+  * vllm-thinking-budget-scan-cursor.patch
+- Raise the python-huggingface-hub floor to 1.31.0 and the
+  python-openai floor to 2.25.0 to match upstream
+- Keep python-mcp unversioned although upstream now asks for
+  mcp >= 2.0.0: Factory carries 1.28.1, and only the optional
+  "--tool-server" integration reads the SDK 2.x tool schema
+  * vllm-relax-cpu-requirements.patch: relax the mcp pin in the
+    wheel metadata too, so the installed dist-info does not
+    assert a requirement the RPM cannot satisfy
+- Is not affected by CVE-2026-90713 (boo#1280450): the Rust
+  frontend holding the tiktoken vocabulary loader is not built
+- Is not affected by CVE-2026-93841 (boo#1281905): the Triton
+  bincount kernel belongs to Model Runner V2, which requires
+  Triton and falls back to V1 when it is absent
+- Is not affected by CVE-2026-93989 (boo#1281906): the
+  unbounded bad-words write is in that same Triton V2 sampler;
+  the shipped V1 path assigns a bounded per-row slice
+
+-------------------------------------------------------------------
 Thu Sep 10 05:45:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.29.0:

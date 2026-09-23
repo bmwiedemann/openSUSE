@@ -152,4 +152,24 @@ Built and tested natively on aarch64, both multibuild flavours.</comment>
 - Local aarch64 builds green for both flavors, source_validator clean</comment>
     <requestid>1376831</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>bec178f20f7e5fd5a4af7b0adb81cb1f</srcmd5>
+    <version>0.30.0</version>
+    <time>1790166893</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.30.0.
+
+Security: fixes CVE-2026-92365 (boo#1280982) with a downstream patch, picks up
+upstream's security hardening (embed densification limit, video sampling caps,
+scale-out bounds checks, late-interaction cache keying, routed-experts and
+vllm_xargs validation), and records not-affected verdicts for boo#1280450,
+boo#1281905 and boo#1281906.
+
+python-mcp stays unversioned: upstream asks for mcp &gt;= 2.0.0 but Factory has
+1.28.1 and only the optional --tool-server path needs 2.x; the wheel metadata
+is relaxed to match.
+
+Built green on aarch64 and x86_64, both flavors.</comment>
+    <requestid>1379803</requestid>
+  </revision>
 </revisionlist>
