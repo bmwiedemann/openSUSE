@@ -163,4 +163,15 @@
     <comment></comment>
     <requestid>1090315</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>ee5b37eb69a4a689198a9c92302a2baf</srcmd5>
+    <version>0.115.0</version>
+    <time>1790166861</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.115.0 (0.115)
+   see /usr/share/doc/packages/perl-Data-OptList/Changes
+  0.115     2026-09-05 16:26:13+09:30 Australia/Adelaide
+          - switch from Params::Util to Params::SomeUtil</comment>
+    <requestid>1379454</requestid>
+  </revision>
 </revisionlist>

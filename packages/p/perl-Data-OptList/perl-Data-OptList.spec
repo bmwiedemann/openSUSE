@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Data-OptList
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,22 +18,27 @@
 
 %define cpan_name Data-OptList
 Name:           perl-Data-OptList
-Version:        0.114
+Version:        0.115.0
 Release:        0
+# 0.115 -> normalize -> 0.115.0
+%define cpan_version 0.115
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Parse and validate simple name/value option pairs
 URL:            https://metacpan.org/release/%{cpan_name}
-Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{version}.tar.gz
+Source0:        https://cpan.metacpan.org/authors/id/R/RJ/RJBS/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 BuildArch:      noarch
 BuildRequires:  perl
 BuildRequires:  perl-macros
 BuildRequires:  perl(ExtUtils::MakeMaker) >= 6.78
-BuildRequires:  perl(Params::Util)
+BuildRequires:  perl(Params::SomeUtil)
 BuildRequires:  perl(Sub::Install) >= 0.921
 BuildRequires:  perl(Test::More) >= 0.96
-Requires:       perl(Params::Util)
+Requires:       perl(Params::SomeUtil)
 Requires:       perl(Sub::Install) >= 0.921
+Provides:       perl(Data::OptList) = %{version}
+%undefine       __perllib_provides
 %{perl_requires}
 
 %description
@@ -71,7 +76,7 @@ This works by assuming that any defined scalar is a name and any reference
 following a name is its value.
 
 %prep
-%autosetup  -n %{cpan_name}-%{version}
+%autosetup -n %{cpan_name}-%{cpan_version} -p1
 
 %build
 perl Makefile.PL INSTALLDIRS=vendor
