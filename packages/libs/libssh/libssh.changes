@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 14 11:06:12 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Fix: libssh ignores explicit username in URL if User specified
+  in SSH config (bsc#1279934)
+  * options: do not let config override explicitly-set options
+  * tests: cover config-vs-app-set option precedence
+  * Add patches:
+    - libssh-options-do-not-let-config-override-explicitly-set-options.patch
+    - libssh-tests-cover-config-vs-app-set-option-precedence.patch
+
+-------------------------------------------------------------------
 Wed Aug 12 21:56:01 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Fix libssh ignores system wide crypto policies (bsc#1272547)

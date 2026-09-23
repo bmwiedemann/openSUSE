@@ -48,6 +48,9 @@ Source99:       baselibs.conf
 Patch1:         libssh-tests-Fix-an-issue-where-torture_session-request-a-SIGTERM-too-early.patch
 # PATCH-FIX-UPSTREAM: /usr/etc support (bsc#1272547)
 Patch2:         libssh-cmake-Add-option-WITH_HERMETIC_USR.patch
+# PATCH-FIX-UPSTREAM: libssh ignores explicit username in URL if User specified in SSH config (bsc#1279934)
+Patch3:         libssh-options-do-not-let-config-override-explicitly-set-options.patch
+Patch4:         libssh-tests-cover-config-vs-app-set-option-precedence.patch
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  krb5-devel

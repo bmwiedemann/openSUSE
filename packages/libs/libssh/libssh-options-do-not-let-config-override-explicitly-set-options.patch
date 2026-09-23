@@ -1,0 +1,271 @@
+From f0af0190b5fdd8b5700435db8f5324bdd082b15a Mon Sep 17 00:00:00 2001
+From: Shreyas Mahajan <shreyasmahajan05@gmail.com>
+Date: Thu, 9 Jul 2026 00:20:08 +0530
+Subject: [PATCH] options: do not let config override explicitly-set options
+
+Signed-off-by: Shreyas Mahajan <shreyasmahajan05@gmail.com>
+Reviewed-by: Jakub Jelen <jjelen@redhat.com>
+Merge-Request: <https://gitlab.com/libssh/libssh-mirror/-/merge_requests/844>
+(cherry picked from commit af9977f855efbf0c2f59f7c61ec6bf91535a2cac)
+---
+ include/libssh/misc.h            |   5 ++
+ src/config.c                     |   6 +-
+ src/options.c                    | 143 ++++++++++++++++++++++++++++++-
+ src/socket.c                     |  17 +++-
+ tests/unittests/torture_config.c |   4 +-
+ 5 files changed, 167 insertions(+), 8 deletions(-)
+
+diff --git a/include/libssh/misc.h b/include/libssh/misc.h
+index 8eab94ee5..cde6d8a5b 100644
+--- a/include/libssh/misc.h
++++ b/include/libssh/misc.h
+@@ -70,6 +70,11 @@ struct ssh_iterator {
+ struct ssh_jump_info_struct {
+     char *hostname;
+     char *username;
++    /**
++     * Port number of the jump host, in the range 1-65535. Zero means the
++     * ProxyJump specification did not give a port, in which case the jump
++     * host's own configuration (or the connection default) supplies it.
++     */
+     int port;
+ };
+ 
+diff --git a/src/config.c b/src/config.c
+index cdc26b70c..4d3dcc38b 100644
+--- a/src/config.c
++++ b/src/config.c
+@@ -500,9 +500,9 @@ ssh_config_parse_proxy_jump(ssh_session session, const char *s, bool do_parsing)
+                 SAFE_FREE(jump_host);
+                 goto out;
+             }
+-            if (port == NULL) {
+-                jump_host->port = 22;
+-            } else {
++            /* Leave the port at 0 when it is not given, so that the jump
++             * host's own configuration can supply it later. */
++            if (port != NULL) {
+                 jump_host->port = strtol(port, NULL, 10);
+                 SAFE_FREE(port);
+             }
+diff --git a/src/options.c b/src/options.c
+index 920c32eff..89e1d6b69 100644
+--- a/src/options.c
++++ b/src/options.c
+@@ -302,6 +302,129 @@ int ssh_options_set_algo(ssh_session session,
+     return 0;
+ }
+ 
++/*
++ * Map a public ssh_options_e onto the internal config opcode whose parser
++ * case applies it via ssh_options_set(). Used to mark a value as "seen" when
++ * an application sets it explicitly, so later config-file processing does not
++ * override it (OpenSSH "first obtained value wins" semantics).
++ *
++ * Returns SOC_UNKNOWN for options that must NOT be protected:
++ *   - accumulative options (IdentityFile/CertificateFile and friends),
++ *   - SSH_OPTIONS_HOST, the Host/Match lookup key that config HostName
++ *     intentionally overrides during alias resolution,
++ *   - operational settings such as log verbosity,
++ *   - options that have no ssh_config equivalent,
++ *   - getter-only options, which ssh_options_set() never accepts.
++ */
++static enum ssh_config_opcode_e ssh_opt_type_to_opcode(enum ssh_options_e type)
++{
++    switch (type) {
++    case SSH_OPTIONS_PORT:
++    case SSH_OPTIONS_PORT_STR:
++        return SOC_PORT;
++    case SSH_OPTIONS_USER:
++        return SOC_USERNAME;
++    case SSH_OPTIONS_KNOWNHOSTS:
++        return SOC_KNOWNHOSTS;
++    case SSH_OPTIONS_GLOBAL_KNOWNHOSTS:
++        return SOC_GLOBALKNOWNHOSTSFILE;
++    case SSH_OPTIONS_TIMEOUT:
++        return SOC_TIMEOUT;
++    case SSH_OPTIONS_CIPHERS_C_S:
++    case SSH_OPTIONS_CIPHERS_S_C:
++        return SOC_CIPHERS;
++    case SSH_OPTIONS_COMPRESSION:
++    case SSH_OPTIONS_COMPRESSION_C_S:
++    case SSH_OPTIONS_COMPRESSION_S_C:
++        return SOC_COMPRESSION;
++    case SSH_OPTIONS_PROXYCOMMAND:
++        return SOC_PROXYCOMMAND;
++    case SSH_OPTIONS_PROXYJUMP:
++        return SOC_PROXYJUMP;
++    case SSH_OPTIONS_BINDADDR:
++        return SOC_BINDADDRESS;
++    case SSH_OPTIONS_STRICTHOSTKEYCHECK:
++        return SOC_STRICTHOSTKEYCHECK;
++    case SSH_OPTIONS_KEY_EXCHANGE:
++        return SOC_KEXALGORITHMS;
++    case SSH_OPTIONS_HOSTKEYS:
++        return SOC_HOSTKEYALGORITHMS;
++    case SSH_OPTIONS_PUBLICKEY_ACCEPTED_TYPES:
++        return SOC_PUBKEYACCEPTEDKEYTYPES;
++    case SSH_OPTIONS_HMAC_C_S:
++    case SSH_OPTIONS_HMAC_S_C:
++        return SOC_MACS;
++    case SSH_OPTIONS_GSSAPI_SERVER_IDENTITY:
++        return SOC_GSSAPISERVERIDENTITY;
++    case SSH_OPTIONS_GSSAPI_CLIENT_IDENTITY:
++        return SOC_GSSAPICLIENTIDENTITY;
++    case SSH_OPTIONS_GSSAPI_DELEGATE_CREDENTIALS:
++        return SOC_GSSAPIDELEGATECREDENTIALS;
++    case SSH_OPTIONS_PASSWORD_AUTH:
++        return SOC_PASSWORDAUTHENTICATION;
++    case SSH_OPTIONS_PUBKEY_AUTH:
++        return SOC_PUBKEYAUTHENTICATION;
++    case SSH_OPTIONS_KBDINT_AUTH:
++        return SOC_KBDINTERACTIVEAUTHENTICATION;
++    case SSH_OPTIONS_GSSAPI_AUTH:
++        return SOC_GSSAPIAUTHENTICATION;
++    case SSH_OPTIONS_REKEY_DATA:
++    case SSH_OPTIONS_REKEY_TIME:
++        return SOC_REKEYLIMIT;
++    case SSH_OPTIONS_IDENTITY_AGENT:
++        return SOC_IDENTITYAGENT;
++    case SSH_OPTIONS_IDENTITIES_ONLY:
++        return SOC_IDENTITIESONLY;
++    case SSH_OPTIONS_CONTROL_MASTER:
++        return SOC_CONTROLMASTER;
++    case SSH_OPTIONS_CONTROL_PATH:
++        return SOC_CONTROLPATH;
++    /*
++     * Accumulative options append to a list instead of replacing a value, so
++     * the "first value wins" precedence between config and the application does
++     * not apply to them.
++     */
++    case SSH_OPTIONS_IDENTITY:
++    case SSH_OPTIONS_ADD_IDENTITY:
++    case SSH_OPTIONS_CERTIFICATE:
++    case SSH_OPTIONS_PROXYJUMP_CB_LIST_APPEND:
++    /*
++     * SSH_OPTIONS_HOST carries the destination as given by the application,
++     * which is OpenSSH's "host" (the Host/Match lookup key), not its
++     * "hostname". Config HostName resolves that key to the real hostname and
++     * must keep doing so. HostName has its own "first value wins" precedence
++     * between config entries, enforced independently via seen[SOC_HOSTNAME]
++     * while parsing the configuration.
++     */
++    case SSH_OPTIONS_HOST:
++    /*
++     * Operational settings that applications and frameworks routinely set on
++     * their own, independent of the connection configuration. OpenSSH's config
++     * parser notably does not let a previously-set value suppress LogLevel, so
++     * we follow it and leave log verbosity unprotected.
++     */
++    case SSH_OPTIONS_LOG_VERBOSITY:
++    case SSH_OPTIONS_LOG_VERBOSITY_STR:
++    /*
++     * Options with no OpenSSH ssh_config equivalent (or that are never applied
++     * from a config file), so there is no config value that could override the
++     * application's choice.
++     */
++    case SSH_OPTIONS_FD:
++    case SSH_OPTIONS_SSH_DIR:
++    case SSH_OPTIONS_SSH1:
++    case SSH_OPTIONS_SSH2:
++    case SSH_OPTIONS_TIMEOUT_USEC:
++    case SSH_OPTIONS_COMPRESSION_LEVEL:
++    case SSH_OPTIONS_NODELAY:
++    case SSH_OPTIONS_PROCESS_CONFIG:
++    case SSH_OPTIONS_RSA_MIN_SIZE:
++        return SOC_UNKNOWN;
++    }
++
++    return SOC_UNKNOWN;
++}
++
+ /**
+  * @brief This function can set all possible ssh options.
+  *
+@@ -659,6 +782,7 @@ int ssh_options_set(ssh_session session, enum ssh_options_e type,
+     int rc;
+     char **wanted_methods = session->opts.wanted_methods;
+     struct ssh_jump_callbacks_struct *j = NULL;
++    enum ssh_config_opcode_e opcode;
+ 
+     if (session == NULL) {
+         return -1;
+@@ -1360,6 +1484,17 @@ int ssh_options_set(ssh_session session, enum ssh_options_e type,
+             break;
+     }
+ 
++    /*
++     * The option was set successfully. Mark config-backed options as
++     * explicitly set so that later processing of OpenSSH configuration files
++     * keeps the application's value (issue #365). Options that map to
++     * SOC_UNKNOWN are intentionally left unmarked.
++     */
++    opcode = ssh_opt_type_to_opcode(type);
++    if (opcode != SOC_UNKNOWN) {
++        session->opts.options_seen[opcode] = 1;
++    }
++
+     return 0;
+ }
+ 
+@@ -1806,8 +1941,12 @@ int ssh_options_getopt(ssh_session session, int *argcptr, char **argv)
+ /**
+  * @brief Parse the ssh config file.
+  *
+- * This should be the last call of all options, it may overwrite options which
+- * are already set. It requires that the host name is already set with
++ * This should be the last call of all options. Options that were already set
++ * explicitly via ssh_options_set() take precedence and are not overwritten by
++ * the configuration file, matching OpenSSH's "first obtained value wins"
++ * behavior. Accumulative options such as IdentityFile and CertificateFile, as
++ * well as host-alias resolution via HostName, are still applied from the
++ * configuration. It requires that the host name is already set with
+  * ssh_options_set(SSH_OPTIONS_HOST).
+  *
+  * @param  session      SSH session handle
+diff --git a/src/socket.c b/src/socket.c
+index 15ee6ab67..f15ea4456 100644
+--- a/src/socket.c
++++ b/src/socket.c
+@@ -1100,8 +1100,21 @@ jump_thread_func(void *arg)
+     }
+ 
+     ssh_options_set(jump_session, SSH_OPTIONS_HOST, jis->hostname);
+-    ssh_options_set(jump_session, SSH_OPTIONS_USER, jis->username);
+-    ssh_options_set(jump_session, SSH_OPTIONS_PORT, &jis->port);
++
++    /*
++     * Only propagate the username and port that the ProxyJump specification
++     * actually provided. Setting them unconditionally would inject internal
++     * defaults (the local username and port 22) as if the application had
++     * chosen them, which then prevents the jump host's own configuration from
++     * supplying these values (issue #365). When they are omitted here, the jump
++     * host config and the connection internals fill them in.
++     */
++    if (jis->username != NULL) {
++        ssh_options_set(jump_session, SSH_OPTIONS_USER, jis->username);
++    }
++    if (jis->port > 0) {
++        ssh_options_set(jump_session, SSH_OPTIONS_PORT, &jis->port);
++    }
+ 
+     /* Pop the callbacks for the current jump */
+     cb = ssh_list_pop_head(struct ssh_jump_callbacks_struct *,
+diff --git a/tests/unittests/torture_config.c b/tests/unittests/torture_config.c
+index 6f0c447fd..65467302b 100644
+--- a/tests/unittests/torture_config.c
++++ b/tests/unittests/torture_config.c
+@@ -762,7 +762,9 @@ helper_proxy_jump_check(struct ssh_iterator *jump,
+         int iport = strtol(port, NULL, 10);
+         assert_int_equal(jis->port, iport);
+     } else {
+-        assert_int_equal(jis->port, 22);
++        /* No port in the ProxyJump spec: left unset for the jump host's own
++         * configuration to supply. */
++        assert_int_equal(jis->port, 0);
+     }
+ }
+ 
+-- 
+GitLab
+

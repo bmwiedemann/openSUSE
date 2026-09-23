@@ -898,4 +898,12 @@ ProxyCommand parsing in ssh configuration files:
   * Add patch: libssh-cmake-Add-option-WITH_HERMETIC_USR.patch (forwarded request 1370900 from lmulling)</comment>
     <requestid>1370901</requestid>
   </revision>
+  <revision rev="85" vrev="3">
+    <srcmd5>2e07108745c45e65bf2bc7d1318e8a3c</srcmd5>
+    <version>0.11.5</version>
+    <time>1790166847</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379402</requestid>
+  </revision>
 </revisionlist>
