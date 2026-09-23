@@ -1,7 +1,7 @@
 #
 # spec file for package perl-Test-Fatal
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define cpan_name Test-Fatal
 Name:           perl-Test-Fatal
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
-# 0.018 -> normalize -> 0.18.0
-%define cpan_version 0.018
+# 0.019 -> normalize -> 0.19.0
+%define cpan_version 0.019
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Incredibly simple helpers for testing code with exceptions
 URL:            https://metacpan.org/release/%{cpan_name}

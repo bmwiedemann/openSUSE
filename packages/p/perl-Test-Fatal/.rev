@@ -169,4 +169,15 @@
             object</comment>
     <requestid>1317134</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>db77519f26ace003e1724276cc474b0e</srcmd5>
+    <version>0.19.0</version>
+    <time>1790166867</time>
+    <user>anag_factory</user>
+    <comment>- updated to 0.19.0 (0.019)
+   see /usr/share/doc/packages/perl-Test-Fatal/Changes
+  0.019     2026-09-13 16:06:25+10:00 Australia/Melbourne
+          - lower required Perl to v5.8</comment>
+    <requestid>1379459</requestid>
+  </revision>
 </revisionlist>
