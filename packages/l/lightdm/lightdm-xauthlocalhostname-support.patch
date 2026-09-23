@@ -1,11 +1,11 @@
 Set XAUTHLOCALHOSTNAME to the hostname for local logins to avoid issues in the
 session in case the hostname changes.
 
-Index: lightdm-1.30.0/src/seat-local.c
+Index: lightdm-1.33.1/src/seat-local.c
 ===================================================================
---- lightdm-1.30.0.orig/src/seat-local.c
-+++ lightdm-1.30.0/src/seat-local.c
-@@ -289,6 +289,7 @@ seat_local_run_script (Seat *seat, Displ
+--- lightdm-1.33.1.orig/src/seat-local.c
++++ lightdm-1.33.1/src/seat-local.c
+@@ -299,6 +299,7 @@ seat_local_run_script (Seat *seat, Displ
          const gchar *path = x_server_local_get_authority_file_path (X_SERVER_LOCAL (display_server));
          process_set_env (script, "DISPLAY", x_server_get_address (X_SERVER (display_server)));
          process_set_env (script, "XAUTHORITY", path);
@@ -13,25 +13,10 @@ Index: lightdm-1.30.0/src/seat-local.c
      }
  
      SEAT_CLASS (seat_local_parent_class)->run_script (seat, display_server, script);
-Index: lightdm-1.30.0/src/x-authority.c
+Index: lightdm-1.33.1/src/x-server.c
 ===================================================================
---- lightdm-1.30.0.orig/src/x-authority.c
-+++ lightdm-1.30.0/src/x-authority.c
-@@ -68,8 +68,8 @@ x_authority_new_cookie (guint16 family,
- XAuthority *
- x_authority_new_local_cookie (const gchar *number)
- {
--    gchar hostname[1024];
--    gethostname (hostname, 1024);
-+    const gchar *hostname;
-+    hostname = g_get_host_name ();
-     return x_authority_new_cookie (XAUTH_FAMILY_LOCAL, (guint8 *) hostname, strlen (hostname), number);
- }
- 
-Index: lightdm-1.30.0/src/x-server.c
-===================================================================
---- lightdm-1.30.0.orig/src/x-server.c
-+++ lightdm-1.30.0/src/x-server.c
+--- lightdm-1.33.1.orig/src/x-server.c
++++ lightdm-1.33.1/src/x-server.c
 @@ -15,6 +15,7 @@
  
  #include "x-server.h"
@@ -40,8 +25,17 @@ Index: lightdm-1.30.0/src/x-server.c
  
  typedef struct
  {
-@@ -161,6 +162,8 @@ x_server_connect_session (DisplayServer
-     else
+@@ -105,7 +106,7 @@ x_server_set_local_authority (XServer *s
+     char display_number[12];
+     g_snprintf(display_number, sizeof(display_number), "%d", x_server_get_display_number (server));
+ 
+-    gethostname (priv->local_hostname, 1024);
++    g_strlcpy (priv->local_hostname, g_get_host_name (), sizeof (priv->local_hostname));
+     priv->authority = x_authority_new_cookie (XAUTH_FAMILY_LOCAL, (guint8 *) priv->local_hostname, strlen (priv->local_hostname), display_number);
+ }
+ 
+@@ -237,6 +238,8 @@ error:
+ #endif
          l_debug (session, "Not setting XDG_VTNR");
  
 +    if (IS_X_SERVER_LOCAL (display_server))

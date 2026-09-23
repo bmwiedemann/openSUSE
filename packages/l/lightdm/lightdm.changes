@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:30:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.33.1:
+  * Fix user switching (assume CanMultiSession after logind
+    dropped the property)
+  * Add a Qt6 client library (Qt5 remains available)
+  * Honor the VNC server command; try IPv6 first for VNC bind
+  * Do not reuse a local X server if the hostname has changed
+  * Allow Wayland sessions on seat0 without VTs
+  * Support PAM modules that change the home directory
+  * Do not disconnect signals on cancel before the session ends
+  * Suppress log errors for missing PAM modules
+  * Fix memory leaks in session_child_run
+- Drop lightdm-1.32.0-qt6-library.patch (now upstream; also
+  unblocks GCC 16 / C++17, boo#1261691)
+- Rebase remaining patches for 1.33.1
+
+-------------------------------------------------------------------
 Wed Apr 15 11:31:48 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Explicitly BuildRequire update-alternatives and mark it as being

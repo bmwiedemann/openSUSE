@@ -17,12 +17,6 @@
 #
 
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
-%define build_qt4 0
-%else
-%define build_qt4 1
-%endif
-
 %define ver_master      1.24
 %define gobject_libname lightdm-gobject-1
 %define gobject_lib     lib%{gobject_libname}-0
@@ -33,12 +27,16 @@
 %define qt6_libname     lightdm-qt6-3
 %define qt6_lib         lib%{qt6_libname}-0
 %define typelibname     typelib-1_0-LightDM-1
+%if 0%{?suse_version} > 1500 || 0%{?sle_version} >= 150300
+%define build_qt4 0
+%else
+%define build_qt4 1
+%endif
 Name:           lightdm
-Version:        1.32.0
+Version:        1.33.1
 Release:        0
 Summary:        Lightweight, Cross-desktop Display Manager
 License:        GPL-3.0-or-later
-Group:          System/X11/Displaymanagers
 URL:            https://freedesktop.org/wiki/Software/LightDM
 Source:         https://github.com/CanonicalLtd/lightdm/releases/download/%{version}/%{name}-%{version}.tar.xz
 #Source1:        https://github.com/CanonicalLtd/lightdm/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -63,18 +61,19 @@ Patch3:         lightdm-disable-utmp-handling.patch
 Patch4:         lightdm-use-run-dir.patch
 # PATCH-FIX-OPENSUSE ignore-known-symlink-sessions.patch boo#1030873 -- Ignore known synlink sessions.
 Patch5:         lightdm-ignore-known-symlink-sessions.patch
-# PATCH-FIX-UPSTREAM lightdm-1.32.0-qt6-library.patch -- Support Qt6
-Patch6:         lightdm-1.32.0-qt6-library.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
+BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
 BuildRequires:  libgcrypt-devel
 BuildRequires:  libtool
+BuildRequires:  make
 BuildRequires:  pam-devel
 BuildRequires:  pkgconfig
 BuildRequires:  sysuser-tools
-BuildRequires:  vala
+# Shared default-displaymanager with gdm/sddm/xdm — do not convert one side to alts
+BuildRequires:  update-alternatives
 BuildRequires:  xdm
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(Qt5Core)
@@ -83,11 +82,6 @@ BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt6Core)
 BuildRequires:  pkgconfig(Qt6DBus)
 BuildRequires:  pkgconfig(Qt6Gui)
-%if %{build_qt4}
-BuildRequires:  pkgconfig(QtCore)
-BuildRequires:  pkgconfig(QtDBus)
-BuildRequires:  pkgconfig(QtGui)
-%endif
 BuildRequires:  pkgconfig(gio-2.0) >= 2.26
 BuildRequires:  pkgconfig(gio-unix-2.0)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.44
@@ -95,23 +89,29 @@ BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(libxklavier)
+# Keep vala: --pkgconfig maps it to stale pkgconfig(vapigen-0.46)
+BuildRequires:  vala
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xcb)
 BuildRequires:  pkgconfig(xdmcp)
-%if 0%{?suse_version} < 1600
-BuildRequires:  gcc13-c++
-%endif
-BuildRequires:  update-alternatives
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # 3rd party greeters don't have to follow
 # the same versioning of lightdm.
 Requires:       lightdm-greeter
 # Uses pam configuration and relies on scripts provided by xdm.
 Requires:       xdm
-%sysusers_requires
+Requires(post): update-alternatives
+Requires(postun): update-alternatives
 # Migrate users from lxdm to lightdm - we only obsolete up to version 0.5.
 Obsoletes:      lxdm < 0.5
+%sysusers_requires
+%if %{build_qt4}
+BuildRequires:  pkgconfig(QtCore)
+BuildRequires:  pkgconfig(QtDBus)
+BuildRequires:  pkgconfig(QtGui)
+%endif
+%if 0%{?suse_version} < 1600
+BuildRequires:  gcc13-c++
+%endif
 %if 0%{?suse_version} >= 1500
 BuildRequires:  pkgconfig(audit)
 %endif
@@ -129,7 +129,6 @@ such as Qt and GTK+.
 %package -n %{gobject_lib}
 Summary:        LightDM GObject-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          System/Libraries
 Recommends:     accountsservice
 
 %description -n %{gobject_lib}
@@ -139,7 +138,6 @@ with LightDM.
 %package gobject-devel
 Summary:        Development Files for %{gobject_lib}
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 Requires:       %{gobject_lib} = %{version}
 
 %description gobject-devel
@@ -149,7 +147,6 @@ GObject-based LightDM clients.
 %package -n %{typelibname}
 Summary:        GObject Introspection Bindings for the LightDM Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          System/Libraries
 
 %description -n %{typelibname}
 This package contains the GObject Introspection bindings for the
@@ -159,7 +156,6 @@ LightDM client library.
 %package -n %{qt4_lib}
 Summary:        LightDM Qt4-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          System/Libraries
 
 %description -n %{qt4_lib}
 A Qt4-based library for LightDM clients to use to interface with
@@ -168,7 +164,6 @@ LightDM.
 %package qt-devel
 Summary:        Development Files for %{qt4_lib}
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 Requires:       %{qt4_lib} = %{version}
 
 %description qt-devel
@@ -179,7 +174,6 @@ Qt4-based LightDM clients.
 %package -n %{qt5_lib}
 Summary:        LightDM Qt5-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          System/Libraries
 %if !%{build_qt4}
 Provides:       %{qt4_lib} = %{version}
 Obsoletes:      %{qt4_lib} < %{version}
@@ -192,7 +186,6 @@ LightDM.
 %package qt5-devel
 Summary:        Development Files for %{qt5_lib}
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 Requires:       %{qt5_lib} = %{version}
 %if !%{build_qt4}
 Provides:       %{name}-qt-devel = %{version}
@@ -206,16 +199,14 @@ Qt5-based LightDM clients.
 %package -n %{qt6_lib}
 Summary:        LightDM Qt6-based Client Library
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          System/Libraries
 
 %description -n %{qt6_lib}
-A Qt5-based library for LightDM clients to use to interface with
+A Qt6-based library for LightDM clients to use to interface with
 LightDM.
 
 %package qt6-devel
 Summary:        Development Files for %{qt6_lib}
 License:        LGPL-2.0-only OR LGPL-3.0-only
-Group:          Development/Libraries/C and C++
 Requires:       %{qt6_lib} = %{version}
 
 %description qt6-devel
@@ -224,7 +215,7 @@ Qt6-based LightDM clients.
 
 %package bash-completion
 Summary:        Bash completion for lightdm
-Group:          System/Shells
+License:        GPL-3.0-or-later
 Requires:       %{name}
 Requires:       bash-completion
 Supplements:    (%{name} and bash-completion)
@@ -305,7 +296,7 @@ install -Dpm 0644 %{SOURCE6} %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-s
 install -Dpm 0644 %{SOURCE7} %{buildroot}%{_sysconfdir}/lightdm/users.conf
 
 %if !%{defined _distconfdir} || 0%{?suse_version} < 1550
-sed -e 's-/usr/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-suse-defaults.conf
+sed -e 's-%{_prefix}/etc-%{_sysconfdir}-g' -i %{buildroot}%{_datadir}/lightdm/lightdm.conf.d/50-suse-defaults.conf
 %endif
 
 install -Dm0644 %{SOURCE10} %{buildroot}%{_sysusersdir}/lightdm.conf
@@ -317,13 +308,13 @@ install -Dm0644 %{SOURCE12} %{buildroot}%{_tmpfilesdir}/lightdm.conf
 %pre -f lightdm.pre
 %service_add_pre %{name}.service
 for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i}.rpmsave.old ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i}.rpmsave.old ||:
 done
 
 %posttrans
 # Migration to /usr/etc.
 for i in pam.d/lightdm pam.d/lightdm-autologin pam.d/lightdm-greeter; do
-  test -f /etc/${i}.rpmsave && mv -v /etc/${i}.rpmsave /etc/${i} ||:
+  test -f %{_sysconfdir}/${i}.rpmsave && mv -v %{_sysconfdir}/${i}.rpmsave %{_sysconfdir}/${i} ||:
 done
 
 %post
@@ -352,21 +343,16 @@ fi
   --remove default-displaymanager %{_prefix}/lib/X11/displaymanagers/lightdm
 
 %post -n %{gobject_lib} -p /sbin/ldconfig
-
 %postun -n %{gobject_lib} -p /sbin/ldconfig
 
 %if %{build_qt4}
 %post -n %{qt4_lib} -p /sbin/ldconfig
-
 %postun -n %{qt4_lib} -p /sbin/ldconfig
 %endif
 
 %post -n %{qt5_lib} -p /sbin/ldconfig
-
 %postun -n %{qt5_lib} -p /sbin/ldconfig
-
 %post -n %{qt6_lib} -p /sbin/ldconfig
-
 %postun -n %{qt6_lib} -p /sbin/ldconfig
 
 %files
