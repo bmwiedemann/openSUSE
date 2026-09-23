@@ -231,4 +231,44 @@ from the previous version.</comment>
     dependencies (requirements.txt diff is the three train pins)</comment>
     <requestid>1378282</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>b06d81815556f463ba75a62c5431bb6a</srcmd5>
+    <version>0.37.0</version>
+    <time>1790166874</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.37.0.
+
+Qwen-Image 2.1 support, MoGe-3 checkpoints in the existing MoGe nodes,
+automatic disk-backed model offload on fast NVMe, and the text encoder
+now always placed on the GPU when dynamic VRAM is on.
+
+LANDING ORDER: needs python-comfyui-workflow-templates &gt;= 0.11.66
+(request for 0.11.68 filed alongside this one, itself gated on core
+1379745 and json 1379746) and python-comfyui-embedded-docs &gt;= 0.5.12
+(request 1379748). comfy-aimdo 0.5.5 is already in Factory.
+
+comfy-aimdo is raised to &gt;= 0.5.5 as a genuine hard requirement: the new
+comfy/storage.py imports comfy_aimdo.storage at module scope and is
+itself imported at module scope by comfy/sd.py and comfy/utils.py, and
+that submodule does not exist in 0.5.3.
+
+comfy-kitchen deliberately stays &gt;= 0.2.34 against upstream's 0.2.35
+pin. Its two new kernels, deltanet_conv_step and
+gated_delta_decode_fused, are reached only through a
+getattr(comfy_kitchen, 'gated_delta_decode_is_available', None) probe
+with a complete non-fused fallback, so 0.2.34 loses only the fused
+Qwen3.5 decode path. Raising the floor would make comfyui unresolvable
+for no gain. A follow-up bump will raise it once comfy-kitchen 0.2.35 is
+in Factory.
+
+Two upstream release-note items are deliberately not claimed because
+they are not in this RPM: w4a8 gemv support lives in comfy-kitchen, and
+the frontend pin in upstream's requirements.txt is unchanged at 1.52.7,
+so the deliberate security floor of &gt;= 1.50.6 stands and the newer
+frontend in flight is accepted without a warning.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 badness. The
+one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
+    <requestid>1379750</requestid>
+  </revision>
 </revisionlist>

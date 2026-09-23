@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:02:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.37.0:
+  * Qwen-Image 2.1 support: diffusion model, text encoder and the
+    RGBA Wan-2.2-layout VAE it uses; MoGe-3 checkpoints in the
+    existing MoGe nodes, with a new refine_steps control
+  * Disk-backed model offload is now enabled automatically on a
+    fast NVMe; --fast-disk forces it on and the new
+    --disable-fast-disk turns it off; needs comfy-aimdo 0.5.5
+  * With dynamic VRAM on, the text encoder is now always placed
+    on the GPU
+  * The Qwen3 and Qwen3.5 text encoders gained a CUDA-graph
+    decode path
+  * EmptyLatentImage now defaults to 1024x1024, was 512x512;
+    YuE2 Generate Music gained a cfg_scale input
+  * VAE decode no longer crashes on GPUs without bfloat16, and
+    MiniMax Music 3 no longer produces noise with CUDA graphs
+  * API nodes: transparent background for OpenAI GPT Image 2,
+    Meshy 7.1, Tripo P2 refuses a run whose GLB or FBX output
+    would be empty, partner proxy calls carry an idempotency key
+  * Floors: comfy-aimdo >= 0.5.5, embedded-docs >= 0.5.12 and
+    workflow-templates >= 0.11.66; frontend stays >= 1.50.6 and
+    comfy-kitchen >= 0.2.34, its two new kernels being probed for
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Sep 16 07:27:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.36.0:
