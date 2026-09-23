@@ -1,7 +1,7 @@
 #
 # spec file for package lightdm-gtk-greeter
 #
-# Copyright (c) 2021 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012 Guido Berhoerster.
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,21 +17,20 @@
 #
 
 
-%define _version 2.0
 Name:           lightdm-gtk-greeter
-Version:        2.0.8
+Version:        2.0.9
 Release:        0
-Summary:        Simple display manager (GTK+ greeter)
+Summary:        Simple display manager (GTK greeter)
 License:        GPL-3.0-or-later
-Group:          System/X11/Displaymanagers
 URL:            https://github.com/Xubuntu/lightdm-gtk-greeter
 Source:         https://github.com/Xubuntu/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz
 Source1:        https://github.com/Xubuntu/%{name}/releases/download/%{name}-%{version}/%{name}-%{version}.tar.gz.asc
 Source2:        %{name}.keyring
+# Keep autoconf/automake package names; spec-cleaner --perl explodes them
+# into perl(Autom4te::*) / perl(Automake::*) modules.
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
-BuildRequires:  exo-tools
 BuildRequires:  fdupes
 BuildRequires:  intltool
 BuildRequires:  libtool
@@ -40,10 +39,12 @@ BuildRequires:  xfce4-dev-tools
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.5
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(liblightdm-gobject-1) >= 1.3.5
+BuildRequires:  pkgconfig(liblightdm-gobject-1) >= 1.19.2
 BuildRequires:  pkgconfig(x11)
 Requires:       %{name}-branding >= %{version}
 Requires:       lightdm
+# Shared .desktop alternative with lightdm-kde-greeter and web-greeter;
+# libalternatives execs the winner, which LightDM cannot parse as a .desktop.
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
 Recommends:     %{name}-lang
@@ -51,16 +52,15 @@ Recommends:     gnome-themes-accessibility
 Provides:       lightdm-greeter
 
 %description
-A LightDM greeter that uses the GTK+ toolkit.
+A LightDM greeter that uses the GTK toolkit.
 This is the reference implementation of a LightDM greeter based on the Gtk
 toolkit.
 
 %package branding-upstream
 Summary:        Upstream branding of %{name}
-Group:          System/X11/Displaymanagers
 Requires:       %{name} = %{version}
-Supplements:    packageand(%{name}:branding-upstream)
-Conflicts:      otherproviders(%{name}-branding)
+Supplements:    (%{name} and branding-upstream)
+Conflicts:      %{name}-branding
 Provides:       %{name}-branding = %{version}
 BuildArch:      noarch
 #BRAND: /etc/lightdm/lightdm-gtk-greeter.conf: Determines a number of greeter
@@ -86,8 +86,8 @@ sed -i "s/__DATE__/\"$BUILD_DATE\"/" $(grep -rl '__DATE__')
 export CFLAGS="%{optflags} -std=gnu99"
 %endif
 NOCONFIGURE=1 ./autogen.sh
-%configure
-make %{?_smp_mflags} V=1
+%configure --enable-kill-on-sigterm
+%make_build
 
 %install
 %make_install

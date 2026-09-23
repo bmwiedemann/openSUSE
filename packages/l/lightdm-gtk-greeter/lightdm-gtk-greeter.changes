@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 16 20:31:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.9:
+  * Trim whitespace from username input
+  * Add Cinnamon and LXQt session badges
+  * Add Alt+Delete shortcut for the reboot dialog
+  * New config options: default-session, highlight-logged-user,
+    keyboard-layouts and round-user-image
+  * Add usage examples to the sample configuration
+  * Updated translations
+- Enable kill-on-sigterm for GTK 3.16+ SIGTERM handling
+- Drop unused exo-tools BuildRequires
+- Raise liblightdm-gobject floor to 1.19.2
+- Replace obsolete packageand/otherproviders with boolean deps
+
+-------------------------------------------------------------------
 Thu Jan  7 14:53:54 UTC 2021 - Maurizio Galli <maurizio.galli@gmail.com>
 
 - Update to version 2.0.8

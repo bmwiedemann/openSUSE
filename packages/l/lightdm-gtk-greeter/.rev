@@ -246,4 +246,24 @@
   * Translation Updates</comment>
     <requestid>861876</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>9afdf0e6a61b9440ef50f00f1e9df52d</srcmd5>
+    <version>2.0.9</version>
+    <time>1790166834</time>
+    <user>anag_factory</user>
+    <comment>
+- Update to version 2.0.9:
+  * Trim whitespace from username input
+  * Add Cinnamon and LXQt session badges
+  * Add Alt+Delete shortcut for the reboot dialog
+  * New config options: default-session, highlight-logged-user,
+    keyboard-layouts and round-user-image
+  * Add usage examples to the sample configuration
+  * Updated translations
+- Enable kill-on-sigterm for GTK 3.16+ SIGTERM handling
+- Drop unused exo-tools BuildRequires
+- Raise liblightdm-gobject floor to 1.19.2
+- Replace obsolete packageand/otherproviders with boolean deps</comment>
+    <requestid>1379368</requestid>
+  </revision>
 </revisionlist>
