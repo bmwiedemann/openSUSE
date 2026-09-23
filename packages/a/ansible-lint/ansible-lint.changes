@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:38:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.9.0:
+  * Features
+    - feat: support example section in file meta/argument_specs.yml
+      (#5164)
+  * Fixes
+    - fix: resolve short mock modules during syntax check (#5149)
+    - fix: propagate extra_vars to import_playbook syntax check
+      (#5148)
+    - fix: resolve nested include_tasks relative paths (#5159)
+    - fix: resolve include_tasks paths from playbook dir (#5184)
+    - fix: apply profile-level skip list during linting (#5151)
+    - fix: honor warn_list after --fix rewrites task names (#5085)
+    - fix: mock_modules clobbering collections and args false
+      positives (#5157)
+    - fix: inject plain-name mock roles path regardless of
+      --offline (#5183)
+    - fix: warn users when directory expansion discovers new files
+      (#5158)
+    - fix: skip auto-fix no-jinja-when on string-embedded jinja
+      (#5103)
+    - fix: do not warn when Jinja block indent is only trim-marker
+      noise (#5153)
+    - fix: preserve blank lines after flow collections (#5178)
+    - fix: add validate_argspec to play schema (#5187)
+    - fix: use ThreadPoolExecutor for syntax check workers (#5173)
+    - fix: drop ruamel.yaml.clib (#5163)
+    - fix(deps): upgrade gitpython 3.1.57 to 3.1.59 (#5152)
+    - fix: upgrade black to >=25.2.0 to address CVE-2026-32274
+      (#5166)
+    - fix: raise cryptography floor and bump js-yaml for Guardian
+      prod vulns (#5174)
+  * Performance
+    - perf: cache get_deps_versions() result (#5113)
+  * Maintenance
+    - chore: Add .github/SECURITY.md (#5165)
+    - chore(deps): update all dependencies and pep621 (#5138,
+      #5154, #5155, #5160, #5161, #5172, #5175, #5176)
+
+-------------------------------------------------------------------
 Wed Aug 12 07:37:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 26.8.0:
