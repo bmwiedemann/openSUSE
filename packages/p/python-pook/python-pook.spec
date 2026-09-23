@@ -16,9 +16,18 @@
 #
 
 
+%global flavor @BUILD_FLAVOR@%{nil}
+%if "%{flavor}" == "test"
+%define psuffix -test
+%bcond_without test
+%else
+%define psuffix %{nil}
+%bcond_with test
+%endif
+
 # requires python-aiohttp
 %{?sle15_python_module_pythons}
-Name:           python-pook
+Name:           python-pook%{?psuffix}
 Version:        2.1.6
 Release:        0
 Summary:        HTTP traffic mocking and expectations
@@ -36,7 +45,9 @@ Requires:       python-furl >= 0.5.6
 Requires:       python-jsonschema >= 2.5.1
 Requires:       python-xmltodict >= 0.11.0
 BuildArch:      noarch
+%if %{with test}
 # SECTION test requirements
+BuildRequires:  %{python_module pook = %{version}}
 BuildRequires:  %{python_module aiohttp >= 3.10}
 BuildRequires:  %{python_module async-timeout >= 4.0}
 BuildRequires:  %{python_module falcon >= 4.0}
@@ -51,6 +62,7 @@ BuildRequires:  %{python_module requests >= 2.20.0}
 BuildRequires:  %{python_module urllib3 >= 2.2}
 BuildRequires:  %{python_module xmltodict >= 0.11.0}
 # /SECTION
+%endif
 %python_subpackages
 
 %description
@@ -64,26 +76,33 @@ rm -f setup.cfg pytest.ini tox.ini
 touch tests/__init__.py
 
 %build
+%if !%{with test}
 %pyproject_wheel
+%endif
 
 %install
+%if !%{with test}
 %pyproject_install
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
+%endif
 
+%if %{with test}
 %check
 export PYTHONDONTWRITEBYTECODE=1
 %{python_expand  #
-export PYTHONPATH=%{buildroot}%{$python_sitelib}
 $python -m pytest -v tests/unit
 $python -m pytest -v tests/integration/engines/pytest_suite.py
-export PYTHONPATH=%{buildroot}%{$python_sitelib}:.
+export PYTHONPATH=.
 $python -m unittest tests.integration.engines.unittest_suite
 }
+%endif
 
+%if !%{with test}
 %files %{python_files}
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/pook
 %{python_sitelib}/pook-%{version}*-info
+%endif
 
 %changelog

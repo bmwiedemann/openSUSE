@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:31:02 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Convert to multibuild to avoid build cycle with python-pytest-pook
+
+-------------------------------------------------------------------
 Tue Aug  4 09:16:10 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
 
 - Set PYTHONDONTWRITEBYTECODE during tests to avoid variations
