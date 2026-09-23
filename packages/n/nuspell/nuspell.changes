@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 19 15:51:47 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 5.1.9:
+  * In the CLI tool on POSIX do not try to detect character
+    encoding via the C locale functions, always assume UTF-8
+    unless manually specified on the command line.
+  * Improve the detection of language of the environment so we can
+    load a dictionary if it is not specified on the command line.
+- Changes from version 5.1.8:
+  * Fixed dependency info in CMake, do not link to ICU data
+    directly anymore.
+  * Fixed pkg-config to contain less absolute paths.
+
+-------------------------------------------------------------------
 Mon Jan 19 03:08:52 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 5.1.7:

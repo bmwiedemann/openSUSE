@@ -27,7 +27,7 @@
 # Ring1 package, avoid pandoc requirement by disabling man file generation
 %bcond_with man
 Name:           nuspell
-Version:        5.1.7
+Version:        5.1.9
 Release:        0
 Summary:        A spell checker library and command-line tool
 License:        LGPL-3.0-or-later

@@ -151,4 +151,12 @@ Drop redundant (autodetected) pkgconfig require.</comment>
     <comment></comment>
     <requestid>1328045</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>8210caa7ca4a14087f5172fb396218e9</srcmd5>
+    <version>5.1.9</version>
+    <time>1790166755</time>
+    <user>anag_factory</user>
+    <comment>Update to version 5.1.9. (forwarded request 1379020 from badshah400)</comment>
+    <requestid>1379618</requestid>
+  </revision>
 </revisionlist>
