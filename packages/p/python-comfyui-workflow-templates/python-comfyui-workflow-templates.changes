@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:07:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.11.68:
+  * Metadata-only release: every module of the shim is
+    byte-identical to 0.11.63, only the bundle pins move, to
+    core 0.3.359 and json 0.1.94
+  * Since 0.11.64 the templates are split across a sixth
+    bundle, media-assets-02, which the manifest now requires
+- Raise the bundle floors to core >= 0.3.359 and json >= 0.1.94
+  and add python-comfyui-workflow-templates-media-assets-02
+  >= 0.1.4; the other five bundles keep their floors
+
+-------------------------------------------------------------------
 Wed Sep 16 11:35:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.63:

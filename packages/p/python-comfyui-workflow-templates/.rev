@@ -187,4 +187,32 @@ Depends on the -core / -json / -media-assets-01 submissions filed alongside it.<
 Supersedes sr#1378179. Unblocks comfyui 0.36.0 (sr#1378282) which Requires python313-comfyui-workflow-templates &gt;= 0.11.62.</comment>
     <requestid>1378350</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>656fc34c91bd02317cea53bbf89c194f</srcmd5>
+    <version>0.11.68</version>
+    <time>1790166873</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.68.
+
+A metadata-only release: every module of the shim is byte-identical to
+0.11.63, and only the bundle pins move. Since 0.11.64 the templates are
+split across a sixth bundle, media-assets-02.
+
+LANDING ORDER - MANDATORY, and invisible to tooling. This package is
+unresolvable against Factory today, proven by osc buildinfo: it needs
+core &gt;= 0.3.359 (request 1379745) and json &gt;= 0.1.94 (request 1379746),
+both in review, and media-assets-02 &gt;= 0.1.4 (request 1379731), already
+accepted. If this lands first, python3XX-comfyui-workflow-templates has
+unsatisfiable Requires, becomes uninstallable, and takes Factory's
+comfyui 0.36.0 down with it, since comfyui requires this package.
+
+Floors are kept as &gt;= rather than upstream's == pins, following this
+package's existing convention; exact pins previously broke Factory for
+this family. The other five bundles did not move upstream and their
+floors are untouched.
+
+Built locally on aarch64 against locally built siblings: rpmlint 0
+errors, 0 warnings, 0 badness.</comment>
+    <requestid>1379749</requestid>
+  </revision>
 </revisionlist>
