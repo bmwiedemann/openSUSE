@@ -1,7 +1,7 @@
 #
 # spec file for package seahorse
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,15 +18,15 @@
 
 
 Name:           seahorse
-Version:        47.0.1+6
+Version:        47.0.1+113
 Release:        0
 Summary:        GNOME interface for gnupg
 License:        GFDL-1.1-only AND GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Security
 URL:            https://wiki.gnome.org/Apps/Seahorse
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         seahorse-47.0.1-gpgme-2.patch
-BuildRequires:  appstream-glib
+
+BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  fdupes
@@ -41,17 +41,18 @@ BuildRequires:  vala
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(avahi-client)
 BuildRequires:  pkgconfig(avahi-glib) >= 0.6
-BuildRequires:  pkgconfig(gcr-3) >= 3.18
-BuildRequires:  pkgconfig(gcr-ui-3) >= 3.18
+BuildRequires:  pkgconfig(gck-2)
+BuildRequires:  pkgconfig(gcr-4) >= 4.3.90
 BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.82
+BuildRequires:  pkgconfig(glib-2.0) >= 2.82
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.82
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.82
 BuildRequires:  pkgconfig(gpgme) >= 1.14.0
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.24.0
-BuildRequires:  pkgconfig(libhandy-1) >= 1.5.0
-BuildRequires:  pkgconfig(libsecret-1) >= 0.16
+BuildRequires:  pkgconfig(gtk4) >= 4.16
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.5
+BuildRequires:  pkgconfig(libqrencode)
+BuildRequires:  pkgconfig(libsecret-1) >= 0.21
 BuildRequires:  pkgconfig(libsoup-3.0) >= 2.33.92
 BuildRequires:  pkgconfig(pwquality)
 Obsoletes:      %{name}-devel < %{version}
@@ -103,11 +104,11 @@ search results from seahorse.
 %doc %{_datadir}/help/C/%{name}/
 %{_bindir}/seahorse
 %{_libexecdir}/seahorse/
-%{_datadir}/applications/org.gnome.seahorse.Application.desktop
-%{_datadir}/dbus-1/services/org.gnome.seahorse.Application.service
+%{_datadir}/applications/org.gnome.Seahorse.desktop
+%{_datadir}/dbus-1/services/org.gnome.Seahorse.service
 %{_datadir}/glib-2.0/schemas/org.gnome.seahorse.*xml
 %{_datadir}/icons/hicolor/
-%{_datadir}/metainfo/org.gnome.seahorse.Application.appdata.xml
+%{_datadir}/metainfo/org.gnome.Seahorse.metainfo.xml
 %{_datadir}/seahorse/
 %{_mandir}/man1/seahorse.1%{?ext_man}
 

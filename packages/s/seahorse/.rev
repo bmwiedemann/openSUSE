@@ -960,4 +960,41 @@ A couple of patches for this are competing for upstream approval at bgo#659834 -
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343010</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>6b3d9b2275b28d0ead5231a9c7206a5c</srcmd5>
+    <version>47.0.1+113</version>
+    <time>1790166759</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 47.0.1+113:
+  * flatpak: Don't use comments in JSON
+  * css: Don't use shade()
+  * ssh: Notify the rest of the UI after comment change
+  * Fix search provider
+  * passphrase-prompt: Mark the repeat password entry invalid on
+    mismatch
+  * import-dialog: Mark the error label as a source of an error
+    message
+  * prefs-keyservers: Mark the URL entry invalid on the a11y layer
+  * prefs-keyservers: Add tooltip to the remove button
+  * add-keyserver: Use appropriate &quot;win&quot; action prefix
+  * common: Remove PgpSettings
+  * Stop using separate PgpSettings
+  * app-settings: Add 'default-key' and 'keyservers' keys
+  * keyserver-dropdown: Use correct changed signal
+  * Updated translations.
+- Drop 260.patch: Merged upstream.
+
+- Update to version 47.0.1+89:
+  * data: Compile schemas for unit tests
+  * data: Update the screenshot
+  * Updated translations.
+- Replace 258.patch and 259.patch with 260.patch following upstream
+  changes.
+
+- Add patches from upstream:
+  + 258.patch: Add keys from org.gnome.crypto.pgp schema
+  + 259.patch: data: Compile schemas for unit tests
+- Drop gcr3-data BuildRequires and Requires, no longer needed.</comment>
+    <requestid>1379637</requestid>
+  </revision>
 </revisionlist>
