@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 21 05:20:13 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 3.2.0:
+  * v3.2.0
+  * pkg/parent: fix warnSelfIDRanges message
+  * refactor: use `netip.Addr.Next()` instead of `math/big` in `AddIPInt6`
+  * v3.2.0-beta.0+dev
+  * v3.2.0-beta.0
+  * CI: update Ubuntu (26.04)
+  * CI: avoid AppArmor-confined nslookup with --detach-netns
+  * Fix socket activation with systemd v258 and later
+  * go.mod: github.com/inetaf/tcpproxy v0.0.0-20260515195445-c159a6051109
+  * go.mod: github.com/insomniacslk/dhcp v0.0.0-20260901064844-234b97448fae
+  * go.mod: golang.org/x/crypto v0.57.0
+  * CI: update Docker (29.8.0)
+  * CI: update slirp4netns (1.3.5)
+  * CI: update shadow (4.20.2)
+  * Build(deps): Bump golang.org/x/sync from 0.22.0 to 0.23.0
+  * Build(deps): Bump golang.org/x/sys from 0.47.0 to 0.48.0
+  * CI: Go 1.26
+  * pkg/port/portutil: fix `go vet`
+  * ci: fix existing golangci-lint findings
+  * gvisortapvsock: improve incoming and outgoing TCP throughput
+  * feat: support --port-driver=pesto for IPv6
+  * ci: enforce golanci-lint in CI
+  * Build(deps): Bump github.com/sirupsen/logrus from 1.10.1 to 1.10.2
+  * Build(deps): Bump github.com/gofrs/flock from 0.13.0 to 0.13.1
+  * port/builtin: switch from iptables to nft for transparent routing
+  * parent: warn when a subid range contains the own ID
+  * parent: exclude the own UID/GID from the subid ranges
+  * Build(deps): Bump github.com/sirupsen/logrus from 1.10.0 to 1.10.1
+  * chore: apply go fmt ./...
+  * fix(pasta): assign a fixed IPv6 address, gateway, and DNS to the netns
+  * Build(deps): Bump github.com/sirupsen/logrus from 1.9.4 to 1.10.0
+  * docs: refresh port driver benchmark table
+  * v3.1.0+dev
+
+-------------------------------------------------------------------
 Mon Aug 10 05:05:25 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 3.1.0:
