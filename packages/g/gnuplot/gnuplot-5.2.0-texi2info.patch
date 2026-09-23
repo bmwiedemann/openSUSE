@@ -69,10 +69,11 @@
  @c ?commands set terminal sixeltek
  @c ?set terminal sixeltek
  @c ?set term sixeltek
-@@ -27972,7 +27960,6 @@ For use with xterm, xterm must be compil
+@@ -27972,8 +27960,7 @@ For use with xterm, xterm must be compil
  
  Note that gnuplot also supports another sixel output terminal, `sixelgd`,
- that offers more options and features."
+ that offers more options and features.
+ 
 -@end itemizeif
  @c ?commands set terminal bitgraph
  @c ?set terminal bitgraph

@@ -1422,4 +1422,38 @@ removed boo#1203092 (forwarded request 1006499 from AndreasStieger)</comment>
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1330783</requestid>
   </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>579509726ee365ed3884f179058bfaf2</srcmd5>
+    <version>6.0.5</version>
+    <time>1790166806</time>
+    <user>anag_factory</user>
+    <comment>Update to gnuplot 6.0.5.
+
+Supersedes 1379254, which factory-auto declined because the dropped
+patch was not named literally in the changelog. Both patch files are
+now named in full, one per line.
+
+- gnuplot-6.0.3-backward_compat.patch is dropped. It only changed
+  reread_command() in src/command.c from the old global &quot;multiplot&quot;
+  to &quot;in_multiplot&quot; under BACKWARD_COMPATIBILITY, and 6.0.5 ships
+  that exact form upstream: in_multiplot is declared in term_api.h
+  and defined in term.c, and no bare &quot;multiplot&quot; global is left.
+  So the fix is upstream, not merely rebased away.
+
+- gnuplot-5.2.0-texi2info.patch (Source4) is rebased for a blank
+  line and a dropped quote in the sixel docs.
+
+- The changelog now also records the spec cleanup that came with
+  the bump (Group tags, the obsolete buildroot wipe, pkgconfig()
+  build deps, current rpm macros), and upstream's backward
+  incompatible octal escape sequence change, which rejects forms
+  such as \7, \456 and \0 that older gnuplot scripts may use.
+
+No libgd version floor was added. Upstream's NEWS notes the gd font
+rework works best with libgd 2.4.0 and libraqm 0.10.3, but there is
+no version guard anywhere in the sources, the feature degrades at
+runtime rather than failing to build, and Factory ships libgd 2.3.3,
+so a BuildRequires floor would only make the package unresolvable.</comment>
+    <requestid>1379308</requestid>
+  </revision>
 </revisionlist>

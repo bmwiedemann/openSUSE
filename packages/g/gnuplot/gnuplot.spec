@@ -20,34 +20,46 @@
 ###    Please call "./pre_checkin.sh" prior to submitting.    ###
 ###    (This will regenerate gnuplot-doc.changes)             ###
 #################################################################
-
 %global flavor @BUILD_FLAVOR@%{nil}
 %global sname gnuplot
 %if "%{flavor}" == ""
 %else
 %global psuffix -%{flavor}
 %endif
-
+%define _x11lib     %{_libdir}
+%define _x11data    %{_datadir}/X11
+%define _x11inc     %{_includedir}/X11
+%define _appdef     %{_x11data}/app-defaults
+%define _gnplttex   tex/latex/gnuplot
 Name:           gnuplot%{?psuffix}
+Version:        6.0.5
+Release:        0
+URL:            https://www.gnuplot.info/
+Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
+Source1:        README.whynot
+Source2:        webp_figures.gnu
+# https://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
+# That's a build requirement, not provided by Tex Live
+Source3:        picins.sty
+# Repair broken texi(nfo) file
+Source4:        gnuplot-5.2.0-texi2info.patch
+Patch0:         gnuplot-4.6.0.dif
+Patch1:         gnuplot-4.4.0-x11ovf.dif
+Patch2:         gnuplot-4.6.0-fonts.diff
+Patch3:         gnuplot-doc2tex.patch
+Patch4:         gnuplot-4.6.0-demo.diff
+Patch5:         gnuplot-QtCore-PIC.dif
+Patch6:         gnuplot-PIE.patch
 BuildRequires:  ImageMagick
+# Keep the tool package name: spec-cleaner --perl explodes it into
+# the full provided perl() module list, which is noise.
 BuildRequires:  automake
-BuildRequires:  cairo-devel
 BuildRequires:  fdupes
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc13-PIE
-BuildRequires:  gcc13-c++
-%else
-BuildRequires:  gcc-c++
-%endif
-BuildRequires:  glib2-devel
 BuildRequires:  lua-devel
 BuildRequires:  netpbm
-BuildRequires:  qt6-linguist-devel
-%if 0%{?is_opensuse}
-BuildRequires:  openspecfun-devel
-%endif
-BuildRequires:  pango-devel
+BuildRequires:  pkgconfig
 BuildRequires:  plotutils-devel
+BuildRequires:  qt6-linguist-devel
 BuildRequires:  readline-devel
 BuildRequires:  wxGTK3-devel >= 3
 BuildRequires:  zziplib
@@ -58,15 +70,29 @@ BuildRequires:  pkgconfig(Qt6Network)
 BuildRequires:  pkgconfig(Qt6PrintSupport)
 BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(caca)
+BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gdlib)
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libcerf)
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(libpng16)
+BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(x11)
+%if 0%{?suse_version} == 1500
+BuildRequires:  gcc13-PIE
+BuildRequires:  gcc13-c++
+%else
+BuildRequires:  gcc-c++
+%endif
+%if 0%{?is_opensuse}
+BuildRequires:  openspecfun-devel
+%endif
 %if "%{flavor}" == "doc"
 BuildRequires:  emacs-nox
 BuildRequires:  gnuplot
+# Keep the tool packages: the tex() file deps do not guarantee the
+# doc tools (lualatex, makeindex, latex2html binaries) the build needs.
 BuildRequires:  latex2html
 BuildRequires:  makeinfo
 BuildRequires:  texlive-epstopdf
@@ -93,43 +119,17 @@ BuildRequires:  tex(textgreek.sty)
 BuildRequires:  tex(unicode-math.sty)
 BuildRequires:  tex(upquote.sty)
 %endif
-URL:            https://www.gnuplot.info/
-Version:        6.0.4
-Release:        0
 %if "%{flavor}" == ""
 Summary:        Function Plotting Utility and more
 License:        GPL-2.0-or-later AND SUSE-Gnuplot
-Group:          Documentation/Other
 %else
 Summary:        Documentation of GNUplot
 License:        GPL-2.0-or-later AND SUSE-Gnuplot
-Group:          Documentation/Other
 %endif
-Source0:        https://downloads.sourceforge.net/project/gnuplot/gnuplot/%{version}/gnuplot-%{version}.tar.gz
-Source1:        README.whynot
-Source2:        webp_figures.gnu
-# https://mirrors.ctan.org/macros/latex209/contrib/picins/picins.sty
-# That's a build requirement, not provided by Tex Live
-Source3:        picins.sty
-# Repair broken texi(nfo) file
-Source4:        gnuplot-5.2.0-texi2info.patch
-Patch0:         gnuplot-4.6.0.dif
-Patch1:         gnuplot-4.4.0-x11ovf.dif
-Patch2:         gnuplot-4.6.0-fonts.diff
-Patch3:         gnuplot-doc2tex.patch
-Patch4:         gnuplot-4.6.0-demo.diff
-Patch5:         gnuplot-QtCore-PIC.dif
-Patch6:         gnuplot-PIE.patch
-Patch7:         gnuplot-6.0.3-backward_compat.patch
-%define _x11lib     %{_libdir}
-%define _x11data    %{_datadir}/X11
-%define _x11inc     %{_includedir}/X11
-%define _appdef     %{_x11data}/app-defaults
-%define _gnplttex   tex/latex/gnuplot
 %if "%{flavor}" == "doc"
 Requires:       %{sname}
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 BuildArch:      noarch
 %endif
 
@@ -153,7 +153,6 @@ cp %{_sourcedir}/picins.sty docs
 %patch -P1 -p0 -b .x11ovf
 %patch -P5 -p0 -b .pic
 %patch -P6 -p1 -b .pie
-%patch -P7 -p0 -b .multiplot
 
 %build
 autoreconf -fi
@@ -162,10 +161,10 @@ autoreconf -fi
     export  PDFLATEX=lualatex
     export  CPPFLAGS="-I%{_includedir}/gd -DAppDefDir=\\\"%{_appdef}\\\""
     export  CPPFLAGS="$CPPFLAGS -DGNUPLOT_LIB_DEFAULT=\\\"%{_docdir}/%{sname}/demo\\\""
-    export  CFLAGS="${RPM_OPT_FLAGS} -pipe -D_GNU_SOURCE -fpic"
+    export  CFLAGS="%{optflags} -pipe -D_GNU_SOURCE -fpic"
     export  CXXFLAGS="$CFLAGS -fno-strict-aliasing"
     export  LDFLAGS="-L%{_x11lib} -Wl,--as-needed"
-    export  ARCHLIB=%_lib
+    export  ARCHLIB=%{_lib}
 %if 0%{?suse_version}
 %if !0%{?sle_version}
     export  CFLAGS="$CFLAGS -DDIST_CONTACT='https://bugs.opensuse.org/'"
@@ -223,33 +222,32 @@ autoreconf -fi
 	--with-qt=qt6
 
 %if "%{flavor}" == ""
-  make %{?_smp_mflags} UIC=%{_qt6_libexecdir}/uic  MOC=%{_qt6_libexecdir}/moc RCC=%{_qt6_libexecdir}/rcc LRELEASE=/usr/bin/lrelease6
+  %make_build UIC=%{_qt6_libexecdir}/uic  MOC=%{_qt6_libexecdir}/moc RCC=%{_qt6_libexecdir}/rcc LRELEASE=%{_bindir}/lrelease6
 %endif
 
 %if "%{flavor}" == "doc"
   mv src/Makefile{,_INACESSIBLE}
   pushd docs/
-	cp -p %{S:2} webp_figures.gnu
-	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean
-	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. allterm.h allterm-ja.h
-	make GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. html pdf
-	make srcdir=. gnuplot.texi
-	patch -p0 < %{S:4}
-	make srcdir=. info
+	cp -p %{SOURCE2} webp_figures.gnu
+	%make_build GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. clean
+	%make_build GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. allterm.h allterm-ja.h
+	%make_build GNUPLOT_EXE=%{_bindir}/gnuplot srcdir=. html pdf
+	%make_build srcdir=. gnuplot.texi
+	patch -p0 < %{SOURCE4}
+	%make_build srcdir=. info
 	pushd psdoc/
-	    make srcdir=. pdf
+	    %make_build srcdir=. pdf
 	popd
   popd
   if test -d tutorial/
   then
      pushd tutorial/
-	make srcdir=. clean pdf
+	%make_build srcdir=. clean pdf
      popd
   fi
 %endif
 
 %install
-    rm -rf %{buildroot}
 
 %if "%{flavor}" == ""
     make DESTDIR=%{buildroot} appdefaultdir=%{_appdef} install
@@ -282,7 +280,7 @@ autoreconf -fi
     install -m 0444 demo/*.*          %{buildroot}/%{_docdir}/gnuplot/demo/
     install -m 0444 README*           %{buildroot}/%{_docdir}/gnuplot/
     install -m 0444 NEWS BUGS	      %{buildroot}/%{_docdir}/gnuplot/
-    install -m 0444 %{S:1}            %{buildroot}/%{_docdir}/gnuplot/
+    install -m 0444 %{SOURCE1}            %{buildroot}/%{_docdir}/gnuplot/
     rm -f %{buildroot}/%{_docdir}/gnuplot/demo/Makefile*
     %fdupes %{buildroot}/%{_docdir}
 %endif
@@ -310,14 +308,14 @@ GNUTERM=dumb make check
 %{_datadir}/texmf/*
 %dir %{_appdef}
 %{_appdef}/Gnuplot
-%doc %{_mandir}/man1/gnuplot.1.gz
-%doc %{_mandir}/ja/man1/gnuplot.1.gz
+%{_mandir}/man1/gnuplot.1%{?ext_man}
+%{_mandir}/ja/man1/gnuplot.1%{?ext_man}
 %endif
 
 %if "%{flavor}" == "doc"
 %files
 %{_docdir}/gnuplot/
-%{_infodir}/%{sname}.info.gz
+%{_infodir}/%{sname}.info%{?ext_info}
 %endif
 
 %changelog
