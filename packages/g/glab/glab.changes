@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:38:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.119.0:
+  * Features
+    - d95ea085: feat(df): add cargo proxy matcher
+    - 7d0a007e: feat(df): add yarn wrapper command behind the
+      firewall proxy
+    - 588dce27: feat(df): render firewall summary in a colored
+      unicode box
+    - 4785f5d7: feat(mr): add --draft flag for pending review
+      comments
+    - f12316af: feat(mr): add mr note publish to publish pending
+      review comments
+    - cde22a13: feat(skills): add glab skills get
+    - 9cba09ff: feat: add AI Agent Identity scaffolding
+  * Bug Fixes
+    - 1d03bc02: fix(auth): Replace shell with glab process
+    - fbb11dc6: fix(auth): install the Docker credential shim into
+      a writable directory
+    - 08e87303: fix(auth): refresh OAuth tokens with a five-minute
+      grace period
+    - 3cc582db: fix(auth): use the configured subfolder when
+      refreshing OAuth tokens
+    - 92d16dc1: fix(mr): use standard unified diff headers in mr
+      diff
+  * Documentation
+    - b5a61738: docs(auth): add an organization-wide setup recipe
+    - 1efe867b: docs: correct the snippet command docs to only
+      mention create
+  * Dependencies
+    - 3fa004cb: chore(deps): bump golangci-lint to v2.13.2
+    - f8719867: chore(deps): update module github.com/docker/cli to
+      v29.8.0+incompatible
+    - 99ffb5f8: chore(deps): update module github.com/docker/cli to
+      v29.8.1+incompatible
+    - 03fc1311: chore(deps): update module
+      github.com/mattn/go-runewidth to v0.0.30
+    - 710741b0: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.1.0
+    - 2f13f088: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.12.0
+    - 4a1212ec: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.13.0
+    - a5eff031: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.2.0
+    - ef41f554: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.4.0
+    - 849b08af: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.6.0
+    - 8862f45c: chore(deps): update module golang.org/x/crypto to
+      v0.57.0
+    - 6e3dd220: chore(deps): update module golang.org/x/oauth2 to
+      v0.37.0
+  * Maintenance
+    - 0d8bb408: ci: add govulncheck reachability scanning
+    - 38d1ea9a: ci: exclude test fixtures from secret detection and
+      refresh commit-lint deps
+    - 20755344: ci: parallelize pipeline jobs and stabilize the Go
+      cache key
+    - f35f24de: ci: remove the code navigation job
+    - ba6c1913: ci: remove the danger-review job
+    - e905b0dc: refactor(cluster): fix stale keyring token-cache
+      comments
+    - 3c62b36c: refactor(orbit): rename orbit_local config keys to
+      orbit_cli
+  * Others
+    - 90783cf0: perf(mcp): cut tool catalog context by 24.5%
+    - 542bd8ca: test(securefile): expect file_extension field from
+      client-go v3.4.0
+
+-------------------------------------------------------------------
 Sun Sep 20 10:45:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.118.0:
