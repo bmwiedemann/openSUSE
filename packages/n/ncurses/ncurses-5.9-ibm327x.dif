@@ -28,7 +28,7 @@ terminal or the shell or any other program therein (no keys).
  	use=ansi+rca, use=ansi+sc, use=linux+sfkeys,
  	use=vt100+pf1-pf4, use=vt220+ufkeys, use=vt220+pcedit,
  
-@@ -18736,7 +18736,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
+@@ -18732,7 +18732,19 @@ hazel|exec80|h80|he80|Hazeltine Executiv
  
  ibm327x|line mode IBM 3270 style,
  	gn,

@@ -5876,4 +5876,24 @@
   + add ich1 to several entries, providing for support of non-curses</comment>
     <requestid>1377857</requestid>
   </revision>
+  <revision rev="340" vrev="113">
+    <srcmd5>3aeb23c95bb91b4df605af490cdaa482</srcmd5>
+    <version>unknown</version>
+    <time>1790166869</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260919
+  + revise content/formatting/style of man pages (patches by Branden
+    Robinson)
+  + add overline to ghostty (report by Jared Finder)
+  + review ghostty -TD
+  + add overline to rlogin-color -TD
+  + add null pointer check for stdscr in endwin() when saving keypad mode
+    (patch by Branden Robinson).
+  + remove an adjustment to stdscr in doupdate() when restoring keypad
+    mode (OpenSUSE boo#1281268).
+
+  + revise content/formatting/style of man pages (patches by Branden
+    Robinson)</comment>
+    <requestid>1379468</requestid>
+  </revision>
 </revisionlist>
