@@ -1521,4 +1521,28 @@ New stable rel</comment>
   + New API: +hb_set_intersects()</comment>
     <requestid>1374670</requestid>
   </revision>
+  <revision rev="142" vrev="1">
+    <srcmd5>c5ef0f54f957e894e66657fee9646a52</srcmd5>
+    <version>14.5.0</version>
+    <time>1790166856</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.5.0:
+  + Update Unicode 18.0 data and script support, including script
+    values for Jurchen, Proto-Cuneiform, and Seal, and the
+    corresponding shaping support.
+  + Add support for VARC table subsetting, including pruning
+    auxiliary data, remapping glyph IDs, and guarding the feature
+    in lean builds.
+  + Add rendering work budgets to the draw and paint APIs and share
+    them across the raster, vector, GPU, and Cairo renderers so
+    nested outline work remains bounded.
+  + Improve performance in set iteration, lookup traversal, and the
+    repacker, and add coverage for new benchmarks and fuzzing seeds
+  + Fix various correctness and robustness issues across the CFF,
+    Graphite, DirectWrite, and repacker code paths, including
+    memory leaks, overflow checks, bounds issues, and
+    malformed-font handling.
+  + Various build, portability, and CI fixes.</comment>
+    <requestid>1379434</requestid>
+  </revision>
 </revisionlist>

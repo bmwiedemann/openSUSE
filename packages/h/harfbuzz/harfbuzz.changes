@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 21 07:46:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 14.5.0:
+  + Update Unicode 18.0 data and script support, including script
+    values for Jurchen, Proto-Cuneiform, and Seal, and the
+    corresponding shaping support.
+  + Add support for VARC table subsetting, including pruning
+    auxiliary data, remapping glyph IDs, and guarding the feature
+    in lean builds.
+  + Add rendering work budgets to the draw and paint APIs and share
+    them across the raster, vector, GPU, and Cairo renderers so
+    nested outline work remains bounded.
+  + Improve performance in set iteration, lookup traversal, and the
+    repacker, and add coverage for new benchmarks and fuzzing seeds
+  + Fix various correctness and robustness issues across the CFF,
+    Graphite, DirectWrite, and repacker code paths, including
+    memory leaks, overflow checks, bounds issues, and
+    malformed-font handling.
+  + Various build, portability, and CI fixes.
+
+-------------------------------------------------------------------
 Thu Aug 27 05:38:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 14.4.0:
