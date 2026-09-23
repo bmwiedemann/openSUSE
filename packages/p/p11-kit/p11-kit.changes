@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:56:41 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 0.26.5:
+  * CVE-2026-18938: guard against overflow when decoding nested
+    attributes (bsc#1280702)
+
+- Update to 0.26.4:
+  * Build fix [PR#773]
+  * Update translations [PR#743, PR#772]
+
+- Update to 0.26.3:
+  * CVE-2026-13757: server: fixed stack exhaustion via unbounded
+    recursion in RPC attribute parsing by enforcing a recursion
+    depth limit (bsc#1269664)
+  * fixed confusing error message when trying to store an existing
+    cert with trust anchor [PR#770]
+  * fixed assert when parsing p11-kit files with value (") [PR#762]
+  * fixed numerous memory management issues [PR#751, PR#753, PR#754,
+    PR#756, PR#758, PR#763, PR#764, PR#765, PR#766, PR#769]
+  * Build and test fixes [PR#746, PR#747, PR#752, PR#755, PR#757,
+    PR#760, PR#761]
+
+-------------------------------------------------------------------
 Mon Feb  9 08:52:59 UTC 2026 - Angel Yankov <angel.yankov@suse.com>
 
 - Update to 0.26.2
