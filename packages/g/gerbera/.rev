@@ -1317,4 +1317,25 @@ Detailed changelong: https://github.com/gerbera/gerbera/releases/tag/v1.5.0
 </comment>
     <requestid>1379615</requestid>
   </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>98817daf9026f94b447a18141baf2f8b</srcmd5>
+    <version>3.3.0</version>
+    <time>1790166966</time>
+    <user>anag_factory</user>
+    <comment>- Fix boo#1235893 (CVE-2025-23386): generate and edit the config files
+  in %post as the gerbera user (via runuser) instead of letting root
+  write into the gerbera-owned /etc/gerbera directory. The previous fix
+  only chowned that directory to root for the duration of %post, so
+  symlinks staged there before the transaction were still followed by
+  root.
+  - Add Requires(post): util-linux for runuser.
+  - Drop the use of sudo in %post, which was never a dependency of this
+    package.
+- Set a restrictive umask so generated config files have mode 0640.
+- Pass --home to gerbera --create-config/--create-example-config, so the
+  generated &lt;home&gt; no longer depends on the home directory of the user
+  running %post.
+</comment>
+    <requestid>1379911</requestid>
+  </revision>
 </revisionlist>

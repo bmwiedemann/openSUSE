@@ -79,6 +79,8 @@ BuildRequires:  pkgconfig(wavpack) >= 5.1.0
 BuildRequires:  pkgconfig(zlib)
 Requires:       diffutils
 Requires:       logrotate
+# runuser, used by %%post
+Requires(post): util-linux
 %{?systemd_requires}
 %sysusers_requires
 
@@ -188,25 +190,31 @@ install -D -m0644 %{SOURCE11} %{buildroot}%{_sysconfdir}/nginx/vhosts.d/%{name}.
 %post
 %service_add_post %{name}.service
 
-chown -R root:root %{_sysconfdir}/%{name}
+# Fix boo#1235893 (CVE-2025-23386): %{_sysconfdir}/%{name} is owned by the
+# unprivileged gerbera user, so root must never create or edit files in there:
+# a symlink staged in that directory would be followed. Generate and edit the
+# configuration as the gerbera user instead.
+# -h (and no -R) only repairs the ownership left behind by pre-fix versions of
+# this package, without following symlinks or descending into the directory.
+chown -h gerbera:gerbera %{_sysconfdir}/%{name}/*.xml 2>/dev/null || :
+runuser -u gerbera -- /bin/sh -c '
+umask 027
 # only do on install
 if [ "$1" -eq 1 ]; then
   echo "o Create config.xml..." || :
-  gerbera --create-config | sudo tee %{_sysconfdir}/gerbera/config.xml || :
-  sed -i -e 's|<home>/root/</home>|<home>%{_sysconfdir}/gerbera</home>|g' %{_sysconfdir}/gerbera/config.xml || :
-  sed -i -e 's|<database-file>gerbera.db</database-file>|<database-file>%{_localstatedir}/lib/gerbera/gerbera.db</database-file>|g' %{_sysconfdir}/gerbera/config.xml || :
+  gerbera --home %{_sysconfdir}/gerbera --create-config > %{_sysconfdir}/gerbera/config.xml || :
+  sed -i -e "s|<database-file>gerbera.db</database-file>|<database-file>%{_localstatedir}/lib/gerbera/gerbera.db</database-file>|g" %{_sysconfdir}/gerbera/config.xml || :
 fi
 # only do on upgrade
 if [ "$1" -gt 1 ]; then
   echo "o Create config-diff.xml from own config to new config..." || :
-  gerbera --create-config | sudo tee %{_sysconfdir}/gerbera/config-new.xml || :
-  sed -i -e 's|<home>/root/</home>|<home>%{_sysconfdir}/gerbera</home>|g' %{_sysconfdir}/gerbera/config-new.xml || :
-  sed -i -e 's|<database-file>gerbera.db</database-file>|<database-file>%{_localstatedir}/lib/gerbera/gerbera.db</database-file>|g' %{_sysconfdir}/gerbera/config-new.xml || :
+  gerbera --home %{_sysconfdir}/gerbera --create-config > %{_sysconfdir}/gerbera/config-new.xml || :
+  sed -i -e "s|<database-file>gerbera.db</database-file>|<database-file>%{_localstatedir}/lib/gerbera/gerbera.db</database-file>|g" %{_sysconfdir}/gerbera/config-new.xml || :
   diff %{_sysconfdir}/gerbera/config.xml %{_sysconfdir}/gerbera/config-new.xml > %{_sysconfdir}/gerbera/config-diff.xml || :
 fi
 echo "o Create new config-example.xml with almost all options..." || :
-gerbera --create-example-config | sudo tee %{_sysconfdir}/gerbera/config-example.xml || :
-chown -R gerbera:gerbera %{_sysconfdir}/%{name}
+gerbera --home %{_sysconfdir}/gerbera --create-example-config > %{_sysconfdir}/gerbera/config-example.xml || :
+' sh "$1" || echo "gerbera: could not generate the configuration as user gerbera" >&2
 
 %preun
 %service_del_preun %{name}.service
