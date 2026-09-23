@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 01:59:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- kernel-7.3.0-opengpu-615.71.09.patch
+  * fix build against Linux 7.3.0 (RC) (boo#1278022)
+
+-------------------------------------------------------------------
+Tue Sep 22 16:31:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  - re-disabled CXL support for now again following NVIDIA's
+    advice (bsc#1280057)
+
+-------------------------------------------------------------------
 Fri Sep 18 03:04:25 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - fixed build on SLE16.1

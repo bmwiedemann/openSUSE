@@ -100,6 +100,7 @@ Source17:       kmp-post.sh
 Source18:       Check4WrongSupplements.sh
 Patch0:         fix-objtool-warnings.patch
 Patch1:         Fixing-build-against-SLE16.1-Kernel.patch
+Patch2:         kernel-7.3.0-opengpu-615.71.09.patch
 BuildRequires:  %{kernel_module_package_buildreqs}
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -246,6 +247,7 @@ ls -l %{_sourcedir}
 %if 0%{?suse_version} >= 1610 && 0%{?suse_version} < 1699
 %patch -P 1 -p1
 %endif
+%patch -P 2 -p1
 %endif
 
 set -- *

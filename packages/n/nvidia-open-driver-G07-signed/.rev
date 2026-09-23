@@ -213,4 +213,17 @@
     <comment>- fixed build on SLE16.1</comment>
     <requestid>1378765</requestid>
   </revision>
+  <revision rev="21" vrev="4">
+    <srcmd5>d309f0048219f9c25b3e6066b737a538</srcmd5>
+    <version>595.99.02</version>
+    <time>1790166776</time>
+    <user>anag_factory</user>
+    <comment>- kernel-7.3.0-opengpu-615.71.09.patch
+  * fix build against Linux 7.3.0 (RC) (boo#1278022)
+
+- Fixing-build-against-SLE16.1-Kernel.patch
+  - re-disabled CXL support for now again following NVIDIA's
+    advice (bsc#1280057)</comment>
+    <requestid>1379777</requestid>
+  </revision>
 </revisionlist>
