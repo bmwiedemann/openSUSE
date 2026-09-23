@@ -17,7 +17,7 @@
 
 
 #
-%define git_ver .0.5de2d6a2d
+%define git_ver .0.9011331bb
 
 %ifarch aarch64 %power64 x86_64 s390x riscv64
   %if 0%{?suse_version} > 1530
@@ -30,7 +30,7 @@
 %endif
 
 Name:           libfabric
-Version:        2.6.0
+Version:        2.7.0
 Release:        0
 Summary:        User-space RDMA Fabric Interfaces
 License:        BSD-2-Clause OR GPL-2.0-only
@@ -40,6 +40,7 @@ Source1:        baselibs.conf
 Source100:      README.md
 Patch0:         libfabric-libtool.patch
 Patch1:         Revert-prov-verbs-Add-peer-mem-support-for-Broadcom-Devices.patch
+Patch2:         Fix-compilation-issue-with-UCX-1.22.patch
 URL:            http://www.github.com/ofiwg/libfabric
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -151,6 +152,8 @@ rm -f %{buildroot}%{_libdir}/*.la
 %{_includedir}/rdma/fi_rma.h
 %{_includedir}/rdma/fi_tagged.h
 %{_includedir}/rdma/fi_trigger.h
+%{_includedir}/rdma/fi_xpu.h
+%{_includedir}/rdma/fi_xpu_device.h
 %dir %{_includedir}/rdma/providers
 %{_includedir}/rdma/providers/fi_log.h
 %{_includedir}/rdma/providers/fi_peer.h

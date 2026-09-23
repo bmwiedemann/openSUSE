@@ -1,0 +1,27 @@
+commit 4e6cd2bba4c9518b17b6abb834d38157f7001ea9
+Author: Nicolas Morey <nmorey@suse.com>
+Date:   Mon Sep 14 17:23:36 2026 +0200
+
+    Fix compilation issue with UCX 1.22
+    
+    UCX 1.22 introduced an extra argument in ucs_memtype_cache_update
+    
+    Signed-off-by: Nicolas Morey <nmorey@suse.com>
+
+diff --git prov/ucx/src/ucx_domain.c prov/ucx/src/ucx_domain.c
+index d8788d47ea50..5f4e2d59dc99 100644
+--- prov/ucx/src/ucx_domain.c
++++ prov/ucx/src/ucx_domain.c
+@@ -227,7 +227,11 @@ static inline void ucx_update_memtype_cache(enum fi_hmem_iface iface,
+ 	 * this range.
+ 	 */
+ 	ucs_memtype_cache_update(base, size, UCS_MEMORY_TYPE_UNKNOWN,
+-				 UCS_SYS_DEVICE_ID_UNKNOWN);
++				 UCS_SYS_DEVICE_ID_UNKNOWN
++#if  (UCP_API_MAJOR > 1) || (UCP_API_MAJOR == 1 && UCP_API_MINOR >= 22)
++				 , 0 /* mem_flags, introduced in UCX 1.22 */
++#endif
++);
+ }
+ 
+ static int ucx_mr_regattr(struct fid *fid, const struct fi_mr_attr *attr,

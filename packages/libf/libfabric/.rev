@@ -927,4 +927,41 @@ Binary file libfabric-1.6.0.0.0e74cba7ad59.tar.bz2 (revision 11) deleted</commen
     - Fix direct_ope leak on error in efa-direct send/recv/rma</comment>
     <requestid>1361470</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>be14b39d7eca86a37b9f0540381d6afc</srcmd5>
+    <version>2.7.0</version>
+    <time>1790166835</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.7.0
+  - Core
+    - man: Add section headers for domain ops in fi_efa.7.md
+    - hmem/rocr: Report device ordinal from rocr_is_addr_valid
+    - build: Add CUDA/ROCm build toggles to RPM spec files
+    - man: List address vectors in FI_THREAD_DOMAIN serialization
+    - man: Fix typo and add missing parameter description to fi_verbs page
+    - man: Add more details to verbs NIC affinity setting parameters
+    - Print xpu attrs in fi_tostr
+    - Fix the missing ABI bump for fi_domain_attr
+    - Add default fi_av_lookup2 support to all providers
+    - Add fi_xpu.h and fi_xpu_device.h to build specs
+    - man: Add fi_xpu man page and document XPU semantics
+    - Add device-side XPU API header
+    - Add fi_av_lookup2 and fi_mr_get_desc with XPU context
+    - Add EP/CQ/CNTR export_xpu functions
+    - Add fid_xpu_ctx to EP/CQ/CNTR attrs
+    - Add fid_xpu_ctx and domain creation/query
+    - Add XPU memory callback flags
+    - Add XPU attribute and ops structures
+    - Add FI_XPU capability flag
+    - README: Add missing provider descriptions
+    - getinfo: Add environment controlled FI_ADDR_FORMAT filter
+    - man: Document FI_OFI_RXM_NUM_MSG_EPS
+    - Add ofi_rmb and an include guard to ofi_mb.h
+    - configure: Add --enable-thread-safety-analysis option
+    - config/fi_provider.m4: Don't link dl providers in pkgconfig
+    - core: Add ofi_get_local_rank_info() shared local rank/count utility
+    - configure.ac: Remove unused compile flag
+    - hmem_cuda: Skip cuMemGetAddressRange in cuda_get_dmabuf_fd</comment>
+    <requestid>1379387</requestid>
+  </revision>
 </revisionlist>
