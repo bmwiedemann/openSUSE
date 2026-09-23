@@ -57,6 +57,11 @@ Tue Sep 15 11:47:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
   * Trim labels to prevent code injection (GHSA-p6j5-2qwh-6486) 8309dc9
 - modified patches
   * ImageMagick-library-installable-in-parallel.patch (refreshed)
+- fixes CVE-2026-93588 [bsc#1281910]
+        CVE-2026-93586 [bsc#1281912]
+        CVE-2026-93589 [bsc#1281911]
+        CVE-2026-93590 [bsc#1281913]
+        CVE-2026-93587 [bsc#1281909]
 
 -------------------------------------------------------------------
 Mon Aug 24 08:04:01 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
