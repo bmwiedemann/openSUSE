@@ -1020,4 +1020,12 @@ Note: python-protobuf.changes keeps the python-rpm-macros entry below
 the new one (a plain pre_checkin.sh cp would have dropped it).</comment>
     <requestid>1377638</requestid>
   </revision>
+  <revision rev="98" vrev="1">
+    <srcmd5>a2489fcc186d94d8206adba3bfe2b9e0</srcmd5>
+    <version>36.2</version>
+    <time>1790166784</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1379242</requestid>
+  </revision>
 </revisionlist>

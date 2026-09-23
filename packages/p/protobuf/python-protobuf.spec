@@ -17,7 +17,7 @@
 #
 
 
-%define baseversion 36.1
+%define baseversion 36.2
 %{?sle15_python_module_pythons}
 Name:           python-protobuf
 Version:        7.%{baseversion}

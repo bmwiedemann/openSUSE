@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 20 10:18:39 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 36.2:
+  * Detect single-crate cross-file symbol collisions and
+    conditionally emit crate-root re-exports
+  * Prepend the file module name to Rust type paths to use canonical paths
+  * Expose generated per-file Rust proto modules as public
+  * Documnetation updates and bug fixes
+
+-------------------------------------------------------------------
 Sun Sep 13 06:24:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 36.1 (C++ 36.1, Python bindings 7.36.1, Java 4.36.1):
