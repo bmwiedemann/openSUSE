@@ -1,0 +1,55 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Wed Apr 22 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package name
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with preview
+
+-------------------------------------------------------------------
+Fri Feb 20 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix TW build
+
+-------------------------------------------------------------------
+Wed Jan 28 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Dec 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Support SUSE
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Sun Nov  2 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Initial package
+  Add: 0001-rocm-origami-remove-scope-for-variables.patch
