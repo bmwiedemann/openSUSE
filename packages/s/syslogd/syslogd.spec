@@ -41,6 +41,7 @@ Source9:        syslogd-service-prepare
 Source10:       syslogd.tmpfiles
 Source11:       syslogd-rpmlintrc
 Source12:       sysconfig.boot
+Source13:       syslogd.keyring
 Patch0:         sysklogd-1.4.1.dif
 Patch1:         sysklogd-1.4.1-dgram.patch
 Patch2:         sysklogd-1.4.1-sparc.patch

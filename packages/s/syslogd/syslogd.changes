@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 15 11:47:44 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add keyring but there is still no signed 1.5.1 source tar ball  
+
+-------------------------------------------------------------------
 Thu Jan 15 07:39:03 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid restarting klog.service and klogd.service in postun as
