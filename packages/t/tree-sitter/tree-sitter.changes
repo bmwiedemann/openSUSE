@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Sun Sep 20 06:24:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require binaryen on every architecture that has it: 0.27's
+  build --wasm runs wasm-opt, and the ports arches carry binaryen
+  just as x86_64 does, so the previous x86_64-only Requires left
+  the grammars to fail late in the wasm step
+- Turn the wasm macros into no-ops below suse_version 1690: Leap
+  16 has no binaryen at all, and its tree-sitter comes from SLFO
+  without these macros, so the modules cannot ship there anyway.
+  %define treesitter_wasm_enabled 0 forces the same by hand
+
+-------------------------------------------------------------------
+Sat Sep 19 05:06:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Point TREE_SITTER_BINARYEN_PATH at /usr so `build --wasm`
+  uses distro wasm-opt (0.27 otherwise curl-downloads binaryen)
+- Requires: binaryen on x86_64 (Factory binaryen is x86_64-only)
+
+-------------------------------------------------------------------
+Wed Sep 16 17:42:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.27.0 (includes 0.26.9-0.26.13):
+  * C library SONAME is now libtree-sitter.so.0.27
+  * Grammar ABI unchanged (LANGUAGE_VERSION 15, min 13)
+  * MSRV 1.90, Rust edition 2024
+  * Allow '-' in grammar names
+  * CLI: concurrent grammar builds, build --verbose, test --update
+    rewrites all corpus files
+  * highlight: UTF-16 support
+  * lib: eof helper; missing nodes carry parse state
+  * query: fix cross-branch capture contamination and MISSING nodes
+  * parser: avoid wide error nodes on unparseable input
+  * generate: reject invalid byte-class patterns and terminal
+    supertypes
+  * wasm: wasi-sdk for binaryen, realloc fixes, extra stdlib
+  * Memory-safety fixes in the C library
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Rename shlib subpackage libtree-sitter0_26 to libtree-sitter0_27
+  and update baselibs.conf
+- Conflict with libtree-sitter0_26
+- BuildRequire rust >= 1.90
+- Set License to LGPL-3.0-or-later AND MIT (vendored ansi_colours;
+  GPL-2.0-only is no longer linked)
+
+-------------------------------------------------------------------
 Tue Sep 15 06:20:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add the %treesitter_queries_install, %treesitter_queries_files

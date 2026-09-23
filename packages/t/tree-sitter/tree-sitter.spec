@@ -1,7 +1,7 @@
 #
 # spec file for package tree-sitter
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 # Sync with macros.emacs from the emacs package
 %global _emacs_sitelispdir %{_datadir}/emacs/site-lisp
 %global _emacs_sitestartdir %{_emacs_sitelispdir}/site-start.d
-%define         somajor 0_26
+%define         somajor 0_27
 # switch of automatic generating of cargo provides (bsc#1261839)
 %global __provides_exclude_from ^%{_bindir}/%{name}$
 Name:           tree-sitter
-Version:        0.26.8
+Version:        0.27.0
 Release:        0
 Summary:        An incremental parsing system for programming tools
-License:        GPL-2.0-only AND MIT
+License:        LGPL-3.0-or-later AND MIT
 URL:            https://tree-sitter.github.io/
 Source0:        https://github.com/tree-sitter/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
@@ -40,14 +40,19 @@ Source27:       tree-sitter-python-shim.py.in
 BuildRequires:  cargo-packaging
 BuildRequires:  clang
 BuildRequires:  fdupes
-BuildRequires:  rust > 1.82.0
+BuildRequires:  rust >= 1.90
 # for macros.emacs
 # BuildRequires:  emacs-nox
 # Commented out since we don't want circular dependencies
 Requires:       lib%{name}%{somajor} = %{version}
 Requires:       nodejs
+# 0.27 `build --wasm` runs wasm-opt; Leap 16 has no binaryen
+%if 0%{?suse_version} >= 1690
+Requires:       binaryen
+%endif
 Conflicts:      lib%{name}0_22 < %{version}
 Conflicts:      lib%{name}0_25 < %{version}
+Conflicts:      lib%{name}0_26 < %{version}
 %{load:%{SOURCE21}}
 %{?suse_build_hwcaps_libs}
 

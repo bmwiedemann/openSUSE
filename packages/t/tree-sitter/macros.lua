@@ -194,6 +194,7 @@ function treesitter_wasm_build()
       cannot provide; the grep proves the module exports the grammar's entry
       point (anchored so markdown does not pass on markdown_inline).
    --]]
+	if rpm.expand("%{treesitter_wasm_enabled}") ~= "1" then return end
 	rpm.expand("%_treesitter_macro_init")
 	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
 	local grammar_sources = rpm.expand("%{treesitter_grammar_sources}"):split()
@@ -235,6 +236,7 @@ function treesitter_wasm_provides()
 end
 
 function treesitter_wasm_install()
+	if rpm.expand("%{treesitter_wasm_enabled}") ~= "1" then return end
 	rpm.expand("%_treesitter_macro_init")
 	local grammar_names = rpm.expand("%{treesitter_grammar_names}"):split()
 	local install_path = rpm.expand("%{buildroot}%{_treesitter_wasmdir}")

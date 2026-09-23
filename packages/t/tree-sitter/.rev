@@ -364,4 +364,28 @@ Verified locally: the modules parse identically to upstream's release modules un
 INTERDEPENDENT REQUESTS - please stage together: this one first, then the tree-sitter-&lt;lang&gt; requests (30 existing packages, 7 new ones) that use the macros; each of them names this request.</comment>
     <requestid>1378101</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>fde0c8f3d8dc35103881549285840763</srcmd5>
+    <version>0.27.0</version>
+    <time>1790166736</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.27.0 (includes 0.26.9 through 0.26.13):
+  * C library SONAME is now libtree-sitter.so.0.27; the shared
+    library subpackage is renamed libtree-sitter0_26 -&gt;
+    libtree-sitter0_27, so neovim, emacs, rizin and jsdec rebuild
+  * Grammar ABI is unchanged (LANGUAGE_VERSION 15, minimum 13),
+    so the grammar packages keep working as they are
+  * License re-derived from the vendored crates:
+    LGPL-3.0-or-later AND MIT
+- 0.27's `tree-sitter build --wasm` runs wasm-opt, so the CLI now
+  requires binaryen on every architecture that ships it, and the
+  -wasm macros are no-ops below suse_version 1690, where binaryen
+  does not exist
+
+The 39 grammar packages that use the wasm macros were rebuilt against
+this in editors:tree-sitter on x86_64, aarch64, ppc64le, s390x and
+Leap 16.0: no failures. The ports arches need binaryen in the build
+root, which is why the earlier x86_64-only Requires had to go.</comment>
+    <requestid>1379270</requestid>
+  </revision>
 </revisionlist>

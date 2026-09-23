@@ -17,7 +17,9 @@
 #    tree-sitter CLI builds it exactly as it would with wasi-sdk -- one clang
 #    call, no libc -- and %%treesitter_wasm_set_sdk points it at the
 #    distribution's clang, lld and wasi-libc through a two-line shim, because
-#    without TREE_SITTER_WASI_SDK_PATH the CLI downloads wasi-sdk. The module
+#    without TREE_SITTER_WASI_SDK_PATH the CLI downloads wasi-sdk. 0.27 also
+#    runs wasm-opt and downloads binaryen unless TREE_SITTER_BINARYEN_PATH
+#    is set (looks for $PATH/bin/wasm-opt). The module
 #    is arch-independent bytecode, so the subpackage is noarch (-DNDEBUG keeps
 #    a scanner's assert() text, the only host-specific input, out of it; the
 #    CLI compiles relative paths from the grammar's src/, so nothing else could
@@ -48,10 +50,15 @@
 #    tree-sitter-hcl declares terraform=dialects and builds its module with
 #    %%treesitter_wasm_build terraform=dialects/terraform
 # --]]
-%treesitter_wasm_set_sdk mkdir -p .wasi-sdk/bin; { echo '#!/bin/sh'; echo "exec %{_bindir}/clang --sysroot=%{_datadir}/wasi-sysroot -isystem %{_datadir}/wasi-sysroot/include/wasm32-wasip1 -DNDEBUG "'"$@"'; } > .wasi-sdk/bin/clang; chmod 0755 .wasi-sdk/bin/clang; export TREE_SITTER_WASI_SDK_PATH="$PWD/.wasi-sdk"
+%treesitter_wasm_set_sdk mkdir -p .wasi-sdk/bin; { echo '#!/bin/sh'; echo "exec %{_bindir}/clang --sysroot=%{_datadir}/wasi-sysroot -isystem %{_datadir}/wasi-sysroot/include/wasm32-wasip1 -DNDEBUG "'"$@"'; } > .wasi-sdk/bin/clang; chmod 0755 .wasi-sdk/bin/clang; export TREE_SITTER_WASI_SDK_PATH="$PWD/.wasi-sdk"; export TREE_SITTER_BINARYEN_PATH=%{_prefix}
+
+# The wasm modules need wasm-opt from binaryen, which Leap 16 does not have;
+# %%define treesitter_wasm_enabled 0 disables them by hand.
+%treesitter_wasm_enabled %{lua: print((tonumber(rpm.expand("0%{?suse_version}")) >= 1690) and 1 or 0)}
 
 %__treesitter_wasm_package_name() %name-wasm
 %treesitter_wasm_package \
+%if %{treesitter_wasm_enabled} \
 %package -n %{__treesitter_wasm_package_name} \
 Summary: WebAssembly modules of the %{name} grammars \
 BuildArch: noarch \
@@ -61,7 +68,8 @@ The grammars of %{name} compiled to WebAssembly, for consumers that run \
 tree-sitter in a WebAssembly runtime such as web-tree-sitter. The modules \
 live in %{_treesitter_wasmdir}. \
 %files -n %{__treesitter_wasm_package_name} \
-%{treesitter_wasm_files}
+%{treesitter_wasm_files} \
+%endif
 
 # --[[
 #    Optional -queries subpackage: the queries upstream ships with the
