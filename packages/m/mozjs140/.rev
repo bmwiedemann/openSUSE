@@ -180,4 +180,16 @@
   + See https://www.firefox.com/en-US/firefox/140.16.0/releasenotes/</comment>
     <requestid>1378330</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>5a14d207a9a29010ad387d98403d7281</srcmd5>
+    <version>140.16.0</version>
+    <time>1790166757</time>
+    <user>anag_factory</user>
+    <comment>- Drop mozjs140-CVE-2026-32776.patch,
+  mozjs140-CVE-2026-32777.patch, mozjs140-CVE-2026-32778.patch, and
+  mozjs140-CVE-2025-70103.patch. These were added by mistake and
+  are not needed, since the relevant sources are not build for
+  the JS interpreter.</comment>
+    <requestid>1379635</requestid>
+  </revision>
 </revisionlist>

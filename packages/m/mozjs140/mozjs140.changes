@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 21 17:26:38 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Drop mozjs140-CVE-2026-32776.patch,
+  mozjs140-CVE-2026-32777.patch, mozjs140-CVE-2026-32778.patch, and
+  mozjs140-CVE-2025-70103.patch. These were added by mistake and
+  are not needed, since the relevant sources are not build for
+  the JS interpreter.
+
+-------------------------------------------------------------------
 Tue Sep 15 10:14:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 140.16.0:
