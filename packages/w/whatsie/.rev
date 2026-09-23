@@ -138,4 +138,41 @@
   * feat: migrate to Qt6.10 witth cmake build system #294</comment>
     <requestid>1370487</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>2190d4325c68cffd27da6131c5d7a6c2</srcmd5>
+    <version>6.1.1</version>
+    <time>1790166955</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.1.1:
+  - Changes in 6.1.1:
+    * Theme: follow the desktop light/dark preference via
+      the desktop portal
+    * Reconnect automatically after resume
+    * Spell check: list every bundled dictionary in settings
+    * Open WhatsApp channel links and text-only send links
+  - Changes in 6.1.0:
+    * Add interface translations, selectable in settings
+    * Show unread count as a launcher/taskbar badge
+    * Allow spell check to use multiple languages at once
+    * Add advanced option to render at the display's refresh rate
+    * Tray: centre and size the monochrome glyph correctly
+    * Wayland: match the snap-exported desktop ID so the app groups
+      correctly
+  - Changes in 6.0.4:
+    * Spell check: fix dictionaries silently failing to load
+    * Spell check: allow adding languages from spell check settings
+    * NVIDIA/Wayland: fall back to software rendering instead of
+    a black screen
+  - Changes in 6.0.3:
+    * Drag-and-drop: show a drop hint and report files that
+      can't be attached
+    * Tray tooltip now reads &quot;Whatsie&quot;
+    * Bug-report diagnostics include the CPU architecture
+  - Changes in 6.0.2:
+    * Add a JavaScript memory limit to bound WhatsApp Web's heap
+    * Open WhatsApp group-invite links in the join preview
+  - Changes in 6.0.1:
+    * Debian packaging for the Qt6 rewrite.</comment>
+    <requestid>1379824</requestid>
+  </revision>
 </revisionlist>

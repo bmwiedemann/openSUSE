@@ -1,7 +1,7 @@
 #
 # spec file for package whatsie
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           whatsie
-Version:        5.1.0
+Version:        6.1.1
 Release:        0
 Summary:        Feature rich WhatsApp Client for Desktop Linux
 License:        MIT
@@ -27,12 +27,13 @@ Source:         %{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
-BuildRequires:  qt6-base-devel >= 6.10
+BuildRequires:  qt6-base-devel >= 6.11
 BuildRequires:  qt6-webenginecore-devel
 BuildRequires:  pkgconfig(Qt6Location)
 BuildRequires:  pkgconfig(Qt6Positioning)
 BuildRequires:  pkgconfig(Qt6PositioningQuick)
 BuildRequires:  pkgconfig(Qt6Qml)
+BuildRequires:  pkgconfig(Qt6Svg)
 BuildRequires:  pkgconfig(Qt6Quick)
 BuildRequires:  pkgconfig(Qt6QuickTest)
 BuildRequires:  pkgconfig(Qt6QuickWidgets)
@@ -48,20 +49,21 @@ Feature rich WhatsApp Client for Desktop Linux.
 %autosetup -p1
 
 %build
-%cmake
+%cmake \
+    -DCMAKE_SKIP_INSTALL_RPATH=ON
 
 %install
 %cmake_install
 
 %files
 %license LICENSE
-%doc CHANGELOG.md README.md
+%doc README.md
 %{_bindir}/whatsie
 %{_datadir}/applications/com.ktechpit.whatsie.desktop
 %{_datadir}/icons/hicolor/???x???/apps/com.ktechpit.whatsie.png
 %{_datadir}/icons/hicolor/??x??/apps/com.ktechpit.whatsie.png
 %{_datadir}/icons/hicolor/scalable/apps/com.ktechpit.whatsie.svg
 %{_datadir}/icons/hicolor/symbolic/apps/com.ktechpit.whatsie-symbolic.svg
-%{_datadir}/metainfo/com.ktechpit.whatsie.appdata.xml
+%{_datadir}/metainfo/com.ktechpit.whatsie.metainfo.xml
 
 %changelog
