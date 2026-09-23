@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 01:26:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.11.0:
+  * Catch exception in get_languages()
+  * fix _pix_to_image memory leak
+  * place long running API calls in cysignals blocks
+- Build with Cython 3.
+
+-------------------------------------------------------------------
 Tue Feb 17 15:43:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - build with cython0

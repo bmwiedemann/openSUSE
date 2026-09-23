@@ -282,4 +282,16 @@
     <comment>- build with cython0</comment>
     <requestid>1333598</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>22d386440adc18ca40a4adc220fd0d2e</srcmd5>
+    <version>2.11.0</version>
+    <time>1790166879</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.11.0:
+  * Catch exception in get_languages()
+  * fix _pix_to_image memory leak
+  * place long running API calls in cysignals blocks
+- Build with Cython 3.</comment>
+    <requestid>1379774</requestid>
+  </revision>
 </revisionlist>
