@@ -18,7 +18,7 @@
 
 
 Name:           gzip
-Version:        1.14
+Version:        1.15
 Release:        0
 Summary:        GNU Zip Compression Utilities
 License:        GPL-3.0-or-later
@@ -34,11 +34,8 @@ Patch3:         zdiff.diff
 # PATCH FIX OPENSUSE BNC#799561 - zgrep silently fails on LZMA compressed files
 Patch4:         xz_lzma_zstd.patch
 Patch5:         manpage-no-date.patch
-Patch6:         gzip-1.14-s390x-errno.patch
-# PATCH FIX UPSTREAM bsc#1269622 marius.grossu@suse.com CVE-2026-41991
-Patch7:         CVE-2026-41991.patch
-# PATCH FIX UPSTREAM bsc#1269623 bsc#1272554 antonio.teixeira@suse.com CVE-2026-41992
-Patch8:         CVE-2026-41992.patch
+# PATCH-FIX-UPSTREAM fix-aarch64-build.patch -- build: avoid failure to build on linux aarch64
+Patch7:         fix-aarch64-build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  makeinfo
