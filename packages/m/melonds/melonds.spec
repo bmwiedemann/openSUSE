@@ -25,6 +25,7 @@ Summary:        Nintendo DS emulator
 License:        GPL-3.0-or-later
 URL:            https://github.com/melonDS-emu/%{name}
 Source0:        https://github.com/melonDS-emu/%{name}/archive/%{version}.tar.gz#/%{_name}-%{version}.tar.gz
+Patch1:         appstream.patch
 BuildRequires:  cmake
 BuildRequires:  execstack
 BuildRequires:  extra-cmake-modules
@@ -65,5 +66,6 @@ execstack -c %{buildroot}/%{_bindir}/%{_name}
 %{_bindir}/%{_name}
 %{_datadir}/applications/net.kuribo64.%{_name}.desktop
 %{_datadir}/icons/hicolor/*/apps/net.kuribo64.%{_name}.png
+%{_datadir}/metainfo/net.kuribo64.%{_name}.metainfo.xml
 
 %changelog
