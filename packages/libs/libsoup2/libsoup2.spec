@@ -110,6 +110,8 @@ Patch40:        https://github.com/GNOME/libsoup/commit/35af2342.patch
 Patch41:        libsoup2-CVE-2026-1801.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
 Patch42:        libsoup2-CVE-2026-12548.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-77680.patch bsc#1276759, bsc#1275988, glgo#GNOME/libsoup!550 alynx.zhou@suse.com -- Fix flaw in HTTP Range heaader processing
+Patch43:        libsoup2-CVE-2026-77680.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 21 08:51:36 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add libsoup2-CVE-2026-77680.patch: Fix flaw in HTTP Range header
+  processing. (bsc#1276759, CVE-2026-77680, bsc#1275988,
+  CVE-2026-77014, glgo#GNOME/libsoup!550).
+
+-------------------------------------------------------------------
 Thu Aug 20 04:43:24 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add libsoup2-CVE-2026-12548.patch: Fix heap out-of-bounds read
