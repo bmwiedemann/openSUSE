@@ -1,4 +1,135 @@
 -------------------------------------------------------------------
+Mon Sep 21 21:35:09 UTC 2026 - Tony Jones <tonyj@suse.com>
+
+- Update to v4.14.1 (jsc#PED-15991)
+  Changelog:
+    - Fix Intel x86 duplicate code detection code
+    - Fix IMC UNC_M_CLOCKTICKS event code for Intel GraniteRapid
+    - Mark RS_EMPTY as deprecated event Intel SPR/EMR
+    - Fix duplicated event code for IDQ_UOPS_NOT_DELIVERED on Intel 
+      GraniteRapid
+    - Add LBR_INSERTS.ANY event to Intel GraniteRapid core PMU
+    - Fix memory ordering problem on some architectures
+    - Update Intel GraniteRapids core events to 1.19
+    - Add AMD Zen6 (Fam 1Ah) L3 PMU support
+    - Add AMD Zen6 (Fam 1Ah) core PMU support
+    - amd64: drop unused amd64_fam1ah_zen5_retired_serializing_ops table
+    - Add basic support for JSON output
+    - perf_examples: update task_cpu max cpus to 512
+    - perf/arm: add NVIDIA Olympus support
+    - Fix validation error for ARM Cortex X4 BR_RET_SPEC
+    - Updated Intel SPR support
+    - Fix Intel Icelake MEM_LOAD_MISC_RETIRED event code
+    - Add support for ARM Cortex X4 core PMU
+    - s390: Add counter definition for IBM z17
+    - Merge /u/kotaro-tokai/perfmon2/ branch monaka-v1.1-support into master
+    - Merge /u/tmalesinski/perfmon2/ branch python3-fix into master
+    - The FUJITSU-MONAKA PMU events have been changed to match the v1.1 
+      specification and v1.0 errata.
+    - Add another perf_name for ARM Cortex-A57
+    - Fix AMD Zen5 umasks for L2_PREFETCH_MISS_L3 and L2_FILL_RESPONSE_SRC
+    - Modernize setup.py slightly.
+    - Use relative imports according to PEP 328
+    - Hotfix ARM CPU detection due to arch mismatch
+    - Cope with empty /proc/cpuinfo file
+    - Merge /u/mousezhang/perfmon2/ branch master into master
+    - Add sysfs PMU caching on initialization
+    - Remove references to /sys/devices to remain compatible with upstream
+    - Add ARM hybrid encoding support for perf_events
+    - Add ARM hybrid detection
+    - Fix typo Kinghts -> Knights
+    - Cleanup Alderlake event descriptions
+    - Add Intel GraniteRapids uncore IMC PMU support
+    - Fix clang unused function/variable errors
+    - Update Intel GraniteRapids core events to 1.06
+    - Fix AMD Zen5 encodings for L2_FILL_RESPONSE_SRC and L2_PREFETCH_MISS_L3
+    - Make L1I_CACHE_ACCESS an alias to the official L1I_CACHE event
+    - Update perf_events interface header to 6.12
+    - Enable support for FUJITSU-MONAKA core PMU
+    - Add ARM Neoverse N3 core PMU support
+    - Fix group_pmu initialization in perf_examples/task
+    - Add support for Topdown via PERF_METRICS for Intel Icelake/IcelakeX
+    - Add support for Topdown via PERF_METRICS for Intel GraniteRapids
+    - Add support for Topdown via PERF_METRICS for Intel SapphireRapids
+    - Add support_no_mods support to Intel X86 encoding
+    - Add support_no_mods support to perf_events encoding
+    - Add support_hw_smpl description to pfm_get_event_attr_info() man page
+    - Add new attribute info field support_no_mods
+    - Fix assignment in pfmlib_build_event_pattrs
+    - Add ARM Cortex A76 core PMU support
+    - Fix detection of ARM Cortex A55
+    - Update IBM Power10 core PMU support
+    - Add ARM Cortex A55 core PMU support
+    - Fix ARM thunderX2 and HiSilicon support to compile on non Linux
+    - Add ARM Neoverse V3 core PMU support
+    - Merge /u/yselkowitz/perfmon2/ branch gcc14 into master
+    - Remove extraneous printf in pfmlib_init_env()
+    - Add LIBPFM_PROC_CPUINFO variable for Linux
+    - Add ARM Cortex A72 Core PMU support
+    - Fix pfm_arm_detect() buffer initialization problem
+    - Fix FRONTEND_RETIRED.LATE_SWPF encoding on Intel GNR
+    - Update Intel GraniteRapids core PMU to 1.03
+    - Optimize pfm_detect() for ARM processors
+    - Add L2D_CACHE and make L2D_CACHE_ACCESS alias for ARM Neoverse N1,N2,V2
+    - Update Intel SapphireRapids core PMU to 1.24
+    - Fix typos in docs/man3/pfm_get_perf_event_encoding.3
+    - Fix typos in docs/man3/pfm_get_os_event_encoding.3
+    - Add AMD Zen5 L3 PMU support
+    - Add AMD Zen5 core PMU support
+    - Add missing pfmlib_intel_gnr.c file
+    - S390: Fix calloc compiler error for gcc14
+    - Add Intel GraniteRapids core PMU support
+    - Fix Intel SPR inst_retired umask flags
+    - Fix validate_x86.c Intel SPR/EMR inst_retired tests
+    - Fix encoding of inst_retired.* on Alderlake E-core
+    - Remove Intel IcelakeX UNC_CHA_PIPE_REJECT event
+    - Fix uninitialized variable in perf_examples/task.c
+    - Fix duplicate event code for Intel SPR TOPDOWN.BAD_SPEC_SLOTS
+    - Add Intel SapphireRapids uncore PMU support for CHA
+    - Add Intel SapphireRapids uncore PMU support for UPI
+    - Add Intel SapphireRapids uncore PMU support for IMC
+    - Add CONFIG_PFMLIB_NOTRACEPOINT to speedup libpfm4 initialization
+    - Add Intel Raptorlake PMU support
+    - Add Intel AlderLake Gracemont (E-Core) core PMU support
+    - Add Intel AlderLake Goldencove (P-Core) core PMU support
+    - Update task.c example to handle hybrid
+    - add INTEL_X86_CODE_DUP event flag for Intel PMUs
+    - Add support for deprecated events for Intel X86 PMUs
+    - Fix Intel IcelakeX uncore PCU PMU man page typo
+    - Fix missing PEBS flag on Intel SPR MEM_LOAD_L3_MISS_RETIRED
+    - Add Intel IcelakeX IMC PMU validation tests
+    - Add PEBS support to Intel SPR MEM_LOAD_L3_MISS_RETIRED
+    - Fix for GCC 14
+    - Fix number of counter on Intel IcelakeX IRP uncore PMU
+    - Add Intel IcelakeX uncore PMU support for M2PCIE
+    - Add Intel IcelakeX uncore PMU support for UBOX
+    - Add Intel IcelakeX uncore PMU support for M3UPI
+    - Add Intel IcelakeX uncore PMU support for UPI
+    - Add Intel IcelakeX uncore PMU support for PCU
+    - Add Intel IcelakeX uncore PMU support for M2M
+    - Add Intel IcelakeX uncore PMU support for IRP
+    - Add Intel IcelakeX uncore PMU support for IIO
+    - Add Intel IcelakeX uncore PMU support for IMC
+    - Add Intel IcelakeX uncore PMU support for CHA
+    - Check umasks[] bounds in intel_x86_uflag()
+    - Enable RAPL support on AMD Zen4
+    - Add Intel IceLake and Intel SapphireRapid performance counters to the 
+      event table
+    - Correct the arguments in a number of printf statements
+    - Add default umask for ICL/SPR br_inst_retired/br_misp_retired
+    - Remove unused variable in pfmlib_pmu_validate_encoding()
+    - Add Intel EmeraldRapid core PMU support
+    - Fix AMD Zen3/Zen4 detection
+    - Fix unitialized variable in gen_tracepoint_table()
+    - Fix active list ordering issue
+    - Clear pfmlib_active_pmus_list on init and terminate
+    - Fix active PMU list handling for LIBPFM_ENCODE_INACTIVE=1
+    - Maintain list of active PMUs
+    - Fix parsing of LIBPFM_ENCODE_INACTIVE
+    - Use relative path using openat(2) in gen_tracepoint_table()
+    - Define HAS_OPENAT for Linux
+
+-------------------------------------------------------------------
 Fri Jul 11 05:12:04 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
