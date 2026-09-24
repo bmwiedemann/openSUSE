@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:08:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.11
+  * Fix build to avoid past-JDK-8 bytecode generation
+
+-------------------------------------------------------------------
+Thu Sep 17 08:19:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.10
+  * #891: Enforce StreamReadConstraints.maxNestingDepth in
+    FromXmlParser
+
+-------------------------------------------------------------------
 Wed Jul 15 11:37:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.9
