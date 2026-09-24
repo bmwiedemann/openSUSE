@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 23 15:28:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.12.18:
+  * Add --output-format json and --check to uv pip install
+    and uv pip sync
+  * Correctly identify get_requires_for_build_* hook failures
+    in build errors
+  * Fix version selection with generic and stable-ABI wheel
+    tags across resolution forks
+  * Upstream GHSA-2cv4-cqwr-gwf7 (path traversal on Windows
+    through wheel extraction) does not affect Linux builds
+- Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Sun Sep 20 19:46:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.17:

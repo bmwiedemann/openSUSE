@@ -3261,4 +3261,12 @@ crates); the expression is unchanged. Both Python flavors build green
 with the full test suite (1411 passed).</comment>
     <requestid>1379356</requestid>
   </revision>
+  <revision rev="126" vrev="1">
+    <srcmd5>5d4da5c1ede81a211b71e334fb6a2cba</srcmd5>
+    <version>0.12.18</version>
+    <time>1790283372</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.12.18: pip install/sync JSON output and --check, wheel-tag resolution fix. GHSA-2cv4-cqwr-gwf7 is Windows-only.</comment>
+    <requestid>1379998</requestid>
+  </revision>
 </revisionlist>
