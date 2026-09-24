@@ -23,7 +23,7 @@
 %define short_executable_name bao
 
 Name:           openbao
-Version:        2.6.2
+Version:        2.6.3
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
@@ -39,7 +39,7 @@ Source11:       Makefile
 Source12:       PACKAGING_README.md
 Source13:       prepare_webassets.sh
 BuildRequires:  fdupes
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.26
 BuildRequires:  user(openbao)
 #
 Provides:       bao = %{version}
