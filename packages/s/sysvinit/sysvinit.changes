@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 15 12:19:09 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to sysvinit 3.18
+  * This release fixes builds with man pages when language-specific
+    directories are not available.
+  * Removed unused "check" command from Makefile.
+  * Fix version number in init.c and changelog.
+  * Remove shell script which has a license conflict from contrib directory.
+  * Clean up of inittab manual page (typos and syntax) by Bjarni Ingi Gislason.
+  * Clean up of init manual page (typos and syntax) by Bjarni Ingi Gislason.
+  * Improved systemd to sysv unit-to-script conversion. Provided by avivdaum.
+  * Remove some debug/status messages when reading the /etc/inittab.d/ directory.
+  * Document how init reads the inittab.d directory in the inittab manual page.
+  * Removed unused variable/code from sulogin
+  * Some manual page clean-up for init to fix typos and formatting.
+  * Small change to optimize getting string length in a loop in init.
+  * Small fixes for formatting and typos in runlevel manual page.
+- Update to startpar 0.67
+  * This release introduces no feature changes, but does clean up
+    compiler issues with GCC 15 and newer. Following the compiler's
+    C standards we now use stdbool.h instead of defining our own
+    boolean type.
+
+-------------------------------------------------------------------
 Mon Feb 10 10:11:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Update to sysvinit 3.14

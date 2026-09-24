@@ -1,7 +1,7 @@
 #
 # spec file for package sysvinit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,8 @@
 
 Name:           sysvinit
 %define KPVER  2.23
-%define SIVER  3.14
-%define START  0.65
+%define SIVER  3.18
+%define START  0.67
 Version:        %{SIVER}
 Release:        0
 Summary:        SysV-Style init
@@ -38,11 +38,11 @@ BuildRequires:  po4a
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #!BuildIgnore:  sysvinit-tools
 URL:            https://savannah.nongnu.org/projects/sysvinit/
-Source0:        https://github.com/slicer69/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz
+Source0:        https://codeberg.org/thejessesmith/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz
 Source1:        https://github.com/bitstreamout/killproc/archive/v%{KPVER}.tar.gz#/killproc-%{KPVER}.tar.gz
-Source2:        https://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz
-Source3:        https://github.com/slicer69/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz.sig
-Source4:        https://download.savannah.nongnu.org/releases/sysvinit/startpar-%{START}.tar.xz.sig
+Source2:        https://codeberg.org/thejessesmith/startpar/releases/download/%{START}/startpar-%{START}.tar.xz
+Source3:        https://codeberg.org/thejessesmith/startpar/releases/download/%{START}/startpar-%{START}.tar.xz.sig
+Source4:        https://codeberg.org/thejessesmith/sysvinit/releases/download/%{SIVER}/sysvinit-%{SIVER}.tar.xz.sig
 Source5:        %{name}.keyring
 Patch0:         %{name}-2.90.dif
 Patch2:         %{name}-2.88dsf-suse.patch

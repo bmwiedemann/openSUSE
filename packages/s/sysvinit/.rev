@@ -1623,4 +1623,12 @@ So just for consistency. (forwarded request 875922 from lnussel)</comment>
 - Update to sysvinit 3.13</comment>
     <requestid>1245592</requestid>
   </revision>
+  <revision rev="188" vrev="1">
+    <srcmd5>e32023e03f7f93c5b3eafca70086e05c</srcmd5>
+    <version>3.18</version>
+    <time>1790283313</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1379681</requestid>
+  </revision>
 </revisionlist>
