@@ -1,0 +1,53 @@
+--- chromium-154.0.8037.0/third_party/devtools-frontend/src/front_end/models/ai_assistance/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
++++ chromium-155.0.8040.2/third_party/devtools-frontend/src/front_end/models/ai_assistance/BUILD.gn	2026-09-03 20:10:45.000000000 +0200
+@@ -115,6 +115,8 @@ devtools_entrypoint("bundle") {
+   split_compilation = true
+   entrypoint = "ai_assistance.ts"
+ 
++  deps = [ "skills:generate_skills" ]
++
+   ts_deps = [ ":ai_assistance" ]
+ 
+   visibility = [
+--- chromium-154.0.8037.0/third_party/devtools-frontend/src/front_end/models/ai_assistance/skills/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
++++ chromium-155.0.8040.2/third_party/devtools-frontend/src/front_end/models/ai_assistance/skills/BUILD.gn	2026-09-03 20:10:45.000000000 +0200
+@@ -10,17 +10,19 @@
+ # gen/front_end/models/ai_assistance/skills/
+ # so they can be imported relatively by files in this directory.
+ 
+-action_foreach("generate_skills") {
++_skill_sources = [
++  "accessibility.md",
++  "network.md",
++  "performance.md",
++  "sources.md",
++  "storage.md",
++  "styling.md",
++]
++
++action_foreach("_generate_skills") {
+   script = "//third_party/node/node.py"
+ 
+-  sources = [
+-    "accessibility.md",
+-    "network.md",
+-    "performance.md",
+-    "sources.md",
+-    "storage.md",
+-    "styling.md",
+-  ]
++  sources = _skill_sources
+ 
+   inputs = [
+     "../../../../scripts/build/build_ai_skills.mjs",
+@@ -48,3 +50,10 @@
+     }
+   }
+ }
++
++group("generate_skills") {
++  public_deps = [ ":_generate_skills" ]
++  public_inputs =
++      process_file_template(_skill_sources,
++                            [ "$target_gen_dir/{{source_name_part}}.skill.js" ])
++}

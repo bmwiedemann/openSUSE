@@ -6724,4 +6724,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
     <comment>- INSTALL.sh: also fix StartupWMClass in desktop file</comment>
     <requestid>1379001</requestid>
   </revision>
+  <revision rev="550" vrev="1">
+    <srcmd5>f95498a301f390f047a5b420020a9359</srcmd5>
+    <version>154.0.8037.57</version>
+    <time>1790283339</time>
+    <user>dimstar_suse</user>
+    <comment>Chromium 154.0.8037.57 (boo#1282334)</comment>
+    <requestid>1379768</requestid>
+  </revision>
 </revisionlist>

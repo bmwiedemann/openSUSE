@@ -81,7 +81,7 @@
 # minimal esbuild version
 %define esbuild_version 0.25.1
 # minimal gn version
-%define gn_version 0.20260730
+%define gn_version 0.20260831
 # local rollup override to run without binaries
 %define rollup_version 3.29.5
 %if 0%{?suse_version} <= 1699
@@ -139,7 +139,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        153.0.8010.52
+Version:        154.0.8037.57
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -213,11 +213,14 @@ Patch399:       chromium-148-no_dep_on_intree_rustc_binary.patch
 Patch400:       chromium-149-profile_no_const.patch
 Patch401:       chromium-149-strip-path.patch
 Patch402:       chromium-150-toolchain.patch
-Patch403:       chromium-152-revert-crubit.patch
+Patch403:       chromium-152-rust-cbor.patch
 Patch404:       chromium-152-value_or.patch
 Patch405:       chromium-152-no-eula.patch
 Patch406:       chromium-153-opus_includes.patch
 Patch407:       chromium-153-ignore-typescript-deps.patch
+Patch408:       chromium-154-revert-crubit_web_package.patch
+Patch409:       chromium-154-revert-crubit_private_verification_tokens.patch
+Patch410:       chromium-154-fix_split_compilation.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -628,7 +631,6 @@ pushd third_party/webrtc
 popd
 %endif
 
-
 ## ROLLUP_HACK
 rm -rf third_party/devtools-frontend/src/node_modules/rollup
 rm -rf third_party/devtools-frontend/src/node_modules/@rollup/rollup-linux-*
@@ -811,6 +813,7 @@ keeplibs=(
     third_party/catapult/tracing/third_party/oboe
     third_party/catapult/tracing/third_party/pako
     third_party/ced
+    third_party/chromium-bidi
     third_party/cld_3
     third_party/closure_compiler
     third_party/compiler-rt

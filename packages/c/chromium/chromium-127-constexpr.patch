@@ -10,9 +10,11 @@ author: Andres Salomon <dilinger@debian.org>
    34 |                                                     .strict = true};
       |                                                     ~~~~~~~~~~~~~~~
 
---- a/components/url_pattern/simple_url_pattern_matcher.cc
-+++ b/components/url_pattern/simple_url_pattern_matcher.cc
-@@ -29,17 +29,17 @@
+Index: chromium-154.0.8037.0/components/url_pattern/simple_url_pattern_matcher.cc
+===================================================================
+--- chromium-154.0.8037.0.orig/components/url_pattern/simple_url_pattern_matcher.cc
++++ chromium-154.0.8037.0/components/url_pattern/simple_url_pattern_matcher.cc
+@@ -29,17 +29,17 @@ namespace url_pattern {
  namespace {
  
  // https://urlpattern.spec.whatwg.org/#default-options
@@ -33,9 +35,11 @@ author: Andres Salomon <dilinger@debian.org>
                                                       .prefix_list = "/",
                                                       .sensitive = true,
                                                       .strict = true};
---- a/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
-+++ b/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
-@@ -16,8 +16,8 @@ namespace autofill::i18n_model_definitio
+Index: chromium-154.0.8037.0/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
+===================================================================
+--- chromium-154.0.8037.0.orig/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
++++ chromium-154.0.8037.0/components/autofill/core/browser/data_model/addresses/autofill_i18n_api.h
+@@ -18,8 +18,8 @@ namespace autofill::i18n_model_definitio
  // Country code that represents autofill's legacy address hierarchy model as
  // stored `kAutofillModelRules`. As a workaround for GCC we declare the
  // std::string constexpr first.
@@ -46,9 +50,11 @@ author: Andres Salomon <dilinger@debian.org>
      AddressCountryCode(kLegacyHierarchyCountryCodeString);
  
  // Creates an instance of the address hierarchy model corresponding to the
---- a/components/omnibox/browser/on_device_tail_model_service.cc
-+++ b/components/omnibox/browser/on_device_tail_model_service.cc
-@@ -26,7 +26,7 @@
+Index: chromium-154.0.8037.0/components/omnibox/browser/on_device_tail_model_service.cc
+===================================================================
+--- chromium-154.0.8037.0.orig/components/omnibox/browser/on_device_tail_model_service.cc
++++ chromium-154.0.8037.0/components/omnibox/browser/on_device_tail_model_service.cc
+@@ -30,7 +30,7 @@
  
  namespace {
  // Constants for TFlite model validation.
@@ -57,9 +63,11 @@ author: Andres Salomon <dilinger@debian.org>
  constexpr std::string_view kModelValidationSwitchName =
      "omnibox-on-device-tail-model-validation";
  
---- a/chrome/browser/ui/lens/lens_overlay_url_builder.cc
-+++ b/chrome/browser/ui/lens/lens_overlay_url_builder.cc
-@@ -80,7 +80,7 @@
+Index: chromium-154.0.8037.0/chrome/browser/ui/lens/lens_overlay_url_builder.cc
+===================================================================
+--- chromium-154.0.8037.0.orig/chrome/browser/ui/lens/lens_overlay_url_builder.cc
++++ chromium-154.0.8037.0/chrome/browser/ui/lens/lens_overlay_url_builder.cc
+@@ -72,7 +72,7 @@ inline constexpr char kXSRFTokenQueryPar
  inline constexpr char kSecActQueryParamKey[] = "sec_act";
  
  // The list of query parameters to ignore when comparing search URLs.
@@ -68,8 +76,10 @@ author: Andres Salomon <dilinger@debian.org>
      kViewportWidthQueryParamKey, kViewportHeightQueryParamKey,
      kXSRFTokenQueryParamKey,     kSecActQueryParamKey,
      kModeParameterKey,           kToolbeltModeParameterKey};
---- a/content/public/test/prefetch_test_util.h
-+++ b/content/public/test/prefetch_test_util.h
+Index: chromium-154.0.8037.0/content/public/test/prefetch_test_util.h
+===================================================================
+--- chromium-154.0.8037.0.orig/content/public/test/prefetch_test_util.h
++++ chromium-154.0.8037.0/content/public/test/prefetch_test_util.h
 @@ -15,7 +15,7 @@ namespace content::test {
  
  using PrefetchContainerIdForTesting =
@@ -79,20 +89,11 @@ author: Andres Salomon <dilinger@debian.org>
      InvalidPrefetchContainerIdForTesting = PrefetchContainerIdForTesting("");
  
  class TestPrefetchWatcherImpl;
---- a/components/history_embeddings/core/ml_answerer.cc
-+++ b/components/history_embeddings/core/ml_answerer.cc
-@@ -24,7 +24,7 @@ using optimization_guide::proto::Passage
- 
- namespace {
- 
--static constexpr std::string kPassageIdToken = "ID";
-+static const std::string kPassageIdToken = "ID";
- // Estimated token count of the preamble text in prompt.
- static constexpr size_t kPreambleTokenBufferSize = 100u;
- // Estimated token count of overhead text per passage.
---- a/components/compose/core/browser/config.cc
-+++ b/components/compose/core/browser/config.cc
-@@ -46,11 +46,11 @@
+Index: chromium-154.0.8037.0/components/compose/core/browser/config.cc
+===================================================================
+--- chromium-154.0.8037.0.orig/components/compose/core/browser/config.cc
++++ chromium-154.0.8037.0/components/compose/core/browser/config.cc
+@@ -47,11 +47,11 @@ std::vector<std::string> GetFieldTrialPa
  }
  
  constexpr auto DEFAULT_COMPOSE_ENABLED_COUNTRIES =

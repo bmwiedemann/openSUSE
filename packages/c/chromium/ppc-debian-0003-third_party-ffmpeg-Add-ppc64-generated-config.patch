@@ -6460,7 +6460,7 @@ Index: chromium-146.0.7680.65/third_party/ffmpeg/ffmpeg_generated.gni
 +    "libavcodec/ppc/audiodsp.c",
 +    "libavcodec/ppc/blockdsp.c",
 +    "libavcodec/ppc/fdctdsp.c",
-+    "libavcodec/ppc/fmtconvert_altivec.c",
++
 +    "libavcodec/ppc/h264dsp_ppc.c",
 +    "libavcodec/ppc/h264qpel_ppc.c",
 +    "libavcodec/ppc/h264chroma_init.c",

@@ -36,8 +36,8 @@ index d5e81a3f07a3c..6a5d275460122 100644
 -  cxx_bindings = [ crate_root ]
 -  deps = [
 -    "//third_party/rust/font_types/v0_12:lib",
--    "//third_party/rust/read_fonts/v0_41:lib",
--    "//third_party/rust/skrifa/v0_44:lib",
+-    "//third_party/rust/read_fonts/v0_43:lib",
+-    "//third_party/rust/skrifa/v0_46:lib",
 -  ]
 -}
 -
@@ -83,8 +83,8 @@ index 0000000000000..51b9b03ba7c85
 +  }
 +  deps = [
 +    "//third_party/rust/font_types/v0_12:lib",
-+    "//third_party/rust/read_fonts/v0_41:lib",
-+    "//third_party/rust/skrifa/v0_44:lib",
++    "//third_party/rust/read_fonts/v0_43:lib",
++    "//third_party/rust/skrifa/v0_46:lib",
 +  ]
 +}
 diff --git a/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc b/third_party/blink/renderer/platform/fonts/opentype/font_format_check.cc

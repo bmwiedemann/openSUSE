@@ -68,15 +68,12 @@ diff --git a/ui/gtk/nav_button_provider_gtk.cc b/ui/gtk/nav_button_provider_gtk.
 index 527b9a0743a01..ae46e11dade2b 100644
 --- a/ui/gtk/nav_button_provider_gtk.cc
 +++ b/ui/gtk/nav_button_provider_gtk.cc
-@@ -112,18 +112,22 @@ gfx::Size LoadNavButtonIcon(ui::NavButtonProvider::FrameButtonDisplayType type,
-     auto* snapshot = gtk_snapshot_new();
+@@ -116,17 +116,19 @@
      gdk_paintable_snapshot(paintable, snapshot, width, height);
      auto* node = gtk_snapshot_free_to_node(snapshot);
-+
      size_t nbytes = width * height * sizeof(SkColor);
 -    SkColor* pixels = reinterpret_cast<SkColor*>(g_malloc(nbytes));
-+    void* pixels = g_malloc(nbytes);
-     UNSAFE_TODO(memset(pixels, 0, nbytes));
++    void* pixels = g_malloc0(nbytes);
      size_t stride = sizeof(SkColor) * width;
 -    if (GdkTexture* texture = GetTextureFromRenderNode(node)) {
 -      gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
@@ -85,7 +82,7 @@ index 527b9a0743a01..ae46e11dade2b 100644
 +    CairoSurface surface(pixels, width, height);
 +    cairo_t* cr = surface.cairo();
 +    gsk_render_node_draw(node, cr);
-+
+ 
      SkColor fg = GtkStyleContextGetColor(button_context);
 -    for (int i = 0; i < width * height; ++i) {
 -      UNSAFE_TODO(pixels[i]) =

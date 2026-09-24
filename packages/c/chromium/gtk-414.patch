@@ -103,19 +103,19 @@ diff --git a/ui/gtk/nav_button_provider_gtk.cc b/ui/gtk/nav_button_provider_gtk.
 index efe6321149679..239fbf4ca69a1 100644
 --- a/ui/gtk/nav_button_provider_gtk.cc
 +++ b/ui/gtk/nav_button_provider_gtk.cc
-@@ -117,11 +117,13 @@ gfx::Size LoadNavButtonIcon(ui::NavButtonProvider::FrameButtonDisplayType type,
+@@ -115,11 +115,13 @@
      auto* snapshot = gtk_snapshot_new();
      gdk_paintable_snapshot(paintable, snapshot, width, height);
      auto* node = gtk_snapshot_free_to_node(snapshot);
 -    GdkTexture* texture = GetTextureFromRenderNode(node);
      size_t nbytes = width * height * sizeof(SkColor);
      SkColor* pixels = reinterpret_cast<SkColor*>(g_malloc(nbytes));
-+    UNSAFE_TODO(memset(pixels, 0, nbytes));
      size_t stride = sizeof(SkColor) * width;
 -    gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
 +    if (GdkTexture* texture = GetTextureFromRenderNode(node)) {
 +      gdk_texture_download(texture, reinterpret_cast<guchar*>(pixels), stride);
 +    }
++
      SkColor fg = GtkStyleContextGetColor(button_context);
      for (int i = 0; i < width * height; ++i) {
        UNSAFE_TODO(pixels[i]) =
