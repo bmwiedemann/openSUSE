@@ -351,4 +351,12 @@
     <comment>Update to version 5.5.3: multi-page PAGE XML closing tags fix, mutex fix preventing multiple instances, C API lifecycle docs. Switch doc BuildRequires to rubygem(asciidoctor) (upstream generates man pages with asciidoctor now) and drop the gcc13 fallback for the retired Leap 15.6 repository.</comment>
     <requestid>1367793</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>27ecaf72822fcda9337b46b471e7d2fa</srcmd5>
+    <version>5.5.3</version>
+    <time>1790283332</time>
+    <user>dimstar_suse</user>
+    <comment>Fix 8 crafted-traineddata CVEs (boo#1280925, boo#1280929, boo#1280930, boo#1280931, boo#1280932, boo#1280933, boo#1280934, boo#1280935) via upstream backports; credit CVE-2026-73067 (boo#1275623) fixed in 5.5.3.</comment>
+    <requestid>1379978</requestid>
+  </revision>
 </revisionlist>

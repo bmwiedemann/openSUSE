@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 23 12:35:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-88047: stack buffer overflow in
+  Classify::ReadNormProtos on crafted traineddata (boo#1280925)
+  * tesseract-CVE-2026-88047.patch
+- CVE-2026-88048: heap out-of-bounds write/read in
+  FullyConnected::Forward via dimension mismatch (boo#1280929)
+  * tesseract-CVE-2026-88048.patch
+- CVE-2026-88049: heap out-of-bounds write in LSTM::Forward
+  via na_/gate-matrix dimension mismatch (boo#1280930)
+  * tesseract-CVE-2026-88049.patch
+- CVE-2026-88050: out-of-bounds write in UnicharCompress
+  via unvalidated recoder code values (boo#1280931)
+  * tesseract-CVE-2026-88050.patch
+- CVE-2026-88051: heap out-of-bounds write in
+  GenericVector<T>::read via reserved/size_used_ mismatch
+  (boo#1280932)
+  * tesseract-CVE-2026-88051.patch
+- CVE-2026-88052: heap out-of-bounds write in
+  UNICHARSET::load_via_fgets via count/insert
+  desynchronization (boo#1280933)
+  * tesseract-CVE-2026-88052.patch
+- CVE-2026-88053: heap out-of-bounds write in
+  Classify::ReadIntTemplates via unvalidated counts in
+  crafted traineddata (boo#1280934)
+  * tesseract-CVE-2026-88053.patch
+- CVE-2026-88054: denial of service via empty-stack
+  dereference at model load (boo#1280935)
+  * tesseract-CVE-2026-88054.patch
+- CVE-2026-73067 (boo#1275623): heap out-of-bounds read in
+  SquishedDawg on crafted model, already fixed in the
+  shipped 5.5.3 (DAWG edge-structure validation).
+
+-------------------------------------------------------------------
 Sat Jul 25 19:11:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.5.3:

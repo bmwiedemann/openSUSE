@@ -25,6 +25,22 @@ License:        Apache-2.0 AND GPL-2.0-or-later
 URL:            https://github.com/tesseract-ocr/tesseract
 Source0:        https://github.com/tesseract-ocr/tesseract/archive/refs/tags/%{version}.tar.gz#/tesseract-%{version}.tar.gz
 Source99:       baselibs.conf
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88047.patch GHSA-5j2p-r5vc-q7f3 (upstream commit 1bda5079) -- bound stack buffer in Classify::ReadNormProtos (CVE-2026-88047, boo#1280925)
+Patch0:         tesseract-CVE-2026-88047.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88048.patch GHSA-q44c-23p6-5mw6 (upstream commit 103dc134) -- validate FullyConnected layer dims vs weight matrix (CVE-2026-88048, boo#1280929)
+Patch1:         tesseract-CVE-2026-88048.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88049.patch GHSA-jgq8-pprg-vc68 (upstream commit b494ac18) -- bound LSTM::Forward WriteTimeStepPart count (CVE-2026-88049, boo#1280930)
+Patch2:         tesseract-CVE-2026-88049.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88050.patch GHSA-7v9h-3q3m-w68g (upstream commit c94a5532) -- reject negative recoder code values (CVE-2026-88050, boo#1280931)
+Patch3:         tesseract-CVE-2026-88050.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88051.patch GHSA-88qp-4g94-3rf3 (upstream commit 56e09ca1) -- cap GenericVector::read reserved/size_used_ (CVE-2026-88051, boo#1280932)
+Patch4:         tesseract-CVE-2026-88051.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88052.patch GHSA-2hm8-q5c7-c373 (upstream commit 2d04d640) -- validate UNICHARSET load loop bound and index (CVE-2026-88052, boo#1280933)
+Patch5:         tesseract-CVE-2026-88052.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88053.patch GHSA-rphx-x795-5qjv (upstream commit 8b057468) -- validate inttemp counts against MAX_* bounds (CVE-2026-88053, boo#1280934)
+Patch6:         tesseract-CVE-2026-88053.patch
+# PATCH-FIX-UPSTREAM tesseract-CVE-2026-88054.patch GHSA-f6h7-cqr4-6fx4 (upstream commit 55277123) -- reject zero-length network stack in Plumbing::DeSerialize (CVE-2026-88054, boo#1280935)
+Patch7:         tesseract-CVE-2026-88054.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  curl-devel
