@@ -7,4 +7,40 @@
     <comment>rocfft is the ROCm fft library</comment>
     <requestid>1313925</requestid>
   </revision>
+  <revision rev="2" vrev="9">
+    <srcmd5>051a6f8d9b70412c20ad2f7aed422379</srcmd5>
+    <version>7.2.0</version>
+    <time>1790283345</time>
+    <user>dimstar_suse</user>
+    <comment>- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+- merge compat changes
+
+- Explicitly license smoke tests 0BSD
+- Smoke test not part of srpm so remove from license tag
+
+- Generate suse package name
+
+- Fix fedora sqlite
+
+- Build on rhel 9
+
+- Change --with gitcommit to preview
+
+- Update license
+
+- Update to 7.2.0
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+- Remove omp tests
+
+- Add -with compat
+- Remove -with generic
+
+- Remove dir tags
+
+- Rebuild for gfx1036</comment>
+    <requestid>1379972</requestid>
+  </revision>
 </revisionlist>

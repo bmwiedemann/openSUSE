@@ -1,7 +1,115 @@
 -------------------------------------------------------------------
-Mon Oct 27 15:24:51 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
 
-- Improve handling of shared library
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jun  3 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Wed May 27 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Explicitly license smoke tests 0BSD
+- Smoke test not part of srpm so remove from license tag
+
+-------------------------------------------------------------------
+Mon Apr 20 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package name
+
+-------------------------------------------------------------------
+Tue Apr 14 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix fedora sqlite
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Build on rhel 9
+
+-------------------------------------------------------------------
+Fri Mar  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Fri Feb 13 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+
+-------------------------------------------------------------------
+Sat Jan 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jan  5 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove omp tests
+
+-------------------------------------------------------------------
+Wed Dec 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add -with compat
+- Remove -with generic
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Wed Nov 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild for gfx1036
+
+-------------------------------------------------------------------
+Wed Nov  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove sqlite version check
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sun Oct 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- better handling of shared library on opensuse
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Mon Oct  6 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- require rocm-omp-devel for test subpackage
+- re-enable omp tests for test subpackage builds
+
+-------------------------------------------------------------------
+Thu Sep 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- require a new rocm-runtime
+
+-------------------------------------------------------------------
+Tue Sep 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
 
 -------------------------------------------------------------------
 Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
@@ -118,4 +226,4 @@ Sun Dec  8 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
 
 - Stub for tumbleweed
-
+  Add: 0001-cmake-use-gnu-installdirs.patch

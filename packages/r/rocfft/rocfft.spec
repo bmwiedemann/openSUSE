@@ -1,7 +1,7 @@
 #
 # spec file for package rocfft
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -14,19 +14,62 @@
 
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
+# Copyright Fedora Project Authors.
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to
+# deal in the Software without restriction, including without limitation the
+# rights to use, copy, modify, merge, publish, distribute, sublicense, and/or
+# sell copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+#
+# The above copyright notice and this permission notice shall be included in
+# all copies or substantial portions of the Software.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+# THE SOFTWARE.
+#
 
 
-%if 0%{?suse_version}
-%global rocfft_name librocfft0
+%global upstreamname rocfft
+
+%global pkg_library_name %{upstreamname}
+%global pkg_library_version 0
+
+%bcond_with preview
+%if %{with preview}
+%global rocm_release 7.14
+%global rocm_patch 0
+%global pkg_src therock-%{rocm_release}
 %else
-%global rocfft_name rocfft
+%global rocm_release 7.2
+%global rocm_patch 0
+%global pkg_src rocm-%{rocm_release}.%{rocm_patch}
 %endif
 
-%global upstreamname rocFFT
-
-%global rocm_release 6.4
-%global rocm_patch 2
 %global rocm_version %{rocm_release}.%{rocm_patch}
+
+%bcond_with compat
+%if %{with compat}
+%global pkg_libdir lib
+%global pkg_prefix %{_prefix}/lib64/rocm/rocm-%{rocm_release}
+%global pkg_suffix %{rocm_release}
+%else
+%global pkg_libdir %{_lib}
+%global pkg_prefix %{_prefix}
+%global pkg_suffix %{nil}
+%endif
+
+%if 0%{?suse_version}
+%global pkg_name lib%{pkg_library_name}%{pkg_library_version}%{pkg_suffix}
+%else
+%global pkg_name %{NAME}
+%endif
 
 %global toolchain rocm
 
@@ -60,7 +103,7 @@
 %bcond_with doc
 
 # Compression type and level for source/binary package payloads.
-#  "w7T0.xzdio"	xz level 7 using %%{getncpus} threads
+#  "w7T0.xzdio" xz level 7 using %%{getncpus} threads
 %global _source_payload w7T0.xzdio
 %global _binary_payload w7T0.xzdio
 
@@ -80,57 +123,71 @@
 %global cmake_generator %{nil}
 %endif
 
+%if 0%{?fedora} || 0%{?suse_version}
+%global system_sqlite ON
+%else
+%if 0%{?rhel} < 10
+# rhel 9's sqlite is too old, fetch whatever rocfft bundles
+# assumes --enable-network
+%global system_sqlite OFF
+%else
+%global system_sqlite ON
+%endif
+%endif
+
 %global cmake_config \\\
-  -DCMAKE_CXX_COMPILER=hipcc \\\
-  -DCMAKE_CXX_FLAGS="--rtlib=compiler-rt --unwindlib=libgcc" \\\
-  -DCMAKE_C_COMPILER=hipcc \\\
-  -DCMAKE_LINKER=%rocmllvm_bindir/ld.lld \\\
-  -DCMAKE_AR=%rocmllvm_bindir/llvm-ar \\\
-  -DCMAKE_RANLIB=%rocmllvm_bindir/llvm-ranlib \\\
-  -DCMAKE_PREFIX_PATH=%{rocmllvm_cmakedir}/.. \\\
   -DBUILD_CLIENTS_TESTS_OPENMP=OFF \\\
   -DBUILD_CLIENTS_TESTS=%{build_test} \\\
-  -DBUILD_FILE_REORG_BACKWARD_COMPATIBILITY=OFF \\\
+  -DCMAKE_AR=%rocmllvm_bindir/llvm-ar \\\
   -DCMAKE_BUILD_TYPE=%{build_type} \\\
+  -DCMAKE_C_COMPILER=%rocmllvm_bindir/amdclang \\\
+  -DCMAKE_CXX_COMPILER=%rocmllvm_bindir/amdclang++ \\\
+  -DCMAKE_CXX_FLAGS="--rtlib=compiler-rt --unwindlib=libgcc" \\\
+  -DCMAKE_INSTALL_LIBDIR=%{pkg_libdir} \\\
+  -DCMAKE_INSTALL_PREFIX=%{pkg_prefix} \\\
+  -DCMAKE_LINKER=%rocmllvm_bindir/ld.lld \\\
+  -DCMAKE_RANLIB=%rocmllvm_bindir/llvm-ranlib \\\
+  -DCMAKE_PREFIX_PATH=%{rocmllvm_cmakedir}/.. \\\
   -DROCFFT_BUILD_OFFLINE_TUNER=OFF \\\
   -DROCFFT_KERNEL_CACHE_ENABLE=OFF \\\
   -DROCM_SYMLINK_LIBS=OFF \\\
-  -DSQLITE_USE_SYSTEM_PACKAGE=ON
+  -DSQLITE_USE_SYSTEM_PACKAGE=%{system_sqlite}
 
-%bcond_with generic
-%global rocm_gpu_list_generic "gfx9-generic;gfx9-4-generic;gfx10-1-generic;gfx10-3-generic;gfx11-generic;gfx12-generic"
-%if %{with generic}
-%global gpu_list %{rocm_gpu_list_generic}
-%else
 %global gpu_list %{rocm_gpu_list_default}
-%endif
+%global _gpu_list gfx1100
 
-Name:           rocfft
+Name:           rocfft%{pkg_suffix}
 Version:        %{rocm_version}
-Release:        6%{?dist}
+%if %{with preview}
+Release:        0%{?dist}
+%else
+Release:        9%{?dist}
+%endif
 Summary:        ROCm Fast Fourier Transforms (FFT) library
+License:        BSD-3-Clause AND MIT
+# MIT: The main license
+# BSD-3-Clause:
+#  shared/CLI11.hpp
 
-URL:            https://github.com/ROCm/%{upstreamname}
-License:        MIT
-Source0:        %{url}/archive/rocm-%{version}.tar.gz#/%{upstreamname}-rocm-%{version}.tar.gz
+URL:            https://github.com/ROCm/rocm-libraries
+Source0:        %{url}/releases/download/%{pkg_src}/%{upstreamname}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  rocm-cmake
-BuildRequires:  rocm-comgr-devel
-BuildRequires:  rocm-compilersupport-macros
-BuildRequires:  rocm-hip-devel
-BuildRequires:  rocm-rpm-macros
-BuildRequires:  rocm-rpm-macros
-BuildRequires:  rocm-rpm-macros-modules
-BuildRequires:  rocm-runtime-devel
+BuildRequires:  rocm-cmake%{pkg_suffix}
+BuildRequires:  rocm-comgr%{pkg_suffix}-devel
+BuildRequires:  rocm-compilersupport%{pkg_suffix}-macros
+BuildRequires:  rocm-filesystem%{pkg_suffix}
+BuildRequires:  rocm-hip%{pkg_suffix}-devel
+BuildRequires:  rocm-rpm-macros%{pkg_suffix}
+BuildRequires:  rocm-runtime%{pkg_suffix}-devel
 BuildRequires:  pkgconfig(sqlite3)
 
 %if %{with test}
 BuildRequires:  boost-devel
 BuildRequires:  fftw-devel
-BuildRequires:  hiprand-devel
-BuildRequires:  rocrand-devel
+BuildRequires:  hiprand%{pkg_suffix}-devel
+BuildRequires:  rocrand%{pkg_suffix}-devel
 
 %if 0%{?suse_version}
 BuildRequires:  gtest
@@ -139,7 +196,7 @@ BuildRequires:  gtest-devel
 %endif
 
 # rocfft-test compiles some things and requires rocm-hip-devel
-Requires:       rocm-hip-devel
+Requires:       rocm-hip%{pkg_suffix}-devel
 
 %endif
 
@@ -161,33 +218,31 @@ BuildRequires:  ninja
 %endif
 %endif
 
-Provides:       rocfft = %{version}-%{release}
+Provides:       rocfft%{pkg_suffix} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
+Requires:       rocm-runtime%{pkg_suffix}
 
 # Only x86_64 works right now:
 ExclusiveArch:  x86_64
-
-Patch0:         0001-cmake-use-gnu-installdirs.patch
-
-%description
-A library for computing Fast Fourier Transforms (FFT), part of ROCm.
 
 %description
 A library for computing Fast Fourier Transforms (FFT), part of ROCm.
 
 %if 0%{?suse_version}
-%package -n %{rocfft_name}
+%package -n %{pkg_name}
 Summary:        Shared libraries for %{name}
 
-%description -n %{rocfft_name}
+%description -n %{pkg_name}
 %{summary}
 
-%ldconfig_scriptlets -n %{rocfft_name}
+%ldconfig_scriptlets -n %{pkg_name}
 %endif
 
 %package devel
 Summary:        The rocFFT development package
-Requires:       %{rocfft_name}%{?_isa} = %{version}-%{release}
-Requires:       rocm-hip-devel
+Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
+Requires:       rocm-hip%{pkg_suffix}-devel
 
 %description devel
 The rocFFT development package.
@@ -195,17 +250,18 @@ The rocFFT development package.
 %if %{with test}
 %package test
 Summary:        Tests for %{name}
-Requires:       %{name}%{?_isa} = %{version}-%{release}
+Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+Requires:       rocm-filesystem%{pkg_suffix}
 
 %description test
 %{summary}
 %endif
 
 %prep
-%autosetup -n %{upstreamname}-rocm-%{version} -p 1
+%autosetup -p1 -n %{upstreamname}
 
 # Do not care so much about the sqlite version
-sed -i -e 's@SQLite3 3.36 @SQLite3 @' cmake/sqlite.cmake
+sed -i -e 's@SQLite3 3.50.2 @SQLite3 @' cmake/sqlite.cmake
 
 %build
 
@@ -219,8 +275,7 @@ export LDFLAGS="${LDFLAGS} -pie"
 # So switch from libgcc to rocm-llvm's libclang-rt.builtins with
 # the rtlib=compiler-rt. Leave unwind unchange with unwindlib=libgcc
 %cmake %{cmake_generator} %{cmake_config} \
-    -DGPU_TARGETS=%{gpu_list} \
-    -DCMAKE_INSTALL_LIBDIR=%_libdir
+    -DGPU_TARGETS=%{gpu_list}
 
 %cmake_build
 
@@ -231,9 +286,10 @@ export LDFLAGS="${LDFLAGS} -pie"
 find %{buildroot} -type f -name "rocfft_rtc_helper" -print0 | xargs -0 -I {} /usr/bin/rm -rf "{}"
 
 # we don't need or want the client-info file installed by rocfft
-rm -rf %{buildroot}/%{_prefix}/.info
+rm -rf %{buildroot}/%{pkg_prefix}/.info
 
-rm -f %{buildroot}%{_prefix}/share/doc/rocfft/LICENSE.md
+# Extra license
+rm -f %{buildroot}%{pkg_prefix}/share/doc/rocfft/LICENSE.md
 
 %check
 %if %{with test}
@@ -246,22 +302,20 @@ rm -f %{buildroot}%{_prefix}/share/doc/rocfft/LICENSE.md
 %endif
 %endif
 
-%files -n %{rocfft_name}
+%files -n %{pkg_name}
 %doc README.md
 %license LICENSE.md
-%{_libdir}/librocfft.so.0{,.*}
+%{pkg_prefix}/%{pkg_libdir}/lib%{pkg_library_name}.so.%{pkg_library_version}{,.*}
 
 %files devel
-%dir %{_libdir}/cmake/rocfft
-%dir %{_includedir}/rocfft
-%{_includedir}/rocfft/*.h
-%{_libdir}/librocfft.so
-%{_libdir}/cmake/rocfft/*.cmake
+%{pkg_prefix}/include/rocfft/
+%{pkg_prefix}/%{pkg_libdir}/lib%{pkg_library_name}.so
+%{pkg_prefix}/%{pkg_libdir}/cmake/rocfft/
 
 %if %{with test}
 %files test
-%{_bindir}/rocfft-test
-%{_bindir}/rtc_helper_crash
+%{pkg_prefix}/bin/rocfft-test
+%{pkg_prefix}/bin/rtc_helper_crash
 %endif
 
 %changelog
