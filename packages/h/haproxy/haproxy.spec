@@ -44,7 +44,7 @@
 %bcond_with opentelemetry
 
 Name:           haproxy
-Version:        3.4.4+git0.7f03ae65c
+Version:        3.4.5+git0.c28c410a7
 Release:        0
 %if %{with opentelemetry}
 %global otel_revision 2.3.0+git0.4d52326

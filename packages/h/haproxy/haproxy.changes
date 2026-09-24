@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:39:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.5+git0.c28c410a7:
+  * [RELEASE] Released version 3.4.5
+  * BUG/MINOR: mux-h2: Reject trailers received on a tunneled stream
+  * REGTESTS: log: check the escaping performed by the +json option
+  * BUG/MEDIUM: log: encode the whole non-printable range in the +json output
+  * BUG/MEDIUM: mux_quic: activate timeout on FE init
+  * BUG/MAJOR: mux_quic: fix leak on RESET_STREAM reception
+
+-------------------------------------------------------------------
+Wed Sep 23 15:25:40 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.4+git80.64f60a397:
+  * BUG/MINOR: http-ana: restore the transaction status after early hints
+  * BUG/MINOR: tcpcheck: refresh the start-line after updating the authority
+  * BUG/MINOR: mux-h1: only mark C-L and T-E as sent once the header is emitted
+  * BUG/MINOR: http-fetch: fix the space check of http_auth_bearer(<hdr>)
+  * BUG/MINOR: http-fetch: http_auth_bearer() must not match a missing header
+  * BUG/MINOR: http-ana: count response body failures only once in http_fail_cnt
+  * BUG/MEDIUM: tcp-rules: ignore "capture len" rules evaluated from a backend
+  * BUG/MEDIUM: http-act: ignore "capture len" rules evaluated from a backend
+  * BUG/MEDIUM: http-htx: don't build the new authority in a rotating trash chunk
+  * BUG/MEDIUM: log: reserve the trailing 0 in CBOR int and bool encoders
+  * REG-TESTS: http-messaging: Add a script to test interim responses for H1/H2
+  * BUG/MINOR: mux-h2: Don't expect more HTX data on 1xx interim responses
+  * BUG/MINOR: http-client: Convert server timeout ticks when setting it
+  * BUG/MINOR: ssl: Fix possible null deref on the SSL context in ssl_sock_to_buf()
+  * BUG/MINOR: hlua: release private Lua rule data on teardown
+  * BUG/MAJOR: htx: Check the header/trailer length limits when one is updated
+  * BUG/MINOR: tools: Don't try to anonymize a NULL string
+  * BUG/MEDIUM: htx: Fix the position returned by htx_defrag()
+  * BUG/MEDIUM: http-client/cli: Notify the http-client when the response is consumed
+  * MINOR: http-client: Add a function to notify some data were consumed
+  * BUG/MEDIUM: acme: Set HTTPCLIENT_O_RES_ACCUM option on the http-client
+  * BUG/MEDIUM: ssl/ocsp: Set HTTPCLIENT_O_RES_ACCUM option on the http-client
+  * MINOR: http-client: Add an option to not stop the reception of the response
+  * BUG/MEDIUM: http-client: Don't use the httpclient context if it was released
+  * BUG/MEDIUM: task: Do not destroy a task that is not ours in task_destroy
+
+-------------------------------------------------------------------
+Thu Sep 17 11:03:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.4+git55.db9eb73d7:
+  * OPTIM: tools: keep a cache of recent localtime() and gmtime()
+
+-------------------------------------------------------------------
+Wed Sep 16 19:11:35 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.4+git54.e3fef9703:
+  * MAJOR: filters: Revert the filter-sequence directive
+  * BUG/MINOR: proxy: pass PR_FL_DEF_EXPLICIT_MODE through cascaded defaults
+  * BUG/MEDIUM: tcp-rules: Don't restart tcp-request content evaluation on yield
+  * CLEANUP: stream: Remove an excess newline in the stream dump
+  * BUG/MEDIUM: htx: Reserve a block descriptor for zero-sized blocks
+  * BUG/MEDIUM: ssl: don't set a 0 timeout on an expired TLS session
+  * DOC: configuration: clarify the validity ranges of sample types
+  * REGTESTS: http-rules: check "-m str" on a sample with an embedded \0
+  * BUG/MINOR: sample: reject a \0 byte in url_dec, json_query and jwt_*_query
+  * BUG/MINOR: ssl: Fix leak of ca_list in cafile_entry
+  * BUG/MINOR: cli: Reject payload with no command
+  * BUG/MEDIUM: cli: Don't read a command or payload line into a full buffer
+  * BUG/MEDIUM: cli: Don't parse next command if input buffer is empty
+  * BUG/MEDIUM: http_act: fix normalize-uri normalizer selection with a condition
+  * REGTESTS: map: check map_regm inside an ACL over an iterating fetch
+  * BUG/MEDIUM: map: do not overwrite the fetch context in pat_match_regm()
+  * BUG/MINOR: ssl: don't pass the address of a size_t as an int* to OpenSSL
+  * BUG/MEDIUM: http-ana: apply tunnel timeout with data filters
+  * BUG/MINOR: h3: only increment frame type counter on new header
+  * BUG/MINOR: h3: handle unknown frame type on request stream as specified
+  * BUG/MINOR: h3: handle empty HEADERS frame as specified
+  * BUG/MEDIUM: h3: do not block FIN on empty DATA frame
+  * BUG/MINOR: h3: reject truncated frames with mandatory payload
+  * BUG/MINOR: stream/debug: harden the stream dump function regarding signals
+  * BUG/MEDIUM: htx: Don't reset flags when source must be preserved during transfer
+  * BUG/MINOR: hlua: Always return nil if there is no data to dup for HTTP messages
+  * BUG/MINOR: mux-h1: Return an error on trailers if last chunk is unfinished
+  * BUG/MEDIUM: hlua: Never release a cosocket applet from the GC
+  * DOC: config: clarify tune tune.bufsize doc regarding various limits
+  * BUG/MINOR: quic: leak of the NEW_TOKEN frame on token generation failure
+  * BUG/MAJOR: h3: reject H3 truncated frames
+  * BUG/MEDIUM: mux-h2: Make sure we remove H2_SF_NOTIFIED on subscribe
+  * MEDIUM: mux-h1: Harden test for short data at end of stream
+  * REGTESTS: log: check that the +cbor output passes the logged bytes through
+  * DOC: config: mention that section 8.6 does not apply to the cbor encoding
+  * REGTESTS: log: check which log-format tags escape control characters
+  * REGTESTS: log: add a test for "show events -s"
+  * MINOR: ring: add "-s" flag to "show events" to sanitize the output
+  * BUG/MINOR: quic: delete the wrong CIDs when post-handshake frames fail
+  * BUG/MINOR: qpack: accept a Required Insert Count which cannot be reached
+  * BUG/MINOR: qpack: encoder and decoder stream data is never consumed
+  * MINOR: quic: protect the ChaCha20 header protection context from being freed
+  * CLEANUP: resolvers: stop clearing the DNS response buffer
+  * BUG/MINOR: resolvers: classify empty truncated responses
+  * BUN/MINOR: hlua: reset hlua_body variable after per-thread files loading
+  * BUG/MEDIUM: filters: check the filter name before comparing it
+  * BUG/MINOR: quic: late packets of the first key phase are dropped
+  * BUG/MEDIUM: quic: crash on key update phase change after a failed one
+  * BUG/MINOR: payload: bound ClientHello extension lists by the extension length
+  * BUG/MINOR: payload: fix the cipher_len bound check in smp_client_hello_parse()
+  * BUG/MEDIUM: mux-spop: Properly handle parsing of split HELLO/DISCONNECT frames
+  * OPTIM: server: remember the lowest known unused server ID
+  * BUG/MINOR: cache: Seed cache primary hash
+  * BUG/MINOR: cache: Manage collisions on primary key
+
+-------------------------------------------------------------------
 Tue Sep 15 01:07:43 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 2.3.0+git0.4d52326:

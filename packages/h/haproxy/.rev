@@ -2109,4 +2109,12 @@
     <comment>1</comment>
     <requestid>1378345</requestid>
   </revision>
+  <revision rev="193" vrev="1">
+    <srcmd5>ce5c56a0f896f120845407bd4332d61a</srcmd5>
+    <version>3.4.5+git0.c28c410a7</version>
+    <time>1790283871</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 3.4.5+git0.c28c410a7:</comment>
+    <requestid>1380215</requestid>
+  </revision>
 </revisionlist>
