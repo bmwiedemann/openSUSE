@@ -300,4 +300,12 @@
     <comment>Update to 3.4.0</comment>
     <requestid>1337936</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>f3b2b8990db1f9a5e6c36ae1e37722ae</srcmd5>
+    <version>3.4.1</version>
+    <time>1790283446</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.4.1</comment>
+    <requestid>1380048</requestid>
+  </revision>
 </revisionlist>

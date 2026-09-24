@@ -1,7 +1,7 @@
 #
 # spec file for package gammaray
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,9 +19,9 @@
 %define qt6_version 6.5
 %define rname gammaray
 %define short_version 3.3
-%define soversion 3_4_0
+%define soversion 3_4_1
 Name:           gammaray
-Version:        3.4.0
+Version:        3.4.1
 Release:        0
 Summary:        Introspection/Debugging Tool for Qt Applications
 License:        GPL-2.0-or-later
