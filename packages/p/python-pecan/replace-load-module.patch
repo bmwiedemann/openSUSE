@@ -1,0 +1,39 @@
+From ce74e208405477895ba87bab813934e20f59d4ad Mon Sep 17 00:00:00 2001
+From: Takashi Kajinami <kajinamit@oss.nttdata.com>
+Date: Sat, 11 Jul 2026 18:59:21 +0900
+Subject: [PATCH] Replace load_module
+
+The load_module method was deprecated in Python 3.4 and was removed in
+Python 3.15.
+
+Signed-off-by: Takashi Kajinami <kajinamit@oss.nttdata.com>
+---
+ pecan/configuration.py | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/pecan/configuration.py b/pecan/configuration.py
+index d35e23e..be4262b 100644
+--- a/pecan/configuration.py
++++ b/pecan/configuration.py
+@@ -3,6 +3,7 @@
+ import os
+ import sys
+ from importlib.machinery import SourceFileLoader
++from importlib.util import (module_from_spec, spec_from_loader)
+ 
+ 
+ IDENTIFIER = re.compile(r'[a-z_](\w)*$', re.IGNORECASE)
+@@ -169,7 +170,12 @@ def conf_from_file(filepath):
+     # This provides more verbose import-related error reporting than exec()
+     absname, _ = os.path.splitext(abspath)
+     basepath, module_name = absname.rsplit(os.sep, 1)
+-    SourceFileLoader(module_name, abspath).load_module(module_name)
++
++    loader = SourceFileLoader(module_name, abspath)
++    spec = spec_from_loader(module_name, loader)
++    module = module_from_spec(spec)
++
++    spec.loader.exec_module(module)
+ 
+     # If we were able to import as a module, actually exec the compiled code
+     exec(compiled, globals(), conf_dict)

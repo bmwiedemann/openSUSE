@@ -366,4 +366,13 @@
 - package LICENSE and README.rst</comment>
     <requestid>1344557</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>0014a4528a1c07eaac8bf8948f737dc6</srcmd5>
+    <version>1.8.0</version>
+    <time>1790283321</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch replace-load-module.patch:
+  * Stop using load_module(), which has been removed.</comment>
+    <requestid>1379795</requestid>
+  </revision>
 </revisionlist>

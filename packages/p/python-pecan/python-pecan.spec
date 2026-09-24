@@ -30,6 +30,8 @@ Summary:        A WSGI object-dispatching web framework
 License:        BSD-3-Clause
 URL:            https://github.com/pecan/pecan
 Source:         https://files.pythonhosted.org/packages/source/p/pecan/pecan-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#pecan/pecan#173
+Patch0:         replace-load-module.patch
 BuildRequires:  %{python_module Genshi >= 0.7}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module Mako >= 0.4.0}

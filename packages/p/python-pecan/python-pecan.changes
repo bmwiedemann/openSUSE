@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 02:57:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch replace-load-module.patch:
+  * Stop using load_module(), which has been removed.
+
+-------------------------------------------------------------------
 Sat Apr  4 08:07:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.0:
