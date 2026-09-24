@@ -126,4 +126,12 @@ package with no reverse dependencies, but a reviewer should know the version
 cadence up front.</comment>
     <requestid>1371536</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>7c2cfdfc15d395edc691e507cbed8683</srcmd5>
+    <version>0.3.0</version>
+    <time>1790283499</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.0 (breaking): libsy embedding APIs, daemon intact; python subpackage is now import-library only (console script removed upstream).</comment>
+    <requestid>1380106</requestid>
+  </revision>
 </revisionlist>

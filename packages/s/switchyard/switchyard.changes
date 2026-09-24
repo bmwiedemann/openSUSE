@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Sep 24 06:15:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.0 (breaking upstream rework):
+  * Runner integrations, Advisor Gate and Composite routing,
+    Auto presets, new Rust/Python embedding APIs, provider
+    translation and tool-loop fixes
+  * Drops the legacy Python server, the switchyard console
+    script and its serve/launch commands: python-switchyard
+    is now the importable library only, without console
+    script or alternatives; the Recommends from the daemon
+    goes away with the documented CLI workflow
+  * Python runtime requirements drop to nothing (upstream
+    dependencies = []); the license closure re-derived
+    (224/233 crates, same seven identifiers)
+
+-------------------------------------------------------------------
 Mon Aug 17 08:22:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.2.0):

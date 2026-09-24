@@ -18,7 +18,7 @@
 
 %define python_subpackage_only 1
 Name:           switchyard
-Version:        0.2.0
+Version:        0.3.0
 Release:        0
 Summary:        Routing and translating proxy for LLM traffic
 # Legal-Review-Notice: the shipped binaries statically link their Rust
@@ -28,7 +28,7 @@ Summary:        Routing and translating proxy for LLM traffic
 # Method: vendor.tar.zst was extracted over the source and
 #   cargo tree --offline -p <target> -e normal --prefix none \
 #       --target {x86_64,aarch64}-unknown-linux-gnu
-# unioned to 222 crates for switchyard-server and 232 for switchyard-py (a
+# unioned to 224 crates for switchyard-server and 233 for switchyard-py (a
 # strict superset); each was mapped to vendor/<name>-<version>/Cargo.toml and
 # its "license =" field read.
 #  - No GPL/LGPL/AGPL/MPL/EPL/CDDL/CC-BY-SA/SSPL/OSL crate is in either closure.
@@ -65,20 +65,12 @@ Source0:        Switchyard-%{version}.tar.zst
 Source1:        vendor.tar.zst
 Source2:        %{name}.service
 Source3:        system-user-%{name}.conf
-BuildRequires:  %{python_module PyYAML}
-BuildRequires:  %{python_module anthropic >= 0.99.0}
-# requires-python = ">=3.12"
-BuildRequires:  %{python_module base >= 3.12}
-BuildRequires:  %{python_module fastapi >= 0.136.1}
-BuildRequires:  %{python_module httpx >= 0.28.1}
+BuildRequires:  %{python_module base >= 3.10}
 # Upstream's declared PEP 517 backend is maturin (>=1.9,<2.0); it is what places
-# the abi3 cdylib as switchyard_rust/_switchyard_rust and emits the console
-# script, so it is not an optional convenience here.
+# the abi3 cdylib as switchyard_rust/_switchyard_rust, so it is not an
+# optional convenience here.
 BuildRequires:  %{python_module maturin >= 1.9}
-BuildRequires:  %{python_module openai >= 2.7}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module pydantic >= 2.13.3}
-BuildRequires:  %{python_module uvicorn >= 0.46.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  ca-certificates-mozilla
 BuildRequires:  cargo
@@ -97,13 +89,6 @@ BuildRequires:  zstd
 # rustls-platform-verifier reads the system trust store, refusing to build a
 # client when it is empty ("No CA certificates were loaded from the system").
 Requires:       ca-certificates-mozilla
-# The daemon itself embeds no Python, and the CLI never execs the
-# switchyard-server binary - it hosts the server in-process through the pyo3
-# binding - so the two halves do not require each other. But the workflow
-# upstream documents is the `switchyard` command, so a default installation
-# (zypper honours Recommends) must still get it; --no-recommends keeps a
-# minimal proxy host free of the Python stack.
-Recommends:     python3-%{name} = %{version}-%{release}
 ExclusiveArch:  %{rust_tier1_arches}
 %sysusers_requires
 %{?systemd_ordering}
@@ -121,51 +106,26 @@ spread across several models for A/B benchmarking, LLM-as-classifier routing,
 and signal-driven stage routing between a capable and an efficient target.
 
 This package ships the standalone proxy as %{_bindir}/switchyard-server
-together with a systemd service. The user-facing %{_bindir}/switchyard command
-and the importable Python library are in the python-switchyard subpackage.
+together with a systemd service. The importable Python library is in
+the python-switchyard subpackage.
 
 %package -n python-%{name}
-Summary:        Switchyard command-line client and Python library
-# The wheel's metadata carries upstream's four base requirements (openai,
-# anthropic, httpx, pydantic) and openSUSE's Python dependency generator turns
-# those into versioned Requires by itself, so they are not repeated here.
-# These three are not covered by it and are declared by hand:
-#  - fastapi and uvicorn live in upstream's optional "server" extra, but the
-#    console script imports switchyard.server.server_util at module level and
-#    both `switchyard serve` and `switchyard launch` serve over HTTP, so they
-#    are mandatory for everything this subpackage exists to do.
-#  - PyYAML is required and *undeclared upstream*: route bundles are YAML and
-#    switchyard/cli/route_bundle.py reaches it through import_module("yaml"),
-#    which no metadata scanner can see.
-Requires:       python-PyYAML
-Requires:       python-fastapi >= 0.136.1
-Requires:       python-uvicorn >= 0.46.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
+Summary:        Switchyard Python library
+# Upstream declares no runtime requirements at all (dependencies = []),
+# and the shipped modules import nothing beyond the standard library
+# and the compiled extension, so nothing is declared by hand either.
 # Upstream publishes this distribution to PyPI as nemo-switchyard while the
 # import name is switchyard; provide the distribution name so it is findable.
 Provides:       python-nemo-switchyard = %{version}-%{release}
-# Deliberately NOT required, contrary to upstream's own extras:
-#  - sse-starlette is listed in the "server" extra but nothing in the tree
-#    imports it; SSE is emitted through fastapi.responses.StreamingResponse.
-#  - prompt-toolkit is listed in the "cli" extra but the tree has zero
-#    prompt_toolkit references; the terminal UI is built on stdlib pty/termios.
-#  - ddtrace (tracing extra) is not in Factory at all, and redis (affinity-redis
-#    extra) is pinned <6 while Factory ships 7.0.1. Both are lazily imported
-#    behind feature checks that no-op when the module is absent, so neither
-#    blocks anything.
-#  - claude/codex/openclaw are launch targets, not dependencies: a missing
-#    binary exits with an install hint.
 
 %description -n python-%{name}
 Switchyard routes LLM traffic across providers and translates between the
 OpenAI Chat, Anthropic Messages and OpenAI Responses wire formats.
 
-This package provides the %{_bindir}/switchyard command - the entry point for
-the documented workflow, e.g. "switchyard launch claude --model switchyard",
-which starts a routing proxy in-process and runs a coding agent through it -
-and the importable switchyard and switchyard_rust Python modules, including the
-compiled extension the library is built on.
+This package provides the importable switchyard and switchyard_rust
+Python modules, including the compiled extension the library is built
+on. The 0.3.0 upstream removed the former switchyard console script
+and its serve/launch commands.
 
 %prep
 %autosetup -n Switchyard-%{version} -p1 -a1
@@ -187,11 +147,6 @@ if grep -rqE 'rustflags|target-cpu' .cargo/; then
     echo "ERROR: .cargo/ still carries rustflags that raise the ISA baseline" >&2
     exit 1
 fi
-# The CLI entry point is reached through the generated console script, never run
-# directly, so it is installed 0644 as the library module it is - but it carries
-# a "#!/usr/bin/env python3" line, and rpmlint judges by the shebang
-# (non-executable-script). Drop it before maturin copies the file into the wheel.
-sed -i '1{/^#!.*python/d}' switchyard/cli/switchyard_cli.py
 
 %build
 export CARGO_NET_OFFLINE=true
@@ -227,9 +182,6 @@ ln -s service %{buildroot}%{_sbindir}/rc%{name}
 install -d -m 0750 %{buildroot}%{_sysconfdir}/%{name}
 
 %pyproject_install
-# Every flavour installs the same %%{_bindir}/switchyard, so the console script
-# goes through update-alternatives.
-%python_clone -a %{buildroot}%{_bindir}/%{name}
 %python_expand %fdupes %{buildroot}%{$python_sitearch}
 
 # Apache-2.0 section 4(d) and the MIT/BSD/ISC notice clauses apply to the
@@ -265,20 +217,16 @@ cp -a vendor-licenses %{buildroot}%{_defaultlicensedir}/%{name}/vendor
 %{cargo_test} -p switchyard-server
 # Upstream's pytest suite needs unpackaged plugins (pytest-markdown-docs, respx)
 # and a git-only harbor dependency, so the Python side is covered by a smoke
-# test instead. It has to assert more than "import switchyard": the library
-# fails closed on a missing extension module, so import the cdylib explicitly
-# and require the native translation path to report itself available; check the
-# three data files that are read at import time or on the zero-config launch
-# path; and finally run the console script this subpackage exists to ship.
-# Two mechanics matter here. Each %%python_expand argument must be ONE physical
-# line: the macro re-emits its argument per flavour, and a backslash-continued
-# argument gets truncated at the first newline for every flavour but the last -
-# which fails as a shell syntax error, not as a test failure. And $python needs
-# -P, or sys.path[0] would be the current directory - the unbuilt source tree -
-# which shadows the installed package the test is supposed to exercise.
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -P -B -c "import os, switchyard, switchyard_rust, switchyard_rust._switchyard_rust as native; d = os.path.dirname(switchyard.__file__); assert d.startswith('%{buildroot}'), d; assert switchyard_rust.is_native_translation_available(), 'native translation unavailable'; assert switchyard.__version__ == '%{version}', switchyard.__version__; assert os.path.isfile(d + '/cli/defaults/openrouter.toml'); assert os.path.isfile(d + '/lib/processors/prompts/escalation_judge.md'); assert os.path.isfile(d + '/lib/processors/stage_router/prompts/tier_classifier.md'); print('smoke ok:', switchyard.__version__, native.__file__)"
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} %{buildroot}%{_bindir}/%{name}-%{$python_bin_suffix} --version
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} %{buildroot}%{_bindir}/%{name}-%{$python_bin_suffix} --help
+# test instead. It has to assert more than "import switchyard": import the
+# libsy namespace too (it re-exports the compiled extension's classifiers),
+# and require the version to match. Two mechanics matter here. Each
+# %%python_expand argument must be ONE physical line: the macro re-emits its
+# argument per flavour, and a backslash-continued argument gets truncated at
+# the first newline for every flavour but the last - which fails as a shell
+# syntax error, not as a test failure. And $python needs -P, or sys.path[0]
+# would be the current directory - the unbuilt source tree - which shadows
+# the installed package the test is supposed to exercise.
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -P -B -c "import os, switchyard, switchyard.libsy, switchyard_rust; d = os.path.dirname(switchyard.__file__); assert d.startswith('%{buildroot}'), d; assert switchyard.__version__ == '%{version}', switchyard.__version__; print('smoke ok:', switchyard.__version__)"
 
 %pre -f %{name}.pre
 %service_add_pre %{name}.service
@@ -291,12 +239,6 @@ cp -a vendor-licenses %{buildroot}%{_defaultlicensedir}/%{name}/vendor
 
 %postun
 %service_del_postun %{name}.service
-
-%post -n python-%{name}
-%python_install_alternative %{name}
-
-%postun -n python-%{name}
-%python_uninstall_alternative %{name}
 
 %files
 %license LICENSE NOTICE
@@ -315,7 +257,6 @@ cp -a vendor-licenses %{buildroot}%{_defaultlicensedir}/%{name}/vendor
 %license LICENSE NOTICE
 %license %{_defaultlicensedir}/%{python_flavor}-%{name}/vendor
 %doc README.md INSTALLATION.md
-%python_alternative %{_bindir}/%{name}
 %{python_sitearch}/switchyard
 %{python_sitearch}/switchyard_rust
 %{python_sitearch}/nemo_switchyard-%{version}.dist-info
