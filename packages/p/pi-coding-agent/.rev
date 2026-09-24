@@ -233,4 +233,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
 0 badness across 3 packages.</comment>
     <requestid>1379699</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8d306d8caf582ed25137b5f765f3a88a</srcmd5>
+    <version>0.87.1</version>
+    <time>1790283408</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.87.1: new models, compaction/mode fixes. Undici 8.10.2 retained (8-CVE batch fixed since 0.86.1, boo#1279832).</comment>
+    <requestid>1380020</requestid>
+  </revision>
 </revisionlist>
