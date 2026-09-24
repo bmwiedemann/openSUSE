@@ -42,4 +42,12 @@ Also switch to libalternatives, and extend %check to import the tokenizer so a
 missing runtime dependency fails the build.</comment>
     <requestid>1379915</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>5483bbe4ecfba00cee5c5a672c9346b3</srcmd5>
+    <version>1.12.0</version>
+    <time>1790283394</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.12.0.</comment>
+    <requestid>1380026</requestid>
+  </revision>
 </revisionlist>

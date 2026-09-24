@@ -18,16 +18,14 @@
 
 %bcond_without libalternatives
 Name:           python-mistral-common
-Version:        1.11.7
+Version:        1.12.0
 Release:        0
 Summary:        Library of common utilities for Mistral AI
 License:        Apache-2.0
 URL:            https://github.com/mistralai/mistral-common
 Source0:        https://files.pythonhosted.org/packages/source/m/mistral_common/mistral_common-%{version}.tar.gz
-# Upstream ships no license file in the sdist (the license-files entry in
-# pyproject.toml points at LICENSE which is omitted from the tarball); carry
-# the Apache-2.0 text from the upstream git tag.
-Source1:        LICENSE
+# Upstream renamed LICENCE to LICENSE in 1.12.0, so the sdist carries
+# it again; no carried copy needed.
 BuildRequires:  %{python_module Pillow >= 10.3.0}
 BuildRequires:  %{python_module jsonschema >= 4.21.1}
 BuildRequires:  %{python_module numpy >= 1.25}
@@ -71,8 +69,6 @@ so multimodal image inputs can be processed.
 %autosetup -p1 -n mistral_common-%{version}
 # Drop stray macOS metadata accidentally shipped inside the sdist.
 find . -name .DS_Store -delete
-# The sdist omits the license file upstream declares; carry it in from Source1.
-cp %{SOURCE1} .
 
 %build
 %pyproject_wheel

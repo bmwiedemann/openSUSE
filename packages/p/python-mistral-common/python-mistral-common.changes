@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:49:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.0:
+  * Allow overriding auto-detected plain thinking support,
+    reference audio filename for speech uploads, keep one
+    pixel per axis on image resize, reject bad AudioConfig
+  * Drop the carried LICENSE copy: upstream renamed LICENCE
+    to LICENSE, the sdist ships it again
+
+-------------------------------------------------------------------
 Wed Sep 23 07:12:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add the missing python-pycountry dependency: the tokenizers
