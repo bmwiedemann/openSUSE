@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 21 16:58:56 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use upstream default for library naming, i.e. include the major
+  and minor version. ABI may change on changes of the minor version.
+- Fix broken build conditions - the CMake options depend on the
+  proj and josoncpp buildcond variables, but these were never
+  defined.  As a result, the bundled versions were prefered over the
+  system versions.
+- Restore fix for unused sqlite3 binary dependency (only required
+  to build bundled libPROJ).
+
+-------------------------------------------------------------------
 Sun Aug 30 11:24:22 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Update to version 9.7.0, see:

@@ -62,7 +62,9 @@
 %bcond_with    system_pegtl
 %bcond_without gl2ps
 %bcond_without java
+%bcond_without jsoncpp
 %bcond_without netcdf
+%bcond_without proj
 %bcond_without verdict
 
 %if "%{flavor}" == ""
@@ -100,13 +102,14 @@
 %define my_python3_sitearch %{mpiprefix}/%{_lib}/python%{python3_version}/site-packages
 %endif
 
-%define vtklib  lib%{pkgname}1%{?my_suffix}
+%define vtklib  lib%{pkgname}-%{libver}-1%{?my_suffix}
 %define shlib   %{vtklib}
 
 Name:           vtk%{?my_suffix}
 Version:        9.7.0
 Release:        0
 %define series  9.7
+%define libver  9_7
 Summary:        The Visualization Toolkit - A high level 3D visualization library
 # This is a variant BSD license, a cross between BSD and ZLIB.
 # For all intents, it has the same rights and restrictions as BSD.
@@ -156,7 +159,6 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-numpy-devel
 BuildRequires:  python3-qt%{qt_ver}-devel
 BuildRequires:  python3-setuptools
-BuildRequires:  sqlite3
 BuildRequires:  utfcpp-devel
 BuildRequires:  cmake(Verdict)
 BuildRequires:  cmake(nlohmann_json)
@@ -335,7 +337,6 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name}-devel = %{version}
 Requires:       %{name}-java = %{version}
 Requires:       java-devel >= 11
-Provides:       %{name}-devel:%{my_libdir}/libvtkJava.so
 
 %description    java-devel
 VTK is a software system for image processing, 3D graphics, volume
@@ -443,6 +444,9 @@ languages.
 # otherwise it will break on symlinks.
 grep -rl '\.\./\.\./\.\./\.\./VTKData' . | xargs -r perl -pi -e's,\.\./\.\./\.\./\.\./VTKData,%{_datadir}/vtkdata,g'
 
+# Fix erroneous dependency on sqlite3 binary
+sed -i -e '/set(vtk_sqlite_build_binary 1)/ s/.*/#\0/' CMakeLists.txt
+
 # Allow testing also without external downloads - https://gitlab.kitware.com/vtk/vtk/-/issues/18692
 sed -i -e '/set(vtk_enable_tests "OFF")/ s/.*/#\0/' CMakeLists.txt
 
@@ -488,7 +492,6 @@ export CXXFLAGS="%{optflags}"
     -DCMAKE_SKIP_RPATH:BOOL=OFF \
     -DCMAKE_SKIP_INSTALL_RPATH:BOOL=ON \
 %endif
-    -DVTK_CUSTOM_LIBRARY_SUFFIX="" \
     -DVTK_GROUP_ENABLE_Imaging=WANT \
 %if %{with mpi}
     -DVTK_USE_MPI:BOOL=ON \
@@ -673,24 +676,23 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %license Copyright.txt
 %license %{_datadir}/licenses/%{name}/
 %if %{without gles}
-%{my_bindir}/vtkProbeOpenGLVersion
+%{my_bindir}/vtkProbeOpenGLVersion-%{series}
 %endif
-%{my_bindir}/%{pkgname}WrapHierarchy
+%{my_bindir}/%{pkgname}WrapHierarchy-%{series}
 # Should go into java-devel, but referenced by VTK-targets*.cmake
-%{my_bindir}/%{pkgname}WrapJava
-%{my_bindir}/%{pkgname}ParseJava
-%{my_bindir}/%{pkgname}WrapJavaScript
-%{my_bindir}/%{pkgname}WrapPython
-%{my_bindir}/%{pkgname}WrapPythonInit
-%{my_bindir}/%{pkgname}WrapSerDes
+%{my_bindir}/%{pkgname}WrapJava-%{series}
+%{my_bindir}/%{pkgname}ParseJava-%{series}
+%{my_bindir}/%{pkgname}WrapJavaScript-%{series}
+%{my_bindir}/%{pkgname}WrapPython-%{series}
+%{my_bindir}/%{pkgname}WrapPythonInit-%{series}
+%{my_bindir}/%{pkgname}WrapSerDes-%{series}
 %{my_libdir}/*.so
 %{my_libdir}/vtk-%{series}
 %{?with_mpi: %dir %{my_libdir}/cmake/}
 %{my_libdir}/cmake/%{pkgname}-%{series}/
 %{my_incdir}/%{pkgname}-%{series}/
-%{my_datadir}/vtk/
 # VTK JNI
-%exclude %{my_libdir}/libvtkJava.so
+%exclude %{my_libdir}/libvtkJava-%{series}.so
 %exclude %{my_libdir}/cmake/%{pkgname}-%{series}/VTKJava-*.cmake
 
 %if %{with documentation}
@@ -706,7 +708,7 @@ find %{buildroot} . -name vtk.cpython-3*.pyc -print -delete # drop unreproducibl
 %{my_libdir}/java/
 
 %files java-devel
-%{my_libdir}/libvtkJava.so
+%{my_libdir}/libvtkJava-%{series}.so
 %{my_libdir}/cmake/%{pkgname}-%{series}/VTKJava-*.cmake
 %endif
 
