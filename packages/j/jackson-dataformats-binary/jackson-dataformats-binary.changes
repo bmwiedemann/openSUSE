@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:50:37 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.11
+  * #783: (protobuf) Support StreamReadConstraints.maxDocumentLength
+    in ProtobufParser
+  * #785: (avro) Support StreamReadConstraints.maxDocumentLength and
+    maxTokenCount in Avro parser
+  * #803: (ion) Support StreamReadConstraints.maxNestingDepth in Ion
+    parser (partial fix for #358)
+  * #805: (ion) Support StreamReadConstraints.maxDocumentLength in
+    Ion parser (partial fix for #358)
+
+-------------------------------------------------------------------
+Thu Sep 17 08:19:48 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.10
+  * #725: (cbor) Ensure maxNameLength limit enforced for CBOR parser
+    (bsc#1282639, CVE-2026-68495)
+  * #726: (smile) Ensure maxNameLength limit enforced for Smile
+    parser (bsc#1282640, CVE-2026-68496)
+  * #727: (cbor) CBORParser.nextFieldName(SerializableString)
+    confuses 5-bit length marker 23 with 24 ("1-byte length suffix
+    follows")
+  * #728: (cbor) CBORParser.nextFieldName(SerializableString)
+    consumes Object entry slot twice on fast-path miss, truncating
+    definite-length Objects
+  * #733: (cbor) Long `String`s not added to "stringref" reference
+    table, breaking following references
+  * #735: (cbor) "stringref" property-name paths pass 5-bit length
+    marker instead of actual length to shouldReferenceString()
+  * #736: (cbor) Long Object property names added to "stringref"
+    reference table twice
+
+-------------------------------------------------------------------
 Wed Jul 15 11:31:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.9
