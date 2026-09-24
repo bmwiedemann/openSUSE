@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>fae575a659a6cb4e0b5e0388c50defc0</srcmd5>
+    <version>1.0.0</version>
+    <time>1790283461</time>
+    <user>dimstar_suse</user>
+    <comment>Submit geome from its devel project (utilities) to openSUSE:Factory. The package builds successfully for Factory and is ready for inclusion in Tumbleweed.
+
+</comment>
+    <requestid>1380053</requestid>
+  </revision>
+</revisionlist>
