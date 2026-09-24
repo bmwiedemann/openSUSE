@@ -13,7 +13,7 @@ maps) and a large standard library.
 ## FIPS 140-3
 
 Go binaries can natively operate in a mode that facilitates
-[FIPS 140-3 Compliance](https://go.dev/doc/security/fips140).
+[FIPS 140-3 compliance](https://go.dev/doc/security/fips140).
 
 ### The GOFIPS140 environment variable
 
