@@ -290,4 +290,12 @@
   * Updated CHANGELOG.md.</comment>
     <requestid>1362714</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>9ae6e5d5e3196ee589d1516e90894b84</srcmd5>
+    <version>1.4.9</version>
+    <time>1790283410</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380018</requestid>
+  </revision>
 </revisionlist>

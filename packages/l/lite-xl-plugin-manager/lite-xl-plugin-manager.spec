@@ -15,41 +15,34 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %define baseprogramname lite-xl
 Name:           lite-xl-plugin-manager
-Version:        1.4.7+git20260506.ece8d63
+Version:        1.4.9
 Release:        0
 Summary:        A %{baseprogramname} plugin manager
-%if 0%{?suse_version} > 1500
-%else
-Group:          Productivity/Text/Editors
-%endif
-License:        Apache-2.0 AND BSD-3-Clause AND MIT AND Zlib AND SUSE-GPL-2.0-with-linking-exception
+# Legal-Review-Notice: v1.4.9 GitHub tarball ships LPM and vendored microtar (both MIT). Previous Apache-2.0/BSD-3-Clause/Zlib/SUSE-GPL-2.0-with-linking-exception covered obs_scm git submodules meson does not link.
+License:        MIT
 URL:            https://github.com/lite-xl/lite-xl-plugin-manager
-Source0:        %{name}-%{version}.tar.gz
+Source0:        https://github.com/lite-xl/lite-xl-plugin-manager/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source100:      README.md
-Patch0:         lpm.c.diff
-### 20260629:
-###   TW has:
-###     mbedtls-devel   => v4
-###     mbedtls-3-devel => v3
-###     mbedtls-2-devel => v2
-###   Leap 16.0/16.1 have:
-###     mbedtls-devel   => v3
-###     mbedtls-2-devel => v2
+BuildRequires:  gcc
+BuildRequires:  lua
+BuildRequires:  meson
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libgit2)
+BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(libzip)
+BuildRequires:  pkgconfig(lua) >= 5.4
+BuildRequires:  pkgconfig(zlib)
+Requires:       %{baseprogramname}
+# TW mbedtls-devel is v4; this code still needs the v3 API (mbedtls-3-devel).
+# Leap 16.x mbedtls-devel is still v3.
 %if 0%{?suse_version} == 1699
 BuildRequires:  mbedtls-3-devel
 %else
 BuildRequires:  mbedtls-devel
 %endif
-#####
-BuildRequires:  meson
-BuildRequires:  pkgconfig(libgit2)
-BuildRequires:  pkgconfig(libzip)
-BuildRequires:  pkgconfig(lua) >= 5.4
-BuildRequires:  pkgconfig(liblzma)
-BuildRequires:  pkgconfig(zlib)
-Requires:       %{baseprogramname}
 # This can be managed by 'lite-xl-plugin-manager' (lpm)
 #Requires:       lite-xl-widgets
 
@@ -66,23 +59,19 @@ Requires:       %{baseprogramname}
 * Conforms to SCPS3.
 
 %prep
-%autosetup -p 0
+%autosetup -p1
 
 %build
+export CFLAGS="%{optflags} -DLPM_VERSION='\"%{version}\"'"
 %meson -Dstatic=true
 %meson_build
 
 %install
-%ifarch i586
-install -D -m 0755 "i586-suse-linux/lpm" "%{buildroot}/%{_bindir}/lpm"
-%else
-install -D -m 0755 "%{_arch}-suse-linux/lpm" "%{buildroot}/%{_bindir}/lpm"
-%endif
+%meson_install
 
 %files
-%{_bindir}/lpm
 %license LICENSE
 %doc README.md CHANGELOG.md
+%{_bindir}/lpm
 
 %changelog
-

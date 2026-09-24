@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.4.9:
+  * Resolve configdir, tmpdir, cachedir and userdir
+    (callables allowed)
+  * Fix --ssl-certs flag and pass its path via default_arguments
+  * Install libraries/ with the plugin when install_plugin is on
+- Switch to the upstream v1.4.9 tarball; drop the obs_scm snapshot
+- Drop lpm.c.diff; define LPM_VERSION via CFLAGS
+- Use %meson_install; add gcc, lua and pkgconfig BuildRequires
+- License: MIT (tarball is LPM + microtar; no git submodules)
+
+-------------------------------------------------------------------
 Mon Jun 29 20:14:36 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Adjustments for mbedtls-devel pointing to v4
