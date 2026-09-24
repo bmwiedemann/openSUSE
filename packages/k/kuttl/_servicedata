@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kudobuilder/kuttl</param>
-              <param name="changesrevision">65e2c699b69c63ec182de0566a04cd87f6bcbe0d</param></service></servicedata>
+              <param name="changesrevision">65e2c699b69c63ec182de0566a04cd87f6bcbe0d</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kudobuilder/kuttl.git</param>
+              <param name="changesrevision">e094f9556e442f91eeda24745cb1ce8c972bee16</param></service></servicedata>

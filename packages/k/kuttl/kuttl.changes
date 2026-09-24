@@ -1,4 +1,57 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:03:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * Highlights
+    - lint: enable thelper linter (#723) - the visible effect is
+      that the prefix in kuttl output (which used to be a useless
+      logger.go:42 on all lines) now usually reflects the relevant
+      place in the code
+    - add: new --delete flag (#715) - it is now possible to skip
+      deletion of namespaces of only failing cases; it also now
+      correctly skips cluster deletion
+  * Breaking Changes
+    - fix: respect case-insensitive reportFormat in TestSuite
+      config (#721) - the Go type changed for the field, the
+      underlying base type is still string and the allowed values
+      did not change (modulo whitespace trimming) so hopefully it's
+      unlikely to cause any pain in real life
+  * Bug Fixes
+    - fix: respect case-insensitive reportFormat in TestSuite
+      config (#721)
+    - add: new --delete flag (#715)
+    - docs: fix typos in KEPs (#713)
+    - fix(test): use require.NoError for envtest startup in
+      TestAssertExpressions (#706)
+    - fix: randomize namespace in TestStepDeleteExistingLabelMatch
+      to prevent -count flake (#694)
+  * Dependency bumps
+    - chore(tests): tell setup-envtest to use any k8s patch version
+      (#697)
+    - chore(deps): bump github.com/dustin/go-humanize from 1.0.1 to
+      1.1.0 (#720)
+    - chore(deps): bump github.com/go-logr/logr from 1.4.3 to 1.4.4
+      (#705)
+    - chore(deps): bump github.com/google/cel-go from 0.28.0 to
+      0.31.0 (#692, #699, #701, #704, #710)
+    - chore(deps): bump github.com/moby/moby/api from 1.54.2 to
+      1.55.0 (#695)
+    - chore(deps): bump github.com/moby/moby/client from 0.4.1 to
+      0.6.0 (#696, #707, #717)
+    - chore(deps): bump github.com/stretchr/testify from 1.11.1 to
+      1.12.1 (#712)
+    - chore(deps): bump golang.org/x/crypto from 0.51.0 to 0.52.0
+      (#700)
+    - chore(deps): bump golang.org/x/net from 0.53.0 to 0.55.0
+      (#698)
+    - chore(deps): bump google.golang.org/grpc from 1.80.0 to
+      1.82.1 (#702)
+    - chore(deps): bump sigs.k8s.io/controller-runtime from 0.25.0
+      to 0.25.1 in the kubernetes group across 1 directory (#719)
+    - chore(deps): bump the kubernetes group (#703, #693, #716,
+      #711, #714)
+
+-------------------------------------------------------------------
 Mon May 11 07:11:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.0:
