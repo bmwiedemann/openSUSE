@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jun  3 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Tue Apr 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package name
+
+-------------------------------------------------------------------
+Tue Feb 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update license
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Sat Jan 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Thu Dec 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix building -test, disable lto
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sat Oct 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Thu Sep 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Require a new rocm runtime
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jun 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check of ldconfig
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup module build
+
+-------------------------------------------------------------------
+Mon Apr 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing for suse
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Wed Feb 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multibuild
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
