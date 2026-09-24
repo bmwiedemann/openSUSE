@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:01:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.5.2:
+  * chore: downgrade liquidweb transitive dependency (#3282)
+
+-------------------------------------------------------------------
 Sat Sep 19 08:20:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.5.1:
