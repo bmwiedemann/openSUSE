@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:42:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.50.0:
+  * New ast-grep filter, suppress_hook_warning option,
+    arg_tokenizer with git/grep/dotnet/golangci parsing
+    migrated onto it
+- Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Sat Sep 12 07:16:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.49.0:

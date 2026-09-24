@@ -17,7 +17,7 @@
 
 
 Name:           rtk
-Version:        0.49.0
+Version:        0.50.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links

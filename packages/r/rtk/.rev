@@ -131,4 +131,12 @@ rpmlint 0 errors, 0 warnings, 0 badness on both.</comment>
 Local aarch64 build green, 3517 tests pass, rpmlint 0 badness.</comment>
     <requestid>1377493</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>17b858ded075fe8b3a0d512faaa02500</srcmd5>
+    <version>0.50.0</version>
+    <time>1790283976</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.50.0: ast-grep filter, suppress_hook_warning, arg_tokenizer.</comment>
+    <requestid>1380248</requestid>
+  </revision>
 </revisionlist>
