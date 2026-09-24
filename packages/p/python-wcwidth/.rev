@@ -325,4 +325,21 @@ add explicit Requires for python-importlib_metadata for Python &lt; 3.8</comment
   * bugfix: IndexError when 'n' exceeds length</comment>
     <requestid>1373065</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>5b837d967b0b7e7898a60234125b0fb3</srcmd5>
+    <version>0.8.4</version>
+    <time>1790283322</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.8.4:
+  * bugfix: restore ITU T.416 colon-format colors with colon separators
+  * Fix VS15 applying more than once to the same base character
+  * Default arguments for clip(start=0, end=-1)
+  * Unicode 18.0.0 support, releases soonish
+  * Remove workarounds for draft unicode 18 tests
+  * Bugfix clip() can hang on OSC 8 hyperlinks
+  * bugfix clip() painter's algo and charset designator
+  * Fix hang wrapping OSC-8 hyperlinks with wide graphemes
+  * bugfix: clip() should behave like propagate_sgr()</comment>
+    <requestid>1379828</requestid>
+  </revision>
 </revisionlist>

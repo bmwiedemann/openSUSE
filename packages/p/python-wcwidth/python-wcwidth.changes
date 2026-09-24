@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 23 05:04:27 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8.4:
+  * bugfix: restore ITU T.416 colon-format colors with colon separators
+  * Fix VS15 applying more than once to the same base character
+  * Default arguments for clip(start=0, end=-1)
+  * Unicode 18.0.0 support, releases soonish
+  * Remove workarounds for draft unicode 18 tests
+  * Bugfix clip() can hang on OSC 8 hyperlinks
+  * bugfix clip() painter's algo and charset designator
+  * Fix hang wrapping OSC-8 hyperlinks with wide graphemes
+  * bugfix: clip() should behave like propagate_sgr()
+
+-------------------------------------------------------------------
 Sat Aug 22 13:34:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.2:
