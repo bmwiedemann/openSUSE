@@ -30,6 +30,8 @@ Mon Sep 14 10:26:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 - Bump soname following upstream changes.
 - Use ldconfig_scriptlets macro for post(un) handling.
 - Add pkgconfig(harfbuzz) BuildRequires: New dependency.
+- fixes CVE-2026-93314 [bsc#1282531]
+        CVE-2026-93313 [bsc#1282532]
 
 -------------------------------------------------------------------
 Fri Jul  3 16:40:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
