@@ -63,6 +63,17 @@ BuildArch:      noarch
 %description zsh-completion
 Zsh command line completion support for Gitea's tea CLI.
 
+%package fish-completion
+Summary:        Fish Completion for Gitea's tea CLI
+BuildRequires:  fish
+Requires:       %{name} = %{version}
+Requires:       fish
+Supplements:    (%{name} and fish)
+BuildArch:      noarch
+
+%description fish-completion
+Fish command line completion support for Gitea's tea CLI.
+
 %prep
 %autosetup -a1 -p1
 
@@ -93,6 +104,10 @@ install -v -m 0644 -D contrib/autocomplete.sh \
 install -v -m 0644 -D contrib/autocomplete.zsh \
     %{buildroot}%{_datadir}/zsh/site-functions/_tea
 
+./tea completion fish > contrib/autocomplete.fish
+install -v -m 0644 -D contrib/autocomplete.fish \
+    %{buildroot}%{_datadir}/fish/vendor_completions.d/tea.fish
+
 %files
 %license LICENSE
 %doc CHANGELOG.md docs/CLI.md CONTRIBUTING.md README.md
@@ -103,5 +118,8 @@ install -v -m 0644 -D contrib/autocomplete.zsh \
 
 %files zsh-completion
 %{_datadir}/zsh/site-functions/_tea
+
+%files fish-completion
+%{_datadir}/fish/vendor_completions.d/tea.fish
 
 %changelog

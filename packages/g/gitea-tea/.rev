@@ -245,4 +245,12 @@
     <comment>Forward gitea-tea 0.16.0 to Factory (x/crypto 0.56.0 fixes CVE-2026-56855/56854/78662, boo#1278609). Testreport: local aarch64 build green, source_validator clean.</comment>
     <requestid>1377649</requestid>
   </revision>
+  <revision rev="26" vrev="2">
+    <srcmd5>9cead7cdc0474456ed72922574466f1a</srcmd5>
+    <version>0.16.0</version>
+    <time>1790283958</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1380238</requestid>
+  </revision>
 </revisionlist>
