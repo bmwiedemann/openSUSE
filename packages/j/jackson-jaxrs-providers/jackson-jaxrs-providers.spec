@@ -17,7 +17,7 @@
 
 
 Name:           jackson-jaxrs-providers
-Version:        2.18.9
+Version:        2.18.11
 Release:        0
 Summary:        Jackson JAX-RS providers
 License:        Apache-2.0
