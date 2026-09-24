@@ -21,7 +21,7 @@
 %define so_gucharmap 7
 %define pc_api 2.90
 Name:           gucharmap
-Version:        17.0.2
+Version:        18.0.0
 Release:        0
 Summary:        A Featureful Unicode Character Map
 License:        GPL-3.0-or-later AND LGPL-2.1-or-later
@@ -38,7 +38,7 @@ BuildRequires:  gtk3-devel >= 3.4.0
 BuildRequires:  intltool
 BuildRequires:  meson >= 0.50.0
 BuildRequires:  pkgconfig
-BuildRequires:  unicode-ucd >= 17.0.0
+BuildRequires:  unicode-ucd >= 18.0.0
 BuildRequires:  unicode-ucd-unihan
 BuildRequires:  unzip
 BuildRequires:  vala

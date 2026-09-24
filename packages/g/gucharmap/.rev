@@ -891,4 +891,14 @@ for -ldl. (forwarded request 586626 from jengelh)</comment>
     <comment>Push GNOME 50</comment>
     <requestid>1345412</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>f317af27fc2cb2d1ae8dbfe8ea5d47aa</srcmd5>
+    <version>18.0.0</version>
+    <time>1790283429</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 18.0.0:
+  + unicode: Update to unicode 18.0.0
+  + Updated translations.</comment>
+    <requestid>1380037</requestid>
+  </revision>
 </revisionlist>
