@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:58:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.51.0:
+  * Desktop routes through the state-machine loop, EUrouter
+    provider, GPT-live API support, operator allowlist
+  * Consistent recipe validation in scheduler, MCP retries,
+    streamed thinking ordering
+  * CVE-2026-85623 (boo#1279391) is NOT fixed here: the
+    recipe command-execution surfacing is still unreleased
+    upstream (verified absent in this tree)
+- Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Thu Sep 17 07:04:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.50.1:
