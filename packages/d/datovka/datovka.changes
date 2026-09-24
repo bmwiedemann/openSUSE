@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Aug 27 06:26:36 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
+
+- update to 4.29.5
+  * Fixed wrong ZFO format when being attached into e-mails using ActiveX, MAPI
+    or AppleScript.
+
+-------------------------------------------------------------------
 Wed Aug 19 05:46:14 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to 4.29.4
