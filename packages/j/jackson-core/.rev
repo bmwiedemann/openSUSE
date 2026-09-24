@@ -169,4 +169,12 @@
     <comment>Add bug numbers</comment>
     <requestid>1374484</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>e0f07d709d25d8e8fc9f57e2d8b45d0e</srcmd5>
+    <version>2.18.11</version>
+    <time>1790283388</time>
+    <user>dimstar_suse</user>
+    <comment>2.18.11 with security fixes</comment>
+    <requestid>1380224</requestid>
+  </revision>
 </revisionlist>

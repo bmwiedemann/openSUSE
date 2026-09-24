@@ -1,4 +1,4 @@
-From 9f0be7eee70d55cf229c900cc5dd17ad8a680f08 Mon Sep 17 00:00:00 2001
+From 14674bcfe365cd31e5182c893b997ffce68cf378 Mon Sep 17 00:00:00 2001
 From: Chris Kelley <ckelley@redhat.com>
 Date: Mon, 19 Jun 2023 21:07:53 +0100
 Subject: [PATCH] Remove ch.randelshofer.fastdoubleparser
@@ -143,7 +143,7 @@ index 777c3f450..000000000
 -    }
 -}
 diff --git a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
-index 5cef8dbb3..4db891eac 100644
+index 461897039..13f496919 100644
 --- a/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 +++ b/src/main/java/com/fasterxml/jackson/core/io/NumberInput.java
 @@ -1,8 +1,5 @@
@@ -154,8 +154,8 @@ index 5cef8dbb3..4db891eac 100644
 -
  import java.math.BigDecimal;
  import java.math.BigInteger;
- import java.util.regex.Pattern;
-@@ -407,7 +404,7 @@ public final class NumberInput
+ 
+@@ -387,7 +384,7 @@ public final class NumberInput
       * @since v2.14
       */
      public static double parseDouble(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -164,7 +164,7 @@ index 5cef8dbb3..4db891eac 100644
      }
  
      /**
-@@ -432,8 +429,7 @@ public final class NumberInput
+@@ -412,8 +409,7 @@ public final class NumberInput
       */
      public static double parseDouble(final char[] array, final int offset,
                                       final int len, final boolean useFastParser) throws NumberFormatException {
@@ -174,7 +174,7 @@ index 5cef8dbb3..4db891eac 100644
      }
  
      /**
-@@ -458,9 +454,6 @@ public final class NumberInput
+@@ -438,9 +434,6 @@ public final class NumberInput
       * @since v2.14
       */
      public static float parseFloat(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -184,7 +184,7 @@ index 5cef8dbb3..4db891eac 100644
          return Float.parseFloat(s);
      }
  
-@@ -486,8 +479,7 @@ public final class NumberInput
+@@ -466,8 +459,7 @@ public final class NumberInput
       */
      public static float parseFloat(final char[] array, final int offset,
                                     final int len, final boolean useFastParser) throws NumberFormatException {
@@ -194,7 +194,7 @@ index 5cef8dbb3..4db891eac 100644
      }
  
      /**
-@@ -510,9 +502,6 @@ public final class NumberInput
+@@ -490,9 +482,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -204,7 +204,7 @@ index 5cef8dbb3..4db891eac 100644
          return BigDecimalParser.parse(s);
      }
  
-@@ -543,9 +532,6 @@ public final class NumberInput
+@@ -523,9 +512,6 @@ public final class NumberInput
                                               final boolean useFastParser)
              throws NumberFormatException
      {
@@ -214,7 +214,7 @@ index 5cef8dbb3..4db891eac 100644
          return BigDecimalParser.parse(ch, off, len);
      }
  
-@@ -569,9 +555,6 @@ public final class NumberInput
+@@ -549,9 +535,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigDecimal parseBigDecimal(final char[] ch, final boolean useFastParser) throws NumberFormatException {
@@ -224,7 +224,7 @@ index 5cef8dbb3..4db891eac 100644
          return BigDecimalParser.parse(ch);
      }
  
-@@ -596,9 +579,6 @@ public final class NumberInput
+@@ -576,9 +559,6 @@ public final class NumberInput
       * @since v2.15
       */
      public static BigInteger parseBigInteger(final String s, final boolean useFastParser) throws NumberFormatException {
@@ -234,7 +234,7 @@ index 5cef8dbb3..4db891eac 100644
          return new BigInteger(s);
      }
  
-@@ -612,9 +592,6 @@ public final class NumberInput
+@@ -592,9 +572,6 @@ public final class NumberInput
       */
      public static BigInteger parseBigIntegerWithRadix(final String s, final int radix,
              final boolean useFastParser) throws NumberFormatException {
@@ -343,5 +343,5 @@ index a515f6563..000000000
 -    }
 -}
 -- 
-2.54.0
+2.55.0
 

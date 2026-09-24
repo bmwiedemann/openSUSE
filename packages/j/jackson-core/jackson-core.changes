@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:32:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.11
+  * #1649: Optimize NumberInput.looksLikeValidNumber (bsc#1282645,
+    CVE-2026-89407)
+  * #1698: UTF8DataInputJsonParser does not honor
+    maxErrorTokenLength when reporting an unrecognized token
+    (bsc#1282505, CVE-2026-89425)
+- Modified patch:
+  * 0001-Remove-ch.randelshofer.fastdoubleparser.patch
+    + rebase
+
+-------------------------------------------------------------------
+Thu Sep 17 08:19:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.10
+  * #1642: Fix maxDocumentLength bypass in async parser
+    single-feedInput() case [GHSA-2c4j-63jj-9fqr]
+  * #1643: Enforce maxNameLength incrementally in
+    ReaderBasedJsonParser (bsc#1282641, CVE-2026-68498)
+
+-------------------------------------------------------------------
 Wed Jul 15 10:48:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.9
