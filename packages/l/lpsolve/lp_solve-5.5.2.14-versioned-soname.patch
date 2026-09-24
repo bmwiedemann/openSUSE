@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Tom=C3=A1=C5=A1=20Chv=C3=A1tal?= <tchvatal@suse.com>
+Date: Sun, 20 Sep 2026 16:55:00 +0000
+Subject: [PATCH] Build the shared library with a versioned SONAME
+
+The openSUSE shared library packaging policy requires the
+SONAME-versioned file (liblpsolve55.so.0) in the shlib subpackage
+and the unversioned linker symlink (liblpsolve55.so) in -devel.
+Upstream's ccc script links the library with an unversioned SONAME,
+so set -soname to liblpsolve55.so.0 and name the output file
+accordingly.  Also create the liblpsolve55.so linker symlink in the
+build tree so that the lp_solve tool, which links with -llpsolve55,
+keeps building.
+
+---
+ lpsolve55/ccc | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/lpsolve55/ccc b/lpsolve55/ccc
+@@ -47,7 +47,8 @@
+ if [ "$so" != "" ]
+ then
+   $c $CFLAGS -fPIC -c -I.. -I../shared -I../bfp -I../bfp/bfp_LUSOL -I../bfp/bfp_LUSOL/LUSOL -I../colamd -I. $NOISNAN -DYY_NEVER_INTERACTIVE -DPARSER_LP -DINVERSE_ACTIVE=INVERSE_LUSOL -DRoleIsExternalInvEngine $src
+-  $c $LDFLAGS -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so -o bin/$PLATFORM/liblpsolve55.so `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
++  $c $LDFLAGS -shared -Wl,-Bsymbolic -Wl,-soname,liblpsolve55.so.0 -o bin/$PLATFORM/liblpsolve55.so.0 `echo $src|sed s/[.]c/.o/g|sed 's/[^ ]*\///g'` -lc -lm -ldl
++  ln -sf liblpsolve55.so.0 bin/$PLATFORM/liblpsolve55.so
+ fi
+ 
+ rm *.o 2>/dev/null
+-- 
+2.52.0

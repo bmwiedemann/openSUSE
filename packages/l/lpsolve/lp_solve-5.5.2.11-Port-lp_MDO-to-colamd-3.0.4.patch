@@ -1,0 +1,92 @@
+From a826560622624aefbe1df965a4887c35051de9d9 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Petr=20P=C3=ADsa=C5=99?= <ppisar@redhat.com>
+Date: Tue, 27 Jun 2023 14:58:25 +0200
+Subject: [PATCH 2/2] Port lp_MDO to colamd-3.0.4
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+The port was done intentionally without modifying the COLAMD sources.
+That should ease any future rebases, or building against
+a system-provided COLAMD library.
+
+Signed-off-by: Petr Písař <ppisar@redhat.com>
+---
+ lp_MDO.c | 27 +++++++++++++++++++++++----
+ 1 file changed, 23 insertions(+), 4 deletions(-)
+
+diff --git a/lp_MDO.c b/lp_MDO.c
+index 1217229..a617cf0 100644
+--- a/lp_MDO.c
++++ b/lp_MDO.c
+@@ -18,6 +18,7 @@
+    ---------------------------------------------------------------------------------- 
+ */
+ 
++#include <limits.h> /* for INT_MAX */
+ #include <string.h>
+ #include "commonlib.h"
+ #include "lp_lib.h"
+@@ -28,6 +29,18 @@
+ # include "lp_fortify.h"
+ #endif
+ 
++/* COLAMD has explicit 32-bit and 64-bit interfaces. To keep polymorphic int
++ * type in this code, alias the functions here. */
++#if INT_MAX == (1<<31) - 1
++  /* Use default names. */
++#elif INT_MAX == (1<<63) - 1
++# define colamd colamd_l
++# define colamd_recommended colamd_l_recommended
++# define symamd symamd_l
++#else
++# error "Only 32-bit and 64-bit int types are supported"
++#endif
++
+ STATIC MYBOOL includeMDO(MYBOOL *usedpos, int item)
+ {
+ /*  Legend:   TRUE            => A basic slack variable already in the basis
+@@ -160,7 +173,8 @@ int __WINAPI getMDO(lprec *lp, MYBOOL *usedpos, int *colorder, int *size, MYBOOL
+   int    nrows = lp->rows+1, ncols = colorder[0];
+   int    i, j, kk, n;
+   int    *col_end, *row_map = NULL;
+-  int    Bnz, Blen, *Brows = NULL;
++  int    Bnz, *Brows = NULL;
++  size_t Blen;
+   int    stats[COLAMD_STATS];
+   double knobs[COLAMD_KNOBS];
+ 
+@@ -187,7 +201,12 @@ int __WINAPI getMDO(lprec *lp, MYBOOL *usedpos, int *colorder, int *size, MYBOOL
+ 
+  /* Store row indeces of non-zero values in the basic columns */
+   Blen = colamd_recommended(Bnz, nrows, ncols);
+-  allocINT(lp, &Brows, Blen, FALSE);
++  if (Blen == 0 || Blen > INT_MAX) {
++    error = TRUE;
++    stats[COLAMD_STATUS] = COLAMD_ERROR_out_of_memory;
++    goto Transfer;
++  }
++  allocINT(lp, &Brows, (int)Blen, FALSE);
+   prepareMDO(lp, usedpos, colorder, Brows, row_map);
+ #ifdef Paranoia
+   verifyMDO(lp, col_end, Brows, nrows, ncols);
+@@ -203,14 +222,14 @@ int __WINAPI getMDO(lprec *lp, MYBOOL *usedpos, int *colorder, int *size, MYBOOL
+     error = !symamd(nrows, colorder, col_end, Brows, knobs, stats, mdo_calloc, mdo_free);
+   }
+   else
+-    error = !colamd(nrows, ncols, Blen, Brows, col_end, knobs, stats);
++    error = !colamd(nrows, ncols, (int)Blen, Brows, col_end, knobs, stats);
+ #else
+   if(symmetric && (nrows == ncols)) {
+     MEMCOPY(colorder, Brows, ncols + 1);
+     error = !symamd(nrows, colorder, col_end, Brows, knobs, stats, mdo_calloc, mdo_free);
+   }
+   else
+-    error = !colamd(nrows, ncols, Blen, Brows, col_end, (double *) NULL, stats);
++    error = !colamd(nrows, ncols, (int)Blen, Brows, col_end, (double *) NULL, stats);
+ #endif
+ 
+  /* Transfer the estimated optimal ordering, adjusting for index offsets */
+-- 
+2.41.0
+

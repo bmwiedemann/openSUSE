@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 20 15:51:18 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Update to 5.5.2.14 (upstream moved from SourceForge to GitHub):
+  * Fix a rare case of a variable value returned as a very small
+    negative number instead of 0
+- Switch from the lpsolve_bundled_colamd-5.5.2.0.tar.xz fork tarball
+  to upstream sources (lp_solve-5.5.2.14-repackaged.tar.gz) with the
+  non-free colamd/colamd.{c,h} removed; rebase the bundled COLAMD
+  to 3.0.4 (BSD-3-Clause) and add Provides: bundled(colamd) = 3.0.4
+- Add Fedora's patches:
+  * lp_solve-5.5.2.14-Respect-CC-CFLAGS-and-LDFLAGS.patch
+  * lp_solve-5.5.2.11-Link-a-tool-to-a-shared-library.patch
+  * lp_solve-5.5.2.11-Rebase-COLAMD-to-3.0.4.patch
+  * lp_solve-5.5.2.11-Port-lp_MDO-to-colamd-3.0.4.patch
+- Add lp_solve-5.5.2.14-versioned-soname.patch to build the shared
+  library with a versioned SONAME (liblpsolve55.so.0)
+- Link the lp_solve tool against the shared library instead of
+  statically duplicating its objects
+- Correct the license tag to LGPL-2.1-or-later AND GPL-2.0-or-later
+  WITH Bison-exception-2.2 AND BSD-3-Clause
+- Add %check: solver smoke test plus building and running demo/demo.c
+- Modernize spec file
+
+-------------------------------------------------------------------
 Tue May 20 14:12:01 UTC 2014 - tchvatal@suse.com
 
 - Add xz to exact dependencies as it is needed on SLE11.
