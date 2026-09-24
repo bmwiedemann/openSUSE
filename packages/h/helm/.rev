@@ -1356,4 +1356,16 @@ changes the CVE reference from the (what was previously the helm bug and is now 
     <comment>- update to 4.3.0 (bsc#1281112, CVE-2026-85732):</comment>
     <requestid>1379518</requestid>
   </revision>
+  <revision rev="117" vrev="3">
+    <srcmd5>4eaab2bf2d8e17f7ca5293d1df7f5493</srcmd5>
+    <version>4.3.0</version>
+    <time>1790283431</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1281468, CVE-2026-81871: OpenTelemetry-Go: TLS certificate
+    bypass allows log telemetry interception and alteration
+  * bsc#1281469, CVE-2026-81872: OpenTelemetry-Go: Denial of
+    Service via attacker-driven log emission</comment>
+    <requestid>1380038</requestid>
+  </revision>
 </revisionlist>

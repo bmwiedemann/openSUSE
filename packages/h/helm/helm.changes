@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 20:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1281468, CVE-2026-81871: OpenTelemetry-Go: TLS certificate
+    bypass allows log telemetry interception and alteration
+  * bsc#1281469, CVE-2026-81872: OpenTelemetry-Go: Denial of
+    Service via attacker-driven log emission
+
+-------------------------------------------------------------------
 Fri Sep 18 17:43:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.3.0 (bsc#1281112, CVE-2026-85732):

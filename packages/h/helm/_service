@@ -20,5 +20,12 @@
     <param name="replace">golang.org/x/crypto=golang.org/x/crypto@v0.56.0</param>
     <param name="replace">golang.org/x/mod=golang.org/x/mod@v0.40.0</param>
     <param name="replace">google.golang.org/grpc=google.golang.org/grpc@v1.83.2</param>
+    <param name="replace">go.opentelemetry.io/otel/sdk/log=go.opentelemetry.io/otel/sdk/log@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/log=go.opentelemetry.io/otel/log@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0</param>
   </service>
 </services>
