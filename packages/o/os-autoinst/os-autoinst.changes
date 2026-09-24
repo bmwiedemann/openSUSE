@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 06:43:43 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790145813.282ca44:
+  * build(deps): bump codecov/codecov-action in the all-actions group (#3103)
+  * test(t/18-backend-qemu): mock IO::Socket::IP to fix port check race
+  * refactor: remove ProhibitExcessComplexity exclusion from read_json
+  * refactor: remove ProhibitManyArgs exclusions from sshVirtsh
+  * refactor: remove ProhibitManyArgs exclusion from add_existing_drive
+  * refactor: remove ProhibitManyArgs exclusion from clone_git
+  * refactor: remove ProhibitManyArgs exclusion from Dewebsockify
+  * style: remove redundant max_arguments override from perlcritic
+
+-------------------------------------------------------------------
 Mon Sep 21 15:14:36 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790003666.465c975:
