@@ -1,6 +1,6 @@
 <services>
   <service name="cargo_vendor" mode="manual">
-    <param name="srctar">bun-pty-0.4.8.tar.gz</param>
+    <param name="srctar">bun-pty-0.4.10.tar.gz</param>
     <param name="cargotoml">rust-pty/Cargo.toml</param>
     <param name="compression">zst</param>
   </service>

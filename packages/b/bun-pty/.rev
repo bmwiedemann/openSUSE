@@ -9,4 +9,12 @@ INTERDEPENDENT REQUESTS - please stage together: fff, photon-node (new), opencod
 Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <requestid>1377978</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d446299702f2a31670fc8108cdc24d7f</srcmd5>
+    <version>0.4.10</version>
+    <time>1790283409</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.4.10: musl support.</comment>
+    <requestid>1380027</requestid>
+  </revision>
 </revisionlist>
