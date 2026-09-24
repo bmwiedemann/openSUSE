@@ -192,8 +192,12 @@ BuildRequires:  tree-sitter-yaml-queries
 BuildRequires:  tree-sitter-yaml-wasm
 BuildRequires:  tree-sitter-zig-wasm = %{ts_zig_version}
 BuildRequires:  zstd
-Requires:       bun-pty = %{bun_pty_version}
-Requires:       fff = %{fff_version}
+# The two native libraries are loaded from their packages at run time;
+# the floor is the tree's version, but newer binaries stay compatible:
+# bun-pty 0.4.10 exports exactly the 0.4.8 cdylib symbols, and fff 0.11.0
+# only adds C entry points over 0.9.4 (verified by export comparison).
+Requires:       bun-pty >= %{bun_pty_version}
+Requires:       fff >= %{fff_version}
 Requires:       git-core
 # Native TUI library, loaded at runtime (not compiled into the binary).
 # Equality because the FFI ABI is private and unversioned.

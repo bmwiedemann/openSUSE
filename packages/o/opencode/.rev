@@ -368,4 +368,12 @@ position-independent-executable-suggested, inherent to
 bun build --compile.</comment>
     <requestid>1379713</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>256a28804b41ff147f8977798635bdc8</srcmd5>
+    <version>1.18.32</version>
+    <time>1790283480</time>
+    <user>dimstar_suse</user>
+    <comment>Relax fff/bun-pty pins to &gt;= for the 0.11.0/0.4.10 updates (ABI verified compatible).</comment>
+    <requestid>1380075</requestid>
+  </revision>
 </revisionlist>

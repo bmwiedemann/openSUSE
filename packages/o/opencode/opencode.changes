@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:10:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Relax the fff and bun-pty runtime pins from = to >=: the
+  new native libraries stay ABI-compatible (bun-pty exports
+  identical, fff purely additive), so the 0.11.0/0.4.10
+  updates no longer orphan this package
+
+-------------------------------------------------------------------
 Tue Sep 22 14:44:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.18.32:
