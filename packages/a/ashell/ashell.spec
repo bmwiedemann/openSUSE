@@ -17,7 +17,7 @@
 
 
 Name:           ashell
-Version:        0.9.0+175
+Version:        0.10.0+49
 Release:        0
 Summary:        A Wayland status bar for Hyprland and Niri
 License:        GPL-3.0-or-later

@@ -15,4 +15,12 @@
     <comment>Package update</comment>
     <requestid>1370245</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>758dc9addf51400199551237ad0c363f</srcmd5>
+    <version>0.10.0+49</version>
+    <time>1790283365</time>
+    <user>dimstar_suse</user>
+    <comment>Package update, was not forwarded when accepted?</comment>
+    <requestid>1379986</requestid>
+  </revision>
 </revisionlist>
