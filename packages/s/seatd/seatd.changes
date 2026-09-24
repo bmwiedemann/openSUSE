@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:41:51 UTC 2026 - Dan Čermák <dcermak@suse.com>
+
+- Install the systemd unit in the optional seatd-systemd subpackage
+- let the subpackage create the seat group that owns /run/seatd.sock
+
+-------------------------------------------------------------------
 Mon Mar 02 20:04:24 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to version 0.9.3:

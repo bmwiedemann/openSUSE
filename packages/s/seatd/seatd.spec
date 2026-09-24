@@ -24,10 +24,12 @@ License:        MIT
 Group:          System/Base
 URL:            https://git.sr.ht/~kennylevinsen/seatd
 Source0:        %{name}-%{version}.tar.gz
+Source1:        system-group-seat.conf
 BuildRequires:  meson >= 0.56.0
 BuildRequires:  ninja
 BuildRequires:  pkgconfig
 BuildRequires:  scdoc
+BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(systemd)
 Requires:       libseat1 = %{version}
 BuildRequires:  pkgconfig(libsystemd) >= 237
@@ -51,6 +53,18 @@ Requires:       libseat1 = %{version}
 %description devel
 Development files for %{name}.
 
+%package systemd
+Summary:        Systemd unit for %{name}
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+%sysusers_requires
+%{?systemd_ordering}
+
+%description systemd
+This package contains the systemd service unit for %{name} as well as the
+sysusers configuration that creates the system group granting access to the
+seatd daemon.
+
 %prep
 %autosetup -p1
 
@@ -62,8 +76,25 @@ Development files for %{name}.
 %install
 %meson_install
 
+install -D -m 0644 contrib/systemd/seatd.service %{buildroot}%{_unitdir}/seatd.service
+install -D -m 0644 %{SOURCE1} %{buildroot}%{_sysusersdir}/system-group-seat.conf
+
+%sysusers_generate_pre %{SOURCE1} seat system-group-seat.conf
+
 %post -n libseat1 -p /sbin/ldconfig
 %postun -n libseat1 -p /sbin/ldconfig
+
+%pre systemd -f seat.pre
+%service_add_pre seatd.service
+
+%post systemd
+%service_add_post seatd.service
+
+%preun systemd
+%service_del_preun seatd.service
+
+%postun systemd
+%service_del_postun seatd.service
 
 %files
 %doc README*
@@ -80,5 +111,9 @@ Development files for %{name}.
 %{_includedir}/libseat.h
 %{_libdir}/pkgconfig/libseat.pc
 %{_libdir}/libseat.so
+
+%files systemd
+%{_unitdir}/seatd.service
+%{_sysusersdir}/system-group-seat.conf
 
 %changelog
