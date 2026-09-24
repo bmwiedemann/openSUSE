@@ -569,4 +569,28 @@
   * Compiler warnings from headers with C99 and -Wpedantic.</comment>
     <requestid>1350130</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>949defbf02f324bde7c43a91466fd3b4</srcmd5>
+    <version>1.18.3</version>
+    <time>1790283500</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.18.3:
+  * libheif 1.12.0 or later is now formally required for HEIF support. We were
+    already calling functions introduced in 1.9.0 and 1.12.0.
+  * Sixels are no longer used inside tmux when the outer terminal can't display
+    them. tmux claims the capability on its own behalf regardless of what's
+    outside it, so we now ask what its client supports instead #348.
+  * Padding and fully transparent areas revealed by alpha thresholding are now
+    correctly painted in the flat background color instead of the closest match #354.
+  * #347 Alignment-induced crash on AMD/CachyOS.
+  * CLI: Hang when --files was used and standard input was a pipe.
+  * CLI: Potential busy-wait for a complete token from a file list.
+  * CLI: TIFF images decoded with wrong channel order on big-endian.
+  * CLI: Integer overflow in image loader size arithmetic.
+  * CLI: Unbounded allocation decoding GIF frames larger than the file's logical extent.
+  * OOB read one entry past the end of the palette color table.
+  * Double free of the pixel canvas after chafa_canvas_new_similar().
+  * Spurious pen added to palettes with fewer than 255 colors.</comment>
+    <requestid>1380105</requestid>
+  </revision>
 </revisionlist>

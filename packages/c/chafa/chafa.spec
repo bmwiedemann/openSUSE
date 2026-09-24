@@ -17,7 +17,7 @@
 
 
 Name:           chafa
-Version:        1.18.2
+Version:        1.18.3
 Release:        0
 Summary:        Image-to-text converter for terminal
 License:        LGPL-3.0-or-later
@@ -28,6 +28,7 @@ BuildRequires:  freetype2-devel
 BuildRequires:  gcc
 BuildRequires:  glib2-devel >= 2.58
 BuildRequires:  gtk-doc
+BuildRequires:  libheif-devel >= 1.12
 BuildRequires:  libjpeg-devel
 BuildRequires:  librsvg-devel
 BuildRequires:  libtiff-devel
