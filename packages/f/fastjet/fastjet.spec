@@ -149,12 +149,13 @@ mkdir ../build_$python
 cp -pr ./ ../build_$python
 pushd ../build_$python
 %cmake -DFASTJET_ENABLE_DEBUG:BOOL=OFF \
-  		 -DFASTJET_ENABLE_CGAL:BOOL=ON \
-			 -DFASTJET_ENABLE_ALLCXXPLUGINS:BOOL=ON \
-			 -DFASTJET_BUILD_EXAMPLES:BOOL=OFF \
-			 -DFASTJET_ENABLE_PYTHON:BOOL=ON \
-			 -DPython_EXECUTABLE:PATH=%{_bindir}/$python \
-			 %{nil}
+       -DFASTJET_ENABLE_CGAL:BOOL=ON \
+       -DFASTJET_ENABLE_ALLCXXPLUGINS:BOOL=ON \
+       -DFASTJET_BUILD_EXAMPLES:BOOL=OFF \
+       -DFASTJET_ENABLE_PYTHON:BOOL=ON \
+       -DPython_EXECUTABLE:PATH=%{_bindir}/$python \
+       -DHAS_SHARED:STRING=yes \
+        %{nil}
 %cmake_build
 popd
 }

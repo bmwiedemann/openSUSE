@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 12:11:38 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Pass -DHAS_SHARED=yes to cmake (boo#1282388).
+
+-------------------------------------------------------------------
 Fri Sep 11 11:25:11 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Build using cmake; this fixes building issues with recent cgal.
