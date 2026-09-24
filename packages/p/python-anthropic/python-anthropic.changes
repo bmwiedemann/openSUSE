@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:21:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.8.0:
+  * Support Claude Opus 5.5, inline tool definitions and MCP
+    tool-list pinning
+  * Fix Python 3.13 crash at exit with a stream left open
+  * add_tools() takes effect straight away
+
+-------------------------------------------------------------------
 Mon Sep 21 08:27:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.0:
