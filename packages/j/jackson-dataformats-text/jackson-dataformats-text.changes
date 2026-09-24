@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:05:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.11
+  * #736: (toml) Support StreamReadConstraints
+    maxNameLength/maxDocumentLength in TOML parser
+  * #737: (yaml) Support StreamReadConstraints.maxDocumentLength()
+    for YAML parser
+  * #738: (properties) Support StreamReadConstraints
+    .maxDocumentLength() for Properties parser
+
+-------------------------------------------------------------------
+Thu Sep 17 08:19:50 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.10
+  * #702: (toml) Expand nesting depth checks for dotted keys
+    (bsc#1282643, CVE-2026-85278)
+
+-------------------------------------------------------------------
 Wed Jul 15 11:34:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.9
