@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Sep 24 04:55:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.97.8:
+  * Set all verification errors in detectors (#5253)
+  * Add per detector verification timing to verification cache (#5341)
+  * Add Okta OAuth support in Okta detector (#5323)
+- Update to version 3.97.7:
+  * fix(engine): map decoded results to source lines (#5219)
+  * [PERF] Remove \b anchor from escaped-unicode codePointPat (#5320)
+  * gcs source documentation (#5319)
+  * give git the real base..head range for diff scans (#5325)
+  * Improve Github App installation access token caching (#5324)
+  * fix(postgres): recognise a missing database by SQLSTATE (#5312)
+
+-------------------------------------------------------------------
 Wed Sep 23 04:39:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.97.6:
