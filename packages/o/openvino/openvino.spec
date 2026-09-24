@@ -45,10 +45,8 @@ Patch0:         openvino-fix-install-paths.patch
 Patch1:         openvino-ComputeLibrary-include-string.patch
 # PATCH-FIX-UPSTREAM openvino-fix-build-sample-path.patch cabelo@opensuse.org -- Fix sample source path in build script
 Patch2:         openvino-fix-build-sample-path.patch
-# PATCH-FIX-UPSTREAM openvino-link-system-protobuf-abseil.patch @opensuse.org -- Locate Abseil and link absl::log and absl::hash
-Patch3:         openvino-link-system-protobuf-abseil.patch
 # PATCH-FIX-UPSTREAM openvino-gcc16-aarch64-autovec.patch @opensuse.org -- Fix AArch64 auto-vectorization flag compatibility with GCC 16
-Patch4:         openvino-gcc16-aarch64-autovec.patch
+Patch3:         openvino-gcc16-aarch64-autovec.patch
 BuildRequires:  ade-devel
 BuildRequires:  cmake
 BuildRequires:  fdupes
@@ -58,9 +56,6 @@ BuildRequires:  opencl-cpp-headers
 # an older version of protoc which is incompatible with your Protocol Buffer
 # headers. Please regenerate this file with a newer version of protoc.
 #BuildRequires:  cmake(ONNX)
-%if %{undefined isLeap}
-BuildRequires:  abseil-cpp-devel
-%endif
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}
@@ -316,14 +311,14 @@ export CXXFLAGS="$CXXFLAGS -Wno-error=free-nonheap-object"
       -DENABLE_PYTHON=ON \
       -DENABLE_WHEEL=OFF \
       -DENABLE_SYSTEM_OPENCL=ON \
-      -DENABLE_SYSTEM_PROTOBUF=ON \
+      -DENABLE_SYSTEM_PROTOBUF=OFF \
       -DENABLE_SYSTEM_PUGIXML=ON \
       -DENABLE_SYSTEM_SNAPPY=ON \
 %if %{defined isLeap}
       -DENABLE_TBBBIND_2_5=OFF \
 %else
       -DCMAKE_FIND_PACKAGE_PREFER_CONFIG=ON \
-      -Dprotobuf_MODULE_COMPATIBLE=ON \
+      -Dprotobuf_MODULE_COMPATIBLE=OFF \
       -DProtobuf_DIR=%{_libdir}/cmake/protobuf \
 %endif
       -DENABLE_SYSTEM_TBB=ON \
