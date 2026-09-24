@@ -2414,4 +2414,12 @@ General:
     <comment>Update to 3.2.6</comment>
     <requestid>1377459</requestid>
   </revision>
+  <revision rev="173" vrev="2">
+    <srcmd5>3ebbcce6c678c91d9c8e1c0abdb1635d</srcmd5>
+    <version>3.2.6</version>
+    <time>1790283319</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1379776</requestid>
+  </revision>
 </revisionlist>

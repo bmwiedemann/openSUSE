@@ -102,6 +102,8 @@ Patch1:         gimp-2.99.19-cm-system-monitor-profile-by-default.patch
 Patch2:         gimp-2.99.19-external-help-browser.patch
 # PATCH-FIX-OPENSUSE disable update checks
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
+# PATCH-FIX-UPSTREAM gimp-fix-invalid-XWD-guards.patch glgo#GNOME/gimp!3007, bsc#1279839 alynx.zhou@suse.com -- Fix invalid guards for XWD parameters
+Patch4:         gimp-fix-invalid-XWD-guards.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

@@ -1,0 +1,50 @@
+From 40e5a59a19e143e5535af27eb62ef93e169a0174 Mon Sep 17 00:00:00 2001
+From: Alynx Zhou <alynx.zhou@gmail.com>
+Date: Tue, 15 Sep 2026 10:17:08 +0800
+Subject: [PATCH] plug-ins: Fix invalid guards for XWD parameters
+
+`bpp` is always 1 for those checks, and integer divide `1 / 8` leads into
+an unintentional zero which always skips the check, use float instead.
+And use correct value instead of mismatched one.
+
+Related to !2915
+---
+ plug-ins/common/file-xwd.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/plug-ins/common/file-xwd.c b/plug-ins/common/file-xwd.c
+index 4b69c965df4..b4cd6708222 100644
+--- a/plug-ins/common/file-xwd.c
++++ b/plug-ins/common/file-xwd.c
+@@ -1390,10 +1390,10 @@ load_xwd_f2_d1_b1 (GFile           *file,
+   data = g_malloc (tile_height * width);
+ 
+   allocation = xwdhdr->l_bytes_per_line + 8;
+-  if (ceil (width * (bpp / 8)) > allocation)
++  if (ceil (width * (bpp / 8.0f)) > allocation)
+     {
+       g_warning ("XWD: Mismatch between width and bytes per line");
+-      allocation = ceil (width * (bpp / 8));
++      allocation = ceil (width * (bpp / 8.0f));
+     }
+   scanline = g_new0 (guchar, allocation);
+ 
+@@ -2294,12 +2294,12 @@ load_xwd_f1_d24_b1 (GFile            *file,
+   bpp             = xwdhdr->l_bits_per_pixel;
+ 
+   allocation = xwdhdr->l_bytes_per_line;
+-  if (ceil (width * (bpp / 8)) > allocation)
++  if (ceil (width * (bpp / 8.0f)) > allocation)
+     {
+       g_warning ("XWD: Mismatch between width and bytes per line");
+-      allocation = ceil (width * (bpp / 8));
++      allocation = ceil (width * (bpp / 8.0f));
+     }
+-  xwddata = g_try_malloc (xwdhdr->l_bytes_per_line);
++  xwddata = g_try_malloc (allocation);
+   if (xwddata == NULL)
+     return NULL;
+ 
+-- 
+GitLab
+

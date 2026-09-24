@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 16 00:41:47 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
+
+- Add gimp-fix-invalid-XWD-guards.patch: Fix invalid guards for XWD
+  parameters which is used to fix CVE-2026-80101.
+  (glgo#GNOME/gimp!3007, bsc#1279839)
+
+-------------------------------------------------------------------
 Thu Sep 10 23:26:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 3.2.6
