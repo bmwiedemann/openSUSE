@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 15:21:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.4:
+  * Scrollable controls for small displays, consistent GUI
+    capitalization, state shown in color, window icon set
+  * Strip all GPS tags when none selected, clamp max heading
+    change, two more bad-data tests
+  * Compile warning fixes, quoted install dirs, per-target
+    install, improved man page, CI moved to GitHub Actions
+
+-------------------------------------------------------------------
 Tue Aug 11 07:35:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Correct the license to GPL-2.0-or-later, which is what the source

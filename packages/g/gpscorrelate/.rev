@@ -17,4 +17,12 @@ Debian's layout, so the CLI does not pull in GTK. Licence is GPL-2.0-or-later
 per the source headers. Builds clean on x86_64 and aarch64, rpmlint 0/0/0.</comment>
     <requestid>1370627</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>491e8fee14663d76420e909b2c578c00</srcmd5>
+    <version>2.4</version>
+    <time>1790283360</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.4: GUI fixes, bad-data tests, build fixes.</comment>
+    <requestid>1379987</requestid>
+  </revision>
 </revisionlist>

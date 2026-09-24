@@ -17,7 +17,7 @@
 
 
 Name:           gpscorrelate
-Version:        2.3
+Version:        2.4
 Release:        0
 Summary:        Tool for setting EXIF GPS data
 License:        GPL-2.0-or-later
