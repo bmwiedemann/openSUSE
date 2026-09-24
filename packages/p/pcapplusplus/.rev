@@ -49,4 +49,14 @@
     <comment></comment>
     <requestid>1153515</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>20fbcbb253d3f5138411332d0d28abd8</srcmd5>
+    <version>26.07</version>
+    <time>1790283944</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 26.07
+Fixes CVE-2026-13588 (boo#1269620), CVE-2026-13589 (boo#1269619),
+CVE-2026-13590 (boo#1269618) and CVE-2026-13587 (boo#1269621)</comment>
+    <requestid>1380228</requestid>
+  </revision>
 </revisionlist>

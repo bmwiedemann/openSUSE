@@ -1,4 +1,338 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:32:58 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 26.07
+  * libpcap / WinPcap / Npcap is now optional.
+  * Bumped the minimum required C++ standard to C++14
+  Protocol support:
+  * Added Modbus protocol
+  * Added DoIP – Diagnostic over Internet Protocol
+  * Added PostgreSQL Wire Protocol (PGWire), including
+    additional message types
+  * Added MySQL Wire Protocol
+  * Discrete FTPControl and FTPData protocol types
+  * Add support for AccurateECN TCP flag
+  * Improve SIP packet detection using heuristic parsing
+  * Recognize LLC payload in SLL2
+  Added extensive X.509 / cryptography support:
+  * X.509 certificate decoding, extension parsing, and parsing
+    of X.509 certificates embedded in SSL/TLS messages
+  * Export/import of X.509 certificates to PEM format, plus a
+    new general-purpose PEM codec
+  * Cryptographic key decoders (RSA/EC private and public keys)
+  * Base64 encoding/decoding
+  * A new X509Toolkit example application
+  * Expanded ASN.1 codec support: BitString,
+    UTCTime/GeneralizedTime, ObjectIdentifier and string records,
+    plus arbitrary-size integer support
+  * IFileReaderDevice::createReader() and
+    IFileReaderDevice::tryCreateReader() use file-content
+    heuristics
+    to automatically pick the right reader (pcap/pcapng/snoop)
+    instead of relying solely on the file extension
+  * Add incremental packet parsing support with
+    Packet::parsePacket()
+  * Added multi-language README support: Japanese
+  * IPv4Address/IPv6Address/MacAddress user-defined literals,
+    e.g. constructing addresses directly from string literals,
+    and sized buffer-construction overloads
+  * Explicit-ownership overloads for RawPacket::setRawData(),
+    and a sized overload for Layer::copyData()
+  * Improved zstd support: added a build flag to control zstd
+    support
+  * A new SuppressLogs RAII class for temporarily suppressing
+    log output
+  * Large-scale internal refactoring of the device layer
+    (PcapLiveDevice, DpdkDeviceList, file readers/writers,
+    statistics tracking), the logging infrastructure, and the
+    packet parsing infrastructure, improving encapsulation,
+    thread-safety, and maintainability
+  * Improved benchmarking: added a pure-parsing benchmark and
+    extended benchmarks to support PcapNG and Snoop files
+  * Test refactoring: replace packet creation macros in with C++
+    functions
+  * Tons of security and correctness bug fixes
+  Breaking changes:
+  * The minimum required C++ standard has been raised to C++14
+  * IPcapDevice has been removed; its logic now lives in
+    PcapLiveDevice
+  * libpcap/WinPcap/Npcap is now an optional dependency —
+    building without it disables Pcap++ capture features, though
+    Common++/Packet++ (including pcap file I/O) remain fully
+    usable
+  * Various internal APIs around device lists and statistics
+    tracking were reworked as part of the refactoring above; this
+    may affect code relying on undocumented internals
+  Deprecation list:
+  * IPv6Address::copyTo() has been deprecated, please use
+    IPv6Address::copyToNewBuffer() instead
+  * MacAddress::copyTo() has been deprecated, please use
+    MacAddress::copyToNewBuffer() instead
+  * Asn1IntegerRecord::getValue() has been deprecated, please
+    use Asn1IntegerRecord::getIntValue() instead
+  * RawPacket::getObjectType() has been deprecated due to
+    unclear semantics
+  * RawPacket::setRawData() has been deprecated, please use the
+    overload that takes takeOwnership parameter for explicit
+    control
+  * RawPacket::initWithRawData() has been deprecated, please use
+    RawPacket::setRawData() with takeOwnership=false instead
+  * SSLExtension::SSLExtension() has been deprecated, please use
+    the constructor with bounded span instead
+  * Several TcpOptionBuilder constructors have been deprecated,
+    please use the new constructors with TcpOptionEnumType
+    instead
+  * TcpLayer::getTcpOption(TcpOptionType option) has been
+    deprecated, please use the overload
+    TcpLayer::getTcpOption(TcpOptionEnumType option) instead
+  * TcpLayer::removeTcpOption(TcpOptionType optionType) has been
+    deprecated, please use the overload
+    TcpLayer::removeTcpOption(TcpOptionEnumType optionType)
+    instead
+  * MBufRawPacket::getObjectType() has been deprecated due to
+    unclear semantics
+  * IFileReaderDevice::getReader() has been deprecated, please
+    use IFileReaderDevice::tryCreateReader() instead
+  * PcapFileReaderDevice::isNanoSecondPrecisionSupported() has
+    been deprecated, nanosecond precision is now natively
+    supported
+    by the internal parser and always returns true
+  * PcapFileWriterDevice::isNanoSecondPrecisionSupported() has
+    been deprecated, nanosecond precision is now natively
+    supported
+    by the internal parser and always returns true
+  * BpfFilterWrapper::matchPacketWithFilter() has been
+    deprecated, please use BpfFilterWrapper::matches() instead
+  * GeneralFilter::matchPacketWithFilter() has been deprecated,
+    please use GeneralFilter::matches() instead
+  * PcapLiveDevice::matchPacketWithFilter() has been deprecated,
+    please use GeneralFilter::matches() directly
+  * PcapLiveDevice::sendPacket(Packet* packet, bool checkMtu =
+    true) has been deprecated, please use
+    PcapLiveDevice::sendPacket(Packet const& packet, bool
+    checkMtu) instead
+  * PcapRemoteDeviceList::getRemoteDeviceByIP() has been
+    deprecated, please use PcapRemoteDeviceList::getDeviceByIP()
+    instead
+  * PfRingDeviceList::getPfRingDeviceByName() has been
+    deprecated, please use PfRingDeviceList::getDeviceByName()
+    instead
+- Drop pcap++-paths.patch (no longer useful)
+- This release includes fixes for CVE-2026-13588 (boo#1269620),
+  CVE-2026-13589 (boo#1269619) and
+  CVE-2026-13590 (boo#1269618)
+- Add CVE-2026-13587.patch and CVE-2026-13587.bin (boo#1269621) 
+
+-------------------------------------------------------------------
+Tue Jun 30 16:06:20 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 25.05
+  New protocol support:
+  * WireGuard
+  * Add gratuitous ARP requests
+  * GTPv2
+  * Cisco HDLC
+  New features:
+  * Added the option to build only Common++ and Packet++
+    libraries without Pcap++, removing the dependency on third-party
+    libraries like libpcap or WinPcap/Npcap
+  * Updated the CMake files to support using pcapplusplus/ as
+    the include prefix
+  * Added support for DPDK 23.11 and 24.11
+  * Introduced nanosecond precision for timestamps in TCP
+    reassembly
+  * Added support for timestamp-related libpcap options
+  * Added multi-language README support
+  * Introduced a new benchmark system using Google Benchmark
+  * Enhanced Python testing and linting infrastructure with ruff
+  Code refactoring:
+  * Overhauled the logging infrastructure for better performance
+    and flexibility
+  * Reformatted CMakeLists files using gersemi
+  * Updated the internal implementation of PcapLiveDevice to
+    store IP information as IPAddress
+  * Streamlined packet parsing using templated next-layer
+    sub-construction
+  * Refactored device list classes
+  * Improved the internal implementation of MacAddress,
+    IPAddress and IPNetwork classes
+  * Enhanced and modernized the internal implementation of
+    PfRingDevice
+  * Removed usage of VLAs
+  * Numerous C++11 modernization efforts
+  * Improved documentation using triple-slash Doxygen formatting
+  Other:
+  * Tons of bug fixes, security fixes and small improvements
+  Breaking changes:
+  * Logger::LogLevel has been deprecated and moved to LogLevel.
+    LogLevel is now an enum class, so arithmetic operations on it
+    will fail to compile
+  * The Logger copy constructor and copy assignment operator are
+    marked as deleted
+  * The return type of Packet::getRawPacketReadOnly() has been
+    changed from RawPacket* to RawPacket const*
+  * SSLv2 support has been removed
+  Deprecation list:
+  * PcapLiveDevice::getAddresses(), which was previously
+    deprecated, has now been removed
+  * libpcap versions < 0.9 are no longer supported. As a result,
+    the following CMake options have been removed:
+    PCAPPP_ENABLE_PCAP_IMMEDIATE_MODE and
+    PCAPPP_ENABLE_PCAP_SET_DIRECTION
+  * The following methods are now deprecated and will be removed
+    in future versions:
+  * Logger::Error, Logger::Info, and Logger::Debug are
+    deprecated. Please use LogLevel::XXX instead
+  * PcapLiveDeviceList::getPcapLiveDeviceBy*** methods have been
+    deprecated in favor of PcapLiveDeviceList::getDeviceBy***
+  * ArpLayer(ArpOpcode opCode, const MacAddress &senderMacAddr,
+    const MacAddress &targetMacAddr, const IPv4Address
+    &senderIpAddr, const IPv4Address &targetIpAddr) constructor has
+    been deprecated in favor of more explicit overloads
+  version 24.09
+  New features:
+  * Added support for eBPF AF_XDP
+  New protocols:
+  * SMTP
+  * ASN.1 encoding and decoding
+  * Enabled ASN.1 root record parsing in x509 certificates
+  * LDAP
+  * S7COMM
+  DPDK improvements:
+  * DPDK 22.11 support
+  * Jumbo frames support
+  * Added an option to disable hugepages and driver verification
+    on initialization
+  * NUMA awareness
+  Examples and utils:
+  * Added XdpExample-FilterTraffic to demonstrate XdpDevice usage
+  * PcapSplitter: updated output filenames with 5-tuple
+    information
+  * Added support for nanosecond precision in reading and
+    writing pcap files
+  * Blocking mode packet capture now uses poll()
+  * Added millisecond precision timeout in RawSocketDevice
+  * Extended IPFilter to support IPv6 where possible
+  * Boosted build time with Ccache
+  * Fixed precision issue in pcapng file reader
+  * Improved method for retrieving the default gateway on macOS
+  * Added security and code of conduct guidelines
+  * Refactoring and modernization of the code base:
+  * Refactored and cleaned up live devices
+    + Added a getter for fetching all IP addresses as IPAddress
+    objects.
+  * Refactored IP address classes IPv4Address, IPv6Address,
+    IPAddress
+    + Added equality operators between IPAddress and in_addr
+      types
+  * Refactored the MAC address class MacAddress
+  * Ported PcapPlusPlus libraries to C++11
+  * Ported most of the examples and tutorials to C++11
+  * Refactored and cleaned up PF_RING devices
+  * Refactored and cleaned up the PointerVector class
+  * Converted Macro Guard to pragma once
+  * Replaced std::map with std::unordered_map
+  * Refactored large parts of the packet filtering code
+  Internal tools:
+  * Reformatted the entire code base using clang-format
+  * Added dependabot to keep GitHub Actions and Python packages
+    up-to-date
+  * Added OpenSSF Scorecard automation to monitor and enhance
+    security
+  * Transitioned from CirrusCI to GitHub Actions for all
+    workflows
+  * Scheduled regular CI builds
+  * Replaced deprecated netifaces by scapy
+  * Improved fuzzing coverage and added Fuzz CI
+  * Added a template for opening GitHub issues
+  * Upgraded LightPcapNg to the latest from master
+  * Fixed unhandled exceptions crashing the entire test suite
+  Other:
+  * Tons of bug fixes, security fixes and small improvements
+  Breaking changes:
+  * Removed isValid() from MacAddress, IPAddress, IPv4Address,
+    IPv6Address, instead they throw an exception if the input
+    argument is invalid
+  * Introduced a new TcpOptionEnumType
+  * Removed the dummy argument in PayloadLayer's constructor
+  Deprecation list:
+  Removed methods:
+  * IPv4Address::matchSubnet()
+  Methods now marked as deprecated:
+  * PointerVector::getAndRemoveFromVector() -> replaced by
+    PointerVector::getAndDetach()
+  * HttpResponseLayer::HttpResponseLayer(version, statusCode,
+    statusCodeString) -> use other constructors
+  * HttpResponseLayer::setStatusCode(newStatusCode,
+    statusCodeString) -> use the other overload
+  * TcpOptionType enum -> replaced by TcpOptionEnumType
+  * TcpOption::getTcpOptionType() -> replaced by
+    TcpOption::getTcpOptionEnumType()
+  * TcpOptionBuilder::TcpOptionBuilder() -> use other
+    constructors
+  * TcpLayer::getTcpOption(TcpOptionType option) -> use the
+    other overload
+  * TcpLayer::addTcpOptionAfter() -> replaced by
+    TcpLayer::insertTcpOptionAfter()
+  * TcpLayer::removeTcpOption() -> use the other overload
+  * PcapLiveDevice::getAddresses() -> replaced by
+    PcapLiveDevice::getIPAddresses()
+  * PcapRemoteDeviceList::getRemoteDeviceList() -> replaced by
+    PcapRemoteDeviceList::createRemoteDeviceList()
+  version 23.09
+  New features:
+  * PcapPlusPlus moved from a custom build system to CMake!
+  * Added IP/IPv4/IPv6 network classes to better support netmask
+    and subnets
+  * Add support for opening NFLOG live device
+  * MAC address OUI Lookup
+  * Intel oneAPI compiler support
+  DPDK improvements:
+  * Properly support no RSS mode in DpdkDevice
+  * Make DPDK app name configurable
+  * More generic search of DPDK KNI kernel module in
+    setup_dpdk.py
+  New protocols:
+  * NFLOG
+  * SLL2
+  * TPKT
+  * COTP
+  * VRRP
+  Existing protocols improvements:
+  * HTTP - refactor and improve HttpResponseStatusCode
+  * SSL/TLS - better detection of possible encrypted handshake
+    messages
+  * DNS - support parsing of resources with larger data
+  * STP - add editing/crafting support
+  * ARP - add isRequest and isReply methods
+  * FTP-DATA support
+  * NTP - support Kiss of Death
+  * SIP - refactor status codes + add a few missing ones
+  New features:
+  * Modernize the codebase to use nullptr instead of NULL
+  * Remove usage of unsupported pcap_compile_nopcap()
+  Internal tools:
+  * Codecov integration for coverage reports
+  * Enable Clang-Tidy
+  * Enable cppcheck
+  * Improve the test framework
+  * Increase test coverage
+  Remove deprecated methods (due to typos):
+  * DhcpLayer::getMesageType() -> replaced by
+    DhcpLayer::getMessageType()
+  * DhcpLayer::setMesageType() -> replaced by
+    DhcpLayer::setMesasgeType()
+  * SSLHandshakeMessage::createHandhakeMessage() -> replaced by
+    SSLHandshakeMessage::createHandshakeMessage()
+  * SSLClientHelloMessage::getExtensionsLenth() -> replaced by
+    SSLClientHelloMessage::getExtensionsLength()
+  * SSLServerHelloMessage::getExtensionsLenth() -> replaced by
+    SSLServerHelloMessage::getExtensionsLength()
+  Other:
+  * Tons of bug fixes, security fixes, major and minor
+    improvements
+
+-------------------------------------------------------------------
 Thu Feb 29 15:05:43 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
