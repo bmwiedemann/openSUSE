@@ -12,6 +12,13 @@ Wed Jul 29 16:21:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     - gdbusauth: Limit length of lines read from client
     - gdbusauth: Unmark a new string as translatable
     - Several Meson/gcc fixes
+- Drop glib2-CVE-2026-15588.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Jul 29 15:21:08 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
+
+- Add glib2-CVE-2026-15588.patch: gdbusauth: Limit length of lines
+  read from client (bsc#1272206, CVE-2026-15588).
 
 -------------------------------------------------------------------
 Thu Jun 25 15:52:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>

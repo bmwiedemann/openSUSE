@@ -2569,4 +2569,15 @@ Extra note: I see glib2 in G:N is missing its link - manual merge needed after a
     - Several Meson/gcc fixes</comment>
     <requestid>1368512</requestid>
   </revision>
+  <revision rev="309" vrev="2">
+    <srcmd5>fe270699e6a6632b31e50ded1c6c67a4</srcmd5>
+    <version>2.88.3</version>
+    <time>1790283325</time>
+    <user>dimstar_suse</user>
+    <comment>- Drop glib2-CVE-2026-15588.patch: fixed upstream.
+
+- Add glib2-CVE-2026-15588.patch: gdbusauth: Limit length of lines
+  read from client (bsc#1272206, CVE-2026-15588).</comment>
+    <requestid>1379908</requestid>
+  </revision>
 </revisionlist>
