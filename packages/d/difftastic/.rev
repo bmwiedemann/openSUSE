@@ -231,4 +231,14 @@
       filename. (forwarded request 1379648 from develop7)</comment>
     <requestid>1379650</requestid>
   </revision>
+  <revision rev="21" vrev="2">
+    <srcmd5>6f16dc2acde0c45a821efdb4fabecf90</srcmd5>
+    <version>0.71.0</version>
+    <time>1790283666</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix heap corruption in the Haskell parser
+  * Add tree-sitter-haskell-fix-heap-corruption.patch with the upstream
+    strict-aliasing fix from tree-sitter-haskell for difftastic issue #1036. (forwarded request 1380181 from develop7)</comment>
+    <requestid>1380182</requestid>
+  </revision>
 </revisionlist>

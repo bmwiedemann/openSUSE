@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:21:59 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Fix heap corruption in the Haskell parser
+  * Add tree-sitter-haskell-fix-heap-corruption.patch with the upstream
+    strict-aliasing fix from tree-sitter-haskell for difftastic issue #1036.
+
+-------------------------------------------------------------------
 Sat Sep 19 08:35:23 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - _service: set update=true for cargo-vendor service

@@ -33,6 +33,7 @@ Source0:        https://github.com/Wilfred/difftastic/archive/%{version}/%{name}
 Source1:        vendor.tar.xz
 Patch0:         remove-jq-dependency.patch
 Patch1:         reproducible.patch
+Patch2:         tree-sitter-haskell-fix-heap-corruption.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
