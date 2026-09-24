@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 04:55:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.77:
+  * Fixed
+    - release: never replace published GitHub Release assets
+      (471d97e)
+  * Performance
+    - release: cut published wheel size 8% with fat LTO (7605780)
+
+-------------------------------------------------------------------
 Wed Sep 23 04:39:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.76:
