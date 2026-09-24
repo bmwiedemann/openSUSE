@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 24 15:47:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790264833.381b79cd:
+  * test(devel-fullstack): Fix waiting for `outstanding_images`
+  * chore(deps): Dependency cron 2026-09-24
+  * feat(cli): Add worker reservation subcommand
+  * feat(completion): Enhance openqa-cli shell completion
+  * fix(packaging): skip fixture test on SLE <= 1500
+  * feat(dev): introduce mock test environment
+
+-------------------------------------------------------------------
+Thu Sep 24 05:05:38 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790226324.6b673da6:
+  * chore(deps): Dependency cron 2026-09-24
+  * feat(completion): Enhance openqa-cli shell completion
+  * chore(deps): Dependency cron 2026-09-22
+  * fix(packaging): skip fixture test on SLE <= 1500
+  * feat(dev): introduce mock test environment
+  * fix: Fix typo in NGINX config
+  * fix: Include missing `PATCH` in rate limiting config example
+
+-------------------------------------------------------------------
 Tue Sep 22 10:09:15 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790071740.8a090f85:

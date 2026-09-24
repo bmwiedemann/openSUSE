@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1790071740.8a090f85
+Version:        5.1790264833.381b79cd
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -346,6 +346,9 @@ statistics.
 %package client-bash-completion
 Summary:        Bash Completion for %{name}
 Group:          Development/Tools/Other
+%if 0%{?suse_version} > 1500
+BuildRequires:  perl-App-AppSpec
+%endif
 Requires:       bash-completion
 Supplements:    (%{name}-client and bash-completion)
 
@@ -355,6 +358,9 @@ The official bash completion script for openqa-cli.
 %package client-zsh-completion
 Summary:        Zsh Completion for %{name}
 Group:          Development/Tools/Other
+%if 0%{?suse_version} > 1500
+BuildRequires:  perl-App-AppSpec
+%endif
 Supplements:    (%{name}-client and zsh)
 
 %description client-zsh-completion
