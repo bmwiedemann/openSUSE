@@ -274,4 +274,16 @@
     <comment>- update x/crypto to 0.52.0 (bsc#1268884, CVE-2026-39827,</comment>
     <requestid>1376883</requestid>
   </revision>
+  <revision rev="19" vrev="8">
+    <srcmd5>d39370c1be5ba7a699e7d3798525c343</srcmd5>
+    <version>3.1.1</version>
+    <time>1790283435</time>
+    <user>dimstar_suse</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1281468, CVE-2026-81871: OpenTelemetry-Go: TLS certificate
+    bypass allows log telemetry interception and alteration
+  * bsc#1281469, CVE-2026-81872: OpenTelemetry-Go: Denial of
+    Service via attacker-driven log emission</comment>
+    <requestid>1380039</requestid>
+  </revision>
 </revisionlist>
