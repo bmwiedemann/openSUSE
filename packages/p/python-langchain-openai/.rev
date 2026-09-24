@@ -158,4 +158,12 @@ Built and checked locally on aarch64 against a locally built langchain-core
 1.6.4: 565 tests pass, rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <requestid>1379739</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>54bacd382db92812ca811a2a94d7ac56</srcmd5>
+    <version>1.6.6</version>
+    <time>1790283396</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.6.6 (includes 1.6.4). Supersedes 1380025.</comment>
+    <requestid>1380234</requestid>
+  </revision>
 </revisionlist>
