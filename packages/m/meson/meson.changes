@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:00:12 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.12.1:
+  + gnome: Fix dependency between gir and sources
+  + Handle invalid CMake skip compiler test values
+  + python module: support pypy without distutils
+  + build: ExtractedObjects are non-recursive by default
+  + Add LLVM 23 version suffixes
+  + compilers: move -fpermissive from CPPCompiler to individual
+    superclass
+- Drop 16167.patch: fixed upstream
+
+-------------------------------------------------------------------
 Sat Aug 29 15:37:22 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Add 16167.patch: Add LLVM 23 version suffixes.
