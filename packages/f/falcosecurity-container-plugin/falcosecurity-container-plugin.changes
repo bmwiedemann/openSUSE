@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 19:25:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.7.5:
+  * chore(plugins/container): bump version to 0.7.5
+  * fix(plugins/container): unblock listener shutdown
+  * build(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc
+  * build(deps): bump go.opentelemetry.io/otel/sdk
+- Export GOROOT for the go-worker build: the trimmed
+  distribution go binary cannot locate it alone
+
+-------------------------------------------------------------------
 Thu Sep 10 18:35:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.7.4:

@@ -47,4 +47,12 @@ build until these land):
     <comment>Forward 0.7.4 to Factory: engine bootstrap timeout, container lookup retry/backoff recovery fixes, containerd 2.2.8 / grpc 1.83.2. Built green on aarch64, source_validator clean.</comment>
     <requestid>1376993</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>b548ad5017ca0d079830681a5dfca0d3</srcmd5>
+    <version>0.7.5</version>
+    <time>1790283481</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.7.5: listener shutdown fix, otel bumps. Export GOROOT for the go-worker build (trimmed go).</comment>
+    <requestid>1380077</requestid>
+  </revision>
 </revisionlist>

@@ -17,7 +17,7 @@
 
 
 Name:           falcosecurity-container-plugin
-Version:        0.7.4
+Version:        0.7.5
 Release:        0
 Summary:        Falcosecurity plugin providing container metadata
 # Legal-Review-Notice: MPL-2.0 from vendored Go modules statically
@@ -63,6 +63,8 @@ export GOFLAGS=-mod=vendor
 export GOPROXY=off
 export GOTOOLCHAIN=local
 export GOCACHE=%{_builddir}/.gocache
+# The distribution go binary is trimmed and cannot locate its GOROOT alone.
+export GOROOT=$(go env GOROOT)
 %define __builder ninja
 # ENABLE_TESTS pulls in a from-source libsinsp (sinsp_test_support); keep it OFF
 # so the plugin builds against the system stack only.
