@@ -178,4 +178,12 @@ satisfy their ranges; ws 8.21.3 is npm latest. No CVE or GHSA in the
 </comment>
     <requestid>1379418</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>ea356f9774762cff0078804fe1443dcf</srcmd5>
+    <version>2.1.1</version>
+    <time>1790283423</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.1.1 (includes 2.1.0): fullscreen TUI; 2.1.1 rolls back overly defensive 2.1.0 changes. Supersedes 1380029.</comment>
+    <requestid>1380133</requestid>
+  </revision>
 </revisionlist>
