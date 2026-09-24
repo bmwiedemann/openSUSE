@@ -1,0 +1,121 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun 20 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Mon Feb 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- change cmake install location
+- fix whitespace
+
+-------------------------------------------------------------------
+Sat Feb  7 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 30 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Use default gpu list
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Dec 24 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Tue Jul 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Tue Jun 24 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- add option to build test subpackage
+
+-------------------------------------------------------------------
+Tue Jun  3 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing on suse
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Mon Jan 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
