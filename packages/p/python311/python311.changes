@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Sep 17 23:49:43 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-15310: bound zipfile decompression for
+  bzip2/LZMA (bsc#1277111, gh#python/cpython#156002)
+  CVE-2026-15310-bound-zipfile-decompression.patch
+
+-------------------------------------------------------------------
+Tue Sep 15 10:29:32 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-19672: in tarfile, handle a member that leaves the
+  destination and comes back  (bsc#1276227, gh#python/cpython#156000)
+  CVE-2026-19672-tarfile-outside-dirs.patch
+
+-------------------------------------------------------------------
+Fri Sep 11 19:59:21 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+CVE-2026-17084: Don't consider Unicode codepoint attributes
+   outside RFC 3454 (bsc#1276226)
+   CVE-2026-17084-stringprep-rfc3454.patch
+-------------------------------------------------------------------
+Thu Sep 10 18:29:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-15806: Scope HTTPPasswordMgr credentials by URL scheme
+  (bsc#1276223)
+  * Add CVE-2026-15806-HTTPPasswordMgr-scheme.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 20:24:11 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 3.11.16:

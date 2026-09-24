@@ -35,13 +35,11 @@
 %bcond_with base
 %bcond_without general
 %endif
-
 %if 0%{?do_profiling} && !0%{?want_reproducible_builds}
 %bcond_without profileopt
 %else
 %bcond_with profileopt
 %endif
-
 # Only for Tumbleweed
 # https://en.opensuse.org/openSUSE:Python:Externally_managed
 %if 0%{?suse_version} > 1600
@@ -49,14 +47,12 @@
 %else
 %bcond_with externally_managed
 %endif
-
 %define         python_pkg_name python311
 %if "%{python_pkg_name}" == "%{primary_python}"
 %define primary_interpreter 1
 %else
 %define primary_interpreter 0
 %endif
-
 # Setting up variables
 %define _version %(c=%{version}; echo ${c/[a-z]*/})
 %define tar_suffix %(c=%{_version}; echo ${c#%{_version}})
@@ -210,6 +206,18 @@ Patch51:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch58:        bsc1263083-http-cookies-atob-utf8.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15806-HTTPPasswordMgr-scheme.patch bsc#1276223 mcepl@suse.com
+# Scope HTTPPasswordMgr credentials by URL scheme
+Patch59:        CVE-2026-15806-HTTPPasswordMgr-scheme.patch
+# PATCH-FIX-UPSTREAM CVE-2026-17084-stringprep-rfc3454.patch bsc#1276226 mcepl@suse.com
+# Don't consider Unicode codepoint attributes outside RFC 3454
+Patch60:        CVE-2026-17084-stringprep-rfc3454.patch
+# PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
+# in tarfile, handle a member that leaves the destination and comes back
+Patch61:        CVE-2026-19672-tarfile-outside-dirs.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15310-bound-zipfile-decompression.patch bsc#1277111 mcepl@suse.com
+# Bound zipfile decompression for bzip2/LZMA (gh#python/cpython!156003)
+Patch62:        CVE-2026-15310-bound-zipfile-decompression.patch
 ### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake
@@ -227,6 +235,7 @@ BuildRequires:  pkgconfig(libffi)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(zlib)
 #!BuildIgnore:  gdk-pixbuf-loader-rsvg
+%{?suse_build_hwcaps_libs}
 %if 0%{?suse_version} >= 1550 && %{without base}
 # Skip for the base flavor: rpm-build-python requires python3-base, which
 # creates an unresolvable dependency loop when building python3xx-base itself.
@@ -256,13 +265,12 @@ BuildRequires:  pkgconfig(ncurses)
 BuildRequires:  pkgconfig(tk)
 BuildRequires:  pkgconfig(x11)
 Requires:       %{python_pkg_name}-base = %{version}
-Provides:       %{python_pkg_name}-readline
-Provides:       %{python_pkg_name}-sqlite3
 Recommends:     %{python_pkg_name}-curses
 Recommends:     %{python_pkg_name}-dbm
 Recommends:     %{python_pkg_name}-pip
+Provides:       %{python_pkg_name}-readline
+Provides:       %{python_pkg_name}-sqlite3
 %endif
-%{?suse_build_hwcaps_libs}
 
 %description
 Python 3 is modern interpreted, object-oriented programming language,
@@ -417,7 +425,7 @@ other applications.
 %endif
 %autopatch -p1 -m 10 -M 50
 %if ! 0%{?sle_version} || 0%{?sle_version} >= 160000
-%patch -p1 -P 51 
+%patch -p1 -P 51
 %endif
 %autopatch -p1 -m 52
 

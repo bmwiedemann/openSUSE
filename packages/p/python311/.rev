@@ -2019,4 +2019,26 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
       fix to CVE-2026-72522.</comment>
     <requestid>1376615</requestid>
   </revision>
+  <revision rev="74" vrev="2">
+    <srcmd5>ad68c60ee3a49ec511a126005c5c9f60</srcmd5>
+    <version>3.11.16</version>
+    <time>1790283318</time>
+    <user>dimstar_suse</user>
+    <comment>- CVE-2026-15310: bound zipfile decompression for
+  bzip2/LZMA (bsc#1277111, gh#python/cpython#156002)
+  CVE-2026-15310-bound-zipfile-decompression.patch
+
+- CVE-2026-19672: in tarfile, handle a member that leaves the
+  destination and comes back  (bsc#1276227, gh#python/cpython#156000)
+  CVE-2026-19672-tarfile-outside-dirs.patch
+
+CVE-2026-17084: Don't consider Unicode codepoint attributes
+   outside RFC 3454 (bsc#1276226)
+   CVE-2026-17084-stringprep-rfc3454.patch
+
+- CVE-2026-15806: Scope HTTPPasswordMgr credentials by URL scheme
+  (bsc#1276223)
+  * Add CVE-2026-15806-HTTPPasswordMgr-scheme.patch</comment>
+    <requestid>1379773</requestid>
+  </revision>
 </revisionlist>
