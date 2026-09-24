@@ -1947,4 +1947,28 @@ Version. Built locally on aarch64 against openSUSE_Factory_ARM (--clean):
 green, %check &quot;make test-syntax&quot; (pslint) passed, rpmlint 0 errors 0 warnings.</comment>
     <requestid>1375565</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>9f7155e181c81bb03c5aac159b104232</srcmd5>
+    <version>20260921</version>
+    <time>1790283316</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 20260921 (public_suffix_list.dat snapshot from the
+upstream commit of 2026-09-21).
+
+79 net rule additions and 2 removals. Notable: the new wildcard
+*.p.azurewebsites.net alongside 71 regional -01.azurewebsites.net
+delegated zones, Databricks Apps zones, surge.sh, hosted-by-files.com,
+*.compute.herokuapp.com, cloud.run and ai.studio, opencloud.me, and
+ia.bo in the ICANN section; alpha-myqnapcloud.com and
+dev-myqnapcloud.com removed.
+
+The version is the git committer date of the upstream commit, not the
+&quot;// VERSION:&quot; header the published .dat carries, which is a
+republication timestamp re-stamped even over unchanged data.
+
+Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
+0 badness; %check runs the pslint self-tests and lints the shipped
+list.</comment>
+    <requestid>1379693</requestid>
+  </revision>
 </revisionlist>

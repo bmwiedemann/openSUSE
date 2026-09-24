@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:30:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260921 (public_suffix_list.dat snapshot taken
+  from upstream commit of 2026-09-21):
+  * Add Databricks Apps zones under databricksapps.com and
+    databricksapps.us to PRIVATE section (#3255)
+  * Add surge.sh to PRIVATE section (#3287)
+  * Add hosted-by-files.com to PRIVATE section (#3267)
+  * Add *.compute.herokuapp.com (Heroku) (#3208)
+  * Add cloud.run and ai.studio (Google) (#2959)
+  * Add Azure App Service delegated zones under
+    azurewebsites.net, including the wildcard
+    *.p.azurewebsites.net (#3147)
+  * Add opencloud.me (#3174)
+  * Add ia.bo social ccTLD subdomain for Bolivia (#3214)
+  * Remove alpha-myqnapcloud.com and dev-myqnapcloud.com (#3254)
+
+-------------------------------------------------------------------
 Thu Sep  3 08:41:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20260902 (public_suffix_list.dat snapshot taken
