@@ -1,4 +1,267 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:04:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.1:
+  * cnpg plugin:
+    - Added a --dry-run option to the backup command that prints
+      the Backup resource that would be created, without creating
+      it. (#11233)
+    - Used UTC time zone for the default backup name. (#11329)
+    - Deleted PVCs before Pods in cnpg destroy, avoiding a race
+      that could leave dangling PVCs needing a second invocation to
+      clean up. (#10847)
+    - fix(plugin): report the Postgres capabilities of a plugin
+      (#11447)
+    - docs(plugin): added note about verbose mode requirement
+      (#11339)
+    - fix(plugin): replace finalizer with in-memory cleanup on
+      service deletion (#10940)
+  * Dependencies
+    - Updated google.golang.org/grpc to v1.83.1, fixing
+      CVE-2026-84304 / GHSA-vp52-pcj8-j9qc (gRPC-Go heap memory
+      exhaustion via HTTP/2 DATA frame fragmentation). (#11394)
+    - chore(deps): update dependency onsi/ginkgo to v2.33.0
+      (#11529)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.94.0 (#11530)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.1 (#11528)
+    - chore(deps): update dependency ubuntu to v26 (#11531)
+    - fix(deps): update all non-major go dependencies (#11439)
+    - chore(deps): update dependency cert-manager/cert-manager to
+      v1.21.2 (#11527)
+    - chore(deps): update backup test tools (#11524)
+    - chore(deps): update
+      https://github.com/redhat-openshift-ecosystem/community-operators-pipeline.git
+      digest to 8ed9daf (#11525)
+    - chore(deps): update ghcr.io/cloudnative-pg/pgbouncer docker
+      tag to v1.25.2 (#11535)
+    - chore(deps): update container distroless digests (#11523)
+    - chore(deps): update objectstore test images (#11435)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 7a0454c (#11526)
+    - chore(deps): update dependency
+      kubernetes-csi/external-attacher to v4.13.0 (#11428)
+    - chore(deps): update dependency onsi/ginkgo to v2.32.1
+      (#11417)
+    - chore(deps): update
+      https://github.com/redhat-openshift-ecosystem/community-operators-pipeline.git
+      digest to 80f1f4f (#11416)
+    - chore(deps): update dependency cert-manager/cert-manager to
+      v1.21.1 (#11412)
+    - chore(deps): update kindest/node docker tag to v1.37.0
+      (#11420)
+    - chore(deps): update curlimages/curl docker tag to v8.22.0
+      (#11418)
+    - chore(deps): update operator framework (#11421)
+    - fix(deps): update module sigs.k8s.io/controller-runtime to
+      v0.25.0 (#11423)
+    - fix(deps): update module
+      github.com/prometheus-operator/prometheus-operator/pkg/apis/monitoring
+      to v0.93.1 (#11422)
+    - chore(deps): pin go toolchain to 1.27.1 (#11425)
+    - fix(deps): update cnpg to v0.6.0 (#11399)
+    - fix(deps): update kubernetes monorepo to v0.37.0 (#11400)
+    - fix(deps): update all non-major go dependencies (#11404)
+    - chore(deps): update kubernetes csi (#11209)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to f332c99 (#11398)
+    - chore(deps): update dependency golangci/golangci-lint to
+      v2.13.2 (#11402)
+    - chore(deps): update cuelang/cue docker tag to v0.17.1
+      (#11226)
+    - chore(deps): update module sigs.k8s.io/controller-tools to
+      v0.22.0 (#11403)
+    - chore(deps): update dependency boto3 to v1.43.87 (#11162)
+    - fix(deps): bump go toolchain to 1.26.6 (#11323)
+    - fix(deps): update module golang.org/x/text to v0.39.0
+      (#11240)
+    - fix(deps): update module github.com/cloudnative-pg/cnpg-i to
+      v0.6.0 (#11235)
+    - fix(deps): update all non-major go dependencies (#11160)
+    - fix(deps): update kubernetes patches (#11104)
+    - chore(deps): update kubernetes csi (#11158)
+    - chore(deps): update cuelang/cue docker tag to v0.17.0
+      (#11124)
+    - chore(deps): update docker.io/amazon/aws-cli docker tag to
+      v2.35.19 (#11101)
+    - chore(deps): update
+      registry.access.redhat.com/ubi9/ubi-micro:latest docker
+      digest to 35de56a (#11117)
+    - chore(deps): update dependency cert-manager/cert-manager to
+      v1.21.0 (#11156)
+    - chore(deps): update dependency boto3 to v1.43.44 (#11100)
+    - chore(deps): update container distroless digests (#11154)
+    - fix(deps): bump go toolchain to 1.26.5 (#11155)
+
+
+
+
+-------------------------------------------------------------------
+Wed Jul 01 11:54:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.30.0:
+  * Important changes
+    - Updated the deprecation notice for native (in-tree) Barman
+      Cloud support to reflect that it will now be removed in
+      CloudNativePG 1.31.0, rather than 1.30.0. Users are still
+      encouraged to migrate to the Barman Cloud Plugin. (#11083)
+    - The cluster reference is now immutable on the Database,
+      Pooler, Publication, Subscription, and ScheduledBackup
+      resources. Pointing one of these objects at a different
+      cluster has no well-defined semantics and previously left the
+      controllers in an inconsistent state; the update is now
+      rejected at the API server via a CEL validation rule.
+      (#10743)
+  * Features
+    - Primary Lease for safe primary election: introduced a
+      Kubernetes Lease object (named after the cluster) that acts
+      as a mutex serializing primary promotion: the instance
+      manager must hold the lease before acting as primary and
+      releases it on clean shutdown so replicas can promote without
+      waiting for the full TTL. Timings are configurable via the
+      new .spec.primaryLease stanza. The lease is a promotion gate,
+      not a fence. Primary isolation remains responsible for
+      fencing. (#10627)
+    - DatabaseRole CRD for declarative role management: introduced
+      a DatabaseRole custom resource that manages a PostgreSQL role
+      as a standalone Kubernetes object, instead of declaring it
+      inline in the Cluster's .spec.managed.roles stanza. Each role
+      gets its own lifecycle, status, and RBAC, which suits GitOps
+      workflows and lets role definitions live next to the
+      applications that own them. The spec reuses the same
+      RoleConfiguration structure as the inline method, so
+      migrating a role is a matter of moving the stanza into its
+      own manifest. A databaseRoleReclaimPolicy field (retain, the
+      default, or delete) controls what happens to the role when
+      the resource is deleted, mirroring persistent volumes.
+      (#6155)
+    - TLS client certificates for declarative roles: a DatabaseRole
+      can now include a clientCertificate block to have the
+      operator automatically generate and renew a TLS client
+      certificate, signed by the cluster's client CA and stored in
+      a <databaserole-name>-client-cert Secret. This enables
+      password-free PostgreSQL cert authentication; the Secret is
+      cleaned up when the feature is disabled or the DatabaseRole
+      is deleted. (#10896)
+    - PgBouncer image management via image catalogs: the Pooler
+      resource can now reference an entry in an ImageCatalog or
+      ClusterImageCatalog through the new
+      spec.pgbouncer.imageCatalogRef field, centralizing PgBouncer
+      image management. When a catalog entry is updated, all
+      referencing Poolers are automatically reconciled and roll out
+      the new image without any change to their spec. The resolved
+      image is reported in status.image, and a new status.phase
+      (active, paused, inactive, or failed), also surfaced as a
+      Phase column in kubectl get pooler, summarizes the lifecycle.
+      (#10568)
+  * Enhancements
+    - Enabled pg_upgrade in-place major upgrades to PostgreSQL 19
+      or later for clusters that use Image Volume extensions,
+      building on the extension-path support added to pg_upgrade in
+      PostgreSQL 19. During the upgrade Job, the source- and
+      target-version extension images are mounted side by side, so
+      the old server keeps its libraries and a failed upgrade
+      reverts cleanly. (#10366)
+    - Added TLS support for the Pooler metrics endpoint via
+      .spec.monitoring.tls.enabled. When enabled, the metrics
+      server is served over HTTPS, reusing the certificate and key
+      from .spec.pgbouncer.clientTLSSecret and reloading it on
+      every handshake to support rotation without a restart; the
+      generated PodMonitor scrapes over https accordingly. (#10466)
+    - Added a label selector to the Cluster scale subresource
+      (status.selector), making a Cluster a valid targetRef for the
+      Vertical Pod Autoscaler (VPA) and Horizontal Pod Autoscaler
+      (HPA), which can now map a Cluster to its instance pods.
+      Contributed by @sebv004. (#8996)
+    - The operator now emits a Warning PrimaryStatusCheckFailed
+      event on the Cluster when the primary pod is Ready from the
+      kubelet perspective but the operator's /pg/status check fails
+      and failover is deferred, giving users visibility into the
+      deferral via kubectl describe cluster. (#10509)
+    - Added the ENABLE_WEBHOOK_NAMESPACE_SUFFIX flag, which
+      suffixes the operator's webhook configuration names with
+      -<OPERATOR_NAMESPACE> so that multiple operator instances can
+      coexist on the same cluster. The operator only looks up these
+      configurations; users must create and maintain them.
+      Contributed by @maxlengdell. (#10420)
+    - The operator now reloads a CNPG-i plugin automatically when
+      its pods are rolled: it watches the EndpointSlices backing
+      plugin Services and re-enqueues every cluster using the
+      plugin once the new pods become Ready, so an upgraded plugin
+      is picked up without waiting for the next resync. (#10836)
+    - Instance serial numbers are now assigned by reusing the
+      lowest free slot among existing instance names, instead of
+      always incrementing a global counter. Pod and PVC names stay
+      stable across instance recreation (for example, an instance
+      recreated after a node drain comes back with the same name),
+      and serials freed by deleted instances are reclaimed. A new
+      Initialized cluster condition reports whether the cluster has
+      completed its first bootstrap, and status.latestGeneratedNode
+      is deprecated: it is no longer written, but is preserved on
+      the CRD for backward compatibility. (#10548)
+    - Defaulting and validation now run during reconciliation as a
+      fallback when admission webhooks are unavailable, or
+      configured to ignore failures, so the operator no longer
+      reconciles invalid or incomplete specs. Missing defaults are
+      applied directly, and validation failures are surfaced in the
+      resource status instead of failing silently later. (#10874)
+  * Security
+    - CVE-2026-55769 / GHSA-x8c2-3p4r-v9r6: search_path pinning on
+      operator-issued connections: a database owner could plant
+      overloaded built-in operators in the public schema and alter
+      the search_path so that operator introspection probes,
+      running as the cluster superuser, resolved those overloads
+      before pg_catalog, a CWE-426 privilege-escalation chain (same
+      class as CVE-2018-1058) that could lead to in-pod RCE via
+      COPY ... FROM PROGRAM. The operator now pins search_path =
+      pg_catalog, public, pg_temp on every pooled connection so it
+      ships in the startup message and takes precedence over
+      tenant-controlled defaults. (#10774, GHSA-x8c2-3p4r-v9r6)
+    - GHSA-7qwx-x8ff-3px9: authenticated
+      operator-to-instance-manager calls: the instance manager's
+      remote webserver relied on network isolation rather than
+      authentication for its operator-only control endpoints, so
+      any party able to reach the pod's status port could invoke
+      them, disrupting backup orchestration and WAL archival and
+      reading operational metadata. (The upgrade endpoint is
+      SHA-256-pinned, so this did not permit arbitrary code
+      execution.) The operator now generates an in-memory ECDSA
+      P-256 client certificate at startup and reconciles its
+      SHA-256 fingerprint into the cluster status; the instance
+      manager rejects requests to sensitive endpoints that do not
+      present a matching certificate. This hardening is not
+      backported; earlier releases should continue to restrict the
+      status port with a NetworkPolicy. (#10579,
+      GHSA-7qwx-x8ff-3px9)
+    - CVE-2026-55765 / GHSA-w3gf-xc94-wvmj: operator-side
+      SCRAM-SHA-256 password encoding: the operator now
+      SCRAM-SHA-256 encodes cleartext role passwords before issuing
+      CREATE/ALTER ROLE ... PASSWORD, so the literal PostgreSQL
+      parses (and that extensions such as pg_stat_statements or
+      pgaudit may capture) is the SCRAM verifier rather than the
+      cleartext secret. Pre-hashed (MD5 or SCRAM) values are
+      forwarded unchanged, and the per-Secret annotation
+      cnpg.io/passwordPassthrough: "enabled" opts out. (#10724,
+      GHSA-w3gf-xc94-wvmj)
+  * Changes
+    - Added support for Kubernetes 1.36. (#10900)
+    - Updated the default PostgreSQL version to 18.4. (#10719)
+    - Updated the Kubernetes versions used to test the operator on
+      public cloud providers. (#10720, #10563, #11033)
+  * Fixes - cnpg plugin:
+    - Fixed kubectl cnpg psql on Windows, where execution relied on
+      a Unix-only system call and failed with "not supported by
+      windows"; Windows now launches kubectl exec as a child
+      process. Contributed by @Utkarsh-sharma47. (#10972)
+    - Fixed an unbounded memory leak in kubectl cnpg logs -f on
+      busy clusters, where a per-log-group timer was never
+      released; timers are now reused across iterations.
+
+-------------------------------------------------------------------
 Wed Jul 01 06:48:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.29.2:
