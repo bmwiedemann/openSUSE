@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:28:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.30:
+  * Add Qwen-Drive-1.0-4B vision tower weights
+  * Fix prefetch loader stream reuse, AugMix for non-square
+    and single-band images, AdaMuon/AdafactorBigVision/MARS
+    optimizer issues and Kron checkpoint loading
+  * Fix stale eval attention bias caches and dilated
+    max-pool padding
+
+-------------------------------------------------------------------
 Sat Aug 29 07:17:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.0.29:
