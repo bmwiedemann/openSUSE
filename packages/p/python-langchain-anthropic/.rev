@@ -184,4 +184,12 @@ Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
 - langchain-core floor 1.6.2 per upstream (Factory carries 1.6.2)</comment>
     <requestid>1377316</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>4bef6bdf384d5ce39ff50bf83d64c324</srcmd5>
+    <version>1.7.4</version>
+    <time>1790283395</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.7.4 (includes 1.7.3). Supersedes 1380024.</comment>
+    <requestid>1380135</requestid>
+  </revision>
 </revisionlist>
