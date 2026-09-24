@@ -18,15 +18,16 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-netmiko
-Version:        4.7.0
+Version:        4.8.0
 Release:        0
 Summary:        Multi-vendor library to simplify Paramiko SSH connections to network devices
 License:        MIT
 URL:            https://github.com/ktbyers/netmiko
 Source:         https://files.pythonhosted.org/packages/source/n/netmiko/netmiko-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module uv}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-PyYAML >= 6.0.2

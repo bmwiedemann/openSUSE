@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 23 15:35:19 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.8.0
+  * fix: remove SecretsFilter when a connection fails before
+    disconnect().
+  * Migrate from poetry to uv.
+  * Remove ineffective DSA monkey-patch from TPLinkJetStreamSSH.
+  * Comware remove extra enter.
+  * Fix Palo Alto command echo stripping.
+  * Improve command echo timeout error message.
+  * Fix telnet reads by looping read_eager().
+  * Make ruamel.yaml optional.
+  * Support paramiko5 and update Netmiko release dependencies.
+  * Gracefully exit in Juniper cleanup output.
+  * Fortinet version detect whitespace issue.
+  * SNMP autodetect and other minor test improvements.
+
+-------------------------------------------------------------------
 Wed May 13 14:00:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.7.0
