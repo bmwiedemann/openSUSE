@@ -1,4 +1,159 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:22:22 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- coreutils-9.12-env-quote-fix.patch: Add post-release upstream patch
+  to revert env(1) behavior, i.e., only quote when outputting to terminals.
+- coreutils-i18n.patch: Sync with Fedora.
+  * src/linebuffer.h: Remove unnecessary hunk.
+  Avoid false-positives in French locale:
+  * tests/Coreutils.pm: Adjust test name length for "-mb" suffix.
+  * tests/pr/pr-tests.pl: Skip "neg-page" test.
+  * tests/sort/sort.pl: Skip "invalid-parallel" test.
+
+-------------------------------------------------------------------
+Thu Sep 17 06:33:14 UTC 2026 - Bernhard Voelker <mail@bernhard-voelker.de>
+
+- Update to 9.12:
+  Bug fixes
+  * 'chcon', 'chgrp', 'chmod', 'chown', 'du', 'ls' which traverse hierarchies with
+    -R,  no longer fail merely because files may be being removed in parallel.
+    [This bug was present in "the beginning".]
+  * 'comm - -' no longer closes standard input twice.  Previously it would
+    mistakenly exit with a nonzero status.
+    [This bug was present in "the beginning".]
+  * 'cp', 'install', and 'mv' now fall back to a standard copy
+    if a --reflink=auto clone fails due to EDQUOT, ENOMEM, or ENOSPC.
+    E.g., with XFS, a clone can exhaust metadata space in an allocation
+    group, while a standard copy works.
+    [bug introduced in coreutils-9.2]
+  * 'cut -d' with multiple multi-byte delimiter options specified
+    will correctly match the last delimiter specified.
+    [bug introduced with multi-byte support in coreutils-9.11]
+  * 'date -d '1-2-3' "+%_D"' no longer propagates flags like _ and - to the year
+    component of the %D date specifier, keeping consistent component formatting.
+    [bug introduced in coreutils-8.31]
+  * 'du --max-depth=N' now exits with a nonzero exit status and an error message
+    if N is negative.  Previously it behaved as if N were zero.
+    [bug introduced in coreutils-9.4]
+  * 'factor' avoids a buffer over-read (CWE-126) for certain values.
+    [bug introduced in coreutils-9.8]
+  * 'head' and 'tail' now quote names in file headers when needed.
+    [This bug was present in "the beginning".]
+  * 'ls --color' no longer reads freed memory when LS_COLORS sets "ln=target"
+    and later becomes unparsable, e.g., LS_COLORS='ln=target:x'.
+    [This bug was present in "the beginning".]
+  * 'mv' now warns when copying extended attributes fails with ENOTSUP, e.g., when
+    moving files to a file system that does not support them.
+    [bug introduced in coreutils-7.3]
+  * 'numfmt', 'printf', and 'seq' on Solaris, no longer output an extraneous e+00
+    when using a large precision like "%.5119f".
+    [This bug was present in "the beginning".]
+  * 'pinky -l' no longer no longer prints output in the incorrect order when
+    standard output is fully buffered, e.g., when redirected to a file.
+    [bug introduced in coreutils-9.10]
+  * 'pr' now exits gracefully upon exceeding internal accounting limits,
+    like when processing large tab stops.
+    [This bug was present in "the beginning".]
+  * 'ptx -G' no longer loops forever when the output width is smaller than
+    twice the gap size, as with 'ptx -G -w4', or when a long reference
+    leaves that little room, as with 'ptx -G -r'.
+    [This bug was present in "the beginning".]
+  * 'ptx -W' no longer loops forever with a word regular expression that can
+    match the empty string, like: echo ab | ptx -W 'a*'.
+    [This bug was present in "the beginning".]
+  * 'shred' no longer blocks when opening a FIFO that has no readers.
+    [This bug was present in "the beginning".]
+  * 'stty' no longer fails when the system uses speed encodings that
+    are variations of the requested speed.
+    [bug introduced in coreutils-9.8]
+  * 'tee' no longer loops infinitely after writing all output if a write call sets
+    errno to EAGAIN.
+    [bug introduced in coreutils-9.11]
+  * 'tee' no longer treats short writes as errors.
+    [bug introduced in coreutils-9.11]
+  * 'test' no longer treats '-a' and '-o' as operators when given as strings to a
+    binary operator.  E.g., 'test -a -a -a' exits successfully instead of exiting
+    with an error.
+    [This bug was present in "the beginning".]
+  * 'truncate --reference=R' no longer hangs when R is a FIFO with no readers.
+    [bug introduced in coreutils-8.17]
+  * 'unexpand -t' no longer overflows a heap buffer, for tab values > SIZE_MAX/16,
+    or with multi-byte blank characters longer than the tab value.
+    [bugs introduced in coreutils-9.11]
+  * 'uniq -w' no longer overruns the read buffer in multibyte locales.
+    [bug introduced in coreutils-9.5]
+  * 'wc' no longer reads past the end of a lookup table in legacy multibyte
+    locales like SHIFT-JIS where a single byte can decode to a wide character.
+    [bug introduced in coreutils-9.5]
+  * Messages from Gnulib are no longer mistranslated in non-English locales.
+    [bug introduced in coreutils-9.6]
+  New Features
+  * 'env' now supports --env0-from=FILE to read NUL-delimited environment entries
+    from a file.  With -i, entries are preserved exactly, allowing full
+    round-tripping of environments containing duplicate or nonstandard entries.
+  * 'stat' and 'tail' now know about the "failfs" and "nullfs" file system types.
+    stat -f -c%T now reports the file system type,
+    and tail -f uses inotify for these file systems.
+  * uname adds the -A,--all-labeled option to label all output, one item per line.
+  Changes in behavior
+  * 'env' and 'printenv' now quote printed environment variables honoring the
+    QUOTING_STYLE environment variable, defaulting to shell-escape style. This
+    avoids printing arbitrary data to the terminal and allows the output to be
+    sourced by a POSIX shell.
+  * 'ls' -w,--width no longer includes '\n' in the width of a line.
+    I.e., the width or $COLUMNS is interpreted to be an _inclusive_ maximum.
+  * 'stat' now uses shell quoting when required, to more robustly escape
+    file names.  Previously it only quoted file names with the %N format.
+    The default quoting honors the QUOTING_STYLE env variable (like %N).
+    Also %Qn is a newly supported format combination to quote file names,
+    leaving the existing %n format for when quoting is not desired.
+  Improvements
+  * When built with the configure option '--with-wtmpdb', invocations of
+    'who /var/log/wtmp' and 'users /var/log/wtmp' use the wtmpdb database
+    instead of the file /var/log/wtmp.  This makes them Y2038-safe.
+  * 'cut -w' operates more efficiently when extracting the start of a line
+    in multi-byte locales, giving 4x more throughput with typical input.
+  * 'df', 'du', 'ls', 'od', 'pr', and 'sort' now escape invalid arguments in error
+    messages for options expecting an integer.
+  * 'env -0, and 'printenv -0' now explicitly set binary mode on output
+    so that no CRLF translation is done e.g., on windows.
+  * 'install -C' will now avoid updating file metadata when the destination
+    already has the appropriate ownership and permissions.
+  * 'basename', 'dirname', 'du', 'readlink', and 'realpath' now quote output in
+    shell-escape style when standard output is a terminal.  The QUOTING_STYLE
+    environment variable can be used to adjust or disable the quoting.
+  * 'ls -m' now quotes files names containing commas when appropriate,
+    so users can better distinguish separating commas.
+  * 'ls' now replaces newlines in file names if ambiguous with separators.
+    Previously newlines were protected only when outputting to a terminal.
+  * 'sort' will now better use available memory and parallel operation
+    when reading from unknown sized inputs like pipes.
+  * 'uniq -c' now operates up to 2.5x times faster on systems with unlocked stdio
+    functions.
+  Build-related
+  * 'logname' now builds, where getlogin() is replaced (e.g. with musl),
+     and systemd libs are being used, by linking the required libraries.
+  * The multi-call binary built with configure --enable-single-binary is reduced
+    in size by around 10KB through the more efficient reuse of the 'test' code
+    by '[', and the 'true' code by 'false'.
+  * configure no longer accepts the --with-linux-crypto option, which allowed
+    cksum, md5sum, and sha*sum to use the Linux AF_ALG API.  This API will be
+    deprecated in Linux 7.2 and is less performant than OpenSSL.
+  * The configure option '--enable-systemd' is renamed to '--with-systemd'.
+    The option '--enable-systemd' was a misnomer and is now deprecated.
+  * The 'sort' binary now uses the UAPI Group's .note.dlopen ELF note
+    to indicate its dependency on libcrypto.
+- coreutils.spec (%build): Change configure option from --enable-systemd
+  to --with-systemd.
+- coreutils-tests-misc-tty-eof-avoid-false-failure.patch:
+  Remove now-obsolete patch.
+- coreutils-tee-fix-infloop-on-EAGAIN-and-short-write.patch,
+  coreutils-uniq-fix-read-overrun-with-w.patch,
+  coreutils-unexpand-fix-heap-overflow.patch:
+  Remove now-upstream patches.
+- Refresh all other patches.
+
+-------------------------------------------------------------------
 Wed Sep  9 13:23:01 UTC 2026 - rw@suse.com
 
 - coreutils-uniq-fix-read-overrun-with-w.patch: Add upstream

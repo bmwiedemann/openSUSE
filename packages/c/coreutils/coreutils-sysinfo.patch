@@ -6,7 +6,7 @@ Index: src/uname.c
 ===================================================================
 --- src/uname.c.orig
 +++ src/uname.c
-@@ -357,6 +357,36 @@ main (int argc, char **argv)
+@@ -379,6 +379,36 @@ main (int argc, char **argv)
              element = processor;
          }
  #endif
@@ -41,9 +41,9 @@ Index: src/uname.c
 +#endif
 +	}
        if (! (toprint == UINT_MAX && element == unknown))
-         print_element (element);
+         print_element (element, _("Processor"));
      }
-@@ -382,6 +412,18 @@ main (int argc, char **argv)
+@@ -404,6 +434,18 @@ main (int argc, char **argv)
              element = hardware_platform;
          }
  #endif
@@ -60,5 +60,5 @@ Index: src/uname.c
 +	  element = hardware_platform;
 +	}
        if (! (toprint == UINT_MAX && element == unknown))
-         print_element (element);
+         print_element (element, _("Hardware platform"));
      }

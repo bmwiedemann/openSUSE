@@ -2,8 +2,10 @@
  tests/df/sync.sh |   15 +++++++++++----
  1 file changed, 11 insertions(+), 4 deletions(-)
 
---- a/tests/df/sync.sh
-+++ b/tests/df/sync.sh
+Index: tests/df/sync.sh
+===================================================================
+--- tests/df/sync.sh.orig
++++ tests/df/sync.sh
 @@ -22,7 +22,9 @@ print_ver_ df
  # This test is marked "very expensive" since calling sync() can take a long
  # time on a busy system.
