@@ -1,7 +1,7 @@
 #
 # spec file for package rapidyaml
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,29 +17,20 @@
 #
 
 
-%define sover_ryml 0_8_0
-%define sover_c4core 0_2_5
+%define sover_ryml 0_16
 Name:           rapidyaml
-Version:        0.8.0
+Version:        0.16.0
 Release:        0
 Summary:        A library to parse and emit YAML
 License:        MIT
 Group:          Development/Libraries/C and C++
 URL:            https://github.com/biojppm/%{name}
-Source0:        https://github.com/biojppm/%{name}/releases/download/v%{version}/%{name}-%{version}-src.tgz
-Patch0:         cmake.patch
+Source0:        https://github.com/biojppm/%{name}/releases/download/v%{version}/%{name}.v%{version}.src.tgz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
 BuildRequires:  git
 
 %description
-ryml is a C++ library to parse and emit YAML.
-
-%package -n libc4core%{sover_c4core}
-Summary:        Utility library of rapidyaml
-Group:          System/Libraries
-
-%description -n libc4core%{sover_c4core}
 ryml is a C++ library to parse and emit YAML.
 
 %package -n libryml%{sover_ryml}
@@ -56,7 +47,6 @@ string copies or duplications are done.
 %package devel
 Summary:        Header files for rapidyaml, a library to parse and emit YAML
 Group:          Development/Libraries/C and C++
-Requires:       libc4core%{sover_c4core} = %{version}-%{release}
 Requires:       libryml%{sover_ryml} = %{version}-%{release}
 
 %description devel
@@ -65,7 +55,7 @@ ryml is a C++ library to parse and emit YAML.
 This package contains development headers and examples.
 
 %prep
-%autosetup -n %{name}-%{version}-src -p1
+%autosetup -n %{name}.v%{version}
 
 %build
 %cmake
@@ -77,12 +67,7 @@ This package contains development headers and examples.
 %check
 %ctest
 
-%ldconfig_scriptlets -n libc4core%{sover_c4core}
 %ldconfig_scriptlets -n libryml%{sover_ryml}
-
-%files -n libc4core%{sover_c4core}
-%license LICENSE.txt
-%{_libdir}/libc4core.so.*
 
 %files -n libryml%{sover_ryml}
 %license LICENSE.txt
@@ -92,9 +77,8 @@ This package contains development headers and examples.
 %license LICENSE.txt
 %doc README.md
 %{_includedir}/*
-%{_libdir}/cmake/c4core
 %{_libdir}/cmake/ryml
-%{_libdir}/libc4core.so
 %{_libdir}/libryml.so
+%{_datadir}/ryml
 
 %changelog

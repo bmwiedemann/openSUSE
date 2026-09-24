@@ -31,4 +31,30 @@
     <comment></comment>
     <requestid>1254978</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>57f5d34c0507cd27c1b01b19d7c3fdc2</srcmd5>
+    <version>0.16.0</version>
+    <time>1790283931</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.16.0:
+  * YAML compliance: 100% success rate on the YAML test suite, both
+    for valid and invalid cases; parse errors are now raised for many
+    previously accepted invalid documents
+  * improve tracking of the node causing a deserialization error
+  * add serialization to/from Tree, not only NodeRef/ConstNodeRef
+  * deprecate .to_val() and the operators =, |=, &lt;&lt;, &gt;&gt; in favour of
+    the new set_*(), set_serialized() and deserialize() methods, see
+    the upstream migration guide
+  * the c4core submodule was removed; only the required c4core source
+    code is vendored into ryml and is built into libryml
+  * see https://github.com/biojppm/rapidyaml/releases/tag/v0.16.0
+- Bump the soname to libryml.so.0.16, rename the libryml0_8_0
+  subpackage to libryml0_16
+- Drop the libc4core0_2_5 subpackage, c4core is no longer built as a
+  separate library
+- Drop cmake.patch: installing into CMAKE_INSTALL_LIBDIR is fixed
+  upstream (biojppm/rapidyaml#256)
+</comment>
+    <requestid>1380223</requestid>
+  </revision>
 </revisionlist>
