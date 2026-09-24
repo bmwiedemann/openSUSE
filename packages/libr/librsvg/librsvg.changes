@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 06:52:20 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.62.4:
+  + librsvg crate version 2.62.4
+  + librsvg-rebind crate version 0.3.0
+  + Fix use-after-free when there are duplicate XML entities in
+    nested Xinclude documents.
+  + Dependency updates: lopdf for RUSTSEC-2026-0187,
+    crossbeam-epoch for RUSTSEC-2026-0204.
+
+-------------------------------------------------------------------
 Thu Aug  6 10:17:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Disable librsvg --test reference, failing with new pango 1.58.2

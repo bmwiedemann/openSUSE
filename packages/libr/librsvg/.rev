@@ -1415,4 +1415,18 @@
     <comment>- Disable librsvg --test reference, failing with new pango 1.58.2</comment>
     <requestid>1371801</requestid>
   </revision>
+  <revision rev="159" vrev="1">
+    <srcmd5>c708e4224f0d3b6d7bb1def8ce45feb6</srcmd5>
+    <version>2.62.4</version>
+    <time>1790283333</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.62.4:
+  + librsvg crate version 2.62.4
+  + librsvg-rebind crate version 0.3.0
+  + Fix use-after-free when there are duplicate XML entities in
+    nested Xinclude documents.
+  + Dependency updates: lopdf for RUSTSEC-2026-0187,
+    crossbeam-epoch for RUSTSEC-2026-0204.</comment>
+    <requestid>1379982</requestid>
+  </revision>
 </revisionlist>
