@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:12:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.9.0:
+  * fix: request explicit columns when listing images (#2172)
+  * chore(deps): update all dependencies (#2171)
+  * chore(deps): update all dependencies (#2170)
+  * chore: Add SECURITY.md (#2169)
+  * docs: enhance CONTRIBUTING.md linting section and update
+    pre-commit hooks (#2168)
+  * chore(deps): update all dependencies (#2167)
+  * Add limited Apple Container support as container engine (#2163)
+  * fix: handle undeterminable home directory when expanding a path
+    (#2165)
+  * fix: handle invalid artifact filename formats (#2160)
+  * fix: handle OSError when checking a playbook path (#2164)
+  * docs: clarify shell pipelines in execution environments (#2154)
+  * chore(deps): update all dependencies (#2162)
+  * Enhance CONTRIBUTING.md with patching fixture guidance (#2155)
+  * fix(docs): remove conflicting keys from .readthedocs.yml
+    (#2159)
+  * chore(deps): update all dependencies (#2157)
+
+-------------------------------------------------------------------
 Wed Aug 12 11:12:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.8.0:
