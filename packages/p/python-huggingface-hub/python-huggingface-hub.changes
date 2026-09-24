@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:15:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0 (major, intentionally breaking;
+  see upstream migration guide):
+  * HTTP stack moves from httpx to httpx2: clients and
+    transport exceptions now come from httpx2/httpcore2;
+    custom client factories and except clauses must use
+    httpx2 types (compat import from huggingface_hub.utils)
+  * httpx2 uses the OS certificate trust store by default
+  * Drop the huggingface-cli console script (removed
+    upstream); hf and tiny-agents remain
+
+-------------------------------------------------------------------
 Thu Sep 17 16:26:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.32.0:

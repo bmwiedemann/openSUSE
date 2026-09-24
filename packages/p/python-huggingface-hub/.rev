@@ -188,4 +188,12 @@ import smoke py313/py314.</comment>
     copy mtime, doubled colon in snapshot progress bar</comment>
     <requestid>1378665</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>e2a1e647798f1a24b2563c604deaf763</srcmd5>
+    <version>2.0.0</version>
+    <time>1790283966</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.0 (major): httpx2 stack, drop removed huggingface-cli script.</comment>
+    <requestid>1380236</requestid>
+  </revision>
 </revisionlist>

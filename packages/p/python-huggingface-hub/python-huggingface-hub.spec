@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-huggingface-hub
-Version:        1.32.0
+Version:        2.0.0
 Release:        0
 Summary:        Client library for interaction with the huggingface hub
 License:        Apache-2.0
@@ -33,7 +33,7 @@ BuildRequires:  %{python_module PyYAML >= 5.1}
 BuildRequires:  %{python_module click >= 8.1.7}
 BuildRequires:  %{python_module filelock >= 3.10.0}
 BuildRequires:  %{python_module fsspec >= 2023.5.0}
-BuildRequires:  %{python_module httpx >= 0.23.0}
+BuildRequires:  %{python_module httpx2 >= 2.0.0}
 BuildRequires:  %{python_module packaging >= 20.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -46,7 +46,7 @@ Requires:       python-PyYAML >= 5.1
 Requires:       python-click >= 8.1.7
 Requires:       python-filelock >= 3.10.0
 Requires:       python-fsspec >= 2023.5.0
-Requires:       python-httpx >= 0.23.0
+Requires:       python-httpx2 >= 2.0.0
 Requires:       python-packaging >= 20.9
 Requires:       python-tqdm >= 4.42.1
 Requires:       python-typing-extensions >= 4.1.0
@@ -79,9 +79,8 @@ sed -i 's/click>=8.4.2,<9.0.0/click>=8.1.7,<9.0.0/' setup.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/hf
-%python_clone -a %{buildroot}%{_bindir}/huggingface-cli
 %python_clone -a %{buildroot}%{_bindir}/tiny-agents
-%python_group_libalternatives hf huggingface-cli tiny-agents
+%python_group_libalternatives hf tiny-agents
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -92,22 +91,18 @@ sed -i 's/click>=8.4.2,<9.0.0/click>=8.1.7,<9.0.0/' setup.py
 
 %pre
 %python_libalternatives_reset_alternative hf
-%python_libalternatives_reset_alternative huggingface-cli
 %python_libalternatives_reset_alternative tiny-agents
 
 %post
 %python_install_alternative hf
-%python_install_alternative huggingface-cli
 %python_install_alternative tiny-agents
 
 %postun
 %python_uninstall_alternative hf
-%python_uninstall_alternative huggingface-cli
 %python_uninstall_alternative tiny-agents
 
 %files %{python_files}
 %python_alternative %{_bindir}/hf
-%python_alternative %{_bindir}/huggingface-cli
 %python_alternative %{_bindir}/tiny-agents
 %{python_sitelib}/huggingface_hub
 %{python_sitelib}/huggingface_hub-%{version}.dist-info
