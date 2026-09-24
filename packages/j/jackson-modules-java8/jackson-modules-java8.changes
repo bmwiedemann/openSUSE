@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:24:53 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.11
+  * No changes, only syncing the whole stack for databind security
+    issues
+
+-------------------------------------------------------------------
+Thu Sep 17 08:20:01 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to 2.18.10
+  * #387: Validate length of input in InstantDeserializer
+
+-------------------------------------------------------------------
 Wed Jul 15 12:03:52 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to 2.18.9
