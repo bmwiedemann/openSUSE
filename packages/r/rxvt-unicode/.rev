@@ -1,0 +1,13 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>73bc34570001f9657baa1e0ee792a7c2</srcmd5>
+    <version>9.31</version>
+    <time>1790283646</time>
+    <user>dimstar_suse</user>
+    <comment>Hi,
+
+New maintainer of urxvt :)
+This is a request to re-add it to Factory now that it compiles on GCC 16.</comment>
+    <requestid>1380191</requestid>
+  </revision>
+</revisionlist>
