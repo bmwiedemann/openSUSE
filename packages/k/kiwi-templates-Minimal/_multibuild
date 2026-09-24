@@ -1,3 +1,8 @@
+<!--
+When adding/deleting profiles that generate files linked from get.opensuse.org, the corresponding
+download links also need to be added/deleted. For details see the comment in the .kiwi file.
+-->
+
 <multibuild>
   <flavor>kvm-and-xen-grub-bls</flavor>
   <flavor>kvm-and-xen-sdboot</flavor>

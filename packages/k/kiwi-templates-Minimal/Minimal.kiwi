@@ -2,6 +2,14 @@
 
 <!-- OBS-Profiles: @BUILD_FLAVOR@ -->
 
+<!--
+## Update download links on get.opensuse.org when necessary
+When you add/delete profiles or change `bundle_format` attributes (thus altering the generated
+image filenames), please check if download links on get.opensuse.org need to be updated.
+If an update is needed, please submit a pull request to github.com/openSUSE/get-o-o,
+adjusting urls in the relevant _data/$VERSION.yml files.
+-->
+
 <image schemaversion="7.4" name="openSUSE-Tumbleweed-Minimal" displayname="openSUSE Tumbleweed Minimal">
     <description type="system">
         <author>openSUSE Project</author>

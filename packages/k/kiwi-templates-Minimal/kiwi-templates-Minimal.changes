@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:05:50 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Add comments to _multibuild and Minimal.kiwi to remind people to
+  update download links on get.opensuse.org when necessary.
+
+-------------------------------------------------------------------
 Fri Aug  7 12:59:50 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - config.sh: Use gawk instead of chpasswd -e for setting root to
