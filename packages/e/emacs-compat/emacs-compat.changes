@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 16 17:35:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 31.1.0.0:
+  * Synchronize version with the Emacs 31.1 release.
+  * compat-31: set version to 31.1 (was 31.0.50).
+  * Document both any and member-if in the manual.
+- Enable %check (upstream ERT suite).
+- Spec cleanup
+
+-------------------------------------------------------------------
 Tue Aug 18 19:30:17 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Update to version 31.0.0.2:

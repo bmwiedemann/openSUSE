@@ -230,4 +230,12 @@ Wed Jul 08 13:14:43 UTC 2026 - Dario Faggioli &lt;dfaggioli@suse.com&gt;
 </comment>
     <requestid>1364591</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>d430316cb669e7daae68bc4507872b28</srcmd5>
+    <version>0.1+gaf1088e</version>
+    <time>1790283579</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380143</requestid>
+  </revision>
 </revisionlist>

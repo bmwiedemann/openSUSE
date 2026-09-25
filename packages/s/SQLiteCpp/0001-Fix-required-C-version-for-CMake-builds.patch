@@ -13,13 +13,13 @@ version and is properly exported to CMake Target.
  CMakeLists.txt | 23 +++++++++++------------
  1 file changed, 11 insertions(+), 12 deletions(-)
 
-diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c23d634..9d853c9 100644
---- a/CMakeLists.txt
-+++ b/CMakeLists.txt
-@@ -8,15 +8,6 @@ cmake_minimum_required(VERSION 3.5...4.0)
+Index: SQLiteCpp-3.4.0/CMakeLists.txt
+===================================================================
+--- SQLiteCpp-3.4.0.orig/CMakeLists.txt
++++ SQLiteCpp-3.4.0/CMakeLists.txt
+@@ -8,15 +8,6 @@ cmake_minimum_required(VERSION 3.5...4.0
  list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake") # custom CMake modules like FindSQLiteCpp
- project(SQLiteCpp VERSION 3.3.3)
+ project(SQLiteCpp VERSION 3.4.0)
  
 -# SQLiteC++ 3.x requires C++11 features
 -if (NOT CMAKE_CXX_STANDARD)
@@ -33,7 +33,7 @@ index c23d634..9d853c9 100644
  message (STATUS "CMake version: ${CMAKE_VERSION}")
  message (STATUS "Project version: ${PROJECT_VERSION}")
  
-@@ -212,6 +203,8 @@ endif()
+@@ -211,6 +202,8 @@ endif()
  
  # add sources of the wrapper as a "SQLiteCpp" static library
  add_library(SQLiteCpp ${SQLITECPP_SRC} ${SQLITECPP_INC} ${SQLITECPP_DOC} ${SQLITECPP_SCRIPT})
@@ -42,7 +42,7 @@ index c23d634..9d853c9 100644
  
  # Options relative to SQLite and SQLiteC++ functions
  
-@@ -475,10 +468,15 @@ if (SQLITECPP_BUILD_TESTS)
+@@ -505,10 +498,15 @@ if (SQLITECPP_BUILD_TESTS)
      target_link_libraries(SQLiteCpp_tests SQLiteCpp)
  
      find_package(GTest)
@@ -60,7 +60,7 @@ index c23d634..9d853c9 100644
          message(STATUS "Compile googletest from source in submodule")
          # deactivate some warnings for compiling the googletest library
          if (NOT MSVC)
-@@ -505,7 +503,8 @@ if (SQLITECPP_BUILD_TESTS)
+@@ -535,7 +533,8 @@ if (SQLITECPP_BUILD_TESTS)
          endif (MSVC)
  
          target_link_libraries(SQLiteCpp_tests gtest_main)
@@ -70,6 +70,3 @@ index c23d634..9d853c9 100644
  
      # add a "test" target:
      enable_testing()
--- 
-2.53.0
-

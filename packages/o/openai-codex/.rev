@@ -449,4 +449,12 @@ Built and checked locally on aarch64: 798 tests pass, rpmlint 0
 errors, 0 warnings, 0 badness across 5 packages.</comment>
     <requestid>1379727</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>7c88a5ad647c22be10e31cf64438f689</srcmd5>
+    <version>0.156.1</version>
+    <time>1790283564</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.156.1: GPT-6 model catalog hotfix. Refresh vendor (quinn/rustls advisories fixed upstream); add recursion-limit workaround for rustc query-depth overflow.</comment>
+    <requestid>1380121</requestid>
+  </revision>
 </revisionlist>

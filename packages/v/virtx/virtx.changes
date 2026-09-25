@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Thu Sep 17 09:44:57 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to version 0.1+gaf1088e:
+  * remove extra space characters
+  * vmdef/test: add tests for the new validations
+  * inventory/test: add test for custom field matching
+  * metadata/test: add new test for Vm Custom Fields decoding
+  * vmdef: error out if a Custom field Name is empty
+  * vmdef: Validate: enforce limits for custom fields
+  * model: change vm_list_fields Custom to a slice
+  * hypervisor/domain: fix missing Custom fields with a refactoring
+  * inventory: VmInfo: remove now unused Vcpu field
+  * hypervisor/systeminfo: use a local vcpus field for get_domain_stats
+  * hypervisor/domain: libvirt.DOMAIN_SHUTOFF_MIGRATED -> migrating
+  * hypervisor/domain: Migrate_domain: emit debug with migration params, flags
+  * hypervisor/domain: note libvirt change in behavior in emitting events
+  * README: suggest to disable default confined in libvirt
+  * virtx/vm_migrate: remove dependency from vminfo.Vcpus
+  * model: add minor comment to Cpudef
+  * cmd/virtx: sort the results for list vm and list host
+  * cmd/virtx: resolve and display host names in some API results
+  * hypervisor: improve comment before Wait_system_info()
+  * virtx/vm_create: longer comment about re-encoding the body
+  * virtx/vm_create: validate before scheduling
+  * hypervisor: remove some guards against si != nil, comment the assertion
+  * hypervisor: refactor system_info initialization
+  * cmd/virtx: split host_get into cpu, net, sys and default sections
+  * model: refactor host net fields as host_net
+  * hypervisor/systeminfo: discover migration Interface as well as IP address
+  * model: add migration_iface to host
+  * hypervisor: set management Interface as well as the IP address
+  * model: add management_iface to host
+  * hypervisor: set management_addr as discovered from serf
+  * serfcomm: do the UpdateTags in Connect(), not in send_system_info()
+  * model: add management_addr to the host
+  * virtx/vm_create: handle the request without o.Host with sched
+  * sched: new module with an initial simple scheduling function for vmdef
+  * hypervisor: get_cpumodels: only return versioned models
+  * constants: new CPUMODEL_VER
+  * hypervisor/systeminfo: system_info_get_immutable: save cpumodels
+  * hypervisor: implement get_cpumodels
+  * reg: add cpumodels
+  * reg: split off lockid and migration code into own modules
+  * vmdef: adapt xml tests for the added arch field
+  * json: adapt examples for Arch
+  * vmdef: encode and decode Arch to and from XML
+  * json: adapt examples to not set the "numa" field of cpudef.
+  * vmdef: disallow setting nodes != 0 for now
+  * vmdef: vmdef_validate_cpu: add validation for arch, vendor, model
+  * model: remove cpuarch, fold into cpudef
+  * vmdef: add 1 bit to physical address bits
+  * hypervisor/systeminfo: get_iface_speed: log values <= 0
+  * hypervisor, serfcomm: log the reconnection success
+  * serfcomm: ignore "member-join" events
+  * serfcomm: do not attempt reconnecting during shutdown
+  * hypervisor: fix obsolete comment about start_listening()
+  * gitignore
+  * hypervisor/systeminfo: new get_iface_speed()
+  * hypervisor/domain: migrate_domain: use the migration_addr for migration
+  * cmd/virtx: host_get: add migration_addr
+  * hypervisor/systeminfo: discover migration_addr
+  * model: add migration_addr to host
+
+-------------------------------------------------------------------
 Wed Jul  8 15:22:19 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - virtx.service: adjust Group and SupplementaryGroups (as a

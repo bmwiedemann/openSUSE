@@ -142,4 +142,12 @@ provider logo. Data-only change.</comment>
 Supersedes sr#1378173. Pair with templates 0.11.63 for comfyui 0.36.0.</comment>
     <requestid>1378349</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d52b248fe94eed6b841e927eb23f7bf0</srcmd5>
+    <version>0.1.48</version>
+    <time>1790283629</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.48: refreshed previews.</comment>
+    <requestid>1380164</requestid>
+  </revision>
 </revisionlist>

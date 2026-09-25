@@ -216,4 +216,12 @@ test: Fix expected cc-gnu predefined macro ordering
 * Pass `-lm` to linker flags to fix linking math libs when building binary.</comment>
     <requestid>1378390</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e6cae212b70479006a8e98188cc95cdc</srcmd5>
+    <version>0.8.0</version>
+    <time>1790283586</time>
+    <user>dimstar_suse</user>
+    <comment>Update to version 0.8.0</comment>
+    <requestid>1380154</requestid>
+  </revision>
 </revisionlist>

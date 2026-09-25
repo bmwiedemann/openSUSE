@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.155.1
+Version:        0.156.1
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -77,6 +77,8 @@ Patch0:         codex-drop-v8-code-mode.patch
 Patch1:         codex-no-startup-update-check.patch
 # PATCH-FIX-OPENSUSE codex-system-libzstd.patch mpluskal@suse.com -- link zstd-sys against the system libzstd instead of its bundled copy
 Patch2:         codex-system-libzstd.patch
+# PATCH-FIX-OPENSUSE codex-recursion-limit-chatgpt.patch mpluskal@suse.com -- raise the query-depth limit rustc overflows on codex-chatgpt's list_connectors async state machine (toolchain workaround, upstream pins its own toolchain)
+Patch3:         codex-recursion-limit-chatgpt.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake

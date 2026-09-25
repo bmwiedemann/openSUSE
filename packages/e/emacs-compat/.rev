@@ -193,4 +193,12 @@
   * compat-31: Fix extended function seconds-to-string.</comment>
     <requestid>1371838</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d603658f1c637d27ffd21cac0d0a20d0</srcmd5>
+    <version>31.1.0.0</version>
+    <time>1790283592</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1380152</requestid>
+  </revision>
 </revisionlist>

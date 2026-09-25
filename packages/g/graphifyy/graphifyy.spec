@@ -20,7 +20,7 @@
 # (successor of the python-graphifyy multibuild package).
 %define pythons %{primary_python}
 Name:           graphifyy
-Version:        0.9.66
+Version:        0.9.67
 Release:        0
 Summary:        Code knowledge graph builder and query CLI for AI assistants
 License:        Apache-2.0 AND MIT

@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 17:02:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.156.1:
+  * Hotfix adding GPT-6 Sol and Luna to the model catalog
+  * Refresh the vendored dependencies (quinn-proto 0.11.15,
+    rustls 0.23.45: earlier RUSTSEC advisories fixed upstream;
+    drop the now-redundant rustls pull-forward)
+  * Raise the recursion limit for codex-chatgpt: current
+    rustc overflows its query-depth limit on the
+    list_connectors async state machine otherwise
+  * codex-recursion-limit-chatgpt.patch
+
+-------------------------------------------------------------------
 Tue Sep 22 14:56:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.155.1:

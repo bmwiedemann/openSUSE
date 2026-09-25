@@ -17,7 +17,7 @@
 
 
 Name:           fff
-Version:        0.9.4
+Version:        0.11.0
 Release:        0
 Summary:        Fuzzy file finder library with a C ABI
 License:        MIT AND Apache-2.0 AND BSL-1.0 AND CC0-1.0 AND ISC AND MPL-2.0 AND OLDAP-2.8 AND Unicode-3.0

@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Tue Sep 22 17:42:23 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 3.4.0:
+  * fix: faulty undef (gh#SRombauts/SQLiteCpp#509).
+  * fix: hide installation behind an option
+    (gh#SRombauts/SQLiteCpp#512).
+  * fix compilation with newer gtest (gh#SRombauts/SQLiteCpp#514).
+  * cmake: Set cmake_minimum_required policy_max
+    (gh#SRombauts/SQLiteCpp#519).
+  * Update SQLite from 3.49.2 to 3.51.1 (2025-11-28)
+    (gh#SRombauts/SQLiteCpp#526).
+  * Add AI coding guidelines for GitHub Copilot and Cursor
+    (gh#SRombauts/SQLiteCpp#529).
+  * Update SQLite from 3.51.1 to 3.51.3 (2026-03-13)
+    (gh#SRombauts/SQLiteCpp#538).
+  * Add a set of granular SKILLs extracted from the monolithic
+    copilot instructions (gh#SRombauts/SQLiteCpp#531).
+  * Generalized cmake sqlite & key api to allow easier use of
+    SQLite Multiple Ciphers (gh#SRombauts/SQLiteCpp#532).
+  * Add agent skills for releases, SQLite updates, CHANGELOG, and
+    authoring (gh#SRombauts/SQLiteCpp#546).
+  * Update bundled SQLite from 3.51.3 to 3.53.2
+    (gh#SRombauts/SQLiteCpp#548).
+  * Enforce LF line endings via .gitattributes and normalize
+    existing files (gh#SRombauts/SQLiteCpp#550).
+  * Add CI workflow code coverage (GCov + Coveralls)
+    (gh#SRombauts/SQLiteCpp#549).
+  * Improve unit test coverage of error and edge-case paths
+    (gh#SRombauts/SQLiteCpp#551).
+  * Fix unreliable 16-byte header check in
+    Database::isUnencrypted() (gh#SRombauts/SQLiteCpp#553).
+  * Guard null C pointers in Exception, Database, and Statement
+    against UB (gh#SRombauts/SQLiteCpp#552).
+  * Fix Column::operator<< to stream the exact column bytes
+    (gh#SRombauts/SQLiteCpp#556).
+  * Fix stale bindings leaking between execute_many() parameter
+    sets (gh#SRombauts/SQLiteCpp#554).
+  * Restore Coverity Scan static analysis as a GitHub Actions
+    workflow (gh#SRombauts/SQLiteCpp#557).
+  * Fix Database::getHeaderInfo() signed-shift UB and use
+    fixed-width Header types (gh#SRombauts/SQLiteCpp#558).
+  * Fix Savepoint destructor exception-safety and rollback
+    bookkeeping (gh#SRombauts/SQLiteCpp#559).
+  * Fix broken Meson build when SQLITECPP_DISABLE_STD_FILESYSTEM
+    is set (gh#SRombauts/SQLiteCpp#560).
+  * Range for loop for statements (gh#SRombauts/SQLiteCpp#545).
+  * Update SQLite from 3.53.2 to 3.53.3 (2026-06-26)
+    (gh#SRombauts/SQLiteCpp#561).
+  * Fix coverage regression for Statement::RowIterator
+    (gh#SRombauts/SQLiteCpp#562).
+  * Fix large std::string binding sizes
+    (gh#SRombauts/SQLiteCpp#563).
+  * Add 64-bit BLOB binding methods (gh#SRombauts/SQLiteCpp#564).
+  * Update bundled SQLite to 3.53.4 (gh#SRombauts/SQLiteCpp#566).
+  * Fix GCov linking for shared libraries
+    (gh#SRombauts/SQLiteCpp#567).
+  * Add sanitizer and cppcheck quality gates
+    (gh#SRombauts/SQLiteCpp#568).
+  * Add CodeQL security analysis (gh#SRombauts/SQLiteCpp#569).
+  * Fix gh#SRombauts/SQLiteCpp#533: accept binary database keys
+    (gh#SRombauts/SQLiteCpp#571).
+  * Add mixed C++ standard consumer tests
+    (gh#SRombauts/SQLiteCpp#574).
+  * Restore SQLite::Header ABI compatibility
+    (gh#SRombauts/SQLiteCpp#575).
+  * Restore SQLite::Savepoint ABI compatibility
+    (gh#SRombauts/SQLiteCpp#576).
+  * Update copyright years to 2026 (gh#SRombauts/SQLiteCpp#578).
+- Rebase 0001-Generate-pkgconfig-file-also-from-CMake-build.patch
+  for update.
+- Rebase 0001-Fix-required-C-version-for-CMake-builds.patch for
+  update.
+
+-------------------------------------------------------------------
 Fri Apr  3 22:30:04 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - Change build system from meson to CMake. Some dependent packages

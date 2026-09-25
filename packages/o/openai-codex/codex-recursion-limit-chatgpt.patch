@@ -1,0 +1,31 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Subject: [PATCH] Raise the recursion limit for codex-chatgpt
+
+rustc (1.98, aarch64) overflows its query-depth limit computing the
+layout of the list_connectors async state machine in this crate:
+
+  error: queries overflow the depth limit!
+   = help: consider increasing the recursion limit by adding a
+     `#![recursion_limit = "256"]` attribute to your crate
+     (`codex_chatgpt`)
+
+The code is unchanged since 0.155.1 which built fine, so this is a
+toolchain behavior change, not an upstream regression.  Upstream pins
+its own toolchain via rust-toolchain.toml (dropped in %prep), so this
+workaround stays downstream.
+---
+ codex-rs/chatgpt/src/lib.rs | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/codex-rs/chatgpt/src/lib.rs b/codex-rs/chatgpt/src/lib.rs
+index 12345678..9abcdef0 100644
+--- a/codex-rs/chatgpt/src/lib.rs
++++ b/codex-rs/chatgpt/src/lib.rs
+@@ -1,3 +1,7 @@
++// The list_connectors async state machine overflows rustc's query-depth
++// limit on some toolchains/arches; raise it per the compiler's suggestion.
++#![recursion_limit = "256"]
++
+ pub mod apply_command;
+ mod chatgpt_client;
+ pub mod connectors;

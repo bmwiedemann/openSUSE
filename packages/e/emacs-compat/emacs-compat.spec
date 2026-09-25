@@ -18,17 +18,16 @@
 
 
 %global _name    compat
-%bcond_with check
-
+%bcond_without check
 Name:           emacs-%{_name}
-Version:        31.0.0.2
+Version:        31.1.0.0
 Release:        0
 Summary:        COMPATibility Library for Emacs Lisp
 License:        GPL-3.0-or-later
-Group:          Productivity/Text/Editors
 URL:            https://github.com/emacs-compat/compat
 Source0:        %{_name}-%{version}.tar.gz
-BuildArch:      noarch
+# PATCH-FEATURE-UPSTREAM install targets PR 30
+Patch1:         0001-Add-install-target.patch
 BuildRequires:  emacs-devel
 BuildRequires:  emacs-nox
 BuildRequires:  info
@@ -36,12 +35,11 @@ BuildRequires:  make
 BuildRequires:  makeinfo
 Requires:       emacs
 Supplements:    emacs
+BuildArch:      noarch
 %if 0%{?suse_version} <= 1600
-Requires(post): %install_info_prereq
-Requires(preun): %install_info_prereq
+Requires(post): %{install_info_prereq}
+Requires(preun): %{install_info_prereq}
 %endif
-# PATCH-FEATURE-UPSTREAM install targets PR 30
-Patch1:         0001-Add-install-target.patch
 
 %description
 compat.el, the forwards-compatibility library for (GNU) Emacs Lisp, versions 24.4 and newer. The intended audience are package developers that are interested in using newer developments, without having to break compatibility.

@@ -18,7 +18,7 @@
 
 
 Name:           backhand
-Version:        0.25.3
+Version:        0.25.4
 Release:        0
 Summary:        Tools for the reading, creating, and modification of SquashFS file systems
 License:        Apache-2.0 OR MIT

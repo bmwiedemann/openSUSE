@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:05:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.69: roll the core/json/assets
+  dependencies forward (0.3.360, 0.1.95, 0.1.48, 0.1.5)
+
+-------------------------------------------------------------------
 Tue Sep 22 18:07:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.11.68:

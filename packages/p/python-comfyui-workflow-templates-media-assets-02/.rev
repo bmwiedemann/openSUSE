@@ -42,4 +42,12 @@ warnings, 0 badness; %check imports the module under both python3.13 and
 python3.14.</comment>
     <requestid>1379731</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>914bffe46a9d4eacc14736d6724b3540</srcmd5>
+    <version>0.1.5</version>
+    <time>1790283628</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.1.5: new template previews.</comment>
+    <requestid>1380163</requestid>
+  </revision>
 </revisionlist>

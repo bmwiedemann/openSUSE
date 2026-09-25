@@ -16,7 +16,7 @@
 #
 
 Name:           virtx
-Version:        0.1+gf3a7fda
+Version:        0.1+gaf1088e
 Release:        0
 Summary:        VirtX is a simple federation of KVM hosts based on libvirt and serf
 License:        GPL-2.0-only

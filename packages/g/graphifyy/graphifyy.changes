@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 09:43:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.9.67:
+  * Fix the PYTHONHASHSEED determinism pin to re-exec via
+    python -m graphify (repairs Windows console-script
+    re-launch)
+  * Extract PHP closures with semantic route names; absolute
+    Python imports resolve to local nodes
+
+-------------------------------------------------------------------
 Wed Sep 23 14:46:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - New package graphifyy 0.9.66, successor of the

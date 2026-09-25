@@ -299,4 +299,27 @@
 </comment>
     <requestid>1363119</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>98cc4357ba4496f6073562ff25288bb1</srcmd5>
+    <version>4.2.2</version>
+    <time>1790283566</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.2:
+  * Hardening and bug-fix release, no API or ABI changes
+  * get_totp_at, get_steam_totp_at and get_yaotp_at now reject
+    negative timestamps with INVALID_COUNTER
+  * validate_totp_in_window: overflow-checked window arithmetic and
+    explicit INT_MIN rejection
+  * otpauth/yaotp URIs: reject blank secrets and truncated
+    percent-escapes, an empty label issuer no longer shadows
+    issuer=, replaced secrets are securely zeroed, and the
+    track_id/uid cap is enforced in _build
+  * HMAC backends: NULL-handle guards and fix an OpenSSL MAC context
+    leak on re-key
+  * HOTP counter encoded as fixed 8-byte big-endian
+  * CMake/pkg-config: backend private libs propagated for static
+    consumers, -O3 only in Release builds
+</comment>
+    <requestid>1380122</requestid>
+  </revision>
 </revisionlist>

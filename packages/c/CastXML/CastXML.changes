@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 24 10:21:25 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
+
+- Update to version 0.8.0:
+  * Output: Add usings attribute for class-scope using
+    declarations.
+  * Update for LLVM 23.1 compatibility.
+- Drop CastXML-llvm-23-compat.patch: incorporated upstream.
+
+-------------------------------------------------------------------
 Wed Sep 16 14:09:37 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add CastXML-llvm-23-compat.patch for compatibility with

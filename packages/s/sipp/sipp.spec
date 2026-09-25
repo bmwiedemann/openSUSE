@@ -17,7 +17,7 @@
 
 
 Name:           sipp
-Version:        3.7.7
+Version:        3.7.8
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
@@ -41,7 +41,8 @@ dynamic adjustement of call-rate and a comprehensive set of real-time
 statistics.
 
 %prep
-%setup -q
+%autosetup
+sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|g' sipp-multi.py
 
 %build
 %cmake \
@@ -53,6 +54,7 @@ statistics.
 
 %install
 %cmake_install
+mv %{buildroot}/%{_bindir}/%{name}-multi.py %{buildroot}/%{_bindir}/%{name}-multi
 ## FIXME: manpage installation should be handled by cmake
 install -Dpm 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 
@@ -60,6 +62,7 @@ install -Dpm 0644 %{name}.1 %{buildroot}/%{_mandir}/man1/%{name}.1
 %license LICENSE.txt
 %doc CHANGES.md README.md THANKS
 %{_bindir}/%{name}
+%{_bindir}/%{name}-multi
 %{_mandir}/man1/sipp.1%{?ext_man}
 
 %changelog

@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 23 19:06:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.0 (includes 0.10.0):
+  * MCP server self-exits after idle timeout; omit
+    git:clean from find_files output
+  * Faster per-platform file walking and gitignore matcher;
+    follow_symlinks exposed for SDK/MCP/python paths
+  * Skip only the binary file instead of its whole bigram
+    chunk; enforce_time_budget for zero-match searches
+  * Parse file:line after Windows drive letters; compare
+    relative paths over 512 bytes; keep path shortening on
+    char boundaries; dotted numbers are not file filters
+  * Neovim: open all multi-selected files, winborder
+    override, multi-word preview highlight fix
+- Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Mon Sep 14 15:35:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package, version 0.9.4: libfff_c, the C ABI of the fff

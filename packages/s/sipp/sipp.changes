@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:57:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7.8
+  * Enable a mixture of server-mode and client-mode operation
+    simultaneously.
+  * Support for regexp matching on response codes.
+  * Support RFC3339 timestamp format and timezone offset.
+
+-------------------------------------------------------------------
 Sat Jan 10 11:40:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.7

@@ -11,11 +11,11 @@
     feature and leaves the lockfile, hence the vendored set, untouched.
     To regenerate:
 
-      tar xf codex-rust-v0.155.1.tar.gz
-      patch -p1 -d codex-rust-v0.155.1 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.155.1/codex-rs/vendor
+      tar xf codex-rust-v0.156.1.tar.gz
+      patch -p1 -d codex-rust-v0.156.1 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.156.1/codex-rs/vendor
       osc service manualrun cargo_vendor
-      rm -rf codex-rust-v0.155.1
+      rm -rf codex-rust-v0.156.1
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -31,15 +31,10 @@
 
     cargo-audit is NOT clean, and running it inside codex-rs hides most of it:
     upstream's codex-rs/.cargo/audit.toml ignores 11 advisories, which drops
-    the count from 6 to 2 on upstream's own lockfile, and from 5 to 1 on the
-    shipped one where rustls is already pulled forward.  Audit a bare copy of
-    Cargo.lock instead.  As of 0.155.1, the bare lock reports six; five
-    survive in the shipped tree because the sixth (rustls) is pulled forward
-    below:
-      RUSTSEC-2026-0185 / CVE-2026-25800 (quinn-proto 0.11.14, fixed
-        0.11.15) - NOT linked.  reqwest gates dep:quinn behind its "http3"
-        feature, which the workspace leaves off, so it never reaches
-        "cargo tree -p codex-cli -e normal,no-proc-macro".
+    the count from 4 to 1 on upstream's own lockfile.  Audit a bare copy of
+    Cargo.lock instead.  As of 0.156.1, the bare lock reports four (the
+    0.155.1 quinn-proto and rustls advisories are fixed upstream in
+    0.11.15 and 0.23.45):
       RUSTSEC-2026-0194, RUSTSEC-2026-0195 (quick-xml 0.39.4, DoS) - linked
         via codex-tui -> syntect -> plist.  Fixed in 0.41.0, which is
         semver-incompatible for plist, so update-crate cannot reach it.
@@ -47,28 +42,14 @@
         linked via codex-network-proxy -> rama-tcp -> rama-dns ->
         hickory-resolver.  0118 has no fixed release at all; 0119 needs
         0.26.1, semver-incompatible for hickory-resolver.
-    Only 0185 carries a CVE id; the other four are GHSA/RUSTSEC-only, so
-    there is no security-tracker exposure.  Re-run the bare-lockfile audit on
+    None of the four carries a CVE id (GHSA/RUSTSEC-only), so there is no
+    security-tracker exposure.  Re-run the bare-lockfile audit on
     each bump - the fix for the linked four is an upstream dependency bump,
     not anything this package can vendor around.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.155.1/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.156.1/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
-    <!--
-      rustls 0.23.36 is RUSTSEC-2026-0285 (GHSA-2mjx-qc3c-rqvc): TLS 1.3
-      handshake messages accepted across encryption level boundaries.  It is
-      linked (aws-smithy-http-client -> aws-config -> codex-aws-auth ->
-      codex-cli) and, unlike the four linked advisories above, its fix is
-      semver-compatible, so it can be pulled forward instead of waiting for
-      upstream.  It is NOT collateral-free: rustls 0.23.45 floors aws-lc-rs
-      at 1.18, so this also moves aws-lc-rs 1.16.2 -> 1.18.1, aws-lc-sys
-      0.39.0 -> 0.45.0 (bundled aws-lc 1.71.0 -> 5.7.0 - keep the spec's
-      Provides in step) and rustls-webpki 0.103.13 -> 0.103.15.  Four crates,
-      which is still not the wholesale re-resolution update=true would do.
-      Drop this line once upstream's lockfile carries 0.23.45 or newer.
-    -->
-    <param name="update-crate">rustls@0.23.45</param>
   </service>
 </services>

@@ -201,4 +201,12 @@ place: all 33 assets routed to media-assets-02 resolve and their sha256
 values match the manifest.</comment>
     <requestid>1379745</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>4f70d13bde290f192480134757001c12</srcmd5>
+    <version>0.3.360</version>
+    <time>1790283598</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.3.360: six new templates.</comment>
+    <requestid>1380159</requestid>
+  </revision>
 </revisionlist>

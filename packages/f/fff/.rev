@@ -9,4 +9,12 @@ INTERDEPENDENT REQUESTS - please stage together: bun-pty, photon-node (new), ope
 Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <requestid>1377977</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea4ec40cad3dabfe62b0f5c768c7feaa</srcmd5>
+    <version>0.11.0</version>
+    <time>1790283572</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.11.0 (includes 0.10.0): MCP idle-timeout, faster file walking, grep/query fixes. Supersedes declined 1380028 with a substantive changelog.</comment>
+    <requestid>1380131</requestid>
+  </revision>
 </revisionlist>

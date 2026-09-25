@@ -95,4 +95,18 @@
     <comment>1</comment>
     <requestid>1375392</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>61414cf5c5dd260e6e1b14ca1686598d</srcmd5>
+    <version>0.15.1</version>
+    <time>1790283611</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to aquamarine version 0.15.1:
+  * drm: don't terminate shared EGL displays in ~CDRMRenderer
+  * drm: reserve CRTCs used by redundant tiles
+  * session: fix libinput missing new events on resume
+  * drm: release output on disconnect manually
+  * renderer: fix version pragmas not being on the first line
+  * drm: fix UAF in frameIdle (forwarded request 1379036 from Giohk404)</comment>
+    <requestid>1380160</requestid>
+  </revision>
 </revisionlist>
