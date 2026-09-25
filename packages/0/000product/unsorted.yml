@@ -5159,6 +5159,7 @@ unsorted:
   - geoipupdate 
   - geoipupdate-legacy 
   - geolite2legacy 
+  - geome 
   - geos 
   - geos-devel 
   - geotiff 
@@ -7226,6 +7227,7 @@ unsorted:
   - git-who 
   - gitea-tea 
   - gitea-tea-bash-completion 
+  - gitea-tea-fish-completion 
   - gitea-tea-zsh-completion 
   - gitg 
   - gitg-lang 
@@ -8691,7 +8693,11 @@ unsorted:
   - himmelblau-sso 
   - hipblas-common-devel 
   - hipcc 
+  - hipcub-devel 
+  - hipfft-devel 
+  - hipfft-libs 
   - hipify 
+  - hiprand-devel 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -12691,7 +12697,6 @@ unsorted:
   - libc++abi-devel 
   - libc++abi1 
   - libc++utilities5 
-  - libc4core0_2_5 
   - libcaca-devel 
   - libcaca-ruby 
   - libcaca0-32bit 
@@ -13648,7 +13653,7 @@ unsorted:
   - libgamemode0-32bit 
   - libgamemodeauto0 
   - libgamemodeauto0-32bit 
-  - libgammaray-qt6-3_4_0 
+  - libgammaray-qt6-3_4_1 
   - libgap11 
   - libgarcon-branding-upstream 
   - libgarcon-devel 
@@ -14210,6 +14215,7 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhiprand1 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -16337,7 +16343,7 @@ unsorted:
   - librygel-renderer-gst-2_8-0 
   - librygel-ruih-2_8-0 
   - librygel-server-2_8-0 
-  - libryml0_8_0 
+  - libryml0_16 
   - libryokucha0 
   - libs2n1 
   - libs3-4 
@@ -17272,11 +17278,11 @@ unsorted:
   - libvted-3-0 
   - libvterm-devel 
   - libvterm-tools 
+  - libvtk-9_7-1 
+  - libvtk-9_7-1-openmpi4 
   - libvtk-m-2_3 
   - libvtk-m-mpich-2_3 
   - libvtk-m-openmpi4-2_3 
-  - libvtk1 
-  - libvtk1-openmpi4 
   - libvulkan1-32bit 
   - libvulkan_asahi 
   - libvulkan_dzn 
@@ -26232,8 +26238,6 @@ unsorted:
   - python313-gql 
   - python313-graphene 
   - python313-graphene-django 
-  - python313-graphifyy 
-  - python313-graphifyy-mcp 
   - python313-graphql-core 
   - python313-graphql-relay 
   - python313-graphviz 
@@ -30321,8 +30325,6 @@ unsorted:
   - python314-gql 
   - python314-graphene 
   - python314-graphene-django 
-  - python314-graphifyy 
-  - python314-graphifyy-mcp 
   - python314-graphql-core 
   - python314-graphql-relay 
   - python314-graphviz 
@@ -33860,8 +33862,10 @@ unsorted:
   - rocs 
   - rocs-devel 
   - rocs-lang 
+  - rocthrust-devel 
   - roctracer-devel 
   - roctracer-libs 
+  - rocwmma-devel 
   - rofi 
   - rofi-bluetooth 
   - rofi-calc 
@@ -34377,6 +34381,7 @@ unsorted:
   - rxp-devel 
   - rxtx-java 
   - rxtx-java-javadoc 
+  - rxvt-unicode 
   - rye 
   - rye-bash-completion 
   - rye-fish-completion 
@@ -34622,6 +34627,7 @@ unsorted:
   - seamonkey-irc 
   - seatd 
   - seatd-devel 
+  - seatd-systemd 
   - seccheck 
   - secret-tool 
   - secrets 
