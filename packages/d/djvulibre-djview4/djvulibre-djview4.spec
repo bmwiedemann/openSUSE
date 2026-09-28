@@ -1,7 +1,7 @@
 #
 # spec file for package djvulibre-djview4
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,25 +17,24 @@
 
 
 Name:           djvulibre-djview4
-Version:        4.12
+Version:        4.12.3
 Release:        0
 Summary:        Portable DjVu Qt4 Based Viewer and Browser Plugin
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Other
-URL:            http://djvu.sourceforge.net/djview4.html
+URL:            https://djvu.sourceforge.net/djview4.html
 Source:         https://downloads.sourceforge.net/djvu/djview-%{version}.tar.gz
 BuildRequires:  gcc-c++
+BuildRequires:  hicolor-icon-theme
 BuildRequires:  libjpeg-devel
 BuildRequires:  libqt5-linguist
-# Upstream does not supply a configure script; libtool needed to generated one (v 4.12)
 BuildRequires:  libtool
-BuildRequires:  pkg-config
+BuildRequires:  pkgconfig
 %if 0%{suse_version} >= 1550 || 0%{?sle_version} >= 150200
 BuildRequires:  rsvg-convert
 %else
 BuildRequires:  rsvg-view
 %endif
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(Qt5Gui)
 BuildRequires:  pkgconfig(Qt5Network)
 BuildRequires:  pkgconfig(Qt5OpenGL)
@@ -52,26 +51,27 @@ Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %endif
 Conflicts:      djvulibre-djview3
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
 %description
-DjView4 is a viewer and browser plugin for DjVu documents,based on the
-DjVuLibre-3.5 library and the Qt4 toolkit.
+DjView4 is a viewer and browser plugin for DjVu documents, based on the
+DjVuLibre library and the Qt toolkit.
 
 %prep
-%setup -q -n djview4-%{version}
-sed -i 's|PLUGINSDIR|%{_libdir}/browser-plugins|g' nsdejavu/nsdejavu.1.in 
+%autosetup -p1 -n djview-%{version}
+sed -i 's|PLUGINSDIR|%{_libdir}/browser-plugins|g' nsdejavu/nsdejavu.1.in
 
 %build
-export QMAKE=/usr/bin/qmake-qt5
+export QMAKE=%{_bindir}/qmake-qt5
 NOCONFIGURE=1 ./autogen.sh
-%configure
-make %{?_smp_mflags}
+%configure --disable-static
+%make_build
 
 %install
-make DESTDIR=%{buildroot} pluginsdir=%{_libdir}/browser-plugins install %{?_smp_mflags}
+%make_install pluginsdir=%{_libdir}/browser-plugins
+rm -f %{buildroot}%{_libdir}/browser-plugins/*.la
+install -m 0644 desktopfiles/djview.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/djvulibre-djview4.svg
+rm -f %{buildroot}%{_datadir}/icons/hicolor/scalable/mimetypes/djvulibre-djview4.svgz
 ln -s %{_bindir}/djview %{buildroot}%{_bindir}/djview4
-%suse_update_desktop_file -i djvulibre-djview4 Qt Graphics Viewer
 
 %if 0%{?suse_version} < 1550
 %post
@@ -82,16 +82,15 @@ ln -s %{_bindir}/djview %{buildroot}%{_bindir}/djview4
 %endif
 
 %files
-%defattr(-,root,root)
 %license COPYING COPYRIGHT
 %doc NEWS README README_translations
-%doc %{_mandir}/man1/*
+%{_mandir}/man1/*
 %{_bindir}/djview4
 %{_bindir}/djview
-%{_libdir}/browser-plugins
+%{_libdir}/browser-plugins/nsdejavu.so
+%dir %{_datadir}/djvu/
 %{_datadir}/djvu/djview4/
 %{_datadir}/applications/djvulibre-djview4.desktop
-%{_datadir}/icons/hicolor
-%dir %{_datadir}/djvu/
+%{_datadir}/icons/hicolor/*/mimetypes/djvulibre-djview4.*
 
 %changelog

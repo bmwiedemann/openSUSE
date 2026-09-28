@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 25 10:03:56 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
+
+- Update to version 4.12.3:
+  * Support for Qt 6 build environment.
+  * Left-aligned text annotations and improved linebreaks in text
+    annotations.
+  * Added Polish translation.
+  * Updated documentation and translation fixes.
+  * Build system fixes (qmake detection, autotools updates).
+  * Make tooltips opaque for readability.
+- Packaging improvements:
+  * Replace deprecated %suse_update_desktop_file with desktop-file-utils
+  * Uncompress scalable svg icon to fix rpmlint gzipped-svg-icon
+    warning.
+  * Remove libtool .la file from browser-plugins.
+  * Modernize spec with %autosetup, %make_build, %make_install, and
+    remove obsolete BuildRoot and %defattr.
+  * Fix icon and browser-plugins directory ownership in %files.
+
+-------------------------------------------------------------------
 Wed May  4 09:38:36 UTC 2022 - Marcus Meissner <meissner@suse.com>
 
 - update source url to https

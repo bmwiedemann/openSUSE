@@ -270,4 +270,27 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>976270</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>5849836b68ab0309d3293eb90b25f5fd</srcmd5>
+    <version>4.12.3</version>
+    <time>1790584939</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.12.3:
+  * Support for Qt 6 build environment.
+  * Left-aligned text annotations and improved linebreaks in text
+    annotations.
+  * Added Polish translation.
+  * Updated documentation and translation fixes.
+  * Build system fixes (qmake detection, autotools updates).
+  * Make tooltips opaque for readability.
+- Packaging improvements:
+  * Replace deprecated %suse_update_desktop_file with desktop-file-utils
+  * Uncompress scalable svg icon to fix rpmlint gzipped-svg-icon
+    warning.
+  * Remove libtool .la file from browser-plugins.
+  * Modernize spec with %autosetup, %make_build, %make_install, and
+    remove obsolete BuildRoot and %defattr.
+  * Fix icon and browser-plugins directory ownership in %files.</comment>
+    <requestid>1380661</requestid>
+  </revision>
 </revisionlist>
