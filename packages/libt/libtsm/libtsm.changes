@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:08:40 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Updaet to 4.8.0:
+  * vte: don't emit double escape for meta+arrow keys
+  * cursor blinking rate feature
+
+-------------------------------------------------------------------
 Fri Aug 21 08:11:15 UTC 2026 - Adam Mizerski <adam@mizerski.pl>
 
 - update to 4.7.1
