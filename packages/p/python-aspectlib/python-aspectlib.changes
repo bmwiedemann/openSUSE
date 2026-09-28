@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 01:09:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.1.patch:
+  * Use pathlib.Path parameters for pytest_ignore_collect().
+
+-------------------------------------------------------------------
 Thu Aug 17 11:43:21 UTC 2023 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests ignoring DeprecationWarning to make it work with

@@ -1,7 +1,7 @@
 #
 # spec file for package python-aspectlib
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,7 +16,6 @@
 #
 
 
-%bcond_without python2
 %{?sle15_python_module_pythons}
 Name:           python-aspectlib
 Version:        2.0.0
@@ -25,6 +24,8 @@ Summary:        Aspect-oriented programming
 License:        BSD-2-Clause
 URL:            https://github.com/ionelmc/python-aspectlib
 Source:         https://files.pythonhosted.org/packages/source/a/aspectlib/aspectlib-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#ionelmc/python-aspectlib#b85abdb0565d1598ce56bd49d49dc709d4e16081
+Patch0:         support-pytest-9.1.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -35,13 +36,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module fields}
 BuildRequires:  %{python_module process-tests}
 BuildRequires:  %{python_module pytest}
-%if %{with python2}
-BuildRequires:  python-mock
-BuildRequires:  python-trollius
-%endif
-%ifpython2
-Requires:       python-trollius
-%endif
 %python_subpackages
 
 %description
@@ -67,12 +61,12 @@ rm tests/test_integrations.py
 
 %check
 # ignore deprecation warnings because of signature of throw() is deprecated
-%pytest --ignore=src -W ignore::DeprecationWarning
+%pytest --ignore=src -W ignore::DeprecationWarning -vv
 
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS.rst CHANGELOG.rst README.rst
 %{python_sitelib}/aspectlib
-%{python_sitelib}/aspectlib-%{version}*-info
+%{python_sitelib}/aspectlib-%{version}.dist-info
 
 %changelog

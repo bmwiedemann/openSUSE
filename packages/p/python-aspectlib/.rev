@@ -88,4 +88,13 @@
     <comment></comment>
     <requestid>1104372</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>70488fe1bbb4e8734cdb1f094081c7af</srcmd5>
+    <version>2.0.0</version>
+    <time>1790584577</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-9.1.patch:
+  * Use pathlib.Path parameters for pytest_ignore_collect().</comment>
+    <requestid>1380055</requestid>
+  </revision>
 </revisionlist>
