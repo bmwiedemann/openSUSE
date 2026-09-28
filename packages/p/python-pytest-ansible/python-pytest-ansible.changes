@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 25 04:54:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 26.9.0:
+  * Fixes
+    - fix: raise cryptography and pymdown-extensions floors for
+      Guardian prod vulns (#618)
+  * Maintenance
+    - chore: Add SECURITY.md (#617)
+    - chore(deps): update all dependencies (#610, #613, #615, #619,
+      #620)
+    - chore(deps): bump mkdocs-material from 9.7.6 to 9.7.7 (#616)
+    - chore(deps): bump soupsieve from 2.8.4 to 2.9 (#622)
+  * What's Changed
+    - chore(deps): update all dependencies in #610
+    - chore(deps): update all dependencies in #613
+    - chore(deps): bump mkdocs-material from 9.7.6 to 9.7.7 in #616
+    - chore(deps): update all dependencies in #615
+    - chore: Add SECURITY.md in #617
+    - fix: raise cryptography and pymdown-extensions floors for
+      Guardian prod vulns in #618
+    - chore(deps): update all dependencies in #619
+    - chore(deps): update all dependencies in #620
+    - chore(deps): bump soupsieve from 2.8.4 to 2.9 in #622
+
+-------------------------------------------------------------------
 Sun Sep 20 11:13:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.8.0:
