@@ -17,7 +17,7 @@
 
 
 Name:           opam
-Version:        2.5.2
+Version:        2.6.0
 Release:        0
 Summary:        Source-based package manager for OCaml
 License:        LGPL-2.1-only WITH OCaml-LGPL-linking-exception
@@ -27,12 +27,14 @@ Source:         %name-%version.tar.xz
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
-BuildRequires:  ocaml(ocaml_base_version) >= 4.08
+BuildRequires:  ocaml(ocaml_base_version) >= 4.11
 BuildRequires:  ocaml-dune >= 2.8
 BuildRequires:  ocaml-rpm-macros >= 20231101
 BuildRequires:  ocamlfind(base64)
 BuildRequires:  ocamlfind(bigarray)
+BuildRequires:  ocamlfind(checkseum)
 BuildRequires:  ocamlfind(cudf)
+BuildRequires:  ocamlfind(decompress)
 BuildRequires:  ocamlfind(dose3)
 BuildRequires:  ocamlfind(findlib)
 BuildRequires:  ocamlfind(jsonm)
@@ -45,7 +47,7 @@ BuildRequires:  ocamlfind(re)
 BuildRequires:  ocamlfind(sha)
 BuildRequires:  ocamlfind(spdx_licenses)
 BuildRequires:  ocamlfind(swhid_core)
-BuildRequires:  ocamlfind(unix)
+BuildRequires:  ocamlfind(tar)
 BuildRequires:  ocamlfind(uutf)
 
 Requires:       %name-installer%{?_isa} = %version-%release

@@ -196,4 +196,12 @@
     <comment>Update to version 2.5.2 (CVE-2026-57825)</comment>
     <requestid>1365591</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>8fb7ca3107823d5369c1f6e26e368c0f</srcmd5>
+    <version>2.6.0</version>
+    <time>1790584913</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380350</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,13 @@
 -------------------------------------------------------------------
+Thu Sep 17 17:17:17 UTC 2026 - ohering@suse.de
+
+- Update to version 2.6.0
+  see included CHANGES file for details
+
+-------------------------------------------------------------------
 Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
 
-- Update to version 2.5.2 (CVE-2026-57825)
+- Update to version 2.5.2 (CVE-2026-57825 bsc#1279880)
   see included CHANGES file for details
 
 -------------------------------------------------------------------
