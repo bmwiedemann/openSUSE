@@ -1,4 +1,219 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:46:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.17.0:
+  * Added
+    - #5891: Added support for virtio device reset.
+    - #5983: Add two optional metrics fields, set via PUT /metrics
+      or a config file: emit_id emits the microVM instance id under
+      a top-level id field, and properties emits operator-defined
+      key-value pairs under a top-level properties field. Each is
+      opt-in and independent. See metrics documentation.
+    - #6003: Added a new option Transparent for the huge_pages
+      setting. If set, Firecracker will use transparent huge pages
+      for the guest memory via madvise(MADV_HUGEPAGE). Guest memory
+      must be a multiple of 2MB when using this option.
+    - #6013, #6017, #6021: Added official support for 6.18 microVM
+      guest kernels.
+    - #6037: Added support for booting bzImage guest kernels on
+      x86_64, in addition to the existing uncompressed ELF
+      (vmlinux) images. The kernel image format is detected
+      automatically, so no configuration change is required.
+    - #6064: Added the huge_pages field to PUT /snapshot/load,
+      allowing the restored microVM to reuse the snapshot's host
+      page configuration or select None, Transparent, or 2M.
+    - #6109: Added an optional sync_snapshot_files field to the PUT
+      /snapshot/create API, defaulting to true. It controls whether
+      the snapshot state and guest memory files are synced to disk
+      (fsync) before the request returns. Setting it to false
+      returns without waiting for the writeback, making snapshot
+      creation faster at the cost of durability across a host
+      crash; the data stays in the host page cache, so same-host
+      reads still see the full contents. Block device backing files
+      are always fsync'd regardless. See snapshot documentation.
+    - #6116: On aarch64, enable KVM_CAP_ARM_WRITABLE_IMP_ID_REGS
+      when the host kernel offers it (Linux 6.15 and later), adding
+      support for custom CPU templates that modify the
+      implementation ID registers (MIDR_EL1, REVIDR_EL1, AIDR_EL1).
+      Such templates previously failed at boot with Failed to set
+      register ... Invalid argument because KVM rejects the write
+      unless the capability is enabled on the VM.
+    - #6145: Added official support for AWS Graviton5
+      (m9g.metal-48xl) instances.
+    - #6098: Added new VIRTIO_BLK_F_BLK_SIZE and
+      VIRTIO_BLK_F_TOPOLOGY features to the virtio-block device.
+      More information is in the new block documentation.
+    - #6142: Add opt-in virtio-blk discard support for writable
+      Sync IO engine drives through the discard drive configuration
+      field. See the block discard documentation.
+  * Changed
+    - #6115: Changed the T2S CPU template to set the FB_CLEAR bit
+      of MSR_IA32_ARCH_CAPABILITIES to 1. This lets guest kernels
+      recognize that the VERW instruction clears fill buffers,
+      including on host kernels before v6.4 that cannot expose
+      FLUSH_L1D.
+    - #6172: Gate CLIRD_EL1 override to only happen on host kernels
+      equal or newer than 6.10 release. This aliviates the guest
+      performance regression seen on host kernels in range
+      [6.3..6.10) correlated to incorrect cpu cache topology
+      presented to the guest.
+  * Fixed
+    - #6100: Fixed the vsock device permanently suppressing RX
+      (host-to-guest) delivery after a bare pause/resume cycle
+      (PATCH /vm with Paused then Resumed, without a snapshot). The
+      resume kick armed the TRANSPORT_RESET RX gate even though no
+      reset event had been sent, so the guest could never
+      acknowledge it and every new host-initiated connection made
+      after the resume hung forever. The gate is now part of the
+      persisted device state and the resume kick respects it
+      instead of arming it.
+    - #6174: Fixed virtio-mem leaving unplugged memory writable by
+      the VMM, and potentially unmapped, on microVMs restored from
+      a snapshot memory file. Firecracker now maps each slot
+      straight to the protection it should have, with the
+      MAP_NORESERVE flag, and aborts if the re-map fails.
+    - #6174: Fixed virtio-mem discarding the whole hotpluggable
+      region on every UNPLUG_ALL request, even when nothing was
+      plugged. The discard is now skipped when the range has no
+      plugged blocks.
+    - #6176: Fixed virtio-mem leaving its block accounting
+      inconsistent with the KVM memory slots if a plug or unplug
+      request failed part way through. Firecracker now commits each
+      slot's state only after its KVM update succeeds, so a partial
+      failure leaves the block state and the KVM slots reflecting
+      exactly the slots that were updated.
+    - #5956: Fixed a TOCTOU race in the aarch64 jailer when setting
+      ownership of the CPU cache and MIDR_EL1 information files
+      copied into the chroot.
+    - #6076: Fixed memory hotplug sizes silently wrapping when
+      converted from MiB to bytes. requested_size_mib on PATCH
+      /hotplug/memory and total_size_mib, block_size_mib and
+      slot_size_mib on PUT /hotplug/memory are now bounded to 32
+      bits. Values above that previously wrapped to a smaller byte
+      count, so a large enough request was accepted as a 0-byte
+      region instead of being rejected.
+    - #6031, #6041, #6077: Fixed the vsock device re-arming its
+      host-stream EPOLLIN interest while received data was still
+      awaiting a guest RX buffer, which could busy-spin the event
+      thread until the guest posted buffers. The device now drains
+      the host stream fully across successive RX operations instead
+      of one packet per event loop iteration, reducing the
+      host-side CPU cost per gigabit of host-to-guest traffic by up
+      to ~50% and improving host-to-guest throughput by ~44%
+      (median) in most configurations. On single-vcpu microVMs on
+      the newest Intel hosts (m7i, m8i), host-to-guest throughput
+      may instead decrease by ~15% (median), where the single guest
+      vCPU rather than the host becomes the bottleneck. Terminating
+      a connection now also discards its TX buffer, so the device
+      stops advertising EPOLLOUT for a host stream it will never
+      write to again, which could otherwise busy-spin the event
+      thread indefinitely.
+    - #6086, #6143: Fixed a deadlock in the logger: a signal
+      handler that logs while the interrupted thread is already
+      logging would hang the VMM and its API socket. This is
+      reachable whenever a SIGPIPE is raised by Firecracker's own
+      log write, for example when logging to stdout and the reader
+      of that pipe exits. The logger now uses an RwLock, and
+      sigpipe_handler only increments the signals.sigpipe metric
+      instead of logging, so it no longer emits a Received signal
+      13, code 0. line.
+    - #6120: Fixed a bug caused by a KVM behavior change introduced
+      in Linux 6.13, which requires guest CPUID to be set before
+      userspace reads CPUID-dependent MSRs. On x86_64 with Linux
+      6.18 host kernels, Firecracker read the base values of those
+      MSRs before setting guest CPUID, so KVM returned zero for
+      such MSRs and CPU templates consequently used zero for bits
+      configured for passthrough. Firecracker now sets guest CPUID
+      before reading MSRs to be modified by CPU templates, so
+      passthrough bits retain their KVM-provided values and
+      features such as eIBRS remain exposed to the guest.
+
+-------------------------------------------------------------------
+Sun Sep 20 07:39:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.16.2:
+  * Changed
+    - #6172: Gate CLIRD_EL1 override to only happen on host kernels
+      equal or newer than 6.10 release. This aliviates the guest
+      performance regression seen on host kernels in range
+      [6.3..6.10) correlated to incorrect cpu cache topology
+      presented to the guest.
+    - #6100: Bumped the snapshot format version. Snapshots created
+      by this version cannot be loaded by 1.16.0 or 1.16.1, and
+      snapshots created by those versions cannot be loaded by this
+      one.
+  * Fixed
+    - #6100: Fixed the vsock device permanently suppressing RX
+      (host-to-guest) delivery after a bare pause/resume cycle
+      (PATCH /vm with Paused then Resumed, without a snapshot). The
+      resume kick armed the TRANSPORT_RESET RX gate even though no
+      reset event had been sent, so the guest could never
+      acknowledge it and every new host-initiated connection made
+      after the resume hung forever. The gate is now part of the
+      persisted device state and the resume kick respects it
+      instead of arming it.
+    - #6174: Fixed virtio-mem leaving unplugged memory writable by
+      the VMM, and potentially unmapped, on microVMs restored from
+      a snapshot memory file. Firecracker now maps each slot
+      straight to the protection it should have, with the
+      MAP_NORESERVE flag, and aborts if the re-map fails.
+    - #6174: Fixed virtio-mem discarding the whole hotpluggable
+      region on every UNPLUG_ALL request, even when nothing was
+      plugged. The discard is now skipped when the range has no
+      plugged blocks.
+    - #6176: Fixed virtio-mem leaving its block accounting
+      inconsistent with the KVM memory slots if a plug or unplug
+      request failed part way through. Firecracker now commits each
+      slot's state only after its KVM update succeeds, so a partial
+      failure leaves the block state and the KVM slots reflecting
+      exactly the slots that were updated.
+    - #5956: Fixed a TOCTOU race in the aarch64 jailer when setting
+      ownership of the CPU cache and MIDR_EL1 information files
+      copied into the chroot.
+    - #6076: Fixed memory hotplug sizes silently wrapping when
+      converted from MiB to bytes. requested_size_mib on PATCH
+      /hotplug/memory and total_size_mib, block_size_mib and
+      slot_size_mib on PUT /hotplug/memory are now bounded to 32
+      bits. Values above that previously wrapped to a smaller byte
+      count, so a large enough request was accepted as a 0-byte
+      region instead of being rejected.
+    - #6031, #6041, #6077: Fixed the vsock device re-arming its
+      host-stream EPOLLIN interest while received data was still
+      awaiting a guest RX buffer, which could busy-spin the event
+      thread until the guest posted buffers. The device now drains
+      the host stream fully across successive RX operations instead
+      of one packet per event loop iteration, reducing the
+      host-side CPU cost per gigabit of host-to-guest traffic by up
+      to ~50% and improving host-to-guest throughput by ~44%
+      (median) in most configurations. On single-vcpu microVMs on
+      the newest Intel hosts (m7i, m8i), host-to-guest throughput
+      may instead decrease by ~15% (median), where the single guest
+      vCPU rather than the host becomes the bottleneck. Terminating
+      a connection now also discards its TX buffer, so the device
+      stops advertising EPOLLOUT for a host stream it will never
+      write to again, which could otherwise busy-spin the event
+      thread indefinitely.
+    - #6086, #6143: Fixed a deadlock in the logger: a signal
+      handler that logs while the interrupted thread is already
+      logging would hang the VMM and its API socket. This is
+      reachable whenever a SIGPIPE is raised by Firecracker's own
+      log write, for example when logging to stdout and the reader
+      of that pipe exits. The logger now uses an RwLock, and
+      sigpipe_handler only increments the signals.sigpipe metric
+      instead of logging, so it no longer emits a Received signal
+      13, code 0. line.
+    - #6120: Fixed a bug caused by a KVM behavior change introduced
+      in Linux 6.13, which requires guest CPUID to be set before
+      userspace reads CPUID-dependent MSRs. On x86_64 with Linux
+      6.18 host kernels, Firecracker read the base values of those
+      MSRs before setting guest CPUID, so KVM returned zero for
+      such MSRs and CPU templates consequently used zero for bits
+      configured for passthrough. Firecracker now sets guest CPUID
+      before reading MSRs to be modified by CPU templates, so
+      passthrough bits retain their KVM-provided values and
+      features such as eIBRS remain exposed to the guest.
+
+-------------------------------------------------------------------
 Fri Jul 03 10:35:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.16.1:
