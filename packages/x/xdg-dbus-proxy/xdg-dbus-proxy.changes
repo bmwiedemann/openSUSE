@@ -1,8 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 23 19:28:11 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.1.9:
+  + Fix message filtering bypass vulnerabilities (CVE-2026-94422,
+    GHSA-2cgv-pwcq-wvpq):
+    - Don't allow method calls and signals to be treated as
+      requested replies, even if they specify a reply serial number
+    - Only allow replies that were sent to the appropriate
+      destination
+  + Improve automated tests to include attempts to exploit
+    CVE-2026-94422
+
+-------------------------------------------------------------------
 Thu Aug 20 08:25:27 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 0.1.8:
   + Fix broadcast messages bypassing path/interface/member checks
+    (CVE-2026-93676, GHSA-r7hp-698j-2h6c)
   + Improvements to the existing testing infrastructure
   + Add tests for owning names, issuing method calls, receiving
     messages
@@ -21,7 +35,7 @@ Fri Apr 17 07:07:56 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
   + Prevent a crash on disconnect
   + Fix building with glibc >= 2.43
   + Fix the eavesdrop filtering to prevent message interception
-  + Fix CVE-2026-34080
+    (CVE-2026-34080, GHSA-vjp5-hjfm-7677)
 
 -------------------------------------------------------------------
 Wed Dec 11 15:26:02 UTC 2024 - Bjørn Lie <bjorn.lie@gmail.com>
