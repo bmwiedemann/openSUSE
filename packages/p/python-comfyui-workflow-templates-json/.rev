@@ -181,4 +181,24 @@ manifest's 582 entries exactly.</comment>
     <comment>Update to 0.1.95: new API templates.</comment>
     <requestid>1380162</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>41a2ad3c123257c12c9c8357cf96a3c5</srcmd5>
+    <version>0.1.96</version>
+    <time>1790585183</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-json to 0.1.96.
+
+594 template definitions, was 588: the same six new templates and two
+typo-corrected renames that core 0.3.361 carries. 204 templates gain
+Hugging Face and ModelScope repository links in their model-links note,
+a &quot;Cluade&quot; typo is fixed in the Claude Fable/Opus/Sonnet 5 templates,
+five graphs are re-saved, and the picker index (11 locales), the MCP
+index and the logo list are refreshed.
+
+Tarball verified against the PyPI sdist digest. Green on all devel
+targets including openSUSE:Factory:ARM aarch64. No Bugzilla report
+references the package and no CVE appears in the crossed range.
+</comment>
+    <requestid>1380836</requestid>
+  </revision>
 </revisionlist>

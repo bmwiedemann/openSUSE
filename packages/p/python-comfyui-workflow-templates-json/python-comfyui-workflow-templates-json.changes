@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 26 18:53:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.96: 594 template definitions (was 588)
+  * New: ByteDance Seedream 5.0 Flash t2i and image edit, Kling
+    O3 t2v, Runway Gen-4 Turbo image to video, Seedance 2.5 Draft
+    i2v, r2v and t2v, and Ming Image 01 Design t2i
+  * api_king_o3_t2v and api_runway_gen4_turo_image_to_video are
+    replaced by their typo-corrected names api_kling_o3_t2v and
+    api_runway_gen4_turbo_image_to_video
+  * 204 templates now also link the model's Hugging Face and
+    ModelScope repository pages in their model links note
+  * The Claude Fable, Opus and Sonnet 5 templates lose a "Cluade"
+    typo in a node label, five more graphs are re-saved, and the
+    picker index with its 11 locale variants, the MCP index and the
+    logo list are refreshed; the Recraft logo is now
+    logo/recraft.png, the misspelled logo/recarft.png is dropped
+
+-------------------------------------------------------------------
 Thu Sep 24 11:05:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.95: new API templates (Claude Opus
