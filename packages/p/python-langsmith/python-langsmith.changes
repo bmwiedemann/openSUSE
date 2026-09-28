@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 26 19:59:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.1:
+  * list_runs() and list_threads() select s3_urls again, so
+    run.attachments is not empty since the backend began honouring
+    select; read_run(load_child_runs=True) inherits the fix
+  * OpenTelemetry export sets gen_ai.tool.call.id on tool spans
+    from the run's extra, not only metadata, and
+    gen_ai.tool.definitions on llm spans from the run's tool schemas
+  * ClaudeSDKClient is traced per receive_messages() response
+    rather than per receive_response(): a ResultMessage ends the run,
+    the run covers the wait for the first message, and application
+    code no longer inherits the response's trace
+  * Sandboxes can verify the LangSmith user token and signed proxy
+    callbacks on service URLs, via the new SandboxTokenVerifier;
+    needs the sandbox-auth extra (pyjwt)
+  * Deselect test_langchain_tool_attributes_reach_otel_spans, which
+    imports langchain-core with no importorskip
+
+-------------------------------------------------------------------
 Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.0:

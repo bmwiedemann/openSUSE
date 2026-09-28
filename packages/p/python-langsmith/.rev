@@ -398,4 +398,48 @@ Built and checked locally on aarch64: 692 tests pass, rpmlint 0 errors,
 0 warnings, 0 badness.</comment>
     <requestid>1379743</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>61abed7d05ec20d9f0aecec2662b55d8</srcmd5>
+    <version>0.14.1</version>
+    <time>1790585188</time>
+    <user>anag_factory</user>
+    <comment>Update python-langsmith to 0.14.1.
+
+- list_runs() and list_threads() select s3_urls again, so run.attachments
+  is populated; it had been coming back empty since the backend began
+  honouring select. read_run(load_child_runs=True) inherits the fix.
+- The OpenTelemetry exporter sets gen_ai.tool.call.id on tool spans (from
+  the run's extra, with metadata as fallback) and
+  gen_ai.tool.definitions on llm spans.
+- ClaudeSDKClient.receive_messages() is now instrumented: one completed
+  claude.conversation run per response, a ResultMessage ends the run,
+  and application code no longer inherits the response's trace.
+- New SandboxTokenVerifier verifies the LangSmith user token and signed
+  proxy callbacks on sandbox service URLs. It needs the new sandbox-auth
+  extra (PyJWT[crypto]), which is not pulled in - consistent with every
+  other extra in this spec.
+
+Packaging: no dependency changes. The sdist's Requires-Dist base set is
+identical to 0.14.0 and requires-python is unchanged at &quot;&gt;= 3.10&quot;, so
+every existing floor still matches upstream exactly.
+langsmith-python314-iscoroutinefunction.patch is still needed and
+applies unchanged. The new langsmith/sandbox/_verify.py falls under the
+existing %{python_sitelib}/langsmith glob, so %files is unchanged.
+
+One %check deselect was added: the new
+test_langchain_tool_attributes_reach_otel_spans imports langchain_core
+inside the test body with no importorskip, and langchain-core cannot be
+a BuildRequires because it depends on langsmith.
+
+Native aarch64 build green on both flavours, 697 passed / 10 deselected
+/ 1 xfailed each, rpmlint 0 errors / 0 warnings.
+
+The three open VUL-0s (boo#1262017, JS SDK only; boo#1262699, fixed
+upstream in 0.7.31; boo#1266666, fixed in 0.8.0) are all fixed well
+below this version and are already recorded with that evidence in the
+2026-07-14 changelog entry, so they are not re-cited. No CVE in the
+crossed range.
+</comment>
+    <requestid>1380839</requestid>
+  </revision>
 </revisionlist>
