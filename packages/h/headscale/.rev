@@ -279,4 +279,12 @@
     logged at startup with the fix command #3349 (forwarded request 1368376 from darix)</comment>
     <requestid>1368424</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cc675de3942503a795609d3c4431ce1d</srcmd5>
+    <version>0.29.4</version>
+    <time>1790594661</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.29.4: (forwarded request 1380046 from darix)</comment>
+    <requestid>1381119</requestid>
+  </revision>
 </revisionlist>
