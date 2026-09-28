@@ -168,4 +168,12 @@
     <comment>Update to 0.17.0 (forwarded request 1373719 from simotek_worker)</comment>
     <requestid>1374201</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>85323245680c1ced34dd27310b6545e9</srcmd5>
+    <version>0.18.0</version>
+    <time>1790585004</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.18.0</comment>
+    <requestid>1380684</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package rabbitmq-c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2012-2015 Remi Collet
 #
 # All modifications and additions to the file contributed by third parties
@@ -20,7 +20,7 @@
 %global libname     librabbitmq
 %global majsonum    4
 Name:           rabbitmq-c
-Version:        0.17.0
+Version:        0.18.0
 Release:        0
 Summary:        Client library for AMQP
 License:        MIT
@@ -28,7 +28,7 @@ URL:            https://github.com/alanxz/rabbitmq-c
 Source0:        https://github.com/alanxz/rabbitmq-c/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # [bsc#1232541], https://github.com/alanxz/rabbitmq-c/issues/846
 Patch0:         rabbitmq-c-default-cacert-location.patch
-BuildRequires:  cmake > 2.8.12
+BuildRequires:  cmake >= 3.22
 BuildRequires:  gcc
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
