@@ -1,0 +1,41 @@
+Source: libpff
+Priority: optional
+Section: libs
+Maintainer: openSUSE <opensuse@opensuse.xz>
+Standards-Version: 4.5.0
+Build-Depends: debhelper-compat (= 12)
+
+Package: libpff1
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: Library and tools to access Microsoft PFF/OFF/PST/OST/PAB files
+ libpff is a library to access the Personal Folder File (PFF) and the
+ Offline Folder File (OFF) format. These are used in several file
+ Types: PAB (Personal Address Book), PST (Personal Storage Table) and
+ OST (Offline Storage Table).
+ 
+Package: libpff-dev
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libpff1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Development files for libpff
+ libpff is a library to access the Personal Folder File (PFF) and the
+ Offline Folder File (OFF) format. These are used in several file
+ Types: PAB (Personal Address Book), PST (Personal Storage Table) and
+ OST (Offline Storage Table).
+ .
+ This subpackage contains libraries and header files for developing
+ applications that want to make use of libpff.
+
+Package: libpff-tools
+Section: libdevel
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: libpff1 (= ${binary:Version}), ${shlibs:Depends}, ${misc:Depends}
+Description: Tools to access Microsoft PST and OST files
+ Tools to access the Personal Folder File (PFF) and the Offline Folder
+ File (OFF) format. These are used in several file types: PAB
+ (Personal Address Book), PST (Personal Storage Table) and OST
+ (Offline Storage Table).

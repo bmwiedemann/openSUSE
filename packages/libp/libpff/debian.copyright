@@ -1,0 +1,11 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Source: https://github.com/libyal/libpff
+Upstream-Name: libpff
+Upstream-Contact: Joachim Metz <joachim.metz@gmail.com>
+
+Files: *
+License: LGPL-3 or later, GPL-3 or later
+Copyright: (C) 2008-2023, Joachim Metz <joachim.metz@gmail.com>
+
+License: Licenses can be found in /usr/share/common-licenses
+
