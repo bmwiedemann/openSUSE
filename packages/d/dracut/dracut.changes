@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 06:24:31 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.53.g97cbf62:
+  * fix(fips): use BOOT_IMAGE_NAME instead of BOOT_IMAGE in path check
+
+-------------------------------------------------------------------
 Thu Sep 10 06:39:44 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.51.gf078a84:
