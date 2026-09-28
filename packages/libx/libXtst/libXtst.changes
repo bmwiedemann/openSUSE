@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 23 19:55:28 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-boo1281665_CVE-2026-94286_parse_reply_call_callback-check-element-size-against.patch
+  * Out-of-bounds read in libXtst's RECORD reply parser
+    (boo#1281665, CVE-2026-94286)
+
+-------------------------------------------------------------------
 Fri Aug  2 08:48:22 UTC 2024 - Stefan Dirsch <sndirsch@suse.com>
 
 - Update to version 1.2.5

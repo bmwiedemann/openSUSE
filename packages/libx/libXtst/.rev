@@ -114,4 +114,14 @@
   * This release fixes issues found by Coverity &amp; gcc -fanalyzer</comment>
     <requestid>1191125</requestid>
   </revision>
+  <revision rev="14" vrev="2">
+    <srcmd5>a1aaa8f97085b7888e3d3e9b0392427a</srcmd5>
+    <version>1.2.5</version>
+    <time>1790584498</time>
+    <user>anag_factory</user>
+    <comment>- 0001-boo1281665_CVE-2026-94286_parse_reply_call_callback-check-element-size-against.patch
+  * Out-of-bounds read in libXtst's RECORD reply parser
+    (boo#1281665, CVE-2026-94286)</comment>
+    <requestid>1380034</requestid>
+  </revision>
 </revisionlist>
