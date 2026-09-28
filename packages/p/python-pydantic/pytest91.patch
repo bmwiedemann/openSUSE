@@ -1,0 +1,403 @@
+From f257d0155c6643fbda9516af6b2c4ca082ed7651 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Mon, 29 Jun 2026 07:53:22 +0100
+Subject: [PATCH] Fix test failures with pytest >= 9.1.0 (#13357)
+
+---
+ .../tests/benchmarks/test_micro_benchmarks.py | 51 ++++++++++++-------
+ .../benchmarks/test_serialization_micro.py    |  9 ++--
+ pydantic-core/tests/test_docstrings.py        |  4 +-
+ pydantic-core/tests/validators/test_union.py  | 14 ++---
+ tests/test_deprecated_fields.py               | 33 ++++++++----
+ tests/test_docs.py                            |  6 +--
+ tests/test_utils.py                           |  4 +-
+ tests/test_validators.py                      |  2 +-
+ uv.lock                                       |  6 +--
+ 9 files changed, 82 insertions(+), 47 deletions(-)
+
+diff --git a/pydantic-core/tests/benchmarks/test_micro_benchmarks.py b/pydantic-core/tests/benchmarks/test_micro_benchmarks.py
+index 65efdce7cfc..b7123445c6d 100644
+--- a/pydantic-core/tests/benchmarks/test_micro_benchmarks.py
++++ b/pydantic-core/tests/benchmarks/test_micro_benchmarks.py
+@@ -39,7 +39,8 @@
+ 
+ class TestBenchmarkSimpleModel:
+     @pytest.fixture(scope='class')
+-    def core_validator_fs(self):
++    @classmethod
++    def core_validator_fs(cls):
+         class CoreModel:
+             __slots__ = '__dict__', '__pydantic_fields_set__', '__pydantic_extra__', '__pydantic_private__'
+ 
+@@ -81,7 +82,8 @@ def test_core_json_fs(self, core_validator_fs, benchmark):
+ 
+ class TestModelLarge:
+     @pytest.fixture(scope='class')
+-    def core_model_validator(self):
++    @classmethod
++    def core_model_validator(cls):
+         class CoreModel:
+             __slots__ = '__dict__', '__pydantic_fields_set__', '__pydantic_extra__', '__pydantic_private__'
+ 
+@@ -567,7 +569,8 @@ def test_bytes_core(benchmark):
+ 
+ class TestBenchmarkDateTime:
+     @pytest.fixture(scope='class')
+-    def core_validator(self):
++    @classmethod
++    def core_validator(cls):
+         class CoreModel:
+             __slots__ = '__dict__', '__pydantic_fields_set__', '__pydantic_extra__', '__pydantic_private__'
+ 
+@@ -581,19 +584,23 @@ class CoreModel:
+         )
+ 
+     @pytest.fixture(scope='class')
+-    def datetime_raw(self):
++    @classmethod
++    def datetime_raw(cls):
+         return datetime.now(timezone.utc) + timedelta(days=1)
+ 
+     @pytest.fixture(scope='class')
+-    def datetime_str(self, datetime_raw):
++    @classmethod
++    def datetime_str(cls, datetime_raw):
+         return str(datetime_raw)
+ 
+     @pytest.fixture(scope='class')
+-    def python_data_dict(self, datetime_raw):
++    @classmethod
++    def python_data_dict(cls, datetime_raw):
+         return {'dt': datetime_raw}
+ 
+     @pytest.fixture(scope='class')
+-    def json_dict_data(self, datetime_str):
++    @classmethod
++    def json_dict_data(cls, datetime_str):
+         return json.dumps({'dt': datetime_str})
+ 
+     @pytest.mark.benchmark(group='datetime model - python')
+@@ -631,7 +638,8 @@ def test_core_future_str(self, benchmark, datetime_str):
+ 
+ class TestBenchmarkDateX:
+     @pytest.fixture(scope='class')
+-    def validator(self):
++    @classmethod
++    def validator(cls):
+         return SchemaValidator(core_schema.date_schema())
+ 
+     @pytest.mark.benchmark(group='date from date')
+@@ -712,7 +720,8 @@ def validate_with_expected_error():
+ 
+ class TestBenchmarkUUID:
+     @pytest.fixture(scope='class')
+-    def core_validator(self):
++    @classmethod
++    def core_validator(cls):
+         class CoreModel:
+             __slots__ = '__dict__', '__pydantic_fields_set__', '__pydantic_extra__', '__pydantic_private__'
+ 
+@@ -726,11 +735,13 @@ class CoreModel:
+         )
+ 
+     @pytest.fixture(scope='class')
+-    def validator(self):
++    @classmethod
++    def validator(cls):
+         return SchemaValidator(core_schema.uuid_schema())
+ 
+     @pytest.fixture(scope='class')
+-    def pydantic_validator(self):
++    @classmethod
++    def pydantic_validator(cls):
+         def to_UUID(v: Any) -> UUID:
+             if isinstance(v, UUID):
+                 return v
+@@ -780,19 +791,23 @@ def test_uuid_from_uuid_pyd(self, benchmark, pydantic_validator):
+         benchmark(pydantic_validator.validate_python, UUID('12345678-1234-5678-1234-567812345678'))
+ 
+     @pytest.fixture(scope='class')
+-    def uuid_raw(self):
++    @classmethod
++    def uuid_raw(cls):
+         return UUID('12345678-1234-5678-1234-567812345678')
+ 
+     @pytest.fixture(scope='class')
+-    def uuid_str(self, uuid_raw):
++    @classmethod
++    def uuid_str(cls, uuid_raw):
+         return str(uuid_raw)
+ 
+     @pytest.fixture(scope='class')
+-    def python_data_dict(self, uuid_raw):
++    @classmethod
++    def python_data_dict(cls, uuid_raw):
+         return {'u': uuid_raw}
+ 
+     @pytest.fixture(scope='class')
+-    def json_dict_data(self, uuid_str):
++    @classmethod
++    def json_dict_data(cls, uuid_str):
+         return json.dumps({'u': uuid_str})
+ 
+     @pytest.mark.benchmark(group='uuid model - python')
+@@ -1361,11 +1376,13 @@ def f(v: int, info: core_schema.ValidationInfo) -> int:
+ 
+ class TestBenchmarkDecimal:
+     @pytest.fixture(scope='class')
+-    def validator(self):
++    @classmethod
++    def validator(cls):
+         return SchemaValidator(core_schema.decimal_schema())
+ 
+     @pytest.fixture(scope='class')
+-    def pydantic_validator(self):
++    @classmethod
++    def pydantic_validator(cls):
+         Decimal = decimal.Decimal
+ 
+         def to_decimal(v: str) -> decimal.Decimal:
+diff --git a/pydantic-core/tests/benchmarks/test_serialization_micro.py b/pydantic-core/tests/benchmarks/test_serialization_micro.py
+index a7c7a54ef5f..6712d0a5e7e 100644
+--- a/pydantic-core/tests/benchmarks/test_serialization_micro.py
++++ b/pydantic-core/tests/benchmarks/test_serialization_micro.py
+@@ -10,7 +10,8 @@
+ 
+ class TestBenchmarkSimpleModel:
+     @pytest.fixture(scope='class')
+-    def core_schema(self):
++    @classmethod
++    def core_schema(cls):
+         class CoreModel:
+             __slots__ = '__dict__', '__pydantic_fields_set__', '__pydantic_extra__', '__pydantic_private__'
+ 
+@@ -32,11 +33,13 @@ class CoreModel:
+         }
+ 
+     @pytest.fixture(scope='class')
+-    def core_validator(self, core_schema):
++    @classmethod
++    def core_validator(cls, core_schema):
+         return SchemaValidator(core_schema)
+ 
+     @pytest.fixture(scope='class')
+-    def core_serializer(self, core_schema):
++    @classmethod
++    def core_serializer(cls, core_schema):
+         return SchemaSerializer(core_schema)
+ 
+     data = {'name': 'John', 'age': 42, 'friends': list(range(200)), 'settings': {f'v_{i}': i / 2.0 for i in range(50)}}
+diff --git a/pydantic-core/tests/test_docstrings.py b/pydantic-core/tests/test_docstrings.py
+index bfde27c3d0a..d8057432d1f 100644
+--- a/pydantic-core/tests/test_docstrings.py
++++ b/pydantic-core/tests/test_docstrings.py
+@@ -18,7 +18,7 @@ def find_examples(*args, **kwargs):
+ 
+ @pytest.mark.skipif(CodeExample is None or sys.platform not in {'linux', 'darwin'}, reason='Only on linux and macos')
+ @pytest.mark.parametrize(
+-    'example', find_examples(str(PYDANTIC_CORE_DIR / 'python/pydantic_core/core_schema.py')), ids=str
++    'example', list(find_examples(str(PYDANTIC_CORE_DIR / 'python/pydantic_core/core_schema.py'))), ids=str
+ )
+ @pytest.mark.thread_unsafe  # TODO investigate why pytest_examples seems to be thread unsafe here
+ def test_docstrings(example: CodeExample, eval_example: EvalExample):
+@@ -33,7 +33,7 @@ def test_docstrings(example: CodeExample, eval_example: EvalExample):
+ 
+ 
+ @pytest.mark.skipif(CodeExample is None or sys.platform not in {'linux', 'darwin'}, reason='Only on linux and macos')
+-@pytest.mark.parametrize('example', find_examples(str(PYDANTIC_CORE_DIR / 'README.md')), ids=str)
++@pytest.mark.parametrize('example', list(find_examples(str(PYDANTIC_CORE_DIR / 'README.md'))), ids=str)
+ @pytest.mark.thread_unsafe  # TODO investigate why pytest_examples seems to be thread unsafe here
+ def test_readme(example: CodeExample, eval_example: EvalExample):
+     eval_example.set_config(line_length=100, quotes='single')
+diff --git a/pydantic-core/tests/validators/test_union.py b/pydantic-core/tests/validators/test_union.py
+index 8169c91535c..268e5a40b56 100644
+--- a/pydantic-core/tests/validators/test_union.py
++++ b/pydantic-core/tests/validators/test_union.py
+@@ -61,12 +61,13 @@ class ModelB:
+         pass
+ 
+     @pytest.fixture(scope='class')
+-    def schema_validator(self) -> SchemaValidator:
++    @classmethod
++    def schema_validator(cls) -> SchemaValidator:
+         return SchemaValidator(
+             schema=core_schema.union_schema(
+                 choices=[
+                     core_schema.model_schema(
+-                        cls=self.ModelA,
++                        cls=cls.ModelA,
+                         schema=core_schema.model_fields_schema(
+                             fields={
+                                 'a': core_schema.model_field(schema=core_schema.int_schema()),
+@@ -75,7 +76,7 @@ def schema_validator(self) -> SchemaValidator:
+                         ),
+                     ),
+                     core_schema.model_schema(
+-                        cls=self.ModelB,
++                        cls=cls.ModelB,
+                         schema=core_schema.model_fields_schema(
+                             fields={
+                                 'c': core_schema.model_field(schema=core_schema.int_schema()),
+@@ -124,12 +125,13 @@ class ModelB:
+         pass
+ 
+     @pytest.fixture(scope='class')
+-    def schema_validator(self) -> SchemaValidator:
++    @classmethod
++    def schema_validator(cls) -> SchemaValidator:
+         return SchemaValidator(
+             schema=core_schema.union_schema(
+                 choices=[
+                     core_schema.model_schema(
+-                        cls=self.ModelA,
++                        cls=cls.ModelA,
+                         schema=core_schema.model_fields_schema(
+                             fields={
+                                 'a': core_schema.model_field(schema=core_schema.int_schema()),
+@@ -138,7 +140,7 @@ def schema_validator(self) -> SchemaValidator:
+                         ),
+                     ),
+                     core_schema.model_schema(
+-                        cls=self.ModelB,
++                        cls=cls.ModelB,
+                         schema=core_schema.model_fields_schema(
+                             fields={
+                                 'a': core_schema.model_field(schema=core_schema.int_schema()),
+diff --git a/tests/test_deprecated_fields.py b/tests/test_deprecated_fields.py
+index b17f037ede2..a677a8301bc 100644
+--- a/tests/test_deprecated_fields.py
++++ b/tests/test_deprecated_fields.py
+@@ -25,7 +25,8 @@ class Model(BaseModel):
+ 
+     instance = Model(a=1, b=1, c=1)
+ 
+-    pytest.warns(DeprecationWarning, lambda: instance.a, match='^$')
++    with pytest.warns(DeprecationWarning, match='^$'):
++        instance.a
+ 
+     with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
+         b = instance.b
+@@ -52,9 +53,12 @@ class Model(BaseModel):
+ 
+     instance = Model(a=1)
+ 
+-    pytest.warns(DeprecationWarning, lambda: instance.a, match='^$')
+-    pytest.warns(DeprecationWarning, lambda: instance.b, match='^This is deprecated$')
+-    pytest.warns(DeprecationWarning, lambda: instance.c, match='^This is deprecated$')
++    with pytest.warns(DeprecationWarning, match='^$'):
++        instance.a
++    with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
++        instance.b
++    with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
++        instance.c
+ 
+ 
+ def test_deprecated_fields_field_validator():
+@@ -147,10 +151,17 @@ def p5(self) -> int:
+ 
+     instance = Model()
+ 
+-    pytest.warns(DeprecationWarning, lambda: instance.p1, match='^This is deprecated$')
+-    pytest.warns(DeprecationWarning, lambda: instance.p2, match='^This is deprecated$')
+-    pytest.warns(DeprecationWarning, lambda: instance.p4, match='^This is deprecated$')
+-    pytest.warns(DeprecationWarning, lambda: instance.p5, match='^This is deprecated$')
++    with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
++        instance.p1
++    # TODO: This should be match='^This is deprecated$' instead, but the
++    # overriding mechanism has apparently never worked:
++    # https://github.com/pydantic/pydantic/issues/13356
++    with pytest.warns(DeprecationWarning, match=r'^This is deprecated \(this message is overridden\)$'):
++        instance.p2
++    with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
++        instance.p4
++    with pytest.warns(DeprecationWarning, match='^This is deprecated$'):
++        instance.p5
+ 
+     with pytest.warns(DeprecationWarning, match='^$'):
+         p3 = instance.p3
+@@ -219,7 +230,8 @@ class Model(BaseModel):
+ 
+     instance = Model(a=1, b=1)
+ 
+-    pytest.warns(DeprecationWarning, lambda: instance.a, match='deprecated')
++    with pytest.warns(DeprecationWarning, match='deprecated'):
++        instance.a
+ 
+ 
+ def test_computed_field_deprecated_class_access() -> None:
+@@ -257,7 +269,8 @@ class Model(BaseModel):
+ 
+     m = Model()
+ 
+-    pytest.warns(DeprecationWarning, lambda: m.a, match='test')
++    with pytest.warns(DeprecationWarning, match='test'):
++        m.a
+ 
+ 
+ def test_deprecated_field_with_assignment() -> None:
+diff --git a/tests/test_docs.py b/tests/test_docs.py
+index 314dc8db6e0..ac988769c27 100644
+--- a/tests/test_docs.py
++++ b/tests/test_docs.py
+@@ -171,7 +171,7 @@ def run_example(example: CodeExample, eval_example: EvalExample, mocker: Any) ->
+ @pytest.mark.thread_unsafe
+ @pytest.mark.filterwarnings('ignore:(parse_obj_as|schema_json_of|schema_of) is deprecated.*:DeprecationWarning')
+ @pytest.mark.skipif(bool(skip_reason), reason=skip_reason or 'not skipping')
+-@pytest.mark.parametrize('example', find_examples(str(SOURCES_ROOT), skip=sys.platform == 'win32'), ids=str)
++@pytest.mark.parametrize('example', list(find_examples(str(SOURCES_ROOT), skip=sys.platform == 'win32')), ids=str)
+ def test_docstrings_examples(example: CodeExample, eval_example: EvalExample, tmp_path: Path, mocker):
+     if str(example.path).startswith(str(SOURCES_ROOT / 'v1')):
+         pytest.skip('skip v1 examples')
+@@ -195,7 +195,7 @@ def set_cwd():
+ @pytest.mark.thread_unsafe
+ @pytest.mark.filterwarnings('ignore:(parse_obj_as|schema_json_of|schema_of) is deprecated.*:DeprecationWarning')
+ @pytest.mark.skipif(bool(skip_reason), reason=skip_reason or 'not skipping')
+-@pytest.mark.parametrize('example', find_examples(str(DOCS_ROOT), skip=sys.platform == 'win32'), ids=str)
++@pytest.mark.parametrize('example', list(find_examples(str(DOCS_ROOT), skip=sys.platform == 'win32')), ids=str)
+ def test_docs_examples(example: CodeExample, eval_example: EvalExample, tmp_path: Path, mocker):
+     global INDEX_MAIN
+     if example.path.name == 'index.md':
+@@ -215,7 +215,7 @@ def test_docs_examples(example: CodeExample, eval_example: EvalExample, tmp_path
+ @pytest.mark.skipif(bool(skip_reason), reason=skip_reason or 'not skipping')
+ @pytest.mark.skipif(sys.version_info >= (3, 13), reason='python-devtools does not yet support python 3.13')
+ @pytest.mark.parametrize(
+-    'example', find_examples(str(DOCS_ROOT / 'integrations/devtools.md'), skip=sys.platform == 'win32'), ids=str
++    'example', list(find_examples(str(DOCS_ROOT / 'integrations/devtools.md'), skip=sys.platform == 'win32')), ids=str
+ )
+ def test_docs_devtools_example(example: CodeExample, eval_example: EvalExample, tmp_path: Path):
+     from ansi2html import Ansi2HTMLConverter
+diff --git a/tests/test_utils.py b/tests/test_utils.py
+index f0b0b71d9e1..3b8f2afefa1 100644
+--- a/tests/test_utils.py
++++ b/tests/test_utils.py
+@@ -368,7 +368,7 @@ def test_smart_deepcopy_immutable_non_sequence(obj, mocker):
+     assert smart_deepcopy(obj) is deepcopy(obj) is obj
+ 
+ 
+-@pytest.mark.parametrize('empty_collection', (collection() for collection in BUILTIN_COLLECTIONS))
++@pytest.mark.parametrize('empty_collection', [collection() for collection in BUILTIN_COLLECTIONS])
+ def test_smart_deepcopy_empty_collection(empty_collection, mocker):
+     mocker.patch('pydantic._internal._utils.deepcopy', side_effect=RuntimeError)  # make sure deepcopy is not used
+     if not isinstance(empty_collection, (tuple, frozenset)):  # empty tuple or frozenset are always the same object
+@@ -377,7 +377,7 @@ def test_smart_deepcopy_empty_collection(empty_collection, mocker):
+ 
+ @pytest.mark.thread_unsafe(reason='Monkeypatching')
+ @pytest.mark.parametrize(
+-    'collection', (c.fromkeys((1,)) if issubclass(c, dict) else c((1,)) for c in BUILTIN_COLLECTIONS)
++    'collection', [c.fromkeys((1,)) if issubclass(c, dict) else c((1,)) for c in BUILTIN_COLLECTIONS]
+ )
+ def test_smart_deepcopy_collection(collection, mocker):
+     expected_value = object()
+diff --git a/tests/test_validators.py b/tests/test_validators.py
+index aaff88cf9ed..4c53b64cfd3 100644
+--- a/tests/test_validators.py
++++ b/tests/test_validators.py
+@@ -1600,7 +1600,7 @@ class Model(BaseModel):
+     assert dict(Model(x=1, y=1)) == {'x': 2, 'y': 2}
+ 
+ 
+-@pytest.mark.parametrize('validator_classmethod,root_validator_classmethod', product(*[[True, False]] * 2))
++@pytest.mark.parametrize('validator_classmethod,root_validator_classmethod', list(product(*[[True, False]] * 2)))
+ def test_root_validator_classmethod(validator_classmethod, root_validator_classmethod):
+     root_val_values = []
+ 

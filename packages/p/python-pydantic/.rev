@@ -728,4 +728,12 @@
   * Count validated model fields once in smart unions by @tamird</comment>
     <requestid>1374900</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>e105e29f6c4e976fb2786aa794d59f0c</srcmd5>
+    <version>2.13.5</version>
+    <time>1790584525</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream pytest91.patch to fix tests with pytest 9.1</comment>
+    <requestid>1379937</requestid>
+  </revision>
 </revisionlist>
