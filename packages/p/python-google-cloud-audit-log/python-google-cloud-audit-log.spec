@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-audit-log
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Google Cloud Audit Protos
 License:        Apache-2.0
