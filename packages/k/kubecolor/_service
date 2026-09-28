@@ -1,10 +1,10 @@
 <services>
   <service mode="manual" name="obs_scm">
-    <param name="url">https://github.com/kubecolor/kubecolor</param>
+    <param name="url">https://github.com/kubecolor/kubecolor.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v0.7.1</param>
-    <param name="match-tag">v0.7.1</param>
+    <param name="revision">refs/tags/v0.8.0</param>
+    <param name="match-tag">v0.8.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="changesgenerate">enable</param>
     <param name="versionrewrite-pattern">v(.*)</param>

@@ -17,7 +17,7 @@
 
 
 Name:           kubecolor
-Version:        0.7.1
+Version:        0.8.0
 Release:        0
 Summary:        Colorize your kubectl output
 License:        MIT

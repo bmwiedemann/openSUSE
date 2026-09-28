@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/kubecolor/kubecolor</param>
-              <param name="changesrevision">fd9e6f787f15c20e4864926334855931512ca407</param></service></servicedata>
+              <param name="changesrevision">fd9e6f787f15c20e4864926334855931512ca407</param></service><service name="tar_scm">
+                <param name="url">https://github.com/kubecolor/kubecolor.git</param>
+              <param name="changesrevision">342330236d3620d0a84fcce1462a8a7108cd56a0</param></service></servicedata>

@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 20 07:31:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.8.0:
+  * Features
+    - Provide automatic themes that switch light and dark
+      automatically in #363
+    - kubecolor is now able to automatically detect if it should
+      use dark or light theme.
+    - New theme presets:
+      - auto: resolves to light or dark
+      - protanopia: resolves to protanopia-light or protanopia-dark
+      - deuteranopia: resolves to deuteranopia-light or
+        deuteranopia-dark
+      - tritanopia: resolves to tritanopia-light or tritanopia-dark
+    - If kubecolor is unable to read your terminal emulator's
+      background color, then any "auto" preset will fall back to
+      their "dark" variant.
+    - This also changes the default preset (YAML) /
+      --kubecolor-theme (flag) / KUBECOLOR_PRESET (env var) config
+      from dark to auto.
+  * Dependencies
+    - Bump k8s.io/apimachinery from 0.36.3 to 0.36.4 in #362
+    - Bump the github-actions group with 2 updates in #365
+    - Bump k8s.io/apimachinery from 0.36.4 to 0.37.0 in #364
+
+-------------------------------------------------------------------
 Fri Aug 28 06:09:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.7.1:
