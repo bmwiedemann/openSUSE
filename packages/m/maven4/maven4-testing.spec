@@ -18,9 +18,9 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-rc-6
+%global file_version 4.0.0-rc-7
 Name:           %{base_name}%{?maven_version_suffix}-testing
-Version:        4.0.0~rc6
+Version:        4.0.0~rc7
 Release:        0
 Summary:        Maven Plugin Testing Mechanism
 # maven itself is ASL 2.0
@@ -34,7 +34,6 @@ Source2:        mvn.1
 Source10:       apache-%{base_name}-build.tar.xz
 Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0003-Upgrade-to-maven-resolver-2.0.22.patch
 BuildRequires:  ant
 BuildRequires:  apiguardian
 BuildRequires:  fdupes
@@ -76,9 +75,9 @@ BuildArch:      noarch
 
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
+%pom_xpath_set pom:project/pom:properties/pom:securityDispatcherVersion 4
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom

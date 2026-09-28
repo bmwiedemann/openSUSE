@@ -18,11 +18,11 @@
 
 %global maven_version_suffix 4
 %global base_name maven
-%global file_version 4.0.0-rc-6
+%global file_version 4.0.0-rc-7
 %global homedir %{_datadir}/%{base_name}%{?maven_version_suffix}
 %global confdir %{_sysconfdir}/%{base_name}%{?maven_version_suffix}
 Name:           %{base_name}%{?maven_version_suffix}
-Version:        4.0.0~rc6
+Version:        4.0.0~rc7
 Release:        0
 Summary:        Java project management and project comprehension tool
 # maven itself is ASL 2.0
@@ -37,7 +37,6 @@ Source10:       apache-%{base_name}-build.tar.xz
 Source100:      pom_properties.py
 Patch1:         0001-Adapt-mvn-script.patch
 Patch2:         0002-Invoke-logback-via-reflection.patch
-Patch3:         0003-Upgrade-to-maven-resolver-2.0.22.patch
 Patch10:        jline-3.30.x.patch
 BuildRequires:  ant
 BuildRequires:  aopalliance
@@ -192,12 +191,12 @@ BuildArch:      noarch
 
 %patch -P 1 -p1
 %patch -P 2 -p1
-%patch -P 3 -p1
 %if %{?pkg_vcmp:%pkg_vcmp jline3-terminal < 4.1}%{!?pkg_vcmp:0}
 %patch -P 10 -p1
 %endif
 
 %pom_xpath_set pom:project/pom:properties/pom:plexusXmlVersion 4
+%pom_xpath_set pom:project/pom:properties/pom:securityDispatcherVersion 4
 
 %pom_remove_dep -r :junit-bom
 %pom_remove_dep -r :mockito-bom

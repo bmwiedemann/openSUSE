@@ -1,50 +1,74 @@
-From 4752681f4facc61a76b1cf0f542abf3de2dd401e Mon Sep 17 00:00:00 2001
-From: Fridrich Strba <fridrich.strba@bluewin.ch>
-Date: Tue, 21 Jul 2026 08:40:10 +0200
-Subject: [PATCH] Build with jline < 4.1
-
----
- .../src/main/java/org/apache/maven/jline/FastTerminal.java  | 6 ------
- pom.xml                                                     | 2 +-
- 2 files changed, 1 insertion(+), 7 deletions(-)
-
 diff --git a/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java b/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
-index 996a7d71eb..0506278684 100644
+index fca0c75818..2f00aeef0a 100644
 --- a/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
 +++ b/impl/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
-@@ -34,7 +34,6 @@
+@@ -35,7 +35,6 @@
  import org.jline.terminal.Cursor;
  import org.jline.terminal.MouseEvent;
  import org.jline.terminal.Size;
 -import org.jline.terminal.Sized;
  import org.jline.terminal.Terminal;
+ import org.jline.terminal.impl.DumbTerminal;
  import org.jline.terminal.spi.SystemStream;
- import org.jline.terminal.spi.TerminalExt;
-@@ -171,11 +170,6 @@ public void setSize(Size size) {
-         getTerminal().setSize(size);
+@@ -261,18 +260,13 @@ public void setSize(Size size) {
      }
  
--    @Override
+     @Override
 -    public void setSize(Sized sized) {
 -        getTerminal().setSize(sized);
++    public int getWidth() {
++        return getTerminal().getWidth();
+     }
+ 
+     @Override
+-    public int getColumns() {
+-        return getTerminal().getColumns();
 -    }
 -
+-    @Override
+-    public int getRows() {
+-        return getTerminal().getRows();
++    public int getHeight() {
++        return getTerminal().getHeight();
+     }
+ 
      @Override
-     public int getWidth() {
-         return getTerminal().getWidth();
+diff --git a/impl/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java b/impl/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java
+index a04a54eb4b..8f4800c813 100644
+--- a/impl/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java
++++ b/impl/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java
+@@ -119,7 +119,7 @@ public static boolean isColorEnabled() {
+     }
+ 
+     public static int getTerminalWidth() {
+-        return terminal != null ? terminal.getColumns() : -1;
++        return terminal != null ? terminal.getWidth() : -1;
+     }
+ 
+     public static MessageBuilder builder() {
+diff --git a/impl/maven-jline/src/test/java/org/apache/maven/jline/FastTerminalReentrancyTest.java b/impl/maven-jline/src/test/java/org/apache/maven/jline/FastTerminalReentrancyTest.java
+index f67f547f40..99bc3cf392 100644
+--- a/impl/maven-jline/src/test/java/org/apache/maven/jline/FastTerminalReentrancyTest.java
++++ b/impl/maven-jline/src/test/java/org/apache/maven/jline/FastTerminalReentrancyTest.java
+@@ -45,7 +45,7 @@
+  * builder callable, and the consumer that runs before the terminal is published.
+  * <p>
+  * JLine 4.4.0's FFM provider initialization ({@code CLibrary.<clinit>}) can reach back through
+- * other terminal methods (e.g. {@code getName()}, {@code getColumns()}, {@code encoding()}) on the
++ * other terminal methods (e.g. {@code getName()}, {@code getWidth()}, {@code encoding()}) on the
+  * build thread, so the fallback must cover all delegate methods, not just {@code writer()} and
+  * {@code getType()}.
+  * <p>
 diff --git a/pom.xml b/pom.xml
-index a9e08b8a89..a602a04217 100644
+index 0ddcf1f465..99194235b0 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -154,7 +154,7 @@ under the License.
      <hamcrestVersion>3.0</hamcrestVersion>
      <jakartaInjectApiVersion>2.0.1</jakartaInjectApiVersion>
      <javaxAnnotationApiVersion>1.3.2</javaxAnnotationApiVersion>
--    <jlineVersion>4.3.1</jlineVersion>
-+    <jlineVersion>3.30.16</jlineVersion>
+-    <jlineVersion>4.4.5</jlineVersion>
++    <jlineVersion>3.30.17</jlineVersion>
      <jmhVersion>1.37</jmhVersion>
      <junitVersion>5.13.4</junitVersion>
      <jxpathVersion>1.4.0</jxpathVersion>
--- 
-2.55.0
-

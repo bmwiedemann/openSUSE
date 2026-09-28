@@ -119,4 +119,12 @@
     <comment>Fix build with maven-resolver 2.0.22</comment>
     <requestid>1373815</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f4d5d75aa9a537ba0d3ff79db3962ab9</srcmd5>
+    <version>4.0.0~rc7</version>
+    <time>1790584728</time>
+    <user>anag_factory</user>
+    <comment>4.0.0-rc-7 (rebuild xmvn5 when this enters)</comment>
+    <requestid>1380276</requestid>
+  </revision>
 </revisionlist>
