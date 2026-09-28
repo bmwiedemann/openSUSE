@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:17:35 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 2.0.15
+  * fix inline asm for crc32 computation
+  * fix edge cases in hash picker
+  * fix shutdown issue with SSL torrents
+  * fix bug in hash-picker timeout
+  * fix DNS leak of i2p udp tracker hostnames
+  * fix DNS leak of hostnamed peers from trackers
+  * extend proxy_hostnames to HTTP proxies for web seeds
+  * fix ip_filter/ssrf_mitigation false positives on proxied web
+    seeds
+
+-------------------------------------------------------------------
 Thu Aug 13 04:45:14 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 2.0.14
