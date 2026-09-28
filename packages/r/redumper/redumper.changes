@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 25 20:18:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 752
+  * Support BU50N in flash_mt1959 (#436).
+  * Find root directory on UDF 2.50 (#430).
+  * Fix bad Sector order for ASUS SDRW-08D2S-U LG GP75N-based hardware.
+  * Force omnidrive flag (#443).
+  * Fix UDF trimming for BD-R dumps (#437).
+  * Add PlayStation disc profiles (#444).
+  * SCSI transfer fix (#447).
+  * BDXL channel lengths (#446).
+  * Mont detection fix.
+
+-------------------------------------------------------------------
 Wed Sep  2 11:53:18 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 746
