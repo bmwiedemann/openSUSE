@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:47:13 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.9.11
+  * Switching to SPDXv3 on purpose, since this well become a legal
+    requirement. We may introduce a config option to switch to v2
+    back if needed.
+
+-------------------------------------------------------------------
+Mon Jul  6 08:35:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.9.10
+  * Implement mechanic to specify supportstatus override file name
+    (default sticks to supportstatus.txt)
+    This can also be used to disable the override.
+  * python license field adjusment
+
+-------------------------------------------------------------------
+Thu Jun 18 10:33:20 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- update to version 0.9.9
+  * fix crash when using discard_artifacts with single files
+
+-------------------------------------------------------------------
 Wed Jun 17 12:23:22 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - update to version 0.9.8

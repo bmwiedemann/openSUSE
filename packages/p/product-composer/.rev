@@ -665,4 +665,24 @@
   * Support/fix checksums configurations per flavor</comment>
     <requestid>1360027</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>d8c47d6f4f6e86bdfb30ab96a14bd1b7</srcmd5>
+    <version>0.9.11</version>
+    <time>1790584510</time>
+    <user>anag_factory</user>
+    <comment>- update to version 0.9.11
+  * Switching to SPDXv3 on purpose, since this well become a legal
+    requirement. We may introduce a config option to switch to v2
+    back if needed.
+
+- update to version 0.9.10
+  * Implement mechanic to specify supportstatus override file name
+    (default sticks to supportstatus.txt)
+    This can also be used to disable the override.
+  * python license field adjusment
+
+- update to version 0.9.9
+  * fix crash when using discard_artifacts with single files</comment>
+    <requestid>1380119</requestid>
+  </revision>
 </revisionlist>
