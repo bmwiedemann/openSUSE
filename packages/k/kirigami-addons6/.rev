@@ -119,4 +119,12 @@
     <comment>Update to 1.13.0</comment>
     <requestid>1366599</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>01761cdb87b3938319084d8154041928</srcmd5>
+    <version>1.14.0</version>
+    <time>1790584607</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380259</requestid>
+  </revision>
 </revisionlist>
