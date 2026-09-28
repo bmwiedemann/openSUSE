@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Sat Sep 26 13:41:57 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.20.0:
+  * Features
+    + QML Language Support (#810) by @mward25
+  * Bug Fixes
+    + (mgf_dev) Restore proper logging, add verbosity control
+      (#821) by @wetneb
+    + Name the file in the structured merge timeout warning
+      (#828) by @robvenn
+  * Performance
+    + Compile tree-sitter queries once per parse (#839) by @HALtheWise
+  * Testing
+    + Utilities to benchmark mergiraf on large corpora (#537)
+      by @wetneb
+  * Miscellaneous Tasks
+    + Restore build.rs to refresh test binary if test data changed
+      (#822) by @wetneb
+    + Update NodeJS in CI (#834) by @wetneb
+  * New Contributors
+    + @HALtheWise made their first contribution in #839
+    + @mward25 made their first contribution in #810
+    + @robvenn made their first contribution in #828
+
+-------------------------------------------------------------------
 Tue Sep 01 10:38:15 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
 
 - Update to version 0.19.1:
