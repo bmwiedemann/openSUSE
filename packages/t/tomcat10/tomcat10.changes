@@ -1,4 +1,164 @@
 -------------------------------------------------------------------
+Fri Sep 25 12:08:14 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
+
+- Update to Tomcat 10.1.60
+  * Fixed CVEs:
+    + CVE-2026-87022: Improper handling of length parameter allows WebSocket
+      message smuggling when per-message-deflate is used. (bsc#1282581)
+    + CVE-2026-86350: Inconsistent interpretation of HTTP/2 requests caused by
+      a regression in fix for CVE-2026-41293 can trigger request header mix-
+      up.
+    + CVE-2026-86248: CLIENT_CERT authentication does not fail as expected for
+      some scenarios when OCSP soft fail is disabled. (bsc#1282620)
+    + CVE-2026-79677: Due to a concurrency bug, an attacker could trigger a
+      denial of service as a result of lost time outs for asynchronous
+      WebSocket writes. (bsc#1282624)
+    + CVE-2026-78437: A malformed HTTP/2 request could potentially (depends on
+      timing) cause one request from another user to fail. (bsc#1282625)
+    + CVE-2026-78383: If the end user did not provide a request body, that
+      could pin an AJP processing thread leading to denial of service.
+      (bsc#1282626)
+    + CVE-2026-77791: A busy wait during sending of WebSocket close message
+      enabled a DoS attack. (bsc#1282627)
+    + CVE-2026-77762: A race condition allowed an attacker to inject trailer
+      fields into another HTTP/2 request. (bsc#1282599)
+    + CVE-2026-77756: Processing the transfer-encoding header for an HTTP/1.0
+      request may allow an attacker to cause one request from another user to
+      fail when Tomcat is located behind a reverse proxy. (bsc#1282628)
+    + CVE-2026-76183: Request paths were incorrectly parsed as endpoint
+      templates allowing the bypass of security constraints for WebSocket
+      endpoints. (bsc#1282629)
+    + CVE-2026-75973: When Jakarta Authentication was configured with
+      SimpleAuthConfigProvider as the default provider and multiple web
+      application used that provider, the realm for the first web application
+      to authenticate a request would be used for all web applications.
+      (bsc#1282630)
+    + CVE-2026-73581: Both the OpenSSL and OpenSSL-FFM TLS implementations
+      ignored CRLs when certificate used a keystore. (bsc#1282631)
+  * Catalina
+    + Fix: When a PersistentManager needs to reduce the number of active
+      sessions, swap out the least recently used eligible sessions first. Pull
+      request #1045 provided by sainadh777. (markt)
+    + Fix: Align web.xml logging output with the new Context attribute
+      urlPatternsProvidedInDecodedForm. (markt)
+    + Fix: Improve robustness of DIGEST authentication to system clock jumps.
+      (markt)
+    + Add: Support multiple protocol header values (treat as a single merged
+      header value) in the RemoteIpFilter and RemoteIpValve. (markt)
+    + Fix: potential concurrency issues when loading/saving sessions from/to a
+      session store. Custom Store implementations that do not extend StoreBase
+      must implement the new getSessionStoreLock() method of the Store
+      interface to ensure concurrency protection. The default method
+      implementation provided only provides the pre-fix functionality. (markt)
+    + Fix: Ensure that PersistentManager implementations that extend
+      PersistentManagerBase do not swap out sessions that are associated with
+      a request that is currently being processed. This includes not swapping
+      out a session unless the session was created when activity tracking was
+      enabled. (markt)
+    + Fix: Ensure namespace attributes are XML escaped in WebDAV responses.
+      (markt)
+    + Fix: Resolve null or missing rewrite substitutions as an empty string,
+      to align with the mod_rewrite behavior. (remm)
+    + Add: a best efforts protection in the CrawlerSessionManagerValve against
+      crawlers being associated with an authenticated session. (markt)
+    + Fix: Clarify the meaning of various RewriteValve server variables and
+      explicitly use the canonical context path for the CONTEXT_PATH server
+      variable. (markt)
+    + Fix: storeconfig not saving the path when a context is saved in
+      server.xml. (remm)
+    + Fix: WAR URLConnection should propagate use of caching. (remm)
+    + Fix: Ensure resources are evicted from the static resource cache in the
+      correct order. (markt)
+    + Fix: When Jakarta Authentication is configured for a web application,
+      cache the ServerAuthConfig in the Authenticator valve. This ensures web
+      application specific settings are cached on a per web application basis.
+      (markt)
+    + Fix: 70203: Fix RegistrationListener notifications in Jakarta
+      Authentication implementation. (markt)
+    + Fix: Handle CGI scripts that write excessively to stdout after setting
+      an HTTP error status code. (schultz)
+    + Fix: Require the request to the login action during FORM authentication
+      to be made using HTTP POST. (markt)
+    + Fix: 70208: Make URL encoding more robust. Based on pull request #1065
+      by Chenjp. (markt)
+  * Coyote
+    + Fix: xreflection generated code stack overflow issue. (remm)
+    + Fix: Align xreflection better with IntrospectionUtils. (remm)
+    + Fix: In HTTP/2 after half closed (remote), any unexpected frame should
+      be a stream error. (remm)
+    + Fix: incorrect initial window size calculation when upgrading to HTTP/2.
+      (remm)
+    + Fix: Avoid HTTP/2 exceptions with invalid content-length values. (remm)
+    + Fix: Only try and load the native library from the CATALINA_HOME system
+      property when the property is set. (markt)
+    + Fix: max connections enforcement after an enpoint resume. (remm)
+    + Fix: Implement stricter ALPN matching for Connectors using FFM. (markt)
+    + Add: length validation for ALPN protocol names. (markt)
+    + Fix: Make FFM certificate verification more robust. (markt)
+    + Fix: Align FFM OCSP URL parsing with Tomcat Native and treat a parsing
+      failure as if no usable OCSP URLs were present. (markt)
+    + Fix: Make the processing of OCSP responses more robust. (markt)
+    + Fix: Stricter OCSP handling when soft-fail is disabled. (markt)
+    + Fix: Cleaner handling of AJP response headers which overflow the maximum
+      message size. (remm)
+    + Fix: Small per performance optimisation. Don't waste cycles swallowing
+      an AJP response body when the connection is going to be closed. (markt)
+    + Fix: OpenSSL support for CRLs when using OpenSSL trust with the server
+      key held in a Java key store. (markt)
+    + Fix: Reject HTTP/1.0 or earlier requests that send a transfer-encoding
+      header. (markt)
+    + Fix: Ensure per request HTTP/2 bad request marker is cleared when the
+      request is recycled. (markt)
+    + Fix: Additional clean-up after HTTP/2 stream reset to aid GC. (markt)
+    + Fix: Revert earlier refactoring of HTTP/2 header field validation that
+      moved it earlier since the refactoring made correct handling of invalid
+      headers more difficult. (markt)
+  * Jasper
+    + Fix: EL evaluation of some lambda expressions. (remm)
+  * WebSocket
+    + Fix: an exception when an automatic Pong response races with the closing
+      of the WebSocket session. (moritzfl)
+    + Fix: Harden the WebSocket client and use a SecureRandom when generating
+      the Sec-WebSocket-Key header. (markt)
+    + Fix: Improve robustness of client handshakes. (remm)
+    + Fix: Ensure that WebSocket write timeouts apply to the complete message
+      and are not lost if two writes have the same timeout. (markt)
+    + Fix: Reduce CPU usage while sending WebSocket close message. (markt)
+    + Fix: overly broad check that prevented request URIs containing literal {
+      and } characters from being mapped to WebSocket end points. (markt)
+    + Fix: handling of WebSocket messages with compressed payloads using per-
+      message-deflate that have one or more non-final blocks where the BFINAL
+      bit is set. (markt)
+    + Fix: handling of per-message-deflate context takeover when receiving
+      compressed WebSocket messages. (markt)
+  * Web applications
+    + Fix: Manager: Fix a potential concurrency issue when ordering sessions
+      prior to displaying a list of session. (markt)
+    + Docs: Wrap the RewriteRule regular expression syntax reference on narrow
+      displays. Pull request #1044 by sainadh777. (markt)
+  * Other
+    + Update: Easymock to 5.7.0. (markt)
+    + Update: bnd to 7.4.0. (markt)
+    + Update: Tomcat Native to 2.0.16. (markt)
+    + Add: Improvements to French translations. (remm)
+    + Add: Improvements to Japanese translations provided by tak7iji and
+      Ktamura.biz.80. (markt)
+  * Cluster
+    + Fix: Validate that the DeltaManager attribute sendAllSessionsSize is a
+      positive integer. Zero or negative values previously caused an infinite
+      loop or a NegativeArraySizeException during session state transfer. Pull
+      request #1042 provided by lihongyi87. (markt)
+    + Fix: Improve robustness of cloud membership providers if an error occurs
+      fetching members. (remm)
+  * jdbc-pool
+    + Fix: DataSourceProxy.getPooledConnection(String,String) now delegates to
+      getConnection(String,String) rather than getConnection(). (markt)
+    + Add: Log a warning if an attempt is made to obtain a connection with
+      credentials when alternateUsernameAllowed is set to false. (markt)
+    + Fix: Ensure StatementCache interceptor resets properties of cached
+      statements between uses. (mark)
+
+-------------------------------------------------------------------
 Mon Sep 07 13:38:16 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
 
 - Update to Tomcat 10.1.59

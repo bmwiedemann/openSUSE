@@ -301,4 +301,12 @@
     <comment>Update to Tomcat 10.0.59</comment>
     <requestid>1377355</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>d5074afcef946982c2ac606aaf203cc4</srcmd5>
+    <version>10.1.60</version>
+    <time>1790584957</time>
+    <user>anag_factory</user>
+    <comment>10.1.60</comment>
+    <requestid>1380686</requestid>
+  </revision>
 </revisionlist>
