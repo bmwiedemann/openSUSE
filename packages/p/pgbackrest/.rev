@@ -289,4 +289,30 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
 </comment>
     <requestid>1373541</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>8edca13d21c16d6551c22f6b950776f0</srcmd5>
+    <version>2.59.2</version>
+    <time>1790585245</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.59.2
+  - Bug Fixes:
+    - Fix empty block map when file is truncated to zero during
+      backup. (Reviewed by Douglas J Hunley. Reported by
+      JPCOSTA78.)
+    - Disable read retry when filters are passed to the driver.
+      (Reviewed by Douglas J Hunley. Reported by megamaced.)
+    - Fix pagination of S3 version listing. (Reviewed by Douglas J
+      Hunley, guruguruguru. Reported by guruguruguru.)
+    - Set the Azure version header for SAS authentication.
+      (Reviewed by Douglas J Hunley. Reported by Florian
+      Helmberger.)
+    - Fix async archive-push stalling on a zero-size backup history
+      file. (Fixed by Andrew Kroh. Reviewed by David Steele,
+      Douglas J Hunley.)
+    - Fix annotate command on a remote encrypted repository. (Fixed
+      by Douglas J Hunley. Reviewed by David Steele.)
+  - Features:
+    - PostgreSQL 19beta4 support.</comment>
+    <requestid>1380950</requestid>
+  </revision>
 </revisionlist>
