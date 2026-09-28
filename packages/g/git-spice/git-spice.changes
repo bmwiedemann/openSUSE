@@ -1,0 +1,199 @@
+-------------------------------------------------------------------
+Fri Sep 25 18:36:24 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.31.2:
+  too much happened that I cannot list it here … see
+  https://github.com/abhinav/git-spice/releases
+
+-------------------------------------------------------------------
+Tue Feb 24 09:25:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+Update to 0.24.2:
+   - Fix 'gs' binary missing from GitHub Release artifacts.
+   - We are renaming the 'gs' binary to 'git-spice' to avoid
+     conflicting with other command line tools.
+    This release is a compatibility release to ease the
+    transition. In this release, both binary names are available
+    in GitHub Release archives, the official Homebrew Cask, and
+    the AUR binary package:
+        'git-spice': the new name for the binary
+        'gs': deprecated, will print a warning on every
+        invocation unless GIT_SPICE_NO_GS_WARNING=1 is set in the
+        environment
+    If you prefer using the name 'gs', we recommend adding an
+    alias to your shell configuration.
+    The 'gs' binary will be removed in an upcoming release. We
+    encourage users to switch to 'git-spice' as soon as possible
+    to avoid disruption when the 'gs' binary is removed.
+- Update v0.23.0:
+    - git-spice now sets the GIT_SPICE=1 environment variable for
+      most external commands it spawns, including editors and Git
+      itself. This may be used in, for example, Git hooks that
+      need to detect if they are being run as part of a git-spice
+      operation. For a demonstration of use, see this recipe.
+    - Branch listings including gs log commands and commands that
+      present a branch selection prompt, all now show paths for
+      branches checked out in other worktrees.
+    - submit: Detect and recreate navigation comments if they are
+      deleted externally.
+    - submit: Add spice.submit.reviewers.addWhen configuration
+      option, which allows controlling whether reviewers
+      configured with spice.submit.reviewers are added to draft
+      change requests.
+    - gitlab: Token extraction for CLI-based authentication now
+      supports the format used by glab CLI v1.66.0 and later.
+- Update v0.22.0:
+    - GitHub OAuth authentication now additionally requires the
+      read:org scope. We need this to resolve GitHub teams for
+      the --reviewer flag introduced in v0.21. If you're using
+      git-spice via OAuth authentication and use this flag,
+    - please run gs auth login --refresh to generate a new local
+      token with expanded scope.
+- Update v0.21.0:
+  - Release highlight: This release brings --reviewer and
+    --assign flags to all submit commands. You can now request
+    reviews or assign CRs at creation time, or during updates to
+    existing CRs. Both flags have configuration variants:
+    spice.submit.reviewers and spice.submit.assignees that are
+    merged with flag values.
+   - submit: Add --reviewer flag and 'spice.submit.reviewers'
+     configuration option to request reviews from specific users
+     or teams upon CR submission.
+   - submit: Add --assign flag and 'spice.submit.assignees'
+     configuration option to assign CRs to users upon submission.
+   - Branch selection prompt now supports pressing Ctrl+U to
+     clear the search filter.
+    - submit: --dry-run now reports which labels will be added to
+      existing CRs upon submission.
+    - branch submit: Check if the Git configuration prevents
+      pushed branches from being tracked, which would leave those
+      branches in a state where follow-up submits are not
+      possible.
+    - branch submit: Fix panic when updating CRs that have no
+      upstream branch configured.
+- Update v0.20.0:
+    - submit: Fix draft prompt being skipped for branches after
+      the first one when submitting a stack interactively
+    - Correctly handle unicode in branch names across various
+      commands. These would previously be stored in state, but
+      not be accessible.
+    - submit: Include empty CR templates in the list of available
+      templates. These were previously erroneously excluded.
+    - branch create: '-m' flag now generates branch name
+      automatically even when 'spice.branchCreate.commit' is set
+      to false
+    - commit: Add '--signoff' flag to add Signed-off-by trailer
+      to commit messages. Enable for all commits with the
+      'spice.commit.signoff' configuration option.
+    - branch create: Add
+      'spice.branchCreate.generatedBranchNameLimit' configuration
+      option to customize the length of branch names generated
+      from commit titles.
+    - submit: Add 'spice.submit.navigationComment.downstack'
+      configuration option to control whether merged CRs appear
+      in stack navigation comments.
+    - all: --help messages now include configuration options for
+      each command.
+    - submit: CR creation title prompt now allows choosing from
+      the titles of all available commits instead of always using
+      the first. Use up/down arrow keys to navigate.
+    - submit: The prompt to confirm submission of empty branches
+      now also considers branches with non-zero commits but no
+      effective changes. This helps catch submission of empty
+      commits or entirely reverted changes.
+    - repo sync: Avoid prompting to delete branches that have
+      both merged and open externally created CRs -- assume the
+      user wants to keep the branch.
+    - Fix data race in reading GraphQL responses from GitHub
+      where buffers could be reused while response bodies were
+      still being read.
+    - Fix crash when information for a branch could not be loaded
+      from Git.
+- Update v0.19.0:
+    - branch delete: Fix prompt for unmerged branch deletion not
+      respecting the "no" answer.
+    - Add experimental 'gs commit pick' to cherry-pick a commit
+      and update upstack branches in one go. Opt into it with git
+      config --global spice.experiment.commitPick true. The
+      command presents an interactive prompt when invoked without
+      any arguments. demo of gs commit pick
+    - Add 'gs downstack track' command to track a manually
+      created stack of branches in one go. demo of gs downstack
+      track
+    - {stack, upstack} restack: prompt for confirmation when
+      invoked from trunk to prevent accidental full-repository
+      restacking. To do this without a prompt, prefer using the
+      gs repo restack command instead.
+    - submit: Add spice.submit.navigationCommentStyle.marker
+      configuration option to customize the marker in navigation
+      comments
+    - branch create: -m/--message now implies --commit
+    - submit: Warn and prompt for confirmation when submitting
+      branches with zero commits
+    - repo sync: Fix failure to delete merged branches after
+      a sync operation because an upstack branch of the merged
+      branch is checked out in a worktree.
+- Update v0.18.0:
+    - git-spice now supports an experimental new command: gs
+      commit fixup. It is able to amend any commit in the current
+      branch or any downstack branch. Think git commit --amend,
+      but fully stack-aware. (see the details in CHANGELOG.md).
+    - We've addressed a long-standing limitation of gs branch
+      split: it was previously unable to move the branch being
+      split down to another commit. Suppose if the branch being
+      split--say 'penguin'--has two commits: (a) Invent penguins,
+      and (b) Refactor pangolin, and the branch head points to
+      commit (b). Previously, gs branch split would not let you
+      use the name 'penguin' for commit (a), as it was already
+      attached to commit (b).
+    - branch checkout/delete/onto: Include CR numbers in prompt
+      visualization, and allow searching and filtering by CR
+      identifiers.
+    - Experimental 'gs branch fixup' command that acts like 'git
+      commit --amend' for any downstack commit. It will commit
+      staged changes to a downstack commit, and automatically
+      rebase the rest of the stack on top of it. See
+      https://abhinav.github.io/git-spice/cli/experiments for
+      instructions on enabling this experimental feature.
+    - log {long, short}: Add --json flag. This prints information
+      about tracked branches to stdout as a stream of JSON
+      objects.
+    - log {long, short}: Add -S/--cr-status flag to request the
+      statuses of change requests that have been published.
+    - branch split: Allow reusing original branch name for
+      intermediate commits during split.
+    - Homebrew Tap now publishes the package as a Cask. If you
+      previously installed with brew install
+      abhinav/tap/git-spice, switch to the cask with brew install
+      --cask abhinav/tap/git-spice. You can ignore this if you
+      installed from homebrew-core (brew install git-spice).
+    - gitlab: Submit Merge Requests with
+      remove_source_branch=true. This will delete the source
+      branch when the MR is merged. Opt out of this behavior with
+      the spice.forge.gitlab.removeSourceBranch option.
+    - commit amend: Delete -n flag that was deprecated in favor
+      of --no-edit in v0.10.0 (2025-01-02). If you need a short
+      way to use this flag, try defining a custom shorthand.
+    - repo restack: Autostash dirty changes in the working tree
+      before the operation. Previously, the changes wouldn't be
+      stashed until checking out the first branch, an operation
+      which might fail because of other conflicts.
+    - log: When used without --all, query only requested branches
+      internally. This was wasted work and slowed the command
+      down in repositories with many branches.
+    - log: List all tracked branches when run from an untracked
+      branch or detached HEAD. Previously, this behavior was
+      undefined.
+    - Fix incorrect paths being logged when autostashed changes
+      fail to reapply after a rebase operation.
+
+-------------------------------------------------------------------
+Thu Jan  1 10:09:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Don't conflict with ghostscript on /usr/bin/gs and move to
+  `git-spice`.
+
+-------------------------------------------------------------------
+Tue Sep  2 21:51:02 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
+
+- Initial packaging effort for git-spice 0.17.0.
