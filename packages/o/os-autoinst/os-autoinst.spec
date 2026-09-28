@@ -17,7 +17,7 @@
 
 
 Name:           os-autoinst
-Version:        5.1790145813.282ca44
+Version:        5.1790583840.ff0d715
 Release:        0
 Summary:        OS-level test automation
 License:        GPL-2.0-or-later
@@ -281,7 +281,7 @@ rm t/28-signalblocker.t
 # https://progress.opensuse.org/issues/202836
 rm -f t/28-signalblocker.t
 %endif
-%ifarch aarch64 s390x
+%ifarch aarch64 s390x ppc64le
 # https://progress.opensuse.org/issues/200949
 rm -f t/26-video_stream.t
 %endif

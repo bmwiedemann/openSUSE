@@ -1,4 +1,60 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:24:13 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790583840.ff0d715:
+  * fix(svirt): Verify VMware images while copying them into the datastore
+  * feat: gracefully handle temporarily unreachable hypervisors
+  * fix: remove redundant and invalid ruff selectors
+  * fix(test): Ignore flaky test on ppc64le as well
+  * feat: support holding key for duration in send_key
+  * feat: Identify executed commands directly from timeline step boxes
+  * fix(git): remove leading slash from cache path
+
+-------------------------------------------------------------------
+Mon Sep 28 04:47:31 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790570842.2a70c16:
+  * feat: gracefully handle temporarily unreachable hypervisors
+  * fix: remove redundant and invalid ruff selectors
+  * fix(test): Ignore flaky test on ppc64le as well
+  * test(t/18-backend-qemu): mock IO::Socket::IP to fix port check race
+  * feat: support holding key for duration in send_key
+  * feat: Identify executed commands directly from timeline step boxes
+  * fix(git): remove leading slash from cache path
+
+-------------------------------------------------------------------
+Fri Sep 25 16:08:20 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790352490.8968207:
+  * fix: remove redundant and invalid ruff selectors
+  * fix(test): Ignore flaky test on ppc64le as well
+  * fix(autotest): robustify find_script against undefined CASEDIR
+  * test(t/18-backend-qemu): mock IO::Socket::IP to fix port check race
+  * feat: support holding key for duration in send_key
+  * refactor: remove ProhibitExcessComplexity exclusion from read_json
+  * refactor: remove ProhibitManyArgs exclusions from sshVirtsh
+  * refactor: remove ProhibitManyArgs exclusion from add_existing_drive
+  * refactor: remove ProhibitManyArgs exclusion from clone_git
+  * refactor: remove ProhibitManyArgs exclusion from Dewebsockify
+  * style: remove redundant max_arguments override from perlcritic
+  * style: remove perlcritic cascading if-elsif override
+  * refactor: remove redundant perlcritic complexity overrides
+  * style: reduce perlcritic complexity and argument thresholds
+  * feat: Identify executed commands directly from timeline step boxes
+  * fix(git): remove leading slash from cache path
+
+-------------------------------------------------------------------
+Thu Sep 24 16:50:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790268649.6700621:
+  * fix(test): Ignore flaky test on ppc64le as well
+  * fix(autotest): robustify find_script against undefined CASEDIR
+  * build(deps): bump codecov/codecov-action in the all-actions group (#3103)
+  * test(t/18-backend-qemu): mock IO::Socket::IP to fix port check race
+  * refactor: remove ProhibitExcessComplexity exclusion from read_json
+  * refactor: remove ProhibitManyArgs exclusions from sshVirtsh
+
+-------------------------------------------------------------------
 Wed Sep 23 06:43:43 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790145813.282ca44:
