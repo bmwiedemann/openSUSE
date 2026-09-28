@@ -1,7 +1,7 @@
 #
 # spec file for package jitterentropy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,7 @@ Source0:        https://github.com/smuellerDD/jitterentropy-library/archive/refs
 Source1:        baselibs.conf
 Patch1:         jitterentropy-split-internal-header.patch
 Patch2:         jitterentropy-with-debug.patch
+Patch3:         jitterentropy-minimum-osr.patch
 
 %description
 The Jitter RNG provides a noise source using the CPU execution

@@ -1,0 +1,13 @@
+Index: jitterentropy-library-3.6.3/jitterentropy.h
+===================================================================
+--- jitterentropy-library-3.6.3.orig/jitterentropy.h
++++ jitterentropy-library-3.6.3/jitterentropy.h
+@@ -410,7 +410,7 @@ struct rand_data
+ #define JENT_MAX_MEMSIZE_OFFSET		14
+ 
+ #ifdef JENT_CONF_DISABLE_LOOP_SHUFFLE
+-# define JENT_MIN_OSR	3
++# define JENT_MIN_OSR	5
+ #else
+ # define JENT_MIN_OSR	1
+ #endif

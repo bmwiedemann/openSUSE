@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 22 15:14:09 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- OSR has to be at least 5 according to current reviews. (bsc#1282301)
+  jitterentropy-minimum-osr.patch
+
+-------------------------------------------------------------------
 Wed Apr 30 09:00:00 UTC 2025 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 3.6.3: [bsc#1242050]

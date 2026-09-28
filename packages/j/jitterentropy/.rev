@@ -75,4 +75,13 @@ It is filled with the time delta containing entropy and auxiliary data that does
     <comment>- Update to 3.6.3: [bsc#1242050] (forwarded request 1273627 from pmonrealgonzalez)</comment>
     <requestid>1273628</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>a31e85bfd21677a02a5396719e957b25</srcmd5>
+    <version>3.6.3</version>
+    <time>1790584483</time>
+    <user>anag_factory</user>
+    <comment>- OSR has to be at least 5 according to current reviews. (bsc#1282301)
+  jitterentropy-minimum-osr.patch (forwarded request 1379710 from msmeissn)</comment>
+    <requestid>1379711</requestid>
+  </revision>
 </revisionlist>
