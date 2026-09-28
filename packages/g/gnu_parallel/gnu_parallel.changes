@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 21:53:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260922
+  * `parallel --header 0` was not handled
+
+-------------------------------------------------------------------
 Sat Sep 12 09:25:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to release 20260822:
