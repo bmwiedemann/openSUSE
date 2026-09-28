@@ -720,4 +720,12 @@
     <comment>Update to version 20260812 and fix for bsc#1268781</comment>
     <requestid>1375690</requestid>
   </revision>
+  <revision rev="91" vrev="2">
+    <srcmd5>94d193dad656b68483dec5b60aa3f84f</srcmd5>
+    <version>20260812</version>
+    <time>1790584610</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380270</requestid>
+  </revision>
 </revisionlist>

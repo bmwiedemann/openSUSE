@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 17 16:10:32 MDT 2026 - carnold@suse.com
+
+- Add support for SLES-16.2
+  add-sles16.2-support.patch
+- Add support for openSUSE Leap 16.2
+  add-opensuse-leap-16.2-support.patch
+- Adjust SLES 16.1 version number and include release date
+  add-sles16.1-support.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 15:45:58 MDT 2026 - carnold@suse.com
 
 - Update to database version 20260812 (jsc#PED-14625)
