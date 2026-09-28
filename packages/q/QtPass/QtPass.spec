@@ -18,7 +18,7 @@
 
 %define         _name qtpass
 Name:           QtPass
-Version:        1.8.1
+Version:        1.8.2
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only
@@ -54,7 +54,6 @@ QtPass is a multi-platform GUI for pass, the standard unix password manager.
 %install
 %qmake6_install
 install -Dpm0644 %{_name}.desktop %{buildroot}%{_datadir}/applications/%{_name}.desktop
-install -Dpm0644 %{_name}.appdata.xml %{buildroot}%{_datadir}/metainfo/%{_name}.appdata.xml
 install -Dpm0644 artwork/icon.svg %{buildroot}%{_datadir}/icons/hicolor/scalable/apps/%{_name}-icon.svg
 install -Dpm0644 %{_name}.1 %{buildroot}%{_mandir}/man1/%{_name}.1
 
@@ -65,7 +64,7 @@ install -Dpm0644 %{_name}.1 %{buildroot}%{_mandir}/man1/%{_name}.1
 %{_datadir}/applications/%{_name}.desktop
 %{_datadir}/icons/hicolor/scalable/apps/%{_name}-icon.svg
 %{_datadir}/icons/hicolor/512x512/apps/%{_name}-icon.png
-%{_datadir}/metainfo/%{_name}.appdata.xml
+%{_datadir}/metainfo/org.qtpass.QtPass.metainfo.xml
 %{_mandir}/man?/%{_name}.?%{ext_man}
 
 %changelog

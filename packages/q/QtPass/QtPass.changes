@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 24 21:26:51 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.8.2:
+  * Release v1.8.2 (#1934)
+  * 1.8: install the AppStream metainfo under its component id (ported from #1804) (#1927)
+  * 1.8: auto push/pull were never saved since 1.8.0 (ported from #1792) (#1795)
+  * 1.8: lint fixes the main branch already has
+  * Let the settings decide which key: value lines become fields (#1766)
+  * flatpak: build v1.8.1, drop the source overlays (#1750)
+
+-------------------------------------------------------------------
 Wed Sep 16 07:11:36 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.8.1:
