@@ -2334,4 +2334,12 @@
     <comment>Fix for bsc#1268781 - inconsistent OS names in virt-install for 16.0</comment>
     <requestid>1375689</requestid>
   </revision>
+  <revision rev="295" vrev="17">
+    <srcmd5>db0789a41f80d7bf486c4eb71c81b5e7</srcmd5>
+    <version>5.1.0</version>
+    <time>1790584677</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1380712</requestid>
+  </revision>
 </revisionlist>

@@ -1,3 +1,8 @@
+With SLES 16, the .treeinfo file used in SLES 15 to describe the distro
+media was removed. The layout of the media was also changed by placing
+the media.1 directory and packages in an install sub-directory. Because
+of these changes, the media detection code is modified in this patch.
+
 Index: virt-manager-5.1.0/virtinst/install/urldetect.py
 ===================================================================
 --- virt-manager-5.1.0.orig/virtinst/install/urldetect.py

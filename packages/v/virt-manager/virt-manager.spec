@@ -83,6 +83,7 @@ Patch63:        063-man-secure-boot-dont-mention-enrolled-keys.patch
 Patch77:        077-man-virt-install-change--boot-secure-boot--docs.patch
 Patch79:        079-domain-os-add-set_firmware_feature-helper.patch
 Patch80:        080-cli-add--boot-firmware.enrolled-keys--firmware.secure-boot.patch
+Patch102:       102-virtinst-Set-is_onoff-True-for-iommufd.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch
