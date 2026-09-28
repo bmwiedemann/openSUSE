@@ -17,7 +17,7 @@
 
 
 Name:           coreboot-utils
-Version:        26.06
+Version:        26.09
 Release:        0
 Summary:        A universal flash programming utility
 License:        GPL-2.0-only
