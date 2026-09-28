@@ -62,4 +62,15 @@
   * Remove support for Python 3.7 and below.</comment>
     <requestid>1359265</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>64f2cd40698049d86aa879ca5b8712da</srcmd5>
+    <version>4.0.0</version>
+    <time>1790584733</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.0:
+  * Replace pkg_resources namespace with a PEP 420 native namespace.
+  * Consolidate packaging into a single pyproject.toml (remove setup.py,
+    setup.cfg, and _version.py).</comment>
+    <requestid>1380280</requestid>
+  </revision>
 </revisionlist>

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazr.config
-Version:        3.1
+Version:        4.0.0
 Release:        0
 Summary:        Create configuration schemas, and process and validate configurations
 License:        LGPL-3.0-only
@@ -68,7 +68,6 @@ export PYTEST_ADDOPTS="--doctest-glob='*.rst' --import-mode=importlib"
 %license COPYING.txt
 %dir %{python_sitelib}/lazr
 %{python_sitelib}/lazr/config
-%{python_sitelib}/lazr[._]config-%{version}*-info
-%{python_sitelib}/lazr[._]config-%{version}*-nspkg.pth
+%{python_sitelib}/lazr[._]config-%{version}.dist-info
 
 %changelog
