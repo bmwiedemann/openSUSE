@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 23 07:47:56 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.18.6:
+  + The XCB surface triggered an UAF warning when building with
+    GCC.
+  + The clipping code was accessing various fields in a guard
+    value, and causing a crash inside Inkscape.
+  + Multiple fixes for the Windows backends, including improvements
+    in the thread safety of the DirectWrite code.
+  + The DirectWrite backend now supports COLRv1 fonts.
+  + Multiple fixes for building with MSVC and ClangCL.
+  + A leak in the PDF surfaces has been fixed.
+  + Various gaps between abutting rectangles when drawing with
+    ANTIALIAS_NONE were removed by using absolute coordinates and
+    avoiding rounding errors.
+  + Remove an overflow when computing the buffer size in the
+    XRender code.
+- Refresh cairo-get_bitmap_surface-bsc1036789-CVE-2017-7475.diff
+  with quilt.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:23:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run

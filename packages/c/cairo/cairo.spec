@@ -19,7 +19,7 @@
 %define build_xcb_backend 1
 
 Name:           cairo
-Version:        1.18.4
+Version:        1.18.6
 Release:        0
 Summary:        Vector Graphics Library with Cross-Device Output Support
 License:        LGPL-2.1-or-later OR MPL-1.1
