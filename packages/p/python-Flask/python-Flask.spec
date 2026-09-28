@@ -31,6 +31,8 @@ License:        BSD-3-Clause
 URL:            https://flask.palletsprojects.com
 Source0:        https://files.pythonhosted.org/packages/source/f/flask/flask-%{version}.tar.gz
 Source1:        python-Flask-rpmlintrc
+# PATCH-FIX-UPSTREAM gh#pallets/flask#6095
+Patch0:         support-pytest-9.1.patch
 BuildRequires:  %{python_module Jinja2 >= 3.1.2}
 BuildRequires:  %{python_module MarkupSafe}
 BuildRequires:  %{python_module Werkzeug >= 3.1.0}

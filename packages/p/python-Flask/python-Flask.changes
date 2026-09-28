@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 09:27:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-9.1.patch:
+  * Do not use private pytest monkeypatch fixture.
+
+-------------------------------------------------------------------
 Wed Apr 15 12:02:12 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Skip test failing with Werkzeug 3.1.8, removed upstream
