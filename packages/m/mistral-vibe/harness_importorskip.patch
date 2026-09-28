@@ -1,23 +1,98 @@
----
- tests/app_server/test_unified_harness_backend_adapter.py |    5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+From: Martin Pluskal <martin@pluskal.org>
+Subject: skip the harness-only tests when the harness is absent
 
-Index: mistral-vibe-2.25.1/tests/app_server/test_unified_harness_backend_adapter.py
+mistralai-vibe-local-harness is built by the maturin backend this package
+does not run, so the distribution is not installed.  Guard the test modules
+that import it at module scope with pytest.importorskip, the way upstream
+already guards its other harness tests, so collection skips them instead of
+erroring.
+
+Index: mistral-vibe-2.25.7/tests/app_server/test_unified_harness_backend_adapter.py
 ===================================================================
---- mistral-vibe-2.25.1.orig/tests/app_server/test_unified_harness_backend_adapter.py
-+++ mistral-vibe-2.25.1/tests/app_server/test_unified_harness_backend_adapter.py
-@@ -14,10 +14,13 @@
+--- mistral-vibe-2.25.7.orig/tests/app_server/test_unified_harness_backend_adapter.py
++++ mistral-vibe-2.25.7/tests/app_server/test_unified_harness_backend_adapter.py
+@@ -17,6 +17,13 @@ from types import SimpleNamespace
  from typing import TYPE_CHECKING, Any, Literal, cast
  from unittest.mock import AsyncMock, Mock
  
--import mistralai_vibe_local_harness.session_protocol as harness_session_protocol
- import pytest
- import tomli_w
- 
-+# mistralai-vibe-local-harness is an optional extra: skip this module when
-+# it is missing instead of failing collection, like the other harness tests
-+harness_session_protocol = pytest.importorskip("mistralai_vibe_local_harness.session_protocol")
++import pytest
++import tomli_w
 +
++# mistralai-vibe-local-harness is an optional extra openSUSE does not ship:
++# skip instead of failing collection, like upstream's own harness guards.
++pytest.importorskip("mistralai_vibe_local_harness")
++
+ import mistralai_vibe_local_harness.session_protocol as harness_session_protocol
+ from mistralai_vibe_local_harness.vibe import (
+     DeferredTurnPreparationContext as HarnessDeferredTurnPreparationContext,
+@@ -25,8 +32,6 @@ from mistralai_vibe_local_harness.vibe i
+     DeferredTurnStartParams as HarnessDeferredTurnStartParams,
+     DeferredTurnStartResult as HarnessDeferredTurnStartResult,
+ )
+-import pytest
+-import tomli_w
+ 
  from tests.conftest import build_test_agent_loop, build_test_vibe_config
  from tests.mock.utils import mock_llm_chunk
- from tests.stubs.app_server import build_test_app_server
+Index: mistral-vibe-2.25.7/tests/app_server/test_provided_tools.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/tests/app_server/test_provided_tools.py
++++ mistral-vibe-2.25.7/tests/app_server/test_provided_tools.py
+@@ -3,6 +3,12 @@ from __future__ import annotations
+ from collections.abc import Awaitable, Callable
+ from pathlib import Path
+ 
++import pytest
++
++# mistralai-vibe-local-harness is an optional extra openSUSE does not ship:
++# skip instead of failing collection, like upstream's own harness guards.
++pytest.importorskip("mistralai_vibe_local_harness")
++
+ from mistralai_vibe_local_harness.protocol import (
+     JsonObject,
+     JsonSchema,
+@@ -13,7 +19,6 @@ from mistralai_vibe_local_harness.protoc
+     RustToolFailedEvent,
+     RustToolSucceededEvent,
+ )
+-import pytest
+ 
+ from vibe.app_server._provided_tools import (
+     TODO_TOOL_NAME,
+Index: mistral-vibe-2.25.7/tests/app_server/test_unified_scratchpad.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/tests/app_server/test_unified_scratchpad.py
++++ mistral-vibe-2.25.7/tests/app_server/test_unified_scratchpad.py
+@@ -433,6 +433,7 @@ async def test_notes_written_through_the
+ def test_the_scratchpad_lives_inside_the_harness_session_directory(
+     tmp_path: Path,
+ ) -> None:
++    pytest.importorskip("mistralai_vibe_local_harness")
+     from mistralai_vibe_local_harness.vibe._host import UnifiedHarnessSessionBackendHost
+ 
+     # Reaching for the private ``_session_root`` on purpose: the scratchpad shares
+Index: mistral-vibe-2.25.7/tests/app_server/test_unified_tool_projection.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/tests/app_server/test_unified_tool_projection.py
++++ mistral-vibe-2.25.7/tests/app_server/test_unified_tool_projection.py
+@@ -4,6 +4,12 @@ import asyncio
+ from copy import deepcopy
+ from pathlib import Path
+ 
++import pytest
++
++# mistralai-vibe-local-harness is an optional extra openSUSE does not ship:
++# skip instead of failing collection, like upstream's own harness guards.
++pytest.importorskip("mistralai_vibe_local_harness")
++
+ from mistralai_vibe_local_harness.protocol import (
+     JsonObject,
+     RustEvent,
+@@ -11,7 +17,6 @@ from mistralai_vibe_local_harness.protoc
+     RustProvidedToolCallAction,
+     RustToolSucceededEvent,
+ )
+-import pytest
+ 
+ from vibe.app_server._provided_tools import VIBE_TOOL_GROUP, VibeProvidedTools
+ from vibe.app_server._unified_scratchpad import SCRATCHPAD_TOOL_NAME

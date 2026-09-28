@@ -1,7 +1,7 @@
-Index: mistral-vibe-2.25.0/tests/cli/test_connector_auth_app.py
+Index: mistral-vibe-2.25.7/tests/cli/test_connector_auth_app.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_connector_auth_app.py
-+++ mistral-vibe-2.25.0/tests/cli/test_connector_auth_app.py
+--- mistral-vibe-2.25.7.orig/tests/cli/test_connector_auth_app.py
++++ mistral-vibe-2.25.7/tests/cli/test_connector_auth_app.py
 @@ -253,8 +253,8 @@ class TestCloseAndRefresh:
      async def test_action_refresh_dispatches_worker(self) -> None:
          app = _make_app()
@@ -13,11 +13,11 @@ Index: mistral-vibe-2.25.0/tests/cli/test_connector_auth_app.py
  
          app.run_worker = MagicMock(side_effect=close_worker)
          app.query_one = MagicMock()
-Index: mistral-vibe-2.25.0/tests/cli/test_mcp_app.py
+Index: mistral-vibe-2.25.7/tests/cli/test_mcp_app.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/cli/test_mcp_app.py
-+++ mistral-vibe-2.25.0/tests/cli/test_mcp_app.py
-@@ -433,8 +433,8 @@ def test_refresh_index_replaces_state_fr
+--- mistral-vibe-2.25.7.orig/tests/cli/test_mcp_app.py
++++ mistral-vibe-2.25.7/tests/cli/test_mcp_app.py
+@@ -466,8 +466,8 @@ def test_refresh_index_replaces_state_fr
  def test_start_refresh_dispatches_one_worker() -> None:
      app = MCPApp(_state(), refresh_callback=AsyncMock(return_value="Refreshed"))
  
@@ -28,10 +28,10 @@ Index: mistral-vibe-2.25.0/tests/cli/test_mcp_app.py
  
      app.run_worker = MagicMock(side_effect=close_worker)
  
-Index: mistral-vibe-2.25.0/tests/update_notifier/test_ui_update_notification.py
+Index: mistral-vibe-2.25.7/tests/update_notifier/test_ui_update_notification.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/tests/update_notifier/test_ui_update_notification.py
-+++ mistral-vibe-2.25.0/tests/update_notifier/test_ui_update_notification.py
+--- mistral-vibe-2.25.7.orig/tests/update_notifier/test_ui_update_notification.py
++++ mistral-vibe-2.25.7/tests/update_notifier/test_ui_update_notification.py
 @@ -28,6 +28,15 @@ from vibe.core.config import VibeConfigS
  TEST_CURRENT_VERSION = "0.1.0"
  
@@ -73,23 +73,14 @@ Index: mistral-vibe-2.25.0/tests/update_notifier/test_ui_update_notification.py
          await _assert_no_notifications(app, pilot, timeout=0.3)
      assert notifier.fetch_update_calls == 1
  
-Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
+Index: mistral-vibe-2.25.7/tests/autocompletion/test_ui_chat_autocompletion.py
 ===================================================================
---- mistral-vibe-2.25.1.orig/tests/autocompletion/test_ui_chat_autocompletion.py
-+++ mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
-@@ -2,6 +2,7 @@
- 
- from pathlib import Path
- 
-+import asyncio
- import pytest
- from textual.widgets import Markdown
- 
-@@ -12,6 +13,14 @@
-     _CompletionRow,
- )
+--- mistral-vibe-2.25.7.orig/tests/autocompletion/test_ui_chat_autocompletion.py
++++ mistral-vibe-2.25.7/tests/autocompletion/test_ui_chat_autocompletion.py
+@@ -18,6 +18,15 @@ from vibe.cli.textual_ui.widgets.chat_in
  from vibe.cli.textual_ui.widgets.chat_input.container import ChatInputContainer
-+
+ 
+ 
 +async def _wait_until(pilot, predicate, timeout: float = 6.0) -> bool:
 +    deadline = asyncio.get_running_loop().time() + timeout
 +    while asyncio.get_running_loop().time() < deadline:
@@ -97,10 +88,12 @@ Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
 +            return True
 +        await pilot.pause(0.05)
 +    return predicate()
- 
- 
++
++
  @pytest.mark.asyncio
-@@ -183,6 +192,21 @@
+ async def test_popup_appears_with_matching_suggestions(vibe_app: VibeApp) -> None:
+     async with vibe_app.run_test() as pilot:
+@@ -187,6 +196,21 @@ async def test_path_completion_popup_sho
  
          await pilot.press(*"@src/core/extra/")
  
@@ -122,20 +115,8 @@ Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
          popup_content = popup.content_text
          assert "src/core/extra/extra_file_1.py" in popup_content
          assert "src/core/extra/extra_file_10.py" in popup_content
-@@ -225,9 +249,8 @@
- 
-         await pilot.press(*"Print @REA")
-         await pilot.press("tab")
--        await pilot.pause(0.2)
--
--        assert chat_input.value == "Print @README.md "
-+
-+        assert await _wait_until(pilot, lambda: chat_input.value == "Print @README.md ")
-         assert popup.styles.display == "none"
- 
- 
-@@ -242,7 +265,7 @@
-         await pilot.press(*"Print @src/m")
+@@ -287,7 +311,7 @@ async def test_pressing_enter_writes_sel
+         await wait_for_path_completions(pilot)
          await pilot.press("enter")
  
 -        assert chat_input.value == "Print @src/main.py "
@@ -143,7 +124,7 @@ Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
          assert popup.styles.display == "none"
  
  
-@@ -317,7 +340,7 @@
+@@ -363,7 +387,7 @@ async def test_does_not_trigger_completi
          await pilot.press(*message_to_fill_history)
          await pilot.press("enter")
          await pilot.press("up", "up")
@@ -152,8 +133,11 @@ Index: mistral-vibe-2.25.1/tests/autocompletion/test_ui_chat_autocompletion.py
          await pilot.pause(0.2)
          # ensure popup is hidden - user was navigating history: we don't want to interrupt
          assert popup.styles.display == "none"
-@@ -329,3 +353,3 @@
+@@ -373,6 +397,6 @@ async def test_does_not_trigger_completi
+         # get back to the message with path completion; ensure again
+         await pilot.press("up")
          await pilot.pause(0.1)
 -        assert chat_input.value == "Check @src/main.py"
 +        assert await _wait_until(pilot, lambda: chat_input.value == "Check @src/main.py")
          await pilot.pause(0.2)
+         assert popup.styles.display == "none"

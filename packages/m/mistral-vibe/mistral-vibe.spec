@@ -28,9 +28,16 @@
 %endif
 %define origname mistral-vibe
 Name:           %{origname}%{psuffix}
-Version:        2.25.4
+Version:        2.25.8
 Release:        0
 Summary:        Minimal CLI coding agent by Mistral
+# Legal-Review-Notice: vibe/cli-rust is not built and not shipped.  It is an
+# alternative Rust front-end whose own Cargo.toml declares license =
+# "Proprietary", while the repository LICENSE and the [project] metadata both
+# say Apache-2.0.  Nothing here compiles or installs it: the directory is
+# deleted right after the sources are unpacked and the wheel configuration
+# excludes it, so every file in the binary packages comes from the
+# Apache-2.0 Python tree.
 License:        Apache-2.0
 URL:            https://github.com/mistralai/mistral-vibe
 Source0:        https://github.com/mistralai/mistral-vibe/archive/refs/tags/v%{version}.tar.gz#/mistral-vibe-%{version}.tar.gz
@@ -60,9 +67,22 @@ Patch6:         obs-test-synchronization.patch
 # invisible to the file fingerprint; hash the contents too
 Patch7:         fingerprint_file_contents.patch
 # PATCH-FIX-UPSTREAM harness_importorskip.patch martin@pluskal.org
-# the harness is an optional extra: skip the module when it is missing
-# instead of failing collection, same as the other harness test modules
+# the harness is an optional extra: skip the modules that import it at module
+# scope instead of failing collection, same as upstream's own harness guards
 Patch8:         harness_importorskip.patch
+# PATCH-FIX-UPSTREAM harness_optional_import.patch martin@pluskal.org
+# keep the optional harness distribution off the legacy app-server import path
+Patch9:         harness_optional_import.patch
+# PATCH-FIX-OPENSUSE build_system_hatchling.patch martin@pluskal.org
+# upstream builds a PyO3 extension with maturin, whose v8 crate downloads a
+# toolchain at build time; build the pure-Python tree with hatchling instead
+Patch10:        build_system_hatchling.patch
+# PATCH-FIX-OPENSUSE app_server_turn_timeouts.patch martin@pluskal.org
+# one-second asyncio waits time out under the parallel run on a busy worker
+Patch11:        app_server_turn_timeouts.patch
+# PATCH-FIX-UPSTREAM greeting_startup_race.patch martin@pluskal.org
+# the post-ready worker must not raise when the chat widget is not on screen
+Patch12:        greeting_startup_race.patch
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-base >= 3.12
@@ -73,7 +93,7 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-rfc8785 >= 0.1.4
 BuildArch:      noarch
 %if !%{with test}
-Requires:       python3-GitPython >= 3.1.57
+Requires:       python3-GitPython >= 3.1.61
 Requires:       python3-PyJWT >= 2.13.0
 Requires:       python3-PyYAML >= 6.0.3
 Requires:       python3-SecretStorage >= 3.5.0
@@ -149,7 +169,6 @@ Requires:       python3-sentry-sdk >= 2.64.0
 Requires:       python3-setproctitle >= 1.3.7
 Requires:       python3-six >= 1.17.0
 Requires:       python3-smmap >= 5.0.3
-Requires:       python3-sounddevice >= 0.5.5
 Requires:       python3-soupsieve >= 2.8.4
 Requires:       python3-sse-starlette >= 3.4.1
 Requires:       python3-starlette >= 1.3.1
@@ -180,7 +199,7 @@ Obsoletes:      python314-mistral-vibe < %{version}
 %if %{with test}
 BuildRequires:  ca-certificates
 BuildRequires:  ca-certificates-mozilla
-BuildRequires:  python3-GitPython >= 3.1.57
+BuildRequires:  python3-GitPython >= 3.1.61
 BuildRequires:  python3-Jinja2
 BuildRequires:  python3-PyJWT >= 2.13.0
 BuildRequires:  python3-PyYAML >= 6.0.3
@@ -259,7 +278,6 @@ BuildRequires:  python3-rich >= 15.0.0
 BuildRequires:  python3-rpds-py >= 0.30.0
 BuildRequires:  python3-sentry-sdk >= 2.64.0
 BuildRequires:  python3-setproctitle >= 1.3.7
-BuildRequires:  python3-sounddevice >= 0.5.5
 BuildRequires:  python3-soupsieve >= 2.8.4
 BuildRequires:  python3-sse-starlette >= 3.4.1
 BuildRequires:  python3-starlette >= 1.3.1
@@ -293,6 +311,9 @@ with your projects through a powerful set of tools.
 
 %prep
 %autosetup -p1 -n %{origname}-%{version}
+# not built, not shipped: cli-rust declares its own "Proprietary" license and
+# client-e2e is a standalone suite upstream excludes from this project's pytest
+rm -rf vibe/cli-rust client-e2e
 
 %build
 %python3_pyproject_wheel
@@ -313,10 +334,16 @@ with your projects through a powerful set of tools.
 PYTEST_ADDOPTS="--ignore=tests/audio_player/test_audio_player.py --timeout=60 -n 4"
 export PYTEST_ADDOPTS+=" --ignore=tests/audio_recorder/test_audio_recorder.py"
 export PYTEST_ADDOPTS+=" --ignore=tests/snapshots"
-# -k deselects: the ssl_cert_file test needs network certs; the
-# max_entries test races scandir walk order against the processing
-# cap and fails with an empty assertion set (upstream 2.25.3 race).
-%python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file and not test_respects_max_entries_to_process_limit'
+# The ssl_cert_file test drives a TLS mock server over a real socket; the
+# request never completes here and the test only ends when pytest-timeout
+# kills it, so deselect it.
+# Twelve tests need the experimental harness (mistralai_vibe_local_harness,
+# a Rust extension built from harness/ and not shipped in this wheel):
+# ten resolve_agent_types tests import its protocol types at runtime, and
+# two expect its stubbed (not absent) import error. Deselect them.
+# (test_respects_max_entries_to_process_limit was deselected until 2.25.7
+# for an upstream race; it passes again.)
+%python3_pytest -m 'not (network or terminal)' -k 'not test_generic_backend_streaming_uses_ssl_cert_file and not test_a_project_subagent_is_advertised_and_bound and not test_explicit_instructions_win_over_a_named_prompt and not test_a_subagent_with_no_prompt_inherits_the_parents and not test_a_tool_the_profile_disables_is_denied_to_the_child and not test_the_advertised_half_alone_needs_no_tool_catalogue and not test_a_tool_the_profile_disables_is_not_reported_as_downgraded and not test_an_agent_file_that_shadows_explore_is_advertised and not test_a_granted_tool_narrowed_by_an_allowlist_is_capped_at_ask and not test_a_named_prompt_becomes_the_prompt_the_child_runs_on and not test_a_granted_tool_with_no_list_stays_granted and not test_available_experimental_harness_never_opens_a_legacy_runtime and not test_a_host_that_cannot_take_builtin_hooks_falls_back_to_legacy'
 %endif
 
 %if !%{with test}

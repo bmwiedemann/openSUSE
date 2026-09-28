@@ -1,0 +1,148 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: give the turn tests room on a loaded build worker
+
+The asyncio.wait_for() calls in these two modules allow one second for an
+event the runtime sets almost immediately.  Under the parallel test run that
+budget measures scheduling latency rather than a real bound, and two tests
+(the background-title quiescence test here and the stale-turn-control test in
+backend_contract) fail intermittently with TimeoutError.  Nothing in either
+module asserts that a wait times out, so raise the budget; it stays below the
+60 s pytest-timeout cap even when several waits stack up in one test.
+
+Index: mistral-vibe-2.25.7/tests/app_server/backend_contract/test_turns.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/tests/app_server/backend_contract/test_turns.py
++++ mistral-vibe-2.25.7/tests/app_server/backend_contract/test_turns.py
+@@ -590,7 +590,7 @@ async def test_interrupt_terminates_an_a
+ 
+     turn = asyncio.create_task(consume_turn())
+     try:
+-        await asyncio.wait_for(started.wait(), timeout=1)
++        await asyncio.wait_for(started.wait(), timeout=10)
+         await backend_contract_session.interrupt()
+         await turn
+     finally:
+@@ -715,7 +715,7 @@ async def test_steering_adds_a_public_us
+ 
+     turn = asyncio.create_task(consume_turn())
+     try:
+-        await asyncio.wait_for(started.wait(), timeout=1)
++        await asyncio.wait_for(started.wait(), timeout=10)
+         active_turn = backend_contract_session.state.latest_turn
+         assert active_turn is not None
+         await backend_contract_session.inject_user_context(
+@@ -762,7 +762,7 @@ async def test_stale_turn_control_return
+ 
+     turn = asyncio.create_task(consume_turn())
+     try:
+-        await asyncio.wait_for(started.wait(), timeout=1)
++        await asyncio.wait_for(started.wait(), timeout=10)
+         with pytest.raises(AppServerResponseError) as exc_info:
+             await backend_contract_connection.client.request(
+                 "turn/steer",
+@@ -802,10 +802,10 @@ async def test_reconnect_replays_turn_ou
+ 
+     turn = asyncio.create_task(consume_turn())
+     try:
+-        await asyncio.wait_for(started.wait(), timeout=1)
++        await asyncio.wait_for(started.wait(), timeout=10)
+         await backend_contract_connection.client.close()
+         release.set()
+-        events = await asyncio.wait_for(turn, timeout=1)
++        events = await asyncio.wait_for(turn, timeout=10)
+     finally:
+         release.set()
+         if not turn.done():
+Index: mistral-vibe-2.25.7/tests/app_server/test_turns.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/tests/app_server/test_turns.py
++++ mistral-vibe-2.25.7/tests/app_server/test_turns.py
+@@ -65,8 +65,8 @@ async def test_background_title_keeps_ru
+     background_events = session.events()
+ 
+     try:
+-        during_turn = await asyncio.wait_for(_consume(turn_events), timeout=1)
+-        await asyncio.wait_for(generation_started.wait(), timeout=1)
++        during_turn = await asyncio.wait_for(_consume(turn_events), timeout=10)
++        await asyncio.wait_for(generation_started.wait(), timeout=10)
+ 
+         pending = [
+             event
+@@ -79,7 +79,7 @@ async def test_background_title_keeps_ru
+         finish_generation.set()
+         delivered: list[object] = []
+         while True:
+-            event = await asyncio.wait_for(background_events.__anext__(), timeout=1)
++            event = await asyncio.wait_for(background_events.__anext__(), timeout=10)
+             delivered.append(event)
+             if isinstance(event, SessionSnapshot) and event.state.is_quiescent is True:
+                 break
+@@ -127,8 +127,8 @@ async def test_retry_state_survives_unre
+     turns = legacy_backend(server).session.turns
+ 
+     try:
+-        await asyncio.wait_for(retry_started.wait(), timeout=1)
+-        retry_snapshot = await asyncio.wait_for(retry_snapshot_task, timeout=1)
++        await asyncio.wait_for(retry_started.wait(), timeout=10)
++        retry_snapshot = await asyncio.wait_for(retry_snapshot_task, timeout=10)
+         legacy_retry = await _next_event(events, TurnRetrying)
+         retrying = turns.retrying
+         active_turn = turns.active_turn
+@@ -185,7 +185,7 @@ async def test_interrupt_clears_retry_st
+                 await retry_sink(RetryReason.from_http_status(503))
+ 
+             future = asyncio.run_coroutine_threadsafe(report_retry(), loop)
+-            future.result(timeout=1)
++            future.result(timeout=10)
+ 
+         await asyncio.to_thread(emit_retry)
+         retry_started.set()
+@@ -203,8 +203,8 @@ async def test_interrupt_clears_retry_st
+     turns = legacy_backend(server).session.turns
+ 
+     try:
+-        await asyncio.wait_for(retry_started.wait(), timeout=1)
+-        retry_snapshot = await asyncio.wait_for(retry_snapshot_task, timeout=1)
++        await asyncio.wait_for(retry_started.wait(), timeout=10)
++        retry_snapshot = await asyncio.wait_for(retry_snapshot_task, timeout=10)
+         await _next_event(events, TurnRetrying)
+         assert turns.retrying is not None
+         assert retry_snapshot.state.retrying == turns.retrying
+@@ -251,7 +251,7 @@ async def test_retry_from_interrupted_tu
+                         await self.on_retry(RetryReason.from_http_status(503))
+ 
+                     future = asyncio.run_coroutine_threadsafe(report_retry(), loop)
+-                    future.result(timeout=1)
++                    future.result(timeout=10)
+                     loop.call_soon_threadsafe(late_retry_finished.set)
+ 
+                 self.late_retry_task = asyncio.create_task(
+@@ -280,23 +280,23 @@ async def test_retry_from_interrupted_tu
+     second_consumer: asyncio.Task[list[object]] | None = None
+ 
+     try:
+-        await asyncio.wait_for(first_turn_started.wait(), timeout=1)
++        await asyncio.wait_for(first_turn_started.wait(), timeout=10)
+         await session.interrupt()
+-        await asyncio.wait_for(first_consumer, timeout=1)
++        await asyncio.wait_for(first_consumer, timeout=10)
+         assert turns.retrying is None
+ 
+         second_events = session.act("second")
+         second_consumer = asyncio.create_task(_consume(second_events))
+-        await asyncio.wait_for(second_turn_started.wait(), timeout=1)
++        await asyncio.wait_for(second_turn_started.wait(), timeout=10)
+ 
+         release_late_retry.set()
+-        await asyncio.wait_for(late_retry_finished.wait(), timeout=1)
++        await asyncio.wait_for(late_retry_finished.wait(), timeout=10)
+ 
+         assert turns.retrying is None
+         assert session.state.retrying is None
+ 
+         finish_second_turn.set()
+-        await asyncio.wait_for(second_consumer, timeout=1)
++        await asyncio.wait_for(second_consumer, timeout=10)
+     finally:
+         release_late_retry.set()
+         finish_second_turn.set()

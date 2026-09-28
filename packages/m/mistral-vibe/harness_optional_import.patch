@@ -1,0 +1,29 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: keep the Harness off the legacy import path
+
+_provided_tools imports mistralai_vibe_local_harness.protocol at module scope,
+so the module-scope import of it here pulled the Harness distribution in for
+every app-server import -- including the legacy path, which must run without
+it (the neighbouring imports below say so).  vibe_tool_groups() is only ever
+called from build_unified_session_context(), so import it there.
+
+Index: mistral-vibe-2.25.7/vibe/app_server/_runtime.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/vibe/app_server/_runtime.py
++++ mistral-vibe-2.25.7/vibe/app_server/_runtime.py
+@@ -29,7 +29,6 @@ from vibe.app_server._projection import
+     project_skill_summaries,
+     project_unified_agent_summaries,
+ )
+-from vibe.app_server._provided_tools import vibe_tool_groups
+ from vibe.app_server._session_backend_port import SessionBackendHost
+ from vibe.app_server._session_backend_services import SessionBackendServices
+ from vibe.app_server._session_model import (
+@@ -1331,6 +1330,7 @@ class HarnessProcess:
+ 
+         # Imported here rather than at module scope: it depends on the Harness
+         # package, which only exists under the experimental-harness extra.
++        from vibe.app_server._provided_tools import vibe_tool_groups
+         from vibe.app_server._provider_credentials import ProviderCredentialService
+         from vibe.app_server._unified_harness_backend_adapter import (
+             CorrelationIdHolder,

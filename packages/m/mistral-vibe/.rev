@@ -625,4 +625,41 @@ workspace roots. All nine patches re-apply cleanly. Local native
 aarch64 builds green (main + test flavors, 8343 passed / 40 skipped).</comment>
     <requestid>1377760</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>af98045744a689b0ac3673037f666a92</srcmd5>
+    <version>2.25.8</version>
+    <time>1790585127</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.25.8 (includes 2.25.7):
+  * Remote Vibe Code project configuration, session
+    archiving with unseen indicators, pinned live todo plan
+  * Plugin MCP servers start so their tools are callable;
+    sessionless MCP add/remove, caret-aware completion
+  * /leanstall works on the unified backend without TUI
+    crashes; clean exit on terminal disconnect
+  * Hardened Git handling: automatic project context no longer
+    runs repository-configured clean or process filters, and
+    repository inspection, worktree setup, fetches and teleport
+    diffs no longer honour repository-controlled Git
+    executables, hooks, helpers or configuration. Worktree
+    operations disable core.hooksPath, so a repository's own
+    hooks can no longer run before trust validation
+    (CVE-2026-93993, boo#1282078)
+  * The Vibe home, prompt history, debug log and trust store are
+    now created owner-only, and the home plus existing session
+    logs are tightened at startup; ACP workspace-trust decisions
+    require a session and cannot target another directory
+  * Shell approvals no longer widen across programs,
+    subcommands, redirections or line continuations, and
+    WebFetch asks again before following a redirect to another
+    origin
+  * vibe mcp add --allow-insecure-http and /mcp add
+    --allow-insecure-http opt into plaintext http:// MCP servers
+    on non-localhost hosts
+  * /mcp login now fails loudly when a server never issues an
+    OAuth challenge, instead of reporting a false success
+  * Config layers merge key by key, so setting one nested value
+    no longer discards the rest of that group</comment>
+    <requestid>1380774</requestid>
+  </revision>
 </revisionlist>

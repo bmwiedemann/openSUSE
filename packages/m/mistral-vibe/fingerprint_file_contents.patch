@@ -9,12 +9,12 @@ does not help: it comes from the same clock and does not tick either (measured:
 Contents are read with os.pread() so the caller's file position is untouched and
 the O_RDWR temp handle of the atomic-write path can still be fingerprinted.
 
-Index: mistral-vibe-2.25.0/vibe/core/config/fingerprint.py
+Index: mistral-vibe-2.25.7/vibe/core/config/fingerprint.py
 ===================================================================
---- mistral-vibe-2.25.0.orig/vibe/core/config/fingerprint.py
-+++ mistral-vibe-2.25.0/vibe/core/config/fingerprint.py
-@@ -27,10 +27,35 @@ def capture_stable_file(path: Path) -> I
-         raise ConcurrencyConflictError(expected_fp=before, actual_fp=after)
+--- mistral-vibe-2.25.7.orig/vibe/core/config/fingerprint.py
++++ mistral-vibe-2.25.7/vibe/core/config/fingerprint.py
+@@ -29,10 +29,35 @@ def open_fingerprinted_file(path: Path)
+         yield file, create_file_fingerprint(file)
  
  
 +_FINGERPRINT_CHUNK_SIZE = 1 << 16

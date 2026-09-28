@@ -1,0 +1,64 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: build the pure-Python distribution with hatchling
+
+2.25.7 switched [build-system] to maturin so that the PyO3 extension
+mistralai_vibe_local_harness._native is compiled from harness/core.  That crate
+pulls deno_core/deno_ast and pins v8, whose build script either downloads a
+prebuilt static library or fetches GN, ninja and clang from
+chromium.googlesource.com -- neither is possible in an offline build, and
+upstream publishes no sdist to fall back on.  Restore the 2.25.4 hatchling
+configuration so the pure-Python vibe/ package is built; the Unified Harness is
+optional at runtime (vibe/_experimental_harness.py defaults to the legacy
+backend and raises ExperimentalHarnessUnavailableError when the distribution is
+missing), so the CLI is fully functional without it, minus --experimental-harness.
+
+Index: mistral-vibe-2.25.7/pyproject.toml
+===================================================================
+--- mistral-vibe-2.25.7.orig/pyproject.toml
++++ mistral-vibe-2.25.7/pyproject.toml
+@@ -141,33 +141,24 @@ Issues = "https://github.com/mistralai/m
+ Documentation = "https://github.com/mistralai/mistral-vibe#readme"
+ 
+ [build-system]
+-requires = ["maturin==1.14.1"]
+-build-backend = "maturin_backend"
+-backend-path = ["build_backend"]
++requires = ["hatchling==1.31.0", "hatch-vcs==0.5.0", "editables==0.6"]
++build-backend = "hatchling.build"
++
++[tool.hatch.metadata]
++allow-direct-references = true
+ 
+ [[tool.uv.index]]
+ default = true
+ name = "pypi"
+ url = "https://pypi.org/simple"
+ 
+-[tool.maturin]
+-manifest-path = ".native-build/harness-core/Cargo.toml"
+-module-name = "mistralai_vibe_local_harness._native"
+-python-source = "."
+-python-packages = ["vibe", "mistralai_vibe_local_harness"]
+-include = [
+-    { path = "vibe/_bin/*", format = "wheel" },
+-    # The runtime is staged during the build and ignored by Git. Include it
+-    # explicitly so Maturin does not filter its Python sources out.
+-    { path = "mistralai_vibe_local_harness/*", format = "wheel" },
+-    { path = "mistralai_vibe_local_harness/**/*", format = "wheel" },
+-]
+-exclude = [
+-    "**/__pycache__/**",
+-    "**/*.pyc",
+-    "vibe/cli-rust/**",
+-]
+-features = ["extension-module"]
++[tool.hatch.build.targets.wheel]
++# "packages", not the 2.25.4 "include": an include pattern is gitignore-style
++# and "vibe/" would also match harness/.../mistralai_vibe_local_harness/vibe.
++packages = ["vibe"]
++# vibe/cli-rust is the (unbuilt, separately licensed) Rust CLI source tree;
++# upstream's maturin config excludes it from the wheel too.
++exclude = ["vibe/cli-rust/**"]
+ 
+ [project.scripts]
+ vibe = "vibe.cli.launcher:main"

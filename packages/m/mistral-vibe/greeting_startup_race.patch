@@ -1,0 +1,37 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: do not crash the post-ready worker when the chat is gone
+
+_show_greeting_message() runs inside the non-exclusive worker started by
+_start_post_ready_startup(), after an await on the account and identity
+refreshes.  When the chat widget is not on the screen by the time that await
+returns, query_one("#chat") raises NoMatches out of the worker and Textual
+re-raises it at the end of run_test(), failing whichever UI test happened to
+be running.  The greeting is cosmetic, so skip it; messages.py already guards
+the same lookup this way.
+
+Index: mistral-vibe-2.25.7/vibe/cli/textual_ui/app.py
+===================================================================
+--- mistral-vibe-2.25.7.orig/vibe/cli/textual_ui/app.py
++++ mistral-vibe-2.25.7/vibe/cli/textual_ui/app.py
+@@ -22,6 +22,7 @@ from rich import print as rprint
+ from textual.app import WINDOWS, App, ComposeResult
+ from textual.binding import Binding, BindingType
+ from textual.containers import Horizontal, VerticalGroup, VerticalScroll
++from textual.css.query import NoMatches
+ from textual.dom import NoScreen
+ from textual.driver import Driver
+ from textual.events import AppBlur, AppFocus, MouseScrollDown, MouseScrollUp, MouseUp
+@@ -6267,7 +6268,12 @@ class VibeApp(App):  # noqa: PLR0904
+         if username is None:
+             return
+         greeting_message = GreetingMessage(username)
+-        chat = self._chat_widget
++        try:
++            chat = self._chat_widget
++        except NoMatches:
++            # Nothing to mount into: this runs in the post-ready worker, which
++            # can still be waiting on the network when the chat goes away.
++            return
+         # Mount after banner so it appears below banner and scrolls up with messages
+         await chat.mount(greeting_message, after=self._banner)
+         self._greeting_message = greeting_message

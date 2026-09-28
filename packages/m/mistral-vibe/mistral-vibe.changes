@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Thu Sep 24 09:35:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.25.8 (includes 2.25.7):
+  * Remote Vibe Code project configuration, session
+    archiving with unseen indicators, pinned live todo plan
+  * Plugin MCP servers start so their tools are callable;
+    sessionless MCP add/remove, caret-aware completion
+  * /leanstall works on the unified backend without TUI
+    crashes; clean exit on terminal disconnect
+  * Hardened Git handling: automatic project context no longer
+    runs repository-configured clean or process filters, and
+    repository inspection, worktree setup, fetches and teleport
+    diffs no longer honour repository-controlled Git
+    executables, hooks, helpers or configuration. Worktree
+    operations disable core.hooksPath, so a repository's own
+    hooks can no longer run before trust validation
+    (CVE-2026-93993, boo#1282078)
+  * The Vibe home, prompt history, debug log and trust store are
+    now created owner-only, and the home plus existing session
+    logs are tightened at startup; ACP workspace-trust decisions
+    require a session and cannot target another directory
+  * Shell approvals no longer widen across programs,
+    subcommands, redirections or line continuations, and
+    WebFetch asks again before following a redirect to another
+    origin
+  * vibe mcp add --allow-insecure-http and /mcp add
+    --allow-insecure-http opt into plaintext http:// MCP servers
+    on non-localhost hosts
+  * /mcp login now fails loudly when a server never issues an
+    OAuth challenge, instead of reporting a false success
+  * Config layers merge key by key, so setting one nested value
+    no longer discards the rest of that group
+  * Sessions reopen on their last model and thinking level,
+    open much faster with many git worktrees, and path
+    completion no longer inserts stale suggestions
+  * /teleport accepts Vibe and workspace API keys, including on
+    free accounts, and says which key to use when it rejects one
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Add build_system_hatchling.patch: upstream now builds a PyO3
+  extension with maturin, whose v8 crate downloads a toolchain at
+  build time; keep building the pure-Python tree with hatchling
+- Add harness_optional_import.patch: keep the optional Unified
+  Harness distribution off the legacy app-server import path,
+  which otherwise fails to import without it
+- Add app_server_turn_timeouts.patch: one-second asyncio waits in
+  the turn tests expire on a loaded build worker
+- Add greeting_startup_race.patch: the startup worker raised out
+  of Textual when the chat widget was not on screen yet
+- Refresh the carried patches for 2.25.7 and extend
+  harness_importorskip.patch to the test modules that now import
+  the harness at module scope
+- Run test_respects_max_entries_to_process_limit again: the
+  upstream race that made it fail is gone
+- Delete vibe/cli-rust and client-e2e after unpacking: the Rust
+  front-end declares its own "Proprietary" license in Cargo.toml
+  and neither tree is built or shipped
+- Drop python3-sounddevice: upstream switched the audio engine to
+  miniaudio, which Factory does not carry, so voice recording and
+  playback are no longer available
+- Require python3-GitPython >= 3.1.61
+
+-------------------------------------------------------------------
 Sun Sep 13 16:55:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.25.4:
