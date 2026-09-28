@@ -488,4 +488,12 @@
     <comment>- Update to release 3.10</comment>
     <requestid>1373059</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>281782aec3ec897a710f7d3e35a75094</srcmd5>
+    <version>3.11</version>
+    <time>1790585070</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 3.11</comment>
+    <requestid>1380729</requestid>
+  </revision>
 </revisionlist>

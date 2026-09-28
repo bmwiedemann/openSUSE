@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        3.10
+Version:        3.11
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -29,6 +29,8 @@ Source:         https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
 Source15:       debian.gromox.config
+Patch1:         0001-build-drop-D_TIME_BITS-64.patch
+Patch2:         0002-zombies.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
@@ -92,6 +94,7 @@ Requires:       php-posix
 Requires:       php-soap
 %endif
 Requires:       (chawan or w3m)
+Recommends:     pandoc
 Requires(pre):  user(grommunio)
 Requires(pre):  user(gromox)
 Requires(pre):  group(gromox)
@@ -120,9 +123,10 @@ grommunio-web. The grommunio appliance ships these essentials and has a
 ready-to-run installation of Gromox.
 
 %prep
-%autosetup -p0
+%autosetup -p1
 
 %build
+autoreconf -fi
 %configure \
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 	CC=gcc-12 CXX=g++-12 \
@@ -170,7 +174,9 @@ perl -i -lpe 's{Type=simple}{Type=simple\nRestart=on-failure}' "$b/%_unitdir"/*.
 %fdupes %buildroot/%_prefix
 
 %check
+%ifnarch %ix86 %arm
 %make_build check V=1
+%endif
 
 # Though services autoreconnect, starting them in the preferred order services is smoother
 %global services gromox-timer.service gromox-http.service gromox-zcore.service gromox-event.service gromox-midb.service gromox-imap.service gromox-pop3.service gromox-delivery.service gromox-delivery-queue.service gromox-snapshot.service gromox-snapshot.timer gromox-cleaner.service

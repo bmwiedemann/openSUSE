@@ -1,4 +1,47 @@
 -------------------------------------------------------------------
+Thu Sep 24 10:57:55 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.11
+  * imap: implement FETCH BINARY / BINARY.SIZE
+  * lda: out-of-office replies now derive a subject from the
+    incoming message when the mailbox has none stored, e.g. when
+    OOF is set over EWS. The new config directive
+    gromox.cfg:``autoreply_subject_prefix`` was added.
+  * emsmdb, zcore: new per-mailbox settings MessageCopyForSentAs
+    and MessageCopyForSendOnBehalf.
+  * mbop: new "get-msgcopy", "set-msgcopy" and "clear-msgcopy"
+    commands
+  * delivery: the new gromox.cfg directive
+    ``lda_relay_unknown_recipients`` hands autoreplies and bounce
+    reports for mailbox-less addresses of local domains to the MTA,
+    for use in split domain setups
+  * The rule processor now logs the outcome of condition
+    evaluations.
+  * INET↔MAPI conversions specifically recognize OpenPGP MIME and
+    GpgOL messages.
+  * A delegate's answer to a meeting invitation is sent in the name
+    of the mailbox it was addressed to, rather than the delegate's
+    own.
+  * Meeting replies carry the ORGANIZER property that RFC 5546 asks
+    for, and name the delegate who answered in the attendee's
+    SENT-BY parameter.
+  * The rule processor executes Extended Rules' OP_MOVE/OP_COPY now
+    and matches string restrictions across PT_STRING8↔PT_UNICODE.
+  * zcore: When folder permissions are updated, the updated
+    delegate list for exmdb is now constructed from
+    PR_SCHDINFO_DELEGATE_ENTRYIDS rather than the recipients of the
+    "Schedule+ EMS Interface" rule, so that delegates who are to
+    not receive meeting copies actually get delegate permissions.
+  * During MAPI-to-iCalender conversions, TZID is now omitted when
+    exporting timeless DATE values.
+  * Repaired some instances where the by-time message lookup index
+    would go out of sync with a folder's message set and indicate
+    fewer messages present than there were.
+  * kdb2mt: An inefficiency that led to exponential time waste
+    processing deeply-nested messages was eliminated.
+- Add 0001-build-drop-D_TIME_BITS-64.patch, 0002-zombies.patch
+
+-------------------------------------------------------------------
 Sat Aug 22 10:56:12 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.10
