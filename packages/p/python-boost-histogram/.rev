@@ -126,4 +126,34 @@
   * Slightly better getitem type</comment>
     <requestid>1347779</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>42057e9ad44cbe934b12ea36233c4ac8</srcmd5>
+    <version>1.8.1</version>
+    <time>1790585067</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.8.1:
+  * `MultiCell` now requires a cell count of one or more; the
+    argument has no default by @henryiii in
+  * Filling an integer axis with a value that does not fit in an
+    `int` raises `ValueError` instead of wrapping around by
+    @henryiii in
+  * `boost_histogram.numpy` matches NumPy more closely: empty
+    input, 1D `histogramdd` input, a single edge array in
+    `histogram2d`, and range validation by @henryiii in
+  * Encode UTF-8 for non-ASCII strings filled into `StrCategory`
+    from a list or array by @henryiii in
+  * Avoid C++ aborts in axis metadata compare, `MultiCell` fill,
+    and `Boolean.value()`; correct `empty()` for `MultiCell` by
+    @henryiii in
+  * Keep growth axes valid after a fill or merge, and raise
+    worker exceptions from a threaded fill by @henryiii in
+  * Correct UHI indexing with flow locators, disabled flow bins,
+    and sliced group rebin by @henryiii in
+  * Give each axis copy its own metadata dict, and correct
+    serialization, `register()`, integer-storage multiplication,
+    transform equality, and repr by @henryiii in
+  * Avoid Boost indexed-range UB in rank-0 histograms and add
+    Windows 3.14t testing by @ikrommyd in</comment>
+    <requestid>1380724</requestid>
+  </revision>
 </revisionlist>
