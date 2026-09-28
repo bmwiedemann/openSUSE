@@ -664,4 +664,16 @@
       enabled on large tailnets would experience startup failures. (forwarded request 1372289 from darix)</comment>
     <requestid>1372715</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>914b860a0263d95b908086c92b666a99</srcmd5>
+    <version>1.102.4</version>
+    <time>1790594648</time>
+    <user>anag_factory</user>
+    <comment>- Update 1.102.4
+  - All Platforms
+    - Resolved an issue that could cause a loss in connectivity
+      when a netmap update occurs near the time of
+      reauthentication. (forwarded request 1377022 from darix)</comment>
+    <requestid>1381118</requestid>
+  </revision>
 </revisionlist>
