@@ -20,16 +20,15 @@
 %define soname 3
 %define soname_cpp 9
 Name:           xmlrpc-c
-Version:        1.64.03
+Version:        1.64.04
 Release:        0
 Summary:        Library implementing XML-based Remote Procedure Calls
 License:        BSD-3-Clause AND MIT
 URL:            https://xmlrpc-c.sourceforge.net/
-# NB: upstream dropped the "-c" from the 1.64.x tarball/dir name (xmlrpc-X.Y.Z)
-Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-%{version}.tgz
+# NB: 1.64.x renamed the tarball/dir back to xmlrpc-c-X.Y.Z (was xmlrpc-X.Y.Z)
+Source:         https://downloads.sourceforge.net/xmlrpc-c/xmlrpc-c-%{version}.tgz
 Source9:        %{name}-rpmlintrc
 Patch1:         skip-expat.patch
-Patch2:         0002-CVE-2026-15928-HTML-injection.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  gcc-c++
@@ -209,7 +208,7 @@ XML-RPC is a lightweight RPC protocol based on XML and HTTP. This
 package is used by XML-RPC clients and servers written in C and C++.
 
 %prep
-%autosetup -p1 -n xmlrpc-%{version}
+%autosetup -p1
 echo "Not using the embedded libexpat copy"
 rm -rvf lib/expat
 

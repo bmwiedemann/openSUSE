@@ -162,4 +162,13 @@
     <comment></comment>
     <requestid>1368370</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>be2579332bd50252f709f67e702136a2</srcmd5>
+    <version>1.64.04</version>
+    <time>1790585250</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.64.04: Abyss HTML-escaping fix for CVE-2026-15928 (bsc#1272769) from upstream; backported patch dropped, tarball renamed back to xmlrpc-c-. Built green on aarch64, 1950/1950 tests pass.
+</comment>
+    <requestid>1380968</requestid>
+  </revision>
 </revisionlist>
