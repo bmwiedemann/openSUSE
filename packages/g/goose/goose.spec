@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.51.0
+Version:        1.52.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,22 +26,29 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1334 crates vendored, 611 in the linked graph -- the code-mode and
+# (1327 crates vendored, 602 third-party crates in the linked graph plus the
+# ten goose workspace crates -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
 # then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
 # Where a crate offers a choice the Apache-2.0 branch is elected, and MIT where
 # Apache-2.0 is not on offer; both are already named, so no "OR" expression in
-# the graph adds an identifier. The remaining entries are crates with no choice
+# the graph adds an identifier (the ten "Unlicense OR MIT" crates elect MIT,
+# adler2 elects Apache-2.0 over 0BSD, ryu elects Apache-2.0 over BSL-1.0, and
+# the "Apache-2.0 WITH LLVM-exception" branch of linux-raw-sys/rustix is not
+# the one taken). The remaining entries are crates with no choice
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
 # MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the ICU crates and
-# unicode-ident, CC0-1.0 from the six bitcoin_hashes/secp256k1 crates (nostr),
+# unicode-ident, CC0-1.0 from the seven bitcoin_hashes/secp256k1 crates (nostr),
 # CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
-# simple_asn1 and untrusted (and from ring, "Apache-2.0 AND ISC"),
-# BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe, Zlib from foldhash
+# simple_asn1, untrusted and the aws-lc pair (and from ring, "Apache-2.0 AND
+# ISC"),
+# BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe plus matchit and the
+# three zstd crates, Zlib from foldhash
 # and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 161 MIT-only crates. No crate in the graph carries BSD-2-Clause;
-# that identifier is held solely by the bundled leaflet.min.js named below.
+# MIT from the 170 MIT-only crates. Only zerocopy and zerocopy-derive name
+# BSD-2-Clause, and only as the branch of a choice that is not elected, so that
+# identifier is held solely by the bundled leaflet.min.js named below.
 # MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;
 # the two texts are additionally installed as %%license files.

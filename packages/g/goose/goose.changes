@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 27 07:30:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.52.0:
+  * recipe parameters capped at 32 entries / 200 select options /
+    128 KiB, and custom provider config files are now written 0600
+  * the todo extension is opt-in and its prompts softened
+  * new Z.AI Coding Plan provider with streaming tool calls,
+    CoreWeave in the bundled provider metadata, and Opus 5.5,
+    GPT-6-sol and GPT-6-luna model support
+  * chat-completions tools are sent with strict:false and
+    many-image dimension errors report as context overflow
+  * skills follow working-directory changes; incomplete CLI
+    input cancels an in-flight elicitation
+- CVE-2026-85623 (boo#1279391) is still NOT fixed: agents/retry.rs
+  and the stdio extension spawn are byte-identical to 1.51.0
+- Refresh the vendored dependencies; the linked crate graph keeps
+  its shape (602 third-party crates) and only 17 of them move
+- Re-derive the License tag from the new vendored crate graph
+  (1327 crates vendored): the 13 SPDX identifiers are unchanged
+- Rebase goose-system-libdbus.patch onto the 1.52.0 workspace
+  manifest (its old context only applied with fuzz)
+- Drop goose.obsinfo, the regenerated tar-service intermediate
+
+-------------------------------------------------------------------
 Thu Sep 24 05:58:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.51.0:

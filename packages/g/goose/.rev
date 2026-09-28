@@ -139,4 +139,56 @@ Built locally on aarch64 against openSUSE:Factory:ARM: rpmlint 0 errors,
     <comment>Update to 1.51.0: ACP/EUrouter/GPT-live features, recipe validation. CVE-2026-85623 NOT fixed upstream yet (verified absent, noted in changelog).</comment>
     <requestid>1380098</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a60fde07d7a16297e9a90e21e22afffb</srcmd5>
+    <version>1.52.0</version>
+    <time>1790585238</time>
+    <user>anag_factory</user>
+    <comment>Update goose to 1.52.0 (science:machinelearning:mcp rev 36).
+
+- Vendored dependencies refreshed with the existing cargo_vendor service
+  (update=true). The linked crate graph keeps its exact shape: 0 crates
+  added, 0 removed, 17 version moves out of 602 third-party crates. The
+  vendored tarball is smaller (1336 -&gt; 1327) because upstream's ACP SDK
+  bump let a set of moka/hickory/multiversion deps drop out.
+- License: re-derived from the new tree with cargo tree -e normal, as a
+  re-vendor can add copyleft. The 13 SPDX identifiers are unchanged; the
+  # Legal-Review-Notice: now also records the elections away from
+  Unlicense OR MIT (10 crates -&gt; MIT), adler2 (0BSD -&gt; Apache-2.0) and
+  ryu (BSL-1.0 -&gt; Apache-2.0). No new copyleft.
+- RUSTSEC sweep over the linked graph at both versions: identical result,
+  RUSTSEC-2025-0141 (bincode) and RUSTSEC-2024-0436 (paste), both
+  informational/unmaintained, no CVE, no fixed version, neither crate
+  moved. Nothing fixed by this update, so nothing is claimed.
+- Rebased goose-system-libdbus.patch: it still applied at 1.52.0 but only
+  at fuzz 2, because upstream moved iroh 1.1.0 -&gt; 1.2.0 and dropped the
+  agent-client-protocol git patch entries. Regenerated against the new
+  workspace manifest; applies at --fuzz=0 with the hunk body unchanged.
+- Dropped goose.obsinfo, the regenerated tar-service intermediate that an
+  earlier revision had accidentally committed.
+- Four Provides: bundled(...) re-derived from the vendored sources and
+  unchanged (aws-lc 5.7.0, libzstd 1.5.7, oniguruma 6.9.10, sqlite3
+  3.51.3). Build floors re-verified, not inherited: rust-version still
+  1.94.1, libdbus-sys still 0.2.7 with its 1.6 probe.
+
+CVE-2026-85623 (boo#1279391) is still NOT fixed. crates/goose/src/agents/
+retry.rs and agents/types.rs (RetryConfig) are byte-identical to 1.51.0 and
+retry.rs still runs `sh -c` for every retry.checks[].command; the stdio spawn
+only moved into a new extension_manager/stdio.rs with the same unguarded
+Command::new(). Verified in the shipped tree, not from release wording. The
+bug stays open with its current assignee; nothing in this request resolves it.
+
+Two upstream items were deliberately NOT credited because they are not in
+what we ship: the decisions provider crate (cargo tree -i goose-sdk matches
+nothing; only goose-sdk-types is linked) and the roaming TCP bridge
+(cargo tree -i goose-roaming matches nothing; the feature is excluded by our
+--no-default-features build).
+
+Built natively on aarch64 against openSUSE:Factory:ARM standard aarch64:
+green, rpmlint 0 errors / 0 warnings / 0 badness, %check green (version
+1.52.0 reported by the binary). spec-cleaner no diff; source_validator and
+all changelog gates clean.
+</comment>
+    <requestid>1380939</requestid>
+  </revision>
 </revisionlist>
