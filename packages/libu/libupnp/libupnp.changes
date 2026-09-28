@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 25 21:50:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.5
+  * Fix SID matching for incoming GENA NOTIFY requests.
+    [GHSA-ggw2-jjv9-h22c]
+
+-------------------------------------------------------------------
+Thu Sep 24 23:34:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.4
+  * Stopped counting the read-head entity bytes against header
+    sizes.
+  * Sockets are now closed when http_OpenHttpGetEx() gets a bad
+    response.
+
+-------------------------------------------------------------------
 Wed Sep 23 08:08:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 22.1.2
