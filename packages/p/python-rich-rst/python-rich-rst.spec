@@ -17,7 +17,7 @@
 
 
 Name:           python-rich-rst
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        A beautiful reStructuredText renderer for rich
 License:        MIT

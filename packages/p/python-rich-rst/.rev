@@ -28,4 +28,13 @@
 - No runtime dependency changes</comment>
     <requestid>1363829</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>e0c3f115c33ec2227c6d1865d865b6ba</srcmd5>
+    <version>2.2.0</version>
+    <time>1790596063</time>
+    <user>anag_factory</user>
+    <comment>Update python-rich-rst to 2.2.0: file-reading directives now disabled by default, fixing two local-file-read issues (GHSA-qf6c-j2qx-p22r, GHSA-qx2q-xxw7-587f); plus parsed-literal support and rendering fixes. No dependency changes. Built green locally (aarch64, rpmlint 0E/0W).
+</comment>
+    <requestid>1381108</requestid>
+  </revision>
 </revisionlist>

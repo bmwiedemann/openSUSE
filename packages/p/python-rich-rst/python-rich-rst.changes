@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:00:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.2.0:
+  * Security: fix arbitrary local file read through
+    `.. literalinclude::` accepting absolute and `../` paths
+    (GHSA-qf6c-j2qx-p22r).
+  * Security: fix arbitrary local file read through `.. raw::`
+    with `:file:` or `:url:`; same fix covers `.. csv-table::`
+    and the `include` directive (GHSA-qx2q-xxw7-587f).
+  * Directives reading other files are now disabled by default;
+    pass `allow_file_access=True` (`--allow-file-access` on
+    the CLI) to enable them for trusted markup.
+  * Add `parsed-literal` support, sidebar subtitles, better
+    docinfo rendering and Python domain type/value titles.
+  * Many rendering fixes: admonition panels, stray blank lines,
+    headers, footers, math labels and the man page section.
+  * No runtime dependency changes.
+
+-------------------------------------------------------------------
 Sun Jul  5 09:11:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.0:
