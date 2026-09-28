@@ -41,4 +41,17 @@
   * Drop support for Python 3.5, 3.6 and 3.7.</comment>
     <requestid>1338099</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>f2bd38535e01cb6407d384d403666961</srcmd5>
+    <version>4.0.0</version>
+    <time>1790584739</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.0.0:
+  * Replace pkg_resources namespace with a PEP 420 native namespace.
+  * Consolidate packaging into a single pyproject.toml (remove setup.py,
+    setup.cfg).
+  * Add support for Python 3.14.
+  * Update security auditing and linting.</comment>
+    <requestid>1380287</requestid>
+  </revision>
 </revisionlist>

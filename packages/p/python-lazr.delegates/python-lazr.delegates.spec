@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-lazr.delegates
-Version:        2.1.1
+Version:        4.0.0
 Release:        0
 Summary:        Easily write objects that delegate behavior
 License:        LGPL-3.0-only
@@ -44,7 +44,6 @@ Easily write objects that delegate behavior
 %setup -q -n lazr_delegates-%{version}
 
 %build
-sed -i "/'nose'/d" setup.py
 %pyproject_wheel
 
 %install
@@ -59,7 +58,6 @@ sed -i "/'nose'/d" setup.py
 %license COPYING.txt
 %dir %{python_sitelib}/lazr
 %{python_sitelib}/lazr/delegates
-%{python_sitelib}/lazr[._]delegates-%{version}*-info
-%{python_sitelib}/lazr[._]delegates-%{version}*nspkg.pth
+%{python_sitelib}/lazr[._]delegates-%{version}.dist-info
 
 %changelog

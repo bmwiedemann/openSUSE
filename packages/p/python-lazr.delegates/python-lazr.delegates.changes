@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 25 02:45:10 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 4.0.0:
+  * Replace pkg_resources namespace with a PEP 420 native namespace.
+  * Consolidate packaging into a single pyproject.toml (remove setup.py,
+    setup.cfg).
+  * Add support for Python 3.14.
+  * Update security auditing and linting.
+
+-------------------------------------------------------------------
 Tue Mar 10 21:45:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.1:
