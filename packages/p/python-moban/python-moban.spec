@@ -1,7 +1,7 @@
 #
 # spec file for package python-moban
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,6 +38,7 @@ Source:         https://files.pythonhosted.org/packages/source/m/moban/moban-%{v
 Patch0:         remove_nose.patch
 Patch1:         stop-using-jinja-extensions.patch
 Patch2:         remove-mock.patch
+Patch3:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
