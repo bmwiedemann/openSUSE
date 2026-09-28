@@ -209,4 +209,29 @@ values match the manifest.</comment>
     <comment>Update to 0.3.360: six new templates.</comment>
     <requestid>1380159</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>eb6f4030c49064575a7f600cdd21ce3c</srcmd5>
+    <version>0.3.361</version>
+    <time>1790585182</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-workflow-templates-core to 0.3.361.
+
+The template manifest grows from 588 to 594: six new templates
+(ByteDance Seedream 5.0 Flash t2i and image edit, Seedance 2.5 Draft
+i2v/r2v/t2v, Ming Image 01 Design t2i) plus two typo-corrected renames,
+api_king_o3_t2v -&gt; api_kling_o3_t2v and
+api_runway_gen4_turo_image_to_video -&gt;
+api_runway_gen4_turbo_image_to_video. 229 template checksums are
+refreshed and the Recraft logo moves to logo/recraft.png.
+
+No code or dependency change - the loader is byte-identical and the
+sdist still declares no install dependencies. Tarball verified against
+the PyPI sdist digest.
+
+Green on all devel targets including openSUSE:Factory:ARM aarch64. No
+Bugzilla report references the package and no CVE appears in the
+crossed range.
+</comment>
+    <requestid>1380835</requestid>
+  </revision>
 </revisionlist>

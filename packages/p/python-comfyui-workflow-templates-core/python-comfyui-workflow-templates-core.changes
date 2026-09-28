@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Sep 26 18:53:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.361: the manifest now lists 594 templates
+  (was 588)
+  * New: ByteDance Seedream 5.0 Flash t2i and image edit, Kling
+    O3 t2v, Runway Gen-4 Turbo image to video, Seedance 2.5 Draft
+    i2v, r2v and t2v, and Ming Image 01 Design t2i
+  * api_king_o3_t2v and api_runway_gen4_turo_image_to_video are
+    gone; their typo-corrected names api_kling_o3_t2v and
+    api_runway_gen4_turbo_image_to_video take their place
+  * 229 template checksums refreshed; the Recraft logo is now
+    logo/recraft.png, the misspelled logo/recarft.png is dropped
+- No code or dependency change: the loader is byte-identical and
+  the sdist still declares no install dependencies
+
+-------------------------------------------------------------------
 Thu Sep 24 10:54:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.360: six new templates, refreshed
