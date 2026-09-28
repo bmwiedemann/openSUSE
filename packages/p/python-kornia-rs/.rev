@@ -23,4 +23,36 @@ Fri Aug 21 08:50:08 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
 </comment>
     <requestid>1372789</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>a00fc4df248d930abd79541a41ffabb2</srcmd5>
+    <version>0.1.15</version>
+    <time>1790585185</time>
+    <user>anag_factory</user>
+    <comment>Update python-kornia-rs to 0.1.15.
+
+The notable packaging change is the source. Upstream removed --sdist from
+its release workflow in 0.1.15 (&quot;not self-contained&quot;), so no PyPI sdist
+exists for this or any later version; Source0 therefore points at the
+v0.1.15 release tag. Two consequences: the unpacked tree is
+kornia-rs-0.1.15 rather than kornia_rs-0.1.15, and pyproject.toml now
+lives in the binding crate rather than at the top level, so the PEP 517
+build is wrapped in &quot;pushd kornia-py&quot;.
+
+The vendored registry grows from 88 MB to 269 MB because the tag's
+workspace also carries examples/* and kornia-cpp, which the generated
+sdist pruned; only the kornia-py closure is ever compiled.
+BuildRequires: rust moves to &gt;= 1.89, upstream's new rust-version.
+
+Licence re-audited against the new vendor tree (163 crates, no
+copyleft), so License: is unchanged.
+
+Native aarch64 build green, %check 18 passed per flavour, rpmlint
+0 errors / 0 badness (the two unstripped-.so warnings are pre-existing
+and identical in the shipped 0.1.14 build).
+
+Upstream names no CVE or GHSA across the 400 commits crossed, and no
+Bugzilla report references the package.
+</comment>
+    <requestid>1380837</requestid>
+  </revision>
 </revisionlist>

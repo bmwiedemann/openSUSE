@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Sep 26 18:11:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.15 (upstream assigned no CVE ids and shipped no
+  advisory):
+  * Memory-safety sweep on untrusted input: AprilTag RLE run-buffer
+    heap overflow on 1-pixel stripes, kornia-io decoder pixel cap
+    and GStreamer pipeline injection, imgproc out-of-bounds in
+    warp/remap/resize, numpy binding misuse, C++ FFI null/overflow
+    checks.
+  * OpenCV-parity image processing on CPU (NEON) and CUDA: Canny,
+    median and bilateral blur, CLAHE, connected components,
+    histogram, Gaussian pyramids, SIFT, CUDA remap, Laplacian,
+    integral image.
+  * New kornia-calib crate for multi-camera extrinsic calibration;
+    bundle adjustment gains intrinsics, priors and Huber-robust
+    PnP.
+  * Tensors and images dispatch on CPU/CUDA residency, with unified
+    and pinned write-combined allocators plus zero-copy host
+    buffers.
+  * Breaking Rust API: unchecked accessors are now unsafe, several
+    permutation and rectification entry points return Result.
+  * RVL reaches 5.7x compression; histogram, colour-check and
+    pyramid APIs filled in on the Python side.
+- Switch Source0 to the release tag: upstream removed --sdist from
+  its release workflow in 0.1.15 ("not self-contained"), so no PyPI
+  sdist exists from this version on. The tag keeps pyproject.toml
+  in the binding crate, so the PEP 517 build now runs from
+  kornia-py/.
+- Require rust >= 1.89, upstream's new floor.
+
+-------------------------------------------------------------------
+Mon Aug 31 11:36:02 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Enable build on riscv64
+
+-------------------------------------------------------------------
 Fri Aug 21 08:50:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package of python-kornia-rs 0.1.14:
