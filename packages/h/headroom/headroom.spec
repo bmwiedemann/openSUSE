@@ -20,12 +20,12 @@
 # the distribution primary interpreter.
 %define pythons %{primary_python}
 Name:           headroom
-Version:        0.38.0
+Version:        0.39.0
 Release:        0
 Summary:        Context optimization layer for LLM applications
 # Legal-Review-Notice: headroom-ai is Apache-2.0. The shipped artefact is
 # the maturin cdylib from crates/headroom-py (cargo tree --offline
-# -p headroom-py -e normal, 277 crates over 538 vendored). The only
+# -p headroom-py -e normal, 276 crates over 535 vendored). The only
 # copyleft licence in that graph is MPL-2.0 from option-ext 0.2.0 (via
 # hf-hub -> dirs -> dirs-sys). r-efi offers LGPL-2.1-or-later but is
 # UEFI-target-only and is not in the Linux graph. aws-lc-sys is vendored

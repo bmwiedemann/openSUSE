@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Sat Sep 26 17:12:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.39.0:
+  * New protect_messages hook vetoes compression of a given
+    message; wrap now handles 1m context in VS Code Claude
+  * Compression reports what it dropped, not just the byte count,
+    and dropped scalar-array items get a retrievable sentinel
+  * Image blocks are no longer dropped from /v1/messages requests
+  * Provider cache stops being busted by prefix transforms, keeps
+    cache_control and the forwarded OpenAI chat prefix, and is
+    partitioned per upstream
+  * Fixed-width command output is detected as tabular and kept out
+    of Kompress; timestamped log rows no longer route as grep
+    matches; .xls cells no longer fabricate digits above 2^53
+  * Kompress bounds its inference deadline to the request, keeps
+    the boolean connectives holding a condition together, and
+    preserves null and empty strings in lossless CSV compaction
+  * Proxy: rate limits scoped per api-key, configured TPM limits
+    enforced, urlopen ALPN pinned to http/1.1, and the validated
+    upstream address pinned so DNS rebinding cannot move it
+  * Savings rollups carry exact cache-read cost and lifetime output
+    spend, and report negative savings instead of flooring at zero
+  * Memory: extract_system_prompt is concatenative, unresolved
+    tools fail closed, None message content no longer crashes
+  * The Copilot OAuth token file is written to a private temp and
+    renamed into place, so a refused chmod can no longer leave the
+    refresh token world-readable
+  * cargo_vendor update=true moved tiktoken-rs, fancy-regex and
+    friends; licence set re-derived against the new tree, unchanged
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Tue Sep 22 13:53:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.38.0:

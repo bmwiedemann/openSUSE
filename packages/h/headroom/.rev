@@ -56,4 +56,40 @@ deliberate python-missing-require for ast-grep-cli, since the spec
 uses the distribution's ast-grep binary instead of the PyPI wheel.</comment>
     <requestid>1379700</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>ff3bdc3fc04a8e650583e6e52ce54cc8</srcmd5>
+    <version>0.39.0</version>
+    <time>1790585163</time>
+    <user>anag_factory</user>
+    <comment>Update headroom to 0.39.0.
+
+Only Version: moved in the spec - upstream's core dependencies and the
+whole [proxy] extra are byte-identical to 0.38.0, so every Requires and
+BuildRequires floor was re-verified rather than changed.
+
+The vendored crates were refreshed with the package's existing
+cargo_vendor service (mode=manual, update=true, which is why fancy-regex
+moved 0.17.0 -&gt; 0.19.2 and lazy_static was dropped within their semver
+ranges, independent of the lockfile). The licence set was re-derived
+from the new tree rather than inherited: still Apache-2.0 AND MPL-2.0,
+option-ext 0.2.0 the only copyleft. The Legal-Review-Notice counts are
+refreshed to 276/535.
+
+0.39.0's two commits labelled &quot;security:&quot; are deliberately not credited
+as security fixes. The Copilot OAuth one is real and shipped: the token
+is written to a private temp file and renamed into place, so a refused
+chmod can no longer leave the refresh token world-readable. &quot;Reject
+unauthenticated public proxy binds&quot; is a 0.0.0.0 -&gt; 127.0.0.1 change in
+Dockerfile and install.sh with no shipped file touched, and
+proxy/server.py already refused it at 0.38.0.
+
+Native aarch64 build green, %check 27 passed, rpmlint 0 errors /
+0 badness (2 pre-existing warnings: the ast-grep substitution and the
+inherent unstripped extension module).
+
+No CVE is named in the crossed range and no Bugzilla report references
+this package.
+</comment>
+    <requestid>1380833</requestid>
+  </revision>
 </revisionlist>
