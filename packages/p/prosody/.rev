@@ -889,4 +889,27 @@
   * util.timer: Fix incorrect rescheduling of some kinds of timers</comment>
     <requestid>1356867</requestid>
   </revision>
+  <revision rev="45" vrev="1">
+    <srcmd5>4d380eacfb69a503b20b18900e341956</srcmd5>
+    <version>13.0.7</version>
+    <time>1790584810</time>
+    <user>anag_factory</user>
+    <comment>- Update to 13.0.7:
+  * rostermanager, mod_roster: Include ‘approved’ attribute in roster items
+  * util.startup: Always apply umask
+  * Update TLS profile data from Mozilla/TLSRef
+  * net.server_epoll: Disable read timeouts on server sockets
+  * net.unbound: Reset and apply new config on reload
+  * net.unbound: Simplify by removing cancel()
+  * util.poll: Reject file descriptors outside of FD_SETSIZE in all methods
+  * net.websocket: Release connection and input state on disconnect
+  * net.server_select: Release queued strings on forced close
+  * net.unbound: Let in-flight queries complete after re-initialization
+  * net.server_epoll: Release pending write buffers on destruction
+  * net.server_event: Release retained state on destruction
+  * net.server_event: Fix incorrect flag logic for watchfd handles
+  * prosodyctl check: Validate tls_profile and tls_profile_version
+  * See https://blog.prosody.im/prosody-13.0.7-released</comment>
+    <requestid>1380331</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 25 05:54:36 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 13.0.7:
+  * rostermanager, mod_roster: Include ‘approved’ attribute in roster items
+  * util.startup: Always apply umask
+  * Update TLS profile data from Mozilla/TLSRef
+  * net.server_epoll: Disable read timeouts on server sockets
+  * net.unbound: Reset and apply new config on reload
+  * net.unbound: Simplify by removing cancel()
+  * util.poll: Reject file descriptors outside of FD_SETSIZE in all methods
+  * net.websocket: Release connection and input state on disconnect
+  * net.server_select: Release queued strings on forced close
+  * net.unbound: Let in-flight queries complete after re-initialization
+  * net.server_epoll: Release pending write buffers on destruction
+  * net.server_event: Release retained state on destruction
+  * net.server_event: Fix incorrect flag logic for watchfd handles
+  * prosodyctl check: Validate tls_profile and tls_profile_version
+  * See https://blog.prosody.im/prosody-13.0.7-released
+
+-------------------------------------------------------------------
 Wed Jun  3 05:55:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 13.0.6:
