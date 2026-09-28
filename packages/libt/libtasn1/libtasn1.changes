@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:56:37 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update Source URLS 
+
+-------------------------------------------------------------------
+Thu Sep 17 20:14:11 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- guard against future removal of egrep/fgrep
+
+-------------------------------------------------------------------
 Fri Jan  9 08:30:30 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to libtasn1 4.21.0: [bsc#1256341, CVE-2025-13151]

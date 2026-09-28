@@ -2,7 +2,7 @@
 # spec file for package libtasn1
 #
 # Copyright (c) 2026 SUSE LLC and contributors
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,8 +25,8 @@ Summary:        ASN.1 parsing library
 License:        GFDL-1.3-or-later AND GPL-3.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Networking/Security
 URL:            https://www.gnu.org/software/libtasn1/
-Source0:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
-Source1:        http://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz.sig
+Source0:        https://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz
+Source1:        https://ftp.gnu.org/gnu/libtasn1/%{name}-%{version}.tar.gz.sig
 Source2:        https://josefsson.org/key-20190320.txt#/%{name}.keyring
 Source99:       baselibs.conf
 BuildRequires:  pkgconfig
@@ -78,17 +78,21 @@ This package contains files required to build against libtasn1.
 find %{buildroot} -type f -name "*.la" -delete -print
 
 %check
+export EGREP="grep -E"
+export FGREP="grep -F"
 %make_build check
 
 %ldconfig_scriptlets -n libtasn1-%{somajor}
 
 %files -n libtasn1-%{somajor}
 %license COPYING.LESSERv2
-%{_libdir}/*.so.%{somajor}*
+%{_libdir}/*.so.%{somajor}{,.*}
 
 %files tools
 %license COPYING
-%{_bindir}/*
+%{_bindir}/asn1Coding
+%{_bindir}/asn1Decoding
+%{_bindir}/asn1Parser
 %{_mandir}/man1/*.1%{?ext_man}
 %{_infodir}/*.info%{?ext_info}
 
