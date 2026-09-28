@@ -31,6 +31,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-ruamel.yaml.clib >= 0.2.0
+Provides:       python-ruamel_yaml = %{version}
 BuildArch:      noarch
 %python_subpackages
 

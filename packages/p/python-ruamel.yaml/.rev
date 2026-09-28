@@ -447,4 +447,12 @@
   * Updated license year to 2026.</comment>
     <requestid>1342400</requestid>
   </revision>
+  <revision rev="40" vrev="2">
+    <srcmd5>19e58ebab4a1d13a3f5ed63e43e844fb</srcmd5>
+    <version>0.19.1</version>
+    <time>1790584598</time>
+    <user>anag_factory</user>
+    <comment>- add compat provides</comment>
+    <requestid>1380230</requestid>
+  </revision>
 </revisionlist>
