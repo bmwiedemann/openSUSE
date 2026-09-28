@@ -212,4 +212,28 @@
   * Switched to using the SPDX license identifier in the</comment>
     <requestid>1332173</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8e2d6d9401b4f25f2cef1f8077461c51</srcmd5>
+    <version>16.7</version>
+    <time>1790584522</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 16.7
+  * Fix missing teardown for session and module scoped fixtures when
+    fixture teardown fails.
+  * Accept exception classes (not only regex strings) in the only_rerun
+    and rerun_except marker keyword arguments instead of crashing with
+    an internal error.
+  * Drop support for pytest 8.1
+  * Add support for pytest 9.1.
+  * Rerun tests with failed subtests. This feature is only available on
+    pytest 9.0 and later. The pytest-subtests plugin is not supported.
+  * Add --max-suite-reruns option to cap the total number of reruns
+    across the entire test suite.
+  * Add a repeatable --rerun-exclude-path option to exclude test files
+    or directories from reruns.
+  * Allow configuring only_rerun regular expressions in pytest.ini files.
+  * Show each rerun attempt and its final outcome in the rerun test
+    summary info section.</comment>
+    <requestid>1379927</requestid>
+  </revision>
 </revisionlist>

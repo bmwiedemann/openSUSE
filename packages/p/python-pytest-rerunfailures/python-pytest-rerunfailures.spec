@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pytest-rerunfailures
-Version:        16.1
+Version:        16.7
 Release:        0
 Summary:        A pytest plugin to re-run tests
 License:        MPL-2.0
