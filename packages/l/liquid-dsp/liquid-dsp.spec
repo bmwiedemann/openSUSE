@@ -21,7 +21,7 @@
 %define sover 1
 %define libname libliquid%{sover}
 Name:           liquid-dsp
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        Digital signal processing library for software-defined radios
 License:        MIT
