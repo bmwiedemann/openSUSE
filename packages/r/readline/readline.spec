@@ -1,7 +1,7 @@
 #
 # spec file for package readline
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,10 +38,16 @@ Source4:        https://tiswww.case.edu/php/chet/gpgkey.asc#/%{name}.keyring
 Patch101:       readline83-001
 Patch102:       readline83-002
 Patch103:       readline83-003
+Patch104:       readline83-004
+Patch105:       readline83-005
+Patch106:       readline83-006
 # signatures for official patches
 Source101:      readline83-001.sig
 Source102:      readline83-002.sig
 Source103:      readline83-003.sig
+Source104:      readline83-004.sig
+Source105:      readline83-005.sig
+Source106:      readline83-006.sig
 # local patches
 Patch200:       readline-%{rversion}.dif
 Patch201:       readline-6.3-input.dif
@@ -117,6 +123,9 @@ as well as programming with the interface of the readline library.
 %patch -P101 -p0
 %patch -P102 -p0
 %patch -P103 -p0
+%patch -P104 -p0
+%patch -P105 -p0
+%patch -P106 -p0
 # local patches
 %patch -P201 -p2 -b .zerotty
 %patch -P202 -p2 -b .conf
