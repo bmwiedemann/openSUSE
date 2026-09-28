@@ -32,6 +32,8 @@ Summary:        Utilities for handling packages
 License:        MIT
 URL:            https://github.com/domdfcoding/shippinglabel
 Source:         https://github.com/domdfcoding/shippinglabel/archive/refs/tags/v%{version}.tar.gz#/shippinglabel-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#domdfcoding/shippinglabel#117
+Patch0:         support-pytest-91.patch
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}

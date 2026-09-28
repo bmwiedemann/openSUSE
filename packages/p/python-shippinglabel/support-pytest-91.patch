@@ -1,0 +1,32 @@
+From b144a3128457a91b902a00b8bf1f05bf4d3e93c1 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Thu, 24 Sep 2026 12:59:31 +1000
+Subject: [PATCH] Support pytest 9.1
+
+The issue reported at[1] is actually a red herring, and the real cause
+of the failure with pytest 9.1 is documented here[2]. Use a classmethod
+decorator.
+
+This reverts commit 63a9ad1cc2998c3961e49e6b752940077fac70c5.
+
+1: https://github.com/pytest-dev/pytest/issues/14800
+2: https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method
+---
+ tests/requirements.txt     | 2 +-
+ tests/test_requirements.py | 3 ++-
+ 2 files changed, 3 insertions(+), 2 deletions(-)
+
+Index: shippinglabel-2.3.0/tests/test_requirements.py
+===================================================================
+--- shippinglabel-2.3.0.orig/tests/test_requirements.py
++++ shippinglabel-2.3.0/tests/test_requirements.py
+@@ -27,7 +27,8 @@ from shippinglabel.requirements import (
+ class TestComparableRequirement:
+ 
+ 	@pytest.fixture(scope="class")
+-	def req(self) -> ComparableRequirement:
++	@classmethod
++	def req(cls) -> ComparableRequirement:
+ 		return ComparableRequirement('pytest==6.0.0; python_version <= "3.9"')
+ 
+ 	@pytest.mark.parametrize(

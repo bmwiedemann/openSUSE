@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 04:06:23 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-pytest-91.patch:
+  * Use a classmethod decorator to support pytest 9.1.
+
+-------------------------------------------------------------------
 Tue Mar 24 12:10:29 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:

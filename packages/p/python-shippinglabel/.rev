@@ -35,4 +35,13 @@
   * updated files from repo_helper</comment>
     <requestid>1342223</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a970cc6ed9f80c01fc09e31bef0a0cd5</srcmd5>
+    <version>2.3.0</version>
+    <time>1790584582</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-pytest-91.patch:
+  * Use a classmethod decorator to support pytest 9.1.</comment>
+    <requestid>1380060</requestid>
+  </revision>
 </revisionlist>
