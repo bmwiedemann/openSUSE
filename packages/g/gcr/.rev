@@ -468,4 +468,17 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342948</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>8adadff7966cd17848c7c848b8fca82a</srcmd5>
+    <version>4.4.1</version>
+    <time>1790584508</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.4.1:
+  + gcr:
+    - Support zero mtime
+    - Fix memory leak in GcrSystemPrompt call closure
+  + docs: Fix a method reference in gcr_prompt_set_choice_label()
+  + Updated translations.</comment>
+    <requestid>1380111</requestid>
+  </revision>
 </revisionlist>

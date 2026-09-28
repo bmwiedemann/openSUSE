@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sun Sep 13 10:53:52 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.4.1:
+  + gcr:
+    - Support zero mtime
+    - Fix memory leak in GcrSystemPrompt call closure
+  + docs: Fix a method reference in gcr_prompt_set_choice_label()
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:30:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
