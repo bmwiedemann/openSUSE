@@ -1,7 +1,7 @@
 #
 # spec file for package python-domdf-python-tools
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,8 +33,10 @@ License:        MIT
 URL:            https://github.com/domdfcoding/domdf_python_tools
 Source:         https://github.com/domdfcoding/domdf_python_tools/archive/refs/tags/v%{version}.tar.gz#/domdf_python_tools-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/domdfcoding/domdf_python_tools/pull/137 Fix Python 3.14 test failures
-# with one more fix from me (in the comments)
+# with one more fix (in the comments)
 Patch0:         py314.patch
+# https://github.com/domdfcoding/domdf_python_tools/pull/151 Don't parameterize tests using non-Collection iterables
+Patch1:         pytest91.patch
 BuildRequires:  %{python_module hatch-requirements-txt}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros

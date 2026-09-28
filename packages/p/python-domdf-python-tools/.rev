@@ -32,4 +32,12 @@
     <comment></comment>
     <requestid>1305105</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>3be958d49767124d30bb726cf23e4711</srcmd5>
+    <version>3.10.0</version>
+    <time>1790584521</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream pytest91.patch to fix tests with pytest 9.1</comment>
+    <requestid>1379924</requestid>
+  </revision>
 </revisionlist>

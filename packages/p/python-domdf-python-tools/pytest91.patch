@@ -1,0 +1,34 @@
+From 568c6a056fe6956f59006030364ed82c225d6279 Mon Sep 17 00:00:00 2001
+From: Colin Watson <cjwatson@debian.org>
+Date: Wed, 8 Jul 2026 15:33:49 +0100
+Subject: [PATCH] Don't parameterize tests using non-Collection iterables
+ (#151)
+
+This is deprecated as of pytest 9.1; see
+https://docs.pytest.org/en/stable/deprecations.html#class-scoped-fixture-as-instance-method.
+---
+ tests/test_dates.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+Index: domdf_python_tools-3.10.0/tests/test_dates.py
+===================================================================
+--- domdf_python_tools-3.10.0.orig/tests/test_dates.py
++++ domdf_python_tools-3.10.0/tests/test_dates.py
+@@ -201,7 +201,7 @@ except ImportError:
+ # 			from domdf_python_tools.dates import get_utc_offset
+ 
+ 
+-@pytest.mark.parametrize("month_idx, month", enumerate(dates.month_full_names))
++@pytest.mark.parametrize("month_idx, month", list(enumerate(dates.month_full_names)))
+ def test_parse_month(month_idx: int, month: str):
+ 	month_idx += 1  # to make 1-indexed
+ 
+@@ -219,7 +219,7 @@ def test_parse_month_errors():
+ 			dates.parse_month(value)  # type: ignore
+ 
+ 
+-@pytest.mark.parametrize("month_idx, month", enumerate(dates.month_full_names))
++@pytest.mark.parametrize("month_idx, month", list(enumerate(dates.month_full_names)))
+ def test_get_month_number_from_name(month_idx: int, month: str):
+ 	month_idx += 1  # to make 1-indexed
+ 
