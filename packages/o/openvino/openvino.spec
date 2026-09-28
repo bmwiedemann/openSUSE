@@ -104,6 +104,7 @@ This package provides the C library for OpenVINO.
 Summary:        Headers and sources for OpenVINO toolkit
 Requires:       %{shlib_c} = %{version}
 Requires:       %{shlib} = %{version}
+Requires:       lib%{name}_gguf_frontend%{so_ver} = %{version}
 Requires:       lib%{name}_ir_frontend%{so_ver} = %{version}
 Requires:       lib%{name}_onnx_frontend%{so_ver} = %{version}
 Requires:       lib%{name}_paddle_frontend%{so_ver} = %{version}

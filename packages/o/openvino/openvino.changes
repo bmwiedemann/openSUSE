@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 25 03:27:50 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Added GGUF frontend dependency.
+
+-------------------------------------------------------------------
 Wed Sep 23 13:07:00 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Removed openvino-link-system-protobuf-abseil.patch and disable
