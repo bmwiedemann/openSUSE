@@ -330,4 +330,37 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342995</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>230184044279ae6345a3c4f28e66b987</srcmd5>
+    <version>0.21.8.2</version>
+    <time>1790584509</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.21.8.2:
+  + Release to bump meson.build version
+- Changes from version 0.21.8.1:
+  + Make secret_item_load_secrets_sync match async behavior
+
+- Update to version 0.21.8:
+  + Allow the content type to have additional parameters
+  + Support individually encrypted items
+  + Ensure we return chained up GTask
+  + Ensure length of DH shared secret match length of prime on
+    GnuTLS
+  + file-backend:
+    - Add thread safety and file-based locking to prevent
+      concurrent write races
+    - Fix possible memory leak in error path of
+      secret_file_backend_real_search()
+  + file-collection: Fix memory leaks on repeated calls
+  + Replace some SecretSync with a sync implementation
+  + Add linker version script to hide private symbols
+  + Stop using CONST annotations on non-const fns
+  + secret-tool:
+    - Align behavior for collection option
+    - Document --collection option
+  + meson: Put test setup behind a feature option
+  + Several test and CI improvements
+  + Updated translations.</comment>
+    <requestid>1380112</requestid>
+  </revision>
 </revisionlist>
