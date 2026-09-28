@@ -65,7 +65,7 @@ ExclusiveArch:  donotbuild
 %endif
 Name:           python-pandas%{psuffix}
 # Set version through _service
-Version:        3.0.5
+Version:        3.0.6
 Release:        0
 Summary:        Python data structures for data analysis, time series, and statistics
 License:        BSD-3-Clause
@@ -75,6 +75,8 @@ URL:            https://pandas.pydata.org/
 Source0:        pandas-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/66621 BUG: Avoid NumPy 2.5 DeprecationWarning in Timedelta.view
 Patch0:         np25.patch
+# PATCH-FIX-UPSTREAM https://github.com/pandas-dev/pandas/pull/65888 TST: wrap parametrize iterables in list() for pytest 9.1+
+Patch1:         pytest91.patch
 %if !%{with test}
 BuildRequires:  %{python_module Cython >= 3.1.0}
 BuildRequires:  %{python_module devel >= 3.11}

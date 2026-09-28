@@ -1,0 +1,553 @@
+From 825c68f4aef6e9d6e96ef8d5b8baedbde5790ca2 Mon Sep 17 00:00:00 2001
+From: jbrockmendel <jbrockmendel@gmail.com>
+Date: Tue, 16 Jun 2026 10:11:59 -0700
+Subject: [PATCH] TST: wrap parametrize iterables in list() for pytest 9.1+
+ (#65888)
+
+Co-authored-by: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ pandas/tests/apply/test_invalid_arg.py        |  24 +-
+ pandas/tests/apply/test_str.py                | 210 +++++++++---------
+ pandas/tests/frame/test_stack_unstack.py      |  10 +-
+ .../tests/indexes/interval/test_interval.py   |  16 +-
+ .../indexes/interval/test_interval_tree.py    |   4 +-
+ pandas/tests/reshape/concat/test_append.py    |   2 +-
+ .../series/methods/test_convert_dtypes.py     |   2 +-
+ pandas/tests/tseries/offsets/test_offsets.py  | 124 ++++++-----
+ 8 files changed, 207 insertions(+), 185 deletions(-)
+
+diff --git a/pandas/tests/apply/test_invalid_arg.py b/pandas/tests/apply/test_invalid_arg.py
+index 0503bf9166ec7..4001b5315e6bc 100644
+--- a/pandas/tests/apply/test_invalid_arg.py
++++ b/pandas/tests/apply/test_invalid_arg.py
+@@ -233,17 +233,19 @@ def test_agg_cython_table_raises_frame(df, func, expected, axis, using_infer_str
+ 
+ @pytest.mark.parametrize(
+     "series, func, expected",
+-    chain(
+-        tm.get_cython_table_params(
+-            Series("a b c".split()),
+-            [
+-                ("mean", TypeError),  # mean raises TypeError
+-                ("prod", TypeError),
+-                ("std", TypeError),
+-                ("var", TypeError),
+-                ("median", TypeError),
+-                ("cumprod", TypeError),
+-            ],
++    list(
++        chain(
++            tm.get_cython_table_params(
++                Series("a b c".split()),
++                [
++                    ("mean", TypeError),  # mean raises TypeError
++                    ("prod", TypeError),
++                    ("std", TypeError),
++                    ("var", TypeError),
++                    ("median", TypeError),
++                    ("cumprod", TypeError),
++                ],
++            )
+         )
+     ),
+ )
+diff --git a/pandas/tests/apply/test_str.py b/pandas/tests/apply/test_str.py
+index e5a9492630b13..65ec96add89d7 100644
+--- a/pandas/tests/apply/test_str.py
++++ b/pandas/tests/apply/test_str.py
+@@ -83,47 +83,49 @@ def test_apply_np_transformer(float_frame, op, how):
+ 
+ @pytest.mark.parametrize(
+     "series, func, expected",
+-    chain(
+-        tm.get_cython_table_params(
+-            Series(dtype=np.float64),
+-            [
+-                ("sum", 0),
+-                ("max", np.nan),
+-                ("min", np.nan),
+-                ("all", True),
+-                ("any", False),
+-                ("mean", np.nan),
+-                ("prod", 1),
+-                ("std", np.nan),
+-                ("var", np.nan),
+-                ("median", np.nan),
+-            ],
+-        ),
+-        tm.get_cython_table_params(
+-            Series([np.nan, 1, 2, 3]),
+-            [
+-                ("sum", 6),
+-                ("max", 3),
+-                ("min", 1),
+-                ("all", True),
+-                ("any", True),
+-                ("mean", 2),
+-                ("prod", 6),
+-                ("std", 1),
+-                ("var", 1),
+-                ("median", 2),
+-            ],
+-        ),
+-        tm.get_cython_table_params(
+-            Series("a b c".split()),
+-            [
+-                ("sum", "abc"),
+-                ("max", "c"),
+-                ("min", "a"),
+-                ("all", True),
+-                ("any", True),
+-            ],
+-        ),
++    list(
++        chain(
++            tm.get_cython_table_params(
++                Series(dtype=np.float64),
++                [
++                    ("sum", 0),
++                    ("max", np.nan),
++                    ("min", np.nan),
++                    ("all", True),
++                    ("any", False),
++                    ("mean", np.nan),
++                    ("prod", 1),
++                    ("std", np.nan),
++                    ("var", np.nan),
++                    ("median", np.nan),
++                ],
++            ),
++            tm.get_cython_table_params(
++                Series([np.nan, 1, 2, 3]),
++                [
++                    ("sum", 6),
++                    ("max", 3),
++                    ("min", 1),
++                    ("all", True),
++                    ("any", True),
++                    ("mean", 2),
++                    ("prod", 6),
++                    ("std", 1),
++                    ("var", 1),
++                    ("median", 2),
++                ],
++            ),
++            tm.get_cython_table_params(
++                Series("a b c".split()),
++                [
++                    ("sum", "abc"),
++                    ("max", "c"),
++                    ("min", "a"),
++                    ("all", True),
++                    ("any", True),
++                ],
++            ),
++        )
+     ),
+ )
+ def test_agg_cython_table_series(series, func, expected):
+@@ -141,24 +143,26 @@ def test_agg_cython_table_series(series, func, expected):
+ 
+ @pytest.mark.parametrize(
+     "series, func, expected",
+-    chain(
+-        tm.get_cython_table_params(
+-            Series(dtype=np.float64),
+-            [
+-                ("cumprod", Series([], dtype=np.float64)),
+-                ("cumsum", Series([], dtype=np.float64)),
+-            ],
+-        ),
+-        tm.get_cython_table_params(
+-            Series([np.nan, 1, 2, 3]),
+-            [
+-                ("cumprod", Series([np.nan, 1, 2, 6])),
+-                ("cumsum", Series([np.nan, 1, 3, 6])),
+-            ],
+-        ),
+-        tm.get_cython_table_params(
+-            Series("a b c".split()), [("cumsum", Series(["a", "ab", "abc"]))]
+-        ),
++    list(
++        chain(
++            tm.get_cython_table_params(
++                Series(dtype=np.float64),
++                [
++                    ("cumprod", Series([], dtype=np.float64)),
++                    ("cumsum", Series([], dtype=np.float64)),
++                ],
++            ),
++            tm.get_cython_table_params(
++                Series([np.nan, 1, 2, 3]),
++                [
++                    ("cumprod", Series([np.nan, 1, 2, 6])),
++                    ("cumsum", Series([np.nan, 1, 3, 6])),
++                ],
++            ),
++            tm.get_cython_table_params(
++                Series("a b c".split()), [("cumsum", Series(["a", "ab", "abc"]))]
++            ),
++        )
+     ),
+ )
+ def test_agg_cython_table_transform_series(series, func, expected):
+@@ -173,37 +177,39 @@ def test_agg_cython_table_transform_series(series, func, expected):
+ 
+ @pytest.mark.parametrize(
+     "df, func, expected",
+-    chain(
+-        tm.get_cython_table_params(
+-            DataFrame(),
+-            [
+-                ("sum", Series(dtype="float64")),
+-                ("max", Series(dtype="float64")),
+-                ("min", Series(dtype="float64")),
+-                ("all", Series(dtype=bool)),
+-                ("any", Series(dtype=bool)),
+-                ("mean", Series(dtype="float64")),
+-                ("prod", Series(dtype="float64")),
+-                ("std", Series(dtype="float64")),
+-                ("var", Series(dtype="float64")),
+-                ("median", Series(dtype="float64")),
+-            ],
+-        ),
+-        tm.get_cython_table_params(
+-            DataFrame([[np.nan, 1], [1, 2]]),
+-            [
+-                ("sum", Series([1.0, 3])),
+-                ("max", Series([1.0, 2])),
+-                ("min", Series([1.0, 1])),
+-                ("all", Series([True, True])),
+-                ("any", Series([True, True])),
+-                ("mean", Series([1, 1.5])),
+-                ("prod", Series([1.0, 2])),
+-                ("std", Series([np.nan, 0.707107])),
+-                ("var", Series([np.nan, 0.5])),
+-                ("median", Series([1, 1.5])),
+-            ],
+-        ),
++    list(
++        chain(
++            tm.get_cython_table_params(
++                DataFrame(),
++                [
++                    ("sum", Series(dtype="float64")),
++                    ("max", Series(dtype="float64")),
++                    ("min", Series(dtype="float64")),
++                    ("all", Series(dtype=bool)),
++                    ("any", Series(dtype=bool)),
++                    ("mean", Series(dtype="float64")),
++                    ("prod", Series(dtype="float64")),
++                    ("std", Series(dtype="float64")),
++                    ("var", Series(dtype="float64")),
++                    ("median", Series(dtype="float64")),
++                ],
++            ),
++            tm.get_cython_table_params(
++                DataFrame([[np.nan, 1], [1, 2]]),
++                [
++                    ("sum", Series([1.0, 3])),
++                    ("max", Series([1.0, 2])),
++                    ("min", Series([1.0, 1])),
++                    ("all", Series([True, True])),
++                    ("any", Series([True, True])),
++                    ("mean", Series([1, 1.5])),
++                    ("prod", Series([1.0, 2])),
++                    ("std", Series([np.nan, 0.707107])),
++                    ("var", Series([np.nan, 0.5])),
++                    ("median", Series([1, 1.5])),
++                ],
++            ),
++        )
+     ),
+ )
+ def test_agg_cython_table_frame(df, func, expected, axis):
+@@ -219,17 +225,19 @@ def test_agg_cython_table_frame(df, func, expected, axis):
+ 
+ @pytest.mark.parametrize(
+     "df, func, expected",
+-    chain(
+-        tm.get_cython_table_params(
+-            DataFrame(), [("cumprod", DataFrame()), ("cumsum", DataFrame())]
+-        ),
+-        tm.get_cython_table_params(
+-            DataFrame([[np.nan, 1], [1, 2]]),
+-            [
+-                ("cumprod", DataFrame([[np.nan, 1], [1, 2]])),
+-                ("cumsum", DataFrame([[np.nan, 1], [1, 3]])),
+-            ],
+-        ),
++    list(
++        chain(
++            tm.get_cython_table_params(
++                DataFrame(), [("cumprod", DataFrame()), ("cumsum", DataFrame())]
++            ),
++            tm.get_cython_table_params(
++                DataFrame([[np.nan, 1], [1, 2]]),
++                [
++                    ("cumprod", DataFrame([[np.nan, 1], [1, 2]])),
++                    ("cumsum", DataFrame([[np.nan, 1], [1, 3]])),
++                ],
++            ),
++        )
+     ),
+ )
+ def test_agg_cython_table_transform_frame(df, func, expected, axis):
+diff --git a/pandas/tests/frame/test_stack_unstack.py b/pandas/tests/frame/test_stack_unstack.py
+index 895bf1fc8c6df..638fbd6b9f989 100644
+--- a/pandas/tests/frame/test_stack_unstack.py
++++ b/pandas/tests/frame/test_stack_unstack.py
+@@ -870,7 +870,7 @@ def cast(val):
+             right = sorted(map(cast, right))
+             assert left == right
+ 
+-    @pytest.mark.parametrize("idx", itertools.permutations(["1st", "2nd", "3rd"]))
++    @pytest.mark.parametrize("idx", list(itertools.permutations(["1st", "2nd", "3rd"])))
+     @pytest.mark.parametrize("lev", list(range(3)))
+     @pytest.mark.parametrize("col", ["4th", "5th"])
+     def test_unstack_nan_index_repeats(self, idx, lev, col):
+@@ -2321,9 +2321,11 @@ def _make_selectors(self) -> None:
+     )
+     @pytest.mark.parametrize(
+         "levels",
+-        itertools.chain.from_iterable(
+-            itertools.product(itertools.permutations([0, 1, 2], width), repeat=2)
+-            for width in [2, 3]
++        list(
++            itertools.chain.from_iterable(
++                itertools.product(itertools.permutations([0, 1, 2], width), repeat=2)
++                for width in [2, 3]
++            )
+         ),
+     )
+     @pytest.mark.parametrize("stack_lev", range(2))
+diff --git a/pandas/tests/indexes/interval/test_interval.py b/pandas/tests/indexes/interval/test_interval.py
+index b514133edc119..fab74e8a14e77 100644
+--- a/pandas/tests/indexes/interval/test_interval.py
++++ b/pandas/tests/indexes/interval/test_interval.py
+@@ -431,13 +431,15 @@ def test_maybe_convert_i8_numeric_identical(self, make_key, any_real_numpy_dtype
+ 
+     @pytest.mark.parametrize(
+         "breaks1, breaks2",
+-        permutations(
+-            [
+-                date_range("20180101", periods=4),
+-                date_range("20180101", periods=4, tz="US/Eastern"),
+-                timedelta_range("0 days", periods=4),
+-            ],
+-            2,
++        list(
++            permutations(
++                [
++                    date_range("20180101", periods=4),
++                    date_range("20180101", periods=4, tz="US/Eastern"),
++                    timedelta_range("0 days", periods=4),
++                ],
++                2,
++            )
+         ),
+         ids=lambda x: str(x.dtype),
+     )
+diff --git a/pandas/tests/indexes/interval/test_interval_tree.py b/pandas/tests/indexes/interval/test_interval_tree.py
+index df9c3b390f660..4389b7c06ede9 100644
+--- a/pandas/tests/indexes/interval/test_interval_tree.py
++++ b/pandas/tests/indexes/interval/test_interval_tree.py
+@@ -147,14 +147,14 @@ def test_get_indexer_closed(self, closed, leaf_size):
+             (np.array([0, 2, np.nan]), np.array([1, 3, np.nan]), False),
+         ],
+     )
+-    @pytest.mark.parametrize("order", (list(x) for x in permutations(range(3))))
++    @pytest.mark.parametrize("order", [list(x) for x in permutations(range(3))])
+     def test_is_overlapping(self, closed, order, left, right, expected):
+         # GH 23309
+         tree = IntervalTree(left[order], right[order], closed=closed)
+         result = tree.is_overlapping
+         assert result is expected
+ 
+-    @pytest.mark.parametrize("order", (list(x) for x in permutations(range(3))))
++    @pytest.mark.parametrize("order", [list(x) for x in permutations(range(3))])
+     def test_is_overlapping_endpoints(self, closed, order):
+         """shared endpoints are marked as overlapping"""
+         # GH 23309
+diff --git a/pandas/tests/reshape/concat/test_append.py b/pandas/tests/reshape/concat/test_append.py
+index 258d0e89fda7a..549a6e778323e 100644
+--- a/pandas/tests/reshape/concat/test_append.py
++++ b/pandas/tests/reshape/concat/test_append.py
+@@ -200,7 +200,7 @@ def test_append_same_columns_type(self, index):
+ 
+     @pytest.mark.parametrize(
+         "df_columns, series_index",
+-        combinations(indexes_can_append, r=2),
++        list(combinations(indexes_can_append, r=2)),
+         ids=lambda x: type(x).__name__,
+     )
+     def test_append_different_columns_types(self, df_columns, series_index):
+diff --git a/pandas/tests/series/methods/test_convert_dtypes.py b/pandas/tests/series/methods/test_convert_dtypes.py
+index 57757fcf9ac29..19f04082c8fdc 100644
+--- a/pandas/tests/series/methods/test_convert_dtypes.py
++++ b/pandas/tests/series/methods/test_convert_dtypes.py
+@@ -173,7 +173,7 @@ class TestSeriesConvertDtypes:
+             ),
+         ],
+     )
+-    @pytest.mark.parametrize("params", product(*[(True, False)] * 5))
++    @pytest.mark.parametrize("params", list(product(*[(True, False)] * 5)))
+     def test_convert_dtypes(
+         self,
+         data,
+diff --git a/pandas/tests/tseries/offsets/test_offsets.py b/pandas/tests/tseries/offsets/test_offsets.py
+index 1f5e2210254f2..51f1635251dbd 100644
+--- a/pandas/tests/tseries/offsets/test_offsets.py
++++ b/pandas/tests/tseries/offsets/test_offsets.py
+@@ -657,20 +657,22 @@ def test_copy(self):
+ 
+     @pytest.mark.parametrize(
+         "arithmatic_offset_type, expected",
+-        zip(
+-            _ARITHMETIC_DATE_OFFSET,
+-            [
+-                "2009-01-02",
+-                "2008-02-02",
+-                "2008-01-09",
+-                "2008-01-03",
+-                "2008-01-02 01:00:00",
+-                "2008-01-02 00:01:00",
+-                "2008-01-02 00:00:01",
+-                "2008-01-02 00:00:00.001000000",
+-                "2008-01-02 00:00:00.000001000",
+-            ],
+-            strict=True,
++        list(
++            zip(
++                _ARITHMETIC_DATE_OFFSET,
++                [
++                    "2009-01-02",
++                    "2008-02-02",
++                    "2008-01-09",
++                    "2008-01-03",
++                    "2008-01-02 01:00:00",
++                    "2008-01-02 00:01:00",
++                    "2008-01-02 00:00:01",
++                    "2008-01-02 00:00:00.001000000",
++                    "2008-01-02 00:00:00.000001000",
++                ],
++                strict=True,
++            )
+         ),
+     )
+     def test_add(self, arithmatic_offset_type, expected, dt):
+@@ -679,20 +681,22 @@ def test_add(self, arithmatic_offset_type, expected, dt):
+ 
+     @pytest.mark.parametrize(
+         "arithmatic_offset_type, expected",
+-        zip(
+-            _ARITHMETIC_DATE_OFFSET,
+-            [
+-                "2007-01-02",
+-                "2007-12-02",
+-                "2007-12-26",
+-                "2008-01-01",
+-                "2008-01-01 23:00:00",
+-                "2008-01-01 23:59:00",
+-                "2008-01-01 23:59:59",
+-                "2008-01-01 23:59:59.999000000",
+-                "2008-01-01 23:59:59.999999000",
+-            ],
+-            strict=True,
++        list(
++            zip(
++                _ARITHMETIC_DATE_OFFSET,
++                [
++                    "2007-01-02",
++                    "2007-12-02",
++                    "2007-12-26",
++                    "2008-01-01",
++                    "2008-01-01 23:00:00",
++                    "2008-01-01 23:59:00",
++                    "2008-01-01 23:59:59",
++                    "2008-01-01 23:59:59.999000000",
++                    "2008-01-01 23:59:59.999999000",
++                ],
++                strict=True,
++            )
+         ),
+     )
+     def test_sub(self, arithmatic_offset_type, expected, dt):
+@@ -702,21 +706,23 @@ def test_sub(self, arithmatic_offset_type, expected, dt):
+ 
+     @pytest.mark.parametrize(
+         "arithmatic_offset_type, n, expected",
+-        zip(
+-            _ARITHMETIC_DATE_OFFSET,
+-            range(1, 10),
+-            [
+-                "2009-01-02",
+-                "2008-03-02",
+-                "2008-01-23",
+-                "2008-01-06",
+-                "2008-01-02 05:00:00",
+-                "2008-01-02 00:06:00",
+-                "2008-01-02 00:00:07",
+-                "2008-01-02 00:00:00.008000000",
+-                "2008-01-02 00:00:00.000009000",
+-            ],
+-            strict=True,
++        list(
++            zip(
++                _ARITHMETIC_DATE_OFFSET,
++                range(1, 10),
++                [
++                    "2009-01-02",
++                    "2008-03-02",
++                    "2008-01-23",
++                    "2008-01-06",
++                    "2008-01-02 05:00:00",
++                    "2008-01-02 00:06:00",
++                    "2008-01-02 00:00:07",
++                    "2008-01-02 00:00:00.008000000",
++                    "2008-01-02 00:00:00.000009000",
++                ],
++                strict=True,
++            )
+         ),
+     )
+     def test_mul_add(self, arithmatic_offset_type, n, expected, dt):
+@@ -727,21 +733,23 @@ def test_mul_add(self, arithmatic_offset_type, n, expected, dt):
+ 
+     @pytest.mark.parametrize(
+         "arithmatic_offset_type, n, expected",
+-        zip(
+-            _ARITHMETIC_DATE_OFFSET,
+-            range(1, 10),
+-            [
+-                "2007-01-02",
+-                "2007-11-02",
+-                "2007-12-12",
+-                "2007-12-29",
+-                "2008-01-01 19:00:00",
+-                "2008-01-01 23:54:00",
+-                "2008-01-01 23:59:53",
+-                "2008-01-01 23:59:59.992000000",
+-                "2008-01-01 23:59:59.999991000",
+-            ],
+-            strict=True,
++        list(
++            zip(
++                _ARITHMETIC_DATE_OFFSET,
++                range(1, 10),
++                [
++                    "2007-01-02",
++                    "2007-11-02",
++                    "2007-12-12",
++                    "2007-12-29",
++                    "2008-01-01 19:00:00",
++                    "2008-01-01 23:54:00",
++                    "2008-01-01 23:59:53",
++                    "2008-01-01 23:59:59.992000000",
++                    "2008-01-01 23:59:59.999991000",
++                ],
++                strict=True,
++            )
+         ),
+     )
+     def test_mul_sub(self, arithmatic_offset_type, n, expected, dt):

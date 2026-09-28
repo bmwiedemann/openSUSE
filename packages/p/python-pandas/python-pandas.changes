@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 23 11:32:47 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.0.6
+  * Pandas 3.0.6 is now compatible with Python 3.15
+  * Fixed a regression in read_csv() where a mixed-dtype column
+    selected by usecols raised IndexError instead of emitting a
+    DtypeWarning, and where that warning named the wrong column or
+    the wrong index
+  * Fixed a regression in DataFrame.plot.bar() and DataFrame.plot.barh()
+    raising AttributeError for a regularly-spaced DatetimeIndex
+    whose freq attribute is unset
+  * Fixed a regression in Series.str on CategoricalDtype Series
+    with expand=False returning stringified lists/tuples instead
+    of actual lists/tuples
+  * Fixed a regression in Timestamp.tz_convert() and Timestamp.tz_localize()
+    and their Index and Series counterparts returning a UTC offset
+    a few minutes off
+  * Fixed a regression in full-slice assignment (df.loc[:, "col"] = value)
+    into a PyArrow-backed array where the result shared memory with value
+  * Fixed a bug in setting with .loc or .iloc using a boolean mask
+    to select the columns into a 1-column DataFrame with an
+    extension dtype
+  * Fixed a regression in read_csv() where sep=None raised TypeError
+    instead of sniffing the separator with the python engine
+  * Fixed a regression in Series.interpolate() with method="linear"
+    and a pyarrow-backed dtype leaving consecutive and trailing
+    missing values unfilled
+  * Fixed a bug in RangeIndex where missing Copy-on-Write reference
+    tracking allowed external modification via a Series
+  * Fixed memory leak in read_csv() with engine="c" when a string or
+    category column failed to decode
+- Add pytest91.patch to fix tests with pytest 9.1
+
+-------------------------------------------------------------------
 Mon Aug 24 14:03:36 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add np25.patch to fix tests with numpy 2.5

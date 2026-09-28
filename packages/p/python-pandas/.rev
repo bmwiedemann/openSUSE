@@ -970,4 +970,12 @@ All packages broken by this update should be fixed now.</comment>
 - Hotfix dirty hack which broke with recent python-rpm-macros</comment>
     <requestid>1373438</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>c4e8e382ed03e0eb6df29626a89d22c1</srcmd5>
+    <version>3.0.6</version>
+    <time>1790584541</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380051</requestid>
+  </revision>
 </revisionlist>
