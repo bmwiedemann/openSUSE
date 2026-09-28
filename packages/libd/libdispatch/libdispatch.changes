@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 27 15:01:55 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 6.4.0 (swift-6.4.0-RELEASE):
+  * Fix worker thread name handling on Linux: replace the queue-label
+    truncation with a static name, fixing a size_t underflow and
+    stale thread names (upstream issue #600)
+  * Fix pthread_setname_np detection on Amazon Linux 2
+  * Fix kevent timer delays on OpenBSD and OpenBSD thread-name
+    accessor spelling
+  * Add a CODEOWNERS file
+- Raise the cmake BuildRequires floor to >= 3.26, matching
+  upstream cmake_minimum_required
+- Add disable-unused-but-set-global-error.patch: demote the new
+  clang -Wunused-but-set-global error to a warning, so the build
+  passes with -Werror (the set-but-never-read global it fires on
+  is pre-existing upstream code, also present at 6.3.3)
+
+-------------------------------------------------------------------
 Sat Jul 25 18:36:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.3.3 (swift-6.3.3-RELEASE):

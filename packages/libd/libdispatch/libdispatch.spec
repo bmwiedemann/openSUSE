@@ -18,7 +18,7 @@
 
 %define reltag %{version}-RELEASE
 Name:           libdispatch
-Version:        6.3.3
+Version:        6.4.0
 Release:        0
 Summary:        Apple's Grand Central Dispatch library
 License:        Apache-2.0
@@ -26,9 +26,13 @@ URL:            https://github.com/swiftlang/swift-corelibs-libdispatch
 Source0:        https://github.com/swiftlang/swift-corelibs-libdispatch/archive/swift-%{reltag}.tar.gz#/corelibs-libdispatch-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE set library versions
 Patch0:         soversion.patch
+# PATCH-FIX-OPENSUSE demote the -Wunused-but-set-global error that newer
+# clang raises for the set-but-never-read (on Linux) global
+# _dispatch_program_is_probably_callback_driven in src/queue.c
+Patch1:         disable-unused-but-set-global-error.patch
 BuildRequires:  chrpath
 BuildRequires:  clang
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.26
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm-gold
 BuildRequires:  ninja

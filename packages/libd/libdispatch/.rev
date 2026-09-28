@@ -108,4 +108,13 @@
     <comment>Update to version 6.3.3 (swift-6.3.3-RELEASE re-tag, no source changes); split libBlocksRuntime1_3 out per shared library policy, move unversioned .so symlinks to the now archful devel package, drop the blanket rpmlint filter</comment>
     <requestid>1367766</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b78e7234f09b09820b6e2a8096b2f75f</srcmd5>
+    <version>6.4.0</version>
+    <time>1790585254</time>
+    <user>anag_factory</user>
+    <comment>Update libdispatch to 6.4.0 (swift-6.4.0-RELEASE): Linux worker-thread naming fix (size_t underflow, upstream #600), pthread_setname_np detection fix, OpenBSD kevent/thread-name fixes; cmake floor &gt;= 3.26; new patch demotes clang's -Wunused-but-set-global error (pre-existing upstream code). Sonames unchanged (libdispatch.so.1.3, libBlocksRuntime.so.1.3); sole consumer deadbeef needs no rebuild. Native aarch64 build green, rpmlint 0 errors / 0 badness.
+</comment>
+    <requestid>1380967</requestid>
+  </revision>
 </revisionlist>

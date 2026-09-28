@@ -1,0 +1,13 @@
+--- a/cmake/modules/DispatchCompilerWarnings.cmake
++++ b/cmake/modules/DispatchCompilerWarnings.cmake
+@@ -78,6 +78,10 @@
+   endif()
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wno-error=assign-enum>)
+
++  # Newer clang diagnoses the set-but-never-read (on Linux) global
++  # _dispatch_program_is_probably_callback_driven in src/queue.c.
++  add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wno-error=unused-but-set-global>)
++
+   # Should re-enable after rdar://133498289 is fixed (ie. fixing the one mismatched cast in apply.c)
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wno-cast-function-type-mismatch>)
+   add_compile_options($<$<COMPILE_LANGUAGE:C,CXX>:-Wno-error=unknown-warning-option>)
