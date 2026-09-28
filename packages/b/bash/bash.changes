@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:26:35 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add upstream patches
+  * Bash-5.3 Official patch 16 -- bash53-016
+    On recent versions of macOS, the pipe size is dynamic and changes due to
+    system-wide total pipe usage, so we have to check whether or not bash can
+    use the size determined at compile time.
+  * Bash-5.3 Official patch 17 -- bash53-017
+    If readline is invoked with the cursor somewhere other than column 0, and
+    the prompt contains multibyte characters, the display algorithm needs to
+    use a buffer offset, instead of the physical prompt length, to determine
+    whether or not to reprint the prompt from column 0 because the cursor is
+    before the last invisible character in the prompt string.
+  * Bash-5.3 Official patch 18 -- bash53-018
+    This patch fixes two problems with the redisplay code. The first is a
+    crash that results if the initial prompt contains more than 256 wrapped
+    lines. The second is a fix to the redisplay code when the first several
+    characters of the prompt string are identical, but the prompt has changed
+    and needs to be redrawn. If these first few characters are part of an escape
+    sequence, the entire sequence needs to be redrawn.
+  * Bash-5.3 Official patch 19 -- bash53-019
+    On some systems, macOS in particular, isalpha(3) returns true for bytes
+    between 128 and 255. Bash uses this to determine whether or not these
+    characters are permitted to be part of a shell identifier, and can
+    consume one byte too many when determining the end of a variable name.
+  * Bash-5.3 Official patch 20 -- bash53-020
+    If readline handles a SIGWINCH and resizes its idea of the screen
+    dimensions, it needs to recompute the columns where the prompt wraps
+    lines every time, not just when the screen width decreases.
+
+-------------------------------------------------------------------
 Tue Jul  7 08:39:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add workaround for msginit which ignores SOURCE_DATE_EPOCH (boo#1268542)
