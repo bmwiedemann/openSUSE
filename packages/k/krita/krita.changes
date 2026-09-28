@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Sep 26 05:08:49 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 5.3.4 / 6.0.4
+  * https://krita.org/en/posts/2026/krita-5.3.4-released
+  * Don't allow to record images that are too big (2^29spixels)
+  * Fix recorder export when some frames are missing
+  * Disable long-press on canvas widgets
+  * Fix layer thumbnails scaling when using display scaling
+  * Fix openening large exr files
+  * Fix writable resource path validator
+  * Fix channel flags when converting the image's color space
+  * Fix a rare crash when creating a new image on Windows (happens
+    when the user holds a key while creating the image)
+  * Fix a crash when a python plugin specifies an invalid
+    action path
+  * Fix resetting native touch gestures on configuration change
+  * Fix issues with adding resource bundles and resources on
+    Android
+  * Fix a crash when "First Frame" shortcut is used when a file
+    with a linked audio track is open.
+  * Fix the recorder interrupting using tools
+  * Fix potentional crashes with some fonts
+  * Do not warn the user about active global selections masks when
+    exporting a file
+  * The comic manager plugin received several fixes for memory
+    leaks and improved epub export
+  * Support to render animations and export timelapses on Android.
+  * Additional bundles in the Android supporter subscription: the
+    latest SK3 pencil bundle, as well as the earlier SK1 and
+    SK2 bundles.
+    
+-------------------------------------------------------------------
 Fri Jul 31 19:06:09 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.0.3

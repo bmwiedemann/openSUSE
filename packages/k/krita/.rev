@@ -995,4 +995,12 @@
     <comment>Update to 5.3.3</comment>
     <requestid>1368913</requestid>
   </revision>
+  <revision rev="95" vrev="1">
+    <srcmd5>dd313084c507653c1ddc8c78a2c7a516</srcmd5>
+    <version>5.3.4</version>
+    <time>1790585220</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380868</requestid>
+  </revision>
 </revisionlist>
