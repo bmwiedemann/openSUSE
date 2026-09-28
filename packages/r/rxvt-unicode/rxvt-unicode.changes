@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:54:46 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Cleaned-up spec file. Removed use of %suse_update_desktop_file
+- Replaced .desktop files by their translated version
+- Updated README.SuSE to contain up-to-date information
+
+-------------------------------------------------------------------
 Thu Sep 24 11:05:50 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - Add rxvt-unicode-gcc16-compilation-fix.patch

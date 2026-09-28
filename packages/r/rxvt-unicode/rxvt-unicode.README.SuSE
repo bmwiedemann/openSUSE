@@ -2,8 +2,7 @@
  README.SuSE for rxvt-unicode
 ------------------------------
 
-Some user like to have the bold and underlined text colored.
-(See https://bugzilla.novell.com/show_bug.cgi?id=231855)
+Some users like to have the bold and underlined text colored.
 The upstream default does not color those properties and the
 package should keep this.
 
@@ -17,9 +16,7 @@ For your own user only you have to edit ~/.Xdefaults and run
 "xrdb -merge ~/.Xdefaults"
 
 If you want to enable it for all users you have to edit
-"/etc/X11/Xresources" on 10.2 and newer and restart your X
-session. On 10.0/10.1 you have to edit
-"/usr/X11R6/lib/X11/Xresources".
+"/etc/X11/Xresources" and restart your X session.
 
 For all options read man 7 urxvt.
 
@@ -30,6 +27,5 @@ For all options read man 7 urxvt.
   The 256color support is a compile time option, so we provide 2
   binaries now. All the new binaries are suffixed with -256color.
 
-  WARNING: you need a patched screen on < 11.4 to use the 256color
-  version.
+
 

@@ -1,7 +1,7 @@
 #
 # spec file for package rxvt-unicode
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,9 +18,6 @@
 
 #
 %define _terminfo      %{_datadir}/terminfo
-%if 0%{?suse_version} < 1140
-%define with_265color_terminfo_files 1
-%endif
 Name:           rxvt-unicode
 Version:        9.31
 Release:        0
@@ -29,12 +26,12 @@ Summary:        Rxvt X Terminal with Unicode Support
 #
 License:        GPL-3.0-or-later
 Group:          System/X11/Terminals
-URL:            http://software.schmorp.de/#rxvt-unicode
-Source:         http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2
-Source10:       http://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2.sig
+URL:            https://software.schmorp.de/pkg/rxvt-unicode.html
+Source:         https://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2
 Source2:        rxvt-unicode.README.SuSE
 Source3:        rxvt-unicode-256color.desktop
 Source4:        rxvt-unicode.desktop
+Source10:       https://dist.schmorp.de/%{name}/%{name}-%{version}.tar.bz2.sig
 Patch1:         rxvt-unicode-9.20-CVE-2008-1142-DISPLAY.patch
 Patch2:         rxvt-unicode-9.21-xsubpp.patch
 Patch3:         rxvt-unicode-0001-Prefer-XDG_RUNTIME_DIR-over-the-HOME.patch
@@ -50,7 +47,6 @@ BuildRequires:  gcc-c++
 BuildRequires:  ncurses-devel
 BuildRequires:  perl
 BuildRequires:  pkgconfig
-BuildRequires:  update-desktop-files
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gobject-2.0)
@@ -61,11 +57,9 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xft)
 BuildRequires:  pkgconfig(xrender)
 BuildRequires:  pkgconfig(xt)
+Requires:       terminfo-base
 %requires_eq    perl
 Provides:       locale(xorg-x11:ja;ko;zh)
-%if ! 0%{?with_265color_terminfo_files}
-Requires:       terminfo-base
-%endif
 
 %description
 rxvt-unicode is a clone of the well-known terminal emulator rxvt,
@@ -75,41 +69,26 @@ at the same time, including Xft fonts.
 
 %prep
 %autosetup -p1
-find -type d -name CVS -print0 | xargs -r0 rm -r
 install -m 0644 %{SOURCE2} README.SUSE
 
 %build
-export COMMON_CONFIGURE_OPTIONS=" --enable-warnings --enable-unicode3 \
-    --enable-combining \
-    --enable-xft \
-    --enable-font-styles \
-    --enable-pixbuf \
-    --enable-transparency \
-    --enable-fading \
-    --enable-next-scroll \
-    --enable-rxvt-scroll \
-    --enable-xterm-scroll \
-    --enable-perl \
-    --enable-xim \
-    --enable-8bitctrls \
-    --enable-fallback \
-    --enable-iso14755 \
-    --enable-frills \
-    --enable-keepscrolling \
-    --enable-selectionscrolling \
-    --enable-mousewheel \
-    --enable-slipwheeling \
-    --enable-smart-resize \
-    --enable-text-blink \
-    --enable-pointer-blank \
-    --with-codesets=all \
-    --with-terminfo=%{_terminfo}"
+# --enable-everything adds support for all non-multichoice options listed in ./configure --help,
+# except for: --enable-assert, --enable-256-color, --enable-8bitctrls, --enable-fallback and --enable-smart-resize.
+# It also sets --with-codesets to "all"
+export COMMON_CONFIGURE_OPTIONS="\
+        --enable-warnings \
+        --enable-everything \
+        --enable-8bitctrls \
+        --enable-fallback \
+        --enable-smart-resize \
+        --with-terminfo=%{_terminfo}"
+
 #
 export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-unused"
 export CXXFLAGS="$CFLAGS"
 #
 # build the 256color version
-%configure --enable-256-color ${COMMON_CONFIGURE_OPTIONS}
+%configure ${COMMON_CONFIGURE_OPTIONS} --enable-256-color 
 #
 %make_build
 #
@@ -135,8 +114,6 @@ install -Dd -m 0755 "%{buildroot}%{_terminfo}/r" %{buildroot}%{_datadir}/applica
 # desktop files
 install -Dm644 %{SOURCE3} %{buildroot}%{_datadir}/applications/%{name}-256color.desktop
 install -Dm644 %{SOURCE4} %{buildroot}%{_datadir}/applications/%{name}.desktop
-%suse_update_desktop_file %{name}-256color
-%suse_update_desktop_file %{name}
 rm -f %{buildroot}/%{_terminfo}/r/%{name}
 
 %files
@@ -146,12 +123,6 @@ rm -f %{buildroot}/%{_terminfo}/r/%{name}
 %doc examples/
 %{_bindir}/urxvt*
 %{_bindir}/urclock
-%dir %{_terminfo}/r
-%if ! 0%{?with_265color_terminfo_files}
-%exclude %{_terminfo}/r/%{name}-256color
-%else
-%{_terminfo}/r/%{name}-256color
-%endif
 %{_mandir}/man1/urxvt*.1%{?ext_man}
 %{_mandir}/man1/urclock*.1%{?ext_man}
 %{_mandir}/man3/urxvt*.3%{?ext_man}
