@@ -35,4 +35,46 @@ suite, 249 tests pass on both flavours; rpmlint 0 errors, 0 warnings, 0
 badness. Built RPM verified as version 0.5.2 with the correct dist-info.</comment>
     <requestid>1368785</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>fc7882d4175a48165f39d74012b724c5</srcmd5>
+    <version>0.5.2</version>
+    <time>1790585237</time>
+    <user>anag_factory</user>
+    <comment>Update openllmetry monorepo 0.62.1 -&gt; 0.62.3 in devel:languages:python.
+
+This is a macro-only update and Version: deliberately stays at 0.5.2. The
+in-tree packages/opentelemetry-semantic-conventions-ai/pyproject.toml declares
+0.5.2 at BOTH v0.62.1 and v0.62.3, and hatchling derives the dist-info
+directory name from that in-tree version, so %files'
+opentelemetry_semantic_conventions_ai-%{version}.dist-info glob only matches
+while the two agree. The single spec change is
+%define monorepo_ver 0.62.1 -&gt; 0.62.3. Flagging the unchanged Version: so it
+is not mistaken for an empty change.
+
+The shipped subdirectory is byte-identical between the two tags (diff -r over
+packages/opentelemetry-semantic-conventions-ai, clean), so this refresh
+carries no code change. The two upstream fixes in 0.62.2 and 0.62.3 — &quot;stop
+entity names leaking onto sibling and parent spans&quot; (#4405) and &quot;register
+instrumentation in commitizen version files&quot; (#4408) — are in traceloop-sdk
+and the openai-agents / litellm instrumentation packages, which this package
+neither builds nor ships, so they are not credited here.
+
+Requires floors were re-derived from the 0.62.3 tarball's own metadata rather
+than inherited: opentelemetry-sdk &gt;= 1.42.0 and
+opentelemetry-semantic-conventions &gt;= 0.63b1. The upstream `&lt;2` ceiling on
+the sdk is deliberately not encoded — it is a preemptive cap, not a floor,
+and encoding it would open an unresolvable window on the next sdk major.
+
+Built green natively on aarch64 against openSUSE:Factory:ARM standard aarch64:
+rpmlint 0 errors / 0 warnings / 0 badness, %check 249 passed on each of
+python313 and python314. Against the currently shipped Factory RPM the new
+build is artifact-neutral: identical file list, identical Requires, rpmlint
+line identical including the filtered count.
+
+No tracker surfaces this package, so this bump has to be found by reading the
+spec. No CVE or GHSA in the crossed range. No bugzilla bug references the
+package, so none is cited.
+</comment>
+    <requestid>1380940</requestid>
+  </revision>
 </revisionlist>
