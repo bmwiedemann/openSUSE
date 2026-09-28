@@ -17,7 +17,7 @@
 
 
 Name:           ocaml-stdcompat
-Version:        21.1
+Version:        22.0
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Stdcompat: compatibility module for OCaml standard library 
@@ -26,7 +26,7 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 URL:            https://opam.ocaml.org/packages/stdcompat/
 Source0:        %name-%version.tar.xz
 Source1:        %name-rpmlintrc
-Patch0:         5ce5b7819b39c654ef90f890f5f0c71b5d0107fb.patch
+Patch0:         %name.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bash

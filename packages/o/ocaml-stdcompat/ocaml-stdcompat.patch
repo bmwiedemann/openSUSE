@@ -1,0 +1,74 @@
+--- a/configure.ac
++++ b/configure.ac
+@@ -181,12 +181,21 @@
+ AC_WITH_OCAML_VERSION([4_12_0], [4.12.0])
+ AC_WITH_OCAML_VERSION([4_13_0], [4.13.0])
+ AC_WITH_OCAML_VERSION([4_14_0], [4.14.0])
++AC_WITH_OCAML_VERSION([4_14_1], [4.14.1])
++AC_WITH_OCAML_VERSION([4_14_2], [4.14.2])
++AC_WITH_OCAML_VERSION([4_14_3], [4.14.3])
++AC_WITH_OCAML_VERSION([4_14_4], [4.14.4])
+ AC_WITH_OCAML_VERSION([5_0_0], [5.0.0])
+ AC_WITH_OCAML_VERSION([5_1_0], [5.1.0])
+ AC_WITH_OCAML_VERSION([5_2_0], [5.2.0])
+ AC_WITH_OCAML_VERSION([5_3_0], [5.3.0])
+ AC_WITH_OCAML_VERSION([5_4_0], [5.4.0])
++AC_WITH_OCAML_VERSION([5_4_1], [5.4.1])
++AC_WITH_OCAML_VERSION([5_4_2], [5.4.2])
+ AC_WITH_OCAML_VERSION([5_5_0], [5.5.0])
++AC_WITH_OCAML_VERSION([5_5_1], [5.5.1])
++AC_WITH_OCAML_VERSION([5_5_2], [5.5.2])
++AC_WITH_OCAML_VERSION([5_5_3], [5.5.3])
+ 
+ AS_IF([test "x$target_os_type" = "xWin32"],
+   [AC_WITH_BLOCK([WIN32])],
+--- a/tools/compiler_version.ml
++++ b/tools/compiler_version.ml
+@@ -91,7 +91,11 @@
+ let v5_3_0 = mk 5 3 0
+ let v5_4_0 = mk 5 4 0
+ let v5_4_1 = mk 5 4 1
++let v5_4_2 = mk 5 4 2
+ let v5_5_0 = mk 5 5 0
++let v5_5_1 = mk 5 5 1
++let v5_5_2 = mk 5 5 2
++let v5_5_3 = mk 5 5 3
+ 
+ let known_versions =
+ [
+@@ -142,7 +146,11 @@
+   v5_3_0;
+   v5_4_0;
+   v5_4_1;
++  v5_4_2;
+   v5_5_0;
++  v5_5_1;
++  v5_5_2;
++  v5_5_3;
+ ]
+ 
+ let is_known v = List.mem v known_versions
+--- a/tools/compiler_version.mli
++++ b/tools/compiler_version.mli
+@@ -45,12 +45,21 @@
+ val v4_14_0 : t
+ val v4_14_1 : t
+ val v4_14_2 : t
++val v4_14_3 : t
++val v4_14_4 : t
+ val v5_0_0 : t
+ val v5_1_0 : t
+ val v5_1_1 : t
+ val v5_2_0 : t
+ val v5_2_1 : t
+ val v5_3_0 : t
++val v5_4_0 : t
++val v5_4_1 : t
++val v5_4_2 : t
++val v5_5_0 : t
++val v5_5_1 : t
++val v5_5_2 : t
++val v5_5_3 : t
+ 
+ val known_versions : t list
+ 

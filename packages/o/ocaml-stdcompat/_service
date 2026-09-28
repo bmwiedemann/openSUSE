@@ -21,7 +21,7 @@
     <param name="exclude">interfaces/4.10</param>
     <param name="exclude">test_all_switches.sh</param>
     <param name="filename">ocaml-stdcompat</param>
-    <param name="revision">c7e6dda451f5f145d439d5243e8b2eef4597f94b</param>
+    <param name="revision">d677cc141216c7fe59fcefaedb4df53bc8f32297</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://github.com/ocamllibs/stdcompat.git</param>
