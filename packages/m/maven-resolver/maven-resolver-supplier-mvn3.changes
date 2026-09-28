@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Fri Sep 18 08:11:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.23
+  * New features and improvements
+    + Finish the repo key story
+    + Fix: log only once the warning in DefRemoteRepoMan
+    + Fix #2058: Add links to configuration page
+    + Eliminate per-node HashSet allocation in PathConflictResolver
+  * Bug Fixes
+    + fix: accept locally cached artifacts via same-id fallback when
+      tracking URL changes
+    + Fix listener error swallowing
+    + MRESOLVER-379: Preserve relocated candidates from version
+      ranges
+    + Create the local repository directory before resolving its
+      real path
+    + Optimize TrackingFileManager unit tests and fix potential lock
+      leaks
+    + Validate the repository key used in checksum summary file
+      names
+    + fix: bound response reads and sanitize remote-derived strings
+    + fix: earn trust labels through verification and bind tracking
+      to URL
+    + fix: bind credentials to origin and reject TLS downgrade
+      redirects
+    + fix: prevent remote signals from weakening operator-configured
+      policy
+    + fix: atomic file publication and authenticated IPC lock daemon
+    + fix: deploy-side integrity must fail closed
+    + fix: harden opt-in transport and lock backends against
+      unauthenticated infrastructure
+    + Compose named lock keys one segment per coordinate field
+    + Resolve file transport locations with path operations instead
+      of substring matching
+    + Validate coordinate components in the Maven 2 layout and local
+      path composer
+  * Documentation updates
+    + docs: Clarify trusted checksum sources
+    + Fix #2058: Add links to configuration page
+  * Maintenance
+    + test: move from minio docker image
+    + Fix listener error swallowing
+    + Fix: tidy up f013
+    + Fix #2096: harden NamedLocksTrackingFileManagerTest against CI
+      load
+    + Carry repository provenance into aggregateRepositories
+    + Validate the repository key used as a local repository path
+      segment
+  * Dependency updates
+    + Bump org.apache.maven.plugin-tools:maven-plugin-tools-api from
+      3.15.2 to 3.16.0
+    + Bump version.slf4j from 2.0.18 to 2.0.19
+    + Bump org.eclipse.jetty:jetty-bom from 12.1.12 to 12.1.13
+    + Bump com.github.siom79.japicmp:japicmp-maven-plugin from
+      0.26.1 to 0.26.2
+    + Deps: bump to BC provider 1.85.2
+    + Bump org.codehaus.plexus:plexus-utils from 3.6.1 to 3.6.2
+    + Bump org.codehaus.plexus:plexus-xml from 4.1.1 to 4.2.0
+    + Stop dependabot from offering guice 7 on the 1.9.x line
+
+-------------------------------------------------------------------
 Tue Aug 25 07:07:27 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0.22
