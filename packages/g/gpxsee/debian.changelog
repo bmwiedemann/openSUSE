@@ -1,3 +1,11 @@
+gpxsee (16.16) stable; urgency=low
+
+  * Added IMG maps deatil level configuration.
+  * macOS settings UI/UX cleanup.
+  * Windows versions are now built using MSVC 2026.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Sat, 26 Sep 2026 17:58:15 +0200
+
 gpxsee (16.15) stable; urgency=low
 
   * Improved Mapsforge maps performance.
