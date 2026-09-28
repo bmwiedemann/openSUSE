@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 27 14:52:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.6.2
+  * Fix a few memory-safety issues.
+  * Harden FLEX/Morse/POCSAG edge cases.
+
+-------------------------------------------------------------------
 Wed Sep 23 15:31:43 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.6.1

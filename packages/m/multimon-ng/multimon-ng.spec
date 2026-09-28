@@ -18,7 +18,7 @@
 
 
 Name:           multimon-ng
-Version:        1.6.1
+Version:        1.6.2
 Release:        0
 Summary:        A fork of multimon that decodes multiple digital transmission modes
 License:        GPL-2.0-only
