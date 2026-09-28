@@ -1,4 +1,1724 @@
 -------------------------------------------------------------------
+Sat Sep 26 09:00:58 CEST 2026 - jslaby@suse.cz
+
+- Update
+  patches.kernel.org/7.2.4-018-clocksource-drivers-timer-sun4i-Advertise-a-rea.patch
+  (bsc#1012628 CVE-2026-93219 bsc#1282749).
+- Update
+  patches.kernel.org/7.2.4-048-mm-huge_memory-skip-device-private-PMDs-in-madv.patch
+  (bsc#1012628 CVE-2026-93218 bsc#1282748).
+- Update
+  patches.kernel.org/7.2.4-050-mm-hugetlb-fix-boot-panic-with-CONFIG_DEBUG_VM-.patch
+  (bsc#1012628 CVE-2026-93232 bsc#1282694).
+- Update
+  patches.kernel.org/7.2.4-051-mm-hugetlb-initialize-gigantic-bootmem-hugepage.patch
+  (bsc#1012628 CVE-2026-93230 bsc#1282693).
+- Update
+  patches.kernel.org/7.2.4-054-mm-madvise-skip-device-private-PMDs-in-cold-and.patch
+  (bsc#1012628 CVE-2026-93217 bsc#1282760).
+- Update
+  patches.kernel.org/7.2.4-060-mm-mm_init-deferred_grow_zone-fix-out-of-range-.patch
+  (bsc#1012628 CVE-2026-93227 bsc#1282696).
+- Update
+  patches.kernel.org/7.2.4-061-mm-page_owner-use-memcg_data-snapshot-to-avoid-.patch
+  (bsc#1012628 CVE-2026-93216 bsc#1282780).
+- Update
+  patches.kernel.org/7.2.4-094-cdx-Fix-double-free-when-sysfs-file-creation-fa.patch
+  (bsc#1012628 CVE-2026-93215 bsc#1282758).
+- Update
+  patches.kernel.org/7.2.4-114-usb-gadget-f_tcm-fix-deadlock-in-usbg_make_tpg.patch
+  (bsc#1012628 CVE-2026-93214 bsc#1282776).
+- Update
+  patches.kernel.org/7.2.4-127-of-fix-out-of-bounds-read-in-of_alias_scan-stem.patch
+  (bsc#1012628 CVE-2026-93213 bsc#1282775).
+- Update
+  patches.kernel.org/7.2.4-144-nfsd-guard-nfsd_serv-deref-in-nfsd_file_net_dis.patch
+  (bsc#1012628 CVE-2026-93212 bsc#1282774).
+- Update
+  patches.kernel.org/7.2.4-162-nfsd-add-missing-read-barrier-to-rpc_status_get.patch
+  (bsc#1012628 CVE-2026-93229 bsc#1282698).
+- Update
+  patches.kernel.org/7.2.4-169-nfsd-convert-nfsd_net-boolean-flags-to-unsigned.patch
+  (bsc#1012628 CVE-2026-93221 bsc#1282736).
+- Update
+  patches.kernel.org/7.2.4-199-nfsd-initialize-DRC-hash-table-before-registeri.patch
+  (bsc#1012628 CVE-2026-93211 bsc#1282740).
+- Update
+  patches.kernel.org/7.2.4-243-smb-client-harden-DFS-cache-against-invalid-tar.patch
+  (bsc#1012628 CVE-2026-93210 bsc#1282737).
+- Update
+  patches.kernel.org/7.2.4-343-Bluetooth-hci_core-use-skb_get-instead-of-skb_c.patch
+  (bsc#1012628 CVE-2026-93209 bsc#1282735).
+- Update
+  patches.kernel.org/7.2.4-348-kasan-fix-cache-shrink-race-with-CPU-hotplug.patch
+  (bsc#1012628 CVE-2026-93208 bsc#1282732).
+- Update
+  patches.kernel.org/7.2.4-357-ipv6-use-RCU-iterator-to-dump-route-exceptions.patch
+  (bsc#1012628 CVE-2026-93226 bsc#1282723).
+- Update
+  patches.kernel.org/7.2.4-369-phy-fsl-imx8mq-usb-fix-typec-switch-leak-on-pro.patch
+  (bsc#1012628 CVE-2026-93225 bsc#1282726).
+- Update
+  patches.kernel.org/7.2.4-371-SUNRPC-Zero-rpc_gss_wire_cred-at-svcauth_gss_de.patch
+  (bsc#1012628 CVE-2026-93207 bsc#1282672).
+- Update
+  patches.kernel.org/7.2.4-393-svcrdma-Fix-unmatched-rn_unregister-on-failed-a.patch
+  (bsc#1012628 CVE-2026-93224 bsc#1282703).
+- Update
+  patches.kernel.org/7.2.4-398-svcrdma-Reject-Write-Reply-chunks-with-segcount.patch
+  (bsc#1012628 CVE-2026-93228 bsc#1282697).
+- Update
+  patches.kernel.org/7.2.4-401-udf-reject-VAT-indexes-equal-to-the-entry-count.patch
+  (bsc#1012628 CVE-2026-89525 bsc#1282288).
+- Update
+  patches.kernel.org/7.2.4-404-staging-media-tegra-video-fix-of_node_put-on-VI.patch
+  (bsc#1012628 CVE-2026-93223 bsc#1282741).
+- Update
+  patches.kernel.org/7.2.4-418-sched_ext-Keep-kick_sync-waiting-on-the-rq-s-ow.patch
+  (bsc#1012628 CVE-2026-93220 bsc#1282750).
+- Update
+  patches.kernel.org/7.2.4-486-lockd-fix-swapped-arguments-in-nlmsvc_match_ip.patch
+  (bsc#1012628 CVE-2026-93231 bsc#1282778).
+- Update
+  patches.kernel.org/7.2.4-534-PCI-proc-Use-file_ns_capable-when-checking-conf.patch
+  (bsc#1012628 CVE-2026-93206 bsc#1282729).
+- Update
+  patches.kernel.org/7.2.4-541-iommu-arm-smmu-v3-Manage-teardown-with-devm.patch
+  (bsc#1012628 CVE-2026-93205 bsc#1282727).
+- Update
+  patches.kernel.org/7.2.4-703-signal-avoid-shared-siginfo-namespace-rewrites.patch
+  (bsc#1012628 CVE-2026-93222 bsc#1282742).
+- Update
+  patches.kernel.org/7.2.5-097-mm-secretmem-properly-account-locked-pages.patch
+  (bsc#1012628 CVE-2026-93243 bsc#1282687).
+- Update
+  patches.kernel.org/7.2.5-128-memcg-bypass-the-reclaim-and-oom-killer-for-dyi.patch
+  (bsc#1012628 CVE-2026-93241 bsc#1282781).
+- Update
+  patches.kernel.org/7.2.5-129-memcg-make-the-v1-soft-limit-knob-inert.patch
+  (bsc#1012628 CVE-2026-93240 bsc#1282779).
+- Update
+  patches.kernel.org/7.2.5-146-arm64-mm-Fix-the-lockless-page-table-walk-in-sh.patch
+  (bsc#1012628 CVE-2026-93239 bsc#1282681).
+- Update
+  patches.kernel.org/7.2.5-190-s390-vfio-ap-fix-potential-use-of-uninitialized.patch
+  (bsc#1012628 CVE-2026-93238 bsc#1282689).
+- Update
+  patches.kernel.org/7.2.5-335-LoongArch-Add-DIRECT_MAP_PHYSMEM_END-definition.patch
+  (bsc#1012628 CVE-2026-93237 bsc#1282676).
+- Update
+  patches.kernel.org/7.2.5-374-media-meson-vdec-fix-NULL-pointer-deref-in-vdec.patch
+  (bsc#1012628 CVE-2026-93236 bsc#1282773).
+- Update
+  patches.kernel.org/7.2.5-435-scsi-qla2xxx-Fix-response-queue-over-consumptio.patch
+  (bsc#1012628 CVE-2026-93242 bsc#1282684).
+- Update
+  patches.kernel.org/7.2.5-471-f2fs-fix-to-zero-post-EOF-data-when-extending-f.patch
+  (bsc#1012628 CVE-2026-93235 bsc#1282683).
+- Update
+  patches.kernel.org/7.2.5-497-drm-gud-validate-TV-mode-names-before-creating-.patch
+  (bsc#1012628 CVE-2026-93234 bsc#1282691).
+- Update
+  patches.kernel.org/7.2.5-522-drm-sysfb-simpledrm-Improve-stride-validation.patch
+  (bsc#1012628 CVE-2026-93244 bsc#1282678).
+- Update
+  patches.kernel.org/7.2.5-526-drm-nouveau-dmem-fix-callocated-underflow-on-la.patch
+  (bsc#1012628 CVE-2026-93233 bsc#1282688).
+- Update
+  patches.kernel.org/7.2.6-0017-ksmbd-fix-maximum-allowed-access-checks.patch
+  (bsc#1012628 CVE-2026-93282 bsc#1282734).
+- Update
+  patches.kernel.org/7.2.6-0066-HID-core-quiesce-input-in-hid_hw_stop-to-preve.patch
+  (bsc#1012628 CVE-2026-93189 bsc#1282158).
+- Update
+  patches.kernel.org/7.2.6-0111-pinctrl-bcm2835-Don-t-remove-an-unregistered-G.patch
+  (bsc#1012628 CVE-2026-93274 bsc#1282814).
+- Update
+  patches.kernel.org/7.2.6-0143-drm-amdgpu-pm-powerplay-bounds-check-voltage-i.patch
+  (bsc#1012628 CVE-2026-93178 bsc#1282154).
+- Update
+  patches.kernel.org/7.2.6-0155-mm-mm_init-handle-alloc_percpu-failure-in-free.patch
+  (bsc#1012628 CVE-2026-93172 bsc#1282155).
+- Update
+  patches.kernel.org/7.2.6-0156-leds-lp5860-Fix-a-potential-double-unlock.patch
+  (bsc#1012628 CVE-2026-93171 bsc#1282137).
+- Update
+  patches.kernel.org/7.2.6-0159-dmaengine-xilinx_dma-Fix-channel-idle-state-ma.patch
+  (bsc#1012628 CVE-2026-93170 bsc#1282156).
+- Update
+  patches.kernel.org/7.2.6-0160-dmaengine-zynqmp_dma-fix-race-between-runtime-.patch
+  (bsc#1012628 CVE-2026-93169 bsc#1282150).
+- Update
+  patches.kernel.org/7.2.6-0162-dmaengine-xilinx_dma-Fix-CPU-stall-in-xilinx_d.patch
+  (bsc#1012628 CVE-2026-93168 bsc#1282151).
+- Update
+  patches.kernel.org/7.2.6-0165-csky-Fix-a4-a5-restoration-in-syscall-trace-pa.patch
+  (bsc#1012628 CVE-2026-93167 bsc#1282105).
+- Update
+  patches.kernel.org/7.2.6-0188-crypto-qat-cancel-work-on-re-enable-SR-IOV-tim.patch
+  (bsc#1012628 CVE-2026-93162 bsc#1282174).
+- Update
+  patches.kernel.org/7.2.6-0189-crypto-qat-clear-AES-key-schedule-from-stack.patch
+  (bsc#1012628 CVE-2026-93161 bsc#1282196).
+- Update
+  patches.kernel.org/7.2.6-0190-crypto-atmel-ecc-reject-hardware-ECDH-without-.patch
+  (bsc#1012628 CVE-2026-93160 bsc#1282147).
+- Update
+  patches.kernel.org/7.2.6-0191-crypto-atmel-sha204a-fix-heap-info-leak-on-I2C.patch
+  (bsc#1012628 CVE-2026-93159 bsc#1282192).
+- Update
+  patches.kernel.org/7.2.6-0192-crypto-sa2ul-stop-probe-if-context-pool-creati.patch
+  (bsc#1012628 CVE-2026-93158 bsc#1282149).
+- Update
+  patches.kernel.org/7.2.6-0193-hwrng-xilinx-trng-propagate-timeout-before-any.patch
+  (bsc#1012628 CVE-2026-93157 bsc#1282157).
+- Update
+  patches.kernel.org/7.2.6-0195-crypto-rk3288-fail-ahash-requests-on-HASH-idle.patch
+  (bsc#1012628 CVE-2026-93156 bsc#1282189).
+- Update
+  patches.kernel.org/7.2.6-0196-crypto-keembay-Fix-AEAD-unregister-count-in-er.patch
+  (bsc#1012628 CVE-2026-93155 bsc#1282179).
+- Update
+  patches.kernel.org/7.2.6-0200-RDMA-irdma-Add-refcounting-to-user-ring-MRs.patch
+  (bsc#1012628 CVE-2026-93154 bsc#1282104).
+- Update
+  patches.kernel.org/7.2.6-0203-RDMA-bng_re-return-a-timeout-when-firmware-res.patch
+  (bsc#1012628 CVE-2026-93153 bsc#1282163).
+- Update
+  patches.kernel.org/7.2.6-0205-nvme-apple-Use-acquire-release-for-queue-enabl.patch
+  (bsc#1012628 CVE-2026-93152 bsc#1282103).
+- Update
+  patches.kernel.org/7.2.6-0207-nvmet-rdma-fix-response-resource-leak-on-queue.patch
+  (bsc#1012628 CVE-2026-93151 bsc#1282102).
+- Update
+  patches.kernel.org/7.2.6-0210-cgroup-cpuset-Make-nr_deadline_tasks-an-atomic.patch
+  (bsc#1012628 CVE-2026-93150 bsc#1282152).
+- Update
+  patches.kernel.org/7.2.6-0227-wifi-mac80211_hwsim-avoid-NULL-skb-in-stop-que.patch
+  (bsc#1012628 CVE-2026-93149 bsc#1282279).
+- Update
+  patches.kernel.org/7.2.6-0231-greybus-audio-bound-the-topology-section-sizes.patch
+  (bsc#1012628 CVE-2026-93280 bsc#1282699).
+- Update
+  patches.kernel.org/7.2.6-0240-bpf-Reject-MEM_ALLOC-BTF-accesses-past-object-.patch
+  (bsc#1012628 CVE-2026-93148 bsc#1282281).
+- Update
+  patches.kernel.org/7.2.6-0241-s390-bpf-Replace-ly-instruction-with-llgf.patch
+  (bsc#1012628 CVE-2026-93147 bsc#1282153).
+- Update
+  patches.kernel.org/7.2.6-0250-time-namespace-Validate-nanosecond-field-in-pr.patch
+  (bsc#1012628 CVE-2026-93146 bsc#1282162).
+- Update
+  patches.kernel.org/7.2.6-0256-clk-qcom-gdsc-tear-down-per-domain-genpds-in-g.patch
+  (bsc#1012628 CVE-2026-93145 bsc#1282161).
+- Update
+  patches.kernel.org/7.2.6-0268-bpf-Reject-writes-through-untrusted-BTF-pointe.patch
+  (bsc#1012628 CVE-2026-93144 bsc#1282160).
+- Update
+  patches.kernel.org/7.2.6-0270-staging-media-ipu7-fix-pm_runtime-refcount-lea.patch
+  (bsc#1012628 CVE-2026-93143 bsc#1282159).
+- Update
+  patches.kernel.org/7.2.6-0271-thermal-drivers-rcar-Fix-error-checking-in-pro.patch
+  (bsc#1012628 CVE-2026-93142 bsc#1282168).
+- Update
+  patches.kernel.org/7.2.6-0273-usb-gadget-r8a66597-avoid-double-free-of-ep0_r.patch
+  (bsc#1012628 CVE-2026-93141 bsc#1282167).
+- Update
+  patches.kernel.org/7.2.6-0274-udf-Mark-LVID-buffer-as-uptodate-before-markin.patch
+  (bsc#1012628 CVE-2026-93140 bsc#1282283).
+- Update
+  patches.kernel.org/7.2.6-0276-drm-amdgpu-mes-Fix-hung_queue_db_array-loop-li.patch
+  (bsc#1012628 CVE-2026-93139 bsc#1282125).
+- Update
+  patches.kernel.org/7.2.6-0279-bpf-Fix-vmlinux-BTF-prep-race-in-bpf_get_btf_v.patch
+  (bsc#1012628 CVE-2026-93138 bsc#1282124).
+- Update
+  patches.kernel.org/7.2.6-0281-bpf-Fix-use-after-free-on-mm_struct-in-bpf_fin.patch
+  (bsc#1012628 CVE-2026-93137 bsc#1282123).
+- Update
+  patches.kernel.org/7.2.6-0282-bus-mhi-ep-Fix-device-refcount-leak-in-the-err.patch
+  (bsc#1012628 CVE-2026-93136 bsc#1282122).
+- Update
+  patches.kernel.org/7.2.6-0305-platform-x86-dell-wmi-base-Fix-handling-of-ult.patch
+  (bsc#1012628 CVE-2026-93129 bsc#1282166).
+- Update
+  patches.kernel.org/7.2.6-0326-usb-fix-UAF-when-probe-runs-concurrent-to-dyn-.patch
+  (bsc#1012628 CVE-2026-93117 bsc#1282165).
+- Update
+  patches.kernel.org/7.2.6-0354-crash_dump-release-keyring-reference-at-the-co.patch
+  (bsc#1012628 CVE-2026-93106 bsc#1282172).
+- Update
+  patches.kernel.org/7.2.6-0356-esp-do-not-unref-managed-frag-pages-in-esp_ssg.patch
+  (bsc#1012628 CVE-2026-93105 bsc#1282171).
+- Update
+  patches.kernel.org/7.2.6-0360-RDMA-rvt-Return-NULL-after-port-allocation-fai.patch
+  (bsc#1012628 CVE-2026-93104 bsc#1282284).
+- Update
+  patches.kernel.org/7.2.6-0361-RDMA-hfi1-Preserve-unit-0-on-allocation-failur.patch
+  (bsc#1012628 CVE-2026-93103 bsc#1282286).
+- Update
+  patches.kernel.org/7.2.6-0362-RDMA-hfi1-Free-RX-data-on-late-probe-failure.patch
+  (bsc#1012628 CVE-2026-93102 bsc#1282170).
+- Update
+  patches.kernel.org/7.2.6-0369-media-v4l2-async-Unregister-sub-device-if-asc_.patch
+  (bsc#1012628 CVE-2026-93101 bsc#1282169).
+- Update
+  patches.kernel.org/7.2.6-0371-fs-resctrl-Prevent-use-after-free-in-rdtgroup_.patch
+  (bsc#1012628 CVE-2026-93100 bsc#1282176).
+- Update
+  patches.kernel.org/7.2.6-0374-fs-resctrl-Fix-UAF-from-worker-threads-when-do.patch
+  (bsc#1012628 CVE-2026-93099 bsc#1282177).
+- Update
+  patches.kernel.org/7.2.6-0375-rpmsg-glink-fix-deadlock-in-endpoint-destroy-d.patch
+  (bsc#1012628 CVE-2026-93098 bsc#1282093).
+- Update
+  patches.kernel.org/7.2.6-0382-cxl-mbox-Break-poison-list-loop-on-an-empty-pa.patch
+  (bsc#1012628 CVE-2026-93097 bsc#1282273).
+- Update
+  patches.kernel.org/7.2.6-0384-cxl-features-Serialize-multi-part-Get-Set-Feat.patch
+  (bsc#1012628 CVE-2026-93096 bsc#1282091).
+- Update
+  patches.kernel.org/7.2.6-0386-hfsplus-validate-thread-record-before-delete-k.patch
+  (bsc#1012628 CVE-2026-93095 bsc#1282092).
+- Update
+  patches.kernel.org/7.2.6-0387-wifi-ath12k-fix-dp_link_peer-dangling-referenc.patch
+  (bsc#1012628 CVE-2026-93094 bsc#1282090).
+- Update
+  patches.kernel.org/7.2.6-0393-firmware-arm_scmi-Unregister-device-notifier-b.patch
+  (bsc#1012628 CVE-2026-93092 bsc#1282296).
+- Update
+  patches.kernel.org/7.2.6-0398-firmware-arm_scmi-Reject-out-of-range-DT-proto.patch
+  (bsc#1012628 CVE-2026-93085 bsc#1282304).
+- Update
+  patches.kernel.org/7.2.6-0401-firmware-arm_scmi-Drop-handle-on-protocol-bind.patch
+  (bsc#1012628 CVE-2026-93084 bsc#1282302).
+- Update
+  patches.kernel.org/7.2.6-0404-firmware-arm_scmi-Unwind-TX-receiver-mailbox-s.patch
+  (bsc#1012628 CVE-2026-93083 bsc#1282300).
+- Update
+  patches.kernel.org/7.2.6-0405-firmware-arm_scmi-Unwind-P2A-receiver-mailbox-.patch
+  (bsc#1012628 CVE-2026-93082 bsc#1282297).
+- Update
+  patches.kernel.org/7.2.6-0406-firmware-arm_scmi-Fix-SCMI-device-destroy-life.patch
+  (bsc#1012628 CVE-2026-93081 bsc#1282076).
+- Update
+  patches.kernel.org/7.2.6-0407-firmware-arm_scmi-Fix-transport-device-teardow.patch
+  (bsc#1012628 CVE-2026-93080 bsc#1282119).
+- Update
+  patches.kernel.org/7.2.6-0408-cxl-features-Reject-Get-Feature-count-larger-t.patch
+  (bsc#1012628 CVE-2026-93079 bsc#1282136).
+- Update
+  patches.kernel.org/7.2.6-0409-cxl-features-Reject-Set-Features-output-buffer.patch
+  (bsc#1012628 CVE-2026-93078 bsc#1282099).
+- Update
+  patches.kernel.org/7.2.6-0410-cxl-features-Clamp-Get-Feature-output-size-to-.patch
+  (bsc#1012628 CVE-2026-93077 bsc#1282201).
+- Update
+  patches.kernel.org/7.2.6-0416-dax-fsdev-clear-vmemmap_shift-when-binding-sta.patch
+  (bsc#1012628 CVE-2026-93076 bsc#1282200).
+- Update
+  patches.kernel.org/7.2.6-0418-dax-fsdev-clear-pgmap-ops-and-owner-on-unbind.patch
+  (bsc#1012628 CVE-2026-93075 bsc#1282187).
+- Update
+  patches.kernel.org/7.2.6-0419-dax-fsdev-use-__va-phys-for-kaddr-in-direct_ac.patch
+  (bsc#1012628 CVE-2026-93074 bsc#1282278).
+- Update
+  patches.kernel.org/7.2.6-0421-dax-read-holder_ops-once-in-dax_holder_notify_.patch
+  (bsc#1012628 CVE-2026-93073 bsc#1282272).
+- Update
+  patches.kernel.org/7.2.6-0426-irqchip-renesas-irqc-Fix-generic-interrupt-chi.patch
+  (bsc#1012628 CVE-2026-93072 bsc#1282263).
+- Update
+  patches.kernel.org/7.2.6-0430-media-bcm2835-unicam-Fix-asc-leaked-in-error-r.patch
+  (bsc#1012628 CVE-2026-93071 bsc#1282314).
+- Update
+  patches.kernel.org/7.2.6-0431-media-ipu6-Do-not-free-aux-device-pdata-after-.patch
+  (bsc#1012628 CVE-2026-93070 bsc#1282306).
+- Update
+  patches.kernel.org/7.2.6-0432-OPP-Fix-cleanup-ordering.patch
+  (bsc#1012628 CVE-2026-93069 bsc#1282047).
+- Update
+  patches.kernel.org/7.2.6-0433-drm-amd-display-Fix-DM-I2C-teardown-race.patch
+  (bsc#1012628 CVE-2026-93068 bsc#1282046).
+- Update
+  patches.kernel.org/7.2.6-0443-drm-bridge-tc358767-clamp-the-reported-AUX-rea.patch
+  (bsc#1012628 CVE-2026-93067 bsc#1282045).
+- Update
+  patches.kernel.org/7.2.6-0444-x86-mm-pat-Take-cpa_lock-around-large-page-col.patch
+  (bsc#1012628 bsc#1271202 CVE-2026-93066 bsc#1282274).
+- Update
+  patches.kernel.org/7.2.6-0463-wifi-iwlwifi-fix-counter-type-in-iwl_fwrt_dump.patch
+  (bsc#1012628 CVE-2026-93065 bsc#1282044).
+- Update
+  patches.kernel.org/7.2.6-0464-wifi-iwlwifi-mvm-fix-off-by-one-in-TXF-key-san.patch
+  (bsc#1012628 CVE-2026-93064 bsc#1282298).
+- Update
+  patches.kernel.org/7.2.6-0465-wifi-iwlwifi-mei-check-SAP-message-length-befo.patch
+  (bsc#1012628 CVE-2026-93063 bsc#1282328).
+- Update
+  patches.kernel.org/7.2.6-0466-wifi-iwlwifi-guard-against-division-by-zero-in.patch
+  (bsc#1012628 CVE-2026-93062 bsc#1282327).
+- Update
+  patches.kernel.org/7.2.6-0470-gpu-host1x-Avoid-stack-over-read-in-debug-outp.patch
+  (bsc#1012628 CVE-2026-93061 bsc#1282325).
+- Update
+  patches.kernel.org/7.2.6-0471-drm-msm-adreno-fix-use-after-free-on-error-pat.patch
+  (bsc#1012628 CVE-2026-93060 bsc#1282039).
+- Update
+  patches.kernel.org/7.2.6-0477-drm-msm-Fix-task_struct-reference-leak-in-reco.patch
+  (bsc#1012628 CVE-2026-93059 bsc#1282038).
+- Update
+  patches.kernel.org/7.2.6-0478-drm-msm-Only-fini-scheduler-after-successful-i.patch
+  (bsc#1012628 CVE-2026-93058 bsc#1282037).
+- Update
+  patches.kernel.org/7.2.6-0480-scsi-ufs-core-Avoid-possible-memory-reclaim-de.patch
+  (bsc#1012628 CVE-2026-93057 bsc#1282036).
+- Update
+  patches.kernel.org/7.2.6-0485-usb-gadget-f_uac1_legacy-remove-broken-string-.patch
+  (bsc#1012628 CVE-2026-93056 bsc#1282178).
+- Update
+  patches.kernel.org/7.2.6-0487-UDF-symlink-pathComponent-header-OOB-read.patch
+  (bsc#1012628 CVE-2026-93055 bsc#1282191).
+- Update
+  patches.kernel.org/7.2.6-0492-uio-Fix-stale-info-pointer-in-failed-registrat.patch
+  (bsc#1012628 CVE-2026-93054 bsc#1282276).
+- Update
+  patches.kernel.org/7.2.6-0494-speakup-keyhelp-guard-letter_offsets-possible-.patch
+  (bsc#1012628 CVE-2026-93053 bsc#1282117).
+- Update
+  patches.kernel.org/7.2.6-0497-misc-bcm-vk-Use-acquire-release-for-msgq_inite.patch
+  (bsc#1012628 CVE-2026-93052 bsc#1282116).
+- Update
+  patches.kernel.org/7.2.6-0499-misc-ad525x_dpot-use-driver-core-groups-for-sy.patch
+  (bsc#1012628 CVE-2026-93051 bsc#1282029).
+- Update
+  patches.kernel.org/7.2.6-0503-ipack-ipoctal-fix-UAF-null-ptr-deref-and-use-a.patch
+  (bsc#1012628 CVE-2026-93050 bsc#1282028).
+- Update
+  patches.kernel.org/7.2.6-0509-mtd-mtdswap-Avoid-freeing-registered-blktrans-.patch
+  (bsc#1012628 CVE-2026-93049 bsc#1282027).
+- Update
+  patches.kernel.org/7.2.6-0510-mtd-part-reject-MTDPART_OFS_RETAIN-in-mtd_add_.patch
+  (bsc#1012628 CVE-2026-93048 bsc#1282026).
+- Update
+  patches.kernel.org/7.2.6-0519-drm-v3d-Associate-BOs-with-every-job-that-acce.patch
+  (bsc#1012628 CVE-2026-93047 bsc#1282115).
+- Update
+  patches.kernel.org/7.2.6-0521-software-node-Fix-software_node_get_reference_.patch
+  (bsc#1012628 CVE-2026-93046 bsc#1282114).
+- Update
+  patches.kernel.org/7.2.6-0525-bpf-Reject-arena-frees-below-the-arena-base.patch
+  (bsc#1012628 CVE-2026-93045 bsc#1282106).
+- Update
+  patches.kernel.org/7.2.6-0526-bpf-Disallow-interpreter-fallback-for-arena-re.patch
+  (bsc#1012628 CVE-2026-93044 bsc#1282107).
+- Update
+  patches.kernel.org/7.2.6-0527-bpf-Disallow-interpreter-fallback-for-gotox-in.patch
+  (bsc#1012628 CVE-2026-93043 bsc#1282108).
+- Update
+  patches.kernel.org/7.2.6-0529-dmaengine-dw-edma-Terminate-all-descriptors-wi.patch
+  (bsc#1012628 CVE-2026-93042 bsc#1282109).
+- Update
+  patches.kernel.org/7.2.6-0530-dmaengine-dw-edma-Serialize-abort-state-update.patch
+  (bsc#1012628 CVE-2026-93041 bsc#1282018).
+- Update
+  patches.kernel.org/7.2.6-0531-dmaengine-dw-edma-Serialize-channel-state-chec.patch
+  (bsc#1012628 CVE-2026-93040 bsc#1282019).
+- Update
+  patches.kernel.org/7.2.6-0534-iio-dac-ad5686-missing-NULL-check-on-match-dat.patch
+  (bsc#1012628 CVE-2026-93038 bsc#1281983).
+- Update
+  patches.kernel.org/7.2.6-0539-RDMA-hfi1-Propagate-sdma_txinit_ahg-errors.patch
+  (bsc#1012628 CVE-2026-93037 bsc#1282020).
+- Update
+  patches.kernel.org/7.2.6-0540-RDMA-rxe-Validate-num_sge-cur_sge-before-index.patch
+  (bsc#1012628 CVE-2026-92525 bsc#1282270).
+- Update
+  patches.kernel.org/7.2.6-0542-RDMA-bnxt_re-Validate-udata-before-executing-c.patch
+  (bsc#1012628 CVE-2026-93277 bsc#1282797).
+- Update
+  patches.kernel.org/7.2.6-0553-irqchip-gic-v3-its-Prevent-leak-in-its_vpe_irq.patch
+  (bsc#1012628 CVE-2026-92524 bsc#1282009).
+- Update
+  patches.kernel.org/7.2.6-0554-RDMA-nldev-validate-dynamic-counter-attribute-.patch
+  (bsc#1012628 CVE-2026-92523 bsc#1282271).
+- Update
+  patches.kernel.org/7.2.6-0556-ACPI-processor-validate-MADT-IOAPIC-entry-boun.patch
+  (bsc#1012628 CVE-2026-92522 bsc#1282262).
+- Update
+  patches.kernel.org/7.2.6-0557-ACPI-PCI-Clear-driver_data-on-all-paths-that-f.patch
+  (bsc#1012628 CVE-2026-92521 bsc#1282008).
+- Update
+  patches.kernel.org/7.2.6-0558-ext4-fix-circular-lock-dependency-in-ext4_ext_.patch
+  (bsc#1012628 CVE-2026-93269 bsc#1282810).
+- Update
+  patches.kernel.org/7.2.6-0560-ext4-skip-extra-isize-expansion-during-mount-t.patch
+  (bsc#1012628 CVE-2026-93268 bsc#1282813).
+- Update
+  patches.kernel.org/7.2.6-0562-bpf-Zero-queue-and-stack-outputs-on-lock-failu.patch
+  (bsc#1012628 CVE-2026-92520 bsc#1282007).
+- Update
+  patches.kernel.org/7.2.6-0566-riscv-bpf-Fix-memory-leak-in-bpf_jit_free.patch
+  (bsc#1012628 CVE-2026-92519 bsc#1282006).
+- Update
+  patches.kernel.org/7.2.6-0567-riscv-bpf-Fix-kernel-stack-corruption-in-tailc.patch
+  (bsc#1012628 CVE-2026-92518 bsc#1282069).
+- Update
+  patches.kernel.org/7.2.6-0568-bpf-riscv-Fix-extable-handling-for-arena-load_.patch
+  (bsc#1012628 CVE-2026-92517 bsc#1282071).
+- Update
+  patches.kernel.org/7.2.6-0571-bpf-Fix-offset-warn-check-for-bpf_res_spin_loc.patch
+  (bsc#1012628 CVE-2026-92516 bsc#1282043).
+- Update
+  patches.kernel.org/7.2.6-0572-bpf-Preserve-unique-field-state-across-nested-.patch
+  (bsc#1012628 CVE-2026-92515 bsc#1281998).
+- Update
+  patches.kernel.org/7.2.6-0576-RDMA-erdma-Fix-CEQ-tasklet-use-after-free-on-r.patch
+  (bsc#1012628 CVE-2026-92514 bsc#1281997).
+- Update
+  patches.kernel.org/7.2.6-0577-RDMA-mana_ib-drain-QP-references-after-partial.patch
+  (bsc#1012628 CVE-2026-92513 bsc#1281996).
+- Update
+  patches.kernel.org/7.2.6-0579-RDMA-core-Fix-use-after-free-in-ib_query_qp.patch
+  (bsc#1012628 CVE-2026-92512 bsc#1281995).
+- Update
+  patches.kernel.org/7.2.6-0580-RDMA-core-Fix-potential-use-after-free-in-ib_d.patch
+  (bsc#1012628 CVE-2026-92511 bsc#1282042).
+- Update
+  patches.kernel.org/7.2.6-0581-RDMA-core-Fix-potential-use-after-free-in-ib_d.patch
+  (bsc#1012628 CVE-2026-92510 bsc#1282041).
+- Update
+  patches.kernel.org/7.2.6-0582-RDMA-core-Fix-potential-use-after-free-in-coun.patch
+  (bsc#1012628 CVE-2026-92509 bsc#1282040).
+- Update
+  patches.kernel.org/7.2.6-0583-RDMA-core-Fix-potential-use-after-free-in-ib_f.patch
+  (bsc#1012628 CVE-2026-92508 bsc#1282034).
+- Update
+  patches.kernel.org/7.2.6-0585-RDMA-core-Fix-potential-use-after-free-in-ib_d.patch
+  (bsc#1012628 CVE-2026-92507 bsc#1281988).
+- Update
+  patches.kernel.org/7.2.6-0586-firmware-arm_scmi-Fix-requested-device-removal.patch
+  (bsc#1012628 CVE-2026-92506 bsc#1281987).
+- Update
+  patches.kernel.org/7.2.6-0587-iommu-amd-Fix-undefined-behavior-in-devid_writ.patch
+  (bsc#1012628 CVE-2026-92505 bsc#1281986).
+- Update
+  patches.kernel.org/7.2.6-0591-thermal-intel-int3400-clean-up-ODVP-on-probe-f.patch
+  (bsc#1012628 CVE-2026-92504 bsc#1281985).
+- Update
+  patches.kernel.org/7.2.6-0592-ext4-fix-ABBA-deadlock-in-ext4_xattr_inode_cac.patch
+  (bsc#1012628 CVE-2026-92503 bsc#1282383).
+- Update
+  patches.kernel.org/7.2.6-0593-ext4-clear-stale-xarray-tags-on-folios-skipped.patch
+  (bsc#1012628 CVE-2026-92502 bsc#1282382).
+- Update
+  patches.kernel.org/7.2.6-0594-ext4-drain-in-flight-DIO-before-buffered-write.patch
+  (bsc#1012628 CVE-2026-92501 bsc#1282258).
+- Update
+  patches.kernel.org/7.2.6-0595-ext4-use-fsdata-to-track-inline-data-write-sta.patch
+  (bsc#1012628 CVE-2026-92500 bsc#1282193).
+- Update
+  patches.kernel.org/7.2.6-0596-ext4-validate-readdir-offset-before-accessing-.patch
+  (bsc#1012628 CVE-2026-92499 bsc#1282079).
+- Update
+  patches.kernel.org/7.2.6-0601-wifi-ath6kl-avoid-buffer-overreads-in-WMI-even.patch
+  (bsc#1012628 CVE-2026-92498 bsc#1282033).
+- Update
+  patches.kernel.org/7.2.6-0608-wifi-ath12k-Avoid-buffer-overread-in-ath12k_wm.patch
+  (bsc#1012628 CVE-2026-92497 bsc#1282032).
+- Update
+  patches.kernel.org/7.2.6-0609-wifi-ath11k-Avoid-buffer-overread-in-ath11k_wm.patch
+  (bsc#1012628 CVE-2026-92496 bsc#1282031).
+- Update
+  patches.kernel.org/7.2.6-0610-RDMA-bnxt_re-Clear-VM_MAYWRITE-on-DBR-toggle-p.patch
+  (bsc#1012628 CVE-2026-92495 bsc#1282072).
+- Update
+  patches.kernel.org/7.2.6-0611-ext4-fix-buffer_head-leak-in-ext4_init_orphan_.patch
+  (bsc#1012628 CVE-2026-92494 bsc#1281981).
+- Update
+  patches.kernel.org/7.2.6-0615-cpufreq-amd-pstate-ut-Skip-tests-when-amd-psta.patch
+  (bsc#1012628 CVE-2026-92493 bsc#1281980).
+- Update
+  patches.kernel.org/7.2.6-0618-cpufreq-amd-pstate-handle-missing-policy-in-dy.patch
+  (bsc#1012628 CVE-2026-92492 bsc#1282264).
+- Update
+  patches.kernel.org/7.2.6-0619-firmware-arm_scmi-Roll-back-partial-protocol-t.patch
+  (bsc#1012628 CVE-2026-92491 bsc#1282266).
+- Update
+  patches.kernel.org/7.2.6-0620-firmware-arm_scmi-Unrequest-devices-if-driver-.patch
+  (bsc#1012628 CVE-2026-92490 bsc#1282267).
+- Update
+  patches.kernel.org/7.2.6-0628-xfrm-Fix-skb-double-free-in-xfrm_dev_direct_ou.patch
+  (bsc#1012628 CVE-2026-92489 bsc#1282164).
+- Update
+  patches.kernel.org/7.2.6-0629-RDMA-erdma-complete-object-teardown-when-the-d.patch
+  (bsc#1012628 CVE-2026-92488 bsc#1281979).
+- Update
+  patches.kernel.org/7.2.6-0637-netfilter-nf_nat_sip-rewind-offset-when-NAT-sh.patch
+  (bsc#1012628 CVE-2026-100070 bsc#1282809).
+- Update
+  patches.kernel.org/7.2.6-0640-exfat-fix-valid_size-extension-over-a-shared-w.patch
+  (bsc#1012628 CVE-2026-92487 bsc#1282142).
+- Update
+  patches.kernel.org/7.2.6-0645-bpf-Fix-CFI-mismatch-in-task-work-callback.patch
+  (bsc#1012628 CVE-2026-92486 bsc#1281978).
+- Update
+  patches.kernel.org/7.2.6-0647-bpf-Fix-WARNING-in-bpf_tracing_link_release.patch
+  (bsc#1012628 CVE-2026-92485 bsc#1282022).
+- Update
+  patches.kernel.org/7.2.6-0652-cxl-region-Fix-use-after-free-in-find_pos_and_.patch
+  (bsc#1012628 CVE-2026-92484 bsc#1282023).
+- Update
+  patches.kernel.org/7.2.6-0659-liveupdate-Remember-FLB-retrieve-status.patch
+  (bsc#1012628 CVE-2026-92483 bsc#1282024).
+- Update
+  patches.kernel.org/7.2.6-0660-pinctrl-mediatek-use-devm_gpiochip_add_data-fo.patch
+  (bsc#1012628 CVE-2026-92482 bsc#1282025).
+- Update
+  patches.kernel.org/7.2.6-0661-pinctrl-mediatek-free-EINT-resources-on-unbind.patch
+  (bsc#1012628 CVE-2026-92481 bsc#1282073).
+- Update
+  patches.kernel.org/7.2.6-0667-scsi-ufs-core-Validate-string-descriptors.patch
+  (bsc#1012628 CVE-2026-92480 bsc#1282074).
+- Update
+  patches.kernel.org/7.2.6-0668-scsi-ufs-Avoid-NULL-CQE-dereference-when-repor.patch
+  (bsc#1012628 CVE-2026-92479 bsc#1282268).
+- Update
+  patches.kernel.org/7.2.6-0669-scsi-ufs-core-Validate-connected-lane-counts.patch
+  (bsc#1012628 CVE-2026-92478 bsc#1282075).
+- Update
+  patches.kernel.org/7.2.6-0671-scsi-ufs-debugfs-Reserve-space-for-a-string-te.patch
+  (bsc#1012628 CVE-2026-92477 bsc#1282030).
+- Update
+  patches.kernel.org/7.2.6-0672-crypto-keembay-Initialize-completion-before-re.patch
+  (bsc#1012628 CVE-2026-92476 bsc#1282001).
+- Update
+  patches.kernel.org/7.2.6-0674-RDMA-mlx5-Fix-integer-overflow-of-user-QP-buff.patch
+  (bsc#1012628 CVE-2026-90435 bsc#1282002).
+- Update
+  patches.kernel.org/7.2.6-0680-isofs-release-zisofs-block-pointer-buffer-head.patch
+  (bsc#1012628 CVE-2026-90434 bsc#1281993).
+- Update
+  patches.kernel.org/7.2.6-0684-spi-oc-tiny-switch-to-managed-controller-alloc.patch
+  (bsc#1012628 CVE-2026-90433 bsc#1281992).
+- Update
+  patches.kernel.org/7.2.6-0687-sched_ext-Abort-directly-from-the-hardlockup-h.patch
+  (bsc#1012628 CVE-2026-90432 bsc#1281982).
+- Update
+  patches.kernel.org/7.2.6-0695-remoteproc-Prevent-crash-handling-to-race-with.patch
+  (bsc#1012628 CVE-2026-90431 bsc#1281984).
+- Update
+  patches.kernel.org/7.2.6-0701-iommu-tegra241-cmdqv-Publish-an-LVCMDQ-only-af.patch
+  (bsc#1012628 CVE-2026-90430 bsc#1281991).
+- Update
+  patches.kernel.org/7.2.6-0702-iommu-tegra241-cmdqv-Synchronize-the-error-ISR.patch
+  (bsc#1012628 CVE-2026-90429 bsc#1281990).
+- Update
+  patches.kernel.org/7.2.6-0703-iommu-tegra241-cmdqv-Don-t-run-the-error-ISR-b.patch
+  (bsc#1012628 CVE-2026-90428 bsc#1282003).
+- Update
+  patches.kernel.org/7.2.6-0704-iommu-tegra241-cmdqv-Don-t-fall-back-to-a-free.patch
+  (bsc#1012628 CVE-2026-90427 bsc#1282012).
+- Update
+  patches.kernel.org/7.2.6-0705-iommu-tegra241-cmdqv-Free-the-error-IRQ-before.patch
+  (bsc#1012628 CVE-2026-90426 bsc#1282013).
+- Update
+  patches.kernel.org/7.2.6-0706-iommu-tegra241-cmdqv-Require-exactly-one-Strea.patch
+  (bsc#1012628 CVE-2026-90425 bsc#1282014).
+- Update
+  patches.kernel.org/7.2.6-0707-iommu-tegra241-cmdqv-Fix-VINTF0-leak-on-the-in.patch
+  (bsc#1012628 CVE-2026-90424 bsc#1281974).
+- Update
+  patches.kernel.org/7.2.6-0708-RDMA-rxe-Fix-UAF-in-ODP-init-error-handling-pa.patch
+  (bsc#1012628 CVE-2026-90423 bsc#1281975).
+- Update
+  patches.kernel.org/7.2.6-0709-RDMA-efa-Fix-PBL-chunk-length-computation.patch
+  (bsc#1012628 CVE-2026-93264 bsc#1282812).
+- Update
+  patches.kernel.org/7.2.6-0714-clk-mediatek-pllfh-Fix-IO-remapping-leak-in-re.patch
+  (bsc#1012628 CVE-2026-90422 bsc#1281976).
+- Update
+  patches.kernel.org/7.2.6-0721-PCI-Fix-UAF-when-probe-runs-concurrent-to-dyn-.patch
+  (bsc#1012628 CVE-2026-90421 bsc#1281977).
+- Update
+  patches.kernel.org/7.2.6-0724-nilfs2-fix-infinite-loop-in-nilfs_clean_segmen.patch
+  (bsc#1012628 CVE-2026-90420 bsc#1281970).
+- Update
+  patches.kernel.org/7.2.6-0725-nilfs2-prevent-out-of-bounds-read-in-super-roo.patch
+  (bsc#1012628 CVE-2026-90419 bsc#1281971).
+- Update
+  patches.kernel.org/7.2.6-0726-nilfs2-fix-BUG-in-nilfs_copy_dirty_pages-on-di.patch
+  (bsc#1012628 CVE-2026-90418 bsc#1281972).
+- Update
+  patches.kernel.org/7.2.6-0731-RDMA-cxgb4-Fix-dereg_skb-leak-and-double-free-.patch
+  (bsc#1012628 CVE-2026-90417 bsc#1281973).
+- Update
+  patches.kernel.org/7.2.6-0732-RDMA-mlx5-Fix-stack-out-of-bounds-read-in-cc_p.patch
+  (bsc#1012628 CVE-2026-90416 bsc#1282015).
+- Update
+  patches.kernel.org/7.2.6-0734-RDMA-cxgb4-free-STAG-index-when-TPT-entry-writ.patch
+  (bsc#1012628 CVE-2026-90415 bsc#1282143).
+- Update
+  patches.kernel.org/7.2.6-0736-IB-isert-reject-PDUs-declaring-more-data-than-.patch
+  (bsc#1012628 CVE-2026-90414 bsc#1282110).
+- Update
+  patches.kernel.org/7.2.6-0737-IB-isert-reject-login-PDUs-declaring-more-data.patch
+  (bsc#1012628 CVE-2026-90413 bsc#1282113).
+- Update
+  patches.kernel.org/7.2.6-0738-nvmet-fix-return-status-of-RMI-log-page-on-all.patch
+  (bsc#1012628 CVE-2026-90412 bsc#1282127).
+- Update
+  patches.kernel.org/7.2.6-0739-nvme-fc-unmap-cmd_iu-DMA-on-rsp_iu-mapping-fai.patch
+  (bsc#1012628 CVE-2026-90411 bsc#1282086).
+- Update
+  patches.kernel.org/7.2.6-0742-spi-davinci-switch-to-managed-controller-alloc.patch
+  (bsc#1012628 CVE-2026-90410 bsc#1282131).
+- Update
+  patches.kernel.org/7.2.6-0743-drm-panthor-Add-vm_bind-region-with-kbo-range-.patch
+  (bsc#1012628 CVE-2026-90409 bsc#1282087).
+- Update
+  patches.kernel.org/7.2.6-0744-wifi-ath12k-fix-overreads-in-ath12k_wmi_proces.patch
+  (bsc#1012628 CVE-2026-90408 bsc#1282088).
+- Update
+  patches.kernel.org/7.2.6-0745-wifi-ath11k-fix-overreads-in-ath11k_wmi_proces.patch
+  (bsc#1012628 CVE-2026-90407 bsc#1282095).
+- Update
+  patches.kernel.org/7.2.6-0752-media-qcom-iris-handle-runtime-PM-resume-failu.patch
+  (bsc#1012628 CVE-2026-90406 bsc#1282089).
+- Update
+  patches.kernel.org/7.2.6-0753-media-stm32-dcmi-fix-some-error-handling-bugs-.patch
+  (bsc#1012628 CVE-2026-90405 bsc#1282144).
+- Update
+  patches.kernel.org/7.2.6-0757-platform-chrome-cros_ec_debugfs-Unregister-pan.patch
+  (bsc#1012628 CVE-2026-90404 bsc#1282145).
+- Update
+  patches.kernel.org/7.2.6-0758-wifi-rtlwifi-pci-fix-error-path-in-rtl_pci_pro.patch
+  (bsc#1012628 CVE-2026-90403 bsc#1282146).
+- Update
+  patches.kernel.org/7.2.6-0760-bus-mhi-host-Fix-controller-cleanup-on-EDL-sys.patch
+  (bsc#1012628 CVE-2026-90402 bsc#1282096).
+- Update
+  patches.kernel.org/7.2.6-0768-md-remove-REQ_NOWAIT-support-from-raid1-10-456.patch
+  (bsc#1012628 CVE-2026-90401 bsc#1282195).
+- Update
+  patches.kernel.org/7.2.6-0769-md-recheck-spare-changes-before-starting-sync.patch
+  (bsc#1012628 CVE-2026-90400 bsc#1282194).
+- Update
+  patches.kernel.org/7.2.6-0772-wifi-ath12k-fix-stride-mismatch-in-mac_phy_cap.patch
+  (bsc#1012628 CVE-2026-90399 bsc#1282083).
+- Update
+  patches.kernel.org/7.2.6-0773-wifi-ath11k-fix-stride-mismatch-in-mac_phy_cap.patch
+  (bsc#1012628 CVE-2026-90398 bsc#1282082).
+- Update
+  patches.kernel.org/7.2.6-0788-firmware-qcom-scm-Fix-NULL-dereference-in-IRQ-.patch
+  (bsc#1012628 CVE-2026-90397 bsc#1282098).
+- Update
+  patches.kernel.org/7.2.6-0791-block-fix-dio-leak-on-metadata-mapping-error.patch
+  (bsc#1012628 CVE-2026-90396 bsc#1282101).
+- Update
+  patches.kernel.org/7.2.6-0817-power-supply-isp1704_charger-cancel-work-on-re.patch
+  (bsc#1012628 CVE-2026-90395 bsc#1282081).
+- Update
+  patches.kernel.org/7.2.6-0818-power-supply-sc2731_charger-cancel-work-on-rem.patch
+  (bsc#1012628 CVE-2026-90394 bsc#1282080).
+- Update
+  patches.kernel.org/7.2.6-0819-bpf-Fix-potential-UAF-in-bpf_netns_link_update.patch
+  (bsc#1012628 CVE-2026-90393 bsc#1282289).
+- Update
+  patches.kernel.org/7.2.6-0820-bpf-Fix-potential-UAF-when-reading-bpf-link-in.patch
+  (bsc#1012628 CVE-2026-90392 bsc#1282287).
+- Update
+  patches.kernel.org/7.2.6-0822-lib-test_hmm-fail-dmirror_fault-when-the-mirro.patch
+  (bsc#1012628 CVE-2026-90391 bsc#1282280).
+- Update
+  patches.kernel.org/7.2.6-0838-md-bitmap-resume-array-on-backlog_store-error-.patch
+  (bsc#1012628 CVE-2026-90390 bsc#1282257).
+- Update
+  patches.kernel.org/7.2.6-0839-md-scope-memalloc_noio-to-allocation-critical-.patch
+  (bsc#1012628 CVE-2026-90389 bsc#1282198).
+- Update
+  patches.kernel.org/7.2.6-0840-iommu-dma-Check-atomic-pool-allocation-result-.patch
+  (bsc#1012628 CVE-2026-90388 bsc#1282197).
+- Update
+  patches.kernel.org/7.2.6-0841-swiotlb-Preserve-allocation-virtual-address-fo.patch
+  (bsc#1012628 CVE-2026-90387 bsc#1282135).
+- Update
+  patches.kernel.org/7.2.6-0842-i3c-dw-avoid-shift-out-of-bounds-when-DAA-assi.patch
+  (bsc#1012628 CVE-2026-90386 bsc#1282134).
+- Update
+  patches.kernel.org/7.2.6-0845-md-raid1-create-serial-pool-adding-rdev-to-arr.patch
+  (bsc#1012628 bsc#1272261 CVE-2026-90385 bsc#1282133).
+- Update
+  patches.kernel.org/7.2.6-0847-locking-lockdep-Fix-NULL-pointer-dereference-i.patch
+  (bsc#1012628 CVE-2026-93261 bsc#1282811).
+- Update
+  patches.kernel.org/7.2.6-0849-iomap-release-the-folio-batch-on-iomap-callbac.patch
+  (bsc#1012628 CVE-2026-90384 bsc#1282130).
+- Update
+  patches.kernel.org/7.2.6-0855-misc-sgi-gru-remove-interrupt-context-page-tab.patch
+  (bsc#1012628 CVE-2026-90383 bsc#1282129).
+- Update
+  patches.kernel.org/7.2.6-0858-wifi-mt76-mt76x02-do-not-WARN-on-invalid-rx-de.patch
+  (bsc#1012628 CVE-2026-90382 bsc#1282128).
+- Update
+  patches.kernel.org/7.2.6-0859-wifi-mt76-fix-handling-channel-context-with-di.patch
+  (bsc#1012628 CVE-2026-90381 bsc#1282126).
+- Update
+  patches.kernel.org/7.2.6-0875-wifi-mt76-mt7996-fix-MLD-ID-in-MAC-TXD-and-HIF.patch
+  (bsc#1012628 CVE-2026-90376 bsc#1282121).
+- Update
+  patches.kernel.org/7.2.6-0876-wifi-mt76-fix-non-AQL-packet-accounting-for-ML.patch
+  (bsc#1012628 CVE-2026-90375 bsc#1282120).
+- Update
+  patches.kernel.org/7.2.6-0878-wifi-mt76-mt7996-validate-RX-band_idx-before-d.patch
+  (bsc#1012628 CVE-2026-90374 bsc#1282021).
+- Update
+  patches.kernel.org/7.2.6-0880-wifi-mt76-mt7915-clear-wcid-mask-under-mutex-a.patch
+  (bsc#1012628 CVE-2026-90373 bsc#1282068).
+- Update
+  patches.kernel.org/7.2.6-0982-powerpc-xive-propagate-IPI-init-errors-to-prev.patch
+  (bsc#1012628 CVE-2026-93260 bsc#1282822).
+- Update
+  patches.kernel.org/7.2.6-0987-powerpc-irq-Fix-missing-r2-clobber-in-PCREL-in.patch
+  (bsc#1012628 CVE-2026-93259 bsc#1282821).
+- Update
+  patches.kernel.org/7.2.6-1042-ocfs2-do-not-use-make_bad_inode-in-ocfs2_read_.patch
+  (bsc#1012628 CVE-2026-93258 bsc#1282820).
+- Update
+  patches.kernel.org/7.2.6-1051-block-handle-nogenerate-noverify-properly-in-f.patch
+  (bsc#1012628 CVE-2026-93257 bsc#1282819).
+- Update
+  patches.kernel.org/7.2.6-1103-RDMA-srp-fix-heap-information-leak-on-a-trunca.patch
+  (bsc#1012628 CVE-2026-90307 bsc#1282050).
+- Update
+  patches.kernel.org/7.2.6-1105-ARM-9483-1-select-HAVE_POSIX_CPU_TIMERS_TASK_W.patch
+  (bsc#1012628 CVE-2026-90305 bsc#1282048).
+- Update
+  patches.kernel.org/7.2.6-1106-ARM-9484-1-enable-interrupts-when-unhandled-us.patch
+  (bsc#1012628 CVE-2026-90304 bsc#1282035).
+- Update
+  patches.kernel.org/7.2.6-1107-ARM-9485-1-mm-acquire-mmap-write-lock-around-s.patch
+  (bsc#1012628 CVE-2026-90303 bsc#1282017).
+- Update
+  patches.kernel.org/7.2.6-1145-module-dups-Fix-use-after-free-in-kmod_dup_req.patch
+  (bsc#1012628 CVE-2026-90291 bsc#1282067).
+- Update
+  patches.kernel.org/7.2.6-1148-arm64-hibernate-mask-DAIF-before-restoring-hib.patch
+  (bsc#1012628 CVE-2026-93256 bsc#1282818).
+- Update
+  patches.kernel.org/7.2.6-1149-arm64-hibernate-Restore-DAIF-state-on-error.patch
+  (bsc#1012628 CVE-2026-90290 bsc#1282066).
+- Update
+  patches.kernel.org/7.2.6-1170-scsi-qla2xxx-Remove-redundant-VPD-flash-read-i.patch
+  (bsc#1012628 CVE-2026-90285 bsc#1282065).
+- Update
+  patches.kernel.org/7.2.6-1171-firmware_loader-do-not-queue-completed-sysfs-f.patch
+  (bsc#1012628 CVE-2026-90284 bsc#1282063).
+- Update
+  patches.kernel.org/7.2.6-1198-bpf-Reject-load-acquire-from-pointers-requirin.patch
+  (bsc#1012628 CVE-2026-90269 bsc#1282062).
+- Update
+  patches.kernel.org/7.2.6-1209-perf-x86-intel-pt-Fix-stop-start-with-no-updat.patch
+  (bsc#1012628 CVE-2026-93275 bsc#1282815).
+- Update
+  patches.kernel.org/7.2.6-1217-scsi-sd-Fix-error-handling-in-sd_probe-after-l.patch
+  (bsc#1012628 CVE-2026-90268 bsc#1282061).
+- Update
+  patches.kernel.org/7.2.6-1218-scsi-sd-Fix-special_vec-mempool-leak-when-scsi.patch
+  (bsc#1012628 CVE-2026-90267 bsc#1282060).
+- Update
+  patches.kernel.org/7.2.6-1220-btrfs-zoned-don-t-force-read-only-on-transient.patch
+  (bsc#1012628 CVE-2026-90266 bsc#1282059).
+- Update
+  patches.kernel.org/7.2.6-1221-btrfs-defrag-fix-deadlock-between-defrag-and-d.patch
+  (bsc#1012628 CVE-2026-90265 bsc#1282054).
+- Update
+  patches.kernel.org/7.2.6-1223-btrfs-make-sure-EXTENT_BUFFER_READING-is-clear.patch
+  (bsc#1012628 CVE-2026-93255 bsc#1282685).
+- Update
+  patches.kernel.org/7.2.6-1226-btrfs-retry-verity-reads-for-not-uptodate-Merk.patch
+  (bsc#1012628 CVE-2026-90262 bsc#1282053).
+- Update
+  patches.kernel.org/7.2.6-1283-fbdev-kyro-Validate-overlay-viewport-coordinat.patch
+  (bsc#1012628 CVE-2026-90245 bsc#1281968).
+- Update
+  patches.kernel.org/7.2.6-1332-arm64-entry-Avoid-unnecessary-local_irq_disabl.patch
+  (bsc#1012628 CVE-2026-93254 bsc#1282802).
+- Update
+  patches.kernel.org/7.2.6-1422-sched-isolation-Defer-freeing-of-cpumask-membl.patch
+  (bsc#1012628 CVE-2026-93253 bsc#1282800).
+- Update
+  patches.kernel.org/7.2.6-1429-ALSA-seq-midi-Serialize-input-teardown-with-ev.patch
+  (bsc#1012628 CVE-2026-90207 bsc#1281969).
+- Update
+  patches.kernel.org/7.2.6-1435-ocfs2-validate-DIO-orphan-slot-during-inode-re.patch
+  (bsc#1012628 CVE-2026-90204 bsc#1282064).
+- Update
+  patches.kernel.org/7.2.6-1436-ocfs2-fix-circular-locking-dependency-in-ocfs2.patch
+  (bsc#1012628 CVE-2026-93252 bsc#1282784).
+- Update
+  patches.kernel.org/7.2.6-1446-HID-haptic-don-t-write-an-uninitialized-value-.patch
+  (bsc#1012628 CVE-2026-90197 bsc#1282052).
+- Update
+  patches.kernel.org/7.2.6-1456-ACPI-bus-Introduce-acpi_bus_get_primary_device.patch
+  (bsc#1012628 CVE-2026-93251 bsc#1282782).
+- Update
+  patches.kernel.org/7.2.6-1483-null_blk-serialize-configfs-attribute-updates-.patch
+  (bsc#1012628 CVE-2026-90184 bsc#1282049).
+- Update
+  patches.kernel.org/7.2.6-1484-blk-iolatency-clear-delay-state-when-freeing-p.patch
+  (bsc#1012628 CVE-2026-90183 bsc#1281964).
+- Update
+  patches.kernel.org/7.2.6-1503-ksmbd-free-preauth-sessions-on-connection-tear.patch
+  (bsc#1012628 CVE-2026-90169 bsc#1281961).
+- Update
+  patches.kernel.org/7.2.6-1510-ksmbd-serialize-oplock-close-with-pending-brea.patch
+  (bsc#1012628 CVE-2026-90167 bsc#1281960).
+- Update
+  patches.kernel.org/7.2.6-1511-smb-server-fix-null-ptr-deref-in-ksmbd_ipc_tre.patch
+  (bsc#1012628 CVE-2026-90166 bsc#1281959).
+- Update
+  patches.kernel.org/7.2.6-1512-smb-server-fix-invalid-pointer-dereference-in-.patch
+  (bsc#1012628 CVE-2026-90165 bsc#1281958).
+- Update
+  patches.kernel.org/7.2.6-1536-smb-server-fix-session-leak-in-ksmbd_session_r.patch
+  (bsc#1012628 CVE-2026-90152 bsc#1281957).
+- Update
+  patches.kernel.org/7.2.6-1545-pnfs-blocklayout-Fix-device-leaks-on-parse-fai.patch
+  (bsc#1012628 CVE-2026-90150 bsc#1281956).
+- Update
+  patches.kernel.org/7.2.6-1547-NFSv4-flexfiles-fix-NULL-dereference-for-NFSv4.patch
+  (bsc#1012628 CVE-2026-90149 bsc#1281955).
+- Update
+  patches.kernel.org/7.2.6-1583-vxlan-mdb-Fix-use-after-free-in-vxlan_mdb_flus.patch
+  (bsc#1012628 CVE-2026-93250 bsc#1282677).
+- Update
+  patches.kernel.org/7.2.6-1654-spi-amlogic-spisg-Make-sure-clk_init_data-is-f.patch
+  (bsc#1012628 CVE-2026-93249 bsc#1282675).
+- Update
+  patches.kernel.org/7.2.6-1655-drm-xe-don-t-WARN-on-kernel-job-timeout-when-d.patch
+  (bsc#1012628 CVE-2026-93248 bsc#1282765).
+- Update
+  patches.kernel.org/7.2.6-1713-Bluetooth-mgmt-fix-hdev-discovery.uuids-NULL-d.patch
+  (bsc#1012628 CVE-2026-93247 bsc#1282771).
+- Update
+  patches.kernel.org/7.2.6-1727-octeontx2-af-fix-out-of-bounds-read-setting-MS.patch
+  (bsc#1012628 CVE-2026-93246 bsc#1282679).
+- Update
+  patches.kernel.org/7.2.6-1764-apparmor-policy_int-make-sure-list-heads-are-i.patch
+  (bsc#1012628 CVE-2026-93245 bsc#1282680).
+  suse-add-cves
+- commit 9b36732
+
+-------------------------------------------------------------------
+Fri Sep 25 23:08:52 CEST 2026 - jslaby@suse.cz
+
+- Linux 7.2.8 (bsc#1012628).
+- selftests/landlock: Use an actual chardev for MAKE_CHAR audit
+  test (bsc#1012628).
+- selftests/landlock: Add tests for whiteout object creation
+  (bsc#1012628).
+- selftests/landlock: Add audit test for whiteout object creation
+  (bsc#1012628).
+- sunvdc: fix -EIO issue due to lack of retries (bsc#1012628).
+- xfrm: iptfs: fix stack OOB read in iptfs_skb_reset_frag_walk()
+  (bsc#1012628).
+- xfrm: add missing RCU read lock in xfrm_send_migrate_state()
+  (bsc#1012628).
+- xfrm: iptfs: fix runt reassembly panic from short inner tot_len
+  (bsc#1012628).
+- xfrm: fix compat ALLOCSPI request use-after-free (bsc#1012628).
+- xfrm: add missing rcu_read_lock(), skb_dst_force() and
+  dev_hold() for xfrm_trans_reinject() (bsc#1012628).
+- esp: downgrade zerocopy managed frags before mutating skb frags
+  (bsc#1012628).
+- arm64: dts: amlogic: t7: use the real UART pclk (bsc#1012628).
+- arm64: dts: amlogic: t7: khadas-vim4: allow the SD card to be
+  power cycled (bsc#1012628).
+- arm64: dts: amlogic: t7: fix the pin groups of two PWM outputs
+  (bsc#1012628).
+- arm64: dts: amlogic: t7: khadas-vim4: add the PWM-driven
+  supplies (bsc#1012628).
+- arm64: dts: amlogic: t7: fix the pin groups of the vsync PWM
+  (bsc#1012628).
+- ARM: socfpga: select the PL310 erratum 753970 workaround
+  (bsc#1012628).
+- RDMA/siw: Clear association under lock if siw_qp_modify fails
+  in siw_accept (bsc#1012628).
+- RDMA/rxe: validate access flags before swapping the MR's PD
+  (bsc#1012628).
+- RDMA/rxe: Fix integer overflow in mr_check_range() leading to
+  OOB access (bsc#1012628).
+- xfrm: hold net_device reference under RCU in bundle creation
+  (bsc#1012628).
+- firmware: arm_scpi: reject DVFS OPP count above MAX_DVFS_OPPS
+  (bsc#1012628).
+- clk: scpi: bound-check DVFS index in scpi_dvfs_recalc_rate
+  (bsc#1012628).
+- clk: scpi: register scpi-cpufreq once and clear on failure
+  (bsc#1012628).
+- RDMA/rxe: Restore HMM_PFN_WRITE check in ODP write paths
+  (bsc#1012628).
+- RDMA/rxe: insert mcg into mcg_tree only after rxe_mcast_add()
+  succeeds (bsc#1012628).
+- RDMA/mlx5: Remove warn on missing representor in
+  query_port_speed (bsc#1012628).
+- RDMA/core: Reject unregistering netdevs in ib_get_eth_speed
+  (bsc#1012628).
+- RDMA/uverbs: Fix mmap_lock/disassociation_lock circular
+  dependency (bsc#1012628).
+- power: sequencing: Fix build issue with COMPILE_TEST
+  (bsc#1012628).
+- arm64: dts: renesas: r9a09g057: Switch GBETH TX queue scheduling
+  to WRR (bsc#1012628).
+- arm64: dts: renesas: r9a09g056: Switch GBETH TX queue scheduling
+  to WRR (bsc#1012628).
+- arm64: dts: renesas: r9a09g047: Switch GBETH TX queue scheduling
+  to WRR (bsc#1012628).
+- arm64: dts: renesas: r9a09g077: Switch GBETH TX queue scheduling
+  to WRR (bsc#1012628).
+- arm64: dts: renesas: r9a09g087: Switch GBETH TX queue scheduling
+  to WRR (bsc#1012628).
+- IB/iser: reject a remote invalidation of an unregistered
+  direction (bsc#1012628).
+- IB/isert: wait for deferred control PDU completions before
+  releasing the connection (bsc#1012628).
+- RDMA/bnxt_re: check create_singlethread_workqueue() in DCB setup
+  (bsc#1012628).
+- RDMA/rtrs: guard against null kobj name (bsc#1012628).
+- RDMA/bnxt_re: Avoid exposing umdbr to userspace (bsc#1012628).
+- RDMA/uverbs: Fix potential leak of resources->collection in
+  flow_resources_alloc() (bsc#1012628).
+- RDMA/mad: Fix receive buffer leak when PKey enforcement fails
+  (bsc#1012628).
+- RDMA/irdma: Enforce local fence for IB_WR_REG_MR (bsc#1012628).
+- RDMA/rtrs-clt: Fix CQ pool leak when connect is interrupted
+  (bsc#1012628).
+- dmaengine: mmp_pdma: fix wrong extended DRCMR base for SpacemiT
+  K3 (bsc#1012628).
+- dmaengine: sprd: Fix runtime PM reference leak in probe
+  (bsc#1012628).
+- wifi: mac80211: include TIM bitmap control for buffered S1G
+  mcast traffic (bsc#1012628).
+- wifi: virt_wifi: free skb when disconnected (bsc#1012628).
+- wifi: mwifiex: fix IRQ leak using wrong index in MSI-X error
+  path (bsc#1012628).
+- wifi: brcmfmac: cyw: pass PMKID to firmware if present
+  (bsc#1012628).
+- wifi: libipw: reject too-short beacon and probe responses
+  (bsc#1012628).
+- wifi: libipw: reject too-short association responses
+  (bsc#1012628).
+- IB/IPoIB: Avoid restoring OPER_UP after multicast flush
+  (bsc#1012628).
+- wifi: cfg80211: don't get the radio mask for netdev-less wdevs
+  (bsc#1012628).
+- wifi: cfg80211: check IP header size in cfg80211_classify8021d()
+  (bsc#1012628).
+- soundwire: cadence_master: wait and cancel cdns->work before
+  clock stop (bsc#1012628).
+- mips: econet: fix unmet dependencies for ECONET (bsc#1012628).
+- MIPS: Octeon: apply USB FDT fixups also when USB is modular
+  (bsc#1012628).
+- dma-coherent: report a failed reserved memory assignment
+  (bsc#1012628).
+- dma-mapping: don't trace the DMA address when the allocation
+  fails (bsc#1012628).
+- dmaengine: Fix device kref underflow in dma_chan_put()
+  (bsc#1012628).
+- dmaengine: fix use-after-free in dma_chan_put() and
+  dma_release_channel() (bsc#1012628).
+- dmaengine: wait for RCU readers before releasing dma_device
+  (bsc#1012628).
+- wifi: cfg80211: don't free driver-owned scan requests
+  (bsc#1012628).
+- wifi: cfg80211: only group hidden BSSes with beacon entries
+  (bsc#1012628).
+- wifi: cfg80211: don't filter by BSS type when removing stale
+  entries (bsc#1012628).
+- wifi: cfg80211: ibss: ref BSS entry for joined event
+  (bsc#1012628).
+- wifi: cfg80211: fix NAN regulatory enforcement (bsc#1012628).
+- wifi: mac80211: don't start a ROC while scanning (bsc#1012628).
+- wifi: mac80211: don't warn when an IBSS has no channel to scan
+  (bsc#1012628).
+- wifi: mac80211: don't offload TC setup on AP_VLAN interfaces
+  (bsc#1012628).
+- wifi: mac80211: suppress chanctx warning for debugfs reset
+  (bsc#1012628).
+- wifi: mac80211: abort chanswitch when leaving a mesh
+  (bsc#1012628).
+- wifi: mac80211: reset state when starting AP fails
+  (bsc#1012628).
+- wifi: mac80211: reset the LED state when ifup fails
+  (bsc#1012628).
+- wifi: mac80211: only operate on TDLS peers in the TDLS code
+  (bsc#1012628).
+- wifi: cfg80211: restore netns_immutable on failures
+  (bsc#1012628).
+- wifi: cfg80211: undo netns switch if renaming the wiphy fails
+  (bsc#1012628).
+- wifi: mac80211: unlist vifs when their netdev is unregistered
+  (bsc#1012628).
+- wifi: cfg80211: get the wiphy out of a dying network namespace
+  (bsc#1012628).
+- wifi: mac80211_hwsim: don't hand frames to mac80211 while
+  stopping (bsc#1012628).
+- wifi: mac80211: don't allow injecting frames wider than the
+  chanctx (bsc#1012628).
+- wifi: mac80211: reset the AP_VLAN tailroom counter on ifdown
+  (bsc#1012628).
+- wifi: mac80211: require a peer station for TDLS setup confirm
+  (bsc#1012628).
+- wifi: mac80211: don't allow link changes when iface is down
+  (bsc#1012628).
+- wifi: mac80211: don't RCU-dereference the mesh CSA settings
+  we just set (bsc#1012628).
+- wifi: mac80211: don't access the TSF of a down interface
+  (bsc#1012628).
+- wifi: mac80211: add HE 6 GHz capability in the scan elems len
+  (bsc#1012628).
+- wifi: mac80211: mesh: reset the CSA state when leaving
+  (bsc#1012628).
+- wifi: mac80211: mesh: release the channel if start fails
+  (bsc#1012628).
+- wifi: mac80211: set up the TX info early to fix failure paths
+  (bsc#1012628).
+- mm: memblock: show all region flags in debugfs (bsc#1012628).
+- scsi: pm80xx: Fix the use_msix, use_tasklet and read_wwn
+  parameter descriptions (bsc#1012628).
+- scsi: qla2xxx: Fix the ql2xfc2target parameter description
+  (bsc#1012628).
+- dmaengine: xilinx_dma: Fix hardware buffer descriptor reuse
+  order (bsc#1012628).
+- dmaengine: pxa: fix double counting of the hw descriptors
+  (bsc#1012628).
+- dmaengine: xilinx_dma: Fix hardware buffer descriptor chain
+  after cyclic DMA (bsc#1012628).
+- RDMA/efa: Keep admin queues alive while IRQ is registered
+  (bsc#1012628).
+- RDMA/efa: Keep EQ resources alive while IRQ is registered
+  (bsc#1012628).
+- RDMA/siw: Bound fragmented header copies by the remaining length
+  (bsc#1012628).
+- x86/div64: Fix addition of large constants in
+  mul_u64_add_u64_div_u64() (bsc#1012628).
+- drm/msm: Fix the separate_gpu_kms parameter description
+  (bsc#1012628).
+- drm/msm/adreno: Fix the skip_gpu parameter description
+  (bsc#1012628).
+- netfilter: nft_nat: fully initialise new_addr in netmap setup
+  (bsc#1012628).
+- netfilter: nf_tables: fix device name and prefix match in hook
+  lookup (bsc#1012628).
+- netfilter: nf_nat: unregister and release hooks on error
+  (bsc#1012628).
+- netfilter: flowtable: hold reference on ct until flow is
+  released (bsc#1012628).
+- perf/arm-cmn: Fix wp_dev_sel2 setting for multi-DTM
+  configurations (bsc#1012628).
+- arm64: hibernate: clone only the linear map that exists at
+  runtime (bsc#1012628).
+- arm64: mte: Fix PTRACE_{PEEK,POKE}MTETAGS error documentation
+  (bsc#1012628).
+- drm: Fix drm_pending_vblank_event leak in error path for
+  out_fence_ptr (bsc#1012628).
+- smb: client: validate absolute native symlink targets before
+  NT fixups (bsc#1012628).
+- keys: fix lost wakeup when reaping a dead key type
+  (bsc#1012628).
+- neighbour: Add missing RCU annotation for neightbl_dump_info()
+  (bsc#1012628).
+- neighbour: Enforce min/max to NDTPA_INTERVAL_PROBE_TIME_MS
+  (bsc#1012628).
+- neighbour: Don't render blackhole_netdev via RTM_GETNEIGHTBL
+  (bsc#1012628).
+- neighbour: Skip default parms when resumed in
+  neightbl_dump_info() (bsc#1012628).
+- ALSA: bcd2000: Fix race between rawmidi and disconnect
+  (bsc#1012628).
+- ntfs: use dynamic MFT tail reservation (bsc#1012628).
+- ntfs: repack $MFT/$ATTRIBUTE LIST (bsc#1012628).
+- ntfs: account for MFT records added during allocation
+  (bsc#1012628).
+- ntfs: protect runlist updates with the runlist lock
+  (bsc#1012628).
+- ntfs: propagate folio errors (bsc#1012628).
+- ntfs: ignore interrupted inode reads as corruption
+  (bsc#1012628).
+- phy: mediatek: phy-mtk-hdmi-mt8195: Fix PLL calc divisor
+  overflow (bsc#1012628).
+- phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit ratio
+  setting (bsc#1012628).
+- ALSA: pcm: set timer->private_data before registering the PCM
+  timer (bsc#1012628).
+- drm/msm/dp: skip PUSH_IDLE when the link was never enabled
+  (bsc#1012628).
+- drm/msm/dp: fix link bandwidth check when wide bus is enabled
+  (bsc#1012628).
+- ASoC: Rename snd_soc_dai_link_ch_map.ch_mask to cpu_ch_mask
+  (bsc#1012628).
+- ASoC: Add codec_ch_mask to snd_soc_dai_link_ch_map
+  (bsc#1012628).
+- ASoC: soc-pcm: Apply snd_soc_dai_link_ch_map.codec_ch_mask to
+  codec params (bsc#1012628).
+- spi: spi-qpic-snand: avoid writing QPIC_EBI2_ECC_BUF_CFG
+  register (bsc#1012628).
+- Input: trackpoint - fix the inertia attribute name in the ABI
+  document (bsc#1012628).
+- objtool: Validate disassembler headers in libopcodes probe
+  (bsc#1012628).
+- gpio: virtuser: skip free_irq when no IRQ is installed
+  (bsc#1012628).
+- ALSA: usb: 6fire: Avoid embedded URBs (bsc#1012628).
+- ALSA: 6fire: fix OOB write from device-reported iso length
+  (bsc#1012628).
+- ksmbd: fix malformed procfs status output (bsc#1012628).
+- ksmbd: extend procfs server statistics (bsc#1012628).
+- ksmbd: follow SMB2 session expiration semantics (bsc#1012628).
+- wifi: virt_wifi: don't transfer operstate before register
+  (bsc#1012628).
+- drm/xe/mmio_gem: forbid VMA split (bsc#1012628).
+- drm/xe/mmio_gem: use write-back mapping for dummy page
+  (bsc#1012628).
+- drm/xe/mmio_gem: Revoke drm_vma_node on xe_mmio_gem destroy
+  (bsc#1012628).
+- drm/xe/shrinker: Return the freed page count through a parameter
+  (bsc#1012628).
+- drm/xe/shrinker: Take a runtime PM ref before shrinking
+  non-system memory (bsc#1012628).
+- drm/vc4: Use managed KMS polling to fix UAF on unbind
+  (bsc#1012628).
+- ALSA: hda: trace PCM open only after assigning a stream
+  (bsc#1012628).
+- wifi: ath11k: cleanup arsta in ath11k_mac_peer_cleanup_all()
+  (bsc#1012628).
+- btrfs: tree-checker: print dev extent offset in error message
+  (bsc#1012628).
+- drm/msm/dsi: round the byte clock rate after reparenting to
+  the PHY PLL (bsc#1012628).
+- seg6: set IPSKB_L3SLAVE from IP6SKB_L3SLAVE on IPIP
+  decapsulation (bsc#1012628).
+- net: dsa: mxl862xx: disable the stats poll on teardown
+  (bsc#1012628).
+- net: bcmgenet: restore the hardware filters on open
+  (bsc#1012628).
+- sysctl: Check range in proc_dointvec_ms_jiffies_minmax
+  (bsc#1012628).
+- ipv4: icmp: reject RTN_UNREACHABLE input routes in
+  icmp_route_lookup (bsc#1012628).
+- net: fddi: skfp: fix NULL deref when setting the MAC address
+  while down (bsc#1012628).
+- wifi: brcmfmac: fix lost 802.1x TX completion wakeup
+  (bsc#1012628).
+- net: bridge: mst: move switchdev call outside rcu (bsc#1012628).
+- tcp: Don't call skb_clone_and_charge_r() for close()d listener
+  in tcp_v6_do_rcv() (bsc#1012628).
+- tcp: do not let tcp_rmem be set below 4096 (bsc#1012628).
+- ksmbd: return buffer overflow for partial filesystem info
+  (bsc#1012628).
+- ksmbd: fix partial file information responses (bsc#1012628).
+- ksmbd: keep compound responses on query info errors
+  (bsc#1012628).
+- dmaengine: mmp_pdma: fix wrong sg length in
+  mmp_pdma_prep_slave_sg() (bsc#1012628).
+- Bluetooth: hci_core: Fix queuing tx_work after workqueue is
+  drained (bsc#1012628).
+- Bluetooth: btintel_pcie: validate TX skb length in send_sync
+  (bsc#1012628).
+- Bluetooth: coredump: Quiesce dump work on unregister
+  (bsc#1012628).
+- Bluetooth: put the peer's on-air address on air when we cannot
+  resolve (bsc#1012628).
+- Bluetooth: hci_qca: Do not write to the serial port after it
+  is closed (bsc#1012628).
+- Bluetooth: ISO: Fix parent socket leak in iso_conn_ready()
+  (bsc#1012628).
+- Bluetooth: ISO: set BT_LISTEN before requesting a BIG sync
+  (bsc#1012628).
+- Bluetooth: btmtk: fix wrong status for short WMT FUNC_CTRL
+  events (bsc#1012628).
+- Bluetooth: btmtksdio, btmtkuart: validate WMT event length
+  before struct access (bsc#1012628).
+- Bluetooth: btmtksdio: Fix PM runtime reference leak in shutdown
+  (bsc#1012628).
+- Bluetooth: btintel_pcie: fix off-by-one bounds check in RX
+  submit (bsc#1012628).
+- Bluetooth: RFCOMM: avoid socket lock inversion in listener
+  cleanup (bsc#1012628).
+- af_unix: Unify scc_index when finalising SCC in
+  __unix_walk_scc() (bsc#1012628).
+- net: stmmac: fix TSO header length truncation (bsc#1012628).
+- pppoatm: ensure a writable skb header and linear data
+  (bsc#1012628).
+- drop_monitor: synchronize tracepoint unregistration on error
+  path (bsc#1012628).
+- drop_monitor: use timer_shutdown_sync() to prevent timer
+  rearming during teardown (bsc#1012628).
+- drop_monitor: use raw_cpu_ptr() in tracepoint probes
+  (bsc#1012628).
+- drop_monitor: fix out-of-bounds write in reset_per_cpu_data()
+  (bsc#1012628).
+- net: stmmac: do not overwrite phc_index when no PTP clock is
+  registered (bsc#1012628).
+- net: bridge: vlan: fix bugs caused by switchdev deletion errors
+  (bsc#1012628).
+- netlink: do not free nlk->groups while lockless readers can
+  use it (bsc#1012628).
+- KVM: PPC: Book3S HV: fix use-after-free in
+  kvmhv_emulate_tlbie_all_lpid() (bsc#1012628).
+- KVM: PPC: Book3S HV: fix secure device page leak on uv_page_in()
+  failure (bsc#1012628).
+- powerpc/iommu: Fix the overflow validation in
+  iommu_tce_check_ioba (bsc#1012628).
+- Revert "drm/i915/display: Clear SEL_FETCH_PLANE_CTL on plane
+  disable" (bsc#1012628).
+- futex: Also allocate private hash on vfork() (bsc#1012628).
+- drm/xe/i2c: Disable IRQ on unbind (bsc#1012628).
+- btrfs: handle lack of space when cleaning up verity items
+  (bsc#1012628).
+- ASoC: hdmi-codec: Report a change when the channel status moves
+  (bsc#1012628).
+- ASoC: cs-amp-lib: Prevent NULL pointer if efi variable is zero
+  length (bsc#1012628).
+- ASoC: amd: acp: bounds-check SoundWire link ID in machine
+  drivers (bsc#1012628).
+- ASoC: sdw_utils: tidyup .count_sidecar (bsc#1012628).
+- ASoC: sdw_utils: tidyup asoc_sdw_parse_sdw_endpoints()
+  (bsc#1012628).
+- ASoC: amd: acp: refactor codec config count in SOF SoundWire
+  machine driver (bsc#1012628).
+- ASoC: amd: acp: fix ffs() operator precedence for SoundWire
+  link ID (bsc#1012628).
+- net/sched: codel: bound the dropping loop per dequeue call
+  (bsc#1012628).
+- net: do not advance stack index from dev_fwd_path()
+  (bsc#1012628).
+- net: pass dst via net_device_path in dev_fill_forward_path()
+  (bsc#1012628).
+- net: pass net_device_path_ctx to dev_fill_forward_path()
+  (bsc#1012628).
+- net: remove WARN_ON_ONCE() from the dev_fill_forward_path()
+  loop check (bsc#1012628).
+- net: netsec: fix device_node reference leak on phy_np
+  (bsc#1012628).
+- eth: fbnic: ring the doorbell if a burst ends in a drop
+  (bsc#1012628).
+- net: lock the socket in sock_gettstamp() (bsc#1012628).
+- net: ethernet: cortina: Ack RX overrun interrupt correctly
+  (bsc#1012628).
+- net: stmmac: propagate FPE preemption-class mapping errors
+  (bsc#1012628).
+- net: prevent torn reads in netdev_tc_txq (bsc#1012628).
+- net: stmmac: preserve real_num_tx_queues on mqprio setup failure
+  (bsc#1012628).
+- net: psp: avoid conflicts with skb->decrypted and
+  sk_validate_xmit_skb() (bsc#1012628).
+- x86/kprobes: Fix crash when probing CS CALL instructions
+  (bsc#1012628).
+- net: macb: fix ordering around PTP timestamp read (bsc#1012628).
+- net: mvpp2: prevent buffer overflow in page_pool allocation
+  (bsc#1012628).
+- net: skbuff: do not leave stale header offsets after
+  pskb_carve() (bsc#1012628).
+- drm/amdgpu: check ras and obj before dereference (bsc#1012628).
+- drm/amd/display: fix MALL hysteresis timer underflow at high
+  refresh rates (bsc#1012628).
+- btrfs: abort transaction on failure to update inode for hole
+  punching and reflinking (bsc#1012628).
+- btrfs: check if there is space for chunk item when validating
+  sys chunk array (bsc#1012628).
+- perf: Fix null pointer access in is_include_guest_event()
+  (bsc#1012628).
+- sched/core: Avoid false migration warning for proxy donors
+  (bsc#1012628).
+- x86/fred: Reconstruct the #GP context for rejected INT
+  instructions (bsc#1012628).
+- Input: eeti_ts - publish the OF module alias (bsc#1012628).
+- hwmon: (gpio-fan) return IRQ_HANDLED from the shared alarm
+  IRQ handler (bsc#1012628).
+- hwmon: (hp-wmi-sensors) Improve raw WMI string handling
+  (bsc#1012628).
+- watchdog: da9062: fix suspend/resume handling of HW_RUNNING
+  watchdog (bsc#1012628).
+- Input: xpad - add support for Victrix Pro BFG Controller
+  (bsc#1012628).
+- Input: xpad - add support for Azeron devices (bsc#1012628).
+- Input: xpad - fix PDP Marvel Xbox 360 controller (bsc#1012628).
+- 9p: Fix v9fs_issue_write() to update i_size and remote_i_size
+  (bsc#1012628).
+- ALSA: core: Fix potential UAF after asynchronous card release
+  (bsc#1012628).
+- ALSA: usb-audio: Clamp implicit feedback packet count to URB
+  capacity (bsc#1012628).
+- ALSA: virtio: reset device before deleting virtqueues
+  (bsc#1012628).
+- ASoC: codecs: rt712-sdca-dmic: fix uninitialized
+  stream_config->type (bsc#1012628).
+- cgroup: Avoid iteration of dying tasks with zero refcount
+  (bsc#1012628).
+- ata: libahci: clear PxCLBU and PxFBU for AHCI_HFLAG_32BIT_ONLY
+  (bsc#1012628).
+- ata: libahci_platform: Fix device reference leak in
+  ahci_platform_get_resources() (bsc#1012628).
+- cifs: Fix server use-after-free in cifs_chan_skip_or_disable()
+  (bsc#1012628).
+- exec: Cleanup POSIX timers right after de_thread()
+  (bsc#1012628).
+- fs/dax: check zero or empty entry before converting xarray entry
+  (bsc#1012628).
+- PCI: imx6: Move clock enable after core reset assertion
+  (bsc#1012628).
+- phy: renesas: rcar-gen3-usb2: Avoid long delay in atomic context
+  (bsc#1012628).
+- posix-cpu-timers: Prevent freeing a timer which is queued on
+  the expiry list (bsc#1012628).
+- rds: ib: use rds_conn_drop() on protocol version mismatch
+  (bsc#1012628).
+- signal: Prevent exec() race (bsc#1012628).
+- rust: net: phy: fix off-by-one bit positions in device status
+  accessors (bsc#1012628).
+- Revert "nouveau/gsp: fix suspend/resume regression on r570
+  firmware" (bsc#1012628).
+- drm/nouveau/gsp: Increase delay for magic sleep in
+  r535_gsp_fini() (bsc#1012628).
+- drm/nouveau/gsp/r570: Set GcOff = 0 in fbsr (bsc#1012628).
+- drm/nouveau/gsp/r570: Enable S/R Display workaround in GSP
+  (bsc#1012628).
+- x86/build/64: Prevent native builds from generating EGPR use
+  (bsc#1012628).
+- x86/microcode/intel: Reject problematic loading on Granite
+  Rapids systems (bsc#1012628).
+- tcp: exclude old ACKs from tcp fast path (bsc#1012628).
+- swiotlb: use the adjusted address for the highmem page lookup
+  (bsc#1012628).
+- soundwire: dmi-quirks: Disable ghost Realtek on Asus GX651AX
+  (bsc#1012628).
+- spi: fsl-qspi: Reprogram the clock rate when the operation
+  frequency changes (bsc#1012628).
+- spi: spi-zynqmp-gqspi: stop the controller on shutdown
+  (bsc#1012628).
+- spi: virtio: Use the per-transfer bits per word (bsc#1012628).
+- RDMA/ucma: Serialize join and leave on copy_to_user failure
+  (bsc#1012628).
+- RDMA/core: fix refcount bug in iwpm_get_nlmsg_request()
+  (bsc#1012628).
+- openvswitch: avoid reallocating confirmed conntrack labels
+  (bsc#1012628).
+- nfsd: fix handling of NFSEXP_PNFS in the netlink codepath
+  (bsc#1012628).
+- net: xfrm: reject unrepresentable espintcp transport headers
+  (bsc#1012628).
+- kselftest/arm64: Fix size of thread_data values for
+  pthread_join() (bsc#1012628).
+- arm64: hibernate: pass HVC_SET_VECTORS args to the resume hvc
+  (bsc#1012628).
+- arm64: dts: renesas: r8a779f0: Set UFS lane count (bsc#1012628).
+- arm64: dts: socfpga: change access permission from 755 to 644
+  (bsc#1012628).
+- arm64: percpu: Fix this_cpu_write() casting (bsc#1012628).
+- arm64: percpu: Fix this_cpu_and() mask generation (bsc#1012628).
+- arm64: percpu: Fix LSE operations on {8,16}-bit types
+  (bsc#1012628).
+- Bluetooth: btusb: fix NXP IW610 composite device handling
+  (bsc#1012628).
+- Bluetooth: eir: validate service data length before reading UUID
+  (bsc#1012628).
+- Bluetooth: hci_codec: validate vendor codec count length
+  (bsc#1012628).
+- Bluetooth: hci_sync: Serialize local codec list cleanup
+  (bsc#1012628).
+- Bluetooth: keep dst_type with dst when reusing an LE connection
+  (bsc#1012628).
+- btrfs: take commit root semaphore when iterating in
+  mark_block_group_to_copy() (bsc#1012628).
+- btrfs: fix creation of compressed inline extents that don't
+  save space (bsc#1012628).
+- btrfs: derive f_fsid with dev_t only when temp_fsid is active
+  (bsc#1012628).
+- btrfs: clear free space tree creation state on rebuild failure
+  (bsc#1012628).
+- gpiolib: Put fwnode reference on failure (bsc#1012628).
+- gpiolib: of: don't mark hog nodes OF_POPULATED before a chip
+  is found (bsc#1012628).
+- dmaengine: sun6i: fix non-atomic read of DMA position registers
+  (bsc#1012628).
+- dmaengine: sun6i: fix undefined behaviour in sun6i_dma_tx_status
+  (bsc#1012628).
+- dmaengine: ti: k3-udma-glue: fix NULL dereference in
+  k3_udma_glue_release_rx_chn() (bsc#1012628).
+- dma-buf/dma-fence: fix checking signaling bit for timeline
+  and driver name v3 (bsc#1012628).
+- dma-buf: Fix silent overflow for phys vec to sgt (bsc#1012628).
+- dma-buf: Split sgl by largest page-aligned chunk (bsc#1012628).
+- ipv6: xfrm: use full sockets in local error paths (bsc#1012628).
+- net: ip_tunnel: initialize `options_len` before referencing
+  options (bsc#1012628).
+- net: lan743x: fix RX checksum use-after-free (bsc#1012628).
+- net: phy: mediatek: do not report link and per-speed LED rules
+  together (bsc#1012628).
+- net: wwan: t7xx: validate the netif index in
+  t7xx_ccmni_recv_skb() (bsc#1012628).
+- net: wwan: mhi_wwan_mbim: guard against a cyclic NDP chain
+  (bsc#1012628).
+- net: wwan: mhi_wwan_mbim: check skb_copy_bits() return value
+  (bsc#1012628).
+- net/sched: act_api: release tail references on DELACTION failure
+  (bsc#1012628).
+- net/sched: hhf: cap hh_flows_limit at change time (bsc#1012628).
+- net/packet: clear RX owner on VNET header error (bsc#1012628).
+- net/packet: avoid truncating TPACKET_V3 private size
+  (bsc#1012628).
+- scsi: core: Validate MODE SENSE lengths in scsi_cdl_enable()
+  (bsc#1012628).
+- xfrm: serialize state GC with device state flush (bsc#1012628).
+- xfrm: use hlist_del_init_rcu for state_cache and
+  state_cache_input (bsc#1012628).
+- xfrm: save input state data before secpath resets (bsc#1012628).
+- soc: samsung: exynos-pmu: fix use-after-free of interrupt
+  generator node (bsc#1012628).
+- mips: select CONFIG_WEAK_REORDERING_BEYOND_LLSC from CONFIG_EYEQ
+  (bsc#1012628).
+- memcg: avoid charging the root memcg from
+  obj_cgroup_charge_pages() (bsc#1012628).
+- memstick: ms_block: destroy io_queue workqueue on removal
+  (bsc#1012628).
+- mm, swap: fix SWAP_USAGE_OFFLIST_BIT collision with real usage
+  count (bsc#1012628).
+- mm/huge_memory: bypass THP tuneables for huge pfnmap mappings
+  (bsc#1012628).
+- mm/mlock: use the IRQ-safe accessor for NR_MLOCK in
+  __munlock_folio() (bsc#1012628).
+- mm/mremap: account mm->locked_vm correctly for MREMAP_DONTUNMAP
+  (bsc#1012628).
+- mm/shrinker: fix bogus set_shrinker_bit() with
+  cgroup.memory=nokmem (bsc#1012628).
+- mm/vma: correctly unaccount on mmap_prepare() failure
+  (bsc#1012628).
+- mm: filemap: retain mapped dropbehind folios (bsc#1012628).
+- KEYS: encrypted: fix integer overflow of datablob_len
+  (bsc#1012628).
+- keys: translate request_key_auth pid for the reading procfs
+  instance (bsc#1012628).
+- KEYS: trusted: Fix tpm2_load_cmd() boundary check (bsc#1012628).
+- sched_ext: Fix NULL sched deref in kfunc sub-sched error paths
+  (bsc#1012628).
+- sched_ext: Close the pre-enable ops error claim window
+  (bsc#1012628).
+- i2c: at91: release DMA channels on remove and probe error
+  (bsc#1012628).
+- i2c: atr: fix dangling adapter pointer on add failure
+  (bsc#1012628).
+- i2c: qcom-cci: fix device_node refcount leak in
+  cci_probe()/cci_remove() (bsc#1012628).
+- i2c: imx: release DMA channels on probe error (bsc#1012628).
+- i2c: imx: disable autosuspend on remove (bsc#1012628).
+- IB/mlx4: Fix use-after-free on pkey sysfs registration failure
+  (bsc#1012628).
+- IB/hfi1: Resolve the credit-return buffer through the send
+  context's node (bsc#1012628).
+- IB/hfi1: Fix the PIO_CRED credit-return mmap (bsc#1012628).
+- selinux: preserve user SID across nested backing files
+  (bsc#1012628).
+- selinux: recheck intermediate backing files on mprotect()
+  (bsc#1012628).
+- selinux: always fill AVC decision in avc_has_perm_noaudit()
+  (bsc#1012628).
+- power: sequencing: don't call .post_enable() if
+  pwrseq_unit_enable() failed (bsc#1012628).
+- power: sequencing: fix NULL-pointer dereference in
+  pwrseq_unit_new() (bsc#1012628).
+- power: sequencing: fix NULL-pointer dereference in
+  pwrseq_device_register() (bsc#1012628).
+- mmc: core: Cancel SDIO IRQ work before freeing host
+  (bsc#1012628).
+- mmc: core: Fix OF node reference leak on card add failure
+  (bsc#1012628).
+- mmc: hsq: Fix use-after-free in retry work (bsc#1012628).
+- mmc: mmci: Fix use-after-free in busy-timeout work
+  (bsc#1012628).
+- mmc: mxcmmc: cancel data work and watchdog on remove
+  (bsc#1012628).
+- mmc: rtsx_pci_sdmmc: ignore broken write-protect on ThinkPad
+  X260 (bsc#1012628).
+- mmc: sdhci-of-aspeed: Remove children before releasing SDC
+  resources (bsc#1012628).
+- mmc: sdio_uart: fix xmit_fifo leak when the port table is full
+  (bsc#1012628).
+- mmc: sh_mmcif: initialize IRQ-thread mutex before requesting
+  interrupt (bsc#1012628).
+- mmc: spi: reset bytes_xfered before retrying CRC failures
+  (bsc#1012628).
+- mmc: sdhci_am654: Move tuning_loop to local variable
+  (bsc#1012628).
+- mmc: sdhci_am654: Reset command and data lines on failed tuning
+  (bsc#1012628).
+- mmc: sdhci_am654: Clear ITAPDLY on tuning failure (bsc#1012628).
+- mmc: sdhci_am654: Fallback to DT-provided itap delay on DDR50
+  tuning failure (bsc#1012628).
+- Input: adp5588-keys - cache GPIO state before registering the
+  gpiochip (bsc#1012628).
+- Input: atkbd - skip deactivate for Xiaomi Redmi Book Pro 16 2026
+  (bsc#1012628).
+- Input: cyttsp5 - clamp the HID report size before memcpy
+  (bsc#1012628).
+- Input: evdev - zero absinfo before partial copy in EVIOCSABS
+  (bsc#1012628).
+- Input: hp_sdc - shut down kicker timer on module exit
+  (bsc#1012628).
+- Input: i8042 - add quirk for Acer Aspire Go 15 AG15-42P
+  (bsc#1012628).
+- Input: rmi_smbus - fix out-of-bounds read in
+  rmi_smb_write_block() (bsc#1012628).
+- Input: soc_button_array - fix MS Surface Pro 11 probe failure
+  (bsc#1012628).
+- Input: soc_button_array - check btns_desc->package.count
+  (bsc#1012628).
+- Input: synaptics - disable InterTouch on ThinkPad T440p (board
+  id 2722) (bsc#1012628).
+- Input: synaptics-rmi4 - fix GPF in suspend and resume when
+  unbound (bsc#1012628).
+- Input: zero ff_effect before compat copy in
+  input_ff_effect_from_user (bsc#1012628).
+- hwmon: (hp-wmi-sensors) Fix use-after-free in fungible_show()
+  (bsc#1012628).
+- hwmon: (pmbus/core) increase number of phases and add new mask
+  (bsc#1012628).
+- hwmon: (pmbus/tps53679) Fix TPS53676 phase page decoding
+  (bsc#1012628).
+- hwmon: (pmbus/tps53679) Select page 0 for single-page TPS53676
+  (bsc#1012628).
+- hwmon: (pwm-fan) Stop RPM timer before freeing tach data
+  (bsc#1012628).
+- hwmon: (w83791d) remove fan/pwm 4-5 sysfs group on remove
+  (bsc#1012628).
+- hwmon: (w83793) release probe data through kref (bsc#1012628).
+- hwmon: (cgbc-hwmon) Fix current sensors ID lookup (bsc#1012628).
+- hwmon: (cgbc-hwmon) Add missing sensors (bsc#1012628).
+- watchdog: da9063: fix suspend/resume handling of HW_RUNNING
+  watchdog (bsc#1012628).
+- watchdog: digicolor: Avoid division by zero (bsc#1012628).
+- watchdog: msc313e: Fix premature reset during timeout update
+  (bsc#1012628).
+- watchdog: msc313e: Propagate error code in resume()
+  (bsc#1012628).
+- watchdog: rtd119x: Avoid division by zero (bsc#1012628).
+- watchdog: rzv2h: Avoid division by zero (bsc#1012628).
+- watchdog: sp5100_tco: Fix pci_dev reference leak in
+  sp5100_tco_init() (bsc#1012628).
+- watchdog: starfive-wdt: Fix runtime PM leak in
+  starfive_wdt_pm_start() (bsc#1012628).
+- wifi: brcmsmac: fix UAF in brcms_free_timer() (bsc#1012628).
+- wifi: iwlegacy: fix broadcast stations deallocation
+  (bsc#1012628).
+- wifi: libertas_tf: fix UAF in lbtf_free_adapter() (bsc#1012628).
+- wifi: libipw: reject TKIP frames without a full MIC
+  (bsc#1012628).
+- wifi: rsi: fix heap OOB write on key removal (bsc#1012628).
+- wifi: wcn36xx: Fix potential use-after-free in TX ack timer
+  teardown (bsc#1012628).
+- wifi: wlcore: release runtime PM ref on regdomain config failure
+  (bsc#1012628).
+- wifi: wilc1000: fix out-of-bounds read in P2P public action
+  frames (bsc#1012628).
+- wifi: wilc1000: fix RX buffer OOB-write in
+  wilc_wlan_handle_isr_ext() (bsc#1012628).
+- wifi: p54: validate curve data length in the calibration curve
+  converters (bsc#1012628).
+- wifi: p54: require a full exp_if record in PDR_INTERFACE_LIST
+  (bsc#1012628).
+- wifi: mwifiex: bound the pairwise-cipher OUI walk to the IE
+  length (bsc#1012628).
+- wifi: mwifiex: validate scan response extents (bsc#1012628).
+- wifi: mwifiex: prevent authentication frame length truncation
+  (bsc#1012628).
+- wifi: mwifiex: validate action frame fixed fields (bsc#1012628).
+- wifi: mac80211: avoid WARN in set_bitrate_mask when sdata not
+  in driver (bsc#1012628).
+- wifi: mac80211: avoid out-of-bounds read for empty PREQ elements
+  (bsc#1012628).
+- wifi: mac80211: refuse to make a monitor active when it has
+  no queue (bsc#1012628).
+- drm/gud: fix out-of-bounds write in gud_plane_atomic_check()
+  (bsc#1012628).
+- drm/gud: Ignore damage clips in full update mode (bsc#1012628).
+- drm/msm/adreno: fix autosuspend cleanup during teardown
+  (bsc#1012628).
+- drm/msm/dpu: clear pending peripheral flush state (bsc#1012628).
+- drm/msm/hdmi_phy: fix runtime PM cleanup on probe failure
+  (bsc#1012628).
+- drm/msm: RCU-free the scheduler-containing ring and VM objects
+  (bsc#1012628).
+- drm/sched: Fix virtual runtime race (bsc#1012628).
+- drm/amdgpu: fix rmmio iounmap skipped on device removal
+  (bsc#1012628).
+- drm/amdgpu: hold a runtime PM reference for P2P dma-buf
+  attachments (bsc#1012628).
+- drm/amdgpu: Skip KFD mapping clear before initialization
+  (bsc#1012628).
+- drm/amdkfd: Avoid integer underflow in EOP ring size calculation
+  (bsc#1012628).
+- drm/amdkfd: Avoid integer underflow with ffs in EOP ring size
+  calc (bsc#1012628).
+- drm/amdkfd: implement restore_mqd callbacks for GFX12/12.1
+  (bsc#1012628).
+- smb: client: cancel reconnect work in clean_demultiplex_info()
+  (bsc#1012628).
+- smb/client: send lease break ACKs thru correct session for
+  multiuser mounts (bsc#1012628).
+- smb: client: fix rlist race and missing initialization
+  (bsc#1012628).
+- smb: client: fix use-after-free of iface in
+  cifs_try_adding_channels() (bsc#1012628).
+- smb: client: reject short Next offsets in
+  parse_server_interfaces() (bsc#1012628).
+- smb: client: fix smbd_connection leak on cifs_get_tcp_session()
+  error (bsc#1012628).
+- smb: client: fix unaligned access in WSL reparse point parser
+  (bsc#1012628).
+- smb: client: fix fattr leaking on wsl_to_fattr() failure
+  (bsc#1012628).
+- smb: client: fix next_buffer UAF and NextCommand bounds in
+  compound PDUs (bsc#1012628).
+- smb: client: fix OOB struct field reads in
+  move_smb2_ea_to_cifs() (bsc#1012628).
+- smb: client: fix potential OOB read in smb3_enum_snapshots()
+  (bsc#1012628).
+- smb: client: fix reparse buffer bounds in
+  cifs_query_reparse_point() (bsc#1012628).
+- smb: client: fix server->total_read for compound encrypted PDUs
+  (bsc#1012628).
+- smb: client: fix missing lower-bound check on DFS referral
+  string offsets (bsc#1012628).
+- smb: client: fix missing iov bounds check in parse_posix_sids()
+  (bsc#1012628).
+- fs/super: skip non-memcg-aware nr_cached_objects in memcg slab
+  shrink (bsc#1012628).
+- fs: fix missed removal of super_fs_objects_eligible()
+  (bsc#1012628).
+- scsi: fnic: Make debug logging protocol independent
+  (bsc#1012628).
+- scsi: fnic: Bump up version number (bsc#1012628).
+- scsi: fnic: Fix missed link-up when critical IRQ targets
+  offline CPU (bsc#1012628).
+- drm/amdgpu: reduce early full GPU access during SR-IOV init
+  (bsc#1012628).
+- drm/amdgpu: Fix GPU PCIe link capability reporting
+  (bsc#1012628).
+- ntsync: reject wait ioctls with zero owner (bsc#1012628).
+- drm/ttm: fix swapped-out resources never leaving their bulk_move
+  range (bsc#1012628).
+- drm/amdgpu: restrict BAR0 fallback read to SR-IOV VFs only
+  (bsc#1012628).
+- ksmbd: fix partial normalized name responses (bsc#1012628).
+- Rename to
+  patches.kernel.org/7.2.8-042-RDMA-erdma-Use-IRQ-safe-XArray-helpers-for-QP-a.patch.
+- Rename to
+  patches.kernel.org/7.2.8-196-ASoC-ux500-Parenthesize-MSP_-RX-TX-_CLKPOL_BIT-.patch.
+- Update config files.
+- commit 93e89db
+
+-------------------------------------------------------------------
 Tue Sep 22 10:00:24 CEST 2026 - jslaby@suse.cz
 
 - Update
@@ -4047,6 +5767,13 @@ Sun Sep 20 09:51:35 CEST 2026 - jslaby@suse.cz
   (bsc#1012628).
   Update upstream status.
 - commit da87ae0
+
+-------------------------------------------------------------------
+Fri Sep 18 17:18:11 CEST 2026 - msuchanek@suse.de
+
+- powerpc/ftrace: Don't restore r13 during ftrace_regs_caller
+  (bsc#1278165 ltc#222874).
+- commit 2446b5e
 
 -------------------------------------------------------------------
 Fri Sep 18 14:48:43 CEST 2026 - mbrugger@suse.com
