@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 25 04:47:18 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.1:
+  ## Changed
+  * Require Trio 0.34.0 or later for the trio extra.
+  ## Fixed
+  * Honor the sni_hostname extension for TLS inside HTTP proxy tunnels
+    without applying it to the proxy's TLS connection.
+  * Prefer HTTP/2 during TLS protocol negotiation when enabled, and stop
+    advertising HTTP/1.1 when it is disabled.
+  * Avoid nested async generator finalization errors when streamed responses
+    are abandoned early.
+
+-------------------------------------------------------------------
 Tue Aug 25 15:19:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.12.0:

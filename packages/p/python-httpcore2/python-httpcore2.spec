@@ -17,7 +17,7 @@
 
 
 Name:           python-httpcore2
-Version:        2.12.0
+Version:        2.13.1
 Release:        0
 Summary:        A minimal low-level HTTP client
 License:        BSD-3-Clause
@@ -37,7 +37,7 @@ Requires:       python-h11 >= 0.16
 Requires:       python-truststore >= 0.10
 Suggests:       python-h2 >= 3
 Suggests:       python-socksio >= 1.0
-Suggests:       python-trio >= 0.33.0
+Suggests:       python-trio >= 0.34.0
 Suggests:       python-anyio >= 4.5
 BuildArch:      noarch
 %python_subpackages
