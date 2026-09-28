@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:18:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 5.0.0 (major, intentionally breaking;
+  see upstream Migrating to v5 guide):
+  * Drop Python 3.10 support, remove fuzzy command
+    matching (names must match exactly), fallthrough
+    parsing changes
+  * No Factory consumers exist, so nothing breaks today
+
+-------------------------------------------------------------------
 Mon Sep 21 08:30:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 4.25.3:

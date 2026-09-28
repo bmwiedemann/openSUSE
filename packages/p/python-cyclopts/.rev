@@ -212,4 +212,12 @@ No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
 </comment>
     <requestid>1379421</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>18d6ca93f88b0aabfe425054864da46f</srcmd5>
+    <version>5.0.0</version>
+    <time>1790584731</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.0.0 (major, intentionally breaking; no Factory consumers).</comment>
+    <requestid>1380165</requestid>
+  </revision>
 </revisionlist>
