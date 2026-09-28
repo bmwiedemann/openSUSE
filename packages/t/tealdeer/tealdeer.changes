@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Aug 13 04:12:13 UTC 2026 - William Brown <william.brown@suse.com>
+
+- bsc#1274341 - CVE-2026-25541 - integer overflow in 'BytesMut:reserve' can lead to undefined behavior and crashes
+
+-------------------------------------------------------------------
 Fri Oct 24 01:05:03 UTC 2025 - Holden Fried <holden@opensuse.org>
 
 - Update to version 1.8.0:
