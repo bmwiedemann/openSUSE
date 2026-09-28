@@ -79,4 +79,13 @@
     <comment></comment>
     <requestid>1272801</requestid>
   </revision>
+  <revision rev="11" vrev="5">
+    <srcmd5>aedb864b9514deeff66e793318564966</srcmd5>
+    <version>0.2.3</version>
+    <time>1790584687</time>
+    <user>anag_factory</user>
+    <comment>- Use Qt6 on Tumbleweed, i.e. same version as used by VTK.
+</comment>
+    <requestid>1380153</requestid>
+  </revision>
 </revisionlist>

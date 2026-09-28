@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep  7 08:17:22 UTC 2026 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
+
+- Use Qt6 on Tumbleweed, i.e. same version as used by VTK.
+
+-------------------------------------------------------------------
 Fri Apr 25 19:21:59 UTC 2025 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Fix build with cmake 4: (bsc#1239788)

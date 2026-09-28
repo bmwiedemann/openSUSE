@@ -1,7 +1,7 @@
 #
 # spec file for package AppCSXCAD
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,6 +15,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} > 1600
+%define qt_ver 6
+%else
+%define qt_ver 5
+%endif
 
 Name:           AppCSXCAD
 Version:        0.2.3
@@ -35,9 +41,10 @@ BuildRequires:  gcc-c++
 BuildRequires:  tinyxml-devel
 BuildRequires:  vtk-devel
 BuildRequires:  vtk-qt
-BuildRequires:  cmake(Qt5Sql)
-BuildRequires:  cmake(Qt5Widgets)
-BuildRequires:  cmake(Qt5Xml)
+BuildRequires:  cmake(Qt%{qt_ver}OpenGLWidgets)
+BuildRequires:  cmake(Qt%{qt_ver}Sql)
+BuildRequires:  cmake(Qt%{qt_ver}Widgets)
+BuildRequires:  cmake(Qt%{qt_ver}Xml)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(xt)
 
