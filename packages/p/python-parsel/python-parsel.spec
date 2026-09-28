@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parsel
-Version:        1.11.0
+Version:        1.12.0
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause

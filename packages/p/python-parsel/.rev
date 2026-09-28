@@ -184,4 +184,12 @@
   * Switched the build system to hatchling.</comment>
     <requestid>1342657</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>5147ff6a51c73afea02f148ffc5aa620</srcmd5>
+    <version>1.12.0</version>
+    <time>1790585052</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.12.0 (patch release).</comment>
+    <requestid>1380704</requestid>
+  </revision>
 </revisionlist>
