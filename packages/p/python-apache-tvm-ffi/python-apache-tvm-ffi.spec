@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-apache-tvm-ffi
-Version:        0.1.14
+Version:        0.1.14.post1
 Release:        0
 Summary:        Minimal FFI runtime and ABI for machine learning systems
 License:        Apache-2.0

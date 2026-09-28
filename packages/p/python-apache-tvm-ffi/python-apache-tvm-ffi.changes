@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 26 19:43:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.1.14.post1:
+  * Add BigInt, an arbitrary-precision integer value: a C++ type
+    plus a kTVMFFIBigInt FFI type that Python ints cross as with
+    full precision kept both ways; heap values serialize as
+    decimal strings
+  * Breaking for C++ consumers of the shipped headers: structural
+    mutation now takes a single InplaceMode, replacing Mutate<T>,
+    MutateExpected<T>, MaybeInplaceMutate* and
+    DefaultMaybeInplaceMutateExpected. libtvm_ffi.so keeps its
+    whole C API and only gains the two new BigInt entry points
+  * The optional third structural_mutate callback argument is an
+    InplaceMode rather than a bool, exported as tvm_ffi.InplaceMode
+  * keep_module_alive now really retains a module for the process
+    lifetime: the internal registry is no longer destroyed at
+    static teardown, which could unload a pinned library before
+    its callbacks were released
+  * Add object construction and dataclass extension hooks, and
+    strict as_or_error() narrowing on Expected<T>
+  * Includes 0.1.14.post0, which keeps lvalues intact in
+    UnchangedOr value access
+
+-------------------------------------------------------------------
 Wed Sep 16 07:27:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.14:

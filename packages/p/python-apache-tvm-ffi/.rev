@@ -75,4 +75,50 @@ source_validator clean.</comment>
 - Switch from update-alternatives to libalternatives</comment>
     <requestid>1378289</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>fcedf3b5da9703d7f5b8413fb0474cc5</srcmd5>
+    <version>0.1.14.post1</version>
+    <time>1790585186</time>
+    <user>anag_factory</user>
+    <comment>Update python-apache-tvm-ffi 0.1.14 -&gt; 0.1.14.post1 (post release; no
+spec change beyond Version).
+
+Upstream ships no GitHub release notes for this range, so the changelog
+was mined from the 30 commits in v0.1.14..v0.1.14-post1. 0.1.14.post0
+is skipped; its single change is included in the post1 sdist and is
+called out in the entry rather than hidden.
+
+The headline is BigInt, a new arbitrary-precision integer value: a C++
+type, a kTVMFFIBigInt FFI type with two new C entry points,
+transparent Python int interop, and decimal-string serialization.
+
+This is a breaking C++ header change - structural mutation is
+consolidated behind a new InplaceMode, and Mutate&lt;T&gt;,
+MutateExpected&lt;T&gt;, MaybeInplaceMutate* and
+DefaultMaybeInplaceMutateExpected are removed. The shipped binary is
+not broken: nm -D on the built aarch64 RPM shows the TVMFFI* C API
+going 48 -&gt; 50 symbols with none removed, only the two BigInt entry
+points added.
+
+Downstream consumers were checked before submitting. python-xgrammar is
+the only Factory package compiling C++ against these headers; it uses
+just tvm_ffi.h, string.h, error.h, any.h, extra/stl.h and none of the
+removed mutate API, so it is unaffected. python-sglang depends on this
+package only at the Python level.
+
+No dependency change - pyproject.toml and CMakeLists.txt are
+byte-identical across the bump and requires_dist is unchanged, so the
+existing Cython 3.2.8 / scikit-build-core 0.10.0 / ninja 1.11 /
+cmake 3.26 floors and the typing-extensions &gt;= 4.13 requirement all
+still hold. The Rust bindings and the separate ORC JIT addon are not
+built by this RPM and are not credited.
+
+No CVE, GHSA or RUSTSEC id in the crossed range, and no Bugzilla report
+references the package. Native aarch64 build green against
+openSUSE:Factory:ARM, rpmlint 0 errors / 0 badness (6 pre-existing
+potential-bashisms warnings from bundled libbacktrace), %check green on
+python3.13 and 3.14.
+</comment>
+    <requestid>1380838</requestid>
+  </revision>
 </revisionlist>
