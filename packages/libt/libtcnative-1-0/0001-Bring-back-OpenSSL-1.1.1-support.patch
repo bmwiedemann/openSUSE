@@ -1,0 +1,219 @@
+From c5f8684b6a556116ddfed4219f59cf41f166f68e Mon Sep 17 00:00:00 2001
+From: Fridrich Strba <fridrich.strba@bluewin.ch>
+Date: Fri, 25 Sep 2026 08:39:56 +0200
+Subject: [PATCH] Bring back OpenSSL 1.1.1 support
+
+---
+ native/include/ssl_private.h      | 10 +++++++-
+ native/src/sslcontext.c           | 40 ++++++++++++++++++++++++++++---
+ native/src/sslutils.c             | 28 ++++++++++++++++++++++
+ native/srclib/VERSIONS            |  5 +++-
+ 4 files changed, 78 insertions(+), 5 deletions(-)
+
+diff --git a/native/include/ssl_private.h b/native/include/ssl_private.h
+index f56916754..93181fa50 100644
+--- a/native/include/ssl_private.h
++++ b/native/include/ssl_private.h
+@@ -48,8 +48,8 @@
+ #include <openssl/bn.h>
+ #if OPENSSL_VERSION_NUMBER > 0x2FFFFFFFL && !defined(LIBRESSL_VERSION_NUMBER)
+ #include <openssl/provider.h>
+-#endif
+ #include <openssl/core_names.h>
++#endif
+ 
+ #ifndef RAND_MAX
+ #include <limits.h>
+@@ -345,10 +345,18 @@ int         SSL_password_callback(char *, int, int, void *);
+ void        SSL_BIO_close(BIO *);
+ void        SSL_BIO_doref(BIO *);
+ DH         *SSL_get_dh_params(unsigned keylen);
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++DH         *SSL_dh_GetParamFromFile(const char *);
++#else
+ EVP_PKEY   *SSL_dh_GetParamFromFile(const char *);
++#endif
+ #ifdef HAVE_ECC
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++EC_GROUP   *SSL_ec_GetParamFromFile(const char *);
++#else
+ int         SSL_ec_GetParamFromFile(const char *);
+ #endif
++#endif
+ DH         *SSL_callback_tmp_DH(SSL *, int, int);
+ void        SSL_callback_handshake(const SSL *, int, int);
+ int         SSL_CTX_use_certificate_chain(SSL_CTX *, const char *, int);
+diff --git a/native/src/sslcontext.c b/native/src/sslcontext.c
+index 5f0f608da..5b51bf6b2 100644
+--- a/native/src/sslcontext.c
++++ b/native/src/sslcontext.c
+@@ -985,9 +985,19 @@ TCN_IMPLEMENT_CALL(jboolean, SSLContext, setCertificate)(TCN_STDARGS, jlong ctx,
+     const char *p;
+     char err[TCN_OPENSSL_ERROR_STRING_LENGTH];
+ #ifdef HAVE_ECC
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++    EC_GROUP *ecparams = NULL;
+     int nid;
++    EC_KEY *eckey = NULL;
++#else
++    int nid;
++#endif
+ #endif
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++    DH *dhparams;
++#else
+     EVP_PKEY *evp;
++#endif
+ 
+     UNREFERENCED(o);
+     TCN_ASSERT(ctx != 0);
+@@ -1062,10 +1072,17 @@ TCN_IMPLEMENT_CALL(jboolean, SSLContext, setCertificate)(TCN_STDARGS, jlong ctx,
+      */
+     /* XXX Does this also work for pkcs12 or only for PEM files?
+      * If only for PEM files move above to the PEM handling */
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++    if ((idx == 0) && (dhparams = SSL_dh_GetParamFromFile(cert_file))) {
++        SSL_CTX_set_tmp_dh(c->ctx, dhparams);
++        DH_free(dhparams);
++    }
++#else
+     if ((idx == 0) && (evp = SSL_dh_GetParamFromFile(cert_file))) {
+         SSL_CTX_set0_tmp_dh_pkey(c->ctx, evp);
+         EVP_PKEY_free(evp);
+     }
++#endif
+ 
+ #ifdef HAVE_ECC
+     /*
+@@ -1073,10 +1090,21 @@ TCN_IMPLEMENT_CALL(jboolean, SSLContext, setCertificate)(TCN_STDARGS, jlong ctx,
+      */
+     /* XXX Does this also work for pkcs12 or only for PEM files?
+      * If only for PEM files move above to the PEM handling */
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++    if ((ecparams = SSL_ec_GetParamFromFile(cert_file)) &&
++        (nid = EC_GROUP_get_curve_name(ecparams)) &&
++        (eckey = EC_KEY_new_by_curve_name(nid))) {
++        SSL_CTX_set_tmp_ecdh(c->ctx, eckey);
++    }
++    /* OpenSSL assures us that _free() is NULL-safe */
++    EC_KEY_free(eckey);
++    EC_GROUP_free(ecparams);
++#else
+     nid = SSL_ec_GetParamFromFile(cert_file);
+     if (nid != NID_undef) {
+         SSL_CTX_set1_groups(c->ctx, &nid, 1);
+     }
++#endif
+ #endif
+     SSL_CTX_set_dh_auto(c->ctx, 1);
+ 
+@@ -1667,13 +1695,19 @@ TCN_IMPLEMENT_CALL(jlong, SSLContext, sessionCacheFull)(TCN_STDARGS, jlong ctx)
+     return rv;
+ }
+ 
+-#define TICKET_KEYS_SIZE 80
++#define TICKET_KEYS_SIZE_1_1 48
++#define TICKET_KEYS_SIZE_3_0 80
+ TCN_IMPLEMENT_CALL(void, SSLContext, setSessionTicketKeys)(TCN_STDARGS, jlong ctx, jbyteArray keys)
+ {
+     tcn_ssl_ctxt_t *c = J2P(ctx, tcn_ssl_ctxt_t *);
+     jbyte* b;
++    int len = (*e)->GetArrayLength(e, keys);
+ 
+-    if ((*e)->GetArrayLength(e, keys) != TICKET_KEYS_SIZE) {
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++    if (len != TICKET_KEYS_SIZE_1_1) {
++#else
++    if (len != TICKET_KEYS_SIZE_1_1 && len != TICKET_KEYS_SIZE_3_0) {
++#endif
+         if (c->bio_os) {
+             BIO_printf(c->bio_os, "[ERROR] Session ticket keys provided were wrong size.\n");
+         }
+@@ -1684,7 +1718,7 @@ TCN_IMPLEMENT_CALL(void, SSLContext, setSessionTicketKeys)(TCN_STDARGS, jlong ct
+     }
+ 
+     b = (*e)->GetByteArrayElements(e, keys, NULL);
+-    SSL_CTX_set_tlsext_ticket_keys(c->ctx, b, TICKET_KEYS_SIZE);
++    SSL_CTX_set_tlsext_ticket_keys(c->ctx, b, len);
+     (*e)->ReleaseByteArrayElements(e, keys, b, 0);
+ }
+ 
+diff --git a/native/src/sslutils.c b/native/src/sslutils.c
+index 638584a8b..8e98568ec 100644
+--- a/native/src/sslutils.c
++++ b/native/src/sslutils.c
+@@ -202,6 +202,19 @@ int SSL_password_callback(char *buf, int bufsiz, int verify,
+ **  Custom (EC)DH parameter support
+ **  _________________________________________________________________
+ */
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++DH *SSL_dh_GetParamFromFile(const char *file)
++{
++    DH *dh = NULL;
++    BIO *bio;
++
++    if ((bio = BIO_new_file(file, "r")) == NULL)
++        return NULL;
++    dh = PEM_read_bio_DHparams(bio, NULL, NULL, NULL);
++    BIO_free(bio);
++    return dh;
++}
++#else
+ EVP_PKEY *SSL_dh_GetParamFromFile(const char *file)
+ {
+     EVP_PKEY *evp = NULL;
+@@ -217,8 +230,22 @@ EVP_PKEY *SSL_dh_GetParamFromFile(const char *file)
+     }
+     return evp;
+ }
++#endif
+ 
+ #ifdef HAVE_ECC
++#if (OPENSSL_VERSION_NUMBER < 0x30000000L)
++EC_GROUP *SSL_ec_GetParamFromFile(const char *file)
++{
++    EC_GROUP *group = NULL;
++    BIO *bio;
++
++    if ((bio = BIO_new_file(file, "r")) == NULL)
++        return NULL;
++    group = PEM_read_bio_ECPKParameters(bio, NULL, NULL, NULL);
++    BIO_free(bio);
++    return (group);
++}
++#else
+ int SSL_ec_GetParamFromFile(const char *file)
+ {
+     EVP_PKEY *evp = NULL;
+@@ -256,6 +283,7 @@ int SSL_ec_GetParamFromFile(const char *file)
+     return nid; /* Returns the curve's NID, or NID_undef on failure */
+ }
+ #endif
++#endif
+ 
+ /*
+  * Read a file that optionally contains the server certificate in PEM
+diff --git a/native/srclib/VERSIONS b/native/srclib/VERSIONS
+index e5e1896fd..d4de288c2 100644
+--- a/native/srclib/VERSIONS
++++ b/native/srclib/VERSIONS
+@@ -1,5 +1,5 @@
+ The current minimum versions are:
+-- OpenSSL 3.0.0 
++- OpenSSL 1.1.1
+ - APR 1.6.3
+ 
+ The following version of the libraries are recommended:
+@@ -23,6 +23,9 @@ And in Ubuntu:
+ - OpenSSL 3.0.13 in Ubuntu 24.04 LTS (EOL in April 2029)
+ - OpenSSL 3.5.5  in Ubuntu 26.04 LTS (EOL in April 2031)
+ 
++And in SUSE:
++- OpenSSL 1.1.1  in SUSE Linux Enterprise 15 (LTSS through 2031)
++
+ The minimum version of APR is driven by the version of APR used by
+ downstream distributions.
+ 
+-- 
+2.55.0
+

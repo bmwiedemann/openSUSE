@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libtcnative-1-0
-Version:        1.3.8
+Version:        1.3.9
 Release:        0
 Summary:        Tomcat resources for performance, compatibility, etc
 License:        Apache-2.0
@@ -26,8 +26,9 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://tomcat.apache.org/native-1.2-doc/index.html
 Source0:        https://www.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz
 Source1:        https://www.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz.asc
-# https://www.apache.org/dist/tomcat/tomcat-connectors/KEYS
+# https://downloads.apache.org/tomcat/tomcat-connectors/KEYS
 Source2:        %{name}.keyring
+Patch0:         0001-Bring-back-OpenSSL-1.1.1-support.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel
 BuildRequires:  javapackages-tools
@@ -93,6 +94,7 @@ Features of the APR connector:
 
 %prep
 %setup -q -n tomcat-native-%{version}-src
+%patch -P 0 -p1
 
 %build
 cd native
