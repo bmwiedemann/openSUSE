@@ -45,7 +45,7 @@
 %bcond_without suse_ocaml_use_rpm_license_macro
 
 Name:           ocaml
-Version:        5.5.0
+Version:        5.5.1
 Release:        0
 Summary:        OCaml Compiler and Programming Environment
 %if %{with suse_ocaml_use_rpm_license_macro}
