@@ -55,4 +55,12 @@ python314, rpmlint 0 errors / 0 warnings / 0 badness.</comment>
 </comment>
     <requestid>1371931</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>dde73d6d9646ebf1f357cad0606ef72a</srcmd5>
+    <version>1.20.0</version>
+    <time>1790584742</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.20.0: video last-frame/keyframes; keep protobuf-7 patch.</comment>
+    <requestid>1380711</requestid>
+  </revision>
 </revisionlist>

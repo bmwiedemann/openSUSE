@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Sep 25 17:14:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.20.0:
+  * Add last frame and keyframes to video generation
+  * Keep protobuf-7 compatibility patch (upstream still
+    gates v6 stubs on major == 6)
+
+-------------------------------------------------------------------
 Wed Aug 19 07:30:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.19.0:
