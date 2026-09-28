@@ -19,4 +19,68 @@ See: https://bugzilla.opensuse.org/show_bug.cgi?id=1249149</comment>
     <comment>Mention changed patched in the changelog</comment>
     <requestid>1366612</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bfda7c577c516df8c3844b7518abb220</srcmd5>
+    <version>0.81.0</version>
+    <time>1790585255</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.81.0:
+  * remove 0001-fix-compilation-Fix-Rust-1.97-clippy-build-errors.patch
+  * feat(Hardware Support): Refactor and expand GPD driver support
+  * feat(Config): Add CPU Model matching
+  * fix(udev): restore device node permissions on unhide and re-trigger udev add
+  * fix(Hardware Support): Fix the Guide button on MSI Claw line
+  * chore(event): move input value unit tests to value_test.rs
+  * feat(event): implement touchpad and touchscreen button translation
+  * feat(Hardware Support): Add AYANEO Pocket DS
+  * fix(Hardware Support): Use blocking read mechanism only for hidraw source polling
+  * fix(Hardware Support): Tune HIDRAW source driver poll rates
+  * fix(thor): correct thor ayn button phys path
+  * fix(Hardware Support):Match Legion Go touchpad evdev poll rate
+  * fix(Hardware Support): Fix Legion Go/2 Touchpad Poll Rate
+  * fix(Hardware Support): Prevent Legion Go 2 from dropping CompositeDevice on suspend
+  * chore(Manager): Merge imports to simplify header
+  * fix(Target): Allow missed events under 1 frame Currently the vhci and uhid deck targets attempt to ensure that no events that have an up and down event in under 1 frame are missed. It does this by rescheduling events for the next frame. If another down event happens before that scheduled event fires the up event is canceled to prevent the button from turning off. Not doing so causes lost input, and was added in #650 to address that issue. Unfortunately this delay is too short for 'on-release' events to trigger gamepad macros that userspace (i.e. Steam) can see, so QuickAccess and Screenshot type events are currently broken as reported in #657. Adding back the appropriate delay causes the up events to get canceled and the virtual button to be held until the matching physical button is pressed and released.
+  * feat(Input) Add keys/mappings used by CEC
+  * fix(device): support AYADEVICE AYANEO 2021 (#667)
+  * fix(Capability Map): Correct Xbox Ally X mappings - Users expect Left/Right paddles to be l4/r4. Labels were also swapped. Keep right side (Library) long press QAM2 like older ally, expose AC(left) long as LeftPaddle2
+  * fix(Hardware Support): Fix SuiPlay 0X1 system buttons
+  * fix(Target): Only emulate a real deck with deck target
+  * feat(Hardware Support): Add Retroid Pocket Flip 2
+  * feat(Hardware Support): Add Retroid Pocket Mini V2
+  * feat(Hardware Support): Add Retroid Pocket Mini
+  * feat(Hardware Support): Add Retroid Pocket 5
+  * feat(Hardware Support): Add AYN Odin 2 Mini
+  * feat(Hardware Support): Add AYN Thor
+  * feat(input): add KONKR Pocket FIT controller support (#670)
+  * fix(Ayaneo 3): match the joystick rings LED sys_name by glob
+  * feat(Hardware Support): Add Retroid Pocket Nova
+  * feat(Hardware Support): Add Retroid Pocket 6
+  * feat(Hardware Support): Add Ayn Odin 2 Portal
+  * feat(Hardware Support): Add AYN Odin 2
+  * feat(Hardware Support): Add AYN Odin 3
+  * fix(Target Test): Correctly display Accel and Gyro
+  * fix(Hardware Support): Use WMI event for MSI Claw series guide button
+  * chore(gitignore): Ignore direnv/envrc files from working directory.
+  * fix: Avoid clearing macro 'up' events, leaving buttons stuck on
+  * fix(Ayaneo Air 1S): Add missing key mappings for F15-F18 and Right Ctrl to allowlist
+  * fix(udev): Resolve permission errors when unhiding devices (#582)
+  * fix(Manager): keep devices in gamepad order during target device changes
+  * fix(Source Device) Stop halving poll rate with sleep - Calculates the total poll time for each source device and sleeps for only the remainder of the devices poll rate. With the previous implementation a source device could effectively halve its poll rate by waiting the full duration. If a device took 8ms to fill its event buffer and produce events, and its poll rate needed an 8ms sleep, that would effectively make the delay 16ms.
+  * fix(Hardware Support): Fix Claw 8 EX Config The Claw 8 EX has enough variation to warrant its own capability map. This improves detection of the guide button dramatically compared to the previous config.
+  * fix(Hardware Support): Add MSI Claw Dinput driver - Adds Dinput hidraw driver for MSI Claw, which provides rumble support while in dinput mode
+  * fix(Hardware Support): Add full support for 8bitdo Ultimate 2
+  * fix(Configuration): Add hidraw uaccess rules
+  * fix(compilation): Fix Rust 1.97 clippy build errors
+  * fix(DualSense): address feedback add comments
+  * fix(DualSense): only emit changed input reports
+  * fix(Hardware Support): Fix Dropped Events From Debounce Method
+  * fix(Hardware Support): Add missing and clean up AYANEO devices - Adds KONKR Fit and Suiplay x01 to configurations - While at it, adds capability filter to AYANEO configurations to reduce   the reported capabilities lists to the supported events.
+  * feat(Hardware Support): Add MSI Claw 8 EX AI+ profile
+  * fix(Hardware Support): Add updated OXP Apex config
+  * feat(Hardware Support): Add Ayaneo Pocket S2
+  * fix(Hardware Support): Add complete Xbox Ally button map - Adds updated button mapping for Xbox Ally models. Ally Type 2 is no longer used, so reuse that capability map ID.
+</comment>
+    <requestid>1380976</requestid>
+  </revision>
 </revisionlist>

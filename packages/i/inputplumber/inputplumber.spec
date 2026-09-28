@@ -16,7 +16,7 @@
 #
 
 Name:           inputplumber
-Version:        0.77.7
+Version:        0.81.0
 Release:        0%{?dist}
 Summary:        Input router and remapper daemon for Linux
 License:        GPL-3.0
@@ -24,7 +24,6 @@ URL:            https://github.com/ShadowBlip/InputPlumber
 Source0:        InputPlumber-%{version}.tar.xz
 Source1:        vendor.tar.zst
 Patch0:         polkit-rules.patch
-Patch1:         0001-fix-compilation-Fix-Rust-1.97-clippy-build-errors.patch
 BuildRequires:  rust
 BuildRequires:	cargo
 BuildRequires:  cargo-packaging
