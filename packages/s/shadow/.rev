@@ -1452,4 +1452,13 @@
       root is unsafe, and it won't work correctly, to avoid security problems.</comment>
     <requestid>1371717</requestid>
   </revision>
+  <revision rev="91" vrev="1">
+    <srcmd5>1b8e309b1a3b85c34679797f59243ee1</srcmd5>
+    <version>4.20.3</version>
+    <time>1790584480</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.20.3:
+  * Build error when using '--with-nscd=no' (bug introduced in v4.19.0).</comment>
+    <requestid>1380102</requestid>
+  </revision>
 </revisionlist>

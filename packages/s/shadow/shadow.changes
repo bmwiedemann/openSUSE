@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Sep 24 06:17:17 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 4.20.3:
+  * Build error when using '--with-nscd=no' (bug introduced in v4.19.0).
+
+-------------------------------------------------------------------
 Mon Aug 10 06:57:03 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 4.20.2:
