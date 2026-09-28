@@ -1,0 +1,65 @@
+Index: blockdiag-3.0.0/src/blockdiag/noderenderer/__init__.py
+===================================================================
+--- blockdiag-3.0.0.orig/src/blockdiag/noderenderer/__init__.py
++++ blockdiag-3.0.0/src/blockdiag/noderenderer/__init__.py
+@@ -15,14 +15,14 @@
+ 
+ from __future__ import division
+ 
+-import pkg_resources
++from importlib.metadata import entry_points
+ 
+ renderers = {}
+ searchpath = []
+ 
+ 
+ def init_renderers():
+-    for plugin in pkg_resources.iter_entry_points('blockdiag_noderenderer'):
++    for plugin in entry_points(group='blockdiag_noderenderer'):
+         module = plugin.load()
+         if hasattr(module, 'setup'):
+             module.setup(module)
+Index: blockdiag-3.0.0/src/blockdiag/plugins/__init__.py
+===================================================================
+--- blockdiag-3.0.0.orig/src/blockdiag/plugins/__init__.py
++++ blockdiag-3.0.0/src/blockdiag/plugins/__init__.py
+@@ -13,7 +13,7 @@
+ #  See the License for the specific language governing permissions and
+ #  limitations under the License.
+ 
+-from pkg_resources import iter_entry_points
++from importlib.metadata import entry_points
+ 
+ from blockdiag.utils.logging import warning
+ 
+@@ -28,7 +28,7 @@ def load(plugins, diagram, **kwargs):
+             warning('plugin "%s" is already loaded. ignored.', name)
+             return
+ 
+-        for ep in iter_entry_points('blockdiag_plugins', name):
++        for ep in entry_points(group='blockdiag_plugins', name=name):
+             module = ep.load()
+             loaded_plugins.append(name)
+             if hasattr(module, 'setup'):
+Index: blockdiag-3.0.0/src/blockdiag/imagedraw/__init__.py
+===================================================================
+--- blockdiag-3.0.0.orig/src/blockdiag/imagedraw/__init__.py
++++ blockdiag-3.0.0/src/blockdiag/imagedraw/__init__.py
+@@ -13,7 +13,7 @@
+ #  See the License for the specific language governing permissions and
+ #  limitations under the License.
+ 
+-import pkg_resources
++from importlib.metadata import entry_points
+ 
+ from blockdiag.utils.logging import warning
+ 
+@@ -21,7 +21,7 @@ drawers = {}
+ 
+ 
+ def init_imagedrawers(debug=False):
+-    for drawer in pkg_resources.iter_entry_points('blockdiag_imagedrawers'):
++    for drawer in entry_points(group='blockdiag_imagedrawers'):
+         try:
+             module = drawer.load()
+             if hasattr(module, 'setup'):

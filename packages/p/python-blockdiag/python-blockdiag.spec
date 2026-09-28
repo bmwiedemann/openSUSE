@@ -1,7 +1,7 @@
 #
 # spec file for package python-blockdiag
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -29,6 +29,8 @@ Source:         https://files.pythonhosted.org/packages/source/b/blockdiag/block
 Patch0:         python-blockdiag-nose-to-pytest.patch
 # PATCH-FIX-UPSTREAM https://github.com/blockdiag/blockdiag/pull/179 Add support for Pillow 10
 Patch1:         pillow10.patch
+# PATCH-FIX-OPENSUSE Do not use pkg_resources to find entry points
+Patch2:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module Pillow >= 3}
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module funcparserlib >= 1.0.0~a0}

@@ -109,4 +109,13 @@
   upstream patch to also drop use of yield tests.</comment>
     <requestid>1301513</requestid>
   </revision>
+  <revision rev="14" vrev="7">
+    <srcmd5>a6f2a6058751848628137296cab679ff</srcmd5>
+    <version>3.0.0</version>
+    <time>1790584737</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources to find entry points.</comment>
+    <requestid>1380284</requestid>
+  </revision>
 </revisionlist>
