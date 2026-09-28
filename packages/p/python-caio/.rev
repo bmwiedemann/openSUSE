@@ -103,4 +103,38 @@ Fri Aug 21 13:31:16 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
   the correct 0.12.4 metadata</comment>
     <requestid>1376276</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>3dded3018ef1a75604e6939a7930d2aa</srcmd5>
+    <version>0.12.9</version>
+    <time>1790585160</time>
+    <user>anag_factory</user>
+    <comment>Update python-caio from 0.12.4 to 0.12.9 (five patch releases).
+
+User-relevant: an io_uring blocking-wait race that could return 0 or
+hang on a single-CPU host; a thread_aio pool leak of about 9 MB per
+Context plus undefined behaviour on close (a locked mutex destroyed,
+which ThreadSanitizer flags on every close); and 32-bit / big-endian
+fixes (C type handling, buffer sizes, timeouts, the SQPOLL fallback on
+permission errors), which matter here because Factory builds i586,
+armv7l, s390x and ppc64le. Also declares Python 3.15 support.
+
+The tracked sdist is swapped, and the spec now records why it has to
+stay tracked: source_validator aborts the build on a Source0 file that
+is not tracked.
+
+No dependency, subpackage or soname change - the built RPM's requires
+and file list are identical to the shipped 0.12.4 apart from the
+version stamp, so nothing downstream needs a rebuild.
+
+Native aarch64 build green, %check 136 passed per flavour, rpmlint
+0 errors / 0 badness. The six unstripped-binary warnings are a
+local-build-root artifact: an unmodified 0.12.4 build in a separate
+root produces the identical six, and the server-side 0.12.4 binary has
+none.
+
+No distro has taken 0.12.9 yet and no Bugzilla report references the
+package, so there is no boo# to reference.
+</comment>
+    <requestid>1380831</requestid>
+  </revision>
 </revisionlist>

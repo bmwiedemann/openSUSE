@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:16:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.9:
+  * Fix a race in the io_uring backend's blocking wait that made it
+    return 0 or block forever on a single-CPU system
+  * thread_aio: fix a pool leak of about 9 MB per Context when the last
+    reference is dropped from a worker thread, and stop destroying a
+    locked mutex on close (undefined behaviour, reported by
+    ThreadSanitizer on every close)
+  * Fix C type handling on big-endian platforms, buffer size and
+    timeout handling on 32-bit, and the SQPOLL fallback on permission
+    errors
+  * Declare support for Python 3.15
+  * Skip backend-specific tests when the kernel lacks the backend
+    instead of reporting them as errors
+- Replace the tracked source tarball caio-0.12.4.tar.gz with
+  caio-0.12.9.tar.gz; the file named by Source0 has to be tracked or
+  source_validator aborts the build
+
+-------------------------------------------------------------------
 Tue Sep  8 06:25:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.4:

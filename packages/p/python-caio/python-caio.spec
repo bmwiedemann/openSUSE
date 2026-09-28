@@ -17,7 +17,7 @@
 
 
 Name:           python-caio
-Version:        0.12.4
+Version:        0.12.9
 Release:        0
 Summary:        Asynchronous file IO for Linux MacOS or Windows
 License:        Apache-2.0
@@ -25,6 +25,8 @@ URL:            https://github.com/mosquito/caio
 # PyPI sdist (graft tests in MANIFEST.in). 0.12.3 had none and used the
 # GitHub tag archive; 0.12.4 publishes a real sdist with the correct
 # [project] version, so no %%prep rewrite is needed.
+# The tarball is also committed to the package: source_validator aborts the
+# build on a Source0 whose file is not tracked.
 Source:         https://files.pythonhosted.org/packages/source/c/caio/caio-%{version}.tar.gz
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
