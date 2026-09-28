@@ -19,7 +19,7 @@
 
 %define sover 5
 Name:           liblognorm
-Version:        2.1.0
+Version:        2.1.1
 Release:        0
 Summary:        Library and tool to normalize log data
 License:        Apache-2.0 AND LGPL-2.1-or-later
@@ -134,16 +134,15 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %ldconfig_scriptlets -n liblognorm%{sover}
 
 %files -n liblognorm%{sover}
-%license COPYING
-%{_libdir}/*.so.*
+%license COPYING COPYING.ASL20
+%{_libdir}/liblognorm.so.*
 %{_bindir}/lognormalizer
 
 %files devel
-%license COPYING
+%license COPYING COPYING.ASL20
 %doc NEWS README AUTHORS ChangeLog AGENTS.md
-%{_includedir}/*
-%{_libdir}/*.so
 %{_includedir}/*.h
+%{_libdir}/liblognorm.so
 %{_libdir}/pkgconfig/lognorm.pc
 
 %changelog

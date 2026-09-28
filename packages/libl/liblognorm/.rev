@@ -234,4 +234,23 @@
     <comment></comment>
     <requestid>1360744</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>8bfd66f172fda0ce137d60840b8aca6d</srcmd5>
+    <version>2.1.1</version>
+    <time>1790584623</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * TurboVM: fix optimized builds failing on an uninitialized repeat name
+    length warning
+  * parser(date-rfc5424): prevent millisecond timestamp overflow:
+    parse only the required millisecond precision while still consuming
+    additional fractional digits
+  * parser(literal): prevent reads past the input terminator:
+    embedded NUL bytes no longer let byte-counted literal matching continue
+    past the duplicated C string terminator
+  * parser(date-rfc3164): reject a null format safely:
+    malformed parser JSON no longer causes a null-pointer dereference and
+    continues to use the established default string output</comment>
+    <requestid>1380373</requestid>
+  </revision>
 </revisionlist>

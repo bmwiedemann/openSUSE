@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:22:08 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
+
+- update to 2.1.1:
+  * TurboVM: fix optimized builds failing on an uninitialized repeat name
+    length warning
+  * parser(date-rfc5424): prevent millisecond timestamp overflow:
+    parse only the required millisecond precision while still consuming
+    additional fractional digits
+  * parser(literal): prevent reads past the input terminator:
+    embedded NUL bytes no longer let byte-counted literal matching continue
+    past the duplicated C string terminator
+  * parser(date-rfc3164): reject a null format safely:
+    malformed parser JSON no longer causes a null-pointer dereference and
+    continues to use the established default string output
+
+-------------------------------------------------------------------
 Tue Jun  2 11:48:29 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 2.1.0:
