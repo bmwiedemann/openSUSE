@@ -1,7 +1,7 @@
 #
 # spec file for package python-time-travel
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,7 @@
 #
 
 
-%define skip_python2 1
 Name:           python-time-travel
-Group:          Development/Languages/Python
 Version:        1.1.2
 Release:        0
 Summary:        Python time mocking
@@ -26,6 +24,8 @@ License:        MIT
 URL:            https://github.com/snudler6/time-travel
 # pypi archive does not contain the tests
 Source:         https://github.com/snudler6/time-travel/archive/refs/tags/v%{version}.tar.gz#/time_travel-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use importlib.metadata rather than pkg_resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +41,7 @@ BuildArch:      noarch
 A python library that helps users write deterministic tests for time sensitive and I/O intensive code.
 
 %prep
-%setup -q -n time-travel-%{version}
+%autosetup -p1 -n time-travel-%{version}
 
 %build
 %pyproject_wheel

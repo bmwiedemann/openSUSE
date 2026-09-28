@@ -32,4 +32,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1282516</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>508962eb357fb63751dcc80c077972fc</srcmd5>
+    <version>1.1.2</version>
+    <time>1790584734</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata, rather than pkg_resources.</comment>
+    <requestid>1380281</requestid>
+  </revision>
 </revisionlist>

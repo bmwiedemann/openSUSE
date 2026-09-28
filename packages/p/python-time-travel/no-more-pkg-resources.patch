@@ -1,0 +1,21 @@
+Index: time-travel-1.1.2/src/time_travel/time_travel.py
+===================================================================
+--- time-travel-1.1.2.orig/src/time_travel/time_travel.py
++++ time-travel-1.1.2/src/time_travel/time_travel.py
+@@ -1,6 +1,6 @@
+ """Mocking interface for python time libraries."""
+ 
+-import pkg_resources
++import importlib.metadata
+ 
+ from .time_machine_clock import TimeMachineClock, MIN_START_TIME
+ from .event_pool import EventPool
+@@ -21,7 +21,7 @@ class TimeTravel(object):
+         self.clock = TimeMachineClock(start_time, [self.event_pool])
+ 
+         patches = []
+-        for patcher in pkg_resources.iter_entry_points(
++        for patcher in importlib.metadata.entry_points(
+                 group='time_travel.patchers'):
+             patches.append(patcher.load())
+ 
