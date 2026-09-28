@@ -15,4 +15,12 @@
     <comment>Use the slf4j package that is now on version 2.0.18</comment>
     <requestid>1365414</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d09ab7da3eabb846ce396048d6aa81b5</srcmd5>
+    <version>4.2.0</version>
+    <time>1790584727</time>
+    <user>anag_factory</user>
+    <comment>4.2.0</comment>
+    <requestid>1380274</requestid>
+  </revision>
 </revisionlist>

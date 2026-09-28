@@ -15,17 +15,17 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-
-%global base_name plexus-sec-dispatcher
+%global fragment_name sec-dispatcher
+%global base_name plexus-%{fragment_name}
 %global version_suffix 4
 Name:           %{base_name}%{version_suffix}
-Version:        4.1.0
+Version:        4.2.0
 Release:        0
 Summary:        Plexus Security Dispatcher Component
 License:        Apache-2.0
 Group:          Development/Libraries/Java
 URL:            https://github.com/codehaus-plexus/%{base_name}
-Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/refs/tags/%{base_name}-%{version}.tar.gz
+Source0:        https://github.com/codehaus-plexus/plexus-sec-dispatcher/archive/refs/tags/%{fragment_name}-%{version}.tar.gz
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.xml
 BuildRequires:  ant
@@ -53,7 +53,7 @@ Group:          Documentation/HTML
 API documentation for %{name}.
 
 %prep
-%setup -q -n %{base_name}-%{base_name}-%{version}
+%setup -q -n %{base_name}-%{fragment_name}-%{version}
 
 cp %{SOURCE1} .
 cp %{SOURCE100} build.xml

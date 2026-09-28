@@ -10,7 +10,7 @@
 
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-sec-dispatcher"/>
-  <property name="project.version" value="4.1.0"/>
+  <property name="project.version" value="4.2.0"/>
   <property name="project.url" value="https://github.com/codehaus-plexus/plexus-sec-dispatcher"/>
   <property name="project.name" value="Plexus Security Dispatcher Component"/>
   <property name="project.organization.name" value="Sonatype, Inc."/>
@@ -180,6 +180,8 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
+        <attribute name="Automatic-Module-Name"
+                   value="org.codehaus.plexus.components.secdispatcher"/>
         <attribute name="Implementation-Title" value="${project.name}"/>
         <attribute name="Implementation-URL" value="${project.url}"/>
         <attribute name="Implementation-Vendor" value="${project.organization.name}"/>

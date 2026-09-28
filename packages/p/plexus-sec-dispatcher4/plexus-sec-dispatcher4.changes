@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Sep 24 23:39:28 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 4.2.0
+  * New features and improvements
+    + Establish an automatic module name
+  * Maintenance
+    + Draft the version the labels imply, not always a patch
+    + Rewrite README with usage, status and version guidance
+    + Bind scm-publish to site-deploy so the site can be published
+    + Build with Java25
+    + JUnit Jupiter best practices
+    + Apply spotless re-formatting
+    + Fix SCM URLs
+  * Build
+    + Point developerConnection at the HTTPS URL
+    + Draft the version the labels imply, not always a patch
+    + Update parent to plexus 27
+    + Version the sisu.inject dependency with its own property
+  * Dependency updates
+    + Bump github/codeql-action from 4.37.6 to 4.37.7
+    + Bump org.codehaus.modello:modello-maven-plugin from 2.4.0 to
+      2.8.0
+    + Bump org.codehaus.plexus:plexus from 19 to 26
+    + Bump release-drafter/release-drafter from 6 to 7.7.0
+    + Bump github/codeql-action from 3 to 4.37.6
+    + Bump actions/checkout from 4 to 7
+
+-------------------------------------------------------------------
 Mon Jul 13 12:51:42 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Do not use the slf4j2 compatibility package, as the base slf4j
