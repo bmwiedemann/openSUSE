@@ -329,4 +329,41 @@
   * The jwt and cryptography dependencies are now imported</comment>
     <requestid>1372771</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>db87044a155de0e1cd5149b344cf454d</srcmd5>
+    <version>65.19.4</version>
+    <time>1790585177</time>
+    <user>anag_factory</user>
+    <comment>- update to 65.19.4 (bsc#1282668, CVE-2026-97764):
+  * Account: On databases with broad Unicode collations (e.g.
+    common MySQL/MariaDB configurations), usernames such as admin
+    and ádmin, or email addresses containing compatibility
+    characters, could authenticate the same account while
+    consuming different rate limit keys. This resulted in a
+    larger than intended per account rate limit. To mitigate,
+    matching rows are now checked against the submitted username
+    or email address before the password is verified. On these
+    configurations, projects using username authentication must
+    remove Django's ModelBackend from AUTHENTICATION_BACKENDS, as
+    it does not perform this additional check.  Thanks to Yuji
+    Egami for reporting.
+  * Account: The email address data migrations (0006 and 0008)
+    did not honor the database selected using migrate --database,
+    potentially querying or updating the default database
+    instead. Fixed.
+  * MFA: Fixed various race conditions involving TOTP and
+    recovery codes.
+  * Headless: When HEADLESS_JWT_STATEFUL_VALIDATION_ENABLED is
+    on, JWT access tokens are now rejected after the password
+    changes outside of the allauth password-change flow (for
+    example via set_password() in a shell). Stateful validation
+    now uses the same session auth hash check that refresh tokens
+    already used.
+  * A known flaw in the built-in rate limiting was that the
+    configured limits could be exceeded under a high volume of
+    concurrent requests. This was documented as an acceptably
+    small margin of error. However, as Kaya Emre Arikan (kemrec)
+    demonstrated, the limits could be substantially exceeded</comment>
+    <requestid>1380824</requestid>
+  </revision>
 </revisionlist>

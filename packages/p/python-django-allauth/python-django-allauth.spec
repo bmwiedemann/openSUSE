@@ -38,7 +38,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-allauth
-Version:        65.19.1
+Version:        65.19.4
 Release:        0
 Summary:        Django authentication, registration, account management
 License:        MIT
@@ -64,7 +64,6 @@ BuildRequires:  %{python_module pytest >= %{pytest_min_version}}
 BuildRequires:  %{python_module pytest-asyncio >= %{pytest_asyncio_min_version}}
 BuildRequires:  %{python_module pytest-django >= %{pytest_django_min_version}}
 BuildRequires:  %{python_module python3-openid >= %{python3_openid_min_version}}
-BuildRequires:  %{python_module python3-saml >= %{python3_saml_min_version}}
 BuildRequires:  %{python_module python3-saml >= %{python3_saml_min_version}}
 BuildRequires:  %{python_module qrcode >= %{qrcode_min_version}}
 BuildRequires:  %{python_module requests >= %{requests_min_version}}

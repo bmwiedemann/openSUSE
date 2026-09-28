@@ -1,7 +1,7 @@
-Index: django_allauth-65.14.3/tests/apps/account/test_ratelimit.py
+Index: django_allauth-65.19.4/tests/apps/account/test_ratelimit.py
 ===================================================================
---- django_allauth-65.14.3.orig/tests/apps/account/test_ratelimit.py	2026-01-17 13:07:19.000000000 +0100
-+++ django_allauth-65.14.3/tests/apps/account/test_ratelimit.py	2026-03-03 12:29:39.635505574 +0100
+--- django_allauth-65.19.4.orig/tests/apps/account/test_ratelimit.py
++++ django_allauth-65.19.4/tests/apps/account/test_ratelimit.py
 @@ -8,5 +8,5 @@ def test_case_insensitive_password_reset
      user_factory(email="a@b.com")
      resp = client.post(reverse("account_reset_password"), data={"email": "a@b.com"})
