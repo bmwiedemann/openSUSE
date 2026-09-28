@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sat Sep 26 06:55:26 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 10.3.6:
+  * Add query logging to database layer
+  * Snapshot IDs now contain (optional) generation
+  * Bump generation ID if snapshot IDs collide
+  * Snapshots can be filtered by term and index
+  * Add support for File Renaming and Removing with retries
+  * Replace standard library with fsutil
+  * Keep snapshot ordering correct regardless of clock
+  * Remove snapshot name generation ID
+
+-------------------------------------------------------------------
 Sun Sep 20 08:37:06 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 10.3.5:
