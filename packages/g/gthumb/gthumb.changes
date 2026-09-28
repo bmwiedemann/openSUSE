@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:45:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 4.0:
+  + Features: Resize Image: added a digit to the zoom spin button
+  + Bugfixes:
+    - Fixed “Print” action not visible in viewer mode
+    - Fixed progress dialog not visible while searching
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 12:00:38 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.rc:
+  + Features:
+    - Viewer:
+      . use Left/Right to show previous/next file
+      . allow to change file swiping on the touchpad
+      . added pinch-to-zoom gesture
+    - Slideshow:
+      . use Left/Right to change file
+      . allow to change file swiping on the touchpad
+      . added a simple fade-in animation
+    - Editor: use the first frame if the image is an animation
+    - Video Metadata: added framerate, channels and sample rate
+    - Drag Source: create an icon using the thumbnail
+    - Added actions to back and forward mouse buttons
+  + Bugfixes:
+    - Video Metadata: swap dimensions for rotated videos
+    - Fixed memory leak in image viewer
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 12:00:37 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 4.0.beta:
+  + Features:
+    - Added a cache for metadata attributes
+    - Use a fast resize algorithm for big images
+    - Videos: use Up/Down to skip forward/backward
+    - TagEntry: sort the tags by name
+  + Bugfixes:
+    - Install the devel icon only when developer-mode is active
+    - Install the metainfo file as well
+    - Reload the image after renaming the file
+    - Fixed saving keywords in Xmp::dc::subject
+    - Reload files after CREATED events
+    - Reload location when the filter requires additional metadata
+    - Do not set the thumbnail color profile as the image color
+      profile
+  + Updated translations.
+- Changes from version 4.0.alpha:
+  + Features:
+    - Ported to GTK4, rewritten in Vala
+    - Play WEBP and PNG animations
+    - Save as JXL
+    - Filters:
+      . Allow to change the quantity of the applied filter for many
+        filters
+      . Added Censor to pixelize or blur an image area
+    - Removed web albums, contact sheet, adjust time, find
+      duplicates
+- Drop devel sub-package and obsolete it, no longer built.
+- Changes in BuildRequires after upstreams port and other changes:
+  + Added: c++_compiler, giflib-devel, vala, pkgconfig(gtk4),
+    pkgconfig(libadwaita-1), pkgconfig(libjxl_threads),
+    pkgconfig(libportal), pkgconfig(libportal-gtk4),
+    pkgconfig(libwebpdemux)
+  + Dropped: bison, flex, gcc-c++, intltool, itstool,
+    pkgconfig(clutter-1.0), pkgconfig(clutter-gtk-1.0),
+    pkgconfig(gio-unix-2.0), pkgconfig(gmodule-2.0),
+    pkgconfig(gtk+-3.0), pkgconfig(libbrasero-burn3)
+
+-------------------------------------------------------------------
 Tue Sep 15 08:59:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.12.11:
@@ -319,7 +392,7 @@ Mon Sep 20 05:51:34 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
   + Bugs fixed:
     - Install the gThumb import desktop file.
     - Fix memory leak when loading webp, jxl, avif images.
-    - Check if image is null before using it. 
+    - Check if image is null before using it.
     - Added a Flatpak manifest.
     - Contact sheet: fixed themes list always empty.
     - Raw: Make compatible with LibRaw 0.21
@@ -343,7 +416,7 @@ Mon Aug 23 13:36:08 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Tue Apr 13 15:01:26 UTC 2021 - Paolo Stivanin <info@paolostivanin.com>
 
-- Update to version 3.10.3: 
+- Update to version 3.10.3:
   + Fix possible build error.
   + Updated translations.
 
@@ -356,7 +429,7 @@ Sun Jan 31 13:16:28 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fixed jump to bottom when selecting thumbnails with mouse.
   + gThumb opens import tool if the import tool is already opened.
   + Image viewer: fixed bright line visual artifacts.
-  + Search: 
+  + Search:
     - Fixed possible crash after cancelling a search.
     - Do not count duplicated files.
     - Stop the previous search before starting the new one.
@@ -599,7 +672,7 @@ Tue Nov 21 02:29:32 UTC 2017 - luc14n0@linuxmail.org
 
 - Update to version 3.6.0:
   + Bugs fixed: Numeric keypad nav keys don't work (bgo#667390).
-- Readd bison, flex and itstool BuildRequires since configures 
+- Readd bison, flex and itstool BuildRequires since configures
   actually do check for them.
 
 -------------------------------------------------------------------
@@ -618,7 +691,7 @@ Mon Nov  6 20:31:57 UTC 2017 - luc14n0@linuxmail.org
       supported by the APIs:
       . Facebook: fixed authorization process; removed photo
         importer.
-      . PicasaWeb: removed album creation; remember application 
+      . PicasaWeb: removed album creation; remember application
         authorization (bgo#784142).
       . Photobucket: removed uploader.
     - Image viewer: use a white background for transparency
@@ -965,13 +1038,13 @@ Sun Jan 19 18:45:44 UTC 2014 - zaitor@opensuse.org
     - Use a GtkHeaderBar instead of a menu and a toolbar.
     - Use the dark theme.
     - Better raw image support, using libraw instead of libopenraw.
-    - Image viewer: show a frame around the image; use an overview 
+    - Image viewer: show a frame around the image; use an overview
       window to scroll the image instead of the scrollbars; better
       quality for zoomed out images.
     - Faster image loader for big images.
     - Media player: hide the mediabar after a timeout.
     - Filterbar: added buttons to view the selections.
-    - File properties: show only the basic properties, allow to 
+    - File properties: show only the basic properties, allow to
       show all of them.
     - Image tools: use a grid layout for the buttons.
     - Use a separate dialog for the file tool options.
@@ -1009,7 +1082,7 @@ Sun Jan 19 18:45:44 UTC 2014 - zaitor@opensuse.org
   BuildRequires, and pass --enable-libraw instead of
   --enable-libopenraw to configure, following upstream change.
 - Drop obsolete conditionals from post/postun.
- 
+
 -------------------------------------------------------------------
 Tue Nov 26 20:36:44 UTC 2013 - dimstar@opensuse.org
 
@@ -1039,7 +1112,7 @@ Thu Oct 17 01:05:11 UTC 2013 - firebird209@gmail.com
   + Fixed crash when opening the preferences dialog.
   + Find duplicates: fixed crash when using a predefined directory
     (bgo#706697).
-  + Fixed crash when attempting to play a video under special 
+  + Fixed crash when attempting to play a video under special
     circumstances (bgo#706343).
   + Fixed crash when copying or moving files (bgo#705877).
   + Updated translations.
@@ -1130,7 +1203,7 @@ Sat Feb 9 17:36:57 UTC 2013 - zaitor@opensuse.org
   pkgconfig(gstreamer-plugins-base-1.0) and pkgconfig(libsecret-1)
   BuildRequires, new dependencys due to upstream port to GST-1.0 and
   libsecret.
-- Drop pkgconfig(gstreamer-0.10), 
+- Drop pkgconfig(gstreamer-0.10),
   pkgconfig(gstreamer-interfaces-0.10) and
   pkgconfig(gnome-keyring-1) BuildRequires, following above port.
 - Drop gthumb-bigendian-typo.patch, fixed upstream.
@@ -1388,7 +1461,7 @@ Sun Dec  4 22:10:52 CET 2011 - zaitor@opensuse.org
 
 - Update to version 2.14.1:
   + Fixed infinite reloading of some images when selected in the
-    file list. 
+    file list.
   + Fixed export to Photobucket.
   + Fixed crash when no file properties view is registered.
   + Fixed crash when closing the media viewer very quickly.
@@ -1397,7 +1470,7 @@ Sun Dec  4 22:10:52 CET 2011 - zaitor@opensuse.org
 - Add xz BuildRequires because we can't build a package for a
   xz-compressed tarball without explicitly specifying that... See
   bnc#697467 for more details.
-  
+
 -------------------------------------------------------------------
 Mon Nov  7 11:24:06 UTC 2011 - dimstar@opensuse.org
 
@@ -1740,7 +1813,7 @@ Tue Aug 17 10:50:11 CEST 2010 - dimstar@opensuse.org
     - bgo#621244: Slideshow: added ability to view the images in
       random order
     - bgo#622245: Change date tool: allow to set the date without
-      touching the time 
+      touching the time
     - bgo#624454: Video player: display the video speed in the
       status bar and allow to change speed from 0.03 to 36.0
     - Removed the "do not change folder" option from the
@@ -2142,7 +2215,7 @@ Wed Aug  8 00:29:46 CEST 2007 - maw@suse.de
 -------------------------------------------------------------------
 Mon Jun 18 01:09:56 CEST 2007 - ro@suse.de
 
-- avoid string compare with char literal 
+- avoid string compare with char literal
 
 -------------------------------------------------------------------
 Fri Apr 27 13:31:08 CEST 2007 - sbrabec@suse.cz
@@ -2161,7 +2234,7 @@ Thu Mar  8 17:37:09 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Jan 30 00:42:36 CET 2007 - ro@suse.de
 
-- GNOME moved to /usr 
+- GNOME moved to /usr
 
 -------------------------------------------------------------------
 Sun Oct 22 12:13:25 CEST 2006 - meissner@suse.de
@@ -2260,24 +2333,24 @@ Thu Jan 27 09:00:37 CET 2005 - meissner@suse.de
 -------------------------------------------------------------------
 Tue Jan 25 19:54:39 CET 2005 - gekker@suse.de
 
-- Update to version 2.6.3 
+- Update to version 2.6.3
 
 -------------------------------------------------------------------
 Wed Jan 19 02:49:23 CET 2005 - ro@suse.de
 
-- added c++ to neededforbuild (for libtiff) 
+- added c++ to neededforbuild (for libtiff)
 
 -------------------------------------------------------------------
 Mon Nov 22 15:51:33 CET 2004 - ro@suse.de
 
 - make specfile rpm3 compliant ...
   (non numeric if arguments need quoting)
-- apply exif patch only for > 9.1 
+- apply exif patch only for > 9.1
 
 -------------------------------------------------------------------
 Mon Nov 22 01:49:27 CET 2004 - ro@suse.de
 
-- fixed one compiler warning 
+- fixed one compiler warning
 
 -------------------------------------------------------------------
 Tue Nov  2 18:08:08 CET 2004 - ro@suse.de
@@ -2301,7 +2374,7 @@ Tue Aug 31 21:17:08 CEST 2004 - clahey@suse.de
 
 -------------------------------------------------------------------
 Mon Aug 16 16:16:32 CEST 2004 - shprasad@suse.de
- 
+
 - Fixes bug #61331  (Fix given by gsunil@novell.com)
   Resets sequence after save.
 
@@ -2359,7 +2432,7 @@ Sat Jan 10 16:24:42 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Oct  9 14:25:18 CEST 2003 - hhetter@suse.de
 
-- updated to version 2.1.6 
+- updated to version 2.1.6
 
 -------------------------------------------------------------------
 Mon Aug 18 17:39:10 CEST 2003 - sbrabec@suse.cz
@@ -2374,7 +2447,7 @@ Tue Aug 12 13:00:37 CEST 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Tue Jul 29 11:28:41 CEST 2003 - hhetter@suse.de
 
-- %_lib fixes 
+- %_lib fixes
 
 -------------------------------------------------------------------
 Mon Jul 14 15:37:12 CEST 2003 - sbrabec@suse.cz
@@ -2390,7 +2463,7 @@ Sat Jun 28 13:35:20 CEST 2003 - coolo@suse.de
 -------------------------------------------------------------------
 Thu Jun  5 19:00:02 CEST 2003 - hhetter@suse.de
 
-- fix filelist and schemas  
+- fix filelist and schemas
 
 -------------------------------------------------------------------
 Wed Feb 26 17:10:33 CET 2003 - sbrabec@suse.cz
@@ -2400,18 +2473,18 @@ Wed Feb 26 17:10:33 CET 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Feb 26 15:22:31 CET 2003 - hhetter@suse.de
 
-- updated to stable 2.0.1 release (#24350) 
+- updated to stable 2.0.1 release (#24350)
 
 -------------------------------------------------------------------
 Mon Jan 20 17:02:41 CET 2003 - ro@suse.de
 
 - update to 1.108
-- hack for libgnomeprint(ui) 2.2 
+- hack for libgnomeprint(ui) 2.2
 
 -------------------------------------------------------------------
 Fri Jan 17 02:32:24 CET 2003 - ro@suse.de
 
-- configure: accept libgnomeprint-2.2 
+- configure: accept libgnomeprint-2.2
 
 -------------------------------------------------------------------
 Wed Jan 15 00:02:20 CET 2003 - ro@suse.de
@@ -2431,17 +2504,17 @@ Fri Sep 20 17:28:34 CEST 2002 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Aug 13 12:08:40 CEST 2002 - hhetter@suse.de
 
-- fix filelist for libexec binaries 
+- fix filelist for libexec binaries
 
 -------------------------------------------------------------------
 Mon Aug 12 13:55:49 CEST 2002 - hhetter@suse.de
 
 - updated to version 1.103
 	* New tool: jpeg lossless transformations.
-	* The user can edit/view comments and delete images 
+	* The user can edit/view comments and delete images
 	  in fullscreen mode.
 	* Changed the fourth layout type to something more usefull.
-	* Automatically update the content of a folder. 
+	* Automatically update the content of a folder.
 
 -------------------------------------------------------------------
 Mon Aug 12 01:13:38 CEST 2002 - ro@suse.de
