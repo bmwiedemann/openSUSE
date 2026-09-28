@@ -147,4 +147,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
 0 errors, 0 warnings, 0 badness.</comment>
     <requestid>1379756</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0d8066c07581a611a598379e8d3208a7</srcmd5>
+    <version>65.3</version>
+    <time>1790585054</time>
+    <user>anag_factory</user>
+    <comment>Update to 65.3: faster large-file processing (default -m1 output byte-identical to 65.2), new -turbo mode, -m6/-m7 methods, mount support on FreeBSD/OpenBSD/macOS. Drop qualify-std-string patch (fixed upstream).</comment>
+    <requestid>1380713</requestid>
+  </revision>
 </revisionlist>

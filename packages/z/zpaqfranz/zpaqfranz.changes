@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Sep 25 18:13:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.3:
+  * Much faster processing of large files (default -m1
+    output is byte-identical to 65.2)
+  * New experimental parallel -turbo mode
+  * New back-compatible methods -m6 (LZ4) and -m7 (LZAV)
+  * Mount support on FreeBSD, OpenBSD and macOS,
+    redesigned mount cache
+  * Improved hash healing and -touch, more portability
+    fixes and autotests
+- Drop zpaqfranz-qualify-std-string.patch (fixed
+  upstream in 65.3)
+
+-------------------------------------------------------------------
 Tue Sep 22 18:09:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 65.2:
