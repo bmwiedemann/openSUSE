@@ -7,4 +7,15 @@
     <comment>new package python-decopatch, required for tests in python-click-extra</comment>
     <requestid>1225880</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>9ac267e96cd7753a7872cff3fc481dd7</srcmd5>
+    <version>1.4.10</version>
+    <time>1790584736</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py
+- Fix Summary.
+- Ship README and LICENSE in the built packages.</comment>
+    <requestid>1380282</requestid>
+  </revision>
 </revisionlist>

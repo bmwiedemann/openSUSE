@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:54:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py
+- Fix Summary.
+- Ship README and LICENSE in the built packages.
+
+-------------------------------------------------------------------
 Thu Nov 21 16:35:21 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - new package python-decopatch, required for tests in
