@@ -188,4 +188,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
 2099 under python3.14; rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <requestid>1379737</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>58279197d5ecea63663c7947eeb46b23</srcmd5>
+    <version>1.6.5</version>
+    <time>1790584741</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.5: abbreviate long tool IDs in XML buffer strings.</comment>
+    <requestid>1380709</requestid>
+  </revision>
 </revisionlist>
