@@ -18,14 +18,26 @@
 
 
 Name:           clpeak
-Version:        2.1.4
+Version:        3.0.0
 Release:        0
-Summary:        Find peak OpenCL capacities like bandwidth & compute
-# Legal-Review-Notice: upstream relicensed from the Unlicense to Apache-2.0
-# in commit 65e57245 (2023-12-22); LICENSE is the sole licence file in the
-# tree, there is no bundled third-party code and no source carries a
-# divergent SPDX header. Fedora declares Apache-2.0 as well.
-License:        Apache-2.0
+Summary:        Find peak compute, bandwidth and latency of GPUs, CPUs and NPUs
+# Legal-Review-Notice: upstream relicensed to GPL-3.0 for 3.0.0. Commit
+# 391491e0f33d (2026-09-15) replaced LICENSE with the GPL-3.0 text, and
+# f9056e42c96d (2026-09-25) changed the licence statement in docs/_layouts/
+# default.html to match; before that the tag was Apache-2.0 (65e57245,
+# 2023-12-22). LICENSE grants v3 only -- no "or later" wording in it or in any
+# source header -- hence -only. One upstream field is stale and was not
+# followed: packaging/flatpak/io.github.krrishnarraj.clpeak.metainfo.xml still
+# reads project_license Apache-2.0.
+# Legal-Review-Notice: bundled third-party code, new in 3.0.0, header-only and
+# both one-way GPL-3.0 compatible, each carrying its notice verbatim:
+# third_party/onnxruntime (3 MIT headers, microsoft/onnxruntime v1.30.0) and
+# third_party/litert (35 Apache-2.0 headers, google-ai-edge/LiteRT v2.2.0).
+# Both runtimes are dlopen'd at run time, so none of their code is linked.
+# Legal-Review-Notice: third_party/libopencl-stub and third_party/Vulkan-Headers
+# are not shipped -- git submodules, absent from the release archive, and
+# referenced only by the Android FFI build (src/ffi/android).
+License:        GPL-3.0-only
 URL:            https://github.com/krrishnarraj/clpeak
 Source:         https://github.com/krrishnarraj/clpeak/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.20

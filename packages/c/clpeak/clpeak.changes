@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 27 08:49:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.0.0, a breaking release for scripts and saved runs:
+  * Result format v3: -o writes one JSON document per run;
+    --xml-file, --json-file and --csv-file are gone, and --compare
+    reads only v3.
+  * One device flag, --devices backend:index, replaces
+    --cl-platform, --cl-device, --vk-device, --cuda-device,
+    --rocm-device, --mtl-device and --oneapi-device.
+  * Test flags name what is measured and apply to every backend:
+    --matrix-compute, --gemm, --attention and --compute replace the
+    per-backend matrix, GEMM and compute flags; --use-event-timer
+    is gone.
+  * New NPU backends: ONNX Runtime, Core ML and LiteRT. None is
+    needed to build, the runtime is loaded at run time, and they
+    add an --ai category.
+  * Corrected measurements, not comparable with 2.1.4: CPU DRAM and
+    cache rows, AArch64 divide/sqrt, OpenCL int8 dot and ROCm
+    bandwidth.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Upstream relicensed clpeak from Apache-2.0 to GPL-3.0, version 3
+  only, so the package licence becomes GPL-3.0-only and the spec
+  records the evidence; the summary no longer says OpenCL only.
+
+-------------------------------------------------------------------
 Fri Aug 28 05:54:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.4, a measurement-accuracy release -- the corrected

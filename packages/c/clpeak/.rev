@@ -252,4 +252,65 @@ ctest 1/1 passed, rpmlint 0 errors 0 warnings 0 badness.</comment>
     <comment>Update to 2.1.4; drop clpeak-version-override.patch, merged upstream (gh#krrishnarraj/clpeak#206) (forwarded request 1374221 from pluskalm)</comment>
     <requestid>1374230</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>ec9d4983a108486c73267fdd094ba739</srcmd5>
+    <version>3.0.0</version>
+    <time>1790585234</time>
+    <user>anag_factory</user>
+    <comment>Update clpeak to 3.0.0. Breaking upstream release — 2.x scripts and saved runs
+need updating — and the first version that is not purely an OpenCL benchmark.
+
+What breaks for users:
+- Result format v3: -o writes one JSON document per run; --xml-file,
+  --json-file and --csv-file are gone, and --compare reads only v3.
+- The seven per-backend device flags (--cl-platform, --cl-device,
+  --vk-device, --cuda-device, --rocm-device, --mtl-device,
+  --oneapi-device) collapse into one --devices backend:index.
+- Test flags are renamed and now apply to every backend: --matrix-compute,
+  --gemm, --attention, --compute; --use-event-timer is removed.
+- Corrected measurements that are not comparable with 2.1.4: CPU DRAM and
+  cache rows, AArch64 divide/sqrt, OpenCL int8 dot, ROCm bandwidth.
+Every renamed flag was verified against the built binary, not the release
+notes.
+
+New capability: ONNX Runtime, Core ML and LiteRT backends reach NPUs. None is
+needed to build — each runtime is dlopen'd at run time — so there is no new
+build or runtime dependency, and none of the three is packaged in Factory,
+hence no Recommends:. They add an --ai category.
+
+LICENCE CHANGE — please review. Upstream relicensed clpeak from Apache-2.0 to
+GPL-3.0, so License: becomes GPL-3.0-only. Evidence: commit 391491e0f33d
+(2026-09-15) replaced LICENSE with the GPL-3.0 text, and commit f9056e42c96d
+(2026-09-25) deliberately changed the project's own licence statement in
+docs/_layouts/default.html to &quot;GPL-3.0 licensed&quot;. An accidental file swap does
+not later prompt a deliberate edit of the licence string. No &quot;or later&quot; grant
+appears in LICENSE or any source header, hence -only. One upstream field is
+stale and was deliberately not followed: packaging/flatpak's metainfo.xml
+still reads project_license Apache-2.0. Three # Legal-Review-Notice: blocks
+record the relicensing, the newly vendored third-party headers (ONNX Runtime
+MIT, LiteRT Apache-2.0 — both one-way GPL-3.0 compatible, header-only, no code
+linked) and the two submodules that are not shipped. The previous notice was
+in any case already false: it claimed no bundled third-party code. Without
+this fix the intermediate build shipped License: Apache-2.0 in the metadata
+while installing GPL-3.0 text to /usr/share/licenses/clpeak/LICENSE.
+
+Packaging: build system (CMake &gt;= 3.20), source layout of the build and every
+BuildRequires are unchanged. The two floors that looked inherited were
+re-verified rather than carried forward, and both are load-bearing:
+opencl-cpp-headers (without it src/opencl falls back to downloading the
+OpenCL SDK) and shaderc (supplies glslc, which compiles SPIR-V at configure
+time). -DCLPEAK_VERSION_OVERRIDE=%{version} still works and now also stamps
+the saved run document; the built binary reports clpeak version: 3.0.0. The
+Summary was refreshed because it claimed OpenCL only. The release's 14 assets
+are all prebuilt binaries, so the GitHub-archive Source: is unchanged.
+
+Validated natively on dove.qam.suse.cz against openSUSE:Factory:ARM standard
+aarch64: green, rpmlint 0 badness, %check 1/1 clpeak_test_run passed. No CVE
+in the crossed range (250 commits scanned, subjects and bodies). No open
+clpeak bug is affected or fixed by this update. Distro survey ran degraded
+(repology down); note Arch already ships 3.0.0 and declares
+license=(&quot;Unlicense&quot;), stale for every version since 2023 and not followed.
+</comment>
+    <requestid>1380941</requestid>
+  </revision>
 </revisionlist>
