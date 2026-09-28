@@ -812,4 +812,13 @@ python-logilab-common is in openSUSE:Factory so this builds now.</comment>
     the checks of the following values.</comment>
     <requestid>1373746</requestid>
   </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>2f10eaa6e32601ccaa0621dbc714a674</srcmd5>
+    <version>4.3.1</version>
+    <time>1790584611</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resouces in the brains or the testsuite.</comment>
+    <requestid>1380283</requestid>
+  </revision>
 </revisionlist>

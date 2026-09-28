@@ -1,0 +1,51 @@
+Index: astroid-4.3.1/astroid/brain/helpers.py
+===================================================================
+--- astroid-4.3.1.orig/astroid/brain/helpers.py
++++ astroid-4.3.1/astroid/brain/helpers.py
+@@ -64,7 +64,6 @@ def register_all_brains(manager: Astroid
+         brain_numpy_ndarray,
+         brain_numpy_random_mtrand,
+         brain_pathlib,
+-        brain_pkg_resources,
+         brain_pytest,
+         brain_qt,
+         brain_random,
+@@ -117,7 +116,6 @@ def register_all_brains(manager: Astroid
+     brain_numpy_ndarray.register(manager)
+     brain_numpy_core_numeric.register(manager)
+     brain_pathlib.register(manager)
+-    brain_pkg_resources.register(manager)
+     brain_pytest.register(manager)
+     brain_qt.register(manager)
+     brain_random.register(manager)
+Index: astroid-4.3.1/tests/test_manager.py
+===================================================================
+--- astroid-4.3.1.orig/tests/test_manager.py
++++ astroid-4.3.1/tests/test_manager.py
+@@ -160,26 +160,6 @@ class AstroidManagerTest(resources.SysPa
+     def test_ast_from_namespace_pkgutil(self) -> None:
+         self._test_ast_from_old_namespace_package_protocol("pkgutil")
+ 
+-    def test_ast_from_namespace_pkg_resources(self) -> None:
+-        self._test_ast_from_old_namespace_package_protocol("pkg_resources")
+-
+-    def test_identify_old_namespace_package_protocol(self) -> None:
+-        # Like the above cases, this package follows the old namespace package protocol
+-        # astroid currently assumes such packages are in sys.modules, so import it
+-        with warnings.catch_warnings():
+-            warnings.filterwarnings(
+-                "ignore",
+-                category=UserWarning,
+-                message=".*pkg_resources is deprecated.*",
+-            )
+-
+-            # pylint: disable-next=import-outside-toplevel
+-            import tests.testdata.python3.data.path_pkg_resources_1.package.foo as _  # noqa
+-
+-        self.assertTrue(
+-            util.is_namespace("tests.testdata.python3.data.path_pkg_resources_1")
+-        )
+-
+     def test_submodule_homonym_with_non_module(self) -> None:
+         self.assertFalse(
+             util.is_namespace("tests.testdata.python3.data.parent_of_homonym.doc")

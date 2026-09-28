@@ -24,6 +24,8 @@ Summary:        Representation of Python source as an AST for pylint
 License:        LGPL-2.1-or-later
 URL:            https://github.com/pycqa/astroid
 Source:         https://github.com/PyCQA/astroid/archive/refs/tags/v%{version}.tar.gz#/astroid-%{version}-gh.tar.gz
+# PATCH-FIX-OPENSUSE Do not import pkg_resources in the testsuite or brain
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module mypy}
 BuildRequires:  %{python_module pip}

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 00:26:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resouces in the brains or the testsuite.
+
+-------------------------------------------------------------------
 Wed Aug 26 06:09:58 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.3.1:
