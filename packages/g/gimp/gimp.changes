@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Sep 24 18:02:06 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- CVE-2026-96543: out-of-bounds heap write when loading non-square
+  PVR images (bsc#1282539)
+  * gimp-CVE-2026-96543.patch
+- CVE-2026-96544: integer overflow in the PVR image loader leads to
+  an out-of-bounds heap read (bsc#1282541)
+  * gimp-CVE-2026-96544.patch
+  * gimp-CVE-2026-96544-2.patch
+- CVE-2026-96545: out-of-bounds heap read in the 4bpp TIM image
+  loader (bsc#1282602)
+  * gimp-CVE-2026-96545.patch
+
+-------------------------------------------------------------------
+Wed Sep 23 14:49:04 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add gimp-initialize-sgi-tables.patch: ensure that SGI tables are
+  initialized. Clean-up for the fix for CVE-2026-66757 (bsc#1279838
+  glgo#GNOME/gimp!2997).
+- CVE-2026-90948: When processing an ICO file containing an
+  embedded PNG image, an integer overflow can occur during the
+  calculation of the required buffer size (bsc#1280512)
+  * gimp-CVE-2026-90948.patch
+- CVE-2026-90949: When processing a compressed selection channel in
+  gimp's PSP file loader, a heap-based buffer overflow can occur
+  due to a mismatch between the allocated buffer size and the
+  amount of data decompressed (bsc#1280513)
+  * gimp-CVE-2026-90949.patch
+- CVE-2026-92248: When generating a thumbnail preview for a
+  specially crafted PSD (Photoshop Document) image file, an integer
+  overflow occurs during the multiplication of values from an
+  embedded JPEG header (bsc#1280739)
+  * gimp-CVE-2026-92248.patch
+  * gimp-CVE-2026-92248-2.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 00:41:47 UTC 2026 - Alynx Zhou <alynx.zhou@suse.com>
 
 - Add gimp-fix-invalid-XWD-guards.patch: Fix invalid guards for XWD

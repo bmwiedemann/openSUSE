@@ -104,6 +104,24 @@ Patch2:         gimp-2.99.19-external-help-browser.patch
 Patch3:         gimp-2.99.19-no-phone-home-default.patch
 # PATCH-FIX-UPSTREAM gimp-fix-invalid-XWD-guards.patch glgo#GNOME/gimp!3007, bsc#1279839 alynx.zhou@suse.com -- Fix invalid guards for XWD parameters
 Patch4:         gimp-fix-invalid-XWD-guards.patch
+# PATCH-FIX-UPSTREAM gimp-initialize-sgi-tables.patch bsc#1279838 mgorse@suse.com -- ensure that SGI tables are initialized.
+Patch5:         gimp-initialize-sgi-tables.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-90948.patch bsc#1280512 mgorse@suse.com -- Stop overflow when reading PNGs in ICO.
+Patch6:         gimp-CVE-2026-90948.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-90949.patch bsc#1280513 mgorse@suse.com -- Use buffer size for PSP selection loading.
+Patch7:         gimp-CVE-2026-90949.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-92248.patch bsc#1280739 mgorse@suse.com -- Add bounds checks for PSD thumbnail.
+Patch8:         gimp-CVE-2026-92248.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-92248-2.patch bsc#1280739 mgorse@suse.com -- Further PSD thumbnail cleanup.
+Patch9:         gimp-CVE-2026-92248-2.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-96543.patch bsc#1282539 mgorse@suse.com -- Check destination offset in PVR import.
+Patch10:        gimp-CVE-2026-96543.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-96544.patch bsc#1282541 mgorse@suse.com -- Add bounds checks for rectangle PVRs.
+Patch11:        gimp-CVE-2026-96544.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-96544-2.patch bsc#1282541 mgorse@suse.com -- Fix double allocation in PVR.
+Patch12:        gimp-CVE-2026-96544-2.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-96545.patch bsc#1282602 mgorse@suse.com -- Guard loading 4BPP TIM images.
+Patch13:        gimp-CVE-2026-96545.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif
