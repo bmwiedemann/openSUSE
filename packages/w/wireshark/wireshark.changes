@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 24 08:07:03 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Wireshark 4.6.9
+  * CVE-2026-95391: ZigBee ZCL protocol dissector crash.
+  * CVE-2026-95389: SCTP protocol dissector crash.
+  * CVE-2026-95386: TTL file parser infinite loop.
+  * CVE-2026-95390: PEAK CAN TRC file parser crash.
+  * CVE-2026-95395: IEEE C37.118 Synchrophasor protocol dissector memory leak.
+  * CVE-2026-95387: SPDY protocol dissector crash.
+  * CVE-2026-95394: Microsoft Network Monitor file parser large loop.
+  * CVE-2026-95393: CSN.1 protocol dissector crash.
+  * CVE-2026-95392: MBIM protocol dissector crash.
+  * CVE-2026-95388: Sharkd utility crash.
+  * CVE-2026-96422: Frame protocol metadissector crash.
+  * CVE-2026-96421: USB HID protocol dissector infinite loop and memory leak.
+  * CVE-2026-96417: RF4CE protocol dissector crash.
+  * CVE-2026-96420: Toshiba file parser crash.
+  * CVE-2026-96419: Profile import crash and possible code execution.
+  * CVE-2026-96418: TIFF protocol dissector infinite loop.
+  * CVE-2026-96423: X11 protocol dissector crash.
+  * CVE-2026-96416: IEEE 802.11 protocol dissector crash.
+  * CVE-2026-96415: Catapult DCT2000 protocol dissector crash.
+- Many more features, bug fixes and updated protocol support as listed in:
+  https://www.wireshark.org/docs/relnotes/wireshark-4.6.9.html
+
+-------------------------------------------------------------------
 Thu Aug 13 07:45:34 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Wireshark 4.6.8
