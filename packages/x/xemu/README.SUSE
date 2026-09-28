@@ -1,0 +1,12 @@
+## Getting dependencies
+
+to fetch subprojects, run:
+
+$ meson subprojects download
+
+## Source reduction
+
+The /roms folder (inherited from qemu) has been removed to reduce space. These can be safely removed as xemu doesn't need to use them.
+
+Similarly, docs, tests and examples of dependencies have been removed.
+

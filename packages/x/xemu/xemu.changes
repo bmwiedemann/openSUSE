@@ -1,0 +1,29 @@
+-------------------------------------------------------------------
+Wed Sep 23 08:45:00 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- build against the system libslirp instead of the bundled subproject,
+  which removes the RUNPATH pointing into the build tree
+  (rpmlint: binary-or-shlib-defines-rpath)
+
+-------------------------------------------------------------------
+Wed Sep 23 02:51:39 UTC 2026 - Yunhe Guo <i@guoyunhe.me>
+
+- install appstream metainfo
+
+-------------------------------------------------------------------
+Sat Jun 27 01:12:21 UTC 2026 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to 0.8.136
+- ship desktop file, icons and licenses
+
+-------------------------------------------------------------------
+Wed Jan 13 08:58:43 UTC 2021 - Avindra Goolcharan <avindra@opensuse.org>
+
+- eject openssl, roms from sources
+- update to latest build
+- use configure + make macros
+
+-------------------------------------------------------------------
+Tue Dec  1 00:27:02 UTC 2020 - Avindra Goolcharan <avindra@opensuse.org>
+
+- package 0.4.0+ release

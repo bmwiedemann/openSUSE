@@ -1,0 +1,55 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/xemu-project/xemu.git</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="exclude">.github</param>
+    <param name="exclude">.gitlab-ci.d</param>
+    <param name="exclude">debian</param>
+
+    <!-- non-critical qemu files -->
+    <param name="exclude">roms</param>
+    <!-- <param name="exclude">pc-bios</param> -->
+    <!-- <param name="exclude">tests</param> -->
+
+    <!-- trim subprojects fat -->
+    <param name="exclude">subprojects/packagecache</param>
+    <param name="exclude">subprojects/imgui/examples</param>
+    <param name="exclude">subprojects/imgui/docs</param>
+    <param name="exclude">subprojects/json-3.2.0/test</param>
+    <param name="exclude">subprojects/json-3.2.0/benchmarks</param>
+    <param name="exclude">subprojects/json-3.2.0/doc</param>
+    <param name="exclude">subprojects/SDL3-3.4.10/test</param>
+    <param name="exclude">subprojects/SDL3-3.4.10/examples</param>
+    <param name="exclude">subprojects/glslang/Test</param>
+    <!--
+    	<param name="exclude">subprojects/curl-8.12.1/tests</param>
+    curl docs needed: ERROR: File docs/libcurl/libcurl.m4 does not exist.
+      <param name="exclude">subprojects/curl-8.12.1/docs</param> -->
+
+    <param name="exclude">subprojects/tomlplusplus/tests</param>
+    <param name="exclude">subprojects/tomlplusplus/docs</param>
+    <param name="exclude">subprojects/xxHash-0.8.3/tests</param>
+    <param name="exclude">subprojects/xxHash-0.8.3/doc</param>
+    <param name="exclude">subprojects/VulkanMemoryAllocator/docs</param>
+    <param name="exclude">subprojects/SPIRV-Reflect/tests</param>
+<!--
+ error: Cannot find source file:
+ subprojects/SPIRV-Reflect/examples/arg_parser.h
+
+    <param name="exclude">subprojects/SPIRV-Reflect/examples</param>
+-->
+
+    <param name="exclude">subprojects/syn-2.0.104/tests</param>
+    <param name="exclude">subprojects/dtc/tests</param>
+    <param name="exclude">subprojects/dtc/Documentation</param>
+
+
+    <param name="revision">fc24584ce88f0915ad7f04775bb7712c2e3f49ee</param>
+    <param name="version">0.8.136</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+</services>
