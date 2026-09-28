@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 25 04:50:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.97.9:
+  * Spruce up Makefile a little (#5347)
+  * Int 595 auth errors (#5259)
+  * Add version and comment_number lines to SharePoint source
+    metadata (#5348)
+  * make 401s for Basic auth verified false. (#5290)
+  * Update module github.com/gabriel-vasile/mimetype to v1.4.15
+    (#5283)
+  * Update module github.com/aymanbagabas/go-osc52 to v1.2.2
+    (#5252)
+  * ci: scope Smoke timeouts to trufflehog runs, not the build
+    (#5317)
+  * [SCAN-162] Add Err() to JobProgress and JobProgressRef (#5346)
+
+-------------------------------------------------------------------
 Thu Sep 24 04:55:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.97.8:

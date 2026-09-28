@@ -2815,4 +2815,12 @@ Note: The previously pushed version 3.89.0 never existed. This was a typo, which
     <comment>update to 3.97.8 (forwarded request 1380062 from ojkastl_buildservice)</comment>
     <requestid>1380222</requestid>
   </revision>
+  <revision rev="134" vrev="1">
+    <srcmd5>068ab0ba79192da97f290657b4024c49</srcmd5>
+    <version>3.97.9</version>
+    <time>1790585029</time>
+    <user>anag_factory</user>
+    <comment>update to 3.97.9 (forwarded request 1380296 from ojkastl_buildservice)</comment>
+    <requestid>1380703</requestid>
+  </revision>
 </revisionlist>
