@@ -1,0 +1,83 @@
+From ebf52a8491b5ab101166556834c7c9f153cf7fd8 Mon Sep 17 00:00:00 2001
+From: xingyaner <longfor2025@gmail.com>
+Date: Sat, 19 Sep 2026 22:27:15 +0800
+Subject: [PATCH] setup: make pkg_resources optional
+
+Signed-off-by: xingyaner <longfor2025@gmail.com>
+---
+ setup.py | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+Index: html5lib-1.1/setup.py
+===================================================================
+--- html5lib-1.1.orig/setup.py
++++ html5lib-1.1/setup.py
+@@ -6,9 +6,10 @@ import sys
+ 
+ from os.path import join, dirname
+ from setuptools import setup, find_packages, __version__ as setuptools_version
+-from pkg_resources import parse_version
+-
+-import pkg_resources
++try:
++    import pkg_resources
++except ImportError:
++    pkg_resources = None
+ 
+ try:
+     import _markerlib.markers
+@@ -50,7 +51,7 @@ if _markerlib and sys.version_info[0] ==
+ # recognise the markers needed by this setup.py
+ # Change this to setuptools 20.10.0 to support all markers.
+ if pkg_resources:
+-    if parse_version(setuptools_version) < parse_version('18.5'):
++    if (pkg_resources.parse_version(setuptools_version) < pkg_resources.parse_version('18.5')):
+         MarkerEvaluation = pkg_resources.MarkerEvaluation
+ 
+         del pkg_resources.parser
+Index: html5lib-1.1/html5lib/tests/conftest.py
+===================================================================
+--- html5lib-1.1.orig/html5lib/tests/conftest.py
++++ html5lib-1.1/html5lib/tests/conftest.py
+@@ -1,8 +1,9 @@
+ from __future__ import print_function
++import importlib.metadata
+ import os.path
+ import sys
+ 
+-import pkg_resources
++import packaging
+ import pytest
+ 
+ from .tree_construction import TreeConstructionFile
+@@ -59,21 +60,18 @@ def pytest_configure(config):
+                     if (line.strip() and
+                         not (line.startswith("-r") or
+                              line.startswith("#"))):
+-                        if ";" in line:
+-                            spec, marker = line.strip().split(";", 1)
+-                        else:
+-                            spec, marker = line.strip(), None
+-                        req = pkg_resources.Requirement.parse(spec)
+-                        if marker and not pkg_resources.evaluate_marker(marker):
++                        req = Requirement(line_str)
++                        if req.marker and not req.marker.evaluate():
+                             msgs.append("%s not available in this environment" % spec)
+                         else:
+                             try:
+-                                installed = pkg_resources.working_set.find(req)
+-                            except pkg_resources.VersionConflict:
+-                                msgs.append("Outdated version of %s installed, need %s" % (req.name, spec))
+-                            else:
+-                                if not installed:
+-                                    msgs.append("Need %s" % spec)
++                                installed_version = importlib.metadata.version(req.name)
++                                if installed_version not in req.specifier:
++                                    msgs.append(
++                                        "Outdated version of %s installed, need %s" % (req.name, spec)
++                                    )
++                            except importlib.metadata.PackageNotFoundError:
++                                msgs.append("Need %s" % spec)
+ 
+         # Check cElementTree
+         import xml.etree.ElementTree as ElementTree

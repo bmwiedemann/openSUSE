@@ -248,4 +248,15 @@
 - Use autosetup macro.</comment>
     <requestid>1320257</requestid>
   </revision>
+  <revision rev="30" vrev="9">
+    <srcmd5>e361d4e565283f4a790c5a2da86ee34f</srcmd5>
+    <version>1.1</version>
+    <time>1790584583</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch
+  * Do not use pkg_resources during setup or the testsuite.
+
+- Add pytest91.patch to fix yet another test failure</comment>
+    <requestid>1380285</requestid>
+  </revision>
 </revisionlist>

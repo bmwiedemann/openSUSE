@@ -1,7 +1,7 @@
 #
 # spec file for package python-html5lib
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,9 +34,13 @@ Patch2:         pytest74.patch
 Patch3:         support-python314.patch
 # PATCH-FIX-UPSTREAM Based on gh#html5lib/html5lib-python#590
 Patch4:         pytest9.patch
+# PATCH-FIX-UPSTREAM gh#html5lib/html5lib-python#600
+Patch5:         pytest91.patch
+# PATCH-FIX-UPSTREAM Based on gh#html5lib/html5lib-python#605
+Patch6:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module Genshi}
 BuildRequires:  %{python_module lxml}
-BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 7}
 BuildRequires:  %{python_module pytest-expect}

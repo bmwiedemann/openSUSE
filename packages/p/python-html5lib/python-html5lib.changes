@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:23:40 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch
+  * Do not use pkg_resources during setup or the testsuite.
+
+-------------------------------------------------------------------
+Wed Sep 23 09:21:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add pytest91.patch to fix yet another test failure
+
+-------------------------------------------------------------------
 Wed Nov 26 23:48:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch pytest9.patch:
