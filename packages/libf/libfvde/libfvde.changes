@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 27 10:32:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 20260923
+  * Rewrote parts of the option parser
+
+-------------------------------------------------------------------
 Sun May  4 08:19:04 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - build with fuse 3 (boo#1242079)
