@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:53:52 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.30:
+  * DRMBackend: serve headless sessions through a stand-in connector
+  * mode_list_file: add a persisted display mode list
+  * DRMBackend: size the headless virtual screen from the last display
+  * vblankmanager: catch up to the next vblank in one step
+  * DRMBackend: start headless when no connector is connected
+  * build: disable c++ modules
+  * steamcompmgr: only set the nested cursor from the mouse focus's Xwayland
+  * OpenVRBackend: hide the laser splat when the app hides its cursor
+  * OpenVRBackend: detach the cursor overlay when we stop driving it
+  * steamcompmgr: keep the legacy mangoapp stream for a hidden mangoapp
+  * Revert "main: prevent nested clients from escaping to host Wayland compositors"
+  * Fix undefined type, uint
+  * WaylandBackend: don't attach a buffer before the toplevel is reconfigured
+  * wlserver: fix build without pipewire enabled
+- Update Github URL to point to ValveSoftware repo
+
+-------------------------------------------------------------------
 Wed Sep 16 18:14:16 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.29:
