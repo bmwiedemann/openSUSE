@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-compressed-tensors
-Version:        0.18.0
+Version:        0.19.0
 Release:        0
 Summary:        Library for utilization of compressed safetensors of neural network models
 License:        Apache-2.0

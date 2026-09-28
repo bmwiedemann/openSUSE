@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Sep 26 20:52:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.19.0:
+  * BREAKING: GPTQ group/dynamic activation ordering has been removed.
+    actorder='group'/'dynamic' and actorder=True now raise a ValueError
+    instead of warning; use actorder='weight' instead
+  * Checkpoint conversion can now be scheduled across multiple GPUs by
+    measured free memory, using a profiler-based memory estimator
+  * Add a MagnitudeExpertPruner converter that structurally prunes MoE
+    experts by magnitude, and allow chaining converters in one pipeline
+  * Support decompressing models under distributed execution; fix dtype
+    mismatch and tensor shapes in the distributed offload caches, which
+    broke tied and multimodal models
+  * Fix an AttributeError in QuantizedKVCache for transformers 5 models
+    that read the KV cache structurally during calibration
+  * Observer resolution and defaulting moved to llm-compressor;
+    automatic qstrategy inference has been removed
+  * Faster model-free PTQ on meta tensors and a memoized calculate_range;
+    fix Triton cast_to_fp4 rounding for fp32/fp16 near FP4 boundaries
+  * Many more fixes and improvements; see upstream's release notes for
+    the full list
+
+-------------------------------------------------------------------
 Wed Aug 12 05:22:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.18.0:

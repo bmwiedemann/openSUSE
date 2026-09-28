@@ -47,4 +47,46 @@ architecture. The comment now says so.
 Verified on aarch64: build green, rpmlint 0 errors / 0 badness.</comment>
     <requestid>1370784</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>54686c471ff078769d0212ceb3f65131</srcmd5>
+    <version>0.19.0</version>
+    <time>1790585214</time>
+    <user>anag_factory</user>
+    <comment>Update python-compressed-tensors to 0.19.0.
+
+One user-visible breaking change: GPTQ group/dynamic activation ordering
+has been removed. actorder=&quot;group&quot;/&quot;dynamic&quot; and actorder=True now raise
+a ValueError instead of warning; actorder=&quot;weight&quot; is the replacement.
+Observer resolution and the automatic qstrategy inference have moved to
+llm-compressor, so qargs must be passed explicitly.
+
+Note on the release notes: they list &quot;transformers&gt;=5.16 is now required&quot;
+under Breaking Changes, but that is a @requires_version test-skip decorator
+(PR 848 modifies only tests/). The shipped src/ has no version gate and
+PKG-INFO still declares transformers&gt;=4.45.0, so the spec floor is
+unchanged.
+
+Runtime dependencies are unchanged: setup.py declares the same five
+(torch&gt;=2.10.0, transformers&gt;=4.45.0, pydantic&gt;=2.0, loguru, psutil) as
+0.18.0. accelerate remains an extra and the new dev/docs extras are not
+packaged. No subpackage change - python313/python314-compressed-tensors as
+before.
+
+Built natively on aarch64 against openSUSE:Factory:ARM. The
+openSUSE:Tumbleweed project is a kernel/qemu project with no python-torch
+or python-transformers, so it cannot resolve this package's build
+requires. rpmlint 0 errors / 0 badness, identical to the 0.18.0 baseline.
+%check remains disabled, pre-existing and GPU-dependent.
+
+Caveat for the reviewer: openSUSE:Factory currently has a
+python-huggingface-hub 2.0.0 / python-transformers collision that makes
+&quot;import transformers&quot; fail at runtime. compressed-tensors does not import
+transformers at build time, so this build is unaffected, but the resulting
+RPM is inert at runtime until python-transformers is fixed.
+
+No open bugs and no VUL- bugs against this package; no HF CVE in the
+crossed range reaches compressed-tensors' shipped code.
+</comment>
+    <requestid>1380864</requestid>
+  </revision>
 </revisionlist>
