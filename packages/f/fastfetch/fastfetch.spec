@@ -17,7 +17,7 @@
 
 
 Name:           fastfetch
-Version:        2.68.1
+Version:        2.69.0
 Release:        0
 Summary:        Neofetch-like tool written mostly in C
 License:        MIT
@@ -103,6 +103,9 @@ Zsh command-line completion support for %{name}.
 
 %install
 %cmake_install
+
+%check
+%ctest
 
 %files
 %license LICENSE

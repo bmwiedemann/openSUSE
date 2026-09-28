@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Sep 27 13:23:59 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to version 2.69.0:
+  * Global: fixes several issues found by AI
+  * GPU: adds more debug log
+  * TerminalShell: hardens version detection code
+  * Shell (Linux): supports more ksh variants
+  * TerminalShell: clears version buffer if detection failed
+  * Logo: adds option `logo.position: auto`
+  * CMake: adds a missing test
+  * CPU (Linux): fixes Snapdragon X2 series model detection
+
+-------------------------------------------------------------------
 Wed Sep 02 06:57:09 UTC 2026 - RN <R_Nik_C@proton.me>
 
 - Update to version 2.68.1:
