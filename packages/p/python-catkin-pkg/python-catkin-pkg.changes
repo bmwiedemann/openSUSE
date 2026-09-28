@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:04:47 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.1.1:
+  * Add '-s,--signoff' to prepare_release. #384
+  * Fixed VCS detection in git worktrees. #382
+  * Drop runtime dependency on setuptools. #381
+
+-------------------------------------------------------------------
 Mon Sep 29 10:21:00 UTC 2025 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.1.0:
