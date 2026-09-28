@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Sep 25 15:10:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.12.19:
+  * Add PyPy 3.11.16/3.12.14, update GraalPy build
+  * Backtick-format upload URLs in publish errors,
+    lazy build-backend hook imports preview
+- Refresh the vendored dependencies
+
+-------------------------------------------------------------------
 Wed Sep 23 15:28:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.12.18:
