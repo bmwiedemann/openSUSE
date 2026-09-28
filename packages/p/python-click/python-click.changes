@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 22 14:55:04 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 8.5.0
+  * Argument accepts a help parameter, and help output includes a
+    Positional arguments section
+  * confirm() and prompt() strip ANSI color and style codes from the
+    prompt when the output stream does not support them, matching echo()
+  * Fix test failures when using pytest >= 9.1
+  * Path with allow_dash=True no longer triggers a BytesWarning
+  * Add custom_version_option(), a --version option whose output is
+    produced by a callback
+  * style() and secho() no longer silently drop the 256-color index 0
+    (black) passed as fg or bg, and now validate color arguments.
+    Invalid colors raise a ValueError instead of a TypeError
+  * get_binary_stream() and get_text_stream() are deprecated and will be
+    removed in Click 9.0
+  * Deprecate CliRunner.isolated_filesystem()
+
+-------------------------------------------------------------------
 Wed Jul  8 12:17:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 8.4.2

@@ -27,7 +27,7 @@
 %{?pythons_for_pypi}
 %{?sle15_python_module_pythons}
 Name:           python-click%{psuffix}
-Version:        8.4.2
+Version:        8.5.0
 Release:        0
 Summary:        A wrapper around optparse for command line utilities
 License:        BSD-3-Clause
