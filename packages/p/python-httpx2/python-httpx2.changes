@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Sep 25 04:48:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.13.1:
+  * Calculate Content-Length from the remaining bytes when a file is passed
+    as content=, respecting its current position.
+  * Stop the sync WebSocket keepalive thread cleanly when a ping races with
+    connection shutdown.
+  * Make the --no-verify CLI flag disable TLS certificate verification and
+    add an explicit --verify counterpart.
+  * Avoid nested async generator finalization errors when streamed responses
+    are abandoned early.
+
+-------------------------------------------------------------------
 Wed Aug 26 02:15:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.12.0:

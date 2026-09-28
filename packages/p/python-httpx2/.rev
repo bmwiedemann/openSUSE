@@ -84,4 +84,20 @@
   * Ignore unsolicited and duplicate WebSocket Pong frames.</comment>
     <requestid>1373714</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>4320dd62eea30c4f5dc0fc366cec0886</srcmd5>
+    <version>2.13.1</version>
+    <time>1790584588</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.13.1:
+  * Calculate Content-Length from the remaining bytes when a file is passed
+    as content=, respecting its current position.
+  * Stop the sync WebSocket keepalive thread cleanly when a ping races with
+    connection shutdown.
+  * Make the --no-verify CLI flag disable TLS certificate verification and
+    add an explicit --verify counterpart.
+  * Avoid nested async generator finalization errors when streamed responses
+    are abandoned early.</comment>
+    <requestid>1380341</requestid>
+  </revision>
 </revisionlist>

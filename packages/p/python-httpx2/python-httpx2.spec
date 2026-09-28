@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-httpx2
-Version:        2.12.0
+Version:        2.13.1
 Release:        0
 Summary:        The next generation HTTP client
 License:        BSD-3-Clause
@@ -110,7 +110,11 @@ cd src/httpx2
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
-%pytest -k "not network"
+# Not network
+donttest="network"
+# Fails due to chardet 6 https://github.com/pydantic/httpx2/pull/1017
+donttest+=" or test_response_decode_text_using_autodetect or test_client_decode_text_using"
+%pytest -k "not ($donttest)"
 
 %post
 %python_install_alternative httpx2
