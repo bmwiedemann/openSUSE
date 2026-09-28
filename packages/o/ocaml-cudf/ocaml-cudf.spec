@@ -32,18 +32,16 @@ ExclusiveArch:  aarch64 ppc64le riscv64 s390x x86_64
 
 %define     pkg ocaml-cudf
 Name:           %pkg%nsuffix
-Version:        0.10
+Version:        0.11
 Release:        0
 %{?ocaml_preserve_bytecode}
 Summary:        Ocaml CUDF library
 License:        LGPL-3.0-or-later WITH OCaml-LGPL-linking-exception
 URL:            https://opam.ocaml.org/packages/cudf/
 Source0:        %pkg-%version.tar.xz
-Patch0:         allow_underscore.patch
 BuildRequires:  ocaml
 BuildRequires:  ocaml-dune
 BuildRequires:  ocaml-rpm-macros >= 20260707
-BuildRequires:  ocamlfind(extlib)
 
 %if "%build_flavor" == "testsuite"
 BuildRequires:  ocamlfind(cudf)

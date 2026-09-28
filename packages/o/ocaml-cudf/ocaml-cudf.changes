@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 17:17:17 UTC 2026 - ohering@suse.de
+
+- Update to version 0.11
+  see included ChangeLog file for details
+- remove obsolete allow_underscore.patch
+
+-------------------------------------------------------------------
 Tue Jul  7 07:07:07 UTC 2026 - ohering@suse.de
 
 - Remove 32bit architectures

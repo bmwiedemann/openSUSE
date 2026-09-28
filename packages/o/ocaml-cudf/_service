@@ -1,12 +1,12 @@
 <services>
   <service name="tar_scm" mode="manual">
     <param name="filename">ocaml-cudf</param>
-    <param name="revision">f55ef1feab551c524cf670bb1b9d5fb90d157b1a</param>
+    <param name="revision">0b8730826cb42db65959c76d059737970daea982</param>
     <param name="scm">git</param>
     <param name="submodules">disable</param>
     <param name="url">https://gitlab.com/irill/cudf.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
-    <param name="versionrewrite-pattern">[v]?([^\+]+)(.*)</param>
+    <param name="versionrewrite-pattern">[v]?([^-\+]+)(.*)</param>
     <param name="versionrewrite-replacement">\1</param>
   </service>
   <service name="recompress" mode="manual">
