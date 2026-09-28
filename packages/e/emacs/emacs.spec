@@ -259,6 +259,7 @@ Patch54:        0001-speedbar-window-now-run-speedbar-before-delete-hook-.patch
 Patch55:        0015-Change-native-comp-async-jobs-number-default-to-1.patch
 Patch56:        0016-Change-native-comp-async-report-warnings-errors-to-s.patch
 Patch57:        emacs-30.2-fix-zoom.patch
+Patch58:        bsc1282390.patch
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{expand: %%global include_info %(test -s /usr/share/info/info.info* && echo 0 || echo 1)}
@@ -433,6 +434,7 @@ and most assembler-like syntaxes.
 %patch -P55 -p1
 %patch -P56 -p1
 %patch -P57 -p1
+%patch -P58 -p1
 %patch -P1  -p0 -b .xauth
 %if %{with memmmap}
 %patch -P2  -p0 -b .glibc

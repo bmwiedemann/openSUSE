@@ -2430,4 +2430,15 @@ Now one could consider building emacs with gsettings support (both debian and fe
     <comment>1</comment>
     <requestid>1375534</requestid>
   </revision>
+  <revision rev="225" vrev="4">
+    <srcmd5>45bfa0e69c04cbc128a56e9c2f674e93</srcmd5>
+    <version>31.1</version>
+    <time>1790584624</time>
+    <user>anag_factory</user>
+    <comment>- Add patch bsc1282390.patch
+  * Fix bsc#1282390 (CVE-2026-96442): arbitrary code execution when
+    viewing or editing untrusted text files in modes other than
+    Emacs Lisp mode due to incomplete fix for older CVE</comment>
+    <requestid>1380658</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Sep 24 09:28:46 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bsc1282390.patch
+  * Fix bsc#1282390 (CVE-2026-96442): arbitrary code execution when
+    viewing or editing untrusted text files in modes other than
+    Emacs Lisp mode due to incomplete fix for older CVE
+
+-------------------------------------------------------------------
 Tue Sep  1 15:20:45 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Include libdir site-lisp for native modules in load-path by default. boo#1277717
