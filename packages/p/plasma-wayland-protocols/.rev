@@ -220,4 +220,14 @@
   * Hard reset since versions in plasma-window-management prior to 17 (forwarded request 1376909 from Vogtinator)</comment>
     <requestid>1377307</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cca2d0c97ee7604b192438f800ab6963</srcmd5>
+    <version>1.23.0</version>
+    <time>1790584619</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.23.0:
+  * Bump version to 1.23
+  * Add kde_output_device_mode_v2.release (forwarded request 1380344 from Vogtinator)</comment>
+    <requestid>1380359</requestid>
+  </revision>
 </revisionlist>
