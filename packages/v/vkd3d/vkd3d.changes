@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Aug 24 18:34:25 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
+
+- Update to version 2.1:
+  - libvkd3d-shader
+    New features and improvements for the HLSL source type:
+      A flaw has been fixed where nested function calls of the
+      form ‘g(f(1), f(2), f(3));’ would be compiled like ‘g(f(3),
+      f(3), f(3));’.
+      A new dead store elimination pass. Its primary purpose is to
+      eliminate unused uniforms in shader model 1-3 target
+      profiles, allowing vkd3d-shader to more closely match the
+      constant table layout produced by d3dcompiler/fxc.
+      Arithmetic operations on ‘half’ types in shader model 4 and
+      5 target profiles.
+      Stricter validation of allowed and required semantics on
+      shader inputs andoutputs. Notably:
+        User-defined semantics on outputs are explicitly rejected
+        in shader model 4 and 5 pixel shader target profiles.
+        These never worked, but would previously either be
+        rejected by the target, or produce invalid output.
+        Semantics on unused input and outputs are not validated in
+        shader model 1-3 target profiles. This matches the
+        behaviour of d3dcompiler/fxc. Shader model 1-3 vertex
+        shader target profiles require ‘position’ outputs.
+        Shader model 1-3 pixel shader target profiles require
+        ‘color’ outputs.
+    The effects (FX) target can output numeric states and shader
+    objects in ‘fx_2_0’ profiles.
+    New features and improvements for the legacy Direct3D
+    byte-code source type:
+      The ‘sub’ and ‘break_cmp’ instructions.
+      The ‘_x2’, ‘_x4’, ‘_x8’, ‘_d2’, ‘_d4’, and ‘_d8’ instruction
+      modifiers.
+      The ‘_bias’, ‘_x2’, ‘_bx2’, ‘negate’ (‘-register’), and
+      ‘invert’ (‘1 - register’) source operand modifiers.
+    The SPIR-V target supports floating-point to 64-bit signed and
+    unsigned integer conversion operations. These typically
+    originate from DXIL sources.
+    New features and improvements for the experimental OpenGL
+    Shading Language target type:
+      Indirect addressing of shader input registers.
+      Load and store operations on raw and structured unordered
+      access views and thread group shared memory.
+      Atomic compare/exchange and integer addition operations.
+      Bit scanning and counting operations.
+      Barrier operations.
+      ‘SV_GroupID’, ‘SV_GroupIndex’, and ‘SV_GroupThreadID’
+      inputs.
+    New interfaces:
+      The
+      VKD3D_SHADER_COMPILE_OPTION_BACKCOMPAT_ALLOW_HALF_GLOBALS
+      flag specifies that global variables with ‘half’ types in
+      HLSL sources should be compiled as if they had the
+      corresponding ‘float’ types.
+  - libvkd3d-utils
+    New shader reflection features and improvements:
+      The GetDesc() method of the ID3D12ShaderReflection interface
+      now returns all information contained in the
+      D3D12_SHADER_DESC structure.
+      The following methods of the ID3D12ShaderReflection
+      interface are implemented:
+        GetBitwiseInstructionCount()
+        GetConstantBufferByName()
+        GetConversionInstructionCount()
+        GetGSInputPrimitive()
+        GetMovInstructionCount()
+        GetMovcInstructionCount()
+        GetResourceBindingDescByName()
+        GetThreadGroupSize()
+        GetVariableByName()
+        IsSampleFrequencyShader()
+      The GetVariableByName() method of the
+      ID3D12ShaderReflectionConstantBuffer interface is
+      implemented.
+      The following methods of the ID3D12ShaderReflectionType
+      interface are implemented:
+        GetMemberTypeByName()
+        GetMemberTypeName()
+        IsEqual()
+      The ID3D10ShaderReflection, ID3D10ShaderReflection1, and
+      ID3D11ShaderReflection interfaces are implemented. Where
+      applicable, everything above also applies to the version 10,
+      10.1, and 11 equivalents of the methods mentioned above.
+    When the D3DCOMPILE_ENABLE_BACKWARDS_COMPATIBILITY flag is
+    specified, D3DCompile2VKD3D() will consider global variables
+    with ‘half’ types to have the corresponding ‘float’ types.
+    Without this flag, global variables with ‘half’ types are not
+    allowed. This change also applies to D3DCompile() and
+    D3DCompile2(), which behave like D3DCompile2VKD3D() called
+    with a ‘compiler_version’ of 47.
+    New interfaces:
+      D3DPreprocessVKD3D() is a variant of D3DPreprocess() that
+      allows targeting the behaviour of a specific d3dcompiler
+      version.
+      D3DReflectVKD3D() is a variant of D3DReflect() that allows
+      targeting the behaviour of a specific d3dcompiler version.
+      D3D10ReflectShader() is equivalent to calling
+      D3DReflectVKD3D() with an ‘iid’ of
+      ‘IID_ID3D10ShaderReflection’ and a ‘version’ of 0.
+  - vkd3d-compiler
+    The ‘--allow-half-globals’ option specifies that global
+    variables with ‘half’ types in HLSL sources should be compiled
+    as if they had the corresponding ‘float’ types.
+    The Windows build of vkd3d-compiler will default to colour
+    output when it's able to determine that the output is a device
+    capable of interpreting virtual terminal sequences.
+  - vkd3d-dxbc
+    The ‘--input’ option specifies the input to use for subsequent
+    ‘--update’ options.
+    The ‘--update’ option specifies a section to update with the
+    contents of the current input. For example, ‘vkd3d-dxbc -i
+    priv.bin -u t:PRIV in.dxbc > out.dxbc’ would replace the
+    private data section of ‘in.dxbc’ with the contents of
+    ‘priv.bin’, and write the result to ‘out.dxbc’.
+    The Windows build of vkd3d-dxbc will default to colour output
+    when it's able to determine that the output is a device
+    capable of interpreting virtual terminal sequences.
+
+-------------------------------------------------------------------
 Thu May 21 21:04:09 UTC 2026 - Simon Vogl <simon.vogl@gmx.net>
 
 - Update to version 2.0:
