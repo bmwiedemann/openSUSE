@@ -135,4 +135,12 @@ openSUSE_Tumbleweed aarch64&quot;: green, %check ok, rpmlint 0 errors /
     <comment>Fix CVE-2026-91986 (boo#1281749): backport upstream gix-transport commit 3e7f1857 rejecting NUL/LF in git-daemon connect requests (GHSA-rc7h-wp5f-w3g5).</comment>
     <requestid>1379942</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ad5e31ea20ea705fa93989e33c6aec05</srcmd5>
+    <version>0.59.0</version>
+    <time>1790585012</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.59.0: ships gix-transport 0.60.0 fixing CVE-2026-91986 natively (boo#1281749, drop backport); MSRV 1.88.</comment>
+    <requestid>1380697</requestid>
+  </revision>
 </revisionlist>

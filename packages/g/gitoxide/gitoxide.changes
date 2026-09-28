@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 25 14:20:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.59.0:
+  * Ships gix-transport 0.60.0, which rejects NUL/LF in
+    git-daemon connect requests: drops the backported fix
+    for CVE-2026-91986 (boo#1281749), now fixed upstream
+    * gix-transport-reject-control-bytes.patch
+  * New gix editor command with Git-compatible selection
+  * Raise the Rust floor to 1.88 (upstream MSRV, dua-core)
+- Refresh the vendored dependencies. The linked graph
+  still carries MPL-2.0 only (uluru, option-ext); the
+  License tag is unchanged.
+
+-------------------------------------------------------------------
 Wed Sep 23 09:33:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-91986: gix-transport CR/LF/NUL injection into

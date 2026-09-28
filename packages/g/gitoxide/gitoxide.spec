@@ -17,13 +17,13 @@
 
 
 Name:           gitoxide
-Version:        0.58.0
+Version:        0.59.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
 # Legal-Review-Notice: gitoxide itself is "Apache-2.0 OR MIT", but the
 # binaries statically link the vendored Rust dependencies. Derived on this
 # re-vendor with "cargo tree --offline -p gitoxide -e normal" over the
-# vendored tree (538 crates, 304 in the linked graph): the only copyleft
+# vendored tree (531 crates, 298 in the linked graph): the only copyleft
 # licence in the graph is MPL-2.0, from two crates - uluru, an LRU cache
 # pulled in via gix-pack (itself reached through gitoxide-core, gix and
 # gix-odb), and option-ext, reached through directories and dirs-sys,
@@ -38,13 +38,11 @@ License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/GitoxideLabs/gitoxide
 Source0:        https://github.com/GitoxideLabs/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# PATCH-FIX-UPSTREAM gix-transport-reject-control-bytes.patch GHSA-rc7h-wp5f-w3g5 (upstream commit 3e7f1857) -- reject NUL/LF in git-daemon connect request (CVE-2026-91986, boo#1281749)
-Patch0:         gix-transport-reject-control-bytes.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
-# Upstream Cargo.toml: rust-version = "1.85" (edition 2024)
-BuildRequires:  rust >= 1.85
+# Upstream Cargo.toml: rust-version = "1.88" (edition 2024)
+BuildRequires:  rust >= 1.88
 BuildRequires:  pkgconfig(openssl)
 ExclusiveArch:  %{rust_arches}
 
