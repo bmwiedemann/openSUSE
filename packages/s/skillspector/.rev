@@ -173,4 +173,12 @@ pywhatwgurl 0.1.2 parses two invalid punycode hosts upstream's pinned
     <comment>Update to version 2.11.2</comment>
     <requestid>1376832</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ec93095ae1b7241f649de27676bc71c7</srcmd5>
+    <version>2.12.0</version>
+    <time>1790585056</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.12.0.</comment>
+    <requestid>1380721</requestid>
+  </revision>
 </revisionlist>

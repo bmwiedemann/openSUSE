@@ -21,13 +21,17 @@
 # %%{primary_python} so it stays correct as the primary interpreter moves.
 %define pythons %{primary_python}
 Name:           skillspector
-Version:        2.11.2
+Version:        2.12.0
 Release:        0
 Summary:        Security scanner for AI agent skills
 License:        Apache-2.0
 URL:            https://github.com/NVIDIA/skillspector
 # Official GitHub release sdist (not on PyPI; not a git auto-archive).
 Source:         https://github.com/NVIDIA/skillspector/releases/download/v%{version}/%{name}-%{version}.tar.gz
+# Upstream test spawns a fresh interpreter whose cold import of the
+# langchain cone exceeds the hardcoded 5s child timeout on constrained
+# builders; 30s still bounds a regressed blocking open. (upstream-test-only)
+Patch0:         skillspector-fifo-timeout.patch
 # Test suite - exercises the full langchain/langgraph runtime cone
 BuildRequires:  %{python_module PyYAML >= 6.0.1}
 BuildRequires:  %{python_module anthropic}

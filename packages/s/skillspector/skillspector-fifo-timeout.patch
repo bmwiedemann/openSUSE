@@ -1,0 +1,14 @@
+--- a/tests/unit/test_mcp_registry.py
++++ b/tests/unit/test_mcp_registry.py
+@@ -494,7 +494,10 @@
+         ],
+         capture_output=True,
+         text=True,
+-        timeout=5,
++        # Cold import of the langchain cone in a fresh interpreter takes
++        # >5s on constrained builders (e.g. aarch64 chroots); the timeout
++        # only bounds a regressed blocking open, not the import itself.
++        timeout=30,
+         check=False,
+     )
+     assert result.returncode == 0, result.stdout + result.stderr

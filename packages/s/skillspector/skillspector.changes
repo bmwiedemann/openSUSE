@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Sep 25 19:24:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add skillspector-fifo-timeout.patch: raise the fifo-swap
+  regression test child timeout 5s -> 30s. The cold import of
+  the langchain cone in a fresh interpreter alone takes ~8s
+  on aarch64 builders, so the test killed its own child
+  during import (returncode -9); the FIFO guard itself is
+  correct. Upstream-test-only change.
+
+-------------------------------------------------------------------
+Fri Sep 25 18:23:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.12.0:
+  * Opt-in CLI gate for any active finding,
+    configurable static-analysis allowance
+  * OpenCode integrations, Gemini 3.5 Flash registry
+    guidance, interactive scan progress
+  * TP4 analysis of executable Markdown fences
+  * Stronger local input and report handling, wider
+    detection of reflective Python access and shipped
+    bytecode, retries for transient provider failures
+  * Missing references distinguished from ambiguous
+    MCP installation blockers
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.11.2:
