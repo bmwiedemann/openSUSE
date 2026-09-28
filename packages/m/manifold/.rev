@@ -138,4 +138,14 @@ if blender 4.5.1 is still in staging. this can be merged into the same staging.<
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1377874</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>092c59106b0c7e1158fc9cddab1f8569</srcmd5>
+    <version>3.5.4</version>
+    <time>1790584944</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.4
+  - Fixes WASM bindings fail under a Content-Security-Policy
+    without 'unsafe-eval' by @Felipe-UXD in #1851</comment>
+    <requestid>1380663</requestid>
+  </revision>
 </revisionlist>
