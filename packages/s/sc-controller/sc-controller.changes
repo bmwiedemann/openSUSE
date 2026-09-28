@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Tue Sep 22 15:37:15 UTC 2026 - Jannik Seiler <seil0@mosad.xyz>
+
+- Update to 1.0.4
+  * Fix joysticks not being able to reach where they should on some devices - #162
+  * Desktop/icon files were fixed up to follow modern standards
+  * AppImage support restored for Resolute images - kudos to @Samueru-sama for helping out
+- Update to 1.0.3
+  * Fix left stick press not registering for Steam Controller (2015) over BT
+  * Fix buffer overflow bug for Steam Controller (2015) over BT
+  * AppImage support restored for Noble images
+- Update to 1.0.2
+  * Fix X/Y being flipped in Action Editor
+  * Fix the emulated X360 output for X and Y being flipped in default profiles
+  * Fix minimizing to tray on startup
+  * Fix directional keys being unavailable in the Action Editor menu
+  * Fix Action Editor misaligned image/offset cursor positioning
+- Update to 1.0.1
+  * Enable Steam Controller (2026) support by default
+  * Fixed controller inputs being duplicated for DS4/DualSense under Bluetooth hidraw
+- Update to 1.0.0
+  * SC Controller now uses GTK 4!
+  * System tray was re-implemented using pure D-Bus
+  * Everything from v0.7.3 which was released at the same time, pasted here for your convenience:
+    * Fixed up a regression from v0.7.0 which resulted in the UI enabling the wrong buttons for 
+      controllers registered pre-0.7.0 - saved device profiles will now apply and save back migrations 
+      upon being loaded
+    * Fix most icons being poorly visible under dark mode
+    * Fix being able to use clicks other than left click to configure the SVG buttons
+    * Add support for DualShock 4 (v1) and DualSense Edge in the udev rules
+    * Fix DualSense gyro being inverted for yaw and roll in some cases
+    * A bunch of other minor bug fixes
+- Update to 0.7.3
+  * Fixed up a regression from v0.7.0 which resulted in the UI enabling the wrong buttons 
+    for controllers registered pre-0.7.0 - saved device profiles will now apply and save 
+    back migrations upon being loaded
+  * Fix most icons being poorly visible under dark mode
+  * Fix being able to use clicks other than left click to configure the SVG buttons
+  * Add support for DualShock 4 (v1) and DualSense Edge in the udev rules
+  * Fix DualSense gyro being inverted for yaw and roll in some cases
+  * A bunch of other minor bug fixes
+  * GTK 3 deprecation fixes
+- Added fix-libgtk4-layer-shell-so-name.patch to fix wrong .so name in sc-controller 
+
+-------------------------------------------------------------------
 Tue Sep 08 00:48:00 UTC 2026 - Armin Seuchter <a.seuchter@gmail.com>
 
 - Update to 0.7.2
