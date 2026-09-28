@@ -62,4 +62,31 @@ entirely, which this update does not touch.</comment>
     <comment>Update to 0.20.0: adds get_component_defaults tool, reset_qa_contact/reset_assigned_to in update_bug_fields, and a --tool-search BM25 meta-tool mode; fastmcp floor raised to 3.4.7 (already in Factory). Local aarch64 build green, %check import test passes, rpmlint clean.</comment>
     <requestid>1371682</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>9c6ae130c66e84ce0d0bc972671fda1d</srcmd5>
+    <version>0.21.0</version>
+    <time>1790585162</time>
+    <user>anag_factory</user>
+    <comment>Update mcp-bugzilla to 0.21.0.
+
+All call sites now route through a single request helper, so callers see
+Bugzilla's own diagnostic (for example an invalid field name) instead of
+a bare &quot;400 Bad Request&quot;, and the request URL - which carries the API
+key - is no longer re-exposed through httpx exception chaining.
+
+Client-visible API changes: the bug id parameter is now bug_id in
+bug_history, bug_comments and summarize_bug_prompt, and bug_info takes
+bug_ids as a list rather than a set. Clients must update those calls.
+
+Upstream pins fastmcp==4.0.3; the spec keeps a &quot;&gt;= 3.4.7&quot; floor,
+verified against Factory's 3.4.7 including the --tool-search BM25
+transform import, which is function-local rather than module-level.
+
+Green natively on aarch64 (rpmlint 0 errors, 0 warnings, 0 badness;
+%check import smoke test) and on the server's Tumbleweed aarch64 /
+x86_64 / i586, Slowroll, ppc64le and armv7l targets. No CVE in the
+crossed range and no Bugzilla report references this package.
+</comment>
+    <requestid>1380832</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:49:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.21.0:
+  * Surface Bugzilla's own error message (for example an invalid
+    field name) to the caller instead of the generic httpx status
+    text, so a client can correct its own query
+  * Stop leaking the request URL, which carries the API key, into
+    error messages and tracebacks
+  * Rename the bug id parameter to bug_id in bug_history,
+    bug_comments and summarize_bug_prompt
+  * bug_info now takes bug_ids as a list instead of a set, for
+    better JSON schema compatibility
+  * Expose the is_private field in bug_comments output
+  * add_comment is no longer annotated as destructive, matching
+    the other append-only write tools
+- Keep fastmcp as a versioned floor instead of upstream's exact
+  pin on 4.0.3; the fastmcp API the server uses is unchanged
+
+-------------------------------------------------------------------
 Tue Aug 18 07:40:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.20.0:

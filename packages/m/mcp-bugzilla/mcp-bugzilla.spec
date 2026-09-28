@@ -21,7 +21,7 @@
 # not a multi-flavour module.
 %define pythons %{primary_python}
 Name:           mcp-bugzilla
-Version:        0.20.0
+Version:        0.21.0
 Release:        0
 Summary:        Model Context Protocol server for Bugzilla
 License:        Apache-2.0
@@ -48,6 +48,9 @@ so MCP-capable clients can search, read and act on Bugzilla bugs.
 
 %prep
 %autosetup -p1 -n mcp_bugzilla-%{version}
+# upstream pins fastmcp exactly (dependabot); the API surface it uses is
+# unchanged, so keep a floor instead of the pin
+sed -i -E 's/"fastmcp==[0-9.]+"/"fastmcp>=3.4.7"/' pyproject.toml
 
 %build
 %pyproject_wheel
