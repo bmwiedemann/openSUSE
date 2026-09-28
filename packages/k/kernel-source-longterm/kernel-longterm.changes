@@ -1,4 +1,741 @@
 -------------------------------------------------------------------
+Fri Sep 25 21:31:29 CEST 2026 - rfrohl@suse.com
+
+- Update config files for v6.18.54.
+- commit 02a2558
+
+-------------------------------------------------------------------
+Fri Sep 25 17:11:15 CEST 2026 - rfrohl@suse.com
+
+- Delete
+  patches.suse/perf-annotate-adapt-to-new-hist_entry__tui_annotate-defini.patch.
+- commit b8fd8ee
+
+-------------------------------------------------------------------
+Fri Sep 25 17:09:50 CEST 2026 - rfrohl@suse.com
+
+- Linux 6.18.54 (bsc#1258210).
+- Revert "perf annotate: Fix build with NO_SLANG=1" (bsc#1258210).
+- landlock: Fix TCP Fast Open connection bypass (bsc#1258210).
+- selftests/landlock: Add test for TCP fast open (bsc#1258210).
+- selftests/landlock: Add missing connect(minimal AF_UNSPEC)
+  test (bsc#1258210).
+- selftests/landlock: Fix socket file descriptor leaks in audit
+  helpers (bsc#1258210).
+- selftests/landlock: Increase default audit socket timeout
+  (bsc#1258210).
+- selftests/landlock: Explicitly disable audit in teardowns
+  (bsc#1258210).
+- selftests/landlock: Add tests for access through disconnected
+  paths (bsc#1258210).
+- selftests/landlock: Add disconnected leafs and branch test
+  suites (bsc#1258210).
+- selftests/landlock: Use an actual chardev for MAKE_CHAR audit
+  test (bsc#1258210).
+- selftests/landlock: Add tests for whiteout object creation
+  (bsc#1258210).
+- selftests/landlock: Add audit test for whiteout object creation
+  (bsc#1258210).
+- sunvdc: fix -EIO issue due to lack of retries (bsc#1258210).
+- media: video-i2c: fix buffer queue ordering (bsc#1258210).
+- ipv6: Select best matching nexthop object in fib6_table_lookup()
+  (bsc#1258210).
+- ipv6: Honor oif when choosing nexthop for locally generated
+  traffic (bsc#1258210).
+- xfrm: iptfs: fix stack OOB read in iptfs_skb_reset_frag_walk()
+  (bsc#1258210).
+- xfrm: iptfs: fix runt reassembly panic from short inner tot_len
+  (bsc#1258210).
+- xfrm: avoid RCU warnings around the per-netns netlink socket
+  (bsc#1258210).
+- xfrm: fix compat ALLOCSPI request use-after-free (bsc#1258210).
+- xfrm: add missing rcu_read_lock(), skb_dst_force() and dev_hold()
+  for xfrm_trans_reinject() (bsc#1258210).
+- esp: downgrade zerocopy managed frags before mutating skb frags
+  (bsc#1258210).
+- ARM: socfpga: select the PL310 erratum 753970 workaround
+  (bsc#1258210).
+- RDMA/siw: Clear association under lock if siw_qp_modify fails
+  in siw_accept (bsc#1258210).
+- RDMA/rxe: validate access flags before swapping the MR's PD
+  (bsc#1258210).
+- RDMA/rxe: Fix integer overflow in mr_check_range() leading to
+  OOB access (bsc#1258210).
+- firmware: arm_scpi: reject DVFS OPP count above MAX_DVFS_OPPS
+  (bsc#1258210).
+- clk: scpi: bound-check DVFS index in scpi_dvfs_recalc_rate
+  (bsc#1258210).
+- RDMA/rxe: Restore HMM_PFN_WRITE check in ODP write paths
+  (bsc#1258210).
+- RDMA/rxe: insert mcg into mcg_tree only after rxe_mcast_add()
+  succeeds (bsc#1258210).
+- RDMA/core: Reject unregistering netdevs in ib_get_eth_speed
+  (bsc#1258210).
+- power: sequencing: Fix build issue with COMPILE_TEST
+  (bsc#1258210).
+- arm64: dts: renesas: r9a09g057: Switch GBETH TX queue scheduling
+  to WRR (bsc#1258210).
+- arm64: dts: renesas: r9a09g056: Switch GBETH TX queue scheduling
+  to WRR (bsc#1258210).
+- arm64: dts: renesas: r9a09g047: Switch GBETH TX queue scheduling
+  to WRR (bsc#1258210).
+- IB/iser: reject a remote invalidation of an unregistered
+  direction (bsc#1258210).
+- IB/isert: wait for deferred control PDU completions before
+  releasing the connection (bsc#1258210).
+- RDMA/bnxt_re: check create_singlethread_workqueue() in DCB setup
+  (bsc#1258210).
+- RDMA/mad: Fix receive buffer leak when PKey enforcement fails
+  (bsc#1258210).
+- RDMA/irdma: Enforce local fence for IB_WR_REG_MR (bsc#1258210).
+- RDMA/rtrs-clt: Fix CQ pool leak when connect is interrupted
+  (bsc#1258210).
+- dmaengine: sprd: Fix runtime PM reference leak in probe
+  (bsc#1258210).
+- wifi: mac80211: include TIM bitmap control for buffered S1G
+  mcast traffic (bsc#1258210).
+- wifi: virt_wifi: free skb when disconnected (bsc#1258210).
+- wifi: mwifiex: fix IRQ leak using wrong index in MSI-X error
+  path (bsc#1258210).
+- wifi: brcmfmac: cyw: pass PMKID to firmware if present
+  (bsc#1258210).
+- wifi: libipw: reject too-short beacon and probe responses
+  (bsc#1258210).
+- wifi: libipw: reject too-short association responses
+  (bsc#1258210).
+- IB/IPoIB: Avoid restoring OPER_UP after multicast flush
+  (bsc#1258210).
+- wifi: cfg80211: don't get the radio mask for netdev-less wdevs
+  (bsc#1258210).
+- wifi: cfg80211: check IP header size in cfg80211_classify8021d()
+  (bsc#1258210).
+- soundwire: cadence_master: wait and cancel cdns->work before
+  clock stop (bsc#1258210).
+- MIPS: Octeon: apply USB FDT fixups also when USB is modular
+  (bsc#1258210).
+- dma-coherent: report a failed reserved memory assignment
+  (bsc#1258210).
+- dmaengine: Fix device kref underflow in dma_chan_put()
+  (bsc#1258210).
+- dmaengine: fix use-after-free in dma_chan_put() and
+  dma_release_channel() (bsc#1258210).
+- dmaengine: wait for RCU readers before releasing dma_device
+  (bsc#1258210).
+- wifi: cfg80211: don't free driver-owned scan requests
+  (bsc#1258210).
+- wifi: cfg80211: only group hidden BSSes with beacon entries
+  (bsc#1258210).
+- wifi: cfg80211: don't filter by BSS type when removing stale
+  entries (bsc#1258210).
+- wifi: mac80211: don't start a ROC while scanning (bsc#1258210).
+- wifi: mac80211: don't warn when an IBSS has no channel to scan
+  (bsc#1258210).
+- wifi: mac80211: don't offload TC setup on AP_VLAN interfaces
+  (bsc#1258210).
+- wifi: mac80211: suppress chanctx warning for debugfs reset
+  (bsc#1258210).
+- wifi: mac80211: abort chanswitch when leaving a mesh
+  (bsc#1258210).
+- wifi: mac80211: reset state when starting AP fails (bsc#1258210).
+- wifi: cfg80211: restore netns_immutable on failures
+  (bsc#1258210).
+- wifi: cfg80211: undo netns switch if renaming the wiphy fails
+  (bsc#1258210).
+- wifi: mac80211: unlist vifs when their netdev is unregistered
+  (bsc#1258210).
+- wifi: cfg80211: get the wiphy out of a dying network namespace
+  (bsc#1258210).
+- wifi: mac80211_hwsim: don't hand frames to mac80211 while
+  stopping (bsc#1258210).
+- wifi: mac80211: don't allow injecting frames wider than the
+  chanctx (bsc#1258210).
+- wifi: mac80211: reset the AP_VLAN tailroom counter on ifdown
+  (bsc#1258210).
+- wifi: mac80211: require a peer station for TDLS setup confirm
+  (bsc#1258210).
+- wifi: mac80211: don't allow link changes when iface is down
+  (bsc#1258210).
+- wifi: mac80211: don't RCU-dereference the mesh CSA settings
+  we just set (bsc#1258210).
+- wifi: mac80211: don't access the TSF of a down interface
+  (bsc#1258210).
+- wifi: mac80211: add HE 6 GHz capability in the scan elems len
+  (bsc#1258210).
+- wifi: mac80211: mesh: reset the CSA state when leaving
+  (bsc#1258210).
+- wifi: mac80211: mesh: release the channel if start fails
+  (bsc#1258210).
+- wifi: mac80211: set up the TX info early to fix failure paths
+  (bsc#1258210).
+- mm: memblock: show all region flags in debugfs (bsc#1258210).
+- scsi: qla2xxx: Fix the ql2xfc2target parameter description
+  (bsc#1258210).
+- dmaengine: xilinx_dma: Fix hardware buffer descriptor reuse
+  order (bsc#1258210).
+- dmaengine: xilinx_dma: Fix hardware buffer descriptor chain
+  after cyclic DMA (bsc#1258210).
+- RDMA/efa: Keep admin queues alive while IRQ is registered
+  (bsc#1258210).
+- RDMA/efa: Keep EQ resources alive while IRQ is registered
+  (bsc#1258210).
+- RDMA/siw: Bound fragmented header copies by the remaining length
+  (bsc#1258210).
+- drm/msm: Fix the separate_gpu_kms parameter description
+  (bsc#1258210).
+- drm/msm/adreno: Fix the skip_gpu parameter description
+  (bsc#1258210).
+- netfilter: nft_nat: fully initialise new_addr in netmap setup
+  (bsc#1258210).
+- netfilter: nf_tables: fix device name and prefix match in hook
+  lookup (bsc#1258210).
+- netfilter: nf_nat: unregister and release hooks on error
+  (bsc#1258210).
+- netfilter: flowtable: hold reference on ct until flow is released
+  (bsc#1258210).
+- perf/arm-cmn: Fix wp_dev_sel2 setting for multi-DTM
+  configurations (bsc#1258210).
+- arm64: hibernate: clone only the linear map that exists at
+  runtime (bsc#1258210).
+- drm: Fix drm_pending_vblank_event leak in error path for
+  out_fence_ptr (bsc#1258210).
+- keys: fix lost wakeup when reaping a dead key type (bsc#1258210).
+- neighbour: Enforce min/max to NDTPA_INTERVAL_PROBE_TIME_MS
+  (bsc#1258210).
+- neighbour: Convert RTM_GETNEIGHTBL to RCU (bsc#1258210).
+- neighbour: Add missing RCU annotation for neightbl_dump_info()
+  (bsc#1258210).
+- neighbour: Skip default parms when resumed in
+  neightbl_dump_info() (bsc#1258210).
+- ALSA: bcd2000: Fix race between rawmidi and disconnect
+  (bsc#1258210).
+- phy: mediatek: phy-mtk-hdmi-mt8195: Fix PLL calc divisor overflow
+  (bsc#1258210).
+- phy: mediatek: phy-mtk-hdmi-mt8195: Fix TMDS clk bit ratio
+  setting (bsc#1258210).
+- ALSA: pcm: set timer->private_data before registering the PCM
+  timer (bsc#1258210).
+- drm/msm/dp: skip PUSH_IDLE when the link was never enabled
+  (bsc#1258210).
+- drm/msm/dp: fix link bandwidth check when wide bus is enabled
+  (bsc#1258210).
+- ASoC: Rename snd_soc_dai_link_ch_map.ch_mask to cpu_ch_mask
+  (bsc#1258210).
+- ASoC: Add codec_ch_mask to snd_soc_dai_link_ch_map (bsc#1258210).
+- ASoC: soc-pcm: Apply snd_soc_dai_link_ch_map.codec_ch_mask to
+  codec params (bsc#1258210).
+- spi: spi-qpic-snand: avoid writing QPIC_EBI2_ECC_BUF_CFG register
+  (bsc#1258210).
+- Input: trackpoint - fix the inertia attribute name in the ABI
+  document (bsc#1258210).
+- gpio: virtuser: skip free_irq when no IRQ is installed
+  (bsc#1258210).
+- ALSA: usb: 6fire: Avoid embedded URBs (bsc#1258210).
+- ALSA: 6fire: fix OOB write from device-reported iso length
+  (bsc#1258210).
+- wifi: virt_wifi: don't transfer operstate before register
+  (bsc#1258210).
+- drm/xe/mmio_gem: forbid VMA split (bsc#1258210).
+- drm/xe/mmio_gem: use write-back mapping for dummy page
+  (bsc#1258210).
+- drm/xe/mmio_gem: Revoke drm_vma_node on xe_mmio_gem destroy
+  (bsc#1258210).
+- drm/xe/shrinker: Return the freed page count through a parameter
+  (bsc#1258210).
+- drm/vc4: Use managed KMS polling to fix UAF on unbind
+  (bsc#1258210).
+- ALSA: hda: trace PCM open only after assigning a stream
+  (bsc#1258210).
+- wifi: ath11k: cleanup arsta in ath11k_mac_peer_cleanup_all()
+  (bsc#1258210).
+- btrfs: tree-checker: print dev extent offset in error message
+  (bsc#1258210).
+- drm/msm/dsi: round the byte clock rate after reparenting to
+  the PHY PLL (bsc#1258210).
+- seg6: set IPSKB_L3SLAVE from IP6SKB_L3SLAVE on IPIP decapsulation
+  (bsc#1258210).
+- net: bcmgenet: convert RX path to page_pool (bsc#1258210).
+- net: bcmgenet: restore the hardware filters on open
+  (bsc#1258210).
+- ipv4: icmp: reject RTN_UNREACHABLE input routes in
+  icmp_route_lookup (bsc#1258210).
+- net: fddi: skfp: fix NULL deref when setting the MAC address
+  while down (bsc#1258210).
+- wifi: brcmfmac: fix lost 802.1x TX completion wakeup
+  (bsc#1258210).
+- net: bridge: mst: move switchdev call outside rcu (bsc#1258210).
+- tcp: Don't call skb_clone_and_charge_r() for close()d listener
+  in tcp_v6_do_rcv() (bsc#1258210).
+- tcp: do not let tcp_rmem be set below 4096 (bsc#1258210).
+- ksmbd: return buffer overflow for partial filesystem info
+  (bsc#1258210).
+- ksmbd: fix partial file information responses (bsc#1258210).
+- ksmbd: keep compound responses on query info errors
+  (bsc#1258210).
+- dmaengine: mmp_pdma: fix wrong sg length in
+  mmp_pdma_prep_slave_sg() (bsc#1258210).
+- Bluetooth: hci_core: Fix queuing tx_work after workqueue is
+  drained (bsc#1258210).
+- Bluetooth: btintel_pcie: validate TX skb length in send_sync
+  (bsc#1258210).
+- Bluetooth: coredump: Quiesce dump work on unregister
+  (bsc#1258210).
+- Bluetooth: hci_qca: Refactor HFP hardware offload capability
+  handling (bsc#1258210).
+- Bluetooth: qca: Refactor code on the basis of chipset names
+  (bsc#1258210).
+- Bluetooth: qca: enable pwrseq support for WCN39xx devices
+  (bsc#1258210).
+- Bluetooth: hci_qca: Do not write to the serial port after it
+  is closed (bsc#1258210).
+- Bluetooth: ISO: Fix parent socket leak in iso_conn_ready()
+  (bsc#1258210).
+- Bluetooth: ISO: set BT_LISTEN before requesting a BIG sync
+  (bsc#1258210).
+- Bluetooth: btmtk: fix wrong status for short WMT FUNC_CTRL
+  events (bsc#1258210).
+- Bluetooth: btmtksdio: Fix PM runtime reference leak in shutdown
+  (bsc#1258210).
+- Bluetooth: btintel_pcie: fix off-by-one bounds check in RX
+  submit (bsc#1258210).
+- Bluetooth: RFCOMM: avoid socket lock inversion in listener
+  cleanup (bsc#1258210).
+- af_unix: Unify scc_index when finalising SCC in __unix_walk_scc()
+  (bsc#1258210).
+- pppoatm: ensure a writable skb header and linear data
+  (bsc#1258210).
+- drop_monitor: synchronize tracepoint unregistration on error
+  path (bsc#1258210).
+- drop_monitor: use timer_shutdown_sync() to prevent timer
+  rearming during teardown (bsc#1258210).
+- drop_monitor: fix out-of-bounds write in reset_per_cpu_data()
+  (bsc#1258210).
+- net: stmmac: do not overwrite phc_index when no PTP clock is
+  registered (bsc#1258210).
+- KVM: PPC: Book3S HV: fix use-after-free in
+  kvmhv_emulate_tlbie_all_lpid() (bsc#1258210).
+- KVM: PPC: Book3S HV: fix secure device page leak on uv_page_in()
+  failure (bsc#1258210).
+- powerpc/iommu: Fix the overflow validation in
+  iommu_tce_check_ioba (bsc#1258210).
+- futex: Also allocate private hash on vfork() (bsc#1258210).
+- btrfs: more trivial BTRFS_PATH_AUTO_FREE conversions
+  (bsc#1258210).
+- btrfs: handle lack of space when cleaning up verity items
+  (bsc#1258210).
+- ASoC: hdmi-codec: Report a change when the channel status moves
+  (bsc#1258210).
+- ASoC: amd: acp: bounds-check SoundWire link ID in machine
+  drivers (bsc#1258210).
+- ASoC: sdw_utils: Add codec_conf for every DAI (bsc#1258210).
+- ASoC: intel: sof_sdw: Add ability to have auxiliary devices
+  (bsc#1258210).
+- ASoC: sdw_utils: tidyup .count_sidecar (bsc#1258210).
+- ASoC: sdw_utils: tidyup asoc_sdw_parse_sdw_endpoints()
+  (bsc#1258210).
+- ASoC: amd: acp: refactor codec config count in SOF SoundWire
+  machine driver (bsc#1258210).
+- ASoC: amd: acp: fix ffs() operator precedence for SoundWire
+  link ID (bsc#1258210).
+- net: netsec: fix device_node reference leak on phy_np
+  (bsc#1258210).
+- eth: fbnic: ring the doorbell if a burst ends in a drop
+  (bsc#1258210).
+- net: lock the socket in sock_gettstamp() (bsc#1258210).
+- net: ethernet: cortina: Ack RX overrun interrupt correctly
+  (bsc#1258210).
+- net: stmmac: propagate FPE preemption-class mapping errors
+  (bsc#1258210).
+- net: psp: avoid conflicts with skb->decrypted and
+  sk_validate_xmit_skb() (bsc#1258210).
+- x86/alternative: Refactor INT3 call emulation selftest
+  (bsc#1258210).
+- x86/kprobes: Fix crash when probing CS CALL instructions
+  (bsc#1258210).
+- net: macb: fix ordering around PTP timestamp read (bsc#1258210).
+- net: mvpp2: prevent buffer overflow in page_pool allocation
+  (bsc#1258210).
+- net: skbuff: do not leave stale header offsets after pskb_carve()
+  (bsc#1258210).
+- drm/amdgpu: check ras and obj before dereference (bsc#1258210).
+- btrfs: abort transaction on failure to update inode for hole
+  punching and reflinking (bsc#1258210).
+- btrfs: check if there is space for chunk item when validating
+  sys chunk array (bsc#1258210).
+- x86/fred: Reconstruct the #GP context for rejected INT
+  instructions (bsc#1258210).
+- Input: eeti_ts - publish the OF module alias (bsc#1258210).
+- hwmon: (gpio-fan) return IRQ_HANDLED from the shared alarm
+  IRQ handler (bsc#1258210).
+- hwmon: (hp-wmi-sensors) Improve raw WMI string handling
+  (bsc#1258210).
+- watchdog: da9062: fix suspend/resume handling of HW_RUNNING
+  watchdog (bsc#1258210).
+- ACPI: processor: Update cpuidle driver check in
+  __acpi_processor_start() (bsc#1258210).
+- wifi: rtw88: TX QOS Null data the same way as Null data
+  (bsc#1258210).
+- Input: xpad - add support for Victrix Pro BFG Controller
+  (bsc#1258210).
+- Input: xpad - add support for Azeron devices (bsc#1258210).
+- Input: xpad - fix PDP Marvel Xbox 360 controller (bsc#1258210).
+- ALSA: core: Fix potential UAF after asynchronous card release
+  (bsc#1258210).
+- ALSA: virtio: reset device before deleting virtqueues
+  (bsc#1258210).
+- ASoC: codecs: rt712-sdca-dmic: fix uninitialized
+  stream_config->type (bsc#1258210).
+- ata: libahci: clear PxCLBU and PxFBU for AHCI_HFLAG_32BIT_ONLY
+  (bsc#1258210).
+- ata: libahci_platform: Fix device reference leak in
+  ahci_platform_get_resources() (bsc#1258210).
+- cifs: Fix server use-after-free in cifs_chan_skip_or_disable()
+  (bsc#1258210).
+- exec: Cleanup POSIX timers right after de_thread() (bsc#1258210).
+- fs/dax: check zero or empty entry before converting xarray entry
+  (bsc#1258210).
+- phy: renesas: rcar-gen3-usb2: Avoid long delay in atomic context
+  (bsc#1258210).
+- posix-cpu-timers: Prevent freeing a timer which is queued on
+  the expiry list (bsc#1258210).
+- rds: ib: use rds_conn_drop() on protocol version mismatch
+  (bsc#1258210).
+- rust: net: phy: fix off-by-one bit positions in device status
+  accessors (bsc#1258210).
+- Revert "nouveau/gsp: fix suspend/resume regression on r570
+  firmware" (bsc#1258210).
+- drm/nouveau/gsp: Increase delay for magic sleep in
+  r535_gsp_fini() (bsc#1258210).
+- drm/nouveau/gsp/r570: Set GcOff = 0 in fbsr (bsc#1258210).
+- drm/nouveau/gsp/r570: Enable S/R Display workaround in GSP
+  (bsc#1258210).
+- x86/build/64: Prevent native builds from generating EGPR use
+  (bsc#1258210).
+- x86/microcode/intel: Reject problematic loading on Granite
+  Rapids systems (bsc#1258210).
+- tcp: exclude old ACKs from tcp fast path (bsc#1258210).
+- swiotlb: use the adjusted address for the highmem page lookup
+  (bsc#1258210).
+- spi: fsl-qspi: Reprogram the clock rate when the operation
+  frequency changes (bsc#1258210).
+- spi: spi-zynqmp-gqspi: stop the controller on shutdown
+  (bsc#1258210).
+- spi: virtio: Use the per-transfer bits per word (bsc#1258210).
+- RDMA/ucma: Serialize join and leave on copy_to_user failure
+  (bsc#1258210).
+- RDMA/core: fix refcount bug in iwpm_get_nlmsg_request()
+  (bsc#1258210).
+- openvswitch: avoid reallocating confirmed conntrack labels
+  (bsc#1258210).
+- net: xfrm: reject unrepresentable espintcp transport headers
+  (bsc#1258210).
+- HID: logitech-hidpp: fix race condition when accessing stale
+  stack pointer (bsc#1258210).
+- kselftest/arm64: Fix size of thread_data values for
+  pthread_join() (bsc#1258210).
+- arm64: hibernate: pass HVC_SET_VECTORS args to the resume hvc
+  (bsc#1258210).
+- arm64: dts: renesas: r8a779f0: Set UFS lane count (bsc#1258210).
+- arm64: percpu: Fix this_cpu_write() casting (bsc#1258210).
+- arm64: percpu: Fix this_cpu_and() mask generation (bsc#1258210).
+- arm64: percpu: Fix LSE operations on {8,16}-bit types
+  (bsc#1258210).
+- Bluetooth: btusb: fix NXP IW610 composite device handling
+  (bsc#1258210).
+- Bluetooth: eir: validate service data length before reading UUID
+  (bsc#1258210).
+- Bluetooth: hci_codec: validate vendor codec count length
+  (bsc#1258210).
+- Bluetooth: hci_sync: Serialize local codec list cleanup
+  (bsc#1258210).
+- btrfs: take commit root semaphore when iterating in
+  mark_block_group_to_copy() (bsc#1258210).
+- btrfs: clear free space tree creation state on rebuild failure
+  (bsc#1258210).
+- dmaengine: sun6i: fix non-atomic read of DMA position registers
+  (bsc#1258210).
+- dmaengine: sun6i: fix undefined behaviour in sun6i_dma_tx_status
+  (bsc#1258210).
+- dmaengine: ti: k3-udma-glue: fix NULL dereference in
+  k3_udma_glue_release_rx_chn() (bsc#1258210).
+- ipv6: xfrm: use full sockets in local error paths (bsc#1258210).
+- net: ip_tunnel: initialize `options_len` before referencing
+  options (bsc#1258210).
+- net: lan743x: fix RX checksum use-after-free (bsc#1258210).
+- net: phy: mediatek: do not report link and per-speed LED rules
+  together (bsc#1258210).
+- net: wwan: t7xx: validate the netif index in
+  t7xx_ccmni_recv_skb() (bsc#1258210).
+- net: wwan: mhi_wwan_mbim: guard against a cyclic NDP chain
+  (bsc#1258210).
+- net: wwan: mhi_wwan_mbim: check skb_copy_bits() return value
+  (bsc#1258210).
+- net/sched: act_api: release tail references on DELACTION failure
+  (bsc#1258210).
+- net/sched: hhf: cap hh_flows_limit at change time (bsc#1258210).
+- net/packet: clear RX owner on VNET header error (bsc#1258210).
+- net/packet: avoid truncating TPACKET_V3 private size
+  (bsc#1258210).
+- scsi: core: Validate MODE SENSE lengths in scsi_cdl_enable()
+  (bsc#1258210).
+- xfrm: serialize state GC with device state flush (bsc#1258210).
+- xfrm: use hlist_del_init_rcu for state_cache and
+  state_cache_input (bsc#1258210).
+- soc: samsung: exynos-pmu: fix use-after-free of interrupt
+  generator node (bsc#1258210).
+- memcg: avoid charging the root memcg from
+  obj_cgroup_charge_pages() (bsc#1258210).
+- memstick: ms_block: destroy io_queue workqueue on removal
+  (bsc#1258210).
+- mm, swap: fix SWAP_USAGE_OFFLIST_BIT collision with real usage
+  count (bsc#1258210).
+- mm/mlock: use the IRQ-safe accessor for NR_MLOCK in
+  __munlock_folio() (bsc#1258210).
+- mm/mremap: account mm->locked_vm correctly for MREMAP_DONTUNMAP
+  (bsc#1258210).
+- mm: filemap: retain mapped dropbehind folios (bsc#1258210).
+- KEYS: encrypted: fix integer overflow of datablob_len
+  (bsc#1258210).
+- keys: translate request_key_auth pid for the reading procfs
+  instance (bsc#1258210).
+- KEYS: trusted: Fix tpm2_load_cmd() boundary check (bsc#1258210).
+- i2c: at91: release DMA channels on remove and probe error
+  (bsc#1258210).
+- i2c: atr: fix dangling adapter pointer on add failure
+  (bsc#1258210).
+- i2c: qcom-cci: fix device_node refcount leak in
+  cci_probe()/cci_remove() (bsc#1258210).
+- i2c: imx: release DMA channels on probe error (bsc#1258210).
+- i2c: imx: disable autosuspend on remove (bsc#1258210).
+- IB/mlx4: Fix use-after-free on pkey sysfs registration failure
+  (bsc#1258210).
+- IB/hfi1: Resolve the credit-return buffer through the send
+  context's node (bsc#1258210).
+- IB/hfi1: Fix the PIO_CRED credit-return mmap (bsc#1258210).
+- selinux: preserve user SID across nested backing files
+  (bsc#1258210).
+- selinux: recheck intermediate backing files on mprotect()
+  (bsc#1258210).
+- selinux: always fill AVC decision in avc_has_perm_noaudit()
+  (bsc#1258210).
+- power: sequencing: don't call .post_enable() if
+  pwrseq_unit_enable() failed (bsc#1258210).
+- power: sequencing: fix NULL-pointer dereference in
+  pwrseq_unit_new() (bsc#1258210).
+- power: sequencing: fix NULL-pointer dereference in
+  pwrseq_device_register() (bsc#1258210).
+- mmc: core: Cancel SDIO IRQ work before freeing host
+  (bsc#1258210).
+- mmc: core: Fix OF node reference leak on card add failure
+  (bsc#1258210).
+- mmc: hsq: Fix use-after-free in retry work (bsc#1258210).
+- mmc: mmci: Fix use-after-free in busy-timeout work (bsc#1258210).
+- mmc: mxcmmc: cancel data work and watchdog on remove
+  (bsc#1258210).
+- mmc: rtsx_pci_sdmmc: ignore broken write-protect on ThinkPad
+  X260 (bsc#1258210).
+- mmc: sdhci-of-aspeed: Remove children before releasing SDC
+  resources (bsc#1258210).
+- mmc: sdio_uart: fix xmit_fifo leak when the port table is full
+  (bsc#1258210).
+- mmc: sh_mmcif: initialize IRQ-thread mutex before requesting
+  interrupt (bsc#1258210).
+- mmc: spi: reset bytes_xfered before retrying CRC failures
+  (bsc#1258210).
+- mmc: sdhci_am654: Move tuning_loop to local variable
+  (bsc#1258210).
+- mmc: sdhci_am654: Reset command and data lines on failed tuning
+  (bsc#1258210).
+- mmc: sdhci_am654: Clear ITAPDLY on tuning failure (bsc#1258210).
+- mmc: sdhci_am654: Fallback to DT-provided itap delay on DDR50
+  tuning failure (bsc#1258210).
+- Input: adp5588-keys - cache GPIO state before registering the
+  gpiochip (bsc#1258210).
+- Input: atkbd - skip deactivate for Xiaomi Redmi Book Pro 16 2026
+  (bsc#1258210).
+- Input: cyttsp5 - clamp the HID report size before memcpy
+  (bsc#1258210).
+- Input: evdev - zero absinfo before partial copy in EVIOCSABS
+  (bsc#1258210).
+- Input: hp_sdc - shut down kicker timer on module exit
+  (bsc#1258210).
+- Input: i8042 - add quirk for Acer Aspire Go 15 AG15-42P
+  (bsc#1258210).
+- Input: rmi_smbus - fix out-of-bounds read in
+  rmi_smb_write_block() (bsc#1258210).
+- Input: soc_button_array - fix MS Surface Pro 11 probe failure
+  (bsc#1258210).
+- Input: soc_button_array - check btns_desc->package.count
+  (bsc#1258210).
+- Input: synaptics - disable InterTouch on ThinkPad T440p (board
+  id 2722) (bsc#1258210).
+- Input: synaptics-rmi4 - fix GPF in suspend and resume when
+  unbound (bsc#1258210).
+- Input: zero ff_effect before compat copy in
+  input_ff_effect_from_user (bsc#1258210).
+- hwmon: (hp-wmi-sensors) Fix use-after-free in fungible_show()
+  (bsc#1258210).
+- hwmon: (pmbus/core) increase number of phases and add new mask
+  (bsc#1258210).
+- hwmon: (pmbus/tps53679) Fix TPS53676 phase page decoding
+  (bsc#1258210).
+- hwmon: (pmbus/tps53679) Select page 0 for single-page TPS53676
+  (bsc#1258210).
+- hwmon: (pwm-fan) Stop RPM timer before freeing tach data
+  (bsc#1258210).
+- hwmon: (w83791d) remove fan/pwm 4-5 sysfs group on remove
+  (bsc#1258210).
+- hwmon: (w83793) release probe data through kref (bsc#1258210).
+- hwmon: (cgbc-hwmon) Fix current sensors ID lookup (bsc#1258210).
+- hwmon: (cgbc-hwmon) Add missing sensors (bsc#1258210).
+- watchdog: da9063: fix suspend/resume handling of HW_RUNNING
+  watchdog (bsc#1258210).
+- watchdog: digicolor: Avoid division by zero (bsc#1258210).
+- watchdog: msc313e: Fix premature reset during timeout update
+  (bsc#1258210).
+- watchdog: msc313e: Propagate error code in resume()
+  (bsc#1258210).
+- watchdog: rtd119x: Avoid division by zero (bsc#1258210).
+- watchdog: rzv2h: Avoid division by zero (bsc#1258210).
+- watchdog: sp5100_tco: Fix pci_dev reference leak in
+  sp5100_tco_init() (bsc#1258210).
+- watchdog: starfive-wdt: Fix runtime PM leak in
+  starfive_wdt_pm_start() (bsc#1258210).
+- wifi: brcmsmac: fix UAF in brcms_free_timer() (bsc#1258210).
+- wifi: iwlegacy: fix broadcast stations deallocation
+  (bsc#1258210).
+- wifi: libertas_tf: fix UAF in lbtf_free_adapter() (bsc#1258210).
+- wifi: rsi: fix heap OOB write on key removal (bsc#1258210).
+- wifi: wcn36xx: Fix potential use-after-free in TX ack timer
+  teardown (bsc#1258210).
+- wifi: wlcore: release runtime PM ref on regdomain config failure
+  (bsc#1258210).
+- wifi: wilc1000: fix out-of-bounds read in P2P public action
+  frames (bsc#1258210).
+- wifi: wilc1000: fix RX buffer OOB-write in
+  wilc_wlan_handle_isr_ext() (bsc#1258210).
+- wifi: p54: validate curve data length in the calibration curve
+  converters (bsc#1258210).
+- wifi: p54: require a full exp_if record in PDR_INTERFACE_LIST
+  (bsc#1258210).
+- wifi: mwifiex: bound the pairwise-cipher OUI walk to the IE
+  length (bsc#1258210).
+- wifi: mwifiex: validate scan response extents (bsc#1258210).
+- wifi: mwifiex: prevent authentication frame length truncation
+  (bsc#1258210).
+- wifi: mwifiex: validate action frame fixed fields (bsc#1258210).
+- wifi: mac80211: avoid WARN in set_bitrate_mask when sdata not
+  in driver (bsc#1258210).
+- drm/gud: fix out-of-bounds write in gud_plane_atomic_check()
+  (bsc#1258210).
+- drm/gud: Ignore damage clips in full update mode (bsc#1258210).
+- drm/msm/adreno: fix autosuspend cleanup during teardown
+  (bsc#1258210).
+- drm/msm/dpu: clear pending peripheral flush state (bsc#1258210).
+- drm/msm/hdmi_phy: fix runtime PM cleanup on probe failure
+  (bsc#1258210).
+- drm/msm: RCU-free the scheduler-containing ring and VM objects
+  (bsc#1258210).
+- drm/amdgpu: fix rmmio iounmap skipped on device removal
+  (bsc#1258210).
+- smb: client: cancel reconnect work in clean_demultiplex_info()
+  (bsc#1258210).
+- smb: client: fix rlist race and missing initialization
+  (bsc#1258210).
+- smb: client: fix use-after-free of iface in
+  cifs_try_adding_channels() (bsc#1258210).
+- smb: client: reject short Next offsets in
+  parse_server_interfaces() (bsc#1258210).
+- smb: client: fix smbd_connection leak on cifs_get_tcp_session()
+  error (bsc#1258210).
+- smb: client: fix unaligned access in WSL reparse point parser
+  (bsc#1258210).
+- smb: client: fix next_buffer UAF and NextCommand bounds in
+  compound PDUs (bsc#1258210).
+- smb: client: fix OOB struct field reads in move_smb2_ea_to_cifs()
+  (bsc#1258210).
+- smb: client: fix potential OOB read in smb3_enum_snapshots()
+  (bsc#1258210).
+- smb: client: fix server->total_read for compound encrypted PDUs
+  (bsc#1258210).
+- smb: client: fix missing lower-bound check on DFS referral
+  string offsets (bsc#1258210).
+- smb: client: fix missing iov bounds check in parse_posix_sids()
+  (bsc#1258210).
+- HID: asus: fortify keyboard handshake (bsc#1258210).
+- time/namespace: Export init_time_ns and do_timens_ktime_to_host()
+  (bsc#1258210).
+- ntsync: Honour caller's time namespace for absolute MONOTONIC
+  timeouts (bsc#1258210).
+- ntsync: reject wait ioctls with zero owner (bsc#1258210).
+- smb: client: fix busy dentry warning on unmount after DIO
+  (bsc#1258210).
+- ALSA: usb-audio: Optimize the copy of packet sizes for implicit
+  fb handling (bsc#1258210).
+- ALSA: usb-audio: Clamp implicit feedback packet count to URB
+  capacity (bsc#1258210).
+- signal: Move MMCID exit out of sighand lock (bsc#1258210).
+- signal: Prevent exec() race (bsc#1258210).
+- xfrm: Refactor xfrm_input lock to reduce contention with RSS
+  (bsc#1258210).
+- xfrm: Fix dev use-after-free in xfrm async resumption
+  (bsc#1258210).
+- xfrm: save input state data before secpath resets (bsc#1258210).
+- mm/huge_memory: bypass THP tuneables for huge pfnmap mappings
+  (bsc#1258210).
+- 9p: Fix v9fs_issue_write() to update i_size and remote_i_size
+  (bsc#1258210).
+- mm/vma: correctly unaccount on mmap_prepare() failure
+  (bsc#1258210).
+- wifi: mac80211: track MU-MIMO configuration on disabled
+  interfaces (bsc#1258210).
+- wifi: mac80211: refuse to make a monitor active when it has
+  no queue (bsc#1258210).
+- scsi: fnic: Rename fnic_scsi_fcpio_reset() (bsc#1258210).
+- scsi: fnic: Bump up version number (bsc#1258210).
+- scsi: fnic: Make debug logging protocol independent
+  (bsc#1258210).
+- scsi: fnic: Bump up version number again (bsc#1258210).
+- scsi: fnic: Fix missed link-up when critical IRQ targets
+  offline CPU (bsc#1258210).
+- smb: client: fix cifsFileInfo reference leak in deferred close
+  (bsc#1258210).
+- xfs: add a xfs_rmap_inode_owner helper (bsc#1258210).
+- xfs: convert xchk_inode_xref_set_corrupt to
+  xchk_ip_xref_set_corrupt (bsc#1258210).
+- xfs: remove the i_ino field in struct xfs_inode (bsc#1258210).
+- xfs: fix under-reservation of blocks when repairing sf
+  directories (bsc#1258210).
+- drm/amdgpu: lock bo before calling amdgpu_vm_bo_update_shared
+  (bsc#1258210).
+- drm/amdgpu: hold a runtime PM reference for P2P dma-buf
+  attachments (bsc#1258210).
+- wifi: ipw2x00: Rename michael_mic() to libipw_michael_mic()
+  (bsc#1258210).
+- wifi: mac80211, cfg80211: Export michael_mic() and move it to
+  cfg80211 (bsc#1258210).
+- wifi: ipw2x00: Use michael_mic() from cfg80211 (bsc#1258210).
+- wifi: libipw: reject TKIP frames without a full MIC
+  (bsc#1258210).
+- smb: client: fix reparse buffer bounds in
+  cifs_query_reparse_point() (bsc#1258210).
+- ksmbd: fix partial normalized name responses (bsc#1258210).
+- wifi: mac80211: fix list iteration in
+  ieee80211_add_virtual_monitor() (bsc#1258210).
+- ASoC: sdw_utils: subtract the endpoint that is not present
+  (bsc#1258210).
+- Bluetooth: hci_qca: fix NULL pointer dereference in qca_setup()
+  for non-serdev device (bsc#1258210).
+- Revert "ksmbd: Fix to handle removal of rfc1002 header from
+  smb_hdr" (bsc#1258210).
+- smb/client: send lease break ACKs thru correct session for
+  multiuser mounts (bsc#1258210).
+- Rename to
+  patches.kernel.org/6.18.54-031-RDMA-mlx5-Remove-warn-on-missing-representor-.patch.
+- Rename to
+  patches.kernel.org/6.18.54-166-ASoC-ux500-Parenthesize-MSP_-RX-TX-_CLKPOL_BI.patch.
+- commit b500271
+
+-------------------------------------------------------------------
 Mon Sep 21 22:18:31 CEST 2026 - rfrohl@suse.com
 
 - ASoC: ux500: Parenthesize MSP_{RX,TX}_CLKPOL_BIT() arguments
