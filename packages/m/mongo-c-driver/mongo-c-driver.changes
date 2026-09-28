@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Sep 25 05:42:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.5
+  libbson
+  * No changes since 2.5.4. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  Fixes
+  * Fix handling of polled streams in single-threaded topology
+    scanner.
+
+-------------------------------------------------------------------
+Fri Sep 18 06:05:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.5.4
+  libbson
+  * No changes since 2.5.3. Version incremented to match the
+    libmongoc version.
+  libmongoc
+  Fixes
+  * Fix allocation in Windows Secure Channel.
+
+-------------------------------------------------------------------
 Fri Sep 11 06:13:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.5.3
