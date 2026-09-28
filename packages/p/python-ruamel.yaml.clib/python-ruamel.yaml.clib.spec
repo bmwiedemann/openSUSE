@@ -31,6 +31,7 @@ BuildRequires:  %{python_module setuptools >= 28.7.0}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Provides:       python-ruamel_yaml_clib = %{version}
 %python_subpackages
 
 %description

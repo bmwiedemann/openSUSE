@@ -105,4 +105,12 @@
 - Update to 0.2.7:</comment>
     <requestid>1343985</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>eef0581296c4ad22369704161e7fa730</srcmd5>
+    <version>0.2.15</version>
+    <time>1790584594</time>
+    <user>anag_factory</user>
+    <comment>- add compat provide</comment>
+    <requestid>1380229</requestid>
+  </revision>
 </revisionlist>
