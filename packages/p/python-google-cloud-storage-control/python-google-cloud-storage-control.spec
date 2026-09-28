@@ -17,7 +17,7 @@
 
 
 Name:           python-google-cloud-storage-control
-Version:        1.13.0
+Version:        1.15.0
 Release:        0
 Summary:        Google Cloud Storage Control API client library
 License:        Apache-2.0
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.2}
 BuildRequires:  %{python_module grpcio >= 1.59.0}
@@ -38,7 +38,7 @@ BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.14.2
 Requires:       python-grpcio >= 1.59.0
