@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:13:47 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to version 8.0.7:
+  * Security release fixing vulnerabilities and various security,
+    performance, accuracy, and stability issues.
+  * Security fixes for tickets #9013, #9009, #9005, #9004, #9002,
+    #9000, #8998, and #8989 (CVE IDs pending publication).
+  * All tickets available at:
+    https://redmine.openinfosecfoundation.org/versions/236
+  * Release announcement:
+    https://suricata.io/2026/09/15/suricata-8-0-7-released/
+- Enable hwloc support.
+- Disable NFLOG on Leap 16.0/16.1, where libnetfilter_log is 
+  unavailable.
+- Keep XDP and libmagic configure flags aligned with their 
+  dependencies.
+- Use matching conditional dependencies for the development package
+
+-------------------------------------------------------------------
 Sat Jul 11 13:56:39 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update to version 8.0.6:

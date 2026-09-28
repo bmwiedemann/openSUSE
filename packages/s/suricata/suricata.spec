@@ -17,17 +17,28 @@
 #
 
 
-%define soname 8_0_6
+%define soname 8_0_7
 
 # Handling libxdp support
-%if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150500) && (0%{?is_opensuse})
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150500 && 0%{?is_opensuse}
     %bcond_with xdp_bpf
 %else
     %bcond_without xdp_bpf
 %endif
 
+# libnetfilter_log is not available in the openSUSE Leap 16.0/16.1 repositories
+%if 0%{?is_opensuse}
+%if 0%{?suse_version} == 1600 || 0%{?suse_version} == 1610
+    %bcond_with nflog
+%else
+    %bcond_without nflog
+%endif
+%else
+    %bcond_without nflog
+%endif
+
 # Handling libmagic and libnet support
-%if (0%{?suse_version} <= 1500) && (0%{?sle_version} <= 150600) && (0%{?is_opensuse})
+%if 0%{?suse_version} <= 1500 && 0%{?sle_version} <= 150600 && 0%{?is_opensuse}
     %ifarch aarch64
         %bcond_with libmagic
         %bcond_with libnet
@@ -48,7 +59,7 @@
 %endif
 
 Name:           suricata
-Version:        8.0.6
+Version:        8.0.7
 Release:        0
 Summary:        Open Source Next Generation Intrusion Detection and Prevention Engine
 License:        GPL-2.0-only
@@ -72,13 +83,16 @@ BuildRequires:  rust >= 1.63.0
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  sysuser-tools
 BuildRequires:  pkgconfig(hiredis)
+BuildRequires:  pkgconfig(hwloc)
 BuildRequires:  pkgconfig(jansson)
 BuildRequires:  pkgconfig(libcap-ng)
 BuildRequires:  pkgconfig(libevent)
 BuildRequires:  pkgconfig(liblz4)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libmaxminddb)
+%if %{with nflog}
 BuildRequires:  pkgconfig(libnetfilter_log)
+%endif
 BuildRequires:  pkgconfig(libnetfilter_queue)
 BuildRequires:  pkgconfig(libnfnetlink)
 BuildRequires:  pkgconfig(libpcap)
@@ -100,18 +114,18 @@ BuildRequires:  pkgconfig(libmagic)
 BuildRequires:  file-devel
     %endif
 %endif
-%if 0%{with libnet}
+%if %{with libnet}
     %if 0%{?suse_version} >= 1600
 BuildRequires:  pkgconfig(libnet)
     %else
 BuildRequires:  libnet-devel
     %endif
 %endif
-%if 0%{with xdp_bpf}
+%if %{with xdp_bpf}
 BuildRequires:  pkgconfig(libbpf)
 BuildRequires:  pkgconfig(libxdp)
 %endif
-%if 0%{with libhs}
+%if %{with libhs}
 BuildRequires:  pkgconfig(libhs)
 %endif
 
@@ -141,7 +155,13 @@ This package contains the shared library.
 Summary:        Development files for the Suricata engine library
 Requires:       libsuricata%{soname} = %{version}
 Requires:       pkgconfig(jansson)
+%if %{with libmagic}
+    %if 0%{?suse_version} >= 1600
 Requires:       pkgconfig(libmagic)
+    %else
+Requires:       file-devel
+    %endif
+%endif
 
 %description devel
 The Suricata Engine is an Open Source Next Generation Intrusion Detection and
@@ -161,16 +181,28 @@ export HAVE_PYTHON=%{_bindir}/python3
 %configure \
     --disable-dependency-tracking \
     --enable-gccmarch-native=no \
-    --enable-ebpf \
     --enable-year2038 \
     --enable-python \
     --enable-hiredis \
     --enable-shared \
+%if %{with xdp_bpf}
+    --enable-ebpf \
+%else
+    --disable-af-xdp \
+%endif
+%if %{with nflog}
     --enable-nflog \
     --with-libnetfilter_log-includes=`pkg-config libnetfilter_log --variable=includedir` \
+%endif
     --enable-nfqueue \
     --enable-gccprotect \
     --enable-geoip \
+%if %{with libmagic}
+    --enable-libmagic \
+%else
+    --disable-libmagic \
+%endif
+    --enable-hwloc \
     %{nil}
 
 # --output-sync=none is needed to avoid GNU Make
