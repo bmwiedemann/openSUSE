@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Thu Sep 24 17:46:45 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
+
+- version update to 8.5.11
+    BCMath:
+        Fixed out-of-bounds read in bc_is_zero_for_scale() when scale exceeds n_scale.
+    Core:
+        Fixed out-of-bounds reads during automatic UTF-16/32 encoding detection.
+        Fixed bug GH-15375 (Nested "yield from" skips items after a valid() or next() call on the inner generator).
+        Fixed bug GH-23232 (lone namespace separator asks the autoloader for an empty class name).
+        Fixed bug GH-23301 (Nested "yield from" yields a value twice when the middle generator delegates again).
+    DOM:
+        Fixed NamedNodeMap::getNamedItemNS() with an empty URI not matching the null namespace in spec-following mode.
+        Fixed stale getElementsByClassName() and other node list caches after className/classList writes and attribute removals.
+        Fixed a use-after-free when cloning a DOMNameSpaceNode after DOMDocument::xinclude().
+        Fixed a crash in DOMXPath when a php:function callback receives a nodeset and a later callback returns a node from another document.
+        Fixed bug GH-23331 (UAF when node_list_unlink() skips attribute children that still have a live wrapper).
+        Fixed a use-after-free when Dom\Element::setAttributeNS() replaces the value of an attribute whose child still has a live wrapper.
+    GD:
+        Fixed imageaffinematrixget() and imageaffinematrixconcat() reporting the wrong argument in error messages.
+    FPM:
+        Fixed bug GH-19320 (FPM UID and GID overflow).
+        Fixed GHSA-62xp-839h-2637 (IPv6 ACL bypass in FastCGI listen.allowed_clients due to partial address comparison). (CVE-2026-91768)
+    Intl:
+        Fixed grapheme_strpos() and grapheme_strrpos() with an empty needle returning UTF-16 offsets instead of grapheme offsets.
+        Fixed a memory leak when dumping IntlCalendar instances.
+        Fixed a memory leak when iterating IntlBreakIterator::getPartsIterator() results.
+        Fixed a double-free when IntlGregorianCalendar construction fails after the ICU constructor adopts the TimeZone.
+        Fixed bug GH-23094 (NumberFormatter parsing offsets use UTF-16 positions for UTF-8 strings).
+        Fixed Locale::parseLocale() reading past a trailing '-' or '_'.
+        Fixed grapheme_str_split() treating UBRK_DONE as a byte index.
+        Fixed a leak in Locale::getKeywords() when a keyword value cannot be read.
+        Fixed a use-after-free when IntlRuleBasedBreakIterator is constructed from compiled rules.
+    MBString:
+        Fixed mb_ereg_replace() emitting a NUL or out-of-bounds bytes in the replacement when a \k<name> backref has no closing delimiter.
+    MySQLnd:
+        Fixed GHSA-r6x9-5r99-36j7 (Various packet overreads in mysqlnd wire protocol). (CVE-2025-1218)
+    ODBC:
+        Fixed odbc_field_len(), odbc_field_scale() and odbc_field_type() returning uninitialized memory when SQLColAttribute fails.
+    Opcache:
+        Fixed opcache.protect_memory race under ZTS.
+        Fixed a tracing JIT crash when compiling a side trace for a method of a class that could not be stored in the inheritance cache.
+        Fixed a crash when the huge page SHM remap discarded mappings outside the reserved address range.
+    OpenSSL:
+        Fixed GHSA-vvx9-73fr-5jjx (TLS hostname verification falls back to CN after SAN mismatch). (CVE-2026-91769)
+        Fixed GHSA-xr7j-rvgx-xq5p (Heap buffer overflow in php_openssl_matches_wildcard_name() on crafted server certificate wildcard CN). (CVE-2026-91767)
+    PDO:
+        Fixed a leak when a persistent connection failed a liveness check with no other live PDO handle.
+    PDO_PGSQL:
+        Fixed PDO::CURSOR_SCROLL statements failing under lazy fetching (PDO::ATTR_PREFETCH => 0).
+    PDO Sqlite:
+        Fixed bug GH-20214 (PDO::FETCH_DEFAULT unexpected behavior with PDOStatement::setFetchMode).
+    Phar:
+        Fixed bug GH-23418 (Use-after-free when looking up mounted directories).
+        Fixed bug GH-23477 (Memory leak on duplicate native Phar manifest entries).
+        Fixed GHSA-j3wh-g957-2m85 (Integer overflow in phar_tar_number() allowing TAR archive entry injection). (CVE-2026-6103)
+    Readline:
+        Fixed the interactive shell not waiting for the pager process to exit.
+    SOAP:
+        Fixed WSDL cache corruption when a soap:header defines headerfaults.
+        Fixed stack overflow when parsing a WSDL with self-referential schema groups or attributeGroups.
+        Fixed GHSA-rgrp-mwpx-f6rm (Unbounded recursion in server-side cleanup_xml_node()). (CVE-2026-91765)
+        Fixed GHSA-cj93-vc83-wgqv (Integer overflow to buffer overflow in SOAP HTTP parsing). (CVE-2025-14181)
+    Standard:
+        Fixed a segfault when a stream filter callback unsets StreamBucket::$data before re-attaching the bucket.
+        Fixed GHSA-7875-c8px-7q5f (Out-of-bounds read in the HTTP stream wrapper when following a redirect with an empty Location header). (CVE-2026-93682)
+        Fixed read buffer compaction in php_stream_filter_flush().
+        Fixed bug GH-22410 (Incorrect float behavior with large numbers).
+        Fixed GH-23338 (fsockopen()/pfsockopen() ValueError reported wrong argument number for $timeout).
+        Fixed bug GH-23576 (Next index for array returned from array_keys() is wrong).
+        Fixed GHSA-88hq-2827-7pg6 (Out-of-bounds read in convert.* stream filters when line-break-chars contains NUL). (CVE-2026-92842)
+        Fixed GHSA-fpwc-w8rq-cr92 (Cross-origin credential leak in HTTP stream wrapper redirects). (CVE-2026-91766)
+    SimpleXML:
+        Fixed writing to a dimension of the object returned by attributes() not creating the attribute.
+        Fixed child elements of the element returned by SimpleXMLElement::addChild() not being accessible by property name when namespaces are involved.
+    Windows:
+        Fixed GHSA-9f67-6fw4-hpfp (Reserved device names are not rejected before file and stream I/O). (CVE-2026-17545)
+    Zip:
+        Fixed bug GH-17787 (ZipArchive stream stops reading early when the archive is freed while the stream is still open).
+        Fixed bug GH-23276 (ZipArchive subclass storing its own stream cannot be garbage collected).
+    SAPI:
+        Fixed fuzzer targets failing to build in isolation.
+        Fixed returns uninitialized value on LiteSpeed lsapi SAPI (Go Kudo)
+
+-------------------------------------------------------------------
 Fri Aug 28 05:59:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - version update to 8.5.10
