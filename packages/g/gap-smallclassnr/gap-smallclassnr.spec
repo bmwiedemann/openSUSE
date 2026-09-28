@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallclassnr
-Version:        1.7.1
+Version:        1.7.2
 Release:        0
 Summary:        GAP: Finite groups library with small class number
 License:        GPL-2.0-or-later
