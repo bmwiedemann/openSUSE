@@ -1,7 +1,7 @@
 #
 # spec file for package python-jinja2-fsloader
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@ Version:        0.3.0
 Release:        0
 Summary:        Jinja2 template loader using PyFilesystem2
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/althonos/jinja2-fsloader/
 Source:         https://files.pythonhosted.org/packages/source/j/jinja2-fsloader/jinja2-fsloader-%{version}.zip
+# PATCH-FIX-OPENSUSE Do not use pkg_resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 39.2}
 BuildRequires:  %{python_module wheel}
@@ -47,7 +48,7 @@ ecosystem, which already implements drivers for FTP, SSH, SMB, S3,
 WebDAV servers, ZIP and Tar archives and others.
 
 %prep
-%setup -q -n jinja2-fsloader-%{version}
+%autosetup -p1 -n jinja2-fsloader-%{version}
 sed -i 's/,<[0-9.]*$//' setup.cfg
 
 %build
@@ -66,6 +67,6 @@ sed -i 's/,<[0-9.]*$//' setup.cfg
 %license COPYING
 %doc README.rst
 %{python_sitelib}/jinja2[-_]fsloader
-%{python_sitelib}/jinja2[-_]fsloader-%{version}*-info
+%{python_sitelib}/jinja2[-_]fsloader-%{version}.dist-info
 
 %changelog

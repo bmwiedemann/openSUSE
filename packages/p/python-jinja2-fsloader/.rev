@@ -56,4 +56,13 @@
 </comment>
     <requestid>1281313</requestid>
   </revision>
+  <revision rev="8" vrev="5">
+    <srcmd5>3be9278237ea59a1714e7a3e01ea7b36</srcmd5>
+    <version>0.3.0</version>
+    <time>1790584741</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources to discover the version.</comment>
+    <requestid>1380295</requestid>
+  </revision>
 </revisionlist>

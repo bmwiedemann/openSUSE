@@ -1,0 +1,25 @@
+Index: jinja2-fsloader-0.3.0/jinja2_fsloader/__init__.py
+===================================================================
+--- jinja2-fsloader-0.3.0.orig/jinja2_fsloader/__init__.py
++++ jinja2-fsloader-0.3.0/jinja2_fsloader/__init__.py
+@@ -1,18 +1,18 @@
+ # coding: utf-8
+ """jinja2_fsloader - A Jinja2 template loader using PyFilesystem2.
+ """
++from importlib.resources import files
+ import sys
+ 
+ import fs
+ import fs.path
+ import fs.errors
+ import jinja2
+-import pkg_resources
+ 
+ 
+ __author__ = "Martin Larralde <martin.larralde@ens-paris-saclay.fr>"
+ __license__ = "MIT"
+-__version__ = pkg_resources.resource_string(__name__, "_version.txt").decode('utf-8').strip()
++__version__ = files(__name__).joinpath("_version.txt").read_text(encoding="utf-8").strip()
+ 
+ 
+ class FSLoader(jinja2.BaseLoader):
