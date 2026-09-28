@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-typing-inspection
-Version:        0.4.3
+Version:        0.4.4
 Release:        0
 Summary:        Runtime typing introspection tools
 License:        MIT
@@ -28,11 +28,11 @@ BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module typing-extensions >= 4.12.0}
+BuildRequires:  %{python_module typing-extensions >= 4.15.0}
 BuildRequires:  %{python_module pytest}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-typing-extensions >= 4.12.0
+Requires:       python-typing-extensions >= 4.15.0
 BuildArch:      noarch
 %python_subpackages
 
