@@ -12,7 +12,6 @@ Fri Sep 11 11:20:00 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
     behavior.
   * CVE-2026-75889: Local file disclosure vulnerability in
     prometheus.operator.servicemonitors (bsc#1277429)
-  * CVE-2026-75890: Critical vulnerability in dependencies
   * CVE-2026-81521: Remove vulnerable mongo-driver/v2 dependency
                     (bsc#1278693)
   * CVE-2026-48496: Fix potential DoS on the ebpf-profiler agent
