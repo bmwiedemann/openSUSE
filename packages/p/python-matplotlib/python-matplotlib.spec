@@ -61,6 +61,8 @@ Patch1:         matplotlib-meson-options-opensuse.patch
 Patch2:         py314.patch
 # PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/31554 BUG: avoid a deprecation warning from numpy 2.5 (calling datetime64('NaT') without a unit is deprecated)
 Patch3:         np25.patch
+# PATCH-FIX-UPSTREAM https://github.com/matplotlib/matplotlib/pull/31906 TST: unpin pytest
+Patch4:         pytest91.patch
 Recommends:     ghostscript
 Recommends:     libxml2-tools
 Recommends:     poppler-tools

@@ -1,0 +1,161 @@
+From cf5cebedbbef083289a2153b3c713a627f8acb30 Mon Sep 17 00:00:00 2001
+From: Tim Hoffmann <2836374+timhoffm@users.noreply.github.com>
+Date: Thu, 18 Jun 2026 17:31:03 +0200
+Subject: [PATCH] Backport PR #31906: TST: unpin pytest
+
+---
+ environment.yml                        | 2 +-
+ lib/matplotlib/tests/test_animation.py | 4 ++--
+ lib/matplotlib/tests/test_mathtext.py  | 8 ++++----
+ lib/matplotlib/tests/test_mlab.py      | 8 ++------
+ lib/matplotlib/tests/test_path.py      | 2 +-
+ lib/matplotlib/tests/test_rcparams.py  | 4 ++--
+ lib/matplotlib/tests/test_ticker.py    | 4 ++--
+ pyproject.toml                         | 2 +-
+ 8 files changed, 15 insertions(+), 19 deletions(-)
+
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_animation.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_animation.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_animation.py
+@@ -174,7 +174,7 @@ def gen_writers():
+ # Smoke test for saving animations.  In the future, we should probably
+ # design more sophisticated tests which compare resulting frames a-la
+ # matplotlib.testing.image_comparison
+-@pytest.mark.parametrize('writer, frame_format, output', gen_writers())
++@pytest.mark.parametrize('writer, frame_format, output', list(gen_writers()))
+ @pytest.mark.parametrize('anim', [dict(klass=dict)], indirect=['anim'])
+ def test_save_animation_smoketest(tmpdir, writer, frame_format, output, anim):
+     if frame_format is not None:
+@@ -197,7 +197,7 @@ def test_save_animation_smoketest(tmpdir
+     del anim
+ 
+ 
+-@pytest.mark.parametrize('writer, frame_format, output', gen_writers())
++@pytest.mark.parametrize('writer, frame_format, output', list(gen_writers()))
+ def test_grabframe(tmpdir, writer, frame_format, output):
+     WriterClass = animation.writers[writer]
+ 
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_mathtext.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_mathtext.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_mathtext.py
+@@ -209,7 +209,7 @@ def baseline_images(request, fontset, in
+ 
+ 
+ @pytest.mark.parametrize(
+-    'index, text', enumerate(math_tests), ids=range(len(math_tests)))
++    'index, text', list(enumerate(math_tests)), ids=range(len(math_tests)))
+ @pytest.mark.parametrize(
+     'fontset', ['cm', 'stix', 'stixsans', 'dejavusans', 'dejavuserif'])
+ @pytest.mark.parametrize('baseline_images', ['mathtext'], indirect=True)
+@@ -222,7 +222,7 @@ def test_mathtext_rendering(baseline_ima
+              horizontalalignment='center', verticalalignment='center')
+ 
+ 
+-@pytest.mark.parametrize('index, text', enumerate(svgastext_math_tests),
++@pytest.mark.parametrize('index, text', list(enumerate(svgastext_math_tests)),
+                          ids=range(len(svgastext_math_tests)))
+ @pytest.mark.parametrize('fontset', ['cm', 'dejavusans'])
+ @pytest.mark.parametrize('baseline_images', ['mathtext0'], indirect=True)
+@@ -239,7 +239,7 @@ def test_mathtext_rendering_svgastext(ba
+              horizontalalignment='center', verticalalignment='center')
+ 
+ 
+-@pytest.mark.parametrize('index, text', enumerate(lightweight_math_tests),
++@pytest.mark.parametrize('index, text', list(enumerate(lightweight_math_tests)),
+                          ids=range(len(lightweight_math_tests)))
+ @pytest.mark.parametrize('fontset', ['dejavusans'])
+ @pytest.mark.parametrize('baseline_images', ['mathtext1'], indirect=True)
+@@ -251,7 +251,7 @@ def test_mathtext_rendering_lightweight(
+ 
+ 
+ @pytest.mark.parametrize(
+-    'index, text', enumerate(font_tests), ids=range(len(font_tests)))
++    'index, text', list(enumerate(font_tests)), ids=range(len(font_tests)))
+ @pytest.mark.parametrize(
+     'fontset', ['cm', 'stix', 'stixsans', 'dejavusans', 'dejavuserif'])
+ @pytest.mark.parametrize('baseline_images', ['mathfont'], indirect=True)
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_mlab.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_mlab.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_mlab.py
+@@ -205,7 +205,8 @@ class TestDetrend:
+     scope='class')
+ class TestSpectral:
+     @pytest.fixture(scope='class', autouse=True)
+-    def stim(self, request, fstims, iscomplex, sides, len_x, NFFT_density,
++    @classmethod
++    def stim(cls, request, fstims, iscomplex, sides, len_x, NFFT_density,
+              nover_density, pad_to_density, pad_to_spectrum):
+         Fs = 100.
+ 
+@@ -321,11 +322,6 @@ class TestSpectral:
+         if iscomplex:
+             y = y.astype('complex')
+ 
+-        # Interestingly, the instance on which this fixture is called is not
+-        # the same as the one on which a test is run. So we need to modify the
+-        # class itself when using a class-scoped fixture.
+-        cls = request.cls
+-
+         cls.Fs = Fs
+         cls.sides = sides
+         cls.fstims = fstims
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_path.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_path.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_path.py
+@@ -105,7 +105,7 @@ _test_path_extents = [(0., 0., 0.75, 1.)
+                       (1., 2., 1., 2.)]
+ 
+ 
+-@pytest.mark.parametrize('path, extents', zip(_test_paths, _test_path_extents))
++@pytest.mark.parametrize('path, extents', list(zip(_test_paths, _test_path_extents)))
+ def test_exact_extents(path, extents):
+     # notice that if we just looked at the control points to get the bounding
+     # box of each curve, we would get the wrong answers. For example, for
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_rcparams.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_rcparams.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_rcparams.py
+@@ -446,7 +446,7 @@ def generate_validator_testcases(valid):
+ 
+ 
+ @pytest.mark.parametrize('validator, arg, target',
+-                         generate_validator_testcases(True))
++                         list(generate_validator_testcases(True)))
+ def test_validator_valid(validator, arg, target):
+     res = validator(arg)
+     if isinstance(target, np.ndarray):
+@@ -459,7 +459,7 @@ def test_validator_valid(validator, arg,
+ 
+ 
+ @pytest.mark.parametrize('validator, arg, exception_type',
+-                         generate_validator_testcases(False))
++                         list(generate_validator_testcases(False)))
+ def test_validator_invalid(validator, arg, exception_type):
+     with pytest.raises(exception_type):
+         validator(arg)
+Index: matplotlib-3.10.9/lib/matplotlib/tests/test_ticker.py
+===================================================================
+--- matplotlib-3.10.9.orig/lib/matplotlib/tests/test_ticker.py
++++ matplotlib-3.10.9/lib/matplotlib/tests/test_ticker.py
+@@ -460,7 +460,7 @@ class TestLogitLocator:
+ 
+     @pytest.mark.parametrize(
+         "lims, expected_low_ticks",
+-        zip(ref_basic_limits, ref_basic_major_ticks),
++        list(zip(ref_basic_limits, ref_basic_major_ticks)),
+     )
+     def test_basic_major(self, lims, expected_low_ticks):
+         """
+@@ -505,7 +505,7 @@ class TestLogitLocator:
+ 
+     @pytest.mark.parametrize(
+         "lims, expected_low_ticks",
+-        zip(ref_basic_limits, ref_basic_major_ticks),
++        list(zip(ref_basic_limits, ref_basic_major_ticks)),
+     )
+     def test_minor(self, lims, expected_low_ticks):
+         """

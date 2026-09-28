@@ -1172,4 +1172,12 @@ http://forums.opensuse.org/showthread.php/416182-Python-matplolib (forwarded req
     <comment>1</comment>
     <requestid>1373607</requestid>
   </revision>
+  <revision rev="133" vrev="3">
+    <srcmd5>f2ae986bbc086967870aa44af5a68f2c</srcmd5>
+    <version>3.10.9</version>
+    <time>1790584534</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream pytest91.patch to fix tests with pytest 9.1</comment>
+    <requestid>1379956</requestid>
+  </revision>
 </revisionlist>
