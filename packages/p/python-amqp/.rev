@@ -478,4 +478,26 @@
 - No more greedy globs in %files.</comment>
     <requestid>1285328</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>ce0ef496cacde5df8c708396cdd39256</srcmd5>
+    <version>5.4.0</version>
+    <time>1790585150</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.4.0:
+  * Replace deprecated datetime.datetime.utcfromtimestamp (#448)
+  * Remove Python 3.8, 3.9 support
+  * Update CI workflow to exclude Python 3.9 (#454)
+  * Add null check for connection to prevent AttributeError on
+    drain_events (#457)
+  * Fix prevent channel revival during intentional close to fix
+    shutdown crash (#458)
+  * Add Python 3.14 support
+  * Support limiting tls version (#463)
+  * Decode AMQP field-table type l as signed 64-bit (#465)
+  * Treat basic_publish write timeouts as connection errors
+    (#464)
+  * Serialize frame_writer() writes with a lock (#466)
+  * Decode AMQP field-table type 's' as signed 16-bit (#469)</comment>
+    <requestid>1380793</requestid>
+  </revision>
 </revisionlist>
