@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 13:50:09 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.3
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+
+-------------------------------------------------------------------
+Wed Aug 12 06:21:28 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.2
+  * require Protobuf 6.33.5+ (#17743)
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Wed Jul  8 08:43:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.9.1

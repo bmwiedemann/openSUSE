@@ -20,4 +20,12 @@
   * Drop support for Python 3.9 (#16948)</comment>
     <requestid>1364495</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2068966ff78aa12bc53c31ac7b4e7e8c</srcmd5>
+    <version>1.9.3</version>
+    <time>1790584929</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380375</requestid>
+  </revision>
 </revisionlist>
