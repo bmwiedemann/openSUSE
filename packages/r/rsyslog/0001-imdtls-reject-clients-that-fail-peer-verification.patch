@@ -1,0 +1,24 @@
+From ef9f77d709640ceb3d5e78118081a291f9e373c5 Mon Sep 17 00:00:00 2001
+From: Rainer Gerhards <rgerhards@adiscon.com>
+Date: Tue, 25 Aug 2026 18:15:20 +0200
+Subject: [PATCH] imdtls: reject clients that fail peer verification
+
+---
+ plugins/imdtls/imdtls.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/plugins/imdtls/imdtls.c b/plugins/imdtls/imdtls.c
+index 6e4a405bb..055091662 100644
+--- a/plugins/imdtls/imdtls.c
++++ b/plugins/imdtls/imdtls.c
+@@ -592,6 +592,7 @@ static void DTLSAcceptSession(instanceConf_t *inst, int idx) {
+             status = imdtls_verify_callback(status, ssl);
+             if (status == 0) {
+                 LogMsg(0, RS_RET_NO_ERRCODE, LOG_WARNING, "imdtls: Cert Verify FAILED for DTLS client idx (%d)", idx);
++                DTLScleanupSession(inst, idx);
+             } else {
+                 DBGPRINTF("imdtls: Cert Verify SUCCESS for DTLS client idx (%d)\n", idx);
+             }
+-- 
+2.55.0
+

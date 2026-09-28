@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 23 13:22:56 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- fix VUL-0: imdtls permitted-peer authorization bypass (bsc#1281628) 
+ * add 0001-imdtls-reject-clients-that-fail-peer-verification.patch
+
+-------------------------------------------------------------------
 Wed Sep  2 06:03:32 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - upgrade to rsyslog 8.2608.0

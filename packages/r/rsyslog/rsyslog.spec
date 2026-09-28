@@ -236,7 +236,8 @@ Source17:       acpid.frule
 Source18:       firewall.frule
 Source19:       NetworkManager.frule
 Source20:       rsyslog-tmpfiles.conf
-Patch:          0001-fix-RainerScript-replace-heap-buffer-overflow.patch
+Patch1:         0001-fix-RainerScript-replace-heap-buffer-overflow.patch
+Patch2:         0001-imdtls-reject-clients-that-fail-peer-verification.patch
 
 # this is a dirty hack since % dir does only work for the specified directory and nothing above
 # but I want to be able to switch this to /etc/apparmor.d once the profiles received more testing
