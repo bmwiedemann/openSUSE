@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Fri Sep 25 05:28:40 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.0.16
+  * Security fixes
+    + Client certificate requirements can be down-graded
+      (bsc#1282621, CVE-2026-86247)
+      A race condition allowed client certificate verification
+      requirements to be down-graded for some configurations.
+    + Insecure OpenSSL options enabled (bsc#1282622, CVE-2026-86246)
+      Apache Tomcat Native enabled insecure options by default
+      including ALLOW_CLIENT_RENEGOTIATION,
+      NO_EXTENDED_MASTER_SECRET, IGNORE_UNEXPECTED_EOF and
+      ALLOW_NO_DHE_KEX.
+    + DoS via TLS handshake (bsc#1282623, CVE-2026-86243)
+      A buffer over-read vulnerability in Apache Tomcat Native
+      during the TLS handshaking permits a malicious user to trigger
+      a DoS via a JVM crash.
+  * Changes
+    + Code: Remove call to ERR_remove_thread_state() from Windows
+      specific code to allow building with OpenSSL 4.0.x
+      ERR_remove_thread_state() is a no-op in OpenSSL 1.1+ and got
+      removed in OpenSSL 4
+    + Update: Remove support for Windows build on IA64 architecture
+      (Itanium)
+    + Update: Make x64 the default architecture for Windows build
+    + Update: Make Windows 10 / 11 the default target version for
+      Windows builds
+    + Fix: Fix a potential crash when negotiating ALPN
+    + Fix: If ALPN negotiation fails and failure is configured to
+      use the last server protocol in the list, use it rather than
+      the last protocol offered by the client
+    + Fix: Add support for the extended range of options available
+      from OpenSSL 3.0.x. The options flag is now a 64-bit unsigned
+      int (represented by a Java long) rather than a 32-bit unsigned
+      int (represented by a Java int)
+    + Code: Remove unused code
+    + Fix: Ensure that per connection changes to certificate
+      verification settings, e.g. to support client certificate
+      authentication, do not modify the certificate verification
+      settings for other connections
+    + Fix: Fix a potential crash when configuring raw certificates
+    + Fix: Avoid a potential crash with very long ALPN protocol
+      names
+    + Fix: Make the call to a CertificateVerifier more robust
+    + Fix: Avoid a potential crash when processing OCSP URLs
+    + Fix: Make the processing of OCSP responses more robust
+    + Fix: Stricter OCSP handling when soft-fail is disabled
+    + Fix: Harden against the mis-use of Buffer.address(ByteBuffer)
+    + Fix: Harden against the mis-use of Pool.destroy(long)
+
+-------------------------------------------------------------------
 Tue Jun 16 05:21:56 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.0.15

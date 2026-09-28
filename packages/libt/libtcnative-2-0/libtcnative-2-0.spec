@@ -18,7 +18,7 @@
 
 %{!?make_build:%global make_build make %{?_smp_mflags}}
 Name:           libtcnative-2-0
-Version:        2.0.15
+Version:        2.0.16
 Release:        0
 Summary:        Tomcat resources for performance, compatibility, etc
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Group:          Productivity/Networking/Web/Servers
 URL:            https://tomcat.apache.org/native-doc/index.html
 Source0:        https://archive.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz
 Source1:        https://archive.apache.org/dist/tomcat/tomcat-connectors/native/%{version}/source/tomcat-native-%{version}-src.tar.gz.asc
-# https://www.apache.org/dist/tomcat/tomcat-connectors/KEYS
+# https://downloads.apache.org/tomcat/tomcat-connectors/KEYS
 Source2:        %{name}.keyring
 Patch0:         apr163.patch
 BuildRequires:  fdupes
