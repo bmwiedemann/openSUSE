@@ -67,4 +67,13 @@ entire payload is documentation. Verified on the artefact: rpm -qlp
 counts exactly 1018 node directories, and no file ships executable.</comment>
     <requestid>1379748</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>0a02e571408e3f7e41c6067b31db0815</srcmd5>
+    <version>0.5.13</version>
+    <time>1790596066</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfyui-embedded-docs to 0.5.13: 12 new documented nodes (1018 to 1030), existing docs and translations refreshed. Local aarch64 build green, rpmlint 0 errors, %check passes.
+</comment>
+    <requestid>1381107</requestid>
+  </revision>
 </revisionlist>

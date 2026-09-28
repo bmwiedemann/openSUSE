@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 28 08:00:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.13:
+  * 12 new documented nodes, 1018 to 1030: Pruna P-Video-2
+    text/image-to-video, Tripo P2 text/image/multiview-to-3D,
+    Qwen-Image 2.1 encode and cache, Tencent HY image, Hunyuan
+    image edit and text-to-image, Seedream 5.0 Flash layer
+    separation, Ming image edit, and Seedance 2.5 draft-to-final
+    video
+  * Refresh the existing node documentation and its translations,
+    including Claude, Quiver, Recraft, OpenAI chat, Meshy 7.1,
+    JsonExtractString, and the WanImageToVideo ref_pad_image
+    input
+
+-------------------------------------------------------------------
 Mon Sep 21 09:39:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.12:
