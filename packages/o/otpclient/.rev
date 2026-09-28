@@ -731,4 +731,41 @@
     for detailed information.</comment>
     <requestid>1379631</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>15aaf7899dc22711c1de2781c8700166</srcmd5>
+    <version>5.2.2</version>
+    <time>1790585134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.2.2:
+  + Flatpak:
+    - FIX: inside the Flatpak, the search provider's &quot;code copied&quot;
+      and failure notifications go through
+      org.freedesktop.portal.Notification instead of
+      org.freedesktop.Notifications, so the sandbox no longer needs
+      that permission. The code notification is marked transient
+      only once the portal reports version 2 or later, and is
+      withdrawn after five seconds regardless, so it does not
+      linger in history on version 1 backends such as KDE's
+  + Documentation:
+    - The README now describes minimize-to-tray as the runtime
+      setting it has been since 5.1.7, lists the full CLI surface,
+      and documents the SANITIZE build option, PIE and the
+      RELRO/BIND_NOW link flags
+    - The settings dialog no longer tells users a keyword change
+      needs a logout; the provider has reloaded it immediately for
+      a while now. Translation templates regenerated
+
+- Update to 5.2.1:
+  * FIX: replacing the active database while an unlock was still
+    running could free the state the worker was reading. Opening or
+    creating another database is now refused until the unlock
+    finishes, keyring replies for a database that is no longer
+    active are discarded, and a second concurrent unlock worker is
+    refused
+  * FIX: a token could be silently lost to an out-of-memory
+    condition during a save, because merging the quarantined tokens
+    into the database ignored a failed append and the atomic replace
+    made the omission permanent. The append is now checked and the</comment>
+    <requestid>1380792</requestid>
+  </revision>
 </revisionlist>
