@@ -1,5 +1,6 @@
 <package name="binaryen" project="openSUSE:Factory">
   <title></title>
   <description></description>
-  <url>https://src.opensuse.org/javascript/_ObsPrj.git</url>
+  <scmsync></scmsync>
+  <devel project="devel:tools:ide:vscode" package="binaryen"/>
 </package>
