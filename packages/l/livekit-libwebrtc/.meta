@@ -1,0 +1,4 @@
+<package name="livekit-libwebrtc" project="openSUSE:Factory">
+  <title>LiveKit's build of WebRTC (M137) as a shared library</title>
+  <description>libwebrtc.so plus headers for the LiveKit Rust SDK (webrtc-sys), as consumed by the Zed editor.</description>
+</package>

@@ -1,0 +1,40 @@
+--- a/src/build/config/compiler/BUILD.gn
++++ b/src/build/config/compiler/BUILD.gn
+@@ -649,6 +649,7 @@
+       # standard-compliant __VA_OPT__ added by C++20, and switch the gcc build
+       # to -std=c*.
+       standard_prefix = "gnu"
++      defines += [ "_DEFAULT_SOURCE" ]
+     }
+ 
+     cflags_c += [ "-std=${standard_prefix}11" ]
+--- a/src/build/config/linux/BUILD.gn
++++ b/src/build/config/linux/BUILD.gn
+@@ -15,10 +15,25 @@
+ # is applied to all targets. It is here to separate out the logic that is
+ # Linux-only. This is not applied to Android, but is applied to ChromeOS.
+ config("compiler") {
++  cflags_cc = [
++    "-Wno-changes-meaning",
++    "-Wno-unknown-pragmas",
++  ]
++
++  # The gn build never sees the distribution's CFLAGS, so hardening goes here.
++  cflags = [
++    "-fstack-protector-strong",
++    "-fstack-clash-protection",
++    "-U_FORTIFY_SOURCE",
++    "-D_FORTIFY_SOURCE=3",
++  ]
++  asmflags = []
++
++  if (current_cpu == "x64") {
++    cflags += [ "-fcf-protection" ]
++  }
+   if (current_cpu == "arm64") {
+     import("//build/config/arm.gni")
+-    cflags = []
+-    asmflags = []
+     if (arm_control_flow_integrity == "standard") {
+       cflags += [ "-mbranch-protection=standard" ]
+       asmflags += [ "-mbranch-protection=standard" ]

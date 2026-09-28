@@ -1,0 +1,22 @@
+diff --git a/src/tools_webrtc/libs/generate_licenses.py b/src/tools_webrtc/libs/generate_licenses.py
+--- a/src/tools_webrtc/libs/generate_licenses.py
++++ b/src/tools_webrtc/libs/generate_licenses.py
+@@ -133,8 +133,6 @@ SRC_DIR = os.path.dirname(os.path.dirname(SCRIPT_DIR))
+ # to the *true* source root, when we're embedded like this.
+ if SRC_DIR.endswith(os.path.join('third_party', 'webrtc')):
+     SRC_DIR = os.path.abspath(os.path.join(SRC_DIR, os.pardir, os.pardir))
+-sys.path.append(os.path.join(SRC_DIR, 'build'))
+-import find_depot_tools
+ 
+ THIRD_PARTY_LIB_SIMPLE_NAME_REGEX = r'^.*/third_party/([\w\-+]+).*$'
+ THIRD_PARTY_LIB_REGEX_TEMPLATE = r'^.*/third_party/%s$'
+@@ -195,8 +193,7 @@ class LicenseBuilder:
+     @staticmethod
+     def _run_gn(buildfile_dir, target):
+         cmd = [
+-            sys.executable,
+-            os.path.join(find_depot_tools.DEPOT_TOOLS_PATH, 'gn.py'),
++            'gn',
+             'desc',
+             '--all',
+             '--format=json',

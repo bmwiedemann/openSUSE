@@ -1,0 +1,94 @@
+--- a/src/BUILD.gn
++++ b/src/BUILD.gn
+@@ -143,9 +143,23 @@
+ # target_defaults and direct_dependent_settings.
+ config("common_inherited_config") {
+   defines = [ "PROTOBUF_ENABLE_DEBUG_LOGGING_MAY_LEAK_PII=0" ]
+-  cflags = []
++
++  # The shim that links libwebrtc.so needs the WebRTC API visible.
++  cflags = [ "-fvisibility=default" ]
+   ldflags = []
+ 
++  if (is_linux) {
++    # The system ffmpeg shim only carries headers, so the libraries have to be
++    # named here.
++    ldflags += [
++      "-lavcodec",
++      "-lavutil",
++      "-Wl,-soname,@SONAME@",
++      "-Wl,--version-script=" +
++          rebase_path("//libwebrtc.version", root_build_dir),
++    ]
++  }
++
+   if (rtc_objc_prefix != "") {
+     defines += [ "RTC_OBJC_TYPE_PREFIX=${rtc_objc_prefix}" ]
+   }
+@@ -526,7 +541,7 @@
+ 
+ if (!build_with_chromium) {
+   # Target to build all the WebRTC production code.
+-  rtc_static_library("webrtc") {
++  rtc_shared_library("webrtc") {
+     # Only the root target and the test should depend on this.
+     visibility = [
+       "//:default",
+@@ -534,8 +549,6 @@
+     ]
+ 
+     sources = []
+-    complete_static_lib = true
+-    suppressed_configs += [ "//build/config/compiler:thin_archive" ]
+     defines = []
+ 
+     deps = [
+--- a/src/webrtc.gni
++++ b/src/webrtc.gni
+@@ -13,7 +13,9 @@
+ import("//build/config/sysroot.gni")
+ import("//build_overrides/build.gni")
+ 
+-if (!build_with_chromium && is_component_build) {
++# is_component_build is set only to turn rtc_library into source_set, so that
++# all of WebRTC lands in the one shared library.
++if (false) {
+   print("The Gn argument `is_component_build` is currently " +
+         "ignored for WebRTC builds.")
+   print("Component builds are supported by Chromium and the argument " +
+--- a/src/build/config/BUILDCONFIG.gn
++++ b/src/build/config/BUILDCONFIG.gn
+@@ -738,7 +738,7 @@
+ # case by setting static_component_type to either "source_set" or
+ # "static_library". If unset, the default will be used.
+ template("component") {
+-  if (is_component_build) {
++  if (false) {
+     _component_mode = "shared_library"
+ 
+     # Generate a unique output_name for a shared library if not set by invoker.
+--- a/src/rtc_tools/BUILD.gn
++++ b/src/rtc_tools/BUILD.gn
+@@ -17,7 +17,6 @@
+   deps = [ ":video_file_reader" ]
+   if (!build_with_chromium) {
+     deps += [
+-      ":frame_analyzer",
+       ":psnr_ssim_analyzer",
+       ":video_quality_analysis",
+     ]
+--- a/src/build/config/gcc/BUILD.gn
++++ b/src/build/config/gcc/BUILD.gn
+@@ -81,9 +81,9 @@
+   }
+ }
+ 
+-if (is_component_build && !is_android) {
+-  # See the rpath_for... config above for why this is necessary for component
+-  # builds.
++# Only one shared library comes out of this build, so nothing has to find a
++# sibling next to itself and RUNPATH $ORIGIN would only be noise.
++if (false) {
+   executable_and_shared_library_configs_ =
+       [ ":rpath_for_built_shared_libraries" ]
+ } else {

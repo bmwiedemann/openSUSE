@@ -1,0 +1,57 @@
+-------------------------------------------------------------------
+Wed Sep 16 16:57:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package, version 137.0+git20251012.0001d84: LiveKit's
+  WebRTC M137 built from source as a shared library for the Zed
+  editor's calls feature (webrtc-sys)
+- Source0 is maintainer-generated from a gclient checkout of
+  webrtc-sdk/webrtc 0001d84; make-source.sh reproduces it
+- Build against the distribution's dav1d, ffmpeg, libaom,
+  libjpeg-turbo, libvpx, openh264, opus and zlib instead of the
+  bundled copies; abseil-cpp and libyuv have to stay bundled
+  (README.SUSE-maint says why), as do boringssl, crc32c,
+  libsrtp, perfetto, pffft, rnnoise and sigslot
+- Declare what is still bundled with Provides: bundled()
+- H.264 goes through the system openh264 and ffmpeg. H.265 is
+  off: the distribution's ffmpeg-8 is built without the hevc
+  decoder, so the parsers, RTP packetizers and SDP name that
+  rtc_use_h265 adds would have no codec behind them
+- The bundled BoringSSL is renamed with an LK_ prefix so that it
+  can neither interpose nor be interposed by the system OpenSSL
+  in a process that loads both
+- Upstream ships no shared library and no soname, so the soname
+  is SUSE-namespaced as libwebrtc-suse.so.137; a
+  LIVEKIT_WEBRTC_137_0001d84 symbol version node pins the ABI to
+  the snapshot, which changes within a milestone
+- Ship only the headers the consumer compiles against, not the
+  whole source tree
+- Add add_licenses.patch: licence table entries for the
+  generated LICENSE.md
+- Add ssl_verify_callback_with_native_handle.patch: pass the
+  native SSL handle to a custom certificate verifier
+- Add add_deps.patch: pull zlib, log sinks, the simulcast
+  encoder adapter and the frame crypto transformer into :default
+- Add disable_crel.patch: drop -Wa,--crel, which produces code
+  that segfaults on aarch64
+- Add david_disable_gun_source_macro.patch: dav1d defines
+  _GNU_SOURCE only for gcc on x86/x64
+- Add force_gcc.patch: the flags needed to build with GCC
+  instead of Chromium's clang, plus the distribution hardening
+- Add chromium-129-rust.patch: drop the clang compiler_builtins
+  config so no compiler-rt is needed
+- Add pipewire-1.5-rebased.patch: include spa/pod/iter.h, needed
+  with PipeWire 1.5.81 and newer
+- Add native-gcc-toolchain.patch: drop the aarch64-linux-gnu-
+  tool prefix from the arm64 gcc toolchain, which a native
+  aarch64 build does not have
+- Add generate-licenses-system-gn.patch: run gn directly rather
+  than through depot_tools, which is not packaged
+- Add shared-library.patch: link one shared library instead of a
+  static archive, name the system ffmpeg libraries, set the
+  soname and hide the PipeWire trampolines
+- Add system-openh264-shim.patch: depend on the unbundle shim so
+  its forwarding headers are generated
+- Add h265-optional-in-frame-cryptor.patch: livekit's frame
+  cryptor calls the H.265 parsers with no build guard, so the
+  library does not link with rtc_use_h265=false
+

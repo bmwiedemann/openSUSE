@@ -1,0 +1,12 @@
+<constraints>
+  <hardware>
+    <!-- %limit_build -m 1200 caps the job count against this; the build root
+         stays under 3 GB (694 MiB source, ~1.5 GB objects) -->
+    <memory>
+      <size unit="G">16</size>
+    </memory>
+    <disk>
+      <size unit="G">10</size>
+    </disk>
+  </hardware>
+</constraints>

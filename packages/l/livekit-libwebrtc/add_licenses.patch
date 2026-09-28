@@ -1,0 +1,19 @@
+diff --git a/src/tools_webrtc/libs/generate_licenses.py b/src/tools_webrtc/libs/generate_licenses.py
+index d945b43..5f3e457 100755
+--- a/src/tools_webrtc/libs/generate_licenses.py
++++ b/src/tools_webrtc/libs/generate_licenses.py
+@@ -86,6 +86,14 @@ LIB_TO_LICENSES_DICT = {
+     # Compile time dependencies, no license needed:
+     'ow2_asm': [],
+     'jdk': [],
++
++    # taken from the distribution, nothing of theirs is shipped
++    'ffmpeg': [],
++    'openh264': [],
++    'catapult': [],
++    'google_benchmark': [],
++    'googletest': [],
++    'vinn': [],
+ }
+ 
+ # Third_party library _regex_ to licences mapping. Keys are regular expression

@@ -1,0 +1,13 @@
+--- a/src/modules/video_coding/BUILD.gn
++++ b/src/modules/video_coding/BUILD.gn
+@@ -528,6 +528,10 @@
+     deps += [ "//third_party/ffmpeg" ]
+     if (rtc_system_openh264) {
+       configs += [ ":openh264" ]
++
++      # h264_encoder_impl.h includes the header by its in-tree path, which only
++      # the unbundle shim provides when this target depends on it.
++      deps += [ "//third_party/openh264:encoder" ]
+     } else {
+       deps += [ "//third_party/openh264:encoder" ]
+     }

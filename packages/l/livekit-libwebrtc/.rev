@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>4a1fd2f94a4ffa74139ac6c7dcc69174</srcmd5>
+    <version>137.0+git20251012.0001d84</version>
+    <time>1790584686</time>
+    <user>anag_factory</user>
+    <comment>New package: LiveKit's WebRTC (M137, commit 0001d84) built from source as a shared library. zed's calls feature needs it (webrtc-sys). Without it, zed's build would download livekit's prebuilt libwebrtc.a, which OBS cannot do.
+
+- Source0 is maintainer-generated from a gclient checkout. make-source.sh (Source1) reproduces it.
+- It builds against the system dav1d, ffmpeg, libaom, libjpeg-turbo, libvpx, openh264, opus and zlib. The rest stays bundled and is declared with Provides: bundled(). BoringSSL is symbol-prefixed so it cannot clash with the system OpenSSL.
+- SONAME libwebrtc-suse.so.137 is ours, not upstream's. It is bumped with every snapshot because each snapshot is a new ABI.
+- Disabled on 16.0: libaom's SVE code needs GCC 14 or newer.
+- README.SUSE-maint documents the bump procedure and the lockstep with zed.
+
+Submitted before zed, which build-requires it.</comment>
+    <requestid>1379959</requestid>
+  </revision>
+</revisionlist>

@@ -1,0 +1,19 @@
+/* The version node makes the per-snapshot ABI explicit: rpm turns it into a
+ * dependency, so ld.so refuses a consumer built against a different snapshot.
+ * PipeWire's lazy-load trampolines would shadow the real libpipewire when
+ * libasound loads its plugin, and perfetto is internal tracing nothing outside
+ * calls.  Abseil is deliberately NOT hidden - see README.SUSE-maint. */
+LIVEKIT_WEBRTC_137_@SHORT@ {
+  global:
+    *;
+  local:
+    pw_*;
+    spa_*;
+    _ZN8perfetto*;
+    _ZNK8perfetto*;
+    _ZTVN8perfetto*;
+    _ZTIN8perfetto*;
+    _ZTSN8perfetto*;
+    _ZGVZN8perfetto*;
+    _ZZN8perfetto*;
+};

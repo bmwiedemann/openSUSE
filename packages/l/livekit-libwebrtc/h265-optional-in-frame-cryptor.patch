@@ -1,0 +1,73 @@
+--- a/src/api/crypto/frame_crypto_transformer.cc
++++ b/src/api/crypto/frame_crypto_transformer.cc
+@@ -32,7 +32,9 @@
+ #include "absl/types/variant.h"
+ #include "api/array_view.h"
+ #include "common_video/h264/h264_common.h"
++#if defined(RTC_ENABLE_H265)
+ #include "common_video/h265/h265_common.h"
++#endif
+ #include "modules/rtp_rtcp/source/rtp_format_h264.h"
+ #include "rtc_base/byte_buffer.h"
+ #include "rtc_base/crypto_random.h"
+@@ -99,6 +101,7 @@
+   }
+ }
+ 
++#if defined(RTC_ENABLE_H265)
+ inline bool FrameIsH265(webrtc::TransformableFrameInterface* frame,
+                         webrtc::FrameCryptorTransformer::MediaType type) {
+   switch (type) {
+@@ -132,6 +135,7 @@
+          nalu_type == webrtc::H265::NaluType::kIdrNLp ||
+          nalu_type == webrtc::H265::NaluType::kCra;
+ }
++#endif
+ 
+ inline bool NeedsRbspUnescaping(const uint8_t* frameData, size_t frameSize) {
+   for (size_t i = 0; i < frameSize - 3; ++i) {
+@@ -200,7 +204,9 @@
+               break;
+           }
+         }
+-      } else if (videoFrame->header().codec ==
++      }
++#if defined(RTC_ENABLE_H265)
++      else if (videoFrame->header().codec ==
+                  webrtc::VideoCodecType::kVideoCodecH265) {
+         rtc::ArrayView<const uint8_t> data_in = frame->GetData();
+         std::vector<webrtc::H265::NaluIndex> nalu_indices =
+@@ -226,6 +232,7 @@
+           }
+         }
+       }
++#endif
+       break;
+     }
+     default:
+@@ -476,9 +483,11 @@
+     if (FrameIsH264(frame.get(), type_)) {
+       H264::WriteRbsp(data_without_header.data(), data_without_header.size(),
+                       &data_out);
++#if defined(RTC_ENABLE_H265)
+     } else if (FrameIsH265(frame.get(), type_)) {
+       H265::WriteRbsp(data_without_header.data(), data_without_header.size(),
+                       &data_out);
++#endif
+     } else {
+       data_out.AppendData(data_without_header);
+       RTC_CHECK_EQ(data_out.size(), frame_header.size() +
+@@ -628,11 +637,13 @@
+       NeedsRbspUnescaping(encrypted_buffer.data(), encrypted_buffer.size())) {
+     encrypted_buffer.SetData(
+         H264::ParseRbsp(encrypted_buffer.data(), encrypted_buffer.size()));
++#if defined(RTC_ENABLE_H265)
+   } else if (FrameIsH265(frame.get(), type_) &&
+              NeedsRbspUnescaping(encrypted_buffer.data(),
+                                  encrypted_buffer.size())) {
+     encrypted_buffer.SetData(
+         H265::ParseRbsp(encrypted_buffer.data(), encrypted_buffer.size()));
++#endif
+   }
+ 
+   rtc::Buffer encrypted_payload(encrypted_buffer.size() - ivLength - 2);

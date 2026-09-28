@@ -1,0 +1,27 @@
+Rebase of https://github.com/Thaodan/tg_owt/commit/960b6b30a9c7e9e4451031c30f362fd01d2ce7c1
+(taken from nixpkgs livekit-libwebrtc) onto webrtc-sdk m137_release.
+Pipewire 1.5.81+ no longer pulls spa/pod/iter.h in transitively.
+
+diff --git a/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc b/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
+--- a/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
++++ b/src/modules/desktop_capture/linux/wayland/shared_screencast_stream.cc
+@@ -13,6 +13,8 @@
+ #include <fcntl.h>
+ #include <libdrm/drm_fourcc.h>
+ #include <pipewire/pipewire.h>
++#include <spa/pod/parser.h>
++#include <spa/pod/iter.h>
+ #include <spa/param/video/format-utils.h>
+ 
+ #include <vector>
+diff --git a/src/modules/video_capture/linux/pipewire_session.cc b/src/modules/video_capture/linux/pipewire_session.cc
+--- a/src/modules/video_capture/linux/pipewire_session.cc
++++ b/src/modules/video_capture/linux/pipewire_session.cc
+@@ -15,6 +15,7 @@
+ #include <spa/param/format.h>
+ #include <spa/param/video/raw.h>
+ #include <spa/pod/parser.h>
++#include <spa/pod/iter.h>
+ 
+ #include <algorithm>
+ 
