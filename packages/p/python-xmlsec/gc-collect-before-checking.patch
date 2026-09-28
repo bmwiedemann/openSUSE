@@ -1,0 +1,24 @@
+diff -ur xmlsec-1.3.17.orig/tests/base.py xmlsec-1.3.17/tests/base.py
+--- xmlsec-1.3.17.orig/tests/base.py	2026-08-01 18:03:41.993662244 -0300
++++ xmlsec-1.3.17/tests/base.py	2026-08-01 18:03:48.009014638 -0300
+@@ -39,7 +39,8 @@
+             return
+ 
+         m_usage = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
+-        o_count = gc.get_count()[0]
++        gc.collect()
++        o_count = len(gc.get_objects())
+         m_hits = 0
+         o_hits = 0
+         for _ in range(self.iterations):
+@@ -48,7 +49,8 @@
+             if m_usage_n > m_usage:
+                 m_usage = m_usage_n
+                 m_hits += 1
+-            o_count_n = gc.get_count()[0]
++            gc.collect()
++            o_count_n = len(gc.get_objects())
+             if o_count_n > o_count:
+                 o_count = o_count_n
+                 o_hits += 1
+

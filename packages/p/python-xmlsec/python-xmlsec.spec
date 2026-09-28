@@ -24,6 +24,8 @@ Summary:        Python bindings for the XML Security Library
 License:        MIT
 URL:            https://github.com/mehcode/python-xmlsec
 Source:         https://files.pythonhosted.org/packages/source/x/xmlsec/xmlsec-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM-ish Sourced from gh#xmlsec/python-xmlsec#426
+Patch0:         gc-collect-before-checking.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module lxml >= 3.8.0}
