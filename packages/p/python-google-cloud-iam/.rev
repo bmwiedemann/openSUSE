@@ -81,4 +81,12 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1370006 from glaubitz)</comment>
     <requestid>1370044</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>522591ea3f861ca48b50ad65c09b6a8a</srcmd5>
+    <version>2.25.0</version>
+    <time>1790584927</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380374</requestid>
+  </revision>
 </revisionlist>

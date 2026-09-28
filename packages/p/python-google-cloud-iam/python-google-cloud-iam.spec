@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-iam
-Version:        2.24.1
+Version:        2.25.0
 Release:        0
 Summary:        Google Cloud Iam API client library
 License:        Apache-2.0
