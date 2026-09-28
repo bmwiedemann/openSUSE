@@ -1,7 +1,7 @@
 #
 # spec file for package mapi-header-php
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %define _empty_manifest_terminate_build 0
 
 Name:           mapi-header-php
-Version:        2.1
+Version:        2.3
 Release:        0
 Summary:        Common PHP MAPI header files for grommunio
 License:        AGPL-3.0-or-later

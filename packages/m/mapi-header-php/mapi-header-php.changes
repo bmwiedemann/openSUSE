@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Sep 25 21:39:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.3
+  * Incorrect yearly recurrence periods after parsing and when
+    calculating occurrences have been repaired.
+  * Broken recurrence data used to abort calendar processing, now
+    it is skipped and logged.
+  * A delegate's meeting response was erroneously reported as the
+    delegate, not the mailbox owner.
+  * Meeting responses will now have PidLidAttendeeCriticalChange
+    set (and thus generate a DTSTAMP line when converted to iCal)
+  * No longer report a failure from the mail cleanup routine even
+    when a meeting request is complete.
+  * Results from gmdate() are now compared as integers in
+    recurrence month calculations.
+  * Restrictions are applied more efficiently (less runtime) within
+    getCalendarItems().
+
+-------------------------------------------------------------------
+Thu Aug 13 11:22:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.2
+  * Cache gmtime() results in BaseRecurrence
+  * Cache DST boundaries and daysInMonth results
+  * Add hash index infrastructure for exception lookups
+  * Use hash-indexed lookups for exception methods
+  * Category handling for the attendee
+  * Set PR_HTML body message with fallback to PR_BODY
+  * New RecurrenceException class
+  * Added a mapi_linkmessages stub
+  * Delegate Wastebasket style constants
+
+-------------------------------------------------------------------
 Fri Dec 19 00:06:09 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.1
