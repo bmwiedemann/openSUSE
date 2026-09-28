@@ -22,7 +22,7 @@
 
 %bcond_with     test
 Name:           zellij
-Version:        0.44.3
+Version:        0.45.1
 Release:        0
 Summary:        Terminal workspace with batteries included
 License:        MIT
@@ -101,9 +101,8 @@ mv -v target/wasm32-wasip1/release/*.wasm zellij-utils/assets/plugins/
 
 for shell in "zsh" "bash" "fish"
 do
-  ./target/release/%{name} setup --generate-completion "$shell" > target/%{name}."$shell"
+  ./target/release/%{name} setup --generate-completion "${shell}" > target/%{name}."$shell"
 done
-mandown docs/MANPAGE.md > target/zellij.1
 
 %install
 install -Dm644 -T ./target/zellij.bash %{buildroot}%{_datadir}/bash-completion/completions/zellij
@@ -111,10 +110,6 @@ install -Dm644 -T ./target/zellij.fish %{buildroot}%{_datadir}/fish/vendor_compl
 install -Dm644 -T ./target/zellij.zsh %{buildroot}%{_datadir}/zsh/site-functions/_zellij
 install -Dm644 -T %{_builddir}/%{name}-%{version}/assets/logo.png %{buildroot}%{_datadir}/pixmaps/%{name}.png
 install -Dm644 -T %{_builddir}/%{name}-%{version}/assets/%{name}.desktop %{buildroot}%{_datadir}/applications/%{name}.desktop
-
-%if 0%{?suse_version} > 1500
-install -Dm644 -T ./target/zellij.1 %{buildroot}%{_mandir}/man1/zellij.1
-%endif
 
 %{cargo_install} --features unstable
 
@@ -133,12 +128,8 @@ cp -av example/themes %{buildroot}%{_datadir}/%{name}
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/*
 
-%if 0%{?suse_version} > 1500
-%{_mandir}/man1/zellij.1%{?ext_man}
-%endif
-
 %license LICENSE.md
-%doc README.md docs/ARCHITECTURE.md docs/MANPAGE.md docs/TERMINOLOGY.md docs/THIRD_PARTY_INSTALL.md
+%doc README.md docs/ARCHITECTURE.md docs/TERMINOLOGY.md docs/THIRD_PARTY_INSTALL.md
 
 %files bash-completion
 %{_datadir}/bash-completion/*

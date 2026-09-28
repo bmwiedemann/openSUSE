@@ -1,4 +1,115 @@
 -------------------------------------------------------------------
+Fri Aug 28 14:32:38 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 0.45.1:
+  * chore(release): v0.45.1
+  * Minor fixes for 45 patch (#5550)
+  * fix(plugins): release a CLI pipe when the plugin handling it crashes (#5537)
+  * fix(web-client): coalesce concurrent authentication onto a single prompt (#5542)
+  * feat: allow starting a session with an initial command (#5543)
+  * fix first run wizard unlock first nested session keybinds (#5539)
+  * fix: update modes for tabs on switch (#5535)
+  * fix: allow setting an explicit theme hue rather than guessing (#5536)
+  * fix: visibility events to plugins on floating pane toggles (#5534)
+  * fix(plugins): notify floating panes when their tab is hidden (#5518)
+  * fix: save room for title in fixed-size layout panes (#5533)
+  * feat: allow opting-out of scroll mode sync (#5532)
+  * fix(layout): compose the containing node's cwd into floating panes (#5503)
+  * fix: fullscreen floating pane editor (#5528)
+  * fix: focus event handling from external in web (#5527)
+  * fix(kitty): apply reported pixel dimensions to existing ptys and clear images of collapsed stack members (#5526)
+  * fix: various snotifications issues introduced in 045 (#5523)
+  * fix: don't require nested reading of env var to detect nested sessions (#5522)
+  * docs: fix outdated contributing packaging command
+
+-------------------------------------------------------------------
+Fri Aug 21 10:37:32 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 0.45.0:
+  * fix(ci): force LF checkout for bundled web client assets
+  * chore(release): v0.45.0
+  * Release notes (in the about plugin) for the 0.45 release (#5498)
+  * Fixes before 045 (#5492)
+  * Fix typos in comments, docs and error messages (#5490)
+  * chore: remove yanked package versions from lockfile (#5487)
+  * fix: close session manager if switching sessions (#5486)
+  * Implement host focus gained/lost and missing notifications (#5485)
+  * fix: put tabs in order of actual position (#5224)
+  * HOTFIX: rustfmt
+  * fix(plugin): prevent duplicate WASM instances on startup (#5178)
+  * fix(grid): preserve background when ECH erases wide chars (#5180)
+  * feat: allow opting-in to reading paste buffer (default false) (#5472)
+  * fix(clipboard): don't kill copy_command processes that own the selection (#5458)
+  * fix(scroll): keep scroll position when leaving scroll mode (#5299)
+  * change "iguanadon" to "iguanodon" (#5395)
+  * fix(stack): scrollback truncation when adding a stacked pane in list mode (#5403)
+  * Add missings sugar functions `NestedListItem::*color*` in plugin API (#5412)
+  * feat: select OSC 133 command output on triple click (#5460)
+  * fix(input): realign raw-byte buffer with the keyboard parser to stop stale bytes eating keystrokes (#5446)
+  * Fix tab close size (#5444)
+  * Native web mobile UI (#5441)
+  * fix: resize race when breaking a pane to a new tab (#5434)
+  * fix: allow building without bundled plugin assets (#5433)
+  * fix(sixel): only advertise capability if host terminal supports it (#5432)
+  * Support the Kitty Image Protocol (#5428)
+  * fix(build): remove manpage, honor CARGO_TARGET_DIR, add cargo argument passthrough, remove clippy (#5426)
+  * Even more debian upgrades (#5424)
+  * More dependency upgrades for debian (#5421)
+  * Dep upgrades for debian (#5420)
+  * Nested session handling (#5417)
+  * Switch from the unmaintained daemonize crate to a maintained fork (#4512)
+  * chore: replace unmaintained cassowary with maintained fork kasuari (#5416)
+  * fix(windows): prefer PATHEXT variants over bare filename in resolver (#5364)
+  * Stacked resize list fixes (#5379)
+  * docs(changelog): stdin parse fix
+  * fix: input spam when moving mouse while typing by splitting the input bytes into their respective events (#5323)
+  * docs(changelog): pane rename clear fix
+  * fix(panes): clear custom name when renaming (#5369)
+  * fix(grid): properly pad rows in CUF (#5377)
+  * fix(grid): scroll the region when a line wraps at its bottom margin (#5357)
+  * docs(changelog): allow disabling ctrl-mouse-scroll
+  * feat(config): add mouse_scroll_resize option (#5283)
+  * fix(config): allow binding theme actions in config.kdl (#5302)
+  * Allow creating panes/tabs from the CLI without changing focus to them (#5346)
+  * fix: focus last pane correctness issues (#5344)
+  * fix: changelog link
+  * docs(changelog): update pref PR
+  * perf: foreground pane-command discovery without scanning the whole process table (#5324)
+  * Stacked list fixes (#5342)
+  * fix(windows): preserve backslashes when quoting spawned-process arguments (#5336)
+  * fix(windows): route Windows Terminal through the VT input path (#5335)
+  * UI tweaks (#5337)
+  * fix: more verbose startup errors (#5334)
+  * Stacked lists (#5331)
+  * Reduce compilation time (#5321)
+  * fix: occasional garbage on attaching through slow connections (#5320)
+  * Fish completion delete session (#5317)
+  * chore: upgrade wasmi to 1.1.0 (#5319)
+  * Title frames (#5318)
+  * feat: reload config on theme change (#5135)
+  * feat(panes): `FocusLastPane` action (#4241)
+  * tests: add more integration tests (#5308)
+  * hotfix: fix flaky ci tests
+  * chore: new test infra (#5269)
+  * Mobile layout (#5241)
+  * feat: PWA support for the web client (#5184)
+  * docs(changelog): update release
+  * fix: stale grid after forwarding host reply (#5163)
+  * fix: clear bell when focusing with mouse (#5161)
+  * Welcome screen del fix (#5160)
+  * docs(changelog): update permissions pr
+  * fix(plugin): require specific permissions for new tab panes (#5143)
+  * docs(changelog): session manager close pr
+  * Fix session-manager Esc/Ctrl-c to close plugin instead of hiding (#5055)
+  * Fix esc mouse (#5157)
+  * fix(webclient): handle host query responses for pixel dimensions and colors (#5156)
+  * fix: deadlock with blocking panes (#5152)
+  * fix: occasional stall when querying host terminal (introduced in 0.44.1) (#5149)
+  * fix(windows): bump windows-sys to 0.59 (#5139)
+  * Independent tab sizes (#5133)
+  * bump changelog after release
+
+-------------------------------------------------------------------
 Wed May 13 08:40:29 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 0.44.3:
