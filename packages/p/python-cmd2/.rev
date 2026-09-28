@@ -799,4 +799,29 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1377860</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>3526bb67a282ed1622531f4b7c13e211</srcmd5>
+    <version>4.2.4</version>
+    <time>1790584679</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.4:
+  * Fixed output redirection and piping raising
+    `UnicodeEncodeError` and leaving an empty file
+    behind. Command output is rendered by Rich and contains box-
+    drawing characters, which no `cp125x` Windows ANSI code page
+    can represent, so redirecting or piping it failed.
+  * Fix some links which were broken when published to PyPI
+  * Converted `BoundCommandFunc` and `UnboundCommandFunc`
+    TypeAliases in `types.py` to Protocol
+    classes for stricter type checking on `cmd2` command method
+    references
+  * Improved documentation in attempt at making some recommended
+    best-practices more discoverable
+  * Fixed the broken `cmd_as_argument` example
+  * Added bracketed paste support so multiple pasted commands
+    execute sequentially and multiline
+  * commands continue as expected.
+  * Enabled Ctrl-Z suspension at the prompt</comment>
+    <requestid>1380727</requestid>
+  </revision>
 </revisionlist>
