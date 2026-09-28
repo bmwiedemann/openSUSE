@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:17:41 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-1281653_CVE-2026-94283_ximcp-bound-XIM_OPEN_REPLY-attribute-lengths-to-the-.patch
+  * Out-of-bounds read vulnerability in libX11's XIM (X Input Method) attribute parser
+    (boo#1281653, CVE-2026-94283)
+- 0002-1281657_CVE-2026-94284_ximcp-bound-XIM_REGISTER_TRIGGERKEYS-keylist-lengths.patch
+  * Out-of-bounds read vulnerability in libX11's XIM trigger-keyregistration parser.registration parser
+    (boo#1281657, CVE-2026-94284)
+- 0003-1281661_CVE-2026-94285_lcGenConv-bound-byteM_parse_codeset-reads-to-remaini.patch
+  * Out-of-bounds read in libX11's byte-oriented codeset parser
+    (boo#1281661, CVE-2026-94285)
+
+-------------------------------------------------------------------
 Fri Sep 18 11:05:08 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - u_xkb-Check-the-keysym-range-in-_XkbReadKeyActions-CVE.patch

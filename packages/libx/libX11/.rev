@@ -767,4 +767,20 @@ additions, including new UTF-8 compose sequences for:
     (CVE-2026-88806, ZDI-CAN-32061, bsc#1280910)</comment>
     <requestid>1378818</requestid>
   </revision>
+  <revision rev="62" vrev="3">
+    <srcmd5>5e892a910bc026dfc69f4c01f85d7410</srcmd5>
+    <version>1.8.13</version>
+    <time>1790584495</time>
+    <user>anag_factory</user>
+    <comment>- 0001-1281653_CVE-2026-94283_ximcp-bound-XIM_OPEN_REPLY-attribute-lengths-to-the-.patch
+  * Out-of-bounds read vulnerability in libX11's XIM (X Input Method) attribute parser
+    (boo#1281653, CVE-2026-94283)
+- 0002-1281657_CVE-2026-94284_ximcp-bound-XIM_REGISTER_TRIGGERKEYS-keylist-lengths.patch
+  * Out-of-bounds read vulnerability in libX11's XIM trigger-keyregistration parser.registration parser
+    (boo#1281657, CVE-2026-94284)
+- 0003-1281661_CVE-2026-94285_lcGenConv-bound-byteM_parse_codeset-reads-to-remaini.patch
+  * Out-of-bounds read in libX11's byte-oriented codeset parser
+    (boo#1281661, CVE-2026-94285)</comment>
+    <requestid>1380031</requestid>
+  </revision>
 </revisionlist>

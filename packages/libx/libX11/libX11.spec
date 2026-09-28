@@ -33,6 +33,9 @@ Patch1:         p_xlib_skip_ext_env.diff
 Patch2:         en-locales.diff
 Patch3:         u_no-longer-crash-in-XVisualIDFromVisual.patch
 Patch4:         u_xkb-Check-the-keysym-range-in-_XkbReadKeyActions-CVE.patch
+Patch11:        0001-1281653_CVE-2026-94283_ximcp-bound-XIM_OPEN_REPLY-attribute-lengths-to-the-.patch
+Patch12:        0002-1281657_CVE-2026-94284_ximcp-bound-XIM_REGISTER_TRIGGERKEYS-keylist-lengths.patch
+Patch13:        0003-1281661_CVE-2026-94285_lcGenConv-bound-byteM_parse_codeset-reads-to-remaini.patch
 BuildRequires:  fdupes
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
@@ -123,6 +126,9 @@ test -f nls/ja.S90/XLC_LOCALE.pre && exit 1
 %patch -P 2
 %patch -P 3 -p1
 %patch -P 4 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
+%patch -P 13 -p1
 
 %build
 %configure \
