@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Sep 25 05:06:40 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790312789.f59cf41c:
+  * chore(deps): Dependency cron 2026-09-25
+  * refactor: Reduce parameters of `update_note`
+  * refactor: Reduce parameters of `job_statistics`
+  * feat(job-stats): Allow specifying the setting to add additional jobs by
+  * docs: Update documentation of `/isos/job_stats` after recent changes
+  * feat: Return only "latest" jobs in `/isos/job_stats`
+  * feat: Include additional jobs for submission in `/isos/job_stats`
+  * test(devel-fullstack): Fix waiting for `outstanding_images`
+
+-------------------------------------------------------------------
+Thu Sep 24 19:06:47 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790273241.6c254f29:
+  * refactor: Reduce parameters of `update_note`
+  * refactor: Reduce parameters of `job_statistics`
+  * feat(job-stats): Allow specifying the setting to add additional jobs by
+  * docs: Update documentation of `/isos/job_stats` after recent changes
+  * feat: Return only "latest" jobs in `/isos/job_stats`
+  * feat: Include additional jobs for submission in `/isos/job_stats`
+  * test(devel-fullstack): Fix waiting for `outstanding_images`
+  * feat(cli): Add worker reservation subcommand
+
+-------------------------------------------------------------------
 Thu Sep 24 15:47:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790264833.381b79cd:
