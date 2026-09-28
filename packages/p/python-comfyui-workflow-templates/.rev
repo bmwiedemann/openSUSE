@@ -223,4 +223,33 @@ errors, 0 warnings, 0 badness.</comment>
     <comment>Update to 0.11.69: dependency roll.</comment>
     <requestid>1380161</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>1a349fb24b91889686d1275e2120f549</srcmd5>
+    <version>0.11.70</version>
+    <time>1790585181</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.70, a metadata-only release of the ComfyUI workflow
+templates meta package: the sdist diff touches only the version string
+and the release-train pins in pyproject.toml / PKG-INFO / requires.txt -
+the shim module is byte-identical. Pins move to core 0.3.361, json
+0.1.96 and media-assets-02 0.1.6.
+
+The bundle floors in the spec are deliberately not raised. Upstream's ==
+pins are a release-train lockfile, not an API contract (the spec carries
+a comment saying so), and the requirement is one-directional: a bundle
+older than the manifest core means a missing asset, which a floor
+expresses exactly.
+
+Note for the reviewer: python-comfyui-workflow-templates-media-assets-02
+is packaged at 0.1.5, so after this lands the six templates added by core
+0.3.361 install without their preview images until media-assets-02 0.1.6
+is packaged. The existing &quot;&gt;= 0.1.4&quot; floor already admits 0.1.6, so no
+spec change is needed when it does land.
+
+Native aarch64 build green, rpmlint 0 errors / 0 warnings / 0 badness,
+%check import smoke test green for python3.13 and 3.14. No Bugzilla
+report references the package and no CVE appears in the crossed range.
+</comment>
+    <requestid>1380834</requestid>
+  </revision>
 </revisionlist>
