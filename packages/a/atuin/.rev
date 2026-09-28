@@ -1633,4 +1633,14 @@
     <comment>Update to version 18.22.0 (forwarded request 1376892 from develop7)</comment>
     <requestid>1376894</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>d89da20f0f0e0877c0ffc9483ae9d204</srcmd5>
+    <version>18.23.0</version>
+    <time>1790585208</time>
+    <user>anag_factory</user>
+    <comment>- enable atuin-ai &amp; atuin-pty-proxy
+- Update to version 18.23.0
+</comment>
+    <requestid>1380854</requestid>
+  </revision>
 </revisionlist>

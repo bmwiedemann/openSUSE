@@ -17,7 +17,7 @@
 
 
 Name:           atuin
-Version:        18.22.0
+Version:        18.23.0
 Release:        0
 Summary:        Magical shell history
 License:        MIT
@@ -96,8 +96,8 @@ cp -v CONTRIBUTORS crates/atuin/src/command/CONTRIBUTORS
 ln -s ../../../vendor/bash-preexec crates/atuin/vendor/bash-preexec
 
 %build
-%{cargo_build} --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard"
-%{cargo_build} -p atuin-server
+%{cargo_build} --locked --no-default-features -F "atuin/client,atuin/sync,atuin/daemon,atuin/clipboard,atuin/ai,atuin/pty-proxy"
+%{cargo_build} --locked -p atuin-server
 %sysusers_generate_pre %{SOURCE4} atuin-server atuin-server.conf
 
 for shell in "zsh" "bash" "fish" "nushell"
