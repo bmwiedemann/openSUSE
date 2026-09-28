@@ -277,4 +277,12 @@ Introduce `exactness` into `Decimal` validation logic</comment>
   * update to match pydantic 2.13.5</comment>
     <requestid>1374902</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>36884885d0ba2f2df474aee4cfa6e72f</srcmd5>
+    <version>2.46.5</version>
+    <time>1790584526</time>
+    <user>anag_factory</user>
+    <comment>- Add upstream pytest91.patch to fix tests with pytest 9.1</comment>
+    <requestid>1379940</requestid>
+  </revision>
 </revisionlist>

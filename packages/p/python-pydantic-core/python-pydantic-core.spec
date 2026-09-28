@@ -33,6 +33,8 @@ License:        MIT
 URL:            https://github.com/pydantic/pydantic/tree/main/pydantic-core
 Source0:        https://files.pythonhosted.org/packages/source/p/pydantic-core/pydantic_core-%{version}.tar.gz
 Source1:        vendor.tar.xz
+# PATCH-FIX-UPSTREAM https://github.com/pydantic/pydantic/pull/13357 Fix test failures with pytest >= 9.1.0
+Patch0:         pytest91.patch
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module inline-snapshot}
 BuildRequires:  %{python_module maturin >= 1}
