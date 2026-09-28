@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 18:00:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.3.3
+  * Fixes a bug reading MacOS 64bit universal object.
+  * Fixes a bug reading Elf SHF_COMPRESSED sections in 64bit object
+    files.
+  * Fixes a test of a .debug_str section read to validate a section
+    offset before adding to a local pointer. (it matters with 32bit
+    pointer machines reading certain corrupt Elf object files).
+  * Includes a change in builds using cmake which does not require
+    any changes to your cmake builds(see READMEcmake.md for details).
+
+-------------------------------------------------------------------
 Wed Jul  8 08:59:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.3.2
