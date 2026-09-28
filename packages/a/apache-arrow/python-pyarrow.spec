@@ -107,7 +107,11 @@ pushd python
 export CFLAGS="%{optflags}"
 export PYARROW_BUILD_TYPE=relwithdebinfo
 export PYARROW_BUILD_VERBOSE=1
+%if 0%{?suse_version} >= 1600
+export PYARROW_PARALLEL="${RPM_BUILD_NCPUS}"
+%else
 %{?_smp_build_ncpus:export PYARROW_PARALLEL=%{_smp_build_ncpus}}
+%endif
 export PYARROW_WITH_HDFS=1
 export PYARROW_WITH_DATASET=1
 export PYARROW_WITH_PARQUET=1

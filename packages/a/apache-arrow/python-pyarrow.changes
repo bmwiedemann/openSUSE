@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 25 05:31:44 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace CPU core count macro with a variable (boo#1237231)
+
+-------------------------------------------------------------------
 Tue Jul 28 13:04:32 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 25.0.0 
