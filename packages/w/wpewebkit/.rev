@@ -224,4 +224,41 @@
 - Drop 70960.patch: fixed upstream.</comment>
     <requestid>1375039</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f05942cb6982fc1daf51a327302f4c58</srcmd5>
+    <version>2.54.0</version>
+    <time>1790585133</time>
+    <user>anag_factory</user>
+    <comment>- Enable support for DRM, headless and Wayland platform, via
+  passing ENABLE_WPE_PLATFORM=ON to cmake.
+
+- Update to version 2.54.0:
+  + The WPEPlatform embedding API is now considered stable and
+    enabled by default at build configuration time. The legacy
+    libwpe-based API is still available, and may be deprecated in
+    the future.
+  + Add new API for page favicons, using WebKitFaviconDatabase and
+    the WebKitWebView:page-icons property.
+  + Add the WebKitWebView:magnification property, to handle visual
+    scaling.
+  + Add new API to allow setting a per-navigation custom User-Agent
+    to WebKitWebsitePolicies.
+  + Add support for gamepad rumble effects.
+  + Add support for spell checking using the Enchant library.
+  + Add initial support for the Pointer Lock API.
+  + Switch Web Process compositor to use Skia instead of
+    TextureMapper.
+  + Improved WebXR implementation, which now includes support for
+    the Layers API.
+  + Improved damage handling that is now also used during the
+    composition to limit the composited areas.
+  + Implement GPU atlas creation and replay substitution for
+    batched raster image uploads.
+  + Media capability reporting is more accurate.
+  + Video decoding limits are now respected in media capabilities
+    queries.
+  + Remove the option to use Cairo for 2D rendering.
+- Drop riscv-platformenable.patch: Applied upstream.</comment>
+    <requestid>1380790</requestid>
+  </revision>
 </revisionlist>

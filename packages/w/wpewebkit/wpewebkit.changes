@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Sep 25 08:26:20 UTC 2026 - Michal Rostecki <vad@opensuse.org>
+
+- Enable support for DRM, headless and Wayland platform, via
+  passing ENABLE_WPE_PLATFORM=ON to cmake.
+
+-------------------------------------------------------------------
+Thu Sep 17 17:02:06 CEST 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.0:
+  + The WPEPlatform embedding API is now considered stable and
+    enabled by default at build configuration time. The legacy
+    libwpe-based API is still available, and may be deprecated in
+    the future.
+  + Add new API for page favicons, using WebKitFaviconDatabase and
+    the WebKitWebView:page-icons property.
+  + Add the WebKitWebView:magnification property, to handle visual
+    scaling.
+  + Add new API to allow setting a per-navigation custom User-Agent
+    to WebKitWebsitePolicies.
+  + Add support for gamepad rumble effects.
+  + Add support for spell checking using the Enchant library.
+  + Add initial support for the Pointer Lock API.
+  + Switch Web Process compositor to use Skia instead of
+    TextureMapper.
+  + Improved WebXR implementation, which now includes support for
+    the Layers API.
+  + Improved damage handling that is now also used during the
+    composition to limit the composited areas.
+  + Implement GPU atlas creation and replay substitution for
+    batched raster image uploads.
+  + Media capability reporting is more accurate.
+  + Video decoding limits are now respected in media capabilities
+    queries.
+  + Remove the option to use Cairo for 2D rendering.
+- Drop riscv-platformenable.patch: Applied upstream.
+- Add pkgconfig(enchant-2) BuildRequires: New dependency.
+- No longer disable skia on ppc64le.
+
+-------------------------------------------------------------------
 Mon Aug 31 13:18:51 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.52.6:
@@ -396,9 +435,10 @@ Tue Sep 26 09:05:23 UTC 2023 - Joan Torres <joan.torres@suse.com>
   * GBM is no longer required for WebGL implementation.
   * Add API to configure experimental features at runtime.
   * Add API to set the percentage of volume space that can be used for data storage.
-  * Fix several crashes and rendering issues. 
+  * Fix several crashes and rendering issues.
 
 -------------------------------------------------------------------
 Fri Jun 30 17:43:03 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Init repo.
+

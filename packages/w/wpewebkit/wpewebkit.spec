@@ -23,7 +23,7 @@
 
 Name:           wpewebkit
 %define _lto_cflags %{nil}
-Version:        2.52.6
+Version:        2.54.0
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -31,11 +31,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
-# PATCH-FIX-UPSTREAM riscv-platformenable.patch gh#Webkit/Webkit#64268
-Patch1:         riscv-platformenable.patch
-
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
+BuildRequires:  clang
+BuildRequires:  llvm
 BuildRequires:  flite-devel
 BuildRequires:  gcc-c++
 BuildRequires:  gperf >= 3.0.1
@@ -52,6 +51,7 @@ BuildRequires:  xdg-dbus-proxy
 BuildRequires:  pkgconfig(atk) >= 2.16.0
 BuildRequires:  pkgconfig(atk-bridge-2.0)
 BuildRequires:  pkgconfig(cairo) >= 1.16.0
+BuildRequires:  pkgconfig(enchant-2)
 BuildRequires:  pkgconfig(epoxy) >= 1.5.4
 BuildRequires:  pkgconfig(freetype2) >= 2.9.0
 BuildRequires:  pkgconfig(gbm)
@@ -167,23 +167,24 @@ embedded mini browsers.
 
 # Use linker flags to reduce memory consumption
 %global optflags %(echo %{optflags} -Wl,--no-keep-memory -Wl,--reduce-memory-overheads | sed 's/-g /-g1 /')
+export CC=clang
+export CXX=clang++
 export CFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %cmake \
   -GNinja \
+  -DCMAKE_POLICY_DEFAULT_CMP0057=NEW \
   -DCMAKE_BUILD_TYPE=Release \
   -DENABLE_DOCUMENTATION=OFF \
   -DENABLE_INTROSPECTION=OFF \
   -DPORT=WPE \
   -DENABLE_MINIBROWSER=ON \
+  -DENABLE_WPE_PLATFORM=ON \
   -DUSE_AVIF=ON \
   -DLIBEXEC_INSTALL_DIR=%{_libexecdir}/libWPEWebKit-%{_wksover} \
 %ifarch aarch64
   -DENABLE_JIT=OFF \
   -DUSE_SYSTEM_MALLOC=ON \
-%endif
-%ifarch ppc64le
-  -DUSE_SKIA=OFF \
 %endif
   -DUSE_SYSTEM_SYSPROF_CAPTURE=NO
 %ninja_build
@@ -210,8 +211,16 @@ export CXXFLAGS="%{optflags} $(pkg-config --cflags wayland-client xkbcommon)"
 %files devel
 %{_includedir}/wpe-webkit-%{_apiver}
 %{_libdir}/libWPEWebKit-%{_apiver}.so
+%{_libdir}/pkgconfig/wpe-platform-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-drm-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-headless-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-wayland-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-webkit-%{_apiver}.pc
 %{_libdir}/pkgconfig/wpe-web-process-extension-%{_apiver}.pc
+%{_libdir}/pkgconfig/wpe-platform-2.0.pc
+%{_libdir}/pkgconfig/wpe-platform-drm-2.0.pc
+%{_libdir}/pkgconfig/wpe-platform-headless-2.0.pc
+%{_libdir}/pkgconfig/wpe-platform-wayland-2.0.pc
 %dir %{_datadir}/wpe-webkit-%{_apiver}
 %{_datadir}/wpe-webkit-%{_apiver}/inspector.gresource
 
