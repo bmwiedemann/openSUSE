@@ -18,15 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pypdf
-Version:        6.16.2
+Version:        6.19.0
 Release:        0
 Summary:        PDF toolkit
 License:        BSD-3-Clause
 URL:            https://github.com/py-pdf/pypdf
 Source0:        https://github.com/py-pdf/pypdf/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE make pypdf work with fonttools in slfo-1.2
-# sent upstream https://github.com/py-pdf/pypdf/pull/4050
-Patch0:         fonttools-slfo.patch
 BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -71,8 +68,18 @@ It is therefore a useful tool for websites that manage or manipulate PDFs.
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
+donttest="testeverythingexcept"
+%if 0%{?suse_version} < 1699
+# test_font_old_fonttools_substitution: workaround to test wannabe SLFO fonttools on Factory fonttools, fails in Leap because upstream does not like conditional skips
+# https://github.com/py-pdf/pypdf/pull/4050
+donttest+=" or test_font_old_fonttools_substitution"
+%endif
+# flaky tests
+donttest+=" or test_flatedecode__decode_png_prediction__speed"
+donttest+=" or test_decompress__fallback__speed"
+
 # Skip network tests, or tests that require large sample files
-%pytest -m "not (enable_socket or samples)"
+%pytest -m "not (enable_socket or samples)" -k "not ($donttest)"
 
 %files %{python_files}
 %license LICENSE

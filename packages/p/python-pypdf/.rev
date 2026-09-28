@@ -314,4 +314,12 @@
     <comment>add CVE reference</comment>
     <requestid>1376345</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d79dec504c2d2b5fbd5d90b05b837798</srcmd5>
+    <version>6.19.0</version>
+    <time>1790584621</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380371</requestid>
+  </revision>
 </revisionlist>

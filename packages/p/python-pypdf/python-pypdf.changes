@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:44:22 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.19.0
+  * SEC: Limit size of alphabetical page labels
+  * Replace PdfWriter method add_js
+  * Move static value out of loop body for appearance stream data
+  * Reduce number of full data lookups for attachment mapping API
+  6.18.1
+  * SEC: Further restrict FlateDecode recovery
+  * SEC: Limit entry count for TrueType and Type1 font /Widths
+  * SEC: Limit allowed length of tokens in parse_bfchar
+  * Fix compatibility with fonttools < 4.58.0
+  6.18.0
+  * SEC: Limit allowed length of indirect object tokens
+  * Rework configuration value handling
+  * Draw borders and backgrounds for appearance streams and annotations
+  6.17.0
+  * SEC: Limit value for Roman numerals
+  * _cmap.py: Also parse encoding for embedded CFF Type1 fonts
+  * Cache repeated text extraction character lookups
+- Drop fonttools-slfo.patch, no longer needed (and skip the test)
+- Skip some flaky tests
+
+-------------------------------------------------------------------
 Fri Sep  4 13:43:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add fonttools-slfo.patch to restore compatibility with FontTools < 4.57
