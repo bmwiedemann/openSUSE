@@ -1,4 +1,58 @@
 -------------------------------------------------------------------
+Wed Sep 23 13:12:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.0.24:
+  + Codecs:
+    - Use FFmpeg 8.1 (upgraded from 4.4)
+    - Support APV decoder (FFmpeg 8)
+    - Support Atrac3/Atrac9 decoding
+    - Remove schroedinger support for dirac in favor of avcodec
+    - Fix Speex leaks and packetization issues
+    - Fix WebVTT CSS parsing and error handling
+    - Fix FLAC and HEVC packetizer edge cases
+    - Fix AudioToolbox MIDI synthesizer crash on macOS 26+
+  + Demuxers:
+    - Add support for CEA-708 closed captions in MP4
+    - Expose ID3v2 metadata in MPEG demuxer
+    - Improve subtitle language detection from filenames and SSA/ASS metadata
+    - Fix several MKV crashes, leaks, hangs and malformed file handling issues
+    - Fix AVI hang with zero-sized strd chunks
+    - Fix MP4, MPEG-TS, Ogg, RealAudio and subtitle demuxing edge cases
+  + Access:
+    - Switch RIST input and output to librist, with main and simple profile support
+    - Add SRT listener mode support
+    - Add SFTP public key authentication options and ED25519 hostkey support
+    - Update SMB2 share enumeration
+    - Don't ship RealRTSP plugin (build disabled for all configurations)
+  + Service Discovery:
+    - Include Chromecast model in mDNS renderer names
+    - Fix IPv6 addresses in Bonjour service URLs
+  + Video Output:
+    - Fix Direct3D11 adjust filter and texture leaks
+    - Fix MediaCodec crop validation
+    - Super Resolution scaling with Moore Threads GPUs
+  + Interface:
+    - Qt: Fix default open dialog location
+    - Qt: Fix effects window geometry saving
+    - Qt: Improve hotkeys dialog strings
+  + Stream Output:
+    - Disable HEVC for original Chromecast devices
+  + Security:
+    - Switch to a new RSA-4096 key for update verification
+    - Fix multiple OOB, integer overflow, double-free and use-after-free issues
+    - See https://www.videolan.org/security/
+    - CVE-2026-56711: picture: inline AllocatePicture() and use overflow helpers
+  + Misc:
+    - Add Flatpak build support
+    - Fix Audio EQ filter High Frequency parameter
+    - Fix artwork preparser crash when artwork title is null
+    - Fix LibVLC media list player race
+    - Remove NPAPI browser plugin
+  + Lua:
+    - Remove broken youtube.lua plugin
+- Drop vlc-gstreamer-1.28-build-fix.patch: fixed upstream.
+
+-------------------------------------------------------------------
 Sun Apr 26 16:33:31 UTC 2026 - Egbert Eich <eich@suse.com>
 
 - Fix Requires for ffmpeg library:

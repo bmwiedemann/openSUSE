@@ -42,7 +42,7 @@
 %endif
 
 Name:           vlc
-Version:        3.0.23
+Version:        3.0.24
 Release:        0
 Summary:        Graphical media player
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -59,10 +59,8 @@ Patch4:         fix-build-with-fdk-2.0.patch
 # PATCH-FEATURE-OPENSUSE vlc-projectM-qt5.patch -- Build against projectM-qt5; openSUSE provides projectM as -qt and -qt5 variant
 Patch100:       vlc-projectM-qt5.patch
 # PATCH-FIX-UPSTREAM -- Use OpenCV C++ API
-Patch103:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
-# PATCH-FIX-OPENSUSE vlc-gstreamer-1.28-build-fix.patch -- Fix building with gstreamer-1.28vlc-gstreamer-1.28-build-fix.patch
-Patch104:       vlc-gstreamer-1.28-build-fix.patch
-Patch105:       libupnp-1.18.patch
+Patch101:       0001-Port-OpenCV-facedetect-example-to-C-API.patch
+Patch102:       libupnp-1.18.patch
 
 BuildRequires:  Mesa-devel
 BuildRequires:  aalib-devel
@@ -398,9 +396,8 @@ default when `vlc` is invoked from an X session.
 %if 0%{?suse_version} > 1320 && 0%{?suse_version} < 1550 && 0%{?sle_version} < 150200
 %patch -P 100 -p1
 %endif
-%patch -P 103 -p1
-%patch -P 104 -p1
-%patch -P 105 -p1
+%patch -P 101 -p1
+%patch -P 102 -p1
 
 ### And LUA 5.3.1 has some more API changes
 if pkg-config --atleast-version 5.3.1 lua; then
@@ -621,6 +618,7 @@ fi
 # The presence of the .desktop file is what gives AppStream the
 # hint of which package to add in the appstore... 'vlc' is the place to be
 %{_datadir}/applications/vlc.desktop
+%{_datadir}/applications/vlc-open*.desktop
 %{_datadir}/icons/hicolor/*/apps/vlc*
 %{_datadir}/kde4/apps/solid
 %if 0%{?suse_version} < 1500
@@ -777,7 +775,6 @@ fi
 %{_libdir}/vlc/lua/playlist/twitch.luac
 %{_libdir}/vlc/lua/playlist/vimeo.luac
 %{_libdir}/vlc/lua/playlist/vocaroo.luac
-%{_libdir}/vlc/lua/playlist/youtube.luac
 %{_libdir}/vlc/lua/sd/icecast.luac
 %{_libdir}/vlc/lua/sd/jamendo.luac
 %{_libdir}/vlc/plugins/access/libaccess_alsa_plugin.so
@@ -810,7 +807,6 @@ fi
 %if 0%{?suse_version} < 1330 && ( 0%{?sle_version} < 120200 || 0%{?is_opensuse} < 1 )
 %{_libdir}/vlc/plugins/access/librdp_plugin.so
 %endif
-%{_libdir}/vlc/plugins/access/librist_plugin.so
 %{_libdir}/vlc/plugins/access/librtp_plugin.so
 %{_libdir}/vlc/plugins/access/libsatip_plugin.so
 %{_libdir}/vlc/plugins/access/libsdp_plugin.so
@@ -833,7 +829,6 @@ fi
 %{_libdir}/vlc/plugins/access_output/libaccess_output_file_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_http_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_livehttp_plugin.so
-%{_libdir}/vlc/plugins/access_output/libaccess_output_rist_plugin.so
 %{_libdir}/vlc/plugins/access_output/libaccess_output_shout_plugin.so
 %if 0%{?suse_version} > 1500 && 0%{?is_opensuse}
 %{_libdir}/vlc/plugins/access_output/libaccess_output_srt_plugin.so
@@ -900,7 +895,6 @@ fi
 %{_libdir}/vlc/plugins/codec/libpng_plugin.so
 %{_libdir}/vlc/plugins/codec/librawvideo_plugin.so
 %{_libdir}/vlc/plugins/codec/librtpvideo_plugin.so
-%{_libdir}/vlc/plugins/codec/libschroedinger_plugin.so
 %{_libdir}/vlc/plugins/codec/libscte18_plugin.so
 %{_libdir}/vlc/plugins/codec/libscte27_plugin.so
 %{_libdir}/vlc/plugins/codec/libspdif_plugin.so

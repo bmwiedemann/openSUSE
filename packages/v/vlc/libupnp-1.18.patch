@@ -1,20 +1,10 @@
-From: Jan Engelhardt <ej@inai.de>
-Date: 2026-02-18 19:50:34.116774429 +0100
-Sent: no
-
-Add support for libupnp 1.18.x.
-
----
- modules/services_discovery/upnp.hpp |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
-
-Index: vlc-3.0.23/modules/services_discovery/upnp.hpp
-===================================================================
---- vlc-3.0.23.orig/modules/services_discovery/upnp.hpp
-+++ vlc-3.0.23/modules/services_discovery/upnp.hpp
-@@ -37,7 +37,7 @@
+diff --git a/modules/services_discovery/upnp.hpp b/modules/services_discovery/upnp.hpp
+index 352079c595..200dabaf3b 100644
+--- a/modules/services_discovery/upnp.hpp
++++ b/modules/services_discovery/upnp.hpp
+@@ -35,7 +35,7 @@
+ 
  #include <vlc_common.h>
- #include <vlc_url.h>
  
 -#if UPNP_VERSION < 10800
 +#if UPNP_VERSION < 10800 || UPNP_VERSION >= 11800

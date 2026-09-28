@@ -1742,4 +1742,12 @@ fixes build in packman, evergreen and all that. (forwarded request 230247 from o
     <comment></comment>
     <requestid>1349514</requestid>
   </revision>
+  <revision rev="167" vrev="1">
+    <srcmd5>6ecbcb0b216b070b1ef75e09bfb9dc73</srcmd5>
+    <version>3.0.24</version>
+    <time>1790584499</time>
+    <user>anag_factory</user>
+    <comment>Upate to 3.0.24</comment>
+    <requestid>1380041</requestid>
+  </revision>
 </revisionlist>
