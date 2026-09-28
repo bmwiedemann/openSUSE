@@ -504,4 +504,13 @@ The package is now offering Qt5 and Qt6 flavors and shall replace libqt5-creator
     <comment>Update to 20.0.1</comment>
     <requestid>1368818</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>f0a30337246bdf212f081a9e1522c0f2</srcmd5>
+    <version>20.0.2</version>
+    <time>1790585229</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20.0.2:
+  https://www.qt.io/blog/qt-creator-20.0.2-released</comment>
+    <requestid>1380944</requestid>
+  </revision>
 </revisionlist>
