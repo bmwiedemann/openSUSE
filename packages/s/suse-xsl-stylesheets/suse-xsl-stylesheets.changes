@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Sep 23 08:33:36 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.41
+
+- Update to 2.95.41
+  * HTML: Update shared-header in #820
+  * Improve formatting of JSON-LD in #803
+  * HTML: Check generate.revhistory for d:revhistory in #817 
+
+-------------------------------------------------------------------
 Wed Jul 22 08:27:27 UTC 2026 - Thomas Schraitle <thomas.schraitle@suse.com> - 2.95.40
 
 - Update 2.95.40
