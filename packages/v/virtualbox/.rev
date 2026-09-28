@@ -2958,4 +2958,12 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.18</comment>
     <requestid>1378359</requestid>
   </revision>
+  <revision rev="317" vrev="1">
+    <srcmd5>d2afd46e1706e81accb866b0dc3800fe</srcmd5>
+    <version>7.2.20</version>
+    <time>1790584633</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 7.2.20</comment>
+    <requestid>1380671</requestid>
+  </revision>
 </revisionlist>

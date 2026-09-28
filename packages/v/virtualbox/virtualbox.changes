@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 25 12:05:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Add Requires(post) as needed
+
+-------------------------------------------------------------------
+Tue Sep 22 23:21:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 7.2.20
+  * Fixed a regression on Windows hosts causing VMs to fail with
+    VERR_SUP_VP_FOUND_EXEC_MEMORY.
+
+-------------------------------------------------------------------
 Wed Sep 16 07:02:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 7.2.18

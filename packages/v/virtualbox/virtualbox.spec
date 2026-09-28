@@ -69,7 +69,7 @@
 %endif
 
 Name:           virtualbox%{?dash}%{?name_suffix}
-Version:        7.2.18
+Version:        7.2.20
 Release:        0
 Summary:        %{package_summary}
 License:        GPL-3.0-only
@@ -234,6 +234,7 @@ BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(xrandr)
 Requires:       %{name}-kmp = %{version}
 Requires(pre):  %fillup_prereq
+Requires(post): %_bindir/grep
 Requires(post): permissions
 Requires(verify): permissions
 Conflicts:      %{name}-qt < %{version}
@@ -402,6 +403,7 @@ This package contains icons for guest desktop files that were created on the des
 %package vnc
 Summary:        VNC desktop sharing
 Group:          System/Emulators/PC
+Requires(post): %_bindir/tar
 Requires:       %{name} = %{version}
 
 %description vnc
@@ -696,9 +698,7 @@ cd -
 
 install -Dm0644 vbox.conf %{buildroot}%{_sysusersdir}/vbox.conf
 install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-tools.conf
-%fdupes %{buildroot}/%{_vbox_instdir}
-%fdupes %{buildroot}/%{_datadir}/virtualbox/nls
-%fdupes %{buildroot}/%{_datadir}/pixmaps/virtualbox
+%fdupes %{buildroot}/%{_vbox_instdir} %{buildroot}/%{_datadir}/virtualbox/nls %{buildroot}/%{_datadir}/pixmaps/virtualbox
 
 %pre -f vbox.pre
 %service_add_pre vboxdrv.service vboxautostart-service.service
@@ -711,10 +711,7 @@ install -Dm0644 vbox-guest-tools.conf %{buildroot}%{_sysusersdir}/vbox-guest-too
 
 %post
 #setup our sysconfig file /etc/sysconfig/vbox
-%set_permissions %{_vbox_instdir}/VBoxNetNAT
-%set_permissions %{_vbox_instdir}/VBoxNetDHCP
-%set_permissions %{_vbox_instdir}/VBoxNetAdpCtl
-%set_permissions %{_vbox_instdir}/VBoxHeadless
+%set_permissions %{_vbox_instdir}/VBoxNetNAT %{_vbox_instdir}/VBoxNetDHCP %{_vbox_instdir}/VBoxNetAdpCtl %{_vbox_instdir}/VBoxHeadless
 %service_add_post vboxdrv.service vboxautostart-service.service
 # add new autostart stuff to the existing default config, if missing
 grep -q VBOXAUTOSTART %{_sysconfdir}/default/virtualbox || {
@@ -742,18 +739,13 @@ done
 echo INFO: Transitioning between virtualbox 7.2.8-or-earlier and 7.2.10-or-newer requires reloading kvm.ko to avoid a kernel panic. Alternatively, reboot the system.
 
 %post qt
-%set_permissions %{_vbox_instdir}/VirtualBoxVM
-%set_permissions %{_vbox_instdir}/VBoxSDL
+%set_permissions %{_vbox_instdir}/VirtualBoxVM %{_vbox_instdir}/VBoxSDL
 
 %verifyscript
-%verify_permissions -e %{_vbox_instdir}/VBoxNetNAT
-%verify_permissions -e %{_vbox_instdir}/VBoxNetDHCP
-%verify_permissions -e %{_vbox_instdir}/VBoxNetAdpCtl
-%verify_permissions -e %{_vbox_instdir}/VBoxHeadless
+%verify_permissions -e %{_vbox_instdir}/VBoxNetNAT -e %{_vbox_instdir}/VBoxNetDHCP -e %{_vbox_instdir}/VBoxNetAdpCtl -e %{_vbox_instdir}/VBoxHeadless
 
 %verifyscript qt
-%verify_permissions -e %{_vbox_instdir}/VirtualBoxVM
-%verify_permissions -e %{_vbox_instdir}/VBoxSDL
+%verify_permissions -e %{_vbox_instdir}/VirtualBoxVM -e %{_vbox_instdir}/VBoxSDL
 
 %post guest-tools
 %service_add_post vboxadd-service.service vboxclient.service vboxservice.service
