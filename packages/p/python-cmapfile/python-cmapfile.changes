@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Sep 26 21:23:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.7.25:
+  * Require tifffile >= 2026.5.2.
+  * Drop support for Python 3.11 and numpy 2.0 (SPEC0).
+  * Support Python 3.15.
+
+-------------------------------------------------------------------
 Tue May 12 13:24:15 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Drop support for Python 3.11: added %global skip_python311 1 in spec file 
