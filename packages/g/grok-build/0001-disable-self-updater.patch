@@ -1,7 +1,6 @@
-diff --git a/crates/codegen/xai-grok-update/src/auto_update.rs b/crates/codegen/xai-grok-update/src/auto_update.rs
 --- a/crates/codegen/xai-grok-update/src/auto_update.rs
 +++ b/crates/codegen/xai-grok-update/src/auto_update.rs
-@@ -470,6 +470,12 @@
+@@ -515,6 +515,12 @@
  }
  
  pub async fn get_installer() -> Option<&'static str> {
@@ -11,6 +10,6 @@ diff --git a/crates/codegen/xai-grok-update/src/auto_update.rs b/crates/codegen/
 +    // never downloads or overwrites itself.
 +    return None;
 +    #[allow(unreachable_code)]
-     if let Some(i) = env_installer() {
-         return Some(i);
-     }
+     // Only an explicit override outranks the WinGet location; npm hints and stale config do not.
+     if let Some(explicit) = std::env::var("GROK_INSTALLER")
+         .ok()

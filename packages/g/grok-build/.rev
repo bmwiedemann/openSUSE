@@ -338,4 +338,12 @@ The three warnings are pre-existing (no %check section, and the
 known invalid-license-exception for Linking-exception).</comment>
     <requestid>1379708</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a6acab5e10e95a533920869c41d7331c</srcmd5>
+    <version>1.0.41+git20260923.f0e3be1</version>
+    <time>1790585084</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380959</requestid>
+  </revision>
 </revisionlist>
