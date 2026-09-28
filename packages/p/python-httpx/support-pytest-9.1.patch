@@ -1,0 +1,28 @@
+Index: httpx-0.28.1/tests/test_utils.py
+===================================================================
+--- httpx-0.28.1.orig/tests/test_utils.py
++++ httpx-0.28.1/tests/test_utils.py
+@@ -56,7 +56,10 @@ def test_logging_request(server, caplog)
+         response = client.get(server.url)
+         assert response.status_code == 200
+ 
+-    assert caplog.record_tuples == [
++    # Pytest 9.1+ captures logs even from non-propagating ones
++    httpx_records = [rec for rec in caplog.record_tuples if rec[0] == "httpx"]
++
++    assert httpx_records == [
+         (
+             "httpx",
+             logging.INFO,
+@@ -71,7 +74,10 @@ def test_logging_redirect_chain(server,
+         response = client.get(server.url.copy_with(path="/redirect_301"))
+         assert response.status_code == 200
+ 
+-    assert caplog.record_tuples == [
++    # Pytest 9.1+ captures logs even from non-propagating ones
++    httpx_records = [rec for rec in caplog.record_tuples if rec[0] == "httpx"]
++
++    assert httpx_records == [
+         (
+             "httpx",
+             logging.INFO,

@@ -300,4 +300,15 @@
 </comment>
     <requestid>1338554</requestid>
   </revision>
+  <revision rev="21" vrev="5">
+    <srcmd5>554a057e7121c1d215facedde909633f</srcmd5>
+    <version>0.28.1</version>
+    <time>1790584580</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-click-8.5.0.patch:
+  * Do not use CliRunner.isolated_filesystem
+- Add patch support-pytest-9.1.patch:
+  * Filter logs due to pytest 9.1 changes</comment>
+    <requestid>1380059</requestid>
+  </revision>
 </revisionlist>

@@ -47,11 +47,14 @@ Patch0:         support-chardet6-response-autodetect.patch
 # one test now accepts either autodetected label
 # the miswired “explicit encoding” test now actually uses default_encoding="ISO-8859-1"
 Patch1:         support-chardet6-client-autodetect.patch
+# PATCH-FIX-OPENSUSE Do not use CliRunner.isolated_filesystem
+Patch2:         support-click-8.5.0.patch
+# PATCH-FIX-OPENSUSE Filter logs due to pytest 9.1 changes
+Patch3:         support-pytest-9.1.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-fancy-pypi-readme}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-anyio >= 4
