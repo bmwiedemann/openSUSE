@@ -20,7 +20,7 @@
 %define soname 5
 
 Name:           %{reponame}
-Version:        5.34.2
+Version:        5.36.0
 Release:        0
 Summary:        Common C++ classes and routines
 License:        GPL-2.0-or-later
@@ -108,6 +108,9 @@ DESTDIR=%{buildroot} make %{?_smp_mflags} install
 %else
 %cmake_install
 %endif
+
+# Strip debugging symbols from the shared library
+strip --strip-unneeded %{buildroot}%{_libdir}/lib%{reponame}.so.*
 
 %post -n lib%{reponame}%{soname} -p /sbin/ldconfig
 %postun -n lib%{reponame}%{soname} -p /sbin/ldconfig

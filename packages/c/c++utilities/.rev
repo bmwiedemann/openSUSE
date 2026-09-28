@@ -42,4 +42,18 @@ Packaging this library in Factory enables proper dependency tracking, shared sys
     cmd.exe PATH configurations, and improved pacman/podman examples.</comment>
     <requestid>1364952</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>133707efda2910c345251932cd13edf0</srcmd5>
+    <version>5.36.0</version>
+    <time>1790585080</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.36.0
+  * Add tests also under bin when building for Windows
+  * Improve finding test file path under Windows
+  * Remove arch-i686-w64-mingw32-qt6 preset
+  * Remove problematic link_directories from CMake config 
+  * Bump minor version
+  * Update default C++ version to C++20</comment>
+    <requestid>1380736</requestid>
+  </revision>
 </revisionlist>
