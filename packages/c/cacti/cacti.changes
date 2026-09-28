@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:57:06 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git144.c7689c25:
+  * Resolving issue #8063: Support searching by graph ID on Graphs and Aggregate Graphs pages (#8068)
+  * security: consolidate additional verified GHSA fixes for 1.2.x (batch 2) (#8064)
+  * test: fix Boost contract boundary detection and sink baseline drift (#8062)
+  * docs: standardize PHPDoc blocks across 1.2.x (#8061)
+  * fix: quiet snmp OID not found warnings (#8060)
+  * test(cdef): backport resolver coverage to 1.2 (#7977)
+  * Fix RECACHE ASSERT loop caused by SNMP uptime selection diverging from spine (1.2.x) (#8057)
+  * Convert generic <select> elements to select2(), with new class helpers (1.2.x) (#8054)
+  * Replace unmaintained phpdiff vendor lib with jfcherng/php-diff (#8049)
+  * security: consolidate verified GHSA fixes for 1.2.x (win32 cmd.exe hardening, escape_command CR/LF, SNMP hardening, location XSS, forgeable auth headers) (#8055)
+  * Add select2 for enhanced/searchable dropdowns (1.2.x) (#8052)
+  * fix(cli): replace dead github_actions check with a real TTY check before stty size (#8042)
+  * ci(deps): bump actions/cache in the github-actions-1-2-x group (#8038)
+  * fix: Poller time must be cleared if the previous poller is not done (#8034)
+  * chore(deps): upgrade phpseclib to 4.0, update syntax.yml, and fix audit_database.php (#8032)
+  * fix: Unable to move graph template item, move PHP floot to 8.2 (#8031)
+
+-------------------------------------------------------------------
 Thu Sep 17 14:15:36 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Adjusted _service file to look at release/ tags and ignore the rel* warning
