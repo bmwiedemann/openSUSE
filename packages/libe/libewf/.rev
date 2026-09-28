@@ -256,4 +256,12 @@ Replace python 2 with python 3</comment>
     <comment>- build with fuse 3 (boo#1242079) (forwarded request 1274609 from AndreasStieger)</comment>
     <requestid>1274738</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1bc58f6a89c18c12b801c82b67bf488d</srcmd5>
+    <version>20260924</version>
+    <time>1790584953</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 20260924</comment>
+    <requestid>1380672</requestid>
+  </revision>
 </revisionlist>

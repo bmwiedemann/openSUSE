@@ -1,7 +1,7 @@
 #
 # spec file for package libewf
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -21,7 +21,7 @@
 
 %define lname libewf3
 Name:           libewf
-Version:        20240506
+Version:        20260924
 Release:        0
 Summary:        Library for the Expert Witness Compression Format (EWF)
 License:        GFDL-1.3-or-later AND LGPL-3.0-or-later
@@ -46,27 +46,27 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(bzip2) >= 1.0
 BuildRequires:  pkgconfig(fuse3) >= 3.0
-BuildRequires:  pkgconfig(libbfio) >= 20240414
-BuildRequires:  pkgconfig(libcaes) >= 20240413
-BuildRequires:  pkgconfig(libcdata) >= 20240414
-BuildRequires:  pkgconfig(libcdatetime) >= 20240414
-BuildRequires:  pkgconfig(libcerror) >= 20240413
-BuildRequires:  pkgconfig(libcfile) >= 20240414
-BuildRequires:  pkgconfig(libclocale) >= 20240414
-BuildRequires:  pkgconfig(libcnotify) >= 20240414
-BuildRequires:  pkgconfig(libcpath) >= 20240414
-BuildRequires:  pkgconfig(libcsplit) >= 20240414
-BuildRequires:  pkgconfig(libcthreads) >= 20240413
-BuildRequires:  pkgconfig(libfcache) >= 20240414
-BuildRequires:  pkgconfig(libfdata) >= 20240415
-BuildRequires:  pkgconfig(libfdatetime) >= 20240415
-BuildRequires:  pkgconfig(libfguid) >= 20240415
-BuildRequires:  pkgconfig(libfvalue) >= 20240415
-BuildRequires:  pkgconfig(libhmac) >= 20240417
+BuildRequires:  pkgconfig(libbfio) >= 20260623
+BuildRequires:  pkgconfig(libcaes) >= 20260520
+BuildRequires:  pkgconfig(libcdata) >= 20260703
+BuildRequires:  pkgconfig(libcdatetime) >= 20260703
+BuildRequires:  pkgconfig(libcerror) >= 20260703
+BuildRequires:  pkgconfig(libcfile) >= 20260704
+BuildRequires:  pkgconfig(libclocale) >= 20260703
+BuildRequires:  pkgconfig(libcnotify) >= 20260703
+BuildRequires:  pkgconfig(libcpath) >= 20260703
+BuildRequires:  pkgconfig(libcsplit) >= 20260703
+BuildRequires:  pkgconfig(libcthreads) >= 20260703
+BuildRequires:  pkgconfig(libfcache) >= 20260520
+BuildRequires:  pkgconfig(libfdata) >= 20260521
+BuildRequires:  pkgconfig(libfdatetime) >= 20260521
+BuildRequires:  pkgconfig(libfguid) >= 20260521
+BuildRequires:  pkgconfig(libfvalue) >= 20260531
+BuildRequires:  pkgconfig(libhmac) >= 20260522
 BuildRequires:  pkgconfig(libodraw) >= 20240505
-BuildRequires:  pkgconfig(libsmdev) >= 20240505
-BuildRequires:  pkgconfig(libsmraw) >= 20240506
-BuildRequires:  pkgconfig(libuna) >= 20240414
+BuildRequires:  pkgconfig(libsmdev) >= 20260902
+BuildRequires:  pkgconfig(libsmraw) >= 20260902
+BuildRequires:  pkgconfig(libuna) >= 20260602
 BuildRequires:  pkgconfig(openssl) >= 1.0.0
 BuildRequires:  pkgconfig(uuid) >= 2.20
 BuildRequires:  pkgconfig(zlib) >= 1.2.5
@@ -180,6 +180,6 @@ make check || :
 
 %files %python_files
 %license COPYING*
-%python_sitearch/*.so
+%python_sitearch/pyewf*
 
 %changelog
