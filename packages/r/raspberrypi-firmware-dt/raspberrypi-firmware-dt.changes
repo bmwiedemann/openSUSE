@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Sep 25 09:38:31 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
+
+- Fix regression in SRAM range (bsc#1282097)
+
+-------------------------------------------------------------------
 Tue Jun 23 14:46:43 UTC 2026 - Andrea della Porta <andrea.porta@suse.com>
 
 - Drop RP1 hog gpio node
