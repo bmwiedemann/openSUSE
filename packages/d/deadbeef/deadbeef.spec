@@ -21,12 +21,12 @@
 %define _lto_cflags %{nil}
 %bcond_with restricted
 Name:           deadbeef
-Version:        1.10.2
+Version:        1.10.3
 Release:        0
 Summary:        GTK+ audio player
 License:        BSD-3-Clause AND GPL-2.0-or-later AND Zlib AND LGPL-2.1-or-later
 URL:            https://deadbeef.sourceforge.io/
-Source:         %{name}-%{version}.tar.bz2
+Source:         https://sf-west-interserver-2.dl.sourceforge.net/project/deadbeef/Builds/%{version}/linux/%{name}-%{version}.tar.bz2
 Source1:        %{name}.appdata.xml
 # PATCH-FIX-OPENSUSE 0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
 Patch0:         0003-Fix-operator-precedence-and-uninitialized-value-warn.patch
