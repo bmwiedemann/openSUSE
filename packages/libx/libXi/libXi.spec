@@ -29,6 +29,13 @@ URL:            http://xorg.freedesktop.org/
 #Git-Web:	http://cgit.freedesktop.org/xorg/lib/libXi/
 Source:         http://xorg.freedesktop.org/releases/individual/lib/%{name}-%{version}.tar.xz
 Source1:        baselibs.conf
+Patch1:         0001-boo1281605_CVE-2026-93541_XQueryDeviceState-check-ValuatorClass-num_valuators-.patch
+Patch2:         0002-boo1281606_CVE-2026-93542_size_classes-copy_classes-bound-XI2-class-lengths-to.patch
+Patch3:         0003-boo1281608_CVE-2026-93543_size_classes-copy_classes-enforce-XI2-per-type-class.patch
+Patch4:         0004-boo1281609_CVE-2026-93544_XIQueryDevice-keep-padded-name-and-class-bytes-withi.patch
+Patch5:         0005-boo1281612_CVE-2026-93545_XListInputDevices-validate-device-name-lengths-again.patch
+Patch6:         0006-boo1281615_CVE-2026-94281_XListInputDevices-validate-class-lengths-cumulativel.patch
+Patch7:         0007-boo1281651_CVE-2026-94282_wireToEnterLeave-validate-buttons_len-against-the-re.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 #git#BuildRequires:	autoconf >= 2.60, automake, libtool
 BuildRequires:  fdupes
@@ -66,7 +73,7 @@ This package contains the development headers for the library found
 in %lname.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 %configure --docdir=%_docdir/%name --disable-static

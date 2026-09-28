@@ -235,4 +235,26 @@
     they are supposed to follow got lost.</comment>
     <requestid>1353727</requestid>
   </revision>
+  <revision rev="24" vrev="2">
+    <srcmd5>2d532f64840f8bd1faf967ca123faf0b</srcmd5>
+    <version>1.8.3</version>
+    <time>1790584494</time>
+    <user>anag_factory</user>
+    <comment>- 0001-boo1281605_CVE-2026-93541_XQueryDeviceState-check-ValuatorClass-num_valuators-.patch
+  * Out-of-bounds read in libXi's XQueryDeviceState() (boo#1281605, CVE-2026-93541)
+- 0002-boo1281606_CVE-2026-93542_size_classes-copy_classes-bound-XI2-class-lengths-to.patch
+  * Out-of-bounds read in libXi's XI2 class parsing via size_classes() and copy_classes()
+    (boo#1281606, CVE-2026-93542)
+- 0003-boo1281608_CVE-2026-93543_size_classes-copy_classes-enforce-XI2-per-type-class.patch
+  * Out-of-bounds read in libXi's XI2 class parser (boo#1281608, CVE-2026-93543)
+- 0004-boo1281609_CVE-2026-93544_XIQueryDevice-keep-padded-name-and-class-bytes-withi.patch
+  * Out-of-bounds read in libXi's XI2 XIQueryDevice reply parsing (boo#1281609, CVE-2026-93544)
+- 0005-boo1281612_CVE-2026-93545_XListInputDevices-validate-device-name-lengths-again.patch
+  * Out-of-bounds read in libXi's XListInputDevices() (boo#1281612, CVE-2026-93545)
+- 0006-boo1281615_CVE-2026-94281_XListInputDevices-validate-class-lengths-cumulativel.patch
+  * Out-of-bounds read in libXi's XListInputDevices() class parsing (boo#1281615, CVE-2026-94281)
+- 0007-boo1281651_CVE-2026-94282_wireToEnterLeave-validate-buttons_len-against-the-re.patch
+  * Out-of-bounds read in libXi's XI2 enter/leave/focus cookie conversio (boo#1281651, CVE-2026-94282)</comment>
+    <requestid>1379999</requestid>
+  </revision>
 </revisionlist>
