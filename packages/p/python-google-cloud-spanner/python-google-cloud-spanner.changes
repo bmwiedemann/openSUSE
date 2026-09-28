@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Sep 24 13:53:20 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.71.0
+  * add send and ack mutations Cloud Spanner Queues (#17728)
+- from version 3.70.0
+  * check python and dependency versions in spanner packages (#18177)
+  * **spanner:** add DataBoost and auto_partition_mode support to DBAPI
+    driver (#18161)
+  * **spanner:** buffer returned rows in autocommit DML statements (#18152)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+- Update Requires from setup.py
+
+-------------------------------------------------------------------
 Fri Aug 14 10:54:18 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Skip test_spanner_api_experimental_host which is currently broken

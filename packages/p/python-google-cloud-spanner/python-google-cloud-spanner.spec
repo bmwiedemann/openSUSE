@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-spanner%{psuffix}
-Version:        3.69.1
+Version:        3.71.0
 Release:        0
 Summary:        Google Cloud Spanner API client library
 License:        Apache-2.0
@@ -58,7 +58,7 @@ Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-cloud-core >= 1.4.4
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
 Requires:       python-grpc-interceptor >= 0.15.4
