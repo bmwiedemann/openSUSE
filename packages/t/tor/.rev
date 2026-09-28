@@ -1321,4 +1321,33 @@ Update to 0.4.9.8
       after they are first used.</comment>
     <requestid>1373271</requestid>
   </revision>
+  <revision rev="137" vrev="1">
+    <srcmd5>4c7eca3139f07d77ca213e4b84849203</srcmd5>
+    <version>0.4.9.13</version>
+    <time>1790584747</time>
+    <user>anag_factory</user>
+    <comment>Many securit updates:
+
+Update to 0.4.9.13:
+    - (TROVE-2026-051)
+    - (TROVE-2026-050)
+    - (TROVE-2026-052)
+    - (TROVE-2026-030, TROVE-2026-038, TROVE-2026-041)
+    - (TROVE-2026-056)
+    - (TROVE-2026-058)
+    - (TROVE-2026-012)
+    - (TROVE-2026-030)
+    - (TROVE-2026-053)
+    - (TROVE-2026-043)
+    - (TROVE-2026-034)
+    - (TROVE-2026-036)
+    - (TROVE-2026-033)
+    - (boo#1279897, CVE-2026-87724,TROVE-2026-032)
+    - (TROVE-2026-033)
+    - (TROVE-2026-040)
+  * Removed features:
+    - Tor clients no longer accept consensus instructions to downgrade
+      the congestion control algorithm = defense in depth</comment>
+    <requestid>1380293</requestid>
+  </revision>
 </revisionlist>

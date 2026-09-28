@@ -20,11 +20,12 @@
 %define toruser %{name}
 %define torgroup %{name}
 Name:           tor
-Version:        0.4.9.11
+Version:        0.4.9.13
 Release:        0
 Summary:        Anonymizing overlay network for TCP (The onion router)
 License:        BSD-3-Clause
 URL:            https://www.torproject.org/
+#Git-Clone:     https://gitlab.com/torproject/tor
 Source0:        https://www.torproject.org/dist/%{name}-%{version}.tar.gz
 # https://support.torproject.org/little-t-tor/verify-little-t-tor/
 Source2:        tor.keyring
