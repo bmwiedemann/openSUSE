@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Sep 27 20:16:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.9
+  * Maven Script Interpreter 1.9 fixes how scripts run under the
+    Maven Invoker Plugin: the basedir variable, Groovy class
+    loading, and script encoding.
+  * Behaviour changes:
+    + The basedir script variable is now the project directory, as
+      the invoker plugin documentation describes. Before, it was the
+      directory holding the script, so the two differed for scripts
+      in a subdirectory. Scripts that need their own directory can
+      use the new scriptdir variable.
+    + Without an explicit encoding, scripts are read as UTF-8
+      instead of the platform default charset.
+  * Bug fixes
+    + Bind the basedir script variable to the project directory and
+      add scriptdir
+    + Load Groovy's own classes parent-first, so a different Groovy
+      version on the caller's class path no longer breaks compiled
+      scripts
+    + Read scripts as UTF-8 when no encoding is set
+    + FileLogger: fix the NullPointerException for a log file with
+      no parent directory
+  * Maintenance
+    + Test that a failing script throws an exception
+
+-------------------------------------------------------------------
 Sat Sep  5 13:42:29 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.8

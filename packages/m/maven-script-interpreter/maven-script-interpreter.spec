@@ -17,7 +17,7 @@
 
 
 Name:           maven-script-interpreter
-Version:        1.8
+Version:        1.9
 Release:        0
 Summary:        Maven Script Interpreter
 License:        Apache-2.0
@@ -68,8 +68,7 @@ build-jar-repository -s lib \
     slf4j/api \
     slf4j/simple
 
-%{ant} \
-	jar javadoc
+ant jar javadoc
 
 %install
 # jar
