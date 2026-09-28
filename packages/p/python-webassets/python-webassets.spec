@@ -40,7 +40,6 @@ BuildArch:      noarch
 BuildRequires:  %{python_module Jinja2 >= 3.1.4}
 BuildRequires:  %{python_module PyYAML >= 6.0.2}
 BuildRequires:  %{python_module cssutils >= 2.11.1}
-BuildRequires:  %{python_module libsass >= 0.23.0}
 BuildRequires:  %{python_module ply >= 3.11}
 BuildRequires:  %{python_module pytest >= 8.3.3}
 BuildRequires:  %{python_module rcssmin >= 1.1.2}

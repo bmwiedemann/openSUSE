@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 02:43:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.0.8:
+  * setuptools 82 compatibility - replaced deprecated pkg_resources with
+    PEP 420 namespace package discovery
+- Remove unneeded devel BuildRequires, this is noarch.
+
+-------------------------------------------------------------------
 Fri Apr 10 23:35:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.0.5:

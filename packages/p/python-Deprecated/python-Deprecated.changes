@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:10:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 3.0.0:
+  * port to Python 3.12+ with uv, Hatch and modern typing
+  * convert the documentation to Markdown (Sphinx 9.1 + MyST)
+  * add the "Google" docstring decorators (deprecated.google)
+  * add the "NumPy" docstring decorators (deprecated.numpy)
+  * make deprecated functions and methods picklable (multiprocessing spawn)
+
+-------------------------------------------------------------------
 Thu Nov 13 07:46:37 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.3.1

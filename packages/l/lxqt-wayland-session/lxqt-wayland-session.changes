@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 25 11:53:33 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Disable lxqt-river-session since river is being dropped
+  (SR#1376794). This can be enabled again if river is fixed.
+
+-------------------------------------------------------------------
 Fri May 29 15:29:35 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to version 0.4.1:

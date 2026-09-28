@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:44:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.1:
+  * mac/iokit: display inodes
+  * version 3.7.1
+  * mac/iokit: support of IOMedia without physical device
+
+-------------------------------------------------------------------
 Sun Sep 20 05:40:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.0:

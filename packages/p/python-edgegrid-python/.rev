@@ -67,4 +67,15 @@
     `EdgeGridAuth`</comment>
     <requestid>1345973</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e521ecdcb5cf429b429d7e04f84f9c82</srcmd5>
+    <version>2.0.8</version>
+    <time>1790585265</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.8:
+  * setuptools 82 compatibility - replaced deprecated pkg_resources with
+    PEP 420 namespace package discovery
+- Remove unneeded devel BuildRequires, this is noarch.</comment>
+    <requestid>1381007</requestid>
+  </revision>
 </revisionlist>

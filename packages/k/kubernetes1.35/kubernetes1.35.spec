@@ -22,7 +22,7 @@
 %define baseversionminus1 1.34
 
 Name:           kubernetes%{baseversion}
-Version:        1.35.8
+Version:        1.35.9
 Release:        0
 Summary:        Container Scheduling and Management
 License:        Apache-2.0
@@ -55,7 +55,7 @@ Patch5:         revert-coredns-image-renaming.patch
 Patch6:         CVE-2026-41178-otel-baggage-upstream.patch
 BuildRequires:  fdupes
 BuildRequires:  git
-BuildRequires:  go >= 1.26.5
+BuildRequires:  go >= 1.26.8
 BuildRequires:  go-go-md2man
 BuildRequires:  golang-packaging
 BuildRequires:  rsync

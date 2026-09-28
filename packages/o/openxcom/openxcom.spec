@@ -17,7 +17,7 @@
 
 
 Name:           openxcom
-Version:        1.0.0.1767877226.b4b136189
+Version:        1.0.0.1780693619.630130c5c
 Release:        0
 Summary:        An open source reimplementation of the original X-Com game
 License:        GPL-3.0-only
@@ -58,7 +58,7 @@ dos2unix *.txt
 
 %install
 %cmake_install
-rm %{buildroot}%{_datadir}/man/man6/openxcom.6
+rm %{buildroot}%{_mandir}/man6/openxcom.6
 
 %files
 %license LICENSE.txt

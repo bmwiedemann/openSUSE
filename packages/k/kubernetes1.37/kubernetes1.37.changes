@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:55:18 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.37.1:
+  * Bump images and versions to go 1.26.8 and distroless iptables
+  * Refuse UNC symlink targets in Windows subPath resolution
+  * Restore only .spec part from ControllerRevision for any StatefulSet
+  * fix: make nil DeviceTaintSelector match no devices
+  * DRA: avoid integer overflow in per-claim device-limit checks
+  * e2e auth: use unprivileged container port in projected podcertificate test
+  * fix job pod could not be removed while removing finalizer failed
+  * Guard against load balancers without port mappings
+  * Avoid leaking node-specific kubelet config into the ConfigMap
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.8`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.37.1/.go-version
+
+-------------------------------------------------------------------
 Fri Aug 28 06:19:24 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - initial package for kubernetes v1.37.0

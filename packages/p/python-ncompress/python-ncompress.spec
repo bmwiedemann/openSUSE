@@ -1,5 +1,5 @@
 #
-# spec file for package python-gnssanalysis
+# spec file for package python-ncompress
 #
 # Copyright (c) 2026 SUSE LLC and contributors
 #
@@ -25,7 +25,8 @@ Summary:        LZW compression and decompression in Python and C++
 License:        BSD-3-Clause
 URL:            https://github.com/valgur/%{pyname}
 Source:         https://github.com/valgur/%{pyname}/archive/refs/tags/v%{version}.tar.gz#/%{pyname}-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
+# PATCH-FIX-OPENSUSE Support scikit-build-core >= 1.0
+Patch0:         support-scikit-build-core-1.0.patch
 BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module nanobind >= 1.3.2}
 BuildRequires:  %{python_module nanobind-devel >= 1.3.2}
@@ -46,7 +47,7 @@ LZW compression and decompression in Python and C++.
 Ported with minimal changes from the (N)compress CLI tool.
 
 %prep
-%autosetup -n %{pyname}-%{version}
+%autosetup -p1 -n %{pyname}-%{version}
 
 %build
 %pyproject_wheel

@@ -24,10 +24,10 @@ OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1 restores upstream behaviour.
 
 --- a/packages/tui/src/routes/session/index.tsx
 +++ b/packages/tui/src/routes/session/index.tsx
-@@ -83,7 +83,12 @@
- import { usePathFormatter } from "../../context/path-format"
- import { LocationProvider } from "../../context/location"
-
+@@ -125,7 +125,12 @@
+ export { InlineToolRow } from "./message-parts"
+ export { toolDisplay } from "./message-parts"
+ 
 -addDefaultParsers(parsers.parsers)
 +// openSUSE: register only the parsers backed by assets we ship. The rest are
 +// downloaded from GitHub on first use, which a distribution package must not do.
@@ -35,6 +35,6 @@ OPENCODE_ALLOW_GRAMMAR_DOWNLOAD=1 restores upstream behaviour.
 +addDefaultParsers(
 +  allowGrammarDownload ? parsers.parsers : parsers.parsers.filter((p) => !/^https?:\/\//.test(p.wasm)),
 +)
-
- const GO_UPSELL_FREE_TIER_LAST_SEEN_AT = "go_upsell_last_seen_at"
- const GO_UPSELL_FREE_TIER_DONT_SHOW = "go_upsell_dont_show"
+ 
+ // Exclude temporary bottom space when measuring the real transcript height.
+ const NAVIGATION_SLACK_ID = "session-navigation-slack"

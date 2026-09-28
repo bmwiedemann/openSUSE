@@ -1,7 +1,7 @@
 #
 # spec file for package python-rcssmin
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -31,6 +31,7 @@ BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
@@ -52,7 +53,6 @@ redundant properties etc). It does, however, support various CSS hacks
 
 %package -n %{name}-docs
 Summary:        Documentation files for %name
-Group:          Documentation/HTML
 
 %description -n %{name}-docs
 HTML Documentation and examples for %name.
@@ -65,15 +65,15 @@ HTML Documentation and examples for %name.
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitearch}
 rm -rf %{buildroot}/usr/share/doc/rcssmin
 
 %files %{python_files}
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{python_sitearch}/%{mod_name}.py
 %pycache_only %{python_sitearch}/__pycache__/%{mod_name}.*.pyc
-%{python_sitearch}/_%{mod_name}.cpython-*-linux-gnu.so
+%{python_sitearch}/_%{mod_name}.cpython-*-linux-gnu*.so
 %{python_sitearch}/%{mod_name}-%{version}.dist-info
 
 %files -n %{name}-docs

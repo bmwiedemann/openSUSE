@@ -17,7 +17,7 @@
 
 
 Name:           lmdbxx
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        C++ wrapper for the LMDB embedded B+ tree database library
 License:        PDDL-1.0

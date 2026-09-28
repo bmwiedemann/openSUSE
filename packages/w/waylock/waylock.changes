@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:30:08 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.6.0:
+  * Tracks Zig's 0.16 release; no functional changes to waylock
+    itself (upstream: "no changes to waylock's behavior are
+    intended")
+- Raise the Zig toolchain BuildRequires floor for the 0.16
+  requirement: (zig >= 0.16.0 with zig < 0.17) and
+  (zig-rpm-macros >= 0.16.0 with zig-rpm-macros < 0.17)
+- Drop add-experimental-non-llvm-zig-backend.patch: upstream's
+  build.zig now has its own -Dllvm option, defaulting to the same
+  non-LLVM backend the patch forced
+- Regenerate vendor.tar.zst: bump the vendored zig-wayland
+  dependency to 0.6.0 (zig-xkbcommon stays at 0.3.0) and rebuild it
+  for Zig 0.16's reworked package-cache layout
+
+-------------------------------------------------------------------
 Wed Oct  1 00:16:23 UTC 2025 - Eyad Issa <eyadlorenzo@gmail.com>
 
 - Update BuildRequires to handle patch Zig versions

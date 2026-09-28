@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:19:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.2:
+  * stream: Remove reference count
+  * server: Consume ignored incremental update requests
+
+-------------------------------------------------------------------
 Fri Jul 10 04:44:22 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.1:

@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:45:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 24.1.0:
+  * New Features
+    - git town diff-parent --name-only now omits the Git command to
+      make the output easier to parse.
+    - The website now provides instructions to install Git Town via
+      mise.
+
+-------------------------------------------------------------------
 Fri Jul 24 05:20:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 24.0.0:

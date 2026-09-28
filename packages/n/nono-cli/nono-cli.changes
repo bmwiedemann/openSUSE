@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Sep 27 17:54:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.78.0:
+  ### Security Advisories
+  * GHSA-6542-g6qc-gj95
+  * GHSA-7cwr-ghvv-24jf
+  * GHSA-222m-44fg-jx8g
+  * GHSA-8r33-hr9m-69wh
+  * GHSA-wjv5-93q3-xm73
+  * (tool-sandbox)* Fall back to the interpreter's directory for
+    RPATH-less ELF dependencies (#1650)
+  * Preserve query string on jwt-bearer token_url
+  * Pass through AF_UNIX traffic in proxy-only mode
+  * Tolerate volatile process-relative aliases in --self
+    reload
+  * Stop save-prompt failures from overriding the child
+    exit code
+  * Harden calculate_dir_size against silent errors and
+    symlink cycles
+  * Reject . and .. in pack namespace and name
+  * Fail closed when upstream DNS returns no addresses
+
+-------------------------------------------------------------------
 Fri Sep 18 08:15:02 UTC 2026 - Robert Munteanu <rombert@apache.org>
 
 - Drop workaround for upstream issue #1777, fixed in release 0.77.0

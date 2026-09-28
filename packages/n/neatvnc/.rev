@@ -311,4 +311,14 @@
   * Improve stability by fixing uninitialised memory and possible null-dereferencing.</comment>
     <requestid>1364807</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>8187432ef46f4f30a9299cdc1bb5675e</srcmd5>
+    <version>1.0.2</version>
+    <time>1790585306</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.0.2:
+  * stream: Remove reference count
+  * server: Consume ignored incremental update requests</comment>
+    <requestid>1381072</requestid>
+  </revision>
 </revisionlist>

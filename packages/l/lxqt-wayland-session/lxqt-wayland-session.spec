@@ -1,7 +1,7 @@
 #
 # spec file for package lxqt-wayland-session
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Shawn W Dunn <sfalken@opensuse.org>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,12 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-# Disable hyprland and river for SLE/Leap
+
 %if 0%{?suse_version} && 0%{?suse_version} < 1699
   %bcond river_session 0
   %bcond hyprland_session 0
 %else
-  %bcond river_session 1
+  %bcond river_session 0
   %bcond hyprland_session 1
 %endif
 
@@ -64,11 +64,11 @@ BuildRequires:  cmake(lxqt) >= 2.1.0
 BuildRequires:  cmake(lxqt2-build-tools)
 
 
-Requires:       layer-shell-qt6 >= 6.2.0
-Requires:       qt6-wayland >= 6.2.0
-Requires:       lxqt-session >= 2.1.0
-Requires:       xdg-user-dirs
 Requires:       %{name}-default-compositor
+Requires:       layer-shell-qt6 >= 6.2.0
+Requires:       lxqt-session >= 2.1.0
+Requires:       qt6-wayland >= 6.2.0
+Requires:       xdg-user-dirs
 Suggests:       %{name}-default-compositor-wayfire
 BuildArch:      noarch
 
@@ -257,7 +257,6 @@ install -m0644 default-compositor-wayfire %{buildroot}%{_datadir}/lxqt/wayland/d
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl
 %{_datadir}/lxqt/wayland/lxqt-niri.kdl.full
 %{_datadir}/lxqt/wayland/niri/*.kdl
-
 
 %if %{with river_session}
 %files -n lxqt-river-session

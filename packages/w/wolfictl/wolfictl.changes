@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:45:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.39.28:
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0
+    (#2070)
+  * build(deps): bump github.com/cli/go-gh/v2 from 2.16.0 to 2.16.1
+    (#2071)
+  * build(deps): bump cloud.google.com/go/storage from 1.65.0 to
+    1.67.1 (#2072)
+  * build(deps): bump golang.org/x/term from 0.45.0 to 0.46.0
+    (#2069)
+
+-------------------------------------------------------------------
 Mon Sep 21 05:10:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.39.27:

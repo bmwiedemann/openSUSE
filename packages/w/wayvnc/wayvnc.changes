@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:20:38 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.10.2:
+  * main: Point VNC display to correct image source on switch
+  * ctl-server: Flush on stop
+  * main: Add image_source NULL check in client_destroy
+  * ctl-client: Stop reconnect loop when no longer waiting for events
+  * main: Clear display image source when no outputs left
+  * main: Clear self->nvnc on init failure
+
+-------------------------------------------------------------------
 Fri Jul 10 04:45:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 0.10.1:

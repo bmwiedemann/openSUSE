@@ -91,4 +91,13 @@
     <comment></comment>
     <requestid>1093026</requestid>
   </revision>
+  <revision rev="12" vrev="4">
+    <srcmd5>436c61e7f4cd52b2f3c3bc1354639a3a</srcmd5>
+    <version>8.4.1</version>
+    <time>1790585267</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources to discover entry points.</comment>
+    <requestid>1381011</requestid>
+  </revision>
 </revisionlist>

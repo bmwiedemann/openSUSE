@@ -75,4 +75,12 @@
 - initial packaging</comment>
     <requestid>1343582</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>bc4b12bdae6a1d4bfec02086723f091c</srcmd5>
+    <version>3.0.0</version>
+    <time>1790585283</time>
+    <user>anag_factory</user>
+    <comment>- Remove unneeded BuildRequires on python-libsass.</comment>
+    <requestid>1381029</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:46:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.1:
+  * Bugfixes
+    - [BACKPORT] USDT related fixes in #5808:
+      - uprobetracer: Parsing USDT notes in 32-bit ELF binaries no
+        longer panics and crashes the process (dd9f3b7).
+      - uprobetracer: Compressed USDT note sections are now
+        rejected and reads from the section are capped, so a
+        crafted binary can't exhaust memory (eab867e).
+      - uprobetracer: USDT probe addresses are now mapped only
+        through PT_LOAD file content, with overflow checks, so
+        probes aren't attached to the wrong place (2a930bb).
+  * Dependencies update
+    - [BACKPORT] USDT related fixes in #5808:
+      - Bumped gRPC to v1.83.2 to pick up security fixes in gRPC
+        (d2d8478).
+      - Bumped otlploggrpc to v0.21.0 to pick up security fixes in
+        OpenTelemetry, and updated the otel-logs operator for its
+        API changes (bf45a79).
+      - Ran go mod tidy on the trace_dns wasm module (69933dc).
+
+-------------------------------------------------------------------
 Fri Sep 18 05:16:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.0:

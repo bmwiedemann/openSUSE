@@ -1,0 +1,22 @@
+Index: logreduce-0.6.1/logreduce/html_output.py
+===================================================================
+--- logreduce-0.6.1.orig/logreduce/html_output.py
++++ logreduce-0.6.1/logreduce/html_output.py
+@@ -12,7 +12,7 @@
+ 
+ import html
+ import os.path
+-import pkg_resources
++import importlib.metadata
+ 
+ from typing import Any, List, Tuple
+ from logreduce.data import Result, show_logobject
+@@ -330,7 +330,7 @@ def render_html(output: Result, static_l
+         target=" ".join(map(html.escape, map(str, output["targets"]))),
+         js=JS,
+         logo=LOGO.replace("\n", ""),
+-        version=pkg_resources.get_distribution("logreduce").version,
++        version=importlib.metadata.version("logreduce"),
+         body="\n".join(body),
+         jquery_loc=jquery_loc,
+         bootst_loc=bootst_loc,

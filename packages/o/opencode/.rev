@@ -376,4 +376,15 @@ bun build --compile.</comment>
     <comment>Relax fff/bun-pty pins to &gt;= for the 0.11.0/0.4.10 updates (ABI verified compatible).</comment>
     <requestid>1380075</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>268566c88e9474deeb4207ca466b6a6d</srcmd5>
+    <version>2.0.18</version>
+    <time>1790585262</time>
+    <user>anag_factory</user>
+    <comment>Update opencode to 2.0.18 (new v2 line; tags only, no upstream release notes).
+
+Requires opentui 0.5.12 exactly (unversioned FFI ABI) — rides with SR 1380982; the fff pin moves to 0.10.5 (verified additive against fff 0.11.0). The CLI moved packages/opencode to packages/cli; the shell parser lives in packages/core/src/shell now. Native tree-sitter patch ported to the new layout, three offline patches rebased to their new files, bun-version patch unchanged (still inert). Licence set re-derived, unchanged, no copyleft. Built green on aarch64 with full %check; runtime-verified in a container (TUI renders, clean exit, offline startup clean).
+</comment>
+    <requestid>1380992</requestid>
+  </revision>
 </revisionlist>

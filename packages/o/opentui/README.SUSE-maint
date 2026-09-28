@@ -12,9 +12,9 @@ has to be built against that same release as well.
 Today the only consumer is opencode, which pins the version in the catalog
 block of its top level package.json:
 
-    "@opentui/core": "0.4.5",
-    "@opentui/keymap": "0.4.5",
-    "@opentui/solid": "0.4.5",
+    "@opentui/core": "0.5.12",
+    "@opentui/keymap": "0.5.12",
+    "@opentui/solid": "0.5.12",
 
 So this package tracks that pin, not the newest tag. Bumping ahead of
 opencode produces a library nothing in the distribution can load. When
@@ -32,32 +32,26 @@ Bumping the version
        curl -L -o opentui-<version>.tar.gz \
            https://github.com/anomalyco/opentui/archive/refs/tags/v<version>.tar.gz
 
-2. Regenerate the offline Zig dependency bundle:
-
-       ./opentui_zigdeps <version>
-
-   This writes opentui-zig-deps-<version>.tar.zst. See below for what it is
-   and why the package cannot do without it.
-
-3. Check that the Zig version upstream demands is still the one Factory
+2. Check that the Zig version upstream demands is still the one Factory
    ships. It is a hard equality check in
-   packages/core/src/zig/build.zig:
+   packages/native/build.zig (the Zig sources moved out of
+   packages/core/src/zig in 0.5.5):
 
-       const SUPPORTED_ZIG_VERSIONS = [_]SupportedZigVersion{
-           .{ .major = 0, .minor = 15, .patch = 2 },
-       };
+        const SUPPORTED_ZIG_VERSIONS = [_]SupportedZigVersion{
+            .{ .major = 0, .minor = 16, .patch = 0 },
+        };
 
    and the spec mirrors it in the zig_version global. The check is not
    over-caution on upstream's part: Zig is not source compatible across
    releases. If Factory's zig has moved past what upstream supports, the
    package has to be rebased onto a newer OpenTUI, not relaxed to a range.
 
-   Note that Factory also has versioned zig0.NN packages. This package does
-   not use them: zig0.15 currently fails to build on aarch64, while the
-   unversioned zig is green on both architectures and is 0.15.2 as well.
-   Revisit if that changes.
+   The unversioned zig BuildRequires resolves through the versioned
+   zig0.16 package's Provides: zig = 0.16.0; that indirection is
+   deliberate, so a Factory zig roll only retargets this package once a
+   zig0.16 successor exists.
 
-4. Check the highlighter's grammar modules. packages/core/src/lib/tree-sitter/
+3. Check the highlighter's grammar modules. packages/core/src/lib/tree-sitter/
    parsers-config.ts pins the grammar releases upstream downloaded the
    .wasm files from; the package replaces them with the tree-sitter-<lang>-
    wasm packages' modules (see "What gets installed"). A grammar upstream
@@ -66,31 +60,47 @@ Bumping the version
    against the packaged grammar version (load the module and the query with
    web-tree-sitter; a query naming a node the grammar lacks throws).
 
-4. Drop the old tarballs, osc addremove, build, submit.
+4. Re-derive the License tag. Everything below is compiled into
+   libopentui.so, so every copyleft or permissive-but-not-MIT licence in
+   the vendored trees belongs in the tag; see "Vendored dependencies".
+
+5. Re-check the two %check workarounds at the bottom of this file. The
+   aarch64 test skip (opentui-aarch64-skip-crashing-x11-tests.patch)
+   goes away if the crash is fixed; the /tmp/.X11-unix mkdir stays as
+   long as the bind test binds filesystem sockets.
+
+6. Drop the old tarballs, osc addremove, build, submit.
 
 
-The offline Zig dependency bundle
----------------------------------
+Vendored dependencies
+----------------------
 
-packages/core/src/zig/build.zig.zon names two dependencies that Zig would
-otherwise fetch over the network during the build:
+Everything the native library links is vendored in-tree; the build fetches
+nothing. Two mechanisms, both hash-pinned by upstream:
 
-    uucode   a tarball, Unicode character data
-    yoga     a git checkout of facebook/yoga at v3.2.1, the flexbox layout
-             engine, whose C++ sources are compiled straight into the library
+packages/native/src/vendor/zig-deps.tar.gz holds the Zig dependencies -
+yoga (the flexbox layout engine, v3.2.1, whose C++ sources are compiled
+straight into the library), uucode (Unicode character data, in a ghostty
+and an opentui flavour) and ghostty (the embedded-terminal VT engine,
+1.3.2-dev). %build unpacks it with upstream's own
+packages/native/scripts/prepare-zig-deps.sh into the ignored
+packages/native/zig-deps directory, which build.zig.zon references over
+relative paths. The pins and SHA-256 hashes live in
+packages/native/src/vendor/update-zig-deps.sh; regenerating the archive is
+upstream's `bun run vendor:update:zig`, not a maintainer script, so there
+is no opentui_zigdeps equivalent anymore - the 0.4.5 bundle and script are
+retired.
 
-Neither has dependencies of its own, so the closure is exactly those two.
+Next to it, packages/native/src/vendor/ carries the image C libraries as
+plain sources, compiled straight in: lcms2 (2.19.1, MIT), libwebp (1.6.0,
+BSD-3-Clause, decoder subset listed in libwebp/FILES), stb_image and
+stb_image_resize2 (2.18, MIT-or-public-domain), wuffs (wuffs-v0.3.c,
+Apache-2.0) and miniaudio (0.11.22, Unlicense-or-MIT-0). Their updater is
+`bun run vendor:update:images`, driven by vendor/update.sh pins.
 
-`zig build --system <dir>` turns fetching off and looks each dependency up as
-<dir>/<hash>, where <hash> is the string already written in build.zig.zon. In
-that mode Zig does not recompute the hash - the distribution is trusted to
-have put the right tree there - which is what makes the bundle possible to
-build without Zig at all. That matters, because the Zig this package needs is
-newer than the one the maintainer's own machine is likely to have.
-
-opentui_zigdeps parses the dependency table out of the release tarball rather
-than hardcoding it, so a bump that changes a URL or a hash is picked up
-instead of silently ignored.
+None of this is unbundled: the tree-sitter grammar modules stay the one
+exception (see below), everything else has no system counterpart to link
+against.
 
 
 What gets installed, and why it is shaped that way
@@ -156,19 +166,46 @@ The build does not need bun
 
 Worth knowing, because it is not obvious from upstream's scripts. Upstream
 builds the native library with `bun run build:native`, but all that does is
-shell out to
+unpack the vendored Zig dependencies (prepare-zig-deps.sh, plain shell -
+the spec calls it directly) and shell out to
 
-    cd packages/core/src/zig && zig build -Doptimize=ReleaseFast
+    cd packages/native && zig build -Doptimize=ReleaseFast
 
 and then copy the result into a generated npm package directory. The spec
 does both of those directly, so opentui does not build-depend on bun and is
 not blocked on bun reaching Factory.
 
-`-Dtarget=native` is passed deliberately. Upstream's default for a native
-build is the first entry in SUPPORTED_TARGETS matching the host, which for
-Linux is a glibc-2.17-pinned cross target - Zig would then compile against
-its own bundled libc headers and link against synthesised stubs rather than
-the system glibc. buildSingleTarget passes any unrecognised target string
-straight to std.Target.Query.parse, so "native" is accepted and gives an
-ordinary system build. This also matches openSUSE's own zig macros, whose
-_zig_target defaults to native.
+`-Dlibrary-target=native` is passed deliberately. Upstream's default for a
+native build is the first entry in SUPPORTED_TARGETS matching the host,
+which for Linux is a glibc-2.17-pinned cross target - Zig would then compile
+against its own bundled libc headers and link against synthesised stubs
+rather than the system glibc. buildSingleTarget passes any unrecognised
+target string straight to std.Target.Query.parse, so "native" is accepted
+and gives an ordinary system build. The library lands in
+packages/native/lib/native/ either way; only the triple behind it
+differs.
+
+The baseline-CPU patch (opentui-baseline-cpu.patch) belongs to that flag:
+"native" leaves the CPU model at host detection, so the patch pins it to
+.baseline and %install fails the build if an aarch64 library ever carries
+FEAT_LRCPC instructions again. The old build-ID patch is retired - upstream
+sets lib.build_id itself since 0.5.10.
+
+
+%check workarounds
+------------------
+
+Two, both clipboard-related, both re-check on every bump:
+
+- opentui-aarch64-skip-crashing-x11-tests.patch skips the "expired
+  initial INCR" and "delayed expired INCR" unit tests on aarch64, where
+  they abort the test runner in drivePendingResponse with a null call
+  through the faked xcb_request_check. The crash reproduces outside the
+  build sandbox with pristine sources and the same code is still
+  upstream, so it is an upstream aarch64 bug, not packaging fallout;
+  upstream CI runs x86_64, where the suite passes. Drop the patch (or
+  narrow it) once the crash is gone.
+- %check creates /tmp/.X11-unix before running the suite: the "bare
+  DISPLAY falls back to a filesystem listener" test binds a socket at
+  /tmp/.X11-unix/X<display>, which exists on any X machine but not in
+  the build root, and fails with ENOENT without it.

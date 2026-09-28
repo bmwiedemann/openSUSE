@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Sun Sep 27 18:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.18 (new v2 line; v1 ends at 1.18.32, tags only,
+  no upstream release notes):
+  * New terminal interface on a v2 client transport, with session
+    undo/redo/revert/rename and asynchronous provider config
+  * The CLI moved from packages/opencode to packages/cli; the
+    shell parser lives in packages/core/src/shell with
+    wasm/node/workerd variants
+  * Requires opentui 0.5.12 exactly (unversioned FFI ABI); the
+    fff pin moves to 0.10.5 (follows the tree, still >= floor)
+- Port the native tree-sitter patch to the new shell/ layout and
+  the three offline patches to their new files; the bun-version
+  patch still applies unchanged (still inert: pins bun@1.4.2)
+- Re-derive the licence set from the new vendor tree: unchanged,
+  no copyleft
+- Update the vendor tooling for the v2 workspace set and the
+  renamed --skip-web-ui build flag
+
+-------------------------------------------------------------------
 Thu Sep 24 05:10:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Relax the fff and bun-pty runtime pins from = to >=: the

@@ -70,4 +70,13 @@
     <comment></comment>
     <requestid>1322970</requestid>
   </revision>
+  <revision rev="9" vrev="2">
+    <srcmd5>d9d9176b24851d38ba78d86d0607c906</srcmd5>
+    <version>1.2.2</version>
+    <time>1790585282</time>
+    <user>anag_factory</user>
+    <comment>- Loosen glob for the shared object for arm7's benefit.
+- Sprinkle in fdupes.</comment>
+    <requestid>1381028</requestid>
+  </revision>
 </revisionlist>

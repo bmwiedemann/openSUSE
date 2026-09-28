@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:01:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Loosen glob for the shared object for arm7's benefit.
+- Sprinkle in fdupes.
+
+-------------------------------------------------------------------
 Sat Dec 13 10:56:09 UTC 2025 - Andreas Prittwitz <m4ng4n@gmx.de>
 
 - Update to version 1.2.2

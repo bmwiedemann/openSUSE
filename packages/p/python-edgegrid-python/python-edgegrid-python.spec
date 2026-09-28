@@ -17,14 +17,12 @@
 
 
 Name:           python-edgegrid-python
-Version:        2.0.5
+Version:        2.0.8
 Release:        0
 Summary:        Client authentication protocol for python-requests
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/akamai-open/AkamaiOPEN-edgegrid-python
 Source:         https://files.pythonhosted.org/packages/source/e/edgegrid-python/edgegrid_python-%{version}.tar.gz
-BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module requests >= 2.24.0}
@@ -36,7 +34,6 @@ BuildRequires:  python-rpm-macros
 Requires:       python-requests >= 2.24.0
 Requires:       python-requests-toolbelt >= 0.9.1
 BuildArch:      noarch
-
 %python_subpackages
 
 %description
@@ -50,7 +47,11 @@ Client authentication protocol for python-requests
 
 %install
 %pyproject_install
-%python_expand %fdupes %{buildroot}%{$python_sitelib}
+%{python_expand %fdupes %{buildroot}%{$python_sitelib}
+# Do not install examples or ci
+rm -rv %{buildroot}%{$python_sitelib}/examples
+rm -rv %{buildroot}%{$python_sitelib}/ci
+}
 
 %check
 %pytest
@@ -60,7 +61,6 @@ Client authentication protocol for python-requests
 %license LICENSE
 %dir %{python_sitelib}/akamai
 %{python_sitelib}/akamai/edgegrid
-%{python_sitelib}/edgegrid_python-%{version}*.pth
 %{python_sitelib}/edgegrid_python-%{version}.dist-info
 
 %changelog

@@ -41,4 +41,30 @@ Local build green on openSUSE_Tumbleweed/aarch64, rpmlint 0 errors / 0 warnings.
     <comment>1</comment>
     <requestid>1378850</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>d15501e67b0616013993a5988f4ebbe3</srcmd5>
+    <version>0.78.0</version>
+    <time>1790585257</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.78.0:
+  ### Security Advisories
+  * GHSA-6542-g6qc-gj95
+  * GHSA-7cwr-ghvv-24jf
+  * GHSA-222m-44fg-jx8g
+  * GHSA-8r33-hr9m-69wh
+  * GHSA-wjv5-93q3-xm73
+  * (tool-sandbox)* Fall back to the interpreter's directory for
+    RPATH-less ELF dependencies (#1650)
+  * Preserve query string on jwt-bearer token_url
+  * Pass through AF_UNIX traffic in proxy-only mode
+  * Tolerate volatile process-relative aliases in --self
+    reload
+  * Stop save-prompt failures from overriding the child
+    exit code
+  * Harden calculate_dir_size against silent errors and
+    symlink cycles
+  * Reject . and .. in pack namespace and name
+  * Fail closed when upstream DNS returns no addresses</comment>
+    <requestid>1380978</requestid>
+  </revision>
 </revisionlist>

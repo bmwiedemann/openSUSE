@@ -205,4 +205,13 @@
 - Drop unneeded Requires.</comment>
     <requestid>1289146</requestid>
   </revision>
+  <revision rev="16" vrev="5">
+    <srcmd5>073df551bc65f93eb7cb3c5c20f121b4</srcmd5>
+    <version>0.6.1</version>
+    <time>1790585318</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata, not pkg_resources.</comment>
+    <requestid>1381080</requestid>
+  </revision>
 </revisionlist>

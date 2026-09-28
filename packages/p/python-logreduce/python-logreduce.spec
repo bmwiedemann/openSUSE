@@ -1,7 +1,7 @@
 #
 # spec file for package python-logreduce
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,8 @@ Summary:        Log file anomaly extractor
 License:        Apache-2.0
 URL:            https://logreduce.softwarefactory-project.io/
 Source:         https://files.pythonhosted.org/packages/source/l/logreduce/logreduce-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use importlib.metadata, not pkg_resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pbr}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -71,7 +73,7 @@ failed logs:
   (using **NearestNeighbors**).
 
 %prep
-%setup -q -n logreduce-%{version}
+%autosetup -p1 -n logreduce-%{version}
 sed -i -e 's,flake8.*,,' test-requirements.txt
 sed -i '1{/^#!/d}' logreduce/cmd.py
 

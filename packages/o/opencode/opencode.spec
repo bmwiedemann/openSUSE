@@ -25,12 +25,12 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.4.5
+%global opentui_version 0.5.12
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
 # checks the pins.
-%global fff_version 0.9.4
+%global fff_version 0.10.5
 %global bun_pty_version 0.4.8
 %global photon_version 0.3.4
 # The tree-sitter grammars @opentui/core highlights with. The modules come
@@ -56,7 +56,7 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        1.18.32
+Version:        2.0.18
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
@@ -94,7 +94,7 @@ Source11:       https://registry.npmjs.org/node-addon-api/-/node-addon-api-%{nod
 # C side of the native shell parser (Patch4).
 Source12:       %{name}-tsshim.c
 # Upstream's build script fails unless bun satisfies a caret range around the
-# version it pins. It pins 1.3.14 and Factory has 1.4.2, so the check passes
+# version it pins. It pins 1.4.2 and Factory has 1.4.2, so the check passes
 # and this patch is inert today; it stays because both versions float, and a
 # major bump on either side would otherwise stop the build over upstream's
 # convenience rather than a real incompatibility. See README.SUSE-maint.
@@ -194,8 +194,9 @@ BuildRequires:  tree-sitter-zig-wasm = %{ts_zig_version}
 BuildRequires:  zstd
 # The two native libraries are loaded from their packages at run time;
 # the floor is the tree's version, but newer binaries stay compatible:
-# bun-pty 0.4.10 exports exactly the 0.4.8 cdylib symbols, and fff 0.11.0
-# only adds C entry points over 0.9.4 (verified by export comparison).
+# bun-pty 0.4.10 exports exactly the 0.4.8 cdylib symbols, and every fff_*
+# entry point fff-bun 0.10.5 references resolves in fff 0.11.0's
+# libfff_c.so (verified by export comparison).
 Requires:       bun-pty >= %{bun_pty_version}
 Requires:       fff >= %{fff_version}
 Requires:       git-core
@@ -391,8 +392,8 @@ EOF
 
 # Patch4's placeholders, and the npm modules the shell tool no longer loads.
 sed -i 's|@OPENCODE_LIBDIR@|%{_libdir}/%{name}|; s|@TREE_SITTER_GRAMMARS@|%{_libdir}/tree-sitter|' \
-    packages/opencode/src/tool/shell.ts packages/opencode/src/tool/shell-native.ts
-grep -q '%{_libdir}/tree-sitter/libtree-sitter-bash.so' packages/opencode/src/tool/shell.ts
+    packages/core/src/shell/parse.ts packages/core/src/shell/parser-native.ts
+grep -q '%{_libdir}/tree-sitter/libtree-sitter-bash.so' packages/core/src/shell/parse.ts
 
 # The TUI highlighter's other languages: upstream downloads the grammar
 # module and a highlights.scm per language on first use (blocked by
@@ -485,11 +486,11 @@ export OPENCODE_CHANNEL=latest
 # (see the top of the file) and brp stripping is off for the payload's sake.
 gcc %{optflags} -g0 -shared -fPIC -o libopencode-tsshim.so %{SOURCE12} -ltree-sitter
 strip --strip-unneeded libopencode-tsshim.so
-cd packages/opencode
-# --single builds only the host platform. --skip-embed-web-ui leaves out the
+cd packages/cli
+# --single builds only the host platform. --skip-web-ui leaves out the
 # browser interface, which needs another 101 npm packages and embeds two fonts
 # that ship without a licence.
-bun run ./script/build.ts --single --skip-install --skip-embed-web-ui
+bun run ./script/build.ts --single --skip-install --skip-web-ui
 
 %install
 # brp-15-strip-debug runs binutils strip, not %%__strip, on every ELF that
@@ -498,7 +499,7 @@ bun run ./script/build.ts --single --skip-install --skip-embed-web-ui
 # leaves bun's .symtab in place), and strip rewrites the file just as
 # eu-strip does.
 export NO_BRP_STRIP_DEBUG=true
-install -Dpm 0755 packages/opencode/dist/%{name}-linux-%{node_arch}/bin/%{name} \
+install -Dpm 0755 packages/cli/dist/cli-linux-%{node_arch}/bin/%{name} \
     %{buildroot}%{_bindir}/%{name}
 install -Dpm 0755 libopencode-tsshim.so %{buildroot}%{_libdir}/%{name}/libopencode-tsshim.so
 
@@ -506,7 +507,7 @@ install -Dpm 0755 libopencode-tsshim.so %{buildroot}%{_libdir}/%{name}/libopenco
 # The executable carries its own runtime and payload; if anything stripped or
 # truncated it, it does not get this far.
 %{buildroot}%{_bindir}/%{name} --version
-test "$(%{buildroot}%{_bindir}/%{name} --version)" = "%{version}"
+test "$(%{buildroot}%{_bindir}/%{name} --version)" = "%{name} v%{version}"
 
 # What the payload carries: the distribution's modules and the addon built
 # above, nothing from npm.
@@ -528,7 +529,7 @@ EOF
 # The native shell parser through the shim that ships and the grammar
 # packages: a pipeline yields its two commands.
 cat > check-parse.ts <<'EOF'
-import { NativeParser, loadLanguage } from "./packages/opencode/src/tool/shell-native"
+import { NativeParser, loadLanguage } from "./packages/core/src/shell/parser-native"
 const bash = new NativeParser(loadLanguage("%{_libdir}/tree-sitter/libtree-sitter-bash.so", "tree_sitter_bash"))
 const tree = bash.parse("cat foo | grep -i bar > out")
 const cmds = tree.rootNode.descendantsOfType("command").map((n) => n.text)

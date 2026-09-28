@@ -1,0 +1,26 @@
+Index: libsass-python-0.23.0/sassutils/wsgi.py
+===================================================================
+--- libsass-python-0.23.0.orig/sassutils/wsgi.py
++++ libsass-python-0.23.0/sassutils/wsgi.py
+@@ -3,11 +3,10 @@
+ 
+ """
+ import collections.abc
++import importlib.resources
+ import logging
+ import os.path
+ 
+-from pkg_resources import resource_filename
+-
+ from .builder import Manifest
+ from sass import CompileError
+ 
+@@ -107,7 +106,7 @@ class SassMiddleware:
+         for package_name in self.manifests:
+             if package_name in self.package_dir:
+                 continue
+-            path = resource_filename(package_name, '')
++            path = str(importlib.resources.files(package_name))
+             self.package_dir[package_name] = path
+         self.paths = []
+         for package_name, manifest in self.manifests.items():

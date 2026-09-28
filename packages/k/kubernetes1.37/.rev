@@ -7,4 +7,12 @@
     <comment>initial package for kubernetes v1.37.0</comment>
     <requestid>1374333</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>5bdf3d7db213945dd474ec2c4e770b58</srcmd5>
+    <version>1.37.1</version>
+    <time>1790585310</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Sept, 2026: Update to version 1.37.1</comment>
+    <requestid>1381062</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:45:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.5:
+  * fix(apko): fix CON-2732 (#2516)
+  * build(deps): bump the codeql group with 2 updates (#2515)
+  * build(deps): bump go.step.sm/crypto from 0.90.0 to 0.91.0
+    (#2514)
+  * build(deps): bump chainguard.dev/sdk from 0.1.271 to 0.1.278
+    (#2513)
+
+-------------------------------------------------------------------
 Mon Sep 21 05:10:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.4:

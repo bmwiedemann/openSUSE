@@ -141,4 +141,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1286068</requestid>
   </revision>
+  <revision rev="14" vrev="4">
+    <srcmd5>811df515b8c11b79ee021a0b1d39ae07</srcmd5>
+    <version>0.23.0</version>
+    <time>1790585297</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources rather than pkg_resources.</comment>
+    <requestid>1381042</requestid>
+  </revision>
 </revisionlist>

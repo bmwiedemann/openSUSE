@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:59:42 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.34.12:
+  * Restore only .spec part from ControllerRevision for any StatefulSet
+  * Refuse UNC symlink targets in Windows subPath resolution
+  * DRA: avoid integer overflow in per-claim device-limit checks
+  * Fix windows backslash escaping
+  * Avoid leaking node-specific kubelet config into the ConfigMap
+  * kubelet/dra: reset devices before processing response
+  * e2e: storage snapshot tests should read custom timeouts from manifest
+
+-------------------------------------------------------------------
 Sun Sep 13 10:50:34 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - New patch: CVE-2026-41178-otel-baggage-upstream.patch 

@@ -1,7 +1,7 @@
 #
 # spec file for package python-libsass
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,9 +24,10 @@ Version:        0.23.0
 Release:        0
 Summary:        Python binding for libsass
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/sass/libsass-python
 Source:         https://github.com/sass/libsass-python/archive/%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use importlib rather than pkg_resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -50,7 +51,7 @@ A straightforward binding of libsass for Python. Compile Sass/SCSS in Python
 with no Ruby stack at all!
 
 %prep
-%setup -q -n libsass-python-%{version}
+%autosetup -p1 -n libsass-python-%{version}
 
 %build
 sed -i -e '/^#!\//, 1d' *.py
@@ -81,6 +82,6 @@ rm %{buildroot}%{$python_sitearch}/sasstests.py \
 %{python_sitearch}/_sass*.so
 %{python_sitearch}/sassutils
 %pycache_only %{python_sitearch}/__pycache__/*sass*.pyc
-%{python_sitearch}/libsass-%{version}*-info
+%{python_sitearch}/libsass-%{version}.dist-info
 
 %changelog

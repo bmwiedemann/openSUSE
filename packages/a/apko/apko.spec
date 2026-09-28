@@ -17,7 +17,7 @@
 
 
 Name:           apko
-Version:        1.4.4
+Version:        1.4.5
 Release:        0
 Summary:        Build OCI images from APK packages directly without Dockerfile
 License:        Apache-2.0

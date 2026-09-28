@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Sep 27 15:46:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.12 (opencode v2 pins @opentui/* at exactly this
+  version; the FFI ABI is unversioned so both move together):
+  * Native core now needs Zig 0.16 and lives in packages/native;
+    its Zig dependencies and image libraries ship vendored in-tree
+  * New embedded terminal runtime and native image rendering in
+    the library, plus audio input capture and clipboard support
+  * Per-line text alignment, mouse pointer styles, double/triple
+    click and CJK line wrapping in the TypeScript API
+  * Renderer and input fixes: split-footer resize, transparent
+    terminal backgrounds, markdown tables and hyperlinks, Thai
+    spacing marks and Ghostty wide grapheme widths
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Drop opentui-build-id.patch (upstream sets the build ID itself)
+  and rework opentui-baseline-cpu.patch for the moved build.zig
+- Retire opentui-zig-deps-0.4.5.tar.zst and opentui_zigdeps: deps
+  are vendored in-tree, unpacked at build time, nothing is fetched
+- Licence now Apache-2.0 AND BSD-3-Clause AND MIT AND
+  (Unlicense OR MIT-0) for the vendored wuffs and libwebp code
+- Skip two X11 clipboard unit tests on aarch64, where they abort
+  the test runner (opentui-aarch64-skip-crashing-x11-tests.patch);
+  create /tmp/.X11-unix in %check for the socket bind test
+
+-------------------------------------------------------------------
 Mon Sep 14 19:39:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Use the tree-sitter-javascript-wasm, -typescript-wasm,

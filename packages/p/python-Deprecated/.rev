@@ -173,4 +173,17 @@
     <comment></comment>
     <requestid>1317570</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>95c7a5608c80556fff72dddf1fa541eb</srcmd5>
+    <version>3.0.0</version>
+    <time>1790585281</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.0:
+  * port to Python 3.12+ with uv, Hatch and modern typing
+  * convert the documentation to Markdown (Sphinx 9.1 + MyST)
+  * add the &quot;Google&quot; docstring decorators (deprecated.google)
+  * add the &quot;NumPy&quot; docstring decorators (deprecated.numpy)
+  * make deprecated functions and methods picklable (multiprocessing spawn)</comment>
+    <requestid>1381012</requestid>
+  </revision>
 </revisionlist>

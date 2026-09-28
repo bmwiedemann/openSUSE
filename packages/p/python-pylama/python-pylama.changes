@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 03:06:01 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources to discover entry points.
+
+-------------------------------------------------------------------
 Tue Jun 13 08:57:13 UTC 2023 - ecsos <ecsos@opensuse.org>
 
 - Add %{?sle15_python_module_pythons}

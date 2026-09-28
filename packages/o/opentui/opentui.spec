@@ -22,7 +22,7 @@
 # Upstream's build.zig refuses to run on anything but this exact version, and
 # the Zig releases it brackets are not source compatible, so a range would be
 # a lie. When Factory moves on, this package has to be rebased, not relaxed.
-%global zig_version 0.15.2
+%global zig_version 0.16.0
 # The npm names for the platform the native library is built for. OpenTUI
 # resolves it as @opentui/core-<platform>-<arch>/libopentui.so, using Node's
 # names for both, not the RPM ones.
@@ -33,26 +33,26 @@
 %global node_arch arm64
 %endif
 Name:           opentui
-Version:        0.4.5
+Version:        0.5.12
 Release:        0
 Summary:        Library for building terminal user interfaces
 # OpenTUI itself is MIT. miniaudio is vendored as a single header in
-# packages/core/src/zig/vendor and is dual licensed; yoga and uucode are
-# pulled in as Zig dependencies and are both MIT.
-License:        MIT AND (Unlicense OR MIT-0)
+# packages/native/src/vendor and is dual licensed, as is stb; uucode,
+# ghostty-vt, yoga and lcms2 are MIT; libwebp is BSD-3-Clause and wuffs is
+# Apache-2.0. All of them are compiled into libopentui.so.
+License:        Apache-2.0 AND BSD-3-Clause AND MIT AND (Unlicense OR MIT-0)
 URL:            https://opentui.com
 Source0:        https://github.com/anomalyco/%{name}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# The two Zig dependencies, prepared for an offline build by opentui_zigdeps.
-Source1:        %{name}-zig-deps-%{version}.tar.zst
-Source2:        opentui_zigdeps
-Source3:        README.SUSE-maint
-# Ask the linker for a build ID, without which rpm cannot split a debuginfo
-# package off the library.
-Patch0:         opentui-build-id.patch
-# Without this the library is generated for whatever CPU the build worker has
-# and SIGILLs on older machines of the same architecture.
-Patch1:         opentui-baseline-cpu.patch
+Source1:        README.SUSE-maint
+# The Zig sources moved to packages/native in 0.5.5 and build the library
+# for an explicit triple by default; -Dlibrary-target=native below keeps the
+# host libc and libstdc++, so pin the code generator back to the baseline.
+Patch0:         opentui-baseline-cpu.patch
+# Two X11 clipboard unit tests abort the test runner on aarch64 (see the
+# patch header); skipped there until upstream fixes them.
+Patch1:         opentui-aarch64-skip-crashing-x11-tests.patch
 BuildRequires:  binutils
+BuildRequires:  gzip
 BuildRequires:  python3-base
 # The grammar modules the highlighter ships: symlinked to the
 # tree-sitter-<lang>-wasm packages' files below, checked at build time.
@@ -61,12 +61,16 @@ BuildRequires:  tree-sitter-markdown-wasm
 BuildRequires:  tree-sitter-typescript-wasm
 BuildRequires:  tree-sitter-zig-wasm
 BuildRequires:  zig = %{zig_version}
-BuildRequires:  zstd
-Provides:       bundled(miniaudio) = 0.11.24
-Provides:       bundled(uucode) = 0.1.0
+Provides:       bundled(ghostty-vt) = 1.3.2
+Provides:       bundled(lcms2) = 2.19.1
+Provides:       bundled(libwebp) = 1.6.0
+Provides:       bundled(miniaudio) = 0.11.22
+Provides:       bundled(stb) = 2.18
+Provides:       bundled(uucode) = 0.2.0
+Provides:       bundled(wuffs) = 0.3
 Provides:       bundled(yoga) = 3.2.1
 # Upstream supports no other architecture: SUPPORTED_TARGETS in
-# packages/core/src/zig/build.zig lists only x86_64 and aarch64.
+# packages/native/build.zig lists only x86_64 and aarch64.
 ExclusiveArch:  x86_64 aarch64
 
 %description
@@ -94,35 +98,36 @@ using it bundles these sources into itself with its own bundler. So this is
 what you build against, and nothing installs it to run.
 
 %prep
-%autosetup -p1 -a1 -n %{name}-%{version}
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-# Zig resolves the entries in build.zig.zon over the network unless --system
-# points it at a directory of already-unpacked packages, which is what
-# Source1 is. Both caches have to be inside the build directory as well, or
-# Zig writes to $HOME.
+# The Zig dependencies (yoga, uucode, ghostty) and the image C libraries
+# (lcms2, libwebp, stb, wuffs, miniaudio) are vendored in-tree under
+# packages/native/src/vendor; the archive unpacks to an ignored directory
+# the build then resolves over relative paths, so nothing is fetched.
 export ZIG_GLOBAL_CACHE_DIR="$PWD/.zig-global-cache"
 export ZIG_LOCAL_CACHE_DIR="$PWD/.zig-local-cache"
-zig_deps="$PWD/deps"
 
-cd packages/core/src/zig
-# -Dtarget=native keeps the host's libc and libstdc++, which is what a
-# distribution build wants. What it must not keep is the host's CPU model -
-# see Patch1.
+cd packages/native
+sh scripts/prepare-zig-deps.sh
+# -Dlibrary-target=native keeps the host's libc and libstdc++, which is what
+# a distribution build wants. What it must not keep is the host's CPU model -
+# see Patch0.
 zig build \
-    --system "$zig_deps" \
-    -Dtarget=native \
+    -Dlibrary-target=native \
     -Doptimize=ReleaseFast \
     --verbose
 
 %install
 install -d %{buildroot}%{_libdir}/%{name}/%{native_pkg}
-install -m 0755 packages/core/src/zig/lib/native/libopentui.so \
+# The -Dlibrary-target override below installs to ../lib/<name> next to the
+# default prefix, i.e. packages/native/lib/native, not zig-out.
+install -m 0755 packages/native/lib/native/libopentui.so \
     %{buildroot}%{_libdir}/%{name}/%{native_pkg}/libopentui.so
 
-# The whole point of the explicit -Dtarget above. If a rebase ever puts a
-# host-detected CPU model back, catch it here rather than in a bug report from
-# somebody with an older machine.
+# The whole point of the explicit -Dlibrary-target above. If a rebase ever
+# puts a host-detected CPU model back, catch it here rather than in a bug
+# report from somebody with an older machine.
 %ifarch aarch64
 if objdump -d %{buildroot}%{_libdir}/%{name}/%{native_pkg}/libopentui.so \
         | grep -qE '\s(ldapr|ldaprb|ldaprh|ldapur|stlur|stlurb|stlurh)\s'; then
@@ -184,17 +189,22 @@ EOF
 for pkg in core keymap solid; do
     cp -a packages/$pkg %{buildroot}%{_libdir}/%{name}/@opentui/
     ( cd %{buildroot}%{_libdir}/%{name}/@opentui/$pkg
-      rm -rf src/zig src/tests src/benchmark tests examples \
-             dev docs bench-before bench-after node_modules \
-             tsconfig.json tsconfig.build.json tsconfig.node-test.json
+      rm -rf src/tests src/benchmark src/specs tests examples \
+              dev docs bench-before bench-after node_modules \
+              tsconfig.json tsconfig.build.json tsconfig.node-test.json
       # scripts/ is mostly upstream's own build and release plumbing, but in
-      # solid it also holds four modules the exports map points at, so drop
+      # solid it also holds five modules the exports map points at (plus
+      # solid-transform.ts, which the bun-plugin entry imports), so drop
       # the plumbing by name rather than the directory.
       rm -f scripts/build.ts scripts/publish.ts scripts/dist-test.ts \
             scripts/standalone-test.ts scripts/test.ts scripts/test-node.ts \
-            scripts/test-node-hook.mjs scripts/test-packed-consumer.ts
+            scripts/test-node-hook.mjs scripts/test-packed-consumer.ts \
+            scripts/bench-js-node.ts scripts/native-symbols.ts \
+            scripts/native-symbols.test.ts scripts/package-native-symbols.ts \
+            scripts/variants.ts scripts/reconciler-benchmark.ts
       rmdir scripts 2>/dev/null || :
       find . -name '*.test.ts' -delete
+      find . -name '__snapshots__' -type d -prune -exec rm -rf {} +
       find . -name '.gitignore' -delete
       # A couple of modules are exported API that also run themselves as a
       # CLI under import.meta.main, so they carry a bun shebang. Nothing here
@@ -257,10 +267,11 @@ EOF
 %check
 export ZIG_GLOBAL_CACHE_DIR="$PWD/.zig-global-cache"
 export ZIG_LOCAL_CACHE_DIR="$PWD/.zig-local-cache"
-zig_deps="$PWD/deps"
-cd packages/core/src/zig
+# The X11 clipboard tests bind filesystem sockets under /tmp/.X11-unix,
+# which exists on any X machine but not in the build root.
+mkdir -p /tmp/.X11-unix
+cd packages/native
 zig build test \
-    --system "$zig_deps" \
     --summary all
 
 %files

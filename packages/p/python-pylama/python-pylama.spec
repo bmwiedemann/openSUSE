@@ -1,7 +1,7 @@
 #
 # spec file for package python-pylama
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,17 +22,20 @@ Version:        8.4.1
 Release:        0
 Summary:        Code audit tool for python
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/klen/pylama
 Source:         https://github.com/klen/pylama/archive/refs/tags/%{version}.tar.gz#/pylama-%{version}-gh.tar.gz
-BuildRequires:  %{python_module base >= 3.7}
-BuildRequires:  %{python_module mccabe      >= 0.7.0}
+# PATCH-FIX-UPSTREAM gh#klen/pylama#254
+Patch0:         no-more-pkg-resources.patch
+BuildRequires:  %{python_module base >= 3.8}
+BuildRequires:  %{python_module mccabe >= 0.7.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pycodestyle >= 2.9.1}
-BuildRequires:  %{python_module pydocstyle  >= 6.1.1}
-BuildRequires:  %{python_module pyflakes    >= 2.5.0}
+BuildRequires:  %{python_module pydocstyle >= 6.1.1}
+BuildRequires:  %{python_module pyflakes >= 2.5.0}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+# We need the sqlite3 module
+BuildRequires:  %{pythons}
 BuildRequires:  fdupes
 BuildRequires:  git-core
 %if 0%{?suse_version} > 1500
@@ -40,11 +43,11 @@ BuildRequires:  mypy
 %endif
 BuildRequires:  python-rpm-macros
 Requires(post): update-alternatives
-Requires(postun):update-alternatives
-Requires:       python-mccabe      >= 0.7.0
+Requires(postun): update-alternatives
+Requires:       python-mccabe >= 0.7.0
 Requires:       python-pycodestyle >= 2.9.1
-Requires:       python-pydocstyle  >= 6.1.1
-Requires:       python-pyflakes    >= 2.5.0
+Requires:       python-pydocstyle >= 6.1.1
+Requires:       python-pyflakes >= 2.5.0
 Suggests:       python-pylint
 Suggests:       python-eradicate
 Suggests:       python-radon
@@ -108,6 +111,6 @@ donttest+=" or test_pylint"
 %license LICENSE
 %python_alternative %{_bindir}/pylama
 %{python_sitelib}/pylama
-%{python_sitelib}/pylama-%{version}*-info
+%{python_sitelib}/pylama-%{version}.dist-info
 
 %changelog

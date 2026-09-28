@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:53:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.122.0:
+  * Features
+    - feat: allow to store policy assets on oci registry (#8301)
+    - chore: move updatecli manifest validate out of experimental
+      (#10586)
+    - feat: support relative path, relative to Updatecli manifest
+      files. (#10150)
+    - feat(autodiscovery/npm): support vulnerability detection
+      (#10512)
+    - feat(autodiscovery/golang): support vulnerability detection
+      (#10534)
+    - feat: add vulnerability detection plugin using osv database
+      (#10497)
+  * Bug Fixes
+    - fix(docker): use TARGETPLATFORM for base image (#10584)
+    - fix: manifest version don't warn on prerelease (#10554)
+    - fix(pep440): skip pre-releases when the pattern is a
+      constraint (#10546)
+    - fix: allow to use dynamic info in pipeline name (#10510)
+  * Maintenance
+    - feat: add release candidate pipeline (#10553)
+    - deps(golang): Bump minor version for go.opentelemetry.io
+      module (#10552)
+    - deps(go): bump module github.com/beevik/etree to v1.8.0
+      (#10525)
+    - chore(ci): upgrade uv version (#10513)
+    - chore(dockerfile): upgrade node version (#10498)
+    - deps: bump Updatecli GH action to v3.7.0 (#10492)
+    - deps(go): bump module github.com/fluxcd/source-controller/api
+      to v1.9.5 (#10488)
+    - deps(go): bump module github.com/yuin/goldmark to v1.8.6
+      (#10483)
+    - deps(go): bump module github.com/moby/buildkit to v0.33.0
+      (#10476)
+    - deps(go): bump module github.com/drone/go-scm to v1.42.15
+      (#10473)
+    - deps(go): bump module github.com/google/go-containerregistry
+      to v0.22.1 (#10464)
+    - chore(dockerfile): upgrade node version (#10450)
+    - chore(ci): upgrade uv version (#10441)
+    - install Updatecli gha workflows v0.121.0 (#10430)
+    - Create issue template for Updatecli release process (#10410)
+
+-------------------------------------------------------------------
 Sun Sep 13 12:01:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.121.0:

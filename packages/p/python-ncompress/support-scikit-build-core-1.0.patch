@@ -1,0 +1,13 @@
+Index: ncompress-1.0.2/pyproject.toml
+===================================================================
+--- ncompress-1.0.2.orig/pyproject.toml
++++ ncompress-1.0.2/pyproject.toml
+@@ -41,7 +41,7 @@ build-backend = "scikit_build_core.build
+ # after editing C++ files.
+ 
+ [tool.scikit-build]
+-cmake.minimum-version = "3.18"
++cmake.version = ">=3.18"
+ wheel.license-files = ["LICENSE"]
+ build-dir = "build/{wheel_tag}"
+ # Build stable ABI wheels for CPython 3.12+

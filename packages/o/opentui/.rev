@@ -32,4 +32,13 @@ drives the full TUI.</comment>
 INTERDEPENDENT REQUESTS - please stage together (will not build until these land): sr#1378013 tree-sitter, sr#1378025 tree-sitter-javascript, sr#1378034 tree-sitter-typescript, sr#1378029 tree-sitter-markdown, sr#1378039 tree-sitter-zig.</comment>
     <requestid>1378041</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2d2fa092212e57f7c5170b757aee015e</srcmd5>
+    <version>0.5.12</version>
+    <time>1790585261</time>
+    <user>anag_factory</user>
+    <comment>Update opentui to 0.5.12, tracking opencode v2's exact @opentui/* pin across the unversioned FFI ABI. Reworks the packaging for upstream's moved Zig sources (zig 0.16, in-tree vendored deps) and extends the licence tag for the newly bundled wuffs and libwebp code. Test report: local aarch64 build green, rpmlint clean, 2173/2183 Zig tests pass.
+</comment>
+    <requestid>1380982</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:53:02 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
+
+- Update to version 1.36.5:
+  * Bump images and versions to go 1.26.8 and distroless iptables
+  * Refuse UNC symlink targets in Windows subPath resolution
+  * Restore only .spec part from ControllerRevision for any StatefulSet
+  * DRA: avoid integer overflow in per-claim device-limit checks
+  * fix job pod could not be removed while removing finalizer failed
+  * [kube-proxy/winkernel] Guard against load balancers without port mappings
+  * Fix windows backslash escaping
+  * Avoid leaking node-specific kubelet config into the ConfigMap
+  * conformance: demote guaranteed pod resize tests to e2e
+  * [release-1.36] test(utils): bump agnhost image tag to 2.66.1
+  * Fix ObjectVal ConvertToNative for structpb and refine mutation tests
+  * e2e: storage snapshot tests should read custom timeouts from manifest
+
+- Update .spec file to bump go version build requirements:
+  * `BuildRequires:  go >= 1.26.8`
+  * ref: https://github.com/kubernetes/kubernetes/blob/v1.36.5/.go-version
+
+-------------------------------------------------------------------
 Sun Sep 13 11:17:35 UTC 2026 - Priyanka Saggu <priyanka.saggu@suse.com>
 
 - New patch: CVE-2026-41178-otel-baggage-upstream.patch

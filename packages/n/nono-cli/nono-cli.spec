@@ -17,7 +17,7 @@
 
 
 Name:           nono-cli
-Version:        0.77.0
+Version:        0.78.0
 Release:        0
 Summary:        CLI for nono capability-based sandbox
 # Legal-Review-Notice: licences of the Rust crates statically linked into the

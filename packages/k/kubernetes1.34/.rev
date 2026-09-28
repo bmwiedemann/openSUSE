@@ -102,4 +102,12 @@ Also, includes a changelog entry pointing to the mitigation steps suggested by t
 - ref: https://github.com/open-telemetry/opentelemetry-go/commit/f02feacf86</comment>
     <requestid>1377680</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>a0a7604399e75bf2d8487f65674711a3</srcmd5>
+    <version>1.34.12</version>
+    <time>1790585314</time>
+    <user>anag_factory</user>
+    <comment>Monthly Patch Release – Sept, 2026: Update to version 1.34.12</comment>
+    <requestid>1381065</requestid>
+  </revision>
 </revisionlist>

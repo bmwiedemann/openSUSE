@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:44:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.7.2:
+  * Dependency Updates
+    - fix(deps): bump grpc to 1.83.2 to clear CVE-2026-84445 and
+      CVE-2026-84304
+    - Bump golang from `4cb7ac9` to `8a5910f` in the docker group
+    - Bump the docker group with 2 updates
+    - Bump go.mongodb.org/mongo-driver from 1.17.9 to 1.17.10
+    - Bump the docker group with 2 updates
+    - Bump github.com/rabbitmq/amqp091-go from 1.14.0 to 1.15.0
+    - Bump go.temporal.io/api from 1.63.5 to 1.63.6
+    - Bump golang.org/x/net from 0.58.0 to 0.59.0
+    - Bump mvdan.cc/sh/v3 from 3.14.0 to 3.14.1
+    - Bump github.com/go-sql-driver/mysql from 1.10.0 to 1.10.1
+    - Bump golang in the docker group
+    - Bump mvdan.cc/sh/v3 from 3.13.1 to 3.14.0
+    - Bump debian from `3a39a05` to `d7e1218` in the docker group
+    - Bump golang in the docker group
+    - Bump github.com/miekg/dns from 1.1.72 to 1.1.73
+    - Bump github.com/stretchr/testify from 1.12.0 to 1.12.1
+
+-------------------------------------------------------------------
 Fri Aug 28 08:50:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.7.1:

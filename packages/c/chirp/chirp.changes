@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:36:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20260925:
+  * uvk5: Add 7.01 firmware blessing
+  * radtel_t18: Add new model identification string
+  * kenwood memory implementation fix
+  * Retevis RT18 driver
+
+-------------------------------------------------------------------
 Sat Sep 19 19:32:19 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260918:

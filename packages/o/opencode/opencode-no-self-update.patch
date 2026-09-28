@@ -1,47 +1,53 @@
-opencode updates itself in place: one second after the TUI starts it asks
-GitHub for the newest release and, if it recognises how it was installed,
-overwrites its own executable. For a packaged build that is rpm's file, and
-the check contacts the network on every single start.
+opencode updates itself in place: the background check asks the network
+for the newest release on every start and, if it recognises how it was
+installed, overwrites its own executable. For a packaged build that is
+rpm's file, and the check contacts the network on every single start.
 
 Setting "autoupdate": false in the system configuration directory does not
-help. upgrade() reads cfg.getGlobal(), which loads only
+help. The check reads the global config, which loads only
 ~/.config/opencode/*.json; the /etc/opencode merge happens on a different
-code path (loadInstanceState). So the guard has to be here.
+code path. Upstream's own OPENCODE_DISABLE_AUTOUPDATE is opt-out, so it
+cannot be the distribution default either. The guard has to be here.
 
 The explicit `opencode upgrade` command needs the same treatment, for a
-second reason. Installation.method() already returns "unknown" for a file in
-/usr/bin, and upstream handles that by asking whether to install anyway - so
-with no terminal attached the command blocks on the prompt and never
-returns. `opencode upgrade` in a script or a CI job hangs forever.
+second reason. With no terminal attached the command can block on a prompt
+and never return, so `opencode upgrade` in a script or a CI job hangs
+forever.
 
 OPENCODE_ENABLE_AUTOUPDATE=1 restores upstream behaviour for both.
 
---- a/packages/opencode/src/cli/upgrade.ts
-+++ b/packages/opencode/src/cli/upgrade.ts
-@@ -6,6 +6,9 @@
- import { GlobalBus } from "@/bus/global"
-
- export async function upgrade() {
-+  // openSUSE: opencode is updated by zypper. Self-updating would overwrite an
-+  // rpm-owned file behind the package manager's back.
-+  if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1") return
-   const config = await AppRuntime.runPromise(Config.Service.use((cfg) => cfg.getGlobal()))
-   if (config.autoupdate === false || Flag.OPENCODE_DISABLE_AUTOUPDATE) return
-   const method = await Installation.method()
---- a/packages/opencode/src/cli/cmd/upgrade.ts
-+++ b/packages/opencode/src/cli/cmd/upgrade.ts
-@@ -21,6 +21,14 @@
-       })
-   },
-   handler: async (args: { target?: string; method?: string }) => {
-+    // openSUSE: this build is rpm's file. Upstream detects that much on its
-+    // own - Installation.method() returns "unknown" - but then stops to ask
-+    // whether to install anyway, which never returns when nothing is attached
-+    // to answer it, so `opencode upgrade` in a script hangs forever.
-+    if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1") {
-+      UI.println("opencode was installed from a package; upgrade it with your package manager.")
-+      return
-+    }
-     UI.empty()
-     UI.println(UI.logo("  "))
-     UI.empty()
+--- a/packages/cli/src/services/updater.ts
++++ b/packages/cli/src/services/updater.ts
+@@ -472,6 +472,14 @@
+   })
+ 
+   const check = Effect.fn("cli.updater.check")(function* () {
++    // openSUSE: opencode is updated by zypper. The check contacts the
++    // network on every start, and applying it would overwrite an
++    // rpm-owned file behind the package manager's back.
++    if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1")
++      return {
++        type: "unavailable" as const,
++        message: "opencode was installed from a package; upgrade it with your package manager.",
++      }
+     if (OPENCODE_LOCAL)
+       return {
+         type: "unavailable" as const,
+--- a/packages/cli/src/commands/handlers/upgrade.ts
++++ b/packages/cli/src/commands/handlers/upgrade.ts
+@@ -12,6 +12,15 @@
+   Effect.fn("cli.upgrade")(
+     function* (input) {
+       intro("Upgrade")
++      // openSUSE: this build is rpm's file. Upstream detects that much on
++      // its own for some methods, but with no terminal attached the command
++      // can block on a prompt and never return, so `opencode upgrade` in a
++      // script hangs forever.
++      if (process.env["OPENCODE_ENABLE_AUTOUPDATE"] !== "1") {
++        log.info("opencode was installed from a package; upgrade it with your package manager.")
++        outro("Done")
++        return
++      }
+       const updater = yield* Updater.Service
+       const method = Option.getOrUndefined(input.method) ?? (yield* updater.method())
+       if (!method)

@@ -34,8 +34,9 @@ keep="$here/opencode-vendor-keep.txt"
 # with no licence text. None of it is reachable from the CLI build, so it is
 # dropped rather than shipped and explained.
 workspace_packages=(
-    codemode core effect-drizzle-sqlite llm opencode plugin protocol
-    schema script sdk server tui ui
+    ai cli client codemode core http-recorder httpapi-codegen latex merman
+    plugin plugin-browser protocol schema script server simulation theme
+    tui ui util
 )
 # Root files the build or the licence audit needs.
 # .github/TEAM_MEMBERS is not documentation: packages/script/src/index.ts
@@ -81,7 +82,7 @@ echo "==> installing npm dependencies"
 # step after this one prunes the platforms we do not build for back out.
 ( cd "$tree" && bun install --ignore-scripts --no-progress \
       --cpu '*' --os '*' \
-      --filter './packages/opencode' --filter './packages/script' >/dev/null )
+      --filter './packages/cli' --filter './packages/script' >/dev/null )
 
 store="$tree/node_modules/.bun"
 
