@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Thu Sep 24 11:59:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.1.8:
+  + This release adds the following features:
+    - Add a new plugin to poke bootupd when the ESP changes
+    - Add RSA-3072 signature verification support for Lenovo
+      accessories
+  + This release fixes the following bugs:
+    - Add a workaround for the systemd-pcrosseparator.service PCR0
+      extension
+    - Add hashes for the latest DBX for offline machines
+    - Add user aware message to complete the dell-dock update
+    - Allow enumeration BIOS settings to take either string or
+      integer
+    - Allow redfish firmware blobs up to 512MiB
+    - Always use base-16 when parsing the UEFI capsule index
+    - Do not allow a DFU altname or STM32 sector size of zero
+    - Fix a buffer overwrite when parsing Synaptics CAPE HID
+      reports
+    - Fix a dell-dock crash via malformed EC_CMD_GET_DOCK_INFO
+      response
+    - Fix a file descriptor leak when getting firmware details
+    - Fix a memory leak when parsing an invalid TPM eventlog
+    - Fix a NULL deref when enumerating a broken synaptics-rmi
+      device
+    - Fix a snapd error when installing the latest dbx
+    - Fix an integer underflow in Focal FP HID CRC parser
+    - Fix eMMC error recovery command when setting install mode
+      fails
+    - Fix firmware recovery of Logitech Unifying devices
+    - Increase the Huddly USB bulk write timeout to 30s
+    - Invalidate the Wacom descriptor cache when the block count
+      changes
+    - Limit decompressing LZMA streams to 2GiB
+    - Update PCB version checking logic in usi-dock
+    - Use the stricter PolicyKit action ID when the device has gone
+    - Verify the jcat item IDs before using them as filenames
+  + This release adds support for the following hardware:
+    - ASUS GX5407
+    - Elan PID 0CB6
+    - FocalTech MOC fingerprint sensors
+    - Lenovo ThinkPad Thunderbolt 4 Dock Gen 2 7000
+    - MaxLinear MxL862xx
+    - MediaTek MT9700 FCTE and MT9701 KSMU
+    - Pixart PID 4F01, 4F02, 4F0D and 4F0E
+    - Rolling RW101
+
+-------------------------------------------------------------------
 Mon Aug 17 14:33:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add Requires: gnome-desktop-testing to fwupd-tests subpackage
