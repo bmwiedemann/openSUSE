@@ -17,7 +17,7 @@
 
 
 Name:           gap-json
-Version:        2.4.0
+Version:        2.5.0
 Release:        0
 Summary:        GAP: Package for reading and writing JSON
 License:        BSD-2-Clause
@@ -26,10 +26,9 @@ URL:            https://gap-packages.github.io/json/
 #Git-Clone:     https://github.com/gap-packages/json
 Source:         https://github.com/gap-packages/json/releases/download/v%version/json-%version.tar.gz
 BuildRequires:  c++_compiler
-BuildRequires:  gap-devel >= 4.12
+BuildRequires:  gap-devel >= 4.15
 BuildRequires:  gap-rpm-devel
-Requires:       gap-core >= 4.12
-Requires:       gap-gapdoc >= 1.5
+Requires:       gap-core >= 4.15
 
 %description
 Enhances GAP by the ability to read and write JSON files.
