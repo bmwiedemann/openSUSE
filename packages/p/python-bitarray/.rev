@@ -557,4 +557,29 @@
   * remove caching imported Python objects (which are already</comment>
     <requestid>1369436</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>eb6f7e660f1da0ef6b0ee1278d25b9b4</srcmd5>
+    <version>3.11.0</version>
+    <time>1790585158</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.11.0:
+  * add run-length codec: util.rl_encode() and util.rl_decode()
+  * add util.sc_stat()
+  * add Comparison of bitarray codecs documentation
+  * optimize sparse block selection for trailing zeros
+  * preserve bitarrays when buffer reallocation fails
+  * consistent input validation for large util.sum_indices()
+    inputs
+  * improve sparse-compression and debug-mode tests, including
+    new tests for slice adjustment adjust_slice()
+  * move private sysinfo() and ssqi() out of the top-level
+    namespace
+  * move internal tests for util._Random class into
+    devel/test_random.py
+  * add debug-mode introspection and tests for decodetree
+    structure
+  * fix util.pprint() for very narrow output widths
+  * substantially simplify util.ba2int() and util.int2ba()</comment>
+    <requestid>1380809</requestid>
+  </revision>
 </revisionlist>

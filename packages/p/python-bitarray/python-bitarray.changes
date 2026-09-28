@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:03:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.11.0:
+  * add run-length codec: util.rl_encode() and util.rl_decode()
+  * add util.sc_stat()
+  * add Comparison of bitarray codecs documentation
+  * optimize sparse block selection for trailing zeros
+  * preserve bitarrays when buffer reallocation fails
+  * consistent input validation for large util.sum_indices()
+    inputs
+  * improve sparse-compression and debug-mode tests, including
+    new tests for slice adjustment adjust_slice()
+  * move private sysinfo() and ssqi() out of the top-level
+    namespace
+  * move internal tests for util._Random class into
+    devel/test_random.py
+  * add debug-mode introspection and tests for decodetree
+    structure
+  * fix util.pprint() for very narrow output widths
+  * substantially simplify util.ba2int() and util.int2ba()
+
+-------------------------------------------------------------------
 Tue Aug  4 08:54:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.10.0:
