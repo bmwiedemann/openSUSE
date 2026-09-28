@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Sep 25 04:50:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.33:
+  * Bug fixes
+    - fix(go): update charm.land/bubbletea/v2 ( v2.0.9 → v2.0.10 )
+    - fix(go): update kubernetes monorepo ( v0.37.0 → v0.37.1 )
+  * Dependencies
+    - chore(mise): update aqua:kubernetes/minikube ( 1.38.1 →
+      1.39.0 )
+    - chore(mise): update aqua:helm/helm ( 4.2.2 → 4.3.0 )
+    - chore(mise): update go ( 1.27.0 → 1.27.1 )
+    - chore(mise): update golangci-lint ( 2.13.1 → 2.13.2 )
+
+-------------------------------------------------------------------
 Fri Aug 28 08:28:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.32:
