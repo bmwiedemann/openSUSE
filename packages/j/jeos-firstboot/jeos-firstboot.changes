@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 25 08:39:52 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 1.5.14:
+  * Refine the JEOS_USER_GROUPS option and use it for the builtin default
+  * Read jeos-firstboot.conf in jeos-config as well
+  * Add configuration variables on groups to add users to
+  * Move welcome_screen_with_console_switch stub to end of file
+  * Fix welcome_screen_with_console_switch undefined in jeos-config
+
+-------------------------------------------------------------------
 Tue Jan 20 08:01:25 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 1.5.9:

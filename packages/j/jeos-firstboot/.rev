@@ -686,4 +686,17 @@
   * Use snapper create on transactional systems again</comment>
     <requestid>1328211</requestid>
   </revision>
+  <revision rev="67" vrev="1">
+    <srcmd5>7c211d3c5f43b2a814e0f1b5a7fc9ef4</srcmd5>
+    <version>1.5.14</version>
+    <time>1790584621</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.5.14:
+  * Refine the JEOS_USER_GROUPS option and use it for the builtin default
+  * Read jeos-firstboot.conf in jeos-config as well
+  * Add configuration variables on groups to add users to
+  * Move welcome_screen_with_console_switch stub to end of file
+  * Fix welcome_screen_with_console_switch undefined in jeos-config</comment>
+    <requestid>1380363</requestid>
+  </revision>
 </revisionlist>
