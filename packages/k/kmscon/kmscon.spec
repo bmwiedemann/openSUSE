@@ -18,7 +18,7 @@
 
 
 Name:           kmscon
-Version:        10.0.3
+Version:        10.0.4+git2
 Release:        0
 Summary:        Linux KMS/DRM based virtual Console Emulator
 License:        MIT
@@ -37,7 +37,7 @@ BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libseat)
 BuildRequires:  pkgconfig(libsystemd)
-BuildRequires:  pkgconfig(libtsm) >= 4.6.0
+BuildRequires:  pkgconfig(libtsm) >= 4.8.0
 BuildRequires:  pkgconfig(libudev) >= 172
 BuildRequires:  pkgconfig(pango)
 BuildRequires:  pkgconfig(pangoft2)

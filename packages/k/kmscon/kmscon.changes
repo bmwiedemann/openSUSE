@@ -1,4 +1,54 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:16:39 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Update to version 10.0.4+git2:
+  * Important notes:
+    kmscon changed the default font size to 0, which means it will
+    adjust the font size based on the monitors. The font size is now
+    the maximum height of the font cell in pixels. So if you have set
+    font-size in your kmscon.conf, it might be smaller with this new
+    release, and you will need some adjustments.
+  * vt_libseat: Fix build error due to logging changes
+  * systemd: prevent kmscon.service to run if /dev/tty0 is present
+  * Prepare v10.0.4
+  * drm_shared: Add max retry to the wakeup timeout
+  * build: Update libtsm dependency to v4.8.0
+  * config: multi-monitor, default to scaled.
+  * font: query height is a maximum height
+  * terminal: auto-detect font size.
+  * terminal: split font_set() in two.
+  * terminal: Add term_min_width/height
+  * text: Add kmscon_text_get_width/height
+  * systemd: Add After: systemd-vconsole-setup
+  * drm_shared: print error when drm master fails
+  * drm_shared: Fix hotplug
+  * Corrected the wrong array name of the keysyms source in the comment.
+  * Fixed wrong keysym name in the kmscon.conf.example.
+  * text: Fix dependency on fonts
+  * gltex: Add render dependency
+  * log: Simplify logging, remove timestamp, and level for notice and info.
+  * fix(psf font out): init width and height
+  * rework(unicode table): use less memory
+  * feat(font_psf): add psf2 unicode table support
+  * feat(font_psf): add psf1 unicode table support
+  * dlist: use the correct macro when possible
+  * shl: rename shl_dlist* to dlist
+  * shl: add shl_dlist_for_each_entry_reverse()
+  * shl: Add and use shl_dlist_for_each_entry_safe()
+  * shl: add shl_dlist_for_each_entry()
+  * terminal: Allow to change cursor blinking rate using escape code
+  * docs: document multi-monitor scaled feature
+  * terminal: multi-monitor add scaled mode
+  * text: refactoring
+  * font: refactor font creation
+  * freetype: print font name and size
+  * drm_shared: remove vmwgfx workaround
+  * terminal: Fix error handling when pageflip failed.
+  * drm_shared: Use legacy modesetting with vmwgfx driver
+- Disable building with libseat completely, the upstream integration
+  bitrotted already (gh#kmscon/kmscon#539)
+
+-------------------------------------------------------------------
 Tue Sep 01 13:11:32 UTC 2026 - Fabian Vogt <fvogt@suse.com>
 
 - Update to version 10.0.3:
