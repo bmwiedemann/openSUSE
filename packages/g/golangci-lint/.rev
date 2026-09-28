@@ -1349,4 +1349,41 @@
   * docs: update documentation assets (#6729) (forwarded request 1374146 from jfkw)</comment>
     <requestid>1374147</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>f9b0cb013eeeefa7692795c4977f4704</srcmd5>
+    <version>2.14.0</version>
+    <time>1790584694</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.14.0:
+  * chore: prepare release
+  * docs: update mgechev/revive links with revive-lint/revive (#6817)
+  * fix: ignore TextEdits outside the analyzed file (#6816)
+  * build(deps): bump github.com/mgechev/revive from 1.16.0 to 1.17.0 (#6813)
+  * build(deps): bump github.com/timakin/bodyclose from 73d1f95b84b4 to 857993a2939c (#6781)
+  * build(deps): bump github.com/nishanths/exhaustive from 0.12.0 to 0.13.0 (#6799)
+  * build(deps): bump dev.gaijin.team/go/exhaustruct/v5 from 5.0.3 to 5.2.0 (#6786)
+  * build(deps): bump github.com/alecthomas/go-check-sumtype from 0.3.1 to ae6904d28606 (#6784)
+  * build(deps): bump github.com/go-critic/go-critic from 0.14.4 to 0.15.0 (#6783)
+  * build(deps): bump github.com/timonwong/loggercheck from 0.11.0 to 0.12.0 (#6775)
+  * build(deps): bump github.com/securego/gosec/v2 from 2.28.0 to 2.29.0 (#6768)
+  * build(deps): bump github.com/mgechev/revive from 1.15.0 to 1.16.0 (#6747)
+  * build(deps): bump the github-actions group with 5 updates (#6812)
+  * fix: cache of facts reloading (#6810)
+  * build(deps): bump github.com/ldez/gomoddirectives from 0.9.0 to 0.10.0 (#6809)
+  * build(deps): bump github.com/ldez/tagliatelle from 0.7.2 to 0.8.0 (#6808)
+  * chore: update workflows (#6804)
+  * build(deps): bump github.com/sourcegraph/go-diff from 0.8.0 to 0.9.0 (#6800)
+  * build(deps): bump golang.org/x/tools from 0.49.0 to 0.50.0 (#6794)
+  * build(deps): bump golang.org/x/sys from 0.47.0 to 0.48.0 (#6796)
+  * build(deps): bump golang.org/x/mod from 0.40.0 to 0.41.0 (#6797)
+  * build(deps): bump golang.org/x/sync from 0.22.0 to 0.23.0 (#6795)
+  * build(deps): bump github.com/ghostiam/protogetter from 1.0.0 to 1.0.1 (#6793)
+  * build(deps): bump go.augendre.info/fatcontext from 0.10.0 to 0.10.1 (#6792)
+  * build(deps): bump docker/setup-qemu-action from 4.2.0 to 4.3.0 in the github-actions group (#6791)
+  * build(deps): bump golang.org/x/oauth2 from 0.36.0 to 0.37.0 in /scripts/gen_github_action_config in the scripts group (#6790)
+  * build(deps): bump mvdan.cc/gofumpt from 0.11.1-0.20260823225713-28272d18f832 to 0.12.0 (#6788)
+  * build(deps): bump the linter-testdata group across 3 directories with 4 updates (#6787)
+  * build(deps): bump the github-actions group with 4 updates (#6789) (forwarded request 1380257 from jfkw)</comment>
+    <requestid>1380258</requestid>
+  </revision>
 </revisionlist>
