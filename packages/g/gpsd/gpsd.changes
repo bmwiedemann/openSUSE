@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Sep 23 10:22:10 UTC 2026 - Martin Jungblut Schreiner <martinjungblut@gmail.com>
+
+- Fix for gpsprof arbitrary OS command execution via code injection in
+  the attacker-controlled SKY.satellites[].used field, inserted
+  unsanitized into a gnuplot heredoc data block; sat.used is now forced
+  to a boolean (CVE-2026-60122 [bsc#1280016])
+  + 5a9c44a4.patch
+
+-------------------------------------------------------------------
 Fri Jul 10 07:32:57 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
 
 - Fix for gpsprof gnuplot command injection via attacker-controlled

@@ -42,6 +42,9 @@ Patch2:         update-desktop-files.patch
 Patch3:         https://github.com/ntpsec/gpsd/commit/5581ba1.patch
 Patch4:         https://github.com/ntpsec/gpsd/commit/1a6bb7b.patch
 Patch5:         https://github.com/ntpsec/gpsd/commit/4c06658.patch
+# PATCH-FIX-UPSTREAM CVE-2026-60122 bsc#1280016 gpsprof code injection via
+# SKY.satellites[].used - https://gitlab.com/gpsd/gpsd/-/work_items/406
+Patch6:         https://github.com/ntpsec/gpsd/commit/5a9c44a4.patch
 BuildRequires:  chrpath
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
