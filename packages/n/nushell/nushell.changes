@@ -1,4 +1,82 @@
 -------------------------------------------------------------------
+Sat Sep 26 20:30:36 UTC 2026 - Andrei Dziahel <develop7@develop7.info>
+
+- Update to version 0.116.0:
+  + Major custom completion rework ("unified custom completions"):
+    * One shared input model across parameter completers,
+      command-wide completers, external completers, and menu sources;
+      completers declare `token`, `place`, and/or `buffer` parameters
+    * Unified output model: `null` to decline, strings or suggestion
+      records, or an envelope with `completions`, `options`, `fallback`
+    * `@interactive` attribute for terminal-owning completers (e.g.
+      `fzf` pickers); replaces the removed `background-completions`
+      option
+    * `place.command` exposes the command being completed (aliases
+      expanded); `commandline complete --input`/`--detailed`/`--type`
+      tools for completer development
+  + New `tui` command family for building interactive terminal
+    interfaces (tables, textboxes, menus, trees, dialogs) from
+    Nushell, with `tui run` and headless `tui debug`
+  + `nu --dap` starts a Debug Adapter Protocol server for debugging
+    Nushell scripts (breakpoints, stepping, variable inspection,
+    watch expressions, reverse stepping)
+  + New `tutor` lessons: command-history shortcuts and `$env`, custom
+    commands and pipeline input, `if`/`match`/`where`
+  + Breaking changes:
+    * Custom completers and menu sources may need updating to the new
+      named input model (`token`, `place`, `buffer`)
+    * `to yaml`/`to yml` `--compact-list-indent` replaced by
+      `--list-indent` (`compact`/`indented`)
+  + Additions:
+    * Named flags given `null` are omitted or passed through based on
+      whether the type accepts `nothing`
+    * Records can be spread into named flags (`cmd ...{flag: value}`)
+    * `polars date-range(s)` and `polars datetime-range(s)`
+    * `$env.config.completions.persistent_menus` keeps completion and
+      history menus open while editing
+    * `view source --dependencies` includes transitive custom command
+      dependencies and constants
+    * `std/log` `--context` for structured log fields
+    * `hash sha512`
+    * `mkdir --fail-if-exists`
+    * `save --force` creates missing parent directories
+    * `update cells --recursive` visits nested leaf values
+    * `char` forward slash/backslash independent of OS
+    * `SwitchMode` keybinding event and `vi_visual` keybinding mode
+    * `into float` accepts comma decimal separators
+    * Row condition syntax for `take until`/`take while`/`skip
+      until`/`skip while`/`chunk-by`
+    * `date list-timezone` includes UTC offset
+  + Performance:
+    * Faster typing and completion of `use` in the REPL
+    * `$nu.startup-time` measures up to the first prompt; faster
+      startup with large configs, ~5x faster plugin registry loading
+    * Parsing ~1.4-1.5x faster; faster repeated `source` of the same
+      file (fixes 0.115 regression)
+    * `gstat` finds the nearest tag faster in large repositories
+  + Other changes:
+    * MCP HTTP server listens on 127.0.0.1 by default; new `--mcp-host`
+  + Bug fixes:
+    * `finally` always runs in the right order on `return`/`break`/
+      `continue`/errors; consistent `$in` inside `finally`
+    * `lines --skip-empty` works for string and byte stream input
+    * `format pattern`/`parse` reject unclosed `{` patterns
+    * `format date` handles `%E`/`%O` locale-specific formats
+    * `into string` preserves string typing for semver values
+    * Redirected `nu --help` output no longer contains ANSI escapes
+    * Table `trim` wrapping/truncating handled consistently; nested
+      tables keep their borders when cells wrap
+    * `length`/`columns`/`is-empty` surface errors from streamed input
+    * `par-each` no longer deadlocks on chained same-size thread pools
+    * `mkdir --verbose` no longer reports existing dirs as created
+    * List literals and `match` patterns reject semicolon separators
+    * LSP hover tooltips render Markdown correctly
+    * External completers receive expanded aliases; deprecation
+      warnings shown after menus close
+  + For a full list of changes with detailed descriptions, see:
+    https://www.nushell.sh/blog/2026-09-26-nushell_v0_116_0.html
+
+-------------------------------------------------------------------
 Mon Aug 24 08:20:07 UTC 2026 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Update to version 0.115.1:
