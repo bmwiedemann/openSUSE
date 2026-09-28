@@ -3456,6 +3456,7 @@ unsorted:
   - docker-stable-rootless-extras 
   - docker-stable-zsh-completion 
   - docker-zsh-completion 
+  - docopt-cpp-devel 
   - docserv-auxserver 
   - docserv-config-apache2 
   - docserv-config-nginx 
@@ -3761,6 +3762,7 @@ unsorted:
   - emf2svg-conv 
   - emojione-color-font 
   - emptyepsilon 
+  - emulationstation-de 
   - enable-no_new_privs 
   - enblend-enfuse 
   - enblend-enfuse-doc 
@@ -7214,6 +7216,7 @@ unsorted:
   - git-remote-gcrypt 
   - git-repo 
   - git-review 
+  - git-spice 
   - git-subrepo 
   - git-subrepo-bash-completion 
   - git-subrepo-zsh-completion 
@@ -8141,6 +8144,9 @@ unsorted:
   - grml-zsh-config 
   - groff-doc 
   - grok-build 
+  - grok-build-bash-completion 
+  - grok-build-fish-completion 
+  - grok-build-zsh-completion 
   - gromacs 
   - gromacs-bash-completion 
   - gromacs-data 
@@ -8255,7 +8261,6 @@ unsorted:
   - gtg 
   - gtg-lang 
   - gthumb 
-  - gthumb-devel 
   - gthumb-lang 
   - gti 
   - gtick 
@@ -10464,6 +10469,8 @@ unsorted:
   - kiwi-systemdeps-image-validation 
   - kiwi-systemdeps-iso-media 
   - kiwi-templates-Minimal 
+  - kiwix-desktop 
+  - kiwix-tools 
   - kjobwidgets-devel 
   - kjournald 
   - kjournald-lang 
@@ -13172,6 +13179,7 @@ unsorted:
   - libdnnl3 
   - libdns_sd 
   - libdns_sd-32bit 
+  - libdocopt0 
   - libdom-devel 
   - libdom0 
   - libdouble-conversion3-32bit 
@@ -14528,6 +14536,8 @@ unsorted:
   - libkim-api2 
   - libkioarchive6-devel 
   - libkissfft-float131 
+  - libkiwix-devel 
+  - libkiwix14 
   - libkkc-devel 
   - libkkc2 
   - libkleo-devel 
@@ -15081,7 +15091,7 @@ unsorted:
   - libmunge2 
   - libmuparser2_3_5 
   - libmuparserx4_0_12 
-  - libmupdf28_4 
+  - libmupdf28_5 
   - libmupen64plus-devel 
   - libmupen64plus2 
   - libmusicbrainz-devel 
@@ -16381,6 +16391,7 @@ unsorted:
   - libscg-devel 
   - libschily-devel 
   - libschily-devel-doc 
+  - libschroedinger-1_0-0 
   - libschroedinger-1_0-0-32bit 
   - libscintilla-devel 
   - libscintilla5 
@@ -16753,7 +16764,7 @@ unsorted:
   - libsuperlu7 
   - libsuperlu7-32bit 
   - libsurgescript0_6_1 
-  - libsuricata8_0_6 
+  - libsuricata8_0_7 
   - libsuseconnect 
   - libsvm-devel 
   - libsvm-java 
@@ -17329,6 +17340,7 @@ unsorted:
   - libwebrtc-audio-processing-2-1 
   - libwebrtc-audio-processing-devel 
   - libwebrtc-audio-processing-devel-static 
+  - libwebrtc-suse137 
   - libwebrtc_audio_processing-devel 
   - libwebrtc_audio_processing-devel-static 
   - libwebrtc_audio_processing1 
@@ -17854,6 +17866,7 @@ unsorted:
   - live555-devel 
   - livechart-devel 
   - livedtd 
+  - livekit-libwebrtc-devel 
   - livi 
   - livi-lang 
   - lix-installer 
@@ -18515,7 +18528,6 @@ unsorted:
   - lxqt-powermanagement-lang 
   - lxqt-qt5plugin 
   - lxqt-qtplugin 
-  - lxqt-river-session 
   - lxqt-runner 
   - lxqt-runner-lang 
   - lxqt-session 
@@ -33766,14 +33778,6 @@ unsorted:
   - ripit 
   - rist-tools 
   - ritchie-cli 
-  - river 
-  - river-bash-completion 
-  - river-contrib 
-  - river-devel 
-  - river-fish-completion 
-  - river-riverctl 
-  - river-rivertile 
-  - river-zsh-completion 
   - rizin 
   - rizin-common 
   - rizin-devel 
@@ -34589,7 +34593,6 @@ unsorted:
   - sd-fish-completion 
   - sd-mux-ctrl 
   - sd-zsh-completion 
-  - sdbootutil-bash-completion 
   - sdbootutil-enroll 
   - sdbootutil-jeos-firstboot-enroll 
   - sdbootutil-kernel-install 
@@ -47565,6 +47568,7 @@ unsorted:
   - xemacs-packages-info 
   - xeme-devel 
   - xeme-doc 
+  - xemu 
   - xen 
   - xen-devel 
   - xen-doc-html 
