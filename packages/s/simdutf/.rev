@@ -114,4 +114,13 @@
   changes.</comment>
     <requestid>1379636</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>220c1709c0b9ed91932133bab49c084d</srcmd5>
+    <version>9.2.1</version>
+    <time>1790584519</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 9.2.1:
+  + Misc. bug fixes and cleanups.</comment>
+    <requestid>1380188</requestid>
+  </revision>
 </revisionlist>
