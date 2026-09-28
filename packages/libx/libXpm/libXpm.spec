@@ -31,6 +31,7 @@ Source1:        https://xorg.freedesktop.org/releases/individual/lib/%{name}-%{v
 Source2:        libXpm.keyring
 Source9:        baselibs.conf
 Patch0:         0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
+Patch1:         0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch
 BuildRequires:  /usr/bin/gzip
 BuildRequires:  autoconf
 BuildRequires:  automake

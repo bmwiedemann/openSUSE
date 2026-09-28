@@ -274,4 +274,14 @@
   * fix Out of bounds read (CVE-2026-4367, bsc#1260928)</comment>
     <requestid>1348811</requestid>
   </revision>
+  <revision rev="20" vrev="3">
+    <srcmd5>ad0f22fdffc94491ec168744258ba5fc</srcmd5>
+    <version>3.5.18</version>
+    <time>1790584498</time>
+    <user>anag_factory</user>
+    <comment>- 0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch
+  * Denial of service via unsigned underflow in libXpm's write path
+    (boo#1281669, CVE-2026-94287)</comment>
+    <requestid>1380040</requestid>
+  </revision>
 </revisionlist>

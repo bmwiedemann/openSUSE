@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Sep 23 20:46:07 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- 0001-boo1281669_CVE-2026-94287_ParsePixels-reject-zero-dimension-XPM-images.patch
+  * Denial of service via unsigned underflow in libXpm's write path
+    (boo#1281669, CVE-2026-94287)
+
+-------------------------------------------------------------------
 Wed Apr 22 15:22:16 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - updated 0001-Fix-CVE-2026-4367-Out-of-bounds-read-in-xpmNextWord.patch
