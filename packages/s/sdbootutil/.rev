@@ -942,4 +942,34 @@
   * Drop PCR warning when is not part of the policy (forwarded request 1376602 from aplanas)</comment>
     <requestid>1376603</requestid>
   </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>420053ce523ff1054f6dba17fd5af509</srcmd5>
+    <version>1+git20260924.2b7b94e</version>
+    <time>1790584608</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1+git20260924.2b7b94e:
+  * Improve detection of encrypted device when RAID is used
+  * Support btrfs RAID1 configurations
+  * Move the service from oneshot to exec to avoid the wait
+  * Drop shift variations already present as a component
+  * Fix Supplement use of 'if' instead of 'and'
+  * Hide the warning for entries that uses @
+  * Accept _ instead of @ as snapshot prefix for version
+  * Drop chown and set ownership via install
+  * Use bootctl to generate the random seed
+  * Start the validation with the strongest bank
+  * Parse the JSON output of findmnt
+  * Use stdin for qrencode
+  * Fix log file permissions
+  * Improve PCR15 diagnosis in status command
+  * Avoid abrmd TCTI error message
+  * Do not fail if pcrlock lock verb cannot reproduce the event log
+  * The completion subpackage supplements the main one
+  * Detect when grubenv is full
+  * Use systemd-analyze to compare versions in status
+  * Fix bootcounter in GRUB2 EFI variable
+  * Drop lowercase in dd
+  * Fix loader_conf_set for paths (forwarded request 1380260 from aplanas)</comment>
+    <requestid>1380261</requestid>
+  </revision>
 </revisionlist>

@@ -55,7 +55,7 @@ fi									\
 %{nil}
 
 Name:           sdbootutil
-Version:        1+git20260909.7cfa1f0
+Version:        1+git20260924.2b7b94e
 Release:        0
 Summary:        Bootctl wrapper for BLS boot loaders
 License:        MIT
@@ -151,6 +151,7 @@ Summary:        Bash completions for sdbootutil
 Requires:       %{name} = %{version}
 Requires:       bash
 Requires:       bash-completion
+Supplements:    (%{name} and bash-completion)
 BuildArch:      noarch
 
 %description bash-completion
