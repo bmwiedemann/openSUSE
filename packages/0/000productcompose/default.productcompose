@@ -2661,7 +2661,6 @@ packagesets:
    - libscg1_0 # reason: dvd:patterns-gnome-gnome
    - libscgcmd1_0 # reason: dvd:patterns-gnome-gnome
    - libschily2_0 # reason: dvd:patterns-gnome-gnome
-   - libschroedinger-1_0-0 # reason: dvd:patterns-kde-kde
    - libseccomp2 # reason: dvd:openSUSE-release
    - libsecret-1-0 # reason: dvd:openSUSE-release
    - libsecret-lang # reason: dvd:openSUSE-release
@@ -3832,6 +3831,7 @@ packagesets:
    - sbl # reason: dvd:patterns-media-rest_cd_core
    - screen # reason: dvd:patterns-kde-kde
    - sdbootutil # reason: dvd:patterns-media-rest_cd_core
+   - sdbootutil-bash-completion # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-dracut-measure-pcr # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-snapper # reason: dvd:patterns-media-rest_cd_core
    - sddm-branding-openSUSE # reason: dvd:patterns-kde-kde
@@ -5732,7 +5732,6 @@ packagesets:
    - libsamplerate0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsasl2-3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libsbc1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
-   - libschroedinger-1_0-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libsdbus-c++2 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libseccomp2 # reason: opensuse_microos:patterns-base-hardware
    - libsecret-1-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7533,7 +7532,6 @@ packagesets:
    - libsane1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsasl2-3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsbc1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libschroedinger-1_0-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libseccomp2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libsecret-1-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libselinux1 # reason: opensuse_kalpa:Kalpa-release
