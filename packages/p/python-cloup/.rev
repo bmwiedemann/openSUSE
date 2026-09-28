@@ -158,4 +158,28 @@ Following https://opensuse.github.io/scm-staging/user_guide.html pt 4
   * Fix ParamType typing for Click 8.4</comment>
     <requestid>1359226</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c466d47d195820b540594a1acc564dfb</srcmd5>
+    <version>4.0.0</version>
+    <time>1790585190</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.0.0:
+  * # v4.0.0
+  * This release realigns Cloup with Click 8.5, removes the
+    compatibility layers accumulated across the Click 8.1-8.4
+    line, and hands a few long-standing Cloup features back to
+    Click now that Click implements them itself. The headline
+    addition is that Cloup now re-exports Click's public top-
+    level namespace, so most applications can import from `cloup`
+    alone.
+  * Cloup follows semantic versioning rigorously: any known
+    breaking change causes a major-version bump, even when it is
+    unlikely to affect most users. Apart from the new minimum
+    Python and Click versions, most projects should be able to
+    upgrade from Cloup 3.x without changing their code.
+  * This release also includes a comprehensive overhaul of the
+    development tooling. See the final section if you contribute
+    to Cloup.</comment>
+    <requestid>1380843</requestid>
+  </revision>
 </revisionlist>

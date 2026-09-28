@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sat Sep 26 21:33:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.0.0:
+  * # v4.0.0
+  * This release realigns Cloup with Click 8.5, removes the
+    compatibility layers accumulated across the Click 8.1-8.4
+    line, and hands a few long-standing Cloup features back to
+    Click now that Click implements them itself. The headline
+    addition is that Cloup now re-exports Click's public top-
+    level namespace, so most applications can import from `cloup`
+    alone.
+  * Cloup follows semantic versioning rigorously: any known
+    breaking change causes a major-version bump, even when it is
+    unlikely to affect most users. Apart from the new minimum
+    Python and Click versions, most projects should be able to
+    upgrade from Cloup 3.x without changing their code.
+  * This release also includes a comprehensive overhaul of the
+    development tooling. See the final section if you contribute
+    to Cloup.
+
+-------------------------------------------------------------------
 Sun Jun 14 10:06:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.1.0:
