@@ -8523,4 +8523,12 @@
     Privilege escalation due to incorrect boundary conditions in</comment>
     <requestid>1379127</requestid>
   </revision>
+  <revision rev="503" vrev="2">
+    <srcmd5>fbce4fee462912c614c4d27cc8f4444d</srcmd5>
+    <version>156.0</version>
+    <time>1790584638</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380691</requestid>
+  </revision>
 </revisionlist>

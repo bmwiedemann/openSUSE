@@ -36,6 +36,9 @@
 %define branding       1
 %define devpkg         1
 %define do_profiling   1
+%if 0%{?want_reproducible_builds}
+%define do_profiling   0
+%endif
 
 # upstream default is clang (to use gcc for large parts set to 0)
 %if 0%{?is_opensuse} && 0%{?suse_version} <= 1600

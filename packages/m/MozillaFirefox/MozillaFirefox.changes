@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 23 18:23:53 UTC 2026 - Bernhard AI Wiedemann <obsclaudebmw@lsmod.de>
+
+- Skip profiling when %want_reproducible_builds is set (boo#1040589)
+
+-------------------------------------------------------------------
 Thu Sep 17 05:37:31 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - Mozilla Firefox 156.0
