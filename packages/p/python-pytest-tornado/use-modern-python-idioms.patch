@@ -1,0 +1,447 @@
+From 179d5b163ccbe312fd25c28b0501dbe24fcbd360 Mon Sep 17 00:00:00 2001
+From: pawciobiel <pawciobiel@gmail.com>
+Date: Fri, 12 Dec 2025 12:14:37 +0100
+Subject: [PATCH] Migrate to Python 3.10+ and modernize packaging
+
+* update code style with pyupgrade to py3.10+ and black formatting
+* replace pkg_resources with packaging to fix deprecation warning
+* migrate from setup.py to pyproject.toml only
+* update .travis.yml to use py3.10+ on Ubuntu jammy
+* bump version to 0.9.dev1
+---
+ .travis.yml              |  36 +++--------
+ pyproject.toml           |  45 ++++++++++++++
+ pytest_tornado/plugin.py | 129 +++++++++++++++++++++------------------
+ setup.cfg                |   2 -
+ setup.py                 |  43 -------------
+ 5 files changed, 124 insertions(+), 131 deletions(-)
+ create mode 100644 pyproject.toml
+ delete mode 100644 setup.cfg
+ delete mode 100644 setup.py
+
+diff --git a/.travis.yml b/.travis.yml
+index 94b66ee..f28755f 100644
+--- a/.travis.yml
++++ b/.travis.yml
+@@ -1,25 +1,17 @@
+ language: python
+ cache: pip
+-dist: xenial
++dist: jammy
+ python:
+-    - 2.7
+-    - 3.5
+-    - 3.6
+-    - 3.7
+-    - 3.8
++    - "3.10"
++    - "3.11"
++    - "3.12"
+ env:
+-    - TORNADO_VERSION=6.0 PYTEST_VERSION=5.2
+-    - TORNADO_VERSION=6.0 PYTEST_VERSION=4.3
+-    - TORNADO_VERSION=5.0 PYTEST_VERSION=5.2
+-    - TORNADO_VERSION=5.0 PYTEST_VERSION=4.0
+-    - TORNADO_VERSION=5.0.0 PYTEST_VERSION=3.6
+-    - TORNADO_VERSION=5.0.0 PYTEST_VERSION=4.0.0
+-    - TORNADO_VERSION=4.3.0 PYTEST_VERSION=3.6
+-    - TORNADO_VERSION=4.1.0 PYTEST_VERSION=3.6.4
++    - TORNADO_VERSION=6.5 PYTEST_VERSION=9.0
++    - TORNADO_VERSION=6.4 PYTEST_VERSION=8.3
+ install:
+     - pip install tornado~=$TORNADO_VERSION pytest~=$PYTEST_VERSION
+     - pip install PyOpenSSL  # used to create a cert for testing
+-    - python setup.py install
++    - pip install -e .
+     - pip install coverage coveralls
+ script:
+     - python test/create_cert.py --cert test/testcert.pem
+@@ -29,21 +21,9 @@ after_success:
+     - coveralls
+ 
+ jobs:
+-  exclude:
+-    # Tornado 6 only supports Python >= 3.5
+-    - python: 2.7
+-      env: TORNADO_VERSION=6.0 PYTEST_VERSION=4.3
+-    # Pytest 4.0.0 requires a version of attrs that does not work with Python 3.8.
+-    - python: 3.8
+-      env: TORNADO_VERSION=5.0.0 PYTEST_VERSION=4.0.0
+-    # pytest 5 requires Python 3
+-    - python: 2.7
+-      env: TORNADO_VERSION=6.0 PYTEST_VERSION=5.2
+-    - python: 2.7
+-      env: TORNADO_VERSION=5.0 PYTEST_VERSION=5.2
+   include:
+     - stage: deploy
+-      python: 3.7
++      python: "3.10"
+       deploy:
+         provider: pypi
+         distributions: sdist bdist_wheel
+diff --git a/pyproject.toml b/pyproject.toml
+new file mode 100644
+index 0000000..c775354
+--- /dev/null
++++ b/pyproject.toml
+@@ -0,0 +1,45 @@
++[build-system]
++requires = ["setuptools"]
++build-backend = "setuptools.build_meta"
++
++[project]
++name = "pytest-tornado"
++version = "0.8.1"
++description = "A py.test plugin providing fixtures and markers to simplify testing of asynchronous tornado applications."
++readme = "README.rst"
++requires-python = ">=3.10"
++license = {text = "Apache License, Version 2.0"}
++authors = [
++    {name = "Eugeniy Kalinin", email = "burump@gmail.com"}
++]
++maintainers = [
++    {name = "Vidar Tonaas Fauske", email = "vidartf@gmail.com"}
++]
++keywords = ["pytest", "py.test", "tornado", "async", "asynchronous", "testing", "unit tests", "plugin"]
++classifiers = [
++    "Development Status :: 5 - Production/Stable",
++    "Environment :: Plugins",
++    "Intended Audience :: Developers",
++    "License :: OSI Approved :: Apache Software License",
++    "Operating System :: OS Independent",
++    "Programming Language :: Python :: 3",
++    "Programming Language :: Python :: 3.10",
++    "Programming Language :: Python :: 3.11",
++    "Programming Language :: Python :: 3.12",
++    "Topic :: Software Development",
++    "Topic :: Software Development :: Testing",
++]
++dependencies = [
++    "pytest>=3.6",
++    "tornado>=4.1",
++    "packaging",
++]
++
++[project.urls]
++Homepage = "https://github.com/eugeniy/pytest-tornado"
++
++[project.entry-points.pytest11]
++tornado = "pytest_tornado.plugin"
++
++[tool.setuptools]
++packages = ["pytest_tornado"]
+diff --git a/pytest_tornado/plugin.py b/pytest_tornado/plugin.py
+index b231ee4..16723ca 100644
+--- a/pytest_tornado/plugin.py
++++ b/pytest_tornado/plugin.py
+@@ -1,9 +1,8 @@
+ import os
+-import sys
+ import types
+ import inspect
+ import datetime
+-import pkg_resources
++from packaging.version import parse as parse_version
+ import pytest
+ import tornado
+ import tornado.gen
+@@ -11,48 +10,59 @@
+ import tornado.httpserver
+ import tornado.httpclient
+ 
+-if sys.version_info[:2] >= (3, 5):
+-    iscoroutinefunction = inspect.iscoroutinefunction
+-else:
+-    iscoroutinefunction = lambda f: False
++iscoroutinefunction = inspect.iscoroutinefunction
+ 
+-_PYTEST_VERSION = pkg_resources.parse_version(pytest.__version__)
++_PYTEST_VERSION = parse_version(pytest.__version__)
+ 
+ 
+ def _get_async_test_timeout():
+     try:
+-        return float(os.environ.get('ASYNC_TEST_TIMEOUT'))
++        return float(os.environ.get("ASYNC_TEST_TIMEOUT"))
+     except (ValueError, TypeError):
+         return 5
+ 
+ 
+ def pytest_addoption(parser):
+-    tornado_group = parser.getgroup('tornado options')
+-    tornado_group.addoption('--async-test-timeout', type=float,
+-                            default=_get_async_test_timeout(),
+-                            help='timeout in seconds before failing the test')
+-    tornado_group.addoption('--app-fixture', default='app',
+-                            help='fixture name returning a tornado application')
+-    tornado_group.addoption('--ssl-options-fixture', default='ssl_options',
+-                            help='fixture name returning a certificate configuration')
++    tornado_group = parser.getgroup("tornado options")
++    tornado_group.addoption(
++        "--async-test-timeout",
++        type=float,
++        default=_get_async_test_timeout(),
++        help="timeout in seconds before failing the test",
++    )
++    tornado_group.addoption(
++        "--app-fixture",
++        default="app",
++        help="fixture name returning a tornado application",
++    )
++    tornado_group.addoption(
++        "--ssl-options-fixture",
++        default="ssl_options",
++        help="fixture name returning a certificate configuration",
++    )
+ 
+ 
+ def pytest_configure(config):
+-    config.addinivalue_line("markers",
+-                            "gen_test(timeout=None): "
+-                            "mark the test as asynchronous, it will be "
+-                            "run using tornado's event loop")
++    config.addinivalue_line(
++        "markers",
++        "gen_test(timeout=None): "
++        "mark the test as asynchronous, it will be "
++        "run using tornado's event loop",
++    )
+ 
+ 
+ def _argnames(func):
+     if hasattr(inspect, "signature"):
+         sig = inspect.signature(func)
+-        return [name for name, param in sig.parameters.items()
+-                if param.default is param.empty]
++        return [
++            name
++            for name, param in sig.parameters.items()
++            if param.default is param.empty
++        ]
+     else:
+         spec = inspect.getargspec(func)
+         if spec.defaults:
+-            return spec.args[:-len(spec.defaults)]
++            return spec.args[: -len(spec.defaults)]
+         if isinstance(func, types.FunctionType):
+             return spec.args
+         # Func is a bound method, skip "self"
+@@ -60,39 +70,40 @@ def _argnames(func):
+ 
+ 
+ def _timeout(item):
+-    default_timeout = item.config.getoption('async_test_timeout')
+-    gen_test = item.get_closest_marker('gen_test')
++    default_timeout = item.config.getoption("async_test_timeout")
++    gen_test = item.get_closest_marker("gen_test")
+     if gen_test:
+-        return gen_test.kwargs.get('timeout', default_timeout)
++        return gen_test.kwargs.get("timeout", default_timeout)
+     return default_timeout
+ 
+ 
+ @pytest.mark.tryfirst
+ def pytest_pycollect_makeitem(collector, name, obj):
+     if collector.funcnamefilter(name) and inspect.isgeneratorfunction(obj):
+-        if _PYTEST_VERSION >= pkg_resources.parse_version("5.4.0"):
++        if _PYTEST_VERSION >= parse_version("5.4.0"):
+             item = pytest.Function.from_parent(collector, name=name)
+         else:
+             item = pytest.Function(name, parent=collector)
+-        if 'gen_test' in item.keywords:
++        if "gen_test" in item.keywords:
+             return list(collector._genfunctions(name, obj))
+ 
+ 
+ def pytest_runtest_setup(item):
+-    if 'gen_test' in item.keywords and 'io_loop' not in item.fixturenames:
++    if "gen_test" in item.keywords and "io_loop" not in item.fixturenames:
+         # inject an event loop fixture for all async tests
+-        item.fixturenames.append('io_loop')
++        item.fixturenames.append("io_loop")
+ 
+ 
+ @pytest.mark.tryfirst
+ def pytest_pyfunc_call(pyfuncitem):
+-    gen_test_mark = pyfuncitem.get_closest_marker('gen_test')
++    gen_test_mark = pyfuncitem.get_closest_marker("gen_test")
+     if gen_test_mark:
+-        io_loop = pyfuncitem.funcargs.get('io_loop')
+-        run_sync = gen_test_mark.kwargs.get('run_sync', True)
++        io_loop = pyfuncitem.funcargs.get("io_loop")
++        run_sync = gen_test_mark.kwargs.get("run_sync", True)
+ 
+-        funcargs = dict((arg, pyfuncitem.funcargs[arg])
+-                        for arg in _argnames(pyfuncitem.obj))
++        funcargs = dict(
++            (arg, pyfuncitem.funcargs[arg]) for arg in _argnames(pyfuncitem.obj)
++        )
+         if iscoroutinefunction(pyfuncitem.obj):
+             coroutine = pyfuncitem.obj
+             future = tornado.gen.convert_yielded(coroutine(**funcargs))
+@@ -106,8 +117,8 @@ def pytest_pyfunc_call(pyfuncitem):
+             # and reraise any exceptions
+ 
+             future_with_timeout = tornado.gen.with_timeout(
+-                    datetime.timedelta(seconds=_timeout(pyfuncitem)),
+-                    future)
++                datetime.timedelta(seconds=_timeout(pyfuncitem)), future
++            )
+             io_loop.add_future(future_with_timeout, lambda f: io_loop.stop())
+             io_loop.start()
+ 
+@@ -120,8 +131,7 @@ def pytest_pyfunc_call(pyfuncitem):
+ 
+ @pytest.fixture
+ def io_loop(request):
+-    """Create an instance of the `tornado.ioloop.IOLoop` for each test case.
+-    """
++    """Create an instance of the `tornado.ioloop.IOLoop` for each test case."""
+     io_loop = tornado.ioloop.IOLoop()
+     io_loop.make_current()
+ 
+@@ -140,27 +150,28 @@ def _unused_port():
+ 
+ @pytest.fixture
+ def http_port(_unused_port):
+-    """Get a port used by the test server.
+-    """
++    """Get a port used by the test server."""
+     return _unused_port[1]
+ 
+ 
+ @pytest.fixture
+ def https_port(_unused_port):
+-    """Get a port used by the test server.
+-    """
++    """Get a port used by the test server."""
+     return _unused_port[1]
+ 
+ 
+ @pytest.fixture
+ def base_url(request):
+-    """Create an absolute base url (scheme://host:port)
+-    """
++    """Create an absolute base url (scheme://host:port)"""
+     fixturenames = request.fixturenames
+-    if 'https_port' in fixturenames or 'https_client' in fixturenames or 'https_server' in fixturenames:
+-        return 'https://localhost:%s' % request.getfixturevalue('https_port')
++    if (
++        "https_port" in fixturenames
++        or "https_client" in fixturenames
++        or "https_server" in fixturenames
++    ):
++        return "https://localhost:%s" % request.getfixturevalue("https_port")
+ 
+-    return 'http://localhost:%s' % request.getfixturevalue('http_port')
++    return "http://localhost:%s" % request.getfixturevalue("http_port")
+ 
+ 
+ @pytest.fixture
+@@ -180,9 +191,11 @@ def http_server(request, io_loop, _unused_port):
+     def _stop():
+         server.stop()
+ 
+-        if hasattr(server, 'close_all_connections'):
+-            io_loop.run_sync(server.close_all_connections,
+-                             timeout=request.config.option.async_test_timeout)
++        if hasattr(server, "close_all_connections"):
++            io_loop.run_sync(
++                server.close_all_connections,
++                timeout=request.config.option.async_test_timeout,
++            )
+ 
+     request.addfinalizer(_stop)
+     return server
+@@ -190,8 +203,7 @@ def _stop():
+ 
+ @pytest.fixture
+ def http_client(request, http_server):
+-    """Get an asynchronous HTTP client.
+-    """
++    """Get an asynchronous HTTP client."""
+     client = tornado.httpclient.AsyncHTTPClient()
+ 
+     def _close():
+@@ -219,9 +231,11 @@ def https_server(request, io_loop, _unused_port):
+     def _stop():
+         server.stop()
+ 
+-        if hasattr(server, 'close_all_connections'):
+-            io_loop.run_sync(server.close_all_connections,
+-                             timeout=request.config.option.async_test_timeout)
++        if hasattr(server, "close_all_connections"):
++            io_loop.run_sync(
++                server.close_all_connections,
++                timeout=request.config.option.async_test_timeout,
++            )
+ 
+     request.addfinalizer(_stop)
+     return server
+@@ -229,8 +243,7 @@ def _stop():
+ 
+ @pytest.fixture
+ def https_client(request, https_server):
+-    """Get an asynchronous HTTPS client.
+-    """
++    """Get an asynchronous HTTPS client."""
+     # How does on get ca_certs from the user
+     client = tornado.httpclient.AsyncHTTPClient()
+ 
+diff --git a/setup.cfg b/setup.cfg
+deleted file mode 100644
+index 3c6e79c..0000000
+--- a/setup.cfg
++++ /dev/null
+@@ -1,2 +0,0 @@
+-[bdist_wheel]
+-universal=1
+diff --git a/setup.py b/setup.py
+deleted file mode 100644
+index 2272c95..0000000
+--- a/setup.py
++++ /dev/null
+@@ -1,43 +0,0 @@
+-import os
+-import io
+-from setuptools import setup, find_packages
+-
+-
+-cwd = os.path.abspath(os.path.dirname(__file__))
+-
+-with io.open(os.path.join(cwd, 'README.rst'), encoding='utf-8') as fd:
+-    long_description = fd.read()
+-
+-
+-setup(
+-    name='pytest-tornado',
+-    version='0.8.1',
+-    description=('A py.test plugin providing fixtures and markers '
+-                 'to simplify testing of asynchronous tornado applications.'),
+-    long_description=long_description,
+-    url='https://github.com/eugeniy/pytest-tornado',
+-    author='Eugeniy Kalinin',
+-    author_email='burump@gmail.com',
+-    maintainer='Vidar Tonaas Fauske',
+-    maintainer_email='vidartf@gmail.com',
+-    license='Apache License, Version 2.0',
+-    classifiers=[
+-        'Development Status :: 5 - Production/Stable',
+-        'Environment :: Plugins',
+-        'Intended Audience :: Developers',
+-        'License :: OSI Approved :: Apache Software License',
+-        'Operating System :: OS Independent',
+-        'Programming Language :: Python',
+-        'Programming Language :: Python :: 2',
+-        'Programming Language :: Python :: 3',
+-        'Topic :: Software Development',
+-        'Topic :: Software Development :: Testing',
+-    ],
+-    keywords=('pytest py.test tornado async asynchronous '
+-              'testing unit tests plugin'),
+-    packages=find_packages(exclude=["tests.*", "tests"]),
+-    install_requires=['pytest>=3.6', 'tornado>=4.1', 'setuptools'],
+-    entry_points={
+-        'pytest11': ['tornado = pytest_tornado.plugin'],
+-    },
+-)

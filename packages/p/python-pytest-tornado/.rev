@@ -51,4 +51,13 @@
 - No more greedy globs in %files.</comment>
     <requestid>1275116</requestid>
   </revision>
+  <revision rev="7" vrev="4">
+    <srcmd5>e37c68ee42af4b9f8394e15e0f03f788</srcmd5>
+    <version>0.8.1</version>
+    <time>1790584738</time>
+    <user>anag_factory</user>
+    <comment>- Add patch use-modern-python-idioms.patch:
+  * Use modern Python idioms, such as pyproject.toml and packaging.</comment>
+    <requestid>1380286</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-pytest-tornado
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,10 @@ Summary:        A py.test plugin for tornado applications
 License:        Apache-2.0
 URL:            https://github.com/eugeniy/pytest-tornado
 Source:         https://github.com/eugeniy/pytest-tornado/archive/v%{version}.tar.gz#/pytest-tornado-%{version}.tar.gz
-BuildRequires:  %{python_module certifi}
+# PATCH-FIX-UPSTREAM Based on gh#eugeniy/pytest-tornado#68
+Patch0:         use-modern-python-idioms.patch
+BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -32,7 +35,7 @@ BuildRequires:  %{python_module tornado >= 4.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-certifi
+Requires:       python-packaging
 Requires:       python-pytest
 Requires:       python-tornado >= 4.1
 BuildArch:      noarch
@@ -43,7 +46,7 @@ A py.test_ plugin providing fixtures and markers to simplify testing
 of asynchronous tornado applications.
 
 %prep
-%setup -q -n pytest-tornado-%{version}
+%autosetup -p1 -n pytest-tornado-%{version}
 
 %build
 %pyproject_wheel
