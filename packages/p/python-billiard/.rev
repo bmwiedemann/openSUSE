@@ -289,4 +289,31 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1361828</requestid>
   </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>79c3e1db84a6bff4a623b19773ba027b</srcmd5>
+    <version>4.3.0</version>
+    <time>1790585062</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.3.0:
+  * Propagate MemoryError from pool callbacks
+  * Propagate `BaseException` raised in pool workers instead of
+    raising `WorkerLostError` (#427)
+  * Bind the closerange-based close_open_fds() on Python 3
+  * List the fd directory in close_open_fds() instead of walking
+    the limit (#456)
+  * Exit the pool worker after a task raises `SystemExit` or
+    `KeyboardInterrupt`
+    (for example the SIGTERM sent by a hard time limit) instead
+    of returning to the shared inqueue, which left the blocking
+    pool stalled once the worker was killed while holding the
+    inqueue lock (regression from #452)
+  * Fix pytest deprecation warning (#440)
+  * Make einfo compatible with inspect (fixes #176) (#392)
+  * Update CI workflow to use Python 3.10 and above (#441)
+  * Update tox.ini to remove older Python versions (#442)
+  * Fix macOS fork-safety crash: default to spawn on darwin
+
+  Ensure that task results are delivered during pool</comment>
+    <requestid>1380726</requestid>
+  </revision>
 </revisionlist>

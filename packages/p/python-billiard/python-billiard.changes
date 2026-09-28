@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Fri Sep 25 20:33:32 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.3.0:
+  * Propagate MemoryError from pool callbacks
+  * Propagate `BaseException` raised in pool workers instead of
+    raising `WorkerLostError` (#427)
+  * Bind the closerange-based close_open_fds() on Python 3
+  * List the fd directory in close_open_fds() instead of walking
+    the limit (#456)
+  * Exit the pool worker after a task raises `SystemExit` or
+    `KeyboardInterrupt`
+    (for example the SIGTERM sent by a hard time limit) instead
+    of returning to the shared inqueue, which left the blocking
+    pool stalled once the worker was killed while holding the
+    inqueue lock (regression from #452)
+  * Fix pytest deprecation warning (#440)
+  * Make einfo compatible with inspect (fixes #176) (#392)
+  * Update CI workflow to use Python 3.10 and above (#441)
+  * Update tox.ini to remove older Python versions (#442)
+  * Fix macOS fork-safety crash: default to spawn on darwin
+
+-------------------------------------------------------------------
 Fri Jun 19 01:21:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Skip a test that fails on 32 bit arches.
@@ -9,7 +31,7 @@ Sat Jan 31 09:30:51 UTC 2026 - Andreas Prittwitz <m4ng4n@gmx.de>
 - Update to version 4.2.4
   * Eliminate usage of 'return' in 'finally' blocks (#438)
 - Changes in version 4.2.3
-  Ensure that task results are delivered during pool 
+  Ensure that task results are delivered during pool
   shutdown (#435)
 
 -------------------------------------------------------------------

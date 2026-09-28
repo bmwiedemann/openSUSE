@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-billiard
-Version:        4.2.4
+Version:        4.3.0
 Release:        0
 Summary:        Python multiprocessing fork
 License:        BSD-3-Clause
