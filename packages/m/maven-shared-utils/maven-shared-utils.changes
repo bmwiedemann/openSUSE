@@ -1,4 +1,102 @@
 -------------------------------------------------------------------
+Sun Sep 27 19:52:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 3.5.0
+  * Removed
+    + Commandline and Shell no longer implement Cloneable. Their
+      clone() methods always threw, so only code that references
+      them is affected
+  * Deprecated
+    + StringUtils.replace and StringUtils.contains
+    + The logging package, in favour of MessageBuilderFactory
+    + StringUtils.concatenate, in favour of String.join
+    + StringUtils.clean(), in favour of StringUtils.trim()
+    + PathTool
+    + StringUtils.split
+    + The remaining shared XML classes, including Xpp3Dom
+      (MSHARED-1274)
+    + Add missing @Deprecated annotations
+    + FileUtils.forceMkdir and contentEquals, which Commons IO
+      provides (MSHARED-1271)
+    + Os, unmaintained for over a decade (MSHARED-1215)
+    + FileUtils.copyFile and FilterWrapper, in favour of
+      org.apache.maven.shared.filtering (MSHARED-1260)
+    + WriterFactory (MSHARED-1254) and ReaderFactory (MSHARED-1253)
+  * Bug fixes
+    + Process handling:
+      ~ Close process streams after exit, to work around the
+        JDK-4311711 hang
+      ~ CommandLineUtils: wait on every pumper in a try/finally
+      ~ AbstractStreamHandler.setDone: call notifyAll to wake
+        waiting threads
+      ~ StreamPollFeeder: declare done and exception as volatile
+      ~ Pass streamCharset to the stdout and stderr pumpers
+      ~ CmdShell: quote items that cmd.exe would otherwise interpret
+    + XML:
+      ~ Xpp3DomBuilder.createXmlReader: stop changing system
+        properties, which was not thread-safe
+      ~ Xpp3Dom.removeChild(int): fix childMap corruption with
+        duplicate names
+      ~ Xpp3Dom.getValue(): honour the @NonNull contract
+      ~ Xpp3DomWriter: reject a null DOM with a named
+        NullPointerException
+      ~ PrettyPrintXMLWriter: handle a null lineIndent in the
+        constructors
+    + Strings, paths and files:
+      ~ StringUtils.chompLast: fix StringIndexOutOfBoundsException
+        when the separator is longer than the string
+      ~ StringUtils.chopNewline(""): fix
+        StringIndexOutOfBoundsException
+      ~ StringUtils.leftPad and rightPad: handle an empty delimiter
+        without ArithmeticException
+      ~ PathTool.getRelativeFilePath: fix the Windows drive-letter
+        regex
+      ~ Os.getOsFamily: return an empty string instead of null
+      ~ Copy a symbolic link even when its target does not exist
+  * Documentation
+    + Port the site from APT to Markdown
+    + Rewrite the documentation in ASD-STE100 Simplified Technical
+      English
+    + Correct the class names that deprecation notes point at
+    + Stop naming individual Windows versions in the CmdShell docs
+    + Fix site page issues
+    + Correct the StringUtils.abbreviate() Javadoc
+  * Maintenance
+    + rop the nullness annotations: jsr305 was replaced by JSpecify
+    + Remove the last dependency on Plexus, which was test-scoped
+    + Remove unreachable escaping logic and unused code
+    + Clean up API docs and exceptions (MSHARED-1273)
+    + Code modernisation: StringBuilder for locals, empty arrays in
+      toArray, cached system properties, diamond operator
+      (MNG-6847), stale warning suppressions
+  * Tests
+    + Migrate the tests to JUnit 5
+    + Fix varargs warnings in StringUtilsTest
+    + Use precise assertions, show Unicode unescaped on failure, and
+      test exceptions properly
+  * Build and infrastructure
+    + Remove plugin downgrades for bugs that have since been fixed
+      (MSHARED-1112)
+    + Enable GitHub Issues
+    + Enable branch protection rules
+    + Add a tag template to the release-drafter configuration
+  * Dependency updates
+    + Runtime:
+      ~ commons-io 2.11.0 -> 2.22.0 (MSHARED-1363)
+      ~ jansi 2.4.0 -> 2.4.3
+    + Build and test:
+      ~ Parent maven-shared-components 39 -> 49
+      ~ maven-assembly-plugin 3.6.0 -> 3.8.0 and
+        maven-resources-plugin 3.3.1 -> 3.5.0
+      ~ apache/maven-gh-actions-shared workflows v3 -> v5
+      ~ hamcrest 2.2 -> 3.0, commons-text 1.10.0 -> 1.11.0, jspecify
+        1.0.0 -> 1.0.1
+      ~ Fix the hamcrest dependencies (MSHARED-1255)
+- Removed patch:
+  * 0001-Restore-compatibility-with-current-maven.patch
+    + not needed with this version
+
+-------------------------------------------------------------------
 Tue Jun 18 08:48:53 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 3.4.2

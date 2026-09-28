@@ -1,7 +1,7 @@
 #
 # spec file for package maven-shared-utils
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           maven-shared-utils
-Version:        3.4.2
+Version:        3.5.0
 Release:        0
 Summary:        Maven shared utility classes
 License:        Apache-2.0
@@ -25,14 +25,11 @@ Group:          Development/Libraries/Java
 URL:            https://maven.apache.org/shared/maven-shared-utils
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/shared/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
-# XXX temporary for maven upgrade
-Patch0:         0001-Restore-compatibility-with-current-maven.patch
 BuildRequires:  ant
 BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  jansi
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  jsr-305
 BuildRequires:  slf4j
 BuildRequires:  unzip
 BuildArch:      noarch
@@ -53,15 +50,13 @@ API documentation for %{name}.
 
 %prep
 %setup -q
-%patch -P 0 -p1
 cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib commons-io jansi/jansi slf4j/api jsr305
+build-jar-repository -s lib commons-io jansi/jansi slf4j/api
 
-%{ant} \
-  jar javadoc
+ant jar javadoc
 
 %install
 # jar
