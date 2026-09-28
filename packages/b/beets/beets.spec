@@ -24,7 +24,7 @@
 %{?sle15_python_module_pythons}
 %endif
 Name:           beets
-Version:        2.13.1
+Version:        2.14.1
 Release:        0
 Summary:        Music tagger and library organizer
 License:        MIT
