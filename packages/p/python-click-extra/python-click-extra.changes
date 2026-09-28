@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:12:02 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 9.3.4:
+  * Deprecated: Importing CLI_ECOSYSTEM_PACKAGES from
+    click_extra.version now warns, and stops working in 10.0.0. The
+    constant moved to a private module and has no public
+    replacement.
+  * Point deprecation warnings at the caller's code even when a
+    click or cloup frame sits in between: the walk behind the
+    warning's stacklevel now skips the whole CLI ecosystem.
+  * Kill the descendants of a timed-out or interrupted run_cli
+    child that was spawned without start_new_session, instead of
+    the child alone. A killed sudo no longer leaves the command it
+    escalated running.
+  * Add an Arch Linux tab to the installation page: click-extra is
+    in the AUR as python-click-extra.
+  * Tell packagers to run the test suite against the wheel they
+    built: a bare pytest imports the click_extra the system
+    carries.
+
+-------------------------------------------------------------------
 Wed Sep 23 05:28:38 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Drop patches, merged upstream:
