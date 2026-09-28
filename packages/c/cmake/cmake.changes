@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:32:31 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Skip LastCommandAbnormalExit-1 test in qemu emulation
+
+-------------------------------------------------------------------
 Fri Aug 28 09:43:27 UTC 2026 - Christoph G <foss@grueninger.de>
 
 - update to CMake 4.4.3

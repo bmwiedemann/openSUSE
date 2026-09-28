@@ -244,13 +244,17 @@ sed -i -e "1s@#!.*python.*@#!$(realpath %{_bindir}/python3)@" %{buildroot}%{_rpm
 #    SimpleInstall: seems to fail due to RPATH strictness
 #                   if any other app installs then this test is bogus
 #    suse specific brp-25-symlink cramps the symlinks, hence the CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne) fail
+#    LastCommandAbnormalExit-1: qemu generates extra output which confused the test
+%if 0%{?qemu_user_space_build}
+sed -i -e /LastCommandAbnormalExit-1/d Tests/RunCMake/execute_process/RunCMakeTest.cmake
+%endif
 %ifnarch %arm %ix86
 ./bin/ctest --output-on-failure %{?_smp_mflags} \
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM)"
 %else
-# dont' run failing test on 32-bit architectures due to year 2038 issue
-# dont' run Tutorial due to SSE issues https://gitlab.kitware.com/cmake/cmake/-/issues/27569
-# dont' run CommandLineTar to avoid zstd bug https://gitlab.kitware.com/cmake/cmake/-/work_items/27712
+# don't run failing test on 32-bit architectures due to year 2038 issue
+# don't run Tutorial due to SSE issues https://gitlab.kitware.com/cmake/cmake/-/issues/27569
+# don't run CommandLineTar to avoid zstd bug https://gitlab.kitware.com/cmake/cmake/-/work_items/27712
 ./bin/ctest --output-on-failure %{?_smp_mflags} \
     -E "(TestUpload|SimpleInstall|SimpleInstall-Stage2|CPackComponentsForAll-RPM-(default|OnePackPerGroup|IgnoreGroup|AllInOne)|CPack_RPM|RunCMake.string|Tutorial|CommandLineTar)"
 %endif
