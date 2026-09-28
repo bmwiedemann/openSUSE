@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 26 11:34:47 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.13:
+  + Use GNOME 51
+  + Follow system color scheme and accent color
+  + Remove duplicate hover background
+  + Fix "Test Junction" in welcome window
+
+-------------------------------------------------------------------
+Sat Sep 26 11:31:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Migrate to manual run services and away from .obscpio to tar.xz.
+
+-------------------------------------------------------------------
 Wed Jan 14 10:08:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.12:

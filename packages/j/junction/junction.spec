@@ -16,14 +16,15 @@
 #
 
 
-%define         appname re.sonny.Junction
+%global         appname re.sonny.Junction
+%global _name   Junction
 Name:           junction
-Version:        1.12
+Version:        1.13
 Release:        0
 Summary:        Application/browser chooser
 License:        GPL-3.0-only
 URL:            https://github.com/sonnyp/Junction
-Source0:        %{name}-%{version}.tar.zst
+Source0:        %{_name}-%{version}.tar.xz
 Source99:       junction-rpmlintrc
 BuildRequires:  blueprint-compiler
 BuildRequires:  desktop-file-utils
@@ -42,7 +43,7 @@ Set Junction as the default application for a resource and let it do the rest.
 Junction will pop up and offer multiple options to handle it.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -n %{_name}-%{version}
 
 %build
 %meson

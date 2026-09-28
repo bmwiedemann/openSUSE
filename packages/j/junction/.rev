@@ -55,4 +55,18 @@
     <comment></comment>
     <requestid>1327206</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>fbd2874b54f7c0c16e2f1979e916cd3f</srcmd5>
+    <version>1.13</version>
+    <time>1790585133</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.13:
+  + Use GNOME 51
+  + Follow system color scheme and accent color
+  + Remove duplicate hover background
+  + Fix &quot;Test Junction&quot; in welcome window
+
+- Migrate to manual run services and away from .obscpio to tar.xz.</comment>
+    <requestid>1380788</requestid>
+  </revision>
 </revisionlist>
