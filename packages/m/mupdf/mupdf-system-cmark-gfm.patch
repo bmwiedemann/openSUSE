@@ -1,29 +1,16 @@
---- a/Makerules	2026-06-28 07:09:41.855848150 +0200
-+++ b/Makerules	2026-06-28 07:09:56.797528424 +0200
-@@ -283,6 +283,10 @@
-     SYS_BROTLI_CFLAGS := $(shell pkg-config --cflags libbrotlidec libbrotlienc)
-     SYS_BROTLI_LIBS := $(shell pkg-config --libs libbrotlidec libbrotlienc)
+--- a/Makerules	2026-09-27 07:38:22.860040457 +0200
++++ b/Makerules	2026-09-27 07:38:23.160074133 +0200
+@@ -286,7 +286,7 @@
    endif
-+  ifeq ($(shell pkg-config --exists libcmark-gfm && echo yes),yes)
-+    SYS_CMARK_GFM_CFLAGS := $(shell pkg-config --cflags libcmark-gfm)
+   ifeq ($(shell pkg-config --exists libcmark-gfm && echo yes),yes)
+     SYS_CMARK_GFM_CFLAGS := $(shell pkg-config --cflags libcmark-gfm)
+-    SYS_CMARK_GFM_LIBS := $(shell pkg-config --libs libcmark-gfm)
 +    SYS_CMARK_GFM_LIBS := $(shell pkg-config --libs libcmark-gfm) -lcmark-gfm-extensions
-+  endif
+   endif
  
    HAVE_SYS_LEPTONICA := $(shell pkg-config --exists 'lept >= 1.7.4' && echo yes)
-   ifeq ($(HAVE_SYS_LEPTONICA),yes)
---- a/Makethird	2026-06-28 07:09:41.855848150 +0200
-+++ b/Makethird	2026-06-28 07:09:51.084886006 +0200
-@@ -112,7 +112,7 @@
- ifeq ($(USE_CMARK_GFM),yes)
- ifeq ($(USE_SYSTEM_CMARK_GFM),yes)
-   THIRD_CFLAGS += $(SYS_CMARK_GFM_CFLAGS)
--  THIRD_LIBS += $(SYS_CMARK_CFM_LIBS)
-+  THIRD_LIBS += $(SYS_CMARK_GFM_LIBS)
- else
-   THIRD_CFLAGS += $(CMARKGFM_CFLAGS)
-   THIRD_LIBS += $(CMARKCGM_LIBS)
---- a/source/html/md.c	2026-06-28 07:09:41.859848600 +0200
-+++ b/source/html/md.c	2026-06-28 07:10:11.271156064 +0200
+--- a/source/html/md.c	2026-09-27 07:38:22.936048988 +0200
++++ b/source/html/md.c	2026-09-27 07:38:25.640352522 +0200
 @@ -27,7 +27,9 @@
  
  #include "cmark-gfm.h"

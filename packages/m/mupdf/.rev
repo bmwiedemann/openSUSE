@@ -912,4 +912,72 @@ Built locally for aarch64 against openSUSE:Factory.</comment>
   upstream derives from the release version</comment>
     <requestid>1378276</requestid>
   </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>7dcc6213f9e9e4d1669b744fd5a0b948</srcmd5>
+    <version>1.28.5</version>
+    <time>1790585215</time>
+    <user>anag_factory</user>
+    <comment>Update mupdf to 1.28.5 (Publishing/mupdf rev 170, srcmd5 2dd57ca639632bdc65e1fef5fa17278f)
+
+SONAME bump. mupdf derives its library SONAME from the release version
+(Makefile: SO_VERSION = .$(VERSION_MINOR).$(VERSION_PATCH)), so 1.28.5 moves
+libmupdf.so.28.4 -&gt; libmupdf.so.28.5 and the shared-library subpackage is
+renamed libmupdf28_4 -&gt; libmupdf28_5. Verified three ways: the upstream
+Makefile rule, include/mupdf/fitz/version.h (FZ_VERSION_PATCH 4 -&gt; 5), and the
+DT_SONAME of the built library. Same shape as the 1.28.4 bump.
+
+No consumer spec edit is needed. The rename's rdep cone is netperfmeter
+(network:utilities) and zathura-plugin-pdf-mupdf (X11:Utilities), and both
+depend on mupdf through the virtual pkgconfig(mupdf) or the unversioned mupdf
+package, not through the versioned subpackage name, so both pick the new
+soname up automatically and the dependency scheduler rebuilds them. Verified
+by building zathura-plugin-pdf-mupdf against this staging: the resulting RPM
+requires libmupdf.so.28.5()(64bit).
+
+Patch rebase. mupdf-system-cmark-gfm.patch is reduced from three hunks to two:
+  - dropped: the Makethird hunk fixing the SYS_CMARK_CFM_LIBS typo -- upstream
+    1.28.5 fixed it itself (commit 8dcbd0a9, &quot;Fix system cmark-gfm support&quot;), so
+    the hunk no longer applied.
+  - rebased: the Makerules hunk. Upstream now provides its own pkg-config block
+    for USE_SYSTEM_CMARK_GFM, but its &quot;pkg-config --libs libcmark-gfm&quot; names only
+    the core library while source/html/md.c needs cmark_find_syntax_extension()
+    and cmark_parser_attach_syntax_extension() from libcmark-gfm-extensions, so
+    the patch now appends -lcmark-gfm-extensions to upstream's own line. The old
+    hunk only applied at fuzz 2; the new one applies at --fuzz=0.
+  - kept: the source/html/md.c hunk declaring cmark_release_plugins() in place of
+    the private registry.h -- md.c is byte-identical between 1.28.4 and 1.28.5.
+The -lcmark-gfm-extensions half is load-bearing, not defensive: the built
+libmupdf.so.28.5 carries NEEDED libcmark-gfm-extensions.so.0.29.0.gfm.13.
+
+mupdf-no-strip.patch is unchanged and was deliberately not renamed.
+
+Validation: built green natively on aarch64 against openSUSE:Tumbleweed
+standard -- &quot;dove.qam.suse.cz finished \&quot;build mupdf.spec\&quot;&quot;. rpmlint 0 errors,
+0 badness. No new rpmlint tag versus the 1.28.4 Factory baseline (which was
+pulled for the comparison); the 4 extra local warnings are
+unstripped-binary-or-object and appear only because a local build does not pass
+_build_create_debug. There is no %check -- the spec has never had one and
+upstream's default make target ships no test suite. source_validator, changes-lint,
+changes-guard, changes-patches and spec-cleaner all clean.
+
+soname-check.sh: 0 findings. Independently confirmed libmupdf28_5 ships only
+/usr/lib64/libmupdf.so.28.5 and mupdf-devel only the unversioned
+/usr/lib64/libmupdf.so -- no versioned symlink that is not the SONAME, so no
+cross-version file conflict with libmupdf28_4 at staging.
+
+Security: no CVE is named anywhere in the 1.28.4..1.28.5 commit range, and no
+open VUL bug is fixed by this update, so the entry cites ghostscript bug numbers
+and no CVE. The open CVE queue was swept; notably CVE-2026-7233 (boo#1263162,
+OOB read in fz_subset_cff_for_gids) is NOT fixed by 1.28.5 -- subset-cff.c is
+touched here, but by ghostscript 709720/709728, whereas the CVE names ghostscript
+709328, which appears nowhere in the range. It stays with its current assignee.
+
+Note for the reviewer: upstream's CHANGES file is stale (identical to 1.28.4, top
+entry still 1.28.3), so the changelog was written from the 137-commit range mined
+from cgit. The entry is abridged with the usual closer and is longer than the
+~20-line guideline because this release carries ~25 distinct memory-safety fixes
+that were not cut.
+</comment>
+    <requestid>1380865</requestid>
+  </revision>
 </revisionlist>

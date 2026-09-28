@@ -19,10 +19,10 @@
 
 # mupdf sets the shared-library SONAME to libmupdf.so.<minor>.<patch>, so it
 # changes on every upstream release; keep %%sover in sync with the version.
-%define sover 28_4
-%define soversion 28.4
+%define sover 28_5
+%define soversion 28.5
 Name:           mupdf
-Version:        1.28.4
+Version:        1.28.5
 Release:        0
 Summary:        PDF and XPS Viewer and Parser and Rendering Library
 License:        AGPL-3.0-or-later
@@ -31,8 +31,12 @@ Source0:        https://mupdf.com/downloads/archive/%{name}-%{version}-source.ta
 Source1:        %{name}.desktop
 Source2:        %{name}-gl.desktop
 Patch0:         mupdf-no-strip.patch
-# Build against the system cmark-gfm instead of the vendored thirdparty copy
-# (wires up the upstream USE_SYSTEM_CMARK_GFM path, which is incomplete in 1.28)
+# Build against the system cmark-gfm instead of the vendored thirdparty copy.
+# Upstream 1.28.5 wires up USE_SYSTEM_CMARK_GFM itself (and fixed the
+# SYS_CMARK_CFM_LIBS typo in Makethird), so all that is left is linking
+# cmark-gfm-extensions and declaring the one symbol from the private
+# registry.h that the system library does not install.
+# PATCH-FIX-OPENSUSE mupdf-system-cmark-gfm.patch mpluskal@suse.com -- link cmark-gfm-extensions, declare cmark_release_plugins
 Patch1:         mupdf-system-cmark-gfm.patch
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes

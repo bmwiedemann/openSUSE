@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Sep 27 05:56:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.28.5:
+  * The PRNG now uses ChaCha20 instead of a 48-bit LCG, and the
+    ChaCha20 stream cipher is new public API (fz_chacha20_init(),
+    fz_chacha20_encrypt())
+  * The regular expression engine moved out of the bundled MuJS into
+    the library itself and is new public API (fz_regcomp(),
+    fz_regexec(), fz_regfree(), new include/mupdf/fitz/regexp.h), so
+    the structured text search behind mutool grep no longer reaches
+    into MuJS internals and can now detect runaway backtracking via
+    REG_RUNAWAY. MuJS was updated to 1.3.10
+  * New public helpers: fz_pool_asprintf(), fz_strcasecmp_ascii(),
+    fz_isalpha(), fz_unconst() and
+    fz_release_stext_block_run_resources()
+  * The x11 and gl viewers accept -f to start fullscreen, the default
+    SVG font size is 16, glyph names of the form gXXXX are read as
+    DOS CP-437, CRLF counts as a single line break when generating PDF
+    text appearances, and structured text now tracks clip_text_bbox
+    separately from text_bbox
+  * Font handling: fix an out-of-bounds write in the CFF subsetter
+    and its stack macros, out-of-bounds reads and table overruns in
+    the TTF subsetter, a memory overwrite in CFF2 subsetting and in
+    cached glyph painting, and an out-of-bounds write in ttc-to-ttf
+    conversion (ghostscript bugs 709720, 709728, 709729, 709735,
+    709737, 709567, 709562, 709588)
+  * Fix a potential heap overwrite in progressive loading, an
+    out-of-bounds write in mutool audit, an out-of-bounds read and a
+    stack overflow in the pdf recolor code, an out-of-bounds write in
+    JPEG loading, an integer overflow in the BMP stride check and an
+    overflow in convert_to_utf8 (ghostscript bugs 709677, 709753,
+    709743, 709742, 709561, 709566)
+  * Add compression-bomb detection for the PNG iCCP chunk and for GIF
+    images; fix an infinite loop in mutool clean on a malicious file
+    and a stack overflow on malformed XPS input (ghostscript bugs
+    709653, 709548, 709480)
+  * fz_available() tolerates a NULL stream, overflowing fz_irect
+    coordinates report INT_MAX extent instead of 0, and numerous
+    leak-on-exception paths across structured text, SVG, outline and
+    name-tree code are fixed
+  * Many more fixes and improvements; see upstream's commit log for
+    the full list
+- Rebase mupdf-system-cmark-gfm.patch: upstream 1.28.5 wires up
+  USE_SYSTEM_CMARK_GFM itself and fixes the SYS_CMARK_CFM_LIBS typo
+  in Makethird, so the patch now only adds -lcmark-gfm-extensions and
+  declares cmark_release_plugins() in place of the private registry.h
+- Rename the shared library subpackage from libmupdf28_4 to
+  libmupdf28_5, following the SONAME libmupdf.so.28.5 which upstream
+  derives from the release version
+
+-------------------------------------------------------------------
 Wed Sep 16 07:29:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.28.4:
