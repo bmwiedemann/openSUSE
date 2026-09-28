@@ -31,6 +31,8 @@ Patch0:         support-python-312.patch
 Patch1:         support-pyftpdlib-2.0.patch
 # PATCH-FIX-OPENSUSE Support Python 3.15 changes
 Patch2:         support-python-315.patch
+# PATCH-FIX-UPSTREAM Based on gh#PyFilesystem/pyfilesystem2#589 & gh#PyFilesystem/pyfilesystem2#590
+Patch3:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module appdirs >= 1.4.3}
 BuildRequires:  %{python_module parameterized}
 BuildRequires:  %{python_module pip}
@@ -45,7 +47,6 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-appdirs >= 1.4.3
-Requires:       python-setuptools
 Requires:       python-six >= 1.10.0
 Recommends:     python-pyftpdlib
 BuildArch:      noarch

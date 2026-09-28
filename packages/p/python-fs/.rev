@@ -204,4 +204,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1376828</requestid>
   </revision>
+  <revision rev="21" vrev="8">
+    <srcmd5>8a60ab9b18966d85c406ac18ae93c5fc</srcmd5>
+    <version>2.4.16</version>
+    <time>1790584739</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Stop using pkg_resources to discover entry points.</comment>
+    <requestid>1380292</requestid>
+  </revision>
 </revisionlist>
