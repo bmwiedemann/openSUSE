@@ -19,16 +19,14 @@
 %global __requires_exclude typelib\\(GConf\\)|typelib\\(Unity\\)
 %define pythons python3
 Name:           soundconverter
-Version:        4.0.5
+Version:        4.1.3
 Release:        0
 Summary:        Sound Converter Application for the GNOME Desktop
 License:        GPL-3.0-or-later
-Group:          Productivity/Multimedia/Video/Editors and Convertors
 URL:            https://soundconverter.org
-Source0:        https://launchpad.net/soundconverter/trunk/%{version}/+download/%{name}-%{version}.tar.gz
+Source0:        https://github.com/kassoulet/soundconverter/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
-BuildRequires:  gobject-introspection-devel
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  intltool
 BuildRequires:  pkgconfig
@@ -40,6 +38,8 @@ BuildRequires:  python3-pip
 BuildRequires:  python3-pytest
 BuildRequires:  python3-setuptools
 BuildRequires:  python3-wheel
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0)
 BuildRequires:  typelib(Gst) = 1.0
 BuildRequires:  typelib(GstPbutils) = 1.0
 BuildRequires:  typelib(Gtk) = 3.0
@@ -79,7 +79,7 @@ desktop-file-install \
   build/share/applications/%{name}.desktop
 
 rm -f %{buildroot}%{_datadir}/glib-2.0/schemas/gschemas.compiled
-rm -rf %{buildroot}/usr/share/doc/soundconverter
+rm -rf %{buildroot}%{_datadir}/doc/soundconverter
 
 %fdupes %{buildroot}%{_prefix}
 

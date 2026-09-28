@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:41:17 UTC 2026 - Andrea Manzini <ilmanzo@gmail.com>
+
+- Update to 4.1.3:
+  * Add WMA output support
+  * Adapt light/dark theme according to system settings
+  * Use .oga file extension for Ogg Vorbis when requested
+  * Switch from deprecated pkg_resources to importlib.metadata
+  * Fix import error crash on Python 3.13
+  * Fix crash at startup with gstreamer 1.28.0
+  * Fix crash on Manjaro / xfce
+- Switch Source0 from Launchpad to the upstream GitHub release
+  tarball; Launchpad no longer hosts tarballs past 4.0.6.
+- Spec cleanup: drop the obsolete Group tag, convert the
+  gobject-introspection-devel BuildRequires to its pkgconfig()
+  form, and use %{_datadir} instead of a hardcoded /usr/share path.
+
+-------------------------------------------------------------------
 Fri May  1 01:19:47 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject macros to build and install.
