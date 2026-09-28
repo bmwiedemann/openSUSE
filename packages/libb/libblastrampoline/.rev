@@ -71,4 +71,25 @@
   * Fix assembler syntax for riscv</comment>
     <requestid>1345945</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>1e0c65a26c59bb1ca58a2669b57154a6</srcmd5>
+    <version>5.16.0</version>
+    <time>1790585128</time>
+    <user>anag_factory</user>
+    <comment>- update to 5.16.0:
+  * Add threading support for Apple Accelerate
+  * Tweak integer detection logic to use ilaver
+  * Migrate CI to GitHub Actions, one job per BLAS/LAPACK backend
+  * README: add Reference BLAS and LAPACK to the supported list
+  * Deduplicate build files (Makefile + per-test Makefiles)
+  * Prefix public bitfield macros with `LBT_` to avoid namespace
+    pollution
+  * Add optional compile-time thread-safety for the forwarding
+    API
+  * Bump actions/checkout from 6 to 7
+  * Add AOCL to the list of supported backends
+  * Fix dangling `suffix` pointer in tracked library info
+  * Tidy internal linkage and two stale/dead details</comment>
+    <requestid>1380779</requestid>
+  </revision>
 </revisionlist>

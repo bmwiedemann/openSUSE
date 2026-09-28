@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 26 11:38:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 5.16.0:
+  * Add threading support for Apple Accelerate
+  * Tweak integer detection logic to use ilaver
+  * Migrate CI to GitHub Actions, one job per BLAS/LAPACK backend
+  * README: add Reference BLAS and LAPACK to the supported list
+  * Deduplicate build files (Makefile + per-test Makefiles)
+  * Prefix public bitfield macros with `LBT_` to avoid namespace
+    pollution
+  * Add optional compile-time thread-safety for the forwarding
+    API
+  * Bump actions/checkout from 6 to 7
+  * Add AOCL to the list of supported backends
+  * Fix dangling `suffix` pointer in tracked library info
+  * Tidy internal linkage and two stale/dead details
+
+-------------------------------------------------------------------
 Fri Apr 10 18:51:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 5.15.0:
