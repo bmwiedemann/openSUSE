@@ -4409,4 +4409,13 @@
   * drop dirs from the specfile, they live in the filesystem package</comment>
     <requestid>1378310</requestid>
   </revision>
+  <revision rev="521" vrev="1">
+    <srcmd5>dd30daf0d3ebe6fc4c64a865f87db758</srcmd5>
+    <version>84.87+git20260924.144354a1</version>
+    <time>1790696900</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 84.87+git20260924.144354a1:
+  * change requires for aaa_base-extras also to pathes</comment>
+    <requestid>1381114</requestid>
+  </revision>
 </revisionlist>

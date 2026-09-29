@@ -33,7 +33,7 @@ BuildRequires:  git-core
 %endif
 
 Name:           aaa_base
-Version:        84.87+git20260916.e122202%{git_version}
+Version:        84.87+git20260924.144354a1%{git_version}
 Release:        0
 Summary:        openSUSE Base Package
 License:        GPL-2.0-or-later
@@ -74,11 +74,11 @@ This package installs several important configuration files and central scripts.
 Summary:        SUSE Linux Base Package (recommended part)
 Group:          System/Fhs
 Requires:       %{name} = %{version}
+Requires:       /usr/bin/cpio
 Requires:       /usr/bin/find
-Requires:       cpio
-Requires:       gzip
-Requires:       tar
-Requires(post): fillup
+Requires:       /usr/bin/gzip
+Requires:       /usr/bin/tar
+Requires(post): /usr/bin/fillup
 Provides:       aaa_base:/etc/DIR_COLORS
 
 %description extras
