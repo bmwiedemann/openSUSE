@@ -200,4 +200,14 @@
     <comment>1</comment>
     <requestid>1374976</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>5a9c0b8428b34ef4fcc6dffedb620181</srcmd5>
+    <version>1.15.1</version>
+    <time>1790697039</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.15.1 (boo#1283054)
+  * Restore the painter pipeline when a reconnect arrives without
+    a modeset</comment>
+    <requestid>1381266</requestid>
+  </revision>
 </revisionlist>

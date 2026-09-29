@@ -21,7 +21,7 @@
 
 Name:           evdi
 Release:        0
-Version:        1.15.0
+Version:        1.15.1
 Summary:        Extensible Virtual Display Interface (EVDI) is a Linux Kernel Module
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          System/Kernel
