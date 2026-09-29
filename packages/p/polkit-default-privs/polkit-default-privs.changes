@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 09:22:27 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 1550+20260928.d1c0e7e:
+  * profiles: added datarecovery run-ddrescue action (bsc#1280118)
+
+-------------------------------------------------------------------
 Tue Aug 25 16:07:26 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20260825.76d85e6:
