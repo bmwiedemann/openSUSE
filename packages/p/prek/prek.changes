@@ -1,4 +1,66 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:52:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.5.4:
+  * Highlights
+    - Faster builtin hooks
+      In our end-to-end benchmark, prek is about 38% faster than
+      0.5.3, with some builtin hooks up to 273% faster (check-yaml:
+      273%, check-json: 80%, check-merge-conflict: 71%).
+  * Enhancements
+    - Add include_deleted to allow hooks to include deleted files
+      (#2733)
+    - Add --check and simplify end-of-file-fixer (#2764)
+    - Add --check to file-contents-sorter (#2765)
+    - Add --check to requirements-txt-fixer (#2766)
+    - Add --check to trailing-whitespace (#2763)
+    - Expose and document prek util generate-shell-completion
+      (#2727)
+    - Support hide_status in project and user configuration (#2760)
+    - Support look-around regex in builtin pattern hooks (#2732)
+  * Performance
+    - Cache the resolved Git executable on macOS (#2726)
+    - Combine and cache Git repository path queries (#2724)
+    - Optimize common builtin hook execution (#2768)
+    - Optimize scanning in mixed-line-ending and
+      trailing-whitespace (#2769)
+    - Scan check-merge-conflict files in fixed-size blocks (#2781)
+    - Use SIMD UTF-8 validation in check-json, check-toml, and
+      check-yaml (#2770)
+  * Bug fixes
+    - Retry transient rename failures on Windows (#2756)
+    - Use PATH to resolve prek in completion scripts (#2719)
+  * Documentation
+    - Clarify the flow and scope of usage guides (#2710)
+    - Reorganize usage guides and reference documentation (#2709)
+  * Other changes
+    - Sync latest identify tags (#2762)
+  * Dependencies
+    - Update dependency uv to v0.12.17 (#2773)
+    - Update Rust crate clap to v4.6.7 (#2775)
+    - Update Rust crate rustix to v1.1.5 (#2777)
+    - Update Rust crate clap_complete to v4.6.11 (#2776)
+    - Update Rust crate async-compression to v0.4.48 (#2774)
+    - Update Rust crate granit-parser to v1.3.0 (#2779)
+    - Update Rust crate serde-saphyr to v1.3.0 (#2780)
+    - Update Rust crate toml_edit to v0.25.15 (#2752)
+    - Update prek hooks (#2743)
+    - Update Rust crate jsonc-parser to v0.33.2 (#2749)
+    - Update Rust crate reqwest to v0.13.5 (#2750)
+    - Update Rust crate fancy-regex to v0.19.2 (#2748)
+    - Update Rust crate asyncband to v0.7.2 (#2746)
+    - Update dependency uv to v0.12.13 (#2744)
+    - Update Rust crate console to v0.16.6 (#2747)
+    - Update Rust crate toml to v1.1.6 (#2751)
+    - Update Rust crate async-compression to v0.4.46 (#2745)
+    - Update prek hooks (#2712)
+    - Update Rust crate aws-lc-rs to v1.18.1 (#2716)
+    - Update Rust crate fancy-regex to v0.19.1 (#2717)
+    - Update Rust crate toml to v1.1.5 (#2718)
+    - Update dependency uv to v0.12.10 (#2713)
+    - Update Rust crate async-compression to v0.4.44 (#2715)
+
+-------------------------------------------------------------------
 Sat Sep 19 06:09:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.5.3:
