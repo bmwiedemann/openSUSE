@@ -70,15 +70,15 @@ Provides: pattern-category() = Server%20Functions
 Provides: pattern-category() = XFCE%20Desktop
 
 %requires_on_transactional_recommends_otherwise() \
-Requires:       ( %1 if (product(MicroOS) or product(SL-Micro))) \
-Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+Requires:       ( %1 if (product(MicroOS) or product(SL-Micro) or Leap_immutable-release)) \
+Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP) or Leap-release))
 
 %requires_on_traditional() \
-Requires:       ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+Requires:       ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP) or Leap-release))
 
 %recommends_on_traditional() \
-Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP)))
+Recommends:     ( %1 if (product(openSUSE) or product(SLES) or product(SLES-SAP) or Leap-release))
 
 %requires_on_transactional() \
-Requires:       ( %1 if (product(MicroOS) or product(SL-Micro)))
+Requires:       ( %1 if (product(MicroOS) or product(SL-Micro) or Leap_immutable-release))
 

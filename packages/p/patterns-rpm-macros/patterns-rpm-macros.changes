@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Sep 27 08:38:01 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Recognize Leap standard and immutable mode in
+  {requires,recommends}_on_* macros.
+
+-------------------------------------------------------------------
 Thu Dec 19 10:04:32 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
 
 - Add requires_on_transactional_recommends_otherwise,
