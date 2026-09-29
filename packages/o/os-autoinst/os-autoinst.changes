@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:56:15 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790592325.87022d5:
+  * fix(svirt): Verify VMware images while copying them into the datastore
+  * feat: gracefully handle temporarily unreachable hypervisors
+  * fix: remove double slash in git cache dir path
+  * fix: remove redundant and invalid ruff selectors
+  * feat: support holding key for duration in send_key
+  * feat: Identify executed commands directly from timeline step boxes
+  * fix(git): remove leading slash from cache path
+
+-------------------------------------------------------------------
 Mon Sep 28 08:24:13 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790583840.ff0d715:
