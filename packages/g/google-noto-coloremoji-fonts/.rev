@@ -47,4 +47,15 @@
     <comment></comment>
     <requestid>1313847</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>88b7364952628842c73e5119ffc2c76c</srcmd5>
+    <version>20260924</version>
+    <time>1790696851</time>
+    <user>anag_factory</user>
+    <comment>- Update to v2.057
+  * Unicode 18.0 update
+    - 19 new emojis (9 new emoji code points plus 10 skin-tone
+      sequences for directional thumbs) (forwarded request 1380738 from Kieltux)</comment>
+    <requestid>1381178</requestid>
+  </revision>
 </revisionlist>

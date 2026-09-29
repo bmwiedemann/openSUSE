@@ -1,7 +1,7 @@
 #
 # spec file for package google-noto-coloremoji-fonts
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           google-noto-coloremoji-fonts
-Version:        20250916
+Version:        20260924
 Release:        0
 Summary:        Noto Color Emoji font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://github.com/googlefonts/noto-emoji
-Source0:        https://github.com/googlefonts/noto-emoji/raw/v2.051/fonts/LICENSE
-Source1:        https://github.com/googlefonts/noto-emoji/raw/v2.051/fonts/NotoColorEmoji.ttf
+Source0:        https://github.com/googlefonts/noto-emoji/raw/v2026-09-24-unicode18_0/2D/fonts/LICENSE
+Source1:        https://github.com/googlefonts/noto-emoji/raw/v2026-09-24-unicode18_0/2D/fonts/NotoColorEmoji.ttf
 BuildRequires:  fontpackages-devel
 Provides:       noto-emoji-fonts = %{version}
 Obsoletes:      noto-emoji-fonts < %{version}
