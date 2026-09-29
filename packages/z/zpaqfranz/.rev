@@ -155,4 +155,13 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update to 65.3: faster large-file processing (default -m1 output byte-identical to 65.2), new -turbo mode, -m6/-m7 methods, mount support on FreeBSD/OpenBSD/macOS. Drop qualify-std-string patch (fixed upstream).</comment>
     <requestid>1380713</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0eb9ec33b88cc79b79e63803e1b00285</srcmd5>
+    <version>65.4</version>
+    <time>1790696983</time>
+    <user>anag_factory</user>
+    <comment>Update to zpaqfranz 65.4: -filelist makes l read the archive in a fraction of a second, -tar stores and restores the metadata tar keeps, and the -tar block reader no longer over-reads its franz_block. The test suite now runs upstream's full autotest -all. Details in .changes.
+</comment>
+    <requestid>1381239</requestid>
+  </revision>
 </revisionlist>

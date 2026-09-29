@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.4:
+  * New -filelist: every add also stores the deduplicated history
+    of the file list inside the archive, so l reads that alone
+    instead of the index of every version: on an archive with 1351
+    versions l drops from 15.2 s to 0.3 s, l -all from 215 s to
+    12.1 s. Even without -filelist l is about 3 times faster, with
+    byte identical output.
+  * New -tar: archive as a tar, keeping on Linux, macOS, FreeBSD,
+    OpenBSD and Solaris what tar keeps - owners by name and number,
+    permissions including setuid, setgid and sticky, times with
+    nanoseconds, symlinks, hard links, FIFOs and devices; sockets
+    are skipped, as tar does. Extended attributes, ACLs and SELinux
+    labels are not stored.
+  * The -tar block reader no longer reads one byte past the 550
+    byte franz_block: a memory safety fix, no CVE assigned.
+  * -turbo now takes an explicit thread count for the fragmenter;
+    the archive stays byte identical whatever the number.
+  * On Unix, x no longer writes through a symlink, FIFO or device
+    but removes it first: x -force over a FIFO used to wait
+    forever, and over a symlink wrote to its target.
+  * The temporary folder is now per user, /tmp/_zpaqfranz_<uid>.
+  * The test suite now runs upstream's full "autotest -all".
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Fri Sep 25 18:13:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 65.3:

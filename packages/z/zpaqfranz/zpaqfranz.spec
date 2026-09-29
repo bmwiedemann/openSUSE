@@ -17,7 +17,7 @@
 
 
 Name:           zpaqfranz
-Version:        65.3
+Version:        65.4
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
@@ -97,8 +97,10 @@ install -Dpm 0644 man/%{name}.1 %{buildroot}%{_mandir}/man1/%{name}.1
 %check
 # Upstream's built-in self test, then a create/verify round trip. Both run
 # against the build directory copy, which is still unstripped - upstream notes
-# that stripping the binary loses the autotest capability.
-./zpaqfranz autotest
+# that stripping the binary loses the autotest capability. -all is upstream's
+# own test target (Makefile and every CI job), not the hobbled subset the
+# binary runs by default.
+./zpaqfranz autotest -all
 ./zpaqfranz a test.zpaq LICENSE
 ./zpaqfranz v test.zpaq
 
