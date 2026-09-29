@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 28 21:55:56 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.11.0
+  * Reset blocked/ignored/caught termination signals around IO_fork
+    so that children can be stopped with SIGTERM etc. even when a
+    program embedding GAP (e.g. julia via GAP.jl) redirects signal
+    handling.
+  * Made IO_WaitPid return instead of looping forever when the
+    waited-for process is not an unreaped child.
+  * No longer installs a SIGCHLD handler in HPC-GAP or when GAP is
+    embedded in another program (e.g. julia via GAP.jl). Wait only
+    for the children created by IO_fork, by process id, so that the
+    host's own child process handling keeps working.
+
+-------------------------------------------------------------------
 Thu Jul 16 17:03:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.10.0
