@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:58:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 50.3:
+  + General:
+    - Fix traceback when using object navigator to click on an
+      object.
+    - Fix two issues related to running unit tests downstream.
+  + New and updated translations (THANKS EVERYONE!!!):
+
+-------------------------------------------------------------------
+Mon Jul 27 14:25:43 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add python3-setproctitle Recommends. Orca uses this to set its
+  process name when available.
+
+-------------------------------------------------------------------
+Mon Jul 20 11:01:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add python3-psutil Recommends: Support system information
+  commands.
+
+-------------------------------------------------------------------
 Tue May 26 15:01:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.2:
@@ -1443,7 +1465,7 @@ Tue Jun  2 17:43:33 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
   + Fix presentation of Qt widgets labelled by their parent
     container.
   + Updated translations.
- 
+
 -------------------------------------------------------------------
 Thu Apr 23 18:51:42 UTC 2020 - Bjørn Lie <bjorn.lie@gmail.com>
 
@@ -1707,12 +1729,12 @@ Mon Sep  9 13:55:37 CDT 2019 - mgorse@suse.com
 -------------------------------------------------------------------
 Sat Aug 31 13:35:06 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Re-enable translation-update-upstream, and fix invocation. 
+- Re-enable translation-update-upstream, and fix invocation.
 
 -------------------------------------------------------------------
 Fri Aug 30 15:33:51 UTC 2019 - Michael Gorse <mgorse@suse.com>
 
-- Update to version 3.33.91: 
+- Update to version 3.33.91:
   + Web:
     - Improve performance with structural navigation amongst
       large objects.
@@ -2103,7 +2125,7 @@ Thu Feb 22 00:54:34 UTC 2018 - luc14n0@linuxmail.org
   + Web + Email:
     - Improve navigation among, and presentation of, editable
       elements with descendants;
-    - Fix bug in which Orca went silent due to text elements 
+    - Fix bug in which Orca went silent due to text elements
       failing to support the accessible text interface;
     - Eliminate double presentation of visual labels which also
       provide the accessible description;

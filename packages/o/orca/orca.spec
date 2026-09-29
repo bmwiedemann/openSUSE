@@ -19,7 +19,7 @@
 %global __requires_exclude typelib\\(Wnck\\)
 
 Name:           orca
-Version:        50.2
+Version:        50.3
 Release:        0
 Summary:        Screen reader for GNOME
 License:        LGPL-2.1-or-later
@@ -55,6 +55,8 @@ Requires:       python3-louis
 Requires:       python3-speechd
 Recommends:     brltty >= 3.9
 Recommends:     typelib(Wnck) = 3.0
+Recommends:     python3-psutil
+Recommends:     python3-setproctitle
 BuildArch:      noarch
 
 %description

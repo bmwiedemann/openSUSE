@@ -1585,4 +1585,27 @@
   + Updated translations.</comment>
     <requestid>1355866</requestid>
   </revision>
+  <revision rev="196" vrev="1">
+    <srcmd5>d4406c0470032e5b05298cb1246fcfbd</srcmd5>
+    <version>50.3</version>
+    <time>1790696813</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 50.3:
+  + General:
+    - Fix traceback when using object navigator to click on an
+      object.
+    - Fix two issues related to running unit tests downstream.
+  + New and updated translations (THANKS EVERYONE!!!):
+
+- Add python3-setproctitle Recommends. Orca uses this to set its
+  process name when available.
+
+- Add python3-psutil Recommends: Support system information
+  commands.
+
+- Re-enable translation-update-upstream, and fix invocation.
+- Update to version 3.33.91:
+    - Fix bug in which Orca went silent due to text elements</comment>
+    <requestid>1381189</requestid>
+  </revision>
 </revisionlist>
