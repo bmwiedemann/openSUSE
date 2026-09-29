@@ -207,4 +207,14 @@ primesieve is a new package, it's a command-line program and C/C++ library that 
     <comment>Update to latest primesieve-12.15</comment>
     <requestid>1366673</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>a41981b9d221f74541bf71500b34fac6</srcmd5>
+    <version>12.16</version>
+    <time>1790697198</time>
+    <user>anag_factory</user>
+    <comment>Update to latest primesieve-12.16.
+
+Re-submission due to declined Request 1381304 (https://build.opensuse.org/request/show/1381304). The primesieve-12.16.tar.gz archive has now been updated to https://github.com/kimwalisch/primesieve/archive/refs/tags/v12.16.tar.gz. Previously I had packaged the source code myself locally on my PC, which caused the tarball hashes to be different (even though the source code was identical).</comment>
+    <requestid>1381367</requestid>
+  </revision>
 </revisionlist>
