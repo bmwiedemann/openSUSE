@@ -972,4 +972,11 @@
   * Fix loader_conf_set for paths (forwarded request 1380260 from aplanas)</comment>
     <requestid>1380261</requestid>
   </revision>
+  <revision rev="112" vrev="2">
+    <srcmd5>213418f8b2fb79dc0f07899110cb4616</srcmd5>
+    <version>1+git20260909.7cfa1f0</version>
+    <time>1790701300</time>
+    <user>dimstar_suse</user>
+    <comment>Revert due to https://bugzilla.opensuse.org/show_bug.cgi?id=1252993; fixup takes more time</comment>
+  </revision>
 </revisionlist>
