@@ -2,7 +2,7 @@
 +++ b/plexus-java/src/main/java9/module-info.java
 @@ -19,6 +19,7 @@
  module org.codehaus.plexus.languages.java {
-     requires com.thoughtworks.qdox;
+     requires com.github.javaparser.core;
      requires org.objectweb.asm;
 +    requires java.inject;
  

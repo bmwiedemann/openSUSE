@@ -20,7 +20,7 @@
 # binaries are java 8 compatible
 %define __requires_exclude java-headless
 Name:           plexus-languages
-Version:        1.5.0
+Version:        1.6.0
 Release:        0
 Summary:        Plexus Languages
 License:        Apache-2.0
@@ -37,7 +37,7 @@ BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  objectweb-asm
 BuildRequires:  plexus-containers-component-annotations
-BuildRequires:  qdox >= 2
+BuildRequires:  javaparser
 BuildRequires:  sisu-inject
 Requires:       java-headless >= 1.8
 BuildArch:      noarch
@@ -66,9 +66,14 @@ cp %{SOURCE100} plexus-java/build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib qdox javax.inject plexus-containers/plexus-component-annotations objectweb-asm/asm org.eclipse.sisu.inject
+build-jar-repository -s lib \
+    javaparser \
+    javax.inject \
+    plexus-containers/plexus-component-annotations \
+    objectweb-asm/asm \
+    org.eclipse.sisu.inject
 pushd plexus-java
-%{ant} -Dtest.skip=true package javadoc
+ant -Dtest.skip=true package javadoc
 popd
 
 %install
