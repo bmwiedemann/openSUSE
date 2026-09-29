@@ -486,4 +486,12 @@ See the COPYING file. There are GPL-2.0+ (with openssl linking exceptions for pg
   * Fix infinite loop with malformed interval (:ticket:`1835`).</comment>
     <requestid>1352271</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>debcf8c48e966d368fdfb6cfc2b04348</srcmd5>
+    <version>2.9.12</version>
+    <time>1790697014</time>
+    <user>anag_factory</user>
+    <comment>- fix typo in description</comment>
+    <requestid>1381246</requestid>
+  </revision>
 </revisionlist>

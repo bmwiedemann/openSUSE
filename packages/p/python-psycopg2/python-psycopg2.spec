@@ -48,7 +48,7 @@ language.
 psycopg2 is different from the other database adapter because it was
 designed for heavily multi-threaded applications that create and destroy
 lots of cursors and make a conspicuous number of concurrent INSERTs or
-UPDATEs. psycopg2 also provide asychronous operations and support
+UPDATEs. psycopg2 also provides asychronous operations and support
 for coroutine libraries.
 
 %prep
