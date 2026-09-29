@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:22:05 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.0.0
+  * Harden JSON parsing and UTF-8 handling
+  * Emit valid finite floats and round-trip non-finite values
+  * Align JSONTestSuite expectations with parser policy
+  * Keep JSON number validation off the output path
+
+-------------------------------------------------------------------
 Fri Sep 25 21:45:02 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.5.0
