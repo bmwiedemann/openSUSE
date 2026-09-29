@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:05:44 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add Vc-ssp-strong.patch: upstream forces the basic
+  -fstack-protector flag in CMakeLists.txt, which downgrades the
+  distro -fstack-protector-strong default; use -fstack-protector-strong
+  instead.
+
+-------------------------------------------------------------------
 Sun Jun 23 13:24:03 UTC 2024 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 1.4.5:

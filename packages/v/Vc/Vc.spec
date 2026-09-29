@@ -24,6 +24,10 @@ License:        BSD-3-Clause
 Group:          System/Libraries
 URL:            https://github.com/VcDevel/Vc/
 Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Upstream forces the basic -fstack-protector flag, which downgrades the
+# distro -fstack-protector-strong default; use the strong variant instead
+# so the built library keeps the stronger protection.
+Patch1:         Vc-ssp-strong.patch
 BuildRequires:  cmake
 BuildRequires:  doxygen
 BuildRequires:  gcc-c++

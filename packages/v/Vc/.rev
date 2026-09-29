@@ -169,4 +169,12 @@
     <comment></comment>
     <requestid>1183060</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3055470bbe4955f3c41b5bcdec8f9320</srcmd5>
+    <version>1.4.5</version>
+    <time>1790697335</time>
+    <user>anag_factory</user>
+    <comment>Use -fstack-protector-strong in upstream CMakeLists (distro optflags carry strong by default; upstream's basic flag silently downgraded it) (forwarded request 1381400 from scarabeus_iv)</comment>
+    <requestid>1381493</requestid>
+  </revision>
 </revisionlist>

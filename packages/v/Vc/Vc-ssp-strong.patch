@@ -1,0 +1,14 @@
+--- orig/CMakeLists.txt	2024-06-06 08:39:42.000000000 +0000
++++ Vc-1.4.5/CMakeLists.txt
+@@ -109,8 +109,9 @@
+ set(libvc_compile_flags "-DVc_COMPILE_LIB")
+ AddCompilerFlag("-fPIC" CXX_FLAGS libvc_compile_flags)
+ 
+-# -fstack-protector is the default of GCC, but at least Ubuntu changes the default to -fstack-protector-strong, which is crazy
+-AddCompilerFlag("-fstack-protector" CXX_FLAGS libvc_compile_flags)
++# -fstack-protector is the default of GCC, but distros like openSUSE change the default to -fstack-protector-strong;
++# match the distro default so the explicit flag does not downgrade the protection
++AddCompilerFlag("-fstack-protector-strong" CXX_FLAGS libvc_compile_flags)
+ 
+ set(_srcs src/const.cpp)
+ if(Vc_X86)
