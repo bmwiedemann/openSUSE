@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 21 10:47:58 MDT 2026 - carnold@suse.com
+
+- Update to version 1.56.1
+  m4/guestfs-libraries.m4: Don't add -lintl to LIBS
+  podwrapper.pl: Improve error message
+  Updated language translation files
+
+-------------------------------------------------------------------
 Thu Jul  9 10:47:49 MDT 2026 - carnold@suse.com
 
 - Update to version 1.56.0

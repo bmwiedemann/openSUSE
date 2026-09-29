@@ -255,4 +255,12 @@
     <comment>Update guestfs-tools to version 1.56.0</comment>
     <requestid>1365426</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>9909a9adec3b9f43f68f34a3576d0a8d</srcmd5>
+    <version>1.56.1</version>
+    <time>1790696944</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1381207</requestid>
+  </revision>
 </revisionlist>
