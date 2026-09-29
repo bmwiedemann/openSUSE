@@ -19,7 +19,7 @@
 %define executable_name kargo
 
 Name:           kargo-cli
-Version:        1.11.4
+Version:        1.11.5
 Release:        0
 Summary:        CLI for the Kubernetes Application lifecycle orchestration
 License:        Apache-2.0
@@ -29,7 +29,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang(API) >= 1.27
 
 %description
 Kargo is a next-generation continuous delivery and application lifecycle
