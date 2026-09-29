@@ -87,4 +87,12 @@
     <comment>Bootstrap version removal</comment>
     <requestid>1375777</requestid>
   </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>7fba862b154f50ad711fe13963e80036</srcmd5>
+    <version>3.5.0</version>
+    <time>1790696980</time>
+    <user>anag_factory</user>
+    <comment>Sanitize the dependencies</comment>
+    <requestid>1381221</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,6 @@ URL:            https://maven.apache.org/plugins/maven-resources-plugin
 Source0:        https://repo1.maven.org/maven2/org/apache/maven/plugins/%{name}/%{version}/%{name}-%{version}-source-release.zip
 Source1:        %{name}-build.xml
 BuildRequires:  ant
-BuildRequires:  apache-commons-lang3
 BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
@@ -35,11 +34,9 @@ BuildRequires:  maven-filtering >= 3.5.0
 BuildRequires:  maven-lib
 BuildRequires:  maven-plugin-annotations
 BuildRequires:  maven-plugin-plugin
-BuildRequires:  plexus-interpolation
 BuildRequires:  plexus-utils
-BuildRequires:  sisu-plexus
+BuildRequires:  slf4j
 BuildRequires:  unzip
-BuildRequires:  xmvn-connector
 BuildRequires:  xmvn-install
 BuildRequires:  xmvn-minimal
 BuildRequires:  xmvn-resolve
@@ -69,8 +66,6 @@ cp %{SOURCE1} build.xml
 mkdir -p lib
 build-jar-repository -s lib \
     atinject \
-    commons-lang3 \
-    jsoup/jsoup\
     maven-filtering/maven-filtering \
     maven/maven-artifact \
     maven/maven-core \
@@ -78,24 +73,9 @@ build-jar-repository -s lib \
     maven/maven-plugin-api \
     maven/maven-resolver-provider \
     maven-plugin-tools/maven-plugin-annotations \
-    maven-plugin-tools/maven-plugin-plugin \
-    maven-plugin-tools/maven-plugin-tools-annotations \
-    maven-plugin-tools/maven-plugin-tools-api \
-    maven-plugin-tools/maven-plugin-tools-generators \
-    maven-resolver/maven-resolver-api \
-    maven-resolver/maven-resolver-util \
-    objectweb-asm/asm-all \
-    org.eclipse.sisu.plexus \
-    plexus/archiver \
-    plexus-classworlds \
-    plexus/interpolation \
     plexus/utils \
-    plexus/xml \
-    qdox \
-    slf4j/api \
-    velocity-engine/velocity-engine-core \
-    xmvn
-%{ant} -Dtest.skip=true jar javadoc
+    slf4j/api
+ant -Dtest.skip=true jar javadoc
 
 %{mvn_artifact} pom.xml target/%{name}-%{version}.jar
 

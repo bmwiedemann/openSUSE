@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:22:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Minimize the list of declared dependencies
+
+-------------------------------------------------------------------
 Fri Sep  4 11:17:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Do not build the bootstrap plugin, build the non-bootstrap version
