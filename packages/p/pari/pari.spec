@@ -1,7 +1,7 @@
 #
 # spec file for package pari
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,10 +19,10 @@
 # See
 # http://pari.math.u-bordeaux.fr/archives/pari-dev-1211/msg00006.html
 # for details on the SO versioning.
-%global sover 9
+%global sover 10
 %global lname   libpari-gmp-tls%sover
 Name:           pari
-Version:        2.17.4
+Version:        2.19.0
 Release:        0
 Summary:        Computer Algebra System for computations in Number Theory
 License:        GPL-2.0-only

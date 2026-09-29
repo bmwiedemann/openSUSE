@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:05:51 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 2.19.0
+  * `bestappr(-1/7, 6)` returns 0 now instead of -1/6
+  * Fixed `abs(t_QUAD)` not returning an exact answer
+  * Fixed a SIGSEGV caused by expressions `polredbest(x^3-2*x+1)`
+    and `factorpadic(1+O(3)*x^2,3,2)`
+  * Fixed wrong result output by `mflinear(MF in half integer
+    weight, coefs in Q(chi))`
+  * Fixed a potential infinite loop in `ellisdivisible`
+  * Fixed wrong result of `bnrL1(,,0)` over imaginary quadratic
+    fields
+  * Fixed incorrect handling in `matmodhnf` for empty matrices
+  * Fixed a potential failure of the `ellisomat`/`nf` function with
+    CM curves
+  * Fixed empty result produced by `polsubcyclofast(58,7)`
+  * `bnfcertify` and c_2 phase ("be honest") in bnfinit incorrectly
+    skipped part of the checks in degree > 2.
+  * Fixed `trace(Mod(x, Mod(1,2)*(x^2+x+1)))` incorrect result 0
+
+-------------------------------------------------------------------
 Tue Jun 30 22:10:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 2.17.4
