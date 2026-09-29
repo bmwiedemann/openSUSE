@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 26 21:36:27 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 7.2.0:
+  * Deprecate use of cache=None to suppress caching with the
+    @cached decorator.
+  * Add support for Python 3.15.
+  * Minor test improvements.
+  * Minor documentation updates.
+  * Reject negative maxsize in Cache.__init__.
+
+-------------------------------------------------------------------
 Tue Aug  4 21:14:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 7.1.7:
