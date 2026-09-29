@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:02:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.6.0
+  * New features and improvements
+    + Establish an automatic module name
+  * Documentation updates
+    + Describe the artifact in the POM
+  * Maintenance
+    + Rewrite README with usage, status and version guidance
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 24 to 26
+    + Bump release-drafter/release-drafter from 6 to 7.7.0
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 0.9.0.M4
+      to 1.1.0
+    + Bump org.jline:jline-reader from 3.30.6 to 3.30.16
+
+-------------------------------------------------------------------
 Fri May  8 20:02:15 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Removed patch:

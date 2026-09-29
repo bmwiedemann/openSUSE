@@ -63,4 +63,12 @@
     <comment>Build against the jline3's jline-reader as the upstream does</comment>
     <requestid>1352137</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>87cf234bed5cfaf6f80bef475432bfa8</srcmd5>
+    <version>1.6.0</version>
+    <time>1790696978</time>
+    <user>anag_factory</user>
+    <comment>1.6.0</comment>
+    <requestid>1381219</requestid>
+  </revision>
 </revisionlist>

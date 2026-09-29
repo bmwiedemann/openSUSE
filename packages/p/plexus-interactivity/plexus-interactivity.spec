@@ -17,7 +17,7 @@
 
 
 Name:           plexus-interactivity
-Version:        1.5.1
+Version:        1.6.0
 Release:        0
 Summary:        Plexus Interactivity Handler Component
 License:        MIT
