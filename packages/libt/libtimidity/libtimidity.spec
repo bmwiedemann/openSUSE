@@ -1,7 +1,7 @@
 #
 # spec file for package libtimidity
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,11 +18,11 @@
 
 %define sover 2
 Name:           libtimidity
-Version:        0.2.7
+Version:        0.2.8
 Release:        0
 Summary:        MIDI to WAVE converter library
 License:        LGPL-2.1-or-later
-URL:            http://libtimidity.sourceforge.net/
+URL:            https://libtimidity.sourceforge.net/
 Source0:        https://sourceforge.net/projects/%{name}/files/%{name}/%{version}/%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
 BuildRequires:  pkgconfig

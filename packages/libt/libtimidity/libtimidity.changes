@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Sep 25 20:38:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.2.8:
+  * Soundfont support, based on a timidity-0.2i patch by Takashi
+    Iwai dating from 1997.
+  * Soundfont versions >= 3 (e.g.: sf3 with vorbis-compressed
+    samples of MuseScore.org) aren't supported, yet.
+  * New function mid_set_soundfont() added to api in order to set
+    the full path of a soundfont to use. Must be called before
+    mid_init().
+  * If a soundfont is set, config file will not be parsed by
+    mid_init.
+  * Support for float and signed 32-bit integer audio output
+    formats.
+  * Support quoted strings in config file.
+  * Added back optional use a lookup table for sine values
+    (configure with --enable-lookup-sine to enable.)
+
+-------------------------------------------------------------------
 Mon May  9 14:38:54 UTC 2022 - Christophe Giboudeaux <christophe@krop.fr>
 
 - Update to 0.2.7
@@ -36,9 +55,9 @@ Tue Feb 21 22:30:29 UTC 2017 - olaf@aepfle.de
 
 -------------------------------------------------------------------
 Sun May  1 17:35:27 UTC 2011 - toddrme2178@gmail.com
- 
+
 - Added 32bit compatibility libraries
- 
+
 -------------------------------------------------------------------
 Mon Sep  6 19:26:52 UTC 2010 - dimstar@opensuse.org
 
