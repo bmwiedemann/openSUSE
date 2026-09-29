@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:20:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Wed Mar 25 12:15:40 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop gnome-doc-utils-devel BuildRequires: no longer needed

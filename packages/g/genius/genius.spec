@@ -78,7 +78,6 @@ mimics how mathematics is usually written.
 %autosetup -p1
 
 %build
-export CFLAGS="%{optflags} -fstack-protector"
 %configure \
 	--libexec=%{_libexecdir}/genius \
 	--disable-update-mimedb

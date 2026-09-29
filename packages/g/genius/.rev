@@ -349,4 +349,14 @@
     <comment>- Drop gnome-doc-utils-devel BuildRequires: no longer needed</comment>
     <requestid>1342461</requestid>
   </revision>
+  <revision rev="40" vrev="3">
+    <srcmd5>1604810a375f77f6a4ad214359fdee7b</srcmd5>
+    <version>1.0.29</version>
+    <time>1790697214</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).</comment>
+    <requestid>1381385</requestid>
+  </revision>
 </revisionlist>
