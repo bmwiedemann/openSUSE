@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 24 07:16:58 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
+
+- Bound stats lists in rpcbs_getaddr() and rpcbs_rmtcall()
+  (bsc#1282326, CVE-2026-94640)
+  * add 0001-rpcbind-bound-stats-lists-in-rpcbs_getaddr-and-rpcbs.patch
+
+-------------------------------------------------------------------
 Mon Aug 31 12:00:00 UTC 2026 - Thomas Blume <Thomas.Blume@suse.com>
 
 - Fix stack-based buffer overflow in rpcinfo's rpcbdump()

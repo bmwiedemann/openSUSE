@@ -1,0 +1,110 @@
+From 1aa8081440d6fd86729692d0d5604c3ff583656c Mon Sep 17 00:00:00 2001
+From: Scott Mayhew <smayhew@redhat.com>
+Date: Sat, 5 Sep 2026 14:11:49 -0400
+Subject: [PATCH] rpcbind: bound stats lists in rpcbs_getaddr() and
+ rpcbs_rmtcall()
+
+Limit addrinfo and rmtinfo linked lists to 4096 entries by trimming
+the oldest entries from the tail after prepending a new one. This
+prevents unbounded memory growth from a large number of unique
+program/version/netid combinations.
+
+Assisted-by: Claude:claude-opus-4-6
+Signed-off-by: Scott Mayhew <smayhew@redhat.com>
+Signed-off-by: Steve Dickson <steved@redhat.com>
+---
+ src/rpcb_stat.c | 35 ++++++++++++++++++++++++++++++++---
+ 1 file changed, 32 insertions(+), 3 deletions(-)
+
+diff --git a/src/rpcb_stat.c b/src/rpcb_stat.c
+index 2e5226c..0799a47 100644
+--- a/src/rpcb_stat.c
++++ b/src/rpcb_stat.c
+@@ -50,6 +50,8 @@
+ #include <string.h>
+ #include "rpcbind.h"
+ 
++#define MAX_STAT_BUCKETS 4096
++
+ static rpcb_stat_byvers inf;
+ 
+ void
+@@ -104,8 +106,9 @@ void
+ rpcbs_getaddr(rpcvers_t rtype, rpcprog_t prog, rpcvers_t vers, char *netid,
+ 	      char *uaddr)
+ {
+-	rpcbs_addrlist *al;
++	rpcbs_addrlist *al, *cut = NULL, *tmp;
+ 	struct netconfig *nconf;
++	int listlen = 0;
+ 
+ 	if (rtype >= RPCBVERS_STAT)
+ 		return;
+@@ -121,6 +124,9 @@ rpcbs_getaddr(rpcvers_t rtype, rpcprog_t prog, rpcvers_t vers, char *netid,
+ 				al->success++;
+ 			return;
+ 		}
++		listlen++;
++		if (listlen == MAX_STAT_BUCKETS - 1)
++			cut = al;
+ 	}
+ 	nconf = rpcbind_get_conf(netid);
+ 	if (nconf == NULL) {
+@@ -142,14 +148,25 @@ rpcbs_getaddr(rpcvers_t rtype, rpcprog_t prog, rpcvers_t vers, char *netid,
+ 	}
+ 	al->next = inf[rtype].addrinfo;
+ 	inf[rtype].addrinfo = al;
++
++	if (cut) {
++		al = cut->next;
++		cut->next = NULL;
++		while (al) {
++			tmp = al;
++			al = al->next;
++			free(tmp);
++		}
++	}
+ }
+ 
+ void
+ rpcbs_rmtcall(rpcvers_t rtype, rpcproc_t rpcbproc, rpcprog_t prog,
+ 	      rpcvers_t vers, rpcproc_t proc, char *netid, rpcblist_ptr rbl)
+ {
+-	rpcbs_rmtcalllist *rl;
++	rpcbs_rmtcalllist *rl, *cut = NULL, *tmp;
+ 	struct netconfig *nconf;
++	int listlen = 0;
+ 
+ 	if (rtype >= RPCBVERS_STAT)
+ 		return;
+@@ -170,6 +187,9 @@ rpcbs_rmtcall(rpcvers_t rtype, rpcproc_t rpcbproc, rpcprog_t prog,
+ 				rl->indirect++;
+ 			return;
+ 		}
++		listlen++;
++		if (listlen == MAX_STAT_BUCKETS - 1)
++			cut = rl;
+ 	}
+ 	nconf = rpcbind_get_conf(netid);
+ 	if (nconf == NULL) {
+@@ -194,7 +214,16 @@ rpcbs_rmtcall(rpcvers_t rtype, rpcproc_t rpcbproc, rpcprog_t prog,
+ 	rl->indirect = 1;
+ 	rl->next = inf[rtype].rmtinfo;
+ 	inf[rtype].rmtinfo = rl;
+-	return;
++
++	if (cut) {
++		rl = cut->next;
++		cut->next = NULL;
++		while (rl) {
++			tmp = rl;
++			rl = rl->next;
++			free(tmp);
++		}
++	}
+ }
+ 
+ void *
+-- 
+2.55.0
+

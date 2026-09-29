@@ -31,7 +31,8 @@ URL:            http://rpcbind.sourceforge.net
 Source:         https://downloads.sourceforge.net/sourceforge/%{name}/%{name}-%{version}.tar.bz2
 Source2:        sysconfig.rpcbind
 Source5:        rpc-user.conf
-Patch:          0001-rpcinfo-fix-stack-buffer-overflow-in-rpcbdump-short-.patch
+Patch1:         0001-rpcinfo-fix-stack-buffer-overflow-in-rpcbdump-short-.patch
+Patch2:         0001-rpcbind-bound-stats-lists-in-rpcbs_getaddr-and-rpcbs.patch
 BuildRequires:  libtirpc-devel >= 1.0.1
 BuildRequires:  libtool
 BuildRequires:  pkgconfig
