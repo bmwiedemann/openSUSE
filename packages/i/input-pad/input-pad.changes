@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:50:17 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.1.0 (first tagged release since the 1.0.99.20210817
+  snapshot; version scheme moves from a dated pre-release to a
+  plain upstream release tag):
+  * Migrated the build system from intltool to gettext; drop the
+    now unused BuildRequires: intltool
+  * Fixed input_pad_gdk_xkb_set_layout() incorrectly returning
+    NULL instead of FALSE on an early-exit guard
+    (input-pad/geometry-gdk.c)
+- Spec cleanup: convert library BuildRequires to pkgconfig() form,
+  drop Group/BuildRoot/%defattr, switch to %license/%{buildroot}
+
+-------------------------------------------------------------------
 Wed Dec 18 08:40:42 UTC 2024 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.0.99.20210817
