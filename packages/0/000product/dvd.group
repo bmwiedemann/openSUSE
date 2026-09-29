@@ -200,17 +200,19 @@
     <package name="bubblewrap-zsh-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="busybox" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-coreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
+    <package name="busybox-cpio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-diffutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-ed" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-lamp_server -->
     <package name="busybox-gawk" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-sw_management -->
     <package name="busybox-grep" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="busybox-gzip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-man" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="busybox-psmisc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-yast-yast2_server -->
     <package name="busybox-sed" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-static" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="busybox-tar" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="busybox-which" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde_edutainment -->
-    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
+    <package name="busybox-xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="bzip2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="ca-certificates" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="ca-certificates-mozilla" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -253,9 +255,9 @@
     <package name="coreutils" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="coreutils-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="coreutils-systemd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="cpio" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="cpio-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
+    <package name="cpio-mt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="cpp" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cpp16" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="cppcheck" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -701,7 +703,7 @@
     <package name="gwenview" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gwenview-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="gxditview" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="gzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="hack-fonts" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="hdparm" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="heaptrack" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
@@ -785,7 +787,7 @@
     <package name="iscsiuio" supportstatus="unsupported"/> <!-- reason: dvd:iscsiuio -->
     <package name="iso-codes" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="iso_ent" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="iw" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="jack-dbus" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-25-openjdk" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="java-25-openjdk-headless" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -3065,6 +3067,7 @@
     <package name="mpg123-openal" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mpt-firmware" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="mpt-status" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="mt-st" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="mtools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="mugshot" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="multipath-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3601,7 +3604,7 @@
     <package name="python313-pip" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="python313-ply" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python313-policycoreutils" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
-    <package name="python313-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
+    <package name="python313-psutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-ptyprocess" supportstatus="unsupported"/> <!-- reason: dvd:patterns-xfce-xfce -->
     <package name="python313-puremagic" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
     <package name="python313-pyOpenSSL" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -3633,6 +3636,7 @@
     <package name="python313-semanage" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-service_identity" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python313-setools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
+    <package name="python313-setproctitle" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="python313-setuptools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-directory_server -->
     <package name="python313-simplejson" supportstatus="unsupported"/> <!-- reason: dvd:salt-master -->
     <package name="python313-six" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3783,7 +3787,6 @@
     <package name="sbl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="screen" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sdbootutil" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
-    <package name="sdbootutil-bash-completion" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="sdbootutil-dracut-measure-pcr" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="sdbootutil-snapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="sddm-branding-openSUSE" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -3940,9 +3943,9 @@
     <package name="systemsettings6-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="sysuser-shadow" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="sysvinit-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="tar" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="tar" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tar-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="tar-rmt" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="tcl" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="technisat-usb2-firmware" supportstatus="unsupported"/> <!-- reason: dvd:technisat-usb2-firmware -->
     <package name="tecla-keyboard-layout-viewer" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4116,7 +4119,7 @@
     <package name="unrar_wrapper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="unzip" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="unzip-doc" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
-    <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="update-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="update-bootloader" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="upower" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="upower-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
@@ -4374,8 +4377,8 @@
     <package name="xwayland" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="xwaylandvideobridge" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="xxd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
-    <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="xz" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
+    <package name="xz-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="yast2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome_yast -->
     <package name="yast2-add-on" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="yast2-alternatives" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
@@ -4509,7 +4512,7 @@
     <package name="zisofs-tools" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zoo" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->
     <package name="zsh" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="zstd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-log" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="zypper-needs-restarting" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
