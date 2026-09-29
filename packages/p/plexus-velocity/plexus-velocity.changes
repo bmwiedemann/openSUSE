@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:36:32 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to version 2.4.0
+  * New features and improvements
+    + Establish an automatic module name
+  * Maintenance
+    + Rewrite README with usage, status and version guidance
+    + Convert the site document from xdoc to Markdown
+    + JUnit Jupiter best practices
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Update parent POM to 26
+    + Bump release-drafter/release-drafter from 6 to 7.7.0
+    + Bump org.codehaus.plexus:plexus-testing from 1.6.1 to 2.1.0
+    + Bump org.codehaus.plexus:plexus from 24 to 25
+    + Bump org.apache.commons:commons-lang3 from 3.19.0 to 3.20.0
+
+-------------------------------------------------------------------
 Sat Nov  1 21:43:40 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Update to version 2.3.0

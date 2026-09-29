@@ -10,7 +10,7 @@
   
   <property name="project.groupId" value="org.codehaus.plexus"/>
   <property name="project.artifactId" value="plexus-velocity"/>
-  <property name="project.version" value="2.3.0"/>
+  <property name="project.version" value="2.4.0"/>
   
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -132,6 +132,7 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
+        <attribute name="Automatic-Module-Name" value="org.codehaus.plexus.velocity"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>

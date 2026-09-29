@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-velocity
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           plexus-velocity
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Plexus Velocity Component
 License:        Apache-2.0
