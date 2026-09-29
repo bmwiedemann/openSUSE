@@ -27,6 +27,10 @@ Group:          Development/Libraries/C and C++
 URL:            https://github.com/intel/gmmlib
 Source0:        %{url}/archive/refs/tags/intel-%{name}-%{version}.tar.gz
 Source1:        baselibs.conf
+# Upstream sets the basic -fstack-protector in Source/GmmLib/Linux.cmake
+# (both the aarch64 and x86 branches), which downgrades the distro
+# -fstack-protector-strong default; use the strong variant instead.
+Patch1:         gmmlib-ssp-strong.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
@@ -63,7 +67,7 @@ OpenCL and the Intel Media Driver for VAAPI.
 This package provides development files.
 
 %prep
-%autosetup -n %{name}-intel-%{name}-%{version}
+%autosetup -p1 -n %{name}-intel-%{name}-%{version}
 
 %build
 chmod a-x LICENSE.md

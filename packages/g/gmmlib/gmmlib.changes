@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:06:38 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add gmmlib-ssp-strong.patch: upstream sets the basic
+  -fstack-protector in Source/GmmLib/Linux.cmake (both the aarch64 and
+  x86 branches), which downgrades the distro -fstack-protector-strong
+  default; use -fstack-protector-strong instead. Pass -p1 to %autosetup
+  so the patch strip level is explicit.
+
+-------------------------------------------------------------------
 Mon Apr 20 20:23:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 22.10.0:

@@ -1,0 +1,20 @@
+--- a/Source/GmmLib/Linux.cmake
++++ b/Source/GmmLib/Linux.cmake
+@@ -47,7 +47,7 @@
+     # Common defines
+     -DUSE_NEON
+     # Other common flags
+-    -fstack-protector
++    -fstack-protector-strong
+     -fdata-sections
+     -ffunction-sections
+     -fmessage-length=0
+@@ -97,7 +97,7 @@
+     -DUSE_SSE3
+     -DUSE_SSSE3
+     # Other common flags
+-    -fstack-protector
++    -fstack-protector-strong
+     -fdata-sections
+     -ffunction-sections
+     -fmessage-length=0
