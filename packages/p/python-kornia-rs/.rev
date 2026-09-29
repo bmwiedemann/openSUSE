@@ -55,4 +55,12 @@ Bugzilla report references the package.
 </comment>
     <requestid>1380837</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>14bc78738fc4bc381f142dff12928f87</srcmd5>
+    <version>0.2.0</version>
+    <time>1790696940</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.0. Upstream re-released 0.1.15's code as 0.2.0 because 0.1.15 shipped breaking Rust API changes in a patch release and was yanked from crates.io; the Python surface is unchanged from 0.1.15 apart from kornia_rs.__version__. Details in .changes.</comment>
+    <requestid>1381196</requestid>
+  </revision>
 </revisionlist>

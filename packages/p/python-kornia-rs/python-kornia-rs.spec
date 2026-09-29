@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-kornia-rs
-Version:        0.1.15
+Version:        0.2.0
 Release:        0
 Summary:        Low-level computer vision library implemented in Rust
 # Legal-Review-Notice: cargo tree --offline -p kornia-py -e normal over
@@ -30,7 +30,7 @@ URL:            https://github.com/kornia/kornia-rs
 # upstream stopped shipping a PyPI sdist in 0.1.15 (--sdist dropped from
 # python_release.yml: "not self-contained (bindgen/vendored deps)"), so build
 # from the release tag instead.
-Source0:        https://github.com/kornia/kornia-rs/archive/refs/tags/v0.1.15.tar.gz
+Source0:        https://github.com/kornia/kornia-rs/archive/refs/tags/v0.2.0.tar.gz
 Source1:        registry.tar.zst
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin >= 1.9}

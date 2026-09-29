@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:28:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0. Upstream re-released 0.1.15's code under the
+  version it should have had: 0.1.15 shipped breaking Rust API
+  changes in a patch release, was yanked from crates.io and broke
+  every "0.1" consumer on its next cargo update. The Python
+  surface is unchanged from 0.1.15 -- only kornia_rs.__version__
+  moves.
+  * The breaking changes are Rust and C++ only, unreachable from
+    Python: Image and Tensor lost their compile-time allocator
+    type parameter, get_unchecked became unsafe, permute_axes,
+    as_contiguous, TensorStorage::layout and the GStreamer
+    pipeline helpers return Result, f32 resize_native samples on
+    the half-pixel grid and f32 remap zero-fills out-of-range
+    samples, StereoRectifier gained left_maps()/right_maps() and
+    ReconstructionConfig split out of CalibConfig.
+  * C++: KORNIA_VERSION_PATCH is now always an integer; the
+    pre-release tag moved to KORNIA_VERSION_PRERELEASE next to a
+    KORNIA_VERSION_IS_PRERELEASE 0/1 flag.
+  * No CVE ids assigned and no new or raised build requirements
+    (rust >= 1.89, maturin >= 1.9).
+
+-------------------------------------------------------------------
 Sat Sep 26 18:11:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.1.15 (upstream assigned no CVE ids and shipped no
