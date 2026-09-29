@@ -1,0 +1,1626 @@
+From 689b3a78dc0efaf9a1eb4946212c129ae502d6de Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
+Date: Mon, 21 Sep 2026 09:47:16 +0200
+Subject: [PATCH 3/3] Integrate modello-ant-task to modello source tree
+
+---
+ modello-ant-task/README.md                    | 188 ++++
+ modello-ant-task/pom.xml                      | 156 ++++
+ .../org/codehaus/modello/ant/ModelloTask.java | 335 +++++++
+ .../org/codehaus/modello/ant/antlib.xml       |  20 +
+ .../codehaus/modello/ant/ModelloTaskTest.java | 863 ++++++++++++++++++
+ pom.xml                                       |   1 +
+ 6 files changed, 1563 insertions(+)
+ create mode 100644 modello-ant-task/README.md
+ create mode 100644 modello-ant-task/pom.xml
+ create mode 100644 modello-ant-task/src/main/java/org/codehaus/modello/ant/ModelloTask.java
+ create mode 100644 modello-ant-task/src/main/resources/org/codehaus/modello/ant/antlib.xml
+ create mode 100644 modello-ant-task/src/test/java/org/codehaus/modello/ant/ModelloTaskTest.java
+
+diff --git a/modello-ant-task/README.md b/modello-ant-task/README.md
+new file mode 100644
+index 000000000..de289eddd
+--- /dev/null
++++ b/modello-ant-task/README.md
+@@ -0,0 +1,188 @@
++# Modello Ant Task
++
++The `modello-ant-task` is an Apache Ant task that integrates [Codehaus Modello](https://codehaus-plexus.github.io/modello/) into Ant build workflows. It allows you to generate Java classes, XML serializers/deserializers, XML Schemas (XSD), documentation, and other outputs from Modello model description (`.mdo`) files.
++
++---
++
++## Installation & Definition
++
++To use the task in your Ant build file, define it using either the individual task definition or the preferred standard `antlib` resource.
++
++### Option 1: Using Antlib (Recommended)
++
++```xml
++<typedef resource="org/codehaus/modello/ant/antlib.xml"
++         classpathref="modello.classpath" />
++```
++
++### Option 2: Using Taskdef
++
++```xml
++<taskdef name="modello"
++         classname="org.codehaus.modello.ant.ModelloTask"
++         classpathref="modello.classpath" />
++```
++
++*Note: `modello.classpath` must contain the `modello-ant-task` JAR, `modello-core`, and any runtime Modello generator plugins you wish to use.*
++
++---
++
++## Task Reference
++
++The `<modello>` task supports several attributes and nested elements to configure code generation.
++
++### Attributes
++
++| Attribute                      | Type      | Description                                                                           | Required |  Default  |
++|:-------------------------------|:----------|:--------------------------------------------------------------------------------------|:--------:|:---------:|
++| **`version`**                  | `String`  | The model version to generate (e.g., `1.0.0`).                                        | **Yes**  |     —     |
++| **`outputDirectory`**          | `File`    | The directory where the generated files will be written.                              | **Yes**  |     —     |
++| **`javaSource`**               | `String`  | Target Java version for generated source code.                                        |    No    |    `8`    |
++| **`encoding`**                 | `String`  | Character encoding for generated files.                                               |    No    | `"utf-8"` |
++| **`packageWithVersion`**       | `boolean` | Whether to append the version to the package name (`"true"` / `"false"`).             |    No    |  `false`  |
++| **`packagedVersions`**         | `String`  | Comma-separated list of versions to generate backward compatibility for.              |    No    |     —     |
++| **`domAsXpp3`**                | `boolean` | Whether to generate DOM content as Xpp3Dom (`"true"`) or W3C DOM Element (`"false"`). |    No    |  `true`   |
++| **`licenseFile`**              | `File`    | Path to file containing license header text to prepend to generated files.            |    No    |     —     |
++| **`licenseText`**              | `String`  | License header text to prepend to generated files.                                    |    No    |     —     |
++| **`extendedClassnameSuffix`**  | `String`  | Suffix for extended class names (e.g., `Ex`).                                         |    No    |     —     |
++| **`xsdFileName`**              | `String`  | Custom output file name for generated XSD schema (`xsd` goal).                        |    No    |     —     |
++| **`enforceMandatoryElements`** | `boolean` | Whether to enforce mandatory elements in XSD (`"true"` / `"false"`).                  |    No    |  `false`  |
++| **`jsonSchemaFileName`**       | `String`  | Custom output file name for generated JSON Schema (`jsonschema` goal).                |    No    |     —     |
++| **`firstVersion`**             | `String`  | Earliest version to document when generating documentation (`xdoc` goal).             |    No    |     —     |
++| **`xdocFileName`**             | `String`  | Custom output file name for generated XDoc documentation (`xdoc` goal).               |    No    |     —     |
++| **`velocityBasedir`**          | `File`    | Base directory of template files (required only for Velocity-based goals).            |    No    |     —     |
++
++### Nested Elements
++
++#### `<model>`
++
++Specifies the Modello model description file to read. At least one `<model>` element is required.
++* **`file`** (`File`, Required): Path to the `.mdo` model file.
++
++```xml
++<model file="src/main/mdo/maven.mdo" />
++```
++
++#### `<goal>`
++
++Specifies the Modello generator target to run. At least one `<goal>` element is required.
++* **`name`** (`String`, Required): The generator plugin name (e.g., `java`, `xdoc`, `xsd`, `xpp3-reader`, `xpp3-writer`, `velocity`).
++
++```xml
++<goal name="java" />
++```
++
++#### `<packagedVersion>`
++
++Specifies an additional model version to package. Can be specified multiple times.
++* **`name`** (`String`, Required): The version string (e.g., `1.0.0`).
++
++```xml
++<packagedVersion name="1.0.0" />
++<packagedVersion name="1.1.0" />
++```
++
++#### `<license>`
++
++Specifies license header content to prepend to generated sources.
++* **`file`** (`File`, Optional): File containing license header text.
++* **`text`** (`String`, Optional): Direct license text string (can also be passed as nested text).
++
++```xml
++<license file="${basedir}/LICENSE.txt" />
++```
++
++#### `<pluralException>`
++
++Specifies an irregular plural mapping used during field naming generation.
++* **`name`** (`String`, Required): The plural form (e.g., `aliases`).
++* **`value`** (`String`, Required): The singular form (e.g., `alias`).
++
++```xml
++<pluralException name="aliases" value="alias" />
++```
++
++#### `<template>`
++
++Specifies a custom template file when running the Velocity-based generator (`velocity` goal).
++* **`name`** (`String`, Required): Name or path of the template file relative to `velocityBasedir`.
++
++```xml
++<template name="model.vm" />
++```
++
++#### `<param>`
++
++Specifies custom velocity parameters passed to the generator context.
++* **`name`** (`String`, Required): Parameter name.
++* **`value`** (`String`, Required): Parameter value.
++
++```xml
++<param name="packageModelV4" value="org.example.model" />
++```
++
++#### `<property>`
++
++Passes arbitrary Modello parameters directly (equivalent to `-Dkey=value` on the CLI).
++* **`name`** (`String`, Required): Parameter key.
++* **`value`** (`String`, Required): Parameter value.
++
++```xml
++<property name="modello.package.with.version" value="true" />
++```
++
++---
++
++## Examples
++
++### Example 1: Standard Code Generation (Java & XSD)
++
++This example generates Java sources and XML Schema definitions (XSD) from a `model.mdo` file into the target folder `target/generated-sources`.
++
++```xml
++<target name="generate-model">
++    <mkdir dir="${basedir}/target/generated-sources" />
++
++    <modello version="1.0.0"
++             outputDirectory="${basedir}/target/generated-sources"
++             javaSource="11">
++
++        <!-- Path to the Modello model -->
++        <model file="src/main/mdo/model.mdo" />
++
++        <!-- Goals to execute -->
++        <goal name="java" />
++        <goal name="xsd" />
++        <goal name="xpp3-reader" />
++        <goal name="xpp3-writer" />
++    </modello>
++</target>
++```
++
++### Example 2: Velocity-Based Generation
++
++This example demonstrates how to use the Velocity generator plugin to create files using a custom `.vm` template.
++
++```xml
++<target name="generate-velocity">
++    <mkdir dir="${basedir}/target/generated-templates" />
++
++    <modello version="2.0.0"
++             outputDirectory="${basedir}/target/generated-templates"
++             velocityBasedir="${basedir}/src/main/templates">
++
++        <model file="src/main/mdo/model.mdo" />
++
++        <!-- Execute Velocity generator -->
++        <goal name="velocity" />
++
++        <!-- Template specification -->
++        <template name="custom-report.vm" />
++
++        <!-- Parameters passed to the template context -->
++        <param name="isMavenModel" value="true" />
++        <param name="packageModel" value="org.example.api" />
++    </modello>
++</target>
++```
++
+diff --git a/modello-ant-task/pom.xml b/modello-ant-task/pom.xml
+new file mode 100644
+index 000000000..84958b64f
+--- /dev/null
++++ b/modello-ant-task/pom.xml
+@@ -0,0 +1,156 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<!--
++  Copyright 2026 Fridrich Strba
++
++  Licensed under the Apache License, Version 2.0 (the "License");
++  you may not use this file except in compliance with the License.
++  You may obtain a copy of the License at
++
++      http://www.apache.org/licenses/LICENSE-2.0
++
++  Unless required by applicable law or agreed to in writing, software
++  distributed under the License is distributed on an "AS IS" BASIS,
++  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  See the License for the specific language governing permissions and
++  limitations under the License.
++-->
++<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
++  <modelVersion>4.0.0</modelVersion>
++
++  <parent>
++    <groupId>org.codehaus.modello</groupId>
++    <artifactId>modello</artifactId>
++    <version>2.8.2-SNAPSHOT</version>
++  </parent>
++
++  <artifactId>modello-ant-task</artifactId>
++  <packaging>jar</packaging>
++
++  <name>Modello Ant Task</name>
++  <description>Modello Ant Task enables the use of Modello in Apache Ant builds.</description>
++
++  <properties>
++    <ant.version>1.10.18</ant.version>
++  </properties>
++
++  <dependencies>
++    <dependency>
++      <groupId>org.apache.ant</groupId>
++      <artifactId>ant</artifactId>
++      <version>${ant.version}</version>
++      <scope>provided</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-core</artifactId>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.plexus</groupId>
++      <artifactId>plexus-xml</artifactId>
++    </dependency>
++
++    <!-- plugins, sorted alphabetically -->
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-converters</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-dom4j</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-jackson</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-java</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-jdom</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-jsonschema</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-sax</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-snakeyaml</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-stax</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-xdoc</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-xpp3</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-xsd</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-xml</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.codehaus.modello</groupId>
++      <artifactId>modello-plugin-velocity</artifactId>
++      <scope>runtime</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter-api</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.junit.jupiter</groupId>
++      <artifactId>junit-jupiter-engine</artifactId>
++      <scope>test</scope>
++    </dependency>
++    <dependency>
++      <groupId>org.slf4j</groupId>
++      <artifactId>slf4j-simple</artifactId>
++      <scope>test</scope>
++    </dependency>
++  </dependencies>
++
++  <build>
++    <plugins>
++      <plugin>
++        <groupId>org.apache.maven.plugins</groupId>
++        <artifactId>maven-jar-plugin</artifactId>
++        <configuration>
++          <archive>
++            <manifestEntries>
++              <Automatic-Module-Name>org.codehaus.modello.ant.task</Automatic-Module-Name>
++            </manifestEntries>
++          </archive>
++        </configuration>
++      </plugin>
++    </plugins>
++  </build>
++
++</project>
+diff --git a/modello-ant-task/src/main/java/org/codehaus/modello/ant/ModelloTask.java b/modello-ant-task/src/main/java/org/codehaus/modello/ant/ModelloTask.java
+new file mode 100644
+index 000000000..070434299
+--- /dev/null
++++ b/modello-ant-task/src/main/java/org/codehaus/modello/ant/ModelloTask.java
+@@ -0,0 +1,335 @@
++/*
++ * Copyright 2026 Fridrich Strba
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.codehaus.modello.ant;
++
++import java.io.File;
++import java.io.IOException;
++import java.nio.file.Files;
++import java.util.ArrayList;
++import java.util.Arrays;
++import java.util.HashMap;
++import java.util.List;
++import java.util.Map;
++
++import org.apache.tools.ant.BuildException;
++import org.apache.tools.ant.Task;
++import org.codehaus.modello.Modello;
++import org.codehaus.modello.ModelloParameterConstants;
++import org.codehaus.plexus.util.xml.XmlStreamReader;
++
++public class ModelloTask extends Task {
++    private String version;
++    private File velocityBasedir;
++    private File outputDirectory;
++    private boolean packageWithVersion = false;
++    private String javaSource = "8";
++    private String encoding = "utf-8";
++    private boolean domAsXpp3 = true;
++    private File licenseFile;
++    private String licenseText;
++    private String extendedClassnameSuffix;
++    private String xsdFileName;
++    private Boolean enforceMandatoryElements;
++    private String jsonSchemaFileName;
++    private String firstVersion;
++    private String xdocFileName;
++
++    private List<File> models = new ArrayList<>();
++    private List<String> templates = new ArrayList<>();
++    private List<String> goals = new ArrayList<>();
++    private List<String> packagedVersions = new ArrayList<>();
++    private Map<String, String> velocityParams = new HashMap<>();
++    private Map<String, String> pluralExceptions = new HashMap<>();
++    private Map<String, String> properties = new HashMap<>();
++
++    // Attribute Setters
++    public void setVersion(String version) {
++        this.version = version;
++    }
++
++    public void setVelocityBasedir(File velocityBasedir) {
++        this.velocityBasedir = velocityBasedir;
++    }
++
++    public void setOutputDirectory(File outputDirectory) {
++        this.outputDirectory = outputDirectory;
++    }
++
++    public void setPackageWithVersion(boolean packageWithVersion) {
++        this.packageWithVersion = packageWithVersion;
++    }
++
++    public void setPackagedVersions(String packagedVersions) {
++        if (packagedVersions != null) {
++            for (String v : packagedVersions.split(",")) {
++                String trimmed = v.trim();
++                if (!trimmed.isEmpty()) {
++                    this.packagedVersions.add(trimmed);
++                }
++            }
++        }
++    }
++
++    public void setJavaSource(String javaSource) {
++        this.javaSource = javaSource;
++    }
++
++    public void setEncoding(String encoding) {
++        this.encoding = encoding;
++    }
++
++    public void setDomAsXpp3(boolean domAsXpp3) {
++        this.domAsXpp3 = domAsXpp3;
++    }
++
++    public void setLicenseFile(File licenseFile) {
++        this.licenseFile = licenseFile;
++    }
++
++    public void setLicenseText(String licenseText) {
++        this.licenseText = licenseText;
++    }
++
++    public void setExtendedClassnameSuffix(String extendedClassnameSuffix) {
++        this.extendedClassnameSuffix = extendedClassnameSuffix;
++    }
++
++    public void setXsdFileName(String xsdFileName) {
++        this.xsdFileName = xsdFileName;
++    }
++
++    public void setEnforceMandatoryElements(boolean enforceMandatoryElements) {
++        this.enforceMandatoryElements = enforceMandatoryElements;
++    }
++
++    public void setJsonSchemaFileName(String jsonSchemaFileName) {
++        this.jsonSchemaFileName = jsonSchemaFileName;
++    }
++
++    public void setFirstVersion(String firstVersion) {
++        this.firstVersion = firstVersion;
++    }
++
++    public void setXdocFileName(String xdocFileName) {
++        this.xdocFileName = xdocFileName;
++    }
++
++    // Nested Elements Handlers
++    public void addConfiguredModel(ModelElement m) {
++        if (m.getFile() == null) {
++            throw new BuildException("The 'file' attribute is required for <model>.");
++        }
++        this.models.add(m.getFile());
++    }
++
++    public void addConfiguredTemplate(NameElement t) {
++        this.templates.add(requireName(t.getName(), "template"));
++    }
++
++    public void addConfiguredGoal(NameElement g) {
++        this.goals.add(requireName(g.getName(), "goal"));
++    }
++
++    public void addConfiguredPackagedVersion(NameElement v) {
++        this.packagedVersions.add(requireName(v.getName(), "packagedVersion"));
++    }
++
++    public void addConfiguredParam(ParamElement p) {
++        this.velocityParams.put(requireName(p.getName(), "param"), p.getValue());
++    }
++
++    public void addConfiguredPluralException(ParamElement p) {
++        this.pluralExceptions.put(requireName(p.getName(), "pluralException"), p.getValue());
++    }
++
++    public void addConfiguredProperty(ParamElement p) {
++        this.properties.put(requireName(p.getName(), "property"), p.getValue());
++    }
++
++    public void addConfiguredLicense(LicenseElement l) {
++        if (l.getFile() != null) {
++            this.licenseFile = l.getFile();
++        }
++        if (l.getText() != null) {
++            this.licenseText = l.getText();
++        }
++        if (l.getFile() == null && l.getText() == null) {
++            throw new BuildException("Either 'file' or 'text' attribute is required for <license>.");
++        }
++    }
++
++    private static String requireName(String name, String elementTag) {
++        if (name == null || name.trim().isEmpty()) {
++            throw new BuildException("The 'name' attribute is required for <" + elementTag + ">.");
++        }
++        return name.trim();
++    }
++
++    @Override
++    public void execute() throws BuildException {
++        if (version == null || outputDirectory == null || models.isEmpty() || goals.isEmpty()) {
++            throw new BuildException("version, outputDirectory, <model>, and <goal> are required.");
++        }
++
++        if (!outputDirectory.mkdirs() && !outputDirectory.isDirectory()) {
++            throw new BuildException("Failed to create output directory: " + outputDirectory.getAbsolutePath());
++        }
++
++        try {
++            Modello modello = new Modello();
++            Map<String, Object> parameters = new HashMap<>();
++
++            parameters.put(ModelloParameterConstants.OUTPUT_DIRECTORY, outputDirectory.getAbsolutePath());
++            parameters.put(ModelloParameterConstants.VERSION, version);
++            parameters.put(ModelloParameterConstants.PACKAGE_WITH_VERSION, Boolean.toString(packageWithVersion));
++            parameters.put(ModelloParameterConstants.OUTPUT_JAVA_SOURCE, javaSource);
++            parameters.put(ModelloParameterConstants.ENCODING, encoding);
++            parameters.put(ModelloParameterConstants.DOM_AS_XPP3, Boolean.toString(domAsXpp3));
++            if (!pluralExceptions.isEmpty()) {
++                parameters.put(ModelloParameterConstants.PLURAL_EXCEPTIONS, pluralExceptions);
++            }
++            if (!packagedVersions.isEmpty()) {
++                parameters.put(ModelloParameterConstants.ALL_VERSIONS, String.join(",", packagedVersions));
++            }
++            if (licenseText != null) {
++                parameters.put(ModelloParameterConstants.LICENSE_TEXT, Arrays.asList(licenseText.split("\\r?\\n")));
++            } else if (licenseFile != null) {
++                if (!licenseFile.exists()) {
++                    throw new BuildException("License file not found: " + licenseFile.getAbsolutePath());
++                }
++                try {
++                    parameters.put(ModelloParameterConstants.LICENSE_TEXT, Files.readAllLines(licenseFile.toPath()));
++                } catch (IOException e) {
++                    throw new BuildException("Failed to read license file: " + licenseFile.getAbsolutePath(), e);
++                }
++            }
++            if (extendedClassnameSuffix != null) {
++                parameters.put(ModelloParameterConstants.EXTENDED_CLASSNAME_SUFFIX, extendedClassnameSuffix);
++            }
++            if (xsdFileName != null) {
++                parameters.put(ModelloParameterConstants.OUTPUT_XSD_FILE_NAME, xsdFileName);
++            }
++            if (enforceMandatoryElements != null) {
++                parameters.put(
++                        ModelloParameterConstants.XSD_ENFORCE_MANDATORY_ELEMENTS,
++                        Boolean.toString(enforceMandatoryElements));
++            }
++            if (jsonSchemaFileName != null) {
++                parameters.put(ModelloParameterConstants.OUTPUT_JSONSCHEMA_FILE_NAME, jsonSchemaFileName);
++            }
++            if (firstVersion != null) {
++                parameters.put(ModelloParameterConstants.FIRST_VERSION, firstVersion);
++            }
++            if (xdocFileName != null) {
++                parameters.put(ModelloParameterConstants.OUTPUT_XDOC_FILE_NAME, xdocFileName);
++            }
++
++            // Arbitrary properties
++            parameters.putAll(properties);
++
++            // Attach Velocity configs if provided
++            if (velocityBasedir != null) {
++                parameters.put("modello.velocity.basedir", velocityBasedir.getAbsolutePath());
++                parameters.put("modello.velocity.templates", String.join(",", templates));
++                parameters.put("modello.velocity.parameters", velocityParams);
++            }
++
++            for (File modelFile : models) {
++                log("Generating sources for " + modelFile.getName());
++                for (String goal : goals) {
++                    try (XmlStreamReader reader = new XmlStreamReader(modelFile)) {
++                        modello.generate(reader, goal, parameters);
++                    }
++                }
++            }
++        } catch (BuildException e) {
++            throw e;
++        } catch (Exception e) {
++            throw new BuildException("Modello generation failed: " + e.getMessage(), e);
++        }
++    }
++
++    // Helper classes for Ant's nested XML elements
++    public static class ModelElement {
++        private File file;
++
++        public void setFile(File file) {
++            this.file = file;
++        }
++
++        public File getFile() {
++            return file;
++        }
++    }
++
++    public static class NameElement {
++        private String name;
++
++        public void setName(String name) {
++            this.name = name;
++        }
++
++        public String getName() {
++            return name;
++        }
++    }
++
++    public static class ParamElement {
++        private String name;
++        private String value;
++
++        public void setName(String name) {
++            this.name = name;
++        }
++
++        public void setValue(String value) {
++            this.value = value;
++        }
++
++        public String getName() {
++            return name;
++        }
++
++        public String getValue() {
++            return value;
++        }
++    }
++
++    public static class LicenseElement {
++        private File file;
++        private String text;
++
++        public void setFile(File file) {
++            this.file = file;
++        }
++
++        public File getFile() {
++            return file;
++        }
++
++        public void setText(String text) {
++            this.text = text;
++        }
++
++        public String getText() {
++            return text;
++        }
++
++        public void addText(String text) {
++            this.text = text;
++        }
++    }
++}
+diff --git a/modello-ant-task/src/main/resources/org/codehaus/modello/ant/antlib.xml b/modello-ant-task/src/main/resources/org/codehaus/modello/ant/antlib.xml
+new file mode 100644
+index 000000000..8f4ee640a
+--- /dev/null
++++ b/modello-ant-task/src/main/resources/org/codehaus/modello/ant/antlib.xml
+@@ -0,0 +1,20 @@
++<?xml version="1.0"?>
++<!--
++  Copyright 2026 Fridrich Strba
++
++  Licensed under the Apache License, Version 2.0 (the "License");
++  you may not use this file except in compliance with the License.
++  You may obtain a copy of the License at
++
++      http://www.apache.org/licenses/LICENSE-2.0
++
++  Unless required by applicable law or agreed to in writing, software
++  distributed under the License is distributed on an "AS IS" BASIS,
++  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++  See the License for the specific language governing permissions and
++  limitations under the License.
++-->
++<antlib>
++  <taskdef name="modello" classname="org.codehaus.modello.ant.ModelloTask"/>
++  <!-- You can define multiple tasks or macros here -->
++</antlib>
+diff --git a/modello-ant-task/src/test/java/org/codehaus/modello/ant/ModelloTaskTest.java b/modello-ant-task/src/test/java/org/codehaus/modello/ant/ModelloTaskTest.java
+new file mode 100644
+index 000000000..86a9853cc
+--- /dev/null
++++ b/modello-ant-task/src/test/java/org/codehaus/modello/ant/ModelloTaskTest.java
+@@ -0,0 +1,863 @@
++/*
++ * Copyright 2026 Fridrich Strba
++ *
++ * Licensed under the Apache License, Version 2.0 (the "License");
++ * you may not use this file except in compliance with the License.
++ * You may obtain a copy of the License at
++ *
++ *     http://www.apache.org/licenses/LICENSE-2.0
++ *
++ * Unless required by applicable law or agreed to in writing, software
++ * distributed under the License is distributed on an "AS IS" BASIS,
++ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++ * See the License for the specific language governing permissions and
++ * limitations under the License.
++ */
++package org.codehaus.modello.ant;
++
++import java.io.File;
++import java.io.FileWriter;
++import java.io.IOException;
++import java.nio.file.Files;
++import java.nio.file.Path;
++
++import org.apache.tools.ant.BuildException;
++import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.io.TempDir;
++
++import static org.junit.jupiter.api.Assertions.*;
++
++public class ModelloTaskTest {
++
++    @TempDir
++    Path tempDir;
++
++    @Test
++    public void testMissingAllRequired() {
++        ModelloTask task = new ModelloTask();
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("version, outputDirectory, <model>, and <goal> are required.", exception.getMessage());
++    }
++
++    @Test
++    public void testMissingVersion() {
++        ModelloTask task = new ModelloTask();
++        task.setOutputDirectory(tempDir.toFile());
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(new File("dummy.mdo"));
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("version, outputDirectory, <model>, and <goal> are required.", exception.getMessage());
++    }
++
++    @Test
++    public void testMissingOutputDirectory() {
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(new File("dummy.mdo"));
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("version, outputDirectory, <model>, and <goal> are required.", exception.getMessage());
++    }
++
++    @Test
++    public void testMissingModel() {
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(tempDir.toFile());
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("version, outputDirectory, <model>, and <goal> are required.", exception.getMessage());
++    }
++
++    @Test
++    public void testMissingGoal() {
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(tempDir.toFile());
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(new File("dummy.mdo"));
++        task.addConfiguredModel(modelElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("version, outputDirectory, <model>, and <goal> are required.", exception.getMessage());
++    }
++
++    @Test
++    public void testSuccessfulGeneration() throws IOException {
++        // Write a minimal Modello model file
++        File modelFile = tempDir.resolve("test.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\" "
++                    + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
++                    + "xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 "
++                    + "https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-model</id>\n"
++                    + "  <name>TestModel</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.test</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>TestClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "      <fields>\n"
++                    + "        <field>\n"
++                    + "          <name>id</name>\n"
++                    + "          <version>1.0.0+</version>\n"
++                    + "          <type>String</type>\n"
++                    + "        </field>\n"
++                    + "      </fields>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(tempDir.toFile());
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(modelFile);
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        // Execute task
++        task.execute();
++
++        // Verify that the generated file exists
++        Path generatedJavaFile = tempDir.resolve("com/example/test/TestClass.java");
++        assertTrue(Files.exists(generatedJavaFile), "Generated Java file should exist: " + generatedJavaFile);
++    }
++
++    @Test
++    public void testNullModelFile() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        BuildException exception = assertThrows(BuildException.class, () -> task.addConfiguredModel(modelElement));
++        assertEquals("The 'file' attribute is required for <model>.", exception.getMessage());
++    }
++
++    @Test
++    public void testNullGoalName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        BuildException exception = assertThrows(BuildException.class, () -> task.addConfiguredGoal(goalElement));
++        assertEquals("The 'name' attribute is required for <goal>.", exception.getMessage());
++    }
++
++    @Test
++    public void testEmptyGoalName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("  ");
++        BuildException exception = assertThrows(BuildException.class, () -> task.addConfiguredGoal(goalElement));
++        assertEquals("The 'name' attribute is required for <goal>.", exception.getMessage());
++    }
++
++    @Test
++    public void testNullTemplateName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.NameElement templateElement = new ModelloTask.NameElement();
++        BuildException exception =
++                assertThrows(BuildException.class, () -> task.addConfiguredTemplate(templateElement));
++        assertEquals("The 'name' attribute is required for <template>.", exception.getMessage());
++    }
++
++    @Test
++    public void testNullParamName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ParamElement paramElement = new ModelloTask.ParamElement();
++        BuildException exception = assertThrows(BuildException.class, () -> task.addConfiguredParam(paramElement));
++        assertEquals("The 'name' attribute is required for <param>.", exception.getMessage());
++    }
++
++    @Test
++    public void testEmptyTemplateName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.NameElement templateElement = new ModelloTask.NameElement();
++        templateElement.setName("  ");
++        BuildException exception =
++                assertThrows(BuildException.class, () -> task.addConfiguredTemplate(templateElement));
++        assertEquals("The 'name' attribute is required for <template>.", exception.getMessage());
++    }
++
++    @Test
++    public void testEmptyParamName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ParamElement paramElement = new ModelloTask.ParamElement();
++        paramElement.setName("  ");
++        BuildException exception = assertThrows(BuildException.class, () -> task.addConfiguredParam(paramElement));
++        assertEquals("The 'name' attribute is required for <param>.", exception.getMessage());
++    }
++
++    @Test
++    public void testNullPluralExceptionName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ParamElement paramElement = new ModelloTask.ParamElement();
++        BuildException exception =
++                assertThrows(BuildException.class, () -> task.addConfiguredPluralException(paramElement));
++        assertEquals("The 'name' attribute is required for <pluralException>.", exception.getMessage());
++    }
++
++    @Test
++    public void testEmptyPluralExceptionName() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ParamElement paramElement = new ModelloTask.ParamElement();
++        paramElement.setName("  ");
++        BuildException exception =
++                assertThrows(BuildException.class, () -> task.addConfiguredPluralException(paramElement));
++        assertEquals("The 'name' attribute is required for <pluralException>.", exception.getMessage());
++    }
++
++    @Test
++    public void testOutputDirectoryCreationFailure() throws IOException {
++        File blockingFile = tempDir.resolve("blocking-file").toFile();
++        assertTrue(blockingFile.createNewFile());
++        File outputDirectory = new File(blockingFile, "sub");
++
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outputDirectory);
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(new File("dummy.mdo"));
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertEquals("Failed to create output directory: " + outputDirectory.getAbsolutePath(), exception.getMessage());
++    }
++
++    @Test
++    public void testInvalidModelFileThrowsBuildException() throws IOException {
++        File modelFile = tempDir.resolve("invalid.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("not a valid model");
++        }
++
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(tempDir.resolve("invalid-out").toFile());
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(modelFile);
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        BuildException exception = assertThrows(BuildException.class, task::execute);
++        assertTrue(exception.getMessage().startsWith("Modello generation failed: "));
++    }
++
++    @Test
++    public void testVelocityGoal() throws IOException {
++        File modelFile = tempDir.resolve("test-velocity.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\" "
++                    + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
++                    + "xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 "
++                    + "https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-velocity</id>\n"
++                    + "  <name>TestVelocity</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.velocity</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>VelocityClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        File velocityBasedir = tempDir.resolve("templates").toFile();
++        assertTrue(velocityBasedir.mkdirs());
++        File templateFile = new File(velocityBasedir, "test.vm");
++        try (FileWriter writer = new FileWriter(templateFile)) {
++            writer.write("#MODELLO-VELOCITY#SAVE-OUTPUT-TO output.txt\nHello ${greeting}\n");
++        }
++
++        Path outDir = tempDir.resolve("velocity-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setVelocityBasedir(velocityBasedir);
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(modelFile);
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("velocity");
++        task.addConfiguredGoal(goalElement);
++
++        ModelloTask.NameElement templateElement = new ModelloTask.NameElement();
++        templateElement.setName("test.vm");
++        task.addConfiguredTemplate(templateElement);
++
++        ModelloTask.ParamElement paramElement = new ModelloTask.ParamElement();
++        paramElement.setName("greeting");
++        paramElement.setValue("World");
++        task.addConfiguredParam(paramElement);
++
++        task.execute();
++
++        Path generatedFile = outDir.resolve("output.txt");
++        assertTrue(Files.exists(generatedFile));
++        String content = new String(Files.readAllBytes(generatedFile));
++        assertTrue(content.contains("Hello World"));
++    }
++
++    @Test
++    public void testOutputDirectoryCreation() throws IOException {
++        File modelFile = tempDir.resolve("test-mkdir.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\" "
++                    + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
++                    + "xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 "
++                    + "https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-model</id>\n"
++                    + "  <name>TestModel</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.test</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>MkdirClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        File nonExistentDir = tempDir.resolve("non-existent-sub/output").toFile();
++        assertFalse(nonExistentDir.exists());
++
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(nonExistentDir);
++
++        ModelloTask.ModelElement modelElement = new ModelloTask.ModelElement();
++        modelElement.setFile(modelFile);
++        task.addConfiguredModel(modelElement);
++
++        ModelloTask.NameElement goalElement = new ModelloTask.NameElement();
++        goalElement.setName("java");
++        task.addConfiguredGoal(goalElement);
++
++        task.execute();
++        assertTrue(nonExistentDir.exists());
++    }
++
++    @Test
++    public void testDomAsXpp3DefaultAndFalse() throws IOException {
++        File modelFile = tempDir.resolve("test-dom.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\" "
++                    + "xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" "
++                    + "xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 "
++                    + "https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-dom</id>\n"
++                    + "  <name>TestDom</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.dom</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>DomClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "      <fields>\n"
++                    + "        <field>\n"
++                    + "          <name>config</name>\n"
++                    + "          <version>1.0.0+</version>\n"
++                    + "          <type>DOM</type>\n"
++                    + "        </field>\n"
++                    + "      </fields>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path defaultOut = tempDir.resolve("default-out");
++        ModelloTask taskDefault = new ModelloTask();
++        taskDefault.setVersion("1.0.0");
++        taskDefault.setOutputDirectory(defaultOut.toFile());
++        ModelloTask.ModelElement m1 = new ModelloTask.ModelElement();
++        m1.setFile(modelFile);
++        taskDefault.addConfiguredModel(m1);
++        ModelloTask.NameElement g1 = new ModelloTask.NameElement();
++        g1.setName("java");
++        taskDefault.addConfiguredGoal(g1);
++        ModelloTask.NameElement g1Writer = new ModelloTask.NameElement();
++        g1Writer.setName("xpp3-writer");
++        taskDefault.addConfiguredGoal(g1Writer);
++        taskDefault.execute();
++
++        Path defaultWriter = defaultOut.resolve("com/example/dom/io/xpp3/TestDomXpp3Writer.java");
++        assertTrue(Files.exists(defaultWriter));
++        String defaultContent = new String(Files.readAllBytes(defaultWriter));
++        assertTrue(defaultContent.contains("import org.codehaus.plexus.util.xml.Xpp3Dom;"));
++        assertTrue(defaultContent.contains("((Xpp3Dom) domClass.getConfig())"));
++        assertFalse(defaultContent.contains("org.w3c.dom.Element"));
++
++        Path falseOut = tempDir.resolve("false-out");
++        ModelloTask taskFalse = new ModelloTask();
++        taskFalse.setVersion("1.0.0");
++        taskFalse.setOutputDirectory(falseOut.toFile());
++        taskFalse.setDomAsXpp3(false);
++        ModelloTask.ModelElement m2 = new ModelloTask.ModelElement();
++        m2.setFile(modelFile);
++        taskFalse.addConfiguredModel(m2);
++        ModelloTask.NameElement g2 = new ModelloTask.NameElement();
++        g2.setName("java");
++        taskFalse.addConfiguredGoal(g2);
++        ModelloTask.NameElement g2Writer = new ModelloTask.NameElement();
++        g2Writer.setName("xpp3-writer");
++        taskFalse.addConfiguredGoal(g2Writer);
++        taskFalse.execute();
++
++        Path falseWriter = falseOut.resolve("com/example/dom/io/xpp3/TestDomXpp3Writer.java");
++        assertTrue(Files.exists(falseWriter));
++        String falseContent = new String(Files.readAllBytes(falseWriter));
++        assertTrue(falseContent.contains("writeDom( (org.w3c.dom.Element)"));
++        assertFalse(falseContent.contains("Xpp3Dom"));
++    }
++
++    @Test
++    public void testPluralExceptions() throws IOException {
++        File modelFile = tempDir.resolve("test-plural.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write(
++                    "<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/1.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                            + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/1.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-1.0.0.xsd\">\n"
++                            + "  <id>test-plural</id>\n"
++                            + "  <name>TestPlural</name>\n"
++                            + "  <defaults>\n"
++                            + "    <default>\n"
++                            + "      <key>package</key>\n"
++                            + "      <value>com.example.test</value>\n"
++                            + "    </default>\n"
++                            + "  </defaults>\n"
++                            + "  <classes>\n"
++                            + "    <class rootElement=\"true\">\n"
++                            + "      <name>Server</name>\n"
++                            + "      <version>1.0.0+</version>\n"
++                            + "      <fields>\n"
++                            + "        <field>\n"
++                            + "          <name>aliases</name>\n"
++                            + "          <version>1.0.0+</version>\n"
++                            + "          <association>\n"
++                            + "            <type>String</type>\n"
++                            + "            <multiplicity>*</multiplicity>\n"
++                            + "          </association>\n"
++                            + "        </field>\n"
++                            + "      </fields>\n"
++                            + "    </class>\n"
++                            + "  </classes>\n"
++                            + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("plural-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("java");
++        task.addConfiguredGoal(g);
++
++        ModelloTask.ParamElement pe = new ModelloTask.ParamElement();
++        pe.setName("aliases");
++        pe.setValue("alias");
++        task.addConfiguredPluralException(pe);
++
++        task.execute();
++
++        Path generatedJava = outDir.resolve("com/example/test/Server.java");
++        assertTrue(Files.exists(generatedJava));
++        String content = new String(Files.readAllBytes(generatedJava));
++        assertTrue(content.contains("addAlias("));
++        assertFalse(content.contains("addAliase"));
++    }
++
++    @Test
++    public void testLicenseText() throws IOException {
++        File modelFile = tempDir.resolve("test-license.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-license</id>\n"
++                    + "  <name>TestLicense</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.license</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>LicenseClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("license-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setLicenseText("CUSTOM LICENSE HEADER LINE 1\nCUSTOM LICENSE HEADER LINE 2");
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("java");
++        task.addConfiguredGoal(g);
++
++        task.execute();
++
++        Path generatedJava = outDir.resolve("com/example/license/LicenseClass.java");
++        assertTrue(Files.exists(generatedJava));
++        String content = new String(Files.readAllBytes(generatedJava));
++        assertTrue(content.contains("CUSTOM LICENSE HEADER LINE 1"));
++        assertTrue(content.contains("CUSTOM LICENSE HEADER LINE 2"));
++    }
++
++    @Test
++    public void testLicenseFileAndNestedElement() throws IOException {
++        File licenseFile = tempDir.resolve("LICENSE.txt").toFile();
++        try (FileWriter writer = new FileWriter(licenseFile)) {
++            writer.write("FILE BASED LICENSE HEADER");
++        }
++
++        File modelFile = tempDir.resolve("test-license-file.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-license-file</id>\n"
++                    + "  <name>TestLicenseFile</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.licensefile</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>LicenseFileClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("license-file-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++
++        ModelloTask.LicenseElement licenseElement = new ModelloTask.LicenseElement();
++        licenseElement.setFile(licenseFile);
++        task.addConfiguredLicense(licenseElement);
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("java");
++        task.addConfiguredGoal(g);
++
++        task.execute();
++
++        Path generatedJava = outDir.resolve("com/example/licensefile/LicenseFileClass.java");
++        assertTrue(Files.exists(generatedJava));
++        String content = new String(Files.readAllBytes(generatedJava));
++        assertTrue(content.contains("FILE BASED LICENSE HEADER"));
++    }
++
++    @Test
++    public void testXsdFileNameAndEnforceMandatory() throws IOException {
++        File modelFile = tempDir.resolve("test-xsd.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\"\n"
++                    + "  xml.namespace=\"http://example.com/xsd\" xsd.namespace=\"http://example.com/xsd\">\n"
++                    + "  <id>test-xsd</id>\n"
++                    + "  <name>TestXsd</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.xsd</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>XsdClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("xsd-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setXsdFileName("custom-model.xsd");
++        task.setEnforceMandatoryElements(true);
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("xsd");
++        task.addConfiguredGoal(g);
++
++        task.execute();
++
++        Path generatedXsd = outDir.resolve("custom-model.xsd");
++        assertTrue(Files.exists(generatedXsd), "Generated XSD should exist: " + generatedXsd);
++    }
++
++    @Test
++    public void testJsonSchemaFileName() throws IOException {
++        File modelFile = tempDir.resolve("test-jsonschema.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-jsonschema</id>\n"
++                    + "  <name>TestJsonSchema</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.jsonschema</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>JsonClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("json-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setJsonSchemaFileName("custom-schema.json");
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("jsonschema");
++        task.addConfiguredGoal(g);
++
++        task.execute();
++
++        Path generatedJson = outDir.resolve("custom-schema.json");
++        assertTrue(Files.exists(generatedJson), "Generated JSON Schema should exist: " + generatedJson);
++    }
++
++    @Test
++    public void testPackagedVersionsAndExtendedClassnameSuffix() throws IOException {
++        File modelFile = tempDir.resolve("test-extended.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-extended</id>\n"
++                    + "  <name>TestExtended</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.extended</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class locationTracker=\"locations\" java.clone=\"shallow\">\n"
++                    + "      <name>InputLocation</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>Item</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "      <fields>\n"
++                    + "        <field>\n"
++                    + "          <name>name</name>\n"
++                    + "          <version>1.0.0+</version>\n"
++                    + "          <type>String</type>\n"
++                    + "        </field>\n"
++                    + "      </fields>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("extended-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setExtendedClassnameSuffix("CustomEx");
++        task.setPackagedVersions("1.0.0");
++
++        ModelloTask.NameElement pv = new ModelloTask.NameElement();
++        pv.setName("1.1.0");
++        task.addConfiguredPackagedVersion(pv);
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g1 = new ModelloTask.NameElement();
++        g1.setName("java");
++        task.addConfiguredGoal(g1);
++
++        ModelloTask.NameElement g2 = new ModelloTask.NameElement();
++        g2.setName("xpp3-extended-writer");
++        task.addConfiguredGoal(g2);
++
++        task.execute();
++
++        Path generatedWriter = outDir.resolve("com/example/extended/io/xpp3/TestExtendedXpp3WriterCustomEx.java");
++        assertTrue(Files.exists(generatedWriter), "Extended writer should exist: " + generatedWriter);
++    }
++
++    @Test
++    public void testXdocFileNameAndFirstVersion() throws IOException {
++        File modelFile = tempDir.resolve("test-xdoc.mdo").toFile();
++        try (FileWriter writer = new FileWriter(modelFile)) {
++            writer.write("<model xmlns=\"http://codehaus-plexus.github.io/MODELLO/2.0.0\"\n"
++                    + "  xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n"
++                    + "  xsi:schemaLocation=\"http://codehaus-plexus.github.io/MODELLO/2.0.0 https://codehaus-plexus.github.io/modello/xsd/modello-2.0.0.xsd\">\n"
++                    + "  <id>test-xdoc</id>\n"
++                    + "  <name>TestXdoc</name>\n"
++                    + "  <defaults>\n"
++                    + "    <default>\n"
++                    + "      <key>package</key>\n"
++                    + "      <value>com.example.xdoc</value>\n"
++                    + "    </default>\n"
++                    + "  </defaults>\n"
++                    + "  <classes>\n"
++                    + "    <class rootElement=\"true\">\n"
++                    + "      <name>DocClass</name>\n"
++                    + "      <version>1.0.0+</version>\n"
++                    + "    </class>\n"
++                    + "  </classes>\n"
++                    + "</model>\n");
++        }
++
++        Path outDir = tempDir.resolve("xdoc-out");
++        ModelloTask task = new ModelloTask();
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(outDir.toFile());
++        task.setXdocFileName("custom-doc.xml");
++        task.setFirstVersion("1.0.0");
++
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(modelFile);
++        task.addConfiguredModel(m);
++
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("xdoc");
++        task.addConfiguredGoal(g);
++
++        task.execute();
++
++        Path generatedXdoc = outDir.resolve("custom-doc.xml");
++        assertTrue(Files.exists(generatedXdoc), "Generated XDoc should exist: " + generatedXdoc);
++    }
++
++    @Test
++    public void testLicenseValidation() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.LicenseElement emptyLicense = new ModelloTask.LicenseElement();
++        BuildException e = assertThrows(BuildException.class, () -> task.addConfiguredLicense(emptyLicense));
++        assertEquals("Either 'file' or 'text' attribute is required for <license>.", e.getMessage());
++
++        task.setLicenseFile(new File("non-existent-license.txt"));
++        task.setVersion("1.0.0");
++        task.setOutputDirectory(tempDir.toFile());
++        ModelloTask.ModelElement m = new ModelloTask.ModelElement();
++        m.setFile(new File("dummy.mdo"));
++        task.addConfiguredModel(m);
++        ModelloTask.NameElement g = new ModelloTask.NameElement();
++        g.setName("java");
++        task.addConfiguredGoal(g);
++
++        BuildException e2 = assertThrows(BuildException.class, task::execute);
++        assertTrue(e2.getMessage().startsWith("License file not found:"));
++    }
++
++    @Test
++    public void testPackagedVersionValidation() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.NameElement pv = new ModelloTask.NameElement();
++        BuildException e = assertThrows(BuildException.class, () -> task.addConfiguredPackagedVersion(pv));
++        assertEquals("The 'name' attribute is required for <packagedVersion>.", e.getMessage());
++    }
++
++    @Test
++    public void testPropertyValidation() {
++        ModelloTask task = new ModelloTask();
++        ModelloTask.ParamElement prop = new ModelloTask.ParamElement();
++        BuildException e = assertThrows(BuildException.class, () -> task.addConfiguredProperty(prop));
++        assertEquals("The 'name' attribute is required for <property>.", e.getMessage());
++    }
++}
+diff --git a/pom.xml b/pom.xml
+index 165d88ae9..69742003a 100644
+--- a/pom.xml
++++ b/pom.xml
+@@ -153,6 +153,7 @@
+     <module>modello-core</module>
+     <module>modello-test</module>
+     <module>modello-plugins</module>
++    <module>modello-ant-task</module>
+   </modules>
+ 
+   <scm>
+-- 
+2.55.0
+

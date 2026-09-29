@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 07:00:20 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Create modello-ant-task and distribute it as a separate package
+- Added patch:
+  * 0003-Integrate-modello-ant-task-to-modello-source-tree.patch
+    + backporting our pull request creating modello ant task to
+      run modello generators from ant build.
+
+-------------------------------------------------------------------
 Wed Sep  9 09:10:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 2.8.1

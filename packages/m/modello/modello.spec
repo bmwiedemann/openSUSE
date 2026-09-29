@@ -28,6 +28,7 @@ Source1:        https://www.apache.org/licenses/LICENSE-2.0.txt
 Source100:      %{name}-build.tar.xz
 Patch0:         0001-Add-support-for-domAsXpp3-and-fail-if-the-old-Java5-.patch
 Patch1:         0002-Handle-also-the-velocity-stuff-in-ModelloCli.patch
+Patch2:         0003-Integrate-modello-ant-task-to-modello-source-tree.patch
 BuildRequires:  ant
 BuildRequires:  atinject
 BuildRequires:  fdupes
@@ -93,6 +94,14 @@ Modello Test Package contains the basis to create Modello generator
 unit-tests, including sample models and xml files to test every
 feature for every plugin.
 
+%package ant-task
+Summary:        Modello Ant Task
+Group:          Development/Libraries/Java
+Requires:       %{name} = %{version}
+
+%description ant-task
+Modello Ant Task enables the use of Modello in Apache Ant builds.
+
 %package javadoc
 Summary:        Javadoc for %{name}
 Group:          Development/Libraries/Java
@@ -117,6 +126,7 @@ cp -p %{SOURCE1} .
 %build
 mkdir -p lib
 build-jar-repository -s lib \
+    ant/ant \
     atinject \
     guava/guava \
     jackson-core \
@@ -148,7 +158,7 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}/%{name}
 # javadoc
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 
-for i in core test; do
+for i in core test ant-task; do
   install -pm 0644 %{name}-${i}/target/%{name}-${i}-%{version}.jar %{buildroot}%{_javadir}/%{name}/%{name}-${i}.jar
   %{mvn_install_pom} %{name}-${i}/pom.xml %{buildroot}%{_mavenpomdir}/%{name}/%{name}-${i}.pom
   %add_maven_depmap %{name}/%{name}-${i}.pom %{name}/%{name}-${i}.jar -f ${i}
@@ -169,9 +179,42 @@ done
 # script
 %jpackage_script org.codehaus.modello.ModelloCli "" "-Dguice_custom_class_loading=CHILD" modello:aopalliance:atinject:commons-lang3:google-guice:guava:jackson-core:jakarta-inject:javadoc-parser:jsoup/jsoup:objectweb-asm/asm:plexus/plexus-build-api:plexus/plexus-build-api0:plexus/classworlds:plexus-containers/plexus-component-annotations:plexus/utils:plexus/xml:org.eclipse.sisu.inject:org.eclipse.sisu.plexus:slf4j/api:slf4j/simple:snakeyaml:velocity-engine/velocity-engine-core %{name} true
 
+# Ant config
+install -dm 0755 %{buildroot}%{_sysconfdir}/ant.d
+echo "modello-ant-task" \
+    "modello" \
+    "aopalliance" \
+    "atinject" \
+    "commons-lang3" \
+    "google-guice" \
+    "guava" \
+    "jackson-core" \
+    "jakarta-inject" \
+    "javadoc-parser" \
+    "jsoup/jsoup" \
+    "objectweb-asm" \
+    "plexus/plexus-build-api" \
+    "plexus/plexus-build-api0" \
+    "plexus/classworlds" \
+    "plexus-containers/plexus-component-annotations" \
+    "plexus/utils" \
+    "plexus/xml" \
+    "org.eclipse.sisu.inject" \
+    "org.eclipse.sisu.plexus" \
+    "slf4j/api" \
+    "slf4j/simple" \
+    "snakeyaml" \
+    "velocity-engine/velocity-engine-core" \
+	>%{buildroot}%{_sysconfdir}/ant.d/%{name}
+
 %files -f .mfiles -f .mfiles-core
 %license LICENSE.txt LICENSE-2.0.txt
 %{_bindir}/*
+
+%files ant-task -f .mfiles-ant-task
+%config(noreplace) %{_sysconfdir}/ant.d/%{name}
+%doc modello-ant-task/README.md
+%license LICENSE.txt LICENSE-2.0.txt
 
 %files test -f .mfiles-test
 %license LICENSE.txt LICENSE-2.0.txt
