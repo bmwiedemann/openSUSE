@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 18 11:06:47 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
+
+- original tar-ball (https://plocate.sesse.net/download/plocate-1.1.25.tar.gz)
+    is botched, adjust %autosetup call
+- update to version 1.1.25:
+  * Fix two early-exit bugs with multiple databases
+  * Drop setgid properly, including the saved gid
+  * Fix a potential symlink-checking race in updatedb
+
+-------------------------------------------------------------------
 Sun Jan 25 17:12:44 UTC 2026 - Manfred Schwarb <manfred99@gmx.ch>
 
 - spec file: add %attr statement to %ghost declaration to placate rpmlint

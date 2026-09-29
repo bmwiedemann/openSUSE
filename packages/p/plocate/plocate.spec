@@ -19,7 +19,7 @@
 %bcond_without  apparmor
 
 Name:           plocate
-Version:        1.1.24
+Version:        1.1.25
 Release:        0
 Summary:        A much faster locate(1)
 License:        GPL-2.0-only
@@ -71,7 +71,8 @@ This package contains the files needed for apparmor support
 %endif
 
 %prep
-%autosetup
+#%%autosetup
+%autosetup -c %{name}-%{version}
 
 %build
 %meson -Dsystemunitdir=%{_unitdir} -Dinstall_systemd=true -Dlocategroup=nobody
