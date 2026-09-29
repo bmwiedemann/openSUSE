@@ -214,4 +214,41 @@ as the default openmpi implementation is still openmpi4.</comment>
   - gcc16-inline.patch</comment>
     <requestid>1356802</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7f6b5950690519761e1c1225f17d47f5</srcmd5>
+    <version>5.0.11</version>
+    <time>1790696770</time>
+    <user>anag_factory</user>
+    <comment>- Update to v5.0.11
+  - Bug Fixes and Minor Enhancements
+    - Fixed pdata leak on the MPI_Lookup_name error path; gave MPI_Lookup_name a range when the
+      caller does not
+    - opal: removed malloc attribute from realloc wrapper
+    - Checked opal_asprintf() return in mca_base_var_build_env(); set str to NULL after free
+    - Made yield_when_idle a modifyable MPI_T_cvar
+    - btl/sm: bounded peer-supplied descriptor copy in endpoint destructor
+    - op/aarch64, op/base: plugged misc memory leaks
+    - external data pack: switched to using size_t
+    - OMPI/RTE: Modified job name printing to use thread local storage
+    - Pointed the ftagree alg to the correct MCA param
+    - Reserved dist graph tags outside the libnbc tag range
+    - Updated the datatype tests to call opal_finalize
+    - configury: fixed --with-knem=PATH; allowed knem to be disabled
+    - contrib/platform/mellanox: dropped deprecated mpirun-prefix-by-default
+    - Documentation: documented the name-publishing info keys that actually exist; fixed
+      shmem_wait argument descriptions; fixed typo in mpi_minimum_memory_alignment info key; fixed
+      spelling and grammar throughout RST docs; added a limited llms.txt for the v5.0.x series
+    - CI/build system: updated PR-check actions; bumped actions/checkout to v6; removed V=1 from
+      community Jenkins make invocations; enabled verbose output in community Jenkins build/test
+  - Collectives, Accelerator, and Fault Tolerance
+    - coll/ucc: fixed UCC teardown ordering and resource leak during MPI_Finalize
+    - coll/hcoll: fixed hcoll context leak on MPI_Finalize
+    - coll/cuda: stage full input for MPI_IN_PLACE in reduce_scatter_block
+    - coll/accelerator: use dev_id and transfer type; also check for ROCm component
+    - accelerator/cuda: defer VMM/mpool probes until mem_type is known
+    - btl/ofi: fault tolerance fixes; try to identify/report failed procs when not identifiable
+      from failed op's context
+    - btl,mtl/ofi: set device only flag</comment>
+    <requestid>1380993</requestid>
+  </revision>
 </revisionlist>

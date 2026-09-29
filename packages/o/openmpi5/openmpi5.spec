@@ -75,7 +75,7 @@ ExclusiveArch:  do_not_build
 #############################################################################
 
 Name:           openmpi5%{?testsuite:-testsuite}
-Version:        5.0.10
+Version:        5.0.11
 Release:        0
 Summary:        An implementation of MPI/SHMEM (Version 5)
 License:        BSD-3-Clause
@@ -87,8 +87,6 @@ Source4:        mpivars.sh
 Source5:        mpivars.csh
 Source100:      README.md
 Patch1:         romio341-backport-fixes-from-mpich.patch
-Patch2:         gcc16-inline.patch
-Patch3:         gcc16-initializers.patch
 Provides:       mpi
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Exclude 32b archs
