@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:40:04 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- switch from ftp to https for sources
+
+-------------------------------------------------------------------
+Fri Sep 25 10:05:41 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- updated parted.keyring
+
+-------------------------------------------------------------------
+Thu Sep 24 08:50:00 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to version 3.8
+
+-------------------------------------------------------------------
+Fri Sep 18 07:15:27 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to version 3.7.14:
+  - Fix gnu_read problems with block size > 512b
+
+-------------------------------------------------------------------
+Wed Sep 16 17:43:15 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- update to version 3.7.13:
+  - Add support for ExFAT
+  - Fix CVE-2026-89085 and CVE-2026-89088
+  - Add various checks for increased security
+
+-------------------------------------------------------------------
 Thu Apr 09 08:40:03 CEST 2026 - Arvin Schnell <aschnell@suse.com>
 
 - update to version 3.7:
@@ -9,7 +38,7 @@ Thu Apr 09 08:40:03 CEST 2026 - Arvin Schnell <aschnell@suse.com>
   - parted-wipeaix.patch
   - dummy-bootcode-only-for-x86.patch
   - parted-do-version.patch
-  
+
 -------------------------------------------------------------------
 Wed Jan 22 10:35:05 CET 2025 - aschnell@suse.com
 

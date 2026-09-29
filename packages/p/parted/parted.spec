@@ -17,15 +17,14 @@
 
 
 Name:           parted
-Version:        3.7
+Version:        3.8
 Release:        0
 Summary:        GNU partitioner
 License:        GPL-3.0-or-later
 Group:          System/Filesystems
-URL:            http://www.gnu.org/software/parted/
-Source0:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
-Source1:        ftp://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
-# Taken from https://savannah.gnu.org/project/release-gpgkeys.php?group=parted&download=1
+URL:            https://www.gnu.org/software/parted/
+Source0:        https://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz
+Source1:        https://ftp.gnu.org/gnu/parted/%{name}-%{version}.tar.xz.sig
 Source2:        %{name}.keyring
 Source3:        baselibs.conf
 Source4:        fatresize-0.2.tar.xz
