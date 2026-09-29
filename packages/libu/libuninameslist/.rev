@@ -140,4 +140,19 @@
     <comment></comment>
     <requestid>1346817</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>0cd4cd5f290a879fdf3691c9dac637b2</srcmd5>
+    <version>20260918</version>
+    <time>1790696936</time>
+    <user>anag_factory</user>
+    <comment>- update to 20260918:
+  * This version adds 13,007 new characters, including nine new
+    emoji characters as well as many other characters and
+    symbols, bringing the total number of encoded characters to
+    172,808.
+  * For a more detailed description of updates, please see:
+    https://blog.unicode.org/2026/09/announcing-unicode-standard-
+    version-180.html (forwarded request 1380777 from dirkmueller)</comment>
+    <requestid>1381166</requestid>
+  </revision>
 </revisionlist>
