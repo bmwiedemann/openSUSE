@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:53:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.35:
+  * Bump version to 0.2.35
+  * Find pkexec on PATH instead of hard-coding /usr/bin (#128)
+  * Skip IPN events that only carry Engine stats (#127)
+  * Fix typo in debug message for instance check (#124)
+  * And fix the Fedora spec file to point to Knotifications 6 not 5
+    :facepalm:
+  * Fix CMake issue where QT5 would be picked up. Fixes issue #123
+  * Fix Taildrive checkbox tooltip (#122)
+  * README - Fix Fedora and SUSE RPM links
+
+-------------------------------------------------------------------
 Thu Jul 30 05:41:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.34:
