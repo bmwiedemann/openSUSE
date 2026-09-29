@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 28 07:04:51 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.1:
+  * Faster JSON keyframe updates, reducing processing overhead for
+    animation and transform editing.
+  * Fixed playback, seeking, frame-handoff, and reader-lifecycle
+    races, including crashes when deleting timeline clips.
+  * Preserved legacy clip positioning and animation through per-
+    clip coordinate conventions.
+  * Corrected transition routing and compositing order for clips
+    with matching start times.
+  * Improved screen-recording audio synchronization and handling of
+    delayed audio, gaps, and packet-boundary crackling.
+  * Added native V4L2 camera-mode discovery on Linux and improved
+    camera initialization and cleanup.
+  * Fixed preview sizing, export audio timestamps, image-buffer
+    handling, and capture color-range handling.
+  * Replaced ZeroMQ-based logging with independent file and console
+    logging.
+
+-------------------------------------------------------------------
 Tue Sep 01 07:30:02 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.0.0:

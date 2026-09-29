@@ -16,10 +16,10 @@
 #
 
 
-%define sover 31
+%define sover 32
 
 Name:           libopenshot
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        The core library for the OpenShot video editor
 License:        LGPL-3.0-or-later
@@ -41,7 +41,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  ImageMagick-devel
 BuildRequires:  alsa-devel
 BuildRequires:  jsoncpp-devel
-BuildRequires:  libopenshot-audio-devel >= 1.0.0
+BuildRequires:  libopenshot-audio-devel >= 1.0.1
 BuildRequires:  opencv-devel
 BuildRequires:  pkgconfig
 BuildRequires:  protobuf-devel
