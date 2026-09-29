@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:08:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.39.1:
+  * Proxy: the token-per-minute limit is opt-in again (it defaults
+    to unlimited), so a stock "headroom proxy" is no longer a 100k
+    tokens/minute throttle; --tpm / HEADROOM_TPM still enforce one
+  * A request larger than the bucket is admitted once the bucket is
+    full and then charged in full, so a large-context session no
+    longer gets a 429 it can never satisfy
+  * Neither crates/ nor Cargo.lock changed, so the vendored crate
+    tree and the licence set derived from it are unchanged
+
+-------------------------------------------------------------------
 Sat Sep 26 17:12:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.39.0:

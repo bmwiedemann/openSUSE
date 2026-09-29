@@ -20,7 +20,7 @@
 # the distribution primary interpreter.
 %define pythons %{primary_python}
 Name:           headroom
-Version:        0.39.0
+Version:        0.39.1
 Release:        0
 Summary:        Context optimization layer for LLM applications
 # Legal-Review-Notice: headroom-ai is Apache-2.0. The shipped artefact is

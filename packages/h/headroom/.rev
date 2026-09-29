@@ -92,4 +92,15 @@ this package.
 </comment>
     <requestid>1380833</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>76f865ddd9aca090fdf7dede4e6cefca</srcmd5>
+    <version>0.39.1</version>
+    <time>1790696986</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.39.1, which makes the proxy token-per-minute limiter opt-in again so a stock proxy is no longer a 100k tokens/minute throttle, and stops large-context requests from getting a 429 they can never satisfy; crates/ and Cargo.lock are byte-identical to 0.39.0, so the vendored tree and licence set are unchanged.
+
+Built green on aarch64 (rpmlint 0 errors, %check 27 passed) against openSUSE:Tumbleweed, because a Factory:ARM build is currently impossible for a reason unrelated to this package: the published python313-httpx2 there is still 2.12.0-1.1 with an exact httpcore2 version pin, while only 2.13.1-1.1 exists. Details in .changes.
+</comment>
+    <requestid>1381240</requestid>
+  </revision>
 </revisionlist>
