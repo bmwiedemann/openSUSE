@@ -1,4 +1,110 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:50:48 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update named.root
+
+-------------------------------------------------------------------
+Mon Sep 28 12:10:01 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Upgrade to release 9.20.29
+  Security Fixes:
+  * Prevent excessive CPU use validating crafted DNSSEC responses.
+    (CVE-2026-19668)
+    [bsc#1280436]
+  * Require a TSIG on every message of incoming zone transfers.
+    (CVE-2026-19033)
+    [bsc#1280430]
+  * Prevent a DNSSEC downgrade of secure delegations via unrelated
+    NSEC3 records.
+    (CVE-2026-77119)
+    [bsc#1280440]
+  * Prevent forged DNSSEC-validated NXDOMAIN responses.
+    (CVE-2026-19941)
+    [bsc#1280437]
+  * DNS64 with break-dnssec could cause an assertion failure.
+    (CVE-2026-19666)
+    [bsc#1280433]
+  * Reject oversized negative cache records.
+    (CVE-2026-19667)
+    [bsc#1280435]
+  * Prevent resolver crash with cached DNSSEC proofs.
+    (CVE-2026-19662)
+    [bsc#1280432]
+  * Discard repeated SOA, CNAME, and DNAME records when parsing DNS
+    messages.
+    (CVE-2026-75029)
+    [bsc#1280438]
+  * Fix an unauthenticated crash on HTTPS using SIG(0).
+    (CVE-2026-77692)
+    [bsc#1280441]
+  * Cached HTTPS/SVCB aliases could exhaust resolver CPU.
+    (CVE-2026-81736)
+    [bsc#1280445]
+  * Prevent TKEY queries from terminating named without global
+    options.
+    (CVE-2026-76163)
+    [bsc#1280439]
+  * Out-of-zone records in a zone database could be served as
+    authoritative.
+    (CVE-2026-78301)
+    [bsc#1280442]
+  * Fix crash on wildcard answers carrying both NSEC and NSEC3
+    proofs.
+    (CVE-2026-80274)
+    [bsc#1280443]
+  * Following HTTPS/SVCB aliases could leak resolver cache memory.
+    (CVE-2026-81563)
+    [bsc#1280444]
+
+  New Features:
+  * Disclose active Negative Trust Anchors with Extended DNS Error
+    33.
+
+  Feature Changes:
+  * Reject oversized and malformed DNSKEY records up front.
+  * Speed up RPZ policy zone updates.
+
+  Bug Fixes:
+  * Prevent a crash when using both dns64 and filter-a.
+  * Stop passing UDP client addresses to update-policy external
+    helpers.
+  * Missing required NSEC3 for delegation not detected.
+  * Tighten EUI48 and EUI64 text parsing.
+  * GeoIP ACL state could be stale or wrong after reload.
+  * Honor DNSSEC policy key tag ranges.
+  * Fix a double free in mdig when EDNS options are specified.
+  * Fix a crash when an IXFR falls back to AXFR with updates still
+    pending.
+  * Fix DS requests to parental agents over TLS.
+  * Fix the rndc-confgen -q (quiet) option.
+  * Enforce query ACLs for redirect zones and searched DLZs.
+  * Check asnum validity in GeoIP ACLs.
+  * Fix a crash on remote-servers lists that reference themselves.
+  * A record from outside a response policy zone could crash named.
+  * Invalid key-store configuration could abort the DNSSEC tools.
+  * NSEC signature set could bypass the secure-delegation check.
+  * Fix a possible nsupdate issue when using GSS-TSIG.
+  * Fix a crash with a single-element geoip sortlist.
+  * Prevent out-of-bailiwick CNAMEs from evicting cached records.
+  * Restore periodic cleanup of stale resolver address data.
+  * Fix named-checkconf/named crash with malformed key name.
+  * Prevent resolver crashes while processing DNS over TCP.
+  * Ensure NSEC authority does not cross zonecut boundary.
+  * Treat an unusable NSEC3 chain as a verification failure.
+  * Treat non-canonical RPZ prefixes as any other failure.
+  * Negative caching stopped working with
+    stale-answer-client-timeout set to 0.
+  * An unterminated OpenSSL private-key Label: field could be read
+    past its parser buffer.
+  * Restore SMF support on Solaris and illumos.
+  * Fix compilation on GNU/Hurd.
+  * dig +yaml was producing invalid YAML when a lookup failed.
+  * Properly prevent TSIG generation command line injection
+    attacks.
+  * Fix a potential heap bounds overflow write in dnssec-signzone.
+  * Fix crashes on invalid DNSTAP input in dnstap-read.
+
+-------------------------------------------------------------------
 Thu Jul 23 09:40:24 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.26

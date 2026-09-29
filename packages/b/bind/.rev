@@ -2816,4 +2816,61 @@ New Features
     [bsc#1271990]</comment>
     <requestid>1367361</requestid>
   </revision>
+  <revision rev="236" vrev="1">
+    <srcmd5>e0e0ab31f33aaf32b2631e70d1b2cd3b</srcmd5>
+    <version>9.20.29</version>
+    <time>1790696812</time>
+    <user>anag_factory</user>
+    <comment>- Update named.root
+- Upgrade to release 9.20.29
+  Security Fixes:
+  * Prevent excessive CPU use validating crafted DNSSEC responses.
+    (CVE-2026-19668)
+    [bsc#1280436]
+  * Require a TSIG on every message of incoming zone transfers.
+    (CVE-2026-19033)
+    [bsc#1280430]
+  * Prevent a DNSSEC downgrade of secure delegations via unrelated
+    NSEC3 records.
+    (CVE-2026-77119)
+    [bsc#1280440]
+  * Prevent forged DNSSEC-validated NXDOMAIN responses.
+    (CVE-2026-19941)
+    [bsc#1280437]
+  * DNS64 with break-dnssec could cause an assertion failure.
+    (CVE-2026-19666)
+    [bsc#1280433]
+  * Reject oversized negative cache records.
+    (CVE-2026-19667)
+    [bsc#1280435]
+  * Prevent resolver crash with cached DNSSEC proofs.
+    (CVE-2026-19662)
+    [bsc#1280432]
+  * Discard repeated SOA, CNAME, and DNAME records when parsing DNS
+    messages.
+    (CVE-2026-75029)
+    [bsc#1280438]
+  * Fix an unauthenticated crash on HTTPS using SIG(0).
+    (CVE-2026-77692)
+    [bsc#1280441]
+  * Cached HTTPS/SVCB aliases could exhaust resolver CPU.
+    (CVE-2026-81736)
+    [bsc#1280445]
+  * Prevent TKEY queries from terminating named without global
+    options.
+    (CVE-2026-76163)
+    [bsc#1280439]
+  * Out-of-zone records in a zone database could be served as
+    authoritative.
+    (CVE-2026-78301)
+    [bsc#1280442]
+  * Fix crash on wildcard answers carrying both NSEC and NSEC3
+    proofs.
+    (CVE-2026-80274)
+    [bsc#1280443]
+  * Following HTTPS/SVCB aliases could leak resolver cache memory.
+    (CVE-2026-81563)
+    [bsc#1280444]</comment>
+    <requestid>1381163</requestid>
+  </revision>
 </revisionlist>
