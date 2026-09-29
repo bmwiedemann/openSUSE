@@ -76,7 +76,13 @@ Mon Sep 21 19:05:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
     max_total_memory on such files. The allocations are bounded
     by the bytes present in the box, so this could not amplify
     memory use. (low)
-
+- fixes GHSA-v8qw-hwjv-44hw [bsc#1281953]
+        GHSA-qwpf-5wf7-r996 [bsc#1281949]
+        GHSA-9c75-9g8r-4728 [bsc#1281950]
+        GHSA-r7gr-2xm2-23wf [bsc#1281951]
+        GHSA-q492-cfcm-895h [bsc#1281954]
+        GHSA-qfj5-c4pq-q998 [bsc#1281948]
+        GHSA-7pwf-qh74-p35w [bsc#1281952]
 
 -------------------------------------------------------------------
 Sun Sep  6 18:57:16 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
@@ -195,7 +201,7 @@ Thu Aug 27 16:25:23 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 -------------------------------------------------------------------
 Thu Jul 30 06:58:39 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
-- Update to version 1.23.1:
+- Update to version 1.23.1: [jsc#PED-16355]
   + FFmpeg decoder plugin gains AV1, VVC, JPEG, and JPEG 2000/HTJ2K
     decoding
   + SVT-AV1 encoder: new tune=iq and ms-ssim tune parameters
@@ -501,6 +507,7 @@ Sun Mar  2 21:15:49 UTC 2025 - Arjen de Korte <suse+build@de-korte.org>
   * support emscripten builds for ES6 modules
 - Use correct license (these were changed in 2018)
 - Remove 0001-support-SVT-AV1-3.0.0.patch (no longer needed)
+- fixes CVE-2026-84449 [bsc#1281829]
 
 -------------------------------------------------------------------
 Fri Feb 28 15:42:34 UTC 2025 - Jan Engelhardt <jengelh@inai.de>

@@ -510,4 +510,12 @@
     through a JPEG 2000 pclr box declaring zero palette columns.</comment>
     <requestid>1379534</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>f34f2f49b49fd5f32a9520036057eb05</srcmd5>
+    <version>1.23.5</version>
+    <time>1790696732</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380785</requestid>
+  </revision>
 </revisionlist>
