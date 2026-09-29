@@ -1,8 +1,7 @@
 #
 # spec file for package qmmp-plugin-pack
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2014 Dmitry Misharov <quarckster@gmail.com>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,17 +17,17 @@
 #
 
 
-%define qmmp_ver_min 2.3.0
-%define qmmp_ver_max 2.3.99
-%define mver    2.3
+%define qmmp_ver_min 2.4.0
+%define qmmp_ver_max 2.4.99
+%define mver    2.4
 Name:           qmmp-plugin-pack
-Version:        2.3.0
+Version:        2.4.0
 Release:        0
 Summary:        Extra plugins for Qmmp
 License:        GPL-2.0-or-later
 Group:          Productivity/Multimedia/Sound/Players
 URL:            https://qmmp.ylsoftware.com/plugins.php
-#https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.3/qmmp-plugin-pack-2.3.0.tar.bz2
+#https://qmmp.ylsoftware.com/files/qmmp-plugin-pack/2.4/qmmp-plugin-pack-2.4.0.tar.bz2
 Source:         https://qmmp.ylsoftware.com/files/%{name}/%{mver}/%{name}-%{version}.tar.bz2
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
