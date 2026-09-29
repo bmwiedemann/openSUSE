@@ -263,4 +263,13 @@ build green, source_validator clean.</comment>
     <comment>Update to 1.8.0: Opus 5.5 support, 3.13 exit-crash fix.</comment>
     <requestid>1380022</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>300cdee42cb1bdfc892e31b2c34ae9e1</srcmd5>
+    <version>1.9.0</version>
+    <time>1790697203</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.9.0. BREAKING: client.beta.messages.parse() no longer adds the structured-outputs-2025-12-15 beta header itself; pass betas=[&quot;structured-outputs-2025-12-15&quot;] to keep structured outputs. Cache diagnostics go GA on the stable Message type.
+</comment>
+    <requestid>1381372</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:26:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9.0:
+  * Add the claude-sonnet-5-5 model id
+  * Cache diagnostics go GA: the stable Message and the message
+    creation params gain a "diagnostics" field, also accepted by
+    stream() and parse()
+  * Add a "between_tools" thinking type
+  * Tool runners can run tool calls while the reply streams
+    (run_tools_eagerly), with defer_tool_call() to hold one back
+  * BREAKING: client.beta.messages.parse() no longer adds the
+    structured-outputs-2025-12-15 beta header itself, and the
+    non-streaming beta tool runner loses it with it; pass
+    betas=["structured-outputs-2025-12-15"] to keep getting
+    structured outputs. stream() never sent it
+  * A between_tools thinking config is sent as disabled to a
+    fallback hop, which may not accept that type
+  * A file upload with no name is sent without the "upload"
+    placeholder filename
+  * Workspace rate limits gain include_inherited and source; the
+    Managed Agents events list filter takes typed event type values
+- No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Wed Sep 23 18:21:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.8.0:
