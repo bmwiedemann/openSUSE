@@ -207,4 +207,12 @@
     <comment></comment>
     <requestid>1286251</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>c51e7ddb00b8edd2a37c668bcb869664</srcmd5>
+    <version>1.18.0</version>
+    <time>1790696846</time>
+    <user>anag_factory</user>
+    <comment>update to 1.18.0 (forwarded request 1380687 from pgajdos)</comment>
+    <requestid>1381162</requestid>
+  </revision>
 </revisionlist>

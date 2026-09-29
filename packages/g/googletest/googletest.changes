@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:12:41 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
+
+- update to 1.18.0:
+  * C++ Language Support
+    - GoogleTest now requires at least C++17 and follows Google's
+      Foundational C++ Support Policy.
+  * Notable Changes
+    - Set GTEST_INTERNAL_HAS_STRING_VIEW = 1 in googletest as
+      C++17 always supports it
+    - Added a flag --gtest_fail_if_no_test_selected to fail if no
+      tests were selected to run
+    - Added --gtest_shard_index and --gtest_total_shards command
+      line arguments
+    - Added ContainsSubsequence matcher
+    - Allow implicit matcher construction from nullptr for smart
+      pointer types
+    - Support mocking const-qualified function types in
+      gmock-spec-builders
+    - Support std::wstring_view in string matchers
+    - Added C-style wide string overload to IsEmpty matcher
+    - Support UnpackStructImpl for structs up to 26 members
+    - Handle std::monostate and valueless_by_exception() for
+      std::variant similarly to std::nullopt
+    - Double the MOCK_METHOD parameter count limit
+    - Deprecate single-argument DoAll and Invoke
+    - Allow passing non-pointers to DeleteArg with deprecation warning
+    - Fix UnitTestImpl::GetTestSuite(i) ignoring shuffle order
+    - Fix null pointer dereference in ScopedPrematureExitFile
+    - Fix exported CMake include paths for absolute
+      CMAKE_INSTALL_INCLUDEDIR
+    - Delete absl polyfill support for std::any, std::optional,
+      std::variant
+    - Many bug fixes and documentation updates
+
+-------------------------------------------------------------------
 Mon Jun 16 18:50:17 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 1.17.0:

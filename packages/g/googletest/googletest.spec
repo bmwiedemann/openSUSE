@@ -1,7 +1,7 @@
 #
 # spec file for package googletest
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -24,7 +24,7 @@
 %bcond_with    tests
 %endif
 Name:           googletest
-Version:        1.17.0
+Version:        1.18.0
 Release:        0
 Summary:        Google C++ Testing Framework
 License:        BSD-3-Clause
@@ -33,7 +33,7 @@ URL:            https://github.com/google/googletest
 Source0:        https://github.com/google/googletest/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        googletest-rpmlintrc
 BuildRequires:  c++_compiler
-BuildRequires:  cmake >= 3.10.0
+BuildRequires:  cmake >= 3.16.0
 BuildRequires:  pkgconfig
 BuildRequires:  python3
 BuildRequires:  pkgconfig(pthread-stubs)
@@ -106,7 +106,7 @@ mkdir -p %{buildroot}%{_includedir}/gtest/src && install -m 0644 googletest/src/
 
 %check
 %if %{with tests}
-%ifnarch %ix86
+%ifnarch %{ix86}
 # googletest-port-test is checking the threadcount which is incorrect under user mode emulation
 %ctest %{?qemu_user_space_build:--exclude-regex googletest-port-test}
 %endif
