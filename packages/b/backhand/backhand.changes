@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:44:27 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.25.5:
+  * Compare the whole file to find duplicate files.
+  * Do not copy the fragment of an empty file.
+  * Write sparse files with holes, as mksquashfs does.
+  * Fix zero-length files written with dangling fragment reference.
+
+-------------------------------------------------------------------
 Wed Sep 23 15:24:28 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.25.4:
