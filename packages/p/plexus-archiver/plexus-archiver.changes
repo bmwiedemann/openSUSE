@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:32:02 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upsteam version 4.14.0
+  * New features and improvements
+    + Let a FileSet follow symbolic links
+  * Documentation updates
+    + Describe the artifact in the POM
+  * Dependency updates
+    + Pin Guava on the test classpath
+    + Bump com.github.luben:zstd-jni from 1.5.7-14 to 1.5.7-15
+- Changes of version 4.13.0
+  * New features and improvements
+    + Establish an automatic module name
+  * Dependency updates
+    + Bump plexus-io to 3.7.0
+    + Bump plexus-utils to 3.6.2
+    + Update parent to plexus 27, from 25
+    + Bump com.github.luben:zstd-jni from 1.5.7-9 to 1.5.7-14
+    + Bump org.eclipse.sisu:org.eclipse.sisu.inject from 1.0.0 to
+      1.1.0
+    + Revert "Bump slf4jVersion from 1.7.36 to 2.0.18"
+  * Build
+    + Name the sisu property after what it versions
+    + Keep the 4.x release drafter config on the 4.x branch
+
+-------------------------------------------------------------------
 Thu Jun 18 11:19:33 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 4.12.0
