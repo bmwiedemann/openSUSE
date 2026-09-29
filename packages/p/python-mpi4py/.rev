@@ -287,4 +287,16 @@
   * PyPy wheels are no longer published.</comment>
     <requestid>1362130</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2807a0789978f3cdfe59080cd2aa7057</srcmd5>
+    <version>4.1.2</version>
+    <time>1790697021</time>
+    <user>anag_factory</user>
+    <comment>- fix typo in description
+
+  * Add support for MPI.FLOAT16_T and MPI.BFLOAT16_T datatypes.
+    MPI 5.0 standard ABI and the MPICH or Open MPI legacy ABIs.
+  * The types of the MPI.BOTTOM, MPI.IN_PLACE, and</comment>
+    <requestid>1381248</requestid>
+  </revision>
 </revisionlist>

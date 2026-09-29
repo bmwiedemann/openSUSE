@@ -52,14 +52,14 @@ This package supports:
     * Collective: broadcast, scatter & gather, reductions
   + Communication of Python object exposing the Python buffer
     interface (NumPy arrays, builtin bytes/string/array objects)
-    * Point-to-point: blocking/nonbloking/persistent send & receive
+    * Point-to-point: blocking/nonblocking/persistent send & receive
     * Collective: broadcast, block/vector scatter & gather, reductions
   + Process groups and communication domains
     * Creation of new intra/inter communicators
     * Cartesian & graph topologies
   + Parallel input/output:
     * read & write
-    * blocking/nonbloking & collective/noncollective
+    * blocking/nonblocking & collective/noncollective
     * individual/shared file pointers & explicit offset
   + Dynamic process management
     * spawn & spawn multiple
