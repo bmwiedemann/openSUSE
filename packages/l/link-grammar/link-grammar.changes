@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:11:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 5.13.0:
+  + Minor English dictionary fixes.
+  + Bump minor version number due to changed lg-atomese API.
+- Changes from version 5.12.9:
+  + Fix build break due to changing AtomSpace API.
+- Changes from version 5.12.8:
+  + Fix build break ... again! Not all compilers are happy with the
+    fix.
+- Changes from version 5.12.7:
+  + Fix build break due to obsolete AtomSpace API usage.
+- Changes from version 5.12.6:
+  + Fix build break due to missing header file.
+
+-------------------------------------------------------------------
 Tue Apr  1 06:48:04 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 5.12.5:

@@ -484,4 +484,23 @@
     <comment></comment>
     <requestid>1266392</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>935286b27afc08ccda859d0c2dc0310a</srcmd5>
+    <version>5.13.0</version>
+    <time>1790697272</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 5.13.0:
+  + Minor English dictionary fixes.
+  + Bump minor version number due to changed lg-atomese API.
+- Changes from version 5.12.9:
+  + Fix build break due to changing AtomSpace API.
+- Changes from version 5.12.8:
+  + Fix build break ... again! Not all compilers are happy with the
+    fix.
+- Changes from version 5.12.7:
+  + Fix build break due to obsolete AtomSpace API usage.
+- Changes from version 5.12.6:
+  + Fix build break due to missing header file.</comment>
+    <requestid>1381461</requestid>
+  </revision>
 </revisionlist>

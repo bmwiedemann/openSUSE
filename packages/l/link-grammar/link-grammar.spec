@@ -18,7 +18,7 @@
 
 %define lname liblink-grammar5
 Name:           link-grammar
-Version:        5.12.5
+Version:        5.13.0
 Release:        0
 Summary:        Syntactic parser and grammar checker
 License:        LGPL-2.1-only
