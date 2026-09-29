@@ -1252,4 +1252,41 @@ As a side note Leap is affected as well by this. Might be worth back porting thi
       guidelines)</comment>
     <requestid>1379907</requestid>
   </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>05b587c3d2770c70faf674f6300170a9</srcmd5>
+    <version>1.18.4</version>
+    <time>1790696889</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.18.4:
+  + Security fixes:
+    - Prevent privileged overwrite of arbitrary files with an empty
+      file or a symlink to /run/host/monitor/resolv.conf when a
+      malicious app is installed (CVE-2026-97024,
+      GHSA-8xgq-v545-vgv)
+    - Prevent privileged deletion of arbitrary files when a
+      malicious app is installed (CVE-2026-97023,
+      GHSA-5p67-xh8x-rq54)
+    - When downloading apps or runtimes from an OCI repository that
+      requires authentication, don't make the authentication token
+      visible to other users (CVE-2026-97025, GHSA-7rvf-rqr3-43j4)
+    - Restrict permissions on temporary repository directories in
+      /var/tmp/flatpak-cache-* (CVE-2026-97026,
+      GHSA-r9w3-qx54-qvc8)
+    - Filter .desktop and D-Bus .service files against an allowlist
+      of fields, preventing denial of service and unintended
+      interactions with host services (CVE-2026-97027,
+      GHSA-v64f-hrwr-j4vh)
+    - Prevent apps from sending signals to a process group that
+      includes a parent process outside the app, causing denial of
+      service by killing the desktop environment (CVE-2026-97029,
+      GHSA-f3p8-vr7v-gxf2)
+  + Bug fixes:
+    - Update Meson wrap subprojects for projects that are normally
+      taken from the host system:
+    - xdg-dbus-proxy 0.1.9 (CVE-2026-93676, CVE-2026-94422)
+    - Improve hardening against symlink traversal, related to
+      CVE-2026-97023 and CVE-2026-97024
+  + Internal changes:</comment>
+    <requestid>1381311</requestid>
+  </revision>
 </revisionlist>
