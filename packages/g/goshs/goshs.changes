@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:11:03 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.1.7
+  Security
+  * Per-folder .goshs ACL now enforced on every protocol.
+    + SFTP ignores the .goshs ACL (GHSA-2m7f-jq4x-rcj7)
+    + TFTP, FTP and SMB ignore the .goshs ACL (GHSA-q8gg-q2wc-w52g)
+    + A directory named .goshs wipes inherited auth
+      (GHSA-mhxc-hfx2-7w79).
+    + Block list bypass on case-insensitive filesystems
+      (GHSA-3x28-6v7h-gg87).
+    + Concurrent requests bypass the brute-force lockout
+      (GHSA-8f9w-966j-qhq9).
+  New Features
+  * Folder upload in the web UI (#227).
+  Bug Fixes
+  * FTP crashed on AUTH TLS without TLS (nil-pointer panic).
+
+-------------------------------------------------------------------
 Tue Sep  1 14:32:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.1.6
