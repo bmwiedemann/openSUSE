@@ -1186,4 +1186,22 @@
   + Fix R.PST in the log case.</comment>
     <requestid>1379612</requestid>
   </revision>
+  <revision rev="141" vrev="1">
+    <srcmd5>66c8c0e5369d55a088f5276894ec490d</srcmd5>
+    <version>1.12.62+8</version>
+    <time>1790697117</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.12.62+8:
+  + xml: guard against empty strings being treated as numbers.
+  + Leaks.
+  + Fix use-after-free crash on corrupted files with
+    components/graphs (CVE-2026-97222, boo#1282828).
+- Add lang_ver define, needed since we using a git checkout, and
+  upstream have bumped version post release tag.
+
+  + Fix problem with sylk importer.
+  + Fix problems with blanks for database functions.
+  + Fix auto-filter problem.</comment>
+    <requestid>1381314</requestid>
+  </revision>
 </revisionlist>

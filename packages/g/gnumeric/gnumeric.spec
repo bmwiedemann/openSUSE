@@ -15,9 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%define lang_ver 1.12.63
 
 Name:           gnumeric
-Version:        1.12.62
+Version:        1.12.62+8
 Release:        0
 Summary:        Spreadsheet Application
 License:        GPL-2.0-only OR GPL-3.0-only
@@ -147,8 +148,11 @@ export CFLAGS="%{optflags} -fno-strict-aliasing"
 %make_install
 # FIXME: Build as root modifies system!
 %find_lang %{name} %{?no_lang_C}
-%find_lang %{name}-%{version} %{?no_lang_C} %{name}.lang
-%find_lang %{name}-%{version}-functions %{?no_lang_C} %{name}.lang
+# lang_ver define needed since we are using a git checkout
+%dnl %find_lang %{name}-%{version} %{?no_lang_C} %{name}.lang
+%find_lang %{name}-%{lang_ver} %{?no_lang_C} %{name}.lang
+%dnl %find_lang %{name}-%{version}-functions %{?no_lang_C} %{name}.lang
+%find_lang %{name}-%{lang_ver}-functions %{?no_lang_C} %{name}.lang
 find %{buildroot} -type f -name "*.la" -delete -print
 %fdupes %{buildroot}%{_datadir}
 
