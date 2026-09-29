@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:39:09 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream stack protector via --disable-stack-protector: distro optflags
+  already carry -fstack-protector-strong, and upstream's appended
+  basic -fstack-protector silently downgraded it.
+
+-------------------------------------------------------------------
 Mon Mar 18 18:51:09 UTC 2024 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.6.11

@@ -78,7 +78,9 @@ scheme called Single Packet Authorization (SPA).
 %setup -q
 
 %build
-%configure --disable-static
+# --disable-stack-protector: upstream configure would append -fstack-protector
+# (basic), downgrading the -fstack-protector-strong already in %{optflags}
+%configure --disable-static --disable-stack-protector
 %make_build
 
 %check
