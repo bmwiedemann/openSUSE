@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Sep 26 12:52:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 50.0.1:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 4.0.2.
+
+-------------------------------------------------------------------
 Tue Aug  4 21:28:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 50.0.0 (bsc#1273551, CVE-2026-69247):

@@ -1527,4 +1527,14 @@
   * Added support for using :class:`~cryptography.x509.Name` as a</comment>
     <requestid>1369600</requestid>
   </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>b95adedfbf04746f5b394849b0f6b555</srcmd5>
+    <version>50.0.1</version>
+    <time>1790696737</time>
+    <user>anag_factory</user>
+    <comment>- update to 50.0.1:
+  * Updated Windows, macOS, and Linux wheels to be compiled with
+    OpenSSL 4.0.2.</comment>
+    <requestid>1380794</requestid>
+  </revision>
 </revisionlist>
