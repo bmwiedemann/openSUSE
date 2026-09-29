@@ -47,4 +47,14 @@
 </comment>
     <requestid>1376975</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9b133511962d2648861a095dbb0ee0ce</srcmd5>
+    <version>23.1.2</version>
+    <time>1790696752</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 23.1.2.
+  * This release contains bug-fixes for the LLVM 23.1.0 release.
+    This release is API and ABI compatible with 23.1.0.</comment>
+    <requestid>1380802</requestid>
+  </revision>
 </revisionlist>
