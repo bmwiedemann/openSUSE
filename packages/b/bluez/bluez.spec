@@ -56,6 +56,7 @@ Patch2:         bluez-sdp-unix-path.patch
 Patch3:         bluez-no-cups-devel-buildreq.patch
 # workaround for broken tests (reported upstream but not yet fixed)
 Patch4:         bluez-disable-broken-tests.diff
+Patch5:         fix-crash-on-UUID-discovery.patch
 # disable tests for bypass boo#1078285
 Patch12:        disable_some_obex_tests.patch
 # Upstream suggests to use btmon instead of hcidump and does not want those patches
