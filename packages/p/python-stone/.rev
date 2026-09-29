@@ -24,4 +24,21 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338345</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1f1fe082d2ccb3ecc3ebaddefabd1f17</srcmd5>
+    <version>3.5.5</version>
+    <time>1790697043</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.5.5:
+  * js_client: add optional request options parameter
+  * Match generated abstract request() to transport signature
+  * Derive package version from git tags via setuptools-scm
+  * Add --version flag to the CLI
+  * Fix packaging: SPDX license, drop ez_setup, ship complete test sdist
+  * Requires Python 3.11 or later. Python 2.7 and 3.5-3.10 are no longer
+    supported.
+  * The six dependency has been removed; Stone is now pure Python 3.
+- Drop patch remove-six.patch, merged upstream.</comment>
+    <requestid>1381273</requestid>
+  </revision>
 </revisionlist>

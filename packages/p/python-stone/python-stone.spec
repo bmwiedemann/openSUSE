@@ -19,29 +19,27 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-stone
-Version:        3.3.9
+Version:        3.5.5
 Release:        0
 Summary:        Stone is an interface description language (IDL) for APIs
 License:        MIT
 URL:            https://github.com/dropbox/stone
 Source:         https://github.com/dropbox/stone/archive/refs/tags/v%{version}.tar.gz#/stone-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM https://github.com/dropbox/stone/pull/318 remove dependency on six
-Patch0:         remove-six.patch
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
-Requires:       python-Jinja2 >= 3.0.3
-Requires:       python-packaging >= 21.0
-Requires:       python-ply >= 3.4
+Requires:       python-Jinja2 >= 3.1.6
+Requires:       python-packaging >= 26.3
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module Jinja2 >= 3.0.3}
-BuildRequires:  %{python_module packaging >= 21.0}
-BuildRequires:  %{python_module ply >= 3.4}
+BuildRequires:  %{python_module Jinja2 >= 3.1.6}
+BuildRequires:  %{python_module packaging >= 26.3}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module testsuite}
 # /SECTION
