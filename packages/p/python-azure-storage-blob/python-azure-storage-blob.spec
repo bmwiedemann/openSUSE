@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-storage-blob
-Version:        12.30.2
+Version:        12.30.3
 Release:        0
 Summary:        Microsoft Azure Storage Blob Client Library for Python
 License:        MIT

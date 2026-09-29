@@ -537,4 +537,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1378545 from glaubitz)</comment>
     <requestid>1378679</requestid>
   </revision>
+  <revision rev="50" vrev="1">
+    <srcmd5>cc2f325847f33c6ce026819ce83e2212</srcmd5>
+    <version>12.30.3</version>
+    <time>1790697323</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.30.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1381158 from glaubitz)</comment>
+    <requestid>1381490</requestid>
+  </revision>
 </revisionlist>
