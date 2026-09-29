@@ -1152,4 +1152,12 @@
 - add gst-device.patch to fix segmentation fault (forwarded request 1338740 from rrahl0)</comment>
     <requestid>1338741</requestid>
   </revision>
+  <revision rev="151" vrev="3">
+    <srcmd5>8405986b0da82c856bb537b6ebd6424a</srcmd5>
+    <version>2.14.14</version>
+    <time>1790697200</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381345 from scarabeus_iv)</comment>
+    <requestid>1381368</requestid>
+  </revision>
 </revisionlist>

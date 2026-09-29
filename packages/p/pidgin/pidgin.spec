@@ -230,9 +230,9 @@ sed -i "/ALL_LINGUAS/s/ my_MM / my /" configure.ac
 sed -i '/^#!/s|env python$|python3|' libpurple/purple-*
 
 %build
-export CFLAGS="%{optflags} -fstack-protector -fPIC"
-export CXXFLAGS="%{optflags} -fstack-protector -fPIC"
-export FFLAGS="%{optflags} -fstack-protector -fPIC"
+export CFLAGS="%{optflags} -fPIC"
+export CXXFLAGS="%{optflags} -fPIC"
+export FFLAGS="%{optflags} -fPIC"
 export LDFLAGS="-pie"
 export PYTHON=python3
 autoreconf -fi

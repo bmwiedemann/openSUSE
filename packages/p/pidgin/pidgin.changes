@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:06:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS/CXXFLAGS/FFLAGS
+  (predates distro -fstack-protector-strong in optflags; the trailing
+  basic flag silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Fri Mar 13 13:10:44 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - remove pidgin-2.14.14-fix-mediamanager-crash.patch, as gst-device.patch
