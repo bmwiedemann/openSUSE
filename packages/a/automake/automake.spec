@@ -38,7 +38,6 @@ Source1:        https://ftp.gnu.org/gnu/automake/automake-%{version}.tar.xz.sig
 # https://ftp.gnu.org/gnu/gnu-keyring.gpg
 Source2:        automake.keyring
 Source3:        automake-rpmlintrc
-Patch100:       automake-suse-vendor.patch
 BuildRequires:  autoconf >= 2.69
 BuildRequires:  bison
 BuildRequires:  gcc-c++

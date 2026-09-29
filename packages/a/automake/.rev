@@ -584,4 +584,12 @@
     <comment>1</comment>
     <requestid>1377341</requestid>
   </revision>
+  <revision rev="64" vrev="2">
+    <srcmd5>50c8c8b45bded16c0494b64c58fc5e80</srcmd5>
+    <version>1.19</version>
+    <time>1790696897</time>
+    <user>anag_factory</user>
+    <comment>Remove patch: automake-suse-vendor.patch</comment>
+    <requestid>1381111</requestid>
+  </revision>
 </revisionlist>

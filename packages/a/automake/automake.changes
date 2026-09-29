@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 15 10:00:47 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
+
+- Remove patch: automake-suse-vendor.patch
+  * Modifying vendor in the config.guess results from a bad way of doing
+  things. See mailing thread:
+  https://lists.gnu.org/archive/html/automake-patches/2026-09/msg00004.html
+
+-------------------------------------------------------------------
 Thu Sep 10 09:46:06 UTC 2026 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Update to 1.19
