@@ -70,7 +70,7 @@
 #
 Name:           pam%{name_suffix}
 #
-Version:        1.7.2+git48
+Version:        1.7.3
 Release:        0
 Summary:        A Security Tool that Provides Authentication for Applications
 License:        GPL-2.0-or-later OR BSD-3-Clause
