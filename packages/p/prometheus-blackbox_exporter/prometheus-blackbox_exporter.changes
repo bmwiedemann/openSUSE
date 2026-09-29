@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:22:54 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- CVE-2026-84304: Fix heap memory exhaustion (OOM) via HTTP/2 DATA
+                  frame fragmentation in gRPC-Go by bumping it to
+                  version 1.83.1 (bsc#1279126)
+
+-------------------------------------------------------------------
 Tue Sep  1 12:41:32 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - CVE-2026-39821: Fix potential validation bypass and privilege
