@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 26 05:45:09 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- update to 2.12.0:
+  * Unicode 18 support. This includes the modified grapheme-break
+    rule GB9c in UAX 29, which removes some grapheme breaks for
+    Indic characters
+  * options arguments are changed from an enum to unsigned int,
+    since they are generally bitwise "or" of enum values; this
+    should be backwards binary compatible
+  * int *last_boundclass parameter of utf8proc_decompose_char is
+    changed to a utf8proc_int32_t * (affecting only rare systems
+    where int is not 32 bits, on which the last_boundclass argument
+    would have produced incorrect results)
+  * New utf8proc_free function to free memory allocated by utf8proc
+  * utf8proc_normalize_utf32 can now handle invalid codepoints ≥
+    0x110000. They are passed through unchanged rather than
+    dropped, and composition never runs across one
+  * Fix UTF8PROC_CHARBOUND emitting no 0xff grapheme markers when
+    combined with UTF8PROC_COMPOSE or UTF8PROC_DECOMPOSE, a
+    regression in 2.11.3
+
+-------------------------------------------------------------------
 Wed Dec 31 12:48:03 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 2.11.3:

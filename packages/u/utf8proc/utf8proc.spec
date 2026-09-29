@@ -2,7 +2,7 @@
 # spec file for package utf8proc
 #
 # Copyright (c) 2022 SUSE LLC
-# Copyright (c) 2025 Andreas Stieger <Andreas.Stieger@gmx.de>
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 
 %define lib_ver 3
 Name:           utf8proc
-Version:        2.11.3
+Version:        2.12.0
 Release:        0
 Summary:        Library for processing UTF-8 encoded Unicode strings
 License:        MIT

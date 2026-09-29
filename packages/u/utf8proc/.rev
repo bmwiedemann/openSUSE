@@ -134,4 +134,12 @@
     <comment></comment>
     <requestid>1325058</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>9d5febe42f1f76cd38fda75477166373</srcmd5>
+    <version>2.12.0</version>
+    <time>1790696850</time>
+    <user>anag_factory</user>
+    <comment>utf8proc 2.12.0 (forwarded request 1380740 from AndreasStieger)</comment>
+    <requestid>1381169</requestid>
+  </revision>
 </revisionlist>
