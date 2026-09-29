@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:51:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.2.0
+  * New features and improvements
+    + Establish an automatic module name
+  * Maintenance
+    + Rewrite README with usage, status and version guidance
+  * Build
+    + Update parent to plexus 27
+    + Draft release notes on push to master
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus from 24 to 26
+    + Bump org.codehaus.plexus:plexus-testing from 2.0.1 to 2.1.0
+- Changes of version 1.1.0
+  * Maintenance update
+    + Bump org.codehaus.plexus:plexus from 23 to 24
+    + Bump org.codehaus.plexus:plexus-testing to 2.0.1
+    + Fix DefaultI18N to prevent fallback to JVM default locale
+    + JUnit Jupiter best practices
+
+-------------------------------------------------------------------
 Tue Oct  7 12:32:39 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 1.0.0

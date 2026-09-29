@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-i18n
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,7 +19,7 @@
 %global parent plexus
 %global subname i18n
 Name:           %{parent}-%{subname}
-Version:        1.0.0
+Version:        1.2.0
 Release:        0
 Summary:        Plexus I18N Component
 License:        Apache-2.0
