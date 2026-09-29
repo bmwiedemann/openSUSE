@@ -7,4 +7,24 @@
     <comment>Staging:O</comment>
     <requestid>1320977</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>e3dbd8d9b43662d38aed561f25b2e0dd</srcmd5>
+    <version>0.5.2</version>
+    <time>1790696764</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.5.2 (also covers skipped 0.5.1):
+  * Handle a POST request with a missing/empty Content-Length instead
+    of raising TypeError/ArgumentError (gh#ruby/cgi#56)
+  * Fix CGI.unescapeHTML raising Encoding::CompatibilityError in the
+    pure-Ruby fallback on mixed non-ASCII input (gh#ruby/cgi#103)
+  * Fix escape_html/h/unescape_html aliases to actually dispatch to
+    the C extension instead of the slower pure-Ruby implementation
+  * Harden CGI::Session's file-store filename hashing: use SHA-256
+    instead of MD5, and add a configurable :digest option (default
+    stays MD5 for backward compatibility)
+  * Various documentation improvements
+- Run spec-cleaner (tag order, License operator casing normalized to
+  the SPDX &quot;AND&quot;)</comment>
+    <requestid>1380830</requestid>
+  </revision>
 </revisionlist>

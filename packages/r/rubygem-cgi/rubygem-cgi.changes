@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:25:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.5.2 (also covers skipped 0.5.1):
+  * Handle a POST request with a missing/empty Content-Length instead
+    of raising TypeError/ArgumentError (gh#ruby/cgi#56)
+  * Fix CGI.unescapeHTML raising Encoding::CompatibilityError in the
+    pure-Ruby fallback on mixed non-ASCII input (gh#ruby/cgi#103)
+  * Fix escape_html/h/unescape_html aliases to actually dispatch to
+    the C extension instead of the slower pure-Ruby implementation
+  * Harden CGI::Session's file-store filename hashing: use SHA-256
+    instead of MD5, and add a configurable :digest option (default
+    stays MD5 for backward compatibility)
+  * Various documentation improvements
+- Run spec-cleaner (tag order, License operator casing normalized to
+  the SPDX "AND")
+
+-------------------------------------------------------------------
 Wed Dec  3 12:17:18 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - initial package
