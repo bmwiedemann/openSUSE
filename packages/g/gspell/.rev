@@ -305,4 +305,16 @@
 - Initial package.</comment>
     <requestid>1372147</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>154d70814f07239e6c6ad43bd4f33b68</srcmd5>
+    <version>1.14.5</version>
+    <time>1790696793</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.5:
+  + Don't annotate get_type() functions with G_GNUC_CONST.
+  + Updated translations.
+
+- Initial package.</comment>
+    <requestid>1381078</requestid>
+  </revision>
 </revisionlist>

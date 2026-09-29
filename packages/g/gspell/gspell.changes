@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Sep 27 06:37:13 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.14.5:
+  + Don't annotate get_type() functions with G_GNUC_CONST.
+  + Updated translations.
+
+-------------------------------------------------------------------
 Mon Aug 17 10:11:41 UTC 2026 - Zoltan Balogh <zbalogh@suse.com>
 
 - Add gspell-tests subpackage with installed tests
@@ -494,3 +501,4 @@ Thu Nov 19 20:00:42 UTC 2015 - zaitor@opensuse.org
 Sun Nov  8 11:09:16 UTC 2015 - badshah400@gmail.com
 
 - Initial package.
+
