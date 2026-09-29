@@ -182,4 +182,12 @@
   * test: update the enrollment with the new keyring names (forwarded request 1374054 from aplanas)</comment>
     <requestid>1374055</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>126a206d8a1c329bda23e25e59a6082d</srcmd5>
+    <version>1+git20260928.f64eda7</version>
+    <time>1790696855</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381187</requestid>
+  </revision>
 </revisionlist>
