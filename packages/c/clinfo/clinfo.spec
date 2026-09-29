@@ -1,8 +1,8 @@
 #
 # spec file for package clinfo
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2015-2023, Martin Hauke <mardnh@gmx.de>
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2015-2026, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 
 Name:           clinfo
-Version:        3.0.25.02.14
+Version:        3.1.26.09.26
 Release:        0
 Summary:        Utility that reports status information for all installed OpenCL ICDs
-License:        SUSE-Public-Domain
+License:        LicenseRef-SUSE-Public-Domain
 Group:          Productivity/Other
 URL:            https://github.com/Oblomov/clinfo/
 Source:         https://github.com/Oblomov/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
@@ -38,7 +38,7 @@ crash on platform-unsupported properties (e.g. 1.2 properties on 1.1
 platforms).
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
@@ -48,8 +48,8 @@ export CFLAGS="%{optflags}"
 %make_install DESTDIR=%{buildroot} BINDIR=%{_bindir} MAN1DIR=%{_mandir}/man1
 
 %files
-%doc README.md
 %license LICENSE
+%doc README.md
 %{_bindir}/clinfo
 %{_mandir}/man1/clinfo.1%{?ext_man}
 
