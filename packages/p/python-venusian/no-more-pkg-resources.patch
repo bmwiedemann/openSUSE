@@ -1,0 +1,22 @@
+Index: venusian-3.1.1/docs/conf.py
+===================================================================
+--- venusian-3.1.1.orig/docs/conf.py
++++ venusian-3.1.1/docs/conf.py
+@@ -15,7 +15,7 @@
+ # sys.path.insert(0, os.path.abspath("."))
+ import datetime
+ 
+-import pkg_resources
++import importlib.metadata
+ import pylons_sphinx_themes
+ 
+ # -- General configuration ---------------------------------------------------
+@@ -36,7 +36,7 @@ copyright = "2012-%s Pylons Project <pyl
+ # other places throughout the built documents.
+ #
+ # The short X.Y version.
+-version = pkg_resources.get_distribution("venusian").version
++version = importlib.metadata.version("venusian")
+ # The full version, including alpha/beta/rc tags.
+ release = version
+ 

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:30:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to get the version during docs build.
+
+-------------------------------------------------------------------
 Thu Jan 16 12:52:59 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.1.1

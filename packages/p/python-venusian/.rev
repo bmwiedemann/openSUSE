@@ -203,4 +203,13 @@ New dependency of python-Pyramid</comment>
     <comment></comment>
     <requestid>1238255</requestid>
   </revision>
+  <revision rev="16" vrev="2">
+    <srcmd5>7fc3b66dd06bec14f5cc06004747f98c</srcmd5>
+    <version>3.1.1</version>
+    <time>1790697050</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to get the version during docs build.</comment>
+    <requestid>1381279</requestid>
+  </revision>
 </revisionlist>
