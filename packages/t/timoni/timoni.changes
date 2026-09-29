@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:53:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.35.0:
+  * Highlights
+    - The timoni build, timoni bundle build and timoni bundle apply
+      commands validate custom resources against their CRD schemas
+      and CEL rules, see bundle validation.
+    - The timoni bundle vet --offline command validates bundles
+      with Runtime values from environment variables, without
+      connecting to the clusters, see runtime values.
+    - Custom health checks fail fast on evaluation errors, and the
+      health check library now covers the Gateway API XBackend
+      kind.
+    - The release assets include a signed packslip for verifying
+      the downloaded binaries.
+    - Timoni is now built with Kubernetes 1.37.
+  * What's Changed
+    - fix(mod): tolerate conditional config field in mod vet in
+      #646
+    - feat(bundle): add --offline flag to bundle vet in #647
+    - feat(bundle): validate custom resources with CRD schema + CEL
+      in #648
+    - fix(runtime): fail fast on health check schema errors in #649
+    - build(deps): bump google.golang.org/grpc from 1.83.0 to
+      1.83.1 in #651
+    - build(deps): bump google.golang.org/grpc from 1.83.1 to
+      1.83.2 in #653
+    - fix: remove trailing c-directives-end marker from timoni
+      build YAML output in #657
+    - ci(release): Publish a signed packslip in #659
+    - build(deps): bump the ci group across 1 directory with 6
+      updates in #658
+    - Update dependencies to Kubernetes v1.37.1 in #660
+    - Update blueprint schemas to Kubernetes 1.37 in #661
+
+-------------------------------------------------------------------
 Thu Sep 17 05:05:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.34.0:
