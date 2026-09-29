@@ -391,4 +391,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1369262 from glaubitz)</comment>
     <requestid>1369267</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>6200d525a135d64d9795925feb5e2d30</srcmd5>
+    <version>25.2.0</version>
+    <time>1790697321</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 25.2.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1381157 from glaubitz)</comment>
+    <requestid>1381489</requestid>
+  </revision>
 </revisionlist>
