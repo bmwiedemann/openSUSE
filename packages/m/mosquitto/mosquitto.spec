@@ -1,7 +1,7 @@
 #
 # spec file for package mosquitto
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -16,6 +16,12 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
+%if 0%{?suse_version} >= 1699
+%bcond_with    local_apparmor_profile
+%else
+%bcond_without local_apparmor_profile
+%endif
 
 %define home    %{_localstatedir}/lib/%{name}
 %define c_lib   libmosquitto1
@@ -98,6 +104,21 @@ lightweight method of carrying out messaging using a publish/subscribe model.
 
 This package holds the development files.
 
+%if %{with local_apparmor_profile}
+%package apparmor
+Summary:        Apparmor profile for %{name}
+Group:          Productivity/Networking/Other
+Requires:       %{name} = %{version}-%{release}
+Supplements:    (apparmor and %{name})
+
+%description apparmor
+Mosquitto is a message broker that implements the
+MQ Telemetry Transport protocol versions 3.1 and 3.1.1. MQTT provides a
+lightweight method of carrying out messaging using a publish/subscribe model.
+
+This package adds the Apparmor profile files.
+%endif
+
 %package clients
 Summary:        Client for Mosquitto
 Group:          Productivity/Networking/Other
@@ -132,9 +153,11 @@ install -D -m 0644 %{SOURCE1} %{buildroot}%{_unitdir}/%{name}.service
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rc%{name}
 install -Dd -m 0750 %{buildroot}%{home}
 chmod -R o= %{buildroot}%{_sysconfdir}/%{name}/
+%if %{with local_apparmor_profile}
 install -D -m 644 security/mosquitto.apparmor %{buildroot}%{_sysconfdir}/apparmor.d/usr.sbin.mosquitto
 install -D -m 755 -d                          %{buildroot}%{_sysconfdir}/apparmor.d/local/
 echo "# Site-specific additions and overrides for 'usr.sbin.mosquitto'" > %{buildroot}%{_sysconfdir}/apparmor.d/local/usr.sbin.mosquitto
+%endif
 install -D -m 644 %{SOURCE4} %{buildroot}%{_sysconfdir}/mosquitto/conf.d/README
 install -D -m 644 %{SOURCE5} %{buildroot}%{_sysconfdir}/mosquitto/ca_certificates/README
 install -D -m 644 %{SOURCE6} %{buildroot}%{_sysconfdir}/mosquitto/certs/README
@@ -176,10 +199,14 @@ install -D -m 644 %{SOURCE2} %{buildroot}%{_sysusersdir}/%{name}-user.conf
 %{_libdir}/mosquitto_dynamic_security.so
 %{_sysusersdir}/%{name}-user.conf
 %dir %attr(-,%{name},%{name}) %{home}
+
+%if %{with local_apparmor_profile}
+%files apparmor
 %dir %{_sysconfdir}/apparmor.d/
 %dir %{_sysconfdir}/apparmor.d/local/
 %config %{_sysconfdir}/apparmor.d/usr.sbin.mosquitto
 %config(noreplace) %{_sysconfdir}/apparmor.d/local/usr.sbin.mosquitto
+%endif
 
 %files clients
 %license edl-v10 epl-v20 LICENSE.txt

@@ -325,4 +325,13 @@
 mosquitto 2.0.23 (boo#1258671)</comment>
     <requestid>1334368</requestid>
   </revision>
+  <revision rev="38" vrev="2">
+    <srcmd5>1930ab58543fbf20ea5471463b213b22</srcmd5>
+    <version>2.0.23</version>
+    <time>1790697030</time>
+    <user>anag_factory</user>
+    <comment>- Don't install apparmor profiles by default for Tumbleweed (already
+  part of apparmor-profiles)</comment>
+    <requestid>1381262</requestid>
+  </revision>
 </revisionlist>
