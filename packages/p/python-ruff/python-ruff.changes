@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 25 16:40:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.16.9:
+  * Avoid false positives for overloaded division (preview
+    rule RUF069)
+  * flake8-bugbear: avoid false positives for calls with
+    keyword arguments (B009, B010, B043)
+  * Assorted bug fixes (see upstream release notes)
+
+-------------------------------------------------------------------
 Thu Sep 17 07:02:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.16.8:

@@ -28,7 +28,7 @@
 %define origname python-ruff
 %bcond_without libalternatives
 Name:           %{origname}%{psuffix}
-Version:        0.16.8
+Version:        0.16.9
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 # Legal-Review-Notice: ruff itself is MIT, but the binary statically links
@@ -91,13 +91,16 @@ Ruff extremely fast Python linter written in rust supperseding many other lintin
 %check
 # The PyPI sdist does not ship crates/ruff_linter/resources/test/fixtures/,
 # so every ruff_linter rule test that reads a fixture file fails on a missing
-# path (2209 of its 2807 tests). Exclude that one crate, plus the single ruff
-# test that walks the same fixture tree, instead of disabling the whole suite -
+# path (2209 of its 2807 tests). Exclude that one crate, plus the ruff-crate
+# tests that walk the same fixture tree, instead of disabling the whole suite -
 # the rest of the workspace (parser, formatter, semantic model, notebooks, CLI,
 # server, doctests) runs entirely offline against the vendored dev-dependencies.
 # The leading "--" is required: %%cargo_test is a parametrised macro, so
 # without it rpm parses "--workspace" as a macro option and aborts the build.
-%{cargo_test -- --workspace --exclude ruff_linter -- --skip cache::tests::same_results::ruff_linter_fixtures}
+# The skip matches on the leaf name: upstream renamed the test to
+# same_results::test_case_1_ruff_linter_fixtures, so a fully qualified filter
+# silently stops matching and the test runs against the absent fixtures.
+%{cargo_test -- --workspace --exclude ruff_linter -- --skip ruff_linter_fixtures}
 %endif
 
 %if %{without test}

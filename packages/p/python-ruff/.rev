@@ -3717,4 +3717,24 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
   tinyvec_macros dropped; linked-crate count 298 -&gt; 297</comment>
     <requestid>1378539</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>66782817fce02e3924cb25e71b5dac2e</srcmd5>
+    <version>0.16.9</version>
+    <time>1790696754</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.16.9:
+  * Avoid false positives for overloaded division (preview
+    rule RUF069)
+  * flake8-bugbear: avoid false positives for calls with
+    keyword arguments (B009, B010, B043)
+  * Assorted bug fixes (see upstream release notes)
+- Fix the test flavour, which failed on the 0.16.9 source:
+  upstream renamed cache::tests::same_results::ruff_linter_fixtures
+  to same_results::test_case_1_ruff_linter_fixtures, so the fully
+  qualified --skip in %check no longer matched and the test ran
+  against the ruff_linter fixture tree that the PyPI sdist does
+  not ship. The skip now matches on the leaf name. Supersedes
+  declined SR 1380707.</comment>
+    <requestid>1380803</requestid>
+  </revision>
 </revisionlist>
