@@ -10,7 +10,9 @@
 
   <property name="project.artifactId" value="plexus-interpolation"/>
   <property name="project.groupId" value="org.codehaus.plexus"/>
-  <property name="project.version" value="1.28"/>
+  <property name="project.version" value="1.30.0"/>
+
+  <property name="module.name" value="org.codehaus.plexus.interpolation"/>
 
   <property name="compiler.release" value="8"/>
   <property name="compiler.source" value="1.${compiler.release}"/>
@@ -19,7 +21,9 @@
   <property name="build.finalName" value="${project.artifactId}-${project.version}"/>
   <property name="build.dir" value="target"/>
   <property name="build.outputDir" value="${build.dir}/classes"/>
+  <property name="build.outputDir9" value="${build.dir}/classes/META-INF/versions/9"/>
   <property name="build.srcDir" value="src/main/java"/>
+  <property name="build.srcDir9" value="src/main/java9"/>
   <property name="build.resourceDir" value="src/main/resources"/>
   <property name="build.testOutputDir" value="${build.dir}/test-classes"/>
   <property name="build.testDir" value="src/test/java"/>
@@ -61,6 +65,26 @@
         <pathelement location="${build.srcDir}"/>
       </src>
       <classpath refid="build.classpath"/>
+    </javac>
+    <mkdir dir="${build.outputDir9}"/>
+    <echo message="Build only module-info.java"/>
+    <javac destdir="${build.outputDir9}"
+           nowarn="true"
+           debug="true"
+           encoding="utf-8"
+           optimize="false"
+           deprecation="true"
+           release="9"
+           verbose="false"
+           fork="false">
+      <src>
+        <pathelement location="${build.srcDir9}"/>
+      </src>
+      <modulepath>
+        <path refid="build.classpath"/>
+      </modulepath>
+      <compilerarg value="--patch-module"/>
+      <compilerarg value="${module.name}=${build.outputDir}"/>
     </javac>
   </target>
 
@@ -195,9 +219,11 @@
          basedir="${build.outputDir}"
          excludes="**/package.html">
       <manifest>
+        <attribute name="Automatic-Module-Name" value="${module.name}"/>
         <attribute name="JavaPackages-ArtifactId" value="${project.artifactId}"/>
         <attribute name="JavaPackages-GroupId" value="${project.groupId}"/>
         <attribute name="JavaPackages-Version" value="${project.version}"/>
+        <attribute name="Multi-Release" value="true"/>
       </manifest>
     </jar>
   </target>

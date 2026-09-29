@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:53:51 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 1.30.0
+  * Documentation updates
+    + Describe the artifact in the POM
+  * Maintenance
+    + Rewrite README with usage, status and version guidance
+    + Restore the document metadata dropped when the page was ported
+    + Port the site documentation from APT to Markdown
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Update parent POM to 26
+    + Bump org.codehaus.plexus:plexus from 24 to 25
+- Changes of 1.29
+  * New features and bugfixes
+    + Add module-info.java for JPMS support using multi-release JAR
+    + Fix cache implementation in RegexBasedInterpolator and
+      MultiDelimiterStringSearchInterpolator
+  * Maintenance
+    + Replace wrongly labeled MIT License headers with Apache
+      License 2.0
+    + JUnit Jupiter best practices
+  * Dependency updates
+    + Bump org.codehaus.plexus:plexus to 24
+
+-------------------------------------------------------------------
 Wed Jun  4 14:59:17 UTC 2025 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 1.28

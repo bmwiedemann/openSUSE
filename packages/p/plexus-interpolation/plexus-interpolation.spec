@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-interpolation
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -16,9 +16,12 @@
 #
 
 
+# The automatic requires would be java-headless >= 9, but the
+# binaries are java 8 compatible
+%define __requires_exclude java-headless
 %bcond_with tests
 Name:           plexus-interpolation
-Version:        1.28
+Version:        1.30.0
 Release:        0
 Summary:        Plexus Interpolation API
 License:        Apache-1.1 AND Apache-2.0 AND MIT
@@ -28,7 +31,9 @@ Source0:        https://github.com/codehaus-plexus/%{name}/archive/%{name}-%{ver
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  fdupes
+BuildRequires:  java-devel >= 9
 BuildRequires:  javapackages-local >= 6
+Requires:       java-headless >= 1.8
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
