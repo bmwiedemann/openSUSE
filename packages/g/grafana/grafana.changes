@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Sep 17 13:01:40 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
+
+- Update to version 12.4.11:
+  * Security:
+    CVE-2026-15815: Fix Grafana Plugin extraction zip slip
+                    (bsc#1281451)
+    CVE-2026-76154: Fix Geomap MapLibre XSS
+    Fix CVE-2026-79656
+    CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: Fix
+    authentication bypass and deadlocks by bumping crypto/ssh
+    library to version 0.56.0 (bsc#1278576)
+    CVE-2026-84445: Fix DoS via crash due to missing `:authority`
+                    and `Host` headers in gRPC-Go xDS servers by
+                    bumping google.golang.org/grpc to version
+                    1.83.2 (bsc#1278936)
+    CVE-2026-84304: Fix Heap Memory Exhaustion via HTTP/2 DATA
+                    Frame Fragmentation in gRPC-Go by bumping it to
+                    version 1.83.2 (bsc#1279204)
+    CVE-2026-84303: Fix xDS RBAC HTTP Filter bypass via mixed-case
+                    Header Matching and gRFC A41 validation evasion
+                    by bumping google.golang.org/grpc to version
+                    1.83.2 (bsc#1279299)
+
+-------------------------------------------------------------------
 Wed Sep  2 10:24:13 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Update to version 12.4.10:
@@ -14,6 +38,9 @@ Wed Sep  2 10:24:13 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
     CVE-2026-19475: Fix DoS in PostgreSQL Datasource (bsc#1278307)
     CVE-2026-14199: Fix session takeover via Auth Proxy cache key
                     collision (bsc#1278322)
+    CVE-2026-83530: Bump github.com/google/cel-go to version 0.31.0
+                    to enforce expression size limit before source
+                    construction (bsc#1279990)
   * Bug fixes:
     Dashboards: Fix adhoc and groupby variable datasource on UI
                 import
