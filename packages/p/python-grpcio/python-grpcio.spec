@@ -19,7 +19,7 @@
 %global modname grpcio
 %{?sle15_python_module_pythons}
 Name:           python-grpcio
-Version:        1.81.1
+Version:        1.84.0
 Release:        0
 Summary:        HTTP/2-based Remote Procedure Call implementation
 License:        Apache-2.0
@@ -34,7 +34,7 @@ Patch3:         fix-return-values.patch
 BuildRequires:  %{python_module Cython >= 3.1.1}
 BuildRequires:  %{python_module devel >= 3.9}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module protobuf >= 6.31.1}
+BuildRequires:  %{python_module protobuf >= 7.35.1}
 BuildRequires:  %{python_module setuptools >= 77.0.1}
 BuildRequires:  %{python_module typing_extensions >= 4.13}
 BuildRequires:  %{python_module wheel >= 0.29}

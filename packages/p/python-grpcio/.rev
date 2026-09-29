@@ -684,4 +684,32 @@
   * Trim Python2 backward compatiblity syntax - removed (object) inheritance</comment>
     <requestid>1362251</requestid>
   </revision>
+  <revision rev="57" vrev="1">
+    <srcmd5>8b87640c1df33b08c3566048a4af1862</srcmd5>
+    <version>1.84.0</version>
+    <time>1790696772</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.84.0:
+  * Fix -Werror=unused-result error triggered by Cythonized code.
+  * Release Python 3.15 wheels publicly. (#43259)
+  * Fixed reference cycles. (#43121)
+  * fix: remove ghost key in grpc.aio.Metadata.delitem when last
+    value is deleted.
+  * Fix the StatusCode Enums to be int. (#43167)
+  * Fixed the parenthesis placement. (#43111)
+  * Removed UsageError exception from registered method. (#43086)
+  * Added registered methods support in AsyncIO stack . (#41796)
+  * AIO Part 4 - Typehints fixes and add Pyright for aio/_channel.py. (#42736)
+  * grpc-status: Relax protobuf dependency lower bound to allow 6.x. (#43000)
+  * Observability plugin fixes. (#42785)
+
+- update to 1.82.1:
+  * Update lower bound for protobuf from 6.33.5 to 7.35.1
+  * [Pyright] Part 2 - Pyright for src/python/grpcio/grpc/aio/_call.py.
+  * [aio] Fix issue #42393: 100% CPU when Python run with -O flag.
+  * [Typeguard] Part 6 - Add Typeguard SYNC Stack in tests.
+  * [Pyright] Part 3 - Pyright for src/python/grpcio/grpc/aio/_metadata.py.
+  * Cancel calls without closing channels in fork child</comment>
+    <requestid>1381000</requestid>
+  </revision>
 </revisionlist>
