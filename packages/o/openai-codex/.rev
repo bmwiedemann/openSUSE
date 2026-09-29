@@ -457,4 +457,15 @@ errors, 0 warnings, 0 badness across 5 packages.</comment>
     <comment>Update to 0.156.1: GPT-6 model catalog hotfix. Refresh vendor (quinn/rustls advisories fixed upstream); add recursion-limit workaround for rustc query-depth overflow.</comment>
     <requestid>1380121</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>ee6af35455b27081ca9054c9bd31054f</srcmd5>
+    <version>0.158.0</version>
+    <time>1790697042</time>
+    <user>anag_factory</user>
+    <comment>Updates to 0.158.0.
+
+Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for a 19 GB peak rustc, so _constraints now asks for 32 GB, %limit_build is sized so a 16 GB worker builds -j1 rather than the still-fatal -j2, and %check is capped explicitly because %limit_build never reached it. Built green locally on aarch64 with all 856 tests passing and 0 rpmlint badness, but I could not verify that OBS actually grants a 32 GB worker for this package - if x86_64 OOMs again, the lever is the memory constraint, not a lower -m. Details in .changes.
+</comment>
+    <requestid>1381272</requestid>
+  </revision>
 </revisionlist>

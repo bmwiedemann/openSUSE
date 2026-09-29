@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.156.1
+Version:        0.158.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -171,11 +171,18 @@ rm -rf codex-rs/v8-poc codex-rs/code-mode-runtime codex-rs/code-mode-host
 %build
 # %%cargo_build otherwise fans out one job per CPU, which OOM-kills the build
 # on many-core workers. Cap the job count by available memory (paired with
-# _constraints). 4000 rather than the usual 2000 because a single rustc here
-# wants 4-5 GB: at 2000 an aarch64 worker with 22 GB took -j8 and the kernel
-# OOM-killed rustc while compiling codex-tui, whereas -j4 on a 16 GB x86_64
-# worker (3.9 GB per job) was fine.
-%limit_build -m 4000
+# _constraints). %%limit_build counts swap, so the 16 GB x86_64 worker that
+# OOM-killed 0.157.0 (devel:tools srcmd5 76da4e11, 2026-09-25) had 20.5 GB to
+# spend, and -m 4000 gave it -j4. 12000 is the smallest value that still
+# gives such a worker -j1: codex-tui peaks at 16 GB and the final codex link
+# at 19 GB, the peak of the whole build, so even two of them do not fit in
+# 20.5 GB and at -j2 cargo guarantees a live sibling. Not the 19000 that
+# 19 GB peak suggests - it is one crate out of 850, and charging it to
+# every job would serialise a 4-core worker. _constraints asks for 32 G
+# instead, where 12000 gives -j3. That same srcmd5 built fine on a 32 GB
+# aarch64 worker: the limit was worker size, not the sources. Do not lower
+# this again without re-measuring those two peaks.
+%limit_build -m 12000
 # Belt and braces: the bwrap crate is not in codex-cli's dependency graph, but
 # should it ever become one, this keeps its build script from compiling and
 # bundling a private bubblewrap. The sandbox launcher looks up the system bwrap
@@ -253,6 +260,11 @@ install -d %{buildroot}%{_datadir}/zsh/site-functions
 # these the test profile would rebuild them with the library bundled.
 export LIBSQLITE3_SYS_USE_PKG_CONFIG=1
 export RUSTONIG_SYSTEM_LIBONIG=1
+# %%limit_build reaches %%build alone: it sets _threads inside that section's
+# shell, so %%check expands %%{?_smp_mflags} back to -j$(nproc) and links the
+# test harnesses with every core - 33 GB measured at -j32, on top of what
+# %%build already peaked at. Cap this section too.
+%global _smp_mflags -j2
 cd codex-rs
 # Deliberately an allowlist rather than --workspace. --workspace cannot be used
 # at all: it reaches the members Patch0 removes. Beyond that the choice is one

@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:20:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.158.0:
+  * Copy-on-select and configurable right-click paste in the
+    fullscreen TUI; copied transcript selections keep their
+    Markdown formatting
+  * MCP servers needing pre-registered OAuth client secrets are
+    supported, including via codex mcp add --oauth-client-secret
+  * Direct exec-server WebSocket connections can be secured with
+    bearer tokens, including when configured through app-server
+  * Image generation and editing can request transparent
+    backgrounds, and edits accept file-backed conversation images
+  * Terminal input approval is enabled by default for commands
+    running with elevated permissions
+  * Linux sandbox starts correctly with nested writable roots, and
+    Git metadata protections are preserved across writable roots
+  * Approval reviews retry when new user input arrives instead of
+    aborting a pending action
+  * Mermaid flowcharts render quoted labels and ampersands
+  * Command completion events carry early output and report
+    process-launch failures
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * Vendored dependency set is unchanged - no third-party crate
+    moved - so the bare-lockfile audit still reports the same four
+    RUSTSEC advisories
+  * CVE-2026-93657 (boo#1282184): not affected, the vendored and
+    linked hickory-resolver is 0.25.2 and resolves with no dnssec
+    feature, which this CVE and RUSTSEC-2026-0118 both require
+  * CVE-2026-91986 (boo#1281744): not affected, the vendored and
+    linked gix-transport is 0.55.1 and is pulled in with default
+    features only, so the git-daemon connect request this CVE
+    injects into is never compiled
+  * codex-drop-v8-code-mode.patch: refresh the context around the
+    new websocket-auth workspace member upstream added
+- Fix the build OOM that declined 0.157.0: ask _constraints for a
+  32 GB worker instead of 16, size %limit_build so a 16 GB worker
+  builds -j1 rather than the -j2 that is still fatal, and cap the
+  test phase, which %limit_build does not reach
+
+-------------------------------------------------------------------
+Fri Sep 25 14:56:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.157.0:
+  * GPT-6 Sol/Luna model support incl. Bedrock, fullscreen
+    transcripts, background-server autostart, fork shortcut,
+    remote/local import, terminal rendering improvements
+  * Refresh the vendored dependencies (no new advisories in
+    the bare-lockfile audit)
+
+-------------------------------------------------------------------
 Wed Sep 23 17:02:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.156.1:

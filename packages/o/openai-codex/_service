@@ -11,11 +11,11 @@
     feature and leaves the lockfile, hence the vendored set, untouched.
     To regenerate:
 
-      tar xf codex-rust-v0.156.1.tar.gz
-      patch -p1 -d codex-rust-v0.156.1 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.156.1/codex-rs/vendor
+      tar xf codex-rust-v0.158.0.tar.gz
+      patch -p1 -d codex-rust-v0.158.0 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.158.0/codex-rs/vendor
       osc service manualrun cargo_vendor
-      rm -rf codex-rust-v0.156.1
+      rm -rf codex-rust-v0.158.0
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -32,9 +32,9 @@
     cargo-audit is NOT clean, and running it inside codex-rs hides most of it:
     upstream's codex-rs/.cargo/audit.toml ignores 11 advisories, which drops
     the count from 4 to 1 on upstream's own lockfile.  Audit a bare copy of
-    Cargo.lock instead.  As of 0.156.1, the bare lock reports four (the
-    0.155.1 quinn-proto and rustls advisories are fixed upstream in
-    0.11.15 and 0.23.45):
+    Cargo.lock instead.  As of 0.158.0, the bare lock still reports
+    the same four (the 0.155.1 quinn-proto and rustls advisories are
+    fixed upstream in 0.11.15 and 0.23.45):
       RUSTSEC-2026-0194, RUSTSEC-2026-0195 (quick-xml 0.39.4, DoS) - linked
         via codex-tui -> syntect -> plist.  Fixed in 0.41.0, which is
         semver-incompatible for plist, so update-crate cannot reach it.
@@ -42,13 +42,25 @@
         linked via codex-network-proxy -> rama-tcp -> rama-dns ->
         hickory-resolver.  0118 has no fixed release at all; 0119 needs
         0.26.1, semver-incompatible for hickory-resolver.
-    None of the four carries a CVE id (GHSA/RUSTSEC-only), so there is no
-    security-tracker exposure.  Re-run the bare-lockfile audit on
-    each bump - the fix for the linked four is an upstream dependency bump,
-    not anything this package can vendor around.
+    None of the four carries a CVE id, but they are not invisible to the
+    security tracker either: RUSTSEC-2026-0118 is aliased
+    GHSA-3v94-mw7p-v465, and boo#1282184 (CVE-2026-93657) is filed
+    against this package for hickory-resolver 0.25.2, the crate the
+    advisories above are reached through.  0118 is unreachable here even
+    so - the linked hickory-resolver resolves with system-config and tokio
+    and no dnssec-ring/dnssec-aws-lc-rs feature, which is 0118's own
+    precondition, and the same missing feature keeps CVE-2026-93657 out
+    (it needs DNSSEC validation on).  boo#1281744 (CVE-2026-91986) is the
+    same story for the other linked crate: the linked gix-transport 0.55.1
+    is pulled in with default features only, so the git-daemon connect
+    builder the CVE injects into is never compiled.  All three bugs are
+    WONTFIX on those grounds and are cited in openai-codex.changes, so the
+    next sweep does not redo the triage.  Re-run the bare-lockfile audit
+    on each bump - the fix for the linked four is an upstream dependency
+    bump, not anything this package can vendor around.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.156.1/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.158.0/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>

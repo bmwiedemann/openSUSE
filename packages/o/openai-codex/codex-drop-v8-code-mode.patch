@@ -9,11 +9,18 @@ ships as Stage::UnderDevelopment with default_enabled = false, so removing them
 does not change the behaviour of the shipped codex binary.  Dropping them also
 keeps ~213 MB of unbuilt V8 sources out of the vendor bundle.
 
+The code_mode_host flag naming one of the dropped members is Stage::Stable and
+on by default, but it only selects the session provider in
+core/src/thread_manager.rs, and the surviving provider spawns the very
+codex-code-mode-host binary this patch drops; the in-process alternative lived
+in the removed code-mode-runtime.  Either way the code_mode tool is registered
+only when the UnderDevelopment code_mode flag is on.
+
 Downstream-only distribution policy, not suitable for upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -25,9 +25,7 @@
+@@ -26,9 +26,7 @@
      "install-context",
      "codex-backend-openapi-models",
      "code-mode",
@@ -23,23 +30,23 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -104,7 +102,6 @@
+@@ -109,7 +107,6 @@
      "tui",
      "user-verification",
      "tools",
 -    "v8-poc",
+     "websocket-auth",
      "websocket-client",
      "windows-sandbox-service",
-     "worktree",
-@@ -191,7 +188,6 @@
+@@ -197,7 +194,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
 -codex-code-mode-runtime = { path = "code-mode-runtime" }
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
- codex-websocket-client = { path = "websocket-client" }
-@@ -299,7 +295,6 @@
+ codex-websocket-auth = { path = "websocket-auth" }
+@@ -310,7 +306,6 @@
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
  codex-user-verification = { path = "user-verification" }
@@ -47,7 +54,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  core_test_support = { path = "core/tests/common" }
-@@ -517,7 +512,6 @@
+@@ -534,7 +529,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
@@ -55,7 +62,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
-@@ -578,7 +572,6 @@
+@@ -595,7 +589,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",
