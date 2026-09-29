@@ -20,7 +20,7 @@ Name:           gojq
 Version:        0.12.19
 Release:        0
 Summary:        Pure Go implementation of jq
-License:        MIT
+License:        Apache-2.0 AND MIT AND BSD-3-Clause
 URL:            https://github.com/itchyny/gojq
 Source0:        %{url}/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
