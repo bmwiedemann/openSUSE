@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Sep 28 07:11:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.6.0:
+  + feat: Add Shadert0y Plugin for GLSL Effects
+  + c0rners: avoid unnecessary geometry map rebuilds
+  + perf(c0rners): process RGBA together in Lanczos interpolation
+  + build(cmake): replace GNUmakefile with presets
+  + test(api): enforce plugin-wide contracts
+  + feat: new filter 3dperspective
+- Add pkgconfig(egl) BuildRequires: New dependency.
+
+-------------------------------------------------------------------
 Tue Aug 25 12:40:07 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.5.0:

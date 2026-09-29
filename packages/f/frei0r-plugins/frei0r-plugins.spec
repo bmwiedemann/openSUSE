@@ -17,7 +17,7 @@
 
 
 Name:           frei0r-plugins
-Version:        3.5.0
+Version:        3.6.0
 Release:        0
 Summary:        Collection of video sources and filters plugins
 # Upstream says 2.0+ but quite few of their plugins are GPL-3.0+
@@ -30,6 +30,7 @@ BuildRequires:  c++_compiler
 BuildRequires:  cmake
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(cairo) >= 1.0.0
+BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(gavl) >= 0.2.3
 BuildRequires:  pkgconfig(opencv4)
 
