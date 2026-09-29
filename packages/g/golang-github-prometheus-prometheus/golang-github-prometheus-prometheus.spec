@@ -27,7 +27,7 @@
 %endif
 
 Name:           golang-github-prometheus-prometheus
-Version:        3.14.0
+Version:        3.15.0
 Release:        0
 Summary:        The Prometheus monitoring system and time series database
 License:        Apache-2.0
@@ -98,7 +98,7 @@ tar xf %{SOURCE2}
 %build
 rm -f npm_licenses.tar.bz2 npm_licenses
 ln -s . npm_licenses
-find npm_licenses/web/ui/node_modules -iname "license*" | tar cfj npm_licenses.tar.bz2 --files-from=-
+find npm_licenses/web/ui/node_modules -iname "license*" | sort | tar --format=gnu --mtime="@${SOURCE_DATE_EPOCH}" -cjf npm_licenses.tar.bz2 --files-from=-
 rm -f npm_licenses
 ./scripts/compress_assets.sh
 %ifarch i586 s390x armv7hl armv7l armv7l:armv6l:armv5tel armv6hl
