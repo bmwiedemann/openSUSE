@@ -1,6 +1,8 @@
---- ocl-icd-2.3.4/ocl_icd_loader.c
+Index: ocl-icd-2.3.4/ocl_icd_loader.c
+===================================================================
+--- ocl-icd-2.3.4.orig/ocl_icd_loader.c
 +++ ocl-icd-2.3.4/ocl_icd_loader.c
-@@ -274,8 +274,7 @@
+@@ -274,8 +274,7 @@ static inline unsigned int _open_driver(
    RETURN(num_icds);
  }
  
@@ -10,7 +12,7 @@
    struct dirent *ent;
    while( (ent=readdir(dir)) != NULL ){
      if(! _string_end_with_icd(ent->d_name)) {
-@@ -848,19 +847,29 @@
+@@ -848,19 +847,29 @@ static void __initLayers( void ) {
  static void __initClIcd( void ) {
    debug_init();
    cl_uint num_icds = 0;
@@ -42,7 +44,7 @@
      is_dir=1;
    }
    if (!is_dir) {
-@@ -879,23 +888,39 @@
+@@ -879,23 +888,39 @@ static void __initClIcd( void ) {
      num_icds = 1;
      dir=NULL;
    } else {
@@ -54,7 +56,6 @@
 -      if (errno == ENOTDIR) {
 -        debug(D_DUMP, "%s is not a directory, trying to use it as a ICD libname",
 -	  dir_path);
--      }
 +      if (dir_path2) {
 +        debug(D_WARN, "Cannot open '%s'. Trying '%s'", dir_path, dir_path2);
 +        dir2 = opendir(dir_path2);
@@ -75,27 +76,23 @@
 +        dir2 = opendir(dir_path2);
 +        if (dir2 != NULL)
 +          num_icds2 = _find_num_icds(dir2);
-+      }
-+    }
-+
+       }
+-      goto abort;
+     }
+ 
+-    num_icds = _find_num_icds(dir);
+-    if(num_icds == 0) {
 +    if ((num_icds + num_icds2) == 0) {
        goto abort;
      }
--
--    num_icds = _find_num_icds(dir);
--    if(num_icds == 0) {
--      goto abort;
--    }
--  }
--
+   }
+ 
 -  _icds = (struct vendor_icd*)malloc(num_icds * sizeof(struct vendor_icd));
-+  }
-+
 +  _icds = (struct vendor_icd*)malloc((num_icds + num_icds2) * sizeof(struct vendor_icd));
    if (_icds == NULL) {
      goto abort;
    }
-@@ -904,16 +929,18 @@
+@@ -904,16 +929,21 @@ static void __initClIcd( void ) {
      if (_string_end_with_icd(dir_path)) {
        num_icds = 0;
        if (! _string_with_slash(dir_path)) {
@@ -111,29 +108,32 @@
      }
    } else {
 -    num_icds = _open_drivers(dir, dir_path);
-+    num_icds = _open_drivers(0, dir, dir_path);
++    if (dir)
++      num_icds = _open_drivers(0, dir, dir_path);
++    else
++      num_icds = 0;
 +    if (dir2)
 +      num_icds = _open_drivers(num_icds, dir2, dir_path2);
    }
    if(num_icds == 0) {
      goto abort;
-@@ -931,6 +958,9 @@
- 
+@@ -932,6 +962,9 @@ static void __initClIcd( void ) {
    if (dir != NULL){
      closedir(dir);
-+  }
+   }
 +  if (dir2 != NULL){
 +    closedir(dir2);
-   }
++  }
    __initLayers();
    return;
-@@ -942,6 +972,9 @@
-   }
+  abort:
+@@ -943,6 +976,9 @@ static void __initClIcd( void ) {
    if (dir != NULL){
      closedir(dir);
-+  }
+   }
 +  if (dir2 != NULL){
 +    closedir(dir2);
-   }
++  }
    return;
  }
+ 

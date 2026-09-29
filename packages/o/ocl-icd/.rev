@@ -199,4 +199,13 @@
     <comment>1</comment>
     <requestid>1379692</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>98827956a989dcda2ef242f88ea184b1</srcmd5>
+    <version>2.3.4</version>
+    <time>1790697275</time>
+    <user>anag_factory</user>
+    <comment>- n_UsrShare-twopaths-2.3.4-v2.patch
+  * prevent crash if /etc/OpenCL/vendors is not available (boo#1282789)</comment>
+    <requestid>1381470</requestid>
+  </revision>
 </revisionlist>

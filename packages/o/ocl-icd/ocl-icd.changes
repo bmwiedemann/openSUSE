@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 12:17:18 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- n_UsrShare-twopaths-2.3.4-v2.patch
+  * prevent crash if /etc/OpenCL/vendors is not available (boo#1282789)
+
+-------------------------------------------------------------------
 Tue Sep 22 13:05:03 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - n_UsrShare-twopaths-2.3.4-v2.patch
