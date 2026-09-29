@@ -1,0 +1,50 @@
+From a13fb00196c2b5d56b989a76c5dd4c4bc4aafd31 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Tue, 29 Sep 2026 12:16:58 +1000
+Subject: [PATCH] Remove external mock dependency
+
+Python 3.4 added mock to the unittest module, and we support a much
+newer version than that, so drop the requirement.
+---
+ pyproject.toml                 | 2 +-
+ test/requirements.txt          | 1 -
+ test/unit/test_dropbox_unit.py | 2 +-
+ 3 files changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/pyproject.toml b/pyproject.toml
+index cdaac3de..24c701a9 100644
+--- a/pyproject.toml
++++ b/pyproject.toml
+@@ -34,7 +34,7 @@ Homepage = "http://www.dropbox.com/developers"
+ Source = "https://github.com/dropbox/dropbox-sdk-python"
+ 
+ [project.optional-dependencies]
+-test = ["pytest", "mock", "pytest-mock", "coverage", "stone>=3.5.3,<4"]
++test = ["pytest", "pytest-mock", "coverage", "stone>=3.5.3,<4"]
+ docs = ["sphinx", "sphinx_rtd_theme"]
+ dev = ["flake8", "twine", "wheel", "build"]
+ 
+diff --git a/test/requirements.txt b/test/requirements.txt
+index 65d087ab..2d395953 100644
+--- a/test/requirements.txt
++++ b/test/requirements.txt
+@@ -1,5 +1,4 @@
+ pytest
+-mock
+ pytest-mock
+ coverage
+ stone>=3.5.3,<4
+diff --git a/test/unit/test_dropbox_unit.py b/test/unit/test_dropbox_unit.py
+index 31a4e8d4..0a8bb30f 100644
+--- a/test/unit/test_dropbox_unit.py
++++ b/test/unit/test_dropbox_unit.py
+@@ -4,8 +4,8 @@
+ import json
+ import pickle
+ from datetime import datetime, timedelta
++from unittest import mock
+ 
+-import mock
+ import pytest
+ import requests
+ 

@@ -143,4 +143,24 @@
     <comment></comment>
     <requestid>1274587</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>67df8a4ba2f0e14f50110cf48039b47c</srcmd5>
+    <version>12.2.2</version>
+    <time>1790697044</time>
+    <user>anag_factory</user>
+    <comment>- Update to 12.2.2:
+  * Automatically add content hashes to uploads
+  * Migrate packaging from setup.py to pyproject.toml (PEP 517/621)
+  * Fix client bugs: refresh retry, error parsing, clone user-agent, scope
+    validation
+  * Remove redundant ply entry from requirements.txt
+  * Modernize GitHub Actions in coverage and spec_update workflows
+  * Drop six dependency and require Python 3.11+
+  * Fix release workflow so sdist install works under setuptools &gt;= 82
+  * Remove pytest-runner / setup.py test support
+- Remove patch remove_six.patch, included upstream.
+- Add patch remove-mock.patch:
+  * Do not require external mock module.</comment>
+    <requestid>1381274</requestid>
+  </revision>
 </revisionlist>

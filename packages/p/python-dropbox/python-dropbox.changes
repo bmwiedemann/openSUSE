@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:32:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 12.2.2:
+  * Automatically add content hashes to uploads
+  * Migrate packaging from setup.py to pyproject.toml (PEP 517/621)
+  * Fix client bugs: refresh retry, error parsing, clone user-agent, scope
+    validation
+  * Remove redundant ply entry from requirements.txt
+  * Modernize GitHub Actions in coverage and spec_update workflows
+  * Drop six dependency and require Python 3.11+
+  * Fix release workflow so sdist install works under setuptools >= 82
+  * Remove pytest-runner / setup.py test support
+- Remove patch remove_six.patch, included upstream.
+- Add patch remove-mock.patch:
+  * Do not require external mock module.
+
+-------------------------------------------------------------------
 Mon May  5 11:26:23 UTC 2025 - Felix Stegmeier <felix.stegmeier@suse.com>
 
 - Update to 12.0.2
