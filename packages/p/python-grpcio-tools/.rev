@@ -378,4 +378,14 @@
   * Add type stub generation support to grpcio-tools. (#30498)</comment>
     <requestid>1349870</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>5fcbe835dc822e3afb3d864401ff36da</srcmd5>
+    <version>1.84.0</version>
+    <time>1790696921</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.84.0:
+  * Python 3.15 support
+  * align with grpc 1.84.0</comment>
+    <requestid>1381002</requestid>
+  </revision>
 </revisionlist>
