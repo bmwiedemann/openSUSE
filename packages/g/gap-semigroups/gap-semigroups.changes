@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 28 16:27:14 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 5.7.0
+  * Fix a memory leak in GAPBIND14_TRY
+  * doc: don't document `Integers` as a *filter*
+  * Removed moduleState init from gapbind14 kernel extension
+  * Error out when trying to multiply bipartitions of different
+    degree
+  * Ignore whitespace in `ParseRelations` function
+  * Reduced size of `CanonicalDigraph`
+  * Add PreImagesSet method for semigroup homs
+  * Added the zero element to the generating set for graph inverse
+    semigroups with at most one vertex.
+
+-------------------------------------------------------------------
 Sat May 16 18:45:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 5.6.3

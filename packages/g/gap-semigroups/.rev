@@ -120,4 +120,12 @@
     <comment>- Update to release 5.6.3</comment>
     <requestid>1353555</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>34f1219d7789963429ca03150718e2a0</srcmd5>
+    <version>5.7.0</version>
+    <time>1790696953</time>
+    <user>anag_factory</user>
+    <comment>- Update to release 5.7.0</comment>
+    <requestid>1381225</requestid>
+  </revision>
 </revisionlist>
