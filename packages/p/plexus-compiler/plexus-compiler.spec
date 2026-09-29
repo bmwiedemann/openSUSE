@@ -17,7 +17,7 @@
 
 
 Name:           plexus-compiler
-Version:        2.16.2
+Version:        2.17.1
 Release:        0
 Summary:        Compiler call initiators for Plexus
 License:        Apache-2.0 AND MIT

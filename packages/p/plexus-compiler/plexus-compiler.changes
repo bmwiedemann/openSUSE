@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:49:46 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 2.17.1
+  * Bug Fixes
+    + Restore the -Xlint category on in-process javac warnings
+    + Skip blank annotation processor names in javac and eclipse
+    + Fix aspectj-compiler IT for Maven 4 stdout prefixing
+  * Documentation updates
+    + Stop pinning a version in the README snippet
+  * Build
+    + Point the SCM URLs at HTTPS
+    + Draft the version the labels imply, not always a patch
+  * Dependency updates
+    + Bump org.eclipse.jdt:ecj from 3.46.0 to 3.46.100
+    + Bump com.google.guava:guava from 33.6.0-jre to 33.7.1-jre
+- Changes of version 2.17.0
+  * New features and improvements
+    + Establish automatic module names
+    + Quote javac argument files
+  * Bug Fixes
+    + Forward javac notes, including the multi-line ones
+    + Report javac output that no classifier recognised
+    + Fix off by one column in diagnostic when using "forked"
+      execution of javac.
+  * Maintenance
+    + Bump remoting in the MCOMPILER-346 reproducer
+    + Remove the Maven and commons-lang dependencies from the
+      compiler TCK
+    + Depend on the resolver directly instead of maven-core
+    + Count warnings by kind, not by subtraction
+    + Drop two properties the build does not need
+    + Drop the managed plexus-component-annotations entry
+    + Rewrite README with usage, status and version guidance
+    + Restore the document metadata dropped when the page was ported
+    + Format the converted site page to the project's spotless rules
+    + Port the site documentation from APT to Markdown
+    + Remove Hamcrest dependency and replace with JUnit assertions
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Bump plexus-utils to 4.1.0
+    + Depend on the resolver directly instead of maven-core
+    + Update parent POM to 26
+    + Bump org.apache.maven:maven-core from 3.6.3 to 3.8.1 in
+      /plexus-compiler-test
+    + Bump eclipse.sisu.version from 0.9.0.M4 to 1.1.0
+    + Bump org.eclipse.jdt:ecj from 3.44.0 to 3.46.0
+    + Bump org.apache.maven.plugins:maven-invoker-plugin from 3.9.1
+      to 3.10.1
+    + Bump com.google.guava:guava from 33.5.0-jre to 33.6.0-jre
+    + Bump commons-lang:commons-lang from 2.0 to 2.6
+    + Bump org.codehaus.plexus:plexus-utils from 4.0.2 to 4.0.3 in
+      /plexus-compiler-manager
+    + Bump org.apache.maven.plugins:maven-compiler-plugin from
+      3.14.1 to 3.15.0
+
+-------------------------------------------------------------------
 Fri Feb 27 15:10:24 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream release 2.16.2
