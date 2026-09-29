@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:11:51 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
+
+- Update to 1.26.1:
+  * Fix CVE-2026-81642, Heap buffer overflow and possible Remote Code
+    Execution when digesting DNSKEY.
+    [bsc#1280411]
+  * Fix CVE-2026-81634, Possible heap buffer overflow during DNSSEC
+    canonicalization.
+    [bsc#1280409]
+  * Fix CVE-2026-82717, CNAME synthesis could lead to heap
+    corruption.
+    [bsc#1280412]
+  * Fix CVE-2026-77955, Possible ZONEMD verification bypass window.
+    [bsc#1280404]
+  * Fix CVE-2026-78227, Use-after-free in DoQ stream output buffer
+    on reset re-transmission.
+    [bsc#1280405]
+  * Fix CVE-2026-80225, Possible degradation of service from
+    continuous queries on the same TCP/DoT connection.
+    [bsc#1280406]
+  * Fix CVE-2026-82720, Use-after-free in DoH stream cleanup code
+    path.
+    [bsc#1280413]
+  * Fix CVE-2026-85501, Retrap: Novel Vulnerabilities to launch
+    Algorithmic Complexity Attacks on DNSSEC.
+    [bsc#1280414]
+  * Fix CVE-2026-77860, 'serve-expired' can bypass Unbound
+    'wait-limit'.
+    [bsc#1280403]
+
+-------------------------------------------------------------------
 Fri Aug 14 18:15:45 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Add patch to fix build issue with swig 4.5
