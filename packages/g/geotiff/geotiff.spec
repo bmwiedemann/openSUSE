@@ -64,8 +64,8 @@ GeoTIFF keys in new files.
 %autosetup -n lib%{name}-%{version}
 
 %build
-export CFLAGS="%{optflags} $CFLAGS -g -fstack-protector -fno-strict-aliasing -D _BSD_SOURCE"
-export CXXFLAGS="%{optflags} $CXXFLAGS -g -fstack-protector -fno-strict-aliasing"
+export CFLAGS="%{optflags} $CFLAGS -g -fno-strict-aliasing -D _BSD_SOURCE"
+export CXXFLAGS="%{optflags} $CXXFLAGS -g -fno-strict-aliasing"
 %configure \
 	--prefix=%{_prefix} \
 	--includedir=%{_includedir}/lib%{name} \
