@@ -79,7 +79,7 @@ information about processes and system resources.
 
 %build
 %make_build \
-    	  OPTFLAGS="%{optflags} -fstack-protector" \
+    	  OPTFLAGS="%{optflags}" \
     	  CC="gcc"
 
 %install

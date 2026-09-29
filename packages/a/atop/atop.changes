@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from OPTFLAGS (predates distro -fstack-protector-strong in optflags; the trailing basic flag silently downgraded strong to basic)
+
+-------------------------------------------------------------------
 Sun Jul 26 14:35:12 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to 2.13.0:
