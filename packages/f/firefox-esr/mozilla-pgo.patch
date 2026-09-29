@@ -1,6 +1,7 @@
 # HG changeset patch
 # User Wolfgang Rosenauer <wr@rosenauer.org>
 # Parent  73147e14b378957cdb8516125df34111d2699fe9
+# Rebased by Manfred Hollstein <manfred.h@gmx.net>
 
 Index: mozilla-esr153/build/moz.configure/lto-pgo.configure
 ===================================================================
@@ -137,7 +138,7 @@ Index: mozilla-esr153/toolkit/components/terminator/nsTerminator.cpp
 ===================================================================
 --- mozilla-esr153.orig/toolkit/components/terminator/nsTerminator.cpp
 +++ mozilla-esr153/toolkit/components/terminator/nsTerminator.cpp
-@@ -392,6 +392,11 @@ void nsTerminator::StartWatchdog() {
+@@ -382,6 +382,11 @@ void nsTerminator::StartWatchdog() {
    }
  #endif
  
@@ -146,6 +147,6 @@ Index: mozilla-esr153/toolkit/components/terminator/nsTerminator.cpp
 +  // silently produce poorly performing binary.
 +  crashAfterMS = INT32_MAX;
 +
-   UniquePtr<Options> options(new Options());
-   // Guarantee that crashAfterTicks is non-zero
-   options->crashAfterTicks = std::max(1, crashAfterMS / HEARTBEAT_INTERVAL_MS);
+   // Guarantee that gCrashAfterTicks is non-zero
+   gCrashAfterTicks = std::max(1, crashAfterMS / HEARTBEAT_INTERVAL_MS);
+ 
