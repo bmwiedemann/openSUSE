@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-parsel
-Version:        1.12.0
+Version:        1.12.1
 Release:        0
 Summary:        Library to extract data from HTML and XML using XPath and CSS selectors
 License:        BSD-3-Clause
@@ -32,15 +32,14 @@ BuildRequires:  python-rpm-macros
 Requires:       python-cssselect >= 1.2.0
 Requires:       python-jmespath >= 1.0.0
 Requires:       python-lxml >= 5.1
-Requires:       python-packaging >= 23
 Requires:       python-w3lib >= 1.19.0
 BuildArch:      noarch
 # SECTION test requirements
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module cssselect >= 1.2.0}
 BuildRequires:  %{python_module jmespath >= 1.0.0}
 BuildRequires:  %{python_module lxml >= 5.1}
 BuildRequires:  %{python_module psutil}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module sybil}
 BuildRequires:  %{python_module w3lib >= 1.19.0}
 # /SECTION

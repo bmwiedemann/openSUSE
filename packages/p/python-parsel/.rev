@@ -192,4 +192,13 @@
     <comment>Update to 1.12.0 (patch release).</comment>
     <requestid>1380704</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f8a23903476715d1bf031a1a1b3622f4</srcmd5>
+    <version>1.12.1</version>
+    <time>1790697204</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.12.1, fixing unbounded memory growth on every xpath() and css() call (needs lxml 5.4.0+ and libxml2 2.13+ to reproduce); selection results are unchanged. Dropped the unused python-packaging dependency.
+</comment>
+    <requestid>1381373</requestid>
+  </revision>
 </revisionlist>

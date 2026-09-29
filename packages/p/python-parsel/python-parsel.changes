@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:26:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.12.1:
+  * Fixed unbounded memory growth on every xpath() and css() call
+    caused by the EXSLT namespaces being re-registered on a cached
+    evaluator. Needs lxml 5.4.0 or later and libxml2 2.13 or later
+    to reproduce; selection and extraction results are unchanged.
+- Dropped the unneeded python-packaging dependency, upstream
+  stopped declaring it in 1.12.0 and the code never imports it.
+- Spec cleanup: sorted the test BuildRequires alphabetically.
+
+-------------------------------------------------------------------
 Fri Sep 25 16:30:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.12.0 (patch release, no upstream
