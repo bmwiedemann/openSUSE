@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 12:30:30 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to version 2.12.1
+  * Maintenance
+    + Rewrite README with usage, status and version guidance
+    + Convert the site documents from xdoc to Markdown
+  * Build
+    + Update parent to plexus 27
+  * Dependency updates
+    + Update parent POM to 26
+    + Bump org.jacoco:jacoco-maven-plugin from 0.8.14 to 0.8.15
+
+-------------------------------------------------------------------
 Mon May 25 13:48:34 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to version 2.12.0

@@ -18,7 +18,7 @@
 
 %global short_name classworlds
 Name:           plexus-%{short_name}
-Version:        2.12.0
+Version:        2.12.1
 Release:        0
 Summary:        Plexus Classworlds Classloader Framework
 License:        Apache-2.0 AND Plexus
