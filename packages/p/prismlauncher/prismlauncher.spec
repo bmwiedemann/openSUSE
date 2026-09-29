@@ -19,7 +19,7 @@
 %define __builder ninja
 %define _name PrismLauncher
 Name:           prismlauncher
-Version:        11.1.0
+Version:        11.1.1
 Release:        0
 Summary:        A custom launcher for Minecraft
 License:        GPL-3.0-only AND Apache-2.0 AND LGPL-3.0-only AND OFL-1.1 AND LGPL-2.1-only AND MIT AND BSD-3-Clause
