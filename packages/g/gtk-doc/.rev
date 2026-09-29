@@ -418,4 +418,16 @@ Required meson version is now in Factory (forwarded request 976110 from susnux)<
     <comment>GNOME 50 early fixes</comment>
     <requestid>1346650</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>4e8f639c32eb54f8f39618a110dfd086</srcmd5>
+    <version>1.37.0</version>
+    <time>1790696795</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.37.0:
+  + Don't annotate get_type() functions with G_GNUC_CONST.
+  + Build: add an option to not check for runtime dependencies at
+    build time.
+  + Updated translations.</comment>
+    <requestid>1381079</requestid>
+  </revision>
 </revisionlist>
