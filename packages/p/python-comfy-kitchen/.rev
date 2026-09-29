@@ -115,4 +115,13 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 badness. The
 two warnings are the documented python-leftover-require for torch.</comment>
     <requestid>1379757</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>caae2bbae2490bb9853fbd9b4afe8cf7</srcmd5>
+    <version>0.2.36</version>
+    <time>1790697206</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.36. BREAKING: four is_available() probes (sol_attn, flash decode, INT8 attention, fused DeltaNet) now take a torch.device instead of an int index. Adds an Ascend NPU backend plus eager out=/zero_pad=/W6A8 work; CUDA/HIP kernels are not compiled in this CPU-only build.
+</comment>
+    <requestid>1381374</requestid>
+  </revision>
 </revisionlist>

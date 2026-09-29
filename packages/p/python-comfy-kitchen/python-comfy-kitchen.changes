@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:27:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.36:
+  * New Huawei Ascend NPU backend. It registers only when torch-npu
+    and an Ascend device are present, so list_backends() reports it
+    unavailable on this build and the import is a no-op without
+    torch-npu
+  * Eager backend: fp16_conv3d and group_norm_silu_pad3d accept an
+    out= destination, and the new fp16_conv3d_out and
+    group_norm_silu_pad3d_out ops write straight into an
+    NDHWC-ordered output or view, so a tiled conv needs no per-tile
+    copies
+  * group_norm_silu_pad3d gains zero_pad= for models whose
+    convolutions zero-pad the spatial border instead of
+    reflecting it
+  * W6A8 grouped weight quantization next to W4A8, in the same
+    packed row layout with the bit depth implied by the row width
+  * The is_available() probes (sol_attn, flash decode, INT8
+    attention, fused DeltaNet) now take a torch.device rather than
+    an int index and report False for a non-CUDA device; a caller
+    passing an integer index breaks
+  * Fused DeltaNet decode now declines below SM75, which the shared
+    memory check alone used to wave through on Volta
+  * Remainder of the release is CUDA and HIP kernel work (int8
+    attention, W4A8 GEMM, 256-wide flash decode), not compiled in
+    this CPU-only build
+
+-------------------------------------------------------------------
 Tue Sep 22 18:09:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.35:
