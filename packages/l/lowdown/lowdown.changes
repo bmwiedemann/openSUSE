@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 21 17:14:29 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 3.2.1:
+  * Bump version date
+  * Handle weird table footnotes and off-by-ones
+  * Node can be NULL in tables
+  * Fix a few more assertions
+  * Fix re-using active variable
+  * Avoid a hang with fence on paragraph boundary
+  * Version bump (use minor)
+  * Make sure utf-8 heavy tables have correct widths
+  * Add --term-no-style for no encoding at all
+  * Revert to backspace encoding with --term-no-ansi
+  * Fix typo
+  * Bumping version
+  * Add and document --term-no-tablewrap
+  * Remember last style when wrapping
+  * Remove FIXME and fix test
+  * Break at space across nodes
+  * Hack for render line overrun
+  * Add significant regression tests
+  * Fix visible columns method
+  * Second reflow for long-word traps
+  * Account for line prefix in table space
+  * Simplify www
+  * Fix block-nested tables
+  * Finalise table-narrowing algo for -tterm
+  * First step toward resizing tables
+  * Tweak documentation
+  * Update oconfigure
+
+-------------------------------------------------------------------
 Mon Jul 20 16:44:45 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 3.1.1:
