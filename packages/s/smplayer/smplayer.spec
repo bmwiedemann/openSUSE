@@ -1,7 +1,7 @@
 #
 # spec file for package smplayer
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           smplayer
-Version:        25.6.0
+Version:        26.8.29
 Release:        0
 Summary:        Complete frontend for MPV
 License:        GPL-2.0-or-later
@@ -27,11 +27,8 @@ Source:         https://github.com/smplayer-dev/%{name}/releases/download/v%{ver
 Patch0:         smplayer-makeflags.patch
 # PATCH-FEATURE-OPENSUSE smplayer-defaults.patch sor.alexei@meowr.ru -- Use PulseAudio, system Qt5 theme, and "Papirus" icon theme by default.
 Patch1:         smplayer-defaults.patch
-# PATCH-FIX-UPSTREAM smplayer-add_kde_protocols_to_desktop_file.patch -- To play network shared video correctly: #PM-48.
-Patch2:         smplayer-add_kde_protocols_to_desktop_file.patch
 # PATCH-FIX-UPSTREAM to fix build via gcc16 from https://github.com/smplayer-dev/smplayer/issues/1318#issuecomment-3920141365
 Patch3:         smplayer-25.6.0-gcc16.diff
-
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
