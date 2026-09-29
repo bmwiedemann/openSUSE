@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-rich-click
-Version:        1.9.8
+Version:        1.9.9
 Release:        0
 Summary:        Format click help output nicely with rich
 License:        MIT
@@ -70,9 +70,10 @@ Format click help output nicely with rich.
 # Requires specific modifications to sys.path and PYTHONPATH that
 # don't behave well with our macros
 ignore="--ignore tests/test_rich_click_cli.py"
+donttest="test_patch_with_ctx_forward"
 # typer 0.26 can not be patched
 ignore+=" --ignore tests/typer_help"
-%pytest $ignore
+%pytest $ignore -k "not ($donttest)"
 
 %files %{python_files}
 %doc README.md

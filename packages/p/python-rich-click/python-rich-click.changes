@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 03:00:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.9.9:
+  * Fixed ctx.forward() not working with commands patched via
+    rich_click.patch().
+  * Added support for Click 8.5 (resolved DeprecationWarnings)
+
+-------------------------------------------------------------------
 Thu Jun  4 06:08:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 1.9.8:

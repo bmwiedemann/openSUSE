@@ -168,4 +168,15 @@
 - Ignore typer tests due to typer 0.26.0.</comment>
     <requestid>1357083</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>96471d3d37ef199559551a731dcacbfa</srcmd5>
+    <version>1.9.9</version>
+    <time>1790697046</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.9.9:
+  * Fixed ctx.forward() not working with commands patched via
+    rich_click.patch().
+  * Added support for Click 8.5 (resolved DeprecationWarnings)</comment>
+    <requestid>1381276</requestid>
+  </revision>
 </revisionlist>
