@@ -1,4 +1,62 @@
 -------------------------------------------------------------------
+Fri Sep 25 12:47:58 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.107.0
+  * Feature - Add MPS GPU Sharing capability (#5139)
+    * Enhancement - Add MPS control daemon health gate task resource
+      (#5107)
+    * Enhancement - Surface MPS control-daemon impairment reason
+      as StatusReason (#5125)
+    * Enhancement - Attach the MPS control daemon health gate to
+      MPS tasks (#5119)
+    * Enhancement - Add ACCELERATED_COMPUTE health check for the
+      MPS control daemon (#5124)
+  * Enhancement - Fetch GPG keys from S3 instead of GitHub in
+    ECS Anywhere install script (#5130)
+  * Enhancement - Bump github.com/prometheus/common from 0.66.1
+    to 0.71.0 in /ecs-agent (#5117)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/credentials
+    from 1.19.32 to 1.20.4 in /agent (#5128)
+  * Enhancement - Bump github.com/containerd/containerd from 1.7.33
+    to 1.7.35 in /ecs-init (#5133)
+  * Enhancement - Bump google.golang.org/grpc from 1.82.1 to 1.83.1,
+    this also updates go.opentelemetry.io/otel to v1.44.0
+    (bsc#1279231, CVE-2026-84304) (bsc#1279329, CVE-2026-84303)
+    (bsc#1276744, CVE-2026-41178)
+    in /ecs-agent, /ecs-agent/daemonimages/csidriver and /agent (#5123)
+  * Enhancement - Bump k8s.io/api from 0.28.1 to 0.37.0 in /agent (#5118)
+  * Enhancement - Correct broken systemd link in README (#5129)
+- from version 1.106.2
+  * Enhancement - Bump golang.org/x/text and related dependencies (#5100)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/feature/ec2/imds
+    from 1.18.33 to 1.18.38 in /ecs-agent (#5093)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/service/secretsmanager
+    from 1.35.2 to 1.44.7 in /agent (#5094)
+  * Enhancement - Bump github.com/gorilla/websocket from 1.5.0 to 1.5.3
+    (#5108)
+  * Enhancement - Update Go version to 1.26.7 (#5105)
+  * Enhancement - Add amazon-ecs-agent.gpg and amazon-ssm-agent.gpg
+    to the CodePipeline release artifacts (#5101)
+  * Enhancement - IMDS credentials scanner/refresher: Add logging
+    and validations (#5091)
+  * Enhancement - Bump github.com/containerd/cgroups/v3 from 3.0.4
+    to 3.1.3 in /agent (#5081)
+  * Enhancement - Bump google.golang.org/grpc from 1.81.1 to 1.82.1
+    in /ecs-agent and /agent (#5085)
+  * Enhancement - Bump github.com/aws/aws-sdk-go-v2/credentials from
+    1.19.29 to 1.19.32 in /ecs-agent, /agent and /ecs-init (#5080)
+  * Bugfix - fix(handlers): raise fault rate limit to 1 rps (#5092)
+  * Feature - Nvidia MPS GPU sharing (not yet enabled)
+    * Add MPS control-daemon health probe (#5095)
+    * Add per-GPU memory accounting to host resource manager (#5090)
+    * Allow MPS containers to colocate on a shared GPU (#5083)
+    * Mount MPS control binary and pipe dir into the agent container
+      (#5086)
+    * Move MPS pipe directory to /run/mps-ecs (#5102)
+- Bump Go version to 1.26.7
+- Drop CVE-2026-56852.patch, merged upstream
+
+-------------------------------------------------------------------
 Thu Aug 27 06:47:29 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.106.1
