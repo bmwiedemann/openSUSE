@@ -1,7 +1,7 @@
 #
 # spec file for package tuned
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,13 +19,12 @@
 %define         system_dir %{_prefix}/lib/%{name}/
 %define         profile_dir %{system_dir}profiles/
 Name:           tuned
-Version:        2.27.0.0+git.38d4414
+Version:        2.28.0
 Release:        0
 Summary:        A dynamic adaptive system tuning daemon
 License:        GPL-2.0-or-later
-Group:          System/Base
 URL:            https://github.com/redhat-performance/tuned
-Source0:        tuned-%{version}.tar.xz
+Source0:        https://github.com/redhat-performance/tuned/archive/v%{version}/tuned-%{version}.tar.gz
 Source1:        tuned.rpmlintrc
 # PATCH-FIX-OPENSUSE fix-allow-receive_sender-default.patch <allow receive_sender="com.redhat.com"/> allow receive_* is normally
 # not needed as that is the default --<p.drouand@gmail.com>
@@ -34,17 +33,19 @@ Patch1:         0001-tuned-consts-Fix-grub.cfg-path-in-SLE.patch
 Patch2:         0001-hardened-Introduce-hardened-profile.patch
 BuildRequires:  bash-completion
 BuildRequires:  desktop-file-utils
-BuildRequires:  gobject-introspection-devel
 BuildRequires:  pkgconfig
 BuildRequires:  python3-base
 BuildRequires:  python3-dbus-python
 # needed by check section
 BuildRequires:  python3-pyudev
+BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-no-export-1.0)
 BuildRequires:  pkgconfig(systemd)
 # need perf_bias now
 Requires:       ethtool
 Requires:       gawk
 Requires:       hdparm
+Requires:       iw
 Requires:       polkit
 Requires:       python3-configobj
 Requires:       python3-dbus-python
@@ -68,7 +69,6 @@ network and ATA harddisk devices are implemented.
 
 %package utils
 Summary:        Disk and net statistic monitoring systemtap scripts
-Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       powertop
 
@@ -78,7 +78,6 @@ system and manage tuned profiles.
 
 %package utils-systemtap
 Summary:        Disk and net statistic monitoring systemtap scripts
-Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       systemtap
 
@@ -91,7 +90,6 @@ instead of fewer large ones).
 
 %package gtk
 Summary:        Disk and net statistic monitoring systemtap scripts - GTK GUI
-Group:          System/Base
 Requires:       %{name} = %{version}
 Requires:       powertop
 Requires:       python3-gobject
@@ -101,7 +99,6 @@ GTK GUI that can control tuned and provide simple profile editor.
 
 %package profiles-atomic
 Summary:        Additional tuned profiles targeted to Atomic
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-atomic
@@ -109,7 +106,6 @@ Additional profile(s) for the tuned daemon, targeted to Atomic host and guest.
 
 %package profiles-security
 Summary:        Security related tuned daemon profiles
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-security
@@ -119,7 +115,6 @@ together. They can be combined with other profiles via include= statement as nee
 
 %package profiles-nfv
 Summary:        Additional tuned profiles targeted to Network Function Virtualization (NFV)
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-nfv
@@ -137,7 +132,6 @@ And a third profile optimized for general workloads on OpenShift worker nodes.
 
 %package profiles-oracle
 Summary:        Additional tuned profiles targeted to Oracle loads
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-oracle
@@ -152,7 +146,6 @@ Additional tuned profile(s) targeted to PostgreSQL server loads.
 
 %package profiles-realtime
 Summary:        Additional tuned profiles targeted to realtime
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-realtime
@@ -163,7 +156,6 @@ Additional profile(s) for the tuned daemon, targeted to realtime.
 %if !0%{?sle_version} || %{?suse_version} >= 1599
 %package profiles-sap
 Summary:        Additional tuned profile(s) targeted to SAP NetWeaver loads
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-sap
@@ -171,7 +163,6 @@ Additional profile(s) for the tuned daemon, targeted to SAP NetWeaver loads.
 
 %package profiles-sap-hana
 Summary:        Additional tuned profile(s) targeted to SAP HANA loads
-Group:          System/Base
 Requires:       %{name} = %{version}
 
 %description profiles-sap-hana
@@ -214,6 +205,11 @@ make install-ppd DESTDIR=%{buildroot} TUNED_PROFILES_DIR=%{profile_dir}
 rm %{buildroot}/%{python3_sitelib}/tuned/plugins/plugin_{scheduler,irqbalance}.py
 %py3_compile %{buildroot}/%{python3_sitelib}
 rm -rf %{buildroot}/%{_datadir}/doc
+# /etc/systemd/system.conf.d is reserved for local admin overrides, not
+# vendor-shipped files (rpmlint filelist-forbidden-systemd-userdirs); the
+# systemd plugin creates this drop-in itself on first use when a profile
+# sets cpu_affinity (tuned/plugins/plugin_systemd.py), so nothing is lost
+rm -rf %{buildroot}%{_sysconfdir}/systemd
 # Remove unwanted stuff instead of excluding them in files list
 rm -rf %{buildroot}%{profile_dir}/{default,desktop-powersave,laptop-ac-powersave,server-powersave,laptop-battery-powersave,enterprise-storage,spindown-disk}
 rm %{buildroot}%{_mandir}/man7/tuned-profiles-compat.7
@@ -229,7 +225,7 @@ rm %{buildroot}%{_mandir}/man7/tuned-profiles-sap-hana.7
 %endif
 
 %check
-make test PYTHON=python3
+%make_build test PYTHON=python3
 
 %post
 %tmpfiles_create %{name}.conf
@@ -396,17 +392,14 @@ done
 %{_mandir}/man7/tuned-profiles-nfv-*.7%{?ext_man}
 
 %files profiles-postgresql
-%defattr(-,root,root,-)
 %{profile_dir}/postgresql
-%{_mandir}/man7/tuned-profiles-postgresql.7*
+%{_mandir}/man7/tuned-profiles-postgresql.7%{?ext_man}
 
 %files profiles-spectrumscale
-%defattr(-,root,root,-)
 %{profile_dir}/spectrumscale-ece
-%{_mandir}/man7/tuned-profiles-spectrumscale-ece.7*
+%{_mandir}/man7/tuned-profiles-spectrumscale-ece.7%{?ext_man}
 
 %files profiles-openshift
-%defattr(-,root,root,-)
 %{profile_dir}/openshift-control-plane
 %{profile_dir}/openshift-node
 %{profile_dir}/openshift

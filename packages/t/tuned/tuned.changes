@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Sat Sep 26 17:20:37 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.28.0:
+  * bootloader: add bootc loader-entries set-options-for-source
+    support so kernel-argument ownership on image mode (bootc)
+    systems survives reboots (RHEL-170825); fixed tempdir
+    permissions (RHEL-121198) and restored initrd generation from
+    /tmp with an added ownership check
+  * systemd: set the systemd manager's CPUAffinity via a new
+    /etc/systemd/system.conf.d/00-tuned.conf drop-in instead of
+    editing system.conf directly, and stop backing up the old
+    file (RHEL-97580, RHEL-84365); the empty template upstream's
+    Makefile now installs there is dropped from the package
+    (rpmlint filelist-forbidden-systemd-userdirs) since the
+    plugin creates it itself on first use
+  * net: recognize more ethtool coalescing options instead of
+    failing on unsupported ones (RHEL-152675); fixed the ring
+    parser for rx-mini/rx-jumbo (RHEL-168025)
+  * functions: use the nl80211-based iw tool for Wi-Fi power
+    saving, falling back to iwpriv on legacy drivers
+    (rhbz#2372365); adds a new mandatory Requires: iw
+  * scheduler: handle EPERM, not just EIO, when setting IRQ
+    affinity on kernel >= 6.12 (RHEL-153655)
+  * network-latency: raise the AVC cache size to 8192, avoiding
+    latency spikes on RHEL-9/10 kernels
+  * openshift: add the network-throughput profile; dropped support
+    for vm.laptop_mode, deprecated since kernel 7.0
+  * many more fixes and improvements; see upstream's release notes
+    for the full list
+- Switch source from the hand-maintained git-snapshot _service
+  (tracking master with no fixed revision) to the real v2.28.0
+  upstream release tarball, now that upstream is tagging releases
+  again; drop _service/_servicedata/*.obscpio/*.obsinfo
+- Spec cleanup: drop obsolete Group: tags and redundant default
+  file-attribute lines; switch the GObject Introspection build
+  dependency to its two pkgconfig provider names
+  (gobject-introspection-1.0, gobject-introspection-no-export-1.0)
+
+-------------------------------------------------------------------
 Mon Feb 23 06:13:02 UTC 2026 - trenn@suse.com
 
 - Update to version 2.27.0.0+git.38d4414:
