@@ -150,4 +150,12 @@
   * gengetopt-glibc-license.patch</comment>
     <requestid>777644</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>d0dd369c7219446696f90c1d7d2e9264</srcmd5>
+    <version>2.23.1</version>
+    <time>1790696767</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1380973</requestid>
+  </revision>
 </revisionlist>

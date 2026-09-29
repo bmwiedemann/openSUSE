@@ -1,0 +1,34 @@
+[   17s] In file included from /usr/include/features.h:540,
+[   17s]                  from /usr/include/bits/libc-header-start.h:33,
+[   17s]                  from /usr/include/stdlib.h:26,
+[   17s]                  from ./stdlib.h:51,
+[   17s]                  from stdlib.c:21:
+[   17s] ./stdlib.h:820:20: error: expected identifier or '(' before '_Generic'
+[   17s]   820 | _GL_EXTERN_C void *bsearch (const void *__key,
+[   17s]       |                    ^~~~~~~
+[   17s] make[4]: *** [Makefile:1188: libgnu_la-stdlib.lo] Error 1
+
+Index: gengetopt-2.23.1/gl/stdlib.in.h
+===================================================================
+--- gengetopt-2.23.1.orig/gl/stdlib.in.h
++++ gengetopt-2.23.1/gl/stdlib.in.h
+@@ -235,6 +235,7 @@ _GL_INLINE_HEADER_BEGIN
+ #endif
+ 
+ 
++#undef bsearch
+ /* Declarations for ISO C N3322.  */
+ #if defined __GNUC__ && __GNUC__ >= 15 && !defined __clang__
+ _GL_EXTERN_C void *bsearch (const void *__key,
+Index: gengetopt-2.23.1/gl/string.in.h
+===================================================================
+--- gengetopt-2.23.1.orig/gl/string.in.h
++++ gengetopt-2.23.1/gl/string.in.h
+@@ -261,6 +261,7 @@ _GL_EXTERN_C int strncmp (const char *__
+   _GL_ATTRIBUTE_NONNULL_IF_NONZERO (1, 3)
+   _GL_ATTRIBUTE_NONNULL_IF_NONZERO (2, 3);
+ # ifndef __cplusplus
++#undef memchr
+ _GL_EXTERN_C void *memchr (const void *__s, int __c, size_t __n)
+   _GL_ATTRIBUTE_NONNULL_IF_NONZERO (1, 3);
+ _GL_EXTERN_C void *memrchr (const void *__s, int __c, size_t __n)

@@ -2,6 +2,7 @@
 # spec file for package gengetopt
 #
 # Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +18,7 @@
 
 
 Name:           gengetopt
-Version:        2.23
+Version:        2.23.1
 Release:        0
 Summary:        Commandline parser generator
 License:        GPL-3.0-or-later
@@ -25,11 +26,9 @@ Group:          Development/Languages/C and C++
 URL:            https://www.gnu.org/software/gengetopt/
 Source0:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.xz
 Source1:        https://ftp.gnu.org/gnu/gengetopt/%{name}-%{version}.tar.xz.sig
-Source2:        https://savannah.gnu.org/project/memberlist-gpgkeys.php?group=%{name}&download=1#/%{name}.keyring
-BuildRequires:  bison
-BuildRequires:  flex
-BuildRequires:  gcc-c++
-BuildRequires:  help2man
+Source2:        %{name}.keyring
+Patch0:         gengetopt-2.23.1-gcc.patch
+BuildRequires:  c++_compiler
 BuildRequires:  makeinfo
 
 %description
@@ -40,7 +39,7 @@ add any run or compile time dependencies to your projects. Moreover
 reading/writing the options from/to config files is also supported.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %configure
@@ -58,12 +57,6 @@ rm -rf %{buildroot}%{_datadir}/doc/%{name}
 
 %check
 %make_build check
-
-%post
-%install_info --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
-
-%preun
-%install_info_delete --info-dir=%{_infodir} %{_infodir}/%{name}.info%{ext_info}
 
 %files
 %license COPYING LICENSE

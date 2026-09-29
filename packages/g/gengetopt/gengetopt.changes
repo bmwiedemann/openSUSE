@@ -1,7 +1,19 @@
 -------------------------------------------------------------------
+Sun Sep 27 16:16:14 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 2.23.1:
+  * Clarify licensing of the generated code when --include-getopt
+    is used
+  * Fix compilation with --std=c++17
+  * versiontext is no longer separated by empty line
+  * Fix multiple bugs
+- update signing key
+- add gengetopt-2.23.1-gcc.patch to fix macro/symbol conflicts
+
+-------------------------------------------------------------------
 Thu Feb 20 11:02:48 UTC 2020 - Martin Pluskal <mpluskal@suse.com>
 
-- Update to version 2.2.3:
+- Update to version 2.23:
   * Gengen and gengetopt are required when building from git. When
     building from tarball, everything works like it did before.
   * Drop IRIX compatibility
