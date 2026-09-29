@@ -1,0 +1,18 @@
+Oldish binutils (invalidly) accepted --target=X even when the
+input file wasn't of target X (and retained only the output target
+setting).  Newer binutils have stricter checks, so use the correct
+option (--output-target == -O).
+
+Index: elilo-3.16-source/Make.rules
+===================================================================
+--- elilo-3.16-source.orig/Make.rules	2012-11-19 22:01:04.000000000 +0100
++++ elilo-3.16-source/Make.rules	2026-09-24 16:06:51.106707787 +0200
+@@ -25,7 +25,7 @@
+ 
+ %.efi: %.so 
+ 	$(OBJCOPY) -j .text -j .sdata -j .data -j .dynamic -j .dynsym -j .rel \
+-		   -j .rela -j .reloc --target=$(FORMAT) $*.so $@
++		   -j .rela -j .reloc -O $(FORMAT) $*.so $@
+ 
+ %.so: %.o 
+ 	$(LD) $(LDFLAGS) $^ -o $@ $(LOADLIBES)

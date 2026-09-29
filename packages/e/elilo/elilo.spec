@@ -1,7 +1,7 @@
 #
 # spec file for package elilo
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -63,6 +63,7 @@ Patch12:        elilo-binutils-2.36-fix.patch
 Patch13:        elilo-c99.patch
 # build with gcc15
 Patch14:        elilo-gcc15.patch
+Patch15:        elilo-objcopy-target.diff
 
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 
