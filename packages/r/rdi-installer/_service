@@ -1,0 +1,17 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/thkukuk/rdi-installer.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="filename">rdi-installer</param>
+    <param name="revision">main</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
+    <param name="exclude">images</param>
+  </service>
+  <service mode="manual" name="recompress">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service mode="manual" name="set_version"/>
+</services>

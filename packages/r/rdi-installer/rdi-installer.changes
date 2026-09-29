@@ -1,0 +1,673 @@
+-------------------------------------------------------------------
+Tue Sep 29 12:45:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- keywait: add conflict with ucommon 
+
+-------------------------------------------------------------------
+Wed Sep 23 12:47:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.0.0+git20260923.8f88a3f:
+  * Release version 1.0.0
+  * Add support for rdii.config=<url>
+  * images: reduce number of kernel modules
+
+-------------------------------------------------------------------
+Wed Sep 23 09:07:57 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260922.d4697ab:
+  * Added INFO_POPUP_DEFAULT_TIMEOUT_MS for info popup (#23)
+  * added scroll bar in the selection box (#22)
+  * Autoinstallation: don't wait forever
+  * Don't validate url1/url2 in autoinstall mode
+  * autoinstallation: make reading config more robust
+  * Warning popup: handle timeout as "NO"
+  * Autoinstallation (#21)
+  * Rework displaying F1 help
+  * Fix rdi-installer name in help text
+  * Add help text via F1 (#15)
+
+-------------------------------------------------------------------
+Fri Sep 11 10:59:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260911.8d7d183:
+  * rdii-networkd: fix parsing of ip=:::::eth0:dhcp
+  * rdii-networkd: de-duplicate lookup tables
+  * rdii-networkd: don't overwrite VLAN ID if configured twice
+  * Don't crash if ip_list is empty
+  * cleanup testcases
+  * fixed netmask handling and merging configs
+  * rebase with master
+  * fixed filenames
+  * fix for writing netdev files
+  * fixed return value
+  * setting dhcp depending on  ip= and ifcfg=
+  * move Mac Address to Link section again
+  * fixed testcase
+  * [DHCP] section back
+  * unifying writing *.network files
+  * added trapp again
+  * mixing ipv6 addresses with ipv4 should not be done
+  * mixing ipv6 addresses with ipv4 should not be done
+  * unify extract_word
+  * images: split rdi-installer/mkosi.conf (mkosi-obs)
+  * OBS: Clear SplitArtifacts, add patterns-base-hardware
+  * image/bootloader: merge config, don't build initrd
+  * Add config files for OBS
+  * Rework image layout, build squashfs initrd
+
+-------------------------------------------------------------------
+Thu Sep 10 10:09:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260910.cbe8668:
+  * rdii: rename MD Device to MD Raid1
+  * rdii: fix title
+
+-------------------------------------------------------------------
+Thu Sep 10 08:03:33 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260909.14227a5:
+  * rdii-networkd: fix creating of netdev files for vlans
+  * set-keymap: set title of main window
+
+-------------------------------------------------------------------
+Thu Sep 10 08:03:09 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Add rdi-installer-image-arch-deps for rdii-image
+
+-------------------------------------------------------------------
+Wed Sep 09 08:09:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260908.58a6afe:
+  * added parameter for setting keymap UI title
+  * Show keyboard layout from config in menu (#13)
+
+-------------------------------------------------------------------
+Thu Aug 20 09:23:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.9.0+git20260820.9e0ab1e:
+  * Release version 0.9.0
+  * CI: fix shellcheck warning
+  * Reorganize sources for "rdii-helper set-keymap"
+  * Add set-keymap to rdii-helper
+  * logger: don't write TRACE messages to stdout
+
+-------------------------------------------------------------------
+Fri Aug 14 10:16:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0+git20260814.a0b31a9:
+  * rdii-helper boot: add options to print single values
+  * Fix name of mount-part-label service
+
+-------------------------------------------------------------------
+Tue Aug 11 16:00:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0+git20260811.9f44d59:
+  * rdii: change image from list to from download server
+  * README: reword entry sentence
+
+-------------------------------------------------------------------
+Mon Aug 10 10:16:38 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0+git20260810.efdf73e:
+  * Cleanup file selection (#11)
+  * Cleanup installation process (#10)
+
+-------------------------------------------------------------------
+Thu Aug 06 16:26:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0+git20260806.8652c9f:
+  * rdii: preselect next menu entry
+
+-------------------------------------------------------------------
+Thu Aug 06 08:49:20 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.8.0+git20260806.f8b25ff:
+  * Release version 0.8.0
+  * rdii: implement selecting an image from download.opensuse.org
+  * image: remove pciutils and usbutils (requires python and perl)
+
+-------------------------------------------------------------------
+Tue Aug 04 09:55:36 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.2+git20260804.c7c0301:
+  * rdii: fix calling reboot and poweroff
+  * rdii-ssh-setup: avoid warning from mkdir
+
+-------------------------------------------------------------------
+Mon Aug 03 10:26:36 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.2+git20260731.a454449:
+  * rdii: add more MSG_FUNC calls
+  * improved error handling (#9)
+  * checking console before setting keymap via UI
+  * using ioctl for checking console
+  * set keymap, defined in the config file
+  * rdii: enhance "Next image" with "Try again" description
+
+-------------------------------------------------------------------
+Mon Jul 27 15:29:49 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.2+git20260727.5b1aaf5:
+  * Release version 0.7.2
+  * rdii: don't try to verify image if there is no checksum downloaded
+  * rdi-installer: if there is only one image in the config, use that
+  * Enhance README.md
+  * README: document MD Raid
+
+-------------------------------------------------------------------
+Fri Jul 24 13:17:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.1+git20260724.1849d8a:
+  * Release version 0.7.1
+  * rdii: fix output of final installation run
+  * Use single border lines on linux terminal
+  * exec_cmd: don't call clearok, will clear screen before keywait
+
+-------------------------------------------------------------------
+Fri Jul 24 09:53:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.7.0+git20260724.756f9ff:
+  * Release version 0.7.0
+  * rdii: implement destroying of partition table
+  * zap_partition_tables: Add MSG_FUNC call
+
+-------------------------------------------------------------------
+Thu Jul 23 14:40:35 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.1+git20260723.be5b1fd:
+  * rdii (mdadm): create always bitmap, better error handling
+
+-------------------------------------------------------------------
+Thu Jul 23 09:49:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.1+git20260723.cb3b162:
+  * rdi-installer: ignore additional arguments from agetty
+  * rdi-installer: update correct entry for MD Raid and keymap
+
+-------------------------------------------------------------------
+Wed Jul 22 12:46:49 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.1+git20260722.eaf8cb9:
+  * Always use exec_cmd, fix for non ncuses applications (missing CR)
+  * Create /dev/md0 if two devices for MD Raid are provided
+
+-------------------------------------------------------------------
+Wed Jul 15 14:58:18 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.1+git20260715.2148ec5:
+  * using array for gateways; renaming 66-ip* to 66-rdii (#6)
+  * improved error handling (#5)
+  * rdi-installer: add initial MD Raid1 support
+  * Release version 0.6.1
+  * rdi-installer: add command line options (config, help, version)
+  * rdii-ssh-hostkey: disable unused cleanup function (clang)
+  * CI: install libblkid-devel
+  * rdii: store fstype to mount old/new root to preserve ssh host key
+  * rdii: preselect start installation if all infos are already provided
+
+-------------------------------------------------------------------
+Wed Jul 01 11:42:33 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.0+git20260701.abd4ba6:
+  * rdi-installer: add +rdii.preserve-ssh-hostkey support
+
+-------------------------------------------------------------------
+Tue Jun 30 14:58:54 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.0+git20260630.d4e83d5:
+  * Install rdii-proxy-setup.service
+
+-------------------------------------------------------------------
+Tue Jun 30 14:17:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.6.0+git20260630.9d2e722:
+  * Release version 0.6.0
+  * Add rdii-proxy-setup
+  * unify Logger (#4)
+  * basics.h: update
+  * TODO: enhance whishlist
+  * Add TODO file
+  * Remove old rdi-installer shell script
+  * images: adjust for memtest86+ 8.0
+
+-------------------------------------------------------------------
+Mon May 11 13:41:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.5.0+git20260511.f0ad7a8:
+  * Fix wrong systemd unit dir
+  * Release version 0.5.0
+  * rdii: mount partitions with label images at boot
+  * rdii-menu: allow to select and write local images
+  * rdii-menu: don't continue if not all requirements are met
+  * meson: require c23
+  * Add strbool() function
+
+-------------------------------------------------------------------
+Mon May 04 09:03:21 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260504.8237242:
+  * ifcfg: remove first vlanid from interface before assigning to const char*
+  * meson: use werror as config option
+  * README: document rdii.url1 and rdii.url2
+
+-------------------------------------------------------------------
+Mon Apr 20 13:40:01 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260420.1177f67:
+  * rdii: allow to specify up to 3 images in config
+  * rdii-sysinfo: print information about terminal
+  * rdi-installer: Allow reboot and poweroff from main menu
+  * rdii-helper: print error message if selected entry is not set
+  * rdii-helper: Don't read LoaderEntryDefault if no entry is selected
+  * image: add rdii-helper
+
+-------------------------------------------------------------------
+Thu Apr 09 14:09:20 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260409.523701a:
+  * Add rdii-set-default-loader-entry.service
+  * rdii-helper: add set-default-loader-entry
+
+-------------------------------------------------------------------
+Thu Apr 09 12:01:33 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260409.b683c9d:
+  * rdii: wait for keypress or 60sec after fixing GPT
+
+-------------------------------------------------------------------
+Thu Apr 09 09:32:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260409.be5a0c2:
+  * Add exec_cmd.h
+
+-------------------------------------------------------------------
+Thu Apr 09 09:29:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260409.f7767e8:
+  * rdii (menu): Add post menu to reboot/poweroff/exit
+  * rdii-menu: use exec_cmd() to call sgdisk
+  * efivars: add efi_get_default_loader_entry()
+
+-------------------------------------------------------------------
+Thu Apr 09 06:49:47 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260409.635b616:
+  * rdii (disk): add default and booted tags
+
+-------------------------------------------------------------------
+Wed Apr  8 15:05:04 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Adjust RPM Requires
+
+-------------------------------------------------------------------
+Wed Apr 08 13:56:48 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.4.0+git20260408.2e7e8f1:
+  * Release version 0.4.0
+  * Rename rdii-menu binary to rdi-installer
+  * rdii-menu (installation): adjust partition table
+  * rdii-menu: adjust menu entries with config
+  * Fix errors reported by clang
+  * rdii-menu: move ncurses init stuff to own function
+  * rdii-menu: fix building with clang
+  * librdii: move all helper into one library
+  * rdii-menu-disk: pre-select correct device in list
+  * rdii-menu: implement rm -rf for temporary data
+  * rdi-menu: wipe data if checksums don't match
+  * rdii-menu: working write network image to disk and verify
+  * rdii-menu: use choose_entry() for device
+  * rdii-menu: move list selection code to own function
+  * image: add parted
+  * rdii-menu: check if URL is valid
+  * CI: add ncurses and libeconf devel for rdii-menu
+  * rdii-menu: add system information
+  * rdii-menu: show device and image in menu entries
+  * rdii-menu: add dialog for image source
+  * rdii-menu: check if target device is mounted
+  * rdii-menu: initial framework
+
+-------------------------------------------------------------------
+Wed Mar 25 13:29:14 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260325.87911a3:
+  * Make curl_dowload_config generic curl_download_file
+
+-------------------------------------------------------------------
+Fri Mar 20 14:38:11 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260320.39566eb:
+  * rdi-installer: use wget instead of curl
+  * removed tabs
+  * reverted header and term settings
+  * improved handling
+  * improved layout
+  * removed -back- option
+  * improved usability
+  * rdii-networkd: fix wrong placed bracket
+  * rdii-helper: move disk option into own library
+  * rdii-helper disk: check that disk type isn't NULL
+  * README: fix markdown syntax and example script
+
+-------------------------------------------------------------------
+Fri Feb 27 09:13:04 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260227.07568dd:
+  * Update README
+  * ssh-setup: ignore data in comments
+
+-------------------------------------------------------------------
+Thu Feb 26 16:45:14 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260226.dbd9fe5:
+  * images: add usbstick image
+
+-------------------------------------------------------------------
+Wed Feb 25 16:52:00 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.3.0+git20260225.551088d:
+  * Release version 0.3.0
+  * Update rdii-config documentation
+  * rdi-installer: fix reading config file, check hashes for existence
+
+-------------------------------------------------------------------
+Wed Feb 25 10:55:22 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260225.9f33101:
+  * rdi-installer: fix error handling of curl|dd pipe
+
+-------------------------------------------------------------------
+Wed Feb 25 10:18:07 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260225.1a48065:
+  * rdi-installer: support compressed images
+  * rdi-installer: abort on errors, but not when loading keymap
+
+-------------------------------------------------------------------
+Wed Feb 25 08:37:29 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.2.0+git20260224.2d0b7a9:
+  * Release version 0.2.0
+
+-------------------------------------------------------------------
+Tue Feb 24 15:48:46 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260224.bb36528:
+  * rdi-installer: verify image before writing it
+  * rdi-installer: check sha256 of written image
+  * images: fix import of gpg keys
+  * Add gpg keys for image verification
+
+-------------------------------------------------------------------
+Mon Feb 23 15:28:55 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260223.0f81f54:
+  * rdi-installer: fix wrong image names
+
+-------------------------------------------------------------------
+Mon Feb 23 14:29:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260223.78d9c58:
+  * rdi-installer: start of image verification
+  * images: add gpg2 for image verification
+  * images: create import-pubring.gpg
+
+-------------------------------------------------------------------
+Mon Feb 23 10:24:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260223.f9bf137:
+  * rdii-helper: Add Booted tag to device list
+  * efivars: map PCI id to device
+  * rdii-helper: fix if there is no UEFI default boot device
+  * images: add pciutils and usbutils
+  * rdii-helper disk: mark the default EFI boot device
+  * rdii-helper: find default EFI boot partition
+  * CI: libudev (systemd-devel) is now required
+  * Move efivars in own library
+  * rdii-helper: move "disk" to own source file
+
+-------------------------------------------------------------------
+Thu Feb 19 20:12:49 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260219.d4cafb4:
+  * rdii-helper: implement disk list
+  * Add rdii-config.7 manual page
+
+-------------------------------------------------------------------
+Thu Feb 19 10:34:42 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260219.100c829:
+  * Add rdii-ssh-setup.service manual page
+  * rdii-ssh-setup: read rdii-config if exists
+  * rdii-networkd: use /run/rdi-installer/rdii-config
+
+-------------------------------------------------------------------
+Wed Feb 18 17:26:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260218.6845acc:
+  * efi_vars: fix error handling
+
+-------------------------------------------------------------------
+Wed Feb 18 16:49:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260218.bd70708:
+  * Fix missing renames for rdii-networkd
+
+-------------------------------------------------------------------
+Wed Feb 18 15:21:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260218.94dbbb7:
+  * efivars: enhance parsing, add rdii-helper
+  * rdii-image: add efibootmgr
+  * rdii-fetch-config: cleanup includes
+  * Update README.md
+  * Remove UKI usb stick image
+  * Adjust for OBS
+  * images: build only UKI
+  * rdii image: Enable SecureBoot
+  * mkosi.postoutput: scripts/ is different in OBS
+
+-------------------------------------------------------------------
+Fri Feb 13 16:23:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260213.c9e3442:
+  * Create rdii-networkd manual page
+  * rdi-installer: install system_info.sh
+
+-------------------------------------------------------------------
+Fri Feb 13 09:08:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260213.8de2aad:
+  * rdii-networkd: add verify option
+  * rdi-installer: correct error checking with pipes
+  * Add gptfdisk to image
+  * rdii-networkd: remove unused strjoin() function
+
+-------------------------------------------------------------------
+Thu Feb 12 13:53:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260212.69562f0:
+  * Rename rdii-networkd service
+  * rdii-networkd: improve reading config files
+  * rdii-networkd: don't use strdup to merge configs
+  * rdii-networkd: always use provided vlan name
+  * rdii-networkd: support vlan and merge configs
+  * rdii-networkd: support nameserver, rd.route and rd.peerdns
+  * Split tests into single files
+  * Add rdii-networkd replacing ifcfg-networkd with ip= support
+  * tests: fix tst-ifcfg-networkd*
+  * Update README
+
+-------------------------------------------------------------------
+Fri Feb 06 09:59:56 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260206.78bdb24:
+  * rdi-installer: support rdii.keymap
+  * rdii-ssh-setup.service: after after fetch-config
+
+-------------------------------------------------------------------
+Thu Feb 05 21:44:42 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260205.de99106:
+  * Adjust rdii-fetch-config network dependencies
+
+-------------------------------------------------------------------
+Thu Feb 05 16:36:46 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260205.571a6c1:
+  * rdii: read options from config and kernel cmdline
+  * Enable rdii-fetch-config services
+  * CI: add libcurl-devel
+  * rdii-fetch-config: initial version
+  * ifcfg-networkd: fix wrong program name
+  * keywait: fix wrong program name
+  * mkosi: add busybox-bind-utils for debugging
+  * add_extra_partition.sh: automatically find next partition number
+  * mkosi: add memtest86+ to sdboot image
+  * create_uefi_usbstick: remove parted fallback
+
+-------------------------------------------------------------------
+Sun Feb 01 13:53:00 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260201.3a38327:
+  * ifcfg-networkd: add VLAN support
+  * Add System Information overview
+
+-------------------------------------------------------------------
+Sat Jan 31 19:25:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260131.c9e60fe:
+  * Add test case for ifcfg-networkd
+  * rdii-ssh-setup service: change to simple, oneshot creates loop
+  * mkosi: move FONT setting to mkosi.finalize
+
+-------------------------------------------------------------------
+Sat Jan 31 07:44:53 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260131.1eadf0b:
+  * rdi-installer: no longer time in success, mount ro
+  * create_uefi_usbstick: fix size of ESP partition
+  * add_extra_partition: make image parameter a hard requirement
+
+-------------------------------------------------------------------
+Fri Jan 30 13:27:49 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260130.1fde9a6:
+  * rdii: writing image to disk via URL bug fixes
+  * rdii: use different warn signs depending on terminal
+  * Rename raw-disk-image-installer -> rdi-installer
+
+-------------------------------------------------------------------
+Fri Jan 30 09:27:10 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260130.83e30d6:
+  * rdi-installer: adjust output if xterm or something else
+  * mkosi: only create usb sticks if arch is supported
+  * mkosi: fix sdboot image
+  * mkosi.conf: add udev
+  * mkosi: build image with systemd-boot as bootloader
+  * mkosi.conf: add openssh
+
+-------------------------------------------------------------------
+Thu Jan 29 15:18:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260129.2c56ae7:
+  * rdi-installer: allow restart of installer for next image
+  * rdi-installer: lower bs if curl pipes to dd
+
+-------------------------------------------------------------------
+Thu Jan 29 14:48:55 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260129.d76d820:
+  * rdi-installer: improve URL error handling
+
+-------------------------------------------------------------------
+Thu Jan 29 14:10:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260129.abfeec3:
+  * ifcfg-networkd: improvements in parser, add systemd unit
+  * select_image: better handle curl error check for valid URL
+  * mkosi.conf: run ca-certificates-setup.service
+  * mkosi: enable ifcfg-networkd.service by default
+  * mkosi: fix getty@tty1 directory name
+  * mkosi.conf: use root password only with common characters
+  * Set KEYMAP=us in vconsole, adjust issue output
+  * Don't set KEYMAP (will overwrite FONT)
+
+-------------------------------------------------------------------
+Wed Jan 28 21:46:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260128.587b0f9:
+  * rdi-installer: implement images via URL, optimize searching of images
+  * Enable rdii-ssh-setup by default
+  * mkosi.conf: add firmware pattern, remove ucode-*
+
+-------------------------------------------------------------------
+Wed Jan 28 11:46:51 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260128.5cfb666:
+  * rdi-installer: install rdii-ssh-setup
+
+-------------------------------------------------------------------
+Wed Jan 28 11:36:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260128.11fb6ad:
+  * CI: add ShellCheck
+  * Make shellcheck test optional
+
+-------------------------------------------------------------------
+Wed Jan 28 11:23:42 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260128.73840e6:
+  * rdii: add tools to parse kernel commandline
+  * images: install patterns-images-hardware
+  * Add a README
+  * rdi-installer: implement search for raw images
+
+-------------------------------------------------------------------
+Tue Jan 27 16:04:35 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260127.e4413ed:
+  * rdi-installer: adjust colors
+  * mkosi: remove Autologin and gum
+
+-------------------------------------------------------------------
+Tue Jan 27 14:05:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- rpi-installer needs to require curl, gum, keywait and pv
+
+-------------------------------------------------------------------
+Tue Jan 27 13:04:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260127.a402671:
+  * select_image: mount label=images as workaround
+  * rdi-installer: cleanup
+  * Add tool to add an extra partition to a disk image
+
+-------------------------------------------------------------------
+Tue Jan 27 10:54:13 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260127.b86ccef:
+  * rdi-installer: adjust colors and cursor, add debug mode
+  * mkosi: Set eurlatgr console font
+  * mkosi.conf: include all kernel modules
+  * mkosi: add kernel net modules for systemd-networkd
+
+-------------------------------------------------------------------
+Mon Jan 26 16:49:08 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260126.aa0d439:
+  * rdi-installer: show transport type for target_device
+  * rdi-installer: add path to sources for shellcheck
+  * Add dbus-1-common (dbus.socket)
+  * parted: quote label correct
+  * create_uefi_usbstick: support parted beside sgdisk
+  * Include raw-disk-image-installer in UKI
+
+-------------------------------------------------------------------
+Mon Jan 26 11:30:49 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 0.0+git20260126.da6e4f1:
+  * keywait: fix default message
+  * Add keywait.1 manual page
+  * Fix install directory for manpage
+  * Import man directory
