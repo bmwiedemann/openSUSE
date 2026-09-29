@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Sep 27 20:54:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.84.0:
+  * Python 3.15 support
+  * align with grpc 1.84.0 update
+
+-------------------------------------------------------------------
+Tue Jul 14 20:02:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.82.1:
+  * Update lower bound for protobuf from 6.33.5 to 7.35.1
+  * [Pyright] Part 2 - Pyright for src/python/grpcio/grpc/aio/_call.py.
+  * [aio] Fix issue #42393: 100% CPU when Python run with -O flag.
+  * [Typeguard] Part 6 - Add Typeguard SYNC Stack in tests.
+  * [Pyright] Part 3 - Pyright for src/python/grpcio/grpc/aio/_metadata.py.
+  * Cancel calls without closing channels in fork child
+
+-------------------------------------------------------------------
 Sat Jun 27 15:56:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.81.1:
