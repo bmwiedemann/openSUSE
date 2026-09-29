@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 05:01:27 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 8.6.0:
+  * Bug Fixes
+    - COPYING: Use the combined LGPGL and GPL license text.
+      (b6e65dd)
+    - renovate: Add a 7-day cooldown for updates (6bb4216)
+  * Features
+    - hooks: Add all available project hook attributes (f57c33b)
+  * Testing
+    - Don't delete source branch by default for projects (aff7954)
+
+-------------------------------------------------------------------
 Tue Jul 28 05:10:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 8.5.0:
