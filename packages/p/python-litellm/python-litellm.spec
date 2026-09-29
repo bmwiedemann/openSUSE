@@ -23,7 +23,7 @@
 %bcond_with libalternatives
 %endif
 Name:           python-litellm
-Version:        1.101.0
+Version:        1.103.0
 Release:        0
 Summary:        Library to easily interface with LLM API providers
 License:        MIT

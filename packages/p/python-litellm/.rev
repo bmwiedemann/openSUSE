@@ -22,4 +22,33 @@
     keep the pure-Python noarch wheel and build it with uv_build</comment>
     <requestid>1378206</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>b097c44adc3551d1023e26849c71a463</srcmd5>
+    <version>1.103.0</version>
+    <time>1790697309</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.103.0:
+  * Also includes the 1.102.0 and 1.102.1 fixes CVE-2026-93355
+    (bsc#1283059) and bsc#1282835 (CVE-2026-89032)
+  * New provider support: xAI speech-to-text (Grok Voice
+    Transcribe), Vertex AI Chirp streaming over /v1/realtime,
+    Deepgram WebSocket passthrough with duration-based cost
+    tracking, Amazon Transcribe pass-through with completion-time
+    job pricing
+  * Proxy: Claude Code gateway protocol under
+    /claude_code_gateway, NVIDIA NIM object detection and OCR
+    passthrough, RFC 8693 token exchange for IdP JWTs on the
+    gateway token endpoint, batched user and team membership
+    creation (POST /management/v1/users/bulk)
+  * Router: capability classifier after Fuse V2 forecasting;
+    re-check budget on router fallback targets (behaviour change)
+  * MCP: require admission for delegated OAuth
+  * Guardrails: stream Prompt Security post_call redactions in
+    incremental_diff mode
+  * Rust bridge: scaffold Redis cache crate, extract auth and
+    cache crates (still opt-in via LITELLM_RUST)
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list (forwarded request 1381485 from mslacken)</comment>
+    <requestid>1381486</requestid>
+  </revision>
 </revisionlist>

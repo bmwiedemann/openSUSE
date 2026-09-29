@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Tue Sep 29 13:14:25 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to version 1.103.0:
+  * Also includes the 1.102.0 and 1.102.1 fixes CVE-2026-93355
+    (bsc#1283059) and bsc#1282835 (CVE-2026-89032)
+  * New provider support: xAI speech-to-text (Grok Voice
+    Transcribe), Vertex AI Chirp streaming over /v1/realtime,
+    Deepgram WebSocket passthrough with duration-based cost
+    tracking, Amazon Transcribe pass-through with completion-time
+    job pricing
+  * Proxy: Claude Code gateway protocol under
+    /claude_code_gateway, NVIDIA NIM object detection and OCR
+    passthrough, RFC 8693 token exchange for IdP JWTs on the
+    gateway token endpoint, batched user and team membership
+    creation (POST /management/v1/users/bulk)
+  * Router: capability classifier after Fuse V2 forecasting;
+    re-check budget on router fallback targets (behaviour change)
+  * MCP: require admission for delegated OAuth
+  * Guardrails: stream Prompt Security post_call redactions in
+    incremental_diff mode
+  * Rust bridge: scaffold Redis cache crate, extract auth and
+    cache crates (still opt-in via LITELLM_RUST)
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Tue Sep 15 15:16:24 UTC 2026 - Christian Goll <cgoll@suse.com>
 
 - Update to version 1.101.0i fix bsc#1278303 (CVE-2026-84377):
