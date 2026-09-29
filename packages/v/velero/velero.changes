@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:53:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.18.4:
+  * Fix CVEs for v1.18.4
+    - Bump go.opentelemetry.io/otel/sdk to 1.45.0 to fix
+      CVE-2026-81870
+    - Bump google.golang.org/grpc to 1.83.2 to fix CVE-2026-84445
+    - Bump paketobuildpacks/run-jammy-tiny to 0.2.177
+  * Pin e2e third-party clones to reviewed commits
+  * Fix backup queue permanently stuck when a dequeued backup
+    completes during the patch (#10521)
+
+-------------------------------------------------------------------
 Tue Sep 22 04:38:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.18.3:
