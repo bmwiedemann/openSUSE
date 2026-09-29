@@ -1219,4 +1219,12 @@ can be accepted after ecj-4.2.1 version upgrade
     <comment>9.0.122</comment>
     <requestid>1380681</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>5f31172e1c8675f70d317b46009ff50c</srcmd5>
+    <version>9.0.122</version>
+    <time>1790697139</time>
+    <user>anag_factory</user>
+    <comment>Add bug reference</comment>
+    <requestid>1381336</requestid>
+  </revision>
 </revisionlist>

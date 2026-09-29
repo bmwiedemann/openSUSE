@@ -7,7 +7,7 @@ Fri Sep 25 12:07:34 UTC 2026 - mbussolotto <michele.bussolotto@suse.com>
       message smuggling when per-message-deflate is used. (bsc#1282581)
     + CVE-2026-86350: Inconsistent interpretation of HTTP/2 requests caused by
       a regression in fix for CVE-2026-41293 can trigger request header mix-
-      up.
+      up. (bsc#1282787)
     + CVE-2026-86248: CLIENT_CERT authentication does not fail as expected for
       some scenarios when OCSP soft fail is disabled. (bsc#1282620)
     + CVE-2026-79677: Due to a concurrency bug, an attacker could trigger a
