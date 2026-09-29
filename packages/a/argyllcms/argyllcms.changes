@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:53:45 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 3.5.0 (bug fix release):
+  * Fixed bug in targen (introduced in 3.3.0) that added a default ink
+    limit for all device types, wrongly reducing it by 10% for additive
+    devices unless overridden later in profiling.
+  * Changed colprof to ignore, rather than warn about, an ink limit set
+    for an additive device space.
+  * Fixed reported problem with some models of Spyder2024.
+  * Tweaked i1d3 frequency measurement mode for more consistent zero-black
+    readings, matching period measurement mode on Rev. B instruments
+    affected by the 0x83 bug.
+  * Added Munsell Linear Grayscale scanin reference files.
+  * Added -g option to xicc/fakeCMY to emit RGB values instead of CMY.
+  * Added -o observer option to xicc/specplot.
+  * Improved robustness of command name filename parsing in a number of
+    utilities.
+  * Expanded spectro/average to handle input test charts.
+  * Improved JETI Specbos 2501 operation.
+- Spec cleanup: drop obsolete Group: tags, convert libtiff-devel and
+  the udev runtime Requires to their pkgconfig() provider form, and
+  use the standard parallel-make macro for the bundled ajam build tool.
+
+-------------------------------------------------------------------
 Wed Sep 17 18:58:06 UTC 2025 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to 3.4.1:

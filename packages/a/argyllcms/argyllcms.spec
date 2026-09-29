@@ -1,8 +1,7 @@
 #
 # spec file for package argyllcms
 #
-# Copyright (c) 2025 SUSE LLC
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,13 +17,11 @@
 
 
 %define tarname Argyll
-
 Name:           argyllcms
-Version:        3.4.1
+Version:        3.5.0
 Release:        0
 Summary:        ICC compatible color management system
 License:        AGPL-3.0-only AND GPL-2.0-or-later AND MIT
-Group:          System/X11/Utilities
 URL:            https://www.argyllcms.com/
 Source0:        https://www.argyllcms.com/%{tarname}_V%{version}_src.zip
 Source1:        19-color.fdi
@@ -33,11 +30,17 @@ Source3:        ajam-2.5.2-1.3.3.tgz
 Patch1:         ajam-include.patch
 # PATCH-FIX-OPENSUSE bsc#1221304 -- Fix ajam build with gcc14
 Patch2:         ajam-gcc14.patch
+#needed for ajam
+BuildRequires:  bison
 BuildRequires:  libjpeg-devel
-BuildRequires:  libtiff-devel
 BuildRequires:  libtool
+BuildRequires:  pkgconfig
+BuildRequires:  systemd-rpm-macros
 BuildRequires:  unzip
 BuildRequires:  pkgconfig(libpng)
+BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(x11)
 BuildRequires:  pkgconfig(xdmcp)
 BuildRequires:  pkgconfig(xext)
@@ -46,12 +49,7 @@ BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xscrnsaver)
 BuildRequires:  pkgconfig(xxf86vm)
 BuildRequires:  pkgconfig(zlib)
-#needed for ajam
-BuildRequires:  bison
-BuildRequires:  systemd-rpm-macros
-BuildRequires:  pkgconfig(openssl)
-BuildRequires:  pkgconfig(udev)
-Requires:       udev
+Requires:       pkgconfig(udev)
 # FIXME: The application dlopens libcolordcompat.so, which does not
 # exists in openSUSE colord package. We should use Suggests
 # or Recommends here, and change its name in the source code
@@ -75,7 +73,6 @@ viewer.
 %package doc
 Summary:        Argyll CMS documentation
 # Does not really make sense without Argyll CMS itself
-Group:          System/X11/Utilities
 Requires:       %{name} = %{version}
 BuildArch:      noarch
 
@@ -96,7 +93,7 @@ rm -fr zlib tiff png ccast/axTLS/*.c
 %build
 %define _lto_cflags %{nil}
 cd ajam-2.5.2-1.3.3
-make CFLAGS="-std=gnu89 %{optflags}"
+%make_build CFLAGS="-std=gnu89 %{optflags}"
 ln -s $PWD/bin.unix/jam ../jam
 cd ..
 
@@ -117,6 +114,9 @@ install -m 0644 -D ref/*  %{buildroot}/%{_datadir}/color/argyll/ref
 rm -f %{buildroot}/%{_datadir}/color/argyll/License.txt
 
 # ensure timestamp in shipped files is not changing for each rebuild (boo#916158)
+# NOTE: the trailing format token after "date +" below is a date(1) locale
+# specifier, not an RPM macro -- do not let spec-cleaner brace it, that turns
+# it into a lookup of an undefined macro named "c".
 TIMESTAMP=$(LC_ALL=C date --date=@${SOURCE_DATE_EPOCH} +%c)
 
 sed -i -e 's/^CREATED .*/CREATED "$TIMESTAMP"/g' %{buildroot}%{_datadir}/color/argyll/ref/RefMediumGamut.gam
