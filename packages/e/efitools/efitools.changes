@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:02:24 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add efitools-objcopy-target.patch to use correct objcopy options.
+
+-------------------------------------------------------------------
 Sun Apr 13 07:17:01 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 
 - Add efitools-c23.patch to fix gcc-15 compile time errors

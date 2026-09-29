@@ -1,0 +1,18 @@
+Oldish binutils (invalidly) accepted --target=X even when the
+input file wasn't of target X (and retained only the output target
+setting).  Newer binutils have stricter checks, so use the correct
+option (--output-target == -O).
+
+Index: efitools-1.9.2/Make.rules
+===================================================================
+--- efitools-1.9.2.orig/Make.rules	2026-09-24 15:58:54.423482043 +0200
++++ efitools-1.9.2/Make.rules	2026-09-24 15:59:42.587311376 +0200
+@@ -25,7 +25,7 @@ CRTOBJS		= $(CRTPATH)/$(CRTOBJ)
+ LDSCRIPT	= elf_$(ARCH)_efi.lds
+ LDFLAGS		+= -shared -Bsymbolic $(CRTOBJS) -L $(CRTPATH) -L /usr/lib -L /usr/lib64 -T $(LDSCRIPT)
+ LOADLIBES	= -lefi -lgnuefi $(shell $(CC) $(ARCH3264) -print-libgcc-file-name)
+-FORMAT		= --target=efi-app-$(ARCH)
++FORMAT		= -O efi-app-$(ARCH)
+ OBJCOPY		= objcopy
+ MYGUID		= 11111111-2222-3333-4444-123456789abc
+ INSTALL		= install

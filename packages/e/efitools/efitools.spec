@@ -1,7 +1,7 @@
 #
 # spec file for package efitools
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,7 @@ Source:         https://git.kernel.org/pub/scm/linux/kernel/git/jejb/efitools.gi
 Patch1:         efitools-disable-efisigned.patch
 Patch2:         efitools-bsc1220470-fix-gcc14-errors.patch
 Patch3:         efitools-c23.patch
+Patch4:         efitools-objcopy-target.patch
 BuildRequires:  gnu-efi
 BuildRequires:  help2man
 BuildRequires:  openssl-devel
