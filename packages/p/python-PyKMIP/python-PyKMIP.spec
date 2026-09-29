@@ -16,28 +16,16 @@
 #
 
 
+%bcond_without  libalternatives
 Name:           python-PyKMIP
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        KMIP v11 library
 License:        Apache-2.0
 URL:            https://github.com/OpenKMIP/PyKMIP
-Source:         https://files.pythonhosted.org/packages/source/P/PyKMIP/PyKMIP-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-tests-SQLAlchemy-140.patch gh#OpenKMIP/PyKMIP#656 mcepl@suse.com
-# fix tests to work with SQLAlchemy >= 1.4.0
-Patch0:         fix-tests-SQLAlchemy-140.patch
+Source:         https://files.pythonhosted.org/packages/source/p/pykmip/pykmip-%{version}.tar.gz
 # https://github.com/OpenKMIP/PyKMIP/issues/668
-Patch1:         python-PyKMIP-no-mock.patch
-# PATCH-FIX-UPSTREAM crypto-39.patch gh#OpenKMIP/PyKMIP#689
-Patch2:         crypto-39.patch
-# PATCH-FIX-UPSTREAM fix_test_mac_with_cryptographic_failure.patch gh#OpenKMIP/PyKMIP#702
-Patch3:         fix_test_mac_with_cryptographic_failure.patch
-# PATCH-FIX-OPENSUSE Use cryptography.hazmat.primitives.serialization for loading private keys.
-Patch4:         crypto-42.patch
-# PATCH-FIX-UPSTREAM Based on gh#OpenKMIP/PyKMIP#707, including some changes suggested
-Patch5:         no-ssl-wrap-socket.patch
-# PATCH-FIX-UPSTREAM gh#OpenKMIP/PyKMIP#658
-Patch6:         use-assertequal.patch
+Patch0:         python-PyKMIP-no-mock.patch
 BuildRequires:  %{python_module SQLAlchemy}
 BuildRequires:  %{python_module cryptography}
 BuildRequires:  %{python_module devel}
@@ -48,14 +36,14 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module six}
 BuildRequires:  %{python_module testtools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-SQLAlchemy
 Requires:       python-cryptography
 Requires:       python-requests
 Requires:       python-six
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 BuildArch:      noarch
 %python_subpackages
 
@@ -68,7 +56,7 @@ Standards`_ (OASIS). PyKMIP supports a subset of features in versions
 1.0 - 1.2 of the KMIP specification.
 
 %prep
-%autosetup -p1 -n PyKMIP-%{version}
+%autosetup -p1 -n pykmip-%{version}
 # Not needed, we use Python 3.4+ only
 sed -i '/"enum-compat",/d' setup.py
 
@@ -78,16 +66,14 @@ sed -i '/"enum-compat",/d' setup.py
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/pykmip-server
+%python_group_libalternatives pykmip-server
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
 %pytest kmip/tests/unit
 
-%post
-%python_install_alternative pykmip-server
-
-%postun
-%python_uninstall_alternative pykmip-server
+%pre
+%python_libalternatives_reset_alternative pykmip-server
 
 %files %{python_files}
 %license LICENSE.txt

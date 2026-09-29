@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:56:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 0.11.0:
+  * Fix compatibility with cryptography >= 39.0.0 and >= 42.0.0.
+  * Add Python 3.12/3.13 support; replace the removed
+    ssl.wrap_socket with ssl.SSLContext in client and server.
+  * Add custom attribute support for SymmetricKey/SecretData
+    and ApplicationSpecificInformation handling.
+  * Fix SQLAlchemy >= 1.4.0 test compatibility and the
+    test_mac_with_cryptographic_failure unit test.
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list.
+- Drop patches merged upstream in this release:
+  * fix-tests-SQLAlchemy-140.patch
+  * crypto-39.patch
+  * fix_test_mac_with_cryptographic_failure.patch
+  * crypto-42.patch
+  * no-ssl-wrap-socket.patch
+  * use-assertequal.patch
+- PyPI now serves the sdist as pykmip-%{version}.tar.gz
+  (lowercase); update Source and %autosetup to match.
+- Convert update-alternatives usage to libalternatives (alts).
+
+-------------------------------------------------------------------
 Tue Mar 17 01:25:55 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch use-assertequal.patch:
