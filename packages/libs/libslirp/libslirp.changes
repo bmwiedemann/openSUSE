@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:51:58 UTC 2026 - Petr Gajdos <pgajdos@suse.com> + gemini
+
+- Update to version 4.9.5+1:
+  * note CVE numbers
+  * Release v4.9.5
+  * Set UDP sockets in blocking mode
+  * dhcpv6: fix bounding the reply against the interface MTU
+  * dhcpv6: bound the reply against the interface MTU
+  * ncsi: bounds-check OEM command bodies before dereferencing them
+  * Release v4.9.4
+  * ip_input: update hlen on ip_reass
+  * ip6_input: Trim mbuf to ip6-announced length
+  * Fix reporting oob output
+  * Note about the security contact
+- fixes CVE-2026-95507, CVE-2026-95508
+
+-------------------------------------------------------------------
 Wed Jun 24 11:22:12 UTC 2026 - pgajdos@suse.com
 
 - Update to version 4.9.3+4:

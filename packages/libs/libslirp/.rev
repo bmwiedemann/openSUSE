@@ -178,4 +178,12 @@
 - fixes CVE-2026-9539 [bsc#1268903]</comment>
     <requestid>1361611</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8ece441cfef24b7b3e89c0fc42527c5f</srcmd5>
+    <version>4.9.5+1</version>
+    <time>1790696804</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381144</requestid>
+  </revision>
 </revisionlist>
