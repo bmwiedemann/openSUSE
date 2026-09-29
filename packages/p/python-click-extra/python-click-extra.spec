@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-click-extra
-Version:        9.3.4
+Version:        9.3.5
 Release:        0
 Summary:        Drop-in replacement for Click to make user-friendly and colorful CLI
 License:        GPL-2.0-or-later
