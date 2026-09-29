@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:53:27 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Restore wv-1.0.3-wvText.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 08:34:20 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Thu Nov 14 16:19:42 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete wv-1.0.3-wvText.patch, wv-1.2.2-automake.patch,

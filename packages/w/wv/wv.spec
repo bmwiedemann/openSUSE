@@ -24,7 +24,8 @@ Summary:        Tools for Importing Microsoft Word (tm) Documents
 License:        GPL-2.0-or-later
 Group:          Productivity/Publishing/Word
 URL:            http://wvware.sourceforge.net/
-Source0:        https://www.abisource.com/downloads/%{name}/%{version}/%{name}-%{version}.tar.gz
+#servers_are_dead#Source0: https://www.abisource.com/downloads/%{name}/%{version}/%{name}-%{version}.tar.gz
+Source:         %{name}-%{version}.tar.gz
 Patch1:         detect-imagick.patch
 Patch2:         man-refs.patch
 Patch3:         man-wvrtf-name.patch
@@ -39,6 +40,7 @@ Patch11:        hardening-format.patch
 Patch12:        man-remove-PU.patch
 Patch13:        cross.patch
 Patch14:        0014-Add-missing-include.patch
+Patch15:        wv-1.0.3-wvText.patch
 BuildRequires:  libexpat-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
@@ -80,7 +82,7 @@ Header files for wv.
 perl -i -lpe 's{AM_INIT_AUTOMAKE.*}{AM_INIT_AUTOMAKE([foreign subdir-objects])}g' configure.ac
 autoreconf -f -i --verbose
 %define warn_flags -Wall -Wstrict-prototypes -Wpointer-arith -Wformat -Wformat-security
-CFLAGS="%{optflags} %{warn_flags} -fno-strict-aliasing -fstack-protector" \
+CFLAGS="%{optflags} %{warn_flags} -fno-strict-aliasing" \
 %configure \
     --with-libwmf \
     --with-expat \

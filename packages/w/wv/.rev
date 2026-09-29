@@ -180,4 +180,13 @@
     <comment>fix build failure; leverage Debian patchset</comment>
     <requestid>1224252</requestid>
   </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>0e25093ff3bfded8dc225da077f30af5</srcmd5>
+    <version>1.2.9</version>
+    <time>1790697286</time>
+    <user>anag_factory</user>
+    <comment>- Restore wv-1.0.3-wvText.patch
+- Drop obsolete -fstack-protector from CFLAGS</comment>
+    <requestid>1381484</requestid>
+  </revision>
 </revisionlist>
