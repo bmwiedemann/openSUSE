@@ -23,4 +23,12 @@
     <comment>junit5 -&gt; junit5-minimal to avoid build cycles</comment>
     <requestid>1344526</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>752dc520cfb58949db473fca86392299</srcmd5>
+    <version>2.2.0</version>
+    <time>1790696979</time>
+    <user>anag_factory</user>
+    <comment>2.2.0</comment>
+    <requestid>1381220</requestid>
+  </revision>
 </revisionlist>

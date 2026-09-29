@@ -18,7 +18,7 @@
 
 %bcond_with tests
 Name:           plexus-testing
-Version:        2.1.0
+Version:        2.2.0
 Release:        0
 Summary:        Plexus Testing
 License:        Apache-2.0
