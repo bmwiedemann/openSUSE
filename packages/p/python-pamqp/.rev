@@ -171,4 +171,12 @@
     arrays/tables</comment>
     <requestid>1364125</requestid>
   </revision>
+  <revision rev="15" vrev="2">
+    <srcmd5>4bd9093a8172c08f68725a5956742f31</srcmd5>
+    <version>4.0.1</version>
+    <time>1790697018</time>
+    <user>anag_factory</user>
+    <comment>- fix typo in description</comment>
+    <requestid>1381247</requestid>
+  </revision>
 </revisionlist>

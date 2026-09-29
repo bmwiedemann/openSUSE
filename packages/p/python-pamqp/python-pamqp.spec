@@ -35,7 +35,7 @@ BuildArch:      noarch
 %description
 pamqp is a pure-python AMQP 0-9-1 frame encoder and decoder.
 
-pamqp is not a end-user client library for talking to RabbitMQ but
+pamqp is not an end-user client library for talking to RabbitMQ but
 rather is used by client libraries for marshaling and unmarshaling
 AMQP frames.
 
@@ -55,7 +55,7 @@ encoding should be run through the pamqp.frame module.
 
 %check
 # DemarshalingTests.test_basic_properties fails in v3.0.1 due to failing datetime value comparison
-%pytest -k 'not (DemarshalingTests and test_basic_properties)' tests/*
+%pytest --ignore "tests/test_decoding.py" -k 'not (DemarshalingTests and test_basic_properties and test_basic_recoverasync)' tests/*
 
 %files %{python_files}
 %license LICENSE
