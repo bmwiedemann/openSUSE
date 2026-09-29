@@ -19,7 +19,7 @@
 %bcond_with nautilus_extension
 
 Name:           brasero
-Version:        3.12.3+43
+Version:        3.12.4
 Release:        0
 Summary:        CD/DVD burning application for GNOME
 License:        GPL-3.0-or-later
@@ -207,7 +207,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %license COPYING
 %doc NEWS AUTHORS README
 %doc %{_datadir}/help/C/%{name}/
-%{_datadir}/metainfo/brasero.appdata.xml
+%{_datadir}/metainfo/org.gnome.Brasero.metainfo.xml
 %{_datadir}/brasero/
 %{_libdir}/brasero3/
 %{_bindir}/brasero

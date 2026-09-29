@@ -745,4 +745,31 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342937</requestid>
   </revision>
+  <revision rev="100" vrev="1">
+    <srcmd5>d4bd6732eeda35c7560d30481af4bf12</srcmd5>
+    <version>3.12.4</version>
+    <time>1790697190</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.12.4:
+  + Bugs fixed and enhancements:
+    - Remove libegg multidrag treeview support for in-built
+      'GtkFileChooser'
+    - cdrkit: Add better error message for &quot;Unsupported sector
+      size&quot; errors
+    - cdrdao: Add better error message for &quot;Unsupported track mode&quot;
+      errors
+    - libbrasero-burn: Fix incorrect condition during error check
+    - Replace 'BaobabCellRendererProgress' with native
+      'GtkCellRendererProgress'
+    - Fix grammar in help
+    - Update confirmation dialog logic to properly trigger
+      cancellation dialog
+    - burn-dialog: Use 'media-optical' for notifications
+    - Prefer 'application/vnd.efi.iso' MIME type
+    - src: Fix 'GtkSpinButton' filling vertical space
+    - libbrasero-burn: Fix incorrect plugin version comparison
+    - checksum: Default to SHA256 rather than MD5
+  + Updated translations.</comment>
+    <requestid>1381361</requestid>
+  </revision>
 </revisionlist>
