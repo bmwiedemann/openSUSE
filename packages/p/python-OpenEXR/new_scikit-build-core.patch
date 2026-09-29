@@ -1,0 +1,12 @@
+diff -Nrua openexr-3.4.13.orig/pyproject.toml openexr-3.4.13/pyproject.toml
+--- openexr-3.4.13.orig/pyproject.toml	2022-11-09 13:37:21.000000000 +0100
++++ openexr-3.4.13/pyproject.toml	2026-09-28 15:40:48.835418873 +0200
+@@ -43,7 +43,7 @@
+ sdist.exclude = [".github", "src/examples", "ASWF", "bazel", "share"]
+ 
+ # Only build the PyOpenEXR (cmake --build --target PyOpenEXR).
+-cmake.targets = ["PyOpenEXR"]
++build.targets = ["PyOpenEXR"]
+ # Only install the "python" component (cmake --install --component python).
+ # This makes sure that only files marked as "python" component are installed.
+ install.components = ["python"]

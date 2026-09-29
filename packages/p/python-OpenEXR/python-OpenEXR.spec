@@ -26,6 +26,7 @@ URL:            https://github.com/AcademySoftwareFoundation/OpenEXR
 Source0:        https://files.pythonhosted.org/packages/source/O/OpenEXR/%{modname}-%{version}.tar.gz
 Patch0:         force-system-dependencies.patch
 Patch1:         remove-rpath.patch
+Patch2:         new_scikit-build-core.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pybind11-devel}

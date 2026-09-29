@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 13:39:28 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Build with new scikit-build-core:
+  * add patch new_scikit-build-core.patch
+
+-------------------------------------------------------------------
 Thu Jul 30 08:59:21 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Update to version 3.4.13:
