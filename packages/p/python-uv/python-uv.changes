@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:41:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.20:
+  * Reuse lockfiles when dependency declarations are semantically
+    equivalent
+  * Restore the previous HTTP cache-write scheduling: the batched
+    writes added in 0.12.15 caused severe cache-revalidation stalls
+    on ext4
+  * Apply --require-hashes and --verify-hashes to every repeated
+    requirement instead of only the first
+  * Restore pyproject.toml if uv upgrade fails or is interrupted
+  * No longer panic on an always-false constraint while trace
+    logging, on whitespace-only non-ASCII requirements, on
+    unrecognized managed Python implementation directories or on
+    managed Python sysconfig paths that merely start with /install;
+    a UTF-16 requirements file holding only a byte-order mark now
+    counts as empty
+  * Preserve second-line encoding declarations in wheel scripts
+    with CRLF shebangs, and keep searching XDG_CONFIG_DIRS after
+    empty entries
+  * --no-build can build metadata for first-party workspace
+    projects, and --all-packages honors the project exclusion
+    flags
+  * Preview features around pylock.toml, lockfile normalization
+    and tool-install-locks
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored dependencies (tokio-rustls 0.26.5 ->
+  0.26.6, zerocopy and zerocopy-derive 0.8.58 -> 0.8.59; all
+  three are linked into the binary), the licence set is unchanged
+- Not affected by CVE-2026-25800 (boo#1273366, boo#1273367):
+  quinn and quinn-proto are vendored but not linked into the
+  shipped binary, as uv builds reqwest without its http3 feature
+
+-------------------------------------------------------------------
 Fri Sep 25 15:10:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.12.19:

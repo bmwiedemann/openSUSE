@@ -3277,4 +3277,13 @@ with the full test suite (1411 passed).</comment>
     <comment>Update to 0.12.19: PyPy/GraalPy updates, publish output fixes.</comment>
     <requestid>1380702</requestid>
   </revision>
+  <revision rev="128" vrev="1">
+    <srcmd5>6a5aac55550fabceed9b6ba0e3abefe2</srcmd5>
+    <version>0.12.20</version>
+    <time>1790697168</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.20: fixes several resolver and managed-Python panics, and restores the previous HTTP cache-write scheduling upstream reverted after 0.12.15 caused severe ext4 cache-revalidation stalls. Vendored deps refreshed, linked licence set unchanged. Details in .changes.
+</comment>
+    <requestid>1381348</requestid>
+  </revision>
 </revisionlist>
