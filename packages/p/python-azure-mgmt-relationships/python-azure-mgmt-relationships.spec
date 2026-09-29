@@ -15,17 +15,15 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define realversion 1.0.0b1
-
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-relationships
-Version:        1.0.0~b1
+Version:        1.0.0
 Release:        0
 Summary:        Microsoft Azure Relationships Management Client Library for Python
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/Azure/azure-sdk-for-python
-Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_relationships/azure_mgmt_relationships-%{realversion}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/a/azure_mgmt_relationships/azure_mgmt_relationships-%{version}.tar.gz
 BuildRequires:  %{python_module azure-mgmt-nspkg >= 3.0.0}
 BuildRequires:  %{python_module azure-nspkg >= 3.0.0}
 BuildRequires:  %{python_module pip}
@@ -50,7 +48,7 @@ This is the Microsoft Azure Relationships Management Client Library.
 This package has been tested with Python 3.9+.
 
 %prep
-%setup -q -n azure_mgmt_relationships-%{realversion}
+%setup -q -n azure_mgmt_relationships-%{version}
 
 %build
 %pyproject_wheel
