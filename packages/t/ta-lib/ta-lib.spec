@@ -63,10 +63,6 @@ TA-Lib provides common functions for the technical analysis of stock/future/comm
 
 CFLAGS="%{optflags} -fno-strict-aliasing"
 CXXFLAGS="%{optflags} -fno-strict-aliasing"
-%if 0%{?suse_version} > 1000
-CFLAGS="$CFLAGS -fstack-protector"
-CXXFLAGS="$CXXFLAGS -fstack-protector"
-%endif
 
 export CFLAGS
 export CXXFLAGS

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:28:10 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS/CXXFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag silently
+  downgraded strong to basic).
+
+-------------------------------------------------------------------
 Thu Jan 21 14:27:05 UTC 2021 - John Vandenberg <jayvdb@gmail.com>
 
 - Add URL

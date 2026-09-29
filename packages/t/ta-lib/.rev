@@ -7,4 +7,12 @@
     <comment>dependency of some python packages</comment>
     <requestid>871611</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>00657554d5c1f18abbca1a9ea6c75062</srcmd5>
+    <version>0.4.0</version>
+    <time>1790697183</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381352 from scarabeus_iv)</comment>
+    <requestid>1381357</requestid>
+  </revision>
 </revisionlist>
