@@ -19,7 +19,7 @@
 %define soname libdbus-glib-1-2
 
 Name:           dbus-1-glib
-Version:        0.114
+Version:        0.116
 Release:        0
 Summary:        GLib-based library for using D-Bus
 License:        AFL-2.1 OR GPL-2.0-or-later
@@ -36,6 +36,7 @@ BuildRequires:  pkgconfig(dbus-1) >= 1.8
 BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gobject-2.0) >= 2.40
+Obsoletes:      dbus-1-glib-bash-completion <= %{version}
 
 %description
 D-Bus add-on library to integrate the standard D-Bus library with the
@@ -85,20 +86,6 @@ GLib thread abstraction and main loop.
 
 This package contains dbus-binding-tool and manpage.
 
-%package bash-completion
-Summary:        Bash-completion package for D-Bus/GLib bindings
-Requires:       dbus-1-glib-tool
-Supplements:    (dbus-1-glib-tool and bash-completion)
-# Up to version 0.112, the entire dbus-1-glib was in an unsplit package
-Provides:       dbus-1-glib:/etc/bash_completion.d/dbus-bash-completion.sh
-Conflicts:      dbus-1-glib < 0.112
-
-%description bash-completion
-D-Bus add-on tool to integrate the standard D-Bus library with the
-GLib thread abstraction and main loop.
-
-This package contains bash-completion support for %{name}.
-
 %prep
 %autosetup -p1 -n dbus-glib-%{version}
 
@@ -114,13 +101,6 @@ This package contains bash-completion support for %{name}.
 %install
 %make_install
 find %{buildroot} -type f -name "*.la" -delete -print
-# Remove the exacutable bit from dbus-bash-completion.sh
-chmod -x %{buildroot}/%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh
-# Create and move dbus-bash-completion.sh to the correct folder for openSUSE
-mkdir %{buildroot}%{_datadir}/bash-completion/
-mkdir %{buildroot}%{_datadir}/bash-completion/completions/
-mv %{buildroot}/%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh \
-  %{buildroot}%{_datadir}/bash-completion/completions/dbus-bash-completion.sh
 
 %ldconfig_scriptlets -n %{soname}
 
@@ -143,9 +123,5 @@ mv %{buildroot}/%{_sysconfdir}/bash_completion.d/dbus-bash-completion.sh \
 %files -n dbus-1-glib-tool
 %{_bindir}/dbus-binding-tool
 %{_mandir}/man?/dbus-binding-tool.1%{?ext_man}
-
-%files bash-completion
-%{_datadir}/bash-completion/completions/dbus-bash-completion.sh
-%{_libexecdir}/%{name}
 
 %changelog

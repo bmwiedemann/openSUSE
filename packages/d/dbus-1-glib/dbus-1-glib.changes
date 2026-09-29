@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Sep 28 07:21:04 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 0.116:
+  + Bug fixes:
+    - Remove `G_GNUC_CONST` from `_get_type()` functions. This can
+      cause miscompilation with gcc-16.
+    - Disable bash completion by default. This is an unmaintained
+      bash completion for dbus-send(1), which is not part of GLib,
+      and apparently doesn't work as intended. For a dbus-send
+      equivalent with shell completion, please try GLib's gdbus(1)
+      or systemd's busctl(1).
+- Drop (and obsolete) bash-completion sub-package following
+  upstream changes.
+
+-------------------------------------------------------------------
 Sun Jun 28 19:37:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.114:
@@ -10,6 +25,7 @@ Sun Jun 28 19:37:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
   * dbus-glib version control is now hosted on freedesktop.org's
     Gitlab installation, and bug reports and feature requests have
     switched from Bugzilla bugs (indicated by "fd.o #nnn") to
+
 -------------------------------------------------------------------
 Thu Mar 20 20:10:54 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 

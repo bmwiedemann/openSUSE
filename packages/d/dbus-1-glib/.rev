@@ -494,4 +494,12 @@
 - loosen dependency to D-Bus</comment>
     <requestid>1362247</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>9b4a3ce2925d75360cb6adf031d6e6f5</srcmd5>
+    <version>0.116</version>
+    <time>1790696800</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381109</requestid>
+  </revision>
 </revisionlist>
