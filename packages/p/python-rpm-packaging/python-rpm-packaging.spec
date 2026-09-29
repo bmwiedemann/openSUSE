@@ -1,7 +1,7 @@
 #
 # spec file for package python-rpm-packaging
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,9 +27,9 @@ Source0:        %{name}-%{version}.tar.xz
 Patch0:         python3.patch
 Patch1:         disable-distrequires.patch
 BuildArch:      noarch
+BuildRequires:  python-rpm-macros
 Provides:       rpm-build-python = 4.17.1
 Obsoletes:      rpm-build-python < 4.17.1
-Requires:       python3-base
 # boo#1178257
 Requires:       python3-packaging
 # To avoid widespread breakage by package mistakenly ignoring
@@ -49,6 +49,7 @@ true
 mkdir -p %{buildroot}%{_fileattrsdir}
 install -Dm0644 fileattrs/* %{buildroot}%{_fileattrsdir}
 install -Dm0755 scripts/* %{buildroot}%{_rpmconfigdir}
+%python3_fix_shebang_path %{buildroot}%{_rpmconfigdir}/pythondistdeps.py
 
 %files
 %license COPYING
@@ -58,6 +59,5 @@ install -Dm0755 scripts/* %{buildroot}%{_rpmconfigdir}
 %{_rpmconfigdir}/brp-python-bytecompile
 %{_rpmconfigdir}/brp-python-hardlink
 %{_rpmconfigdir}/pythondistdeps.py
-
 
 %changelog
