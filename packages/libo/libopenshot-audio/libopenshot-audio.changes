@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 07:16:00 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 1.0.1:
+  * Fixed builds against modern macOS SDKs by removing the obsolete
+    AGL framework dependency.
+  * Corrected the CoreMIDI framework name for macOS linking.
+
+-------------------------------------------------------------------
 Tue Sep 01 07:33:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 1.0.0:

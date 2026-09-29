@@ -19,7 +19,7 @@
 %define sover 10
 
 Name:           libopenshot-audio
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        Audio library for the OpenShot video editor
 License:        GPL-3.0-or-later
