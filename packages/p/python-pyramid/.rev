@@ -252,4 +252,13 @@
 - Remove Python 2 leftovers.</comment>
     <requestid>1360425</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>ada7ff7db3f4d490622201cf43d68958</srcmd5>
+    <version>2.1</version>
+    <time>1790697048</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata rather than pkg_resources.</comment>
+    <requestid>1381278</requestid>
+  </revision>
 </revisionlist>

@@ -1,0 +1,2590 @@
+From a8bd7db90d4b0116d35ec8209839b1b4bc69d565 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?R=C3=A9my=20Hubscher?= <remy@yampa.ai>
+Date: Tue, 4 Aug 2026 11:28:56 +0200
+Subject: [PATCH 1/4] Replace pkg_resources with importlib.resources.
+
+Asset overrides now resolve through Pyramid's own APIs via explicit
+IPackageOverrides registry lookup, removing the setuptools runtime
+dependency and the OverrideProvider loader hook.
+---
+ CHANGES.rst                      |  20 ++
+ docs/glossary.rst                |   7 +-
+ docs/narr/assets.rst             |  26 +-
+ docs/narr/environment.rst        |   5 +-
+ docs/narr/extending.rst          |   4 +-
+ pyproject.toml                   |   1 -
+ src/pyramid/asset.py             |   4 +-
+ src/pyramid/config/__init__.py   |  10 +-
+ src/pyramid/config/assets.py     | 166 +++---------
+ src/pyramid/config/i18n.py       |   4 +-
+ src/pyramid/interfaces.py        |  23 +-
+ src/pyramid/path.py              | 417 +++++++------------------------
+ src/pyramid/resolver.py          | 330 ++++++++++++++++++++++++
+ src/pyramid/scripts/pserve.py    |   2 +-
+ src/pyramid/static.py            |  26 +-
+ src/pyramid/util.py              |   2 +-
+ tests/pkgs/assets/__init__.py    |   0
+ tests/pkgs/assets/dir/fizz.txt   |   1 +
+ tests/pkgs/assets/foo.txt        |   1 +
+ tests/test_config/test_assets.py | 318 +----------------------
+ tests/test_path.py               | 364 +++------------------------
+ tests/test_resolver.py           | 312 +++++++++++++++++++++++
+ 22 files changed, 888 insertions(+), 1155 deletions(-)
+ create mode 100644 src/pyramid/resolver.py
+ create mode 100644 tests/pkgs/assets/__init__.py
+ create mode 100644 tests/pkgs/assets/dir/fizz.txt
+ create mode 100644 tests/pkgs/assets/foo.txt
+ create mode 100644 tests/test_resolver.py
+
+Index: pyramid-2.1/docs/glossary.rst
+===================================================================
+--- pyramid-2.1.orig/docs/glossary.rst
++++ pyramid-2.1/docs/glossary.rst
+@@ -49,11 +49,10 @@ Glossary
+      distribution, and installation of libraries and applications.
+ 
+    pkg_resources
+-     A module which ships with :term:`Setuptools` that
++     A deprecated module which ships with :term:`Setuptools` that
+      provides an API for addressing "asset files" within a Python
+-     :term:`package`.  Asset files are static files, template files, etc;
+-     basically anything non-Python-source that lives in a Python package can
+-     be considered a asset file.
++     :term:`package`.  :app:`Pyramid` no longer uses ``pkg_resources``;
++     asset resolution is performed using :mod:`importlib.resources` instead.
+      
+      .. seealso::
+          
+Index: pyramid-2.1/docs/narr/assets.rst
+===================================================================
+--- pyramid-2.1.orig/docs/narr/assets.rst
++++ pyramid-2.1/docs/narr/assets.rst
+@@ -68,11 +68,11 @@ two parts:
+ 
+ The two parts are separated by a colon ``:`` character.
+ 
+-:app:`Pyramid` uses the Python :term:`pkg_resources` API to resolve the package
+-name and asset name to an absolute (operating system-specific) file name.  It
+-eventually passes this resolved absolute filesystem path to the Chameleon
+-templating engine, which then uses it to load, parse, and execute the template
+-file.
++:app:`Pyramid` uses the Python :mod:`importlib.resources` API to resolve the
++package name and asset name to an absolute (operating system-specific) file
++name.  It eventually passes this resolved absolute filesystem path to the
++Chameleon templating engine, which then uses it to load, parse, and execute
++the template file.
+ 
+ There is a second form of asset specification: a *relative* asset
+ specification.  Instead of using an "absolute" asset specification which
+@@ -766,8 +766,10 @@ feature, a :term:`Configurator` API exis
+ - A directory of static files served up by an instance of the
+   ``pyramid.static.static_view`` helper class.
+ 
+-- Any other asset (or set of assets) addressed by code that uses the Setuptools
+-  :term:`pkg_resources` API.
++- Any other asset (or set of assets) addressed by code that uses Pyramid's
++  asset resolution APIs (such as
++  :class:`pyramid.path.AssetResolver` and
++  :func:`pyramid.path.resource_filename`).
+ 
+ .. index::
+    single: override_asset
+@@ -840,11 +842,11 @@ path.  The first asset that exists in th
+ exists in the override path, the original asset is used.
+ 
+ Asset overrides can actually override assets other than templates and static
+-files.  Any software which uses the
+-:func:`pkg_resources.get_resource_filename`,
+-:func:`pkg_resources.get_resource_stream`, or
+-:func:`pkg_resources.get_resource_string` APIs will obtain an overridden file
+-when an override is used.
++files.  Any code that resolves assets through Pyramid's asset APIs (such as
++:meth:`pyramid.path.AssetResolver.resolve`,
++:func:`pyramid.path.resource_filename`, or
++:func:`pyramid.asset.abspath_from_asset_spec`) will obtain an overridden file
++when an override is registered.
+ 
+ .. versionadded:: 1.6
+   As of Pyramid 1.6, it is also possible to override an asset by supplying an
+Index: pyramid-2.1/docs/narr/environment.rst
+===================================================================
+--- pyramid-2.1.orig/docs/narr/environment.rst
++++ pyramid-2.1/docs/narr/environment.rst
+@@ -456,9 +456,8 @@ the distinction can be confusing.  It's
+ When ``pyramid.reload_templates`` is true, :app:`Pyramid` takes advantage of
+ the underlying templating system's ability to check for file modifications to
+ an individual template file.  When ``pyramid.reload_templates`` is true, but
+-``pyramid.reload_assets`` is *not* true, the template filename returned by the
+-``pkg_resources`` package (used under the hood by asset resolution) is cached
+-by :app:`Pyramid` on the first request.  Subsequent requests for the same
++``pyramid.reload_assets`` is *not* true, the template filename returned by
++asset resolution is cached by :app:`Pyramid` on the first request.  Subsequent requests for the same
+ template file will return a cached template filename.  The underlying
+ templating system checks for modifications to this particular file for every
+ request.  Setting ``pyramid.reload_templates`` to ``True`` doesn't affect
+Index: pyramid-2.1/docs/narr/extending.rst
+===================================================================
+--- pyramid-2.1.orig/docs/narr/extending.rst
++++ pyramid-2.1/docs/narr/extending.rst
+@@ -118,8 +118,8 @@ The fundamental "plug points" of an appl
+ are *routes*, *views*, and *assets*.  Routes are declarations made using the
+ :meth:`pyramid.config.Configurator.add_route` method.  Views are declarations
+ made using the :meth:`pyramid.config.Configurator.add_view` method.  Assets are
+-files that are accessed by :app:`Pyramid` using the :term:`pkg_resources` API
+-such as static files and templates via a :term:`asset specification`.  Other
++files that are accessed by :app:`Pyramid` using the :mod:`importlib.resources`
++API such as static files and templates via a :term:`asset specification`.  Other
+ directives and configurator methods also deal in routes, views, and assets.
+ For example, the ``add_handler`` directive of the ``pyramid_handlers`` package
+ adds a single route and some number of views.
+Index: pyramid-2.1/pyproject.toml
+===================================================================
+--- pyramid-2.1.orig/pyproject.toml
++++ pyramid-2.1/pyproject.toml
+@@ -23,7 +23,6 @@ dependencies = [
+     "hupper >= 1.5",  # ignore_files support
+     "plaster",
+     "plaster_pastedeploy",
+-    "setuptools < 82",  # require pkg_resources
+     "translationstring >= 0.4",  # py3 compat
+     "venusian >= 1.0",  # ``ignore``
+     "webob >= 1.8.3",  # Accept.parse_offer
+Index: pyramid-2.1/src/pyramid/asset.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/asset.py
++++ pyramid-2.1/src/pyramid/asset.py
+@@ -1,7 +1,7 @@
+ import os
+-import pkg_resources
+ 
+ from pyramid.path import package_name, package_path
++from pyramid.resolver import AssetResolver
+ 
+ 
+ def resolve_asset_spec(spec, pname='__main__'):
+@@ -40,4 +40,4 @@ def abspath_from_asset_spec(spec, pname=
+     pname, filename = resolve_asset_spec(spec, pname)
+     if pname is None:
+         return filename
+-    return pkg_resources.resource_filename(pname, filename)
++    return AssetResolver(None).resolve(f'{pname}:{filename}').abspath()
+Index: pyramid-2.1/src/pyramid/config/__init__.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/config/__init__.py
++++ pyramid-2.1/src/pyramid/config/__init__.py
+@@ -36,8 +36,9 @@ from pyramid.interfaces import (
+     IDebugLogger,
+     IExceptionResponse,
+ )
+-from pyramid.path import DottedNameResolver, caller_package, package_of
++from pyramid.path import caller_package, package_of
+ from pyramid.registry import Introspectable, Introspector, Registry
++from pyramid.resolver import AssetResolver, DottedNameResolver
+ from pyramid.router import Router
+ from pyramid.settings import aslist
+ from pyramid.threadlocal import manager
+@@ -316,6 +317,9 @@ class Configurator(
+                 default_view_mapper=default_view_mapper,
+                 exceptionresponse_view=exceptionresponse_view,
+             )
++        self.asset_resolver = AssetResolver(
++            self.package, registry=self.registry
++        )
+ 
+     def setup_registry(
+         self,
+Index: pyramid-2.1/src/pyramid/config/assets.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/config/assets.py
++++ pyramid-2.1/src/pyramid/config/assets.py
+@@ -1,110 +1,17 @@
++import importlib.resources
+ import os
+-import pkg_resources
+ import sys
+ from zope.interface import implementer
+ 
+ from pyramid.config.actions import action_method
+ from pyramid.exceptions import ConfigurationError
+ from pyramid.interfaces import PHASE1_CONFIG, IPackageOverrides
+-from pyramid.threadlocal import get_current_registry
+-
+-
+-class OverrideProvider(pkg_resources.DefaultProvider):
+-    def __init__(self, module):
+-        pkg_resources.DefaultProvider.__init__(self, module)
+-        self.module_name = module.__name__
+-
+-    def _get_overrides(self):
+-        reg = get_current_registry()
+-        overrides = reg.queryUtility(IPackageOverrides, self.module_name)
+-        return overrides
+-
+-    def get_resource_filename(self, manager, resource_name):
+-        """Return a true filesystem path for resource_name,
+-        co-ordinating the extraction with manager, if the resource
+-        must be unpacked to the filesystem.
+-        """
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            filename = overrides.get_filename(resource_name)
+-            if filename is not None:
+-                return filename
+-        return pkg_resources.DefaultProvider.get_resource_filename(
+-            self, manager, resource_name
+-        )
+-
+-    def get_resource_stream(self, manager, resource_name):
+-        """Return a readable file-like object for resource_name."""
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            stream = overrides.get_stream(resource_name)
+-            if stream is not None:
+-                return stream
+-        return pkg_resources.DefaultProvider.get_resource_stream(
+-            self, manager, resource_name
+-        )
+-
+-    def get_resource_string(self, manager, resource_name):
+-        """Return a string containing the contents of resource_name."""
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            string = overrides.get_string(resource_name)
+-            if string is not None:
+-                return string
+-        return pkg_resources.DefaultProvider.get_resource_string(
+-            self, manager, resource_name
+-        )
+-
+-    def has_resource(self, resource_name):
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            result = overrides.has_resource(resource_name)
+-            if result is not None:
+-                return result
+-        return pkg_resources.DefaultProvider.has_resource(self, resource_name)
+-
+-    def resource_isdir(self, resource_name):
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            result = overrides.isdir(resource_name)
+-            if result is not None:
+-                return result
+-        return pkg_resources.DefaultProvider.resource_isdir(
+-            self, resource_name
+-        )
+-
+-    def resource_listdir(self, resource_name):
+-        overrides = self._get_overrides()
+-        if overrides is not None:
+-            result = overrides.listdir(resource_name)
+-            if result is not None:
+-                return result
+-        return pkg_resources.DefaultProvider.resource_listdir(
+-            self, resource_name
+-        )
++from pyramid.path import ref_filename
+ 
+ 
+ @implementer(IPackageOverrides)
+ class PackageOverrides:
+-    # pkg_resources arg in kw args below for testing
+-    def __init__(self, package, pkg_resources=pkg_resources):
+-        loader = self._real_loader = getattr(package, '__loader__', None)
+-        if isinstance(loader, self.__class__):
+-            self._real_loader = None
+-        # We register ourselves as a __loader__ *only* to support the
+-        # setuptools _find_adapter adapter lookup; this class doesn't
+-        # actually support the PEP 302 loader "API".  This is
+-        # excusable due to the following statement in the spec:
+-        # ... Loader objects are not
+-        # required to offer any useful functionality (any such functionality,
+-        # such as the zipimport get_data() method mentioned above, is
+-        # optional)...
+-        # A __loader__ attribute is basically metadata, and setuptools
+-        # uses it as such.
+-        package.__loader__ = self
+-        # we call register_loader_type for every instantiation of this
+-        # class; that's OK, it's idempotent to do it more than once.
+-        pkg_resources.register_loader_type(self.__class__, OverrideProvider)
++    def __init__(self, package):
+         self.overrides = []
+         self.overridden_package_name = package.__name__
+ 
+@@ -163,28 +70,6 @@ class PackageOverrides:
+             if result is not None:
+                 return result
+ 
+-    @property
+-    def real_loader(self):
+-        if self._real_loader is None:
+-            raise NotImplementedError()
+-        return self._real_loader
+-
+-    def get_data(self, path):
+-        """See IPEP302Loader."""
+-        return self.real_loader.get_data(path)
+-
+-    def is_package(self, fullname):
+-        """See IPEP302Loader."""
+-        return self.real_loader.is_package(fullname)
+-
+-    def get_code(self, fullname):
+-        """See IPEP302Loader."""
+-        return self.real_loader.get_code(fullname)
+-
+-    def get_source(self, fullname):
+-        """See IPEP302Loader."""
+-        return self.real_loader.get_source(fullname)
+-
+ 
+ class DirectoryOverride:
+     def __init__(self, path, source):
+@@ -229,40 +114,45 @@ class PackageAssetSource:
+     def get_path(self, resource_name):
+         return f'{self.prefix}{resource_name}'
+ 
+-    def get_spec(self, resource_name):
++    def _ref(self, resource_name):
+         path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return f'{self.pkg_name}:{path}'
++        return importlib.resources.files(self.pkg_name) / path
++
++    def get_spec(self, resource_name):
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            return f'{self.pkg_name}:{self.get_path(resource_name)}'
+ 
+     def get_filename(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return pkg_resources.resource_filename(self.pkg_name, path)
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            return ref_filename(ref)
+ 
+     def get_stream(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return pkg_resources.resource_stream(self.pkg_name, path)
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            return ref.open('rb')
+ 
+     def get_string(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return pkg_resources.resource_string(self.pkg_name, path)
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            with ref.open('rb') as fh:
++                return fh.read()
+ 
+     def exists(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
+             return True
+ 
+     def isdir(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return pkg_resources.resource_isdir(self.pkg_name, path)
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            return ref.is_dir()
+ 
+     def listdir(self, resource_name):
+-        path = self.get_path(resource_name)
+-        if pkg_resources.resource_exists(self.pkg_name, path):
+-            return pkg_resources.resource_listdir(self.pkg_name, path)
++        ref = self._ref(resource_name)
++        if ref.is_file() or ref.is_dir():
++            return [x.name for x in ref.iterdir()]
+ 
+ 
+ class FSAssetSource:
+Index: pyramid-2.1/src/pyramid/config/i18n.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/config/i18n.py
++++ pyramid-2.1/src/pyramid/config/i18n.py
+@@ -1,7 +1,7 @@
+ from pyramid.config.actions import action_method
+ from pyramid.exceptions import ConfigurationError
+ from pyramid.interfaces import ILocaleNegotiator, ITranslationDirectories
+-from pyramid.path import AssetResolver
++from pyramid.resolver import AssetResolver
+ 
+ 
+ class I18NConfiguratorMixin:
+@@ -87,7 +87,7 @@ class I18NConfiguratorMixin:
+ 
+         def register():
+             directories = []
+-            resolver = AssetResolver(self.package_name)
++            resolver = AssetResolver(self.package_name, registry=self.registry)
+ 
+             # defer spec resolution until register to allow for asset
+             # overrides to take place in an earlier config phase
+Index: pyramid-2.1/src/pyramid/interfaces.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/interfaces.py
++++ pyramid-2.1/src/pyramid/interfaces.py
+@@ -1074,8 +1074,8 @@ class IPEP302Loader(Interface):
+         """
+ 
+ 
+-class IPackageOverrides(IPEP302Loader):
+-    """Utility for pkg_resources overrides"""
++class IPackageOverrides(Interface):
++    """Utility for package asset overrides registered with the application."""
+ 
+     def get_spec(resource_name):
+         """Return a specifier for the resource.
+@@ -1085,6 +1085,25 @@ class IPackageOverrides(IPEP302Loader):
+ 
+         """
+ 
++    def get_filename(resource_name):
++        """Return a filesystem path for the resource, or ``None``."""
++
++    def get_stream(resource_name):
++        """Return a readable file-like object for the resource, or ``None``."""
++
++    def get_string(resource_name):
++        """Return the contents of the resource as bytes, or ``None``."""
++
++    def has_resource(resource_name):
++        """Return ``True`` if the resource exists, or ``None`` if unknown."""
++
++    def isdir(resource_name):
++        """Return ``True`` if the resource is a directory, ``False`` if a file,
++        or ``None`` if unknown."""
++
++    def listdir(resource_name):
++        """Return a list of names in the directory, or ``None`` if unknown."""
++
+ 
+ # VH_ROOT_KEY is an interface; its imported from other packages (e.g.
+ # traversalwrapper)
+Index: pyramid-2.1/src/pyramid/path.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/path.py
++++ pyramid-2.1/src/pyramid/path.py
+@@ -1,8 +1,9 @@
++import atexit
++from contextlib import ExitStack
+ import functools
+-from importlib import import_module
+ from importlib.machinery import SOURCE_SUFFIXES
++import importlib.resources
+ import os
+-import pkg_resources
+ import sys
+ from zope.interface import implementer
+ 
+@@ -11,6 +12,55 @@ from pyramid.interfaces import IAssetDes
+ init_names = ['__init__%s' % x for x in SOURCE_SUFFIXES]
+ 
+ 
++@functools.lru_cache(maxsize=None)
++def ref_filename(ref):
++    """Return a filename on the filesystem for the given resource.
++
++    If the resource does not exist in the filesystem (e.g. in a zipped egg), it
++    will be extracted to a temporary directory and cleaned up when the
++    application exits.
++
++    Accessing resources via filesystem is discouraged, instead consider
++    directly accessing contents via the ``importlib.resources`` APIs.
++
++    :param ref:  A reference pointing to the desired resource.
++    :type ref: importlib.resources.abc.Traversable
++    :return:  The filename on the filesystem.
++    :rtype:  str
++
++    """
++    manager = ExitStack()
++    atexit.register(manager.close)
++    path = manager.enter_context(importlib.resources.as_file(ref))
++    return str(path)
++
++
++def resource_filename(package, name):
++    """Return a filename on the filesystem for the given resource.
++
++    If the resource does not exist in the filesystem (e.g. in a zipped egg), it
++    will be extracted to a temporary directory and cleaned up when the
++    application exits.
++
++    This function is equivalent to the now-deprecated
++    ``pkg_resources.resource_filename``.
++
++    This function is only included in order to provide legacy functionality;
++    use should be avoided.  Instead prefer to use ``importlib.resources`` APIs
++    directly.
++
++    :param package:  The package containing the resource.
++    :type package: str
++    :param name:  The name of the resource within the package.
++    :type name: str
++    :return:  The filename on the filesystem.
++    :rtype:  str
++
++    """
++    ref = importlib.resources.files(package) / name
++    return ref_filename(ref)
++
++
+ def caller_path(path, level=2):
+     if not os.path.isabs(path):
+         module = caller_module(level + 1)
+@@ -70,10 +120,7 @@ def package_path(package):
+     # the result
+     prefix = getattr(package, '__abspath__', None)
+     if prefix is None:
+-        prefix = pkg_resources.resource_filename(package.__name__, '')
+-        # pkg_resources doesn't care whether we feed it a package
+-        # name or a module name within the package, the result
+-        # will be the same: a directory name to the package itself
++        prefix = resource_filename(package_name(package), '')
+         try:
+             package.__abspath__ = prefix
+         except Exception:
+@@ -90,341 +137,57 @@ class _CALLER_PACKAGE:
+ CALLER_PACKAGE = _CALLER_PACKAGE()
+ 
+ 
+-class Resolver:
+-    def __init__(self, package=CALLER_PACKAGE):
+-        if package in (None, CALLER_PACKAGE):
+-            self.package = package
+-        else:
+-            if isinstance(package, str):
+-                try:
+-                    __import__(package)
+-                except ImportError:
+-                    raise ValueError(
+-                        f'The dotted name {package!r} cannot be imported'
+-                    )
+-                package = sys.modules[package]
+-            self.package = package_of(package)
+-
+-    def get_package_name(self):
+-        if self.package is CALLER_PACKAGE:
+-            package_name = caller_package().__name__
+-        else:
+-            package_name = self.package.__name__
+-        return package_name
+-
+-    def get_package(self):
+-        if self.package is CALLER_PACKAGE:
+-            package = caller_package()
+-        else:
+-            package = self.package
+-        return package
+-
+-
+-class AssetResolver(Resolver):
+-    """A class used to resolve an :term:`asset specification` to an
+-    :term:`asset descriptor`.
+-
+-    .. versionadded:: 1.3
+-
+-    The constructor accepts a single argument named ``package`` which may be
+-    any of:
+-
+-    - A fully qualified (not relative) dotted name to a module or package
+-
+-    - a Python module or package object
+-
+-    - The value ``None``
+-
+-    - The constant value :attr:`pyramid.path.CALLER_PACKAGE`.
+-
+-    The default value is :attr:`pyramid.path.CALLER_PACKAGE`.
+-
+-    The ``package`` is used when a relative asset specification is supplied
+-    to the :meth:`~pyramid.path.AssetResolver.resolve` method.  An asset
+-    specification without a colon in it is treated as relative.
+-
+-    If ``package`` is ``None``, the resolver will
+-    only be able to resolve fully qualified (not relative) asset
+-    specifications.  Any attempt to resolve a relative asset specification
+-    will result in an :exc:`ValueError` exception.
+-
+-    If ``package`` is :attr:`pyramid.path.CALLER_PACKAGE`,
+-    the resolver will treat relative asset specifications as
+-    relative to the caller of the :meth:`~pyramid.path.AssetResolver.resolve`
+-    method.
+-
+-    If ``package`` is a *module* or *module name* (as opposed to a package or
+-    package name), its containing package is computed and this
+-    package is used to derive the package name (all names are resolved relative
+-    to packages, never to modules).  For example, if the ``package`` argument
+-    to this type was passed the string ``xml.dom.expatbuilder``, and
+-    ``template.pt`` is supplied to the
+-    :meth:`~pyramid.path.AssetResolver.resolve` method, the resulting absolute
+-    asset spec would be ``xml.minidom:template.pt``, because
+-    ``xml.dom.expatbuilder`` is a module object, not a package object.
+-
+-    If ``package`` is a *package* or *package name* (as opposed to a module or
+-    module name), this package will be used to compute relative
+-    asset specifications.  For example, if the ``package`` argument to this
+-    type was passed the string ``xml.dom``, and ``template.pt`` is supplied
+-    to the :meth:`~pyramid.path.AssetResolver.resolve` method, the resulting
+-    absolute asset spec would be ``xml.minidom:template.pt``.
+-    """
+-
+-    def resolve(self, spec):
+-        """
+-        Resolve the asset spec named as ``spec`` to an object that has the
+-        attributes and methods described in
+-        :class:`pyramid.interfaces.IAssetDescriptor`.
+-
+-        If ``spec`` is an absolute filename
+-        (e.g. ``/path/to/myproject/templates/foo.pt``) or an absolute asset
+-        spec (e.g. ``myproject:templates.foo.pt``), an asset descriptor is
+-        returned without taking into account the ``package`` passed to this
+-        class' constructor.
+-
+-        If ``spec`` is a *relative* asset specification (an asset
+-        specification without a ``:`` in it, e.g. ``templates/foo.pt``), the
+-        ``package`` argument of the constructor is used as the package
+-        portion of the asset spec.  For example:
+-
+-        .. code-block:: python
+-
+-           a = AssetResolver('myproject')
+-           resolver = a.resolve('templates/foo.pt')
+-           print(resolver.abspath())
+-           # -> /path/to/myproject/templates/foo.pt
+-
+-        If the AssetResolver is constructed without a ``package`` argument of
+-        ``None``, and a relative asset specification is passed to
+-        ``resolve``, an :exc:`ValueError` exception is raised.
+-        """
+-        if os.path.isabs(spec):
+-            return FSAssetDescriptor(spec)
+-        path = spec
+-        if ':' in path:
+-            package_name, path = spec.split(':', 1)
+-        else:
+-            if self.package is CALLER_PACKAGE:
+-                package_name = caller_package().__name__
+-            else:
+-                package_name = getattr(self.package, '__name__', None)
+-            if package_name is None:
+-                raise ValueError(
+-                    f'relative spec {spec!r} irresolveable without package'
+-                )
+-        return PkgResourcesAssetDescriptor(package_name, path)
+-
+-
+-class DottedNameResolver(Resolver):
+-    """A class used to resolve a :term:`dotted Python name` to a package or
+-    module object.
+-
+-    .. versionadded:: 1.3
+-
+-    The constructor accepts a single argument named ``package`` which may be
+-    any of:
+-
+-    - A fully qualified (not relative) dotted name to a module or package
+-
+-    - a Python module or package object
+-
+-    - The value ``None``
+-
+-    - The constant value :attr:`pyramid.path.CALLER_PACKAGE`.
+-
+-    The default value is :attr:`pyramid.path.CALLER_PACKAGE`.
+-
+-    The ``package`` is used when a relative dotted name is supplied to the
+-    :meth:`~pyramid.path.DottedNameResolver.resolve` method.  A dotted name
+-    which has a ``.`` (dot) or ``:`` (colon) as its first character is
+-    treated as relative.
+-
+-    If ``package`` is ``None``, the resolver will only be able to resolve
+-    fully qualified (not relative) names.  Any attempt to resolve a
+-    relative name will result in an :exc:`ValueError` exception.
+-
+-    If ``package`` is :attr:`pyramid.path.CALLER_PACKAGE`,
+-    the resolver will treat relative dotted names as relative to
+-    the caller of the :meth:`~pyramid.path.DottedNameResolver.resolve`
+-    method.
+-
+-    If ``package`` is a *module* or *module name* (as opposed to a package or
+-    package name), its containing package is computed and this
+-    package used to derive the package name (all names are resolved relative
+-    to packages, never to modules).  For example, if the ``package`` argument
+-    to this type was passed the string ``xml.dom.expatbuilder``, and
+-    ``.mindom`` is supplied to the
+-    :meth:`~pyramid.path.DottedNameResolver.resolve` method, the resulting
+-    import would be for ``xml.minidom``, because ``xml.dom.expatbuilder`` is
+-    a module object, not a package object.
+-
+-    If ``package`` is a *package* or *package name* (as opposed to a module or
+-    module name), this package will be used to relative compute
+-    dotted names.  For example, if the ``package`` argument to this type was
+-    passed the string ``xml.dom``, and ``.minidom`` is supplied to the
+-    :meth:`~pyramid.path.DottedNameResolver.resolve` method, the resulting
+-    import would be for ``xml.minidom``.
+-    """
+-
+-    def resolve(self, dotted):
+-        """
+-        This method resolves a dotted name reference to a global Python
+-        object (an object which can be imported) to the object itself.
+-
+-        Two dotted name styles are supported:
+-
+-        - ``pkg_resources``-style dotted names where non-module attributes
+-          of a package are separated from the rest of the path using a ``:``
+-          e.g. ``package.module:attr``.
+-
+-        - ``zope.dottedname``-style dotted names where non-module
+-          attributes of a package are separated from the rest of the path
+-          using a ``.`` e.g. ``package.module.attr``.
+-
+-        These styles can be used interchangeably.  If the supplied name
+-        contains a ``:`` (colon), the ``pkg_resources`` resolution
+-        mechanism will be chosen, otherwise the ``zope.dottedname``
+-        resolution mechanism will be chosen.
+-
+-        If the ``dotted`` argument passed to this method is not a string, a
+-        :exc:`ValueError` will be raised.
+-
+-        When a dotted name cannot be resolved, a :exc:`ValueError` error is
+-        raised.
+-
+-        Example:
+-
+-        .. code-block:: python
+-
+-           r = DottedNameResolver()
+-           v = r.resolve('xml') # v is the xml module
+-
+-        """
+-        if not isinstance(dotted, str):
+-            raise ValueError(f'{dotted!r} is not a string')
+-        package = self.package
+-        if package is CALLER_PACKAGE:
+-            package = caller_package()
+-        return self._resolve(dotted, package)
+-
+-    def maybe_resolve(self, dotted):
+-        """
+-        This method behaves just like
+-        :meth:`~pyramid.path.DottedNameResolver.resolve`, except if the
+-        ``dotted`` value passed is not a string, it is simply returned.  For
+-        example:
+-
+-        .. code-block:: python
+-
+-           import xml
+-           r = DottedNameResolver()
+-           v = r.maybe_resolve(xml)
+-           # v is the xml module; no exception raised
+-        """
+-        if isinstance(dotted, str):
+-            package = self.package
+-            if package is CALLER_PACKAGE:
+-                package = caller_package()
+-            return self._resolve(dotted, package)
+-        return dotted
+-
+-    def _resolve(self, dotted, package):
+-        if ':' in dotted:
+-            return self._pkg_resources_style(dotted, package)
+-        else:
+-            return self._zope_dottedname_style(dotted, package)
+-
+-    def _pkg_resources_style(self, value, package):
+-        """package.module:attr style"""
+-        if value.startswith(('.', ':')):
+-            if not package:
+-                raise ValueError(
+-                    f'relative name {value!r} irresolveable without package'
+-                )
+-            if value in ['.', ':']:
+-                value = package.__name__
+-            else:
+-                value = package.__name__ + value
+-        # logic below is similar to importlib.metadata.EntryPoint.load()
+-        module = value
+-        attrs = []
+-        parts = value.split(':', 1)
+-        if len(parts) == 2:
+-            module, attrs = parts
+-            attrs = attrs.split('.')
+-        module = import_module(module)
+-        try:
+-            return functools.reduce(getattr, attrs, module)
+-        except AttributeError as ex:
+-            raise ImportError(str(ex))
+-
+-    def _zope_dottedname_style(self, value, package):
+-        """package.module.attr style"""
+-        module = getattr(package, '__name__', None)  # package may be None
+-        if not module:
+-            module = None
+-        if value == '.':
+-            if module is None:
+-                raise ValueError(
+-                    f'relative name {value!r} irresolveable without package'
+-                )
+-            name = module.split('.')
+-        else:
+-            name = value.split('.')
+-            if not name[0]:
+-                if module is None:
+-                    raise ValueError(
+-                        'relative name %r irresolveable without '
+-                        'package' % (value,)
+-                    )
+-                module = module.split('.')
+-                name.pop(0)
+-                while not name[0]:
+-                    module.pop()
+-                    name.pop(0)
+-                name = module + name
+-
+-        used = name.pop(0)
+-        found = __import__(used)
+-        for n in name:
+-            used += '.' + n
+-            try:
+-                found = getattr(found, n)
+-            except AttributeError:
+-                __import__(used)
+-                found = getattr(found, n)  # pragma: no cover
+-
+-        return found
+-
+-
+ @implementer(IAssetDescriptor)
+ class PkgResourcesAssetDescriptor:
+-    pkg_resources = pkg_resources
+-
+-    def __init__(self, pkg_name, path):
++    def __init__(self, pkg_name, path, overrides=None):
+         self.pkg_name = pkg_name
+         self.path = path
++        self.overrides = overrides
++
++    def _ref(self):
++        base = importlib.resources.files(self.pkg_name)
++        if self.path:
++            return base / self.path
++        return base
+ 
+     def absspec(self):
+         return f'{self.pkg_name}:{self.path}'
+ 
+     def abspath(self):
+-        return os.path.abspath(
+-            self.pkg_resources.resource_filename(self.pkg_name, self.path)
+-        )
++        if self.overrides is not None:
++            filename = self.overrides.get_filename(self.path)
++            if filename is not None:
++                return os.path.abspath(filename)
++        return os.path.abspath(ref_filename(self._ref()))
+ 
+     def stream(self):
+-        return self.pkg_resources.resource_stream(self.pkg_name, self.path)
++        if self.overrides is not None:
++            stream = self.overrides.get_stream(self.path)
++            if stream is not None:
++                return stream
++        return self._ref().open('rb')
+ 
+     def isdir(self):
+-        return self.pkg_resources.resource_isdir(self.pkg_name, self.path)
++        if self.overrides is not None:
++            result = self.overrides.isdir(self.path)
++            if result is not None:
++                return result
++        return self._ref().is_dir()
+ 
+     def listdir(self):
+-        return self.pkg_resources.resource_listdir(self.pkg_name, self.path)
++        if self.overrides is not None:
++            result = self.overrides.listdir(self.path)
++            if result is not None:
++                return result
++        return [x.name for x in self._ref().iterdir()]
+ 
+     def exists(self):
+-        return self.pkg_resources.resource_exists(self.pkg_name, self.path)
++        if self.overrides is not None:
++            result = self.overrides.has_resource(self.path)
++            if result is not None:
++                return result
++        ref = self._ref()
++        return ref.is_file() or ref.is_dir()
+ 
+ 
+ @implementer(IAssetDescriptor)
+@@ -449,3 +212,20 @@ class FSAssetDescriptor:
+ 
+     def exists(self):
+         return os.path.exists(self.path)
++
++
++def __getattr__(name):
++    """Lazy re-exports for backwards compatibility."""
++    if name == 'AssetResolver':
++        from pyramid.resolver import AssetResolver
++
++        return AssetResolver
++    if name == 'DottedNameResolver':
++        from pyramid.resolver import DottedNameResolver
++
++        return DottedNameResolver
++    if name == 'Resolver':
++        from pyramid.resolver import Resolver
++
++        return Resolver
++    raise AttributeError(f'module {__name__!r} has no attribute {name!r}')
+Index: pyramid-2.1/src/pyramid/resolver.py
+===================================================================
+--- /dev/null
++++ pyramid-2.1/src/pyramid/resolver.py
+@@ -0,0 +1,330 @@
++import functools
++from importlib import import_module
++import os
++import sys
++
++from pyramid.interfaces import IPackageOverrides
++
++from .path import (
++    CALLER_PACKAGE,
++    FSAssetDescriptor,
++    PkgResourcesAssetDescriptor,
++    caller_package,
++    package_of,
++)
++from .threadlocal import get_current_registry
++
++
++class Resolver:
++    def __init__(self, package=CALLER_PACKAGE):
++        if package in (None, CALLER_PACKAGE):
++            self.package = package
++        else:
++            if isinstance(package, str):
++                try:
++                    __import__(package)
++                except ImportError:
++                    raise ValueError(
++                        f'The dotted name {package!r} cannot be imported'
++                    )
++                package = sys.modules[package]
++            self.package = package_of(package)
++
++    def get_package_name(self):
++        if self.package is CALLER_PACKAGE:
++            package_name = caller_package().__name__
++        else:
++            package_name = self.package.__name__
++        return package_name
++
++    def get_package(self):
++        if self.package is CALLER_PACKAGE:
++            package = caller_package()
++        else:
++            package = self.package
++        return package
++
++
++class AssetResolver(Resolver):
++    """A class used to resolve an :term:`asset specification` to an
++    :term:`asset descriptor`.
++
++    .. versionadded:: 1.3
++
++    The constructor accepts a single argument named ``package`` which may be
++    any of:
++
++    - A fully qualified (not relative) dotted name to a module or package
++
++    - a Python module or package object
++
++    - The value ``None``
++
++    - The constant value :attr:`pyramid.path.CALLER_PACKAGE`.
++
++    The default value is :attr:`pyramid.path.CALLER_PACKAGE`.
++
++    The ``package`` is used when a relative asset specification is supplied
++    to the :meth:`~pyramid.path.AssetResolver.resolve` method.  An asset
++    specification without a colon in it is treated as relative.
++
++    If ``package`` is ``None``, the resolver will
++    only be able to resolve fully qualified (not relative) asset
++    specifications.  Any attempt to resolve a relative asset specification
++    will result in an :exc:`ValueError` exception.
++
++    If ``package`` is :attr:`pyramid.path.CALLER_PACKAGE`,
++    the resolver will treat relative asset specifications as
++    relative to the caller of the :meth:`~pyramid.path.AssetResolver.resolve`
++    method.
++
++    If ``package`` is a *module* or *module name* (as opposed to a package or
++    package name), its containing package is computed and this
++    package is used to derive the package name (all names are resolved relative
++    to packages, never to modules).  For example, if the ``package`` argument
++    to this type was passed the string ``xml.dom.expatbuilder``, and
++    ``template.pt`` is supplied to the
++    :meth:`~pyramid.path.AssetResolver.resolve` method, the resulting absolute
++    asset spec would be ``xml.minidom:template.pt``, because
++    ``xml.dom.expatbuilder`` is a module object, not a package object.
++
++    If ``package`` is a *package* or *package name* (as opposed to a module or
++    module name), this package will be used to compute relative
++    asset specifications.  For example, if the ``package`` argument to this
++    type was passed the string ``xml.dom``, and ``template.pt`` is supplied
++    to the :meth:`~pyramid.path.AssetResolver.resolve` method, the resulting
++    absolute asset spec would be ``xml.minidom:template.pt``.
++    """
++
++    def __init__(self, package=CALLER_PACKAGE, registry=None):
++        self.registry = registry
++        super().__init__(package=package)
++
++    def resolve(self, spec):
++        """
++        Resolve the asset spec named as ``spec`` to an object that has the
++        attributes and methods described in
++        :class:`pyramid.interfaces.IAssetDescriptor`.
++
++        If ``spec`` is an absolute filename
++        (e.g. ``/path/to/myproject/templates/foo.pt``) or an absolute asset
++        spec (e.g. ``myproject:templates.foo.pt``), an asset descriptor is
++        returned without taking into account the ``package`` passed to this
++        class' constructor.
++
++        If ``spec`` is a *relative* asset specification (an asset
++        specification without a ``:`` in it, e.g. ``templates/foo.pt``), the
++        ``package`` argument of the constructor is used as the package
++        portion of the asset spec.  For example:
++
++        .. code-block:: python
++
++           a = AssetResolver('myproject')
++           resolver = a.resolve('templates/foo.pt')
++           print(resolver.abspath())
++           # -> /path/to/myproject/templates/foo.pt
++
++        If the AssetResolver is constructed without a ``package`` argument of
++        ``None``, and a relative asset specification is passed to
++        ``resolve``, an :exc:`ValueError` exception is raised.
++        """
++        if os.path.isabs(spec):
++            return FSAssetDescriptor(spec)
++        path = spec
++        if ':' in path:
++            package_name, path = spec.split(':', 1)
++        else:
++            if self.package is CALLER_PACKAGE:
++                package_name = caller_package().__name__
++            else:
++                package_name = getattr(self.package, '__name__', None)
++            if package_name is None:
++                raise ValueError(
++                    f'relative spec {spec!r} irresolveable without package'
++                )
++
++        registry = self.registry or get_current_registry()
++        overrides = registry.queryUtility(IPackageOverrides, package_name)
++        return PkgResourcesAssetDescriptor(package_name, path, overrides)
++
++
++class DottedNameResolver(Resolver):
++    """A class used to resolve a :term:`dotted Python name` to a package or
++    module object.
++
++    .. versionadded:: 1.3
++
++    The constructor accepts a single argument named ``package`` which may be
++    any of:
++
++    - A fully qualified (not relative) dotted name to a module or package
++
++    - a Python module or package object
++
++    - The value ``None``
++
++    - The constant value :attr:`pyramid.path.CALLER_PACKAGE`.
++
++    The default value is :attr:`pyramid.path.CALLER_PACKAGE`.
++
++    The ``package`` is used when a relative dotted name is supplied to the
++    :meth:`~pyramid.path.DottedNameResolver.resolve` method.  A dotted name
++    which has a ``.`` (dot) or ``:`` (colon) as its first character is
++    treated as relative.
++
++    If ``package`` is ``None``, the resolver will only be able to resolve
++    fully qualified (not relative) names.  Any attempt to resolve a
++    relative name will result in an :exc:`ValueError` exception.
++
++    If ``package`` is :attr:`pyramid.path.CALLER_PACKAGE`,
++    the resolver will treat relative dotted names as relative to
++    the caller of the :meth:`~pyramid.path.DottedNameResolver.resolve`
++    method.
++
++    If ``package`` is a *module* or *module name* (as opposed to a package or
++    package name), its containing package is computed and this
++    package used to derive the package name (all names are resolved relative
++    to packages, never to modules).  For example, if the ``package`` argument
++    to this type was passed the string ``xml.dom.expatbuilder``, and
++    ``.mindom`` is supplied to the
++    :meth:`~pyramid.path.DottedNameResolver.resolve` method, the resulting
++    import would be for ``xml.minidom``, because ``xml.dom.expatbuilder`` is
++    a module object, not a package object.
++
++    If ``package`` is a *package* or *package name* (as opposed to a module or
++    module name), this package will be used to relative compute
++    dotted names.  For example, if the ``package`` argument to this type was
++    passed the string ``xml.dom``, and ``.minidom`` is supplied to the
++    :meth:`~pyramid.path.DottedNameResolver.resolve` method, the resulting
++    import would be for ``xml.minidom``.
++    """
++
++    def resolve(self, dotted):
++        """
++        This method resolves a dotted name reference to a global Python
++        object (an object which can be imported) to the object itself.
++
++        Two dotted name styles are supported:
++
++        - ``pkg_resources``-style dotted names where non-module attributes
++          of a package are separated from the rest of the path using a ``:``
++          e.g. ``package.module:attr``.
++
++        - ``zope.dottedname``-style dotted names where non-module
++          attributes of a package are separated from the rest of the path
++          using a ``.`` e.g. ``package.module.attr``.
++
++        These styles can be used interchangeably.  If the supplied name
++        contains a ``:`` (colon), the ``pkg_resources`` resolution
++        mechanism will be chosen, otherwise the ``zope.dottedname``
++        resolution mechanism will be chosen.
++
++        If the ``dotted`` argument passed to this method is not a string, a
++        :exc:`ValueError` will be raised.
++
++        When a dotted name cannot be resolved, a :exc:`ValueError` error is
++        raised.
++
++        Example:
++
++        .. code-block:: python
++
++           r = DottedNameResolver()
++           v = r.resolve('xml') # v is the xml module
++
++        """
++        if not isinstance(dotted, str):
++            raise ValueError(f'{dotted!r} is not a string')
++        package = self.package
++        if package is CALLER_PACKAGE:
++            package = caller_package()
++        return self._resolve(dotted, package)
++
++    def maybe_resolve(self, dotted):
++        """
++        This method behaves just like
++        :meth:`~pyramid.path.DottedNameResolver.resolve`, except if the
++        ``dotted`` value passed is not a string, it is simply returned.  For
++        example:
++
++        .. code-block:: python
++
++           import xml
++           r = DottedNameResolver()
++           v = r.maybe_resolve(xml)
++           # v is the xml module; no exception raised
++        """
++        if isinstance(dotted, str):
++            package = self.package
++            if package is CALLER_PACKAGE:
++                package = caller_package()
++            return self._resolve(dotted, package)
++        return dotted
++
++    def _resolve(self, dotted, package):
++        if ':' in dotted:
++            return self._pkg_resources_style(dotted, package)
++        else:
++            return self._zope_dottedname_style(dotted, package)
++
++    def _pkg_resources_style(self, value, package):
++        """package.module:attr style"""
++        if value.startswith(('.', ':')):
++            if not package:
++                raise ValueError(
++                    f'relative name {value!r} irresolveable without package'
++                )
++            if value in ['.', ':']:
++                value = package.__name__
++            else:
++                value = package.__name__ + value
++        # logic below is similar to importlib.metadata.EntryPoint.load()
++        module = value
++        attrs = []
++        parts = value.split(':', 1)
++        if len(parts) == 2:
++            module, attrs = parts
++            attrs = attrs.split('.')
++        module = import_module(module)
++        try:
++            return functools.reduce(getattr, attrs, module)
++        except AttributeError as ex:
++            raise ImportError(str(ex))
++
++    def _zope_dottedname_style(self, value, package):
++        """package.module.attr style"""
++        module = getattr(package, '__name__', None)  # package may be None
++        if not module:
++            module = None
++        if value == '.':
++            if module is None:
++                raise ValueError(
++                    f'relative name {value!r} irresolveable without package'
++                )
++            name = module.split('.')
++        else:
++            name = value.split('.')
++            if not name[0]:
++                if module is None:
++                    raise ValueError(
++                        'relative name %r irresolveable without '
++                        'package' % (value,)
++                    )
++                module = module.split('.')
++                name.pop(0)
++                while not name[0]:
++                    module.pop()
++                    name.pop(0)
++                name = module + name
++
++        used = name.pop(0)
++        found = __import__(used)
++        for n in name:
++            used += '.' + n
++            try:
++                found = getattr(found, n)
++            except AttributeError:
++                __import__(used)
++                found = getattr(found, n)  # pragma: no cover
++
++        return found
+Index: pyramid-2.1/src/pyramid/scripts/pserve.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/scripts/pserve.py
++++ pyramid-2.1/src/pyramid/scripts/pserve.py
+@@ -18,7 +18,7 @@ import threading
+ import time
+ import webbrowser
+ 
+-from pyramid.path import AssetResolver
++from pyramid.resolver import AssetResolver
+ from pyramid.scripts.common import get_config_loader, parse_vars
+ from pyramid.settings import aslist
+ 
+Index: pyramid-2.1/src/pyramid/static.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/static.py
++++ pyramid-2.1/src/pyramid/static.py
+@@ -3,12 +3,12 @@ import json
+ import mimetypes
+ import os
+ from os.path import exists, getmtime, getsize, isdir, join, normcase, normpath
+-from pkg_resources import resource_exists, resource_filename, resource_isdir
+ import warnings
+ 
+ from pyramid.asset import abspath_from_asset_spec, resolve_asset_spec
+ from pyramid.httpexceptions import HTTPMovedPermanently, HTTPNotFound
+ from pyramid.path import caller_package
++from pyramid.resolver import AssetResolver
+ from pyramid.response import FileResponse, _guess_type
+ from pyramid.traversal import traversal_path_info
+ 
+@@ -117,7 +117,8 @@ class static_view:
+ 
+     def __call__(self, context, request):
+         resource_name = self.get_resource_name(request)
+-        files = self.get_possible_files(resource_name)
++        registry = getattr(request, 'registry', None)
++        files = self.get_possible_files(resource_name, registry=registry)
+         filepath, content_encoding = self.find_best_match(request, files)
+         if filepath is None:
+             raise HTTPNotFound(request.url)
+@@ -153,7 +154,10 @@ class static_view:
+         # normalize asset spec or fs path into resource_path
+         if self.package_name:  # package resource
+             resource_path = '{}/{}'.format(self.docroot.rstrip('/'), path)
+-            if resource_isdir(self.package_name, resource_path):
++            registry = getattr(request, 'registry', None)
++            resolver = AssetResolver(None, registry=registry)
++            asset = resolver.resolve(f'{self.package_name}:{resource_path}')
++            if asset.isdir():
+                 if not request.path_url.endswith('/'):
+                     raise self.add_slash_redirect(request)
+                 resource_path = '{}/{}'.format(
+@@ -171,20 +175,22 @@ class static_view:
+ 
+         return resource_path
+ 
+-    def find_resource_path(self, name):
++    def find_resource_path(self, name, registry=None):
+         """
+         Return the absolute path to the resource or ``None`` if it doesn't
+         exist.
+ 
+         """
+         if self.package_name:
+-            if resource_exists(self.package_name, name):
+-                return resource_filename(self.package_name, name)
++            resolver = AssetResolver(None, registry=registry)
++            asset = resolver.resolve(f'{self.package_name}:{name}')
++            if asset.exists():
++                return asset.abspath()
+ 
+         elif exists(name):
+             return name
+ 
+-    def get_possible_files(self, resource_name):
++    def get_possible_files(self, resource_name, registry=None):
+         """Return a sorted list of ``(size, encoding, path)`` entries."""
+         result = self.filemap.get(resource_name)
+         if result is not None:
+@@ -196,7 +202,7 @@ class static_view:
+         result = []
+ 
+         # add the identity
+-        path = self.find_resource_path(resource_name)
++        path = self.find_resource_path(resource_name, registry=registry)
+         if path:
+             result.append((path, None))
+ 
+@@ -207,7 +213,7 @@ class static_view:
+         for encoding, extensions in self.content_encodings.items():
+             for ext in extensions:
+                 encoded_name = resource_name + ext
+-                path = self.find_resource_path(encoded_name)
++                path = self.find_resource_path(encoded_name, registry=registry)
+                 if path:
+                     result.append((path, encoding))
+ 
+Index: pyramid-2.1/src/pyramid/util.py
+===================================================================
+--- pyramid-2.1.orig/src/pyramid/util.py
++++ pyramid-2.1/src/pyramid/util.py
+@@ -5,7 +5,7 @@ import inspect
+ import platform
+ import weakref
+ 
+-from pyramid.path import DottedNameResolver as _DottedNameResolver
++from pyramid.resolver import DottedNameResolver as _DottedNameResolver
+ 
+ _marker = object()
+ 
+Index: pyramid-2.1/tests/pkgs/assets/dir/fizz.txt
+===================================================================
+--- /dev/null
++++ pyramid-2.1/tests/pkgs/assets/dir/fizz.txt
+@@ -0,0 +1 @@
++fizz
+Index: pyramid-2.1/tests/pkgs/assets/foo.txt
+===================================================================
+--- /dev/null
++++ pyramid-2.1/tests/pkgs/assets/foo.txt
+@@ -0,0 +1 @@
++foo
+Index: pyramid-2.1/tests/test_config/test_assets.py
+===================================================================
+--- pyramid-2.1.orig/tests/test_config/test_assets.py
++++ pyramid-2.1/tests/test_config/test_assets.py
+@@ -1,8 +1,6 @@
+ import os.path
+ import unittest
+ 
+-from pyramid.testing import cleanUp
+-
+ # we use this folder
+ here = os.path.dirname(os.path.abspath(__file__))
+ 
+@@ -327,212 +325,17 @@ class TestAssetsConfiguratorMixin(unitte
+         self.assertEqual(overrides.package, package)
+ 
+ 
+-class TestOverrideProvider(unittest.TestCase):
+-    def setUp(self):
+-        cleanUp()
+-
+-    def tearDown(self):
+-        cleanUp()
+-
+-    def _getTargetClass(self):
+-        from pyramid.config.assets import OverrideProvider
+-
+-        return OverrideProvider
+-
+-    def _makeOne(self, module):
+-        klass = self._getTargetClass()
+-        return klass(module)
+-
+-    def _registerOverrides(self, overrides, name='tests.test_config'):
+-        from pyramid.interfaces import IPackageOverrides
+-        from pyramid.threadlocal import get_current_registry
+-
+-        reg = get_current_registry()
+-        reg.registerUtility(overrides, IPackageOverrides, name=name)
+-
+-    def test_get_resource_filename_no_overrides(self):
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        expected = os.path.join(here, resource_name)
+-        result = provider.get_resource_filename(None, resource_name)
+-        self.assertEqual(result, expected)
+-
+-    def test_get_resource_stream_no_overrides(self):
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        with provider.get_resource_stream(None, resource_name) as result:
+-            _assertBody(result.read(), os.path.join(here, resource_name))
+-
+-    def test_get_resource_string_no_overrides(self):
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.get_resource_string(None, resource_name)
+-        _assertBody(result, os.path.join(here, resource_name))
+-
+-    def test_has_resource_no_overrides(self):
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.has_resource(resource_name)
+-        self.assertEqual(result, True)
+-
+-    def test_resource_isdir_no_overrides(self):
+-        file_resource_name = 'test_assets.py'
+-        directory_resource_name = 'files'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_isdir(file_resource_name)
+-        self.assertEqual(result, False)
+-        result = provider.resource_isdir(directory_resource_name)
+-        self.assertEqual(result, True)
+-
+-    def test_resource_listdir_no_overrides(self):
+-        resource_name = 'files'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_listdir(resource_name)
+-        self.assertTrue(result)
+-
+-    def test_get_resource_filename_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        expected = os.path.join(here, resource_name)
+-        result = provider.get_resource_filename(None, resource_name)
+-        self.assertEqual(result, expected)
+-
+-    def test_get_resource_stream_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        with provider.get_resource_stream(None, resource_name) as result:
+-            _assertBody(result.read(), os.path.join(here, resource_name))
+-
+-    def test_get_resource_string_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.get_resource_string(None, resource_name)
+-        _assertBody(result, os.path.join(here, resource_name))
+-
+-    def test_has_resource_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'test_assets.py'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.has_resource(resource_name)
+-        self.assertEqual(result, True)
+-
+-    def test_resource_isdir_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'files'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_isdir(resource_name)
+-        self.assertEqual(result, True)
+-
+-    def test_resource_listdir_override_returns_None(self):
+-        overrides = DummyOverrides(None)
+-        self._registerOverrides(overrides)
+-        resource_name = 'files'
+-        import tests.test_config
+-
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_listdir(resource_name)
+-        self.assertTrue(result)
+-
+-    def test_get_resource_filename_override_returns_value(self):
+-        overrides = DummyOverrides('value')
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.get_resource_filename(None, 'test_assets.py')
+-        self.assertEqual(result, 'value')
+-
+-    def test_get_resource_stream_override_returns_value(self):
+-        from io import BytesIO
+-
+-        overrides = DummyOverrides(BytesIO(b'value'))
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        with provider.get_resource_stream(None, 'test_assets.py') as stream:
+-            self.assertEqual(stream.getvalue(), b'value')
+-
+-    def test_get_resource_string_override_returns_value(self):
+-        overrides = DummyOverrides('value')
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.get_resource_string(None, 'test_assets.py')
+-        self.assertEqual(result, 'value')
+-
+-    def test_has_resource_override_returns_True(self):
+-        overrides = DummyOverrides(True)
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.has_resource('test_assets.py')
+-        self.assertEqual(result, True)
+-
+-    def test_resource_isdir_override_returns_False(self):
+-        overrides = DummyOverrides(False)
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_isdir('files')
+-        self.assertEqual(result, False)
+-
+-    def test_resource_listdir_override_returns_values(self):
+-        overrides = DummyOverrides(['a'])
+-        import tests.test_config
+-
+-        self._registerOverrides(overrides)
+-        provider = self._makeOne(tests.test_config)
+-        result = provider.resource_listdir('files')
+-        self.assertEqual(result, ['a'])
+-
+-
+ class TestPackageOverrides(unittest.TestCase):
+     def _getTargetClass(self):
+         from pyramid.config.assets import PackageOverrides
+ 
+         return PackageOverrides
+ 
+-    def _makeOne(self, package=None, pkg_resources=None):
++    def _makeOne(self, package=None):
+         if package is None:
+             package = DummyPackage('package')
+         klass = self._getTargetClass()
+-        if pkg_resources is None:
+-            pkg_resources = DummyPkgResources()
+-        return klass(package, pkg_resources=pkg_resources)
++        return klass(package)
+ 
+     def test_class_conforms_to_IPackageOverrides(self):
+         from zope.interface.verify import verifyClass
+@@ -548,48 +351,6 @@ class TestPackageOverrides(unittest.Test
+ 
+         verifyObject(IPackageOverrides, self._makeOne())
+ 
+-    def test_class_conforms_to_IPEP302Loader(self):
+-        from zope.interface.verify import verifyClass
+-
+-        from pyramid.interfaces import IPEP302Loader
+-
+-        verifyClass(IPEP302Loader, self._getTargetClass())
+-
+-    def test_instance_conforms_to_IPEP302Loader(self):
+-        from zope.interface.verify import verifyObject
+-
+-        from pyramid.interfaces import IPEP302Loader
+-
+-        verifyObject(IPEP302Loader, self._makeOne())
+-
+-    def test_ctor_package_already_has_loader_of_different_type(self):
+-        package = DummyPackage('package')
+-        loader = package.__loader__ = DummyLoader()
+-        po = self._makeOne(package)
+-        self.assertTrue(package.__loader__ is po)
+-        self.assertTrue(po.real_loader is loader)
+-
+-    def test_ctor_package_already_has_loader_of_same_type(self):
+-        package = DummyPackage('package')
+-        package.__loader__ = self._makeOne(package)
+-        po = self._makeOne(package)
+-        self.assertEqual(package.__loader__, po)
+-
+-    def test_ctor_sets_loader(self):
+-        package = DummyPackage('package')
+-        po = self._makeOne(package)
+-        self.assertEqual(package.__loader__, po)
+-
+-    def test_ctor_registers_loader_type(self):
+-        from pyramid.config.assets import OverrideProvider
+-
+-        dummy_pkg_resources = DummyPkgResources()
+-        package = DummyPackage('package')
+-        po = self._makeOne(package, dummy_pkg_resources)
+-        self.assertEqual(
+-            dummy_pkg_resources.registered, [(po.__class__, OverrideProvider)]
+-        )
+-
+     def test_ctor_sets_local_state(self):
+         package = DummyPackage('package')
+         po = self._makeOne(package)
+@@ -796,55 +557,6 @@ class TestPackageOverrides(unittest.Test
+         self.assertEqual(po.listdir('whatever'), None)
+         self.assertEqual(source.resource_name, 'wont_exist')
+ 
+-    # PEP 302 __loader__ extensions:  use the "real" __loader__, if present.
+-    def test_get_data_pkg_has_no___loader__(self):
+-        package = DummyPackage('package')
+-        po = self._makeOne(package)
+-        self.assertRaises(NotImplementedError, po.get_data, 'whatever')
+-
+-    def test_get_data_pkg_has___loader__(self):
+-        package = DummyPackage('package')
+-        loader = package.__loader__ = DummyLoader()
+-        po = self._makeOne(package)
+-        self.assertEqual(po.get_data('whatever'), b'DEADBEEF')
+-        self.assertEqual(loader._got_data, 'whatever')
+-
+-    def test_is_package_pkg_has_no___loader__(self):
+-        package = DummyPackage('package')
+-        po = self._makeOne(package)
+-        self.assertRaises(NotImplementedError, po.is_package, 'whatever')
+-
+-    def test_is_package_pkg_has___loader__(self):
+-        package = DummyPackage('package')
+-        loader = package.__loader__ = DummyLoader()
+-        po = self._makeOne(package)
+-        self.assertTrue(po.is_package('whatever'))
+-        self.assertEqual(loader._is_package, 'whatever')
+-
+-    def test_get_code_pkg_has_no___loader__(self):
+-        package = DummyPackage('package')
+-        po = self._makeOne(package)
+-        self.assertRaises(NotImplementedError, po.get_code, 'whatever')
+-
+-    def test_get_code_pkg_has___loader__(self):
+-        package = DummyPackage('package')
+-        loader = package.__loader__ = DummyLoader()
+-        po = self._makeOne(package)
+-        self.assertEqual(po.get_code('whatever'), b'DEADBEEF')
+-        self.assertEqual(loader._got_code, 'whatever')
+-
+-    def test_get_source_pkg_has_no___loader__(self):
+-        package = DummyPackage('package')
+-        po = self._makeOne(package)
+-        self.assertRaises(NotImplementedError, po.get_source, 'whatever')
+-
+-    def test_get_source_pkg_has___loader__(self):
+-        package = DummyPackage('package')
+-        loader = package.__loader__ = DummyLoader()
+-        po = self._makeOne(package)
+-        self.assertEqual(po.get_source('whatever'), 'def foo():\n    pass')
+-        self.assertEqual(loader._got_source, 'whatever')
+-
+ 
+ class AssetSourceIntegrationTests:
+     def test_get_filename(self):
+@@ -1039,16 +751,6 @@ class DummyOverride:
+         return self.result
+ 
+ 
+-class DummyOverrides:
+-    def __init__(self, result):
+-        self.result = result
+-
+-    def get_filename(self, resource_name):
+-        return self.result
+-
+-    listdir = isdir = has_resource = get_stream = get_string = get_filename
+-
+-
+ class DummyPackageOverrides:
+     def __init__(self, package):
+         self.package = package
+@@ -1058,14 +760,6 @@ class DummyPackageOverrides:
+         self.inserted.append((path, source))
+ 
+ 
+-class DummyPkgResources:
+-    def __init__(self):
+-        self.registered = []
+-
+-    def register_loader_type(self, typ, inst):
+-        self.registered.append((typ, inst))
+-
+-
+ class DummyPackage:
+     def __init__(self, name):
+         self.__name__ = name
+@@ -1104,26 +798,6 @@ class DummyAssetSource:
+         return self.kw['listdir']
+ 
+ 
+-class DummyLoader:
+-    _got_data = _is_package = None
+-
+-    def get_data(self, path):
+-        self._got_data = path
+-        return b'DEADBEEF'
+-
+-    def is_package(self, fullname):
+-        self._is_package = fullname
+-        return True
+-
+-    def get_code(self, fullname):
+-        self._got_code = fullname
+-        return b'DEADBEEF'
+-
+-    def get_source(self, fullname):
+-        self._got_source = fullname
+-        return 'def foo():\n    pass'
+-
+-
+ class DummyUnderOverride:
+     def __call__(self, package, path, source, _info=''):
+         self.package = package
+Index: pyramid-2.1/tests/test_path.py
+===================================================================
+--- pyramid-2.1.orig/tests/test_path.py
++++ pyramid-2.1/tests/test_path.py
+@@ -4,6 +4,33 @@ import unittest
+ here = os.path.abspath(os.path.dirname(__file__))
+ 
+ 
++class TestRefFilename(unittest.TestCase):
++    def _callFUT(self, ref):
++        from pyramid.path import ref_filename
++
++        return ref_filename(ref)
++
++    def test_returns_path(self):
++        import importlib.resources
++
++        ref = importlib.resources.files('tests.pkgs.assets') / 'foo.txt'
++        path = self._callFUT(ref)
++        expected = os.path.join(here, 'pkgs', 'assets', 'foo.txt')
++        self.assertEqual(path, expected)
++
++
++class TestResourceFilename(unittest.TestCase):
++    def _callFUT(self, package, name):
++        from pyramid.path import resource_filename
++
++        return resource_filename(package, name)
++
++    def test_returns_path(self):
++        path = self._callFUT('tests.pkgs.assets', 'foo.txt')
++        expected = os.path.join(here, 'pkgs', 'assets', 'foo.txt')
++        self.assertEqual(path, expected)
++
++
+ class TestCallerPath(unittest.TestCase):
+     def tearDown(self):
+         from . import test_path
+@@ -215,105 +242,14 @@ class TestPackageName(unittest.TestCase)
+         self.assertEqual(result, '__main__')
+ 
+ 
+-class TestResolver(unittest.TestCase):
+-    def _getTargetClass(self):
+-        from pyramid.path import Resolver
+-
+-        return Resolver
+-
+-    def _makeOne(self, package):
+-        return self._getTargetClass()(package)
+-
+-    def test_get_package_caller_package(self):
+-        from pyramid.path import CALLER_PACKAGE
+-        import tests
+-
+-        self.assertEqual(self._makeOne(CALLER_PACKAGE).get_package(), tests)
+-
+-    def test_get_package_name_caller_package(self):
+-        from pyramid.path import CALLER_PACKAGE
+-
+-        self.assertEqual(
+-            self._makeOne(CALLER_PACKAGE).get_package_name(), 'tests'
+-        )
+-
+-    def test_get_package_string(self):
+-        import tests
+-
+-        self.assertEqual(self._makeOne('tests').get_package(), tests)
+-
+-    def test_get_package_name_string(self):
+-        self.assertEqual(self._makeOne('tests').get_package_name(), 'tests')
+-
+-
+-class TestAssetResolver(unittest.TestCase):
+-    def _getTargetClass(self):
+-        from pyramid.path import AssetResolver
+-
+-        return AssetResolver
+-
+-    def _makeOne(self, package='tests'):
+-        return self._getTargetClass()(package)
+-
+-    def test_ctor_as_package(self):
+-        import sys
+-
+-        tests = sys.modules['tests']
+-        inst = self._makeOne(tests)
+-        self.assertEqual(inst.package, tests)
+-
+-    def test_ctor_as_str(self):
+-        import sys
+-
+-        tests = sys.modules['tests']
+-        inst = self._makeOne('tests')
+-        self.assertEqual(inst.package, tests)
+-
+-    def test_resolve_abspath(self):
+-        from pyramid.path import FSAssetDescriptor
+-
+-        inst = self._makeOne(None)
+-        r = inst.resolve(os.path.join(here, 'test_asset.py'))
+-        self.assertEqual(r.__class__, FSAssetDescriptor)
+-        self.assertTrue(r.exists())
+-
+-    def test_resolve_absspec(self):
+-        from pyramid.path import PkgResourcesAssetDescriptor
+-
+-        inst = self._makeOne(None)
+-        r = inst.resolve('tests:test_asset.py')
+-        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
+-        self.assertTrue(r.exists())
+-
+-    def test_resolve_relspec_with_pkg(self):
+-        from pyramid.path import PkgResourcesAssetDescriptor
+-
+-        inst = self._makeOne('tests')
+-        r = inst.resolve('test_asset.py')
+-        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
+-        self.assertTrue(r.exists())
+-
+-    def test_resolve_relspec_no_package(self):
+-        inst = self._makeOne(None)
+-        self.assertRaises(ValueError, inst.resolve, 'test_asset.py')
+-
+-    def test_resolve_relspec_caller_package(self):
+-        from pyramid.path import CALLER_PACKAGE, PkgResourcesAssetDescriptor
+-
+-        inst = self._makeOne(CALLER_PACKAGE)
+-        r = inst.resolve('test_asset.py')
+-        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
+-        self.assertTrue(r.exists())
+-
+-
+ class TestPkgResourcesAssetDescriptor(unittest.TestCase):
+     def _getTargetClass(self):
+         from pyramid.path import PkgResourcesAssetDescriptor
+ 
+         return PkgResourcesAssetDescriptor
+ 
+-    def _makeOne(self, pkg='tests', path='test_asset.py'):
+-        return self._getTargetClass()(pkg, path)
++    def _makeOne(self, pkg='tests', path='test_asset.py', overrides=None):
++        return self._getTargetClass()(pkg, path, overrides)
+ 
+     def test_class_conforms_to_IAssetDescriptor(self):
+         from zope.interface.verify import verifyClass
+@@ -339,34 +275,48 @@ class TestPkgResourcesAssetDescriptor(un
+ 
+     def test_stream(self):
+         inst = self._makeOne()
+-        inst.pkg_resources = DummyPkgResource()
+-        inst.pkg_resources.resource_stream = lambda x, y: f'{x}:{y}'
+-        s = inst.stream()
+-        self.assertEqual(s, '{}:{}'.format('tests', 'test_asset.py'))
++        with inst.stream() as stream:
++            self.assertTrue(b'asset' in stream.read())
+ 
+     def test_isdir(self):
+         inst = self._makeOne()
+-        inst.pkg_resources = DummyPkgResource()
+-        inst.pkg_resources.resource_isdir = lambda x, y: f'{x}:{y}'
+-        self.assertEqual(
+-            inst.isdir(), '{}:{}'.format('tests', 'test_asset.py')
+-        )
++        self.assertFalse(inst.isdir())
+ 
+     def test_listdir(self):
+-        inst = self._makeOne()
+-        inst.pkg_resources = DummyPkgResource()
+-        inst.pkg_resources.resource_listdir = lambda x, y: f'{x}:{y}'
+-        self.assertEqual(
+-            inst.listdir(), '{}:{}'.format('tests', 'test_asset.py')
+-        )
++        inst = self._makeOne('tests', '')
++        self.assertIn('test_asset.py', inst.listdir())
+ 
+     def test_exists(self):
+         inst = self._makeOne()
+-        inst.pkg_resources = DummyPkgResource()
+-        inst.pkg_resources.resource_exists = lambda x, y: f'{x}:{y}'
+-        self.assertEqual(
+-            inst.exists(), '{}:{}'.format('tests', 'test_asset.py')
+-        )
++        self.assertTrue(inst.exists())
++
++    def test_stream_with_overrides(self):
++        from io import BytesIO
++
++        class Overrides:
++            def get_stream(self, resource_name):
++                return BytesIO(b'override')
++
++        inst = self._makeOne(overrides=Overrides())
++        stream = inst.stream()
++        self.assertEqual(stream.read(), b'override')
++        stream.close()
++
++    def test_listdir_with_overrides(self):
++        class Overrides:
++            def listdir(self, resource_name):
++                return ['a', 'b']
++
++        inst = self._makeOne(overrides=Overrides())
++        self.assertEqual(inst.listdir(), ['a', 'b'])
++
++    def test_exists_with_overrides(self):
++        class Overrides:
++            def has_resource(self, resource_name):
++                return True
++
++        inst = self._makeOne(overrides=Overrides())
++        self.assertTrue(inst.exists())
+ 
+ 
+ class TestFSAssetDescriptor(unittest.TestCase):
+@@ -424,224 +374,30 @@ class TestFSAssetDescriptor(unittest.Tes
+         self.assertTrue(inst.exists())
+ 
+ 
+-class TestDottedNameResolver(unittest.TestCase):
+-    def _makeOne(self, package=None):
+-        from pyramid.path import DottedNameResolver
+-
+-        return DottedNameResolver(package)
+-
+-    def config_exc(self, func, *arg, **kw):
+-        try:
+-            func(*arg, **kw)
+-        except ValueError as e:
+-            return e
+-        else:
+-            raise AssertionError('Invalid not raised')  # pragma: no cover
+-
+-    def test_zope_dottedname_style_resolve_builtin(self):
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style('builtins.str', None)
+-        self.assertEqual(result, str)
+-
+-    def test_zope_dottedname_style_resolve_absolute(self):
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style(
+-            'tests.test_path.TestDottedNameResolver', None
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test_zope_dottedname_style_irrresolveable_absolute(self):
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ImportError,
+-            typ._zope_dottedname_style,
+-            'pyramid.test_path.nonexisting_name',
+-            None,
+-        )
+-
+-    def test__zope_dottedname_style_resolve_relative(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style(
+-            '.test_path.TestDottedNameResolver', tests
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test__zope_dottedname_style_resolve_relative_leading_dots(self):
+-        import tests.test_path
+-
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style(
+-            '..tests.test_path.TestDottedNameResolver', tests
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test__zope_dottedname_style_resolve_relative_is_dot(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style('.', tests)
+-        self.assertEqual(result, tests)
+-
+-    def test__zope_dottedname_style_irresolveable_relative_is_dot(self):
+-        typ = self._makeOne()
+-        e = self.config_exc(typ._zope_dottedname_style, '.', None)
+-        self.assertEqual(
+-            e.args[0], "relative name '.' irresolveable without package"
+-        )
+-
+-    def test_zope_dottedname_style_resolve_relative_nocurrentpackage(self):
+-        typ = self._makeOne()
+-        e = self.config_exc(typ._zope_dottedname_style, '.whatever', None)
+-        self.assertEqual(
+-            e.args[0],
+-            "relative name '.whatever' irresolveable without package",
+-        )
+-
+-    def test_zope_dottedname_style_irrresolveable_relative(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ImportError, typ._zope_dottedname_style, '.notexisting', tests
+-        )
+-
+-    def test__zope_dottedname_style_resolveable_relative(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style('.', tests)
+-        self.assertEqual(result, tests)
+-
+-    def test__zope_dottedname_style_irresolveable_absolute(self):
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ImportError, typ._zope_dottedname_style, 'pyramid.fudge.bar', None
+-        )
+-
+-    def test__zope_dottedname_style_resolveable_absolute(self):
+-        typ = self._makeOne()
+-        result = typ._zope_dottedname_style(
+-            'tests.test_path.TestDottedNameResolver', None
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test__pkg_resources_style_resolve_absolute(self):
+-        typ = self._makeOne()
+-        result = typ._pkg_resources_style(
+-            'tests.test_path:TestDottedNameResolver', None
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test__pkg_resources_style_irrresolveable_absolute(self):
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ImportError, typ._pkg_resources_style, 'tests:nonexisting', None
+-        )
+-
+-    def test__pkg_resources_style_resolve_relative(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        result = typ._pkg_resources_style(
+-            '.test_path:TestDottedNameResolver', tests
+-        )
+-        self.assertEqual(result, self.__class__)
+-
+-    def test__pkg_resources_style_resolve_relative_is_dot(self):
+-        import tests
+-
+-        typ = self._makeOne()
+-        result = typ._pkg_resources_style('.', tests)
+-        self.assertEqual(result, tests)
+-
+-    def test__pkg_resources_style_resolve_relative_nocurrentpackage(self):
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ValueError, typ._pkg_resources_style, '.whatever', None
+-        )
+-
+-    def test__pkg_resources_style_irrresolveable_relative(self):
+-        import pyramid
+-
+-        typ = self._makeOne()
+-        self.assertRaises(
+-            ImportError, typ._pkg_resources_style, ':notexisting', pyramid
+-        )
+-
+-    def test_resolve_not_a_string(self):
+-        typ = self._makeOne()
+-        e = self.config_exc(typ.resolve, None)
+-        self.assertEqual(e.args[0], 'None is not a string')
+-
+-    def test_resolve_using_pkgresources_style(self):
+-        typ = self._makeOne()
+-        result = typ.resolve('tests.test_path:TestDottedNameResolver')
+-        self.assertEqual(result, self.__class__)
+-
+-    def test_resolve_using_zope_dottedname_style(self):
+-        typ = self._makeOne()
+-        result = typ.resolve('tests.test_path:TestDottedNameResolver')
+-        self.assertEqual(result, self.__class__)
+-
+-    def test_resolve_missing_raises(self):
+-        typ = self._makeOne()
+-        self.assertRaises(ImportError, typ.resolve, 'cant.be.found')
+-
+-    def test_resolve_caller_package(self):
+-        from pyramid.path import CALLER_PACKAGE
+-
+-        typ = self._makeOne(CALLER_PACKAGE)
+-        self.assertEqual(
+-            typ.resolve('.test_path.TestDottedNameResolver'), self.__class__
+-        )
+-
+-    def test_maybe_resolve_caller_package(self):
+-        from pyramid.path import CALLER_PACKAGE
+-
+-        typ = self._makeOne(CALLER_PACKAGE)
+-        self.assertEqual(
+-            typ.maybe_resolve('.test_path.TestDottedNameResolver'),
+-            self.__class__,
+-        )
+-
+-    def test_ctor_string_module_resolveable(self):
+-        import tests
+-
+-        typ = self._makeOne('tests.test_path')
+-        self.assertEqual(typ.package, tests)
+-
+-    def test_ctor_string_package_resolveable(self):
+-        import tests
+-
+-        typ = self._makeOne('tests')
+-        self.assertEqual(typ.package, tests)
+-
+-    def test_ctor_string_irresolveable(self):
+-        self.assertRaises(ValueError, self._makeOne, 'cant.be.found')
+-
+-    def test_ctor_module(self):
+-        import tests
++class TestPathLazyExports(unittest.TestCase):
++    def test_asset_resolver_reexport(self):
++        from pyramid.path import AssetResolver
++        from pyramid.resolver import AssetResolver as direct
+ 
+-        from . import test_path
++        self.assertIs(AssetResolver, direct)
+ 
+-        typ = self._makeOne(test_path)
+-        self.assertEqual(typ.package, tests)
++    def test_dotted_name_resolver_reexport(self):
++        from pyramid.path import DottedNameResolver
++        from pyramid.resolver import DottedNameResolver as direct
+ 
+-    def test_ctor_package(self):
+-        import tests
++        self.assertIs(DottedNameResolver, direct)
+ 
+-        typ = self._makeOne(tests)
+-        self.assertEqual(typ.package, tests)
++    def test_resolver_reexport(self):
++        from pyramid.path import Resolver
++        from pyramid.resolver import Resolver as direct
+ 
+-    def test_ctor_None(self):
+-        typ = self._makeOne(None)
+-        self.assertEqual(typ.package, None)
++        self.assertIs(Resolver, direct)
+ 
++    def test_unknown_attribute_raises(self):
++        import pyramid.path as path_module
+ 
+-class DummyPkgResource:
+-    pass
++        with self.assertRaises(AttributeError):
++            getattr(path_module, 'this_does_not_exist')
+ 
+ 
+ class DummyPackageOrModule:
+Index: pyramid-2.1/tests/test_resolver.py
+===================================================================
+--- /dev/null
++++ pyramid-2.1/tests/test_resolver.py
+@@ -0,0 +1,312 @@
++import os
++import unittest
++
++here = os.path.abspath(os.path.dirname(__file__))
++
++
++class TestResolver(unittest.TestCase):
++    def _getTargetClass(self):
++        from pyramid.resolver import Resolver
++
++        return Resolver
++
++    def _makeOne(self, package):
++        return self._getTargetClass()(package)
++
++    def test_get_package_caller_package(self):
++        from pyramid.path import CALLER_PACKAGE
++        import tests
++
++        self.assertEqual(self._makeOne(CALLER_PACKAGE).get_package(), tests)
++
++    def test_get_package_name_caller_package(self):
++        from pyramid.path import CALLER_PACKAGE
++
++        self.assertEqual(
++            self._makeOne(CALLER_PACKAGE).get_package_name(), 'tests'
++        )
++
++    def test_get_package_string(self):
++        import tests
++
++        self.assertEqual(self._makeOne('tests').get_package(), tests)
++
++    def test_get_package_name_string(self):
++        self.assertEqual(self._makeOne('tests').get_package_name(), 'tests')
++
++
++class TestAssetResolver(unittest.TestCase):
++    def _getTargetClass(self):
++        from pyramid.resolver import AssetResolver
++
++        return AssetResolver
++
++    def _makeOne(self, package='tests'):
++        return self._getTargetClass()(package)
++
++    def test_ctor_as_package(self):
++        import sys
++
++        tests = sys.modules['tests']
++        inst = self._makeOne(tests)
++        self.assertEqual(inst.package, tests)
++
++    def test_ctor_as_str(self):
++        import sys
++
++        tests = sys.modules['tests']
++        inst = self._makeOne('tests')
++        self.assertEqual(inst.package, tests)
++
++    def test_resolve_abspath(self):
++        from pyramid.path import FSAssetDescriptor
++
++        inst = self._makeOne(None)
++        r = inst.resolve(os.path.join(here, 'test_asset.py'))
++        self.assertEqual(r.__class__, FSAssetDescriptor)
++        self.assertTrue(r.exists())
++
++    def test_resolve_absspec(self):
++        from pyramid.path import PkgResourcesAssetDescriptor
++
++        inst = self._makeOne(None)
++        r = inst.resolve('tests:test_asset.py')
++        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
++        self.assertTrue(r.exists())
++
++    def test_resolve_relspec_with_pkg(self):
++        from pyramid.path import PkgResourcesAssetDescriptor
++
++        inst = self._makeOne('tests')
++        r = inst.resolve('test_asset.py')
++        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
++        self.assertTrue(r.exists())
++
++    def test_resolve_relspec_no_package(self):
++        inst = self._makeOne(None)
++        self.assertRaises(ValueError, inst.resolve, 'test_asset.py')
++
++    def test_resolve_relspec_caller_package(self):
++        from pyramid.path import CALLER_PACKAGE, PkgResourcesAssetDescriptor
++
++        inst = self._makeOne(CALLER_PACKAGE)
++        r = inst.resolve('test_asset.py')
++        self.assertEqual(r.__class__, PkgResourcesAssetDescriptor)
++        self.assertTrue(r.exists())
++
++
++class TestDottedNameResolver(unittest.TestCase):
++    def _makeOne(self, package=None):
++        from pyramid.resolver import DottedNameResolver
++
++        return DottedNameResolver(package)
++
++    def config_exc(self, func, *arg, **kw):
++        try:
++            func(*arg, **kw)
++        except ValueError as e:
++            return e
++        else:
++            raise AssertionError('Invalid not raised')  # pragma: no cover
++
++    def test_zope_dottedname_style_resolve_builtin(self):
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style('builtins.str', None)
++        self.assertEqual(result, str)
++
++    def test_zope_dottedname_style_resolve_absolute(self):
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style(
++            'tests.test_resolver.TestDottedNameResolver', None
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test_zope_dottedname_style_irrresolveable_absolute(self):
++        typ = self._makeOne()
++        self.assertRaises(
++            ImportError,
++            typ._zope_dottedname_style,
++            'pyramid.test_resolver.nonexisting_name',
++            None,
++        )
++
++    def test__zope_dottedname_style_resolve_relative(self):
++        import tests
++
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style(
++            '.test_resolver.TestDottedNameResolver', tests
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test__zope_dottedname_style_resolve_relative_leading_dots(self):
++        import tests.test_resolver
++
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style(
++            '..tests.test_resolver.TestDottedNameResolver', tests
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test__zope_dottedname_style_resolve_relative_is_dot(self):
++        import tests
++
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style('.', tests)
++        self.assertEqual(result, tests)
++
++    def test__zope_dottedname_style_irresolveable_relative_is_dot(self):
++        typ = self._makeOne()
++        e = self.config_exc(typ._zope_dottedname_style, '.', None)
++        self.assertEqual(
++            e.args[0], "relative name '.' irresolveable without package"
++        )
++
++    def test_zope_dottedname_style_resolve_relative_nocurrentpackage(self):
++        typ = self._makeOne()
++        e = self.config_exc(typ._zope_dottedname_style, '.whatever', None)
++        self.assertEqual(
++            e.args[0],
++            "relative name '.whatever' irresolveable without package",
++        )
++
++    def test_zope_dottedname_style_irrresolveable_relative(self):
++        import tests
++
++        typ = self._makeOne()
++        self.assertRaises(
++            ImportError, typ._zope_dottedname_style, '.notexisting', tests
++        )
++
++    def test__zope_dottedname_style_resolveable_relative(self):
++        import tests
++
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style('.', tests)
++        self.assertEqual(result, tests)
++
++    def test__zope_dottedname_style_irresolveable_absolute(self):
++        typ = self._makeOne()
++        self.assertRaises(
++            ImportError, typ._zope_dottedname_style, 'pyramid.fudge.bar', None
++        )
++
++    def test__zope_dottedname_style_resolveable_absolute(self):
++        typ = self._makeOne()
++        result = typ._zope_dottedname_style(
++            'tests.test_resolver.TestDottedNameResolver', None
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test__pkg_resources_style_resolve_absolute(self):
++        typ = self._makeOne()
++        result = typ._pkg_resources_style(
++            'tests.test_resolver:TestDottedNameResolver', None
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test__pkg_resources_style_irrresolveable_absolute(self):
++        typ = self._makeOne()
++        self.assertRaises(
++            ImportError, typ._pkg_resources_style, 'tests:nonexisting', None
++        )
++
++    def test__pkg_resources_style_resolve_relative(self):
++        import tests
++
++        typ = self._makeOne()
++        result = typ._pkg_resources_style(
++            '.test_resolver:TestDottedNameResolver', tests
++        )
++        self.assertEqual(result, self.__class__)
++
++    def test__pkg_resources_style_resolve_relative_is_dot(self):
++        import tests
++
++        typ = self._makeOne()
++        result = typ._pkg_resources_style('.', tests)
++        self.assertEqual(result, tests)
++
++    def test__pkg_resources_style_resolve_relative_nocurrentpackage(self):
++        typ = self._makeOne()
++        self.assertRaises(
++            ValueError, typ._pkg_resources_style, '.whatever', None
++        )
++
++    def test__pkg_resources_style_irrresolveable_relative(self):
++        import pyramid
++
++        typ = self._makeOne()
++        self.assertRaises(
++            ImportError, typ._pkg_resources_style, ':notexisting', pyramid
++        )
++
++    def test_resolve_not_a_string(self):
++        typ = self._makeOne()
++        e = self.config_exc(typ.resolve, None)
++        self.assertEqual(e.args[0], 'None is not a string')
++
++    def test_resolve_using_pkgresources_style(self):
++        typ = self._makeOne()
++        result = typ.resolve('tests.test_resolver:TestDottedNameResolver')
++        self.assertEqual(result, self.__class__)
++
++    def test_resolve_using_zope_dottedname_style(self):
++        typ = self._makeOne()
++        result = typ.resolve('tests.test_resolver:TestDottedNameResolver')
++        self.assertEqual(result, self.__class__)
++
++    def test_resolve_missing_raises(self):
++        typ = self._makeOne()
++        self.assertRaises(ImportError, typ.resolve, 'cant.be.found')
++
++    def test_resolve_caller_package(self):
++        from pyramid.path import CALLER_PACKAGE
++
++        typ = self._makeOne(CALLER_PACKAGE)
++        self.assertEqual(
++            typ.resolve('.test_resolver.TestDottedNameResolver'),
++            self.__class__,
++        )
++
++    def test_maybe_resolve_caller_package(self):
++        from pyramid.path import CALLER_PACKAGE
++
++        typ = self._makeOne(CALLER_PACKAGE)
++        self.assertEqual(
++            typ.maybe_resolve('.test_resolver.TestDottedNameResolver'),
++            self.__class__,
++        )
++
++    def test_ctor_string_module_resolveable(self):
++        import tests
++
++        typ = self._makeOne('tests.test_resolver')
++        self.assertEqual(typ.package, tests)
++
++    def test_ctor_string_package_resolveable(self):
++        import tests
++
++        typ = self._makeOne('tests')
++        self.assertEqual(typ.package, tests)
++
++    def test_ctor_string_irresolveable(self):
++        self.assertRaises(ValueError, self._makeOne, 'cant.be.found')
++
++    def test_ctor_module(self):
++        import tests
++
++        from . import test_resolver
++
++        typ = self._makeOne(test_resolver)
++        self.assertEqual(typ.package, tests)
++
++    def test_ctor_package(self):
++        import tests
++
++        typ = self._makeOne(tests)
++        self.assertEqual(typ.package, tests)
++
++    def test_ctor_None(self):
++        typ = self._makeOne(None)
++        self.assertEqual(typ.package, None)
+Index: pyramid-2.1/CONTRIBUTORS.txt
+===================================================================
+--- pyramid-2.1.orig/CONTRIBUTORS.txt
++++ pyramid-2.1/CONTRIBUTORS.txt
+@@ -361,4 +361,6 @@ Contributors
+ 
+ - Camill Kaipf, 2022/08/12
+ 
+-- Stefano Rivera, 2022/12/29
+\ No newline at end of file
++- Stefano Rivera, 2022/12/29
++
++- Rémy Hubscher, 2026/08/05
+\ No newline at end of file

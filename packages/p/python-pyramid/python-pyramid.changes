@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 04:06:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata rather than pkg_resources.
+
+-------------------------------------------------------------------
 Fri Jun 19 03:55:48 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 2.1:
