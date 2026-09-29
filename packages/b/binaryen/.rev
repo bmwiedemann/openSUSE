@@ -7,4 +7,12 @@
     <comment>update/add v123</comment>
     <requestid>1288384</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>d251af6ac14a9bee86e29cd311a8e8b5</srcmd5>
+    <version>133</version>
+    <time>1790696889</time>
+    <user>anag_factory</user>
+    <comment>Update to 133, fixing CVE-2025-14956, CVE-2025-14957 and CVE-2026-8257 (boo#1255447, boo#1255448, boo#1264834); declare the licences of the bundled LLVM and FP16 code.</comment>
+    <requestid>1381193</requestid>
+  </revision>
 </revisionlist>

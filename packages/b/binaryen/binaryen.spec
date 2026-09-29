@@ -1,7 +1,7 @@
 #
 # spec file for package binaryen
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,15 +17,25 @@
 
 
 Name:           binaryen
-Version:        123
+Version:        133
 Release:        0
 Summary:        Compiler infrastructure and toolchain library for WebAssembly
-License:        Apache-2.0
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Development/Tools
+# Legal-Review-Notice: code compiled in besides upstream's Apache-2.0:
+# - third_party/llvm-project (DWARF support, BUILD_LLVM_DWARF is ON by
+#   default) and src/support/suffix_tree*.cpp (always built) are
+#   Apache-2.0 WITH LLVM-exception; llvm-project's MD5.cpp is
+#   bcrypt-Solar-Designer and its ConvertUTF.cpp carries the
+#   Unicode-DFS-2015 notice. The bundled include/llvm/LICENSE.TXT keeps
+#   the legacy University of Illinois/NCSA licence for pre-relicensing
+#   LLVM code, and the compiled Support sources fall under it: NCSA.
+# - The header-only third_party/FP16 is MIT.
+# - The other third_party trees are empty submodules or unused by the
+#   build (wabt/wasm2c only serves the fuzzer scripts), and
+#   BUILD_MIMALLOC defaults to OFF.
+License:        Apache-2.0 AND Apache-2.0 WITH LLVM-exception AND MIT AND NCSA AND Unicode-DFS-2015 AND bcrypt-Solar-Designer
 URL:            https://github.com/WebAssembly/binaryen
 Source:         https://github.com/WebAssembly/binaryen/archive/version_%{version}.tar.gz#/%{name}-version_%{version}.tar.gz
-BuildRequires:  cmake
+BuildRequires:  cmake >= 3.16.3
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
@@ -67,16 +77,12 @@ Binaryen provides a toolchain that can:
 
 %package -n lib%{name}
 Summary:        Library for %{name}
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Development/Tools
 
 %description -n lib%{name}
 Library for %{name}.
 
 %package -n lib%{name}-devel
 Summary:        Development files for lib%{name}
-# FIXME: use correct group or remove it, see "https://en.opensuse.org/openSUSE:Package_group_guidelines"
-Group:          Development/Tools
 Requires:       lib%{name} = %{version}
 
 %description -n lib%{name}-devel
@@ -84,10 +90,6 @@ Development files for lib%{name}.
 
 %prep
 %autosetup -n %{name}-version_%{version}
-# fix pthread link error
-cat >> "./CMakeLists.txt" <<-EOF
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pthread")
-EOF
 
 %build
 %cmake \
@@ -100,9 +102,6 @@ EOF
 
 %post -n lib%{name} -p /sbin/ldconfig
 %postun -n lib%{name} -p /sbin/ldconfig
-
-rm %{buildroot}%{_prefix}/lib/debug/usr/bin/wasm-merge.debug
-rm %{buildroot}%{_prefix}/lib/debug/usr/bin/wasm-fuzz-lattices.debug
 
 %files
 %license LICENSE

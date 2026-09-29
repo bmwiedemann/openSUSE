@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:19:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 133:
+  * CVE-2025-14956: heap buffer overflow when reading an expression
+    from a truncated binary (boo#1255447)
+  * CVE-2025-14957: NULL pointer dereference on an out-of-range
+    local index (boo#1255448)
+  * CVE-2026-8257: reachable assertion when parsing br_on* with a
+    non-reference operand (boo#1264834)
+  * New optimization passes and tool flags: constraint analysis
+    (runs automatically at -O3/-Os and above), --tail-call,
+    RemoveExports, MarkJSCalled, --remove-relaxed-simd,
+    --strip-toolchain-annotations
+  * Removed the --mod-asyncify-never-unwind and
+    --mod-asyncify-always-and-only-unwind passes
+  * wasm-split --multi-split uses placeholders unless
+    --no-placeholders is given
+  * WebAssembly proposal support: custom page sizes, relaxed
+    atomics, wide arithmetic, acqrel fences, multibyte arrays and
+    non-nullable table types
+  * Breaking C API changes: BinaryenAddTable takes an initialiser
+    expression, BinaryenAtomicFence takes a memory order, the
+    memory-segment accessors are renamed to BinaryenGetDataSegment*
+    and take a BinaryenDataSegmentRef, setAtomic is replaced by
+    setMemoryOrder, and the relaxed-SIMD functions are renamed
+  * Built with C++20 instead of C++17
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Declare the licences of the bundled LLVM (Apache-2.0 WITH
+  LLVM-exception, NCSA, Unicode-DFS-2015, bcrypt-Solar-Designer)
+  and FP16 (MIT) code compiled into libbinaryen
+- Spec cleanup:
+  * Drop the deprecated Group tags and the -pthread CMakeLists.txt
+    hack, upstream links Threads::Threads
+  * Drop the stray rm of debug files from %postun
+  * Add the upstream cmake >= 3.16.3 floor
+
+-------------------------------------------------------------------
 Tue Jun 24 21:40:13 UTC 2025 - Avindra Goolcharan <avindra@opensuse.org>
 
 - update to version 123
