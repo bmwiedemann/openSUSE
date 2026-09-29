@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:43:44 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
+
+- Update to version 5.2.4
+  Bug fixes:
+  * Enable links in add torrent comments
+  * Resolve relative UI theme paths against config folder
+  * Fix redefined signal
+  * Skip processing of already being added torrent source
+  * Close file descriptors when starting file manager
+  * Fix case-only renaming isn't applied
+  * Fix crash when second instance is started during legal notice
+  Web UI:
+  * Add shared dialog for adding multiple torrents
+  * Do not select invisible rows in dynamicTable.js
+  * Escape add-torrent window title
+  * Use safe property for setting element title
+  * Only open http(s) URLs from RSS articles and search results
+  * Prevent in-place corruption in
+    DynamicTable.loadColumnsOrder()
+  * Fixed ability to manually add peers
+  * Fixed Preferences page crash with Italian locale
+  Other:
+  * Suppress useless compiler warning
+
+-------------------------------------------------------------------
 Wed Jul  8 08:48:50 UTC 2026 - Luigi Baldoni <aloisio@gmx.com>
 
 - Update to version 5.2.3
