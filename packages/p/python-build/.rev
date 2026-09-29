@@ -274,4 +274,41 @@
     entry, multiple lines. (:issue:`1044`)</comment>
     <requestid>1350557</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a17d773c416468c1400783ee31a2d6b4</srcmd5>
+    <version>1.6.1</version>
+    <time>1790696763</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.6.1:
+  * Avoid trying to detect symlinks on Windows, regression in
+    1.6.0 - by :user:`henryiii` (:issue:`1175`) (:issue:`1175`)
+  * Fix doubled backslashes in the Windows pip config path
+    (%APPDATA%pippip.ini) in the docs - by :user:`aroh3006`
+    (:issue:`1149`)
+  * :issue:`1168`, :issue:`1170`, :issue:`1178`
+  * Add --report=PATH to write a machine-readable JSON report of
+    built artifacts; --metadata now also accepts .whl files - by
+    :user:`gaborbernat` (:issue:`198`)
+  * The srcdir argument now accepts .tar.gz source distributions,
+    extracting and building from them - by :user:`gaborbernat`
+    (:issue:`311`)
+  * The &quot;Unmet dependencies&quot; error from --no-isolation builds now
+    shows the wanted version, found version, and interpreter - by
+    :user:`gaborbernat` (:issue:`504`)
+  * Add --sdist-extract-dir to extract the intermediate sdist
+    into a persistent directory, enabling compiler cache reuse
+    across rebuilds - by :user:`gaborbernat` (:issue:`614`)
+  * Add --env-dir to place the isolated build environment at a
+    fixed path, enabling compiler cache reuse across builds - by
+    :user:`gaborbernat` (:issue:`655`)
+  * Print a summary of resolved dependency versions
+    (name==version) after installing them in isolated builds - by
+    :user:`gaborbernat` (:issue:`959`)
+  * On build failure, print a tip pointing to --env-dir and
+    --sdist-extract-dir for debugging and link to the &quot;Debug a
+    failed build&quot; how-to - reported by :user:`dimpase`,
+    implemented by :user:`gaborbernat` (:issue:`966`)
+  * Drain verbose subprocess output inline instead of using a</comment>
+    <requestid>1380823</requestid>
+  </revision>
 </revisionlist>
