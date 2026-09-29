@@ -94,7 +94,10 @@ hide the wacky options with one-line shell scripts.
 %autosetup -p1
 
 %build
+# --disable-stack-protector: upstream gcc_stack_protect.m4 would append
+# -fstack-protector (basic), downgrading -fstack-protector-strong from %{optflags}
 %configure \
+  --disable-stack-protector \
   --without-oss \
   --disable-static \
   --with-distro=openSUSE

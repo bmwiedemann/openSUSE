@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream stack protector via --disable-stack-protector (would append -fstack-protector basic, downgrading -fstack-protector-strong from distro optflags)
+
+-------------------------------------------------------------------
 Thu Aug  1 18:04:11 UTC 2024 - Marcus Meissner <meissner@suse.com>
 
 - sox-gcc14.patch: fixed build with gcc14
