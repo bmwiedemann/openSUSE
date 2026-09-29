@@ -17,7 +17,7 @@
 
 
 Name:           plexus-io
-Version:        3.6.0
+Version:        3.8.0
 Release:        0
 Summary:        Plexus IO Components
 License:        Apache-2.0
