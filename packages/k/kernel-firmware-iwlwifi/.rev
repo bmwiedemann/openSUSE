@@ -205,4 +205,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * iwlwifi: update cc/Qu/QuZ firmwares for core24.60-33 release</comment>
     <requestid>1374909</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>102bbf675cb370d19110f20910e9246f</srcmd5>
+    <version>20260926</version>
+    <time>1790778100</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * iwlwifi: add Bz/Sc FW for core24.80-41 release
+  * iwlwifi: Update Bz/Fm firmware for core24.80-41 release
+  * iwlwifi: Add Hr/Gf firmware for core24.80-41 release
+  * iwlwifi: update ty/So/Ma firmwares for core24.80-41 release
+  * iwlwifi: Add cc/Qu/QuZ firmwares for core24.80-41 release
+
+- Update aliases</comment>
+    <requestid>1381439</requestid>
+  </revision>
 </revisionlist>
