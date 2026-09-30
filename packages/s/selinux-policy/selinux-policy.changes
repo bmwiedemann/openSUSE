@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:13:32 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20260928:
+  * Allow sdbootutil_t write access to /var/lib/sdbootutil (bsc#1281087)
+
+-------------------------------------------------------------------
 Wed Sep 23 08:28:45 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260923:
