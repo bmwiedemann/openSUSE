@@ -1,14 +1,15 @@
 Do not replace COMPREPLY with _comp_compgen_split()
 
 ---
- completions/ssh |    2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ completions/ssh    |    2 +-
+ test/t/test_scp.py |   37 +++++++++++++++++++++++++++++++++++++
+ 2 files changed, 38 insertions(+), 1 deletion(-)
 
 Index: bash-completion-2.17.0/completions/ssh
 ===================================================================
---- bash-completion-2.17.0.orig/completions/ssh
-+++ bash-completion-2.17.0/completions/ssh
-@@ -584,7 +584,7 @@ _comp_xfunc_scp_compgen_remote_files()
+--- bash-completion-2.17.0/completions-core/ssh.bash
++++ bash-completion-2.17.0/completions-core/ssh.bash
+@@ -582,7 +582,7 @@ _comp_xfunc_scp_compgen_remote_files()
          command ls -aF1dL "$_path*" 2>/dev/null |
          _comp_cmd_scp__escape_path ${_dirs_only:+'-d'} -- \
              "$_escape_replacement")
@@ -17,3 +18,53 @@ Index: bash-completion-2.17.0/completions/ssh
  }
  
  # @deprecated 2.12 use `_comp_compgen -ax ssh remote_files` instead
+--- bash-completion-2.17.0/test/t/test_scp.py
++++ bash-completion-2.17.0/test/t/test_scp.py	2026-09-29 09:52:47.209399766 +0000
+@@ -18,6 +18,23 @@ LIVE_HOST = os.environ.get(
+ 
+ 
+ class TestScp:
++    @pytest.fixture(autouse=True)
++    def mock_missing_commands(self, bash):
++        assert_bash_exec(
++            bash,
++            "type scp >/dev/null 2>&1 || scp() { :; }; "
++            "type ssh >/dev/null 2>&1 || ssh() { :; }"
++        )
++
++        yield
++
++        assert_bash_exec(
++            bash,
++            "declare -f scp >/dev/null 2>&1 && unset -f scp; "
++            "declare -f ssh >/dev/null 2>&1 && unset -f ssh; "
++            "true"
++        )
++
+     @pytest.mark.complete("scp -F config ", cwd="scp")
+     def test_basic(self, hosts, completion):
+         expected = sorted(
+@@ -276,3 +293,23 @@ class TestScp:
+         assert completion == sorted(
+             [r"backslash-a\ b.txt", r"backslash-a\\\ b.txt"]
+         )
++
++    def test_scp_remote_path_boo1221414(self, bash):
++        """Test remote path completion without _comp_compgen_split corruption (boo#1221414)."""
++        from conftest import PS1
++
++        assert_bash_exec(bash, "ssh() { echo '/var/lib/'; }")
++
++        old_delay = bash.delaybeforesend
++        bash.delaybeforesend = 0.05
++
++        try:
++            bash.send("scp server:/var/li\t")
++
++            bash.expect(r"b/")
++
++        finally:
++            bash.sendintr()
++            bash.expect_exact(PS1)
++
++            bash.delaybeforesend = old_delay

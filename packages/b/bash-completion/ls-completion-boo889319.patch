@@ -1,23 +1,64 @@
----
- bash-completion-2.12.0/bash_completion |    3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Bug boo#boo889319
 
-Index: bash-completion-2.17.0/bash_completion
-===================================================================
---- bash-completion-2.17.0.orig/bash_completion
-+++ bash-completion-2.17.0/bash_completion
-@@ -3259,12 +3259,13 @@ _comp_complete_longopt()
+ $ ls *spec<ENTER>
+ graphviz-gvedit.spec
+ graphviz-plugins.spec
+ graphviz-smyrna.spec
+ graphviz.spec
+ $ ls *spec<TAB><TAB> # nothing
+
+also allow that all home directories exists for test number 3
+as in clean build environments.
+
+---
+ bash-completion-2.18.0/bash_completion   |    3 ++-
+ bash-completion-2.18.0/test/t/test_ls.py |   17 +++++++++++++++++
+ 2 files changed, 19 insertions(+), 1 deletion(-)
+
+--- bash-completion-2.18.0/bash_completion
++++ bash-completion-2.18.0/bash_completion	2026-09-30 11:01:45.430370406 +0000
+@@ -3319,11 +3319,12 @@ _comp_complete_longopt()
  complete -F _comp_complete_longopt -o filenames \
-     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp \
-     csplit cut date df diff dir du enscript expand fmt fold gperf \
--    grep grub head irb ld ldd less ln ls m4 mkdir mkfifo mknod \
-+    grep grub head irb ld ldd less ln m4 mkdir mkfifo mknod \
-     mv nl nm numfmt objcopy objdump od paste pr ptx readelf \
-     readlink realpath rm rmdir sed shar shred \
-     shuf sort split stat strip sum sync tac tail tee \
-     texindex touch tr unexpand uniq vdir wc who
+     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp csplit \
+     cut date df diff dir du enscript expand fmt fold gperf grep grub head irb \
+-    ld ldd less ln ls m4 mkdir mkfifo mknod mv nl nm numfmt objcopy \
++    ld ldd less ln m4 mkdir mkfifo mknod mv nl nm numfmt objcopy \
+     objdump od paste pr ptx readelf readlink realpath rm rmdir sed shar \
+     shred shuf sort split stat strip sum sync tac tail tee texindex touch tr \
+     unexpand uniq vdir wc who
  complete -F _comp_complete_longopt -o default env netstat seq uname units
 +complete -F _comp_complete_longopt -o bashdefault -o default -o filenames ls ll la l ls-l lf
  
  # @since 2.12
  declare -Ag _comp_xspecs
+--- bash-completion-2.18.0/test/t/test_ls.py
++++ bash-completion-2.18.0/test/t/test_ls.py	2026-09-30 11:39:58.301243109 +0000
+@@ -38,3 +38,28 @@ class TestLs:
+         completion = assert_complete(bash, "ls ~%s" % part)
+         assert completion == full[len(part) :]
+         assert completion.endswith(" ")
++
++    @pytest.mark.bashcomp(temp_cwd=True)
++    def test_glob_expansion_offer_more_than_only_first_file(self, bash):
++        """~Test fallback to glob expansion for ls (opensuse #889319)."""
++        from conftest import PS1
++
++        assert_bash_exec(bash, "touch graphviz-gvedit.spec graphviz.spec other_file.txt")
++
++        old_delay = bash.delaybeforesend
++        bash.delaybeforesend = 0.05
++
++        try:
++            bash.send("ls *spec\t")
++     
++            bash.expect(r"graphviz-gvedit\.spec")
++            bash.expect(r"graphviz\.spec")
++  
++            bash.expect_exact("ls *spec")
++
++            assert "other_file.txt" not in bash.before
++
++        finally:
++            bash.sendintr()
++            bash.expect_exact(PS1)
++            bash.delaybeforesend = old_delay

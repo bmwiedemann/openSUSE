@@ -17,6 +17,7 @@
 
 
 %global flavor @BUILD_FLAVOR@%{nil}
+%bcond_without  debug
 
 %if "%{flavor}" == "doc"
 %define build_core 0
@@ -26,10 +27,11 @@
 %define build_core 1
 %define build_doc 0
 %endif
+%bcond_with     checks
 
 %global _name   bash-completion
 Name:           %{_name}%{?nsuffix}
-Version:        2.17.0
+Version:        2.18.0
 Release:        0
 %if %{build_core}
 Summary:        Programmable Completion for Bash
@@ -45,21 +47,18 @@ Source1:        bash-completion-rpmlintrc
 # PATCH-FIX-UPSTREAM bnc#717151 -- Terminal tab autocompletion error
 Patch0:         %{_name}-2.4.patch
 # PATCH-FIX-SUSE boo#905348 -- tab completion with shell variable changes command line with backslash
-Patch3:         FOO-dir-completion-boo905348.patch
+# PATCH-FIX-SUSE boo#940835
+# PATCH-FIX-SUSE boo#963140
+# PATCH-FIX-SUSE boo#940837, bsc#959299
+Patch3:         dollar-completion-boo905348-boo940835-boo963140-boo940837.patch
 # PATCH-FIX-SUSE
 Patch4:         qdbus-qt5.patch
 # PATCH-FIX-SUSE boo#889319
 Patch5:         ls-completion-boo889319.patch
-# PATCH-FIX-SUSE boo#940835
-Patch6:         backtick-completion-boo940835.patch
 # PATCH-FIX-SUSE bsc#946875
 Patch7:         LVM-completion-bsc946875.patch
-# PATCH-FIX-SUSE boo#940837, bsc#959299
-Patch8:         respect-variables-boo940837.patch
 # PATCH-FIX-SUSE boo#958462
 Patch9:         rm-completion-smart-boo958462.patch
-# PATCH-FIX-SUSE boo#963140
-Patch10:        backticks-bsc963140.patch
 # PATCH-FIX-SUSE boo#1090515
 Patch11:        bash-completion-2.7-unRAR-remove.patch
 # PATCH-FIX-SUSE boo#1190929
@@ -74,9 +73,19 @@ BuildArch:      noarch
 %if %{build_doc}
 BuildRequires:  cmark
 BuildRequires:  libxslt-tools
+%else
+%if %{with checks}
+BuildRequires:  procps
+BuildRequires:  psmisc
+BuildRequires:  python3-base
+BuildRequires:  python3-pexpect
+BuildRequires:  python3-pytest
+%endif
 %endif
 %if %{build_core}
-Requires:       bash >= 5.1.16
+BuildRequires:  bash
+BuildRequires:  bash-sh
+Requires:       bash
 %endif
 
 %description
@@ -97,7 +106,17 @@ package bash-completion.
 %endif
 
 %prep
+%if %{without debug}
 %autosetup -p1 -n %{_name}-%{version}
+%else
+%setup -q -n %{_name}-%{version}
+typeset -i i=0
+for p_file in %{patches}; do
+    : $((i++))
+    echo "Apply patch $p_file with suffix .p$i ..."
+    %{__patch} -p1 -b -z .p${i} --fuzz=%{_default_patch_fuzz} %{_default_patch_flags} < "$p_file"
+done
+%endif
 
 %build
 autoreconf -fiv
@@ -149,6 +168,24 @@ install -m 0644 AUTHORS %{buildroot}%{_defaultdocdir}/%{_name}/
 install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{_name}/README
 %endif
 
+%if ! %{build_doc}
+%if %{with checks}
+%check
+make check
+export NETWORK=none
+export PYTEST_ADDOPTS="-v -k 'not test_rpm and not test_remote_path_with and not test_remote_path_ending and not test_rsync and not test_unit_compgen' \
+  --deselect=t/test_curl.py::TestCurl::test_interface_ipv6 \
+  --deselect=t/test_ifstat.py::TestIfstat::test_2 \
+  --deselect=t/test_iperf.py::TestIperf::test_2 \
+  --deselect=t/test_iperf3.py::TestIperf3::test_2 \
+  --deselect=t/test_nethogs.py::TestNethogs::test_1 \
+  --deselect=t/test_nload.py::TestNload::test_basic \
+  --deselect=t/test_service.py::TestService::test_1 \
+  --deselect=t/test_wget.py::TestWget::test_3"
+make installcheck DESTDIR=%{buildroot}
+%endif
+%endif
+
 %files
 %if "%{flavor}" == "doc"
 %dir %{_defaultdocdir}/%{_name}
@@ -157,8 +194,6 @@ install -m 0644 README.md  %{buildroot}%{_defaultdocdir}/%{_name}/README
 %{_defaultdocdir}/%{_name}/html/
 %else
 %license COPYING
-%dir %{_sysconfdir}/bash_completion.d/
-%{_sysconfdir}/bash_completion.d/000_bash_completion_compat.bash
 %{_datadir}/bash-completion
 %config %{_sysconfdir}/profile.d/bash_completion.sh
 

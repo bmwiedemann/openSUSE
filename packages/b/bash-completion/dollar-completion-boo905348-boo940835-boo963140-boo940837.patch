@@ -1,0 +1,209 @@
+commit d1a48426003deab06fc9c7296503712ba9da1349
+Author: Werner Fink <werner@suse.de>
+Date:   Wed Sep 30 11:29:27 2026 +0200
+
+    Expand variables instead of escaping them
+    
+    I had several bug reports all with similar content:
+    
+    ```
+    export SCRATCH_AREA=/dev/shm
+    ls $SCR<tab>
+    ls \$SCRATCH_AREA/
+    ```
+    
+    Signed-off-by: Werner Fink <werner@suse.de>
+
+Merged former patches
+* FOO-dir-completion-boo905348.patch
+* backtick-completion-boo940835.patch
+* backticks-bsc963140.patch
+* respect-variables-boo940837.patch
+to this one for a possible pull request
+
+diff --git bash_completion bash_completion
+index 35586606..d71b5b73 100644
+--- a/bash_completion
++++ b/bash_completion
+@@ -1303,6 +1303,7 @@ _comp_quote_compgen()
+ _comp_compgen_filedir()
+ {
+     _comp_compgen_tilde && return
++    _comp_compgen_dollar "$cur" || return
+ 
+     local -a toks
+     local _dir="" _filenames="" _xspec=""
+@@ -2015,6 +2016,56 @@ _comp_compgen_tilde()
+     return 1
+ }
+ 
++# Perform dollar ($ or backtick) completion
++# @return  True (0) if completion needs further processing,
++#          False (> 0) if dollar or backtick is for commands, also if dollar
++#          is used for variables, completions are put in COMPREPLY and noq
++#          further processing is necessary.
++_comp_compgen_dollar()
++{
++    local s=""
++    local -i glob=0 cmd=0
++    shopt -q extglob && let glob++
++    ((glob == 0)) && shopt -s extglob
++
++    [[ "$COMP_LINE" == cd* ]] && s="/"
++
++    case "$1" in
++    \$\(*\))
++        ((glob == 0)) && shopt -u extglob
++        return 0
++        ;;
++    \$\(*)
++        COMPREPLY=($(compgen -c -P '$(' -S ")$s" -- ${1:2}))
++        ((${#COMPREPLY[@]} <= 0)) && let cmd++
++        ;;
++    \`*\`)
++        ((glob == 0)) && shopt -u extglob
++        return 0
++        ;;
++    \`*)
++        COMPREPLY=($(compgen -c -P '\`' -S "\`$s" -- ${1:1}))
++        ((${#COMPREPLY[@]} <= 0)) && let cmd++
++        ;;
++    \$\{*)
++        COMPREPLY=($(compgen -v -P '${' -S "}$s" -- ${1#??})) ;;
++    \$*)
++        COMPREPLY=($(compgen -v -P '$' ${s:+-S $s} -- ${1#?})) ;;
++    *)
++        ((glob == 0)) && shopt -u extglob
++        return 0
++    esac
++
++    if ((${#COMPREPLY[@]} > 0)) ; then
++        ((${#COMPREPLY[@]} == 1)) && eval COMPREPLY=\(${COMPREPLY[@]}\)
++    elif ((cmd > 0)); then
++        compopt -o default -o bashdefault -o nospace
++    fi
++
++    ((glob == 0)) && shopt -u extglob
++    return ${#COMPREPLY[@]}
++}
++
+ # Expand string starting with tilde (~)
+ # We want to expand ~foo/... to /home/foo/... to avoid problems when
+ # word-to-complete starting with a tilde is fed to commands and ending up
+@@ -3206,8 +3257,19 @@ _comp_compgen_commands()
+ # @since 2.12
+ _comp_complete_longopt()
+ {
+-    local cur prev words cword was_split comp_args
+-    _comp_initialize -s -- "$@" || return
++    local cur=${COMP_WORDS[COMP_CWORD]}
++    local prev words cword was_split comp_args
++
++    if [[ "${cur:0:1}" == '$' ]] ; then
++        compopt -o dirnames +o filenames
++    else
++        compopt +o dirnames -o filenames
++    fi
++
++    _comp_initialize -s -- "$@" || {
++         _comp_compgen_dollar "$cur"
++        return
++    }
+ 
+     case "${prev,,}" in
+         --help | --usage | --version)
+diff --git completions-core/cd.bash completions-core/cd.bash
+index 4b0307a1..e1805472 100644
+--- a/completions-core/cd.bash
++++ b/completions-core/cd.bash
+@@ -64,7 +64,16 @@ _comp_cmd_cd__compgen_cdpath()
+ _comp_cmd_cd()
+ {
+     local cur prev words cword comp_args
+-    _comp_initialize -- "$@" || return
++    _comp_initialize -- "$@" || {
++        if [[ ${#COMPREPLY[@]} -eq 1 ]]; then
++            local i=${COMPREPLY[0]}
++            if [[ "$i" == "$cur" && $i != "*/" ]]; then
++                _comp_compgen_dollar "$i" || return
++                COMPREPLY[0]="${i%%/}/"
++            fi
++        fi
++        return
++    }
+ 
+     if [[ $cur == -* ]]; then
+         _comp_compgen_help -c help "$1"
+diff --git test/t/test_dollar.py test/t/test_dollar.py
+new file mode 100644
+index 00000000..b7443699
+--- a/test/t/test_dollar.py
++++ b/test/t/test_dollar.py
+@@ -0,0 +1,67 @@
++import pytest
++from conftest import assert_bash_exec, assert_complete
++
++@pytest.mark.bashcomp(cmd=None, temp_cwd=True)
++class TestDollarAndBackticks:
++
++    # ---------------------------------------------------------
++    # 1. Test for boo#905348
++    # ---------------------------------------------------------
++    COMMANDS_905348 = ["cat", "ls", "cd"]
++
++    @pytest.mark.parametrize("cmd", COMMANDS_905348)
++    def test_variable_expansion_no_backslash_boo905348(self, bash, cmd):
++        """Test that paths with variables do not get backslash-escaped (boo#905348)."""
++        assert_bash_exec(bash, "mkdir -p test_dir_boo905348/logs/default_dir")
++
++        old_delay = bash.delaybeforesend
++        bash.delaybeforesend = 0.05
++
++        completion = assert_complete(
++            bash,
++            f"{cmd} $FOO/logs/def",
++            env={"FOO": "test_dir_boo905348"}
++        )
++        assert "ault_dir/" in completion
++        bash.delaybeforesend = old_delay
++
++    # ---------------------------------------------------------
++    # 2. Test for boo#940835 (Command Completion with Backticks)
++    # ---------------------------------------------------------
++    def test_backtick_command_completion_boo940835(self, bash):
++        """Test command completion after backtick without syntax error (boo#940835)."""
++        completion = assert_complete(bash, "ls `fin")
++        assert "`find" in completion
++
++    # ---------------------------------------------------------
++    # 3. Test for boo#963140 (Completion IN Backticks in loops)
++    # ---------------------------------------------------------
++    def test_completion_inside_backticks_bsc963140(self, bash):
++        """Test file completion inside backticks for loops (bsc#963140)."""
++        assert_bash_exec(bash, "mkdir -p test_dir_bsc963140")
++        completion = assert_complete(bash, "for i in `cat test_dir_bsc")
++        assert "963140/" in completion
++
++    # ---------------------------------------------------------
++    # 4. Test for boo#940837 (Variables in longopt-Commands)
++    # ---------------------------------------------------------
++    def test_variable_expansion_longopt_boo940837(self, bash):
++        """Test variable expansion for commands using _comp_complete_longopt like ls (boo#940837)."""
++        from conftest import PS1
++
++        assert_bash_exec(bash, "mkdir -p /tmp/test_dir_boo940837")
++        assert_bash_exec(bash, "export SCRATCH_AREA=/tmp/test_dir_boo940837")
++
++        old_delay = bash.delaybeforesend
++        bash.delaybeforesend = 0.05
++
++        try:
++            bash.send("ls $SCRATCH_AR\t")
++            bash.expect(r"boo940837")
++
++        finally:
++            bash.sendintr()
++            bash.expect_exact(PS1)
++
++            assert_bash_exec(bash, "unset SCRATCH_AREA")
++            bash.delaybeforesend = old_delay

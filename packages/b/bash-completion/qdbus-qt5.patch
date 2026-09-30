@@ -3,37 +3,38 @@ Subject: Add completion for qdbus-qt5
 
 qdbus is the Qt 4 variant, also complete for the Qt 5 version.
 
-Index: bash-completion-2.17.0/completions/Makefile.am
+Index: bash-completion-2.17.0/completions-core/Makefile.am
 ===================================================================
---- bash-completion-2.17.0.orig/completions/Makefile.am
-+++ bash-completion-2.17.0/completions/Makefile.am
-@@ -973,6 +973,8 @@ CLEANFILES = \
- 	pyvenv-3.11 \
- 	pyvenv-3.12 \
- 	pyvenv-3.13 \
-+	qdbus-qt5 \
-+	qdbus6 \
- 	qemu-kvm \
- 	qemu-system-i386 \
- 	qemu-system-x86_64 \
-@@ -1484,7 +1486,7 @@ endif
- 		pyvenv-3.4 pyvenv-3.5 pyvenv-3.6 pyvenv-3.7 pyvenv-3.8 \
- 		pyvenv-3.9 pyvenv-3.10 pyvenv-3.11 pyvenv-3.12 pyvenv-3.13
+---
+ bash-completion-2.18.0/completions-core/Makefile.am |    4 +++-
+ bash-completion-2.18.0/completions-core/qdbus.bash  |    2 +-
+ 2 files changed, 4 insertions(+), 2 deletions(-)
+
+--- bash-completion-2.18.0/completions-core/Makefile.am
++++ bash-completion-2.18.0/completions-core/Makefile.am	2026-09-30 10:58:46.993570213 +0000
+@@ -739,6 +739,8 @@ CLEANFILES = \
+ 	pyvenv-3.13.bash \
+ 	pyvenv-3.14.bash \
+ 	pyvenv-3.15.bash \
++	qdbus-qt5.bash \
++	qdbus6.bash \
+ 	qemu-kvm.bash \
+ 	qemu-system-i386.bash \
+ 	qemu-system-x86_64.bash \
+@@ -992,7 +994,7 @@ endif
+ 		pyvenv-3.9 pyvenv-3.10 pyvenv-3.11 pyvenv-3.12 pyvenv-3.13 \
+ 		pyvenv-3.14 pyvenv-3.15
  	$(ss) qdbus \
 -		dcop
 +		dcop qdbus-qt5 qdbus6
  	$(ss) qemu \
  		qemu-kvm qemu-system-i386 qemu-system-x86_64
  	$(ss) quota \
-Index: bash-completion-2.17.0/completions/qdbus
-===================================================================
---- bash-completion-2.17.0.orig/completions/qdbus
-+++ bash-completion-2.17.0/completions/qdbus
-@@ -9,6 +9,6 @@ _comp_cmd_qdbus()
+--- bash-completion-2.18.0/completions-core/qdbus.bash
++++ bash-completion-2.18.0/completions-core/qdbus.bash	2026-09-30 10:59:35.592698811 +0000
+@@ -9,4 +9,4 @@ _comp_cmd_qdbus()
          command "${words[@]::cword}" 2>/dev/null | command sed 's/(.*)//'
      )"
  } &&
 -    complete -F _comp_cmd_qdbus qdbus dcop
 +    complete -F _comp_cmd_qdbus qdbus qdbus-qt5 qdbus6 dcop
- 
- # ex: filetype=sh

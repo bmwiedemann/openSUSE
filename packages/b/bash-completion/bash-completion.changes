@@ -1,4 +1,197 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:58:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Update to 2.18.0:
+  This release comes with notable changes to the directories used
+  for looking up and sourcing completion recipes and helpers,
+  allowing for more flexibility and customization and fewer
+  conflicts between things shipping with bash-completion and third
+  party/upstream/origin packages.
+
+  Files that come with bash-completion itself are located in
+  directories reserved for that use, their names ending with -core
+  and -fallback. Packages should continue install their files in
+  the same completions and helpers dirs like before; these
+  directories precede the bash-completion "core" ones in lookup order.
+
+  A new concept of startup dirs has been introduced. Files from
+  these directories are sourced eagerly on bash-completion startup.
+  This replaces and allows for more flexibility than using the
+  deprecated /etc/bash_completion.d directory for this purpose.
+
+  * Features
+    _comp__init: source system startup files earlier (b09700d)
+    _comp_compgen_filedir: automatically add -f on _comp_compgen -C or -P (#1552) (6d5fca6)
+    _comp_compgen_filedir: support "filedir -X" (ce28419)
+    _comp_compgen_sysv_services: factorize SysV service generation (c4c8c4b)
+    aclocal,automake: support versioned 1.17 executables (94bbb3a)
+    aclocal,automake: support versioned 1.18 executables (9287b4b)
+    apt-*: update known options up to apt 3.2.0 (c421d50)
+    apt-cache: update known options up to apt 3.2.0 (0ab85c5)
+    apt-get: update known options up to apt 3.2.0 (6a18e0c)
+    apt-mark: update known options up to apt 3.2.0 (644a026)
+    codex: 3rd party fallback completion loader (0f425bd)
+    copilot: 3rd party fallback completion loader (744602a)
+    curlie: alias to curl (dd8f6e0)
+    curl: more option argument (non-)completions (5099cef)
+    dive: add 3rd party fallback completion loader (f817cca)
+    doas: add new completion (f047b70)
+    doas: generate completions as if we're root (a705713)
+    encore: 3rd party fallback completion loader (1e54d02)
+    etcdctl,etcdutl: 3rd party fallback completion loaders (39f8ddf)
+    helium: alias to chromium-browser (8600af0)
+    inotifywait2: generate exclude filenames prefixed by @ (c1e2f1b)
+    inotifywait: generate exclude filenames prefixed by @ (0a2c165)
+    ip: Check /usr/share config path (45530b0)
+    jq: --rawfile arg (non-)completion (4f454d8)
+    jreleaser: add 3rd party fallback completion loader (e1c2815)
+    mago: add 3rd party fallback completion loader (97c4c49)
+    ogg123: associate opus extension (7d3ea33)
+    opencode: add 3rd party fallback completion loader (dbcea18)
+    pnpm: add 3rd party fallback completion loader (44804ae)
+    pydoc: support versioned 3.13..15 executables (bd60b26)
+    python,pyvenv: support versioned 3.14 and .15 executables (72a2e47)
+    release-plz: add 3rd party fallback completion loader (c3c4066)
+    rumdl: add 3rd party fallback completion loader (5ef9790)
+    skupper: add 3rd-party fallback completion loader (4237c9c)
+    ssh-keygen: -M arg completion (b13bf99)
+    ssh-keygen: -Z argument completion (c763d52)
+    ssh-keygen: update -t arg completions (4269a90)
+    ssh-keygen: update -Y arg completions (a73bcaf)
+    ssh: do not complete -P arg (tag) (7d26a86)
+    ssh: include proxy in -O arg completions (fc1df1f)
+    ssh: more option arg (non-)completions (33f789c)
+    sudo-rs,sudo.ws: alias to sudo (084cc68)
+    sudo: more option argument (non-)completions (216135e)
+    support the "startup{,-core}" directory (d6169af)
+    syncthing: add 3rd party fallback completion loader (bc5dfff)
+    tmux: complete src/target session arguments (18b6da4)
+    tmux: complete target-session arguments (ced59c3)
+    ty: add 3rd party fallback completion loader (57a2b31)
+    waydroid: add 3rd party fallback completion loader (acc800f)
+    xrdb: misc improvements (#1669) (461f90c)
+    zed: 3rd party fallback completion loader (83532fa)
+  * Bug Fixes
+    _comp_compgen_services: fix no completions without sysvdir (a2e2659)
+    _comp_compgen_services: skip service status marks (1ac9169)
+    _comp_compgen_sysv_services: do not generate names in subdirs (5557fbe)
+    _comp_compgen: clear the variable when no completions are generated (c07bd66)
+    _comp_complete_service: fix init-script-action parsing (#1499) (91e075a)
+    _comp_complete_user_at_host: care about $cur starting with "-" (277da58)
+    _comp_load: deprecate unsuffixed "completions/<cmd>" w/o ".bash" (06910da)
+    _comp_load: drop support for "_<cmd>" (f245356)
+    _known_hosts: fix spacing of an error message (0463570)
+    _known_hosts: work around custom IFS (8171929)
+    _variable_assignments: exclude invalid timezones for "TZ" (d405a1d)
+    add compatibility wrapper for tail (f6fee8a)
+    alternatives: work around localvar_inherit (360192a)
+    apt-get,ebtables,iptables,mplayer,service: avoid | and | in sed (ed64c30)
+    apt-get,gpg{,2},ipmitool,screen: avoid \t, \r, \w in POSIX sed (da40e7a)
+    ccache: fix a wrong AWK condition (c300c0f)
+    cd: Complete from . on empty CDPATH entry (#1527) (6f1eba6)
+    cd: fix cdable_vars overwritten by another generator (24bd420)
+    cd: work around bash-4.2 nounset (45d1c93)
+    compatdir: shadow compat files of the same name (ff1bf72)
+    completion load precedence more (0a15408)
+    export: complete options not at $1 (832822d)
+    export: suffix "=" only when unique and already complete (76f980c)
+    export: work around custom IFS (2617d26)
+    fbgs,fbi: add mandatory semicolons before "}" in POSIX sed (288e77e)
+    fix non-POSIX sed expressions (e999091)
+    gnokii: use double \ in [...] for POSIX.1-2024 recommendation (ab0483a)
+    inotifywait: add -t in noargopts (0295129)
+    interdiff: move to fallback for the upstream completion (11987a4)
+    invoke-rc.d: avoid using non-POSIX | in sed (db928dd)
+    invoke-rc.d: fix a bug of generating existing words (dfb903b)
+    ipstables,ebtables: fix filtering of chain names (213a1d2)
+    iscsiadm: separate merged options (--logoutall--show → --logoutall --show) (#1612) (0a7ca44)
+    jq: --indent arg range (d02e405)
+    jq: missing hyphen in --monochrome-output (ef69198)
+    lilo,mutt: remove unnecessary escaping " in sed regexp (b8f6ef2)
+    lintian: fix variable leaks (e0e916a)
+    lintian: use compgen -X instead of sed with non-POSIX &lt;&gt; (b6f34ef)
+    load from more new style completion dirs (10377fc)
+    miscellaneous fixes after separation of directories (c4a8fd0)
+    nsupdate: fix typo "_comp_com{tp => pg}en" (3b1ade2)
+    pkg-get: avoid double expansions (fb5e32c)
+    pkg-get: do not check the command name as arguments (a86175d)
+    pkg-get: localize variable "file" properly (c37bed1)
+    pkg-get: work around localvar_inherit (7881795)
+    pkg-get: work around nounset (cd5c28d)
+    povray: work around bash-4.3 nounset (8f85887)
+    service,{invoke,update}-rc.d: fix regressions and refactor (1ee269f)
+    shellcheck: avoid non-POSIX > in sed regular expressions (c0b3620)
+    tox: move completion to fallback directory (be397c2)
+    tshark: rename "cmp_cmd_tshark_{ => mut_}{prefs,protocols}" (dfacd2b)
+    update-rc.d: fix the usage of the X optarg (0f47959)
+    xrandr: remove wrong \ from character range (cc75da2)
+  * Performance Improvements
+    _comp_compgen_filedir_xspec: avoid double negation !(!(...)) (b24305d)
+    filedir_xspec: avoid double negation !(!(...)) in extglob (c53259a)
+    nmcli: reduce uses of the "tail" command (e3760c2)
+    povray: use glob matching instead of grep (25f3bb5)
+- Port patches
+  * LVM-completion-bsc946875.patch
+  * bash-completion-2.4.patch
+  * bash-completion-2.7-unRAR-remove.patch
+  * boo1190929-9af4afd0.patch
+  * boo1221414-scp.patch
+  * bsc1199724-modules.patch
+  * dollar-completion-boo905348-boo940835-boo963140-boo940837.patch
+  * ls-completion-boo889319.patch
+  * qdbus-qt5.patch
+  * rm-completion-smart-boo958462.patch
+
+
+-------------------------------------------------------------------
+Wed Sep 30 08:23:25 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Change timings in test boo905348
+
+-------------------------------------------------------------------
+Tue Sep 29 11:56:20 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Merge the patches
+  * FOO-dir-completion-boo905348.patch
+  * backtick-completion-boo940835.patch
+  * backticks-bsc963140.patch
+  * respect-variables-boo940837.patch
+  to new patch dollar-completion-boo905348-boo940835-boo963140-boo940837.patch
+
+-------------------------------------------------------------------
+Tue Sep 29 09:55:13 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add a test case to test_scp.py for patch boo1221414-scp.patch
+  also mock scp and ssh if not exists as commands
+
+-------------------------------------------------------------------
+Tue Sep 29 08:53:56 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Extend test case in FOO-dir-completion-boo905348.patch
+  for the patches backtick-completion-boo940835.patch,
+  backticks-bsc963140.patch, and respect-variables-boo940837.patch 
+  Sidemark, before submitting this to upstream, merge the
+  patches to get one commit
+
+-------------------------------------------------------------------
+Tue Sep 29 06:54:06 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add test case for patch FOO-dir-completion-boo905348.patch 
+
+-------------------------------------------------------------------
+Mon Sep 28 14:00:53 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add test case for patch bash-completion-2.4.patch
+
+-------------------------------------------------------------------
+Mon Sep 28 08:29:23 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- First steps to add test cases for our patches to be able
+  to submit them upstream ... first patch is ls-completion-boo889319.patch
+- Enable Tests in %check section but disable tests which always
+  fails duwe e.g. missing network 
+
+-------------------------------------------------------------------
 Sun Sep  6 13:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.17.0:

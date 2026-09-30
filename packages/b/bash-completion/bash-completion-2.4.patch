@@ -1,28 +1,50 @@
----
- bash-completion-2.12.0/bash_completion |   11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+For bug boo#717151
 
-Index: bash-completion-2.17.0/bash_completion
-===================================================================
---- bash-completion-2.17.0.orig/bash_completion
-+++ bash-completion-2.17.0/bash_completion
-@@ -3218,14 +3218,15 @@ _comp_complete_longopt()
+---
+ bash-completion-2.18.0/bash_completion     |    9 +++++----
+ bash-completion-2.18.0/test/t/test_core.py |   19 +++++++++++++++++++
+ 2 files changed, 24 insertions(+), 4 deletions(-)
+
+--- bash-completion-2.18.0/bash_completion
++++ bash-completion-2.18.0/bash_completion	2026-09-30 10:04:45.471651110 +0000
+@@ -3254,13 +3254,14 @@ _comp_complete_longopt()
      fi
  }
  # makeinfo and texi2dvi are defined elsewhere.
 -complete -F _comp_complete_longopt \
 +complete -F _comp_complete_longopt -o filenames \
-     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp \
-     csplit cut date df diff dir du enscript expand fmt fold gperf \
-     grep grub head irb ld ldd less ln ls m4 mkdir mkfifo mknod \
--    mv netstat nl nm numfmt objcopy objdump od paste pr ptx readelf \
--    readlink realpath rm rmdir sed seq shar shred \
-+    mv nl nm numfmt objcopy objdump od paste pr ptx readelf \
-+    readlink realpath rm rmdir sed shar shred \
-     shuf sort split stat strip sum sync tac tail tee \
--    texindex touch tr uname unexpand uniq units vdir wc who
-+    texindex touch tr unexpand uniq vdir wc who
+     a2ps awk base{32,64,nc} bash bc bison cat chroot colordiff comm cp csplit \
+     cut date df diff dir du enscript expand fmt fold gperf grep grub head irb \
+-    ld ldd less ln ls m4 mkdir mkfifo mknod mv netstat nl nm numfmt objcopy \
+-    objdump od paste pr ptx readelf readlink realpath rm rmdir sed seq shar \
++    ld ldd less ln ls m4 mkdir mkfifo mknod mv nl nm numfmt objcopy \
++    objdump od paste pr ptx readelf readlink realpath rm rmdir sed shar \
+     shred shuf sort split stat strip sum sync tac tail tee texindex touch tr \
+-    uname unexpand uniq units vdir wc who
++    unexpand uniq vdir wc who
 +complete -F _comp_complete_longopt -o default env netstat seq uname units
  
  # @since 2.12
  declare -Ag _comp_xspecs
+--- bash-completion-2.18.0/test/t/test_core.py
++++ bash-completion-2.18.0/test/t/test_core.py	2026-09-30 09:56:04.988991516 +0000
+@@ -0,0 +1,19 @@
++import pytest
++from conftest import assert_bash_exec
++
++@pytest.mark.bashcomp(cmd=None, temp_cwd=True)
++class TestBoo717151:
++    COMMANDS = ["cat", "cp", "mkdir", "mv", "rm", "ls"]
++
++    @pytest.mark.parametrize("cmd", COMMANDS)
++    def test_directory_completion_no_extra_space_boo717151(self, bash, cmd):
++        """Test directory completion appends slash instead of space (boo#717151)."""
++        from conftest import PS1
++
++        assert_bash_exec(bash, "mkdir -p test_dir_boo717151")
++
++        bash.send(f"{cmd} test_dir_boo\t")
++        bash.expect(r"test_dir_boo717151/")
++
++        bash.sendintr()
++        bash.expect_exact(PS1)

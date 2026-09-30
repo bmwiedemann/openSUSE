@@ -25,11 +25,11 @@ Reviewed-by: Lidong Zhong <lzhong@suse.com>
 Index: bash-completion-2.11/completions/lvm
 ===================================================================
 ---
- bash-completion-2.12.0/completions/lvm |   26 ++++++++++++++++++++------
+ bash-completion-2.18.0/completions-core/lvm.bash |   26 +++++++++++++++++------
  1 file changed, 20 insertions(+), 6 deletions(-)
 
---- bash-completion-2.12.0/completions/lvm
-+++ bash-completion-2.12.0/completions/lvm	2024-02-23 08:05:52.542682924 +0000
+--- bash-completion-2.18.0/completions-core/lvm.bash
++++ bash-completion-2.18.0/completions-core/lvm.bash	2026-09-30 11:08:17.763334263 +0000
 @@ -5,27 +5,41 @@ _comp_cmd_lvm__filedir()
      _comp_compgen -c "${cur:-/dev/}" filedir
  }
@@ -75,8 +75,8 @@ Index: bash-completion-2.11/completions/lvm
 +    _comp_compgen_split -- "$(lvscan $verbose 2>/dev/null |
          command sed -n -e "s|^.*'\(.*\)'.*$|\1|p")"
      if [[ $cur == /dev/mapper/* ]]; then
-         _comp_compgen -a filedir
-@@ -403,7 +417,7 @@ _comp_cmd_vgreduce()
+         _comp_compgen -a filedir -X '*/control'
+@@ -399,7 +413,7 @@ _comp_cmd_vgreduce()
          if ((REPLY == 0)); then
              _comp_cmd_lvm__volumegroups
          else
@@ -85,7 +85,7 @@ Index: bash-completion-2.11/completions/lvm
          fi
      fi
  } &&
-@@ -735,7 +749,7 @@ _comp_cmd_lvcreate()
+@@ -731,7 +745,7 @@ _comp_cmd_lvcreate()
          if ((REPLY == 0)); then
              _comp_cmd_lvm__volumegroups
          else

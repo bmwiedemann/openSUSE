@@ -6,9 +6,9 @@ Due legal issue the unRAR part of 7z had been removed (boo#1077978, boo#1090515)
 
 Index: bash-completion-2.17.0/completions/7z
 ===================================================================
---- bash-completion-2.17.0.orig/completions/7z
-+++ bash-completion-2.17.0/completions/7z
-@@ -62,7 +62,7 @@ _comp_cmd_7z()
+--- bash-completion-2.17.0/completions-core/7z.bash
++++ bash-completion-2.17.0/completions-core/7z.bash
+@@ -59,7 +59,7 @@ _comp_cmd_7z()
              else
                  _comp_compgen -P "-t" -- -W '7z apm arj bzip2 cab chm cpio
                      cramfs deb dmg elf fat flv gzip hfs iso lzh lzma lzma86
@@ -17,7 +17,7 @@ Index: bash-completion-2.17.0/completions/7z
                      swfc tar udf vhd wim xar xz z zip'
              fi
              return
-@@ -94,7 +94,7 @@ _comp_cmd_7z()
+@@ -91,7 +91,7 @@ _comp_cmd_7z()
          #     (assumption: extensions are all lowercase)
          [[ $mode == w ]] &&
              _comp_compgen -a filedir '@(7z|bz2|swf|?(g)tar|?(t)[bglx]z|tb?(z)2|wim)' ||

@@ -661,4 +661,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1377739</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>d9e3fcfcd02cdb0157c4606997760485</srcmd5>
+    <version>2.18.0</version>
+    <time>1790778166</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.18.0:
+  This release comes with notable changes to the directories used
+  for looking up and sourcing completion recipes and helpers,
+  allowing for more flexibility and customization and fewer
+  conflicts between things shipping with bash-completion and third
+  party/upstream/origin packages.
+  Files that come with bash-completion itself are located in
+  directories reserved for that use, their names ending with -core
+  and -fallback. Packages should continue install their files in
+  the same completions and helpers dirs like before; these
+  directories precede the bash-completion &quot;core&quot; ones in lookup order.
+  A new concept of startup dirs has been introduced. Files from
+  these directories are sourced eagerly on bash-completion startup.
+  This replaces and allows for more flexibility than using the
+  deprecated /etc/bash_completion.d directory for this purpose.
+  * Features
+    _comp__init: source system startup files earlier (b09700d)
+    _comp_compgen_filedir: automatically add -f on _comp_compgen -C or -P (#1552) (6d5fca6)
+    _comp_compgen_filedir: support &quot;filedir -X&quot; (ce28419)
+    _comp_compgen_sysv_services: factorize SysV service generation (c4c8c4b)
+    aclocal,automake: support versioned 1.17 executables (94bbb3a)
+    aclocal,automake: support versioned 1.18 executables (9287b4b)
+    apt-*: update known options up to apt 3.2.0 (c421d50)
+    apt-cache: update known options up to apt 3.2.0 (0ab85c5)
+    apt-get: update known options up to apt 3.2.0 (6a18e0c)
+    apt-mark: update known options up to apt 3.2.0 (644a026)
+    codex: 3rd party fallback completion loader (0f425bd)
+    copilot: 3rd party fallback completion loader (744602a)
+    curlie: alias to curl (dd8f6e0)
+    curl: more option argument (non-)completions (5099cef)</comment>
+    <requestid>1381669</requestid>
+  </revision>
 </revisionlist>

@@ -10,8 +10,8 @@ Subject: Also support .bz2 compressed kernel modules
 
 Index: bash-completion-2.17.0/completions/_insmod
 ===================================================================
---- bash-completion-2.17.0.orig/completions/_insmod
-+++ bash-completion-2.17.0/completions/_insmod
+--- bash-completion-2.17.0/completions-fallback/insmod.bash
++++ bash-completion-2.17.0/completions-fallback/insmod.bash
 @@ -10,7 +10,7 @@ _comp_cmd_insmod()
  
      # do filename completion for first argument
@@ -23,8 +23,8 @@ Index: bash-completion-2.17.0/completions/_insmod
              -p "${words[1]}" 2>/dev/null | cut -d: -f1)"
 Index: bash-completion-2.17.0/completions/_modinfo
 ===================================================================
---- bash-completion-2.17.0.orig/completions/_modinfo
-+++ bash-completion-2.17.0/completions/_modinfo
+--- bash-completion-2.17.0/completions-fallback/modinfo.bash
++++ bash-completion-2.17.0/completions-fallback/modinfo.bash
 @@ -46,7 +46,7 @@ _comp_cmd_modinfo()
  
      # do filename completion if we're giving a path to a module
@@ -36,8 +36,8 @@ Index: bash-completion-2.17.0/completions/_modinfo
      fi
 Index: bash-completion-2.17.0/completions/_modprobe
 ===================================================================
---- bash-completion-2.17.0.orig/completions/_modprobe
-+++ bash-completion-2.17.0/completions/_modprobe
+--- bash-completion-2.17.0/completions-fallback/modprobe.bash
++++ bash-completion-2.17.0/completions-fallback/modprobe.bash
 @@ -86,7 +86,7 @@ _comp_cmd_modprobe()
          insert)
              # do filename completion if we're giving a path to a module
