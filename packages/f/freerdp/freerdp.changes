@@ -1,4 +1,137 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:34:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Regression and bugfix release. After the latest hardening a few
+    corner cases were not covered by regression tests and needed
+    adjustment. Most notably fragmented static channel PDU were
+    rejected breaking copy & paste for larger data.
+    - AAudio backend for android
+    - iOS client updates
+  + CVE:
+    - GHSA-9qqc-m43j-g4r2
+    - https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3m9q-g533-rqjq
+    - https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-262p-h989-vmpv
+    - https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-5xjc-c64q-m8r6
+    - https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f3vg-h45x-6wgf
+    - https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-c49c-xm94-5qf3
+
+-------------------------------------------------------------------
+Mon Sep 28 14:23:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 3.32.0:
+  + Thanks to all the people doing in depth code reviews and
+    security reports.:
+    - [proxy] add configuration options for /sec:ext or
+      PROTOCOL_HYBRID_EX
+    - [proxy] add configuration options for target certificate
+      policy. NOTE: This changes default behavior from accept
+      unless denied to deny unless accepted! Requires an update of
+      your proxy configuration file if you rely on this.
+    - [SDL,xfreerdp] seamless Entra/Azure integration on linux
+      (with helper binaries)
+    - [beta] Basic SDL client RAILS support for X11/wayland (other
+      platforms currently lack some features / platform integration
+      code, as we still need some native hooks)
+    - [RDPECAM] stops camera streams now when the remote no longer
+      requests frames. (no more camera LED after closing the
+      windows application accessing it)
+    - [RDPEWA] support user verification in addition to / instead
+      of pin
+    - [RDPEUSB] properly map interface index to interface numbers
+      (more devices should work now)
+    - [android] updated touch pointer
+    - [wlfreerdp] shortcut inhibit release on mouse leave window
+    - [xfreerdp] rails improvements, hopefully no longer shrinking
+      windows
+    - Full support for [MS-RDPBCGR] 2.2.10.2 Early User
+      Authorization Result PDU, so now you get a error message if a
+      user is not allowed to log in instead of a network failed
+      message. (Authentication /sec:ext or PROTOCOL_HYBRID_EX)
+    - [shadow] add configuration options for /sec:ext or
+      PROTOCOL_HYBRID_EX
+    - [gateway] split HTTP timeout from TCP connect timeout
+    - [ffmpeg] support generic hardware accelerated
+      encoding/decoding, replacing the old VAAPI only
+      implementation. (still experimental as there are often driver
+      issues) ## CVE Note: Advisories will be published days/weeks
+      after the release, so links are 404 until then.
+    - By Opensec Intelligence
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xq87-9rrm-6wqw
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3rvr-qvx8-rj23
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pvgq-84w2-93ph
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xm53-352c-57jw
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-3mq5-xh88-9v62
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-mqxv-c882-m8w9
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q6pp-28g8-xqjc
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jgw9-wqvx-j495
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-5cgr-vmp8-fmvj
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m7g5-gw57-cwcr
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pjxv-5j98-cqx4
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pw4j-ff39-9vjm
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-87v8-2gwr-ww9j
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-h7fx-22wv-4cg8
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-996j-34w6-5hgm
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-52xc-5973-w5vv
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-qjwp-c855-hc69
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4ww8-3vqm-jgcf
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-96rv-gf42-7wq9
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-9qr4-rgq4-jfp8
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-cq4m-gwc5-w8rc
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q9p9-j22r-577p
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-2jfv-j3wx-5cg4
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-g8jw-gv54-r94p
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-7vfc-chg9-q5r8
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f46f-pxh9-w2rh
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-pg3f-chj4-mrw6
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f526-rq4j-5ch8
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-8rpr-jjjg-5qv6
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-cmgx-558f-vh67
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-m998-cvfm-9444
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-99p4-8j24-wvj4
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-97pf-pwp3-2wrv
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-27m7-gwhh-6hhf
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-qpfh-m9w6-xf2x
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-q56j-jjh6-38jf
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f554-v4xw-5j39
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-chh2-527f-x255
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-xf45-j844-588v
+    - By @DavidKorczynski
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-qq23-mqmv-pc65
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jhxw-3hj9-9hqh
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-h44v-39x6-9xvg
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-6vjv-4hm3-6698
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-c3rh-2hv6-7hf2
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jp2r-gm4v-wvq2
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-gvq8-v2fm-ffxv
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-jhv5-m83m-hxhq
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-grvc-qhhp-7h6m
+    - By @programmervuln
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-26cc-wjh8-hjw6
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-945c-qq5h-jqwp
+    - By @HAN-BAMBO
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-93g7-296p-j77j
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-6rj3-rf6g-3vw5
+    - By @kimaiden1984-boop
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/HSA-wf3x-658c-52m5
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/HSA-2hhg-8xx6-v73w
+    - By @jimaf
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-g4wg-67xq-8q53
+    - By @thawkahant
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-72qv-gcph-rfwf
+    - By @smaeljaish771
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-vqxm-9w7c-hvvx
+    - By @D7EAD
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-hxw3-57rq-3v4m
+    - By @manus-use
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-f4pf-pgp4-f2r3
+    - By @router0mail
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-4mpr-hmqx-83q8
+    - By mail
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-x7v7-9jp5-wqj2
+    - Https://github.com/FreeRDP/FreeRDP/security/advisories/GHSA-83g2-gf92-5c4g
+
+-------------------------------------------------------------------
 Mon Sep 21 09:02:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.31.1:

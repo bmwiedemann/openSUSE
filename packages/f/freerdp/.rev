@@ -931,4 +931,12 @@ This is a less intrusive change than the original https://build.opensuse.org/req
     <comment>1</comment>
     <requestid>1379506</requestid>
   </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>d39fa7c818bfce8cc62b72d082740f5e</srcmd5>
+    <version>3.32.1</version>
+    <time>1790778211</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381358</requestid>
+  </revision>
 </revisionlist>
