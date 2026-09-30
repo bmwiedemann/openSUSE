@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Aug 12 12:31:12 UTC 2026 - Noel Power <nopower@suse.com>
+
+- fix non specified optional params being unconditionally added to
+  net cmd arg list; (bsc#1274806).
+- fix undefined conf.ad_user (NameError) in netcmd call;
+  (bsc#1274612).
+- CVE-2026-59681: yast2-auth-client: OS command injection via
+  unsanitized passed to net cmd.
+- Bump version to 5.0.5 for bsc#1272775.
+
+-------------------------------------------------------------------
 Tue Mar 10 09:00:28 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507
