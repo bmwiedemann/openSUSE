@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Sep 24 13:07:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.38.0
+  * **core:** add request hook to enrich T4 network spans with GCP
+    resource attributes (E) (#18272)
+- from version 2.37.0
+  * **gapic:** add OpenTelemetry T3 client method span wrapping in
+    gapic_v1.method (D) (#18274)
+- from version 2.36.0
+  * **api-core:** add ClientInterceptor and apply_interceptors
+    helper (A) (#18236)
+  * **api-core:** add tracer_provider to ClientOptions for OTel
+    support (#18139)
+  * **api-core:** handle list-shaped REST error payloads (#18232)
+  * **api-core:** move http encoding into transcode method (#18218)
+- from version 2.35.0
+  * **api_core:** add deprecation warning for grpcio <= 1.83.0 for
+    PQC (#18045)
+  * **api_core:** improve rest path validation (#17753)
+  * **api_core:** support suppress_metrics_header fallback in
+    AuthMetadataPlugin (#18029)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+- Drop fix_google-auth_compatibility.patch, merged upstream
+- Update Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Wed Sep  2 13:25:49 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Cherry-pick fix_google-auth_compatibility.patch to fix compatibility

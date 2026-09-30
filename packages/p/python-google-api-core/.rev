@@ -546,4 +546,35 @@
   issues with google-auth &gt;= 2.56.3 in AuthMetadataPlugin unit test (forwarded request 1375390 from glaubitz)</comment>
     <requestid>1375420</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>0889f6263e1b5f8f275245433f1c496f</srcmd5>
+    <version>2.38.0</version>
+    <time>1790778217</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1380200 from glaubitz
+
+- Update to 2.38.0
+    * **core:** add request hook to enrich T4 network spans with GCP
+      resource attributes (E) (#18272)
+  - from version 2.37.0
+    * **gapic:** add OpenTelemetry T3 client method span wrapping in
+      gapic_v1.method (D) (#18274)
+  - from version 2.36.0
+    * **api-core:** add ClientInterceptor and apply_interceptors
+      helper (A) (#18236)
+    * **api-core:** add tracer_provider to ClientOptions for OTel
+      support (#18139)
+    * **api-core:** handle list-shaped REST error payloads (#18232)
+    * **api-core:** move http encoding into transcode method (#18218)
+  - from version 2.35.0
+    * **api_core:** add deprecation warning for grpcio &lt;= 1.83.0 for
+      PQC (#18045)
+    * **api_core:** improve rest path validation (#17753)
+    * **api_core:** support suppress_metrics_header fallback in
+      AuthMetadataPlugin (#18029)
+    * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+  - Drop fix_google-auth_compatibility.patch, merged upstream
+  - Update Requires from pyproject.toml</comment>
+    <requestid>1380254</requestid>
+  </revision>
 </revisionlist>
