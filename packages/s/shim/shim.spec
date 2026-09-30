@@ -107,6 +107,8 @@ Patch2:         shim-change-debug-file-path.patch
 Patch3:         remove_build_id.patch
 # PATCH-FIX-SUSE shim-disable-export-vendor-dbx.patch bsc#1185261 glin@suse.com -- Disable exporting vendor-dbx to MokListXRT
 Patch4:         shim-disable-export-vendor-dbx.patch
+# PATCH-FIX-SUSE shim-objcopy-target.patch -- for binutils >= 2.47
+Patch5:         shim-objcopy-target.patch
 BuildRequires:  gcc%{gcc_version}
 BuildRequires:  dos2unix
 BuildRequires:  efitools

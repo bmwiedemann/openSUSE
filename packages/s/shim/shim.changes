@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Sep 24 14:27:04 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Add shim-objcopy-target.patch to use correct objcopy options.
+
+-------------------------------------------------------------------
 Fri Sep 11 01:35:16 UTC 2026 - Joey Lee <jlee@suse.com>
 
 - Add more comment in shim.spec for

@@ -1621,4 +1621,12 @@ bnc#808106: certificate count of the signature list (forwarded request 157970 fr
     <comment>Moved some missed shim-install patches from shim-resources github repo</comment>
     <requestid>1377824</requestid>
   </revision>
+  <revision rev="141" vrev="9">
+    <srcmd5>9b9a3eefa50401e2bfb095da57b9265c</srcmd5>
+    <version>16.1</version>
+    <time>1790778084</time>
+    <user>anag_factory</user>
+    <comment>Add shim-objcopy-target.patch to use correct objcopy options</comment>
+    <requestid>1381611</requestid>
+  </revision>
 </revisionlist>

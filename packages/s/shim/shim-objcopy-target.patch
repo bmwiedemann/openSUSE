@@ -1,0 +1,35 @@
+Oldish binutils (invalidly) accepted --target=X even when the
+input file wasn't of target X (and retained only the output target
+setting).  Newer binutils have stricter checks, so use the correct
+option (--output-target == -O).
+
+Index: shim-16.1/Make.defaults
+===================================================================
+--- shim-16.1.orig/Make.defaults	1970-01-01 01:00:00.000000000 +0100
++++ shim-16.1/Make.defaults	2026-09-24 16:24:11.847663649 +0200
+@@ -155,7 +155,7 @@ endif
+ 
+ LIB_GCC		= $(shell $(CC) $(ARCH_CFLAGS) -print-libgcc-file-name)
+ EFI_LIBS	= -lefi -lgnuefi --start-group Cryptlib/libcryptlib.a Cryptlib/OpenSSL/libopenssl.a --end-group $(LIB_GCC)
+-FORMAT		?= --target efi-app-$(ARCH)
++FORMAT		?= -O efi-app-$(ARCH)
+ LOCAL_EFI_PATH	= gnu-efi/$(ARCH_GNUEFI)/gnuefi
+ LIBDIR		= gnu-efi/$(ARCH_GNUEFI)/lib
+ 
+Index: shim-16.1/gnu-efi/apps/Makefile
+===================================================================
+--- shim-16.1.orig/gnu-efi/apps/Makefile	1970-01-01 01:00:00.000000000 +0100
++++ shim-16.1/gnu-efi/apps/Makefile	2026-09-24 16:24:46.782264985 +0200
+@@ -66,9 +66,9 @@ TARGET_RTDRIVERS =
+ 
+ ifneq ($(HAVE_EFI_OBJCOPY),)
+ 
+-FORMAT		:= --target efi-app-$(ARCH)
+-$(TARGET_BSDRIVERS): FORMAT=--target efi-bsdrv-$(ARCH)
+-$(TARGET_RTDRIVERS): FORMAT=--target efi-rtdrv-$(ARCH)
++FORMAT		:= -O efi-app-$(ARCH)
++$(TARGET_BSDRIVERS): FORMAT=-O efi-bsdrv-$(ARCH)
++$(TARGET_RTDRIVERS): FORMAT=-O efi-rtdrv-$(ARCH)
+ 
+ else
+ 
