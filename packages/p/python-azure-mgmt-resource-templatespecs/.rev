@@ -15,4 +15,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1338315</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8052118c722f0790f32296c5ef406a03</srcmd5>
+    <version>1.0.0</version>
+    <time>1790778245</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.0.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Remove temporary version override
+- Update Requires from pyproject.toml (forwarded request 1381371 from glaubitz)</comment>
+    <requestid>1381523</requestid>
+  </revision>
 </revisionlist>
