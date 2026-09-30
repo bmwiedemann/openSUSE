@@ -127,4 +127,17 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00228-QCACOLSWPL_V1_TO_SILICON-1</comment>
     <requestid>1374905</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>423bd89fd44ad9498f1a70e8c56ce5fd</srcmd5>
+    <version>20260926</version>
+    <time>1790778095</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * ath12k: WCN7850 hw2.0: update board-2.bin
+  * ath12k: QCC2072 hw1.0: update board-2.bin
+
+- Update to version 20260902 (git commit abddc5b93044):
+  * ath12k: QCC2072 hw1.0: update to WLAN.COL.1.0.c2-00277-QCACOLSWPL_V1_TO_SILICONZ-1</comment>
+    <requestid>1381434</requestid>
+  </revision>
 </revisionlist>
