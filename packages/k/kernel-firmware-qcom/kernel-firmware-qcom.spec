@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version b6bdea3726dc9b477eea2d7db7ceba54133964a2
+%define git_version 33b68e2c701198457657c2e656ef9a9cc4272d01
 
 Name:           kernel-firmware-qcom
-Version:        20260828
+Version:        20260929
 Release:        0
 Summary:        Kernel firmware files for Qualcomm device drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -148,6 +148,12 @@ Supplements:    modalias(of:N*T*Cqcom%2Cmilos-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-cdsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-dpu)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-dpuC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-dsi-phy-4nm)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-dsi-phy-4nmC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mdss)
+Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mdssC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cmilos-wpss-pas)
@@ -332,6 +338,12 @@ Supplements:    modalias(of:N*T*Cqcom%2Csdx55-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csdx55-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csdx75-mpss-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csdx75-mpss-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-cdsp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-cdsp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-lpaicp-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-lpaicp-pasC*)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-mpss-pas)
+Supplements:    modalias(of:N*T*Cqcom%2Cshikra-mpss-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm6115-adsp-pas)
 Supplements:    modalias(of:N*T*Cqcom%2Csm6115-adsp-pasC*)
 Supplements:    modalias(of:N*T*Cqcom%2Csm6115-cdsp-pas)

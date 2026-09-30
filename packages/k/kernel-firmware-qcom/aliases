@@ -90,6 +90,12 @@ msm: of:N*T*Cqcom%2Cmdss-dsi-ctrlC*
 msm: of:N*T*Cqcom%2CmdssC*
 msm: of:N*T*Cqcom%2Cmdss_mdp
 msm: of:N*T*Cqcom%2Cmdss_mdpC*
+msm: of:N*T*Cqcom%2Cmilos-dpu
+msm: of:N*T*Cqcom%2Cmilos-dpuC*
+msm: of:N*T*Cqcom%2Cmilos-dsi-phy-4nm
+msm: of:N*T*Cqcom%2Cmilos-dsi-phy-4nmC*
+msm: of:N*T*Cqcom%2Cmilos-mdss
+msm: of:N*T*Cqcom%2Cmilos-mdssC*
 msm: of:N*T*Cqcom%2Cmsm8917-mdp5
 msm: of:N*T*Cqcom%2Cmsm8917-mdp5C*
 msm: of:N*T*Cqcom%2Cmsm8937-mdp5
@@ -364,6 +370,12 @@ qcom_q6v5_pas: of:N*T*Cqcom%2Csdx55-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Csdx55-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Csdx75-mpss-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Csdx75-mpss-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-cdsp-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-cdsp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-lpaicp-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-lpaicp-pasC*
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-mpss-pas
+qcom_q6v5_pas: of:N*T*Cqcom%2Cshikra-mpss-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm6115-adsp-pas
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm6115-adsp-pasC*
 qcom_q6v5_pas: of:N*T*Cqcom%2Csm6115-cdsp-pas

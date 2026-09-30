@@ -566,4 +566,35 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: Update DSP firmware for qcs8300 platform</comment>
     <requestid>1374913</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>6c09eb8cd4277c0f96d597c4a67748fc</srcmd5>
+    <version>20260929</version>
+    <time>1790778105</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260929 (git commit 33b68e2c7011):
+  * qcom: update ADSP firmware for hawi platform
+  * Revert &quot;qcom: update ADSP firmware for qcs615 platform&quot;q
+  * qcom: Add gpu firmwares for Hawi and Maili chipsets
+
+- Update to version 20260926 (git commit 9b858e5bb58d):
+  * qcom: update Rubik Pi 3 ADSP firmware
+  * qcom: add CDSP firmware for hawi platform
+
+- Update to version 20260916 (git commit e289868675d1):
+  * qcom: add ADSP firmware for maili platform
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * qcom/sdm845: Let SHIFT6mq use the provided Wi-Fi firmware
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * qcom: Update ADSP firmware for sa8775p platform
+  * qcom: point qcs8300 firmawre to sa8775p instance
+  * qcom: update ADSP firmware for qcs615 platform
+  * qcom: Add ADSP firmware for sc8280xp-radxa-dragon-q8b
+  * qcom: sdm845: Add GPU firmware for SHIFT6mq
+  * qcom: Update ADSP firmware for QCM6490 platform
+
+- Update aliases from 7.3-rc1</comment>
+    <requestid>1381445</requestid>
+  </revision>
 </revisionlist>
