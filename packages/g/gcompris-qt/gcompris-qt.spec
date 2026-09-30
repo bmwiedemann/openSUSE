@@ -19,7 +19,7 @@
 %define qt6_version 6.5.0
 
 Name:           gcompris-qt
-Version:        26.1
+Version:        26.2
 Release:        0
 Summary:        Multiactivity educational software for children aged 2–10 (Qt version)
 License:        AGPL-3.0-or-later AND CC-BY-4.0 AND Apache-2.0 AND MPL-2.0 AND OFL-1.1 AND GFDL-1.2-or-later AND MIT AND CC0-1.0 AND BSD-2-Clause AND BSD-3-Clause
@@ -27,7 +27,7 @@ Group:          Amusements/Teaching/Other
 URL:            https://gcompris.net
 Source0:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz
 Source1:        https://download.kde.org/stable/gcompris/qt/src/%{name}-%{version}.tar.xz.sig
-Source2:        https://share.kde.org/index.php/s/YjKzYs1bgDsOo5V/download#/%{name}.keyring
+Source2:        https://collaborate.kde.org/public.php/dav/files/8GpWjyHg5xBTQFS#/%{name}.keyring
 BuildRequires:  cmake
 BuildRequires:  extra-cmake-modules
 BuildRequires:  pkgconfig
@@ -53,8 +53,8 @@ BuildRequires:  cmake(Qt6WaylandClient) >= %{qt6_version}
 BuildRequires:  pkgconfig(openssl)
 Requires:       %{name}-activities = %{version}
 Recommends:     %{name}-voices = %{version}
-Provides:       gcompris = 26.1
-Obsoletes:      gcompris < 26.1
+Provides:       gcompris = 26.2
+Obsoletes:      gcompris < 26.2
 
 %description
 GCompris-Qt is an educational software suite comprising
