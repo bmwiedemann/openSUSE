@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:39:09 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Fri Jun 27 08:02:35 UTC 2025 - Peter Simons <psimons@suse.com>
 
 - vsftpd-2.3.5-conf.patch adds a reference to our bug tracker to

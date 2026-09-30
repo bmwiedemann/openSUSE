@@ -993,4 +993,12 @@ confusing &quot;failed to try-restart&quot; error message. [bsc#1093179, bsc#101
     <comment>fix outdated URL for bugzilla.suse.com</comment>
     <requestid>1288806</requestid>
   </revision>
+  <revision rev="94" vrev="19">
+    <srcmd5>f4b43e04b7de234a28c5dd120926f53e</srcmd5>
+    <version>3.0.5</version>
+    <time>1790778129</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381378</requestid>
+  </revision>
 </revisionlist>
