@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Sep 26 14:14:27 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.66b0
+  * Added
+    opentelemetry-semantic-conventions: update semantic conventions to v1.44.0 (#5511)
+- Changes from 0.65b0
+  * Changed
+    opentelemetry-semantic-conventions: bump to 1.42.0 (#5410)
+    opentelemetry-semantic-conventions: bump to 1.43.0 (#5413)
+
+-------------------------------------------------------------------
 Tue Jul  7 19:05:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.64b0:
