@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:55:46 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 3.4.15
+  * fixes two memory issues when parsing IDManifests
+- added patches
+  CVE-2026-88384: NULL pointer dereference in the C++ attribute parsing path when a specially crafted EXR file containing an unknown-type attribute with dataSize set to zero is processed [bsc#1282700]
+  * openexr-CVE-2026-88384.patch
+
+-------------------------------------------------------------------
 Tue Aug 25 06:49:35 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 3.4.14

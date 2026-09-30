@@ -1147,4 +1147,16 @@ No GPL licensed files found in the package (forwarded request 136251 from babelw
     <comment>[bsc#1276843], [bsc#1276845], [bsc#1276846], [bsc#1276848], [bsc#1276849], [bsc#1276850], [bsc#1276851], [bsc#1276853], [bsc#1276855], [bsc#1276856], [bsc#1276857], [bsc#1276858], [bsc#1276859], [bsc#1276861], [bsc#1276862], CVE-2026-59184, CVE-2026-59186, CVE-2026-59187, CVE-2026-59189, CVE-2026-59981, CVE-2026-59982, CVE-2026-59983, CVE-2026-59984, CVE-2026-59985, CVE-2026-61555, CVE-2026-62986, CVE-2026-65979, CVE-2026-68513, CVE-2026-68514, CVE-2026-68515</comment>
     <requestid>1373794</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>bdc8b619dcfb9dd2ad415c534eaab48c</srcmd5>
+    <version>3.4.15</version>
+    <time>1790778134</time>
+    <user>anag_factory</user>
+    <comment>- version update to 3.4.15
+  * fixes two memory issues when parsing IDManifests
+- added patches
+  CVE-2026-88384: NULL pointer dereference in the C++ attribute parsing path when a specially crafted EXR file containing an unknown-type attribute with dataSize set to zero is processed [bsc#1282700]
+  * openexr-CVE-2026-88384.patch</comment>
+    <requestid>1381394</requestid>
+  </revision>
 </revisionlist>

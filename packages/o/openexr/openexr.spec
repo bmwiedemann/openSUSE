@@ -26,7 +26,7 @@
 %endif
 
 Name:           openexr
-Version:        3.4.14
+Version:        3.4.15
 Release:        0
 Summary:        Utilities for working with HDR images in OpenEXR format
 License:        BSD-3-Clause
@@ -34,6 +34,8 @@ Group:          Development/Libraries/C and C++
 URL:            https://www.openexr.com/
 Source0:        https://github.com/AcademySoftwareFoundation/openexr/archive/v%{version}.tar.gz
 Source2:        baselibs.conf
+# CVE-2026-88384: NULL pointer dereference in the C++ attribute parsing path when a specially crafted EXR file containing an unknown-type attribute with dataSize set to zero is processed [bsc#1282700]
+Patch0:         openexr-CVE-2026-88384.patch
 BuildRequires:  cmake >= 3.12
 BuildRequires:  freeglut-devel
 BuildRequires:  gcc%{?force_gcc_version}
