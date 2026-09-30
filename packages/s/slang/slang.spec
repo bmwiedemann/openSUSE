@@ -95,7 +95,7 @@ mv autoconf/aclocal.m4 autoconf/acinclude.m4
 #autoheader -I autoconf
 aclocal -I autoconf --output=autoconf/aclocal.m4
 autoconf -I autoconf
-export CFLAGS="%{optflags} -fno-strict-aliasing -fstack-protector"
+export CFLAGS="%{optflags} -fno-strict-aliasing"
 export ELF_CFLAGS="$CFLAGS"
 %configure \
     --docdir=%{_docdir}/slang-devel \

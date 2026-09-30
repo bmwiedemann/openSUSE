@@ -324,4 +324,12 @@
     <comment>- Drop pcre module, it hasn't been ported to pcre2 yet. (forwarded request 1267491 from anag_factory)</comment>
     <requestid>1267513</requestid>
   </revision>
+  <revision rev="41" vrev="3">
+    <srcmd5>3bfa4f56e2856b38725e3c428590be11</srcmd5>
+    <version>2.3.3+git16.89d32bb</version>
+    <time>1790778128</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381346 from scarabeus_iv)</comment>
+    <requestid>1381356</requestid>
+  </revision>
 </revisionlist>
