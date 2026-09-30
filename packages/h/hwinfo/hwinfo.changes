@@ -1,4 +1,36 @@
 --------------------------------------------------------------------
+Mon Sep 28 18:08:43 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#191
+- code cleanup: remove some unused variables
+- 26.0
+
+--------------------------------------------------------------------
+Mon Sep 28 18:08:18 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#193
+- add MMC/SD card block device support
+- add some minor improvements
+
+--------------------------------------------------------------------
+Mon Sep 28 14:45:26 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#188
+- Fix check_hd being built without LDFLAGS
+
+--------------------------------------------------------------------
+Mon Sep 28 14:40:38 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#190
+- fix(s390): fix memory leaks on skip paths in ccw device scan
+
+--------------------------------------------------------------------
+Mon Sep 28 14:39:58 UTC 2026 - wfeldt@opensuse.org
+
+- merge gh#openSUSE/hwinfo#189
+- fix(s390): fix out-of-bounds write in cutypes scan loop
+
+--------------------------------------------------------------------
 Fri Jul 31 12:25:46 UTC 2026 - wfeldt@opensuse.org
 
 - merge gh#openSUSE/hwinfo#187
