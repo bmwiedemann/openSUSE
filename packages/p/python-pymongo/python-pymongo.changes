@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 29 05:57:39 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 4.18.2 (bsc#1282827, bsc#1282845, bsc#1282844):
+  - Hardened the bson buffer size guard against signed integer
+    overflow. (CVE-2026-96749)
+  - Fixed connection string parsing to percent-decode each host
+    individually. (CVE-2026-96748)
+  - Client-side field level encryption now rejects a KMS endpoint
+    ending in .sock. (CVE-2026-96747)
+
+-------------------------------------------------------------------
 Mon Sep 14 07:19:43 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 4.18.1 (fixes CVE-2026-88029 (bsc#1280073)):

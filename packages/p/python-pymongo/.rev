@@ -669,4 +669,18 @@
     <comment>1</comment>
     <requestid>1378560</requestid>
   </revision>
+  <revision rev="53" vrev="1">
+    <srcmd5>f1a16809fb0c47242c863d788fc50c08</srcmd5>
+    <version>4.18.2</version>
+    <time>1790778122</time>
+    <user>anag_factory</user>
+    <comment>- Update to 4.18.2 (bsc#1282827, bsc#1282845, bsc#1282844):
+  - Hardened the bson buffer size guard against signed integer
+    overflow. (CVE-2026-96749)
+  - Fixed connection string parsing to percent-decode each host
+    individually. (CVE-2026-96748)
+  - Client-side field level encryption now rejects a KMS endpoint
+    ending in .sock. (CVE-2026-96747)</comment>
+    <requestid>1381302</requestid>
+  </revision>
 </revisionlist>
