@@ -20,17 +20,17 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version e7eb98afc667913acc533ab910c608bee7d08f25
+%define git_version 9b858e5bb58d7bf1fc4d8818cb9100aed6d46f6a
 
 Name:           ucode-amd
-Version:        20260610
+Version:        20260926
 Release:        0
 Summary:        Kernel firmware files for Microcode updates for AMD CPUs
 License:        GPL-2.0-or-later AND SUSE-Firmware
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       topicprovs
