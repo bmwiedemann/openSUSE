@@ -1,0 +1,154 @@
+<services>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.git*</param>
+    <param name="exclude">CODE_OF_CONDUCT.md</param>
+    <param name="exclude">CONTRIBUTING.md</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">SECURITY.md</param>
+    <param name="exclude">common-test-data</param>
+    <param name="exclude">dev</param>
+    <param name="exclude">nv-attestation-cli/CMakeLists.txt</param>
+    <param name="exclude">nv-attestation-cli/tests</param>
+    <param name="exclude">nv-attestation-sdk-cpp/.clang*</param>
+    <param name="exclude">nv-attestation-sdk-cpp/CMakeLists.txt</param>
+    <param name="exclude">nv-attestation-sdk-cpp/Doxyfile</param>
+    <param name="exclude">nv-attestation-sdk-cpp/cmake/Find.*.cmake</param>
+    <param name="exclude">nv-attestation-sdk-cpp/examples</param>
+    <param name="exclude">nv-attestation-sdk-cpp/scripts</param>
+    <param name="exclude">nv-attestation-sdk-cpp/test.env</param>
+    <param name="exclude">nv-attestation-sdk-cpp/unit-tests</param>
+    <param name="exclude">nv-attestation-sdk-rust</param>
+    <param name="exclude">relying_party_policy_examples</param>
+    <param name="filename">nv-attestation</param>
+    <param name="match-tag">[0-9]*.[0-9]*.[0-9]*</param>
+    <param name="revision">9d12801cea8a198ea0f29640dfaf8a4017c841c5</param>
+    <param name="scm">git</param>
+    <param name="submodules">enable</param>
+    <param name="url">https://github.com/NVIDIA/attestation-sdk.git</param>
+    <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
+    <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
+    <param name="versionrewrite-replacement">\1</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.clang*</param>
+    <param name="exclude">.cmake*</param>
+    <param name="exclude">.editor*</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">.vscode</param>
+    <param name="exclude">CMakePresets.json</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">cmake/CMakePresets.json</param>
+    <param name="exclude">cmake/HunterGate.cmake</param>
+    <param name="exclude">cmake/code-coverage.cmake</param>
+    <param name="exclude">cmake/private-find-*.cmake</param>
+    <param name="exclude">docs</param>
+    <param name="exclude">example</param>
+    <param name="exclude">nuget</param>
+    <param name="exclude">tests</param>
+    <param name="filename">jwt-cpp</param>
+    <param name="revision">e71e0c2d584baff06925bbb3aad683f677e4d498</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/Thalhammer/jwt-cpp.git</param>
+    <param name="versionformat">%H</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.devcontainer</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">CHANGELOG.md</param>
+    <param name="exclude">CMakePresets.json</param>
+    <param name="exclude">CODE_OF_CONDUCT.md</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">RELEASES.md</param>
+    <param name="exclude">doc</param>
+    <param name="exclude">test</param>
+    <param name="filename">corrosion</param>
+    <param name="revision">6be991bb34c348dfb8344be22f3606288ea5c7fd</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/corrosion-rs/corrosion.git</param>
+    <param name="versionformat">%H</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.devcontainer</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">CHANGELOG.md</param>
+    <param name="exclude">CODE_OF_CONDUCT.md</param>
+    <param name="exclude">SECURITY.md</param>
+    <param name="exclude">bindings/C</param>
+    <param name="exclude">bindings/c-nostd</param>
+    <param name="exclude">bindings/cpp</param>
+    <param name="exclude">bindings/csharp</param>
+    <param name="exclude">bindings/ffi/CHANGELOG.md</param>
+    <param name="exclude">bindings/go</param>
+    <param name="exclude">bindings/java</param>
+    <param name="exclude">bindings/python</param>
+    <param name="exclude">bindings/ruby</param>
+    <param name="exclude">bindings/wasm</param>
+    <param name="exclude">docs</param>
+    <param name="exclude">tests</param>
+    <param name="filename">regorus</param>
+    <param name="revision">c7bf460bc160c96e38048296e5708943d2e43909</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/microsoft/regorus.git</param>
+    <param name="versionformat">%H</param>
+  </service>
+  <service name="tar_scm" mode="manual">
+    <param name="exclude">.all-contributorsrc</param>
+    <param name="exclude">.ci</param>
+    <param name="exclude">.clang*</param>
+    <param name="exclude">.cmake-format.yaml</param>
+    <param name="exclude">.codacy.yml</param>
+    <param name="exclude">.codecov.yml</param>
+    <param name="exclude">.editorconfig</param>
+    <param name="exclude">.git*</param>
+    <param name="exclude">.pre-commit-config.yaml</param>
+    <param name="exclude">.remarkrc</param>
+    <param name="exclude">BUILD.bazel</param>
+    <param name="exclude">CHANGELOG.md</param>
+    <param name="exclude">CLI11.CPack.Description.txt</param>
+    <param name="exclude">CMakePresets.json</param>
+    <param name="exclude">CPPLINT.cfg</param>
+    <param name="exclude">MODULE.bazel</param>
+    <param name="exclude">README.md</param>
+    <param name="exclude">SECURITY.md</param>
+    <param name="exclude">azure-pipelines.yml</param>
+    <param name="exclude">book</param>
+    <param name="exclude">cmake/CodeCoverage.cmake</param>
+    <param name="exclude">docs</param>
+    <param name="exclude">examples</param>
+    <param name="exclude">fuzz/cli11_app_fuzz.cpp</param>
+    <param name="exclude">fuzz/cli11_file_fuzz.cpp</param>
+    <param name="exclude">fuzz/fuzzApp.cpp</param>
+    <param name="exclude">fuzz/fuzzApp.hpp</param>
+    <param name="exclude">fuzz/fuzzCommand.cpp</param>
+    <param name="exclude">fuzz/fuzz_dictionary1.txt</param>
+    <param name="exclude">fuzz/fuzz_dictionary2.txt</param>
+    <param name="exclude">meson.build</param>
+    <param name="exclude">meson_options.txt</param>
+    <param name="exclude">scripts</param>
+    <param name="exclude">single-include/meson.build</param>
+    <param name="exclude">subprojects</param>
+    <param name="exclude">tests</param>
+    <param name="filename">CLI11</param>
+    <param name="revision">bfffd37e1f804ca4fae1caae106935791696b6a9</param>
+    <param name="scm">git</param>
+    <param name="submodules">disable</param>
+    <param name="url">https://github.com/CLIUtils/CLI11.git</param>
+    <param name="versionformat">%H</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual">
+    <param name="basename">nv-attestation</param>
+  </service>
+  <service name="cargo_vendor" mode="manual">
+     <param name="srcdir">regorus</param>
+     <param name="custom-root">bindings/ffi</param>
+     <param name="compression">xz</param>
+     <param name="update">false</param>
+  </service>
+</services>
