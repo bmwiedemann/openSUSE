@@ -275,4 +275,14 @@ This should fix my previously declined package submission: https://build.opensus
     <comment>Update to latest primecount-8.7</comment>
     <requestid>1371508</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>a43092ebbe707f2f42aa293948593362</srcmd5>
+    <version>8.8</version>
+    <time>1790778260</time>
+    <user>anag_factory</user>
+    <comment>Update to latest primecount-8.8.
+
+Re-submission due to declined Request 1381305 (https://build.opensuse.org/request/show/1381305). The primecount-8.8.tar.gz archive has now been updated to https://github.com/kimwalisch/primecount/archive/refs/tags/v8.8.tar.gz. Previously I had packaged the source code myself locally on my PC, which caused the tarball hashes to be different (even though the source code was identical).</comment>
+    <requestid>1381529</requestid>
+  </revision>
 </revisionlist>
