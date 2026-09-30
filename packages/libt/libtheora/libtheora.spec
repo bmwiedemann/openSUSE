@@ -91,7 +91,11 @@ Theora is also able to playback VP3 streams.
 %autosetup -p1
 
 %build
+# On 32-bit arm disable asm until next release - https://gitlab.xiph.org/xiph/theora/-/work_items/2338
 %configure \
+%ifarch %{arm}
+	--disable-asm \
+%endif
 	--disable-examples \
 	--disable-static \
 	--with-pic \

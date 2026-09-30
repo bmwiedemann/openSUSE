@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Sep 18 15:21:38 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable asm on 32-bit arm until next release
+  https://gitlab.xiph.org/xiph/theora/-/work_items/2338
+
+-------------------------------------------------------------------
 Sat May 24 06:45:42 UTC 2025 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - remove Requires from -devel that are already auto-generated
