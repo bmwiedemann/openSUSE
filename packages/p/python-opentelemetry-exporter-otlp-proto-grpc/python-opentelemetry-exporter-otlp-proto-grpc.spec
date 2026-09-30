@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-exporter-otlp-proto-grpc
-Version:        1.43.0
+Version:        1.45.0
 Release:        0
 Summary:        OpenTelemetry Collector Protobuf over gRPC Exporter
 License:        Apache-2.0
@@ -31,6 +31,7 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module googleapis-common-protos >= 1.57}
 BuildRequires:  %{python_module grpcio >= 1.63.2}
 BuildRequires:  %{python_module opentelemetry-api >= 1.15}
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-common = 0.66b0}
 BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-common = %{version}}
 BuildRequires:  %{python_module opentelemetry-proto = %{version}}
 BuildRequires:  %{python_module opentelemetry-sdk >= %{version}}
@@ -43,6 +44,7 @@ BuildRequires:  fdupes
 Requires:       python-googleapis-common-protos >= 1.57
 Requires:       python-grpcio >= 1.63.2
 Requires:       python-opentelemetry-api >= 1.15
+Requires:       python-opentelemetry-exporter-otlp-common = 0.66b0
 Requires:       python-opentelemetry-exporter-otlp-proto-common = %{version}
 Requires:       python-opentelemetry-proto = %{version}
 Requires:       python-opentelemetry-sdk >= %{version}
