@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:07:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update tesseract-CVE-2026-88053.patch to null the adaptive
+  template pointer arrays again and the class pruners as
+  upstream does, fixing an abort at exit on every run and
+  invalid frees when a corrupt traineddata is rejected
+  (boo#1282863)
+
+-------------------------------------------------------------------
 Wed Sep 23 12:35:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-88047: stack buffer overflow in

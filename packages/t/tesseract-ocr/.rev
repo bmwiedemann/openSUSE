@@ -359,4 +359,12 @@
     <comment>Fix 8 crafted-traineddata CVEs (boo#1280925, boo#1280929, boo#1280930, boo#1280931, boo#1280932, boo#1280933, boo#1280934, boo#1280935) via upstream backports; credit CVE-2026-73067 (boo#1275623) fixed in 5.5.3.</comment>
     <requestid>1379978</requestid>
   </revision>
+  <revision rev="27" vrev="3">
+    <srcmd5>81abd2c82b16e63dae50f212e960cfb3</srcmd5>
+    <version>5.5.3</version>
+    <time>1790778116</time>
+    <user>anag_factory</user>
+    <comment>Fix the abort at exit on every run (boo#1282863): the CVE-2026-88053 backport dropped upstream's in-class init, leaving pointer arrays uninitialised; null them explicitly as 5.5.3 and upstream b27e1bd6 do.</comment>
+    <requestid>1381200</requestid>
+  </revision>
 </revisionlist>
