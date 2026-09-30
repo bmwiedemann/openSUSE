@@ -15,6 +15,8 @@ Tue Aug 25 07:50:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 Wed Jun 17 06:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 7.6:
+  * CVE-2026-50012: fixes Improper Input Validation bug (bsc#1268320)
+  * CVE-2026-47729: fixes out-of-bounds read attack against the ftp gateway due to a improper validation of syntactic correctness of input (bsc#1268272)
   * HTTP/1.1: Transfer-Encoding:identity is now prohibited
   * Harden peerDigestSwapInMask against an invalid cache digest
     reply
@@ -32,6 +34,7 @@ Wed Jun 17 06:05:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 Tue May 05 10:51:15 UTC 2026 - Adam Majer <amajer@suse.com>
 
 - Update to version 7.5:
+  - CVE-2026-33515, CVE-2026-32748, CVE-2026-33526: fixes out of bounds read in ICP message handling (bsc#1260454, bsc#1260453, bsc#1260452)
   - ICP: Fix HttpRequest lifetime for ICP v3 queries (#2377)
   - ICP: Fix validation of packet sizes and URLs (#2220)
   - Do not escape malformed URI twice when sending ICP errors (#2374)

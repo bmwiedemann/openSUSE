@@ -1387,4 +1387,14 @@ and CVE references,
   fdupes build dependency</comment>
     <requestid>1376418</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>be993935e8c5c551c03282e381c3a554</srcmd5>
+    <version>7.7</version>
+    <time>1790778109</time>
+    <user>anag_factory</user>
+    <comment>  * CVE-2026-50012: fixes Improper Input Validation bug (bsc#1268320)
+  * CVE-2026-47729: fixes out-of-bounds read attack against the ftp gateway due to a improper validation of syntactic correctness of input (bsc#1268272)
+  - CVE-2026-33515, CVE-2026-32748, CVE-2026-33526: fixes out of bounds read in ICP message handling (bsc#1260454, bsc#1260453, bsc#1260452)</comment>
+    <requestid>1381508</requestid>
+  </revision>
 </revisionlist>
