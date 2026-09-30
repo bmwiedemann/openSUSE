@@ -733,4 +733,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1373956 from glaubitz)</comment>
     <requestid>1374076</requestid>
   </revision>
+  <revision rev="71" vrev="1">
+    <srcmd5>9bac20fbfd9ff304158e69c4abfbe548</srcmd5>
+    <version>41.7.0</version>
+    <time>1790778244</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 41.7.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1381359 from glaubitz)</comment>
+    <requestid>1381522</requestid>
+  </revision>
 </revisionlist>
