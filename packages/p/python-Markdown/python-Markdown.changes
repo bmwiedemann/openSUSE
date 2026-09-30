@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Sep 26 18:43:46 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
+
+- update to version 3.11:
+  * Changed:
+    + Inline processors now resume searching after the previous
+      match, improving performance for repeated inline patterns
+      (#1619).
+    + Officially support Python 3.15 and drop support for
+      Python 3.10
+    + Walk backtick runs in BacktickInlineProcessor without a
+      regex (#1620).
+    + Switch static site generator for documentation from MkDocs
+      to Zensical (#1627, #1635, #1637, and #1638).
+  * Fixed:
+    + Ensure removing Abbreviations does not raise an error
+      (#1634).
+    + Fix an issue with excessive backtracking when matching
+      inline code blocks (#1617).
+    + md_in_html now honors tags added to
+      Markdown.block_level_elements after the extension is loaded
+      (#1246).
+    + Fix quadratic-time regex backtracking in ReferenceProcessor
+      when a link reference definition has no URL, e.g. a line
+      consisting only of [id]: followed by many trailing spaces
+      (#798).
+    + Document attr_list usage for def_list (#1123).
+- increase the minimum python version to 3.11
+
+-------------------------------------------------------------------
 Thu Jul 30 20:55:00 UTC 2026 - Benoît Monin <benoit.monin@gmx.fr>
 
 - update to version 3.10.3:

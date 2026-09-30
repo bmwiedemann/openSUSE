@@ -32,7 +32,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-Markdown%{psuffix}
-Version:        3.10.3
+Version:        3.11
 Release:        0
 Summary:        Python implementation of Markdown
 License:        BSD-3-Clause
@@ -40,7 +40,7 @@ Group:          Development/Languages/Python
 URL:            https://python-markdown.github.io/
 Source:         https://files.pythonhosted.org/packages/source/m/markdown/markdown-%{version}.tar.gz
 Patch0:         markdown-3.0-python37.patch
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0}
 BuildRequires:  %{python_module wheel}
