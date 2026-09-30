@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Override CFLAGS_EXTRA without -fstack-protector (upstream Makefile appends basic via ?=, downgrading -fstack-protector-strong from distro optflags)
+
+-------------------------------------------------------------------
 Thu Mar  9 07:13:14 UTC 2023 - Martin Pluskal <mpluskal@suse.com>
 
 - Cleanup spec file

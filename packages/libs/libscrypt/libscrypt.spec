@@ -50,7 +50,10 @@ The %{name}-devel package contains libraries and header files for developing app
 %autosetup
 
 %build
-%make_build CC="cc %{optflags}"
+# CFLAGS_EXTRA override: upstream Makefile appends -fstack-protector (basic) via
+# CFLAGS_EXTRA?= (downgrading -fstack-protector-strong from %{optflags}); override
+# it here without the basic flag (upstream uses ?= so command line wins)
+%make_build CC="cc %{optflags}" CFLAGS_EXTRA="-Wl,-rpath=. -O2 -Wall -g"
 
 %install
 %make_install DESTDIR=%{buildroot} PREFIX=%{_prefix} LIBDIR=%{_libdir}
