@@ -95,6 +95,8 @@ mt7925e: pci:v000014C3d00000738sv*sd*bc*sc*i*
 mt7925e: pci:v000014C3d00006639sv*sd*bc*sc*i*
 mt7925e: pci:v000014C3d00007925sv*sd*bc*sc*i*
 mt7925e: pci:v000014C3d00007927sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00007928sv*sd*bc*sc*i*
+mt7925e: pci:v000014C3d00007935sv*sd*bc*sc*i*
 mt7925u: usb:v0846p9050d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925u: usb:v0846p9072d*dc*dsc*dp*icFFiscFFipFFin*
 mt7925u: usb:v0E8Dp6639d*dc*dsc*dp*icFFiscFFipFFin*

@@ -418,4 +418,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * mediatek MT7922: update bluetooth firmware to 20260724143815</comment>
     <requestid>1374911</requestid>
   </revision>
+  <revision rev="39" vrev="2">
+    <srcmd5>0038793ebfbaf96de5c28e94f30ff038</srcmd5>
+    <version>20260825</version>
+    <time>1790778101</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.3-rc1</comment>
+    <requestid>1381441</requestid>
+  </revision>
 </revisionlist>
