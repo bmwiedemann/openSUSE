@@ -18,22 +18,23 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-test-utils
-Version:        0.64b0
+Version:        0.66b0
 Release:        0
 Summary:        Test utilities for OpenTelemetry unit tests
 License:        Apache-2.0
 URL:            https://github.com/open-telemetry/opentelemetry-python/
 Source:         https://files.pythonhosted.org/packages/source/o/opentelemetry-test-utils/opentelemetry_test_utils-%{version}.tar.gz
 BuildRequires:  %{python_module asgiref >= 3.0}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module hatchling}
-BuildRequires:  %{python_module opentelemetry-api = 1.43.0}
-BuildRequires:  %{python_module opentelemetry-sdk = 1.43.0}
+BuildRequires:  %{python_module opentelemetry-api = 1.45.0}
+BuildRequires:  %{python_module opentelemetry-sdk = 1.45.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-asgiref >= 3.0
-Requires:       python-opentelemetry-api = 1.43.0
-Requires:       python-opentelemetry-sdk = 1.43.0
+Requires:       python-opentelemetry-api = 1.45.0
+Requires:       python-opentelemetry-sdk = 1.45.0
 BuildArch:      noarch
 %python_subpackages
 

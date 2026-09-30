@@ -185,4 +185,17 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1365764</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>8b669aa1e58a0310eb77ca77bb6bd088</srcmd5>
+    <version>0.66b0</version>
+    <time>1790778152</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.66b0
+  * Added
+    - opentelemetry-test-utils: add CapturingSampler to record what samplers receive in instrumentation tests (#5681)
+- Changes from 0.65b0
+  * no changes
+</comment>
+    <requestid>1381454</requestid>
+  </revision>
 </revisionlist>

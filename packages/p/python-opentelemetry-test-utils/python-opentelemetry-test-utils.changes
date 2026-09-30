@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sat Sep 26 14:15:35 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 0.66b0
+  * Added
+    - opentelemetry-test-utils: add CapturingSampler to record what samplers receive in instrumentation tests (#5681)
+- Changes from 0.65b0
+  * no changes
+
+-------------------------------------------------------------------
 Tue Jul  7 19:05:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.64b0:
