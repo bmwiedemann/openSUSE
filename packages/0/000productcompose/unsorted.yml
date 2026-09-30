@@ -1827,7 +1827,6 @@ unsorted:
   - busybox-bc 
   - busybox-bind-utils 
   - busybox-bzip2 
-  - busybox-cpio 
   - busybox-dos2unix 
   - busybox-ether-wake 
   - busybox-findutils 
@@ -1853,7 +1852,6 @@ unsorted:
   - busybox-sharutils 
   - busybox-syslogd 
   - busybox-sysvinit-tools 
-  - busybox-tar 
   - busybox-telnet 
   - busybox-testsuite 
   - busybox-tftp 
@@ -2791,8 +2789,6 @@ unsorted:
   - cppunit-devel-doc 
   - cppzmq-devel 
   - cpr-devel 
-  - cpu-x 
-  - cpu-x-lang 
   - cpufetch 
   - cpuid 
   - cpuinfo 
@@ -3205,7 +3201,6 @@ unsorted:
   - dbus-1-devel 
   - dbus-1-devel-32bit 
   - dbus-1-devel-doc 
-  - dbus-1-glib-bash-completion 
   - dbus-1-glib-devel 
   - dbus-1-glib-devel-32bit 
   - dbus-1-glib-doc 
@@ -10228,6 +10223,7 @@ unsorted:
   - keysmith-lang 
   - keyutils-devel 
   - keyutils-devel-32bit 
+  - keywait 
   - kf5-filesystem 
   - kf5-mediainfo 
   - kf6-attica-devel 
@@ -14724,7 +14720,7 @@ unsorted:
   - liblouis-devel 
   - liblouis-doc 
   - liblouis-tools 
-  - liblowdown4 
+  - liblowdown5 
   - liblpcnetfreedv0_5 
   - liblqr-1-0-32bit 
   - liblqr-devel 
@@ -15410,7 +15406,7 @@ unsorted:
   - libopenshot-audio-devel 
   - libopenshot-audio10 
   - libopenshot-devel 
-  - libopenshot31 
+  - libopenshot32 
   - libopenslide-devel 
   - libopenslide1 
   - libopensm9 
@@ -15561,7 +15557,7 @@ unsorted:
   - libpappl1 
   - libparanoia1_0 
   - libparaview6_1 
-  - libpari-gmp-tls9 
+  - libpari-gmp-tls10 
   - libparlatype-devel 
   - libparlatype7 
   - libparpack2-openmpi4 
@@ -19363,6 +19359,7 @@ unsorted:
   - mockito-subclass 
   - mod_spatialite 
   - modello 
+  - modello-ant-task 
   - modello-javadoc 
   - modello-maven-plugin 
   - modello-maven-plugin-javadoc 
@@ -19682,7 +19679,6 @@ unsorted:
   - msv-rngconv 
   - msv-xmlgen 
   - msv-xsdlib 
-  - mt-st 
   - mt32emu-qt 
   - mtail 
   - mtd-utils 
@@ -21098,6 +21094,7 @@ unsorted:
   - openstack-macros 
   - opensurge 
   - opensuse-migration-tool 
+  - opensuse-mkosi-images-arch-deps 
   - opentest4j 
   - opentest4j-javadoc 
   - opentimelineio-devel 
@@ -27979,7 +27976,6 @@ unsorted:
   - python313-seqdiag 
   - python313-serpent 
   - python313-serverfiles 
-  - python313-setproctitle 
   - python313-setuptools-declarative-requirements 
   - python313-setuptools-gettext 
   - python313-setuptools-git 
@@ -33549,8 +33545,12 @@ unsorted:
   - rcshist 
   - rdap 
   - rdfind 
+  - rdi-installer 
+  - rdi-installer-image-arch-deps 
+  - rdi-installer-utilities 
   - rdiff 
   - rdiff-backup 
+  - rdii-helper 
   - rdma-core-devel 
   - rdma-core-devel-32bit 
   - rds-tools 
@@ -34593,6 +34593,7 @@ unsorted:
   - sd-fish-completion 
   - sd-mux-ctrl 
   - sd-zsh-completion 
+  - sdbootutil-bash-completion 
   - sdbootutil-enroll 
   - sdbootutil-jeos-firstboot-enroll 
   - sdbootutil-kernel-install 

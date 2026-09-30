@@ -248,17 +248,19 @@ packagesets:
    - bubblewrap-zsh-completion # reason: dvd:patterns-media-rest_dvd
    - busybox # reason: dvd:openSUSE-release
    - busybox-coreutils # reason: dvd:patterns-base-sw_management
+   - busybox-cpio # reason: dvd:openSUSE-release
    - busybox-diffutils # reason: dvd:openSUSE-release
    - busybox-ed # reason: dvd:patterns-server-lamp_server
    - busybox-gawk # reason: dvd:patterns-base-sw_management
    - busybox-grep # reason: dvd:openSUSE-release
-   - busybox-gzip # reason: dvd:grub2
+   - busybox-gzip # reason: dvd:openSUSE-release
    - busybox-man # reason: dvd:patterns-gnome-gnome
    - busybox-psmisc # reason: dvd:patterns-yast-yast2_server
    - busybox-sed # reason: dvd:openSUSE-release
    - busybox-static # reason: dvd:patterns-gnome-gnome
+   - busybox-tar # reason: dvd:openSUSE-release
    - busybox-which # reason: dvd:patterns-kde-kde_edutainment
-   - busybox-xz # reason: dvd:grub2
+   - busybox-xz # reason: dvd:openSUSE-release
    - bzip2 # reason: dvd:patterns-kde-kde
    - ca-certificates # reason: dvd:openSUSE-release
    - ca-certificates-mozilla # reason: dvd:openSUSE-release
@@ -301,9 +303,9 @@ packagesets:
    - coreutils # reason: dvd:openSUSE-release
    - coreutils-lang # reason: dvd:openSUSE-release
    - coreutils-systemd # reason: dvd:patterns-gnome-gnome
-   - cpio # reason: dvd:openSUSE-release
-   - cpio-lang # reason: dvd:openSUSE-release
-   - cpio-mt # reason: dvd:openSUSE-release
+   - cpio # reason: dvd:patterns-gnome-gnome_yast
+   - cpio-lang # reason: dvd:patterns-gnome-gnome_yast
+   - cpio-mt # reason: dvd:patterns-gnome-gnome_yast
    - cpp # reason: dvd:patterns-kde-kde
    - cpp16 # reason: dvd:patterns-kde-kde
    - cppcheck # reason: dvd:patterns-media-rest_dvd
@@ -749,7 +751,7 @@ packagesets:
    - gwenview # reason: dvd:patterns-kde-kde
    - gwenview-lang # reason: dvd:patterns-kde-kde
    - gxditview # reason: dvd:patterns-base-console
-   - gzip # reason: dvd:openSUSE-release
+   - gzip # reason: dvd:patterns-kde-kde
    - hack-fonts # reason: dvd:patterns-kde-kde
    - hdparm # reason: dvd:patterns-kde-kde
    - heaptrack # reason: dvd:patterns-media-rest_dvd
@@ -833,7 +835,7 @@ packagesets:
    - iscsiuio # reason: dvd:iscsiuio
    - iso-codes # reason: dvd:openSUSE-release
    - iso_ent # reason: dvd:patterns-kde-kde
-   - iw # reason: dvd:patterns-media-rest_cd_core
+   - iw # reason: dvd:patterns-kde-kde
    - jack-dbus # reason: dvd:openSUSE-release
    - java-25-openjdk # reason: dvd:openSUSE-release
    - java-25-openjdk-headless # reason: dvd:openSUSE-release
@@ -3113,6 +3115,7 @@ packagesets:
    - mpg123-openal # reason: dvd:patterns-gnome-gnome
    - mpt-firmware # reason: dvd:patterns-media-rest_cd_core
    - mpt-status # reason: dvd:patterns-kde-kde
+   - mt-st # reason: dvd:patterns-gnome-gnome
    - mtools # reason: dvd:patterns-base-console
    - mugshot # reason: dvd:patterns-xfce-xfce
    - multipath-tools # reason: dvd:patterns-kde-kde
@@ -3649,7 +3652,7 @@ packagesets:
    - python313-pip # reason: dvd:openSUSE-release
    - python313-ply # reason: dvd:salt-master
    - python313-policycoreutils # reason: dvd:patterns-server-directory_server
-   - python313-psutil # reason: dvd:patterns-kde-kde
+   - python313-psutil # reason: dvd:patterns-gnome-gnome
    - python313-ptyprocess # reason: dvd:patterns-xfce-xfce
    - python313-puremagic # reason: dvd:patterns-base-console
    - python313-pyOpenSSL # reason: dvd:patterns-gnome-gnome
@@ -3681,6 +3684,7 @@ packagesets:
    - python313-semanage # reason: dvd:patterns-server-directory_server
    - python313-service_identity # reason: dvd:salt-master
    - python313-setools # reason: dvd:patterns-server-directory_server
+   - python313-setproctitle # reason: dvd:patterns-gnome-gnome
    - python313-setuptools # reason: dvd:patterns-server-directory_server
    - python313-simplejson # reason: dvd:salt-master
    - python313-six # reason: dvd:patterns-kde-kde
@@ -3831,7 +3835,6 @@ packagesets:
    - sbl # reason: dvd:patterns-media-rest_cd_core
    - screen # reason: dvd:patterns-kde-kde
    - sdbootutil # reason: dvd:patterns-media-rest_cd_core
-   - sdbootutil-bash-completion # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-dracut-measure-pcr # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-snapper # reason: dvd:patterns-media-rest_cd_core
    - sddm-branding-openSUSE # reason: dvd:patterns-kde-kde
@@ -3988,9 +3991,9 @@ packagesets:
    - systemsettings6-lang # reason: dvd:patterns-kde-kde
    - sysuser-shadow # reason: dvd:openSUSE-release
    - sysvinit-tools # reason: dvd:patterns-kde-kde
-   - tar # reason: dvd:openSUSE-release
-   - tar-lang # reason: dvd:openSUSE-release
-   - tar-rmt # reason: dvd:openSUSE-release
+   - tar # reason: dvd:patterns-gnome-gnome
+   - tar-lang # reason: dvd:patterns-gnome-gnome
+   - tar-rmt # reason: dvd:patterns-gnome-gnome
    - tcl # reason: dvd:patterns-gnome-gnome
    - technisat-usb2-firmware # reason: dvd:technisat-usb2-firmware
    - tecla-keyboard-layout-viewer # reason: dvd:patterns-gnome-gnome
@@ -4164,7 +4167,7 @@ packagesets:
    - unrar_wrapper # reason: dvd:patterns-server-mail_server
    - unzip # reason: dvd:patterns-gnome-gnome
    - unzip-doc # reason: dvd:patterns-gnome-gnome
-   - update-alternatives # reason: dvd:openSUSE-release
+   - update-alternatives # reason: dvd:patterns-gnome-gnome
    - update-bootloader # reason: dvd:openSUSE-release
    - upower # reason: dvd:patterns-gnome-gnome
    - upower-lang # reason: dvd:patterns-gnome-gnome
@@ -4422,8 +4425,8 @@ packagesets:
    - xwayland # reason: dvd:patterns-gnome-gnome
    - xwaylandvideobridge # reason: dvd:patterns-kde-kde
    - xxd # reason: dvd:patterns-kde-kde
-   - xz # reason: dvd:openSUSE-release
-   - xz-lang # reason: dvd:openSUSE-release
+   - xz # reason: dvd:patterns-gnome-gnome
+   - xz-lang # reason: dvd:patterns-gnome-gnome
    - yast2 # reason: dvd:patterns-gnome-gnome_yast
    - yast2-add-on # reason: dvd:patterns-kde-kde
    - yast2-alternatives # reason: dvd:patterns-kde-kde
@@ -4557,7 +4560,7 @@ packagesets:
    - zisofs-tools # reason: dvd:patterns-gnome-gnome
    - zoo # reason: dvd:patterns-server-mail_server
    - zsh # reason: dvd:patterns-media-rest_dvd
-   - zstd # reason: dvd:openSUSE-release
+   - zstd # reason: dvd:patterns-gnome-gnome
    - zypper # reason: dvd:patterns-gnome-gnome
    - zypper-log # reason: dvd:patterns-gnome-gnome
    - zypper-needs-restarting # reason: dvd:patterns-gnome-gnome
