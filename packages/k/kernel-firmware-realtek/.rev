@@ -291,4 +291,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * rtw88: add firmware v41.0.0 for RTL8723B</comment>
     <requestid>1374915</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>aea46c82db6f58b5a45c0b6fcf10dddf</srcmd5>
+    <version>20260915</version>
+    <time>1790778107</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260915 (git commit 4584045b2121):
+  * rtl_nic: add firmware rtl8261d.bin for RTL8261d</comment>
+    <requestid>1381447</requestid>
+  </revision>
 </revisionlist>

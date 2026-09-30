@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 16 07:18:24 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * rtl_nic: add firmware rtl8261d.bin for RTL8261d
+
+-------------------------------------------------------------------
 Sat Aug  1 07:01:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260731 (git commit a968c5c2962e):
