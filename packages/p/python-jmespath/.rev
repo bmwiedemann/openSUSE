@@ -253,4 +253,12 @@
     <comment></comment>
     <requestid>1337638</requestid>
   </revision>
+  <revision rev="27" vrev="2">
+    <srcmd5>2f8265647f2023f7a04e095005779a38</srcmd5>
+    <version>1.1.0</version>
+    <time>1790778120</time>
+    <user>anag_factory</user>
+    <comment>- Remove unneeded {Build,}Requires on ply.</comment>
+    <requestid>1381275</requestid>
+  </revision>
 </revisionlist>

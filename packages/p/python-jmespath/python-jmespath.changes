@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:38:03 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove unneeded {Build,}Requires on ply. 
+
+-------------------------------------------------------------------
 Tue Feb 24 14:47:05 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.1.0

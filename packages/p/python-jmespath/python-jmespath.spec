@@ -33,13 +33,11 @@ Source:         https://github.com/jmespath/jmespath.py/archive/refs/tags/%{vers
 # Testing
 BuildRequires:  %{python_module hypothesis}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module ply >= 3.4}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-ply >= 3.4
 %if %{with libalternatives}
 Requires:       alts
 BuildRequires:  alts
