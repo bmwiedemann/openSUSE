@@ -1746,7 +1746,7 @@ packagesets:
    - libblockdev3 # reason: dvd:grub2
    - libblogger2 # reason: dvd:patterns-kde-kde
    - libbluetooth3 # reason: dvd:openSUSE-release
-   - libbluray3 # reason: dvd:openSUSE-release
+   - libbluray4 # reason: dvd:openSUSE-release
    - libboost_filesystem1_92_0 # reason: dvd:openSUSE-release
    - libboost_filesystem1_92_0-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libboost_iostreams1_92_0 # reason: dvd:openSUSE-release
@@ -2176,7 +2176,7 @@ packagesets:
    - libharfbuzz-icu0 # reason: dvd:openSUSE-release
    - libharfbuzz-subset0 # reason: dvd:openSUSE-release
    - libharfbuzz0 # reason: dvd:openSUSE-release
-   - libhd25 # reason: dvd:patterns-gnome-gnome_yast
+   - libhd26 # reason: dvd:patterns-gnome-gnome_yast
    - libheif-aom # reason: dvd:openSUSE-release
    - libheif-dav1d # reason: dvd:openSUSE-release
    - libheif-ffmpeg # reason: dvd:openSUSE-release
@@ -2674,7 +2674,7 @@ packagesets:
    - libsepol2 # reason: dvd:openSUSE-release
    - libserd-0-0 # reason: dvd:openSUSE-release
    - libserf-1-1 # reason: dvd:patterns-media-rest_dvd
-   - libsframe2 # reason: dvd:patterns-base-console
+   - libsframe3 # reason: dvd:patterns-base-console
    - libsgutils2-1_48-2 # reason: dvd:patterns-kde-kde
    - libsha1detectcoll1 # reason: dvd:patterns-media-rest_dvd
    - libshaderc_shared1 # reason: dvd:openSUSE-release
@@ -3650,7 +3650,6 @@ packagesets:
    - python313-passlib # reason: dvd:salt-master
    - python313-pexpect # reason: dvd:patterns-xfce-xfce
    - python313-pip # reason: dvd:openSUSE-release
-   - python313-ply # reason: dvd:salt-master
    - python313-policycoreutils # reason: dvd:patterns-server-directory_server
    - python313-psutil # reason: dvd:patterns-gnome-gnome
    - python313-ptyprocess # reason: dvd:patterns-xfce-xfce
@@ -3835,6 +3834,7 @@ packagesets:
    - sbl # reason: dvd:patterns-media-rest_cd_core
    - screen # reason: dvd:patterns-kde-kde
    - sdbootutil # reason: dvd:patterns-media-rest_cd_core
+   - sdbootutil-bash-completion # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-dracut-measure-pcr # reason: dvd:patterns-media-rest_cd_core
    - sdbootutil-snapper # reason: dvd:patterns-media-rest_cd_core
    - sddm-branding-openSUSE # reason: dvd:patterns-kde-kde
@@ -5369,7 +5369,7 @@ packagesets:
    - libblockdev3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libblogger2 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libbluetooth3 # reason: opensuse_microos:patterns-containers-runtime_podman
-   - libbluray3 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libbluray4 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libboost_filesystem1_92_0 # reason: opensuse_microos:patterns-microos-base-zypper
    - libboost_thread1_92_0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libbpf1 # reason: opensuse_microos:patterns-base-hardware
@@ -5531,7 +5531,7 @@ packagesets:
    - libharfbuzz-gobject0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libharfbuzz-subset0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libharfbuzz0 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libhd25 # reason: opensuse_microos:patterns-base-hardware
+   - libhd26 # reason: opensuse_microos:patterns-base-hardware
    - libheif1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libhogweed6 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhplip0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7186,7 +7186,7 @@ packagesets:
    - libblockdev3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libblogger2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbluetooth3 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libbluray3 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libbluray4 # reason: opensuse_kalpa:patterns-kalpa-base
    - libboost_thread1_92_0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbpf1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libbrotlicommon1 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7344,7 +7344,7 @@ packagesets:
    - libharfbuzz-gobject0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libharfbuzz-subset0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libharfbuzz0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libhd25 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libhd26 # reason: opensuse_kalpa:patterns-kalpa-base
    - libheif1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhogweed6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhplip0 # reason: opensuse_kalpa:patterns-kalpa-base

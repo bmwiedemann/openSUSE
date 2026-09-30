@@ -12489,7 +12489,7 @@ unsorted:
   - libbluray-bdj 
   - libbluray-devel 
   - libbluray-tools 
-  - libbluray3-32bit 
+  - libbluray4-32bit 
   - libbobcat-devel 
   - libbobcat-devel-static 
   - libbobcat-light-devel-static 
@@ -15262,6 +15262,7 @@ unsorted:
   - libnutclientstub1 
   - libnutconf0 
   - libnutscan4 
+  - libnvat1 
   - libnvidia-egl-gbm-devel 
   - libnvidia-egl-gbm1 
   - libnvidia-egl-wayland-devel 
@@ -17240,7 +17241,6 @@ unsorted:
   - libvoikko-devel 
   - libvoikko1 
   - libvoikko1-32bit 
-  - libvolk-1_4_341 
   - libvolk3_3 
   - libvolk_gnsssdr0_0_21 
   - libvomsapi1 
@@ -20402,6 +20402,8 @@ unsorted:
   - nut-doc-html 
   - nut-doc-images 
   - nut-drivers-net 
+  - nv-attestation 
+  - nv-attestation-devel 
   - nv-prefer-signed-open-driver 
   - nv-prefer-signed-open-driver-G07 
   - nvidia-libXNVCtrl-devel 
@@ -27006,7 +27008,9 @@ unsorted:
   - python313-opentelemetry-exporter-gcp-logging 
   - python313-opentelemetry-exporter-gcp-monitoring 
   - python313-opentelemetry-exporter-gcp-trace 
+  - python313-opentelemetry-exporter-http-transport 
   - python313-opentelemetry-exporter-otlp 
+  - python313-opentelemetry-exporter-otlp-common 
   - python313-opentelemetry-exporter-otlp-proto-common 
   - python313-opentelemetry-exporter-otlp-proto-grpc 
   - python313-opentelemetry-exporter-otlp-proto-http 
@@ -27200,6 +27204,7 @@ unsorted:
   - python313-pluggy 
   - python313-pluginbase 
   - python313-plumbum 
+  - python313-ply 
   - python313-plyvel 
   - python313-pmw 
   - python313-pname 
@@ -31110,7 +31115,9 @@ unsorted:
   - python314-opentelemetry-exporter-gcp-logging 
   - python314-opentelemetry-exporter-gcp-monitoring 
   - python314-opentelemetry-exporter-gcp-trace 
+  - python314-opentelemetry-exporter-http-transport 
   - python314-opentelemetry-exporter-otlp 
+  - python314-opentelemetry-exporter-otlp-common 
   - python314-opentelemetry-exporter-otlp-proto-common 
   - python314-opentelemetry-exporter-otlp-proto-grpc 
   - python314-opentelemetry-exporter-otlp-proto-http 
@@ -34593,7 +34600,6 @@ unsorted:
   - sd-fish-completion 
   - sd-mux-ctrl 
   - sd-zsh-completion 
-  - sdbootutil-bash-completion 
   - sdbootutil-enroll 
   - sdbootutil-jeos-firstboot-enroll 
   - sdbootutil-kernel-install 
@@ -47132,7 +47138,6 @@ unsorted:
   - vulkan-tools-32bit 
   - vulkan-utility-libraries-devel 
   - vulkan-validationlayers 
-  - vulkan-volk-devel 
   - vym 
   - w3c-markup-validator 
   - w3c-markup-validator-libs 
@@ -48197,6 +48202,7 @@ unsorted:
   - zswap-cli 
   - zsync 
   - zug-devel 
+  - zupt 
   - zutils 
   - zvbi 
   - zvbi-devel 
