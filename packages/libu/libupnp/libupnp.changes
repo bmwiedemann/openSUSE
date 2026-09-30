@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Sep 29 16:53:50 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.7
+  * Fix a memory leak when a GENA subscription is freed.
+    [GHSA-h9f5-9vwp-h89q]
+
+-------------------------------------------------------------------
+Mon Sep 28 17:55:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 22.1.6
+  * GHSA-mhhw-gm73-c57g: Fix a heap over-read when parsing the
+    Callback header of an incoming GENA SUBSCRIBE request.
+    [GHSA-mhhw-gm73-c57g]
+
+-------------------------------------------------------------------
 Fri Sep 25 21:50:25 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 22.1.5
