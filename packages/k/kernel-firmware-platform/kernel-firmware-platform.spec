@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only AND MPL-1.0 
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -54,6 +54,7 @@ Supplements:    modalias(acpi*:AMDI0103%3A*)
 Supplements:    modalias(acpi*:AMDI0105%3A*)
 Supplements:    modalias(acpi*:AMDI0107%3A*)
 Supplements:    modalias(acpi*:AMDI0108%3A*)
+Supplements:    modalias(acpi*:AMDI0109%3A*)
 Supplements:    modalias(acpi*:AMDI0C00%3A*)
 Supplements:    modalias(acpi*:BMI0160%3A*)
 Supplements:    modalias(acpi*:BMI0260%3A*)

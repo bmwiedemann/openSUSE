@@ -280,4 +280,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * powervr: add firmware for Imagination Technologies BXM-4-64 GPU</comment>
     <requestid>1367332</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>a27151859cc354c920a12e324db3656d</srcmd5>
+    <version>20260717</version>
+    <time>1790778104</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.3-rc1</comment>
+    <requestid>1381444</requestid>
+  </revision>
 </revisionlist>
