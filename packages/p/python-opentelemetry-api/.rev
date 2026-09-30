@@ -486,4 +486,41 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1365743</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>780a95f6aeef353ecc5b974ca60bafa9</srcmd5>
+    <version>1.45.0</version>
+    <time>1790778139</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.45.0
+  * Added
+    - opentelemetry-exporter-prometheus: add support to configure Resource attributes as metric labels (#5122)
+    - infra: add renovate (#5202)
+    - opentelemetry-api, opentelemetry-sdk: add support for extended attribute values everywhere. (#5266)
+    - opentelemetry-sdk: wire the top-level log_level field in declarative configuration — when set,
+      maps the OTel SeverityNumber value to a Python logging level and applies it to the opentelemetry logger
+      so SDK internal diagnostics respect the configured severity. (#5351)
+    - opentelemetry-sdk: add the new stable AlwaysRecordSampler (#5354)
+    - opentelemetry-configuration, opentelemetry-sdk: wire top-level attribute_limits into per-signal providers via declarative config;
+      add log_record_limits support to LoggerProvider (#5365)
+    - opentelemetry-exporter-otlp-json-http: add OTLP JSON HTTP exporter package (#5374)
+    - opentelemetry-api, opentelemetry-sdk: add enabled() support to the Logger API, SDK, and LogRecordProcessor
+      to let instrumentation skip expensive work when logging is disabled (#5380)
+    - opentelemetry-exporter-otlp-json-file: add OTLP JSON file Docker tests (#5412)
+    - opentelemetry-configuration: wire the experimental tracer_configurator/development, meter_configurator/development and
+      logger_configurator/development fields into create_tracer_provider, create_meter_provider and create_logger_provider,
+      so per-instrumentation-scope enabled overrides declared in the config file are applied to the provider (previously these fields were parsed but silently discarded).
+      The logger minimum_severity/trace_based fields are not supported by the Python SDK and are ignored with a warning. (#5418)
+    - docs/examples: add example on how to manually setup the SDK to get SDK metrics (#5449)
+    - opentelemetry-docker-tests: add Prometheus exporter docker tests (#5457)
+    - opentelemetry-sdk: count records dropped after shutdown on otel.sdk.processor.{span,log}.processed with error.type=already_shutdown (batch span/log and simple log processors),
+      which the semantic conventions define as a valid value for this metric. (#5509)
+    - opentelemetry-semantic-conventions: update semantic conventions to v1.44.0 (#5511)
+    - opentelemetry-sdk: add host.id to the host resource detector (#5653)
+    - opentelemetry-test-utils: add CapturingSampler to record what samplers receive in instrumentation tests (#5681)
+  * Changed
+    - Enable PIE (flake8-pie) ruff rule and fix all violations (#5150)
+    - The public opentelemetry.util.types.AttributeValue type in package opentelemetry-api is being expanded to include None,
+      heterogeneous sequences of primitive types (and nested sequences) as opposed to only homogeneous primitive sequences,</comment>
+    <requestid>1381404</requestid>
+  </revision>
 </revisionlist>

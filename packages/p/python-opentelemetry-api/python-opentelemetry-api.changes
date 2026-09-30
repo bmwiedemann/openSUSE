@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Sat Sep 26 14:12:17 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to 1.45.0
+  * Added
+    - opentelemetry-exporter-prometheus: add support to configure Resource attributes as metric labels (#5122)
+    - infra: add renovate (#5202)
+    - opentelemetry-api, opentelemetry-sdk: add support for extended attribute values everywhere. (#5266)
+    - opentelemetry-sdk: wire the top-level log_level field in declarative configuration — when set,
+      maps the OTel SeverityNumber value to a Python logging level and applies it to the opentelemetry logger
+      so SDK internal diagnostics respect the configured severity. (#5351)
+    - opentelemetry-sdk: add the new stable AlwaysRecordSampler (#5354)
+    - opentelemetry-configuration, opentelemetry-sdk: wire top-level attribute_limits into per-signal providers via declarative config;
+      add log_record_limits support to LoggerProvider (#5365)
+    - opentelemetry-exporter-otlp-json-http: add OTLP JSON HTTP exporter package (#5374)
+    - opentelemetry-api, opentelemetry-sdk: add enabled() support to the Logger API, SDK, and LogRecordProcessor
+      to let instrumentation skip expensive work when logging is disabled (#5380)
+    - opentelemetry-exporter-otlp-json-file: add OTLP JSON file Docker tests (#5412)
+    - opentelemetry-configuration: wire the experimental tracer_configurator/development, meter_configurator/development and
+      logger_configurator/development fields into create_tracer_provider, create_meter_provider and create_logger_provider,
+      so per-instrumentation-scope enabled overrides declared in the config file are applied to the provider (previously these fields were parsed but silently discarded).
+      The logger minimum_severity/trace_based fields are not supported by the Python SDK and are ignored with a warning. (#5418)
+    - docs/examples: add example on how to manually setup the SDK to get SDK metrics (#5449)
+    - opentelemetry-docker-tests: add Prometheus exporter docker tests (#5457)
+    - opentelemetry-sdk: count records dropped after shutdown on otel.sdk.processor.{span,log}.processed with error.type=already_shutdown (batch span/log and simple log processors),
+      which the semantic conventions define as a valid value for this metric. (#5509)
+    - opentelemetry-semantic-conventions: update semantic conventions to v1.44.0 (#5511)
+    - opentelemetry-sdk: add host.id to the host resource detector (#5653)
+    - opentelemetry-test-utils: add CapturingSampler to record what samplers receive in instrumentation tests (#5681)
+  * Changed
+    - Enable PIE (flake8-pie) ruff rule and fix all violations (#5150)
+    - The public opentelemetry.util.types.AttributeValue type in package opentelemetry-api is being expanded to include None,
+      heterogeneous sequences of primitive types (and nested sequences) as opposed to only homogeneous primitive sequences,
+      and Mappings of strings to any primitive types or sequences/mappings (which themselves must only contain primitive types
+      or sequences/mappings validated the same way). If a bytes type is set as an attribute value in the SDK,
+      it will no longer be utf-8 decoded to a string, instead it will be passed along as is in accordance with the OTEL spec,
+      since bytes is a valid type in the OTLP proto. (#5266)
+    - opentelemetry-exporter-otlp-proto-http: add a max_request_size argument to the OTLP HTTP exporters (traces, logs, metrics);
+      serialized requests larger than the limit are dropped before sending, measured before compression.
+      Defaults to 64 MiB (enabled); set to 0 to disable. Mirrors opentelemetry-go#8157. (#5369)
+    - [BREAKING] opentelemetry-api: subclasses of Logger need to implement the enabled method (#5380)
+    - opentelemetry-exporter-otlp-proto-http: refactor to use shared opentelemetry-exporter-otlp-common
+      and opentelemetry-exporter-http-transport packages and switch default HTTP backend to urllib3 (#5389)
+    - opentelemetry-sdk: unify logging force_flush timeout defaults to 30000ms (#5438)
+    - opentelemetry-python: enable Ruff default ruleset and fix auto-fixable lint issues (#5491)
+    - opentelemetry-sdk: SimpleSpanProcessor now drops spans ended after shutdown() instead of passing them to the exporter,
+      and counts them on otel.sdk.processor.span.processed with error.type=already_shutdown. (#5512)
+    - Bump pytest to 9.0.3 (#5518)
+    - opentelemetry-exporter-otlp-proto-http: clarify that the endpoint= kwarg requires the full signal path (#5633)
+    - opentelemetry-sdk: fix typos in SpanLimits docstring (#5658)
+  * Fixed
+    - opentelemetry-configuration: perform environment variable substitution on scalar values after parsing the configuration file,
+      so ${VAR} references inside comments and mapping keys are no longer substituted and undefined references in comments no longer abort loading (#5407)
+    - opentelemetry-configuration: declarative config environment variable substitution now replaces an unset variable
+      that has no default with an empty value instead of raising an error, per the configuration spec.
+      Resource attributes whose value resolves to null (an unset ${VAR} with no default) are skipped with a warning instead of being inserted as a null value. (#5408)
+    - 'scripts/build.sh: add opentelemetry-configurationandopentelemetry-proto-json` to the package to release (#5425)
+    - opentelemetry-sdk: fix View instrument-name matching so a view configured with an instrument's real (mixed-case) name is applied;
+      matching is now case-insensitive and platform-independent instead of relying on fnmatch's OS-dependent case handling (#5430)
+    - opentelemetry-sdk: fix missing f-prefix in exponential histogram error messages (#5434)
+    - opentelemetry-configuration: resolve false-positive warning logs for newer schema minor version (#5436)
+    - opentelemetry-sdk: make methods on FixedSizeExemplarReservoirABC thread safe (#5437)
+    - opentelemetry-propagator-jaeger: fix typing issues and enable pyright typechecking for the package opentelemetry-propagator-jaeger:
+      skip uberctx- baggage headers with an empty value on extraction instead of raising TypeError (#5440)
+    - opentelemetry-sdk: fix TypeError when instantiating a _BaseConfigurator subclass whose __init__ takes arguments (#5441)
+    - opentelemetry-sdk: fix TypeError in os.fork() when a BatchProcessor or PeriodicExportingMetricReader is garbage collected (#5453)
+    - opentelemetry-configuration: a declarative config key present with an empty (null) value on an object-typed node (e.g. always_on:,
+      a - service: detector, or a metric console: exporter) is now treated the same as an explicit empty config (always_on: {})
+      instead of failing type dispatch or silently skipping the node. Both dict-typed nodes and dataclasses constructible with no arguments are covered. (#5454)
+    - opentelemetry-api: fix copy-pasted log message in SpanContext.__delattr__ (#5455)
+    - opentelemetry-sdk: reject views with ExponentialBucketHistogramAggregation for asynchronous instruments instead of silently producing no data (#5461)
+    - opentelemetry-sdk: fill every bucket of SimpleFixedSizeExemplarReservoir before random sampling (#5462)
+    - opentelemetry-sdk: Import code_attributes from stable semconv package (#5465)
+    - `opentelemetry-...
+- Changes from 1.44.0
+  * Added
+    - opentelemetry-docker-tests: Refactor Docker tests to properly validate contents of exported telemetry (#5220)
+    - opentelemetry-exporter-otlp-common: add shared package for common OTLP utilities (#5252)
+    - opentelemetry-sdk: add MissingDependencyError exception for declarative configuration and use it for missing optional dependency errors (#5265)
+    - opentelemetry-sdk: Add ability to refresh process dependent Resource attributes (#5280)
+    - opentelemetry-sdk: add force_flush method to LogRecordExporter ABC (#5294)
+    - opentelemetry-sdk: Make it possible to limit the size of stored spans in InMemorySpanExporter (#5296)
+    - opentelemetry-sdk: add log record limits environment variables OTEL_LOGRECORD_ATTRIBUTE_COUNT_LIMIT and OTEL_LOGRECORD_ATTRIBUTE_VALUE_LENGTH_LIMIT (#5300)
+    - opentelemetry-sdk: add support for file exporter with declarative config (#5311)
+    - opentelemetry-sdk: expose SynchronousMultiLogRecordProcessor and ConcurrentMultiLogRecordProcessor publicly (#5327)
+    - opentelemetry-sdk: point the declarative configuration package README at the shared language support status matrix in the opentelemetry-configuration repo,
+    so Python conformance status lives alongside the other languages instead of being duplicated per language SDK. (#5347)
+    - opentelemetry-sdk: document that Python-implementation extensions (OTEL_PYTHON_* variables) are bypassed when OTEL_CONFIG_FILE is set.
+      The env-var initialisation path is skipped entirely in favour of the declarative file;
+      honouring these alongside a config file is tracked as a follow-up. (#5353)
+    - opentelemetry-sdk: wire id_generator from declarative configuration to TracerProvider (#5363)
+    - opentelemetry-sdk: Add support for activating instrumentors from a declarative configuration file via the instrumentation/development.python section.
+      Instrumentors can declare a configuration attribute to have their options validated through the same type-coercion pipeline used for SDK component configuration. (#5372)
+    - opentelemetry-sdk: add record_min_max option to ExponentialBucketHistogramAggregation, matching the option
+      already available on ExplicitBucketHistogramAggregation and required by the specification (#5377)
+  * Changed
+    - opentelemetry-sdk: revert BoundedAttributes RLock back to Lock (#5329)
+    - docs: update logs example to use opentelemetry-instrumentation-logging (#5344)
+    - opentelemetry-sdk: bump declarative configuration schema to v1.1.0 (#5345)
+    - opentelemetry-configuration: declarative configuration moves from opentelemetry.sdk._configuration into
+      the new public opentelemetry-configuration package (opentelemetry.configuration namespace), published experimentally.
+      opentelemetry-sdk[file-configuration] continues to work as an alias that installs opentelemetry-configuration alongside the SDK. (#5356)
+    - opentelemetry-api: remove env carrier environment snapshot caching, you now have to pass explicitly the mapping
+      where to get the environment variables from as the EnvironmentGetter.get first argument. (#5366)
+    - opentelemetry-semantic-conventions: bump to 1.42.0 (#5410)
+    - opentelemetry-semantic-conventions: bump to 1.43.0 (#5413)
+  * Removed
+    - opentelemetry-api, opentelemetry-sdk: Removed deprecated Events API/SDK. Use LogRecord with the event_name field set instead. (#5293)
+  * Fixed
+    - opentelemetry-sdk: Optimize LogRecord memory in BatchLogRecordProcessor by clearing the Context object before buffering.
+      This is a potentially breaking change for custom log exporters that access context from the exported ReadableLogRecord,
+      as the context will now be an empty Context() instead of the original. (#4977)
+    - opentelemetry-sdk: drop non-finite measurements (NaN and Inf) at the instrument level to prevent permanent aggregation poisoning (#5336)
+    - opentelemetry-sdk: raise ValueError when ExplicitBucketHistogramAggregation boundaries are not strictly increasing or finite (#5340)
+    - opentelemetry-sdk: ProcessResourceDetector no longer collects or emits process.command_args and process.command_line
+      by default since the values are not sanitized and may contain sensitive information.
+      Users who depend on these resource attributes must pass include_command_args=True. (#5364)
+    - opentelemetry-exporter-otlp-proto-http: fix the OTLP HTTP metric exporter self-observability metrics over-counting data points
+      when max_export_batch_size splits a batch; each split now reports its own data-point count instead of the whole-batch count. (#5370)
+    - opentelemetry-api: Prevent in-place mutation of Context via inherited dict methods (#5399)
+
+-------------------------------------------------------------------
 Sun Jul  5 10:00:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.43.0:
