@@ -2503,4 +2503,41 @@ and testsuite accidentally disabled :-/
   loongarch64 with GCC 16.</comment>
     <requestid>1357958</requestid>
   </revision>
+  <revision rev="186" vrev="1">
+    <srcmd5>797571b425916a0296c1cd73034167b6</srcmd5>
+    <version>2.47</version>
+    <time>1790778082</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.47:
+  * New major version for libsframe.so.3 (SFrame V3 format,
+    the V2 format is discontinued, added V3 support in gas and ld)
+  * SFrame V3 support in objdump and readelf
+  * add --got-contents to readelf
+  * deprecate s390-* targets (the 31bit ones)
+  * objdump: aarch64 disassember got &quot;-M annotate&quot; displaying a symbol
+    associated with an undefined instruction, if there is one
+  * objdump: x86(-64) disasm got &quot;-M annotate-immediates&quot; displaying a
+    symbol associated with an immediate, if there is one
+  * add --debug-dir=&lt;DIR&gt; to readelf and objdump, for separate debuginfo files
+  * removed targets: NaCL, Solaris/PowerPC
+  * assembler:
+    - ELF: new attribute letter 'E', for entity size for arbitrary sections
+    - add --reloc-section-sym=[all|internal|none] to control adjusting
+      local binding symbol relocs to section symbols
+    - x86-64: add AMD Zen6 support
+    - risc-v: add extensions sdtrig v1.0, ssstrict v1.0, smpmpmt v1.0,
+      zv*dota* and vendor extensions xsmtvdot v1.0, xsmtvdotii v1.0
+    - arm: add remaining Armv9.6 insns ('+sme-mop4', '+sme-tmop',
+      '+ssve-bitperm' and '+ssve-fexpa'); several Armv9.7 extensions
+      ('+f16f32dot', '+f16f32mm', '+f16mm', '+gcie', '+lscp', '+mtetc',
+      '+sme2p3', '+sve-b16mm', '+sve2p3' and '+tlbid') and future
+      extensions POE2 and vMTE ('+poe2', '+tev' and '+mops-go');
+      remove TME extensions (gas will warn on use)
+    - deprecated .vtable_entry and .vtable_inherit directives
+  * linker:
+    - x86(-64): Add --(no-)gnu-tls-tag and --(no-)gnu2-tls-tag options to
+      add a GLIBC_ABI_GNU_TLS/GLIBC_ABI_GNU2_TLS dependency to the output
+      when an input file uses ___tls_get_addr or R_386_TLS_DESC_CALL or</comment>
+    <requestid>1379975</requestid>
+  </revision>
 </revisionlist>

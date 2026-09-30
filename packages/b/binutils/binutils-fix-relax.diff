@@ -5,11 +5,11 @@ rewriting, and hence needs a GOTPCRELX relocation.  With old object
 files we might still see GOTPCREL relocs, even with REX bytes available.
 We still can't do such rewriting and hence need to stay with the old
 rewriting into a lea.
-diff --git a/bfd/elf64-x86-64.c b/bfd/elf64-x86-64.c
-index 549a8be6a6..b89b0023db 100644
---- a/bfd/elf64-x86-64.c
-+++ b/bfd/elf64-x86-64.c
-@@ -1731,7 +1731,7 @@ elf_x86_64_convert_load_reloc (bfd *abfd,
+Index: binutils-2.47/bfd/elf64-x86-64.c
+===================================================================
+--- binutils-2.47.orig/bfd/elf64-x86-64.c	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/bfd/elf64-x86-64.c	2026-09-21 16:32:59.040454739 +0200
+@@ -2314,7 +2314,7 @@ elf_x86_64_convert_load_reloc (bfd *abfd
  
        if (opcode == 0x8b)
  	{

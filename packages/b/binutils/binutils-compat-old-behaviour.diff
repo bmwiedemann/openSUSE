@@ -4,20 +4,20 @@ This adjusts some testcases that expect new behaviour:
   - this also implies that default max-page-size is 0x1000, instead of the
     old 0x200000, so some testcases need to encode that as well
 * aarch64: don't enable '-z gcs=implicit' by default
-Index: binutils-2.45/ld/testsuite/ld-elf/linux-x86.exp
+Index: binutils-2.47/ld/testsuite/ld-elf/linux-x86.exp
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-elf/linux-x86.exp	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-elf/linux-x86.exp	2025-10-28 15:10:38.085247199 +0100
-@@ -324,7 +324,7 @@ proc check_pr25749a {testname srcfilea s
+--- binutils-2.47.orig/ld/testsuite/ld-elf/linux-x86.exp	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/testsuite/ld-elf/linux-x86.exp	2026-09-21 17:17:14.214000746 +0200
+@@ -327,7 +327,7 @@ proc check_pr25749a {testname srcfilea s
      }
  
      # Suppress warning for unsupported attribute from older GCC.
 -    append cflags " -w"
 +    append cflags " -w -Wa,-mrelax-relocations=yes"
  
-     exec cp $srcdir/$subdir/$srcfilea $srcfilea
-     exec chmod +w $srcfilea
-@@ -445,7 +445,7 @@ proc check_pr25749b {testname srcfilea s
+     set prefix "--binary-symbol-prefix _binary_[string map {- _ . _} $srcfilea]"
+     set pr25749_bin "$objcopy -B $output_arch -I binary $prefix -O $output_target $srcdir/$subdir/$srcfilea tmpdir/pr25749-bin.o"
+@@ -446,7 +446,7 @@ proc check_pr25749b {testname srcfilea s
  	[list \
  	    "Build lib${testname}.so ($dsoldflags)" \
  	    "-shared $dsoldflags tmpdir/pr25749-bin.o -z noexecstack" \
@@ -26,10 +26,10 @@ Index: binutils-2.45/ld/testsuite/ld-elf/linux-x86.exp
  	    [list $srcfileb] \
  	    {{readelf {-Wr} pr25749.rd}}  \
  	    "lib${testname}.so" \
-Index: binutils-2.45/ld/testsuite/ld-i386/report-reloc-1.d
+Index: binutils-2.47/ld/testsuite/ld-i386/report-reloc-1.d
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-i386/report-reloc-1.d	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-i386/report-reloc-1.d	2025-10-28 15:10:38.085247199 +0100
+--- binutils-2.47.orig/ld/testsuite/ld-i386/report-reloc-1.d	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/testsuite/ld-i386/report-reloc-1.d	2026-09-21 17:17:14.214000746 +0200
 @@ -1,6 +1,6 @@
  #source: report-reloc-1.s
  #as: --32
@@ -38,10 +38,10 @@ Index: binutils-2.45/ld/testsuite/ld-i386/report-reloc-1.d
  #warning_output: report-reloc-1.l
  #readelf: -r --wide
  
-Index: binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1-x32.d
+Index: binutils-2.47/ld/testsuite/ld-x86-64/report-reloc-1-x32.d
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-x86-64/report-reloc-1-x32.d	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1-x32.d	2025-10-28 15:10:38.085247199 +0100
+--- binutils-2.47.orig/ld/testsuite/ld-x86-64/report-reloc-1-x32.d	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/testsuite/ld-x86-64/report-reloc-1-x32.d	2026-09-21 17:17:14.214000746 +0200
 @@ -1,6 +1,6 @@
  #source: report-reloc-1.s
  #as: --x32
@@ -50,10 +50,10 @@ Index: binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1-x32.d
  #warning_output: report-reloc-1.l
  #readelf: -r --wide
  
-Index: binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1.d
+Index: binutils-2.47/ld/testsuite/ld-x86-64/report-reloc-1.d
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-x86-64/report-reloc-1.d	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1.d	2025-10-28 15:10:38.085247199 +0100
+--- binutils-2.47.orig/ld/testsuite/ld-x86-64/report-reloc-1.d	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/testsuite/ld-x86-64/report-reloc-1.d	2026-09-21 17:17:14.214000746 +0200
 @@ -1,6 +1,6 @@
  #source: report-reloc-1.s
  #as: --64
@@ -62,23 +62,23 @@ Index: binutils-2.45/ld/testsuite/ld-x86-64/report-reloc-1.d
  #warning_output: report-reloc-1.l
  #readelf: -r --wide
  
-Index: binutils-2.45/ld/emultempl/aarch64elf.em
+Index: binutils-2.47/ld/emultempl/aarch64elf.em
 ===================================================================
---- binutils-2.45.orig/ld/emultempl/aarch64elf.em	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/emultempl/aarch64elf.em	2025-10-28 15:10:38.085247199 +0100
+--- binutils-2.47.orig/ld/emultempl/aarch64elf.em	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/emultempl/aarch64elf.em	2026-09-21 17:17:59.305773216 +0200
 @@ -37,7 +37,7 @@ static int no_apply_dynamic_relocs = 0;
  static aarch64_protection_opts sw_protections = {
    .plt_type = PLT_NORMAL,
    .bti_report = MARKING_WARN,
 -  .gcs_type = GCS_IMPLICIT,
 +  .gcs_type = GCS_NEVER,
-   .gcs_report = MARKING_WARN,
+   .gcs_report = MARKING_UNSET,
    .gcs_report_dynamic = MARKING_UNSET,
  };
-Index: binutils-2.45/ld/testsuite/ld-aarch64/protections/gcs-1-b.d
+Index: binutils-2.47/ld/testsuite/ld-aarch64/protections/gcs-1-b.d
 ===================================================================
---- binutils-2.45.orig/ld/testsuite/ld-aarch64/protections/gcs-1-b.d	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/ld/testsuite/ld-aarch64/protections/gcs-1-b.d	2025-10-28 15:11:41.600313675 +0100
+--- binutils-2.47.orig/ld/testsuite/ld-aarch64/protections/gcs-1-b.d	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/ld/testsuite/ld-aarch64/protections/gcs-1-b.d	2026-09-21 17:17:14.215000763 +0200
 @@ -3,7 +3,7 @@
  #source: gcs2.s
  #alltargets: [check_shared_lib_support] *linux*

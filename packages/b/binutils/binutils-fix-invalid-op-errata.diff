@@ -11,9 +11,11 @@ ld: warning: cannot find entry symbol _start; defaulting to 0000000000400078
 ld: linker stubs: file class ELFCLASSNONE incompatible with ELFCLASS64
 ld: final link failed: file in wrong format
 
---- bfd/elfnn-aarch64.c.mm	2019-09-09 13:19:43.000000000 +0000
-+++ bfd/elfnn-aarch64.c	2019-11-20 11:44:00.000000000 +0000
-@@ -4312,7 +4312,8 @@ elfNN_aarch64_size_stubs (bfd *output_bfd,
+Index: bfd/elfnn-aarch64.c
+===================================================================
+--- bfd/elfnn-aarch64.c.orig	2026-07-26 01:00:00.000000000 +0200
++++ bfd/elfnn-aarch64.c	2026-09-21 16:29:34.507955210 +0200
+@@ -4823,7 +4823,8 @@ elfNN_aarch64_size_stubs (bfd *output_bf
  	      || (input_bfd->flags & BFD_LINKER_CREATED) != 0)
  	    continue;
  

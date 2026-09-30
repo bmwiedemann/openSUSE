@@ -1,8 +1,8 @@
-Index: binutils-2.45/gas/config/tc-i386.c
+Index: binutils-2.47/gas/config/tc-i386.c
 ===================================================================
---- binutils-2.45.orig/gas/config/tc-i386.c	2025-07-27 01:00:00.000000000 +0200
-+++ binutils-2.45/gas/config/tc-i386.c	2025-10-14 15:39:39.574328233 +0200
-@@ -3413,11 +3413,15 @@ set_cpu_arch (int dummy ATTRIBUTE_UNUSED
+--- binutils-2.47.orig/gas/config/tc-i386.c	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/gas/config/tc-i386.c	2026-09-21 16:33:38.969136609 +0200
+@@ -3465,11 +3465,15 @@ set_cpu_arch (int dummy ATTRIBUTE_UNUSED
  	    {
  	      check_cpu_arch_compatible (string, cpu_arch[j].enable);
  

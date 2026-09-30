@@ -64,13 +64,13 @@ BuildRequires:  zlib-devel
 %if %{suse_version} > 1500
 BuildRequires:  libzstd-devel
 %endif
-Version:        2.45
+Version:        2.47
 Release:        0
 
-# for SLE16 and beyond use libalternatives; the update from update-alternatives
-# is hairy and complex due to unrelated packages that also want to provide
-# choices for /usr/bin/ld
-%if 0%{?suse_version} >= 1600
+# for SLE16.1 and beyond use libalternatives; the update from
+# update-alternatives is hairy and complex due to unrelated
+# packages that also want to provide choices for /usr/bin/ld
+%if 0%{?suse_version} >= 1610
 %bcond_without libalternatives
 %else
 %bcond_with libalternatives
@@ -138,7 +138,7 @@ Source5:        pr33230.obj.bz2
 # service checks all *.diff files, even if listed as Source, not
 # Patch :-(
 Source6:        binutils-fix-branch.diff.templ
-Patch1:         binutils-2.45-branch.diff.gz
+Patch1:         binutils-2.47-branch.diff.gz
 Patch3:         binutils-skip-rpaths.patch
 Patch4:         s390-biarch.diff
 Patch5:         x86-64-biarch.patch
@@ -157,29 +157,22 @@ Patch42:        binutils-compat-old-behaviour.diff
 Patch43:        binutils-revert-hlasm-insns.diff
 Patch44:        binutils-revert-rela.diff
 Patch60:        binutils-disable-code-arch-error.diff
-Patch70:        pr32556.diff
-Patch71:        pr33450.diff
-Patch72:        pr33452.diff
-Patch73:        pr33456.diff
-Patch74:        pr33456-2.diff
-Patch75:        pr33457.diff
-Patch76:        pr33499.diff
-Patch77:        pr33502.diff
-Patch78:        binutils-fix-c23.diff
 Patch90:        cross-avr-nesc-as.patch
 Patch92:        cross-avr-omit_section_dynsym.patch
 Patch93:        cross-avr-size.patch
 Patch100:       binutils-workaround-premature-libsframe-uninst.diff
-Patch101:       pr33427-fix-loongarch64-glibc-build-with-gcc16.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 # Hack.  See binutils-workaround-premature-libsframe-uninst.diff
-# until libsframe2, the package, is in the distro we need to
+# until libsframe3, the package, is in the distro we need to
 # link all internal components of binutils statically against libsframe.
 # But then there's no reason for rpm to generate a dependency against
-# libsframe.so.2, but we _need_ that dependency to exist once we want
+# libsframe.so.3, but we _need_ that dependency to exist once we want
 # to link dynamically again.  So, force it for now.  Remove this when
-# the above patch is removed.
-Requires:       libsframe2
+# the above patch is removed.  On SLE-12 codestreams we haven't yet
+# introduced it.
+%if %{suse_version} <= 1320
+Requires:       libsframe3
+%endif
 %if %{with libalternatives}
 # For the update path from pre-libalternatives to libalternatives
 # we need to remove the old traces, so we need it in our pre-scripts
@@ -256,12 +249,12 @@ Group:          Development/Tools/Building
 This package includes the libctf-nobfd shared library.
 The Compact C Type Format (CTF) is a way of representing information about a binary program
 
-%package -n libsframe2
+%package -n libsframe3
 Summary:        SFrame stack trace format library (runtime)
 License:        GFDL-1.3-only AND GPL-3.0-or-later
 Group:          Development/Tools/Building
 
-%description -n libsframe2
+%description -n libsframe3
 This package includes the libsframe shared library.
 The SFrame format is a compact way to represent information
 necessary to generate stack traces.
@@ -330,23 +323,15 @@ cp ld/ldgram.y ld/ldgram.y.orig
 %patch -P 44 -p1
 %endif
 %patch -P 60 -p1
-%patch -P 70 -p1
-%patch -P 71 -p1
-%patch -P 72 -p1
-%patch -P 73 -p1
-%patch -P 74 -p1
-%patch -P 75 -p1
-%patch -P 76 -p1
-%patch -P 77 -p1
-%patch -P 78 -p1
 %if "%{TARGET}" == "avr"
 cp gas/config/tc-avr.h gas/config/tc-avr-nesc.h
 %patch -P 90
 %patch -P 92
 %patch -P 93 -p1
 %endif
+%if %{suse_version} <= 1320
 %patch -P 100 -p1
-%patch -P 101 -p1
+%endif
 #
 # test_vanilla
 %endif
@@ -708,7 +693,7 @@ rm -f %{buildroot}%{_prefix}/bin/*-c++filt
 
 %post -n libctf0 -p /sbin/ldconfig
 %post -n libctf-nobfd0 -p /sbin/ldconfig
-%post -n libsframe2 -p /sbin/ldconfig
+%post -n libsframe3 -p /sbin/ldconfig
 
 %if %{with libalternatives}
 %pre
@@ -743,7 +728,7 @@ fi;
 
 %postun -n libctf0 -p /sbin/ldconfig
 %postun -n libctf-nobfd0 -p /sbin/ldconfig
-%postun -n libsframe2 -p /sbin/ldconfig
+%postun -n libsframe3 -p /sbin/ldconfig
 
 %postun -p /sbin/ldconfig
 %endif
@@ -813,7 +798,7 @@ fi;
 %defattr(-,root,root)
 %{_libdir}/libctf-nobfd.so.*
 
-%files -n libsframe2
+%files -n libsframe3
 %defattr(-,root,root)
 %{_libdir}/libsframe.so.*
 

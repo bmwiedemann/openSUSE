@@ -14,11 +14,11 @@ This construct is used in some packages to check for availability
 of libraries (e.g. in nvme-cli to check for -luuid).  Redircting error
 output makes this siletently fail.
 
-Index: binutils-2.35/bfd/elf64-ppc.c
+Index: binutils-2.47/bfd/elf64-ppc.c
 ===================================================================
---- binutils-2.35.orig/bfd/elf64-ppc.c	2020-07-24 11:12:19.000000000 +0200
-+++ binutils-2.35/bfd/elf64-ppc.c	2020-08-10 17:25:00.205219071 +0200
-@@ -5310,11 +5310,17 @@ ppc64_elf_merge_private_bfd_data (bfd *ibfd, struct bfd_link_info *info)
+--- binutils-2.47.orig/bfd/elf64-ppc.c	2026-07-26 01:00:00.000000000 +0200
++++ binutils-2.47/bfd/elf64-ppc.c	2026-09-21 16:30:59.902418712 +0200
+@@ -5487,11 +5487,17 @@ ppc64_elf_merge_private_bfd_data (bfd *i
  
    if (iflags & ~EF_PPC64_ABI)
      {

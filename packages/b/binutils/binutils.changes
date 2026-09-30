@@ -1,4 +1,85 @@
 -------------------------------------------------------------------
+Mon Sep 21 13:40:14 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Update to 2.47:
+  * New major version for libsframe.so.3 (SFrame V3 format,
+    the V2 format is discontinued, added V3 support in gas and ld)
+  * SFrame V3 support in objdump and readelf
+  * add --got-contents to readelf
+  * deprecate s390-* targets (the 31bit ones)
+  * objdump: aarch64 disassember got "-M annotate" displaying a symbol
+    associated with an undefined instruction, if there is one
+  * objdump: x86(-64) disasm got "-M annotate-immediates" displaying a
+    symbol associated with an immediate, if there is one
+  * add --debug-dir=<DIR> to readelf and objdump, for separate debuginfo files
+  * removed targets: NaCL, Solaris/PowerPC
+  * assembler:
+    - ELF: new attribute letter 'E', for entity size for arbitrary sections
+    - add --reloc-section-sym=[all|internal|none] to control adjusting
+      local binding symbol relocs to section symbols
+    - x86-64: add AMD Zen6 support
+    - risc-v: add extensions sdtrig v1.0, ssstrict v1.0, smpmpmt v1.0,
+      zv*dota* and vendor extensions xsmtvdot v1.0, xsmtvdotii v1.0
+    - arm: add remaining Armv9.6 insns ('+sme-mop4', '+sme-tmop',
+      '+ssve-bitperm' and '+ssve-fexpa'); several Armv9.7 extensions
+      ('+f16f32dot', '+f16f32mm', '+f16mm', '+gcie', '+lscp', '+mtetc',
+      '+sme2p3', '+sve-b16mm', '+sve2p3' and '+tlbid') and future
+      extensions POE2 and vMTE ('+poe2', '+tev' and '+mops-go');
+      remove TME extensions (gas will warn on use)
+    - deprecated .vtable_entry and .vtable_inherit directives
+  * linker:
+    - x86(-64): Add --(no-)gnu-tls-tag and --(no-)gnu2-tls-tag options to
+      add a GLIBC_ABI_GNU_TLS/GLIBC_ABI_GNU2_TLS dependency to the output
+      when an input file uses ___tls_get_addr or R_386_TLS_DESC_CALL or
+      R_X86_64_TLSDESC_CALL relocs
+    - add --discard-sframe (omitting any .sframe sections in the output,
+      also inhibiting synthesizing sframe data for linker generated code
+      like the PLT)
+    - add optimization level zero (-O 0) disabling section merging
+    - add --start-lib/--end-lib and LIB linker script statement, treating
+      a list of object files as members of an artificial archive
+    - add support for archives without index on all targets, not just XCOFF
+- Contains fixes for these non-CVEs (not security bugs per upstreams
+  SECURITY.md):
+  * bsc#1252237 aka CVE-2025-11839 aka PR33448
+  * bsc#1252238 aka CVE-2025-11840 aka PR33455
+  * bsc#1254442 aka CVE-2025-11082 aka PR33464
+  * bsc#1259077 aka CVE-2026-3441 no PR
+  * bsc#1259078 aka CVE-2026-3442 no PR
+  * bsc#1259322 aka CVE-2025-69644 aka PR33639
+  * bsc#1259323 aka CVE-2025-69645 aka PR33637
+  * bsc#1259324 aka CVE-2025-69646 aka PR33638
+  * bsc#1259394 aka CVE-2025-69649 aka PR33697
+  * bsc#1259397 aka CVE-2025-69652 aka PR33701
+  * bsc#1259421 aka CVE-2025-69647 aka PR33640
+  * bsc#1259422 aka CVE-2025-69648 aka PR33641
+  * bsc#1260338 aka CVE-2026-4647 aka PR33919
+  * bsc#1262564 aka CVE-2026-6846 aka PR34049
+  * bsc#1274433 aka CVE-2026-18220 no PR
+  * bsc#1282138 aka CVE-2026-15003 aka PR34053
+- Add binutils-2.47.tar.bz2.sig, binutils-2.47.tar.bz2,
+  binutils-2.47-branch.diff.gz
+- Remove binutils-2.45.tar.bz2.sig, binutils-2.45.tar.bz2,
+  binutils-2.45-branch.diff.gz 
+- Remove upstreamed patches: pr32556.diff, pr33450.diff, pr33452.diff,
+  pr33456.diff, pr33456-2.diff, pr33457.diff, pr33499.diff, pr33502.diff,
+  pr33427-fix-loongarch64-glibc-build-with-gcc16.patch,
+  binutils-fix-c23.diff .
+- Adjust binutils-build-as-needed.diff, binutils-disable-code-arch-error.diff,
+  binutils-fix-abierrormsg.diff, binutils-fix-invalid-op-errata.diff,
+  binutils-fix-relax.diff, binutils-workaround-premature-libsframe-uninst.diff,
+  binutils-znow.patch, s390-pic-dso.diff, x86-64-biarch.patch,
+  binutils-compat-old-behaviour.diff, binutils-revert-plt32-in-branches.diff,
+  binutils-revert-rela.diff, cross-avr-nesc-as.patch .
+- Limit internal static linking of libsframe to very old (SLE-12-*)
+  codestreams.
+
+-------------------------------------------------------------------
+Wed Jul  1 12:35:41 UTC 2026 - Michael Matz <matz@suse.com>
+
+- Don't use libalternatives on SLE16. [bsc#1269059]
+
+-------------------------------------------------------------------
 Thu May 14 11:20:54 UTC 2026 - JS <obs.coke518@passinbox.com>
 
 - Add pr33427-fix-loongarch64-glibc-build-with-gcc16.patch to

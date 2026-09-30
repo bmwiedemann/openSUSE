@@ -1,9 +1,8 @@
 Index: gas/config/tc-avr-nesc.h
 ===================================================================
---- gas/config/tc-avr-nesc.h.orig	2016-02-01 09:58:37.419903606 +0100
-+++ gas/config/tc-avr-nesc.h	2016-02-01 09:58:39.631928732 +0100
-Index: gas/expr.c
-@@ -143,8 +143,12 @@ extern int avr_force_relocation (struct fix *);
+--- gas/config/tc-avr-nesc.h.orig	2026-09-21 17:03:13.082574057 +0200
++++ gas/config/tc-avr-nesc.h	2026-09-21 17:21:00.103870477 +0200
+@@ -144,8 +144,12 @@ extern int avr_force_relocation (struct
     would print `12 34 56 78'.  The default value is 4.  */
  #define LISTING_WORD_SIZE 2
  
@@ -18,11 +17,11 @@ Index: gas/expr.c
  
  /* An `.lcomm' directive with no explicit alignment parameter will
     use this macro to set P2VAR to the alignment that a request for
-
+Index: gas/expr.c
 ===================================================================
---- gas/expr.c.orig	2016-02-01 09:58:35.743884569 +0100
-+++ gas/expr.c	2016-02-01 09:58:39.631928732 +0100
-@@ -2342,6 +2342,15 @@ get_symbol_name (char ** ilp_return)
+--- gas/expr.c.orig	2026-07-26 01:00:00.000000000 +0200
++++ gas/expr.c	2026-09-21 17:21:00.104870494 +0200
+@@ -2529,6 +2529,15 @@ get_symbol_name (char ** ilp_return)
  	;
        if (is_name_ender (c))
  	c = *input_line_pointer++;
