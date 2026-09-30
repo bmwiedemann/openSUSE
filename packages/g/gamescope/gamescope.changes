@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 14:56:53 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Update to version 3.16.31:
+  * WaylandBackend: only await a configure after a real unmap
+
+-------------------------------------------------------------------
 Fri Sep 25 13:53:52 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Update to version 3.16.30:
