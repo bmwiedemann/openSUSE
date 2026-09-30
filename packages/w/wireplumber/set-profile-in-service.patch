@@ -13,7 +13,7 @@ Index: wireplumber-0.5.8/src/systemd/user/wireplumber.service.in
  Environment=GIO_USE_VFS=local
 +Environment=WIREPLUMBER_PROFILE=main
 +EnvironmentFile=-/usr/etc/wireplumber.env
-+EnvironmentFile=-/etc/wireplumbler.env
++EnvironmentFile=-/etc/wireplumber.env
  
  [Install]
  WantedBy=pipewire.service
