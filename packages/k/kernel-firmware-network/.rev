@@ -173,4 +173,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * airoha: update AN7583 NPU firmwares to version 0.5</comment>
     <requestid>1374912</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>3daab3d31839d308cf5b0418f999ac9f</srcmd5>
+    <version>20260813</version>
+    <time>1790778103</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.3-rc1</comment>
+    <requestid>1381443</requestid>
+  </revision>
 </revisionlist>

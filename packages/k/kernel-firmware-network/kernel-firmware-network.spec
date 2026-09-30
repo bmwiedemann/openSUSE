@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260814.tar.gz#/kernel-firmware-tools-20260814.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -48,7 +48,6 @@ Conflicts:      (filesystem without may-perform-usrmerge)
 %endif
 Supplements:    modalias(auxiliary:ice.sf)
 Supplements:    modalias(mdio:0111010100000000100101??????????)
-Supplements:    modalias(pci:v00001011d0000001Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v0000106Bd00001645sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00008020sv*sd*bc02sc00i00*)
 Supplements:    modalias(pci:v00001077d00008030sv*sd*bc02sc00i00*)
@@ -57,8 +56,6 @@ Supplements:    modalias(pci:v00001077d00008430sv*sd*bc02sc00i00*)
 Supplements:    modalias(pci:v00001077d00008440sv*sd*bc02sc00i00*)
 Supplements:    modalias(pci:v00001077d00008830sv*sd*bc02sc00i00*)
 Supplements:    modalias(pci:v00001077d00008C30sv*sd*bc02sc00i00*)
-Supplements:    modalias(pci:v000010A9d00000009sv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v000010B7d00000001sv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v000010B7d00009900sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010B7d00009902sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010B7d00009903sv*sd*bc*sc*i*)
@@ -75,11 +72,6 @@ Supplements:    modalias(pci:v000010B7d0000990Asv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000010CFd000011A2sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001148d00004400sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001148d00004500sv*sd*bc*sc*i*)
-Supplements:    modalias(pci:v000012AEd00000001sv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v000012AEd00000002sv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v000012AEd000000FAsv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v00001385d0000620Asv*sd*bc02sc00i*)
-Supplements:    modalias(pci:v00001385d0000630Asv*sd*bc02sc00i*)
 Supplements:    modalias(pci:v000014C1d00000008sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014C1d00000009sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v000014E4d00001600sv*sd*bc*sc*i*)
@@ -280,6 +272,8 @@ Supplements:    modalias(pci:v00008086d0000579Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000579Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00008086d0000579Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00009004d00006915sv*sd*bc*sc*i*)
+Supplements:    modalias(sdio:c*v325Bd0809*)
+Supplements:    modalias(usb:v325Bp8100d*dc*dsc*dp*ic*isc*ip*in*)
 
 %description
 This package contains kernel firmware files for various network drivers.
