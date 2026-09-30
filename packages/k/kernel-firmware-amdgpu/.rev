@@ -789,4 +789,41 @@ After this PR, there will be a delete request for kernel-firmware.
   * amdgpu: update GC 11.5.0 firmware</comment>
     <requestid>1374903</requestid>
   </revision>
+  <revision rev="52" vrev="1">
+    <srcmd5>13080989efd700de4cc8278e212627d4</srcmd5>
+    <version>20260926</version>
+    <time>1790778091</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * amdgpu: update VPE 2.0.0 firmware
+  * amdgpu: update VCN 5.3.0 firmware
+  * amdgpu: update GC 11.7.0 MES firmware
+  * amdgpu: update PSP 15.0.9 firmware
+  * amdgpu: update PSP 15.0.0 firmware
+  * Revert &quot;amdgpu: update GC 11.0.0 firmware&quot;
+  * Revert &quot;amdgpu: update GC 11.0.0 firmware&quot;
+  * amdgpu: DMCUB updates for various ASICs
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * Revert &quot;amdgpu: update VCN 5.3.0 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 5.0.1 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 5.0.0 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.6 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.6 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.5 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.5 firmware&quot;
+  * Revert &quot;amdgpu: update vcn 4.0.4 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.3 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.2 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.2 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 4.0.0 firmware&quot;
+  * Revert &quot;amdgpu: update VCN 3.1.2 firmware&quot;
+  * amdgpu: partially revert 9f1eb5124635
+  * amdgpu: partially revert e3e45091597e
+  * amdgpu: partially revert 7df10898a825
+  * amdgpu: partially revert 7b262e1ddce5
+  * amdgpu: partially revert 17ee8fdf9196
+  * amdgpu: partially revert 063e840eb6a5</comment>
+    <requestid>1381431</requestid>
+  </revision>
 </revisionlist>

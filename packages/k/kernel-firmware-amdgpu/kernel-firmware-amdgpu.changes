@@ -1,4 +1,107 @@
 -------------------------------------------------------------------
+Sun Sep 27 08:15:52 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260926 (git commit 9b858e5bb58d):
+  * amdgpu: update VPE 2.0.0 firmware
+  * amdgpu: update VCN 5.3.0 firmware
+  * amdgpu: update GC 11.7.0 MES firmware
+  * amdgpu: update PSP 15.0.9 firmware
+  * amdgpu: update PSP 15.0.0 firmware
+  * Revert "amdgpu: update GC 11.0.0 firmware"
+  * Revert "amdgpu: update GC 11.0.0 firmware"
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Wed Sep 16 07:17:17 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * Revert "amdgpu: update VCN 5.3.0 firmware"
+  * Revert "amdgpu: update VCN 5.0.1 firmware"
+  * Revert "amdgpu: update VCN 5.0.0 firmware"
+  * Revert "amdgpu: update VCN 4.0.6 firmware"
+  * Revert "amdgpu: update VCN 4.0.6 firmware"
+  * Revert "amdgpu: update VCN 4.0.5 firmware"
+  * Revert "amdgpu: update VCN 4.0.5 firmware"
+  * Revert "amdgpu: update vcn 4.0.4 firmware"
+  * Revert "amdgpu: update VCN 4.0.3 firmware"
+  * Revert "amdgpu: update VCN 4.0.2 firmware"
+  * Revert "amdgpu: update VCN 4.0.2 firmware"
+  * Revert "amdgpu: update VCN 4.0.0 firmware"
+  * Revert "amdgpu: update VCN 3.1.2 firmware"
+  * amdgpu: partially revert 9f1eb5124635
+  * amdgpu: partially revert e3e45091597e
+  * amdgpu: partially revert 7df10898a825
+  * amdgpu: partially revert 7b262e1ddce5
+  * amdgpu: partially revert 17ee8fdf9196
+  * amdgpu: partially revert 063e840eb6a5
+  * Partially revert "amdgpu: DMCUB updates for various ASICs"
+
+-------------------------------------------------------------------
+Mon Sep 14 07:54:01 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260912 (git commit d371ae3b6888):
+  * amdgpu: update vangogh firmware
+  * amdgpu: update VPE 6.1.1 firmware
+  * amdgpu: update VCN 4.0.6 firmware
+  * amdgpu: update PSP 14.0.1 firmware
+  * amdgpu: update GC 11.5.1 firmware
+  * amdgpu: update VCN 4.0.5 firmware
+  * amdgpu: update PSP 14.0.0 firmware
+  * amdgpu: update GC 11.5.0 firmware
+  * amdgpu: update renoir firmware
+  * amdgpu: update yellow carp firmware
+  * amdgpu: update PSP 13.0.5 firmware
+  * amdgpu: update PSP 13.0.11 firmware
+  * amdgpu: update GC 11.0.4 firmware
+  * amdgpu: update VCN 4.0.2 firmware
+  * amdgpu: update PSP 13.0.4 firmware
+  * amdgpu: update GC 11.0.1 firmware
+  * amdgpu: update SMU 14.0.3 firmware
+  * amdgpu: update PSP 14.0.3 firmware
+  * amdgpu: update GC 12.0.1 firmware
+  * amdgpu: update PSP 14.0.2 firmware
+  * amdgpu: update GC 12.0.0 firmware
+  * amdgpu: update SMU 13.0.7 firmware
+  * amdgpu: update PSP 13.0.7 firmware
+  * amdgpu: update GC 11.0.2 firmware
+  * amdgpu: update SMU 13.0.10 firmware
+  * amdgpu: update PSP 13.0.10 firmware
+  * amdgpu: update GC 11.0.3 firmware
+  * amdgpu: update SMU 13.0.0 firmware
+  * amdgpu: update PSP 13.0.0 firmware
+  * amdgpu: update GC 11.0.0 firmware
+  * amdgpu: update beige goby firmware
+  * amdgpu: update dimgrey cavefish firmware
+  * amdgpu: update navy flounder firmware
+  * amdgpu: update sienna cichlid firmware
+  * amdgpu: update navi14 firmware
+  * amdgpu: update navi12 firmware
+  * amdgpu: update navi10 firmware
+  * amdgpu: update PSP 15.0.9 firmware
+  * amdgpu: update GC 11.7.1 firmware
+  * amdgpu: update VCN 5.3.0 firmware
+  * amdgpu: update PSP 15.0.0 firmware
+  * amdgpu: update GC 11.7.0 firmware
+  * amdgpu: update PSP 14.0.5 firmware
+  * amdgpu: update GC 11.5.3 firmware
+  * amdgpu: update VPE 6.1.3 firmware
+  * amdgpu: update PSP 14.0.4 firmware
+  * amdgpu: update GC 11.5.2 firmware
+  * amdgpu: update green sardine firmware
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Sun Sep  6 09:58:19 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260904 (git commit 2f2bf38a3d03):
+  * amdgpu: DMCUB updates for various ASICs
+
+-------------------------------------------------------------------
+Wed Sep  2 13:00:43 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update aliases from 7.3-rc1
+
+-------------------------------------------------------------------
 Mon Aug 31 07:50:56 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260829 (git commit 458e40fdbb4d):

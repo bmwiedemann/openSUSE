@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 458e40fdbb4dad5134ec230a42df21aea1b5baf8
+%define git_version 9b858e5bb58d7bf1fc4d8818cb9100aed6d46f6a
 
 Name:           kernel-firmware-amdgpu
-Version:        20260829
+Version:        20260926
 Release:        0
 Summary:        Kernel firmware files for AMDGPU graphics driver
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -108,6 +108,7 @@ Supplements:    modalias(pci:v00001002d00006641sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006646sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006647sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006649sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000664Dsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006650sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006651sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006658sv*sd*bc*sc*i*)
@@ -163,6 +164,7 @@ Supplements:    modalias(pci:v00001002d000067CAsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067CCsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067CFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067D0sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d000067D4sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067DFsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067E0sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d000067E1sv*sd*bc*sc*i*)
@@ -238,6 +240,7 @@ Supplements:    modalias(pci:v00001002d0000692Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006930sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006938sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006939sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000693Bsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000694Csv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000694Esv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000694Fsv*sd*bc*sc*i*)
@@ -246,6 +249,7 @@ Supplements:    modalias(pci:v00001002d00006981sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006985sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006986sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006987sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001002d0000698Fsv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006995sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d00006997sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001002d0000699Fsv*sd*bc*sc*i*)

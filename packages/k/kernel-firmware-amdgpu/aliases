@@ -60,6 +60,7 @@ amdgpu: pci:v00001002d00006641sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006646sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006647sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006649sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000664Dsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006650sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006651sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006658sv*sd*bc*sc*i*
@@ -115,6 +116,7 @@ amdgpu: pci:v00001002d000067CAsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067CCsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067CFsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067D0sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d000067D4sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067DFsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067E0sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d000067E1sv*sd*bc*sc*i*
@@ -190,6 +192,7 @@ amdgpu: pci:v00001002d0000692Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006930sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006938sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006939sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000693Bsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000694Csv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000694Esv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000694Fsv*sd*bc*sc*i*
@@ -198,6 +201,7 @@ amdgpu: pci:v00001002d00006981sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006985sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006986sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006987sv*sd*bc*sc*i*
+amdgpu: pci:v00001002d0000698Fsv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006995sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d00006997sv*sd*bc*sc*i*
 amdgpu: pci:v00001002d0000699Fsv*sd*bc*sc*i*
