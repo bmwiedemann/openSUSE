@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:06:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (added 2006, predates
+  distro -fstack-protector-strong in optflags; the trailing basic
+  flag silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Fri Jun 14 00:10:03 UTC 2024 - Yasuhiko Kamata <belphegor@belbel.or.jp>
 
 - Imported C99 compatibility fixes from Fedora project:

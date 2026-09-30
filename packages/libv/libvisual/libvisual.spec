@@ -86,13 +86,8 @@ touch -r aclocal.m4 configure*
 
 %build
 autoreconf -fiv
-%if %suse_version > 1000
-CFLAGS="%optflags -fstack-protector"
-%endif
 %ifarch %ix86
 CFLAGS="%optflags -mmmx"
-%else
-CFLAGS="%optflags"
 %endif
 export CFLAGS="$CFLAGS -fno-strict-aliasing"
 %configure --disable-static
