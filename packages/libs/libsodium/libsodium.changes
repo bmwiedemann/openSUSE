@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 08:39:09 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream SSP handling via --disable-ssp: distro optflags
+  already carry -fstack-protector-strong, and upstream's appended
+  basic -fstack-protector silently downgraded it.
+
+-------------------------------------------------------------------
 Fri Apr 10 13:14:52 UTC 2026 - Lucas Mulling <lucas.mulling@suse.com>
 
 - Update to 1.0.22:

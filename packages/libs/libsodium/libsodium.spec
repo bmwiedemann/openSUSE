@@ -65,9 +65,12 @@ to compile and develop applications that use libsodium.
 %autosetup -p1
 
 %build
+# --disable-ssp: upstream configure would append -fstack-protector (basic),
+# downgrading the -fstack-protector-strong already in %{optflags}
 %configure \
   --disable-static \
-  --disable-silent-rules
+  --disable-silent-rules \
+  --disable-ssp
 %make_build
 
 %install
