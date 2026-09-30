@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:20:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 140.17.0.
+  + See https://www.firefox.com/en-US/firefox/140.17.0/releasenotes/
+- Rebase mozjs140-rust1.98.patch
+
+-------------------------------------------------------------------
 Mon Sep 21 17:26:38 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Drop mozjs140-CVE-2026-32776.patch,

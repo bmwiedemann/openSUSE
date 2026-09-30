@@ -41,7 +41,7 @@
 %global big_endian 1
 %endif
 Name:           mozjs%{major}
-Version:        140.16.0
+Version:        140.17.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
 License:        MPL-2.0
@@ -164,9 +164,9 @@ pushd ../..
 %endif
 %patch -P 20 -p1
 
-%if %{pkg_vcmp libicu-devel >= 76.1}
+#%if %{pkg_vcmp libicu-devel >= 76.1}
 sed -i 's/icu-i18n/icu-uc &/' js/moz.configure
-%endif
+#%endif
 
 # Copy out the LICENSE file
 cp LICENSE js/src/

@@ -192,4 +192,14 @@
   the JS interpreter.</comment>
     <requestid>1379635</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>8bf57d8ea6476f336e28de2070e7233c</srcmd5>
+    <version>140.17.0</version>
+    <time>1790778155</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 140.17.0.
+  + See https://www.firefox.com/en-US/firefox/140.17.0/releasenotes/
+- Rebase mozjs140-rust1.98.patch</comment>
+    <requestid>1381460</requestid>
+  </revision>
 </revisionlist>
