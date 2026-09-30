@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Sep 29 15:10:11 UTC 2026 - Christian Goll <cgoll@suse.com>
+
+- Update to 0.23.2:
+  * Last v0 release before the v1 series
+  * Parity-aware BPE training (ParityBpeTrainer)
+  * Bump pyo3 to 0.29
+  * Avoid full vocab clone in get_vocab_size()
+  * Acquire model read-lock once per call instead of per pre-token
+  * Update daachorse from 1.0.1 to 3.0.0
+  * Add benchmarks for the decode API
+  * CI and dependency cleanup
+- Fixes (via rustls-webpki 0.103.15) (bsc#1282221):
+  * CVE-2026-93599
+  * CVE-2026-93600
+  * CVE-2026-93601
+  * CVE-2026-93602
+
+-------------------------------------------------------------------
 Wed Jul 15 05:49:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.23.1:

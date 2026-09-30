@@ -63,4 +63,12 @@
     <comment></comment>
     <requestid>1366916</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9c6619efc13bcfe7263458bc6e95d248</srcmd5>
+    <version>0.23.2</version>
+    <time>1790778232</time>
+    <user>anag_factory</user>
+    <comment>with source now (forwarded request 1381505 from mslacken)</comment>
+    <requestid>1381506</requestid>
+  </revision>
 </revisionlist>
