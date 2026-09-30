@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:25:33 UTC 2026 - Michal Hlavac <miso@hlavki.eu>
+
+- Update to version 2026.09.1:
+  * Changes in 2026.09.1:
+    + SOF v2.15 signed binary added for Intel ARL-S; with this all
+      Intel Meteor Lake and newer platforms are upgraded to
+      SOF v2.15
+  * Changes in 2026.09:
+    + SOF v2.15 signed binaries, tools and topologies
+
+-------------------------------------------------------------------
 Wed Feb 11 09:29:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2025.12.2:
