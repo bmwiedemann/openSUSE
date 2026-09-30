@@ -361,8 +361,8 @@ sed 's#^.SILENT:##g' -i Makedefs.in
 aclocal -I config-scripts
 autoconf -I config-scripts
 # Export the build options we desire
-export CXXFLAGS="$CXXFLAGS %{optflags} -O2 -fstack-protector -fPIE -fPIC"
-export CFLAGS="$CFLAGS %{optflags} -fstack-protector -fPIE -fPIC"
+export CXXFLAGS="$CXXFLAGS %{optflags} -O2 -fPIE -fPIC"
+export CFLAGS="$CFLAGS %{optflags} -fPIE -fPIC"
 export LDFLAGS="-pie"
 export CXX=c++
 export CC=cc

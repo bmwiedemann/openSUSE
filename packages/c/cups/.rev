@@ -1417,4 +1417,12 @@ Apple grant an openssl linking exception (and an exception for linking on Apple 
     <comment>Fix for CVE-2026-87875 bsc#1279945 (forwarded request 1377870 from jsmeix)</comment>
     <requestid>1377871</requestid>
   </revision>
+  <revision rev="186" vrev="4">
+    <srcmd5>f1decf3ee7c33dcb46b708ee6543eab6</srcmd5>
+    <version>2.4.19</version>
+    <time>1790778125</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381339</requestid>
+  </revision>
 </revisionlist>
