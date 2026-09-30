@@ -1,0 +1,12 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df66ef6d11668afc4da45b333cf1d023</srcmd5>
+    <version>5.2.9</version>
+    <time>1790778217</time>
+    <user>anag_factory</user>
+    <comment>ZUPT is a modern backup, compression, and archiving tool that combines key data security and protection features into a single application—including proprietary compression, AES-256 authenticated encryption, hybrid key encapsulation using ML-KEM-768/X25519 (incorporating post-quantum cryptography), integrity verification, multithreaded processing, and an optional graphical interface.
+
+Its inclusion in openSUSE Factory would provide openSUSE users with a native, modern, open-source solution for secure backup and archiving, while subjecting the package to the distribution's continuous integration, testing, and quality control workflows, thereby facilitating its future maintenance in Tumbleweed and derivative versions within the openSUSE ecosystem.</comment>
+    <requestid>1381242</requestid>
+  </revision>
+</revisionlist>

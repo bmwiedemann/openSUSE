@@ -1,0 +1,74 @@
+-------------------------------------------------------------------
+Thu Sep 17 17:17:45 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 5.2.9
+  * It updates the bundled VaptVupt source to tag v2.65.11 keeping
+    format v1.6
+  * Cryptography, codec identifier and SDK ABI unchanged 
+  * Exact-tag run 34048047543 passed 15/15 jobs and promotion 
+    run 34049834326 published the 13-asset release. 
+
+-------------------------------------------------------------------
+Thu Apr  2 02:54:23 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.4
+  * Makefile multiarc
+
+-------------------------------------------------------------------
+Thu Apr  2 02:31:57 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.4
+  * Object files removed
+
+-------------------------------------------------------------------
+Thu Apr  2 02:30:11 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.3
+  * Added man page installation (zupt.1.gz)
+  * Enabled verbose build output with V=1 support in Makefile
+  * Fixed Makefile to honor LDFLAGS and support PIE linking
+  * Improved rpmlint compliance for OBS/openSUSE packaging
+
+-------------------------------------------------------------------
+Tue Mar 31 00:24:26 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.2
+- Enable C fallback on AArch64
+  * Jasmin Gate integration behind x86_64 target detection
+  * Detect target architecture using the compiler triplet
+    `$(CC) -dumpmachine`
+  * Prevent Jasmin x86_64 object files from being linked in 
+    AArch64 builds
+  * Automatically use C fallback on non-x86_64 targets
+  * Preserve `ZUPT_USE_JASMIN` only when assembly sources are
+    present and compatible
+
+-------------------------------------------------------------------
+Mon Mar 30 22:17:02 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.1
+  * Binaries removed
+
+-------------------------------------------------------------------
+Sun Mar 29 22:10:54 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Version 1.5.0
+- Added -Jasmin Assembly Integration
+  * zupt_mac_verify_ct Jasmin assembly linked into 
+    zupt_decrypt_buffer(). Replaces the C XOR accumulation loop
+    for HMAC-SHA256 co>
+  * zupt_ct_select_32 Jasmin assembly linked into 
+    zupt_mlkem768_decaps(). Replaces the C cmov() function for
+    Fujisaki-Okamoto i>
+  * include/zupt_jasmin.h — extern declarations for all Jasmin
+    functions with ABI documentation.
+  * #ifdef ZUPT_USE_JASMIN dispatch guards in zupt_crypto.c and
+    zupt_mlkem.c with clean C fallback.
+  * Makefile auto-detects jasmin/*.s files, assembles to .o,
+    links into binary, sets -DZUPT_USE_JASMIN.
+
+-------------------------------------------------------------------
+Mon Mar 23 18:46:51 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+- Initial package
+- Version 1.0.0 
+ 

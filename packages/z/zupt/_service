@@ -1,0 +1,17 @@
+<services>
+        <service name="tar_scm" mode="manual">
+                <param name="url">https://github.com/cristiancmoises/zupt</param>
+                <param name="scm">git</param>
+                <param name="revision">v5.2.9</param>
+                <param name="versionformat">@PARENT_TAG@</param>
+                <param name="versionrewrite-pattern">v(.*)</param>
+                <param name="submodules">enable</param>
+                <param name="filename">zupt</param>
+        </service>
+        <service name="recompress" mode="manual">
+                <param name="file">*.tar</param>
+                <param name="compression">gz</param>
+        </service>
+        <service name="set_version" mode="manual"/>
+</services>
+

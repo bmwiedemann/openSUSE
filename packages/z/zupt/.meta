@@ -1,0 +1,5 @@
+<package name="zupt" project="openSUSE:Factory">
+  <title>Backup compression with AES-256 authenticated encryption and post-quantum key encapsulation.</title>
+  <description>Zupt compresses and encrypts backup archives. LZ77+Huffman compression, AES-256-CTR + HMAC-SHA256 per-block authentication, multi-threaded, and optional ML-KEM-768 + X25519 post-quantum hybrid encryption. Pure C11, zero dependencies, ~5,000 lines.</description>
+  <url>https://github.com/cristiancmoises/zupt</url>
+</package>
