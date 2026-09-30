@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:15:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld313
+  Bugfix
+  * SC/MP: correct check for instructions crossing page boundaries.
+  Changes
+  * More consistent display of negative integer symbols in symbol
+    table.
+  Additions
+  * New option to internally store length of integer constants in
+    symbol table.
+
+-------------------------------------------------------------------
 Tue Sep 15 14:25:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 142-bld312

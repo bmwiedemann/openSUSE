@@ -16,7 +16,7 @@
 #
 
 
-%define rev 312
+%define rev 313
 Name:           asl
 Version:        1.42_bld%{rev}
 Release:        0
@@ -59,6 +59,7 @@ rm %{buildroot}%{_defaultdocdir}/%{name}/COPYING
 
 %files
 %license COPYING
+%doc changelog
 %{_defaultdocdir}/*
 %{_bindir}/alink
 %{_bindir}/asl
