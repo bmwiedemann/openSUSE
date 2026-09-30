@@ -1,4 +1,3 @@
-#
 # spec file for package openssh
 #
 # Copyright (c) 2025 SUSE LLC
@@ -177,6 +176,8 @@ Patch106:       openssh-7.6p1-cleanup-selinux.patch
 Patch107:       openssh-send-extra-term-env.patch
 # PATCH-FIX-SUSE openssh-7.7p1-gssapi-new-unique.patch bsc#1258166 hpj@suse.com -- SSSD non-file ccache: krb5 new_unique
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
+# PATCH-FIX-UPSTREAM openssh-10.5p1-sync-readpassphrase.patch mindrot#3995 yfjiang@suse.com -- Sync readpassphrase(3) with OpenBSD libc: preserve SIG_IGN so ssh-add no longer spins without a controlling tty
+Patch109:       openssh-10.5p1-sync-readpassphrase.patch
 # 200..300 -- Patches submitted to upstream
 # 1000..2000 -- Conditional patches
 %if %{with crypto_policies}

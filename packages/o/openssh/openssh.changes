@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Fri Sep 18 00:35:10 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
+
+- Backport openssh-10.5p1-sync-readpassphrase.patch: sync
+  readpassphrase(3) with OpenBSD libc so that SIG_IGN dispositions
+  are preserved instead of being overridden; fixes ssh-add spinning
+  when started in a background process group with no controlling
+  tty and certain signals ignored (mindrot#3995, upstream commits
+  58db2ec9cac0 and e3cb2b2278c2).
+
+-------------------------------------------------------------------
 Tue Aug 11 08:19:07 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to openssh 10.5p1:

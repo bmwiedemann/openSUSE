@@ -1,0 +1,133 @@
+From 58db2ec9cac0d391b9c0f353a13b516e132f890a Mon Sep 17 00:00:00 2001
+From: Damien Miller <djm@mindrot.org>
+Date: Wed, 16 Sep 2026 11:26:40 +1000
+Subject: [PATCH] sync readpassphrase(3) with OpenBSD libc
+
+Should fix bz3995: ssh-add spins when started in a background group,
+with no controlling tty and with certain signals ignored.
+---
+ openbsd-compat/readpassphrase.c | 57 +++++++++++++++++++++------------
+ 1 file changed, 36 insertions(+), 21 deletions(-)
+
+diff --git a/openbsd-compat/readpassphrase.c b/openbsd-compat/readpassphrase.c
+index ff8ff3dec77f..a93380a8f1b7 100644
+--- a/openbsd-compat/readpassphrase.c
++++ b/openbsd-compat/readpassphrase.c
+@@ -1,8 +1,8 @@
+-/*	$OpenBSD: readpassphrase.c,v 1.26 2016/10/18 12:47:18 millert Exp $	*/
++/*	$OpenBSD: readpassphrase.c,v 1.30 2026/09/16 01:24:59 djm Exp $	*/
+ 
+ /*
+  * Copyright (c) 2000-2002, 2007, 2010
+- *	Todd C. Miller <Todd.Miller@courtesan.com>
++ *	Todd C. Miller <millert@openbsd.org>
+  *
+  * Permission to use, copy, modify, and distribute this software for any
+  * purpose with or without fee is hereby granted, provided that the above
+@@ -50,6 +50,21 @@ static volatile sig_atomic_t signo[_NSIG];
+ 
+ static void handler(int);
+ 
++/* Like sigaction(2) but preserves SIG_IGN */
++static void
++sigaction_except_ign(int signum, struct sigaction *act, struct sigaction *old)
++{
++	struct sigaction sabuf;
++
++	if (old == NULL)
++		old = &sabuf;
++
++	(void)sigaction(signum, act, old);
++	/* Reinstate SIG_IGN; we don't want to override this */
++	if (old->sa_handler == SIG_IGN && act->sa_handler != SIG_IGN)
++		(void)sigaction(signum, old, NULL);
++}
++
+ char *
+ readpassphrase(const char *prompt, char *buf, size_t bufsiz, int flags)
+ {
+@@ -77,7 +92,7 @@ readpassphrase(const char *prompt, char *buf, size_t bufsiz, int flags)
+ 	 * stdin and write to stderr unless a tty is required.
+ 	 */
+ 	if ((flags & RPP_STDIN) ||
+-	    (input = output = open(_PATH_TTY, O_RDWR)) == -1) {
++	    (input = output = __pledge_open(_PATH_TTY, O_RDWR | O_CLOEXEC)) == -1) {
+ 		if (flags & RPP_REQUIRE_TTY) {
+ 			errno = ENOTTY;
+ 			return(NULL);
+@@ -115,15 +130,15 @@ readpassphrase(const char *prompt, char *buf, size_t bufsiz, int flags)
+ 	sigemptyset(&sa.sa_mask);
+ 	sa.sa_flags = 0;		/* don't restart system calls */
+ 	sa.sa_handler = handler;
+-	(void)sigaction(SIGALRM, &sa, &savealrm);
+-	(void)sigaction(SIGHUP, &sa, &savehup);
+-	(void)sigaction(SIGINT, &sa, &saveint);
+-	(void)sigaction(SIGPIPE, &sa, &savepipe);
+-	(void)sigaction(SIGQUIT, &sa, &savequit);
+-	(void)sigaction(SIGTERM, &sa, &saveterm);
+-	(void)sigaction(SIGTSTP, &sa, &savetstp);
+-	(void)sigaction(SIGTTIN, &sa, &savettin);
+-	(void)sigaction(SIGTTOU, &sa, &savettou);
++	sigaction_except_ign(SIGALRM, &sa, &savealrm);
++	sigaction_except_ign(SIGHUP, &sa, &savehup);
++	sigaction_except_ign(SIGINT, &sa, &saveint);
++	sigaction_except_ign(SIGPIPE, &sa, &savepipe);
++	sigaction_except_ign(SIGQUIT, &sa, &savequit);
++	sigaction_except_ign(SIGTERM, &sa, &saveterm);
++	sigaction_except_ign(SIGTSTP, &sa, &savetstp);
++	sigaction_except_ign(SIGTTIN, &sa, &savettin);
++	sigaction_except_ign(SIGTTOU, &sa, &savettou);
+ 
+ 	if (!(flags & RPP_STDIN))
+ 		(void)write(output, prompt, strlen(prompt));
+@@ -157,15 +172,15 @@ readpassphrase(const char *prompt, char *buf, size_t bufsiz, int flags)
+ 			continue;
+ 		signo[SIGTTOU] = sigttou;
+ 	}
+-	(void)sigaction(SIGALRM, &savealrm, NULL);
+-	(void)sigaction(SIGHUP, &savehup, NULL);
+-	(void)sigaction(SIGINT, &saveint, NULL);
+-	(void)sigaction(SIGQUIT, &savequit, NULL);
+-	(void)sigaction(SIGPIPE, &savepipe, NULL);
+-	(void)sigaction(SIGTERM, &saveterm, NULL);
+-	(void)sigaction(SIGTSTP, &savetstp, NULL);
+-	(void)sigaction(SIGTTIN, &savettin, NULL);
+-	(void)sigaction(SIGTTOU, &savettou, NULL);
++	sigaction_except_ign(SIGALRM, &savealrm, NULL);
++	sigaction_except_ign(SIGHUP, &savehup, NULL);
++	sigaction_except_ign(SIGINT, &saveint, NULL);
++	sigaction_except_ign(SIGQUIT, &savequit, NULL);
++	sigaction_except_ign(SIGPIPE, &savepipe, NULL);
++	sigaction_except_ign(SIGTERM, &saveterm, NULL);
++	sigaction_except_ign(SIGTSTP, &savetstp, NULL);
++	sigaction_except_ign(SIGTTIN, &savettin, NULL);
++	sigaction_except_ign(SIGTTOU, &savettou, NULL);
+ 	if (input != STDIN_FILENO)
+ 		(void)close(input);
+ 
+From e3cb2b2278c265072d6ba6f0adf30b5dec0fbcd8 Mon Sep 17 00:00:00 2001
+From: Damien Miller <djm@mindrot.org>
+Date: Wed, 16 Sep 2026 12:28:40 +1000
+Subject: [PATCH] unbreak readpassphrase.c sync
+
+---
+ openbsd-compat/readpassphrase.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/openbsd-compat/readpassphrase.c b/openbsd-compat/readpassphrase.c
+index a93380a8f1b7..43b7128c16a8 100644
+--- a/openbsd-compat/readpassphrase.c
++++ b/openbsd-compat/readpassphrase.c
+@@ -91,8 +91,11 @@ readpassphrase(const char *prompt, char *buf, size_t bufsiz, int flags)
+ 	 * Read and write to /dev/tty if available.  If not, read from
+ 	 * stdin and write to stderr unless a tty is required.
+ 	 */
++#ifndef O_CLOEXEC
++# define O_CLOEXEC 0
++#endif
+ 	if ((flags & RPP_STDIN) ||
+-	    (input = output = __pledge_open(_PATH_TTY, O_RDWR | O_CLOEXEC)) == -1) {
++	    (input = output = open(_PATH_TTY, O_RDWR | O_CLOEXEC)) == -1) {
+ 		if (flags & RPP_REQUIRE_TTY) {
+ 			errno = ENOTTY;
+ 			return(NULL);
