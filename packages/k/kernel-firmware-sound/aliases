@@ -58,6 +58,8 @@ snd_soc_avs: pci:v00008086d0000F0C8sv*sd*bc*sc*i*
 snd_soc_avs: pci:v00008086d0000F1C8sv*sd*bc*sc*i*
 snd_soc_catpt: acpi*:INT33C8%3A*
 snd_soc_catpt: acpi*:INT3438%3A*
+snd_soc_sc8280xp: of:N*T*Cqcom%2Celiza-sndcard
+snd_soc_sc8280xp: of:N*T*Cqcom%2Celiza-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Ckaanapali-sndcard
 snd_soc_sc8280xp: of:N*T*Cqcom%2Ckaanapali-sndcardC*
 snd_soc_sc8280xp: of:N*T*Cqcom%2Cqcm6490-idp-sndcard

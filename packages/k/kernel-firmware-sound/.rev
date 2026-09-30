@@ -530,4 +530,30 @@ After this PR, there will be a delete request for kernel-firmware.
   * linux-firmware: Add firmware for new soundwire projects</comment>
     <requestid>1374916</requestid>
   </revision>
+  <revision rev="46" vrev="1">
+    <srcmd5>097a98e3430bbb349d89b9f86f7165b2</srcmd5>
+    <version>20260926</version>
+    <time>1790778107</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * cirrus: cs35l56: Correct firmware instances for 103c8c52 and 103c8c53
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+
+- Update to version 20260912 (git commit d371ae3b6888):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for a Lenovo laptop
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some HP laptops
+  * cs35l56: Add non-spkid firmware names for Thinkbook 16P Gen6 (17AA3921)
+
+- Update to version 20260903 (git commit ec2d074008a5):
+  * cirrus: Version and cleanup of SDCA FW files
+
+- Update to version 20260902 (git commit abddc5b93044):
+  * cirrus: cs35l41: Add Firmware for ASUS Zenbook Laptop using CS35L41 HDA
+- Update aliases from 7.3-rc1</comment>
+    <requestid>1381448</requestid>
+  </revision>
 </revisionlist>

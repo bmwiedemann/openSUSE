@@ -20,10 +20,10 @@
 %define _firmwaredir /lib/firmware
 %endif
 %define __ksyms_path ^%{_firmwaredir}
-%define git_version 0305399a878366cd1ab2898786e376fe5372544d
+%define git_version 9b858e5bb58d7bf1fc4d8818cb9100aed6d46f6a
 
 Name:           kernel-firmware-sound
-Version:        20260825
+Version:        20260926
 Release:        0
 Summary:        Kernel firmware files for various sound drivers
 License:        GPL-2.0-or-later AND SUSE-Firmware
@@ -80,6 +80,8 @@ Supplements:    modalias(of:N*T*Cmediatek%2Cmt8188-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8188-dspC*)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-dsp)
 Supplements:    modalias(of:N*T*Cmediatek%2Cmt8195-dspC*)
+Supplements:    modalias(of:N*T*Cqcom%2Celiza-sndcard)
+Supplements:    modalias(of:N*T*Cqcom%2Celiza-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcard)
 Supplements:    modalias(of:N*T*Cqcom%2Cglymur-sndcardC*)
 Supplements:    modalias(of:N*T*Cqcom%2Ckaanapali-sndcard)

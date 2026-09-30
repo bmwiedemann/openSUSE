@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Sun Sep 27 08:18:14 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260926 (git commit 9b858e5bb58d):
+  * cirrus: cs35l56: Correct firmware instances for 103c8c52 and 103c8c53
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs42l45: Add CS42L45 SDCA codec firmware for Dell laptops
+  * cirrus: cs35l63: Add Cirrus CS35L63 firmware mappings for some Dell laptops
+
+-------------------------------------------------------------------
+Mon Sep 14 07:54:38 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260912 (git commit d371ae3b6888):
+  * cirrus: cs35l57: Add firmware for Cirrus Amps for a Lenovo laptop
+
+-------------------------------------------------------------------
+Thu Sep 10 16:17:37 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * cirrus: cs35l56: Update firmware for Cirrus Amps for some HP laptops
+  * cs35l56: Add non-spkid firmware names for Thinkbook 16P Gen6 (17AA3921)
+
+-------------------------------------------------------------------
+Fri Sep  4 06:35:07 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260903 (git commit ec2d074008a5):
+  * cirrus: Version and cleanup of SDCA FW files
+
+-------------------------------------------------------------------
+Wed Sep  2 13:01:39 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260902 (git commit abddc5b93044):
+  * cirrus: cs35l41: Add Firmware for ASUS Zenbook Laptop using CS35L41 HDA
+- Update aliases from 7.3-rc1
+
+-------------------------------------------------------------------
 Tue Aug 25 16:00:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260825 (git commit 0305399a8783):
