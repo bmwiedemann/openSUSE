@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:16:53 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260929 (git commit 33b68e2c7011):
+  * QCA: Add QCA2066 Bluetooth firmware hpnv21g.30c
+  * QCA: Update Bluetooth QCA2066 firmware to 2.1.0-00653
+
+-------------------------------------------------------------------
+Sun Sep 27 08:16:41 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260926 (git commit 9b858e5bb58d):
+  * qca: group the QCA61x4 USB firmware files
+  * qca: fix the version of the WCN785x USB firmware
+  * intel: Update ibt-00a0-01a1-pci.ddc for BE211 - Whale Peak2 (WhP2)
+
+-------------------------------------------------------------------
+Thu Sep 17 10:30:42 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260916 (git commit e289868675d1):
+  * QCA: Update Bluetooth firmware for QCC2072 UART interface: 1.1.0-00340 to 1.1.0-00355
+
+-------------------------------------------------------------------
+Thu Sep 10 16:16:45 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * QCA: Add Bluetooth firmware for WCN7750 on Maili platform
+
+-------------------------------------------------------------------
+Wed Sep  2 13:00:54 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260902 (git commit abddc5b93044):
+  * QCA: Add Bluetooth firmware hmtnv20.b201/b202 for WCN7850 on Nord platform
+  * QCA: Update Bluetooth QCA6698 firmware to 2.1.2-00079
+
+-------------------------------------------------------------------
 Fri Aug 28 13:58:03 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260828 (git commit b6bdea3726dc):
