@@ -60,7 +60,10 @@ sed -iE "s/\r$//" README.md
 echo 'set_property(TARGET SQLiteCpp PROPERTY OUTPUT_NAME "sqlitecpp")' >> CMakeLists.txt
 
 %build
+# -DSQLITECPP_USE_STACK_PROTECTION=OFF: upstream CMakeLists would append
+# -fstack-protector (basic), downgrading -fstack-protector-strong from %{optflags}
 %cmake \
+  -DSQLITECPP_USE_STACK_PROTECTION:BOOL=OFF \
   -DSQLITECPP_INTERNAL_SQLITE:BOOL=false \
   -DSQLITE_ENABLE_COLUMN_METADATA=true \
   -DSQLITECPP_BUILD_TESTS=true \

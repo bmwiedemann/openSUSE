@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream stack protector append via -DSQLITECPP_USE_STACK_PROTECTION=OFF (would add -fstack-protector basic, downgrading -fstack-protector-strong from distro optflags)
+
+-------------------------------------------------------------------
 Tue Sep 22 17:42:23 UTC 2026 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Update to version 3.4.0:
