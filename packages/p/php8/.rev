@@ -2009,4 +2009,12 @@
         Fixed returns uninitialized value on LiteSpeed lsapi SAPI (Go Kudo) (forwarded request 1380240 from adkorte)</comment>
     <requestid>1380343</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>2994652b9594689192fe578f0ee8df32</srcmd5>
+    <version>8.5.11</version>
+    <time>1790778160</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1283216], CVE-2025-14181</comment>
+    <requestid>1381590</requestid>
+  </revision>
 </revisionlist>

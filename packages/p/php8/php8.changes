@@ -81,6 +81,16 @@ Thu Sep 24 17:46:45 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
     SAPI:
         Fixed fuzzer targets failing to build in isolation.
         Fixed returns uninitialized value on LiteSpeed lsapi SAPI (Go Kudo)
+* fixes CVE-2026-91769 [bsc#1283044]
+        CVE-2026-91765 [bsc#1282875]
+        CVE-2026-91766 [bsc#1282876]
+        CVE-2026-91767 [bsc#1282877]
+        CVE-2026-91768 [bsc#1282878]
+        CVE-2026-6103 [bsc#1282980]
+        CVE-2025-1218 [bsc#1282981]
+        CVE-2026-92842 [bsc#1282985]
+        CVE-2026-93682 [bsc#1282986]
+        CVE-2025-14181 [bsc#1283216]
 
 -------------------------------------------------------------------
 Fri Aug 28 05:59:46 UTC 2026 - Arjen de Korte <suse+build@de-korte.org>
