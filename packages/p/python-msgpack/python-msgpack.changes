@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Sep 26 16:17:20 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.2.2:
+  * Fix a use-after-free: unpackb() could build ExtraData.extra
+    from already-freed memory when the input was a non-contiguous
+    buffer (gh#msgpack/msgpack-python#720)
+  * Fix silent datetime truncation in Unpacker with datetime=3
+  * Add a reentrant guard to Unpacker.feed()
+  * Validate the nanoseconds range when unpacking timestamps in
+    the C extension
+  * Fix Timestamp.from_datetime() precision loss for far-future
+    datetimes
+  * Raise OverflowError instead of silently truncating when
+    use_single_float cannot represent a value
+  * Translate RecursionError to StackError in the fallback
+    Unpacker.skip()
+
+-------------------------------------------------------------------
 Wed Jul  1 09:17:38 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - update to 1.2.1 (bsc#1269947, CVE-2026-57585)
