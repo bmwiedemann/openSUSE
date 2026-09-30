@@ -18,20 +18,17 @@
 
 %define lname   libfribidi0
 Name:           fribidi
-Version:        1.0.16
+Version:        1.0.17
 Release:        0
 Summary:        An implementation of the Unicode BiDi algorithm
 License:        LGPL-2.1-only
 URL:            https://github.com/fribidi/fribidi
 Source:         https://github.com/fribidi/fribidi/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source2:        baselibs.conf
+BuildRequires:  help2man
 BuildRequires:  pkgconfig
 #
 Provides:       locale(ar;he)
-# bug437293
-%ifarch ppc64
-Obsoletes:      fribidi-64bit
-%endif
 
 %description
 This library implements the algorithm as described in "Unicode
@@ -78,6 +75,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %files
 %doc NEWS README
 %{_bindir}/fribidi
+%{_mandir}/man1/fribidi.1%{?ext_man}
 
 %files -n %{lname}
 %license COPYING
