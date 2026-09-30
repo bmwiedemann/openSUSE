@@ -30,7 +30,7 @@ License:        GPL-2.0-or-later AND SUSE-Firmware AND GPL-2.0-only
 Group:          System/Kernel
 URL:            https://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git/
 Source0:        %{name}-%{version}.tar.xz
-Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260629.tar.gz#/kernel-firmware-tools-20260629.tar.gz
+Source1:        https://github.com/openSUSE/kernel-firmware-tools/archive/refs/tags/20260825.tar.gz#/kernel-firmware-tools-20260825.tar.gz
 Source2:        %{name}-rpmlintrc
 Source3:        git_id
 Source10:       aliases
@@ -74,12 +74,16 @@ Supplements:    modalias(pci:v00001077d00002061sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002071sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002081sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002089sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00002091sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00002099sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002100sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002200sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002261sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002271sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002281sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002289sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00002291sv*sd*bc*sc*i*)
+Supplements:    modalias(pci:v00001077d00002299sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002300sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002312sv*sd*bc*sc*i*)
 Supplements:    modalias(pci:v00001077d00002322sv*sd*bc*sc*i*)

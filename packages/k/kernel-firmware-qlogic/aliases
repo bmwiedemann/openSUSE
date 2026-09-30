@@ -34,12 +34,16 @@ qla2xxx: pci:v00001077d00002061sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002071sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002081sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002089sv*sd*bc*sc*i*
+qla2xxx: pci:v00001077d00002091sv*sd*bc*sc*i*
+qla2xxx: pci:v00001077d00002099sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002100sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002200sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002261sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002271sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002281sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002289sv*sd*bc*sc*i*
+qla2xxx: pci:v00001077d00002291sv*sd*bc*sc*i*
+qla2xxx: pci:v00001077d00002299sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002300sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002312sv*sd*bc*sc*i*
 qla2xxx: pci:v00001077d00002322sv*sd*bc*sc*i*

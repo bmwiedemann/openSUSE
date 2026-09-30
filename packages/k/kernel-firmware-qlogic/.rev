@@ -65,4 +65,12 @@ After this PR, there will be a delete request for kernel-firmware.
   * qla2xxx: Add ql2900_fw.bin firmware for 29xx adapters</comment>
     <requestid>1374914</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>4ee3d16a5ed843d20118bac0009e9217</srcmd5>
+    <version>20260731</version>
+    <time>1790778106</time>
+    <user>anag_factory</user>
+    <comment>- Update aliases from 7.3-rc1</comment>
+    <requestid>1381446</requestid>
+  </revision>
 </revisionlist>
