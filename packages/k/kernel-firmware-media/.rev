@@ -247,4 +247,20 @@ After this PR, there will be a delete request for kernel-firmware.
   * qcom: venus-5.4: fix vp9 decoder assertion failure</comment>
     <requestid>1374910</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>8acc81755b5ddfebae7cb6b61858b21b</srcmd5>
+    <version>20260926</version>
+    <time>1790778100</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * qcom: vpu: add Gen2 firmware binary for Hawi
+  * qcom: vpu: add Gen2 firmware binary for Maili
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * qcom: vpu: add Gen2 firmware binary for sc8280xp
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * qcom: vpu: Update video firmware binary for Glymur</comment>
+    <requestid>1381440</requestid>
+  </revision>
 </revisionlist>

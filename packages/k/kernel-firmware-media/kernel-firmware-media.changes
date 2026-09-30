@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Sep 27 08:17:13 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260926 (git commit 9b858e5bb58d):
+  * qcom: vpu: add Gen2 firmware binary for Hawi
+  * qcom: vpu: add Gen2 firmware binary for Maili
+
+-------------------------------------------------------------------
+Wed Sep 16 07:17:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * qcom: vpu: add Gen2 firmware binary for sc8280xp
+
+-------------------------------------------------------------------
+Thu Sep 10 16:16:59 UTC 2026 - Takashi Iwai <tiwai@suse.com>
+
+- Update to version 20260910 (git commit eeccccbe83da):
+  * qcom: vpu: Update video firmware binary for Glymur
+
+-------------------------------------------------------------------
 Fri Aug 14 07:16:48 UTC 2026 - Takashi Iwai <tiwai@suse.com>
 
 - Update to version 20260813 (git commit 984503d80fd6):
