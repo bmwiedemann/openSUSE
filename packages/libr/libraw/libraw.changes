@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:46:51 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-88387:  incorrect numeric conversion in `LibRaw::parse_tiff_ifd()` when processing TIFF tag `0x00fe` can lead to undefined behavior and a process crash when a specially crafted file is processed [bsc#1282783]
+  * libraw-CVE-2026-88387.patch
+
+-------------------------------------------------------------------
 Fri Jul 31 19:22:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.22.2:

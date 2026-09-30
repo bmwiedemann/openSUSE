@@ -32,6 +32,8 @@ URL:            https://www.libraw.org/
 #Git-Clone:	git://github.com/LibRaw/LibRaw
 Source0:        https://www.libraw.org/data/%tar_name-%version.tar.gz
 Source1:        baselibs.conf
+# CVE-2026-88387:  incorrect numeric conversion in `LibRaw::parse_tiff_ifd()` when processing TIFF tag `0x00fe` can lead to undefined behavior and a process crash when a specially crafted file is processed [bsc#1282783]
+Patch0:         libraw-CVE-2026-88387.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  fdupes

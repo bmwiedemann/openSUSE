@@ -825,4 +825,12 @@ The only dup reported was for /usr/lib64/libraw.a and libraw_r.a (forwarded requ
     array small allocation. It will definitely fall later on (forwarded request 1368910 from dirkmueller)</comment>
     <requestid>1369222</requestid>
   </revision>
+  <revision rev="72" vrev="2">
+    <srcmd5>92cc4b2b2a88d6c79543856d03e51aaa</srcmd5>
+    <version>0.22.2</version>
+    <time>1790778123</time>
+    <user>anag_factory</user>
+    <comment>[bsc#1282783], CVE-2026-88387</comment>
+    <requestid>1381326</requestid>
+  </revision>
 </revisionlist>
