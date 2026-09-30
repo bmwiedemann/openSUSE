@@ -343,4 +343,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * intel_vpu: Update NPU firmware</comment>
     <requestid>1374908</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>b242024577fcc26875038f09da63c4a2</srcmd5>
+    <version>20260916</version>
+    <time>1790778099</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260916 (git commit e289868675d1):
+  * intel_vpu: Update NPU firmware</comment>
+    <requestid>1381438</requestid>
+  </revision>
 </revisionlist>
