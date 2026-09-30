@@ -17,24 +17,23 @@
 #
 
 
+%define         sover 4
 %if ! 0%{?_smp_build_ncpus}
 # needed by %%meson
 %define  _smp_build_ncpus %{?jobs:%{jobs}}
 %endif
-
-%define         sover 3
 Name:           libbluray
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Library to access Blu-Ray disk
 License:        LGPL-2.1-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://www.videolan.org/developers/libbluray.html
 Source0:        https://download.videolan.org/pub/videolan/%{name}/%{version}/%{name}-%{version}.tar.xz
 Source99:       baselibs.conf
 BuildRequires:  ant
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  meson
+BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(fontconfig)
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(libudfread)
@@ -47,7 +46,6 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 %package -n libbluray%{sover}
 Summary:        Library to access Blu-Ray disk
-Group:          System/Libraries
 
 %description -n libbluray%{sover}
 This library is written for the purpose of playing Blu-ray movies. It is
@@ -56,7 +54,6 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 %package tools
 Summary:        Library to access Blu-Ray disk - Utilities
-Group:          Productivity/Multimedia/Other
 
 %description tools
 This library is written for the purpose of playing Blu-ray movies. It is
@@ -65,7 +62,6 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 %package devel
 Summary:        Library to access Blu-Ray disks - Development files
-Group:          Development/Languages/C and C++
 Requires:       libbluray%{sover} = %{version}
 
 %description devel
@@ -75,14 +71,13 @@ MPlayer). We, the authors of this library, do not condone nor endorse piracy.
 
 %package bdj
 Summary:        Library to access Blu-Ray disk - BD-J support
-Group:          Development/Libraries/Java
 Requires:       jpackage-utils
+BuildArch:      noarch
 %if %{?pkg_vcmp:%pkg_vcmp java-devel >= 9}%{!?pkg_vcmp:0}
 Requires:       java >= 9
 %else
 Requires:       java >= 1.8
 %endif
-BuildArch:      noarch
 
 %description bdj
 This library is written for the purpose of playing Blu-ray movies. It is
