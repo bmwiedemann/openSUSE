@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 16:41:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Add nbd-fix-help-parsing.patch to fix nbd-client -h segfaulting
+  (boo#1282852): usage_error() was called with a NULL format string,
+  which vsnprintf dereferences (upstream commit 89ba7b537954)
+
+-------------------------------------------------------------------
 Wed Jun 24 07:41:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Add nbd-fix-device-parsing.patch to fix nbdtab device parsing

@@ -518,4 +518,14 @@ Should go into 12.2 as well. (forwarded request 127441 from a_jaeger)</comment>
     <comment>Add upstream fix (commit a80304e10e97) for nbdtab device parsing in the netlink disconnect/check/connect paths; nbd 3.27.1 only fixed the connect path, which made dracut's TEST-72-NBD fail (boo#1268185). nbd 3.27.1 is still the latest upstream release, so this is a backport of the unreleased fix (same change Debian carries for #1133143).</comment>
     <requestid>1361551</requestid>
   </revision>
+  <revision rev="64" vrev="3">
+    <srcmd5>c6df4b1762f2b39d4fb85176cc6e83f1</srcmd5>
+    <version>3.27.1</version>
+    <time>1790778258</time>
+    <user>anag_factory</user>
+    <comment>Add nbd-fix-help-parsing.patch: nbd-client -h called usage_error() with a NULL format string, which vsnprintf dereferences (boo#1282852).
+
+Verified in podman: unpatched it dies with SIGSEGV (exit 139), patched it prints usage and exits 1. Details in .changes.</comment>
+    <requestid>1381517</requestid>
+  </revision>
 </revisionlist>

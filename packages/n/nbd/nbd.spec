@@ -29,6 +29,8 @@ Source4:        nbd-server.sysconfig
 Source5:        nbd-client.service
 # PATCH-FIX-UPSTREAM nbd-fix-device-parsing.patch boo#1268185 -- fix nbdtab device parsing in all netlink paths (upstream commit a80304e10e97)
 Patch0:         nbd-fix-device-parsing.patch
+# PATCH-FIX-UPSTREAM nbd-fix-help-parsing.patch boo#1282852 -- nbd-client -h segfaults: usage_error() was called with a NULL format string (upstream commit 89ba7b537954)
+Patch1:         nbd-fix-help-parsing.patch
 BuildRequires:  autoconf
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

@@ -1,0 +1,26 @@
+From 89ba7b5379548d6ebbfa36db15f2b8e3787a09ea Mon Sep 17 00:00:00 2001
+From: Wouter Verhelst <w@uter.be>
+Date: Sat, 2 May 2026 00:33:52 +0200
+Subject: [PATCH] Fix --help parsing
+
+Closes: gh-191
+---
+ args.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/args.c b/args.c
+index f56f0a4..97a96c1 100644
+--- a/args.c
++++ b/args.c
+@@ -156,7 +156,7 @@ blocksize:
+             client->no_optgo = true;
+             break;
+         case 'h':
+-            usage_error(&result, NULL); // Will show help
++            usage_error(&result, ""); // Will show help
+             return result;
+ #if HAVE_NETLINK
+         case 'i':
+-- 
+2.51.0
+
