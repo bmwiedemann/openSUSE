@@ -114,4 +114,13 @@ After this PR, there will be a delete request for kernel-firmware.
   * Move firmware licenses to a LICENSES/ directory</comment>
     <requestid>1361021</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>40276a0123f8515f1c0c2fe1c7423799</srcmd5>
+    <version>20260926</version>
+    <time>1790778094</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * ath11k: WCN6855 hw2.0: update board-2.bin</comment>
+    <requestid>1381433</requestid>
+  </revision>
 </revisionlist>
