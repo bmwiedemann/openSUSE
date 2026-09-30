@@ -86,4 +86,19 @@ After this PR, there will be a delete request for kernel-firmware.
   * ath10k: WCN3990 hw1.0: update board-2.bin</comment>
     <requestid>1374904</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>614bd97c8692fc80e1412f8932b3416d</srcmd5>
+    <version>20260926</version>
+    <time>1790778093</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260926 (git commit 9b858e5bb58d):
+  * qcom/shikra: link WiFi firmware from the ath10k subdir
+
+- Update to version 20260915 (git commit 4584045b2121):
+  * qcom/sdm845: Let SHIFT6mq use the provided Wi-Fi firmware
+
+- Update to version 20260912 (git commit d371ae3b6888):
+  * ath10k: WCN3990: hw1.0: add shikra firmware files</comment>
+    <requestid>1381432</requestid>
+  </revision>
 </revisionlist>
