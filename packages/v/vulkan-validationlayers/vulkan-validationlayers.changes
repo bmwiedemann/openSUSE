@@ -1,9 +1,16 @@
 -------------------------------------------------------------------
+Tue Sep 29 14:14:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.363.0
+  * gpuav: Allow shaders to be written in Slang
+  * Stability fixes
+
+-------------------------------------------------------------------
 Wed Jul 29 10:38:19 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.357.0
   * layers: Add event host stage validation
-  * gpuav: Add Tlas validation for ray query
+  * gpuav: Add TLAS validation for ray query
   * layers: Add missing shader object tracking
   * layers: Rework event validation to ignore repeated signals
   * layers: Parse OR in extensions dependencies list

@@ -11,19 +11,19 @@ xxhash as well, so that the ABI matches.
  layers/utils/hash_util.cpp |    7 +------
  2 files changed, 2 insertions(+), 7 deletions(-)
 
-Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/CMakeLists.txt
+Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0/layers/CMakeLists.txt
 ===================================================================
---- Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0.orig/layers/CMakeLists.txt
-+++ Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/CMakeLists.txt
-@@ -40,7 +40,6 @@ target_sources(VkLayer_utils PRIVATE
-     error_message/error_strings.cpp
+--- Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0.orig/layers/CMakeLists.txt
++++ Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0/layers/CMakeLists.txt
+@@ -37,7 +37,6 @@ target_sources(VkLayer_utils PRIVATE
+     error_message/error_location.h
      error_message/record_object.h
      error_message/log_message_type.h
 -    external/xxhash.h
      external/inplace_function.h
      ${API_TYPE}/generated/error_location_helper.cpp
      ${API_TYPE}/generated/error_location_helper.h
-@@ -101,6 +100,7 @@ target_link_libraries(VkLayer_utils PUBL
+@@ -99,6 +98,7 @@ target_link_libraries(VkLayer_utils PUBL
      Vulkan::SafeStruct
      Vulkan::UtilityHeaders
      ${CMAKE_DL_LIBS}
@@ -31,17 +31,17 @@ Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/CMakeLists.txt
  )
  target_include_directories(VkLayer_utils SYSTEM PRIVATE external)
  target_include_directories(VkLayer_utils PUBLIC . ${API_TYPE})
-Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/utils/hash_util.cpp
+Index: Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0/layers/utils/hash_util.cpp
 ===================================================================
---- Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0.orig/layers/utils/hash_util.cpp
-+++ Vulkan-ValidationLayers-vulkan-sdk-1.4.350.0/layers/utils/hash_util.cpp
+--- Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0.orig/layers/utils/hash_util.cpp
++++ Vulkan-ValidationLayers-vulkan-sdk-1.4.363.0/layers/utils/hash_util.cpp
 @@ -23,12 +23,7 @@
  #define XXH_IMPLEMENTATION
  
  // Only include xxhash.h once!
 -#include "external/xxhash.h"
 -
--// Currently using version v0.8.2 of xxhash
+-// Current version of xxhash
 -static_assert(XXH_VERSION_MAJOR == 0);
 -static_assert(XXH_VERSION_MINOR == 8);
 -static_assert(XXH_VERSION_RELEASE == 3);
