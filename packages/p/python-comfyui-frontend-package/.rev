@@ -162,4 +162,13 @@ Built and checked locally on aarch64: rpmlint 3 packages, 0 errors, 0
 warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <requestid>1379732</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>5e170bff2aaaaa14b240e037a75b9dd4</srcmd5>
+    <version>1.54.8</version>
+    <time>1790865894</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.54.8, newest build of the core/1.54 frontend line: 86 backported commits including HTML-sanitization hardening and agent/multiplayer fixes. Satisfies the frontend floor comfyui 0.38.0 raises to &gt;= 1.53.6.
+</comment>
+    <requestid>1381683</requestid>
+  </revision>
 </revisionlist>

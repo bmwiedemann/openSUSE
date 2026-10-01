@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:06:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.54.8:
+  * Harden HTML sanitization against attribute breakout, form
+    injection and javascript: URLs
+  * Adopt comfy-multiplayer 0.3.6 for agent multiplayer sync
+  * Agent: fix node-id collisions on CRDT-bound graphs, composer
+    paste also pasting the last copied node, canvas freeze after a
+    lost touchend, TDZ crash restoring multiline widget values
+  * Workflows: keep subgraph definitions consistent across
+    convert-to-subgraph, materialize insert_workflow links with
+    numeric ids, detach locally deleted open workflows
+  * Restore Impact, WAS Pause and RefMod custom-node compatibility
+  * Fix promoted dynamic combo child links on load, allow nodes to
+    shrink after content growth, skip document-wide modal scans
+    while typing
+
+-------------------------------------------------------------------
 Tue Sep 22 17:11:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.54.7:
