@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:37:43 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Add lexical-binding statement to suse-start-po-mode.el to fix
+  emacs 31 warning on startup
+
+-------------------------------------------------------------------
 Tue Apr 29 12:28:28 UTC 2025 - Jean Delvare <jdelvare@suse.com>
 
 - Update to version 0.69:

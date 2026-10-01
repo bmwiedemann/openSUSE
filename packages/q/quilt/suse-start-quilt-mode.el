@@ -1,4 +1,4 @@
-;; /usr/share/emacs/site-lisp/suse-start-quilt-mode.el
+;; /usr/share/emacs/site-lisp/suse-start-quilt-mode.el  -*- lexical-binding: t; -*-
 
 (autoload 'quilt-mode "quilt"
   "Toggle quilt-mode. With positive arg, enable quilt-mode." t)

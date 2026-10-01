@@ -622,4 +622,12 @@ patches/vrss.patch (forwarded request 226944 from jdelvare)</comment>
 - Make it possible to run &quot;quilt setup&quot; on a spec file which excludes the local architecture (boo#1238516).</comment>
     <requestid>1273478</requestid>
   </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>23138229d0545a7464b6f85a92e92838</srcmd5>
+    <version>0.69</version>
+    <time>1790865824</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381651</requestid>
+  </revision>
 </revisionlist>
