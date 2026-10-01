@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Wed Sep 30 18:17:00 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 20.1.1:
+  * [Client] Predict static laser doors without antiping
+  * [Tooling] map_render
+  * [Client] Add loading bar to map loading
+  * [Client] Show freeze pickups as snowflakes
+  * [Client] Improve performance for low refresh/update rates,
+    handle input earlier
+  * [Client] Make spectate menu more legible
+  * [Client] Adjust team scoreboard for 128 players
+  * [Client] Add scoreboard cursor hint
+  * [Client] Dismiss MOTD by clicking outside of it, tap mod alert
+    to dismiss
+  * [Client] Show back button in console
+  * [Client] Convert credits to a client popup, update list of
+    common contributors
+  * [Client] List unmodified binds before binds with modifiers in
+    controls settings
+  * [Client] Keep sound running when no audio device is available
+  * [Client] Fix touch and mouse position when the viewport is
+    clamped to 5:4
+  * [Client] Fix invisible laser with antiping and sv_old_laser 1
+  * [Client] Graphics and shader fixes, fix incorrect texture
+    resampling with Vulkan and OpenGL 3.3
+  * [Editor] Add more font typer binds and other improvements
+  * [Editor] Don't flip/rotate the brush when Ctrl+N/M/R/T
+    is pressed
+  * [Editor] Fix a crash in the brush picker
+  * [Client&Server] Release ground hooks that lost their tile when
+    loading a tee
+  * [Server] Support vanilla 0.6 clients again
+  * [Server] Optimize 128 player servers
+  * [Server] Allow rejoining from any client, allow id usage from
+    more clients
+  * [Server] Send min and max team size in game info, send
+    supported number of teams through gameinfoex
+  * [Server] Allow clients to reconnect reliably, fix reconnecting
+    to previously used slot
+  * [Server] Fix team ranks of large teams being cut off, fail
+    saving teams instead of corrupting savegame
+  * [Server] Allow passing "all" as argument to kick
+  * [Server] Rate limit /timecp queries
+  * [Server] Fix tele not using position of target player
+  * [Infra.] Use precompiled headers for faster builds
+
+-------------------------------------------------------------------
+Sat Sep 26 13:15:21 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 20.1:
+  * [Client] Predict static laser doors without antiping
+  * [Tooling] map_render
+  * [Client] iOS support (not released yet)
+  * [Client] Add loading bar to map loading
+  * [Client] Show freeze pickups as snowflakes
+  * [Client] Improve performance for low refresh/update rates,
+    handle input earlier
+  * [Client] Make spectate menu more legible
+  * [Client] Adjust team scoreboard for 128 players
+  * [Client] Add scoreboard cursor hint
+  * [Client] Dismiss MOTD by clicking outside of it, tap mod alert
+    to dismiss
+  * [Client] Show back button in console
+  * [Client] Convert credits to a client popup, update list of
+    common contributors
+  * [Client] List unmodified binds before binds with modifiers in
+    controls settings
+  * [Client] Keep sound running when no audio device is available
+  * [Client] Fix touch and mouse position when the viewport is
+    clamped to 5:4
+  * [Client] Fix invisible laser with antiping and sv_old_laser 1
+  * [Client] Graphics and shader fixes, fix incorrect texture
+    resampling with Vulkan and OpenGL 3.3
+  * [Editor] Add more font typer binds and other improvements
+  * [Editor] Don't flip/rotate the brush when Ctrl+N/M/R/T is
+    pressed
+  * [Editor] Fix a crash in the brush picker
+  * [Client&Server] Release ground hooks that lost their tile when
+    loading a tee
+  * [Server] Support vanilla 0.6 clients again
+  * [Server] Optimize 128 player servers
+  * [Server] Allow rejoining from any client, allow id usage from
+    more clients
+  * [Server] Send min and max team size in game info, send
+    supported number of teams through gameinfoex
+  * [Server] Allow clients to reconnect reliably, fix reconnecting
+    to previously used slot
+  * [Server] Fix team ranks of large teams being cut off, fail
+    saving teams instead of corrupting savegame
+  * [Server] Allow passing "all" as argument to kick
+  * [Server] Rate limit /timecp queries
+  * [Server] Fix tele not using position of target player
+  * [Infra.] Use precompiled headers for faster builds
+
+-------------------------------------------------------------------
 Tue Sep  1 14:05:54 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Drop %patch -P 0 -p1 line in spec file
