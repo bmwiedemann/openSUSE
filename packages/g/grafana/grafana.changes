@@ -5,8 +5,9 @@ Thu Sep 17 13:01:40 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
   * Security:
     CVE-2026-15815: Fix Grafana Plugin extraction zip slip
                     (bsc#1281451)
-    CVE-2026-76154: Fix Geomap MapLibre XSS
-    Fix CVE-2026-79656
+    CVE-2026-76154: Fix Geomap MapLibre XSS (bsc#1281464)
+    CVE-2026-79656: Fix improper permission checking to prevent
+                    unauthorized privilege escalation (bsc#1283514)
     CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: Fix
     authentication bypass and deadlocks by bumping crypto/ssh
     library to version 0.56.0 (bsc#1278576)
