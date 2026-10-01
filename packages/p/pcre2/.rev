@@ -356,4 +356,12 @@ boo#1277712
 boo#1277713</comment>
     <requestid>1374973</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>589f893da9ed82f437142fbf5d6aac4c</srcmd5>
+    <version>10.49</version>
+    <time>1790865675</time>
+    <user>anag_factory</user>
+    <comment>pcre2 10.49 boo#1283020 (forwarded request 1381237 from AndreasStieger)</comment>
+    <requestid>1381238</requestid>
+  </revision>
 </revisionlist>

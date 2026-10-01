@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 19:14:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 10.49:
+  * GHSA-r9hj-j2rw-4q3m: out-of-bounds write in JIT matching with
+    large stack allocations
+    (boo#1283020)
+
+-------------------------------------------------------------------
 Mon Aug 31 19:05:45 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 10.48:
