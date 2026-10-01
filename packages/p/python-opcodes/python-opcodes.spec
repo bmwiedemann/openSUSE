@@ -1,7 +1,7 @@
 #
 # spec file for package python-opcodes
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        0.3.14
 Release:        0
 Summary:        Database of Processor Instructions/Opcodes
 License:        BSD-2-Clause
-Group:          Development/Languages/Python
 URL:            https://github.com/Maratyszcza/Opcodes
 Source:         https://files.pythonhosted.org/packages/source/o/opcodes/opcodes-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use importlib.resources to find packaged resources
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
@@ -47,7 +48,7 @@ for tools development. An instruction set is represented by three files:
 This project is a spin-off from <https://github.com/Maratyszcza/PeachPy
 
 %prep
-%setup -q -n opcodes-%{version}
+%autosetup -p1 -n opcodes-%{version}
 
 %build
 %pyproject_wheel

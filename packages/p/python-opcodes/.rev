@@ -37,4 +37,13 @@
     * Replace %python_install with %pyproject_install</comment>
     <requestid>1289276</requestid>
   </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>9053eec4351ae176a01cfa4c844c232b</srcmd5>
+    <version>0.3.14</version>
+    <time>1790865732</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to discover packaged resources.</comment>
+    <requestid>1381557</requestid>
+  </revision>
 </revisionlist>

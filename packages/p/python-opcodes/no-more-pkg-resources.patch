@@ -1,0 +1,85 @@
+Index: opcodes-0.3.14/opcodes/k1om.py
+===================================================================
+--- opcodes-0.3.14.orig/opcodes/k1om.py
++++ opcodes-0.3.14/opcodes/k1om.py
+@@ -1,5 +1,5 @@
+ from __future__ import print_function
+-import pkg_resources
++import importlib.resources
+ import xml.etree.ElementTree as ET
+ 
+ 
+@@ -773,10 +773,8 @@ def read_instruction_set(filename=None):
+     :param filename: path to an XML file with instruction set data
+     """
+     if filename is None:
+-        data = pkg_resources.resource_stream("opcodes", "k1om.xml")
+-        xml_tree = ET.parse(data)
+-    else:
+-        xml_tree = ET.parse(filename)
++        filename = importlib.resources.files("opcodes").joinpath("k1om.xml")
++    xml_tree = ET.parse(filename)
+ 
+     xml_instruction_set = xml_tree.getroot()
+     assert xml_instruction_set.tag == "InstructionSet"
+Index: opcodes-0.3.14/opcodes/x86.py
+===================================================================
+--- opcodes-0.3.14.orig/opcodes/x86.py
++++ opcodes-0.3.14/opcodes/x86.py
+@@ -1,5 +1,5 @@
+ from __future__ import print_function
+-import pkg_resources
++import importlib.resources
+ import xml.etree.ElementTree as ET
+ 
+ 
+@@ -906,10 +906,8 @@ def read_instruction_set(filename=None):
+     :param filename: path to an XML file with instruction set data
+     """
+     if filename is None:
+-        data = pkg_resources.resource_stream("opcodes", "x86.xml")
+-        xml_tree = ET.parse(data)
+-    else:
+-        xml_tree = ET.parse(filename)
++        filename = importlib.resources.files("opcodes").joinpath("x86.xml")
++    xml_tree = ET.parse(filename)
+ 
+     xml_instruction_set = xml_tree.getroot()
+     assert xml_instruction_set.tag == "InstructionSet"
+Index: opcodes-0.3.14/opcodes/x86_64.py
+===================================================================
+--- opcodes-0.3.14.orig/opcodes/x86_64.py
++++ opcodes-0.3.14/opcodes/x86_64.py
+@@ -1,5 +1,5 @@
+ from __future__ import print_function
+-import pkg_resources
++import importlib.resources
+ import xml.etree.ElementTree as ET
+ 
+ 
+@@ -1041,10 +1041,8 @@ def read_instruction_set(filename=None):
+     :param filename: path to an XML file with instruction set data
+     """
+     if filename is None:
+-        data = pkg_resources.resource_stream("opcodes", "x86_64.xml")
+-        xml_tree = ET.parse(data)
+-    else:
+-        xml_tree = ET.parse(filename)
++        filename = importlib.resources.files("opcodes").joinpath("x86_64.xml")
++    xml_tree = ET.parse(filename)
+ 
+     xml_instruction_set = xml_tree.getroot()
+     assert xml_instruction_set.tag == "InstructionSet"
+Index: opcodes-0.3.14/setup.py
+===================================================================
+--- opcodes-0.3.14.orig/setup.py
++++ opcodes-0.3.14/setup.py
+@@ -21,7 +21,7 @@ setup(
+     packages=["opcodes"],
+     package_data={"opcodes": ["x86.xml", "x86_64.xml", "k1om.xml"]},
+     keywords=["assembly", "assembler", "asm", "opcodes", "x86", "x86-64", "isa", "cpu"],
+-    install_requires=["setuptools"],
++    install_requires=[],
+     requires=[],
+     classifiers=[
+         "Development Status :: 4 - Beta",

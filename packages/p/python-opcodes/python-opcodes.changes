@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 01:34:43 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to discover packaged resources.
+
+-------------------------------------------------------------------
 Mon Jun 30 12:31:56 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Limit Python files matched in %files section
