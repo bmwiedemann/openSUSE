@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-storagecache
-Version:        4.0.0
+Version:        4.1.0
 Release:        0
 Summary:        Microsoft Azure Storagecache Management Client Library
 License:        MIT
