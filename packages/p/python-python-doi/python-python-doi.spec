@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-doi
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,8 +26,12 @@ Source:         https://files.pythonhosted.org/packages/source/p/python-doi/pyth
 # PATCH-FIX-UPSTREAM mark-network-tests.patch gh#alejandrogallo/python-doi#1 mcepl@suse.com
 # mark tests requiring network access for their exclusion
 Patch0:         mark-network-tests.patch
+# PATCH-FIX-OPENSUSE Do not use pkg_resources
+Patch1:         no-more-pkg-resources.patch
+BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -58,6 +62,6 @@ Python package to work with Document Object Identifier (doi)
 %doc AUTHORS.rst README.rst
 %license LICENSE
 %{python_sitelib}/doi
-%{python_sitelib}/python_doi-%{version}*-info
+%{python_sitelib}/python_doi-%{version}.dist-info
 
 %changelog

@@ -7,4 +7,13 @@
     <comment>Dependency of papis.</comment>
     <requestid>1063212</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>a51644a5ec2a3bb67d5b441f947589f4</srcmd5>
+    <version>0.2.0</version>
+    <time>1790865990</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use packaging rather than pkg_resources.</comment>
+    <requestid>1381754</requestid>
+  </revision>
 </revisionlist>

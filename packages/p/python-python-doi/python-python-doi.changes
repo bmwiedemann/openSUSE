@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 02:08:00 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use packaging rather than pkg_resources.
+
+-------------------------------------------------------------------
 Sat Feb  4 18:13:23 UTC 2023 - Matej Cepl <mcepl@suse.com>
 
 - Initial packaging effort for python-doi 0.2.0.

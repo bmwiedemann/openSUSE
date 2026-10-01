@@ -1,0 +1,14 @@
+Index: python-doi-0.2.0/tests/test_doi.py
+===================================================================
+--- python-doi-0.2.0.orig/tests/test_doi.py
++++ python-doi-0.2.0/tests/test_doi.py
+@@ -1,8 +1,8 @@
+ """Tests for `doi` package."""
+ 
+ import os
+-from pkg_resources import parse_version
+ 
++from packaging.version import parse as parse_version
+ import pytest
+ 
+ from doi import (
