@@ -615,4 +615,15 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1343007</requestid>
   </revision>
+  <revision rev="77" vrev="2">
+    <srcmd5>90f18ed4a28c0577ac43725004959f12</srcmd5>
+    <version>2.58.2</version>
+    <time>1790865969</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build and
+  pyproject.toml.
+
+- Support future multiple python3 flavors</comment>
+    <requestid>1381741</requestid>
+  </revision>
 </revisionlist>

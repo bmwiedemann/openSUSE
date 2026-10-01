@@ -43,7 +43,7 @@ Source0:        https://download.gnome.org/sources/pyatspi/2.58/%{_name}-%{versi
 BuildRequires:  %{python_module dbus-python}
 BuildRequires:  %{python_module gobject >= 2.90.1}
 BuildRequires:  %{python_module gobject-devel >= 2.90.1}
-BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module meson-python >= 0.12.1}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -54,8 +54,8 @@ BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(gtk+-3.0)
 %if %{with test}
 BuildRequires:  at-spi2-core
-BuildRequires:  glib2-devel
-BuildRequires:  libxml2-devel
+BuildRequires:  glib2-devel >= 2.36.0
+BuildRequires:  libxml2-devel >= 2.0.0
 BuildRequires:  (at-spi2-atk-gtk2 if at-spi2-core < 2.45)
 BuildRequires:  (atk-devel if at-spi2-core-devel < 2.45)
 %endif
