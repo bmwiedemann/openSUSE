@@ -17,10 +17,10 @@
 #
 
 
-%global sover   28
+%global sover   29
 %global libname lib%{name}%{sover}
 Name:           baresip
-Version:        4.11.0
+Version:        4.12.0
 Release:        0
 Summary:        Modular SIP useragent
 License:        BSD-3-Clause
@@ -119,8 +119,6 @@ for developing programs which use the baresip C library.
 
 %package -n %{libname}
 Summary:        Standard library for baresip
-Provides:       %{name} = %{version}-%{release}
-Obsoletes:      %{name} < %{version}-%{release}
 
 %description -n %{libname}
 This package contains the shared library needed to run programs compiled with
