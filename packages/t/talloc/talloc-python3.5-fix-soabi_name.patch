@@ -1,7 +1,13 @@
-diff -ruNp a/buildtools/wafsamba/wafsamba.py b/buildtools/wafsamba/wafsamba.py
---- a/buildtools/wafsamba/wafsamba.py	2024-05-16 13:52:58.561283248 +0200
-+++ b/buildtools/wafsamba/wafsamba.py	2024-05-16 13:54:32.297195397 +0200
-@@ -309,7 +309,7 @@ def SAMBA_LIBRARY(bld, libname, source,
+---
+ buildtools/wafsamba/samba_python.py |    2 +-
+ buildtools/wafsamba/wafsamba.py     |    2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+Index: talloc-2.4.4/buildtools/wafsamba/wafsamba.py
+===================================================================
+--- talloc-2.4.4.orig/buildtools/wafsamba/wafsamba.py	2026-01-06 15:31:26.426848600 +0100
++++ talloc-2.4.4/buildtools/wafsamba/wafsamba.py	2026-09-30 01:16:27.743392982 +0200
+@@ -312,7 +312,7 @@
      if bundled_name is not None:
          pass
      elif target_type == 'PYTHON' or realname or not private_library:
@@ -10,3 +16,16 @@ diff -ruNp a/buildtools/wafsamba/wafsamba.py b/buildtools/wafsamba/wafsamba.py
      else:
          assert (private_library is True and realname is None)
          bundled_name = PRIVATE_NAME(bld, libname.replace('_', '-'))
+Index: talloc-2.4.4/buildtools/wafsamba/samba_python.py
+===================================================================
+--- talloc-2.4.4.orig/buildtools/wafsamba/samba_python.py	2026-01-06 15:31:26.426848600 +0100
++++ talloc-2.4.4/buildtools/wafsamba/samba_python.py	2026-09-30 02:02:31.888253384 +0200
+@@ -58,7 +58,7 @@
+     abi_pattern = os.path.splitext(conf.env['pyext_PATTERN'])[0]
+     conf.env['PYTHON_SO_ABI_FLAG'] = abi_pattern % ''
+     conf.env['PYTHON_LIBNAME_SO_ABI_FLAG'] = (
+-        conf.env['PYTHON_SO_ABI_FLAG'].replace('_', '-'))
++        conf.env['PYTHON_SO_ABI_FLAG'])
+ 
+     for lib in conf.env['LINKFLAGS_PYEMBED']:
+         if lib.startswith('-L'):

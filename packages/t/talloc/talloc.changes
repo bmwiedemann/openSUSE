@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:29:54 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Fix building of the `man` multibuild.
+
+-------------------------------------------------------------------
+Wed Sep 30 00:02:41 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Extend talloc-python3.5-fix-soabi_name.patch to preserve
+  underscores in PYTHON_LIBNAME_SO_ABI_FLAG as well as public
+  library filenames. This keeps the pkg-config Libs entry
+  consistent with the installed libpytalloc-util library and
+  fixes Samba linking without a post-install name substitution.
+- Declare the python-rpm-macros build dependency explicitly and
+  update the man-page build-cycle comment for the separate
+  multibuild flavor.
+
+-------------------------------------------------------------------
+Mon Sep 28 15:51:03 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 2.5.0
+  * alloc: Add talloc_asprintf_addsep()
+  * lib:talloc:testsuite remove unread global test_abort_stop
+  * Replace memset_s() with memset_explicit()
+
+-------------------------------------------------------------------
+Sat Sep 12 11:51:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Convert the package to _multibuild flavors: the man pages are
+  now built from the "man" flavor of talloc.spec instead of
+  a generated talloc-man.spec, so pre_checkin.sh, talloc-man.spec
+  and talloc-man.changes are gone. No need to maintain duplicate
+  files.
+- Merge the duplicated %if blocks in the spec file and give the
+  man flavor its own summary and description.
+- Remove use of obsolete %py3* macros, use only the maintained
+  ones from `python-rpm-macros` package.
+- Make rpmlint happy.
+
+-------------------------------------------------------------------
 Fri Mar 27 16:13:30 UTC 2026 - Noel Power <nopower@suse.com>
 
 - Update to 2.4.4
