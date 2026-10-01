@@ -1284,4 +1284,19 @@
 </comment>
     <requestid>1379490</requestid>
   </revision>
+  <revision rev="101" vrev="1">
+    <srcmd5>bc0ba0cf493a8e32563cc7598d314f15</srcmd5>
+    <version>2.73.0</version>
+    <time>1790886030</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.73.0:
+  - Features
+    * feat: Add push command
+    * feat: Notify user if chezmoi is not in their PATH in install script
+  - Documentation
+    * docs: Add push command to daily operations
+    * docs: Align documentation with source
+</comment>
+    <requestid>1381927</requestid>
+  </revision>
 </revisionlist>
