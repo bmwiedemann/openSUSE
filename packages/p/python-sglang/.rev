@@ -120,4 +120,12 @@ Security:
 - Vendored rustls is now 0.23.45 (RUSTSEC-2026-0285).</comment>
     <requestid>1379916</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>3e581043ce420074f60a8ea811cac19a</srcmd5>
+    <version>0.5.20</version>
+    <time>1790865966</time>
+    <user>anag_factory</user>
+    <comment>Carry two behavioural hunks of still-unmerged sglang PR 40185 for CVE-2026-102634 (boo#1283270): an unknown bootstrap_room reports KVPoll.Failed instead of raising KeyError, and KVPoll.Success no longer trips decode's Unexpected-poll-case ValueError. Reachable, but no transfer backend is packaged.</comment>
+    <requestid>1381723</requestid>
+  </revision>
 </revisionlist>

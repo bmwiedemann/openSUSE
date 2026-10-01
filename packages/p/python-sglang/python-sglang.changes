@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 30 18:22:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-102634: bootstrap_room is client supplied and
+  unauthenticated, and two concurrent requests picking the same
+  value share one entry in CommonKVManager.request_status. When the
+  first of them finished, clear() popped that entry and the second
+  one's poll raised KeyError out of check_status(), killing the
+  scheduler process; the loser of the race instead hung
+  until its transfer timed out. An unregistered room is now
+  reported as KVPoll.Failed, which the decode queue already
+  turns into a per-request abort via prepare_abort(), and a
+  KVPoll.Success poll now counts as bootstrap-done instead of
+  hitting decode's "Unexpected poll case" ValueError, which
+  killed the decode scheduler (boo#1283270)
+  * sglang-40185-bootstrap-room-dedup.patch, two hunks of
+    sgl-project/sglang PR 40185 (still unmerged, tracking issue
+    40125), which upstream has not released in any version
+  * The affected CommonKVManager path is unreachable in this
+    build: only the mooncake, mori and nixl managers construct one
+    and none of their transport libraries is packaged; the fake
+    transfer backend does not subclass it either
+
+-------------------------------------------------------------------
 Tue Sep 22 19:29:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-86793: SafeUnpickler gated pickle deserialization on

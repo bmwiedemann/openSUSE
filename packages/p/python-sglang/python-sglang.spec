@@ -52,6 +52,8 @@ Patch3:         sglang-grpc-system-protoc.patch
 Patch4:         sglang-safe-unpickler-stdlib-globals.patch
 # PATCH-FIX-UPSTREAM sglang-safe-unpickler-explicit-globals.patch boo#1280091 -- CVE-2026-86793: sgl-project/sglang commit 5b42d10edf (PR 40259), drop the remaining module prefixes and route torch.storage._load_from_bytes through a weights_only torch.load
 Patch5:         sglang-safe-unpickler-explicit-globals.patch
+# PATCH-FIX-UPSTREAM sglang-40185-bootstrap-room-dedup.patch boo#1283270 -- CVE-2026-102634: sgl-project/sglang PR 40185 (unmerged, head commit 1901ddecfe), report an unknown bootstrap_room as KVPoll.Failed instead of letting check_status raise KeyError, and count KVPoll.Success as bootstrap-done; 2 of the PR's 27 files, the rest being a typing modernisation that does not apply to 0.5.20
+Patch6:         sglang-40185-bootstrap-room-dedup.patch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module SoundFile}
