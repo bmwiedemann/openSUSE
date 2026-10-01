@@ -252,4 +252,16 @@ report references the package and no CVE appears in the crossed range.
 </comment>
     <requestid>1380834</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5f2255860baa6f495909d9d282a6dccc</srcmd5>
+    <version>0.11.73</version>
+    <time>1790886061</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.73: metadata-only, the shim module is unchanged and
+only the bundle pins move, to core 0.3.364, json 0.1.99 and
+media-assets-02 0.1.7. The &gt;= floors are unchanged. media-assets-02
+0.1.7, the first release with the new templates' previews, needs
+its own request first.</comment>
+    <requestid>1381942</requestid>
+  </revision>
 </revisionlist>
