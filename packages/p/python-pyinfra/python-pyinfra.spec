@@ -22,17 +22,17 @@
 %bcond_with libalternatives
 %endif
 
+%define python_testing_version 9fe9fba92ff05be6f99e03058c064707aeb39923
+
 %{?sle15_python_module_pythons}
 Name:           python-pyinfra
-Version:        3.7
+Version:        3.10.0
 Release:        0
 Summary:        Infrastructure automation, provisioning and deployment
 License:        MIT
 URL:            https://pyinfra.com
 Source:         https://files.pythonhosted.org/packages/source/p/pyinfra/pyinfra-%{version}.tar.gz
-Source1:        https://raw.githubusercontent.com/pyinfra-dev/testgen/ad6673/testgen/__init__.py#/testgen.py
-# PATCH-FIX-UPSTREAM gh#pyinfra-dev/pyinfra#1525
-Patch0:         support-paramiko-4.patch
+Source1:        https://github.com/pyinfra-dev/pyinfra-testing/archive/%{python_testing_version}.tar.gz#/pyinfra-testing-%{python_testing_version}.tar.gz
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
@@ -83,7 +83,7 @@ Think ansible but Python instead of YAML, and a lot faster.
 
 %prep
 %autosetup -p1 -n pyinfra-%{version}
-cp -v %{SOURCE1} ./
+tar xvf %{SOURCE1} pyinfra-testing-%{python_testing_version}/pyinfra_testing/ --strip-components=1
 
 %build
 %pyproject_wheel
