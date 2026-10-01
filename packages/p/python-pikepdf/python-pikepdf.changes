@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Wed Sep 30 12:56:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Add Requires to support pikepdf.pdfa
+  * python-fonttools >= 4.40
+  * python-jsonschema >= 4.18
+  * python-referencing
+
+-------------------------------------------------------------------
+Wed Sep 30 09:12:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 10.16.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.16.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.15.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.14.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.13.0.post1
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.12.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.11.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.10.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.9.1
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.9.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.8.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.7.3
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.7.2
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.7.1
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.7.0
+  * https://github.com/pikepdf/pikepdf/releases/tag/v10.6.0
+
+-------------------------------------------------------------------
 Thu Jul 23 11:50:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - remove pytest-forked dependency
