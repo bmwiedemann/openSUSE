@@ -218,4 +218,16 @@
   + Add Fedora 45 to supported distros list.</comment>
     <requestid>1372909</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>e4b5a847e8812c121b6e98fe4454cec6</srcmd5>
+    <version>2026.09.28</version>
+    <time>1790865785</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.09.28:
+  + Added Fedora 46 to build matrix.
+- Changes from version 2026.08.26:
+  + Makes `dropbox-cli start` more robust by adding internal
+    retries and better messaging.</comment>
+    <requestid>1381612</requestid>
+  </revision>
 </revisionlist>
