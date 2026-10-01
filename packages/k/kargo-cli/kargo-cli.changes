@@ -1,4 +1,76 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:19:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.0:
+  https://github.com/akuity/kargo/releases/tag/v1.12.0
+  * CLI Improvements
+    - The SSO Callback Port Is Remembered: kargo login <server>
+      --sso --port 8085 now persists the port alongside the server
+      address and auth method, and a later bare kargo login reuses
+      all three. This helps with identity providers that require
+      redirect URIs to be registered exactly, port included --
+      Entra ID among them. When no port is ever specified, the CLI
+      keeps picking a random unprivileged one. (#6803)
+    - docs: add Kargo CLI usage guide (#6773)
+  * Dependencies
+    - chore(deps): bump google.golang.org/api from 0.297.0 to
+      0.298.0 in the go-minor group (#7293)
+    - chore(deps): bump Helm to v3.22.0 (#7251)
+    - chore(deps): bump the go-minor group across 1 directory with
+      20 updates (#7195)
+    - chore(deps): bump google.golang.org/grpc from 1.83.1 to
+      1.83.2 (#7140)
+    - chore(deps): bump vitest from 4.1.9 to 4.1.11 in /ui (#7141)
+    - chore(deps): bump github.com/prometheus/client_model from
+      0.6.2 to 0.6.3 in the go-patch group (#7086)
+    - chore(deps/api): bump github.com/stretchr/testify from 1.11.1
+      to 1.12.1 in /api in the go-minor group (#7076)
+    - chore(deps): bump Go to 1.27.1 (#7054)
+    - chore(deps): bump google.golang.org/grpc from 1.83.0 to
+      1.83.1 (#7026)
+    - chore(deps): bump the go-patch group across 1 directory with
+      6 updates (#6963)
+    - chore(deps): bump library/node from 26.4.0 to 26.8.1 (#6904)
+    - chore(deps/client): bump the go-minor group across 1
+      directory with 3 updates (#6906)
+    - chore(deps/client): bump github.com/stretchr/testify from
+      1.11.1 to 1.12.1 in /pkg/x/client/fidelity in the go-minor
+      group across 1 directory (#6862)
+    - chore(deps): Bump golang version to 1.26.7 (#6850)
+    - chore(deps): bump google.golang.org/api from 0.291.0 to
+      0.292.0 in the go-minor group (#6784)
+    - chore(deps): bump the go-patch group across 1 directory with
+      7 updates (#6756)
+    - chore(deps): bump google.golang.org/api from 0.290.0 to
+      0.291.0 in the go-minor group (#6752)
+    - chore(deps): bump Kubernetes to v0.36.3 and
+      controller-runtime to v0.24.1 (#6711)
+    - chore(deps): bump github.com/getkin/kin-openapi from 0.135.0
+      to 0.144.0 (#6706)
+    - chore(deps): bump the go-patch group with 3 updates (#6657)
+    - chore(deps): bump github.com/oapi-codegen/oapi-codegen/v2
+      from 2.6.0 to 2.7.1 (#6649)
+    - chore(deps): bump the go-patch group with 4 updates (#6600)
+    - chore(deps): upgrade pnpm to v11 (#6609)
+    - chore(deps): bump the js-minor group across 1 directory with
+      10 updates (#6547)
+    - chore(deps/api): bump golang.org/x/net from 0.54.0 to 0.55.0
+      in /api (#6540)
+    - chore(deps): bump golang.org/x/net from 0.54.0 to 0.55.0 in
+      /pkg/client/generated (#6539)
+    - chore(deps): bump the go-patch group with 4 updates (#6556)
+    - chore(deps): bump github.com/go-chi/chi/v5 from 5.2.3 to
+      5.2.4 (#6555)
+    - build(deps): bump bundled Helm to v3.21.2 and
+      grpc-health-probe to v0.4.52 (#6563)
+
+-------------------------------------------------------------------
+Thu Oct 01 05:01:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.11.6:
+  No CLI-related changes or dependency updates
+
+-------------------------------------------------------------------
 Tue Sep 29 05:05:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.11.5:
