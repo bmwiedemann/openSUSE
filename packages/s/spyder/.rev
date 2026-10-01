@@ -980,4 +980,12 @@ rename the package from spyder3 to spyder.
     installers.</comment>
     <requestid>1362231</requestid>
   </revision>
+  <revision rev="67" vrev="2">
+    <srcmd5>64f4b9658375c5d5f8113c02ce544f4a</srcmd5>
+    <version>6.1.5</version>
+    <time>1790866038</time>
+    <user>anag_factory</user>
+    <comment>- Remove atomicwrites from Requires, add markdown-it-py.</comment>
+    <requestid>1381780</requestid>
+  </revision>
 </revisionlist>
