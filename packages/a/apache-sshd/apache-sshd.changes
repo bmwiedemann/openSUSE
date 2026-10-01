@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:32:23 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.20.0
+  * CVEs
+    + bsc#1283357, CVE-2026-77185: Asynchronous authentication can
+      bypass signature verification
+    + bsc#1283352, CVE-2026-93994: Repeated-publickey policy bypass
+      on server
+    + bsc#1283350, CVE-2026-93995: Remote execution of JGit "archive
+      -o=file.zip" can write file on the server
+    + bsc#1283348, CVE-2026-93996: Memory exhaustion DoS via
+      unbounded SCP command line read
+    + bsc#1283347, CVE-2026-94002: Memory exhaustion in SFTP client
+      via unsolicited SFTP replies
+    + bsc#1283346, CVE-2026-94029: Memory exhaustion in SFTP v6
+      check-file-name/check-file-handle extension
+    + bsc#1283345, CVE-2026-94052: LDAP password authentication
+      ineffective
+    + bsc#1283344, CVE-2026-94053: LDAP injection in sshd-ldap
+  * Bug Fixes
+    + GH-656 ChannelPipedInputStream: shrink buffer when emptied
+    + GH-906 Fix finding a signature factory for BC ed25519 keys
+    + GH-911 Fix server-side SOCKS5 proxy for fragmented and
+      pipelined CONNECT requests
+    + Allow asynchronous authentication only for password and
+      keyboard-interactive authentication schemes
+    + Fix authentication requiring multiple public keys
+      (server-side)
+    + Better argument handling in sshd-git
+    + More checks in authentication (server-side)
+    + Better SCP command handling
+    + SFTP client: simplify response message handling
+    + Fix check-file-name/check-file-handle SFTP v6 extension
+      (server-side)
+    + Improve LDAP authentication (sshd-ldap)
+  * New Features
+    + GH-905 Implement the "from" and "expiry-time" options in
+      authorized_keys handling in public key authentication (server
+      side)
+
+-------------------------------------------------------------------
 Tue Jul 21 13:05:26 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.19.0

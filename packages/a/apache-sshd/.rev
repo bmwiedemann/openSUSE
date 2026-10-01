@@ -119,4 +119,12 @@
     <comment>Mention additional CVE/bsc number</comment>
     <requestid>1367083</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>24e355272e7ea6a5fd5104bac1add78f</srcmd5>
+    <version>2.20.0</version>
+    <time>1790865850</time>
+    <user>anag_factory</user>
+    <comment>2.20.0 with security fixes</comment>
+    <requestid>1381671</requestid>
+  </revision>
 </revisionlist>
