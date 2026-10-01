@@ -271,4 +271,13 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 badness. The
 one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
     <requestid>1379750</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>d0fd75ddd77a5e2538103ca390eeabb3</srcmd5>
+    <version>0.38.0</version>
+    <time>1790865893</time>
+    <user>anag_factory</user>
+    <comment>Update comfyui to 0.38.0: Qwen Image 2.1, MiniMax-H3, ming-image, ID-V2V Wan 2.1/VACE and Hunyuan Image 3.5 nodes, per-block attention selection, asset-database hardening. torchaudio dropped from requirements; frontend/templates/kitchen floors track upstream (1.53.6/0.11.70/0.2.36).
+</comment>
+    <requestid>1381682</requestid>
+  </revision>
 </revisionlist>

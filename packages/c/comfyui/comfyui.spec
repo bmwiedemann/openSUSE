@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.37.0
+Version:        0.38.0
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -64,18 +64,17 @@ Requires:       %{primary_python}-blake3
 # a real break gets a bound then, with the evidence.
 # aimdo 0.5.5 is a hard floor: comfy/storage.py imports comfy_aimdo.storage
 # at module scope and comfy/utils.py imports it, while 0.5.3 ships no such
-# submodule. Upstream moved its kitchen pin to 0.2.35, but the two calls
-# that need it (deltanet_conv_step, gated_delta_decode_fused) sit behind a
-# getattr(comfy_kitchen, "gated_delta_decode_is_available") probe, so 0.2.34
-# only loses the fused Qwen3.5 decode path -- not a requirement.
-Requires:       %{primary_python}-comfy-aimdo >= 0.5.5
-Requires:       %{primary_python}-comfy-kitchen >= 0.2.34
+# submodule. comfy/ldm/modules/attention.py calls
+# comfy_kitchen.int8_attention_is_available() at module import, so the
+# kitchen floor must provide it; track upstream's pin (0.2.36 in 0.38.0).
+Requires:       %{primary_python}-comfy-kitchen >= 0.2.36
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.12
-# Security floor, not a compatibility pin: 1.50.6 carries the XSS fixes
-# GHSA-2gr5-vw2p-2hcf, GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Do not
-# lower it to whatever upstream's requirements.txt happens to name.
-Requires:       %{primary_python}-comfyui-frontend-package >= 1.50.6
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.66
+# Security floor: 1.50.6 carries the XSS fixes GHSA-2gr5-vw2p-2hcf,
+# GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Upstream 0.38.0 requires
+# 1.53.6, which is above it, so the floor tracks upstream now; do not
+# lower it below either.
+Requires:       %{primary_python}-comfyui-frontend-package >= 1.53.6
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.70
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0
@@ -89,7 +88,6 @@ Requires:       %{primary_python}-sentencepiece
 Requires:       %{primary_python}-simpleeval >= 1.0.0
 Requires:       %{primary_python}-tokenizers >= 0.13.3
 Requires:       %{primary_python}-torch
-Requires:       %{primary_python}-torchaudio
 Requires:       %{primary_python}-torchsde
 Requires:       %{primary_python}-torchvision
 Requires:       %{primary_python}-tqdm

@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:10:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.38.0:
+  * New models: Qwen Image 2.1 (tiny VAE, union fun controlnet),
+    MiniMax-H3 with Fun-Controlnet-Union 2.0, ming-image, ID-V2V
+    Wan 2.1/VACE and Hunyuan Image 3.5 nodes; new partner nodes
+    (Seedream 5.0 Flash, Claude Opus 5.5, GPT-6 and more), and the
+    deprecated Sora nodes were removed
+  * Models can pick the attention implementation per block; more
+    models gain .comfy_attention support and CUDA graphs, plus a new
+    w6a8 quantization format and NPU async weight offload streams
+  * TextGenerate gains a system_prompt input and separate thinking
+    output; Convert Color Space supports HDR LogC3 and ACEScct
+  * Fix ImageUpscaleWithModel and Qwen VL crashes on RGBA input
+  * Asset database hardening: SQLite write locks are taken up front,
+    file reads moved out of write transactions, and scans keep the
+    UI responsive; assets packages are optional at startup
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Track 0.38.0's dependency floors: frontend-package >= 1.53.6,
+  workflow-templates >= 0.11.70, comfy-kitchen >= 0.2.36; torchaudio
+  is no longer required (audio helpers moved in-tree)
+
+-------------------------------------------------------------------
 Tue Sep 22 18:02:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.37.0:
