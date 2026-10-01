@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:14:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.152:
+  * fix: honor git_timeout from digger.yml before cloning (#2724)
+  * fix: adjust GitHub check run char limit considering the MD
+    terraform text wrapper (#2615)
+
+-------------------------------------------------------------------
 Sun Sep 20 06:00:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.151:
