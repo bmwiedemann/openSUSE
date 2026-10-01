@@ -18,10 +18,10 @@
 
 %define php_major_version 8
 Name:           icingaweb2
-Version:        2.13.0
+Version:        2.14.0
 Release:        0
 Summary:        Icinga Web
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://icinga.com
 Source0:        https://github.com/Icinga/icingaweb2/archive/v%{version}/%{name}-%{version}.tar.gz

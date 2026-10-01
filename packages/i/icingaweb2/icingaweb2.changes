@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Tue Sep 29 16:50:12 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.14.0
+
+- Update to 2.14.0
+  * Streamlined Authentication
+    - Streamline authentication process #5387
+    - Modernize login #5500
+    - Fix focus on login password #5504
+  * Two-Factor Authentication
+    - Add two-factor authentication extension point #5514
+  * Password Policies
+    - Implement password policy with hook #5419
+  * Configurable Content Security Policy
+    - Allow custom CSP header #5477
+  * INI-backed Config Forms for Developers
+    - Add an INI-backed configuration form #5480
+  * Hook Essentials
+    - Reduce hook implementation boilerplate #5474
+    - Add missing methods to the PDF export hook #5491
+    - Update PDF export hook callers to use the new interface #5526
+  * JavaScript Asset Management
+    - Enhance JavaScript dependency optimization #5276
+    - Take multiple module definitions in the same file into account #5255
+    - Allow access to a library's JS and CSS assets via static URLs #5274
+    - Move relative time behavior to ipl-web #5461
+  * Less Compilation Migrated to ipl-web
+    - Migrate Less compilation to ipl-web #5492
+  * Modal Improvements
+    - Prevent unintentional modal closing #5501
+    - Do not wobble if Escape has been handled otherwise #5512
+    - Consider forms changed that don't close the modal #5525
+  * UI & CSS Fixes
+    - Increase line height #5413
+    - Only collapse the y-axis for collapsible elements #5456
+    - Apply the same background color to the caret in the navigation item header #5375
+    - Add styling for file input elements #4990
+    - Remove obsolete action link and button link CSS classes #5370
+  * Deprecations
+    - Deprecate the custom programming error exception #5511
+
+-------------------------------------------------------------------
+Mon Jul  6 15:00:41 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.13.1
+
+- Update to 2.13.1
+  - Close a low-risk open redirect vulnerability, tracked as GHSA-w7c2-xjv9-q8fv (CVE pending).
+    We have requested CVE number for this GHSA and will add it here once it has been assigned.
+    It is rated low severity, but if you are running 2.13.0 or earlier
+    you should still treat it as a priority update.
+
+-------------------------------------------------------------------
 Wed Apr  1 16:47:39 UTC 2026 - ecsos <ecsos@opensuse.org> - 2.13.0
 
 - Update to 2.13.0
