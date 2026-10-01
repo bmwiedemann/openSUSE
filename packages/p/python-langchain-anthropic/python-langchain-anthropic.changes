@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:05:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.7.5:
+  * Add Claude Sonnet 5.5 compatibility: model profile with
+    capability discovery, thinking and tool-choice validation as
+    for Opus 5 / Fable 5.1 (forced tool choice and unsupported
+    thinking settings raise; use method="json_schema" for
+    structured output), mid-conversation system/tool changes,
+    and preservation of toolset namespaces, encrypted advisor
+    blocks, refusal details and stop_details through streaming
+    and replay (gh#langchain-ai/langchain#40882)
+  * Serialize AIMessage.invalid_tool_calls as tool_use blocks
+    with valid dictionary arguments (or {}) on replay, so the
+    matching tool_result is no longer rejected as orphaned
+    (gh#40864, gh#40853)
+- Follow upstream and raise the langchain-core floor to 1.6.6
+- Not affected by CVE-2026-55443: file-search middleware path
+  traversal was fixed upstream in 1.4.6, before the initial
+  openSUSE package (1.4.8)
+
+-------------------------------------------------------------------
 Wed Sep 23 18:37:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.7.4 (includes 1.7.3; patch

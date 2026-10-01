@@ -192,4 +192,13 @@ Python flavour (3.13 + 3.14), rpmlint 0 badness.</comment>
     <comment>Update to 1.7.4 (includes 1.7.3). Supersedes 1380024.</comment>
     <requestid>1380135</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>68794672c7c1fddcc3475273200d01c5</srcmd5>
+    <version>1.7.5</version>
+    <time>1790865884</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.7.5: Claude Sonnet 5.5 compatibility (model profile, thinking/tool-choice validation, provider-block preservation) and valid tool_use serialization for replayed invalid_tool_calls. Requires langchain-core &gt;= 1.6.6. Not affected by CVE-2026-55443.
+</comment>
+    <requestid>1381681</requestid>
+  </revision>
 </revisionlist>
