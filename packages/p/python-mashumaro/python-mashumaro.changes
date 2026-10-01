@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Thu Oct  1 05:30:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 3.23:
+  * Fixed type annotation for TOMLEncoder.encode and toml_encode
+    return values (#328) in #329
+  * Fixed code generation for unions with PEP 695 type aliases
+    (#330, #343) in #336, #344
+  * Fixed the order of variables to be determined by their order in
+    Generic[...] (#332) in #335
+  * Fixed named tuple deserialization from dictionaries when fields
+    with defaults are missing (#341) in #342
+  * Fixed inherited unpacker reuse in untagged discriminated unions
+    (#346) in #347
+  * Fixed ignoring default for constrained TypeVar when the generic
+    is unspecialized (#349) in #350
+  * Fixed support for recursive dataclasses in standalone codecs
+    (#324) in #353
+  * Fixed losing inherited options in plain Config subclasses
+    (#354) in #355
+  * Fixed CodeBuilder memory leak caused by lru_cache (#364) in
+    #365
+  * Fixed generic TypedDict aliases and inherited specializations
+    resolve (#379) in #380
+  * Speeded up deserialization of required fields in #337
+  * Added support for multiple aliases for a field (#176) in #339
+  * Added support for slice type (#242, #371) in #356, #372
+  * Added support for PEP 728 TypedDict with Typed Extra Items
+    (#271, #378) in #352, #381
+  * Added support for memoryview type (#358) in #359, #360
+  * Added support for Buffer type (#360) in #361
+  * Added support for frozendict type (#369) in #370
+  * Declared support for Python 3.15 in #345
+  * Changed annotations to TypeForm for APIs that accept type
+    expressions (#366) in #367
+- remove patch support-python315.patch, as Python 3.15 is now
+  supported upstream #345
+
+-------------------------------------------------------------------
 Wed Sep  2 05:21:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python315.patch:

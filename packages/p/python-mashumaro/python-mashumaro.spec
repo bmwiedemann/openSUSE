@@ -18,14 +18,12 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mashumaro
-Version:        3.22
+Version:        3.23
 Release:        0
 Summary:        Fast and well tested serialization library
 License:        Apache-2.0
 URL:            https://github.com/Fatal1ty/mashumaro
 Source:         https://github.com/Fatal1ty/mashumaro/archive/refs/tags/v%{version}.tar.gz#/mashumaro-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM gh#Fatal1ty/mashumaro#345
-Patch0:         support-python315.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 77.0}
