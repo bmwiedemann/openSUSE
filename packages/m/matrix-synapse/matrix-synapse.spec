@@ -72,7 +72,7 @@
 %global opentracing_version           2.4.0
 %global hiredis_version               3.3.1
 # TODO: 1.4.11
-%global txredisapi_version            1.4.10
+%global txredisapi_version            1.4.12
 %global Pympler_version               1.0.1
 %global pydantic_version              2.7.1
 %global python_multipart_version      0.0.26
@@ -156,7 +156,7 @@
 %global jaeger_client_version         4.2.0
 %global opentracing_version           2.2.0
 %global hiredis_version               2.0.0
-%global txredisapi_version            1.4.7
+%global txredisapi_version            1.4.12
 %global Pympler_version               1.0.1
 %global pydantic_version              1.7.4
 %global python_multipart_version      0.0.9
@@ -231,7 +231,7 @@
 %define         pkgname matrix-synapse
 %define         eggname matrix_synapse
 Name:           %{pkgname}
-Version:        1.161.0
+Version:        1.162.0
 Release:        0
 Summary:        Matrix protocol reference homeserver
 License:        AGPL-3.0-or-later
