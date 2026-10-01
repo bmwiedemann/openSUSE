@@ -38,7 +38,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "websocket-auth",
      "websocket-client",
      "windows-sandbox-service",
-@@ -197,7 +194,6 @@
+@@ -198,7 +195,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
  codex-code-mode-protocol = { path = "code-mode-protocol" }
@@ -46,7 +46,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
  codex-websocket-auth = { path = "websocket-auth" }
-@@ -310,7 +306,6 @@
+@@ -312,7 +308,6 @@
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
  codex-user-verification = { path = "user-verification" }
@@ -54,7 +54,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
  core_test_support = { path = "core/tests/common" }
-@@ -534,7 +529,6 @@
+@@ -536,7 +531,6 @@
  url = "2"
  urlencoding = "2.1"
  uuid = "1"
@@ -62,7 +62,7 @@ Downstream-only distribution policy, not suitable for upstream submission.
  vt100 = "0.16.2"
  walkdir = "2.5.0"
  webbrowser = "1.2.2"
-@@ -595,7 +589,6 @@
+@@ -597,7 +591,6 @@
  ignored = [
      "icu_provider",
      "openssl-sys",

@@ -468,4 +468,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
 </comment>
     <requestid>1381272</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>9943b4fb6a3482d4b0cec6a6cbaa530e</srcmd5>
+    <version>0.159.2</version>
+    <time>1790865906</time>
+    <user>anag_factory</user>
+    <comment>Update openai-codex to 0.159.2: opt-in instant_interrupt, scrollable transcript behind modals, richer native Mermaid, thread-history pagination, Markdown-preserving copy and more reliable ChatGPT sign-in. Vendored deps unchanged; four patches refreshed. No local build was run.</comment>
+    <requestid>1381695</requestid>
+  </revision>
 </revisionlist>

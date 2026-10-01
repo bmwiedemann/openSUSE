@@ -11,7 +11,7 @@ upstream submission.
 
 --- a/codex-rs/Cargo.toml
 +++ b/codex-rs/Cargo.toml
-@@ -543,7 +543,7 @@
+@@ -545,7 +545,7 @@
  wildmatch = "2.6.1"
  winapi-util = "0.1.11"
  zip = "2.4.2"

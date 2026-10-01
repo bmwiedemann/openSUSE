@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Wed Sep 30 13:52:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.159.2:
+  * New opt-in instant_interrupt lets fresh input steer codex
+    during model responses and long-running code-mode calls
+  * New sessions get a compact welcome screen and a consistent
+    header, with occasional tips during and after turns
+  * The warnings viewer dismisses reviewed warnings when closed;
+    press k to keep one for later
+  * The transcript can be scrolled while a modal is open, so a
+    plan can be read before implementing it
+  * Native Mermaid rendering covers more flowchart edges,
+    labels and node groups
+  * App-server clients can paginate thread history from a given
+    item
+  * Copying a transcript selection keeps Markdown tables,
+    formatting and significant whitespace, and more terminals
+    copy automatically on selection
+  * Blank sessions keep their draft when switching tasks, and
+    threads can be archived and listed before their first turn
+  * Local ChatGPT sign-in opens the browser reliably, and
+    onboarding can copy the login link
+  * Approved commands keep explicit filesystem denials, and
+    .aws directories are protected under writable roots
+  * macOS TLS trust evaluation works in network-enabled
+    sandboxes and behind a proxy
+  * GPT-6.1 Sol is the default model in the bundled and Amazon
+    Bedrock catalogs
+  * Removed the automatic follow-up prompt suggestions and the
+    tui.prompt_suggestions setting
+  * Removed the bundled plugin-creator skill
+  * Windows no longer flashes console windows when launching MCP
+    servers, code-mode hosts, piped or sandboxed commands
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+  * Vendored dependency set is unchanged - no crate moved - so
+    the licence set and the four bare-lockfile RUSTSEC
+    advisories carry over from 0.158.0
+  * Rebase codex-drop-v8-code-mode.patch,
+    codex-no-startup-update-check.patch and
+    codex-system-libzstd.patch on the new sources; what each
+    removes is unchanged
+  * Correct the crate counts in the Legal-Review-Notice; no
+    licence changed
+
+-------------------------------------------------------------------
 Mon Sep 28 15:20:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.158.0:

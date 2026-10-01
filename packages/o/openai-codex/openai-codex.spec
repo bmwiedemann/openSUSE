@@ -17,22 +17,23 @@
 
 
 Name:           openai-codex
-Version:        0.158.0
+Version:        0.159.2
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
 # covers the Rust crates statically linked into the shipped
 # %%{_bindir}/codex binary, enumerated with
 #   cargo tree --offline -p codex-cli -e normal,no-proc-macro
-# against the vendored tree (884 crates on aarch64, 886 on x86_64: 751
-# third-party vendored deps on aarch64 and 753 on x86_64, plus 133
-# first-party codex workspace members, which are Apache-2.0 like upstream.
-# Every one declares a licence, none is missing; only the third-party count
-# is a licence signal, the workspace one moves whenever upstream adds a
-# crate). Electing Apache-2.0 where it is offered and MIT otherwise, the
-# aarch64 tally is Apache-2.0 654, MIT 177,
-# Unicode-3.0 20, MPL-2.0 12, ISC 7, BSD-3-Clause 6, Zlib 5, BSD-2-Clause 1,
-# CC0-1.0 1, CDLA-Permissive-2.0 1.
+# against the vendored tree (894 crates on aarch64: 754 third-party vendored
+# deps plus 140 first-party codex workspace members, which are Apache-2.0
+# like upstream. Every one declares a licence, none is missing; only the
+# third-party count is a licence signal, the workspace one moves whenever
+# upstream adds a crate). Electing Apache-2.0 where it is offered and MIT
+# otherwise, the aarch64 tally is Apache-2.0 518, MIT 177,
+# Unicode-3.0 20, MPL-2.0 12, ISC 9, BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1,
+# CC0-1.0 1, CDLA-Permissive-2.0 1 (aws-lc-sys itemised below, so it is not
+# in the tally). 0.159.2 re-vendored no crate at all - the vendor tree is
+# byte-identical to 0.158.0's - so the tag above is unchanged by that bump.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
