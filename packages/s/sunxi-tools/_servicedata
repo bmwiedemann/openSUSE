@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://github.com/linux-sunxi/sunxi-tools.git</param>
+              <param name="changesrevision">d7bbd172a5da601a08f94479de308c6fb714a19a</param></service></servicedata>

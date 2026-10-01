@@ -1,0 +1,15 @@
+<services>
+  <service mode="manual" name="tar_scm">
+    <param name="url">https://github.com/linux-sunxi/sunxi-tools.git</param>
+    <param name="scm">git</param>
+    <param name="changesgenerate">enable</param>
+    <param name="versionformat">@PARENT_TAG@+git%ci</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git)([0-9]{4})-([0-9]{2})-([0-9]{2}) ([0-9]{2}):([0-9]{2}):([0-9]{2}).*$</param>
+    <param name="versionrewrite-replacement">\1\2\3\4\5\6\7\8</param>
+  </service>
+  <service mode="manual" name="recompress" >
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+  <service mode="manual" name="set_version" />
+</services>

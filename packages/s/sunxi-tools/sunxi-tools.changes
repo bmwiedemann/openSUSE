@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 01 11:06:53 UTC 2026 - Ignaz Forster <iforster@suse.com>
+
+- Update to version 1.4.2+git20260608115330:
+  * 106 changes in total
+  * Includes support for several new SoCs: Allwinner A63 / A80 /
+    A83T / A100 / A133 / A523 / F1C100s / H6 / H616 / H626 / R40 /
+    R329 / R528 / T7 / T113 / V3s / V5 / V536 / V831 / V853
+  * bare-metal: Add JTAG pin muxing support
+  * fel: Introduce 'sid-dump'
+  * fel: Add FIT image parsing and loading
+- Add tests
+
+-------------------------------------------------------------------
 Tue Sep 29 07:38:13 UTC 2020 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Exclude build on %arm as builds fail

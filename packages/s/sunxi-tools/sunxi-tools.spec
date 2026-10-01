@@ -1,7 +1,7 @@
 #
 # spec file for package sunxi-tools
 #
-# Copyright (c) 2020 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,15 +21,18 @@
 %define sunxi_arch armv7hl
 
 Name:           sunxi-tools
-Version:        1.4.2+git20200914103652
+Version:        1.4.2+git20260608115330
 Release:        0
 Summary:        Tools for Allwinner A10 devices
 License:        GPL-2.0-or-later
 Group:          Development/Tools/Other
 URL:            https://github.com/linux-sunxi/sunxi-tools
-Source:         %{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
+Source1:        sunxi-boards.zip
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  libfdt-devel
 BuildRequires:  pkgconfig
+BuildRequires:  unzip
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(zlib)
 ExcludeArch:    %arm
@@ -61,7 +64,8 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} PREFIX=%{_prefix} BINDIR=%{_bindir} \
 
 %files
 %defattr(-,root,root)
-%doc README.md LICENSE.md
+%doc README.md
+%license LICENSE.md
 %{_bindir}/bin2fex
 %{_bindir}/fex2bin
 %{_bindir}/sunxi-bootinfo
@@ -72,5 +76,10 @@ make %{?_smp_mflags} DESTDIR=%{buildroot} PREFIX=%{_prefix} BINDIR=%{_bindir} \
 %{_bindir}/sunxi-meminfo
 %endif
 %{_bindir}/sunxi-pio
+%{_mandir}/man1/sunxi-fel.1.gz
+
+%check
+cp %{SOURCE1} tests/
+make check
 
 %changelog
