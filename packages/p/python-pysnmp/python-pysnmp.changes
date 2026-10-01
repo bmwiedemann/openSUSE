@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 13:24:08 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.30
+  * Bump pyasn1 dependency to 0.6.4.
+  * Fix a few SNMP v3 warnings.
+  * Fix OID traversal performance issue.
+- Update to version 7.1.29
+  * Bumped cryptography dependency to 50.0.0 and above.
+  * Fixed a regression where cryptography dependency is optional.
+- Update to version 7.1.28
+  * Fixed a security issue in authentication parameter handling.
+- Update to version 7.1.27
+  * Fixed network address parsing issue with MIB indices.
+
+-------------------------------------------------------------------
+Mon Apr 27 07:25:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.1.26
+  * Lifted pysmi dependency restriction up to 2.0.0 and above.
+
+-------------------------------------------------------------------
 Thu Apr 23 13:52:22 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.1.25
