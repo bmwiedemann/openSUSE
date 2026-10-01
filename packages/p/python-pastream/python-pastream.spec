@@ -1,7 +1,7 @@
 #
 # spec file for package python-pastream
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -93,7 +93,7 @@ export CFLAGS="%{optflags}"
 %python_alternative %{_bindir}/pastream
 %{python_sitearch}/pastream.py
 %pycache_only %{python_sitearch}/__pycache__/pastream*
-%{python_sitearch}/_py_pastream.abi3.so
+%{python_sitearch}/_py_pastream.abi3*.so
 %{python_sitearch}/pastream-%{version}.dist-info
 
 %changelog

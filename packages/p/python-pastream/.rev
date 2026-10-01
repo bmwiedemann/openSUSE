@@ -43,4 +43,12 @@
 - Do not build for Python 3.6, due to no NumPy.</comment>
     <requestid>1171423</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>3a3fb5b17f5dc163bd577c54cb9caf5d</srcmd5>
+    <version>0.2.0.post2</version>
+    <time>1790865735</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1381574</requestid>
+  </revision>
 </revisionlist>
