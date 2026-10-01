@@ -442,4 +442,16 @@ crossed range.
 </comment>
     <requestid>1380839</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>b66943e182681640d1ed6f45b68ee603</srcmd5>
+    <version>0.14.2</version>
+    <time>1790886059</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.2. BREAKING upstream: agent addressing moves from the
+beta agent_id/agent_environment arguments to a new ls.address() handle;
+only the primary write replica now keeps the original run ids. No Factory
+consumer passes the removed arguments.
+</comment>
+    <requestid>1381939</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:13:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.2:
+  * BREAKING: agent addressing moves from the beta agent_id and
+    agent_environment arguments to a new ls.address() handle.
+    traceable(), tracing_context(), RunTree and the client's
+    create_run()/update_run()/create_feedback_from_run() take
+    address= instead. The old arguments are no longer read:
+    traceable() reports them as unrecognised keyword arguments
+    and ignores them, update_run() drops them, and create_run()
+    passes them on as unknown run fields
+  * The address handle is usable wherever project_name was, and
+    with_agent_environment() narrows it; replicas accept one too
+  * A misconfigured LANGSMITH_AGENT_* environment leaves calls
+    untraced with a warning instead of breaking the application
+  * Only the primary write replica keeps the original run and trace
+    ids, so a replica config no longer sends the same id to two
+    projects; a conflicting queued create now warns
+  * A wrapped HTTP error keeps exc.response, so callers can read
+    the status, body and retry headers
+  * utils.get_tracer_agent_id()/get_tracer_agent_environment() are
+    removed
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Sat Sep 26 19:59:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.1:
