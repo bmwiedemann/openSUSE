@@ -186,4 +186,12 @@
 - Update Requires from setup.py (forwarded request 1297675 from glaubitz)</comment>
     <requestid>1297700</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>f82eaf182b270d774080df93ed0d4e55</srcmd5>
+    <version>10.0.0</version>
+    <time>1790866097</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1381839</requestid>
+  </revision>
 </revisionlist>
