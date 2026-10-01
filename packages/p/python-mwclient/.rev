@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1245345</requestid>
   </revision>
+  <revision rev="3" vrev="2">
+    <srcmd5>0cd1789dc354dc3c6e7b40cf26cbf5c6</srcmd5>
+    <version>0.11.0</version>
+    <time>1790865734</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for version discovery.</comment>
+    <requestid>1381564</requestid>
+  </revision>
 </revisionlist>

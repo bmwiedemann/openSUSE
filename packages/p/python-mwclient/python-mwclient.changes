@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 05:01:50 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for version discovery.
+
+-------------------------------------------------------------------
 Wed Feb 12 10:38:29 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - six is actually not needed anymore

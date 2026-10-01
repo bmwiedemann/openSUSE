@@ -1,0 +1,52 @@
+From c84daef36f44dd542ab0f126d11053fe579c991a Mon Sep 17 00:00:00 2001
+From: Marc Troelitzsch <marc.troelitzsch@gmail.com>
+Date: Thu, 10 Oct 2024 20:29:03 +0200
+Subject: [PATCH] test: replace pkg_resources with importlib.metadata for
+ Python 3.8+
+
+This change replaces the deprecated `pkg_resources` (part of
+`setuptools`) with `importlib.metadata` for Python 3.8 and above.
+
+Switching to `importlib.metadata` allows us to drop the test-dependency
+on `setuptools` and gets rid of the `DeprecationWarning` raised by
+certain versions of `pkg_resources` when being imported:
+
+```
+DeprecationWarning: pkg_resources is deprecated as an API
+```
+---
+ pyproject.toml      |  2 +-
+ test/test_client.py | 12 ++++++++++--
+ 2 files changed, 11 insertions(+), 3 deletions(-)
+
+Index: mwclient-0.11.0/test/test_client.py
+===================================================================
+--- mwclient-0.11.0.orig/test/test_client.py
++++ mwclient-0.11.0/test/test_client.py
+@@ -5,8 +5,8 @@ import mwclient
+ import logging
+ import requests
+ import responses
+-import pkg_resources  # part of setuptools
+ import time
++import sys
+ import json
+ from requests_oauthlib import OAuth1
+ 
+@@ -85,7 +85,15 @@ class TestClient(TestCase):
+ 
+     def testVersion(self):
+         # The version specified in setup.py should equal the one specified in client.py
+-        version = pkg_resources.require("mwclient")[0].version
++
++        if sys.version_info >= (3, 8):
++            import importlib.metadata
++
++            version = importlib.metadata.version("mwclient")
++        else:
++            import pkg_resources  # part of setuptools
++
++            version = pkg_resources.require("mwclient")[0].version
+ 
+         assert version == mwclient.__version__
+ 
