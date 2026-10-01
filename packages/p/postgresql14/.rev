@@ -528,4 +528,16 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
   build of extensions on SLE-16.1 and newer.</comment>
     <requestid>1372205</requestid>
   </revision>
+  <revision rev="37" vrev="3">
+    <srcmd5>46f2d16b997df33f8a9c636fbdc58463</srcmd5>
+    <version>14.24</version>
+    <time>1790865912</time>
+    <user>anag_factory</user>
+    <comment>- Require libicu-devel from the server-devel package when building
+  with ICU support.
+
+  build of extensions on SLE-16 and newer.
+- Use LLVM 15 on SLE-15 up to SP5 and LLVM 17 on SP6 and SP7.</comment>
+    <requestid>1381697</requestid>
+  </revision>
 </revisionlist>
