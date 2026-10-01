@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 30 10:30:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.21:
+  * Omit empty [manifest] tables from lockfiles that contain only
+    manifest subtables
+  * Preview: uv.lock can omit redundant runtime constraints,
+    including pre-release ones, with the resolution-inputs preview
+    feature
+  * Update the managed CPython builds to use OpenSSL 3.5.9
+  * Prevent uv python pin --rm from removing a global
+    .python-versions file without --global
+  * Fix installed-package checks incorrectly reporting
+    post-releases as incompatible with exclusive lower bounds on
+    pre-releases
+- Refresh the vendored dependencies: linked crates move
+  asyncband 0.7.2 -> 0.7.3, async-compression 0.4.48 -> 0.4.49 and
+  compression-codecs 0.4.43 -> 0.4.44; serde_yaml and
+  unsafe-libyaml are replaced by yaml_serde 0.10.7 and
+  libyaml-rs 0.3.0, and quinn-proto/quinn-udp move, all outside
+  the linked graph; the linked graph stays at 507 nodes and the
+  licence set is unchanged
+
+-------------------------------------------------------------------
 Tue Sep 29 07:41:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.20:

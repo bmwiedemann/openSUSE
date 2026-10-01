@@ -3286,4 +3286,13 @@ with the full test suite (1411 passed).</comment>
 </comment>
     <requestid>1381348</requestid>
   </revision>
+  <revision rev="129" vrev="1">
+    <srcmd5>f668410f3287a78f194f30b65619c7e6</srcmd5>
+    <version>0.12.21</version>
+    <time>1790865882</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.21: lockfiles omit empty [manifest] tables, uv.lock can drop redundant runtime constraints with the resolution-inputs preview, managed CPython builds use OpenSSL 3.5.9; fixes uv python pin --rm and pre-release lower-bound checks. Vendored deps refreshed.
+</comment>
+    <requestid>1381679</requestid>
+  </revision>
 </revisionlist>
