@@ -1,0 +1,96 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: cli: do not read a .env file
+
+The CLI loaded the nearest .env from the working directory upward into
+its environment, and every tool process inherits that environment. A
+cloned repository's .env could therefore set BASH_ENV, LD_PRELOAD,
+NODE_OPTIONS, GIT_CONFIG_* or ZCODE_EMBEDDED_SEARCH_COMMAND and have its
+own code run by the first auto-approved grep, find or git status. No .env
+is read any more; configuration comes from the environment.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/cli/src/env.ts	2026-09-25 13:08:39.553201780 +0200
++++ b/apps/zcode-cli/packages/cli/src/env.ts	2026-09-25 13:08:39.605207629 +0200
+@@ -1,7 +1,5 @@
+-import { existsSync, statSync } from "node:fs";
+ import { homedir } from "node:os";
+-import { dirname, join, parse, resolve } from "node:path";
+-import { config as loadDotenv } from "dotenv";
++import { join } from "node:path";
+ import {
+   ZCODE_RUNTIME_ENV_KEY,
+   buildZCodeToolEnvPassthroughEnv,
+@@ -47,65 +45,13 @@
+   applyCliRuntimeEnvDefaults(env, argv);
+ }
+ 
+-const findDotenv = (startDir: string): string | undefined => {
+-  let current = resolve(startDir);
+-  const root = parse(current).root;
+-
+-  while (true) {
+-    const candidate = resolve(current, ".env");
+-    // 用户可能把 .env 当作目录使用（如 ~/.env/modelscope）。
+-    // existsSync 只检查存在性，不区分文件/目录；必须显式检查 isFile避免 loadDotenv 报错。
+-    if (existsSync(candidate) && statSync(candidate).isFile()) {
+-      return candidate;
+-    }
+-
+-    if (current === root) {
+-      return undefined;
+-    }
+-
+-    const parent = dirname(current);
+-    if (parent === current) {
+-      return undefined;
+-    }
+-    current = parent;
+-  }
+-};
+-
+-export const loadCliDotenv = (options: LoadCliDotenvOptions = {}): DotenvLoadResult => {
+-  const env = options.env ?? process.env;
+-  const dotenvPath = findDotenv(options.cwd ?? process.cwd());
+-
+-  if (!dotenvPath) {
+-    return {
+-      keys: [],
+-      loaded: false,
+-    };
+-  }
+-
+-  // The build used to inline .env values into dist. Loading at the CLI boundary
+-  // keeps secrets runtime-scoped and lets users rotate .env without rebuilding.
+-  const result = loadDotenv({
+-    override: false,
+-    path: dotenvPath,
+-    processEnv: env,
+-    quiet: true,
+-  });
+-
+-  if (result.error) {
+-    return {
+-      error: result.error,
+-      keys: [],
+-      loaded: false,
+-      path: dotenvPath,
+-    };
+-  }
+-
+-  return {
+-    keys: Object.keys(result.parsed ?? {}),
+-    loaded: true,
+-    path: dotenvPath,
+-  };
+-};
++// No .env is read: one found in or above the working directory could set
++// variables (BASH_ENV, LD_PRELOAD, GIT_CONFIG_*, search commands) that every
++// tool process inherits. Configuration comes from the environment.
++export const loadCliDotenv = (_options: LoadCliDotenvOptions = {}): DotenvLoadResult => ({
++  keys: [],
++  loaded: false,
++});
+ 
+ export function shouldLoadCliDotenvForProtocolServer(env: CliEnv): boolean {
+   return resolveCliRuntimeEnv(env, process.argv) === "development";

@@ -1,0 +1,39 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: dynamic-workflow-runtime: private fallback for the run entry file
+
+When .zcode/workflow-runs cannot be written, the workflow child's entry
+file went to $TMPDIR/zcode-workflow-runs, a fixed name another local
+user can create first, then swap the file before the child starts. The
+fallback is now a new mkdtemp directory (0700).
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/dynamic-workflow-runtime/src/child-entry-file.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/dynamic-workflow-runtime/src/child-entry-file.ts	2026-09-30 19:06:06.848732895 +0200
+@@ -10,11 +10,11 @@
+  *   - 文件**保留**不删（同一 runId 原位覆写），目录兼作每次 run 实际执行体的存档；
+  *   - 目录里由本模块写一份 `.gitignore`（`*`），只在缺席时写一次，绝不碰项目自己的 `.gitignore`；
+  *   - 项目目录写不进（只读 checkout、cwd 不存在、`.zcode` 是个普通文件…）→ 回落到
+- *     `os.tmpdir()/zcode-workflow-runs/` 并经 `onWarning` 报一声，run 照常启动。回落也失败就抛，
++ *     `os.tmpdir()` 下新建的私有目录（mkdtemp，0700）并经 `onWarning` 报一声，run 照常启动。回落也失败就抛，
+  *     由 harness 归一成 failed 结算。
+  */
+ 
+-import { mkdirSync, writeFileSync } from "node:fs";
++import { mkdirSync, mkdtempSync, writeFileSync } from "node:fs";
+ import { tmpdir } from "node:os";
+ import { join } from "node:path";
+ 
+@@ -47,9 +47,10 @@
+   return join(cwd, ".zcode", "workflow-runs");
+ }
+ 
+-/** 回落目录（OS 临时目录下，跨项目共用）。 */
++// A new mkdtemp directory (0700) each time: another user can plant a fixed
++// name in a shared tmpdir and swap the entry file before the child starts.
+ export function fallbackWorkflowRunsDir(): string {
+-  return join(tmpdir(), "zcode-workflow-runs");
++  return mkdtempSync(join(tmpdir(), "zcode-workflow-runs-"));
+ }
+ 
+ /** runId 安全字符集之外一律换成 `_`，杜绝路径分隔符之类混进文件名。 */

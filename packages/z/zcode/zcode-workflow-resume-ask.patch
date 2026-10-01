@@ -1,0 +1,21 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: core: resuming a stopped workflow run asks
+
+ResumeWorkflowRun needed no approval, so the model could restart a run
+the user or the model had stopped, or one interrupted by quitting,
+outside yolo mode; its world.run commands then ran unasked.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/tool/handlers/resume-workflow-run.ts	2026-09-30 20:31:55.686618226 +0200
++++ b/apps/zcode-cli/packages/core/src/tool/handlers/resume-workflow-run.ts	2026-09-30 20:31:55.726622715 +0200
+@@ -204,7 +204,8 @@
+     // scriptHash 钉死在 submit 时已获批准的同一脚本上，完结节点纯 replay，与 UI 按钮同一
+     // 风险档——模型调用直接执行。拦截面仍在：PreToolUse deny（call-runner，先于执行）与
+     // 项目 deny 规则（denyPriority:"beforeAsk"）照常生效。
+-    needsApproval: false,
++    // A resumed run executes its script again: ask outside yolo mode.
++    needsApproval: true,
+     // run_id 进入模式匹配面（照 TaskOutput 的 task_id），好让项目规则能约束到具体 run。
+     patternSources: ["toolName", "input"],
+     alwaysAllowPatternSources: ["toolName"],

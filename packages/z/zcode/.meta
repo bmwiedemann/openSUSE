@@ -1,0 +1,5 @@
+<package name="zcode" project="openSUSE:Factory">
+  <title>Terminal AI coding agent from Z.ai</title>
+  <description>ZCode is an AI coding agent for the terminal (zai-org/ZCode): the command-line client and its terminal UI, built from source.</description>
+  <url>https://github.com/zai-org/ZCode</url>
+</package>

@@ -1,0 +1,26 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: bootstrap: do not look for official plugins under the working directory
+
+candidateBaseDirs() also returned process.cwd(), so each official plugin
+was looked for at <cwd>/packages/<name>-plugin and as <name>-plugin in the
+three directories above the working directory. A build that does not carry
+the official plugins beside its entry point (anything but the SEA and
+desktop builds) therefore loaded whatever a repository, or a shared
+directory above it, put there: it was listed as a Z.ai plugin, enabled,
+cached in ~/.zcode, and its MCP server command ran in every later session.
+Official plugins and the bundled skills are only looked up beside the
+entry point.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/bootstrap/src/app/bundled-plugins.ts	2026-09-25 10:16:23.127037645 +0200
++++ b/apps/zcode-cli/packages/bootstrap/src/app/bundled-plugins.ts	2026-09-25 10:16:23.215047532 +0200
+@@ -633,7 +633,7 @@
+   // 修复原因：Electron app-server 运行在 resources/glm/zcode.cjs，官方插件资源也随桌面包
+   // stage 到同级 packages/*-plugin。候选目录必须优先看入口文件目录，避免生产态退回到
+   // monorepo-only 的 __dirname 查找假设。
+-  return [entrypointDir(), runtimeDir(), process.cwd()].filter(
++  return [entrypointDir(), runtimeDir()].filter(
+     (dir): dir is string => typeof dir === "string",
+   );
+ }

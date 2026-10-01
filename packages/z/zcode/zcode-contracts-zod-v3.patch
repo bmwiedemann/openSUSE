@@ -1,0 +1,591 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: contracts: use the zod 3 API through zod/v3
+
+Built with npm instead of pnpm, contracts' zod ^3.24 is resolved against
+the hoisted zod 4.6.5 that packages/shared pins, and code written against
+the zod 3 API fails to compile. zod 3.25.28+ and every zod 4 release provide
+that API as "zod/v3", which zod-to-json-schema 3.25 already imports; using
+it the same way lets contracts build against either major. The 564 tool
+JSON schemas sent to providers are byte-identical before and after.
+
+Patch-mainline: No
+
+diff -ruN a/apps/zcode-cli/packages/contracts/package.json b/apps/zcode-cli/packages/contracts/package.json
+--- a/apps/zcode-cli/packages/contracts/package.json	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/package.json	2026-09-25 09:04:17.953297794 +0200
+@@ -96,7 +96,7 @@
+   },
+   "dependencies": {
+     "@zcode/shared": "workspace:*",
+-    "zod": "^3.24.0",
++    "zod": "^3.25.28 || ^4",
+     "zod-to-json-schema": "3.25.2"
+   },
+   "devDependencies": {
+diff -ruN a/apps/zcode-cli/packages/contracts/src/compact/index.ts b/apps/zcode-cli/packages/contracts/src/compact/index.ts
+--- a/apps/zcode-cli/packages/contracts/src/compact/index.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/compact/index.ts	2026-09-25 09:04:17.885290155 +0200
+@@ -2,7 +2,7 @@
+ // Compact Contracts - boundary payloads and active-chain helpers
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ import type { MessageId, PartId, ToolCallId, TraceId, TurnId } from "../interfaces/shared.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/hooks/index.ts b/apps/zcode-cli/packages/contracts/src/hooks/index.ts
+--- a/apps/zcode-cli/packages/contracts/src/hooks/index.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/hooks/index.ts	2026-09-25 09:04:17.893291054 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ModelToolSideEffectScope } from "../model/index.js";
+ import type { CollaborationMode, RiskLevel } from "../interfaces/session.port.js";
+ import type { PermissionUpdate } from "../interfaces/permission.port.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust-store.ts b/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust-store.ts
+--- a/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust-store.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust-store.ts	2026-09-25 09:04:17.893291054 +0200
+@@ -17,7 +17,7 @@
+   WorkspaceHookTrustStoreFile,
+ } from "@zcode/shared/workspace-hook-trust-store-file";
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ const nonEmptyStringSchema = z.string().trim().min(1);
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust.ts b/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust.ts
+--- a/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/hooks/workspace-hook-trust.ts	2026-09-25 09:04:17.893291054 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ export const WORKSPACE_HOOK_DIGEST_SCHEMA_VERSION = 1 as const;
+ export const WORKSPACE_HOOK_REVIEW_TIMEOUT_MS = 10 * 60 * 1000;
+diff -ruN a/apps/zcode-cli/packages/contracts/src/interfaces/permission-full-access.ts b/apps/zcode-cli/packages/contracts/src/interfaces/permission-full-access.ts
+--- a/apps/zcode-cli/packages/contracts/src/interfaces/permission-full-access.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/interfaces/permission-full-access.ts	2026-09-25 09:04:17.905292402 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ export const PERMISSION_FULL_ACCESS_ENTRY = "runtime/permission_full_access";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/interfaces/runtime-input-presentation.ts b/apps/zcode-cli/packages/contracts/src/interfaces/runtime-input-presentation.ts
+--- a/apps/zcode-cli/packages/contracts/src/interfaces/runtime-input-presentation.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/interfaces/runtime-input-presentation.ts	2026-09-25 09:04:17.905292402 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ /** 来源和实际消费形态的单一标记；缺失的旧历史不追溯转换。 */
+ export const RuntimeInputPresentationSchema = z.enum([
+diff -ruN a/apps/zcode-cli/packages/contracts/src/rewind/index.ts b/apps/zcode-cli/packages/contracts/src/rewind/index.ts
+--- a/apps/zcode-cli/packages/contracts/src/rewind/index.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/rewind/index.ts	2026-09-25 09:04:17.913293301 +0200
+@@ -2,7 +2,7 @@
+ // Rewind Contracts - checkpoint payloads and compact-aware helpers
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ import { isCompactBoundaryItem, parseCompactBoundaryPayload } from "../compact/index.js";
+ import type { CompactBoundaryPayload, CompactContextItem } from "../compact/index.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/agent.ts b/apps/zcode-cli/packages/contracts/src/tools/agent.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/agent.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/agent.ts	2026-09-25 09:04:17.917293750 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // 支持基于配置的子代理和异步启动。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import type { ModelUsage } from "../model/index.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/amend-workflow.ts b/apps/zcode-cli/packages/contracts/src/tools/amend-workflow.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/amend-workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/amend-workflow.ts	2026-09-25 09:04:17.917293750 +0200
+@@ -6,7 +6,7 @@
+ // 而是在改一个用户正看着的东西，而且前驱可能仍在跑。两者共用同一个输出形状，所以 executor 的
+ // 后台追踪、`backgrounded` 契约与 display 载荷只有一份。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import {
+   WORKFLOW_RUN_LIFECYCLE_STATUSES,
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/apply-patch.ts b/apps/zcode-cli/packages/contracts/src/tools/apply-patch.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/apply-patch.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/apply-patch.ts	2026-09-25 09:04:17.917293750 +0200
+@@ -2,7 +2,7 @@
+ // ApplyPatch Tool - Structured patch editing tool
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { EditDiffHunkSchema, type DiffHunk } from "./edit.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/ask-user-question.ts b/apps/zcode-cli/packages/contracts/src/tools/ask-user-question.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/ask-user-question.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/ask-user-question.ts	2026-09-25 09:04:17.921294199 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // References: interactive clarification tool behavior
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const ASK_USER_QUESTION_TOOL_NAME = "AskUserQuestion";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/automation.ts b/apps/zcode-cli/packages/contracts/src/tools/automation.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/automation.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/automation.ts	2026-09-25 09:04:17.921294199 +0200
+@@ -2,7 +2,7 @@
+ // Cron automation tools - session-level scheduled task management
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ const nonEmptyString = z.string().trim().min(1);
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/bash.ts b/apps/zcode-cli/packages/contracts/src/tools/bash.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/bash.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/bash.ts	2026-09-25 09:04:17.921294199 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: shell tool input / output shape
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { ToolExecutionTelemetrySchema } from "./performance.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/create-workflow.ts b/apps/zcode-cli/packages/contracts/src/tools/create-workflow.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/create-workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/create-workflow.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -2,7 +2,7 @@
+ // CreateWorkflow Tool - typecheck a dynamic-workflow script and start a background run
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { SAVED_WORKFLOW_MAX_NAME_CHARS, SavedWorkflowScopeSchema } from "./saved-workflow.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/edit.ts b/apps/zcode-cli/packages/contracts/src/tools/edit.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/edit.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/edit.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: file edit input / output shape
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { ToolExecutionTelemetrySchema } from "./performance.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/escalate.ts b/apps/zcode-cli/packages/contracts/src/tools/escalate.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/escalate.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/escalate.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -8,7 +8,7 @@
+ // 输出形状刻意是「带判别位的扁平对象」而不是 union：两支都是普通工具结果（不是错误），
+ // 模型读到的只有一段文本，判别位 `status` 只服务日志与结果投影。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const ESCALATE_TOOL_NAME = "escalate";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/eval-workflow-snippet.ts b/apps/zcode-cli/packages/contracts/src/tools/eval-workflow-snippet.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/eval-workflow-snippet.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/eval-workflow-snippet.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -4,7 +4,7 @@
+ // 工作流创作的实验通道：
+ // 同一条编译 / lowering / 沙箱 / world-read 执行面，内存 journal，完全瞬态。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { CreateWorkflowDiagnosticSchema } from "./create-workflow.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run-roster.ts b/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run-roster.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run-roster.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run-roster.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -9,7 +9,7 @@
+ // 只多了 zod 的界。两侧必须同步：端口是读面的事实，这里是模型面的契约，缺一个字段就意味着
+ // 一件已经查出来的事实到不了模型。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ /**
+  * 情势截面的界。每一条都与已有的某条界同值，不另起一套：
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run.ts b/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/get-workflow-run.ts	2026-09-25 09:04:17.925294649 +0200
+@@ -2,7 +2,7 @@
+ // GetWorkflowRun Tool - 单 workflow run 的自适应详情（进度摘要 / 产物 / 失败）
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import {
+   GET_WORKFLOW_RUN_ROSTER_LIMITS,
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/glob.ts b/apps/zcode-cli/packages/contracts/src/tools/glob.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/glob.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/glob.ts	2026-09-25 09:04:17.929295098 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: glob-style file matching tool
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/grep.ts b/apps/zcode-cli/packages/contracts/src/tools/grep.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/grep.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/grep.ts	2026-09-25 09:04:17.929295098 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: grep-style search tool
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/json-schema.ts b/apps/zcode-cli/packages/contracts/src/tools/json-schema.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/json-schema.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/json-schema.ts	2026-09-25 09:04:17.929295098 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ 
+ import { zodToJsonSchema } from "zod-to-json-schema";
+-import type { ZodTypeAny } from "zod";
++import type { ZodTypeAny } from "zod/v3";
+ import type { JsonSchema } from "../model/index.js";
+ 
+ const STRIPPED_SCHEMA_KEYS = new Set([
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/list-models.ts b/apps/zcode-cli/packages/contracts/src/tools/list-models.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/list-models.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/list-models.ts	2026-09-25 09:04:17.929295098 +0200
+@@ -10,7 +10,7 @@
+ // 本工具是主动那一条（"我们有哪些模型可用？"）。两条路读的是同一份活目录
+ // （{@link import("../interfaces/model-catalog.port.js").ModelCatalogPort}）。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const LIST_MODELS_TOOL_NAME = "ListModels";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/list-saved-workflows.ts b/apps/zcode-cli/packages/contracts/src/tools/list-saved-workflows.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/list-saved-workflows.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/list-saved-workflows.ts	2026-09-25 09:04:17.929295098 +0200
+@@ -6,7 +6,7 @@
+ // 定义（清单）。名字刻意在 "Runs" / "SavedWorkflows" 上分开，因为模型最容易犯的错就是把
+ // 「有哪些工作流可用」问成「有哪些工作流跑过」。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { SavedWorkflowEntrySchema, SavedWorkflowInvalidEntrySchema } from "./saved-workflow.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/list-workflow-runs.ts b/apps/zcode-cli/packages/contracts/src/tools/list-workflow-runs.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/list-workflow-runs.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/list-workflow-runs.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -2,7 +2,7 @@
+ // ListWorkflowRuns Tool - 按项目（cwd）枚举 workflow run，含跨会话历史
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const LIST_WORKFLOW_RUNS_TOOL_NAME = "ListWorkflowRuns";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/node-repl.ts b/apps/zcode-cli/packages/contracts/src/tools/node-repl.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/node-repl.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/node-repl.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ const JsInputBaseShape = {
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/off-peak.ts b/apps/zcode-cli/packages/contracts/src/tools/off-peak.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/off-peak.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/off-peak.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -5,7 +5,7 @@
+ // workspace/凭证不是模型入参；permissionMode/model/thoughtLevel 缺省在 host 端解析
+ // （yolo / allowed_models 末位 / 最高推理档），模型只在用户显式要求时覆盖。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ const nonEmptyString = z.string().trim().min(1);
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/performance.ts b/apps/zcode-cli/packages/contracts/src/tools/performance.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/performance.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/performance.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ export const ToolCommandStatusSchema = z.enum([
+   "completed",
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/plan-mode.ts b/apps/zcode-cli/packages/contracts/src/tools/plan-mode.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/plan-mode.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/plan-mode.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -2,7 +2,7 @@
+ // Plan Mode Tools - plan approval flow
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { CollaborationMode } from "../interfaces/session.port.js";
+ import type { TraceContext } from "../tracing/tracer.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/read-session-context.ts b/apps/zcode-cli/packages/contracts/src/tools/read-session-context.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/read-session-context.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/read-session-context.ts	2026-09-25 09:04:17.933295547 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const READ_SESSION_CONTEXT_TOOL_NAME = "ReadSessionContext";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/read.ts b/apps/zcode-cli/packages/contracts/src/tools/read.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/read.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/read.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: file read input / output shape
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { VIDEO_INPUT_MAX_BYTES } from "@zcode/shared";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/resolve-workflow-question.ts b/apps/zcode-cli/packages/contracts/src/tools/resolve-workflow-question.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/resolve-workflow-question.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/resolve-workflow-question.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -7,7 +7,7 @@
+ // 只收 qid 而不收 `(run_id, question_id)` 对：qid 全局唯一（跨 run），多 run 并发时让模型
+ // 自己配对是错配的温床。失败走 ToolHandlerFailure（core 侧），所以本输出只有成功形。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const RESOLVE_WORKFLOW_QUESTION_TOOL_NAME = "ResolveWorkflowQuestion";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/respond-to-coordinator.ts b/apps/zcode-cli/packages/contracts/src/tools/respond-to-coordinator.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/respond-to-coordinator.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/respond-to-coordinator.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const RESPOND_TO_COORDINATOR_TOOL_NAME = "RespondToCoordinator";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/resume-workflow-run.ts b/apps/zcode-cli/packages/contracts/src/tools/resume-workflow-run.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/resume-workflow-run.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/resume-workflow-run.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -12,7 +12,7 @@
+ // 无 optional。`status: "backgrounded"` 让 executor 的自动追踪按输出形状认领它，走
+ // CreateWorkflow 同一条 trackBackgroundTask。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const RESUME_WORKFLOW_RUN_TOOL_NAME = "ResumeWorkflowRun";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/saved-workflow.ts b/apps/zcode-cli/packages/contracts/src/tools/saved-workflow.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/saved-workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/saved-workflow.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -7,7 +7,7 @@
+ // 源运行）都以它为契约，core 侧的 store 也从这里取 schema——元数据形状一旦在写侧与读侧
+ // 各自演化，症状是「刚保存的 workflow 列不出来」，而那是最难被单侧测试抓住的一类分叉。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ /**
+  * 保存文件的扩展名。`.dwf.ts` 而不是 `.ts`：编辑器按 TypeScript 高亮（frontmatter 是块注释，
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/save-workflow.ts b/apps/zcode-cli/packages/contracts/src/tools/save-workflow.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/save-workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/save-workflow.ts	2026-09-25 09:04:17.937295997 +0200
+@@ -2,7 +2,7 @@
+ // SaveWorkflow Tool - 把一段 dwf 脚本连同元数据存成项目里的可复用定义
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { CreateWorkflowDiagnosticSchema } from "./create-workflow.js";
+ import {
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/send-message.ts b/apps/zcode-cli/packages/contracts/src/tools/send-message.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/send-message.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/send-message.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const SEND_MESSAGE_TOOL_NAME = "SendMessage";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/skill.ts b/apps/zcode-cli/packages/contracts/src/tools/skill.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/skill.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/skill.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -2,7 +2,7 @@
+ // Skill Tool - load reusable local instructions on demand
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/submit-result.ts b/apps/zcode-cli/packages/contracts/src/tools/submit-result.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/submit-result.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/submit-result.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -5,7 +5,7 @@
+ // 任意 JSON（单个 `result` 属性）——每个 ask 的具体 schema 不进工具声明，而是随 ask
+ // 指令消息的 epilogue 下发，以维持 frozen-per-actor 的工具缓存不变式。
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { TOOL_JSON_SCHEMA_VERSION, toToolJsonSchema } from "./json-schema.js";
+ 
+ export const SUBMIT_RESULT_TOOL_NAME = "submit_result";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/target.ts b/apps/zcode-cli/packages/contracts/src/tools/target.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/target.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/target.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -2,7 +2,7 @@
+ // Goal Tools - session-local long-running goal
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { SessionId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/task-output.ts b/apps/zcode-cli/packages/contracts/src/tools/task-output.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/task-output.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/task-output.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const TASK_OUTPUT_TOOL_NAME = "TaskOutput";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/task-stop.ts b/apps/zcode-cli/packages/contracts/src/tools/task-stop.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/task-stop.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/task-stop.ts	2026-09-25 09:04:17.941296446 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+ export const TASK_STOP_TOOL_NAME = "TaskStop";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/todo.ts b/apps/zcode-cli/packages/contracts/src/tools/todo.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/todo.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/todo.ts	2026-09-25 09:04:17.945296895 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // References: session todo and planning tool behavior
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/tool-result-metadata.ts b/apps/zcode-cli/packages/contracts/src/tools/tool-result-metadata.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/tool-result-metadata.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/tool-result-metadata.ts	2026-09-25 09:04:17.945296895 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { OFFICIAL_MCP_TOOL_ERROR_CODES } from "@zcode/shared";
+ 
+ import {
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/webfetch.ts b/apps/zcode-cli/packages/contracts/src/tools/webfetch.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/webfetch.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/webfetch.ts	2026-09-25 09:04:17.945296895 +0200
+@@ -2,7 +2,7 @@
+ // WebFetch Tool - URL fetch and extraction
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/websearch.ts b/apps/zcode-cli/packages/contracts/src/tools/websearch.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/websearch.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/websearch.ts	2026-09-25 09:04:17.945296895 +0200
+@@ -2,7 +2,7 @@
+ // WebSearch Tool - provider-visible wrapper and internal provider-native schema definitions
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import type { ProviderNativeToolSpec, ToolContractDeclaration } from "./contract.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/workflow-observation-display.ts b/apps/zcode-cli/packages/contracts/src/tools/workflow-observation-display.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/workflow-observation-display.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/workflow-observation-display.ts	2026-09-25 09:04:17.945296895 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ import {
+   CREATE_WORKFLOW_DISPLAY_MAX_DIAGNOSTICS,
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/workflow.ts b/apps/zcode-cli/packages/contracts/src/tools/workflow.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/workflow.ts	2026-09-25 09:04:17.949297345 +0200
+@@ -2,7 +2,7 @@
+ // Workflow Tool - deterministic multi-agent workflow launcher
+ // ============================================================
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/tools/write.ts b/apps/zcode-cli/packages/contracts/src/tools/write.ts
+--- a/apps/zcode-cli/packages/contracts/src/tools/write.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/tools/write.ts	2026-09-25 09:04:17.949297345 +0200
+@@ -3,7 +3,7 @@
+ // ============================================================
+ // Reference: file write input / output shape
+ 
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { ToolCallId, TraceId } from "../interfaces/shared.js";
+ import { toToolJsonSchema } from "./json-schema.js";
+ import { ToolExecutionTelemetrySchema } from "./performance.js";
+diff -ruN a/apps/zcode-cli/packages/contracts/src/workflow/index.ts b/apps/zcode-cli/packages/contracts/src/workflow/index.ts
+--- a/apps/zcode-cli/packages/contracts/src/workflow/index.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/workflow/index.ts	2026-09-25 09:04:17.949297345 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ 
+ export * from "./script.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/contracts/src/workflow/script.ts b/apps/zcode-cli/packages/contracts/src/workflow/script.ts
+--- a/apps/zcode-cli/packages/contracts/src/workflow/script.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/contracts/src/workflow/script.ts	2026-09-25 09:04:17.949297345 +0200
+@@ -1,4 +1,4 @@
+-import { z } from "zod";
++import { z } from "zod/v3";
+ import type { SessionId } from "../interfaces/shared.js";
+ 
+ const MAX_WORKFLOW_AGENT_TOOLS = 128;

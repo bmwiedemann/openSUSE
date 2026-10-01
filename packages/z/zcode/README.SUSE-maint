@@ -1,0 +1,219 @@
+zcode packaging notes
+=====================
+
+What is built
+-------------
+Only the CLI (apps/zcode-cli) and its terminal UI. The desktop app, web UI
+and server are excluded from the source tarball (_service `exclude`s). No
+official plugin ships: most (zcode-guide, image-search, ...) have no source
+in the public repository, and browser-use and node-repl-host, which do, are
+excluded with the browser automation they exist for. So browser/computer use
+and `--browser-use=headless` (playwright-core) are unavailable. Dynamic
+workflows and `/workflow` work in yolo mode only, not in plan mode; in build
+and accept-edits mode every EvalWorkflowSnippet asks, and so does resuming a
+run the user stopped. No .env file is read (zcode-no-dotenv.patch):
+configuration and API keys come from the environment. PAC proxy files do not
+work, as upstream: the CJS bundle cannot locate quickjs-wasi's wasm. On
+start the CLI fetches its built-in provider list from zcode.z.ai, as
+upstream does. Upstream builds with pnpm; here the CLI's 17 workspace
+packages plus the apps/zcode-cli root are an npm workspace
+(zcode-npm-workspace.json), vendored through the node_modules service.
+
+Patches
+-------
+zcode-contracts-zod-v3.patch        npm resolves contracts' zod ^3.24 against
+                                    the hoisted zod 4.6.5; importing the zod 3
+                                    API as zod/v3 builds against either. The
+                                    contracts schemas were verified
+                                    byte-identical.
+zcode-tui-distro-opentui.patch      @mbears/opentui-* 0.2.15 (a fork with an
+                                    unpublished native library) -> upstream
+                                    @opentui/* at the distribution opentui
+                                    version.
+zcode-no-cwd-plugins.patch          upstream also looks for official plugins
+                                    under the working directory; a build that
+                                    does not ship them (this one) loads a
+                                    planted one. %check guards it.
+zcode-adapters-no-koffi.patch       koffi is Windows-only; dropping it keeps
+                                    its prebuilt .node files out of the
+                                    vendored sources.
+zcode-js-text-search.patch          the ripgrep (WASI) worker imports
+                                    "ripgrep" from the working directory;
+                                    search with the JavaScript engine, which
+                                    was the fallback in use anyway.
+zcode-no-dotenv.patch               the CLI loaded the nearest .env above the
+                                    working directory into the environment
+                                    every tool process inherits (BASH_ENV,
+                                    LD_PRELOAD, GIT_CONFIG_*, search
+                                    commands); it reads none now.
+zcode-project-config-trust.patch    zcode.json / .zcode/config.json from the
+                                    working directory upward: project MCP
+                                    servers are not auto-started (upstream's
+                                    untrusted path, /mcp connect), and
+                                    permission, plugins, storage and network
+                                    are ignored there. %check plants both.
+zcode-workflow-snippet-ask.patch    snippets without world.run ran unasked,
+                                    contained only by node:vm; all ask now.
+zcode-git-snapshot-safe.patch       the first-prompt git snapshot, the TUI
+                                    branch lookup and workflow git reads pass
+                                    -c safe.bareRepository=explicit
+                                    -c core.fsmonitor=false
+                                    -c log.showSignature=false.
+zcode-write-approval-confined.patch the drafts pre-approval, accept-edits
+                                    mode and the agent-memory rule compared
+                                    path strings only; they now also need
+                                    the target inside the workspace root
+                                    (Bash moves the working directory;
+                                    agent memory: inside its memory root),
+                                    outside .git in any letter case, no
+                                    symlink on the way, and a project or
+                                    local agent memory root behind a
+                                    symlink is not used.
+zcode-project-commands-no-shell.patch
+                                    project-scope commands (including
+                                    configured extra command roots, which
+                                    upstream tags project) no longer run
+                                    !`...` blocks; user commands still do.
+zcode-workflow-amend-ask.patch      the owner rule ran any AmendWorkflow of
+                                    a run this session started unasked, a
+                                    new script included; now only retunes
+                                    and amendments keeping the script.
+zcode-bash-always-ask.patch         Bash asks in build, accept-edits and
+                                    plan mode (entered by the model
+                                    unasked) whatever the read-only
+                                    classifier says; it passed sed e/w/W
+                                    and s///e,w, uniq's output operand and
+                                    bfs -rm. Saved rules and
+                                    permission.allowedTools still apply
+                                    outside plan mode, as upstream.
+zcode-explore-no-yolo.patch         the built-in Explore agent ran in yolo
+                                    whatever the session's mode; it follows
+                                    the session now.
+zcode-workflows-yolo-only.patch     the TUI and -p answered CreateWorkflow
+                                    and AmendWorkflow with allow in every
+                                    mode, and world.run runs any command
+                                    unchecked; both now allow them in yolo
+                                    mode only and deny them otherwise, core
+                                    denies them in plan mode (entered from
+                                    yolo too) and applies the owner rule in
+                                    yolo mode only.
+zcode-workflow-resume-ask.patch     ResumeWorkflowRun needed no approval;
+                                    resuming any stopped run (also one
+                                    interrupted by quitting) asks outside
+                                    yolo mode.
+zcode-workflow-private-tmpdir.patch the run-entry file fell back to the
+                                    fixed $TMPDIR/zcode-workflow-runs,
+                                    which another user can plant; now a new
+                                    mkdtemp directory (0700).
+patches/@ai-sdk__*.patch            upstream's own pnpm patches, applied by
+                                    hand in %build (npm ignores
+                                    patchedDependencies).
+
+Reported upstream as GHSA-3c25-29h8-g8pq (private vulnerability report,
+2026-09-30): the working-directory plugin lookup, the ripgrep worker, .env
+loading, project-config trust, snippet approval, the git snapshot, write
+auto-approval through symlinks, the agent-memory root symlink, project
+command shell expansion, the read-only Bash classifier (sed e/w/W and
+s///e,w, uniq's output operand, bfs -rm), EnterPlanMode without a prompt,
+Explore in yolo, the memory agent's classifier Bash, allow rules skipping
+read-only sub-commands, the CLI clients approving CreateWorkflow and
+AmendWorkflow unasked, project saved workflows shadowing global ones, the
+AmendWorkflow owner rule, ResumeWorkflowRun, the shared
+$TMPDIR/zcode-workflow-runs fallback and the project-id slug collisions.
+Not reported: upstream has issues disabled and takes no outside pull
+requests, so zod/v3 and the TUI quitting on the first Ctrl-C (the startup
+screen's key handler stays mounted; root.unmount() before the app render
+fixes it) stay downstream notes.
+
+Residuals, accepted (other writes ask):
+- a .git/config that arrives inside an archive (not a clone) is untrusted
+  for every git command zcode or the model runs: fsmonitor, filter.*.clean,
+  diff.external and textconv all come from it;
+- the memory-extraction agent runs in yolo and runs the Bash its read-only
+  classifier accepts (memory-agent-loop.ts), the classifier
+  zcode-bash-always-ask.patch stops trusting elsewhere;
+- a saved Bash allow rule also covers read-only sub-commands it does not
+  name (make:* allows "make && <read-only command>");
+- workflow actors run in yolo: a run starts only from a yolo session and
+  resumes outside it only when the user approves; a run in flight keeps
+  running after the session leaves yolo; the user's own /dwf resume runs
+  unasked; /expert switches the session to yolo (/workflow does not);
+- projects whose ids collide as slugs share the saved permission mode and
+  always-allow rules;
+- draft and run-entry files (fixed names) are written through a
+  .zcode/workflow-drafts or .zcode/workflow-runs symlink the repository
+  planted (LOW).
+`zcode -p` without --mode runs in yolo (upstream's headless default); pass
+--mode build to keep the asks (Bash and workflows are then refused: nobody
+can answer, and workflows need yolo).
+
+Project config, as patched: MCP servers are listed as untrusted; /mcp list
+does not show their command, so read zcode.json before /mcp connect.
+`zcode plugins ... --scope project|workspace` writes settings this build
+ignores. features, memory, logging, skills and ui still come from project
+config (none of them adds code execution; memory is on by default).
+
+Lockstep
+--------
+- The TUI binds libopentui.so over a private, unversioned FFI ABI:
+  @opentui/core and @opentui/react in the patched tui/package.json and
+  %opentui_version must agree (%prep fails otherwise); the opentui package
+  is only required to be at least that release. A newer libopentui can
+  differ (0.5.10 -> 0.5.11 changed 19 signatures), so re-vendor zcode when
+  opentui moves; %check's resolveRenderLib load catches a missing symbol at
+  build time only. opentui itself follows opencode's pin. On Node it needs
+  node:ffi, i.e. Node >= 26.4 with --experimental-ffi (the launcher passes
+  it; --allow-ffi would need --permission).
+- esbuild: the npm override, %esbuild_version and Factory's esbuild must be
+  the same release (the npm API refuses any other binary). A Factory esbuild
+  bump makes this package unresolvable until the three are moved together.
+- %cli_version must match apps/zcode-cli/package.json (%prep checks it).
+
+Dependency versions
+-------------------
+npm resolves the newest release inside upstream's declared ranges, not the
+versions in upstream's pnpm-lock.yaml: that lock is older, and pinning to it
+brought back releases with published advisories (protobufjs, undici,
+basic-ftp, ip-address, shell-quote). Overrides are kept to what the build
+needs (react as upstream, the two @ai-sdk packages upstream patches,
+esbuild) plus security lifts above upstream's exact pins:
+@ai-sdk/provider-utils 4.0.33 (CVE-2026-8769; scoped under @ai-sdk/anthropic
+and ai), @opentelemetry/core 2.8.0 (CVE-2026-54285) and ws 8.21.0
+(CVE-2026-45736, CVE-2026-48779; via the TUI's own pin in %prep). Unused
+path: @ai-sdk/openai's downloadBlob loads undici, which is not in the
+runtime tree; only OpenAI image edits from URLs reach it and zcode does not
+use them. The vendored set must stay free of advisories: run an OSV batch
+query (https://api.osv.dev/v1/querybatch) over every lock entry on each bump
+and lift what it finds to the first fixed release.
+
+Bumping
+-------
+1. Set the tag in _service; run the obs_scm, tar, recompress and set_version
+   services; `file` the unpacked tree (no prebuilt binaries expected).
+2. Refresh the source patches; check the tui pins and the pnpm
+   patchedDependencies versions against the overrides.
+3. Regenerate package-lock.json from a tree prepared exactly as %prep does,
+   with `npm install --package-lock-only --ignore-scripts`; run the OSV
+   sweep. Then delete every lock entry that is optional and carries
+   os/cpu/libc (platform binaries); `source-map` is the one pure-JS optional
+   dependency, so it is a root devDependency.
+4. Run the node_modules service. It needs obs-service-node_modules >= 3.0
+   (older versions reject workspace entries) with legacy-container.
+5. Re-check the build order (`turbo run build --filter=@zcode/cli^... --dry`
+   in an upstream checkout) and re-derive License over the non-dev lock
+   entries.
+
+local-npm-registry installs with --no-package-lock: the lock decides which
+tarballs are vendored, and the vendored set then decides the tree.
+
+Prebuilt artefacts
+------------------
+Shipped: web-tree-sitter's runtime (tree-sitter.wasm) and the oniguruma
+regex engine shiki inlines as base64 in @shikijs/engine-oniguruma, both C
+compiled to wasm; %install asserts that no other wasm and no ELF/PE/Mach-O
+file ships (checked by content). Vendored only (source RPM): quickjs-wasi's
+wasm modules (named *.so; PAC resolver), the opentui grammar wasm (replaced
+by links to tree-sitter-*-wasm), shiki's standalone onig.wasm,
+web-tree-sitter's lib/ and debug/ copies (removed in %install), and the
+base64-inlined wasm in tsx (es-module-lexer; a build tool, needed to stage
+the provider config) and undici (llhttp).

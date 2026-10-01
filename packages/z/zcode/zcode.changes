@@ -1,0 +1,59 @@
+-------------------------------------------------------------------
+Fri Sep 25 07:10:09 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of zcode 3.14.3 (CLI 0.16.9): the command-line
+  client and its terminal UI, built from source; the desktop app,
+  the official plugins and headless browser use are not included
+- Build the CLI workspace with npm instead of pnpm, dependencies
+  vendored through the node_modules service
+- Build against ws 8.21.0, @ai-sdk/provider-utils 4.0.33 and
+  @opentelemetry/core 2.8.0 instead of upstream's pins
+  (CVE-2026-45736, CVE-2026-48779, CVE-2026-8769, CVE-2026-54285)
+- Use the distribution opentui library instead of the prebuilt
+  fork the TUI depends on, the tree-sitter grammars from the
+  tree-sitter-*-wasm packages, and ripgrep, ugrep and bfs from the
+  distribution
+- Never load official plugins or the text search module from the
+  working directory, where a repository could plant them, and do
+  not read a .env file: set configuration in the environment
+- A project zcode.json or .zcode/config.json no longer starts its
+  MCP servers (connect them with /mcp connect) and cannot set
+  permission, plugins, storage or network; the user config still
+  can
+- Outside yolo mode every EvalWorkflowSnippet asks for approval,
+  and the git context snapshot ignores a planted bare repository or
+  core.fsmonitor
+- Auto-approved writes (workflow drafts, accept-edits mode, agent
+  memory) stay inside the workspace (agent memory: inside its
+  memory root), outside .git and off symlinks; project slash
+  commands do not run their shell blocks
+- In Build and accept-edits mode Bash asks even when its read-only
+  heuristic says otherwise, unless a saved rule or the allowedTools
+  setting allows it, and in Plan mode read-only Bash asks: upstream
+  ran what the heuristic judged read-only, including sed scripts
+  that run programs or write files, uniq writing its output operand
+  and bfs -rm
+- The Explore agent follows the session's permission mode
+- Workflows (CreateWorkflow, AmendWorkflow) run only in yolo mode,
+  never in Plan mode: upstream's clients approved them unasked in
+  every mode. Resuming a stopped run asks outside yolo mode, and
+  a run's entry file falls back to a private temporary directory
+  instead of a shared one
+- Add patches:
+  * zcode-contracts-zod-v3.patch
+  * zcode-tui-distro-opentui.patch
+  * zcode-no-cwd-plugins.patch
+  * zcode-adapters-no-koffi.patch
+  * zcode-js-text-search.patch
+  * zcode-no-dotenv.patch
+  * zcode-project-config-trust.patch
+  * zcode-workflow-snippet-ask.patch
+  * zcode-git-snapshot-safe.patch
+  * zcode-write-approval-confined.patch
+  * zcode-project-commands-no-shell.patch
+  * zcode-workflow-amend-ask.patch
+  * zcode-bash-always-ask.patch
+  * zcode-explore-no-yolo.patch
+  * zcode-workflows-yolo-only.patch
+  * zcode-workflow-resume-ask.patch
+  * zcode-workflow-private-tmpdir.patch

@@ -1,0 +1,39 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: permission: every Bash command asks outside yolo mode
+
+Build, accept-edits and plan mode (which the model enters unasked) ran Bash
+without a prompt whenever upstream's read-only classifier agreed, and it
+agreed to sed scripts that run programs or write files, to uniq writing its
+output operand and to bfs -rm. Saved allow rules still apply in build and
+accept-edits mode.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 15:54:57.799847934 +0200
++++ b/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 15:54:57.847853321 +0200
+@@ -466,6 +466,11 @@
+     capability: ResolvedPermissionCapability,
+   ): PermissionDecisionResult {
+     if (capability.readOnly && !capability.destructive) {
++      // Read-only Bash asks too (see checkBuildMode): the model enters plan
++      // mode without asking.
++      if (capability.permissionName === "bash") {
++        return this.ask(context, capability, "mode.plan.bash", "Bash commands require approval");
++      }
+       return this.allow(
+         context,
+         capability,
+@@ -513,6 +518,13 @@
+     context: PermissionContext,
+     capability: ResolvedPermissionCapability,
+   ): PermissionDecisionResult {
++    // Every Bash command asks, in accept-edits mode too: the read-only
++    // classifier passed sed scripts that run programs or write files, uniq
++    // writing its output operand and bfs -rm.
++    if (capability.permissionName === "bash") {
++      return this.ask(context, capability, "mode.build.bash", "Bash commands require approval");
++    }
++
+     if (capability.readOnly && !capability.destructive && !capability.needsApproval) {
+       return this.allow(
+         context,

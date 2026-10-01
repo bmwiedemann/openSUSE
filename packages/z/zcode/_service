@@ -1,0 +1,40 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/zai-org/ZCode.git</param>
+    <param name="scm">git</param>
+    <param name="revision">v3.14.3</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="filename">zcode</param>
+    <param name="exclude">.agents*</param>
+    <param name="exclude">.vscode*</param>
+    <param name="exclude">public*</param>
+    <param name="exclude">apps/zcode-cli/dependencies*</param>
+    <param name="exclude">apps/zcode-cli/tools/prompt-trajectory*</param>
+    <param name="exclude">apps/zcode-cli/packages/browser-use-plugin*</param>
+    <param name="exclude">apps/zcode-cli/packages/debug*</param>
+    <param name="exclude">apps/zcode-cli/packages/node-repl-host*</param>
+    <param name="exclude">apps/zcode-cli/packages/superpowers-plugin*</param>
+    <param name="exclude">apps/zcode-cli/packages/swift-bridge*</param>
+    <param name="exclude">packages/client*</param>
+    <param name="exclude">packages/desktop*</param>
+    <param name="exclude">packages/rpc*</param>
+    <param name="exclude">packages/server*</param>
+    <param name="exclude">packages/services*</param>
+    <param name="exclude">packages/ui*</param>
+    <param name="exclude">packages/web*</param>
+    <param name="exclude">packages/zcode-server-cli*</param>
+  </service>
+  <service name="tar" mode="manual"/>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="legacy-container">true</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">10000</param>
+  </service>
+</services>

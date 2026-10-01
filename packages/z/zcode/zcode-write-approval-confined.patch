@@ -1,0 +1,180 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: permission: auto-approve writes only where their path points
+
+Build mode pre-approves Write/Edit into <cwd>/.zcode/workflow-drafts/,
+accept-edits mode every Write/Edit and agent memory every .md write under
+its root, all by path string. A repository can commit
+.zcode/workflow-drafts -> ../.git (the next auto-approved git status runs
+its core.fsmonitor) or a symlinked .zcode/agent-memory, and Bash can move
+the working directory into .git.
+
+The target must now stay inside the workspace root (agent memory: inside
+its memory root), outside any .git directory in any letter case (.GIT is
+.git on a case-folding filesystem), with no symlink on the way, and a
+project or local agent memory root reached through a symlink is not used.
+Any other write asks.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 15:54:57.759843445 +0200
+@@ -2,6 +2,9 @@
+ // Permission Service - Permission checking and decision making
+ // ============================================================
+ 
++import { lstatSync } from "node:fs";
++import nodePath from "node:path";
++
+ import {
+   AMEND_WORKFLOW_TOOL_NAME,
+   isAmendWorkflowOwnedPredecessor,
+@@ -30,6 +33,51 @@
+ /** 草稿免确认的规则号。 */
+ const WORKFLOW_DRAFT_PREAPPROVED_RULE_ID = "tool.workflowDraft.preapproved";
+ 
++// A write is only auto-approved where its path says it goes: inside the
++// workspace root (Bash moves the working directory, into .git as well), not
++// into a .git directory, and through no symlink (a repository can commit
++// .zcode/workflow-drafts -> ../.git). Anything else asks.
++function isConfinedWriteTarget(
++  workingDirectory: string | undefined,
++  workspaceRoot: string | undefined,
++  input: unknown,
++): boolean {
++  if (!workingDirectory || !workspaceRoot) return false;
++  const filePath =
++    input && typeof input === "object" ? (input as Record<string, unknown>).file_path : undefined;
++  if (typeof filePath !== "string" || filePath.length === 0) return false;
++  return isConfinedPath(workspaceRoot, nodePath.resolve(workingDirectory, filePath));
++}
++
++// target is below root, has no .git component in any letter case anywhere
++// (a subagent's workspace root is the working directory it started in, which
++// Bash may have moved into .git) and no symlink below root on the way.
++export function isConfinedPath(root: string, target: string): boolean {
++  const base = nodePath.resolve(root);
++  const resolved = nodePath.resolve(base, target);
++  const relative = nodePath.relative(base, resolved);
++  if (
++    relative.length === 0 ||
++    relative === ".." ||
++    relative.startsWith(`..${nodePath.sep}`) ||
++    nodePath.isAbsolute(relative) ||
++    resolved.split(nodePath.sep).some((part) => part.toLowerCase() === ".git")
++  ) {
++    return false;
++  }
++  let current = base;
++  for (const part of relative.split(nodePath.sep)) {
++    current = nodePath.join(current, part);
++    try {
++      if (lstatSync(current).isSymbolicLink()) return false;
++    } catch {
++      // Not there yet: the rest is created as plain directories and a file.
++      break;
++    }
++  }
++  return true;
++}
++
+ export interface PermissionContext {
+   toolName: string;
+   input: unknown;
+@@ -42,6 +90,8 @@
+    * 可选：拿不到工作目录的调用方照常按其余规则判定，不会因此少一层确认。
+    */
+   workingDirectory?: string;
++  /** Auto-approved writes stay below it; without it they ask. */
++  workspaceRoot?: string;
+ }
+ 
+ export interface PermissionToolCapability {
+@@ -204,7 +254,8 @@
+         input: context.input,
+         toolName: context.toolName,
+         workingDirectory: context.workingDirectory,
+-      })
++      }) &&
++      isConfinedWriteTarget(context.workingDirectory, context.workspaceRoot, context.input)
+     ) {
+       return this.allow(
+         context,
+@@ -517,7 +568,11 @@
+     context: PermissionContext,
+     capability: ResolvedPermissionCapability,
+   ): PermissionDecisionResult {
+-    if (capability.permissionName === "edit" && capability.sideEffectScope === "workspace") {
++    if (
++      capability.permissionName === "edit" &&
++      capability.sideEffectScope === "workspace" &&
++      isConfinedWriteTarget(context.workingDirectory, context.workspaceRoot, context.input)
++    ) {
+       return this.allow(
+         context,
+         capability,
+--- a/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/tool/executor/permission-flow.ts	2026-09-30 15:48:44.245930673 +0200
+@@ -59,6 +59,7 @@
+     // workflow 草稿免确认要按工作目录解析相对路径，见 PermissionService 的
+     // isPreapprovedWorkflowDraftWrite。
+     workingDirectory: deps.getWorkingDirectory(),
++    workspaceRoot: deps.getWorkspaceRoot(),
+   };
+   const runtimePermissionContext = resolveRuntimePermissionContext(deps);
+   const rulePolicy = entry.resolvePermissionRulePolicy?.(executionInput, runtimePermissionContext);
+--- a/apps/zcode-cli/packages/core/src/tool/executor/permission-input-recheck.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/tool/executor/permission-input-recheck.ts	2026-09-30 15:48:44.309937856 +0200
+@@ -42,6 +42,7 @@
+     toolName: input.toolCall.name,
+     // 与首次判定同源：hook 改过 input 之后，草稿免确认仍要按同一个工作目录复核。
+     workingDirectory: input.deps.getWorkingDirectory(),
++    workspaceRoot: input.deps.getWorkspaceRoot(),
+   };
+   const rulePolicy = input.entry.resolvePermissionRulePolicy?.(
+     input.modifiedInput,
+--- a/apps/zcode-cli/packages/core/src/tool/executor/memory-file-permission.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/tool/executor/memory-file-permission.ts	2026-09-30 15:54:57.931862748 +0200
+@@ -1,4 +1,6 @@
+-import type { PermissionDecisionResult } from "../../permission/service.js";
++import nodePath from "node:path";
++
++import { isConfinedPath, type PermissionDecisionResult } from "../../permission/service.js";
+ import {
+   resolveContainedMemoryFilePath,
+   resolveSafeMemoryFilePath,
+@@ -34,6 +36,9 @@
+     return input.decision;
+   }
+   if (preservesExistingPermissionDecision(input.decision)) return input.decision;
++  // Project and local agents keep their memory root in the repository: no
++  // symlink at or below it (loadPersistentAgentMemory refuses one above it).
++  if (!isConfinedPath(nodePath.dirname(input.memoryRoot), target)) return input.decision;
+ 
+   return {
+     ...input.decision,
+--- a/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/subagent/persistent-memory.ts	2026-09-30 15:49:21.118068172 +0200
+@@ -3,6 +3,7 @@
+ import type { FileSystemPort, Logger, TraceContext } from "@zcode/contracts";
+ 
+ import { ensureMemoryDirectoryExists } from "../memory/directory.js";
++import { isConfinedPath } from "../permission/service.js";
+ import type { AgentRuntimeConfig, MemoryRuntimeConfig } from "../runtime/types.js";
+ import type { AgentProfile, AgentMemoryScope } from "./profile.js";
+ import { buildPersistentAgentMemoryPrompt } from "./persistent-memory-prompt.js";
+@@ -84,6 +85,15 @@
+     storageRoot: input.memory.storageRoot,
+     workspaceRoot: input.workspaceRoot,
+   });
++  // A project or local root lies in the repository, which can commit a
++  // symlink on the way to it (.zcode/agent-memory -> anywhere): not used then.
++  if (input.profile.memory !== "user" && !isConfinedPath(input.workspaceRoot, rootDir)) {
++    input.logger?.warn("Agent memory root is reached through a symlink; memory is off", {
++      event: "memory.root.symlink",
++      module: "core.memory",
++    });
++    return undefined;
++  }
+   await ensureMemoryDirectoryExists(
+     input.fileSystemPort,
+     rootDir,

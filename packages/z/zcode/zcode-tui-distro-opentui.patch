@@ -1,0 +1,210 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: tui: build on upstream opentui instead of the @mbears fork
+
+@mbears/opentui-core 0.2.15 is a fork of opentui whose prebuilt
+libopentui.so adds two native entry points; its source is not published,
+so it cannot be built here. The TUI only uses API that upstream opentui
+0.5.12 provides unchanged, and 0.5.12 runs on Node >= 26.4 through
+node:ffi (--experimental-ffi) against the distribution's libopentui.
+
+Patch-mainline: No
+
+diff -ruN a/apps/zcode-cli/packages/tui/package.json b/apps/zcode-cli/packages/tui/package.json
+--- a/apps/zcode-cli/packages/tui/package.json	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/package.json	2026-09-25 09:04:33.603055591 +0200
+@@ -19,8 +19,8 @@
+     "lint:fix": "oxlint --write src"
+   },
+   "dependencies": {
+-    "@mbears/opentui-core": "0.2.15",
+-    "@mbears/opentui-react": "0.2.15",
++    "@opentui/core": "0.5.12",
++    "@opentui/react": "0.5.12",
+     "@zcode/contracts": "workspace:*",
+     "@zcode/i18n": "workspace:*",
+     "@zcode/shared": "workspace:*",
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-approval.ts b/apps/zcode-cli/packages/tui/src/app-approval.ts
+--- a/apps/zcode-cli/packages/tui/src/app-approval.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-approval.ts	2026-09-25 09:04:33.603055591 +0200
+@@ -1,6 +1,6 @@
+ import type { PermissionBrokerRequest, PermissionBrokerResult } from "@zcode/contracts";
+ import { OFFICIAL_CUA_PERMISSION_RULE_TOOL_NAME } from "@zcode/shared";
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type React from "react";
+ import type { ApprovalDecision, ApprovalPrompt } from "./app-model.js";
+ import { approvalDecisions } from "./app-model.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-file-mentions.ts b/apps/zcode-cli/packages/tui/src/app-file-mentions.ts
+--- a/apps/zcode-cli/packages/tui/src/app-file-mentions.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-file-mentions.ts	2026-09-25 09:04:33.607056041 +0200
+@@ -1,4 +1,4 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import React from "react";
+ import { clampIndex } from "./app-input.js";
+ import type { PromptInputEditor } from "./app-input-pane.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-input-pane.tsx b/apps/zcode-cli/packages/tui/src/app-input-pane.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-input-pane.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-input-pane.tsx	2026-09-25 09:04:33.607056041 +0200
+@@ -1,4 +1,4 @@
+-import type { TextareaRenderable } from "@mbears/opentui-core";
++import type { TextareaRenderable } from "@opentui/core";
+ import type { TuiCopy } from "@zcode/i18n";
+ import React from "react";
+ import { DEFAULT_TUI_COPY } from "./app-locale.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-keyboard-helpers.ts b/apps/zcode-cli/packages/tui/src/app-keyboard-helpers.ts
+--- a/apps/zcode-cli/packages/tui/src/app-keyboard-helpers.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-keyboard-helpers.ts	2026-09-25 09:04:33.611056490 +0200
+@@ -1,4 +1,4 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import { clampIndex } from "./app-input.js";
+ import { modelOptionValue } from "./app-model-ref.js";
+ import type {
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-keyboard-suggestions.ts b/apps/zcode-cli/packages/tui/src/app-keyboard-suggestions.ts
+--- a/apps/zcode-cli/packages/tui/src/app-keyboard-suggestions.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-keyboard-suggestions.ts	2026-09-25 09:04:33.611056490 +0200
+@@ -1,4 +1,4 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type { Dispatch, SetStateAction } from "react";
+ import { clampIndex } from "./app-input.js";
+ import type {
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-keyboard.ts b/apps/zcode-cli/packages/tui/src/app-keyboard.ts
+--- a/apps/zcode-cli/packages/tui/src/app-keyboard.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-keyboard.ts	2026-09-25 09:04:33.611056490 +0200
+@@ -1,6 +1,6 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type { TuiWorkflowExpansionControls } from "./app-workflow-controller.js";
+-import { useKeyboard } from "@mbears/opentui-react";
++import { useKeyboard } from "@opentui/react";
+ import { useCallback, useRef } from "react";
+ import type { Dispatch, MutableRefObject, SetStateAction } from "react";
+ import { handleApprovalKey } from "./app-approval.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-markdown-theme.ts b/apps/zcode-cli/packages/tui/src/app-markdown-theme.ts
+--- a/apps/zcode-cli/packages/tui/src/app-markdown-theme.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-markdown-theme.ts	2026-09-25 09:04:33.611056490 +0200
+@@ -1,4 +1,4 @@
+-import { SyntaxStyle, type ThemeTokenStyle } from "@mbears/opentui-core";
++import { SyntaxStyle, type ThemeTokenStyle } from "@opentui/core";
+ import type { TuiThemeTokens } from "./theme/index.js";
+ 
+ function markdownSyntaxRules(theme: TuiThemeTokens): ThemeTokenStyle[] {
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-markdown.tsx b/apps/zcode-cli/packages/tui/src/app-markdown.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-markdown.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-markdown.tsx	2026-09-25 09:04:33.611056490 +0200
+@@ -1,4 +1,4 @@
+-import { baseComponents } from "@mbears/opentui-react";
++import { baseComponents } from "@opentui/react";
+ import React from "react";
+ import { createMarkdownSyntaxStyle } from "./app-markdown-theme.js";
+ import { activeTuiTheme } from "./theme/index.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-question-state.ts b/apps/zcode-cli/packages/tui/src/app-question-state.ts
+--- a/apps/zcode-cli/packages/tui/src/app-question-state.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-question-state.ts	2026-09-25 09:04:33.619057389 +0200
+@@ -2,7 +2,7 @@
+   AskUserQuestionAnnotation,
+   AskUserQuestionInput,
+ } from "@zcode/contracts";
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type React from "react";
+ import type { ApprovalPrompt, QuestionPromptState } from "./app-model.js";
+ import { clampIndex, printableKey } from "./app-input.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-selection-keyboard.ts b/apps/zcode-cli/packages/tui/src/app-selection-keyboard.ts
+--- a/apps/zcode-cli/packages/tui/src/app-selection-keyboard.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-selection-keyboard.ts	2026-09-25 09:04:33.619057389 +0200
+@@ -1,4 +1,4 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type React from "react";
+ import type { SelectionState, SubmitValueOptions } from "./app-model.js";
+ import { matchesText } from "./state.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-shiki-diff-view.tsx b/apps/zcode-cli/packages/tui/src/app-shiki-diff-view.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-shiki-diff-view.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-shiki-diff-view.tsx	2026-09-25 09:04:33.619057389 +0200
+@@ -1,4 +1,4 @@
+-import { RGBA, StyledText, type TextChunk } from "@mbears/opentui-core";
++import { RGBA, StyledText, type TextChunk } from "@opentui/core";
+ import React from "react";
+ import type { ToolResultDisplayHunk, ToolResultDisplayLine } from "./app-model.js";
+ import { highlightShikiCodeLines, type ShikiHighlightSegment } from "./app-shiki-highlighter.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-sidebar-keyboard.ts b/apps/zcode-cli/packages/tui/src/app-sidebar-keyboard.ts
+--- a/apps/zcode-cli/packages/tui/src/app-sidebar-keyboard.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-sidebar-keyboard.ts	2026-09-25 09:04:33.623057838 +0200
+@@ -1,4 +1,4 @@
+-import type { KeyEvent } from "@mbears/opentui-core";
++import type { KeyEvent } from "@opentui/core";
+ import type { Dispatch, SetStateAction } from "react";
+ import type { SidebarSectionId } from "./app-sidebar-layout.js";
+ import {
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-sidebar-layout.ts b/apps/zcode-cli/packages/tui/src/app-sidebar-layout.ts
+--- a/apps/zcode-cli/packages/tui/src/app-sidebar-layout.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-sidebar-layout.ts	2026-09-25 09:04:33.623057838 +0200
+@@ -1,5 +1,5 @@
+-import { RGBA } from "@mbears/opentui-core";
+-import { useTerminalDimensions } from "@mbears/opentui-react";
++import { RGBA } from "@opentui/core";
++import { useTerminalDimensions } from "@opentui/react";
+ import { useCallback, useMemo, useState } from "react";
+ 
+ export const SIDEBAR_WIDTH = 42;
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-sidebar-section-header.tsx b/apps/zcode-cli/packages/tui/src/app-sidebar-section-header.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-sidebar-section-header.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-sidebar-section-header.tsx	2026-09-25 09:04:33.623057838 +0200
+@@ -1,4 +1,4 @@
+-import { TextAttributes } from "@mbears/opentui-core";
++import { TextAttributes } from "@opentui/core";
+ import React from "react";
+ import { palette } from "./app-model.js";
+ import { SIDEBAR_CONTENT_WIDTH } from "./app-sidebar-layout.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-sidebar-subagents.tsx b/apps/zcode-cli/packages/tui/src/app-sidebar-subagents.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-sidebar-subagents.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-sidebar-subagents.tsx	2026-09-25 09:04:33.623057838 +0200
+@@ -1,5 +1,5 @@
+ import React from "react";
+-import { useTerminalDimensions } from "@mbears/opentui-react";
++import { useTerminalDimensions } from "@opentui/react";
+ import type { TuiCopy } from "@zcode/i18n";
+ import { palette } from "./app-model.js";
+ import { SidebarSectionHeader } from "./app-sidebar-section-header.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-sidebar.tsx b/apps/zcode-cli/packages/tui/src/app-sidebar.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-sidebar.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-sidebar.tsx	2026-09-25 09:04:33.623057838 +0200
+@@ -1,4 +1,4 @@
+-import { TextAttributes } from "@mbears/opentui-core";
++import { TextAttributes } from "@opentui/core";
+ import type { TuiCopy } from "@zcode/i18n";
+ import React from "react";
+ import type { CacheStats, ContextUsage, SidebarState } from "./app-model.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/app-startup.tsx b/apps/zcode-cli/packages/tui/src/app-startup.tsx
+--- a/apps/zcode-cli/packages/tui/src/app-startup.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-startup.tsx	2026-09-25 09:04:33.627058287 +0200
+@@ -1,4 +1,4 @@
+-import { useKeyboard } from "@mbears/opentui-react";
++import { useKeyboard } from "@opentui/react";
+ import { getZCodeCopy } from "@zcode/i18n";
+ import React from "react";
+ import { EmptyTranscriptLogo } from "./app-empty-transcript.js";
+diff -ruN a/apps/zcode-cli/packages/tui/src/theme/terminal.ts b/apps/zcode-cli/packages/tui/src/theme/terminal.ts
+--- a/apps/zcode-cli/packages/tui/src/theme/terminal.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/theme/terminal.ts	2026-09-25 09:04:33.635059186 +0200
+@@ -1,4 +1,4 @@
+-import type { CliRenderer, TerminalColors } from "@mbears/opentui-core";
++import type { CliRenderer, TerminalColors } from "@opentui/core";
+ import type { UiThemeMode } from "@zcode/contracts";
+ import { isTuiThemeMode } from "./state.js";
+ 
+diff -ruN a/apps/zcode-cli/packages/tui/src/tui.tsx b/apps/zcode-cli/packages/tui/src/tui.tsx
+--- a/apps/zcode-cli/packages/tui/src/tui.tsx	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/tui.tsx	2026-09-25 09:04:33.635059186 +0200
+@@ -1,6 +1,6 @@
+-import { CliRenderEvents, createCliRenderer, type CliRenderer } from "@mbears/opentui-core";
++import { CliRenderEvents, createCliRenderer, type CliRenderer } from "@opentui/core";
+ import type { UiThemeMode } from "@zcode/contracts";
+-import { createRoot } from "@mbears/opentui-react";
++import { createRoot } from "@opentui/react";
+ import { getZCodeCopy } from "@zcode/i18n";
+ import React from "react";
+ import { TuiApp } from "./app.js";

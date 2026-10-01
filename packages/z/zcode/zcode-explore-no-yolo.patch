@@ -1,0 +1,31 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: subagent: the Explore agent runs in the session's mode
+
+The built-in Explore agent ran in yolo mode whatever the session's mode,
+so its Bash never asked. resolveSubagentPermissionMode is exported for
+%check.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/core/src/runtime/methods/subagent.ts	2026-09-30 15:51:29.548479616 +0200
+@@ -470,7 +470,7 @@
+   };
+ }
+ 
+-function resolveSubagentPermissionMode(
++export function resolveSubagentPermissionMode(
+   parentMode: AgentRuntimeInternal["config"]["mode"],
+   permissionMode: ExploreSubagentRuntimeRequest["permissionMode"],
+   builtInExplore: boolean,
+@@ -481,7 +481,9 @@
+     case "plan":
+       return "plan";
+     case undefined:
+-      return builtInExplore ? "yolo" : parentMode;
++      // The built-in Explore agent too (builtInExplore): in yolo its Bash
++      // would run unasked.
++      return parentMode;
+     default:
+       return parentMode;
+   }

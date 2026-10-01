@@ -1,0 +1,25 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: commands: no shell expansion in project commands
+
+Commands in .zcode/commands and .agents/commands from the working
+directory upward come with the repository, and invoking one ran its
+!`...` and ```! blocks through the execution port with no approval and
+without showing them. Project-scope commands now take the path upstream
+already uses without an execution port, which refuses that syntax with a
+message; user commands keep shell expansion.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/bootstrap/src/custom-command-prompt.ts	2026-09-25 15:59:56.745000943 +0200
++++ b/apps/zcode-cli/packages/bootstrap/src/custom-command-prompt.ts	2026-09-25 15:59:56.841011756 +0200
+@@ -36,7 +36,9 @@
+       ...options,
+       name: invocation.name,
+     });
+-    if (options.executionPort) {
++    // A project command comes with the repository: its !`...` shell blocks
++    // are refused (the no-port path below) rather than run unasked.
++    if (options.executionPort && command.metadata.scope !== "project") {
+       // 调用 slash command 时先执行并替换输出，避免 unsupported error
+       // 在 turn 创建前抛出后让 UI 长时间停在“正在思考”。
+       //

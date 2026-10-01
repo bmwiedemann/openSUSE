@@ -1,0 +1,41 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: adapters: do not depend on koffi
+
+koffi is only loaded on Windows (the kernel32 job object), but as a hard
+dependency its npm tarball, which carries prebuilt koffi.node binaries for
+every platform, has to be vendored. The import stays dynamic; its
+specifier becomes a variable so the build does not need koffi either.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/adapters/package.json	2026-09-25 13:10:09.963370452 +0200
++++ b/apps/zcode-cli/packages/adapters/package.json	2026-09-25 13:10:10.279405998 +0200
+@@ -113,7 +113,6 @@
+     "cheerio": "^1.0.0",
+     "iconv-lite": "0.7.2",
+     "jimp": "^1.6.1",
+-    "koffi": "2.15.6",
+     "playwright-core": "1.59.1",
+     "proxy-agent": "^8.0.1",
+     "ripgrep": "0.3.1",
+--- a/apps/zcode-cli/packages/adapters/src/mcp/windows-job-object.ts	2026-09-25 13:10:09.951369103 +0200
++++ b/apps/zcode-cli/packages/adapters/src/mcp/windows-job-object.ts	2026-09-25 13:10:10.347413647 +0200
+@@ -1,5 +1,5 @@
+-import type * as Koffi from "koffi";
+-
++// Not a literal, so neither tsc nor the bundler resolves koffi.
++const KOFFI = "koffi";
+ const JOB_OBJECT_EXTENDED_LIMIT_INFORMATION = 9;
+ const JOB_OBJECT_LIMIT_KILL_ON_JOB_CLOSE = 0x0000_2000;
+ const PROCESS_SET_QUOTA = 0x0100;
+@@ -74,8 +74,8 @@
+ 
+ async function createWindowsJobObjectApi(): Promise<WindowsJobObjectApi | undefined> {
+   try {
+-    const koffiModule = await import("koffi");
+-    const koffi = ("default" in koffiModule ? koffiModule.default : koffiModule) as typeof Koffi;
++    const koffiModule = await import(KOFFI);
++    const koffi = ("default" in koffiModule ? koffiModule.default : koffiModule) as any;
+     const kernel32 = koffi.load("kernel32.dll");
+     const handleType = koffi.pointer("HANDLE", koffi.opaque());
+     const basicLimitInformation = koffi.struct("JOBOBJECT_BASIC_LIMIT_INFORMATION", {

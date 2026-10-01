@@ -1,0 +1,34 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: core: every EvalWorkflowSnippet asks for approval
+
+prepareEvalWorkflowSnippetApproval() let any snippet without a world.run
+call (and any that failed to compile) run without a prompt. A snippet is
+code, compiled and run in a child node process inside node:vm, which
+Node does not offer as a security boundary, and it can be read from a
+file in the workspace. Without the hook the standard approval applies:
+Build mode asks, the user's always-allow and yolo choices still hold.
+prepareEvalWorkflowSnippetApproval() is left unused to keep this small.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/tool/handlers/eval-workflow-snippet.ts	2026-09-25 15:07:08.480403038 +0200
++++ b/apps/zcode-cli/packages/core/src/tool/handlers/eval-workflow-snippet.ts	2026-09-25 16:04:26.863421454 +0200
+@@ -258,7 +258,8 @@
+     riskLevel: "low",
+     needsApproval: true,
+   },
+-  prepareApproval: prepareEvalWorkflowSnippetApproval,
++  // Every snippet asks: it runs code in a child node whose node:vm context
++  // is not a security boundary, and it may come from a file in the workspace.
+   handler: evalWorkflowSnippetHandler,
+   // 来源二选一只对模型入参成立；`path` 在归一化里读成 `code`，确认门与 handler 因此同形。
+   validateInput: (input) => validateEvalWorkflowSnippetInput(input),
+@@ -274,7 +275,7 @@
+   permission: {
+     permission: "evalWorkflowSnippet",
+     reason:
+-      "evalWorkflowSnippet.runConfirmation: snippets carrying world.run commands must be confirmed",
++      "evalWorkflowSnippet.runConfirmation: every snippet must be confirmed",
+     riskLevel: "low",
+     sideEffectScope: "workspace",
+     needsApproval: true,

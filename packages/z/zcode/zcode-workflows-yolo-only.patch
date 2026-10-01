@@ -1,0 +1,87 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: workflows run only in yolo mode
+
+The TUI and the -p broker answered CreateWorkflow and AmendWorkflow with
+allow by tool name, in every mode, and a workflow's world.run runs any
+command without a permission check. Both now allow them in yolo mode
+only and deny them otherwise, naming the mode to switch to. Core denies
+them while plan mode is on, since plan entered from yolo leaves the mode
+the clients see at yolo, and applies the owner rule (an AmendWorkflow of
+a run this session started goes unasked) in yolo mode only.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/cli/src/headless-workflow.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/cli/src/headless-workflow.ts	2026-09-30 19:03:37.984011281 +0200
+@@ -41,6 +41,14 @@
+       ) {
+         return await denyBroker.requestPermission(request, options);
+       }
++      // world.run runs commands unchecked: no workflow outside yolo mode.
++      if (request.mode !== "yolo") {
++        return {
++          decision: "deny",
++          reason: `${request.toolName} denied: workflows run only in yolo mode (--mode yolo).`,
++          resolvedAt: new Date(),
++        };
++      }
+       return {
+         decision: "allow",
+         reason: `Headless CLI auto-approves ${request.toolName}: no interactive gate exists in -p mode.`,
+--- a/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 19:02:40.073506335 +0200
++++ b/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 19:03:37.984011281 +0200
+@@ -7,6 +7,7 @@
+ 
+ import {
+   AMEND_WORKFLOW_TOOL_NAME,
++  CREATE_WORKFLOW_TOOL_NAME,
+   isAmendWorkflowOwnedPredecessor,
+   PermissionCapabilityGroup,
+   type PermissionCapabilityGroup as PermissionCapabilityGroupType,
+@@ -411,6 +412,20 @@
+         `Tool ${context.toolName} is denied by project permission rules`,
+       );
+     }
++    // Plan mode runs no workflow, also when entered from yolo: the client
++    // only sees the mode, which stays "yolo".
++    if (
++      (context.planEnabled ?? context.mode === "plan") &&
++      (context.toolName === CREATE_WORKFLOW_TOOL_NAME ||
++        context.toolName === AMEND_WORKFLOW_TOOL_NAME)
++    ) {
++      return this.deny(
++        context,
++        capability,
++        "mode.plan.workflow",
++        "Plan mode does not run workflows",
++      );
++    }
+     // 会话免确认：阻断分支之后、ask 之前。命中即放行，不发 permission 事件、不弹窗；
+     // 与 gate 本身一样不看模式（yolo / plan / build 一致）。
+     if (this.matchesProjectRules(this.sessionRules, "allow", context, capability, rulePolicy)) {
+@@ -426,7 +441,8 @@
+     // 不看模式。事实来自 resolveInput 回填的 `predecessor`（journal 的 parent_session_id / stopReason），
+     // 不是内存表：重启、冷恢复后依然成立，也没有可播种、可撤销的东西。别的会话的 run、用户停过的
+     // run 照常 ask：钥匙是 run 的归属，不是字段的在场。
+-    if (this.isOwnedWorkflowAmend(context)) {
++    // Only yolo mode runs workflows (the clients refuse the rest), owned runs included.
++    if (context.mode === "yolo" && this.isOwnedWorkflowAmend(context)) {
+       return this.allow(
+         context,
+         capability,
+--- a/apps/zcode-cli/packages/tui/src/app-permission.ts	2026-09-24 08:49:06.000000000 +0200
++++ b/apps/zcode-cli/packages/tui/src/app-permission.ts	2026-09-30 19:03:37.984011281 +0200
+@@ -45,6 +45,13 @@
+         request.toolName === CREATE_WORKFLOW_TOOL_NAME ||
+         request.toolName === AMEND_WORKFLOW_TOOL_NAME
+       ) {
++        // world.run runs commands unchecked: no workflow outside yolo mode.
++        if (request.mode !== "yolo") {
++          const reason = `${request.toolName} denied: workflows run only in yolo mode (/mode yolo).`;
++          input.setStatus(reason);
++          resolve({ decision: "deny", reason, resolvedAt: new Date() });
++          return;
++        }
+         resolve(createWorkflowBypassResult(request.toolName));
+         return;
+       }

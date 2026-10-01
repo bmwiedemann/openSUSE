@@ -1,0 +1,45 @@
+{
+  "name": "zcode",
+  "version": "3.14.3",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "workspaces": [
+    "packages/shared",
+    "packages/model-option-map",
+    "packages/provider",
+    "packages/zcode-cua",
+    "packages/formal-proof",
+    "packages/provider-node",
+    "apps/zcode-cli",
+    "apps/zcode-cli/packages/contracts",
+    "apps/zcode-cli/packages/dynamic-workflow",
+    "apps/zcode-cli/packages/shared-types",
+    "apps/zcode-cli/packages/adapters",
+    "apps/zcode-cli/packages/core",
+    "apps/zcode-cli/packages/dynamic-workflow-runtime",
+    "apps/zcode-cli/packages/i18n",
+    "apps/zcode-cli/packages/telemetry",
+    "apps/zcode-cli/packages/tui",
+    "apps/zcode-cli/packages/bootstrap",
+    "apps/zcode-cli/packages/cli"
+  ],
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "source-map": "0.6.1",
+    "typescript": "^6.0.2"
+  },
+  "overrides": {
+    "@ai-sdk/anthropic": {
+      ".": "3.0.81",
+      "@ai-sdk/provider-utils": "4.0.33"
+    },
+    "@ai-sdk/openai-compatible": "2.0.60",
+    "@opentelemetry/core": "2.8.0",
+    "ai": {
+      "@ai-sdk/provider-utils": "4.0.33"
+    },
+    "esbuild": "0.28.2",
+    "react": "19.2.7"
+  }
+}

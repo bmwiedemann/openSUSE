@@ -1,0 +1,86 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: git: harden the context snapshot and branch lookup
+
+At the first prompt zcode runs git rev-parse, status and log in the
+working directory, before any approval. A repository can commit a bare
+repository layout (HEAD, objects/, refs/, config) in a subdirectory;
+started there, git discovers it and status runs its core.fsmonitor.
+Pass -c safe.bareRepository=explicit -c core.fsmonitor=false
+-c log.showSignature=false to these calls, to the TUI's branch lookup
+and to the git reads of dynamic workflows.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/adapters/src/context/git-snapshot.ts	2026-09-25 15:59:56.761002745 +0200
++++ b/apps/zcode-cli/packages/adapters/src/context/git-snapshot.ts	2026-09-25 15:59:57.269059962 +0200
+@@ -119,12 +119,23 @@
+   return result.stdout;
+ }
+ 
++// The snapshot runs before any approval: a repository-planted bare
++// repository, core.fsmonitor or signature check must not run a command.
++const SAFE_GIT_ARGS = [
++  "-c",
++  "safe.bareRepository=explicit",
++  "-c",
++  "core.fsmonitor=false",
++  "-c",
++  "log.showSignature=false",
++];
++
+ async function execGitNoThrow(
+   args: string[],
+   workingDirectory: string,
+ ): Promise<GitCommandResult> {
+   try {
+-    const result = await execFile(GIT_COMMAND, args, {
++    const result = await execFile(GIT_COMMAND, [...SAFE_GIT_ARGS, ...args], {
+       cwd: workingDirectory,
+       encoding: "utf8",
+       maxBuffer: DEFAULT_COMMAND_MAX_BUFFER_BYTES,
+--- a/apps/zcode-cli/packages/cli/src/tui-workspace-git.ts	2026-09-25 15:59:56.781004998 +0200
++++ b/apps/zcode-cli/packages/cli/src/tui-workspace-git.ts	2026-09-25 15:59:57.257058610 +0200
+@@ -31,7 +31,18 @@
+   const runCommand = options.runCommand ?? runGitCommand;
+   const result = await runCommand(
+     GIT_COMMAND,
+-    ["-C", options.workspaceDirectory, ...GIT_BRANCH_ARGS],
++    // As the context snapshot: no planted bare repository or fsmonitor.
++    [
++      "-c",
++      "safe.bareRepository=explicit",
++      "-c",
++      "core.fsmonitor=false",
++      "-c",
++      "log.showSignature=false",
++      "-C",
++      options.workspaceDirectory,
++      ...GIT_BRANCH_ARGS,
++    ],
+     {
+       maxOutputBytes,
+       timeoutMs,
+--- a/apps/zcode-cli/packages/bootstrap/src/app/workflow-world-read.ts	2026-09-25 15:59:56.797006800 +0200
++++ b/apps/zcode-cli/packages/bootstrap/src/app/workflow-world-read.ts	2026-09-25 15:59:57.257058610 +0200
+@@ -208,7 +208,20 @@
+   maxInlineBytes: number,
+ ): Promise<{ text: string; bytes: number; truncated: boolean }> {
+   const result = await deps.executionPort.run({
+-    command: { mode: "argv", file: "git", args: [...argv] },
++    // As the context snapshot (zcode-git-snapshot-safe.patch).
++    command: {
++      mode: "argv",
++      file: "git",
++      args: [
++        "-c",
++        "safe.bareRepository=explicit",
++        "-c",
++        "core.fsmonitor=false",
++        "-c",
++        "log.showSignature=false",
++        ...argv,
++      ],
++    },
+     cwd: deps.cwd,
+     outputLimit: { maxInlineBytes },
+   });

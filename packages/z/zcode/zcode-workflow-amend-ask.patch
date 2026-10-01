@@ -1,0 +1,32 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: permission: an AmendWorkflow with a new script asks
+
+The owner rule let any amendment of a run this session started go unasked,
+a whole new script the user never saw included; it now covers only
+retunes and amendments that keep the predecessor's script.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 15:54:57.759843445 +0200
++++ b/apps/zcode-cli/packages/core/src/permission/service.ts	2026-09-30 15:54:57.799847934 +0200
+@@ -446,8 +446,19 @@
+   private isOwnedWorkflowAmend(context: PermissionContext): boolean {
+     if (context.toolName !== AMEND_WORKFLOW_TOOL_NAME) return false;
+     if (!context.input || typeof context.input !== "object") return false;
++    const input = context.input as Record<string, unknown>;
++    // One approved run does not cover a script the user has not seen: only a
++    // retune (no script) or the predecessor's own script goes unasked.
++    // resolveInput rebuilds `predecessor`, so the model cannot set script_inherited.
++    const predecessor = input.predecessor as { script_inherited?: unknown } | undefined;
++    if (
++      (input.script !== undefined || input.path !== undefined) &&
++      predecessor?.script_inherited !== true
++    ) {
++      return false;
++    }
+     // 谓词本体住在契约里：就地调并发落回修订时读的必须是同一条规则，不能各写一遍。
+-    return isAmendWorkflowOwnedPredecessor((context.input as Record<string, unknown>).predecessor);
++    return isAmendWorkflowOwnedPredecessor(input.predecessor);
+   }
+ 
+   private checkPlanMode(

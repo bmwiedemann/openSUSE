@@ -1,0 +1,122 @@
+From: Martin Pluskal <martin@pluskal.org>
+Subject: config: a project zcode.json cannot start programs or approve tools
+
+zcode reads zcode.json and .zcode/config.json from the working directory and
+every directory above it, and upstream treats project MCP servers as trusted:
+they were started at launch. A cloned repository could also load inline
+plugins (with their MCP servers and hooks), switch the session to yolo,
+point the storage and its plugin cache elsewhere, or route model traffic
+through its own proxy and CA.
+
+Project MCP servers are now listed but only connected on request (/mcp
+connect), through upstream's existing untrusted-server path. The
+permission, plugins, storage and network settings are ignored in project
+config, with a diagnostic, the way project hooks already wait for trust;
+the user config still sets all of them.
+
+Patch-mainline: No
+
+--- a/apps/zcode-cli/packages/adapters/src/config/schema.ts	2026-09-25 13:51:52.048641888 +0200
++++ b/apps/zcode-cli/packages/adapters/src/config/schema.ts	2026-09-25 13:51:52.136651780 +0200
+@@ -313,7 +313,8 @@
+ export type ConfigDiagnosticCode =
+   | "config_file_invalid"
+   | "config_mcp_server_invalid"
+-  | "config_project_hooks_pending_trust";
++  | "config_project_hooks_pending_trust"
++  | "config_project_setting_ignored";
+ 
+ export interface ConfigDiagnostic {
+   code: ConfigDiagnosticCode;
+--- a/apps/zcode-cli/packages/adapters/src/config/project-config.adapter.ts	2026-09-25 13:51:52.064643687 +0200
++++ b/apps/zcode-cli/packages/adapters/src/config/project-config.adapter.ts	2026-09-25 13:51:52.136651780 +0200
+@@ -60,6 +60,18 @@
+   const diagnostics = [...result.diagnostics];
+   const hooks = result.loaded ? result.config.hooks : undefined;
+ 
++  for (const key of PROJECT_IGNORED_KEYS) {
++    if (result.loaded && result.config[key] !== undefined) {
++      diagnostics.push({
++        code: "config_project_setting_ignored",
++        filePath: result.path,
++        message: `Project config cannot set "${key}"; set it in the user config`,
++        path: key,
++        severity: "warning",
++      });
++    }
++  }
++
+   if (hooks) {
+     diagnostics.push({
+       code: "config_project_hooks_pending_trust",
+@@ -119,15 +131,22 @@
+   return basename(configDirectory) === ".zcode" ? dirname(configDirectory) : configDirectory;
+ }
+ 
++// A repository's zcode.json must not approve tools, load plugins, move the
++// storage (and with it the plugin cache) or redirect network traffic.
++const PROJECT_IGNORED_KEYS = ["permission", "plugins", "storage", "network"] as const;
++
+ function normalizeProjectConfig(config: RuntimeConfigPatch, baseDir: string): RuntimeConfigPatch {
+-  const normalized: RuntimeConfigPatch = config.hooks
+-    ? (() => {
+-        const { hooks: _hooks, ...safeConfig } = config;
+-        // Project Hook declarations are retained only in the immutable candidate side-channel.
+-        // The executable RuntimeConfigPatch remains hook-free until a later admission phase.
+-        return safeConfig;
+-      })()
+-    : { ...config };
++  // Project Hook declarations are retained only in the immutable candidate side-channel.
++  // The executable RuntimeConfigPatch remains hook-free until a later admission phase.
++  const {
++    hooks: _hooks,
++    permission: _permission,
++    plugins: _plugins,
++    storage: _storage,
++    network: _network,
++    ...safeConfig
++  } = config;
++  const normalized: RuntimeConfigPatch = safeConfig;
+ 
+   if (!normalized.mcp?.servers) return normalized;
+ 
+--- a/apps/zcode-cli/packages/bootstrap/src/app/runtime-config.ts	2026-09-25 13:51:52.080645485 +0200
++++ b/apps/zcode-cli/packages/bootstrap/src/app/runtime-config.ts	2026-09-25 13:51:52.136651780 +0200
+@@ -106,8 +106,15 @@
+     // 通用 node_repl 结果被误送进 exact-raster gate，Browser 截图和 console 日志都会失败。
+     cuaBridgeServerNames.add("node_repl");
+   }
+-  // 产品决定 workspace MCP 开箱即用：project 作用域 MCP 默认 trusted，并自动连接。
+-  const untrustedProjectMcpServers = new Set<string>();
++  // Project MCP servers are listed but only connected on request (/mcp
++  // connect): a repository's zcode.json must not start programs.
++  const untrustedProjectMcpServers = new Set<string>(
++    options.runtimeConfig?.mcp?.servers
++      ? []
++      : Object.entries(configResult.sources.mcp.serverSources)
++          .filter(([, source]) => source === "project")
++          .map(([name]) => name),
++  );
+   const autoConnectMcpServers = omitMcpServers(
+     configuredMcpServers,
+     untrustedProjectMcpServers,
+--- a/apps/zcode-cli/packages/bootstrap/src/zcode-protocol/mcp.ts	2026-09-25 13:51:52.096647284 +0200
++++ b/apps/zcode-cli/packages/bootstrap/src/zcode-protocol/mcp.ts	2026-09-25 13:51:52.136651780 +0200
+@@ -71,8 +71,15 @@
+     configuredMcpServers,
+     pluginOutcome.mcpServers,
+   );
+-  // 产品决定 workspace MCP 开箱即用：project 作用域 MCP 默认 trusted，并自动连接。
+-  const untrustedProjectMcpServers = new Set<string>();
++  // Project MCP servers are listed but only connected on request: a
++  // repository's zcode.json must not start programs.
++  const untrustedProjectMcpServers = new Set<string>(
++    explicitMcpServersProvided
++      ? []
++      : Object.entries(configResult.sources.mcp.serverSources)
++          .filter(([, source]) => source === "project")
++          .map(([name]) => name),
++  );
+   const mcpPort = context.deps.mcpPort;
+   if (mcpPort) {
+     if (params.mode === "status") {
