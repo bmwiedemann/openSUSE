@@ -831,7 +831,7 @@
 %global __requires_exclude ^libgpgmepp\\.so.*$
 %endif
 Name:           libreoffice
-Version:        26.8.0.3
+Version:        26.8.1.1
 Release:        0
 Summary:        A Free Office Suite (Framework)
 License:        LGPL-3.0-or-later AND MPL-2.0+

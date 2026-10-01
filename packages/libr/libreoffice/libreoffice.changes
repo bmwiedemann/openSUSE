@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Sep 25 13:44:47 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 26.8.1.1:
+  * Release notes:
+    https://wiki.documentfoundation.org/Releases/26.8.1/RC1
+
+-------------------------------------------------------------------
 Sun Sep 20 22:20:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Add dbaccess-no-firebird-default-crash.patch: fix the SIGSEGV in
