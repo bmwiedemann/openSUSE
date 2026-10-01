@@ -1,0 +1,316 @@
+-------------------------------------------------------------------
+Wed Sep 23 12:50:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260923.8f88a3f:
+  * images: reduce number of kernel modules
+
+-------------------------------------------------------------------
+Thu Sep 10 15:53:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260910.d93a62b:
+  * images: split rdi-installer/mkosi.conf (mkosi-obs)
+
+-------------------------------------------------------------------
+Thu Sep 10 15:23:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260910.c219c50:
+  * OBS: Clear SplitArtifacts, add patterns-base-hardware
+
+-------------------------------------------------------------------
+Thu Sep 10 12:38:00 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260910.3fe4261:
+  * image/bootloader: merge config, don't build initrd
+
+-------------------------------------------------------------------
+Thu Sep 10 12:22:28 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260910.a0efaea:
+  * Add config files for OBS
+  * Rework image layout, build squashfs initrd
+
+-------------------------------------------------------------------
+Tue Aug 11 16:27:24 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260811.8a551db:
+  * Fix name of mount-part-label service
+
+-------------------------------------------------------------------
+Thu Aug 06 08:51:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260806.e2f9c3c:
+  * Rename raw-disk-image-installer -> rdi-installer
+
+-------------------------------------------------------------------
+Wed Aug 05 16:08:33 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260805.508020a:
+  * image: remove pciutils and usbutils (requires python and perl)
+
+-------------------------------------------------------------------
+Mon Aug 03 21:31:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260803.b4c1d2a:
+  * image: add busybox chpasswd
+
+-------------------------------------------------------------------
+Thu Jul 23 14:41:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260723.be5b1fd:
+  * image: don't autoassembly md raids
+
+-------------------------------------------------------------------
+Thu Jul 23 09:49:19 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260723.cb3b162:
+  * image: add mdadm
+
+-------------------------------------------------------------------
+Tue Jun 30 14:18:14 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260630.9d2e722:
+  * Add rdii-proxy-setup
+
+-------------------------------------------------------------------
+Mon May 11 14:56:45 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260511.89dd824:
+  * images: adjust for memtest86+ 8.0
+
+-------------------------------------------------------------------
+Mon May 11 13:45:51 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260511.f0ad7a8:
+  * rdii: mount partitions with label images at boot
+
+-------------------------------------------------------------------
+Thu Apr 09 16:17:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260409.da32602:
+  * image: add rdii-helper
+
+-------------------------------------------------------------------
+Wed Apr 08 14:34:34 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260408.2e7e8f1:
+  * image: add parted
+
+-------------------------------------------------------------------
+Fri Mar 20 14:39:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260320.39566eb:
+  * rdi-installer: use wget instead of curl
+
+-------------------------------------------------------------------
+Fri Feb 27 08:41:42 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Temporarily remove usbstick image
+
+-------------------------------------------------------------------
+Thu Feb 26 16:46:37 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260226.dbd9fe5:
+  * images: add usbstick image
+
+-------------------------------------------------------------------
+Tue Feb 24 10:51:03 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260224.37d456e:
+  * images: fix import of gpg keys
+
+-------------------------------------------------------------------
+Tue Feb 24 08:36:14 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260224.812278a:
+  * Add gpg keys for image verification
+
+-------------------------------------------------------------------
+Mon Feb 23 15:08:54 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260223.78d9c58:
+  * images: add gpg2 for image verification
+  * images: create import-pubring.gpg
+
+-------------------------------------------------------------------
+Mon Feb 23 07:52:20 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260223.1b6c952:
+  * images: add pciutils and usbutils
+
+-------------------------------------------------------------------
+Wed Feb 18 16:50:02 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260218.bd70708:
+  * Fix missing renames for rdii-networkd
+
+-------------------------------------------------------------------
+Wed Feb 18 10:36:57 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260218.75f9c6d:
+  * rdii-image: add efibootmgr
+
+-------------------------------------------------------------------
+Tue Feb 17 13:58:00 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260217.14d7560:
+  * Remove UKI usb stick image
+  * Adjust for OBS
+
+-------------------------------------------------------------------
+Mon Feb 16 10:44:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260216.073d6c1:
+  * mkosi.postoutput: scripts/ is different in OBS
+
+-------------------------------------------------------------------
+Thu Feb 12 18:11:14 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260212.994f684:
+  * Add gptfdisk to image
+
+-------------------------------------------------------------------
+Thu Feb 05 16:40:28 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260205.4b41882:
+  * Enable rdii-fetch-config services
+  * mkosi: add busybox-bind-utils for debugging
+  * add_extra_partition.sh: automatically find next partition number
+
+-------------------------------------------------------------------
+Mon Feb 02 08:29:40 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260202.551ca42:
+  * mkosi: add memtest86+ to sdboot image
+
+-------------------------------------------------------------------
+Sun Feb 01 14:37:13 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260201.65ec7c8:
+  * create_uefi_usbstick: remove parted fallback
+
+-------------------------------------------------------------------
+Sat Jan 31 08:13:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260131.7b10d19:
+  * mkosi: move FONT setting to mkosi.finalize
+
+-------------------------------------------------------------------
+Sat Jan 31 06:54:12 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260131.bc90069:
+  * create_uefi_usbstick: fix size of ESP partition
+  * add_extra_partition: make image parameter a hard requirement
+  * mkosi: add libseccomp2 for systemd
+
+-------------------------------------------------------------------
+Fri Jan 30 19:52:59 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260130.20ab491:
+  * mkosi: workarounds for OBS
+
+-------------------------------------------------------------------
+Fri Jan 30 16:38:13 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260130.7fb2b7f:
+  * mkosi: remove forgotten test comments
+
+-------------------------------------------------------------------
+Fri Jan 30 15:12:50 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260130.680991e:
+  * mkosi: re-arange to build bootloader directory for sdboot img
+  * Rename raw-disk-image-installer -> rdi-installer
+
+-------------------------------------------------------------------
+Fri Jan 30 09:27:47 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260130.83e30d6:
+  * mkosi: only create usb sticks if arch is supported
+
+-------------------------------------------------------------------
+Thu Jan 29 21:48:47 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260129.d04c00b:
+  * mkosi: fix sdboot image
+  * mkosi.conf: add udev
+  * mkosi: build image with systemd-boot as bootloader
+
+-------------------------------------------------------------------
+Thu Jan 29 15:24:06 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260129.52d2526:
+  * mkosi.conf: add openssh
+
+-------------------------------------------------------------------
+Thu Jan 29 13:52:56 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260129.56adf2f:
+  * mkosi.conf: run ca-certificates-setup.service
+  * mkosi: enable ifcfg-networkd.service by default
+
+-------------------------------------------------------------------
+Thu Jan 29 12:28:54 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260129.a4c8939:
+  * mkosi: fix getty@tty1 directory name
+
+-------------------------------------------------------------------
+Thu Jan 29 12:20:52 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260129.f945b3a:
+  * mkosi.conf: use root password only with common characters
+  * Set KEYMAP=us in vconsole, adjust issue output
+  * Don't set KEYMAP (will overwrite FONT)
+
+-------------------------------------------------------------------
+Wed Jan 28 13:13:16 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260128.e743839:
+  * Enable rdii-ssh-setup by default
+  * mkosi.conf: add firmware pattern, remove ucode-*
+  * images: install patterns-images-hardware
+  * mkosi: remove Autologin and gum
+  * Add tool to add an extra partition to a disk image
+
+-------------------------------------------------------------------
+Tue Jan 27 08:57:38 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260127.2139aa3:
+  * mkosi: Set eurlatgr console font
+
+-------------------------------------------------------------------
+Mon Jan 26 18:58:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260126.6396c1b:
+  * mkosi.conf: include all kernel modules
+  * mkosi: add kernel net modules for systemd-networkd
+
+-------------------------------------------------------------------
+Mon Jan 26 16:35:23 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260126.195838e:
+  * Add dbus-1-common (dbus.socket)
+
+-------------------------------------------------------------------
+Mon Jan 26 16:11:25 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260126.d903f4d:
+  * parted: quote label correct
+
+-------------------------------------------------------------------
+Mon Jan 26 15:54:31 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260126.fd10be8:
+  * create_uefi_usbstick: support parted beside sgdisk
+
+-------------------------------------------------------------------
+Mon Jan 26 15:16:43 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 20260126.0e930a9:
+  * Include raw-disk-image-installer in UKI
+
+-------------------------------------------------------------------
+Mon Jan 26 13:30:29 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Initial package
+
