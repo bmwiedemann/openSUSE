@@ -1,0 +1,43 @@
+From ea7b074f96d2621b66c4919c9945ad2a21f4818f Mon Sep 17 00:00:00 2001
+From: AT0myks <at0myks.dev@gmail.com>
+Date: Thu, 21 Dec 2023 23:40:16 +0100
+Subject: [PATCH] 3.12 wheels
+
+---
+ .github/workflows/wheels.yml | 2 +-
+ tests/test_lzo.py            | 8 ++++++--
+ tests/util.py                | 2 +-
+ 3 files changed, 8 insertions(+), 4 deletions(-)
+
+Index: python-lzo-1.15/tests/test_lzo.py
+===================================================================
+--- python-lzo-1.15.orig/tests/test_lzo.py
++++ python-lzo-1.15/tests/test_lzo.py
+@@ -106,8 +106,12 @@ def gen_raw(src, level=1):
+     print("compressed %6d -> %6d" % (len(src), len(c)))
+ 
+ def test_version():
+-    import pkg_resources
+-    pkg_version = pkg_resources.require("python-lzo")[0].version
++    if sys.version_info >= (3, 10):
++        from importlib.metadata import version
++        pkg_version = version("python-lzo")
++    else:
++        import pkg_resources
++        pkg_version = pkg_resources.require("python-lzo")[0].version
+     mod_version = lzo.__version__.decode('utf-8')
+     assert pkg_version == mod_version, \
+         "%r != %r" %(pkg_version, mod_version)
+Index: python-lzo-1.15/tests/util.py
+===================================================================
+--- python-lzo-1.15.orig/tests/util.py
++++ python-lzo-1.15/tests/util.py
+@@ -31,7 +31,7 @@
+ 
+ 
+ import os, sys
+-from distutils.util import get_platform
++from sysconfig import get_platform
+ 
+ #
+ # prepare sys.path in case we are still in the build directory

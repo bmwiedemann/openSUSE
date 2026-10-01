@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 01:50:15 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python-312.patch:
+  * Don't use setuptools modules with Python 3.10+.
+- dos2unix on NEWS.
+
+-------------------------------------------------------------------
 Tue Jan  2 21:21:09 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.15:

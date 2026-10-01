@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lzo
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,13 +22,16 @@ Version:        1.15
 Release:        0
 Summary:        Python bindings for the LZO data compression library
 License:        GPL-2.0-only
-Group:          Development/Languages/Python
 URL:            https://github.com/jd-boyd/python-lzo
 Source:         https://files.pythonhosted.org/packages/source/p/python-lzo/python-lzo-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#jd-boyd/python-lzo#78
+Patch0:         support-python-312.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  dos2unix
 BuildRequires:  fdupes
 BuildRequires:  lzo-devel
 BuildRequires:  python-rpm-macros
@@ -42,7 +45,8 @@ memory. Different compression levels can be used to achieve better
 ratios at the expense of time.
 
 %prep
-%setup -q -n python-lzo-%{version}
+%autosetup -p1 -n python-lzo-%{version}
+dos2unix NEWS
 
 %build
 export CFLAGS="%{optflags}"

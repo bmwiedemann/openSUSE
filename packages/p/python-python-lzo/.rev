@@ -34,4 +34,14 @@
   * Migrate CI to github actions.</comment>
     <requestid>1136292</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c72deb00e38d45c61e331f20b255c358</srcmd5>
+    <version>1.15</version>
+    <time>1790865989</time>
+    <user>anag_factory</user>
+    <comment>- Add patch support-python-312.patch:
+  * Don't use setuptools modules with Python 3.10+.
+- dos2unix on NEWS.</comment>
+    <requestid>1381753</requestid>
+  </revision>
 </revisionlist>
