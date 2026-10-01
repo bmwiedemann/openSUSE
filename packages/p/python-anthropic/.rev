@@ -272,4 +272,16 @@ build green, source_validator clean.</comment>
 </comment>
     <requestid>1381372</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>178a3ba4815346769e7096f73b9b66ec</srcmd5>
+    <version>1.11.0</version>
+    <time>1790886036</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.11.0: Organization endpoints go GA (also top-level), the
+Admin API gains analytics, spend limits, plugins and RBAC, a
+group/other-writable credentials config file is refused on Unix, and
+claude-sonnet-4-5 is deprecated. No new dependencies.
+</comment>
+    <requestid>1381938</requestid>
+  </revision>
 </revisionlist>

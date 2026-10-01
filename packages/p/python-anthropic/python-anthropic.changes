@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:15:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.11.0:
+  * Organization endpoints leave beta and are also served from the
+    top level as client.organization; the beta.organization surface
+    stays
+  * The Admin API gains analytics (per-user usage and cost), spend
+    limits with a list endpoint, plugins and plugin marketplaces,
+    and RBAC groups and roles
+  * A credentials config file that group or others can write is now
+    refused on Unix instead of being read
+  * A Managed Agents session now goes idle on any stop reason but
+    requires_action, so a turn-ending reason the SDK does not know
+    yet no longer stalls the session tool runner
+  * A memory store's description and metadata are now required in
+    the response model; archived_at stays optional
+  * claude-sonnet-4-5 and claude-sonnet-4-5-20250929 are deprecated
+    and warn on use (end of life November 30th, 2026)
+  * Managed Agents idle events carry a refusal stop reason and
+    stop_details, and session errors gain repository error types;
+    two new betas, ce-plugins-2026-09-01 and
+    spend-limit-reads-2026-09-26
+  * Page cursors gain has_next_page(), and auto-paging continues
+    past an empty page while next_page is still set
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Tue Sep 29 08:26:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.9.0:
