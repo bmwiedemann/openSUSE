@@ -5818,4 +5818,20 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1377363</requestid>
   </revision>
+  <revision rev="550" vrev="1">
+    <srcmd5>4764e94b5b5dee4e9f78ed5be1b2e6f4</srcmd5>
+    <version>2.10.0+git20260930.8e30f1e0</version>
+    <time>1790865680</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.10.0+git20260930.8e30f1e0:
+  * dbus-services: updated for systemd v261.3 (bsc#1281962)
+  * Only record mismatching hashes for mismatching files
+- Update to version 2.10.0+git20260930.83df77f9:
+  * openSUSE/scoring: raise badness for varlink violations (bsc#1232899)
+  * Revert &quot;openSUSE/scoring: raise badness for varlink violations (bsc#1232899)&quot;
+- Update to version 2.10.0+git20260928.84848c05:
+  * {polkit-rules,varlink}-whitelist: added systemd v261.3 changes (bsc#1281962)
+</comment>
+    <requestid>1381655</requestid>
+  </revision>
 </revisionlist>

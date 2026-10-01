@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:14:00 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20260930.8e30f1e0:
+  * dbus-services: updated for systemd v261.3 (bsc#1281962)
+  * Only record mismatching hashes for mismatching files
+
+-------------------------------------------------------------------
+Wed Sep 30 10:08:44 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20260930.83df77f9:
+  * openSUSE/scoring: raise badness for varlink violations (bsc#1232899)
+  * Revert "openSUSE/scoring: raise badness for varlink violations (bsc#1232899)"
+
+-------------------------------------------------------------------
+Mon Sep 28 09:31:56 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
+
+- Update to version 2.10.0+git20260928.84848c05:
+  * {polkit-rules,varlink}-whitelist: added systemd v261.3 changes (bsc#1281962)
+
+-------------------------------------------------------------------
 Fri Sep 11 08:56:15 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.10.0+git20260911.f4f012f3:
