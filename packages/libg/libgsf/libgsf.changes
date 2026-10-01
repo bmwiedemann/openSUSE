@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:28:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.14.60:
+  + Morten: Fix ABW for ole2.
+
+-------------------------------------------------------------------
 Mon Sep 21 07:43:01 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.14.59:
@@ -663,7 +669,7 @@ Sun Aug 31 20:06:00 EDT 2008 - mboman@novell.com
 -------------------------------------------------------------------
 Mon Jul 28 20:06:00 EDT 2008 - hfiguiere@suse.de
 
-- add libgsf-fate303676.patch to implement MS Office Open XML 
+- add libgsf-fate303676.patch to implement MS Office Open XML
   thumbnailing (FATE#303676)
 
 -------------------------------------------------------------------
@@ -688,7 +694,7 @@ Wed Apr  2 13:44:15 CEST 2008 - rodrigo@suse.de
   * Improve sanity checks of ole properties (bgo#404934)
   * Enhance gsf (the program) to list all document properites
   * Fix endless loop with broken ole files (bgo#513831)
-  * Fix memory allocation problem due to broken ole files 
+  * Fix memory allocation problem due to broken ole files
 
 -------------------------------------------------------------------
 Mon Feb 18 22:19:42 CET 2008 - maw@suse.de
@@ -701,7 +707,7 @@ Mon Feb 18 22:19:42 CET 2008 - maw@suse.de
 -------------------------------------------------------------------
 Sat Nov 17 01:58:13 CET 2007 - dmueller@suse.de
 
-- break dependency loop by removing unneeded requires 
+- break dependency loop by removing unneeded requires
 
 -------------------------------------------------------------------
 Wed Oct  3 22:10:48 CEST 2007 - maw@suse.de
@@ -764,7 +770,7 @@ Wed Oct  4 00:35:07 CEST 2006 - jhargadon@suse.de
 - Add metadata property dump function to gsf command
 - Improve ms-ole property sanity checking
 - Initial variant of a gsf based tar like utility
-- many bug fixes 
+- many bug fixes
 
 -------------------------------------------------------------------
 Thu Jun  8 22:41:28 CEST 2006 - jody@suse.de
@@ -836,7 +842,7 @@ Tue Nov  1 02:39:20 CET 2005 - federico@novell.com
 -------------------------------------------------------------------
 Wed Aug  3 07:20:14 CEST 2005 - gekker@suse.de
 
-- Update to version 1.12.1 
+- Update to version 1.12.1
 
 -------------------------------------------------------------------
 Wed Jun  1 18:52:37 CEST 2005 - sbrabec@suse.cz
@@ -881,7 +887,7 @@ Tue Oct 07 18:17:32 CEST 2003 - sbrabec@suse.cz
 Thu Jul 24 01:05:36 CEST 2003 - hhetter@suse.de
 
 - fix documentation packaging
-- use gnome-filesystem 
+- use gnome-filesystem
 
 -------------------------------------------------------------------
 Mon Jul 14 16:41:11 CEST 2003 - sbrabec@suse.cz
@@ -907,7 +913,7 @@ Wed Jun 04 14:55:49 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Jun  2 00:06:31 CEST 2003 - ro@suse.de
 
-- added doc filelist to specfile 
+- added doc filelist to specfile
 
 -------------------------------------------------------------------
 Sun Apr 27 10:56:21 CEST 2003 - adrian@suse.de
@@ -933,5 +939,5 @@ Thu Jan 23 08:25:36 CET 2003 - meissner@suse.de
 -------------------------------------------------------------------
 Mon Jan 13 09:42:40 CET 2003 - hhetter@suse.de
 
-- initial SuSE package 
+- initial SuSE package
 

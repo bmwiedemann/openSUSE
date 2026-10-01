@@ -638,4 +638,22 @@
   + Protect ole2 loader from crazy recursion.</comment>
     <requestid>1379610</requestid>
   </revision>
+  <revision rev="83" vrev="1">
+    <srcmd5>f31420f0694a096d6de68aa17e5454d8</srcmd5>
+    <version>1.14.60</version>
+    <time>1790866790</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.14.60:
+  + Morten: Fix ABW for ole2.
+
+- add libgsf-fate303676.patch to implement MS Office Open XML
+  * Fix memory allocation problem due to broken ole files
+- break dependency loop by removing unneeded requires
+- many bug fixes
+- Update to version 1.12.1
+- use gnome-filesystem
+- added doc filelist to specfile
+- initial SuSE package</comment>
+    <requestid>1381618</requestid>
+  </revision>
 </revisionlist>
