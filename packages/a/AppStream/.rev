@@ -693,4 +693,33 @@ Features:
     <comment>Update to 1.2.0 (forwarded request 1374669 from krop)</comment>
     <requestid>1375046</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>0c1331c3d2f8c4d9bce9485fce9a8a4e</srcmd5>
+    <version>1.2.1</version>
+    <time>1790865690</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.2.1:
+  + Features:
+    - Curl: Include &quot;libcurl&quot; in UA string so AI bot protection
+      hits us less
+    - Compose: Permit changing the downloader user agent
+    - Compose: Try to guess what media we actually downloaded if
+      processing failed
+    - Add support for elogind
+  + Bugfixes:
+    - Meson: Make sed command cross-platform friendly
+    - Meson: Don't use any absolute include path to find
+      libstemmer.h
+    - System-info: Avoid overflow in physical memory total on
+      32-bit systems
+    - Compose: Flag a missing ffprobe as its own error
+    - Docs: Work around a rare DAPS race condition when building
+      documentation
+    - Resolve or skip failing tests on riscv64 &amp; s390x
+    - Validator: Fix validation of `references` elements
+    - Tests: Relax fontconfig orthography data check for 2.18.3 bug
+  + Miscellaneous: Compose: Move media detection to the worker
+    process</comment>
+    <requestid>1381525</requestid>
+  </revision>
 </revisionlist>
