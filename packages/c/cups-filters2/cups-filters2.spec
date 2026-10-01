@@ -102,12 +102,16 @@ Cf. https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
 #   "I generally recommend not to use universal in distros, for maximum compatibility with all drivers"
 #   "there were 2 filters in the chain which come from the proprietary driver package,
 #    but universal only supports a chain of libcupsfilters' filter functions plus one single driver filter"
+# --enable-universal-cups-filter : use a single, universal CUPS filter executable for all filter functions
+#   because '--disable-universal-cups-filter' does not work because it results a /usr/share/cups/mime/cupsfilters.convs
+#   which only has a few text/plain rules for text-only printers (in particular nothing for PDF and image formats), see
+#   https://bugzilla.suse.com/show_bug.cgi?id=1283295
 %configure --disable-static \
            --enable-shared \
            --disable-silent-rules \
            --disable-mutool \
            --disable-foomatic \
-           --disable-universal-cups-filter \
+           --enable-universal-cups-filter \
            --docdir=%{_defaultdocdir}/%{name}
 make %{?_smp_mflags}
 

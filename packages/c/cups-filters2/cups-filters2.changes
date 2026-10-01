@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:28:17 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- revert previous change and --enable-universal-cups-filter again
+  because '--disable-universal-cups-filter' does not work
+  because it results a /usr/share/cups/mime/cupsfilters.convs
+  which only has a few text/plain rules for text-only printers
+  (in particular nothing for PDF and image formats), see
+  https://bugzilla.suse.com/show_bug.cgi?id=1283295
+
+-------------------------------------------------------------------
 Wed Sep 23 10:32:01 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - disable-universal-cups-filter : do not use a single, universal

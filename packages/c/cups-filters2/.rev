@@ -15,4 +15,12 @@
     <comment>disable-universal-cups-filter because it fails when there is more than one single driver filter (forwarded request 1379938 from jsmeix)</comment>
     <requestid>1379939</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>69a3411a0cfc6dd32906ddbff59b2193</srcmd5>
+    <version>2.0.1</version>
+    <time>1790865786</time>
+    <user>anag_factory</user>
+    <comment>re-enable universal filter to fix boo#1283295 (forwarded request 1381615 from jsmeix)</comment>
+    <requestid>1381617</requestid>
+  </revision>
 </revisionlist>
