@@ -1,14 +1,14 @@
-From c35261bf7c4041ccbf7a8999af54b1b28ec4ebc7 Mon Sep 17 00:00:00 2001
+From ee14a2820b9805637de096c2f3747364119f188c Mon Sep 17 00:00:00 2001
 From: Michael Simacek <msimacek@redhat.com>
 Date: Wed, 1 Feb 2017 14:54:26 +0100
-Subject: [PATCH 1/7] Adapt mvn script
+Subject: [PATCH 1/6] Adapt mvn script
 
 ---
- apache-maven/src/bin/mvn | 19 ++++++++++++++++---
- 1 file changed, 16 insertions(+), 3 deletions(-)
+ apache-maven/src/bin/mvn | 23 ++++++++++++++++-------
+ 1 file changed, 16 insertions(+), 7 deletions(-)
 
 diff --git a/apache-maven/src/bin/mvn b/apache-maven/src/bin/mvn
-index 2b3dc375fc..5028c5128e 100755
+index 73f6d12f81..e9c1370cad 100755
 --- a/apache-maven/src/bin/mvn
 +++ b/apache-maven/src/bin/mvn
 @@ -22,7 +22,7 @@
@@ -20,12 +20,20 @@ index 2b3dc375fc..5028c5128e 100755
  #   MAVEN_ARGS      (Optional) Arguments passed to Maven before CLI arguments.
  #   MAVEN_OPTS      (Optional) Java runtime options used when Maven is executed.
  #   MAVEN_SKIP_RC   (Optional) Flag to disable loading of mavenrc files.
-@@ -38,12 +38,24 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
+@@ -30,20 +30,28 @@
+ 
+ if [ -z "$MAVEN_SKIP_RC" ] ; then
+ 
+-  if [ -f /usr/local/etc/mavenrc ] ; then
+-    . /usr/local/etc/mavenrc
+-  fi
+-
+   if [ -f /etc/mavenrc ] ; then
      . /etc/mavenrc
    fi
  
-+  if [ -f /etc/java/maven.conf ] ; then
-+    . /etc/java/maven.conf
++  if [ -f /etc/java/maven@{maven_version_suffix}.conf ] ; then
++    . /etc/java/maven@{maven_version_suffix}.conf
 +  fi
 +
    if [ -f "$HOME/.mavenrc" ] ; then
@@ -42,10 +50,10 @@ index 2b3dc375fc..5028c5128e 100755
 +export JAVA_HOME
 +export JAVACMD
 +
- # OS specific support. $var _must_ be set to either true or false.
- cygwin=false;
- mingw=false;
-@@ -68,7 +80,8 @@ done
+ # Note on echo vs printf: several POSIX shells (dash and the other Almquist
+ # derivatives commonly installed as /bin/sh) expand backslash escapes in echo.
+ # Windows paths are full of backslashes, so C:\tmp\build would be printed with a
+@@ -91,7 +99,8 @@ done
  
  saveddir=`pwd`
  
@@ -55,7 +63,7 @@ index 2b3dc375fc..5028c5128e 100755
  
  # make it fully qualified
  MAVEN_HOME=`cd "$MAVEN_HOME" && pwd`
-@@ -106,7 +119,7 @@ if [ ! -x "$JAVACMD" ] ; then
+@@ -129,7 +138,7 @@ if [ ! -x "$JAVACMD" ] ; then
    exit 1
  fi
  
@@ -63,7 +71,7 @@ index 2b3dc375fc..5028c5128e 100755
 +CLASSWORLDS_JAR=`build-classpath plexus-classworlds`
  CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
  
- # For Cygwin, switch paths to Windows format before running java
+ # For Cygwin and MinGW, switch paths to Windows format before running java(1)
 -- 
 2.55.0
 

@@ -1,7 +1,7 @@
-From 7b0d2360d2d3ef056d297359b6acb6d49499df79 Mon Sep 17 00:00:00 2001
+From fa8a25c92d3bee549280aee091d49267cd127d9a Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Tue, 2 May 2023 18:12:26 +0200
-Subject: [PATCH 4/7] Fix build with qdox-2.0.1
+Subject: [PATCH 4/6] Fix build with qdox-2.0.1
 
 ---
  .../org/apache/maven/plugin/DefaultExtensionRealmCache.java   | 2 +-

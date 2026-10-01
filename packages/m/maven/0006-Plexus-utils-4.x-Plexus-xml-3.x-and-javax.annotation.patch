@@ -1,7 +1,7 @@
-From 1efd3c5f4ff91d127f416573685d0d00ad7ae3e5 Mon Sep 17 00:00:00 2001
+From 2e3d7ff5ace79a2ba6b81d67ba6b2a64a4b9c7aa Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Fridrich=20=C5=A0trba?= <fridrich.strba@bluewin.ch>
 Date: Sat, 8 Nov 2025 10:16:48 +0100
-Subject: [PATCH 6/7] Plexus-utils 4.x, Plexus-xml 3.x and javax.annotations
+Subject: [PATCH 6/6] Plexus-utils 4.x, Plexus-xml 3.x and javax.annotations
 
 ---
  maven-core/pom.xml                | 4 ++++
@@ -12,10 +12,10 @@ Subject: [PATCH 6/7] Plexus-utils 4.x, Plexus-xml 3.x and javax.annotations
  5 files changed, 23 insertions(+), 1 deletion(-)
 
 diff --git a/maven-core/pom.xml b/maven-core/pom.xml
-index 764050bde7..56630a5e1d 100644
+index 40f9184888..cd7a6b7820 100644
 --- a/maven-core/pom.xml
 +++ b/maven-core/pom.xml
-@@ -127,6 +127,10 @@ under the License.
+@@ -123,6 +123,10 @@ under the License.
        <groupId>javax.inject</groupId>
        <artifactId>javax.inject</artifactId>
      </dependency>
@@ -27,7 +27,7 @@ index 764050bde7..56630a5e1d 100644
      <dependency>
        <groupId>org.codehaus.plexus</groupId>
 diff --git a/maven-model/pom.xml b/maven-model/pom.xml
-index ca28f22440..6c0d40af7e 100644
+index c18eeb8b3b..b4a2ff014a 100644
 --- a/maven-model/pom.xml
 +++ b/maven-model/pom.xml
 @@ -41,6 +41,10 @@ under the License.
@@ -42,7 +42,7 @@ index ca28f22440..6c0d40af7e 100644
        <groupId>org.junit.jupiter</groupId>
        <artifactId>junit-jupiter-api</artifactId>
 diff --git a/maven-repository-metadata/pom.xml b/maven-repository-metadata/pom.xml
-index 8f5fcbd3f3..291022857e 100644
+index 51da7ab360..8fa91ea705 100644
 --- a/maven-repository-metadata/pom.xml
 +++ b/maven-repository-metadata/pom.xml
 @@ -40,6 +40,10 @@ under the License.
@@ -57,7 +57,7 @@ index 8f5fcbd3f3..291022857e 100644
        <groupId>org.apache.maven.resolver</groupId>
        <artifactId>maven-resolver-api</artifactId>
 diff --git a/maven-settings/pom.xml b/maven-settings/pom.xml
-index 6408b2e9ad..816e9949db 100644
+index 6182d35650..ff6410a5cf 100644
 --- a/maven-settings/pom.xml
 +++ b/maven-settings/pom.xml
 @@ -40,6 +40,10 @@ under the License.
@@ -72,20 +72,20 @@ index 6408b2e9ad..816e9949db 100644
  
    <build>
 diff --git a/pom.xml b/pom.xml
-index 07fd63400b..4672e7161e 100644
+index 50d61ba4ae..f0dd91395e 100644
 --- a/pom.xml
 +++ b/pom.xml
 @@ -136,7 +136,8 @@ under the License.
      <plexusVersion>2.2.0</plexusVersion>
-     <plexusInterpolationVersion>1.29</plexusInterpolationVersion>
+     <plexusInterpolationVersion>1.30.0</plexusInterpolationVersion>
      <!-- Blocked by 3.4.0+ changes, see MNG-7710, downgrade from parent 4.0.1 -->
--    <version.plexus-utils>3.6.1</version.plexus-utils>
+-    <version.plexus-utils>3.6.2</version.plexus-utils>
 +    <version.plexus-utils>4.0.2</version.plexus-utils>
 +    <version.plexus-xml>3.0.2</version.plexus-xml>
      <guiceVersion>5.1.0</guiceVersion>
-     <guavaVersion>33.6.0-jre</guavaVersion>
+     <guavaVersion>33.7.1-jre</guavaVersion>
      <guavafailureaccessVersion>1.0.3</guavafailureaccessVersion>
-@@ -248,6 +249,11 @@ under the License.
+@@ -249,6 +250,11 @@ under the License.
          <artifactId>plexus-utils</artifactId>
          <version>${version.plexus-utils}</version>
        </dependency>

@@ -1,0 +1,44 @@
+--- a/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
++++ b/maven-jline/src/main/java/org/apache/maven/jline/FastTerminal.java
+@@ -33,6 +33,7 @@
+ import org.jline.terminal.Cursor;
+ import org.jline.terminal.MouseEvent;
+ import org.jline.terminal.Size;
++import org.jline.terminal.Sized;
+ import org.jline.terminal.Terminal;
+ import org.jline.terminal.spi.SystemStream;
+ import org.jline.terminal.spi.TerminalExt;
+@@ -170,13 +171,18 @@ public void setSize(Size size) {
+     }
+ 
+     @Override
+-    public int getWidth() {
+-        return getTerminal().getWidth();
++    public void setSize(Sized sized) {
++        getTerminal().setSize(sized);
+     }
+ 
+     @Override
+-    public int getHeight() {
+-        return getTerminal().getHeight();
++    public int getColumns() {
++        return getTerminal().getColumns();
++    }
++
++    @Override
++    public int getRows() {
++        return getTerminal().getRows();
+     }
+ 
+     @Override
+--- a/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java
++++ b/maven-jline/src/main/java/org/apache/maven/jline/MessageUtils.java
+@@ -121,7 +121,7 @@ public static boolean isColorEnabled() {
+     }
+ 
+     public static int getTerminalWidth() {
+-        return terminal != null ? terminal.getWidth() : -1;
++        return terminal != null ? terminal.getColumns() : -1;
+     }
+ 
+     public static MessageBuilder builder() {

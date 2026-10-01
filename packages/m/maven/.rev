@@ -312,4 +312,12 @@ put into adi:2</comment>
     <comment>3.10.0-rc-1</comment>
     <requestid>1365407</requestid>
   </revision>
+  <revision rev="40" vrev="1">
+    <srcmd5>4205676c467ae120496aa46938937258</srcmd5>
+    <version>3.10.0</version>
+    <time>1790865794</time>
+    <user>anag_factory</user>
+    <comment>3.10.0</comment>
+    <requestid>1381891</requestid>
+  </revision>
 </revisionlist>

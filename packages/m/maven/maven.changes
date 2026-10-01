@@ -1,4 +1,125 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:14:21 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream release 3.10.0
+  * New features and improvements
+    + Maven 3.10.x should use Maven 3.1 validation in strict mode
+    + Do not depend on maven-resolver-supplier-mvn3
+    + MNG-6797: Remember if Maven model problems were encountered.
+    + feat: add relativePath validation
+    + Add validation for Plexus-based plugin dependency injection
+    + Introduce validation control
+    + Update to Resolver 2.0.21
+    + MNG-5913: Allow defining aliases for existing server
+      configurations in settings.xml
+  * Bug Fixes
+    + Issue #13265: let a settings server declare the repository
+      origins its credentials may be used with
+    + Backport #13040: treat reactor BOM imports as ProjectSorter
+      edges so -am includes them
+    + MNG-8174: Fix NPE when a property references itself in a
+      plugin configuration (backport #12932)
+    + Fix #13200: publish a complete set from
+      MavenProject.getArtifacts
+    + Fixes #13135: ensure completeness of the reactor summary,
+      privilege failures last
+    + Fix #13084: sandbox profile activation context for external
+      model builds
+    + Fix #13100: honor repositories from legitimately-active
+      external model profiles
+    + Add support for MAVEN_PROJECTBASEDIR substitution in
+      jvm.config (backport of MNG-8598 to 3.10.x)
+    + Scope server credentials and validate legacy relocation
+      coordinates
+    + Honour configured policy and validate inputs on the legacy
+      compat paths
+    + Add unit test for #12600 null-guard in forked executions
+    + Fix: make ProjectIndex thread-safe for parallel builds
+    + Fail on misconfigured plugin-requested toolchains
+    + Resolve classified POM artifacts from the reactor in Maven 3.x
+    + Convert paths for MSYS2 and jvm.config placeholders in bin/mvn
+    + Preserve dependency scope in plugin artifacts
+  * Documentation updates
+    + docs: document plugin.xml V4 vs V3
+    + Port the site documentation from APT to Markdown
+    + improve doc about deprecating plugin descriptor's requirement
+    + Drop mention of Plexus XML
+  * Maintenance
+    + maintenance: Align use of profiles
+    + Remove version from rat directory deployment
+    + Update NOTICE file in distribution packages
+    + Restrict what a repository-resolved model contributes to the
+      build
+    + Validate coordinates and repository precedence during artifact
+      resolution
+    + MNG-8129: Clarify relativePath validation comment
+    + Keep plexus-cipher at 2.0: POM note
+    + Use try-with-resources
+    + Migrate the embedder-test-project fixture to JUnit 5
+    + Port the site documentation from APT to Markdown
+    + Migrate legacy plugin Javadoc annotations in Maven Embedder
+      tests
+    + Replace custom GraphLogger with DependencyGraphDumper in
+      dependency resolution
+    + Fix UT: do not use checkout directly
+  * Build
+    + Replace nicoulaj checksum plugin with maveniverse checksum
+      plugin
+    + 3.10.x Build by JDK 25, limit JDK to min and max LTS in build
+    + Update Maven version to 3.10.0-rc-1 in GH configuration
+  * Dependency updates
+    + deps: Update to Maven Resolver 2.0.24
+    + bump xmlunitVersion from 2.12.0 to 2.14.0
+    + build: bump org.apache.maven:maven-parent from 49 to 50
+    + Resolver 2.0.23 and validation cleanup
+    + Bump org.codehaus.mojo:build-helper-maven-plugin from 3.6.1
+      to 3.6.2
+    + Bump org.codehaus.mojo:buildnumber-maven-plugin from 3.3.0 to
+      3.3.1
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.6.3 to 3.6.4
+    + Bump org.codehaus.mojo:animal-sniffer-maven-plugin from 1.27
+      to 1.28
+    + Bump actions/setup-java from 5.4.0 to 6.0.1
+    + Bump jlineVersion from 3.30.15 to 3.30.17
+    + Bump slf4jVersion from 2.0.18 to 2.0.19
+    + Bump org.codehaus.modello:modello-maven-plugin from 2.7.0
+      to 2.8.1
+    + [12811] Keep plexus-cipher at 2.0: POM note
+    + Deps: Bump to Resolver 2.0.22
+    + Bump resolverVersion from 2.0.21 to 2.0.22
+    + Bump org.codehaus.plexus:plexus-interpolation from 1.29 to
+      1.30.0
+    + Bump com.google.guava:guava from 33.6.0-jre to 33.7.1-jre
+    + Bump org.codehaus.plexus:plexus-utils from 3.6.1 to 3.6.2
+    + Bump org.codehaus.plexus:plexus-testing from 2.1.0 to 2.2.0
+    + Bump org.codehaus.modello:modello-maven-plugin from 2.7.0
+      to 2.8.0
+    + Bump org.codehaus.plexus:plexus-classworlds from 2.12.0 to
+      2.12.1
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /release-drafter.yml from 4 to 5
+    + Deps: Bump to Eclipse Sisu 1.1.0
+    + Bump resolverVersion from 2.0.21-SNAPSHOT to 2.0.21
+    + Bump actions/checkout from 7.0.0 to 7.0.1
+    + Update to Resolver 2.0.21
+    + Bump apache/maven-gh-actions-shared/.github/workflows/
+      /pr-automation.yml from 4 to 5
+- Modified patches:
+  * 0001-Adapt-mvn-script.patch
+  * 0002-Invoke-logback-via-reflection.patch
+  * 0003-Remove-dependency-on-powermock.patch
+  * 0004-Fix-build-with-qdox-2.0.1.patch
+  * 0005-Reproducible-maven.build.timestamp.patch
+  * 0006-Plexus-utils-4.x-Plexus-xml-3.x-and-javax.annotation.patch
+    + rebase and adapt to new context
+  * jline-4.1.x.patch -> jline-4.4.x.patch
+    + allow building with jline 4.4.x if needed (this patch is only
+      conditionally applied)
+- Removed patch:
+  * 0007-Do-not-depend-on-maven-resolver-supplier-mvn3.patch
+    + not needed any more, since landed upstream
+
+-------------------------------------------------------------------
 Sun Jul 12 05:43:16 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream preview version 3.10.0-rc-1

@@ -1,7 +1,7 @@
-From afa628d996b7d503a83465ec3700b7cb121ae294 Mon Sep 17 00:00:00 2001
+From ebed7783c56fd47586558f1c181c27999350e079 Mon Sep 17 00:00:00 2001
 From: Emmanuel Bourg <ebourg@apache.org>
 Date: Mon, 4 Sep 2023 17:10:19 +0200
-Subject: [PATCH 5/7] Reproducible maven.build.timestamp
+Subject: [PATCH 5/6] Reproducible maven.build.timestamp
 
 Set the maven.build.timestamp variable to the date defined by
 the SOURCE_DATE_EPOCH environment variable to make the Maven
