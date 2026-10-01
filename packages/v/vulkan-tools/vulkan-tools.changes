@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Sep 28 23:10:17 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.363.0
+  * vulkaninfo: Enable more instance extensions
+  * Add VK_EXT_display_surface_counter instance extension
+  * vulkaninfo: Include extended flags in video format props output
+
+-------------------------------------------------------------------
 Tue Jul 28 23:46:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.357.0
