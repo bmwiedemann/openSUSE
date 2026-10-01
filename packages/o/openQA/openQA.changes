@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Tue Sep 29 20:21:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790713243.ef39a05e:
+  * feat: Keep reserved workers usable for verification jobs
+  * fix(test): track pause offset and fail fast in developer mode test
+  * fix(test): report pass and match in wait_for_developer_console_like
+  * refactor(test): extract redundant tab verification helper
+  * fix(test): use monotonic timeouts and robust wait in Selenium helpers
+  * chore(deps): Dependency cron 2026-09-29
+  * fix: return 0 when CacheService is stopped cleanly
+
+-------------------------------------------------------------------
+Sat Sep 26 11:31:50 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790422299.5cfb2e25:
+  * test(devel-fullstack): Fix waiting for `outstanding_images` for real
+  * feat: allow authors to delete own comments
+  * chore(deps): Dependency cron 2026-09-25
+  * fix: exit immediately on SIGINT/SIGTERM in retry
+  * fix: abort container compose tests cleanly on SIGINT
+  * refactor: Reduce parameters of `update_note`
+  * refactor: Reduce parameters of `job_statistics`
+  * feat(job-stats): Allow specifying the setting to add additional jobs by
+  * docs: Update documentation of `/isos/job_stats` after recent changes
+  * feat: Return only "latest" jobs in `/isos/job_stats`
+  * feat: Include additional jobs for submission in `/isos/job_stats`
+
+-------------------------------------------------------------------
+Fri Sep 25 13:23:23 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790342592.80a4c50f:
+  * test(devel-fullstack): Fix waiting for `outstanding_images` for real
+  * chore(deps): Dependency cron 2026-09-25
+  * fix: exit immediately on SIGINT/SIGTERM in retry
+  * fix: abort container compose tests cleanly on SIGINT
+  * refactor: Reduce parameters of `update_note`
+  * test(devel-fullstack): Fix waiting for `outstanding_images`
+
+-------------------------------------------------------------------
 Fri Sep 25 05:06:40 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790312789.f59cf41c:

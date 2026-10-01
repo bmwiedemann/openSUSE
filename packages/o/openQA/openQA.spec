@@ -104,7 +104,7 @@
 %define devel_requires %devel_no_selenium_requires chromedriver
 
 Name:           openQA
-Version:        5.1790312789.f59cf41c
+Version:        5.1790713243.ef39a05e
 Release:        0
 Summary:        Framework for automated system-level testing (web-frontend, scheduler and tools)
 Group:          Development/Tools/Other
@@ -379,7 +379,10 @@ Podman Quadlet configuration to automatically manage the server.
 %prep
 %setup -q
 sed -e 's,/bin/env python,/bin/python,' -i script/openqa-label-all
-local-npm-registry %{_sourcedir} install --omit=dev --legacy-peer-deps --no-package-lock --ignore-scripts
+# Depending on whether we run in OBS or from a gitea repo, there is a
+# node_modules directory or not
+TARGET="%{_sourcedir}"; [ -d "$TARGET/node_modules" ] && TARGET="$TARGET/node_modules"
+local-npm-registry "$TARGET" install --omit=dev --legacy-peer-deps --no-package-lock --ignore-scripts
 
 %build
 %make_build
@@ -411,11 +414,6 @@ rm \
     t/api/14-plugin_obs_rsync_async.t \
     t/43-scheduling-and-worker-scalability.t \
     t/ui/*.t
-
-%if 0%{?suse_version} <= 1500
-# Python 3.6 on older SLE versions does not support capture_output used by init-test-fixtures
-rm t/44-init-test-fixtures.t
-%endif
 
 # "CI" set with longer timeouts as needed for higher performance variations
 # within CI systems, e.g. OBS. See t/lib/OpenQA/Test/TimeLimit.pm
