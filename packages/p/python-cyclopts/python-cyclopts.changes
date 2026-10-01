@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:00:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.1.1:
+  * Accept --flag=none on a bool | None annotation, so a tri-state
+    boolean can be set to None explicitly
+
+-------------------------------------------------------------------
 Wed Sep 30 08:08:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 5.1.0:

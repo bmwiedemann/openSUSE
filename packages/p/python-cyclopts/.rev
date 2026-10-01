@@ -229,4 +229,14 @@ No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
 </comment>
     <requestid>1381676</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>cf4f2b014d7f6be41d9e2d4ac719cdf7</srcmd5>
+    <version>5.1.1</version>
+    <time>1790886027</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.1.1: accept --flag=none on a bool | None annotation.
+Single upstream bug fix; no dependency or packaging changes.
+</comment>
+    <requestid>1381936</requestid>
+  </revision>
 </revisionlist>
