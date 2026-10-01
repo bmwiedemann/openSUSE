@@ -380,4 +380,16 @@ https://www.postgresql.org/about/news/postgresql-176-1610-1514-1419-1322-and-18-
   build of extensions on SLE-16.1 and newer.</comment>
     <requestid>1372210</requestid>
   </revision>
+  <revision rev="28" vrev="3">
+    <srcmd5>3a7eff60a02807f27f18595f74927f5c</srcmd5>
+    <version>16.15</version>
+    <time>1790865917</time>
+    <user>anag_factory</user>
+    <comment>- Require libicu-devel from the server-devel package when building
+  with ICU support.
+
+  build of extensions on SLE-16 and newer.
+- Use LLVM 15 on SLE-15 up to SP5 and LLVM 17 on SP6 and SP7.</comment>
+    <requestid>1381699</requestid>
+  </revision>
 </revisionlist>

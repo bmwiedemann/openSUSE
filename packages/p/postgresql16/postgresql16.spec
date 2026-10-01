@@ -150,6 +150,14 @@ BuildRequires:  %libpq
 %endif
 %endif
 
+%if 0%{?suse_version} < 1600
+%if 0%{?sle_version} < 150600
+%define postgresql_llvm_version 15
+%else
+%define postgresql_llvm_version 17
+%endif
+%endif
+
 %ifnarch %arm
 %bcond_without  check
 %else
@@ -164,9 +172,9 @@ BuildRequires:  libicu-devel
 BuildRequires:  libselinux-devel
 %endif
 %if %{with llvm}
-BuildRequires:  clang
+BuildRequires:  clang%{?postgresql_llvm_version}
 BuildRequires:  gcc-c++
-BuildRequires:  llvm-devel
+BuildRequires:  llvm%{?postgresql_llvm_version}-devel
 %endif
 BuildRequires:  libxslt-devel
 BuildRequires:  pkg-config
@@ -333,6 +341,9 @@ Requires:       pam-devel
 Requires:       readline-devel
 Requires:       zlib-devel
 Requires:       pkgconfig(krb5)
+%if %{with icu}
+Requires:       libicu-devel
+%endif
 %if %{with selinux}
 Requires:       libselinux-devel
 %endif
@@ -423,8 +434,13 @@ Requires:       %pgname-server-devel = %version
 Requires:       %pgname-llvmjit = %version
 Requires(post): postgresql-llvmjit-devel-noarch >= %packaging_level
 Requires(postun): postgresql-llvmjit-devel-noarch >= %packaging_level
+%if %{with alts}
 Requires:       %_bindir/clang
 Requires:       %_bindir/llc
+%else
+Requires:       clang%{?postgresql_llvm_version}-devel
+Requires:       llvm%{?postgresql_llvm_version}-devel
+%endif
 %endif
 
 %description llvmjit-devel
