@@ -1,4 +1,160 @@
 -------------------------------------------------------------------
+Thu Oct 01 04:59:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.43.0:
+  This release brings support for OPA's experimental and/or
+  keywords and three new linter rules.
+  * New Rule: idiomatic/prefer-string-interpolation
+    Category: idiomatic
+    The prefer-string-interpolation rule recommends OPA's string
+    interpolation over sprintf and concat where possible (#2092,
+    #2093).
+
+    Avoid
+
+      package policy
+      request_formatted := sprintf("%s: %s", [method, path]) if {
+          # extract method and path from the request
+      }
+      full_name := concat(" ", [first_name, last_name])
+
+    Prefer
+
+      package policy
+      request_formatted := $"{method}: ${path}" if {
+          # extract method and path from the request
+      }
+      full_name := $"{first_name} ${last_name}"
+
+  * New Rule: bugs/unconditional-with-conditions
+    Category: bugs
+    The unconditional-with-conditions rule flags a rule with an
+    unconditional definition alongside other definitions that carry
+    conditions. Since the unconditional definition always applies,
+    the conditions on the others can never decide anything. Either
+    the values differ and evaluation fails with a conflict, or the
+    values agree and the conditional definitions are dead code.
+    This rule was contributed by @kmadan — thanks!
+
+    Avoid
+
+      package policy
+      allow := true if input.user.is_admin
+      # `allow` is now defined for every input, so the conditions above never decide
+      # anything. If `input.user.is_admin` is true, evaluation fails with a conflict.
+      allow := false
+
+    Prefer
+
+      package policy
+      default allow := false
+      allow := true if input.user.is_admin
+
+  * New Rule: performance/repeated-computation
+    Category: performance
+    The repeated-computation rule flags a deterministic built-in
+    call, like count(input.items), when it runs more than once in
+    the same scope. The rule suggests assigning the result to a
+    variable instead (#2026) — thanks @mvanhorn!
+
+    Avoid
+
+      package policy
+      allow if {
+          count(input.subjects) > 0
+          count(input.subjects) < 100
+      }
+
+    Prefer
+
+      package policy
+      allow if {
+          subject_count := count(input.subjects)
+          subject_count > 0
+          subject_count < 100
+      }
+
+  * New Feature: Experimental and/or keyword support
+    Regal can now parse and lint policies using OPA's experimental
+    and/or keywords (#2075) — thanks @sspaink! This includes
+    support in both RoAST encoders. The constant-condition rule no
+    longer reports an operand that makes up an entire and/or
+    expression, because removing it leaves the expression without
+    one. A new check also reports a constant and/or operand with a
+    range covering the operator. Removing it then collapses the
+    expression to the operand that is kept (#2079).
+  * Language Server Improvements
+    When the client indicates support for inline coverage, the
+    language server now includes a coverage report in eval
+    responses (#2094). See the related PR
+    open-policy-agent/vscode-opa#498 for the client side of this
+    feature.
+  * Performance
+    One-shot commands like lint, test and fix allocate in bulk and
+    then exit, so garbage collecting at the default pace was
+    largely wasted work. Relaxing the GC pacing for these commands
+    makes Regal about 15% faster when linting its own 350+ Rego
+    policies (#2095).
+  * Documentation
+    - Link each rule's configuration options to the configuration
+      docs, and add the missing configuration section for
+      disallow-rego-v1 (#2077) — thanks @pttydou!
+    - Clarify where rule configuration files live (fixes #533).
+    - Update some links to the OPA blog. The links now point to the
+      blog on the OPA website, not the separate Medium-hosted blog
+      (#2059).
+  * Changelog
+    - 9670442: build(deps): bump linkify-it from 5.0.1 to 5.0.2 in
+      /build (#2063)
+    - 44d3372: build(deps): bump brace-expansion from 5.0.6 to
+      5.0.7 in /build (#2061)
+    - 2e89cce: build(deps): bump the dependencies group across 1
+      directory with 7 updates (#2064)
+    - db756a9: build(deps): bump js-yaml and markdownlint-cli in
+      /build (#2065)
+    - 9635851: docs: Update some links to OPA blog to new host
+      (#2059)
+    - e3dd92f: build(deps): bump brace-expansion from 5.0.7 to
+      5.0.9 in /build (#2067)
+    - 2d6d5ff: build(deps): bump the dependencies group with 4
+      updates (#2069)
+    - 440615b: build(deps): bump the dependencies group with 2
+      updates (#2068)
+    - f046663: build: Run all dependabots monthly (#2071)
+    - e9ce4a5: OPA v1.19.0 (#2070)
+    - 4f50e60: build(deps): bump github.com/sourcegraph/jsonrpc2
+      (#2074)
+    - 2ed6af2: build(deps): bump dprint in /build in the
+      dependencies group (#2073)
+    - b2cff49: Support the experimental and/or keywords (#2075)
+    - abfc0db: internal/io: drop stale experimental-keywords
+      capability assertion (#2078)
+    - f4b817f: build(deps): bump gobwas/glob to v1.0.0 and OPA to
+      the commit that supports it (#2089)
+    - 55418b7: build(deps): bump dprint (#2087)
+    - 3236e6b: build(deps): bump github.com/arl/statsviz (#2090)
+    - d71df5d: build(deps): bump the dependencies group across 1
+      directory with 4 updates (#2086)
+    - ebf3586: docs: clarify rule configuration file locations
+      (#2077)
+    - 529ef41: Prepare for getting back to Regal hacking (#2091)
+    - 173a897: feat(rules): add bugs/unconditional-with-conditions
+      (#2081)
+    - 948ed07: Report constant and/or operands (#2079)
+    - bb38183: feat: add performance rule repeated-computation
+      (#2026)
+    - 79a32f8: Rule: prefer-string-interpolation (#2092)
+    - 3d1898b: perf: relax GC pacing for one-shot commands (#2095)
+    - 18a6354: lsp: Add support for coverage in eval inline (#2094)
+    - 530542d: Include concat in prefer-string-interpolation
+      (#2093)
+    - 83f08ac: OPA v1.21.0 (#2098)
+    - 6df283a: Get rid of mapstructure dependency (#2099)
+    - c1c119e: Result handler functions -> interfaces (#2097)
+    - df0d0a6: Remove accidental yaml/v2 dependency (#2101)
+    - 6189089: Use custom filepath.Abs implementation (#2100)
+
+-------------------------------------------------------------------
 Fri Jul 17 05:16:35 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.42.0:
