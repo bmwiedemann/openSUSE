@@ -1,0 +1,29 @@
+From: Martin Pluskal <mpluskal@suse.com>
+Date: 2026-10-01 00:00:00 +0000
+Subject: xtask: use npm ci for web builds
+Upstream: no
+
+OBS hermetic builds need a strict lockfile-driven npm installation path so
+dependencies can be provided offline from package-lock.json via the
+node_modules OBS service and local-npm-registry.
+
+Use `npm ci` instead of `npm install` so the web build follows the checked-in
+lockfile exactly and remains suitable for offline packaging.
+
+---
+ xtask/src/bin/web.rs | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/xtask/src/bin/web.rs
++++ b/xtask/src/bin/web.rs
+@@ -53,8 +53,8 @@ fn main() -> Result<()> {
+
+ fn npm_install(web_dir: &Path) -> Result<()> {
+     require_tool("npm", "https://nodejs.org/ or `nvm install --lts`")?;
+-    println!("==> npm install ({})", web_dir.display());
+-    run_cmd(Command::new(bin("npm")).current_dir(web_dir).arg("install"))
++    println!("==> npm ci ({})", web_dir.display());
++    run_cmd(Command::new(bin("npm")).current_dir(web_dir).arg("ci"))
+ }
+
+ fn node_modules_needs_install(web_dir: &Path) -> bool {

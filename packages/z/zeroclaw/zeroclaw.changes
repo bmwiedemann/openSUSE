@@ -1,0 +1,25 @@
+-------------------------------------------------------------------
+Thu Oct  1 06:29:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package 0.8.5:
+  * Agent runtime with upstream default features: agent-runtime,
+    default-channels (acp-server, webhook, email, telegram,
+    discord, filesystem), acp-bridge, gateway,
+    observability-prometheus and schema-export
+  * Ships the zerocode TUI and the web dashboard under
+    /usr/share/zeroclawlabs/web/dist (embedded-web stays off,
+    the dashboard is data files, not linked code)
+  * Web tree builds offline from the vendored node_modules
+    (npm ci via zeroclaw-use-npm-ci-for-web-build.patch)
+  * Link native aarch64 builds with the default cc: upstream's
+    .cargo/config.toml pins Debian-style aarch64-linux-gnu-gcc,
+    which does not exist on openSUSE
+  * Keep debug symbols (upstream sets strip = true and release
+    defaults to no debug info) so the debuginfo packages are not
+    empty; cap build parallelism with %limit_build and request
+    32 G workers via _constraints for the fat-LTO link
+  * ExclusiveArch 64-bit Rust tier-1 arches only
+  * License (MIT OR Apache-2.0) AND MPL-2.0: only copyleft
+    linked is option-ext MPL-2.0; web bundle path is
+    MIT/ISC/BSD-3-Clause only, see Legal-Review-Notice
+

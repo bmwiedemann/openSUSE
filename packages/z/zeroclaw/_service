@@ -1,0 +1,34 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/zeroclaw-labs/zeroclaw</param>
+    <param name="scm">git</param>
+    <param name="exclude">.git</param>
+    <param name="revision">refs/tags/v0.8.5</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    <param name="versionrewrite-pattern">v(.*)</param>
+    <param name="changesgenerate">enable</param>
+  </service>
+  <service name="set_version" mode="manual">
+  </service>
+  <service name="cargo_vendor" mode="manual">
+    <param name="update">false</param>
+    <param name="srcdir">zeroclaw</param>
+    <param name="compression">zst</param>
+  </service>
+  <service name="extract_file" mode="manual">
+    <param name="archive">zeroclaw-*.obscpio</param>
+    <param name="files">zeroclaw-*/web/package-lock.json</param>
+  </service>
+  <service name="node_modules" mode="manual">
+    <param name="cpio">node_modules.obscpio</param>
+    <param name="output">node_modules.spec.inc</param>
+    <param name="source-offset">10000</param>
+  </service>
+  <!-- services below are running at buildtime -->
+  <service name="tar" mode="buildtime">
+  </service>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>
