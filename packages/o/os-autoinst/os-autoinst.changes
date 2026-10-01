@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Tue Sep 29 18:08:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790705326.6badaca:
+  * test: Update tests after 111e01b69 was merged
+  * feat: Record failures during post fail hook "Failed (post)"
+  * feat: Record info about entering post fail hook
+  * feat: Record failures during post fail hook as such
+  * feat: Record failures that happened during `post_fail_hook`
+  * refactor: Move handling test exceptions into a separate function
+  * feat: Make offset between NICs configurable
+  * fix: Fix typo in QEMU backend comment
+
+-------------------------------------------------------------------
 Mon Sep 28 11:56:15 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790592325.87022d5:
