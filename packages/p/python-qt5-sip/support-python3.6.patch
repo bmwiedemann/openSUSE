@@ -1,56 +1,56 @@
-diff -ur pyqt5_sip-12.16.1/PKG-INFO pyqt5_sip-12.16.1_fix/PKG-INFO
---- pyqt5_sip-12.16.1/PKG-INFO	2024-12-12 11:01:36.048525000 +0100
-+++ pyqt5_sip-12.16.1_fix/PKG-INFO	2025-01-21 12:59:58.918060996 +0100
+diff -ur pyqt5_sip-12.19.0/PKG-INFO pyqt5_sip-12.19.0_fix/PKG-INFO
+--- pyqt5_sip-12.19.0/PKG-INFO	2026-08-02 13:20:00.472665800 +0200
++++ pyqt5_sip-12.19.0_fix/PKG-INFO	2026-09-26 17:48:51.297267271 +0200
 @@ -9,7 +9,7 @@
  Platform: X11
  Platform: macOS
  Platform: Windows
--Requires-Python: >=3.9
+-Requires-Python: >=3.10
 +Requires-Python: >=3.6
  License-File: LICENSE
- 
- sip Extension Module
-diff -ur pyqt5_sip-12.16.1/PyQt5_sip.egg-info/PKG-INFO pyqt5_sip-12.16.1_fix/PyQt5_sip.egg-info/PKG-INFO
---- pyqt5_sip-12.16.1/PyQt5_sip.egg-info/PKG-INFO	2024-12-12 11:01:35.000000000 +0100
-+++ pyqt5_sip-12.16.1_fix/PyQt5_sip.egg-info/PKG-INFO	2025-01-21 13:00:02.294780054 +0100
+ Dynamic: license
+ Dynamic: license-file
+diff -ur pyqt5_sip-12.19.0/PyQt5_sip.egg-info/PKG-INFO pyqt5_sip-12.19.0_fix/PyQt5_sip.egg-info/PKG-INFO
+--- pyqt5_sip-12.19.0/PyQt5_sip.egg-info/PKG-INFO	2026-08-02 13:20:00.000000000 +0200
++++ pyqt5_sip-12.19.0_fix/PyQt5_sip.egg-info/PKG-INFO	2026-09-26 17:48:51.297319972 +0200
 @@ -9,7 +9,7 @@
  Platform: X11
  Platform: macOS
  Platform: Windows
--Requires-Python: >=3.9
+-Requires-Python: >=3.10
 +Requires-Python: >=3.6
  License-File: LICENSE
- 
- sip Extension Module
-diff -ur pyqt5_sip-12.16.1/setup.py pyqt5_sip-12.16.1_fix/setup.py
---- pyqt5_sip-12.16.1/setup.py	2024-12-12 11:01:35.000000000 +0100
-+++ pyqt5_sip-12.16.1_fix/setup.py	2025-01-21 13:01:46.169725120 +0100
+ Dynamic: license
+ Dynamic: license-file
+diff -ur pyqt5_sip-12.19.0/setup.py pyqt5_sip-12.19.0_fix/setup.py
+--- pyqt5_sip-12.19.0/setup.py	2026-08-02 13:20:00.000000000 +0200
++++ pyqt5_sip-12.19.0_fix/setup.py	2026-09-26 17:48:51.297488860 +0200
 @@ -18,6 +18,6 @@
          name='PyQt5_sip',
-         version='12.16.1',
+         version='12.19.0',
          license='BSD-2-Clause',
--        python_requires='>=3.9',
+-        python_requires='>=3.10',
 +        python_requires='>=3.6',
          ext_modules=[module]
       )
-diff -ur pyqt5_sip-12.16.1/sip.h pyqt5_sip-12.16.1_fix/sip.h
---- pyqt5_sip-12.16.1/sip.h	2024-12-12 11:01:35.000000000 +0100
-+++ pyqt5_sip-12.16.1_fix/sip.h	2025-01-21 13:01:46.169725120 +0100
+diff -ur pyqt5_sip-12.19.0/sip.h pyqt5_sip-12.19.0_fix/sip.h
+--- pyqt5_sip-12.19.0/sip.h	2026-08-02 13:20:00.000000000 +0200
++++ pyqt5_sip-12.19.0_fix/sip.h	2026-09-26 17:48:51.300637452 +0200
 @@ -14,8 +14,8 @@
  #include <Python.h>
  
  /* Sanity check on the Python version. */
--#if PY_VERSION_HEX < 0x03090000
--#error "This version of PyQt5.sip requires Python v3.9 or later"
+-#if PY_VERSION_HEX < 0x030a0000
+-#error "This version of PyQt5.sip requires Python v3.10 or later"
 +#if PY_VERSION_HEX < 0x03060000
 +#error "This version of PyQt5.sip requires Python v3.6 or later"
  #endif
  
  
-diff -ur pyqt5_sip-12.16.1/siplib.c pyqt5_sip-12.16.1_fix/siplib.c
---- pyqt5_sip-12.16.1/siplib.c	2024-12-12 11:01:35.000000000 +0100
-+++ pyqt5_sip-12.16.1_fix/siplib.c	2025-01-21 13:01:46.173058506 +0100
-@@ -1027,6 +1027,10 @@
+diff -ur pyqt5_sip-12.19.0/siplib.c pyqt5_sip-12.19.0_fix/siplib.c
+--- pyqt5_sip-12.19.0/siplib.c	2026-08-02 13:20:00.000000000 +0200
++++ pyqt5_sip-12.19.0_fix/siplib.c	2026-09-26 17:49:17.398305059 +0200
+@@ -1022,6 +1022,10 @@
      PyObject *obj;
      PyMethodDef *md;
  
@@ -61,7 +61,7 @@ diff -ur pyqt5_sip-12.16.1/siplib.c pyqt5_sip-12.16.1_fix/siplib.c
      /* Add the SIP version number. */
      obj = PyLong_FromLong(SIP_VERSION);
  
-@@ -13335,12 +13339,16 @@
+@@ -13305,12 +13309,16 @@
          Py_ssize_t *start, Py_ssize_t *stop, Py_ssize_t *step,
          Py_ssize_t *slicelength)
  {

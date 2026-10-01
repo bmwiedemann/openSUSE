@@ -18,24 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-qt5-sip
-Version:        12.16.1
+Version:        12.19.0
 Release:        0
-License:        BSD-2-Clause
 Summary:        The sip module support for PyQt5
+License:        BSD-2-Clause
 URL:            https://github.com/Python-SIP/sip
-Group:          Development/Languages/Python
-Source0:        https://files.pythonhosted.org/packages/source/P/PyQt5-sip/pyqt5_sip-%{version}.tar.gz
-Patch0:         fix-license-in-setup_py.patch
+Source0:        https://files.pythonhosted.org/packages/source/p/pyqt5_sip/pyqt5_sip-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE Set minimum python version to 3.6 to support Leap distribution
 Patch100:       support-python3.6.patch
 BuildRequires:  %{python_module devel >= 3.6}
-BuildRequires:  %{python_module setuptools >= 30.3}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module setuptools >= 75.8.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Provides:       python-PyQt5-sip = %{version}-%{release}
-
 %python_subpackages
 
 %description

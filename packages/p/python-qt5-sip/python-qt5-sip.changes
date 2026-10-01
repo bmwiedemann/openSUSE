@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Sep 26 15:50:42 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 12.19.0 (crosses 12.17.0, 12.17.1, 12.17.2, 12.18.0):
+  * Added support for Python v3.14 and v3.15.
+  * Added SIP_ABI_VERSION as a module attribute.
+  * Changed the type/enum pickle format to be more robust and
+    faster; still reads the legacy format.
+  * Fixed a potential buffer overflow in sipDeprecated() with long
+    deprecation messages.
+  * Fixed a missing early return on an array-to-list conversion
+    error path.
+  * Setting a read-only class attribute to None now raises
+    AttributeError instead of undefined behaviour.
+- Drop fix-license-in-setup_py.patch: upstream's own setup.py and
+  PKG-INFO now natively declare BSD-2-Clause (previously "SIP").
+- Rebase support-python3.6.patch onto upstream's new Python 3.10
+  floor (previously 3.9); still overrides down to 3.6 for Leap.
+- Raise python-setuptools BuildRequires floor to >= 75.8.1,
+  matching upstream's pyproject.toml build-system requirement
+  (previously an unrelated stale >= 30.3).
+
+-------------------------------------------------------------------
 Fri Jul  4 04:22:13 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Use pyproject macros to build and install.
