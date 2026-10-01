@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Sep 28 11:52:47 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Replace usage of %jobs to not embed the build machine's core count
+  into .src.rpm headers for reproducible builds (boo#1237231)
+
+-------------------------------------------------------------------
 Mon Nov  3 07:47:52 UTC 2025 - Andreas Schwab <schwab@suse.de>
 
 - Never use more than the configured jobs

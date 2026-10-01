@@ -8,7 +8,7 @@
 # m: memory limit in MBs per core; default is 1000
 %limit_build(m:) \
     %global _threads $(/usr/bin/getconf _NPROCESSORS_ONLN) \
-    %global _jobs %{?jobs}%{!?jobs:${RPM_BUILD_NCPUS:-%_threads}} \
+    %global _jobs ${RPM_BUILD_NCPUS:-%_threads} \
     _threads=%_threads \
     test "$_threads" -gt "%_jobs" && _threads=%_jobs \
     _core_memory="%{-m:%{-m*}}%{!-m:1000}" \

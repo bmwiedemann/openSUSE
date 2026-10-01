@@ -49,4 +49,13 @@ not contain empty values</comment>
     <comment>memory-constraints: - Never use more than the configured jobs</comment>
     <requestid>1376517</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>f26eb78657fe401e9d1e34f42025d891</srcmd5>
+    <version>20180406</version>
+    <time>1790865677</time>
+    <user>anag_factory</user>
+    <comment>- Replace usage of %jobs to not embed the build machine's core count
+  into .src.rpm headers for reproducible builds (boo#1237231)</comment>
+    <requestid>1381519</requestid>
+  </revision>
 </revisionlist>
