@@ -15,4 +15,12 @@
     <comment>Build sqlite3_bindings with confidential-computing.tee.dcap.pccs.patch</comment>
     <requestid>1342558</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>5df548a7224ecd40950a817f38b544a6</srcmd5>
+    <version>1.27</version>
+    <time>1790886026</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.27 (a45eb0ea1489)</comment>
+    <requestid>1381928</requestid>
+  </revision>
 </revisionlist>

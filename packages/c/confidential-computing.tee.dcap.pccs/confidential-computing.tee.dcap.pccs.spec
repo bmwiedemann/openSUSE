@@ -32,7 +32,7 @@
 %define mypyexe %{expand:%__%modern_python}
 
 Name:           confidential-computing.tee.dcap.pccs
-Version:        1.25
+Version:        1.27
 Release:        0
 Summary:        Intel® SGX/TDX Provisioning Certificate Caching Service
 License:        BSD-3-Clause
@@ -74,6 +74,7 @@ Conflicts:      intel-tee-pccs-admin-tool
 Conflicts:      sgx-dcap-pccs
 Requires:       %pythons-keyring
 Requires:       %pythons-requests
+Requires:       %pythons-urllib3
 Requires:       system-user-%pccs_user = %version-%release
 Requires(posttrans): system-user-%pccs_user = %version-%release
 %systemd_requires

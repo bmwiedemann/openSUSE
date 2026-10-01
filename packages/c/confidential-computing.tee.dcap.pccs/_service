@@ -13,6 +13,7 @@
 		<param name="exclude">service/README.md</param>
 		<param name="exclude">service/cleanup.sh</param>
 		<param name="exclude">service/container</param>
+		<param name="exclude">service/eslint.config.js</param>
 		<param name="exclude">service/install.bat</param>
 		<param name="exclude">service/install.sh</param>
 		<param name="exclude">service/nodejs.cnf</param>
@@ -26,7 +27,7 @@
 		<param name="exclude">service/uninstall.sh</param>
 		<param name="extract">service/package-lock.json</param>
 		<param name="filename">confidential-computing.tee.dcap.pccs</param>
-		<param name="revision">9c4fe2d21a32c39777925ec0045620788bbdf542</param>
+		<param name="revision">a45eb0ea14897eb082bf3ae57a4a54d66d6f9755</param>
 		<param name="scm">git</param>
 		<param name="submodules">enable</param>
 		<param name="url">https://github.com/intel/confidential-computing.tee.dcap.pccs.git</param>
@@ -38,5 +39,6 @@
 	<service mode="manual" name="node_modules">
 		<param name="cpio">confidential-computing.tee.dcap.pccs.node_modules.cpio</param>
 		<param name="output">confidential-computing.tee.dcap.pccs.node_modules.txt</param>
+		<param name="legacy-container"/>
 	</service>
 </services>
