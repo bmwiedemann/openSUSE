@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:20:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.10:
+  * fix a reentrancy deadlock in update() when one hasher with
+    max_threads>1 is shared between threads (gh#oconnor663/blake3-py#120)
+  * Rust blake3 core 1.8.5 -> 1.8.7 (drops the arrayref dependency),
+    pyo3 0.29.0 -> 0.29.2; hash output unchanged (BLAKE3 is frozen)
+- Run the full upstream test suite in %check via %pytest_arch
+  (adds python-pytest and python-numpy BuildRequires)
+
+-------------------------------------------------------------------
 Sun Jul 12 19:10:45 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package python-blake3 1.0.9

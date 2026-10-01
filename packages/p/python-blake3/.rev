@@ -7,4 +7,13 @@
     <comment>New package: Python bindings for the BLAKE3 cryptographic hash function; runtime dependency for python-vllm.</comment>
     <requestid>1365439</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ca101945102f02a4f9b5c20109a4b86c</srcmd5>
+    <version>1.0.10</version>
+    <time>1790865881</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.0.10: fixes a reentrancy deadlock in update() when a hasher with max_threads&gt;1 is shared between threads (gh#oconnor663/blake3-py#120); Rust blake3 core 1.8.5 -&gt; 1.8.7, pyo3 0.29.2, hash output unchanged. %check now runs the full upstream test suite via %pytest_arch.
+</comment>
+    <requestid>1381677</requestid>
+  </revision>
 </revisionlist>

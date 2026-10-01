@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blake3
-Version:        1.0.9
+Version:        1.0.10
 Release:        0
 Summary:        Python bindings for the BLAKE3 cryptographic hash function
 License:        Apache-2.0 OR CC0-1.0
@@ -27,7 +27,9 @@ Source0:        https://github.com/oconnor663/blake3-py/archive/refs/tags/%{vers
 Source1:        registry.tar.zst
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module numpy >= 1.24.4}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pytest >= 8.3.5}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  cargo-packaging
 BuildRequires:  fdupes
@@ -61,10 +63,7 @@ export CARGO_NET_OFFLINE=true
 %python_expand %fdupes %{buildroot}/%{$python_sitearch}/*
 
 %check
-# The full pytest suite needs numpy and the bundled reference test vectors;
-# instead exercise the compiled Rust extension with a functional smoke test
-# (a 256-bit BLAKE3 digest is 64 hex characters).
-%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch} $python -c "import blake3; d = blake3.blake3(b'x').hexdigest(); assert len(d) == 64, d; print(d)"
+%pytest_arch tests/
 
 %files %{python_files}
 %license LICENSE
