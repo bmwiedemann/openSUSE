@@ -70,7 +70,7 @@
 %define __builder ninja
 
 Name:           rspamd
-Version:        4.2.0
+Version:        4.2.1
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0

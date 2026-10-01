@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Thu Oct  1 10:18:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.1
+  - Security: fixed several critical memory-safety bugs; upgrading
+    is strongly recommended. A huge chunk size or Content-Length
+    from a peer could cause an HTTP heap overflow, because the body
+    was - sized from that value. Zero-copy HTTP reads could hit a
+    use-after-free when a finish handler replaced the body. An
+    fstring length that cannot be allocated used to wrap and lead
+    to out-of-bounds - writes; it is now refused. Cryptobox now
+    fails closed on low-order public keys; before, an uninitialised
+    shared secret was cached and used to decrypt fuzzy requests.
+  - HTTP: the parser now refuses messages framed by both
+    Content-Length and Transfer-Encoding. It also checks
+    Content-Length and chunk sizes before they overflow. The last
+    trailer of a chunked - message is now finished, chunk framing
+    stays out of encrypted inner bodies, and timeouts apply at the
+    correct I/O stage. lua_http fixes request tuning after DNS and
+    coroutine cleanup on - cancellation. lua_tcp stops after a
+    fatal TLS read and limits how much data it buffers for a stop
+    pattern.
+  - Redis: hiredis no longer aborts on an assertion when Redis is
+    down. Lua no longer reads freed Redis replies. Fuzzy Redis
+    count scans keep the address userdata.
+  - Maps: maps now use the HTTP body length instead of the shared
+    memory size, which fixes garbage in large chunked maps and
+    their cache. A failed reload keeps the previous map. Truncated
+    zstd  frames - are rejected, and /savemap writes the whole map.
+    Reading cdb maps skips the HTTP cache header, and the shared
+    memory mapping no longer leaks on errors.
+  - Fuzzy storage: the TCP backlog is bounded, unauthenticated
+    error replies are rate-metered, and key expiry is enforced for
+    writes and deletes. The backend saturates deduplicated weights
+    instead  of - overflowing and rejects short Redis shingle
+    digests.
+  - DNS: fixed rdns TCP queue accounting, a dropped last byte in
+    TCP packets, malformed reply handling and the retransmit
+    channel lifetime.
+  - Regexps: hyperscan prefiltered regexps are verified per input,
+    and hit counts saturate instead of wrapping. UTF-8 is validated
+    once per search, not on every remaining suffix.
+  - SPF and DKIM: SPF a and mx without a prefix length now match
+    per address family, and the macro digit transformer is applied.
+    Fixed a DKIM header table leak and the l= body check with
+    relaxed - canonicalisation.
+  - URLs and IPv6: the URL parser no longer reads past an IPv6 host
+    at the end of the input, and it treats mapped loopback
+    addresses as local. The URL redirector keys by the raw URL,
+    caps the whole   - redirect chain and resolves relative
+    Location headers. RBL whitelists now work for IPv6 addresses,
+    and multimap supports IPv6 ULA prefixes in Redis maps.
+  - Archives: hardened rar, 7z and libarchive parsing. 7z reads
+    substream sizes and digests per stream, so archives with an
+    unpacked header now list their files. Avast keeps the cached
+    virus  verdict - for archives.
+  - HTML, CSS and MIME: the HTML parser limits the text it inspects
+    per link and no longer treats JSON attachments as HTML. Nested
+    HTML processing and structure exports are bounded without
+    losing - phishing checks. The parser no longer rescans quoted
+    attributes for >, and entity replacements stay within the
+    consumed input. The CSS parser limits the token count while
+    building the block tree  - and no longer swallows the byte
+    after a hex escape. Adjacent MIME encoded words are decoded
+    with their own charsets.
+  - UCL: binary msgpack strings now own their value, which fixes a
+    use-after-free once the input buffer is released. A msgpack map
+    that ends in an empty value now keeps its key.
+  - Rules: Mailchimp is exempt from SUBJ_EXCESS_QP and
+    REPLYTO_EXCESS_QP.
+
+-------------------------------------------------------------------
 Fri Sep 18 17:01:03 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.0
