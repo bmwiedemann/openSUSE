@@ -1,0 +1,36 @@
+Remove the use of <linux/scc.h> from libsanitizer: the header was removed
+from the kernel together with the SCC driver (Linux 6.7). Same treatment as
+gcc7-sanitizer-cyclades.patch.
+
+diff -ur a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2018-06-07 13:50:45.620438463 +0200
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.cc	2026-09-28 10:47:48.738344884 +0200
+@@ -160,7 +160,6 @@
+ #include <linux/lp.h>
+ #include <linux/mroute.h>
+ #include <linux/mroute6.h>
+-#include <linux/scc.h>
+ #include <linux/serial.h>
+ #include <sys/msg.h>
+ #include <sys/ipc.h>
+@@ -467,8 +466,6 @@
+   unsigned struct_kbsentry_sz = sizeof(struct kbsentry);
+   unsigned struct_mtconfiginfo_sz = sizeof(struct mtconfiginfo);
+   unsigned struct_nr_parms_struct_sz = sizeof(struct nr_parms_struct);
+-  unsigned struct_scc_modem_sz = sizeof(struct scc_modem);
+-  unsigned struct_scc_stat_sz = sizeof(struct scc_stat);
+   unsigned struct_serial_multiport_struct_sz
+       = sizeof(struct serial_multiport_struct);
+   unsigned struct_serial_struct_sz = sizeof(struct serial_struct);
+diff -ur a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h
+--- a/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2017-01-11 09:34:21.102969781 +0100
++++ b/libsanitizer/sanitizer_common/sanitizer_platform_limits_posix.h	2026-09-28 10:47:48.739945857 +0200
+@@ -1009,8 +1009,6 @@
+   extern unsigned struct_kbsentry_sz;
+   extern unsigned struct_mtconfiginfo_sz;
+   extern unsigned struct_nr_parms_struct_sz;
+-  extern unsigned struct_scc_modem_sz;
+-  extern unsigned struct_scc_stat_sz;
+   extern unsigned struct_serial_multiport_struct_sz;
+   extern unsigned struct_serial_struct_sz;
+   extern unsigned struct_sockaddr_ax25_sz;

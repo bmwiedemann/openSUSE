@@ -163,6 +163,10 @@ Patch70:        gcc7-pr81103.patch
 Patch71:        gcc7-libsanitizer-termio.patch
 Patch72:        gcc7-pr58150.patch
 Patch73:        gcc7-pr105225.patch
+Patch74:        gcc7-pr100114.patch
+Patch75:        gcc7-libsanitizer-scc.patch
+Patch76:        gcc7-pr127656.patch
+Patch77:        gcc7-pr113258.patch
 # A set of patches from the RH srpm
 Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
@@ -371,6 +375,10 @@ ln -s nvptx-newlib/newlib .
 %endif
 %patch -P 72 -p1
 %patch -P 73 -p1
+%patch -P 74 -p1
+%patch -P 75 -p1
+%patch -P 76 -p1
+%patch -P 77 -p1
 %patch -P 51
 %patch -P 60
 %patch -P 61

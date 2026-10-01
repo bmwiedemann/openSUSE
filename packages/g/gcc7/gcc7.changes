@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Sep 30 06:38:23 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr113258.patch to fix possible integer overflow with
+  aligned new operator.  [bsc#1282500] (CVE-2026-95619)
+
+-------------------------------------------------------------------
+Tue Sep 29 14:10:08 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr127656.patch to fix use-after-free in
+  __gnu_pbds::priority_queue.  [bsc#1283123] (CVE-2026-102010)
+- Add gcc7-libsanitizer-scc.patch to fix build with new glibc.
+
+-------------------------------------------------------------------
+Tue Jun  9 11:27:52 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc7-pr100114.patch to fix ASAN behavior when libsanitizer
+  is built against glibc 2.34 or later.  [bsc#1267946]
+
+-------------------------------------------------------------------
 Mon May 11 12:01:59 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc7-pr105225.patch to fix build with glibc 2.43 
