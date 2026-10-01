@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct 01 04:59:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.6:
+  * build(deps): bump google.golang.org/api from 0.298.0 to 0.299.0
+    (#2524)
+  * fix: pin libssl3 in old-glibc example (#2527)
+  * build(deps): bump k8s.io/apimachinery from 0.37.0 to 0.37.1
+    (#2530)
+  * build(deps): bump github.com/klauspost/compress from 1.20.0 to
+    1.20.1 (#2531)
+  * build(deps): bump chainguard.dev/sdk from 0.1.278 to 0.1.293
+    (#2537)
+  * build(deps): bump the codeql group with 2 updates (#2533)
+
+-------------------------------------------------------------------
 Mon Sep 28 04:45:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.5:
