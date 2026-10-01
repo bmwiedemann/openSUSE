@@ -17,13 +17,13 @@
 
 
 Name:           grok-build
-Version:        1.0.41+git20260923.f0e3be1
+Version:        1.0.45+git20260929.2bdd1d6
 Release:        0
 Summary:        Terminal AI coding agent by xAI
 # Legal-Review-Notice (boo#1273104): licences of the statically linked Rust
 # dependencies, verified against the vendored tree with
-# "cargo tree -p xai-grok-pager-bin -e normal" (1009 crates in this graph,
-# 1246 vendored):
+# "cargo tree -p xai-grok-pager-bin -e normal" (928 crates in this graph,
+# 1250 vendored):
 #  - pdf_oxide IS shipped (pulled with its "rendering" feature), but it is
 #    "MIT OR Apache-2.0" and carries no GPL code. Its src/decoders/jbig2.rs is
 #    a pass-through stub ("no actual decoding performed"); its sole GPL-3.0

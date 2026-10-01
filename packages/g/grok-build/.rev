@@ -346,4 +346,13 @@ known invalid-license-exception for Linking-exception).</comment>
     <comment>1</comment>
     <requestid>1380959</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>72db8aa9b0bc1f95ca10f450dada05db</srcmd5>
+    <version>1.0.45+git20260929.2bdd1d6</version>
+    <time>1790865890</time>
+    <user>anag_factory</user>
+    <comment>Update to git snapshot 1.0.45+git20260929.2bdd1d6 (upstream 1.0.42-1.0.45): sandbox/egress hardening, Remote Control across computers, MCP config merging, Claude settings import. Rebased telemetry patch; vendor refreshed from upstream lock.
+</comment>
+    <requestid>1381685</requestid>
+  </revision>
 </revisionlist>
