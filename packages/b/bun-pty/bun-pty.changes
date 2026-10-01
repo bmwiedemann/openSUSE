@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:02:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.4.11:
+  * Add native Windows ARM64 support (#46): ship a rust_pty_arm64.dll
+    and select it at run time; the x64 DLL filename is unchanged
+  * Move native library filename resolution into src/library.ts
+  * Linux ABI unchanged: same 45 vendored crates and no exported-symbol
+    changes; %check still verifies all eight dlsym entry points
+
+-------------------------------------------------------------------
 Wed Sep 23 18:59:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.4.10:

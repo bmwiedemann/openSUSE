@@ -17,4 +17,13 @@ Maintainer: pluskalm (package-level role set in devel:tools _meta).</comment>
     <comment>Update to 0.4.10: musl support.</comment>
     <requestid>1380027</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>34ceffb93fc1fd8db678f659825643e6</srcmd5>
+    <version>0.4.11</version>
+    <time>1790865888</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.4.11 (Windows ARM64 support upstream; Linux ABI unchanged - identical exported symbols). Verified in podman that Factory opencode 2.0.18 runs against the new librust_pty.so: TUI, pty spawn/read/resize/write/kill all pass, byte-identical to 0.4.10.
+</comment>
+    <requestid>1381675</requestid>
+  </revision>
 </revisionlist>
