@@ -196,4 +196,13 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
     <comment>Update to 1.6.5: abbreviate long tool IDs in XML buffer strings.</comment>
     <requestid>1380709</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>22c0db7c1016e10f915568ce8ad4994f</srcmd5>
+    <version>1.6.6</version>
+    <time>1790865883</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.6.6: Anthropic Sonnet 5.5 compat in message serialization and block translation, docstring fixes. No dependency changes vs 1.6.5.
+</comment>
+    <requestid>1381680</requestid>
+  </revision>
 </revisionlist>

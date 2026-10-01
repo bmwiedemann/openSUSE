@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:27:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.6:
+  * Claude Sonnet 5.5 compatibility: server tool calls with absent
+    or malformed args no longer block message serialization, and
+    the Anthropic block translator carries toolset_name through
+    tool call blocks and chunks
+  * Fix docstring examples that don't run as copied
+
+-------------------------------------------------------------------
 Fri Sep 25 17:08:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.5:
