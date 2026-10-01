@@ -1879,4 +1879,41 @@ Add sb-manual-source-date-epoch.patch to make the manual
     <comment>1</comment>
     <requestid>1375603</requestid>
   </revision>
+  <revision rev="136" vrev="1">
+    <srcmd5>a010dfaea1902e11d72f1eb9de938630</srcmd5>
+    <version>2.6.9</version>
+    <time>1790865772</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.6.9
+  * minor incompatible change: structure slots defined as :READ-ONLY can be
+    written using SLOT-VALUE with the constant slot name, matching the
+    existing behaviour if the slot name is provided as a variable.
+  * enhancement: addition of u8.16-shuffle to SSE3 SB-SIMD support.  (thanks
+    to Qiantan Hong)
+  * enhancement: addition of some AVX512 support to SB-SIMD.  (thanks to Aaron
+    Estrada)
+  * bug fix: address a number of issues in the SB-SIMD contributed module.
+    (thanks to Sylvia Harrington)
+  * bug fix: don't improperly inherit dynamic extent nature of transformations
+    of lists constructed with dynamic extent.
+  * bug fix: don't call SB-GMP exponential function with a non-rational base.
+    (thanks to Ilia Gradina)
+  * bug fix: compiler internal error from stack manipulation in inline- and
+    dynamic-extent-heavy code.  (lp#2156347, reported by Vasily Postnicov)
+  * bug fix: the SB-MANUAL contributed module should build more reliably on
+    Windows.  (lp#2165787)
+  * bug fix: be more conservative when inferring types of components of
+    composite data structures lexically following a declaration in the
+    presence of possible side effects.  (lp#2165835)
+  * bug fix: compiler miscompilation of type checks of unused optional
+    arguments.  (lp#2165974, reported by Vasily Postnicov)
+  * bug fix: test consistency checks of system variables now correctly ignore
+    SB-IMPL::*READ-LINE-BUFFERS*, affecting particularly large heaps.
+    (lp#2167121, reported by 3b)
+  * bug fix: miscompilation through too-optimistic reuse of storage locations.
+    (lp#2167208)
+  * bug fix: compiler error from off-by-one access to internal data
+    structures.  (lp#2167568) (forwarded request 1381591 from glaubitz)</comment>
+    <requestid>1381598</requestid>
+  </revision>
 </revisionlist>
