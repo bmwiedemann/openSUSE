@@ -676,4 +676,16 @@
       reauthentication. (forwarded request 1377022 from darix)</comment>
     <requestid>1381118</requestid>
   </revision>
+  <revision rev="59" vrev="1">
+    <srcmd5>971a7beefce1f0469f831f126a109e99</srcmd5>
+    <version>1.102.5</version>
+    <time>1790865839</time>
+    <user>anag_factory</user>
+    <comment>- Update 1.102.5
+  - The container no longer stops tailscaled when it falls behind
+    on status updates and the connection is closed, which was
+    common on large tailnets. It reconnects instead, and exits only
+    if it cannot reconnect within one minute. (forwarded request 1381533 from darix)</comment>
+    <requestid>1381653</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Sep 29 18:55:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update 1.102.5
+  - The container no longer stops tailscaled when it falls behind
+    on status updates and the connection is closed, which was
+    common on large tailnets. It reconnects instead, and exits only
+    if it cannot reconnect within one minute.
+
+-------------------------------------------------------------------
 Thu Sep 10 23:20:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update 1.102.4
