@@ -147,4 +147,17 @@
 - Drop obsolete do-not-add-invalid-ipv6.patch (test suite passes without it)</comment>
     <requestid>1360010</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>8913f9da3fc2c15b4833b7805d0594ce</srcmd5>
+    <version>2.5.0</version>
+    <time>1790886028</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.5.0: fixes six quadratic-backtracking (ReDoS) HTML
+scanners, stops UTF-7 being resolved, and aligns URL parsing
+with browsers. Adds a hypothesis build requirement for the new
+property-based tests. w3lib.util is now deprecated; parsel only
+uses w3lib.html, whose API is unchanged.
+</comment>
+    <requestid>1381937</requestid>
+  </revision>
 </revisionlist>

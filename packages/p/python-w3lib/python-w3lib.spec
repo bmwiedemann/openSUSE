@@ -18,13 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-w3lib
-Version:        2.4.1
+Version:        2.5.0
 Release:        0
 Summary:        Library of Web-Related Functions
 License:        BSD-3-Clause
 URL:            https://github.com/scrapy/w3lib
 Source:         https://files.pythonhosted.org/packages/source/w/w3lib/w3lib-%{version}.tar.gz
 BuildRequires:  %{python_module hatchling >= 1.27.0}
+BuildRequires:  %{python_module hypothesis >= 6.148.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}

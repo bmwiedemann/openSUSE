@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:01:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.5.0:
+  * Fix excessive backtracking, a denial of service on malformed
+    input, in get_base_url, get_meta_refresh, replace_tags,
+    remove_tags, remove_tags_with_content and unquote_markup
+  * URL parsing now agrees with browsers, where it could report
+    a host or path the URL does not resolve to: a backslash acts
+    as a slash in the authority and path of special-scheme URLs,
+    a normalized backslash no longer passes into the host, and
+    userinfo is no longer IDNA-encoded together with the host
+  * resolve_encoding no longer resolves UTF-7, which let
+    ASCII-only bytes smuggle markup past filters
+  * Deprecate w3lib.util (DeprecationWarning on import) and drop
+    the undocumented w3lib_replace codec error handler
+  * canonicalize_url now resolves dot segments and normalizes
+    IPv6 hosts; safe_download_url resolves percent-encoded
+    dot segments
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec: require python-hypothesis >= 6.148.0, needed by the new
+  property-based tests
+
+-------------------------------------------------------------------
 Wed Jun 17 10:24:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.4.1:
