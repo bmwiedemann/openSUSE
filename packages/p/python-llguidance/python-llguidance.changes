@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:19:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.0:
+  * Add opt-in cooperative cancellation for abandoned matcher
+    computations: disabled by default, enabled via Rust
+    Matcher::into_cancellable() or the new C cancellation-handle API;
+    cancelled matchers stop with StopReason::Cancelled and their
+    forced-output methods return empty results
+  * Compile homogeneous bounded JSON array tails compactly
+    (logarithmic repetition) instead of one grammar entry per item,
+    avoiding compact-grammar symbol overflow for large maxItems
+  * Parse compact Lark tilde repeat ranges such as HI~0..2
+  * Report empty integer intervals in JSON schemas as
+    UnsatisfiableSchemaError instead of a regex-generation error
+  * Update derivre to 0.3.13: patterns with redundant nested anchors,
+    e.g. ^(^foo$)$|^$, now compile
+- Re-generate registry.tar.zst for 1.9.0 via the cargo_vendor service:
+  17 linked crates bumped past upstream's lock, all permissive;
+  pyo3 0.29.2; License unchanged, Legal-Review-Notice re-derived from
+  the new registry with the unlinked crate attribution corrected
+
+-------------------------------------------------------------------
 Tue Aug 11 05:34:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.8.0:
