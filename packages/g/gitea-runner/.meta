@@ -1,0 +1,7 @@
+<package name="gitea-runner" project="openSUSE:Factory">
+  <title>Gitea Runner</title>
+  <description>The Gitea Runner executes the jobs of Gitea Actions. It polls a Gitea instance for queued jobs, runs their steps in a container or directly on the machine it is installed on, and streams the logs and the result back.
+
+https://docs.gitea.com/runner/</description>
+  <url>https://gitea.com/gitea/runner</url>
+</package>

@@ -1,0 +1,4 @@
+<servicedata>
+<service name="tar_scm">
+                <param name="url">https://gitea.com/gitea/runner.git</param>
+              <param name="changesrevision">4a8ee4ce577a7abcf42500fa1e3177536cd6fcd2</param></service></servicedata>

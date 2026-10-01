@@ -1,0 +1,17 @@
+[Unit]
+Description=Gitea Action Runner
+After=syslog.target network.target docker.socket docker.service podman.socket podman.service
+ConditionFileIsExecutable=/usr/bin/gitea-runner
+
+[Service]
+StartLimitInterval=5
+StartLimitBurst=10
+Environment="LANG=en_US.UTF-8" "LC_ALL=en_US.UTF-8"
+WorkingDirectory=/var/lib/gitea-runner
+ExecStart=/usr/bin/gitea-runner daemon --config /etc/gitea-runner/config.yaml
+Restart=always
+RestartSec=120
+
+[Install]
+WantedBy=multi-user.target
+

@@ -1,0 +1,4 @@
+addFilter("non-standard-gid /etc/gitea-runner gitea-runner")
+addFilter("non-standard-gid /etc/gitea-runner/config.yaml gitea-runner")
+addFilter("non-standard-gid /var/lib/gitea-runner gitea-runner")
+addFilter("unstripped-binary-or-object /usr/bin/gitea-runner")

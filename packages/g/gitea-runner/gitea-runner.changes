@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Sep 30 09:34:43 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 4.0.1:
+  * fix: resolve container sleep through PATH (#1255)
+  * fix: honor configured Docker registration file (#1259)
+  * chore(deps): update dependencies (#1254)
+  * fix: apply a job container without `image` to the runs-on image (#1252)
+  * fix: misc bug fixed and improvements (#1253)
+  * fix: restore the caller's event and inputs in reusable workflow jobs (#1250)
+
+-------------------------------------------------------------------
+Thu Sep 24 21:26:26 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 4.0.0:
+  * feat(cache): add shared S3-compatible storage (#1244)
+  * feat!: serve the actions cache from the runner (#1229)
+  * enhance!: match valid_volumes with `bmatcuk/doublestar` (#1214)
+  * feat: OpenTelemetry tracing (#1206)
+  * feat(runner): add built-in actions framework with `checkout` (#871)
+  * fix: skip jobs whose `if` fails to evaluate, update actionslib (#1247)
+  * feat: update to actionslib v1.2.0, support `self:` (#1233)
+  * fix: register docker-init as subreaper in the dind images (#1241)
+  * fix: composite pre/post conditions read the job status (#1242)
+  * enhance: support `--umask` in `container.options` (#1238)
+  * chore(deps): update dependencies (#1236)
+  * fix: docker proxy probe for podman and containerized runners (#1231)
+
+-------------------------------------------------------------------
+Mon Sep 21 14:17:56 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Initial package at version 3.5.0
