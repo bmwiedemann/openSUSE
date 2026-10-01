@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:00:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.2:
+  * chore: bump apko to v1.4.6 (#2678)
+  * build(deps): bump cue-lang/setup-cue from 1.0.1 to 2.0.0
+    (#2677)
+  * ci: run presubmit and pipeline tests on standard runners
+    (#2675)
+  * fix(qemu): set tsc_early_khz for x86_64 guests on arm64 hosts
+    (#2673)
+  * build(deps): bump the gomod group across 1 directory with 8
+    updates (#2670)
+
+-------------------------------------------------------------------
 Mon Sep 21 05:11:16 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.1:
