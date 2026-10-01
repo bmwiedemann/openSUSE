@@ -21,8 +21,8 @@
 %endif
 
 Name:           vulkan-utility-libraries
-Version:        1.4.357
-%define lname libVulkanLayerSettings-1_4_357
+Version:        1.4.363
+%define lname libVulkanLayerSettings-1_4_363
 Release:        0
 Summary:        Utility libraries for Vulkan
 License:        Apache-2.0
