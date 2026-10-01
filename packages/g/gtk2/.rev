@@ -1448,4 +1448,14 @@ Ensure nobody gets confused next time we want to update the version. (forwarded 
     <comment>- Rebase automake-1.17.patch to allow usage of automake-1.19.x.</comment>
     <requestid>1378156</requestid>
   </revision>
+  <revision rev="196" vrev="20">
+    <srcmd5>17250ddd8a1512ac031499a490d83457</srcmd5>
+    <version>2.24.33</version>
+    <time>1790866789</time>
+    <user>anag_factory</user>
+    <comment>- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).</comment>
+    <requestid>1381593</requestid>
+  </revision>
 </revisionlist>

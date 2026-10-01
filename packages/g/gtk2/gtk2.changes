@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:00:12 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Mon Sep 14 07:12:35 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Rebase automake-1.17.patch to allow usage of automake-1.19.x.
