@@ -122,4 +122,41 @@
     conventional APV and APV RAW (forwarded request 1362435 from rrahl0)</comment>
     <requestid>1362436</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>d8039d10c96402be5515acc7a84eeea9</srcmd5>
+    <version>1.1.2.0</version>
+    <time>1790865832</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.1.2.0:
+  + Performance:
+    - VLC coefficient decoding was reworked:
+    - The exp-Golomb prefix is read with a count-leading-zeros
+      instead of bit by bit.
+    - The bit buffer is topped up with whole bytes before each
+      symbol, so the prefix and suffix of a normal code are read in
+      one step. The buffer end is never read past.
+    - The separate k = 0 readers were removed; all run and level
+      codes go through one reader.
+    - Decoding is about 20–30% faster at high bitrates and about 8%
+      faster at low bitrates, measured on x86 with both single- and
+      multi-threaded decoding. The decoded output is bit-exact with
+      v1.1.1.0.
+  + Correctness and robustness:
+    - Dequantization no longer left-shifts negative values or
+      overflows int at high QP; the SIMD paths now saturate
+      correctly
+    - The exp-Golomb prefix sum no longer wraps u32 on malformed
+      input, so builds with -fsanitize=unsigned-integer-overflow
+      (such as Android) no longer abort
+    - The exp-Golomb prefix length is bounded to keep decoded
+      values within int
+    - Metadata payload_type and payload_size are checked against
+      u32 wraparound
+    - OAPV_MAX_NUM_META_PAYLOADS is enforced per access unit in
+      oapvm_set()
+    - Encoder error paths release the input and reconstruction
+      image references
+    - Reconstructed AC coefficients are checked against the 16-bit (forwarded request 1381542 from iznogood)</comment>
+    <requestid>1381652</requestid>
+  </revision>
 </revisionlist>

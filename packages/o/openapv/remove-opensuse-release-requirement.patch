@@ -1,7 +1,8 @@
-diff -rub openapv-0.1.13.1/CMakeLists.txt openapv-0.1.13.1-patched/CMakeLists.txt
---- openapv-0.1.13.1/CMakeLists.txt	2025-04-19 10:00:12.000000000 +0200
-+++ openapv-0.1.13.1-patched/CMakeLists.txt	2025-05-05 20:46:05.302594008 +0200
-@@ -138,59 +138,7 @@
+Index: openapv-1.1.2.0/CMakeLists.txt
+===================================================================
+--- openapv-1.1.2.0.orig/CMakeLists.txt
++++ openapv-1.1.2.0/CMakeLists.txt
+@@ -199,59 +199,7 @@ endif()
  ########################################
  # CPack project packaging
  ########################################

@@ -16,10 +16,10 @@
 #
 
 
-%define         sover 3
+%define         sover 1
 %define         sname oapv
 Name:           openapv
-Version:        0.3.0.0
+Version:        1.1.2.0
 Release:        0
 Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause
@@ -27,9 +27,6 @@ URL:            https://github.com/AcademySoftwareFoundation/openapv
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         remove-opensuse-release-requirement.patch
 BuildRequires:  cmake
-%if 0%{suse_version} < 1600
-BuildRequires:  gcc13
-%endif
 ExcludeArch:    %{ix86}
 
 %description
@@ -71,7 +68,6 @@ Summary:        Library files for %{name}
 %autosetup -p1
 
 %build
-test -x "$(type -p gcc-13)" && export CC="$_"
 %cmake
 %cmake_build
 
