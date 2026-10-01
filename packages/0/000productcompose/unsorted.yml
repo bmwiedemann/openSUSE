@@ -491,7 +491,6 @@ unsorted:
   - agama-cli-fish-completion 
   - agama-cli-zsh-completion 
   - agama-common 
-  - agama-integration-tests 
   - agama-openapi 
   - agama-products-opensuse 
   - agama-products-sle 
@@ -3178,6 +3177,7 @@ unsorted:
   - dasher-lang 
   - datamash 
   - dataquay-devel 
+  - datarecovery 
   - datefudge 
   - dateutils 
   - dateutils-octave 
@@ -7223,6 +7223,7 @@ unsorted:
   - git-town-zsh-completion 
   - git-weave 
   - git-who 
+  - gitea-runner 
   - gitea-tea 
   - gitea-tea-bash-completion 
   - gitea-tea-fish-completion 
@@ -8112,6 +8113,7 @@ unsorted:
   - grass-devel 
   - grass-doc 
   - grc 
+  - greenlit 
   - greetd 
   - greetd-agreety 
   - greetd-branding-openSUSE 
@@ -8565,6 +8567,7 @@ unsorted:
   - hawtjni-maven-plugin 
   - hawtjni-maven-plugin-javadoc 
   - hawtjni-runtime 
+  - hax 
   - haxe 
   - hayagriva 
   - hbci4java 
@@ -8968,6 +8971,7 @@ unsorted:
   - icewm-theme-yast-installation 
   - icewm-themes 
   - icinga-l10n 
+  - icinga-php-legacy 
   - icinga-php-library 
   - icinga-php-thirdparty 
   - icinga2 
@@ -11833,7 +11837,7 @@ unsorted:
   - libUil4 
   - libUnitTest++-2_0_0 
   - libVFlib3-10 
-  - libVulkanLayerSettings-1_4_357 
+  - libVulkanLayerSettings-1_4_363 
   - libWN3 
   - libWPEBackend-fdo-1_0-1 
   - libWPEWebKit-2_0-1 
@@ -12402,7 +12406,7 @@ unsorted:
   - libbacktrace-devel 
   - libbamf3-2 
   - libbandicoot4 
-  - libbaresip28 
+  - libbaresip29 
   - libbarvinok23 
   - libbase 
   - libbase-javadoc 
@@ -15278,7 +15282,7 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
-  - liboapv3 
+  - liboapv1 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -18834,7 +18838,6 @@ unsorted:
   - maven-artifact-transfer-javadoc 
   - maven-assembly-plugin 
   - maven-assembly-plugin-javadoc 
-  - maven-bootstrap 
   - maven-bundle-plugin 
   - maven-bundle-plugin-javadoc 
   - maven-clean-plugin 
@@ -28447,6 +28450,7 @@ unsorted:
   - python313-venusian 
   - python313-venusian-doc 
   - python313-verboselogs 
+  - python313-vermin 
   - python313-versioneer 
   - python313-versioneer-toml 
   - python313-versioningit 
@@ -32597,6 +32601,7 @@ unsorted:
   - python314-venusian 
   - python314-venusian-doc 
   - python314-verboselogs 
+  - python314-vermin 
   - python314-versioneer 
   - python314-versioneer-toml 
   - python314-versioningit 
@@ -48099,6 +48104,7 @@ unsorted:
   - zbar-lang 
   - zcfan 
   - zchunk 
+  - zcode 
   - zdbsp 
   - zeal 
   - zeitgeist 
@@ -48109,6 +48115,10 @@ unsorted:
   - zellij-zsh-completion 
   - zenith 
   - zerobranestudio 
+  - zeroclaw 
+  - zeroclaw-bash-completion 
+  - zeroclaw-fish-completion 
+  - zeroclaw-zsh-completion 
   - zerofree 
   - zeromq-devel 
   - zfp 
