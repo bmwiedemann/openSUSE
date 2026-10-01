@@ -18,7 +18,7 @@
 
 
 Name:           slf4j
-Version:        2.0.18
+Version:        2.0.20
 Release:        0
 Summary:        Simple Logging Facade for Java
 # the log4j-over-slf4j and jcl-over-slf4j submodules are ASL 2.0, rest is MIT

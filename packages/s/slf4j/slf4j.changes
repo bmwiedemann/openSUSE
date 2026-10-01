@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:05:22 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to 2.0.20
+  * Changes
+    + Marker instances are slated to become immutable in future
+      releases. As such, methods in the Marker interface
+      adding/removing children are now marked as deprecated.
+- Changes of version 2.0.19
+  * Changes
+    + When the fluent API was used with XLogger/LoggerWrapper in the
+      slf4j-ext module, caller location was incorrectly reported. To
+      correct this, LoggerWrapper now delegates
+      makeLoggingEventBuilder() to the wrapped logger so that the
+      application caller can be correctly extracted.
+    + In slf4j-api/DefaultLoggingEventBuilder, a failing toString()
+      invocation on a key-value value, including StackOverflowError,
+      no longer aborts logging. The builder now substitutes [FAILED
+      toString()], matching the existing behaviour of
+      MessageFormatter for message arguments.
+    + The isLoggable() method in SLF4JPlatformLogger now maps
+      System.Logger.Level.ALL and Level.OFF the same way as log(),
+      that is ALL as TRACE and OFF as ERROR, instead of treating
+      both as always loggable.
+    + Published JAR files now package each module's own LICENSE.txt
+      under META-INF/. Previously the parent POM copied the
+      repository-root MIT license into every module, so Apache-2.0
+      modules such as jcl-over-slf4j and log4j-over-slf4j shipped
+      the wrong license text.
+
+-------------------------------------------------------------------
 Mon Jul 13 10:37:49 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to 2.0.18
