@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  1 13:36:36 UTC 2026 - PragmaticLinux <info@pragmaticlinux.com>
+
+- Update to 11.3.0:
+   * https://peazip.github.io/changelog.html 
+
+PeaZip 11.3.0 provides improved ZPAQ support, new test function for PEA archives, 
+mandatory master password for the integrated Password Manager, and usability improvements
+as the new "Open with" picker screen (Shift+F12). Backend are updated with Pea 1.33 and
+7z/p7zip 26.03. 
+
+-------------------------------------------------------------------
 Sat Aug  1 04:24:42 UTC 2026 - pallas wept <pallaswept@proton.me>
 
 - Remove -minimal .desktop file from -kf6 subpackage
