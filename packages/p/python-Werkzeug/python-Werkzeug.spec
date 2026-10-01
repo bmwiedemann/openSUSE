@@ -27,7 +27,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Werkzeug%{psuffix}
-Version:        3.1.8
+Version:        3.1.9
 Release:        0
 Summary:        The Swiss Army knife of Python web development
 License:        BSD-3-Clause
@@ -47,13 +47,12 @@ BuildRequires:  %{python_module pytest-timeout}
 BuildRequires:  %{python_module pytest-xprocess}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module sortedcontainers}
-BuildRequires:  %{python_module watchdog >= 3.0.0}
+BuildRequires:  %{python_module watchdog >= 6}
 %endif
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-MarkupSafe >= 2.1.2
-Recommends:     python-termcolor
-Recommends:     python-watchdog >= 3.0.0
+Requires:       python-MarkupSafe >= 3.0.3
+Recommends:     python-watchdog >= 6
 Obsoletes:      python-Werkzeug-doc < %{version}
 Provides:       python-Werkzeug-doc = %{version}
 BuildArch:      noarch

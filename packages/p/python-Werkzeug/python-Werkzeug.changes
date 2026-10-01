@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 30 09:49:49 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 3.1.9 (CVE-2026-102598, bsc#1283316):
+  * safe_join on Windows does not allow special devices names with
+    empty ADS markers on NTFS.
+  * ProfilerMiddleware uses profiling.tracing on Python 3.15.
+  * uri_to_iri and iri_to_uri preserve empty username, password,
+    and port 0.
+  * Improve performance of parsing methods.
+  * get_host also checks that the port is in the valid range.
+  * The int URL converter returns a 404 instead of 500 error when
+    the value is longer than sys.get_int_max_str_digits().
+  * Improve debugger PIN generation from cgroup data inside Podman.
+  * Authorization parsing basic auth disallows non-base64 characters.
+  * application/x-www-form-urlencoded form data is no longer limited
+    to max_form_memory_size, only max_content_length.
+  * LimitedStream.readinto does not resize the buffer when it reads
+    less than the remaining size.
+  * Rules with 10 or more converters in a single part assign
+    matched values correctly.
+  * The invalid Range suffix length -0 is no longer accepted.
+
+-------------------------------------------------------------------
 Fri Apr  3 12:56:01 UTC 2026 - Tim Neujahr <timnjr.opensuse.reference660@passmail.net>
 
 - Update to version 3.1.8:
