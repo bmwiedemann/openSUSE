@@ -1,0 +1,99 @@
+-------------------------------------------------------------------
+Fri Sep 18 14:21:00 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to 0.6.1
+  * Bogus dates in changelog
+
+-------------------------------------------------------------------
+Wed Sep 16 18:56:00 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to 0.6.0: Harden pkexec-helper and improve compatibility with Linux distros
+  * Privileged ddrescue helper now derives ownership from `PKEXEC_UID`
+  * Removed the Polkit `allow_gui` override
+  * Hardened privileged operations against unsafe device paths and symbolic-link attacks
+  * Added validation for device paths, output locations, ownership IDs, and temporary directories
+  * Image and mapfile creation now uses private temporary directories and atomic moves
+
+-------------------------------------------------------------------
+Thu Sep 10 18:28:00 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to 0.5.0-1: fix RPM lint errors
+  * Removed setBadness('polkit-untracked-privilege', 0) from
+    datarecovery-rpmlintrc
+  * Added filter for hicolor-icon-theme
+  * Removed Group: from spec file
+
+-------------------------------------------------------------------
+Tue Apr 28 21:21:00 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to release 0.5.0
+  * Progress bar updates while recovering data and organising files
+  * New `utils.py` module with shared `format_bytes` and
+    `format_size` functions
+  * Disk space check now also runs when recovering from an image
+    file (previously only ran for physical devices)
+  * Logs are now always generated and saved to destination (no
+    longer optional)
+  * photorec progress can be displayed
+  * Application no longer re-initialises when brought back to the
+    foreground (subsequent activations now just re-present the
+    existing window)
+  * `MountedPartitionChecker` no longer takes an unused
+    `device_dropdown` parameter
+  * `PartitionRow.type` property renamed to `part_type` to avoid
+    shadowing the Python built-in
+  * Duplicate `/d` flag in PhotoRec command that would confuse file
+    output location
+
+-------------------------------------------------------------------
+Sat Dec 27 00:00:00 UTC 2025 - koxt2 <koxt2@protonmail.com>
+
+- Update to release 0.4.1
+  * Updated screenshots
+
+-------------------------------------------------------------------
+Tue Dec 23 00:00:00 UTC 2025 - koxt2 <koxt2@protonmail.com>
+
+- Update to release 0.4.0
+  * SMART data monitoring with health indicators in device columnview
+  * Detailed SMART attributes viewer showing all available drive metrics
+  * Fixed bug where lsblk returning multiple lines for device size caused parsing error
+  * File renamed: initialiser.py → initializer.py for consistent American spelling
+  * Window method renamed: initialize() → setup_window() for clarity
+  * Removed unused imports across multiple files
+
+-------------------------------------------------------------------
+Fri Dec 19 22:33:00 UTC 2025 - koxt2 <koxt2@protonmail.com>
+
+- Update to release 0.3.0
+  * Custom signature dialog for defining PhotoRec file signatures
+  * Support for adding, viewing, and deleting custom signatures
+  * Custom signatures integrated into file types dialog
+  * Uses ~/.photorec.sig for storing custom file signatures
+  * Uses ~/.photorec.cfg for PhotoRec configuration
+  * Reorganized file types dialog
+  * File type uses PhotoRec family keys instead of extensions
+
+------------------------------------------------------------------
+Sun Nov 30 23:37:00 UTC 2025 - koxt2 <koxt2@protonmail.com>
+
+- Update to release 0.2.0
+  * File type selection dialog with more categories
+  * Expandable category rows with individual switches
+  * Category-level switches to enable/disable all file types in a
+    category at once
+  * Search functionality to filter file types
+  * Select All / Unselect All buttons for quick selection changes
+  * Smart PhotoRec command generation (exclude mode when >50%
+    selected, include mode when <50%) - needs testing
+  * Reorganized file types
+  * Moved FILE_TYPES configuration to config.py
+  * Empty `no_extension` directory no longer created when no files
+    without extensions exist
+  * PhotoRec `report.xml` file excluded from being moved to
+    destination (content duplicated in photorec logs)
+
+-------------------------------------------------------------------
+Wed Nov 26 15:29:17 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
+
+- Initial package (version 0.1.2+git0.1022653) for build.opensuse.org
