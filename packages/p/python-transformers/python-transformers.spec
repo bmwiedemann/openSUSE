@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-transformers
-Version:        5.17.0
+Version:        5.18.0
 Release:        0
 Summary:        State-of-the-art Machine Learning for JAX, PyTorch and TensorFlow
 License:        Apache-2.0
@@ -33,13 +33,15 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-PyYAML >= 5.1
-Requires:       python-huggingface-hub >= 1.5.0
+# dependency_versions_check.py enforces these upper bounds at import time, so
+# an undeclared tokenizers 0.24 or huggingface-hub 3.0 would install fine and
+# then fail on "import transformers". 5.17.0 already excluded Factory's 2.0.0.
+Requires:       python-huggingface-hub < 3.0
+Requires:       python-huggingface-hub >= 1.31.0
 Requires:       python-numpy >= 1.17
 Requires:       python-packaging >= 20.0
 Requires:       python-regex >= 2025.10.22
 Requires:       python-safetensors >= 0.8.0
-# dependency_versions_check.py enforces the upper bound at import time, so an
-# undeclared 0.24 would install fine and then fail on "import transformers".
 Requires:       python-tokenizers < 0.24.0
 Requires:       python-tokenizers >= 0.23.1
 Requires:       python-tqdm >= 4.60
@@ -47,7 +49,7 @@ Requires:       python-typer
 BuildArch:      noarch
 # SECTION runtime dependencies (also needed for the %%check import test)
 BuildRequires:  %{python_module PyYAML >= 5.1}
-BuildRequires:  %{python_module huggingface-hub >= 1.5.0}
+BuildRequires:  %{python_module huggingface-hub >= 1.31.0}
 BuildRequires:  %{python_module numpy >= 1.17}
 BuildRequires:  %{python_module packaging >= 20.0}
 BuildRequires:  %{python_module regex >= 2025.10.22}

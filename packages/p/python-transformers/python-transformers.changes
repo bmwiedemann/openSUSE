@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:29:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.18.0:
+  * Add Nemotron 3 Diarization, NemotronH Omni, HyperCLOVAX
+    Vision V2 and the GTE bidirectional encoder
+  * huggingface-hub moves to >= 1.31.0, < 3.0 and the spec
+    follows; that also lifts the 2.0 exclusion which left 5.17.0
+    unimportable next to Factory's hub 2.0.0
+  * Breaking: the cache was reworked for mixed attention types
+    and the indexers layer_type mapping remapped
+  * Restore the legacy tensor-parallel initialization 5.16.0
+    removed, and unify device_mesh init for pipeline plus
+    tensor parallelism
+  * Fix from_pretrained dropping modules_to_save weights, RTDetr
+    and SEWD loading with random weights, MusicgenMelody losing
+    its conditioning at step 0 and AutoImageProcessor demanding
+    torchvision when only Pillow is installed
+  * Deprecate the use_mamba_kernels config flag and the min-max
+    pixels preprocessor argument
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Sep 10 05:43:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.17.0:

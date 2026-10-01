@@ -119,4 +119,15 @@ Devel SR 1376812 accepted. Built green locally (aarch64 native),
 source_validator clean.</comment>
     <requestid>1376814</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>79b6cb21faa82161e32b00d07d66c187</srcmd5>
+    <version>5.18.0</version>
+    <time>1790886063</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.18.0: Nemotron 3 Diarization, NemotronH Omni,
+HyperCLOVAX Vision V2 and GTE; the cache was reworked for mixed
+attention types. huggingface-hub moves to &gt;= 1.31.0, &lt; 3.0, which
+also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
+    <requestid>1381945</requestid>
+  </revision>
 </revisionlist>
