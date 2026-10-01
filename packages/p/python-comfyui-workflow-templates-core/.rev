@@ -234,4 +234,15 @@ crossed range.
 </comment>
     <requestid>1380835</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3036d37a3977ee76bb01d209f6b5bdb2</srcmd5>
+    <version>0.3.364</version>
+    <time>1790886062</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.364: the manifest lists 601 templates, up from 594.
+Seven additions (HeyGen Video 1 t2v/i2v/r2v, Ideogram v4.5 t2i and
+image edits, Ming Image 01 Design image edit) and 240 refreshed
+checksums. Data only, no code or dependency change.</comment>
+    <requestid>1381943</requestid>
+  </revision>
 </revisionlist>
