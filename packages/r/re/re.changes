@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 30 18:01:56 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 4.12.0
+  * json,odict: optimize memory and lookup performance.
+  * sys: add sys_exec, sys_texec and sys_cexec (UNIX only).
+  * sip/transp: verify WSS server identity against the target host.
+  * fmt/pl: optimize pl_strstr, pl_strchr and pl_strrchr.
+  * cmake: use variable for libdir in libbaresip.pc.in.
+  * sipreg/sipreg_unregister: call response handler on error.
+  * tls,test: add strict IP-literal SAN TLS verification (no SNI).
+  * dd: implement out of bound checks.
+  * base64: fix not detected base64_decode olen overflow.
+  * httpauth/digest: fix MD5 default hash handler.
+
+-------------------------------------------------------------------
 Wed Sep  2 13:48:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 4.11.0
