@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Wed Sep 30 00:54:49 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
+
+- Update to version 1.9.3:
+  * chore(release): 1.9.3
+  * Cache dependency checks, optimise Tweaks UI, archive missing-dependency-warning-banners change
+  * feat(vkbasalt): deduplicate reshade effects and exclude built-in FXAA, SMAA, and LUT
+  * feat(vkbasalt): compact built-in effects card to expand reshade effects
+  * feat(gui): sort Steam and non-Steam game cards alphabetically
+  * fix: fps_only preset survives load→save cycle (#405)
+  * feat(bgmod): add native Linux game executable resolution (#420)
+  * feat: set MangoHud Presets as default startup tab
+  * feat(games): clone global configurations to game profiles (#418)
+  * feat(tweaks): rename tab to Tweaks and add contextual info chip banner
+  * feat(bgmod): auto-update wrapper binaries on game launch with splash notification
+  * feat(bgmod): eliminate diagnostic log files in game directories
+  * fix: sync fps_only to global config and prevent spurious auto-saves in fpsonlyBitBtnClick (fixes #405)
+  * feat(lossless): anchor status card to bottom and dynamically adapt card heights on resize
+  * feat(lossless): move live fg switch to same row in mako mode to eliminate vertical scroll
+  * feat(optiscaler): reduce options card height to prevent vertical scrolling
+  * feat(vkbasalt): add 3D LUT support and optimize tab layout (#400)
+  * feat(tweaks): add custom launch arguments support
+  * feat(tweaks): reuse global custom variables in game profiles
+  * feat: harmonize card widths and margins across all tabs
+  * fix(splash): isolate game profile name and add ReShade checklist item
+  * fix(reshade): correct check files for AstrayFX and Prod80 shader packs
+  * fix(theme): unify vkSumi tab background color with canonical dark theme
+  * feat(reshade): colorize vk letters in vkbasalt icon and reposition check updates button
+  * feat(bgmod): synchronize wrapper binaries across all game profiles on startup
+  * feat(reshade): improve method icons and refine software status layout
+  * feat(reshade,optiscaler): modernize layout and streamline options cards
+  * feat(reshade): unify ReShade and vkBasalt post processing tabs
+  * feat(reshade): use key capture button for toggle hotkey and optiscaler-style status dot
+  * refactor(ui): streamline ReShade tab layout and compact card heights
+  * feat(ui): align ReShade tab layout with OptiScaler design
+  * feat(reshade): add ReShade post processing tab and bgmod integration
+  * fix(bgmod): preserve third-party proxy DLLs during launch and uninstall
+  * feat(ui): dim unselected method logos in OptiScaler and Lossless Scaling
+  * fix(packaging): package bgmod-splash in RPM, AppImage and clean share directory
+  * fix(bgmod): supervise game subprocesses and guard custom build dialog
+  * refactor(branding): standardize Goverlay brand presentation across UI and docs
+  * feat(bgmod): add non-blocking game launch confirmation splash screen
+  * feat(lossless): add steam beta notice and status assistant button for lsfg-vk
+  * feat(optiscaler): verify mandatory dlss and fsr4 libraries on startup
+  * fix(packaging): declare scalable SVG icon in RPM spec %files
+  * chore(metainfo): align summary, branding, screenshots, and scalable SVG with Flathub guidelines
+  * feat(vksumi): use tar extraction for vksumi .pkg.tar.zst package
+  * fix(flatpak): prevent host implicit Vulkan layer pollution and boot loop
+  * feat(pascube): add Ray Tracing score bar to Hardware Comparison accordion
+  * feat(pascube): add Ray Tracing score to submit dialog and map to 'GPU RT' column
+  * feat(pascube): add dedicated ray tracing benchmark with independent score
+  * i18n: Removed tr_TR translation file
+  * feat(optiscaler): add support for custom experimental builds
+  * fix(pascube): decouple hardware telemetry to background thread to resolve 5 FPS limit on NVIDIA
+  * i18n: Update Visual translation to Görünüm
+  * i18n: Update Turkish (tr, tr_TR) translations
+
+-------------------------------------------------------------------
 Sun Sep 13 17:58:39 UTC 2026 - Jonatas Gonçalves <jonatas.sgoncalves@gmail.com>
 
 - Update to version 1.9.2:

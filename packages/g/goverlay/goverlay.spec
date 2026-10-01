@@ -17,7 +17,7 @@
 
 
 Name:           goverlay
-Version:        1.9.2
+Version:        1.9.3
 Release:        0
 Summary:        Graphical UI to help manage overlays
 License:        GPL-3.0-or-later
@@ -66,8 +66,9 @@ sed -i \
     -e 's/^StartupWMClass=.*/StartupWMClass=goverlay/' \
     %{buildroot}%{_datadir}/applications/io.github.benjamimgois.goverlay.desktop
 strip -s %{buildroot}%{_bindir}/goverlay 2>/dev/null || strip -s %{buildroot}%{_libdir}/goverlay 2>/dev/null || true
-strip -s %{buildroot}%{_libdir}/bgmod/bgmod 2>/dev/null || true
-strip -s %{buildroot}%{_libdir}/bgmod/bgmod-uninstaller 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/bgmod 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/bgmod-splash 2>/dev/null || true
+strip -s %{buildroot}%{_libdir}/bgmod-uninstaller 2>/dev/null || true
 strip -s %{buildroot}%{_libdir}/pascube 2>/dev/null || true
 rm -rf %{buildroot}%{_datadir}/goverlay/data/icons/{128x128,256x256,512x512}
 ln -sf %{_datadir}/icons/hicolor/128x128/apps/io.github.benjamimgois.goverlay.png \
@@ -83,6 +84,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_datadir}/metainfo/*.xml
 %{_bindir}/%{name}
 %{_libdir}/%{name}
 %{_libdir}/bgmod
+%{_libdir}/bgmod-splash
 %{_libdir}/bgmod-uninstaller
 %{_libdir}/pascube
 %{_mandir}/man1/%{name}.1%{?ext_man}

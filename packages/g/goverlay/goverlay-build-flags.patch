@@ -1,7 +1,19 @@
-diff --color -rub goverlay-1.8.10.orig/goverlay.lpi goverlay-1.8.10/goverlay.lpi
---- goverlay-1.8.10.orig/goverlay.lpi	2026-07-28 22:52:10.000000000 -0300
-+++ goverlay-1.8.10/goverlay.lpi	2026-07-30 23:39:28.337520450 -0300
-@@ -51,8 +51,8 @@
+diff '--color=auto' -urN '--exclude=.git' goverlay.orig/bgmod_splash_src/bgmod_splash.lpi goverlay/bgmod_splash_src/bgmod_splash.lpi
+--- goverlay.orig/bgmod_splash_src/bgmod_splash.lpi	2026-09-29 21:54:48.422704219 -0300
++++ goverlay/bgmod_splash_src/bgmod_splash.lpi	2026-09-29 22:26:50.372037572 -0300
+@@ -78,5 +78,8 @@
+         </Win32>
+       </Options>
+     </Linking>
++    <Other>
++      <CustomOptions Value="-fPIC -Cg -k-pie -k-znow"/>
++    </Other>
+   </CompilerOptions>
+ </CONFIG>
+diff '--color=auto' -urN '--exclude=.git' goverlay.orig/goverlay.lpi goverlay/goverlay.lpi
+--- goverlay.orig/goverlay.lpi	2026-09-29 21:54:48.467703363 -0300
++++ goverlay/goverlay.lpi	2026-09-29 22:01:05.723818736 -0300
+@@ -54,8 +54,8 @@
            </CodeGeneration>
            <Linking>
              <Debugging>
@@ -12,7 +24,7 @@ diff --color -rub goverlay-1.8.10.orig/goverlay.lpi goverlay-1.8.10/goverlay.lpi
              </Debugging>
              <LinkSmart Value="True"/>
              <Options>
-@@ -64,8 +64,7 @@
+@@ -67,8 +67,7 @@
              </Options>
            </Linking>
            <Other>
@@ -22,11 +34,11 @@ diff --color -rub goverlay-1.8.10.orig/goverlay.lpi goverlay-1.8.10/goverlay.lpi
            </Other>
          </CompilerOptions>
        </Item2>
-diff --color -rub goverlay-1.8.10.orig/Makefile goverlay-1.8.10/Makefile
---- goverlay-1.8.10.orig/Makefile	2026-07-28 22:52:10.000000000 -0300
-+++ goverlay-1.8.10/Makefile	2026-07-30 23:54:35.301597432 -0300
-@@ -13,13 +13,13 @@
- 	cp pascube_src/pascube ./pascube
+diff '--color=auto' -urN '--exclude=.git' goverlay.orig/Makefile goverlay/Makefile
+--- goverlay.orig/Makefile	2026-09-29 21:54:48.395704733 -0300
++++ goverlay/Makefile	2026-09-29 22:02:25.129755345 -0300
+@@ -20,13 +20,13 @@
+ 	cp bgmod-splash data/bgmod/bgmod-splash
  
  bgmod: bgmod.lpr
 -	fpc -O3 bgmod.lpr
@@ -41,9 +53,9 @@ diff --color -rub goverlay-1.8.10.orig/Makefile goverlay-1.8.10/Makefile
  	mkdir -p data/bgmod
  	cp bgmod-uninstaller data/bgmod/bgmod-uninstaller
  
-diff --color -rub goverlay-1.8.10.orig/pascube_src/pascube.lpi goverlay-1.8.10/pascube_src/pascube.lpi
---- goverlay-1.8.10.orig/pascube_src/pascube.lpi	2026-07-28 22:52:10.000000000 -0300
-+++ goverlay-1.8.10/pascube_src/pascube.lpi	2026-07-30 23:59:31.022488248 -0300
+diff '--color=auto' -urN '--exclude=.git' goverlay.orig/pascube_src/pascube.lpi goverlay/pascube_src/pascube.lpi
+--- goverlay.orig/pascube_src/pascube.lpi	2026-09-29 21:54:48.489874056 -0300
++++ goverlay/pascube_src/pascube.lpi	2026-09-29 22:02:43.709448989 -0300
 @@ -73,7 +73,7 @@
        </Debugging>
      </Linking>
