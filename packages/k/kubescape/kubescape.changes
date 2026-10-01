@@ -1,4 +1,211 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:24:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 4.0.15:
+  * feat(printer): add scan coverage to markdown, HTML, and CSV
+    (#3937)
+  * fix(sarif): aggregate container image vulnerability runs in
+    combined scans (#3945) (#3946)
+  * feat(opa): let C-0236 accept key-signed images without a
+    transparency log entry (#3967)
+  * feat(imagescan): support Quay vulnerability scanning (#3917)
+  * fix(cel): avoid false findings when Namespace data is
+    unavailable (#3920)
+  * ci: bump github/codeql-action/upload-sarif from 4.38.1 to
+    4.38.2 (#3965)
+  * ci: bump github.com/Azure/azure-sdk-for-go/sdk/azcore (#3962)
+  * ci: bump the kubernetes group with 4 updates (#3960)
+  * ci: bump
+    go.opentelemetry.io/otel/exporters/otlp/otlpmetric/otlpmetrichttp
+    (#3963)
+  * fix(pdf): include image CVEs in combined scan reports (#3949)
+  * fix(httphandler): set DisableKeepAlives to true in
+    postScanCallback (#3948)
+  * fix(perf): eliminate O(N^2) memory allocations in image scan
+    target deduplication (#3939)
+  * fix(scancache): bypass cache when resource fails to encode to
+    JSON (#3953)
+  * fix(printer): include skipped and unevaluated controls in CSV
+    report output (#3934) (#3935)
+  * fix(prometheus): emit container image vulnerability metrics in
+    combined scans (#3941) (#3942)
+  * chore: ignore every result file the smoke test writes (#3936)
+  * fix(networkpolicy): allow a Pod to always reach itself (#3905)
+  * fix(cautils): skip non-regular manifest files instead of
+    reading them (#3931)
+  * fix(junit): aggregate and serialize skipped count in root
+    testsuites element (#3932) (#3933)
+  * fix(portforwarder): add timeout to waitForPortForwardReadiness
+    to prevent infinite hang (#3873)
+  * docs: add image scanning documentation (#3907)
+  * feat(fleet): print a fleet summary after a multi-context scan
+    [LFX 2026] (#3929)
+  * fix(opa): validate signed image digest in cosign verification
+    (#3930)
+  * fix: populate framework resource counters and root metadata in
+    ReportV2ToV1 (#3927) (#3928)
+  * fix(release): write the cosign signing key owner-only and
+    remove it after the release (#3736)
+  * feat(printer): report degraded scan coverage and skipped
+    controls (#3926)
+  * fix(hostsensor): surface partial node-data loss as
+    partialGVRPulls (#3844)
+  * feat(httphandler): reload namespace filters without restarting
+    (#3925)
+  * fix(imagescan): prevent silent swallow of azure image id
+    validation errors (#3900)
+  * fix(scan): re-evaluate policies that read status through
+    object.get (#3918)
+  * fix(diff): extract failedPath evidence in granular comparison
+    (#3921) (#3922)
+  * fix: complete V2 to V1 Control Report field mapping (#3812)
+  * fix(scan): hash policy-visible resource metadata (#3919)
+  * fix(opaprocessor): fix excluded control reinsert regression
+    (#3915)
+  * feat(helm): thread the document index through chart rendering
+    (#3911)
+  * fix(ci): build and test master on push, not only inside a pull
+    request (#3910)
+  * fix(opaprocessor): propagate skip reasons to control summary
+    and junit (#3885)
+  * chore: bump regolibrary to v2.0.36 (#3893)
+  * test(pdf): regenerate info-rows fixture for maroto v2.4.2
+    height truncation (#3912)
+  * test(cel): fail the build if a bundle policy starts reading
+    namespaceObject (#3826)
+  * ci: bump github.com/johnfercher/maroto/v2 from 2.2.2 to 2.4.2
+    (#3836)
+  * ci: bump github.com/hashicorp/hcl/v2 from 2.24.0 to 2.25.0
+    (#3894)
+  * ci: bump golang.org/x/mod from 0.40.0 to 0.41.0 (#3896)
+  * fix(scan): prevent stale incremental verdicts across scan
+    contexts (#3890)
+  * ci: bump github.com/moby/buildkit from 0.31.1 to 0.33.0 (#3895)
+  * ci: bump github.com/project-copacetic/copacetic from 0.10.0 to
+    0.15.0 (#3763)
+  * fix(networkpolicy): require a common port and protocol for
+    reachability (#3909)
+  * fix(reportcrypto): decrypt namespace summaries and env var
+    names in encrypted reports (#3908)
+  * fix(anonymizer): keep failed transformations from corrupting
+    reports (#3888)
+  * fix(hostsensor): preserve virtual host resource identities
+    (#3891)
+  * fix(scan): make incremental cache writes durable (#3889)
+  * ci: bump github/codeql-action/upload-sarif from 4.38.0 to
+    4.38.1 (#3897)
+  * fix(printer): emit PolicyReport timestamps as seconds and nanos
+    per CRD schema (#3887)
+  * ci: bump docker/setup-qemu-action from 4.3.0 to 4.4.0 (#3899)
+  * fix(scan): isolate fleet context configuration (#3881)
+  * feat(fix): honour --output-dir for file-based reports (#3880)
+  * fix(imagescan): stop stalled ECR pagination (#3882)
+  * fix(imagescan): stop stalled Azure pagination (#3883)
+  * feat(opaprocessor): define execution policies for whole-cluster
+    controls (#3877)
+  * refactor: inject host sensor controls default via ScanInfo
+    (#3876)
+  * feat(fleet): report the controls clusters disagree on (#3878)
+  * fix(locationresolver): reject negative nodeIndex in
+    ResolveLocation (#3879)
+  * refactor(resultshandling): decouple downstream consumers from
+    AllResources via ResourceCatalog (#3874)
+  * feat(vap): include complete Agent Runtime policy set (#3871)
+  * feat(cautils): introduce ResourceCatalog and replace direct
+    AllResources accesses (#3868)
+  * fix(storage): persist workload scan report timestamps (#3869)
+  * test(core): cover cached config set and delete (#3870)
+  * fix: print separator for control scans (#3842)
+  * fix(mcpserver): skip IaC scan tests if offline policies missing
+    (#3806)
+  * Refactor: Move getReadableID out of filesloaderutils (#3862)
+  * feat(resourcehandler): wire partition store into streaming
+    collector (#3235) (#3863)
+  * feat(evidence): warn on incompatible flags and skip lines for
+    anonymized source path (#3864)
+  * fix(imagescan): support nested Harbor repositories (#3860)
+  * fix(kubernetes): stop stalled pagination loops (#3859)
+  * fix(patch): do not print usage when --severity-threshold fails
+    (#3857)
+  * feat(imagescan): support full Azure credential chain for ACR
+    image pulls (#3853)
+  * fix(scan): validate format of workload name, kind, namespace,
+    and API group (#3809)
+  * fix(imagescan): correct misleading log in ProcessImages and
+    break severity loop (#3856)
+  * fix(scan): restore fleet context after runner panic (#3848)
+  * fix(scan): write fleet reports atomically (#3849)
+  * feat(fleet): add the compliance rollup to the fleet report
+    (#3852)
+  * fix(partitionstore): recognise a full disk on Windows (#3855)
+  * fix(streaming): update partition counts after purge (#3850)
+  * fix(printer): assign info stars deterministically instead of by
+    map iteration order (#3851)
+  * feat(printer): resolve line numbers for delete and review paths
+    in --show-evidence (#3845)
+  * fix(imagescan): warn on stale vulnerability DB, fail with
+    --fail-on-stale-db (#3830)
+  * fix(imagescan): fail closed on unknown-severity CVEs in
+    threshold gates (#3832)
+  * fix(httphandler): do not abandon a posture report on one store
+    error (#3822)
+  * ci: bump github.com/deckarep/golang-set/v2 from 2.8.0 to 2.9.0
+    (#3835)
+  * ci: bump github.com/anubhav06/copa-grype (#3837)
+  * ci: bump github/codeql-action/upload-sarif from 4.37.9 to
+    4.38.0 (#3838)
+  * ci: bump github.com/anchore/clio (#3834)
+  * test(mcpserver): verify Agent Runtime posture findings (#3833)
+  * feat(resourcehandler): introduce partition and spill store
+    engine (#3818)
+  * fix(httphandler): deliver scan-completion callback on scan
+    panic (#3828)
+  * feat(scan): add --fleet-report to write one combined report
+    across --kube-contexts (#3815)
+  * fix(diff): honor /dev/stdout and /dev/null in diff --output
+    (#3820)
+  * test(scan): validate live Agent Runtime CRD collection (#3819)
+  * feat(locationresolver): resolve bracketed-key paths by building
+    yq expressions from parsed segments (#3816)
+  * fix(cautils): recurse nested JSON arrays and ignore
+    non-manifest JSON values (#3817)
+  * test(scan): add Agent Runtime Hardening integration coverage
+    (#3807)
+  * fix(printer): support combined posture and image scan output in
+    Markdown and HTML printers (#3814)
+  * test(mcpserver): assert rejected argument details (#3810)
+  * fix(cautils): do not carry tenant identity across
+    --kube-contexts scans (#3813)
+  * feat: use mmap and fastjson for manifest parsing (#3500)
+  * fix(printer): qualify bracketed keys with a following index and
+    keep quoted digits keys (#3801)
+  * feat: add support for deleting specific configuration keys
+    (#3672)
+  * fix: make GetScanningContext side-effect free (#3802)
+  * fix(scan): default omitted workload namespace to 'default' and
+    require '*' for cluster-wide search (#3798)
+  * feat(config): Filter configurations by key in kubescape config
+    view (#3644)
+  * fix(printer): parse bracketed path keys instead of splitting on
+    every… (#3796)
+  * fix(printer): support multi-image scan output in YAML printer
+    (#3795)
+  * fix(getter): fail on checksum verification errors (#3791)
+  * fix(printer): stream configuration scan JSON and SARIF output
+    (#3794)
+  * fix(opaprocessor): select whole controls in
+    --skip-controls/--include-controls (#3793)
+  * fix: preserve YAML source formatting during remediation (#3788)
+  * test(mcpserver): add integration smoke test for live-cluster
+    scan_workload path (#3785)
+  * feat(printer): resolve fix-path line numbers in --show-evidence
+    output (#3786)
+  * fix(printer): honor /dev/stdout and /dev/null in every output
+    printer (#3781)
+  * fix(exceptions): generate suppressing exception baselines
+    (#3783)
+
+-------------------------------------------------------------------
 Sat Sep 19 09:12:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 4.0.14:
