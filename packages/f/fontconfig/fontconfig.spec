@@ -18,7 +18,7 @@
 
 Name:           fontconfig
 %define lname   libfontconfig1
-Version:        2.18.1
+Version:        2.18.3
 Release:        0
 Summary:        Library for Font Configuration
 License:        MIT
@@ -29,6 +29,7 @@ Source4:        baselibs.conf
 Source5:        local.conf
 Patch1:         skip-network-test.patch
 Patch2:         fontconfig-autoconf269.patch
+Patch3:         583.patch
 BuildRequires:  automake >= 1.11
 BuildRequires:  gperf
 BuildRequires:  libtool

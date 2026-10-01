@@ -899,4 +899,12 @@ As we probably don't want a prerelease in 13.1, please checkin there also (forwa
     <comment></comment>
     <requestid>1357758</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>d83ddf86601723602aaa77cceca9dab1</srcmd5>
+    <version>2.18.3</version>
+    <time>1790865688</time>
+    <user>anag_factory</user>
+    <comment>- add 583.patch to protect against a potential type confusion (forwarded request 1379052 from dirkmueller)</comment>
+    <requestid>1379620</requestid>
+  </revision>
 </revisionlist>
