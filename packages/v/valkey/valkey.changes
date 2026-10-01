@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 18:52:37 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
+
+- Fix CVE-2026-92925, failure to properly validate string-carrying extensions
+  for null-termination in the cluster bus packet parser can lead to an
+  out-of-bounds read (bsc#1281417)
+  * CVE-2026-92925.patch
+
+-------------------------------------------------------------------
 Tue Sep  1 10:23:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 9.1.2

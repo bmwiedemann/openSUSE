@@ -43,6 +43,12 @@ Source8:        %{name}-sentinel.target
 Source9:        %{name}-user.conf
 Source10:       macros.%{name}
 Source11:       migrate_redis_to_valkey.bash
+# PATCH-FIX-OPENSUSE bsc#1281417 CVE-2026-92925
+# failure to properly validate string-carrying extensions for null-termination in the cluster bus packet parser can lead to an out-of-bounds read
+# Based on upstream PRs still under review:
+# https://github.com/valkey-io/valkey/pull/4661
+# https://github.com/valkey-io/valkey/pull/4662
+Patch0:         CVE-2026-92925.patch
 # PATCH-FIX-OPENSUSE -- Adjust configs for openSUSE
 Patch1001:      %{name}-conf.patch
 BuildRequires:  jemalloc-devel
