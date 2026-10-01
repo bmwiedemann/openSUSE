@@ -201,4 +201,15 @@ references the package and no CVE appears in the crossed range.
 </comment>
     <requestid>1380836</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>41aa95082b07293fe9a5873932cbda05</srcmd5>
+    <version>0.1.99</version>
+    <time>1790886062</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.99: 601 template definitions, up from 594, matching
+core 0.3.364. Seven new definitions; 240 existing ones now annotate
+each model file with its size in the download guide and the index
+entries are re-sorted. Data only, no code or dependency change.</comment>
+    <requestid>1381944</requestid>
+  </revision>
 </revisionlist>

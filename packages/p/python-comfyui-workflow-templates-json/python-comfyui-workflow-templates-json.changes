@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:29:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.99: 601 template definitions (was 594),
+  the seven additions being the ones core 0.3.364 lists
+  * HeyGen Video 1 t2v, i2v and r2v, Ideogram v4.5 t2i plus
+    precise and general image edit, and Ming Image 01 Design
+    image edit
+- 240 of the existing definitions are rewritten: the model
+  download guide now annotates each file with its size, and the
+  index entries are re-sorted as their usage counters moved,
+  index.json's top count going from 14512 to 15428
+- No code change and no dependency change
+
+-------------------------------------------------------------------
 Sat Sep 26 18:53:15 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.96: 594 template definitions (was 588)
