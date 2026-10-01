@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:14:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.120.0:
+  * Features
+    - c81a40c8: feat(df): add package command to check a single
+      PURL
+    - cd957b0d: feat(mcp): close annotation coverage gaps and add
+      coverage test
+    - 6d7a7473: feat(stack): add a command to delete a stack
+    - 9ae8b354: feat(stack): properly update branches on stack
+      reorder and add guards rebase in-progress
+    - 0a2765c7: feat(telemetry): distinguish MCP tool calls from
+      direct CLI use
+    - d5dde305: feat: delegate path ownership to domain teams
+      without Maintainer
+    - b20fb66d: feat: mr note create support for internal
+      notes/threads
+  * Bug Fixes
+    - 6df4dae4: fix(issue): reject invalid list output flags
+    - cb7c3eb5: fix(mr): fast-forward a checked-out branch on
+      repeat checkout
+    - f1a933b9: fix(orbit): require Orbit CLI 0.130.0 so setup
+      picks your agents
+    - c9b48d28: fix: cmd/glab tests fail under goleak
+  * Documentation
+    - 7b5192e7: docs(agents): drop the removed gen-config command
+    - 00edd69e: docs(skills): add contributing section to bundled
+      glab skill
+  * Dependencies
+    - 008bcb03: chore(deps): update dependency @commitlint/cli to
+      ^21.2.3
+    - 542d54c2: chore(deps): update dependency
+      @commitlint/config-conventional to ^21.2.3
+    - 77a8e92e: chore(deps): update dependency @commitlint/format
+      to ^21.2.3
+    - 93f95503: chore(deps): update dependency @commitlint/lint to
+      ^21.2.3
+    - 9b8d080c: chore(deps): update dependency @commitlint/read to
+      ^21.2.3
+    - 8446d1de: chore(deps): update dependency markdownlint-cli2 to
+      v0.23.3
+    - cee1c145: chore(deps): update module
+      github.com/dustin/go-humanize to v1.1.0
+    - 5c3f65ad: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.14.0
+    - ad728cd0: chore(deps): update module
+      gitlab.com/gitlab-org/api/client-go/v3 to v3.15.0
+  * Maintenance
+    - 32512e34: chore: add tw-docops CODEOWNERS for docs lint
+      config
+    - 729129ac: refactor: remove the custom --project and
+      --hostname flag pair
+  * Others
+    - f91498fc: test(mr): scope the mr note publish integration
+      test to API contract
+
+-------------------------------------------------------------------
 Wed Sep 23 04:38:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.119.0:
