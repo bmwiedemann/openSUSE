@@ -1,0 +1,36 @@
+From ba2ce5e4ab3c66aa2522b8d7e2f33b6130e22cc3 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 30 Sep 2026 14:19:17 +1000
+Subject: [PATCH] Don't use bare "python" in a testcase
+
+Some systems may have multiple interpreters installed, and they may not
+called python -- use sys.executable instead.
+---
+ tests/test_python_server.py | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_python_server.py b/tests/test_python_server.py
+index b47d6a6b..a002f52a 100644
+--- a/tests/test_python_server.py
++++ b/tests/test_python_server.py
+@@ -9,6 +9,7 @@
+ 
+ import shutil
+ import subprocess
++import sys
+ 
+ 
+ from glean_parser import translate
+@@ -48,9 +49,9 @@ def test_logging(tmp_path):
+     shutil.copy(ROOT / "test-py" / "test.py", tmp_path)
+ 
+     # run test script
+-    logged_output = subprocess.check_output(["python", "test.py"], cwd=tmp_path).decode(
+-        "utf-8"
+-    )
++    logged_output = subprocess.check_output(
++        [sys.executable, "test.py"], cwd=tmp_path
++    ).decode("utf-8")
+ 
+     for log_line in logged_output.splitlines():
+         json_line = json.loads(log_line)

@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Wed Sep 30 04:46:41 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 21.0.1:
+  * BUGFIX: Correct event timestamp values in server language templates
+  * BREAKING CHANGE: Dropped support for Python 3.8
+  * Switch to pyproject.toml and uv
+  * Add new metric type: DualLabeledCounter
+  * BUGFIX: Fix missing ping_arg "uploader_capabilities" in util.py
+  * BREAKING CHANGE: Support uploader_capabilities for pings
+  * Require array or object as the root type in object metrics
+  * BREAKING CHANGE: Support follows_collection_enabled for pings
+  * Allow earlier versions of platformdirs
+  * New Metric Type: labeled_quantity
+  * ping schedule: Gracefully handle missing ping
+  * BREAKING CHANGE: Expose the optional enabled property on pings,
+    defaulting to enabled: true
+  * BREAKING CHANGE: Support metadata field include_info_sections
+  * Add Python log outputter
+  * Allow unit field for custom distribution again
+  * BREAKING CHANE: ping lifetime metrics on the events ping are now
+    disallowed
+  * BREAKING CHANGE: Remove exposed lint_yaml_files function
+  * Remove yamllint integration
+  * ENHANCEMENT: Labels in labels: fields may now contain any printable ASCII
+    characters
+  * BUGFIX: Enforce ordering of generation of Pings, Metrics and Tags such
+    that order is deterministic
+  * BUGFIX: Remove internal-only fields from serialized metrics data
+  * FEATURE: New subcommand: dump to dump the metrics data as JSON
+  * BREAKING CHANGE: Fully remove support for the old events API
+- Drop patches
+  * remove-pytest.patch
+  * fix-yaml-lint.patch
+- Add patch dont-use-bare-python.patch:
+  * Use sys.exectuable, rather than "python"
+- Add patch support-source-date-epoch.patch:
+  * Don't fail expiry tests if SOURCE_DATE_EPOCH is set.
+
+-------------------------------------------------------------------
 Mon Jun  9 14:14:27 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives

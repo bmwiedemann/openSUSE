@@ -1,0 +1,40 @@
+From 4b7e8bfff147cb18b92e60c59a2efecf96425a10 Mon Sep 17 00:00:00 2001
+From: Steve Kowalik <steven@wedontsleep.org>
+Date: Wed, 30 Sep 2026 14:22:00 +1000
+Subject: [PATCH] Use util.epoch_now() instead of datetime.now()
+
+The test_expires() testcase in test_metrics is susceptible to forced
+failure by setting SOURCE_DATE_EPOCH earlier than the current date,
+since util.time_epoch() will always use that environment variable if
+it's set.
+---
+ tests/test_metrics.py | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
+
+diff --git a/tests/test_metrics.py b/tests/test_metrics.py
+index 8b142001..af68d20b 100644
+--- a/tests/test_metrics.py
++++ b/tests/test_metrics.py
+@@ -3,12 +3,11 @@
+ # Any copyright is dedicated to the Public Domain.
+ # http://creativecommons.org/publicdomain/zero/1.0/
+ 
+-import datetime
+-
+ import pytest
+ 
+ from glean_parser import parser
+ from glean_parser import metrics
++from glean_parser import util
+ 
+ 
+ def test_metrics_match_schema():
+@@ -52,7 +51,7 @@ def test_expires():
+     """
+     for date, expired in [
+         ("2018-06-10", True),
+-        (datetime.datetime.now(datetime.timezone.utc).date().isoformat(), True),
++        (util.now_epoch().date().isoformat(), True),
+         ("3000-01-01", False),
+     ]:
+         m = metrics.Boolean(
