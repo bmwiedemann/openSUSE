@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:03:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.0:
+  https://github.com/opentofu/opentofu/releases/tag/v1.13.0
+  We're proud to announce that OpenTofu 1.13.0 is now officially
+  available!
+
+  Full Changelog
+  https://github.com/opentofu/opentofu/blob/v1.13/CHANGELOG.md
+
+  * Highlights
+  * Reducing unknowns during planning
+    OpenTofu v1.13 introduces a number of new functions that are
+    all intended to allow module authors to give OpenTofu
+    additional hints about what they know to be true even though
+    OpenTofu cannot infer it automatically.
+  * Linting Experiment
+    OpenTofu v1.13 includes some very early work towards built-in
+    "linting" features in OpenTofu, although we are hoping to
+    eventually incorporate other similar needs such as policy
+    enforcement into a single comprehensive feature.
+  * Symbol Libraries Experiment
+    We're considering a new kind of artifact called a "Symbol
+    Library", which is a reusable collection of values, functions,
+    and type aliases that can be imported from all of the same
+    source types that are already supported for modules.
+  * Compatibility Notes
+    - base64gzip produces results that are equivalent but not
+      byte-for-byte identical to previous versions, this is due to
+      a required golang version upgrade
+    - WinRM is no longer supported for provisioners
+    - macOS: Requires macOS 13 Ventura or later
+    - OpenTofu v1.13 will be the last series that includes official
+      releases for 32 bit CPUs
+
+-------------------------------------------------------------------
 Fri Aug 28 07:25:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.6:
