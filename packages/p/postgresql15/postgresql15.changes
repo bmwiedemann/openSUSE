@@ -1,8 +1,15 @@
 -------------------------------------------------------------------
-Wed Aug 19 11:00:44 UTC 2026 - Reinhard Max <max@suse.com>
+Wed Sep 30 13:31:18 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Require libicu-devel from the server-devel package when building
+  with ICU support.
+
+-------------------------------------------------------------------
+Thu Aug 20 11:55:10 UTC 2026 - Reinhard Max <max@suse.com>
 
 - Let llvmjit-devel require the llc and clang binaries to fix
-  build of extensions on SLE-16.1 and newer.
+  build of extensions on SLE-16 and newer.
+- Use LLVM 15 on SLE-15 up to SP5 and LLVM 17 on SP6 and SP7.
 
 -------------------------------------------------------------------
 Sat Aug 15 14:52:34 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
