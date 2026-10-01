@@ -795,4 +795,26 @@ Stop storing build machine kernel version (boo#1101107)</comment>
       DeferredChunkAppend queries</comment>
     <requestid>1378575</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>c3b2de006368439f60077eb20508ec89</srcmd5>
+    <version>2.30.2</version>
+    <time>1790865710</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.30.2
+  - #10665 Fix crash when merging chunks with different column
+    layouts
+  - #10668 Fix DROP SCHEMA CASCADE leaving orphaned compressed
+    chunks
+  - #10682 Fix vectorized text comparison ignoring a
+    non-deterministic collation given in the query
+  - #10609 Fix race while updating granular refresh setting for
+    hypertable
+  - #10613 Rename the granular refresh options to
+    timescaledb.cagg_granular_refresh_*
+  - #10636 Free the tenant tracker's shared memory when its
+    hypertable is dropped
+  - #10585 Potential crash in CREATE TABLE AS query selecting from
+    a compressed hypertable</comment>
+    <requestid>1381528</requestid>
+  </revision>
 </revisionlist>
