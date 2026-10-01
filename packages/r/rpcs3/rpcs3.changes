@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:06:08 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- rpcs3-ssp-strong.patch: change -fstack-protector to
+  -fstack-protector-strong in buildfiles/cmake/ConfigureCompiler.cmake
+  so it does not downgrade the distro-wide -fstack-protector-strong
+  from the optflags
+
+-------------------------------------------------------------------
 Wed Sep  9 07:33:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Lift restriction on old FFmpeg build dependencies

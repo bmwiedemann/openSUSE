@@ -1,0 +1,11 @@
+--- a/buildfiles/cmake/ConfigureCompiler.cmake
++++ b/buildfiles/cmake/ConfigureCompiler.cmake
+@@ -27,7 +27,7 @@
+ 
+ 	add_compile_options(-Wall)
+ 	add_compile_options(-fno-exceptions)
+-	add_compile_options(-fstack-protector)
++	add_compile_options(-fstack-protector-strong)
+ 
+ 	if(USE_NATIVE_INSTRUCTIONS AND COMPILER_SUPPORTS_MARCH_NATIVE)
+ 		add_compile_options(-march=native)

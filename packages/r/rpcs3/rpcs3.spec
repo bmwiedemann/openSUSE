@@ -24,6 +24,10 @@ License:        GPL-2.0-only
 URL:            https://rpcs3.net
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         fix-test-files.patch
+# PATCH-FIX-OPENSUSE rpcs3-ssp-strong -- Use -fstack-protector-strong instead
+# of -fstack-protector, otherwise it would downgrade the distro-wide
+# -fstack-protector-strong from the optflags.
+Patch2:         rpcs3-ssp-strong.patch
 BuildRequires:  cmake >= 3.28.0
 BuildRequires:  gcc-c++
 %if 0%{?suse_version} > 1600
