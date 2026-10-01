@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Sep 28 15:58:12 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 0.17.2
+  * let tevent_common_have_events() ignore fd events without active
+    flags, in order to avoid tevent_loop_wait() to loop forever
+    with only such events.
+  * ignore fd events without flags in tevent_common_have_events()
+
+-------------------------------------------------------------------
 Thu Oct 16 15:31:28 UTC 2025 - Noel Power <nopower@suse.com>
 
 - Update to 0.17.1
