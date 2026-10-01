@@ -1,0 +1,472 @@
+.\" Manual page for hax.
+.TH HAX 1 "2026-09-23" "hax 0.5.0" "User Commands"
+.SH NAME
+hax \- minimalist terminal\-native coding agent
+.SH SYNOPSIS
+.B hax
+.RI [ options ]
+.RI [ prompt ...]
+.br
+.B hax
+.RB { \-p | \-\-json }
+.RI [ options ]
+.RI [ prompt ]
+.br
+.B hax
+.RB { \-c | \-\-resume [=\fIID\fP] }
+.RI [ options ]
+.RI [ prompt ]
+.SH DESCRIPTION
+.B hax
+is a single small binary that acts as a coding agent in the terminal. It talks
+to OpenAI, Anthropic, OpenRouter and compatible providers, to a ChatGPT/codex
+account, or to local models through llama.cpp and ollama. Unlike a web chat it
+runs in the native terminal scrollback, keeps the working directory as the unit
+of context, reads and edits files, and runs commands as a subprocess.
+.PP
+It extends through configuration, markdown files and subprocesses rather than
+a plugin runtime. There are no MCP marketplaces, no IDE panels, and no
+per\-command permission prompts.
+.PP
+With no arguments
+.B hax
+starts an interactive REPL. In one\-shot mode the final answer goes to standard
+output, while the provider banner, usage statistics, errors and the resume
+hint go to standard error, so
+.B "hax \-p"
+is safe to pipe without losing diagnostics.
+.PP
+.B hax
+is not a security boundary. It executes shell commands on the model's behalf
+without per\-command approval. Use operating\-system\-level isolation for
+untrusted work.
+.SH OPTIONS
+.TP
+.BR \-p ", " \-\-print
+Run non\-interactively to completion and print the final assistant message to
+standard output. The prompt is taken from the positional arguments, joined with
+spaces, or from standard input when no argument is given and standard input is
+not a terminal.
+.TP
+.B \-\-json
+One\-shot mode that implies
+.BR \-p ,
+writing the run's session records to standard output as JSON Lines, one record
+per line, closed by a
+.B result
+record carrying the outcome, final text, usage and session id. The standard
+error banner and statistics are omitted; errors and warnings still go there.
+.TP
+.BR \-c ", " \-\-continue
+Resume the most recent conversation recorded for the current directory.
+.TP
+.BR \-\-resume [ =\fIID\fP]
+Resume a past conversation in the current directory, restoring the provider,
+model, effort and preset it last used. Without an argument a picker is shown,
+which requires a terminal; with an id, or a unique prefix of one, the run
+continues without prompting. A command line selection flag overrides the
+restored choice and is recorded in the resumed session.
+.TP
+.B \-\-no\-session
+Do not record this conversation. Nothing is left to resume afterwards, and
+prompts are not added to the Ctrl\-R recall. Earlier sessions and prompts stay
+readable.
+.TP
+.B \-\-raw
+Send only the prompt text: no base system prompt, no environment section, no
+.BR AGENTS.md ,
+no skills and no tools. Useful as a barebones chat interface.
+.TP
+.B \-\-bare
+Run without project and delegation context: no
+.BR AGENTS.md ,
+no skills, no subagent section. The environment section, the tools and the base
+system prompt remain, unlike
+.BR \-\-raw .
+.TP
+.BI \-\-provider= NAME
+Select the backend for this run. One of
+.BR codex ,
+.BR openai ,
+.BR anthropic ,
+.BR openrouter ,
+.BR opencode\-zen ,
+.BR opencode\-go ,
+.BR llamacpp ,
+.B ollama,
+or a provider defined in the configuration file.
+.TP
+.BI \-\-model= ID
+Select the model for this run.
+.TP
+.BI \-\-effort= LEVEL
+Select the reasoning effort for this run, where the provider supports it.
+.TP
+.BI \-\-preset= NAME
+Apply the named preset, a
+.BI presets. NAME
+selection from the configuration file. A preset is applied first and explicit
+provider, model and effort flags are layered over it.
+.TP
+.BR \-h ", " \-\-help
+Show usage information and exit.
+.TP
+.BR \-v ", " \-\-version
+Show the version and exit.
+.PP
+The four selection flags apply to the current process only, are not persisted,
+and take priority over every other source. Settings are resolved in this
+order, first defined value winning:
+.PP
+.RS
+current\-process override \(-> resumed conversation \(-> environment \(-> state file \(-> configuration file \(-> built\-in default
+.RE
+.SH INTERACTIVE COMMANDS
+Type
+.B /help
+inside the REPL for the authoritative live list.
+.TP
+.BI /new " [" preset ]
+Start a fresh conversation, optionally with a preset.
+.B /clear
+is an alias.
+.TP
+.B /resume
+Pick a past session for this directory.
+.TP
+.BI /fork " [" n ]
+Create a new session branching before an earlier prompt.
+.B /fork 0
+clones the current tip. Prefer it over
+.B /undo
+when trying an alternative, since the original session stays intact.
+.TP
+.BI /undo " [" n ]
+Permanently truncate this session before an earlier prompt. It rewrites both
+the conversation memory and the session file, and has no redo.
+.TP
+.B /provider
+Choose a provider, model and effort.
+.TP
+.B /model
+Choose a model and effort for the current provider.
+.TP
+.B /effort
+Choose the reasoning effort, where supported.
+.TP
+.BI /preset " [" name ]
+Apply a configuration\-defined preset.
+.TP
+.BI /preset\-save " " name " [" tint ]
+Save the current provider, model and effort as a preset.
+.TP
+.BI /config " [" key " [" value ]]
+Show the resolved value, source and description of each setting, or set one for
+this process. Provider, model, effort and preset have their own commands, and
+API keys are only ever reported as set or unset.
+.TP
+.BI /compact " [" focus ]
+Summarize older context, optionally emphasising something the summary must
+preserve.
+.TP
+.B /copy
+Copy the most recent assistant response.
+.TP
+.BI /tasks " [" kill " " \fIid\fP... " | " kill " all ]
+List background tasks, or stop them.
+.TP
+.B /session
+Show the current session and local usage totals.
+.TP
+.B /usage
+Query provider account or subscription usage, where supported.
+.TP
+.BI /login " [" provider ]
+Log in to a provider account with a
+.B hax\-managed
+token, for ChatGPT/codex.
+.TP
+.BI /logout " [" provider ]
+Revoke and remove a
+.B hax\-managed
+login.
+.SH KEYS
+.TP
+.B Enter
+Submit. At a paused, empty prompt, continue without adding a message.
+.B Shift\-Enter
+inserts a newline when the terminal sends LF for it.
+.TP
+.BR Up ", " Down
+Recall the previous or next prompt.
+.B Ctrl\-R
+searches the persistent prompt history.
+.TP
+.B Esc
+Pause after the current step so the conversation can be steered.
+.B Esc
+twice interrupts the model or a running tool immediately.
+.TP
+.B Ctrl\-C
+Clear the current prompt; twice on an empty prompt quits.
+.B Ctrl\-D
+quits on an empty prompt.
+.TP
+.B Ctrl\-L
+Clear the screen and redraw the prompt.
+.TP
+.B Ctrl\-G
+Edit the prompt in
+.BR $EDITOR .
+.TP
+.B Ctrl\-O
+Open the rendered conversation in
+.BR $PAGER .
+This is the best view for reviewing what happened.
+.TP
+.B Ctrl\-T
+Open the model\-facing transcript in
+.BR $PAGER :
+the system prompt, tool schemas, tool calls and results, and post\-compaction
+context.
+.TP
+.B Ctrl\-V
+Paste a clipboard image, or clipboard text when no image is available.
+.TP
+.B @ + Tab
+Choose a project file with
+.BR fzf (1)
+and insert its path. The model reads the file only if it needs to.
+.SH CONFIGURATION
+Configuration is optional: the interactive pickers work without a file and
+remember provider and model choices. See
+.B config.json
+below for the settings reference.
+.SS Files
+hax follows the XDG Base Directory specification. These are the paths used
+when the corresponding
+.BR XDG_CONFIG_HOME ,
+.B XDG_STATE_HOME
+or
+.B XDG_CACHE_HOME
+variable is unset.
+.TP
+.I ~/.config/hax/config.json
+Durable, user\-owned configuration: defaults, provider definitions, presets and
+behaviour changes. Suitable for a dotfiles repository, provided secrets stay in
+environment variables. Plain JSON without comments; dotted keys are normally
+nested objects.
+.TP
+.I ~/.config/hax/AGENTS.md
+Global project instructions, loaded before any repository instructions.
+.TP
+.I ~/.config/hax/skills/ , ~/.agents/skills/
+Skill directories containing a
+.B SKILL.md
+per skill.
+.B <dir>/.agents/skills/
+is searched first, from the current directory up to the repository root, so a
+nearer directory shadows a wider one. A skill should explain when and how to use
+a CLI or a repeatable workflow; project policy belongs in
+.BR AGENTS.md .
+.TP
+.I AGENTS.md
+Discovered from the repository root down to the current directory, so narrower
+rules follow broader ones. Outside Git, only
+.I ./AGENTS.md
+is considered. This is the place for build, test, lint and formatting commands,
+where important modules live, and what must not change.
+.TP
+.I ~/.local/state/hax/state.json
+Remembered interactive selections, written by
+.BR hax .
+Do not edit by hand.
+.TP
+.I ~/.local/state/hax/sessions/<encoded\-cwd>/
+Sessions and prompt history, as JSONL, scoped to the current directory.
+Sessions inactive for 30 days are removed by default; the
+.B session_retention_days
+setting changes that, and
+.B 0
+keeps them indefinitely. The format is documented in
+.IR sessions.md .
+.TP
+.I ~/.cache/hax/catalog.json
+Model metadata cache.
+.SS Environment
+.TP
+.B HAX_PROVIDER ", " HAX_MODEL ", " HAX_EFFORT ", " HAX_PRESET
+Override the provider, model, effort or preset for this run. Useful for
+per\-shell and automated use; they override saved interactive choices.
+.TP
+.B HAX_SYSTEM_PROMPT
+Replace the base system prompt.
+.TP
+.B HAX_SUBAGENT_DEPTH
+Set by
+.B hax
+itself in delegated subagent processes.
+.TP
+.B HAX_BASH_TRANSITION_MIN_BYTES
+Byte threshold above which command output is streamed progressively instead of
+being returned as one record.
+.TP
+.BR EDITOR ", " VISUAL ", " PAGER
+Used by
+.BR Ctrl\-G ,
+.B Ctrl\-O
+and
+.BR Ctrl\-T .
+The two pagers default to
+.B "less \-R"
+when
+.B PAGER
+is unset.
+.TP
+.B NO_COLOR
+Disable colour output.
+.SS External programs
+All of these are optional; each feature degrades gracefully without it.
+.TP
+.B fzf
+The
+.B @
+file picker.
+.TP
+.B git
+Repository context in prompts, and a faster
+.B @
+candidate list.
+.TP
+.BR less ", " more
+The transcript pager.
+.TP
+.BR wl\-copy ", " wl\-paste ", " xclip ", " xsel
+Clipboard and image paste on Wayland and X11. Without them, hax falls back to
+the terminal's own OSC 52 support.
+.SH PROVIDERS
+.TP
+.B codex
+Run
+.B /login
+inside hax.
+.TP
+.B openai
+Set
+.BR OPENAI_API_KEY .
+.TP
+.B anthropic
+Set
+.BR ANTHROPIC_API_KEY .
+.TP
+.B openrouter
+Set
+.BR OPENROUTER_API_KEY .
+.TP
+.BR opencode\-zen ", " opencode\-go
+Set
+.BR OPENCODE_API_KEY .
+.TP
+.B llamacpp
+Run
+.BR llama\-server .
+.TP
+.B ollama
+Run
+.BR "ollama serve" .
+.PP
+Any OpenAI\-compatible endpoint can be added as a custom provider through the
+.B providers
+block of
+.IR config.json .
+.SH EXIT STATUS
+.TP
+.B 0
+The run finished.
+.TP
+.B 1
+The run failed.
+.TP
+.B 130
+A one\-shot run was interrupted by
+.B SIGINT
+or
+.BR SIGTERM .
+Completed work is saved and the session stays resumable. A second signal kills
+the process.
+.PP
+In one\-shot mode
+.B SIGUSR1
+pauses cleanly at the next turn boundary instead, and reports the outcome as
+.BR paused .
+.SH EXAMPLES
+Start a conversation in the current repository:
+.PP
+.RS
+.nf
+hax
+.fi
+.RE
+.PP
+Run a single task and capture only the answer:
+.PP
+.RS
+.nf
+answer=$(hax \-p "summarize the public API")
+.fi
+.RE
+.PP
+Keep diagnostics out of the captured result:
+.PP
+.RS
+.nf
+hax \-p "produce JSON only" >result.json 2>run.log
+.fi
+.RE
+.PP
+Observe a run as it happens:
+.PP
+.RS
+.nf
+hax \-\-json "fix the failing test" | jq 'select(.kind == "tool_call" or .type == "result")'
+.fi
+.RE
+.PP
+Continue yesterday's conversation here, on a different model:
+.PP
+.RS
+.nf
+hax \-\-resume \-\-model=other\-model
+.fi
+.RE
+.PP
+Ask a plain model question with no tools and no project context:
+.PP
+.RS
+.nf
+hax \-p \-\-raw "explain this error message"
+.fi
+.RE
+.SH SEE ALSO
+.BR git (1),
+.BR fzf (1),
+.BR less (1),
+.BR ollama (1)
+.PP
+The full manual ships alongside the binary as
+.IR README.md ,
+.I CHANGELOG.md
+and the
+.I docs
+directory, including
+.IR configuration.md ,
+.IR providers.md ,
+.IR sessions.md
+and
+.IR usage.md .
+.PP
+Project homepage:
+.UR https://usehax.dev
+.UE
+.SH AUTHOR
+Oleksandr Chekhovskyi and contributors.

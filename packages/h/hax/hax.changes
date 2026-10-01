@@ -1,0 +1,6 @@
+-------------------------------------------------------------------
+Wed Sep 23 15:01:09 UTC 2026 - Ismael Luceno <iluceno@suse.de>
+
+- Initial package (version 0.5.0)
+- Add hax.1, a manual page for the command, its REPL commands, keys,
+  configuration and exit status

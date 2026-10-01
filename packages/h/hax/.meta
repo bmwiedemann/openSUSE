@@ -1,0 +1,4 @@
+<package name="hax" project="openSUSE:Factory">
+  <title>Minimalist terminal-native coding agent</title>
+  <description>hax is a single small binary that acts as a coding agent in the terminal. It talks to OpenAI, Anthropic, OpenRouter and compatible providers, to a ChatGPT/codex account, or to local models through llama.cpp and ollama.</description>
+</package>
