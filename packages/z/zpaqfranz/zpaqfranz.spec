@@ -17,13 +17,13 @@
 
 
 Name:           zpaqfranz
-Version:        65.4
+Version:        65.5
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
 # embeds a large amount of third-party code. Upstream enumerates every piece
 # in the "Credits and copyrights and licenses" block of zpaqfranz.cpp
-# (27 entries); the tag below is the union of what that block declares,
+# (28 entries); the tag below is the union of what that block declares,
 # after electing the permissive side of the two dual-licensed pieces:
 #  - zpaqfranz itself and libdivsufsort, Embedded Artistry, nilsimsa, zsfx
 #    and ascii-art: MIT (LICENSE is the MIT text),
@@ -37,6 +37,7 @@ Summary:        A journaling, incremental, deduplicating archiver
 #    CC0-1.0 obligation is taken on,
 #  - the libtomcrypt AES is "public domain OR WTFPL" - we elect public domain,
 #  - Twofish by Niels Ferguson: Ferguson-Twofish.
+#  - zstd 1.5.7 (65.5, entry 28), the -m8 backend: BSD-3-Clause.
 # The bundled curl.h is licensed under the curl licence, but only the header
 # is present: libcurl and libssh are dlopened at run time and no curl or
 # libssh code is linked into the binary, so it is not part of this tag.
@@ -46,9 +47,12 @@ Summary:        A journaling, incremental, deduplicating archiver
 # belong to the new "mount" command, which exists only under -DZPAQMOUNT.
 # That is not defined below, so no FUSE code is compiled and neither entry
 # is part of this tag.
-License:        Apache-2.0 AND BSD-2-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Upstream's tag 65.5 still points at the 65.4 commit; the 65.5 code is
+# published only as a release asset.
+Source1:        https://github.com/fcorbelli/zpaqfranz/releases/download/%{version}/%{name}.cpp
 BuildRequires:  gcc-c++
 # libcurl and libssh are dlopened by name at run time for the URL and SFTP
 # features; the binary does not link them, so these stay weak dependencies.
@@ -60,6 +64,7 @@ Provides:       bundled(highwayhash)
 Provides:       bundled(libdivsufsort-lite) = 2.00
 Provides:       bundled(lz4)
 Provides:       bundled(xxhash)
+Provides:       bundled(zstd) = 1.5.7
 
 %description
 Swiss army knife for backup and disaster recovery, like 7z or RAR on
@@ -68,6 +73,9 @@ time machine, but much more efficiently.
 
 %prep
 %autosetup -p1
+# The tag archive still carries the 65.4 zpaqfranz.cpp; the release asset
+# is the 65.5 one.
+cp %{SOURCE1} zpaqfranz.cpp
 # Upstream ships these two with CRLF line endings, which rpmlint rejects.
 sed -i 's/\r$//' CHANGELOG.md COPYING
 

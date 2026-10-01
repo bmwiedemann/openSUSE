@@ -164,4 +164,12 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
 </comment>
     <requestid>1381239</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>ba6f068a53a0e1552e2c40148f938018</srcmd5>
+    <version>65.5</version>
+    <time>1790865877</time>
+    <user>anag_factory</user>
+    <comment>Update to 65.5: new -m8 zstd 1.5.7 backend, -m6 redefined as m4.5 (LZ4/LZAV methods dropped), forward-only a -append with -stdout delta, autotest -all -quick, ARM core-count fix, fixes upstream issues 292-313. Bundled zstd adds BSD-3-Clause to License; code ships only as release asset.</comment>
+    <requestid>1381674</requestid>
+  </revision>
 </revisionlist>

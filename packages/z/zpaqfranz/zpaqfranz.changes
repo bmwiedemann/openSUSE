@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:26:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.5:
+  * New -m8: zstd 1.5.7 inside zpaq, faster than -m1 and smaller;
+    the archive stays a normal zpaq archive, extractable by any
+    zpaq through a ZPAQL decoder stored in the archive itself
+  * -m6 redefined as "m4.5": -m4 plus three sparse contexts, a bit
+    smaller than -m4 for a quarter more time; the old -m6 (LZ4)
+    and -m7 (LZAV) methods are gone, their archives still extract
+  * a -append rewritten: the archive is written only forward (two
+    passes, no seek back) and a -append -stdout emits the new
+    version as a delta stream to glue after the archive
+  * New autotest -all -quick, a four-step self test for slow
+    machines; ARM Linux builds now use all their cores
+  * -mx/-ms are now accepted as the short form of -method: they
+    used to be silently ignored, making a plain -m1 archive
+  * mount without ZPAQMOUNT now exits 2 instead of printing help;
+    a batch of fixes of upstream issues 292-313
+- Upstream's tag 65.5 still points at the 65.4 commit, so the
+  zpaqfranz.cpp release asset is overlaid in %prep; the License
+  tag gains BSD-3-Clause for the bundled zstd
+
+-------------------------------------------------------------------
 Mon Sep 28 13:18:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 65.4:
