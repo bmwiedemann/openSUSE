@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-cyclopts
-Version:        5.0.0
+Version:        5.1.0
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module hatch-vcs}
 BuildRequires:  %{python_module hatchling}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module rich >= 13.6.0}
-BuildRequires:  %{python_module rich-rst >= 1.3.1}
+BuildRequires:  %{python_module rich-rst >= 2.0.1}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  alts
 BuildRequires:  fdupes
@@ -39,12 +39,8 @@ Requires:       alts
 Requires:       python-attrs >= 23.1.0
 Requires:       python-docstring-parser >= 0.15
 Requires:       python-rich >= 13.6.0
-Requires:       python-rich-rst >= 1.3.1
+Requires:       python-rich-rst >= 2.0.1
 BuildArch:      noarch
-%if %{python_version_nodots} < 311
-Requires:       python-tomli >= 2.0.0
-Requires:       python-typing_extensions >= 4.8.0
-%endif
 %python_subpackages
 
 %description

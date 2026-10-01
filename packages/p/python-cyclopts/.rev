@@ -220,4 +220,13 @@ No dependency or license changes. Built and rpmlint-clean on aarch64.</comment>
     <comment>Update to 5.0.0 (major, intentionally breaking; no Factory consumers).</comment>
     <requestid>1380165</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>b156aa68cb9b6bf0cd7807e6ad08b125</srcmd5>
+    <version>5.1.0</version>
+    <time>1790865880</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.1.0: support bool union'd with other types (bool | list[str] etc.); public App/decorator API unchanged. Spec: rich-rst floor raised to &gt;= 2.0.1 per upstream's declared minimum; stale conditional tomli/typing_extensions requires dropped.
+</comment>
+    <requestid>1381676</requestid>
+  </revision>
 </revisionlist>
