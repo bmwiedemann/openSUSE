@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 30 15:46:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.7.9
+  * Attribute values are XML-decoded once again, as before 3.7.8,
+    so &amp;lt; gives &lt; #1062 and #1098
+  * A memory leak in every MD5 digest, since 3.7.8 #884
+  * AKAv1-MD5 with wolfSSL lost the last byte of a padded nonce,
+    since 3.7.8 #1014
+  * Configuring without GTest failed, since 3.7.8 #891
+  * CMake takes any boolean for USE_SYSTEM_PUGIXML and
+    USE_SYSTEM_GTEST #1060
+  * Building with GCC 16: the bundled pugixml is updated to 1.16
+
+-------------------------------------------------------------------
 Thu Sep 24 07:57:02 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.7.8

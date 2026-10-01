@@ -17,7 +17,7 @@
 
 
 Name:           sipp
-Version:        3.7.8
+Version:        3.7.9
 Release:        0
 Summary:        A SIP protocol testing tool
 License:        GPL-2.0-or-later
@@ -32,7 +32,9 @@ BuildRequires:  lksctp-tools-devel
 BuildRequires:  ncurses-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(gsl)
+BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(libssl)
+BuildRequires:  pkgconfig(pugixml)
 
 %description
 Sipp is a performance testing tool for the SIP protocol. Its main features are
@@ -43,9 +45,13 @@ statistics.
 %prep
 %autosetup
 sed -i 's|#!%{_bindir}/env python3|#!%{_bindir}/python3|g' sipp-multi.py
+# delete bundled libraries
+rm -Rf ./third_party/
 
 %build
 %cmake \
+    -DUSE_SYSTEM_PUGIXML=1 \
+    -DUSE_SYSTEM_GTEST=1 \
     -DUSE_GSL=1 \
     -DUSE_PCAP=1 \
     -DUSE_SSL=1 \
