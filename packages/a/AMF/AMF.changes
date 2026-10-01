@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 09:18:26 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.5.3:
+  * AMF v1.5.3 release
+  * Request AI agent identification in issue templates
+  * Hotfix for AMFContext2 IID for C header
+  * Fix typos in docs (#600)
+  * Add missing HIGH_QUALITY preset to H264/HEVC encode API docs
+
+-------------------------------------------------------------------
 Sat May 09 10:48:17 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.5.2:
