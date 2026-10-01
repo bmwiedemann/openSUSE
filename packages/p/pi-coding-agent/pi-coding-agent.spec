@@ -23,11 +23,11 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        0.87.1
+Version:        0.99.1
 Release:        0
 Summary:        Minimal terminal coding agent
-# Legal-Review-Notice: pi itself is MIT. The 116 vendored dependencies are
-# MIT (56), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
+# Legal-Review-Notice: pi itself is MIT. The 119 vendored dependencies are
+# MIT (59), Apache-2.0 (36), BSD-3-Clause (13), ISC (7), BlueOak-1.0.0 (2),
 # Unlicense (1) and 0BSD (1); every dependency declares a license. The tag
 # below is the union of all of them.
 License:        0BSD AND Apache-2.0 AND BSD-3-Clause AND BlueOak-1.0.0 AND ISC AND MIT AND Unlicense
@@ -93,15 +93,15 @@ cd %{name}
 %patch -P 1 -p1
 cp -p %{SOURCE1} LICENSE
 
-# Source maps (5.9 MB) and TypeScript declarations (1 MB) are of no use in a
-# runtime package and there is no -devel consumer for a CLI.
+# Source maps (4.9 MB) and TypeScript declarations (0.6 MB) are of no use in
+# a runtime package and there is no -devel consumer for a CLI.
 find dist -name '*.map' -delete
 find dist -name '*.d.ts' -delete
 
 # Documentation screenshots, useless for a terminal application.
 rm -rf docs/images
 
-# The 7.7 MB pre-bundled runtime added in 0.84.3. Patch1 points bin and the
+# The 9.1 MB pre-bundled runtime added in 0.84.3. Patch1 points bin and the
 # rpc-entry export back at the modular tree, so nothing references this any
 # more, and it carries an unpatched second copy of detectInstallMethod() that
 # pi-disable-self-update.patch cannot reach.
@@ -113,20 +113,17 @@ rm -rf dist/bundle
 # non-redistributable shareware WAD on first run.
 rm -rf examples/extensions/doom-overlay
 
-# Upstream's own shrinkwrap omits the integrity field for the five
-# @earendil-works/* sibling packages, which the node_modules source service
-# rejects; Source10 is the same file with those hashes filled in and the
-# optionalDependency entries removed (see %%build). It must stay in place for
-# the install below, or npm re-resolves from package.json and reaches for
-# devDependencies that are deliberately not vendored.
+# Upstream's own shrinkwrap is production-only and omits the integrity field
+# for the seven @earendil-works/* sibling packages, which the node_modules
+# source service rejects; Source10 is the full package-lock.json npm generated
+# for this tree instead, with integrity for every entry. It must stay in place
+# for the install below, or npm re-resolves the ranges in package.json and
+# wants tarballs the vendored archive does not carry.
 cp -p %{SOURCE10} npm-shrinkwrap.json
 
-# That shrinkwrap is production-only, so it does not list the devDependencies
-# that package.json still declares. npm treats the pair as out of sync and
-# re-resolves the whole tree from package.json -- reaching for @types/* that
-# are deliberately not vendored -- even under --omit=dev. dist/ is shipped
-# prebuilt and nothing here compiles or runs the upstream test suite, so drop
-# the devDependencies and let the two agree.
+# dist/ is shipped prebuilt and nothing here compiles or runs the upstream
+# test suite, so drop the devDependencies; the --omit=dev install below then
+# has nothing to reconcile.
 npm pkg delete devDependencies
 
 %build
@@ -134,13 +131,13 @@ cd %{name}
 # --omit=optional: every optionalDependency in this tree is a per-architecture
 # prebuilt binary, which would make the payload of this noarch package differ
 # between build hosts. Since 0.85.0 @earendil-works/chord pulls in esbuild,
-# whose 26 platform packages are ~11 MB of prebuilt linker each; since 0.86.0
-# they are the only optionalDependencies left, upstream having replaced the
-# @mariozechner/clipboard addon with helpers bundled in pi-tui. esbuild is
-# reached only from chord/bundler, which nothing in the shipped tree imports
-# -- pi's only use of chord is pi-agent-core pulling in chord/context -- so
-# its JavaScript wrapper is inert here. Source10 has the same entries
-# stripped, so they are not carried in the source RPM either.
+# whose 26 platform packages are ~11 MB of prebuilt linker each; since 0.99.0
+# the dev-side vite chain adds rolldown, lightningcss and fsevents platform
+# packages to the optional set. Source10 and the vendored archive keep the
+# optional entries; the install below simply skips them. esbuild is reached
+# only from chord/bundler and chord/node, which nothing in the shipped tree
+# imports -- pi's only use of chord is chord root, /context and /delta -- so
+# its JavaScript wrapper is inert here.
 local-npm-registry %{_sourcedir} install --omit=dev --omit=optional --ignore-scripts
 rm -f npm-shrinkwrap.json package-lock.json
 

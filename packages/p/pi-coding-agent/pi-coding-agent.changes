@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 30 08:32:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.99.1 (upstream jumped from 0.87.1; no
+  0.88-0.98 releases exist):
+  * Codemode and MCP: model-written JavaScript runs in a QuickJS
+    WebAssembly sandbox calling pi's tools in parallel; MCP servers
+    over stdio/HTTP with OAuth come from mcp.json and are managed
+    with /mcp and pi mcp add|remove|list|login|logout
+  * New default system theme follows the terminal's own palette,
+    with #rgb/oklch()/okhsl() colors and light/dark rebuilding
+  * Sign in with ChatGPT on the OpenAI provider; inherited OpenAI
+    Codex provider renamed "OpenAI Codex (legacy)"
+  * Experimental virtual models route each request to a physical
+    model; llama.cpp models gain classifier support
+  * GPT-6.1 Sol joins OpenAI, Azure OpenAI and OpenAI Codex, and
+    becomes the default Codex model
+  * Built-in extensions and tools are named builtin:<name>,
+    --no-extensions disables them too; tool APIs gain exposure,
+    namespaces, annotations, structuredContent, ctx.executeTool()
+  * Sessions are created on the first user message, so pi no longer
+    loses them when it exits before the first response
+  * Many more fixes and improvements; see upstream's release notes
+- Refresh package-lock.json (now the full npm-generated lockfile,
+  integrity complete) and the vendored node_modules archive:
+  116 -> 119 shipped modules, with @earendil-works/pi-codemode,
+  @earendil-works/pi-mcp and quickjs-wasi new, openai 6.40.0 ->
+  7.19.0 and agent-base/https-proxy-agent 7.x -> 9.x; license union
+  unchanged
+- The new codemode sandbox ships as WebAssembly only (quickjs.wasm
+  plus five .so-named WASI modules, no ELF), so the package stays
+  noarch
+
+-------------------------------------------------------------------
 Wed Sep 23 18:12:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.87.1:

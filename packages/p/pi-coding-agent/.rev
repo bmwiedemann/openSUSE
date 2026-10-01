@@ -241,4 +241,13 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update to 0.87.1: new models, compaction/mode fixes. Undici 8.10.2 retained (8-CVE batch fixed since 0.86.1, boo#1279832).</comment>
     <requestid>1380020</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>12ff6adf46e20497c6e72413652fda43</srcmd5>
+    <version>0.99.1</version>
+    <time>1790865889</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.99.1: codemode (model-written JS in a QuickJS WASM sandbox) and MCP support, terminal-palette system theme, ChatGPT sign-in, virtual/classifier models, GPT-6.1 Sol. New vendored deps pi-codemode, pi-mcp, quickjs-wasi (WASM-only, stays noarch); openai 7.x. No config/session migration.
+</comment>
+    <requestid>1381684</requestid>
+  </revision>
 </revisionlist>
