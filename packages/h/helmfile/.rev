@@ -945,4 +945,53 @@
     <comment>1</comment>
     <requestid>1377837</requestid>
   </revision>
+  <revision rev="103" vrev="1">
+    <srcmd5>2952f03790556ec80eca1a56818cd825</srcmd5>
+    <version>1.8.1</version>
+    <time>1790866094</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.8.1:
+  * feat: add HELMFILE_DISABLE_VALS env var to skip vals processing
+    by @jimmyR in #2471
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.29 to
+    0.0.30 by @dependabot[bot] in #2796
+  * build(deps): bump golang.org/x/term from 0.45.0 to 0.46.0 by
+    @dependabot[bot] in #2795
+  * build(deps): bump github.com/sashabaranov/go-openai from
+    1.42.0 to 1.42.1 by @dependabot[bot] in #2792
+  * fix: cancel kubedog-tracked helm subprocesses on SIGINT/SIGTERM
+    by @vulragrag-star in #2791
+  * build(deps): bump github.com/hashicorp/go-getter/v2 from 2.2.3
+    to 2.2.4 by @dependabot[bot] in #2793
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.3 to 1.33.4 by @dependabot[bot] in #2794
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.111.0 to 1.113.1 by @dependabot[bot] in #2797
+  * build: update Go to 1.27.1 and modernize the codebase by
+    @yxxhero in #2798
+  * build(deps): bump github.com/helmfile/chartify from 0.28.2 to
+    0.29.0 by @dependabot[bot] in #2803
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.4 to 1.33.5 by @dependabot[bot] in #2801
+  * build(deps): bump github.com/hashicorp/hcl/v2 from 2.24.0 to
+    2.25.0 by @dependabot[bot] in #2802
+  * feat: add per-release continue-on-error support by @Tsukoyachi
+    in #2804
+  * fix: remove partially extracted chart when helm pull fails by
+    @schmidtjohannes in #2805
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.113.1 to 1.113.2 by @dependabot[bot] in #2808
+  * build(deps): bump github.com/helmfile/vals from 0.46.1 to
+    0.47.0 by @dependabot[bot] in #2806
+  * ci: publish a signed packslip with each release by @jdx in #2809
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/service/s3 from
+    1.113.2 to 1.113.4 by @dependabot[bot] in #2811
+  * build(deps): bump github.com/aws/aws-sdk-go-v2/config from
+    1.33.5 to 1.33.6 by @dependabot[bot] in #2810
+  * add --track-logs-interval flag by @pznamensky in #2807
+  * fix: drop leading dot from release condition error message by
+    @Cayan in #2812
+</comment>
+    <requestid>1381823</requestid>
+  </revision>
 </revisionlist>

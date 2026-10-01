@@ -17,9 +17,9 @@
 #
 
 
-%define git_commit 0d6f3ab1605a0ec8711dcfd46f5bac0788fb60cb
+%define git_commit 226c16b88e2a1982b89b9ce2aee4fc69a3e03d73
 Name:           helmfile
-Version:        1.8.0
+Version:        1.8.1
 Release:        0
 Summary:        Deploy Kubernetes Helm Charts
 License:        MIT
@@ -31,7 +31,7 @@ Requires:       helm >= 3.18.6
 Recommends:     helm >= 3.21.3
 BuildRequires:  golang-packaging
 BuildRequires:  xz
-BuildRequires:  golang(API) >= 1.26
+BuildRequires:  golang(API) >= 1.27
 
 %description
 Helmfile is a declarative spec for deploying helm charts. It lets you...
