@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Sep 17 21:24:30 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- CVE-2026-15310: bound zipfile decompression for
+  bzip2/LZMA/Zstandard (bsc#1277111, gh#python/cpython#156002)
+  CVE-2026-15310-bound-zipfile-decompression.patch
+
+-------------------------------------------------------------------
 Wed Sep 16 12:10:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Restore back macros.python3, we need it.

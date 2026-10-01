@@ -251,6 +251,9 @@ Patch56:        CVE-2026-17084-unicode-rfc3454.patch
 # PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
 # in tarfile, handle a member that leaves the destination and comes back
 Patch57:        CVE-2026-19672-tarfile-outside-dirs.patch
+# PATCH-FIX-UPSTREAM CVE-2026-15310-bound-zipfile-decompression.patch bsc#1277111 mcepl@suse.com
+# Bound zipfile decompression for bzip2/LZMA/Zstandard (gh#python/cpython!156003)
+Patch58:         CVE-2026-15310-bound-zipfile-decompression.patch
 #### END OF PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

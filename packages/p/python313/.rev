@@ -1392,4 +1392,14 @@ CVE-2026-17084: Don't consider Unicode codepoint attributes
       optional groups in different order on 32-bit and 64-bit</comment>
     <requestid>1378363</requestid>
   </revision>
+  <revision rev="46" vrev="2">
+    <srcmd5>17d27e97953e6d86452bfa41a0066807</srcmd5>
+    <version>3.13.15</version>
+    <time>1790865678</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-15310: bound zipfile decompression for
+  bzip2/LZMA/Zstandard (bsc#1277111, gh#python/cpython#156002)
+  CVE-2026-15310-bound-zipfile-decompression.patch</comment>
+    <requestid>1381538</requestid>
+  </revision>
 </revisionlist>
