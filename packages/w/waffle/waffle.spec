@@ -20,14 +20,13 @@
 %define _minorVersion 0
 %define libname lib%{name}-%{_majorVersion}-%{_minorVersion}
 Name:           waffle
-Version:        1.8.1
+Version:        1.8.3
 Release:        0
 Summary:        C library defering selection of GL API and window system until runtime
 License:        BSD-2-Clause
 Group:          Development/Libraries/X11
 URL:            https://people.freedesktop.org/~chadversary/waffle/index.html
-Source0:        https://gitlab.freedesktop.org/mesa/waffle/-/raw/website/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
-Patch0:         c11-threads-c23.patch
+Source0:        https://waffle.freedesktop.org/files/release/%{name}-%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
@@ -89,7 +88,7 @@ develop Waffle applications.
 
 %install
 %meson_install
-mv $RPM_BUILD_ROOT/%{_datadir}/doc/waffle1 .
+mv %{buildroot}/%{_datadir}/doc/waffle1 .
 %fdupes waffle1/
 
 %post -n %{libname} -p /sbin/ldconfig
@@ -110,7 +109,10 @@ mv $RPM_BUILD_ROOT/%{_datadir}/doc/waffle1 .
 %{_libdir}/libwaffle-1.so
 %doc waffle1/examples/
 %dir %{_includedir}/waffle-%{_majorVersion}
+%dir %{_libdir}/cmake/Waffle
 %{_includedir}/waffle-%{_majorVersion}/*.h
+%{_libdir}/cmake/Waffle/WaffleConfig.cmake
+%{_libdir}/cmake/Waffle/WaffleConfigVersion.cmake
 %{_libdir}/pkgconfig/waffle-%{_majorVersion}.pc
 
 %changelog
