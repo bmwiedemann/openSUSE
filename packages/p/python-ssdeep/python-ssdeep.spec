@@ -1,7 +1,7 @@
 #
 # spec file for package python-ssdeep
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/DinoTools/python-ssdeep
 Source:         https://github.com/DinoTools/python-ssdeep/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # https://github.com/DinoTools/python-ssdeep/commit/6cf96d63e9512fa14b6557d0d8afaa5128e0e853
 Patch0:         python-ssdeep-no-six.patch
+# PATCH-FIX-OPENSUSE Do not use pkg_resources in setup.py
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module cffi >= 0.8.6}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
@@ -48,8 +50,6 @@ content and length.
 
 %prep
 %autosetup -p1 -n python-ssdeep-%{version}
-# https://github.com/DinoTools/python-ssdeep/issues/57
-sed -i 's:"pytest-runner.*"::' setup.py
 
 %build
 %pyproject_wheel

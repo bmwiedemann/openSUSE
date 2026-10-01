@@ -73,4 +73,14 @@
     <comment>- Switch to autosetup and pyproject macros.</comment>
     <requestid>1154576</requestid>
   </revision>
+  <revision rev="10" vrev="3">
+    <srcmd5>a91675d3dfe9df2f1210d1075f323e31</srcmd5>
+    <version>3.4.1</version>
+    <time>1790865991</time>
+    <user>anag_factory</user>
+    <comment>- Refresh python-ssdeep-no-six.patch
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py.</comment>
+    <requestid>1381756</requestid>
+  </revision>
 </revisionlist>

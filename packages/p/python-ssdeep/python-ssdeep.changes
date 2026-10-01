@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 04:08:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Refresh python-ssdeep-no-six.patch
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py.
+
+-------------------------------------------------------------------
 Mon Mar  4 07:18:51 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros. 

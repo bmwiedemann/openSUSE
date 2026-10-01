@@ -1,8 +1,8 @@
-diff --git a/setup.py b/setup.py
-index 3a32b13..c99d33d 100755
---- a/setup.py
-+++ b/setup.py
-@@ -182,11 +182,9 @@ def get_objects():
+Index: python-ssdeep-3.4.1/setup.py
+===================================================================
+--- python-ssdeep-3.4.1.orig/setup.py
++++ python-ssdeep-3.4.1/setup.py
+@@ -186,11 +186,9 @@ setup(
      keywords="ssdeep",
      install_requires=[
          "cffi>=1.0.0",
@@ -14,11 +14,11 @@ index 3a32b13..c99d33d 100755
      ] + setup_requires,
      tests_require=[
          "pytest",
-diff --git a/src/ssdeep/__init__.py b/src/ssdeep/__init__.py
-index 5735d51..7aaf884 100644
---- a/src/ssdeep/__init__.py
-+++ b/src/ssdeep/__init__.py
-@@ -5,8 +5,6 @@
+Index: python-ssdeep-3.4.1/src/ssdeep/__init__.py
+===================================================================
+--- python-ssdeep-3.4.1.orig/src/ssdeep/__init__.py
++++ python-ssdeep-3.4.1/src/ssdeep/__init__.py
+@@ -5,8 +5,6 @@ which is a library for computing Context
  
  import os
  
@@ -27,7 +27,7 @@ index 5735d51..7aaf884 100644
  # Ignore flake8 F401 warning for unused vars
  from ssdeep.__about__ import (  # noqa: F401
      __author__, __copyright__, __email__, __license__, __summary__, __title__,
-@@ -104,10 +102,10 @@ def update(self, buf, encoding="utf-8"):
+@@ -104,10 +102,10 @@ class Hash(BaseHash):
          if self._state == ffi.NULL:
              raise InternalError("State object is NULL")
  
@@ -40,7 +40,7 @@ index 5735d51..7aaf884 100644
              raise TypeError(
                  "Argument must be of string, unicode or bytes type not "
                  "'%r'" % type(buf)
-@@ -179,10 +177,10 @@ def update(self, buf, encoding="utf-8"):
+@@ -179,10 +177,10 @@ class PseudoHash(BaseHash):
  
          """
  
@@ -89,4 +89,3 @@ index 5735d51..7aaf884 100644
          raise TypeError(
              "Argument must be of string, unicode or bytes type not "
              "'%r'" % type(buf)
-
