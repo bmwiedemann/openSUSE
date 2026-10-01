@@ -16,11 +16,11 @@
 #
 
 
-%define base_version 50
+%define base_version 51
 %define glib_version 2.74
 
 Name:           gnote
-Version:        50.2
+Version:        51.0
 Release:        0
 Summary:        A Port of Tomboy to C++
 License:        GPL-3.0-or-later
@@ -45,11 +45,12 @@ BuildRequires:  pkgconfig(glibmm-2.68) >= %{glib_version}
 #         Need updated version that support GTK 4
 # BuildRequires:  pkgconfig(gspell-1) >= 1.6.0
 BuildRequires:  pkgconfig(gtkmm-4.0) >= 4.10.0
-BuildRequires:  pkgconfig(libadwaita-1)
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.6
 BuildRequires:  pkgconfig(libsecret-1) >= 0.8
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
 BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(UnitTest++)
 
 %description
 It is the same note taking application, including most of the add-ins (more are
@@ -85,15 +86,14 @@ search results from documents.
 %fdupes %{buildroot}%{_datadir}
 %find_lang %{name} %{?no_lang_C}
 
-%if %suse_version >= 1550
 %ldconfig_scriptlets
-%else
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
-%endif
 
+%ifarch x86_64
+%dnl test suite only enabled on x86_64
+%dnl https://gitlab.gnome.org/GNOME/gnote/-/work_items/226
 %check
 %meson_test
+%endif
 
 %files
 %license COPYING

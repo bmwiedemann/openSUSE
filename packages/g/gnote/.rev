@@ -935,4 +935,41 @@ Search-provider is now it's own subpackage (forwarded request 180587 from dimsta
   + Updated translations.</comment>
     <requestid>1376127</requestid>
   </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>a18e4305d5776b81c5511e4721590107</srcmd5>
+    <version>51.0</version>
+    <time>1790865967</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.0:
+  + Fixes: Highlight menu item will be highlighted using the same
+    color
+  + Updated translations.
+- Only run test suite on x86_64, as it frequently fails on most
+  other architectures
+  (https://gitlab.gnome.org/GNOME/gnote/-/work_items/226).
+
+- Update to version 51.beta:
+  + New Features:
+    - Allow renaming notebooks with case-only changes
+    - Replace Title plugin now has a setting to use clipboard
+      instead of selection
+  + Fixes:
+    - Move to start of text when Home is pressed inside bullet list
+    - Bring back shortcut to replace title
+    - Bring back shortcut to print
+    - Sort note list on note save
+  + Updated translations.
+
+- Update to version 51.alpha:
+  + New Features:
+    - libadwaita 1.6 or later required
+    - Colors for title, links and highlight are accent color based
+      now by default
+    - Fix opening in new window not allways opens in new
+    - Fix link activation when auto-linking is disabled
+    - Fix notebook names lowercased after restart
+  + Updated translations.
+- Bump base_version define to 51 following upstreams so name</comment>
+    <requestid>1381739</requestid>
+  </revision>
 </revisionlist>
