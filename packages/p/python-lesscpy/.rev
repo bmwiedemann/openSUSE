@@ -125,4 +125,17 @@
     <comment>- convert to libalternatives</comment>
     <requestid>1284150</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>a06bbd85d43ace14f985f09d8b18979d</srcmd5>
+    <version>0.15.2</version>
+    <time>1790866036</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15.2:
+  * Migrate README from reStructuredText to Markdown
+  * Move from nosetests to pytest
+  * Drop pkg_resources usage from setup.py
+  * remove usage of six
+- Drop patch python-lesscpy-no-six.patch, merged upstream.</comment>
+    <requestid>1381762</requestid>
+  </revision>
 </revisionlist>

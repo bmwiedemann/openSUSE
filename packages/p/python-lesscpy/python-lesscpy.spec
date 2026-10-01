@@ -1,7 +1,7 @@
 #
 # spec file for package python-lesscpy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,12 @@
 
 %bcond_without libalternatives
 Name:           python-lesscpy
-Version:        0.15.1
+Version:        0.15.2
 Release:        0
 Summary:        Lesscss compiler
 License:        MIT
 URL:            https://github.com/lesscpy/lesscpy
 Source:         https://files.pythonhosted.org/packages/source/l/lesscpy/lesscpy-%{version}.tar.gz
-# https://github.com/lesscpy/lesscpy/pull/126
-Patch0:         python-lesscpy-no-six.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module ply}
 BuildRequires:  %{python_module pytest}
@@ -36,7 +34,6 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-ply
-Requires:       python-setuptools
 BuildArch:      noarch
 %python_subpackages
 
@@ -71,9 +68,9 @@ rm test/test_{bootstrap3,less,issues}.py
 
 %files %{python_files}
 %license LICENSE
-%doc README.rst
+%doc README.md
 %python_alternative %{_bindir}/lesscpy
 %{python_sitelib}/lesscpy
-%{python_sitelib}/lesscpy-%{version}*-info
+%{python_sitelib}/lesscpy-%{version}.dist-info
 
 %changelog
