@@ -399,4 +399,15 @@
     <comment></comment>
     <requestid>1359908</requestid>
   </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>75fdfbc1ef11da0cc8b238a3aa6cdec2</srcmd5>
+    <version>12.26.0</version>
+    <time>1790866106</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 12.26.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1381856 from glaubitz)</comment>
+    <requestid>1381909</requestid>
+  </revision>
 </revisionlist>
