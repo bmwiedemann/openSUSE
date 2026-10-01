@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:21:54 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.5.11
+  ## Security patches
+  * CVE-2026-102831 (bsc#1283354): XSS via notebook cells pasted
+    from the system clipboard
+  * CVE-2026-102904 (bsc#1283353): argument injection in extension
+    uninstall exposes server-readable files and internal URLs
+  * CVE-2026-102830 (bsc#1283355): code injection via a language
+    pack's plural forms header
+
+-------------------------------------------------------------------
 Fri Aug 28 10:00:04 UTC 2026 - Marius Grossu <marius.grossu@suse.com>
 
 - Update to 4.5.10:
