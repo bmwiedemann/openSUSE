@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Sep 28 23:01:16 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to tag SDK-1.4.363.0
+  * Release VK_INSTANCE_LAYERS in
+    enable_correct_layers_from_settings
+  * Fix whole-wildcard and short prefix globs in
+    determine_filter_type
+  * Speed up vkGet{Instance,Device}ProcAddr lookups
+  * loader: apply settings device configurations to device groups
+  * loader: clamp driver-reported device extension count to caller
+    buffer
+
+-------------------------------------------------------------------
 Tue Jul 28 23:28:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to tag SDK-1.4.357.0
