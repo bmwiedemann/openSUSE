@@ -1,4 +1,4 @@
-From 15c513738b62c1ac69303927dc16a667def0e295 Mon Sep 17 00:00:00 2001
+From b462abd77b673eb470c5414358bc3173e59413a1 Mon Sep 17 00:00:00 2001
 From: Ralf Habacker <ralf.habacker@freenet.de>
 Date: Wed, 9 Jul 2025 14:46:16 +0200
 Subject: [PATCH 1/6] cmake: add support to build shared libraries
@@ -12,7 +12,7 @@ cmake configure line.
  3 files changed, 4 insertions(+), 2 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 89499a03bb18..24363ab9d1ff 100644
+index 349d07a617a8..6f7c7c91b43f 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -3,6 +3,8 @@ cmake_minimum_required(VERSION 3.10)
@@ -38,7 +38,7 @@ index 6abff374006b..6ecfcd1a5cef 100644
      ${HEADER_FILES_ROSBAG}
      ${SOURCE_FILES_ROSBAG}
 diff --git a/third-party/rsutils/CMakeLists.txt b/third-party/rsutils/CMakeLists.txt
-index 7c4e11e719bc..9a277479ee6f 100644
+index a64f7cf376a2..497cd6d512b7 100644
 --- a/third-party/rsutils/CMakeLists.txt
 +++ b/third-party/rsutils/CMakeLists.txt
 @@ -3,7 +3,7 @@
@@ -47,9 +47,9 @@ index 7c4e11e719bc..9a277479ee6f 100644
  
 -add_library( ${PROJECT_NAME} STATIC "" )
 +add_library( ${PROJECT_NAME} "" )
- # We cannot directly interface with nlohmann_json (doesn't work on bionic)
- #target_link_libraries( ${PROJECT_NAME} PUBLIC nlohmann_json )
  # rsutilgpu.cpp uses dlopen on POSIX / LoadLibrary on Windows to probe for CUDA at
+ # runtime; propagate the dl dependency so consumers of rsutils link it transitively.
+ # CMAKE_DL_LIBS is empty on Windows (LoadLibrary is in kernel32, linked by default).
 -- 
 2.55.0
 

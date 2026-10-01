@@ -197,4 +197,14 @@ D435.</comment>
   * rsutils.patch -&gt; 0006-rsutils-build-as-shared.patch</comment>
     <requestid>1369670</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>ed8606e60a33d3bada54ee13955fdefa</srcmd5>
+    <version>2.58.4</version>
+    <time>1790865783</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.58.4
+  * see release notes here:
+  https://github.com/realsenseai/librealsense/releases/tag/v2.58.4</comment>
+    <requestid>1381594</requestid>
+  </revision>
 </revisionlist>

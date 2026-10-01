@@ -20,7 +20,7 @@
 %define libver %(echo %version|sed 's@^\\([0-9]*\\)\\.\\([0-9]*\\).*@\\1_\\2@')
 
 Name:           librealsense
-Version:        2.58.3
+Version:        2.58.4
 Release:        0
 Summary:        Library for Intel RealSense depth cameras
 License:        Apache-2.0
@@ -92,7 +92,8 @@ sed -i "s/‘\|\’/\'/g" %{_builddir}/%{name}-%{version}/src/libusb/libusb.h
 %cmake \
 	-DOpenGL_GL_PREFERENCE=GLVND \
 	-DCHECK_FOR_UPDATES=OFF \
-	-DIMPORT_DEPTH_CAM_FW=OFF
+	-DIMPORT_DEPTH_CAM_FW=OFF \
+	-DUSE_EXTERNAL_NLOHMANN_JSON=ON
 %cmake_build
 
 %install

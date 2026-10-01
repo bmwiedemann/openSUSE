@@ -1,4 +1,4 @@
-From 0ae3a3edac8581a707d7160853bfb5bb2972b127 Mon Sep 17 00:00:00 2001
+From 1c146b0f06e26b8352df82c1a022c9c60363c515 Mon Sep 17 00:00:00 2001
 From: Jiri Slaby <jslaby@suse.cz>
 Date: Tue, 30 Jun 2026 09:20:51 +0200
 Subject: [PATCH 4/6] disable -pedantic
@@ -10,7 +10,7 @@ that we can see more important warnings.
  1 file changed, 2 insertions(+), 2 deletions(-)
 
 diff --git a/CMake/unix_config.cmake b/CMake/unix_config.cmake
-index f85c1f5080bd..fc287fd2b3fd 100644
+index 086809b1afdd..a5db7ada768b 100644
 --- a/CMake/unix_config.cmake
 +++ b/CMake/unix_config.cmake
 @@ -14,8 +14,8 @@ macro(os_set_flags)
@@ -23,7 +23,7 @@ index f85c1f5080bd..fc287fd2b3fd 100644
 +    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-missing-field-initializers")
      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-switch -Wno-multichar -Wsequence-point -Wformat -Wformat-security")
  
-     execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpmachine OUTPUT_VARIABLE MACHINE)
+     # Default -ffp-contract=fast fuses a*b+c*d into an FMA wherever the ISA has one (x86-64-v3
 -- 
 2.55.0
 
