@@ -18,7 +18,7 @@
 
 
 %global backend_dir %{_libdir}/ggml
-%global upstream_build 10964
+%global upstream_build 11146
 %global license_dir %{_datadir}/licenses
 
 %global llama_sover        %{version}
@@ -27,7 +27,7 @@
 %global mtmd_sover         %{llama_sover}
 %global mtmd_sover_suffix  0
 
-%global ggml_sover         0.24.0
+%global ggml_sover         0.25.1
 %global ggml_sover_suffix  0
 
 %if 0%{?suse_version} == 1500
@@ -43,7 +43,7 @@
 %endif
 
 Name:           llamacpp
-Version:        0.4.1
+Version:        0.5.0
 Release:        0
 Summary:        Inference of Meta's LLaMA model (and others) in pure C/C++
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND BSD-3-Clause AND ISC AND MPL-2.0
