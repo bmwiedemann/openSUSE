@@ -7,4 +7,22 @@
     <comment>Needed by  python-ocrmypdf </comment>
     <requestid>1354697</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>ea7f17e9f10e644cc8f2add15d50fe3c</srcmd5>
+    <version>2.1.0</version>
+    <time>1790865992</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.1.0:
+  * Add support for python 3.14
+  * Make exempi a run-time dependency
+  * Add missing error codes
+  * Remove tox
+  * Use flit for build
+  * Remove travis
+  * Remove packaging dependency requirement
+  * Remove support for python &lt;= 3.6 (All python2 code removed)
+  * fix exempi returns char-size bool, not int
+- Drop patch support-python-313.patch, merged upstream.</comment>
+    <requestid>1381757</requestid>
+  </revision>
 </revisionlist>

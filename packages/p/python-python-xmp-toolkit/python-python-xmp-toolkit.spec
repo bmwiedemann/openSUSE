@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-xmp-toolkit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,17 +18,15 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-python-xmp-toolkit
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
 Summary:        Python XMP Toolkit for working with metadata
 License:        BSD-3-Clause
 URL:            https://github.com/python-xmp-toolkit/python-xmp-toolkit
-Source:         https://files.pythonhosted.org/packages/source/p/python-xmp-toolkit/python-xmp-toolkit-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM Based on one commit of gh#python-xmp-toolkit/python-xmp-toolkit#96
-Patch0:         support-python-313.patch
+Source:         https://files.pythonhosted.org/packages/source/p/python-xmp-toolkit/python_xmp_toolkit-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.7}
+BuildRequires:  %{python_module flit-core}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module setuptools}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  pkgconfig(exempi-2.0)
@@ -44,7 +42,7 @@ BuildArch:      noarch
 A Python XMP Toolkit for working with metadata.
 
 %prep
-%autosetup -p1 -n python-xmp-toolkit-%{version}
+%autosetup -p1 -n python_xmp_toolkit-%{version}
 
 %build
 %pyproject_wheel

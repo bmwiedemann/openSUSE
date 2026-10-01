@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  1 04:23:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.1.0:
+  * Add support for python 3.14
+  * Make exempi a run-time dependency
+  * Add missing error codes
+  * Remove tox
+  * Use flit for build
+  * Remove travis
+  * Remove packaging dependency requirement
+  * Remove support for python <= 3.6 (All python2 code removed)
+  * fix exempi returns char-size bool, not int
+- Drop patch support-python-313.patch, merged upstream.
+
+-------------------------------------------------------------------
 Fri Jan 10 03:43:55 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python-313.patch:
