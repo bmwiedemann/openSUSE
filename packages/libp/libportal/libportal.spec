@@ -31,7 +31,7 @@ ExclusiveArch:  donotbuild
 %endif
 
 Name:           libportal%{pkgsuffix}
-Version:        0.10.0
+Version:        0.11.0
 Release:        0
 Summary:        A GIO-style async API for most Flatpak portals
 License:        LGPL-3.0-or-later

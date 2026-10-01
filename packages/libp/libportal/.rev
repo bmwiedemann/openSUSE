@@ -123,4 +123,20 @@ Not sure this is correct, but lets try it :-) (forwarded request 1283735 from iz
 - Drop libportal-qt69.patch: Fixed upstream.</comment>
     <requestid>1360253</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>d59fd4419c86190f870960fe342c463f</srcmd5>
+    <version>0.11.0</version>
+    <time>1790866791</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.0:
+  + Features: Support globalshortcuts
+  + Bug fixes:
+    - Various Meson cleanups
+    - Document XDP_OPEN_FILE_FLAG_DIRECTORY flag separately so that
+      since annotation lands in the introspection
+    - Remove erroneous CLOSED signal from inputcapture
+    - Add G_{BEGIN,END}_DECLS macros
+    - Remove CONST annotation from get_type methods</comment>
+    <requestid>1381642</requestid>
+  </revision>
 </revisionlist>
