@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  1 04:57:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 12.14.1:
+  * add --name device selection for Q-SYS Audio hardware-health (by
+    invDeviceName or invDeviceType).
+  * add QSC-AUDIO.
+  * add perfdata to CheckPoint ha-status (for Grafana dashboards).
+  * reduce the queries for
+    Huawei HUAWEI-ENTITY-EXTENT-MIB hardware-health.
+  * add an AP cache for ArubaOS wlan-aps.
+
+-------------------------------------------------------------------
 Thu Jul  9 08:06:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 12.13.1:

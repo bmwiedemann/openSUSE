@@ -247,4 +247,20 @@
     <comment></comment>
     <requestid>1364672</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>e5878743b0323a2e18790fd0c13fc80f</srcmd5>
+    <version>12.14.1</version>
+    <time>1790866112</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 12.14.1:
+  * add --name device selection for Q-SYS Audio hardware-health (by
+    invDeviceName or invDeviceType).
+  * add QSC-AUDIO.
+  * add perfdata to CheckPoint ha-status (for Grafana dashboards).
+  * reduce the queries for
+    Huawei HUAWEI-ENTITY-EXTENT-MIB hardware-health.
+  * add an AP cache for ArubaOS wlan-aps.
+</comment>
+    <requestid>1381863</requestid>
+  </revision>
 </revisionlist>
