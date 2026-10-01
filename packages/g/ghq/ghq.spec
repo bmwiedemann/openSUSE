@@ -17,7 +17,7 @@
 
 
 Name:           ghq
-Version:        1.10.1
+Version:        1.11.2
 Release:        0
 Summary:        Remote repository management made easy
 License:        MIT
