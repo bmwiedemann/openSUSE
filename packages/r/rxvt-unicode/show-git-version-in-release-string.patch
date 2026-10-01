@@ -1,0 +1,16 @@
+--- rxvt-unicode/src/xdefaults.C	2026-09-25 14:22:42.462826081 +0200
++++ rxvt-unicode.new/src/xdefaults.C	2026-09-25 15:41:12.007406391 +0200
+@@ -288,7 +288,12 @@
+ #undef SWCH
+ #undef BOOL
+ 
+-static const char releasestring[] = "rxvt-unicode (" RXVTNAME ") v" VERSION " - released: " DATE "\n";
++static const char releasestring[] = "rxvt-unicode (" RXVTNAME ") v" VERSION " - released: " DATE 
++#ifdef GIT_VERSION
++    " - git: " GIT_VERSION
++#endif
++    "\n";
++    
+ static const char optionsstring[] = "options: "
+ #if ENABLE_PERL
+                                     "perl,"

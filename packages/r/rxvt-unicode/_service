@@ -1,0 +1,13 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="scm">git</param>
+    <param name="url">https://github.com/exg/rxvt-unicode</param>
+    <param name="versionformat">9.31+git%cd.%h</param>
+    <param name="revision">5865a435983be27c8f4a601e7a9920d3a92f102a</param>
+  </service>
+  <service name="tar" mode="buildtime"/>
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

@@ -1,0 +1,628 @@
+diff -ur rxvt-unicode/autogen.sh rxvt-unicode.new/autogen.sh
+--- rxvt-unicode/autogen.sh	2026-09-25 14:22:42.400825851 +0200
++++ rxvt-unicode.new/autogen.sh	2026-09-25 14:27:14.904839833 +0200
+@@ -1,17 +1,5 @@
+ #! /bin/sh
+ 
+-if ! [ -e libev/ev++.h ]; then
+-   cat <<EOF
+-**
+-** libev/ directory is missing
+-**
+-** you need a checkout of libev (http://software.schmorp.de/pkg/libev.html)
+-** in the top-level build directory.
+-**
+-EOF
+-   exit 1
+-fi
+-
+ if autoheader && autoconf; then
+    rm -rf autom4te.cache
+    echo "Now run ./configure"
+diff -ur rxvt-unicode/config.h.in rxvt-unicode.new/config.h.in
+--- rxvt-unicode/config.h.in	2026-09-25 14:22:42.400825851 +0200
++++ rxvt-unicode.new/config.h.in	2026-09-25 11:47:37.622983217 +0200
+@@ -39,78 +39,24 @@
+ /* Define if you want extended chinese codesets */
+ #undef ENCODING_ZH_EXT
+ 
+-/* Define to 1 if you have the `clock_gettime' function. */
+-#undef HAVE_CLOCK_GETTIME
+-
+-/* Define to 1 to use the syscall interface for clock_gettime */
+-#undef HAVE_CLOCK_SYSCALL
+-
+-/* Define to 1 if you have the `epoll_ctl' function. */
+-#undef HAVE_EPOLL_CTL
+-
+-/* Define to 1 if you have the `eventfd' function. */
+-#undef HAVE_EVENTFD
+-
+-/* Define to 1 if you have the `FcPatternGet' function. */
++/* Define to 1 if you have the 'FcPatternGet' function. */
+ #undef HAVE_FCPATTERNGET
+ 
+-/* Define to 1 if the floor function is available */
+-#undef HAVE_FLOOR
+-
+ /* Define to 1 if you have the <fontconfig/fontconfig.h> header file. */
+ #undef HAVE_FONTCONFIG_FONTCONFIG_H
+ 
+-/* Define to 1 if you have the `inotify_init' function. */
+-#undef HAVE_INOTIFY_INIT
+-
+ /* Define to 1 if you have the <inttypes.h> header file. */
+ #undef HAVE_INTTYPES_H
+ 
+-/* Define to 1 if linux/fs.h defined kernel_rwf_t */
+-#undef HAVE_KERNEL_RWF_T
+-
+-/* Define to 1 if you have the `kqueue' function. */
+-#undef HAVE_KQUEUE
+-
+-/* Define to 1 if you have the `rt' library (-lrt). */
+-#undef HAVE_LIBRT
+-
+-/* Define to 1 if you have the <linux/aio_abi.h> header file. */
+-#undef HAVE_LINUX_AIO_ABI_H
+-
+-/* Define to 1 if you have the <linux/fs.h> header file. */
+-#undef HAVE_LINUX_FS_H
+-
+ /* Define to 1 if you have the <minix/config.h> header file. */
+ #undef HAVE_MINIX_CONFIG_H
+ 
+-/* Define to 1 if you have the `nanosleep' function. */
+-#undef HAVE_NANOSLEEP
+-
+ /* Define if nl_langinfo(CODESET) works */
+ #undef HAVE_NL_LANGINFO
+ 
+ /* Define if you want to use gdk-pixbuf for image processing */
+ #undef HAVE_PIXBUF
+ 
+-/* Define to 1 if you have the `poll' function. */
+-#undef HAVE_POLL
+-
+-/* Define to 1 if you have the <poll.h> header file. */
+-#undef HAVE_POLL_H
+-
+-/* Define to 1 if you have the `port_create' function. */
+-#undef HAVE_PORT_CREATE
+-
+-/* Define to 1 if you have the <port.h> header file. */
+-#undef HAVE_PORT_H
+-
+-/* Define to 1 if you have the `select' function. */
+-#undef HAVE_SELECT
+-
+-/* Define to 1 if you have the `signalfd' function. */
+-#undef HAVE_SIGNALFD
+-
+ /* Define if freedesktop startup notifications should be supported */
+ #undef HAVE_STARTUP_NOTIFICATION
+ 
+@@ -132,27 +78,9 @@
+ /* Define to 1 if you have the <sys/byteorder.h> header file. */
+ #undef HAVE_SYS_BYTEORDER_H
+ 
+-/* Define to 1 if you have the <sys/epoll.h> header file. */
+-#undef HAVE_SYS_EPOLL_H
+-
+-/* Define to 1 if you have the <sys/eventfd.h> header file. */
+-#undef HAVE_SYS_EVENTFD_H
+-
+-/* Define to 1 if you have the <sys/event.h> header file. */
+-#undef HAVE_SYS_EVENT_H
+-
+-/* Define to 1 if you have the <sys/inotify.h> header file. */
+-#undef HAVE_SYS_INOTIFY_H
+-
+ /* Define to 1 if you have the <sys/ioctl.h> header file. */
+ #undef HAVE_SYS_IOCTL_H
+ 
+-/* Define to 1 if you have the <sys/select.h> header file. */
+-#undef HAVE_SYS_SELECT_H
+-
+-/* Define to 1 if you have the <sys/signalfd.h> header file. */
+-#undef HAVE_SYS_SIGNALFD_H
+-
+ /* Define to 1 if you have the <sys/sockio.h> header file. */
+ #undef HAVE_SYS_SOCKIO_H
+ 
+@@ -162,16 +90,13 @@
+ /* Define to 1 if you have the <sys/strredir.h> header file. */
+ #undef HAVE_SYS_STRREDIR_H
+ 
+-/* Define to 1 if you have the <sys/timerfd.h> header file. */
+-#undef HAVE_SYS_TIMERFD_H
+-
+ /* Define to 1 if you have the <sys/types.h> header file. */
+ #undef HAVE_SYS_TYPES_H
+ 
+ /* Define to 1 if you have the <unistd.h> header file. */
+ #undef HAVE_UNISTD_H
+ 
+-/* Define to 1 if you have the `unsetenv' function. */
++/* Define to 1 if you have the 'unsetenv' function. */
+ #undef HAVE_UNSETENV
+ 
+ /* Define to 1 if you have the <wchar.h> header file. */
+@@ -180,7 +105,7 @@
+ /* Define to 1 if you have the <X11/Xft/Xft.h> header file. */
+ #undef HAVE_X11_XFT_XFT_H
+ 
+-/* Define to 1 if you have the `XftDrawString32' function. */
++/* Define to 1 if you have the 'XftDrawString32' function. */
+ #undef HAVE_XFTDRAWSTRING32
+ 
+ /* Define to enable Xmu support */
+@@ -274,7 +199,7 @@
+ /* Define to use "smart" resize behavior */
+ #undef SMART_RESIZE
+ 
+-/* Define to 1 if all of the C90 standard headers exist (not just the ones
++/* Define to 1 if all of the C89 standard headers exist (not just the ones
+    required in a freestanding environment). This macro is provided for
+    backward compatibility; new code need not use it. */
+ #undef STDC_HEADERS
+@@ -291,10 +216,14 @@
+ /* Define if you want 256-color support */
+ #undef USE_256_COLORS
+ 
+-/* Enable extensions on AIX 3, Interix.  */
++/* Enable extensions on AIX, Interix, z/OS.  */
+ #ifndef _ALL_SOURCE
+ # undef _ALL_SOURCE
+ #endif
++/* Enable extensions on Cosmopolitan Libc. */
++#ifndef _COSMO_SOURCE
++# undef _COSMO_SOURCE
++#endif
+ /* Enable general extensions on macOS.  */
+ #ifndef _DARWIN_C_SOURCE
+ # undef _DARWIN_C_SOURCE
+@@ -352,11 +281,15 @@
+ #ifndef __STDC_WANT_IEC_60559_DFP_EXT__
+ # undef __STDC_WANT_IEC_60559_DFP_EXT__
+ #endif
++/* Enable extensions specified by C23 Annex F.  */
++#ifndef __STDC_WANT_IEC_60559_EXT__
++# undef __STDC_WANT_IEC_60559_EXT__
++#endif
+ /* Enable extensions specified by ISO/IEC TS 18661-4:2015.  */
+ #ifndef __STDC_WANT_IEC_60559_FUNCS_EXT__
+ # undef __STDC_WANT_IEC_60559_FUNCS_EXT__
+ #endif
+-/* Enable extensions specified by ISO/IEC TS 18661-3:2015.  */
++/* Enable extensions specified by C23 Annex H and ISO/IEC TS 18661-3:2015.  */
+ #ifndef __STDC_WANT_IEC_60559_TYPES_EXT__
+ # undef __STDC_WANT_IEC_60559_TYPES_EXT__
+ #endif
+@@ -406,7 +339,7 @@
+    #define below would cause a syntax error. */
+ #undef _UINT32_T
+ 
+-/* Define to `int' if <sys/types.h> doesn't define. */
++/* Define as 'int' if <sys/types.h> doesn't define. */
+ #undef gid_t
+ 
+ /* Define to the type of a signed integer type of width exactly 16 bits if
+@@ -417,13 +350,13 @@
+    such a type exists and the standard includes do not define it. */
+ #undef int32_t
+ 
+-/* Define to `int' if <sys/types.h> does not define. */
++/* Define to 'int' if <sys/types.h> does not define. */
+ #undef mode_t
+ 
+ /* Define as a signed integer type capable of holding a process identifier. */
+ #undef pid_t
+ 
+-/* Define to `int' if <sys/types.h> doesn't define. */
++/* Define as 'int' if <sys/types.h> doesn't define. */
+ #undef uid_t
+ 
+ /* Define to the type of an unsigned integer type of width exactly 16 bits if
+diff -ur rxvt-unicode/configure.ac rxvt-unicode.new/configure.ac
+--- rxvt-unicode/configure.ac	2026-09-25 14:22:42.405825869 +0200
++++ rxvt-unicode.new/configure.ac	2026-09-25 14:35:00.997574331 +0200
+@@ -457,11 +457,6 @@
+ 
+ dnl# --------------------------------------------------------------------------
+ 
+-LIBEV_M4_AVOID_LIBRT=1
+-m4_include([libev/libev.m4])
+-
+-dnl# --------------------------------------------------------------------------
+-
+ AC_PATH_PROG(TIC, tic, :)
+ 
+ AC_PATH_XTRA
+@@ -475,6 +470,14 @@
+ AC_SUBST(PTYTTY_CFLAGS)
+ AC_SUBST(PTYTTY_LIBS)
+ 
++RXVT_CHECK_MODULES([LIBEV], [libev], [:], [
++  AC_MSG_ERROR([unable to find libev])
++])
++
++AC_SUBST(LIBEV_CFLAGS)
++AC_SUBST(LIBEV_LIBS)
++
++
+ image_lib=none
+ 
+ PIXBUF_CFLAGS=
+diff -ur rxvt-unicode/Makefile.in rxvt-unicode.new/Makefile.in
+--- rxvt-unicode/Makefile.in	2026-09-25 14:22:42.397825839 +0200
++++ rxvt-unicode.new/Makefile.in	2026-09-25 11:40:06.990403969 +0200
+@@ -45,14 +45,14 @@
+ 	(cd src; $(MAKE))
+ 
+ #-------------------------------------------------------------------------
+-configure: configure.ac aclocal.m4 libev/libev.m4
++configure: configure.ac aclocal.m4
+ 	cd $(srcdir); ./autogen.sh
+ 
+ config.status:
+ 	if test -x config.status; then config.status --recheck; \
+ 	else $(SHELL) configure; fi
+ 
+-config.h.in: configure.ac aclocal.m4 libev/libev.m4
++config.h.in: configure.ac aclocal.m4
+ 	cd $(srcdir); ./autogen.sh
+ 
+ check: all
+diff -ur rxvt-unicode/MANIFEST rxvt-unicode.new/MANIFEST
+--- rxvt-unicode/MANIFEST	2026-09-25 14:22:42.397825839 +0200
++++ rxvt-unicode.new/MANIFEST	2026-09-25 14:17:19.009622519 +0200
+@@ -54,7 +54,6 @@
+ src/hookinc.h
+ src/init.C
+ src/init.h
+-src/ev_cpp.C
+ src/ev_cpp.h
+ src/keyboard.C
+ src/keyboard.h
+@@ -167,19 +166,5 @@
+ src/perl/urxvt-popup
+ src/perl/xim-onthespot
+ 
+-libev/LICENSE
+-libev/ev.h
+-libev/ev++.h
+-libev/ev.c
+-libev/ev_vars.h
+-libev/ev_wrap.h
+-libev/ev_win32.c
+-libev/ev_select.c
+-libev/ev_poll.c
+-libev/ev_epoll.c
+-libev/ev_kqueue.c
+-libev/ev_port.c
+-libev/ev_linuxaio.c
+-libev/ev_iouring.c
+-libev/libev.m4
++
+ 
+diff -ur rxvt-unicode/src/command.C rxvt-unicode.new/src/command.C
+--- rxvt-unicode/src/command.C	2026-09-25 14:22:42.417825914 +0200
++++ rxvt-unicode.new/src/command.C	2026-09-25 12:44:39.605902923 +0200
+@@ -2300,7 +2300,7 @@
+                     {
+                       refresh_count = 0;
+ 
+-                      if (!option (Opt_skipScroll) || ev_time () > ev::now () + 1. / 60.)
++                      if (!option (Opt_skipScroll) || ev_time () > ev::now (EV_A) + 1. / 60.)
+                         {
+                           refreshnow = true;
+                           ch = NOCHAR;
+Only in rxvt-unicode/src: ev_cpp.C
+diff -ur rxvt-unicode/src/ev_cpp.h rxvt-unicode.new/src/ev_cpp.h
+--- rxvt-unicode/src/ev_cpp.h	2026-09-25 14:22:42.419825921 +0200
++++ rxvt-unicode.new/src/ev_cpp.h	2026-09-25 14:16:00.904331889 +0200
+@@ -1,27 +1,25 @@
+ #define ECB_NO_THREADS 1
+ 
+-#define EV_COMPAT3 0
+-#define EV_USE_SELECT 1
+-#define EV_USE_EPOLL 1
+-#define EV_USE_KQUEUE 1
+-#define EV_USE_PORT 1
+-//#define EV_USE_LINUXAIO 1
+-//#define EV_USE_IOURING 1
+-//#define EV_USE_TIMERFD 0
+-#define EV_PREPARE_ENABLE 1
+-#define EV_IDLE_ENABLE 1
+-#define EV_SIGNAL_ENABLE 1
+-#define EV_CHILD_ENABLE 1
+-#define EV_USE_STDEXCEPT 0
++#define EV_COMPAT3 0 // ev.h defaults to 1
++//#define EV_USE_SELECT 1
++//#define EV_USE_EPOLL 1
++//#define EV_USE_KQUEUE 1
++//#define EV_USE_PORT 1
++//#define EV_PREPARE_ENABLE 1
++//#define EV_IDLE_ENABLE 1
++//#define EV_SIGNAL_ENABLE 1
++//#define EV_CHILD_ENABLE 1
++#define EV_USE_STDEXCEPT 0 // ev++.h defaults to 1
+ #define EV_CONFIG_H <config.h>
+ 
+ #include <config.h>
+ 
+-#if ENABLE_FRILLS
+-# define EV_FEATURES 1 | 2
+-#else
+-# define EV_FEATURES 0
+-# define NDEBUG
+-#endif
++// don't mess with EV_FEATURES with pre-compiled libev
++//#if ENABLE_FRILLS
++//# define EV_FEATURES 1 | 2
++//#else
++//# define EV_FEATURES 0
++//# define NDEBUG
++//#endif
+ 
+ #include "ev++.h"
+diff -ur rxvt-unicode/src/iom_perl.xs rxvt-unicode.new/src/iom_perl.xs
+--- rxvt-unicode/src/iom_perl.xs	2026-09-25 14:22:42.421825929 +0200
++++ rxvt-unicode.new/src/iom_perl.xs	2026-09-25 12:50:14.475151201 +0200
+@@ -66,7 +66,7 @@
+ NV
+ timer::at ()
+ 	CODE:
+-        RETVAL = THIS->remaining () + ev_now ();
++        RETVAL = THIS->remaining () + ev_now (EV_A);
+         OUTPUT:
+         RETVAL
+ 
+@@ -85,9 +85,9 @@
+         RETVAL
+ 
+ IOM_CHAINED
+-timer::start (NV tstamp = ev::now (), NV repeat = THIS->repeat)
++timer::start (NV tstamp = ev::now (EV_A), NV repeat = THIS->repeat)
+ 	CODE:
+-        THIS->start (tstamp - ev::now (), repeat);
++        THIS->start (tstamp - ev::now (EV_A), repeat);
+         OUTPUT:
+         RETVAL
+ 
+diff -ur rxvt-unicode/src/main.C rxvt-unicode.new/src/main.C
+--- rxvt-unicode/src/main.C	2026-09-25 14:22:42.422825933 +0200
++++ rxvt-unicode.new/src/main.C	2026-09-25 13:11:00.041797830 +0200
+@@ -626,8 +626,8 @@
+   signal (SIGHUP,  SIG_IGN);
+   signal (SIGPIPE, SIG_IGN);
+ 
+-  sig_handlers.sw_term.start (SIGTERM); ev_unref ();
+-  sig_handlers.sw_int.start  (SIGINT);  ev_unref ();
++  sig_handlers.sw_term.start (SIGTERM); ev_unref (EV_A);
++  sig_handlers.sw_int.start  (SIGINT);  ev_unref (EV_A);
+ 
+   old_xerror_handler = XSetErrorHandler ((XErrorHandler) rxvt_xerror_handler);
+   // TODO: handle this with exceptions and tolerate the memory loss
+diff -ur rxvt-unicode/src/Makefile.in rxvt-unicode.new/src/Makefile.in
+--- rxvt-unicode/src/Makefile.in	2026-09-25 14:22:42.415059632 +0200
++++ rxvt-unicode.new/src/Makefile.in	2026-09-25 14:38:10.080278426 +0200
+@@ -19,11 +19,11 @@
+ CXXFLAGS = @CXXFLAGS@
+ CPPFLAGS = @CPPFLAGS@
+ LDFLAGS = @LDFLAGS@
+-DEFS = @DEFS@ @PTYTTY_CFLAGS@
+-LIBS = @LIBS@ @PTYTTY_LIBS@
++DEFS = @DEFS@ @PTYTTY_CFLAGS@ @LIBEV_CFLAGS@
++LIBS = @LIBS@ @PTYTTY_LIBS@ @LIBEV_LIBS@
+ XINC = @X_CFLAGS@ @PIXBUF_CFLAGS@ @STARTUP_NOTIFICATION_CFLAGS@
+ XLIB = @X_LIBS@ -lX11 @X_EXTRA_LIBS@ @PIXBUF_LIBS@ @STARTUP_NOTIFICATION_LIBS@
+-COMPILE = $(CXX) -I.. -I$(srcdir) -I. -I$(srcdir)/../libev $(DEFS) $(CPPFLAGS) $(CXXFLAGS) $(XINC)
++COMPILE = $(CXX) -I.. -I$(srcdir) -I. $(DEFS) $(CPPFLAGS) $(CXXFLAGS) $(XINC)
+ LINK = @LINKER@ $(LDFLAGS)
+ EXEEXT = @EXEEXT@
+ PERLFLAGS = @PERLFLAGS@
+@@ -40,7 +40,7 @@
+ 	screen.o scrollbar.o scrollbar-next.o scrollbar-rxvt.o \
+ 	scrollbar-xterm.o scrollbar-plain.o xdefaults.o encoding.o \
+ 	rxvttoolkit.o rxvtutil.o keyboard.o rxvtimg.o \
+-	ev_cpp.o @PERL_O@
++	@PERL_O@
+ 
+ COMMON_DAEMON = rxvtdaemon.o
+ 
+@@ -145,18 +145,13 @@
+ 	$(COMPILE) $(PERLFLAGS) -DLIBDIR="\"$(libdir)/urxvt\"" -c $<
+ 
+ depend:
+-	makedepend -f Makefile.in -I. -I.. -I../libev -Y *.C *.xs >/dev/null 2>&1
+-
+-# makedepend has trouble finding these
+-ev_cpp.o: ../libev/ev.c ../libev/ev_epoll.c ../libev/ev_kqueue.c ../libev/ev_linuxaio.c
+-ev_cpp.o: ../libev/ev_poll.c ../libev/ev_port.c ../libev/ev_select.c ../libev/ev_win32.c
+-
++	makedepend -f Makefile.in -I. -I.. -Y *.C *.xs >/dev/null 2>&1
+ 
+ # DO NOT DELETE: nice dependency list follows
+ 
+ command.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ command.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-command.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++command.o: callback.h rxvtimg.h scrollbar.h
+ command.o: rxvtperl.h hookinc.h rsinc.h optinc.h version.h command.h
+ command.o: keyboard.h
+ encoding.o: ../config.h encoding.h rxvtutil.h ecb.h estl.h emman.h
+@@ -174,84 +169,82 @@
+ encoding.o: table/viscii.h table/jis0201_1976_0.h table/jis0208_1990_0.h
+ encoding.o: table/jis0212_1990_0.h table/jis0213_1.h table/jis0213_2.h
+ encoding.o: table/compose.h table/category.h
+-ev_cpp.o: ev_cpp.h ../config.h ../libev/ev++.h ../libev/ev.h ../libev/ev.c
+-ev_cpp.o: ../libev/ev_vars.h ../libev/ev_epoll.c ../libev/ev_select.c
+ init.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+-init.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h ../libev/ev++.h
+-init.o: ../libev/ev.h callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
++init.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h 
++init.o: callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
+ init.o: rsinc.h optinc.h init.h keyboard.h
+ keyboard.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ keyboard.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-keyboard.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++keyboard.o: callback.h rxvtimg.h scrollbar.h
+ keyboard.o: rxvtperl.h hookinc.h rsinc.h optinc.h keyboard.h
+ main.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+-main.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h ../libev/ev++.h
+-main.o: ../libev/ev.h callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
++main.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h 
++main.o: callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
+ main.o: rsinc.h optinc.h init.h keyboard.h
+ misc.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+-misc.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h ../libev/ev++.h
+-misc.o: ../libev/ev.h callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
++misc.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h 
++misc.o: callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
+ misc.o: rsinc.h optinc.h
+ rclock.o: ecb.h version.h
+ rxvt.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+-rxvt.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h ../libev/ev++.h
+-rxvt.o: ../libev/ev.h callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
++rxvt.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
++rxvt.o: callback.h rxvtimg.h scrollbar.h rxvtperl.h hookinc.h
+ rxvt.o: rsinc.h optinc.h
+ rxvtc.o: ../config.h rxvtdaemon.h rxvtutil.h ecb.h estl.h emman.h
+ rxvtd.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ rxvtd.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-rxvtd.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++rxvtd.o: callback.h rxvtimg.h scrollbar.h
+ rxvtd.o: rxvtperl.h hookinc.h rsinc.h optinc.h rxvtdaemon.h
+ rxvtdaemon.o: rxvtdaemon.h rxvtutil.h ecb.h estl.h emman.h
+ rxvtfont.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ rxvtfont.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-rxvtfont.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++rxvtfont.o: callback.h rxvtimg.h scrollbar.h
+ rxvtfont.o: rxvtperl.h hookinc.h rsinc.h optinc.h table/linedraw.h
+ rxvtimg.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ rxvtimg.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-rxvtimg.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++rxvtimg.o: callback.h rxvtimg.h scrollbar.h
+ rxvtimg.o: rxvtperl.h hookinc.h rsinc.h optinc.h
+-rxvtperl.o: ../config.h ev_cpp.h ../config.h ../libev/ev++.h ../libev/ev.h
++rxvtperl.o: ../config.h ev_cpp.h ../config.h
+ rxvtperl.o: rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h emman.h
+ rxvtperl.o: rxvtfont.h rxvttoolkit.h callback.h rxvtimg.h scrollbar.h
+ rxvtperl.o: rxvtperl.h hookinc.h rsinc.h optinc.h keyboard.h perlxsi.c
+ rxvtperl.o: iom_perl.h
+ rxvttoolkit.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h
+ rxvttoolkit.o: estl.h emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-rxvttoolkit.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++rxvttoolkit.o: callback.h rxvtimg.h scrollbar.h
+ rxvttoolkit.o: rxvtperl.h hookinc.h rsinc.h optinc.h
+ rxvtutil.o: emman.c emman.h ecb.h rxvtutil.h estl.h
+ screen.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ screen.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-screen.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++screen.o: callback.h rxvtimg.h scrollbar.h
+ screen.o: rxvtperl.h hookinc.h rsinc.h optinc.h
+ scrollbar-next.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h
+ scrollbar-next.o: estl.h emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h
+-scrollbar-next.o: ../config.h ../libev/ev++.h ../libev/ev.h callback.h
++scrollbar-next.o: ../config.h callback.h
+ scrollbar-next.o: rxvtimg.h scrollbar.h rxvtperl.h hookinc.h rsinc.h optinc.h
+ scrollbar-plain.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h
+ scrollbar-plain.o: estl.h emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h
+-scrollbar-plain.o: ../config.h ../libev/ev++.h ../libev/ev.h callback.h
++scrollbar-plain.o: ../config.h callback.h
+ scrollbar-plain.o: rxvtimg.h scrollbar.h rxvtperl.h hookinc.h rsinc.h
+ scrollbar-plain.o: optinc.h
+ scrollbar-rxvt.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h
+ scrollbar-rxvt.o: estl.h emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h
+-scrollbar-rxvt.o: ../config.h ../libev/ev++.h ../libev/ev.h callback.h
++scrollbar-rxvt.o: ../config.h callback.h
+ scrollbar-rxvt.o: rxvtimg.h scrollbar.h rxvtperl.h hookinc.h rsinc.h optinc.h
+ scrollbar-xterm.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h
+ scrollbar-xterm.o: estl.h emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h
+-scrollbar-xterm.o: ../config.h ../libev/ev++.h ../libev/ev.h callback.h
++scrollbar-xterm.o: ../config.h callback.h
+ scrollbar-xterm.o: rxvtimg.h scrollbar.h rxvtperl.h hookinc.h rsinc.h
+ scrollbar-xterm.o: optinc.h
+ scrollbar.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ scrollbar.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-scrollbar.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++scrollbar.o: callback.h rxvtimg.h scrollbar.h
+ scrollbar.o: rxvtperl.h hookinc.h rsinc.h optinc.h
+ xdefaults.o: ../config.h rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h
+ xdefaults.o: emman.h rxvtfont.h rxvttoolkit.h ev_cpp.h ../config.h
+-xdefaults.o: ../libev/ev++.h ../libev/ev.h callback.h rxvtimg.h scrollbar.h
++xdefaults.o: callback.h rxvtimg.h scrollbar.h
+ xdefaults.o: rxvtperl.h hookinc.h rsinc.h optinc.h version.h keyboard.h
+-rxvtperl.o: ../config.h ev_cpp.h ../config.h ../libev/ev++.h ../libev/ev.h
++rxvtperl.o: ../config.h ev_cpp.h ../config.h
+ rxvtperl.o: rxvt.h feature.h ecb.h encoding.h rxvtutil.h estl.h emman.h
+ rxvtperl.o: rxvtfont.h rxvttoolkit.h callback.h rxvtimg.h scrollbar.h
+ rxvtperl.o: rxvtperl.h hookinc.h rsinc.h optinc.h keyboard.h perlxsi.c
+diff -ur rxvt-unicode/src/rxvt.C rxvt-unicode.new/src/rxvt.C
+--- rxvt-unicode/src/rxvt.C	2026-09-25 14:22:42.428825955 +0200
++++ rxvt-unicode.new/src/rxvt.C	2026-09-25 14:40:59.301908564 +0200
+@@ -26,6 +26,8 @@
+ #include <stdlib.h>
+ #include <string.h>
+ 
++struct ev_loop *loop = EV_DEFAULT;
++
+ int
+ main (int argc, char *argv[])
+ try
+@@ -35,7 +37,7 @@
+ 
+     rxvt_term *t = new rxvt_term;
+     t->init (argc, argv, environ);
+-    ev_run ();
++    ev_run (EV_A_ 0);
+ 
+     return EXIT_SUCCESS;
+   }
+diff -ur rxvt-unicode/src/rxvtd.C rxvt-unicode.new/src/rxvtd.C
+--- rxvt-unicode/src/rxvtd.C	2026-09-25 14:22:42.429825959 +0200
++++ rxvt-unicode.new/src/rxvtd.C	2026-09-25 12:54:53.286191727 +0200
+@@ -48,6 +48,8 @@
+ #include "rxvt.h"
+ #include "rxvtdaemon.h"
+ 
++struct ev_loop *loop = EV_DEFAULT;
++
+ struct server : rxvt_connection
+ {
+   log_callback log_cb;
+@@ -394,7 +396,7 @@
+       ev_loop_fork (EV_DEFAULT_UC);
+     }
+ 
+-  ev_run ();
++  ev_run (EV_A);
+ 
+   return EXIT_SUCCESS;
+ }
+diff -ur rxvt-unicode/src/rxvt.h rxvt-unicode.new/src/rxvt.h
+--- rxvt-unicode/src/rxvt.h	2026-09-25 14:22:42.429825959 +0200
++++ rxvt-unicode.new/src/rxvt.h	2026-09-25 14:31:21.885758844 +0200
+@@ -28,6 +28,8 @@
+ 
+ #include <libptytty.h>
+ 
++extern struct ev_loop *loop;
++
+ // we assume that Xlib.h defines XPointer, and it does since at least 1994...
+ 
+ extern "C" {
+diff -ur rxvt-unicode/src/rxvtperl.xs rxvt-unicode.new/src/rxvtperl.xs
+--- rxvt-unicode/src/rxvtperl.xs	2026-09-25 14:22:42.432825970 +0200
++++ rxvt-unicode.new/src/rxvtperl.xs	2026-09-25 12:48:54.651853629 +0200
+@@ -1124,7 +1124,7 @@
+ NV
+ NOW ()
+ 	CODE:
+-        RETVAL = ev::now ();
++        RETVAL = ev::now (EV_A);
+         OUTPUT:
+         RETVAL
+ 

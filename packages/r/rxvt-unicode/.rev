@@ -20,4 +20,13 @@ This is a request to re-add it to Factory now that it compiles on GCC 16.</comme
 - Updated README.SuSE to contain up-to-date information</comment>
     <requestid>1380351</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8bee54c31b6f9e0e32eb9c97b6a70f19</srcmd5>
+    <version>9.31+git20241202.5865a435</version>
+    <time>1790865723</time>
+    <user>anag_factory</user>
+    <comment>Fixes missing patch in changes file
+See original superseeded request's comment for full details.</comment>
+    <requestid>1381555</requestid>
+  </revision>
 </revisionlist>
