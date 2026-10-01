@@ -161,4 +161,19 @@ builds significantly due to switching to release checking.
   disable of multilibs.  Support for s390 is officially deprecated.</comment>
     <requestid>1375370</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>3375872901fc83888c8145116e865305</srcmd5>
+    <version>16.2.1+git9713</version>
+    <time>1790865673</time>
+    <user>anag_factory</user>
+    <comment>- Update to gcc-16 branch head, git9713
+  * pulls fix for use-after-free in __gnu_pbds::priority_queue.
+    [bsc#1283123] (CVE-2026-102010)
+
+- Update to gcc-16 branch head, git9708
+  * pulls fix for ICE building firefox on arm [bsc#1268791, gcc#125953]
+  * remove gcc16-pr124811.patch and gcc16-znver6-cpuid.patch
+    included in the update</comment>
+    <requestid>1381600</requestid>
+  </revision>
 </revisionlist>

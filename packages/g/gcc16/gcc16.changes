@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:21:44 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-16 branch head, git9713
+  * pulls fix for use-after-free in __gnu_pbds::priority_queue.
+    [bsc#1283123] (CVE-2026-102010)
+
+-------------------------------------------------------------------
+Mon Sep 28 09:09:40 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update to gcc-16 branch head, git9708
+  * pulls fix for ICE building firefox on arm [bsc#1268791, gcc#125953]
+  * remove gcc16-pr124811.patch and gcc16-znver6-cpuid.patch
+    included in the update
+
+-------------------------------------------------------------------
 Wed Sep  2 11:50:38 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Add gcc16-pr124811.patch to fix build reproducability when PCH

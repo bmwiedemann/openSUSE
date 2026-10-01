@@ -407,9 +407,6 @@ Patch51:	gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:	gcc44-textdomain.patch
 Patch61:	gcc44-rename-info-files.patch
-# Patches picked from upstream branch
-Patch100:	gcc16-pr124811.patch
-Patch101:	gcc16-znver6-cpuid.patch
 
 # GCC-TESTSUITE-DELETE-BEGIN
 # SRC-COMMON-END
@@ -1445,7 +1442,6 @@ ln -s newlib-4.6.0.20260123/newlib .
 %patch -p1 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
-%patch -p1 -P 100 -P 101
 
 #test patching end
 

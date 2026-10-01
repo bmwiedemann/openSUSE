@@ -245,7 +245,7 @@
 %define biarch_targets x86_64 powerpc64 powerpc sparc sparc64
 
 URL:            https://gcc.gnu.org/
-Version:        16.2.0+git9497
+Version:        16.2.1+git9713
 Release:        0
 %define gcc_dir_version %(echo %version |  sed 's/+.*//' | cut -d '.' -f 1)
 %define gcc_snapshot_revision %(echo %version | sed 's/[3-9]\.[0-9]\.[0-6]//' | sed 's/+/-/')
@@ -423,9 +423,6 @@ Patch51:        gcc41-ppc32-retaddr.patch
 # Some patches taken from Debian
 Patch60:        gcc44-textdomain.patch
 Patch61:        gcc44-rename-info-files.patch
-# Patches picked from upstream branch
-Patch100:       gcc16-pr124811.patch
-Patch101:       gcc16-znver6-cpuid.patch
 
 Summary:        Testsuite results
 License:        LicenseRef-SUSE-Public-Domain
@@ -556,7 +553,6 @@ ln -s newlib-4.6.0.20260123/newlib .
 %patch -p1 -P 22
 %patch -P 51
 %patch -p1 -P 60 -P 61
-%patch -p1 -P 100 -P 101
 
 #test patching end
 
