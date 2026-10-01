@@ -1,0 +1,5 @@
+<package name="greenlit" project="openSUSE:Factory">
+  <title>Hardware and OS test framework for NVIDIA platforms</title>
+  <description>GreenLiT is NVIDIA's test framework for validating Linux distributions on NVIDIA platforms (Grace, Vera, Tegra, DGX): system-level, hardware and OS checks run through glt-test-suite.</description>
+  <url>https://github.com/NVIDIA/GreenLiT</url>
+</package>

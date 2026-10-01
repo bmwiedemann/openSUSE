@@ -1,0 +1,2 @@
+# Test sources that glt-test-suite compiles on the target, not development files
+addFilter("devel-file-in-non-devel-package /usr/share/greenlit/")

@@ -1,0 +1,29 @@
+From 42cde41336631ca5b632dd236935716af688436c Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Wed, 30 Sep 2026 11:59:41 +0200
+Subject: [PATCH] Skip the STE byte-layout test on big-endian hosts
+
+IommuHwptArmSmmuv3 stores the STE in host byte order, which matches
+htole64() only on little-endian hosts; the nested STE test itself
+already skips big-endian hosts (_skip_reason_endianness), but its unit
+test did not and failed on s390x.
+
+Signed-off-by: Martin Pluskal <martin@pluskal.org>
+---
+ tests/modules/test_nested_ste.py | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/tests/modules/test_nested_ste.py b/tests/modules/test_nested_ste.py
+index 5113e21..e26034a 100644
+--- a/tests/modules/test_nested_ste.py
++++ b/tests/modules/test_nested_ste.py
+@@ -573,6 +573,9 @@ class TestNestedSteTrigger(GLTTestBase):
+         self.assertNotEqual(s1dss_w0, s2bypass_eats_w0)
+         self.assertNotEqual(s1dss_w1, s2bypass_eats_w1)
+ 
++    @GLTTestBase.unittest.skipUnless(
++        sys.byteorder == "little", "STE layout follows the host byte order"
++    )
+     def test_ste_struct_serializes_to_little_endian_bytes(self):
+         """IommuHwptArmSmmuv3(ste=(w0, w1)) serializes to little-endian bytes."""
+         w0, w1 = nested_ste_trigger._ste_make_s1dss_bypass(0x10000)

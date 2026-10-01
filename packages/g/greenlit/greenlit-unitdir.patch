@@ -1,0 +1,39 @@
+From a54c226cc4fda9c1aaedc212ff6f16a9c62e8341 Mon Sep 17 00:00:00 2001
+From: Martin Pluskal <martin@pluskal.org>
+Date: Wed, 30 Sep 2026 10:45:35 +0200
+Subject: [PATCH] Find the systemd units in /usr/lib/systemd/system too
+
+A distribution package installs greenlit.service and greenlit.timer
+into /usr/lib/systemd/system; check_required_files() only looked in
+/usr/local, where install.sh puts them, and warned on every run.
+
+Signed-off-by: Martin Pluskal <martin@pluskal.org>
+---
+ src/greenlit/greenlit.py | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/src/greenlit/greenlit.py b/src/greenlit/greenlit.py
+index f42c3db..36b1989 100644
+--- a/src/greenlit/greenlit.py
++++ b/src/greenlit/greenlit.py
+@@ -119,14 +119,12 @@ def check_required_commands(logger):
+ 
+ def check_required_files(logger):
+     """Warn if required files are missing in the system."""
+-    systemd_files = [
+-        '/usr/local/lib/systemd/system/greenlit.service',
+-        '/usr/local/lib/systemd/system/greenlit.timer'
+-    ]
+-
+-    for file_path in systemd_files:
+-        if not os.path.exists(file_path):
+-            logger.warning(f"File {file_path} is missing.")
++    # install.sh puts the units in /usr/local, distribution packages in /usr/lib.
++    systemd_dirs = ['/usr/local/lib/systemd/system', '/usr/lib/systemd/system']
++
++    for unit in ('greenlit.service', 'greenlit.timer'):
++        if not any(os.path.exists(os.path.join(d, unit)) for d in systemd_dirs):
++            logger.warning(f"File {os.path.join(systemd_dirs[0], unit)} is missing.")
+ 
+     linux_dir = '/usr/local/share/greenlit/linux'
+     if not os.path.isdir(linux_dir):

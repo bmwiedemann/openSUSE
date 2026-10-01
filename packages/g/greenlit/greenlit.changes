@@ -1,0 +1,10 @@
+-------------------------------------------------------------------
+Wed Sep 30 08:47:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Initial package of GreenLiT 3.1.1, NVIDIA's test framework for
+  Linux distributions on NVIDIA platforms
+- Add greenlit-unitdir.patch: find the systemd units where the
+  package installs them, not only in /usr/local
+- Add greenlit-ste-test-endianness.patch: skip a unit test that
+  assumes a little-endian host, as the real test already does
+
