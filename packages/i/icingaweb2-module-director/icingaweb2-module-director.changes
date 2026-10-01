@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Tue Sep 29 17:34:20 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.12.1
+
+- Update to 1.12.1
+  * Fixes
+    - Fix: Migration 193 failed on MySQL when creating the director_property table (#3144)
+    - Fix: Saving a strict data-list custom variable failed with a class-not-found error (#3145)
+
+-------------------------------------------------------------------
+Tue Sep 29 14:15:26 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.12.0
+
+- Update to 1.12.0
+  * Custom variables understand dictionaries
+    Before, creating services from a dictionary on a host meant defining that variable outside of Director. Now service apply-for rules work with dictionaries and you can use $key$ and $value$ to read each entry. For example, a host can hold a dictionary of web sites, and one rule can create a check for every site.
+    Existing Data Fields keep working under a "Fields (Deprecated)" tab. To move them over, run icingacli director migrate datafields --dry-run to preview the changes first.
+  * Restoring a user group brings its members back
+    Undoing the deletion of a user group used to bring back the group but not its members. Groups can now use an assign filter, and a restore reapplies it and links the matching users again. Director also asks you to confirm before deleting a group.
+  * Set up Director from the command line
+    icingacli director daemon run has new flags. --kickstart runs kickstart at startup. --import, --run-sync and --deploy restore a basket snapshot, run your sync rules and deploy the config. A failed kickstart import is rolled back, and an interrupted deployment is retried on the next startup.
+    The importsource and syncrule commands also accept --name, so you can check, run or delete by name instead of by ID.
+  * Smaller improvements
+    - A new import modifier turns a number into text, so a port that arrives as a number no longer causes a diff on every import
+    - The service form shows the display_name field
+    - Event commands have their own section and now appear on hosts and services too
+    - Baskets have an "Add to Basket" action on the basket detail page
+  * Bug fixes
+    - Check command box was missing when editing service properties (#2732)
+    - Looking up an associated service template failed with a multicolumn key error (#2839)
+    - Command inheritance was not shown (#3007)
+    - Template choice links were broken in the activity log (#3104)
+    - Cloning a host or service now clears the display name (#3110)
+    - Modifying a directly applied service set failed on PostgreSQL (#3076)
+    - Restoring a basket created duplicate service set members (#3089)
+    - Restoring a basket did not bring back service template choices (#3107)
+    - A missing host group in a role restriction broke host creation for restricted users (#3098)
+    - Director allowed zones that point back at themselves (#3108)
+    - The redundant director/* permission is gone, since Icinga Web already grants module access (#3094)
+    - The directory-to-row property modifier did not convert arrays to objects correctly (#2923)
+    - Assign filters with boolean expressions were rendered wrongly (#2984)
+    - Empty values broke preg_match() in the reject or select modifier (#2994)
+    - The CLI showed sync rule results incorrectly (#3141)
+    - The resolveCache task reported zero pending membership changes (#3100)
+    - Deployments failed on MySQL 9.6, where SHA1() is turned off by default (#3091)
+    - Agent and zone documentation still suggested a template per satellite zone (#3023)
+
+-------------------------------------------------------------------
 Sat Jun 27 10:31:40 UTC 2026 - ecsos <ecsos@opensuse.org> - 1.11.9
 
 -  Update to 1.11.9

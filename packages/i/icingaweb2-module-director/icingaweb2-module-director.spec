@@ -22,10 +22,10 @@
 %define icingadirector_user icingadirector
 
 Name:           icingaweb2-module-director
-Version:        1.11.9
+Version:        1.12.1
 Release:        0
 Summary:        Config module for Icinga Web 2
-License:        GPL-2.0-or-later
+License:        GPL-3.0-only
 Group:          System/Monitoring
 URL:            https://www.icinga.org
 Source0:        https://github.com/Icinga/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
@@ -35,14 +35,12 @@ BuildArch:      noarch
 BuildRequires:  nagios-rpm-macros
 BuildRequires:  systemd-rpm-macros
 Requires(pre):  pwdutils
-Requires:       icinga-php-library >= 0.14.2
-Requires:       icinga-php-thirdparty >= 0.15.3
-Requires:       icinga2 >= 2.8.0
-Requires:       icingaweb2 >= 2.8.0
-Requires:       icingaweb2-module-incubator >= 0.22.0
-Requires:       icingaweb2-module-ipl >= 0.5.0
-Requires:       icingaweb2-module-reactbundle >= 0.9.0
-Requires:       php >= 7.3
+Requires:       icinga-php-legacy >= 1.1.0
+Requires:       icinga-php-library >= 1.0.0
+Requires:       icinga-php-thirdparty >= 1.0.0
+Requires:       icinga2 >= 2.9.0
+Requires:       icingaweb2 >= 2.9.0
+Requires:       php >= 8.2
 Requires:       php-curl
 Requires:       php-iconv
 Requires:       php-pcntl
@@ -77,7 +75,7 @@ mkdir -p %{buildroot}%{_localstatedir}/lib/%{name}
 # rpmlintrc
 chmod 754 %{buildroot}%{basedir}/modules/director/contrib/linux-agent-installer/Icinga2Agent.bash
 # languages
-%find_lang director %{name}.lang
+#%%find_lang director %%{name}.lang
 
 %pre
 %service_add_pre %{name}.service
@@ -93,9 +91,10 @@ chmod 754 %{buildroot}%{basedir}/modules/director/contrib/linux-agent-installer/
 %postun
 %service_del_postun %{name}.service
 
-%files -f %{name}.lang
+#%%files -f %%{name}.lang
+%files
 %defattr(-,root,root)
-%license LICENSE
+%license LICENSE.md
 %doc README.md README.SUSE
 %dir %{basedir}
 %dir %{basedir}/modules
