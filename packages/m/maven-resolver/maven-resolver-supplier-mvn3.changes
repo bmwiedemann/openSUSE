@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:04:43 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Update to upstream version 2.0.24
+  * New features and improvements
+    + Fix PathConflictResolver OOM on dense dependency graphs
+  * Bug Fixes
+    + Fix flaky IpcClientForkedTest on Windows
+    + fix: synchronize IPC stream access
+    + fix: propagate fatal errors from Jetty request content
+    + Use structured logging in the IPC server
+    + MRESOLVER-2142: Increase HTTP3 port allocation retries
+    + Honor system proxy credentials in Apache transport
+  * Documentation updates
+    + docs: rewrite how-resolver-works.md to STE rules
+    + docs: refresh resolver misconception references
+    + docs: clarify checksum trust boundaries
+    + fix: correct config filename to .mvn/maven.config
+    + Use configuration key as link label
+  * Dependency updates
+    + Bump org.apache.maven:maven-parent from 49 to 50
+    + Bump org.codehaus.mojo:build-helper-maven-plugin from 3.6.1
+      to 3.6.2
+    + Bump org.codehaus.mojo:exec-maven-plugin from 3.6.3 to 3.6.4
+    + Bump dev.sigstore:sigstore-java from 2.2.0 to 2.3.0
+
+-------------------------------------------------------------------
 Fri Sep 18 08:11:36 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Update to upstream version 2.0.23

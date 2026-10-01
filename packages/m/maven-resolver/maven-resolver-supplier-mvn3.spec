@@ -20,7 +20,7 @@
 %define fragment_name supplier-mvn3
 %define _buildshell /bin/bash
 Name:           %{base_name}-%{fragment_name}
-Version:        2.0.23
+Version:        2.0.24
 Release:        0
 Summary:        Maven Artifact Resolver Instance Supplier Maven3
 License:        Apache-2.0
@@ -41,7 +41,7 @@ BuildRequires:  atinject
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-BuildRequires:  maven-bootstrap
+BuildRequires:  maven
 BuildRequires:  unzip
 BuildRequires:  mvn(org.apache.maven:maven-parent:pom:)
 Obsoletes:      %{base_name}-supplier
