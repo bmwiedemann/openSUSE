@@ -57,15 +57,15 @@ BuildRequires:  pkgconfig(girepository-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gom-1.0)
-BuildRequires:  pkgconfig(gtk4) >= 4.10
+BuildRequires:  pkgconfig(gtk4) >= 4.15.5
 BuildRequires:  pkgconfig(gtksourceview-5) >= 5.17
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.2.0
 BuildRequires:  pkgconfig(jsonrpc-glib-1.0) >= 3.43.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 BuildRequires:  pkgconfig(libcmark) >= 0.29.0
-BuildRequires:  pkgconfig(libdex-1) >= 0.2
+BuildRequires:  pkgconfig(libdex-1) >= 0.7
 BuildRequires:  pkgconfig(libgit2-glib-1.0) >= 1.1.0
-BuildRequires:  pkgconfig(libpanel-1) >= 1.5.0
+BuildRequires:  pkgconfig(libpanel-1) >= 1.7.0
 BuildRequires:  pkgconfig(libpeas-2) >= 1.99.0
 BuildRequires:  pkgconfig(libportal-gtk4)
 BuildRequires:  pkgconfig(libspelling-1)
@@ -73,7 +73,7 @@ BuildRequires:  pkgconfig(libxml-2.0) >= 2.9.0
 BuildRequires:  pkgconfig(sysprof-6)
 BuildRequires:  pkgconfig(sysprof-capture-4) >= 45.0
 BuildRequires:  pkgconfig(template-glib-1.0) >= 3.37.1
-BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.70.0
+BuildRequires:  pkgconfig(vte-2.91-gtk4) >= 0.75.0
 BuildRequires:  pkgconfig(yaml-0.1)
 Requires:       autoconf
 Requires:       automake

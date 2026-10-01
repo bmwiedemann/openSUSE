@@ -758,4 +758,14 @@
   + Updated translations.</comment>
     <requestid>1378873</requestid>
   </revision>
+  <revision rev="84" vrev="2">
+    <srcmd5>135d4583537c5e2259c23968fcb4923e</srcmd5>
+    <version>50.0+39</version>
+    <time>1790866111</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+    - Use macro in `finalize()`</comment>
+    <requestid>1381859</requestid>
+  </revision>
 </revisionlist>
