@@ -1,6 +1,6 @@
 <servicedata>
     <service name="tar_scm">
         <param name="url">https://github.com/kubernetes-sigs/kustomize.git</param>
-        <param name="changesrevision">9790a1c3efd2fd35f1b768d495112834176581c1</param>
+        <param name="changesrevision">2e294e3e92a56fe9cfa1e755e6e57c5f1268ce22</param>
     </service>
 </servicedata>

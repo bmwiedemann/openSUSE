@@ -17,7 +17,7 @@
 
 
 Name:           kustomize
-Version:        5.8.1
+Version:        5.8.2
 Release:        0
 Summary:        Customization of kubernetes YAML configurations
 License:        Apache-2.0
@@ -28,7 +28,7 @@ Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
 BuildRequires:  zsh
-BuildRequires:  golang(API) = 1.24
+BuildRequires:  golang(API) = 1.26
 ExcludeArch:    s390
 ExcludeArch:    %{ix86}
 
