@@ -21,7 +21,7 @@
   %define _fillupdir %{_localstatedir}/adm/fillup-templates
 %endif
 Name:           thermald
-Version:        2.5.12.2.git+dd186d0
+Version:        2.5.13.2.git+39f4bdb
 Release:        0
 Summary:        The Linux Thermal Daemon program from 01.org
 License:        GPL-2.0-or-later

@@ -122,4 +122,16 @@
     <comment></comment>
     <requestid>1366912</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>db7877f411890af2152ed66ead39a082</srcmd5>
+    <version>1.0.1+285</version>
+    <time>1790886075</time>
+    <user>anag_factory</user>
+    <comment>Update to version 1.0.1+285 (git snapshot of Lyude/neovim-gtk main):
+ports to the GTK 4.10 API, drops a bogus font-size warning and
+re-vendors. Requires gtk4 &gt;= 4.10, the minimum upstream raised to in
+this range.
+</comment>
+    <requestid>1381953</requestid>
+  </revision>
 </revisionlist>

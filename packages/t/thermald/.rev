@@ -264,4 +264,12 @@ D 0001-ThermalMonitor.pro-Don-t-hardcode-the-qcustomplot-li.patch
     <comment></comment>
     <requestid>1361583</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>91221718e4549f12e3b080f081811b18</srcmd5>
+    <version>2.5.13.2.git+39f4bdb</version>
+    <time>1790886091</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381958</requestid>
+  </revision>
 </revisionlist>

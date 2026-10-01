@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  1 17:52:30 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.6.7:
+  * AzureOpenAI picks up a workload identity bearer token on its
+    own when AZURE_CLIENT_ID, AZURE_TENANT_ID and
+    AZURE_FEDERATED_TOKEN_FILE are all set and no other credential
+    was given; needs the new azure-identity extra for it
+  * Model profile data refreshed
+- Raise the langchain-core requirement to 1.6.6, as upstream does
+
+-------------------------------------------------------------------
 Wed Sep 23 18:43:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.6 (includes 1.6.4; patch

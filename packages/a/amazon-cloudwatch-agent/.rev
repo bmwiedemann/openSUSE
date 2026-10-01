@@ -101,4 +101,31 @@
 - Update go.opentelemetry.io/otel to v1.46.0 (forwarded request 1378975 from glaubitz)</comment>
     <requestid>1379219</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>e7479684e9cfddd70e118dcafb31d596</srcmd5>
+    <version>1.300073.0</version>
+    <time>1790886064</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.300073.0
+  * [Agent] Add Google Cloud support for GCE and GKE by @jefchien
+    in (#2255), (#2258) and (#2260)
+  * [Agent] Add opt-in self-telemetry endpoint for agent metrics
+    by @movence in (#2246)
+  * [ContainerInsights] Add KEDA and Karpenter metrics scraping
+    by @Paamicky in (#2250)
+  * [ContainerInsights] Add watch_replicaset toggle to disable the
+    ReplicaSet informer by @movence in (#2246)
+  * [Metrics/JMX] Format JVM metric units for Tomcat by @Paamicky
+    in (#2235)
+  * [ContainerInsights] Fix EKS OTel Container Insights log delivery
+    and stabilize cluster-scoped metric identity by @sky333999
+    in (#2249)
+  * [ContainerInsights] Only resolve cluster name when running
+    in Kubernetes by @Paamicky in (#2259)
+  * [Logs] Prevent high log throughput from stalling log collection
+    while recording file read progress by @lorespiz in (#2253)
+- Update github.com/klauspost/compress to v1.18.7
+  (bsc1283594#, CVE-2026-63209) (forwarded request 1381932 from glaubitz)</comment>
+    <requestid>1381952</requestid>
+  </revision>
 </revisionlist>

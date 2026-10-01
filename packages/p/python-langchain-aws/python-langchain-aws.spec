@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-aws
-Version:        1.7.9
+Version:        1.8.0
 Release:        0
 Summary:        LangChain integrations for AWS
 License:        MIT
@@ -74,12 +74,14 @@ rm tests/conftest.py
 #   python-langchain-tests ChatModel unit-test bridge (test_openai also needs
 #   the langchain-aws[openai] extra, which IS in Factory -- langchain-tests is
 #   the blocker; test_anthropic_mantle also needs the anthropic extra);
-# - middleware/test_prompt_caching needs the full python-langchain meta package.
+# - middleware/test_prompt_caching needs the full python-langchain meta package;
+# - test_vcr_config (new in 1.8.0) imports tests/conftest.py, dropped above
+#   because it needs langchain_tests and vcr.
 # test_versioning and TestToolNodeCompatibility now run: langchain-anthropic
 # and langgraph are in Factory.
 # test_bedrock_api_key_provider_* mock.patch aws-bedrock-token-generator,
 # which is not packaged (openai/anthropic extra only).
-%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/chat_models/test_openai.py --ignore tests/unit_tests/chat_models/test_anthropic_mantle.py --ignore tests/unit_tests/middleware/test_prompt_caching.py -k 'not test_bedrock_api_key_provider'
+%pytest tests/unit_tests --ignore tests/unit_tests/test_standard.py --ignore tests/unit_tests/chat_models/test_anthropic.py --ignore tests/unit_tests/chat_models/test_bedrock_converse.py --ignore tests/unit_tests/chat_models/test_openai.py --ignore tests/unit_tests/chat_models/test_anthropic_mantle.py --ignore tests/unit_tests/middleware/test_prompt_caching.py --ignore tests/unit_tests/test_vcr_config.py -k 'not test_bedrock_api_key_provider'
 
 %files %{python_files}
 %doc README.md

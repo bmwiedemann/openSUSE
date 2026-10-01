@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  1 17:52:40 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 1.8.0:
+  * Claude Sonnet 5.5 is supported, and Opus 5.5 no longer has
+    tool_choice forced on it; sampling params and forced tool use
+    are dropped for models on ChatAnthropicMantle that reject them
+  * GPT-5.x and GPT-6 are routed to the Mantle /openai/v1 endpoint
+    and sent max_completion_tokens instead of max_tokens
+  * GPT-6 Sol and Luna accept reasoning_effort on
+    ChatBedrockConverse
+  * ChatOpenAIMantle defaults to the Responses API for GPT-5.x/6
+  * Images are moved out of toolResult for models that do not
+    support them there
+  * MemoryDB rejects query syntax in filter field names
+  * Usage metadata is fixed for Qwen/OpenAI streams that hit
+    max_tokens on ChatBedrock
+  * Anthropic Mantle is kept off the ambient gateway
+- Skip the new test_vcr_config unit test: it imports the upstream
+  tests/conftest.py, which is not buildable here because it needs
+  langchain_tests and vcr
+- No user-visible changes to the packaged dependency set: upstream
+  only moved the optional valkey client floor, which openSUSE does
+  not pull
+
+-------------------------------------------------------------------
 Tue Sep 22 17:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.7.9:

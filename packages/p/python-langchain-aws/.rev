@@ -213,4 +213,17 @@ Built and checked locally on aarch64: 673 tests pass, rpmlint 0 errors,
 0 warnings, 0 badness.</comment>
     <requestid>1379740</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>5d52bb9dc95ab535eee3214c6eed4446</srcmd5>
+    <version>1.8.0</version>
+    <time>1790886085</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.8.0: Claude Sonnet/Opus 5.5 on Bedrock, GPT-5.x/6 via Mantle, MemoryDB filter hardening.
+
+test_vcr_config is skipped: it needs the upstream tests/conftest.py, which requires langchain_tests and vcr, neither in Factory.
+
+No dependency floor changes.
+</comment>
+    <requestid>1381955</requestid>
+  </revision>
 </revisionlist>

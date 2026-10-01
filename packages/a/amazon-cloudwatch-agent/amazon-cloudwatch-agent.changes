@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:32:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 1.300073.0
+  * [Agent] Add Google Cloud support for GCE and GKE by @jefchien
+    in (#2255), (#2258) and (#2260)
+  * [Agent] Add opt-in self-telemetry endpoint for agent metrics
+    by @movence in (#2246)
+  * [ContainerInsights] Add KEDA and Karpenter metrics scraping
+    by @Paamicky in (#2250)
+  * [ContainerInsights] Add watch_replicaset toggle to disable the
+    ReplicaSet informer by @movence in (#2246)
+  * [Metrics/JMX] Format JVM metric units for Tomcat by @Paamicky
+    in (#2235)
+  * [ContainerInsights] Fix EKS OTel Container Insights log delivery
+    and stabilize cluster-scoped metric identity by @sky333999
+    in (#2249)
+  * [ContainerInsights] Only resolve cluster name when running
+    in Kubernetes by @Paamicky in (#2259)
+  * [Logs] Prevent high log throughput from stalling log collection
+    while recording file read progress by @lorespiz in (#2253)
+- Update github.com/klauspost/compress to v1.18.7
+  (bsc1283594#, CVE-2026-63209)
+
+-------------------------------------------------------------------
 Sat Sep 19 08:23:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 1.300072.0

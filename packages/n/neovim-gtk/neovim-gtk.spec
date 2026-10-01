@@ -19,7 +19,7 @@
 %define         _name nvim-gtk
 %define         appid com.github.Lyude.neovim-gtk
 Name:           neovim-gtk
-Version:        1.0.1+279
+Version:        1.0.1+285
 Release:        0
 Summary:        GTK UI for Neovim
 License:        GPL-3.0-only
@@ -31,7 +31,7 @@ BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(atk)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.10
 BuildRequires:  pkgconfig(pango)
 Requires:       neovim >= 0.3.2
 

@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 01 17:20:36 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+- Update to version 2.5.13.2.git+39f4bdb:
+  * Fix string formatting for state_entry_time
+  * thermald: platform: intel: don't claim PowerCap is missing on a CPUID miss
+  * Potential fix for pull request finding
+  * thermald: spel: restrict PL init to XML-defined cdev only
+  * Fix a handful of typos and spelling mistakes
+  * thermald: platform: intel: Re-add Wildcat Lake support
+  * thermald: handle large RAPL PL1 values in restore registration
+  * optional gtkdocsize
+  * Potential fix for pull request finding
+  * thermald : PID fix inverted-range control and add incremental PID mode
+  * docs: add AMD Ryzen/k10temp example to thermal-conf.xml(5) manpage
+  * adaptive: Stop mapping SwOem conditions to ODVP variables
+  * Add SoC model matching via device tree for ARM/Qualcomm platforms
+  * Add Qualcomm SPEL cooling device support
+  * Remove fatal error for non mobile platform
+
+-------------------------------------------------------------------
 Tue Jun 23 16:00:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5.12.2.git+dd186d0 (snapshot of git master

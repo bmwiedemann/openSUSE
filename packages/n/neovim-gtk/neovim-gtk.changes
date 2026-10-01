@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  1 18:04:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.1+285 (git snapshot):
+  * Port to the GTK 4.10 API: MessageDialog became AlertDialog,
+    FileChooserDialog became FileDialog, and the GTK 4.10
+    deprecations in the StyleContext styling code are fixed
+  * Stop warning when the shell is configured with a font size of
+    zero or less
+  * Update dependencies (phf and phf_codegen 0.13 -> 0.14, fork
+    0.7 -> 0.8)
+- Require gtk4 >= 4.10, upstream raised its own minimum from 4.4
+
+-------------------------------------------------------------------
 Wed Jul 15 23:11:25 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add missing neovim Requires, neovim-gtk can not function without
