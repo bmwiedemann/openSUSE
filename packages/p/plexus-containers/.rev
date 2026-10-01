@@ -132,4 +132,12 @@
     <comment>Fix build after removal of bootstrap plugins</comment>
     <requestid>1375784</requestid>
   </revision>
+  <revision rev="17" vrev="4">
+    <srcmd5>4d2a53492ba6cacab83922a74b5d54c0</srcmd5>
+    <version>2.2.0</version>
+    <time>1790865792</time>
+    <user>anag_factory</user>
+    <comment>plexus-metadata-generator ant task</comment>
+    <requestid>1381630</requestid>
+  </revision>
 </revisionlist>

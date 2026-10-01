@@ -1,7 +1,7 @@
 #
 # spec file for package plexus-metadata-generator
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,38 +34,29 @@ Source0:        https://github.com/codehaus-plexus/%{base_name}/archive/%{base_n
 Source1:        http://www.apache.org/licenses/LICENSE-2.0.txt
 Source2:        LICENSE.MIT
 Source100:      %{base_name}-build.tar.xz
-Patch1:         plexus-metadata-generator-cli.patch
+Patch1:         plexus-metadata-generator-ant.patch
 Patch1000:      %{name}-nomojo.patch
 BuildRequires:  ant
-BuildRequires:  apache-commons-cli
 BuildRequires:  fdupes
 BuildRequires:  javapackages-local >= 6
 BuildRequires:  jdom2
 BuildRequires:  junit
 BuildRequires:  objectweb-asm >= 7
 BuildRequires:  plexus-classworlds
-BuildRequires:  plexus-cli
 BuildRequires:  plexus-containers-component-annotations
 BuildRequires:  plexus-utils
 BuildRequires:  plexus-xml
 BuildRequires:  qdox >= 2
 BuildRequires:  sisu-plexus
-BuildRequires:  xbean
-Requires:       apache-commons-cli
-Requires:       atinject
-Requires:       google-guice
-Requires:       guava
-Requires:       jakarta-inject
+Requires:       ant
 Requires:       jdom2
 Requires:       objectweb-asm >= 7
-Requires:       plexus-cli
 Requires:       plexus-containers-component-annotations = %{version}
 Requires:       plexus-utils
 Requires:       plexus-xml
 Requires:       qdox >= 2
-Requires:       sisu-inject
 Requires:       sisu-plexus
-Requires:       xbean
+Provides:       %{name}-ant
 BuildArch:      noarch
 %if %{with tests}
 BuildRequires:  ant-junit
@@ -89,7 +80,7 @@ Group:          Documentation/HTML
 %setup -q -n %{base_name}-%{base_name}-%{version} -a100
 
 mkdir -p lib
-build-jar-repository -s lib %{base_name} objectweb-asm/asm objectweb-asm/asm-commons org.eclipse.sisu.plexus plexus/classworlds plexus/utils plexus/xml jdom2/jdom2 commons-cli qdox plexus/cli
+build-jar-repository -s lib ant/ant %{base_name} objectweb-asm/asm objectweb-asm/asm-commons org.eclipse.sisu.plexus plexus/classworlds plexus/utils plexus/xml jdom2/jdom2 qdox
 %if %{with tests}
 build-jar-repository -s lib hamcrest/core xbean/xbean-reflect
 %endif
@@ -104,6 +95,7 @@ cp %{SOURCE2} .
 %pom_remove_plugin -r :maven-site-plugin
 
 %pom_add_dep org.codehaus.plexus:plexus-xml:3.0.0 plexus-component-metadata
+%pom_add_dep org.apache.ant:ant:1.10.18 plexus-component-metadata
 
 # Generate OSGI info
 %pom_xpath_inject "pom:project" "
@@ -158,11 +150,15 @@ install -dm 0755 %{buildroot}%{_mavenpomdir}
 install -dm 0755 %{buildroot}%{_javadocdir}/%{name}
 cp -pr plexus-%{comp_name}/target/site/apidocs/* %{buildroot}%{_javadocdir}/%{name}/
 %fdupes -s %{buildroot}%{_javadocdir}
+# Ant config
+install -dm 0755 %{buildroot}%{_sysconfdir}/ant.d
+echo "%{name} %{base_name}/plexus-component-annotations objectweb-asm/asm plexus/utils plexus/xml jdom2/jdom2 qdox org.eclipse.sisu.plexus" > %{buildroot}%{_sysconfdir}/ant.d/%{name}
 # script
-%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:atinject:jakarta-inject:org.eclipse.sisu.plexus:org.eclipse.sisu.inject:guice/google-guice:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus-classworlds:plexus/utils:plexus/xml:jdom2/jdom2:commons-cli:qdox:plexus/cli:guava/guava:xbean/xbean-reflect %{name}
+%jpackage_script org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli "" "" %{name}:ant/ant:%{base_name}/plexus-component-annotations:objectweb-asm/asm:plexus/utils:plexus/xml:jdom2/jdom2:qdox:org.eclipse.sisu.plexus %{name}
 
 %files -f .mfiles
 %license LICENSE-2.0.txt LICENSE.MIT
+%config %{_sysconfdir}/ant.d/%{name}
 %{_bindir}/%{name}
 
 %files javadoc

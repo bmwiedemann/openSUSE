@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Sep 30 09:01:44 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Add plexus-metadata-generator ant task
+- Add virtual provide plexus-metadata-generator-ant to require
+  the enabled version
+- Removed patch:
+  * plexus-metadata-generator-cli.patch
+    + replaced by more integrated solution
+- Added patch:
+  * plexus-metadata-generator-ant.patch
+    + implement ant task and integrate also command-line interface
+
+-------------------------------------------------------------------
 Mon Jun 10 16:12:04 UTC 2024 - Fridrich Strba <fstrba@suse.com>
 
 - Add dependency on jakarta-inject, needed by google-guice 6.0.0

@@ -1,0 +1,508 @@
+--- a/plexus-component-metadata/pom.xml
++++ b/plexus-component-metadata/pom.xml
+@@ -103,6 +103,12 @@
+       <artifactId>maven-plugin-annotations</artifactId>
+       <scope>provided</scope>
+     </dependency>
++    <dependency>
++      <groupId>org.apache.ant</groupId>
++      <artifactId>ant</artifactId>
++      <version>1.10.18</version>
++      <scope>provided</scope>
++    </dependency>
+     <dependency>
+       <groupId>org.codehaus.plexus</groupId>
+       <artifactId>plexus-testing</artifactId>
+--- a/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/DefaultMetadataGenerator.java
++++ b/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/DefaultMetadataGenerator.java
+@@ -30,6 +30,7 @@ import java.util.Arrays;
+ import java.util.Collection;
+ import java.util.Collections;
+ import java.util.Comparator;
++import java.util.LinkedHashMap;
+ import java.util.List;
+ import java.util.Map;
+ 
+@@ -39,6 +40,9 @@ import org.codehaus.plexus.component.repository.ComponentDependency;
+ import org.codehaus.plexus.component.repository.ComponentDescriptor;
+ import org.codehaus.plexus.component.repository.ComponentSetDescriptor;
+ import org.codehaus.plexus.logging.AbstractLogEnabled;
++import org.codehaus.plexus.logging.Logger;
++import org.codehaus.plexus.logging.console.ConsoleLogger;
++import org.codehaus.plexus.metadata.merge.ComponentsXmlMerger;
+ import org.codehaus.plexus.metadata.merge.Merger;
+ import org.codehaus.plexus.util.FileUtils;
+ import org.codehaus.plexus.util.IOUtil;
+@@ -62,6 +66,16 @@ public class DefaultMetadataGenerator extends AbstractLogEnabled implements Meta
+     public void generateDescriptor(MetadataGenerationRequest request) throws Exception {
+         assert request.outputFile != null;
+ 
++        if (merger == null) {
++            merger = new ComponentsXmlMerger();
++        }
++
++        if (extractorMap == null) {
++            extractorMap = new LinkedHashMap<String, ComponentDescriptorExtractor>();
++            extractorMap.put("class", new ClassComponentDescriptorExtractor());
++            extractorMap.put("source", new SourceComponentDescriptorExtractor());
++        }
++
+         List<String> extractorHints = request.extractors;
+ 
+         final Collection<ComponentDescriptorExtractor> extractors;
+@@ -165,4 +179,14 @@ public class DefaultMetadataGenerator extends AbstractLogEnabled implements Meta
+ 
+         getLogger().debug("Wrote: " + outputFile);
+     }
++
++    @Override
++    protected Logger getLogger() {
++        Logger logger = super.getLogger();
++        if (logger == null) {
++            logger = new ConsoleLogger(Logger.LEVEL_INFO, "console");
++            enableLogging(logger);
++        }
++        return logger;
++    }
+ }
+new file mode 100644
+--- /dev/null
++++ b/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/PlexusMetadataGeneratorCli.java
+@@ -0,0 +1,30 @@
++package org.codehaus.plexus.metadata;
++
++/*
++ * The MIT License
++ *
++ * Copyright (c) 2004-2026, The Codehaus
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
++ * associated documentation files (the "Software"), to deal in the Software without restriction,
++ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
++ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
++ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
++ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++import org.codehaus.plexus.metadata.ant.PlexusMetadataTask;
++
++public class PlexusMetadataGeneratorCli {
++    public static void main(String[] args) throws Exception {
++        PlexusMetadataTask.main(args);
++    }
++}
+new file mode 100644
+--- /dev/null
++++ b/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ant/AntLogger.java
+@@ -0,0 +1,85 @@
++package org.codehaus.plexus.metadata.ant;
++
++/*
++ * The MIT License
++ *
++ * Copyright (c) 2004-2026, The Codehaus
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
++ * associated documentation files (the "Software"), to deal in the Software without restriction,
++ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
++ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
++ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
++ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++import org.apache.tools.ant.Project;
++import org.apache.tools.ant.Task;
++import org.codehaus.plexus.logging.AbstractLogger;
++import org.codehaus.plexus.logging.Logger;
++
++class AntLogger extends AbstractLogger {
++    private final Task task;
++
++    AntLogger(Task task) {
++        super(Logger.LEVEL_DEBUG, "ant");
++        this.task = task;
++    }
++
++    @Override
++    public void debug(String message, Throwable throwable) {
++        log(message, throwable, Project.MSG_DEBUG);
++    }
++
++    @Override
++    public void info(String message, Throwable throwable) {
++        log(message, throwable, Project.MSG_INFO);
++    }
++
++    @Override
++    public void warn(String message, Throwable throwable) {
++        log(message, throwable, Project.MSG_WARN);
++    }
++
++    @Override
++    public void error(String message, Throwable throwable) {
++        log(message, throwable, Project.MSG_ERR);
++    }
++
++    @Override
++    public void fatalError(String message, Throwable throwable) {
++        log(message, throwable, Project.MSG_ERR);
++    }
++
++    @Override
++    public Logger getChildLogger(String name) {
++        return this;
++    }
++
++    private void log(String message, Throwable throwable, int level) {
++        if (task.getProject() != null) {
++            if (throwable != null) {
++                task.log(message + ": " + throwable.getMessage(), level);
++            } else {
++                task.log(message, level);
++            }
++        } else {
++            if (level <= Project.MSG_WARN) {
++                System.err.println(message);
++                if (throwable != null) {
++                    throwable.printStackTrace(System.err);
++                }
++            } else {
++                System.out.println(message);
++            }
++        }
++    }
++}
+new file mode 100644
+--- /dev/null
++++ b/plexus-component-metadata/src/main/java/org/codehaus/plexus/metadata/ant/PlexusMetadataTask.java
+@@ -0,0 +1,232 @@
++package org.codehaus.plexus.metadata.ant;
++
++/*
++ * The MIT License
++ *
++ * Copyright (c) 2004-2026, The Codehaus
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
++ * associated documentation files (the "Software"), to deal in the Software without restriction,
++ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
++ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
++ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
++ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++import java.io.File;
++import java.util.ArrayList;
++import java.util.List;
++
++import org.apache.tools.ant.BuildException;
++import org.apache.tools.ant.Task;
++import org.apache.tools.ant.types.Path;
++import org.apache.tools.ant.types.Reference;
++import org.codehaus.plexus.metadata.DefaultMetadataGenerator;
++import org.codehaus.plexus.metadata.MetadataGenerationRequest;
++
++public class PlexusMetadataTask extends Task {
++    private File classesDirectory;
++    private File outputFile;
++    private File descriptorsDirectory;
++    private File intermediaryFile;
++    private String sourceEncoding;
++    private String extractors;
++    private Boolean useContextClassLoader;
++
++    private final List<File> sourceDirectories = new ArrayList<File>();
++    private Path sourcePath;
++    private Path classpath;
++
++    public void setClassesDirectory(File classesDirectory) {
++        this.classesDirectory = classesDirectory;
++    }
++
++    public File getClassesDirectory() {
++        return classesDirectory;
++    }
++
++    public void setOutputFile(File outputFile) {
++        this.outputFile = outputFile;
++    }
++
++    public File getOutputFile() {
++        return outputFile;
++    }
++
++    public void setDescriptorsDirectory(File descriptorsDirectory) {
++        this.descriptorsDirectory = descriptorsDirectory;
++    }
++
++    public File getDescriptorsDirectory() {
++        return descriptorsDirectory;
++    }
++
++    public void setIntermediaryFile(File intermediaryFile) {
++        this.intermediaryFile = intermediaryFile;
++    }
++
++    public File getIntermediaryFile() {
++        return intermediaryFile;
++    }
++
++    public void setSourceEncoding(String sourceEncoding) {
++        this.sourceEncoding = sourceEncoding;
++    }
++
++    public String getSourceEncoding() {
++        return sourceEncoding;
++    }
++
++    public void setExtractors(String extractors) {
++        this.extractors = extractors;
++    }
++
++    public String getExtractors() {
++        return extractors;
++    }
++
++    public void setUseContextClassLoader(boolean useContextClassLoader) {
++        this.useContextClassLoader = useContextClassLoader;
++    }
++
++    public void setSourceDirectory(File sourceDirectory) {
++        if (sourceDirectory != null) {
++            this.sourceDirectories.add(sourceDirectory);
++        }
++    }
++
++    public void addSourceDirectory(Path path) {
++        if (this.sourcePath == null) {
++            this.sourcePath = path;
++        } else {
++            this.sourcePath.append(path);
++        }
++    }
++
++    public Path createSourceDirectories() {
++        if (this.sourcePath == null) {
++            this.sourcePath = new Path(getProject());
++        }
++        return this.sourcePath.createPath();
++    }
++
++    public void setSourceDirectories(Path path) {
++        this.sourcePath = path;
++    }
++
++    public Path createClasspath() {
++        if (this.classpath == null) {
++            this.classpath = new Path(getProject());
++        }
++        return this.classpath.createPath();
++    }
++
++    public void setClasspath(Path classpath) {
++        this.classpath = classpath;
++    }
++
++    public void setClasspathRef(Reference ref) {
++        createClasspath().setRefid(ref);
++    }
++
++    @Override
++    public void execute() throws BuildException {
++        if (classesDirectory == null) {
++            throw new BuildException("The 'classesDirectory' attribute is required.");
++        }
++        if (outputFile == null) {
++            outputFile = new File(classesDirectory, "META-INF/plexus/components.xml");
++        }
++
++        MetadataGenerationRequest request = new MetadataGenerationRequest();
++        request.classesDirectory = classesDirectory;
++        request.outputFile = outputFile;
++        request.sourceEncoding = sourceEncoding != null && !sourceEncoding.isEmpty() ? sourceEncoding : "UTF-8";
++        request.componentDescriptorDirectory = descriptorsDirectory;
++        request.intermediaryFile = intermediaryFile;
++
++        if (extractors != null && !extractors.trim().isEmpty()) {
++            List<String> hints = new ArrayList<String>();
++            for (String h : extractors.split(",")) {
++                String trimmed = h.trim();
++                if (!trimmed.isEmpty()) {
++                    hints.add(trimmed);
++                }
++            }
++            request.extractors = hints;
++        }
++
++        List<String> srcDirs = new ArrayList<String>();
++        for (File dir : sourceDirectories) {
++            if (dir != null) {
++                srcDirs.add(dir.getAbsolutePath());
++            }
++        }
++        if (sourcePath != null) {
++            for (String path : sourcePath.list()) {
++                srcDirs.add(new File(path).getAbsolutePath());
++            }
++        }
++        request.sourceDirectories = srcDirs;
++
++        List<String> cp = new ArrayList<String>();
++        if (classesDirectory.exists()) {
++            cp.add(classesDirectory.getAbsolutePath());
++        }
++        if (classpath != null) {
++            for (String path : classpath.list()) {
++                cp.add(new File(path).getAbsolutePath());
++            }
++        }
++        request.classpath = cp;
++        if (useContextClassLoader != null) {
++            request.useContextClassLoader = useContextClassLoader;
++        }
++
++        try {
++            DefaultMetadataGenerator generator = new DefaultMetadataGenerator();
++            generator.enableLogging(new AntLogger(this));
++            generator.generateDescriptor(request);
++        } catch (Exception e) {
++            throw new BuildException("Plexus metadata generation failed: " + e.getMessage(), e);
++        }
++    }
++
++    public static void main(String[] args) throws Exception {
++        PlexusMetadataTask task = new PlexusMetadataTask();
++        task.setUseContextClassLoader(true);
++        for (int i = 0; i < args.length; i++) {
++            if ("-s".equals(args[i]) || "--source".equals(args[i])) {
++                task.setSourceDirectory(new File(args[++i]));
++            } else if ("-c".equals(args[i]) || "--classes".equals(args[i])) {
++                task.setClassesDirectory(new File(args[++i]));
++            } else if ("-m".equals(args[i]) || "--descriptors".equals(args[i])) {
++                task.setDescriptorsDirectory(new File(args[++i]));
++            } else if ("-o".equals(args[i]) || "--output".equals(args[i])) {
++                task.setOutputFile(new File(args[++i]));
++            } else if ("-e".equals(args[i]) || "--encoding".equals(args[i])) {
++                task.setSourceEncoding(args[++i]);
++            } else if ("-u".equals(args[i]) || "--use-context-class-loader".equals(args[i])) {
++                task.setUseContextClassLoader(Boolean.parseBoolean(args[++i]));
++            } else if ("-h".equals(args[i]) || "--help".equals(args[i])) {
++                System.out.println("Usage: plexus-metadata [options]");
++                System.out.println("  -s, --source <dir>       Source directory");
++                System.out.println("  -c, --classes <dir>      Classes directory");
++                System.out.println("  -m, --descriptors <dir>  Descriptors directory");
++                System.out.println("  -o, --output <file>      Output file");
++                System.out.println("  -e, --encoding <enc>     Source encoding");
++                System.out.println("  -u, --use-context-class-loader <bool> Use context class loader");
++                return;
++            }
++        }
++        task.execute();
++    }
++}
+new file mode 100644
+--- /dev/null
++++ b/plexus-component-metadata/src/main/resources/org/codehaus/plexus/metadata/ant/antlib.xml
+@@ -0,0 +1,4 @@
++<?xml version="1.0"?>
++<antlib>
++  <taskdef name="plexus-metadata" classname="org.codehaus.plexus.metadata.ant.PlexusMetadataTask"/>
++</antlib>
+new file mode 100644
+--- /dev/null
++++ b/plexus-component-metadata/src/test/java/org/codehaus/plexus/metadata/ant/PlexusMetadataTaskTest.java
+@@ -0,0 +1,70 @@
++package org.codehaus.plexus.metadata.ant;
++
++/*
++ * The MIT License
++ *
++ * Copyright (c) 2004-2026, The Codehaus
++ *
++ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
++ * associated documentation files (the "Software"), to deal in the Software without restriction,
++ * including without limitation the rights to use, copy, modify, merge, publish, distribute,
++ * sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is
++ * furnished to do so, subject to the following conditions:
++ *
++ * The above copyright notice and this permission notice shall be included in all copies or
++ * substantial portions of the Software.
++ *
++ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT
++ * NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
++ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
++ * DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
++ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
++ */
++
++import java.io.File;
++import java.nio.file.Files;
++
++import org.apache.tools.ant.Project;
++import org.codehaus.plexus.metadata.PlexusMetadataGeneratorCli;
++import org.junit.jupiter.api.Test;
++import org.junit.jupiter.api.io.TempDir;
++
++import static org.junit.jupiter.api.Assertions.assertTrue;
++
++class PlexusMetadataTaskTest {
++
++    @TempDir
++    File tempDir;
++
++    @Test
++    void testTaskExecution() throws Exception {
++        File classesDir = new File("target/test-classes");
++        File outputFile = new File(tempDir, "components.xml");
++
++        PlexusMetadataTask task = new PlexusMetadataTask();
++        task.setProject(new Project());
++        task.setClassesDirectory(classesDir);
++        task.setOutputFile(outputFile);
++        task.setExtractors("class");
++        task.execute();
++
++        assertTrue(outputFile.exists());
++        String content = new String(Files.readAllBytes(outputFile.toPath()));
++        assertTrue(content.contains("AnnotatedComponent"));
++    }
++
++    @Test
++    void testCliExecution() throws Exception {
++        File classesDir = new File("target/test-classes");
++        File outputFile = new File(tempDir, "cli-components.xml");
++
++        PlexusMetadataGeneratorCli.main(new String[] {
++            "-c", classesDir.getAbsolutePath(),
++            "-o", outputFile.getAbsolutePath()
++        });
++
++        assertTrue(outputFile.exists());
++        String content = new String(Files.readAllBytes(outputFile.toPath()));
++        assertTrue(content.contains("AnnotatedComponent"));
++    }
++}
