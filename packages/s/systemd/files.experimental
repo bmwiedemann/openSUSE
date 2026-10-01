@@ -23,7 +23,6 @@
 %dir %{_unitdir}/factory-reset.target.wants
 %if %{with sd_boot}
 %dir %{_unitdir}/initrd.target.wants
-%dir %{_unitdir}/storage-target-mode.target.wants
 %endif
 %if %{without bootstrap}
 %dir %{_unitdir}/system-install.target.wants
@@ -38,13 +37,16 @@
 %{_bindir}/systemd-mute-console
 %if %{without bootstrap}
 %{_bindir}/systemd-sysinstall
+%if %{without upstream}
 %{_bindir}/systemd-sysupdate
+%endif
 %{_bindir}/updatectl
 %{_datadir}/bash-completion/completions/oomctl
 %{_datadir}/bash-completion/completions/storagectl
 %{_datadir}/bash-completion/completions/systemd-sysinstall
 %if %{with upstream}
 %{_datadir}/bash-completion/completions/systemd-sysupdate
+%{_datadir}/bash-completion/completions/updatectl
 %endif
 %{_datadir}/dbus-1/interfaces/org.freedesktop.oom1.Manager.xml
 %{_datadir}/dbus-1/interfaces/org.freedesktop.sysupdate1.Job.xml
@@ -67,6 +69,7 @@
 %{_datadir}/zsh/site-functions/_systemd-sysinstall
 %if %{with upstream}
 %{_datadir}/zsh/site-functions/_systemd-sysupdate
+%{_datadir}/zsh/site-functions/_updatectl
 %endif
 %endif
 %{_distconfdir}/ssh/ssh_config.d/20-systemd-ssh-proxy.conf
@@ -78,7 +81,6 @@
 %{_mandir}/man1/systemd-imds-import.service.1.gz
 %{_mandir}/man1/systemd-imds.1.gz
 %{_mandir}/man1/systemd-keyutil.1.gz
-%{_mandir}/man1/systemd-measure.1.gz
 %{_mandir}/man1/systemd-mstack.1.gz
 %{_mandir}/man1/systemd-mute-console.1.gz
 %{_mandir}/man1/systemd-mute-console.socket.1.gz
@@ -107,6 +109,8 @@
 %{_mandir}/man8/systemd-clonesetup-generator.8.gz
 %{_mandir}/man8/systemd-clonesetup.8.gz
 %{_mandir}/man8/systemd-clonesetup@.service.8.gz
+%{_mandir}/man8/systemd-coredump-register.service.8.gz
+%{_mandir}/man8/systemd-coredumpd.service.8.gz
 %endif
 %{_mandir}/man8/systemd-factory-reset-complete.service.8.gz
 %{_mandir}/man8/systemd-factory-reset-generator.8.gz
@@ -125,9 +129,6 @@
 %{_mandir}/man8/systemd-oomd.8.gz
 %{_mandir}/man8/systemd-oomd.service.8.gz
 %if %{with sd_boot}
-%{_mandir}/man8/systemd-pcrextend.8.gz
-%{_mandir}/man8/systemd-pcrfs-root.service.8.gz
-%{_mandir}/man8/systemd-pcrfs@.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-file-system.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-firmware-code.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-firmware-config.service.8.gz
@@ -135,16 +136,6 @@
 %{_mandir}/man8/systemd-pcrlock-make-policy.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-authority.service.8.gz
 %{_mandir}/man8/systemd-pcrlock-secureboot-policy.service.8.gz
-%{_mandir}/man8/systemd-pcrlogin@.service.8.gz
-%{_mandir}/man8/systemd-pcrmachine.service.8.gz
-%{_mandir}/man8/systemd-pcrnvdone.service.8.gz
-%{_mandir}/man8/systemd-pcrosseparator.service.8.gz
-%{_mandir}/man8/systemd-pcrphase-factory-reset.service.8.gz
-%{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
-%{_mandir}/man8/systemd-pcrphase-storage-target-mode.service.8.gz
-%{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
-%{_mandir}/man8/systemd-pcrphase.service.8.gz
-%{_mandir}/man8/systemd-pcrproduct.service.8.gz
 %endif
 %if %{with upstream}
 %{_mandir}/man8/systemd-report-files.8.gz
@@ -153,6 +144,9 @@
 %{_mandir}/man8/systemd-report-sign-plain.8.gz
 %{_mandir}/man8/systemd-report-sign-plain.socket.8.gz
 %{_mandir}/man8/systemd-report-sign-plain@.service.8.gz
+%{_mandir}/man8/systemd-report-sign-tpm2.8.gz
+%{_mandir}/man8/systemd-report-sign-tpm2.socket.8.gz
+%{_mandir}/man8/systemd-report-sign-tpm2@.service.8.gz
 %{_mandir}/man8/systemd-report-sign-tsm.8.gz
 %{_mandir}/man8/systemd-report-sign-tsm.socket.8.gz
 %{_mandir}/man8/systemd-report-sign-tsm@.service.8.gz
@@ -224,11 +218,7 @@
 %{_systemd_util_dir}/systemd-imds
 %{_systemd_util_dir}/systemd-imdsd
 %{_systemd_util_dir}/systemd-keyutil
-%{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-oomd
-%endif
-%if %{with sd_boot}
-%{_systemd_util_dir}/systemd-pcrextend
 %endif
 %{_systemd_util_dir}/systemd-report
 %{_systemd_util_dir}/systemd-report-basic
@@ -236,6 +226,7 @@
 %if %{with upstream}
 %{_systemd_util_dir}/systemd-report-files
 %{_systemd_util_dir}/systemd-report-sign-plain
+%{_systemd_util_dir}/systemd-report-sign-tpm2
 %{_systemd_util_dir}/systemd-report-sign-tsm
 %endif
 %if %{without bootstrap}
@@ -279,21 +270,12 @@
 %endif
 %{_unitdir}/factory-reset-now.target
 %{_unitdir}/factory-reset.target.wants/systemd-factory-reset-request.service
-%if %{with sd_boot}
-%{_unitdir}/factory-reset.target.wants/systemd-pcrphase-factory-reset.service
-%endif
 %if %{without bootstrap}
 %{_unitdir}/initrd.target.wants/systemd-bsod.service
-%endif
-%if %{with sd_boot}
-%{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
 %endif
 %{_unitdir}/sockets.target.wants/systemd-factory-reset.socket
 %{_unitdir}/sockets.target.wants/systemd-journalctl.socket
 %{_unitdir}/sockets.target.wants/systemd-mute-console.socket
-%if %{with sd_boot}
-%{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
-%endif
 %{_unitdir}/sockets.target.wants/systemd-storage-block.socket
 %{_unitdir}/sockets.target.wants/systemd-storage-fs.socket
 %if %{with upstream}
@@ -304,16 +286,9 @@
 %{_unitdir}/storage-target-mode.target
 %endif
 %if %{with sd_boot}
-%{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
 %if %{with upstream}
 %{_unitdir}/sysinit.target.wants/clonesetup.target
 %endif
-%{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrnvdone.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrosseparator.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
-%{_unitdir}/sysinit.target.wants/systemd-pcrproduct.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup-early.service
 %{_unitdir}/sysinit.target.wants/systemd-tpm2-setup.service
 %endif
@@ -324,6 +299,10 @@
 %{_unitdir}/system-systemd\x2dmute\x2dconsole.slice
 %if %{without bootstrap}
 %{_unitdir}/systemd-bsod.service
+%endif
+%if %{with upstream}
+%{_unitdir}/systemd-coredump-register.service
+%{_unitdir}/systemd-coredumpd.service
 %endif
 %{_unitdir}/systemd-factory-reset-complete.service
 %{_unitdir}/systemd-factory-reset-reboot.service
@@ -359,10 +338,6 @@
 %{_unitdir}/systemd-oomd.socket
 %endif
 %if %{with sd_boot}
-%{_unitdir}/systemd-pcrextend.socket
-%{_unitdir}/systemd-pcrextend@.service
-%{_unitdir}/systemd-pcrfs-root.service
-%{_unitdir}/systemd-pcrfs@.service
 %{_unitdir}/systemd-pcrlock-file-system.service
 %{_unitdir}/systemd-pcrlock-firmware-code.service
 %{_unitdir}/systemd-pcrlock-firmware-config.service
@@ -371,16 +346,6 @@
 %{_unitdir}/systemd-pcrlock-secureboot-authority.service
 %{_unitdir}/systemd-pcrlock-secureboot-policy.service
 %{_unitdir}/systemd-pcrlock@.service
-%{_unitdir}/systemd-pcrlogin@.service
-%{_unitdir}/systemd-pcrmachine.service
-%{_unitdir}/systemd-pcrnvdone.service
-%{_unitdir}/systemd-pcrosseparator.service
-%{_unitdir}/systemd-pcrphase-factory-reset.service
-%{_unitdir}/systemd-pcrphase-initrd.service
-%{_unitdir}/systemd-pcrphase-storage-target-mode.service
-%{_unitdir}/systemd-pcrphase-sysinit.service
-%{_unitdir}/systemd-pcrphase.service
-%{_unitdir}/systemd-pcrproduct.service
 %endif
 %{_unitdir}/systemd-report-basic.socket
 %{_unitdir}/systemd-report-basic@.service
@@ -391,6 +356,8 @@
 %{_unitdir}/systemd-report-files@.service
 %{_unitdir}/systemd-report-sign-plain.socket
 %{_unitdir}/systemd-report-sign-plain@.service
+%{_unitdir}/systemd-report-sign-tpm2.socket
+%{_unitdir}/systemd-report-sign-tpm2@.service
 %{_unitdir}/systemd-report-sign-tsm.socket
 %{_unitdir}/systemd-report-sign-tsm@.service
 %{_unitdir}/systemd-report.socket

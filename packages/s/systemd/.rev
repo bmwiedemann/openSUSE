@@ -8113,4 +8113,27 @@ handle manual pages that consist only of a .so directive such as
 - Move systemd-vmspawn from the experimental sub-package to systemd-container</comment>
     <requestid>1368021</requestid>
   </revision>
+  <revision rev="474" vrev="1">
+    <srcmd5>2a738a4ce155ba52ef319eb8c3f96785</srcmd5>
+    <version>261.3</version>
+    <time>1790865679</time>
+    <user>anag_factory</user>
+    <comment>- pam: use &quot;pam_rootok&quot; in the &quot;auth&quot; stack of our PAM config for systemd-run0
+  (bsc#1253133) and similarly update our PAM config for systemd-user to replace
+  &quot;pam_deny&quot; with &quot;pam_rootok&quot;.
+  Previously SUSE PAM config used for systemd user instances already relied on
+  &quot;pam_deny&quot; for the PAM &quot;auth&quot; management to avoid falling back on the noisy
+  &quot;other&quot; pam service (see bsc#1190515). However &quot;pam_deny&quot; had the drawback to
+  still log the failure at the debug level. SUSE PAM configs now consistently
+  rely on &quot;pam_rootok&quot; to avoid any noisy debug logs, see upstream commit
+  34e5f14c3496097c4157a5ed8a13ed4c4b1c48a9.
+
+- Import commit 3255daee1572366b74fe92f002a3d60ecbb27103 (merge of v261.3)
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/4925d9f07fc697efccd98a93046ff535b8832445...3255daee1572366b74fe92f002a3d60ecbb27103
+
+- Move systemd-pcrextend from experimental to udev (bsc#1274948)
+- Move systemd-measure from experimental to udev to fix ukify</comment>
+    <requestid>1381350</requestid>
+  </revision>
 </revisionlist>

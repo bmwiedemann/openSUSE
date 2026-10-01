@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Tue Sep 22 13:32:00 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- pam: use "pam_rootok" in the "auth" stack of our PAM config for systemd-run0
+  (bsc#1253133) and similarly update our PAM config for systemd-user to replace
+  "pam_deny" with "pam_rootok".
+
+  Previously SUSE PAM config used for systemd user instances already relied on
+  "pam_deny" for the PAM "auth" management to avoid falling back on the noisy
+  "other" pam service (see bsc#1190515). However "pam_deny" had the drawback to
+  still log the failure at the debug level. SUSE PAM configs now consistently
+  rely on "pam_rootok" to avoid any noisy debug logs, see upstream commit
+  34e5f14c3496097c4157a5ed8a13ed4c4b1c48a9.
+
+-------------------------------------------------------------------
+Mon Sep 21 13:34:25 UTC 2026 - Franck Bui <fbui@suse.com>
+
+- Import commit 3255daee1572366b74fe92f002a3d60ecbb27103 (merge of v261.3)
+
+  For a complete list of changes, visit:
+  https://github.com/openSUSE/systemd/compare/4925d9f07fc697efccd98a93046ff535b8832445...3255daee1572366b74fe92f002a3d60ecbb27103
+
+-------------------------------------------------------------------
+Fri Aug 14 08:15:21 UTC 2026 - Alberto Planas Dominguez <aplanas@suse.com>
+
+- Move systemd-pcrextend from experimental to udev (bsc#1274948)
+- Move systemd-measure from experimental to udev to fix ukify
+
+-------------------------------------------------------------------
 Mon Jul 27 10:04:36 UTC 2026 - Franck Bui <fbui@suse.com>
 
 - Import commit 4925d9f07fc697efccd98a93046ff535b8832445 (merge of v261.2)

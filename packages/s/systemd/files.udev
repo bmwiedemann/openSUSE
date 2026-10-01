@@ -43,7 +43,13 @@
 %dir %{_systemd_util_dir}/system-sleep
 %dir %{_udevhwdbdir}
 %dir %{_udevrulesdir}
+%if %{with sd_boot}
+%dir %{_unitdir}/factory-reset.target.wants
+%endif
 %dir %{_unitdir}/initrd.target.wants
+%if %{with sd_boot}
+%dir %{_unitdir}/storage-target-mode.target.wants
+%endif
 %if %{without bootstrap}
 %doc %{_udevhwdbdir}/README
 %endif
@@ -94,6 +100,7 @@
 %if %{with docs}
 %{_mandir}/man1/bootctl.1.gz
 %{_mandir}/man1/systemd-cryptenroll.1.gz
+%{_mandir}/man1/systemd-measure.1.gz
 %{_mandir}/man5/crypttab.5.gz
 %{_mandir}/man5/integritytab.5.gz
 %{_mandir}/man5/iocost.conf.5.gz
@@ -156,7 +163,20 @@
 %{_mandir}/man8/systemd-network-generator.8.gz
 %{_mandir}/man8/systemd-network-generator.service.8.gz
 %if %{with sd_boot}
+%{_mandir}/man8/systemd-pcrextend.8.gz
+%{_mandir}/man8/systemd-pcrfs-root.service.8.gz
+%{_mandir}/man8/systemd-pcrfs@.service.8.gz
 %{_mandir}/man8/systemd-pcrlock.8.gz
+%{_mandir}/man8/systemd-pcrlogin@.service.8.gz
+%{_mandir}/man8/systemd-pcrmachine.service.8.gz
+%{_mandir}/man8/systemd-pcrnvdone.service.8.gz
+%{_mandir}/man8/systemd-pcrosseparator.service.8.gz
+%{_mandir}/man8/systemd-pcrphase-factory-reset.service.8.gz
+%{_mandir}/man8/systemd-pcrphase-initrd.service.8.gz
+%{_mandir}/man8/systemd-pcrphase-storage-target-mode.service.8.gz
+%{_mandir}/man8/systemd-pcrphase-sysinit.service.8.gz
+%{_mandir}/man8/systemd-pcrphase.service.8.gz
+%{_mandir}/man8/systemd-pcrproduct.service.8.gz
 %endif
 %{_mandir}/man8/systemd-pstore.8.gz
 %{_mandir}/man8/systemd-pstore.service.8.gz
@@ -265,9 +285,13 @@
 %endif
 %{_systemd_util_dir}/systemd-makefs
 %if %{without bootstrap}
+%{_systemd_util_dir}/systemd-measure
 %{_systemd_util_dir}/systemd-modules-load
 %endif
 %{_systemd_util_dir}/systemd-network-generator
+%if %{with sd_boot}
+%{_systemd_util_dir}/systemd-pcrextend
+%endif
 %if %{without bootstrap}
 %{_systemd_util_dir}/systemd-pcrlock
 %endif
@@ -364,7 +388,9 @@
 %{_udevrulesdir}/60-persistent-v4l.rules
 %{_udevrulesdir}/60-sensor.rules
 %{_udevrulesdir}/60-serial.rules
+%if %{without bootstrap}
 %{_udevrulesdir}/60-tpm2-id.rules
+%endif
 %{_udevrulesdir}/64-btrfs.rules
 %{_udevrulesdir}/65-integration.rules
 %{_udevrulesdir}/70-camera.rules
@@ -392,6 +418,9 @@
 %{_unitdir}/cryptsetup-pre.target
 %{_unitdir}/cryptsetup.target
 %endif
+%if %{with sd_boot}
+%{_unitdir}/factory-reset.target.wants/systemd-pcrphase-factory-reset.service
+%endif
 %{_unitdir}/hibernate.target
 %{_unitdir}/hybrid-sleep.target
 %if %{without bootstrap}
@@ -403,6 +432,9 @@
 %{_unitdir}/initrd.target.wants/systemd-battery-check.service
 %if %{with upstream}
 %{_unitdir}/initrd.target.wants/systemd-cryptenroll-firstboot.service
+%endif
+%if %{with sd_boot}
+%{_unitdir}/initrd.target.wants/systemd-pcrphase-initrd.service
 %endif
 %if %{without bootstrap}
 %{_unitdir}/integritysetup-pre.target
@@ -424,6 +456,7 @@
 %{_unitdir}/sockets.target.wants/systemd-cryptenroll.socket
 %endif
 %if %{with sd_boot}
+%{_unitdir}/sockets.target.wants/systemd-pcrextend.socket
 %{_unitdir}/sockets.target.wants/systemd-pcrlock.socket
 %endif
 %if %{without bootstrap}
@@ -434,6 +467,9 @@
 %endif
 %{_unitdir}/sockets.target.wants/systemd-udevd-kernel.socket
 %{_unitdir}/sockets.target.wants/systemd-udevd-varlink.socket
+%if %{with sd_boot}
+%{_unitdir}/storage-target-mode.target.wants/systemd-pcrphase-storage-target-mode.service
+%endif
 %{_unitdir}/suspend-then-hibernate.target
 %{_unitdir}/suspend.target
 %if %{without bootstrap}
@@ -447,6 +483,14 @@
 %if %{without bootstrap}
 %{_unitdir}/sysinit.target.wants/systemd-hwdb-update.service
 %{_unitdir}/sysinit.target.wants/systemd-modules-load.service
+%endif
+%if %{with sd_boot}
+%{_unitdir}/sysinit.target.wants/systemd-pcrmachine.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrnvdone.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrosseparator.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrphase-sysinit.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrphase.service
+%{_unitdir}/sysinit.target.wants/systemd-pcrproduct.service
 %endif
 %{_unitdir}/sysinit.target.wants/systemd-random-seed.service
 %{_unitdir}/sysinit.target.wants/systemd-tmpfiles-setup-dev-early.service
@@ -489,7 +533,21 @@
 %endif
 %{_unitdir}/systemd-network-generator.service
 %if %{with sd_boot}
+%{_unitdir}/systemd-pcrextend.socket
+%{_unitdir}/systemd-pcrextend@.service
+%{_unitdir}/systemd-pcrfs-root.service
+%{_unitdir}/systemd-pcrfs@.service
 %{_unitdir}/systemd-pcrlock.socket
+%{_unitdir}/systemd-pcrlogin@.service
+%{_unitdir}/systemd-pcrmachine.service
+%{_unitdir}/systemd-pcrnvdone.service
+%{_unitdir}/systemd-pcrosseparator.service
+%{_unitdir}/systemd-pcrphase-factory-reset.service
+%{_unitdir}/systemd-pcrphase-initrd.service
+%{_unitdir}/systemd-pcrphase-storage-target-mode.service
+%{_unitdir}/systemd-pcrphase-sysinit.service
+%{_unitdir}/systemd-pcrphase.service
+%{_unitdir}/systemd-pcrproduct.service
 %endif
 %{_unitdir}/systemd-pstore.service
 %{_unitdir}/systemd-quotacheck-root.service
