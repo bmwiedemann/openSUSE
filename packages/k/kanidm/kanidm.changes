@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Tue Sep 29 11:35:28 UTC 2026 - Lubos Kocman <lubos.kocman@suse.com>
+
+- Update License tag to cover statically linked vendored crates
+  found in the legal review:
+  * LGPL-3.0-only (libnss, linked into libnss_kanidm.so.2)
+  * Unicode-3.0 (icu_* crates via idna/url)
+  * Zlib (foldhash, zlib-rs, lodepng)
+  * 0BSD (enum-iterator, quoted_printable)
+  * MIT-0 (borrow-or-share)
+  * CDLA-Permissive-2.0 (webpki-root-certs)
+
+- Set kanidm-unixd-clients License to MPL-2.0 AND LGPL-3.0-only
+
+-------------------------------------------------------------------
 Fri Sep 11 03:08:43 UTC 2026 - william.brown@suse.com
 
 - Update to version 1.11.2~git0.547933867:

@@ -35,7 +35,7 @@ Name:           kanidm
 Version:        1.11.2~git0.547933867
 Release:        0
 Summary:        A identity management service and clients.
-License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND ISC AND MIT AND MPL-2.0 AND MPL-2.0+
+License:        ( Apache-2.0 OR BSL-1.0 ) AND ( Apache-2.0 OR ISC OR MIT ) AND ( Apache-2.0 OR MIT ) AND ( Apache-2.0 WITH LLVM-exception OR Apache-2.0 OR MIT ) AND ( CC0-1.0 OR Apache-2.0 ) AND ( MIT OR Apache-2.0 OR Zlib ) AND ( Unlicense OR MIT ) AND ( Zlib OR Apache-2.0 OR MIT ) AND 0BSD AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-only AND MIT AND MIT-0 AND MPL-2.0 AND MPL-2.0+ AND Unicode-3.0 AND Zlib
 URL:            https://github.com/Firstyear/kanidm
 Source:         kanidm-%{version}.tar.zst
 Source1:        vendor.tar.zst
@@ -100,7 +100,7 @@ Server for kanidm providing the main authentication and identity service
 
 %package unixd-clients
 Summary:        Client nsswitch/pam/ssh integration for consuming kanidm
-License:        MPL-2.0
+License:        LGPL-3.0-only AND MPL-2.0
 Requires:       %{name}-clients
 %if 0%{?rhel} > 7 || 0%{?fedora}
 Requires:       tpm2-tools
