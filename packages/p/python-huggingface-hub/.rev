@@ -196,4 +196,13 @@ import smoke py313/py314.</comment>
     <comment>Update to 2.0.0 (major): httpx2 stack, drop removed huggingface-cli script.</comment>
     <requestid>1380236</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>549eb5e46eaa330e6760e3441398b4b7</srcmd5>
+    <version>2.1.1</version>
+    <time>1790975067</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.1.1. No dependency, licence or console-script change from 2.0.0, so the existing packaging (unpackaged hf-xet dropped, click pin relaxed) still applies. python-transformers 5.18.0's &gt;=1.31.0 &lt;3.0 floor accepts 2.1.x.
+</comment>
+    <requestid>1382006</requestid>
+  </revision>
 </revisionlist>

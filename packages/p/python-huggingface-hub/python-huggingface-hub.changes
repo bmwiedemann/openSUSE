@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:45:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.1.1:
+  * Jobs: add retry attempts, rerun a Job from its saved spec,
+    reschedule scheduled Jobs, and expose ports
+  * Add HfApi.get_zero_gpu_quota() and hf spaces zero-gpu quota
+  * Require scoped credentials for pooled Sandboxes
+  * Fix repo_id in HTTP errors, retry the first pagination page
+    and make bucket include/exclude patterns case-sensitive
+  * Download Xet files through hf_xet in HfFileSystem.get_file;
+    fix hf buckets copy_files treating lexical siblings as a
+    destination directory
+  * Escape control characters in CLI output, store token names
+    as UTF-8, and stop splitting scalar YAML tags
+  * Migrate the inference-endpoint catalog to /api/v1; add
+    resource_group_id to duplicate_repo and visibility to
+    create_bucket
+  * Many more fixes; see upstream's release notes for the full
+    list
+- No dependency, licence or console-script change from 2.0.0,
+  so the existing packaging still applies
+
+-------------------------------------------------------------------
 Thu Sep 24 17:15:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.0 (major, intentionally breaking;
