@@ -12,7 +12,8 @@ Sun Sep 20 11:33:36 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - Update to version 3.22.0 (
       bsc#1281104, CVE-2026-85731,
-      bsc#1281112, CVE-2026-85732):
+      bsc#1281112, CVE-2026-85732,
+      bsc#1283642, CVE-2026-63209):
   * chore(deps): bump the k8s-io group across 1 directory with 6 updates
   * bump version to 3.22 (#32606)
   * fix: set [pull,push] scope when helm push to a registry(use token auth) (backport) (#32362)

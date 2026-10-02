@@ -291,4 +291,13 @@
     Service via attacker-driven log emission</comment>
     <requestid>1380949</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>e5d3a8e83cabe23c26f380b3086e04a0</srcmd5>
+    <version>3.22.0</version>
+    <time>1790975351</time>
+    <user>anag_factory</user>
+    <comment>      bsc#1281112, CVE-2026-85732,
+      bsc#1283642, CVE-2026-63209):</comment>
+    <requestid>1382135</requestid>
+  </revision>
 </revisionlist>
