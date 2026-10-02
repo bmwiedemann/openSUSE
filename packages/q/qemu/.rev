@@ -5145,4 +5145,23 @@ vhost-user-gpu-fix-leak-in-virgl_cmd_res.patch</comment>
 </comment>
     <requestid>1376057</requestid>
   </revision>
+  <revision rev="313" vrev="2">
+    <srcmd5>960ddee573f467b7a934c3e4818dc5b8</srcmd5>
+    <version>11.1.1</version>
+    <time>1790974884</time>
+    <user>anag_factory</user>
+    <comment>- Bugfixes and (spec-file) improvements:
+  * vapic: confine the VAPIC region to 0xc0000..0xe0000 (bsc#1282077, CVE-2026-81627)
+  * hw/9pfs: mutate FID path from main thread only (bsc#1282578, CVE-2026-93834)
+  * [openSUSE][RPM] spec: drop qemu-ipxe Requires for ppc (bsc#1282918)
+  * [openSUSE][RPM] spec: stub out all iotests when running under user emulation (e.g., for riscv64)
+  * target/ppc/kvm: Use host compatibility mode for nested guests (bsc#1263864)
+  * target/ppc/kvm: Add support for querying host compatibility mode (bsc#1263864)
+  * linux-headers: Update to include KVM_CAP_PPC_COMPAT_CAPS (bsc#1263864)
+  * file-posix: Tolerate unaligned hole at middle (bsc#1277435)
+  * [openSUSE][RPM] spec: skip the tests that require get_mempolicy under linux-user
+  * [openSUSE][RPM] build all firmware on riscv64 and fix user tests
+</comment>
+    <requestid>1381865</requestid>
+  </revision>
 </revisionlist>
