@@ -19,7 +19,7 @@
 %bcond_with gpu
 
 Name:           harfbuzz
-Version:        14.5.0
+Version:        14.5.1
 Release:        0
 Summary:        An OpenType text shaping engine
 License:        MIT
@@ -31,15 +31,15 @@ BuildRequires:  c++_compiler
 BuildRequires:  c_compiler
 BuildRequires:  meson
 BuildRequires:  pkgconfig >= 0.28
-BuildRequires:  pkgconfig(cairo) >= 1.10
-BuildRequires:  pkgconfig(cairo-ft)
-BuildRequires:  pkgconfig(freetype2) >= 12.0.6
+BuildRequires:  pkgconfig(cairo) >= 1.10.0
+BuildRequires:  pkgconfig(cairo-ft) >= 1.10.0
+BuildRequires:  pkgconfig(freetype2) >= 20.0.14
 %if %{with gpu}
 BuildRequires:  pkgconfig(glew)
 BuildRequires:  pkgconfig(glfw3)
 %endif
-BuildRequires:  pkgconfig(glib-2.0) >= 2.30
-BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.30.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.30.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(graphite2) >= 1.2.0
 BuildRequires:  pkgconfig(gthread-2.0)

@@ -1545,4 +1545,30 @@ New stable rel</comment>
   + Various build, portability, and CI fixes.</comment>
     <requestid>1379434</requestid>
   </revision>
+  <revision rev="143" vrev="1">
+    <srcmd5>f840270f3f966fcae940721a32c255f5</srcmd5>
+    <version>14.5.1</version>
+    <time>1790974919</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.5.1:
+  + Map the `fonupa` (Uralic Phonetic Alphabet) BCP 47 variant to
+    the `UPPH` OpenType language system tag.
+  + Produce smaller `cmap` subtables and drop no-op variation
+    device tables when subsetting.
+  + Fix possible deadlock in `hb_font_destroy()` after
+    `hb_ft_font_set_funcs()`, a regression from 14.5.0.
+  + Fix signed integer overflows when scaling glyph extents and
+    applying synthetic slant and emboldening.
+  + Fix float-to-int overflow in `VARC` component axis
+    coordinates with malformed fonts.
+  + Fix a memory leak in the experimental WebAssembly shaper when
+    shaping with features.
+  + Fix accumulator overflows in the experimental raster library
+    when rendering glyphs with very many overlapping edges.
+  + Fix heap buffer overflow in the experimental GPU library with
+    malicious `COLR` fonts.
+  + Various build and CI fixes.
+- Update version dependencies according to meson.build.</comment>
+    <requestid>1381892</requestid>
+  </revision>
 </revisionlist>

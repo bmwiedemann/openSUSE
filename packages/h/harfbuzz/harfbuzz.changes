@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  1 07:12:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 14.5.1:
+  + Map the `fonupa` (Uralic Phonetic Alphabet) BCP 47 variant to
+    the `UPPH` OpenType language system tag.
+  + Produce smaller `cmap` subtables and drop no-op variation
+    device tables when subsetting.
+  + Fix possible deadlock in `hb_font_destroy()` after
+    `hb_ft_font_set_funcs()`, a regression from 14.5.0.
+  + Fix signed integer overflows when scaling glyph extents and
+    applying synthetic slant and emboldening.
+  + Fix float-to-int overflow in `VARC` component axis
+    coordinates with malformed fonts.
+  + Fix a memory leak in the experimental WebAssembly shaper when
+    shaping with features.
+  + Fix accumulator overflows in the experimental raster library
+    when rendering glyphs with very many overlapping edges.
+  + Fix heap buffer overflow in the experimental GPU library with
+    malicious `COLR` fonts.
+  + Various build and CI fixes.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Sep 21 07:46:33 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 14.5.0:
@@ -223,7 +246,7 @@ Fri Mar 13 08:33:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     - Add meson options for enabling / disabling libpng and zlib.
     - Support building harfbuzz-raster and harfbuzz-vector
       libraries with CMake.
-- Add new optional pkgconfig(zlib) BuildRequires. 
+- Add new optional pkgconfig(zlib) BuildRequires.
 
 -------------------------------------------------------------------
 Wed Mar 11 09:24:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
@@ -982,7 +1005,7 @@ Sun Feb 12 08:51:43 UTC 2023 - Andreas Stieger <andreas.stieger@gmx.de>
     but can be also used as a unified API to paint any of the glyph
     representations supported by HarfBuzz (B/W outlines, color
     layers, or color bitmaps).
-  + New hb-cairo API for integrating with cairo graphics library. 
+  + New hb-cairo API for integrating with cairo graphics library.
     This is provided as a separate harfbuzz-cairo library.
   + Support for instancing CFF2 table
   + Support font emboldening
@@ -1088,7 +1111,7 @@ Sun Jul 24 16:34:16 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
   + Improve for fonts with more than 65535 glyphs
   + Support version 2 of “avar” table
   + Improve support for some Arabic, Hebrew fonts
-  + Support for specific script tags to be retained in the 
+  + Support for specific script tags to be retained in the
     subsetter, and add “--layout-scripts” option to “hb-subset”
     tool
   + Improved handling of command line options
@@ -1277,7 +1300,7 @@ Wed Mar  2 19:18:03 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>
 Sun Feb 13 07:57:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - update to 3.4.0:
-  + Perform sanity checks on shaping results is now part of 
+  + Perform sanity checks on shaping results is now part of
     “harfbuzz” library and can be enabled by setting the buffer
     flag HB_BUFFER_FLAG_VERIFY
   + Arabic Mark Transient Reordering Algorithm have been updated
@@ -1286,7 +1309,7 @@ Sun Feb 13 07:57:21 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
     the OpenType ‘math’ tag
   + It is now possible to get at once all math kerning values for a
     given glyph at a given corner
-  + Fix locale_t portability issues on systems the typedef’s it to 
+  + Fix locale_t portability issues on systems the typedef’s it to
     a void pointer
 
 -------------------------------------------------------------------
@@ -1299,7 +1322,7 @@ Mon Feb  7 06:06:38 UTC 2022 - Andreas Stieger <andreas.stieger@gmx.de>
   + Fix heap-use-after-free in harfbuzz-subset introduced in
     previous release
 - includes changes from 3.3.0:
-  + Improved documentation, code cleanup 
+  + Improved documentation, code cleanup
   + The low 16-bits of face index will be used by hb_face_create()
     to select a face inside a font collection file format, while the
     high 16-bits will be used by hb_font_create() to load the named
@@ -1367,9 +1390,9 @@ Sat Nov  6 05:48:26 UTC 2021 - Andreas Stieger <andreas.stieger@gmx.de>
   * Support for Pwo Karen / Ason Chin medial la. (Simon Cozens)
   * Apply GPOS positioning when substituting with morx table, if
     kerx is missing
-  * Apply calt and clig features across syllable boundaries in 
+  * Apply calt and clig features across syllable boundaries in
     Indic shaper
-  * Meson option for enabling Graphite 2 has been renamed to 
+  * Meson option for enabling Graphite 2 has been renamed to
     graphite2
   * Build and documentation fixes
 - add harfbuzz-3.1.0-work-around-GCC-cast-align-error-warning.patch
@@ -1977,7 +2000,7 @@ Thu Jul 28 14:23:24 UTC 2016 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri May 27 11:48:17 UTC 2016 - idonmez@suse.com
 
-- Update to GNOME 3.20.2 FATE#318572 
+- Update to GNOME 3.20.2 FATE#318572
 
 -------------------------------------------------------------------
 Tue May 10 20:56:56 UTC 2016 - zaitor@opensuse.org
@@ -2344,7 +2367,7 @@ Thu Aug 21 01:54:01 UTC 2014 - hrvoje.senjan@gmail.com
   + Add old-spec Myanmar shaper: fdo#81775
   + Don't apply 'calt' in Hangul shaper.
   + Fix mark advance zeroing for Hebrew shaper: fdo#76767
-  + Implement Windows-1256 custom Arabic shaping. 
+  + Implement Windows-1256 custom Arabic shaping.
     Only built on Windows, and requires help from get_glyph().
   + Disable 'liga' in vertical text.
   + Build fixes.
@@ -2431,7 +2454,7 @@ Mon May  5 17:13:17 UTC 2014 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu Mar 27 03:17:39 UTC 2014 - mgorse@suse.com
 
-- Update to version 0.9.27: 
+- Update to version 0.9.27:
   + Don't use "register" storage class specifier.
   + Wrap definition of free_langs() with HAVE_ATEXIT.
   + Add coretext_aat shaper and hb_coretext_face_create()
