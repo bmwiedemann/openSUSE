@@ -128,4 +128,12 @@ Security:
     <comment>Carry two behavioural hunks of still-unmerged sglang PR 40185 for CVE-2026-102634 (boo#1283270): an unknown bootstrap_room reports KVPoll.Failed instead of raising KeyError, and KVPoll.Success no longer trips decode's Unexpected-poll-case ValueError. Reachable, but no transfer backend is packaged.</comment>
     <requestid>1381723</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>4b9ae6d377be9770fe27677819fce6d6</srcmd5>
+    <version>0.5.21</version>
+    <time>1790975111</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.21. CVE-2026-86793 is fixed upstream, so its two SafeUnpickler backport patches are dropped; the still-unmerged PR 40185 patch for CVE-2026-102634 (boo#1283270) is rebased and applies at fuzz 0. Also rebases sglang-relax-cpu-requirements.patch and regenerates vendor.tar.zst.</comment>
+    <requestid>1382074</requestid>
+  </revision>
 </revisionlist>

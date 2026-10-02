@@ -11,7 +11,7 @@ Carried from sgl-project/sglang PR 40185 (unmerged; head commit
 1901ddecfebb5960bebcb237efb96397b85be355, tracking issue 40125, both still
 open). Only the two behavioural hunks of that PR are carried here. Its other
 25 files are a PEP 604 typing modernisation plus import shuffling, which
-does not apply cleanly to the 0.5.20 tag and is not part of this fix.
+does not apply cleanly to the 0.5.21 tag and is not part of this fix.
 
   * check_status() reports an unregistered room as KVPoll.Failed instead of
     raising KeyError. KVPoll.Failed is already handled by DecodePreallocQueue,
@@ -26,12 +26,11 @@ does not apply cleanly to the 0.5.20 tag and is not part of this fix.
  python/sglang/srt/disaggregation/common/conn.py | 2 +-
  python/sglang/srt/disaggregation/decode.py        | 2 +-
  2 files changed, 2 insertions(+), 2 deletions(-)
-
 diff --git a/python/sglang/srt/disaggregation/common/conn.py b/python/sglang/srt/disaggregation/common/conn.py
 --- a/python/sglang/srt/disaggregation/common/conn.py
 +++ b/python/sglang/srt/disaggregation/common/conn.py
-@@ -390,7 +390,7 @@
-         )
+@@ -410,7 +410,7 @@
+         self._dcp_pack_max_tokens = max_tokens
  
      def check_status(self, bootstrap_room: int) -> KVPoll:
 -        return self.request_status[bootstrap_room]
@@ -42,7 +41,7 @@ diff --git a/python/sglang/srt/disaggregation/common/conn.py b/python/sglang/srt
 diff --git a/python/sglang/srt/disaggregation/decode.py b/python/sglang/srt/disaggregation/decode.py
 --- a/python/sglang/srt/disaggregation/decode.py
 +++ b/python/sglang/srt/disaggregation/decode.py
-@@ -915,7 +915,7 @@
+@@ -1050,7 +1050,7 @@
  
              if poll == KVPoll.Bootstrapping:
                  pass

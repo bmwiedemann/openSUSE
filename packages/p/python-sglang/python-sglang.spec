@@ -17,7 +17,7 @@
 
 
 Name:           python-sglang
-Version:        0.5.20
+Version:        0.5.21
 Release:        0
 Summary:        Fast serving framework for large language models
 # Legal-Review-Notice: sgl-model-gateway and CUDA AOT kernels
@@ -48,15 +48,11 @@ Patch1:         sglang-cpu-triton-stub.patch
 Patch2:         sglang-cpu-rust-exts.patch
 # PATCH-FIX-OPENSUSE sglang-grpc-system-protoc.patch -- use system protoc instead of protoc-bin-vendored
 Patch3:         sglang-grpc-system-protoc.patch
-# PATCH-FIX-UPSTREAM sglang-safe-unpickler-stdlib-globals.patch boo#1280091 -- CVE-2026-86793: sgl-project/sglang commit 882577451e (PR 39858), replace SafeUnpickler's standard-library module prefixes with exact globals
-Patch4:         sglang-safe-unpickler-stdlib-globals.patch
-# PATCH-FIX-UPSTREAM sglang-safe-unpickler-explicit-globals.patch boo#1280091 -- CVE-2026-86793: sgl-project/sglang commit 5b42d10edf (PR 40259), drop the remaining module prefixes and route torch.storage._load_from_bytes through a weights_only torch.load
-Patch5:         sglang-safe-unpickler-explicit-globals.patch
-# PATCH-FIX-UPSTREAM sglang-40185-bootstrap-room-dedup.patch boo#1283270 -- CVE-2026-102634: sgl-project/sglang PR 40185 (unmerged, head commit 1901ddecfe), report an unknown bootstrap_room as KVPoll.Failed instead of letting check_status raise KeyError, and count KVPoll.Success as bootstrap-done; 2 of the PR's 27 files, the rest being a typing modernisation that does not apply to 0.5.20
-Patch6:         sglang-40185-bootstrap-room-dedup.patch
+# PATCH-FIX-UPSTREAM sglang-40185-bootstrap-room-dedup.patch boo#1283270 -- CVE-2026-102634: sgl-project/sglang PR 40185 (unmerged, head commit 1901ddecfe), report an unknown bootstrap_room as KVPoll.Failed instead of letting check_status raise KeyError, and count KVPoll.Success as bootstrap-done; 2 of the PR's 27 files, the rest being a typing modernisation that does not apply to 0.5.21
+Patch4:         sglang-40185-bootstrap-room-dedup.patch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Pillow}
-BuildRequires:  %{python_module SoundFile}
+BuildRequires:  %{python_module SoundFile >= 0.13.1}
 BuildRequires:  %{python_module aiohttp}
 BuildRequires:  %{python_module anthropic >= 0.20.0}
 BuildRequires:  %{python_module blobfile >= 3.0.0}
@@ -85,9 +81,10 @@ BuildRequires:  %{python_module pybase64}
 BuildRequires:  %{python_module pydantic}
 BuildRequires:  %{python_module python-multipart}
 BuildRequires:  %{python_module pyzmq >= 25.1.2}
+BuildRequires:  %{python_module regex}
 BuildRequires:  %{python_module requests}
 BuildRequires:  %{python_module scipy}
-BuildRequires:  %{python_module sentencepiece}
+BuildRequires:  %{python_module sentencepiece >= 0.2.1}
 BuildRequires:  %{python_module setproctitle}
 BuildRequires:  %{python_module setuptools >= 61.0}
 BuildRequires:  %{python_module setuptools-rust >= 1.10}
@@ -95,15 +92,15 @@ BuildRequires:  %{python_module setuptools-scm >= 8.0}
 BuildRequires:  %{python_module tabulate}
 BuildRequires:  %{python_module tiktoken}
 BuildRequires:  %{python_module timm >= 1.0.16}
-BuildRequires:  %{python_module torch >= 2.12.0}
+BuildRequires:  %{python_module torch >= 2.14.0}
 BuildRequires:  %{python_module torchaudio >= 2.11.0}
-BuildRequires:  %{python_module torchvision >= 0.27.0}
+BuildRequires:  %{python_module torchvision >= 0.29.0}
 BuildRequires:  %{python_module tqdm}
 BuildRequires:  %{python_module transformers >= 5.12.1}
 BuildRequires:  %{python_module uvicorn}
 BuildRequires:  %{python_module uvloop}
 BuildRequires:  %{python_module wheel}
-BuildRequires:  %{python_module xgrammar >= 0.2.1}
+BuildRequires:  %{python_module xgrammar >= 0.2.7}
 BuildRequires:  %{python_module xxhash}
 BuildRequires:  %{python_module zstandard}
 BuildRequires:  alts
@@ -123,7 +120,7 @@ BuildRequires:  pkgconfig(protobuf)
 # METADATA, so these manual Requires are load-bearing.
 Requires:       alts
 Requires:       python-Pillow
-Requires:       python-SoundFile
+Requires:       python-SoundFile >= 0.13.1
 Requires:       python-aiohttp
 Requires:       python-anthropic >= 0.20.0
 Requires:       python-blobfile >= 3.0.0
@@ -151,21 +148,22 @@ Requires:       python-pybase64
 Requires:       python-pydantic
 Requires:       python-python-multipart
 Requires:       python-pyzmq >= 25.1.2
+Requires:       python-regex
 Requires:       python-requests
 Requires:       python-scipy
-Requires:       python-sentencepiece
+Requires:       python-sentencepiece >= 0.2.1
 Requires:       python-setproctitle
 Requires:       python-tabulate
 Requires:       python-tiktoken
 Requires:       python-timm >= 1.0.16
-Requires:       python-torch >= 2.12.0
+Requires:       python-torch >= 2.14.0
 Requires:       python-torchaudio >= 2.11.0
-Requires:       python-torchvision >= 0.27.0
+Requires:       python-torchvision >= 0.29.0
 Requires:       python-tqdm
 Requires:       python-transformers >= 5.12.1
 Requires:       python-uvicorn
 Requires:       python-uvloop
-Requires:       python-xgrammar >= 0.2.1
+Requires:       python-xgrammar >= 0.2.7
 Requires:       python-xxhash
 Requires:       python-zstandard
 # outlines 0.1.11 needs outlines_core 0.1.26 (fsm.guide); Factory/s:ml

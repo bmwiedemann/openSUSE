@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:09:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.21:
+  * Prefill/decode disaggregation switches roles at runtime, the
+    unified radix cache runs on the Rust core by default
+    (SGLANG_UNIFIED_RADIX_TREE_CORE_BACKEND=python forces the
+    Python one), and /v1/decisions and /v1/score are new routes
+  * A chat_template in chat_template_kwargs is rejected unless
+    the server runs with --trust-request-chat-template
+  * Endpoints and env vars deprecated two releases ago are gone
+    (/model_info replaces /get_weight_version, /v1/loads replaces
+    /get_load), as are the legacy radix cache implementations
+  * A CustomLogitProcessor must return full-shape logits, and the
+    RL weight updates must run inside begin_weight_update() ..
+    end_weight_update()
+  * CPU dependency floors rise to torch 2.14.0, torchvision
+    0.29.0, xgrammar 0.2.7, sentencepiece 0.2.1 and SoundFile
+    0.13.1, and regex is a new runtime dep
+- CVE-2026-86793: upstream 0.5.21 carries the SafeUnpickler fix
+  itself, so the two backports are dropped (boo#1280091)
+  * sglang-safe-unpickler-stdlib-globals.patch
+  * sglang-safe-unpickler-explicit-globals.patch
+- CVE-2026-102634 stays carried: upstream PR 40185 is still
+  unmerged, so rebase sglang-40185-bootstrap-room-dedup.patch for
+  the reshuffled disaggregation files. Its CommonKVManager path
+  stays unreachable here - only the mooncake, mori and nixl
+  managers construct one, and no KV transfer transport library is
+  packaged (boo#1283270)
+- Rebase sglang-relax-cpu-requirements.patch for the new floors
+- Upstream holds sentencepiece at 0.2.1 because 0.2.2 rejects
+  null pieces in InternVL tokenizers, but Factory ships only
+  0.2.2, so the floor here does not exclude it
+- Regenerate vendor.tar.zst; the rust workspace gains
+  sglang-renderer and prost-types
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Sep 30 18:22:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - CVE-2026-102634: bootstrap_room is client supplied and

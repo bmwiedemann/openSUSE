@@ -38,7 +38,7 @@
    "orjson",
    "outlines",
    "packaging",
-@@ -45,32 +42,27 @@
+@@ -45,33 +42,28 @@
    "pillow",
    "prometheus-client>=0.20.0",
    "psutil",
@@ -48,9 +48,11 @@
    "python-multipart",
 -  "pytest",
    "pyzmq>=25.1.2",
+   "regex",
    "requests",
    "scipy",
-   "sentencepiece",
+-  "sentencepiece==0.2.1",  # 0.2.2 rejects null pieces in InternVL tokenizers.
++  "sentencepiece>=0.2.1",  # 0.2.2 rejects null pieces in InternVL tokenizers.
    "setproctitle",
 -  "smg-grpc-servicer>=0.9.0",
 -  "soundfile==0.13.1",
@@ -58,27 +60,27 @@
    "tabulate",
    "tiktoken",
 -  "timm==1.0.16",
--  "torch==2.12.0",
+-  "torch==2.14.0",
 -  "torchaudio==2.11.0",
 -  "torchcodec==0.12.0 ; sys_platform != 'linux' or (sys_platform == 'linux' and platform_machine != 'aarch64' and platform_machine != 'arm64' and platform_machine != 'armv7l')",
--  "torchvision==0.27.0",
+-  "torchvision==0.29.0",
 +  "timm>=1.0.16",
-+  "torch>=2.12.0",
++  "torch>=2.14.0",
 +  "torchaudio>=2.11.0",
-+  "torchvision>=0.27.0",
++  "torchvision>=0.29.0",
    "tqdm",
 -  "transformers==5.12.1",
--  "triton==3.7.0",
+-  "triton==3.8.0",
 +  "transformers>=5.12.1",
    "uvicorn",
    "uvloop",
    "xxhash",
--  "xgrammar==0.2.1",
-+  "xgrammar>=0.2.1",
+-  "xgrammar==0.2.7",
++  "xgrammar>=0.2.7",
    "zstandard",
  ]
  
-@@ -128,6 +120,12 @@
+@@ -129,6 +121,12 @@
    "kernels/**/*"
  ]
  
@@ -91,7 +93,7 @@
  [tool.setuptools.packages.find]
  exclude = [
    "assets*",
-@@ -136,6 +134,8 @@
+@@ -137,6 +135,8 @@
    "dist*",
    "playground*",
    "scripts*",
@@ -100,7 +102,7 @@
    "tests*",
  ]
  
-@@ -147,6 +147,8 @@
+@@ -148,6 +148,8 @@
    "dist*",
    "playground*",
    "scripts*",
