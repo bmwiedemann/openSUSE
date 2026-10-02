@@ -36,13 +36,13 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.12.21
+Version:        0.12.22
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
 # statically links the vendored Rust dependencies. Re-derived on this
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
-# tree (507 unique name-version nodes); the copyleft licences in the linked graph are:
+# tree (509 unique name-version nodes); the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
 #    (the last via shellexpand -> dirs -> dirs-sys),
 #  - priority-queue, which is "LGPL-3.0-or-later OR MPL-2.0" - we elect
@@ -51,14 +51,18 @@ Summary:        A Python package installer and resolver, written in Rust
 # offers an LGPL-2.1-or-later option but is UEFI-target-only and absent
 # from the Linux graph; colored is not in this binary's graph at all.
 # Everything else is permissive, BSD-3-Clause included: subtle,
-# encoding_rs, aws-lc-sys and, since zstd-safe 8.0.0 / zstd-sys 2.1.0,
-# the zstd bindings. MPL-2.0 section 3.2 is satisfied because the
-# complete vendor.tar.zst ships in the src.rpm.
+# encoding_rs, aws-lc-sys and the zstd bindings. 0.12.22 added a second
+# zstd chain through uv-python's new direct dependency: zstd 0.13.3 (MIT)
+# and zstd-safe 7.3.0 (BSD-3-Clause), alongside zstd 0.14.0 /
+# zstd-safe 8.0.0 / zstd-sys 2.1.0. MPL-2.0 section 3.2 is satisfied
+# because the complete vendor.tar.zst ships in the src.rpm.
 License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/astral-sh/uv
 Source0:        https://github.com/astral-sh/uv/archive/refs/tags/%{version}.tar.gz#/%{origname}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-BuildRequires:  cargo >= 1.96
+# Upstream raised its MSRV to 1.97 in 0.12.22 (crates/uv/rust-version,
+# inherited from the workspace Cargo.toml). Factory ships 1.98.1.
+BuildRequires:  cargo >= 1.97
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  zstd
@@ -174,7 +178,7 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 # The test flavour runs the Rust workspace suite: 70 of the 73 workspace
 # members. Three crates are excluded, each for a reason that no amount of
 # packaging can fix:
-#  - uv, the CLI integration suite (81 test files under crates/uv/tests).
+#  - uv, the CLI integration suite (83 test files under crates/uv/tests).
 #    It resolves against the real package index and downloads managed
 #    CPython interpreters; an OBS build chroot has no network.
 #  - uv-dev, whose generate_sysconfig_mappings test fetches

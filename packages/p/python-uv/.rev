@@ -3295,4 +3295,15 @@ with the full test suite (1411 passed).</comment>
 </comment>
     <requestid>1381679</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>957f30affcdb6ec998dadfee5716d2fd</srcmd5>
+    <version>0.12.22</version>
+    <time>1790975099</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.22. Upstream's build MSRV is now Rust 1.97, so BuildRequires on
+cargo moves to 1.97. The refreshed vendor tree adds zstd 0.13.3 and
+zstd-safe 7.3.0 to the linked graph - 509 nodes, was 507 - and the
+licence set is unchanged. Both flavors build green on aarch64.</comment>
+    <requestid>1382066</requestid>
+  </revision>
 </revisionlist>

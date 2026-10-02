@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:43:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.22:
+  * Add CPython 3.10.22, 3.11.17, 3.12.15, 3.13.16 and 3.14.8 to
+    the managed interpreter catalogue
+  * New UV_PYTHON_ARCH picks the interpreter architecture,
+    separately from its Python version
+  * Lockfile revision 5 records workspace members' default groups
+    and requires-python bounds, so frozen sync no longer reads
+    member manifests or borrows the invoking directory's groups
+  * uv audit honours --no-default-groups and errors clearly when
+    offline; uv publish help hides its unsupported --offline option
+  * Relocking keeps verifying unchanged requirements against the
+    hashes already in the lockfile
+  * Accept uppercase release suffixes in wheel platform tags; no
+    more false entry point warnings for required members
+  * Smaller binary: embedded Python download metadata is compressed
+  * Upstream MSRV is Rust 1.97, so BuildRequires on cargo moves up
+    to it (Factory ships 1.98.1)
+  * Refreshed vendor tree: zstd 0.13.3 and zstd-safe 7.3.0 joined
+    the linked graph via uv-python - 509 nodes (was 507), licences
+    unchanged
+  * Correct a stale spec comment: the uv CLI suite is 83 test files
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Wed Sep 30 10:30:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.21:
