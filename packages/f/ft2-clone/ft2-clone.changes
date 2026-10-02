@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  2 18:42:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.25
+  * Further sinc interpolation improvements.
+  * Re-added 3-point quadratic spline interpolation (why not).
+  * Small tweak to the tracker scope interpolation (in
+    quadratic/cubic/sinc mode).
+
+-------------------------------------------------------------------
 Fri Sep 18 06:07:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.24
