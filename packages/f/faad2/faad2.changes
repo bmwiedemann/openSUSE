@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:19:46 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.11.4:
+  + Fix the fixed-point SBR envelope estimate
+  + Fix PNS decoding window offset clamping for short sequences
+  + Add sample-accurate gapless MP4 container trimming (`elst` atom
+    and `iTunSMPB` metadata support, including SBR decoder delay
+    adjustment)
+  + Fix `-g`/`--no-gapless` CLI option parsing and metadata tag
+    handling
+  + Fix mono HE-AAC channel counts and PS signaling for HE-AAC v2
+    MP4 files
+
+-------------------------------------------------------------------
 Wed Aug 19 15:26:22 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.11.3:
