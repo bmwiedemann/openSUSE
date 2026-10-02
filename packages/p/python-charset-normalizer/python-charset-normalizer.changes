@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:48:07 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.5.2
+  Fixed
+  * Valid UTF-8 Chinese JSON incorrectly detected as PTCP154 due
+    to excessive noise penalties for uncommon CJK characters.
+  * Supported encodings without aliases failing name resolution or
+    being ignored in charset declarations.
+- Update to version 3.5.1
+  Fixed
+  * No longer decoding large content when the noise detector
+    output give a high entropy.  Only impacted large content
+    input >1M bytes.
+- Update to version 3.5.0
+  Added
+  * Explicit support for Python 3.15
+  Fixed
+  * Comparing a CharsetMatch to a non-alias encoding strings (#773)
+  * Return 0.0 CharsetMatch.multi_byte_usage for empty payloads
+    instead of crashing (#774).
+  * A file with both a charset declaration and BOM/SIG did not
+    verify first the BOM/SIG charset.
+  * iso2022* cases misdetected due to a flaw in our multibyte
+    chunking logic.
+  Changed
+  * Replaced the optional mypyc build with Cython extensions while
+    retaining the pure Python fallback.
+  * Applied micro-optimization on several utils.
+  * CharsetMatches no longer sort on each match insertion.
+  Misc
+  * Removed an old performance optimization attempt in apy.py
+    (success_fast_tracked+payload_result_cache).
+
+-------------------------------------------------------------------
 Tue Aug  4 21:13:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 3.4.9:
