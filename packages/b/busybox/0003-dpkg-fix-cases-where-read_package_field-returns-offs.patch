@@ -1,0 +1,122 @@
+From f5a4a02a157e250d28976e2ba4ea61a2fa7eb51f Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Mon, 21 Sep 2026 16:59:56 +0200
+Subject: [PATCH] dpkg: fix cases where read_package_field() returns offset
+ past NUL
+
+function                                             old     new   delta
+read_package_field                                   169     211     +42
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ archival/dpkg.c | 63 +++++++++++++++++++++++--------------------------
+ 1 file changed, 30 insertions(+), 33 deletions(-)
+
+diff --git a/archival/dpkg.c b/archival/dpkg.c
+index 860256f0e..b8d8eb648 100644
+--- a/archival/dpkg.c
++++ b/archival/dpkg.c
+@@ -532,8 +532,8 @@ static void free_package(common_node_t *node)
+ 
+ /*
+  * Gets the next package field from package_buffer:
+- * "Name:<whitespace>VALUE{\n|NUL}"
+- * "Name:<whitespace>\n
++ * "<whitespace>Name:<whitespace>VALUE{\n|NUL}"
++ * "<whitespace>Name:<whitespace>\n
+  * " VALUE{\n|NUL}"
+  * separated into "NAME" and "VALUE", both strdup()ed.
+  * Returns the int offset to the first character of the next field.
+@@ -541,64 +541,61 @@ static void free_package(common_node_t *node)
+  */
+ static int read_package_field(const char *package_buffer, char **field_name, char **field_value)
+ {
+-	int offset_name_start = 0;
+-	int offset_name_end = 0;
+-	int offset_value_start = 0;
+-	int offset = 0;
+-	int next_offset;
+-	int name_length;
+-	int value_length;
++	int offset_name_start;
++	int offset_name_end;
++	int offset_value_start = offset_value_start;
++	int offset;
+ 
+ 	*field_name = NULL;
+ 	*field_value = NULL;
+ 
++	offset = 0;
++	offset_name_start = 0;
++	offset_name_end = 0; /* "we did not see ':' yet" */
+ 	while (1) {
+-		next_offset = offset + 1;
+-		switch (package_buffer[offset]) {
++		char ch = package_buffer[offset];
++		switch (ch) {
+ 			case ':':
+ 				if (offset_name_end == 0) {
+-					offset_name_end = offset;
+-					offset_value_start = next_offset;
++					offset_name_end = offset + 1; /* points AFTER ':' - think of empty NAME case */
++					offset_value_start = offset + 1;
+ 				}
+-				/* TODO: Name might still have trailing spaces if ':' isn't
++				/* TODO: NAME might still have trailing spaces if ':' isn't
+ 				 * immediately after name */
+ 				break;
+ 			case '\n':
+-				if (package_buffer[next_offset] != ' ') {
++				if (package_buffer[offset + 1] != ' ')
+ 					goto end_of_value;
+-				}
+ 				/* fall through */
+ 			case '\t':
+ 			case ' ':
+ 				/* increment start points if it is just a filler */
+-				if (offset_name_start == offset) {
++				if (offset_name_start == offset)
+ 					offset_name_start++;
+-				}
+-				if (offset_value_start == offset) {
++				if (offset_value_start == offset)
+ 					offset_value_start++;
+-				}
+ 				break;
+ 			case '\0':
+  end_of_value:
+-				/* Check that the names are valid */
+-				name_length = offset_name_end - offset_name_start;
+-				value_length = offset - offset_value_start;
+-				if ((name_length > 0) && (value_length > 0)) {
+-					if (name_length > 0) {
++				/* Did we see the ':'? */
++				if (offset_name_end != 0) {
++					/* Yes. Check that NAME and VALUE exist and not empty */
++					int name_length = (offset_name_end - 1) - offset_name_start;
++					int value_length = offset - offset_value_start;
++					if ((name_length > 0) && (value_length > 0)) {
+ 						*field_name = xstrndup(&package_buffer[offset_name_start], name_length);
+-					}
+-					if (value_length > 0) {
+ 						*field_value = xstrndup(&package_buffer[offset_value_start], value_length);
++						if (ch)
++							offset++; /* skip '\n' */
++						return offset;
+ 					}
+-					return next_offset;
+ 				}
+-				if (!package_buffer[offset])
+-					return next_offset; //BUG! past NUL
++				if (!ch)
++					return offset; /* stop at NUL */
++
+ 				/* Not valid: start fresh with next field */
+ 				offset_name_start = offset + 1;
+-				offset_name_end = 0;
+-				offset_value_start = offset + 1;
+-				offset++; //BUG?
++				offset_name_end = 0; /* "we did not see ':' yet" */
+ 				break;
+ 		}
+ 		offset++;

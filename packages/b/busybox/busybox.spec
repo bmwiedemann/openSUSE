@@ -60,6 +60,25 @@ Patch10:        awk-fix-use-after-free-sub.patch
 Patch11:        0001-ash-fix-out-of-bounds-read-in-ifsbreakup.patch
 # PATCH-FIX-UPSTREAM - Fix bsc#1271548 (CVE-2026-38755), stack exhaustion on deep ash function recursion
 Patch12:        ash-fix-evalfun.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282575 (CVE-2026-88830), undersized buffer in TLS Montgomery reduction (upstream commit 89ac82774)
+Patch13:        0001-tls-fix-undersized-buffer-calculation.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282550 (CVE-2026-88831), httpd fails open on invalid CIDR prefix in deny rules (upstream commit 339e3c62f)
+Patch14:        0001-httpd-fix-handling-of-D-1.2.3-999.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282576 (CVE-2026-88832), heap buffer overflow in romfs volume ID parsing (upstream commit 9073c1d15)
+Patch15:        0001-volume_id-romfs-limit-the-maximum-size-of-label-to-V.patch
+# We don't really need the 4 dpkg patches below, as building dpkg is disabled in the config, but since they are upstream add them just in case
+# PATCH-FIX-UPSTREAM - Prerequisite for the dpkg fixes below (upstream commit e2c5cc042)
+Patch16:        0001-dpkg-free-results-of-read_package_field-preliminary-.patch
+# PATCH-FIX-UPSTREAM - Prerequisite for the dpkg fixes below (upstream commit 43a9d7d31)
+Patch17:        0002-dpkg-reformat-code-in-read_package_field-exposing-wh.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282551 (CVE-2026-88835), dpkg read_package_field() OOB read past NUL (upstream commit f5a4a02a1)
+Patch18:        0003-dpkg-fix-cases-where-read_package_field-returns-offs.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282653 (CVE-2026-88841), dpkg write_status_file() OOB read/status file corruption (upstream commit d5cc94063)
+Patch19:        0004-dpkg-fix-field-handling-in-write_status_file.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282552 (CVE-2026-88837), httpd misidentifies yescrypt hashes as plaintext (upstream commit 9f5cbdcaa)
+Patch20:        0001-httpd-allow-yescrypt-passwords-y.patch
+# PATCH-FIX-UPSTREAM - Fix bsc#1282568 (CVE-2026-88839), passwd/group parser OOB write on stale tokenize() endpoint (upstream commit c2dec52d3)
+Patch21:        0001-libpwdgrp-tokenizer-fix-for-trailing-whitespace-remo.patch
 
 # other patches
 Patch100:       busybox.install.patch

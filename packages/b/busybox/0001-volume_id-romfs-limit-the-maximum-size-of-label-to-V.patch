@@ -1,0 +1,48 @@
+From 9073c1d15c9953c6f1e39145815fc5dccfa6081c Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Mon, 21 Sep 2026 05:34:19 +0200
+Subject: [PATCH] volume_id/romfs: limit the maximum size of label to
+ VOLUME_ID_LABEL_SIZE
+
+function                                             old     new   delta
+volume_id_set_label_string                            71      81     +10
+volume_id_probe_romfs                                 94      97      +3
+------------------------------------------------------------------------------
+(add/remove: 0/0 grow/shrink: 2/0 up/down: 13/0)               Total: 13 bytes
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ util-linux/volume_id/romfs.c | 4 ++--
+ util-linux/volume_id/util.c  | 4 ++++
+ 2 files changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/util-linux/volume_id/romfs.c b/util-linux/volume_id/romfs.c
+index bd74fda8d..475144c43 100644
+--- a/util-linux/volume_id/romfs.c
++++ b/util-linux/volume_id/romfs.c
+@@ -44,8 +44,8 @@ int FAST_FUNC volume_id_probe_romfs(struct volume_id *id /*,uint64_t off*/)
+ 	if (rfs == NULL)
+ 		return -1;
+ 
+-	if (memcmp(rfs->magic, "-rom1fs-", 4) == 0) {
+-		size_t len = strlen((char *)rfs->name);
++	if (memcmp(rfs->magic, "-rom1fs-", 8) == 0) {
++		size_t len = strnlen((char *)rfs->name, VOLUME_ID_LABEL_SIZE);
+ 
+ 		if (len) {
+ //			volume_id_set_label_raw(id, rfs->name, len);
+diff --git a/util-linux/volume_id/util.c b/util-linux/volume_id/util.c
+index b59aa99b2..a2bee28ab 100644
+--- a/util-linux/volume_id/util.c
++++ b/util-linux/volume_id/util.c
+@@ -116,6 +116,10 @@ void volume_id_set_label_string(struct volume_id *id, const uint8_t *buf, size_t
+ {
+ 	unsigned i;
+ 
++	/* Do not overflow label[VOLUME_ID_LABEL_SIZE+1] */
++	if (count > VOLUME_ID_LABEL_SIZE)
++		count = VOLUME_ID_LABEL_SIZE;
++
+ 	memcpy(id->label, buf, count);
+ 
+ 	/* remove trailing whitespace */

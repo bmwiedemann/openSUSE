@@ -1,0 +1,55 @@
+From 89ac82774f90e270d04ed5299e5cf05dfbc314c1 Mon Sep 17 00:00:00 2001
+From: Denys Vlasenko <vda.linux@googlemail.com>
+Date: Mon, 21 Sep 2026 03:19:28 +0200
+Subject: [PATCH] tls: fix undersized buffer calculation
+
+All callers of pstm_montgomery_reduce() are currently in pstm_exptmod()
+and they all pass a preallocated temporary buffer, so the incorrect code
+is unreachable. But fix it anyway.
+
+function                                             old     new   delta
+pstm_montgomery_reduce                               431     430      -1
+
+Signed-off-by: Denys Vlasenko <vda.linux@googlemail.com>
+---
+ networking/tls_pstm_montgomery_reduce.c | 10 +++++++---
+ 1 file changed, 7 insertions(+), 3 deletions(-)
+
+diff --git a/networking/tls_pstm_montgomery_reduce.c b/networking/tls_pstm_montgomery_reduce.c
+index e63e590db..36882425a 100644
+--- a/networking/tls_pstm_montgomery_reduce.c
++++ b/networking/tls_pstm_montgomery_reduce.c
+@@ -370,6 +370,7 @@ int32 FAST_FUNC pstm_montgomery_reduce(psPool_t *pool, pstm_int *a, pstm_int *m,
+ 	pstm_digit	*c, *_c, *tmpm, mu;
+ 	int32		oldused, x, y;
+ 	int		pa; //bbox: was int16
++	uint32          cSize;
+ 
+ 	pa = m->used;
+ 	if (pa > a->alloc) {
+@@ -377,11 +378,13 @@ int32 FAST_FUNC pstm_montgomery_reduce(psPool_t *pool, pstm_int *a, pstm_int *m,
+ 		return PS_LIMIT_FAIL;
+ 	}
+ 
+-	if (paD && paDlen >= (uint32)2*pa+1) {
++	cSize = (2 * pa + 1) * sizeof(pstm_digit);
++	if (paD && paDlen >= cSize) {
+ 		c = paD;
+ 		memset(c, 0x0, paDlen);
+ 	} else {
+-		c = xzalloc(2*pa+1);//bbox
++		//bbox: dead code, all callers always pass paD:
++		c = xzalloc(cSize); //bbox
+ 	}
+ 	/* copy the input */
+ 	oldused = a->used;
+@@ -441,7 +444,8 @@ int32 FAST_FUNC pstm_montgomery_reduce(psPool_t *pool, pstm_int *a, pstm_int *m,
+ 			x = PS_MEM_FAIL;
+ 		}
+ 	}
+-	if (paDlen < (uint32)2*pa+1) {
++	//bbox: dead code, all callers always pass paD:
++	if (c != paD) {
+ 		psFree(c, pool);
+ 	}
+ 	return x;
