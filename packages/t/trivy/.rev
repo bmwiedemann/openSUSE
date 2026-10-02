@@ -1772,4 +1772,41 @@ dropped patch file
 - Update to version 0.74.0 (bsc#1278702, CVE-2026-50163,</comment>
     <requestid>1376017</requestid>
   </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>14625b3b383300756e538f04b6fe8a69</srcmd5>
+    <version>0.75.0</version>
+    <time>1790975134</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.75.0:
+  * release: v0.75.0 [main] (#11110)
+  * feat(crypto): add the crypto scanner to the image command (#11144)
+  * fix(os): keep the fullest OS version when merging analyzer results (#11039)
+  * feat(echo): add vulnerability detection for Echo-patched Python packages (#10555)
+  * fix(crypto): read RSA private keys without validating their math (#11319)
+  * feat(crypto): transfer cryptographic assets in client/server mode (#11141)
+  * chore: bump SPDX license IDs and exceptions to `v3.29.0` (#11284)
+  * fix(python): support uv workspace lockfiles (#10553)
+  * fix(purl): classify julia, bottlerocket and centos stream packages (#11326)
+  * chore(deps): bump alpine to 3.24.2 (#11309)
+  * chore(alpine): add EOL date for Alpine 3.24 and fix 3.21/3.22 dates (#11308)
+  * feat(crypto): output cryptographic assets in CycloneDX (#11125)
+  * docs(sbom): clarify Rekor source compatibility with Cosign (#11323)
+  * fix(python): skip pip requirement lines with malformed extras brackets (#11300)
+  * feat(crypto): add analyzer and pass assets to the scan report (#11104)
+  * fix: correct grammar and typos in user-facing error messages and CLI flags (#11281)
+  * chore(deps): bump github.com/containerd/containerd/v2 from 2.4.0 to 2.4.1 (#11310)
+  * fix(vex): avoid panic on CSAF relationships without a sub-component (#11067)
+  * chore(deps): bump the common group across 1 directory with 4 updates (#11306)
+  * chore(deps): bump the github-actions group across 1 directory with 5 updates (#11173)
+  * chore(deps): bump the testcontainers group across 1 directory with 2 updates (#11130)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#11129)
+  * chore(deps): bump github.com/docker/cli from 29.8.0+incompatible to 29.8.1+incompatible in the docker group (#11305)
+  * chore(deps): bump the docker group across 1 directory with 4 updates (#11266)
+  * perf(secret): replace per-rule keyword search with one Aho-Corasick pass (#11179)
+  * perf(crypto): report repeated x509 material once per file (#11263)
+  * perf: take JSON line numbers from decoder offsets (#11233)
+  * refactor(java): parse MANIFEST.MF attributes by key (#11022)
+  * fix(sbom): skip null entries in SPDX file and package arrays (#11101)</comment>
+    <requestid>1382112</requestid>
+  </revision>
 </revisionlist>

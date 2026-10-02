@@ -1,4 +1,99 @@
 -------------------------------------------------------------------
+Fri Oct 02 13:26:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 0.75.0:
+  * release: v0.75.0 [main] (#11110)
+  * feat(crypto): add the crypto scanner to the image command (#11144)
+  * fix(os): keep the fullest OS version when merging analyzer results (#11039)
+  * feat(echo): add vulnerability detection for Echo-patched Python packages (#10555)
+  * fix(crypto): read RSA private keys without validating their math (#11319)
+  * feat(crypto): transfer cryptographic assets in client/server mode (#11141)
+  * chore: bump SPDX license IDs and exceptions to `v3.29.0` (#11284)
+  * fix(python): support uv workspace lockfiles (#10553)
+  * fix(purl): classify julia, bottlerocket and centos stream packages (#11326)
+  * chore(deps): bump alpine to 3.24.2 (#11309)
+  * chore(alpine): add EOL date for Alpine 3.24 and fix 3.21/3.22 dates (#11308)
+  * feat(crypto): output cryptographic assets in CycloneDX (#11125)
+  * docs(sbom): clarify Rekor source compatibility with Cosign (#11323)
+  * fix(python): skip pip requirement lines with malformed extras brackets (#11300)
+  * feat(crypto): add analyzer and pass assets to the scan report (#11104)
+  * fix: correct grammar and typos in user-facing error messages and CLI flags (#11281)
+  * chore(deps): bump github.com/containerd/containerd/v2 from 2.4.0 to 2.4.1 (#11310)
+  * fix(vex): avoid panic on CSAF relationships without a sub-component (#11067)
+  * chore(deps): bump the common group across 1 directory with 4 updates (#11306)
+  * chore(deps): bump the github-actions group across 1 directory with 5 updates (#11173)
+  * chore(deps): bump the testcontainers group across 1 directory with 2 updates (#11130)
+  * chore(deps): bump the aws group across 1 directory with 6 updates (#11129)
+  * chore(deps): bump github.com/docker/cli from 29.8.0+incompatible to 29.8.1+incompatible in the docker group (#11305)
+  * chore(deps): bump the docker group across 1 directory with 4 updates (#11266)
+  * perf(secret): replace per-rule keyword search with one Aho-Corasick pass (#11179)
+  * perf(crypto): report repeated x509 material once per file (#11263)
+  * perf: take JSON line numbers from decoder offsets (#11233)
+  * refactor(java): parse MANIFEST.MF attributes by key (#11022)
+  * fix(sbom): skip null entries in SPDX file and package arrays (#11101)
+  * feat(crypto): describe ML-DSA keys and signature algorithms (#11137)
+  * docs: clarify community integration listing disclaimer (#11283)
+  * docs: add PerspectiveGraph to reporting integrations (#11255)
+  * docs: link security reporting guidance to relevant documentation (#11235)
+  * docs(misconf): clarify custom check security considerations (#11278)
+  * fix(license): report unparsable license names with UNKNOWN severity (#11254)
+  * chore(deps): bump the common group across 1 directory with 27 updates (#11267)
+  * feat(crypto): describe parsed material as cryptographic assets (#11092)
+  * fix: avoid panics on malformed dependency files and version-less Amazon Linux release (#10996)
+  * perf: reuse one JSON unmarshaler per document (#11232)
+  * perf: avoid regrowing the buffer when reading a cached file (#11134)
+  * fix(repo): strip credentials from remote repository URL in artifact name (#11213)
+  * fix: set locations for JSON values sharing a line (#11231)
+  * test: use httptest.NewTestServer for shared test servers (#11138)
+  * docs: clarify configuration file security considerations (#11209)
+  * docs(go): explain why go.sum is not scanned for Go 1.17+ modules (#11163)
+  * feat(cli): allow disabling configuration files with empty paths (#11210)
+  * fix(report)!: remove getHostByName from templates (#11206)
+  * test(misconf): rework the Terraform scanner tests (#11218)
+  * fix(go): honor go directive when merging go.sum (#11169)
+  * chore(deps): bump github.com/containerd/containerd/v2 from 2.3.3 to 2.3.5 (#11224)
+  * docs(plugin): clarify plugin permissions and security considerations (#11202)
+  * refactor(misconf): take the result.new and isManaged built-ins from trivy-checks (#11194)
+  * fix: correct grammar and typos in user-facing error messages (#11211)
+  * chore(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2 (#11212)
+  * chore(deps): bump trivy-checks (#11205)
+  * fix(misconf): report correct line numbers in multi-document manifests (#11207)
+  * docs(terraform): clarify remote module downloads and network access (#11200)
+  * docs(server): clarify client/server security considerations (#11198)
+  * docs(java): recommend mvn install for multi-module Maven projects (#11196)
+  * fix(server): propagate package modularity label, build info and installed files (#11188)
+  * fix(terraform): do not override --skip-files with --skip-dirs (#11191)
+  * fix(license): use canonical SPDX casing for license.id (#11165)
+  * ci: remove redundant vulnerability scan (#11184)
+  * docs: fix --exclude-namespaces example and a typo in the Terraform tutorial (#11036)
+  * docs: define compatibility policy (#11128)
+  * docs(vm): mark monolithicSparse as a supported VMDK disk type (#11103)
+  * chore(deps): drop outdated note about spdx/tools-golang version (#11164)
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1 (#11176)
+  * refactor: use strings.CutLast and url.URL.Clone from Go 1.27 (#11136)
+  * refactor: use named constants for JSON token kinds (#11157)
+  * fix(nodejs): support boolean resolved field in package-lock.json (#11156)
+  * test(rapidfort): add integration test for the RapidFort curated image (#11150)
+  * perf(secret): avoid cloning the logger for every rule (#11133)
+  * ci: add rapidfort scope to PR title validation (#11151)
+  * chore: bump Go to 1.27 (#11127)
+  * fix(go): restore stdlib version parsing for vendor-patched Go toolchains (#11119)
+  * chore(deps): bump github.com/moby/go-archive from 0.2.1 to 0.3.3 (#11123)
+  * ci: add crypto scope to PR title validation (#11111)
+  * feat: add cryptographic asset model and parser (#10970)
+  * ci(helm): bump Trivy version to 0.74.0 for Trivy Helm Chart 0.26.0 (#11097)
+
+-------------------------------------------------------------------
+Sat Sep 12 17:25:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1278624, CVE-2026-56855,CVE-2026-56854,CVE-2026-78662:
+    golang.org/x/crypto/ssh: authentication bypass and deadlocks
+    in the crypto/ssh library
+  * bsc#1280111, CVE-2026-53495: containerd: CRI ExecSync Goroutine
+    Leak Leads to Node-Level Denial of Service
+
+-------------------------------------------------------------------
 Sun Sep  6 13:29:38 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor to address:

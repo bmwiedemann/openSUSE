@@ -17,7 +17,7 @@
 
 
 Name:           trivy
-Version:        0.74.0
+Version:        0.75.0
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source:         %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 BuildRequires:  golang-packaging
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.26
+BuildRequires:  golang(API) = 1.27
 Requires:       ca-certificates
 Requires:       git-core
 
