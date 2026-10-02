@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 02 05:12:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.13.1:
+  * BUG FIXES:
+    - tofu show -json <planfile> now works again when ephemeral
+      resources are present in the configuration. (4623).
+    - Ephemeral output values are now always re-evaluated during
+      the apply phase, instead of sometimes using stale values from
+      the planning phase. (#4582)
+
+-------------------------------------------------------------------
 Thu Oct 01 05:03:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.13.0:
