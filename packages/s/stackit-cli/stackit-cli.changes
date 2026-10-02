@@ -1,4 +1,67 @@
 -------------------------------------------------------------------
+Fri Oct 02 04:50:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.74.0:
+  * fix(observability): set credentials create body (#1630)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mongodbflex
+    (#1625)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/sqlserverflex
+    (#1627)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/observability
+    (#1626)
+  * chore(deps): bump fgrosse/go-coverage-report from 1.3.1 to
+    1.4.0 (#1631)
+  * feat(automation): onboard volume automation commands (#1629)
+  * feat(automation): onboard volume automation execution command
+    (#1619)
+  * feat(automation): onboard volume automation template command
+    (#1618)
+  * chore(deps): bump golang.org/x/text from 0.41.0 to 0.42.0
+    (#1624)
+  * chore(deps): bump golang.org/x/term from 0.45.0 to 0.46.0
+    (#1623)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logme (#1621)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/authorization
+    (#1614)
+  * chore(deps): bump golang.org/x/oauth2 from 0.36.0 to 0.37.0
+    (#1613)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/albwaf (#1615)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/opensearch
+    (#1617)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/ske (#1616)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/dns (#1611)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/intake (#1610)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serverupdate
+    (#1609)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/serviceenablement
+    (#1608)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/mariadb (#1604)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/postgresflex
+    (#1607)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/objectstorage
+    (#1606)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/secretsmanager
+    (#1605)
+  * chore(deps): bump
+    github.com/stackitcloud/stackit-sdk-go/services/logs (#1603)
+
+-------------------------------------------------------------------
 Fri Sep 18 05:30:14 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.73.0:
