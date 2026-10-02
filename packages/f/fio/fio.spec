@@ -33,23 +33,34 @@
 %endif
 %bcond_without librdmacm
 Name:           fio
-Version:        3.42
+Version:        3.43
 Release:        0
 Summary:        Flexible I/O tester
 License:        GPL-2.0-only
 URL:            https://github.com/axboe/fio
-Source:         https://brick.kernel.dk/snaps/fio-%{version}.tar.bz2
-BuildRequires:  cunit-devel
+# Upstream's own server (brick.kernel.dk, same host as git.kernel.dk) has an
+# expired TLS certificate as of 2026-09-25, which makes the canonical snap
+# tarball unfetchable.  Take the release from the tagged commit on the
+# canonical forge instead; its file set matches the snap tarball.
+Source:         https://github.com/axboe/fio/archive/refs/tags/fio-%{version}.tar.gz
 BuildRequires:  gcc
-BuildRequires:  gtk2-devel
 BuildRequires:  libaio-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libiscsi-devel
-BuildRequires:  libnbd-devel
+BuildRequires:  libnbd-devel >= 0.9.8
 BuildRequires:  make
 BuildRequires:  openssl-devel
 BuildRequires:  pkgconfig
-BuildRequires:  zlib-devel
+BuildRequires:  pkgconfig(cunit)
+# Upstream's configure states these floors and we build with the matching
+# features turned on, so keep them resolvable rather than failing in configure.
+BuildRequires:  pkgconfig(gail) >= 2.18.0
+BuildRequires:  pkgconfig(gdk-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(gdk-x11-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(gtk+-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(gtk+-unix-print-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(gtk+-x11-2.0) >= 2.18.0
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libiscsi) >= 1.9.0
+BuildRequires:  pkgconfig(zlib)
 Suggests:       gfio
 Suggests:       gnuplot
 %if %{with libnuma}
@@ -59,7 +70,7 @@ BuildRequires:  libnuma-devel
 BuildRequires:  librbd-devel
 %endif
 %if %{with libpmem}
-BuildRequires:  libpmem-devel
+BuildRequires:  pkgconfig(libpmem)
 %endif
 %if %{with librdmacm}
 BuildRequires:  librdmacm-devel
@@ -84,7 +95,8 @@ gfio is a gtk based graphical front-end for fio.  It is often installed on the
 testers workstation whereas fio would be installed on the server.
 
 %prep
-%autosetup -p1
+# The tag archive unpacks into fio-fio-<version>, not fio-<version>.
+%autosetup -p1 -n %{name}-%{name}-%{version}
 
 %build
 sed -i "s|%{_bindir}/bash|/bin/bash|g" tools/genfio

@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:54:59 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 3.43 (154 upstream commits since 3.42):
+  * New crash-aware data verification: verification now continues
+    after a crash instead of aborting the job.
+  * io_uring: multiple write modes, BSG commands (uring_cmd),
+    zone_append with zonemode ZBD, and a --hugetlb option.
+  * New sequence distribution with striding, and a ROCm hipFile
+    engine on the shared gpuaccel layer.
+  * Fix a segfault in verify's timedout teardown, skip errored
+    WRITE offsets, dump the buffer on a zero-verify mismatch.
+  * Fix bandwidth asymmetry and a memory leak with norandommap; the
+    experimental verify now counts bytes completed, not issued.
+  * Fix cgroup path overflows with long names, an init memory leak,
+    an iolog log assertion and three merge_blktrace_iologs bugs.
+  * Exit non-zero when a job process is killed by a signal;
+    properly reap server children on SIGINT.
+  * backend: drop the linux/prctl.h include (fixes the musl
+    build); libnfs needs gnutls only on Linux.
+  * CVE-2026-30656 (boo#1262262): the NULL deref in
+    str_fdp_pli_cb() with a valueless fdp_pli is fixed since
+    3.42, not affected by it.
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- Spec cleanup: pkgconfig() BuildRequires form with the floors
+  upstream's configure states, and fetch the release from the
+  GitHub tag archive because upstream's brick.kernel.dk has an
+  expired TLS certificate since 2026-09-25.
+
+-------------------------------------------------------------------
 Thu May 28 05:58:00 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 3.42:

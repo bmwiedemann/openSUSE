@@ -647,4 +647,16 @@ This is the first openSUSE version to include gfio. gfio is in it's own package.
     removed all references to git.kernel.dk in 3.42).</comment>
     <requestid>1355527</requestid>
   </revision>
+  <revision rev="73" vrev="1">
+    <srcmd5>f88f24a46fd085afe7d814dbcb44fcb9</srcmd5>
+    <version>3.43</version>
+    <time>1790974982</time>
+    <user>anag_factory</user>
+    <comment>Update to fio 3.43 (154 upstream commits). The release is taken from the
+GitHub tag archive because upstream's brick.kernel.dk has an expired TLS
+certificate since 2026-09-25, so the snap tarball can no longer be
+fetched; please confirm that source switch.
+</comment>
+    <requestid>1381966</requestid>
+  </revision>
 </revisionlist>
