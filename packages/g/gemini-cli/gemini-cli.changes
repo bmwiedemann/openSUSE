@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:03:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.62.0:
+  * fix(a2a-server): add early return on unsupported store in tasks
+    metadata endpoint by @jesussamuel-byte in #29334
+  * fix(core,acp): format MCP tool call titles as structured
+    signatures and segregate explanations by @jvargassanchez-dot in #29341
+  * fix(core): retain oauth refresh token on refresh and make
+    credential deletion idempotent by @villahernandez-coder in #29339
+  * fix(ui): guard against negative layout dimensions in border
+    rendering
+  * fix(core): improve PTY file descriptor cleanup and execution
+    lifecycle management by @jesussamuel-byte in #29340
+  * fix(core): synchronize ConPTY process exit lifecycle and
+    harden PTY output finalization by @jvargassanchez-dot in #29379
+  * fix(cli): suppress uncaught AbortError logs during request
+    cancellation by @urielefrenvirtusa in #29343
+  * fix(core,cli): improve terminal buffer memory management and
+    format Windows diagnostic paths by @jesussamuel-byte in #29380
+  * fix(core): update auth error documentation link to valid
+    anchor and add fallback (#26140) by @villahernandez-coder in #29377
+  * fix(core): normalize proxy-agent esbuild interop for environment
+    proxy resolution by @diegogodinezr in #29401
+  * Feat/gemini 3.8 flash 3.5 flash lite by @DavidAPierce in #29443
+
+-------------------------------------------------------------------
+Wed Sep 23 13:50:17 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.62~nightly.20260923.g62364cb20:
+  * nightly that includes gemini-flash-3.8 support
+
+-------------------------------------------------------------------
 Sat Sep 19 09:28:48 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.60.0:
