@@ -455,4 +455,28 @@
   * bsc#1280110, CVE-2026-53495</comment>
     <requestid>1377572</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>2eacd21f53b30c88dce044411d638224</srcmd5>
+    <version>2.1.1</version>
+    <time>1790975344</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.1.1:
+  * bumped go version to v1.26.7 (backport #771)
+  * https registry auth fix (backport #763)
+  * adjust supporting artifact retrieval (backport #777)
+  * reject --platform on digest-pinned multi-platform images
+  * fix: serve registry returns an empty /v2/_catalog list
+  * added airgapped support for install.sh and added windows
+    install.ps1
+  * added/fixed basic auth with registry and fileserver
+  * fixed store inventory race with concurrent processes
+  * added type filter to store copy
+  * fixed missing dirs in containers
+  * updated github workflows with versions, permissions, and
+    concurrency
+
+- update to 2.1.0 (bsc#1265425, CVE-2026-41888,
+     bsc#1283673, CVE-2026-63209):</comment>
+    <requestid>1382130</requestid>
+  </revision>
 </revisionlist>
