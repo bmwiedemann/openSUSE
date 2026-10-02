@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:25:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.9
+  * Sleep for 1ms after utility is terminated in restart mode.
+  * Abort if path length exceed boundaries, no longer rely on
+    strlcpy(3).
+  * Check argument length before copying.
+
+-------------------------------------------------------------------
 Thu Mar  5 14:44:09 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.8

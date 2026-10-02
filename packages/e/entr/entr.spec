@@ -18,7 +18,7 @@
 
 
 Name:           entr
-Version:        5.8
+Version:        5.9
 Release:        0
 Summary:        A utility for running arbitrary commands when files change
 License:        ISC
@@ -34,7 +34,7 @@ A utility for running arbitrary commands when files change. Uses
 inotify(7) to avoid polling.
 
 %prep
-%setup -q
+%autosetup
 
 %build
 export CFLAGS="%{optflags}"
