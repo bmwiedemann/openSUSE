@@ -704,4 +704,12 @@ https://build.opensuse.org/requests/1305216
     <comment>Ghostscript version upgrade to 10.07.1 fixes potential security issues (forwarded request 1354700 from jsmeix)</comment>
     <requestid>1354701</requestid>
   </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>924c26c1eb23218bea20e0ddbe6de3af</srcmd5>
+    <version>10.08.0</version>
+    <time>1790974929</time>
+    <user>anag_factory</user>
+    <comment>Ghostscript version upgrade to 10.08.0 fixes potential security issues in particular CVE-2026-39919 bsc#1280620 (forwarded request 1381911 from jsmeix)</comment>
+    <requestid>1381912</requestid>
+  </revision>
 </revisionlist>

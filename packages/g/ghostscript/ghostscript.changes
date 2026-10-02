@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:22:41 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- Version upgrade to 10.08.0
+  See 'Recent Changes in Ghostscript' at Ghostscript upstream
+  https://ghostscript.readthedocs.io/en/gs10.08.0/News.html
+  * This release addresses a number of potential security issues.
+  * The 10.08.0 release removes a number of old, unmaintained
+    and (at the time of this release) untestable and thus
+    unmaintainable devices from the default builds,
+    as a precursor to removal of the device sources
+    in the next release.
+    This process will continue as development time allows.
+    If you rely on any of the removed devices and are willing
+    to help testing them, please get in touch at:
+    bugs.ghostscript.com
+  * The usual round of bug fixes, compatibility changes,
+    and incremental improvements. 
+- In particular it fixes CVE-2026-39919
+  "Heap buffer overflow in the JPEG 2000 (JPXDecode) output adapter
+   via component subsampling mismatch (base/sjpx_openjpeg.c)"
+  https://bugs.ghostscript.com/show_bug.cgi?id=709666
+  "heap-based buffer overflow in the JPEG 2000 output adapter
+   allows attackers to cause memory corruption
+   by supplying crafted PDFs"
+  (bsc#1280620)
+
+-------------------------------------------------------------------
 Fri May 22 11:28:28 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - Version upgrade to 10.07.1
