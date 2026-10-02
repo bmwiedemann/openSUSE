@@ -17,14 +17,14 @@
 
 
 Name:           pvetui
-Version:        1.2.1
+Version:        1.4.3
 Release:        0
 Summary:        Terminal UI for Proxmox VE
 License:        MIT
 URL:            https://github.com/devnullvoid/pvetui
 Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  go1.24 >= 1.24.2
+BuildRequires:  go1.26 >= 1.26.0
 
 %description
 A Terminal User Interface For Proxmox Virtual Environment
@@ -46,9 +46,19 @@ go build \
    -X github.com/devnullvoid/pvetui/internal/version.buildDate=${BUILD_DATE}" \
    -o bin/%{name} ./cmd/%{name}
 
+# shell completion
+for shell in bash fish zsh; do
+  ./bin/pvetui completion "$shell" > "pvetui_completion.$shell";
+done
+
 %install
 # Install the binary.
 install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
+
+# Install shell completion
+install -D -m 0644 pvetui_completion.bash %{buildroot}%{_datadir}/bash-completion/completions/%{name}
+install -D -m 0644 pvetui_completion.fish  %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
+install -D -m 0644 pvetui_completion.zsh %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
 
 %check
 %{buildroot}/%{_bindir}/%{name} --version
@@ -58,5 +68,11 @@ install -D -m 0755 bin/%{name} %{buildroot}/%{_bindir}/%{name}
 %doc README.md
 %license LICENSE
 %{_bindir}/%{name}
+
+%{_datadir}/bash-completion/*
+%dir %{_datadir}/fish
+%{_datadir}/fish/*
+%dir %{_datadir}/zsh
+%{_datadir}/zsh/*
 
 %changelog

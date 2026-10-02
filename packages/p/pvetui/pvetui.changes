@@ -1,4 +1,288 @@
 -------------------------------------------------------------------
+Fri Jul 17 05:29:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.3:
+  * Added
+    - CLI output defaults: Added cli.default_output and
+      PVETUI_CLI_DEFAULT_OUTPUT so users can make CLI subcommands
+      default to table output while preserving json as the built-in
+      automation-safe default. The --output flag still takes
+      precedence per command.
+    - Community Scripts sudo guidance: Documented the sudoers rule
+      needed for non-root SSH users running unattended Community
+      Scripts installs, and made non-interactive installs use sudo
+      -n so missing passwordless sudo fails instead of waiting for
+      a password prompt.
+    - Community Scripts IP guard: Initialized the upstream IP
+      variable for CLI and TUI Community Scripts installs so
+      scripts that fail to populate it do not roll back otherwise
+      successful containers during their final access-URL message.
+    - Community Scripts guest add-ons: Added CLI and TUI support
+      for installing tools/addon scripts inside existing LXC
+      containers, exposed derived script target metadata, sanitized
+      HTML tags from upstream script descriptions, and limited
+      guest-launched TUI selection to applicable tool scripts with
+      the same i shortcut used by node installs.
+    - CLI emergency recovery paths: Added node-local guest listing
+      with guests list --node <node> --node-local, direct lifecycle
+      targeting with --node/--type on start/stop/shutdown/restart,
+      LXC-compatible guests migrate --target-storage, and
+      configurable migration task waits via --wait-timeout.
+  * Dependencies
+    - deps(deps): bump github.com/dgraph-io/badger/v4 from 4.9.1 to
+      4.9.3
+    - deps(deps): bump golang.org/x/tools from 0.45.0 to 0.47.0
+    - deps(deps): bump github.com/getsops/sops/v3 from 3.13.1 to
+      3.13.2
+
+-------------------------------------------------------------------
+Fri Jul  3 18:47:54 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.2:
+  * Add community scripts CLI commands.
+
+-------------------------------------------------------------------
+Mon Jun 08 04:47:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.1:
+  * Added
+    - Cloudsmith Linux package repository: Added release publishing
+      for DEB/RPM packages to the public Cloudsmith OSS repository,
+      plus README install instructions and OSS hosting attribution.
+    - Ansible community Proxmox inventory: The Ansible plugin can
+      now use a generated community.proxmox.proxmox dynamic
+      inventory source via plugins.ansible.inventory_source:
+      community_proxmox, deriving non-secret connection fields plus
+      secret environment variables from the active pvetui profile
+      so saved inventory files can be reused without writing
+      Proxmox secrets into them.
+    - Ansible bootstrap UID: Bootstrap Access can now create or
+      update the managed Ansible user with a configured numeric UID
+      via plugins.ansible.bootstrap.uid.
+    - Application settings dialog: Added in-app editing for icon
+      display, debug logging, cache/age directories, theme
+      configuration, and key bindings, plus SSH key path fields in
+      profile editing.
+    - Mock-backed media generation: make screenshots, make demo,
+      and the mock VHS E2E runner now launch pvetui against the
+      bundled Proxmox mock API with a generated config and media
+      fixture, making screenshot and demo regeneration reproducible
+      without a real cluster.
+  * Fixed
+    - Settings persistence: TUI configuration saves now preserve
+      show_icons and apply settings/profile actions to the active
+      custom config path when one is in use.
+    - Icon toggle coverage: Startup progress, onboarding, and
+      snapshot/backup message emoji prefixes now respect
+      show_icons, while operational status indicators and spinners
+      remain visible.
+    - Active profile SSH settings: Changes to an active profile's
+      SSH users, key files, and jump host now apply to new
+      SSH/plugin operations immediately without requiring profile
+      reactivation.
+  * Dependencies
+    - deps: bump github.com/getkin/kin-openapi to 0.140.0
+    - deps: bump golang.org/x/crypto to 0.52.0
+    - deps: bump github.com/gdamore/tcell/v2 to 2.13.10
+
+-------------------------------------------------------------------
+Mon May 25 09:03:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.4.0
+  * CLI: guests create vm / guests create lxc: Create QEMU VMs and
+    LXC containers from the CLI with the same field coverage as
+    the TUI forms. Supports memory, cores, disk storage, ISO
+    attachment, network bridge, start-after-create, and
+    auto-assigned VMIDs (via GetNextID). For LXC, accepts a package
+    name (e.g. debian-12-standard) and resolves it to the latest
+    full template filename via the aplinfo catalog. Commands block
+    until the Proxmox task completes by default; --no-wait returns
+    the task UPID immediately.
+  * CLI: guests migrate <vmid> <target-node>: Migrate a guest to
+    another node. Mode is selected automatically (QEMU running →
+    online, QEMU stopped → offline, LXC → restart) matching TUI
+    behaviour; --online / --offline override for QEMU. --no-wait
+    supported.
+  * CLI: guests delete <vmid>: Delete a VM or LXC container from
+    the CLI. Supports --purge (remove all associated storage
+    volumes) and --force (delete even if the guest is running).
+    Blocks until the Proxmox task completes by default;
+    --no-wait returns the task UPID immediately.
+  * CLI: storage command group: New top-level command group for
+    storage and content management:
+    + storage list [--node] — list all storages across the
+      cluster; shows per-node rows for shared storages.
+    + storage show <node> <storage> — show details for a specific
+      storage.
+    + storage content list <node> <storage> [--type] — list
+      content items with optional type filter.
+    + storage content delete <node> <storage> <volid> [--no-wait]
+      — delete a content item.
+    + storage download url <node> <storage> <url> [--filename]
+      [--content-type] [--no-wait] — download from a URL; content
+      type inferred from extension (.iso → iso, .tar.* → vztmpl,
+      .img → import).
+    + storage download template <node> <storage> <template>
+      [--section] [--no-wait] — download an appliance template;
+      accepts full filename or package name with auto-resolution.
+    + storage download oci <node> <storage> <reference> [--no-wait]
+      — pull an OCI image.
+    + storage restore <node> <storage> <volid> <vmid> [--confirm]
+      [--type] [--no-wait] — restore a guest from a vzdump backup.
+      Prints a dry-run summary without --confirm; guest type
+      inferred from volid prefix.
+  * Tab completions for <node>, <storage>, and <template>
+    positional arguments.
+
+-------------------------------------------------------------------
+Sun May 10 14:43:21 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.3.3:
+  * Added
+    - LXC/VM create: moved to node context menu: "Create VM" and
+      "Create LXC" are no longer in the global menu. They are now
+      only accessible from the node context menu, where the target
+      node is already in scope.
+    - LXC Edit Configuration: Swap field: New "Swap (MB)" input in
+      the Edit Configuration modal for LXC containers, positioned
+      below Memory. Setting swap to 0 is now correctly sent to the
+      API (disabling swap), which the previous save path silently
+      skipped.
+    - LXC create: Nesting toggle: New "Nesting" checkbox in the LXC
+      creation form (enabled by default) that sets
+      features=nesting=1 on the container, allowing Docker and
+      nested containers.
+    - Storage: Template Catalog download: New "Template Catalog"
+      option in the storage Download Content menu (available when
+      the storage supports vztmpl). Fetches the Proxmox appliance
+      template list (pveam available) and lets you pick a template
+      by section (All / system / mail / turnkeylinux) and download
+      it directly to the selected storage — equivalent to pveam
+      download <storage> <template>.
+    - Ansible plugin: env setting: New plugins.ansible.env config
+      map for passing arbitrary environment variables (e.g.
+      ANSIBLE_CONFIG, ANSIBLE_ROLES_PATH,
+      ANSIBLE_HOST_KEY_CHECKING) to all ansible and
+      ansible-playbook invocations. Configurable via General
+      Settings in the toolkit or directly in config YAML.
+  * Fixed
+    - LXC Edit Configuration: false-positive * marker on network
+      modal: Opening and closing the "Edit Network Interfaces"
+      sub-form without making any changes no longer marks the
+      parent form title with *. The comparison baseline is now
+      normalized through the same parse→rebuild round-trip used
+      when saving, eliminating spurious change detection caused by
+      key-order differences in the raw API strings.
+    - LXC create: privileged container creation: The unprivileged
+      field was being sent as a JSON boolean (false), which Proxmox
+      does not reliably accept. It is now sent as an integer (0/1)
+      consistent with how Proxmox represents boolean-like fields
+      internally. This fixes creation of privileged containers.
+    - LXC/VM create: rootfs storage dropdown shows storages from
+      other cluster nodes: GetNodeStorages now filters out storages
+      not active on the queried node. Proxmox returns all
+      cluster-configured storages from /nodes/{node}/storage but
+      marks inaccessible ones with active=0; previously non-shared
+      local storages from other nodes were shown in the rootfs
+      dropdown.
+    - Edit Configuration: network changes now prompt to Save: After
+      applying changes in the "Edit Network Interfaces" sub-form,
+      the header shows "Network settings updated — press Save to
+      apply" and the parent form title gains a * marker as a
+      persistent reminder that the changes are staged in memory and
+      require pressing Save to persist to Proxmox.
+    - go install version info: Build date and commit hash now show
+      correctly in the About modal when installed via go install.
+      Release constants are embedded in internal/version/release.go
+      and updated automatically by the release script, serving as a
+      fallback when ldflags and VCS metadata are unavailable.
+    - Release script: make release prompt ordering: The
+      confirmation block now renders before the y/N prompt when
+      running under make. Previously stdout buffering caused the
+      prompt to appear ahead of the confirmation text.
+    - Release script: master sync before merge: make release now
+      fast-forwards local master to origin/master before merging
+      develop, preventing push rejection when CI has auto-committed
+      to master (e.g. Nix vendorHash update) since the previous
+      release.
+
+-------------------------------------------------------------------
+Mon Apr 20 06:43:52 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.2:
+  * Add ansible ad-hoc task runner.
+  * Fix error on ambiguous VMID in aggregate group mode.
+  * Add shell subcommands and tab completion for nodes/guests.
+- Package shell completions.
+
+-------------------------------------------------------------------
+Wed Apr 15 05:58:39 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.1:
+  Added
+  * Shell Completions: pvetui completion now generates shell
+    completion scripts for bash, zsh, fish, and PowerShell via
+    Cobra's built-in completion support.
+  * SSH Key Configuration: Added ssh_keyfile and vm_ssh_keyfile
+    per-profile config fields (and corresponding --ssh-keyfile /
+    --vm-ssh-keyfile CLI flags and PVETUI_SSH_KEYFILE /
+    PVETUI_VM_SSH_KEYFILE env vars) for specifying SSH private key
+    paths explicitly. When no keyfile is configured, pvetui now
+    also consults the running SSH agent (SSH_AUTH_SOCK) before
+    falling back to standard key paths (~/.ssh/id_ed25519, id_rsa,
+    id_ecdsa).
+  Fixed
+  * gRPC Security Update: Upgraded indirect dependency
+    google.golang.org/grpc from v1.79.1 to v1.79.3 to address
+    CVE-2026-33186 (boo#1260202), an authorization bypass in
+    HTTP/2 :path pseudo-header validation.
+
+-------------------------------------------------------------------
+Sat Mar 21 21:47:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3.0:
+  Added
+  * Command Runner: Custom Commands: The Command Runner plugin now
+    exposes a "Custom Command..." entry at the top of the command
+    menu for all target types (host, LXC container, QEMU VM). Users
+    can type any non-interactive command and execute it directly
+    without it needing to be on the whitelist. After a successful
+    run, pressing w on the result screen promotes the command into
+    the session whitelist and inserts it at the top of the command
+    list immediately — no close/reopen required. Commands run
+    without a PTY; sudo requiring a password will fail fast with a
+    clear error, as will interactive programs.
+  * CLI Subcommands: pvetui can now be used as a non-interactive
+    CLI tool in addition to launching the TUI. Running any
+    subcommand bypasses the TUI entirely, making pvetui composable
+    in scripts and AI agent workflows.
+    + pvetui nodes list — list all cluster nodes with status and
+      resource metrics.
+    + pvetui nodes show <node> — detailed view of a single node.
+    + pvetui guests list — list all VMs and LXC containers with
+      optional --node, --status, and --type filters.
+    + pvetui guests show <vmid> — detailed view of a single guest.
+    + pvetui guests start|stop|shutdown|restart <vmid> —
+      lifecycle operations returning a UPID.
+    + pvetui guests exec <vmid> <command> — execute a shell
+      command inside a running guest. QEMU VMs use the guest agent
+      (no SSH to the guest required), with automatic PowerShell
+      wrapping on Windows. LXC containers use pct exec over SSH to
+      the Proxmox node (ssh_user must be configured). Supports
+      --timeout.
+    + pvetui tasks list — list recent cluster tasks with --recent
+      N (default 20).
+    + --output / -o persistent flag selects json (default,
+      structured stdout) or table (human-readable).
+    + All subcommands respect --profile and work transparently with
+      aggregate group profiles (fan-out queries across all member
+      nodes).
+    + No TUI startup banners are emitted when a subcommand is
+      active.
+    + Errors are written as JSON to stderr; the process exits
+      non-zero on failure.
+
+-------------------------------------------------------------------
 Sat Mar 14 22:21:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.2.1:
