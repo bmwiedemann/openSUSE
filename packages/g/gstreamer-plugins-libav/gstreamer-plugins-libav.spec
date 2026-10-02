@@ -47,6 +47,7 @@ BuildRequires:  pkgconfig(orc-0.4) >= 0.4.16
 BuildRequires:  pkgconfig(zlib)
 Requires:       gstreamer >= %{version}
 Enhances:       gstreamer
+Provides:       gst-libav = %{version}
 
 %description
 GStreamer is a streaming media framework, based on graphs of filters which
