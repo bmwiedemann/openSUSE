@@ -63,8 +63,15 @@
 %define libaudit_meson_opt no
 %endif
 
+# No BPF on i586
+%ifnarch %{ix86}
+%bcond_without bpf
+%else
+%bcond_with bpf
+%endif
+
 Name:           NetworkManager
-Version:        1.56.1
+Version:        1.58.1
 Release:        0
 Summary:        Standard Linux network configuration tool suite
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
@@ -98,18 +105,8 @@ Patch8:         python3.6-in-sle.patch
 Patch9:         NetworkManager-dont-renew-bridge-dhcp-if-no-mac-on-wakeup.patch
 # PATCH-FIX-OPENSUSE nm-initrd-generator document static ip setup bsc#1244072
 Patch11:        0001-man-document-static-ip-setup-differences-to-dracut-n.patch
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2312.patch
-Patch13:        2312.patch
-# PATCH-FIX-UPSTREAM https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2308.patch
-Patch14:        2308.patch
-# PATCH-FIX-UPSTREAM 2462.patch bsc#1259025, glfd#NetworkManager/NetworkManager!2462 sckang@suse.com --  nm-initrd-generator: set parent for NBFT vlan connection
-Patch15:        2462.patch
 # PATCH-FEATURE-SLE NetworkManager-initrd-generator-ip-hcn.patch PED-14534 sckang@suse.com -- handle "ip=hcn" option in nm-initrd-generator, it generates an empty connection
 Patch16:        NetworkManager-initrd-generator-ip-hcn.patch
-# PATCH-FIX-UPSTREAM NetworkManager-CVE-2026-10805.patch bsc#1267696, CVE-2026-10805, glfd#NetworkManager/NetworkManager!2426 sckang@suse.com --  dhclient: reject unsafe characters in URLs and hostnames
-Patch17:        NetworkManager-CVE-2026-10805.patch
-# PATCH-FIX-UPSTREAM NetworkManager-CVE-2026-19685.patch bsc#1276764, CVE-2026-19685, glfd#NetworkManager/NetworkManager!2513 sckang@suse.com -- core: 802.1x: reject ca-path for private connections
-Patch18:        NetworkManager-CVE-2026-19685.patch
 
 BuildRequires:  c++_compiler
 BuildRequires:  dnsmasq
@@ -123,19 +120,19 @@ BuildRequires:  readline-devel
 BuildRequires:  rp-pppoe
 BuildRequires:  wireless-tools
 BuildRequires:  perl(YAML)
-BuildRequires:  pkgconfig(dbus-1)
+BuildRequires:  pkgconfig(dbus-1) >= 1.1
 BuildRequires:  pkgconfig(dbus-glib-1) >= 0.94
 BuildRequires:  pkgconfig(glib-2.0) >= 2.42
-BuildRequires:  pkgconfig(gobject-introspection-1.0)
+BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.9.6
 BuildRequires:  pkgconfig(gtk-doc)
 BuildRequires:  pkgconfig(jansson) >= 2.7
-BuildRequires:  pkgconfig(libcurl)
-BuildRequires:  pkgconfig(libndp)
+BuildRequires:  pkgconfig(libcurl) >= 7.24.0
+BuildRequires:  pkgconfig(libndp) >= 1.9
 BuildRequires:  pkgconfig(libnewt) >= 0.52.15
 BuildRequires:  pkgconfig(libnl-3.0) >= 3.2.8
 BuildRequires:  pkgconfig(libnl-genl-3.0)
 BuildRequires:  pkgconfig(libnl-route-3.0)
-BuildRequires:  pkgconfig(libnvme)
+BuildRequires:  pkgconfig(libnvme) >= 1.5
 BuildRequires:  pkgconfig(libpsl) >= 0.1
 BuildRequires:  pkgconfig(libselinux)
 BuildRequires:  pkgconfig(libsystemd) >= 209
@@ -147,9 +144,14 @@ BuildRequires:  pkgconfig(polkit-gobject-1)
 BuildRequires:  pkgconfig(udev)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
+BuildRequires:  bpftool
 ### Conditional BRs
 %if %{with LIBAUDIT}
 BuildRequires:  pkgconfig(audit)
+%endif
+%if %{with bpf}
+BuildRequires:  pkgconfig(libbpf) >= 1.3.0
+BuildRequires:  cross-bpf-gcc%{?gcc_version}
 %endif
 ## Required for tests
 %if %{with TESTS}
@@ -335,14 +337,9 @@ This package is intended to be installed by default for server deployments.
 %patch -P 9 -p1
 %endif
 %patch -P 11 -p1
-%patch -P 13 -p1
-%patch -P 14 -p1
-%patch -P 15 -p1
 %if 0%{?sle_version} && 0%{?sle_version} > 160000
 %patch -P 16 -p1
 %endif
-%patch -P 17 -p1
-%patch -P 18 -p1
 
 # Fix server.conf's location, to end up in %%{_defaultdocdir}/%%{name},
 # rather then %%{_datadir}/doc/%%{name}/examples:
@@ -376,7 +373,6 @@ export PYTHON=%{_bindir}/python3
 %endif
     -Dconfig_dhcp_default=internal \
     -Ddhcpcd=no \
-    -Ddhclient=%{_sbindir}/dhclient \
     -Ddocs=true \
     -Dtests=%{tests_meson_opt} \
     -Dmore_asserts=0 \
@@ -385,6 +381,11 @@ export PYTHON=%{_bindir}/python3
     -Db_lto=true \
     -Dsession_tracking=systemd \
     -Dsession_tracking_consolekit=false \
+%if %{with bpf}
+    -Dbpf-compiler=gcc \
+%else
+    -Dclat=false \
+%endif
     %{nil}
 %meson_build
 

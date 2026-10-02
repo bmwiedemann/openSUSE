@@ -1,4 +1,196 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:37:50 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Disable 464XLAT Customer-side Translator (CLAT) support on %ix86:
+  + Introduce bcond_with/withot bpf build condition, based on arch
+  + Pass -Dclat=false to meson when bpf is disabled
+  + Only conditionally BuildRequire libbpf and cross-bpf-gcc
+
+-------------------------------------------------------------------
+Wed Sep 30 15:07:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
+Thu Sep 24 12:50:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 1.58.1:
+  + Overview of changes since NetworkManager-1.58.0:
+    - For private connections (the ones that specify a user in the
+      "connection.permissions" property), the 802.1X "ca-path" and
+      "phase2-ca-path" properties are no longer accepted and
+      activation fails, as the daemon would otherwise let the owner
+      of the profile choose the CA trust store used to validate the
+      authentication server. Such profiles must clear those
+      properties and use "ca-cert" or "system-ca-certs" instead.
+    - Fix IPv4 forwarding not enabled on modem data interfaces.
+    - Log a warning when ignoring DHCPv4 option 3 (Router) due to
+      the presence of option 121/249 (Classless Static Routes)
+      results in no gateway.
+    - Set the parent interface by name for NBFT VLAN connections in
+      the initrd generator to avoid race conditions at boot.
+    - Perform the connectivity check also when the interface only
+      has an IPv4 link-scope default route.
+    - Ignore unspecified addresses as DNS nameservers from RDNSS
+      and DHCPv6, and skip invalid nameservers when configuring
+      systemd-resolved.
+    - Fix auto-connect to SAE (WPA3) networks with key-mgmt=wpa-psk
+      profiles.
+    - Fix DNS server port number not forwarded to systemd-resolved
+      for DNS URIs.
+    - Fix normalization of Bluetooth NAP connections.
+    - Fix multiple crashes. NetworkManager-1.58
+  + General:
+    - Unify the versioning to use everywhere the scheme with the
+      -rcX or -dev suffixes when appropriate. This affects, for
+      example, the URL and filename of the release tarball and the
+      version reported by nmcli and the daemon. As an exception,
+      the C API will continue to use the 90+ scheme for RC
+      versions.
+    - Install the systemd units in the initramfs using a systemd
+      generator.
+  + Core:
+    - Connection profiles with manual IP addressing and with
+      gateways that are not directly reachable will generate a
+      warning on activation and when they are added/modified via
+      nmcli and nmtui. NetworkManager currently adds on-link routes
+      for them automatically, but this will change in the future.
+      To fix the warning, users should add addresses or routes
+      whose subnets cover these gateways. A gateway (either the
+      default gateway or the next-hop of a route) is considered
+      directly reachable if it falls within the subnet of a direct
+      route (a route without a next hop) or of a prefix route from
+      a static address.
+    - Use an internal implementation of the ping functionality when
+      the "connection.gateway-ping-timeout" or
+      "connection.ip-ping-addresses" properties are set, instead of
+      relying on the "ping" tool.
+    - Add support for CLAT (464XLAT) using a BPF program,
+      controlled by the "ipv4.clat" property. CLAT is still
+      disabled by default for now.
+    - Change the default value of the ipv4.dhcp-ipv6-only-preferred
+      property to a new value "auto" which automatically enables
+      the option when CLAT is enabled ("yes" or "auto") in the
+      connection profile.
+    - Allow persisting the managed state across reboots from the
+      D-Bus API and nmcli. time as a change to the managed state
+      from the D-Bus API and nmcli.
+    - IPv6 interfaces that receive PD via DHCPv6 are considered
+      healthy without a non-temporary address. The delegated prefix
+      can be used via an interface configured with "ipv6.method:
+      shared"
+    - Fix reapply not honoring the ipv6.ignore-auto-dns,
+      ipv6.ignore-auto-routes and ipv6.never-default properties
+      when DHCPv6 was not restarted (for example when the IPv6 DNS
+      came from a DHCPv6 lease), so that DHCPv6-provided DNS and
+      routes are now correctly suppressed on reapply without a
+      connection restart.
+  + Connectivity:
+    - A new "check-connectivity" configuration option is available
+      to disable the connectivity check for selected interfaces.
+    - Restrict the connectivity check to use the DNS servers
+      defined on the same link. If the link has no DNS servers, the
+      connectivity check will use any servers available in the
+      system.
+    - Fix stale global connectivity state with connectivity
+      checking enabled: NetworkManager could report limited
+      connectivity while another device had full connectivity, or
+      keep reporting limited after a device regained internet
+      access.
+  + DHCP:
+    - The internal DHCPv4 client now ignores option 3 (Router) if
+      the lease contains option 121 (Classless Static Route), as
+      recommended by RFC 3442.
+    - Fix an out-of-bounds read in the internal DHCPv4 client that
+      an on-link attacker could trigger with a malformed UDP
+      packet, crashing NetworkManager.
+    - Validate hostnames and MUD URLs before pasting them into the
+      dhclient configuration file, rejecting characters that could
+      alter the config syntax (CVE-2026-10805).
+  + Wi-Fi:
+    - The "band" property of Wi-fi connections now accepts the
+      "6GHz" value.
+    - The powersave property now functions with the iwd backend.
+    - WIFI connections using wpa-psk respect the setting
+      connection.auth-retry and only prompt for new secrets during
+      the last authentication attempt before failing.
+    - Accept 64 hex-character PSK in WPS credentials which are
+      returned by some access points.
+    - When wpa_supplicant reports a WPA3-SAE password mismatch,
+      prompt the user for the password again instead of failing,
+      matching the WPA-PSK behavior.
+  + Nmtui / nmcli:
+    - Show the Wi-Fi band of APs in the scan results from nmcli.
+    - New <Select...> button in nmtui that allows users to chose
+      from list of available devices when creating connection
+      profiles for physical interfaces (Ethernet, Wi-Fi, etc.).
+    - Allow configuring all bond options in nmtui by introducing a
+      "other options" field, which covers options not already
+      covered by a dedicated input field.
+    - Nmtui now offers a "Show password" checkbox in the dialog
+      that prompts for secrets when activating a connection,
+      matching the connection editor.
+    - The nmtui connection lists ("nmtui connect" and "nmtui edit")
+      support a vim-style "/" search that filters the list to
+      matching entries as you type.
+    - The "Activate a connection" screen in nmtui now has a "Rescan
+      Wi-Fi" button that scans for nearby Wi-Fi networks on demand.
+    - Nmtui can now share a Wi-Fi connection as a QR code via the
+      "Share QR..." button in the "Edit a connection" view,
+      mirroring "nmcli device wifi show-password".
+    - Nmcli "connection show" now labels the ports column "PORT"
+      instead of "SLAVE" (the "SLAVE" field name is still accepted
+      as an alias), and adds the BRIDGE.PORTS, TEAM.PORTS and
+      GENERAL.CONTROLLER-PATH fields.
+    - Nmtui now redraws its forms when the terminal is resized,
+      instead of leaving them off-center or clipped until the form
+      is reopened.
+    - Nmcli "device wifi show-password" no longer prints a QR code
+      when the Wi-Fi password cannot be read due to insufficient
+      privileges; it prints a warning instead.
+  + VPN:
+    - Introduce a libnm function that can be used by VPN plugins to
+      check user permissions on certificate and keys.
+    - Fix VPN connections with "ipv4.dns-search" or
+      "ipv6.dns-search" set ignoring the search domains pushed by
+      the VPN; the manually configured and VPN-provided search
+      domains are now merged.
+  + Security:
+    - For private connections (the ones that specify a user in the
+      "connection.permissions" property), verify that the user can
+      access the 802.1X certificates and keys set in the
+      connection.
+    - Add a "polkit_noauth_group" build option to install a polkit
+      rule that lets admin users in the given group (typically
+      "sudo" or "wheel") make system-wide connection changes from a
+      local console without entering a password. It is empty
+      (disabled) by default and is discouraged.
+  + Deprecations and removals:
+    - The support for Wireless Extensions is deprecated and will be
+      removed in a future release. Wireless Extensions are now
+      disabled by default.
+    - Remove the modify_system build option that allowed setting up
+      the polkit permissions to allow non-admin users to create
+      system-wide connection. That configuration is discouraged
+      because it can be used to bypass filesystem permissions.
+    - Drop support for dhclient as a DHCP backend, which has been
+      deprecated since NetworkManager-1.50.
+    - Fix a bug that makes broadband connections auto-connect
+      getting blocked if the connection tries to reconnect when
+      modem status is
+- Drop 2308.patch: fixed upstream.
+- Drop 2312.patch: fixed upstream.
+- Drop 2462.patch: fixed upstream.
+- Drop NetworkManager-CVE-2026-19685.patch: fixed upstream.
+- Drop NetworkManager-CVE-2026-10805.patch: fixed upstream.
+- Rebase nm-add-CAP_SYS_ADMIN-permission.patch.
+- Drop -Ddhclient=%{_sbindir}/dhclient meson parameter: dhclient
+  has been deprecated since NM 1.50. Use internal dhcp client.
+- Add pkgconfig(libbpf), cross-bpf-gcc16, and bpftool
+  BuildRequires: new depencencies for CLAT (Customer-side
+  translator) support.
+
+-------------------------------------------------------------------
 Wed Sep  2 01:59:20 UTC 2026 - Jonathan Kang <songchuan.kang@suse.com>
 
 - Add NetworkManager-CVE-2026-10805.patch: dhclient: reject unsafe
@@ -180,7 +372,7 @@ Tue Nov 25 09:35:12 UTC 2025 - Antonio Feijoo <antonio.feijoo@suse.com>
 Fri Oct 31 10:05:44 UTC 2025 - Johannes Segitz <jsegitz@suse.com>
 
 - Add patch 2298.patch to fix issue with SELinux labeling. Is already
-  upstream via 
+  upstream via
   https://gitlab.freedesktop.org/NetworkManager/NetworkManager/-/merge_requests/2298
   and can be removed next release (bsc#1248136)
 
@@ -2264,7 +2456,7 @@ Wed Sep 26 23:00:41 UTC 2018 - bjorn.lie@gmail.com
 -------------------------------------------------------------------
 Sat Sep 22 15:12:06 UTC 2018 - Andrei Dziahel <develop7@develop7.info>
 
-- Add NetworkManager-1.12.2-docker-unmanaged.patch: Do not manage 
+- Add NetworkManager-1.12.2-docker-unmanaged.patch: Do not manage
   Docker bridge interfaces (glfdo#NetworkManager/NetworkManager!15)
 
 -------------------------------------------------------------------
@@ -3775,7 +3967,7 @@ Fri Oct 11 15:31:54 UTC 2013 - dimstar@opensuse.org
 Thu Oct 10 11:48:13 UTC 2013 - rmilasan@suse.com
 
 - Switch to systemd check for the nfs script if enabled or not.
-  Also do not exit with error code if nfs script is not enabled. 
+  Also do not exit with error code if nfs script is not enabled.
 
 -------------------------------------------------------------------
 Tue Oct  1 09:48:41 UTC 2013 - glin@suse.com
@@ -3844,7 +4036,7 @@ Fri Sep 13 17:22:16 UTC 2013 - dimstar@opensuse.org
 Mon Jul  1 18:43:44 UTC 2013 - coolo@suse.com
 
 - avoid suse-release, it moves NM behind java in bootstrap and
-  all features that configure.ac enabled for suse-release are 
+  all features that configure.ac enabled for suse-release are
   enabled with --with anyway
 
 -------------------------------------------------------------------
@@ -4130,7 +4322,7 @@ Fri Aug 17 13:52:22 UTC 2012 - fcrozat@suse.com
 Wed Jul 18 04:37:40 UTC 2012 - glin@suse.com
 
 - Add nm-probe-radius-server-cert.patch to probe the certificate
-  of the RADIUS server (bnc#574266, bnc#771185) 
+  of the RADIUS server (bnc#574266, bnc#771185)
 - Add nm-null-out-on-dispose.patch to fix crash in gnome-shell or
   any other program using libnm-glib (bgo#674473)
 
@@ -4579,10 +4771,10 @@ Wed Feb 02 19:00:04 CET 2011 - bjorn.lie@gmail.com
   than touching Makefile.in.
 
 -------------------------------------------------------------------
-Sat Jan 30 11:16:04 CET 2011 - bjorn.lie@gmail.com 
+Sat Jan 30 11:16:04 CET 2011 - bjorn.lie@gmail.com
 
 - Add nm-ignore-temp-files.patch: stop NM from filling dmesg and
-  logs by ignoring temporary files (bgo#602868) (bnc#668183) 
+  logs by ignoring temporary files (bgo#602868) (bnc#668183)
   Original upstream patch has been extended to also touch
   Makefile.in in order to avoid having to re-bootstrap.
 
@@ -4810,7 +5002,7 @@ Tue Aug 11 14:28:29 UTC 2009 - tittiatcoke@gmail.com
   + Handle ZTE (Onda) device port types
   + Wait 20 seconds (instead of 15) for PPP connections to come up
   + Block until netconfig exits
-  + Allow 63 byte long PSK 
+  + Allow 63 byte long PSK
   + Fix dbus reconnection
   + Handle unsolicited supplicant scans
   + Other fixes
@@ -4858,9 +5050,9 @@ Sat Jan 31 20:42:39 CET 2009 - vuntz@novell.com
 - Use sr@latin instead of sr@Latn.
 
 -------------------------------------------------------------------
-Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de 
+Mon Jan 12 15:25:27 EST 2009 - mauro@suse.de
 
-- Translations update. 
+- Translations update.
 
 -------------------------------------------------------------------
 Fri Jan  9 00:18:22 CET 2009 - mauro@suse.de
@@ -4870,7 +5062,7 @@ Fri Jan  9 00:18:22 CET 2009 - mauro@suse.de
 -------------------------------------------------------------------
 Sat Dec  6 09:53:24 CET 2008 - mauro@suse.de
 
-- Translations update. 
+- Translations update.
 
 -------------------------------------------------------------------
 Thu Dec  4 12:30:37 EET 2008 - tambet@novell.com
@@ -4890,7 +5082,7 @@ Tue Dec  2 15:34:44 EET 2008 - tambet@novell.com
 -------------------------------------------------------------------
 Fri Nov 21 14:42:46 EET 2008 - tambet@novell.com
 
-- Add support to use distro wide CA certificates from 
+- Add support to use distro wide CA certificates from
   /ets/ssl/certs (bnc #436192).
 - Unmount NFS shares when network is deactivated (bnc #341647).
 - Recomment NetworkManager-client (bnc #445643).
@@ -4922,7 +5114,7 @@ Fri Nov  7 15:47:00 EET 2008 - tambet@suse.de
 -------------------------------------------------------------------
 Mon Nov  3 14:48:35 EET 2008 - tambet@suse.de
 
-- Break the public API to hide the internal data structures in 
+- Break the public API to hide the internal data structures in
   hope to achieve maintainable public API from now on.
 
 -------------------------------------------------------------------
@@ -4984,7 +5176,7 @@ Fri Sep 26 15:55:31 EEST 2008 - tambet@suse.de
 -------------------------------------------------------------------
 Thu Sep 25 15:37:25 CEST 2008 - ro@suse.de
 
-- use autoreconf -f -i for new libtool 
+- use autoreconf -f -i for new libtool
 
 -------------------------------------------------------------------
 Fri Sep 19 14:15:56 EEST 2008 - tambet@suse.de
@@ -5000,7 +5192,7 @@ Fri Sep 19 14:15:56 EEST 2008 - tambet@suse.de
 -------------------------------------------------------------------
 Mon Sep 15 14:23:47 CEST 2008 - ro@suse.de
 
-- added directory to filelist 
+- added directory to filelist
 
 -------------------------------------------------------------------
 Sun Sep 14 21:03:11 CEST 2008 - aj@suse.de
@@ -5106,7 +5298,7 @@ Mon Apr  7 16:45:44 CEST 2008 - maw@suse.de
 -------------------------------------------------------------------
 Fri Mar 14 23:18:24 CET 2008 - tambet@suse.de
 
-- Fix a crasher bug triggered very frequently on waking up from suspend. 
+- Fix a crasher bug triggered very frequently on waking up from suspend.
 
 -------------------------------------------------------------------
 Thu Mar 13 23:51:50 CET 2008 - tambet@suse.de
@@ -5146,7 +5338,7 @@ Tue Feb  5 18:21:22 CET 2008 - maw@suse.de
 Mon Feb  4 17:10:00 CET 2008 - tambet@suse.de
 
 - Upgrade to the latest SVN.
-- Re-remove some files NM installs, they really aren't ready yet. 
+- Re-remove some files NM installs, they really aren't ready yet.
 
 -------------------------------------------------------------------
 Sat Jan 12 18:57:33 CET 2008 - schwab@suse.de
@@ -5163,7 +5355,7 @@ Fri Jan 11 20:40:37 CET 2008 - aj@suse.de
 -------------------------------------------------------------------
 Fri Jan 11 01:30:33 CET 2008 - dmueller@suse.de
 
-- fix file lists 
+- fix file lists
 - fix various specfile / packaging errors
 
 -------------------------------------------------------------------
@@ -5214,7 +5406,7 @@ Tue May 15 10:07:27 CEST 2007 - pgajdos@suse.cz
 
 - removed invalid PreReq: gtk2 >= {%gtk_version} gnome-icon-theme
 - added Requires: gtk2 >= {%gtk_version}
-- removed gnome-icon-theme from BuildRequires [#247450] 
+- removed gnome-icon-theme from BuildRequires [#247450]
 
 -------------------------------------------------------------------
 Thu May 10 13:55:29 CEST 2007 - tambet@suse.de
@@ -5226,7 +5418,7 @@ Thu May 10 13:55:29 CEST 2007 - tambet@suse.de
 -------------------------------------------------------------------
 Wed Mar  7 23:36:12 CET 2007 - jhargadon@suse.de
 
-- fixed a problem with nm-resolv-conf-header-rml.patch (#249251) 
+- fixed a problem with nm-resolv-conf-header-rml.patch (#249251)
 
 -------------------------------------------------------------------
 Tue Feb 13 11:50:51 CET 2007 - sbrabec@suse.cz
@@ -5253,7 +5445,7 @@ Tue Jan 30 13:57:16 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Nov 20 15:18:59 CET 2006 - tambet@suse.de
 
-- Add a hack to fix translations (Novell #222329). 
+- Add a hack to fix translations (Novell #222329).
 
 -------------------------------------------------------------------
 Tue Nov 14 15:48:20 CET 2006 - sbrabec@suse.cz
@@ -5328,7 +5520,7 @@ Thu Aug 17 16:01:22 CEST 2006 - rml@suse.de
 	- Shutdown all VPN connections on logout (Novell #187714)
 	- Fix memory leak
 - Add libtool and iproute2 to BuildRequires
-- Remove patch "nm-debug-wpa-less-rml.patch" as it is now upstream 
+- Remove patch "nm-debug-wpa-less-rml.patch" as it is now upstream
 
 -------------------------------------------------------------------
 Wed Aug  9 17:00:59 CEST 2006 - thoenig@suse.de
@@ -5346,19 +5538,19 @@ Thu Jul 13 17:16:39 CEST 2006 - rml@suse.de
 -------------------------------------------------------------------
 Wed Jun 28 17:02:05 CEST 2006 - rml@suse.de
 
-- Translation update 
+- Translation update
 
 -------------------------------------------------------------------
 Tue Jun 20 20:49:06 CEST 2006 - rml@suse.de
 
 - Put wpa_supplicant into Ad-Hoc mode for all Ad-Hoc networks, not
-  just ones that NetworkManager itself creates (Novell bug #186806) 
+  just ones that NetworkManager itself creates (Novell bug #186806)
 
 -------------------------------------------------------------------
 Mon Jun 19 20:19:36 CEST 2006 - rml@suse.de
 
 - Fix automatic connection to WPA Enterprise networks (Novell bug
-  #175172) 
+  #175172)
 
 -------------------------------------------------------------------
 Fri Jun 16 21:47:14 CEST 2006 - rml@suse.de
@@ -5374,7 +5566,7 @@ Mon Jun 12 20:50:02 CEST 2006 - rml@suse.de
 -------------------------------------------------------------------
 Mon Jun 12 17:50:42 CEST 2006 - rml@suse.de
 
-- Update translations (Novell bug #169096) 
+- Update translations (Novell bug #169096)
 
 -------------------------------------------------------------------
 Fri Jun  9 17:46:42 CEST 2006 - rml@suse.de
@@ -5422,13 +5614,13 @@ Mon May 29 15:56:55 CEST 2006 - sbrabec@suse.cz
 Fri May 26 21:15:32 CEST 2006 - rml@suse.de
 
 - Make sure we require and correctly build with gcrypt support
-  (Novell bug #179315) 
+  (Novell bug #179315)
 
 -------------------------------------------------------------------
 Thu May 25 16:58:39 CEST 2006 - rml@suse.de
 
 - For ndiswrapper, only use "AP_SCAN 2" if the network is not
-  broadcasting (Novell bug #178210) 
+  broadcasting (Novell bug #178210)
 
 -------------------------------------------------------------------
 Wed May 24 17:21:21 CEST 2006 - rml@suse.de
@@ -5446,21 +5638,21 @@ Mon May 22 17:28:52 CEST 2006 - rml@suse.de
   but only reload as needed (Novell bug #175935)
 - nm-applet: Fix crash on icon-theme change if icons no longer
   exist (Novell bug #177426)
-- Fix bug with weirdly-named network interfaces (GNOME bug #330832) 
+- Fix bug with weirdly-named network interfaces (GNOME bug #330832)
 
 -------------------------------------------------------------------
 Fri May 19 12:19:58 CEST 2006 - ro@suse.de
 
 - fix requirement. sysconfig in sles10 has release 13.3 currently
   (the version in sysconfig should have been fixed instead of
-  requiring a release-number ...) 
+  requiring a release-number ...)
 
 -------------------------------------------------------------------
 Thu May 18 22:12:54 CEST 2006 - rml@suse.de
 
 - Use "AP_SCAN 2" for ipw2200 if the network is hidden (Novell
   bug #176575)
-- nm-applet: Update Hungarian translation (Novell bug #158997) 
+- nm-applet: Update Hungarian translation (Novell bug #158997)
 - Bump package requirement on sysconfig to 0.50.9-14 or later
 - Make sysconfig a PreReq, not a Requires (Novell bug #176993)
 
@@ -5489,13 +5681,13 @@ Tue May 16 19:25:39 CEST 2006 - rml@suse.de
 Mon May 15 16:38:57 CEST 2006 - rml@suse.de
 
 - Look for DHCLIENT_MODIFY_RESOLV_CONF in dhcp, not config (Novell
-  bug #175688) 
+  bug #175688)
 
 -------------------------------------------------------------------
 Wed May 10 16:48:28 CEST 2006 - rml@suse.de
 
 - Fix double free causing crash on start with some ifcfg-wlan
-  configurations (Novell bug #173442) 
+  configurations (Novell bug #173442)
 
 -------------------------------------------------------------------
 Tue May  9 17:23:29 CEST 2006 - rml@suse.de
@@ -5503,7 +5695,7 @@ Tue May  9 17:23:29 CEST 2006 - rml@suse.de
 - nm-applet: Save WPA EPA private key passhrase, if any, in the
   GNOME keyring and not in gconf (Novell bug #173823)
 - Merge nm-online-header.patch into nm-0.6-branch.patch (fix is now
-  upstream) 
+  upstream)
 
 -------------------------------------------------------------------
 Sun May  7 21:29:22 CEST 2006 - jpr@suse.de
@@ -5528,12 +5720,12 @@ Tue May  2 16:56:17 CEST 2006 - rml@suse.de
 -------------------------------------------------------------------
 Tue Apr 25 20:04:46 CEST 2006 - rml@suse.de
 
-- Fix "shared/restricted" key mode (Novell bug #168250) 
+- Fix "shared/restricted" key mode (Novell bug #168250)
 
 -------------------------------------------------------------------
 Fri Apr 21 16:36:21 CEST 2006 - rml@suse.de
 
-- Use "AP_SCAN 2" for airo_cs, too (Novell bug #168308) 
+- Use "AP_SCAN 2" for airo_cs, too (Novell bug #168308)
 
 -------------------------------------------------------------------
 Thu Apr 20 18:09:33 CEST 2006 - rml@suse.de
@@ -5547,7 +5739,7 @@ Thu Apr 20 18:09:33 CEST 2006 - rml@suse.de
 Thu Apr 13 22:52:36 CEST 2006 - rml@suse.de
 
 - Install "nfs" dispatcher.d script to automatically restart NFS
-  on interface up (Novell bug #156947) 
+  on interface up (Novell bug #156947)
 
 -------------------------------------------------------------------
 Wed Apr 12 09:36:16 CEST 2006 - jg@suse.de
@@ -5573,7 +5765,7 @@ Thu Apr  6 16:15:32 CEST 2006 - rml@suse.de
 
 - Reflect active modem/ISDN connections in state.  Fixes bug where
   NM would report system as offline even if dial up connection were
-  active (Novell bug #161611) 
+  active (Novell bug #161611)
 
 -------------------------------------------------------------------
 Tue Apr  4 21:45:51 CEST 2006 - rml@suse.de
@@ -5587,7 +5779,7 @@ Wed Mar 29 21:17:42 CEST 2006 - rml@suse.de
 - Allow VPN modules to specify a per-route MSS value (bug #157988)
 - Fix possible crash in strcmp (Novell bug #162104)
 - Have NetworkManager require NetworkManager-client and have
-  NetworkManager-gnome provide NetworkManager-client (bug #158326) 
+  NetworkManager-gnome provide NetworkManager-client (bug #158326)
 
 -------------------------------------------------------------------
 Tue Mar 28 17:35:54 CEST 2006 - rml@suse.de
@@ -5609,7 +5801,7 @@ Mon Mar 27 17:01:15 CEST 2006 - rml@suse.de
 -------------------------------------------------------------------
 Sun Mar 26 19:59:13 CEST 2006 - thoenig@suse.de
 
-- Add unpackaged icons to %files gnome 
+- Add unpackaged icons to %files gnome
 
 -------------------------------------------------------------------
 Fri Mar 24 19:57:22 CET 2006 - rml@suse.de
@@ -5639,7 +5831,7 @@ Thu Mar 23 18:11:51 CET 2006 - rml@suse.de
 -------------------------------------------------------------------
 Wed Mar 22 21:02:07 CET 2006 - rml@suse.de
 
-- Properly handle "Dynamic WEP" (Novell bug #158589) 
+- Properly handle "Dynamic WEP" (Novell bug #158589)
 
 -------------------------------------------------------------------
 Tue Mar 21 19:57:38 CET 2006 - rml@suse.de
@@ -5650,7 +5842,7 @@ Tue Mar 21 19:57:38 CET 2006 - rml@suse.de
 -------------------------------------------------------------------
 Tue Mar 21 16:29:32 CET 2006 - rml@suse.de
 
-- Fix crash in parsing hex keys from sysconfig (Novell #159394) 
+- Fix crash in parsing hex keys from sysconfig (Novell #159394)
 
 -------------------------------------------------------------------
 Fri Mar 17 20:07:06 CET 2006 - rml@suse.de
@@ -5658,7 +5850,7 @@ Fri Mar 17 20:07:06 CET 2006 - rml@suse.de
 - Do not restart ypbind on NIS configuration change, just ask it
   to reload its configuration (Novell bug #159070)
 - No longer start dhcdbd, but rely on sysconfig to start it before
-  it starts NetworkManager, fixing a race (Novell bug #159125) 
+  it starts NetworkManager, fixing a race (Novell bug #159125)
 - Require sysconfig 0.50.7 or later
 
 -------------------------------------------------------------------
@@ -5675,13 +5867,13 @@ Thu Mar 16 22:48:11 CET 2006 - rml@suse.de
 -------------------------------------------------------------------
 Mon Mar 13 23:27:29 CET 2006 - rml@suse.de
 
-- Add 'Configure Networking' option that invokes YaST 
+- Add 'Configure Networking' option that invokes YaST
 
 -------------------------------------------------------------------
 Mon Mar 13 20:46:52 CET 2006 - rml@suse.de
 
 - nm-applet: Fix duplicate widgets in 'Add VPN' (Novell
-  bug #157048) 
+  bug #157048)
 - Actually apply 'nm-debug-wpa-less-rml.patch'
 
 -------------------------------------------------------------------
@@ -5696,20 +5888,20 @@ Fri Mar 10 19:35:14 CET 2006 - rml@suse.de
 
 - Don't let wpa_supplicant log keys, either (Bug #156977)
 - Orinoco tweak (Bug #144268)
-- nm-applet: add checkbox for un-hiding password entry 
+- nm-applet: add checkbox for un-hiding password entry
 
 -------------------------------------------------------------------
 Fri Mar 10 16:06:33 CET 2006 - rml@suse.de
 
 - Update to 0.6.0cvs20060310
 - Fix WPA Enterprise SEGV on successfull connect (Bug #156973)
-- Do not log WPA Enterprise password in clear text (Bug #156977) 
+- Do not log WPA Enterprise password in clear text (Bug #156977)
 
 -------------------------------------------------------------------
 Thu Mar  9 21:03:19 CET 2006 - rml@suse.de
 
 - Update to 0.6.0cvs20060309
-- Parse sysconfig encryption settings, too 
+- Parse sysconfig encryption settings, too
 
 -------------------------------------------------------------------
 Wed Mar  8 19:49:53 CET 2006 - rml@suse.de
@@ -5731,7 +5923,7 @@ Mon Mar  6 21:50:30 CET 2006 - rml@suse.de
   directory in CFLAGS.
 - Undo prism54 workarounds
 - Specifically match against "airo" for the airo driver workaround
-- Better logging for dhcdbd events 
+- Better logging for dhcdbd events
 
 -------------------------------------------------------------------
 Mon Mar  6 16:30:50 CET 2006 - rml@suse.de
@@ -5740,7 +5932,7 @@ Mon Mar  6 16:30:50 CET 2006 - rml@suse.de
 - Workarounds for prism54 wireless driver (Novell bug #148210
   and #144938)
 - Workaround for airo wireless driver
-- Improved handling of activation cancellation (Novell bug #150787) 
+- Improved handling of activation cancellation (Novell bug #150787)
 
 -------------------------------------------------------------------
 Fri Mar  3 21:42:18 CET 2006 - rml@suse.de
@@ -5758,7 +5950,7 @@ Fri Mar  3 17:26:06 CET 2006 - rml@suse.de
 - Do not scan-spam the driver on startup
 - Replace nm-madwifi-wpa-driver-rml.patch with
   nm-wireless-driver-workarounds-rml.patch
-- Misc. cleanup 
+- Misc. cleanup
 
 -------------------------------------------------------------------
 Thu Mar  2 16:32:17 CET 2006 - rml@suse.de
@@ -5779,7 +5971,7 @@ Tue Feb 28 22:48:01 CET 2006 - rml@suse.de
   "yes" (Novell bug #147703)
 - Log wpa_supplicant's responses to /var/log/NetworkManager, too
 - Don't prune the wireless network scan list too aggressively
-- Misc. WPA Enterprise clean up 
+- Misc. WPA Enterprise clean up
 
 -------------------------------------------------------------------
 Mon Feb 27 22:18:10 CET 2006 - rml@suse.de
@@ -5792,7 +5984,7 @@ Mon Feb 27 22:18:10 CET 2006 - rml@suse.de
 -------------------------------------------------------------------
 Mon Feb 27 18:28:07 CET 2006 - rml@suse.de
 
-- Own /opt/gnome/share/NetworkManager/ 
+- Own /opt/gnome/share/NetworkManager/
 
 -------------------------------------------------------------------
 Mon Feb 27 16:56:11 CET 2006 - rml@suse.de
@@ -5801,7 +5993,7 @@ Mon Feb 27 16:56:11 CET 2006 - rml@suse.de
 - WPA-Enterprise support! (Bug #134238)
 - Remove patches nm-dbus-reconnect-thoenig-03.patch and
   nm-transparent-trayicon.patch, both are now upstream
-- Log backtrace on crash 
+- Log backtrace on crash
 - Updated libnotify notification
 
 -------------------------------------------------------------------
@@ -5829,7 +6021,7 @@ Tue Feb 21 16:44:12 CET 2006 - rml@suse.de
 - Update to 0.5.1cvs20060221
 - Do not stomp on others using the default shared dbus connection
   (Fixes GNOME #326572)
-- Add libnotify notifications to nm-applet 
+- Add libnotify notifications to nm-applet
 
 -------------------------------------------------------------------
 Sun Feb 19 16:55:51 CET 2006 - aj@suse.de
@@ -5841,7 +6033,7 @@ Wed Feb 15 17:45:23 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060215
 - Fix VPN GUI dialog when successively editing entries of two
-  or more different VPN types (Novell bug #150854) 
+  or more different VPN types (Novell bug #150854)
 - Improve debugging output
 
 -------------------------------------------------------------------
@@ -5855,24 +6047,24 @@ Mon Feb 13 19:07:33 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060213
 - VPN fixes for Novell VPN
-- Fix small memory leak 
+- Fix small memory leak
 
 -------------------------------------------------------------------
 Tue Feb  7 22:25:32 CET 2006 - rml@suse.de
 
-- Always use "AP_SCAN 1" with wpa_supplicant -- madwifi needs it 
+- Always use "AP_SCAN 1" with wpa_supplicant -- madwifi needs it
 
 -------------------------------------------------------------------
 Tue Feb  7 16:48:10 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060207
-- Fix off-by-one error that broke some WEP connections (#148646) 
+- Fix off-by-one error that broke some WEP connections (#148646)
 
 -------------------------------------------------------------------
 Mon Feb  6 19:25:01 CET 2006 - rml@suse.de
 
 - Add back nm-supplicant-timeout-rml.patch when new, larger
-  timeout value 
+  timeout value
 
 -------------------------------------------------------------------
 Mon Feb  6 16:43:52 CET 2006 - rml@suse.de
@@ -5887,7 +6079,7 @@ Fri Feb  3 21:21:17 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060203
 - Do not log encryption information (per bug #147748)
-- Fix memory leak in SUSE backend 
+- Fix memory leak in SUSE backend
 
 -------------------------------------------------------------------
 Thu Feb  2 19:16:24 CET 2006 - rml@suse.de
@@ -5925,13 +6117,13 @@ Mon Jan 30 19:09:02 CET 2006 - rml@suse.de
 Fri Jan 27 16:36:13 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060127
-- Fixes #144324 
+- Fixes #144324
 
 -------------------------------------------------------------------
 Thu Jan 26 18:37:11 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060126
-- Move all non-GNOME bits out of /opt/gnome 
+- Move all non-GNOME bits out of /opt/gnome
 
 -------------------------------------------------------------------
 Wed Jan 25 21:52:03 CET 2006 - rml@suse.de
@@ -5966,13 +6158,13 @@ Mon Jan 23 17:26:07 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060123
 - Move daemons to /usr/sbin from /usr/bin (Fixes #144033)
-- Spec file tweaks 
+- Spec file tweaks
 
 -------------------------------------------------------------------
 Thu Jan 19 20:13:18 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060119
-- Respect NM_CONTROLLED flag in sysconfig 
+- Respect NM_CONTROLLED flag in sysconfig
 
 -------------------------------------------------------------------
 Wed Jan 18 19:21:57 CET 2006 - rml@suse.de
@@ -5988,40 +6180,40 @@ Wed Jan 18 19:21:57 CET 2006 - rml@suse.de
 Tue Jan 17 17:06:36 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060117
-- Fixes #143496 
+- Fixes #143496
 
 -------------------------------------------------------------------
 Mon Jan 16 18:22:43 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060116
-- Fixes #135595 
+- Fixes #135595
 - C++-sanitizes headers for thoenig
 
 -------------------------------------------------------------------
 Fri Jan 13 21:35:00 CET 2006 - rml@suse.de
 
-- Update to 0.5.1cvs20060113 
+- Update to 0.5.1cvs20060113
 
 -------------------------------------------------------------------
 Thu Jan 12 23:22:58 CET 2006 - rml@suse.de
 
-- Fix Novell #142773. 
+- Fix Novell #142773.
 
 -------------------------------------------------------------------
 Thu Jan 12 18:48:54 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060112
-- Adds WPA-1 and WPA-2 support (fixes bug #134238) 
+- Adds WPA-1 and WPA-2 support (fixes bug #134238)
 
 -------------------------------------------------------------------
 Mon Jan  9 16:38:34 CET 2006 - rml@suse.de
 
-- Update to 0.5.1cvs20060107 
+- Update to 0.5.1cvs20060107
 
 -------------------------------------------------------------------
 Mon Jan  9 15:36:50 CET 2006 - ro@suse.de
 
-- remove ExcludeArch 
+- remove ExcludeArch
 
 -------------------------------------------------------------------
 Fri Jan  6 17:36:45 CET 2006 - rml@suse.de
@@ -6033,34 +6225,34 @@ Fri Jan  6 17:36:45 CET 2006 - rml@suse.de
 Wed Jan  4 19:12:40 CET 2006 - rml@suse.de
 
 - Update to 0.5.1cvs20060104
-- Redo kernel header patch 
+- Redo kernel header patch
 
 -------------------------------------------------------------------
 Tue Dec 20 12:03:44 CET 2005 - ro@suse.de
 
-- fix build by avoiding some more kernel headers 
+- fix build by avoiding some more kernel headers
 
 -------------------------------------------------------------------
 Mon Dec 19 20:46:48 CET 2005 - rml@suse.de
 
-- Update nm-applet.desktop 
+- Update nm-applet.desktop
 
 -------------------------------------------------------------------
 Mon Dec 19 17:06:49 CET 2005 - rml@suse.de
 
-- Update Requires 
+- Update Requires
 
 -------------------------------------------------------------------
 Fri Dec 16 16:58:29 CET 2005 - rml@suse.de
 
 - Add SuSEfirewall script to dispatcher.d to recycle firewall
-  on interface change (per aj). 
+  on interface change (per aj).
 
 -------------------------------------------------------------------
 Wed Dec 14 20:40:57 CET 2005 - rml@suse.de
 
 - Write out header on resolv.conf (fixes #137762)
-- Force nm-applet.desktop permissions 
+- Force nm-applet.desktop permissions
 
 -------------------------------------------------------------------
 Mon Dec 12 18:04:55 CET 2005 - rml@suse.de
@@ -6072,13 +6264,13 @@ Mon Dec 12 18:04:55 CET 2005 - rml@suse.de
 Fri Dec  9 19:36:37 CET 2005 - rml@suse.de
 
 - Update to 0.5.1cvs20051209
-- Add Tango icons 
+- Add Tango icons
 
 -------------------------------------------------------------------
 Thu Dec  8 18:06:32 CET 2005 - rml@suse.de
 
 - Update to 0.5.1cvs20051208
-- Add networkmanager-dispatcher initscript and start it 
+- Add networkmanager-dispatcher initscript and start it
 
 -------------------------------------------------------------------
 Wed Dec  7 23:10:09 CET 2005 - rml@suse.de
@@ -6090,7 +6282,7 @@ Wed Dec  7 23:10:09 CET 2005 - rml@suse.de
 -------------------------------------------------------------------
 Thu Dec  1 22:57:24 CET 2005 - rml@suse.de
 
-- Update to 0.5.1cvs20051201.  Fixes b.n.o #134178. 
+- Update to 0.5.1cvs20051201.  Fixes b.n.o #134178.
 
 -------------------------------------------------------------------
 Tue Nov 22 13:29:07 CET 2005 - rodrigo@suse.de
@@ -6100,12 +6292,12 @@ Tue Nov 22 13:29:07 CET 2005 - rodrigo@suse.de
 -------------------------------------------------------------------
 Mon Nov 14 18:02:34 CET 2005 - rml@suse.de
 
-- Update to CVS snapshot 20051114 
+- Update to CVS snapshot 20051114
 
 -------------------------------------------------------------------
 Mon Nov  7 16:57:39 CET 2005 - thoenig@suse.de
 
-- removed 'Conflicts: dhcpcd' 
+- removed 'Conflicts: dhcpcd'
 
 -------------------------------------------------------------------
 Fri Nov  4 22:38:07 CET 2005 - rml@suse.de
@@ -6134,7 +6326,7 @@ Thu Oct 27 22:49:22 CEST 2005 - rml@suse.de
 -------------------------------------------------------------------
 Tue Oct 25 16:02:22 CEST 2005 - thoenig@suse.de
 
-- fixed duplicated '-p $RPM_BUILD_ROOT%{_sbindir}' in spec file  
+- fixed duplicated '-p $RPM_BUILD_ROOT%{_sbindir}' in spec file
 
 -------------------------------------------------------------------
 Tue Oct 25 12:14:59 CEST 2005 - thoenig@suse.de
@@ -6146,18 +6338,18 @@ Tue Oct 25 12:14:59 CEST 2005 - thoenig@suse.de
 Wed Oct 19 19:49:46 CEST 2005 - rml@suse.de
 
 - Version 0.5.1
-- Update to CVS snapshot 20051019- 
+- Update to CVS snapshot 20051019-
 
 -------------------------------------------------------------------
 Thu Oct  6 17:32:42 CEST 2005 - rml@suse.de
 
-- Update to CVS snapshot 20051004. 
+- Update to CVS snapshot 20051004.
 
 -------------------------------------------------------------------
 Thu Sep 29 17:54:04 CEST 2005 - thoenig@suse.de
 
 - nm-configure-modems-item-rml-1.patch: added absolute path for
-  invocation of gnomesu 
+  invocation of gnomesu
 
 -------------------------------------------------------------------
 Tue Sep  6 19:27:43 CEST 2005 - rml@suse.de
@@ -6173,7 +6365,7 @@ Mon Aug 22 08:56:05 CEST 2005 - gekker@suse.de
 Fri Aug  5 23:30:24 CEST 2005 - gekker@suse.de
 
 - Update to version 0.4cvs20050805
-- Fixes modem support 
+- Fixes modem support
 
 -------------------------------------------------------------------
 Mon Jul 25 22:02:36 CEST 2005 - kasievers@suse.de
@@ -6190,12 +6382,12 @@ Thu Jun 30 21:42:14 CEST 2005 - gekker@suse.de
 
 - Upate to version 0.4cvs20050630
 - Update patch for connection dialog
-- Remove patched NetworkManager.conf source 
+- Remove patched NetworkManager.conf source
 
 -------------------------------------------------------------------
 Wed Jun 29 18:24:33 CEST 2005 - gekker@suse.de
 
-- Fix DHCDBD_BINARY_PATH 
+- Fix DHCDBD_BINARY_PATH
 
 -------------------------------------------------------------------
 Tue Jun 28 22:29:15 CEST 2005 - gekker@suse.de
@@ -6203,17 +6395,17 @@ Tue Jun 28 22:29:15 CEST 2005 - gekker@suse.de
 - update to 0.4cvs20050628
 - add suspend/resume support
 - add powersave to nfb
-- change Requires for rml 
+- change Requires for rml
 
 -------------------------------------------------------------------
 Fri Jun 24 02:01:06 CEST 2005 - ro@suse.de
 
-- update to 0.4cvs20050617 
+- update to 0.4cvs20050617
 
 -------------------------------------------------------------------
 Fri Jun 24 01:55:05 CEST 2005 - ro@suse.de
 
-- search for dhcdbd also in /usr/sbin 
+- search for dhcdbd also in /usr/sbin
 
 -------------------------------------------------------------------
 Mon Jun 20 13:42:09 CEST 2005 - hare@suse.de
