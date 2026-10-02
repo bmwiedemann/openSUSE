@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct 02 04:49:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.27.2:
+  * Bug Fixes
+    - optimize release get (6707d35)
+- Update to version 1.27.1:
+  * Bug Fixes
+    - don't block deploy when Helm managed fields reconstruction
+      hits incompatible historical manifest (b684451)
+- Update to version 1.27.0:
+  * Features
+    - add --lookup-resources flag for offline lookup in render/lint
+      commands (#657) (a984242)
+    - add option LegacyNoReleaseLock to install/uninstall/rollback
+      actions (#656) (da9a86a)
+    - explain required install with no planned resource changes
+      (cdbacfd)
+    - explain required install with no planned resource changes
+      (#645) (cdbacfd)
+  * Bug Fixes
+    - create release namespace under strict RBAC,
+      --no-create-namespace flag (#662) (3d389ef)
+
+-------------------------------------------------------------------
 Sun Sep 20 05:22:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.26.2:
