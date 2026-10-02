@@ -1704,4 +1704,29 @@ ers toes by using a lock while creating the base images. By :user:`gaborbernat`.
     <comment></comment>
     <requestid>1355162</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>71ea7f95ad8debcfece3ef40d32ad8e4</srcmd5>
+    <version>21.14.2</version>
+    <time>1790974921</time>
+    <user>anag_factory</user>
+    <comment>- Update to 21.14.2
+  * Fix pyvenv.cfg getting an absolute path in python-version,
+    include-system-site-packages and the other keys that hold no
+    path when the working directory has an entry named like the
+    value, such as 3.14 for virtualenv 3.14 or true with
+    --system-site-packages
+  * Fix activation scripts running code from a virtual environment
+    path whose parent directory carries a placeholder name such as
+    __VIRTUAL_NAME__ (GHSA-8rjx-v5ww-45pp), and activate.fish
+    running commands from a path or --prompt that holds a backslash
+    before a single quote (GHSA-c947-3pg5-gm8q)
+- Update to 21.14.1
+  * No significant changes.
+- Security fixes in previous versions:
+  * CVE-2026-102925 (bsc#1283907)
+  * CVE-2026-102930 (bsc#1283904)
+  * CVE-2026-102938 (bsc#1283890)
+</comment>
+    <requestid>1381896</requestid>
+  </revision>
 </revisionlist>

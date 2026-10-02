@@ -31,7 +31,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-virtualenv%{psuffix}
-Version:        21.3.3
+Version:        21.14.2
 Release:        0
 Summary:        Virtual Python Environment builder
 License:        MIT
@@ -41,7 +41,7 @@ Source:         https://files.pythonhosted.org/packages/source/v/virtualenv/virt
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  python-rpm-macros
-Requires:       python-python-discovery >= 1.3.1
+Requires:       python-python-discovery >= 1.6
 Requires:       (python-distlib >= 0.3.7 with python-distlib < 1)
 Requires:       (python-filelock >= 3.20.3 with python-filelock < 4)
 Requires:       (python-platformdirs >= 3.9.1 with python-platformdirs < 5)
@@ -72,9 +72,6 @@ Requires:       alts
 %else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
-%endif
-%if 0%{python_version_nodots} < 38
-Requires:       python-importlib-metadata >= 6.6
 %endif
 %python_subpackages
 
@@ -119,8 +116,6 @@ donttest="test_seed_link_via_app_data"
 donttest+=" or test_py_info_cache_invalidation_on_py_info_change" # https://github.com/pypa/virtualenv/issues/2939
 # take the first wheels directory we can find, they all contain the same file
 export PIP_FIND_LINKS=$(ls -1d /usr/lib/python3.*/wheels | head -n 1)
-%pytest -k "not ($donttest)"
-donttest+=" or test_embed_wheel_versions"
 %pytest -k "not ($donttest)"
 %endif
 

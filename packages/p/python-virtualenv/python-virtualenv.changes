@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  1 10:52:07 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 21.14.2
+  * Fix pyvenv.cfg getting an absolute path in python-version,
+    include-system-site-packages and the other keys that hold no
+    path when the working directory has an entry named like the
+    value, such as 3.14 for virtualenv 3.14 or true with
+    --system-site-packages
+  * Fix activation scripts running code from a virtual environment
+    path whose parent directory carries a placeholder name such as
+    __VIRTUAL_NAME__ (GHSA-8rjx-v5ww-45pp), and activate.fish
+    running commands from a path or --prompt that holds a backslash
+    before a single quote (GHSA-c947-3pg5-gm8q)
+- Update to 21.14.1
+  * No significant changes.
+- Security fixes in previous versions:
+  * CVE-2026-102925 (bsc#1283907)
+  * CVE-2026-102930 (bsc#1283904)
+  * CVE-2026-102938 (bsc#1283890)
+
+-------------------------------------------------------------------
 Mon May 25 12:33:18 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 21.3.3
