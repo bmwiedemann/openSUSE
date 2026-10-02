@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.365: the manifest now lists 606 templates
+  (was 601), all five additions in the media-assets-02 bundle
+  * New: Flux 3 Image text to image, image edit and bounding
+    box edit, and Grok Imagine Video 1.5 Lite text to video and
+    image to video
+  * Only the checksums of the 13 index files are refreshed, so
+    they can list the five new entries; no template is dropped
+    and no preview image changes
+- No code or dependency change: the loader is byte-identical and
+  the sdist still declares no install dependencies
+
+-------------------------------------------------------------------
 Thu Oct  1 16:29:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.364: the manifest now lists 601 templates

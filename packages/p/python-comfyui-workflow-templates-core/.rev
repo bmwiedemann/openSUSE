@@ -245,4 +245,13 @@ image edits, Ming Image 01 Design image edit) and 240 refreshed
 checksums. Data only, no code or dependency change.</comment>
     <requestid>1381943</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>c3549fd42e0a0c754c8dd573f1c1ac3a</srcmd5>
+    <version>0.3.365</version>
+    <time>1790975368</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.365: manifest now lists 606 templates (was 601), all five additions in the media-assets-02 bundle - Flux 3 Image t2i/edit/bbox edit, Grok Imagine Video 1.5 Lite t2v/i2v. Only the 13 index checksums move. Preview images need media-assets-02 0.1.8, absent from Factory.
+</comment>
+    <requestid>1382140</requestid>
+  </revision>
 </revisionlist>
