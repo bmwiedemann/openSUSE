@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:45:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.8:
+  * Add MiMo-V2.6 Pro and Flash structural tags; fix empty root
+    schemas in the Qwen XML parameter-list converter
+  * Add JSONSchemaFormat.excludes to forbid substrings in
+    string values and property names, and exclude control
+    markers from Kimi-K3 tool arguments by default
+  * Improve DeepSeek V4.1 token-mask performance and bind its
+    XML string="true|false" attributes to the parameter value
+    type; cap token-mask overhead with max_chars and mask
+    overridden stop tokens until the grammar can complete
+  * Fix root object literals, schema/reference cache isolation,
+    Unicode character classes, start-state merging and nested
+    unbounded repetitions; enforce FSM state limits
+  * Warn when a JSON Schema pattern is combined with
+    minLength/maxLength, which are silently dropped
+  * Fix native binding discovery in installed packages
+  * Many more fixes; see upstream's release notes for the full
+    list
+- Require apache-tvm-ffi >= 0.1.11, upstream's new floor, and
+  setuptools-scm >= 8.1, which upstream now uses to derive the
+  version from the Git tag
+
+-------------------------------------------------------------------
 Wed Sep 16 07:24:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.7:

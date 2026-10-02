@@ -107,4 +107,13 @@ source_validator clean.</comment>
 - Require cmake &gt;= 3.18, matching cmake_minimum_required</comment>
     <requestid>1378303</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>7e454af3545944a7be588be4d5ba7220</srcmd5>
+    <version>0.2.8</version>
+    <time>1790975066</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.2.8. Requires apache-tvm-ffi &gt;= 0.1.11, the floor upstream now declares, and setuptools-scm &gt;= 8.1, which upstream added to derive the package version from the Git tag.
+</comment>
+    <requestid>1382005</requestid>
+  </revision>
 </revisionlist>
