@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct 02 09:45:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.6.4:
+  * SECURITY
+    - core: Prevent disclosure of tls_acme_eab_mac_key from
+      sys/config/state/sanitized. GHSA-3237-j65r-m5rp. [GH-4148]
+    - core/audit: The unauthenticated "Root Token Generation" and
+      "Rekey" endpoints (which are disabled by default) returned
+      their response, even if audit logging failed.
+      GHSA-q74w-hv5x-6hxf. [GH-4148]
+    - auth/approle: Ensure Secret ID cannot be used for
+      authentication after expiration but before tidy is called.
+      GHSA-7m59-mp95-w6ph. [GH-4148]
+    - auth/approle: Fix incorrect JSON-decode path when parsing
+      login requests with form data bodies. GHSA-5v22-543h-wg96.
+      [GH-4148]
+    - auth/cert: Fix omission of TLS connection propagation when
+      calculating role-based quota. GHSA-5v22-543h-wg96. [GH-4148]
+    - auth/kubernetes: Ensure Service Account JWT is validated on
+      renewal, preventing post-revoke usage. GHSA-gf3j-hm38-jhh5.
+      [GH-4148]
+  * What's Changed
+    - Publish betas into testing RPM/DEB repos (#3385 in #4074
+    - Bump ubi10-minimal from e3a5632 to 204e153 (#4129 in #4139
+    - Bump github.com/hashicorp/cap from 0.13.0 to 0.14.0 (#4133 in
+      #4144
+    - v2.7.1 - Security Fixes against release/v2.6.x (#4146 in
+      #4148
+
+-------------------------------------------------------------------
 Thu Sep 24 04:56:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.6.3:

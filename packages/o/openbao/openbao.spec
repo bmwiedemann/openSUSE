@@ -23,7 +23,7 @@
 %define short_executable_name bao
 
 Name:           openbao
-Version:        2.6.3
+Version:        2.6.4
 Release:        0
 Summary:        Manage, store, and distribute sensitive data
 License:        MPL-2.0
