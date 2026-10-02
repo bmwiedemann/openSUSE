@@ -258,4 +258,12 @@
 - Add keying</comment>
     <requestid>1286067</requestid>
   </revision>
+  <revision rev="33" vrev="5">
+    <srcmd5>4958db8b92f8cd350b423ceb4c7eb327</srcmd5>
+    <version>1.6.6</version>
+    <time>1790975342</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381341 from scarabeus_iv)</comment>
+    <requestid>1382137</requestid>
+  </revision>
 </revisionlist>

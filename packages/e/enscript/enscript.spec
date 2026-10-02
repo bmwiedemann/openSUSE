@@ -79,7 +79,7 @@ latin encodings are supported with the help of a wrapper script. ~ ~
 %patch -P 9 -p0 -b .gs
 
 %build
-  CFLAGS="%{optflags} --std=gnu99 -DPROTOTYPES -D_GNU_SOURCE -funroll-loops -Wall -fno-strict-aliasing -pipe -fstack-protector"
+  CFLAGS="%{optflags} --std=gnu99 -DPROTOTYPES -D_GNU_SOURCE -funroll-loops -Wall -fno-strict-aliasing -pipe"
   LDFLAGS=
   export CC CFLAGS LDFLAGS
   AUTOPOINT=true autoreconf --force --install
