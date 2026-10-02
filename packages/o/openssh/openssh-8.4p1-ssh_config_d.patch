@@ -38,3 +38,75 @@ Index: openssh-8.9p1/sshd_config
  
  #Port 22
  #AddressFamily any
+Index: openssh-8.9p1/sshd_config.5
+===================================================================
+--- openssh-8.9p1.orig/sshd_config.5
++++ openssh-8.9p1/sshd_config.5
+@@ -56,6 +56,19 @@ Arguments may optionally be enclosed in
+ .Pq \&"
+ in order to represent arguments containing spaces.
+ .Pp
++Note that the default configuration file shipped with SUSE distributions
++begins by including the drop-in files
++.Pa /etc/ssh/sshd_config.d/*.conf .
++Because these files are included at the start of the configuration file,
++options set there will override those in
++.Pa /etc/ssh/sshd_config .
++The files are processed in lexical order.
++To change the system-wide configuration, add a
++.Pa *.conf
++file to
++.Pa /etc/ssh/sshd_config.d
++instead of editing the configuration file itself.
++.Pp
+ The possible
+ keywords and their meanings are as follows (note that
+ keywords are case-insensitive and arguments are case-sensitive):
+@@ -2117,6 +2130,11 @@ Contains configuration data for
+ .Xr sshd 8 .
+ This file should be writable by root only, but it is recommended
+ (though not necessary) that it be world-readable.
++.It Pa /etc/ssh/sshd_config.d/*.conf
++Drop-in configuration files, included at the start of the default
++configuration file.
++Options set in these files override those in
++.Pa /etc/ssh/sshd_config .
+ .El
+ .Sh SEE ALSO
+ .Xr sftp-server 8 ,
+Index: openssh-8.9p1/ssh_config.5
+===================================================================
+--- openssh-8.9p1.orig/ssh_config.5
++++ openssh-8.9p1/ssh_config.5
+@@ -90,6 +90,19 @@ and
+ .Fl o
+ option.
+ .Pp
++Note that the default system-wide configuration file shipped with SUSE
++distributions begins by including the drop-in files
++.Pa /etc/ssh/ssh_config.d/*.conf .
++Because these files are included at the start of the configuration file,
++options set there will override those in
++.Pa /etc/ssh/ssh_config .
++The files are processed in lexical order.
++To change the system-wide configuration, add a
++.Pa *.conf
++file to
++.Pa /etc/ssh/ssh_config.d
++instead of editing the configuration file itself.
++.Pp
+ The possible
+ keywords and their meanings are as follows (note that
+ keywords are case-insensitive and arguments are case-sensitive):
+@@ -2379,6 +2392,11 @@ The format of this file is described abo
+ This file is used by the SSH client.
+ Because of the potential for abuse, this file must have strict permissions:
+ read/write for the user, and not writable by others.
++.It Pa /etc/ssh/ssh_config.d/*.conf
++Drop-in configuration files, included at the start of the default
++system-wide configuration file.
++Options set in these files override those in
++.Pa /etc/ssh/ssh_config .
+ .It Pa /etc/ssh/ssh_config
+ Systemwide configuration file.
+ This file provides defaults for those

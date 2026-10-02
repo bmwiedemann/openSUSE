@@ -178,6 +178,8 @@ Patch107:       openssh-send-extra-term-env.patch
 Patch108:       openssh-7.7p1-gssapi-new-unique.patch
 # PATCH-FIX-UPSTREAM openssh-10.5p1-sync-readpassphrase.patch mindrot#3995 yfjiang@suse.com -- Sync readpassphrase(3) with OpenBSD libc: preserve SIG_IGN so ssh-add no longer spins without a controlling tty
 Patch109:       openssh-10.5p1-sync-readpassphrase.patch
+# PATCH-FIX-UPSTREAM openssh-10.5p1-propagate-restrict-keyword.patch bsc#1275079 -- Propagate the authorized_keys "restrict" flag
+Patch110:       openssh-10.5p1-propagate-restrict-keyword.patch
 # 200..300 -- Patches submitted to upstream
 # 1000..2000 -- Conditional patches
 %if %{with crypto_policies}
@@ -389,8 +391,8 @@ PIEFLAGS="-fPIE"
 %else
 PIEFLAGS="-fpie"
 %endif
-CFLAGS="%{optflags} $PIEFLAGS -fstack-protector"
-CXXFLAGS="%{optflags} $PIEFLAGS -fstack-protector"
+CFLAGS="%{optflags} $PIEFLAGS"
+CXXFLAGS="%{optflags} $PIEFLAGS"
 LDFLAGS="-pie -Wl,--as-needed"
 #CPPFLAGS="%%{optflags} -DUSE_INTERNAL_B64"
 export LDFLAGS CFLAGS CXXFLAGS CPPFLAGS

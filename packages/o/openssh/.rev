@@ -2110,4 +2110,14 @@ So all in all: this fixes the build failures for openSUSE Tumblewee (forwarded r
     <comment>1</comment>
     <requestid>1381201</requestid>
   </revision>
+  <revision rev="210" vrev="3">
+    <srcmd5>64c548b355aed1dfb180cf219dbcf30d</srcmd5>
+    <version>10.5p1</version>
+    <time>1790974958</time>
+    <user>anag_factory</user>
+    <comment>- Update openssh-8.4p1-ssh_config_d.patch with mentions of the
+  configuration drop-in directories (bsc#1259462).
+- Add openssh-10.5p1-propagate-restrict-keyword.patch (bsc#1275079). (forwarded request 1381977 from hpjansson)</comment>
+    <requestid>1381978</requestid>
+  </revision>
 </revisionlist>

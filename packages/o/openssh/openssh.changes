@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Sep 30 21:45:12 UTC 2026 - Hans Petter Jansson <hpj@suse.com>
+
+- Update openssh-8.4p1-ssh_config_d.patch with mentions of the
+  configuration drop-in directories (bsc#1259462).
+- Add openssh-10.5p1-propagate-restrict-keyword.patch (bsc#1275079).
+
+-------------------------------------------------------------------
+Tue Sep 29 07:23:16 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS/CXXFLAGS (added 2006,
+  predates distro -fstack-protector-strong in optflags; the trailing
+  basic flag silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Fri Sep 18 00:35:10 UTC 2026 - Yifan Jiang <yfjiang@suse.com>
 
 - Backport openssh-10.5p1-sync-readpassphrase.patch: sync
