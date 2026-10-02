@@ -37,12 +37,12 @@ BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(egl)
 BuildRequires:  pkgconfig(epoxy)
 BuildRequires:  pkgconfig(gbm)
-BuildRequires:  pkgconfig(gio-2.0)
+BuildRequires:  pkgconfig(gio-2.0) >= 2.44
 BuildRequires:  pkgconfig(libdrm)
 BuildRequires:  pkgconfig(libinput)
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.7
 BuildRequires:  pkgconfig(libudev)
-BuildRequires:  pkgconfig(manette-0.2)
+BuildRequires:  pkgconfig(manette-0.2) >= 0.2.4
 BuildRequires:  pkgconfig(wayland-client)
 BuildRequires:  pkgconfig(wayland-cursor)
 BuildRequires:  pkgconfig(wayland-egl)
