@@ -73,4 +73,12 @@ Fri Aug 21 08:47:56 UTC 2026 - Martin Pluskal &lt;mpluskal@suse.com&gt;
   (upstream PyPI metadata pins torch == 2.14.0)</comment>
     <requestid>1378659</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>3c13ed91442ec0d16a74be633f09f5c1</srcmd5>
+    <version>0.29.1</version>
+    <time>1790975068</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.29.1, an upstream patch release with no user-visible changes, built against python-torch 2.14.0. Upstream relaxes its torch pin from torch==2.14.0 to torch&gt;=2.14, declaring torchvision ABI stable w.r.t. PyTorch 2.14; our &gt;=2.14.0 and &lt;2.15 bounds are unchanged and now match that.</comment>
+    <requestid>1382023</requestid>
+  </revision>
 </revisionlist>

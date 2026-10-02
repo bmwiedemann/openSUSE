@@ -17,18 +17,19 @@
 
 
 # rpm sees only unversioned libtorch_cpu.so()/libc10.so(), so nothing catches a
-# mismatched torch. libtorch's C++ ABI moves at torch minor boundaries in
-# practice (upstream guarantees none) - the granularity upstream's README matrix
-# pairs at - hence a range, not "=": a torch patch release stays installable,
-# 2.14 does not. Upstream ships PYTORCH_VERSION_GE/_LT for exactly this
-# third-party case. Not expressible in Requires-Dist: our python-torch's wheel
-# version is a pre-release string (e.g. 2.13.0a0+gitunknown), so a PEP 440
-# pin there is unsatisfiable.
+# mismatched torch. Since 0.29.1 upstream states torchvision is ABI stable w.r.t.
+# torch 2.14 and sets TORCH_MIN_VERSION=(2,14,0) plus TORCH_TARGET_VERSION=
+# 0x020e000000000000, the compiled extensions target the 2.14 ABI: a torch patch
+# release stays installable, 2.15 does not, hence a range rather than "=".
+# Upstream ships PYTORCH_VERSION_GE/_LT for exactly this third-party case, but
+# calls it best-effort and untested. Not expressible in Requires-Dist: our
+# python-torch's wheel version is a pre-release string (e.g. 2.13.0a0+gitunknown),
+# so a PEP 440 pin there is unsatisfiable.
 %define torch_ver_ge 2.14.0
 %define torch_ver_lt 2.15
 %{?sle15_python_module_pythons}
 Name:           python-torchvision
-Version:        0.29.0
+Version:        0.29.1
 Release:        0
 Summary:        Image datasets, models and transforms for PyTorch
 # Legal-Review-Notice: ships a bundled giflib 5.2.2 (MIT) under

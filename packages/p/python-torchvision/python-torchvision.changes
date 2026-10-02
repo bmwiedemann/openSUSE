@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:50:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.29.1 (built against python-torch 2.14.0):
+  * No user-visible changes; upstream ships this patch release for
+    PyTorch 2.14.1 and adds no features
+  * Upstream relaxes its metadata from torch == 2.14.0 to torch >=
+    2.14, stating torchvision is now ABI stable with respect to
+    PyTorch 2.14 (pytorch/vision#9683)
+- Keep python-torch >= 2.14.0 and < 2.15: the compiled
+  extensions still target the 2.14 ABI, which is the same
+  range upstream now documents
+
+-------------------------------------------------------------------
 Wed Sep  9 16:49:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.29.0 (needs python-torch 2.14, not yet in the tree):
