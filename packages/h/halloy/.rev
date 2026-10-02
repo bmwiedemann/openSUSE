@@ -452,4 +452,41 @@ Added:
       opened, insert nickname in the input box, or no action</comment>
     <requestid>1367888</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>645173c9ffa6276c9a5a54f18dfa2a46</srcmd5>
+    <version>2026.9</version>
+    <time>1790974987</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.9:
+Added:
+  * Animated GIFs support
+  * Keyboard-driven message focus: navigate and act on messages
+    without mouse
+    + Links and channel mentions within a message can be focused
+      and opened
+    + New buffer.focus theme color for the focused message border
+  * Smooth scrolling
+  * Support link delimiters (&lt; &amp; &gt;) with markdown formatting
+  * Ability to configure individual bouncer networks with
+    servers.&lt;name&gt;.networks.&lt;network&gt;
+  * buffer.server_messages.condense.timestamp setting to control
+    whether a condensed message shows a time range, its start
+    timestamp, its end timestamp, or no timestamp
+  * Optional font.code setting for code-formatted text
+  * buffer.nickname.offline supports &quot;dimmed&quot; / { dimmed = float },
+    and { color = &quot;theme&quot;|&quot;nickname&quot;, alpha = ...}
+    so theme offline color and dimming can be combined
+  * buffer.nickname.color_override rules for assigning colors to
+    specific nicknames
+  * Optional buffer.self_message theme style for messages sent by
+    yourself
+  * Config options buffer.channel.nicklist.scrollbar.hidden,
+    sidebar.scrollbar.hidden, and pane.scrollbar.hidden
+    that control whether the nicklist, sidebar, and in-pane
+    scrollbars respectively are enabled or not
+  * Additional setting for controlling anti-flood burst parameter
+    (servers.&lt;name&gt;.anti_flood.burst); default value has been
+    reduced from 10 to 8</comment>
+    <requestid>1381973</requestid>
+  </revision>
 </revisionlist>
