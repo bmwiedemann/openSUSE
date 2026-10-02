@@ -19,7 +19,7 @@
 
 %global goipath github.com/google/cadvisor
 Name:           cadvisor
-Version:        0.60.5
+Version:        0.60.6
 Release:        0
 Summary:        A Simple and Comprehensive Vulnerability Scanner for Containers
 License:        Apache-2.0
@@ -32,7 +32,7 @@ Source3:        sysconfig.cadvisor
 BuildRequires:  golang-packaging
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  zstd
-BuildRequires:  golang(API) = 1.26
+BuildRequires:  golang(API) = 1.27
 Requires:       ca-certificates
 Requires:       git-core
 Requires:       rpm

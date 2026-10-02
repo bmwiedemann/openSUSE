@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 14:23:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.60.6:
+  * workflows: mirror release tags to lib/ module tags
+  * fs/zfs: fall back to VFS when zfs stats are unavailable
+  * storage/stdout: nil-check Cpu, Network, and Memory stats
+  * Treat memory-only NUMA nodes as valid topology
+- update vendor.tar to fix
+  * bsc#1283657, CVE-2026-63209: cadvisor:
+    github.com/klauspost/compress: signed integer overflow in
+    s2.NewDict()
+
+-------------------------------------------------------------------
 Wed Sep  2 19:24:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to fix

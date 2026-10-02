@@ -161,4 +161,20 @@
     of authorization policies</comment>
     <requestid>1376028</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6be64d5cb923614374908ec93bf6ed1f</srcmd5>
+    <version>0.60.6</version>
+    <time>1790975349</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.60.6:
+  * workflows: mirror release tags to lib/ module tags
+  * fs/zfs: fall back to VFS when zfs stats are unavailable
+  * storage/stdout: nil-check Cpu, Network, and Memory stats
+  * Treat memory-only NUMA nodes as valid topology
+- update vendor.tar to fix
+  * bsc#1283657, CVE-2026-63209: cadvisor:
+    github.com/klauspost/compress: signed integer overflow in
+    s2.NewDict()</comment>
+    <requestid>1382134</requestid>
+  </revision>
 </revisionlist>
