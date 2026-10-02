@@ -17,7 +17,7 @@
 
 
 Name:           mihomo
-Version:        1.19.31
+Version:        1.19.32
 Release:        0
 Summary:        The universal proxy platform
 # Legal-Review-Notice: mihomo's own code is GPL-3.0-only, but the Go binary

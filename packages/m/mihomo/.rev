@@ -77,4 +77,13 @@ Built and tested locally against openSUSE_Factory/aarch64.</comment>
 </comment>
     <requestid>1378099</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>78a588f2db623ba3be33cf2ba7795130</srcmd5>
+    <version>1.19.32</version>
+    <time>1790974985</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.19.32: mips becomes the default IP stack, a load-balance hash-key pins a session to the inbound user, and the vendor tree moves ten modules (mieru 3.38.0, six metacubex bumps). The linked module set is unchanged, so the License tag stands.
+</comment>
+    <requestid>1381965</requestid>
+  </revision>
 </revisionlist>

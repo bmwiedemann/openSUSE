@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:37:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.19.32:
+  * The default IP stack is now mips, for the tun listener too
+    (#3264), and tun gains a "congestion-controller" option
+  * Add a load-balance hash-key, to pin a session to the inbound
+    user (#3133)
+  * mipstack: RX checksum offload, lazy receive buffer reads, TCP
+    options counted in the effective MSS, and unconnected-UDP and
+    raw-IP ICMP errors aligned with Linux
+  * OpenVPN: exclude the opcode from the P_DATA_V1 AEAD additional
+    data (#3237)
+  * Fix the EasyTier outbound not restarting after a silent overlay
+    failure (#3215), an anytls race in idleCleanupExpTime()
+    (#3225), a nil pconn deref when the context is cancelled
+    during h2 ClientConn setup, missing half-close handling in
+    sing-mux, no UDP InUser metadata on the mieru inbound (#3236),
+    and HWCap not being populated from auxv on Linux
+  * xhttp: extra.headers is now supported (#3230)
+  * Maintenance: mieru to v3.38.0 (#3242), plus the gvisor, utls,
+    mipstack, sing, sing-mux and sing-tun updates this vendor tree
+    carries
+
+-------------------------------------------------------------------
 Tue Sep 15 09:50:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.19.31:
