@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:41:12 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025)
+
+-------------------------------------------------------------------
 Thu Sep 17 12:34:53 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix build for Leap 16. shadowsocks-libev needs mbedtls-devel, not

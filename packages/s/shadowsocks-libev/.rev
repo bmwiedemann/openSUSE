@@ -256,4 +256,12 @@
   mbedtls-3-devel (forwarded request 1378611 from hillwood)</comment>
     <requestid>1378612</requestid>
   </revision>
+  <revision rev="30" vrev="5">
+    <srcmd5>8350cbf114a2e6503b4226c3fcd9918c</srcmd5>
+    <version>3.3.6</version>
+    <time>1790975087</time>
+    <user>anag_factory</user>
+    <comment>- Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025) (forwarded request 1382050 from hillwood)</comment>
+    <requestid>1382051</requestid>
+  </revision>
 </revisionlist>
