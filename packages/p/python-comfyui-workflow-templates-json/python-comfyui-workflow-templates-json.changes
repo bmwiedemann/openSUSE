@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.100: 606 template definitions (was 601),
+  the five additions being the ones core 0.3.365 lists
+  * Flux 3 Image text to image, image edit and bounding box
+    edit, and Grok Imagine Video 1.5 Lite text to video and
+    image to video
+- 588 of the 601 existing definitions are byte-identical; the 13
+  index files are rewritten
+  * index.mcp.json gains the five new templates and ages six
+    entries from new to recent while demoting four
+    recommendations
+  * the other 12 indexes only re-point 11 sample inputs at a
+    newer upstream asset revision
+- No code change and no dependency change
+
+-------------------------------------------------------------------
 Thu Oct  1 16:29:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.99: 601 template definitions (was 594),

@@ -212,4 +212,13 @@ each model file with its size in the download guide and the index
 entries are re-sorted. Data only, no code or dependency change.</comment>
     <requestid>1381944</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>8772fac13d6b1db9bd4335800e5f9966</srcmd5>
+    <version>0.1.100</version>
+    <time>1790975368</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.100: 606 template definitions (was 601). Five new (the ones core 0.3.365 lists), 588 of the old ones byte-identical. The 13 index files are rewritten: index.mcp.json gains the five, the other 12 only re-point 11 sample inputs at a newer asset revision.
+</comment>
+    <requestid>1382141</requestid>
+  </revision>
 </revisionlist>
