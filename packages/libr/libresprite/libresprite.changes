@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:17:47 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.3
+  * Change duplicate keybind.
+  * Add support for slower V8 initialization without the snapshot.
+  * Add path pre-verification before saving.
+  * Add invert scroll option.
+  * Fix for ui::Splitter Widget bug. #593
+  * Fix font alignment for the 'Add Text' tool. #626
+  * reduce 'unknown windowevent' stdout spam. #625
+  * Fix the first-run UI scale to be estimated based on the real
+    screen size.
+  * Extend the symmetry commands options. #644
+  * Allow removing hidden layers. #643
+  * Fix sprite height reported by crash recovery. #649
+  * Sort file type dropdown alphabetically. #653
+  * Add keyboard shortcut to toggle Tiled Mode. #652
+  * Increase max brush size limit to 256px #651
+  * Allow typing/pasting a path in the file selector's location bar
+  * Flatten layer groups when loading .ase files.
+  * Backport bugfixes from Besprited clang-tidy cleanup pass.
+  * Fix security issues: zip-slip, shell injection, codec memory
+    safety, script sandbox escapes. #668
+- Update to version 1.2
+  Scripting
+  * More scripting API functions
+  * More example scripts
+  * Voxel.js: Render your sprite's layers as a 3D object and export
+    an STL.
+  Translation
+  * LibreSprite's UI now has preliminary (machine) translations for
+    the following languages: English, Chinese, French, German,
+    Italian, Japanese, Korean, Portuguese, Spanish, Hindi,
+    Indonesian, Russian.
+  * Currently there is no support for right-to-left languages.
+  * The UI now uses a TTF font in order to render all of the special
+    characters legibly. If text looks blurry to you, make sure you
+    set the Screen Scaling to 1.
+  Pen Pressure
+  * Support has been implemented on Windows, MacOS, Linux with
+    Xinput, Android and Emscripten.
+  Bug Fixes
+  * Fixed the community quilt being way too big in the home screen.
+  * The Linux build should now run on non-glibc distros.
+
+-------------------------------------------------------------------
 Tue Jul 15 19:50:13 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Drop BuildRequires tinyxml-devel, not needed

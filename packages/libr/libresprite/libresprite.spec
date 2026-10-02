@@ -1,7 +1,7 @@
 #
 # spec file for package libresprite
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,16 +21,16 @@
 %global force_gcc_version 13
 %endif
 Name:           libresprite
-Version:        1.1
+Version:        1.3
 Release:        0
 Summary:        Animated sprite editor & pixel art tool
 License:        GPL-2.0-or-later AND MIT
 Group:          Productivity/Graphics/Bitmap Editors
-Source:         LibreSprite-%{version}.tar.bz2
+Source:         https://github.com/LibreSprite/LibreSprite/releases/download/v%version/SOURCE.CODE.+.submodules.tar.gz
 URL:            https://libresprite.github.io/
 BuildRequires:  cmake >= 3.4
-BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  fdupes
+BuildRequires:  gcc%{?force_gcc_version}-c++
 BuildRequires:  giflib-devel >= 5.1.0
 BuildRequires:  glibc-devel
 BuildRequires:  googletest-devel
@@ -47,15 +47,18 @@ BuildRequires:  pkgconfig(libpng)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(lua5.3)
 BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(sdl2)
 BuildRequires:  pkgconfig(tinyxml2)
 BuildRequires:  pkgconfig(x11)
+BuildRequires:  pkgconfig(xi)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 LibreSprite is an open source program to create animated sprites
 for websites and games.
 
 %prep
-%autosetup -p1 -n LibreSprite-%{version}
+%autosetup -c -p1 -n LibreSprite-%{version}
 
 %build
 %cmake .. -DCMAKE_CXX_COMPILER=g++%{?force_gcc_version:-%{force_gcc_version}} \
@@ -63,7 +66,7 @@ for websites and games.
           -DWITH_QT_THUMBNAILER=OFF \
           -DWITH_WEBP_SUPPORT=ON
 
-make %{?_smp_mflags}
+%cmake_build
 
 %install
 %cmake_install
@@ -76,7 +79,6 @@ install -m0644 -D data/icons/ase64.png %{buildroot}%{_datadir}/icons/hicolor/64x
 %fdupes -s %{buildroot}%{_datadir}
 
 %files
-%defattr(-,root,root)
 %doc README.md
 %license LICENSE.txt
 %{_bindir}/%{name}
