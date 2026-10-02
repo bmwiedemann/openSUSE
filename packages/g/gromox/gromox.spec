@@ -19,7 +19,7 @@
 %define _libexecdir %_prefix/libexec
 
 Name:           gromox
-Version:        3.11
+Version:        3.12
 Release:        0
 Summary:        Groupware server backend with RPC, IMAP,POP3, PHP-MAPI support
 License:        AGPL-3.0-or-later AND GPL-2.0-only AND GPL-3.0-or-later
@@ -29,8 +29,6 @@ Source:         https://github.com/grommunio/gromox/releases/download/%name-%ver
 Source2:        https://github.com/grommunio/gromox/releases/download/%name-%version/%name-%version.tar.asc
 Source8:        %name.keyring
 Source15:       debian.gromox.config
-Patch1:         0001-build-drop-D_TIME_BITS-64.patch
-Patch2:         0002-zombies.patch
 BuildRequires:  fdupes
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 BuildRequires:  gcc12-c++
