@@ -137,27 +137,35 @@ popd
 %install
 %if %{build_core}
 %make_install
-del=""
+fallback=""
+remove=""
 # shipping in latest systemd now
-del="$del nmcli udevadm"
+fallback="$fallback nmcli udevadm"
 # shipping in latest util-linux now
-del="$del cal chsh dmesg eject hexdump hwclock ionice look mount newgrp renice rtcwake su umount"
+fallback="$fallback cal chsh dmesg eject hexdump hwclock ionice look mount newgrp renice rtcwake su umount"
 # shipping in devscripts now
-del="$del bts"
+fallback="$fallback bts"
 # shipped as part of libsecret
-del="$del secret-tool"
+fallback="$fallback secret-tool"
 # Seems to be broken (boo#1161136)
-del="$del _adb"
+remove="$remove adb"
 # shipped as part of kmod
-del="$del insmod insmod.static modinfo modprobe rmmod"
+fallback="$fallback insmod insmod.static modinfo modprobe rmmod"
 # shipped as part of patchutils
-del="$del interdiff"
+fallback="$fallback interdiff"
 # shipped as part of tmux
-del="$del tmux"
+fallback="$fallback tmux"
 
-for i in $del; do
-	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions/$i"
+for i in $remove; do
+	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions-fallback/${i}.bash"
+	rm -fv "%{buildroot}%{_datadir}/bash-completion/completions-core/${i}.bash"
 done
+for i in $fallback; do
+	test -e "%{buildroot}%{_datadir}/bash-completion/completions-core/${i}.bash" || continue
+	mv -fv "%{buildroot}%{_datadir}/bash-completion/completions-core/${i}.bash" \
+	       "%{buildroot}%{_datadir}/bash-completion/completions-fallback/${i}.bash"
+done
+unset i remove fallback
 %endif
 %if %{build_doc}
 pushd doc

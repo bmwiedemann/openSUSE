@@ -698,4 +698,14 @@
     curl: more option argument (non-)completions (5099cef)</comment>
     <requestid>1381669</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>178112990f8b69e81f6adc9b0a0cca52</srcmd5>
+    <version>2.18.0</version>
+    <time>1790974913</time>
+    <user>anag_factory</user>
+    <comment>- Based on the new fallback feature: split old delete list of
+  completions in a fallback and a remove list and handle the to
+  be removed like adb and the fallbacks like bts</comment>
+    <requestid>1381879</requestid>
+  </revision>
 </revisionlist>

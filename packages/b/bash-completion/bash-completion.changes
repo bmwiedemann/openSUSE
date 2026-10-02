@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:04:18 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Based on the new fallback feature: split old delete list of
+  completions in a fallback and a remove list and handle the to
+  be removed like adb and the fallbacks like bts
+
+-------------------------------------------------------------------
 Wed Sep 30 11:58:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Update to 2.18.0:
