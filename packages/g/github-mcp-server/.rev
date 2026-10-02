@@ -193,4 +193,13 @@ dependency. Local aarch64 build green, %check runs the full offline suite
 Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
     <requestid>1378404</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>6cdc66e3ccfab7495d6231ba360f84fe</srcmd5>
+    <version>1.13.0</version>
+    <time>1790975109</time>
+    <user>anag_factory</user>
+    <comment>Update github-mcp-server to 1.13.0. MCP Apps lost its remote_mcp_ui_apps flag, so _meta.ui is emitted and the form-backed write tools defer to a form this build does not serve; --features mcp_apps_disable_form_deferral keeps them executing directly. Vendored modules unchanged, no copyleft linked.
+</comment>
+    <requestid>1382068</requestid>
+  </revision>
 </revisionlist>

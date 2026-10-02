@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:43:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.13.0:
+  * New granular tools hide and unhide issue comments, pull request
+    review comments and pull request reviews, so a minimized item
+    is restored by a dedicated call instead of a consolidated
+    write: hide_issue_comment and unhide_issue_comment in the
+    issues toolset, hide_pull_request_review_comment,
+    unhide_pull_request_review_comment, hide_pull_request_review
+    and unhide_pull_request_review in the pull requests toolset.
+  * MCP Apps is no longer behind the remote_mcp_ui_apps feature
+    flag: _meta.ui is now emitted, and the form-backed write tools
+    defer to a form this build cannot serve, since the bundled UI
+    is not built. Pass --features mcp_apps_disable_form_deferral to
+    keep them executing directly.
+  * The stdio transport now sends a versioned GitHub API user agent
+    even before the handshake, warning on stderr if none resolves.
+  * See upstream's release notes for the full list.
+- Vendored Go modules are unchanged (go.mod/go.sum identical to
+  1.12.2), so the licence audit stands: the 32 modules linked into
+  both binaries are MIT, BSD-3-Clause or Apache-2.0, no copyleft.
+
+-------------------------------------------------------------------
 Wed Sep 16 14:58:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.12.2:

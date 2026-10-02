@@ -23,7 +23,7 @@
 #   -modcacherw     leave the module cache writable so cleanup cannot fail
 %define goflags "-buildmode=pie -mod=vendor -modcacherw"
 Name:           github-mcp-server
-Version:        1.12.2
+Version:        1.13.0
 Release:        0
 Summary:        Model Context Protocol server for GitHub
 License:        MIT
@@ -114,6 +114,11 @@ Fish command line completion support for %{name}.
 # github.UIAssetsAvailable() (pkg/github/server.go), which returns false when the
 # real assets are absent. The server therefore starts and runs normally, only
 # without the optional HTML app resources; all tools and both transports work.
+# Since 1.13.0 the remote_mcp_ui_apps feature flag is gone, so _meta.ui is
+# emitted and the form-backed write tools (create_pull_request,
+# update_pull_request, issue_write) defer to a form this build does not serve
+# whenever the client advertises io.modelcontextprotocol/ui;
+# --features mcp_apps_disable_form_deferral restores direct execution.
 
 # Reproducible timestamp for the version banner. SOURCE_DATE_EPOCH is exported
 # by OBS but not by a plain rpmbuild, so fall back rather than fail the build.
