@@ -1,0 +1,22 @@
+<package name="qteletextmaker" project="openSUSE:Factory">
+  <title>A teletext page editor</title>
+  <description>QTeletextMaker is a teletext page editor with an emphasis on
+Level 2.5 enhancement editing.
+
+Features
+ * Load and save pages in TTI format.
+ * Rendering of pages in Levels 1, 1.5, 2.5 and 3.5 including
+   Local Objects and side panels.
+ * Import and export of single pages in t42, EP1 and HTT formats.
+ * Export PNG and animated GIF images of pages.
+ * Undo and redo of editing actions.
+ * Interactive X/26 Local Enhancement Data triplet editor.
+ * Editing of X/27/4 and X/27/5 compositional links to
+   enhancement data pages.
+ * Palette editor.
+ * Configurable zoom.
+ * View pages in 4:3, 16:9 pillar-box and 16:9 stretch aspect
+   ratios.
+ * View pages in mix and attribute-less monochrome modes.</description>
+  <url>https://github.com/gkthemac/QTeletextMaker</url>
+</package>

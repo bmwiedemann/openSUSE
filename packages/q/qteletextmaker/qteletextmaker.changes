@@ -1,0 +1,83 @@
+-------------------------------------------------------------------
+Mon Sep 28 18:31:01 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.0
+  Tweaks:
+  * Application icon added.
+  * Radio button added to select which side(s) the side panels are
+    on.
+  * The radio button selects if either one or two number-of-columns
+    spinbox(es) appears below. This should reduce the apparently
+    unpredictable behaviour caused by both side panels always
+    adding up to 16 columns but one side panel being any width.
+  * State of "show hex values" checkbox in palette dockwindow is
+    now saved.
+  * DRCS definitions with bit 6 unset are now shown.
+  Bug fixes:
+  * Page view would not update immediately if side panel columns
+    were changed.
+  * Page view would sometimes not update if a page with side panels
+    was loaded.
+  * A page defining side panels on "both" sides with only a 16
+    column right side panel would cause a spurious left side panel
+    of 16 columns to appear.
+  * Newly created Object Defition triplets were set to Level 2.5
+    only.
+  * Level 1.5 "different Active Position" warnings were never
+    cleared.
+
+-------------------------------------------------------------------
+Tue Dec  2 12:53:20 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.2
+  Tweaks:
+  * Added additional escape key sequences for inserting colour
+    attributes using the top row of letters on the AZERTY keyboard
+    layout.
+  * Added "select all".
+  * Better handling of corrupted X/26 enhancement triplets in
+    t42 files.  Triplets that have failed Hamming decoding are now
+    explicitly shown as such in the X/26 enhancement list.
+  Bug fixes:
+  * A PNG image exported in Mix mode would not have transparency.
+  * An animated GIF image exported in Mix mode had flashing text
+    that would not flash to transparent.
+
+-------------------------------------------------------------------
+Sun Oct 26 16:03:31 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.8.1
+  Bug fixes:
+  * Some window/dockwindow layouts would cause the central page
+    editing widget to get "lost" or severely shrunk into the
+    corner of the window on the next startup. 30bff43
+  * Deeper zoom settings were not applied correctly on the next
+    startup. 07abbdf
+  Tweak:
+  * A new option to clear the list of most recently opened files.
+  Build tweak:
+  * Ensure the decoder and the GIF writer are built in.
+- Update to version 0.8.0
+  New features:
+  * Support for rendering DRCS characters.
+  * DRCS downloading pages with PTUs can be loaded into the editor
+    using the "DRCS pages" submenu within the "View" menu.
+    + Added a dockwindow for editing Level 3.5 DCLUTs.
+    + An image of the shown subpage can be copied to the clipboard.
+      This can be found as "Copy as image" in the "Edit" menu.
+  Tweaks:
+  * Improved rendering of G0 capital letters with diacritical
+    marks.
+  * The border around the page is the native GUI colour instead
+    of blue.
+  Bug fixes:
+  * Exported images now have working transparency.
+  * Exporting to the zxnet editor now includes the page region.
+  Build changes for *nix:
+  * .desktop file installed.
+  * Don't put a spurious qt.conf in the bin directory.
+
+-------------------------------------------------------------------
+Fri Oct  3 13:28:03 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Initial package, version 0.7.2
