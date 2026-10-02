@@ -17,7 +17,7 @@
 
 
 Name:           ms-gsl
-Version:        5.0.0
+Version:        5.0.1
 Release:        0
 Summary:        Guidelines Support Library
 License:        MIT

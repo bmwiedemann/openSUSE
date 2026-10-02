@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Sep 22 18:14:51 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to upstream version 5.0.1:
+  * cherrypicks to rel/5.0 in preparation for a 5.0.1 release
+    by Carson Radtke (@carsonRadtke) in #1276
+    - Let dyn_array_iterator convert to its const_iterator
+      by Jeff Lenamon (@lenamonj) in #1271
+    - Complete the random access iterator interface of dyn_array_iterator
+      by Jeff Lenamon (@lenamonj) in #1272
+
+-------------------------------------------------------------------
 Wed Aug 26 17:33:16 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to upstream version 5.0.0:
