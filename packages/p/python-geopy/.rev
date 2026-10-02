@@ -216,4 +216,12 @@
     <comment>1</comment>
     <requestid>1376224</requestid>
   </revision>
+  <revision rev="25" vrev="2">
+    <srcmd5>fcda29d46804581897f4e2ed38bf8d10</srcmd5>
+    <version>2.5.0</version>
+    <time>1790975080</time>
+    <user>anag_factory</user>
+    <comment>Require pytest-asyncio &gt;= 1.0. geopy 2.5.0 configures a class-scoped event loop for module-level async tests, which pytest-asyncio 0.x rejects during setup; 1.0 dropped that check (gh#1112). Leap 16.x, which has 0.26.0, now reads unresolvable instead of failing 49 tests.</comment>
+    <requestid>1382044</requestid>
+  </revision>
 </revisionlist>

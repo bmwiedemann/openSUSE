@@ -39,7 +39,12 @@ BuildRequires:  %{python_module geographiclib < 3}
 BuildRequires:  %{python_module geographiclib >= 1.52}
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pytest >= 3.10}
-BuildRequires:  %{python_module pytest-asyncio >= 0.17}
+# geopy's pytest.ini asks for a class-scoped event loop, but its async tests
+# are module-level functions with no enclosing pytest Collector at class
+# scope. pytest-asyncio 0.x errored out on exactly that condition and took the
+# whole suite with it; 1.0 dropped the check (upstream gh#1112). Upstream's
+# setup.cfg still declares >= 0.17, too low for its own test configuration.
+BuildRequires:  %{python_module pytest-asyncio >= 1.0}
 BuildRequires:  %{python_module pytz}
 BuildRequires:  %{python_module xml}
 # /SECTION

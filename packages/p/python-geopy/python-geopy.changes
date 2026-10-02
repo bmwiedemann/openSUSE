@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  2 07:49:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Require python-pytest-asyncio >= 1.0: geopy configures a
+  class-scoped event loop for module-level async tests, which
+  pytest-asyncio 0.x rejects during setup; that check was
+  dropped in 1.0 (gh#1112). Upstream's setup.cfg still declares
+  >= 0.17
+
+-------------------------------------------------------------------
 Thu Sep  3 17:42:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.5.0:
