@@ -378,4 +378,12 @@
   * Replace %python_install with %pyproject_install</comment>
     <requestid>1336623</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>ace7ab6fbe04b8d3d4d848f6313ea598</srcmd5>
+    <version>4.0.0</version>
+    <time>1790974917</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381890</requestid>
+  </revision>
 </revisionlist>

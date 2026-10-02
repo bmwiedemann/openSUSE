@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct  1 06:06:43 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 4.0.0 (bsc#1283526, CVE-2026-49264, bsc#1283527, CVE-2026-49265)
+  OAuth2.0 Provider:
+  * Breaking: #951: Removed JSONP support from token revocation endpoint.
+  * Breaking: #919, #920: Fixed DeviceCodeGrant.validate_token_request
+    trying to authenticate public clients. Client authentication validation
+    has been reorganized and is now shared across AuthorizationCodeGrant,
+    DeviceCodeGrant, RefreshTokenGrant and ResourceOwnerPasswordCredentialsGrant:
+    the grant_type parameter is validated before client authentication, so
+    requests missing grant_type now return 400 invalid_request instead of
+    401 invalid_client.
+  * #963: Improved PKCE code comparison
+  Misc:
+  * #904: Stop installing examples into site-packages.
+  * #930: Add Python3.14, Python3.14t.
+  * #932: Dropped EOL Python 3.8 from CI.
+
+-------------------------------------------------------------------
 Mon Jun 30 09:16:42 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.3.1
