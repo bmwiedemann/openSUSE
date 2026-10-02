@@ -1,4 +1,274 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:16:05 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
+
+- Update to 9.2.1161:
+  9.2.0958: Vim9: wrong type for the rest of a tuple in an unpack assignment
+  9.2.0959: tests: Test_xrestore() is flaky and cannot recover
+  9.2.0960: double-free in string_reduce()
+  9.2.0961: base64_encode() gives wrong result for a zero byte
+  9.2.0962: popup images are not using the kitty protocol properly
+  9.2.0963: crash when sound-folding a crafted spell file
+  9.2.0964: 'isprint' is applied to the leading byte of a character
+  9.2.0965: GTK4: blurry text rendering
+  9.2.0966: GTK4: window opens two lines too small
+  9.2.0967: hit-enter prompt eats keys from a running mapping
+  9.2.0968: status line height is wrong after exchanging or rotating windows
+  9.2.0969: runtime(shaderslang): matchit % breaks on braces
+  9.2.0970: buffered listener cannot obtain the text of a change
+  9.2.0971: "=~" and the match functions compile their pattern on every call
+  9.2.0972: extend() family does not accept a blob
+  9.2.0973: Vim9: internal error when a class member is initialized with a closure
+  9.2.0974: tests: Test_clientserver_serverlist_list() is flaky
+  9.2.0975: Vim9: assignment to a member of an object member fails
+  9.2.0976: Vim9: line continuation for command arguments is undocumented
+  9.2.0977: tests: test_terminal_visual_empty_listchars() is flaky
+  9.2.0978: terminal: empty lines don't use the background color of hl-terminal
+  9.2.0979: terminal: mouse stays enabled after Vim is killed with SIGTERM
+  9.2.0980: runtime(netrw): prioritize g:netrw_home on Neovim
+  9.2.0981: substitute: wrong text after undo of a confirmed \r
+  9.2.0982: tests: test_substitute leaves swapfiles behind
+  9.2.0983: 'laststatus' is ignored when creating a full-height vertical split
+  9.2.0984: runtime(zip): cannot adjust zip command line
+  9.2.0985: Multiline messages not visible when mapping starts cmdline
+  9.2.0986: long options are accepted with a trailing garbage
+  9.2.0987: heap-buffer-overflow in spell_suggest()
+  9.2.0988: tests: Test_terminal_csi_resize_oob() returns early
+  9.2.0989: libvterm: hang when rendering REP with no preceding char
+  9.2.0990: libvterm: crash when a scroll region outlives a resize
+  9.2.0991: autocmd: events are triggered for what happened while they were ignored
+  9.2.0992: popup filter gets the key at the hit-enter prompt
+  9.2.0993: runtime(netrw): error when parent dir of g:netrw_home doesn't exist
+  9.2.0994: Vim9: No error for :open during compilation
+  9.2.0995: tests: no check that g:netrw_home has higher priority than $MYVIMDIR
+  9.2.0996: debugger: crash when evaluating a variable in a :def function frame
+  9.2.0997: ch_sendexpr() cannot answer a request named with a string id
+  9.2.0998: Reject non-string-literal arguments to STRLEN_LITERAL
+  9.2.0999: serverlist() fails when there is no connection to the server
+  9.2.1000: Vim9: listener_add() fails when given only a callback
+  9.2.1001: complete_info() does not report the item highlight groups
+  9.2.1002: filetype: bazelrc files are not recognized
+  9.2.1003: popup: border is not shown when the popup does not fit
+  9.2.1004: a completion function cannot tell why it was called
+  9.2.1005: backupcopy=auto overwrites a file in place with umask
+  9.2.1006: fold functions do not accept window id
+  9.2.1007: fuzzy completion list wrongly sorted after complete()
+  9.2.1008: Vim9: hang when a line break is used before "->("
+  9.2.1009: duplicate dict code in ins_compl_dict_alloc()
+  9.2.1010: compile error when folding feature is disabled
+  9.2.1011: [security]: arbitrary Ex command execution during C omni-completion
+  9.2.1012: tests: no enough testing for complete_info() "auto"
+  9.2.1013: [security]: out-of-bounds access in libvterm CSI 8 t resize
+  9.2.1014: [security]: overflow in undo file entry size check on 32-bit arch
+  9.2.1015: Vim9: v:errmsg is set while looking ahead at a command
+  9.2.1016: tests: viminfo bar line length overflow test fails under ASAN
+  9.2.1017: heap-use-after-free in ml_open_file()
+  9.2.1018: filetype: radvd config files are not recognized
+  9.2.1019: completion asked for during 'autocompletedelay' looks automatic
+  9.2.1020: autocmd: crash when 'eventignore' is changed while it is being set
+  9.2.1021: GTK: Cursor blinks irregularly
+  9.2.1022: popup: width changes while scrolling
+  9.2.1023: GvimExt: destructors of polymorphic classes are not virtual
+  9.2.1024: 'wildmode' list:full does not complete first match
+  9.2.1025: NFA regexp matching is slower than necessary
+  9.2.1026: heap-use-after-free via DiffUpdated autocommand
+  9.2.1027: runtime(helptoc): FuzzySearch() highlights matched characters at the wrong column
+  9.2.1028: redraw: cursor is left in the wrong place with an operator pending
+  9.2.1029: NFA regexp matching is slower than necessary
+  9.2.1030: using wrong printing font with pango
+  9.2.1031: 'wildmode' list:full does not show 'wildmenu'
+  9.2.1032: scrolling moves cursor up with 'scrolloffpad'
+  9.2.1033: session: sourcing fails on lambdas
+  9.2.1034: NFA regexp matching is slow for ASCII text
+  9.2.1035: filetype: Github citation files are not recognized
+  9.2.1036: syntax highlighting is slower than necessary
+  9.2.1037: crash when slicing a range() list with too many items
+  9.2.1038: CursorLineFold/Sign highlighting depends on 'cursorlineopt'
+  9.2.1039: MS-Windows: Unix domain socket channels fail
+  9.2.1040: matchfuzzypos() can be improved
+  9.2.1041: vim_strbyte() can be improved
+  9.2.1042: sign: placing many signs is slower than necessary
+  9.2.1043: matchlist() allocates empty strings for unmatched submatches
+  9.2.1044: Vim script execution is slower than necessary
+  9.2.1045: runtime(netrw): raises E46 when changing directory fails
+  9.2.1046: regex: case-insensitive match fails on multi-byte string with re=1
+  9.2.1047: Copying a List is slower than necessary
+  9.2.1048: session: syntax error when restoring session
+  9.2.1049: Cannot use the stdin and stdout of Vim as a channel
+  9.2.1050: tests: test_suspend() fails on Solaris
+  9.2.1051: getdigits() overflow behaviour is not portable
+  9.2.1052: filetype: evcxr history files are not recognized
+  9.2.1053: libvterm: characters can get a different width in a terminal window
+  9.2.1054: Virtual Replace mode: BS over multi-byte text eats the padding
+  9.2.1055: Vim9: a lambda with a block body fails to compile after error
+  9.2.1056: terminalprops() does not report a direct color terminal
+  9.2.1057: backtracking engine stack push is slower than necessary
+  9.2.1058: string_reduce() leaves a stale funccall on error
+  9.2.1059: keys(), values() and items() are slower than necessary
+  9.2.1060: always equalize windows when 'equalalways' is set
+  9.2.1061: computing the displayed width of a line is slower than necessary
+  9.2.1062: getbufline() is slower than necessary
+  9.2.1063: Coverity: possible NULL deref after list_find()
+  9.2.1064: Coverity: possible integer underflow in barline_parse()
+  9.2.1065: possible heap-use-after-free in ml_setname()
+  9.2.1066: tests: GUI shell resize can land in the middle of a test
+  9.2.1067: Completion shows an included file by full path
+  9.2.1068: regexp: NFA_MAX_BRACES is defined but unused
+  9.2.1069: duplicated composing character matching in the NFA engine
+  9.2.1070: Other channels are not read while waiting for a response on one
+  9.2.1071: Session creates spurious simplified mappings
+  9.2.1072: runtime(synload): recursion error when setting ft=syntax
+  9.2.1073: MS-Windows: testing.obj and sound.obj are not rebuilt on header changes
+  9.2.1074: popup: image stays on the screen in another tab page
+  9.2.1075: :write fails when a BufWritePre autocmd changes directory
+  9.2.1076: Regenerate prototypes using "//" comments
+  9.2.1077: GUI: gui_mch_wait_for_chars() takes an int on some systems
+  9.2.1078: MS-Windows: warning for a size_t to int conversion in insexpand.c
+  9.2.1079: GTK4: popup image stays on the screen when the text scrolls
+  9.2.1080: filetype: not all crontab files are recognized
+  9.2.1081: memory leak in f_setmatches()
+  9.2.1082: use-after-free when appending a new list fails
+  9.2.1083: timers stop after nonconsecutive callback errors
+  9.2.1084: Cannot check a script without executing it
+  9.2.1085: Coverity: dereference after NULL check in popupwin.c
+  9.2.1086: Coverity: unchecked return value in get_buffer_lines()
+  9.2.1087: Coverity: unchecked return value in um_add_prop()
+  9.2.1088: Coverity: unchecked return value in compile_load_lhs_with_index()
+  9.2.1089: Coverity: unchecked return value in mch_get_cmd_output_direct()
+  9.2.1090: [security]: ex command injection in sign jump
+  9.2.1091: memory leak for 'completeslash' on MS-Windows
+  9.2.1092: tests: Test_sign_jump_name_with_bar fails on MS-Windows
+  9.2.1093: unnecessary PROTO checks
+  9.2.1094: Vim9: a name with an underscore is taken as argument
+  9.2.1095: popup attribute blending code is duplicated
+  9.2.1096: NFA regexp engine copies submatches slowly without captures
+  9.2.1097: 'splitkeep' causes a spurious scroll
+  9.2.1098: MS-Windows: temp file names can collide
+  9.2.1099: diff mode redraws slowly with many changes
+  9.2.1100: NFA regexp engine does not inline copy_sub()
+  9.2.1101: modifier_len() scans the whole command modifier table
+  9.2.1102: listener_add() reports a joined line as it was before the join
+  9.2.1103: regexp compilation decodes ASCII bytes as multi-byte
+  9.2.1104: Vim9: some builtin functions have an imprecise return type
+  9.2.1105: tests: Test_lsp_incomplete_message_while_blocked fails on macOS
+  9.2.1106: GTK4: cell edges are blurry with fractional scaling
+  9.2.1107: getregionpos() is slow when only the region bounds are needed
+  9.2.1108: Scrolling recomputes the height of every visible line
+  9.2.1109: Popup image is drawn over a popup with a higher zindex
+  9.2.1110: regexp NFA compilation reallocates scratch buffers each time
+  9.2.1111: Crash in a zero-width window with a status line
+  9.2.1112: set_indent() adjusts text properties without any present
+  9.2.1113: use-after-free and memory leak in serverSendToVim()
+  9.2.1114: Visual selection is not highlighted at the cursor position
+  9.2.1115: ml_updatechunk() rescans all chunks on every line update
+  9.2.1116: 'tagfunc' not used for tag completion
+  9.2.1117: tests: test_clientserver fails on a pure X11 display
+  9.2.1118: GTK4: draw area size not updated
+  9.2.1119: 'fillchars' "vert" does not fall back to the default
+  9.2.1120: tests: Test_lsp_incomplete_message_while_blocked is flaky on macOS
+  9.2.1121: not enough tests for 'tagfunc'
+  9.2.1122: ":silent make" leaves the window blank until CTRL-L
+  9.2.1123: computing line width is slower than necessary
+  9.2.1124: unhandled NULL deref in exec_instructions()
+  9.2.1125: missing check for invalid "syntax iskeyword" value
+  9.2.1126: virtual text breaks cursor movement when 've' is set
+  9.2.1127: filetype: Gentoo portage config files are not recognized
+  9.2.1128: filetype: icalendar files are not recognized
+  9.2.1129: out of bounds read in the 'complete' F{func} callbacks
+  9.2.1130: Vim9: assigning a Number to $VAR or @r is not an error
+  9.2.1131: matching character ranges is slow with the bt re-engine
+  9.2.1132: skip condition not considered for certain commands
+  9.2.1133: tests: test_lua leaves swapfiles behind
+  9.2.1134: regexp: case-insensitive [a-z]/[A-Z] miss folded characters
+  9.2.1135: tests: test_modeless leaves swapfiles behind
+  9.2.1136: Vim9: cannot change an item of a read-only v: variable in :def
+  9.2.1137: blob2list() can be improved
+  9.2.1138: dict2list() can be improved
+  9.2.1139: list2blob() can be improved
+  9.2.1140: Vim9: :def in legacy script can create a script variable
+  9.2.1141: JSON encoding can be improved
+  9.2.1142: Vim9: line in :def starting with a quote mistaken for heredoc
+  9.2.1143: text property continuation wrong after undo/redo
+  9.2.1144: Vim9: indexing a member of a dict<any> is slow
+  9.2.1145: repeat() can cause an integer overflow
+  9.2.1146: Vim9: an object can be indexed with a number
+  9.2.1147: buffer overflow with composing chars in the higher planes
+  9.2.1148: duplicated code when copying a modeless selection
+  9.2.1149: crash when reading a truncated spell file
+  9.2.1150: Lua: negative Blob index is not handled
+  9.2.1151: reading before the linemap array with inline:word diff
+  9.2.1152: not enough room for newlines in a modeless selection
+  9.2.1153: deepcopy() drops null items
+  9.2.1154: tests: invalid 'B' flag passed to writefile()
+  9.2.1155: Vim9: no unreachable error when every branch returns
+  9.2.1156: Missing search stat with semicolon and no trailing slash
+  9.2.1157: Vim9: a lambda called after a constant operand is not callable
+  9.2.1158: sourcing a buffer drops the line after 248 bytes
+  9.2.1159: :append in a block that is not executed reads its text as commands
+  9.2.1160: no way to get the definition of item from Vim script
+  9.2.1161: the image feature can be improved
+
+-------------------------------------------------------------------
+Sun Aug 16 13:35:59 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Update to 9.2.0957:
+  9.2.0902: Vim9: iterating over a tuple leaks memory
+  9.2.0903: Vim9: cannot use an exported function of an autoload import
+  9.2.0904: "zb" scrolls incorrectly with cursor just above fold
+  9.2.0905: MS-Windows: ghost cursor with ligatures
+  9.2.0906: slow transstr() with long strings
+  9.2.0907: popup: virtual text is not redrawn when a text property changes
+  9.2.0908: cannot use a {} block in a nested :autocmd
+  9.2.0909: insert completion is slow to collect many matches
+  9.2.0910: runtime(vim): Update syntax, contain Ex commands
+  9.2.0911: makefiles do not build hardcopy_postscript.c
+  9.2.0912: hardcopy: prototypes are hand-written instead of generated
+  9.2.0913: statusline: cell below the vertical separator keeps the old highlight
+  9.2.0914: diff: undo after :diffget into an empty buffer leaves a line behind
+  9.2.0915: tests: two terminal tests in test_popupwin fail on FreeBSD
+  9.2.0916: configure: honor `--disable-hardcopy-pango` with GTK UI
+  9.2.0917: :quitall not allowed in the command-line window
+  9.2.0918: screen: fill char with a zero low byte is stored as a NUL cell
+  9.2.0919: screen: the wrong array is copied into ScreenCols on a resize
+  9.2.0920: filetype: json-ld files are not recognized
+  9.2.0921: test: terminal tests fail on FreeBSD
+  9.2.0922: Wayland: modeless selection not redrawn
+  9.2.0923: tabpage: closing a tab page loses the alternate tab page
+  9.2.0924: tests: Test_termwinscroll() fails on FreeBSD
+  9.2.0925: crash when getcompletiontype() gets a NULL string
+  9.2.0926: filetype: Business Central files are not recognized
+  9.2.0927: curswant not set on 8g8
+  9.2.0928: MinGW: tests hang when Vim is built with coverage enabled
+  9.2.0929: incorrect completion for 'pumopt' and 'pumborder'
+  9.2.0930: floating point exception when displaying pum
+  9.2.0931: the GTK4 GUI is still experimental and untested by CI
+  9.2.0932: NFA engine fallback can double free the compiled program
+  9.2.0933: u_read_undo() leaks the file name when the undo file owner differs
+  9.2.0934: filetype: hlsl files are not recognized
+  9.2.0935: reading an undo file is slow with many undo headers
+  9.2.0936: stringifying a list or dict can free the item being iterated
+  9.2.0937: sort() with a numeric option converts each item on every comparison
+  9.2.0938: cursorbind: cursor in the other window is not updated after undo
+  9.2.0939: mbyte: wrong cell count for an overlong UTF-8 sequence
+  9.2.0940: GTK4: columns are lost when a scrollbar appears
+  9.2.0941: tests: clipboard tests fail in the GUI when the terminal has no clipboard
+  9.2.0942: test: test_mksession_winpos() fails on GTK4 UI
+  9.2.0943: test: test_hardcopy fails on GTK4 UI
+  9.2.0944: test: tests fail when checking for GTK4 feature
+  9.2.0945: sort() with a numeric option can be improved
+  9.2.0946: GTK2/3: mouse move starts Visual selection after a dialog
+  9.2.0947: GTK4: screen is cleared when moving the mouse after startup
+  9.2.0948: GTK4: mouse move starts Visual selection after a dialog
+  9.2.0949: GDK_KEY_VoidSymbol might be undefined
+  9.2.0950: transstr() can be improved (after 9.2.0906)
+  9.2.0951: GTK3: cursor does no longer blink
+  9.2.0952: locking a container while stringifying can be improved
+  9.2.0953: insert completion code can be improved
+  9.2.0954: u_read_undo() can be improved (after 9.2.0935)
+  9.2.0955: tests: terminal tests are flaky
+  9.2.0956: GTK4: crash when the window is resized while redrawing
+  9.2.0957: filetype: ArgoCD config file is not recognized
+
+-------------------------------------------------------------------
 Sun Aug  9 22:30:32 UTC 2026 - C Aasted <dezzadk@gmail.com>
 
 - gvim.desktop: Remove deprecated values

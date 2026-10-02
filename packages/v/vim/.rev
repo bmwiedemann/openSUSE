@@ -8564,4 +8564,41 @@ always built-in because vim has direct perl dependencies anyway.
     <comment></comment>
     <requestid>1371065</requestid>
   </revision>
+  <revision rev="407" vrev="1">
+    <srcmd5>e691dcee93e1aaa196c91fa5627aaaa7</srcmd5>
+    <version>9.2.1161</version>
+    <time>1790974905</time>
+    <user>anag_factory</user>
+    <comment>- Update to 9.2.1161:
+  9.2.0958: Vim9: wrong type for the rest of a tuple in an unpack assignment
+  9.2.0959: tests: Test_xrestore() is flaky and cannot recover
+  9.2.0960: double-free in string_reduce()
+  9.2.0961: base64_encode() gives wrong result for a zero byte
+  9.2.0962: popup images are not using the kitty protocol properly
+  9.2.0963: crash when sound-folding a crafted spell file
+  9.2.0964: 'isprint' is applied to the leading byte of a character
+  9.2.0965: GTK4: blurry text rendering
+  9.2.0966: GTK4: window opens two lines too small
+  9.2.0967: hit-enter prompt eats keys from a running mapping
+  9.2.0968: status line height is wrong after exchanging or rotating windows
+  9.2.0969: runtime(shaderslang): matchit % breaks on braces
+  9.2.0970: buffered listener cannot obtain the text of a change
+  9.2.0971: &quot;=~&quot; and the match functions compile their pattern on every call
+  9.2.0972: extend() family does not accept a blob
+  9.2.0973: Vim9: internal error when a class member is initialized with a closure
+  9.2.0974: tests: Test_clientserver_serverlist_list() is flaky
+  9.2.0975: Vim9: assignment to a member of an object member fails
+  9.2.0976: Vim9: line continuation for command arguments is undocumented
+  9.2.0977: tests: test_terminal_visual_empty_listchars() is flaky
+  9.2.0978: terminal: empty lines don't use the background color of hl-terminal
+  9.2.0979: terminal: mouse stays enabled after Vim is killed with SIGTERM
+  9.2.0980: runtime(netrw): prioritize g:netrw_home on Neovim
+  9.2.0981: substitute: wrong text after undo of a confirmed \r
+  9.2.0982: tests: test_substitute leaves swapfiles behind
+  9.2.0983: 'laststatus' is ignored when creating a full-height vertical split
+  9.2.0984: runtime(zip): cannot adjust zip command line
+  9.2.0985: Multiline messages not visible when mapping starts cmdline
+  9.2.0986: long options are accepted with a trailing garbage</comment>
+    <requestid>1381870</requestid>
+  </revision>
 </revisionlist>
