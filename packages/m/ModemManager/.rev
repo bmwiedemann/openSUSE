@@ -1078,4 +1078,21 @@
    - cinterion: allow spaces in ^SXRAT response (forwarded request 1301380 from pevik)</comment>
     <requestid>1301468</requestid>
   </revision>
+  <revision rev="94" vrev="2">
+    <srcmd5>3b16c4f07c9d4e5b98c6650ed22879fd</srcmd5>
+    <version>1.24.2</version>
+    <time>1790974871</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+      . dell: new plugin for Dell rebranded devices from Novatel,
+      . huawei: use static IP addressing in NDISDUP capable devices
+  + Existing features backported to 1.4.x releases also present in
+      . Implemented support for disconnection status notification
+      . If online mode fails, use 'DMS Set FCC Authentication',
+        required by some rebranded Sierra modems (e.g. Dell branded
+        . added support for new devices, like HE910, UE910 and
+      . mbm: implemented GPS support for Ericsson HS2350 and</comment>
+    <requestid>1381736</requestid>
+  </revision>
 </revisionlist>

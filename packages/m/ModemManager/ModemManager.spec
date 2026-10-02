@@ -44,12 +44,12 @@ BuildRequires:  pkgconfig(gio-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gmodule-2.0) >= %{glib_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib_version}
-BuildRequires:  pkgconfig(gudev-1.0) >= 147
+BuildRequires:  pkgconfig(gudev-1.0) >= 232
 BuildRequires:  pkgconfig(libsystemd) >= 209
 BuildRequires:  pkgconfig(mbim-glib) >= 1.32.0
 BuildRequires:  pkgconfig(polkit-gobject-1) >= 0.97
 BuildRequires:  pkgconfig(qmi-glib) >= 1.36.0
-BuildRequires:  pkgconfig(qrtr-glib)
+BuildRequires:  pkgconfig(qrtr-glib) >= 1.0.0
 BuildRequires:  pkgconfig(systemd)
 BuildRequires:  pkgconfig(udev)
 # Needed for tests
