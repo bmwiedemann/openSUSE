@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:44:54 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025) 
+
+-------------------------------------------------------------------
 Thu Sep 17 12:55:21 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.25.0
@@ -12,6 +17,8 @@ Thu Sep 17 12:55:21 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
     HTTP/HTTPS hops will emit a startup warning and UDP traffic will bypass the chain.
   * socket2::Socket with socket2::SockRef
   * Fix bugs
+    * CVE-2026-25541 and boo#1274441
+    * CVE-2026-93599, CVE-2026-93602, CVE-2026-93601, CVE-2026-93600 and boo#1282208
     * CVE-2026-25541 and boo#1274441
 
 -------------------------------------------------------------------
@@ -190,7 +197,7 @@ Mon Sep 25 14:02:49 UTC 2023 - Hillwood Yang <hillwood@opensuse.org>
 
 - Update version to 1.16.2
   * Fix bugs
-- Update vendor, fix boo#1215658 CVE-2023-42811
+- Update vendor, fix boo#1215658 and CVE-2023-42811
 
 -------------------------------------------------------------------
 Wed Jun 21 17:34:03 UTC 2023 - Andreas Schwab <schwab@suse.de>

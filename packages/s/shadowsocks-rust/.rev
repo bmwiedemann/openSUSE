@@ -208,4 +208,14 @@
   * Fix some issues (CVE-2025-3416, boo#1242615) (forwarded request 1378617 from hillwood)</comment>
     <requestid>1378618</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>9dacb943b9b1be20973a0d2df44b3b12</srcmd5>
+    <version>1.25.0</version>
+    <time>1790975090</time>
+    <user>anag_factory</user>
+    <comment>* CVE-2026-93599, CVE-2026-93602, CVE-2026-93601, CVE-2026-93600 and boo#1282208
+    * CVE-2026-25541 and boo#1274441
+- Update vendor, fix boo#1215658 and CVE-2023-42811 (forwarded request 1382086 from hillwood)</comment>
+    <requestid>1382087</requestid>
+  </revision>
 </revisionlist>

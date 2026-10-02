@@ -21,7 +21,7 @@ require {
     class chr_file { read getattr open };
     class unix_dgram_socket { create connect sendto };
 
-    class capability { sys_resource };
+    class capability { sys_resource net_bind_service};
     class file { read open getattr write create unlink entrypoint map execute ioctl lock }; 
     class fifo_file { getattr read write ioctl };
     class dir { search getattr write add_name remove_name read };
@@ -77,7 +77,7 @@ allow shadowsocks_rust_t self:udp_socket { create bind getattr setattr read writ
 # ===================================================================
 # Core Kernel Capabilities
 # ===================================================================
-allow shadowsocks_rust_t self:capability { sys_resource };
+allow shadowsocks_rust_t self:capability { sys_resource net_bind_service};
 
 # ===================================================================
 # Plugin Execution Rules (SIP003 Plugins like v2ray-plugin)
