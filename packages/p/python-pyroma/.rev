@@ -84,4 +84,21 @@
     exactly correct, including capitalization.</comment>
     <requestid>1161233</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>5c334b9fa0c54fd1540f3fef58da5c61</srcmd5>
+    <version>5.0.1</version>
+    <time>1790975032</time>
+    <user>anag_factory</user>
+    <comment>- Update to 5.0.1:
+  * Passing in multiple tests to be skipped now actually works.
+  * Changed the internal metadata names to match Core Metadata.
+  * Added a rating for if the wheel fails to build.
+  * Removed support for fetching data via monkey-patching setup.py.
+  * Added support for License-Expression as per PEP 639.
+  * Added a --skip-tests parameter to allow skipping of certain tests.
+  * Allow private classifiers
+- Add patch no-more-pkg-resources.patch:
+  * Use pathlib, rather than pkg_resources.</comment>
+    <requestid>1381985</requestid>
+  </revision>
 </revisionlist>

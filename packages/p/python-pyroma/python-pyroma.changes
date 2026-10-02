@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  2 04:55:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 5.0.1:
+  * Passing in multiple tests to be skipped now actually works.
+  * Changed the internal metadata names to match Core Metadata.
+  * Added a rating for if the wheel fails to build.
+  * Removed support for fetching data via monkey-patching setup.py.
+  * Added support for License-Expression as per PEP 639.
+  * Added a --skip-tests parameter to allow skipping of certain tests.
+  * Allow private classifiers
+- Add patch no-more-pkg-resources.patch:
+  * Use pathlib, rather than pkg_resources. 
+
+-------------------------------------------------------------------
 Mon Mar 25 04:06:17 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 4.2:
