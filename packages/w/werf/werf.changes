@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Fri Oct 02 04:51:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.78.2:
+  * Features
+    - build: collect operations statistics without debug logging
+      (#7833) (7c2bf94)
+    - build: support from in image dependencies (#7837) (c5e7925)
+  * Bug Fixes
+    - build, buildah: stop "image not known" error in RUN --mount
+      builds (#7823) (7f4c727)
+    - build, buildah: stop repeating stage output in the final
+      build error (#7836) (15f4c28)
+    - build, stapel: stop builds failing with many imports (#7845)
+      (2c16409)
+    - build: stop losing host image locks taken by parallel image
+      builds (#7826) (05e3a94)
+    - config: stop werf.yaml loading taking minutes on large image
+      graphs (#7841) (edc44b8)
+    - deploy: optimize plan building for large releases (#7839)
+      (9202175)
+    - deploy: restore network parallelism when building resource
+      infos (#7834) (f9196d5)
+- Update to version 2.78.1:
+  * Bug Fixes
+    - build, stapel: stop tying stage builds to the stapel image
+      cat (#7851) (f96eba3)
+- Update to version 2.78.0:
+  * Bug Fixes
+    - build, buildah: stop re-compressing parent layers on stage
+      push (#7854) (9837b10)
+
+-------------------------------------------------------------------
 Wed Sep 23 04:39:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.77.2:

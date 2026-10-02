@@ -17,7 +17,7 @@
 
 
 Name:           werf
-Version:        2.77.2
+Version:        2.78.2
 Release:        0
 Summary:        CLI for the Werf CI/CD system
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         werf-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.22.7
 BuildRequires:  zsh
+BuildRequires:  golang(API) >= 1.23
 #
 BuildRequires:  device-mapper-devel
 BuildRequires:  libbtrfs-devel
