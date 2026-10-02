@@ -67,7 +67,7 @@ BuildRequires:  pkgconfig(xtst)
 %endif
 
 %description
-The input pad is a tool to send a character on button to text applications.
+The input pad is a tool to send a character on a button to text applications.
 
 %package devel
 Summary:        Development tools for input-pad
@@ -82,7 +82,7 @@ Summary:        Input Pad with XTEST extension
 Requires:       %{name} = %{version}-%{release}
 
 %description xtest
-The input-pad-xtest package contains XTEST extension module
+The input-pad-xtest package contains the XTEST extension module.
 %endif
 
 %package eek
@@ -90,18 +90,12 @@ Summary:        Input Pad with eekboard extension
 Requires:       %{name} = %{version}-%{release}
 
 %description eek
-The input-pad-eek package contains eekboard extension module
+The input-pad-eek package contains the eekboard extension module.
 
 %prep
 %setup -q
 
 %build
-%if 0%{?suse_version} > 1500
-export CFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8'
-export CXXFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8'
-export FFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8 '
-export FCFLAGS='-O2 -Wall -D_FORTIFY_SOURCE=2 -fstack-protector-strong -funwind-tables -fasynchronous-unwind-tables -fstack-clash-protection -flto=8 '
-%endif
 %configure    --enable-pygobject2         \
               --enable-eek                \
 %if %{build_xtest}
