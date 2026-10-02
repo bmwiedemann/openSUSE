@@ -364,4 +364,12 @@
     descriptors</comment>
     <requestid>1376202</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>b1bbc633bf82318b938a3837256e1ad3</srcmd5>
+    <version>0.22.1</version>
+    <time>1790975324</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.21.8 (bsc#1283692, CVE-2026-63209):</comment>
+    <requestid>1382121</requestid>
+  </revision>
 </revisionlist>

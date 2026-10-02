@@ -52,7 +52,7 @@ Tue Aug 25 18:46:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Wed Aug  5 08:19:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.21.8:
+- update to 0.21.8 (bsc#1283692, CVE-2026-63209):
   * The artifacts attached to this release are missing SLSA
     provenance, see #2390.
   * build(deps): bump the go-deps group across 1 directory with 3
