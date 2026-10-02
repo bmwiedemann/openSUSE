@@ -1,0 +1,67 @@
+-------------------------------------------------------------------
+Wed Jul 15 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Wed Jul 23 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Feb 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- cmake changed
+
+-------------------------------------------------------------------
+Thu Jan 16 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Dec  2 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Build on TW
+- Fix dir ownership
+
+-------------------------------------------------------------------
+Wed Jul 17 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_41_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan 24 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jan 19 00:00:00 UTC 2024 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_40_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jan 16 00:00:00 UTC 2024 - Tom Rix <trix@redhat.com>
+
+- Reduce license to MIT
+- Remove unneeded cmake arg
+
+-------------------------------------------------------------------
+Mon Jan 15 00:00:00 UTC 2024 - Tom Rix <trix@redhat.com>
+
+- Update to 0.15.30
+
+-------------------------------------------------------------------
+Fri Dec 15 00:00:00 UTC 2023 - Tom Rix <trix@redhat.com>
+
+- Initial package
+
