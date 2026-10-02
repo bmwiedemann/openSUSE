@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 17:14:28 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:22:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -197,7 +202,7 @@ Tue Sep 21 20:30:16 UTC 2021 - Bjørn Lie <bjorn.lie@gmail.com>
 Sun Mar 21 08:06:32 UTC 2021 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 40.0:
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Mon Feb 15 10:35:46 UTC 2021 - Callum Farmer <gmbr3@opensuse.org>

@@ -38,8 +38,8 @@ BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(gio-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(glib-2.0) >= %{glib2_version}
 BuildRequires:  pkgconfig(gobject-2.0) >= %{glib2_version}
-BuildRequires:  pkgconfig(gtk4) >= 4.4.0
-BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.alpha
+BuildRequires:  pkgconfig(gtk4) >= 4.15.1
+BuildRequires:  pkgconfig(libadwaita-1) >= 1.8.alpha
 
 %description
 Disk Usage Analyzer is a graphical, menu-driven application to analyse

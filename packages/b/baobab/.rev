@@ -513,4 +513,14 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345375</requestid>
   </revision>
+  <revision rev="62" vrev="2">
+    <srcmd5>eabaf94e2dbce16cf5668ad928c17c96</srcmd5>
+    <version>50.0</version>
+    <time>1790974872</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+  + Updated translations.</comment>
+    <requestid>1381737</requestid>
+  </revision>
 </revisionlist>
