@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:11:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 1.655.0 (1.655)
+   see /usr/share/doc/packages/perl-DBI/ChangeLog
+
+  1.655 - 2026-09-30, H.Merijn Brand & Robert Rothenberg
+      * Fix for C89 (Paul Howarth, PR#197)
+      * Ignore invalid handles consistently (detected by Raj)
+
+  1.654 - 2026-09-25, H.Merijn Brand & Robert Rothenberg
+      * Fix DBI::sql_type_cast on IV/NV (CVE-2026-88815) (reported by Raj)
+        bsc#1283055
+      * Fix FetchHashKeyName   on IV/NV (CVE-2026-88816) (reported by Raj)
+        bsc#1283056
+      * Fix provided in META
+
+-------------------------------------------------------------------
 Thu Sep 17 14:24:44 UTC 2026 - Tina Müller <tina.mueller@suse.com>
 
 - Add back Provides entries that got lost due to an upstream bug
