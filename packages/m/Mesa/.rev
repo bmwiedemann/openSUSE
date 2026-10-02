@@ -6922,4 +6922,15 @@ Sorry forgot to add this (forwarded request 198234 from tobijk)</comment>
     <comment>1</comment>
     <requestid>1378824</requestid>
   </revision>
+  <revision rev="590" vrev="1">
+    <srcmd5>7934fd04ca0dde7639aedb6fdbe6b4be</srcmd5>
+    <version>26.2.4</version>
+    <time>1790974938</time>
+    <user>anag_factory</user>
+    <comment>- Update to 26.2.4 bugfix release
+  --&gt; https://docs.mesa3d.org/relnotes/26.2.4
+
+- require llvm23 also for sle16</comment>
+    <requestid>1381925</requestid>
+  </revision>
 </revisionlist>

@@ -26,7 +26,7 @@
 %global psuffix %{nil}
 %endif
 
-%if 0%{?suse_version} < 1699
+%if 0%{?suse_version} < 1600
 %define llvm_version 22
 %define clang_version 22
 %endif
@@ -151,9 +151,9 @@
 %endif
 
 Name:           Mesa%{psuffix}
-Version:        26.2.3
+Version:        26.2.4
 Release:        0
-%define pkg_version 26.2.3
+%define pkg_version 26.2.4
 Summary:        System for rendering 3-D graphics
 License:        MIT
 Group:          System/Libraries

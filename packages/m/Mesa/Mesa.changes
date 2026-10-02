@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:02:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- Update to 26.2.4 bugfix release
+  --> https://docs.mesa3d.org/relnotes/26.2.4
+
+-------------------------------------------------------------------
+Wed Sep 30 14:20:25 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- require llvm23 also for sle16
+
+-------------------------------------------------------------------
 Thu Sep 17 00:16:32 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 26.2.3 bugfix release
