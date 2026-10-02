@@ -16,12 +16,12 @@
 #
 
 
-%define gfx_aarch64_version 595.99.02
+%define gfx_aarch64_version 595.104.02
 
 %ifarch aarch64
 %define gfx_version %gfx_aarch64_version
 %else
-%define gfx_version 595.99.02
+%define gfx_version 595.104.02
 %endif
 %define cuda_version 615.71.09
 

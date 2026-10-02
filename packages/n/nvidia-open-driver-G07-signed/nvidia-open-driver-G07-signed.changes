@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 23:25:19 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- update non-CUDA variant to 595.104.02 (boo#1283265)
+
+-------------------------------------------------------------------
 Wed Sep 23 01:59:42 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
 
 - kernel-7.3.0-opengpu-615.71.09.patch

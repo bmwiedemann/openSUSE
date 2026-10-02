@@ -226,4 +226,12 @@
     advice (bsc#1280057)</comment>
     <requestid>1379777</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>18fd47aaef47439e4f59bc8f3f4e6b2e</srcmd5>
+    <version>595.104.02</version>
+    <time>1790974877</time>
+    <user>anag_factory</user>
+    <comment>- update non-CUDA variant to 595.104.02 (boo#1283265)</comment>
+    <requestid>1381743</requestid>
+  </revision>
 </revisionlist>
