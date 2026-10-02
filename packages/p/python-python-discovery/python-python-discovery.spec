@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-discovery
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,22 @@
 
 
 Name:           python-python-discovery
-Version:        1.3.1
+Version:        1.6.1
 Release:        0
 Summary:        Python interpreter discovery
 License:        MIT
 URL:            https://github.com/tox-dev/python-discovery
 Source:         https://files.pythonhosted.org/packages/source/p/python-discovery/python_discovery-%{version}.tar.gz
-BuildRequires:  python-rpm-macros
 BuildRequires:  %{python_module hatch-vcs >= 0.5}
 BuildRequires:  %{python_module hatchling >= 1.28}
 BuildRequires:  %{python_module pip}
+BuildRequires:  python-rpm-macros
 # SECTION test requirements
 BuildRequires:  %{python_module filelock >= 3.15.4}
 BuildRequires:  %{python_module platformdirs >= 4.3.6}
-BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module pytest-mock}
+BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module vermin}
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-filelock >= 3.15.4

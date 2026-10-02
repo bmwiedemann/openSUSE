@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  1 11:07:26 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.6.1
+  * docs(py_info): cover system_exe in all four dimensions
+  * fix(discovery): skip empty PATH entries
+- Update to 1.6.0
+  * feat(py_info): add system_exe, a narrowed system executable
+
+-------------------------------------------------------------------
 Mon May 25 11:23:44 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Initial packaging (v1.3.1), needed by python-hatch
