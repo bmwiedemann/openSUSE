@@ -24,6 +24,8 @@ License:        MIT
 URL:            https://libspatialindex.org/
 Source0:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2
 Source1:        https://github.com/libspatialindex/libspatialindex/releases/download/%{version}/spatialindex-src-%{version}.tar.bz2.sha512sum
+# PATCH-FIX-UPSTREAM https://github.com/libspatialindex/libspatialindex/issues/276 - QGIS broken
+Patch1:         https://github.com/libspatialindex/libspatialindex/commit/26412fccfd2e1a4a44c3253983ca51d6775d44ca.patch
 BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -58,14 +60,14 @@ and a TPR-tree.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       lib%{name}8 = %{version}
-Provides:       lib%{name}-devel
+Provides:       lib%{name}-devel = %{version}
 
 %description    devel
 The %{name}-devel package contains libraries and header files for
 developing applications that use %{name}.
 
 %prep
-%autosetup -n %{name}-src-%{version}
+%autosetup -n %{name}-src-%{version} -p1
 
 %build
 # Relative LIB/INCLUDE_INSTALL_DIR: upstream .pc template prefixes them

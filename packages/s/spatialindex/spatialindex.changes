@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  1 13:57:52 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- add 26412fccfd2e1a4a44c3253983ca51d6775d44ca.patch to fix QGIS
+
+-------------------------------------------------------------------
+Thu Sep 24 10:22:56 UTC 2026 - Dirk Stoecker <opensuse@dstoecker.de>
+
+- Add Version to devel package
+
+-------------------------------------------------------------------
 Sat Sep 12 11:33:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.1.0:
@@ -72,4 +82,3 @@ Sun Dec 27 10:59:00 UTC 2015 - tzotsos@opensuse.org
 Sat Dec 26 08:56:13 UTC 2015 - mailaender@opensuse.org
 
 - initial packaging
-

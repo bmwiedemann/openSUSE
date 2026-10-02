@@ -1,0 +1,23 @@
+From 26412fccfd2e1a4a44c3253983ca51d6775d44ca Mon Sep 17 00:00:00 2001
+From: Nyall Dawson <nyall.dawson@gmail.com>
+Date: Sat, 26 Sep 2026 07:47:11 +1000
+Subject: [PATCH] Partially revert 6fe9ff76 (#277)
+
+Fixes #276
+---
+ src/rtree/RTree.cc | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/rtree/RTree.cc b/src/rtree/RTree.cc
+index db6d7960..fad36977 100644
+--- a/src/rtree/RTree.cc
++++ b/src/rtree/RTree.cc
+@@ -627,7 +627,7 @@ double SpatialIndex::RTree::RTree::nearestNeighborQuery(uint32_t k, const IShape
+                     Data* e = new Data(n->m_pDataLength[cChild], n->m_pData[cChild], *(n->m_ptrMBR[cChild]), n->m_pIdentifier[cChild]);
+                     // we need to compare the query with the actual data entry here, so we call the
+                     // appropriate getMinimumDistance method of NearestNeighborComparator.
+-                    queue.push(NNEntry(n->m_pIdentifier[cChild], e, nnc.getMinimumDistance(query, e->m_region)));
++                    queue.push(NNEntry(n->m_pIdentifier[cChild], e, nnc.getMinimumDistance(query, *e)));
+                 }
+                 else
+                 {

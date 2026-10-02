@@ -39,4 +39,61 @@
     <comment>Forward spatialindex 2.1.0 to Factory. SONAME 6-&gt;8 (libspatialindex6-&gt;libspatialindex8; revdeps PDAL/luanti/Rtree/qgis need rebuild). Native aarch64 build green, %check 2/2, rpmlint clean.</comment>
     <requestid>1377531</requestid>
   </revision>
+  <revision rev="6" vrev="2">
+    <srcmd5>dc20488f3db3fc00f81cd0e1ae1a7f85</srcmd5>
+    <version>2.1.0</version>
+    <time>1790974966</time>
+    <user>anag_factory</user>
+    <comment>- add 26412fccfd2e1a4a44c3253983ca51d6775d44ca.patch to fix QGIS
+- Add Version to devel package
+- Update to version 2.1.0:
+  * SONAME bump 6 -&gt; 8: rename lib subpackage to libspatialindex8
+  * Upstream adopted restore-pkg-config-functionality.patch
+    (PR #201): drop it
+  * Ship CMake package config in devel subpackage
+  * 2.0.0 changes of note: Ball Shape for point neighborhood
+    queries, no more debug lint on stderr, CMake modernization
+    with static-lib support, GTest-based tests
+  * 2.1.0: RTree kNN query overhead reduction, bulk-insert and
+    bulk-query C APIs, in-memory tree construction
+- spec-cleaner pass: drop Group tags, pkgconfig() provider form,
+  %license for COPYING
+- Enable %check (upstream self-contained ctest suite, gtest
+  vendored): pass relative LIB/INCLUDE_INSTALL_DIR so the .pc
+  file has no double slashes
+- Use %autosetup macro. Allows to eliminate the usage of deprecated
+  PatchN.
+- Rename libspatialindex4 subpackage to libspatialindex6, following
+  the actual soname of the libraries shipped.
+- Obsolete libspatialindex4 = 1.9.3 by libspatialindex6: help
+  zypper for the upgrade case from the wrongly packaged
+  libspatialindex4 to libspatialindex6. We obsolete only the
+  version that was wrongly packaged, so that actual users
+  of libspatialindex.so.4 have a chance to co-exist.
+- added patch to restore functionality (via CMake), change Cflags
+  (restore-pkg-config-functionality.patch)
+- Update to version 1.9.3
+  * 1.9.3 fixes a critical ordering issue
+    in RTreenearestNeighbor sorting
+- Update to version 1.9.2
+  * 1.9.2 is a quick release of 1.9.1 to fix some
+    override declarations that were too aggressive and caused
+    the wrong methods to be called.
+- Update to version 1.9.1
+  * Expose Index_Contains_id and Index_Contains_obj in C API
+- Update to version 1.9.0
+  * Add flush function to each index type
+  * Expose internal Nodes of query for RTree types
+  * Fix unnecessary locking calls in pthread on Linux
+  * Fix Node::reinsertData selection criteria
+  * Correct findLeastEnlargement to always return a correct value
+  * Update the root MBR during condenseTree
+  * Fix adjustTree during R*-tree reinserts
+- Install license
+- Added missing provides
+- Minor spec edits
+- initial packaging
+</comment>
+    <requestid>1381916</requestid>
+  </revision>
 </revisionlist>
