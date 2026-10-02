@@ -527,4 +527,13 @@ that go1.21 can be build.  I believe Staging:L for now.
   when a PCH is used</comment>
     <requestid>1377335</requestid>
   </revision>
+  <revision rev="43" vrev="2">
+    <srcmd5>792e716d2e2db964d131a6949e23a7e4</srcmd5>
+    <version>13.5.0+git10516</version>
+    <time>1790974880</time>
+    <user>anag_factory</user>
+    <comment>- Add gcc13-pr127656.patch to fix use-after-free in
+  __gnu_pbds::priority_queue.  [bsc#1283123] (CVE-2026-102010)</comment>
+    <requestid>1381853</requestid>
+  </revision>
 </revisionlist>
