@@ -2399,4 +2399,13 @@ New upstream release</comment>
     <comment>1</comment>
     <requestid>1380179</requestid>
   </revision>
+  <revision rev="230" vrev="3">
+    <srcmd5>4f6c50b85a1dffef4222d59d020b35e2</srcmd5>
+    <version>26.09.0</version>
+    <time>1790974925</time>
+    <user>anag_factory</user>
+    <comment>- Ensure python3 is available due adding python3-base to Buildrequires
+- Add CVE refs</comment>
+    <requestid>1381906</requestid>
+  </revision>
 </revisionlist>

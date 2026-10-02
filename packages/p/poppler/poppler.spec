@@ -49,6 +49,7 @@ BuildRequires:  libboost_headers-devel >= 1.74
 BuildRequires:  libgpgmepp-devel >= 1.19
 BuildRequires:  openjpeg2
 BuildRequires:  pkgconfig
+BuildRequires:  python3-base
 BuildRequires:  pkgconfig(cairo) >= 1.18.0
 BuildRequires:  pkgconfig(cairo-ft)
 BuildRequires:  pkgconfig(cairo-pdf)

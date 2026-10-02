@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:07:51 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- ensure python3 is available due adding python3-base to Buildrequires
+
+-------------------------------------------------------------------
 Mon Sep 14 10:26:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 26.09.0:
@@ -32,6 +37,8 @@ Mon Sep 14 10:26:31 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 - Add pkgconfig(harfbuzz) BuildRequires: New dependency.
 - fixes CVE-2026-93314 [bsc#1282531]
         CVE-2026-93313 [bsc#1282532]
+        CVE-2026-102620 [bsc#1283330]
+        CVE-2026-102621 [bsc#1283331]
 
 -------------------------------------------------------------------
 Fri Jul  3 16:40:23 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
