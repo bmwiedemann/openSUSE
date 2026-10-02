@@ -476,4 +476,13 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update openai-codex to 0.159.2: opt-in instant_interrupt, scrollable transcript behind modals, richer native Mermaid, thread-history pagination, Markdown-preserving copy and more reliable ChatGPT sign-in. Vendored deps unchanged; four patches refreshed. No local build was run.</comment>
     <requestid>1381695</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>1186497483fd76c33c7e7a909141deff</srcmd5>
+    <version>0.160.0</version>
+    <time>1790974998</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.160.0: agent history paging, X11 middle-click paste, queued-input resume, Guardian review context. Only h2 moved in the re-vendor, so the licence set is unchanged. Supersedes #1381976: Factory jumps 0.159.2 -&gt; 0.160.0.
+</comment>
+    <requestid>1382150</requestid>
+  </revision>
 </revisionlist>

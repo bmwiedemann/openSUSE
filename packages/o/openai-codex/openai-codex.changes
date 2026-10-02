@@ -1,4 +1,71 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:50:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.160.0:
+  * The agent command center can page back through older tasks with
+    a keyboard-accessible "Show more" action
+  * Fullscreen mode pastes the primary selection with middle-click
+    on supported local Linux X11 terminals
+  * Sessions can start outside a project with workspace defaults
+    where policy allows, and resuming restores saved permissions
+  * Guardian review is opt-in and can retrieve earlier user
+    instructions plus context from agent handoffs
+  * Unsent queued messages resume after a reconnect once the
+    uncertain submissions resolve, instead of being lost or sent
+    twice
+  * The TUI keeps the server's provider, reasoning-summary and
+    verbosity settings, and lists the right sessions in resume and
+    fork history
+  * Subagents keep environments that are still starting, and are
+    told about a configuration or preparation failure
+  * SQLite no longer stalls during connection setup and log writes,
+    and initialisation errors surface instead of looking like
+    timeouts
+  * An explicit provider model catalog no longer lists unsupported
+    bundled models or keeps stale entries after a refresh failure
+  * Plugin manifests are parsed once and remote plugin requests
+    reuse the HTTP connection pool; unused log database space is
+    reclaimed in the background
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * h2 0.4.16 -> 0.4.19 is the only third-party crate the re-vendor
+    moved: the extracted trees otherwise diff clean and the
+    resolved codex-cli graph is unchanged, so the licence set and
+    the four bare-lockfile RUSTSEC advisories carry over from
+    0.159.3
+  * Rebase codex-no-startup-update-check.patch on the new sources;
+    what it removes is unchanged. codex-drop-v8-code-mode.patch,
+    codex-system-libzstd.patch and
+    codex-recursion-limit-chatgpt.patch still apply unchanged at
+    fuzz 0
+  * The Legal-Review-Notice counts reproduce exactly on the
+    re-derived tree (894 crates: 754 third-party, 140 first-party;
+    758 slots across 753 crates), so the License: tag is unchanged
+
+-------------------------------------------------------------------
+Thu Oct  1 20:24:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.159.3:
+  * Local ChatGPT sessions can show optional reminders to complete
+    account security setup; the server owns eligibility and
+    rollout, and an unavailable notice shows no banner at all
+  * The account security banner is cleared when the backend banner
+    it shares the inline slot with is replaced or dismissed
+  * Vendored dependency set unchanged - Cargo.lock is identical to
+    0.159.2's and the extracted vendor tree diffs clean - so the
+    licence set and the four bare-lockfile RUSTSEC advisories carry
+    over from 0.159.2
+  * All four patches apply unchanged at fuzz 0, and what each one
+    removes is unchanged:
+    codex-drop-v8-code-mode.patch,
+    codex-no-startup-update-check.patch,
+    codex-system-libzstd.patch,
+    codex-recursion-limit-chatgpt.patch
+  * Correct the Apache-2.0 and MIT tallies in the
+    Legal-Review-Notice; its 894 crate counts (754 third-party,
+    140 first-party) and the License: tag are unchanged
+
+-------------------------------------------------------------------
 Wed Sep 30 13:52:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.159.2:

@@ -11,11 +11,11 @@
     feature and leaves the lockfile, hence the vendored set, untouched.
     To regenerate:
 
-      tar xf codex-rust-v0.159.2.tar.gz
-      patch -p1 -d codex-rust-v0.159.2 < codex-drop-v8-code-mode.patch
-      rm -rf codex-rust-v0.159.2/codex-rs/vendor
+      tar xf codex-rust-v0.160.0.tar.gz
+      patch -p1 -d codex-rust-v0.160.0 < codex-drop-v8-code-mode.patch
+      rm -rf codex-rust-v0.160.0/codex-rs/vendor
       osc service manualrun cargo_vendor
-      rm -rf codex-rust-v0.159.2
+      rm -rf codex-rust-v0.160.0
 
     The codex-rs/vendor removal drops the bundled bubblewrap 0.11.2 C sources,
     which %prep removes as well - codex uses the system bubblewrap instead.
@@ -60,7 +60,7 @@
     bump, not anything this package can vendor around.
   -->
   <service name="cargo_vendor" mode="manual">
-    <param name="srcdir">codex-rust-v0.159.2/codex-rs</param>
+    <param name="srcdir">codex-rust-v0.160.0/codex-rs</param>
     <param name="compression">zst</param>
     <param name="update">false</param>
   </service>

@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.159.2
+Version:        0.160.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -29,11 +29,15 @@ Summary:        OpenAI Codex coding agent for the terminal
 # like upstream. Every one declares a licence, none is missing; only the
 # third-party count is a licence signal, the workspace one moves whenever
 # upstream adds a crate). Electing Apache-2.0 where it is offered and MIT
-# otherwise, the aarch64 tally is Apache-2.0 518, MIT 177,
+# otherwise, the aarch64 tally is Apache-2.0 521, MIT 179,
 # Unicode-3.0 20, MPL-2.0 12, ISC 9, BSD-3-Clause 9, Zlib 5, BSD-2-Clause 1,
 # CC0-1.0 1, CDLA-Permissive-2.0 1 (aws-lc-sys itemised below, so it is not
-# in the tally). 0.159.2 re-vendored no crate at all - the vendor tree is
-# byte-identical to 0.158.0's - so the tag above is unchanged by that bump.
+# in the tally). A crate with an AND expression counts once under every
+# licence it obliges, so these slots sum to 758 across 753 crates, not 754.
+# 0.159.3 re-vendored no crate at all - the vendor tree is byte-identical to
+# 0.159.2's and 0.158.0's - so the tag above is unchanged by that bump.
+# 0.160.0 moved exactly one crate, h2 0.4.16 -> 0.4.19 (MIT either way), so
+# the tally above is re-derived rather than carried and reproduces exactly.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
