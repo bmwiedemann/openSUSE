@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 14:41:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar to address:
+  * bsc#1284104, CVE-2026-81870: helm: OpenTelemetry-Go:
+    Information disclosure via exporter
+
+-------------------------------------------------------------------
 Wed Sep 23 20:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
@@ -10,7 +17,8 @@ Wed Sep 23 20:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Sep 18 17:43:50 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 4.3.0 (bsc#1281112, CVE-2026-85732):
+- update to 4.3.0 (bsc#1281112, CVE-2026-85732,
+    bsc#1283642, CVE-2026-63209):
   * feat: Add duration functions
   * feat(engine): add debug logging when lookup returns empty
   * feat: add ownership verification before deleting resources

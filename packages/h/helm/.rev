@@ -1368,4 +1368,17 @@ changes the CVE reference from the (what was previously the helm bug and is now 
     Service via attacker-driven log emission</comment>
     <requestid>1380038</requestid>
   </revision>
+  <revision rev="118" vrev="4">
+    <srcmd5>d09839a3082699561d71e440f87ab954</srcmd5>
+    <version>4.3.0</version>
+    <time>1790975358</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar to address:
+  * bsc#1284104, CVE-2026-81870: helm: OpenTelemetry-Go:
+    Information disclosure via exporter
+
+- update to 4.3.0 (bsc#1281112, CVE-2026-85732,
+    bsc#1283642, CVE-2026-63209):</comment>
+    <requestid>1382143</requestid>
+  </revision>
 </revisionlist>

@@ -27,5 +27,8 @@
     <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploghttp@v0.21.0</param>
     <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc=go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc@v0.21.0</param>
     <param name="replace">go.opentelemetry.io/otel/exporters/stdout/stdoutlog=go.opentelemetry.io/otel/exporters/stdout/stdoutlog@v0.21.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace=go.opentelemetry.io/otel/exporters/otlp/otlptrace@v1.45.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace-grpc=go.opentelemetry.io/otel/exporters/otlp/otlptrace-grpc@v1.45.0</param>
+    <param name="replace">go.opentelemetry.io/otel/exporters/otlp/otlptrace-http=go.opentelemetry.io/otel/exporters/otlp/otlptrace-http@v1.45.0</param>
   </service>
 </services>
