@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.74: metadata-only release, the shim
+  module is byte-identical to 0.11.73 and only the bundle pins
+  move, to core 0.3.365, json 0.1.100 and media-assets-02 0.1.8
+- The bundle floors stay as they are: the other five bundles are
+  unchanged upstream and the existing >= 0.3.359, >= 0.1.94 and
+  >= 0.1.4 floors already admit every shipped version
+  * media-assets-02 0.1.8, carrying the preview images of the
+    five templates core 0.3.365 adds, is not packaged yet:
+    Factory still has 0.1.5, so those previews stay absent
+    until that bundle is bumped on its own
+
+-------------------------------------------------------------------
 Thu Oct  1 16:29:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.73: metadata-only release, the shim

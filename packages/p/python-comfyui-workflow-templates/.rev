@@ -264,4 +264,13 @@ media-assets-02 0.1.7. The &gt;= floors are unchanged. media-assets-02
 its own request first.</comment>
     <requestid>1381942</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>dd8b897825f9d0d8aaab5ecb103b6bd5</srcmd5>
+    <version>0.11.74</version>
+    <time>1790975369</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.74: metadata-only, the shim is byte-identical to 0.11.73. Pins move to core 0.3.365, json 0.1.100 and media-assets-02 0.1.8; the other five bundles are unchanged. Bundle floors deliberately stay - Factory satisfies all of them today, so this lands independently of the other two SRs.
+</comment>
+    <requestid>1382142</requestid>
+  </revision>
 </revisionlist>
