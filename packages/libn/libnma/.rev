@@ -173,4 +173,12 @@
     <comment></comment>
     <requestid>1119718</requestid>
   </revision>
+  <revision rev="18" vrev="4">
+    <srcmd5>7e3efa662db3dd4bcbd0c8c72ff3abc5</srcmd5>
+    <version>1.10.6</version>
+    <time>1790974882</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1381858</requestid>
+  </revision>
 </revisionlist>

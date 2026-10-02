@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Sep 30 14:03:29 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Tue Oct 17 08:59:28 UTC 2023 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Drop pkgconfig(gck-1) and pkgconfig(gcr-3) BuildRequires: No
