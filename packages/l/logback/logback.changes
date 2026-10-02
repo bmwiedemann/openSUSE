@@ -1,4 +1,192 @@
 -------------------------------------------------------------------
+Thu Oct  1 18:53:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Upgrade to upstream version 1.6.5
+  * Changes of version 1.6.5
+    + Fixed a vulnerability closely related to CVE-2026-19880
+      (bsc#1284020). The fix made in version 1.6.3, which strips
+      forward and backward slashes from MDC values, was not
+      sufficient. An MDC value could still contain relative path
+      components such as .., variable references such as /, or
+      characters that are special in file name patterns and email
+      addresses.
+      MDCBasedDiscriminator, used by SiftingAppender, now rejects
+      MDC values instead of stripping characters from them. An MDC
+      value is rejected if it is empty, if it is longer than 64
+      characters, if it contains the sequence .., or if it contains
+      any of the following characters: / \ $ { } [ ] ( ) | ? * + % ,
+      @. When an MDC value is rejected, the discriminator returns
+      the value of its DefaultValue property. A warning is emitted
+      for each rejected value. These warnings are rate-limited.
+    + When compression is enabled, TimeBasedRollingPolicy and
+      SizeAndTimeBasedRollingPolicy now also remove old log files
+      that were never compressed, for example because the
+      application was not running at rollover time. Previously, such
+      files were ignored by maxHistory and accumulated indefinitely.
+    + SimpleInvocationGate, deprecated in version 1.6.3, is now
+      marked for removal. Use FixedIntervalInvocationGate instead.
+  * Changes of version 1.6.4
+    + Variable substitution is again applied to the scan attribute
+      of the <configuration> element. The scanning refactoring in
+      version 1.5.27 had dropped substitution, so values such as
+      ${logback.scan.enabled:-true} were no longer resolved. As
+      before version 1.5.27, an unrecognized non-empty value turns
+      scanning on. The same substitution now applies to the scan
+      attribute of <propertiesConfigurator>.
+    + OutputStreamAppender and FileAppender now handle stateful
+      encoders. The Encoder interface has a new default method
+      called isStateful(), which returns false. An encoder that
+      keeps state between calls to encode() can return true. For
+      such encoders, the appender holds its write lock while
+      encoding and while writing, so the output of concurrent
+      appends cannot interleave. Stateless encoders still encode
+      outside the lock, so their performance does not change.
+      Existing encoders need no changes.
+    + Several race conditions in OutputStreamAppender and
+      FileAppender were fixed. The appender is now marked started
+      and the encoder header is written while the same lock is
+      held, so a concurrent append can no longer write an event
+      before the header. After acquiring the lock, the appender
+      checks again whether it has been stopped, so no event is
+      written after the footer. In prudent mode, FileAppender now
+      encodes and writes each event while holding the lock.
+    + Fixed a data race on the logger count in LoggerContext.
+      Loggers are created under the lock of their parent logger, so
+      loggers with different parents could be created at the same
+      time and increments of the shared counter could be lost. As a
+      result, LoggerContext.size() could return a value lower than
+      the actual number of loggers. The counter is now an
+      AtomicInteger.
+    + TimeBasedRollingPolicy now supports half-day periods. Date
+      patterns with the AM/PM marker, for example %d{yyyy-MM-dd-a},
+      used to be detected as daily and rolled over only at
+      midnight. They now roll over at both 00:00 and 12:00. This
+      issue was reported in issues/976 by shakthifuture.
+    + If org.jline.jansi.AnsiConsole cannot be found on the class
+      path, JansiConsoleAppender now emits warnings that explain
+      how to add org.jline:jansi-core and then writes to the plain
+      console stream. See codes.html#missingJlineJansi.
+    + The unused
+      ch.qos.logback.classic.util.LogbackMDCAdapterSimple class was
+      removed. LogbackMDCAdapter remains the default MDC adapter.
+  * Changes of version 1.6.3
+    + In relation to CVE-2026-19880 (bsc#1284020),
+      MDCBasedDiscriminator (used by SiftingAppender) now strips
+      forward and backward slashes (/, \) from MDC values before
+      they are used as discriminating keys. This prevents path
+      segments from escaping into destinations controlled by an
+      attacker. When sanitisation actually changes a value, a
+      warning is emitted; the warning is rate-limited (a small
+      batch, then a lull of about ten minutes).
+    + Colour console support is split out into a dedicated
+      JansiConsoleAppender
+      (ch.qos.logback.core.JansiConsoleAppender). It wraps stdout
+      or stderr with Jansi so ANSI escape sequences (for example
+      coloured patterns) render correctly on terminals that need
+      it, notably Windows. Prefer this class over the older path
+      described next.
+    + The withJansi property on ConsoleAppender is deprecated.
+      Existing configurations that still set
+      <withJansi>true</withJansi> continue to work for
+      compatibility, but new setups should use JansiConsoleAppender
+      instead.
+    + ConsoleAppender no longer treats the process console as an
+      exclusive resource: stopping it does not close System.out /
+      System.err. JansiConsoleAppender pairs each
+      AnsiConsole.systemInstall() with systemUninstall() on stop,
+      so repeated start/stop cycles do not leave Jansi installed or
+      tear down streams shared with the rest of the JVM.
+    + Invocation throttling helpers were reworked:
+      SimpleInvocationGate is renamed FixedIntervalInvocationGate,
+      and BatchedFixedIntervalInvocationGate allows a short burst
+      of invocations before applying a fixed lull. The sanitisation
+      warning above uses the batched gate.
+    + The JPMS module-info for logback-core now exports the
+      ch.qos.logback.core.property package, which had been missing
+      from the module descriptor.
+  * Changes of version 1.6.2
+    + Configuration analysis now detects contradictory caller-data
+      inclusion instructions. For example, an AsyncAppender,
+      SocketAppender or SMTPAppender with includeCallerData left at
+      the default false is incompatible with a layout or encoder
+      pattern that uses a caller-data converter such as %C, %M, %L,
+      %F, %l or %caller. At runtime those converters would print
+      question marks and still incur extraction cost on a worker
+      thread. Logback now emits a configuration-time warning when
+      such instructions disagree. See
+      codes.html#callerContradiction for details. This issue was
+      reported in issues/1059 by leeychee. The initial analysis was
+      contributed by seonwoo_jung.
+    + Caller-contradiction analysis can be turned off by setting
+      the logback.skipCallerContradictionAnalysis variable to true,
+      either as a system property
+      (-Dlogback.skipCallerContradictionAnalysis=true) or as a
+      property in the configuration file:
+      <property name="logback.skipCallerContradictionAnalysis"
+      value="true"/>
+    + SimpleSocketServer and SimpleSSLSocketServer now require an
+      explicit client IP whitelist. On the command line, pass one
+      or more allowed addresses (single IPs or CIDR ranges) after
+      the configuration file. An empty whitelist means no clients
+      are accepted. When embedding the server programmatically,
+      register allowed addresses with
+      addAllowedClientAddress(String) or
+      setAllowedClientAddresses(Collection) before clients connect.
+      See the documentation on restricting client access.
+    + Added ThrowableProxyVOBuilder for assembling a
+      ThrowableProxyVO field by field, with a corresponding
+      ThrowableProxyVO.builder() entry point.
+    + Dependency analysis handlers now run their postHandle method
+      after child models have been processed, so checks that depend
+      on nested appenders (such as caller-contradiction analysis)
+      see a complete picture.
+    + Updated several dependencies, including Angus Mail to 2.0.4
+      and Jetty (test) to 12.1.12.
+  * Changes of version 1.6.1
+    + In TimeBasedRollingPolicy, when the file option is set, the
+      intermediate file renamed before asynchronous compression now
+      receives the target archive name without the compression
+      suffix (e.g. `.gz`, `.zip`, `.xz`). Previously it used a
+      nanotime-based `.tmp` suffix. This makes the file easier to
+      identify if compression fails during rollover.
+    + On GZ, ZIP, or XZ compression failure, the original
+      (uncompressed) log file is no longer deleted. Compression
+      strategies now delete the source file only after successful
+      compression and emit a warning that the original was left
+      intact.
+    + ConsoleAppender with <withJansi> now probes JLine's
+      org.jline.jansi.AnsiConsole first and falls back to the
+      legacy FuseSource org.fusesource.jansi.AnsiConsole class.
+      This keeps ANSI coloring working after Jansi moved under the
+      JLine project. The optional org.jline:jansi-core artifact is
+      declared as a dependency alongside the existing FuseSource
+      jansi dependency. A preferredJansiClassName property was
+      added for tests.
+    + LayoutWrappingEncoder now reports an error at start() when no
+      layout is set and guards encode() against a null layout.
+      Previously, a missing layout (for example after an ignored
+      <if>/<then>/<else> branch) allowed the encoder to start and
+      then fail with a NullPointerException on every event,
+      resulting in silent log loss.
+    + FileCollisionAnalyser now detects file collisions involving
+      nested appenders of SiftingAppender. When the nested file or
+      fileNamePattern does not textually reference the
+      discriminator key (e.g. ${userId}), a warning is issued at
+      configuration time naming the appender, the key, and the
+      shared target. This closes a gap where statically declared
+      file appenders were checked but sifted nested appenders were
+      not.
+    + More defensive handling in SyslogOutputStream and
+      SyslogAppenderBase: the close() method now ensures that
+      resources are closed, writes and flushes check that the
+      underlying resources are in a valid state and fallback to
+      no-op otherwise.
+- Added patch:
+  * jline-3.30.x.patch
+    + modify the imported module to correspond to jline3 3.30.x
+      module name of jansi-core artifact.
+
+-------------------------------------------------------------------
 Fri Jul 24 02:40:14 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.0

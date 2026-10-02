@@ -1,0 +1,13 @@
+diff --git a/logback-core/src/main/java/module-info.java b/logback-core/src/main/java/module-info.java
+index 181dcb950..022bc6ae3 100644
+--- a/logback-core/src/main/java/module-info.java
++++ b/logback-core/src/main/java/module-info.java
+@@ -16,7 +16,7 @@ module ch.qos.logback.core {
+     requires static org.fusesource.jansi;
+ 
+     // optionally require jline.jansi
+-    requires static org.jline.jansi.core;
++    requires static org.jansi.core;
+ 
+     // optionally require tukaani
+     requires static org.tukaani.xz;

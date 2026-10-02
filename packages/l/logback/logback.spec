@@ -17,7 +17,7 @@
 
 
 Name:           logback
-Version:        1.6.0
+Version:        1.6.5
 Release:        0
 Summary:        A Java logging library
 License:        EPL-1.0 OR LGPL-2.1-or-later
@@ -25,6 +25,7 @@ Group:          Development/Libraries/Java
 URL:            https://logback.qos.ch/
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         filtering.patch
+Patch10:        jline-3.30.x.patch
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 11
 BuildRequires:  maven-local
@@ -35,6 +36,7 @@ BuildRequires:  mvn(jakarta.servlet:jakarta.servlet-api)
 BuildRequires:  mvn(org.apache.felix:maven-bundle-plugin)
 BuildRequires:  mvn(org.apache.maven.plugins:maven-javadoc-plugin)
 BuildRequires:  mvn(org.fusesource.jansi:jansi)
+BuildRequires:  mvn(org.jline:jansi-core)
 BuildRequires:  mvn(org.slf4j:slf4j-api)
 BuildRequires:  mvn(org.slf4j:slf4j-ext)
 BuildRequires:  mvn(org.tukaani:xz)
@@ -79,7 +81,11 @@ Group:          Development/Libraries/Java
 logback-examples module.
 
 %prep
-%autosetup -p1
+%setup -q
+%patch -P 0 -p1
+%if %{?pkg_vcmp:%pkg_vcmp jline3-jansi-core < 4}%{!?pkg_vcmp:0}
+%patch -P 10 -p1
+%endif
 
 chmod -x README.md LICENSE.txt
 find . -type f -exec chmod -x {} \;
