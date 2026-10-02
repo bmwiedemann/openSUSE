@@ -33,7 +33,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  yelp-tools
 BuildRequires:  pkgconfig(colord) >= 1.3.1
 BuildRequires:  pkgconfig(glib-2.0) >= 2.31.10
-BuildRequires:  pkgconfig(gtk+-3.0) >= 2.91.0
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.4
 BuildRequires:  pkgconfig(lcms2) >= 2.2
 Requires:       colord
 Requires:       colord-color-profiles
