@@ -1543,4 +1543,12 @@ Changes from version 1.3.0:
 - Temp disable tests, currently times out.</comment>
     <requestid>1355931</requestid>
   </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>ab8ffafa91bc8449b5a539d195e9c961</srcmd5>
+    <version>1.6.10</version>
+    <time>1790974875</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1381740</requestid>
+  </revision>
 </revisionlist>

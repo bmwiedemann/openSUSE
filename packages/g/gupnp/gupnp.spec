@@ -35,14 +35,14 @@ BuildRequires:  docbook-xsl-stylesheets
 BuildRequires:  meson >= 0.54.0
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
-BuildRequires:  pkgconfig(gi-docgen)
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.66
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.66
+BuildRequires:  pkgconfig(gi-docgen) >= 2021.1
+BuildRequires:  pkgconfig(gio-2.0) >= 2.70
+BuildRequires:  pkgconfig(glib-2.0) >= 2.70
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.70
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.70
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 0.6.4
 BuildRequires:  pkgconfig(gssdp-1.6) >= 1.6.5
-BuildRequires:  pkgconfig(libsoup-3.0)
+BuildRequires:  pkgconfig(libsoup-3.0) >= 2.99.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(uuid)
 BuildRequires:  pkgconfig(vapigen)
