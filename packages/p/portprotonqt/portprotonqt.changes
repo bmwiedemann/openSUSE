@@ -1,0 +1,87 @@
+-------------------------------------------------------------------
+Wed Aug 26 09:59:02 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Update to 1.4.1
+ * Bugfix release 
+ * Steam Runtime Sniper has been rolled back to version V3 
+ * Update translations
+
+-------------------------------------------------------------------
+Sun Aug 23 15:05:53 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Update to 1.4.0 
+ * Added a crash analyzer for Windows programs
+ * Added animated and static backgrounds for the detailed view 
+ * Added GOG integration
+ * Added an "Only Installed" checkbox that works with source filters to hide uninstalled games
+ * Added support for displaying .exe icons instead of cover art in the compact detailed view
+ * Added the ability to edit Steam shortcuts by AppID
+ * Added silent and logging launch modes for .exe files via the "Open with" menu
+ * Added actions to game shortcuts for launching in silent mode and with logging enabled
+ * Added the `--log` command-line argument to launch the game in logging mode
+ * Added interface sounds
+ * Added a Steam account selection option in the settings, featuring a default automatic mode and an "All" mode for adding shortcuts for all users.
+ * Added safe reading of matugen dark/light palette variants from Dank Material Shell.
+ * Added search functionality for MangoHud, vkBasalt, and Gamescope parameters by name and description.
+ * Added the ability to install local WINE/Proton archives by dragging and dropping them into the library or version manager.
+ * Added a button to open the WINE folder in the version manager.
+ * Added a setting to hide control hints.
+ * Added a button to delete custom themes.
+ * Gamepad handling has been switched from pygame to SDL3, and the pygame dependency has been removed.
+ * Update translations
+ * Restored the display of native Linux games in the Steam library without showing soundtracks.
+ * Fixed PortProtonQt settings buttons being cut off in narrow windows
+ * Fixed the removal of the last launch date when deleting a game shortcut
+ * Fixed icon extraction for launchers that start the target EXE via an adjacent .bat or .cmd file
+ * Fixed interface freezing during RPM package verification before game launch
+ * Fixed control tooltips being cut off when wrapping to a second line
+ * Fixed interface stuttering while loading the WINE/Proton list and calculating installed version sizes
+ * Fixed icon recoloring for the built-in file manager via ICON_COLORS
+ * Fixed the application of fade animation duration to the cover image appearance during slide and bounce animations on the details page
+ * Fixed the issue where theme parameters for card dimensions, margins, corner radii, and shadows were ignored in grid and list modes
+ * Fixed slow preview loading and redundant network requests when scrolling through the theme store
+ * Fixed inconsistent D-pad navigation order across game cards
+ * System actions in `--ppqtos` mode have been migrated to `systemctl` and `loginctl`
+ * Fixed the recoloring of control hint SVG icons via `ICON_COLORS`
+ * Fixed Cyrillic input when searching for games
+ * Game search is now limited to titles only (no matching against descriptions)
+ * Fixed the state of the stop button when switching the details page to compact view
+ * Fixed interface freeze after a game finishes
+ * Fixed primary Steam account detection using the latest timestamp in `loginusers.vdf`, with fallback to `AutoLogin` or a single `userdata` profile, and `MostRecent` support for compatibility with older Steam versions
+ * WINE/Proton extraction no longer changes the application's working directory and rejects paths from the archive that extend outside the installation directory
+ 
+-------------------------------------------------------------------
+Tue Aug 11 16:43:18 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Update to 1.3.2
+ * Bugfix release
+ * Fixed SteamID detection via 'AutoLogin' or a single 'userdata' profile when 'MostRecent' is missing from 'loginusers.vdf'.
+
+-------------------------------------------------------------------
+Sun Aug  9 19:44:37 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Update to 1.3.1
+ * Bugfix release
+- CVE-2026-59678: Fix local privilege escalation caused by unsafe (bsc#1270218).
+  Polkit client verification based on process command line. In this bugfix release --ppqtos requires the user to be in the portprotonqt group.
+ * add libSDL3-0 to requires
+ * drop jq from requires
+ * add portprotonqt.rpmlintrc for ignore error "explicit-lib-dependency"
+
+------------------------------------------------------------------
+Wed Jul 1 16:57:00 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Fixed rpmlint error and warning:
+ * macro-in-comment (warning)
+ * polkit-file-unauthorized (error)
+- Update Summary and %description to be more neutral
+
+-------------------------------------------------------------------
+Sun Jun 21 11:00:00 UTC 2026 - Stas Stanila <soyu7658@gmail.com>
+
+- Fixed rpmlint errors
+
+-------------------------------------------------------------------
+Wed Jun 10 08:00:00 UTC 2026 - Stas Stanila <soyu7658@gmail.com> 
+
+- Initial package of portprotonqt 1.2.0 for openSUSE
