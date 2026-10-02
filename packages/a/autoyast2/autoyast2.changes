@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  1 09:33:39 UTC 2026 - Imobach Gonzalez Sosa <igonzalezsosa@suse.com>
+
+- Set the maxvars on xsltproc calls to handle bigger AutoYaST
+  classes (bsc#1282766).
+- 5.0.11
+
+-------------------------------------------------------------------
 Mon Jul 20 07:56:26 UTC 2026 - Michal Filka <mfilka@suse.com>
 
 - jsc#PED-14507
