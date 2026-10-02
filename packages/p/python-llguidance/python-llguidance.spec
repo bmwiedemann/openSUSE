@@ -18,28 +18,30 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-llguidance
-Version:        1.9.0
+Version:        1.9.1
 Release:        0
 Summary:        Low-level Guidance (llguidance) bindings for constrained decoding
-# Legal-Review-Notice: re-derived for 1.9.0 against the regenerated
+# Legal-Review-Notice: re-derived for 1.9.1 against the regenerated
 # registry.tar.zst. maturin builds only python_ext/Cargo.toml, so the tag
 # covers the 111 crates the build actually compiles (the 108 normal
 # dependencies of llguidance_py plus the build-only pyo3-build-config,
 # target-lexicon and version_check). None of them is copyleft or weak
-# copyleft. Mandatory terms: MIT (the workspace members themselves plus 21
-# crates), Apache-2.0 (tokenizers, esaxx-rs, spm_precompiled), MIT-0
-# (borrow-or-share) and Unicode-3.0 (unicode-ident, "(MIT OR Apache-2.0)
-# AND Unicode-3.0"); every remaining crate offers MIT or Apache-2.0 among
+# copyleft. Mandatory terms: MIT (22 of the 111: the five workspace
+# members plus 17 crates, one of which, unicode-ident, grants it as
+# "(MIT OR Apache-2.0) AND Unicode-3.0"), Apache-2.0 (tokenizers,
+# esaxx-rs, spm_precompiled), MIT-0 (borrow-or-share) and Unicode-3.0
+# (unicode-ident); every remaining crate offers MIT or Apache-2.0 among
 # its choices, so its Zlib, BSL-1.0, BSD-2-Clause, Unlicense or 0BSD
 # alternative never becomes the mandatory term.
 # target-lexicon is "Apache-2.0 WITH LLVM-exception", build-time only and
 # covered by the declared Apache-2.0.
 # The MPL-2.0 (cbindgen, option-ext, smartstring), BSD-3-Clause
-# (encoding_rs, instant, subtle), CDLA-Permissive-2.0 (webpki-roots) and
-# ISC (ring, untrusted, rustls-webpki) crates in the registry are never
-# compiled here: they belong to the HTTP/TLS stack of the
-# toktrie_hf_downloader member and to the cbindgen header generator and
-# impose no obligation on the shipped extension module.
+# (encoding_rs, instant, subtle), CDLA-Permissive-2.0 (webpki-roots), ISC
+# (ring, untrusted, rustls-webpki) and LGPL-2.1-or-later (r-efi, an
+# alternative term) crates in the registry are never compiled here: they
+# belong to the HTTP/TLS stack of the toktrie_hf_downloader member and to
+# the cbindgen header generator and impose no obligation on the shipped
+# extension module.
 License:        Apache-2.0 AND MIT AND MIT-0 AND Unicode-3.0
 URL:            https://github.com/guidance-ai/llguidance
 Source0:        https://github.com/guidance-ai/llguidance/archive/refs/tags/v%{version}.tar.gz#/llguidance-%{version}.tar.gz

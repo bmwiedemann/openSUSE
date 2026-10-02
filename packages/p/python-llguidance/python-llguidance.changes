@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:45:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.9.1:
+  * Expose cooperative cancellation on TokenParser:
+    enable_cancellation() is idempotent and cancellation_handle()
+    returns the parser's existing cancellation state once
+    enabled. Cancellation stays opt-in and parser behaviour is
+    unchanged when it is not enabled
+- Re-generate registry.tar.zst for 1.9.1 via the cargo_vendor
+  service: pyo3 0.29.2 -> 0.29.3 and lazy_static 1.5.0 ->
+  1.5.1, all permissive. License is unchanged, but correct the
+  Legal-Review-Notice MIT count, which understated it: 22 of
+  the 111 linked crates grant MIT, not 21
+
+-------------------------------------------------------------------
 Wed Sep 30 08:19:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.9.0:

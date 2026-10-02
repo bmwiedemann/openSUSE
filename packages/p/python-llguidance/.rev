@@ -24,4 +24,13 @@
 </comment>
     <requestid>1381678</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>05e5b29362414e6d64bfac270fabaf56</srcmd5>
+    <version>1.9.1</version>
+    <time>1790975065</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.9.1 (cooperative cancellation on TokenParser). registry.tar.zst re-vendored via the cargo_vendor service (pyo3 0.29.2 -&gt; 0.29.3, lazy_static 1.5.0 -&gt; 1.5.1); License unchanged, but the Legal-Review-Notice MIT count is corrected from 21 to 22 of the 111 linked crates.
+</comment>
+    <requestid>1382004</requestid>
+  </revision>
 </revisionlist>
