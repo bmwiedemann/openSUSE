@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:30:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version dependencies according to configure.ac.
+
+-------------------------------------------------------------------
 Mon Jul  8 14:47:39 UTC 2024 - Martin Jambor <mjambor@suse.com>
 
 - Add -fpermissive to optflags to work around C99 violations which

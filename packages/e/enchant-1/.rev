@@ -66,4 +66,12 @@
     <comment></comment>
     <requestid>1186463</requestid>
   </revision>
+  <revision rev="9" vrev="9">
+    <srcmd5>b612510a2c0a85608203f864f9c6e8f0</srcmd5>
+    <version>1.6.1</version>
+    <time>1790975098</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to configure.ac.</comment>
+    <requestid>1382063</requestid>
+  </revision>
 </revisionlist>

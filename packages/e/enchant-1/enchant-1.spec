@@ -29,7 +29,7 @@ Source:         https://github.com/AbiWord/enchant/releases/download/enchant-1-6
 Patch0:         enchant-hunspell-1.4.0.patch
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  gcc-c++
-BuildRequires:  glib2-devel
+BuildRequires:  glib2-devel >= 2.6
 BuildRequires:  hunspell-devel
 BuildRequires:  libvoikko-devel
 
