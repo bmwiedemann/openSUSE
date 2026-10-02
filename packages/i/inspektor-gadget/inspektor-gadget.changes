@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct 02 04:52:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.56.2:
+  * Bugfixes
+    - [BACKPORT] container-collection: Bound the owner reference
+      enrichment loop. in #5816
+
+-------------------------------------------------------------------
 Mon Sep 28 04:46:03 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.1:
