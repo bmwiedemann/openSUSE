@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Sep 30 13:18:21 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 1.6.1 (fixes CVE-2026-92091 (bsc#1280816))
+  * Avoid quadratic duplicate check on JWK key_ops by @lissy93
+    in #398
+  * Loop optimizations by @rjeffman in #397
+  * Simplify key_ops checks by @simo5 in #399
+  * Version 1.6.1 by @simo5 in #400
+
+-------------------------------------------------------------------
 Tue Sep  1 14:51:22 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 1.6.0 (fixes CVE-2026-84185 (bsc#1278707)):

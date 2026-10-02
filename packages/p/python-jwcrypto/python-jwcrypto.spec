@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-jwcrypto
-Version:        1.6.0
+Version:        1.6.1
 Release:        0
 Summary:        Python module package implementing JOSE Web standards
 License:        LGPL-3.0-only
@@ -47,7 +47,7 @@ RFC 7519 - JSON Web Token (JWT)
 RFC 7520 - Examples of Protecting Content Using JSON Object Signing and Encryption (JOSE)
 
 %prep
-%setup -q -n jwcrypto-%{version}
+%autosetup -p1 -n jwcrypto-%{version}
 
 %build
 %pyproject_wheel
