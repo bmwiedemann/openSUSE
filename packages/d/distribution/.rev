@@ -286,4 +286,14 @@
     Service via attacker-driven log emission</comment>
     <requestid>1380039</requestid>
   </revision>
+  <revision rev="20" vrev="9">
+    <srcmd5>21380c1dbd78f77f28c7307215cc19d7</srcmd5>
+    <version>3.1.1</version>
+    <time>1790975135</time>
+    <user>anag_factory</user>
+    <comment>- update vendor.tar:
+  * bsc#1283762, CVE-2026-63209: distribution:
+    github.com/klauspost/compress: signed integer overflow in s2.NewDict()</comment>
+    <requestid>1382117</requestid>
+  </revision>
 </revisionlist>

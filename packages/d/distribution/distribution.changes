@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:40:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update vendor.tar:
+  * bsc#1283762, CVE-2026-63209: distribution:
+    github.com/klauspost/compress: signed integer overflow in s2.NewDict()
+
+-------------------------------------------------------------------
 Wed Sep 23 20:37:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar to address:
