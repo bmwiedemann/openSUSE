@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 06:10:13 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 20260928.01
+  * scalibr linux new metadata support (#1038)
+- from version 20260928.00
+  * Fix failing to report REBOOTING state during postPatchReboot
+    due to context canceled for Windows VMs (#1055)
+- from version 20260923.03
+  * Fix os/snap extractor usage (#1053)
+- Update github.com/klauspost/compress to v1.18.7
+  (bsc#1283672, CVE-2026-63209)
+
+-------------------------------------------------------------------
 Mon Sep 21 14:19:56 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 20260918.01

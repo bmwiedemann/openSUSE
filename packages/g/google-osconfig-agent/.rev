@@ -1047,4 +1047,20 @@
 - Remove stale Go module version overrides in _service file (forwarded request 1379480 from glaubitz)</comment>
     <requestid>1379481</requestid>
   </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>b52243c9a747e9436b65f6ae4aeb85f4</srcmd5>
+    <version>20260928.01</version>
+    <time>1790975119</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20260928.01
+  * scalibr linux new metadata support (#1038)
+- from version 20260928.00
+  * Fix failing to report REBOOTING state during postPatchReboot
+    due to context canceled for Windows VMs (#1055)
+- from version 20260923.03
+  * Fix os/snap extractor usage (#1053)
+- Update github.com/klauspost/compress to v1.18.7
+  (bsc#1283672, CVE-2026-63209) (forwarded request 1382027 from glaubitz)</comment>
+    <requestid>1382083</requestid>
+  </revision>
 </revisionlist>
