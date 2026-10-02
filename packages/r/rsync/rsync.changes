@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:09:43 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- Limit the number of check jobs to the available jobs
+
+-------------------------------------------------------------------
 Mon Sep 21 12:10:18 UTC 2026 - David Anes <david.anes@suse.com>
 
 - Update to 3.5.1

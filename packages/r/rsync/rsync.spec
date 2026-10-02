@@ -133,7 +133,7 @@ export PYTHON3=%{python_binary}
 %check
 perl -p -i -e 's|/usr/bin/env python3|%{python_binary}|g' $(grep -lr 'env python3' testsuite/ support/) runtests.py
 chmod +x support/*
-%make_build check
+%make_build check CHECK_J=%{jobs}
 chmod -x support/*
 
 %install
