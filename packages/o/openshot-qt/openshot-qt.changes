@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Mon Sep 28 06:27:11 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to version 4.0.1:
+  * Fix 4.0.1 preview, recording, snapping, and logging regressions
+  * Share floating timeline headers between clips and transitions
+  * Keep notification click tests working on Qt minimal
+  * Preserve project location units across release upgrades
+  * Address Codacy findings in tests and translation extraction
+  * Improve main-window translations and fix Play/Pause tooltips
+  * Shorten UI tooltips and update 25 language translations
+  * Update supporter credits from donations feed
+  * Refresh and translate documentation catalogs for 25 languages
+  * Document OpenShot 4.0.1 user-facing updates
+  * Improve notification banner colors and click behavior
+  * Delegate preview alignment to libopenshot after DPI scaling
+  * Snap zoom slider resize handles to matching clip edges and playhead
+  * Keep thumbnails attached to clips during zoom slider resizing
+  * Improve timeline zoom slider hit targets and Cosmic Dusk styling
+  * Prioritize visible timeline thumbnails after viewport changes
+  * Fix razor modifier frame alignment and immediate Alt feedback
+  * Fix Color Grade undo transactions and stale editor state
+  * Fix external editor asset paths and Blender worker shutdown
+  * Keep shared Qt test application alive across test classes
+  * Stabilize timeline thumbnails during zoom and overlay frame bands
+  * Disable locked-track context menu edits and style disabled items
+  * Fix razor click regression fixture for current target API
+  * Keep clip titles and effect controls visible while scrolling
+  * Improve Razor with source previews, snapping, and ripple cuts
+  * Fix thumbnail strip timing drift across timeline zoom levels
+  * Speed up keyframe editing and fix Color Grade panel actions
+  * Fix live keyframe editing during playback
+  * Bumping version to 4.0.1, requiring libopenshot 1.0.1
+  * Update supporter credits from donations feed
+  * Use native camera discovery for Linux webcam recording
+  * Fix feedback banners and legacy logging compatibility
+  * Fix Launchpad build tests and Python 3.6 compatibility
+  * Configure separate UI and engine debug logging without ZeroMQ
+  * Address Codacy findings in portal dialog helpers
+  * Recognize starting-folder support in Ubuntu 24.04 portals
+  * Avoid disabling window while checking file portal support
+  * Install portal client in GitLab Linux build job
+  * Restore native file dialogs with location-aware portal fallback
+  * Fix About test imports during CI discovery
+  * Refresh About dialog with Cosmic Dusk styling and efficient particles
+  * Improve keyframe targeting and preserve playhead position after dragging
+  * Improve trim preview responsiveness with scrub seeks
+  * Fix feedback snapshot syntax for Python 3.7 macOS builds
+  * Address feedback banner Codacy findings
+  * Fix Sentry errors and stabilize editing history
+  * Keep undo snapshots independent and relocate their assets on save
+  * Trigger feedback banner after editing experience and release usage
+  * Add cross-layer regression coverage for Sentry editing and save fixes
+  * Avoid stale clip queries during native refresh and prioritize razor clicks
+  * Refresh borrowed preview objects after timeline edits
+  * Fix Sentry-reported preview, export, save, and clip update failures
+  * Guard missing values in Sentry-reported editing workflows
+  * Translate notification banners and localize feedback links
+  * Send versioned feedback context to website
+  * Regenerate notification translation strings
+  * Add shared feedback and update notification banners
+  * Refresh documentation translations for OpenShot 4.0
+  * Fix Sentry-reported Qt interactions and missing Qt6 aliases
+  * Remove Sentry triage notes
+  * Finalize fixes from top 10 OpenShot 4.0.0 Sentry reports
+  * Record VAAPI prerequisite diagnosis and full suite results
+  * Document top-ten Sentry triage and validation limits
+  * Guard project opening and dock tab mouse event handling
+  * Relocate recordings safely when Windows readers hold files open
+  * Include optional Wayland capture module in Linux packages
+  * Preserve clip locations across transform fix
+  * Support qt_api imports on Python 3.6
+  * [ci] Update GitHub actions to latest major release
+
+-------------------------------------------------------------------
 Tue Sep 01 07:09:42 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to version 4.0.0:

@@ -18,7 +18,7 @@
 
 %define appname org.openshot.OpenShot
 Name:           openshot-qt
-Version:        4.0.0
+Version:        4.0.1
 Release:        0
 Summary:        Non-linear video editor with broad format support
 License:        GPL-3.0-or-later
@@ -32,14 +32,14 @@ BuildRequires:  fdupes
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  python3-openshot >= 1.0.0
+BuildRequires:  python3-openshot >= 1.0.1
 BuildRequires:  python3-pip
 # Check list of dependencies:
 BuildRequires:  python3-pyzmq
 BuildRequires:  python3-qt6-devel
 BuildRequires:  python3-setuptools
 BuildRequires:  shared-mime-info
-Requires:       python3-openshot >= 1.0.0
+Requires:       python3-openshot >= 1.0.1
 Requires:       python3-pyzmq
 Requires:       python3-qt6
 Requires:       python3-requests
