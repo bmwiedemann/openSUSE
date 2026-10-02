@@ -454,4 +454,13 @@ consumer passes the removed arguments.
 </comment>
     <requestid>1381939</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>1f907b93e384f79c922fb0d9940dce5c</srcmd5>
+    <version>0.14.3</version>
+    <time>1790975105</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.3: OTel prompt/completion attributes are exported as JSON strings, agent addressing is sent as one typed address object, and sandbox websockets retry a transient pre-command failure. No dependency change; langsmith-python314-iscoroutinefunction.patch still applies at fuzz 0.
+</comment>
+    <requestid>1382062</requestid>
+  </revision>
 </revisionlist>

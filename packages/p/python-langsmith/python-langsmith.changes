@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:46:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.3:
+  * The OpenTelemetry exporter writes the gen_ai.prompt and
+    gen_ai.completion attributes as JSON strings instead of raw bytes,
+    which raised a TypeError in the exporter
+  * Agent addressing is now sent as one typed address object (kind, id,
+    environment) instead of the flat agent_id and agent_environment
+    fields; a retried batch that re-sends payloads it already rendered
+    no longer trips the destination-collision warning
+  * Sandbox websockets retry a transient failure that closes the socket
+    before a command starts
+  * No new runtime dependencies; requires-python stays >= 3.10
+  * Many more fixes and improvements; see upstream's release notes for
+    the full list
+
+-------------------------------------------------------------------
 Thu Oct  1 16:13:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.2:
