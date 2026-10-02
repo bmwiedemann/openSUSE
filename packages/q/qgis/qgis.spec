@@ -33,7 +33,7 @@ Name:           qgis
 # builders out of memory here; the build is slow enough without it.
 %define _lto_cflags %{nil}
 
-Version:        4.2.2
+Version:        4.2.3
 Release:        0
 Summary:        A Geographic Information System (GIS)
 # The COPYING file carries the GPL-2.0 text, but the source headers throughout
@@ -49,6 +49,8 @@ Patch1:         fix-fastcgi-include.patch
 # PATCH-FIX-OPENSUSE - upstream looks for the pdal binary, which lives in the
 # runtime package; only PDAL-devel (and thus pdal-config) is available here
 Patch2:         qgis-fix-cmake-findpdal.patch
+# PATCH-FIX-UPSTREAM - we're using a patched spatialindex version - https://github.com/libspatialindex/libspatialindex/issues/276
+Patch3:         spatialindex210.diff
 BuildRequires:  %{mypython}-GDAL
 BuildRequires:  %{mypython}-Jinja2
 BuildRequires:  %{mypython}-OWSLib

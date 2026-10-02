@@ -643,4 +643,49 @@ clean).</comment>
     <comment>1</comment>
     <requestid>1376223</requestid>
   </revision>
+  <revision rev="76" vrev="1">
+    <srcmd5>4bb3e15d8e3be865b7d695d468e2d72c</srcmd5>
+    <version>4.2.3</version>
+    <time>1790974969</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.2.3
+
+  - Processing &amp; Algorithms:
+    - Fix inverted arguments and improve thread safety in pixel
+      centroids from polygons algorithm
+    - Fix dynamic parameters in transect algorithms
+    - Fix argument formatting and names for max triangle edge length
+    - Fix Processing history handling
+  - WMS / QGIS Server:
+    - Fix WMS Time dimension handling (dates with trailing Z,
+      opaque groups, date ranges)
+    - Hide root group/styles when skipped in GetCapabilities
+    - Fix QgsServerWmsDimensionProperties::readXml and variant
+      property access
+    - Ensure highlights are included when calling GetMap
+  - Providers &amp; Connectors:
+    - PostgreSQL: Fix reload raster provider data; prevent propagating
+      session_role to PQConnect
+    - ArcGIS REST: Handle ESRI &quot;&lt;Null&gt;&quot; string correctly and fix
+      symbol Y-offset direction
+    - Data sources: Add libarchive support for vcpkg GDAL builds
+  - GUI &amp; Symbology:
+    - Fix vertex markers ignoring symbology reference scale
+    - Align valueColumn left in categorized renderer
+    - Mark project as dirty when editing map themes
+  - Geometry &amp; Engine:
+    - SFCGAL: Fix primitive operation return types, polyhedral types,
+      and shared pointers in fromWkt
+    - Fix material settings leak on QgsStyle destruction
+    - Fix unlit material rendering on macOS
+    - Fix expression context for XYZ tiles
+  - General &amp; Packaging:
+    - Fix package data path resolution in macOS app bundles
+    - Update translation files from Transifex
+- add spatialindex210.diff to drop the check to prevent use with 2.1.0 spatialindex
+- Don't try to use broken libspatialindex version 2.1.0
+
+Needs https://build.opensuse.org/request/show/1381916 !!!!!</comment>
+    <requestid>1381920</requestid>
+  </revision>
 </revisionlist>
