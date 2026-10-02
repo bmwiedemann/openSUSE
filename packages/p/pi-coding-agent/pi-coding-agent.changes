@@ -1,4 +1,98 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:10:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.0. This is a major release with breaking
+  behaviour changes, not a patch release:
+  * BREAKING: the interactive TUI runs fullscreen by default now,
+    so the terminal's normal scrollback is gone. Set tuiMode to
+    "regular" in the settings, or pass --tui-mode regular, for
+    the old behaviour
+  * BREAKING: MCP OAuth credentials are keyed by server name and
+    URL instead of by URL alone, so two servers behind one URL can
+    hold separate accounts. Credentials written by 0.99.x move to
+    the first server that reads them; other servers on the same
+    URL have to sign in again
+  * BREAKING: MCP sign-in enforces RFC 9207 and rejects an
+    authorization response whose iss names another authorization
+    server. A server advertising a wrong or missing one needs the
+    new oauth.authServerMetadataUrl setting
+  * BREAKING: --provider without --model fails now instead of
+    silently running another provider's default model
+  * BREAKING: codemode scripts have to probe for a tool with
+    "name" in tools; typeof tools.name no longer finds it, and
+    the codemode description carries one call line per tool
+    instead of the full declaration
+  * BREAKING: quietStartup also takes "header", which keeps the
+    version and key hints but hides the model scope line and the
+    loaded-resource listing
+  * Sign in with Radius from /login, which can set up the Radius
+    MCP server too, and with a copy code for Anthropic when the
+    browser runs on another machine
+  * Codemode scripts call models.generateImages() to run image
+    models with the session's credentials. Codemode needs about
+    40% fewer prompt tokens and its errors now name close matches
+    and the expected argument shape
+  * MCP step-up sign-in keeps the scopes it already had, so a
+    server asking for more no longer causes a sign-in loop
+  * Fix MCP tools that tool_search loaded being dropped on resume
+    and /reload, user messages keeping two full-width copies of
+    every rendered line, and slash command completion after
+    leading whitespace
+  * Fix the memory a long assistant message keeps in the
+    transcript (about a fifth of before), colour bleeding past
+    highlights in fullscreen mode, and the system theme
+    oversaturating pastel palettes
+  * Many more fixes and improvements; see upstream's release notes
+- Refresh the vendored node_modules: the ten @earendil-works
+  packages go 0.99.2 -> 1.0.0 and nothing else in the 119 shipped
+  modules moves, so the license union is unchanged. pi-agent-core
+  drops its chord, pi-telemetry, diff, ignore and yaml deps, all
+  of which other packages in the tree still pull in.
+- The codemode sandbox is still WebAssembly only (quickjs.wasm
+  plus five .so-named WASI modules, no ELF), so the package stays
+  noarch
+
+-------------------------------------------------------------------
+Fri Oct  2 05:50:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.99.2:
+  * MCP servers with the default codemode exposure no longer block
+    the first prompt; they are listed in a short mcp_servers
+    system prompt section and scripts find their tools with
+    searchTools() and describeNamespace()
+  * More MCP authentication: oauth.clientName for servers that
+    only accept known OAuth clients, and "auth": {"provider": ...}
+    to send a provider's /login token to an HTTP server
+  * Anthropic workload identity federation from
+    ANTHROPIC_FEDERATION_RULE_ID, ANTHROPIC_ORGANIZATION_ID and
+    ANTHROPIC_IDENTITY_TOKEN_FILE
+  * /reload enables tools newly added to the defaultTools setting
+  * Fix codemode image() accepting malformed base64 or
+    unsupported image types, which made every later provider
+    request fail with HTTP 400
+  * Fix codemode scripts calling the wrong MCP tool when two
+    names differ only in "-" and "_"; such names now
+    normalise to "_"
+  * Fix new sessions intermittently ignoring the saved default
+    model, or warning that no models are available, for
+    extension-registered providers with a stored credential
+  * Fix Anthropic requests failing when a tool schema uses
+    minimum or maximum, which strict tool use rejects; such
+    tools are sent non-strict
+  * Fix provider retries firing immediately on an unparseable
+    Retry-After date, and prompt submission slowing as a
+    session grows
+  * Many more fixes and improvements; see upstream's release notes
+- Refresh the vendored node_modules: the ten @earendil-works
+  packages go 0.99.1 -> 0.99.2 and nothing else in the 119
+  shipped modules moves, so the license union is unchanged
+  * CVE-2026-102277 (boo#1283392): brace-expansion is 5.0.12,
+    at the fix floor, so the package is not affected by it
+  * CVE-2026-102278 (boo#1283412): brace-expansion is 5.0.12,
+    above the 5.0.11 fix floor, so the package is not
+    affected by it
+
+-------------------------------------------------------------------
 Wed Sep 30 08:32:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.99.1 (upstream jumped from 0.87.1; no
