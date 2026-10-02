@@ -345,4 +345,13 @@
   * Support case-insensitive product routing for in-process OpenAPI commands (#1445). (forwarded request 1378879 from glaubitz)</comment>
     <requestid>1378881</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>39cb4950d3eb422b2df0734dcd9e81a7</srcmd5>
+    <version>3.5.1</version>
+    <time>1790975114</time>
+    <user>anag_factory</user>
+    <comment>- Update github.com/klauspost/compress to v1.18.7
+  (bsc#1283596, CVE-2026-63209) (forwarded request 1382008 from glaubitz)</comment>
+    <requestid>1382082</requestid>
+  </revision>
 </revisionlist>

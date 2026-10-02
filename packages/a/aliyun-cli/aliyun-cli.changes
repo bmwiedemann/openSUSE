@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:51:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update github.com/klauspost/compress to v1.18.7
+  (bsc#1283596, CVE-2026-63209)
+
+-------------------------------------------------------------------
 Fri Sep 18 18:13:41 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to version 3.5.1
