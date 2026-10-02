@@ -17,42 +17,55 @@
 
 
 Name:           zpaqfranz
-Version:        65.5
+Version:        65.7
 Release:        0
 Summary:        A journaling, incremental, deduplicating archiver
 # Legal-Review-Notice: zpaqfranz is a single-translation-unit program that
 # embeds a large amount of third-party code. Upstream enumerates every piece
 # in the "Credits and copyrights and licenses" block of zpaqfranz.cpp
-# (28 entries); the tag below is the union of what that block declares,
-# after electing the permissive side of the two dual-licensed pieces:
+# (31 entries, numbered 0 to 30); the tag below is the union of what that
+# block declares, after electing the permissive side of the two dual-licensed
+# pieces:
 #  - zpaqfranz itself and libdivsufsort, Embedded Artistry, nilsimsa, zsfx
 #    and ascii-art: MIT (LICENSE is the MIT text),
 #  - zpaq, libtomcrypt AES, salsa20, unzpaq206, the encode.su modifications,
 #    Whirlpool, SHA-Intrinsics and the man page: public domain,
 #  - Crc32, hash-library (MD5/SHA-3) and crc32c: Zlib,
 #  - wyhash: Unlicense,
-#  - xxHash and LZ4: BSD-2-Clause,
+#  - xxHash: BSD-2-Clause,
 #  - HighwayHash: Apache-2.0, and BLAKE3 is "CC0-1.0 OR Apache-2.0" - we
 #    elect Apache-2.0, which is already required by HighwayHash, so no
 #    CC0-1.0 obligation is taken on,
 #  - the libtomcrypt AES is "public domain OR WTFPL" - we elect public domain,
 #  - Twofish by Niels Ferguson: Ferguson-Twofish.
-#  - zstd 1.5.7 (65.5, entry 28), the -m8 backend: BSD-3-Clause.
+#  - zstd 1.5.7 (entry 28), the -m8 backend: BSD-3-Clause.
+#  - postami 0.3.0 / zippami (entry 29), the "work email" SMTP client and the
+#    "work zip" writer: MIT, the licence of the rest of this file.
+#  - mbedTLS 3.6.4 (entry 30), the amalgamation inside that client:
+#    "Apache-2.0 OR GPL-2.0-or-later" - we elect Apache-2.0, already required
+#    by HighwayHash. The block sits inside the only #ifndef NOEMAIL block, and
+#    NOEMAIL is not defined below, so it is compiled and linked in. 65.7 also
+#    added entries 29 and 30 to the credits block, so upstream now lists what
+#    it previously shipped unlisted; both are licences this tag already
+#    carries, so neither adds a new term.
 # The bundled curl.h is licensed under the curl licence, but only the header
 # is present: libcurl and libssh are dlopened at run time and no curl or
 # libssh code is linked into the binary, so it is not part of this tag.
+# libsodium is likewise dlopened, and only from inside #ifdef ZPAQFULL, which
+# is not defined below.
 # The Sha1Opt.asm / 7zAsm.asm public-domain code (entry 5) is Windows-only
 # and never compiled here.
 # Entries 25 (libfuse, LGPL) and 26 (WinFsp, GPL-3.0 with a FLOSS exception)
-# belong to the new "mount" command, which exists only under -DZPAQMOUNT.
+# belong to the "mount" command, which exists only under -DZPAQMOUNT.
 # That is not defined below, so no FUSE code is compiled and neither entry
 # is part of this tag.
+# Entries 22 (LZ4) and 27 (LZAV) are stubs marked "Removed (65.5d: -m6 LZ4 /
+# -m7 LZAV dropped)"; neither library has a single symbol left in the source,
+# so neither contributes a licence (and LZ4's BSD-2-Clause survives in this
+# tag only through xxHash, entry 14).
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT AND SUSE-Public-Domain AND Zlib AND Unlicense AND Ferguson-Twofish
 URL:            https://github.com/fcorbelli/zpaqfranz
 Source0:        https://github.com/fcorbelli/zpaqfranz/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# Upstream's tag 65.5 still points at the 65.4 commit; the 65.5 code is
-# published only as a release asset.
-Source1:        https://github.com/fcorbelli/zpaqfranz/releases/download/%{version}/%{name}.cpp
 BuildRequires:  gcc-c++
 # libcurl and libssh are dlopened by name at run time for the URL and SFTP
 # features; the binary does not link them, so these stay weak dependencies.
@@ -62,7 +75,7 @@ Recommends:     libssh4
 Provides:       bundled(blake3)
 Provides:       bundled(highwayhash)
 Provides:       bundled(libdivsufsort-lite) = 2.00
-Provides:       bundled(lz4)
+Provides:       bundled(mbedtls) = 3.6.4
 Provides:       bundled(xxhash)
 Provides:       bundled(zstd) = 1.5.7
 
@@ -72,10 +85,7 @@ steroids,with deduplicated "snapshots" (versions). Conceptually similar to Mac
 time machine, but much more efficiently.
 
 %prep
-%autosetup -p1
-# The tag archive still carries the 65.4 zpaqfranz.cpp; the release asset
-# is the 65.5 one.
-cp %{SOURCE1} zpaqfranz.cpp
+%autosetup
 # Upstream ships these two with CRLF line endings, which rpmlint rejects.
 sed -i 's/\r$//' CHANGELOG.md COPYING
 

@@ -1,4 +1,74 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:52:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.7:
+  * a -image now picks the mode by itself: used clusters of NTFS
+    (VSS when possible, swap files left out), used clusters of
+    FAT/exFAT with the drive locked, or the whole partition when
+    that cannot be read; -raw stays for the whole partition. The
+    old -image -ntfs -vss still work
+  * -turbo, default since 65.6, now parallelises image streams as
+    well as files (about 800 MB/s for an NVMe image)
+  * image -raw now also writes the unused part of the destination;
+    a file or .vhd destination is unaffected
+  * A full disk while extracting is reported at the first failing
+    write (56483, exit 2); with -image it was not reported at all
+  * -huge now applies to every file, not only the first, forces
+    -sparse off and shows one progress with one ETA
+  * Fix a raw restore with -to writing on the SOURCE drive instead
+    of the destination (also in 65.6) and the free space being
+    checked on the current drive instead of the destination's
+  * Exit codes: a damaged-archive .vhd export is 2 instead of 0
+  * New Windows-only .vhd output and mount of .vhd/.vhdx/.iso
+    (mount needs -DZPAQMOUNT, which this build does not define)
+  * Many more fixes of upstream issues and Windows-only ones
+- Upstream's credits block gained entry 29 (postami, MIT) and entry
+  30 (mbedTLS 3.6.4, Apache-2.0), compiled in unlisted since 65.6;
+  both are already in the License tag, so it is unchanged. Update
+  the Legal-Review-Notice entry count
+
+-------------------------------------------------------------------
+Thu Oct  1 18:26:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.6:
+  * New defaults for a: -m8 (zstd), -turbo and -fast; -715,
+    -noturbo, -nofast and -nosparse restore the 65.5 behaviour.
+    -filelist is now -fast, the old names still work
+  * New f -test: a read-only surface test of a whole device with a
+    verdict; with -force -paranoid it writes the device back, reads
+    it and compares, to find fake capacity and lost writes
+  * New franzdash console dashboard showing the live map of f -test
+    and of a -image; -nodashboard or -noeta for the classic line
+  * a -image now continues past an unreadable sector, filling it
+    with zeros, and reports one big READ ERROR with exit code 2
+  * New mount -range A:B, which mounts only what those versions
+    added or updated; mount itself needs -DZPAQMOUNT, which this
+    build does not define
+  * New work email: an SMTP client with TLS inside the binary, plus
+    work zip for a plain deflate .zip of one file
+  * Damaged archives are now reported instead of silently misread:
+    missing blocks, a broken block name, a lost index block
+    (72401-72406, 72414), and a -chunk archive whose last part was
+    dropped
+  * Exit codes are now trustworthy: a fatal error is 2 instead of
+    0, and commands that counted errors return the worst of the
+    parts (0, 1 or 2) instead of a sum that could read as success
+  * Fix x -stdout sending its messages into the data instead of
+    stderr, x without -force silently skipping files of a different
+    size, a flipped bit in an index block name losing the last
+    version, and x -ramdisk stopping all writes after one failure
+  * Many more fixes of upstream issues and Windows-only ones
+- Upstream's tag 65.6 points at the 65.6 commit, so the
+  zpaqfranz.cpp release-asset overlay and the Source1 it needed are
+  gone again
+- mbedTLS 3.6.4 is new in 65.6, bundled for work email; it is
+  Apache-2.0 OR GPL-2.0-or-later and Apache-2.0 is elected, so the
+  License tag is unchanged
+- Drop the now-empty bundled(lz4): LZ4 and LZAV lost all their code
+  in 65.5 and only their credits stubs remain, so bundled(xxhash)
+  is now the sole BSD-2-Clause source; add bundled(mbedtls) = 3.6.4
+
+-------------------------------------------------------------------
 Wed Sep 30 08:26:16 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 65.5:

@@ -172,4 +172,13 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
     <comment>Update to 65.5: new -m8 zstd 1.5.7 backend, -m6 redefined as m4.5 (LZ4/LZAV methods dropped), forward-only a -append with -stdout delta, autotest -all -quick, ARM core-count fix, fixes upstream issues 292-313. Bundled zstd adds BSD-3-Clause to License; code ships only as release asset.</comment>
     <requestid>1381674</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>4420d3d5acc03b01c09b09f15ff33ee3</srcmd5>
+    <version>65.7</version>
+    <time>1790974979</time>
+    <user>anag_factory</user>
+    <comment>Update to 65.7, superseding 1381963 (65.6, still unaccepted), so Factory jumps 65.5 -&gt; 65.7 in one request. Tag archive and release asset are byte-identical, so still no Source1 overlay. Upstream's credits block gained postami and mbedTLS entries; Apache-2.0 elected, License tag unchanged.
+</comment>
+    <requestid>1382093</requestid>
+  </revision>
 </revisionlist>
