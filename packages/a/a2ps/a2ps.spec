@@ -127,7 +127,7 @@ find -name Makefile.in | xargs touch
 %build
  autoreconf -fiv -I $PWD -I $PWD/m4
  export PATH=$PWD:$PATH
- export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS) -funroll-loops -Wall -pipe -fstack-protector -fPIE"
+ export CFLAGS="%{optflags} -D_GNU_SOURCE $(getconf LFS_CFLAGS) -funroll-loops -Wall -pipe -fPIE"
  export LPR=lpr
  export CC=gcc
  export TZ=UTC

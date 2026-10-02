@@ -501,4 +501,12 @@ passes). changes-guard flags it (exit 1) as designed; the diff
 below the new entry is exactly that one line. (forwarded request 1377742 from pluskalm)</comment>
     <requestid>1377835</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>6856b236a495fce19aff69f144a92349</srcmd5>
+    <version>4.15.8</version>
+    <time>1790975339</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381340 from scarabeus_iv)</comment>
+    <requestid>1382136</requestid>
+  </revision>
 </revisionlist>
