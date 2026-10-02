@@ -1,0 +1,7 @@
+<package name="libfreeaptx" project="openSUSE:Factory">
+  <title>Open Source implementation of Audio Processing Technology codec (aptX)</title>
+  <description>This is Open Source implementation of Audio Processing Technology codec (aptX)
+derived from ffmpeg 4.0 project and licensed under LGPLv2.1+. This codec is
+mainly used in Bluetooth A2DP profile.</description>
+  <url>https://github.com/regularhunter/libfreeaptx</url>
+</package>
