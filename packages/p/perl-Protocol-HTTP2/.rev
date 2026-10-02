@@ -62,4 +62,12 @@
       - licence: GPL-1 has been updated with the correct links to FSF (#19)</comment>
     <requestid>1376329</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>6bc4cb0931bf5ee677cf3c6c7b9d7700</srcmd5>
+    <version>1.140.0</version>
+    <time>1790974949</time>
+    <user>anag_factory</user>
+    <comment>        bsc#1279629</comment>
+    <requestid>1381949</requestid>
+  </revision>
 </revisionlist>
