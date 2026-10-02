@@ -1167,4 +1167,12 @@ bsc#1273781, bsc#1273783, bsc#1273785, bsc#1278787):
   - drop testsuite.patch and fix test setup instead</comment>
     <requestid>1374599</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>d86ecb9c2b5607d2c2445f759ee42100</srcmd5>
+    <version>3.2.0</version>
+    <time>1790974901</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1381869</requestid>
+  </revision>
 </revisionlist>

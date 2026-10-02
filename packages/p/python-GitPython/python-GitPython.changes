@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Wed Sep 30 12:49:13 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 3.2.0:
+  * prepare for next release, v3.2
+  * fix(remote): validate protocols in rendered transport arguments
+  * fix(config): bound option-line parsing
+  * ci: remove `codespell` checks and configuration
+  * fix(index): confine staging reads to worktree files
+  * fix(tree): validate entry names and record boundaries
+  * fix(index): validate paths at native index boundaries
+  * fix(repo): validate rendered archive remote options
+  * fix(cmd): reject the alternate `ext://` helper selector
+  * fix(refs): bound symbolic reference resolution and updates
+  * fix(repo): delegate revision message searches to Git
+  * refactor(db): deprecate the pure-Python `GitDB` backend
+  * fix(commit): bound co_authors trailer parsing
+  * fix: validate size lookups and preserve binary SHAs (#2254)
+  * fix(repo): preserve literal separate Git directory paths
+  * fix: bound actor and date parsing
+  * build(deps): bump astral-sh/setup-uv from 10.1.0 to 10.2.0
+  * fix: complete safety checks in Git command wrappers
+  * fix: skip a UTF-8 BOM when reading config files
+  * bump minor version to indicate drop of python 3.7 support
+  * feat(submodule): option to update without fetching
+  * fix(remote): reject option-shaped update targets
+  * fix(index): preserve path operands when moving and checking ignores
+  * fix(refs): keep branch and tag operands out of option parsing
+  * fix(remote): reject option-shaped pull operands
+  * Drop Python 3.7
+  * fix: strip inline config comments the way git does
+  * Move [doc] extra to a PEP 735 dependency group; add uv-sync CI check
+  * Move project metadata to pyproject.toml
+  * fix: match Git config names case-insensitively (#2240)
+  * fix: reject comments after implicit boolean config keys
+  * fix: preserve implicit boolean config keys (#2237)
+  * Correct public API typing and add portable runtime checks
+  * Fix timeout child-process lookup on non-GNU systems
+  * fix: validate checkout positional reference options
+  * test: Pass strings to readlink for Windows Python 3.7
+  * fix: Clone into dangling submodule metadata symlink targets on Windows
+  * test: Disable automatic maintenance in remote timeout tests
+  * test: Simplify submodule path simulation and verify metadata removal
+  * fix: Preserve submodule paths and release checkout handles on Windows
+  * fix: Validate submodule checkout and metadata paths before mutation
+  * fix: Reject submodule move destinations through intermediate symlinks
+  * Clarify detached HEAD access and attach writable test fixtures (#2230)
+  * Read git's yes/no and on/off booleans in get_value
+
+-------------------------------------------------------------------
+Wed Sep 30 12:39:29 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to version 3.1.62 (fixes CVE-2026-100689 (bsc#1282983)):
+  * prepare new release
+  * get better commit messages from agents
+  * test: cover subdirectory discovery and pathspec commands in bare-repo worktrees (#2223)
+  * fix: parse joined config values as a whole
+  * fix: ignore continuation markers in config comments
+  * fix: join backslash line continuations when reading config values
+  * build(deps): bump https://github.com/astral-sh/ruff-pre-commit
+  * Reject submodule checkout paths outside the repository
+  * ci: restore Cygwin virtual environments on Python 3.9
+  * fix: keep bare-repository worktrees non-bare (#2223)
+
+-------------------------------------------------------------------
 Fri Aug 28 15:07:45 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to version 3.1.61:
