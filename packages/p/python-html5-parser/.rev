@@ -119,4 +119,21 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1280761</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>2c56276644501d53c8d815169ba7d2b5</srcmd5>
+    <version>0.5.0</version>
+    <time>1791051261</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 0.5.0:
+  * Output parse rate in benchmark
+  * Remove unused code
+  * Fix syntax of license in project metadata
+  * Add support for latest WHATWG HTML 5 spec changes
+  * fix a couple of read overflows and handle null byte for
+    attributes
+
+  * Fix an error parsing XHTML where the xlink namespace is defined on
+- initial version 0.4.3</comment>
+    <requestid>1382227</requestid>
+  </revision>
 </revisionlist>
