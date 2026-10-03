@@ -1,7 +1,7 @@
 #
 # spec file for package tayga
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,20 +19,18 @@
 %if 0%{?suse_version} == 1500
 %global force_gcc_version 14
 %endif
-
 Name:           tayga
-Version:        0.9.5
+Version:        0.9.6
 Release:        0
 Summary:        Out-of-kernel stateless NAT64 implementation
 License:        GPL-2.0-or-later
-Group:          Productivity/Networking/Other
-URL:            http://www.litech.org/tayga/
+URL:            https://github.com/apalrd/tayga
 Source0:        https://github.com/apalrd/tayga/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        tayga_setup_tun
 Source2:        tayga_destroy_tun
-Patch:          harden-services.patch
-ExcludeArch:    %{arm} %{i586}
+Patch0:         harden-services.patch
 BuildRequires:  gcc%{?force_gcc_version}
+ExcludeArch:    %{arm} %{i586}
 
 %description
 TAYGA is an out-of-kernel stateless NAT64 implementation for Linux that uses
@@ -45,16 +43,18 @@ dedicated NAT64 hardware would be overkill.
 sed -i 's|%{_localstatedir}/db/tayga|%{_localstatedir}/lib/tayga|g' tayga.conf.example
 
 %build
-%make_build CFLAGS="%{optflags}" V=1 RELEASE=1 CC="gcc%{?force_gcc_version:-%{force_gcc_version}}"
+%make_build CFLAGS="%{optflags}" RELEASE=1 CC="gcc%{?force_gcc_version:-%{force_gcc_version}}"
+
+%check
+%make_build test CFLAGS="%{optflags} -Wno-error=unused-but-set-variable -Wno-error=discarded-qualifiers"
 
 %install
-#make_install
 install -d %{buildroot}%{_var}/lib/tayga
 install -d %{buildroot}%{_sysconfdir}/tayga
 
 install -D -m 0644 tayga.conf.example %{buildroot}%{_sysconfdir}/tayga.conf
 install -D -m 0755 -t %{buildroot}%{_sbindir} tayga %{SOURCE1} %{SOURCE2}
-install -D -m 0644 -t %{buildroot}%{_unitdir}/ tayga.service tayga@.service
+install -D -m 0644 -t %{buildroot}%{_unitdir}/ scripts/tayga.service scripts/tayga@.service
 install -D -m 0644 -t %{buildroot}%{_mandir}/man5/ *.5
 install -D -m 0644 -t %{buildroot}%{_mandir}/man8/ *.8
 ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctayga
@@ -74,7 +74,7 @@ ln -sf %{_sbindir}/service %{buildroot}%{_sbindir}/rctayga
 %files
 %license LICENSE
 %doc README.md
-%doc *.sh
+%doc tayga.conf.example
 %config(noreplace) %{_sysconfdir}/tayga.conf
 %dir %{_sysconfdir}/tayga/
 %dir %{_var}/lib/tayga/

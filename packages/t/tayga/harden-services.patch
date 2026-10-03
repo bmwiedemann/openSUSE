@@ -1,18 +1,16 @@
-Index: tayga-0.9.5/tayga.service
+Index: tayga-0.9.6/scripts/tayga.service
 ===================================================================
---- tayga-0.9.5.orig/tayga.service
-+++ tayga-0.9.5/tayga.service
-@@ -1,11 +1,24 @@
- [Unit]
- Description=Simple, no-fuss NAT64
--After=network.target
+--- /dev/null
++++ tayga-0.9.6/scripts/tayga.service
+@@ -0,0 +1,24 @@
++[Unit]
++Description=Simple, no-fuss NAT64
 +After=syslog.target network.target firewall.target
- 
- [Service]
- Type=simple
--PrivateTmp=true
++
++[Service]
++Type=simple
 +ExecStartPre=/usr/sbin/tayga_setup_tun
- ExecStart=/usr/sbin/tayga -d --config /etc/tayga.conf
++ExecStart=/usr/sbin/tayga -d --config /etc/tayga.conf
 +ExecStopPost=/usr/sbin/tayga_destroy_tun
 +# added automatically, for details please see
 +# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
@@ -26,13 +24,13 @@ Index: tayga-0.9.5/tayga.service
 +ProtectControlGroups=true
 +RestrictRealtime=true
 +# end of automatic additions
- 
- [Install]
- WantedBy=multi-user.target
-Index: tayga-0.9.5/tayga@.service
++
++[Install]
++WantedBy=multi-user.target
+Index: tayga-0.9.6/scripts/tayga@.service
 ===================================================================
---- tayga-0.9.5.orig/tayga@.service
-+++ tayga-0.9.5/tayga@.service
+--- tayga-0.9.6.orig/scripts/tayga@.service
++++ tayga-0.9.6/scripts/tayga@.service
 @@ -1,6 +1,6 @@
  [Unit]
 -Description=Simple, no-fuss NAT64
@@ -42,24 +40,3 @@ Index: tayga-0.9.5/tayga@.service
  
  [Service]
  # To set up an extra tayga service instance, create a new tayga config in
-@@ -9,8 +9,19 @@ After=network.target
- # systemctl enable tayga@instancename.service
- 
- Type=simple
--PrivateTmp=true
- ExecStart=/usr/sbin/tayga -d --config /etc/tayga/%i.conf
-+# added automatically, for details please see
-+# https://en.opensuse.org/openSUSE:Security_Features#Systemd_hardening_effort
-+PrivateTmp=true
-+ProtectSystem=full
-+ProtectHome=true
-+ProtectHostname=true
-+ProtectKernelTunables=true
-+ProtectKernelModules=true
-+ProtectKernelLogs=true
-+ProtectControlGroups=true
-+RestrictRealtime=true
-+# end of automatic additions
- 
- [Install]
- WantedBy=multi-user.target

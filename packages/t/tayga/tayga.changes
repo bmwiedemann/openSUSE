@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct  3 14:22:49 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.9.6:
+  * Zero UDP Checksum behavior (RFC compliance)
+  * Implement packet drop/reject logging and dynamic pool assignment logging
+  * Offlink MTU configuration
+  * Allow compile-time override of configuration path
+  * Daemon: create pidfile with saner permissions
+  * Fix serialization of dynamic map if time_t != long
+  * Fix ipv6-addr check and resolve log-related crash
+  * Makefile improvements and build fixes
+- Rebase harden-services.patch for upstream service file layout changes
+- Remove obsolete Group tag
+- Enable %check test suite
+
+-------------------------------------------------------------------
 Sun Aug 10 02:20:15 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - force newer gcc to fix build on 15.x
