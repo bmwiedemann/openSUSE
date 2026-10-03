@@ -22,6 +22,9 @@
 %if 0%{?gcc_version} < 10
 %define with_gcc 11
 %endif
+%if 0%{?suse_version} < 1600 && 0%{?sle_version} < 150400
+%define with_cmake 3
+%endif
 Name:           boringssl
 Version:        0.20260813
 Release:        0
@@ -36,7 +39,7 @@ Patch2:         0003-soname-sover.patch.patch
 Patch3:         0004-lower-cmake-version.patch
 # https://github.com/lexiforest/curl-impersonate/raw/refs/tags/v2.1.1/patches/boringssl.patch
 Patch10:        curl-impersonate.patch
-BuildRequires:  cmake >= 3.0
+BuildRequires:  cmake%{?with_cmake} >= 3.20
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?with_gcc}-c++
 BuildRequires:  golang(API) >= 1.13

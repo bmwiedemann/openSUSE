@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:28:55 UTC 2026 - Fridrich Strba <fstrba@suse.com>
+
+- Use cmake3 on SLE-15-SP3 and lower, since it is on version 3.20.0
+  which is required by build of this package
+
+-------------------------------------------------------------------
 Thu Aug 27 10:33:38 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Modify curl-impersonate.patch: Build and distribute the bssl
