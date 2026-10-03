@@ -159,4 +159,12 @@
     - Reconstructed AC coefficients are checked against the 16-bit (forwarded request 1381542 from iznogood)</comment>
     <requestid>1381652</requestid>
   </revision>
+  <revision rev="12" vrev="2">
+    <srcmd5>4522bb408489db65c69127b03c2f9f83</srcmd5>
+    <version>1.1.2.0</version>
+    <time>1791051255</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1382223</requestid>
+  </revision>
 </revisionlist>

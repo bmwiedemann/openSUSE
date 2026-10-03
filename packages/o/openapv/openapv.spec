@@ -27,7 +27,6 @@ URL:            https://github.com/AcademySoftwareFoundation/openapv
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:         remove-opensuse-release-requirement.patch
 BuildRequires:  cmake
-ExcludeArch:    %{ix86}
 
 %description
 The APV codec is a professional video codec, which was developed in response to
@@ -41,15 +40,20 @@ technologies, which consist of traditional methods published between the early
 1980s and the end of the 1990s.
 
 The APV codec standard has the following features:
-- Perceptually lossless video quality, which is close to raw video quality
-- Low complexity and high throughput intra frame only coding without pixel domain prediction
-- Support for high bit-rate range up to a few Gbps for 2K, 4K and 8K
+
+* Perceptually lossless video quality, which is close to raw video quality
+* Low complexity and high throughput intra frame only coding without
+  pixel domain prediction
+* Support for high bit-rate range up to a few Gbps for 2K, 4K and 8K
   resolution content, enabled by a lightweight entropy coding scheme
-- Frame tiling for immersive content and for enabling parallel encoding and decoding
-- Support for various chroma sampling formats from 4:2:2 to 4:4:4, and bit-depths from 10 to 16
-- Support for multiple decoding and re-encoding without severe visual quality degradation
-- Support multi-view video and auxiliary video like depth, alpha, and preview
-- Support various metadata including HDR10/10+ and user-definded format
+* Frame tiling for immersive content and for enabling parallel
+  encoding and decoding
+* Support for various chroma sampling formats from 4:2:2 to 4:4:4,
+  and bit-depths from 10 to 16
+* Support for multiple decoding and re-encoding without severe visual
+  quality degradation
+* Support multi-view video and auxiliary video like depth, alpha, and preview
+* Support various metadata including HDR10/10+ and user-definded format
 
 %package devel
 Summary:        Development files for %{name}
