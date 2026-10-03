@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct  3 06:43:00 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Version update to 3.0.3 which includes:
+  - fixed a possible privilege escalation
+  - added SPDX license identifiers
+  - updated default option values in PPD
+
+-------------------------------------------------------------------
 Tue Apr 15 19:47:54 UTC 2025 - Carsten Ziepke <kieltux@gmail.com>
 
 - Version update to 3.0.2 which includes:

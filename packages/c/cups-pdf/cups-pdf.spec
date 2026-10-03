@@ -1,7 +1,7 @@
 #
 # spec file for package cups-pdf
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           cups-pdf
-Version:        3.0.2
+Version:        3.0.3
 Release:        0
 Summary:        Virtual PDF printer for CUPS
 License:        GPL-2.0-or-later
