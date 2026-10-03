@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.5.12
+%global opentui_version 0.5.14
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -56,22 +56,24 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.18
+Version:        2.0.22
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 1.18.32 from the declared license field
-# of all 511 unique packages in the vendor tarball (512 store entries, one of
+# Legal-Review-Notice: rederived for 2.0.22 from the declared license field
+# of all 361 unique packages in the vendor tarball (362 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set is unchanged from 1.18.31; this release gained one Apache-2.0
-# package (another @ai-sdk/openai-compatible, 2.0.62, that the updated
-# @ai-sdk/togetherai resolves to) and lost none. Two conclusions are not
-# visible from the packages themselves:
-# poe-oauth 0.0.8 declares no licence and ships no text, its MIT grant comes
-# from the upstream repository root; caniuse-lite is CC-BY-4.0, whose
-# attribution clause is why %%prep installs its LICENSE separately.
+# SPDX set is unchanged; this release gained one MIT package (jose 6.0.11,
+# which the updated @agentclientprotocol/sdk 1.6.0 resolves to) and lost none.
+# Three conclusions are not visible from the packages themselves:
+# @npmcli/redact says ISC and ships MIT text, abbrev says ISC and its LICENSE
+# says "ISC OR MIT", and caniuse-lite is CC-BY-4.0, whose attribution clause
+# is why %%prep installs its LICENSE separately. One trap when counting: a
+# store entry also holds nested subpath packages (zod's v3/v4/mini, solid-js's
+# h/html/store, effect's ai-docs) whose manifests carry no license field, so
+# only the manifest whose name matches the entry is a package.
 License:        0BSD AND Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND BlueOak-1.0.0 AND CC-BY-3.0 AND CC-BY-4.0 AND CC0-1.0 AND ISC AND MIT
 URL:            https://opencode.ai
 # Not the upstream tarball. Upstream ships the web console, the desktop app
@@ -199,6 +201,9 @@ BuildRequires:  zstd
 # libfff_c.so (verified by export comparison).
 Requires:       bun-pty >= %{bun_pty_version}
 Requires:       fff >= %{fff_version}
+# opencode spawns the git binary (packages/core/src/git.ts), so git-core is the
+# dependency, not its perl modules; spec-cleaner --perl wants to expand it into
+# ~20 perl(Git*) lines that no longer pull the binary in. Accepted deviation.
 Requires:       git-core
 # Native TUI library, loaded at runtime (not compiled into the binary).
 # Equality because the FFI ABI is private and unversioned.

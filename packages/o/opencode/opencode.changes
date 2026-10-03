@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sat Oct  3 08:30:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.22 (patch bump inside the 2.0.x line; v1 ends at
+  1.18.34, tags only). Four releases in three days, 184 commits, no
+  CVEs.
+- Providers:
+  * new ElevenLabs Scribe transcription route, and output tokens
+    now fit the context window (capped at 256k)
+  * far more provider errors are classified: invalid API keys as
+    authentication errors, context-length rejections from Workers
+    AI, Nova, DeepInfra, Novita and Together as context overflow
+  * prompt caching extended to OpenRouter Anthropic/Qwen,
+    DigitalOcean, Alibaba and Copilot Responses
+- ChatGPT token sharing gets its own OAuth method plus a usage
+  limit dialog and clearer errors
+- New `opencode auth export`/`import` and a flag to disable the
+  background service; `run` continues after a declined permission
+  ask
+- Sessions: database files restricted to their owner, repository
+  hosts reject relative path segments, MCP errors self-describing
+- Plugins gain session removal, compaction and parent sessions
+- Requires opentui 0.5.14 (was 0.5.12): the FFI ABI between
+  @opentui/core and libopentui.so is private and unversioned
+- Legal review re-derived: one package added (jose, MIT), the SPDX
+  licence set is unchanged
+- Many more fixes and improvements; see upstream's release notes
+  for the full list
+
+-------------------------------------------------------------------
 Sun Sep 27 18:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.18 (new v2 line; v1 ends at 1.18.32, tags only,

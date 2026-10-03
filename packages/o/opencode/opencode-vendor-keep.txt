@@ -1,4 +1,4 @@
-@agentclientprotocol+sdk@1.2.1+68a1e3a0c4588df3
+@agentclientprotocol+sdk@1.6.0+68a1e3a0c4588df3
 @ai-sdk+cohere@3.0.27+d6123d32214422cb
 @ai-sdk+gateway@3.0.104+d6123d32214422cb
 @ai-sdk+openai-compatible@2.0.37+d6123d32214422cb
@@ -108,11 +108,11 @@
 @opentelemetry+sdk-trace-base@2.8.0+460773ef8ff1e07c
 @opentelemetry+sdk-trace-node@2.8.0+460773ef8ff1e07c
 @opentelemetry+semantic-conventions@1.43.0
-@opentui+core-linux-arm64@0.5.12
-@opentui+core-linux-x64@0.5.12
-@opentui+core@0.5.12+2240c214a0f33214
-@opentui+keymap@0.5.12+c9c19377abdf51c4
-@opentui+solid@0.5.12+b80727ad73327db2
+@opentui+core-linux-arm64@0.5.14
+@opentui+core-linux-x64@0.5.14
+@opentui+core@0.5.14+2240c214a0f33214
+@opentui+keymap@0.5.14+1d36b113896b2e39
+@opentui+solid@0.5.14+b80727ad73327db2
 @parcel+watcher-linux-arm64-glibc@2.5.1
 @parcel+watcher-linux-x64-glibc@2.5.1
 @parcel+watcher@2.5.1
@@ -237,6 +237,7 @@ is-wsl@3.1.1
 isexe@2.0.0
 isexe@4.0.0
 isomorphic-ws@5.0.0+cb72dcd9952e90a1
+jose@6.0.11
 jose@6.2.9
 js-tokens@4.0.0
 js-yaml@3.15.1
@@ -286,7 +287,7 @@ npm-pick-manifest@11.0.3
 npm-registry-fetch@19.1.1+759ce506b1ed1a42
 open@11.0.4
 openai@6.49.0+386b76f59bd48871
-opentui-spinner@0.0.7+c27ddd509ff2b64d
+opentui-spinner@0.0.7+66c5b409d35a0cda
 p-limit@2.3.0
 p-locate@3.0.0
 p-map@7.0.6
