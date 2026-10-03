@@ -86,8 +86,8 @@ something a reviewer should have to work out.
 The keep list
 -------------
 
-opencode-vendor-keep.txt names the 362 store entries the vendor tarball
-keeps, out of the 758 that are left once the filtered install has had the
+opencode-vendor-keep.txt names the 356 store entries the vendor tarball
+keeps, out of the 746 that are left once the filtered install has had the
 platforms we do not build for removed. It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
@@ -97,15 +97,15 @@ it so Source0 stays the upstream tree and Patch0 still applies at %prep.
 
 The install runs with `--cpu '*' --os '*'`. Bun 1.4 resolves
 optionalDependencies for the host platform alone, so an install done on
-aarch64 contains no @opentui/core-linux-x64, @ff-labs/fff-bin-linux-x64-gnu
-or @parcel/watcher-linux-x64-glibc. A plain run notices - the script's keep
-list check stops with "keep list names packages the install did not produce"
-- but --retrace is what the list is regenerated with, and the counterpart
-step described below can only add packages the install produced. Without
-these flags it comes up three entries short of 362 - one per package above -
-and the x86_64 build on OBS, which is not the architecture this is generated
-on, is what finds out. The step after the install prunes the platforms we
-really do not want back out.
+aarch64 contains no @opentui/core-linux-x64, @ff-labs/fff-bin-linux-x64-gnu,
+@parcel/watcher-linux-x64-glibc or @opencode-ai/pty-linux-x64-gnu. A plain run
+notices - the script's keep list check stops with "keep list names packages
+the install did not produce" - but --retrace is what the list is regenerated
+with, and the counterpart step described below can only add packages the
+install produced. Without these flags it comes up four entries short of the
+full keep list - one per package above - and the x86_64 build on OBS, which is
+not the architecture this is generated on, is what finds out. The step after
+the install prunes the platforms we really do not want back out.
 
 Two things a trace cannot see, both handled by opencode_vendor_trace:
 
@@ -211,9 +211,9 @@ Patch3 keeps it blocked.
 
 The remaining patch is unrelated to the network.
 
-opencode-relax-bun-version.patch is, as of 2.0.22, inert. Upstream's build
+opencode-relax-bun-version.patch is, as of 2.0.23, inert. Upstream's build
 script fails unless bun satisfies a caret range around the version in the
-packageManager field: 2.0.22 pins bun@1.4.2 and Factory has 1.4.2, which
+packageManager field: 2.0.23 pins bun@1.4.2 and Factory has 1.4.2, which
 satisfies ^1.4.2, so the check passes and the patch changes nothing. Keep it
 anyway. Both versions float independently, a distribution ships one bun, and
 the day either side crosses a major the check would stop a build for a reason
@@ -247,10 +247,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 2.0.22,
-across the 361 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 2.0.23,
+across the 355 shipped packages:
 
-    MIT 197, Apache-2.0 78, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
+    MIT 197, Apache-2.0 72, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
     BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither
@@ -275,7 +275,7 @@ solid-js's h/html/store/universal/web, effect's ai-docs, diff's esm/cjs, and
 tslib's modules - and those manifests carry no name, no version and no license
 field. Counting the first package.json found per entry therefore reports a
 handful of unlicensed packages that are not packages at all; take the manifest
-whose name matches the entry, and count 361 rather than the number of files.
+whose name matches the entry, and count 355 rather than the number of files.
 Separately, poe-oauth 0.0.8 (no license field, no LICENSE file in the npm
 tarball, MIT granted by the root LICENSE of github.com/poe-platform/poe-code)
 left the closure after 1.18.32 and is no longer shipped; if it comes back the
@@ -285,8 +285,24 @@ note applies again.
 Native code
 -----------
 
-Everything compiled into the executable that is not JavaScript is built
-from source, in three ways:
+Everything compiled into the executable that is not JavaScript ends up there
+one of these ways:
+
+  - Embedded, taken from a prebuilt npm binary: @opencode-ai/pty-linux-arm64-gnu
+    and -linux-x64-gnu each ship an ELF bin/opencode-pty, and the built
+    executable carries one in its bun file table as
+    $bunfs/root/opencode-pty-<hash>. - the one native thing here that is
+    neither built here nor loaded from a package, so no Requires: covers
+    it. opencode_vendor's foreign-platform pass drops *.dylib, *.dll and
+    *.exe, but this file has no extension, so both survive and the
+    architecture not being built is simply never reached; that is why one
+    tarball serves both builds. Both packages are MIT. A distribution
+    wanting this built from source would have to take the crate and package
+    it; there is no such package today, so the prebuilt copy is what ships.
+    Note that %%check cannot see it: its embedded-file assertion matches
+    only .so, .node and .wasm, so the extensionless entry passes through
+    unasserted. Verified on 2.0.23, where 2.0.22 shipped the same two
+    binaries at 0.1.13.
 
   - Loaded from a package at run time (like libopentui.so): libfff_c.so
     from the fff package (the file finder behind the @ file picker,

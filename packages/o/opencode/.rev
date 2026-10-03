@@ -402,4 +402,26 @@ vendor 360 -&gt; 361 packages, +jose (MIT); licence set unchanged. Green on
 aarch64, all 5 patches still apply.</comment>
     <requestid>1382254</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>420a0ef426ac4983aa0d9527f1e389c6</srcmd5>
+    <version>2.0.23</version>
+    <time>1791306890</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.0.23; 2.x has no release objects, diff over 35 trees
+- New providers: Cohere chat, Venice, Google Interactions, Bedrock
+- Skills take disable-model-invocation; plugin dialog gains search
+- ACP: compaction as session updates, permissions match tool spec
+- Transient MCP connect failures retried; compaction model honoured
+- PTY handoff no longer breaks a restart; first output kept
+- CLI retries a managed service bind conflict, waits for shutdown
+- Gemini, Mistral, Cohere, Anthropic system messages kept in order
+- Requires bun-pty &gt;= 0.4.9 (was 0.4.8); 0.4.11 exports all 8 symbols
+- Vendor tree: 356 of 746 store entries kept, was 362; SPDX same
+- Legal: 355 packages, 6 Apache-2.0 out, 4 MIT in, no copyleft
+- One prebuilt ELF @opencode-ai/pty helper embeds (arch/libc at runtime)
+- no Requires:, no %check coverage, sha512-pinned but unsigned
+- Keep list retraced on aarch64; no x86_64 build has run against it
+- No CVE in the 127-commit range; boo#1280159 is RESOLVED FIXED</comment>
+    <requestid>1382573</requestid>
+  </revision>
 </revisionlist>

@@ -2,14 +2,9 @@
 @ai-sdk+cohere@3.0.27+d6123d32214422cb
 @ai-sdk+gateway@3.0.104+d6123d32214422cb
 @ai-sdk+openai-compatible@2.0.37+d6123d32214422cb
-@ai-sdk+openai-compatible@2.0.69+d6123d32214422cb
 @ai-sdk+perplexity@3.0.26+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.21+d6123d32214422cb
 @ai-sdk+provider-utils@4.0.23+d6123d32214422cb
-@ai-sdk+provider-utils@4.0.40+d6123d32214422cb
-@ai-sdk+provider-utils@4.0.46+d6123d32214422cb
-@ai-sdk+provider@3.0.14
-@ai-sdk+provider@3.0.15
 @ai-sdk+provider@3.0.8
 @ai-sdk+vercel@2.0.39+d6123d32214422cb
 @ampproject+remapping@2.3.0
@@ -92,9 +87,9 @@
 @npmcli+query@5.0.0
 @npmcli+redact@4.0.0
 @npmcli+run-script@10.0.4
-@opencode-ai+pty-linux-arm64-gnu@0.1.13
-@opencode-ai+pty-linux-x64-gnu@0.1.13
-@opencode-ai+pty@0.1.13
+@opencode-ai+pty-linux-arm64-gnu@0.2.0
+@opencode-ai+pty-linux-x64-gnu@0.2.0
+@opencode-ai+pty@0.2.0
 @opentelemetry+api-logs@0.219.0
 @opentelemetry+api@1.9.0
 @opentelemetry+context-async-hooks@2.8.0+460773ef8ff1e07c
@@ -160,7 +155,7 @@ brace-expansion@5.0.9
 braces@3.0.3
 browserslist@4.28.8+12f0098455ff50cb
 buffer-equal-constant-time@1.0.1
-bun-pty@0.4.8
+bun-pty@0.4.9
 bundle-name@4.1.0
 cacache@20.0.4
 caniuse-lite@1.0.30001809
@@ -349,7 +344,6 @@ tuf-js@4.1.0+759ce506b1ed1a42
 uqr@0.1.3
 util-deprecate@1.0.2
 validate-npm-package-name@7.0.2
-venice-ai-sdk-provider@2.1.1+8f25020307c65a5b
 walk-up-path@4.0.0
 web-tree-sitter@0.25.10
 which@2.0.2

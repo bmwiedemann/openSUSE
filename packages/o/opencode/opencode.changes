@@ -1,4 +1,50 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:22:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.23 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.22..v2.0.23 tag-to-tag diff, taken
+  over the 35 upstream package trees, not Source0's 20)
+  * New native provider support: Cohere chat, Venice, the Google
+    Interactions protocol and Anthropic Messages on Bedrock Mantle
+  * Skills take a disable-model-invocation frontmatter field, and
+    the plugin select dialog gains search and actions
+  * The agent client protocol reports compaction with standard
+    session updates, aligns permission requests with the tool call
+    spec, and keeps the model going when a question cannot be shown
+  * Transient MCP connect failures are retried, the compaction
+    agent model is honoured for summaries, and a provider-blocked
+    compaction now says why
+  * The persistent PTY handoff can no longer break a server restart
+    and the first output after spawn is no longer lost; upstream
+    also restored a musl x86_64 PTY entry in its lockfile, which
+    this glibc-only build never resolves
+  * The CLI retries a managed service bind after a conflict, keeps
+    a failed background service visible and waits for shutdown
+    before restarting it; the client survives a protocol-only
+    reconnect
+  * Gemini, Mistral, Cohere and Anthropic system messages are no
+    longer dropped or reordered; the server answers 404 for a
+    missing location folder
+  * The TUI shows read ranges after file paths, keeps its
+    transcript stable when history is prepended, gates terminals on
+    server PTY support and accepts plugin keymaps during setup
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.22..v2.0.23 commit range, which publishes no release notes
+- Requires bun-pty >= 0.4.9 (was 0.4.8) to follow the vendor tree.
+  It stays a floor: 0.4.11 exports exactly the eight cdylib symbols
+  the vendored 0.4.9 binds (verified by export comparison)
+- Regenerate the vendor tree: 356 of 746 store entries kept, was
+  362. The @ai-sdk provider trio and venice-ai-sdk-provider leave
+  the closure with the native providers that replaced them; bun-pty
+  moves to 0.4.9 and @opencode-ai/pty to 0.2.0
+- Legal review re-derived for the new tree: 355 packages, SPDX
+  licence set unchanged (six Apache-2.0 store entries out, four MIT
+  in, still no copyleft). One prebuilt ELF @opencode-ai/pty helper
+  embeds in the payload, chosen by arch and libc at run time, and
+  %check's embedded-file assertion cannot see it because it carries
+  no extension; README.SUSE-maint "Native code" records it
+
+-------------------------------------------------------------------
 Sat Oct  3 08:30:06 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.22 (patch bump inside the 2.0.x line; v1 ends at
