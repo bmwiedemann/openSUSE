@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-confluent-kafka
-Version:        2.14.0
+Version:        2.15.1
 Release:        0
 Summary:        Confluent's Apache Kafka client for Python
 License:        Apache-2.0

@@ -227,4 +227,41 @@
     Producer.__init()__, Producer.produce() and Consumer.commit()</comment>
     <requestid>1346156</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>541ae7378e075f4e0810de19296d69fe</srcmd5>
+    <version>2.15.1</version>
+    <time>1791055493</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.1:
+  * `DeserializingConsumer` and `DeserializingShareConsumer` now
+    deserialize the message key before the value, matching
+    `SerializingProducer` and the Java client. When both key and
+    value fail to deserialize, the key error is now
+    surfaced instead of the value error.
+  * Minor fix for subjectPrefix parameter in subjects API
+  * Fix race conditions
+  * Fix segmentation fault after calling
+    `AdminClient.delete_records()` followed
+  * by another Admin API call (e.g. `list_topics()`) on Python
+    3.14.
+  * Use `asyncio.get_running_loop()` instead of
+    `asyncio.get_event_loop()` to avoid creating a new event loop
+    and raise an error in case a loop isn't available
+    (@AlexCai26, #2339).
+  * confluent-kafka-python 2.15.1 is based on librdkafka 2.15.1,
+    see the librdkafka release notes for a complete list of changes,
+    enhancements, fixes and upgrade considerations.
+- update to 2.15.0 (bsc#1284013, CVE-2026-15911):
+  * confluent-kafka-python 2.15.0 adds a **Preview**
+    implementation of the KIP-932 share consumer (Queues for
+    Kafka). Members of a share group cooperatively consume from
+    the same partitions with per-record acquire/acknowledge
+    semantics and redelivery, providing queue-like consumption on
+    top of Kafka.
+  * New `ShareConsumer` and `DeserializingShareConsumer` clients:
+    subscribe, batch poll (`poll()` returns a `Messages` batch),
+    and close (with context-manager support).
+  * Implicit (default) and explicit acknowledgement modes</comment>
+    <requestid>1382101</requestid>
+  </revision>
 </revisionlist>
