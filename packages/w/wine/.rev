@@ -6005,4 +6005,18 @@ If you have any suggestions for improvement, please let me know! (forwarded requ
 - update staging to 11.18 release</comment>
     <requestid>1379004</requestid>
   </revision>
+  <revision rev="502" vrev="1">
+    <srcmd5>37bdfdfbfc7e2d4d5678707b8c951f21</srcmd5>
+    <version>11.19</version>
+    <time>1791051268</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 11.19 release
+  - Support for vertical text in GDIPlus.
+  - Unicode character tables updated to Unicode 18.0.0.
+  - Caching for DNS queries.
+  - Improvements to the VBScript parser.
+  - Various bug fixes.
+- update staging to 11.19 release</comment>
+    <requestid>1382237</requestid>
+  </revision>
 </revisionlist>

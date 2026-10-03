@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct  3 08:38:07 UTC 2026 - Marcus Meissner <meissner@suse.com>
+
+- updated to 11.19 release
+  - Support for vertical text in GDIPlus.
+  - Unicode character tables updated to Unicode 18.0.0.
+  - Caching for DNS queries.
+  - Improvements to the VBScript parser.
+  - Various bug fixes.
+- update staging to 11.19 release
+
+-------------------------------------------------------------------
 Sat Sep 19 10:25:18 UTC 2026 - Marcus Meissner <meissner@suse.com>
 
 - updated to 11.18 release
