@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Fri Oct  2 06:38:18 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
+
+- Update to 2.8.0:
+  # Security
+  - The TLS configuration for HTTPS proxies could be ignored or
+    overridden.
+    (bsc#1283908, CVE-2026-97687)
+  - ``HTTPResponse.stream()`` and ``read_chunked()`` could buffer a
+    chunk-size line of unbounded length in memory.
+    (bsc#1283910, CVE-2026-97689)
+  - Chunked Deflate streaming could enter an infinite loop.
+    (bsc#1283909, CVE-2026-97688)
+
+  ## caution
+    urllib3 2.8.0 fixes HTTPS proxy TLS configuration being ignored or
+    overridden by destination settings. Configurations relying on that
+    behavior may require changes.
+
+    Configure proxy CA certificates and client certificates in
+    ``proxy_ssl_context``, and proxy identity checks with
+    ``proxy_assert_hostname`` or ``proxy_assert_fingerprint``.
+    Destination client certificates and identity overrides no longer
+    apply to HTTPS forwarding proxy connections.
+
+  # Deprecations & Removals
+  - Deprecated using an empty collection as the ``Retry`` option
+    ``allowed_methods`` to retry any verb.
+
+  # Features
+  - Added ``Url.auth_decoded`` and ``Url.auth_decoded_joined``
+    convenience properties to the result of ``parse_url()``.
+  - Added ``basic_auth_encoding`` and ``proxy_basic_auth_encoding``
+    parameters to ``urllib3.util.make_headers()``.
+
+  # Bugfixes
+  - Fixed response header handling to replace obsolete folded header
+    lines (`obs-fold`) with spaces in accordance with RFC 9112,
+    preventing raw CRLF sequences from appearing in header values such
+    as ``Set-Cookie``.
+  - Fixed usage of ``proxy_ssl_context`` with ``ProxyManager`` when
+    ``use_forwarding_for_https=True``. Passing ``ssl_context`` instead
+    of ``proxy_ssl_context`` for HTTPS proxies in this configuration
+    now emits a ``FutureWarning`` and will raise an error in v3.0.
+  - Changed behavior of the default ``ConnectionPool.pool``
+    initialization.  ``LifoQueue`` is now resolved from the ``queue``
+    module after the ``ConnectionPool`` is instantiated instead of
+    using the default cached ``QueueCls`` class property. This is done
+    because sometimes the ``queue.LifoQueue`` is monkey-patched late
+    in the program, such as by gevent.
+  - Raised ``UnrewindableBodyError`` instead of ``ValueError`` when
+    retrying a request whose body had ``tell()`` but not ``seek()``.
+  - Decoded percent-encoded SOCKS proxy credentials before
+    authenticating with the proxy server.
+  - Fixed ``HTTPResponse.drain_conn()`` to discard unread response
+    data in 64 KiB chunks (same as the default ``amt`` when doing
+    ``HTTPResponse.stream(...)``).
+  - Fixed ``is_ipaddress()`` to detect non-standard IPv4 forms
+    accepted by ``socket.connect``, such as hex (``0x7f000001``),
+    octal (``0177.0.0.1``), and decimal integers (``2130706433``),
+    ensuring SSL certificate verification uses the correct mode for
+    these addresses.
+  - Fixed ``HTTPConnectionPool.urlopen`` raising a misleading
+    ``FullPoolError`` instead of ``ValueError`` when called with an
+    invalid ``timeout`` argument on a pool created with
+    ``block=True``.
+  - Fixed port-zero handling to preserve explicit ``:0`` values
+    instead of substituting the default ports 80 or 443 in URL
+    parsing, pool selection, proxy configuration,
+    ``connection_from_url()``, and HTTP/2 request authority.
+  - Fixed a bug where ``PoolManager`` passed the ``assert_hostname``
+    and ``assert_fingerprint`` parameters to HTTP connection pools.
+  - Fixed ``HTTPConnectionPool.urlopen()`` and HTTP proxy forwarding
+    to strip URL fragments from absolute request targets before
+    sending requests.
+  - Added safeguards to the proxy tunneling code to prevent potential
+    security issues when handling invalid characters in the proxy host
+    and HTTP headers.  This change affects users of Python 3.10,
+    Python 3.11, and Python 3.12 when the standard library does not
+    contain the fix; those on newer Python versions should upgrade to
+    3.13.14+ or 3.14.5+ to get the same security fixes.
+  - Fixed ``HTTPSConnection.connect()`` overriding
+    ``ProxyConfig.ssl_context``'s certificate policy and proxy
+    identity checks with the target connection's TLS settings when
+    forwarding through an HTTPS proxy.
+  
+    ``HTTPSConnection`` no longer applies target SNI, assertions, or
+    client credentials to forwarding proxy handshakes and continues to
+    use its ``ssl_context`` as a fallback when an HTTPS proxy forwards
+    an HTTP target.
+  - Fixed URL parsing to more strictly enforce RFC 3986 host syntax,
+    rejecting invalid host input such as raw spaces and control
+    characters, malformed percent-encodings, and percent-encoded
+    control characters in HTTP(S) hosts and IPv6 zone identifiers,
+    including proxy CONNECT tunnel targets. Host normalization now
+    also follows RFC 3986 normalization rules for percent-encoded
+    octets by decoding percent-encoded unreserved characters and
+    uppercasing the hexadecimal digits of retained percent-encoded
+    octets.
+  - Fixed an ``AttributeError`` on Python built with OpenSSL 4+, where
+    ``ssl.PROTOCOL_TLSv1`` no longer exists.
+  - Fixed ``urllib3.contrib.pyopenssl`` to use cryptography APIs when
+    reading a certificate subject and loading encrypted private keys,
+    avoiding ``DeprecationWarning`` raised by pyOpenSSL 26.3.0+.
+  - Fixed handling of HTTP 303 redirects for requests with chunked or
+    file-like bodies.
+  - Fixed ``assert_fingerprint()`` to raise ``SSLError`` instead of
+    ``binascii.Error`` when a fingerprint has a supported length but
+    contains non-hexadecimal characters.
+
+  # Misc
+  - Added a ``test`` dependency group containing the minimum
+    dependencies needed to run the test suite, intended for downstream
+    packagers. The ``dev-base`` and ``mypy`` groups now include this
+    new group via ``include-group``, removing duplication.
+  - Fixed test failures with pytest >= 9.1.
+  - Enabled JSPI tests with Firefox in the Emscripten test suite.
+  - Improved streamed response decoding performance.
+  - Fixed flaky tests.
+
+-------------------------------------------------------------------
 Tue Jun 16 09:18:55 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - skip some tests with pycryptography >= 49

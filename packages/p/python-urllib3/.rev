@@ -997,4 +997,41 @@
     <comment>- skip some tests with pycryptography &gt;= 49</comment>
     <requestid>1359736</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>3493f9de8c4e3c72c29e16386b346949</srcmd5>
+    <version>2.8.0</version>
+    <time>1791051138</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.8.0:
+  # Security
+  - The TLS configuration for HTTPS proxies could be ignored or
+    overridden.
+    (bsc#1283908, CVE-2026-97687)
+  - ``HTTPResponse.stream()`` and ``read_chunked()`` could buffer a
+    chunk-size line of unbounded length in memory.
+    (bsc#1283910, CVE-2026-97689)
+  - Chunked Deflate streaming could enter an infinite loop.
+    (bsc#1283909, CVE-2026-97688)
+  ## caution
+    urllib3 2.8.0 fixes HTTPS proxy TLS configuration being ignored or
+    overridden by destination settings. Configurations relying on that
+    behavior may require changes.
+    Configure proxy CA certificates and client certificates in
+    ``proxy_ssl_context``, and proxy identity checks with
+    ``proxy_assert_hostname`` or ``proxy_assert_fingerprint``.
+    Destination client certificates and identity overrides no longer
+    apply to HTTPS forwarding proxy connections.
+  # Deprecations &amp; Removals
+  - Deprecated using an empty collection as the ``Retry`` option
+    ``allowed_methods`` to retry any verb.
+  # Features
+  - Added ``Url.auth_decoded`` and ``Url.auth_decoded_joined``
+    convenience properties to the result of ``parse_url()``.
+  - Added ``basic_auth_encoding`` and ``proxy_basic_auth_encoding``
+    parameters to ``urllib3.util.make_headers()``.
+  # Bugfixes
+  - Fixed response header handling to replace obsolete folded header
+    lines (`obs-fold`) with spaces in accordance with RFC 9112,</comment>
+    <requestid>1382029</requestid>
+  </revision>
 </revisionlist>
