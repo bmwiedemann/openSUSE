@@ -41,4 +41,16 @@ INTERDEPENDENT REQUESTS - please stage together (will not build until these land
 </comment>
     <requestid>1380982</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>7c73fd8faf362d358519fb744a874f8a</srcmd5>
+    <version>0.5.14</version>
+    <time>1791051294</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.14, which also carries 0.5.13. Fixes a native text
+buffer leak and a missing repaint after net-zero resize bursts, plus
+a solid portal listener leak and a Yoga NaN rerender loop. Same
+artifact set and Zig pin; unblocks opencode 2.0.22, which requires
+opentui = 0.5.14 exactly.</comment>
+    <requestid>1382250</requestid>
+  </revision>
 </revisionlist>

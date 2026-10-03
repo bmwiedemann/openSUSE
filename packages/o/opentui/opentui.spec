@@ -33,7 +33,7 @@
 %global node_arch arm64
 %endif
 Name:           opentui
-Version:        0.5.12
+Version:        0.5.14
 Release:        0
 Summary:        Library for building terminal user interfaces
 # OpenTUI itself is MIT. miniaudio is vendored as a single header in

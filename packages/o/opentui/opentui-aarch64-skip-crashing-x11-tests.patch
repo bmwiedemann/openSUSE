@@ -15,10 +15,10 @@ rebase: drop this patch if the crash is gone.
 Not sent upstream: the failure was found while packaging and needs an
 upstream issue with a proper backtrace first.
 
-Index: opentui-0.5.12/packages/native/src/clipboard/x11.zig
+Index: opentui-0.5.14/packages/native/src/clipboard/x11.zig
 ===================================================================
---- opentui-0.5.12.orig/packages/native/src/clipboard/x11.zig
-+++ opentui-0.5.12/packages/native/src/clipboard/x11.zig
+--- opentui-0.5.14.orig/packages/native/src/clipboard/x11.zig
++++ opentui-0.5.14/packages/native/src/clipboard/x11.zig
 @@ -2335,6 +2335,10 @@
  
  test "X11 expired initial INCR response refuses its delayed checked reply" {

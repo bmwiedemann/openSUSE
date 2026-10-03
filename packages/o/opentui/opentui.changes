@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Sat Oct  3 15:17:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.14, which also carries 0.5.13 (opencode v2 pins
+  @opentui/* at exactly this version; the FFI ABI is private and
+  unversioned, so both halves and every consumer move together):
+  * Fixed a leak in the native text buffer: replacing a buffer's
+    contents kept the whole previous rope alive, so a 2000-line
+    text grew RSS by 1.24 MB per call and 2000 calls reached
+    2.5 GB. Bytes loaded from a file no longer sit in the rope
+    arena where the next document could pick them up either
+  * Fixed the terminal not repainting when a debounced SIGWINCH
+    burst shrank and restored the original geometry inside the
+    100 ms window, which could leave a stale screen until some
+    later resize
+  * Fixed a busy rerender loop: a child attached after a layout
+    pass makes Yoga report NaN dimensions, and since NaN is never
+    equal to itself the layout kept being redone
+  * Fixed the SolidJS portal leaking its children's listeners on
+    teardown
+  * Under tmux, terminal capability probes are now sent unwrapped,
+    so tmux answers the pane that asked instead of a pane switch
+    delivering the reply to the wrong pane as input. Focus tracking
+    is enabled whenever tmux is detected, and an explicitly
+    requested Sixel protocol is honoured through passthrough
+  * Fixed kitty graphics drawn above the cell background
+  * Cut FFI traffic and per-cell work in the native core: selection
+    updates skip the native reset for text views with no selection,
+    buffer resizes reallocate only once the cells stop fitting (and
+    a failed resize now leaves the buffer unchanged instead of
+    shortening a cell array), and colour bytes round without a libm
+    call
+  * Draw text and box titles encode into reused storage rather than
+    allocating a buffer per call
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Sun Sep 27 15:46:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.12 (opencode v2 pins @opentui/* at exactly this
