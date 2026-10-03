@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Sat Oct  3 05:39:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 7.0:
+  * All console output is now rendered with rich: colourised status
+    messages, tables, spinners and progress bars; --json output is
+    syntax-highlighted and progress output is hidden while a
+    command prompts for input
+  * New global --color option (auto/always/never), also settable
+    via the COLOR_MODE configuration key; NO_COLOR and FORCE_COLOR
+    are honoured in auto mode
+  * rbt post --guess-fields now fills summary, description, testing
+    done and bugs closed from the commit message; custom parsers
+    can be set with COMMIT_MESSAGE_PARSER
+  * rbt close defaults to --close-type completed; rbt info shows
+    the draft of unpublished review requests
+  * rbt post shows a single spinner with the current task and a
+    progress bar when handling multiple commits
+  * Removed the legacy rbtools.clients.base.patch module and the
+    SCMClient patching API deprecated in earlier releases; several
+    public classes and functions now require keyword arguments
+  * Fixed rbt patch with binary files posted by RBTools 5.x and
+    older and with moved or copied binary files
+  * Fixed Jujutsu 0.42+ compatibility, multiple fork points,
+    fileset syntax characters in file names and truncated new
+    files; fixed ClearCase setview diff paths and label-based
+    diffs; fixed crashes in rbt info and rbt status-update get, and
+    rbt review add-diff-comment on diffs with more than 25 files
+  * Requires python-rich instead of python-colorama,
+    python-texttable and python-tqdm
+  * No security fixes in this range
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Manage /usr/bin/rbt with libalternatives instead of
+  update-alternatives
+
+-------------------------------------------------------------------
 Fri Jun 26 13:23:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 6.0:

@@ -16,8 +16,9 @@
 #
 
 
+%bcond_without libalternatives
 Name:           RBTools
-Version:        6.0
+Version:        7.0
 Release:        0
 Summary:        Command line tools for interacting with Review Board
 License:        MIT
@@ -26,23 +27,22 @@ Source:         https://files.pythonhosted.org/packages/source/r/rbtools/rbtools
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 74}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  alts
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       alts
 Requires:       python-appdirs >= 1.4.4
 Requires:       python-certifi >= 2023.5.7
-Requires:       python-colorama
 Requires:       python-housekeeping >= 1.1
 Requires:       python-importlib-metadata >= 5.0
 Requires:       python-importlib-resources >= 5.9
 Requires:       python-packaging >= 21.3
 Requires:       python-puremagic
 Requires:       python-pydiffx >= 1.1
-Requires:       python-texttable
-Requires:       python-tqdm
+# RBTools 7.0 renders all console output through rich.
+Requires:       python-rich >= 15.0.0
 Requires:       python-typelets >= 1.1
 Requires:       python-typing_extensions >= 4.3.0
-Requires(post): update-alternatives
-Requires(postun): update-alternatives
 # RBTools used to be a single non-flavoured package shipping /usr/bin/rbt;
 # the singlespec flavours now carry it, so supersede the old package.
 Provides:       RBTools = %{version}-%{release}
@@ -73,6 +73,7 @@ sed -i '1s|^#!%{_bindir}/env python|#!%{_bindir}/python3|' rbtools/testing/scrip
 # force hash-based .pyc (avoid python-bytecode-inconsistent-mtime)
 %python_expand $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash %{buildroot}%{$python_sitelib}/rbtools
 %python_clone -a %{buildroot}%{_bindir}/rbt
+%python_group_libalternatives rbt
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
@@ -80,11 +81,8 @@ sed -i '1s|^#!%{_bindir}/env python|#!%{_bindir}/python3|' rbtools/testing/scrip
 # server; run a smoke check that the package imports instead.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitelib} $python -c "import rbtools"
 
-%post
-%python_install_alternative rbt
-
-%postun
-%python_uninstall_alternative rbt
+%pre
+%python_libalternatives_reset_alternative rbt
 
 %files %{python_files}
 %license COPYING
