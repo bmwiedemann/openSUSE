@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Sep 30 15:30:59 UTC 2026 - David Anes <david.anes@suse.com>
+
+- security update:
+  * CVE-2026-102633: expat: Denial of Service via integer overflow in
+    expat_realloc (bsc#1283493)
+    - Added patch expat-CVE-2026-102633.patch
+
+-------------------------------------------------------------------
+Tue Sep 22 14:56:56 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 2.8.5 (bsc#1282347, CVE-2026-93990):
+  * Security fixes:
+    * CVE-2026-93990: reject high surrogates not followed by a low
+      surrogate during UTF-16 decoding; malformed UTF-16 could be
+      smuggled into the application (CVSS 9.8)
+  * Bug fixes:
+    * Fix an OOM-related memory leak on a failed overflow check
+    * Fix memory alignment for architectures with 128bit pointers
+  * Mark XML_SetHashSalt deprecated
+
+-------------------------------------------------------------------
 Fri Sep 04 10:10:50 UTC 2026 - David Anes <david.anes@suse.com>
 
 - update to 2.8.4:

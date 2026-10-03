@@ -909,4 +909,15 @@
     * version info bumped from 13:2:12 to 13:3:12 (forwarded request 1376038 from david.anes)</comment>
     <requestid>1376287</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>2636808cb5bc372c0b1e53eeec36501c</srcmd5>
+    <version>2.8.5</version>
+    <time>1791051195</time>
+    <user>dimstar_suse</user>
+    <comment>- security update:
+  * CVE-2026-102633: expat: Denial of Service via integer overflow in
+    expat_realloc (bsc#1283493)
+    - Added patch expat-CVE-2026-102633.patch (forwarded request 1381964 from david.anes)</comment>
+    <requestid>1382090</requestid>
+  </revision>
 </revisionlist>
