@@ -18,13 +18,14 @@
 
 
 Name:           dash
-Version:        0.5.13.4
+Version:        0.5.13.5
 Release:        0
 Summary:        POSIX-compliant Implementation of /bin/sh
 License:        BSD-3-Clause AND GPL-2.0-or-later
 Group:          System/Shells
 URL:            http://gondor.apana.org.au/~herbert/dash/
 Source0:        http://gondor.apana.org.au/~herbert/dash/files/%{name}-%{version}.tar.gz
+Patch1:         CVE-2026-102474.patch
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libedit)
 

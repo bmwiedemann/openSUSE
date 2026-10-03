@@ -1,7 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct  2 15:46:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- add CVE-2026-102474.patch (bsc#1283151, CVE-2026-102474)
+
+-------------------------------------------------------------------
+Tue Sep 29 14:14:41 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.5.13.5:
+  * builtin: Add CTLESC before all CCTLs in dollar single quote
+  * input: Fix overeager NUL deletion in SMALL mode
+  * var: Call setlocale when LC variables are set
+  * var: Remove unset check in varnull
+  * var: Restore double NUL on unset variables
+  * parser: Do not print prompt if input buffer is not empty
+  * parser: Use USTPUTC in parsebackq
+  * parser: Print escapes for command substitution in EOF marker
+  * parser: Clamp backslash-c sequences to 7 bits
+  * man: Use proper grave accent character
+  * man: Use literal > and < characters
+  * builtin: Fix unaligned access in conv_escape
+  * builtin: Fix octal escapes in dollar-single-quotes
+
+-------------------------------------------------------------------
 Sun Jun 28 19:42:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
-- update to 0.15.3.4 (bsc#1269494, CVE-2026-31323):
+- update to 0.5.13.4 (bsc#1269494, CVE-2026-31323):
   * parser: Fix multi-byte output in here-doc with quoted delimiter
   * input: Replace stdin_state.canon with bufferable
   * input: Fix tee(2) error handling
@@ -16,7 +39,7 @@ Sun Jun 28 19:42:11 UTC 2026 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Fri Feb 20 08:58:00 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
-- Update to 0.15.3.1
+- Update to 0.5.13.1
 - Add upstream shell-Fix-unsigned-char-promotion-and-truncation.patch:
   fix unsigned char promotion and truncation
 - Use autosetup

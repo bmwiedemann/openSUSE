@@ -327,4 +327,30 @@
   * shell: Group readdir64/dirent64 with open64</comment>
     <requestid>1362351</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>a061aaf0f70eb4b6070e84d2048324c7</srcmd5>
+    <version>0.5.13.5</version>
+    <time>1791051187</time>
+    <user>dimstar_suse</user>
+    <comment>- add CVE-2026-102474.patch (bsc#1283151, CVE-2026-102474)
+
+- update to 0.5.13.5:
+  * builtin: Add CTLESC before all CCTLs in dollar single quote
+  * input: Fix overeager NUL deletion in SMALL mode
+  * var: Call setlocale when LC variables are set
+  * var: Remove unset check in varnull
+  * var: Restore double NUL on unset variables
+  * parser: Do not print prompt if input buffer is not empty
+  * parser: Use USTPUTC in parsebackq
+  * parser: Print escapes for command substitution in EOF marker
+  * parser: Clamp backslash-c sequences to 7 bits
+  * man: Use proper grave accent character
+  * man: Use literal &gt; and &lt; characters
+  * builtin: Fix unaligned access in conv_escape
+  * builtin: Fix octal escapes in dollar-single-quotes
+
+- update to 0.5.13.4 (bsc#1269494, CVE-2026-31323):
+- Update to 0.5.13.1</comment>
+    <requestid>1382147</requestid>
+  </revision>
 </revisionlist>
