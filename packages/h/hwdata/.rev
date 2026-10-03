@@ -862,4 +862,12 @@ oui.txt, pnp.ids). No build-system or packaging changes; installed file
 set is unchanged. Built locally on aarch64 (openSUSE_Factory_ARM).</comment>
     <requestid>1376071</requestid>
   </revision>
+  <revision rev="96" vrev="1">
+    <srcmd5>3857faab261fff1b399df838cf87795d</srcmd5>
+    <version>0.412</version>
+    <time>1791051189</time>
+    <user>dimstar_suse</user>
+    <comment>Update hwdata to 0.412</comment>
+    <requestid>1382159</requestid>
+  </revision>
 </revisionlist>

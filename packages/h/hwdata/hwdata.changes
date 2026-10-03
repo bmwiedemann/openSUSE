@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:18:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.412:
+  * pci.ids refreshed to the 2026.10.01 snapshot, 247 lines added and 19
+    removed
+  * Six new vendor ids: 0168 Chengdu ZeoberCom (23 CPCI/PCI interface
+    cards), 1ca5 Corerise Electronics (Comay SBC208 SCSI controller),
+    2159 AIC Semiconductor Shanghai, 215a Suzhou Ruixin (5 devices),
+    and 215e SmarCo HT Tech and 2165 Dnotitia
+  * AIC Semiconductor moved off the wrong vendor id a69c onto 2159,
+    keeping its AIC8800M80X2P network controller
+  * AMD entries renamed and added: Granite Ridge and Raphael now carry
+    the Radeon 610M name, and GB100 [B200], GB203 [GeForce RTX 5070],
+    GB20B [RTX Spark N1X], TB500 RP x16/x8/x4/x2/x1 and GR100/GR102 are
+    new
+  * Broadcom/LSI gained two SAS9300-16e Fibre Channel ids; the 1107
+    WCN785x entry is renamed NCM8x5/WCN785x
+  * usb.ids, pnp.ids, iab.txt and oui.txt are unchanged
+
+-------------------------------------------------------------------
 Mon Sep  7 06:33:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.411:
