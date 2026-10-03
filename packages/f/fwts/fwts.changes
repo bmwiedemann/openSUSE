@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Sat Oct  3 05:35:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 26.09.00:
+  * Add RISC-V BRS-I compliance testing behind the new --brs-i
+    option, with RSDP, FADT and PPTT ACPI checks and checks for the
+    SMBIOS structures BRS-I requires. Individual structures can be
+    waived with --brs-i-no-ipmi, --brs-i-no-redfish and
+    --brs-i-no-tpm. dmicheck and SMBIOS table discovery now also
+    run on RISC-V, and neither arm64 nor RISC-V falls back to
+    mapping /dev/mem when the kernel enforces CONFIG_STRICT_DEVMEM.
+  * dmicheck: support SMBIOS 3.9.0, adding the chassis rack type,
+    CUDIMM/CSODIMM form factors and the MRDIMM memory type, and
+    validating the Processor Additional Information structure
+    length and architecture type.
+  * dmicheck: fix buffer over-reads in the chassis, system slots
+    and memory device checks, which read fields past the end of
+    short structures taken from the SMBIOS tables. Upstream
+    assigned no CVE for these.
+  * dmicheck: correct the field validation of SMBIOS types 0, 1, 9,
+    13, 26, 28, 29 and 46 to match the specification, so firmware
+    using the BIOS manufacturing mode bits is no longer failed and
+    reserved values are rejected.
+  * acpi: ecdt: validate the EC_DATA address space against ec_data
+    instead of checking EC_CONTROL twice, which could miss an
+    invalid EC_DATA address space.
+  * lib: escape backslashes in JSON string output.
+  * sbbr: fadt: report sci_int instead of smi_cmd for a non-zero
+    SCI_INT check; the pass/fail verdict was already correct, only
+    the logged value was wrong.
+  * lib: fix a Clang -Wvarargs error in fwts_acpi_tables.
+
+-------------------------------------------------------------------
 Tue Jul 21 05:52:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 26.07.00:
