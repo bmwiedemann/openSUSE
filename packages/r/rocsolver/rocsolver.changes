@@ -1,0 +1,171 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jun 25 00:00:00 UTC 2026 - František Zatloukal <fzatlouk@redhat.com>
+
+- Rebuilt for fmt/spdlog
+
+-------------------------------------------------------------------
+Tue Apr 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package name
+
+-------------------------------------------------------------------
+Sat Mar 28 00:00:00 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
+
+- Don't fail build on 1-core-VM
+
+-------------------------------------------------------------------
+Fri Mar  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Mon Feb 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix whitespace
+
+-------------------------------------------------------------------
+Sat Jan 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jan  8 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Disable lto to fix test building
+
+-------------------------------------------------------------------
+Mon Dec 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Tue Nov 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Better handling of shared library on opensuse
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Add: 0001-rocsolver-ninja-job-pools.patch
+  Modified: 0001-rocsolver-parallel-jobs.patch
+  Removed: 0001-Add-llvm-style-compile-and-link-options.patch
+           0001-rocsolver-offload-compress.patch
+
+-------------------------------------------------------------------
+Sat Oct 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify removal of files
+
+-------------------------------------------------------------------
+Wed Aug  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Default build type RelWithDebInfo
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+- Rebase patch1
+- Fix some tabs to spaces in the specfile for consistent formatting
+
+-------------------------------------------------------------------
+Thu Jun 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add hip jobs
+  Add: 0001-rocsolver-parallel-jobs.patch
+- Remove suse if check for ldconfig
+- Add export compilation database option
+
+-------------------------------------------------------------------
+Tue May 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup module build
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Sun Apr  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Document RFE to remove fmt dependency
+
+-------------------------------------------------------------------
+Thu Feb 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multibuild
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Tue Jan 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+  Add: 0001-Add-llvm-style-compile-and-link-options.patch
+       0001-rocsolver-offload-compress.patch

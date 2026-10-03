@@ -1,0 +1,49 @@
+From 22d2be00dc2289037144abeffab7a5526a8014ea Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 30 Oct 2025 11:27:03 -0700
+Subject: [PATCH] rocsolver ninja job pools
+
+---
+ CMakeLists.txt | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 32757570f70f..003b37f98fc5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -125,6 +125,32 @@ option(BUILD_SHARED_LIBS "Build rocSOLVER as a shared library" ON)
+ include(util)
+ include(CheckLanguage)
+ include(CMakeDependentOption)
++#
++# Seperate linking jobs from compiling
++# Too many concurrent linking jobs can break the build
++# Copied from LLVM
++set(ROCSOLVER_PARALLEL_LINK_JOBS "" CACHE STRING
++  "Define the maximum number of concurrent link jobs (Ninja only).")
++if(CMAKE_GENERATOR MATCHES "Ninja")
++  if(ROCSOLVER_PARALLEL_LINK_JOBS)
++    set_property(GLOBAL APPEND PROPERTY JOB_POOLS link_job_pool=${ROCSOLVER_PARALLEL_LINK_JOBS})
++    set(CMAKE_JOB_POOL_LINK link_job_pool)
++  endif()
++elseif(ROCSOLVER_PARALLEL_LINK_JOBS)
++  message(WARNING "Job pooling is only available with Ninja generators.")
++endif()
++# Similar for compiling
++set(ROCSOLVER_PARALLEL_COMPILE_JOBS "" CACHE STRING
++  "Define the maximum number of concurrent compile jobs (Ninja only).")
++if(CMAKE_GENERATOR MATCHES "Ninja")
++  if(ROCSOLVER_PARALLEL_COMPILE_JOBS)
++    set_property(GLOBAL APPEND PROPERTY JOB_POOLS compile_job_pool=${ROCSOLVER_PARALLEL_COMPILE_JOBS})
++    set(CMAKE_JOB_POOL_COMPILE compile_job_pool)
++  endif()
++elseif(ROCSOLVER_PARALLEL_COMPILE_JOBS)
++  message(WARNING "Job pooling is only available with Ninja generators.")
++endif()
++
+ include(CheckCXXCompilerFlag)
+ 
+ option(BUILD_TESTING "Build rocSOLVER tests" OFF)
+-- 
+2.51.0
+

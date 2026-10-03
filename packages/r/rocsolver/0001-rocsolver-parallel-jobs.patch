@@ -1,0 +1,42 @@
+From 10affbe2ed6ad66b8a3940bc077161d71d8a8d54 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 30 Oct 2025 11:38:27 -0700
+Subject: [PATCH] rocsolver parallel jobs
+
+---
+ CMakeLists.txt             | 3 +++
+ library/src/CMakeLists.txt | 4 ++++
+ 2 files changed, 7 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 003b37f98fc5..1f93a519e537 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -177,6 +177,9 @@ option(WERROR "Treat warnings as errors" OFF)
+ option(BUILD_COMPRESSED_DBG "Enable compressed debug symbols" ON)
+ check_cxx_compiler_flag("--offload-compress" CXX_COMPILER_SUPPORTS_OFFLOAD_COMPRESS)
+ cmake_dependent_option(BUILD_OFFLOAD_COMPRESS "Build with offload compression" ON CXX_COMPILER_SUPPORTS_OFFLOAD_COMPRESS OFF)
++check_cxx_compiler_flag("-parallel-jobs=4" CXX_COMPILER_SUPPORTS_PARALLEL_HIP_JOBS)
++cmake_dependent_option(BUILD_PARALLEL_HIP_JOBS "Build with parallel hip jobs" ON CXX_COMPILER_SUPPORTS_PARALLEL_HIP_JOBS OFF)
++
+ 
+ message(STATUS "Tests: ${BUILD_CLIENTS_TESTS}")
+ message(STATUS "Benchmarks: ${BUILD_CLIENTS_BENCHMARKS}")
+diff --git a/library/src/CMakeLists.txt b/library/src/CMakeLists.txt
+index b39646ee0f1d..7c5cc98b19ba 100755
+--- a/library/src/CMakeLists.txt
++++ b/library/src/CMakeLists.txt
+@@ -448,6 +448,10 @@ if(BUILD_OFFLOAD_COMPRESS)
+   target_compile_options(rocsolver PRIVATE "--offload-compress")
+ endif()
+ 
++if(BUILD_PARALLEL_HIP_JOBS)
++  target_compile_options(rocsolver PRIVATE "-parallel-jobs=4")
++endif()
++
+ target_include_directories(rocsolver
+   PUBLIC
+     $<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/library/include>
+-- 
+2.51.0
+
