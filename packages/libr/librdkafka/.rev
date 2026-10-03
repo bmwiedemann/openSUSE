@@ -468,4 +468,19 @@
     (`receive.message.max.bytes`, `connections.max.idle.ms`,</comment>
     <requestid>1373350</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>1c39a42cdec21f4479232313fc0ba919</srcmd5>
+    <version>2.15.1</version>
+    <time>1791051146</time>
+    <user>dimstar_suse</user>
+    <comment>- update to 2.15.1:
+  * Fix `int_latency` metric calculation. It was derived from the
+    message timeout timestamp (`now + message.timeout.ms -
+    rkm_ts_timeout`), which yields a large negative value when
+    `message.timeout.ms` is 0 (infinite) and `rkm_ts_timeout` is
+   `INT64_MAX`. It's now computed directly as `now - rkm_ts_enq`,
+    the actual time the message spent in the queue, regardless of
+    the timeout setting.</comment>
+    <requestid>1382048</requestid>
+  </revision>
 </revisionlist>

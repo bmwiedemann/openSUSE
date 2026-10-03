@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:22:19 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.15.1:
+  * Fix `int_latency` metric calculation. It was derived from the
+    message timeout timestamp (`now + message.timeout.ms -
+    rkm_ts_timeout`), which yields a large negative value when
+    `message.timeout.ms` is 0 (infinite) and `rkm_ts_timeout` is
+   `INT64_MAX`. It's now computed directly as `now - rkm_ts_enq`,
+    the actual time the message spent in the queue, regardless of
+    the timeout setting.
+
+-------------------------------------------------------------------
 Mon Aug 24 07:56:03 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.15.0:
