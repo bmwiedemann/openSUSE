@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Sep 27 12:26:46 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 4.14.1:
+  * Fixed the output location of files produced by GCC's
+    -fdump-ipa-clones option (bsc#1280168)
+  * Restored storage helper lock compatibility with ccache versions
+    earlier than 4.14
+  * Fixed lookup of GCC 9+ profile data for object files in
+    subdirectories, and added support for GCC's
+    -fprofile-partial-training option
+  * Fixed hashing of C++20 module files found via Clang's
+    -fprebuilt-module-path option, preventing false cache hits
+    when a module changes
+  * CVE-2026-77341 (boo#1277403): cpp-httplib 0.49.0 is below the
+    0.50.0 fix, but ccache uses only the HTTP client and never the
+    server-side chunked-trailer writer
+  * CVE-2026-77358 (boo#1277412): cpp-httplib 0.49.0 is below the
+    0.50.1 fix, but ccache never uses the WebSocket client
+- Drop 0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
+  (bsc#1280168), taken upstream as
+  3c6ef19dac904d08abb1adfc75b22309d63390ca
+- Add the missing PATCH-OPENSUSE category tag above Patch2
+
+-------------------------------------------------------------------
 Mon Sep 14 09:16:27 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - add 0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch

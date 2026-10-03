@@ -30,14 +30,14 @@
 %bcond_with test
 %endif
 Name:           ccache
-Version:        4.14
+Version:        4.14.1
 Release:        0
 Summary:        A Fast C/C++ Compiler Cache
 License:        GPL-3.0-or-later
 URL:            https://ccache.dev/
 Source0:        https://github.com/ccache/ccache/releases/download/v%{version}/ccache-%{version}.tar.xz
 Source2:        %{name}.keyring
-Patch0:         0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
+# PATCH-OPENSUSE 0001-doc-do-not-install-html-and-md-docs.patch jslaby@suse.com -- docs ship as adoc/md sources, html is never built
 Patch2:         0001-doc-do-not-install-html-and-md-docs.patch
 BuildRequires:  cmake >= 3.18
 BuildRequires:  ninja

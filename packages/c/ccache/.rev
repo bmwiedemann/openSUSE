@@ -958,4 +958,31 @@ Merged into the devel project as jirislaby/d-t-b-ccache PR #2.</comment>
   (bsc#1280168)</comment>
     <requestid>1377856</requestid>
   </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>c74cd55e1633bc24a35024bc0816492a</srcmd5>
+    <version>4.14.1</version>
+    <time>1791051143</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.14.1:
+  * Fixed the output location of files produced by GCC's
+    -fdump-ipa-clones option (bsc#1280168)
+  * Restored storage helper lock compatibility with ccache versions
+    earlier than 4.14
+  * Fixed lookup of GCC 9+ profile data for object files in
+    subdirectories, and added support for GCC's
+    -fprofile-partial-training option
+  * Fixed hashing of C++20 module files found via Clang's
+    -fprebuilt-module-path option, preventing false cache hits
+    when a module changes
+  * CVE-2026-77341 (boo#1277403): cpp-httplib 0.49.0 is below the
+    0.50.0 fix, but ccache uses only the HTTP client and never the
+    server-side chunked-trailer writer
+  * CVE-2026-77358 (boo#1277412): cpp-httplib 0.49.0 is below the
+    0.50.1 fix, but ccache never uses the WebSocket client
+- Drop 0001-fix-fix-fdump-ipa-clones-for-different-outdir.patch
+  (bsc#1280168), taken upstream as
+  3c6ef19dac904d08abb1adfc75b22309d63390ca
+- Add the missing PATCH-OPENSUSE category tag above Patch2</comment>
+    <requestid>1382040</requestid>
+  </revision>
 </revisionlist>
