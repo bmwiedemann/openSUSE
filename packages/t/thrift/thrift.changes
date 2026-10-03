@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Fri Oct  2 17:51:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.25.0:
+  * CVE-2026-93925: stack-based buffer overflow in the C++ varint
+    writer, reached through THeaderProtocol frames (boo#1284093)
+  * CVE-2026-91135: heap-based buffer overflow when the ZLIB transform
+    is enabled on C++ THeaderTransport frames (boo#1284100)
+  * CVE-2026-82459: integer underflow in the 32-bit C++
+    THeaderTransport frame size leads to an out-of-bounds write
+    (boo#1284077)
+  * CVE-2026-93926: memory not released after its effective lifetime in
+    THeaderTransport (boo#1284092)
+  * CVE-2026-82458: allocation of resources without limits in the C++
+    protocol reader (boo#1284076)
+  * CVE-2026-85086: the Perl SSLSocket defaulted to SSL_VERIFY_NONE,
+    leaving TLS unauthenticated (boo#1284078)
+  * CVE-2026-85494: improper length handling and uncaught exceptions in
+    the Python, Perl and PHP bindings (boo#1284079)
+  * CVE-2026-91137: unvalidated quantity in PHP input causes unbounded
+    allocation (boo#1284080)
+  * CVE-2026-94642: uncaught exception in the PHP bindings
+    (boo#1284081)
+  * CVE-2026-94644: allocation of resources without limits in the PHP
+    bindings (boo#1284097)
+  * CVE-2026-94634: unbounded allocation and insecure default
+    initialization in the Python bindings (boo#1284099)
+  * CVE-2026-94650: uncontrolled recursion in the c_glib protocol
+    reader (boo#1284082)
+  * CVE-2026-85483: use of an uninitialized resource and a wrong status
+    code in the c_glib bindings (boo#1284102)
+  * CVE-2026-96289: uncontrolled recursion in the PHP bindings
+    (boo#1284112)
+  * CVE-2026-94653: inefficient algorithm complexity in the PHP bindings
+    (boo#1284122)
+  * CVE-2026-96287: inefficient algorithm complexity in the Perl
+    bindings (boo#1284114)
+  * CVE-2026-96286: uncaught exception in the Perl bindings
+    (boo#1284115)
+  * CVE-2026-94654: loop with an unreachable exit condition in the
+    Python bindings (boo#1284121)
+  * The remaining CVEs fixed by this release affect bindings this
+    package does not build and are therefore not affected here:
+    CVE-2026-85493 (boo#1284101, Dart and Java ME)
+    CVE-2026-94635 (boo#1284090, Lua)
+    CVE-2026-94633 (boo#1284091, Dart)
+    CVE-2026-96990 (boo#1284094, Erlang)
+    CVE-2026-94651 (boo#1284095, Java)
+    CVE-2026-94645 (boo#1284096, node.js)
+    CVE-2026-94639 (boo#1284098, Java)
+    CVE-2026-96292 (boo#1284111, Lua)
+    CVE-2026-96288 (boo#1284113, Erlang)
+    CVE-2026-96277 (boo#1284116, Ruby)
+    CVE-2026-94658 (boo#1284117, Lua)
+    CVE-2026-94657 (boo#1284118, Java ME)
+    CVE-2026-94656 (boo#1284119, Ruby)
+    CVE-2026-94655 (boo#1284120, Lua)
+    CVE-2026-86537 (boo#1284123, D).
+
+-------------------------------------------------------------------
 Sat Aug 15 12:35:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Build the bindings as _multibuild flavors of this one spec

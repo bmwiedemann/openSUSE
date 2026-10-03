@@ -55,15 +55,15 @@
 # which is versioned conventionally. Bump only when the C ABI breaks.
 %global libgversion 0
 Name:           %{pkgname}
-Version:        0.24.0
+Version:        0.25.0
 Release:        0
 # The C++ libraries are built with libtool -release, so the version is baked
-# into the file name (libthrift-0.24.0.so) and there is no libthrift.so.N
+# into the file name (libthrift-0.25.0.so) and there is no libthrift.so.N
 # symlink; the shared library packages therefore have to carry %%{version} in
 # their name. Spelled out rather than derived with %%(echo ... | tr . _),
 # because OBS's spec parser cannot expand %%(...) and warns on every build.
 # %%build asserts that it still matches, so a missed bump is an FTBFS.
-%global libversion 0_24_0
+%global libversion 0_25_0
 Summary:        Framework for scalable cross-language services development
 License:        Apache-2.0
 URL:            https://thrift.apache.org

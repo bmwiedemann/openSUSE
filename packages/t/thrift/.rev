@@ -275,4 +275,12 @@ flavors no longer report invalid-spec-name; the core flavor reports the
 filter as unused (badness 1, benign - any non-matching filter form does).</comment>
     <requestid>1371687</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>24d747393b1607a697ca8710c09e5143</srcmd5>
+    <version>0.25.0</version>
+    <time>1791051191</time>
+    <user>dimstar_suse</user>
+    <comment>Update thrift to 0.25.0 (supersedes 1382165, adds second CVE batch)</comment>
+    <requestid>1382170</requestid>
+  </revision>
 </revisionlist>
