@@ -16321,6 +16321,7 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
+  - librocblas5 
   - librocfft0 
   - librocjpeg1 
   - librocksdb11 
@@ -16879,12 +16880,12 @@ unsorted:
   - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
-  - libthrift-0_24_0 
+  - libthrift-0_25_0 
   - libthrift-devel 
   - libthrift_c_glib-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_24_0 
-  - libthriftz-0_24_0 
+  - libthriftnb-0_25_0 
+  - libthriftz-0_25_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -33832,6 +33833,7 @@ unsorted:
   - robinhood-tests 
   - robinhood-tools 
   - robinhood-webgui 
+  - rocblas-devel 
   - rocdecode-devel 
   - rocdecode-libs 
   - rocfft-devel 
