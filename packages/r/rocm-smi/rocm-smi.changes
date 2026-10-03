@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 00:00:00 UTC 2026 - Jeremy Newton <alexjnewt@hotmail.com>
+
+- Fix requires: devel and test should require the base package
+
+-------------------------------------------------------------------
 Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
 
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
@@ -86,12 +91,12 @@ Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
 
 -------------------------------------------------------------------
-Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
 
 - Update to 6.4.2
 
 -------------------------------------------------------------------
-Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
 
 - Update to 6.4.1
 
@@ -102,7 +107,7 @@ Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
 - refactor empty return patch
 
 -------------------------------------------------------------------
-Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+Wed Apr 16 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt@hotmail.com>
 
 - Update to 6.4.0
 

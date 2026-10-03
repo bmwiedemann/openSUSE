@@ -55,4 +55,12 @@
 - Update to 7.2.1</comment>
     <requestid>1374151</requestid>
   </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>79396877e3f02a4a5605d36eefdeb9b5</srcmd5>
+    <version>7.2.1</version>
+    <time>1791051204</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix requires: devel and test should require the base package</comment>
+    <requestid>1381974</requestid>
+  </revision>
 </revisionlist>

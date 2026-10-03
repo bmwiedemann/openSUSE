@@ -176,7 +176,7 @@ Summary:        Runtime for %{name}
 
 %package devel
 Summary:        ROCm SMI Library development files
-Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 # /usr/include/rocm_smi/kfd_ioctl.h:26:10: fatal error: 'libdrm/drm.h' file not found
 Requires:       libdrm-devel
 
@@ -186,7 +186,7 @@ ROCm System Management Interface Library development files
 %if %{with test}
 %package test
 Summary:        Tests for %{name}
-Requires:       %{pkg_name}%{?_isa} = %{version}-%{release}
+Requires:       %{name}%{?_isa} = %{version}-%{release}
 
 %description test
 %{summary}
