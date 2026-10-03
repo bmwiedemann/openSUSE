@@ -1,0 +1,39 @@
+From 4c4c73ed8b5876271b0ed355aaeef4f17d9a1e15 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Mon, 27 Jul 2026 09:42:05 -0700
+Subject: [PATCH] hipblaslt preview find origami package
+
+---
+ projects/hipblaslt/CMakeLists.txt | 16 +---------------
+ 1 file changed, 1 insertion(+), 15 deletions(-)
+
+diff --git a/projects/hipblaslt/CMakeLists.txt b/projects/hipblaslt/CMakeLists.txt
+index 451ea92c0b15..aa0baef5075b 100644
+--- a/projects/hipblaslt/CMakeLists.txt
++++ b/projects/hipblaslt/CMakeLists.txt
+@@ -281,21 +281,7 @@ if(NOT HIPBLASLT_ENABLE_YAML)
+     endif()
+ endif()
+ 
+-if(NOT ROCM_LIBS_SUPERBUILD)
+-    if(HIPBLASLT_ENABLE_THEROCK)
+-        find_package(origami CONFIG QUIET)
+-    endif()
+-    if(NOT TARGET roc::origami)
+-        block(SCOPE_FOR VARIABLES)
+-            set(ORIGAMI_ENABLE_FETCH ON)
+-            set(ORIGAMI_BUILD_TESTING OFF)
+-            set(ORIGAMI_ENABLE_PYTHON OFF)
+-            set(BUILD_TESTING OFF)
+-            set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+-            add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../../shared/origami" "${CMAKE_CURRENT_BINARY_DIR}/origami" EXCLUDE_FROM_ALL)
+-        endblock()
+-    endif()
+-endif()
++find_package(origami REQUIRED)
+ 
+ # INTERFACE library that owns the public hipblaslt API headers (the in-tree
+ # `library/include` subtree plus its build-tree counterpart, where
+-- 
+2.54.0
+

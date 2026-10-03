@@ -1,0 +1,49 @@
+From dcc36d33ff711e26ae73967367ffcab5f6ae7876 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Mon, 27 Jul 2026 08:40:12 -0700
+Subject: [PATCH] hipblaslt preview cmake jobpools
+
+---
+ projects/hipblaslt/CMakeLists.txt | 26 ++++++++++++++++++++++++++
+ 1 file changed, 26 insertions(+)
+
+diff --git a/projects/hipblaslt/CMakeLists.txt b/projects/hipblaslt/CMakeLists.txt
+index 529ec2bd6f0e..451ea92c0b15 100644
+--- a/projects/hipblaslt/CMakeLists.txt
++++ b/projects/hipblaslt/CMakeLists.txt
+@@ -67,6 +67,32 @@ option(HIPBLASLT_ENABLE_COVERAGE "Build coverage support." OFF)
+ option(HIPBLASLT_ENABLE_THEROCK "Build hipBLASLt for TheRock." OFF)
+ option(HIPBLASLT_VALIDATE_INSTALL "Run post-install per-base layout / .dat integrity checks on the install tree." OFF)
+ 
++#
++# Seperate linking jobs from compiling
++# Too many concurrent linking jobs can break the build
++# Copied from LLVM
++set(HIPBLASLT_PARALLEL_LINK_JOBS "" CACHE STRING
++  "Define the maximum number of concurrent link jobs (Ninja only).")
++if(CMAKE_GENERATOR MATCHES "Ninja")
++  if(HIPBLASLT_PARALLEL_LINK_JOBS)
++    set_property(GLOBAL APPEND PROPERTY JOB_POOLS link_job_pool=${HIPBLASLT_PARALLEL_LINK_JOBS})
++    set(CMAKE_JOB_POOL_LINK link_job_pool)
++  endif()
++elseif(HIPBLASLT_PARALLEL_LINK_JOBS)
++  message(WARNING "Job pooling is only available with Ninja generators.")
++endif()
++# Similar for compiling
++set(HIPBLASLT_PARALLEL_COMPILE_JOBS "" CACHE STRING
++  "Define the maximum number of concurrent compile jobs (Ninja only).")
++if(CMAKE_GENERATOR MATCHES "Ninja")
++  if(HIPBLASLT_PARALLEL_COMPILE_JOBS)
++    set_property(GLOBAL APPEND PROPERTY JOB_POOLS compile_job_pool=${HIPBLASLT_PARALLEL_COMPILE_JOBS})
++    set(CMAKE_JOB_POOL_COMPILE compile_job_pool)
++  endif()
++elseif(HIPBLASLT_PARALLEL_COMPILE_JOBS)
++  message(WARNING "Job pooling is only available with Ninja generators.")
++endif()
++
+ option(TENSILELITE_ENABLE_HOST "Build the tensilelite host library." ON)
+ option(TENSILELITE_BUILD_TESTING "Build client when building tests" OFF)
+ option(TENSILELITE_ENABLE_CLIENT "Build tensilelite client" ${TENSILELITE_BUILD_TESTING})
+-- 
+2.54.0
+

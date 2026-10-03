@@ -1,0 +1,253 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun 30 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Mon Apr 13 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Wed Mar  4 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Rework fedora path handling for compat
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix TW
+
+-------------------------------------------------------------------
+Thu Feb 19 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Tue Jan 27 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+  Modified: 0001-hipblaslt-cmake-compile-and-link-pools.patch
+            0001-hipblaslt-find-origami-package.patch
+	    0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+	    0001-hipblaslt-tensilelite-use-nanobind-tarball.patch
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Dec 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove build requires git
+
+-------------------------------------------------------------------
+Thu Dec 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Sat Dec 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix fortran buildrequires on SUSE
+
+-------------------------------------------------------------------
+Sun Dec  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add compile and link job pools
+  Add: 0001-hipblaslt-cmake-compile-and-link-pools.patch
+
+-------------------------------------------------------------------
+Sat Dec  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use blis-devel for testing
+- Use GPU_TARGETS
+  Modified: 0001-hipblaslt-find-origami-package.patch
+            0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+	    0001-hipblaslt-tensilelite-use-nanobind-tarball.patch
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Sun Nov 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Bundle nanobind for EPEL
+  Add: 0001-hipblaslt-tensilelite-use-nanobind-tarball.patch
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Sat Nov  1 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Add: 0001-hipblaslt-find-origami-package.patch
+  Modified: 0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+            0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+  Removed: 0001-hipblaslt-find-toolchain.patch
+           0001-hipblaslt-handle-missing-joblib.patch
+	   hipBLASLt-6.4.1-upstream-clang.patch
+
+-------------------------------------------------------------------
+Sat Oct 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Wed Oct  8 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use joblib on RHEL
+
+-------------------------------------------------------------------
+Thu Sep 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+  Add: 0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Sun Aug 24 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- On SUSE use code from python-tensile to check for msgpack.
+
+-------------------------------------------------------------------
+Wed Aug 20 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- On SLE-15 exclusively use python 3.6.
+  This is since joblib is not even available on PackageHub.
+- On SUSE check for msgpack-cxx instead of msgpack.
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove roctracer
+- Build on EPEL
+
+-------------------------------------------------------------------
+Thu Aug  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.3
+- Add: gfx1103,gfx1150,gfx1151 targets
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jun 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use Gentoo fix for gfx12*
+
+-------------------------------------------------------------------
+Sun Jun 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check of ldconfig
+
+-------------------------------------------------------------------
+Mon Jun  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix fedora build dependencies
+
+-------------------------------------------------------------------
+Thu May 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.1
+
+-------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Document gfx1201 failure
+
+-------------------------------------------------------------------
+Wed May  7 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- put gfx1100;gfx1101 back into build target list
+
+-------------------------------------------------------------------
+Thu May  1 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reduce gpu set to 6.3
+- mitigate suse build timeout
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Fri Mar  7 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- msgpack is manditory
+
+-------------------------------------------------------------------
+Mon Mar  3 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add tensile format and verbose args similar to roblas
+
+-------------------------------------------------------------------
+Sun Mar  2 00:00:00 UTC 2025 - Christian Goll <cgoll@suse.de>
+
+- Fix all builds
+
+-------------------------------------------------------------------
+Thu Feb 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix fedora
+
+-------------------------------------------------------------------
+Tue Feb 25 00:00:00 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- use python3.11 for 15.6 builds
+
+-------------------------------------------------------------------
+Mon Feb 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix for TW
+
+-------------------------------------------------------------------
+Thu Jan 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add gfx1200,gfx1201
+- multithread compress
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Mon Dec 23 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Wed Dec 11 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
