@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 04:20:11 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 3.8.5:
+  * No changelog provided
+- Add BuildRequires cmake(KF6DBusAddons)
+
+-------------------------------------------------------------------
 Thu Aug 13 19:08:18 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
 
 - Update to 3.8.4.1:
