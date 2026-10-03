@@ -151,4 +151,12 @@
     <comment>1.6.5</comment>
     <requestid>1382084</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b1656170245fc655c75fbbbb8fab03d4</srcmd5>
+    <version>1.6.5</version>
+    <time>1791051235</time>
+    <user>dimstar_suse</user>
+    <comment>Add CVE/bsc reference</comment>
+    <requestid>1382219</requestid>
+  </revision>
 </revisionlist>

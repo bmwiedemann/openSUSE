@@ -3,13 +3,13 @@ Thu Oct  1 18:53:03 UTC 2026 - Fridrich Strba <fstrba@suse.com>
 
 - Upgrade to upstream version 1.6.5
   * Changes of version 1.6.5
-    + Fixed a vulnerability closely related to CVE-2026-19880
-      (bsc#1284020). The fix made in version 1.6.3, which strips
-      forward and backward slashes from MDC values, was not
-      sufficient. An MDC value could still contain relative path
-      components such as .., variable references such as /, or
-      characters that are special in file name patterns and email
-      addresses.
+    + Fixed a vulnerability (bsc#1284124, CVE-2026-104721) closely
+      related to CVE-2026-19880 (bsc#1284020). The fix made in
+      version 1.6.3, which strips forward and backward slashes from
+      MDC values, was not sufficient. An MDC value could still
+      contain relative path components such as .., variable
+      references such as /, or characters that are special in file
+      name patterns and email addresses.
       MDCBasedDiscriminator, used by SiftingAppender, now rejects
       MDC values instead of stripping characters from them. An MDC
       value is rejected if it is empty, if it is longer than 64
