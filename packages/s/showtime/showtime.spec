@@ -30,7 +30,7 @@ BuildRequires:  AppStream
 BuildRequires:  desktop-file-utils
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(blueprint-compiler)
+BuildRequires:  pkgconfig(blueprint-compiler) >= 0.17
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.18.0

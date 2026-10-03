@@ -94,4 +94,12 @@
 - Add explicit AppStream BuildRequires, meson checks for it.</comment>
     <requestid>1357524</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>55485e5814ba7311fea1b846a00ac8ec</srcmd5>
+    <version>50.0+19</version>
+    <time>1791051278</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1382235</requestid>
+  </revision>
 </revisionlist>
