@@ -18,9 +18,9 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-publicsuffixlist
-Version:        1.0.2.20260703
+Version:        1.0.2.20261003
 Release:        0
-Summary:        Public suffix list implementaion in Python
+Summary:        Public suffix list implementation in Python
 License:        MPL-2.0
 URL:            https://github.com/ko-zu/psl
 Source:         https://files.pythonhosted.org/packages/source/p/publicsuffixlist/publicsuffixlist-%{version}.tar.gz
