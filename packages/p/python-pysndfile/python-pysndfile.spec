@@ -1,7 +1,7 @@
 #
 # spec file for package python-pysndfile
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,18 +18,18 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-pysndfile
-Version:        1.4.4
+Version:        1.5.3
 Release:        0
 Summary:        Cython wrapper class for reading/writing soundfiles
 License:        LGPL-3.0-only
-Group:          Development/Languages/Python
 URL:            https://forge-2.ircam.fr/roebel/pysndfile
-Source:         https://files.pythonhosted.org/packages/source/p/pysndfile/pysndfile-%{version}.tar.gz
+Source:         https://forge-2.ircam.fr/roebel/pysndfile/-/archive/Version_%{version}/pysndfile-Version_%{version}.tar.gz#/pysndfile-%{version}.tar.gz
 Patch0:         fix-test-imports.patch
 BuildRequires:  %{python_module Cython}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module pkgconfig}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,15 +41,14 @@ Requires:       python-numpy
 %python_subpackages
 
 %description
-pysndfile is a python package providing PySndfile a
-Cython wrapper class around libsndfile . PySndfile
-provides methods for reading and writing a large variety of soundfile
-formats on a variety of plattforms. PySndfile provides a rather complete
-access to the different sound file manipulation options that are
+pysndfile is a python package providing PySndfile a Cython wrapper class around
+libsndfile. PySndfile provides methods for reading and writing a large variety
+of soundfile formats on a variety of platforms. PySndfile provides a rather
+complete access to the different sound file manipulation options that are
 available in libsndfile.
 
-Due to the use of libsndfile nearly all sound file formats, (besides mp3
-and derived formats) can be read and written with PySndfile.
+Due to the use of libsndfile nearly all sound file formats can be read and
+written with PySndfile.
 
 The interface has been designed such that a rather large subset of the
 functionality of libsndfile can be used, notably the reading and writing
@@ -59,8 +58,13 @@ the samples. One of the most important ones is the use of the clipping
 command.
 
 %prep
-%setup -q -n pysndfile-%{version}
-%autopatch -p1
+%autosetup -p1 -n pysndfile-Version_%{version}
+# Only /usr/lib is checked for the library
+cat >>setup.cfg.dist <<EOF
+sndfile_libdir = %{_libdir}
+sndfile_incdir = %{_includedir}
+EOF
+mv setup.cfg.dist setup.cfg
 
 %build
 export CFLAGS="%{optflags}"

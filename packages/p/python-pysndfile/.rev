@@ -118,4 +118,41 @@
     <comment></comment>
     <requestid>1246650</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>a92de2701e68271e3d3bb924f80e9a42</srcmd5>
+    <version>1.5.3</version>
+    <time>1791051212</time>
+    <user>dimstar_suse</user>
+    <comment>- typo fixes
+
+- Update to 1.5.3:
+  * Fix: Support libsndfile being installed in the Debian multiarch
+    layout when using SNDFILE_INSTALL_DIR or auto detection
+  * Extension: Use pkg-config to locate libsndfile unless
+    SNDFILE_INSTALL_DIR is defined
+  * Extension: Support free-threaded python 3.14 python interpreter
+  * Fix (build): Ensure compatibility with Cython 3.2
+  * Requires python 3.8 or above
+  * Extension: ogg/vorbis, ogg/opus, CAF/ALAC and mpeg formats are now
+    supported if the installed version of libsndfile supports them
+  * Extension: All libsndfile commands (as of version 1.2.2) are now
+    supported by PySndfile.command
+  * Extension: sndio.write now has a commands parameter to define sound
+    file information and settings using the libsndfile sf_command
+    function
+  * Extension: new function sndio.get_info_command to retrieve
+    information about a sound file
+  * Fix: Remove deprecated IF conditions in Cython code
+  * Remove tests directory from sdist because the test is not a standard
+    unittest and led to confusion
+  * Extension (build): build_ext.finalize_options now communicates the
+    sndfile library and include dirs that are used.
+  * Extension: support Path for filename arguments in sndio.
+  * Fix: Avoid crash in sndio.write when a zero-sized array is stored
+- Simplify patch fix-test-imports.patch
+
+  * Fix for win32: improved error handling for PyUnicode_AsWideCharString (thanks to Andrey Bienkowski)
+    to Svein Seldal for the contributions).</comment>
+    <requestid>1382179</requestid>
+  </revision>
 </revisionlist>

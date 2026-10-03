@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Fri Oct  2 20:24:53 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- typo fixes
+
+-------------------------------------------------------------------
+Fri Oct  2 01:30:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.5.3:
+  * Fix: Support libsndfile being installed in the Debian multiarch
+    layout when using SNDFILE_INSTALL_DIR or auto detection
+  * Extension: Use pkg-config to locate libsndfile unless
+    SNDFILE_INSTALL_DIR is defined
+  * Extension: Support free-threaded python 3.14 python interpreter
+  * Fix (build): Ensure compatibility with Cython 3.2
+  * Requires python 3.8 or above
+  * Extension: ogg/vorbis, ogg/opus, CAF/ALAC and mpeg formats are now
+    supported if the installed version of libsndfile supports them
+  * Extension: All libsndfile commands (as of version 1.2.2) are now
+    supported by PySndfile.command
+  * Extension: sndio.write now has a commands parameter to define sound
+    file information and settings using the libsndfile sf_command
+    function
+  * Extension: new function sndio.get_info_command to retrieve
+    information about a sound file
+  * Fix: Remove deprecated IF conditions in Cython code
+  * Remove tests directory from sdist because the test is not a standard
+    unittest and led to confusion
+  * Extension (build): build_ext.finalize_options now communicates the
+    sndfile library and include dirs that are used.
+  * Extension: support Path for filename arguments in sndio.
+  * Fix: Avoid crash in sndio.write when a zero-sized array is stored
+- Simplify patch fix-test-imports.patch
+
+-------------------------------------------------------------------
 Tue Feb 18 10:00:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Limit Python files matched in %files section
@@ -14,7 +48,7 @@ Tue Feb 18 10:00:54 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
 Thu Oct  6 22:07:46 UTC 2022 - Yogalakshmi Arunachalam <yarunachalam@suse.com>
 
 - Update to Version_1.4.4 (2022-03-11)
-  * Fix for win32: improved error handling for PyUnicode_AsWideCharString (thanks to Andrey Bienkowski) 
+  * Fix for win32: improved error handling for PyUnicode_AsWideCharString (thanks to Andrey Bienkowski)
 
 -------------------------------------------------------------------
 Fri Feb 26 21:21:17 UTC 2021 - Ben Greiner <code@bnavigator.de>
@@ -58,9 +92,9 @@ Fri Jul  3 06:51:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * remove precompiled cython source file and rely on pip requirements to provide cython
     so that cython compilation will always be possible.
   * added experimental support for installation on win32 (thanks
-    to Svein Seldal for the contributions). 
+    to Svein Seldal for the contributions).
   * use expanduser for replacing ~ in filenames
-  * adapted cython source code to avoid all compiler warnings due to deprecated numpy api 
+  * adapted cython source code to avoid all compiler warnings due to deprecated numpy api
   * removed use of ez_setup.py that is no longer required.
   * fixed missing command C\_SFC\_SET\_SCALE\_INT\_FLOAT\_WRITE (thanks
     to Svein Seldal for the bug report and fix)
@@ -71,7 +105,7 @@ Fri Jul  3 06:51:07 UTC 2020 - Steve Kowalik <steven.kowalik@suse.com>
   * better error handling when number of channels exceeds channel limit
     imposed by libsndfile.
   * sndio module now exposes the dicts: fileformat\_name\_to\_id
-    and fileformat\_id\_to\_name 
+    and fileformat\_id\_to\_name
   * extended sndio.read with force_2d argument that can be used to
     force the returned data array to always have 2 dimensions even for
     mono files.
