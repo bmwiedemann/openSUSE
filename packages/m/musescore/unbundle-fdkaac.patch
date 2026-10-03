@@ -1,0 +1,25 @@
+--- MuseScore-4.7.2/src/framework/audio/engine/CMakeLists.txt.orig	2026-05-25 02:55:43.000000000 -0600
++++ MuseScore-4.7.2/src/framework/audio/engine/CMakeLists.txt	2026-05-26 10:20:47.014043570 -0600
+@@ -230,8 +230,7 @@ if (MUSE_MODULE_AUDIO_EXPORT)
+     include(../cmake/SetupFlac.cmake)
+     target_link_libraries(muse_audio_engine PRIVATE ${FLAC_TARGETS})
+ 
+-    add_subdirectory(../thirdparty/fdk-aac fdk_aac EXCLUDE_FROM_ALL)
+-    target_link_libraries(muse_audio_engine PRIVATE fdk_aac)
++    target_link_libraries(muse_audio_engine PRIVATE -lfdk-aac)
+ endif() # MUSE_MODULE_AUDIO_EXPORT
+ 
+ target_link_libraries(muse_audio_engine PRIVATE muse_audio_common)
+--- MuseScore-4.7.2/src/framework/audio/engine/internal/export/aacencoder.cpp.orig	2026-05-25 02:55:43.000000000 -0600
++++ MuseScore-4.7.2/src/framework/audio/engine/internal/export/aacencoder.cpp	2026-05-26 10:20:47.014395866 -0600
+@@ -24,8 +24,8 @@
+ 
+ #include <algorithm>
+ 
+-#include "aacenc_lib.h"
+-#include "FDK_audio.h"
++#include <fdk-aac/aacenc_lib.h>
++#include <fdk-aac/FDK_audio.h>
+ 
+ #include "../dsp/audiomathutils.h"
+ 

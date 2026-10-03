@@ -1,0 +1,94 @@
+diff -ur a/src/framework/audio/engine/CMakeLists.txt b/src/framework/audio/engine/CMakeLists.txt
+--- a/src/framework/audio/engine/CMakeLists.txt	2026-10-02 12:25:57.273832913 +0200
++++ b/src/framework/audio/engine/CMakeLists.txt	2026-10-02 13:43:01.634983841 +0200
+@@ -192,8 +192,6 @@
+         internal/export/flacencoder.h
+         internal/export/wavencoder.cpp
+         internal/export/wavencoder.h
+-        internal/export/aacencoder.cpp
+-        internal/export/aacencoder.h
+     )
+ 
+     if(MUE_COMPILE_USE_SYSTEM_LAME)
+@@ -229,8 +227,6 @@
+ 
+     include(../cmake/SetupFlac.cmake)
+     target_link_libraries(muse_audio_engine PRIVATE ${FLAC_TARGETS})
+-
+-    target_link_libraries(muse_audio_engine PRIVATE -lfdk-aac)
+ endif() # MUSE_MODULE_AUDIO_EXPORT
+ 
+ target_link_libraries(muse_audio_engine PRIVATE muse_audio_common)
+diff -ur a/src/framework/audio/engine/internal/export/soundtrackwriter.cpp b/src/framework/audio/engine/internal/export/soundtrackwriter.cpp
+--- a/src/framework/audio/engine/internal/export/soundtrackwriter.cpp	2026-08-31 09:09:34.000000000 +0200
++++ b/src/framework/audio/engine/internal/export/soundtrackwriter.cpp	2026-10-02 13:43:43.844016293 +0200
+@@ -33,7 +33,6 @@
+ #include "oggencoder.h"
+ #include "flacencoder.h"
+ #include "wavencoder.h"
+-#include "aacencoder.h"
+ 
+ #include "log.h"
+ 
+@@ -49,7 +48,6 @@
+     case SoundTrackType::OGG: return std::make_unique<encode::OggEncoder>();
+     case SoundTrackType::FLAC: return std::make_unique<encode::FlacEncoder>();
+     case SoundTrackType::WAV: return std::make_unique<encode::WavEncoder>();
+-    case SoundTrackType::AAC: return std::make_unique<encode::AacEncoder>();
+     case SoundTrackType::Undefined: break;
+     }
+ 
+diff -ur a/src/importexport/audioexport/audioexportmodule.cpp b/src/importexport/audioexport/audioexportmodule.cpp
+--- a/src/importexport/audioexport/audioexportmodule.cpp	2026-08-31 09:09:34.000000000 +0200
++++ b/src/importexport/audioexport/audioexportmodule.cpp	2026-10-02 11:17:09.827317025 +0200
+@@ -28,7 +28,6 @@
+ #include "internal/wavewriter.h"
+ #include "internal/oggwriter.h"
+ #include "internal/flacwriter.h"
+-#include "internal/aacwriter.h"
+ 
+ #include "internal/audioexportconfiguration.h"
+ 
+@@ -59,7 +58,6 @@
+         writers->reg({ "mp3" }, std::make_shared<Mp3Writer>(iocContext()));
+         writers->reg({ "ogg" }, std::make_shared<OggWriter>(iocContext()));
+         writers->reg({ "flac" }, std::make_shared<FlacWriter>(iocContext()));
+-        writers->reg({ "aac" }, std::make_shared<AacWriter>(iocContext()));
+     }
+ }
+ 
+diff -ur a/src/importexport/audioexport/CMakeLists.txt b/src/importexport/audioexport/CMakeLists.txt
+--- a/src/importexport/audioexport/CMakeLists.txt	2026-08-31 09:09:34.000000000 +0200
++++ b/src/importexport/audioexport/CMakeLists.txt	2026-10-02 11:15:14.912339590 +0200
+@@ -36,6 +36,4 @@
+     internal/oggwriter.h
+     internal/flacwriter.cpp
+     internal/flacwriter.h
+-    internal/aacwriter.cpp
+-    internal/aacwriter.h
+ )
+diff -ur a/src/project/qml/MuseScore/Project/CMakeLists.txt b/src/project/qml/MuseScore/Project/CMakeLists.txt
+--- a/src/project/qml/MuseScore/Project/CMakeLists.txt	2026-08-31 09:09:34.000000000 +0200
++++ b/src/project/qml/MuseScore/Project/CMakeLists.txt	2026-10-02 11:20:37.323211008 +0200
+@@ -90,7 +90,6 @@
+         internal/Export/OggSettingsPage.qml
+         internal/Export/FlacSettingsPage.qml
+         internal/Export/WavSettingsPage.qml
+-        internal/Export/AacSettingsPage.qml
+         internal/Export/PdfSettingsPage.qml
+         internal/Export/PngSettingsPage.qml
+         internal/Export/SvgSettingsPage.qml
+diff -ur a/src/project/qml/MuseScore/Project/internal/Export/exportdialogmodel.cpp b/src/project/qml/MuseScore/Project/internal/Export/exportdialogmodel.cpp
+--- a/src/project/qml/MuseScore/Project/internal/Export/exportdialogmodel.cpp	2026-08-31 09:09:34.000000000 +0200
++++ b/src/project/qml/MuseScore/Project/internal/Export/exportdialogmodel.cpp	2026-10-02 11:22:28.900188905 +0200
+@@ -94,10 +94,6 @@
+                                      muse::qtrc("project/export", "FLAC audio"),
+                                      muse::qtrc("project/export", "FLAC audio files"),
+                                      "FlacSettingsPage.qml"),
+-        ExportType::makeWithSuffixes({ "aac" },
+-                                     muse::qtrc("project/export", "AAC audio"),
+-                                     muse::qtrc("project/export", "AAC audio files"),
+-                                     "AacSettingsPage.qml"),
+ #ifdef MUE_BUILD_IMPEXP_VIDEOEXPORT_MODULE
+         ExportType::makeWithSuffixes({ "mp4" },
+                                      muse::qtrc("project/export", "MP4 video"),

@@ -26,8 +26,12 @@
 %define version_lesser 4.7
 %define fontdir %{_datadir}/fonts/%{name}
 %define docdir  %{_docdir}/%{name}
+
+# disable fdk_aac until linking to it has approval from legal (boo#1278345)
+%bcond_with    fdk_aac
+
 Name:           musescore
-Version:        4.7.4
+Version:        4.7.5
 Release:        0
 Summary:        A WYSIWYG music score typesetter
 # Licenses in MuseScore are a mess. To help other maintainers I give the following overview:
@@ -50,7 +54,7 @@ Summary:        A WYSIWYG music score typesetter
 # thirdparty/singleapp: the actual code has BSD 3 (although GPL and LGPL are included)
 # thirdparty/stb: MIT
 # the soundfont we musescore uses (see below) is BSD 3
-License:        Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND GPL-3.0-only WITH Font-exception-2.0 AND GPL-2.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND MIT
+License:        Apache-2.0 AND BSD-3-Clause AND FTL AND GPL-2.0-only AND GPL-3.0-only WITH Font-exception-2.0 AND GPL-2.0-only WITH Font-exception-2.0 AND GPL-2.0-or-later AND GPL-3.0-or-later AND GFDL-1.2-only AND LGPL-2.0-only AND LGPL-2.1-only AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.0-or-later AND LGPL-2.1-or-later AND LGPL-3.0-or-later AND MIT AND OFL-1.1 AND CC-BY-3.0 AND CC-BY-4.0 AND CC-BY-SA-3.0 AND BSD-2-Clause AND BSL-1.0 AND ISC AND X11 AND Zlib
 Group:          Productivity/Multimedia/Sound/Editors and Convertors
 URL:            https://musescore.org
 Source0:        https://github.com/musescore/MuseScore/archive/refs/tags/v%{version}.tar.gz#/MuseScore-%{version}.tar.gz
@@ -65,18 +69,14 @@ Source5:        README.SUSE
 # Patch for CVE-2025-56225
 Patch0:         musescore-CVE-2025-56225.patch
 Patch1:         musescore-styleddropdownnavigation.patch
+# Build with system fdk-aac (adapted from libs-unbundle patch in Fedora)
+Patch2:         unbundle-fdkaac.patch
+%if %{without fdk_aac}
+Patch3:         disable-aac.patch
+%endif
 BuildRequires:  cmake
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc12
-BuildRequires:  gcc12-c++
-%else
 BuildRequires:  gcc-c++
-%endif
-%ifarch ppc64 ppc64le
-# PPC builds often have memory issues, limit the number of parallel jobs
-BuildRequires:  memory-constraints
-%endif
 
 # Qt tools want an UTF-8 locale
 BuildRequires:  glibc-locale-base
@@ -132,9 +132,8 @@ BuildRequires:  pkgconfig(vorbisfile)
 Requires:       %{name}-fonts = %{version}-%{release}
 Requires:       qt6-qt5compat-imports
 Requires:       ( alsa-plugins-pulse if pulseaudio )
-# For the following arch build fails in the crashpad client,
-# Maybe repairable? Disabled until a solution is found by someone.
-ExcludeArch:    aarch64 ppc64 ppc64le
+# Does not build for following archs
+ExcludeArch:    i586
 
 %description
 MuseScore is a graphical music typesetter. It allows for note entry on a
@@ -176,18 +175,12 @@ mv -f tmpfile thirdparty/rtf2html/README.ru
 #TODO: check if still needed
 #sed -i 's/\(target_link_libraries(mscore ${LINK_LIB}\)/\1 ${CMAKE_DL_LIBS}/' src/main/CMakeLists.txt
 
+# Remove bundled fdk-aac
+rm -rf src/framework/audio/thirdparty/fdk-aac
+
 %build
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
-# Limit memory / threads on PowerPC to avoid memory issues
-%ifarch ppc64 ppc64le
-%limit_build -m 2000
-%endif
-
-%if 0%{?suse_version} < 1560 && 0%{?sle_version} <= 150600
-export CC=gcc-12
-export CXX=g++-12
-%endif
 
 %define __builddir build.release
 # TODO:
@@ -262,6 +255,8 @@ install -p -m 644 share/wallpapers/COPYRIGHT          %{buildroot}%docdir/COPYIN
 %fdupes %{buildroot}%{_prefix}
 
 %files
+# TODO: report upstream: lines 8-10 claim all bundled fonts use the GNU Freefont
+# License. This is incorrect (only 5 FreeSerif*.ttf files use it; the rest are OFL-1.1)
 %license LICENSE.txt
 %{_bindir}/%{rname}
 %{_datadir}/metainfo/org.musescore.MuseScore.appdata.xml

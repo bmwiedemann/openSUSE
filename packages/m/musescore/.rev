@@ -684,4 +684,41 @@
 - enable building mnx import/export plugin (new deps: mnxdom and json-schema-validator)</comment>
     <requestid>1374143</requestid>
   </revision>
+  <revision rev="58" vrev="1">
+    <srcmd5>50e33757884d01a94f313843cd46b488</srcmd5>
+    <version>4.7.5</version>
+    <time>1791055572</time>
+    <user>dimstar_suse</user>
+    <comment>- fix license string
+
+- Add disable-aac.patch: for this fdk-aac is used, which is legally
+  problematic. Exact status is unclear at the moment. So we
+  disable it so that musescore can move on until the situation is
+  resolved (boo#1278345)
+- Remove BuildRequires: libfdk-aac-devel (already required by other
+  packages)
+
+- Add TODO for LICENSE.txt regarding including fonts so that it is
+  not forgotten (boo#1278345)
+- Some cleaning up: remove references to ppc and add i586 to
+  excludearch: it does not build on it
+- Also remove references to versions older than 16.0
+
+- Update to 4.7.5:
+  * New fretboard diagrams for guitars.
+  * Updated parameters and descriptions for several instruments
+    in the New Score dialog.
+  * Fixed empty header &amp; footer variables (i.e. project properties)
+    in instrumental parts on MuseScore.com.
+  * Fixed app notarization on macOS (including the QuickLook
+    plugin, which had stopped working as a result).
+  * Several bug and crash fixes mainly related to opening or
+    importing scores.
+  * Minor engraving fixes.
+- Add more licence tags (boo#1278345)
+
+- Add unbundle-fdkaac.patch and add libfdk-aac-devel to
+  BuildRequires to build with system fdk-aac. In addition remove</comment>
+    <requestid>1382256</requestid>
+  </revision>
 </revisionlist>
