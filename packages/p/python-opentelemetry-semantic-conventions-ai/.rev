@@ -77,4 +77,17 @@ package, so none is cited.
 </comment>
     <requestid>1380940</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>04b9b9eb208d6c632f54e17011d189ae</srcmd5>
+    <version>0.5.2</version>
+    <time>1791051302</time>
+    <user>dimstar_suse</user>
+    <comment>Update openllmetry monorepo 0.62.3 -&gt; 0.62.4
+
+Version stays 0.5.2: upstream's in-tree pyproject.toml declares
+0.5.2 at both tags, so only %monorepo_ver moves. No file under
+packages/opentelemetry-semantic-conventions-ai changed in the
+range, which fixes 7 issues in other instrumentors. No CVE.</comment>
+    <requestid>1382257</requestid>
+  </revision>
 </revisionlist>

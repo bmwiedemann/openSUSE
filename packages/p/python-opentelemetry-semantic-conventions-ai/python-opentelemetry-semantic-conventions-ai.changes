@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sat Oct  3 16:11:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Bump monorepo_ver to 0.62.4; this package's own version stays
+  0.5.2, because the in-tree pyproject.toml declares 0.5.2 at
+  both monorepo tags
+  * The packages/opentelemetry-semantic-conventions-ai subdirectory
+    is byte-identical to 0.62.3, so this refresh carries no code
+    change
+  * Of the eight commits, seven fix other instrumentors (crewai,
+    langchain, mistralai, openai, mcp twice, groq), none of which
+    this package builds or ships; the eighth is the monorepo
+    version bump
+  * No CVE is fixed in this range
+  * Requires are unchanged at opentelemetry-sdk >= 1.42.0 and
+    opentelemetry-semantic-conventions >= 0.63b1, re-verified
+    against the 0.62.4 tarball
+
+-------------------------------------------------------------------
 Sun Sep 27 08:19:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Bump monorepo_ver to 0.62.3; this package's own version stays

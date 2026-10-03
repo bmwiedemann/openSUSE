@@ -25,7 +25,7 @@
 # monorepo tag v%%{monorepo_ver} and this package lives in %%{pkgsubdir}
 # inside it, so %%{monorepo_ver} - not %%{version} - is what moves on the
 # next update.
-%define monorepo_ver 0.62.3
+%define monorepo_ver 0.62.4
 %define pkgsubdir packages/opentelemetry-semantic-conventions-ai
 %{?sle15_python_module_pythons}
 Name:           python-opentelemetry-semantic-conventions-ai
