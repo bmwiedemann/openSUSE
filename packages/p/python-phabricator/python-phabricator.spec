@@ -1,7 +1,7 @@
 #
 # spec file for package python-phabricator
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,10 @@ Version:        0.9.1
 Release:        0
 Summary:        Phabricator API Bindings
 License:        Apache-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/disqus/python-phabricator
 Source:         https://github.com/disqus/python-phabricator/archive/refs/tags/%{version}.tar.gz#/phabricator-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Use importlib.{metadata,resources}
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -41,7 +42,7 @@ BuildRequires:  %{python_module responses >= 0.12}
 Phabricator API Bindings
 
 %prep
-%setup -q -n python-phabricator-%{version}
+%autosetup -p1 -n python-phabricator-%{version}
 
 %build
 %pyproject_wheel
@@ -57,6 +58,6 @@ Phabricator API Bindings
 %doc README.rst
 %license LICENSE
 %{python_sitelib}/phabricator
-%{python_sitelib}/phabricator-%{version}*-info
+%{python_sitelib}/phabricator-%{version}.dist-info
 
 %changelog

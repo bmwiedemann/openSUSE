@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 02:04:32 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata and importlib.resources for discovery.
+
+-------------------------------------------------------------------
 Tue Jun  3 11:11:52 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

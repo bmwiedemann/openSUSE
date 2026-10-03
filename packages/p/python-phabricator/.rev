@@ -31,4 +31,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282261</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>106c30873a42c0b1ab47cdf5d5637a49</srcmd5>
+    <version>0.9.1</version>
+    <time>1791051210</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata and importlib.resources for discovery.</comment>
+    <requestid>1381982</requestid>
+  </revision>
 </revisionlist>

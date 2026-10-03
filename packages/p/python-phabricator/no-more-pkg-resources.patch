@@ -1,0 +1,48 @@
+Index: python-phabricator-0.9.1/phabricator/__init__.py
+===================================================================
+--- python-phabricator-0.9.1.orig/phabricator/__init__.py
++++ python-phabricator-0.9.1/phabricator/__init__.py
+@@ -9,8 +9,8 @@ For more endpoints, see https://secure.p
+ 
+ """
+ try:
+-    __version__ = __import__('pkg_resources') \
+-        .get_distribution('phabricator').version
++    import importlib.metadata
++    __version__ = importlib.metadata.version('phabricator')
+ except:
+     __version__ = 'unknown'
+ 
+Index: python-phabricator-0.9.1/phabricator/tests/test_phabricator.py
+===================================================================
+--- python-phabricator-0.9.1.orig/phabricator/tests/test_phabricator.py
++++ python-phabricator-0.9.1/phabricator/tests/test_phabricator.py
+@@ -6,23 +6,19 @@ except ImportError:
+ import requests
+ import responses
+ 
+-from pkg_resources import resource_string
++from importlib.resources import files
+ import json
+ 
+ import phabricator
+ phabricator.ARCRC = {}  # overwrite any arcrc that might be read
+ 
++resources_dir = files('phabricator.tests.resources')
+ 
+ RESPONSES = json.loads(
+-    resource_string(
+-        'phabricator.tests.resources',
+-        'responses.json'
+-    ).decode('utf8')
++    resources_dir.joinpath('responses.json').read_text(encoding='utf-8')
+ )
+-CERTIFICATE = resource_string(
+-    'phabricator.tests.resources',
+-    'certificate.txt'
+-).decode('utf8').strip()
++CERTIFICATE = resources_dir.joinpath('certificate.txt'
++).read_text(encoding='utf-8').strip()
+ 
+ 
+ # Protect against local user's .arcrc interference.
