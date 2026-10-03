@@ -119,4 +119,40 @@
   - Update included plugin dependencies to Python 3.8 (Calibre 5)</comment>
     <requestid>1375563</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>3ab90b5f002cc576836dea661bbd6790</srcmd5>
+    <version>4.62.0</version>
+    <time>1791051216</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to the version 4.61.0:
+  - Update translations.
+  - base_otw_adapter: chaptersummary can suddenly be a div
+    instead of blockquote *sometimes*.
+  - adapter_royalroadcom: Updates for RR's Redesign. Supports
+    both for the moment.
+  - Plugin: Remove user/pass from ini snippets before logging,
+    same as 'safe' personal.ini.
+  - base_otw_adapter: More robust bookmark handling
+  - Add 525 errors to list of codes to retry, on by default, set
+    retry_http_525_failures:False to disable.
+  - New option max_request_retries to set connection retry limit.
+    From gh#JimmXinu/FanFicFare!1418
+  - Plugin: Apply INI Snippet to Get URLs from Web Page and
+    anthology update.
+  - New update_preserve_deleted_chapters feature, see
+    [#1414](https://github.com/JimmXinu/FanFicFare/pull/1414),
+    thanks, kitoma
+  - New update_check_recent_chapters feature, see
+    [#1414](https://github.com/JimmXinu/FanFicFare/pull/1414),
+    thanks, kitoma
+  - adapter_sofurrycom: Fixes for login, closes #1416
+  - Document ffnet only try_shortened_title_urls setting
+  - Increase default image_max_size to 2500, 2500
+  - epub update: Don't strip h2/h3 tags that aren't chapter
+    titles. Thanks, kitoma (#1412)
+  - adapter_literotica: Fix for pagination links change, thanks
+    akshayrangnekar(#1411)
+  - adapter_ficbooknet: Fix author for site change</comment>
+    <requestid>1382182</requestid>
+  </revision>
 </revisionlist>
