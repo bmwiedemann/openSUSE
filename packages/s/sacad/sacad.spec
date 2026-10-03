@@ -1,7 +1,7 @@
 #
 # spec file for package sacad
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,29 +17,17 @@
 
 
 Name:           sacad
-Version:        2.8.0
+Version:        3.0.3
 Release:        0
 Summary:        Search and download music album covers
 License:        MPL-2.0
-Group:          Development/Languages/Python
 URL:            https://github.com/desbma/sacad
 Source:         https://github.com/desbma/sacad/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  fdupes
-BuildRequires:  python-rpm-macros
-BuildRequires:  python3-setuptools
-Requires:       python3-Pillow >= 2.7.0
-Requires:       python3-Unidecode >= 1.1.1
-Requires:       python3-aiohttp >= 3.6
-Requires:       python3-appdirs >= 1.4.0
-Requires:       python3-bitarray >= 0.8.3
-Requires:       python3-cssselect >= 0.9.1
-Requires:       python3-fake-useragent >= 0.1.11
-Requires:       python3-lxml >= 4.0.0
-Requires:       python3-mutagen >= 1.31
-Requires:       python3-tqdm >= 4.28.1
-Requires:       python3-web_cache >= 1.1.0
-BuildArch:      noarch
+Source1:        vendor.tar.zst
+BuildRequires:  cargo
+BuildRequires:  cargo-packaging
+BuildRequires:  rust >= 1.79
+ExclusiveArch:  %{rust_arches}
 
 %description
 SACAD is a multi platform command line tool to download album covers
@@ -47,15 +35,18 @@ without manual intervention, ideal for integration in scripts, audio
 players, etc.
 
 %prep
-%setup -q -n sacad-%{version}
+%autosetup -p 1 -a 1
 
 %build
-%python3_build
+%{cargo_build} --all-features
+# generate man pages
+./target/release/sacad_gen_extras gen-man-pages .
 
 %install
-%python3_install
-find %{buildroot}/%{python3_sitelib}/sacad/ -name "*.py" -exec sed -i -e '/^#!\//, 1d' {} \;
-%fdupes %{buildroot}/%{python3_sitelib}
+for f in sacad sacad_r; do
+  install -D -m 0755 "target/release/$f" "%{buildroot}%{_bindir}/$f"
+  install -D -m 0644 "$f.1" "%{buildroot}/%{_mandir}/man1/$f.1"
+done
 
 #%%check
 # disabled - tests require an internet connection
@@ -65,6 +56,7 @@ find %{buildroot}/%{python3_sitelib}/sacad/ -name "*.py" -exec sed -i -e '/^#!\/
 %doc README.md
 %{_bindir}/sacad
 %{_bindir}/sacad_r
-%{python3_sitelib}/sacad*
+%{_mandir}/man1/sacad.1%{?ext_man}
+%{_mandir}/man1/sacad_r.1%{?ext_man}
 
 %changelog

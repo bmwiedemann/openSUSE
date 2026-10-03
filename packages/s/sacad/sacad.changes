@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Fri Oct  2 19:56:35 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.3
+  Features
+  * Improve coverartarchive error handling (bcbe6fd).
+  Bug fixes
+  * Is_similar hamming distance (edd6aa3).
+  * Aspect ratio comparison and sorting (52f43a3).
+  * Possible integer underflow (eaa840b).
+  * Download of smaller than expected cover (1bcc659).
+  * Cover path corner cases with -p (3595244).
+  * Better handling of non-ascii chars (dc2747a).
+  * Escaping quotes (d008949).
+  * Better handling of non-ascii filenames (c357141).
+  * Embedding cover in file without tags (bafd3ff).
+  * Normalization of punctuation (654076c).
+
+-------------------------------------------------------------------
+Fri Oct  2 19:05:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.0.2
+  * Deezer source returning no results (259beba).
+- Update to version 3.0.1
+  * Increase cache lock retry timeout and silence initial log
+    warnings (15e483a)
+  * itunes: Probe candidate URLs in parallel (ac5b8b6).
+- Update to version 3.0.0
+  * Rewrite in Rust
+  * Use separate transient caches for unit tests (86ec086).
+  * Transparently retry if cache is locked (a36238e).
+  * Improve command line help about verbosity (c6f1ab1).
+  * Set default log level for third party sources to error (f5b143d)
+  * Man page & shell completion generation (1937d6b)
+  * Better support for various artists albums (424d256)
+  * Improve debug logging when having no results (f523f45)
+  * Support _album tag key (8246e85)
+  * Add retries for coverartarchive source (8a61606).
+- Install manpages
+
+-------------------------------------------------------------------
+Thu Sep 18 17:46:02 UTC 2025 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.1
+  * fix(deezer): result without image URL.
+  * feat: document -s command line argument caveats.
+  * chore: drop Python <3.9, officially support 3.13.
+  * fix(recurse): prioritize album artist over artist tag.
+
+-------------------------------------------------------------------
 Tue Aug 13 06:12:30 UTC 2024 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.0:
