@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:38:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Skip the liferea:subscription test (remove it from meson.build
+  using sed): the test expects liferea installed properly and does
+  not cope with DESTDIR redirects
+  (https://github.com/lwindolf/liferea/issues/1601).
+
+-------------------------------------------------------------------
+Wed Sep 30 09:57:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.0.2:
+  + Don't delete elements that are potential footnotes
+  + Fix prefs dialog changing the update interval when opened
+  + WEBDAV sync on missing index.json fails
+  + Fix: Update all doesn't work
+  + Fixes an exception in SVG image resizing on invalid image sizes
+    in content
+  + Fixes a bug that RSS ttl / syn period+frequency values were not
+    used
+  + Fixes crash when removing items
+  + Known problems:
+    - DnD of feeds causes random crashes
+    - Missing top margin when Readability.js does not convert text
+    - Update counter max only ever grows (should reset after most
+      updates are finished after a while)
+
+-------------------------------------------------------------------
 Wed Sep  2 15:22:19 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 2.0.1:
@@ -420,7 +447,7 @@ Sat May  8 23:45:53 UTC 2021 - Fusion Future <qydwhotmail@gmail.com>
   * #983: Use GtkFileChooserNative to allow selecting local files when run in sandbox.
   * Fixes #780: Improve date formatting when in locale en_GB
   * Fixes #944: Broken RTL text direction in feed content view
-  * Fixes #949: Regression in notification plugin that caused it to show non-new items 
+  * Fixes #949: Regression in notification plugin that caused it to show non-new items
   * Fixes #963: Checking for git command in plugin installer -> warn user
   * Fixes #973: Broken CSS in Webkit2Gtk >= 2.32
   * Updated Albanian translation
@@ -611,7 +638,7 @@ Thu Sep 12 15:34:31 UTC 2019 - Marcel Kuehlhorn <tux93@opensuse.org>
   * #495: New command line option --disable-plugins (-p) to start
     with all plugins disabled.
   * Fixes #610: Liferea not showing up in GNOME Software
-  * Fixes #604: Correctly print error message when failing to 
+  * Fixes #604: Correctly print error message when failing to
     unlock GNOME keyring
   * Fixes #602: CSS style for GTK link colors not used
   * Fixes #581: Redirect location updates and adds HTTP 308
@@ -825,7 +852,7 @@ Wed Oct 16 18:59:06 UTC 2013 - firebird209@gmail.com
   + Ask for credentials again if TinyTinyRSS login fails.
   + Ask for TinyTinyRSS credentials only 3 times.
   + Check whether TinyTinyRSS base URL is lost.
-  + Added warning on TinyTinyRSS login when source is not 
+  + Added warning on TinyTinyRSS login when source is not
     self-updating.
   + "--debug-net --debug-verbose" now traces POST data.
   + Add GNOME AppData XML.
@@ -1394,7 +1421,7 @@ Mon Feb  2 16:57:11 CET 2009 - cthiel@suse.de
   * Fixes cross compilation issue with configure.ac using
     AC_CANONICAL_TARGET instead of AC_CANONICAL_HOST
   * Fixes local CSS/image loading problems with Webkit.
-  * Allow compilation against recent Webkit 1.1.0 (r39804) 
+  * Allow compilation against recent Webkit 1.1.0 (r39804)
     which changed the ABI
   * New Greek translation
   * New Albanian translation
@@ -1501,9 +1528,9 @@ Mon Aug  4 17:21:45 CEST 2008 - cthiel@suse.de
   * Fixes SF #1920860: crash after memory corruption when parsing feed with
     invalid encoding
   * Build support for XulRunner 1.9
-  * Significant speed improvement for the cache conversion necessary when 
+  * Significant speed improvement for the cache conversion necessary when
     upgrading from 1.4.9. Fixes 100% CPU during startup problem.
-  * Fixes comment removal bug.  
+  * Fixes comment removal bug.
   * Drops all comments from cache to cleanup stale comments.
   * Changes DB schema to better handle comments during item and subscription
     deletion. This makes the cache version incompatible to 1.4.15!
@@ -1650,7 +1677,7 @@ Thu Dec 13 14:12:49 CET 2007 - cthiel@suse.de
   * Fixes DnD command line warnings (SF #1799006)
   * Fixes DnD target check to avoid dropping nodes into read-only source sub
     trees.
-  * Fixes crash when using "Select File" from the 
+  * Fixes crash when using "Select File" from the
     advanced subscribtion dialog (SF #1810825)
   * Workaround for loosing data on forced termination.  Liferea now
     reconnects sqlite every 500 write attempts (SF #1791068, SF #1784045).
@@ -1769,7 +1796,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
   * Fixes "jumpy" behaviour of the HTML view item menu
     in three pane mode. Now the menu is visible
     immediately on rendering.
-  * Fixes a bad mistake in the timer code that caused  
+  * Fixes a bad mistake in the timer code that caused
     a lot of unnecessary wakeups and thereby high power
     consumption on laptops.
   * New Basque translation
@@ -1778,7 +1805,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
     less CPU usage.
   * Increased security: disallowing clicking on file://
     links in the rendering widget, as well as preventing
-    from opening such links using the context menu. 
+    from opening such links using the context menu.
   * Fixes unresolved symbol in LUA binding.
   * Fixes broken base URL when selecting items in 3 pane
     mode from folders.
@@ -1791,7 +1818,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
 - changes in version 1.2.13
   * Fixes a significant memory leak when dropping items
     from cache reported by several users.
-  * Changes the new item counting to a simpler counting 
+  * Changes the new item counting to a simpler counting
     statistic so that on subsequent updates of the same
     feed might present a lower new item number, but which
     is a bit faster.
@@ -1816,7 +1843,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
   * Reverting fix of 1.2.10 to prevent crashes in the
     Gecko support code when clicking links in the HTML view.
   * Changed feed property label (auto-load link) to match
-    real (suboptimal) behaviour when external browser 
+    real (suboptimal) behaviour when external browser
     is configured.
   * Adds a hot key (Ctrl-L) to mark all feeds as read.
   * Fixes outdated URL in the default feed lists.
@@ -1852,7 +1879,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
     liferea-add-feed script to check if the program is running.
   * The liferea-add-feed script now starts Liferea if necessary.
   * Added 1x1 pixel filter to adblocking stylesheet.
-  * Fixes SF #1668278: error when exporting the feed list  
+  * Fixes SF #1668278: error when exporting the feed list
     although the export was successfully completed
   * Fixes SF #1657717: memory leak when stripping DHTML from
     HTML type metadata
@@ -1863,7 +1890,7 @@ Tue Aug  7 09:03:57 CEST 2007 - cthiel@suse.de
 -------------------------------------------------------------------
 Mon Apr  2 01:45:44 CEST 2007 - ro@suse.de
 
-- added non-english manpage directories to filelist 
+- added non-english manpage directories to filelist
 
 -------------------------------------------------------------------
 Fri Mar 16 12:36:09 CET 2007 - sbrabec@suse.cz
@@ -1976,7 +2003,7 @@ Thu Jan 11 14:28:50 CET 2007 - maw@suse.de
 Wed Dec 20 01:21:18 CET 2006 - jhargadon@suse.de
 
 - fixed an issue where liferea was being displayed twice in the
-  desktop menu.  (#225609) 
+  desktop menu.  (#225609)
 
 -------------------------------------------------------------------
 Thu Nov 30 17:19:39 CET 2006 - sbrabec@suse.cz
@@ -1991,7 +2018,7 @@ Tue Nov  7 18:24:33 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Nov  1 22:20:49 CET 2006 - jhargadon@suse.de
 
-- fixed a problem with LD_LIBRARY_PATH reported in bug #216105 
+- fixed a problem with LD_LIBRARY_PATH reported in bug #216105
 
 -------------------------------------------------------------------
 Fri Aug 11 19:21:53 CEST 2006 - btimothy@suse.de
@@ -2183,20 +2210,20 @@ Wed Jan 25 21:32:27 CET 2006 - mls@suse.de
 -------------------------------------------------------------------
 Tue Jan 17 15:48:17 CET 2006 - lmichnovic@suse.cz
 
-- updated to version 1.0 
+- updated to version 1.0
 - added section clean
 - two new patches: liferea-uninitialized_var.patch, liferea-64arch.patch
 
 -------------------------------------------------------------------
 Wed Nov  2 22:12:29 CET 2005 - dmueller@suse.de
 
-- don't build as root 
+- don't build as root
 
 -------------------------------------------------------------------
 Thu Oct 13 02:58:49 CEST 2005 - ro@suse.de
 
 - use mozilla-devel-packages in nfb
-- use xulrunner if others not found 
+- use xulrunner if others not found
 
 -------------------------------------------------------------------
 Thu Sep 29 18:07:19 CEST 2005 - sbrabec@suse.cz

@@ -17,7 +17,7 @@
 
 
 Name:           liferea
-Version:        2.0.1
+Version:        2.0.2
 Release:        0
 Summary:        Linux Feed Reader
 License:        GPL-2.0-only
@@ -45,6 +45,10 @@ news aggregator for GTK and GNOME.
 
 %generate_buildrequires
 %meson_buildrequires
+
+%prep -a
+# Disable libefrea:subscription test - https://github.com/lwindolf/liferea/issues/1601
+sed -i "/'subscription'/d" meson.build
 
 %install -a
 %find_lang %{name} %{?no_lang_C}

@@ -374,4 +374,41 @@
 - Rebase liferea-opensuse-feeds.patch.</comment>
     <requestid>1375700</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>b34b8024d955523d4dce578dec9538eb</srcmd5>
+    <version>2.0.2</version>
+    <time>1791051275</time>
+    <user>dimstar_suse</user>
+    <comment>- Skip the liferea:subscription test (remove it from meson.build
+  using sed): the test expects liferea installed properly and does
+  not cope with DESTDIR redirects
+  (https://github.com/lwindolf/liferea/issues/1601).
+
+- Update to version 2.0.2:
+  + Don't delete elements that are potential footnotes
+  + Fix prefs dialog changing the update interval when opened
+  + WEBDAV sync on missing index.json fails
+  + Fix: Update all doesn't work
+  + Fixes an exception in SVG image resizing on invalid image sizes
+    in content
+  + Fixes a bug that RSS ttl / syn period+frequency values were not
+    used
+  + Fixes crash when removing items
+  + Known problems:
+    - DnD of feeds causes random crashes
+    - Missing top margin when Readability.js does not convert text
+    - Update counter max only ever grows (should reset after most
+      updates are finished after a while)
+
+  * Fixes #949: Regression in notification plugin that caused it to show non-new items
+  * Fixes #604: Correctly print error message when failing to
+  + Added warning on TinyTinyRSS login when source is not
+  * Allow compilation against recent Webkit 1.1.0 (r39804)
+  * Significant speed improvement for the cache conversion necessary when
+  * Fixes comment removal bug.
+  * Fixes crash when using &quot;Select File&quot; from the
+  * Fixes a bad mistake in the timer code that caused
+    from opening such links using the context menu.</comment>
+    <requestid>1382231</requestid>
+  </revision>
 </revisionlist>
