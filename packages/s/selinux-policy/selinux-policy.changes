@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct 02 12:53:39 UTC 2026 - Robert Frohl <rfrohl@suse.com>
+
+- Update to version 20261002:
+  * Allow gnome-remote-desktop use kerberos
+  * Allow gnome-remote-desktop read password files
+  * Add new interfaces for rhc-worker-playbook
+  * Allow virtqemud getattr fuse filesystem conditionally
+  * Allow cloud-init the setgid capability
+  * Allow bootupd read proc dirs
+  * Allow bootupd read /proc/swaps
+  * Allow login_userdomain dbus chat with power-profiles-daemon
+  * Allow icecast create and use unix dgram sockets
+  * Allow systemd-coredump send a null signal to unconfined services
+  * Allow samba_dcerpcd_t signull smbd_t
+  * Make post-te statement extraction tolerant of leading whitespace
+  * Allow login/pam_systemd started by kmscon to access env vars
+  * Allow sshd-session tcp connect to all reserved ports
+  * Allow sshd-session connect to vnc port
+  * Allow sshd-session transition on passwd execution
+  * Allow dhcpc-hook get init status
+  * Allow kmscon read systemd_ssh_issue PID files
+  * Rearrange kmscon policy to comply with formatting rules
+  * Allow kmscon signal init
+  * Allow systemd-timedated read network sysctls
+  * Add CI check for whitespace on pull requests
+  * Remove commented-out interface calls
+  * Fix whitespace across all policy modules
+  * Move systemd_read_userdbd_runtime_sock_files() to another optional block
+  * Use udev_manage_pid_lnk_files() instead of direct reference
+- Syncing with upstream rawhide selinux-policy up to:
+  * f52a7800ecaecff7a39f95cd1b89b686daf6729b
+
+-------------------------------------------------------------------
 Wed Sep 30 07:13:32 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
 
 - Update to version 20260928:

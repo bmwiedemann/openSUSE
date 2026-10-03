@@ -2536,4 +2536,12 @@ Needs to go together with libsemanage change</comment>
     <comment>1</comment>
     <requestid>1381597</requestid>
   </revision>
+  <revision rev="179" vrev="1">
+    <srcmd5>cc321670dc72d5881c6090a972cc0101</srcmd5>
+    <version>20261002</version>
+    <time>1791051152</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1382123</requestid>
+  </revision>
 </revisionlist>
