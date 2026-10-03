@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Wed Sep 30 11:19:26 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to Incus 7.5.1. See upstream changelog online at
+  <https://discuss.linuxcontainers.org/t/incus-7-5-has-been-released/27273>
+
+  - CVE-2026-85185
+  - CVE-2026-85526
+
+  + OVN child networks
+  + Live project moves within a cluster
+  + Initial copy for custom volume disks
+  + Instance security tags
+  + OIDC claims in the authorization scriptlet
+  + Cluster member metrics
+  + NVIDIA GPUDirect P2P for virtual machines
+  + Improved Windows agent
+  + NetBSD virtual machines
+  + FreeBSD client package
+  + Archive mode for file transfers
+  + OCI image labels and environment
+  + Bridge DNS host records
+  + Profiling through the API
+- Only suggest incus-tools, as most users won't need this package
+
+-------------------------------------------------------------------
 Mon Aug 31 06:26:47 UTC 2026 - Aleksa Sarai <cyphar@cyphar.com>
 
 - incus-config: work around an unfortunate yaml parser regression in a recent

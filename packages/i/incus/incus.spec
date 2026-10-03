@@ -31,7 +31,7 @@
 %endif
 
 Name:           incus
-Version:        7.4
+Version:        7.5.1
 Release:        0
 Summary:        Container hypervisor based on LXC
 License:        Apache-2.0
@@ -127,7 +127,7 @@ Requires:       qemu-arm >= 6.0
 Requires:       skopeo
 Requires:       umoci
 # Helper tools for admins.
-Recommends:     %{name}-tools
+Suggests:       %{name}-tools
 # Storage backends -- we don't recommend ZFS since it's not *technically* a
 # blessed configuration.
 Recommends:     lvm2
