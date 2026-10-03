@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:20:51 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- riscv-platformenable.patch: Fix build for riscv64
+
+-------------------------------------------------------------------
 Fri Sep 25 08:26:20 UTC 2026 - Michal Rostecki <vad@opensuse.org>
 
 - Enable support for DRM, headless and Wayland platform, via

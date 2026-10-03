@@ -261,4 +261,12 @@
 - Drop riscv-platformenable.patch: Applied upstream.</comment>
     <requestid>1380790</requestid>
   </revision>
+  <revision rev="18" vrev="2">
+    <srcmd5>089ee817fdab34fb5088cbddb5a9877b</srcmd5>
+    <version>2.54.0</version>
+    <time>1791051276</time>
+    <user>dimstar_suse</user>
+    <comment>- riscv-platformenable.patch: Fix build for riscv64</comment>
+    <requestid>1382233</requestid>
+  </revision>
 </revisionlist>

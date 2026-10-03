@@ -31,6 +31,9 @@ Group:          Development/Libraries/C and C++
 URL:            https://wpewebkit.org/
 Source:         %{url}/releases/%{name}-%{version}.tar.xz
 
+# PATCH-FIX-UPSTREAM riscv-platformenable.patch gh#Webkit/Webkit#64268
+Patch1:         riscv-platformenable.patch
+
 BuildRequires:  bubblewrap
 BuildRequires:  cmake
 BuildRequires:  clang
