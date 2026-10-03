@@ -1,4 +1,61 @@
 -------------------------------------------------------------------
+Thu Sep 24 12:00:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Enable the Web UI RPM build by default on x86_64, retaining
+  an explicit CLI-only fallback and CLI builds elsewhere.
+  - Add the manual node_modules service and its legacy source
+    container and spec include.
+  - Install locked frontend dependencies through the local
+    registry, use Factory esbuild, and embed the Vite output
+    with the webui Go tag.
+- Require Go 1.26 and disable Go toolchain/module downloads.
+- Replace ignored test failures with offline handler and HTTP
+  smoke checks.
+- Install available third-party license notices and declare
+  a conservative frontend License expression.
+- Validate both RPM variants in local network-isolated builds.
+  Native-tool source policy, dependency pruning, missing upstream
+  notices, and clean OBS validation remain outstanding.
+
+-------------------------------------------------------------------
+Thu Sep 24 10:59:34 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Add preparatory Web UI source tooling: convert the pnpm lock
+  into a verified obs-service-node_modules inventory, generate
+  a separate npm installation lock in a network-isolated
+  environment, and add unit and HTTP smoke tests. Document the
+  successful x86-64 baseline using Factory esbuild. Web UI
+  enablement in the spec remains pending native-tool source
+  builds, dependency pruning, license review, and OBS
+  integration.
+
+-------------------------------------------------------------------
+Thu Sep 24 08:07:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update to 0.11.0:
+  Sixteen months and close to 300 commits after v0.10.1, git-bug
+  v0.11.0 is available. This release is about two things. The
+  obvious one is a new web UI, rewritten from scratch and far
+  more capable than the one it replaces. The less obvious one is
+  a deep pass on correctness, which closes a handful of long
+  standing bugs.
+  - A new and more powerful web UI
+  - A Code Browser
+  - Correctness
+  - Forward compatibility
+  - A specification
+  - Breaking changes
+  - Web UI
+  - Core
+  - CLI
+  - Terminal UI
+  - API
+  - Bridges
+  - Documentation
+- Remove upstreamed patches:
+  - remote-config.patch
+
+-------------------------------------------------------------------
 Mon Sep  7 07:02:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - CVE-2026-56855,CVE-2026-56854,CVE-2026-78662: authentication

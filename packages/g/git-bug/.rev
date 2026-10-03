@@ -393,4 +393,41 @@ Update to the commit d499b6e.
   CPU time, possibly leading to denial of service. (bsc#1267157,</comment>
     <requestid>1376099</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>0812bd240bb2f1d827297333208faa60</srcmd5>
+    <version>0.11.0</version>
+    <time>1791051217</time>
+    <user>dimstar_suse</user>
+    <comment>- Enable the Web UI RPM build by default on x86_64, retaining
+  an explicit CLI-only fallback and CLI builds elsewhere.
+  - Add the manual node_modules service and its legacy source
+    container and spec include.
+  - Install locked frontend dependencies through the local
+    registry, use Factory esbuild, and embed the Vite output
+    with the webui Go tag.
+- Require Go 1.26 and disable Go toolchain/module downloads.
+- Replace ignored test failures with offline handler and HTTP
+  smoke checks.
+- Install available third-party license notices and declare
+  a conservative frontend License expression.
+- Validate both RPM variants in local network-isolated builds.
+  Native-tool source policy, dependency pruning, missing upstream
+  notices, and clean OBS validation remain outstanding.
+
+- Add preparatory Web UI source tooling: convert the pnpm lock
+  into a verified obs-service-node_modules inventory, generate
+  a separate npm installation lock in a network-isolated
+  environment, and add unit and HTTP smoke tests. Document the
+  successful x86-64 baseline using Factory esbuild. Web UI
+  enablement in the spec remains pending native-tool source
+  builds, dependency pruning, license review, and OBS
+  integration.
+
+- Update to 0.11.0:
+  Sixteen months and close to 300 commits after v0.10.1, git-bug
+  v0.11.0 is available. This release is about two things. The
+  obvious one is a new web UI, rewritten from scratch and far
+  more capable than the one it replaces. The less obvious one is</comment>
+    <requestid>1382186</requestid>
+  </revision>
 </revisionlist>
