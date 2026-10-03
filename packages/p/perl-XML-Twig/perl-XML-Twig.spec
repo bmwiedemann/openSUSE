@@ -1,7 +1,7 @@
 #
 # spec file for package perl-XML-Twig
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,15 +18,16 @@
 
 %define cpan_name XML-Twig
 Name:           perl-XML-Twig
-Version:        3.540.0
+Version:        3.550.0
 Release:        0
-# 3.54 -> normalize -> 3.540.0
-%define cpan_version 3.54
+# 3.55 -> normalize -> 3.550.0
+%define cpan_version 3.55
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        XML, The Perl Way
 URL:            https://metacpan.org/release/%{cpan_name}
 Source0:        https://cpan.metacpan.org/authors/id/M/MI/MIROD/%{cpan_name}-%{cpan_version}.tar.gz
 Source1:        cpanspec.yml
+Source100:      README.md
 Patch0:         perl-XML-Twig-CVE-2016-9180.patch
 BuildArch:      noarch
 BuildRequires:  perl
@@ -39,7 +40,7 @@ Provides:       perl(XML::Twig::Entity)
 Provides:       perl(XML::Twig::Entity_list)
 Provides:       perl(XML::Twig::Notation)
 Provides:       perl(XML::Twig::Notation_list)
-Provides:       perl(XML::Twig::XPath)
+Provides:       perl(XML::Twig::XPath) = 0.20.0
 Provides:       perl(XML::Twig::XPath::Attribute)
 Provides:       perl(XML::Twig::XPath::Elt)
 Provides:       perl(XML::Twig::XPath::Namespace)

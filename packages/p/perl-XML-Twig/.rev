@@ -368,4 +368,19 @@
       a well-formed XML string, similar to insertAdjacentHTML in js (forwarded request 1284908 from tinita)</comment>
     <requestid>1285462</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>3a3e6522276f77eb13bbc1876de4c427</srcmd5>
+    <version>3.550.0</version>
+    <time>1791051194</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 3.550.0 (3.55)
+   see /usr/share/doc/packages/perl-XML-Twig/Changes
+  3.55 2026-10-01  minor maintenance release
+  - added Scalar::Util as a dependency
+  - improved some tests
+  - minor bug fixes
+      see https://github.com/mirod/xmltwig/issues/47 bsc#1282902
+      see https://github.com/mirod/xmltwig/issues/46</comment>
+    <requestid>1381962</requestid>
+  </revision>
 </revisionlist>
