@@ -1,0 +1,165 @@
+From 1c66a051e819a40e9bbe6bdd8d54124baf001f00 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Thu, 30 Oct 2025 07:15:18 -0700
+Subject: [PATCH] tensile gfx1153
+
+---
+ Tensile/AsmCaps.py                            | 44 +++++++++++++++++++
+ Tensile/Common.py                             |  6 +--
+ Tensile/Source/lib/include/Tensile/AMDGPU.hpp |  7 +++
+ .../include/Tensile/PlaceholderLibrary.hpp    | 12 ++---
+ 4 files changed, 57 insertions(+), 12 deletions(-)
+
+diff --git a/Tensile/AsmCaps.py b/Tensile/AsmCaps.py
+index 41330270c618..c4bdc4775300 100644
+--- a/Tensile/AsmCaps.py
++++ b/Tensile/AsmCaps.py
+@@ -1167,6 +1167,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                   'VOP3v_dot4_i32_i8': False,
+                   'v_dot2_f32_f16': True,
+                   'v_dot2c_f32_f16': False,
++ (11, 5, 3): {'HasAddLshl': True,
++              'HasAtomicAdd': True,
++              'HasDirectToLdsDest': False,
++              'HasDirectToLdsNoDest': False,
++              'HasExplicitCO': True,
++              'HasExplicitNC': True,
++              'HasGLCModifier': True,
++              'HasNTModifier': False,
++              'HasLshlOr': True,
++              'HasMFMA': False,
++              'HasMFMA_b8': False,
++              'HasMFMA_bf16_1k': False,
++              'HasMFMA_bf16_original': False,
++              'HasMFMA_constSrc': False,
++              'HasMFMA_f64': False,
++              'HasMFMA_f8': False,
++              'HasMFMA_i8_908': False,
++              'HasMFMA_i8_940': False,
++              'HasMFMA_vgpr': False,
++              'HasMFMA_xf32': False,
++              'HasSMulHi': True,
++              'HasWMMA': True,
++              'KernargPreloading': False,
++              'MaxLgkmcnt': 15,
++              'MaxVmcnt': 63,
++              'SupportedISA': True,
++              'SupportedSource': True,
++              'VOP3v_dot4_i32_i8': False,
++              'v_dot2_f32_f16': True,
++              'v_dot2c_f32_f16': True,
++              'v_dot4_i32_i8': False,
++              'v_dot4c_i32_i8': False,
++              'v_fma_f16': True,
++              'v_fma_f32': True,
++              'v_fma_f64': True,
++              'v_fma_mix_f32': True,
++              'v_fmac_f16': False,
++              'v_fmac_f32': True,
++              'v_mac_f16': False,
++              'v_mac_f32': False,
++              'v_mad_mix_f32': False,
++              'v_mov_b64': False,
++              'v_pk_fma_f16': True,
++              'v_pk_fmac_f16': False},
+                   'v_dot4_i32_i8': False,
+                   'v_dot4c_i32_i8': False,
+                   'v_fma_f16': True,
+diff --git a/Tensile/Common.py b/Tensile/Common.py
+index 8b6b43111877..a4a8bb524da0 100644
+--- a/Tensile/Common.py
++++ b/Tensile/Common.py
+@@ -250,7 +250,7 @@ globalParameters["SupportedISA"] = [(8,0,3),
+                                     (9,4,2), (9,5,0),
+                                     (10,1,0), (10,1,1), (10,1,2), (10,3,0), (10,3,1), (10,3,2), (10,3,5),
+                                     (11,0,0), (11,0,1), (11,0,2), (11,0,3),
+-                                    (11,5,0), (11,5,1), (11,5,2),
++                                    (11,5,0), (11,5,1), (11,5,2), (11,5,3),
+                                     (12,0,0), (12,0,1)] # assembly kernels writer supports these architectures
+ 
+ globalParameters["KeepBuildTmp"] = True                           # Do not remove build artifacts during the build process or build_tmp after build completes
+@@ -326,7 +326,7 @@ architectureMap = {
+   'gfx1010':'navi10', 'gfx1011':'navi12', 'gfx1012':'navi14',
+   'gfx1030':'navi21', 'gfx1031':'navi22', 'gfx1032':'navi23', 'gfx1034':'navi24', 'gfx1035':'rembrandt',
+   'gfx1100':'navi31', 'gfx1101':'navi32', 'gfx1102':'navi33', 'gfx1103':'gfx1103',
+-  'gfx1150':'strixpoint', 'gfx1151':'strixhalo','gfx1152':'gfx1152',
++  'gfx1150':'strixpoint', 'gfx1151':'strixhalo','gfx1152':'gfx1152','gfx1153':'gfx1153',
+   'gfx1200':'gfx1200',
+   'gfx1201':'gfx1201'
+ }
+@@ -2466,7 +2466,7 @@ def assignGlobalParameters( config, capabilitiesCache: Optional[dict] = None ):
+     if os.name == "nt":
+       globalParameters["CurrentISA"] = (9,0,6)
+       printWarning("Failed to detect ISA so forcing (gfx906) on windows")
+-  isasWithDisabledHWMonitor = ((9,4,2), (9,5,0), (11,0,0), (11,0,1), (11,0,2), (11,0,3), (11,5,0), (11,5,1), (11,5,2), (12,0,0), (12,0,1))
++  isasWithDisabledHWMonitor = ((9,4,2), (9,5,0), (11,0,0), (11,0,1), (11,0,2), (11,0,3), (11,5,0), (11,5,1), (11,5,2), (11,5,3), (12,0,0), (12,0,1))
+   if globalParameters["CurrentISA"] in isasWithDisabledHWMonitor:
+     isaString = ', '.join(map(gfxName, isasWithDisabledHWMonitor))
+     printWarning(f"HardwareMonitor currently disabled for {isaString}")
+diff --git a/Tensile/Source/lib/include/Tensile/AMDGPU.hpp b/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+index 1dc9b82d8c3a..7e8b0ac545f1 100644
+--- a/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
++++ b/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+@@ -77,6 +77,7 @@ namespace Tensile
+             gfx1150 = 1150,
+             gfx1151 = 1151,
+ 	    gfx1152 = 1152,
++	    gfx1153 = 1153,
+             gfx1200 = 1200,
+             gfx1201 = 1201
+         };
+@@ -127,6 +128,8 @@ namespace Tensile
+                 return "gfx1150";
+             case AMDGPU::Processor::gfx1151:
+                 return "gfx1151";
++	    case AMDGPU::Processor::gfx1153:
++	      return "gfx1153";
+             case AMDGPU::Processor::gfx1152:
+                 return "gfx1152";
+             case AMDGPU::Processor::gfx1200:
+@@ -231,6 +234,10 @@ namespace Tensile
+             {
+                 return AMDGPU::Processor::gfx1152;
+             }
++	    else if(deviceString.find("gfx1153") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx1153;
++            }
+             else
+             {
+                 return static_cast<AMDGPU::Processor>(0);
+diff --git a/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp b/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
+index cb1c085258c9..77c9ced2cc35 100644
+--- a/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
++++ b/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
+@@ -61,9 +61,7 @@ namespace Tensile
+ 	gfx1151,
+ 	gfx1150,
+ 	gfx1152,
+-        gfx1103,
+-        gfx1150,
+-        gfx1151,
++	gfx1153,
+         gfx1200,
+         gfx1201,
+         All
+@@ -122,14 +120,10 @@ namespace Tensile
+             return "TensileLibrary_*_gfx1200";
+         case LazyLoadingInit::gfx1201:
+             return "TensileLibrary_*_gfx1201";
+-        case LazyLoadingInit::gfx1103:
+-            return "TensileLibrary_*_gfx1103";
+-	case LazyLoadingInit::gfx1150:
+-            return "TensileLibrary_*_gfx1150";
+-	case LazyLoadingInit::gfx1151:
+-	  return "TensileLibrary_*_gfx1151";
+ 	case LazyLoadingInit::gfx1152:
+ 	  return "TensileLibrary_*_gfx1152";
++	case LazyLoadingInit::gfx1153:
++	  return "TensileLibrary_*_gfx1153";
+ 	case LazyLoadingInit::None:
+ 	  return "";
+         }
+-- 
+2.52.0
+

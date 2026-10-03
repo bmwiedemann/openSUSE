@@ -1,0 +1,43 @@
+From 393571163851ee7dd5508007dbd887cde2141c5c Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Sun, 8 Mar 2026 10:48:50 -0700
+Subject: [PATCH 1/6] improve the warning for asm caps mismatches
+
+This change prints out the different keys/value pairt when there
+is a difference between the derrived and cached asm tables.
+
+Signed-off-by: Tom Rix <Tom.Rix@amd.com>
+---
+ shared/tensile/Tensile/Common.py | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+
+diff --git a/shared/tensile/Tensile/Common.py b/shared/tensile/Tensile/Common.py
+index 55954296e907..a4db814f542f 100644
+--- a/shared/tensile/Tensile/Common.py
++++ b/shared/tensile/Tensile/Common.py
+@@ -2011,6 +2011,14 @@ def locateExe( defaultPath, exeName ): # /opt/rocm/bin, hip-clang
+       return exePath
+   return None
+ 
++def PrintDiff(d1, d2):
++    keys = set(d1.keys() | d2.keys())
++    for key in keys:
++        v1 = d1.get(key)
++        v2 = d2.get(key)
++        if v1 != v2:
++            printWarning(f"{key}: {v1} != {v2}")
++
+ def GetAsmCaps(isaVersion: IsaVersion, hipVersion: SemanticVersion, cachedAsmCaps: Dict[IsaVersion, dict]) -> Dict[IsaVersion, dict]:
+   """ Determine assembler capabilities by testing short instructions sequences """
+   if globalParameters["AssemblerPath"] is not None:
+@@ -2133,6 +2141,7 @@ def GetAsmCaps(isaVersion: IsaVersion, hipVersion: SemanticVersion, cachedAsmCap
+         exitFlag = True
+       if exitFlag:
+         printWarning("Cached asm caps differ from derived asm caps for {}".format(isaVersion))
++        PrintDiff(derivedAsmCaps, cachedAsmCaps[isaVersion])
+     return derivedAsmCaps
+   else:
+     printWarning("Assembler not present, asm caps loaded from cache are unverified")
+-- 
+2.53.0
+

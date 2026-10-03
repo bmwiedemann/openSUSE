@@ -1,0 +1,592 @@
+From a8a0e23fbaf6aacb42f7b505feb1ab8f06adbbea Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Sun, 8 Mar 2026 01:32:28 +0000
+Subject: [PATCH 2/6] add generic gpu targets
+
+To support generic gpu targets ex/ -DGPU_TARGETS=gfx11-generic.
+
+Tensile does not have support for every possible gpu target.  Instead
+of adding then piecement, provide support for all the generic targets.
+
+In Common.py overload int tuple for SupportedISA, where if the last
+value is negative, then this is a generic isa.
+Ex
+  (10,3,-1) -> gfx10-3-generic
+  (11,0,-1) -> gfx11-generic
+
+In AsmCaps, cut-n-paste generic tables from a close existing table.
+ex/ (10,3,0) was used of (10,3,-1).  Then fix the values based on
+the derrived vs cached warnings during a build.
+
+Add new mapping where appropriate.
+
+Signed-off-by: Tom Rix <Tom.Rix@amd.com>
+---
+ shared/tensile/Tensile/AsmCaps.py             | 264 ++++++++++++++++++
+ shared/tensile/Tensile/Common.py              |  57 +++-
+ .../cmake/TensileSupportedArchitectures.cmake |   9 +-
+ .../Source/lib/include/Tensile/AMDGPU.hpp     |  44 ++-
+ .../include/Tensile/PlaceholderLibrary.hpp    |  18 ++
+ 5 files changed, 375 insertions(+), 17 deletions(-)
+
+diff --git a/shared/tensile/Tensile/AsmCaps.py b/shared/tensile/Tensile/AsmCaps.py
+index 4bed5cd9f4ff..ed71b8dee02d 100644
+--- a/shared/tensile/Tensile/AsmCaps.py
++++ b/shared/tensile/Tensile/AsmCaps.py
+@@ -169,6 +169,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                  'v_mov_b64': False,
+                  'v_pk_fma_f16': True,
+                  'v_pk_fmac_f16': False},
++     (9, 0, -1): {'HasAddLshl': True,
++                 'HasAtomicAdd': False,
++                 'HasDirectToLdsDest': False,
++                 'HasDirectToLdsNoDest': True,
++                 'HasExplicitCO': True,
++                 'HasExplicitNC': False,
++                 'HasGLCModifier': True,
++                 'HasNTModifier': False,
++                 'HasLshlOr': True,
++                 'HasMFMA': False,
++                 'HasMFMA_b8': False,
++                 'HasMFMA_bf16_1k': False,
++                 'HasMFMA_bf16_original': False,
++                 'HasMFMA_constSrc': False,
++                 'HasMFMA_f64': False,
++                 'HasMFMA_f8': False,
++                 'HasMFMA_i8_908': False,
++                 'HasMFMA_i8_940': False,
++                 'HasMFMA_vgpr': False,
++                 'HasMFMA_xf32': False,
++                 'HasSMulHi': True,
++                 'HasWMMA': False,
++                 'KernargPreloading': False,
++                 'MaxLgkmcnt': 15,
++                 'MaxVmcnt': 63,
++                 'SupportedISA': True,
++                 'SupportedSource': True,
++                 'VOP3v_dot4_i32_i8': False,
++                 'v_dot2_f32_f16': False,
++                 'v_dot2c_f32_f16': False,
++                 'v_dot4_i32_i8': False,
++                 'v_dot4c_i32_i8': False,
++                 'v_fma_f16': True,
++                 'v_fma_f32': True,
++                 'v_fma_f64': True,
++                 'v_fma_mix_f32': False,
++                 'v_fmac_f16': False,
++                 'v_fmac_f32': False,
++                 'v_mac_f16': True,
++                 'v_mac_f32': True,
++                 'v_mad_mix_f32': False,
++                 'v_mov_b64': False,
++                 'v_pk_fma_f16': True,
++                 'v_pk_fmac_f16': False},
+      (9, 0, 6): {'HasAddLshl': True,
+                  'HasAtomicAdd': False,
+                  'HasDirectToLdsDest': False,
+@@ -389,6 +433,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                  'v_mov_b64': True,
+                  'v_pk_fma_f16': True,
+                  'v_pk_fmac_f16': False},
++     (9, 4, -1): {'HasAddLshl': True,
++                 'HasAtomicAdd': True,
++                 'HasDirectToLdsDest': False,
++                 'HasDirectToLdsNoDest': True,
++                 'HasExplicitCO': True,
++                 'HasExplicitNC': False,
++                 'HasGLCModifier': False,
++                 'HasNTModifier': True,
++                 'HasLshlOr': True,
++                 'HasMFMA': True,
++                 'HasMFMA_b8': False,
++                 'HasMFMA_bf16_1k': True,
++                 'HasMFMA_bf16_original': False,
++                 'HasMFMA_constSrc': True,
++                 'HasMFMA_f64': True,
++                 'HasMFMA_f8': False,
++                 'HasMFMA_i8_908': False,
++                 'HasMFMA_i8_940': True,
++                 'HasMFMA_vgpr': True,
++                 'HasMFMA_xf32': False,
++                 'HasSMulHi': True,
++                 'HasWMMA': False,
++                 'KernargPreloading': True,
++                 'MaxLgkmcnt': 15,
++                 'MaxVmcnt': 63,
++                 'SupportedISA': True,
++                 'SupportedSource': True,
++                 'VOP3v_dot4_i32_i8': True,
++                 'v_dot2_f32_f16': True,
++                 'v_dot2c_f32_f16': True,
++                 'v_dot4_i32_i8': False,
++                 'v_dot4c_i32_i8': True,
++                 'v_fma_f16': True,
++                 'v_fma_f32': True,
++                 'v_fma_f64': True,
++                 'v_fma_mix_f32': True,
++                 'v_fmac_f16': False,
++                 'v_fmac_f32': True,
++                 'v_mac_f16': True,
++                 'v_mac_f32': False,
++                 'v_mad_mix_f32': False,
++                 'v_mov_b64': True,
++                 'v_pk_fma_f16': True,
++                 'v_pk_fmac_f16': False},
+      (9, 5, 0): {'HasAddLshl': True,
+                  'HasAtomicAdd': True,
+                  'HasDirectToLdsDest': False,
+@@ -477,6 +565,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                   'v_mov_b64': False,
+                   'v_pk_fma_f16': True,
+                   'v_pk_fmac_f16': False},
++     (10, 1, -1): {'HasAddLshl': True,
++                  'HasAtomicAdd': False,
++                  'HasDirectToLdsDest': False,
++                  'HasDirectToLdsNoDest': True,
++                  'HasExplicitCO': True,
++                  'HasExplicitNC': True,
++                  'HasGLCModifier': True,
++                  'HasNTModifier': False,
++                  'HasLshlOr': True,
++                  'HasMFMA': False,
++                  'HasMFMA_b8': False,
++                  'HasMFMA_bf16_1k': False,
++                  'HasMFMA_bf16_original': False,
++                  'HasMFMA_constSrc': False,
++                  'HasMFMA_f64': False,
++                  'HasMFMA_f8': False,
++                  'HasMFMA_i8_908': False,
++                  'HasMFMA_i8_940': False,
++                  'HasMFMA_vgpr': False,
++                  'HasMFMA_xf32': False,
++                  'HasSMulHi': True,
++                  'HasWMMA': False,
++                  'KernargPreloading': False,
++                  'MaxLgkmcnt': 15,
++                  'MaxVmcnt': 63,
++                  'SupportedISA': True,
++                  'SupportedSource': True,
++                  'VOP3v_dot4_i32_i8': False,
++                  'v_dot2_f32_f16': False,
++                  'v_dot2c_f32_f16': False,
++                  'v_dot4_i32_i8': False,
++                  'v_dot4c_i32_i8': False,
++                  'v_fma_f16': True,
++                  'v_fma_f32': True,
++                  'v_fma_f64': True,
++                  'v_fma_mix_f32': True,
++                  'v_fmac_f16': False,
++                  'v_fmac_f32': True,
++                  'v_mac_f16': False,
++                  'v_mac_f32': True,
++                  'v_mad_mix_f32': False,
++                  'v_mov_b64': False,
++                  'v_pk_fma_f16': True,
++                  'v_pk_fmac_f16': False},
+      (10, 1, 1): {'HasAddLshl': True,
+                   'HasAtomicAdd': False,
+                   'HasDirectToLdsDest': False,
+@@ -609,6 +741,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                   'v_mov_b64': False,
+                   'v_pk_fma_f16': True,
+                   'v_pk_fmac_f16': False},
++     (10, 3, -1): {'HasAddLshl': True,
++                  'HasAtomicAdd': False,
++                  'HasDirectToLdsDest': False,
++                  'HasDirectToLdsNoDest': True,
++                  'HasExplicitCO': True,
++                  'HasExplicitNC': True,
++                  'HasGLCModifier': True,
++                  'HasNTModifier': False,
++                  'HasLshlOr': True,
++                  'HasMFMA': False,
++                  'HasMFMA_b8': False,
++                  'HasMFMA_bf16_1k': False,
++                  'HasMFMA_bf16_original': False,
++                  'HasMFMA_constSrc': False,
++                  'HasMFMA_f64': False,
++                  'HasMFMA_f8': False,
++                  'HasMFMA_i8_908': False,
++                  'HasMFMA_i8_940': False,
++                  'HasMFMA_vgpr': False,
++                  'HasMFMA_xf32': False,
++                  'HasSMulHi': True,
++                  'HasWMMA': False,
++                  'KernargPreloading': False,
++                  'MaxLgkmcnt': 15,
++                  'MaxVmcnt': 63,
++                  'SupportedISA': True,
++                  'SupportedSource': True,
++                  'VOP3v_dot4_i32_i8': True,
++                  'v_dot2_f32_f16': True,
++                  'v_dot2c_f32_f16': True,
++                  'v_dot4_i32_i8': False,
++                  'v_dot4c_i32_i8': True,
++                  'v_fma_f16': True,
++                  'v_fma_f32': True,
++                  'v_fma_f64': True,
++                  'v_fma_mix_f32': True,
++                  'v_fmac_f16': False,
++                  'v_fmac_f32': True,
++                  'v_mac_f16': False,
++                  'v_mac_f32': False,
++                  'v_mad_mix_f32': False,
++                  'v_mov_b64': False,
++                  'v_pk_fma_f16': True,
++                  'v_pk_fmac_f16': False},
+      (10, 3, 1): {'HasAddLshl': True,
+                   'HasAtomicAdd': False,
+                   'HasDirectToLdsDest': False,
+@@ -917,6 +1093,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                   'v_mov_b64': False,
+                   'v_pk_fma_f16': True,
+                   'v_pk_fmac_f16': False},
++     (11, 0, -1): {'HasAddLshl': True,
++                  'HasAtomicAdd': True,
++                  'HasDirectToLdsDest': False,
++                  'HasDirectToLdsNoDest': False,
++                  'HasExplicitCO': True,
++                  'HasExplicitNC': True,
++                  'HasGLCModifier': True,
++                  'HasNTModifier': False,
++                  'HasLshlOr': True,
++                  'HasMFMA': False,
++                  'HasMFMA_b8': False,
++                  'HasMFMA_bf16_1k': False,
++                  'HasMFMA_bf16_original': False,
++                  'HasMFMA_constSrc': False,
++                  'HasMFMA_f64': False,
++                  'HasMFMA_f8': False,
++                  'HasMFMA_i8_908': False,
++                  'HasMFMA_i8_940': False,
++                  'HasMFMA_vgpr': False,
++                  'HasMFMA_xf32': False,
++                  'HasSMulHi': True,
++                  'HasWMMA': True,
++                  'KernargPreloading': False,
++                  'MaxLgkmcnt': 15,
++                  'MaxVmcnt': 63,
++                  'SupportedISA': True,
++                  'SupportedSource': True,
++                  'VOP3v_dot4_i32_i8': True,
++                  'v_dot2_f32_f16': True,
++                  'v_dot2c_f32_f16': True,
++                  'v_dot4_i32_i8': False,
++                  'v_dot4c_i32_i8': False,
++                  'v_fma_f16': True,
++                  'v_fma_f32': True,
++                  'v_fma_f64': True,
++                  'v_fma_mix_f32': True,
++                  'v_fmac_f16': False,
++                  'v_fmac_f32': True,
++                  'v_mac_f16': False,
++                  'v_mac_f32': False,
++                  'v_mad_mix_f32': False,
++                  'v_mov_b64': False,
++                  'v_pk_fma_f16': True,
++                  'v_pk_fmac_f16': False},
+      (11, 0, 1): {'HasAddLshl': True,
+                   'HasAtomicAdd': True,
+                   'HasDirectToLdsDest': False,
+@@ -1269,6 +1489,50 @@ def getCapabilitiesCache(rocmVersion: NamedTuple) -> dict:
+                   'v_mov_b64': False,
+                   'v_pk_fma_f16': True,
+                   'v_pk_fmac_f16': False},
++     (12, 0, -1): {'HasAddLshl': True,
++                  'HasAtomicAdd': False,
++                  'HasDirectToLdsDest': False,
++                  'HasDirectToLdsNoDest': False,
++                  'HasExplicitCO': True,
++                  'HasExplicitNC': True,
++                  'HasGLCModifier': False,
++                  'HasNTModifier': False,
++                  'HasLshlOr': True,
++                  'HasMFMA': False,
++                  'HasMFMA_b8': False,
++                  'HasMFMA_bf16_1k': False,
++                  'HasMFMA_bf16_original': False,
++                  'HasMFMA_constSrc': False,
++                  'HasMFMA_f64': False,
++                  'HasMFMA_f8': False,
++                  'HasMFMA_i8_908': False,
++                  'HasMFMA_i8_940': False,
++                  'HasMFMA_vgpr': False,
++                  'HasMFMA_xf32': False,
++                  'HasSMulHi': True,
++                  'HasWMMA': False,
++                  'KernargPreloading': False,
++                  'MaxLgkmcnt': 15,
++                  'MaxVmcnt': 63,
++                  'SupportedISA': True,
++                  'SupportedSource': True,
++                  'VOP3v_dot4_i32_i8': True,
++                  'v_dot2_f32_f16': True,
++                  'v_dot2c_f32_f16': False,
++                  'v_dot4_i32_i8': False,
++                  'v_dot4c_i32_i8': False,
++                  'v_fma_f16': True,
++                  'v_fma_f32': True,
++                  'v_fma_f64': True,
++                  'v_fma_mix_f32': True,
++                  'v_fmac_f16': False,
++                  'v_fmac_f32': True,
++                  'v_mac_f16': False,
++                  'v_mac_f32': False,
++                  'v_mad_mix_f32': False,
++                  'v_mov_b64': False,
++                  'v_pk_fma_f16': True,
++                  'v_pk_fmac_f16': False},
+      (12, 0, 1): {'HasAddLshl': True,
+                   'HasAtomicAdd': False,
+                   'HasDirectToLdsDest': False,
+diff --git a/shared/tensile/Tensile/Common.py b/shared/tensile/Tensile/Common.py
+index a4db814f542f..ef13633f4571 100644
+--- a/shared/tensile/Tensile/Common.py
++++ b/shared/tensile/Tensile/Common.py
+@@ -246,12 +246,12 @@ globalParameters["NumMergedFiles"] = 1            # The number of files that ker
+ 
+ globalParameters["MaxFileName"] = 64              # If a file name would be longer than this, shorten it with a hash.
+ globalParameters["SupportedISA"] = [(8,0,3),
+-                                    (9,0,0), (9,0,6), (9,0,8), (9,0,10), (9,0,12),
+-                                    (9,4,2), (9,5,0),
+-                                    (10,1,0), (10,1,1), (10,1,2), (10,3,0), (10,3,1), (10,3,2), (10,3,3), (10,3,4), (10,3,5), (10,3,6),
+-                                    (11,0,0), (11,0,1), (11,0,2), (11,0,3),
++                                    (9,0,0), (9,0,6), (9,0,8), (9,0,10), (9,0,12), (9,0,-1),
++                                    (9,4,2), (9,4,-1), (9,5,0),
++                                    (10,1,0), (10,1,1), (10,1,2), (10,1,-1), (10,3,0), (10,3,1), (10,3,2), (10,3,3), (10,3,4), (10,3,5), (10,3,6), (10,3,-1),
++                                    (11,0,0), (11,0,1), (11,0,2), (11,0,3), (11,0,-1),
+                                     (11,5,0), (11,5,1), (11,5,2), (11,5,3),
+-                                    (12,0,0), (12,0,1), (12,5,0)] # assembly kernels writer supports these architectures
++                                    (12,0,0), (12,0,1), (12,5,0), (12,0,-1)] # assembly kernels writer supports these architectures
+ 
+ globalParameters["KeepBuildTmp"] = True                           # Do not remove build artifacts during the build process or build_tmp after build completes
+ globalParameters["GenerateManifestAndExit"] = False               # Output manifest file with list of expected library objects and exit
+@@ -320,15 +320,15 @@ architectureMap = {
+   'gfx803':'r9nano', 'gfx900':'vega10', 'gfx900:xnack-':'vega10', 'gfx90c':'vega10',
+   'gfx906':'vega20', 'gfx906:xnack+':'vega20', 'gfx906:xnack-':'vega20',
+   'gfx908':'arcturus','gfx908:xnack+':'arcturus', 'gfx908:xnack-':'arcturus',
+-  'gfx90a':'aldebaran', 'gfx90a:xnack+':'aldebaran', 'gfx90a:xnack-':'aldebaran',
+-  'gfx942':'aquavanjaram942', 'gfx942:xnack+':'aquavanjaram942', 'gfx942:xnack-':'aquavanjaram942',
++  'gfx90a':'aldebaran', 'gfx90a:xnack+':'aldebaran', 'gfx90a:xnack-':'aldebaran', 'gfx9-generic':'gfx9-generic',
++  'gfx942':'aquavanjaram942', 'gfx942:xnack+':'aquavanjaram942', 'gfx942:xnack-':'aquavanjaram942', 'gfx9-4-generic':'gfx9-4-generic',
+   'gfx950':'gfx950', 'gfx950:xnack+':'gfx950', 'gfx950:xnack-':'gfx950',
+-  'gfx1010':'navi10', 'gfx1011':'navi12', 'gfx1012':'navi14',
+-  'gfx1030':'navi21', 'gfx1031':'navi22', 'gfx1032':'navi23', 'gfx1033':'van gogh', 'gfx1034':'navi24', 'gfx1035':'rembrandt', 'gfx1036':'raphael',
+-  'gfx1100':'navi31', 'gfx1101':'navi32', 'gfx1102':'navi33', 'gfx1103':'gfx1103',
++  'gfx1010':'navi10', 'gfx1011':'navi12', 'gfx1012':'navi14', 'gfx10-1-generic':'gfx10-1-generic',
++  'gfx1030':'navi21', 'gfx1031':'navi22', 'gfx1032':'navi23', 'gfx1033':'van gogh', 'gfx1034':'navi24', 'gfx1035':'rembrandt', 'gfx1036':'raphael', 'gfx10-3-generic':'gfx10-3-generic',
++  'gfx1100':'navi31', 'gfx1101':'navi32', 'gfx1102':'navi33', 'gfx1103':'gfx1103', 'gfx11-generic':'gfx11-generic',
+   'gfx1150':'strixpoint', 'gfx1151':'strixhalo', 'gfx1152':'gfx1152', 'gfx1153':'gfx1153',
+   'gfx1200':'gfx1200',
+-  'gfx1201':'gfx1201',
++  'gfx1201':'gfx1201', 'gfx12-generic':'gfx12-generic',
+   'gfx1250':'gfx1250'
+ }
+ 
+@@ -2202,6 +2202,21 @@ def tryAssembler(isaVersion, asmString, debug=False, *options):
+ 
+ def gfxArch(name: str) -> Optional[IsaVersion]:
+     import re
++
++    # Handle special case for generic architectures like 'gfx10-3-generic'
++    generic_match = re.search(r'gfx([0-9]+)-([0-9]+)-generic', name)
++    if generic_match:
++        major = int(generic_match.group(1))
++        minor = int(generic_match.group(2))
++        return (major, minor, -1)  # step=-1 to indicate generic
++
++    # Handle special case for generic architectures like 'gfx11-generic'
++    generic_match = re.search(r'gfx([0-9]+)-generic', name)
++    if generic_match:
++        major = int(generic_match.group(1))
++        return (major, 0, -1)  # step=-1 to indicate generic, minor=0
++
++    # Handle regular architectures like 'gfx900', 'gfx803' etc.
+     match = re.search(r'gfx([0-9a-fA-F]{3,})', name)
+     if not match: return None
+ 
+@@ -2220,11 +2235,23 @@ def gfxArch(name: str) -> Optional[IsaVersion]:
+     return rv
+ 
+ def gfxName(arch):
+-    # convert last digit to hex because reasons
+-    name = str(arch[0]) + str(arch[1]) + ('%x' % arch[2])
++    # If arch[2] is negative, this is a generic target
++    if arch[2] < 0:
++        if arch[0] == 9:
++            if arch[1] == 4:
++                name = str(arch[0]) + '-' + str(arch[1]) + '-generic'
++            else:
++                name = str(arch[0]) + '-generic'
++        elif arch[0] == 10:
++            name = str(arch[0]) + '-' + str(arch[1]) + '-generic'
++        else:
++            name = str(arch[0]) + '-generic'
++    else:
++        # The normal case
++        # convert last digit to hex because reasons
++        name = str(arch[0]) + str(arch[1]) + ('%x' % arch[2])
+     return 'gfx' + ''.join(map(str,name))
+ 
+-
+ def detectIsaWindows(output):
+     i = 0
+     for line in output:
+@@ -2476,7 +2503,7 @@ def assignGlobalParameters( config, capabilitiesCache: Optional[dict] = None ):
+     if os.name == "nt":
+       globalParameters["CurrentISA"] = (9,0,6)
+       printWarning("Failed to detect ISA so forcing (gfx906) on windows")
+-  isasWithDisabledHWMonitor = ((9,4,2), (9,5,0), (11,0,0), (11,0,1), (11,0,2), (11,0,3), (11,5,0), (11,5,1), (11,5,2), (11,5,3), (12,0,0), (12,0,1))
++  isasWithDisabledHWMonitor = ((9,0,-1), (9,4,2), (9,4,-1), (9,5,0), (10,1,-1), (10,3,-1), (11,0,0), (11,0,1), (11,0,2), (11,0,3), (11,5,0), (11,5,1), (11,5,2), (11,5,3), (11,0,-1), (12,0,0), (12,0,1), (12,0,-1))
+   if globalParameters["CurrentISA"] in isasWithDisabledHWMonitor:
+     isaString = ', '.join(map(gfxName, isasWithDisabledHWMonitor))
+     printWarning(f"HardwareMonitor currently disabled for {isaString}")
+diff --git a/shared/tensile/Tensile/Source/cmake/TensileSupportedArchitectures.cmake b/shared/tensile/Tensile/Source/cmake/TensileSupportedArchitectures.cmake
+index 56e3057d8511..2139617551c4 100644
+--- a/shared/tensile/Tensile/Source/cmake/TensileSupportedArchitectures.cmake
++++ b/shared/tensile/Tensile/Source/cmake/TensileSupportedArchitectures.cmake
+@@ -36,11 +36,14 @@ if(NOT BUILD_ADDRESS_SANITIZER)
+         "gfx906"
+         "gfx908"
+         "gfx90a"
++	"gfx9-generic"
+         "gfx942"
++	"gfx9-4-generic"
+         "gfx950"
+         "gfx1010"
+         "gfx1011"
+         "gfx1012"
++	"gfx10-1-generic"
+         "gfx1030"
+         "gfx1031"
+         "gfx1032"
+@@ -48,6 +51,7 @@ if(NOT BUILD_ADDRESS_SANITIZER)
+         "gfx1034"
+         "gfx1035"
+         "gfx1036"
++        "gfx10-3-generic"
+         "gfx1100"
+         "gfx1101"
+         "gfx1102"
+@@ -56,9 +60,12 @@ if(NOT BUILD_ADDRESS_SANITIZER)
+         "gfx1151"
+         "gfx1152"
+         "gfx1153"
++        "gfx11-generic"
+         "gfx1200"
+         "gfx1201"
+-        "gfx1250")
++        "gfx1250"
++        "gfx12-generic"
++      )
+ 
+     set(SUPPORTED_ARCHITECTURES ${BASE_ARCHITECTURES})
+     list(APPEND SUPPORTED_ARCHITECTURES
+diff --git a/shared/tensile/Tensile/Source/lib/include/Tensile/AMDGPU.hpp b/shared/tensile/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+index f2bf41b507a3..4b71db91f814 100644
+--- a/shared/tensile/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
++++ b/shared/tensile/Tensile/Source/lib/include/Tensile/AMDGPU.hpp
+@@ -83,7 +83,13 @@ namespace Tensile
+             gfx1153 = 1153,
+             gfx1200 = 1200,
+             gfx1201 = 1201,
+-            gfx1250 = 1250
++            gfx1250 = 1250,
++            gfx9_generic = -900,
++	    gfx9_4_generic = -940,
++	    gfx10_1_generic = -1010,
++	    gfx10_3_generic = -1030,
++	    gfx11_generic = -1100,
++	    gfx12_generic = -1200,
+         };
+ 
+         static std::string toString(Processor p)
+@@ -148,6 +154,18 @@ namespace Tensile
+                 return "gfx1201";
+             case AMDGPU::Processor::gfx1250:
+                 return "gfx1250";
++            case AMDGPU::Processor::gfx9_generic:
++                return "gfx9-generic";
++	    case AMDGPU::Processor::gfx9_4_generic:
++                return "gfx9-4-generic";
++	    case AMDGPU::Processor::gfx10_1_generic:
++                return "gfx10-1-generic";
++	    case AMDGPU::Processor::gfx10_3_generic:
++                return "gfx10-3-generic";
++	    case AMDGPU::Processor::gfx11_generic:
++                return "gfx11-generic";
++	    case AMDGPU::Processor::gfx12_generic:
++                return "gfx12-generic";
+             }
+             return "";
+         }
+@@ -270,6 +288,30 @@ namespace Tensile
+             {
+                 return AMDGPU::Processor::gfx1250;
+             }
++            else if(deviceString.find("gfx9-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx9_generic;
++            }
++	    else if(deviceString.find("gfx9-4-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx9_4_generic;
++            }
++	    else if(deviceString.find("gfx10-1-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx10_1_generic;
++            }
++	    else if(deviceString.find("gfx10-3-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx10_3_generic;
++            }
++	    else if(deviceString.find("gfx11-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx11_generic;
++            }
++	    else if(deviceString.find("gfx12-generic") != std::string::npos)
++            {
++                return AMDGPU::Processor::gfx12_generic;
++            }
+             else
+             {
+                 return static_cast<AMDGPU::Processor>(0);
+diff --git a/shared/tensile/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp b/shared/tensile/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
+index 9e21d4ac0805..421b21c5f7dd 100644
+--- a/shared/tensile/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
++++ b/shared/tensile/Tensile/Source/lib/include/Tensile/PlaceholderLibrary.hpp
+@@ -68,6 +68,12 @@ namespace Tensile
+         gfx1200,
+         gfx1201,
+         gfx1250,
++        gfx9_generic,
++	gfx9_4_generic,
++	gfx10_1_generic,
++	gfx10_3_generic,
++	gfx11_generic,
++	gfx12_generic,
+         All
+     };
+ 
+@@ -136,6 +142,18 @@ namespace Tensile
+             return "TensileLibrary_*_gfx1201";
+         case LazyLoadingInit::gfx1250:
+             return "TensileLibrary_*_gfx1250";
++        case LazyLoadingInit::gfx9_generic:
++            return "TensileLibrary_*_gfx9-generic";
++	case LazyLoadingInit::gfx9_4_generic:
++            return "TensileLibrary_*_gfx9-4-generic";
++	case LazyLoadingInit::gfx10_1_generic:
++            return "TensileLibrary_*_gfx10-1-generic";
++	case LazyLoadingInit::gfx10_3_generic:
++            return "TensileLibrary_*_gfx10-3-generic";
++    	case LazyLoadingInit::gfx11_generic:
++            return "TensileLibrary_*_gfx11-generic";
++	case LazyLoadingInit::gfx12_generic:
++            return "TensileLibrary_*_gfx12-generic";
+         case LazyLoadingInit::None:
+             return "";
+         }
+-- 
+2.53.0
+

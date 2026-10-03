@@ -1,0 +1,32 @@
+From fc89fe29ed8f4ea26aa6041d6655c1c9b46715dd Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Sun, 8 Mar 2026 13:38:28 -0700
+Subject: [PATCH 3/6] improve fallback name to handle generics
+
+The archName can be of the form gfx90a-xnack{+,-} and this function
+determines the fallback is gfx90a.  However when the archName is
+a generic, ex gfx11-generic, the entire name must be used.  So
+check if the name ends with -generic and skip splitting.
+
+Signed-off-by: Tom Rix <Tom.Rix@amd.com>
+---
+ shared/tensile/Tensile/TensileCreateLibrary.py | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/shared/tensile/Tensile/TensileCreateLibrary.py b/shared/tensile/Tensile/TensileCreateLibrary.py
+index cfb04a938d2c..af55b172422a 100644
+--- a/shared/tensile/Tensile/TensileCreateLibrary.py
++++ b/shared/tensile/Tensile/TensileCreateLibrary.py
+@@ -1001,7 +1001,8 @@ def addFallback(masterLibraries: Dict[str, MasterSolutionLibrary]) -> None:
+             value.insert(masterLibraries["fallback"])
+ 
+     for archName in archs:
+-        archName = archName.split("-", 1)[0]
++        if not archName.endswith("-generic"):
++            archName = archName.split("-", 1)[0]
+         if archName not in masterLibraries:
+             tPrint(1, "Using fallback for arch: " + archName)
+             masterLibraries[archName] = masterLibraries["fallback"]
+-- 
+2.53.0
+

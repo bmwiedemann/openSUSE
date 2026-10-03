@@ -1,0 +1,292 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun  6 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Thu May 28 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Explicitly license smoke tests 0BSD
+- Smoke test not part of srpm so remove from license tag
+
+-------------------------------------------------------------------
+Sat Apr 18 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package names
+
+-------------------------------------------------------------------
+Tue Mar 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Install tensile with pip
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Do not strip hsaco files
+
+-------------------------------------------------------------------
+Sat Mar  7 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+- Use rocm-libraries for tensile source
+  Add: 0001-improve-the-warning-for-asm-caps-mismatches.patch
+       0002-add-generic-gpu-targets.patch
+       0003-improve-fallback-name-to-handle-generics.patch
+       0004-generic-arches-need-a-solution-index.patch
+       0005-rocblas-add-rocblas_internal_get_generic_arch_name.patch
+       0006-rocblas-generalize-finding-tensile-for-generics.patch
+
+-------------------------------------------------------------------
+Sun Feb 15 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- strip hsaco files
+- make test optional
+
+-------------------------------------------------------------------
+Wed Feb 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+- Add smoke test
+
+-------------------------------------------------------------------
+Sat Jan 17 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jan  2 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix SUSE
+
+-------------------------------------------------------------------
+Thu Jan  1 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix --with bundled_tensile on RHEL
+
+-------------------------------------------------------------------
+Thu Dec 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+- Remove --with generic
+
+-------------------------------------------------------------------
+Wed Dec 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with bundled_tensile
+  Add: 0001-tensile-gfx1036.patch
+       0001-tensile-ignore-cache-check.patch
+       0001-tensile-fedora-gpus.patch
+       0001-tensile-set-default-paths.patch
+       0001-tensile-add-cmake-arches.patch
+       0001-tensile-gfx1153.patch
+
+-------------------------------------------------------------------
+Thu Dec  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix setting sw blas
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+- Fix build on SUSE 15.6
+
+-------------------------------------------------------------------
+Mon Nov 17 00:00:00 UTC 2025 - Benjamin A. Beasley <code@musicinmybrain.net>
+
+- Rebuilt for gtest 1.17.0
+
+-------------------------------------------------------------------
+Wed Nov  5 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Turn down verbose output on RHEL
+
+-------------------------------------------------------------------
+Thu Oct 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Remove: 0001-option-to-disable-roctracer-logging.patch
+          0001-offload-compress-option.patch
+	  0001-rocblas-remove-roctracer.patch
+
+-------------------------------------------------------------------
+Mon Oct 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Better handling of shared library on opensuse
+
+-------------------------------------------------------------------
+Fri Oct 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.2
+
+-------------------------------------------------------------------
+Mon Oct  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove setting __brp_check_rpaths to nil
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+- Build -test on fedora
+  Modified: 0001-fixup-install-of-tensile-output.patch
+
+-------------------------------------------------------------------
+Wed Aug 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Wed Aug 20 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Consoldiate Python module BuildRequires for SUSE.
+
+-------------------------------------------------------------------
+Sat Aug 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use msgpack on SUSE
+
+-------------------------------------------------------------------
+Wed Aug 13 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Fix build and runtime dependencies of test package.
+
+-------------------------------------------------------------------
+Tue Aug 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- remove roctracer
+- Use distro appropriate blas libs
+
+-------------------------------------------------------------------
+Tue Jul 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Mon Jul 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove experimental gfx950
+- Remove debian dir
+
+-------------------------------------------------------------------
+Fri Jul 25 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Tue Jul 22 00:00:00 UTC 2025 - Jeremy Newton <alexjnewt at hotmail dot com>
+
+- Update to 6.4.2
+
+-------------------------------------------------------------------
+Wed Jun 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check for using ldconfig
+
+-------------------------------------------------------------------
+Sun May 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add experimental gfx950
+
+-------------------------------------------------------------------
+Tue May  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- disable roctracer for everyone
+
+-------------------------------------------------------------------
+Tue Apr 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improve testing for suse
+
+-------------------------------------------------------------------
+Sat Apr 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add generic gpus
+
+-------------------------------------------------------------------
+Wed Apr 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use joblib on sle 15.6 and 16.0
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Fri Apr  4 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use rocm-llvm strip
+
+-------------------------------------------------------------------
+Thu Feb 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable tensile for RHEL
+
+-------------------------------------------------------------------
+Wed Feb 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Enable tensile for SUSE
+
+-------------------------------------------------------------------
+Sun Feb 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use tensile verbosity to avoid OSB timeout
+
+-------------------------------------------------------------------
+Wed Feb 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use tensile cmake from the python location
+
+-------------------------------------------------------------------
+Tue Feb 11 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multibuild
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Sat Jan 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread rpm compress
+
+-------------------------------------------------------------------
+Tue Jan 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Fri Dec 20 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Build type should be release
+
+-------------------------------------------------------------------
+Fri Dec  6 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+  Add: 0001-fixup-install-of-tensile-output.patch
+
