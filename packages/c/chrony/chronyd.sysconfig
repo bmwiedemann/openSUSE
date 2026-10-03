@@ -1,9 +1,16 @@
 ## Path:	Network/Chrony
 ## Description:	Chrony time synchronization settings
 ## Type:	string
-## Default:	""
+## Default:	"-s"
 ## ServiceRestart: chronyd
 #
-# Command line options for chronyd
+# Command line options for chronyd.
 #
-OPTIONS=""
+# -s sets the clock at start-up from the RTC, or on machines without a
+# working RTC forward to the driftfile's timestamp (only if that is later
+# than the current and RTC time, i.e. a monotonic last-known-good seed).
+# This gives DNSSEC validation, TLS/NTS-KE certificate checks and other
+# time-sensitive services a roughly correct clock before the network is
+# up, without blocking boot the way waiting for real synchronization does.
+#
+OPTIONS="-s"

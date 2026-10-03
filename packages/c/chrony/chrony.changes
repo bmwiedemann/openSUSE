@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Sep 17 14:36:09 UTC 2026 - Reinhard Max <max@suse.com>
+
+- (bsc#1273873): Replace chrony-usretc-service.patch with
+  chrony-usretc-config-fallback.patch to let chronyd itself fall
+  back to /usr/etc/chrony.conf when /etc/chrony.conf is absent and
+  no -f is given.
+
+-------------------------------------------------------------------
+Mon Sep 14 09:32:42 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Rework chrony-service-ordering.patch (bsc#1145193, bsc#1279495):
+  * chronyd.service: drop the time-sync.target coupling (Wants=
+    and Before=); chronyd is Type=notify, so readiness only means
+    the daemon started, not that the clock is synced.
+  * chronyd.service: also drop "Wants=network.target", keeping
+    just After=nss-lookup.target and After=network.target.
+  * chrony-wait.service: add After=/Wants=network-online.target so
+    it no longer times out before the network is up.
+- Default OPTIONS to "-s" in the chronyd sysconfig to seed the
+  clock from the RTC (or driftfile) at start-up; override in
+  /etc/sysconfig/chronyd.
+
+-------------------------------------------------------------------
 Thu Sep  3 15:46:16 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Create /var/lib/chrony via tmpfiles

@@ -1,15 +1,23 @@
 --- examples/chronyd.service.orig
 +++ examples/chronyd.service
-@@ -1,7 +1,11 @@
+@@ -1,7 +1,8 @@
  [Unit]
  Description=NTP client/server
  Documentation=man:chronyd(8) man:chrony.conf(5)
 -After=ntpdate.service sntp.service ntpd.service
 +After=nss-lookup.target
-+Wants=network.target
 +After=network.target
-+Wants=time-sync.target
-+Before=time-sync.target
  Conflicts=ntpd.service systemd-timesyncd.service
  ConditionCapability=CAP_SYS_TIME
+ 
+--- examples/chrony-wait.service.orig
++++ examples/chrony-wait.service
+@@ -3,6 +3,8 @@
+ Documentation=man:chronyc(1)
+ After=chronyd.service
+ Requires=chronyd.service
++After=network-online.target
++Wants=network-online.target
+ Before=time-sync.target
+ Wants=time-sync.target
  

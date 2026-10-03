@@ -1,0 +1,72 @@
+Fall back to /usr/etc/chrony.conf when /etc/chrony.conf is absent.
+
+openSUSE ships the vendor chrony.conf in /usr/etc (UsrEtc / hermetic /usr)
+and leaves /etc empty for admin overrides.  chronyd's compiled-in default
+is a single /etc/chrony.conf with no fallback, so every caller that starts
+chronyd without -f (chronyd.service, yast-timesync.service, a manual
+"chronyd -q", ...) fails with "Could not open /etc/chrony.conf"
+(bsc#1273873).  Teach chronyd itself to fall back to the vendor copy so all
+callers are covered, instead of wrapping each unit.  An explicit -f is
+always honoured as given.  The fallback path can be overridden at build
+time with -DDEFAULT_CONF_FILE_FALLBACK=... .
+
+--- main.c.orig
++++ main.c
+@@ -492,6 +492,14 @@
+ 
+ /* ================================================== */
+ 
++/* When no config file is given with -f and the compiled-in default does not
++   exist, fall back to the vendor copy shipped under /usr/etc, to support the
++   UsrEtc / hermetic-/usr layout (an empty /etc by default).  An explicit -f
++   is always honoured as given.  */
++#ifndef DEFAULT_CONF_FILE_FALLBACK
++#define DEFAULT_CONF_FILE_FALLBACK "/usr/etc/chrony.conf"
++#endif
++
+ int main
+ (int argc, char **argv)
+ {
+@@ -504,6 +512,7 @@
+   int scfilter_level = 0, lock_memory = 0, sched_priority = 0;
+   int clock_control = 1, system_log = 1, log_severity = LOGS_INFO;
+   int user_check = 1, config_args = 0, print_config = 0;
++  int conf_file_specified = 0;
+ 
+   do_platform_checks();
+ 
+@@ -536,6 +545,7 @@
+         break;
+       case 'f':
+         conf_file = optarg;
++        conf_file_specified = 1;
+         break;
+       case 'F':
+         scfilter_level = parse_int_arg(optarg);
+@@ -639,6 +649,13 @@
+   /* Parse the config file or the remaining command line arguments */
+   config_args = argc - optind;
+   if (!config_args) {
++    /* With no explicit -f, if the default config file is missing fall back
++       to the vendor copy in /usr/etc (UsrEtc / hermetic /usr). */
++    if (!conf_file_specified && access(conf_file, R_OK) != 0 &&
++        access(DEFAULT_CONF_FILE_FALLBACK, R_OK) == 0) {
++      DEBUG_LOG("Using fallback config %s", DEFAULT_CONF_FILE_FALLBACK);
++      conf_file = DEFAULT_CONF_FILE_FALLBACK;
++    }
+     CNF_ReadFile(conf_file);
+   } else {
+     for (; optind < argc; optind++)
+--- doc/chronyd.adoc.orig
++++ doc/chronyd.adoc
+@@ -39,7 +39,9 @@
+ 
+ If no configuration directives are specified on the command line, *chronyd*
+ will read them from a configuration file. The compiled-in default location of
+-the file is _@SYSCONFDIR@/chrony.conf_.
++the file is _@SYSCONFDIR@/chrony.conf_. If that file does not exist and the
++*-f* option is not used, *chronyd* falls back to the vendor default in
++_/usr/etc/chrony.conf_.
+ 
+ Informational messages, warnings, and errors will be logged to syslog.
+ 

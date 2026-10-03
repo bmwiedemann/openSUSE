@@ -70,8 +70,8 @@ Patch2:         chrony-logrotate.patch
 Patch3:         chrony-service-ordering.patch
 Patch7:         chrony-htonl.patch
 Patch8:         chrony.nm-dispatcher.dhcp.patch
-# Select /etc/chrony.conf if present, else fall back to /usr/etc/chrony.conf (UsrEtc)
-Patch10:        chrony-usretc-service.patch
+# Fall back to /usr/etc/chrony.conf when /etc/chrony.conf is absent (UsrEtc)
+Patch10:        chrony-usretc-config-fallback.patch
 # Tolerate arch-dependent glibc log() rounding in the 129-reload simulation test
 Patch11:        chrony-test-tolerance.patch
 BuildRequires:  NetworkManager-devel
@@ -85,9 +85,10 @@ BuildRequires:  pkgconfig
 %if %{with pps}
 BuildRequires:  pps-tools-devel
 %endif
+BuildRequires:  sysuser-tools
+BuildRequires:  rubygem(asciidoctor)
 # The timezone package is needed for the "make check" tests. It can be
 # removed if the call to make check is ever deleted.
-BuildRequires:  sysuser-tools
 BuildRequires:  timezone
 BuildRequires:  pkgconfig(systemd)
 Recommends:     logrotate
