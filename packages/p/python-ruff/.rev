@@ -3737,4 +3737,13 @@ autoforward-gate ELIGIBLE, no competing Factory SR).</comment>
   declined SR 1380707.</comment>
     <requestid>1380803</requestid>
   </revision>
+  <revision rev="130" vrev="1">
+    <srcmd5>d2367ca18b9805aebc3b1dd9e60c2a7f</srcmd5>
+    <version>0.16.10</version>
+    <time>1791051149</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.16.10 and re-vendor the Rust dependencies. The statically linked licence set is re-derived and unchanged (MIT AND MPL-2.0, same three MPL-2.0 crates); the linked-crate count in the notice is corrected 297 -&gt; 237. Upstream's MSRV 1.97 is now a BuildRequires.
+</comment>
+    <requestid>1382069</requestid>
+  </revision>
 </revisionlist>

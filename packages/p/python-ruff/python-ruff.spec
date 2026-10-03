@@ -28,13 +28,14 @@
 %define origname python-ruff
 %bcond_without libalternatives
 Name:           %{origname}%{psuffix}
-Version:        0.16.9
+Version:        0.16.10
 Release:        0
 Summary:        An extremely fast Python linter, written in Rust
 # Legal-Review-Notice: ruff itself is MIT, but the binary statically links
 # the vendored Rust dependencies. Re-derived on this re-vendor with
-# "cargo tree --offline -p ruff -e normal" over the vendored tree (297
-# unique crates): the only copyleft licence in the linked graph is
+# "cargo tree --offline -p ruff -e normal" over the vendored tree (237
+# unique crates; the count in earlier notices did not reproduce and is
+# corrected): the only copyleft licence in the linked graph is
 # MPL-2.0, from three crates -
 #  - colored, a direct dependency of ruff and ruff_linter,
 #  - option-ext, pulled in through shellexpand -> dirs -> dirs-sys,
@@ -50,6 +51,10 @@ URL:            https://github.com/astral-sh/ruff
 Source:         https://files.pythonhosted.org/packages/source/r/ruff/ruff-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
+# upstream raised its MSRV to 1.97 in 0.16.10 (crates/ruff's workspace
+# rust-version); both flavours compile Rust, so the floor sits outside the
+# test bcond
+BuildRequires:  rust >= 1.97
 # The test flavour only builds and runs the Rust test suite. It needs no
 # Python at all, so it skips the singlespec machinery entirely - running
 # cargo test once per Python flavour would double the cost for no gain.

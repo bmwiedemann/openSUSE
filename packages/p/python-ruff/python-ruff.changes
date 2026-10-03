@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  2 09:16:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.16.10:
+  * Preview: pyupgrade UP052 flags context manager iterator
+    annotations
+  * Rule categories gained a migration guide
+  * Diagnostics use less memory
+  * The language server no longer runs uv format in an untrusted
+    workspace
+  * Python 3.15 is listed as a supported version
+  * MSRV raised to Rust 1.97, now required at build time
+- Re-vendor the Rust dependencies and re-derive the licence set of the
+  statically linked crates: unchanged at MIT AND MPL-2.0, same three
+  MPL-2.0 crates (colored, option-ext, version-ranges); the linked-crate
+  count in the Legal-Review-Notice is corrected from 297 to 237, which is
+  what "cargo tree --offline -p ruff -e normal" yields at 0.16.9 and
+  0.16.10 alike
+  * CVE-2025-4574 (boo#1243177): crossbeam-channel is 0.5.17, above the
+    0.5.15 fix
+  * GHSA-7gcf-g7xr-8hxj (boo#1271857): serde_with is not among ruff's
+    dependencies, so this package is not affected
+  * Many more fixes and improvements; see upstream's release notes for
+    the full list
+
+-------------------------------------------------------------------
 Fri Sep 25 16:40:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.16.9:
