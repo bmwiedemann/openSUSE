@@ -2873,4 +2873,12 @@ New Features
     [bsc#1280444]</comment>
     <requestid>1381163</requestid>
   </revision>
+  <revision rev="237" vrev="2">
+    <srcmd5>65ff8198c9d330181155e312d80f9716</srcmd5>
+    <version>9.20.29</version>
+    <time>1791051190</time>
+    <user>dimstar_suse</user>
+    <comment>Submit build fix</comment>
+    <requestid>1382161</requestid>
+  </revision>
 </revisionlist>

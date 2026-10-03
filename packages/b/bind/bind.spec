@@ -51,7 +51,7 @@ Source40:       dnszone-schema.txt
 Source60:       dlz-schema.txt
 # configuration file for systemd-tmpfiles
 Source70:       bind.conf
-# configuation file for systemd-sysusers
+# configuration file for systemd-sysusers
 Source72:       named.conf
 Patch56:        bind-ldapdump-use-valid-host.patch
 BuildRequires:  fstrm-devel
@@ -118,7 +118,7 @@ Obsoletes:      libirs-devel < %{version}
 
 %description utils
 This package includes the utilities "host", "dig", and "nslookup" used to
-test and query the Domain Name System (DNS) and also the libraries rquired
+test and query the Domain Name System (DNS) and also the libraries required
 for the base "bind" package. The Berkeley Internet
 Name Domain (BIND) DNS server is found in the package named bind.
 
@@ -141,13 +141,12 @@ Group:          Productivity/Networking/DNS/Servers
 BuildRequires:  libmysqlclient-devel
 
 %description modules-mysql
-This package includes dynamically loadable zone (DLZ) plugins
-which store zone data in a MySQL database
-The dlz_mysql_dynamic.so plugin does not support dynamic updates
-the dlz_mysqldyn_mod.so plugin is a dynamically loadable zone (DLZ)
-plugin that uses a fixed-schema MySQL database for back-end storage.
-It allows zone data to be updated via dynamic DNS updates, and
-sends DNS NOTIFY packets to other name servers when appropriate.
+This package includes dynamically loadable zone (DLZ) plugins which store zone
+data in a MySQL database. The dlz_mysql_dynamic.so plugin does not support
+dynamic updates the dlz_mysqldyn_mod.so plugin is a dynamically loadable zone
+(DLZ) plugin that uses a fixed-schema MySQL database for back-end storage.
+It allows zone data to be updated via dynamic DNS updates, and sends DNS NOTIFY
+packets to other name servers when appropriate.
 %endif
 
 %if %{with_modules_ldap}
@@ -158,7 +157,7 @@ BuildRequires:  openldap2-devel
 
 %description modules-ldap
 This package provides the externally loadable ldap DLZ module, without
-update support
+update support.
 %endif
 
 %if %{with_modules_bdbhpt}
@@ -169,7 +168,7 @@ BuildRequires:  libdb-4_8-devel
 
 %description modules-bdbhpt
 This package provides the externally loadable bdbhpt DLZ driver, without
-update support
+update support.
 %endif
 
 %if %{with_modules_sqlite3}
@@ -179,13 +178,13 @@ Group:          Productivity/Networking/DNS/Servers
 BuildRequires:  sqlite3-devel
 
 %description modules-sqlite3
-This package provides the externally loadable SQLitee DLZ module, without
+This package provides the externally loadable SQLite DLZ module, without
 update support.
 %endif
 
 %if %{with_modules_generic}
 %package modules-generic
-Summary:        DLZ module which store zone data in plain files
+Summary:        DLZ modules which store zone data in plain files
 Group:          Productivity/Networking/DNS/Servers
 
 %description modules-generic
@@ -201,10 +200,6 @@ possible string of labels in the query name that matches the wildcard.
 %prep
 %autosetup -p1 -a2
 %setup -T -D -a4
-
-# use the year from source gzip header instead of current one to make reproducible rpms
-year=$(perl -e 'sysread(STDIN, $h, 8); print (1900+(gmtime(unpack("l",substr($h,4))))[5])' < %{SOURCE0})
-sed -i "s/stdout, copyright, year/stdout, copyright, \"-$year\"/" lib/dns/gen.c
 
 # modify settings of some files regarding to OS version and vendor
 function replaceStrings()
@@ -550,7 +545,7 @@ make test
 %{_mandir}/man1/named-journalprint.1%{ext_man}
 %{_mandir}/man1/nsec3hash.1%{ext_man}
 %{_mandir}/man1/dnstap-read.1%{ext_man}
-%{_mandir}/man1/dnssec-ksr.1.gz
+%{_mandir}/man1/dnssec-ksr.1%{ext_man}
 %{_mandir}/man5/rndc.conf.5%{ext_man}
 %{_mandir}/man8/ddns-confgen.8%{ext_man}
 %{_mandir}/man8/rndc.8%{ext_man}

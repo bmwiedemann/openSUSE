@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:46:55 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update named.root
+
+-------------------------------------------------------------------
+Fri Oct  2 10:11:59 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- remove nonsensical prep code. it was reading SOURCE0 as a gzip.
+  the code anyway already follows SOURCE_DATE_EPOCH for
+  reproducibility.
+
+-------------------------------------------------------------------
 Mon Sep 28 12:50:48 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Update named.root
@@ -323,7 +335,7 @@ Wed Jan 21 13:03:10 UTC 2026 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 
 - Upgrade to release 9.20.18
   Security Fixes:
-  * Fix incorrect length checks for BRID and HHIT records. 
+  * Fix incorrect length checks for BRID and HHIT records.
   (CVE-2025-13878)
   [bsc#1256997]
 
@@ -510,7 +522,7 @@ Thu Apr 17 10:51:44 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
   * `dig` can now display the received BADVERS message during
     negotiation.
   * Add an `rndc` command to reset some statistics counters.
-  
+
   Bug Fixes:
   * Restore NSEC3 closest-encloser lookup improvements.
   * Stop caching lack of EDNS support.
@@ -784,7 +796,7 @@ Thu Jan 30 11:44:58 UTC 2025 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 -------------------------------------------------------------------
 Tue Jan 21 00:37:45 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
-- Explicitly BuildRequire sphinx_rtd_theme. 
+- Explicitly BuildRequire sphinx_rtd_theme.
 
 -------------------------------------------------------------------
 Thu Dec 12 12:38:04 UTC 2024 - Jorik Cronenberg <jorik.cronenberg@suse.com>
@@ -1295,7 +1307,7 @@ Wed Nov 15 16:16:29 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
     DNSSEC records, it was incorrectly scheduled for resigning.
     This has been fixed.
   * Looking up stale data from the cache did not take local
-    authoritative data into account. This has been fixed. 
+    authoritative data into account. This has been fixed.
   * An assertion failure was triggered when lock-file was used at
     the same time as the named -X command-line option. This has
     been fixed.
@@ -1421,7 +1433,7 @@ Thu Jul 13 15:00:12 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
 -------------------------------------------------------------------
 Thu Jul  6 07:16:33 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- rebuild bind-utils on libuv updates (bsc#1212090) 
+- rebuild bind-utils on libuv updates (bsc#1212090)
 
 -------------------------------------------------------------------
 Thu Jun 22 08:04:23 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
@@ -1591,11 +1603,11 @@ Thu Feb 16 14:36:14 UTC 2023 - Jorik Cronenberg <jorik.cronenberg@suse.com>
   Bug Fixes:
   * A constant stream of zone additions and deletions via rndc
     reconfig could cause increased memory consumption due to
-    delayed cleaning of view memory. This has been fixed. 
+    delayed cleaning of view memory. This has been fixed.
   * The speed of the message digest algorithms (MD5, SHA-1, SHA-2),
     and of NSEC3 hashing, has been improved.
   * Pointing parental-agents to a resolver did not work because the
-    RD bit was not set on DS requests. This has been fixed. 
+    RD bit was not set on DS requests. This has been fixed.
   * Building BIND 9 failed when the --enable-dnsrps switch for
     ./configure was used. This has been fixed.
 
@@ -1919,7 +1931,7 @@ Thu Jul 21 06:51:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
     authoritative server returns FORMERR; try the other servers first.
   * When synth-from-dnssec generated a response using records from a
     higher zone, it could unexpectedly prove non-existance of
-    records in a subordinate grafted-on namespace.  
+    records in a subordinate grafted-on namespace.
   * Update HTTP listener settings on reconfiguration.
   * Fix a crash in dig NS search mode when one of the NS server
     queries fail.
@@ -2060,7 +2072,7 @@ Mon Apr 25 06:56:58 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
   * Set the minimum MTU on UDPv6 and TCPv6 sockets and
     limit TCP maximum segment size (TCP_MAXSEG) to (1220)
     for both TCPv4 and TCPv6 sockets.
-  
+
   Needed to define two macros in contrib code:
   FALLTHOUGH is a copy of how it is defined in <isc/util.h>
 
@@ -2130,12 +2142,12 @@ Mon Jan 31 13:49:51 UTC 2022 - Josef Möllers <josef.moellers@suse.com>
   * Support for zone transfers over TLS (XFR-over-TLS, XoT) for both
     incoming and outgoing zone transfers.
   * The dig tool is now able to send DoT queries (+tls option).
-  * Support for OpenSSL 3.0 APIs was added. 
+  * Support for OpenSSL 3.0 APIs was added.
 
   A number of utilities have been removed: dnssec-checkds,
   dnssec-coverage, dnssec-keymgr, which have been deprecated in
   favor of dnssec-policy feature, as well as python support
-  (package python3-bind). 
+  (package python3-bind).
   A number of utilities have been moved from (/usr)/sbin to (/usr)/bin
   The DLZ modules have been put into seperate sub-packages
   to keep unwanted dependencies out of the main package:
@@ -2282,7 +2294,7 @@ Fri Dec  3 07:52:38 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
     the --with-gssapi=[/path/to/]krb5-config option. This
     has been fixed by invoking krb5-config separately for
     each required library.
-  * Fixed a regression which broke backward compatibility for the 
+  * Fixed a regression which broke backward compatibility for the
     "check-names master ..." and "check-names slave ..."
     options. This has been fixed.
   * Address a potential deadlock when checking zone content
@@ -2627,7 +2639,7 @@ Thu Feb 18 08:44:47 UTC 2021 - Josef Möllers <josef.moellers@suse.com>
       zone with a non-builtin "allow-update" ACL attached.
     - Address potential double free in generatexml().
     - When migrating to KASP, BIND 9 considered keys with the
-      "Inactive" and/or "Delete" timing metadata to be 
+      "Inactive" and/or "Delete" timing metadata to be
       possible active keys.
     - Fix the "three is a crowd" key rollover bug in KASP by
       correctly implementing Equation (2) of the "Flexible and
@@ -2839,20 +2851,20 @@ Tue Aug 18 12:13:49 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
                           described in the ARM. (CVE-2020-8624) [GL #2055]
 
   5480.   [security]      When BIND 9 was compiled with native PKCS#11 support, it
-                          was possible to trigger an assertion failure in code 
+                          was possible to trigger an assertion failure in code
                           determining the number of bits in the PKCS#11 RSA public
                           key with a specially crafted packet. (CVE-2020-8623)
                           [GL #2037]
 
   5479.   [security]      named could crash in certain query resolution scenarios
-                          where QNAME minimization and forwarding were both 
+                          where QNAME minimization and forwarding were both
                           enabled. (CVE-2020-8621) [GL #1997]
 
   5478.   [security]      It was possible to trigger an assertion failure by
                           sending a specially crafted large TCP DNS message.
                           (CVE-2020-8620) [GL #1996]
 
-  5476.   [security]      It was possible to trigger an assertion failure when 
+  5476.   [security]      It was possible to trigger an assertion failure when
                           verifying the response to a TSIG-signed request.
                           (CVE-2020-8622) [GL #2028]
   For the less severe bugs fixed, see the CHANGES file.
@@ -2893,7 +2905,7 @@ Tue Jun 30 08:32:21 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 Thu Jun 18 06:35:35 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
 
 - Upgrade to version bind-9.16.4
-  Fixing two security problems: 
+  Fixing two security problems:
   * It was possible to trigger an INSIST when determining
     whether a record would fit into a TCP message buffer.
     (CVE-2020-8618)
@@ -2963,7 +2975,7 @@ Fri Mar 20 08:04:19 UTC 2020 - Josef Möllers <josef.moellers@suse.com>
   * The system-provided POSIX Threads read-write lock implementation
     is now used by default instead of the native BIND 9 implementation.
   * Fixed re-signing issues with inline zones which resulted in records
-    being re-signed late or not at all. 
+    being re-signed late or not at all.
   [bind-9.16.1.tar.xz]
 
 -------------------------------------------------------------------
@@ -3049,7 +3061,7 @@ Fri Jul 12 08:43:29 UTC 2019 - matthias.gerstner@suse.com
 Tue Apr 16 10:15:22 UTC 2019 - Navin Kukreja <navin.kukreja@suse.com>
 
 - Add FIPS patch back into bind (bsc#1128220)
-- File: bind-fix-fips.patch 
+- File: bind-fix-fips.patch
 
 -------------------------------------------------------------------
 Mon Dec 10 09:25:44 UTC 2018 - Franck Bui <fbui@suse.com>
@@ -3080,17 +3092,17 @@ Fri Jun 22 15:10:39 CEST 2018 - kukuk@suse.de
 -------------------------------------------------------------------
 Wed Jun  6 12:03:25 UTC 2018 - navin.kukreja@suse.com
 
-- Fix a patch error in dnszone-schema file (bsc#901577) 
+- Fix a patch error in dnszone-schema file (bsc#901577)
 
 -------------------------------------------------------------------
 Tue Jun  5 10:47:22 UTC 2018 - navin.kukreja@suse.com
 
-- Add SPF records in dnszone-schema file (bsc#901577) 
+- Add SPF records in dnszone-schema file (bsc#901577)
 
 -------------------------------------------------------------------
 Tue Jun  5 09:01:52 UTC 2018 - navin.kukreja@suse.com
 
-- Fix the hostname in ldapdump to be valid (bsc#965748) 
+- Fix the hostname in ldapdump to be valid (bsc#965748)
 - Patch file - bind-ldapdump-use-valid-host.patch
 
 -------------------------------------------------------------------
@@ -3103,8 +3115,8 @@ Mon May 21 11:57:47 UTC 2018 - scabrero@suse.de
 -------------------------------------------------------------------
 Thu May 17 14:28:29 UTC 2018 - navin.kukreja@suse.com
 
-- Move chroot related files from bind to bind-chrootenv 
-  (bsc#1093338) 
+- Move chroot related files from bind to bind-chrootenv
+  (bsc#1093338)
 
 -------------------------------------------------------------------
 Wed May 16 10:22:25 UTC 2018 - navin.kukreja@suse.com
@@ -3125,17 +3137,17 @@ Mon Feb 26 19:26:17 UTC 2018 - sweet_f_a@gmx.de
 -------------------------------------------------------------------
 Fri Feb 16 12:59:41 UTC 2018 - bwiedemann@suse.com
 
-- Add /dev/urandom to chroot env 
+- Add /dev/urandom to chroot env
 
 -------------------------------------------------------------------
 Wed Feb  7 15:17:17 UTC 2018 - navin.kukreja@suse.com
 
-- Implement systemd init scripts for bind and lwresd (fate#323155) 
+- Implement systemd init scripts for bind and lwresd (fate#323155)
 
 -------------------------------------------------------------------
 Tue Jan 23 21:59:24 UTC 2018 - navin.kukreja@suse.com
 
-- Apply bind-CVE-2017-3145.patch to fix CVE-2017-3145 (bsc#1076118) 
+- Apply bind-CVE-2017-3145.patch to fix CVE-2017-3145 (bsc#1076118)
 
 -------------------------------------------------------------------
 Wed Dec  6 13:35:59 UTC 2017 - vcizek@suse.com
@@ -3151,7 +3163,7 @@ Sat Nov 25 15:31:18 UTC 2017 - meissner@suse.com
 -------------------------------------------------------------------
 Thu Nov 23 13:38:07 UTC 2017 - rbrown@suse.com
 
-- Replace references to /var/adm/fillup-templates with new 
+- Replace references to /var/adm/fillup-templates with new
   %_fillupdir macro (boo#1069468)
 
 -------------------------------------------------------------------
@@ -3212,7 +3224,7 @@ Tue Nov 14 11:17:03 UTC 2017 - tchvatal@suse.com
 - Update to 9.11.2 release:
   * Many changes compared to 9.10 see the README file for in-depth listing
   * For detailed changes with issues see CHANGES file
-  * Fixes for CVE-2017-3141 CVE-2017-3140 CVE-2017-3138 CVE-2017-3137 
+  * Fixes for CVE-2017-3141 CVE-2017-3140 CVE-2017-3138 CVE-2017-3137
     CVE-3136 CVE-2016-9778
   * OpenSSL 1.1 support
 - Remove support for some old distributions and cleanup the spec file
@@ -3264,7 +3276,7 @@ Fri Jun 30 07:12:50 UTC 2017 - sflees@suse.de
   TSIG keys for protection with no other ACL protection could be
   manipulated into (1) providing an AXFR of a zone to an
   unauthorized recipient and (2) accepting bogus Notify packets.
-  [bsc#1046554, CVE-2017-3142, bsc#1046555, CVE-2017-3143] 
+  [bsc#1046554, CVE-2017-3142, bsc#1046555, CVE-2017-3143]
 
 -------------------------------------------------------------------
 Sat May 20 11:46:44 UTC 2017 - dimstar@opensuse.org
@@ -3294,19 +3306,19 @@ Wed Feb 15 12:50:42 UTC 2017 - navin.kukreja@suse.com
 Thu Jan 12 04:43:56 UTC 2017 - sflees@suse.de
 
 - Update to latest release in the 9.10.X series
-  * Security fixes in 9.10.4 
-    * Duplicate EDNS COOKIE options in a response could trigger an assertion failure. 
+  * Security fixes in 9.10.4
+    * Duplicate EDNS COOKIE options in a response could trigger an assertion failure.
       CVE-2016-2088. [RT #41809]
     * The resolver could abort with an assertion failure due to improper DNAME handling
       when parsing fetch reply messages. CVE-2016-1286. [RT #41753]
-    * Malformed control messages can trigger assertions in named and rndc. 
+    * Malformed control messages can trigger assertions in named and rndc.
       CVE-2016-1285. [RT #41666]
-    * Certain errors that could be encountered when printing out or logging an OPT record containing 
+    * Certain errors that could be encountered when printing out or logging an OPT record containing
       a CLIENT-SUBNET option could be mishandled, resulting in an assertion failure. CVE-2015-8705. [RT #41397]
     * Specific APL data could trigger an INSIST. CVE-2015-8704. [RT #41396]
     * Incorrect reference counting could result in an INSIST failure if a socket error occurred while performing
       a lookup. CVE-2015-8461. [RT#40945]
-    * Insufficient testing when parsing a message allowed records with an incorrect class to be be accepted, 
+    * Insufficient testing when parsing a message allowed records with an incorrect class to be be accepted,
       triggering a REQUIRE failure when those records were subsequently cached. CVE-2015-8000. [RT #40987]
   * For Features and other fixes in 9.10.4 see https://kb.isc.org/article/AA-01380/0/BIND-9.10.4-Release-Notes.html
   * Description of patch changes
@@ -3314,8 +3326,8 @@ Thu Jan 12 04:43:56 UTC 2017 - sflees@suse.de
     * BIND 9.10.4-P4 addresses the security issue described in CVE-2016-8864.
     * BIND 9.10.4-P3 addresses the security issue described in CVE-2016-2776 and addresses an interoperability issue with ECS clients.
     * BIND 9.10.4-P2 addresses the security issue described in CVE-2016-2775.
-    * BIND 9.10.4-P1 addresses Windows installation issues, the %z modifier is not supported under Windows and 
-      a race condition in the rbt/rbtdb implementation resulting in named exiting due to assertion failures being detected. 
+    * BIND 9.10.4-P1 addresses Windows installation issues, the %z modifier is not supported under Windows and
+      a race condition in the rbt/rbtdb implementation resulting in named exiting due to assertion failures being detected.
   * Following patches removed, fixed upstream
     * cve-2016-2776.patch
     * cve-2016-8864.patch
@@ -3366,7 +3378,7 @@ Thu Feb 25 16:10:45 UTC 2016 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Fri Feb 12 18:56:28 UTC 2016 - crrodriguez@opensuse.org
 
-- Build with --with-randomdev=/dev/urandom otherwise 
+- Build with --with-randomdev=/dev/urandom otherwise
   libisc will use /dev/random to gather entropy and that might
   block, short read etc..
 
@@ -3404,7 +3416,7 @@ Tue Sep 22 13:15:51 UTC 2015 - meissner@suse.com
     rdatatype could trigger an assertion failure.
     (CVE-2015-5986) [RT #40286] (bsc#944107)
   * A buffer accounting error could trigger an
-    assertion failure when parsing certain malformed 
+    assertion failure when parsing certain malformed
     DNSSEC keys. (CVE-2015-5722) [RT #40212] (bsc#944066)
 
 -------------------------------------------------------------------
@@ -3527,7 +3539,7 @@ Fri May  8 11:48:03 UTC 2015 - hguo@suse.com
 Tue Feb 10 22:24:26 UTC 2015 - dvaleev@suse.com
 
 - PowerPC can build shared libraries for sure.
-  idnkit-powerpc-ltconfig.patch 
+  idnkit-powerpc-ltconfig.patch
 
 -------------------------------------------------------------------
 Fri Dec 12 02:28:36 UTC 2014 - jengelh@inai.de
