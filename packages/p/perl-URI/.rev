@@ -501,4 +501,12 @@
         of silently stripping it (GH#95) (Jacques Deguest)</comment>
     <requestid>1376328</requestid>
   </revision>
+  <revision rev="61" vrev="2">
+    <srcmd5>1c737dfc5307d4781eb9c14b205b3dca</srcmd5>
+    <version>5.370.0</version>
+    <time>1791051185</time>
+    <user>dimstar_suse</user>
+    <comment>        @naseeb0) (GH#191) bsc#1277886</comment>
+    <requestid>1382144</requestid>
+  </revision>
 </revisionlist>

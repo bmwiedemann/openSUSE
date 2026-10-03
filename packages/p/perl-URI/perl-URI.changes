@@ -18,7 +18,7 @@ Thu Aug 20 05:49:40 UTC 2026 - Tina Müller <timueller+perl@suse.de>
       - Apply Unicode NFC normalization in URI::_idna nameprep so IDNA host
         encoding matches other clients instead of emitting a non-standard,
         non-round-tripping A-label [CVE-2026-19953] (reported by Naseeb Dangi,
-        @naseeb0) (GH#191)
+        @naseeb0) (GH#191) bsc#1277886
 
 -------------------------------------------------------------------
 Mon Jun 15 11:25:31 UTC 2026 - Tina Müller <timueller+perl@suse.de>
