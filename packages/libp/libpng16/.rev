@@ -1047,4 +1047,12 @@
     <comment>- Fix build on armv6 by really disabling neon support (forwarded request 1377329 from Guillaume_G)</comment>
     <requestid>1377841</requestid>
   </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>56dd9a7e975eadec32c82e09d603357c</srcmd5>
+    <version>1.6.59</version>
+    <time>1791051140</time>
+    <user>dimstar_suse</user>
+    <comment>[jsc#PED-16190]</comment>
+    <requestid>1382035</requestid>
+  </revision>
 </revisionlist>
