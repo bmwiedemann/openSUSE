@@ -4512,6 +4512,7 @@ unsorted:
   - fping 
   - fplll 
   - fplll-devel 
+  - fplus-devel 
   - fprintd-devel 
   - fprintd-doc 
   - fq 
@@ -4611,6 +4612,7 @@ unsorted:
   - frozen-devel 
   - frr 
   - frr-devel 
+  - frugally-deep-devel 
   - fs-check 
   - fs-uae 
   - fs-uae-arcade 
@@ -8512,6 +8514,7 @@ unsorted:
   - hadrian 
   - haguichi 
   - haguichi-lang 
+  - half-devel 
   - halibut 
   - halloy 
   - hamclock 
@@ -13562,6 +13565,9 @@ unsorted:
   - libframecppc4 
   - libframecppcmn12 
   - libframel8 
+  - libfreeaptx-devel 
+  - libfreeaptx-tools 
+  - libfreeaptx0 
   - libfreebl3-32bit 
   - libfreefare-devel 
   - libfreefare-tools 
@@ -23663,6 +23669,10 @@ unsorted:
   - portmidi 
   - portmidi-devel 
   - portmidi-java 
+  - portprotonqt 
+  - portprotonqt-bash-completion 
+  - portprotonqt-fish-completion 
+  - portprotonqt-zsh-completion 
   - posix_cc 
   - posixovl 
   - post-build-checks 
@@ -24532,7 +24542,6 @@ unsorted:
   - python311-platformdirs 
   - python311-pluggy 
   - python311-poetry-core 
-  - python311-pymathics-graph 
   - python311-setuptools 
   - python311-setuptools-wheel 
   - python311-setuptools_scm 
@@ -31577,7 +31586,6 @@ unsorted:
   - python314-pymacaroons 
   - python314-pymad 
   - python314-pymarc 
-  - python314-pymathics-graph 
   - python314-pymavlink 
   - python314-pymcuprog 
   - python314-pymdown-extensions 
@@ -33425,6 +33433,7 @@ unsorted:
   - qtcurve-qt5-lang 
   - qtdeclarative-imports-provides-qt5 
   - qtel 
+  - qteletextmaker 
   - qterm 
   - qterminal 
   - qterminal-lang 
