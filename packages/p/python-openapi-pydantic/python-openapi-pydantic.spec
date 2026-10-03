@@ -17,14 +17,14 @@
 
 
 Name:           python-openapi-pydantic
-Version:        0.5.1
+Version:        0.6.0
 Release:        0
 Summary:        OpenAPI (v3) specification schema as Pydantic classes
 License:        MIT
 URL:            https://github.com/mike-oakley/openapi-pydantic
 Source:         https://files.pythonhosted.org/packages/source/o/openapi-pydantic/openapi_pydantic-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling >= 1.26}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core >= 1.0.0}
 BuildRequires:  %{python_module pydantic >= 1.8}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes

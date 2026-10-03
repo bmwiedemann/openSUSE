@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sat Oct  3 16:09:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.6.0
+  * Add support for OpenAPI 3.1.2: the "openapi" version field of
+    v3.v3_1.OpenAPI now also accepts "3.1.2", the default is still
+    "3.1.1"
+  * Dropped support for end-of-life Python 3.8, Python 3.9 is now the
+    minimum
+  * Upstream migrated the build backend from poetry-core to hatchling
+  * Runtime dependencies are unchanged, pydantic >= 1.8 is still the only
+    one
+  * No CVEs fixed in this range
+
+-------------------------------------------------------------------
 Thu Jun 18 20:46:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Initial package (version 0.5.1)
