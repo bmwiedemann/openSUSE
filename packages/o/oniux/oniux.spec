@@ -16,7 +16,7 @@
 #
 
 Name:           oniux
-Version:        0.12.0~0
+Version:        0.13.0~0
 Release:        0
 Summary:        Isolate an arbitrary application over the Tor network
 License:        Apache-2.0 OR MIT

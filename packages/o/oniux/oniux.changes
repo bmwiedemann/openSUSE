@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 17:36:05 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
+
+- update to v0.13.0
+  * Update various dependencies, including Arti 2.6.0 and onionmasq.
+    * This includes the always-on for cgo and congestion control.
+
+-------------------------------------------------------------------
 Sat Aug  1 09:09:01 UTC 2026 - Jakob Lorenz <onlyjak0b@mailbox.org>
 
 - update to v0.12.0
