@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  3 13:18:58 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 11.5.6
+  * Removed the undocumented global function HasseDiagram
+
+-------------------------------------------------------------------
 Tue Aug 11 15:47:01 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 11.5.5

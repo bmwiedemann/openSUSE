@@ -17,7 +17,7 @@
 
 
 Name:           gap-openmath
-Version:        11.5.5
+Version:        11.5.6
 Release:        0
 Summary:        GAP: OpenMath functionality in GAP
 License:        GPL-2.0-or-later
