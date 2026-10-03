@@ -1,0 +1,32 @@
+From a048fa75e46f1046751f0d134f50c03128d80086 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Tue, 27 Jan 2026 10:55:44 -0800
+Subject: [PATCH] hipblaslt find origami package
+
+---
+ projects/hipblaslt/CMakeLists.txt | 9 +--------
+ 1 file changed, 1 insertion(+), 8 deletions(-)
+
+diff --git a/projects/hipblaslt/CMakeLists.txt b/projects/hipblaslt/CMakeLists.txt
+index 489205819a85..1a4484af456e 100644
+--- a/projects/hipblaslt/CMakeLists.txt
++++ b/projects/hipblaslt/CMakeLists.txt
+@@ -213,14 +213,7 @@ if(HIPBLASLT_ENABLE_MSGPACK)
+     endif()
+ endif()
+ 
+-if(NOT ROCM_LIBS_SUPERBUILD)
+-    # TODO: This is a temporary solution to prevent the installation of the origami license files.
+-    block(SCOPE_FOR VARIABLES)
+-        set(ORIGAMI_ENABLE_INSTALL OFF)
+-        add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/../../shared/origami" origami)
+-    endblock()
+-endif()
+-
++find_package(origami CONFIG REQUIRED)
+ add_subdirectory(tensilelite)
+ 
+ if(HIPBLASLT_ENABLE_HOST)
+-- 
+2.52.0
+

@@ -1,0 +1,59 @@
+From ef7578dda6f24b0c9ad2d7e4e5941358d0d248d8 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Mon, 27 Jul 2026 08:23:22 -0700
+Subject: [PATCH] hipblaslt preview tensilelit remove yappi dependency
+
+---
+ .../Tensile/TensileCreateLibrary/Run.py           | 15 ---------------
+ projects/hipblaslt/tensilelite/requirements.txt   |  2 +-
+ 2 files changed, 1 insertion(+), 16 deletions(-)
+
+diff --git a/projects/hipblaslt/tensilelite/Tensile/TensileCreateLibrary/Run.py b/projects/hipblaslt/tensilelite/Tensile/TensileCreateLibrary/Run.py
+index d6c844eaf030..17a0b603f2be 100644
+--- a/projects/hipblaslt/tensilelite/Tensile/TensileCreateLibrary/Run.py
++++ b/projects/hipblaslt/tensilelite/Tensile/TensileCreateLibrary/Run.py
+@@ -431,12 +431,6 @@ def writeSolutionsAndKernels(
+     compress: bool=True,
+     removeTemporaries: bool=True,
+ ):
+-    if globalParameters["PythonProfile"]:
+-        globalParameters["CpuThreads"] = 0
+-        printWarning("Python profiling is enabled. CpuThreads set to 0.")
+-        import yappi
+-        yappi.start()
+-
+     codeObjectFiles = []
+ 
+     with timing_context("python_kernel_setup"):
+@@ -516,15 +510,6 @@ def writeSolutionsAndKernels(
+         writeHelpers(outputPath, kernelHelperObjs, KERNEL_HELPER_FILENAME_CPP, KERNEL_HELPER_FILENAME_H)
+     srcKernelFile = Path(outputPath) / "Kernels.cpp"
+ 
+-    if globalParameters["PythonProfile"]:
+-        yappi.stop()
+-        yappi.get_func_stats().save("yappi_results.profile", type="callgrind")
+-        with open("yappi_results.txt", "w") as f:
+-            yappi.get_func_stats().print_all(out=f)
+-        if globalParameters["CpuThreads"] != 0:
+-            with open("yappi_thread_stats.txt", "w") as f:
+-                yappi.get_thread_stats().print_all(out=f)
+-
+     if not generateSourcesAndExit:
+         with timing_context("python_kernel_build_co"):
+             codeObjectFiles += buildAssemblyCodeObjectFiles(
+diff --git a/projects/hipblaslt/tensilelite/requirements.txt b/projects/hipblaslt/tensilelite/requirements.txt
+index 667e5e406578..98e53b545181 100644
+--- a/projects/hipblaslt/tensilelite/requirements.txt
++++ b/projects/hipblaslt/tensilelite/requirements.txt
+@@ -5,7 +5,7 @@ joblib>=1.4.0
+ simplejson
+ ujson
+ orjson
+-yappi
++
+ tox
+ invoke
+ numpy
+-- 
+2.54.0
+

@@ -1,0 +1,112 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jun 26 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Wed Apr 15 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+- Improve libhipsparselt file glob
+
+-------------------------------------------------------------------
+Mon Feb 23 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix TW
+
+-------------------------------------------------------------------
+Fri Feb 20 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Wed Feb 11 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Updat to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Dec 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove build requires git
+
+-------------------------------------------------------------------
+Fri Dec 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Tue Dec 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+  Add: 0001-hipblaslt-find-origami-package.patch
+
+-------------------------------------------------------------------
+Sat Dec  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Use hipblaslt gpu list
+
+-------------------------------------------------------------------
+Tue Nov 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Bundle nanobind for EPEL
+  Add: 0001-hipblaslt-tensilelite-use-nanobind-tarball.patch
+
+-------------------------------------------------------------------
+Sat Nov 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Wed Nov 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild for 7.1.0
+
+-------------------------------------------------------------------
+Fri Sep 26 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+  Add: 0001-hipblaslt-tensilelite-remove-yappi-dependency.patch
+       0001-hipblaslt-tensilelite-use-fedora-paths.patch
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Sun Aug 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Build for SUSE
+- add gfx908 and gfx1101
+
+-------------------------------------------------------------------
+Sun Aug 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Build for EPEL
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+- Add gfx1200,gfx1201
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Initial package
+

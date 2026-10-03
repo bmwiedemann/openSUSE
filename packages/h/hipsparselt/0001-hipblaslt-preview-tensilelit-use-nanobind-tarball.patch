@@ -1,0 +1,28 @@
+From 96a85a91572e225c9f12bbdb69c1ede11d987d40 Mon Sep 17 00:00:00 2001
+From: Tom Rix <Tom.Rix@amd.com>
+Date: Mon, 27 Jul 2026 08:25:35 -0700
+Subject: [PATCH] hipblaslt preview tensilelit use nanobind tarball
+
+---
+ projects/hipblaslt/tensilelite/rocisa/CMakeLists.txt | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/projects/hipblaslt/tensilelite/rocisa/CMakeLists.txt b/projects/hipblaslt/tensilelite/rocisa/CMakeLists.txt
+index 2b44eb7c293a..2842393fb954 100644
+--- a/projects/hipblaslt/tensilelite/rocisa/CMakeLists.txt
++++ b/projects/hipblaslt/tensilelite/rocisa/CMakeLists.txt
+@@ -52,8 +52,9 @@ if(HIPBLASLT_BUNDLE_PYTHON_DEPS OR ROCISA_STANDALONE)
+         include(FetchContent)
+         FetchContent_Declare(
+           nanobind
+-          GIT_REPOSITORY https://github.com/wjakob/nanobind.git
+-          GIT_TAG        9b3afa9dbdc23641daf26fadef7743e7127ff92f # v2.6.1
++#          GIT_REPOSITORY https://github.com/wjakob/nanobind.git
++#          GIT_TAG        9b3afa9dbdc23641daf26fadef7743e7127ff92f # v2.6.1
++	  URL file://${CMAKE_CURRENT_SOURCE_DIR}/../../nanobind.tar.gz
+         )
+         FetchContent_MakeAvailable(nanobind)
+         if(ROCISA_USE_STABLE_ABI)
+-- 
+2.54.0
+
