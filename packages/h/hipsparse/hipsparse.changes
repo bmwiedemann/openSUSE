@@ -1,0 +1,151 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Sat Jun 20 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- merge compat changes
+
+-------------------------------------------------------------------
+Tue Apr 21 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Generate suse package name
+
+-------------------------------------------------------------------
+Mon Apr 13 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Mon Mar 23 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix location of test matrices for compat
+
+-------------------------------------------------------------------
+Wed Feb 25 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix --with test
+
+-------------------------------------------------------------------
+Tue Feb 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Sat Jan 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_44_Mass_Rebuild
+
+-------------------------------------------------------------------
+Mon Jan 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Add static analysis check
+
+-------------------------------------------------------------------
+Wed Jan  7 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix test matrices location
+- Remove --with check
+
+-------------------------------------------------------------------
+Tue Dec 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+- Add copyright
+
+-------------------------------------------------------------------
+Thu Nov 27 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.1
+
+-------------------------------------------------------------------
+Thu Nov 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Fri Oct 31 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+  Rename: 0002-refactor-setting-matrices-download-dir.patch to
+          0001-hipsparse-change-test-download-dir.patch
+
+-------------------------------------------------------------------
+Sat Sep 20 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+
+-------------------------------------------------------------------
+Mon Aug 25 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Simplify file removal
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Jun 19 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- rework test subpackage to include test data in a predictable location
+  Add: 0002-refactor-setting-matrices-download-dir.patch
+
+-------------------------------------------------------------------
+Mon Jun 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove suse check of ldconfig
+
+-------------------------------------------------------------------
+Wed May 14 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup module build
+
+-------------------------------------------------------------------
+Sat Apr 19 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Feb 13 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multi build
+- Fix SLE 15.6
+
+-------------------------------------------------------------------
+Tue Jan 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Tue Dec 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Sun Nov 10 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Stub for tumbleweed
+
