@@ -17,7 +17,7 @@
 
 
 Name:           swipl
-Version:        10.1.14
+Version:        10.1.16
 Release:        0
 Summary:        Prolog Compiler
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later

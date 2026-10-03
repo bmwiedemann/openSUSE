@@ -252,4 +252,22 @@ the list of changes is still too long to enumerate here.
   the list of changes is still too long to enumerate here.</comment>
     <requestid>1375696</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>67d37d54ed6c680c4c4658f560e6843e</srcmd5>
+    <version>10.1.16</version>
+    <time>1791051215</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 10.1.16:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=10.1.15&amp;to=10.1.16
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.
+
+- Update to 10.1.15:
+  Complete changelog is
+  https://www.swi-prolog.org/ChangeLog?branch=development&amp;from=10.1.14&amp;to=10.1.15
+  and upstream still doesn’t provide any abbreviated version, and
+  the list of changes is still too long to enumerate here.</comment>
+    <requestid>1382183</requestid>
+  </revision>
 </revisionlist>
