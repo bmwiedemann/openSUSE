@@ -1,4 +1,81 @@
 -------------------------------------------------------------------
+Thu Oct  1 14:34:42 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 2.15.1
+  * Accept trailing Base64URL = padding when decoding JWS segments,
+    so tokens issued by AWS ALB and similar systems verify instead
+    of raising DecodeError: Invalid crypto padding. Non-alphabet
+    junk such as !!!! remains rejected (#1209).
+- Update to 2.15.0 (fixes CVE-2026-101918 (bsc#1283061),
+  CVE-2026-102275 (bsc#1283072))
+  * Wrap recursion errors from deeply nested JWT payloads in
+    DecodeError instead of exposing a raw RecursionError.
+  * Support Python 3.15 by @kytta in #1202
+  * JWKSetCache now stores the parsed PyJWKSet rather than the raw
+    JWKS payload, so a cache hit no longer re-parses every key.
+    JWKSetCache.put() accepts either form and raises PyJWKSetError
+    for anything else. As a result, PyJWKClient.get_jwk_set()
+    returns the same PyJWKSet instance for as long as it stays
+    cached, rather than a freshly built one per call in #1208
+  * PyJWKClient.fetch_data() now raises PyJWKClientError("The JWKS
+    endpoint did not return a JSON object") when the endpoint
+    response is not a JSON object, instead of returning it for
+    get_jwk_set() to reject. Callers reaching the JWKS through
+    get_jwk_set() see the same error as before in #1208
+  * Return cached PyJWKSet values from PyJWKClient.get_jwk_set()
+    instead of raising PyJWKClientError("The JWKS endpoint did not
+    return a JSON object"). JWKSetCache.put() documents PyJWKSet
+    as the cached value, so callers pre-populating the cache to
+    avoid a network round-trip could not read it back in #914 and
+    #1208
+  * PyJWKClient.get_jwk_set() now caches the key set it returns,
+    so a fetch_data() override that filters or transforms the JWKS
+    is no longer undone by the next cache hit in #1208
+  * Raise the documented PyJWTError subclass instead of leaking a
+    TypeError when the exp, nbf, or iat claim decodes to a
+    non-numeric, non-string value such as a list, dict, or null.
+  * Reject OKP JWK private keys when their public x component does
+    not match the private d component.
+  * Treat malformed JWK Set members as unusable keys rather than
+    letting AttributeError or TypeError escape PyJWKSet. A member
+    that is not a JSON object is skipped, a key whose components
+    have the wrong type raises InvalidKeyError and is skipped, and
+    a set left with no usable keys raises PyJWKSetError. A single
+    bad entry no longer fails an otherwise usable JWK Set in #1208
+  * Wrap http.client.HTTPException (e.g. IncompleteRead from a
+    truncated response) in PyJWKClient.fetch_data as
+    PyJWKClientConnectionError, matching the other network failure
+    modes the method already documents.
+- Update to 2.14.0 (fixes CVE-2026-102270 (bsc#1283067),
+  CVE-2026-101917 (bsc#1283060), CVE-2026-102273 (bsc#1283070),
+  CVE-2026-102272 (bsc#1283069), CVE-2026-102271 (bsc#1283068),
+  CVE-2026-103001 (bsc#1283829), CVE-2026-102274 (bsc#1283071),
+  CVE-2026-102269 (bsc#1283066), CVE-2026-102265 (bsc#1283062),
+  CVE-2026-102268 (bsc#1283065), CVE-2026-102267 (bsc#1283064),
+  CVE-2026-102266 (bsc#1283063))
+  * Harden HMAC key validation against public-key material supplied
+    as JWK, JWKS, array, encoded, BOM-prefixed, DER, or PEM input.
+    See GHSA-r6x4-923q-g947, GHSA-ffc3-869f-jxw9,
+    GHSA-p4g4-x82p-q773, and GHSA-w2cx-738m-mc7w.
+  * Reject automatic redirects when PyJWKClient fetches a JWKS,
+    preventing redirected destinations from being treated as
+    trusted key sources. See GHSA-9v7f-9g4p-ffgj.
+  * Limit repeated JWKS refreshes caused by unknown key IDs while
+    preserving normal key-rotation behavior. See GHSA-2gx3-rcp4-g85q.
+  * Handle deeply nested and malformed JWS/JWK input without
+    uncaught recursion errors or whole-set parsing failures. See
+    GHSA-8wjv-2p76-3863 and GHSA-w6j9-cwv2-h6wq.
+  * Enforce compact JWS encoding rules during decoding. See
+    GHSA-hxm8-2xgr-2p9m.
+  * Reject detached-payload arguments for attached JWS inputs.
+    Thanks to @xclow3n for reporting this behavior; fixed in commit
+    37b54877.
+  * Apply HMAC key validation consistently when keys are loaded
+    through PyJWK and PyJWKClient. See GHSA-pxh4-856f-4h89.
+  * Reject empty HMAC keys when represented as JWKs. See
+    GHSA-pxh4-856f-4h89.
+
+-------------------------------------------------------------------
 Fri Jun 12 08:31:25 UTC 2026 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Update to 2.13.0

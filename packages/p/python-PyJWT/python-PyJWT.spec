@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-PyJWT
-Version:        2.13.0
+Version:        2.15.1
 Release:        0
 Summary:        JSON Web Token implementation in Python
 License:        MIT
