@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  1 07:47:05 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to 20261001:
+ * Sans Devanagari:
+   - Remove incorrectly localized Nepali fixes (#62)
+   - Improve rendering of U+0908
+   - Improve rendering of certain Nepali conjuncts
+   - Improve Rakar U+094D and U+0930 for the Marathi language
+   - Adjust some glyphs for Santali
+
+-------------------------------------------------------------------
 Tue Sep  1 11:21:01 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
 
 - Update to 20260901:
