@@ -23,7 +23,7 @@
 %define pkg_version %{version}
 
 Name:           step-cli
-Version:        0.30.6
+Version:        0.31.0
 Release:        0
 Summary:        Zero trust swiss army knife for working with X509, OAuth, JWT, OATH OTP, etc
 License:        Apache-2.0

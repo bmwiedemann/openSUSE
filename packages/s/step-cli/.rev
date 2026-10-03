@@ -124,4 +124,12 @@ update to 0.28.5</comment>
     (#1650)</comment>
     <requestid>1358671</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>3830bf82e59b107cd530df1d0734ff8d</srcmd5>
+    <version>0.31.0</version>
+    <time>1791051223</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1382187</requestid>
+  </revision>
 </revisionlist>

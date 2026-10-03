@@ -1,4 +1,101 @@
 -------------------------------------------------------------------
+Fri Sep 25 20:17:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 0.31.0
+  - b33bd26 Merge pull request #1708 from
+    smallstep/dependabot/go_modules/github.com/fxamacker/cbor/v2-2.9.4
+  - fac49b0 Bump github.com/fxamacker/cbor/v2 from 2.9.3 to 2.9.4
+  - acd06df Merge pull request #1695 from
+    smallstep/dependabot/go_modules/github.com/slackhq/nebula-1.11.1
+  - 21b0e50 Bump github.com/slackhq/nebula from 1.10.3 to 1.11.1
+  - 865fb02 Merge pull request #1703 from
+    smallstep/dependabot/go_modules/golang.org/x/crypto-0.57.0
+  - c20bbe0 Bump golang.org/x/crypto from 0.56.0 to 0.57.0
+  - b69dce7 Merge pull request #1698 from smallstep/mariano/mldsa
+  - c512b82 Fix typo in kty flag
+  - a1b7caf Use go.step.sm/crypto@v0.90.0
+  - e76ae13 Fix test case
+  - b27a6d3 Support for ML-DSA keys
+  - eb1901e Merge pull request #1696 from
+    smallstep/dependabot/go_modules/google.golang.org/grpc-1.83.1
+  - 30b6082 Bump google.golang.org/grpc from 1.83.0 to 1.83.1
+  - f7b2bd2 Merge pull request #1690 from
+    smallstep/dependabot/go_modules/github.com/stretchr/testify-1.12.1
+  - ec1fe50 Bump github.com/stretchr/testify from 1.12.0 to 1.12.1
+  - e1e0466 Merge pull request #1691 from
+    smallstep/dependabot/go_modules/github.com/fxamacker/cbor/v2-2.9.3
+  - abb9631 Merge pull request #1689 from
+    smallstep/dependabot/go_modules/go.step.sm/crypto-0.89.0
+  - 8ec9a5d Bump github.com/fxamacker/cbor/v2 from 2.9.2 to 2.9.3
+  - 9f09d2b Bump go.step.sm/crypto from 0.87.0 to 0.89.0
+  - 8a55e83 Merge pull request #1683 from
+    smallstep/dependabot/go_modules/google.golang.org/protobuf-1.36.12
+  - 77737c2 Bump google.golang.org/protobuf from 1.36.11 to 1.36.12
+  - 11bacc8 Merge pull request #1682 from
+    smallstep/dependabot/go_modules/golang.org/x/crypto-0.55.0
+  - 3e74915 Bump golang.org/x/crypto from 0.54.0 to 0.55.0
+  - 11a8c63 Merge pull request #1684 from
+    smallstep/dependabot/go_modules/github.com/stretchr/testify-1.12.0
+  - 15ccfb1 Bump github.com/stretchr/testify from 1.11.1 to 1.12.0
+  - bdac2d1 Merge pull request #1681 from
+    smallstep/dependabot/go_modules/github.com/rogpeppe/go-internal-1.16.0
+  - bf6cdd0 Bump github.com/rogpeppe/go-internal from 1.15.0 to
+    1.16.0
+  - 848725c Merge pull request #1679 from
+    smallstep/dependabot/go_modules/go.step.sm/crypto-0.87.0
+  - 7255dde Bump go.step.sm/crypto from 0.85.0 to 0.87.0
+  - 44df573 Merge pull request #1677 from
+    smallstep/dependabot/go_modules/github.com/smallstep/linkedca-0.26.0
+  - e7bbd54 Bump github.com/smallstep/linkedca from 0.25.0 to
+    0.26.0
+  - f47f51a Merge pull request #1676 from
+    smallstep/dependabot/go_modules/go.mozilla.org/pkcs7-0.10.0
+  - 57f19f1 Bump go.mozilla.org/pkcs7 from 0.9.0 to 0.10.0
+  - 305fded Merge pull request #1671 from
+    smallstep/dependabot/github_actions/actions/setup-go-7.0.0
+  - e0dfb60 Bump actions/setup-go from 6.5.0 to 7.0.0
+  - e3a41c1 Merge pull request #1674 from
+    smallstep/dependabot/go_modules/google.golang.org/grpc-1.82.1
+  - bc7aecd Bump google.golang.org/grpc from 1.82.0 to 1.82.1
+  - 8a85393 Merge pull request #1670 from
+    smallstep/dependabot/go_modules/go.step.sm/crypto-0.85.0
+  - a1e9fc6 Bump go.step.sm/crypto from 0.84.1 to 0.85.0
+  - 4f5ed52 Merge pull request #1672 from
+    smallstep/dependabot/github_actions/actions/checkout-7.0.1
+  - 99fef1d Bump actions/checkout from 7.0.0 to 7.0.1
+  - 3a11654 Merge pull request #1665 from
+    smallstep/dependabot/go_modules/golang.org/x/crypto-0.54.0
+  - 771e967 Bump golang.org/x/crypto from 0.53.0 to 0.54.0
+  - 75a8c4c Merge pull request #1666 from
+    smallstep/dependabot/go_modules/golang.org/x/term-0.45.0
+  - 999b2d1 Bump golang.org/x/term from 0.44.0 to 0.45.0
+  - cd14edd Merge pull request #1667 from
+    smallstep/dependabot/go_modules/golang.org/x/sys-0.47.0
+  - 24317e8 Bump golang.org/x/sys from 0.46.0 to 0.47.0
+  - 1dd6c64 Merge pull request #1662 from
+    smallstep/dependabot/go_modules/software.sslmate.com/src/go-pkcs12-0.7.3
+  - 9b204b5 Bump software.sslmate.com/src/go-pkcs12 from 0.7.2 to
+    0.7.3
+  - 26eafec Merge pull request #1660 from
+    smallstep/dependabot/go_modules/go.step.sm/crypto-0.84.1
+  - 90e5a9f Merge pull request #1661 from
+    smallstep/dependabot/github_actions/actions/setup-go-6.5.0
+  - a683f63 Bump actions/setup-go from 6.4.0 to 6.5.0
+  - 3aa9ec6 Bump go.step.sm/crypto from 0.83.0 to 0.84.1
+  - ac5379a Merge pull request #1658 from
+    smallstep/dependabot/github_actions/actions/checkout-7.0.0
+  - 2f05447 Bump actions/checkout from 6.0.3 to 7.0.0
+  - abd06dc Merge pull request #1656 from
+    smallstep/dependabot/go_modules/software.sslmate.com/src/go-pkcs12-0.7.2
+  - 21b62ba Bump software.sslmate.com/src/go-pkcs12 from 0.7.1 to
+    0.7.2
+  - 895d791 Merge pull request #1655 from
+    smallstep/dependabot/go_modules/go.step.sm/crypto-0.83.0
+  - 06d4a9f Bump go.step.sm/crypto from 0.82.0 to 0.83.0
+  - 075e845 Fix release workflow leaving permanent draft releases
+    on GitHub (#1652)
+
+-------------------------------------------------------------------
 Wed Jun 10 20:58:01 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 0.30.6:
