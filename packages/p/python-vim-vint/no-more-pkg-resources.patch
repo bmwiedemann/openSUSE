@@ -1,0 +1,96 @@
+From 93eacccedc1a53aeecea7bbdc42eaf8e3d1b90a4 Mon Sep 17 00:00:00 2001
+From: Mirochill <mirochill@users.noreply.github.com>
+Date: Sun, 24 May 2026 17:41:09 +0200
+Subject: [PATCH] Avoid pkg_resources import on stable CLI startup
+
+---
+ test/unit/vint/linting/test_cli.py | 16 ++++++++++++++
+ vint/linting/cli.py                | 34 +++++++++++++++++++++++++-----
+ 2 files changed, 45 insertions(+), 5 deletions(-)
+
+diff --git a/test/unit/vint/linting/test_cli.py b/test/unit/vint/linting/test_cli.py
+index 90da474..4c7963b 100644
+--- a/test/unit/vint/linting/test_cli.py
++++ b/test/unit/vint/linting/test_cli.py
+@@ -61,5 +61,21 @@ def test_passing_code_to_stdin_lints_the_code_from_stdin(self):
+         argv = ['bin/vint', '-']
+         self.assertExitWithSuccess(argv)
+ 
++
++    def test_get_version_uses_package_metadata(self):
++        with mock.patch('vint.linting.cli._get_distribution_version') as mocked_get_version:
++            mocked_get_version.return_value = '0.3.21'
++
++            self.assertEqual(CLI()._get_version(), '0.3.21')
++            self.assertEqual(mocked_get_version.call_args[0], ('vim-vint',))
++
++
++    def test_get_version_falls_back_to_test_mode_without_package_metadata(self):
++        with mock.patch('vint.linting.cli._get_distribution_version') as mocked_get_version:
++            mocked_get_version.return_value = None
++
++            self.assertEqual(CLI()._get_version(), 'test_mode')
++
++
+ if __name__ == '__main__':
+     unittest.main()
+diff --git a/vint/linting/cli.py b/vint/linting/cli.py
+index 55db52e..c36c962 100644
+--- a/vint/linting/cli.py
++++ b/vint/linting/cli.py
+@@ -1,7 +1,6 @@
+ import sys
+ from argparse import ArgumentParser
+ from pathlib import PosixPath
+-import pkg_resources
+ import logging
+ 
+ from vint.linting.linter import Linter
+@@ -16,6 +15,32 @@
+ from vint.linting.formatter.json_formatter import JSONFormatter
+ from vint.linting.formatter.statistic_formatter import StatisticFormatter
+ 
++
++def _get_distribution_version(package_name):
++    try:
++        from importlib.metadata import PackageNotFoundError
++        from importlib.metadata import version as get_version
++    except ImportError:
++        return _get_distribution_version_from_pkg_resources(package_name)
++
++    try:
++        return get_version(package_name)
++    except PackageNotFoundError:
++        return None
++
++
++def _get_distribution_version_from_pkg_resources(package_name):
++    try:
++        import pkg_resources
++    except ImportError:
++        return None
++
++    try:
++        return pkg_resources.require(package_name)[0].version
++    except pkg_resources.DistributionNotFound:
++        return None
++
++
+ class CLI(object):
+     def start(self):
+         env = self._build_env(sys.argv)
+@@ -150,11 +175,10 @@ def _print_violations(self, violations, config_dict):
+ 
+ 
+     def _get_version(self):
+-        # In unit tests, pkg_resources cannot find vim-vint.
++        # In unit tests, package metadata may not be installed.
+         # So, I decided to return dummy version
+-        try:
+-            version = pkg_resources.require('vim-vint')[0].version
+-        except pkg_resources.DistributionNotFound:
++        version = _get_distribution_version('vim-vint')
++        if version is None:
+             version = 'test_mode'
+ 
+         return version

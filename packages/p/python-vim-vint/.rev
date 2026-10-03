@@ -90,4 +90,14 @@
 - Remove python2 leftovers.</comment>
     <requestid>1154943</requestid>
   </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>01675bfab2ca1715e243eec6ad6f8910</srcmd5>
+    <version>0.3.21</version>
+    <time>1791051209</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for version lookup.
+- Update URL/Source to new location.</comment>
+    <requestid>1381981</requestid>
+  </revision>
 </revisionlist>

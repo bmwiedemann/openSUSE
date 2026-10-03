@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  2 01:45:22 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for version lookup.
+- Update URL/Source to new location.
+
+-------------------------------------------------------------------
 Tue Mar  5 03:19:22 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to autosetup and pyproject macros.

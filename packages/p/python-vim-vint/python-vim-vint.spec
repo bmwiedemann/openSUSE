@@ -1,7 +1,7 @@
 #
 # spec file for package python-vim-vint
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -21,9 +21,11 @@ Version:        0.3.21
 Release:        0
 Summary:        Lint tool for Vim script Language
 License:        MIT
-URL:            https://github.com/Kuniwak/vint
-Source:         https://github.com/Kuniwak/vint/archive/v%{version}.tar.gz
+URL:            https://github.com/Vimjas/vint
+Source:         https://github.com/Vimjas/vint/archive/v%{version}.tar.gz
 Patch0:         test-sys-executable.patch
+# PATCH-FIX-UPSTREAM gh#Vimjas/vint#397
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module PyYAML >= 3.11}
 BuildRequires:  %{python_module ansicolor >= 0.2.4}
 BuildRequires:  %{python_module chardet >= 2.3.0}
