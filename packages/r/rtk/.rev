@@ -139,4 +139,12 @@ Local aarch64 build green, 3517 tests pass, rpmlint 0 badness.</comment>
     <comment>Update to 0.50.0: ast-grep filter, suppress_hook_warning, arg_tokenizer.</comment>
     <requestid>1380248</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>dc5b1cb3b9ac87c3cf6a030f4814dd94</srcmd5>
+    <version>0.51.0</version>
+    <time>1791051246</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.51.0</comment>
+    <requestid>1382215</requestid>
+  </revision>
 </revisionlist>

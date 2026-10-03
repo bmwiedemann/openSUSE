@@ -17,14 +17,14 @@
 
 
 Name:           rtk
-Version:        0.50.0
+Version:        0.51.0
 Release:        0
 Summary:        CLI proxy that reduces LLM token consumption of dev commands
 # Legal-Review-Notice: rtk itself is Apache-2.0, but the binary statically links
 # the vendored Rust dependencies, so the tag below covers the whole linked set.
 # Derived on this re-vendor with "cargo tree --offline -p rtk -e normal" over the
-# vendored tree (200 crates vendored, 137 in the linked graph): MPL-2.0 comes
-# from colored and option-ext, Unicode-3.0 from the 18 ICU/zerovec crates, ISC
+# vendored tree (202 crates vendored, 134 in the linked graph): MPL-2.0 comes
+# from colored and option-ext, Unicode-3.0 from the 19 ICU/zerovec crates, ISC
 # from rustls-webpki and untrusted (and from ring, "Apache-2.0 AND ISC"),
 # CDLA-Permissive-2.0 from webpki-roots, BSD-3-Clause from subtle, and MIT from
 # thirteen MIT-only crates (rusqlite, libsqlite3-sys, which, quick-xml, ...). Every
@@ -43,6 +43,9 @@ Patch1:         rtk-no-deny-warnings.patch
 BuildRequires:  cargo >= 1.91
 BuildRequires:  cargo-packaging
 BuildRequires:  git-core
+# The hook decision test runs hooks/claude/rtk-rewrite.sh, which
+# declares "Requires: jq"
+BuildRequires:  jq
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(sqlite3)
 Requires:       git-core

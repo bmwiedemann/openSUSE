@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Sat Oct  3 05:43:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.51.0:
+  * BREAKING: rtk run/err/test/summary execute the wrapped program
+    directly instead of rebuilding the positional arguments into
+    one string for sh -c, so globs, variables and operators are no
+    longer expanded by an unrequested shell; pass a script
+    explicitly, e.g. rtk test --shell sh 'cargo test'. A missing
+    program now exits 127 through the runners' own failure path
+  * search: a bare file list (-l/-L/--files) folds the directory
+    prefix all paths share into a one-line header and prints only
+    the tails, losslessly; non-path lines pass through verbatim
+  * hook: native Google Antigravity plugin lifecycle and hook
+    support
+  * cli: a program that cannot be run answers 126 as sh does, 127
+    stays for a missing one; unresolvable single-string commands go
+    through the platform shell
+  * read: track Python triple-quoted strings; pytest: keep the
+    elapsed duration; pip: stop doubling the tool name
+  * discover: name zero-session scans, case-insensitive Windows
+    project filter, token boundaries for rewrite rules
+  * diff: unreadable files exit 2; ruff: bypass never_worse only
+    for rtk-injected output; init: --agent cursor installs Cursor
+    only
+  * many more fixes; see upstream's release notes for the full list
+- Refresh the vendored dependencies; no licence change
+- BuildRequires jq: the new hook decision test runs
+  hooks/claude/rtk-rewrite.sh, which needs jq at build time
+
+-------------------------------------------------------------------
 Thu Sep 24 17:42:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.50.0:
