@@ -17,14 +17,14 @@
 
 
 Name:           miller
-Version:        6.21.0+git20260810.375a0af47
+Version:        6.22.0+git20260929.3fa2b291f
 Release:        0
 Summary:        Name-indexed data processing tool
 # c/lib/netbsd_strptime.c is BSD-4-Clause
 License:        BSD-2-Clause AND BSD-4-Clause
 Group:          Productivity/Text/Utilities
 URL:            http://johnkerl.org/miller/doc
-Source0:        https://github.com/johnkerl/miller/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 Source100:      README.md
 Patch0:         update-VERSION.diff

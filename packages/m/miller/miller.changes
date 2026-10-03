@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Fri Oct 02 17:06:03 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.22.0+git20260929.3fa2b291f:
+  * Have the releaser script use Draft rather than Pre-release (#2261)
+  * Bump github.com/klauspost/compress from 1.20.0 to 1.20.1 (#2258)
+  * Bump the codeql-action group with 3 updates (#2259)
+  * Fix `mand.mlr` magnitude calculation (#2257)
+
+-------------------------------------------------------------------
+Thu Oct  1 14:53:55 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Adjusting Source0 so it's evident that 'osc service runall download_only'
+  isn't used.
+
+-------------------------------------------------------------------
+Sun Sep 27 19:45:57 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
+
+- Update to version 6.22.0+git20260926.a9c8b8a16:
+  * docs: identify LICENSE.txt as BSD-2-Clause for GitHub licensee (#2241)
+  * Support file-backed TZ values (#2247)
+  * Post-6.22.0 release: back to 6.22.0-dev
+  * Prepare 6.22.0 release
+  * Johnkerl/io flag clash (#2254)
+  * Support boxed I/O format: tabular with UTF-8 markers (#2253)
+  * Bump the codeql-action group with 3 updates (#2252)
+  * Bump golang.org/x/text from 0.41.0 to 0.42.0 (#2249)
+  * Bump github.com/modelcontextprotocol/go-sdk from 1.7.0 to 1.8.0 (#2248)
+  * Bump the codeql-action group with 3 updates (#2251)
+  * Bump golang.org/x/term from 0.45.0 to 0.46.0 (#2250)
+  * Bump golang.org/x/sys from 0.47.0 to 0.48.0 (#2244)
+  * Fix CI Go versions (#2246)
+  * Go 1.25 -> 1.26 in .github/workflows/golangci-lint.yml (#2245)
+  * Bump github.com/klauspost/compress from 1.19.2 to 1.20.0 (#2243)
+  * docs: fix dead links in README (#2238)
+  * Bump the codeql-action group with 3 updates (#2239)
+  * Run `make dev`
+  * reshape: add -S/-n to sort new wide-field keys in long-to-wide (#1646) (#2235)
+  * Bump the codeql-action group with 3 updates (#2237)
+  * Bump github.com/stretchr/testify from 1.12.0 to 1.12.1 (#2236)
+  * Bump golang.org/x/text from 0.40.0 to 0.41.0 (#2233)
+  * Bump github.com/stretchr/testify from 1.11.1 to 1.12.0 (#2232)
+  * Bump the codeql-action group with 3 updates (#2234)
+  * Add scoped `make gosec` target for Go security scanning (#2223)
+  * Support XDG Base Directory spec for .mlrrc location (#1271) (#2215)
+  * Add datediff DSL function (#708) (#2221)
+  * seqgen: stream output in batches so head can stop it early (#2230)
+
+-------------------------------------------------------------------
 Mon Aug 10 14:33:31 UTC 2026 - Scott Bradnick <scott.bradnick@suse.com>
 
 - Update to version 6.21.0+git20260810.375a0af47:
