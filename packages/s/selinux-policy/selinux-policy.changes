@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct 06 07:54:00 UTC 2026 - Cathy Hu <cathy.hu@suse.com>
+
+- Update to version 20261006:
+  * Fix typo in screen.fc
+  * Allow cscreend to start screen as unconfined domain (bsc#1257101)
+
+-------------------------------------------------------------------
 Fri Oct 02 12:53:39 UTC 2026 - Robert Frohl <rfrohl@suse.com>
 
 - Update to version 20261002:
