@@ -8698,12 +8698,18 @@ unsorted:
   - himmelblau-sshd-config 
   - himmelblau-sso 
   - hipblas-common-devel 
+  - hipblas-devel 
+  - hipblaslt-devel 
   - hipcc 
   - hipcub-devel 
   - hipfft-devel 
   - hipfft-libs 
   - hipify 
   - hiprand-devel 
+  - hipsolver-devel 
+  - hipsolver-libs 
+  - hipsparse-devel 
+  - hipsparselt-devel 
   - hiredis 
   - hiredis-devel 
   - hitori 
@@ -14229,7 +14235,11 @@ unsorted:
   - libhidapi-libusb0 
   - libhinawa-devel 
   - libhinawa2 
+  - libhipblas3 
+  - libhipblaslt1 
   - libhiprand1 
+  - libhipsparse4 
+  - libhipsparselt0 
   - libhivex0 
   - libhl1 
   - libhmac-devel 
@@ -16321,12 +16331,15 @@ unsorted:
   - librmt-devel-doc 
   - librnnoise0 
   - librnp0 
+  - librocblas5 
   - librocfft0 
   - librocjpeg1 
   - librocksdb11 
   - librocm-core1 
   - librocrand1 
   - librocsgraphtheory0 
+  - librocsolver0 
+  - librocsparse1 
   - librrd8 
   - librsb-devel 
   - librsb0 
@@ -16879,12 +16892,12 @@ unsorted:
   - libtheoraenc2-32bit 
   - libthreadar-devel 
   - libthreadar1000 
-  - libthrift-0_24_0 
+  - libthrift-0_25_0 
   - libthrift-devel 
   - libthrift_c_glib-devel 
   - libthrift_c_glib0 
-  - libthriftnb-0_24_0 
-  - libthriftz-0_24_0 
+  - libthriftnb-0_25_0 
+  - libthriftz-0_25_0 
   - libtidy-devel 
   - libtidy58 
   - libtidyp-1_04-0 
@@ -33832,6 +33845,9 @@ unsorted:
   - robinhood-tests 
   - robinhood-tools 
   - robinhood-webgui 
+  - rocalution-devel 
+  - rocalution-libs 
+  - rocblas-devel 
   - rocdecode-devel 
   - rocdecode-libs 
   - rocfft-devel 
@@ -33887,6 +33903,8 @@ unsorted:
   - rocs 
   - rocs-devel 
   - rocs-lang 
+  - rocsolver-devel 
+  - rocsparse-devel 
   - rocthrust-devel 
   - roctracer-devel 
   - roctracer-libs 
