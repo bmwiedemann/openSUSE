@@ -78,9 +78,6 @@ This package contains documentation and sample configuration files.
 %setup -q
 
 %build
-%if 0%{?suse_version} > 1000
-export CFLAGS="%{optflags} -fstack-protector"
-%endif
 
 %if 0%{?suse_version} > 1315
 tls_lib=gnutls
