@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct  4 17:54:59 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.9, crossing 0.1.6 to 0.1.8 (all
+  published): 24 new assets, none removed or changed
+  * 0.1.6: ByteDance Seedream 5.0 Flash t2i and image edit, Kling
+    O3 t2v, Runway Gen-4 Turbo image to video, Seedance 2.5 Draft
+    i2v, r2v and t2v, Ming Image 01 Design t2i and the Recraft logo
+  * 0.1.7: HeyGen Video 1 i2v, r2v and t2v, Ideogram v4.5 t2i plus
+    precise and general image edit, and two Ming Image 01 Design
+    image edit previews
+  * 0.1.8: FLUX 3 Image t2i, image edit and bounding box edit,
+    Grok Imagine Video 1.5 Lite t2v and i2v
+  * 0.1.9: ElevenLabs v4 text to speech and text to dialogue
+- Fixes all 21 templates core's manifest cannot resolve at 0.1.5:
+  previews for the 20 workflow templates that lacked one, plus
+  logo/recraft.png, without which the whole index_logo
+  provider-logo set fails to resolve
+
+-------------------------------------------------------------------
 Thu Sep 24 11:05:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.5: previews for the new API
