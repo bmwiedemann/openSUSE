@@ -69,4 +69,24 @@ libSoapySDR.so.0.8-3()(64bit) and soapy-sdr.
 Supersedes SR 1374707.</comment>
     <requestid>1374743</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>c9cfa96d2257270e0f5262c74c34995e</srcmd5>
+    <version>0.2.0~git20260924.5c2ee79</version>
+    <time>1791209918</time>
+    <user>anag_factory</user>
+    <comment>- Snapshot refresh to 0.2.0~git20260924.5c2ee79; the pin was 11.5 months stale.
+- Upstream now defaults CMAKE_INSTALL_PREFIX to the SoapySDR root.
+- A no-op here: %cmake sets the prefix to /usr and upstream skips /usr.
+- Build log: &quot;SoapySDR root directory: /usr&quot;.
+- SoapySDR is now required via find_package(... REQUIRED), not a hand-rolled FATAL_ERROR.
+- That CMakeLists.txt change is the only commit this snapshot picks up.
+- No .c/.cpp/.h/.hpp changed in the range.
+- Module ABI unchanged: no SONAME either way and the install path is unchanged.
+- A module's ABI is its directory; 164 undefined symbols before and after, 0 exported.
+- Licence BSL-1.0 unchanged. boo#1074072 is NOT AFFECTED.
+- Upstream has one further commit since: a GitHub Actions workflow plus .gitignore.
+- Both are stripped by the service's exclude=.git*, so re-pinning ships an identical archive.
+- The pin is deliberately left at 5c2ee79c.</comment>
+    <requestid>1382549</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:33:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.0~git20260924.5c2ee79:
+  * Default CMAKE_INSTALL_PREFIX to the SoapySDR root, so an
+    out-of-tree build installs the module where SoapySDR looks for
+    it; a no-op here, since %cmake sets the prefix explicitly and
+    upstream skips /usr
+  * Require SoapySDR with find_package(... REQUIRED) instead of a
+    hand-rolled FATAL_ERROR
+- Upstream was idle for the rest of the year: that CMakeLists.txt
+  change is the only commit this snapshot picks up, so no source
+  changed and the module ABI is unchanged
+
+-------------------------------------------------------------------
 Sun Aug 30 18:32:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.0~git20251009.1ae85f0:

@@ -22,7 +22,7 @@
 %define soapy_modname soapysdr%{soapy_modver}-module-fcdpp
 Name:           soapy-fcdpp
 # Keep in sync with _service; upstream last tagged 0.1.1 in 2019
-Version:        0.2.0~git20251009.1ae85f0
+Version:        0.2.0~git20260924.5c2ee79
 Release:        0
 Summary:        SoapySDR FUNcube Dongle Pro+ module
 # Legal-Review-Notice: BSL-1.0 covers the whole tree. fcd.c/fcd.h carry only

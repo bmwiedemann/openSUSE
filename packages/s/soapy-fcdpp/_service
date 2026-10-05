@@ -3,7 +3,7 @@
   <service name="obs_scm" mode="manual">
     <param name="url">https://github.com/pothosware/SoapyFCDPP.git</param>
     <param name="scm">git</param>
-    <param name="revision">1ae85f008f60e1afdf0f2601338563b0c81c7e9d</param>
+    <param name="revision">5c2ee79ca1322f118bc9d5aca220ea60a893777f</param>
     <param name="versionformat">0.2.0~git%cd.%h</param>
     <param name="exclude">.git*</param>
     <param name="filename">soapy-fcdpp</param>
