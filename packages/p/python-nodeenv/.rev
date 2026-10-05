@@ -162,4 +162,36 @@
   * Check host platform when finding `node` version</comment>
     <requestid>1337643</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>aade4a23c51dae237bc7c4114b999ed2</srcmd5>
+    <version>1.11.0</version>
+    <time>1791197811</time>
+    <user>anag_factory</user>
+    <comment>- update to 1.11.0:
+  * Fixed zsh `source bin/activate` aborting on the direct-call
+    guard
+  * Added check for how `activate` is called
+  * Addressed the ``tarfile.extractall`` deprecation on Python &gt;=
+    3.12
+  * Added error handling and tests for the node installation
+  * Removed the leftover debug `print` that leaked a dict to
+    stdout on every version detection
+  * Added `--with-certifi` to download packages with the certifi
+    certificate bundle `#388
+  * Added `--prefer-system` to use system-wide node.js when
+    available and install one otherwise `#153
+  * Added `--isolate-npm` to keep npm cache, userconfig and init-
+    module inside the environment `#154
+  * Repeated `-p` runs no longer duplicate the `predeactivate`
+    hook
+  * `-p` accepts an optional virtualenv directory and prefers the
+    activated
+  * `VIRTUAL_ENV` over the virtualenv nodeenv itself is installed
+    in
+  * `-r/--requirements` may now be given more than once, and the
+    new `--local-requirements` installs the packages of a file
+    locally, into &quot;node_modules&quot; of the current directory, which
+    is what `freeze -l` writes.</comment>
+    <requestid>1382334</requestid>
+  </revision>
 </revisionlist>

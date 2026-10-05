@@ -23,7 +23,7 @@
 %endif
 %{?sle15allpythons}
 Name:           python-nodeenv
-Version:        1.10.0
+Version:        1.11.0
 Release:        0
 Summary:        Nodejs virtual environment builder
 License:        BSD-3-Clause
