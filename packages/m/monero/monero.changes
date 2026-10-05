@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:55:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.3:
+  * Harden restricted-mode RPC/ZMQ further: hide ZMQ request
+    contents, redact txpool age, filter sensitive transactions out
+    of block templates, reject deep block submissions, restrict
+    get_public_nodes to public zone peers, and stop serving
+    get_transaction_pool in restricted mode
+  * Validate more untrusted input: HTTP header and JSON parser log
+    injection, RingCT prunable JSON types, cryptonote
+    serialization, pruned transaction blobs, trezor bridge and
+    get_outs responses, public node addresses, reserve proof key
+    image domains and cached transfer indices
+  * Reject transaction file signing with hardware wallets
+  * Fix an infinite loop in wallet2 size and weight estimation that
+    a single wallet-rpc call with a very large output count could
+    trigger; oversized ZMQ requests no longer kill the RPC server
+  * Limit the blockchain offsets cache size and detect half-closed
+    sockets before reusing idle connections
+  * Wallet fixes: fast_refresh now works on old accounts via the
+    nearest lower checkpoint, multisig import state survives failed
+    refreshes, stale transfer maps are trimmed after output
+    imports, received amount breakdowns stay consistent and
+    inconsistent transaction pubkey handling is fixed
+  * wallet RPC: refresh immediately with auto_refresh, stop
+    refreshing on shutdown, abort in-flight daemon requests on
+    shutdown and reject --password together with --wallet-dir
+  * Fix several p2p stalls and data races, re-relay transactions
+    lost when a node shut down before relaying them, and reject
+    duplicate transaction hashes and blocks known to be invalid
+  * Fix an implicitly defined TryAcquireSRWLockShared that caused
+    undefined behaviour on Windows and wrong ARMv8 slow-hash inline
+    assembly constraints; wrap __cxa_throw on GNU/Linux for correct
+    stack traces
+  * epee: avoid bad_weak_ptr during connection teardown and build
+    with OpenSSL 4.0
+  * Update the RandomX proof-of-work implementation to v1.2.3
+  * This entry is abridged from the upstream commit range
+
+-------------------------------------------------------------------
 Wed Jul  8 07:44:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.1:

@@ -15,4 +15,23 @@
     <comment>Update to 0.18.5.1: RandomX PoW v1.2.2, restricted-mode RPC/ZMQ privacy/hardening fixes, several memory-safety fixes (use-after-free, double-unlock, off-by-one over-read), and wallet/p2p fixes.</comment>
     <requestid>1364462</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8308caef58e1a03b548e6513ae3deeae</srcmd5>
+    <version>0.18.5.3</version>
+    <time>1791209942</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.18.5.3, 182 commits: restricted-mode RPC hardening, input validation
+- Packaged from the upstream v0.18.5.3 git tag, which as of 2026-10-05 has no release announcement
+- The changelog entry is therefore derived from the commit range, not release notes
+- No v0.18.5.2 core tag exists; that release was GUI-only and lives in monero-gui
+- Restricted mode: hide ZMQ contents, redact txpool age, filter sensitive block templates
+- Also drop /get_transaction_pool, reject deep submissions, restrict get_public_nodes
+- Reject transaction file signing with hardware wallets
+- Fix a wallet2 infinite loop reachable from one wallet-rpc call; oversized ZMQ no longer kills RPC
+- More input validation: HTTP/JSON log injection, RingCT, serialization, trezor bridge
+- Fix p2p stalls and races, re-relay transactions lost on shutdown, reject duplicate hashes
+- RandomX updated to v1.2.3; epee avoids bad_weak_ptr and builds with OpenSSL 4.0
+- No CVE id applies to this range, so none is cited</comment>
+    <requestid>1382551</requestid>
+  </revision>
 </revisionlist>
