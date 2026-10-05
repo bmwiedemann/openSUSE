@@ -463,4 +463,16 @@ consumer passes the removed arguments.
 </comment>
     <requestid>1382062</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e10fd70fd72fdebc428cc056df56b7ef</srcmd5>
+    <version>0.14.4</version>
+    <time>1791197832</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.14.4 (BREAKING).
+- Agent addresses become plain strings; ls.address() removed
+- Baggage entry and replica run ids change accordingly
+- Fix the OTLP exporter default path (/otel -&gt; /otel/v1/traces)
+- BuildRequires opentelemetry-exporter-otlp-proto-http for %check</comment>
+    <requestid>1382338</requestid>
+  </revision>
 </revisionlist>

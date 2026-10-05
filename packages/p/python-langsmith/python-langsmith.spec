@@ -17,7 +17,7 @@
 
 
 Name:           python-langsmith
-Version:        0.14.3
+Version:        0.14.4
 Release:        0
 Summary:        Client library for the LangSmith LLM tracing and evaluation platform
 License:        MIT
@@ -52,6 +52,11 @@ BuildRequires:  %{python_module distro >= 1.7.0}
 BuildRequires:  %{python_module freezegun}
 BuildRequires:  %{python_module httpx2 >= 2}
 BuildRequires:  %{python_module multipart}
+# The otel exporter tests need opentelemetry.exporter.otlp.proto.http, which
+# ships in its own distribution, not in opentelemetry-sdk; _import_otel_client()
+# imports all five names in one try block, so without it every case raises
+# ImportError instead of testing the endpoint resolution.
+BuildRequires:  %{python_module opentelemetry-exporter-otlp-proto-http >= 1.30.0}
 BuildRequires:  %{python_module opentelemetry-sdk >= 1.30.0}
 BuildRequires:  %{python_module orjson >= 3.9.14}
 BuildRequires:  %{python_module packaging >= 23.2}

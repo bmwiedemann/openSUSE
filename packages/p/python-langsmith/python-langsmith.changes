@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:59:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.4:
+  * BREAKING: an agent address is now a plain string of the form
+    lrn:agents/{id}/environments/{environment}. ls.address() and the
+    Address.with_agent_environment() method are gone; ls.address is
+    now a module offering agent(), parse() and from_env(), and an
+    address given as a string is validated once at the entry point.
+    The agent_id and agent_environment payload fields are removed
+  * BREAKING: the distributed tracing baggage entry carries the
+    address string instead of a JSON object, so a run traced across
+    a mixed 0.14.3/0.14.4 fleet loses its address; and the
+    deterministic run ids of addressed write replicas change, since
+    the id is now seeded from the address string
+  * The OpenTelemetry exporter now defaults to <API URL>/otel/v1/traces
+    instead of /otel, which since April sent traces to the wrong
+    path. OTEL_EXPORTER_OTLP_TRACES_ENDPOINT is honoured as a
+    complete traces URL ahead of the base variable, and a base
+    endpoint gets /v1/traces appended unless it already ends in
+    /traces
+  * No new runtime dependencies; requires-python stays >= 3.10
+- BuildRequires opentelemetry-exporter-otlp-proto-http for %check: the
+  new otel endpoint tests import opentelemetry.exporter.otlp.proto.http,
+  which ships in its own distribution and not in opentelemetry-sdk
+
+-------------------------------------------------------------------
 Fri Oct  2 08:46:01 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.3:
