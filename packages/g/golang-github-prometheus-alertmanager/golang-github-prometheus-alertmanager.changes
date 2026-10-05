@@ -189,6 +189,8 @@ Thu Apr 30 07:20:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
   * [BUGFIX] ui: Handle special chars in silence regex-matchers.
     #4942
   * [BUGFIX] ui: Support utf-8 label names in matchers. #5089
+  * CVE-2026-2303: Removed indirect dep on vulnerable mongodb
+                   driver (bsc#1269834)
 
 -------------------------------------------------------------------
 Wed Apr 15 11:12:56 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
