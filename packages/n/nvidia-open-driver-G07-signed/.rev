@@ -234,4 +234,12 @@
     <comment>- update non-CUDA variant to 595.104.02 (boo#1283265)</comment>
     <requestid>1381743</requestid>
   </revision>
+  <revision rev="23" vrev="2">
+    <srcmd5>78553aaf5c2e6a8e4236df142901ce39</srcmd5>
+    <version>595.104.02</version>
+    <time>1791197674</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382193</requestid>
+  </revision>
 </revisionlist>

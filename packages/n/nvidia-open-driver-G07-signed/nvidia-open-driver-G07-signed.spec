@@ -123,7 +123,7 @@ BuildRequires:  kernel-syms-azure
 %endif
 %endif
 %if 0%{?is_opensuse} && 0%{?suse_version} >= 1699
-# build KPMs for kernel-longterm in Factory
+# build KMPs for kernel-longterm in Factory
 BuildRequires:  kernel-syms-longterm
 %endif
 ExcludeArch:    %ix86 s390x ppc64le
@@ -149,11 +149,11 @@ ExcludeArch:    %ix86 s390x ppc64le
 %{expand:%(
       for f in %{flavors_to_build}; do \
 	  echo "%package -n %{name}-${f}-devel"; \
-	  echo "Summary:      Devel Package to %name"; \
+	  echo "Summary:      Devel Package for %name"; \
 	  echo "Provides:  nvidia-open-driver-G07-signed-${f}-devel(%mykind)"; \
 	  echo "Conflicts: nvidia-open-driver-G07-signed-${f}-devel(%otherkind)"; \
 	  echo "%description -n %{name}-${f}-devel"; \
-	  echo "Provide build requiresments to build against %{name}"; \
+	  echo "Provides build requirements to build against %{name}"; \
 	  echo "%files -n %{name}-${f}-devel -f files-${f}"; \
       done)}
 
@@ -165,7 +165,7 @@ Requires:       nvidia-open-driver-G07-signed-cuda-kmp
 %description -n nv-prefer-signed-open-driver-G07
 By installing this package, the signed NVIDIA open driver built by SUSE will be preferred during installation
 of CUDA components.
-Simply run: `zypper install cuda-tookit-<cuda_version> nvidia-compute-utils-G07 nv-prefer-signed-open-driver-G07`
+Simply run: `zypper install cuda-toolkit-<cuda_version> nvidia-compute-utils-G07 nv-prefer-signed-open-driver-G07`
 
 %if %{with cuda}
 %files -n nv-prefer-signed-open-driver-G07
@@ -180,7 +180,7 @@ Simply run: `zypper install cuda-tookit-<cuda_version> nvidia-compute-utils-G07 
 %description
 This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
-and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+and newer (Turing, Ampere, Ada Lovelace, Hopper, Blackwell, ...).
 This driver variant is meant to be used when using the GFX repository
 below
 
@@ -193,7 +193,7 @@ for user-space driver installation.
 %description -n nvidia-open-driver-G07-signed-cuda-kmp-default
 This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
-and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+and newer (Turing, Ampere, Ada Lovelace, Hopper, Blackwell, ...).
 This driver variant is meant to be used when using the CUDA repository
 below
 
@@ -207,7 +207,7 @@ for user-space driver installation.
 %description -n nvidia-open-driver-G07-signed-cuda-kmp-longterm
 This package provides the open-source NVIDIA kernel module driver
 for GeForce 16 series (GTX 16xx) and newer GPUs, i.e. Turing GPU family
-and newer (Turing, Ampere, Ada Lavelace, Hopper, Blackwell, ...).
+and newer (Turing, Ampere, Ada Lovelace, Hopper, Blackwell, ...).
 This driver variant is meant to be used when using the CUDA repository
 below
 
