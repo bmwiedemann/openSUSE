@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Aug 26 02:55:33 UTC 2026 - Simon Lees + Gemini <sflees@suse.de>
+
+- Update to 1.14.0:
+  * Colorschemes: add GruvBox Material Dark scheme
+  * Add configuration to toggle emoji double width support
+  * Add support for Alt Escape (7728) and Application Escape Code
+  * Support reporting/setting selection via escape codes
+  * New translations: Hungarian, Slovak
+  * Translation updates for Catalan, Chinese (Simplified),
+    Croatian, Dutch, Finnish, French, Indonesian, Japanese,
+    Lithuanian, Polish, Portuguese, Portuguese (Brazil), Russian,
+    Serbian, Spanish, Swedish, Turkish
+  * Fix translucent background startup and wheel event issues
+  * Build: require Meson 0.59 or later
+
+-------------------------------------------------------------------
 Mon Mar 20 18:50:58 UTC 2023 - Avindra Goolcharan <avindra@opensuse.org>
 
 - Update to 1.13.0:

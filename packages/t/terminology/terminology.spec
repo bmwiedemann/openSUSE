@@ -23,11 +23,10 @@
 %define e_branding_version 0.1
 %endif
 Name:           terminology
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        EFL based terminal emulator
 License:        BSD-2-Clause AND OFL-1.1
-Group:          System/X11/Terminals
 URL:            https://enlightenment.org
 Source:         https://download.enlightenment.org/rel/apps/terminology/%{name}-%{version}.tar.xz
 Patch0:         fix-desktop.patch
@@ -79,8 +78,7 @@ Fast and lightweight terminal emulator using EFL libraries.
 
 %package theme-upstream
 Summary:        Default Enlightenment theme
-Group:          System/X11/Terminals
-Conflicts:      otherproviders(terminology-theme-dft)
+Conflicts:      terminology-theme-dft
 Provides:       terminology-theme = %{e_branding_version}
 Provides:       terminology-theme-dft
 
@@ -92,7 +90,6 @@ Use the Dark theme instead.
 
 %package theme-Flat
 Summary:        Default terminology theme(Flat)
-Group:          System/X11/Terminals
 Provides:       terminology-theme
 
 %description  theme-Flat
@@ -100,7 +97,6 @@ The default theme for terminology install when using openSUSE branding.
 
 %package theme-misc
 Summary:        Miscellaneous terminology themes
-Group:          System/X11/Terminals
 Provides:       terminology-theme
 
 %description  theme-misc
