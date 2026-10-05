@@ -201,4 +201,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1373972 from glaubitz)</comment>
     <requestid>1374073</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>7bfb0bde4395e14c4c157f7243838c58</srcmd5>
+    <version>4.11.3</version>
+    <time>1791208038</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 4.11.3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1382480 from glaubitz)</comment>
+    <requestid>1382527</requestid>
+  </revision>
 </revisionlist>
