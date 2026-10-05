@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Fri Oct  2 03:46:20 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Chromium 154.0.8037.97 (boo#1284015):
+  * CVE-2026-103628: Out of bounds write in WebGL
+  * CVE-2026-103626: Incorrect authorization in FileSystem
+  * CVE-2026-103621: Integer overflow in Compositing
+  * CVE-2026-103630: Use after free in FedCM
+  * CVE-2026-103625: Type confusion in V8
+  * CVE-2026-103624: Use after free in Contextual Tasks
+  * CVE-2026-103629: Integer overflow in Skia
+  * CVE-2026-103622: Use after free in SVG
+  * CVE-2026-103623: Use after free in MediaStream
+  * CVE-2026-103631: Buffer overflow in WebRTC
+  * CVE-2026-103627: Information leak in SVG
+
+-------------------------------------------------------------------
 Tue Sep 29 20:51:28 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Chromium 154.0.8037.92 (boo#1283262):
