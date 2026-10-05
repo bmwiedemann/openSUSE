@@ -315,4 +315,22 @@ The package has 2 maintainers/bugowner and the binary has shown its stability du
     - PostgreSQL 19beta4 support.</comment>
     <requestid>1380950</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>7c591ad667656bb06fbc911211e8d4a6</srcmd5>
+    <version>2.59.3</version>
+    <time>1791197825</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.59.3
+  IMPORTANT NOTE: In prior versions it was possible for weak
+  encryption subkeys and salts to be generated if there was an
+  error accessing system random data. See Weak Encryption Subkeys
+  and Salts for more information.
+  - Bug Fixes:
+    - Fix possible checksum error loading encrypted info and
+      manifest files. (Fixed by j0uinim. Reviewed by David Steele.)
+    - Fix possible weak encryption subkeys/salts. (Fixed by
+      j0uinim. Reviewed by David Steele, Stefan Fercot, Douglas J
+      Hunley.)</comment>
+    <requestid>1382332</requestid>
+  </revision>
 </revisionlist>

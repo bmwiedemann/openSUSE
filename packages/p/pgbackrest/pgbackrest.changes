@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:46:39 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- update to 2.59.3
+  IMPORTANT NOTE: In prior versions it was possible for weak
+  encryption subkeys and salts to be generated if there was an
+  error accessing system random data. See Weak Encryption Subkeys
+  and Salts for more information.
+
+  - Bug Fixes:
+    - Fix possible checksum error loading encrypted info and
+      manifest files. (Fixed by j0uinim. Reviewed by David Steele.)
+    - Fix possible weak encryption subkeys/salts. (Fixed by
+      j0uinim. Reviewed by David Steele, Stefan Fercot, Douglas J
+      Hunley.)
+
+-------------------------------------------------------------------
 Sun Sep 27 11:51:08 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - update to 2.59.2
