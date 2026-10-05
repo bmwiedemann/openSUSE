@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:44:36 UTC 2026 - Martin Pluskal <martin@pluskal.org>
+
+- Update to 0.15:
+  * Add bugz search -k/--keywords to restrict by keywords, all of
+    which must match
+  * bugz --columns 0 now prints untruncated lines instead of empty
+    ones
+  * Close file handles with "with", so descriptors are released
+    when a read or write fails
+- Add pybugz-version.patch, as the 0.15 tag left __version__ at
+  0.14 and flit takes the wheel version from it.
+- Switch from update-alternatives to libalternatives; man bugz now
+  resolves through alts instead of a packaged symlink.
+- Add a %check that imports the installed bugz module and asserts
+  its version.
+- Drop obsolete Group tags.
+
+-------------------------------------------------------------------
 Thu Jun  5 02:52:33 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Update to 0.14:

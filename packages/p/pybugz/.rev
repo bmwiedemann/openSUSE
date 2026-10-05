@@ -51,4 +51,21 @@
     <comment></comment>
     <requestid>1283565</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cc974d90300f379886eafca57f4e4d86</srcmd5>
+    <version>0.15</version>
+    <time>1791209907</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.15 (upstream tag 2026-09-25; no release object, only the tag).
+- bugz search -k/--keywords restricts by keywords, all of which must match.
+- bugz --columns 0 prints untruncated lines instead of empty ones.
+- --columns is a global option: there is no &quot;bugz list&quot; subcommand.
+- Close file handles with &quot;with&quot;, so descriptors are released on failure.
+- Add pybugz-version.patch: tag 0.15 left __version__ at 0.14 (flit takes the wheel
+  version from it, so the %files dist-info glob would not match).
+- Switch update-alternatives to libalternatives; man bugz resolves via alts.
+- Add a %check importing the installed module (-P) and asserting its version.
+- Drop obsolete Group tags.</comment>
+    <requestid>1382535</requestid>
+  </revision>
 </revisionlist>
