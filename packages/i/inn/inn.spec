@@ -108,7 +108,7 @@ cp -a $RPM_SOURCE_DIR/pubring.pgp .
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fstack-protector -fcommon" ./configure \
+LDFLAGS="-pie" CFLAGS="$RPM_OPT_FLAGS -pipe -fno-strict-aliasing -D_FILE_OFFSET_BITS=64 -D_LARGEFILE_SOURCE -fPIE -fcommon" ./configure \
 		--enable-uucp-rnews \
 		--enable-setgid-inews \
 		--prefix=%{_libexecdir}/news \

@@ -414,4 +414,12 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
   permissions set/adjusted by set_permissions. (forwarded request 1367356 from dimstar)</comment>
     <requestid>1367466</requestid>
   </revision>
+  <revision rev="49" vrev="5">
+    <srcmd5>b754873b1990c40258fe69d47e074633</srcmd5>
+    <version>2.6.5</version>
+    <time>1791208011</time>
+    <user>anag_factory</user>
+    <comment>Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic) (forwarded request 1381365 from scarabeus_iv)</comment>
+    <requestid>1382467</requestid>
+  </revision>
 </revisionlist>
