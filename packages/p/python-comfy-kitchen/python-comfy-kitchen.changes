@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:35:44 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.2.37:
+  * Eager backend: quantize_signed_int4_rowwise is now a thin wrapper
+    over a new _quantize_signed_int4_rowwise_unpacked, which returns
+    signed INT4 codes in INT8 storage without packing nibbles. The
+    public function keeps its name, signature and packed return value
+  * Ascend convrot_w4a4_linear keeps the activation's INT4 codes in
+    INT8 containers instead of packing them and immediately unpacking
+    them again, cutting a pack/unpack round-trip off the NPU path.
+    Ascend RoPE coverage is now documented as requiring
+    npu_rotary_mul with rotary_mode (RMS-RoPE also npu_rms_norm)
+  * CUDA W4A8 GEMM now sizes its weight chunks from the device L2
+    cache: below 16 MiB of L2 a chunk cannot stay resident, so the
+    decode runs full-width instead. Upstream measures up to 20%
+    faster at M=512 on a 3080
+  * Remainder of the release is CUDA and HIP kernel work (dlpack
+    bindings, CUTLASS int8 GEMM, W4A8 requant, int8 attention), not
+    compiled in this CPU-only build
+
+-------------------------------------------------------------------
 Tue Sep 29 08:27:17 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.36:

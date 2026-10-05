@@ -124,4 +124,17 @@ two warnings are the documented python-leftover-require for torch.</comment>
 </comment>
     <requestid>1381374</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8fe306a5a00b11c8b42afd796e7da4df</srcmd5>
+    <version>0.2.37</version>
+    <time>1791197814</time>
+    <user>anag_factory</user>
+    <comment>Update python-comfy-kitchen to 0.2.37
+
+Eager backend refactor around INT4 quantisation, Ascend pack/unpack
+removal on the NPU path, and L2-aware CUDA W4A8 weight chunking. The
+CPU-only build is unaffected by the CUDA/HIP kernel work. No
+dependency change, no CVE.</comment>
+    <requestid>1382318</requestid>
+  </revision>
 </revisionlist>
