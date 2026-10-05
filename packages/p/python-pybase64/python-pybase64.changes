@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:42:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.5.1:
+  * Fix a Py_buffer use-after-release in the C extension error
+    paths: the buffer was released before the error message was
+    formatted, so formatting could touch freed memory
+  * Switch to libalternatives where available, keeping
+    update-alternatives on Leap 15
+
+-------------------------------------------------------------------
 Sun Aug  9 04:48:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.5.0:

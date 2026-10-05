@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-pybase64
-Version:        1.5.0
+Version:        1.5.1
 Release:        0
 Summary:        Fast Base64 encoding/decoding
 License:        BSD-2-Clause
@@ -36,8 +41,13 @@ BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gcc
 BuildRequires:  python-rpm-macros
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 %python_subpackages
 
 %description
@@ -61,9 +71,9 @@ decode functions and ships a command line tool.
 # The PyPI sdist ships tests/ but omits the tests/utils.py helper, which lives
 # only in the git tree, so tests/test_pybase64.py and tests/test_benchmark.py
 # cannot even be imported - both start with "from . import utils".
-# test_main.py and test_packaging.py are self-contained and do run; test_sbom
-# is deselected because it asserts a CycloneDX SBOM that only the official
-# PyPI wheels carry.
+# test_main.py and test_packaging.py are self-contained and do run;
+# tests/test_packaging.py::test_sbom is deselected because it asserts a
+# CycloneDX SBOM that only the official PyPI wheels carry.
 %pytest_arch tests/test_main.py tests/test_packaging.py -m "not pypi_distribution"
 # The functional test module is the one that cannot run, so also exercise the
 # built C extension with a round trip.
@@ -74,6 +84,9 @@ decode functions and ships a command line tool.
 
 %postun
 %python_uninstall_alternative pybase64
+
+%pre
+%python_libalternatives_reset_alternative pybase64
 
 %files %{python_files}
 %license LICENSE

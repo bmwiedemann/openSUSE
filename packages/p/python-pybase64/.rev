@@ -23,4 +23,25 @@ Packaging: %check now runs the parts of the upstream pytest suite the sdist supp
 Built and verified on x86_64: rpmlint 0 errors / 0 warnings / 0 badness, %check 20 passed / 1 deselected on each Python flavour, source_validator clean.</comment>
     <requestid>1370370</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>8436997197f28423d5440222d4c2083d</srcmd5>
+    <version>1.5.1</version>
+    <time>1791209909</time>
+    <user>anag_factory</user>
+    <comment>- Update 1.5.0 -&gt; 1.5.1, released 2026-10-04.
+- Fixes a Py_buffer use-after-release in the C extension error paths: the buffer
+- was released before the error message was formatted, so formatting could touch
+- freed memory.
+- Verified in the shipped binaries: PyErr_Format now precedes PyBuffer_Release at
+- the two sites where 1.5.0 had the order reversed.
+- No CVE id exists in this range and no bug is filed, so none is claimed.
+- Switches update-alternatives to libalternatives where available, keeping
+- update-alternatives on Leap 15 via a bcond dual path modelled on Factory's
+- python-mutmut. Both branches were built.
+- 15.7 dep resolution proven directly (163 deps, 0 unresolvable); a literal 15.7
+- build was not possible on this aarch64 host, that repo is x86_64-only.
+- Source: left as an explicit files.pythonhosted.org URL on purpose:
+- %{pypi_source} fails source validation and is not defined in this environment.</comment>
+    <requestid>1382543</requestid>
+  </revision>
 </revisionlist>
