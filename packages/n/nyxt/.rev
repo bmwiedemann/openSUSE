@@ -216,4 +216,12 @@ Update to version 3.11.2</comment>
   workaround blank window</comment>
     <requestid>1326520</requestid>
   </revision>
+  <revision rev="26" vrev="3">
+    <srcmd5>e83d15541fd7c8df18a71e537cde4b09</srcmd5>
+    <version>3.12.0</version>
+    <time>1791197789</time>
+    <user>anag_factory</user>
+    <comment>Fix compilation failure with SBCL 2.6.9</comment>
+    <requestid>1382309</requestid>
+  </revision>
 </revisionlist>

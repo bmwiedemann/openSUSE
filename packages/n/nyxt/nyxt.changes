@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  4 08:52:26 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- added fix-sbcl-2.6.9-compilation.patch to fix compilation failure
+
+-------------------------------------------------------------------
 Sat Jan 10 15:37:19 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
 
 - added fix-named-readtables-sbcl.patch to fix compilation failure

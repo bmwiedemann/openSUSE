@@ -35,6 +35,8 @@ Patch1:         fix-named-readtables-sbcl.patch
 Patch2:         fix-webkit2-web-view.patch
 # https://cgit.freebsd.org/ports/tree/www/nyxt/files/patch-source_renderer_gtk.lisp?id=0529575a3639d40322e1634b0287fe56e0a40684
 Patch3:         fix-gdk-event.patch
+# https://github.com/atlas-engineer/nyxt/issues/3731
+Patch4:         fix-sbcl-2.6.9-compilation.patch
 BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  libfixposix-devel
