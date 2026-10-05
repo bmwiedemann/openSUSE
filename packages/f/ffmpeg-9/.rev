@@ -50,4 +50,16 @@
     <comment>add bugrefs</comment>
     <requestid>1378220</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>cbdbdd7fc6c9d136fd260138093343f7</srcmd5>
+    <version>9.0.2</version>
+    <time>1791197680</time>
+    <user>anag_factory</user>
+    <comment>- Add aptx/aptx_hd to enable_decoders/encoders.
+- Adjust work-around-abi-break.patch to support a few programs
+  (e.g. OpenJFX) built against unmodified ffmpegs. [boo#1282855]
+- Enable apv encoder support
+- Update to release 9.0.2</comment>
+    <requestid>1382271</requestid>
+  </revision>
 </revisionlist>

@@ -98,7 +98,7 @@
 %define _upper_reject 10
 
 Name:           ffmpeg-9
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -161,6 +161,7 @@ BuildRequires:  pkgconfig(libwebpmux) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzmq) >= 4.2.1
 BuildRequires:  pkgconfig(lilv-0)
+BuildRequires:  pkgconfig(oapv)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(openssl)
@@ -585,6 +586,7 @@ LDFLAGS="%_lto_cflags" \
 %if %{with mysofa}
 	--enable-libmysofa \
 %endif
+	--enable-liboapv \
 	--enable-libopenjpeg \
 	--enable-libopenmpt \
 	--enable-libopenh264 \
@@ -801,7 +803,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-9
 Name:           ffmpeg-9-mini
-Version:        9.0.1
+Version:        9.0.2
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later

@@ -58,7 +58,7 @@ Index: ffmpeg-9.0/libavcodec/libavcodec.v
 -        avsubtitle_free;
 -    local:
 -        *;
-+LIBAVCODEC_63.1 {
++LIBAVCODEC_63 {
 +global:
 +	av_ac3_parse_header;
 +	av_adts_header_parse;
@@ -243,12 +243,12 @@ Index: ffmpeg-9.0/libavcodec/libavcodec.v
 +	av_*;
 +	avcodec_*;
 +	avsub*;
-+} LIBAVCODEC_63.1;
++} LIBAVCODEC_63;
 +
 +LIBAVCODEC_PRIVATE {
 +local:
 +	*;
-+} LIBAVCODEC_63.1;
++} LIBAVCODEC_63;
 Index: ffmpeg-9.0/libavdevice/libavdevice.v
 ===================================================================
 --- ffmpeg-9.0.orig/libavdevice/libavdevice.v
