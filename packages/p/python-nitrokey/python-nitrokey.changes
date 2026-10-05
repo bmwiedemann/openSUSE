@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Sun Oct  4 17:39:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 0.5.0:
+  * Breaking Changes
+    - Bump minimum Python version to 3.11.
+    - Refactor connection handling:
+      - Wrap OSError in ConnectionError and CtapError in
+        DeviceError for transport-agnostic error types.
+      - Move connection handling into separate classes.
+      - Rename TrussedDevice.from_device to
+        TrussedDevice.from_connection.
+      - Add TrussedDevice.list classmethod.
+      - Add Transport enum.
+      - Add TrussedDevice.ctaphid_device function.
+      - Change type of TrussedDevice.path to Optional[str]
+    - Remove support for fido2 v1.
+  * Features
+    - Add support for credentials import and export in FIDO CXF
+      format.
+    - nitrokey.trussed.admin_app: Add model and revision to
+      AdminStatus
+    - nitrokey.trussed: Add the inner_checksum field to
+      FirmwareMetadata with the checksum of the unsigned firmware
+      image.
+    - nitrokey.checksum: Add unified checksum calculation for both
+      NRF52 and LPC55 firmware files.
+    - nitrokey.trussed.nrfutils: Add support for NRF52 package
+      signing and upload
+    - Add vid and pid properties to Model enum.
+    - nitrokey.nk3.secrets_app: Add register_uri function
+    - Enable communication with Nitrokey 3 and Nitrokey Passkeys
+      over CCID instead of CTAPHID
+      - Add recommended_transport function that indicates when CCID
+        should be prefered. CCID is more limited than CTAPHID, so
+        this functions only recommends CCID on Windows when not an
+        administrator, as CTAPHID is not available in this case.
+      - There is a known issue with the model identification over
+        CCID, see issue #147
+  * Bugfixes
+    - nitrokey.nk3.secrets_app: Fix discarded authentication when
+      using SecretsApp over CCID
+    - Fix SDK version check during firmware update to correctly
+      handle release candidates
+  * Other Changes
+    - Remove RPM specification file, associated Makefile target,
+      and CI jobs.
+    - nitrokey.trussed.TrussedBase: Fix type annotations for
+      __exit__ arguments so that all derived classes implement the
+      contextlib.AbstractContextManager protocol.
+
+-------------------------------------------------------------------
 Fri Apr 24 09:31:04 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Run tests with %pyunittest

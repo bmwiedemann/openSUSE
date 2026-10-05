@@ -18,21 +18,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nitrokey
-Version:        0.4.2
+Version:        0.5.0
 Release:        0
 Summary:        Nitrokey Python SDK
 License:        Apache-2.0
 URL:            https://github.com/Nitrokey/nitrokey-sdk-py
 Source0:        https://github.com/Nitrokey/nitrokey-sdk-py/archive/v%{version}.tar.gz#/nitrokey-%{version}.tar.gz
 Source99:       python-nitrokey.rpmlintrc
-BuildRequires:  %{python_module base >= 3.10}
+BuildRequires:  %{python_module base >= 3.11}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module poetry-core >= 1}
 BuildRequires:  %{python_module wheel}
 # Runtime dependencies
 BuildRequires:  %{python_module cryptography >= 41}
 BuildRequires:  %{python_module crcmod >= 1.7 with %python-crcmod < 2}
-BuildRequires:  %{python_module fido2 >= 1.1.2 with %python-fido2 < 3}
+BuildRequires:  %{python_module fido2 >= 2 with %python-fido2 < 3}
 BuildRequires:  %{python_module hidapi >= 0.14 with %python-hidapi < 0.15}
 BuildRequires:  %{python_module protobuf >= 5.26}
 BuildRequires:  %{python_module pyserial >= 3.5 with %python-pyserial < 4}
@@ -44,7 +44,7 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-cryptography >= 41
 Requires:       (python-crcmod >= 1.7 with python-crcmod < 2)
-Requires:       (python-fido2 >= 1.1.2 with python-fido2 < 3)
+Requires:       (python-fido2 >= 2 with python-fido2 < 3)
 Requires:       (python-hidapi >= 0.14 with python-hidapi < 0.15)
 Requires:       (python-protobuf >= 5.26)
 Requires:       (python-pyserial >= 3.5 with python-pyserial < 4)
