@@ -1,0 +1,40 @@
+## Path:           Network/GufoServer
+## Description:    Gufo server access
+## Type:           string
+## Default:        "127.0.0.1"
+## ServiceRestart: gufo-server
+#
+# set it to 0.0.0.0 for global network access
+#
+GUFO_HOST="127.0.0.1"
+
+## Type:           string
+## Description:    Gufo server port
+## Default:        "3951"
+## ServiceRestart: gufo-server
+GUFO_PORT="3951"
+
+## Type:           string
+## Description:    Gufo server model path
+## Default:        ""
+## ServiceRestart: gufo-server
+GUFO_MODEL_FILE=
+
+## Type:           string
+## Description:    Gufo server parameter
+## Default:        ""
+## ServiceRestart: gufo-server
+GUFO_PARAMETER=""
+
+## Type:           string
+## Description:    Gufo server maximum context length
+## Default:        "0"
+## ServiceRestart: gufo-server
+GUFO_CONTEXT_LENGTH=0
+
+## Type:           int
+## Description:    Number of GPU layers to offload
+## Default:        "-1"
+## ServiceRestart: gufo-server
+# -1 means auto-detect and use all available GPUs
+GUFO_GPU_LAYERS=-1

@@ -1,0 +1,43 @@
+-------------------------------------------------------------------
+Mon Oct  5 08:16:03 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.7.1
+  * 0.7.1 (2026-10-05)
+  * Bug Fixes
+- Updated to version 0.7.0
+  * 0.7.0 (2026-10-04)
+  * Features
+- Updated to version 0.6.0
+  * 0.6.0 (2026-10-03)
+  * Features
+- Updated to version 0.5.0
+  * 0.5.0 (2026-10-02)
+  * Features
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Thu Oct  1 09:00:00 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Updated to version 0.4.0
+  * expose live token and request metrics in serve ([#351])
+  * report cache eviction and retained snapshot capacity ([#353])
+  * make log verbosity configurable with --log-level ([#319])
+  * support llama-server return_progress on streaming (#344)
+  * preserve seeded MTP replay across cache reuse (qwen-flash) ([#330])
+  * preserve native tool calls during constrained decoding ([#324])
+  * keep SSE streams alive during generation ([#334])
+  * accelerate greedy penalties and fix sampling ranges (qwen-flash) (#332)
+  * explain how the KV cache works in gufo ([#360])
+- Update generated using pbuild-ai
+
+-------------------------------------------------------------------
+Wed Sep 30 05:43:35 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- Initial package of gufo 0.2.0
+  Gufo is a local inference engine optimized for AMD Strix Halo
+  hardware that enables running large language and text-to-speech
+  models directly on your device. It provides a high-performance
+  server for seamless AI model serving without relying on cloud
+  services.
+- Generated using pbuild-ai
+

@@ -1,0 +1,26 @@
+[Unit]
+Description=Gufo Local Inference Engine Server
+Documentation=https://github.com/gufo-org/gufo
+After=network.target rocminfo.target
+Wants=rocminfo.target
+
+[Service]
+Type=simple
+User=gufo
+EnvironmentFile=-/etc/sysconfig/gufo-server
+# The bash wrapper is needed to expand multiple parameters from GUFO_PARAMETER
+ExecStart=bash -c "/usr/bin/gufo-server serve \
+    --host $GUFO_HOST \
+    --port $GUFO_PORT \
+    --model $GUFO_MODEL_FILE \
+    --context $GUFO_CONTEXT_LENGTH \
+    $GUFO_PARAMETER
+"
+Restart=on-failure
+RestartSec=5s
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
+
