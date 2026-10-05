@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct  3 21:19:49 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.14.6
+  * The C_OCTET scan in smpp34_unpack is now bounded with strnlen()
+
+-------------------------------------------------------------------
 Thu Feb  5 11:15:15 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.14.5
