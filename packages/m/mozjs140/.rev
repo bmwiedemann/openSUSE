@@ -202,4 +202,13 @@
 - Rebase mozjs140-rust1.98.patch</comment>
     <requestid>1381460</requestid>
   </revision>
+  <revision rev="22" vrev="2">
+    <srcmd5>aa42f60915c0ef3580d02312450d01c2</srcmd5>
+    <version>140.17.0</version>
+    <time>1791197675</time>
+    <user>anag_factory</user>
+    <comment>- Update license to reflect shipped binaries was MPL-2.0
+  Outcome of legaldb review</comment>
+    <requestid>1382232</requestid>
+  </revision>
 </revisionlist>

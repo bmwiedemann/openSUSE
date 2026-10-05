@@ -44,7 +44,7 @@ Name:           mozjs%{major}
 Version:        140.17.0
 Release:        1%{?dist}
 Summary:        SpiderMonkey JavaScript library
-License:        MPL-2.0
+License:        (Apache-2.0 OR MIT) AND Apache-2.0 WITH LLVM-exception AND MPL-2.0 AND BSD-2-Clause AND BSD-3-Clause AND MIT
 Group:          System/Libraries
 URL:            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/SpiderMonkey
 Source0:        https://ftp.mozilla.org/pub/firefox/releases/%{version}esr/source/firefox-%{version}esr.source.tar.xz
