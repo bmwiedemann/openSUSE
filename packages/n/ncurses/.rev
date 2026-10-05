@@ -5896,4 +5896,16 @@
     Robinson)</comment>
     <requestid>1379468</requestid>
   </revision>
+  <revision rev="341" vrev="114">
+    <srcmd5>7fc0a5386d4234247af295ec944d6e57</srcmd5>
+    <version>unknown</version>
+    <time>1791197694</time>
+    <user>anag_factory</user>
+    <comment>- Add ncurses patch 20260926
+  + in-progress work to add new mouse functions mouse_get(),
+    mouse_test(), and mouse_mask(), as well as mousetest().
+  + add attr_set.3x and attrset.3x to man_db.renames (patch by Sven
+    Joachim).</comment>
+    <requestid>1382055</requestid>
+  </revision>
 </revisionlist>

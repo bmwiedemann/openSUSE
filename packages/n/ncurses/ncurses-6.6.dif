@@ -345,7 +345,7 @@
  #undef  NCURSES_OSPEED
 --- man/man_db.renames.in
 +++ man/man_db.renames.in	2025-05-05 07:22:16.198714905 +0000
-@@ -311,6 +311,7 @@ wtimeout.3x			wtimeout.3ncurses
+@@ -313,6 +313,7 @@ wtimeout.3x			wtimeout.3ncurses
  wunctrl.3x			wunctrl.3ncurses
  #
  # Other:

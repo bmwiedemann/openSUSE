@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:07:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add ncurses patch 20260926
+  + in-progress work to add new mouse functions mouse_get(),
+    mouse_test(), and mouse_mask(), as well as mousetest().
+  + add attr_set.3x and attrset.3x to man_db.renames (patch by Sven
+    Joachim).
+
+-------------------------------------------------------------------
 Mon Sep 21 09:47:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260919
