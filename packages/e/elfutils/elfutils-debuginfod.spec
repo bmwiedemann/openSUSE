@@ -1,7 +1,6 @@
 #
 # spec file for package elfutils-debuginfod
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           elfutils-debuginfod
-Version:        0.194
+Version:        0.196
 Release:        0
 Summary:        Debuginfod server provided by elfutils
 License:        GPL-3.0-or-later
@@ -31,7 +30,7 @@ Source3:        elfutils.keyring
 Source4:        %{name}.sysusers
 Source5:        %{name}.tmpfiles
 Patch1:         harden_debuginfod.service.patch
-Patch2:         elfutils-fix-const-correctness.patch
+Patch2:         fix_aarch64_build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -174,7 +173,7 @@ rm -f %{buildroot}/%{_includedir}/nlist.h
 rm -f %{buildroot}/%{_includedir}/dwarf.h
 rm -f %{buildroot}/%{_libdir}/libdw*
 rm -f %{buildroot}/%{_mandir}/man3/elf*_*.3*
-rm -f %{buildroot}/%{_mandir}/man3/gelf*_*.3*
+rm -f %{buildroot}/%{_mandir}/man3/gelf*.3*
 rm -f %{buildroot}/%{_mandir}/man3/libelf.3*
 rm -f %{buildroot}/%{_mandir}/man1/eu-*.1*
 rm -rf %{buildroot}%{_datadir}/locale/

@@ -1,7 +1,6 @@
 #
 # spec file for package elfutils
 #
-# Copyright (c) 2026 SUSE LLC
 # Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +17,7 @@
 
 
 Name:           elfutils
-Version:        0.194
+Version:        0.196
 Release:        0
 Summary:        Higher-level library to access ELF files
 License:        GPL-3.0-or-later
@@ -32,7 +31,7 @@ Source4:        https://sourceware.org/elfutils/ftp/%{version}/%{name}-%{version
 Source5:        %{name}.keyring
 Source6:        elfutils-rpmlintrc
 Patch1:         harden_debuginfod.service.patch
-Patch2:         elfutils-fix-const-correctness.patch
+Patch2:         fix_aarch64_build.patch
 BuildRequires:  autoconf
 BuildRequires:  automake
 BuildRequires:  bison
@@ -248,8 +247,7 @@ export XFAIL_TESTS="dwfl-proc-attach run-backtrace-dwarf.sh run-backtrace-native
 %{_mandir}/man3/elf32_*.3*
 %{_mandir}/man3/elf64_*.3*
 %{_mandir}/man3/libelf.3.gz
-%{_mandir}/man3/gelf_getclass.3*
-%{_mandir}/man3/gelf_getehdr.3*
+%{_mandir}/man3/gelf*.3*
 
 %files -n libdw1
 %{_libdir}/libdw.so.*

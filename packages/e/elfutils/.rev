@@ -1226,4 +1226,83 @@ Fixes CVE-2018-18310, CVE-2018-18520 and CVE-2018-18521.
   readelf: Up to 13% faster when using the -N option.</comment>
     <requestid>1339398</requestid>
   </revision>
+  <revision rev="118" vrev="1">
+    <srcmd5>cebdb2d334fb0c52507bd231699e0a47</srcmd5>
+    <version>0.196</version>
+    <time>1791197695</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.196:
+  debuginfod: The $DEBUGINFOD_TIMEOUT environment variable is now enforced
+              when establishing a connection to a server.
+  libdw: New functions dwarf_begin_type, dwarf_begin_elf_type and
+         dwarf_get_type plus new enum Dwarf_Type.  Used to select between
+         plain DWARF, split DWARF (.dwo/.dwp) and GNU LTO when opening a
+         file.
+         Added support for DWARF5 supplementary files (.debug_sup) and
+         associated DW_FORM_ref_sup4/8 and DW_FORM_strp_sup forms.
+         Added support for split DWARF debug data when contained in the
+         same file as the skeleton.
+  libdwelf: New functions dwelf_dwarf_debug_sup and dwelf_dwarf_debug_dwp
+            for querying .debug_sup and .debug_dwp section data.
+  libdwfl: Now correctly handles Linux kernel module sections that are
+           not present in sysfs.
+  libdwfl_stacktrace: New functions dwflst_arch_from_uname,
+                      dwflst_arch_expected_frame_nregs,
+                      dwflst_arch_sp_dwarf_reg and dwflst_arch_sp_perf_reg
+                      providing per-architecture constants.  The
+                      libdwfl_stacktrace interface is experimental and may
+                      be subject to API/ABI changes.
+  stackprof: New profiling tool for collecting systemwide stacktrace
+             profiles.  Replaces the eu-stacktrace tool.  Requires
+             a C++20 capable compiler.
+  stacktrace: This experimental tool has been removed and replaced with
+              eu-stackprof.
+  srcfiles: Now handles CU names and files from split DWARF.
+  strip: Fixed bug where a section's sh_link or sh_info reference could
+         be missing from the debug file.
+  version.h: New macro _ELFUTILS_THREAD_SAFE added to &lt;elfutils/version.h&gt;.
+             Defined to 1 when the elfutils libraries are built with thread
+             safety support enabled.  Otherwise it is left undefined.
+             Thread safety support is experimental and is not yet officially
+             supported.
+- Skipped update to 0.195:
+  CONTRIBUTING: elfutils has adopted a policy on the use of Large Language
+                Models (LLMs).  Contributions containing output generated
+                by LLMs are not currently being accepted.
+  debuginfod: Introduce --home-redirect and --home-html switches allowing
+              for redirecting to custom URL and/or serving a custom html
+              file, if document root is requested.  Related: PR33635.
+              New command line option --max-depth that limits scanner depth.
+              Metadata queries now support lookup by build-id.
+              New function debuginfod_default_progressfn added to
+              libdebuginfod.
+  debuginfod-find: Fixed bug where DEBUGINFOD_PROGRESS environment variable
+                   was ignored if debuginfod-find was invoked without -v.
+  elflint: Recognize .debug_*.dwo sections, .relro_padding sections as well
+           as SHT_AARCH64_ATTRIBUTES, SHT_LLVM_LTO and SHT_LLVM_ADDRSIG.
+           Accept R_X86_64_DTPOFF64 in ET_REL files.
+           Add lints for PT_LOAD, PT_INTERP and PT_PHDR segments.
+  libdw: Added language constants for Erlang, Elixir and Gleam.
+         Fixed bug that caused sections in DWARF package files (.dwp) to be
+         missed if section .debug_dwp is present.
+  libdwfl: Improved handling of Linux kernel object files with sh_addr
+           fields set to non-zero.
+  libdwfl_stacktrace: AArch64 and 32-bit ARM support added.  The
+                      libdwfl_stacktrace library interface is experimental
+                      and may be subject to API/ABI changes.
+  libelf: New man pages for gelf.h functions.
+          Fixed gelf_getmove and gelf_update_move assertion failures caused
+          by incorrect ELFCLASS32/ELFCLASS64 handling.
+          elf_update now correctly handles binaries with 65280+ sections
+          when section zero headers aren't loaded.
+  readelf: Improved support for DWARF Package Files (.dwp) sections.
+           Improved output format for .gcc_except_table.
+  stacktrace: This experimental tool is scheduled to be removed in the next
+              release and replaced with the upcoming eu-stackprof tool.
+- Remove upstreamed patch:
+  * elfutils-fix-const-correctness.patch
+- Add upstream patch to fix build on aarch64 Leap 16.0:
+  * fix_aarch64_build.patch (forwarded request 1381824 from Guillaume_G)</comment>
+    <requestid>1382092</requestid>
+  </revision>
 </revisionlist>
