@@ -34,4 +34,12 @@ https://lists.opensuse.org/opensuse-factory/2018-10/msg00310.html</comment>
 - Remove Group: declarations, no longer used (forwarded request 1255172 from sfalken)</comment>
     <requestid>1255338</requestid>
   </revision>
+  <revision rev="5" vrev="4">
+    <srcmd5>15b19e133416160d6779058d31e69691</srcmd5>
+    <version>0.19.0</version>
+    <time>1791209890</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382461</requestid>
+  </revision>
 </revisionlist>

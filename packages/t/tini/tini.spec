@@ -23,6 +23,10 @@ Summary:        A tiny but valid init for containers
 License:        MIT
 URL:            https://github.com/krallin/tini
 Source:         %{URL}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+# Drop -fstack-protector which would downgrade the distro-wide
+# -fstack-protector-strong from the optflags. --param=ssp-buffer-size=4
+# is kept as it only tunes the strong protector's threshold.
+Patch0:         tini-ssp-strong.patch
 BuildRequires:  cmake >= 3.5
 BuildRequires:  gcc
 BuildRequires:  glibc-devel

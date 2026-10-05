@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:06:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- tini-ssp-strong.patch: drop -fstack-protector from CMakeLists.txt
+  which would downgrade the distro-wide -fstack-protector-strong
+  from the optflags (keep --param=ssp-buffer-size=4 which tunes
+  the strong protector's threshold)
+
+-------------------------------------------------------------------
 Sat Mar 22 01:11:49 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
