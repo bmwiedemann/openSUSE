@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:50:01 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.11.128:
+  * Document why mc uses BinaryTemplate
+  * Fix mc download after MinIO retired dl.min.io
+  * Bump dependencies to latest patch versions
+- Update to version 0.11.127:
+  * Add toilgate shortcut to oci install
+  * Pin k8sgpt to v0.4.36
+  * Fix rosa asset naming for v1.2.65
+  * Add sofka CLI to arkade get
+
+-------------------------------------------------------------------
 Sun Sep 20 07:36:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.11.126:
