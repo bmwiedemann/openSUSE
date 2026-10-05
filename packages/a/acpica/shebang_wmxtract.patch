@@ -1,0 +1,12 @@
+---
+ wmidump-20260323/wmixtract.py |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/wmidump-20260323/wmixtract.py
++++ b/wmidump-20260323/wmixtract.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env python3
++#!/usr/bin/python3
+ """Extract _WDG and WQXX buffers from decompiled ACPI DSDT .dsl files."""
+ 
+ import re

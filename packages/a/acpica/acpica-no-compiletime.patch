@@ -1,10 +1,12 @@
 Drop the build date from our binary
 
-Index: acpica-unix-20240321/source/compiler/aslutils.c
-===================================================================
---- acpica-unix-20240321.orig/source/compiler/aslutils.c
-+++ acpica-unix-20240321/source/compiler/aslutils.c
-@@ -637,8 +637,8 @@ UtDisplayOneSummary (
+---
+ source/compiler/aslutils.c |    4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+--- a/source/compiler/aslutils.c
++++ b/source/compiler/aslutils.c
+@@ -499,8 +499,8 @@
      {
          /* Compiler name and version number */
  

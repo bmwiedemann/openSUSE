@@ -20,7 +20,7 @@
 %define wmi_ver 20260323
 %define dmp_ver %{kver}
 Name:           acpica
-Version:        20260408
+Version:        20260930
 Release:        0
 Summary:        A set of tools to display and debug BIOS ACPI tables
 License:        GPL-2.0-only
@@ -35,6 +35,7 @@ Source3:        acpi_validate
 Source4:        wmidump-%{wmi_ver}.tar.xz
 Patch2:         do_not_use_build_date_and_time.patch
 Patch3:         acpica-no-compiletime.patch
+Patch4:         shebang_wmxtract.patch
 BuildRequires:  bison
 BuildRequires:  flex
 BuildRequires:  glibc-devel

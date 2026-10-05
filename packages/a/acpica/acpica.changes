@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 01 19:14:13 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+A shebang_wmxtract.patch
+- Update to version 20260930:
+  * release: Update version to 20260930
+  * dispatcher: Allocate the PCC internal buffer only once per region
+  * iASL: Fix the truncated count of external control methods
+  * iASL: Complete KEYP support
+  * iasl: Make the vendor data of a GUIDed entry optional
+  * ACPI 6.5 Add support for the MISC table
+  * iASL: Validate the entire Switch pattern before rewriting the parse tree
+  * ACPICA: Add ACPI_MSG_DEBUG to set KERN_DEBUG for debug output
+  * docs: Remove old new_table.txt file
+  * docs: Describe in detail adding a new table
+
+-------------------------------------------------------------------
 Mon Apr 20 09:10:14 UTC 2026 - Thomas Renninger <trenn@suse.com>
 
 - Use scm/git service for wmidump

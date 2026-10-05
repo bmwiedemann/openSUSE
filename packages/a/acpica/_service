@@ -1,10 +1,10 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/acpica/acpica.git</param>
+    <param name="url">https://github.com/open-acpica/acpica.git</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>
     <!-- <param name="revision">master</param> -->
-    <param name="revision">20260408</param>
+    <param name="revision">20260930</param>
     <param name="versionformat">@PARENT_TAG@</param>
   </service>
   <!-- Keep the set_version here so that it applies to
