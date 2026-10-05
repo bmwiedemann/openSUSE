@@ -59,6 +59,8 @@ Patch2:         unarchive-test-fix.patch
 # Patch to fix distribution.py to identify the correct distribution for server-sap and micro
 # Upstream pr https://github.com/ansible/ansible/pull/85152
 Patch3:         suse-distribution-fix.patch
+# CVE-2026-16493 (bsc#1272369)
+Patch4:         ansible-core-CVE-2026-16493.patch
 BuildArch:      noarch
 
 Provides:       ansible-core = %{version}

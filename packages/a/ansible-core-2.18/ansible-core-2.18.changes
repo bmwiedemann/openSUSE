@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Sep 10 17:59:48 UTC 2026 - Harshvardhan Sharma <harshvardhan.sharma@suse.com>
+
+- Security fix for CVE-2026-16493 (bsc#1272369): argument injection in
+  ansible-galaxy collection install; build the git clone options first and
+  pass the collection URL positionally after a "--" separator, so a git+ URL
+  beginning with "-" cannot be parsed by git as an option. Twin of
+  CVE-2026-11332 (role path). SUSE candidate patch; upstream hardening
+  tracked in gh#ansible/ansible#87177 (open, unmerged).
+  * add ansible-core-CVE-2026-16493.patch
+
+-------------------------------------------------------------------
 Tue Aug 11 07:22:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 2.18.19:
