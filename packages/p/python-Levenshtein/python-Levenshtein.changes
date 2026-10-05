@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct  3 14:24:26 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 0.27.5:
+  * Avoid unnecessary len calls on iterables, fixing a crash when the
+    size of the iterable changes after the len call
+  * Add support for Python 3.15
+  * Drop support for Python 3.10
+- From 0.27.4:
+  * Fix out of bounds reads in quickmedian and setmedian for empty
+    inputs
+  * Fix a potential out of bounds write in median_improve
+  * Add type hints for StringMatcher
+- From 0.27.3:
+  * No user-visible changes (upstream binary wheel packaging only)
+- From 0.27.2:
+  * Update bundled rapidfuzz-cpp to 3.3.3
+  * Add support for free-threaded Python
+  * Drop support for Python 3.9
+- Rename license file from COPYING to LICENSE per upstream
+- Package only the Levenshtein module and its dist-info instead of the
+  whole site-packages directory
+- Modernize spec file: use %autosetup
+
+-------------------------------------------------------------------
 Wed Mar  5 10:37:35 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - update to 0.27.1

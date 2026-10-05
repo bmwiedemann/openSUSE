@@ -1,7 +1,7 @@
 #
 # spec file for package python-Levenshtein
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Levenshtein
-Version:        0.27.1
+Version:        0.27.5
 Release:        0
 Summary:        Python extension computing string distances and similarities
 License:        GPL-2.0-or-later
@@ -49,7 +49,7 @@ computation of
 It supports both normal and Unicode strings.
 
 %prep
-%setup -q -n levenshtein-%{version}
+%autosetup -p1 -n levenshtein-%{version}
 
 %build
 %pyproject_wheel
@@ -62,8 +62,9 @@ It supports both normal and Unicode strings.
 %pytest_arch
 
 %files %{python_files}
-%license COPYING
+%license LICENSE
 %doc HISTORY.md README.md
-%{python_sitearch}/
+%{python_sitearch}/Levenshtein/
+%{python_sitearch}/levenshtein-%{version}.dist-info/
 
 %changelog
