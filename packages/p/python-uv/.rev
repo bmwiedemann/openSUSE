@@ -3306,4 +3306,16 @@ zstd-safe 7.3.0 to the linked graph - 509 nodes, was 507 - and the
 licence set is unchanged. Both flavors build green on aarch64.</comment>
     <requestid>1382066</requestid>
   </revision>
+  <revision rev="131" vrev="1">
+    <srcmd5>b2c3f16e77299af3bef55b4eacb6ac4d</srcmd5>
+    <version>0.12.23</version>
+    <time>1791198108</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.12.23.
+- CPython 3.15.0rc3 added to the managed interpreter catalogue
+- uv sync/export/tree accept --frozen without a workspace manifest
+- Alternate sources rejected across conflicting dep selections
+- Vendored deps refreshed, 509 linked nodes, licence set unchanged</comment>
+    <requestid>1382347</requestid>
+  </revision>
 </revisionlist>

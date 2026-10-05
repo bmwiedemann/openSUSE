@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct  4 07:24:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.23:
+  * Add CPython 3.15.0rc3 to the managed interpreter catalogue
+  * Preview: uv sync, uv export, uv tree and uv workspace metadata
+    accept --frozen to work from a uv.lock with no workspace manifest
+  * Reject alternate sources for workspace members across conflicting
+    dependency selections, which produced lockfiles that cannot be
+    installed
+  * Let x86-64 Python interpreters running under emulation on Windows
+    ARM64 install compatible win_amd64 wheels instead of building from
+    source
+- Refresh the vendored dependencies: async-recursion 1.1.1 -> 1.2.0,
+  libc 0.2.189 -> 0.2.190, mio 1.2.3 -> 1.2.4, spdx 0.13.5 ->
+  0.13.6, tokio 1.53.1 -> 1.53.2 and uuid 1.26.1 -> 1.27.0 are all
+  linked into the binary, while cc and insta move only in the build
+  tree; the linked graph stays at 509 nodes and the licence set is
+  unchanged
+- Upstream MSRV is still Rust 1.97, so BuildRequires on cargo is
+  unchanged
+
+-------------------------------------------------------------------
 Fri Oct  2 08:43:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.22:
