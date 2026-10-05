@@ -16,9 +16,10 @@
 #
 
 
-# Every runtime dependency is vendored in Source1, so the nodejs dependency
-# generator must not turn package.json's "dependencies" into npm(...) Requires
-# that nothing in the distribution provides.
+# Every runtime dependency is vendored (the node_modules service's sources, see
+# the %%include at the bottom), so the nodejs dependency generator must not turn
+# package.json's "dependencies" into npm(...) Requires that nothing in the
+# distribution provides.
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 # The RPM is named after the service it talks to, but upstream's npm package,
@@ -28,22 +29,29 @@
 %define npm_name gen-ai
 %define npm_scope @picsart
 Name:           picsart-gen-ai
-Version:        2.78.0
+Version:        2.79.1
 Release:        0
 Summary:        Picsart AI CLI for generating images, video and audio
 # Legal-Review-Notice: the CLI itself is MIT. The published cli.js is a bundle
 # that additionally inlines @picsart/ai-sdk (MIT) and the unpublished
 # @pulse/core and @pulse/server, which upstream distributes only inside this
-# MIT-licensed artifact. Source1 vendors the 71 runtime dependencies the bundle
-# imports; their licence fields were enumerated on this re-vendor and are MIT
-# (63), ISC (5), Apache-2.0 (1), BlueOak-1.0.0 (1, the glob/minimatch family)
-# and one "MIT OR CC0-1.0" satisfied by MIT. No copyleft is present.
+# MIT-licensed artifact. The vendored sources below vendor the 71 runtime
+# dependencies the bundle imports; their licence fields were enumerated on this
+# re-vendor and are MIT (63), ISC (5), Apache-2.0 (1), BlueOak-1.0.0 (1, the
+# glob/minimatch family) and one "MIT OR CC0-1.0" satisfied by MIT. No copyleft
+# is present.
 License:        MIT AND ISC AND Apache-2.0 AND BlueOak-1.0.0
-URL:            https://github.com/PicsArt/gen-ai-cli
+# Releases are published to npm only: the git repo carries no tags past v2.77.0
+# and was last pushed before 2.78.0 was published, so the npm registry — not
+# the repo — is where a release of this package can be discovered.
+URL:            https://www.npmjs.com/package/@picsart/gen-ai
 Source0:        https://registry.npmjs.org/%{npm_scope}/%{npm_name}/-/%{npm_name}-%{version}.tgz
-# The npm artifact ships no licence file. 2.78.0 has no git tag (newest is
-# v2.77.0), so this is LICENSE from that tag — a v%%{version} URL 404s.
-Source2:        https://raw.githubusercontent.com/PicsArt/gen-ai-cli/v2.77.0/LICENSE
+# The npm artifact ships no licence file, so it has to come from the repo —
+# which is also why this cannot follow %%{version}: there is no v%%{version} tag
+# to point at. main is the only ref that carries LICENSE. The file is committed
+# here, so a change upstream does not silently alter what is built; refresh it
+# if the repo's licence ever changes.
+Source2:        https://raw.githubusercontent.com/PicsArt/gen-ai-cli/main/LICENSE
 # The upstream git tree cannot be built downstream: its tsup config inlines
 # @pulse/core and @pulse/server, which live in a private registry and are not
 # publishable to npm, so only the published bundle is buildable. Its runtime

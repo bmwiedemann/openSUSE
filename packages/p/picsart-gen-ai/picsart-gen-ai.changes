@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sat Oct  3 19:17:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.79.1:
+  * No user-visible change: 2.79.1 republishes the 2.78.0
+    artifact. cli.js, bin/gen-ai.mjs, README.md, banner.svg and
+    skills/ are byte-identical to 2.78.0; only the version field
+    in package.json differs
+- Re-vendor: the package set is unchanged, only ansi-regex moves
+  6.3.0 -> 6.4.0, and the licence set of the 71 vendored packages
+  still holds
+- Fix release discovery now that upstream publishes only to npm:
+  URL points at the npm package page and Source2 at the main
+  branch, the only ref still carrying LICENSE since the repo
+  stopped tagging at v2.77.0
+
+-------------------------------------------------------------------
 Thu Sep 17 16:27:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.78.0:

@@ -229,4 +229,18 @@ tarball is gen-ai-2.75.0.tgz (Source0).</comment>
   still holds</comment>
     <requestid>1378676</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>502f765fc2b75396c28e07554abb9e55</srcmd5>
+    <version>2.79.1</version>
+    <time>1791197700</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.79.1 and fix release discovery
+
+Upstream publishes only to npm now; the repo has no tags past v2.77.0.
+URL points at the npm package page, Source2 at main (the only ref
+still carrying LICENSE). 2.79.1 republishes 2.78.0's artifact
+unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
+</comment>
+    <requestid>1382265</requestid>
+  </revision>
 </revisionlist>
