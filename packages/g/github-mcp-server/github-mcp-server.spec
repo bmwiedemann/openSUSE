@@ -23,7 +23,7 @@
 #   -modcacherw     leave the module cache writable so cleanup cannot fail
 %define goflags "-buildmode=pie -mod=vendor -modcacherw"
 Name:           github-mcp-server
-Version:        1.13.0
+Version:        1.14.0
 Release:        0
 Summary:        Model Context Protocol server for GitHub
 License:        MIT
@@ -34,11 +34,11 @@ Source1:        vendor.tar.zst
 # what emits the GNU build-id that debuginfo extraction needs. go1.26 pulls gcc
 # in transitively, but this package depends on it directly, so say so.
 BuildRequires:  gcc
-# go.mod declares "go 1.25.12"; require the next stable API so the toolchain is
-# always new enough without pinning one compiler package (Go refuses to build a
-# module that asks for a newer patch level than the toolchain provides, and
-# toolchain auto-download is unavailable offline).
-BuildRequires:  golang(API) >= 1.26
+# go.mod declares "go 1.26.8". Go refuses to build a module that asks for a
+# newer patch level than the toolchain provides and toolchain auto-download is
+# unavailable offline, so the floor has to track the directive exactly: a plain
+# ">= 1.26" would admit 1.26.0, which is older than 1.26.8 and fails to build.
+BuildRequires:  golang(API) >= 1.26.8
 BuildRequires:  zstd
 # Only used for the optional OAuth browser flow (internal/oauth/env.go shells
 # out to xdg-open); the token-based path needs nothing external.

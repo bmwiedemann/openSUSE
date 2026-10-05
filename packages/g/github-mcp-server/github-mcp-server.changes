@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:59:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.14.0:
+  * Looking up a pending pull request review now works when the
+    authenticated actor is a Copilot bot
+  * See upstream's release notes for the full list
+- Refresh the vendored Go modules: go-github v89 -> v92, the MCP Go
+  SDK 1.7.0 -> 1.8.0, shurcooL/githubv4 and graphql, and
+  golang.org/x net, oauth2, sync, sys and text. Re-derived over the
+  new tree: still only MIT, BSD-3-Clause and Apache-2.0, no copyleft.
+  * The MCP Go SDK 1.8.0 caps JSON nesting, SSE event size and the
+    stdio frame length, bounds OAuth client registration, and fixes
+    session leaks and a teardown deadlock; upstream names no CVE
+  * This build does not compile the ui/ TypeScript tree, so the
+    release's TypeScript 7 and React 19 work does not apply to it;
+    the MCP Apps SDK v2 pull request only rewrites pointer
+    construction in the server (github.Ptr -> new) with no behaviour
+    change
+- go.mod now requires go 1.26.8, so BuildRequires on golang(API) moves
+  from >= 1.26 to >= 1.26.8; the old floor admitted 1.26.0, which is
+  older than the directive and cannot build the module
+
+-------------------------------------------------------------------
 Fri Oct  2 09:43:21 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.13.0:

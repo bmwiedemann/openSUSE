@@ -202,4 +202,17 @@ Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
 </comment>
     <requestid>1382068</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>aadf73d998c9fc410adc22e5bebc30bd</srcmd5>
+    <version>1.14.0</version>
+    <time>1791197830</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.14.0.
+- Copilot-bot pending PR review lookup now works
+- Vendored Go modules refreshed: go-github v92, MCP Go SDK 1.8.0
+- MCP Go SDK 1.8.0 hardens against resource exhaustion (no CVE named)
+- go.mod needs go 1.26.8, so the golang(API) floor moves to &gt;= 1.26.8
+- ui/ TypeScript tree is not compiled by this spec</comment>
+    <requestid>1382342</requestid>
+  </revision>
 </revisionlist>
