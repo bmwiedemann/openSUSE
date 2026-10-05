@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:50:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.54.4:
+  * Bug Fixes
+    - Shell completions don't work [Issue #684] [PR #1121]
+    - Grype DB does not represent affected glibc versions as a
+      range for CVE-2026-5450 [Issue #1033]
+  * Dependencies
+    - chore(deps): update anchore dependencies (#1097)
+    - chore(deps): update tool versions (#1132)
+    - chore(deps): Bump gitpython from 3.1.59 to 3.1.62 (#1131)
+    - chore(deps): Bump urllib3 from 2.7.0 to 2.8.0 (#1130)
+    - chore(deps): Bump astral-sh/setup-uv (#1128)
+    - chore(deps): Bump github.com/anchore/go-logger (#1127)
+    - chore(deps): update tool versions (#1125)
+    - chore(deps): Bump github.com/containerd/containerd/v2 (#1124)
+    - chore(deps): Bump github.com/anchore/grype in the
+      go-minor-patch group (#1122)
+    - chore(deps): Bump go.opentelemetry.io/otel/sdk from 1.44.0 to
+      1.45.0 (#1117)
+    - chore(deps): Bump the go-minor-patch group with 3 updates
+      (#1114)
+    - chore(deps): Bump github.com/containerd/containerd/v2 (#1113)
+    - chore(deps): Bump gitpython from 3.1.57 to 3.1.59 (#1112)
+    - chore(deps): Bump google.golang.org/grpc from 1.83.1 to
+      1.83.2 (#1111)
+    - chore(deps): Bump github.com/anchore/grype in the
+      go-minor-patch group (#1109)
+    - chore(deps): Bump google.golang.org/grpc from 1.83.0 to
+      1.83.1 (#1108)
+    - chore(deps): Bump github.com/stretchr/testify (#1106)
+    - chore(deps): Bump the go-minor-patch group with 2 updates
+      (#1103)
+    - chore(deps): Bump github.com/klauspost/compress (#1098)
+    - chore(deps): update anchore dependencies (#1085)
+    - chore(deps): Bump cryptography from 48.0.1 to 50.0.0 (#1096)
+    - chore(deps): Bump github.com/go-git/go-git/v5 from 5.19.1 to
+      5.19.2 (#1095)
+    - chore(deps): Bump gitpython from 3.1.54 to 3.1.57 (#1093)
+    - chore(deps): Bump github.com/klauspost/compress (#1086)
+
+-------------------------------------------------------------------
 Thu Jul 30 05:36:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.54.3:
