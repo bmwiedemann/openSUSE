@@ -1,0 +1,172 @@
+-------------------------------------------------------------------
+Thu Jul 16 00:00:00 UTC 2026 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_45_Mass_Rebuild
+
+-------------------------------------------------------------------
+Thu Apr 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Change --with gitcommit to preview
+
+-------------------------------------------------------------------
+Tue Mar 24 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.1
+
+-------------------------------------------------------------------
+Tue Feb 17 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup specfile
+
+-------------------------------------------------------------------
+Tue Feb 10 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.2.0
+
+-------------------------------------------------------------------
+Fri Jan 30 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- requires gcc-c++
+
+-------------------------------------------------------------------
+Fri Jan 16 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Rebuild for boost 1.90
+
+-------------------------------------------------------------------
+Mon Jan 12 00:00:00 UTC 2026 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix --with check
+
+-------------------------------------------------------------------
+Tue Dec 23 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add --with compat
+
+-------------------------------------------------------------------
+Sat Nov 22 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove dir tags
+
+-------------------------------------------------------------------
+Sat Nov  1 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.1.0
+
+-------------------------------------------------------------------
+Sun Sep 21 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 7.0.1
+  Add: 0001-add-link-and-compile-pools-for-miopen.patch
+  Remove: 0001-miopen-add-link-and-compile-pools.patch
+
+-------------------------------------------------------------------
+Thu Aug 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Add Fedora copyright
+
+-------------------------------------------------------------------
+Sun Aug 10 00:00:00 UTC 2025 - Egbert Eich <eich@suse.com>
+
+- Fix build for older SUSE enterprise versions.
+- Add calls to ldconfig for SUSE.
+- Replace an unknown license string at SUSE.
+- Fix buildinfo and compiler flags handling for SUSE.
+
+-------------------------------------------------------------------
+Fri Aug  8 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Uses hip and rocrand devel at runtime.
+- Cleanup dupes
+
+-------------------------------------------------------------------
+Wed Jul 30 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove -mtls-dialect cflag
+
+-------------------------------------------------------------------
+Thu Jul 24 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_43_Mass_Rebuild
+
+-------------------------------------------------------------------
+Fri Jun  6 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Improving testing on suse
+
+-------------------------------------------------------------------
+Mon May 12 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Cleanup module build
+
+-------------------------------------------------------------------
+Fri May  9 00:00:00 UTC 2025 - Tim Flink <tflink@fedoraproject.org>
+
+- use ninja-build for epel builds
+
+-------------------------------------------------------------------
+Thu May  1 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Fix dir ownerships
+
+-------------------------------------------------------------------
+Fri Apr 18 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.4.0
+
+-------------------------------------------------------------------
+Thu Apr 17 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Merge suse/fedora changes
+
+-------------------------------------------------------------------
+Tue Apr 15 00:00:00 UTC 2025 - Christian Goll <cgoll@suse.com>
+
+- Fix 15.6 build
+
+-------------------------------------------------------------------
+Thu Apr 10 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Reenable ninja
+
+-------------------------------------------------------------------
+Sun Feb 16 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Remove multi build
+
+-------------------------------------------------------------------
+Wed Jan 29 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.2
+
+-------------------------------------------------------------------
+Tue Jan 28 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- multithread compress
+
+-------------------------------------------------------------------
+Fri Jan 17 00:00:00 UTC 2025 - Fedora Release Engineering <releng@fedoraproject.org>
+
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_42_Mass_Rebuild
+
+-------------------------------------------------------------------
+Wed Jan 15 00:00:00 UTC 2025 - Tom Rix <Tom.Rix@amd.com>
+
+- build requires gcc-c++
+
+-------------------------------------------------------------------
+Mon Dec 23 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3.1
+
+-------------------------------------------------------------------
+Wed Dec 11 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Update to 6.3
+
+-------------------------------------------------------------------
+Mon Dec  2 00:00:00 UTC 2024 - Tom Rix <Tom.Rix@amd.com>
+
+- Build on TW
+- Use manual release and changelog
+  Add: 0001-add-link-and-compile-pools-for-miopen.patch
