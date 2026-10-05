@@ -24,7 +24,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-mysql-to-sqlite3
-Version:        2.6.0
+Version:        2.6.1
 Release:        0
 Summary:        A simple Python tool to transfer data from MySQL to SQLite 3
 License:        MIT

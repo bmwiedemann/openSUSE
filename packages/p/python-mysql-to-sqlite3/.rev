@@ -66,4 +66,18 @@
     10.5 tests</comment>
     <requestid>1349197</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>9c8167b439e4b75f7da505acce2de74b</srcmd5>
+    <version>2.6.1</version>
+    <time>1791197799</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.6.1:
+  * [FEAT] add MySQL 9.7.0 support
+  * [FIX] improve error message formatting
+  * [DOCS] improve project documentation and user guidance
+  * [CHORE] stop upgrading pip during Docker image builds
+  * [CHORE] update GitHub Actions dependencies
+  * [TEST] improve test readability</comment>
+    <requestid>1382323</requestid>
+  </revision>
 </revisionlist>
