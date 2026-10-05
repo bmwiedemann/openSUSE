@@ -253,4 +253,16 @@
 </comment>
     <requestid>1375037</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>094ebeba4e972c72e3fe8e9afa1c4141</srcmd5>
+    <version>20260913</version>
+    <time>1791209898</time>
+    <user>anag_factory</user>
+    <comment>- Update to 20260913:
+  * Fix bug with fractional scaling
+  * Do not strip \\?\ with std::filesystem::path
+  * Defered sql load for DatabaseTreeView
+</comment>
+    <requestid>1382487</requestid>
+  </revision>
 </revisionlist>
