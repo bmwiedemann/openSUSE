@@ -321,4 +321,20 @@
   * Remove remaining Python 2 compatibility code.</comment>
     <requestid>1359259</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>7788139f4f01dd108d8587f9c549d155</srcmd5>
+    <version>3.0.0</version>
+    <time>1791197802</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.0.0:
+  * py-lmdb now bundles both LMDB release lines and links them
+    into a single extension module: LMDB 0.9.36 (data format v1)
+    and LMDB 1.0.2 (data format v3).
+    The two formats are mutually unreadable, so each
+    ``Environment`` is bound to one engine at construction: an
+    existing database is opened with whatever engine matches its
+    on-disk format, and a new one uses LMDB 0.9 unless told
+    otherwise.</comment>
+    <requestid>1382326</requestid>
+  </revision>
 </revisionlist>
