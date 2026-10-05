@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-khard
-Version:        0.21.0
+Version:        0.22.0
 Release:        0
 Summary:        Console carddav client
 License:        GPL-3.0-only

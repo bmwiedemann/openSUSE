@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:43:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.22.0:
+  * Support vcard IMPP field (#359)
+  * Fix YAML output for single organisation (#358)
+  * Require setuptools >= 77 (60be3cb)
+  * deps: remove dependency on sphinx_autodoc_typehints extension
+
+-------------------------------------------------------------------
 Sat Jun 27 20:55:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.21.0:

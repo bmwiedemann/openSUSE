@@ -73,4 +73,16 @@
   * Remove the autodoc typehints extension in sphinx</comment>
     <requestid>1362045</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ba39695f76e0a2c8c3b999d6a0c1acaa</srcmd5>
+    <version>0.22.0</version>
+    <time>1791197808</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.22.0:
+  * Support vcard IMPP field (#359)
+  * Fix YAML output for single organisation (#358)
+  * Require setuptools &gt;= 77 (60be3cb)
+  * deps: remove dependency on sphinx_autodoc_typehints extension</comment>
+    <requestid>1382329</requestid>
+  </revision>
 </revisionlist>
