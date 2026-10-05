@@ -19,7 +19,7 @@
 Name:           sdl12_compat
 %define lname libSDL-1_2-0
 %global _lto_cflags %_lto_cflags -ffat-lto-objects
-Version:        1.2.76
+Version:        1.2.78
 Release:        0
 Summary:        SDL-1.2 Compatibility Layer for Simple DirectMedia Layer 2.0
 # Main project is licensed as Zlib
