@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:47:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.367, from upstream 0.11.74 to 0.11.76:
+  the manifest now lists 608 templates (was 606)
+  * New: ElevenLabs v4 text to speech and text to dialogue, both
+    owned by the media-assets-02 bundle
+  * The bump also crosses upstream 0.11.75, a fix to the Flux 3
+    Image bounding box sample: the single box's description "Turn
+    into a little yellow duck" becomes "Change it to rubber duck"
+    (the generation prompt is untouched), the seed is re-rolled
+    and the graph is re-laid out; plus a refresh of the
+    translated index strings
+  * 19 existing entries get refreshed checksums: six templates
+    rewritten upstream (Flux 3 Image bounding boxes, the elevenLabs
+    speech workflows, Gemma 4 text generation and speech to video)
+    and the 13 index files, which now list the two new templates;
+    no template is dropped and no existing asset is added or
+    removed
+  * Five workflows now point their sample audio at
+    long_demo.mp3 instead of voice_demo.mp3; the path is stored
+    without an input/ prefix and neither file is a packaged asset
+  * The two new templates need json 0.1.102 and
+    comfyui-workflow-templates-media-assets-02 0.1.9, now declared
+    as Requires: without those floors 23 of the 608 entries name
+    assets that no installed bundle provides
+- No code change: loader.py is byte-identical and the sdist
+  declares no runtime requirements
+
+-------------------------------------------------------------------
 Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.365: the manifest now lists 606 templates

@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates-core
-Version:        0.3.365
+Version:        0.3.367
 Release:        0
 Summary:        Core helpers for ComfyUI workflow templates
 # Legal-Review-Notice: sdist ships no LICENSE file; upstream
@@ -29,6 +29,14 @@ BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+# The manifest pins a sha256 per asset and names the owning bundle, so its
+# entries resolve only against these floors: without them 23 of the 608
+# entries name assets no installed bundle provides. Upstream rewrites the
+# index files when building the json sdist, so the 13 declared hashes for
+# those never match any published json build (upstream defect, not fixable
+# here) -- these floors are necessary, not sufficient.
+Requires:       python-comfyui-workflow-templates-json >= 0.1.102
+Requires:       python-comfyui-workflow-templates-media-assets-02 >= 0.1.9
 BuildArch:      noarch
 %python_subpackages
 

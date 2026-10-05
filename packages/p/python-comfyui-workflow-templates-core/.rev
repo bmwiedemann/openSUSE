@@ -254,4 +254,22 @@ checksums. Data only, no code or dependency change.</comment>
 </comment>
     <requestid>1382140</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>bb4311da4895db709ea2aa28684b6ac5</srcmd5>
+    <version>0.3.367</version>
+    <time>1791197820</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.3.367 (was 0.3.365), from upstream 0.11.74 to 0.11.76
+
+- Manifest now lists 608 templates, was 606; adds ElevenLabs v4
+  text to speech and text to dialogue
+- 19 existing entries refreshed: six templates rewritten, 13
+  index files
+- New Requires floors on the two bundle packages the manifest
+  needs: json &gt;= 0.1.102 (SR 1382393) and media-assets-02 &gt;= 0.1.9
+  (SR 1382394). Both must land first; this build is unresolvable
+  against Factory until they do
+- loader.py byte-identical, no code or dependency change</comment>
+    <requestid>1382395</requestid>
+  </revision>
 </revisionlist>
