@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sun Oct  4 17:07:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 1.14.2:
+  * Dependency Changes
+    - github.com/containerd/containerd/v2 v2.3.5 -> v2.3.6
+    - github.com/siderolabs/pkgs v1.14.0-25-gf694e1b ->
+      v1.14.0-37-g6c312e4
+    - github.com/siderolabs/talos/pkg/machinery v1.14.1 -> v1.14.2
+    - github.com/siderolabs/tools v1.14.0-7-ga404efb ->
+      v1.14.0-8-g9776960
+    - k8s.io/api v0.37.0 -> v0.37.1
+    - k8s.io/apiextensions-apiserver v0.37.0 -> v0.37.1
+    - k8s.io/apimachinery v0.37.0 -> v0.37.1
+    - k8s.io/apiserver v0.37.0 -> v0.37.1
+    - k8s.io/client-go v0.37.0 -> v0.37.1
+    - k8s.io/component-base v0.37.0 -> v0.37.1
+    - k8s.io/kube-proxy v0.37.0 -> v0.37.1
+    - k8s.io/kube-scheduler v0.37.0 -> v0.37.1
+    - k8s.io/kubectl v0.37.0 -> v0.37.1
+    - k8s.io/kubelet v0.37.0 -> v0.37.1
+    - k8s.io/pod-security-admission v0.37.0 -> v0.37.1
+    - k8s.io/utils cf1189d6abe3 new
+
+-------------------------------------------------------------------
 Sat Sep 19 06:26:12 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.14.1:
