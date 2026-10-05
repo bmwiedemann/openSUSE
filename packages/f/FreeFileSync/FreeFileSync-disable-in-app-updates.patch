@@ -19,14 +19,14 @@ Index: FreeFileSync-14.9/FreeFileSync/Source/ui/main_dlg.cpp
 ===================================================================
 --- FreeFileSync-14.9.orig/FreeFileSync/Source/ui/main_dlg.cpp
 +++ FreeFileSync-14.9/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -1089,7 +1089,7 @@ imgFileManagerSmall_([]
+@@ -1086,7 +1086,7 @@ imgFileManagerSmall_([]
      updateGui();
  
      //register regular check for update on next idle event
 -    Bind(wxEVT_IDLE, &MainDialog::onStartupUpdateCheck, this);
 +    //Bind(wxEVT_IDLE, &MainDialog::onStartupUpdateCheck, this);
  
-     //asynchronous call to wxWindow::Dimensions(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
+     //asynchronous call to wxWindow::Layout(): fix superfluous frame on right and bottom when FFS is started in fullscreen mode
      Bind(wxEVT_IDLE, &MainDialog::onLayoutWindowAsync, this);
 Index: FreeFileSync-14.9/FreeFileSync/Source/ui/version_check.cpp
 ===================================================================

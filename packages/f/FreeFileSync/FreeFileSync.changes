@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  5 09:55:06 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Add FreeFileSync-wxstring-char-type.patch
+  * Fix build with wxWidgets 3.2: wxString::c_str() converts to both
+    const char* and const wchar_t*, making GetCharTypeImpl ambiguous
+- Add FreeFileSync-libssh2-no-store-overflow.patch
+  * Fix build with libssh2 <= 1.11.1 (no LIBSSH2_ERROR_STORE_OVERFLOW)
+
+-------------------------------------------------------------------
+Mon Oct  5 09:17:01 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.12:
+  * Further reduced size of database files by 16%
+  * Improved toggle button layout calculations
+  * Fixed grid view filters not showing (Linux)
+  * Fixed text descriptions not wrapping
+  * Work around ERROR_UNTRUSTED_MOUNT_POINT
+  * Fixed bitmap buttons being shrinked (macOS)
+
+-------------------------------------------------------------------
 Sun Aug 30 10:05:37 UTC 2026 - munix9@googlemail.com
 
 - Update to 14.11:

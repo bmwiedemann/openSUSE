@@ -82,7 +82,7 @@ Index: FreeFileSync-14.10/zen/zstring.cpp
 --- FreeFileSync-14.10.orig/zen/zstring.cpp
 +++ FreeFileSync-14.10/zen/zstring.cpp
 @@ -25,7 +25,11 @@ Zstring getUnicodeNormalForm_NonAsciiVal
-         gchar* strNorm = ::g_utf8_normalize(str.c_str(), str.length(), form == UnicodeNormalForm::nfc ? G_NORMALIZE_NFC : G_NORMALIZE_NFD);
+         gchar* strNorm = ::g_utf8_normalize(str.c_str(), str.size(), form == UnicodeNormalForm::nfc ? G_NORMALIZE_NFC : G_NORMALIZE_NFD);
          if (!strNorm)
              throw SysError(formatSystemError("g_utf8_normalize", L"", L"Conversion failed."));
 +#ifdef g_free
@@ -91,5 +91,5 @@ Index: FreeFileSync-14.10/zen/zstring.cpp
          ZEN_ON_SCOPE_EXIT(::g_free(strNorm));
 +#endif
  
-         const std::string_view strNormView(strNorm, strLength(strNorm));
+         const std::string_view strNormView(strNorm, strSize(strNorm));
  

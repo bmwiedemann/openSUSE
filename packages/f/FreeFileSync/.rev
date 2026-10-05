@@ -393,4 +393,24 @@ It would be nice to have this application available in the default repos. </comm
     <comment>1</comment>
     <requestid>1374888</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>33ab17f3a5a555bb94834bd5bd897a44</srcmd5>
+    <version>14.12</version>
+    <time>1791206500</time>
+    <user>anag_factory</user>
+    <comment>- Add FreeFileSync-wxstring-char-type.patch
+  * Fix build with wxWidgets 3.2: wxString::c_str() converts to both
+    const char* and const wchar_t*, making GetCharTypeImpl ambiguous
+- Add FreeFileSync-libssh2-no-store-overflow.patch
+  * Fix build with libssh2 &lt;= 1.11.1 (no LIBSSH2_ERROR_STORE_OVERFLOW)
+- Update to 14.12:
+  * Further reduced size of database files by 16%
+  * Improved toggle button layout calculations
+  * Fixed grid view filters not showing (Linux)
+  * Fixed text descriptions not wrapping
+  * Work around ERROR_UNTRUSTED_MOUNT_POINT
+  * Fixed bitmap buttons being shrinked (macOS)
+</comment>
+    <requestid>1382490</requestid>
+  </revision>
 </revisionlist>

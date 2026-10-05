@@ -1,0 +1,39 @@
+diff -ruN a/zen/string_traits.h b/zen/string_traits.h
+--- a/zen/string_traits.h
++++ b/zen/string_traits.h
+@@ -46,18 +46,27 @@
+ class GetCharTypeImpl;
+ 
+ 
++template <class S, class Char> //test if result of S::c_str() can convert to const Char*
++class HasConversion
++{
++    using Yes = char[1];
++    using No  = char[2];
++
++    static Yes& hasConversion(const Char*);
++    static  No& hasConversion(...);
++
++public:
++    static constexpr bool value = sizeof(hasConversion(std::declval<S>().c_str())) == sizeof(Yes);
++};
++
++
+ template <class S>
+ class GetCharTypeImpl<S, StringType::class_>
+ {
+-    static char    conversionType(const char*);
+-    static wchar_t conversionType(const wchar_t*);
+-    //static char8_t  conversionType(const char8_t*);
+-    //static char16_t conversionType(const char16_t*);
+-    //static char32_t conversionType(const char32_t*);
+-    static void    conversionType(...);
+-
+ public:
+-    using Type = decltype(conversionType(std::declval<S>().c_str()));
++    //wchar_t is tested first: wxString::c_str() returns a proxy (wxCStrData) which converts to *both* const char* and const wchar_t*
++    using Type = std::conditional_t<HasConversion<S, wchar_t>::value, wchar_t,
++          /**/   std::conditional_t<HasConversion<S, char   >::value, char, void>>;
+     //using Type = typename S::value_type;
+     /*DON'T use S::value_type:
+         1. support Glib::ustring: value_type is "unsigned int" but c_str() returns "const char*"

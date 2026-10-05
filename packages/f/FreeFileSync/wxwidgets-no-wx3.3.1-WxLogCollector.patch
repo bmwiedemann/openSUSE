@@ -1,22 +1,6 @@
-From: Fab Stz <fabstz-it@yahoo.fr>
-Date: Wed, 1 Jul 2026 10:26:39 +0200
-Subject: Revert to WxLog instead of WxLogCollector
-
-WxLogCollector appeared is wxWidgets 3.3.1 & FreeFileSync 14.10
-
-This reverts to the way it worked in FreeFileSync 14.9
----
- FreeFileSync/Source/localization.cpp            | 8 +-------
- FreeFileSync/Source/ui/batch_status_handler.cpp | 6 +++---
- FreeFileSync/Source/ui/gui_status_handler.cpp   | 7 +++----
- FreeFileSync/Source/ui/main_dlg.cpp             | 7 +++----
- wx+/image_resources.cpp                         | 8 +-------
- 5 files changed, 11 insertions(+), 25 deletions(-)
-
-diff --git a/FreeFileSync/Source/localization.cpp b/FreeFileSync/Source/localization.cpp
-index 31379c5..5d8dac6 100644
---- a/FreeFileSync/Source/localization.cpp
-+++ b/FreeFileSync/Source/localization.cpp
+diff -ruN a/FreeFileSync/Source/localization.cpp b/FreeFileSync/Source/localization.cpp
+--- a/FreeFileSync/Source/localization.cpp	2026-10-05 11:23:23.983134803 +0200
++++ b/FreeFileSync/Source/localization.cpp	2026-10-05 11:23:24.003523570 +0200
 @@ -8,7 +8,6 @@
  #include <clocale> //setlocale
  #include <zen/file_traverser.h>
@@ -25,7 +9,7 @@ index 31379c5..5d8dac6 100644
  #include <wx/zipstrm.h>
  #include <wx/mstream.h>
  #include <wx/uilocale.h>
-@@ -129,8 +128,6 @@ std::vector<TranslationInfo> loadTranslations(const Zstring& zipPath) //throw Fi
+@@ -129,8 +128,6 @@
          }
          //-------------------------------------------------------------
  
@@ -34,7 +18,7 @@ index 31379c5..5d8dac6 100644
          wxMemoryInputStream byteStream(rawStream.c_str(), rawStream.size()); //does not take ownership
          wxZipInputStream zipStream(byteStream, wxConvUTF8);
  
-@@ -151,11 +148,8 @@ std::vector<TranslationInfo> loadTranslations(const Zstring& zipPath) //throw Fi
+@@ -151,11 +148,8 @@
                  streams.emplace_back(zipPath + Zstr(':') + utfTo<Zstring>(entry->GetName()), std::move(stream));
              }
              else
@@ -43,15 +27,14 @@ index 31379c5..5d8dac6 100644
          }
 -
 -        if (zipStream.GetLastError() != wxSTREAM_EOF || !zipLog.GetMessages().empty())
--             throw FileError(replaceCpy(_("Cannot read file %x."), L"%x", fmtPath(zipPath)), utfTo<std::wstring>(zipLog.GetMessages()));
+-            throw FileError(replaceCpy(_("Cannot read file %x."), L"%x", fmtPath(zipPath)), utfTo<std::wstring>(zipLog.GetMessages()));
      }();
      //--------------------------------------------------------------------
  
-diff --git a/FreeFileSync/Source/ui/batch_status_handler.cpp b/FreeFileSync/Source/ui/batch_status_handler.cpp
-index 88f722b..b065b3b 100644
---- a/FreeFileSync/Source/ui/batch_status_handler.cpp
-+++ b/FreeFileSync/Source/ui/batch_status_handler.cpp
-@@ -190,12 +190,12 @@ BatchStatusHandler::DlgOptions BatchStatusHandler::showResult()
+diff -ruN a/FreeFileSync/Source/ui/batch_status_handler.cpp b/FreeFileSync/Source/ui/batch_status_handler.cpp
+--- a/FreeFileSync/Source/ui/batch_status_handler.cpp	2026-10-05 11:23:23.980777739 +0200
++++ b/FreeFileSync/Source/ui/batch_status_handler.cpp	2026-10-05 11:23:24.002664094 +0200
+@@ -190,12 +190,12 @@
      else if (!suspend && !autoClose && //only play when actually showing results dialog
               !soundFileSyncComplete_.empty())
      {
@@ -67,15 +50,14 @@ index 88f722b..b065b3b 100644
      }
      //if (::GetForegroundWindow() != GetHWND())
      //    RequestUserAttention(); -> probably too much since task bar is already colorized with Taskbar::Status::error or Status::normal
-diff --git a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
-index 15fed1f..3dce443 100644
---- a/FreeFileSync/Source/ui/gui_status_handler.cpp
-+++ b/FreeFileSync/Source/ui/gui_status_handler.cpp
-@@ -515,12 +515,11 @@ StatusHandlerFloatingDialog::DlgOptions StatusHandlerFloatingDialog::showResult(
+diff -ruN a/FreeFileSync/Source/ui/gui_status_handler.cpp b/FreeFileSync/Source/ui/gui_status_handler.cpp
+--- a/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-05 11:23:23.981591100 +0200
++++ b/FreeFileSync/Source/ui/gui_status_handler.cpp	2026-10-05 11:23:24.001916292 +0200
+@@ -508,12 +508,11 @@
      if (!taskCancelled() && !suspend && !autoClose && //only play when actually showing results dialog
          !soundFileSyncComplete_.empty())
      {
--                wxLogCollector soundLog; //wxWidgets shows modal error dialog by default => "no, wxWidgets, NO!"
+-        wxLogCollector soundLog; //wxWidgets shows modal error dialog by default => "no, wxWidgets, NO!"
 +        //wxWidgets shows modal error dialog by default => "no, wxWidgets, NO!"
 +        wxLog* oldLogTarget = wxLog::SetActiveTarget(new wxLogStderr); //transfer and receive ownership!
 +        ZEN_ON_SCOPE_EXIT(delete wxLog::SetActiveTarget(oldLogTarget));
@@ -87,11 +69,10 @@ index 15fed1f..3dce443 100644
      }
      //if (::GetForegroundWindow() != GetHWND())
      //    RequestUserAttention(); -> probably too much since task bar is already colorized with Taskbar::Status::error or Status::normal
-diff --git a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
-index 9300767..bc3e88d 100644
---- a/FreeFileSync/Source/ui/main_dlg.cpp
-+++ b/FreeFileSync/Source/ui/main_dlg.cpp
-@@ -4622,12 +4622,11 @@ void MainDialog::onCompare(wxCommandEvent& event)
+diff -ruN a/FreeFileSync/Source/ui/main_dlg.cpp b/FreeFileSync/Source/ui/main_dlg.cpp
+--- a/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-05 11:23:23.981832066 +0200
++++ b/FreeFileSync/Source/ui/main_dlg.cpp	2026-10-05 11:23:24.002832207 +0200
+@@ -4614,12 +4614,11 @@
          //play (optional) sound notification
          if (!globalCfg_.soundFileCompareFinished.empty())
          {
@@ -107,10 +88,9 @@ index 9300767..bc3e88d 100644
          }
      }
      catch (CancelProcess&) {}
-diff --git a/wx+/image_resources.cpp b/wx+/image_resources.cpp
-index 2df8282..e672d05 100644
---- a/wx+/image_resources.cpp
-+++ b/wx+/image_resources.cpp
+diff -ruN a/wx+/image_resources.cpp b/wx+/image_resources.cpp
+--- a/wx+/image_resources.cpp	2026-10-05 11:23:23.987369636 +0200
++++ b/wx+/image_resources.cpp	2026-10-05 11:23:24.007936155 +0200
 @@ -9,7 +9,6 @@
  #include <zen/thread.h>
  #include <zen/file_io.h>
@@ -119,7 +99,7 @@ index 2df8282..e672d05 100644
  #include <wx/mstream.h>
  #include <wx/zipstrm.h>
  #include <xBRZ/src/xbrz.h>
-@@ -202,8 +201,6 @@ ImageBuffer::ImageBuffer(const Zstring& zipPath) //throw FileError
+@@ -204,8 +203,6 @@
          }
      //--------------------------------------------------------------------
  
@@ -128,7 +108,7 @@ index 2df8282..e672d05 100644
          //wxFFileInputStream/wxZipInputStream loads in junks of 512 bytes => WTF!!! => implement sane file loading:
          wxMemoryInputStream memStream(rawStream.c_str(), rawStream.size()); //does not take ownership
          wxZipInputStream zipStream(memStream, wxConvUTF8);
-@@ -220,10 +217,7 @@ ImageBuffer::ImageBuffer(const Zstring& zipPath) //throw FileError
+@@ -222,10 +219,7 @@
                  streams.emplace_back(utfTo<Zstring>(entry->GetName()), std::move(stream));
              }
              else

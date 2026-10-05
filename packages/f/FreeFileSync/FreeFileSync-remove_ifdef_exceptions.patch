@@ -1,23 +1,22 @@
-Index: FreeFileSync-14.8/FreeFileSync/Source/application.cpp
+Index: FreeFileSync-14.12/FreeFileSync/Source/application.cpp
 ===================================================================
---- FreeFileSync-14.8.orig/FreeFileSync/Source/application.cpp
-+++ FreeFileSync-14.8/FreeFileSync/Source/application.cpp
-@@ -222,10 +222,6 @@ wxLayoutDirection Application::GetLayout
+--- FreeFileSync-14.12.orig/FreeFileSync/Source/application.cpp
++++ FreeFileSync-14.12/FreeFileSync/Source/application.cpp
+@@ -232,9 +232,6 @@ wxLayoutDirection Application::GetLayout
  
  int Application::OnRun()
  {
 -#if wxUSE_EXCEPTIONS
 -#error why is wxWidgets uncaught exception handling enabled!?
 -#endif
--
-     //exception => Windows: let it crash and create mini dump!!! Linux/macOS: std::exception::what() logged to console
+     //exception? => Windows: let it crash and create mini dump!!! Linux/macOS: std::exception::what() logged to console
+ 
          [[maybe_unused]] const int rc = wxApp::OnRun();
-     return static_cast<int>(exitCode_);
-Index: FreeFileSync-14.8/FreeFileSync/Source/RealTimeSync/application.cpp
+Index: FreeFileSync-14.12/FreeFileSync/Source/RealTimeSync/application.cpp
 ===================================================================
---- FreeFileSync-14.8.orig/FreeFileSync/Source/RealTimeSync/application.cpp
-+++ FreeFileSync-14.8/FreeFileSync/Source/RealTimeSync/application.cpp
-@@ -203,10 +203,6 @@ wxLayoutDirection Application::GetLayout
+--- FreeFileSync-14.12.orig/FreeFileSync/Source/RealTimeSync/application.cpp
++++ FreeFileSync-14.12/FreeFileSync/Source/RealTimeSync/application.cpp
+@@ -215,10 +215,6 @@ wxLayoutDirection Application::GetLayout
  
  int Application::OnRun()
  {
