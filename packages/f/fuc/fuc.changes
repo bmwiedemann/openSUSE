@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 09:19:52 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 3.2.1:
+  * Handle cpz -l packet loss on NFSv3 (make hardlinks idempotent
+    to avoid spurious EEXIST errors)
+  * Fix off-by-one error
+  * Upgrade vendored dependencies
+- Switch _service mode to manual
+- Raise minimum Rust requirement to 1.88 per upstream Cargo.toml
+
+-------------------------------------------------------------------
 Mon Jul 13 13:17:27 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 3.2.0:

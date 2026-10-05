@@ -1,7 +1,7 @@
 #
 # spec file for package fuc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2026 Andreas Stieger <Andreas.Stieger@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,7 +18,7 @@
 
 
 Name:           fuc
-Version:        3.2.0
+Version:        3.2.1
 Release:        0
 Summary:        Modern unix commands focused on performance
 License:        Apache-2.0
@@ -27,7 +27,7 @@ Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
 # for cargo_install -p
 BuildRequires:  cargo-packaging >= 1.2.0
-BuildRequires:  rust >= 1.85
+BuildRequires:  rust >= 1.88
 ExclusiveArch:  %{rust_tier1_arches}
 
 %description
