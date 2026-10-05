@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 05 05:04:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.7:
+  * build(deps): bump chainguard.dev/sdk from 0.1.299 to 0.1.301
+    (#2542)
+  * build(deps): bump chainguard.dev/sdk from 0.1.293 to 0.1.299
+    (#2540)
+  * apk: make the in-memory index and resolver cache sizes
+    configurable (#2529)
+
+-------------------------------------------------------------------
 Thu Oct 01 04:59:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.6:
