@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sun Oct  4 18:05:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- update to 13.11.0:
+  * Add a release key to Platform.info(), holding the product
+    release on Windows, like 11, and None on other platforms.
+  * Detect the Korn shell from its ksh93 binary, which Fedora and
+    illumos link ksh to.
+  * Detect BusyBox's shell as ash, through Alpine's /bin/sh and
+    /bin/ash links or busybox sh, instead of matching no shell.
+  * Report the shell behind a bare sh on illumos, ksh93, and its
+    path.
+  * Log an unrecognized terminal at INFO instead of WARNING in SSH
+    sessions, and when TERM declares a dumb terminal, as NixOS and
+    FreeBSD do.
+  * Fix Platform.info() on Windows reporting the release (11) as
+    version: it now reports the NT version with its build number,
+    like 10.0.26100.
+  * Fix current_shell() reporting the login shell over a nearer
+    shell running the process, like a bash script launched from a
+    zsh session.
+  * Fix the process-tree shell detection on FreeBSD and illumos,
+    where ps printed the PID column alone.
+  * Fix current_shell_path() and the path of Shell.info() returning
+    the SHELL path of another shell when the running one shows no
+    path.
+  * Fix is_generic_linux() matching beside a distribution
+    identified without os-release, like SliTaz, which put both
+    platforms in current_traits().
+  * Fix extra-platforms section headers whose width varied with the
+    width of their icon.
+  * Fix test_current_funcs failing when a shell besides the running
+    one is detected: the SHELL login shell, like a Debian build
+    calling pytest from /bin/sh, or PowerShell from PSModulePath
+    under Windows cmd.
+  * Fix test_skip_linux, test_skip_macos, test_skip_ubuntu and
+    test_skip_windows failing on platforms other than Linux, macOS
+    and Windows, like FreeBSD.
+  * Skip the Sphinx cross-reference tests when the docs
+    dependencies are missing, instead of erroring on any system
+    shipping uv, like openSUSE.
+
+-------------------------------------------------------------------
 Sun Sep 20 10:16:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 13.10.1:
