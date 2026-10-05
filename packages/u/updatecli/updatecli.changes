@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:49:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.122.1:
+  * Bug Fixes
+    - fix(autodiscovery/golang): honour version filter for pseudo
+      versions (#10695)
+    - fix(yaml): support multiple yaml key wildcard (#10694)
+    - fix(core): generate reportID before templating (#10664)
+  * Maintenance
+    - deps(go): bump module github.com/drone/go-scm to v1.42.17
+      (#10704)
+    - deps(golang): Bump minor version for github.com/aws module
+      (#10711)
+    - chore(dockerfile): upgrade node version (#10665)
+    - chore: scan golang CVEs (#10641)
+    - chore: deps: update pnpm version to 12.8.2"
+    - chore: deps: update node version to 26.10.0"
+    - chore: deps: update pnpm version to 12.8.1"
+    - chore: docs: update issue template with Updatecli version to
+      v0.122.0
+
+-------------------------------------------------------------------
 Mon Sep 28 04:53:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.122.0:
