@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:51:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.12.1:
+  No CLI-related changes, only dependency updates:
+  * chore(deps): bump library/node from 26.8.1 to 26.10.0 (#7414)
+  * chore(deps/client): bump the go-patch group across 1 directory
+    with 3 updates (#7415)
+  * chore(deps/e2e): bump the go-patch group across 1 directory
+    with 2 updates (#7418)
+  * chore(deps): bump korthout/backport-action from 4.6.0 to 4.6.1
+    (#7421)
+  * chore(deps): bump the go-minor group with 5 updates (#7429)
+
+-------------------------------------------------------------------
 Thu Oct 01 05:19:50 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.12.0:
