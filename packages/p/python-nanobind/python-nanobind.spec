@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-nanobind
-Version:        2.15.0
+Version:        3.1.0
 Release:        0
 Summary:        Tiny And Efficient C++/Python Bindings
 License:        BSD-3-Clause
@@ -33,21 +33,12 @@ BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 
 ## req'd for tests
-%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
-BuildRequires:  gcc10-c++
-%else
 BuildRequires:  gcc-c++
-%endif
 BuildRequires:  eigen3-devel
 BuildRequires:  robin-map-devel >= 1.3.0, robin-map-devel < 2.0.0
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module numpy}
-BuildRequires:  %{python_module typing_extensions if %python-base < 3.11}
 BuildRequires:  %{python_module pytest}
-
-%if "%{python_flavor}" == "python310"
-Requires:       python310-typing_extensions
-%endif
 
 %python_subpackages
 
@@ -74,11 +65,7 @@ This package contains files for developing applications using nanobind.
 
 %package devel
 Summary:        Tiny And Efficient C++/Python Bindings
-%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
-Requires:       gcc10-c++
-%else
 Requires:       gcc-c++
-%endif
 Requires:       nanobind-common-devel = %{version}
 Requires:       python-devel
 Requires:       python-nanobind = %{version}
@@ -107,9 +94,6 @@ pushd ../build_$python
   -DNB_USE_SUBMODULE_DEPS=OFF \
   -DNB_TEST_SHARED_BUILD=ON \
   -DNB_TEST_STABLE_ABI=ON \
-%if 0%{?sle_version} >= 150500 && 0%{?is_opensuse}
-  -DCMAKE_CXX_COMPILER=g++-10 \
-%endif
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now" \
   -DPython_EXECUTABLE=%{_bindir}/$python
 %cmake_build CXX_INCLUDES="-I%{_includedir}/$python -I%{_builddir}/%{buildsubdir}/include -I%{_includedir}/eigen3"
