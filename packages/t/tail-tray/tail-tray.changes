@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:50:19 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.36:
+  * Bump version to 0.2.36
+  * Align new show window logic when double clicking the tray icon
+    as well
+  * Cancel a login without freezing the window (#139)
+  * Show the main window without asking to un-maximize it (#141)
+  * Log out without root and move on to another account (#140)
+  * Stay on the current tab after a login (#142)
+  * Show "Connecting..." in the tray while Tailscale starts (#143)
+  * Replace Preferences and About in the tray with Show Window /
+    Hide Window (#144)
+  * Use the Tail Tray icon for notifications (#145)
+  * Show the window when tail-tray is launched again (#146)
+  * Refresh the Devices tab on every status update (#132)
+  * Stay on the current tab when the connection comes back (#131)
+
+-------------------------------------------------------------------
 Tue Sep 29 04:53:04 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.35:
