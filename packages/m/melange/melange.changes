@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct 05 05:04:32 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.61.3:
+  * build(deps): bump the gomod group across 1 directory with 2
+    updates (#2680)
+
+-------------------------------------------------------------------
 Thu Oct 01 05:00:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.2:
