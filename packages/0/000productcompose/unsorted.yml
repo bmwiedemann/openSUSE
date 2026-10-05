@@ -8442,6 +8442,7 @@ unsorted:
   - guestfs-tools-bash-completion 
   - guestfs-tools-man-pages-ja 
   - guestfs-tools-man-pages-uk 
+  - gufo 
   - guice-assistedinject 
   - guice-bom 
   - guice-extensions 
@@ -11475,6 +11476,8 @@ unsorted:
   - libLerc4-32bit 
   - libLibreGraphAPI1 
   - libLimeSuite23_11-1 
+  - libMIOpen1 
+  - libMIOpen1-devel 
   - libMagick++-7_Q16HDRI5 
   - libMagick++-7_Q16HDRI5-32bit 
   - libMagick++-devel 
@@ -15442,15 +15445,15 @@ unsorted:
   - libopentimelineio18 
   - libopentracing-cpp1 
   - libopenvdb13_0 
-  - libopenvino2640 
-  - libopenvino_c2640 
-  - libopenvino_gguf_frontend2640 
-  - libopenvino_ir_frontend2640 
-  - libopenvino_onnx_frontend2640 
-  - libopenvino_paddle_frontend2640 
-  - libopenvino_pytorch_frontend2640 
-  - libopenvino_tensorflow_frontend2640 
-  - libopenvino_tensorflow_lite_frontend2640 
+  - libopenvino2641 
+  - libopenvino_c2641 
+  - libopenvino_gguf_frontend2641 
+  - libopenvino_ir_frontend2641 
+  - libopenvino_onnx_frontend2641 
+  - libopenvino_paddle_frontend2641 
+  - libopenvino_pytorch_frontend2641 
+  - libopenvino_tensorflow_frontend2641 
+  - libopenvino_tensorflow_lite_frontend2641 
   - libopenvswitch-3_7-0 
   - liboping-devel 
   - liboping0 
