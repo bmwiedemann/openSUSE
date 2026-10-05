@@ -160,4 +160,20 @@
   * Used new license format defined in PEP 639 to accommodate</comment>
     <requestid>1337524</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>f678b7af57371a1282850641f3fdcfec</srcmd5>
+    <version>2.2.1</version>
+    <time>1791197800</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.2.1:
+  * Dev: Fixed link to change log on GitHub release page.
+  * Development: Tolerate premature deletion of local
+    release/start branches.
+  * Docs: Migrated from our own support for generating summary
+    tables in the documentation to using autodocsumm to fix an
+    import error with Sphinx 9.
+  * Development: Upgraded GitHub Actions plugins to versions that
+    use node.js 24.</comment>
+    <requestid>1382325</requestid>
+  </revision>
 </revisionlist>

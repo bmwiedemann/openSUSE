@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:39:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.2.1:
+  * Dev: Fixed link to change log on GitHub release page.
+  * Development: Tolerate premature deletion of local
+    release/start branches.
+  * Docs: Migrated from our own support for generating summary
+    tables in the documentation to using autodocsumm to fix an
+    import error with Sphinx 9.
+  * Development: Upgraded GitHub Actions plugins to versions that
+    use node.js 24.
+
+-------------------------------------------------------------------
 Sun Mar  8 20:51:54 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.2.0:
