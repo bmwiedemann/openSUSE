@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:10:30 UTC 2026 - Ansgar Esztermann <aeszter@gwdg.de>
+
+- update to 4.5.14
+  * Fix vulnerabilities in notification macros, which are now being sanitized (Thanks Zach Hanley of Horizon3.ai) (Emmett Kapsner)
+  * Fix vulnerabilities in jsonquery.js (Thanks Zach Hanley of Horizon3.ai) (Emmett Kapsner)
+  * Fix reflected XSS in cmd.cgi (Thanks Zach Hanley of Horizon3.ai) (Emmett Kapsner)
+  * Fix vulnerabilities in CSRF cookie (Thanks Zach Hanley of Horizon3.ai) (Emmett Kapsner)
+  * Fix an issue where a last check time in the future would stop checks from running (Doug Nazar)
+
+- changes from 4.5.13
+  * Add cgi_cookie_fail_open config option that allows for third-party integrations to use cmd.cgi (Emmett Kapsner)
+  * Fix vulnerabilities in CSRF cookie in cmd.cgi (Thanks SeungMyung Lee) (Emmett Kapsner)
+  * Fix vulnerabilities in custom variables and add missing sanitization (Thanks Gabriel "Texugo" Rodrigues) (Emmett Kapsner)
+
+-------------------------------------------------------------------
 Mon Aug 10 12:06:09 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Mark /var/spool/nagios as %verify(not mode): set_permissions is
