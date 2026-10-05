@@ -217,4 +217,13 @@
   * New customizable variable jinx-save-prop-line.</comment>
     <requestid>1371839</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e9568298b598e645fa6b4fb8b37a008d</srcmd5>
+    <version>2.11</version>
+    <time>1791197704</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.11:
+  * New command jinx-occur which lists all misspelled words in a separate buffer</comment>
+    <requestid>1382274</requestid>
+  </revision>
 </revisionlist>

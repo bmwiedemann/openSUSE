@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 03 20:34:22 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
+
+- Update to version 2.11:
+  * New command jinx-occur which lists all misspelled words in a separate buffer
+
+-------------------------------------------------------------------
 Tue Aug 18 19:19:54 UTC 2026 - Björn Kettunen <bjorn.kettunen@thaodan.de>
 
 - Update to version 2.10:
