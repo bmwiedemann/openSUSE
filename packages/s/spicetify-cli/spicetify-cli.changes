@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:47:29 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 2.45.3:
+  * fix(preprocess): stop context menu match from spanning functions (#4015)
+  * fix: restore legacy fixed-width grid layouts
+  * chore(deps): bump golang.org/x/sys from 0.47.0 to 0.48.0 (#3992)
+  * feat: add support for Spotify `1.3.3`
+  * feat(css-map): add new css mappings for spotify 1.3.3 (#3996)
+  * fix(types): correct `AppTitle.set` return type (#3966)
+  * chore(deps): bump golang.org/x/net from 0.57.0 to 0.58.0 (#3913)
+  * fix(wrapper): update version check in `addProxyCosmos` and `applyScrollingFix` (#3962)
+  * fix(css-map): add missing class mappings (#3964)
+  * fix(css-map): update dj-button mapping (#3960)
+
+-------------------------------------------------------------------
 Thu Sep 17 13:57:05 UTC 2026 - Khang Lê <neyfua@proton.me>
 
 - Update to version 2.45.1:
