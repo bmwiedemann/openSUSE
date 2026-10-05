@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  1 12:18:07 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.1.1:
+  * Upstream rebuilds with Go 1.25.11, closing compiler/stdlib
+    CVE-2025-68121 and CVE-2026-27143 (GO-2026-4337, GO-2026-4868);
+    not applicable here, as this package always builds with
+    Factory's current Go toolchain (already >= 1.25.9)
+- Update to version 1.1.0:
+  * Support setting config flags via environment variables
+    (METRICS_ENDPOINT, SCRAPE_URI, HOST_OVERRIDE, INSECURE)
+  * Bump prometheus/common to 0.68.1, exporter-toolkit to 0.16.0
+    and golang.org/x dependencies
+  * Require Go >= 1.25 (go.mod)
+  * Fix Quay.io repository name in README
+- Update to version 1.0.12:
+  * Bump prometheus/client_golang to 1.23.2, prometheus/common to
+    0.67.5, exporter-toolkit to 0.15.1 and golang.org/x/{crypto,
+    net,oauth2} dependencies
+  * Require Go >= 1.24 (go.mod)
+- Update to version 1.0.11:
+  * Fix default --scrape_uri to match mod_status' documented GET-
+    param form (drop the stray path-style trailing slash before
+    ?auto)
+  * Bump prometheus/client_golang to 1.22.0
+- Raise the Go build floor to >= 1.25, matching upstream's go.mod
+  minimum (was >= 1.23)
+- Spec cleanup (spec-cleaner pass): drop the obsolete Group: tag
+  and %defattr, and normalize %systemd_post/%systemd_postun to
+  brace form
+
+-------------------------------------------------------------------
 Tue Jan 27 13:20:16 UTC 2026 - Witek Bedyk <witold.bedyk@suse.com>
 
 - Do not build for Debian or Ubuntu

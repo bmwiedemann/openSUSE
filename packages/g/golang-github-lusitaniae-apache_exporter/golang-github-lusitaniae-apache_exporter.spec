@@ -17,6 +17,11 @@
 #
 
 
+# Templating vars to simplify and standardize Prometheus exporters spec files
+%define	githubrepo    github.com/lusitaniae/apache_exporter
+%define	upstreamname  apache_exporter
+%define	targetname    prometheus-apache_exporter
+%define	serviceuser   prometheus
 %if 0%{?rhel}
 %if 0%{?rhel} >= 8
 # Found compressed .debug_abbrev section, not attempting dwz compression
@@ -26,31 +31,21 @@
 # Fix ERROR: No build ID note found in
 %undefine _missing_build_ids_terminate_build
 %endif
-
 %if 0%{?suse_version} && 0%{?suse_version} < 1600
 %bcond_without apparmor
 %else
 %bcond_with apparmor
 %endif
-
 %if %{with apparmor} && 0%{?suse_version} > 1320
 %bcond_without apparmor_reload
 %else
 %bcond_with apparmor_reload
 %endif
-
-# Templating vars to simplify and standardize Prometheus exporters spec files
-%define	githubrepo    github.com/lusitaniae/apache_exporter
-%define	upstreamname  apache_exporter
-%define	targetname    prometheus-apache_exporter
-%define	serviceuser   prometheus
-
 Name:           golang-github-lusitaniae-apache_exporter
-Version:        1.0.10
+Version:        1.1.1
 Release:        0
 Summary:        Apache Exporter for Prometheus
 License:        MIT
-Group:          System/Management
 URL:            https://%{githubrepo}
 Source:         %{URL}/archive/refs/tags/v%{version}.tar.gz#/%{upstreamname}-%{version}.tar.gz
 Source1:        vendor.tar.gz
@@ -58,11 +53,13 @@ Source2:        %{targetname}.service
 Source3:        apparmor-usr.bin.%{targetname}
 BuildRequires:  fdupes
 BuildRequires:  golang-github-prometheus-promu
+ExcludeArch:    s390
+%{?systemd_ordering}
 %if 0%{?rhel}
 BuildRequires:  golang >= 1.20
 Requires(pre):  shadow-utils
 %else
-BuildRequires:  golang(API) >= 1.23
+BuildRequires:  golang(API) >= 1.25
 Requires(pre):  shadow
 %if %{with apparmor}
 %if %{with apparmor_reload}
@@ -74,9 +71,6 @@ BuildRequires:  apparmor-profiles
 %endif
 %endif
 %endif
-ExcludeArch:    s390
-%{?systemd_ordering}
-
 %if 0%{?debian} || 0%{?ubuntu}
 ExclusiveArch:  do_not_build
 %endif
@@ -105,7 +99,7 @@ install -m 0644 %{SOURCE3} %{buildroot}%{_sysconfdir}/apparmor.d/usr.bin.%{targe
 %check
 %if 0%{?rhel}
 # Fix OBS debug_package execution.
-rm -f %{buildroot}/usr/lib/debug%{_bindir}/%{targetname}-%{version}-*.debug
+rm -f %{buildroot}%{_prefix}/lib/debug%{_bindir}/%{targetname}-%{version}-*.debug
 rm -rf %{buildroot}%{_usrsrc}/debug/%{name}-%{version}-*
 %endif
 
@@ -118,7 +112,7 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 
 %post
 %if 0%{?rhel}
-%systemd_post %{targetname}.service
+%{systemd_post} %{targetname}.service
 %else
 %service_add_post %{targetname}.service
 %if %{with apparmor_reload}
@@ -135,13 +129,12 @@ getent passwd %{serviceuser} >/dev/null || %{_sbindir}/useradd -r -g %{serviceus
 
 %postun
 %if 0%{?rhel}
-%systemd_postun %{targetname}.service
+%{systemd_postun} %{targetname}.service
 %else
 %service_del_postun %{targetname}.service
 %endif
 
 %files
-%defattr(-,root,root,-)
 %doc README.md
 %license LICENSE
 %{_bindir}/%{targetname}
