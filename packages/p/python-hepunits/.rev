@@ -89,4 +89,18 @@
   * chore: add an AGENTS file</comment>
     <requestid>1363818</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>7689c1c465ee8b51c671cc5400e4e5de</srcmd5>
+    <version>2.4.7</version>
+    <time>1791197812</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.4.7:
+  * Support Python 3.15 and update pytest dependencies
+  * Remove a few ruff.lint.per-file-ignores
+  * chore(deps): update pre-commit hooks
+  * chore(deps): bump the actions group
+  * chore(deps): bump astral-sh/setup-uv from 9.0.0 to 10.0.1 in
+    the actions group</comment>
+    <requestid>1382330</requestid>
+  </revision>
 </revisionlist>

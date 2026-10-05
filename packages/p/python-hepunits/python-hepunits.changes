@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:44:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.4.7:
+  * Support Python 3.15 and update pytest dependencies
+  * Remove a few ruff.lint.per-file-ignores
+  * chore(deps): update pre-commit hooks
+  * chore(deps): bump the actions group
+  * chore(deps): bump astral-sh/setup-uv from 9.0.0 to 10.0.1 in
+    the actions group
+
+-------------------------------------------------------------------
 Sun Jul  5 08:53:44 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.4.6:
