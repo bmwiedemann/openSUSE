@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Sun Oct  4 01:40:03 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
+
+- Improved GroupQueryAttention support for large language models
+  served through the ONNX frontend:
+  * Added causal-attention and partial rotary-embedding support to
+    GroupQueryAttention, broadening coverage of modern LLMs.
+  * Extended MatMulNBits with bfloat16 support and reordered
+    weight/scale/zero-point layouts for correct decoding of more
+    quantized models.
+  * Fixed correctness issues in the sliding-window KV-cache path
+    that could produce wrong results:
+    + an out-of-bounds ScatterUpdate index that could cause memory
+      corruption or a driver crash on GPUs,
+    + incorrect Gather shape inference for f8e4m3 and other
+      low-precision data types (f8e4m3 Gather is now enabled
+      for the windowed KV-cache).
+- Fixed issues:
+  * GPU:
+    + Fixed wrong or corrupted results when using remote
+      (zero-copy) output tensors with a transpose at the model
+      output under dynamic shapes.
+    + Fixed GRU sequence (RNN) models producing incorrect results
+      with dynamic shapes, and corrected blocked-format reorder
+      offsets.
+    + Fixed recursive layout/format propagation through Reshape
+      nodes during GPU graph compilation.
+  * NPU:
+    + Hardened compiled-blob import against malformed or forged
+      blobs: fixed a possible integer overflow in metadata
+      parsing, bounded recursion in the compatibility-string
+      parser, and rejected forged blobs on import.
+  * CPU:
+    + The OV_CPU_MAX_ISA instruction-set cap now works in release
+      builds (previously debug-only) and is modeled as a feature
+      bitmask.
+    + Aligned JIT kernel selection with the OV_CPU_MAX_ISA cap so
+      operators produce correct results when the ISA is capped.
+  * Core / Frontends:
+    + Hardened operators against malformed inputs: added index
+      validation to ScatterElementsUpdate, divide-by-zero and
+      overflow guards to Col2Im shape inference, and axes
+      validation preventing a potential out-of-bounds write in
+      the ONNX Pad operator
+
+-------------------------------------------------------------------
 Fri Sep 25 03:27:50 UTC 2026 - Alessandro de Oliveira Faria <cabelo@opensuse.org>
 
 - Added GGUF frontend dependency.

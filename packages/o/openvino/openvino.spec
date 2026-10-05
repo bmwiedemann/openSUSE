@@ -25,13 +25,13 @@
 %define pythons python3
 %endif
 %define __builder ninja
-%define so_ver 2640
+%define so_ver 2641
 %define shlib lib%{name}%{so_ver}
 %define shlib_c lib%{name}_c%{so_ver}
 %define prj_name OpenVINO
 
 Name:           openvino
-Version:        2026.4.0
+Version:        2026.4.1
 Release:        0
 Summary:        A toolkit for optimizing and deploying AI inference
 # Let's be safe and put all third party licenses here, no matter that we use specific thirdparty libs or not
