@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:44:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.38.0:
+  * _This release is published under the BSD-2-Clause License._
+  * Implement SeekableFileObject.readline for Pillow HTTP streams
+  * Multi-frame writes through pyav fail with av 18.1.0
+  * Solve "prefer_uint8=False upcast uint8 to int16"
+  * Document the actual return value of immeta
+  * V3 Plugin for pydicom
+  * Bump soupsieve from 2.8.4 to 2.9
+  * Make FormatManager tests independent of imageio-ffmpeg
+    (#1013)
+
+-------------------------------------------------------------------
 Fri Aug 21 10:04:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.37.4:

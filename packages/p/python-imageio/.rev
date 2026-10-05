@@ -246,4 +246,21 @@
   * Update CI to support new dependency versions</comment>
     <requestid>1372788</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>70ffec3d2cf0893ebe6bf1aa432b0125</srcmd5>
+    <version>2.38.0</version>
+    <time>1791197810</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.38.0:
+  * _This release is published under the BSD-2-Clause License._
+  * Implement SeekableFileObject.readline for Pillow HTTP streams
+  * Multi-frame writes through pyav fail with av 18.1.0
+  * Solve &quot;prefer_uint8=False upcast uint8 to int16&quot;
+  * Document the actual return value of immeta
+  * V3 Plugin for pydicom
+  * Bump soupsieve from 2.8.4 to 2.9
+  * Make FormatManager tests independent of imageio-ffmpeg
+    (#1013)</comment>
+    <requestid>1382331</requestid>
+  </revision>
 </revisionlist>
