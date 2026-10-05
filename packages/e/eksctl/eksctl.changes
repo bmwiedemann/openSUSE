@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Oct 04 16:51:51 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.231.0:
+  * Features
+    - Add connectionTracking support to nodegroup config (#8872)
+    - Add TerminatedPodGcThreshold to control plane component
+      config (#8853)
+    - Add support for vpc.controlPlaneOnPrivateSubnets (#8793)
+  * Improvements
+    - chore: harden addon warning logging and empty drain (#8869)
+    - ci: harden the release pipeline — isolate EKSCTLBOT_TOKEN,
+      sign releases, publish SBOMs (#8863)
+    - ci: pass workflow inputs to run steps via env vars (#8860)
+  * Bug Fixes
+    - fix: resolve latest addon version before pod identity lookup
+      (#8867)
+    - chore: harden addon warning logging and empty drain (#8869)
+    - fix: use interruptionQueue Helm value for Karpenter >=
+      v0.33.0 (#8844)
+    - Grant ec2:DescribeSecurityGroups to the IPv6 VPC CNI role
+      (#8837)
+  * Maintenance
+    - ci: harden the release pipeline — isolate EKSCTLBOT_TOKEN,
+      sign releases, publish SBOMs (#8863)
+    - ci: pass workflow inputs to run steps via env vars (#8860)
+    - Update ec2-info (#8854)
+    - Update coredns (#8842)
+    - Update coredns (#8841)
+    - Update nvidia-device-plugin to v0.20.0 (#8840)
+  * Documentation
+    - docs: explain addon version differences (#8868)
+  * Dependencies
+    - Build(deps): Bump aws-actions/amazon-ecr-login from 2.1.6 to
+      2.1.7 in the actions-minor-patch group (#8846)
+    - Build(deps): Bump github.com/containerd/containerd from
+      1.7.33 to 1.7.35 (#8857)
+    - Build(deps): Bump google.golang.org/grpc from 1.82.1 to
+      1.83.1 (#8852)
+    - Build(deps): Bump google.golang.org/grpc from 1.83.1 to
+      1.83.2 (#8855)
+    - Build(deps): Bump the aws-sdk group with 18 updates (#8847)
+    - Build(deps): Bump the go-minor-patch group across 1 directory
+      with 4 updates (#8848)
+    - Build(deps): Bump the test-tooling group with 3 updates
+      (#8845)
+
+-------------------------------------------------------------------
 Fri Aug 28 06:41:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.230.0:
