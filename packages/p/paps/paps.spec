@@ -1,7 +1,7 @@
 #
 # spec file for package paps
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,21 +17,20 @@
 
 
 Name:           paps
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A text to postscript converter through pango
 License:        LGPL-2.0-only
 Group:          System/Base
 URL:            https://github.com/dov/paps
-Source:         https://github.com/dov/paps/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source:         https://github.com/dov/paps/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Patch0:         paps-header_features.patch
-Patch1:         71.patch
 # PATCH-FIX-UPSTREAM no-python2.patch gh#dov/paps!75 mcepl@suse.com
-# Remove dependency on python 2
+# Now we remove dependency on env
 Patch2:         no-python2.patch
-Patch3:         paps-0.8.0-localtime.patch
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
+BuildRequires:  libpaper-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  pkgconfig(cairo)
 BuildRequires:  pkgconfig(fmt)

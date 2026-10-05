@@ -108,4 +108,33 @@
   * Fix missing localtime in (lib)fmt</comment>
     <requestid>1307655</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>8b6b2767236e27f884869568a9da1d76</srcmd5>
+    <version>0.8.1</version>
+    <time>1791209929</time>
+    <user>anag_factory</user>
+    <comment>- Update to paps 0.8.1
+  * Added --booklet and --signature for two-column booklet imposition
+    (works with --rtl, header and footer are drawn per column).
+  * Added --geometry COLSxROWS; the font is scaled down to fit the row height.
+  * Added --inkscape-multipage for SVG output with pages side by side,
+    and --page-gap.
+  * Re-enabled --stretch-chars; the stretch is applied per line.
+  * Fixed markup spanning line breaks and --cpi clipping of markup.
+  * Date formatting in headers/footers is now localized.
+  * Fixed memory leaks reported by AddressSanitizer.
+  * Use libpaper for paper sizes, added libtool, and an option to disable NLS.
+  * Build fixes: glib 2.82, fmt 11.2 (fmt::localtime), BSD with NLS,
+    and unused-result warnings.
+  * src-to-paps is now Python 3 and uses a portable shebang.
+  * Documented landscape handling and PDF/SVG support.
+- Remove patches now upstream
+  * 71.patch
+  * paps-0.8.0-localtime.patch
+- Port patch no-python2.patch
+  * now avoid /usr/bin/env
+- Port patch
+  * paps-header_features.patch</comment>
+    <requestid>1382556</requestid>
+  </revision>
 </revisionlist>

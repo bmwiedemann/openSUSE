@@ -26,7 +26,7 @@
  marking parts of the text with tags defining additional attributes such as font
 --- a/src/paps.cc
 +++ b/src/paps.cc
-@@ -71,6 +71,8 @@ using namespace fmt;
+@@ -73,6 +73,8 @@ using namespace std;
  #define DEFAULT_FONT_SIZE       "12"
  #define HEADER_FONT_FAMILY      "Monospace Bold"
  #define HEADER_FONT_SCALE       "12"
@@ -35,7 +35,7 @@
  #define MAKE_FONT_NAME(f,s)     f " " s
  
  /*
-@@ -155,6 +157,8 @@ struct PageLayout {
+@@ -146,6 +148,8 @@ struct PageLayout {
    char* footer_center = nullptr;
    char* footer_right = nullptr;
    string header_font_desc;
@@ -43,9 +43,9 @@
 +  gdouble header_rule_thickness;
    gdouble lpi;
    gdouble cpi;
-   dict_t document_info;
-@@ -234,7 +238,7 @@ copy_pango_parse_enum (GType       type,
- 		   char      **possible_values);
+   int geometry_cols;  /* Requested characters per column line. 0 if unset */
+@@ -228,7 +232,7 @@ copy_pango_parse_enum (GType       type,
+                    char      **possible_values);
  
  static char* get_encoding(void);
 -string get_date();
@@ -53,7 +53,7 @@
  string fn_basename(const string& filename);
  
  FILE *output_fh;
-@@ -581,6 +585,9 @@ int main(int argc, char *argv[])
+@@ -690,6 +694,9 @@ int main(int argc, char *argv[])
    int gutter_width = 40;
    gboolean do_fatal_warnings = false;
    const gchar *font = MAKE_FONT_NAME (DEFAULT_FONT_FAMILY, DEFAULT_FONT_SIZE);
@@ -63,7 +63,7 @@
    gchar *encoding = nullptr;
    gchar *output = nullptr;
    gchar *htitle = nullptr;
-@@ -597,6 +604,12 @@ int main(int argc, char *argv[])
+@@ -706,6 +713,12 @@ int main(int argc, char *argv[])
       N_("Landscape output. (Default: portrait)"), nullptr},
      {"columns", 0, 0, G_OPTION_ARG_INT, &num_columns,
       N_("Number of columns output. (Default: 1)"), "NUM"},
@@ -76,24 +76,24 @@
      {"font", 0, 0, G_OPTION_ARG_STRING, &font,
       N_("Set font. (Default: Monospace 12)"), "DESC"},
      {"output", 'o', 0, G_OPTION_ARG_STRING, &output,
-@@ -686,7 +699,6 @@ int main(int argc, char *argv[])
-   double page_height = paper_sizes[0].height;
+@@ -799,7 +812,6 @@ int main(int argc, char *argv[])
+   int total_gutter_width;
    int do_tumble = -1;   /* -1 means not initialized */
    int do_duplex = -1;
 -  const gchar *header_font_desc = MAKE_FONT_NAME (HEADER_FONT_FAMILY, HEADER_FONT_SCALE);
    const gchar *filename_in;
    gchar *text;
    /* int header_sep = 20; */
-@@ -908,6 +920,8 @@ int main(int argc, char *argv[])
+@@ -1068,6 +1080,8 @@ int main(int argc, char *argv[])
    else
       page_layout.title = fn_basename(filename_in);
    page_layout.header_font_desc = header_font_desc;
 +  page_layout.header_date_format = header_date_format;
 +  page_layout.header_rule_thickness = header_rule_thickness;
  
-   /* calculate x-coordinate scale */
-   if (page_layout.cpi > 0.0L)
-@@ -1641,7 +1655,7 @@ draw_line_to_page(cairo_t *cr,
+   /* A geometry overrides --cpi. Rows are handled in output_pages() since
+      they depend on the header height. */
+@@ -1944,7 +1958,7 @@ draw_line_to_page(cairo_t *cr,
   * Provide date string from current locale converted to UTF-8.
   */
  string
@@ -102,7 +102,7 @@
  {
    time_t t = time(nullptr);
    GIConv cvh = nullptr;
-@@ -1653,7 +1667,7 @@ get_date()
+@@ -1956,7 +1970,7 @@ get_date()
    if (date_utf8 == nullptr) {
      char date[256];
      t = time(nullptr);
@@ -111,7 +111,7 @@
  
      cvh = g_iconv_open("UTF-8", get_encoding());
      if (cvh == (GIConv)-1) {
-@@ -1715,7 +1729,7 @@ draw_page_header_line_to_page(cairo_t
+@@ -2022,7 +2036,7 @@ draw_page_header_line_to_page(cairo_t
                    "<span font_desc=\"{}\">{}</span>\n"
                    "<span font_desc=\"{}\">{}</span>",
                    page_layout->header_font_desc,
@@ -120,7 +120,7 @@
                      page_layout->header_font_desc,
                      page_layout->title.c_str(),
                      page_layout->header_font_desc,
-@@ -1739,7 +1753,7 @@ draw_page_header_line_to_page(cairo_t
+@@ -2046,7 +2060,7 @@ draw_page_header_line_to_page(cairo_t
        if (page_layout->header_left)
          header_parts[0]=page_layout->header_left;
        else
@@ -129,12 +129,12 @@
      
        if (page_layout->header_center)
          header_parts[1] = page_layout->header_center;
-@@ -1824,7 +1838,7 @@ draw_page_header_line_to_page(cairo_t
+@@ -2143,7 +2157,7 @@ draw_page_header_line_to_page(cairo_t
        line_pos += logical_rect.height/2.0/PANGO_SCALE;
-       cairo_move_to(cr, page_layout->left_margin, line_pos);
-       cairo_line_to(cr,page_layout->page_width - page_layout->right_margin, line_pos);
+       cairo_move_to(cr, x_left, line_pos);
+       cairo_line_to(cr, x_left + span, line_pos);
 -      cairo_set_line_width(cr,0.1); // TBD
-+      cairo_set_line_width(cr,  page_layout->header_rule_thickness); // TBD
++      cairo_set_line_width(cr, page_layout->header_rule_thickness); // TBD
        cairo_stroke(cr);
      }
  
