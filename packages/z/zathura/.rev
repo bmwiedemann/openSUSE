@@ -240,4 +240,20 @@
     <comment>Update to version 2026.07.18</comment>
     <requestid>1366535</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>005b4620ec2449574411c07466196ea7</srcmd5>
+    <version>2026.10.4</version>
+    <time>1791209916</time>
+    <user>anag_factory</user>
+    <comment>- zathura 2026.07.18 -&gt; 2026.10.4, released 2026-10-04 (upstream string 2026.10.4)
+- New: window-decoration setting; open a document by dropping a file on the window
+- New: DocumentOpen/DocumentClose D-Bus signals, metadata in documentinfo property
+- open-link-confirm now also applies to launched links; the setting already existed
+- Fixes: Wayland navigation; horizontal scrolling on wide pages; input bar hiding
+- Fixes: shortcuts dying when focus leaves the view; active search lost on reload
+- Async document and widget loading; pages preloaded at idle priority
+- Sandbox: GTK accessibility bus connection and file dialog disabled
+- Zlib unchanged; %check 12 Ok / 0 Fail; Good signature</comment>
+    <requestid>1382547</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:48:41 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2026.10.4:
+  * Add window-decoration setting to zathurarc
+  * Open documents by dropping a file onto the window
+  * Add asynchronous loading of documents and widgets, preloading
+    pages at idle priority
+  * Fix navigation on Wayland: scroll and movement deltas are
+    converted into document positions and kinetic scrolling is
+    cancelled
+  * Fix horizontal scrolling when a page is wider than the content
+    by clamping the adjustment range
+  * Fix hiding of the input bar; dialog and notification area are
+    now separate widgets
+  * Add DocumentOpen and DocumentClose D-Bus signals and document
+    metadata in the documentinfo property
+  * open-link-confirm now also applies to launched links, which
+    were previously always confirmed
+  * Fix shortcuts stopping to work when focus leaves the view; keep
+    the active search when reloading
+  * Disable the GTK accessibility bus connection and the file
+    dialog in sandbox mode
+  * Update translations and fix the German translation
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Sat Jul 18 18:28:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2026.07.18:
