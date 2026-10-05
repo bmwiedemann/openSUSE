@@ -84,6 +84,9 @@ Patch77:        077-man-virt-install-change--boot-secure-boot--docs.patch
 Patch79:        079-domain-os-add-set_firmware_feature-helper.patch
 Patch80:        080-cli-add--boot-firmware.enrolled-keys--firmware.secure-boot.patch
 Patch102:       102-virtinst-Set-is_onoff-True-for-iommufd.patch
+Patch103:       103-pytest-7-pathlib.patch
+# Upstream Pull Request https://github.com/virt-manager/virt-manager/pull/1122
+Patch130:       fix-serialization-of-default-unprefixed-XML-namespaces.patch
 # SUSE Only
 Patch150:       virtman-desktop.patch
 Patch151:       virtman-kvm.patch

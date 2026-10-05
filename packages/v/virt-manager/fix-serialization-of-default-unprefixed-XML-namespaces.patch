@@ -1,0 +1,60 @@
+From b9d2facee1a08e7cf286a8f353af56d2a613f4b7 Mon Sep 17 00:00:00 2001
+From: Ryan Ronnander <rronnander@gmail.com>
+Date: Thu, 16 Jul 2026 16:52:45 -0400
+Subject: [PATCH] xmletree: fix serialization of default (unprefixed) XML
+ namespaces
+
+_convert_qname and the xmlns-writing loop in _serialize_node both
+unconditionally prepend the prefix followed by a colon. When the
+recorded prefix is empty, i.e. the original namespace was a default
+xmlns rather than a prefixed one, this produces a bare colon
+(":meta", "xmlns:=") instead of the correct default-namespace form.
+
+That output is not well-formed XML and fails to re-parse, breaking
+virt-xml --edit and virt-install --reinstall against any domain with
+an inline default-namespace element under a non-root node, for
+example <domain><metadata><meta xmlns="...">, a pattern used by
+libvirt API consumers such as virter to store their own metadata.
+
+This is specific to the xmletree.py backend, which is only used as
+a fallback when the libxml2 Python bindings are unavailable. Verified
+the libxml2-based backend (xmllibxml2.py) does not have this bug: it
+delegates parsing and serialization to libxml2 directly, which
+round-trips the same input correctly. At least one current distro
+(openSUSE Tumbleweed) no longer packages those bindings, making the
+xmletree.py fallback the only backend available there.
+
+Guard both spots on whether the prefix is non-empty before emitting
+the colon.
+
+Signed-off-by: Ryan Ronnander <rronnander@gmail.com>
+---
+ virtinst/xmletree.py | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/virtinst/xmletree.py b/virtinst/xmletree.py
+index f1bdcf6b1e..a09fe829d5 100644
+--- a/virtinst/xmletree.py
++++ b/virtinst/xmletree.py
+@@ -97,7 +97,8 @@ def _convert_qname(tag, namespaces):
+         uri, tag = tag[1:].rsplit("}", 1)
+         for key, val in namespaces.items():
+             if uri == val:
+-                tag = key + ":" + tag
++                if key:
++                    tag = key + ":" + tag
+                 break
+     return tag
+ 
+@@ -120,7 +121,10 @@ def _serialize_node(write, elem, namespaces):
+         else:
+             write("<" + tag)
+             for nsprefix, nsuri in elem.virtinst_namespaces.items():
+-                write(' xmlns:%s="%s"' % (nsprefix, nsuri))
++                if nsprefix:
++                    write(' xmlns:%s="%s"' % (nsprefix, nsuri))
++                else:
++                    write(' xmlns="%s"' % nsuri)
+             for k, v in list(elem.items()):
+                 k = _convert_qname(k, use_ns)
+                 v = xmlutil.xml_escape(v)

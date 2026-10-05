@@ -9,11 +9,9 @@ iommufd="yes". Add is_onoff=True to cli.py to address this.
 Fixes: 9ab2918face14 ("virtinst: add support for iommufd")
 Signed-off-by: Nathan Chen <nathanc@nvidia.com>
 
-diff --git a/virtinst/cli.py b/virtinst/cli.py
-index b5eef0ca7..db7279d02 100644
 --- a/virtinst/cli.py
 +++ b/virtinst/cli.py
-@@ -5312,7 +5312,7 @@ class ParserHostdev(VirtCLIParser):
+@@ -5306,7 +5306,7 @@ class ParserHostdev(VirtCLIParser):
          cls.add_arg("type", "type")
          cls.add_arg("name", None, cb=cls.set_name_cb, lookup_cb=cls.name_lookup_cb)
          cls.add_arg("driver.name", "driver_name")

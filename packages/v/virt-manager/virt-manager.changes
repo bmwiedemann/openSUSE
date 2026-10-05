@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  2 11:58:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add set of upstream patches enabling build with pytest 9.1:
+  * 103-pytest-7-pathlib.patch
+
+-------------------------------------------------------------------
+Mon Sep 28 13:24:27 MDT 2026 - carnold@suse.com
+
+- bsc#1282618 - virt-xml --edit fails with "not well-formed" on
+  domains with a default-namespace metadata element
+  fix-serialization-of-default-unprefixed-XML-namespaces.patch
+
+-------------------------------------------------------------------
 Fri Sep 18 10:06:24 MDT 2026 - carnold@suse.com
 
 - Upstream bug fix (bsc#1027942)
