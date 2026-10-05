@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Sun Oct  4 07:25:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.53.0:
+  * a Meta Muse Code provider is registered, and MCP sampling support
+    is removed
+  * the CLI gains a session rename command, shows the working directory
+    in the session remove command, and prints output for tools without
+    a priority annotation
+  * model metadata is fetched from models.dev with a bundled fallback;
+    Opus 5.5, GPT-6-sol and GPT-6-luna are supported, and
+    deepseek-flash replaces deepseek-v4-flash
+  * session context is preserved across the reply lifecycle, tool
+    results stay consecutive when OpenAI-compatible tool images are
+    emitted, and costs are estimated through canonical provider aliases
+  * vision support resolves from the canonical catalog everywhere;
+    max_tokens truncation is reported and tool calls flushed on Bedrock
+  * the unrolled agent loop auto-compacts at tool boundaries, and inert
+    parameters are stripped from session snapshots in recipes
+  * elicitation input requires a terminal and the Extension Manager can
+    no longer disable itself
+  * the MCP streamable-HTTP client no longer follows redirects, so
+    credentials are not forwarded and the client cannot be bounced at
+    loopback, link-local or cloud-metadata addresses (SSRF)
+  * goose review passes --no-ext-diff to git diff, so a repository's
+    diff.external cannot run an arbitrary command (GHSA-6mg9-3cvh-9939)
+  * an unavailable prompt classifier is treated as no signal instead of
+    a failure
+- boo#1279391 is still open: recipe/mod.rs and the stdio extension
+  spawn are byte-identical to 1.52.0, and the recipe security scan still
+  covers only instructions, prompt and activities
+- Refresh the vendored dependencies; the linked crate graph shrinks from
+  602 to 520 third-party crates (the tree-sitter grammars and the
+  docx/spreadsheet helpers left the built graph), and the four
+  crate-bundled C libraries keep their versions
+- Re-derive the License tag from the new vendored crate graph
+  (1336 crates vendored): the 13 SPDX identifiers are unchanged, but
+  BSD-2-Clause is attributed to the bundled oniguruma, whose COPYING is
+  now installed as LICENSE.oniguruma
+
+-------------------------------------------------------------------
 Sun Sep 27 07:30:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.52.0:

@@ -191,4 +191,18 @@ all changelog gates clean.
 </comment>
     <requestid>1380939</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>bd61681f3f817e18690259d3c36eff62</srcmd5>
+    <version>1.53.0</version>
+    <time>1791198115</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.53.0.
+- MCP streamable-HTTP client no longer follows redirects (SSRF, #11501)
+- goose review passes --no-ext-diff (GHSA-6mg9-3cvh-9939)
+- Meta Muse Code provider registered, MCP sampling removed
+- Vendored deps refreshed, linked crate graph 602 -&gt; 520
+- BSD-2-Clause now attributed to bundled oniguruma, COPYING installed
+- boo#1279391 still open, still affected</comment>
+    <requestid>1382348</requestid>
+  </revision>
 </revisionlist>

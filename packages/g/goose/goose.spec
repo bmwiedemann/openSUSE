@@ -18,7 +18,7 @@
 
 %global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.52.0
+Version:        1.53.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,38 +26,50 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1327 crates vendored, 602 third-party crates in the linked graph plus the
-# ten goose workspace crates -- the code-mode and
+# (1336 crates vendored, 520 third-party crates in the linked graph plus the
+# nine goose workspace crates -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
 # then reading "license =" from every vendor-crates/<name>-<version>/Cargo.toml.
 # Where a crate offers a choice the Apache-2.0 branch is elected, and MIT where
 # Apache-2.0 is not on offer; both are already named, so no "OR" expression in
-# the graph adds an identifier (the ten "Unlicense OR MIT" crates elect MIT,
-# adler2 elects Apache-2.0 over 0BSD, ryu elects Apache-2.0 over BSL-1.0, and
-# the "Apache-2.0 WITH LLVM-exception" branch of linux-raw-sys/rustix is not
-# the one taken). The remaining entries are crates with no choice
+# the graph adds an identifier (the seven crates offering Unlicense or MIT
+# elect MIT, adler2 elects Apache-2.0 over 0BSD, ryu elects Apache-2.0 over
+# BSL-1.0, and the "Apache-2.0 WITH LLVM-exception" branch of
+# blake3/linux-raw-sys/rustix is not the one taken). The remaining entries are
+# crates with no choice
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
 # MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the ICU crates and
 # unicode-ident, CC0-1.0 from the seven bitcoin_hashes/secp256k1 crates (nostr),
 # CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
 # simple_asn1, untrusted and the aws-lc pair (and from ring, "Apache-2.0 AND
 # ISC"),
-# BSD-3-Clause from subtle/brotli/alloc-no-stdlib/exr/lebe plus matchit and the
-# three zstd crates, Zlib from foldhash
+# BSD-3-Clause from ten crates -- subtle/brotli/encoding_rs/matchit,
+# alloc-no-stdlib, alloc-stdlib, the three zstd crates and aws-lc-sys, whose
+# multi-licence expression requires it (brotli-decompressor offers it in the
+# legacy "BSD-3-Clause/MIT" dual form, where the MIT branch is elected),
+# Zlib from foldhash
 # and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 170 MIT-only crates. Only zerocopy and zerocopy-derive name
-# BSD-2-Clause, and only as the branch of a choice that is not elected, so that
-# identifier is held solely by the bundled leaflet.min.js named below.
+# MIT from the 132 crates that elect it.
+# BSD-2-Clause is elected by no crate -- zerocopy names it only as the branch
+# of a choice that is not taken. It comes from the bundled oniguruma instead:
+# onig_sys compiles the oniguruma 6.9.10 C sources into the binary while its
+# own manifest declares only MIT, and the two-clause BSD terms are in
+# vendor-crates/onig_sys-*/oniguruma/COPYING, installed as %%license
+# LICENSE.oniguruma.
 # MPL-2.0 section 3.2 and the LGPL-3.0 source requirement
 # are satisfied because the complete vendor-crates.tar.zst ships in the src.rpm;
 # the two texts are additionally installed as %%license files.
-# Beside the crates, goose-mcp include_str!()s six minified JavaScript/CSS
-# libraries into the binary -- chart.js (MIT), d3 (ISC), d3-sankey
+# crates/goose-mcp include_str!()s six minified JavaScript/CSS
+# libraries -- chart.js (MIT), d3 (ISC), d3-sankey
 # (BSD-3-Clause), leaflet (BSD-2-Clause), leaflet.markercluster (MIT) and
-# mermaid (MIT). All but leaflet's BSD-2-Clause are already carried above by a
-# Rust crate; their texts, which upstream keeps in crates/goose-mcp/licenses/,
-# are installed as %%license files.
+# mermaid (MIT) -- into the binary, but goose-mcp is a default cargo feature
+# and this spec builds with --no-default-features, so that crate is never
+# compiled (no "Compiling goose-mcp" in the build log) and none of the six is
+# linked into what we ship. Their texts, which upstream keeps in
+# crates/goose-mcp/licenses/, still ship as %%license files; every identifier
+# they carry is already held above by a Rust crate, so none of them supports an
+# entry in the tag.
 License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-or-later AND MIT AND MIT-0 AND MPL-2.0 AND Unicode-3.0 AND Zlib AND bzip2-1.0.6
 URL:            https://github.com/aaif-goose/goose
 Source0:        %{name}-%{version}.tar.zst
@@ -159,6 +171,10 @@ install -m 0644 target/man/*.1 %{buildroot}%{_mandir}/man1/
 install -m 0644 vendor-crates/ansi_colours-*/LICENSE LICENSE.ansi_colours
 install -m 0644 vendor-crates/option-ext-*/LICENSE.txt LICENSE.option-ext
 
+# the bundled oniguruma holds the only BSD-2-Clause in the linked set; the
+# onig_sys manifest declares only MIT, so nothing else ships the text
+install -m 0644 vendor-crates/onig_sys-*/oniguruma/COPYING LICENSE.oniguruma
+
 %fdupes -s %{buildroot}%{_prefix}
 
 %check
@@ -177,7 +193,7 @@ if %{buildroot}%{_bindir}/%{name} update --help >/dev/null 2>&1; then
 fi
 
 %files
-%license LICENSE LICENSE.ansi_colours LICENSE.option-ext
+%license LICENSE LICENSE.ansi_colours LICENSE.oniguruma LICENSE.option-ext
 %license crates/goose-mcp/licenses/*.license
 %doc README.md CONTRIBUTING.md
 %{_bindir}/%{name}
