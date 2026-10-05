@@ -26,7 +26,7 @@
 %define srcname xorgproto
 
 Name:           %{srcname}%{psuffix}
-Version:        2025.1
+Version:        2026.1
 Release:        0
 %if "%{flavor}" == "doc"
 Summary:        The X11 Protocol collection (documentation)

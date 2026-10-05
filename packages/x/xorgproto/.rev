@@ -219,4 +219,14 @@ definitions updates:</comment>
     with the usual housekeeping and maintenance:</comment>
     <requestid>1325610</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>897cfdf3d0e78fc1050d823a1e1f5369</srcmd5>
+    <version>2026.1</version>
+    <time>1791197692</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2026.1
+  * The primary practical effect of this release is making a number
+    of new keysym definitions available to X11 clients &amp; servers.</comment>
+    <requestid>1382307</requestid>
+  </revision>
 </revisionlist>
