@@ -1,4 +1,225 @@
 -------------------------------------------------------------------
+Sun Oct 04 17:06:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.1.0:
+  * tempo-cli: add experimental trace summary (#7510)
+  * ci: sign and attest tempo-query and tempo-cli images (#7543)
+  * feat: add experimental trace diff command to Tempo CLI (#7468)
+  * Update Tempo CLI docs (#7189)
+  * chore: bump Tempo to Go 1.27.1 (#7913)
+  * fix(security/unknown/tools): update module golang.org/x/crypto
+    to v0.55.0 [security] (#7832)
+  * fix(security/unknown/): update module google.golang.org/grpc to
+    v1.83.2 [security] (#7906)
+  * fix(security/high/): update module google.golang.org/grpc to
+    v1.83.1 [security] (#7839)
+  * fix(security/unknown/): update module golang.org/x/crypto to
+    v0.56.0 [security] (#7846)
+  * fix(security/unknown/tools): update module golang.org/x/mod to
+    v0.40.0 [security] (#7761)
+  * fix(security/unknown/): update module golang.org/x/mod to
+    v0.40.0 [security] (#7760)
+  * fix(security/unknown/tools): update module golang.org/x/text to
+    v0.39.0 [security] (#7647)
+  * fix(security/high/): update module google.golang.org/grpc to
+    v1.82.1 [security] (#7655)
+  * fix(security/unknown/): update module
+    github.com/klauspost/compress to v1.18.7 [security] (#7684)
+  * fix(security/unknown): update module golang.org/x/net to
+    v0.55.0 [security] (#7249)
+  * fix(security/unknown): update module golang.org/x/crypto to
+    v0.52.0 [security] (#7248)
+  * chore(deps): update module github.com/apache/thrift to v0.23.0
+    [security] (#7117)
+  * chore(deps): update go module directive to v1.27.0 (#7820)
+  * chore(deps): update CI tools base image to Go 1.27.1 (#7898)
+  * chore(deps): update golangci-lint to v2.13.2 for Go 1.27
+    (#7896)
+  * chore(deps): update go-openapi packages (#7728)
+  * chore(deps): update module cloud.google.com/go/monitoring to
+    v1.30.0 (#7621)
+  * chore(deps): update module github.com/apache/thrift to v0.24.0
+    (#7730)
+  * chore(deps): update grafana/tempo-vulture docker tag to v3.0.3
+    (#7797)
+  * chore(deps): update module github.com/kisielk/errcheck to
+    v1.20.0 (#7744)
+  * chore(deps): update module
+    github.com/googlecloudplatform/opentelemetry-operations-go/exporter/metric
+    to v0.59.0 (#7736)
+  * chore(deps): update module github.com/jgautheron/goconst to
+    v1.11.0 (#7743)
+  * chore(deps): update module github.com/klauspost/cpuid/v2 to
+    v2.4.0 (#7745)
+  * chore(deps): update module github.com/olekukonko/errors to
+    v1.3.0 (#7766)
+  * chore(deps): update module github.com/bits-and-blooms/bitset to
+    v1.25.0 (#7798)
+  * chore(deps): update module github.com/dlclark/regexp2/v2 to
+    v2.7.1 (#7799)
+  * chore(deps): update module
+    github.com/envoyproxy/go-control-plane/envoy to v1.39.0 (#7800)
+  * chore(deps): update module github.com/parquet-go/jsonlite to
+    v1.5.2 (#7767)
+  * chore(deps): update module github.com/pb33f/libopenapi to
+    v0.38.7 (#7768)
+  * chore(deps): update module github.com/pelletier/go-toml/v2 to
+    v2.4.3 (#7769)
+  * chore(deps): update module github.com/pires/go-proxyproto to
+    v0.15.0 (#7770)
+  * chore(deps): update module github.com/magefile/mage to v1.17.2
+    (#7747)
+  * chore(deps): update module github.com/ldez/gomoddirectives to
+    v0.9.0 (#7746)
+  * chore(deps): update module github.com/magiconair/properties to
+    v1.18.11 (#7749)
+  * chore(deps): update module github.com/mdlayher/vsock to v1.3.0
+    (#7751)
+  * chore(deps): update module github.com/buger/jsonparser to
+    v1.6.1 (#7731)
+  * chore(deps): update grafana/alloy docker tag to v1.18.1 (#7729)
+  * chore(deps): update module github.com/hashicorp/consul/api to
+    v1.34.4 (#7739)
+  * chore(deps): update module github.com/dlclark/regexp2/v2 to
+    v2.6.0 (#7732)
+  * chore(deps): update module github.com/fsnotify/fsnotify to
+    v1.10.1 (#7733)
+  * chore(deps): update module github.com/go-ole/go-ole to v1.3.0
+    (#7734)
+  * chore(deps): update module
+    github.com/googlecloudplatform/opentelemetry-operations-go/internal/resourcemapping
+    to v0.59.0 (#7737)
+  * chore(deps): update module github.com/hashicorp/go-metrics to
+    v0.6.1 (#7740)
+  * chore(deps): update k8s.io (#7720)
+  * chore(deps): update dependency sigstore/cosign to v3.1.3
+    (#7723)
+  * chore(deps): update actions/checkout action to v6.1.0 (#7722)
+  * chore(deps): update actions/attest-build-provenance action to
+    v4.2.2 (#7721)
+  * chore(deps): update grafana/grafana docker tag to v13.1.3
+    (#7719)
+  * chore(deps): update module cloud.google.com/go/iam to v1.12.0
+    (#7620)
+  * chore(deps): update module cloud.google.com/go/auth to v0.22.0
+    (#7619)
+  * chore(deps): update actions/stale action to v10.4.0 (#7618)
+  * chore(deps): update module github.com/felixge/httpsnoop to
+    v1.1.0 (#7592)
+  * chore(deps): update module github.com/daixiang0/gci to v0.14.0
+    (#7591)
+  * chore(deps): update module
+    github.com/azuread/microsoft-authentication-library-for-go to
+    v1.7.2 (#7589)
+  * chore(deps): update aws-sdk-go-v2 monorepo (#7549)
+  * chore(deps): update actions/cache digest to caa2961 (#7541)
+  * chore(deps): update actions/setup-go digest (#7353)
+  * chore(deps): lock file maintenance (#7329)
+  * chore(deps): update memcached docker tag to v1.6.45 (#7607)
+  * chore: update Go to 1.26.5 and bump golang.org/x/net, x/text to
+    fix CVEs (#7641)
+  * chore(deps): update module cloud.google.com/go/iam to v1.11.0
+    (#7557)
+  * chore(deps): update go-openapi packages (#7550)
+  * chore(deps): update actions/attest-build-provenance action to
+    v4.1.1 (#7548)
+  * chore(deps): update k8s.io (#7596)
+  * chore(deps): update docker (#7588)
+  * chore(deps): update grafana monorepo to v13.0.2 (#7489)
+  * chore(deps): update grafana/alloy docker tag to v1.17.1 (#7576)
+  * chore(deps): update module 4d63.com/gocheckcompilerdirectives
+    to v1.4.0 (#7551)
+  * chore(deps): update module dev.gaijin.team/go/golib to v0.8.1
+    (#7559)
+  * chore(deps): update module github.com/alecthomas/chroma/v2 to
+    v2.27.0 (#7560)
+  * chore(deps): update module github.com/andybalholm/brotli to
+    v1.2.2 (#7561)
+  * chore(deps): update module cloud.google.com/go/monitoring to
+    v1.29.0 (#7558)
+  * chore(deps): update opentelemetry-proto digest to 30b9cc9
+    (#7520)
+  * chore(deps): update k8s.io to v0.36.2 (#7503)
+  * chore(deps): update memcached:1.6.42-alpine docker digest to
+    24f46bd (#7488)
+  * chore(deps): update grafana/alloy docker tag to v1.17.0 (#7513)
+  * chore(deps): update actions/setup-go action to v6.5.0 (#7512)
+  * chore(deps): update
+    grafana/shared-workflows/validate-renovate-config action to
+    v0.1.4 (#7501)
+  * chore(deps): update
+    grafana/shared-workflows/create-github-app-token action to
+    v0.3.1 (#7514)
+  * MCP server: Update TraceQL docs for tempo MCP server (#7408)
+  * chore(deps): update docker (#7454)
+  * Update deploy preview workflow to use main branch (#7538)
+  * docs: update docs-pr-check and docs-pr-write skills (#7448)
+  * docs: update docs-review and docs-workflow skills (#7449)
+  * fix(deps): update module github.com/prometheus/prometheus to
+    v0.312.0 (#7383)
+  * chore(deps): update module mvdan.cc/gofumpt to v0.10.0 (#7360)
+  * chore(deps): update module golang.org/x/tools to v0.45.0
+    (#7359)
+  * chore(deps): update grafana/tempo-vulture docker tag to v3.0.2
+    (#7502)
+  * chore(deps): update grafana/shared-workflows/login-to-gar
+    action to v1.0.3 (#7490)
+  * chore(deps): update actions/checkout digest to df4cb1c (#7378)
+  * chore(deps): update actions/checkout action to v6.0.3 (#7459)
+  * docs: Update blog links for instrumentation page (#7470)
+  * chore(deps): update module github.com/mark3labs/mcp-go to
+    v0.54.1 (main) (#7456)
+  * chore(deps): update module github.com/golangci/golangci-lint/v2
+    to v2.12.2 (#7357)
+  * fix(deps): update opentelemetry-contrib (#7388)
+  * chore(deps): update actions/setup-go action to v6.4.0 (#7354)
+  * chore(deps): update
+    grafana/shared-workflows/create-github-app-token action to
+    v0.3.0 (#7355)
+  * chore(deps): update otel/opentelemetry-collector docker tag to
+    v0.153.0 (#7361)
+  * fix(deps): update module github.com/minio/minio-go/v7 to v7.2.0
+    (#7380)
+  * fix(deps): update module github.com/jaegertracing/jaeger-idl to
+    v0.9.0 (#7379)
+  * fix(deps): update opentelemetry-collector (#7386)
+  * chore(deps): update actions/checkout action to v6 (#7390)
+  * fix(deps): update module google.golang.org/api to v0.282.0
+    (#7385)
+  * fix(deps): update module github.com/parquet-go/parquet-go to
+    v0.30.1 (#7381)
+  * fix(deps): update module github.com/prometheus/common to
+    v0.68.0 (#7382)
+  * fix(deps): update opentelemetry-otel to v1.44.0 (#7389)
+  * chore(deps): update grafana/tempo-ci-tools docker tag to
+    v20260527 (#7391)
+  * chore: update changelog check to include modified files (#7366)
+  * fix(deps): update google.golang.org/genproto/googleapis/rpc
+    digest to 3dc84a4 (#7314)
+  * chore(deps): update
+    grafana/shared-workflows/validate-renovate-config action to
+    v0.1.3 (#7315)
+  * chore(deps): update k8s.io to v0.36.1 (#7316)
+  * fix(deps): update module cloud.google.com/go/storage to v1.62.2
+    (#7320)
+  * fix(deps): update module github.com/twmb/franz-go to v1.21.2
+    (#7321)
+  * fix(deps): update module google.golang.org/grpc to v1.81.1
+    (#7341)
+  * chore(deps): update actions/stale action to v10.3.0 (#7342)
+  * chore(deps): update github.com/grafana/memberlist digest to
+    1798cf4 (#7252)
+  * chore(deps): update docker (#7251)
+  * chore(deps): update actions/checkout action to v5.0.1 (#7297)
+  * chore(deps): update grafana/shared-workflows/login-to-gar
+    action to v1.0.2 (#7308)
+  * fix(deps): update opentelemetry-contrib to v0.152.0 (#7279)
+  * chore(deps): update grafana/alloy docker tag to v1.16.1 (#7274)
+  * fix(deps): update opentelemetry-collector (main) (#7110)
+  * chore(deps): update github.com/grafana/memberlist digest to
+    4887d8e (#6302)
+
+-------------------------------------------------------------------
 Fri Aug 28 08:34:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.0.3:
