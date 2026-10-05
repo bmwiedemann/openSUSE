@@ -17,7 +17,7 @@
 
 
 Name:           strawberry
-Version:        1.2.30
+Version:        1.2.31
 Release:        0
 Summary:        A music player and music collection organizer
 License:        GPL-3.0-or-later
@@ -70,11 +70,13 @@ BuildRequires:  pkgconfig(libgpod-1.0)
 BuildRequires:  pkgconfig(libmtp)
 BuildRequires:  pkgconfig(libnotify)
 BuildRequires:  pkgconfig(libpulse)
+BuildRequires:  pkgconfig(libsecret-1)
 BuildRequires:  pkgconfig(libsparsehash)
 BuildRequires:  pkgconfig(libudf)
 BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(sqlite3) >= 3.9
 BuildRequires:  pkgconfig(taglib) >= 1.12
+BuildRequires:  pkgconfig(uchardet)
 
 Requires:       qt6-sql-sqlite
 
@@ -99,7 +101,7 @@ Features:
   - Equalizer
   - Transfer music to iPod, MTP or mass-storage USB player
   - Scrobbler with support for Last.fm and ListenBrainz
-  - Subsonic streaming support
+  - Subsonic, Plex and Jellyfin streaming support
 
 %prep
 %setup -q
