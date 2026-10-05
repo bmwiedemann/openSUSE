@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:13:25 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.466
+  * LZFSE is now embedded as a subtree and built by default.
+    Not all systems package this and it's required for some
+    HFS+ compressed files, so (similar to LZVN) it was a good
+    candidate for embedding. Note that this means builds
+    linking with the system's liblzfse instead must now pass
+    `WITH_LZFSE=system` to the make command similar to the
+    other bundled dependencies.
+- from version 0.461
+  * Updates the embedded utf8proc subtree to version 2.12.0.
+  * A build-time warning will now be logged if liblzfse is not
+    found, since this is required for some HFS+ compressed files.
+
+-------------------------------------------------------------------
 Tue Sep 15 09:05:31 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.451
