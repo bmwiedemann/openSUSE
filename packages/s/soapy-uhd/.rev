@@ -116,4 +116,24 @@ soapy-uhd-0.4.1. Repology/Anitya reporting 0.4.1 for this package is a
 false positive, and &quot;updating&quot; to that tag would be a downgrade.</comment>
     <requestid>1374748</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>6dd4fcacdddde7e9af256611a474bdb8</srcmd5>
+    <version>0.4.1git20261004</version>
+    <time>1791209935</time>
+    <user>anag_factory</user>
+    <comment>- Version bump to 0.4.1git20261004 (a6134ed1), 14 new commits.
+- Requires pkgconfig(uhd) &gt;= 4.0, pkgconfig(SoapySDR) &gt;= 0.7; CMake min 3.10.
+- SoapyUHD#72 dropped the UHD 3.x paths but never landed its version gate.
+- That spec floor is the only guard: CMake will NOT reject UHD 3.x.
+- Advertise UHD 4.10's 'mtu' stream arg and EVENT_CODE_OK; get_stream_info for &gt;= 4.11.
+- Map ERROR_CODE_LATE_COMMAND to SOAPY_SDR_TIME_ERROR, not STREAM_ERROR.
+- Fix hasIQBalanceMode() falling back to hasDCOffsetMode(); cache channel count.
+- Drop boost.patch, boost-lexical-cast.patch, cxx17.patch: all upstream (64/69/70).
+- Zero orphans; libboost_headers-devel replaces the three boost devels.
+- Add a _service pinning the git commit; the archive URL 404s.
+- Enable %check: 15 conversion cases; proves the shipped layer matches UHD 4.10's API.
+- Licence stays GPL-3.0-only: compiled units carry GPL-3.0 (= -only).
+- No ABI or soname change; no consumers. boo#1074072 is NOT AFFECTED.</comment>
+    <requestid>1382552</requestid>
+  </revision>
 </revisionlist>

@@ -20,28 +20,27 @@
 %define soapy_modver 0.8-3
 %define soapy_modname soapysdr%{soapy_modver}-module-uhd
 Name:           soapy-uhd
-Version:        0.4.1git20250213
+Version:        0.4.1git20261004
 Release:        0
 Summary:        Soapy SDR plugins for UHD supported SDR devices
 # The three built sources carry the deprecated SPDX id GPL-3.0, which maps
-# to GPL-3.0-only; the only or-later grant is in CMakeLists.txt, not shipped.
+# to GPL-3.0-only. Upstream set that id deliberately in commit ac3ce7f ("The
+# intended license is GPL-3 to match libuhd license"); the files were
+# BSL-1.0 before it. The only or-later wording in the tree is GNU Radio's,
+# inherited into CMakeLists.txt, which is neither built nor shipped.
 License:        GPL-3.0-only
 URL:            https://github.com/pothosware/SoapyUHD/wiki
 #Git-Clone:     https://github.com/pothosware/SoapyUHD.git
-Source:         https://github.com/pothosware/SoapyUHD/archive/%{name}-%{version}.tar.gz
-Patch0:         boost.patch
-# PATCH-FIX-UPSTREAM cxx17.patch pothosware/SoapyUHD#75 - build with C++17 (UHD 4.x headers use std::optional / std::is_convertible_v)
-Patch1:         cxx17.patch
-# PATCH-FIX-UPSTREAM boost-lexical-cast.patch pothosware/SoapyUHD#76 - include boost/lexical_cast.hpp explicitly (newer boost dropped the transitive include)
-Patch2:         boost-lexical-cast.patch
+Source:         %{name}-%{version}.tar.gz
 BuildRequires:  cmake
 BuildRequires:  gcc-c++
-BuildRequires:  libboost_chrono-devel
-BuildRequires:  libboost_date_time-devel
-BuildRequires:  libboost_thread-devel
+# upstream dropped BOOST_REQUIRED_COMPONENTS; only the headers are used now
+BuildRequires:  libboost_headers-devel
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(SoapySDR)
-BuildRequires:  pkgconfig(uhd)
+# CMakeLists.txt: find_package(SoapySDR "0.7" NO_MODULE REQUIRED)
+BuildRequires:  pkgconfig(SoapySDR) >= 0.7
+# SoapyUHD#72 dropped all UHD < 4.0 code paths
+BuildRequires:  pkgconfig(uhd) >= 4.0
 
 %description
 Soapy UHD - Soapy SDR devices for UHD.
@@ -63,14 +62,14 @@ Soapy UHD - Soapy SDR devices for UHD.
 A UHD module that supports Soapy devices within the UHD API.
 
 %prep
-%autosetup -p1 -n SoapyUHD
+%autosetup -p1 -n %{name}-%{version}
 
 %build
-# Remove cmake4 error due to not setting
-# min cmake version - sflees.de
-export CMAKE_POLICY_VERSION_MINIMUM=3.5
 %cmake
 %cmake_build
+
+%check
+%ctest
 
 %install
 %cmake_install

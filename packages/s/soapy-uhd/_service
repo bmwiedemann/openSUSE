@@ -1,0 +1,16 @@
+<services>
+  <!-- upstream's newest tag is soapy-uhd-0.4.1 (2020-09-20); everything
+       since then is unreleased, so pin a commit -->
+  <service name="tar_scm" mode="manual">
+    <param name="url">https://github.com/pothosware/SoapyUHD.git</param>
+    <param name="scm">git</param>
+    <param name="revision">a6134ed1360df65e1bb4a52ac523efad9e39ab2f</param>
+    <param name="versionformat">0.4.1git%cd</param>
+    <param name="filename">soapy-uhd</param>
+    <param name="changesgenerate">disable</param>
+  </service>
+  <service name="recompress" mode="manual">
+    <param name="file">*.tar</param>
+    <param name="compression">gz</param>
+  </service>
+</services>

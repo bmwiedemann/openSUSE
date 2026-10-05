@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:03:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.1git20261004 (a6134ed1), 14 new commits:
+  * Require UHD >= 4.0; upstream dropped the UHD 3.x code paths but
+    never landed its find_package(UHD 4.0) gate, so the spec's
+    pkgconfig(uhd) >= 4.0 floor is the only guard (SoapyUHD#72)
+  * Advertise the UHD 4.10 'mtu' stream argument (SoapyUHD#67),
+    handle UHD 4.10's EVENT_CODE_OK (SoapyUHD#70) and define
+    get_stream_info for UHD >= 4.11 (SoapyUHD#78)
+  * Map ERROR_CODE_LATE_COMMAND to SOAPY_SDR_TIME_ERROR instead of
+    SOAPY_SDR_STREAM_ERROR, so callers can tell timing failures
+    from generic stream errors (SoapyUHD#69)
+  * Fix hasIQBalanceMode() falling back to hasDCOffsetMode()
+    (SoapyUHD#69)
+  * Cache the stream channel count instead of making a virtual call
+    per packet in the read/write path (SoapyUHD#68)
+  * CMake: minimum 3.10, SoapySDR >= 0.7, target-scoped instead of
+    global compile flags (SoapyUHD#71)
+- Drop boost.patch, boost-lexical-cast.patch and cxx17.patch: all
+  three adopted upstream (SoapyUHD#64, #69 and #70 respectively)
+- Require pkgconfig(uhd) >= 4.0 and pkgconfig(SoapySDR) >= 0.7
+- BuildRequires: libboost_headers-devel replaces
+  libboost_chrono-devel, libboost_date_time-devel and
+  libboost_thread-devel; find_package(Boost) no longer requests
+  components
+- Drop the CMAKE_POLICY_VERSION_MINIMUM=3.5 workaround: upstream
+  raised cmake_minimum_required to 3.10
+- Add a _service pinning the upstream git commit, and replace
+  soapy-uhd-0.4.1git20250213.tar.gz with
+  soapy-uhd-0.4.1git20261004.tar.gz: the GitHub archive Source URL
+  404s for a date-based version
+- Enable %check: run upstream's unit tests (15 hardware-free
+  cases), the package's only rpmlint warning
+
+-------------------------------------------------------------------
 Sun Aug 30 18:19:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Require soapy-sdr from soapysdr0.8-3-module-uhd: the generated soname
