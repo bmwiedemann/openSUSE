@@ -58,7 +58,7 @@ Index: ffmpeg-8.1/libavcodec/libavcodec.v
 -        avsubtitle_free;
 -    local:
 -        *;
-+LIBAVCODEC_62.10 {
++LIBAVCODEC_62 {
 +global:
 +	av_ac3_parse_header;
 +	av_adts_header_parse;
@@ -241,7 +241,7 @@ Index: ffmpeg-8.1/libavcodec/libavcodec.v
 +	av_exif_remove_entry;
 +	av_exif_set_entry;
 +	av_exif_write;
-+} LIBAVCODEC_62.10;
++} LIBAVCODEC_62;
 +
 +LIBAVCODEC_62.17 {
 +global:
@@ -276,7 +276,7 @@ Index: ffmpeg-8.1/libavdevice/libavdevice.v
 -        av_*;
 -    local:
 -        *;
-+LIBAVDEVICE_62.1 {
++LIBAVDEVICE_62 {
 +global:
 +	av_device_ffversion;
 +	av_input_audio_device_next;
@@ -299,12 +299,12 @@ Index: ffmpeg-8.1/libavdevice/libavdevice.v
 +global:
 +	avdevice_*;
 +	av_*;
-+} LIBAVDEVICE_62.1;
++} LIBAVDEVICE_62;
 +
 +LIBAVDEVICE_PRIVATE {
 +local:
 +	*;
-+} LIBAVDEVICE_62.1;
++} LIBAVDEVICE_62;
 Index: ffmpeg-8.1/libavfilter/libavfilter.v
 ===================================================================
 --- ffmpeg-8.1.orig/libavfilter/libavfilter.v
@@ -316,7 +316,7 @@ Index: ffmpeg-8.1/libavfilter/libavfilter.v
 -        av_*;
 -    local:
 -        *;
-+LIBAVFILTER_11.4 {
++LIBAVFILTER_11 {
 +global:
 +	av_buffersink_get_ch_layout;
 +	av_buffersink_get_channels;
@@ -388,7 +388,7 @@ Index: ffmpeg-8.1/libavfilter/libavfilter.v
 +LIBAVFILTER_11.7 {
 +global:
 +	av_buffersink_get_alpha_mode;
-+} LIBAVFILTER_11.4;
++} LIBAVFILTER_11;
 +
 +LIBAVFILTER_11.10 {
 +global:
@@ -415,7 +415,7 @@ Index: ffmpeg-8.1/libavformat/libavformat.v
 -        av*;
 -    local:
 -        *;
-+LIBAVFORMAT_62.3 {
++LIBAVFORMAT_62 {
 +global:
 +	av_add_index_entry;
 +	av_append_packet;
@@ -578,7 +578,7 @@ Index: ffmpeg-8.1/libavformat/libavformat.v
 +	av_mime_codec_str;
 +	avformat_receive_command_reply;
 +	avformat_send_command;
-+} LIBAVFORMAT_62.3;
++} LIBAVFORMAT_62;
 +
 +LIBAVFORMAT_UNTRACKED {
 +global:
@@ -599,7 +599,7 @@ Index: ffmpeg-8.1/libavutil/libavutil.v
 -        av*;
 -    local:
 -        *;
-+LIBAVUTIL_60.8 {
++LIBAVUTIL_60 {
 +global:
 +	av_add_i;
 +	av_add_q;
@@ -1229,7 +1229,7 @@ Index: ffmpeg-8.1/libavutil/libavutil.v
 +LIBAVUTIL_60.14 {
 +global:
 +	av_csp_approximate_eotf_gamma;
-+} LIBAVUTIL_60.8;
++} LIBAVUTIL_60;
 +
 +LIBAVUTIL_60.20 {
 +global:
@@ -1263,7 +1263,7 @@ Index: ffmpeg-8.1/libswresample/libswresample.v
 -        swresample_*;
 -    local:
 -        *;
-+LIBSWRESAMPLE_6.1 {
++LIBSWRESAMPLE_6 {
 +global:
 +	swr_ffversion;
 +	swr_alloc;
@@ -1294,12 +1294,12 @@ Index: ffmpeg-8.1/libswresample/libswresample.v
 +global:
 +	swr_*;
 +	swresample_*;
-+} LIBSWRESAMPLE_6.1;
++} LIBSWRESAMPLE_6;
 +
 +LIBSWRESAMPLE_PRIVATE {
 +local:
 +	*;
-+} LIBSWRESAMPLE_6.1;
++} LIBSWRESAMPLE_6;
 Index: ffmpeg-8.1/libswscale/libswscale.v
 ===================================================================
 --- ffmpeg-8.1.orig/libswscale/libswscale.v
@@ -1311,7 +1311,7 @@ Index: ffmpeg-8.1/libswscale/libswscale.v
 -        sws_*;
 -    local:
 -        *;
-+LIBSWSCALE_9.1 {
++LIBSWSCALE_9 {
 +global:
 +	sws_allocVec;
 +	sws_alloc_context;
@@ -1357,7 +1357,7 @@ Index: ffmpeg-8.1/libswscale/libswscale.v
 +LIBSWSCALE_9.4 {
 +global:
 +	sws_test_hw_format;
-+} LIBSWSCALE_9.1;
++} LIBSWSCALE_9;
 +
 +LIBSWSCALE_UNTRACKED {
 +global:

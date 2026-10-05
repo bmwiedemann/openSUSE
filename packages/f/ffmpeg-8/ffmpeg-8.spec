@@ -59,6 +59,16 @@
 %bcond_with    x265
 %bcond_with    xvid
 
+# Add the ability to build without the ABI break work-around patch.
+# This is needed for any program that was linked against
+# libav_* libraries compiled outside of openSUSE, expecting symbols
+# from these libs to be set at their stock upstream major library version
+# that work-around-abi-break.patch alters, otherwise resulting in a link
+# failure on launch (e.g. "version `LIBAVFORMAT_62' not found").
+# This is particularly the case for JavaFX programs using the
+# javafx.scene.media.MediaPlayer class (see #boo1282855)
+%bcond_without work_around_abi_break
+
 # Then we enable them one by one for various targets
 %if 0%{?BUILD_ORIG}
 %bcond_without amf_sdk
@@ -184,6 +194,7 @@ BuildRequires:  pkgconfig(libwebpmux) >= 0.4.0
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzmq) >= 4.2.1
 BuildRequires:  pkgconfig(lilv-0)
+BuildRequires:  pkgconfig(oapv)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openh264)
 BuildRequires:  pkgconfig(opus)
@@ -528,6 +539,10 @@ This subpackage contains the headers for FFmpeg libswscale.
 %prep
 %autosetup -p1 -a6 -n %_name-%version
 
+%if %{without work_around_abi_break}
+%patch -P 5 -p1 -R
+%endif
+
 %build
 %ifarch %ix86 x86_64 %arm
 %define _lto_cflags %nil
@@ -599,6 +614,7 @@ LDFLAGS="%_lto_cflags" \
 %if %{with mysofa}
 	--enable-libmysofa \
 %endif
+	--enable-liboapv \
 	--enable-libopenjpeg \
 	--enable-libopenmpt \
 	--enable-libopenh264 \
@@ -687,6 +703,8 @@ done
 cat config.h
 %make_build
 
+%if %{with work_around_abi_break}
+
 >machine_report.txt >user_report.txt
 for i in lib*/lib*.so.*; do
 	echo "===> $i" >>user_report.txt
@@ -700,6 +718,8 @@ if [ -s machine_report.txt ]; then
 	cat user_report.txt
 	exit 1
 fi
+
+%endif
 
 %global extratools aviocat cws2fws ffescape ffeval ffhash fourcc2pixfmt graph2dot ismindex pktdumper probetest qt-faststart seek_print sidxindex trasher
 

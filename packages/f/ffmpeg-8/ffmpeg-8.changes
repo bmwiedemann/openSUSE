@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sat Oct  3 08:30:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add aptx/aptx_hd to enable_decoders/encoders.
+
+-------------------------------------------------------------------
+Fri Oct  2 15:02:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Adjust work-around-abi-break.patch to support a few programs
+  (e.g. OpenJFX) built against unmodified ffmpegs. [boo#1282855]
+
+-------------------------------------------------------------------
+Tue Sep 29 21:26:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
+  pass enable-liboapv to configure.
+- Correct version in "mini" part of spec.
+
+-------------------------------------------------------------------
+Tue Sep 29 15:49:12 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Add ability to disable ABI work-around patch using --without switch
+
+-------------------------------------------------------------------
 Sat Sep  5 11:07:34 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable decoders in ffmpeg-8-mini that need no extra build
