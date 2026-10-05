@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:47:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.38.2 (skips over 0.38.1):
+  * Fix a crash when selecting the int8 or int4 cache in Qwen
+    Image 2.1
+  * New API nodes: Anthropic Sonnet 5.5 (max_tokens lowered to
+    1024), BFL FLUX 3 Image, Ideogram 4.5 text to image, edit and
+    precise edit, and HeyGen Video 1.0 reference to video and image
+    to video
+  * The Grok Video node gains the grok-imagine-video-1.5-lite model
+  * Require comfyui-workflow-templates 0.11.74 or newer, tracking
+    the minimum upstream raised in 0.38.2
+- Restore the Requires on python-comfy-aimdo >= 0.5.5, dropped in
+  0.38.0 while upstream kept pinning it; comfy_aimdo is imported
+  at module scope from main.py, so comfyui would not start without
+  it
+- Both patches still apply
+
+-------------------------------------------------------------------
 Wed Sep 30 08:10:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.38.0:

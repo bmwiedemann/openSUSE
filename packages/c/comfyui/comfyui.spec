@@ -20,7 +20,7 @@
 # Follow %%{primary_python} so the interpreter tracks the distro primary.
 %define pythons %{primary_python}
 Name:           comfyui
-Version:        0.38.0
+Version:        0.38.2
 Release:        0
 Summary:        Modular node-graph engine for local AI content creation
 License:        GPL-3.0-only
@@ -45,6 +45,7 @@ Requires:       %{primary_python}-aiohttp >= 3.11.8
 Requires:       %{primary_python}-alembic
 Requires:       %{primary_python}-av >= 17.0.0
 Requires:       %{primary_python}-blake3
+Requires:       %{primary_python}-comfy-aimdo >= 0.5.5
 # Upstream's requirements.txt uses "==" for the comfy* packages, but its own
 # check_comfy_packages_versions() warns only when the installed version is
 # BELOW the pinned one, so upstream itself treats these as floors. Encoding
@@ -66,15 +67,15 @@ Requires:       %{primary_python}-blake3
 # at module scope and comfy/utils.py imports it, while 0.5.3 ships no such
 # submodule. comfy/ldm/modules/attention.py calls
 # comfy_kitchen.int8_attention_is_available() at module import, so the
-# kitchen floor must provide it; track upstream's pin (0.2.36 in 0.38.0).
+# kitchen floor must provide it; track upstream's pin (0.2.36).
 Requires:       %{primary_python}-comfy-kitchen >= 0.2.36
 Requires:       %{primary_python}-comfyui-embedded-docs >= 0.5.12
 # Security floor: 1.50.6 carries the XSS fixes GHSA-2gr5-vw2p-2hcf,
-# GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Upstream 0.38.0 requires
+# GHSA-j6xv-rx8r-mh6j and GHSA-8xxc-66vh-2pf3. Upstream requires
 # 1.53.6, which is above it, so the floor tracks upstream now; do not
 # lower it below either.
 Requires:       %{primary_python}-comfyui-frontend-package >= 1.53.6
-Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.70
+Requires:       %{primary_python}-comfyui-workflow-templates >= 0.11.74
 Requires:       %{primary_python}-einops
 Requires:       %{primary_python}-filelock
 Requires:       %{primary_python}-numpy >= 1.25.0

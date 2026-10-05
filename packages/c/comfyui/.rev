@@ -280,4 +280,23 @@ one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
 </comment>
     <requestid>1381682</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14b3ccf8ac790bc7e8e0f6dad8b2e226</srcmd5>
+    <version>0.38.2</version>
+    <time>1791197822</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.38.2 (skips over 0.38.1)
+
+- Fix a crash when selecting the int8 or int4 cache in Qwen
+  Image 2.1
+- New API nodes: Anthropic Sonnet 5.5, BFL FLUX 3 Image, Ideogram
+  4.5, HeyGen Video 1.0, grok-imagine-video-1.5-lite
+- Require comfyui-workflow-templates 0.11.74 or newer
+- Restore the Requires on python-comfy-aimdo &gt;= 0.5.5, dropped in
+  0.38.0 while upstream kept pinning it; comfy_aimdo is imported
+  at module scope from main.py, so comfyui would not start without
+  it
+- Both patches still apply</comment>
+    <requestid>1382397</requestid>
+  </revision>
 </revisionlist>
