@@ -7,4 +7,17 @@
     <comment>Initial submission of bootkitd which cockpit-bootloader depends on</comment>
     <requestid>1352424</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6be7d5a11c31e813ab008fe4f902989a</srcmd5>
+    <version>0.5.0</version>
+    <time>1791206494</time>
+    <user>anag_factory</user>
+    <comment>- Update to v0.5.0
+  * v0.5.0
+    * Refactor dbus API to be unified for all bootloaders
+    * Support systemd-boot
+  * v0.4.2
+    * Rework thread handling to avoid a lockup if too few cores are provided</comment>
+    <requestid>1382475</requestid>
+  </revision>
 </revisionlist>

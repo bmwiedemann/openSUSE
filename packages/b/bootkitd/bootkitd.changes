@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Jul 14 08:29:06 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
+
+- Update to v0.5.0
+  * v0.5.0
+    * Refactor dbus API to be unified for all bootloaders
+    * Support systemd-boot
+  * v0.4.2
+    * Rework thread handling to avoid a lockup if too few cores are provided
+
+-------------------------------------------------------------------
 Thu Apr 23 11:07:00 UTC 2026 - Miika Alikirri <miika.alikirri@suse.com>
 
 - Update to v0.4.1
