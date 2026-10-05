@@ -28,7 +28,7 @@
 %define idevice disabled
 %endif
 Name:           upower
-Version:        1.91.3
+Version:        1.91.4
 Release:        0
 Summary:        Power Device Enumeration Framework
 License:        GPL-2.0-or-later

@@ -1,8 +1,10 @@
-Index: upower-v1.90.2/src/meson.build
-===================================================================
---- upower-v1.90.2.orig/src/meson.build
-+++ upower-v1.90.2/src/meson.build
-@@ -120,7 +120,7 @@ test(
+---
+ src/meson.build |    2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/src/meson.build
++++ b/src/meson.build
+@@ -123,7 +123,7 @@
  
  # On Linux, we can run the additional integration test;
  # defined here as we would have a circular dependency otherwise.

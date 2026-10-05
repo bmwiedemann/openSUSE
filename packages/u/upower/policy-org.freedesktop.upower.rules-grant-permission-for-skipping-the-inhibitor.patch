@@ -12,24 +12,25 @@ Signed-off-by: Kate Hsuan <hpa@redhat.com>
 
 
 Signed-off-by: Thomas Renninger <trenn@suse.de>
-diff --git b/policy/meson.build a/policy/meson.build
-index 972ccb0..3371bde 100644
---- b/policy/meson.build
-+++ a/policy/meson.build
-@@ -1,9 +1,3 @@
--install_data(
--  'org.freedesktop.upower.rules',
--  install_tag: 'runtime',
--  install_dir: join_paths(datadir, 'polkit-1', 'rules.d'),
--)
--
+---
+ policy/meson.build                  |    6 ------
+ policy/org.freedesktop.upower.rules |   31 -------------------------------
+ 2 files changed, 37 deletions(-)
+
+--- a/policy/meson.build
++++ b/policy/meson.build
+@@ -1,10 +1,4 @@
  if polkit.found()
+-  install_data(
+-    'org.freedesktop.upower.rules',
+-    install_tag: 'runtime',
+-    install_dir: join_paths(datadir, 'polkit-1', 'rules.d'),
+-  )
+-
    #newer polkit has the ITS rules included
    if polkit.version().version_compare('>0.113')
-diff --git b/policy/org.freedesktop.upower.rules a/policy/org.freedesktop.upower.rules
-deleted file mode 100644
-index 8ec28b8..0000000
---- b/policy/org.freedesktop.upower.rules
+     i18n.merge_file(
+--- a/policy/org.freedesktop.upower.rules
 +++ /dev/null
 @@ -1,31 +0,0 @@
 -/* 

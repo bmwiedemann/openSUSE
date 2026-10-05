@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  1 17:33:04 UTC 2026 - Thomas Renninger <trenn@suse.com>
+
+* Release 1.91.4
+  - Feature: Composite keyboard backlight device for unified brightness control (!341, !335)
+  - Fix: Fix potential segmentation fault of the upower command (!340, #354)
+  - Fix: Avoid updating full capacity from impossible charge-readings (!338, #351)
+  - Fix: Stop I/O watch on keyboard backlight read error (!341)
+  - Fix: Fallback to energy_full_design when energy_full is invalid (!333, !302, #336)
+  - Fix: Fix up-version dupe warning while generating docs (!336)
+  - Fix: Keep every battery of a device that has several (!337, #348)
+  - Fix: Don't install polkit policy files when it is disabled (!342, #356)
+
+-------------------------------------------------------------------
 Fri Jul  3 11:12:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.91.3:
