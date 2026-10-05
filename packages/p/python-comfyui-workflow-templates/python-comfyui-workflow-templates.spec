@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates
-Version:        0.11.74
+Version:        0.11.76
 Release:        0
 Summary:        ComfyUI workflow templates meta package
 License:        MIT
@@ -37,11 +37,12 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # Upstream pins the bundles with '==', but that is a release-train lockfile,
 # not an API constraint: this package's only code imports five stable helpers
-# from -core, and the bundles are additive asset stores. The real requirement
-# is one-directional -- a bundle older than the manifest core ships means a
-# missing asset -- so a floor expresses it exactly, while '=' additionally
-# forbids the harmless newer direction and makes this package uninstallable
-# on every independent bundle release.
+# from -core and ships no manifest of its own, and -core's loader.py is
+# unchanged across the whole pinned range. Whether a manifest's entries
+# resolve is -core's contract with each bundle, carried by their own floors,
+# not this shim's. A floor therefore expresses exactly what is required here,
+# while '=' additionally forbids the harmless newer direction and makes this
+# package uninstallable on every independent bundle release.
 Requires:       python-comfyui-workflow-templates-core >= 0.3.359
 Requires:       python-comfyui-workflow-templates-json >= 0.1.94
 Requires:       python-comfyui-workflow-templates-media-api >= 0.3.84
@@ -55,8 +56,9 @@ BuildArch:      noarch
 
 %description
 Meta package that re-exports the ComfyUI workflow template helpers
-and pulls in the core, JSON and media asset bundles at the versions
-this release is pinned to.
+and requires the core, JSON and media asset bundles. Upstream pins
+them with '=='; this package requires floors instead -- see the
+comment above Requires:.
 
 %prep
 %autosetup -p1 -n comfyui_workflow_templates-%{version}

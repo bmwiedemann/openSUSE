@@ -273,4 +273,16 @@ its own request first.</comment>
 </comment>
     <requestid>1382142</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>29219d31a58800b88dd1565b0218ec0a</srcmd5>
+    <version>0.11.76</version>
+    <time>1791197816</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.76 (metadata-only, code byte-identical).
+- Upstream's release-train pins move to core 0.3.367, json 0.1.102, assets-02 0.1.9
+- All eight constraints stay floors: none of those three is satisfied in Factory,
+  so copying == would make the package uninstallable
+- Fix the %description, which claimed the bundles were pulled in pinned</comment>
+    <requestid>1382361</requestid>
+  </revision>
 </revisionlist>

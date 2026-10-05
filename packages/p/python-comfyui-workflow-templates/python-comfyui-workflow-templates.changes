@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:47:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.76: metadata-only release, the re-export
+  shim's code is byte-identical to 0.11.74
+  * Upstream's release-train pins move to core 0.3.367, json 0.1.102
+    and media-assets-02 0.1.9, none of which Factory satisfies today.
+    The floors here stay unchanged: the shim imports only the five
+    stable helpers from core, ships no manifest, and core's loader is
+    unchanged across the pinned range. An exact pin would make this
+    package uninstallable on every independent bundle release
+- Fix the %description, which claimed the bundles were pulled in at the
+  versions this release is pinned to; this package pins nothing
+
+-------------------------------------------------------------------
 Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.74: metadata-only release, the shim
