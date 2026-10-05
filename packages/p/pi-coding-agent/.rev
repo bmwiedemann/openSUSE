@@ -258,4 +258,16 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
     <comment>Update to 1.0.0, a major release with breaking changes: fullscreen TUI by default, per-server MCP OAuth credentials, RFC 9207 checks. Supersedes 1382024, so Factory jumps 0.99.1 -&gt; 1.0.0 and 0.99.2 is never built. 119 shipped modules, licence union unchanged, sandbox still WASM-only: still noarch.</comment>
     <requestid>1382061</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>7ed595ef13300ae1ba84057c3d4a91c6</srcmd5>
+    <version>1.0.2</version>
+    <time>1791197829</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.0.2 (patch releases, no breaking changes).
+- Adds samplingParamsByThinkingLevel per-level sampling overrides
+- 1.0.0 -&gt; 1.0.1 fixes backported in the same jump
+- Vendored node_modules refreshed over 1.0.0 -&gt; 1.0.2, 119 modules
+- brace-expansion CVE-2026-102276/102277/102278 all not affected</comment>
+    <requestid>1382341</requestid>
+  </revision>
 </revisionlist>

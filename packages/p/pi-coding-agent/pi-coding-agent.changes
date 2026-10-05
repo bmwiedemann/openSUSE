@@ -1,4 +1,51 @@
 -------------------------------------------------------------------
+Sun Oct  4 15:48:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.2: patch releases on the 1.0 API, with no
+  breaking changes
+  * models.json takes samplingParamsByThinkingLevel next to the
+    existing samplingParams, so an OpenAI-compatible model can set
+    temperature, top_p and the like separately for off, minimal, low,
+    medium, high, xhigh and max. Model defaults, the effective level's
+    override and the request are merged per key, modelOverrides merges
+    per level, and the levels are pi's own, not the provider's
+    thinkingLevelMap values. Only openai-completions, openai-responses
+    and azure-openai-responses apply them
+  * MCP servers can be enabled, disabled or re-scoped per project
+    from a .pi/mcp.json entry without a command or url, and /mcp
+    toggles a user-level server for the current project
+  * oauth.clientRegistration: "cimd" identifies pi by its Client ID
+    Metadata Document instead of dynamic client registration
+  * pi.registerToolRenderer() picks how calls to a tool that is not
+    registered yet are drawn, such as MCP tools in a resumed session
+  * Cloudflare's Clef and Clef Flash classifier models are usable
+    from codemode scripts and extensions
+  * A codemode script printing in a loop now fails at 16 Mi
+    characters or 100000 items instead of running pi out of memory
+  * MCP tool calls in resumed sessions and HTML exports no longer
+    render fully expanded until their server connects
+  * JPEG, GIF and WebP images that extensions draw through Image now
+    appear in Kitty, Ghostty, WezTerm and Warp, and fullscreen Kitty
+    images no longer collapse to a one-row strip after scrolling in
+    WezTerm
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored node_modules over 1.0.0 -> 1.0.2: the ten
+  @earendil-works packages move to 1.0.2, with pi-telemetry the one
+  that was already at 1.0.2 in the 1.0.1 tree, plus
+  @anthropic-ai/sdk to 0.129.0. No module leaves or joins the 119
+  shipped ones and the licence union is unchanged
+  * CVE-2026-102276 (boo#1283188): brace-expansion is 5.0.12, above
+    the 5.0.10 fix floor, so the package is not affected by it.
+    Upstream's 1.0.1 made it a direct dependency, but this package
+    vendored 5.0.12 already at 1.0.0
+  * CVE-2026-102277 (boo#1283392) and CVE-2026-102278 (boo#1283412):
+    brace-expansion is 5.0.12, at the 5.0.12 and above the 5.0.11
+    fix floors, so the package is not affected by them
+- Fix the %prep comment on Source10: upstream ships no shrinkwrap
+  since 1.0.1
+
+-------------------------------------------------------------------
 Fri Oct  2 09:10:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.0. This is a major release with breaking

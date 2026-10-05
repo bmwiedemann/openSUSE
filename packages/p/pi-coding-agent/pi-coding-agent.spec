@@ -23,7 +23,7 @@
 %global __nodejs_provides %{nil}
 %global __nodejs_requires %{nil}
 Name:           pi-coding-agent
-Version:        1.0.0
+Version:        1.0.2
 Release:        0
 Summary:        Minimal terminal coding agent
 # Legal-Review-Notice: pi itself is MIT. The 119 vendored dependencies are
@@ -113,12 +113,13 @@ rm -rf dist/bundle
 # non-redistributable shareware WAD on first run.
 rm -rf examples/extensions/doom-overlay
 
-# Upstream's own shrinkwrap is production-only and omits the integrity field
-# for the seven @earendil-works/* sibling packages, which the node_modules
-# source service rejects; Source10 is the full package-lock.json npm generated
-# for this tree instead, with integrity for every entry. It must stay in place
-# for the install below, or npm re-resolves the ranges in package.json and
-# wants tarballs the vendored archive does not carry.
+# Upstream stopped shipping a shrinkwrap in 1.0.1 (it was production-only and
+# omitted the integrity field for the @earendil-works/* sibling packages,
+# which the node_modules source service rejects), so Source10 is the full
+# package-lock.json npm generated for this tree, with integrity for every
+# entry. It must stay in place for the install below, or npm re-resolves the
+# ranges in package.json and wants tarballs the vendored archive does not
+# carry.
 cp -p %{SOURCE10} npm-shrinkwrap.json
 
 # dist/ is shipped prebuilt and nothing here compiles or runs the upstream
