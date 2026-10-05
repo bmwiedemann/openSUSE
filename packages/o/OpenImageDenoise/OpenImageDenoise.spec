@@ -39,6 +39,10 @@ URL:            https://openimagedenoise.github.io/
 Source:         https://github.com/%{name}/%{pkgname}/releases/download/v%{version}/%{pkgname}-%{version}.src.tar.gz
 Source99:       series
 Patch1:         add-parallel-jobs.patch
+# Upstream appends the basic -fstack-protector to the release flags, which
+# downgrades the distro -fstack-protector-strong default; use the strong
+# variant instead so binaries keep the stronger protection.
+Patch2:         OpenImageDenoise-ssp-strong.patch
 BuildRequires:  cmake >= 3.1
 BuildRequires:  ninja
 %if %{with hip}

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:05:03 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add OpenImageDenoise-ssp-strong.patch: upstream appends the basic
+  -fstack-protector to the release flags in cmake/oidn_platform.cmake,
+  which downgrades the distro -fstack-protector-strong default; use
+  -fstack-protector-strong instead.
+
+-------------------------------------------------------------------
 Wed Aug 19 00:06:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 2.5.1

@@ -1,0 +1,11 @@
+--- oidn-2.5.1.orig/cmake/oidn_platform.cmake	2026-08-13 23:50:58.990384800 +0000
++++ oidn-2.5.1/cmake/oidn_platform.cmake
+@@ -253,7 +253,7 @@
+   append(OIDN_C_CXX_FLAGS "/guard:cf")
+ 
+ else()
+-  append(OIDN_C_CXX_FLAGS_RELEASE "-fstack-protector")
++  append(OIDN_C_CXX_FLAGS_RELEASE "-fstack-protector-strong")
+ 
+   if(UNIX)
+     append(OIDN_C_CXX_FLAGS "-fPIC -Wformat -Wformat-security")
