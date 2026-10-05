@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:07:17 UTC 2026 - Michal Suchanek <msuchanek@suse.de>
+
+- Fix determining the kernel source directory path
+
+-------------------------------------------------------------------
+Mon Oct  5 14:15:55 UTC 2026 - Stefan Dirsch <sndirsch@suse.com>
+
+- fixed build against renamed -nvidia64kb flavor (bsc#1282794)
+
+-------------------------------------------------------------------
 Fri Oct  2 14:11:43 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - spelling police

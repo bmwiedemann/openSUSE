@@ -280,12 +280,11 @@ for flavor in %{flavors_to_build}; do
         rm -rf obj/$flavor
         cp -r source obj/$flavor
 	pushd obj/$flavor
-	if [ -d /usr/src/linux-$flavor ]; then
-	  export SYSSRC=/usr/src/linux-$flavor
-	else
-	  export SYSSRC=/usr/src/linux
-	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
+	KREL=$(make -sC $SYSOUT kernelrelease)
+	MODDIR=/usr/lib/modules/$KREL
+	[ -e $MODDIR ] || MODDIR=/lib/modules/$KREL
+	export SYSSRC=$(realpath $MODDIR/source)
 	if [ "$flavor" == "rt" ]; then
 	  export IGNORE_PREEMPT_RT_PRESENCE=1
 	fi
@@ -301,12 +300,11 @@ export INSTALL_MOD_PATH=%{buildroot}
 export INSTALL_MOD_DIR=%{kernel_module_package_moddir}
 for flavor in %{flavors_to_build}; do
 	pushd obj/$flavor
-	if [ -d /usr/src/linux-$flavor ]; then
-	  export SYSSRC=/usr/src/linux-$flavor
-	else
-	  export SYSSRC=/usr/src/linux
-	fi
 	export SYSOUT=/usr/src/linux-obj/%_target_cpu/$flavor
+	KREL=$(make -sC $SYSOUT kernelrelease)
+	MODDIR=/usr/lib/modules/$KREL
+	[ -e $MODDIR ] || MODDIR=/lib/modules/$KREL
+	export SYSSRC=$(realpath $MODDIR/source)
 	if [ "$flavor" == "rt" ]; then
 	  export IGNORE_PREEMPT_RT_PRESENCE=1
 	fi
