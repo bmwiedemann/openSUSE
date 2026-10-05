@@ -23,15 +23,15 @@
 %if (0%{?suse_version} >= 1590) || ("%{_project}" == "graphics")
 %bcond_without art_ctl
 %else
-%bcone_with    art_ctl
+%bcond_with    art_ctl
 %endif
 
 Name:           ART
-Version:        1.26.8
+Version:        1.26.9
 Release:        0
 Summary:        Rawtherapee fork with masks and simplified UI
-License:        GPL-3.0-only
-URL:            http://art.pixls.us/
+License:        GPL-3.0-or-later
+URL:            https://art.pixls.us/
 Source:         https://github.com/artpixls/ART/releases/download/%{version}/%{name}-%{version}.tar.xz
 # No signed tarball quite yet. See gh#artpixls/ART#341 for open issue
 # Source1:         https://github.com/artpixls/ART/releases/download/%{version}/%{name}-%{version}.tar.xz.asc
@@ -46,52 +46,37 @@ BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
 BuildRequires:  fdupes
 BuildRequires:  gcc%{?force_gcc_version}-c++ >= 12
-BuildRequires:  glibmm2-devel
 BuildRequires:  libjpeg-devel
 BuildRequires:  libpng-devel
-BuildRequires:  libraw-devel
 BuildRequires:  mimalloc-devel
 BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(cairomm-1.0)
 BuildRequires:  pkgconfig(exiv2)
 BuildRequires:  pkgconfig(expat)
-BuildRequires:  pkgconfig(fftw3)
 BuildRequires:  pkgconfig(fftw3f)
-BuildRequires:  pkgconfig(fftw3l)
-BuildRequires:  pkgconfig(gail-3.0)
-BuildRequires:  pkgconfig(gdk-3.0)
-BuildRequires:  pkgconfig(gdk-broadway-3.0)
-BuildRequires:  pkgconfig(gdk-wayland-3.0)
-BuildRequires:  pkgconfig(gdk-x11-3.0)
-BuildRequires:  pkgconfig(gdkmm-3.0)
 BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0)
+BuildRequires:  pkgconfig(giomm-2.4)
 BuildRequires:  pkgconfig(glib-2.0)
-BuildRequires:  pkgconfig(gmodule-2.0)
-BuildRequires:  pkgconfig(gmodule-export-2.0)
-BuildRequires:  pkgconfig(gmodule-no-export-2.0)
+BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
-BuildRequires:  pkgconfig(gtk+-broadway-3.0)
-BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
-BuildRequires:  pkgconfig(gtk+-wayland-3.0)
-BuildRequires:  pkgconfig(gtk+-x11-3.0)
 BuildRequires:  pkgconfig(gtkmm-3.0)
 BuildRequires:  pkgconfig(lcms2)
 BuildRequires:  pkgconfig(lensfun)
 BuildRequires:  pkgconfig(libcanberra-gtk3)
-BuildRequires:  pkgconfig(libiptcdata)
-BuildRequires:  pkgconfig(libprofiler)
+BuildRequires:  pkgconfig(libraw_r)
 BuildRequires:  pkgconfig(librsvg-2.0)
-BuildRequires:  pkgconfig(libtcmalloc)
-BuildRequires:  pkgconfig(libtcmalloc_debug)
-BuildRequires:  pkgconfig(libtcmalloc_minimal)
-BuildRequires:  pkgconfig(libtcmalloc_minimal_debug)
 BuildRequires:  pkgconfig(libtiff-4)
+BuildRequires:  pkgconfig(sigc++-2.0)
 BuildRequires:  pkgconfig(zlib)
 
 %description
-A free, open-source, cross-platform raw image processing program. ART is a derivative of the popular RawTherapee, trading a bit of customization and control over various processing parameters for a simpler and (hopefully) easier to use interface, while still maintaining the power and quality of RawTherapee.
+A free, open-source, cross-platform raw image processing program. ART is a
+derivative of the popular RawTherapee, trading a bit of customization and
+control over various processing parameters for a simpler and (hopefully)
+easier to use interface, while still maintaining the power and quality of
+RawTherapee.
 
 %prep
 %autosetup -p1
@@ -103,10 +88,10 @@ export CXXFLAGS="$CFLAGS"
 
 %if 0%{?force_gcc_version}
 export CC=gcc-%{?force_gcc_version}
-export CXX=gcc-%{?force_gcc_version}
+export CXX=g++-%{?force_gcc_version}
 %else
 export CC=gcc
-export CXX=gcc
+export CXX=g++
 %endif
 
 %cmake \
@@ -134,6 +119,7 @@ mv %{buildroot}%{_datadir}/doc/%{name} %{buildroot}%{_docdir}/%{name}
 %fdupes %{buildroot}/%{_prefix}
 
 %files
+%license %{_docdir}/%{name}/LICENSE.txt
 %{_bindir}/ART
 %{_bindir}/ART-cli
 %{_libdir}/librtengine.so

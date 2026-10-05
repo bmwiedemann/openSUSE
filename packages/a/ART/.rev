@@ -437,4 +437,31 @@
 </comment>
     <requestid>1375076</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>220d56255ee572a90fb421b0d1a0a2d0</srcmd5>
+    <version>1.26.9</version>
+    <time>1791206508</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.26.9:
+  * Fixed scaling of PQ and HLG curves; rebuilt the
+    RTv4_Rec2100_PQ.icc output profile
+  * Improved performance of dynamic range compression (tmo_fattal02):
+    DCT-tuned FFTW dimensions and per-thread FFTW plans with explicit
+    OpenMP threading
+  * Lens correction: read embedded Nikon Z NEF correction data
+    (distortion, vignetting, lateral CA) from TIFF tag 0xc7d5
+  * Spot removal: fixed heap corruption when panning/zooming in edit
+    mode (issue #524); added a mutex to avoid a race on the shared
+    params, and fixed memory safety issues in ipspot
+  * boxblur: clamp the radius to the buffer size, fixing out-of-bounds
+    reads in guided smoothing/denoise on small tiles
+  * PipetteBuffer: fixed wrong reallocation condition; fixed wrong
+    size check in BackBuffer::setDrawRectangle
+  * DCP: close the file handle when parsing a DCP fails (issue #522)
+  * Denoise: merged FTblockDN.cc into ipdenoise.cc and restructured
+    RGB_denoise (internal refactoring)
+  * macOS: fixed bundling of libpixbufloader*svg.so
+</comment>
+    <requestid>1382498</requestid>
+  </revision>
 </revisionlist>
