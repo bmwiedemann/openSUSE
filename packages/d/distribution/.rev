@@ -296,4 +296,41 @@
     github.com/klauspost/compress: signed integer overflow in s2.NewDict()</comment>
     <requestid>1382117</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>e9437f90925713bcfb52b403114f69b7</srcmd5>
+    <version>3.1.2</version>
+    <time>1791206483</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.1.2:
+  * build(deps): bump actions/setup-go from 6.4.0 to 7.0.0
+  * build(deps): bump the docker-actions group across 1 directory with 3 updates
+  * chore(release): prepare for v3.1.2 release
+  * build(deps): bump actions/deploy-pages from 5.0.0 to 5.0.1
+  * build(deps): bump the codeql-actions group with 4 updates
+  * ci: dependabot: group CodeQL and Docker action updates
+  * registry: remove logrus-logstash-hook dependency
+  * chore(docs): fix build status badge
+  * build(deps): bump docker/metadata-action from 6.1.0 to 6.2.0
+  * chore(deps): bump oltp version
+  * chore(ci): bump alpine image version
+  * fix(deps): update deps to fix security vulns
+  * docs: explain Redis Sentinel configuration
+  * Fix lint
+  * fix(deps): bump grpc dep to fix sec vuln
+  * fix(handlers): defer context cancellation on Shutdown to stop upload purger
+  * chore(build): Bump go version to latest 1.26
+  * fix(s3): use path.Dir instead of filepath.Dir in directoryDiff
+  * fix(ci): fix broken minio image
+  * docs: fix 'allows to rewrite' grammar in rewrite storage middleware
+  * Fix 500s from malformed manifest digests and out-of-order final chunk PUTs
+  * test: use ephemeral ports for registry listen tests
+  * configuration: migrate to go.yaml.in/yaml/v2
+  * chore(deps): github.com/sirupsen/logrus v1.10.2
+  * chore(deps): github.com/stretchr/testify v1.12.1
+  * chore(deps): github.com/docker/go-metrics v0.1.0
+  * docs: fix CloudFront Origin Path guidance for S3 driver
+  * fix(tags): return empty array after final pagination marker
+  * build(deps): bump google.golang.org/grpc</comment>
+    <requestid>1382481</requestid>
+  </revision>
 </revisionlist>

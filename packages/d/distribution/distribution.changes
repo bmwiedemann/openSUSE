@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Oct 05 08:24:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- Update to version 3.1.2:
+  * build(deps): bump actions/setup-go from 6.4.0 to 7.0.0
+  * build(deps): bump the docker-actions group across 1 directory with 3 updates
+  * chore(release): prepare for v3.1.2 release
+  * build(deps): bump actions/deploy-pages from 5.0.0 to 5.0.1
+  * build(deps): bump the codeql-actions group with 4 updates
+  * ci: dependabot: group CodeQL and Docker action updates
+  * registry: remove logrus-logstash-hook dependency
+  * chore(docs): fix build status badge
+  * build(deps): bump docker/metadata-action from 6.1.0 to 6.2.0
+  * chore(deps): bump oltp version
+  * chore(ci): bump alpine image version
+  * fix(deps): update deps to fix security vulns
+  * docs: explain Redis Sentinel configuration
+  * Fix lint
+  * fix(deps): bump grpc dep to fix sec vuln
+  * fix(handlers): defer context cancellation on Shutdown to stop upload purger
+  * chore(build): Bump go version to latest 1.26
+  * fix(s3): use path.Dir instead of filepath.Dir in directoryDiff
+  * fix(ci): fix broken minio image
+  * docs: fix 'allows to rewrite' grammar in rewrite storage middleware
+  * Fix 500s from malformed manifest digests and out-of-order final chunk PUTs
+  * test: use ephemeral ports for registry listen tests
+  * configuration: migrate to go.yaml.in/yaml/v2
+  * chore(deps): github.com/sirupsen/logrus v1.10.2
+  * chore(deps): github.com/stretchr/testify v1.12.1
+  * chore(deps): github.com/docker/go-metrics v0.1.0
+  * docs: fix CloudFront Origin Path guidance for S3 driver
+  * fix(tags): return empty array after final pagination marker
+  * build(deps): bump google.golang.org/grpc
+  * fix(client): verify blob content against requested digest in Get
+  * fix(client): verify manifest content against requested digest
+  * rename errcodeErrorsFor -> toErrcodeErrors
+  * pass thru upstream error code
+  * fix(security): fix CVE-2026-46595 by bumping golang.org/x/crypto
+  * docs: document catalog.maxentries configuration
+  * fix(storage): don't drop catalog repos that prefix another name
+  * fix contentRangeRegexp to accept unknown total size
+  * fix(s3): tags/list drops tags that are a lexical prefix of another tag
+  * fix: check backend directly in blobStore.Put to avoid stale cache
+  * azure: fix race condition in PutContent causing duplicate append writes
+  * fix(s3): add redirectendpoint validation and fix doc formatting
+  * build(deps): bump docker/metadata-action from 6.0.0 to 6.1.0
+  * build(deps): bump github/codeql-action from 4.35.5 to 4.36.0
+  * build(deps): bump docker/login-action from 4.1.0 to 4.2.0
+  * build(deps): bump docker/bake-action from 7.1.0 to 7.2.0
+  * build(deps): bump codecov/codecov-action from 6.0.0 to 6.0.1
+  * chore: smol go fix changes
+  * build(deps): bump github/codeql-action from 4.35.4 to 4.35.5
+  * Fix blob type migration in the azure driver
+  * build(deps): bump github/codeql-action from 4.35.3 to 4.35.4
+  * build(deps): bump actions/labeler from 6.0.1 to 6.1.0
+  * build(deps): bump github/codeql-action from 4.35.2 to 4.35.3
+  * build(deps): bump github/codeql-action from 4.35.1 to 4.35.2
+  * build(deps): bump softprops/action-gh-release from 2.6.1 to 3.0.0
+  * fix: report error in `DeleteManifest` when `Delete` returns `ErrDigestUnsupported`
+
+-------------------------------------------------------------------
 Fri Oct  2 13:40:04 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update vendor.tar:
