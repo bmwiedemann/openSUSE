@@ -20,7 +20,7 @@
 %define         typelib1 typelib-1_0-XreaderDocument-1_5
 %define         typelib2 typelib-1_0-XreaderView-1_5
 Name:           xreader
-Version:        4.6.5
+Version:        4.6.9
 Release:        0
 Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
@@ -109,15 +109,6 @@ Requires:       %{typelib2} = %{version}
 Xreader is a document viewer capable of displaying multiple and
 single page document formats like PDF and Postscript.
 
-#%package -n xreader-plugin-epubdocument
-#Summary:        EPUB document support for Xreader
-#Requires:       %{name}
-
-
-
-#%description -n xreader-plugin-epubdocument
-#A plugin for Xreader to read EPUB documents.
-
 %package -n xreader-plugin-pdfdocument
 Summary:        PDF document support for Xreader
 Requires:       %{name}
@@ -183,7 +174,6 @@ A plugin for Xreader to read Pixbuf documents.
   -Ddjvu=true \
   -Ddvi=true \
   -Dt1lib=true \
-  -Depub=false \
   -Dpdf=true \
   -Dpixbuf=true \
   -Dps=true \
@@ -255,10 +245,6 @@ A plugin for Xreader to read Pixbuf documents.
 %{_libdir}/*.so
 %{_datadir}/gir-1.0/*.gir
 %{_libdir}/pkgconfig/*.pc
-
-#%files -n xreader-plugin-epubdocument
-#%{_libdir}/%{name}/%{sover}/backends/epubdocument.xreader-backend
-#%{_libdir}/%{name}/%{sover}/backends/libepubdocument.so
 
 %files -n xreader-plugin-pdfdocument
 %{_libdir}/%{name}/%{sover}/backends/pdfdocument.xreader-backend

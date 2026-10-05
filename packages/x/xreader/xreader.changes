@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  5 10:14:52 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.6.9:
+  * fullscreen: Add support for Ctrl+L page selector (#729)
+  * ev-window: avoid stacking duplicate focus-page-selector
+    signal handlers
+  * ev-poppler.cc: Only read a link destination for GOTO_DEST
+    actions
+  * build: Bring back compatibility with XApp 1.9.0
+  * Support Wayland (#727)
+  * Block ev_sidebar_tree_selection_changed handler during
+    sidebar destroy to avoid accidentally rewriting the last
+    viewed page number. (#694)
+  * Remove epub support
+  * l10n: Update POT
+
+-------------------------------------------------------------------
 Wed May 27 16:24:00 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to 4.6.5:

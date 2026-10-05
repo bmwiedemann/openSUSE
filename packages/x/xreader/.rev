@@ -553,4 +553,24 @@
     <comment></comment>
     <requestid>1362615</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>7d3ccf73110a7ebdcdb2763996c78771</srcmd5>
+    <version>4.6.9</version>
+    <time>1791209901</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.6.9:
+  * fullscreen: Add support for Ctrl+L page selector (#729)
+  * ev-window: avoid stacking duplicate focus-page-selector
+    signal handlers
+  * ev-poppler.cc: Only read a link destination for GOTO_DEST
+    actions
+  * build: Bring back compatibility with XApp 1.9.0
+  * Support Wayland (#727)
+  * Block ev_sidebar_tree_selection_changed handler during
+    sidebar destroy to avoid accidentally rewriting the last
+    viewed page number. (#694)
+  * Remove epub support
+  * l10n: Update POT</comment>
+    <requestid>1382492</requestid>
+  </revision>
 </revisionlist>
