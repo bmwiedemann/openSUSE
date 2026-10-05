@@ -1,4 +1,411 @@
 -------------------------------------------------------------------
+Sat Oct 03 16:24:29 UTC 2026 - Mads Skau Nyland <suse.penholder495@passmail.com>
+
+- Update to version 0.65.1:
+  * Handle daemon mode before creating the app config
+  * Construct logger separately and pass it into NewCommon
+  * Pass only log to daemon.Handle, not the whole common
+  * Bump tcell to v3.5.0
+  * Find the lazygit root directory by go.mod instead of .git
+  * AGENTS.md addition
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Bump github.com/sirupsen/logrus from 1.9.4 to 1.10.2
+  * Bump github.com/gdamore/tcell/v3 from 3.4.1 to 3.4.2
+  * Bump github.com/stretchr/testify from 1.11.1 to 1.12.1
+  * Bump github.com/xo/terminfo
+  * Render the focused main view again while it is being searched
+  * Show the search status of what a re-rendered view now holds
+  * Read a view that is being searched to the end when it renders again
+  * Work the search positions out when they are read, not on each line written
+  * Bring the current search match back into range when the matches change
+  * Add a test for the current search match after the matches change
+  * Hold a task while a view is read to its end
+  * Answer every read request, whether or not a task is still serving
+  * Add a test for read requests waiting when a task is stopped
+  * Addition to AGENTS.md
+  * Drop the highlight fixups the context stack now makes unnecessary
+  * Derive the selection highlight from the context stack
+  * Re-render the main view without re-focusing the panel beneath it
+  * Demonstrate that toggling whitespace undims the panel beneath the main view
+  * Demonstrate that an unfocused list's selection goes stale
+  * Ask each context whether it has content to select
+  * Cover how a view's selection follows the focus in and out of a context
+  * Let a test assert how a view draws its selection
+  * Validate the context names in the "context" field of custom commands
+  * Add a hint about filtering menus to the docs
+  * Reword stale comment about filtering not being available in the files view
+  * Point the note about the menu's essential keys at what it means
+  * Filter the recent repositories menu as you type
+  * Drop the menu-specific wording for the filter prompt
+  * Filter the keybindings menu as you type
+  * Add test helpers for a menu's filter row
+  * Keep a filtering menu navigable whatever the keybindings are
+  * Filter a menu by typing into it
+  * Lay out the filter row of a menu that filters as you type
+  * Add the views for a menu's filter row
+  * Allow a list to render its footer elsewhere
+  * Extract applying a filter to a context
+  * Treat the views of a popup panel as a group when clicking
+  * Draw embedded views as one focused unit
+  * Let an editable view opt into receiving printable keys as keybindings
+  * Give a parent view's keybindings the same precedence as a view's own
+  * Add a helper for recognizing printable keys
+  * Remove error return value from functions that always return nil
+  * Delete cpu.out file that was committed accidentally
+  * Avoid rehydrating unchanged rebase todos
+  * Fix visual glitches when moving a rebase todo
+  * Remove PostRefreshUpdateKeepingScrollPosition
+  * Add PostRefreshUpdateWithOptions
+  * Cleanup: remove CommitSelection option when refreshing rebase todos
+  * Allow filtering worktrees by branch name in Worktrees pane
+  * Cleanup: use lowercase for function parameters
+  * Add test for filtering worktrees
+  * Fix scrolling back when dragging a commit
+  * Demonstrate commit drag scroll reset on re-entry
+  * Add some comments to the drag_to_reorder_with_autoscroll test
+  * Read mouse pointer geometry on the UI thread in tests
+  * Collapse the paths of a moved directory into the directory itself
+  * Show renames when diffing a directory that a file was moved into or out of
+  * Extract a single helper for the paths a node's diff is limited to
+  * Pass the previous path when diffing a filtered directory in the files panel
+  * Add tests for diffing a directory that files were renamed into or out of
+  * Keep showing files whose conflicts have been resolved
+  * Collect the paths of the files with conflicts, rather than only counting them
+  * AGENTS.md additions
+  * Bump golangci-lint to 2.12.2
+  * Preallocate arrays where the new linter version would warn about it
+  * Avoid appending to an array literal
+  * Use lo.Map instead of manual append loops
+  * Fix linter warning about `WriteString(fmt.Sprintf(...))`
+  * Fix use of reflect.Ptr
+  * Remove the common-false-positives and legacy linter exception presets
+  * Drop FlushStaleCells, which no longer has anything to flush
+  * Reset the scroll to the top at first paint, not when the task starts
+  * Don't run end-of-input handling for a render that was stopped
+  * Render async content into an off-screen buffer and swap it in
+  * Don't take the view over for "loading..." when the content isn't changing
+  * Make the buffer-writing methods operate on a viewBuffer
+  * Bundle a view's cell buffer and write state into a viewBuffer
+  * Reset other main views' scroll after copying content, not before
+  * Don't scroll a view up to fill blank space while its content is loading
+  * Fire queued ReadToEnd callbacks when the initial read reaches EOF
+  * Add a test for a read request queued while a task reaches EOF
+  * Lock the view while reading viewLines on the event-handling thread
+  * Move the click-path hyperlink lookup onto View
+  * Add LAZYGIT_SLOW_RENDER debug knob for watching async render frames
+  * Route all view origin writes through SetOriginX and SetOriginY
+  * Guard taskKey with the mutex that already guards the task ID
+  * Auto-select the conflicted commit when stopping in rebase
+  * Add selection assertions to tests involving conflicts
+  * Keep the last conflict file selected after resolution
+  * Add a function SetStatusFilterPreservingSelection
+  * Extract a private helper function preserveSelection
+  * Draw the UI in a more inactive look when the window is not focused
+  * Only react to focus reports that change whether we're focused
+  * Recognize worktrees among the files from the worktrees model
+  * Add test for how we show a worktree that is inside the main work tree
+  * Refresh the worktrees in their own scope again
+  * Give commits and branches their own scope checks
+  * Separate the runs in the debug log with a blank line
+  * Use nano-second time stamp granularity in the debug log
+  * Disable staging all files when there are none to stage
+  * Add a test for staging all files when there are none
+  * Avoid gofumpt'ing other worktrees
+  * Remove the scroll calls that are now redundant
+  * Scroll the selection into view by default
+  * Add tests for the scroll-into-view regressions we fixed by hand
+  * Add a test for dragging a range selection past the bottom of a panel
+  * Add a test that a background refresh keeps the scroll position
+  * Add a test for paging up and down in a list
+  * Fix example for args field in rawGit diff renderer docs
+  * go get -tool mvdan.cc/gofumpt@v0.11.0
+  * Remove a few unnecessary parentheses
+  * Bump JamesIves/github-sponsors-readme-action from 1.6.0 to 1.6.1
+  * Bump github.com/lucasb-eyer/go-colorful from 1.4.0 to 1.4.1
+  * Get the GitHub token from gh instead of resolving it in-process
+  * Give up waiting for the UI thread once the main loop has exited
+  * Add a test for waiting on the UI thread after the loop has exited
+  * Make RefreshHelper pay attention to the error returned from OnUIThreadAndWait
+  * Let OnUIThreadAndWait's error be about the wait, not about f
+  * Bump mheap/github-action-required-labels from 5.5.2 to 5.6.0
+  * Bump github.com/kyokomi/emoji/v2 from 2.2.13 to 2.2.14
+  * Bump actions/setup-go from 6 to 7
+  * Recognize conflict markers that have no label
+  * Honor the conflict-marker-size gitattribute
+  * Add tests demonstrating that we ignore the conflict-marker-size gitattribute
+  * Make the conflict marker size a parameter of our marker matching
+  * Run the stash operations with a waiting status
+  * Collapse the stash range selection from the refresh's Then
+  * Switch to the files panel from the post-stash refresh's Then
+  * Apply the panel updates after stash operations in a single frame
+  * AGENTS.md additions
+  * Open the repo when lazygit is started in its .git dir
+  * Remember how to get back to a repo we entered a submodule from
+  * Make StringStack generic
+  * Tell git where the repo is when it can't find it itself
+  * Don't let our repo answer for a different one
+  * Run Reset in the parent module the way the other commands do
+  * Say why runInParentModule can name a relative directory
+  * Recognize a repo that has no work tree instead of bailing out
+  * Stop promising bare repo support
+  * Don't clear gui.git when we fail to open a repo
+  * Use the work tree as the repo path when it is the main worktree
+  * Add a repo paths test for a repo with a separate work tree
+  * Identify the current and main worktree by git dir, not by path
+  * Add a worktree loader test for being in a submodule
+  * Give the worktree loader tests their repos' git dirs
+  * Simplify the run_integration_tests.sh script
+  * Update the versions pinned for the Nix build
+  * Use nixfmt's current package name in the flake
+  * Start all commands of a pipeline before waiting for any of them
+  * Scroll the selection into view after a filtering mode change
+  * Don't show an unfiltered list as if it were filtered
+  * Handle entering and leaving filtering mode in one place
+  * Decouple hiding the working tree state from blocking input
+  * Rename suppressRebasingMode to suppressWorkingTreeStateMode
+  * Decide the commit graph from the loaded list, not the filtering mode
+  * Don't let a broken fixture take down the whole test binary
+  * Don't let integration tests race a background git repack
+  * Update docs and schema for release
+  * Update translations from Crowdin
+  * Make justfile commands available in the Nix development shell
+  * Reap pty process trees synchronously when quitting on Windows (#5879)
+  * Reap the pty's conhost on Windows builds where it fails to run down (#5879)
+  * Kill the pty child's process tree on Windows to avoid orphans (#5879)
+  * Give task commands a Terminate method instead of exposing their process
+  * Prevent stale index.lock files from diffs rendered through a pty on Windows
+  * Exclude more commit trailers from auto-wrapping
+  * Move Github PR cache out of state.yml into a separate file
+  * Show a Github PR's combined checks state in branches list and main view
+  * Centralize pull-request header presentation
+  * Carry aggregate check state with GitHub pull requests
+  * Isolate GitHub pull-request response parsing
+  * Adapt links
+  * Adapt documentation
+  * Rework the custom pager config (rename to diff renderer)
+  * Fix tests to use the right field name
+  * Make CurrentPagerName always return a name
+  * Extract GitCommandBuilder method AddCommonDiffArgs
+  * Cleanup: add blank lines for canonical markdown
+  * Remove BenchmarkMigrationOnLargeConfiguration
+  * Keep the destination visible while commits move
+  * Cancel commit drags with escape
+  * Keep scrolling while commits are dragged at an edge
+  * Drag selected commits to a new position
+  * Show commit insertion points during a drag
+  * Move dragged commits in one rebase
+  * Unify commit movement before adding drag destinations
+  * Keep range drags moving at panel edges
+  * Create a range selection by dragging with the mouse in list views
+  * Auto-scroll when dragging to create range selection in staging view
+  * Add DragAutoScroller helper
+  * Add ViewDriver methods for mouse drag gestures in integration tests
+  * Refactor: extract replayMouseEvent helper method
+  * Route mouse events to their originating view during a drag gesture
+  * Deliver mouse release after a drag
+  * Add test for double-click detection
+  * Demonstrate that drag release becomes hover
+  * Preserve the first mouse movement of a drag
+  * Additions to AGENTS.md
+  * Change list section headers to a slightly more elegant design
+  * Add a helper function for formatting list section headers
+  * Change default spinner frames and rate
+  * Support absolute paths when detecting edit preset from EDITOR env var
+  * Fix multi-selection of files with common prefix not working in commit files panel
+  * Make isDescendentOfSelectedCommitFileNodes work for the root item
+  * Cleanup: move variable assignment out of the loop
+  * Add test to demonstrate a problem with custom patches and directories sharing a prefix
+  * Small addition to CONTRIBUTING.md
+  * Preserve commit clicks during focus refreshes
+  * Demonstrate stale focus refresh overwriting a click
+  * Clamp ConPTY sizes to the 1x1 minimum that Windows accepts
+  * Add test showing StartPty fails on Windows when given a zero size
+  * Never hand NewCmdTask a nil reader when a command fails to start
+  * Add test showing startCmdWithPipe returns a nil reader on pipe failure
+  * Extract helper for starting a command with piped output
+  * Support a `{{diffContext}}` template variable in external diff command
+  * Block input and batch UI updates when switching repos
+  * Block input while the refresh after a stash operation is in flight
+  * Block input while the refresh after moving a rebase todo is in flight
+  * Add test showing that rapidly moving a rebase todo twice moves the wrong todo
+  * Add RefreshBlockingInput to buffer keypresses until a refresh has landed
+  * Add test showing that a rapid second keypress acts on a stale staging panel
+  * Add a way for integration tests to press keys in rapid succession
+  * Update comments that still describe the removed blocking refresh mode
+  * Show the inline status again when checking out a newly created remote branch
+  * Read the gui's per-repo pointers on the UI thread in background routines
+  * Don't auto-forward branches when the repo was switched during the fetch
+  * Pin the cached git config's commands to the repo directory
+  * Resolve the refresh's file reads against its repo root
+  * Don't refuse a repo switch during a pure refresh
+  * Don't pop up errors from a refresh worker once the repo was switched
+  * Run a refresh's git commands through the instance captured at its start
+  * Pin git commands to the repo they were created for
+  * Refresh pull requests through the regular refresh after picking a base remote
+  * Run nested-submodule commands in the parent module's directory explicitly
+  * Log per-test durations during integration tests
+  * Dump goroutine stacks when the test watchdog fires
+  * Run the integration tests under the race detector on CI
+  * Increase integration test timeout to 30 minutes
+  * Scale the integration test watchdog up under the race detector
+  * Don't let a leaked subprocess wedge the headless test runner
+  * Bump tcell to v3.4.1 to fix drawing on a suspended screen
+  * Schedule a redraw when resuming from suspension
+  * Don't flush the screen while suspended
+  * Add test showing that resuming after a suspend schedules no redraw
+  * Recommend the gopls MCP tools for symbol navigation in AGENTS.md
+  * Suppress command logs for git calls related to the ctrl+f command
+  * Suppress command logs for tag commands
+  * Render the app status in a single background render loop
+  * Give the GitHub GraphQL requests a timeout
+  * Fetch GitHub pull requests as a background task
+  * Don't retry failed integration tests
+  * Assert that Model() and Context() are only accessed on the UI thread
+  * Store the UI thread ID earlier
+  * Check for exec todos on the UI thread
+  * Hold the file-path suggestions trie outside the model
+  * Refresh the merge conflicts state on the UI thread
+  * Don't access Model in refreshReflogCommits
+  * Capture suggestions inputs on the UI thread
+  * Refresh once when dropping multiple stash entries
+  * Don't share a live view's buffer when copying its content
+  * Refresh the patch-building panel on the UI thread
+  * Guard the patch builder against concurrent access
+  * Wait for the event loop to exit in integration tests
+  * Remove the now-dead PopupMutex
+  * Create popups and menus on the UI thread
+  * Handle a command task's end-of-input on the UI thread
+  * Take the write mutex when clearing view lines and reading the buffer
+  * Snapshot the view width for command-task rendering on the UI thread
+  * Make the ViewBufferManager throttle flag atomic
+  * Hold the ViewBufferManager readLines channel in an atomic
+  * Reset the view origin for a new task on the UI thread
+  * Perform string-task view updates on the UI thread
+  * Don't wait for pull requests to be fetched in refresh
+  * Log Refresh timing information for both sync/async
+  * Run all refresh scopes on plain goroutines
+  * Retire WithWaitingStatusSync
+  * Drop the now-unused UI-thread CheckMergeOrRebase path
+  * Block input during the worker commit-surgery ops
+  * Run the sync commit-surgery ops on a worker with input blocked
+  * Pass captured state to moveFixupCommitToOwnerStackedBranch
+  * Add a WithWaitingStatusBlockingInput helper
+  * Add gocui primitives to block input during an operation
+  * Remove the RefreshMode field
+  * Derive sync vs async refresh from the calling thread
+  * Show a waiting status while creating a branch
+  * Allow Then and BatchUIUpdates to work with an async refresh
+  * Remove fRunsOnUIThread variable; use calledFromWorker directly
+  * Get rid of pointless f() indirection
+  * Replace the BLOCK_UI refresh mode with a BatchUIUpdates flag
+  * Remove the error return value from the onUIThreadUnlessRepoChanged lambda
+  * Remove return value from PromptToContinueRebase
+  * Note in AGENTS.md that gocui lives in-tree
+  * Wait for the streamed command's output goroutine before reading its buffers
+  * Serialize concurrent writes to the streamed command's output writer
+  * Assign the transient contexts' initial windows from the side panel config
+  * Don't show a transient view whose window is not part of the layout
+  * Add tests showing ghost views when branches/commits are not their panel's first tab
+  * Bump tcell to an unreleased snapshot to fix a shutdown race
+  * Escape the merge conflicts view before prompting to continue the rebase
+  * Fix a deadlock between task.Done() and the integration test's idle wait
+  * Track replayed test input as busy from the moment it is submitted
+  * Extract the tcell-to-gocui event conversion out of pollEvent
+  * Rename version_bump options to be extra clear
+  * Allow releasing from a branch other than master
+  * Allow having branch and tag with the same name
+  * Determine the latest tag from the checked-out commit's history
+  * Fix a deadlock when a Windows pty task is stopped mid-output
+  * Log the user-event queue's high-water mark
+  * Make the user-event queue unbounded
+  * Back off exponentially between lock-error retries
+  * Recognize index.lock contention in worktrees and submodules
+  * Retry lock errors reported only through the command's error
+  * Demonstrate that a lock error in a streamed command isn't retried
+  * Unify the git command lock-retry loops
+  * Don't invite for contributions at startup
+  * Clarify the contribution policy
+  * Fix data race on the triggerFetch field
+  * Don't block the UI thread when triggering an immediate fetch on repo switch
+  * Add a hint about how to use diff --color-words or --word-diff in lazygit
+  * Compute list index conversions independently of rendering
+  * Demonstrate that list index conversions depend on rendering
+  * Synchronize ViewBufferManager.Close with a starting task
+  * Make integration tests using commits more robust
+  * Cache each line's wrapping so scrolling doesn't re-wrap the whole buffer
+  * Render content-only when a task reads more lines into a view
+  * Read lines based on scroll position instead of a fixed per-notch delta
+  * Write the command log on the UI thread
+  * Lock the status list when reading it
+  * Mention the `Then` rule in AGENTS.md
+  * Guard the view-render and prompt-dismiss bounces on the generation
+  * Thread a refreshEnv through the refresh scopes
+  * Clear the preserved commit message on the UI thread
+  * Swap the file-path suggestions trie on the UI thread
+  * Cancel the commit-file range selection on the UI thread after discard
+  * Collapse the branch range selection on the UI thread after a delete
+  * Move the pull-patch panel close and focus off the worker
+  * Keep RebaseOntoRef's marked-base access on the UI thread
+  * Capture commits and set selection on the UI thread for squash/fixup/drop
+  * Set ResetToRef's post-reset selection via refresh intents
+  * Make the local-commits limit-commits flag atomic
+  * Capture the commit-file discard and patch-toggle reads on the UI thread
+  * Look up the submodule file and branch worktree on the UI thread
+  * Capture moveCommitsToNewBranch's model reads on the UI thread
+  * Capture reword/amend/author commit reads on the UI thread
+  * Capture the custom-patch handlers' commit reads on the UI thread
+  * Guard every refresh's entry point, not just the commits scope
+  * Capture the files, reflog, branches and stash refresh inputs
+  * Make the started-in-lazygit and startup-stage flags atomic
+  * Capture the remotes/sub-commits/commit-files/rebase-commits inputs
+  * Assert a refresh uses the entry point matching its goroutine
+  * Route merge/rebase result handling to the right refresh entry point
+  * Capture the commits refresh's inputs on the UI thread
+  * Add IsUIThread and OnUIThreadAndWait to gocui
+  * Fetch pull requests using the freshly-loaded branches and remotes
+  * Also refresh branches and remotes when refreshing pull requests
+  * Clamp the commit-file tree selection when the tree is rebuilt
+  * Select the checked-out branch via a refresh intent, not off-thread
+  * Exclude toast rendering from the busy query
+  * Refuse a repo switch while a foreground operation is in flight
+  * Exclude view-buffer render tasks from the busy query
+  * Tag background routines and their refreshes as background tasks
+  * Add background tasks and a synchronous busy query to gocui
+  * Run the repo switch on the UI thread
+  * Replace RefreshingBranchesMutex with a branch-load sequence guard
+  * Run the immediate startup branch refresh before spawning the async one
+  * Remove refresh mutexes made redundant by bouncing
+  * Bounce BRANCHES model updates onto the UI thread
+  * Bounce COMMITS model updates onto the UI thread
+  * Bounce PULL_REQUESTS model updates onto the UI thread
+  * Bounce STATUS view update onto the UI thread
+  * Bounce REFLOG model updates onto the UI thread
+  * Thread reflog commits explicitly into the branches load
+  * Bounce REMOTES model updates onto the UI thread
+  * Bounce SUB_COMMITS model updates onto the UI thread
+  * Bounce REBASE_COMMITS model updates onto the UI thread
+  * Bounce WORKTREES model updates onto the UI thread
+  * Bounce STASH model updates onto the UI thread
+  * Bounce TAGS model updates onto the UI thread
+  * Bounce COMMIT_FILES model updates onto the UI thread
+  * Move post-COMMIT_FILES-refresh work into Then
+  * Remove RefreshingFilesMutex/FileTreeViewModel.RWMutex, dead code
+  * Bounce FILES model updates onto the UI thread
+  * Move post-FILES-refresh model reads into Then
+  * Make RefreshOptions.Then a func() error, queue it via OnUIThread
+  * Remove unused IsRefreshingFiles state
+  * Remove unused CommitFileTreeViewModel.RWMutex
+  * AGENTS.md additions
+  * Drop the now-redundant manual re-render in tag push
+  * Re-render to clear an inline status when its operation finishes
+  * Show a waiting status while resetting to a ref
+  * Show a waiting status when editing a commit
+  * Show a waiting status when starting an interactive rebase onto a ref
+  * Show a waiting status while merging a branch
+  * Show a waiting status while continuing a merge or rebase
+
+-------------------------------------------------------------------
 Sun Jul 05 12:12:20 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 0.63.0:
