@@ -50,6 +50,8 @@ License:        GPL-3.0-or-later
 URL:            https://ansible.com/
 Source0:        https://files.pythonhosted.org/packages/source/a/ansible-core/ansible_core-%{version}.tar.gz#/ansible_core-%{version}.tar.gz
 Source1:        ansible_core-%{version}.tar.gz.sha256
+# CVE-2026-16493 (bsc#1272369)
+Patch0:         ansible-core-CVE-2026-16493.patch
 BuildArch:      noarch
 
 Provides:       ansible-core = %{version}
