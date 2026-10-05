@@ -17,7 +17,7 @@
 
 
 Name:           meld
-Version:        3.24.0
+Version:        3.24.1
 Release:        0
 Summary:        Visual diff and merge tool
 License:        GPL-2.0-or-later
@@ -34,7 +34,7 @@ BuildRequires:  itstool
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.48
-BuildRequires:  pkgconfig(gtk+-3.0) >= 3.20
+BuildRequires:  pkgconfig(gtk+-3.0) >= 3.22
 BuildRequires:  pkgconfig(gtksourceview-4) >= 4.0.0
 BuildRequires:  pkgconfig(py3cairo) >= 1.15.0
 BuildRequires:  pkgconfig(pygobject-3.0) >= 3.30

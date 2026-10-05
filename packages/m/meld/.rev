@@ -780,4 +780,31 @@
   + Updated translations.</comment>
     <requestid>1361059</requestid>
   </revision>
+  <revision rev="88" vrev="1">
+    <srcmd5>b72aab10fd0520a2c2f3ad6b146a087a</srcmd5>
+    <version>3.24.1</version>
+    <time>1791208035</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 3.24.1:
+  + Features:
+    - Allow loading files with very long lines via prompt
+    - Attach Windows and macOS builds to releases from CI
+  + Fixes:
+    - Raise the line length limit for loading files
+    - Improve dark mode detection
+    - Don't treat blank files as images when detecting image
+      comparisons
+    - Move Windows build to UCRT64
+    - Windows installer upgrade and uninstall fixes
+  + Updated translations.
+- Update version dependencies according to meson.build.
+
+- Update to GNOME 3.20.2 (Fate#318572)
+- Add meld-Dont-pass-git-env-vars.patch and
+  + Fix starting Meld from a differently-named symlink
+    file system doesn't support it
+  + Automatically recompile stale in-place gschemas
+  + Handle SIGINT to support previous quit-on-Ctrl-C behaviour</comment>
+    <requestid>1382500</requestid>
+  </revision>
 </revisionlist>

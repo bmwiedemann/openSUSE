@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:28:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.24.1:
+  + Features:
+    - Allow loading files with very long lines via prompt
+    - Attach Windows and macOS builds to releases from CI
+  + Fixes:
+    - Raise the line length limit for loading files
+    - Improve dark mode detection
+    - Don't treat blank files as images when detecting image
+      comparisons
+    - Move Windows build to UCRT64
+    - Windows installer upgrade and uninstall fixes
+  + Updated translations.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Sat Jun 20 12:18:59 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.24.0:
@@ -594,7 +611,7 @@ Sun Jun 19 13:43:54 UTC 2016 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Fri May 20 11:39:15 UTC 2016 - alarrosa@suse.com
 
-- Update to GNOME 3.20.2 (Fate#318572) 
+- Update to GNOME 3.20.2 (Fate#318572)
 
 -------------------------------------------------------------------
 Wed May 18 12:39:39 UTC 2016 - mvetter@suse.com
@@ -862,7 +879,7 @@ Tue Dec 30 11:57:36 UTC 2014 - zaitor@opensuse.org
 -------------------------------------------------------------------
 Thu Dec 18 00:45:56 UTC 2014 - zaitor@opensuse.org
 
-- Add meld-Dont-pass-git-env-vars.patch and 
+- Add meld-Dont-pass-git-env-vars.patch and
   meld-Repaint-TextView-background.patch from upstream. Fixes
   boo#909824.
 
@@ -876,11 +893,11 @@ Thu Nov 13 00:21:04 UTC 2014 - badshah400@gmail.com
   + Fix tab width setting not working correctly
   + Fix starting comparison of Subversion checkouts from a
     subdirectory
-  + Fix starting Meld from a differently-named symlink 
+  + Fix starting Meld from a differently-named symlink
   + Ignore errors when copying file metadata if the destination
-    file system doesn't support it 
-  + Automatically recompile stale in-place gschemas 
-  + Handle SIGINT to support previous quit-on-Ctrl-C behaviour 
+    file system doesn't support it
+  + Automatically recompile stale in-place gschemas
+  + Handle SIGINT to support previous quit-on-Ctrl-C behaviour
   + Drop patches (incorporated upstream):
     - meld-ignore-error-when-copying-metadata.patch
     - meld-fix-tab-width-handling.patch
