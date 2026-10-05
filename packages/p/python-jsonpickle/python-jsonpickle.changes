@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:42:42 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.1.3:
+  * Add deprecation warnings for the pending removal of the
+    backend, max_iter, and v1_decode arguments, as well as the
+    new behavior of 5.0.0 in not registering the yaml backend by
+    default. (+637)
+
+-------------------------------------------------------------------
 Thu Sep  3 04:14:52 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-numpy-25.patch:

@@ -395,4 +395,16 @@
   * Use non-removed string formats.</comment>
     <requestid>1375504</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>b4886f240561268163b8d7c20ba1068b</srcmd5>
+    <version>4.1.3</version>
+    <time>1791197806</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.1.3:
+  * Add deprecation warnings for the pending removal of the
+    backend, max_iter, and v1_decode arguments, as well as the
+    new behavior of 5.0.0 in not registering the yaml backend by
+    default. (+637)</comment>
+    <requestid>1382328</requestid>
+  </revision>
 </revisionlist>
