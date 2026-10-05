@@ -16,16 +16,14 @@
 #
 
 
-%define upstream_version    1_11_1
+%define upstream_version    1_11_4
 Name:           workrave
-Version:        1.11.1
+Version:        1.11.4
 Release:        0
 Summary:        Recovery and prevention of Repetitive Strain Injury program
 License:        GPL-3.0-or-later AND LGPL-2.0-or-later AND HPND
 URL:            https://www.workrave.org
-Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz
-# PATCH-FIX-UPSTREAM fix-appstream-id-case.patch gh#rcaelers/workrave#710 -- AppStream id must match desktop-id case
-Patch0:         fix-appstream-id-case.patch
+Source:         https://github.com/rcaelers/workrave/archive/v%{upstream_version}.tar.gz#/%{name}-%{upstream_version}.tar.gz
 BuildRequires:  boost-devel
 BuildRequires:  cmake
 BuildRequires:  desktop-file-utils
