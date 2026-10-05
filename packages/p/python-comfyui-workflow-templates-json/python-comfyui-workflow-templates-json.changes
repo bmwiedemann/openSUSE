@@ -1,4 +1,31 @@
 -------------------------------------------------------------------
+Sun Oct  4 17:54:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.102: 608 template definitions (was 606),
+  the two additions being ElevenLabs v4 text to speech and text
+  to dialogue
+- 587 of the 606 existing definitions are byte-identical; the 19
+  rewritten ones are
+  * api_bfl_flux3_image_bboxes re-rolls its pinned seed (present
+    before and after, not dropped) and rewords one bounding-box
+    widget description; the box text stays empty, and the rest is
+    editor layout and a frontendVersion bump
+  * five re-point their sample audio from voice_demo.mp3 to
+    long_demo.mp3: api_elevenLabs_speech_to_text,
+    api_elevenlabs_speech_to_speech,
+    api_elevenlabs_text_to_dialogue, llm_gemma4_text_gen and
+    template_image_speech_to_video
+  * 12 of the 13 index files advance all 7164 sourceRevision
+    fields to upstream 0e5c5ef; index.mcp.json carries none and
+    tightens the ElevenLabs speech to text description
+  * the 11 translated indexes also gain native titles and
+    descriptions for the five templates 0.1.100 shipped with
+    untranslated English text: FLUX 3 Image text to image, image
+    edit and bounding box edit, and Grok Imagine Video 1.5 Lite
+    text to video and image to video
+- No code change and no dependency change
+
+-------------------------------------------------------------------
 Fri Oct  2 10:56:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.100: 606 template definitions (was 601),

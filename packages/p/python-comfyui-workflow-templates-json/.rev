@@ -221,4 +221,20 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
 </comment>
     <requestid>1382141</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a4a1c70344262706beaecadae61bb812</srcmd5>
+    <version>0.1.102</version>
+    <time>1791197818</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.1.102 (was 0.1.100)
+
+- 608 template definitions, was 606; adds ElevenLabs v4 text to
+  speech and text to dialogue
+- 587 of 606 unchanged; 19 rewritten: one bounding-box template,
+  five workflows repointing sample audio, 13 index files
+- 11 translated indexes gain native text for five templates that
+  shipped untranslated; 12 index files re-stamp source revisions
+- No code or dependency change</comment>
+    <requestid>1382393</requestid>
+  </revision>
 </revisionlist>
