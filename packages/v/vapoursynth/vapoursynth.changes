@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:46:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to R81:
+  * Use the dedicated Vulkan transfer queues where the device has
+    them, making GPU frame upload and download faster
+  * Rework the memory model of GPU filters that export memory to
+    CUDA or Vulkan: input frames are now copied at most once per
+    source frame and shared between requests
+  * Fix several expr JIT bugs that produced incorrect output on
+    some instruction set levels
+  * Fix an access violation in the matroska muxer, a log handler
+    removal race and various audio and video format validation
+    errors
+  * Logging deadlocks are much less likely now; Vulkan validation
+    messages always go to stderr and fewer locks are held
+  * Frame requests for negative numbers are clamped instead of
+    being a fatal error, and setmaxcpu no longer accepts arbitrary
+    strings
+  * Fix the avisynth compatibility layer having flipped RGB and
+    add RGBS support
+  * Many more small fixes and improved error messages
+- No ABI or soname change: 81 is the release counter, not the API
+  level, so out-of-tree plugins stay compatible
+- License: LGPL-2.1-or-later, as the sources grant "or later"
+
+-------------------------------------------------------------------
 Wed Sep 16 14:59:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version R80:

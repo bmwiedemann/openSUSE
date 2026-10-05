@@ -401,4 +401,22 @@ Note: SONAME change rebuilds consumers (ffmpeg, mpv, ...)</comment>
 Rebase vapoursynth-fhs-install.patch: use system glslang instead of wrap-git. BuildRequires pkgconfig(vulkan), glslang-devel and cmake.</comment>
     <requestid>1378405</requestid>
   </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>82041d22f45e2036e740d7c9fb08f742</srcmd5>
+    <version>81</version>
+    <time>1791209915</time>
+    <user>anag_factory</user>
+    <comment>- Update 80 -&gt; R81, released 2026-10-04.
+- No ABI/soname change: VAPOURSYNTH_API_MAJOR 4, VSAPI 126/126, VSSCRIPTAPI 20/20, +1 Vulkan tail.
+- 81 is the release counter, not the API level; out-of-tree plugins stay compatible.
+- All 22 Factory consumers use unversioned Requires: libvapoursynth4, no unresolvable window.
+- GPU: dedicated Vulkan transfer queues if present; reworked memory model for CUDA/Vulkan.
+- Input frames are copied once per source frame and shared between requests.
+- Fixes: expr JIT bugs on some ISAs; matroska muxer access violation; log handler race.
+- Audio/video format validation errors; logging deadlocks less likely; Vulkan to stderr.
+- Negative frame requests clamped not fatal; setmaxcpu rejects arbitrary strings.
+- License corrected from LGPL-2.1-only to LGPL-2.1-or-later, per meson.build and headers.
+- boo#1214012 NOT AFFECTED: mpv 0.36 on FFmpeg 6.0, VapourSynth only in feature list.</comment>
+    <requestid>1382544</requestid>
+  </revision>
 </revisionlist>

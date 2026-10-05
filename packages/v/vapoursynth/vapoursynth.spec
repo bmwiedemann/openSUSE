@@ -18,10 +18,12 @@
 
 %define sover 4
 Name:           vapoursynth
-Version:        80
+Version:        81
 Release:        0
 Summary:        A video processing framework
-License:        LGPL-2.1-only
+# upstream's meson.build declares license: 'LGPL-2.1-or-later' and
+# the LGPL headers grant "or (at your option) any later version"
+License:        LGPL-2.1-or-later
 URL:            https://www.vapoursynth.com/
 Source0:        https://github.com/vapoursynth/vapoursynth/archive/R%{version}.tar.gz#/%{name}-R%{version}.tar.gz
 # PATCH-FIX-OPENSUSE vapoursynth-fhs-install.patch -- install libraries, vspipe, headers and pkgconfig to FHS locations instead of the Python wheel dir, give libvsscript a soversion, emit FHS-correct prefix/includedir/libdir (and a Libs line) in vapoursynth.pc, and use system glslang instead of the wrap-git subproject
@@ -34,6 +36,8 @@ BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Cython
+# spec-cleaner --pkgconfig rewrites this to pkgconfig(python-3.6) +
+# pkgconfig(python-3.6m), stale hardcoded numbers; no such .pc exists
 BuildRequires:  python3-devel
 BuildRequires:  pkgconfig(Magick++) >= 7.0
 BuildRequires:  pkgconfig(libarchive)
