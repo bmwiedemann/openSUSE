@@ -315,4 +315,41 @@
     <comment>Update to version 0.116.0 (forwarded request 1380850 from develop7)</comment>
     <requestid>1380851</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>e9fe1adb3b5bce0e54b0f92c6cd77b4e</srcmd5>
+    <version>0.116.1</version>
+    <time>1791207990</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.116.1:
+  + Deprecations:
+    * `tui label --title` renamed to `--titlebar`; the old switch
+      warns on first use and is scheduled for removal in 0.118.0
+  + Additions:
+    * TUI widgets accept `--title` to customize their border title
+    * `--border` and `$env.config.tui.border_type` select TUI border
+      styles; per-widget settings override the global default
+  + Bug fixes:
+    * TUI widgets display slow and endless streams as data arrives,
+      including widgets in child lists; builders always return a
+      `tui` value instead of passing input rows through
+    * `tui split` panes resize reliably with keyboard and mouse in
+      horizontal and vertical layouts, keeping at least one cell
+      per pane
+    * Completion menus stay open when nothing matches; cancelled
+      `@interactive` pickers close immediately and reopen with Tab
+    * Custom completers on `def --wrapped` rest parameters are called
+      for arguments starting with `-`
+    * Fixed incorrect cell path parsing
+    * `$nu.startup-time` measures from Nushell's `main`, excluding
+      executable/library loading; `exec nu` starts a fresh measurement
+    * Elapsed `$nu.startup-time` is available throughout startup,
+      including config files, `-e`, MCP, LSP, DAP, and IDE check modes
+    * IDE hover/completion/navigation/AST modes can access `$nu`;
+      config files loaded with `nu --mcp` see `$nu.is-mcp` as `true`
+    * Performance logs distinguish startup from MCP/LSP serving time
+  + Other changes:
+    * Titled TUI widget records include `title`; top-bar labels use
+      slot `titlebar`, and empty previews have an empty title (forwarded request 1382399 from develop7)</comment>
+    <requestid>1382400</requestid>
+  </revision>
 </revisionlist>
