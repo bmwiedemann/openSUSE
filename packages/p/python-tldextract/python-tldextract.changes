@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct  4 15:44:34 UTC 2026 - Mia Herkt <mia@0x0.st>
+
+- Update to 5.4.0:
+Features
+  * Add TLDEXTRACT_PUBLIC_SUFFIX_LIST_URLS environment variable
+    to set the default suffix list URLs
+    gh#john-kurkowski/tldextract#374
+  * Add the clearer TLDEXTRACT_DEFAULT_FETCH_TIMEOUT environment
+    variable, while retaining support for TLDEXTRACT_CACHE_TIMEOUT
+    gh#john-kurkowski/tldextract#375
+Bugfixes
+  * Fix hostname extraction from already-parsed URLs with
+    credentials, ports, or IPv6 addresses
+    gh#john-kurkowski/tldextract#379
+  * Preserve private suffix metadata when a longer wildcard suffix
+    does not match
+    gh#john-kurkowski/tldextract#383
+Docs
+  * Document added and deprecated names
+    gh#john-kurkowski/tldextract#378
+
+-------------------------------------------------------------------
 Sat Aug 22 20:37:38 UTC 2026 - Mia Herkt <mia@0x0.st>
 
 - Update to 5.3.2:
