@@ -45,4 +45,16 @@ No file conflict with python-mcp 1.28.1, which ships no mcp_types.</comment>
     TypeAdapter validation; wire formats are unchanged</comment>
     <requestid>1376274</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>de1b5b5b25adcac97b4e24b0b9dfb22b</srcmd5>
+    <version>2.3.0</version>
+    <time>1791197824</time>
+    <user>anag_factory</user>
+    <comment>Update python-mcp-types to 2.3.0
+
+Version lockstep with the python-sdk monorepo tag: the mcp-types
+source and tests are byte-identical between v2.2.0 and v2.3.0, and the
+SDK pins mcp-types=={{version}}. No dependency change, no CVE.</comment>
+    <requestid>1382317</requestid>
+  </revision>
 </revisionlist>

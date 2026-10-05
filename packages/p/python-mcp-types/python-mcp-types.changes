@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:32:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.3.0:
+  * mcp_types code, tests and dependency set are unchanged from 2.2.0;
+    this subproject is version-locked to the python-sdk monorepo tag (the
+    SDK requires "mcp-types=={{ version }}"), so the bump only keeps the
+    two in step
+  * the 2.3.0 changes are all in the mcp SDK proper, which this package
+    does not build; nothing in the wire types changed
+
+-------------------------------------------------------------------
 Tue Sep  8 06:26:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.2.0:
