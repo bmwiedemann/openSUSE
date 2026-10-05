@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Sun Oct  4 06:49:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.54.12:
+  * Template search no longer breaks when a custom node ships a
+    template whose name collides with a built-in one
+  * Manager: version choices are spelled out and a failed pack
+    installation is now reported instead of silently stalling
+  * Comfy Agent changes upstream in this range are not in this
+    package: upstream dead-code-eliminates the agent panel from its
+    OSS build (the __DISTRIBUTION__ seam in useAgentDockMount.ts),
+    so its consent, reconnect, attachment, paywall and
+    starter-prompt fixes land in source this package does not ship
+  * Vendored DOMPurify stays at 3.4.13; upstream's package.json
+    dependency set is unchanged across this range
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Wed Sep 30 08:06:03 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.54.8:

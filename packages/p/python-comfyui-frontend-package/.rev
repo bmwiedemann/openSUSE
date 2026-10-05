@@ -171,4 +171,15 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
 </comment>
     <requestid>1381683</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>f5a087045db337d829fe5c5f1eed4744</srcmd5>
+    <version>1.54.12</version>
+    <time>1791197815</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.54.12 (in-line on the 1.54 line).
+- Ships the prebuilt static bundle, no node toolchain, no dep change
+- Comfy Agent work in this range is DCE'd from the OSS bundle, not credited
+- No CVE or GHSA in the 30-commit range</comment>
+    <requestid>1382333</requestid>
+  </revision>
 </revisionlist>
