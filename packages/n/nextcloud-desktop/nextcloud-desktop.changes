@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Tue Oct  6 14:18:41 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to version 34.0.5:
+  * [stable-34.0] fix(macOS): Use NSOpenPanel to grant sync
+    folder access 
+    (gh#nextcloud/desktop#10851)
+  * [stable-34.0] fix(macOS): Position tray account popup
+    adjacent to menu bar
+    (gh#nextcloud/desktop#10852)
+  * [stable-34.0] fix(windows): Pass extended \?\ paths to QFile
+    for ordinary files in Filesystem::rename 
+    (gh#nextcloud/desktop#10860)
+  * [stable-34.0] fix(file-provider): Make change batch delivery
+    idempotent 
+    (gh#nextcloud/desktop#10854)
+  * [stable-34.0] fix(reuse): Remove unneeded xcscheme 
+    (gh#nextcloud/desktop#10862)
+  * [stable-34.0] Updated Xcode Scheme Reference in Documentation 
+    (gh#nextcloud/desktop#10865)
+  * [stable-34.0] Fix: notification text for a lock timeout set to
+    zero minutes 
+    (gh#nextcloud/desktop#10879)
+  * [stable-34.0] fix(search): Replace non-existent component in
+    unified search result item 
+    (gh#nextcloud/desktop#10889)
+  * [stable-34.0] docs(cli): group command-line help options 
+    (gh#nextcloud/desktop#10898)
+  * [stable-34.0] Fix Workspace Debug Build on macOS 27 
+    (gh#nextcloud/desktop#10899)
+  * [stable-34.0] fix(invalid-filename): Fix paths used for check
+    in invalid filename dialog 
+    (gh#nextcloud/desktop#10918)
+  * [stable-34.0] fix(systray): smarter elide mode for long 
+    display name 
+    (gh#nextcloud/desktop#10923)
+  * [stable-34.0] fix(file-provider): (Re)discover XPC service for
+    restored (previously missing) domain 
+    (gh#nextcloud/desktop#10935)
+  * [stable-34.0] fix(file-provider): Manage lifecycle of XPC
+    connections to File Provider extensions 
+    (gh#nextcloud/desktop#10942)
+  * [stable-34.0] fix(finder-sync): Normalise paths received from
+    Finder Sync extension over XPC 
+    (gh#nextcloud/desktop#10948)
+  * [stable-34.0] fix(macOS): Address tray popup wrong
+    reactivation on icon click 
+    (gh#nextcloud/desktop#10949)
+  * [stable-34.0] fix(file-provider): Fix handling of item renamed
+    into excluded pattern 
+    (gh#nextcloud/desktop#10952)
+  * [stable-34.0] Bugfix/mgallien/file delete various fixes 
+    (gh#nextcloud/desktop#10975)
+  * [stable-34.0] fix(auth): Do not migrate public link accounts
+    to webflow 
+    (gh#nextcloud/desktop#10958)
+  * [stable-34.0] fix(tray): prevent duplicate disconnected
+    account actions 
+    (gh#nextcloud/desktop#10984)
+  * Chore/mgallien/update craft (gh#nextcloud/desktop#0982)
+  * [stable-34.0] fix(tray): Do not build Qt tray tests on macOS 
+    (gh#nextcloud/desktop#11003)
+  * [stable-34.0] fix(file-provider): Keep modified contents
+    unuploaded after upload failure 
+    (gh#nextcloud/desktop#11005)
+  * [stable-34.0] fix(file-provider): Forward the domain when 
+    fetching thumbnails 
+    (gh#nextcloud/desktop#11007)
+
+-------------------------------------------------------------------
 Wed Sep 16 16:12:13 UTC 2026 - Natasha Ament <stacheldrahtje@ament-teusink.eu>
 
 - Update to version 34.0.4:
