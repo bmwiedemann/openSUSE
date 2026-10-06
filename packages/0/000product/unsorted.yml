@@ -8792,6 +8792,7 @@ unsorted:
   - httpie 
   - httrack 
   - httrack-devel 
+  - httrack-doc 
   - hub 
   - hubble 
   - hubble-bash-completion 
@@ -10925,6 +10926,9 @@ unsorted:
   - kubie-bash-completion 
   - kubie-fish-completion 
   - kubo 
+  - kubo-bash-completion 
+  - kubo-fish-completion 
+  - kubo-zsh-completion 
   - kubrick 
   - kubrick-lang 
   - kucero 
@@ -11106,6 +11110,7 @@ unsorted:
   - ldacBT-devel 
   - ldap-proxy 
   - ldap-yp-tools 
+  - ldapvi 
   - ldas-tools-al-devel 
   - ldas-tools-al-swig 
   - ldas-tools-cmake 
@@ -13001,7 +13006,7 @@ unsorted:
   - libcreg-tools 
   - libcreg1 
   - libcriterion-devel 
-  - libcriterion3 
+  - libcriterion4 
   - libcriu2 
   - libcroco 
   - libcroco-devel 
@@ -14261,7 +14266,7 @@ unsorted:
   - libhts3 
   - libhtscodecs2 
   - libhttp_parser2_9 
-  - libhttrack2 
+  - libhttrack3 
   - libhubbub-devel 
   - libhubbub0 
   - libhugetlbfs 
@@ -16952,7 +16957,7 @@ unsorted:
   - libtorrent-rasterbar-devel 
   - libtorrent-rasterbar-doc 
   - libtorrent-rasterbar2_0 
-  - libtorrent52 
+  - libtorrent53 
   - libtoxcore2 
   - libtpl-extensions3 
   - libtpm2-totp0 
@@ -17268,7 +17273,7 @@ unsorted:
   - libvoikko1 
   - libvoikko1-32bit 
   - libvolk3_3 
-  - libvolk_gnsssdr0_0_21 
+  - libvolk_gnsssdr0_0_22 
   - libvomsapi1 
   - libvorbis-devel 
   - libvorbis-devel-32bit 
@@ -24994,8 +24999,6 @@ unsorted:
   - python313-asyncssh 
   - python313-atlassian-python-api 
   - python313-atom 
-  - python313-atomicwrites 
-  - python313-atomicwrites-doc 
   - python313-atpublic 
   - python313-atspi 
   - python313-attr 
@@ -28609,7 +28612,6 @@ unsorted:
   - python313-yaspin 
   - python313-yaswfp 
   - python313-yattag 
-  - python313-yg.lockfile 
   - python313-yq 
   - python313-yt 
   - python313-yt-dlp 
@@ -29064,8 +29066,6 @@ unsorted:
   - python314-asyncssh 
   - python314-atlassian-python-api 
   - python314-atom 
-  - python314-atomicwrites 
-  - python314-atomicwrites-doc 
   - python314-atpublic 
   - python314-atspi 
   - python314-attr 
@@ -32758,7 +32758,6 @@ unsorted:
   - python314-yaspin 
   - python314-yaswfp 
   - python314-yattag 
-  - python314-yg.lockfile 
   - python314-yq 
   - python314-yt 
   - python314-ytmusicapi 
