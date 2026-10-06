@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 03:50:26 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to get the version when building the docs.
+
+-------------------------------------------------------------------
 Mon Sep 21 23:30:20 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 1.8.11:

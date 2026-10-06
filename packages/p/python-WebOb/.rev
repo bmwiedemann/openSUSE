@@ -488,4 +488,13 @@ Drop sphinx doctrees for reproducible builds</comment>
 </comment>
     <requestid>1379547</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>fea38d7806dd53d927a19141e251bbac</srcmd5>
+    <version>1.8.11</version>
+    <time>1791306784</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to get the version when building the docs.</comment>
+    <requestid>1381755</requestid>
+  </revision>
 </revisionlist>

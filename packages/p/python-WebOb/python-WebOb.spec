@@ -24,6 +24,8 @@ Summary:        WSGI request and response object
 License:        MIT
 URL:            https://webob.org/
 Source:         https://files.pythonhosted.org/packages/source/w/webob/webob-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on one commit of gh#Pylons/webob#486
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module legacy-cgi if %python-base >= 3.13}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
