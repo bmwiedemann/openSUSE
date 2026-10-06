@@ -564,4 +564,41 @@
   * Bump cryptography dependency ceiling to &lt;50 (N+3) in (#906) (forwarded request 1357749 from glaubitz)</comment>
     <requestid>1357939</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>9b080de8d1908c831d6a7bea65188704</srcmd5>
+    <version>1.39.0</version>
+    <time>1791306832</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.39.0
+  * Fix `_is_inside_docker()` false positive on systemd cgroups
+    v2 hosts (part of #886) by Nilesh Choudhary (@4gust) in (#945)
+  * Sanitize URLs by Nilesh Choudhary (@4gust) in (#956)
+  * Disable broker on Intel-based Macs by Ashok Kumar Ramakrishnan
+    (@ashok672) in (#926)
+  * Fix Azure Arc errors returned before authentication challenge
+    by Gladwin Johnson VR (@gladjohn) in (#962)
+  * Fix Service Fabric HTTPAdapter subclass compatibility by Nilesh
+    Choudhary (@4gust) in (#964)
+  * Bump MSAL version to 1.39.0 by Nilesh Choudhary (@4gust) in (#966)
+- from version 1.38.0
+  * Fix ESRP client ID typo in release pipeline by Ryan Auld (@RyAuld)
+    in (#924)
+  * Add OneBranch pipeline templates for CI and Release by Ryan Auld
+    (@RyAuld) in (#925)
+  * Fix benchmark cache path and add forceBenchmarks pipeline variable
+    by Ryan Auld (@RyAuld) in (#927)
+  * Validate region string format before use in URL construction by
+    Bogdan Gavril (@bgavrilMS) in (#921)
+  * Fix Python 3.14 test timeout: replace utcnow() and remove tee pipe
+    by Ryan Auld (@RyAuld) in (#934)
+  * Remove pytest-azurepipelines plugin to fix Python 3.14 stall
+    by Ryan Auld (@RyAuld) in (#936)
+  * Migrate region discovery to IMDS /compute JSON endpoint by
+    Robbie-Microsoft in (#929)
+  * Remove redundant GitHub Actions unit-test job by Gladwin Johnson
+    VR (@gladjohn) with @Copilot in (#942)
+  * Add test coverage for past expires_on in Managed Identity by
+    Gladwin Johnson VR (@gladjohn) in (#940) (forwarded request 1382266 from glaubitz)</comment>
+    <requestid>1382508</requestid>
+  </revision>
 </revisionlist>
