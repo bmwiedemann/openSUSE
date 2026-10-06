@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-core
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Google Cloud API client core library
 License:        Apache-2.0

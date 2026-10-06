@@ -1,7 +1,7 @@
 #
 # spec file for package gap-smallsemi
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           gap-smallsemi
-Version:        0.7.2
+Version:        0.7.4
 Release:        0
 Summary:        GAP data library of semigroups of small size
 License:        GPL-3.0-or-later

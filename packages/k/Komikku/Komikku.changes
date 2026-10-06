@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sat Oct  3 09:57:05 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 51.1.0:
+  + [Card] Tracking: Added warning message when automatic
+    synchronization of reading progress is not possible
+  + [Reader] OCR Translator: Fixed calculation of the selection
+    area's coordinates when white borders are cropped
+  + [Servers] Cartel De Manhwas (ES): Disabled
+  + [Servers] ComicHubFree (EN): Fixed search when no results
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaBall (multi): Update
+  + [Servers] MangaKawaii (FR): Update
+  + Updated translations.
+
+-------------------------------------------------------------------
 Sat Sep 19 14:23:15 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 51.0.1:
@@ -1134,7 +1149,7 @@ Mon Apr  1 03:09:56 UTC 2024 - jun wang <jgwang@suse.com>
     + [Servers] Scan FR: Disabled
     + [Servers] Scan Manga (FR): Disabled
     + [L10n] Updated French, Russian, Spanish and Turkish
-      translations 
+      translations
 
 -------------------------------------------------------------------
 Fri Mar  8 18:58:41 UTC 2024 - Richard Rahl <rrahl0@proton.me>

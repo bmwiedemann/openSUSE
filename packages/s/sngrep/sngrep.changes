@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:23:17 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Switch from autotools to cmake
+- Add patch:
+  * sngrep-cmake-build-test-binaries.patch
+
+-------------------------------------------------------------------
+Tue Oct  6 06:45:36 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.9.0
+  * cmake: Use CMAKE_INSTALL_SYSCONFDIR instead of hardcodec path.
+  * fix: prevent stack buffer overflow in SIP attribute formatting.
+    (fix CVE-2026-90558).
+  * capture: decode SIP inside IPsec ESP with NULL encryption.
+  * util: free(…) is already NULL tolerant.
+  * configure.ac: Resolve 'AC_HELP_STRING' deprecation warning.
+  * sip.c: Correct and simplify parsing expressions.
+  * ui_call_list.c: Replace manual string dup with strdup.
+  * rtp: keep recently finished calls when matching media streams.
+  * call-list: search full configured column values.
+  * filter: add Call-ID to filter dialog.
+  * filter: reuse PCRE2 match data.
+  * Fix unlabeled field in filter dialog.
+  * Allow selecting filter dialog fields with the mouse.
+  * capture: guard IPv6 fragment reassembly state.
+  * sip: support non-standard request methods.
+  * Add Call State filtering.
+- Drop patch:
+  * 0001-fix-prevent-stack-buffer-overflow-in-SIP-attribute-f.patch
+
+-------------------------------------------------------------------
 Mon Sep 14 15:34:24 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - CVE-2026-90558: stack buffer overflow in SIP attribute formatting

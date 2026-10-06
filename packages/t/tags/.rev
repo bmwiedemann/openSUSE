@@ -7,4 +7,18 @@
     <comment>tags: A simple text tagger</comment>
     <requestid>1324696</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>2527aa38bf421392e94e13cbb1235cd2</srcmd5>
+    <version>2.5</version>
+    <time>1791307089</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 2.5.
+  * Fixed Import tags dialog
+  * Increased default window size
+  * Fixed search issue when using zh_CN language
+  * Changed all Adw.Windows to Adw.PreferencesDialogs
+  * Changed Gtk.ShortcutsWindow to Adw.ShortcutsDialog
+  * Updated translations</comment>
+    <requestid>1382682</requestid>
+  </revision>
 </revisionlist>

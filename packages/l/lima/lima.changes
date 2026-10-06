@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Oct 05 12:55:03 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
+
+- Update to version 2.2.1:
+  * build(deps): bump github.com/golangci/golangci-lint/v2 in /hack/tools
+  * autostart: export AutoStartManager interface
+  * CI: lint-quick: ignore deepwiki.com 429
+  * fix broken X link in README
+  * go.mod: golang.org/x/crypto v0.56.0
+  * build(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+  * build(deps): bump google.golang.org/grpc from 1.83.0 to 1.83.1
+  * pkg/ptr: remove
+  * lint: fix `printf: fmt.Errorf format %#q has arg ans of wrong type int`
+  * lint: fix `errorsastype: errors.As can be simplified using AsType[...]`
+  * lint: fix `stditerators: NumField/Field loop can simplified using Type.Fields iteration`
+  * hack/tools/go.mod: github.com/golangci/golangci-lint/v2 v2.13.0
+  * build(deps): bump the golang-x group across 1 directory with 2 updates
+  * CI: lint-quick: ignore cloud-native.slack.com 403
+  * CI: Windows: install perl
+  * build(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.0
+  * build(deps): bump google.golang.org/grpc from 1.82.0 to 1.82.1
+  * portfwd: dial through the current guest agent client, not the one captured at listen time
+  * limactl-url-fedora-rawhide: don't rely on COMPOSE_ID
+  * templates: update
+  * nerdctl: update from v2.4.0 to v2.4.1
+  * fix: disable LLMNR to prevent Debian SSH login delay
+  * guestagent: close the gRPC connection when a write fails
+  * CI: tolerate systemd-binfmt failure on wsl2
+  * hack: ignore the Ubuntu grubenv race in the systemd check
+  * driver(qemu): disable the TPM PPI on HVF with QEMU >= 11.0
+  * nerdctl: update from v2.3.5 to v2.4.0
+  * docs: clarify that macOS guests need the host macOS to be newer
+  * templates: add macos-27 (Golden Gate)
+  * hack: accept IPSW URLs without the "fullrestores" path component
+  * copytool: make `copy -r` into an existing directory consistent across backends
+  * hostagent: flush coalesced logs after idle periods
+  * hostagent: coalesce log flushes instead of syncing every record
+  * reject guest agent events that report an invalid IP
+  * go.mod: update minimum Go version to 1.26
+  * portfwd: don't close the live udp listener on a duplicate forward
+  * qemuimgutil: reject qcow2 external data file references
+  * portfwdserver: relay TCP half-close from the host
+  * strip control characters from guest cloud-init log lines
+  * fix(store): do not trust PID files left behind by a previous boot
+  * Remove the apptainer workaround for 24.04
+  * For apptainer, move TMPDIR away from tmpfs
+  * quote guest error string in time sync log
+  * end rsync option parsing before the copy paths
+
+-------------------------------------------------------------------
 Wed Jul 22 07:48:41 UTC 2026 - Alessio Biancalana <dottorblaster@opensuse.org>
 
 - Update to version 2.2.0:

@@ -1,7 +1,7 @@
 #
 # spec file for package fake-hwclock
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2022 B1 Systems GmbH, Vohburg
 #
 # All modifications and additions to the file contributed by third parties
@@ -18,13 +18,14 @@
 
 
 Name:           fake-hwclock
-Version:        0.14
+Version:        0.15
 Release:        0
 Summary:        Save/restore system clock on machines without working RTC hardware
 License:        GPL-2.0-only
 URL:            https://tracker.debian.org/pkg/fake-hwclock
-Source:         %{name}-%{version}.tar.xz
+Source:         %{name}-%{version}.tar.zst
 Source1:        Makefile
+BuildRequires:  zstd
 BuildArch:      noarch
 
 %description

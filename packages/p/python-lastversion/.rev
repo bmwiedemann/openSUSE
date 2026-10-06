@@ -69,4 +69,23 @@
     item 0: expected str instance, NoneType found`. Holders that</comment>
     <requestid>1373041</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>03bcf4fb52a28a8a4bc4163f5222dbd9</srcmd5>
+    <version>3.6.19</version>
+    <time>1791306962</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.6.19:
+  * Fixed crash on urllib3 &lt; 1.26 (EL7/EL8 system packages):
+    `Retry() got an unexpected keyword argument
+    'allowed_methods'`
+  * 3.6.18's retry policy now falls back to `method_whitelist` on
+    older urllib3
+  * `.spec` repo resolution now expands spec-defined
+    `%global`/`%define` macros (plus `Name`/`Version`) in
+    `URL`/`Source0`
+    e.g. `URL: https://github.com/%{gitowner}/%{name}` previously
+    queried the literal `%{gitowner}/%{name}`
+  * Transient HTTP failures are retried through the cache adapter</comment>
+    <requestid>1382614</requestid>
+  </revision>
 </revisionlist>

@@ -8,7 +8,7 @@ Wed Aug 19 11:57:09 UTC 2026 - Tina Müller <timueller+perl@suse.de>
          [Security]
          - Restrict the verification algorithm to those specified in the allowed_signature_methods, which is
            now required.  THIS IS A BREAKING CHANGE.
-           See https://github.com/vurtdev/Net-OAuth/security/advisories/GHSA-c8rm-g5cm-4pf5 (CVE-2026-72889)
+           See https://github.com/vurtdev/Net-OAuth/security/advisories/GHSA-c8rm-g5cm-4pf5 (CVE-2026-72889) bsc#1275759
            for more information.
          - HMAC_SHA1 and HMAC_SHA256 signature keys cannot be blank.
          - HMAC_SHA1, HMAC_SHA256 and PLAINTEXT signature verification now use constant-time comparison (CVE-2026-75589).
@@ -58,6 +58,33 @@ Sat Jan  4 05:33:36 UTC 2025 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 0.300.0 (0.30)
    see /usr/share/doc/packages/perl-Net-OAuth/Changes
+
+  0.30   Fri, 03 Jan 2025 09:46 GMT
+       [Bug Fixes]
+       - Fixed syntax error in Net::OAuth::Client (oops).
+       - Added missing VERSION to Net::OAuth::Client.
+  0.29   Fri, 03 Jan 2025 09:15 GMT
+       [Security]
+       - Net::OAuth::Client uses a better source of randomness for generating the nonce CVE-2025-22376 bsc#1235095
+       [Bug Fixes]
+       - Removed unnecessary prerequisite RT#69810 GH#4 GH#6
+       - Fix broken dependency for URI::Escape GH#4 (thanks oiami)
+       - Fix handling of uri_escape_utf RT#73705 (thanks Tomaž Šolc)
+       [Documentation]
+       - Reorganised Changes to almost follow CPAN::Changes::Spec
+       - Updated author and maintainer information
+       - Changed to consistent copyright information
+       - Fixed typo RT#125292 RT#90007 GH#6 (thanks Gregor Herrmann)
+       - Added a Security Policy (SECURITY.md) to the distribution
+       [Tests]
+       - Fixed randomly failing t/02-rsa.t test RT#125291 RT#125482 (thanks Gregor Herrmann)
+       [Other]
+       - Maintenance taken over by Robert Rothenberg <rrwo@cpan.org>
+       - Added .mailmap to the repo
+       - Distribution metadata now has the git repository (thanks Sergey Romanov) GH#6
+       - Set up config_requires in Build.PL
+       - Updated Build.PL configuration
+       - Updated MANIFEST.SKIP rules
 
 -------------------------------------------------------------------
 Sat Jun  8 07:13:01 UTC 2013 - coolo@suse.com

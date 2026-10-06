@@ -1,4 +1,123 @@
 -------------------------------------------------------------------
+Mon Oct 05 05:23:21 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
+
+- Update to version 0.33.1:
+  * grpcclient: release process cleanup on output errors
+  * grpcclient: fix exec stream flow-control deadlock
+  * ci: fix reference to containerd v2.2.x (removed)
+  * Dockerfile: add containerd v2.4.1, drop v2.2.9
+  * dockerfile: fix patch release version validation
+  * vendor: update go-actions-cache to afe8013b5ac4
+  * forwarder: reconcile gateway test after rebase
+  * sourcepolicy: evaluate Git bundle sources
+  * vendor: gomod regen
+  * security: validate Git full remote URLs
+  * security: limit daemon file reads
+  * dockerfile: limit epoch archive reads
+  * cache: version and quarantine legacy layer snapshots
+  * executor: reject proxy CA bundle devices
+  * solver: reject CDI setup without inputs
+  * gateway: serialize container lifecycle
+  * solver: validate source location metadata
+  * gateway: validate malformed requests
+  * solver: validate op dependency counts
+  * executor: fail closed on proxy CA cleanup
+  * dockerfile: limit frontend file reads
+  * solver: validate MergeOp input count
+  * solver: validate symlink owner inputs
+  * errors: report build-facing paths on read failure
+  * gateway: resolve container reads inside the mount
+  * openfile: reject special files in daemon reads
+  * file: prevent mkfile device write-through
+  * gateway: synchronize forwarder state
+  * cache: preserve stargz TOC snapshot identity
+  * source: avoid unverified image config cache key
+  * cache: verify applied layer DiffID before commit
+  * source: verify container blob digests
+  * solver: handle disabled CDI devices
+  * executor: avoid blocking on proxy CA bundle cleanup
+  * executor: keep proxy CA cleanup inside the rootfs
+  * Update Dockerfile tool versions
+  * vendor: align Go dependencies with Moby
+  * Bump Docker CLI, seccomp, and compress patches
+  * provenance: record target platform in SLSA v1
+  * exporter: fix src error cleanup and resolution
+  * session: use 60s in auth timeout examples
+  * session: make session auth timeout configurable
+  * staticfs: clean walk target before matching
+  * sshutil: Avoid double brackets on IPv6 hosts
+  * metadata: set NoFreelistSync on bolt databases to avoid write amplification
+  * docs: fix the gha cache section of the example config file
+  * docs: clarify compaction metric freshness in automatic mode
+  * db: lower default compaction write check interval
+  * db: rework compaction eligibility triggers
+  * db: skip unchanged compaction checkpoints
+  * db: recover Windows handle after compaction
+  * db: check reclaimability below the write watermark
+  * docs: add a metadata compaction guide
+  * db: expose compaction metrics through OpenTelemetry
+  * buildkitd: expose on-demand compaction through debug HTTP
+  * buildkitd: make metadata compaction opt-in
+  * db: integrate idle compaction with bbolt transactions
+  * db: gate idle compaction on reclaimable space
+  * db: support cancellable bbolt compaction
+  * client: protect concurrent local cache exports from reset
+  * buildkitd: avoid panic for lone quote in GC policy config
+  * vendor: align otel versions
+  * Dockerfile: update runc binary to v1.5.2
+  * session: add per-request filter hook to file sync
+  * build(deps): bump github/codeql-action/upload-sarif
+  * vendor: github.com/containerd/containerd/v2 v2.4.1
+  * solver: fix reference leak on slow cache errors
+  * Dockerfile: rootlesskit v3.2.0
+  * Dockerfile: containerd v2.3.6, v2.2.9, v1.7.36
+  * vendor: github.com/containerd/containerd/v2 v2.3.6
+  * client: preserve the caller context for local cache reset
+  * resolver: fix token retry budget and cancellation
+  * auth: retry transient registry token failures
+  * resolver: retry connection resets on Windows
+  * shell: preserve escapes in quoted expansion patterns
+  * dockerfile: keep escapes in RUN step names
+  * test: use silo for s3 integration tests
+  * test: bound one-shot mc invocations for minio servers
+  * remotecache/s3: honor compression attributes
+  * test: isolate mc config dir for minio servers
+  * cache: serialize blob computation writers
+  * source/git: fix commit mtime for subdirs
+  * move archive detection into util/archiveutil
+  * fix default group handling for trailing-colon chown
+  * build(deps): bump github/codeql-action/upload-sarif
+  * contentutil: test registry cache upload retries after EOF
+  * util/tracing: test resource schema and environment detection
+  * overlay: mount the read-only view with index=off
+  * cache: use a unique ingest ref per blob computation
+  * build(deps): bump codecov/codecov-action from 7.1.0 to 7.1.1
+  * staticfs: Bound walks to the requested subtree
+  * build(deps): bump docker/bake-action from 7.3.0 to 7.4.0
+  * build(deps): bump docker/setup-qemu-action from 4.3.0 to 4.4.0
+  * build(deps): bump docker/build-push-action from 7.3.0 to 7.4.0
+  * build(deps): bump docker/setup-buildx-action from 4.3.0 to 4.4.0
+  * build(deps): bump docker/bake-action/subaction/matrix
+  * cachedigest: recover from database open failures with boltutil.SafeOpen
+  * build(deps): bump codecov/codecov-action from 7.0.0 to 7.1.0
+  * compression: expose shared archive detection
+  * resolver: acquire registry capacity before opening writers
+  * buildkitd: support config path from environment
+  * runc: use boltutil.Open for containerd metadata
+  * build(deps): bump github/codeql-action/upload-sarif
+  * dockerfile: reject --chown by name with --link at parse time
+  * Remove obsolete cache metadata indexes
+  * ci: distribute compatibility release tests
+  * vendor: github.com/moby/sys/userns v0.2.1
+  * ci: skip repository workflows in forks
+  * exporter: add src option to local and tar exporters
+  * Dockerfile: update engine to v29.8
+  * vendor: github.com/package-url/packageurl-go v0.1.7
+  * forwarder: preserve platform in NewContainer
+  * vendor: github.com/sirupsen/logrus v1.10.2
+  * exporter/containerimage: support unpack for rewrite-timestamp mode
+
+-------------------------------------------------------------------
 Mon Aug 10 04:50:02 UTC 2026 - Bharti Gautam <bharti.gautam@suse.com>
 
 - Update to version 0.32.2:

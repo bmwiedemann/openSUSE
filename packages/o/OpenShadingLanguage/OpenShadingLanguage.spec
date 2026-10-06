@@ -226,16 +226,11 @@ export CC="gcc-%{?force_gcc_version}"
 export CXX="g++-%{?force_gcc_version}"
 %endif
 
-if [ -e /usr/bin/llvm-as ] ; then
-LLVM_AS=%{_bindir}/llvm-as
-else
-LLVM_AS=$(ls -1 %{_bindir}/llvm-as-* | sort -n | head -n 1)
-fi
-if [ -e /usr/bin/llvm-link ] ; then
-LLVM_LINK=%{_bindir}/llvm-link
-else
-LLVM_LINK=$(ls -1 %{_bindir}/llvm-link-* | sort -n | head -n 1)
-fi
+# Avoid version mismatch. The default clang++ may also be installed alongside the required version. 
+LLVM_MAJOR_VERSION=$(llvm-config --version | cut -d'.' -f1)
+CLANGPLUSPLUS=%{_bindir}/clang++-${LLVM_MAJOR_VERSION}
+LLVM_AS=%{_bindir}/llvm-as-${LLVM_MAJOR_VERSION}
+LLVM_LINK=%{_bindir}/llvm-link-${LLVM_MAJOR_VERSION}
 
 %if 0%{?suse_version} == 1500
 export pybind11_DIR="$(pybind11-config --cmakedir)"
@@ -245,6 +240,7 @@ export pybind11_DIR="$(pybind11-config --cmakedir)"
 %if %{without qt}
       -DUSE_QT:BOOL=FALSE \
 %endif
+      -DLLVM_BC_GENERATOR:FILEPATH=${CLANGPLUSPLUS} \
       -DLLVM_AS_TOOL:FILEPATH=${LLVM_AS} \
       -DLLVM_LINK_TOOL:FILEPATH=${LLVM_LINK} \
       -DCMAKE_SKIP_RPATH:BOOL=TRUE \

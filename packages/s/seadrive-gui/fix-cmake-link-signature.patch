@@ -7,10 +7,10 @@ Otherwise CMake fails with:
   with the target "seadrive-gui".  All uses of target_link_libraries
   with a target must be either all-keyword or all-plain.
 
-Index: seadrive-gui-3.0.24/CMakeLists.txt
+Index: seadrive-gui-3.0.26/CMakeLists.txt
 ===================================================================
---- seadrive-gui-3.0.24.orig/CMakeLists.txt
-+++ seadrive-gui-3.0.24/CMakeLists.txt
+--- seadrive-gui-3.0.26.orig/CMakeLists.txt
++++ seadrive-gui-3.0.26/CMakeLists.txt
 @@ -583,7 +583,7 @@ ENDIF()
  IF (${CMAKE_SYSTEM_NAME} MATCHES "Linux" OR ${CMAKE_SYSTEM_NAME} MATCHES "BSD")
  IF(QT_VERSION_MAJOR EQUAL 6)

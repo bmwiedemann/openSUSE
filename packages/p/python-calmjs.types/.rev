@@ -44,4 +44,12 @@ Requires python-setuptools 78 to build successfully.
 </comment>
     <requestid>1264861</requestid>
   </revision>
+  <revision rev="6" vrev="5">
+    <srcmd5>ec464994919343cc15711988b908a3b3</srcmd5>
+    <version>1.0.1</version>
+    <time>1791307034</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1382642</requestid>
+  </revision>
 </revisionlist>

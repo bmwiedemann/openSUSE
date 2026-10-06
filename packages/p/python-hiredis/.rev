@@ -188,4 +188,30 @@
   * Protect against overflow of map elements (redis/hiredis#1341)</comment>
     <requestid>1372923</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>b853891695db8de592fab9c871d3eb67</srcmd5>
+    <version>3.4.2</version>
+    <time>1791306903</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.2:
+  * Release the list each push notification is sized from
+  * `PushNotificationType_New` pre-sized every `PushNotification`
+    with a list that `PyList_SetSlice` only borrows, and the
+    reference was never dropped. Each RESP3 push notification
+    therefore stranded one list object for the lifetime of the
+    process. Because push notifications carry pub/sub deliveries
+    and client-side caching invalidations, the leak grew with
+    *message volume* rather than with the number of connections,
+    making it unbounded for a long-lived subscriber — roughly 20
+    MB per 200,000 four-element notifications, and more for
+    larger ones. Dropping the reference also removes an
+    allocation from the parse path, which makes parsing a small
+    notification about 10% faster.
+  * The same change checks `PyList_New` for failure and guards
+    `tryParentize` against a `NULL` reply, so an allocation
+    failure is now reported as an error instead of writing
+    elements past the end of a zero-length notification.
+  * RESP2 array replies were never affected.</comment>
+    <requestid>1382580</requestid>
+  </revision>
 </revisionlist>

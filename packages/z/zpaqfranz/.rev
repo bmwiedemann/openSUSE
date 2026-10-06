@@ -181,4 +181,17 @@ Built and checked locally on aarch64: autotest OK 16, ERROR 0; rpmlint
 </comment>
     <requestid>1382093</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>be26d2e972e2d062687fd92e49f6b07a</srcmd5>
+    <version>65.8</version>
+    <time>1791307203</time>
+    <user>anag_factory</user>
+    <comment>Update zpaqfranz to 65.8. Adds mail reports, a disk rescue mode and thin VMDK images, plus fixes.
+- New -mailfull/-mailprivacy e-mail reports for any command
+- New -rescue mode for imaging failing disks
+- Thin VMDK images with sparse or flat output
+- Cloud per-phase status, upload resume, drive images
+- Fixes for large clusters, VSS, password and -to handling</comment>
+    <requestid>1382760</requestid>
+  </revision>
 </revisionlist>

@@ -17,12 +17,12 @@
 
 
 Name:           geeqie
-Version:        3.2
+Version:        3.3
 Release:        0
 Summary:        Lightweight Gtk+ based image viewer
 License:        GPL-2.0-or-later
 Group:          Productivity/Graphics/Viewers
-URL:            http://www.geeqie.org
+URL:            https://www.geeqie.org
 Source0:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz
 Source1:        https://github.com/BestImageViewer/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.xz.asc
 Source2:        geeqie.keyring
@@ -44,19 +44,20 @@ BuildRequires:  pkgconfig(cfitsio)
 BuildRequires:  pkgconfig(ddjvuapi) >= 2.5.27
 BuildRequires:  pkgconfig(exiv2) >= 0.18
 BuildRequires:  pkgconfig(glib-2.0) >= 2.66
-BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(gtk4) >= 4.18
 BuildRequires:  pkgconfig(libarchive) >= 3.4.0
+BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libffmpegthumbnailer) >= 2.1.0
 BuildRequires:  pkgconfig(libheif) >= 1.3.2
-BuildRequires:  pkgconfig(libjxl) >= 0.3.7
+BuildRequires:  pkgconfig(libjxl) >= 0.6.1
 BuildRequires:  pkgconfig(libopenjp2) >= 2.3.0
 BuildRequires:  pkgconfig(libraw) >= 0.20
-BuildRequires:  pkgconfig(shumate-1.0) >= 1.5.0
+BuildRequires:  pkgconfig(libspelling-1)
 BuildRequires:  pkgconfig(libwebp) >= 0.6.1
 BuildRequires:  pkgconfig(lua) >= 5.3
 BuildRequires:  pkgconfig(pango) >= 1.46
 BuildRequires:  pkgconfig(poppler-glib) >= 0.62
+BuildRequires:  pkgconfig(shumate-1.0) >= 1.5.0
 
 %description
 Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
@@ -75,6 +76,10 @@ Geeqie is a lightweight image viewer for Linux, BSDs and compatibles.
 
 %install
 %meson_install
+# duplicate doc noise for maintainers
+rm -rf %{buildroot}%{_datadir}/doc/%{name}/
+# users install an RPM
+rm -f %{buildroot}%{_docdir}/geeqie/INSTALL.md
 %find_lang %{name} %{?no_lang_C}
 %fdupes %{buildroot}/%{_prefix}
 

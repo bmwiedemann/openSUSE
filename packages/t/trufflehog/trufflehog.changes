@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct 06 04:45:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.98.0:
+  * Add pkg/ssrf shared egress guard; use it for WithNoLocalIP and analyzer clients (#5288)
+  * docs: point five internal links at files that exist (#5375)
+  * Add Jenkins source documentation (#5388)
+  * Fix NetSuite detector running out of memory on dense input (#5383)
+  * fix(github): switch back to fetching access token through apiClient, (#5380)
+  * List only the include prefixes in S3 scans (#5377)
+  * fix(detectors/auth0oauth): match Auth0 Private Cloud auth0app.com domains (#5354)
+  * Add Github source documentation (#5370)
+  * Add Gitlab source documentation (#5371)
+  * Add huggingface source documentation (#5373)
+  * Corpora bench reports clean when a detector produces zero matches on both sides (#5357)
+  * Update Okta domain pat to account for mil and fedramp (#5355)
+  * added entropy filter and improved verification for gitlab v2/v3 (#5358)
+  * resolve race condition in result deduplication cache (#5359)
+  * fix(portainertoken): remove stray fmt.Printf on invalid URL (#5334)
+  * fix(output): escape special characters in --github-actions output (#5353)
+  * Show progress inside S3 buckets (#5330)
+  * Revert duplicate --no-ignore-tag changes from #5293 (#5369)
+  * Fix failing TestGHCRListImages test in CI (#5368)
+  * feat: add --no-ignore-tag to report secrets on trufflehog:ignore lines (#5293)
+  * Only treat Square 403 as verified on INSUFFICIENT_SCOPES (#5367)
+  * Don't reuse maps; editing them afterwards edits them for all results (#5351)
+  * Update github.com/trufflesecurity/ldap-verify digest to 3142cc9 (#5280)
+  * Update module github.com/charmbracelet/bubbletea to v1.3.10 (#5281)
+  * return error body for fetchBearerToken (#5301)
+  * Int 595 verify asymmetry (#5261)
+
+-------------------------------------------------------------------
 Fri Sep 25 04:50:40 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.97.9:

@@ -19,7 +19,7 @@
 
 
 Name:           sngrep
-Version:        1.8.4
+Version:        1.9.0
 Release:        0
 Summary:        Ncurses SIP Messages flow viewer
 License:        GPL-3.0-or-later
@@ -27,9 +27,8 @@ Group:          Productivity/Telephony/Utilities
 URL:            https://github.com/irontec/sngrep
 #Git-Clone:     https://github.com/irontec/sngrep.git
 Source:         https://github.com/irontec/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:         0001-fix-prevent-stack-buffer-overflow-in-SIP-attribute-f.patch
-BuildRequires:  autoconf
-BuildRequires:  automake
+Patch0:         sngrep-cmake-build-test-binaries.patch
+BuildRequires:  cmake
 BuildRequires:  libpcap-devel
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(libcrypto)
@@ -49,22 +48,25 @@ delivered in one packet).
 %autosetup -p1
 
 %build
-autoreconf -fiv
-export CFLAGS="%{optflags} $(pkg-config --cflags ncursesw)"
-%configure \
-    --enable-unicode \
-    --with-openssl \
-    --with-pcre2 \
-    --enable-ipv6 \
-    --enable-eep
-
+CFLAGS="%{optflags} $(pkg-config --cflags --libs ncursesw)"
+%cmake \
+  -DCMAKE_INSTALL_SYSCONFDIR=%{_sysconfdir} \
+  -DWITH_GNUTLS=OFF \
+  -DWITH_OPENSSL=ON \
+  -DWITH_PCRE2=ON \
+  -DWITH_ZLIB=ON \
+  -DWITH_UNICODE=ON \
+  -DUSE_IPV6=ON \
+  -DUSE_EEP=ON \
+  -DDISABLE_LOGO=ON
 %make_build
 
 %install
-%make_install
+%cmake_install
+rm -rf %{buildroot}/usr/share/doc/packages/sngrep
 
 %check
-%make_build tests
+%ctest
 
 %files
 %license LICENSE

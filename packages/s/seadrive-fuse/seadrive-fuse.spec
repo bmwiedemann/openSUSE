@@ -17,7 +17,7 @@
 
 
 Name:           seadrive-fuse
-Version:        3.0.24
+Version:        3.0.26
 Release:        0
 Summary:        SeaDrive daemon with FUSE interface
 License:        GPL-2.0-only

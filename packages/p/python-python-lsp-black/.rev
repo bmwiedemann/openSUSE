@@ -101,4 +101,13 @@
   * gh#python-lsp/python-lsp-black#57 (forwarded request 1159901 from bnavigator)</comment>
     <requestid>1159902</requestid>
   </revision>
+  <revision rev="11" vrev="4">
+    <srcmd5>7b80268d891d9aa248070cf6dc29d7bb</srcmd5>
+    <version>2.0.0</version>
+    <time>1791307037</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch
+  * Use importlib.metadata to look for entry points.</comment>
+    <requestid>1382650</requestid>
+  </revision>
 </revisionlist>

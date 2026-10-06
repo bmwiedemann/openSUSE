@@ -17,12 +17,12 @@
 
 
 Name:           python-jaraco.compat
-Version:        4.3.1
+Version:        4.4.0
 Release:        0
 Summary:        Modules providing forward compatibility across Python versions
 License:        MIT
 URL:            https://github.com/jaraco/jaraco.compat
-Source:         https://files.pythonhosted.org/packages/source/j/jaraco.compat/jaraco_compat-4.3.1.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/j/jaraco.compat/jaraco_compat-%{version}.tar.gz
 BuildRequires:  %{python_module base >= 3.9}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools >= 61.2}

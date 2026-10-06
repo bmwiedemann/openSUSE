@@ -136,4 +136,13 @@
 - Less globs in %files.</comment>
     <requestid>1154495</requestid>
   </revision>
+  <revision rev="15" vrev="4">
+    <srcmd5>0bbe46b3554b6d300e4fad8904d8fcdd</srcmd5>
+    <version>0.33</version>
+    <time>1791307039</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata in setup.py</comment>
+    <requestid>1382652</requestid>
+  </revision>
 </revisionlist>

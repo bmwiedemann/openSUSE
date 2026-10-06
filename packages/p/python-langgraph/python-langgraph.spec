@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph
-Version:        1.2.12
+Version:        1.2.13
 Release:        0
 Summary:        Library for building stateful, multi-actor applications with LLMs
 License:        MIT

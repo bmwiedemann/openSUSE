@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-lsp-black
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/python-lsp/python-lsp-black
 Source:         https://github.com/python-lsp/python-lsp-black/archive/refs/tags/v%{version}.tar.gz#/python-lsp-black-%{version}-gh.tar.gz
 # PATCH-FIX-UPSTREAM python-lsp-black-pr56-black24.2.patch gh#python-lsp/python-lsp-black#56
 Patch0:         https://github.com/python-lsp/python-lsp-black/pull/56.patch#/python-lsp-black-pr56-black24.2.patch
+# PATCH-FIX-UPSTREAM gh#python-lsp/python-lsp-black#64
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}

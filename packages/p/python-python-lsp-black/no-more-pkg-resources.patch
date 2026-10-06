@@ -1,0 +1,49 @@
+From 077c3e5e8720c6cb9e99483a8fd53899a007a0e9 Mon Sep 17 00:00:00 2001
+From: "Benjamin A. Beasley" <code@musicinmybrain.net>
+Date: Tue, 14 Jul 2026 10:52:12 +0100
+Subject: [PATCH] Migrate test_entry_point from pkg_resources to
+ importlib.metadata
+
+---
+ tests/test_plugin.py | 15 +++++++++------
+ 1 file changed, 9 insertions(+), 6 deletions(-)
+
+diff --git a/tests/test_plugin.py b/tests/test_plugin.py
+index 2ae8088..0fa3e2d 100644
+--- a/tests/test_plugin.py
++++ b/tests/test_plugin.py
+@@ -1,11 +1,11 @@
+ # Standard library imports
+ import types
+ from pathlib import Path
++import importlib.metadata
+ from unittest.mock import Mock
+ 
+ # Third-party imports
+ import black
+-import pkg_resources
+ import pytest
+ 
+ # Python LSP imports
+@@ -321,13 +321,16 @@ def test_load_config_with_skip_options(config_with_skip_options):
+ 
+ 
+ def test_entry_point():
+-    distribution = pkg_resources.get_distribution("python-lsp-black")
+-    entry_point = distribution.get_entry_info("pylsp", "black")
++    entry_points_pylsp = importlib.metadata.entry_points(name="pylsp")
++    entry_points_black = importlib.metadata.entry_points(name="black")
+ 
+-    assert entry_point is not None
++    assert entry_points_pylsp
++    assert entry_points_black
+ 
+-    module = entry_point.load()
+-    assert isinstance(module, types.ModuleType)
++    pylsp_entry = next(iter(entry_points_pylsp)).load()
++    black_entry = next(iter(entry_points_pylsp)).load()
++    assert isinstance(pylsp_entry, (types.ModuleType, types.FunctionType))
++    assert isinstance(black_entry, (types.ModuleType, types.FunctionType))
+ 
+ 
+ def test_pylsp_format_crlf_document(

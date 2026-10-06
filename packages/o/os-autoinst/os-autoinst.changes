@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 05 13:49:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790961809.b728c27:
+  * docs: Document generic local and remote verification guidelines
+  * fix: Avoid MAC address overflow when using custom NICOFFSET
+
+-------------------------------------------------------------------
+Wed Sep 30 09:20:17 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790759999.068642e:
+  * fix(svirt): Fix VMware copy hangs, paths, and large file transfers
+  * test: Update tests after 111e01b69 was merged
+  * feat: Record failures during post fail hook "Failed (post)"
+  * feat: Record info about entering post fail hook
+  * feat: Record failures during post fail hook as such
+  * feat: Record failures that happened during `post_fail_hook`
+
+-------------------------------------------------------------------
 Tue Sep 29 18:08:59 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790705326.6badaca:

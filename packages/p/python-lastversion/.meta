@@ -1,4 +1,5 @@
 <package name="python-lastversion" project="openSUSE:Factory">
   <title>python-lastversion</title>
   <description>Fetch GitHub project release assets</description>
+  <devel project="devel:languages:python" package="python-lastversion"/>
 </package>

@@ -109,4 +109,14 @@
     <comment></comment>
     <requestid>1370068</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>6f78a59e8ee8d7f2665f7de966563b6a</srcmd5>
+    <version>1.18.0</version>
+    <time>1791306884</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.18.0
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py (forwarded request 1382700 from glaubitz)</comment>
+    <requestid>1382758</requestid>
+  </revision>
 </revisionlist>

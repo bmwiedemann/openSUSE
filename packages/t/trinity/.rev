@@ -937,4 +937,41 @@
 - Exclude riscv too</comment>
     <requestid>1373748</requestid>
   </revision>
+  <revision rev="86" vrev="1">
+    <srcmd5>61938179ff5165b12f829dd43f1eb18d</srcmd5>
+    <version>1.9+git.20260923</version>
+    <time>1791307224</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1.9+git.20260923:
+  * cgroup: stop publishing a writable cgroup.procs fd to children,
+    which could migrate a host task (1 == init) into a fuzzed leaf
+  * oracles: an errno'd -1 no longer counts as a broken syscall
+    contract (new syscall_errno_failure()), which also stands down
+    cred's setfsuid/setfsgid and makes --dry-run syscall-free
+  * objects: a child's close() no longer retires the parent's
+    pooled global fd; FD_EVENT_CLOSE/CLOSE_RANGE are count-only now
+  * loop: bound both the shutdown wait and the per-tick lock-repair
+    loop, so a child stuck in D-state no longer wedges the run, its
+    final stats, its exit code or the parent's tick
+  * reap: feed the canary crash queue from the fault beacon on
+    WIFEXITED, so a crash-looping childop gets demoted outside -D
+  * cleanup: gate the parent-only atexit teardowns on mainpid and
+    route child exit() through the new trinity_exit()
+  * stats-ring: keep counting a slot the plausibility guard
+    rejected, so the op clock no longer runs backwards
+  * stats: stop the --stats timeseries JSONL growing without bound
+    (drop unchanged rows, cap the sink at 4 GiB)
+  * tables: one group-name table covering all 19 syscall groups, so
+    GROUP_VFS_PATH..GROUP_NS no longer print as &quot;(null)&quot;
+
+- Update to version 1.9+git.20260908:
+  * reap: detect dead children through the per-child
+    /proc/&lt;pid&gt;/stat fd instead of kill(pid, 0); a recycled pid
+    could keep a stale slot alive and make kill_all_kids()
+    SIGKILL an unrelated process
+  * net/thermal: shim the THRESHOLD commands and attributes so
+    the build works against older kernel headers
+  * nfsd: model the ten genl commands added in Linux 7.2/7.3</comment>
+    <requestid>1382757</requestid>
+  </revision>
 </revisionlist>

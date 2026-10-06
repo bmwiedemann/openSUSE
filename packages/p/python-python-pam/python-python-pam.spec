@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-pam
 #
-# Copyright (c) 2023 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,14 +18,17 @@
 
 %global modname python-pam
 Name:           python-python-pam
-Version:        2.0.2
+Version:        2.1.0
 Release:        0
-Summary:        Python PAM module using ctypes, py3/py2
+Summary:        Python PAM module using ctypes
 License:        MIT
 Group:          Development/Languages/Python
 URL:            https://github.com/FirefighterBlu3/python-pam
-Source:         https://files.pythonhosted.org/packages/source/p/%{modname}/%{modname}-%{version}.tar.gz
+Source:         https://github.com/FirefighterBlu3/%{modname}/archive/refs/tags/v%{version}.tar.gz#/%{modname}-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
+BuildRequires:  %{python_module poetry-core}
+BuildRequires:  %{python_module pytest-cov}
+BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
@@ -35,13 +38,16 @@ BuildArch:      noarch
 %python_subpackages
 
 %description
-Python pam module supporting py3 (and py2).
+Python pam module supporting py3.
 
 %prep
 %setup -q -n %{modname}-%{version}
 
 %build
 %pyproject_wheel
+
+%check
+%pytest
 
 %install
 %pyproject_install

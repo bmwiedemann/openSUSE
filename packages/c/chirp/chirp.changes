@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct 05 20:41:05 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to version 20261002:
+  * chirp_common: Make legacy image detection opt-in
+  * retevis_rt97s: Retevis RT97S driver
+  * Fix Radio Info tab on wx 4.0.x
+  * kguv920pa: Fix checksum calculation
+
+-------------------------------------------------------------------
 Mon Sep 28 05:36:35 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to version 20260925:

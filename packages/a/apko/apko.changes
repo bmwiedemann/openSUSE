@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct 06 04:45:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.8:
+  * examples: drop openssl 3 pins from old-glibc example (#2553)
+  * apk: verify the data section before publishing it, not through
+    the cache (#2543)
+  * build(deps): bump google.golang.org/api from 0.299.0 to 0.300.0
+    (#2551)
+  * build(deps): bump go.opentelemetry.io/otel/trace from 1.46.0 to
+    1.47.0 (#2549)
+  * build(deps): bump sigs.k8s.io/release-utils from 0.12.4 to
+    0.12.5 (#2550)
+  * build(deps): bump github.com/klauspost/pgzip from 1.2.6 to
+    1.2.7 (#2548)
+  * build(deps): bump chainguard.dev/sdk from 0.1.301 to 0.1.321
+    (#2547)
+  * build(deps): bump go.opentelemetry.io/otel from 1.46.0 to
+    1.47.0 (#2546)
+
+-------------------------------------------------------------------
 Mon Oct 05 05:04:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.4.7:

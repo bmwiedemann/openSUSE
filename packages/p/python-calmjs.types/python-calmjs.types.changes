@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Sep 29 02:52:09 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use features that require pkg_resources.
+
+-------------------------------------------------------------------
 Thu Mar 27 00:34:56 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Normalize metadata directory name.

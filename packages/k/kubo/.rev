@@ -307,4 +307,28 @@ now with fixed build</comment>
     - golang.org/x/net v0.47.0 (boo#1251613, CVE-2025-58190, boo#1251419, CVE-2025-47911)</comment>
     <requestid>1346862</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>a0d48f80c1e5b68cf67078844b0bee01</srcmd5>
+    <version>0.43.1</version>
+    <time>1791307173</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.43.1:
+- Update to 0.43.0:
+- Improve kubo.spec packaging:
+  * Inject build ldflags for version metadata
+  * Add -trimpath for reproducible builds
+  * Replace inline heredoc systemd units with upstream files from
+    misc/systemd/
+  * Add hardened service, API/Gateway socket activation, and
+    sysusers config
+  * Generate bash/zsh/fish shell completions as subpackages
+  * Enable systemd scriptlets (sysusers, service_add/del macros)
+  * Fix License tag to dual MIT AND Apache-2.0
+  * Remove deprecated Group tag
+  * Change fuse from Requires to Recommends
+  * Remove nss-myhostname dependency
+  * Add %check smoke test
+- Update to 0.42.0: (forwarded request 1382730 from VaiTon)</comment>
+    <requestid>1382734</requestid>
+  </revision>
 </revisionlist>

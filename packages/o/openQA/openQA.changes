@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct 05 13:48:59 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791003975.6dc1de2e:
+  * chore(deps): Dependency cron 2026-10-03
+  * chore(deps): Dependency cron 2026-10-02
+  * feat: Improve displaying action buttons next to text results
+  * refactor: Style step actions for text results in a common place
+  * chore(deps): Dependency cron 2026-10-01
+
+-------------------------------------------------------------------
+Wed Sep 30 16:46:18 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790786766.16015723:
+  * test(devel-mode): Open needle editor reliably in 2nd tab
+  * docs: document run-webui-mock-env
+  * feat(openqa-cli): Improve behavior when being rate limited
+  * feat: Keep reserved workers usable for verification jobs
+  * fix(test): track pause offset and fail fast in developer mode test
+
+-------------------------------------------------------------------
+Wed Sep 30 11:13:37 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1790766760.03fa83c3:
+  * feat(openqa-cli): Improve behavior when being rate limited
+  * feat: Keep reserved workers usable for verification jobs
+  * fix(test): track pause offset and fail fast in developer mode test
+  * fix(test): report pass and match in wait_for_developer_console_like
+  * refactor(test): extract redundant tab verification helper
+  * fix(test): use monotonic timeouts and robust wait in Selenium helpers
+  * fix(scheduler): emit openqa_job_cancel event on scheduler cancellation
+
+-------------------------------------------------------------------
 Tue Sep 29 20:21:23 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1790713243.ef39a05e:

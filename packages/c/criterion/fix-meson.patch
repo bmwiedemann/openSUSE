@@ -1,24 +1,29 @@
---- Criterion-2.4.2/meson.build.orig	2023-06-13 14:18:29.829743813 +0200
-+++ Criterion-2.4.2/meson.build	2023-06-13 15:13:15.672365040 +0200
-@@ -138,10 +138,6 @@
+diff -ru orig/meson.build mod/meson.build
+--- orig/meson.build	2026-10-03 21:32:11.000000000 +0200
++++ mod/meson.build	2026-10-05 10:49:50.086852529 +0200
+@@ -136,7 +136,14 @@
  
  cmake = import('cmake')
  
 -debugbreak = dependency('debugbreak')
--
--klib = dependency('klib')
--
- threads = dependency('threads')
++# debugbreak is header-only
++debugbreak_fallback = (get_option('wrap_mode') == 'forcefallback'
++	or 'debugbreak' in get_option('force_fallback_for'))
++if not debugbreak_fallback and cc.has_header('debugbreak.h')
++	debugbreak = declare_dependency()
++else
++	debugbreak = dependency('debugbreak')
++endif
  
- nanomsg = dependency('nanomsg', required: get_option('wrap_mode') == 'nofallback')
-@@ -177,23 +173,8 @@
+ # klib is header-only
+ klib_fallback = (get_option('wrap_mode') == 'forcefallback'
+@@ -189,23 +196,7 @@
  	config.set('NN_REQREP_H', '<nanomsg/reqrep.h>')
  endif
  
 -nanopb = dependency('nanopb', required: get_option('wrap_mode') == 'nofallback', method: 'cmake',
 -					modules: ['nanopb::protobuf-nanopb-static'])
-+nanopb = dependency('nanopb', required: true, method: 'cmake', modules: ['nanopb::protobuf-nanopb'])
- must_regenerate_pb = nanopb.found()
+-must_regenerate_pb = nanopb.found()
 -if (not nanopb.found()
 -	or get_option('wrap_mode') == 'forcefallback'
 -	or 'nanopb' in get_option('force_fallback_for'))
@@ -33,15 +38,33 @@
 -	nanopb_proj = cmake.subproject('nanopb-cmake', options: nanopb_opts)
 -	nanopb = nanopb_proj.dependency('protobuf-nanopb-static')
 -endif
++nanopb = dependency('nanopb', required: true, method: 'cmake', modules: ['nanopb::protobuf-nanopb'])
  
  libgit2 = dependency('libgit2', required: get_option('wrap_mode') == 'nofallback')
  if ((not libgit2.found() and get_option('diffs').enabled())
-@@ -244,8 +225,6 @@
- endif
+diff -ru orig/src/meson.build mod/src/meson.build
+--- orig/src/meson.build	2026-10-03 21:32:11.000000000 +0200
++++ mod/src/meson.build	2026-10-05 10:51:28.900315524 +0200
+@@ -55,21 +55,7 @@
+ 	'string/xxd.c',
+ )
  
- deps += [
--	debugbreak,
--	klib,
- 	threads,
- 	boxfort,
- 	libffi,
+-if must_regenerate_pb
+-	protoc = find_program('protoc')
+-	protoc_gen_nanopb = find_program('protoc-gen-nanopb')
+-
+-	gen_pb_py = meson.current_source_dir() + '/protocol/gen-pb.py'
+-
+-	gen_pb = custom_target('gen-pb',
+-		input   : ['protocol/criterion.proto', 'protocol/criterion.options'],
+-		output  : ['criterion.pb.c', 'criterion.pb.h'],
+-		command : [gen_pb_py, protoc.path(), protoc_gen_nanopb.path(), '@INPUT0@', '@INPUT1@', meson.current_build_dir()])
+-
+-	sources += gen_pb
+-else
+-	sources += 'protocol/criterion.pb.c'
+-endif
++sources += 'protocol/criterion.pb.c'
+ 
+ if get_option('diffs').enabled()
+ 	sources += files('string/diff.c')

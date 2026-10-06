@@ -19,5 +19,7 @@
      <param name="srcdir">sequoia-sq</param>
      <param name="compression">xz</param>
      <param name="update">true</param>
+     <param name="update-crate">sequoia-wot@0.15.2</param>
+     <param name="update-crate">sequoia-cert-store@0.7.4</param>
   </service>
 </services>

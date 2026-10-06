@@ -18,7 +18,7 @@
 
 %define soname 0
 Name:           libbacktrace
-Version:        1.0+git20260601
+Version:        1.0+git20260903
 Release:        0
 Summary:        Backtrace C library
 License:        BSD-3-Clause
@@ -60,7 +60,7 @@ autoreconf -fiv
 %make_build
 
 %check
-# btest_dwz fails
+# mtest_minidebug and strippedtest_stripped fail upstream
 %make_build check ||:
 
 %install

@@ -2,10 +2,10 @@ Select the Qt6 qmake, which openSUSE installs as qmake6. Also use the
 qmake found by FIND_PROGRAM for the major version probe instead of a
 bare "qmake", which does not exist on openSUSE.
 
-Index: seadrive-gui-3.0.24/CMakeLists.txt
+Index: seadrive-gui-3.0.26/CMakeLists.txt
 ===================================================================
---- seadrive-gui-3.0.24.orig/CMakeLists.txt
-+++ seadrive-gui-3.0.24/CMakeLists.txt
+--- seadrive-gui-3.0.26.orig/CMakeLists.txt
++++ seadrive-gui-3.0.26/CMakeLists.txt
 @@ -85,7 +85,7 @@ ENDIF()
  ###### BEGIN: QT configuration
  ####################

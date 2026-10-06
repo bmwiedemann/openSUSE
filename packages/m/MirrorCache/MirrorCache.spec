@@ -32,7 +32,7 @@
 %define main_requires %{assetpack_requires} perl(Mojolicious::Plugin::RenderFile) perl(Mojolicious::Static) perl(Net::OpenID::Consumer) %{sass_requires}
 %define build_requires %{assetpack_requires} %{sass_requires} tidy sysuser-shadow sysuser-tools
 Name:           MirrorCache
-Version:        1.105
+Version:        1.106
 Release:        0
 Summary:        WebApp to redirect and manage mirrors
 License:        GPL-2.0-or-later
@@ -164,4 +164,3 @@ MirrorCache worker to execute scheduled shell scripts
 
 %postun Exec
 %service_del_postun mirrorcache-backstage-exec.service
-

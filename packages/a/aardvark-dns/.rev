@@ -161,4 +161,12 @@ package. Also, BuildRequire cargo+rust to prevent conflicts with
     <comment></comment>
     <requestid>1362880</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>31fbcc3a7e6dcc2616511eda677c3e3a</srcmd5>
+    <version>2.1.0</version>
+    <time>1791306851</time>
+    <user>anag_factory</user>
+    <comment>Update to version 2.1.0:</comment>
+    <requestid>1382646</requestid>
+  </revision>
 </revisionlist>

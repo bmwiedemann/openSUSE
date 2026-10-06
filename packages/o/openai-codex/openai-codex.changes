@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:15:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.160.1:
+  * Preserve SYSTEMROOT, TEMP and TMP when launching remote
+    stdio MCP servers with explicit remote variables, so a Unix
+    host keeps the Windows executor startup environment
+    (backport of upstream #51121)
+  * No Cargo.lock change, so the vendored tree carries over
+    unchanged and the License tag is untouched
+
+-------------------------------------------------------------------
 Fri Oct  2 10:50:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.160.0:

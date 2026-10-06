@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-kms-inventory
-Version:        0.6.1
+Version:        0.6.2
 Release:        0
 Summary:        Google Cloud Kms Inventory API client library
 License:        Apache-2.0
@@ -32,14 +32,10 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.17.1}
-BuildRequires:  %{python_module google-cloud-kms >= 2.13.0}
-%if %python_version_nodots < 313
-BuildRequires:  %{python_module proto-plus >= 1.22.3}
-%else
-BuildRequires:  %{python_module proto-plus >= 1.25.0}
-%endif
-BuildRequires:  %{python_module protobuf >= 4.25.8}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
+BuildRequires:  %{python_module google-cloud-kms >= 3.4.1}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 # /SECTION
 BuildRequires:  fdupes
 %if %python_version_nodots < 314
@@ -47,15 +43,11 @@ Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 2.17.1
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
-Requires:       python-google-cloud-kms >= 2.13.0
-%if %python_version_nodots < 313
-Requires:       python-proto-plus >= 1.22.3
-%else
-Requires:       python-proto-plus >= 1.25.0
-%endif
-Requires:       python-protobuf >= 4.25.8
+Requires:       python-google-cloud-kms >= 3.4.1
+Requires:       python-proto-plus >= 1.26.1
+Requires:       python-protobuf >= 6.33.5
 BuildArch:      noarch
 %python_subpackages
 

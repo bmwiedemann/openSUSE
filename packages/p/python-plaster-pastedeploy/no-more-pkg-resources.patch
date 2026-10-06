@@ -1,0 +1,38 @@
+From b19eebf314fd322ba887a05b046656e146b3d328 Mon Sep 17 00:00:00 2001
+From: "Karl O. Pinc" <kop@karlpinc.com>
+Date: Sat, 13 Apr 2024 14:27:00 -0500
+Subject: [PATCH] Switch from pkg_resources to importlib
+
+pkg_resources is depreciated.  This gets rid of depcrecation warnings.
+---
+ tests/conftest.py | 12 +++++++-----
+ 1 file changed, 7 insertions(+), 5 deletions(-)
+
+diff --git a/tests/conftest.py b/tests/conftest.py
+index 6981e1f..ca7ebaf 100644
+--- a/tests/conftest.py
++++ b/tests/conftest.py
+@@ -1,16 +1,18 @@
++import importlib
+ import os.path
+ import sys
+ 
+-import pkg_resources
+ import pytest
+ 
+ 
+ @pytest.fixture(scope="session")
+ def fake_packages():
+-    # we'd like to keep this scope more focused but it's proven really
+-    # difficult to fully monkeypatch pkg_resources and so for now we just
+-    # install the packages for the duration of the test suite
++    # We'd like to keep this scope more focused.  It proved really
++    # difficult to fully monkeypatch pkg_resources and so we just
++    # installed the packages for the duration of the test suite.
++    # The scope was left as-is after switching from pkg_resources to
++    # importlib.
+     test_dir = os.path.dirname(__file__)
+     info_dir = os.path.join(test_dir, "fake_packages", "FakeApp")
+     sys.path.insert(0, info_dir)
+-    pkg_resources.working_set.add_entry(info_dir)
++    importlib.import_module("fakeapp")

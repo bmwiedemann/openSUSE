@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-logging
-Version:        3.16.3
+Version:        3.17.0
 Release:        0
 Summary:        Stackdriver Logging API client library
 License:        Apache-2.0
@@ -29,29 +29,33 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module google-cloud-appengine-logging >= 1.6.1}
 BuildRequires:  %{python_module google-cloud-audit-log >= 0.3.1}
 BuildRequires:  %{python_module google-cloud-core >= 2.0.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4}
-BuildRequires:  %{python_module grpcio >= 1.33.2}
+BuildRequires:  %{python_module grpcio >= 1.59.0 if %python-base < 3.14}
+BuildRequires:  %{python_module grpcio >= 1.75.1 if %python-base >= 3.14}
 BuildRequires:  %{python_module opentelemetry-api >= 1.9.0}
-BuildRequires:  %{python_module proto-plus >= 1.22.3}
-BuildRequires:  %{python_module protobuf >= 4.25.8}
+BuildRequires:  %{python_module proto-plus >= 1.26.1}
+BuildRequires:  %{python_module protobuf >= 6.33.5}
 # /SECTION
 BuildRequires:  fdupes
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-google-cloud-appengine-logging >= 1.6.1
 Requires:       python-google-cloud-audit-log >= 0.3.1
 Requires:       python-google-cloud-core >= 2.0.0
 Requires:       python-grpc-google-iam-v1 >= 0.12.4
-Requires:       python-grpcio >= 1.33.2
+%if %python_version_nodots < 314
+Requires:       python-grpcio >= 1.59.0
+%else
+Requires:       python-grpcio >= 1.75.1
+%endif
 Requires:       python-opentelemetry-api >= 1.9.0
-Requires:       python-proto-plus >= 1.22.3
-Requires:       python-protobuf >= 4.25.8
-Suggests:       python-proto-plus >= 1.22.3
+Requires:       python-proto-plus >= 1.26.1
+Requires:       python-protobuf >= 6.33.5
 BuildArch:      noarch
 %python_subpackages
 

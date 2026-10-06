@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Sep 21 02:44:56 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-75141.patch:
+  Backport acf5d7cd from upstream, avformat/hevc: reject hvcC
+  NAL arrays that overflow the 16-bit count.
+  (CVE-2026-75141, bsc#1276407)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:54:08 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-38350-part02-c44d237.patch:
+  Backport c44d237d from upstream, swscale/output: Fix integer
+  overflow with lum/chr/alpha filter.
+  (CVE-2026-38350, bsc#1277370)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:38:21 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-38350-part01-aca41d3.patch:
+  Backport aca41d3d from upstream, swscale/output: Fix all bilinear
+  integer overflows.
+  (CVE-2026-38350, bsc#1277370)
+
+-------------------------------------------------------------------
+Fri Sep 11 12:04:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
+
+- Add ffmpeg-4-CVE-2026-38345.patch:
+  Backport 04fe9848 from upstream, libswscale/utils: prevent division
+  by zero for chroma width 8.
+  (CVE-2026-38345, bsc#1277376)
+
+-------------------------------------------------------------------
 Mon Aug 28 04:47:54 UTC 2026 - Cliff Zhao <qzhao@suse.com>
 
 - Add ffmpeg-4-CVE-2026-75146.patch:
@@ -160,9 +192,13 @@ Fri Jun 26 08:19:18 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 - Update to release 4.4.8
   * Various bug fixes to codecs
   * avcodec/magicyuv: Fix 1 line MEDIAN slices
-    avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
-    avcodec/magicyuv: reject slice_height misaligned with chroma vshift
+  * avcodec/magicyuv: Expand the s->interlaced slice-height sanity check
+  * avcodec/magicyuv: reject slice_height misaligned with chroma vshift
     (CVE-2026-8461, bsc#1269490)
+  * swscale/alphablend: don't overread alpha plane on subsampled odd size.
+    (CVE-2026-38347, bsc#1277373)
+  * avformat/hls: check return value of new_init_section().
+    (CVE-2023-6603, bsc#1220547)
 - Delete ffmpeg-4-CVE-2025-22921.patch (merged)
 
 -------------------------------------------------------------------
@@ -186,6 +222,16 @@ Fri May 22 17:28:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
     (CVE-2026-30997, bsc#1262047)
   * avcodec/rasc: fix heap use-after-free in decode_move().
     (CVE-2026-12706, bsc#1268595)
+  * avcodec/tdsc: remove double stride adjustment.
+    (CVE-2026-18393, bsc#1277377)
+  * swscale/output: Fixes integer overflow in yuv2planeX_8_c.
+    (CVE-2026-38346, bsc#1277375)
+  * swscale/output: Fix integer overflow in alpha in yuv2rgba64_1_c_template().
+    (CVE-2026-38349, bsc#1277369)
+  * swscale/utils: Check *Inc.
+    (CVE-2026-38348, bsc#1277368)
+  * avcodec/ppc/vp8dsp_altivec: Fix out-of-bounds access.
+    (CVE-2024-35367, bsc#1234029)
 - Drop patches fixed upstream:
   * ffmpeg-4-CVE-2024-35368.patch
   * ffmpeg-4-CVE-2024-36618.patch
@@ -240,7 +286,7 @@ Wed Oct 15 02:12:04 UTC 2025 - SongChuan Kang <sckang@suse.com>
 -------------------------------------------------------------------
 Tue Oct  7 12:34:56 UTC 2025 - olaf@aepfle.de
 
-- add missing closing brace to ffmpeg-4-CVE-2025-7700.patch 
+- add missing closing brace to ffmpeg-4-CVE-2025-7700.patch
 
 -------------------------------------------------------------------
 Mon Sep 29 07:25:31 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
@@ -273,6 +319,8 @@ Thu May 29 20:43:43 UTC 2025 - Jan Engelhardt <jengelh@inai.de>
     rtmp_open
   * avcodec/snow: Fix off by 1 error in run_buffer
   * avcodec/mpegvideo_enc: Check FLV1 resolution limits
+  * avformat/hls: Be more picky on extensions.
+    (CVE-2023-6602, bsc#1220546, CVE-2023-6604, bsc#1220549)
 - Delete ffmpeg-CVE-2023-49502.patch,
   0001-libavcodec-arm-mlpdsp_armv5te-fix-label-format-to-wo.patch,
   ffmpeg-4-CVE-2025-0518.patch, ffmpeg-4-CVE-2025-22919.patch (merged)

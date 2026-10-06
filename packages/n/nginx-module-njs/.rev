@@ -60,4 +60,14 @@ nginx modules:
     <comment></comment>
     <requestid>1296321</requestid>
   </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>c619d534e62ccbc7c789d9690c5e0805</srcmd5>
+    <version>0.9.1</version>
+    <time>1791306862</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1361574 from matwey
+
+- Enable QuickJS engine</comment>
+    <requestid>1382530</requestid>
+  </revision>
 </revisionlist>

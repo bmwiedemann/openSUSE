@@ -313,4 +313,27 @@ license=(&quot;Unlicense&quot;), stale for every version since 2023 and not foll
 </comment>
     <requestid>1380941</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>570f620e300a3e1e80677dc36148c0bd</srcmd5>
+    <version>3.0.1</version>
+    <time>1791306868</time>
+    <user>anag_factory</user>
+    <comment>- 3.0.0 -&gt; 3.0.1; the corrected rows no longer compare with 3.0.0.
+- Transformer-block and NVFP4 rows use a new weight generator.
+- 3.0.0's was GF(2)-linear: every matrix it filled had rank-1 signs.
+- GEMM times 16 chained layers per dispatch; LiteRT adopts ONNX's chain.
+- Core ML is Apple only, not built here.
+- A NaN or infinite timing is reported as an error, not a rate.
+- 3.0.0's TensorRT int8_weight row was such a rate.
+- Dense 3x3 convolutions are timed at stride 2 (rows *_conv3x3s2).
+- Vulkan peaks pin the pipeline to the device subgroup width.
+- The fp16 Vulkan chain is spelled a*b+c rather than fma().
+- Every run records an info line per backend, device and test.
+- Vendor console spam is muted during device enumeration.
+- The CPU SMT scaling test gains a latency-bound one-chain pair.
+- Spec cleanup: three Legal-Review-Notice blocks merged into one block.
+- No shipped file changes; licence unchanged; %check passes.
+- No rdeps on either arch; no CVE in this range.</comment>
+    <requestid>1382566</requestid>
+  </revision>
 </revisionlist>

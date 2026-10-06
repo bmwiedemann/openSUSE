@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 00:48:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib directly to import the fake package.
+
+-------------------------------------------------------------------
 Tue Jun  3 11:40:23 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

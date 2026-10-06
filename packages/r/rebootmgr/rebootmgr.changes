@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Mon Oct 05 13:33:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.0+git20261005.1e5481c:
+  * Release version 4.0
+  * Provide time of reboot request
+  * Create symlinks for metrics and varlink registry
+  * CI: use docbook5 and update actions/checkout
+  * Add metrics support for systemd-report
+  * Convert manpages to docbook5
+  * A "reboot now" can now cancel pending reboot requests, too
+  * A hard reboot replaces now a soft-reboot
+  * Fix varlink error code definitions
+  * mkdir_p: fix return value if mkdir fails
+
+-------------------------------------------------------------------
 Tue Jul 22 09:56:03 UTC 2025 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 3.3+git20250722.adf0149:

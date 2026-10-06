@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Sep 28 14:20:21 UTC 2026 - Andrii Nikitin <andrii.nikitin@suse.com>
+
+- Update to version 1.106:
+  * Fix subfolder service redirect for symlinks pointing outside subtree (#667)
+  * fix(stats): prevent package download totals from resetting during aggregation (#666)
+  * Add OAuth2 (#671)
+  * Fix infinite loop and nested redirects for symlinked folder loops (#665)
+  * fix comparing dates (#665)
+  * t: bump leap to 16.0 (#657)
+
+-------------------------------------------------------------------
 Wed Jun 03 10:31:11 UTC 2026 - Andrii Nikitin <andrii.nikitin@suse.com>
 
 - Update to version 1.105:

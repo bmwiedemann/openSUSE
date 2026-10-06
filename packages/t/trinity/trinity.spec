@@ -17,14 +17,12 @@
 
 
 Name:           trinity
-Version:        1.9+git.20260823
+Version:        1.9+git.20260923
 Release:        0
 Summary:        A Linux System call fuzz tester
 License:        GPL-2.0-only
 URL:            https://github.com/kernelslacker/trinity
 Source0:        %{name}-%{version}.tar.xz
-Patch0:         0001-ioctls-atm-use-ATM_ADDPARTY-ATM_DROPPARTY-only-if-de.patch
-Patch1:         0001-sunrpc-mark-fam_sunrpc-as-used.patch
 # 32bits and ppc64+s390x are all unsupported
 ExcludeArch:    %{ix86} %{arm32} %{power64} %{riscv} s390x
 

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:36:31 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 2.1.0:
+  * Allow isolated networks to access published ports on other networks when
+    trying to connect to them via the host port.
+  * Fixed a network teardown problem when the netns is not accessible to
+    still do as much as we can, i.e. remove firewall rules.
+  * Fixed a network teardown ordering problem, the bridge interface is now
+    removed after the firewall rules to avoid routing issues.
+  * Dependency updates.
+
+-------------------------------------------------------------------
 Sun Jun 28 10:47:10 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
 
 - Update to version 2.0.0:

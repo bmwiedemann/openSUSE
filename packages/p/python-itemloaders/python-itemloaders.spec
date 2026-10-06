@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-itemloaders
-Version:        1.4.0
+Version:        1.5.0
 Release:        0
 Summary:        Base library for scrapy's ItemLoader
 License:        BSD-3-Clause

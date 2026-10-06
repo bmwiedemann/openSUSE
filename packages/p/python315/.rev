@@ -439,4 +439,42 @@ covered).</comment>
       calling thread, even if it is not attached. Threads without</comment>
     <requestid>1376612</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>12005e7d75c026b77c15606511da90f9</srcmd5>
+    <version>3.15.0~rc3</version>
+    <time>1791306897</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.15.0~rc3
+
+  - Security
+    - gh-158446: Fix a crash or incorrect output that could occur
+      when formatting a float or complex with a precision close
+      to the platform’s INT_MAX. PyOS_double_to_string() now
+      raises ValueError for any precision of that magnitude,
+      regardless of presentation type or value, as the format
+      string parsers already did for precisions above INT_MAX.
+    - gh-156793: asyncio: loop.start_tls() and
+      loop.create_connection() now validate the server_hostname
+      argument if an ssl.SSLContext is passed with check_hostname
+      set to True. (bsc#1283826, CVE-2026-19553)
+    - gh-156793: ssl.SSLContext.wrap_bio() now validates its
+      server_side, server_hostname and session arguments similar
+      to ssl.SSLContext.wrap_socket().
+    - In particular, a context with check_hostname enabled and no
+      server_hostname passed to wrap_bio() now raises ValueError
+      instead of completing a handshake that verified the
+      certificate chain without verifying the peer’s identity,
+      with no indication that the check had been skipped.
+    - gh-157265: In tarfile, when extracting a link falls back
+      to extracting a member of the archive, skip the member
+      when the filter function returns None when called with the
+      extracted member’s name replaced with the link’s.
+    - gh-157953: Update bundled libexpat to version 2.8.5.
+    - gh-157579: Fix a race condition in the cleanup of
+      tempfile.TemporaryDirectory. When working around file
+      system permission errors, files are now removed relative to
+      open directory file descriptors instead of resolving their
+      path again, so that replacing a directory of the tree with</comment>
+    <requestid>1382577</requestid>
+  </revision>
 </revisionlist>

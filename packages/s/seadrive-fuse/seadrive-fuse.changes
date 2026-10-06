@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  5 11:49:52 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 3.0.26:
+  * Delete network errors when deleting an account and fix sync error
+    sorting issue (#44)
+  * Fix static declaration
+
+-------------------------------------------------------------------
 Tue Aug  4 08:32:21 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - update to 3.0.24:

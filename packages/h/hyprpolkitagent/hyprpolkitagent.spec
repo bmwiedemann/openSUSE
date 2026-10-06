@@ -1,7 +1,7 @@
 #
 # spec file for package hyprpolkitagent
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,22 +17,20 @@
 
 
 Name:           hyprpolkitagent
-Version:        0.1.3
+Version:        0.2.0
 Release:        0
 Summary:        A Qt/QML-based polkit authentication agent for Hyprland
 License:        BSD-3-Clause
 URL:            https://wiki.hyprland.org/Hypr-Ecosystem/hyprpolkitagent/
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  cmake
-BuildRequires:  cmake(Qt6QuickControls2Impl)
-BuildRequires:  pkgconfig(Qt6Quick)
-BuildRequires:  pkgconfig(Qt6QuickControls2)
-BuildRequires:  pkgconfig(Qt6Widgets)
+BuildRequires:  gcc-c++
+BuildRequires:  pkgconfig(hyprgraphics)
+BuildRequires:  pkgconfig(hyprtoolkit)
 BuildRequires:  pkgconfig(hyprutils)
-BuildRequires:  pkgconfig(polkit-qt6-1)
-Requires:       qt6qmlimport(QtQuick)
-Requires:       qt6qmlimport(QtQuick.Controls)
-Requires:       qt6qmlimport(QtQuick.Layouts)
+BuildRequires:  pkgconfig(libdrm)
+BuildRequires:  pkgconfig(pixman-1)
+BuildRequires:  pkgconfig(sdbus-c++) >= 2.0
 
 %description
 hyprpolkitagent is a polkit authentication daemon. It is required for GUI

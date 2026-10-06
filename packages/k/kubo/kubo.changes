@@ -1,4 +1,64 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:56:11 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Update to 0.43.1:
+  * Bug fixes and opt-in configuration improvements
+  * Empty Bootstrap list disables bootstrap dialing
+  * Improved datastore profiles and flatfs shard depth handling
+  * Readable sizes and sorting by size for ipfs ls
+  * Improved FUSE inode and rename behavior
+  * Restrict exported key file permissions
+  * Fix ipfs shutdown with --enable-gc
+  * Gateway Ipfs-Uri replaces X-Ipfs-Path
+  * Disable telemetry by default
+  * Batch provider record writes
+  * Dependency updates
+  * Full changelog at https://github.com/ipfs/kubo/releases/tag/v0.43.1
+- Update to 0.43.0:
+  * Accept ipfs:// and ipns:// URIs as command and RPC inputs
+  * Improve IPNS and DNSLink TTL and expiration handling
+  * Fix MFS operations hanging or losing data during garbage collection
+  * Add secp256k1 key generation, import, and export
+  * Improve DHT reprovides and delegated routing for browser connections
+  * Update WebRTC and WebTransport support for newer browser behavior
+  * Remove the empty IPNS record created by ipfs init
+  * Fix multiple memory exhaustion and daemon crash vulnerabilities
+  * Update the Web UI to v4.13.0
+  * Dependency updates
+  * Full changelog at https://github.com/ipfs/kubo/releases/tag/v0.43.0
+
+-------------------------------------------------------------------
+Thu Jun 18 10:28:27 UTC 2026 - Eyad Issa <eyadlorenzo@gmail.com>
+
+- Improve kubo.spec packaging:
+  * Inject build ldflags for version metadata
+  * Add -trimpath for reproducible builds
+  * Replace inline heredoc systemd units with upstream files from
+    misc/systemd/
+  * Add hardened service, API/Gateway socket activation, and
+    sysusers config
+  * Generate bash/zsh/fish shell completions as subpackages
+  * Enable systemd scriptlets (sysusers, service_add/del macros)
+  * Fix License tag to dual MIT AND Apache-2.0
+  * Remove deprecated Group tag
+  * Change fuse from Requires to Recommends
+  * Remove nss-myhostname dependency
+  * Add %check smoke test
+- Update to 0.42.0:
+  * Announce CIDs on demand with ipfs provide once
+  * Export and import partial CARs with --local-only
+  * Provide.DHT.Interval=0 no longer disables providing
+  * Fixed pin operations hanging under pinned reprovide strategies
+  * Smoother first-run upgrades from very old repos
+  * Reliable shutdown and container health checks
+  * ERROR log for explicit listeners blocked by Swarm.AddrFilters
+  * OpenTelemetry: scope info now exposed as labels
+  * Cleaner progress bars
+  * Dependency updates
+  * Full changelog at
+    https://github.com/ipfs/kubo/releases/tag/v0.42.0
+
+-------------------------------------------------------------------
 Tue Apr 14 11:20:48 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Update to 0.40.1

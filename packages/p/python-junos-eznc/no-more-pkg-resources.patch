@@ -1,0 +1,18 @@
+Index: py-junos-eznc-2.8.2/lib/jnpr/__init__.py
+===================================================================
+--- py-junos-eznc-2.8.2.orig/lib/jnpr/__init__.py
++++ py-junos-eznc-2.8.2/lib/jnpr/__init__.py
+@@ -1 +0,0 @@
+-__import__("pkg_resources").declare_namespace(__name__)
+Index: py-junos-eznc-2.8.2/setup.py
+===================================================================
+--- py-junos-eznc-2.8.2.orig/setup.py
++++ py-junos-eznc-2.8.2/setup.py
+@@ -10,7 +10,6 @@ install_reqs = list(filter(None, req_lin
+ 
+ setup(
+     name="junos-eznc",
+-    namespace_packages=["jnpr"],
+     version=versioneer.get_version(),
+     cmdclass=versioneer.get_cmdclass(),
+     author="Jeremy Schulman, Nitin Kumar, Rick Sherman, Stacy Smith",

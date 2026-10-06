@@ -506,4 +506,17 @@
       - Fix whois server for .in.net</comment>
     <requestid>1357703</requestid>
   </revision>
+  <revision rev="56" vrev="1">
+    <srcmd5>4b1bc4c5b3af3b239d33c3d681cce0ed</srcmd5>
+    <version>2.99044</version>
+    <time>1791306867</time>
+    <user>anag_factory</user>
+    <comment>- updated to 2.99044
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+  2.99044 Oct 05 2026 Robert Rothenberg
+      - Fix CVE-2026-19954 (bsc#1284166) by correctly encoding unicode domain names
+
+      - fix recursive whois regexp. Now matches</comment>
+    <requestid>1382558</requestid>
+  </revision>
 </revisionlist>

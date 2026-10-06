@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:18:49 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 2.99044
+   see /usr/share/doc/packages/perl-Net-Whois-Raw/Changes
+
+  2.99044 Oct 05 2026 Robert Rothenberg
+      - Fix CVE-2026-19954 (bsc#1284166) by correctly encoding unicode domain names
+
+-------------------------------------------------------------------
 Thu Mar 19 18:00:17 UTC 2026 - Tina Müller <timueller+perl@suse.de>
 
 - updated to 2.99043

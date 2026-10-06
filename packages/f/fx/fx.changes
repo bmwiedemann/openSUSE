@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 18:44:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 40.0.0
+  This is the biggest fx release yet. You can now write queries
+  inside the viewer and watch the result update as you type, with
+  Tab completion for keys. fx also reads six new input formats, runs
+  on Bubble Tea v2, and has vim-style commands.
+  See https://github.com/antonmedv/fx/releases/tag/40.0.0 for the
+  details.
+
+-------------------------------------------------------------------
 Wed Nov 12 18:52:04 UTC 2025 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 39.2.0

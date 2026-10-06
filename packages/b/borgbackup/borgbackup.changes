@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 17:37:15 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add support-msgpack-1_2_3.patch: Support msgpack 1.2.3. msgpack
+  1.2.3 brings fixes relevant to borg's usage of the C extension:
+  memory leaks when map key validation or container hooks fail
+  (GHSA-j586-36cw-2gc2) and a use-after-free when cleaning up an
+  incomplete Unpacker.skip().
+
+-------------------------------------------------------------------
 Thu Aug 27 04:44:25 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - update to version 1.4.5

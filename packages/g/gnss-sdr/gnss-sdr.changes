@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:49:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.0.22
+  * New receiver chains for BeiDou B1C and B2a RNSS, QZSS L1 C/B and
+    SBAS L1 (EGNOS, WAAS); SBAS is decoded but not yet a ranging source
+  * Opt-in real-time kinematic positioning fed by RTCM 3 corrections from
+    an NTRIP caster, with a new integer ambiguity resolution layer. It
+    takes GPS L1 C/A alone or with L2C or L5, Galileo E1 alone or with
+    E5a, and single-frequency BeiDou B1C; the client prefers NTRIP v2,
+    falls back to v1, can use TLS 1.2 or newer and reports the rover
+    position upstream as NMEA GGA
+  * Observation and navigation files can be written in RINEX 4.02 with
+    PVT.rinex_version=4; the default stays RINEX 3.02
+  * New CUDA acquisition engine offloads the PCPS search grid with
+    batched cuFFT. It needs a non-default build (-DENABLE_CUDA=ON) and
+    is selected at run time by Acquisition_XX.use_cuda, so it is not in
+    this build
+  * Three new signal sources, each behind its own build flag and none
+    enabled here: bladeRF without gr-osmosdr, Pocket SDR and the
+    SAPHYRION EVK1029
+  * Fix several group-delay and ionospheric biases in the SPP solver
+  * The VOLK library subpackage is renamed libvolk_gnsssdr0_0_21 ->
+    libvolk_gnsssdr0_0_22, following its SONAME libvolk_gnsssdr.so.0.0.22
+  * https://github.com/gnss-sdr/gnss-sdr/releases/tag/v0.0.22
+  * Many more fixes and improvements; see upstream's release notes for
+    the full list
+
+-------------------------------------------------------------------
 Sun Aug 30 17:52:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Fix build: name the VOLK library subpackage after its SONAME,

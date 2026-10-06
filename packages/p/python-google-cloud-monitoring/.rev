@@ -70,4 +70,14 @@
 - Update BuildRequires and Requires from setup.py (forwarded request 1369961 from glaubitz)</comment>
     <requestid>1370017</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>9517cc11f90130fc190139d32234b134</srcmd5>
+    <version>2.32.0</version>
+    <time>1791306873</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.32.0
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py (forwarded request 1382565 from glaubitz)</comment>
+    <requestid>1382570</requestid>
+  </revision>
 </revisionlist>

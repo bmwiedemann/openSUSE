@@ -321,4 +321,16 @@
   * Update go dependencies</comment>
     <requestid>1364320</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>aa782e4bcbf3153e831ba13083041fd0</srcmd5>
+    <version>20261006.d75a629</version>
+    <time>1791307201</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261006.d75a629:
+  * Update go dependencies
+  * Dockerfile: Fix path to nginx.conf
+  * Add missing dependency in Makefile
+  * Fix rendering of fragment links (section links) with colons</comment>
+    <requestid>1382743</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-plaster-pastedeploy
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -22,9 +22,10 @@ Version:        1.0.1
 Release:        0
 Summary:        A loader implementing the PasteDeploy syntax to be used by plaster
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/Pylons/plaster_pastedeploy
 Source0:        https://files.pythonhosted.org/packages/source/p/plaster_pastedeploy/plaster_pastedeploy-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM gh#Pylons/plaster_pastedeploy#24
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module PasteDeploy >= 2.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module plaster >= 0.5}
@@ -46,7 +47,7 @@ It supports the wsgi plaster protocol, implementing the
 plaster.protocols.IWSGIProtocol interface.
 
 %prep
-%setup -q -n plaster_pastedeploy-%{version}
+%autosetup -p1 -n plaster_pastedeploy-%{version}
 rm -rf src/plaster_pastedeploy.egg-info
 
 %build
@@ -63,6 +64,6 @@ rm -rf src/plaster_pastedeploy.egg-info
 %doc CHANGES.rst
 %license LICENSE.txt
 %{python_sitelib}/plaster[-_]pastedeploy
-%{python_sitelib}/plaster[-_]pastedeploy-%{version}*-info
+%{python_sitelib}/plaster[-_]pastedeploy-%{version}.dist-info
 
 %changelog

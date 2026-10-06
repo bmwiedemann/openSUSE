@@ -1,8 +1,8 @@
 <services>
   <service name="tar_scm" mode="manual">
-    <param name="version">3.3</param>
-    <param name="versionformat">3.3+git%cd.%h</param>
     <param name="url">https://github.com/SUSE/rebootmgr.git</param>
+    <param name="versionformat">@PARENT_TAG@+git%cd.%h</param>
+    <param name="versionrewrite-pattern">v(.*?)(\+git0)?$</param>
     <param name="revision">master</param>
     <param name="scm">git</param>
     <param name="changesgenerate">enable</param>

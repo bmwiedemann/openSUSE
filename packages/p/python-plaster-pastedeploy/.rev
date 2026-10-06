@@ -41,4 +41,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1282284</requestid>
   </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>7bace86db48569918c975c442b9f5585</srcmd5>
+    <version>1.0.1</version>
+    <time>1791307033</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib directly to import the fake package.</comment>
+    <requestid>1382641</requestid>
+  </revision>
 </revisionlist>

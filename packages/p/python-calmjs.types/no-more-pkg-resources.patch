@@ -1,0 +1,24 @@
+Index: calmjs.types-1.0.1/setup.py
+===================================================================
+--- calmjs.types-1.0.1.orig/setup.py
++++ calmjs.types-1.0.1/setup.py
+@@ -35,7 +35,6 @@ setup(
+     license='mit',
+     packages=find_packages('src'),
+     package_dir={'': 'src'},
+-    namespace_packages=['calmjs'],
+     include_package_data=True,
+     zip_safe=False,
+     install_requires=[
+@@ -43,5 +42,4 @@ setup(
+     ],
+     entry_points={
+     },
+-    test_suite="calmjs.types.tests.make_suite",
+ )
+Index: calmjs.types-1.0.1/src/calmjs/__init__.py
+===================================================================
+--- calmjs.types-1.0.1.orig/src/calmjs/__init__.py
++++ calmjs.types-1.0.1/src/calmjs/__init__.py
+@@ -1 +0,0 @@
+-__import__('pkg_resources').declare_namespace(__name__)

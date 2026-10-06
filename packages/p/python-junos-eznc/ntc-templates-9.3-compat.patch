@@ -1,0 +1,13 @@
+Index: py-junos-eznc-2.8.2/tests/unit/factory/test_cmdtable.py
+===================================================================
+--- py-junos-eznc-2.8.2.orig/tests/unit/factory/test_cmdtable.py
++++ py-junos-eznc-2.8.2/tests/unit/factory/test_cmdtable.py
+@@ -2310,7 +2310,7 @@ ARPtable:
+ 
+ ARPview:
+     fields:
+-        mac: MAC
++        mac: MAC_ADDRESS
+         ip: IP_ADDRESS
+         interface: INTERFACE
+         flag: FLAGS

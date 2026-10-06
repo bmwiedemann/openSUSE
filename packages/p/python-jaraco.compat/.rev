@@ -7,4 +7,15 @@
     <comment>- Initial release of 4.3.1.</comment>
     <requestid>1332134</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4187dbc17443dc26e7e81e7f73b1a503</srcmd5>
+    <version>4.4.0</version>
+    <time>1791306936</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.4.0:
+  * Added py310.safe_path.command and py310.safe_path.environ for
+    invoking a child interpreter with a safe path, even on Python
+    3.10, where PYTHONSAFEPATH is ignored.</comment>
+    <requestid>1382611</requestid>
+  </revision>
 </revisionlist>

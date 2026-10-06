@@ -291,4 +291,41 @@
     tracing them</comment>
     <requestid>1365773</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27e2ddffacd692da16ab3290a85e1d18</srcmd5>
+    <version>4.16.0</version>
+    <time>1791306904</time>
+    <user>anag_factory</user>
+    <comment>- update to 4.16.0:
+  * feat(otel): cap default exporter batches at 64 MiB
+- update to 4.15.6:
+  * fix(openai): capture reasoning_effort and verbosity in model
+    parameters
+- update to 4.15.5:
+  * fix(serializer): sanitize NaN/Inf nested in converted
+    containers
+- update to 4.15.4:
+  * fix(serializer): mask pydantic secret values
+- update to 4.15.3:
+  * docs: strengthen agent-facing README so v2 APIs are not
+    treated as current
+- update to 4.15.2:
+  * feat(api): update API spec from langfuse/langfuse 4e0ce09
+  * feat(api): update API spec from langfuse/langfuse 1ea859c
+  * feat(api): update API spec from langfuse/langfuse b8fab27
+  * fix(docs): SEO improvements
+  * feat(api): update API spec from langfuse/langfuse b1290b4
+  * feat(api): update API spec from langfuse/langfuse 619dbe3
+  * docs(evals): mark batch evaluation as legacy
+- update to 4.15.1:
+  * feat(api): update API spec from langfuse/langfuse 74ded7e
+  * perf(span-processor): skip span_formatter when debug logging
+    is off
+  * refactor(logging): use lazy %-style formatting in log calls
+- update to 4.14.6:
+  * feat(api): update API spec from langfuse/langfuse 8ab6c91
+  * Fix memory leak in OTEL traces
+  * feat(api): update API spec from langfuse/langfuse 1fcdb77</comment>
+    <requestid>1382586</requestid>
+  </revision>
 </revisionlist>

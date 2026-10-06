@@ -86,4 +86,12 @@ before any offline test can run.
 Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <requestid>1379741</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>92aedf7cbe9a2d6b83fbe104d68efc89</srcmd5>
+    <version>1.2.13</version>
+    <time>1791307206</time>
+    <user>anag_factory</user>
+    <comment>Update python-langgraph to 1.2.13: upstream fix-only release for DeltaChannel forks, update_state paths and subgraph handling. No dependency changes.</comment>
+    <requestid>1382763</requestid>
+  </revision>
 </revisionlist>

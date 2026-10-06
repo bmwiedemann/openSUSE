@@ -1,7 +1,7 @@
 #
 # spec file for package python-python-xlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -35,6 +35,8 @@ URL:            https://github.com/python-xlib/python-xlib
 Source:         https://files.pythonhosted.org/packages/source/p/python-xlib/python-xlib-%{version}.tar.gz
 # PATCH-FEATURE-UPSTREAM remove-mock.patch -- gh#python-xlib/python-xlib#186
 Patch0:         remove-mock.patch
+# PATCH-FIX-UPSTREAM Based on gh#python-xlib/python-xlib#290
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools_scm}
 BuildRequires:  %{python_module setuptools}
@@ -68,7 +70,7 @@ library for Python programs.
 %setup -q -n python-xlib-%{version}
 dos2unix CHANGELOG.md README.rst TODO dev-requirements.txt test/*
 # patch only applies to unix endings
-%patch -P 0 -p1
+%autopatch -p1
 
 %build
 %pyproject_wheel

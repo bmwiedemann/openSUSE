@@ -705,4 +705,14 @@ lighttpd 1.4.84</comment>
 lighttpd 1.4.85</comment>
     <requestid>1364694</requestid>
   </revision>
+  <revision rev="75" vrev="2">
+    <srcmd5>c4ac87763da4de0347c3a8b03c704496</srcmd5>
+    <version>1.4.85</version>
+    <time>1791306864</time>
+    <user>anag_factory</user>
+    <comment>Forwarded request #1381328 from scarabeus_iv
+
+Drop obsolete -fstack-protector (distro optflags carry -fstack-protector-strong by default; the trailing basic flag silently downgraded strong to basic)</comment>
+    <requestid>1382531</requestid>
+  </revision>
 </revisionlist>

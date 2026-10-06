@@ -1,4 +1,56 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:05:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20260923:
+  * cgroup: stop publishing a writable cgroup.procs fd to children,
+    which could migrate a host task (1 == init) into a fuzzed leaf
+  * oracles: an errno'd -1 no longer counts as a broken syscall
+    contract (new syscall_errno_failure()), which also stands down
+    cred's setfsuid/setfsgid and makes --dry-run syscall-free
+  * objects: a child's close() no longer retires the parent's
+    pooled global fd; FD_EVENT_CLOSE/CLOSE_RANGE are count-only now
+  * loop: bound both the shutdown wait and the per-tick lock-repair
+    loop, so a child stuck in D-state no longer wedges the run, its
+    final stats, its exit code or the parent's tick
+  * reap: feed the canary crash queue from the fault beacon on
+    WIFEXITED, so a crash-looping childop gets demoted outside -D
+  * cleanup: gate the parent-only atexit teardowns on mainpid and
+    route child exit() through the new trinity_exit()
+  * stats-ring: keep counting a slot the plausibility guard
+    rejected, so the op clock no longer runs backwards
+  * stats: stop the --stats timeseries JSONL growing without bound
+    (drop unchanged rows, cap the sink at 4 GiB)
+  * tables: one group-name table covering all 19 syscall groups, so
+    GROUP_VFS_PATH..GROUP_NS no longer print as "(null)"
+
+-------------------------------------------------------------------
+Tue Sep 22 13:35:51 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.9+git.20260908:
+  * reap: detect dead children through the per-child
+    /proc/<pid>/stat fd instead of kill(pid, 0); a recycled pid
+    could keep a stale slot alive and make kill_all_kids()
+    SIGKILL an unrelated process
+  * net/thermal: shim the THRESHOLD commands and attributes so
+    the build works against older kernel headers
+  * nfsd: model the ten genl commands added in Linux 7.2/7.3
+  * thermal/genl: add TZ_GET_MODE and the three THRESHOLD
+    commands
+  * landlock: add LANDLOCK_RESTRICT_SELF_NO_NEW_PRIVS and OR
+    random flag subsets so multi-flag and invalid-flag paths
+    become reachable
+  * io_uring/zcrx: add the ARM_EVENT and ADD_AREA ctrl ops
+  * ioctls/iommufd: add IOMMU_IOAS_NOIOMMU_GET_PA
+  * fchdir: sanitise the FD_FAILFS_ROOT sentinel and contain
+    the child with EXTRA_FORK
+  * post-mortem: cap a /proc section in a crash report at 64K
+  * build: drop seven globs for source directories that do not
+    exist
+- Drop patches, both merged upstream:
+  * 0001-ioctls-atm-use-ATM_ADDPARTY-ATM_DROPPARTY-only-if-de.patch
+  * 0001-sunrpc-mark-fam_sunrpc-as-used.patch
+
+-------------------------------------------------------------------
 Wed Aug 26 05:59:27 UTC 2026 - Jiri Slaby <jslaby@suse.cz>
 
 - Update to version 1.9+git.20260823:

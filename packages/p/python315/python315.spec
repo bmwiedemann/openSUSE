@@ -162,8 +162,8 @@
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.15.0~rc2
-%define         tarversion 3.15.0rc2
+Version:        3.15.0~rc3
+%define         tarversion 3.15.0rc3
 %define         tarname    Python-%{tarversion}
 Release:        0
 Summary:        Python 3 Interpreter
@@ -230,6 +230,9 @@ Patch43:        skip-test_array_alignment.patch
 # PATCH-FIX-OPENSUSE test_UDPLITE_support.patch gh#python/cpython#149078 mcepl@suse.com
 # improve testing of the presence of IPPROTO_UDPLITE support
 Patch49:        test_UDPLITE_support.patch
+# PATCH-FIX-UPSTREAM CVE-2026-82049-tarfile-hard-link.patch bsc#1280459 mcepl@suse.com
+# Follow symlinks when extracting tarfile hard links (GH-157191)
+Patch50:        CVE-2026-82049-tarfile-hard-link.patch
 #### Python 3.15 DEVELOPMENT PATCHES
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

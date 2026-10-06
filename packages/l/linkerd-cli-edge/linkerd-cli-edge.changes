@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Tue Oct 06 04:53:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 26.10.1:
+  * build(deps): bump clap_lex from 1.1.0 to 1.1.1 in the clap
+    group (#15686)
+  * build(deps): bump the kube group across 1 directory with 7
+    updates (#15683)
+  * build(deps): bump docker/setup-buildx-action (#15674)
+  * build(deps): bump google.golang.org/grpc from 1.83.2 to 1.84.0
+    (#15680)
+  * build(deps): bump webpack-dev-middleware from 7.4.2 to 7.4.6 in
+    /web/app (#15685)
+  * build(deps): bump the pest group across 1 directory with 4
+    updates (#15658)
+  * build(deps): bump docker/setup-qemu-action (#15675)
+  * build(deps): bump docker/build-push-action from 7.3.0 to 7.4.0
+    (#15673)
+  * build(deps): bump docker/setup-buildx-action from 4.3.0 to
+    4.4.0 (#15672)
+  * build(deps): bump codecov/codecov-action from 7.0.0 to 7.1.0
+    (#15669)
+  * build(deps): bump zerocopy from 0.8.56 to 0.8.59 (#15659)
+  * build(deps): bump smallvec from 1.15.2 to 1.16.2 (#15661)
+  * build(deps): bump prometheus-client-derive-encode from 0.5.0 to
+    0.5.1 (#15662)
+  * build(deps): bump tokio-metrics from 0.5.1 to 0.5.2 (#15660)
+  * build(deps): bump github.com/mattn/go-runewidth from 0.0.29 to
+    0.0.30 (#15657)
+  * build(deps): bump github.com/prometheus/common from 0.70.1 to
+    0.71.0 (#15656)
+  * build(deps): bump helm.sh/helm/v3 from 3.21.4 to 3.22.0
+    (#15655)
+  * chore(deps): bump rustls to 0.23.45 (#15667)
+
+-------------------------------------------------------------------
 Sat Sep 19 08:23:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.9.3:

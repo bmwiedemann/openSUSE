@@ -1,0 +1,13 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index fe427b7..7d80ab8 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -288,7 +288,7 @@ enable_testing()            # "ctest" will run all tests
+ add_custom_target( tests )  # "make tests" will build all tests
+ 
+ foreach( i 001 002 003 004 005 006 007 008 009 010 011 013 014 )
+-	add_executable( test_${i} EXCLUDE_FROM_ALL tests/test_${i}.c )
++	add_executable( test_${i} tests/test_${i}.c )
+ 	if( i STREQUAL "007" )
+ 		target_sources( test_${i} PUBLIC src/vector.c src/util.c )
+ 	elseif( i STREQUAL "010" )

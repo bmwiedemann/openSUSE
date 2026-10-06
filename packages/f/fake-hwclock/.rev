@@ -20,4 +20,16 @@
 </comment>
     <requestid>1296852</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>bd1155345711e6b32c71bc121538d7a3</srcmd5>
+    <version>0.15</version>
+    <time>1791307117</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.15:
+  * update embedding epoch for a new release
+  * stop suggesting ntp
+  * manpage fixes
+  * fix inverted logic for force parameter</comment>
+    <requestid>1382715</requestid>
+  </revision>
 </revisionlist>

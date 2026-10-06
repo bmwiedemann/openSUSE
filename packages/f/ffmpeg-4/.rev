@@ -921,4 +921,12 @@
 minus ffmpeg-4-CVE-2026-75141.patch</comment>
     <requestid>1376009</requestid>
   </revision>
+  <revision rev="101" vrev="6">
+    <srcmd5>936a6f05d95de3ed90335b8674defca0</srcmd5>
+    <version>4.4.8</version>
+    <time>1791306912</time>
+    <user>anag_factory</user>
+    <comment></comment>
+    <requestid>1382587</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  5 10:09:37 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add patch for aarch64 since default detection no longer works
+  for aarch64:
+  * add-aarch64.patch
+
+-------------------------------------------------------------------
 Thu Nov 30 13:54:18 UTC 2023 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - USe %{optflags} to build package

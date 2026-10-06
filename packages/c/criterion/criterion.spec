@@ -17,10 +17,10 @@
 
 
 %define _lto_cflags %{nil}
-%define sover 3
+%define sover 4
 
 Name:           criterion
-Version:        2.4.3
+Version:        2.5.0
 Release:        0
 Summary:        A dead-simple, yet extensible, C and C++ unit testing framework
 License:        MIT
@@ -55,7 +55,7 @@ Criterion follows the KISS principle, while keeping the control the user would h
 * Tests are automatically registered when declared.
 * Implements a xUnit framework structure.
 * A default entry point is provided, no need to declare a main unless you want to do special handling.
-* Test are isolated in their own process, crashes and signals can be reported and tested.
+* Tests are isolated in their own process, crashes and signals can be reported and tested.
 * Unified interface between C and C++: include the criterion header and it just works.
 * Supports parameterized tests and theories.
 * Progress and statistics can be followed in real time with report hooks.
@@ -64,10 +64,9 @@ Criterion follows the KISS principle, while keeping the control the user would h
 
 %package -n lib%{name}%{sover}
 Summary:        Libraries needed to use Criterion
-Requires:       lib%{name}%{sover}-devel = %{version}
 
 %description -n lib%{name}%{sover}
-This packages contains all the libraries needed to use Criterion.
+This package contains all the libraries needed to use Criterion.
 
 %package -n lib%{name}-devel
 Summary:        Devel files for Criterion
@@ -100,8 +99,7 @@ chrpath -d %{buildroot}%{_libdir}/lib%{name}.so.%{sover}*
 %doc README.md AUTHORS ChangeLog CONTRIBUTING.md
 
 %files -n lib%{name}%{sover}
-%{_libdir}/libcriterion.so.3
-%{_libdir}/libcriterion.so.3.2.0
+%{_libdir}/libcriterion.so.*
 
 %files -n lib%{name}-devel
 %dir %{_includedir}/criterion

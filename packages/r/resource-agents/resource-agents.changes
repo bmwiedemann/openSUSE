@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct 01 15:34:26 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Update to version 4.18.0+git105.9ea1183: (bsc#1281122)
+  * aws-vpc-move-ip: fix fragile handling of response from AssumeRole
+  * ZFS: re-read a transitional pool state before failing the monitor (#2213)
+  * exportfs: skip unlock_filesystem when nfsd is not running
+  * High: Filesystem: Devices with duplicate labels are treated as errors.
+  * podman-etcd: address review feedback on departure handshake
+  * powervs-move-ip: introduce support for guaranteed routes (#2215)
+  * Mid: Filesystem: For block devices, allow monitor_10 even when specified by UID or LABEL.
+  * podman-etcd: deterministic departure lock and force-new-cluster recovery
+
+-------------------------------------------------------------------
 Thu Aug 27 21:02:38 UTC 2026 - varkoly@suse.com
 
 - Update to version 4.18.0+git94.6c50a9b:

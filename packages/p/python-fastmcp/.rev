@@ -91,4 +91,12 @@ no-dependency-on python-base false positives). source_validator clean.</comment>
     <comment>Update to 3.4.7: fix CIMD private_key_jwt authentication for OAuthProxy deployments mounted at a bare origin (client assertion audience now derived from the normalised token endpoint advertised in authorization server metadata). No API or dependency changes. Built green locally on aarch64 against openSUSE_Tumbleweed; rpmlint 2 errors / 46 warnings / 2 badness (leftover-require warnings are the known uv-backend false positive); %check import smoke tests pass on python313 and python314.</comment>
     <requestid>1370601</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>e8f5cca01ba58a4acac5bb1864252c49</srcmd5>
+    <version>3.4.8</version>
+    <time>1791307207</time>
+    <user>anag_factory</user>
+    <comment>Update python-fastmcp to 3.4.8: 3.x maintenance release with security and bug fixes. No API, dependency or packaging changes.</comment>
+    <requestid>1382764</requestid>
+  </revision>
 </revisionlist>

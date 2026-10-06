@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Mon Oct  5 18:31:21 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to relesae 0.16.25
+  * Partially reverted UTF-8 handling to old behavior, and
+    `name.utf-8` and `path.utf-8` values (if present) will be used
+    to ensure compatibility with older torrents. Can be turned off
+    with `system.file_name.allow_legacy_utf8.set=false`.
+
+-------------------------------------------------------------------
 Tue Sep 22 16:59:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.24

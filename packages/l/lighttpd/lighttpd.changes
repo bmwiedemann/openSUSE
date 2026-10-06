@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Sep 29 07:50:57 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (predates distro
+  -fstack-protector-strong in optflags; the trailing basic flag
+  silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Thu Jul  9 07:33:49 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - updte to 1.4.85:

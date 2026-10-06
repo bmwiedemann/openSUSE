@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:57:30 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0+git20260903:
+  * New optional MOREDATA flag for backtrace_create_state, reported
+    via BACKTRACE_SUPPORTS_MOREDATA: the callbacks then receive a
+    struct backtrace_moredata carrying the DWARF path discriminator
+    and the declaration line of each frame, not the plain data
+    pointer. The int argument was previously named THREADED and is
+    now a flags word; bit 1 keeps the old threaded meaning, so
+    callers passing 0 or 1 are unaffected. No new exported symbols
+    and no ABI change.
+  * Reading zstd-compressed debug sections no longer fails on
+    compressed blocks that do not set the single segment flag, and
+    RLE sequences now populate the sequence table.
+
+-------------------------------------------------------------------
 Fri Jun 19 14:36:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0+git20260601:

@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  5 15:36:32 UTC 2026 - Reinhard Max <max@suse.com>
+
+- Update to 0.8.7:
+  * bsc#1284129, CVE-2026-103484: database users with the ability
+    to create an IVFFlat index can write data out-of-bounds, which
+    can lead to arbitrary code execution.
+
+-------------------------------------------------------------------
 Mon Jun 29 20:04:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 0.8.3:

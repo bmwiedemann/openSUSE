@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:07:53 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to CMakeLists.txt.
+
+-------------------------------------------------------------------
+Sun Oct  4 18:17:29 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Own %%{_datadir}/zsh/*, so we do not have to depend on zsh
+  during build. Needed after changes to glib2.
+
+-------------------------------------------------------------------
 Sat Sep 26 11:59:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 5.2.2:

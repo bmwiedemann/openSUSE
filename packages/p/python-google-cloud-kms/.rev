@@ -299,4 +299,14 @@
 - Use correct upstream URL in URL field (forwarded request 1370699 from glaubitz)</comment>
     <requestid>1370700</requestid>
   </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>3e9d96ffcb948aacc7d6dcf19462845f</srcmd5>
+    <version>3.18.0</version>
+    <time>1791306870</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.18.0
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py (forwarded request 1382545 from glaubitz)</comment>
+    <requestid>1382567</requestid>
+  </revision>
 </revisionlist>

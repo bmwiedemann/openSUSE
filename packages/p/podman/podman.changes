@@ -1,4 +1,77 @@
 -------------------------------------------------------------------
+Fri Sep 25 07:46:06 UTC 2026 - Enrico Belleri <kilgore.trout@idesmi.eu>
+
+- Update to version 6.1.2:
+  * address CVE-2025-11395 where importing images containing crafted layer
+    tarballs with the `podman load` command, or importing volumes
+    containing crafted symlinks with `podman volume import`, allows
+    overwriting files on the host
+  * address CVE-2026-79699 and CVE-2026-79705
+  * address CVE-2026-17106, where a crafted tar archive could write
+    outside the extraction directory through the use of malicious links
+  * Fixed broken rootlessport bind behavior with `-p 0.0.0.0:... -p [::]:...`
+    which failed instead of binding both v4 and v6 separately.
+  * new command: `podman volume rename`
+    + allow renaming volumes. Volumes created using volume drivers and
+      volumes that are currently used by a container cannot be renamed
+  * new command: `podman machine restart`
+    + allow easy restart of VMs managed by `podman machine`
+  * command `podman network rm` now includes option `--ignore`
+    + suppresses errors when attempting to remove networks that do not exist
+  * command `podman manifest push` now includes options `--retry` and `--retry-delay`
+    + allow pushes to be automatically retried on failure
+  * Quadlet `.container` units now support key `ImageVolume=` to configure
+    how volumes from images are handled
+  * command `podman generate kube` now includes support for generating
+    container healthchecks as a `livenessProbe`
+  * container.conf: new option `force_port_listen`
+  * command `podman info` now additionally includes free memory available on the host
+  * Pesto rootless port forwarding tool now supports IPv6 port forwarding
+    with source IP preservation
+  * Fixed a bug where the remote Podman client could hang on some operations
+    when connecting to a remote Podman service over SSH
+  * Fixed a bug where the `podman image scp` command could not be used
+    with usernames containing an `@` character
+  * Fixed a bug where the `podman kube play` command did not properly validate
+    requested `hostPort` bindings, allowing the creation of containers
+    with duplicated host ports which would never be able to start at the same time
+  * Fixed a bug where the `podman quadlet list` and `podman quadlet rm` commands
+    did not function properly with uninstantiated template Quadlets.
+  * Fixed a bug where the `podman quadlet install` command would occasionally
+    fail to install a Quadlet if non-quadlet files were specified.
+  * Fixed a bug where the `podman quadlet install` command would not refuse
+    to install Quadlets including non-quadlet files if the `--application` option
+    was not specified.
+  * Fixed a bug where healthcheck logs could be corrupted, preventing proper
+    healthcheck operation, if a healthcheck was killed midway through writing the file.
+  * Fixed a bug where the `podman volume prune --all` command incorrectly discarded
+    label filters, causing `podman volume prune --all --filter label=foo` to prune
+    all volumes, not just those with the `foo` label.
+  * Fixed a bug where the `podman events --format=json` command would print `null`
+    instead of an error when the server sent an event that could not be decoded.
+  * Fixed a bug where a race condition could cause Quadlet to generate
+    corrupt systemd units
+  * Fixed a bug where the `podman inspect` command on a container with
+    a single-element command (e.g. `podman run fedora bash`) would include the command
+    in both `Path` and `Args`, when it should only have been included in `Path`
+  * Fixed a bug where the `--format` option to `podman inspect` on containers did not
+    properly support some format specifiers supported by Docker
+    (e.g. `{{.HostIp}}` did not work, but `{{.HostIP}}` did)
+  * Fixed a bug where the Quadlet generator would not write error messages to `STDERR`
+    but only to `/dev/kmsg`, meaning that errors were not visible from `systemd-analyze --generators verify`
+    and other tooling invoking the systemd generator directly.
+  * Fixed a bug where containers which failed to start would, in some circumstances,
+    not properly clean up, resulting in improper behavior
+  * Fixed a bug where the `podman kube generate` command would improperly generate
+    warning messages only applicable when running as a rootless user on
+    an SELinux enabled system when not running in that configuration
+  * Fixed a bug where the Compat and Libpod Create endpoint for Exec Sessions (`/containers/$CID/exec`)
+    did not honor the `ConsoleSize` parameter in the exec config.
+  * The Compat API has seen further changes to improve support for the
+    Docker v1.44 API, including the deprecation of several fields removed in that release.
+  * Preparations have begun to implement support for the v1.45 API.
+
+-------------------------------------------------------------------
 Thu Jul 23 05:01:04 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
 
 - Update to version 6.0.2:

@@ -1,7 +1,7 @@
 #
 # spec file for package python-calmjs.types
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,8 +24,10 @@ Summary:        Types for the calmjs framework
 License:        MIT
 URL:            https://github.com/calmjs/calmjs.types
 Source:         https://github.com/calmjs/calmjs.types/archive/%{version}.tar.gz
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
+BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
@@ -55,6 +57,5 @@ A collection of types (mostly exception classes) for use with |calmjs|_.
 %doc CHANGES.rst README.rst
 %{python_sitelib}/calmjs
 %{python_sitelib}/calmjs_types-%{version}.dist-info
-%{python_sitelib}/calmjs.types-%{version}*-nspkg.pth
 
 %changelog

@@ -24,13 +24,13 @@
 %global pkglicense GPL-3.0-or-later AND BSD-3-Clause AND Zlib
 # SONAME tracks upstream VERSION_INFO_* in
 # src/algorithms/libs/volk_gnsssdr_module/volk_gnsssdr/CMakeLists.txt - recheck on every bump
-%global libname libvolk_gnsssdr0_0_21
+%global libname libvolk_gnsssdr0_0_22
 %else
 %global pkgsummary Software-defined receiver for GNSS signals
 %global pkglicense GPL-3.0-or-later AND LGPL-3.0-only AND BSD-1-Clause AND BSD-2-Clause AND BSD-3-Clause AND MIT
 %endif
 Name:           gnss-sdr%{?psuffix}
-Version:        0.0.21
+Version:        0.0.22
 Release:        0
 Summary:        %{pkgsummary}
 # Legal-Review-Notice: cpu_features (Apache-2.0) and src/algorithms/libs/opencl
@@ -101,11 +101,14 @@ various standards:
 
 - GPS (L1, L2C, L5 bands)
 - GLONASS (L1, L2 bands)
-- BeiDou (B1I, B3I bands)
+- BeiDou (B1I, B1C, B2a, B3I bands)
 - Galileo (E1b/c, E5a bands)
+- QZSS (L1 C/A, L1 C/B bands)
+- SBAS (L1 band, EGNOS and WAAS; message decoding only)
 
 It can process signal in realtime or prerecorded signals and
-output process signals in various formats.
+output process signals in various formats, optionally corrected
+in realtime by an NTRIP caster for centimeter-level positioning.
 %endif
 
 %prep
@@ -142,8 +145,9 @@ rm %{buildroot}%{python3_sitelib}/volk_gnsssdr_modtool/*.pyo
 # imported modules, not scripts - drop the shebang instead of chmod +x
 sed -i '1{/^#!/d}' %{buildroot}%{python3_sitelib}/volk_gnsssdr_modtool/*.py
 %else
-# Remove changelog installed at the wrong location
-rm %{buildroot}%{_datadir}/doc/gnss-sdr/changelog.gz
+# CMAKE_INSTALL_DOCDIR lands on the openSUSE doc dir, so the install
+# duplicates the build/changelog.gz documented below; drop that copy
+rm %{buildroot}%{_docdir}/%{name}/changelog.gz
 %endif
 %fdupes %{buildroot}
 

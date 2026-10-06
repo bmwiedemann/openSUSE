@@ -60,4 +60,15 @@ Add reproducible.patch to avoid compile-time CPU-detection (boo#1100677)</commen
     <comment></comment>
     <requestid>1362635</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>60f8706599672403348c628c248d8957</srcmd5>
+    <version>0.8.7</version>
+    <time>1791306925</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.7:
+  * bsc#1284129, CVE-2026-103484: database users with the ability
+    to create an IVFFlat index can write data out-of-bounds, which
+    can lead to arbitrary code execution.</comment>
+    <requestid>1382585</requestid>
+  </revision>
 </revisionlist>

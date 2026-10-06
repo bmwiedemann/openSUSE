@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:12:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.4.8 (3.x maintenance release with security and
+  bug fixes; no API, dependency or packaging changes):
+  * Host/Origin protection now also covers the SSE transport,
+    Cookie headers are excluded from forwarded requests, CIMD
+    cache growth is bounded, and auth, enabled state and
+    transforms apply consistently to hashed tool lookups,
+    injected tools, component manager routes and dev previews
+  * Client schema types are built with bounded caches, oversized
+    schemas keep their $ref pointers, OpenAPI components send
+    only declared arguments while keeping configured headers,
+    and client CLI arguments pass literally to Windows wrappers
+
+-------------------------------------------------------------------
 Tue Aug 11 05:27:00 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.4.7:

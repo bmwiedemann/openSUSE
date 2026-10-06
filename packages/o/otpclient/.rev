@@ -768,4 +768,15 @@
     made the omission permanent. The append is now checked and the</comment>
     <requestid>1380792</requestid>
   </revision>
+  <revision rev="58" vrev="2">
+    <srcmd5>b525e51fceca9ef5aeba525b6ff82163</srcmd5>
+    <version>5.2.2</version>
+    <time>1791307090</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to CMakeLists.txt.
+
+- Own %%{_datadir}/zsh/*, so we do not have to depend on zsh
+  during build. Needed after changes to glib2.</comment>
+    <requestid>1382688</requestid>
+  </revision>
 </revisionlist>

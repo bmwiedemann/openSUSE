@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 18:30:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 0.16.25
+  * Reject unroutable addresses from remote peer lists.
+  * Reject torrents with more chunks than the chunk index can
+    address.
+  * Use a large state engine for UDP tracker transaction ids.
+  * Cap the number of info hashes the DHT keeps peer lists for.
+  * Added legacy UTF-8 torrent name and path handling.
+
+-------------------------------------------------------------------
 Tue Sep 22 16:59:43 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 0.16.24

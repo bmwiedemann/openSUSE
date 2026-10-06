@@ -1,0 +1,13 @@
+--- xdmbgrd-0.8/piggyback.orig	2026-10-05 12:06:51.642921851 +0200
++++ xdmbgrd-0.8/piggyback	2026-10-05 12:08:23.848051778 +0200
+@@ -83,6 +83,10 @@ case $arch in
+ 	ld_m=elf_x86_64
+ 	ld_b=elf64-x86-64
+ 	;;
++ aarch64)
++        ld_m=aarch64elf
++        ld_b=elf64-littleaarch64
++        ;;
+  *)
+ 	set -- $(objdump -f /usr/bin/objdump | grep format)
+ 	eval ld_b=\${$#}

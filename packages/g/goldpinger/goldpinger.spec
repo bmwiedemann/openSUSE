@@ -17,14 +17,14 @@
 
 
 Name:           goldpinger
-Version:        3.11.3
+Version:        3.11.5
 Release:        0
 Summary:        Tests and displays connectivity between nodes in a Kubernetes cluster
 License:        Apache-2.0
 URL:            https://github.com/bloomberg/goldpinger
 Source:         goldpinger-%{version}.tar.gz
 Source1:        vendor.tar.gz
-BuildRequires:  golang(API) >= 1.25
+BuildRequires:  golang(API) >= 1.27
 
 %description
 Goldpinger makes calls between its instances to monitor your networking. It

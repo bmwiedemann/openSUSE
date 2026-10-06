@@ -17,11 +17,11 @@
 
 
 # clibsver - version from containers/container-libs (common/ tag)
-%define clibsver 0.68.0
+%define clibsver 0.69.2
 # https://github.com/containers/shortnames
 %define shortnamesver 2025.03.19
 Name:           libcontainers-common
-Version:        20260521
+Version:        20260915
 Release:        0
 Summary:        Configuration files common to github.com/containers
 License:        Apache-2.0
@@ -124,7 +124,6 @@ go-md2man -in common/pkg/hooks/docs/oci-hooks.5.md -out man5/oci-hooks.5
 
 %install
 install -dp %{buildroot}%{_sysconfdir}/containers/{containers.conf.d,certs.d,oci/hooks.d,networks,systemd,registries.conf.d,registries.d}
-
 install -d -m 0755 %{buildroot}/%{_datadir}/containers
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/oci/hooks.d
 install -d -m 0755 %{buildroot}/%{_datadir}/containers/registries.d

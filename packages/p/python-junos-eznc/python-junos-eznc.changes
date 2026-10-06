@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct  6 03:33:42 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 2.8.2:
+  * Gather facts for the satellite devices
+  * Upgraded Jinja2 version 3.1.6
+  * Added hostname validation before substituting the hostname in the
+    proxy_command
+  * Added support for routing instances and satellite options in
+    `sw.install()`
+  * Introduced support for the `proxy_command` parameter
+  * Enabled the "request vmhost zeroize" functionality
+  * Fixed an issue where `allow_agent` and `look_for_keys` parameters were
+    not being honored by `ssh_client`
+  * Python 3.12+ Support: Added official support for Python 3.12 and later
+    versions, ensuring compatibility with the latest Python ecosystems
+  * SSH Agent Support: Added the allow_agent parameter support
+    to improve flexible authentication workflows
+  * Dependency Update: Migrated from yamlordereddictloader
+    to yamlloader for improved YAML processing
+  * Support for ncclient 0.7.0
+- Drop patches:
+  * python-junos-eznc-remove-yamlordereddictloader.patch
+  * get-telnetlib-from-netmiko.patch
+- Add patches:
+  * no-more-pkg-resources.patch
+  * ntc-templates-9.3-compat.patch
+* Refreshed no-six.patch
+
+-------------------------------------------------------------------
 Mon Apr 14 12:17:24 UTC 2025 - Georg Pfuetzenreuter <georg.pfuetzenreuter@suse.com>
 
 - Enable sle15_python_module_pythons, project is Python 3.8+

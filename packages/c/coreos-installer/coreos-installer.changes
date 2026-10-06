@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Mon Oct 05 12:55:24 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.27.0:
+  * Major changes:
+    - install: Accept Butane YAML configs via
+      --ignition-file/--ignition-url
+    - Add Fedora 46 signing key; drop Fedora 43 signing key
+    - rdcore: Allow multiple hostkeys in zipl command via --hostkey
+      or -k
+    - install: inject network config into initramfs instead of
+      copying to disk
+  * Minor changes:
+    - verify-unique-fs-label: Fix false failure on RAID1 mirrored
+      boot setups
+    - verify-unique-fs-label: Improve diagnostics for unassembled
+      RAID arrays
+    - systemd: bring up ssh if coreos.inst.skip_reboot karg was set
+  * Internal changes:
+    - install: Fix '--console' flag handling on s390x
+    - install: Disable GRUB configuration on s390x
+    - s390x: Use pvimg instead of obsolete genprotimg
+    - s390x: Fix write() to write_all() in initrd generation to
+      prevent silent truncation
+    - s390x: Minor code cleanups in dasd and zipl handling
+    - s390x: Fix lszdev bus ID regex: escape dots and add parser
+      tests
+  * Packaging changes:
+    - Bump minimum supported Rust version (MSRV) to 1.87.0
+  * Dependencies
+    - cargo: update dependencies
+    - build(deps): bump rand from 0.8.5 to 0.8.6
+    - build(deps): bump rustls-webpki from 0.103.9 to 0.103.13
+    - build(deps): bump openssl from 0.10.75 to 0.10.79
+
+-------------------------------------------------------------------
 Thu Mar 05 06:53:34 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.26.0:

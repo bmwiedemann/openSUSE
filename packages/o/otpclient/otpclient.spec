@@ -31,7 +31,7 @@ BuildRequires:  cmake
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(glib-2.0) >= 2.68
+BuildRequires:  pkgconfig(glib-2.0) >= 2.74.0
 BuildRequires:  pkgconfig(gtk4) >= 4.10.0
 BuildRequires:  libgcrypt-devel >= 1.10.1
 BuildRequires:  libcotp-devel >= 4.0.0
@@ -150,6 +150,8 @@ rm -f %{buildroot}%{_datadir}/icons/hicolor/icon-theme.cache
 %{_datadir}/bash-completion/completions/otpclient-cli
 
 %files zsh-completion
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_otpclient-cli
 
 %files fish-completion

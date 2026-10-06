@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:06:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2026.08.17:
+  * Support legacy encodings in the parallel reporter
+  * Tighten mypy and pytest config
+- update to 2026.08.10:
+  * This release can run sessions in parallel with
+    `--parallel`/`-j` (experimental for now, report any bugs!).
+    Requires session opt-in, or use `--allow-parallel`.
+    Interpreter discovery now uses the `python-discovery`
+    package, which should be better at finding Python and
+    supports version specifier sets. Using this, script mode
+    reads `requires-python`. Many bugs were fixed, mostly in
+    Python version handling, conda version specifiers, and option
+    precedence. Unrecognized global options are now an error.
+  * Run sessions in parallel with `--parallel`/`-j`
+  * Use `python-discovery` for interpreter discovery
+  * Support `requires-python` in script mode
+  * Sort classifier-derived Python versions
+  * Isolate script mode from inherited `PYTHONPATH`
+  * Require virtualenv 21+ on Python 3.15
+  * Correct conda version constraints on Windows
+  * Make explicit command-line options beat noxfile and alias
+    values
+
+-------------------------------------------------------------------
 Sat Apr 25 08:25:12 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2026.04.10:

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  5 02:22:41 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Explicitly invoke the same version of clang++ as LLVM.
+
+-------------------------------------------------------------------
 Mon Jul 13 09:36:51 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add workaround for llvm-as and llvm-link not being handled by

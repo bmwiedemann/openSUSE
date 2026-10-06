@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  6 05:52:44 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.19.0
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Sun Jul  5 08:56:39 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.18.0:

@@ -117,4 +117,16 @@
 </comment>
     <requestid>1369443</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>b4aebaee441ba6f0fd0ad2b456de09c2</srcmd5>
+    <version>3.0.26</version>
+    <time>1791306859</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.26:
+  * Delete network errors when deleting an account and fix sync error
+    sorting issue (#44)
+  * Fix static declaration
+</comment>
+    <requestid>1382509</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:40:07 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 4.16.0:
+  * feat(otel): cap default exporter batches at 64 MiB
+- update to 4.15.6:
+  * fix(openai): capture reasoning_effort and verbosity in model
+    parameters
+- update to 4.15.5:
+  * fix(serializer): sanitize NaN/Inf nested in converted
+    containers
+- update to 4.15.4:
+  * fix(serializer): mask pydantic secret values
+- update to 4.15.3:
+  * docs: strengthen agent-facing README so v2 APIs are not
+    treated as current
+- update to 4.15.2:
+  * feat(api): update API spec from langfuse/langfuse 4e0ce09
+  * feat(api): update API spec from langfuse/langfuse 1ea859c
+  * feat(api): update API spec from langfuse/langfuse b8fab27
+  * fix(docs): SEO improvements
+  * feat(api): update API spec from langfuse/langfuse b1290b4
+  * feat(api): update API spec from langfuse/langfuse 619dbe3
+  * docs(evals): mark batch evaluation as legacy
+- update to 4.15.1:
+  * feat(api): update API spec from langfuse/langfuse 74ded7e
+  * perf(span-processor): skip span_formatter when debug logging
+    is off
+  * refactor(logging): use lazy %-style formatting in log calls
+- update to 4.14.6:
+  * feat(api): update API spec from langfuse/langfuse 8ab6c91
+  * Fix memory leak in OTEL traces
+  * feat(api): update API spec from langfuse/langfuse 1fcdb77
+  * feat(api): update API spec from langfuse/langfuse 99e2ce9
+  * feat(api): update API spec from langfuse/langfuse 79d11de
+- update to 4.14.5:
+  * fix(serializer): handle NaN/Inf floats nested in pydantic
+    models
+  * feat(api): update API spec from langfuse/langfuse 9a83721
+  * fix(docs): preserve PyPI hero image aspect ratio
+  * feat(api): update API spec from langfuse/langfuse a7fa476
+- update to 4.14.4:
+  * fix(media): support URL-safe Base64 in media data URIs
+  * fix(openai): treat openai Omit sentinels like NotGiven when
+    logging
+- update to 4.14.3:
+  * fix(otel): keep last duplicate span in masking batches
+- update to 4.14.2:
+  * feat(api): update API spec from langfuse/langfuse b0387f7
+  * fix(langchain): normalize tool definitions to OpenAI function
+    format
+    github-actions group
+    the github-actions group
+  * feat(api): update API spec from langfuse/langfuse a9f0808
+  * fix: preserve zero sample rate
+  * fix(experiments): preserve run metadata precedence
+  * fix(api): preserve legacy score create alias
+  * fix(api): initialize compatibility exports safely
+  * feat(api): update API spec from langfuse/langfuse 8242934
+    0.6.1 in the github-actions group
+  * fix(observe): defer span end when a cancellation never
+    resumed the generator
+  * fix(ci): run Langfuse v4 in dual-write mode
+- update to 4.14.1:
+  * feat(api): update API spec from langfuse/langfuse a44d88c
+  * fix(tracing): exclude LiteLLM raw spans from app roots
+  * feat(api): update API spec from langfuse/langfuse 51cf9d9
+  * docs: upgrade docstrings as a first-class documentation
+    surface for AI agents
+  * fix(experiments): separate task and evaluator latency
+
+-------------------------------------------------------------------
 Tue Jul 14 20:17:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 4.14.0:

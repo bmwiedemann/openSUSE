@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:03:24 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.4.8
+  * Load single GIF images as 8-bit indexed images
+
+-------------------------------------------------------------------
 Wed Sep  2 15:38:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.4.6

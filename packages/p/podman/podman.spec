@@ -19,12 +19,12 @@
 %{!?_user_tmpfilesdir: %global _user_tmpfilesdir %{_datadir}/user-tmpfiles.d}
 
 %define project            github.com/containers/podman
-%define lcc_version        20260521
+%define lcc_version        20260915
 
 %bcond_without  apparmor
 
 Name:           podman
-Version:        6.0.2
+Version:        6.1.2
 Release:        0
 Summary:        Daemon-less container engine for managing containers, pods and images
 License:        Apache-2.0
@@ -64,7 +64,7 @@ Requires:       fuse-overlayfs
 Requires:       libcontainers-common >= %{lcc_version}
 %if 0%{?sle_version} && 0%{?sle_version} <= 150500
 # Build podman with CNI support for SLE-15-SP5 and lower
-Requires:       (netavark or cni-plugins)
+Requires:       (netavark >= 2.0.0 or cni-plugins)
 # We still want users with fresh installation to start off
 # with Netavark but if they already have cni-plugins installed
 # and are attempting a migration, it's better to continue with cni

@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct  5 18:59:40 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5.0:
+  * Backward-incompatible change: when an Item Loader instantiates
+    the item itself, from :attr:`~ItemLoader.default_item_class`,
+    the field defaults of that item are no longer treated as
+    collected data, so they no longer go through processors and no
+    longer get combined with the values you add. They still reach
+    the loaded item for fields that get no data.
+  * Backward-incompatible change: sets and iterators other than
+    generators, such as the result of :func:`map`, are now
+    collected value by value, like lists, tuples and generators
+    already were, instead of as a single value
+  * Improved performance.
+  * Fixed :func:`functools.partial` processors missing their
+    loader_context when the value of a positionally-bound argument
+     matched the name of an unbound parameter
+
+-------------------------------------------------------------------
 Sun Mar 29 10:46:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.4.0:

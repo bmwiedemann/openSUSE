@@ -1,0 +1,63 @@
+From 218dbeab0806a2b61559b7d2aa4dd0170e64100e Mon Sep 17 00:00:00 2001
+From: Jan Engelhardt <jengelh@inai.de>
+Date: Tue, 6 Oct 2026 01:16:04 +0200
+Subject: [PATCH] Resolve a testsuite failure
+Upstream: sent via e-mail 2026-10-06 01:24+0200
+
+Starting with commit pari-2.18.1~473 , the CMH testsuite fails.
+
+```
+PARI/GP version: [2, 18, 1]
+Working with [D,A,B] = [157,13,3]
+Galois group = D4
+Class group of K = C2
+Class group of Kr = C2
+Shimura group = C2
+Type norm subgroup = C2
+[0.000 15.7M 15.7M] Main job run on node a4, pid 60916, Tue Oct  6 01:17:39 2026
+[0.000 15.7M 15.7M] version 1.1.2dev
+[0.000 15.7M 15.7M] model name  : AMD Ryzen 9 5950X 16-Core Processor
+[0.000 15.7M 15.7M] cpu MHz             : 3726.610
+[0.000 15.7M 15.7M] Considering CM field given by invariants [D,A,B]=[157,13,3]
+  ***   the PARI stack overflows !
+  current stack size: 500000 (0.477 Mbytes)
+  [hint] set 'parisizemax' to a nonzero value in your GPRC
+  ***   Error in the PARI system. End of program.
+```
+
+cmh commit 1.1.1-4-g55260b9 only sets new size parameters for
+/usr/bin/gp, but not for direct invocations of the PARI C library.
+---
+ src/factor.c          | 2 +-
+ src/quadratic_field.c | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/factor.c b/src/factor.c
+index 76eaa3d..c797ce8 100644
+--- a/src/factor.c
++++ b/src/factor.c
+@@ -77,7 +77,7 @@ factor_matrix factor_trialdiv (mpz_srcptr n, unsigned long int bound)
+    if (bound == 0)
+       bound = ULONG_MAX;
+ 
+-   pari_init (500000, 0);
++   pari_init (100000000, 0);
+    av = avma;
+ 
+    n_gen = mpz_get_GEN (n);
+diff --git a/src/quadratic_field.c b/src/quadratic_field.c
+index ea51ca3..3976e60 100644
+--- a/src/quadratic_field.c
++++ b/src/quadratic_field.c
+@@ -79,7 +79,7 @@ extern GEN halfgcd(GEN x, GEN y);
+    int i;
+ 
+    pari_sp av;
+-   pari_init (500000, 0);
++   pari_init (100000000, 0);
+    paristack_setsize (500000, 500000000);
+    av = avma;
+ 
+-- 
+2.55.0
+

@@ -77,4 +77,14 @@
     <comment>- Fix Python version constraints for python-grpcio in BuildRequires (forwarded request 1372006 from glaubitz)</comment>
     <requestid>1372011</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>2c97e8f4dd7f7dc4b0ac0eefab371b81</srcmd5>
+    <version>0.6.2</version>
+    <time>1791306873</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.6.2
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py (forwarded request 1382546 from glaubitz)</comment>
+    <requestid>1382568</requestid>
+  </revision>
 </revisionlist>

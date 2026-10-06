@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:18:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 65.8:
+  * New -mailfull and -mailprivacy: an e-mail report at the end
+    of any command, with a second log without file names for
+    whoever looks after the backup
+  * New -rescue: image a dying disk, jumping ahead on failed
+    reads and coming back instead of insisting
+  * Thin images: free clusters that came along are stored as
+    zeros, and image -to writes a sparse or flat (-raw) .vmdk
+  * cloud reports OK or ERROR per phase, resumes the upload
+    where the remote archive ends, and sends drive images
+  * Fix clusters over 64 KB, a short raw image through VSS,
+    password writing garbage with a wrong key, and -to
+    silently ignored with a wildcard
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+
+-------------------------------------------------------------------
 Fri Oct  2 10:52:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 65.7:

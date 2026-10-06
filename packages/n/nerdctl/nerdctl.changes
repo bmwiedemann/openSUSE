@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 05 05:29:05 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
+
+- Update to version 2.4.1:
+  * build(deps): bump containerd/project-checks from 1.2.2 to 1.2.3
+  * update golangci-lint (2.14.0)
+  * update Docker (29.8.2)
+  * update soci-snapshotter (0.16.1)
+  * update BuildKit (0.33.1)
+  * update runc (1.5.2)
+  * update containerd 1.7 (1.7.36)
+  * update containerd (2.4.1)
+  * build(deps): bump github.com/docker/cli
+  * fix(compose): support cgroup_parent and cgroup service fields
+  * cp: pass the directory to tar via -C instead of the working directory
+  * fix(compose): pass CDI device names through unchanged
+  * build(deps): bump github.com/containerd/nydus-snapshotter
+  * build(deps): bump github.com/klauspost/compress from 1.20.0 to 1.20.1
+  * Remove implemented fields from unimplemented list in compose.md
+  * build(deps): bump github.com/containerd/accelerated-container-image
+  * build(deps): bump github.com/containerd/containerd/v2
+  * Add `cgroup_parent` to unimplemented YAML fields in compose.md
+  * fix(netutil): enable portMappings and dns capabilities in default nat CNI plugin (#5157)
+
+-------------------------------------------------------------------
 Mon Sep 21 04:58:53 UTC 2026 - Yash Maurya <yash.maurya@suse.com>
 
 - Update to version 2.4.0:

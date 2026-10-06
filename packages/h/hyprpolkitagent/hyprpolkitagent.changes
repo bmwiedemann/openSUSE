@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct  5 17:45:24 UTC 2026 - Nassim Lhadj <lhadjnassim311@gmail.com>
+
+- Update to 0.2.0:
+  - port: replace Qt/QML frontend with hyprtoolkit
+  - core: resolve session via User.Display when pid has none
+  - flake.lock: bump hyprtoolkit
+  - core: stop polkitd re-dispatch loop on unrecoverable PAM state
+  - ui: hide the password field while a fingerprint or key is pending
+  - Update wiki link in README.md
+
+-------------------------------------------------------------------
 Thu Sep 11 09:12:56 UTC 2025 - Marcus Rueckert <mrueckert@suse.de>
 
 - Add requires for the qml files manually since the files are

@@ -267,7 +267,7 @@ A module to provide PAM authentication in lighttpd.
 %autosetup -p1 -n %{pkg_name}-%{pkg_version}
 
 %build
-export CFLAGS="%{optflags} -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99 -fstack-protector"
+export CFLAGS="%{optflags} -W -Wmissing-prototypes -Wmissing-declarations -Wpointer-arith -Wchar-subscripts -Wformat=2 -Wbad-function-cast -std=gnu99"
 autoreconf -fiv
 %configure                      \
     --bindir=%{_sbindir}        \

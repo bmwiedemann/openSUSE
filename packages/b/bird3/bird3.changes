@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:41:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.3
+  * BMP/Nest: No refeed after listener or protocol restart.
+  * BMP: Fix crash on sending routes.
+  * BMP: Fix route sending when no import table is configured.
+  * EVPN: Improve tunnel and bridge intarface handling.
+  * Netlink: Fix handling of interface attributes for slave
+    interfaces.
+  * OSPF: Fix LSA length overflow.
+  * RAdv: Add hop limit validation.
+  * RPKI: Fix socket close detection during rx_hook.
+  * Proto: Fix VRF settings.
+  * MPLS: Fix crash on reconfiguring label ranges.
+  * Tools: Fix version script for Git 2.55+.
+  * Conf: Fix use-after-free in cf_include() error path.
+  * Lib: Fix bvsnprintf() on too long net_addr values.
+  * Lib: Fix endptr in bstrtoul16().
+
+-------------------------------------------------------------------
 Thu Jul 30 22:30:51 UTC 2026 - Michal Hrusecky <michal.hrusecky@opensuse.org>
 
 - Update to version 3.3.2

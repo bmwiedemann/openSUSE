@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.160.0
+Version:        0.160.1
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -38,6 +38,9 @@ Summary:        OpenAI Codex coding agent for the terminal
 # 0.159.2's and 0.158.0's - so the tag above is unchanged by that bump.
 # 0.160.0 moved exactly one crate, h2 0.4.16 -> 0.4.19 (MIT either way), so
 # the tally above is re-derived rather than carried and reproduces exactly.
+# 0.160.1 moves no crate at all - Cargo.lock is byte-identical to 0.160.0's
+# and the only source delta is first-party codex code (Apache-2.0) - so the
+# tag above is unchanged by that bump.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.

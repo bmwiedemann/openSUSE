@@ -2167,4 +2167,20 @@
   * powervs-move-ip: introduce support for trusted profiles, refine handling of API return codes</comment>
     <requestid>1374142</requestid>
   </revision>
+  <revision rev="153" vrev="1">
+    <srcmd5>181375b4a6d4912f6118cb743fc9c40e</srcmd5>
+    <version>4.18.0+git105.9ea1183</version>
+    <time>1791306844</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 4.18.0+git105.9ea1183: (bsc#1281122)
+  * aws-vpc-move-ip: fix fragile handling of response from AssumeRole
+  * ZFS: re-read a transitional pool state before failing the monitor (#2213)
+  * exportfs: skip unlock_filesystem when nfsd is not running
+  * High: Filesystem: Devices with duplicate labels are treated as errors.
+  * podman-etcd: address review feedback on departure handshake
+  * powervs-move-ip: introduce support for guaranteed routes (#2215)
+  * Mid: Filesystem: For block devices, allow monitor_10 even when specified by UID or LABEL.
+  * podman-etcd: deterministic departure lock and force-new-cluster recovery</comment>
+    <requestid>1382538</requestid>
+  </revision>
 </revisionlist>

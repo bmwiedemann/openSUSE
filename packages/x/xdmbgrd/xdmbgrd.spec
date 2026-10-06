@@ -1,7 +1,7 @@
 #
 # spec file for package xdmbgrd
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,6 +24,7 @@ License:        GPL-2.0-or-later
 Group:          System/X11/Displaymanagers
 Source:         xdmbgrd-%{version}.tar.bz2
 Source1:        xdmbgrd-rpmlintrc
+Patch1:         add-aarch64.patch
 BuildRequires:  pkgconfig
 BuildRequires:  xdm
 BuildRequires:  pkgconfig(x11)
@@ -34,7 +35,7 @@ BuildRequires:  pkgconfig(zlib)
 The SUSE Linux background for your XDM workstation.
 
 %prep
-%setup -q
+%autosetup -p1
 
 %build
 PATH=$PATH:.

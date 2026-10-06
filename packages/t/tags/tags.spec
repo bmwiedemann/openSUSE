@@ -17,13 +17,13 @@
 
 
 Name:           tags
-Version:        1.8
+Version:        2.5
 Release:        0
 Summary:        A simple text tagger
 License:        X11
 URL:            https://github.com/phastmike/tags
 Source:         https://github.com/phastmike/tags/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-BuildRequires:  meson
+BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
 BuildRequires:  pkgconfig(gee-0.8)
@@ -47,11 +47,12 @@ and hit counter.
 
 %install
 %meson_install
+%find_lang io.github.phastmike.tags
 
 %check
 %meson_test
 
-%files
+%files -f io.github.phastmike.tags.lang
 %license COPYING
 %doc README.md
 %{_bindir}/tags

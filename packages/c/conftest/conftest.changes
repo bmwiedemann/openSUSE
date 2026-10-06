@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct 01 05:00:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.71.0:
+  * New Features
+    - 636cfe3: feat: Add parser for CODEOWNER files (#1404)
+      (@apnsngr)
+  * Bug Fixes
+    - 96fc461: fix(docs): unbreak Netlify build on the Noble image
+      (#1433) (@boranx)
+    - 8345c40: fix: emit a single TAP plan across all files (#1435)
+      (@behappymia)
+  * OPA Changes
+    - b254dd7: build(deps): bump github.com/open-policy-agent/opa
+      from 1.20.2 to 1.21.0 (#1434) (@dependabot[bot])
+  * Other Changes
+    - a766df6: build(deps): bump alpine from 3.24.1 to 3.24.2
+      (#1430) (@dependabot[bot])
+    - 6febea0: build(deps): bump github.com/magiconair/properties
+      (#1431) (@dependabot[bot])
+    - e0275ea: chore: run goreleaser in parallel with docker builds
+      (#1427) (@jalseth)
+    - f1484a6: refactor(outputter): Standardize how totals are
+      accumulated (#1429) (@jalseth)
+
+-------------------------------------------------------------------
 Sun Sep 20 06:00:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.70.1:

@@ -1,4 +1,36 @@
 -------------------------------------------------------------------
+Mon Oct  5 07:41:04 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 20260625 (tagless snapshot of 12 commits):
+  * atsc: us-ATSC-center-frequencies-8VSB now uses canonical
+    channel centre frequencies (lower edge + 3 MHz) instead of the
+    +28615 kHz offset the USA/Canada used until July 13th 2021, and
+    drops channels 103-134, which are no longer in use for ATSC
+    there; the pre-July-2020 table is kept as
+    us-ATSC-center-frequencies-8VSB-072020
+  * atsc: us-CA-SF-Bay-Area, us-CA-Mountain-View and
+    us-CA-San-Jose rebuilt from current FCC DTV map data (May
+    2026), dropping the spectrum decommissioned in 2020
+  * isdb-t: 1670 new Brazilian tables added (2540 -> 4210) and
+    2438 updated, 100 of them renamed to a normalised scheme
+    (capitalised names, no parentheses)
+  * dvb-s: tables refreshed from Lyngsat and KingOfSat; 79 new
+    satellite tables added, incl. Eutelsat Hot Bird 13F/13G at
+    13.0E, while 49 were dropped, most of them renamed or
+    superseded ones
+  * README, CONTRIBUTE.md: documentation only, not shipped
+- Generate the legacy v3 tables file by file: dvb-format-convert
+  cannot express the DVB-S2 second generation inner code rates
+  (1/4, 25/36, 77/90, ...) or the APSK/64 modulation these tables
+  now carry and aborts the build.  The 47 affected tables are left
+  out of /usr/share/dvb rather than shipped with blank FEC and
+  modulation fields; /usr/share/dvbv5 is a plain copy and stays
+  complete.
+- boo#1109541 (scan tables differ between architectures) is not
+  affected by this update
+- Spec cleanup: refresh the copyright header, drop the Group: tags
+
+-------------------------------------------------------------------
 Fri May 17 08:22:19 UTC 2024 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 20240503:

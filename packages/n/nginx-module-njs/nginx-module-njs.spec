@@ -1,7 +1,7 @@
 #
 # spec file for package nginx-module-njs
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -25,6 +25,7 @@ Group:          Productivity/Networking/Web/Proxy
 URL:            https://nginx.org/en/docs/njs/
 Source:         nginx-module-njs-%{version}.tar.gz
 BuildRequires:  nginx-source
+BuildRequires:  quickjs-devel
 %{ngx_conditionals}
 %{ngx_requires}
 

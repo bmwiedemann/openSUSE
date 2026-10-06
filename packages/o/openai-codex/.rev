@@ -485,4 +485,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
 </comment>
     <requestid>1382150</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>66e0782c2e90904970e081268f743a55</srcmd5>
+    <version>0.160.1</version>
+    <time>1791307224</time>
+    <user>anag_factory</user>
+    <comment>Update openai-codex to 0.160.1 (backport of upstream #51121): preserve SYSTEMROOT, TEMP and TMP when launching remote stdio MCP servers, so a Unix host keeps the Windows executor environment. No Cargo.lock change; vendored tree and License tag untouched.</comment>
+    <requestid>1382761</requestid>
+  </revision>
 </revisionlist>

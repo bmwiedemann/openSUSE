@@ -824,4 +824,24 @@
 - Migrate package to be _service managed.</comment>
     <requestid>1379619</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>541b4756a4b9af3d75fe3a2010cfbeee</srcmd5>
+    <version>51.1.0</version>
+    <time>1791306899</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 51.1.0:
+  + [Card] Tracking: Added warning message when automatic
+    synchronization of reading progress is not possible
+  + [Reader] OCR Translator: Fixed calculation of the selection
+    area's coordinates when white borders are cropped
+  + [Servers] Cartel De Manhwas (ES): Disabled
+  + [Servers] ComicHubFree (EN): Fixed search when no results
+  + [Servers] JManga (JA): Update
+  + [Servers] MangaBall (multi): Update
+  + [Servers] MangaKawaii (FR): Update
+  + Updated translations.
+
+      translations</comment>
+    <requestid>1382589</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package python-junos-eznc
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017-2020, Martin Hauke <mardnh@gmx.de>
 #
 # All modifications and additions to the file contributed by third parties
@@ -19,24 +19,21 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-junos-eznc
-Version:        2.7.2
+Version:        2.8.2
 Release:        0
 Summary:        Junos 'EZ' automation for non-programmers
 License:        Apache-2.0
 URL:            https://www.github.com/Juniper/py-junos-eznc
 Source:         https://github.com/Juniper/py-junos-eznc/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# replace deprecated yamlordereddictloader by yamlloader
-# https://github.com/Juniper/py-junos-eznc/pull/1078
-Patch0:         python-junos-eznc-remove-yamlordereddictloader.patch
 # PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1307 Don't require six
-Patch1:         no-six.patch
-# PATCH-FIX-UPSTREAM gh#Juniper/py-junos-eznc#1324 telnetlib not in py313 anymore
-Patch2:         get-telnetlib-from-netmiko.patch
+Patch0:         no-six.patch
+Patch1:         no-more-pkg-resources.patch
+Patch2:         ntc-templates-9.3-compat.patch
 BuildRequires:  %{python_module Jinja2 >= 2.7.1}
 BuildRequires:  %{python_module PyYAML >= 5.1}
+BuildRequires:  %{python_module base >= 3.8}
 BuildRequires:  %{python_module lxml >= 3.2.4}
-BuildRequires:  %{python_module ncclient >= 0.6.15}
-BuildRequires:  %{python_module netmiko >= 4.4.0}
+BuildRequires:  %{python_module ncclient >= 0.7.0}
 BuildRequires:  %{python_module nose2}
 BuildRequires:  %{python_module ntc-templates}
 BuildRequires:  %{python_module paramiko >= 1.15.2}
@@ -53,13 +50,13 @@ BuildRequires:  python-rpm-macros
 Requires:       python-Jinja2 >= 2.7.1
 Requires:       python-PyYAML >= 5.1
 Requires:       python-lxml >= 3.2.4
-Requires:       python-ncclient >= 0.6.15
-Requires:       python-netmiko >= 4.4.0
+Requires:       python-ncclient >= 0.7.0
 Requires:       python-paramiko >= 1.15.2
 Requires:       python-pyparsing
 Requires:       python-pyserial
 Requires:       python-scp >= 0.7.0
 Requires:       python-transitions
+Requires:       python-yamlloader
 BuildArch:      noarch
 %python_subpackages
 
@@ -92,9 +89,7 @@ These capabilities include, but are not limited to:
 %files %{python_files}
 %license COPYRIGHT LICENSE
 %doc README.txt README.md
-%dir %{python_sitelib}/jnpr
-%{python_sitelib}/jnpr/junos
+%{python_sitelib}/jnpr
 %{python_sitelib}/junos_eznc-%{version}.dist-info
-%{python_sitelib}/junos_eznc-%{version}*-nspkg.pth
 
 %changelog

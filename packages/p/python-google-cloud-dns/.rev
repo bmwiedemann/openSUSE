@@ -48,4 +48,15 @@
   * Drop support for Python 3.9 (#16954) (forwarded request 1370182 from glaubitz)</comment>
     <requestid>1370219</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>1310af37fca7a272a64c43a9964c9781</srcmd5>
+    <version>0.37.2</version>
+    <time>1791306886</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.37.2
+  * declare Python3.15 support
+- from version 0.37.1
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1382703 from glaubitz)</comment>
+    <requestid>1382759</requestid>
+  </revision>
 </revisionlist>

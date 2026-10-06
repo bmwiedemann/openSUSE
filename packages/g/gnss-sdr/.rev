@@ -53,4 +53,20 @@ rpmlint badness 0 for gnss-sdr and 1 for the volk flavour (invalid-spec-name,
 which every multibuild source package emits).</comment>
     <requestid>1374738</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>b2fc5f44df1f9f27a67e4633d393c548</srcmd5>
+    <version>0.0.22</version>
+    <time>1791306865</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.0.22 (upstream release 2026-10-04)
+- New receiver chains: BeiDou B1C/B2a RNSS, QZSS L1 C/B, SBAS L1
+- Opt-in RTK from RTCM 3 corrections via an NTRIP caster, with new integer ambiguity resolution
+- RINEX 4.02 output via PVT.rinex_version=4; the default stays 3.02
+- The new CUDA engine is not in this build: ENABLE_CUDA defaults OFF, no CUDA/cuFFT symbols
+- VOLK subpackage renamed libvolk_gnsssdr0_0_21 -&gt; libvolk_gnsssdr0_0_22 (SONAME .so.0.0.22)
+- No Obsoletes: without a matching Provides, which would cost badness
+- RTKLIB and the NTRIP client are in-tree: no new BuildRequires, TLS is OpenSSL
+- The armv7l and 16.0 unresolvable results predate this change; no BuildRequires moved</comment>
+    <requestid>1382537</requestid>
+  </revision>
 </revisionlist>

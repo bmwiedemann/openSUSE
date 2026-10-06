@@ -64,4 +64,41 @@
 </comment>
     <requestid>1331677</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>02cef3eddc1de09242c6d0720b48972a</srcmd5>
+    <version>2.5.0</version>
+    <time>1791307212</time>
+    <user>anag_factory</user>
+    <comment>- fix up descriptions
+
+- Update to 2.5.0:
+  * Addition: added --default-timeout CLI switch to set a fallback
+    timeout for tests that have no timeout set. Unlike --timeout,
+    which caps the timeout of every test, explicitly timed tests
+    are left untouched (Matéo LE FLEM).
+  * Addition: added --show-skipped CLI switch to show the number of
+    skipped tests in the synthesis line.
+  * Addition: Georgian translation (Ekaterine Papava)
+  * Breaking: ABI incompatibility with prior versions of criterion.
+    You must recompile your tests.
+  * Change: cr_get_redirected_stdout(), cr_get_redirected_stderr()
+    and cr_get_redirected_stdin() (and their C++ counterparts) now
+    return a stream owned by the caller, who is responsible for
+    closing it. Closing that stream no longer interferes with the
+    standard stream assertions.
+  * Change: the standard stream assertions (cr_assert_stdout_eq_str
+    and friends) now flush the stream before comparing its
+    contents, so tests no longer need to fflush() or disable
+    buffering beforehand. Each assertion consumes the output
+    written since the previous one.
+  * Fix: fixed crash when a standard stream assertion was used more
+    than once in a test, or when the test wrote to the stream after
+    asserting on it.
+  * Fix: standard stream assertions now fail with an explicit
+    message instead of hanging when the stream was never
+    redirected.
+  * Fix: fixed any() only passing when its last operand was true
+    (Ray Chern).</comment>
+    <requestid>1382766</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:29:55 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
+
+- VERSION 06.03.06 - 2026-10-05
+
+- CHANGE: TkRemind: Revert the default behavior introduced in 06.03.05
+  that marked most popup windows as transient.  Instead, add an option
+  to turn this on; people using tiling window managers probably want
+  it turned on while everyone else probably wants to leave it turned
+  off.
+
+- BUG FIXES: Remind: Fix many little bugs found by a Coverity scan.
+
+- VERSION 06.03.05 - 2026-09-28
+
+- IMPROVEMENT: TkRemind: Mark many popup windows as transient.
+  Without this change, TkRemind interacted quite badly with tiling
+  window managers.
+
+- CODE CLEANUP: Remove many unnecessary #define's from config.h.
+
+- PORTABILITY IMPROVEMENT: Silence compilation warnings on Alpine
+  Linux.  Make build system work with the Solaris/IllumOS version of
+  "make"
+
+- IMPROVEMENT: include/: Make all *.rem files supplied under include/
+  only ever make relative DO calls instead of SYSINCLUDE so the entire
+  tree can be relocated if desired. 
+
+-------------------------------------------------------------------
 Mon Sep 21 07:40:58 UTC 2026 - Detlef Steuer <detlef.steuer@gmx.de>
 
 - VERSION 06.03.04 - 2026-09-19

@@ -17,7 +17,7 @@
 
 
 Name:           scapy
-Version:        2.7.0
+Version:        2.8.0
 Release:        0
 Summary:        Interactive Packet Manipulation Tool
 License:        GPL-2.0-only

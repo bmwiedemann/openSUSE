@@ -18,7 +18,7 @@
 
 %define cpan_name Net-Whois-Raw
 Name:           perl-Net-Whois-Raw
-Version:        2.99043
+Version:        2.99044
 Release:        0
 License:        Artistic-1.0 OR GPL-1.0-or-later
 Summary:        Get Whois information of domains and IP addresses
@@ -33,7 +33,7 @@ BuildRequires:  perl(HTTP::Headers)
 BuildRequires:  perl(HTTP::Request)
 BuildRequires:  perl(IO::Socket::IP)
 BuildRequires:  perl(LWP::UserAgent)
-BuildRequires:  perl(Net::IDN::Punycode)
+BuildRequires:  perl(Net::IDN::Encode)
 BuildRequires:  perl(Regexp::IPv6)
 BuildRequires:  perl(Test::RequiresInternet)
 BuildRequires:  perl(URI::URL)
@@ -41,7 +41,7 @@ Requires:       perl(HTTP::Headers)
 Requires:       perl(HTTP::Request)
 Requires:       perl(IO::Socket::IP)
 Requires:       perl(LWP::UserAgent)
-Requires:       perl(Net::IDN::Punycode)
+Requires:       perl(Net::IDN::Encode)
 Requires:       perl(Regexp::IPv6)
 Requires:       perl(URI::URL)
 %{perl_requires}

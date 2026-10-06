@@ -107,4 +107,21 @@
 - No longer skip build on Python 3.13.</comment>
     <requestid>1314227</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>0d0d2da2e9d277f9afea4de59a652c8d</srcmd5>
+    <version>3.2.0</version>
+    <time>1791307040</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.2.0:
+  * Add support for Python 3.14.
+  * Drop support for Python 3.9.
+  * Remove 'pkg_resources' usage from runtime resolution paths.
+  * Switch 'repoze' / 'repoze.who' / 'repoze.who.plugins' to native
+  * namespace packages.
+  * Migrate packaging metadata to 'pyproject.toml'.
+  * Adopt 'src/' + 'tests/unit' layout.
+  * Require 'module:object' plugin references in config
+  * Update unit tests to use 'pytest' patterns</comment>
+    <requestid>1382654</requestid>
+  </revision>
 </revisionlist>

@@ -19,7 +19,7 @@
 %{?sle15_python_module_pythons}
 %global padded_version 2024.04.15
 Name:           python-nox
-Version:        2026.4.10
+Version:        2026.8.17
 Release:        0
 Summary:        Flexible test automation
 License:        Apache-2.0

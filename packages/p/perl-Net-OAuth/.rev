@@ -117,4 +117,40 @@
            bsc#1275447</comment>
     <requestid>1372004</requestid>
   </revision>
+  <revision rev="13" vrev="2">
+    <srcmd5>44226c8403de5ba2cb4a2ce346978250</srcmd5>
+    <version>0.330.0</version>
+    <time>1791306901</time>
+    <user>anag_factory</user>
+    <comment>Retroactively add changelogs with CVEs
+
+           See https://github.com/vurtdev/Net-OAuth/security/advisories/GHSA-c8rm-g5cm-4pf5 (CVE-2026-72889) bsc#1275759
+  0.30   Fri, 03 Jan 2025 09:46 GMT
+       [Bug Fixes]
+       - Fixed syntax error in Net::OAuth::Client (oops).
+       - Added missing VERSION to Net::OAuth::Client.
+  0.29   Fri, 03 Jan 2025 09:15 GMT
+       [Security]
+       - Net::OAuth::Client uses a better source of randomness for generating the nonce CVE-2025-22376 bsc#1235095
+       [Bug Fixes]
+       - Removed unnecessary prerequisite RT#69810 GH#4 GH#6
+       - Fix broken dependency for URI::Escape GH#4 (thanks oiami)
+       - Fix handling of uri_escape_utf RT#73705 (thanks Tomaž Šolc)
+       [Documentation]
+       - Reorganised Changes to almost follow CPAN::Changes::Spec
+       - Updated author and maintainer information
+       - Changed to consistent copyright information
+       - Fixed typo RT#125292 RT#90007 GH#6 (thanks Gregor Herrmann)
+       - Added a Security Policy (SECURITY.md) to the distribution
+       [Tests]
+       - Fixed randomly failing t/02-rsa.t test RT#125291 RT#125482 (thanks Gregor Herrmann)
+       [Other]
+       - Maintenance taken over by Robert Rothenberg &lt;rrwo@cpan.org&gt;
+       - Added .mailmap to the repo
+       - Distribution metadata now has the git repository (thanks Sergey Romanov) GH#6
+       - Set up config_requires in Build.PL
+       - Updated Build.PL configuration
+       - Updated MANIFEST.SKIP rules</comment>
+    <requestid>1382579</requestid>
+  </revision>
 </revisionlist>

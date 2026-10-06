@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 09:02:19 UTC 2026 - Marius Kittler <marius.kittler@suse.com>
+
+- Update to 2.1.6
+  * Fixes
+    fix(model): introducers should not be able to add themselves to folders by @calmh in #10880
+    fix(gui): add accessible labels to buttons in Edit Device modal (fixes #10873) by @tomasz1986 in #10874
+    fix(model): properly error out when a temp file can't be created by @calmh in #10883
+    fix: disable keepalive on most outgoing HTTP connections by @calmh in #10891
+    fix(monitor): continue log writes when stdout is unavailable on detached Windows consoles (fixes #10882) by @Shablone in #10889
+    fix(gui): improve header and button color contrast (fixes #10488) by @giri256 in #10815
+    fix: use global short lived HTTP client with proper HTTP/2 support by @calmh in #10901
+    fix: remove unnecessary delay in index transmission by @calmh in #10908
+    fix(watchaggregator): properly convert floating-point time duration (fixes #10899) by @calmh in #10900
+
+-------------------------------------------------------------------
 Sat Sep 12 09:03:47 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 2.1.5 (skips 2.1.4, not released):

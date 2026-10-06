@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:39:52 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 1.10.10:
+  * Added a shared Interactsh poller with DNS and HTTP out-of-band
+    support
+  * Refuse to run with the experimental Python JIT enabled, as a
+    CPython defect (python/cpython#156319) can corrupt execution
+  * Fixed --preprocess and --postprocess scripts failing to load on
+    Python 3.11+ (inspect.getargspec was removed)
+  * Worked around a Python 3.13/3.14 re module regression raising
+    TypeError (upstream #6128, #6137)
+  * Fixed crash on a JWT whose signature is not valid base64url
+  * Fixed very slow XPath and ERB heuristics on large responses
+    (upstream #6105)
+  * Fixed --report-json for multi-target runs
+  * Fixed TypeError in crypt() based password hash cracking
+  * Fixed TLS SNI hostname taken from a custom Host header that
+    carries a port or an IPv6 literal
+  * Several other minor bug fixes
+- Run the upstream unit, esperanto, smoke, payload-lint and API
+  tests in the build, but not --vuln-test (~7 minutes) and not the
+  flaky test_requests_are_bounded_and_recent_kept; add python3,
+  python3-lxml and python3-Jinja2 as build requirements
+
+-------------------------------------------------------------------
 Fri Sep  4 07:15:00 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 1.10.9:

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 11:51:12 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- update to 3.0.26:
+  * Support preconfigure settings for sync-root name (#508)
+  * Update i18n (#509)
+  * Delete end slash when comparing account's url (#506)
+- includes changes from 3.0.25:
+  * version bump only
+- refresh fix-cmake-exec-name.patch and fix-cmake-link-signature.patch
+  paths for the new source directory
+
+-------------------------------------------------------------------
 Tue Aug  4 09:08:03 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - add fix-cmake-link-signature.patch: do not mix the plain and

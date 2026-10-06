@@ -113,4 +113,23 @@
     <comment>Refresh git snapshot to 1.0+git20260601 (was git20250210, ~16 months of upstream fixes)</comment>
     <requestid>1360632</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>7dc4a75c40064a53cf47dc7a01d2001c</srcmd5>
+    <version>1.0+git20260903</version>
+    <time>1791306848</time>
+    <user>anag_factory</user>
+    <comment>- Snapshot refresh to 1.0+git20260903 (0b9b49cf), 7 commits, no upstream tags.
+- New optional MOREDATA flag for backtrace_create_state, per BACKTRACE_SUPPORTS_MOREDATA.
+- The int arg was THREADED, now a flags word; bit 1 keeps it. 0 and 1 unaffected.
+- No ABI change: 23 exported symbols before and after, SONAME libbacktrace.so.0.
+- %check is byte-identical to base and masks two upstream failures.
+- mtest_minidebug is pre-existing and also fails in the released base.
+- strippedtest_stripped is new, upstream, not packaging: plain flags, -no-pie.
+- The determinant is shared vs static linking; shared is the autotools default.
+- No shipped code path changed, so no .changes line is owed.
+- %check comment corrected: btest_dwz passes in both builds, the claim was false.
+- BSD-3-Clause unchanged; all five consumers take libbacktrace-devel unversioned.
+- No CVE or GHSA in range; boo#974800, boo#1188896, boo#1223169 NOT AFFECTED, none VUL.</comment>
+    <requestid>1382569</requestid>
+  </revision>
 </revisionlist>

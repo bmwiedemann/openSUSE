@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:32:23 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Updated the project download URL. Pypi changed its URL scheme to include SHAs, so version-only links don't work anymore.
+
+-------------------------------------------------------------------
+Sun Oct  4 14:14:59 UTC 2026 - Ákos Szőts <akos@szots.dev>
+
+- Enable pytest
+- Version update to 2.1.0
+  * Switch to Poetry; drop Python 2 support
+  * Make PAM handle checks more robust
+  * Update documentation with a better example
+  * CI tox suite covers Python 3.11–3.14
+  * pam.authenticate() no longer reuses a process-global PamAuthenticator (thread-safe concurrent auth); libpam ctypes bindings are loaded once and shared (#40)
+  * Document the threading model (do not share one PamAuthenticator across threads)
+  * Document when to use resetcreds=True vs False (#52)
+
+-------------------------------------------------------------------
 Tue Dec 12 12:02:21 UTC 2023 - Joan Torres <joan.torres@suse.com>
 
 - Version update to 2.0.2:

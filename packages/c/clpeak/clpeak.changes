@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Mon Oct  5 06:45:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 3.0.1; the corrected rows no longer compare with 3.0.0.
+  * The transformer-block and NVFP4 rows now draw from an
+    independent-weight generator; 3.0.0's was linear over GF(2),
+    so every matrix it filled had a rank-1 sign pattern.
+  * GEMM times sixteen chained layers per dispatch, so the pass
+    that keeps the compiler from folding the graph no longer
+    dominates; LiteRT adopts ONNX Runtime's chain. Core ML is Apple
+    only, not built here.
+  * A NaN or infinite timing is reported as an error rather than a
+    rate, as 3.0.0's TensorRT int8_weight row was.
+  * Dense 3x3 convolutions are timed at stride 2 (rows *_conv3x3s2,
+    previously *_conv3x3) and Vulkan compute peaks pin the pipeline
+    to the device-reported subgroup width, with the fp16 chain
+    spelled as a*b + c rather than fma().
+  * Every run records an info line per backend, device and test in
+    the exported format-v3 document, and vendor console spam is
+    muted during device enumeration.
+  * The CPU SMT scaling test gains a latency-bound one-chain pair.
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list.
+- Spec cleanup: the three Legal-Review-Notice blocks are merged
+  into one itemised block above License:. No shipped file changes.
+
+-------------------------------------------------------------------
 Sun Sep 27 08:49:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.0.0, a breaking release for scripts and saved runs:

@@ -1,7 +1,7 @@
 #
 # spec file for package rebootmgr
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,14 @@
 
 
 Name:           rebootmgr
-Version:        3.3+git20250722.adf0149
+Version:        4.0+git20261005.1e5481c
 Release:        0
 Summary:        Automatic controlled reboot during a maintenance window
 License:        GPL-2.0-only AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/SUSE/rebootmgr
 Source:         %{name}-%{version}.tar.xz
-BuildRequires:  docbook-xsl-stylesheets
+BuildRequires:  docbook5-xsl-stylesheets
 BuildRequires:  meson
 BuildRequires:  pkgconfig
 BuildRequires:  timezone
@@ -76,6 +76,8 @@ fi
 %{_bindir}/rebootmgrctl
 %{_sbindir}/rebootmgrctl
 %{_libexecdir}/rebootmgrd
+%{_tmpfilesdir}/70-rebootmgr-varlink.conf
+%{_tmpfilesdir}/rebootmgr-metrics.conf
 %{_datadir}/bash-completion/completions/rebootmgrctl
 %{_mandir}/man1/rebootmgrctl.1%{?ext_man}
 %{_mandir}/man5/rebootmgr.conf.5%{?ext_man}

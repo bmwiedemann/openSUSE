@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:10:52 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.3.3
+  * Remove RelativeDistinguishedName support for CRL distribution
+    points
+  * Ensure verify callbacks always returning 1 can see a hostname
+    mismatch
+  * Correct botched size check in dtls1_preprocess_fragment()
+  * Limit size of buffered DTLS handshake messages
+  * Avoid potential overread on interrupted retransmission in DTLS
+  * Fix OCSP responder authorization bypass in libtls and
+    ocspcheck(8)
+
+-------------------------------------------------------------------
 Sat Jun  6 08:03:21 UTC 2026 - Anonymous Checkouts <anoncvs@mailinator.com>
 
 - Update to release 4.3.2

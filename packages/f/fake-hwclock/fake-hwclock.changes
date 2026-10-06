@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:11:46 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.15:
+  * update embedding epoch for a new release
+  * stop suggesting ntp
+  * manpage fixes
+  * fix inverted logic for force parameter
+
+-------------------------------------------------------------------
 Sat Jul 26 07:09:19 UTC 2025 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.14

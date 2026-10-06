@@ -1,7 +1,7 @@
 #
 # spec file for package cmh
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -27,6 +27,7 @@ URL:            http://www.multiprecision.org/cmh/
 Source:         http://www.multiprecision.org/downloads/%name-%version.tar.gz
 #Source2:        http://www.multiprecision.org/downloads/name-version.tar.gz.asc http 500
 Source3:        %name.keyring
+Patch1:         0001-Resolve-a-testsuite-failure.patch
 BuildRequires:  automake
 BuildRequires:  fplll-devel >= 4
 BuildRequires:  gcc-c++
@@ -88,8 +89,7 @@ rm -f "%buildroot/%_libdir"/*.la
 %check
 %make_build check
 
-%post   -n %lname -p /sbin/ldconfig
-%postun -n %lname -p /sbin/ldconfig
+%ldconfig_scriptlets -n %lname
 
 %files
 %_bindir/cm*

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 04:29:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata in setup.py
+
+-------------------------------------------------------------------
 Mon Mar  4 04:17:30 UTC 2024 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Switch to pyproject and patch macros.
