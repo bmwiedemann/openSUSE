@@ -1,7 +1,7 @@
 #
 # spec file for package python-google-crc32c
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,12 +19,12 @@
 %{?sle15_python_module_pythons}
 %define modname google-crc32c
 Name:           python-google-crc32c
-Version:        1.8.0
+Version:        1.9.0
 Release:        0
 Summary:        A python wrapper of the C library 'Google CRC32C'
 License:        Apache-2.0
-URL:            https://github.com/googleapis/python-crc32c
-Source:         https://github.com/googleapis/python-crc32c/archive/refs/tags/v%{version}.tar.gz#/google-crc32c-%{version}.tar.gz
+URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/google-crc32c
+Source:         https://files.pythonhosted.org/packages/source/g/google_crc32c/google_crc32c-%{version}.tar.gz
 BuildRequires:  %{python_module cffi >= 1.0.0}
 BuildRequires:  %{python_module devel >= 3.7}
 BuildRequires:  %{python_module pip}
@@ -41,7 +41,7 @@ BuildRequires:  %{python_module pytest}
 A python wrapper of the C library 'Google CRC32C'.
 
 %prep
-%autosetup -p1 -n python-crc32c-%{version}
+%autosetup -p1 -n google_crc32c-%{version}
 
 %build
 export CFLAGS="%{optflags}"

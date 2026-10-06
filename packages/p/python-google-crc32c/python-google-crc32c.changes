@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Tue Oct  6 13:14:46 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.9.0
+  * **crc32c:** support Python 3.15
+- from version 1.9.0-rc0
+  * add unit and cover nox sessions and enforce 100% test coverage
+    for (9d2e62f, refs (#17052)
+  * **crc32c:** add Python 3.15 classifier
+  * **crc32c:** add Python 3.15 wheel build support (#18416)
+  * **crc32c:** add unit and cover nox sessions (#18424)
+  * bump pip from 26.1.1 to 26.2 in /packages/google-crc32c/scripts (#18259)
+  * **crc32c:** escape the version dot and anchor the pyenv check
+    regex (#17555)
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+  * **crc32c:** document Python 3.15 wheel support (#18442)
+- Adjust upstream source name in spec file
+- Switch upstream tarball to PyPi in Source field
+- Update upstream URL in URL field
+
+-------------------------------------------------------------------
 Mon Jan  5 10:57:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.8.0
