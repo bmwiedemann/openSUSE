@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  5 13:36:35 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Fix link in systemd unit according to [#7222]
+
+-------------------------------------------------------------------
 Sun Sep 13 06:22:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.18.1:
