@@ -1,7 +1,7 @@
 #
 # spec file for package httrack
 #
-# Copyright (c) 2022 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2011 Malcolm Lewis malcolmlewis@opensuse.org
 #
 # All modifications and additions to the file contributed by third parties
@@ -17,22 +17,20 @@
 #
 
 
-%define so_ver 2
+%define so_ver 3
 Name:           httrack
-Version:        3.49.2
+Version:        3.50.0
 Release:        0
 Summary:        Offline Browser Utility
 License:        GPL-3.0-or-later
-Group:          Productivity/Networking/Web/Utilities
 URL:            https://www.httrack.com/
-Source0:        https://mirror.httrack.com/%{name}-%{version}.tar.gz
-# PATCH-FIX-OPENSUSE httrack-fix-strict-aliasing-punning.patch malcolmlewis@opensuse.org -- Add -fno-strict-aliasing to DEFAULT_CFLAGS
-Patch0:         httrack-fix-strict-aliasing-punning.patch
+Source0:        https://github.com/xroche/%{name}/releases/download/%{version}/%{name}-%{version}.tar.gz#/%{name}-%{version}.tar.gz
+## Added for invalid-desktopfile, which actually validates??
+Source99:       %{name}-rpmlintrc
 BuildRequires:  fdupes
-BuildRequires:  libopenssl-devel
-BuildRequires:  update-desktop-files
-BuildRequires:  zlib-devel
-BuildRoot:      %{_tmppath}/%{name}-%{version}-build
+BuildRequires:  hicolor-icon-theme
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(zlib)
 
 %description
 HTTrack is a free (GPL, libre/free software) and easy-to-use offline
@@ -50,12 +48,18 @@ HTTrack is fully configurable, and has an integrated help system.
 
 %package devel
 Summary:        Development files for httrack
-Group:          Development/Libraries/Other
 Requires:       libhttrack%{so_ver} = %{version}
-Requires:       libopenssl-devel
+Requires:       pkgconfig(openssl)
 
 %description devel
 This package contains the header and library files for httrack.
+
+%package doc
+Summary:        HTTrack documentation
+BuildArch:      noarch
+
+%description doc
+HTML documentation for httrack.
 
 %package -n libhttrack%{so_ver}
 Summary:        Shared library for httrack
@@ -65,39 +69,20 @@ Group:          System/Libraries
 This package contains the httrack shared libraries.
 
 %prep
-%autosetup -p0
+%autosetup
 
 %build
 %configure \
-  --disable-static \
-  --docdir=%{_docdir}/%{name} \
-  --htmldir=%{_datadir}/%{name}/html
-make %{?_smp_mflags}
+   --disable-static \
+   --disable-example-libs \
+   --docdir=%{_docdir}/%{name}
+%make_build
 
 %install
-make %{?_smp_mflags} DESTDIR=%{buildroot} install
+%make_install
 
-%suse_update_desktop_file WebHTTrack-Websites Network WebBrowser
-%suse_update_desktop_file WebHTTrack Network WebBrowser
-
-# Remove generic header and libtool files
-find %{buildroot} -name 'config.h' -exec rm {} \;
-sed -i '/#include "config.h"/d' %{buildroot}%{_includedir}/%{name}/htsglobal.h
+# Remove libtool files
 find %{buildroot} -type f -name "*.la" -delete -print
-
-# Clean up icons
-rm -f %{buildroot}%{_datadir}/pixmaps/httrack16x16.xpm
-rm -f %{buildroot}%{_datadir}/pixmaps/httrack32x32.xpm
-mv %{buildroot}%{_datadir}/pixmaps/httrack48x48.xpm %{buildroot}%{_datadir}/pixmaps/httrack.xpm
-
-# For moving to docdir
-rm -rf ./libtest ./templates
-mv %{buildroot}%{_datadir}/%{name}/libtest .
-mv %{buildroot}%{_datadir}/%{name}/templates .
-# Install additional docs (do it manually to fix also rpmlint warning "files-duplicate")
-cp -af AUTHORS COPYING README gpl-fr.txt greetings.txt history.txt httrack-doc.html license.txt templates/ %{buildroot}%{_docdir}/%{name}/
-# No need to be in there
-rm -f %{buildroot}%{_datadir}/%{name}/html/{greetings.txt,history.txt,httrack-doc.html,license.txt}
 
 %fdupes -s %{buildroot}
 
@@ -105,34 +90,30 @@ rm -f %{buildroot}%{_datadir}/%{name}/html/{greetings.txt,history.txt,httrack-do
 %postun -n libhttrack%{so_ver} -p /sbin/ldconfig
 
 %files
-%defattr(-,root,root,-)
-%doc %{_docdir}/%{name}/
+%license license.txt
 %{_bindir}/htsserver
 %{_bindir}/httrack
 %{_bindir}/proxytrack
 %{_bindir}/webhttrack
 %{_datadir}/applications/WebHTTrack-Websites.desktop
 %{_datadir}/applications/WebHTTrack.desktop
-%dir %{_datadir}/icons/hicolor/
-%dir %{_datadir}/icons/hicolor/*/
-%dir %{_datadir}/icons/hicolor/*/apps/
-%{_datadir}/icons/hicolor/*/apps/*.png
+%{_datadir}/icons/hicolor/*/apps/*.{png,svg}
 %{_datadir}/pixmaps/*.xpm
-%{_datadir}/%{name}/
+%{_datadir}/%{name}
+%exclude %{_datadir}/%{name}/libtest/*.{c,h}
+%{_datadir}/metainfo/com.httrack.WebHTTrack.metainfo.xml
 %{_mandir}/man1/*%{ext_man}
 
 %files devel
-%defattr(-,root,root,-)
-%doc libtest/
-%{_includedir}/%{name}/
-%dir %{_libdir}/%{name}/
-%{_libdir}/%{name}/*.so
+%{_datadir}/%{name}/libtest/*.{c,h}
+%{_includedir}/%{name}
 %{_libdir}/*.so
+%{_libdir}/pkgconfig/libhttrack.pc
+
+%files doc
+%doc %{_docdir}/%{name}
 
 %files -n libhttrack%{so_ver}
-%defattr(-,root,root,-)
-%dir %{_libdir}/%{name}/
-%{_libdir}/%{name}/*.so.*
 %{_libdir}/*.so.%{so_ver}*
 
 %changelog

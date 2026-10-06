@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Sep 02 02:56:57 UTC 2026 - malcolmlewis@opensuse.org
+
+- Update to version 3.50.0:
+  + New: --disable-example-libs skips the ten example plugins four
+    distributions used to un-install by hand,
+    (gh#xroche/httrack#1470).
+  + Changed: the compiled-in /etc, /usr/bin and /usr/lib follow the
+    configure directories, so a build with its own --prefix reads
+    its own httrack.conf, (gh#xroche/httrack#1469).
+  + Changed: the installed headers no longer include autoconf's
+    config.h, which collided with a consumer's own. The switches
+    they read come from a generated htsfeatures.h,
+    (gh#xroche/httrack#1473).
+  + Changed: --htmldir defaults to $(docdir)/html, so the manual's
+    links to the release notes, the license and the greetings
+    resolve where it is installed, (gh#xroche/httrack#1477).
+  + Changed: shipped text files carry LF, so rpm packagers no
+    longer dos2unix them, (gh#xroche/httrack#1468).
+  + Fixed: --with-zlib=DIR looked for the library in DIR/lib and
+    nowhere else, (gh#xroche/httrack#1472).
+  + Fixed: three configure option checks truncated their error
+    message at a comma, (gh#xroche/httrack#1475).
+  + Changed: multiple internal documentation, test and build
+    improvements, (gh#xroche/httrack#1462, gh#xroche/httrack#1464,
+    gh#xroche/httrack#1465, gh#xroche/httrack#1471,
+    gh#xroche/httrack#1474, gh#xroche/httrack#1476).
+- Drop httrack-fix-strict-aliasing-punning.patch as this has been
+  upstreamed.
+- Major spec file cleanup for changes.
+- Bump library so version.
+- Add doc sub package.
+
+-------------------------------------------------------------------
 Thu Feb 22 07:59:56 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Use %autosetup macro. Allows to eliminate the usage of deprecated
