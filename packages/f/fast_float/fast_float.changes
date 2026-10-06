@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct  4 18:19:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.3.1
+  * Keep chars_format::javascript out of the common hot path
+  * Restore the simple loop in fastfloat_strncasecmp
+  * Fix std::float16_t rounding of subnormal ties and fast-path
+    overflow
+  * Average branch misses over the repetitions in the benchmark
+  * Drop the unreachable tail of parse_mantissa
+  * Reorder parsed_number_string_t fields to avoid padding
+
+-------------------------------------------------------------------
 Tue Sep 15 21:06:13 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.3.0
