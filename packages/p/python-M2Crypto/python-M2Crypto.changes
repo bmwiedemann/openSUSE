@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Sun Oct  4 15:00:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.50.0:
+  * switch to Codefloe
+  * isolate OpenSSL providers in private contexts
+  * disable legacy ENGINE bindings with OpenSSL 3 deprecations
+  * manage BIO ownership when attaching to SSL connections
+  * repair Windows CI pipeline and improve setup.py robustness
+  * record security-related behavior changes
+  * emit DeprecationWarning when RC4 cipher is instantiated
+  * disable TLSv1.0 and TLSv1.1 by default
+  * prevent out-of-bounds read in BN conversions
+  * preserve errno from gettimeofday failures
+  * restore timed read retries
+
+-------------------------------------------------------------------
 Sat Aug 15 23:06:36 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Update to 0.49.0:
@@ -196,7 +212,7 @@ Mon Feb 17 17:42:35 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
     - doc: update installation instructions for windows.
     - fix setting x509.verify_* variables
     - fix building against openssl in non-standard location
-    - test_x509: use only x509_version_1 (0) as version for csr. 
+    - test_x509: use only x509_version_1 (0) as version for csr.
 
 -------------------------------------------------------------------
 Wed Feb 12 11:01:06 UTC 2025 - Matej Cepl <mcepl@cepl.eu>
@@ -248,7 +264,7 @@ Sat Aug 10 22:41:07 UTC 2024 - Matej Cepl <mcepl@cepl.eu>
     pyca/cryptography
   - fix Read the Docs configuration (contributed kindly by Facundo
     Tuesca)
-- Remove upstreamed 32bit_ASN1_Time.patch 
+- Remove upstreamed 32bit_ASN1_Time.patch
 - Remove python-M2Crypto.keyring, because PyPI broke GPG support
 
 -------------------------------------------------------------------

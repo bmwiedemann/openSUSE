@@ -999,4 +999,26 @@ Update to 0.36.0:
   - Add AuthorityKeyIdentifier extension support</comment>
     <requestid>1371332</requestid>
   </revision>
+  <revision rev="61" vrev="1">
+    <srcmd5>5d3c626c2553e9886df04ef1378d4591</srcmd5>
+    <version>0.50.0</version>
+    <time>1791306803</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.50.0:
+  * switch to Codefloe
+  * isolate OpenSSL providers in private contexts
+  * disable legacy ENGINE bindings with OpenSSL 3 deprecations
+  * manage BIO ownership when attaching to SSL connections
+  * repair Windows CI pipeline and improve setup.py robustness
+  * record security-related behavior changes
+  * emit DeprecationWarning when RC4 cipher is instantiated
+  * disable TLSv1.0 and TLSv1.1 by default
+  * prevent out-of-bounds read in BN conversions
+  * preserve errno from gettimeofday failures
+  * restore timed read retries
+
+    - test_x509: use only x509_version_1 (0) as version for csr.
+- Remove upstreamed 32bit_ASN1_Time.patch</comment>
+    <requestid>1382336</requestid>
+  </revision>
 </revisionlist>
