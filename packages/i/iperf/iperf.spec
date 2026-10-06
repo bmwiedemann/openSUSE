@@ -28,6 +28,7 @@ Source:         https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz
 Source1:        https://downloads.es.net/pub/iperf/iperf-%{version}.tar.gz.sha256
 # GH: https://github.com/esnet/iperf/releases/download/%%{version}/iperf-%%{version}.tar.gz
 # GH: https://github.com/esnet/iperf/releases/download/%%{version}/iperf-%%{version}.tar.gz.sha256
+Patch1:         iperf-pr2083.diff
 Requires:       lib%{name}%{soname} = %{version}-%{release}
 %if %{?sles_version} && %{?sles_version} <= 11
 BuildRequires:  libuuid-devel

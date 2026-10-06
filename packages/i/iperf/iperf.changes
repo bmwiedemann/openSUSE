@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 06 09:36:13 CEST 2026 - Arvin Schnell <aschnell@suse.com>
+
+- fixed build with older openssl versions
+  iperf-pr2083.diff: added
+
+-------------------------------------------------------------------
 Thu Oct 01 07:00:42 CEST 2026 - Arvin Schnell <aschnell@suse.com>
 
 - update to 3.22:
