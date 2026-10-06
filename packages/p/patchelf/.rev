@@ -250,4 +250,20 @@
     <comment></comment>
     <requestid>1368552</requestid>
   </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>964ddc7c399540936527769f45f4cda0</srcmd5>
+    <version>0.19.2</version>
+    <time>1791306842</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.19.2:
+  * Fix executable corruption when patching again after strip
+    removes padding between load segments, as seen when
+    bootstrapping GHC (#593, #667). Rewritten sections and program
+    headers now use the address mapping of the load segment
+    covering the ELF header.
+  * Avoid allocating an unnecessary extra page when growing
+    executable sections, while keeping split load segments from
+    overlapping after page alignment (#667).</comment>
+    <requestid>1382504</requestid>
+  </revision>
 </revisionlist>

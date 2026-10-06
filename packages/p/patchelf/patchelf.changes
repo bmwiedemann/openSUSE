@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Mon Oct  5 11:27:23 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.19.2:
+  * Fix executable corruption when patching again after strip
+    removes padding between load segments, as seen when
+    bootstrapping GHC (#593, #667). Rewritten sections and program
+    headers now use the address mapping of the load segment
+    covering the ELF header.
+  * Avoid allocating an unnecessary extra page when growing
+    executable sections, while keeping split load segments from
+    overlapping after page alignment (#667).
+
+-------------------------------------------------------------------
 Tue Jul 28 11:36:10 CEST 2026 - Arvin Schnell <aschnell@suse.com>
 
 - update to 0.19.1:
