@@ -33,7 +33,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-Mako%{psuffix}
-Version:        1.4.1
+Version:        1.4.3
 Release:        0
 Summary:        A Python templating language
 License:        MIT
