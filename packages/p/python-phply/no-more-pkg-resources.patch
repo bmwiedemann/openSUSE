@@ -1,0 +1,39 @@
+From c68c05f6b1fd5d2d479c8321633daf7e9663b1a2 Mon Sep 17 00:00:00 2001
+From: Arthur Taylor <arthur@codders.de>
+Date: Mon, 20 Feb 2023 18:02:20 +0100
+Subject: [PATCH] Fix deprecation of declare_namespace (per PEP 420)
+
+---
+ phply/__init__.py | 1 -
+ setup.py          | 5 ++---
+ 2 files changed, 2 insertions(+), 4 deletions(-)
+
+diff --git a/phply/__init__.py b/phply/__init__.py
+index de40ea7..e69de29 100644
+--- a/phply/__init__.py
++++ b/phply/__init__.py
+@@ -1 +0,0 @@
+-__import__('pkg_resources').declare_namespace(__name__)
+diff --git a/setup.py b/setup.py
+index 61a552a..9beed96 100644
+--- a/setup.py
++++ b/setup.py
+@@ -1,7 +1,7 @@
+ # coding: utf-8
+ from __future__ import unicode_literals
+ 
+-from setuptools import setup, find_packages, Command
++from setuptools import setup, Command
+ from distutils.command.build import build as distutils_build
+ 
+ distutils_build.sub_commands.insert(0, ('gen_parsetab', lambda _: True))
+@@ -22,8 +22,7 @@ def run(self):
+ 
+ setup(name="phply",
+       version="1.2.6",
+-      packages=find_packages(),
+-      namespace_packages=['phply'],
++      packages=['phply'],
+       include_package_data=True,
+       author='Ramen',
+       author_email='',

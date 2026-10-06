@@ -60,4 +60,13 @@
     <comment>- Convert to libalternatives</comment>
     <requestid>1284229</requestid>
   </revision>
+  <revision rev="8" vrev="4">
+    <srcmd5>aaaa50e6b11c4f4dba6f143d10d8a97f</srcmd5>
+    <version>1.2.6</version>
+    <time>1791306787</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py.</comment>
+    <requestid>1381983</requestid>
+  </revision>
 </revisionlist>

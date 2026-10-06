@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 02:27:21 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py.
+
+-------------------------------------------------------------------
 Mon Jun  9 14:41:21 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to libalternatives
