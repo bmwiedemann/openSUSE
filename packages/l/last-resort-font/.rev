@@ -45,4 +45,17 @@
   * That is all. (forwarded request 1342316 from dirkmueller)</comment>
     <requestid>1342485</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>e7e7a9a3818bf6597ea4a32146ff0b0c</srcmd5>
+    <version>18.000</version>
+    <time>1791307232</time>
+    <user>anag_factory</user>
+    <comment>- update to 18.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 18.0.0. The following changes were made in
+    this release:
+  * 13,007 mappings that correspond to the 13,007 new characters
+    in Unicode Version 18.0 were changed. (forwarded request 1382731 from dirkmueller)</comment>
+    <requestid>1382775</requestid>
+  </revision>
 </revisionlist>

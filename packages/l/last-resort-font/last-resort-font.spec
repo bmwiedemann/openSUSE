@@ -17,7 +17,7 @@
 
 
 Name:           last-resort-font
-Version:        17.000
+Version:        18.000
 Release:        0
 Summary:        A special-purpose font that includes a collection of glyphs to represent types of Unicode characters
 License:        OFL-1.1

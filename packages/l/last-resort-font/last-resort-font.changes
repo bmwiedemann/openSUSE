@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Tue Oct  6 09:33:18 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 18.000:
+  * This version of the *Last Resort* fonts corresponds to
+    Unicode Version 18.0.0. The following changes were made in
+    this release:
+  * 13,007 mappings that correspond to the 13,007 new characters
+    in Unicode Version 18.0 were changed.
+
+-------------------------------------------------------------------
 Tue Mar 24 21:29:20 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 17.000:
