@@ -299,4 +299,15 @@ one warning is a pre-existing hidden-file entry present in 0.36.0 too.</comment>
 - Both patches still apply</comment>
     <requestid>1382397</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>0914c33f569c09adb6ddd0d6d61eb4f1</srcmd5>
+    <version>0.39.0</version>
+    <time>1791307245</time>
+    <user>anag_factory</user>
+    <comment>Update comfyui to 0.39.0. Local aarch64 build green, rpmlint clean; x86_64 via server builds.
+- Update to upstream 0.39.0: offline flag, EXR 16-bit default, LynnReal VAE, DynamicGroup.
+- Requires python-comfy-aimdo &gt;= 0.5.5 kept: module-scope import still in comfy/storage.py.
+- Both patches still apply; Patch1 1-line offset pre-exists on the 0.38.2 tree.</comment>
+    <requestid>1382768</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:15:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.39.0:
+  * New --offline and --disable-partner-nodes flags;
+    --disable-api-nodes is deprecated
+  * Save EXR gains 16-bit float support (now the default) and
+    Save Video uses higher-quality encoding defaults
+  * MiniMax-H3 VAE gains LynnReal light-variant support, with
+    lower peak VRAM and an offload fix
+  * Pinned memory is now disabled automatically on integrated
+    GPUs
+  * New partner nodes: ElevenLabs Eleven v4/v4 Turbo; Luma Ray
+    2 nodes are deprecated
+  * Asset scans: batched prefix filters for many model folders,
+    scan CPU/paused-time reporting, no database lock when assets
+    are off, short-batch writes, and cross-volume upload copies
+  * New DynamicGroup widget input for grouped controls
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Both patches still apply
+
+-------------------------------------------------------------------
 Sun Oct  4 06:47:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.38.2 (skips over 0.38.1):
