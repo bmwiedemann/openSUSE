@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:33:19 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to version 2.5.5:
+  * Add -d command line option making -a/-k deterministic in the
+    way alignments are reported, running faster with less memory.
+  * Add support for selecting AVX version at runtime on x86_64
+    CPUs.
+  * Respect OMP_NUM_THREADS when setting default number of threads.
+  * Make BAM input compatible with --interleaved, -1/2, and -U.
+  * Fix issue causing bowtie2 to process only the first interleaved
+    input if more than one is given.
+  * Update minimum required CMake version to 3.5.
+- Spec file cleanups:
+  * Drop obsolete Group tag (forbidden by spec-cleaner).
+  * Use %{_bindir}/perl instead of `which perl` to set perl
+    hashbang.
+
+-------------------------------------------------------------------
 Fri Mar 21 00:48:31 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4

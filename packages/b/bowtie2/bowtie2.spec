@@ -1,7 +1,7 @@
 #
 # spec file for package bowtie2
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,14 +17,11 @@
 
 
 %global simde_version 0.7.6
-%ifarch aarch64
-%endif
 Name:           bowtie2
-Version:        2.5.4
+Version:        2.5.5
 Release:        0
 Summary:        Fast and memory-efficient short read aligner
 License:        GPL-3.0-only
-Group:          Productivity/Scientific/Other
 URL:            http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
 Source0:        https://github.com/BenLangmead/bowtie2/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        https://github.com/simd-everywhere/simde/archive/v%{simde_version}.tar.gz#/simde-%{simde_version}.tar.gz
@@ -73,7 +70,7 @@ sed -i -e 's/-m64//' CMakeLists.txt
 %cmake_install
 
 # CONVERT env HASHBANGS TO USE DIRECT EXECUTABLE
-perlbin=`which perl`
+perlbin="%{_bindir}/perl"
 sed -i "s:%{_bindir}/env perl:${perlbin}:" %{buildroot}%{_bindir}/bowtie2
 sed -i "s:%{_bindir}/env python:%{_bindir}/python:" %{buildroot}%{_bindir}/bowtie2-{build,inspect}
 
