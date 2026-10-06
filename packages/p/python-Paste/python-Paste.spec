@@ -25,15 +25,14 @@ License:        MIT
 URL:            https://github.com/cdent/paste
 Source:         https://files.pythonhosted.org/packages/source/p/paste/paste-%{version}.tar.gz
 Patch0:         test_modified-fixup.patch
-# PATCH-FIX-UPSTREAM paste-pr105-partial-pkg_resources-remove.patch gh#pasteorg/paste#105 gh#pasteorg/paste#107
-Patch1:         paste-pr105-partial-pkg_resources-remove.patch
+# PATCH-FIX-UPSTREAM gh#pasteorg/paste#108
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
-Requires:       python-setuptools
 Suggests:       python-flup
 Suggests:       python-python3-openid
 BuildArch:      noarch
@@ -65,6 +64,5 @@ rm tests/test_proxy.py
 %doc README.rst
 %{python_sitelib}/paste
 %{python_sitelib}/[pP]aste-%{version}.dist-info
-%{python_sitelib}/Paste-%{version}-py*-nspkg.pth
 
 %changelog

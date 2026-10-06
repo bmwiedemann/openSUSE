@@ -439,4 +439,13 @@
     <comment></comment>
     <requestid>1325121</requestid>
   </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>1a08e87a56f76e418dc76493e472a0db</srcmd5>
+    <version>3.10.1</version>
+    <time>1791306788</time>
+    <user>anag_factory</user>
+    <comment>- Replace paste-pr105-partial-pkg_resources-remove.patch with a more
+  complete upstream patch, no-more-pkg-resources.patch</comment>
+    <requestid>1382001</requestid>
+  </revision>
 </revisionlist>
