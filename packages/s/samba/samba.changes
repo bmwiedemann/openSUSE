@@ -1,4 +1,55 @@
 -------------------------------------------------------------------
+Mon Sep 28 10:12:06 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.25.0
+  * persistent handles options in WHATSNEW need fixups;
+    (bso#16234).
+  * Bugs in Persistent Handles database layer code; (bso#16237).
+  * smbstatus byte-range locks broken by Persistent Handle
+    changes; (bso#16253).
+  * "getwd cache" removal needs more work; (bso#16233).
+  * SMB3 SESSION SETUP responses must always be signed;
+    (bso#15962).
+  * winbindd_child_msg_filter: talloc_get_type_abort crashes when
+    winbind max domain connections > 1; (bso#16081).
+  * Fix parsing of uppercase "0X" hex values in the "kdc default
+    domain      supported enctypes" smb.conf parameter;
+    (bso#16239).
+  * smbd temporary mkdir name can exceed NAME_MAX for otherwise
+    valid client names; (bso#16240).
+  * Samba internal DNS service doesn't handle switch from UDP to
+    TCP when packet is larger than 4k; (bso#15988).
+  * autobuild failures need to be reported in a more verbose way;
+    (bso#16194).
+  * samba-cluster-support should depend on ndr-samba;
+    (bso#16219).
+  * DNS scavenging happens even if fAging is FALSE; (bso#16223).
+  * samba-tool dns zoneoptions $DC_SERVER_IP
+    _msdcs.addom.samba.example.com -P --aging=1 gives
+    WERR_INTERNAL_DB_ERROR; (bso#16226).
+  * dns client problems related to EDNS usage; (bso#16225).
+
+-------------------------------------------------------------------
+Wed Sep  9 15:57:55 UTC 2026 - Noel Power <nopower@suse.com>
+
+- Update to 4.24.7
+  * POSIX ACL backend silently discards erros when processing NT
+    ACLs with non-canonical ordering; (bso#16097).
+  * dns client problems related to EDNS usage; (bso#16225).
+  * Samba internal DNS service doesn't handle switch from UDP to
+    TCP when packet is larger than 4k; (bso#15988).
+  * autobuild failures need to be reported in a more verbose way;
+    (bso#16194).
+  * DNS scavenging happens even if fAging is FALSE; (bso#16223).
+  * samba-tool dns zoneoptions $DC_SERVER_IP
+    _msdcs.addom.samba.example.com -P --aging=1 gives
+    WERR_INTERNAL_DB_ERROR; (bso#16226).
+  * Incorrect behavior on stream create-disposition when prior
+    handle is closed; (bso#16144).
+  * An inactive node can run recovery resulting in inconsistent
+    databases; (bso#16082).
+
+-------------------------------------------------------------------
 Thu Sep  3 08:20:40 UTC 2026 - Samuel Cabrero <scabrero@suse.de>
 
 - Build and install pycache files; (bsc#1274812)
