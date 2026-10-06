@@ -154,7 +154,7 @@ Summary:        Common Data files for vim & gvim
 BuildArch:      noarch
 
 %description data-common
-This package contains basic runtime & syntax files for vim
+This package contains basic runtime & syntax files for vim.
 
 %package -n gvim
 Summary:        A GUI for Vi
@@ -178,10 +178,10 @@ Requires(postun): update-alternatives
 %endif
 
 %description -n gvim
-Package gvim contains the largest set of features of vim, which is
+Package gvim contains the largest set of features of vim, which are
 graphical windows and language interpreter, like python, ruby, or perl.
 You need package vim for the help and other documentation too. If you
-want less features, you might want to install vim instead.
+want fewer features, you might want to install vim instead.
 
 %package small
 Summary:        Vim with reduced features
@@ -197,8 +197,8 @@ Requires(postun): update-alternatives
 %endif
 
 %description small
-Vim compiled with reduced feature set such as no script
-interpreters built in
+Vim compiled with a reduced feature set such as no script
+interpreters built in.
 
 %package -n xxd
 Summary:        A hex dump utility
@@ -232,7 +232,6 @@ cp %{SOURCE3} %{SOURCE4} %{SOURCE5} %{SOURCE8} %{SOURCE10} .
 
 %build
 export CFLAGS="%{optflags} -Wall -pipe -fno-strict-aliasing"
-export CFLAGS=${CFLAGS/-D_FORTIFY_SOURCE=2/-D_FORTIFY_SOURCE=1}
 
 export COMMON_OPTIONS="\
     --with-vim-name=vim \
@@ -430,7 +429,7 @@ install -D -m 0644 \
     README.Japanese-XIM runtime/gvimrc_example.vim suse.gvimrc \
   %{buildroot}%{_docdir}/gvim/
 
-# remove unecessary duplicate manpages
+# remove unnecessary duplicate manpages
 rm -rf %{buildroot}%{_mandir}/fr.ISO8859-1/
 rm -rf %{buildroot}%{_mandir}/fr.UTF-8/
 rm -rf %{buildroot}%{_mandir}/pl.ISO8859-2/

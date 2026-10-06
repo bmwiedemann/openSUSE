@@ -8601,4 +8601,12 @@ always built-in because vim has direct perl dependencies anyway.
   9.2.0986: long options are accepted with a trailing garbage</comment>
     <requestid>1381870</requestid>
   </revision>
+  <revision rev="408" vrev="2">
+    <srcmd5>1634cfddea3b24fa3302c152bfeaff7a</srcmd5>
+    <version>9.2.1161</version>
+    <time>1791306793</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382320</requestid>
+  </revision>
 </revisionlist>

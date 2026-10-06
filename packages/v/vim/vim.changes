@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  2 14:57:25 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- do not downgrade fortify level (we're anyway at 3 now which
+  made this ineffective)
+
+-------------------------------------------------------------------
 Thu Oct  1 09:16:05 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
 - Update to 9.2.1161:
@@ -444,7 +450,7 @@ Mon Jul 13 21:47:00 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 -------------------------------------------------------------------
 Fri Jul  3 11:47:33 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.2.0780 
+- update to 9.2.0780
  patch 9.2.0780: Memory leak in evalvars.c on alloc failure
  patch 9.2.0779: Memory leak in type_name_func() on alloc failure
  patch 9.2.0778: Memory Leak in compile_dict() on alloc failure
@@ -1448,7 +1454,7 @@ Mon Feb 16 17:38:41 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Thu Feb  5 23:22:54 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.2132 
+- update to 9.1.2132
 - refreshed patch vim-8.2.2411-globalvimrc.patch
  * patch 9.1.2132: [security]: buffer-overflow in 'helpfile' option handling
  * translation(tr): Update Turkish translations
@@ -1645,7 +1651,7 @@ Thu Feb  5 23:22:54 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Mon Jan  5 09:51:53 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.2050: 
+- update to 9.1.2050:
  * patch 9.1.2050: tests: Test_cd_completion may fail
  * patch 9.1.2049: Vim9: unexpected E1209 error
  * patch 9.1.2048: MS-Windows: backspace behavior wrong with ConPTY
@@ -1796,7 +1802,7 @@ Mon Jan  5 09:51:53 UTC 2026 - Ondřej Súkup <mimi.vx@gmail.com>
 -------------------------------------------------------------------
 Thu Dec 11 00:15:28 UTC 2025 - Ondřej Súkup <mimi.vx@gmail.com>
 
-- update to 9.1.1966: 
+- update to 9.1.1966:
  * patch 9.1.1966: MS-Windows: dark mode in gui is not supported
  * runtime(vim): Update base syntax, match full :help command
  * patch 9.1.1965: q can accidentally start recording at more prompt
@@ -1930,7 +1936,7 @@ Mon Nov 17 00:40:55 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 -------------------------------------------------------------------
 Sun Nov  2 19:32:37 UTC 2025 - Martin Schreiner <martin.schreiner@suse.com>
 
-- Update to 9.1.1895. 
+- Update to 9.1.1895.
 - Upstream changes:
   * 9.1.1895: OSC terminal response hard to detect
   * 9.1.1894: global_runtime_dir appends /after directory when using XDG
