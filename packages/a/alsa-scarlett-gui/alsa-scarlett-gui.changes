@@ -1,10 +1,26 @@
 -------------------------------------------------------------------
+Mon Oct  5 10:38:17 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- v1.0.0~b9
+  - Configuration window with custom I/O naming, visibility, presets, and stereo linking
+  - Full DSP window with parametric EQ and compressor (Vocaster)
+  - Monitor groups and firmware update support (Scarlett Gen 4 16i16, 18i16, 18i20)
+  - Drag-and-drop stereo linking throughout routing, mixer, and configuration
+  - Window state persistence, keyboard shortcuts, local configuration storage
+  - Fix mixer input stereo pairing across mono channels
+
+  See RELEASE-NOTES.md for the full list of changes, known issues,
+  and device support details.
+- switch to snapshot of the master branch to incorporate the
+  channel linking fix.
+
+-------------------------------------------------------------------
 Mon May 11 12:17:18 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
 
 - remove 0001-suppress-Wcpp-warnings.patch
 - fix version display
 - add supplements for Focusrite Scarlett 4rd Gen 16i16/18i16/18i20
-- v1.0.0~b7 
+- v1.0.0~b7
    * Add Front Panel tab for brightness and sleep time
    * Add config-helpers for shared bold/help labels and separators
    * Set configuration checkbox style explicitly

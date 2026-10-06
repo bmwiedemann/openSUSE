@@ -1,14 +1,19 @@
 <services>
-  <service mode="manual" name="obs_scm">
+  <service mode="manual" name="tar_scm">
     <param name="url">https://github.com/geoffreybennett/alsa-scarlett-gui</param>
-    <param name="revision">1.0beta7</param>
+    <!--
+    <param name="revision">1.0beta9</param>
+    <param name="versionformat">@PARENT_TAG@</param>
+    -->
+    <param name="revision">master</param>
+    <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@.%h</param>
+
     <param name="match-tag">*</param>
     <param name="scm">git</param>
-    <param name="versionformat">@PARENT_TAG@</param>
 
     <!-- 1.0beta7 -> 1.0.0~b7 -->
-    <param name="versionrewrite-pattern">^([0-9]+)\.([0-9]+)beta([0-9]+)$</param>
-    <param name="versionrewrite-replacement">\1.\2.0~b\3</param>
+    <param name="versionrewrite-pattern">^([0-9]+)\.([0-9]+)beta([0-9]+.*)$</param>
+    <param name="versionrewrite-replacement">\1.\2.0~beta\3</param>
   </service>
 
   <service mode="manual" name="tar"/>

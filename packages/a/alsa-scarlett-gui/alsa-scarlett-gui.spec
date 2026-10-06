@@ -16,7 +16,7 @@
 #
 
 Name:           alsa-scarlett-gui
-Version:        1.0.0~b7
+Version:        1.0.0~beta9+git2.092a3a0
 Release:        0
 Summary:        ALSA Scarlett Gen 2/3/4 Control Panel
 License:        GPL-3.0-or-later or LGPL-3.0-or-later

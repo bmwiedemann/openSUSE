@@ -18,4 +18,12 @@ Already included in Arch Linux, Debian and Ubuntu. ( https://repology.org/projec
     <comment></comment>
     <requestid>1352468</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>16bb369b6f72f3e3e312a017e26aae69</srcmd5>
+    <version>1.0.0~beta9+git2.092a3a0</version>
+    <time>1791307339</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382811</requestid>
+  </revision>
 </revisionlist>
