@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  2 08:16:53 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 0.23.0
+  * Add Python 3.15 and 3.15t wheel builds and CI coverage
+  * Add support for the eager_start keyword argument in create_task()
+  * Add thread name prefix to the default thread pool executor
+  * Add support for special hostname <broadcast>
+  * Improve performance by using Python C API to enter/exit context
+  * Replace pkg_resources with packaging and use Cython 3.1
+
+-------------------------------------------------------------------
 Wed Oct 29 12:55:45 UTC 2025 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.22.1
