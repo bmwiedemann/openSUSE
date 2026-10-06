@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Tue Oct  6 07:15:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.0.4 (1.0.3 was superseded the same day and
+  never submitted):
+  * BREAKING: provider azure-openai-responses renamed to azure,
+    now also serving Azure Foundry Chat Completions
+    (azure/deepseek-v4-pro first). Rename the provider key in
+    auth.json (or run /login again), models.json and
+    settings.json (defaultProvider, enabledModels and
+    modelThinkingLevels); sessions on the old provider fall back
+    and lose prompt cache. AZURE_OPENAI_* env vars unchanged
+  * --tools and --exclude-tools take *-patterns and --no-mcp
+    disables MCP for one run; --tools keeps MCP tools unless an
+    entry starts with mcp__
+  * Codemode read() on image files yields an image block image()
+    shows, and image() also saves each image to a temp file for
+    later turns
+  * Fix fenced-code highlighting past the first line, MCP OAuth
+    native-client registration, MCP shutdown racing a connecting
+    server, Bedrock stalled-stream retries and frozen codemode
+    built-ins, plus ChatGPT-login, EIO-on-closed-terminal and
+    output-file-permission fixes
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored node_modules 1.0.2 -> 1.0.4: the ten
+  @earendil-works packages move to 1.0.4; nanoid, postcss and
+  vite move too but are dev-only and not shipped. Still 119
+  shipped modules and the licence union is unchanged
+  * CVE-2026-102276 (boo#1283188): brace-expansion is 5.0.12, above
+    the 5.0.10 fix floor, so the package is not affected by it
+  * CVE-2026-102277 (boo#1283392) and CVE-2026-102278
+    (boo#1283412): brace-expansion is 5.0.12, at the 5.0.12 and
+    above the 5.0.11 fix floors, so the package is not affected
+    by them
+
+-------------------------------------------------------------------
 Sun Oct  4 15:48:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.0.2: patch releases on the 1.0 API, with no

@@ -270,4 +270,14 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
 - brace-expansion CVE-2026-102276/102277/102278 all not affected</comment>
     <requestid>1382341</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>27aec0db39945fba24224cca65d7dcd5</srcmd5>
+    <version>1.0.4</version>
+    <time>1791307226</time>
+    <user>anag_factory</user>
+    <comment>- Update pi-coding-agent to 1.0.4 (1.0.3 superseded same-day, never submitted)
+- BREAKING: azure-openai-responses provider renamed to azure, adds Foundry Chat
+- Details in .changes; gate.sh green, rpmlint clean, build passed</comment>
+    <requestid>1382765</requestid>
+  </revision>
 </revisionlist>
