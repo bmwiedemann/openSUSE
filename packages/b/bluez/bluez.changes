@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Sun Oct  4 14:51:01 UTC 2026 - Michal Smucr <msmucr@gmail.com>
+
+- Add a2dp-fix-loading-of-remote-SEP-from-cache.patch
+  Without this, Pipewire forces AVDTP Discover on every reconnect,
+  causing codec negotiation failures on some LE Audio headsets.
+  * Upstream issue: https://github.com/bluez/bluez/issues/2321
+  * Upstream commit: https://github.com/bluez/bluez/commit/b7d71e5067856b0daf2f1f73b3fc95483236610e
+
+-------------------------------------------------------------------
 Fri Sep 25 19:01:04 UTC 2026 - NbergTP <nbergtp@sevmg.de>
 
 - Add fix-crash-on-UUID-discovery.patch
