@@ -3,9 +3,9 @@
     <param name="url">https://github.com/SUSE/linux-security-sensor</param>
     <param name="filename">velociraptor</param>
     <param name="versionformat">@PARENT_TAG@~git@TAG_OFFSET@.%h</param>
-    <param name="revision">sensor-base-0.7.0</param>
+    <param name="revision">sensor-base-0.76.7</param>
     <param name="scm">git</param>
-    <param name="parent-tag">sensor-base-0.7.0-4</param>
+    <param name="parent-tag">sensor-base-0.76.7-0</param>
     <param name="versionrewrite-pattern">sensor-base-([0-9\.]*)-([0-9]*)~(.*)</param>
     <param name="versionrewrite-replacement">\1.\2.\3</param>
     <param name="changesgenerate">enable</param>
@@ -23,6 +23,7 @@
     <param name="vendorname">velociraptor-go_modules</param>
   </service>
   <service mode="manual" name="node_modules">
+    <param name="legacy-container"/>
     <param name="cpio">velociraptor-node_modules.obscpio</param>
     <param name="source-offset">10000</param>
     <param name="output">velociraptor-nodejs.spec.inc</param>

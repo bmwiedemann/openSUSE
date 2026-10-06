@@ -86,7 +86,7 @@
 %endif
 
 Name:           velociraptor%{name_suffix}
-Version:        0.7.0.4.git185.a5708584
+Version:        0.76.7.0.git145.b60ef1146
 Release:        0
 %if %{build_server}
 Summary:        Endpoint visibility and collection tool
@@ -287,7 +287,7 @@ cp vmlinux.h-%{vmlinux_h_version}/vmlinux-${arch}.h \
 %if %{build_server}
 pushd gui/velociraptor
 rm -f package-lock.json
-local-npm-registry %{_sourcedir} install --include=dev --legacy-peer-deps
+local-npm-registry %{_sourcedir} install --include=dev
 popd
 %endif
 
@@ -316,7 +316,7 @@ LLVM_STRIP=llvm-strip
 
 CLANG=clang
 
-PATH=$PATH:/usr/sbin make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CLANG STRIP=$LLVM_STRIP
+PATH=$PATH:/usr/sbin GOEXPERIMENT=nojsonv2 make %{make_target} BUILD_BPF_PLUGINS=%{with bpf} CLANG=$CLANG STRIP=$LLVM_STRIP
 
 %install
 install -D -d -m 0750 %buildroot/%{_sysconfdir}/velociraptor

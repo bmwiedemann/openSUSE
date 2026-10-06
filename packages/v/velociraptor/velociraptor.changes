@@ -1,4 +1,68 @@
 -------------------------------------------------------------------
+Tue Sep 22 09:57:15 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
+
+- Spec: fix build with go1.27 by not using json/v2.
+  * This is a temporary workaround until it's fixed upstream.
+
+- Spec: fix broken gui due to missing interactjs
+  * Remove --legacy-peer-deps argument to local-npm-registry.
+
+- Update to version 0.76.7.0.git145.b60ef1146:
+  * Update brace-expansion npm
+    Fixes CVE-2026-14257 (bsc#1272739)
+  * Update golang.org/x/text
+    Fixes CVE-2026-56852 (bsc#1272112)
+  * github: remove windows and update linux
+  * Don't create offline yaml tool dependencies
+  * Update golang.org/x/crypto
+  * Update github.com/cloudflare/circl
+  * Upgrade github.com/ProtonMail/gopenpgp to V3
+  * Fix SshAuthorizedKeys artifact to work with v0.76
+  * Fix services artifact systemctl show parse errors
+  * Fix artifacts for different VQL array() behaviour in v0.74+
+  * Exclude velociraptor tracee ebpf from build
+  * Rebase onto upstream velociraptor v0.76.7
+    https://github.com/Velocidex/velociraptor/releases#release-v0.76.7
+    Fixes CVE-2025-0914 (bsc#1238058)
+    Fixes CVE-2026-5329 (bsc#1261858)
+    Fixes CVE-2026-6290 (bsc#1262261)
+    Fixes CVE-2026-6948 (bsc#1263858)
+    Fixes CVE-2026-7572 (bsc#1264226)
+    Fixes CVE-2026-7573 (bsc#1264227)
+    Fixes CVE-2026-6863 (bsc#1264363)
+    Fixes CVE-2026-18348 (bsc#1274823)
+    Fixes CVE-2026-18639 (bsc#1275078)
+    Fixes CVE-2026-17535 (bsc#1275251)
+    Fixes CVE-2026-18636 (bsc#1275254)
+    Fixes CVE-2026-18860 (bsc#1275255)
+    Fixes CVE-2026-18638 (bsc#1275274)
+    Fixes CVE-2026-64954 (bsc#1275282)
+    Fixes CVE-2026-64951 (bsc#1275284)
+    Fixes CVE-2026-64952 (bsc#1275285)
+    Fixes CVE-2026-27601 (bsc#1259158)
+    Fixes CVE-2026-29074 (bsc#1259301)
+    Fixes CVE-2026-41650 (bsc#1264489)
+    Fixes CVE-2026-53550 (bsc#1268809)
+    Fixes CVE-2026-12143 (bsc#1269804)
+    Fixes CVE-2026-59869 (bsc#1271385)
+    Fixes CVE-2026-49356 (bsc#1272334)
+    Fixes CVE-2026-55602 (bsc#1272338)
+    Fixes CVE-2026-45623 (bsc#1273226)
+    Fixes CVE-2026-65914 (bsc#1273396)
+    Fixes CVE-2026-65903 (bsc#1273396)
+    Fixes CVE-2026-65913 (bsc#1273396)
+    Fixes CVE-2026-65912 (bsc#1273396)
+    Fixes CVE-2026-67314 (bsc#1273632)
+    Fixes CVE-2026-67320 (bsc#1273723)
+    Fixes CVE-2026-73650 (bsc#1275327)
+    Fixes CVE-2026-73646 (bsc#1275889)
+    Fixes CVE-2026-69152 (bsc#1276024)
+    Fixes CVE-2026-73086 (bsc#1276036)
+    Fixes CVE-2026-69153 (bsc#1276138)
+    Fixes CVE-2026-84369 (bsc#1278278)
+    Fixes CVE-2026-84370 (bsc#1278285)
+
+-------------------------------------------------------------------
 Wed Jun 24 15:16:54 UTC 2026 - Darragh O'Reilly <doreilly@suse.com>
 
 - Add sysusers_requires macro to system-user-velociraptor
