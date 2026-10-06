@@ -19,14 +19,14 @@
 %{?sle15_python_module_pythons}
 %define         oldpython python
 Name:           python-pycairo
-Version:        1.29.1
+Version:        1.29.2
 Release:        0
 Summary:        Python Bindings for Cairo
 License:        LGPL-2.1-or-later OR MPL-1.1
 URL:            https://github.com/pygobject/pycairo
 Source:         %{url}/releases/download/v%{version}/pycairo-%{version}.tar.gz
 BuildRequires:  %{python_module devel >= 3.9}
-BuildRequires:  %{python_module meson-python}
+BuildRequires:  %{python_module meson-python >= 0.16.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  cairo-devel >= 1.15.10
