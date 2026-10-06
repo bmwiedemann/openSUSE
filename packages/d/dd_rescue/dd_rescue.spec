@@ -31,6 +31,10 @@ Source0:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2
 Source1:        http://garloff.de/kurt/linux/ddrescue/%{name}-%{version}.tar.bz2.asc
 Source2:        %{name}.keyring
 Source99:       %{name}.changes
+# PATCH-FIX-OPENSUSE dd_rescue-ssp-strong.patch -- the libddr_lzo.po rule
+# appends basic -fstack-protector which downgrades the distro
+# -fstack-protector-strong from %%optflags; use strong instead
+Patch0:         dd_rescue-ssp-strong.patch
 # PATCH-FIX-UPSTREAM no-python2.patch sf#ddrescue#4 mcepl@suse.com
 # Remove dependency on python2
 BuildRequires:  autoconf

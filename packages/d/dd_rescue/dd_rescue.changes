@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 10:06:39 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Add dd_rescue-ssp-strong.patch: drop the redundant -fstack-protector
+  from the libddr_lzo.po rule ($(CFLAGS) already carry
+  -fstack-protector-strong from %optflags; the trailing basic flag
+  silently downgraded strong to basic)
+
+-------------------------------------------------------------------
 Sun Dec  7 15:04:37 CET 2025 - kurt@garloff.de
 
 - Update to dd_rescue-1.99.22:

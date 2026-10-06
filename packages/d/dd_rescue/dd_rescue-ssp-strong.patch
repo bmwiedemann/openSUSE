@@ -1,0 +1,19 @@
+From: Tomáš Chvátal <tomas.chvatal@gmail.com>
+Subject: [PATCH] Drop redundant -fstack-protector from the libddr_lzo.po rule
+
+The libddr_lzo.po rule appends the basic -fstack-protector flag after
+$(CFLAGS) (which carry -fstack-protector-strong via %optflags), so the
+weaker basic variant wins and downgrades the distro stack protector.
+Drop the redundant flag and let the distro flags handle stack protection.
+---
+--- a/Makefile
++++ b/Makefile
+@@ -338,7 +338,7 @@
+ 
+ # Use stack protector for libddr_lzo ...
+ libddr_lzo.po: $(SRCDIR)/libddr_lzo.c config.h
+-	$(CC) $(CFLAGS) $(PIC) -fstack-protector -o $@ -c $<
++	$(CC) $(CFLAGS) $(PIC) -o $@ -c $<
+ 
+ # The plugins
+ libddr_hash.so: libddr_hash.po md5.po sha256.po $(SHAPOBJ) sha512.po sha1.po pbkdf2.po checksum_file.po
