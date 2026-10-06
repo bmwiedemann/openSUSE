@@ -70,11 +70,6 @@ description.
 
 %prep
 %autosetup -n %{name}-%{version} -p1
-# Remove build time references so build-compare can do its work
-FAKE_BUILDTIME=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%H:%%M')
-FAKE_BUILDDATE=$(LC_ALL=C date -u -r %{_sourcedir}/%{name}.changes '+%%b %%e %%Y')
-sed -i "s/__TIME__/\"$FAKE_BUILDTIME\"/" src/vernum.c
-sed -i "s/__DATE__/\"$FAKE_BUILDDATE\"/" src/vernum.c
 
 %build
 # required for ruby patch
