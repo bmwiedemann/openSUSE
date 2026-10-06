@@ -1,4 +1,92 @@
 -------------------------------------------------------------------
+Fri Oct  2 05:44:28 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org>
+
+- update to version 1.4.32
+  * API:
+    + MSet::snippet(): Fix missing escaping when parameters hi_start
+      and hi_end are empty strings and text.size() <= length.  This
+      is essentially a missed corner case from CVE-2018-0499.
+  * Portability:
+    + configure: `-Wstrict-overflow=1` is no longer added to the
+      default compiler options for GCC and clang. This option has
+      been a no-op since GCC 8 (and has always been a no-op for
+      clang, provided only for GCC compatibility).
+    + Fix -Wrestrict warning from GCC 16
+    + configure.ac: Use $SED consistently to improve portability
+      to platforms where the installed sed tool isn't just called
+      `sed`.
+    + lemon: Fix bug in -D handling. We were allocating a buffer
+      based on an unassigned variable. The Xapian build system
+      doesn't currently use -D so this bug is latent for us but
+      could result in C compiler warnings during the
+    + Remove unused includes of <fstream> and <sstream>.
+    + Remove __cplusplus conditional in a header only included
+      from C++ code.
+- changes from version 1.4.31
+  * API
+    + Database::get_spelling_suggestion(): Remove a flawed
+      optimisation which was rejecting candidate corrections based
+      only on how many n-grams match.
+    + Database::compact(): FULLER compaction now does exactly the
+      same as FULL.
+    + Query: Attempting to construct a pairwise Query from an
+      operator and two `char*` or `const char*` term names failed
+      to compile because pointers are iterator types and matched
+      the template which allows construction from a pair of
+      iterators which are meant to dereference to give a type
+      convertible to std::string or Xapian::Query or Xapian::Query*.
+      We've solved this by only enabling this template for iterators
+      where sizeof(value_type) is not 1.
+    + QueryParser: Improve FLAG_PARTIAL handling for stopwords.
+    + RangeProcessor: Don't require prefix/suffix on empty bound
+      when flag RP_REPEATED is specified (so now `..$10` and
+      `20kg..` work). Case noted by  James Aylett in the
+      "getting started" guide.
+    + ValueRangeProcessor: Don't require prefix/suffix on empty
+      bound.
+    + Fix incorrect container and iterator traits for Xapian API
+      classes.
+  * Testsuite:
+    + Extend generated tests to cover newer Xapian::Weight subclasses
+      and Xapian::Utf8Iterator.
+  * Glass Backend:
+    + Compacting a database with corrupt item sizes could try to
+      copy an item outside of the allocated block. Now we throw
+      DatabaseCorruptError in this situation.
+    + Opening a database table now throws DatabaseCorruptError if
+      the number of levels is non-zero but the `fake_root` flag
+      is set.
+  * Tools:
+    + quest: Add --stem-strategy option.
+    + quest: List stemming languages in --help.
+    + quest: List valid flags/query ops if an invalid one is specified.
+  * Debug Code:
+    + Fix build with `--enable-assertions=partial`.
+    + Move an assertion that a pointer is not NULL to before where
+      we dereference it.
+- changes from version 1.4.30
+  * API:
+    + Stem: 1.4.28 changed the English stemmer code to remove an
+      exception for "skis" which we incorrectly thought wasn't
+      needed. This was not intended to be a functional change, so
+      we've restored the exception.
+    + Stem: Fix a bug in Snowball's runtime code for decoding
+      4-byte UTF-8 sequences.
+  * Portability:
+    + Fix instance of undefined behaviour in Database::check()
+      for glass databases.
+- changes from version 1.4.29
+  * Build System:
+    + 1.4.28 had its library version information incorrectly set
+- changes from version 1.4.28
+  * API:
+    + Optimise stemming algorithms.
+    + Add dutch_porter as alias for current dutch stemmer for
+      forward compatibility with the next release series where we
+      will have kraaij_pohlmann as the default dutch stemmer.
+
+
+-------------------------------------------------------------------
 Thu Feb 27 18:39:55 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - update to 1.4.27:
