@@ -2181,4 +2181,12 @@ Use capabilities for capture. bsc#957624</comment>
     <comment>wireshark 4.6.9</comment>
     <requestid>1380677</requestid>
   </revision>
+  <revision rev="257" vrev="2">
+    <srcmd5>96d2bb509e0cf5dd7cec33d5658d310d</srcmd5>
+    <version>4.6.9</version>
+    <time>1791306830</time>
+    <user>anag_factory</user>
+    <comment>wireshark 4.6.9: bsc references</comment>
+    <requestid>1382483</requestid>
+  </revision>
 </revisionlist>
