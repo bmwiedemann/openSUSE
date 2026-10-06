@@ -103,7 +103,7 @@ sed -i '1 {\|^#!%{_bindir}/env| d}' examples/*.py
 
 %build
 env NOCONFIGURE=y bash autogen.sh
-export CFLAGS="%{optflags} -fstack-protector -fno-strict-aliasing -fPIC"
+export CFLAGS="%{optflags} -fno-strict-aliasing -fPIC"
 %define _configure ../configure
 
 %{python_expand mkdir build_%{$python_bin_suffix}
