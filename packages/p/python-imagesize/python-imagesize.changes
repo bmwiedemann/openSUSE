@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Mon Oct  5 18:57:58 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.0.1:
+  * Optimize metadata parsing and HTTP range reads.
+  * Fix JPEG2000 box parsing.
+  * Accept single-quoted SVG dimensions.
+  * Return positive heights for top-down BMP images.
+  * Remove the upper Python version cap, migrate packaging to
+    pyproject.toml, and add Python 3.15 CI coverage.
+- drop remove-upper-bound.patch (upstream)
+
+-------------------------------------------------------------------
 Mon Jul  6 05:59:59 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch remove-upper-bound.patch:

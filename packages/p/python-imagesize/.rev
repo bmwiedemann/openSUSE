@@ -144,4 +144,19 @@
 - Ship the license in the built packages.</comment>
     <requestid>1363956</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>cb6f75c6a92b0756d5365e19c95bb99e</srcmd5>
+    <version>2.0.1</version>
+    <time>1791306839</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.0.1:
+  * Optimize metadata parsing and HTTP range reads.
+  * Fix JPEG2000 box parsing.
+  * Accept single-quoted SVG dimensions.
+  * Return positive heights for top-down BMP images.
+  * Remove the upper Python version cap, migrate packaging to
+    pyproject.toml, and add Python 3.15 CI coverage.
+- drop remove-upper-bound.patch (upstream)</comment>
+    <requestid>1382607</requestid>
+  </revision>
 </revisionlist>
