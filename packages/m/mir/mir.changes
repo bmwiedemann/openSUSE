@@ -1,4 +1,131 @@
 -------------------------------------------------------------------
+Wed Oct  7 14:50:00 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 2.30.0
+  * ABI Changes:
+    - mirserver ABI bumped to 69
+  * Enhancements:
+    - [Wayland] Add wl_fixes support (gh#canonical/mir#5193)
+    - Add a typed wrapper for wl_array (gh#canonical/mir#5194)
+    - workshop: add run nest <shell> (gh#canonical/mir#5089)
+    - Require Rust when building Mir and package the Rust evdev input platform
+      (gh#canonical/mir#5185)
+    - Build with libxml++ 5.0 where available, with a libxml++ 2.6 fallback for
+      older distributions (gh#canonical/mir#5182), (gh#canonical/mir#5201)
+  * Bugs fixed:
+    - Fix horizontal scroll-speed configuration (gh#canonical/mir#5151)
+    - Do not treat attached surfaces, such as on-screen keyboards, as kiosk
+      windows (gh#canonical/mir#5157)
+    - Report wl_surface role conflicts using the correct Wayland protocol error
+      (gh#canonical/mir#5005)
+    - Ensure pointer enter and leave events see the final surface geometry after
+      window-management changes (gh#canonical/mir#5165)
+    - Safely handle unmanaged surfaces in window_at() (gh#canonical/mir#5187)
+    - Set the cursor role on hidden cursor surfaces (gh#canonical/mir#5168)
+    - Reuse the screen-shooter renderer and handle output resizing correctly
+      (gh#canonical/mir#5119)
+    - Fix GBM/KMS multi-display configurations that do not use clone mode
+      (gh#canonical/mir#5126)
+  * Documentation:
+    - Clarify input-trigger protocol descriptions (gh#canonical/mir#5074)
+    - Add a project roadmap (gh#canonical/mir#5179)
+    - Document the release-burning process (gh#canonical/mir#5211)
+    - Update the supported environments for release testing
+      (gh#canonical/mir#5140)
+- Updates from 2.28.0 -> 2.29.0
+  * ABI Changes:
+    - miral ABI bumped to 8
+    - mircommon ABI bumped to 13
+    - mircore ABI bumped to 3
+    - miroil ABI bumped to 10
+    - mirplatform ABI bumped to 35
+    - mirserver ABI bumped to 68
+    - mirwayland ABI bumped to 7
+    - mirplatformgraphics ABI bumped to 24
+    - mirinputplatform ABI bumped to 11
+  * Enhancements:
+    - [Wayland] Implement xdg-dialog-v1 Wayland protocol (gh#canonical/mir#4790)
+      (gh#canonical/mir#5122)
+    - [Wayland] Add support for the
+      ext_foreign_toplevel_image_capture_source_manager_v1 extension
+      (gh#canonical/mir#5002)
+    - [Wayland] Add support for taking a screenshot of a single surface
+      (gh#canonical/mir#4936)
+    - [Wayland] Implement wl_region::subtract and tidy wl_region::add
+      (gh#canonical/mir#5003)
+    - Add a touch emulator to map mouse clicks and drags to touch events
+      (gh#canonical/mir#5091)
+    - Add command-line logging configuration (gh#canonical/mir#4928)
+    - [miral] Add register_log_filtering_config convenience helper
+      (gh#canonical/mir#4937)
+    - [live config] Support for override directory (gh#canonical/mir#4781)
+    - [graphics] Add bytes-per-pixel to DRMFormat and use it for SHM stride
+      validation (gh#canonical/mir#5000)
+    - [evdev-rs] Remove the blocking future await when grabbing a device file
+      descriptor (gh#canonical/mir#4960)
+  * Renovations:
+    - Migrate to C++26 (gh#canonical/mir#5028)
+    - Rebase on newest distro releases (gh#canonical/mir#4738)
+    - [miral] Use std::span in interfaces where possible (gh#canonical/mir#5078)
+    - [miral] Ref qualify WindowSpecification properties (gh#canonical/mir#5081)
+    - [miral] Tidy up the WindowManagementPolicy hierarchy
+      (gh#canonical/mir#5072)
+    - Remove prompt sessions (gh#canonical/mir#5045)
+    - Remove EGLStream support (gh#canonical/mir#5044)
+    - Remove wl-drm support in favour of DMA-BUF (gh#canonical/mir#5061)
+    - Remove deprecated APIs (gh#canonical/mir#5018), (gh#canonical/mir#5021),
+      (gh#canonical/mir#5057)
+    - Drop obsolete WindowManager::{add,remove}_display() methods
+      (gh#canonical/mir#5023)
+    - Drop ServerConfiguration::the_screen_shooter() (gh#canonical/mir#5085)
+    - Drop AutoJoinThread #5066 and assorted dead code (gh#canonical/mir#5058),
+      (gh#canonical/mir#5076), (gh#canonical/mir#5084)
+    - Update DecorationProvider to xdg-shell (gh#canonical/mir#4939)
+  * Bugs fixed:
+    - wayland platform: two fixes for running Mir nested under another
+      compositor (gh#canonical/mir#5020)
+    - miral: fix constrain resizes of windows without a size
+      (gh#canonical/mir#4979)
+    - Validate all inputs to wl_shm_pool::create_buffer (gh#canonical/mir#4885)
+    - frontend_wayland: raise invalid_fd when an SHM pool fd cannot be mapped
+      (gh#canonical/mir#5010)
+    - frontend_wayland: reject xdg_toplevel max size smaller than min size
+      (gh#canonical/mir#5008)
+    - Raise invalid_offset for non-zero wl_surface.attach offset (v5+)
+      (gh#canonical/mir#5004)
+    - Raise invalid_size from xdg_surface.set_window_geometry
+      (gh#canonical/mir#5006)
+    - Validate the serial in xdg_surface.ack_configure (gh#canonical/mir#5007)
+    - Track what type of data offer is being provided and validate requests
+      (gh#canonical/mir#4935)
+    - Ensure no loops in toplevel parents (gh#canonical/mir#4894)
+    - [miral] ApplicationSwitcher: use whatever identity we have rather than
+      treating a window as a "ghost" (gh#canonical/mir#5083).
+      Fix late toplevel identity (gh#canonical/mir#5131)
+    - Return early from {add,drop}_input_trigger_event to avoid logging
+      incorrectly (gh#canonical/mir#5082)
+    - ShmBacking: fix ignored std::expected return values (gh#canonical/mir#5024)
+      and switch current_mapping to std::atomic (gh#canonical/mir#5026)
+    - [miral] add missing PhysicalSizeMM::operator== (gh#canonical/mir#5037) and
+      constructor (gh#canonical/mir#5035) symbols
+    - Fix FTBFS on amd64v3 (gh#canonical/mir#5060), (gh#canonical/mir#5127)
+    - refactor(x11): isolate the xcb XKB include workaround
+      (gh#canonical/mir#5121)
+  * Documentation:
+    - doc: update to Sphinx Stack 2 (gh#canonical/mir#5050)
+    - docs: update documentation for configuring screencasting via
+      ext-image-copy-capture (gh#canonical/mir#5036)
+    - Document the Mir config override mechanism (gh#canonical/mir#5077)
+    - How to test Mir for a release (gh#canonical/mir#4992)
+    - Fix documentation errors in input trigger protocols (gh#canonical/mir#5070)
+    - doc: fix "Release notes" title and links (gh#canonical/mir#5062)
+    - doc: use -dev version outside of release branches (gh#canonical/mir#5056)
+    - Spelling fixes and skill (gh#canonical/mir#5011)
+    - Expand copilot instructions with build, CI, ABI and protocol integration
+      guides (gh#canonical/mir#4913), and commenting/review guidance
+      (gh#canonical/mir#5094)
+
+-------------------------------------------------------------------
 Thu Jun 18 12:47:38 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update to 2.28.0:

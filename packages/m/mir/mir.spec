@@ -25,18 +25,18 @@
 %bcond_with run_tests
 
 # Set globals for easier future maintenance
-%global commonlibsover 12
-%global mircoresover 2
-%global mirplatformsover 34
-%global lomirisover 9
-%global miralsover 7
-%global mirserversover 67
-%global mirwaylandsover 6
-%global mirserverplatformsover 23
-%global mirevdevsover 10
+%global commonlibsover 13
+%global mircoresover 3
+%global mirplatformsover 35
+%global lomirisover 10
+%global miralsover 8
+%global mirserversover 69
+%global mirwaylandsover 7
+%global mirserverplatformsover 24
+%global mirevdevsover 11
 
 Name:           mir
-Version:        2.28.0
+Version:        2.30.0
 Release:        0
 Summary:        Libraries for building Wayland shells
 License:        (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)
@@ -262,7 +262,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %ldconfig_scriptlets -n libmirserverplatform%{mirserverplatformsover}
 %ldconfig_scriptlets -n libmirevdev%{mirevdevsover}
 
-
 %files devel
 %license COPYING.*
 %{_bindir}/mir_wayland_generator
@@ -307,7 +306,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %license COPYING.GPL*
 %doc README.md
 %dir %{_libdir}/mir/server-platform
-%{_libdir}/mir/server-platform/graphics-eglstream-kms.so.%{mirserverplatformsover}
 %{_libdir}/mir/server-platform/graphics-gbm-kms.so.%{mirserverplatformsover}
 %{_libdir}/mir/server-platform/graphics-wayland.so.%{mirserverplatformsover}
 %{_libdir}/mir/server-platform/renderer-egl-generic.so.%{mirserverplatformsover}
@@ -332,7 +330,6 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/miral-shell.desktop
 %{_libdir}/mir/server-platform/input-stub.so.%{mirevdevsover}
 %{_libdir}/mir/miral*.so
 %{_datadir}/%{name}/expected_wlcs_failures.list
-
 
 %files test-libs-static
 %license COPYING.GPL*

@@ -319,4 +319,12 @@ Will be a requirement for forthcoming miriway submission</comment>
       * Generating global registration methods for wayland-rs</comment>
     <requestid>1360265</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>6034095eb8f4897a61b6052c2f37ed45</srcmd5>
+    <version>2.30.0</version>
+    <time>1791394547</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1383080</requestid>
+  </revision>
 </revisionlist>
