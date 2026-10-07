@@ -17,17 +17,17 @@
 
 
 Name:           gp2c
-Version:        0.0.14pl1
+Version:        0.0.15
 Release:        0
 Summary:        GP script to PARI C program compiler
 License:        GPL-2.0-only
 Group:          Productivity/Scientific/Math
 URL:            https://pari.math.u-bordeaux.fr/
-
 #Git-Clone:	https://pari.math.u-bordeaux.fr/git/gp2c.git
 #Git-Web:	https://pari.math.u-bordeaux.fr/cgi-bin/gitweb.cgi
 Source:         https://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-%version.tar.gz
 Source2:        https://pari.math.u-bordeaux.fr/pub/pari/GP2C/gp2c-%version.tar.gz.asc
+Source8:        func219.dsc
 Source9:        %name.keyring
 BuildRequires:  fdupes
 
@@ -42,6 +42,7 @@ scripts.
 
 %prep
 %autosetup -p1
+cp -av %_sourcedir/func219.dsc desc/
 
 %build
 %configure --docdir="%_docdir/%name" CFLAGS="%optflags -fno-common"
