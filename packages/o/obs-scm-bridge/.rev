@@ -268,4 +268,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1375026</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>2b5fae558d5a5e8dc6f565c3e36ba007</srcmd5>
+    <version>0.8.1</version>
+    <time>1791394500</time>
+    <user>anag_factory</user>
+    <comment>- 0.8.1
+  * fixed behaviour for osc checkout from a not merged pull request</comment>
+    <requestid>1382960</requestid>
+  </revision>
 </revisionlist>

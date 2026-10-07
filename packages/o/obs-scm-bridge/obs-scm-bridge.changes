@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct  6 13:11:19 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- 0.8.1
+  * fixed behaviour for osc checkout from a not merged pull request
+
+-------------------------------------------------------------------
 Tue Aug 25 07:59:08 UTC 2026 - Adrian Schröter <adrian@suse.de>
 
 - 0.8.0

@@ -29,7 +29,7 @@
 %endif
 
 Name:           obs-scm-bridge
-Version:        0.8.0
+Version:        0.8.1
 Release:        0
 Summary:        A help service to work with git repositories in OBS
 License:        GPL-2.0-or-later
@@ -37,6 +37,9 @@ URL:            https://github.com/openSUSE/obs-scm-bridge
 Source0:        %{name}-%{version}.tar.xz
 BuildRequires:  %{primary_python}
 BuildRequires:  %{primary_python}-PyYAML
+%if 0%{suse_version} == 1600
+BuildRequires:  %{primary_python}-base
+%endif
 Requires:       %{build_pkg_name} >= 20260323
 # these are just recommends in build package, but we need it here
 Requires:       perl(Date::Parse)
@@ -72,6 +75,7 @@ echo "src.opensuse.org" > %buildroot/etc/obs/services/scm-bridge/critical-instan
 #echo "" > %buildroot/etc/obs/services/scm-bridge/credentials
 
 %files
+%dir %{_prefix}/lib/obs
 %{_prefix}/lib/obs/service
 %dir /etc/obs
 %dir /etc/obs/services
