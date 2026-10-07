@@ -18,7 +18,7 @@
 
 %define         _name qtpass
 Name:           QtPass
-Version:        1.8.2
+Version:        1.8.3
 Release:        0
 Summary:        A multi-platform gui for pass
 License:        GPL-3.0-only

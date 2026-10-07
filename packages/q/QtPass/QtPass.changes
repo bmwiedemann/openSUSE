@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct 06 15:58:08 UTC 2026 - ecsos <ecsos@opensuse.org>
+
+- Update to version 1.8.3:
+  * Release 1.8.3: dated 2026-10-06 (#1971)
+  * Release 1.8.3 (#1969)
+  * 1.8: a save that never reports must not trap the dialog (ported from #1965) (#1966)
+  * 1.8 ci: drop the Qt 6.11.2 pin, 6.11.3's checksums are served (#1964)
+  * metainfo: real sizes for the qtpass.org screenshots (#1954)
+  * 1.8: keep the entry when saving it fails (ported from #1951) (#1952)
+  * 1.8 Flatpak: build v1.8.2, private store, as on Flathub (#1935)
+
+-------------------------------------------------------------------
 Thu Sep 24 21:26:51 UTC 2026 - ecsos <ecsos@opensuse.org>
 
 - Update to version 1.8.2:
