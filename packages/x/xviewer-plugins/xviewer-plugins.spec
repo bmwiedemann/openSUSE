@@ -17,7 +17,7 @@
 
 
 Name:           xviewer-plugins
-Version:        3.4.3
+Version:        3.4.4
 Release:        0
 Summary:        A collection of plugins for xviewer
 License:        GPL-2.0-or-later
@@ -27,23 +27,20 @@ Source1:        %{name}.SUSE
 BuildRequires:  fdupes
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(champlain-gtk-0.12)
-BuildRequires:  pkgconfig(clutter-1.0) >= 1.9.4
-BuildRequires:  pkgconfig(clutter-gtk-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(glib-2.0) >= 2.32.0
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10.0
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libpeas-1.0) >= 0.7.4
 BuildRequires:  pkgconfig(libpeas-gtk-1.0) >= 1.12.0
+BuildRequires:  pkgconfig(osmgpsmap-1.0)
 BuildRequires:  pkgconfig(xviewer) >= 3.2.1
 Requires:       xviewer
 Suggests:       xviewer-plugin-exif-display
-Suggests:       xviewer-plugin-exif-export-to-folder
-Suggests:       xviewer-plugin-exif-light-theme
-Suggests:       xviewer-plugin-exif-map
-Suggests:       xviewer-plugin-exif-pythonconsole
-Suggests:       xviewer-plugin-exif-send-by-mail
-Suggests:       xviewer-plugin-exif-slideshowshuffle
+Suggests:       xviewer-plugin-export-to-folder
+Suggests:       xviewer-plugin-map
+Suggests:       xviewer-plugin-pythonconsole
+Suggests:       xviewer-plugin-send-by-mail
+Suggests:       xviewer-plugin-slideshowshuffle
 Enhances:       xviewer
 
 %description
@@ -70,13 +67,6 @@ Requires:       %{name}-data = %{version}
 
 %description -n xviewer-plugin-export-to-folder
 xviewer export to directory plugin
-
-%package -n xviewer-plugin-light-theme
-Summary:        Xviewer light-theme plugin
-Requires:       %{name}-data = %{version}
-
-%description -n xviewer-plugin-light-theme
-xviewer Light Theme plugin
 
 %package -n xviewer-plugin-map
 Summary:        Xviewer map plugin
@@ -122,8 +112,8 @@ cp %{SOURCE1} .
 %fdupes %{buildroot}
 
 %files
-%license COPYING README.md
-%doc NEWS xviewer-plugins.SUSE
+%license COPYING
+%doc README.md NEWS xviewer-plugins.SUSE
 
 %files -n %{name}-data
 %license COPYING
@@ -142,8 +132,6 @@ cp %{SOURCE1} .
 %{_datadir}/metainfo/xviewer-export-to-folder.metainfo.xml
 %{_datadir}/glib-2.0/schemas/org.x.viewer.plugins.export-to-folder.gschema.xml
 %{_prefix}/lib/xviewer/plugins/export-to-folder.{py,plugin}
-
-%files -n xviewer-plugin-light-theme
 
 %files -n xviewer-plugin-map
 %{_datadir}/metainfo/xviewer-map.metainfo.xml

@@ -63,4 +63,17 @@
     <comment></comment>
     <requestid>1347836</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>0ba41f26bf4af080144c002c305608b6</srcmd5>
+    <version>3.4.4</version>
+    <time>1791394352</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.4.4:
+  * map plugin: Replace libchamplain with osm-gps-map.
+- remove empty light-theme plugin subpackage
+- fix suggests and buildrequires
+
+- update to 3.4.0:</comment>
+    <requestid>1383022</requestid>
+  </revision>
 </revisionlist>
