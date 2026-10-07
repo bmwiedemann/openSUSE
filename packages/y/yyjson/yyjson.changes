@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 20:15:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.13.0:
+  * Add a set of write_buf() functions for writing JSON to a buffer
+    without allocation.
+  * Add YYJSON_FREESTANDING compile-time option to build without libc
+  * Add YYJSON_DISABLE_FILE compile-time option to disable file/fp
+    read and write APIs.
+  * Add YYJSON_READER_DEPTH_LIMIT and YYJSON_WRITER_DEPTH_LIMIT
+    compile-time options.
+  * Add YYJSON_WRITE_LOWERCASE_HEX flag to write \uXXXX escapes in
+    lowercase: #264.a
+  * Add Swift Package Manager traits for compile-time configuration
+
+-------------------------------------------------------------------
 Sun Aug 31 19:57:56 UTC 2025 - Richard Rahl <rrahl0@opensuse.org>
 
 - initial packaging

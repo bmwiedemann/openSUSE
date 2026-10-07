@@ -18,7 +18,7 @@
 
 %define         sover 0
 Name:           yyjson
-Version:        0.12.0
+Version:        0.13.0
 Release:        0
 Summary:        A JSON library in C
 License:        MIT
