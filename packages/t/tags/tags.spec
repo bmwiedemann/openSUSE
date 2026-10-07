@@ -22,7 +22,8 @@ Release:        0
 Summary:        A simple text tagger
 License:        X11
 URL:            https://github.com/phastmike/tags
-Source:         https://github.com/phastmike/tags/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+
 BuildRequires:  meson >= 0.58.0
 BuildRequires:  pkgconfig
 BuildRequires:  vala
