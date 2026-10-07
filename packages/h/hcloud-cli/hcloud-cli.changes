@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:07:59 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.70.1:
+  * Bug Fixes
+    - apple notarize and sign release pipeline (5bf4d76)
+
+-------------------------------------------------------------------
 Tue Oct 06 04:47:33 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.70.0:
