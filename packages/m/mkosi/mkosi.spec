@@ -28,7 +28,7 @@
 %endif
 
 Name:           mkosi
-Version:        27
+Version:        27.1
 Release:        0
 Summary:        Build bespoke OS Images
 License:        LGPL-2.1-or-later
@@ -36,12 +36,6 @@ Group:          System/Management
 URL:            https://github.com/systemd/mkosi
 Source0:        https://github.com/systemd/mkosi/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        mkosi-initrd.conf
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4432
-Patch0:         0001-tests-skip-test_fork_and_wait-if-on-rc-1.patch
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4442
-Patch1:         0002-opensuse-tolerate-missing-RPM-keyring.patch
-# PATCH-FIX-UPSTREAM https://github.com/systemd/mkosi/pull/4453
-Patch2:         0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}

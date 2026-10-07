@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Mon Oct  5 14:46:35 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
+
+- Update to 27.1:
+  * Fix tests failing in restricted build environments.
+  * SignInitrdPCRs= can be used with SplitArtifacts=pcrs, fixing initrd-specific
+    PCR policies with systemd v262.
+  * Don't fail creating initrds when there are directories mixed in with
+    microcode files.
+  * Fix builds when using unsigned local repositories with opensuse.
+  * Only use repositories and variables from the sandbox tree when using DNF.
+  * The mkosi-obs no longer sets MakeScriptsExecutable=, except for the main
+    image, so it can be included again.
+  * The security and debug repositories are switched back to deb.debian.org and
+    are no longer set by the Repositories= setting.
+  * Add an environment variable MKOSI_FORCE_USERNS_FALLBACK that when set to a
+    value that parses as a truthy bool, skips using systemd-nsresourced.
+  * A new setting DelegateRanges= is added that defaults to 0 when mkosi is run
+    as the root user. This fixes builds run as the root user.
+
+- Remove 0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch, merged
+  in version 27.1.
+
+- Remove 0002-opensuse-tolerate-missing-RPM-keyring.patch, merged
+  in version 27.1.
+
+- Remove 0001-tests-skip-test_fork_and_wait-if-on-rc-1.patch, merged
+  in version 27.1.
+
+-------------------------------------------------------------------
 Thu Sep 10 06:45:37 UTC 2026 - Antonio Feijoo <antonio.feijoo@suse.com>
 
 - Add 0003-mkosi-obs-Only-configure-MakeScriptsExecutable-in-th.patch:

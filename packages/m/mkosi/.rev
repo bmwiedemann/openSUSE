@@ -1345,4 +1345,12 @@ Mon Nov  14 08:20:28 UTC 2023 - Fredrik Lönnegren &lt;fredrik.lonnegren@suse.co
   * Backport upstream patch to fix build of signed UKI images in OBS.</comment>
     <requestid>1376850</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>f38166eeb880671872a92200474a09e6</srcmd5>
+    <version>27.1</version>
+    <time>1791394498</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382954</requestid>
+  </revision>
 </revisionlist>
