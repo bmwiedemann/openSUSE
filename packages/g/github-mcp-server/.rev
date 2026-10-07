@@ -215,4 +215,12 @@ Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
 - ui/ TypeScript tree is not compiled by this spec</comment>
     <requestid>1382342</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>1ede11c06542e3980239fa42cc918547</srcmd5>
+    <version>2.0.0</version>
+    <time>1791394505</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.0 (major): structured outputs need MCP 2026-07-28+ with legacy fallback, 0 tools dropped/renamed, CLI/config unchanged, no CVE.</comment>
+    <requestid>1382969</requestid>
+  </revision>
 </revisionlist>

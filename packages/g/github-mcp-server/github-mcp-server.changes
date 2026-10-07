@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:40:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.0 (major):
+  * Structured tool outputs with output schemas, gated on MCP
+    protocol 2026-07-28 or newer; older, unknown or version-less
+    clients keep the legacy text without output schemas or
+    structured content
+  * Compound tools with updated output schemas are withheld from
+    older clients; no tool is renamed or removed
+  * Modern clients get compact DTOs instead of raw REST objects:
+    release, ref, tag, commit, directory, gist, issue, search and
+    Actions results omit API and hypermedia URLs while keeping
+    browser links and identifiers; search_repositories with
+    minimal_output=false returns curated details, not the full
+    GitHub API object
+  * find_duplicate page and perPage now accept 0, forwarded for
+    the GitHub API default
+  * See upstream's release notes for the full list
+- Refresh the vendored Go modules for the new source (same module
+  versions; segmentio/encoding becomes direct): re-derived over
+  the new tree, still only MIT, BSD-3-Clause and Apache-2.0, no
+  copyleft; the crossed range and release notes name no CVE
+- go.mod still requires go 1.26.8, so the golang(API) >= 1.26.8
+  floor stands
+
+-------------------------------------------------------------------
 Sun Oct  4 06:59:42 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.14.0:
