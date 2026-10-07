@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 03:45:29 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to determine versions.
+
+-------------------------------------------------------------------
 Thu Jun 12 12:41:59 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

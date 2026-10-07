@@ -1,7 +1,7 @@
 #
 # spec file for package python-sphinxcontrib-blockdiag
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,6 +36,7 @@ Source:         https://github.com/blockdiag/sphinxcontrib-blockdiag/archive/%{v
 # PATCH-FEATURE-UPSTREAM 25.patch gh#blockdiag/sphinxcontrib-blockdiag#25
 Patch0:         https://patch-diff.githubusercontent.com/raw/blockdiag/sphinxcontrib-blockdiag/pull/25.patch
 Patch1:         remove-mock.patch
+Patch2:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module Sphinx >= 2.0}
 BuildRequires:  %{python_module blockdiag >= 1.5.0}
 BuildRequires:  %{python_module pip}
@@ -78,10 +79,9 @@ A sphinx extension for embedding block diagram using blockdiag.
 %files %{python_files}
 %license LICENSE
 %doc AUTHORS README.rst
-%{python_sitelib}/sphinxcontrib/blockdiag.py*
+%{python_sitelib}/sphinxcontrib/blockdiag.py
 %pycache_only %{python_sitelib}/sphinxcontrib/__pycache__
-%{python_sitelib}/sphinxcontrib_blockdiag-%{version}-py*-nspkg.pth
-%{python_sitelib}/sphinxcontrib_blockdiag-%{version}*-info
+%{python_sitelib}/sphinxcontrib_blockdiag-%{version}.dist-info
 %endif
 
 %changelog

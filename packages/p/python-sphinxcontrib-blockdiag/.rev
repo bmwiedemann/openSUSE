@@ -72,4 +72,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1285153</requestid>
   </revision>
+  <revision rev="9" vrev="5">
+    <srcmd5>68a11c37b0d6866266118ba49bc245ca</srcmd5>
+    <version>3.0.0</version>
+    <time>1791394371</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to determine versions.</comment>
+    <requestid>1382893</requestid>
+  </revision>
 </revisionlist>
