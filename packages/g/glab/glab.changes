@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:01:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.121.0:
+  * Features
+    - c5fece4b: feat(stack): add --skip-push for local stack
+      synchronization
+    - e924cf16: feat: add update subcommand for managed binaries
+  * Bug Fixes
+    - a70f5c8c: fix(ci): scroll and reveal truncated job names
+    - dc4a00ea: fix(commands): do not offer filename completions if
+      no args taken
+    - 68b06896: fix(df): stream large binary downloads safely
+    - 6c11bf31: fix(label): show the real total in the list header
+    - 6853ff19: fix(mr): warn when publishing --reviewer-state on
+      your own merge request
+  * Dependencies
+    - 37ea25e1: chore(deps): bump golangci-lint to v2.14.0
+    - ba3f9187: chore(deps): update module github.com/docker/cli to
+      v29.8.2+incompatible
+    - 048eec04: chore(deps): update module
+      github.com/tidwall/pretty to v1.2.2
+  * Maintenance
+    - a722b341: chore: combine the integration test coverage with
+      the unit test coverage
+  * Others
+    - ab082413: perf(mr-note): improving note lookup using early
+      exit searching
+    - e1c33d76: test: mock the OS keyring in every test binary
+
+-------------------------------------------------------------------
 Thu Oct 01 05:14:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.120.0:
