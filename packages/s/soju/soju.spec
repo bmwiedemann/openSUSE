@@ -17,7 +17,7 @@
 
 
 Name:           soju
-Version:        0.11.0
+Version:        0.11.1
 Release:        0
 Summary:        IRCv3 bouncer
 License:        AGPL-3.0-only
