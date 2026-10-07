@@ -54,4 +54,20 @@
     <comment></comment>
     <requestid>1340820</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>3e4679b686819585429defe19055b02e</srcmd5>
+    <version>2.14</version>
+    <time>1791394355</time>
+    <user>anag_factory</user>
+    <comment>- update to 2.14:
+  * update docs
+  * fix the state machine for LF/NUL after CR and add a timeout
+- update to 2.13:
+  * add more keys and ANSI sequences for existing ones
+  * many edge case bugs fixed
+  * fix wrongly documented `-1` vs `YAS_K_NONE`
+  * fix delay to be in ms (as documented)
+  * ignore mouse ANSI sequences</comment>
+    <requestid>1382858</requestid>
+  </revision>
 </revisionlist>
