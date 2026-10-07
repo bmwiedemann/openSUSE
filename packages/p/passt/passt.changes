@@ -1,4 +1,94 @@
 -------------------------------------------------------------------
+Wed Oct 07 07:06:40 UTC 2026 - Danish Prakash <danish.prakash@suse.com>
+
+- Drop qrap from %files, removed upstream
+- Update to version 20261002.cba3570:
+  * tcp: Don't fast re-transmit if only our FIN is outstanding
+  * apparmor: Fixes for new user namespace detaching procedure
+  * util: Make setting uidmap and gidmap errors non-fatal
+  * selinux: Allow passt to use setgid and setuid capabilities in namespace
+  * apparmor: allow netns paths on /tmp again
+  * udp: Add missing @now parameter doc to udp_flow_from_tap()
+  * apparmor: Use user-tmp abstraction, allow /var/tmp instead of /tmp only
+  * pasta: Add --no-pidns to keep spawned command in caller's PID namespace
+  * contrib/apparmor: add missing setfcap capability
+  * vhost_user: Reset vq enable flag in vu_cleanup()
+  * Add Zed editor settings
+  * util, pasta: Remove some unneeded #includes
+  * util: Add missing O_CLOEXEC for !HAS_GETRANDOM path
+  * util: Eliminate a stray trailing whitespace
+  * clangd: Add _GNU_SOURCE to default clangd options
+  * udp_flow: Remove obsolete comment
+  * parse: Convert parse_mac() to conventions of parse.c
+  * isolation: Don't create our userns as nobody
+  * isolation: Create helper function to enter user namespace
+  * util, pasta: Generalise [ug]id_map creation
+  * pasta: Include pasta.h in pasta.c
+  * netlink: Don't warn about multiple interfaces when there's only one
+  * isolation: Include linux_dep.h for close_range()
+  * fwd: Don't log warnings when failing to bind "weak" ports, just debug messages
+  * treewide: Sandbox qrap
+  * conf, fwd: Prefer same-scope address as inbound source address from host
+  * conf: Honour --address, --gateway, --netmask in local mode as well
+  * pasta: Regression test for bug 216
+  * pasta: Do not configure ID mappings when invoked with --netns-only
+  * pif: Add message to static_assert for C11 compliance, fix build with gcc 8
+  * udp, icmp: Remove unused timer_run fields from protocol contexts
+  * main: Ensure fds 0-2 are populated
+  * isolation: Move --fd descriptor to a number of our choosing
+  * conf: Make conf_tap_fd() operate more like conf_mode()
+  * isolation, conf: Set c->fd_tap from early parse of --fd
+  * isolation: Move close_open_files() to isolate_fds()
+  * passt: Always close pidfile_fd, not just when daemonizing
+  * tap: Fix EAGAIN/EWOULDBLOCK check in tap_pasta_input()
+  * passt.1, pesto.1: ::1 is an address, not a port
+  * dhcp: Make option parsing more robust, explicitly handle options 0 and 255
+  * CONTRIBUTING.md: The tag is "Link:", regardless of how many we have
+  * udp_vu: Check iov_tail_clone() return before assigning to msg_iovlen
+  * passt: Initialise listening socket fds to -1
+  * fwd: Don't rewrite inbound multicast destinations
+  * fwd: Reorder DNAPT and SNAT steps in fwd_nat_from_host()
+  * fwd: Rework default address logic for inbound flows
+  * udp: Validate that we have a unicast source address
+  * fwd: Clarify semantics of --host-lo-to-ns-lo
+  * dhcpv6: Fix reply destination to match client's source address
+  * selinux: Access to netns for podman-build, read access for netns in general
+  * isolation: Add --chroot-fallback option
+  * fwd, fwd_rule: Implement configurable target address mapping
+  * fwd_rule: Parse target addresses for forwarding rules
+  * fwd_rule: Rewrite forward rule parsing using parse.c helpers
+  * fwd_rule: Allow "all" port specs to be combined with other options
+  * conf: Use new parsing tools to handle -a option
+  * conf: Remove unnecessary mode checks from conf_addr()
+  * conf: Move address configuration into helper function
+  * parse: Add helpers for parsing IP addresses
+  * parse: Move parse_port_range() to new parsing framework
+  * parse: Add helper to parse unsigned integer values
+  * conf: Clean up conf_ip4_prefix()
+  * conf: Remove duplicate parsing of -F option
+  * parse: Start splitting out parsing helpers
+  * conf: Use parameter instead of global in conf_nat()
+  * Makefile: Add missing PESTO_HEADERS variable
+  * udp: Improve messages for errors getting errors
+  * flow, treewide: Promote priority of selected flow-linked messages
+  * flow, udp: Fix errno handling in udp_flow_sock()
+  * flow: Include flow details with higher priority log messages
+  * flow: Indent flow details messages
+  * flow: Regularise flow specific logging helpers
+  * tap: don't let overheard traffic move addr_seen when address is explicit
+  * tap: Trim Ethernet padding from short IPv4 frames instead of dropping them
+  * inany: Fix doc comment to match u32 field, not u64
+  * pif, util: Move listen(2) call from sock_l4_() to pif_listen()
+  * fwd, pif: Remove duplicated logic between tcp_listen() and udp_listen()
+  * Makefile: Remove unused DUAL_STACK_SOCKETS define
+  * flow: Correct misleading signature of flowside_sock_l4()
+  * tcp: MAX_WINDOW should be unsigned
+  * tcp: Avoid SEQ_*() comparisons against 0
+  * tcp: Merge common sequence logic from tcp_{buf,vu}_data_from_sock()
+  * cppcheck: Add workaround for cppcheck bug 14847
+  * cppcheck: Remove unused CPPCHECK_6936
+
+-------------------------------------------------------------------
 Mon Jun 15 13:30:19 UTC 2026 - Johannes Segitz <jsegitz@suse.com>
 
 - Add 0001-SELinux-Dontaudit-access-to-dri-devices.patch to dontaudit DRI

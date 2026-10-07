@@ -1,14 +1,17 @@
 #
 # spec file for package passt
 #
+# Copyright (c) 2022 Red Hat GmbH
+# Author: Stefano Brivio <sbrivio@redhat.com>
+#
 # PASST - Plug A Simple Socket Transport
 #  for qemu/UNIX domain socket mode
 #
 # PASTA - Pack A Subtle Tap Abstraction
 #  for network namespace/tap device mode
 #
-# Copyright (c) 2022 Red Hat GmbH
-# Author: Stefano Brivio <sbrivio@redhat.com>
+# Copyright (c) 2022, Dario Faggioli <dfaggioli@suse.com>
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,16 +21,13 @@
 # case the license is the MIT License). An "Open Source License" is a
 # license that conforms to the Open Source Definition (Version 1.9)
 # published by the Open Source Initiative.
-#
-# Copyright (c) 2022, Dario Faggioli <dfaggioli@suse.com>
-# Copyright (c) 2024, SUSE LLC
-#
+
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%if 0%{?suse_version} >= 1699
 # We currently have SELinux only on Tumbleweed and in SLES16.X
 # but there's no apparmor in SLES16.X
-%if 0%{?suse_version} >= 1699
 # TW
 %bcond_without selinux
 %bcond_without apparmor
@@ -45,7 +45,7 @@
 
 %global selinuxtype targeted
 Name:           passt
-Version:        20260612.a9c61ff
+Version:        20261002.cba3570
 Release:        0
 Summary:        User-mode networking daemons for virtual machines and namespaces
 License:        GPL-2.0-or-later AND BSD-3-Clause
@@ -184,12 +184,10 @@ fi
 %doc %{_docdir}/%{name}/demo.sh
 %{_bindir}/passt
 %{_bindir}/pasta
-%{_bindir}/qrap
 %{_bindir}/passt-repair
 %{_bindir}/pesto
 %{_mandir}/man1/passt.1*
 %{_mandir}/man1/pasta.1*
-%{_mandir}/man1/qrap.1*
 %{_mandir}/man1/passt-repair.1*
 %{_mandir}/man1/pesto.1*
 %ifarch x86_64
