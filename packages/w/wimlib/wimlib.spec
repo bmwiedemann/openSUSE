@@ -1,7 +1,7 @@
 #
 # spec file for package wimlib
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -18,10 +18,10 @@
 
 %define so_version 15
 Name:           wimlib
-Version:        1.14.4
+Version:        1.14.5
 Release:        0
 Summary:        Library to extract, create, modify, and mount WIM files
-License:        GPL-3.0-or-later AND LGPL-3.0-or-later AND MIT
+License:        GPL-3.0-or-later AND LGPL-2.1-or-later AND MIT
 Group:          Development/Libraries/C and C++
 URL:            https://wimlib.net
 Source:         https://wimlib.net/downloads/wimlib-%{version}.tar.gz
@@ -50,7 +50,7 @@ on Windows, but this package contains an implementation of ImageX called
 %package devel
 Summary:        Development files for wimlib
 Group:          Development/Libraries/C and C++
-Requires:       libwim%{so_version}
+Requires:       libwim%{so_version} >= %{version}
 
 %description devel
 Development files for wimlib
@@ -85,20 +85,19 @@ sed -i '1 s,#!.*,#!/bin/bash,' %{buildroot}%{_bindir}/mkwinpeimg
 rm %{buildroot}%{_libdir}/libwim.la
 
 %files -n wimtools
-%license COPYING COPYING.GPLv3 COPYING.LGPLv3
+%license COPYING COPYING.GPLv3 COPYING.LGPL
 %doc NEWS.md README.md
 %{_bindir}/mkwinpeimg
 %{_bindir}/wim*
 %{_mandir}/man1/*.1%{?ext_man}
 
 %files devel
-%license COPYING COPYING.GPLv3 COPYING.LGPLv3
 %{_libdir}/libwim.so
 %{_includedir}/wimlib.h
 %{_libdir}/pkgconfig/wimlib.pc
 
 %files -n libwim%{so_version}
-%license COPYING COPYING.GPLv3 COPYING.LGPLv3
+%license COPYING COPYING.GPLv3 COPYING.LGPL
 %{_libdir}/libwim.so.*
 
 %changelog
