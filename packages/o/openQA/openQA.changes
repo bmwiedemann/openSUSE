@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Tue Oct 06 20:12:54 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791317561.396de3fb:
+  * fix: Return secret on API key creation response
+
+-------------------------------------------------------------------
+Tue Oct 06 13:20:17 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791292805.aa7225b6:
+  * fix: test failure in t/37-limit_assets.t due to old mtimes
+  * feat(job-restart): Allow restarting chained parent
+
+-------------------------------------------------------------------
+Mon Oct 05 23:20:26 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791242414.a6759202:
+  * fix(openqa-bootstrap): Create tmpfiles.d entries without systemd
+
+-------------------------------------------------------------------
 Mon Oct 05 13:48:59 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1791003975.6dc1de2e:
