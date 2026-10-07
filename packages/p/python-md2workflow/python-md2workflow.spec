@@ -1,7 +1,7 @@
 #
 # spec file for package python-md2workflow
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -80,6 +80,8 @@ Redmine plugin for md2workflow
 %prep
 
 %setup -q -n md2workflow-%{version}
+# Do not import pkg_resources for no reason
+sed -i '/^import pkg_resources$/d' md2workflow/cli.py
 echo `pwd`
 cp %{_sourcedir}/{suse-prod,suse-devel,opensuse-prod}.conf  config/
 cp %{_sourcedir}/LICENSE LICENSE

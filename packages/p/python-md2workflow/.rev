@@ -102,4 +102,12 @@
 - Convert to libalternatives</comment>
     <requestid>1284291</requestid>
   </revision>
+  <revision rev="12" vrev="7">
+    <srcmd5>08571b8bc43da17ce083459c4da611e0</srcmd5>
+    <version>1.4.18</version>
+    <time>1791394370</time>
+    <user>anag_factory</user>
+    <comment>- Remove useless import of pkg_resources from the cli module.</comment>
+    <requestid>1382888</requestid>
+  </revision>
 </revisionlist>

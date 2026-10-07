@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  7 01:22:16 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove useless import of pkg_resources from the cli module. 
+
+-------------------------------------------------------------------
 Tue Jun 10 04:25:23 UTC 2025 - Lubos Kocman <lubos.kocman@suse.com>
 
 - Do not make symlinks to example configs copy them instead
