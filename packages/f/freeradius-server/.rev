@@ -1105,4 +1105,12 @@ Bug Fixes
   * Fix typo in rlm_cache which could cause crashes. Fixes #5522</comment>
     <requestid>1327153</requestid>
   </revision>
+  <revision rev="101" vrev="2">
+    <srcmd5>90542ea6a41788dc5b49cc503f458901</srcmd5>
+    <version>3.2.8</version>
+    <time>1791394304</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1383001</requestid>
+  </revision>
 </revisionlist>

@@ -1,7 +1,7 @@
 #
 # spec file for package freeradius-server
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -34,8 +34,8 @@ Summary:        RADIUS Server
 License:        GPL-2.0-only AND LGPL-2.1-only
 Group:          Productivity/Networking/Radius/Servers
 URL:            http://www.freeradius.org/
-Source:         ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-%{version}.tar.bz2
-Source99:       ftp://ftp.freeradius.org/pub/freeradius/freeradius-server-%{version}.tar.bz2.sig
+Source:         https://www.freeradius.org/ftp/pub/freeradius/freeradius-server-%{version}.tar.bz2
+Source99:       https://www.freeradius.org/ftp/pub/freeradius/freeradius-server-%{version}.tar.bz2.sig
 # keyring downloaded via link @ ftp://ftp.freeradius.org/pub/freeradius/README
 Source100:      freeradius.keyring
 Source1:        radiusd.service
@@ -213,7 +213,7 @@ FreeRADIUS plugin providing SQLite support.
 
 %build
 autoreconf -fi
-export CFLAGS="%{optflags} -DLDAP_DEPRECATED -fstack-protector -fPIC -DPIC"
+export CFLAGS="%{optflags} -DLDAP_DEPRECATED -fPIC -DPIC"
 %if 0%{?suse_version} > 1550
 export LDFLAGS="-pie $(python3-config --embed --libs)"
 %else

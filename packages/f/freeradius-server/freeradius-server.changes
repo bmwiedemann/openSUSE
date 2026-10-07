@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:31:22 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- ftp.freeradius.org doesn't exist anymore, download sources from
+  www.freeradius.org
+
+-------------------------------------------------------------------
+Tue Sep 29 07:50:57 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from CFLAGS (added 2006, predates
+  distro -fstack-protector-strong in optflags; the trailing basic
+  flag silently downgraded strong to basic).
+
+-------------------------------------------------------------------
 Wed Jan  7 04:28:44 UTC 2026 - William Brown <william.brown@suse.com>
 
 - Add freeradius-server-directoryName-subjectAltNames.patch
