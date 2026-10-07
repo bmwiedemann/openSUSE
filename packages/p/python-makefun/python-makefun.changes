@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 05:16:06 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not use pkg_resources in setup.py.
+
+-------------------------------------------------------------------
 Mon Aug 11 02:24:39 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add BuildRequires on pytest-asyncio.

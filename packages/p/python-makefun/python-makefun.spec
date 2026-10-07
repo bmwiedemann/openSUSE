@@ -1,7 +1,7 @@
 #
 # spec file for package python-makefun
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://github.com/smarie/python-makefun
 Source:         https://files.pythonhosted.org/packages/source/m/makefun/makefun-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM Based on gh#smarie/python-makefun#119
 Patch0:         set-pytest-asyncio-mode.patch
+# PATCH-FIX-UPSTREAM gh#smarie/python-makefun#123
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module setuptools_scm}
