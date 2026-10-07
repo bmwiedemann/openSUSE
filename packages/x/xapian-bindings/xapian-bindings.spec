@@ -1,7 +1,7 @@
 #
 # spec file for package xapian-bindings
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -30,7 +30,7 @@
 %bcond_with mono
 %define skip_python2 1
 Name:           xapian-bindings
-Version:        1.4.27
+Version:        1.4.32
 Release:        0
 Summary:        Bindings for xapian
 License:        GPL-2.0-only

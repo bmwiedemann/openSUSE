@@ -1,4 +1,42 @@
 -------------------------------------------------------------------
+Fri Oct  2 07:15:44 UTC 2026 - Matthias Fehring <buschmann23@opensuse.org>
+
+- Update to version 1.4.32
+  * Portabiity:
+    + configure.ac: Use $SED consistently to improve portability
+      to platforms where the installed sed tool isn't just called
+      `sed`.
+  * Java:
+    + Handle relative symlinks in javac's path.
+  * Lua:
+    + Adjust example Lua code to use a two space indent, which
+      seems to be the common Lua convention.
+  * Perl:
+    + Fix test 02pod.t when builddir != srcdir.
+  * Tcl:
+    + Document `package require` use, covering versioned vs
+      unversioned `package require`, and recommend a way to specify
+      a requirement for either Xapian 1.x or 2.x.
+    + Adjust `package require` in examples to work with either
+      Xapian 1.* or Xapian 2.
+    + smoketest.tcl: Update package require to 1.4.0 to reflect
+      the oldest version that has any chance of working.
+- Changes from version 1.4.31
+  * Documentation improvents for python3
+- Changes from version 1.4.30
+  * Portability:
+    + Fix "warning: The macro 'AC_HELP_STRING' is obsolete" if
+      autoconf is rerun.
+- Changes from version 1.4.29
+  * Ruby:
+    + Link to RUBY_LIBS on all platforms.
+- Chnages from version 1.4.28
+  * PHP:
+    + smoketest.php: Fix bad code reporting a particular test failure.
+  * Ruby:
+    + Add test coverage for MultiValueKeyMaker.
+
+-------------------------------------------------------------------
 Thu Feb 27 18:50:19 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to 1.4.27:
