@@ -1,4 +1,52 @@
 -------------------------------------------------------------------
+Mon Sep 28 04:45:10 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.0.1:
+  * Features
+    - feat: Print skip reasons in live plan output in #4715
+    - [LIB+CLI] Add flag to explicitly preserve null values in
+      merge in #4746
+    - Add a resource file name filter to kpt selectors and improve
+      test/docs for selectors in #4743
+    - added inventory check in live destroy/status in #4685
+    - Error when explicit destination of pkg get already exists in
+      #4696
+    - moved live logs to stderr in #4691
+    - Publish deb/rpm/apk Linux packages in the GoReleaser release
+      in #4753
+    - Tag lister improvements (restructure files, pass TLS
+      certificates) in #4636
+  * Behavioral changes
+    - Feature: Implement comprehensive field validation for Kptfile
+      (#4735) in #4742
+    - Accept scp-style and local upstream.git.repo values in
+      Kptfile validation in #4750
+  * Fixes
+    - Fix copy-merge to preserve locally-added files in
+      upstream-deleted directories in #4720
+    - Fix Kptfile pipeline not updating on pkg update with
+      fast-forward/force-delete-replace in #4704
+    - Fix incorrect handling when unfetched packages are deleted
+      from upstream in #4695
+    - run: add authoritative gitCommit ldflag override for version
+      command (#4752) in #4757
+  * Dependencies
+    - Bump github.com/google/cel-go from 0.28.1 to 0.29.0 in #4771
+  * Docs & internal
+    - Docs: Fix installation page URLs, versioning, and SLSA
+      verification instructions in #4717
+    - Docs: inline function Dockerfile, remove kfn download link in
+      #4734
+    - Docs: Add external link validation with lychee in #4707
+    - docs: add KRM function developer guide in #4726
+    - Improve kpt version resolution in setup-go-kpt composite
+      action in #4730
+    - Improve make/testing.mk coverage targets in #4751
+    - Add a script to generate PR and release reports in #4729
+    - Retire self-hosted Homebrew tap now that kpt is in
+      homebrew-core in #4749
+
+-------------------------------------------------------------------
 Sun Sep 20 11:09:57 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.0:

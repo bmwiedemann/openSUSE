@@ -20,7 +20,7 @@
 %define executable_name kpt
 
 Name:           kpt-cli
-Version:        1.0.0
+Version:        1.0.1
 Release:        0
 Summary:        CLI for kpt - automate Kubernetes Configuration Editing
 License:        Apache-2.0
