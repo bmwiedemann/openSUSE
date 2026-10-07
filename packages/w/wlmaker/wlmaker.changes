@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Tue Oct  6 16:43:59 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 0.8.1:
+  * Fixes output identification when requesting fullscreen or
+    maximize, also fixes XWayland maximize (gh#phkaeser/wlmaker#509)
+  * Fixes bad handling of optional semicolon in .desktop files, and
+    accepts True and False as booleans (gh#phkaeser/wlmaker#508)
+  * Fixes wlmbattery handling of optional sysfs files
+    (gh#phkaeser/wlmaker#504)
+- Rebase patches for new version
+- Add sed to relax WARN_AS_ERROR in doxygen for docs
+- Update libbase to libbase-54e60555cae53ad99314c7579dce1ad38373ecaa.tar.gz
+
+
+-------------------------------------------------------------------
 Sat Mar 21 00:53:32 UTC 2026 - Shawn Dunn <sfalken@opensuse.org>
 
 - Update to 0.7.1:

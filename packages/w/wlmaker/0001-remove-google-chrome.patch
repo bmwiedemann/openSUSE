@@ -1,7 +1,7 @@
-From fc0e97b3765575d3eb7c61962314f92211812393 Mon Sep 17 00:00:00 2001
-From: Shawn W Dunn <sfalken@opensuse.org>
-Date: Sat, 24 Jan 2026 13:41:00 -0800
-Subject: [PATCH] remove google chrome
+From 0f8bddbc63fd35e9aa0a86d725f3e4afcaf6f799 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Tue, 6 Oct 2026 08:40:01 -0700
+Subject: [PATCH 1/2] remove google chrome
 
 ---
  etc/RootMenu.plist | 2 +-
@@ -9,7 +9,7 @@ Subject: [PATCH] remove google chrome
  2 files changed, 2 insertions(+), 6 deletions(-)
 
 diff --git a/etc/RootMenu.plist b/etc/RootMenu.plist
-index abda0e1..53f3724 100644
+index 0190af8..fc0d4b6 100644
 --- a/etc/RootMenu.plist
 +++ b/etc/RootMenu.plist
 @@ -6,7 +6,7 @@
@@ -22,20 +22,20 @@ index abda0e1..53f3724 100644
    ("Magnify", OutputMagnify),
    ("Reduce", OutputReduce),
 diff --git a/etc/State.plist b/etc/State.plist
-index 33cdf72..92d0f67 100644
+index 6fc9f9b..2ff9592 100644
 --- a/etc/State.plist
 +++ b/etc/State.plist
 @@ -10,10 +10,6 @@
          CommandLine = "/usr/bin/foot";
-         Icon = "terminal-48x48.png";
+         Icon = "terminal-56x56.png";
        },
 -      {
--        CommandLine = "/usr/bin/google-chrome --enable-features=UseOzonePlatform --ozone-platform=wayland";
--        Icon = "chrome-48x48.png";
+-        CommandLine = "/usr/bin/chromium --enable-features=UseOzonePlatform --ozone-platform=wayland";
+-        Icon = "chromium-56x56.png";
 -      },
        {
          CommandLine = "MOZ_ENABLE_WAYLAND=1 /usr/bin/firefox";
-         Icon = "firefox-48x48.png";
+         Icon = "firefox-56x56.png";
 @@ -40,4 +36,4 @@
          Color = "argb32:ff508050";
      },
@@ -44,5 +44,5 @@ index 33cdf72..92d0f67 100644
 \ No newline at end of file
 +}
 -- 
-2.52.0
+2.55.0
 

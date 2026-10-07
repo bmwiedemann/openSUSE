@@ -1,30 +1,30 @@
-From b7dcbe5e1b95033d7d258b1425cfee3657f8f810 Mon Sep 17 00:00:00 2001
-From: Shawn W Dunn <sfalken@opensuse.org>
-Date: Fri, 20 Mar 2026 17:17:25 -0700
-Subject: [PATCH] allow for config in usr etc
+From 29ce8a02fa1816edd9fa63bcf4efbd37c90b3285 Mon Sep 17 00:00:00 2001
+From: Shawn W Dunn <sfalken@kalpadesktop.org>
+Date: Tue, 6 Oct 2026 09:09:16 -0700
+Subject: [PATCH 2/2] allow for config in usr etc
 
 ---
  CMakeLists.txt | 7 +------
  1 file changed, 1 insertion(+), 6 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index 7ea8027..36d1a4f 100644
+index 98e8615..31b05cd 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -70,12 +70,7 @@ ENDIF()
+@@ -66,12 +66,7 @@ endif()
  
  # Defaults to /usr/local/lib for installation.
- INCLUDE(GNUInstallDirs)
--IF(CMAKE_INSTALL_PREFIX STREQUAL "/usr")
+ include(GNUInstallDirs)
+-if(CMAKE_INSTALL_PREFIX STREQUAL "/usr")
 -  # For targets /usr, forces configurations into XDG config default path.
--  SET(WLMAKER_INSTALL_CONFIG_DIR "/etc/xdg/wlmaker")
--ELSE()
--  SET(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
--ENDIF()
-+SET(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
- 
- INCLUDE(CTest)
- 
+-  set(WLMAKER_INSTALL_CONFIG_DIR "/etc/xdg/wlmaker")
+-else()
+-  set(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
+-endif()
++set(WLMAKER_INSTALL_CONFIG_DIR "${CMAKE_INSTALL_SYSCONFDIR}/xdg/wlmaker")
+ include(CTest)
+ find_package(PkgConfig REQUIRED)
+ find_package(Libinput)
 -- 
-2.53.0
+2.55.0
 

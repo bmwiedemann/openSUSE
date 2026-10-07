@@ -8,4 +8,21 @@
 recreates much of the WindowMaker Window Manager</comment>
     <requestid>1344771</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>144c36d1e47fc0e903fcdda5a5c4ef8b</srcmd5>
+    <version>0.8.1</version>
+    <time>1791394326</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.1:
+  * Fixes output identification when requesting fullscreen or
+    maximize, also fixes XWayland maximize (gh#phkaeser/wlmaker#509)
+  * Fixes bad handling of optional semicolon in .desktop files, and
+    accepts True and False as booleans (gh#phkaeser/wlmaker#508)
+  * Fixes wlmbattery handling of optional sysfs files
+    (gh#phkaeser/wlmaker#504)
+- Rebase patches for new version
+- Add sed to relax WARN_AS_ERROR in doxygen for docs
+- Update libbase to libbase-54e60555cae53ad99314c7579dce1ad38373ecaa.tar.gz</comment>
+    <requestid>1382846</requestid>
+  </revision>
 </revisionlist>

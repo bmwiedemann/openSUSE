@@ -17,13 +17,13 @@
 
 # libbase is a utility library from the same upstream that is only used
 # by this project and is statically linked into the build
-%global libbase_commit a6c6a27e1f8fa2af3b36e9b2f60dbc0bfa0bcb0e
+%global libbase_commit 54e60555cae53ad99314c7579dce1ad38373ecaa
 %global libbase_url https://github.com/phkaeser/libbase
 
 %bcond docs 1
 
 Name:           wlmaker
-Version:        0.7.1
+Version:        0.8.1
 Release:        0
 Summary:        Wayland compositor inspired by WindowMaker
 License:        Apache-2.0
@@ -97,6 +97,9 @@ mv ../libbase-%{libbase_commit}/ submodules/libbase
 # Do not abort on warnings
 sed -i 's/-Werror//' CMakeLists.txt submodules/libbase/CMakeLists.txt
 
+# Relax doxygen WARN_AS_ERROR
+sed -i 's/^\(WARN_AS_ERROR\s*=\s*\).*/\1NO/' submodules/libbase/Doxyfile.in doc/Doxyfile.in
+
 %conf
 %cmake -Dconfig_OPTIM=ON
 
@@ -117,22 +120,28 @@ cp -r build/doc/html %{buildroot}%{_docdir}/wlmaker-doc/
 %fdupes %{buildroot}
 
 %check
-%ctest
-desktop-file-validate %{buildroot}%{_datadir}/applications/{%{name},%{name}.wlmclock,%{name}.wlmcpugraph,%{name}.wlmeyes,%{name}.wlmmemgraph,%{name}.wlmnetgraph}.desktop
+%dnl Disable toolkit_test, currently fails due to a Cairo version
+%dnl mismatch on tumbleweed, with a subpixel difference in the
+%dnl minimize icon https://github.com/phkaeser/wlmaker/issues/554
+%ctest --exclude-regex 'toolkit_test'
+desktop-file-validate %{buildroot}%{_datadir}/applications/{%{name},%{name}.wlmbattery,%{name}.wlmclock,%{name}.wlmcpugraph,%{name}.wlmeyes,%{name}.wlmmemgraph,%{name}.wlmnetgraph}.desktop
 
 %files
 %license LICENSE
 %doc README.md
 %dir %{_datadir}/%{name}
 %{_bindir}/%{name}
+%{_bindir}/wlmbattery
 %{_bindir}/wlmclock
 %{_bindir}/wlmeyes
 %{_bindir}/wlmcpugraph
 %{_bindir}/wlmmemgraph
 %{_bindir}/wlmnetgraph
 %{_bindir}/wlmtool
+%{_datadir}/metainfo/org.%{name}.%{name}.metainfo.xml
 %{_datadir}/icons/hicolor/*/apps/
 %{_datadir}/%{name}/icons/
+%{_datadir}/%{name}/Themes/
 %{_datadir}/wayland-sessions/
 %{_distconfdir}/xdg/%{name}/
 %{_datadir}/applications/
