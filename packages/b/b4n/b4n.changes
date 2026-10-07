@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:19:36 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.1.0:
+  * Features
+    - add structured JSON, klog and logfmt log parsers to display
+      formatted, human-readable logs
+    - wrap the pinned filter in ( ... ) & to allow quickly
+      narrowing results with an additional filter expression
+
+-------------------------------------------------------------------
 Sun Sep 20 06:42:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.0.1:
