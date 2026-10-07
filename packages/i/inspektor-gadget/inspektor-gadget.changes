@@ -1,4 +1,93 @@
 -------------------------------------------------------------------
+Tue Oct 06 04:46:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.57.0:
+  * Welcome to the v0.57.0 of Inspektor Gadget. These are the most
+    important changes:
+    - Rootless ig run — gadgets can now run without root and
+      without CAP_SYS_ADMIN, needing only cap_bpf, cap_perfmon, and
+      cap_sys_ptrace. Fanotify-based container enrichment still
+      needs CAP_SYS_ADMIN, so ig falls back to reporting events
+      from already-running containers in that mode. A matching
+      --drop-cap-sys-admin flag was added to kubectl-gadget deploy
+      for the same reduced-privilege model in Kubernetes (#5637,
+      #5716).
+    - OCI local store performance & UX — the local store's
+      index.json no longer grows unbounded; unreferenced manifests
+      are pruned after pulls/builds/removals, and a new ig image
+      prune command reclaims blob disk space. Signature pull
+      failures are now classified into actionable messages instead
+      of raw oras internals (#5782, #5779).
+    - advise_networkpolicy handles host-network traffic — peers
+      that can't be reliably mapped to a pod (e.g. host-network
+      pods) are now excluded from generated rules and flagged with
+      an annotation instead of producing incorrect policies
+      (#5799).
+    - Security fix: gRPC-Go DoS (CVE-2026-84445) — bumped
+      google.golang.org/grpc from v1.83.1 to v1.83.2 to patch a
+      HIGH severity xDS server crash vulnerability flagged by Trivy
+      in CI (#5797).
+    - Breaking changes — snapshot_socket now reports socket state
+      as a human-readable string (e.g. ESTABLISHED, LISTEN) instead
+      of a raw numeric enum, and top_process renamed its CPU/Memory
+      fields to shorter, more consistent names that fit narrow
+      terminals (#5757, #5759).
+  * Breaking Changes
+    - gadgets/snapshot_socket: Provide human representation of
+      state in #5757
+    - pkg/operators/process: Shorten CPU and Mem fields in
+      top_process in #5759
+  * General Improvements
+    - Rootless ig run in #5637
+    - cmd: Add --drop-cap-sys-admin to deploy subcommand. in #5716
+    - feat(runtime-finder): add runc path for custom CAPI images
+      built with kubernetes-sigs/image-builder in #5790
+    - perf(oci): stop the local store index from growing without
+      bound in #5782
+    - advise_networkpolicy: Handle host network traffic in #5799
+    - operators/ebpf: Hide Parent Tid in #5795
+  * Bug Fixes
+    - fix(oci): make signature pull failures actionable in #5779
+    - deps: bump gRPC-Go to v1.83.2 to address CVE-2026-84445 in
+      #5797
+  * Testing and Continuous Integration
+    - ci: Add check enforcing consistent gadget docs structure in
+      #5781
+    - ci: add non-blocking weekly kernel-compatibility lane for
+      published gadgets in #5708
+    - ci: switch to cosign bundle format for signing in #5308
+    - ci: pull the gadget images before the local gadget tests in
+      #5806
+    - gadgets/trace_capabilities: Reduce user-stack test flakiness
+      in #5685
+    - dependabot: Upgrade actions in composite actions in #5829
+    - Artifact Hub: Update gadgets version to v0.56.0 in #5789
+    - Artifact Hub: Update gadgets version to v0.56.2 in #5817
+  * Dependencies updates
+    - Bump gopacket to v1.7.3 in #5818
+    - go: Bump google.golang.org/grpc from 1.83.1 to 1.83.2 in
+      /tools/testjson2md in #5791
+    - go: Bump github.com/containerd/containerd from 1.7.33 to
+      1.7.35 in #5793
+    - go: Bump github.com/containerd/containerd from 1.7.35 to
+      1.7.36 in #5811
+    - go: bump go.opentelemetry.io/otel/sdk from 1.44.0 to 1.45.0
+      in #5803
+    - go: bump
+      go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc
+      from 0.18.0 to 0.21.0 in #5802
+    - go: bump the k8s group across 1 directory with 7 updates in
+      #5778
+    - go: bump the golang-x group across 3 directories with 5
+      updates in #5827
+    - go: bump github.com/prometheus/client_golang from 1.24.0 to
+      1.24.1 in #5735
+    - go: bump the aws-sdk group across 1 directory with 3 updates
+      in #5838
+    - go: bump the docker group across 1 directory with 3 updates
+      in #5834
+
+-------------------------------------------------------------------
 Fri Oct 02 04:52:31 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.56.2:
