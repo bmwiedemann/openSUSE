@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:38:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.0.0
+  https://github.com/heldercorreia/speedcrunch/releases/tag/v1.0.0
+- Drop patch:
+  * speedcrunch-cmake4.patch
+
+-------------------------------------------------------------------
 Tue Apr  1 15:57:09 UTC 2025 - Christophe Marin <christophe@krop.fr>
 
 - Add patch:
