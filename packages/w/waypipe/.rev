@@ -62,4 +62,41 @@
     <comment></comment>
     <requestid>1331915</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>940596dec3fd202fe0246bef645845f7</srcmd5>
+    <version>0.11.2</version>
+    <time>1791394365</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.11.2:
+  * Bump version
+  * Fix validation warnings creating disjoint vkImages
+  * Apply more clippy suggestions
+  * Use libavutil's new queue API
+  * Bump version
+  * Log Vulkan driver version details
+  * Block timeline semaphore export with NVIDIA
+  * Ensure ash::Device is deleted on error path
+  * Fix accidental doctests and invalid link
+  * Avoid panic with nonintegral viewport crops
+  * Reject oversize wl_shm buffer allocations
+  * Avoid panic with wl_buffers not divisible by scale
+  * Ensure unknown format fallback damage region is nonempty
+  * Check wl_shm_pool::resize does not shrink file
+  * Permit zero stride values for wl_shm buffers
+  * Reject invalid zero size wl_shm buffers
+  * Cleanly error when Wayland objects lack extra data
+  * Relax overly strict buffer size check for fuzzing
+  * Add simple fuzzer script focused on protocol handling
+  * Validate protocol timestamp nanosecond fields
+  * Ignore SIGPIPE for connection handlers
+  * Deduplicate some signal handling code
+  * Extract main loop code into library
+  * Automatically set log level for xwayland-satellite
+  * Log message on unexpected dmabuf format event
+  * Drop OPCODE_ZWP_LINUX_DMABUF_V1_FORMAT events for VulkanSetup case
+  * Use glsl 'restrict' in yuv conversion shaders
+  * Check that shader compilation succeeded
+  * Allow video encoding for more DMABUF formats (forwarded request 1382874 from dirkmueller)</comment>
+    <requestid>1382884</requestid>
+  </revision>
 </revisionlist>
