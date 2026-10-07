@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:30:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.18.5.3:
+  * Add more fiat currency options
+  * Fix transaction history sorting
+  * Fix stale transactions in send confirmation dialog
+  * Keep daemon credentials scoped to each connection
+  * Fix SOCKS5 proxy handling and proxy use for update verification
+  * Fix fiat price updates and update checks on Linux
+  * Abort saving wallets if setting the password fails
+  * Fix restore height when entering dates without hyphens
+  * Show key type when verifying signed messages
+  * Improve display of transactions with multiple recipients
+  * Display reserve proof amounts in XMR
+  * Update embedded P2Pool to v4.18.1
+
+-------------------------------------------------------------------
 Thu Jul 23 19:51:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.18.5.2:
