@@ -1296,4 +1296,18 @@
 </comment>
     <requestid>1379128</requestid>
   </revision>
+  <revision rev="65" vrev="1">
+    <srcmd5>bc52f2df46bddf8b806af8bebdb21da3</srcmd5>
+    <version>3.0.0</version>
+    <time>1791394328</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.0: complete C++ to Rust rewrite (2.42.1 was last C++ release).
+- Build with Cargo (Rust &gt;= 1.95); sources via tar_scm + vendored vendor.tar.zst.
+- Vendored tree includes mimalloc git dependency for offline build.
+- oneTBB dependency is gone upstream.
+- system-allocator feature keeps previous no-mimalloc behavior; system zlib/zstd.
+- Full cargo test suite passed locally (aarch64); x86_64 via OBS builds.
+- Drop-in replacement claim is upstream's (Gentoo-tested, not verified on openSUSE).</comment>
+    <requestid>1382849</requestid>
+  </revision>
 </revisionlist>

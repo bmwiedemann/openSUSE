@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Tue Oct  6 17:29:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 3.0.0:
+  * Complete rewrite from C++ to Rust; 2.42.1 was the last C++
+    release. Upstream claims drop-in replacement for 2.42.1:
+    same command line, targets and output modulo the fixes
+    below (Gentoo-tested, not verified on openSUSE).
+  * Build system is now Cargo (Rust >= 1.95 plus a C compiler);
+    the oneTBB dependency is gone.
+  * Keep the previous no-mimalloc behavior via the
+    system-allocator cargo feature; link system zlib and zstd.
+  * Compatibility fixes: statically-linked executables with
+    version scripts, --gc-sections keeping --init/--fini
+    functions, common-symbol size merging, --icf on exported
+    functions, deterministic output, single-dash options parsed
+    as GNU ld reads them.
+  * Test suite moved from ctest to cargo test.
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list.
+- Switch sources to a _service (tar_scm + cargo_vendor +
+  cargo_audit) shipping mold-3.0.0.tar.zst and vendor.tar.zst
+  with the mimalloc git dependency vendored for offline build.
+
+-------------------------------------------------------------------
 Wed Sep 16 09:22:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.42.1:

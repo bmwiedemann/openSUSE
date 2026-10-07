@@ -17,31 +17,27 @@
 
 
 Name:           mold
-Version:        2.42.1
+Version:        3.0.0
 Release:        0
 Summary:        A Modern Linker (mold)
 License:        MIT
 URL:            https://github.com/rui314/mold
-Source:         https://github.com/rui314/mold/archive/v%{version}/mold-%{version}.tar.gz
+Source0:        %{name}-%{version}.tar.zst
+Source1:        vendor.tar.zst
+BuildRequires:  cargo
 BuildRequires:  clang
-BuildRequires:  cmake
+BuildRequires:  diffutils
+BuildRequires:  gawk
 BuildRequires:  gcc-c++
-BuildRequires:  gdb
 BuildRequires:  glibc-devel-static
-BuildRequires:  libdwarf-tools
-BuildRequires:  llvm
-BuildRequires:  llvm-gold
 BuildRequires:  pkgconfig
-BuildRequires:  tbb-devel
-BuildRequires:  valgrind
+BuildRequires:  rust >= 1.95
+BuildRequires:  tar
 BuildRequires:  zstd
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(zlib)
 Suggests:       update-alternatives
 OrderWithRequires(pre): update-alternatives
-%ifarch x86_64
-BuildRequires:  gcc-32bit
-%endif
 
 %description
 mold is a faster drop-in replacement for existing Unix linkers.
@@ -51,19 +47,36 @@ mold is created for increasing developer productivity by reducing
 build time especially in rapid debug-edit-rebuild cycles.
 
 %prep
-%autosetup -p1
+%autosetup -p1 -a1
 
 %build
-%cmake \
-  -DMOLD_USE_MIMALLOC=OFF \
-  -DMOLD_USE_SYSTEM_TBB=ON
-%cmake_build
+# mold embeds the wrapper library dir at compile time (default
+# /usr/local/lib); openSUSE uses lib64, so export it for both
+# the build and the install below.
+export MOLD_LIBDIR=%{_libdir}
+export ZSTD_SYS_USE_PKG_CONFIG=1
+cargo build --release --offline --features system-allocator
 
 %install
-%cmake_install
+export MOLD_LIBDIR=%{_libdir}
+# install-mold.sh hardcodes PREFIX/share/doc, not the distro docdir, so install
+# the same layout by hand into the openSUSE paths.
+install -D -m 0755 target/release/mold %{buildroot}%{_bindir}/mold
+ln -sf mold %{buildroot}%{_bindir}/ld.mold
+install -D -m 0755 target/release/mold-wrapper.so %{buildroot}%{_libdir}/mold/mold-wrapper.so
+install -d %{buildroot}%{_libexecdir}/mold
+ln -sf ../../bin/mold %{buildroot}%{_libexecdir}/mold/ld
+install -D -m 0644 docs/mold.1 %{buildroot}%{_mandir}/man1/mold.1
+ln -sf mold.1 %{buildroot}%{_mandir}/man1/ld.mold.1
+install -D -m 0644 LICENSE %{buildroot}%{_docdir}/mold/LICENSE
 
 %check
-%ctest
+export MOLD_LIBDIR=%{_libdir}
+export ZSTD_SYS_USE_PKG_CONFIG=1
+# Full suite: unit tests plus the shell integration tests. Targets without
+# a compiler+QEMU pair in the buildroot are skipped by the runner, so this
+# exercises every native case with no cross toolchain needed.
+cargo test --release --offline --features system-allocator
 
 %pre
 if [ $1 -eq 2 ] && [ -f %{_sbindir}/update-alternatives ] && [ -f %{_sysconfdir}/alternatives/ld ] ; then
