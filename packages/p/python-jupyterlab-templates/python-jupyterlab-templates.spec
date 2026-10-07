@@ -33,6 +33,8 @@ Source2:        node_modules.spec.inc
 %include        %{_sourcedir}/node_modules.spec.inc
 # PATCH-FIX-UPSTREAM update-deps.patch bsc#1259114
 Patch0:         update-deps.patch
+# PATCH-FIX-UPSTREAM CVE-2026-103923.patch bsc#1284038
+Patch1:         CVE-2026-103923.patch
 BuildRequires:  %{python_module base >= 3.7}
 BuildRequires:  %{python_module hatch-jupyter-builder}
 BuildRequires:  %{python_module hatchling}
@@ -70,12 +72,17 @@ Obsoletes:      jupyter-jupyterlab_templates < %{version}
 Support for jupyter notebook templates in jupyterlab.
 
 %prep
-%autosetup -p1 -n jupyterlab_templates-%{version}
+%setup -q -n jupyterlab_templates-%{version}
+%patch -P 0 -p1
 rm js/yarn.lock
 rm jupyterlab_templates/labextension/static/*.js
 
 pushd js
 local-npm-registry %{_sourcedir} install --include=dev --include=peer
+popd
+
+pushd js/node_modules/katex
+%patch -P 1 -p1
 popd
 
 %build

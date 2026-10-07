@@ -185,4 +185,12 @@
   (bsc#1268933,  CVE-2026-48779)</comment>
     <requestid>1361899</requestid>
   </revision>
+  <revision rev="19" vrev="3">
+    <srcmd5>ebeb0a6bc90e3bcf050c089f201e2e50</srcmd5>
+    <version>0.5.3</version>
+    <time>1791394306</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1382827</requestid>
+  </revision>
 </revisionlist>

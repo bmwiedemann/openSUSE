@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Mon Oct  5 12:35:25 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- CVE-2026-103923: katex: inherited Object.prototype properties in
+  options processing can cause trusted rendering bypasses
+  (bsc#1284036)
+  * CVE-2026-103923.patch
+  * KaTeX chain does not support the secure version yet, therefore
+    patching the vendored package
+
+-------------------------------------------------------------------
 Fri Jun 26 10:04:30 UTC 2026 - Daniel Garcia <daniel.garcia@suse.com>
 
 - Refresh javascript dependencies to update ws
