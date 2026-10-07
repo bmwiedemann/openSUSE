@@ -361,6 +361,14 @@ Patch1006:      sjisx-pending-char-reset.patch
 Patch1007:      eucjisx-pending-char-reset.patch
 # PATCH-FIX-UPSTREAM libio: Fix CVE-2026-18374 heap buffer overflow in ccs= handling (CVE-2026-18374, BZ #34574)
 Patch1008:      libio-fopen-ccs.patch
+# PATCH-FIX-UPSTREAM resolv: Fix assertion failure on search list truncation (CVE-2026-8674, BZ #31026)
+Patch1009:      resolv-search-list-trunc.patch
+# PATCH-FIX-UPSTREAM elf: Open the normalized $ORIGIN rpath in AT_SECURE programs (CVE-2026-86805, BZ #34360)
+Patch1019:      elf-origin-open-normalized.patch
+# PATCH-FIX-UPSTREAM powerpc: Fix one byte overread in strncasecmp (CVE-2026-97399, BZ #34683)
+Patch1020:      power8-strncasecmp-overread.patch
+# PATCH-FIX-UPSTREAM realloc: Fix mmap non-mremap reallocation case (BZ #34697)
+Patch1021:      realloc-mmap-non-mremap.patch
 %endif
 
 ###

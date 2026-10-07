@@ -3304,4 +3304,19 @@ do special case rings. (forwarded request 934053 from matz2)</comment>
   optimizations (bsc#1277247). (forwarded request 1377842 from Andreas_Schwab)</comment>
     <requestid>1377843</requestid>
   </revision>
+  <revision rev="309" vrev="3">
+    <srcmd5>2cc940ea7935115620ada805db0d7364</srcmd5>
+    <version>2.44</version>
+    <time>1791394293</time>
+    <user>anag_factory</user>
+    <comment>- resolv-search-list-trunc.patch: resolv: Fix assertion failure on search
+  list truncation (CVE-2026-8674, bsc#1281297, BZ #31026)
+- elf-origin-open-normalized.patch: elf: Open the normalized $ORIGIN rpath
+  in AT_SECURE programs (CVE-2026-86805, bsc#1282509, BZ #34360)
+- power8-strncasecmp-overread.patch: powerpc: Fix one byte overread in
+  strncasecmp (CVE-2026-97399, bsc#1283147, BZ #34683)
+- realloc-mmap-non-mremap.patch: realloc: Fix mmap non-mremap reallocation
+  case (BZ #34697) (forwarded request 1382470 from Andreas_Schwab)</comment>
+    <requestid>1382471</requestid>
+  </revision>
 </revisionlist>

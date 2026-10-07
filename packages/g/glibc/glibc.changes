@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  1 07:53:31 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- resolv-search-list-trunc.patch: resolv: Fix assertion failure on search
+  list truncation (CVE-2026-8674, bsc#1281297, BZ #31026)
+- elf-origin-open-normalized.patch: elf: Open the normalized $ORIGIN rpath
+  in AT_SECURE programs (CVE-2026-86805, bsc#1282509, BZ #34360)
+- power8-strncasecmp-overread.patch: powerpc: Fix one byte overread in
+  strncasecmp (CVE-2026-97399, bsc#1283147, BZ #34683)
+- realloc-mmap-non-mremap.patch: realloc: Fix mmap non-mremap reallocation
+  case (BZ #34697)
+
+-------------------------------------------------------------------
 Mon Aug 31 10:56:20 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - strfmon-right-just.patch: stdlib: Fix right-justification in strfmon
