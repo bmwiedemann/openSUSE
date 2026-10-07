@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <image schemaversion="7.6" name="Aeon-Installer" displayname="Aeon Installer">
+    <!-- OBS-ExclusiveArch: x86_64 -->
     <description type="system">
         <author>Richard Brown</author>
         <contact>rbrownsuse@opensuse.org</contact>

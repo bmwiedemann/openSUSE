@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:52:34 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Mark Aeon as exclusively for x86_64. Aarch64 is the closest to building, but
+  still fails; power, risc, s390x do not have Aeon-release built.
+
+-------------------------------------------------------------------
 Thu Jul 23 22:32:28 UTC 2026 - Tobias Görgens <suse.snooper541@passmail.net>
 
 - Add /etc mount for final system
