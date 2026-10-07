@@ -239,4 +239,12 @@ Single upstream bug fix; no dependency or packaging changes.
 </comment>
     <requestid>1381936</requestid>
   </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>376634364dfcb3d11fa816099e48771a</srcmd5>
+    <version>5.2.0</version>
+    <time>1791394373</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.2.0: add PowerShell shell completion (new CYCLOPTS_COMPLETION_WORDS protocol). License stays Apache-2.0, no CVE/security fixes.</comment>
+    <requestid>1382967</requestid>
+  </revision>
 </revisionlist>

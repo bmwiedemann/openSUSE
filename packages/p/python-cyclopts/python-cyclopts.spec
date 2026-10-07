@@ -18,7 +18,7 @@
 
 %bcond_without libalternatives
 Name:           python-cyclopts
-Version:        5.1.1
+Version:        5.2.0
 Release:        0
 Summary:        Intuitive, easy CLIs based on python type hints
 License:        Apache-2.0

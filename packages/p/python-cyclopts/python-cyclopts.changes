@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:31:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.2.0 (PyPI release 2026-10-06):
+  * Add PowerShell shell completion support
+  * Rename completion env var CYCLOPTS_COMPLETE_WORDS to
+    CYCLOPTS_COMPLETION_WORDS
+
+-------------------------------------------------------------------
 Thu Oct  1 16:00:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.1.1:
