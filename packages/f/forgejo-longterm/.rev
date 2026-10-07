@@ -238,4 +238,12 @@
     <comment>1</comment>
     <requestid>1379590</requestid>
   </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>e4a31bf80300a9f7810b2589fa20b767</srcmd5>
+    <version>15.0.9</version>
+    <time>1791394333</time>
+    <user>anag_factory</user>
+    <comment>Update to 15.0.9 (forwarded request 1381951 from computersalat)</comment>
+    <requestid>1382852</requestid>
+  </revision>
 </revisionlist>
