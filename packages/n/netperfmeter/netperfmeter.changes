@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:55:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.12
+  * Improved documentation.
+  * Consistently checking for __sun and __GNU__ cases now.
+  * Removed unnecessary uname() call from loglevel.cc.
+  * GNU Hurd CPU statistics now also works with SMP kernels.
+  * Bugfix: Fixed processing of stale CPU statistics from /proc
+    under Linux.
+
+-------------------------------------------------------------------
 Thu Sep 10 11:26:11 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.11
