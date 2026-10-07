@@ -17,7 +17,7 @@
 
 
 Name:           commandergenius
-Version:        3.6.3
+Version:        3.6.4
 Release:        0
 Summary:        A clone of the Commander Keen engines
 License:        GPL-2.0-only
