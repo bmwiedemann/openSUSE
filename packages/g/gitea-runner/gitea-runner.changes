@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct 02 05:50:56 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 4.1.0:
+  * fix: align Docker actions, job env and host mode with GitHub (#1268)
+  * fix: drop stalled HTTP/2 connections in action clones (#1266)
+  * fix: fail fast in register and honor GITEA_MAX_REG_ATTEMPTS (#1197)
+  * fix: dind image readiness, exit codes and shutdown order (#1265)
+  * enhance: export the Prometheus metrics over OpenTelemetry (#1248)
+  * fix: clear consumed ephemeral registration state (#1256)
+  * feat: add Kubernetes backend (#1260)
+  * enhance: log task, job and run identifiers when a task starts (#1257)
+  * docs: recommend DinD for container jobs (#1258)
+
+-------------------------------------------------------------------
 Wed Sep 30 09:34:43 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 4.0.1:
