@@ -101,7 +101,7 @@ This package provides the docs for %{name}
 
 %files
 %license COPYING
-%doc AUTHORS README.md MAINTAINERS THANKS
+%doc README.md
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/*/{actions,apps}/*.{png,svg}
@@ -123,11 +123,10 @@ This package provides the docs for %{name}
 %dir %{_libdir}/%{name}
 
 %files doc
-%{_datadir}/help/*/%{name}/{,figures/}*.{png,page,xml}
 %{_datadir}/gtk-doc/html/xviewer
-%dir %{_datadir}/help/*/{%{name},%{name}/figures}
+%dir %{_datadir}/help/C/{%{name},%{name}/figures}
+%{_datadir}/help/C/%{name}/{,figures/}*.{png,page,xml}
 
-%files lang
-%{_datadir}/locale/*/*/*.mo
+%files lang -f %{name}.lang
 
 %changelog

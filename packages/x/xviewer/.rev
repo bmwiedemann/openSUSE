@@ -281,4 +281,12 @@
     <comment></comment>
     <requestid>1347835</requestid>
   </revision>
+  <revision rev="30" vrev="3">
+    <srcmd5>6c41aae2479519265af92c3adf627578</srcmd5>
+    <version>3.4.16</version>
+    <time>1791394351</time>
+    <user>anag_factory</user>
+    <comment>- clean up lang/doc package split</comment>
+    <requestid>1383021</requestid>
+  </revision>
 </revisionlist>
