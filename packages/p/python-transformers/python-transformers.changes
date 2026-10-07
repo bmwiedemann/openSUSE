@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:39:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 5.19.0:
+  * Add EmbeddingGemma2, a multimodal embedding model
+  * Breaking: every MoE model whose router computes logits now
+    returns them with output_router_logits=True
+  * Breaking: Owlv2 image query picks the box with the highest
+    objectness score now
+  * Deprecate the "paged|" attention prefix; plain sdpa and
+    flash_attention_2 support continuous batching directly
+  * Expert parallelism gains token dispatch (default for Qwen3
+    MoE and Mellum) and Trainer support
+  * Per-layer cache configuration plus quantized-cache fixes
+  * Fix DataCollatorForLanguageModeling ignoring seed=0,
+    WatermarkDetector repeated-ngram counting and chunked
+    prefill with multi-axis position ids
+  * No dependency changes: upstream floors and caps are
+    identical to 5.18.0
+
+-------------------------------------------------------------------
 Thu Oct  1 16:29:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 5.18.0:

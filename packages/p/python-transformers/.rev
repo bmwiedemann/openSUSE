@@ -130,4 +130,12 @@ attention types. huggingface-hub moves to &gt;= 1.31.0, &lt; 3.0, which
 also lifts the 2.0 ceiling that left 5.17.0 unimportable.</comment>
     <requestid>1381945</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>0f6f9ee1ba8f9f99cdd6b5767f18e4e7</srcmd5>
+    <version>5.19.0</version>
+    <time>1791394508</time>
+    <user>anag_factory</user>
+    <comment>Update to 5.19.0: EmbeddingGemma2, paged| deprecation plus MoE router_logits and Owlv2 breaking changes per entry. Floors unchanged with Factory hub/tokenizers/torch in range, no CVE.</comment>
+    <requestid>1382968</requestid>
+  </revision>
 </revisionlist>
