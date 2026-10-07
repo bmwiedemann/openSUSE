@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 05 22:55:46 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to 0.7.1
+  * metainfo file update
+
+-------------------------------------------------------------------
+Sun Oct 04 22:36:32 UTC 2026 - koxt2 <koxt2@protonmail.com>
+
+- Update to 0.7.0
+  * Option to view a graphical representation of map file after a scan has completed
+  * View graphical representation of map file (if one exists) when an image is chosen
+  * Fix Fedora rpmlint errors
+  * Fixed leftover root owned directories after aborted recovery. 
+  * Removed packaging directories
+  * Moved Ubuntu package to OBS from Launchpad
+  * Formatting corrections
+
+-------------------------------------------------------------------
 Fri Sep 18 14:21:00 UTC 2026 - koxt2 <koxt2@protonmail.com>
 
 - Update to 0.6.1
