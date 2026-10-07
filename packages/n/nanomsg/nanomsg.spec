@@ -17,9 +17,9 @@
 #
 
 
-%define sover 6
+%define sover 7
 Name:           nanomsg
-Version:        1.2.5
+Version:        1.3.0
 Release:        0
 Summary:        Socket library providing several common communication patterns
 License:        MIT
