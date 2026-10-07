@@ -1,4 +1,145 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:34:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.126.0:
+  * New Features
+    - [build-info-go] RTECO-1362 - Add strict mode for npm
+      build-info dependency resolution #418
+    - [build-info-go] RTECO-2003: add Chocolatey FlexPack
+      collectors #425
+    - [build-info-go] RTECO-2247: PSResource (PowerShell
+      PSResourceGet) FlexPack collectors #430
+    - [jfrog-cli] RTECO-1362: Add comprehensive npm
+      fail-on-uncollected-deps integration tests #3698
+    - [jfrog-cli] RTECO-1776 - Implement Complete Debian(Apt)
+      Support for build info #3691
+    - [jfrog-cli] Add huggingface_hub version matrix to CI
+      (1.19.0/1.20.0/1.29.0) #3716
+    - [jfrog-cli] RTECO-2003: register jf choco and add the
+      Chocolatey test suite #3708
+    - [jfrog-cli] RTECO-2247: Add jf
+      Install-/Save-/Update-/Publish-PSResource commands #3717
+    - [jfrog-cli-artifactory] RTECO-1362 - Add
+      --fail-on-uncollected-deps flag for npm install/ci #542
+    - [jfrog-cli-artifactory] RTECO-2003: add jf choco and jf setup
+      choco #556
+    - [jfrog-cli-artifactory] RTECO-2247 - PSResource (PowerShell
+      PSResourceGet) setup + FlexPack command #563
+    - [jfrog-cli-core] RTECO-2003: add the Choco project type #1616
+    - [jfrog-cli-core] RTECO-2247: Add PSResource project type
+      #1620
+    - [jfrog-cli-security] Add Yarn V3/4 Package Updater #875
+    - [jfrog-cli-security] Add NuGet Package Updater For plain
+      PackageReference Fixes #874
+    - [jfrog-cli-security] Add uv fix support to the Python package
+      updater #883
+    - [jfrog-cli-security] Fix and correctly scope the Poetry
+      package updater #896
+    - [jfrog-cli-security] XRAY-161169 - Add indirect CVEs paths to
+      analysis #895
+    - [jfrog-client-go] Support streaming POST requests #1389
+    - [jfrog-client-go] XRAY-160563 - Add service to get transitive
+      data from Catalog #1391
+    - [jfrog-client-go] Add ArtifactSummaryForCommand To Tag
+      Caller's CLI Command #1394
+  * Bug Fixes
+    - [build-info-go] Resolve dynamic project version from uv.lock
+      for UV build info #407
+    - [jfrog-cli-artifactory] RTECO-2025 - Fix CI VCS taking huge
+      time to tag artifacts when OriginalDeploymentRepo is missing
+      #557
+    - [jfrog-cli-artifactory] RTECO-2022 - Fixed the bug in jf mvn
+      --scan command #550
+    - [jfrog-cli-artifactory] RTECO-1786 - Fix missing repo field
+      in AQL checksum enrichment for ruby and uv #568
+    - [jfrog-cli-artifactory] RTECO-2263 - Fix jf helm push build
+      properties 404 on virtual Helm OCI repositories #564
+    - [jfrog-cli-security] XRAY-160690 - Fix use Xray scan graph
+      for binary #886
+    - [jfrog-cli-security] XRAY-160044 - Skip for local Go
+      'replace' modules #885
+    - [jfrog-cli-security] Resolve Pip/Uv detection ambiguity in
+      the shared detector #880
+    - [jfrog-cli-security] Fix empty local Artifact path for
+      results cdx upload endpoint #901
+    - [jfrog-cli-security] Add guard to time stamp if event fails
+      #907
+    - [jfrog-cli-security] XRAY-159794 -
+      Open-waiver-for-pending-catalog #905
+  * Internal Changes
+    - [jfrog-cli-security] Update Analyzer Manager to v1.52.0 #882
+    - [jfrog-cli-security] Revert AnalyzerManager to v1.50.0 #884
+    - [jfrog-cli-security] Update Analyzer Manager to v1.55.0 #887
+    - [jfrog-cli-security] Update dependencies #889
+    - [jfrog-cli-security] Update dependencies #900
+    - [jfrog-cli-security] Update Analyzer Manager to v1.60.0 #911
+  * Other Changes
+    - [build-info-go] RTECO-1782: warn on externally-resolved deps
+      and dedupe requestedBy paths #424
+    - [jfrog-cli] RTECO-1782: JFROG_RUN_NATIVE wins over project
+      config, fix dotnet help, add FlexPack tests #3703
+    - [jfrog-cli] make cargo help doc public #3722
+    - [jfrog-cli-artifactory] Rteco 2298 integrate the new package
+      managers integration tests #561
+    - [jfrog-cli-artifactory] [PM Fixer] Fix huggingface 1.29.0
+      compatibility: swallow HfUriError from commitUrl parsing #548
+    - [jfrog-cli-artifactory] RTECO-2259 Add include_evidence
+      option to release-bundle-distribute CLI command #562
+    - [jfrog-cli-artifactory] RTECO-1782: let the native client
+      publish, and keep credentials off disk #552
+    - [jfrog-cli-artifactory] RTECO-2003 - align Chocolatey source
+      handling with nuget, dotnet and psresource #569
+    - [jfrog-cli-security] XRAY-159447 - cvs fallback for pypi #878
+    - [jfrog-cli-security] Detect Poetry 2.x native PEP 621
+      projects without poetry.lock #894
+    - [jfrog-cli-security] Nuget Package Updater - CPM Support #888
+    - [jfrog-cli-security] XRAY-129161 - Send curation audit id in
+      headers for email batching #897
+    - [jfrog-client-go] RTECO-2259 Add include_evidence option to
+      release-bundle-distribute CLI command #1392
+- Update to version 2.125.0:
+  * New Features
+    - [build-info-go] RTECO-1646 - Add tests for BuildInfo
+      properties and enhance MavenFlexPack functionality #408
+    - [jfrog-cli] RTECO-1646 - Enhance Maven Native command for
+      maven multi-module workspaces and server-id #3637
+    - [jfrog-cli-artifactory] RTECO-1646 - Enhance Maven Native
+      command for maven multi-module workspaces and server-id #526
+    - [jfrog-cli-security] XRAY-158270 - Implement http HEAD GET
+      security for uv #863
+    - [jfrog-cli-security] Add support in new scan results CDX
+      upload via Xray #864
+    - [jfrog-client-go] XRAY-156994 - Add Scan Cdx upload endpoint
+      #1383
+  * Bug Fixes
+    - [gofrog] Fix Zip-Slip containment bypass in unarchive #80
+    - [jfrog-cli-core] Bump gofrog to v1.7.7 and archiver to v3.6.5
+      #1614
+    - [jfrog-cli-security] Fix SCA descriptor paths losing
+      subdirectory prefix in SARIF output #861
+    - [jfrog-cli-security] Fix Audit SCA parallel runs #873
+  * Other Changes
+    - [jfrog-cli] [PM Fixer] Fix pnpm 12.2.1 compatibility: use
+      --store-dir in prepareArtifactoryForPnpmBuild #3692
+    - [jfrog-cli] RTECO-1884 - Inconsistent inputs from github
+      workflows for packages e2e tests #3679
+    - [jfrog-cli] Verify checksum in official CLI install scripts
+      #3704
+    - [jfrog-cli] [PM Fixer] Add pnpm 12 to CI test matrix #3705
+    - [jfrog-cli-artifactory] [PM Fixer] Fix npm 12.0.2
+      compatibility: exclude bare email from generated .npmrc #547
+    - [jfrog-cli-security] XRAY-159242 - Xspecter version 1.6.0
+      #867
+    - [jfrog-cli-security] XRAY-156682 - Yarn native support #854
+    - [jfrog-cli-security] XRAY-159000 - Link the build scan job
+      summary violations to the scanned build #868
+    - [jfrog-cli-security] XRAY-156690 - Rubygems native support
+      #860
+    - [jfrog-cli-security] XRAY-156685 - Nuget native support #865
+    - [jfrog-cli-security] XRAY-159118 - Updated gradle bom issue
+      jar release fix version #876
+
+-------------------------------------------------------------------
 Fri Sep 18 05:08:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.124.0:
