@@ -327,4 +327,29 @@ See Request#518161</comment>
   * Test with pip 26.1.  [maurits]</comment>
     <requestid>1354107</requestid>
   </revision>
+  <revision rev="28" vrev="1">
+    <srcmd5>bf8f0fe8d95588c4a601522c5547a239</srcmd5>
+    <version>6.0.0</version>
+    <time>1791394367</time>
+    <user>anag_factory</user>
+    <comment>- Update to 6.0.0:
+  ## Breaking changes:
+  * Require setuptools &gt;= 75.8.2, up from 61.0.0. That release fixed
+    pkg_resources.WorkingSet.find to consider several spellings of a
+    requirement name, which is what most of buildout's remaining setuptools
+    compatibility code worked around.
+    Require pip &gt;= 25.0.
+    Require Python 3.10 as a minimum; 3.9 is out of security support.
+  ## New features:
+  * Add support for python316-319 in conditional section expressions.
+  * Test on Python 3.15 and setuptools 84.0.0.
+  * Vendor pkg_resources from setuptools 81.0.0 (the last release that
+    contained it) as zc.buildout._vendor.pkg_resources and install it as
+    sys.modules['pkg_resources'] when zc.buildout is imported.
+  ## Bug fixes:
+  * Don't show warnings from importing pkg_resources.
+  * Fix support for PEP 660 develop packages (pyproject.toml only) by
+    preserving .dist-info and processing .pth files. (pep660)</comment>
+    <requestid>1382886</requestid>
+  </revision>
 </revisionlist>

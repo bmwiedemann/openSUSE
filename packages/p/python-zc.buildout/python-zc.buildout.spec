@@ -19,12 +19,13 @@
 %bcond_without libalternatives
 %{?sle15_python_module_pythons}
 Name:           python-zc.buildout
-Version:        5.2.0
+Version:        6.0.0
 Release:        0
 Summary:        System for managing development buildouts
 License:        ZPL-2.1
 URL:            https://pypi.python.org/pypi/zc.buildout
 Source:         https://github.com/buildout/buildout/archive/refs/tags/%{version}.tar.gz#/zc_buildout-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -33,8 +34,9 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       alts
 Requires:       python-packaging >= 23.2
-Requires:       python-pip
-Requires:       python-setuptools >= 49
+Requires:       python-pip >= 25
+Requires:       python-platformdirs
+Requires:       python-setuptools >= 75.8.2
 Requires:       python-wheel
 Provides:       python-zc_buildout = %{version}
 Obsoletes:      python-zc_buildout < %{version}
