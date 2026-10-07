@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Tue Oct  6 20:46:13 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 3.9.0:
+  * .github/workflows: Add generate-test-packages trigger.
+  * xed-window.c: Chain up window_state_event.
+
+-------------------------------------------------------------------
 Tue Apr 21 14:40:38 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 3.8.9:
@@ -48,21 +55,21 @@ Tue Jul  2 15:03:29 UTC 2024 - Frantisek Simorda <frantisek.simorda@suse.com>
   * l10n: Update translations
 
 - Update to 3.6.2
-  * Cancel file loading when closing tab  
+  * Cancel file loading when closing tab
   * Use F12 for the minimap
 
 - Update to 3.6.1
-  * Add shortcut to toggle overview map  
+  * Add shortcut to toggle overview map
   * l10n: Update msgid
   * Use F10 for the minimap
   * l10n: Update POT
 
 
 - Update to 3.6.0
-  * added shortcut to duplicate selection 
-  * added condition to not save empty doc 
-  * removed trailing space char in custom date time 
-  * added auto close setting to close window when that last tab is closed 
+  * added shortcut to duplicate selection
+  * added condition to not save empty doc
+  * removed trailing space char in custom date time
+  * added auto close setting to close window when that last tab is closed
   * recent files: Don't show a number in front of the filename
   * l10n: Update POT
 

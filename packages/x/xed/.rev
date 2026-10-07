@@ -371,4 +371,21 @@
     <comment></comment>
     <requestid>1348795</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>9a8fcea3731e91319bdd5d171160a0e9</srcmd5>
+    <version>3.9.0</version>
+    <time>1791394349</time>
+    <user>anag_factory</user>
+    <comment>- update to 3.9.0:
+  * .github/workflows: Add generate-test-packages trigger.
+  * xed-window.c: Chain up window_state_event.
+
+  * Cancel file loading when closing tab
+  * Add shortcut to toggle overview map
+  * added shortcut to duplicate selection
+  * added condition to not save empty doc
+  * removed trailing space char in custom date time
+  * added auto close setting to close window when that last tab is closed</comment>
+    <requestid>1382872</requestid>
+  </revision>
 </revisionlist>
