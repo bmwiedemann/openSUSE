@@ -23,4 +23,12 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342953</requestid>
   </revision>
+  <revision rev="4" vrev="3">
+    <srcmd5>982be0b434c40b35d6e3e9bab60a3d05</srcmd5>
+    <version>0.4.0</version>
+    <time>1791394320</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1382834</requestid>
+  </revision>
 </revisionlist>

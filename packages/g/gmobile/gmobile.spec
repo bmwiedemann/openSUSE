@@ -25,8 +25,8 @@ URL:            https://world.pages.gitlab.gnome.org/Phosh/gmobile/
 Source:         %{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gio-2.0) >= 2.66
-BuildRequires:  pkgconfig(glib-2.0) >= 2.66
+BuildRequires:  pkgconfig(gio-2.0) >= 2.78
+BuildRequires:  pkgconfig(glib-2.0) >= 2.78
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.6.2
 
