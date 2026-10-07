@@ -477,4 +477,18 @@ covered).</comment>
       path again, so that replacing a directory of the tree with</comment>
     <requestid>1382577</requestid>
   </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>b5793145df4bc3d3e87aa87f4fe41b3f</srcmd5>
+    <version>3.15.0~rc3</version>
+    <time>1791394472</time>
+    <user>anag_factory</user>
+    <comment>    - gh-157190: Fixed a vulnerability in the tarfile data and
+      tar extraction filters where a crafted archive using a hard
+      link to a symbolic link could change the permissions and
+      modification time of a file outside the destination
+      directory, and expose its contents inside the extracted
+      tree. This addresses CVE 2026-82049. (bsc#1280459,
+      CVE-2026-82049)</comment>
+    <requestid>1382950</requestid>
+  </revision>
 </revisionlist>

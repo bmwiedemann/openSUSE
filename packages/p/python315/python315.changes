@@ -9,6 +9,13 @@ Mon Oct  5 10:33:26 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
       raises ValueError for any precision of that magnitude,
       regardless of presentation type or value, as the format
       string parsers already did for precisions above INT_MAX.
+    - gh-157190: Fixed a vulnerability in the tarfile data and
+      tar extraction filters where a crafted archive using a hard
+      link to a symbolic link could change the permissions and
+      modification time of a file outside the destination
+      directory, and expose its contents inside the extracted
+      tree. This addresses CVE 2026-82049. (bsc#1280459,
+      CVE-2026-82049)
     - gh-156793: asyncio: loop.start_tls() and
       loop.create_connection() now validate the server_hostname
       argument if an ssl.SSLContext is passed with check_hostname
