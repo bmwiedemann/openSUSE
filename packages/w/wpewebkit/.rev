@@ -269,4 +269,36 @@
     <comment>- riscv-platformenable.patch: Fix build for riscv64</comment>
     <requestid>1382233</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ab609f3040087e340fa958b05eb70cd6</srcmd5>
+    <version>2.54.1</version>
+    <time>1791394321</time>
+    <user>anag_factory</user>
+    <comment>- fix various typos
+
+- Update to version 2.54.1:
+  * Allow pasting in-memory image data from clipboard.
+  * Add User-Agent quirk for Amazon Luna.
+  * Handle scrolling through touch input asynchronously.
+  * Align the filter surface with the device pixel grid.
+  * Do not rasterize the part of a tile that the clip drops.
+  * Fix rendering of scaled or transformed no-repeat background images.
+  * Fix rendering of preserve-3d layers when a layer crosses the camera plane.
+  * Fix SkiaCompositingLayer filter rendering under transforms.
+  * Fix the WPEPlatform built-in Wayland support with libwayland-client 1.25 or
+    newer.
+  * Fix the build with ENABLE_WPE_1_1_API enabled.
+  * Fix text deleted by input method delete-surrounding in contenteditable.
+  * Fix the &quot;inputmode&quot; attribute being ignored for &lt;input&gt; elements.
+  * Fix input methods not updated when refocusing elements in some cases.
+  * Fix caret position reporting to input methods during pre-edit.
+  * Fix memory usage thresholds not being reached due to incorrect memory
+    footprint calculation.
+  * Fix the build with PGO profile instrumentation enabled when using the GNU
+    linker (ld.bfd).
+  * Fix several crashes and rendering issues.
+
+- Stop passing -DENABLE_SAMPLING_PROFILER=OFF and -DENABLE_C_LOOP=ON</comment>
+    <requestid>1383027</requestid>
+  </revision>
 </revisionlist>

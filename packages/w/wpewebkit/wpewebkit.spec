@@ -23,7 +23,7 @@
 
 Name:           wpewebkit
 %define _lto_cflags %{nil}
-Version:        2.54.0
+Version:        2.54.1
 Release:        0
 Summary:        Library for rendering web content, WPE Port
 License:        BSD-3-Clause AND LGPL-2.1-only
@@ -115,7 +115,7 @@ Group:          System/Libraries
 Requires:       %{name}-%{_sonameverpkg}-injected-bundles
 Requires:       bubblewrap
 Requires:       xdg-dbus-proxy
-Provides:       libWPEWebKit-{_apiver}
+Provides:       libWPEWebKit-%{_apiver}
 
 %description -n libWPEWebKit-%{_wksover}
 WPE allows embedders to create simple and performant systems based on
@@ -132,7 +132,7 @@ Web platform technologies. It is designed with hardware acceleration
 in mind, leveraging common 3D graphics APIs for best performance.
 
 %package -n WPEWebDriver
-Summary:        WebDriver service implementation for WPE  WebKit
+Summary:        WebDriver service implementation for WPE WebKit
 Group:          System/Libraries
 
 %description -n WPEWebDriver
@@ -156,7 +156,7 @@ Group:          Development/Tools/Other
 Requires:       libWPEWebKit-%{_wksover} = %{version}
 
 %description    minibrowser
-A small test browswer from webkit, useful for testing features and
+A small test browser from webkit, useful for testing features and
 embedded mini browsers.
 
 %prep
