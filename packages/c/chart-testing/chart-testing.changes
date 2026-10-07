@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:17:48 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.15.0:
+  * build(deps): Bump helm.sh/helm/v3 from 3.18.6 to 3.19.2 in #785
+  * build(deps): Bump alpine from 3.22 to 3.23 in the docker group
+    in #794
+  * build(deps): Bump github.com/spf13/cobra from 1.10.1 to 1.10.2
+    in the gomod group in #792
+  * build(deps): Bump golangci/golangci-lint-action from 8.0.0 to
+    9.2.0 in #798
+  * build(deps): Bump helm.sh/helm/v3 from 3.19.2 to 3.19.4 in the
+    gomod group in #795
+  * build(deps): Bump helm.sh/helm/v3 from 3.19.4 to 3.19.5 in the
+    gomod group in #803
+  * build(deps): Bump helm.sh/helm/v3 from 3.19.5 to 3.20.1 in #823
+  * build(deps): Bump docker/setup-qemu-action from 3.7.0 to 4.0.0
+    in #820
+  * build(deps): Bump docker/login-action from 3.7.0 to 4.0.0 in
+    #821
+  * build(deps): Bump docker/setup-buildx-action from 3.12.0 to
+    4.0.0 in #818
+  * build(deps): Bump goreleaser/goreleaser-action from 6.4.0 to
+    7.0.0 in #822
+  * build(deps): Bump the gomod group with 2 updates in #830
+  * build(deps): Bump azure/setup-helm from 4.3.1 to 5.0.0 in #825
+  * chore: bump to Go 1.26, harden release workflow, tidy code in
+    #835
+  * build(deps): Bump helm.sh/helm/v3 from 3.20.2 to 3.21.0 in #836
+  * build(deps): Bump github.com/mattn/go-shellwords from 1.0.13 to
+    1.0.14 in the gomod group across 1 directory in #860
+  * build(deps): Bump alpine from 3.23 to 3.24 in the docker group
+    across 1 directory in #843
+  * fix: honor --release-name instead of generating a random
+    release name in #841
+  * build(deps): Bump helm.sh/helm/v3 from 3.21.0 to 3.22.0 in #864
+  * build(deps): Bump github.com/mattn/go-shellwords from 1.0.14 to
+    1.0.15 in the gomod group in #862
+  * build(deps): Bump github.com/mattn/go-shellwords from 1.0.15 to
+    1.0.16 in the gomod group in #866
+
+-------------------------------------------------------------------
 Thu Oct 09 05:14:44 UTC 2025 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.14.0:

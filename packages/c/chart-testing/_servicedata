@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/helm/chart-testing</param>
-              <param name="changesrevision">2651b49048950c5473b1f533c900d17614bc6aa0</param></service></servicedata>
+              <param name="changesrevision">2651b49048950c5473b1f533c900d17614bc6aa0</param></service><service name="tar_scm">
+                <param name="url">https://github.com/helm/chart-testing.git</param>
+              <param name="changesrevision">c65afcebd6649d48179fc8b30db34fa9b1459cce</param></service></servicedata>

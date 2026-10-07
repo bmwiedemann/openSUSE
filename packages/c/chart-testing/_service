@@ -1,9 +1,9 @@
 <services>
   <service name="obs_scm" mode="manual">
-    <param name="url">https://github.com/helm/chart-testing</param>
+    <param name="url">https://github.com/helm/chart-testing.git</param>
     <param name="scm">git</param>
     <param name="exclude">.git</param>
-    <param name="revision">v3.14.0</param>
+    <param name="revision">refs/tags/v3.15.0</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="versionrewrite-pattern">v(.*)</param>
     <param name="changesgenerate">enable</param>
