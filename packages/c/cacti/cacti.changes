@@ -1,4 +1,75 @@
 -------------------------------------------------------------------
+Tue Oct  6 14:54:55 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+- Update to version 1.2.31+git366.c5f9f4f4:
+  * Update translation files
+  * Add MySQL/MariaDB variable capability matrix to Database section (#8189)
+  * support: recommend supported DB releases, fix MariaDB detection, update README (#8187)
+  * support: drop php-snmp uninstall warning from Technical Support page (#8183)
+  * settings: move SNMP Agent Support under the SNMP Behavior spacer (#8181)
+  * Restore selected date ranges for graph lists (#8178)
+  * Translated using Weblate (Swedish)
+  * settings: group SNMP poller options under a new SNMP Behavior section (#8175)
+  * Decode HTML entities when setting page title on AJAX navigation (#8176)
+  * snmp: retire include/vendor/phpsnmp, relocate its pieces into lib (#8172)
+  * snmp: SNMPv3 unsupported-protocol devices use the Net-SNMP binary + drop vendored classSNMP.php (#8171)
+  * Script-server SNMP scaling: shared auth cache, cacti_exec idle timeout, SNMPv3 procedural path (1.2.x) (#8166)
+  * security: 1.2.x CHANGELOG CVE reconciliation and develop-only cleanup (#8167)
+  * security: consolidate GHSA batch 11 fixes (fq9x, 54hx, hh7r, v99q, f5f5) (#8164)
+  * Read graph date range from each wrapper during initialization (#8161)
+  * Use breadcrumb fallback for Midwinter guest navigation (#8163)
+  * security: batch 10 (1.2.x) - login-timing dummy verify (GHSA-p3rg) + backlog triage credits (#8157)
+  * chore: normalize CRLF line endings to LF across Cacti-owned files (#8155)
+  * 1.2.x CHANGELOG PR references, DOMPurify 3.4.16, and npm/Dependabot management of bundled JS (#8159)
+  * security: batch 9 (1.2.x) - path_php_binary syntax-check escaping (GHSA-4p7f) + backlog CHANGELOG credits (#8153)
+  * security: batch 7 for 1.2.x - backport develop GHSA fixes that also affect released 1.2.x (8 fixes) (#8152)
+  * security: batch 8 (1.2.x) - data-query XML oracle (GHSA-2x86) + Boost log .log guard (GHSA-m6wx) + CHANGELOG credits (#8150)
+  * docs(CHANGELOG): file host_id SQLi fix under 1.2.31 as GHSA-r7hc-hrpv-52gf; drop plain issue#7693 entry (#8147)
+  * security: consolidate verified GHSA fixes for 1.2.x (batch 4) (#8144)
+  * chore: add issued CVE identifiers to 1.2.x security CHANGELOG entries (#8142)
+  * security: consolidate verified GHSA fixes for 1.2.x (batch 3) (#8138)
+  * fix: #7868 Follow-up changes after discussions with jdcoats (#8139)
+  * security: Inline GHSA identifiers on 1.2.x security CHANGELOG entries (#8137)
+  * chore: Update CHANGELOG ordering and numbering (#8136)
+  * Make the drop_multi form method use Select2 by default (#8131)
+  * Make cacti_exec() failure logs identify the device, command and OID (#8128)
+  * fix: skip replication-ignored files in cache_in_path() to stop poll-cycle log spam (#8126)
+  * fix: accept scalar primary in db_update_table() refresh diff (#8125)
+  * snmpagent: load maint plugin from includes/functions.php with legacy fallback (#8123)
+  * Exclude repo/tooling metadata files from remote replication (#8121)
+  * Reconcile unique_keys in db_update_table() (#8115)
+  * poller: purge stale excluded rows, guard collector dirs, strip install root (1.2.x) (#8119)
+  * poller: exclude 'tests' directories from resource replication (#8117)
+  * fix: handle 'Awaiting Upgrade' plugin status on the Plugins page (#8114)
+  * fix: Allow the api_plugin_db_table_create to do updates (#8112)
+  * fix: align Force Uninstall icon (.piforceremove) on the Plugins page (#8109)
+  * Add Force Uninstall for orphaned plugins whose directory is missing (#8106)
+  * Backport: hash debounce notification key to avoid 50-char truncation error (#8104)
+  * plugins: default the plugin list sort to Plugin Name, not Description (#8103)
+  * tree: Font Awesome glyphs for jsTree nodes with per-type theme colors and glyph carets (#8102)
+  * links: replace edit/view PNGs with Font Awesome glyphs and narrow action/order columns (#8098)
+  * locales: drop source line numbers from translation template (#8096)
+  * Make package/diff viewer colors theme-aware (#8094)
+  * docs(auth): recommend resilient DNS load balancer for LDAP OTP; discourage space-delimited multi-server list; clarify No Searching (#8092)
+  * Backport graphDrilldown icons to Font Awesome colored glyphs (#8088)
+  * docs(auth): clarify LDAP OTP/MFA single-bind and service-account guidance (#8089)
+
+-------------------------------------------------------------------
+Mon Sep 28 16:53:09 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
+
+-Added cacti/cache/purifier/ file permissions
+- Update to version 1.2.31+git153.712080b7:
+  * Create package.db (#8087)
+  * deps(deps): bump ezyang/htmlpurifier in the composer-1-2-x group (#8084)
+  * tests: align Boost hand-off contract with retry-not-inline behavior (#8082)
+  * plugins.php: replace action PNG icons with FontAwesome glyphs (#8081)
+  * perf(poller): key RRD field-name prefetch by data_template_id, not local_data_id (#8077)
+  * ci(deps): bump docker/setup-buildx-action (#8075)
+  * fix: let the log Filter box match a device's description, not just its numeric id (#8072)
+  * perf: batch-prefetch RRD field-name metadata in process_poller_output() (1.2.x) (#8071)
+  * perf: cache realpath(rra_path) in data_source_path_within_rra() (1.2.x) (#8069)
+
+-------------------------------------------------------------------
 Thu Sep 24 14:57:06 UTC 2026 - Joel Baltazor <obs@mtlfab.com>
 
 - Update to version 1.2.31+git144.c7689c25:

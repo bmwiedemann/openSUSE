@@ -21,7 +21,7 @@
 %define cacti_dir %{datadir}/cacti
 
 Name:           cacti
-Version:        1.2.31+git144.c7689c25
+Version:        1.2.31+git366.c5f9f4f4
 %global base_version %(echo %{version} | sed 's/+[^+]*//')
 %global next_base_version %(echo %{base_version} | awk -F. -v OFS=. '{$NF++; print}')
 Release:        0
@@ -159,6 +159,7 @@ ln -sfr %{buildroot}%{_localstatedir}/log/%{name} %{buildroot}%{cacti_dir}/log
 find %{buildroot}%{cacti_dir} -type d|sed -e '
 s|%{buildroot}%{cacti_dir}/cache/boost|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/cache/boost|
 s|%{buildroot}%{cacti_dir}/cache/mibcache|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/cache/mibcache|
+s|%{buildroot}%{cacti_dir}/cache/purifier|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/cache/purifier|
 s|%{buildroot}%{cacti_dir}/cache/realtime|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/cache/realtime|
 s|%{buildroot}%{cacti_dir}/cache/spikekill|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/cache/spikekill|
 s|%{buildroot}%{cacti_dir}/include/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer|%%dir %%attr(00755,%{apache_user},%{apache_group}) %{cacti_dir}/include/vendor/ezyang/htmlpurifier/library/HTMLPurifier/DefinitionCache/Serializer|
