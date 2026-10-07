@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Tue Oct  6 16:34:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 3.2.0
+  * Prefixed the global variables defined in `read.g` with `MIP_`,
+    e.g. `COVER_LIMIT` is now `MIP_COVER_LIMIT`
+  * `IsCoveredByTheory` and `IsCoveredByTheoryAllFields` now do
+    what their names suggest.
+
+-------------------------------------------------------------------
 Fri Jan  9 17:32:31 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 3.1.0

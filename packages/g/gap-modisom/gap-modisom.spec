@@ -17,7 +17,7 @@
 
 
 Name:           gap-modisom
-Version:        3.1.0
+Version:        3.2.0
 Release:        0
 Summary:        GAP: Computing with nilpotent associative algebras
 License:        GPL-2.0-or-later
@@ -30,6 +30,7 @@ BuildRequires:  gap-rpm-devel
 Requires:       gap-core >= 4.10
 Requires:       gap-laguna >= 3.8.0
 Requires:       gap-polycyclic >= 1.0
+Requires:       gap-smallgrp >= 1.4
 
 %description
 ModIsom is a GAP package containing various methods for computing
