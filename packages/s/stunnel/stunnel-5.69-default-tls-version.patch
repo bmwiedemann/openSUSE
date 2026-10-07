@@ -12,57 +12,44 @@ From-dist-git-commit: 70b3076eb09912b3a11f371b8c523303114fffa3
  src/prototypes.h |  3 +++
  3 files changed, 36 insertions(+), 16 deletions(-)
 
-Index: stunnel-5.72/src/ctx.c
+Index: stunnel-5.82/src/ctx.c
 ===================================================================
---- stunnel-5.72.orig/src/ctx.c
-+++ stunnel-5.72/src/ctx.c
-@@ -163,19 +163,29 @@ int context_init(SERVICE_OPTIONS *sectio
+--- stunnel-5.82.orig/src/ctx.c
++++ stunnel-5.82/src/ctx.c
+@@ -520,16 +520,24 @@ int context_init(SERVICE_OPTIONS *sectio
  
      /* set supported protocol versions */
  #if OPENSSL_VERSION_NUMBER>=0x10100000L
--    if(section->min_proto_version &&
--            !SSL_CTX_set_min_proto_version(section->ctx,
--            section->min_proto_version)) {
--        s_log(LOG_ERR, "Failed to set the minimum protocol version 0x%X",
--            section->min_proto_version);
--        return 1; /* FAILED */
+-    if(section->min_proto_version) {
+-        if(!SSL_CTX_set_min_proto_version(section->ctx,
 +    if (section->min_proto_version == USE_DEFAULT_TLS_VERSION) {
 +        s_log(LOG_INFO, "Using the default TLS minimum version as specified in"
 +              " crypto policies. Not setting explicitly.");
 +    } else {
 +        if(section->min_proto_version &&
 +                !SSL_CTX_set_min_proto_version(section->ctx,
-+                section->min_proto_version)) {
-+            s_log(LOG_ERR, "Failed to set the minimum protocol version 0x%X",
-+                section->min_proto_version);
-+            return 1; /* FAILED */
-+        }
+                 section->min_proto_version)) {
+             s_log(LOG_ERR, "Failed to set the minimum protocol version 0x%X",
+                 section->min_proto_version);
+             return 1; /* FAILED */
+         }
      }
--    if(section->max_proto_version &&
--            !SSL_CTX_set_max_proto_version(section->ctx,
--            section->max_proto_version)) {
--        s_log(LOG_ERR, "Failed to set the maximum protocol version 0x%X",
--            section->max_proto_version);
--        return 1; /* FAILED */
+-    if(section->max_proto_version) {
+-        if(!SSL_CTX_set_max_proto_version(section->ctx,
 +    if (section->max_proto_version == USE_DEFAULT_TLS_VERSION) {
 +        s_log(LOG_INFO, "Using the default TLS maximum version as specified in"
 +                " crypto policies. Not setting explicitly");
 +    } else {
 +        if(section->max_proto_version &&
 +                !SSL_CTX_set_max_proto_version(section->ctx,
-+                section->max_proto_version)) {
-+            s_log(LOG_ERR, "Failed to set the maximum protocol version 0x%X",
-+                section->max_proto_version);
-+            return 1; /* FAILED */
-+        }
-     }
- #endif /* OPENSSL_VERSION_NUMBER>=0x10100000L */
- 
-Index: stunnel-5.72/src/options.c
+                 section->max_proto_version)) {
+             s_log(LOG_ERR, "Failed to set the maximum protocol version 0x%X",
+                 section->max_proto_version);
+Index: stunnel-5.82/src/options.c
 ===================================================================
---- stunnel-5.72.orig/src/options.c
-+++ stunnel-5.72/src/options.c
-@@ -3429,8 +3429,9 @@ NOEXPORT const char *parse_service_optio
+--- stunnel-5.82.orig/src/options.c
++++ stunnel-5.82/src/options.c
+@@ -3894,8 +3894,9 @@ NOEXPORT const char *parse_service_optio
              return "Invalid protocol version";
          return NULL; /* OK */
      case CMD_INITIALIZE:
@@ -74,7 +61,7 @@ Index: stunnel-5.72/src/options.c
              return "Invalid protocol version range";
          break;
      case CMD_PRINT_DEFAULTS:
-@@ -3448,7 +3449,10 @@ NOEXPORT const char *parse_service_optio
+@@ -3913,7 +3914,10 @@ NOEXPORT const char *parse_service_optio
      /* sslVersionMax */
      switch(cmd) {
      case CMD_SET_DEFAULTS:
@@ -86,7 +73,7 @@ Index: stunnel-5.72/src/options.c
          break;
      case CMD_SET_COPY:
          section->max_proto_version=new_service_options.max_proto_version;
-@@ -3479,7 +3483,10 @@ NOEXPORT const char *parse_service_optio
+@@ -3944,7 +3948,10 @@ NOEXPORT const char *parse_service_optio
      /* sslVersionMin */
      switch(cmd) {
      case CMD_SET_DEFAULTS:
@@ -98,12 +85,12 @@ Index: stunnel-5.72/src/options.c
          break;
      case CMD_SET_COPY:
          section->min_proto_version=new_service_options.min_proto_version;
-Index: stunnel-5.72/src/prototypes.h
+Index: stunnel-5.82/src/prototypes.h
 ===================================================================
---- stunnel-5.72.orig/src/prototypes.h
-+++ stunnel-5.72/src/prototypes.h
-@@ -956,6 +956,9 @@ ICON_IMAGE load_icon_default(ICON_TYPE);
- ICON_IMAGE load_icon_file(const char *);
+--- stunnel-5.82.orig/src/prototypes.h
++++ stunnel-5.82/src/prototypes.h
+@@ -1035,6 +1035,9 @@ ICON_IMAGE load_icon_default(ICON_TYPE t
+ ICON_IMAGE load_icon_file(const char *file_name);
  #endif
  
 +#define USE_DEFAULT_TLS_VERSION ((int)-2) /* Use defaults in OpenSSL

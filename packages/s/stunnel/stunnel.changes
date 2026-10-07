@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:28:57 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.82:
+  * Bugfixes:
+    - Fixed premature connection closure on macOS when the peer
+      half-closed the plaintext connection while data still needed
+      to be forwarded.
+
+-------------------------------------------------------------------
+Wed Oct  7 09:21:53 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 5.81:
+  * Security bugfixes
+    - OpenSSL DLLs updated to version 3.5.8.
+    - Fixed truncation and out-of-bounds reads when inheriting binary
+      session ticket keys containing null bytes
+    - Prevented OCSP stapling response failures from terminating the daemon
+  * Bugfixes
+    - Avoided spurious sysconf error messages after successful descriptor-limit
+      queries on platforms where a successful call may change errno.
+    - Fixed a potential crash when parsing empty ASCII PSK secrets
+    - Fixed a memory leak after DTLS listener poll errors and timeouts
+    - Fixed memory leaks during NTLM HTTP proxy negotiation
+    - Fixed early startup logging before thread lock initialization
+    - Rejected excessively nested configuration includes instead of
+      consuming the process stack recursively.
+  * Features
+    - Improved TLS and DTLS shutdown diagnostics.
+  * Rebase patches:
+    - stunnel-5.69-system-ciphers.patch
+    - stunnel-5.69-default-tls-version.patch
+
+-------------------------------------------------------------------
 Mon Aug 10 08:44:40 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 5.80:
