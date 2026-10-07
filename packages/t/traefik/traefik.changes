@@ -1,4 +1,63 @@
 -------------------------------------------------------------------
+Wed Sep 23 04:53:15 UTC 2026 - Daniel Mulzer <daniel.mulzer@gmail.com>
+
+- Version 3.7.13
+
+  Please read the migration guide:
+  https://doc.traefik.io/traefik/v3.7/migrate/v3/#v3713
+
+  CVEs fixed
+    * CVE-2026-88004 (Advisory GHSA-v67p-phpq-fc8x)
+    * CVE-2026-88007 (Advisory GHSA-qqjf-53cj-pwvv)
+    * CVE-2026-88008 (Advisory GHSA-w4v4-9rw7-5326)
+    * CVE-2026-88009 (Advisory GHSA-f52w-8j3h-j724)
+    * CVE-2026-88010 (Advisory GHSA-8fcf-v89g-xpg6)
+
+  Bugs fixed
+  * acme
+    - Bump github.com/go-acme/lego/v5 to v5.4.1
+    - Disable recursive nss propagation by default for the DNS challenge
+    - Do not require recursive nameservers propagation by default for the
+      DNS-01 challenge
+  * acme, tls
+    - Ignore negated matchers when parsing rule domains
+  * consulcatalog, nomad
+    - Build a collision-free item key in the Consul Catalog and Nomad providers
+  * http3
+    - Dedicate a transport per HTTP/3 client connection
+  * k8s/ingress-nginx
+    - Fix sticky cookie expiration per request
+    - Create HTTP redirect router for ssl-passthrough with force-ssl-redirect
+    - Preserve leading dot in sticky session cookie Domain attribute
+  * logs, middleware
+    - Set access log entry level and time before formatting the OTLP body
+  * logs, tls, k8s/crd
+    - Downgrade default TLS resources namespace mismatch log to warning
+  * middleware
+    - Fix {url} placeholder in customErrors middleware to include the correct
+      scheme
+  * middleware, authentication
+    - Prevent user enumeration through the basic auth singleflight key
+  * server
+    - Build the configuration copy once per change
+    - Do not forward h2c upgrade headers to the backend
+    - Deny request with an opaque request target
+    - Do not forward request trailer values to the backend
+    - Bump github.com/quic-go/quic-go to v0.62.0
+  * tls
+    - Redact duplicate TLS certificates in provider merge logs
+  * webui
+    - Fix displayed number on details pages
+
+  Documentation
+  * k8s
+    - Add warning about Ingress API frozen state
+    - Remove namespace reference for providers.kubernetesGateway.labelSelector
+  * k8s/crd
+    - Fix broken redirect for the Kubernetes CRD reference docs
+  * Tell scanning agents to read the security policy and decisions pages
+
+-------------------------------------------------------------------
 Thu Aug 27 09:03:39 UTC 2026 - Johannes Weberhofer <jweberhofer@weberhofer.at>
 
 - Version 3.7.12
