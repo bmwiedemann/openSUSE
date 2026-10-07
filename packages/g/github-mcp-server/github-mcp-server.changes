@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:30:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.1 (day-after bugfix on the 2.0.0 major):
+  * Go module-path fix for Go consumers, who now import
+    the /v2 module path (upstream PR 3445)
+  * No tool changes: identical tool surface as 2.0.0, verified via
+    tools/list on locally built binaries of both versions
+- Refresh the vendored Go modules for the new source (same
+  module versions, only the module path moved): re-derived
+  over the new tree, still only MIT, BSD-3-Clause and
+  Apache-2.0, no copyleft
+- go.mod still requires go 1.26.8, so the golang(API) >= 1.26.8
+  floor stands
+
+-------------------------------------------------------------------
 Wed Oct  7 07:40:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.0 (major):
