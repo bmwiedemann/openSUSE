@@ -26,6 +26,7 @@ Summary:        Document viewer for documents like PDF/PostScript
 License:        GPL-2.0-only AND LGPL-2.0-only
 URL:            https://github.com/linuxmint/xreader
 Source:         %{url}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:         CVE-2026-104983.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  intltool
@@ -166,7 +167,7 @@ Requires:       %{name}
 A plugin for Xreader to read Pixbuf documents.
 
 %prep
-%autosetup
+%autosetup -p1
 
 %build
 %meson \

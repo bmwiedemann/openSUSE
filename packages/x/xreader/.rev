@@ -573,4 +573,12 @@
   * l10n: Update POT</comment>
     <requestid>1382492</requestid>
   </revision>
+  <revision rev="44" vrev="2">
+    <srcmd5>f11020e8cfdfffe47fc9646292453001</srcmd5>
+    <version>4.6.9</version>
+    <time>1791394357</time>
+    <user>anag_factory</user>
+    <comment>- add CVE-2026-104983.patch (bsc#1284161, CVE-2026-104983)</comment>
+    <requestid>1382877</requestid>
+  </revision>
 </revisionlist>
