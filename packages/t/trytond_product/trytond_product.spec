@@ -29,7 +29,7 @@
 
 %define majorver 7.0
 Name:           trytond_product
-Version:        %{majorver}.5
+Version:        %{majorver}.6
 Release:        0
 Summary:        The "product" module for the Tryton ERP system
 License:        GPL-3.0-only
