@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct 07 05:02:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.0:
+  * Add OAuth2 (ROPC) auth for verification requests (#5392)
+  * Fix Sumo Logic detector ignoring configured verifier endpoints (#5395)
+- Update to version 3.98.1:
+  * Add api_timeout_seconds to Gerrit source proto (#5394)
+  * Add a TruffleHog dectector for Kong Konnect Platform  (#5305)
+  * Add postman source documentation (#5389)
+
+-------------------------------------------------------------------
 Tue Oct 06 04:45:23 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.98.0:
