@@ -19,14 +19,13 @@
 
 %define __builder ninja
 Name:           rawtherapee
-Version:        5.12
+Version:        5.13
 Release:        0
 Summary:        Cross-platform raw image processing program
 License:        GPL-3.0-only
 URL:            https://rawtherapee.com
-Source0:        https://rawtherapee.com/shared/source/%{name}-%{version}.tar.xz
-# PATCH-FIX-UPSTREAM -- Fixes crash on application startup -- https://github.com/RawTherapee/RawTherapee/issues/7642
-Patch0:         https://raw.githubusercontent.com/digitalcarp/RawTherapee/refs/heads/meyer-5.12/patch/0001-Fix-static-init-order-fiasco-crashes.patch
+#Source0:        https://rawtherapee.com/shared/source/%{name}-%{version}.tar.xz
+Source0:        https://github.com/RawTherapee/RawTherapee/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  cmake
 BuildRequires:  fdupes
 BuildRequires:  gtk3-devel >= 3.24.3
@@ -35,6 +34,7 @@ BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(exiv2) >= 0.24
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(fftw3)
+BuildRequires:  pkgconfig(fmt)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(glibmm-2.4)
 BuildRequires:  pkgconfig(gtkmm-3.0)
@@ -101,6 +101,7 @@ echo "CXXFLAGS= "$CXXFLAGS
 # liberal interpretation of “shared library”, BUILD_SHARED_LIBS will install a
 # *static* library instead. Without headers.
 %cmake \
+    -DWITH_SYSTEM_FMT=ON \
     -DWITH_SYSTEM_LIBRAW=ON \
     -DENABLE_TCMALLOC=ON \
     -DCMAKE_BUILD_TYPE=Release \
