@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:12:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to configure.ac.
+
+-------------------------------------------------------------------
 Mon Nov 10 14:29:34 UTC 2025 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop pkgconfig(libart-2.0) BuildRequires: this library is
@@ -390,7 +395,7 @@ Thu Aug 16 22:42:30 CEST 2007 - jpr@suse.de
   * UML class improvements on comment and wrapped underlined names.
   * Text rendering is now based on the TextLine objects
   * Visio VXD files can now be imported and exported
-  * Renderer API change:  Added function draw_text_line. 
+  * Renderer API change:  Added function draw_text_line.
   * Object API change: can_parent replaced by flags field.
   * Dia menus now based on GtkAction framework.
   * A number of new keyboard shortcuts.
@@ -399,8 +404,8 @@ Thu Aug 16 22:42:30 CEST 2007 - jpr@suse.de
   * The initial diagram will now be filled with opened diagram if
     unchanged, like Gnumeric.
   * Pasted objects now no longer land on top of each other.
-  * Fix of bug BGO #339562 (page margins restriction), BGO #338336 
-    ("query" in umloperation_offsets), and BGO #334771 (ungroup 
+  * Fix of bug BGO #339562 (page margins restriction), BGO #338336
+    ("query" in umloperation_offsets), and BGO #334771 (ungroup
     crashes)
 - Improved SVG export (#283773)
 - Remove upstreamed patches
@@ -462,7 +467,7 @@ Fri Sep 29 00:37:39 CEST 2006 - jhargadon@suse.de
 - Three security holes in the XFig importer fixed after review
 - Made children of objects not be magnetic to their parents.
 - new or improved plugins written in Python
-- many bug fixes 
+- many bug fixes
 
 -------------------------------------------------------------------
 Wed Aug 16 11:59:26 CEST 2006 - cthiel@suse.de
@@ -532,7 +537,7 @@ Wed Jan 11 14:02:57 CET 2006 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Dec 20 15:02:49 CET 2005 - ro@suse.de
 
-- add /opt/gnome/share/gnome/help/dia/C to filelist 
+- add /opt/gnome/share/gnome/help/dia/C to filelist
 
 -------------------------------------------------------------------
 Tue Oct  4 17:46:27 CEST 2005 - sbrabec@suse.cz
@@ -555,7 +560,7 @@ Fri Jun 10 18:20:48 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Fri Jun  3 14:09:29 CEST 2005 - ro@suse.de
 
-- fix build with new cairo using cairo-api-update script 
+- fix build with new cairo using cairo-api-update script
 
 -------------------------------------------------------------------
 Wed May 11 14:11:53 CEST 2005 - uli@suse.de
@@ -588,7 +593,7 @@ Fri Aug 20 16:25:51 CEST 2004 - shprasad@suse.de
 - Fixes bug #60814
   Remove the default gnome-menu style. It will display
   'Help -> Manual' and clicking on it will bring the help
-  window. 
+  window.
 
 -------------------------------------------------------------------
 Thu Jul 22 08:28:46 CEST 2004 - kimmidi@suse.de
@@ -629,7 +634,7 @@ Mon Feb 23 10:51:00 CET 2004 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Jan  8 14:25:07 CET 2004 - ro@suse.de
 
-- fix build with current freetype 
+- fix build with current freetype
 - fix build with lib64
 
 -------------------------------------------------------------------
@@ -668,13 +673,13 @@ Sat Aug 16 16:00:52 CEST 2003 - adrian@suse.de
 -------------------------------------------------------------------
 Thu Jul 24 04:01:57 CEST 2003 - hhetter@suse.de
 
-- %_lib fixes 
+- %_lib fixes
 
 -------------------------------------------------------------------
 Tue Jul 22 02:32:21 CEST 2003 - hhetter@suse.de
 
 - prefix to /opt/gnome
-- remove former prefix clash fixes 
+- remove former prefix clash fixes
 - use gnome-filesystem
 
 -------------------------------------------------------------------
@@ -706,7 +711,7 @@ Wed Nov  6 16:00:28 CET 2002 - uli@suse.de
 Thu Oct 24 15:39:14 CEST 2002 - hhetter@suse.de
 
 - applied patch from CVS (no longer translate font
-  strings) (Bug Id #20676) 
+  strings) (Bug Id #20676)
 
 -------------------------------------------------------------------
 Fri Sep 27 14:34:19 CEST 2002 - ro@suse.de
@@ -749,7 +754,7 @@ Sat Mar  2 02:34:42 CET 2002 - mfabian@suse.de
   (International fonts are broken (can't write in czech)):
 - use the URW Type1 fonts as the preferred fonts for display on X11
   as these are very similar to the fonts used for printing
-  (identical when our Ghostscript is used). Leaving in the bitmap 
+  (identical when our Ghostscript is used). Leaving in the bitmap
   fonts as fallbacks doesn't hurt.
 - add Requires: ghostscript-fonts-std
 - use gdk_fontset_load instead of gdk_font_load always *exept*
@@ -765,7 +770,7 @@ Thu Feb 21 10:59:03 CET 2002 - hhetter@suse.de
 - dia-fonts.dif: Dia maintains a static font list with
   nearly only Bitmap-Fonts. It does internal AA via libart
   and requests the fonts in sizes that our X-Server doesn't
-  provide because the :unscaled flag is set on bitmap fonts. 
+  provide because the :unscaled flag is set on bitmap fonts.
   The patch reorganizes Dia's font list to actually scaleable
   ones and fonts where scaling makes sense.
 
@@ -778,7 +783,7 @@ Fri Feb  1 00:26:05 CET 2002 - ro@suse.de
 Thu Jun 14 23:23:44 MEST 2001 - egger@suse.de
 
 - Updated to version 0.88.1.
-- General specfile cleanup. 
+- General specfile cleanup.
 
 -------------------------------------------------------------------
 Tue May  8 23:14:47 CEST 2001 - mfabian@suse.de
@@ -788,13 +793,13 @@ Tue May  8 23:14:47 CEST 2001 - mfabian@suse.de
 -------------------------------------------------------------------
 Wed Mar 21 01:56:27 CET 2001 - ro@suse.de
 
-- added esound-devel 
+- added esound-devel
 
 -------------------------------------------------------------------
 Sun Feb 25 18:28:47 MET 2001 - egger@suse.de
 
 - Remove unnecessary dependencies from #neededforbuild,
-  especially imlib-config. 
+  especially imlib-config.
 
 -------------------------------------------------------------------
 Tue Jan 30 23:35:00 CET 2001 - ro@suse.de
@@ -806,7 +811,7 @@ Wed Nov  1 01:21:05 MET 2000 - egger@suse.de
 
 - Updated specfile to new long packagenames.
 - Reworked specfile.
-- Probably needs some more work; I'm taking care of that. 
+- Probably needs some more work; I'm taking care of that.
 
 -------------------------------------------------------------------
 Tue Aug  8 11:58:33 CEST 2000 - grimmer@suse.de

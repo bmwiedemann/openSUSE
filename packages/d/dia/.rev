@@ -428,4 +428,12 @@ https://bugzilla.redhat.com/996759) (forwarded request 224089 from mgorse)</comm
     <comment></comment>
     <requestid>1316956</requestid>
   </revision>
+  <revision rev="58" vrev="19">
+    <srcmd5>fa4e5f9f37927b06551fd69f81cd43c3</srcmd5>
+    <version>0.97.3</version>
+    <time>1791465166</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to configure.ac.</comment>
+    <requestid>1382957</requestid>
+  </revision>
 </revisionlist>

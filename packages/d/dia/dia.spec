@@ -60,7 +60,7 @@ BuildRequires:  libxslt-tools
 BuildRequires:  pkgconfig
 BuildRequires:  swig
 BuildRequires:  xz
-BuildRequires:  pkgconfig(cairo)
+BuildRequires:  pkgconfig(cairo) >= 1.0.0
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(gdk-2.0)
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
@@ -72,7 +72,7 @@ BuildRequires:  pkgconfig(libexslt)
 BuildRequires:  pkgconfig(libpng16)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libxslt)
-BuildRequires:  pkgconfig(pango)
+BuildRequires:  pkgconfig(pango) >= 1.8.0
 Requires:       ghostscript-fonts-std
 Requires:       xdg-utils
 
