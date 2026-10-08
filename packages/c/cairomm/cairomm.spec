@@ -33,7 +33,7 @@ BuildRequires:  mm-common
 BuildRequires:  pkgconfig
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(cairo) >= 1.14.0
-BuildRequires:  pkgconfig(sigc++-3.0) >= 2.5.1
+BuildRequires:  pkgconfig(sigc++-3.0) >= 3.0.0
 
 %description
 This package provides a C++ interface for Cairo.

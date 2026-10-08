@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:12:00 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Aug 31 12:49:18 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 1.18.1:
@@ -366,7 +371,7 @@ Tue Feb  3 14:19:52 EST 2009 - hfiguiere@suse.de
 Sun Feb  1 19:39:51 EST 2009 - mboman@suse.de
 
 - Update to version 1.8.0:
-  + No notable changes since 1.7.2 
+  + No notable changes since 1.7.2
 
 -------------------------------------------------------------------
 Fri Dec 26 14:42:40 EST 2008 - mboman@suse.de
@@ -390,7 +395,7 @@ Sun Dec 14 17:55:43 EST 2008 - mboman@suse.de
 Tue Sep 23 17:03:38 CDT 2008 - maw@suse.de
 
 - Update to version 1.6.4:
-  + New API: 
+  + New API:
     * wrap cairo_format_stride_for_width()
   + Fixed a bug where an exception message would often report
     "Success" when it should have reported an error message
@@ -402,12 +407,12 @@ Tue Sep 23 17:03:38 CDT 2008 - maw@suse.de
 -------------------------------------------------------------------
 Tue Jun 17 22:00:11 CEST 2008 - crrodriguez@suse.de
 
-- disable unusable static libraries 
+- disable unusable static libraries
 
 -------------------------------------------------------------------
 Mon Mar 31 20:30:50 CEST 2008 - vuntz@suse.de
 
-- Update to version 1.4.8: 
+- Update to version 1.4.8:
   + Bug fd.o #14559: build failure in exception.cc on Solaris with
     Sun Workshop C++
   + Bug fd.o #14558: cairomm 1.4.6 context.cc needs math.h on
@@ -442,7 +447,7 @@ Fri Jan 12 13:31:59 CET 2007 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Jan  8 00:08:01 CET 2007 - ro@suse.de
 
-- GNOME moved to /usr 
+- GNOME moved to /usr
 
 -------------------------------------------------------------------
 Mon Sep 18 19:35:22 CEST 2006 - jhargadon@suse.de

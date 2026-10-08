@@ -390,4 +390,16 @@
   + Meson build system fixes</comment>
     <requestid>1374892</requestid>
   </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>e05941291f6fb3df407ad3986bc8ee7e</srcmd5>
+    <version>1.18.1</version>
+    <time>1791465165</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+- disable unusable static libraries
+- Update to version 1.4.8:
+- GNOME moved to /usr</comment>
+    <requestid>1382956</requestid>
+  </revision>
 </revisionlist>
