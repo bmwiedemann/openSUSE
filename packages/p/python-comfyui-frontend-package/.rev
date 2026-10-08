@@ -182,4 +182,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
 - No CVE or GHSA in the 30-commit range</comment>
     <requestid>1382333</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>f9aa337c5fb675a861295fda4ab96b1b</srcmd5>
+    <version>1.55.15</version>
+    <time>1791458876</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.55.15, same-lineage successor of 1.54.12. Agent/cloud fixes in range are compiled out of this build; DOMPurify stays 3.4.13.</comment>
+    <requestid>1383217</requestid>
+  </revision>
 </revisionlist>

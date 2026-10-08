@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:27:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.55.15 (crosses 1.55.14, superseded the same
+  day; only 1.55.15 is submitted):
+  * Model downloads no longer drop a completed download after
+    an earlier failed status, and warn when first and last
+    frames have different aspect ratios
+  * Canvas: floating workflow tabs, prompt height preserved
+    beside image previews, autogrow slots reconnect without
+    a refresh
+  * Workflows: missing entries dropped from openWorkflows,
+    no more activation crash on a null active state
+  * Upstream's Comfy Agent side panel is cloud-only and is
+    compiled out of this build, so the agent credit-warning,
+    telemetry, attachment and auth fixes in this range land
+    in source this package does not ship
+  * Vendored DOMPurify stays at 3.4.13
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- No packaging change: setup.py still declares no runtime
+  requirements
+
+-------------------------------------------------------------------
 Sun Oct  4 06:49:52 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.54.12:
