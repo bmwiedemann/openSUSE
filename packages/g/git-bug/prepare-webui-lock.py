@@ -47,7 +47,8 @@ def build_manifest(package, lock):
     overrides = lock.get("overrides", {})
     if overrides != {"js-yaml@4": "^4.3.2"}:
         raise Error("Upstream overrides changed; review their npm translation")
-    result["overrides"] = overrides
+    result["overrides"] = overrides.copy()
+    result["overrides"]["postcss-selector-parser"] = "7.1.6"
     result.pop("pnpm", None)
     result.pop("packageManager", None)
     return result

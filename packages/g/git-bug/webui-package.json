@@ -90,6 +90,7 @@
     "vitest": "4.1.11"
   },
   "overrides": {
-    "js-yaml@4": "^4.3.2"
+    "js-yaml@4": "^4.3.2",
+    "postcss-selector-parser": "7.1.6"
   }
 }

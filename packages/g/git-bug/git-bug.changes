@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  7 15:16:44 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Update vendored NPM packages to fix CVE-2026-104844:
+- Add override for postcss-selector-parser to 7.1.6 to fix quadratic parsing complexity
+  vulnerability (CVE-2026-104844)
+- Regenerate package-lock.json and webui-package.json
+
+-------------------------------------------------------------------
+Tue Oct  6 00:00:00 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
+
+- Verify v0.11.0 is still the latest upstream release.
+- Run govulncheck on the expanded release source with the packaged
+  vendor tree, both with and without the Web UI build tag. No
+  reachable vulnerabilities were found.
+- GO-2026-5932 is a no-fixed-version module advisory for the
+  unmaintained golang.org/x/crypto/openpgp package. Upstream uses
+  ProtonMail's maintained OpenPGP fork; replacing the whole
+  golang.org/x/crypto module is not applicable because go-git still
+  needs other x/crypto packages. No replace directives are required.
+
+-------------------------------------------------------------------
 Thu Sep 24 12:00:23 UTC 2026 - Matej Cepl <mcepl@cepl.eu>
 
 - Enable the Web UI RPM build by default on x86_64, retaining

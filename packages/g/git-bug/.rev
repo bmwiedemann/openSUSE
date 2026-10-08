@@ -430,4 +430,25 @@ Update to the commit d499b6e.
   more capable than the one it replaces. The less obvious one is</comment>
     <requestid>1382186</requestid>
   </revision>
+  <revision rev="19" vrev="2">
+    <srcmd5>bd1bf1ab700fe580fd2c821bd39c9cf3</srcmd5>
+    <version>0.11.0</version>
+    <time>1791453395</time>
+    <user>anag_factory</user>
+    <comment>- Update vendored NPM packages to fix CVE-2026-104844:
+- Add override for postcss-selector-parser to 7.1.6 to fix quadratic parsing complexity
+  vulnerability (CVE-2026-104844)
+- Regenerate package-lock.json and webui-package.json
+
+- Verify v0.11.0 is still the latest upstream release.
+- Run govulncheck on the expanded release source with the packaged
+  vendor tree, both with and without the Web UI build tag. No
+  reachable vulnerabilities were found.
+- GO-2026-5932 is a no-fixed-version module advisory for the
+  unmaintained golang.org/x/crypto/openpgp package. Upstream uses
+  ProtonMail's maintained OpenPGP fork; replacing the whole
+  golang.org/x/crypto module is not applicable because go-git still
+  needs other x/crypto packages. No replace directives are required.</comment>
+    <requestid>1383104</requestid>
+  </revision>
 </revisionlist>

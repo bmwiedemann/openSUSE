@@ -29,7 +29,7 @@ class PreparationTests(unittest.TestCase):
         result = HELPER["build_manifest"](package, lock)
         self.assertEqual(package, before)
         self.assertEqual(result["dependencies"]["react"], "19.3.0")
-        self.assertEqual(result["overrides"], {"js-yaml@4": "^4.3.2"})
+        self.assertEqual(result["overrides"], {"js-yaml@4": "^4.3.2", "postcss-selector-parser": "7.1.6"})
         self.assertNotIn("packageManager", result)
         self.assertNotIn("pnpm", result)
 

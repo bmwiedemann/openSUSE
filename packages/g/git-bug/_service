@@ -14,6 +14,11 @@
     </service>
     <service name="set_version" mode="manual"/ -->
     <service name="go_modules" mode="manual">
+        <!-- v0.11.0 is upstream's latest release. govulncheck reports no
+             reachable vulnerabilities. GO-2026-5932 has no fixed version
+             and concerns x/crypto/openpgp, which git-bug replaced with the
+             maintained ProtonMail fork upstream. Replacing all of x/crypto
+             would also remove packages (such as ssh) still used by go-git. -->
     </service>
     <!-- Traditional osc workflow: archive the npm sources and declare each
          tarball in the generated spec include. No build-time downloads. -->

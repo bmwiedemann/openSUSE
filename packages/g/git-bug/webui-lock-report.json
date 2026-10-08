@@ -1,6 +1,6 @@
 {
-  "source_identities": 1041,
-  "installation_entries": 1089,
+  "source_identities": 1040,
+  "installation_entries": 1088,
   "bundled_entries": 6,
   "not_selected_by_npm": [
     "@adobe/css-tools@4.4.4",
@@ -98,6 +98,7 @@
     "parse5@8.0.1",
     "path-exists@4.0.0",
     "path-to-regexp@6.3.0",
+    "postcss-selector-parser@6.0.10",
     "prelude-ls@1.2.1",
     "property-information@7.1.0",
     "punycode@2.3.1",
