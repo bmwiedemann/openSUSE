@@ -1,4 +1,65 @@
 -------------------------------------------------------------------
+Thu Oct 01 13:40:24 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
+
+- Update to latest stable release (11.1.2)
+  Full backport list here:
+   https://lore.kernel.org/qemu-devel/20260929144512.126747-1-mjt@tls.msk.ru/
+  A selection of them is reported here below:
+   target/sh4: Replace TB_FLAG_GUSA_EXCLUSIVE with CF_STEP_ATOMIC
+   accel/tcg: Set CF_NOIRQ during cpu_exec_step_atomic
+   linux-user/sh4: align the vdso sigreturn trampolines
+   linux-user/sh4: fix vdso CFA for rt_sigreturn frames
+   linux-user/sh4: use the kernel's sigreturn trampoline sequence in the vdso
+   target/i386: Mark MOVNTI as not valid with prefixes 0x66, 0xF2, 0xF3
+   target/i386: Update FPU tag word for FXCH
+   target/i386: Update FPU tag word for FSTP
+   target/i386: Update FPU tag word for FXTRACT's old ST(0)
+   target/i386: Fix FXCH to unconditionally clear C1
+   target/ppc: Stop vCPU thread before calling parent_unrealize
+   tests/qtest/usb-hcd-xhci: test isoch endpoint type mismatch
+   tests/qtest/usb-hcd-xhci: test isoch pacing with MFINDEX above 2^32
+   hw/usb/hcd-xhci: don't assert on NAK when retrying an isoch transfer
+   hw/usb/hcd-xhci: fix interval alignment after MFINDEX passes 2^32
+   hw/usb/hcd-xhci: Set reentrancy guard in timer functions (CVE-2026-17588)
+   tcg/riscv64: Set vtype before whole-register vector loads
+   tests/tcg/s390x: Add regression test for #4449
+   tcg/optimize: Fix expansion/simplification of deposit
+   tests/tcg/arm: Add regression test for #4448
+   tcg/optimize: Fix fold_multiply2 vs 1
+   accel/tcg: Fix TLB_MMIO check in tlb_plugin_lookup()
+   accel/tcg: Use TLB_FORCE_SLOW not TLB_MMIO for system plugins
+   hw/9pfs: mutate FID path from main thread only (CVE-2026-93834)
+   s390x/pci: fix DMA slot leak on I/O TLB entry replacement
+   hw/s390x/ipl: Fix incorrect PCI IPL block lengths
+   linux-user/loongarch64: Detect vector stores in host_signal_write()
+   linux-user: implement mlock2(2) syscall
+   linux-user/riscv: honor zicntrúlse for base counterCSRs
+   system/ram-discard-manager: fix offset_within_address_space in replay_by_populated_state()
+   igvm: mark qigvm_find_param_entry as static
+   igvm: validate and honor byte_offset in parameter directives
+   hw/uefi: add missing uefi_str_is_valid check to uefi_vars_mm_lock_variable
+   target/loongarch: Fix data race in CSR_ESTAT
+   hw/riscv/virt.c: fix aclint soc/mtimer nodename
+   target/arm/hvf: implement MDCCSR_EL0 as RAZ
+   target/arm/whpx: fix whpx-arm post-reset CPU state
+   target/arm/whpx: incorrect ENCODE_AA64_CP_REG parameter order
+   target/arm/whpx: Don't try to sync ARM_CP_CONST registers
+   hw/intc/bcm2835_ic: reject out-of-range FIQ source values
+   qga: Change effective user/group ID in guest-ssh-* commands
+   vhost-user-gpu: validate command buffer size in submit_3d
+   ui/cursor: make the cursor refcount atomic
+   hw/display/qxl: hold ssd.lock while replacing ssd.cursor
+   hw/cxl: fix the CDAT DOE overlapping the Flex Bus DVSEC when sn= is set
+   virtio-scsi: set dataplane_started to false upon failure
+   virtio-balloon: fix free-page BH teardown on unrealize
+   hw/virtio: reject inverted virtio-iommu IOVA ranges
+   hw/net/virtio-net: strip trailing padding when caching RSC segment
+   hw/net/virtio-net: check packet size before VLAN tag access in receive_filter()
+   qapi/misc: Fix missed query-iothreads items
+   hw/cxl: Fix guest-triggerable QEMU exit on reserved interleave ways
+   virtio-gpu: clear res->blob on mapping cleanup
+
+-------------------------------------------------------------------
 Wed Sep 30 17:09:11 UTC 2026 - Dario Faggioli <dfaggioli@suse.com>
 
 - Bugfixes and (spec-file) improvements:
