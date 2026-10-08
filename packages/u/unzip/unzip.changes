@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:54:51 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop obsolete -fstack-protector from RPM_OPT_FLAGS (predates distro -fstack-protector-strong in optflags; the trailing basic flag silently downgraded strong to basic)
+
+-------------------------------------------------------------------
 Mon Mar  2 16:52:14 UTC 2026 - Antonio Teixeira <antonio.teixeira@suse.com>
 
 - Remove update-alternatives %post scripts for SLES 16.x future releases

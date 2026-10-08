@@ -129,7 +129,7 @@ export RPM_OPT_FLAGS="%{optflags} \
 -D_GNU_SOURCE -DRCC_LAZY -DWILD_STOP_AT_DIR \
 -DLARGE_FILE_SUPPORT -DUNICODE_SUPPORT \
 -DUNICODE_WCHAR -DUTF8_MAYBE_NATIVE -DNO_LCHMOD \
--DDATE_FORMAT=DF_YMD -I. -fstack-protector -fno-strict-aliasing -fPIE"
+-DDATE_FORMAT=DF_YMD -I. -fno-strict-aliasing -fPIE"
 
 make %{?_smp_mflags}  -f unix/Makefile LF2="-ldl -pie" linux_noasm
 
