@@ -125,4 +125,13 @@
     performance</comment>
     <requestid>1362153</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>f1ddc29c6584fd914f4c709fad2d82a4</srcmd5>
+    <version>1.0.1</version>
+    <time>1791465163</time>
+    <user>anag_factory</user>
+    <comment>- Add patch do-not-use-commonprefix.patch:
+  * Use pathlib.Path.commonpath() rather than commonprefix.</comment>
+    <requestid>1382902</requestid>
+  </revision>
 </revisionlist>

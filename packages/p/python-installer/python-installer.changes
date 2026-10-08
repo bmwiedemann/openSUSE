@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:11:44 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch do-not-use-commonprefix.patch:
+  * Use pathlib.Path.commonpath() rather than commonprefix.
+
+-------------------------------------------------------------------
 Sun Jun 28 11:09:49 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.0.1:

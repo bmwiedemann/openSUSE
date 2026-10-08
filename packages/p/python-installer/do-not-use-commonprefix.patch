@@ -1,0 +1,52 @@
+From d6b76a8ef9c3ebb5f15e7aba64dd8dfee1461ead Mon Sep 17 00:00:00 2001
+From: Richard Si <sichard26@gmail.com>
+Date: Fri, 26 Jun 2026 18:00:35 -0400
+Subject: [PATCH] Use os.path.commonpath over commonprefix
+
+commonprefix was deprecated in Python 3.15 as it does a
+character-by-character check which is 99% likely to be not what you
+actually want.
+
+commonpath does the sane thing of returning only valid paths (aka
+respecting the directory structure).
+---
+ docs/changelog.md        | 5 +++++
+ src/installer/_core.py   | 2 +-
+ src/installer/sources.py | 4 ++--
+ 3 files changed, 8 insertions(+), 3 deletions(-)
+
+diff --git a/src/installer/_core.py b/src/installer/_core.py
+index a33011bb..3aad93c0 100644
+--- a/src/installer/_core.py
++++ b/src/installer/_core.py
+@@ -41,7 +41,7 @@ def _determine_scheme(
+     data_dir = source.data_dir
+ 
+     # If it's in not `{distribution}-{version}.data`, then it's in root_scheme.
+-    if posixpath.commonprefix([data_dir, path]) != data_dir:
++    if posixpath.commonpath([data_dir, path]) != data_dir:
+         return root_scheme, path
+ 
+     # Figure out which scheme this goes to.
+diff --git a/src/installer/sources.py b/src/installer/sources.py
+index 839934f3..836c1f20 100644
+--- a/src/installer/sources.py
++++ b/src/installer/sources.py
+@@ -220,7 +220,7 @@ def dist_info_filenames(self) -> list[str]:
+             name[len(base) + 1 :]
+             for name in self._zipfile.namelist()
+             if name[-1:] != "/"
+-            if base == posixpath.commonprefix([name, base])
++            if base == posixpath.commonpath([name, base])
+         ]
+ 
+     def read_dist_info(self, filename: str) -> str:
+@@ -259,7 +259,7 @@ def validate_record(self, *, validate_contents: bool = True) -> None:
+ 
+             record_args = record_mapping.pop(item.filename, None)
+ 
+-            if self.dist_info_dir == posixpath.commonprefix(
++            if self.dist_info_dir == posixpath.commonpath(
+                 [self.dist_info_dir, item.filename]
+             ) and item.filename.split("/")[-1] in ("RECORD.p7s", "RECORD.jws"):
+                 # both are for digital signatures, and not mentioned in RECORD

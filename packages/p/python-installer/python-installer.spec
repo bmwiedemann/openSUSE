@@ -32,6 +32,8 @@ Summary:        A library for installing Python wheels
 License:        MIT
 URL:            https://github.com/pypa/installer
 Source:         https://github.com/pypa/installer/archive/refs/tags/%{version}.tar.gz#/installer-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Based on gh#pypa/installer#345
+Patch0:         do-not-use-commonprefix.patch
 BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  %{python_module flit-core >= 3.11}
 BuildRequires:  fdupes
@@ -60,7 +62,7 @@ $apython3 -m flit_core.wheel
 %if !%{with test}
 %install
 export PYTHONPATH=src
-%python_expand $python -m installer -d %{buildroot} dist/*.whl
+%python_exec -m installer -d %{buildroot} dist/*.whl
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 %endif
 
