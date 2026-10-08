@@ -858,4 +858,13 @@ https://salsa.debian.org/reproducible-builds/diffoscope/-/issues/284#note_280561
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1377568</requestid>
   </revision>
+  <revision rev="55" vrev="1">
+    <srcmd5>4319c9b2ae2a39184fd7896d0071a726</srcmd5>
+    <version>332</version>
+    <time>1791453386</time>
+    <user>anag_factory</user>
+    <comment>- update to 332:
+  * Support radare2 &gt;= 5.9.0</comment>
+    <requestid>1383095</requestid>
+  </revision>
 </revisionlist>
