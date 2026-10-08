@@ -18,22 +18,19 @@
 
 %define sover 0
 Name:           jxrlib
-Version:        1.3.2
+Version:        1.4.3
 Release:        0
 Summary:        Open source implementation of jpegxr
 # See JPEGXR_DPK_Spec_1.0.doc. Upstream request for plain text license file at
 # https://jxrlib.codeplex.com/workitem/13
 License:        BSD-2-Clause
 URL:            https://github.com/mircomir/jxrlib
-Source0:        %{name}-%{version}.tar.xz
+Source0:        https://github.com/mircomir/jxrlib/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # Use CMake to build to facilitate creation of shared libraries
 # See https://jxrlib.codeplex.com/workitem/13
 Source1:        CMakeLists.txt
 # need 32bit flavors for Wine 6.2+
 Source2:        baselibs.conf
-# Fix various warnings, upstreamable
-# See https://jxrlib.codeplex.com/workitem/13
-Patch0:         jxrlib_warnings.patch
 BuildRequires:  cmake
 BuildRequires:  unzip
 
@@ -77,8 +74,6 @@ for file in `find . -type f -name '*.c' -or -name '*.h' -or -name '*.txt'`; do
   touch -r $file $file.new && mv $file.new $file
 done
 
-%patch -P 0 -p1
-
 # Remove shipped binaries
 rm -rf bin
 cp -a %{SOURCE1} .
@@ -90,10 +85,8 @@ cp -a %{SOURCE1} .
 %install
 %cmake_install
 
-%post -n libjpegxr%{sover} -p /sbin/ldconfig
-%post -n libjxrglue%{sover} -p /sbin/ldconfig
-%postun -n libjpegxr%{sover} -p /sbin/ldconfig
-%postun -n libjxrglue%{sover} -p /sbin/ldconfig
+%ldconfig_scriptlets -n libjpegxr%{sover}
+%ldconfig_scriptlets -n libjxrglue%{sover}
 
 %files
 %doc doc/readme.txt

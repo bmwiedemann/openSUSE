@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Wed Oct  7 08:38:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 1.4.3:
+  * tmpnam security mitigations
+  Changes in 1.4.2:
+  * Fix buffer overflow in outputNChannel
+  Changes in 1.4.1:
+  * Fix Use-of-uninitialized-value in ReadContainer
+  Changes in 1.4.0:
+  * Support for memory allocation limit via
+    PKAlloc_SetLimit / PKAlloc_GetLimit API
+  * Added PKLibJxr_GetVersion API to get library version
+  * Fix memory leaks
+  * Fix crash in PKImageDecode_Copy_WMP
+  * Fix issues found by github Security and quality
+  Changes in 1.3.8:
+  * Fix DPI conversion accuracy in BMPs
+  * Fix compilation error using GCC 15.2
+  Changes in 1.3.7:
+  * Fix Invalid-enum-value in ParsePFDEntry
+  Changes in 1.3.6:
+  * Fix Use-of-uninitialized-value in PKFormatConverter_InitializeConvert
+  * Fix Use-of-uninitialized-value in ReadWMIHeader
+  * Fix buffer read overflow in ReadContainer
+  Changes in 1.3.5:
+  * Fix some compiler warnings
+  Changes in 1.3.4:
+  * Fix memory leaks in PKImageDecode_Copy_WMP
+  * Fix Null-dereference READ in invTransformMacroblock
+  Changes in 1.3.3:
+  * Fix memory leak when Caption metadata is present
+- Drop jxrlib_warnings.patch, no longer needed
+- Update minimum CMake version in custom CMakeLists.txt
+
+-------------------------------------------------------------------
 Wed Apr 15 08:09:26 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Replace the unmaintained package source that was being used with
