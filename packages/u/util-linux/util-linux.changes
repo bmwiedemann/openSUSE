@@ -1,7 +1,37 @@
 -------------------------------------------------------------------
+Sun Oct  4 22:26:56 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Update to version 2.42.4 (bsc#1274864, PED-16740):
+  This release enhances previously released security fixes and adds
+  protection against symlink attacks in the legacy mount(2)-based
+  code in libmount.
+  * lib/fileutils:
+    * add safe FD-path and no-symlink helpers
+    * fix RESOLVE_NO_SYMLINKS fallback value
+  * libmount:
+    * add mnt_fs_fetch_ids() and populate uniq_id for utab
+    * use fchmodat2() for X-mount.mode=
+    * restore the original namespace on error paths
+    * secure the idmapped mount replacement
+    * pin the legacy mount target and bind/move source
+    * harden restricted mount targets and post-mount handling
+    * fix X-mount.idmap ID names in code and man page
+  * nsenter: close cgroup.procs fd after join to prevent authority
+    leak [CVE-2026-78408, bsc#1278348]
+- Add two upstream follow-up fixes
+  (util-linux-libcanonicalize-newline.patch,
+  util-linux-wall-off-by-one.patch).
+
+-------------------------------------------------------------------
+Wed Sep 30 14:44:36 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+
+- Fix uuidd tmpfiles installation path (bsc#1283294).
+- Mark two check known as failing in chroot environment.
+
+-------------------------------------------------------------------
 Sun Sep 20 16:29:05 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
 
-- Update to version 2.42.3:
+- Update to version 2.42.3 (PED-16740):
   * Security fixes:
     * CVE-2026-76642 - mount(8) post-mount hooks execute after
       helper failure.

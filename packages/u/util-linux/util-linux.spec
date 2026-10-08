@@ -85,7 +85,7 @@ Group:          Development/Languages/Python
 %endif
 # ulbuild == python
 
-Version:        2.42.3
+Version:        2.42.4
 Release:        0
 License:        GPL-2.0-or-later
 #Git-Clone:     https://github.com/util-linux/util-linux
@@ -113,6 +113,10 @@ Patch2:         Add-documentation-on-blacklisted-modules-to-mount-8-.patch
 Patch3:         util-linux-bash-completion-su-chsh-l.patch
 # PATCH-FIX-SUSE static_lib.patch schubi@suse.com -- Fix build with libeconf. Not upstreamable in this form. Needs work!
 Patch5:         static_lib.patch
+# PATCH-FIX-UPSTREAM util-linux-libcanonicalize-newline.patch sbrabec@suse.com -- libcanonicalize: only strip newline from Device Mapper name if present
+Patch6:         util-linux-libcanonicalize-newline.patch
+# PATCH-FIX-UPSTREAM util-linux-wall-off-by-one.patch sbrabec@suse.com -- Fix off-by-one in wall.
+Patch7:         util-linux-wall-off-by-one.patch
 BuildRequires:  audit-devel
 BuildRequires:  bc
 BuildRequires:  binutils-devel
@@ -619,7 +623,7 @@ fi
 ################
 %if "%ulbuild" == "base"
 %make_install
-mkdir -p "%{buildroot}%{_distconfdir}/default" "%{buildroot}%{_pam_vendordir}" "%{buildroot}%{_sysconfdir}/issue.d" "%{buildroot}/usr/lib/issue.d" "%{buildroot}%{_datadir}/user-tmpfiles.d"
+mkdir -p "%{buildroot}%{_distconfdir}/default" "%{buildroot}%{_pam_vendordir}" "%{buildroot}%{_sysconfdir}/issue.d" "%{buildroot}/usr/lib/issue.d" "%{buildroot}%{_tmpfilesdir}"
 install -m 644 %{SOURCE51} %{buildroot}%{_distconfdir}/blkid.conf
 touch %{buildroot}%{_sysconfdir}/blkid.conf
 mkdir %{buildroot}%{_sysconfdir}/blkid.conf.d %{buildroot}%{_distconfdir}/blkid.conf.d
@@ -642,7 +646,7 @@ rm -fv "%{buildroot}/%{_sbindir}/raw" "%{buildroot}/sbin/raw" \
 	"%{buildroot}/%{_mandir}/man8/raw.8"*
 echo -e "#!/bin/sh\n/sbin/blockdev --flushbufs \$1" > %{buildroot}%{_sbindir}/flushb
 chmod 755 %{buildroot}%{_sbindir}/flushb
-install -m0644 uuidd.tmpfiles %{buildroot}%{_datadir}/user-tmpfiles.d/uuidd.conf
+install -m0644 uuidd.tmpfiles %{buildroot}%{_tmpfilesdir}/uuidd.conf
 
 # arch dependent
 
@@ -1448,7 +1452,6 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_datadir}/bash-completion/completions/logger
 %exclude %{_datadir}/bash-completion/completions/lsblk
 %exclude %{_datadir}/bash-completion/completions/lslogins
-%exclude %{_datadir}/user-tmpfiles.d/uuidd.conf
 
 %exclude %{_bindir}/findmnt
 %exclude %{_bindir}/logger
@@ -1461,6 +1464,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %exclude %{_mandir}/man1/lslogins.1.gz
 
 %exclude %{_mandir}/man8/uuidd.8.gz
+
+%exclude %{_tmpfilesdir}/uuidd.conf
 
 %ghost /var/adm/update-messages/%{name}-%{version}-%{release}-1
 %endif
@@ -1814,8 +1819,8 @@ rmdir --ignore-fail-on-non-empty /run/run >/dev/null 2>&1 || :
 %attr(-,uuidd,uuidd) %ghost %{_sharedstatedir}/libuuid/clock.txt
 %attr(-,uuidd,uuidd) %ghost %dir /run/uuidd
 %{_datadir}/bash-completion/completions/uuidd
-%{_datadir}/user-tmpfiles.d/uuidd.conf
 %{_mandir}/man8/uuidd.8.gz
+%{_tmpfilesdir}/uuidd.conf
 %{_unitdir}/uuidd.service
 %{_unitdir}/uuidd.socket
 

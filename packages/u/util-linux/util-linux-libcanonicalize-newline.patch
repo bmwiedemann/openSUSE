@@ -1,0 +1,29 @@
+From a3205a6fd4cc0e03e787b09e614058527f63ac54 Mon Sep 17 00:00:00 2001
+From: Leefancy <lijian01@kylinos.cn>
+Date: Mon, 14 Sep 2026 17:31:46 +0800
+Subject: [PATCH] libcanonicalize: only strip newline from DM name if present
+
+Signed-off-by: Leefancy <lijian01@kylinos.cn>
+(cherry picked from commit 326136177724da60100dd760b63f2bf2df64bc1b)
+---
+ lib/canonicalize.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/lib/canonicalize.c b/lib/canonicalize.c
+index 854e61146..967410579 100644
+--- a/lib/canonicalize.c
++++ b/lib/canonicalize.c
+@@ -48,7 +48,9 @@ char *ul_canonicalize_dm_name_prefixed(const char *prefix, const char *ptname)
+ 
+ 	/* read "<name>\n" from sysfs */
+ 	if (fgets(name, sizeof(name), f) && (sz = strlen(name)) > 1) {
+-		name[sz - 1] = '\0';
++		if (name[sz - 1] == '\n')
++			name[sz - 1] = '\0';
++
+ 		snprintf(path, sizeof(path), _PATH_DEV_MAPPER "/%s", name);
+ 
+ 		if ((prefix && *prefix) || access(path, F_OK) == 0)
+-- 
+2.55.0
+
