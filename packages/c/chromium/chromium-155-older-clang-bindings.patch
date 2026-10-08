@@ -1,0 +1,131 @@
+--- chromium-155.0.8059.5/third_party/llvm-libclang/bindings/python/clang/cindex.py	2026/09/21 13:00:14	1.1
++++ chromium-155.0.8059.5/third_party/llvm-libclang/bindings/python/clang/cindex.py	2026/09/21 22:16:44
+@@ -354,9 +354,6 @@
+     def __ne__(self, other: object) -> bool:
+         return not self.__eq__(other)
+ 
+-    def __lt__(self, other: SourceLocation) -> bool:
+-        return bool(conf.lib.clang_isBeforeInTranslationUnit(self, other))
+-
+     def __le__(self, other: SourceLocation) -> bool:
+         return self < other or self == other
+ 
+@@ -2327,11 +2324,6 @@
+         return conf.lib.clang_Cursor_getOffsetOfField(self)  # type: ignore [no-any-return]
+ 
+     @cursor_null_guard
+-    def get_base_offsetof(self, parent: Cursor) -> int:
+-        """Returns the offsetof the CXX_BASE_SPECIFIER pointed by this Cursor."""
+-        return conf.lib.clang_getOffsetOfBase(parent, self)  # type: ignore [no-any-return]
+-
+-    @cursor_null_guard
+     def is_virtual_base(self) -> bool:
+         """Returns whether the CXX_BASE_SPECIFIER pointed by this Cursor is virtual."""
+         return bool(conf.lib.clang_isVirtualBase(self))
+@@ -2815,21 +2807,6 @@
+         """
+         return Type.from_result(conf.lib.clang_getCanonicalType(self), self)
+ 
+-    def get_fully_qualified_name(
+-        self, policy: PrintingPolicy, with_global_ns_prefix: bool = False
+-    ) -> str:
+-        """
+-        Get the fully qualified name for a type.
+-
+-        This includes full qualification of all template parameters.
+-
+-        policy - This PrintingPolicy can further refine the type formatting
+-        with_global_ns_prefix - If true, prepend '::' to qualified names
+-        """
+-        return _CXString.from_result(
+-            conf.lib.clang_getFullyQualifiedName(self, policy, with_global_ns_prefix)
+-        )
+-
+     def is_const_qualified(self) -> bool:
+         """Determine whether a Type has the "const" qualifier set.
+ 
+@@ -2953,36 +2930,6 @@
+         conf.lib.clang_Type_visitFields(self, fields_visit_callback(visitor), fields)
+         return iter(fields)
+ 
+-    def get_bases(self) -> Iterator[Cursor]:
+-        """Return an iterator for accessing the base classes of this type."""
+-
+-        def visitor(base: Cursor, _: Any) -> Literal[1]:
+-            assert not base.is_null()
+-
+-            # Create reference to TU so it isn't GC'd before Cursor.
+-            base._tu = self._tu
+-            bases.append(base)
+-            return 1  # continue
+-
+-        bases: list[Cursor] = []
+-        conf.lib.clang_visitCXXBaseClasses(self, fields_visit_callback(visitor), bases)
+-        return iter(bases)
+-
+-    def get_methods(self) -> Iterator[Cursor]:
+-        """Return an iterator for accessing the methods of this type."""
+-
+-        def visitor(method: Cursor, _: Any) -> Literal[1]:
+-            assert not method.is_null()
+-
+-            # Create reference to TU so it isn't GC'd before Cursor.
+-            method._tu = self._tu
+-            methods.append(method)
+-            return 1  # continue
+-
+-        methods: list[Cursor] = []
+-        conf.lib.clang_visitCXXMethods(self, fields_visit_callback(visitor), methods)
+-        return iter(methods)
+-
+     def get_exception_specification_kind(self) -> ExceptionSpecificationKind:
+         """
+         Return the kind of the exception specification; a value from
+@@ -2997,10 +2944,6 @@
+         """Retrieve the spelling of this Type."""
+         return _CXString.from_result(conf.lib.clang_getTypeSpelling(self))
+ 
+-    def pretty_printed(self, policy: PrintingPolicy) -> str:
+-        """Pretty-prints this Type with the given PrintingPolicy"""
+-        return _CXString.from_result(conf.lib.clang_getTypePrettyPrinted(self, policy))
+-
+     def __eq__(self, other: object) -> bool:
+         return isinstance(other, Type) and bool(conf.lib.clang_equalTypes(self, other))
+ 
+@@ -4281,7 +4224,6 @@
+     ("clang_getNumDiagnosticsInSet", [c_object_p], c_uint),
+     ("clang_getNumElements", [Type], c_longlong),
+     ("clang_getNumOverloadedDecls", [Cursor], c_uint),
+-    ("clang_getOffsetOfBase", [Cursor, Cursor], c_longlong),
+     ("clang_getOverloadedDecl", [Cursor, c_uint], Cursor),
+     ("clang_getPointeeType", [Type], Type),
+     ("clang_getRange", [SourceLocation, SourceLocation], SourceRange),
+@@ -4301,11 +4243,9 @@
+     ("clang_getTypedefDeclUnderlyingType", [Cursor], Type),
+     ("clang_getTypedefName", [Type], _CXString),
+     ("clang_getTypeKindSpelling", [c_uint], _CXString),
+-    ("clang_getTypePrettyPrinted", [Type, PrintingPolicy], _CXString),
+     ("clang_getTypeSpelling", [Type], _CXString),
+     ("clang_hashCursor", [Cursor], c_uint),
+     ("clang_isAttribute", [CursorKind], c_uint),
+-    ("clang_getFullyQualifiedName", [Type, PrintingPolicy, c_uint], _CXString),
+     ("clang_isConstQualifiedType", [Type], c_uint),
+     ("clang_isCursorDefinition", [Cursor], c_uint),
+     ("clang_isDeclaration", [CursorKind], c_uint),
+@@ -4322,7 +4262,6 @@
+     ("clang_isUnexposed", [CursorKind], c_uint),
+     ("clang_isVirtualBase", [Cursor], c_uint),
+     ("clang_isVolatileQualifiedType", [Type], c_uint),
+-    ("clang_isBeforeInTranslationUnit", [SourceLocation, SourceLocation], c_uint),
+     (
+         "clang_parseTranslationUnit",
+         [Index, c_interop_string, c_void_p, c_int, c_void_p, c_int, c_int],
+@@ -4335,8 +4274,6 @@
+         [TranslationUnit, SourceRange, POINTER(POINTER(Token)), POINTER(c_uint)],
+     ),
+     ("clang_visitChildren", [Cursor, cursor_visit_callback, py_object], c_uint),
+-    ("clang_visitCXXBaseClasses", [Type, fields_visit_callback, py_object], c_uint),
+-    ("clang_visitCXXMethods", [Type, fields_visit_callback, py_object], c_uint),
+     ("clang_Cursor_getNumArguments", [Cursor], c_int),
+     ("clang_Cursor_getArgument", [Cursor, c_uint], Cursor),
+     ("clang_Cursor_getNumTemplateArguments", [Cursor], c_int),

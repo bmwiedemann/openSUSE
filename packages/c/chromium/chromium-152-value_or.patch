@@ -13,5 +13,5 @@
 -    controller = controller->parent_controller_.value_or({});
 +    controller = controller->parent_controller_.value_or(base::WeakPtr<AutofillPopupControllerImpl>{});
    }
-   return multi_row_index;
+   return {.multi_index = std::move(multi_row_index)};
  }

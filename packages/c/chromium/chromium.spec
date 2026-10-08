@@ -79,7 +79,7 @@
 # GCC version
 %define gcc_version 14
 # minimal esbuild version
-%define esbuild_version 0.25.1
+%define esbuild_version 0.28.2
 # minimal gn version
 %define gn_version 0.20260831
 # local rollup override to run without binaries
@@ -139,7 +139,7 @@
 %global official_build 1
 
 Name:           chromium%{n_suffix}
-Version:        154.0.8037.97
+Version:        155.0.8059.39
 Release:        0
 Summary:        Google's open source browser project
 License:        BSD-3-Clause AND LGPL-2.1-or-later
@@ -220,7 +220,10 @@ Patch406:       chromium-153-opus_includes.patch
 Patch407:       chromium-153-ignore-typescript-deps.patch
 Patch408:       chromium-154-revert-crubit_web_package.patch
 Patch409:       chromium-154-revert-crubit_private_verification_tokens.patch
-Patch410:       chromium-154-fix_split_compilation.patch
+Patch410:       chromium-155-v8-clang-path.patch
+Patch411:       chromium-153-ftbfs-pipewire-api.patch
+Patch412:       chromium-155-older-clang-bindings.patch
+Patch413:       chromium-155-v8-cxx-include.patch
 # conditionally applied patches ppc64le only
 # where applicable patch numbers from fedora specfile + 100
 Patch452:       ppc-fedora-memory-allocator-dcheck-assert-fix.patch
@@ -320,10 +323,12 @@ Patch1073:       chromium-151-constexpr.patch
 Patch1074:       chromium-152-no-lifetime-checks.patch 
 Patch1075:       chromium-152-no-warning-suppression-map.patch
 Patch1080:       rollup.patch
-# another crubit revert
-Patch1081:       chromium-493e6c3911e33cc356856bafbffc6cf95521266b.patch
-# revert patch needing more recent pipewire
-Patch1082:       chromium-a0253ec15b3d3072fb35d6be29ba9224c36f9dd7.patch
+# more crubit fallout
+Patch1082:       chromium-493e6c3911e33cc356856bafbffc6cf95521266b.patch
+Patch1083:       chromium-155-consistently-cxx23.patch
+# get v8 to build on code15
+# c++ include limits is found by chance on newer versions,
+# try to force the needed include dir into code15
 
 # end conditionally applied patches
 BuildRequires:  SDL-devel
@@ -471,7 +476,11 @@ Obsoletes:      chromium-dev-desktop-kde < %{version}
 Obsoletes:      chromium-ffmpeg < %{version}
 Obsoletes:      chromium-ffmpegsumo < %{version}
 # no 32bit supported and it takes ages to build
+%if 0%{?suse_version} >= 1600
 ExclusiveArch:  x86_64 aarch64 riscv64 ppc64le
+%else
+ExclusiveArch:  x86_64 aarch64 riscv64
+%endif
 %if 0%{?suse_version} <= 1500
 BuildRequires:  pkgconfig(glproto)
 %endif
@@ -540,12 +549,18 @@ BuildRequires:  (libc++.so >= %{llvm_version_long} with libc++.so < %{llvm_versi
 BuildRequires:  (libc++1 >= %{llvm_version_long} with libc++1 < %{llvm_version_long_plus})
 BuildRequires:  (libc++abi.so >= %{llvm_version_long} with libc++abi.so < %{llvm_version_long_plus})
 BuildRequires:  (libc++abi1 >= %{llvm_version_long} with libc++abi1 < %{llvm_version_long_plus})
+#!BuildIgnore:  libstdc++6-devel-gcc%{gcc_version}
+#!BuildIgnore:  libstdc++-devel
+#!BuildIgnore:  gcc13-c++
+#!BuildIgnore:  gcc%{gcc_version}-c++
+#!BuildIgnore:  gcc-c++
 %endif
 BuildRequires:  lld%{llvm_version}
 BuildRequires:  llvm%{llvm_version}
-%ifnarch ppc64le
+#ifnarch ppc64le
+#needed if regenerating libaom config
 #!BuildIgnore:  gcc
-%endif
+#endif
 %else
 # gcc case
 BuildRequires:  binutils-gold
@@ -623,12 +638,12 @@ if [[ $(echo ${clang_version} | cut -d. -f1) -lt 23 ]]; then
 fi
 
 # revert another crubit patch until we get a proper building crubit
-%patch -p1 -R -P 1081
-
-%if %{without pipewire16}
-pushd third_party/webrtc
 %patch -p1 -R -P 1082
-popd
+
+%if 0%{?suse_version} < 1600
+%ifarch ppc64le
+%patch -p1 -P 1083
+%endif
 %endif
 
 ## ROLLUP_HACK
@@ -640,7 +655,7 @@ tar xf %{SOURCE4} && mv package third_party/node/node_modules/rollup
 %patch -p1 -P 1080
 
 # re-enabled if patch is outdated to regenerate in build environment
-%ifarch ppc64le
+%ifarch ppc64le_disabled
 pushd third_party/libaom
 git init
 git config --global user.email "build@host"
@@ -743,6 +758,10 @@ ln -sfn %{_bindir}/$PYTHON $HOME/bin/python
 ln -sfn %{_bindir}/$PYTHON $HOME/bin/python3
 export PATH="$HOME/bin:$PATH"
 
+# gn binary
+rm -f buildtools/linux64/gn
+ln -sf %{_bindir}/gn buildtools/linux64/gn
+
 # use our wrapper
 rm chrome/installer/linux/common/wrapper
 cp %{SOURCE106} chrome/installer/linux/common/wrapper
@@ -758,6 +777,10 @@ clang_base_path="$(clang-%{llvm_version} --version | grep InstalledDir | cut -d'
 
 # fix lld version
 ln -snf /usr/bin/ld.lld-%{llvm_version} $HOME/bin/ld.lld
+
+# ugly hack for python clang bindings
+mkdir python-clang
+cp -av third_party/llvm-libclang/bindings/python/clang python-clang
 
 # Remove bundled libs
 keeplibs=(
@@ -790,7 +813,6 @@ keeplibs=(
     third_party/anonymous_tokens
     third_party/apple_apsl
     third_party/axe-core
-    third_party/bidimapper
     third_party/blink
     third_party/boringssl
     third_party/boringssl/src/third_party/fiat
@@ -1270,6 +1292,8 @@ myconf_gn+=" rtc_use_h264=false"
 %endif
 myconf_gn+=" use_v8_context_snapshot=true"
 myconf_gn+=" v8_use_external_startup_data=true"
+myconf_gn+=" v8_metagen_libclang_so=\"%{_prefix}/lib64/libclang.so\""
+myconf_gn+=" v8_metagen_libclang_bindings_dir=\"$RPM_BUILD_DIR/%{?buildsubdir}/python-clang\""
 myconf_gn+=" rust_sysroot_absolute=\"%{_prefix}\""
 myconf_gn+=" rust_bindgen_root=\"%{_prefix}\""
 myconf_gn+=" rustc_version=\"$rustc_version\""
@@ -1383,6 +1407,8 @@ ccache --show-stats
 %files
 %license LICENSE
 %doc AUTHORS
+# hack to keep the generated file
+%doc out/gen/v8/builtins-generated/bytecodes-builtins-list.h
 %{_datadir}/chromium
 %dir %{_sysconfdir}/chromium
 %dir %{_sysconfdir}/chromium/policies

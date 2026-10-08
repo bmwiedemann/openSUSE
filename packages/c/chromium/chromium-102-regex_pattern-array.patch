@@ -1,8 +1,6 @@
-Index: chromium-154.0.8037.0/components/autofill/core/browser/BUILD.gn
-===================================================================
---- chromium-154.0.8037.0.orig/components/autofill/core/browser/BUILD.gn
-+++ chromium-154.0.8037.0/components/autofill/core/browser/BUILD.gn
-@@ -503,6 +503,11 @@ static_library("browser") {
+--- chromium-155.0.8040.2/components/autofill/core/browser/BUILD.gn	2026/09/09 23:26:18	1.1
++++ chromium-155.0.8040.2/components/autofill/core/browser/BUILD.gn	2026/09/09 23:26:49
+@@ -503,6 +503,11 @@
    _configs = configs
    configs = []
    configs = [ "//third_party/tflite:tflite_shim_config" ] + _configs

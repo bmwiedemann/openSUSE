@@ -1,0 +1,71 @@
+--- chromium-155.0.8059.5/v8/tools/metagen/compile_flags_test.py	2026/09/28 22:05:43	1.1
++++ chromium-155.0.8059.5/v8/tools/metagen/compile_flags_test.py	2026/09/28 22:06:00
+@@ -36,7 +36,7 @@
+               'defines': ['PROBE=1'],
+               'include_dirs': ['//v8/include',
+                                str(build_dir / 'gen')],
+-              'cflags_cc': ['-std=c++20'],
++              'cflags_cc': ['-std=c++23'],
+           }
+       }
+       with mock.patch.object(
+@@ -60,7 +60,7 @@
+       self.assertTrue(kwargs['check'])
+       self.assertEqual(flags, [
+           '-DPROBE=1', f'-I{source_root / "v8" / "include"}',
+-          f'-I{build_dir / "gen"}', '-std=c++20'
++          f'-I{build_dir / "gen"}', '-std=c++23'
+       ])
+       self.assertEqual(cwd, str(build_dir))
+       self.assertFalse(cl_mode)
+--- chromium-155.0.8059.5/v8/bazel/defs.bzl	2026/09/28 22:07:54	1.1
++++ chromium-155.0.8059.5/v8/bazel/defs.bzl	2026/09/28 22:08:06
+@@ -142,7 +142,7 @@
+                 "-Wno-deprecated-this-capture",
+                 "-Wno-deprecated-declarations",
+                 "-Wno-deprecated-attributes",
+-                "-std=c++20",
++                "-std=c++23",
+             ],
+             "@v8//bazel/config:is_gcc": [
+                 "-Wno-extra",
+@@ -634,7 +634,7 @@
+ # a compile_commands.json synthesized from cc_common: the defines / includes
+ # come from the cc_libraries passed via `cc_compilation_context_from`, the
+ # toolchain bits (libc++ -isystem, sysroot, target triple, ...) come from
+-# the active cc toolchain, and metagen-specific cflags (-std=c++20,
++# the active cc toolchain, and metagen-specific cflags (-std=c++23,
+ # -fno-rtti, -fno-exceptions, -fsyntax-only) come from a small list below.
+ # =============================================================================
+ 
+@@ -642,7 +642,7 @@
+ # v8_library, not on the `:define_flags` we depend on). Kept tiny on
+ # purpose -- everything else comes from the toolchain or CcInfo.
+ _METAGEN_USER_COPTS = [
+-    "-std=c++20",
++    "-std=c++23",
+     "-fno-rtti",
+     "-fno-exceptions",
+ ]
+--- chromium-155.0.8059.5/v8/tools/gcmole/Makefile	2026/09/28 22:08:52	1.1
++++ chromium-155.0.8059.5/v8/tools/gcmole/Makefile	2026/09/28 22:09:00
+@@ -46,7 +46,7 @@
+ 	-D__STDC_LIMIT_MACROS -fomit-frame-pointer -fno-exceptions        \
+ 	-fno-rtti -fPIC -Woverloaded-virtual -Wcast-qual -fno-strict-aliasing \
+ 	-pedantic -Wno-long-long -Wall -W -Wno-unused-parameter               \
+-	-Wwrite-strings -static-libstdc++ -std=c++20 -shared -o libgcmole.so  \
++	-Wwrite-strings -static-libstdc++ -std=c++23 -shared -o libgcmole.so  \
+ 	gcmole.cc
+ 
+ clean:
+--- chromium-155.0.8059.5/v8/tools/gcmole/gcmole.py	2026/09/28 22:09:05	1.1
++++ chromium-155.0.8059.5/v8/tools/gcmole/gcmole.py	2026/09/28 22:09:11
+@@ -91,7 +91,7 @@
+   log("Using generated files in {}", options.v8_build_dir / 'gen')
+   return ([
+       options.clang_bin_dir / "clang++",
+-      "-std=c++20",
++      "-std=c++23",
+       "-c",
+       "-Xclang",
+       "-load",

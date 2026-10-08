@@ -2,8 +2,8 @@ Index: chromium-147.0.7727.3/media/base/media_switches.h
 ===================================================================
 --- chromium-147.0.7727.3.orig/media/base/media_switches.h
 +++ chromium-147.0.7727.3/media/base/media_switches.h
-@@ -290,6 +290,7 @@
- MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseSequencedTaskRunnerForMediaService);
+@@ -294,6 +294,7 @@
+ MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseSharedImageUsageForVideoFrameCopy);
  MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseTaskRunnerForMojoAudioDecoderService);
  MEDIA_EXPORT BASE_DECLARE_FEATURE(kUseWindowBoundsForPip);
 +MEDIA_EXPORT BASE_DECLARE_FEATURE(kFFmpegAllowLists);

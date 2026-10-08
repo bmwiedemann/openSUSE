@@ -1,0 +1,11 @@
+--- chromium-155.0.8059.5/v8/BUILD.gn	2026/09/17 12:06:48	1.1
++++ chromium-155.0.8059.5/v8/BUILD.gn	2026/09/17 12:07:16
+@@ -2485,7 +2485,7 @@
+ 
+   # The clang toolchain's resource dir contains builting headers
+   # include/{stddef.h,stdarg.h,...}.
+-  _metagen_clang_resource_dir = "$clang_base_path/lib/clang/$clang_version"
++  _metagen_clang_resource_dir = "$clang_base_path/lib64/clang/$clang_version"
+   _metagen_flags_target = ":v8_base_without_compiler"
+   _metagen_flags_target_ninja =
+       get_label_info(_metagen_flags_target, "target_out_dir") +

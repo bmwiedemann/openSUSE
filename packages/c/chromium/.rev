@@ -6750,4 +6750,12 @@ boo#1269061 moved to the new release because 149.0.7827.196 did not contain secu
 v2: with CVEs in .changes</comment>
     <requestid>1382216</requestid>
   </revision>
+  <revision rev="553" vrev="1">
+    <srcmd5>d1bbe3920bcd47fadb1af09712127804</srcmd5>
+    <version>155.0.8059.39</version>
+    <time>1791453339</time>
+    <user>anag_factory</user>
+    <comment>Chromium 155 promoted to stable - 155.0.8059.39 (boo#1284354)</comment>
+    <requestid>1382961</requestid>
+  </revision>
 </revisionlist>

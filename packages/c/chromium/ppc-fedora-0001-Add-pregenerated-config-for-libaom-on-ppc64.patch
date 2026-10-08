@@ -1,17 +1,17 @@
-commit 3144efb3f7d1e34bc20e92b4360e98cdaa9bfb32
+commit df377ebd3f03a28d30672c7154e5c2f34f30d0f3
 Author: OBS build <build@host>
-Date:   Wed May 13 15:58:57 2026 +0000
+Date:   Thu Sep 24 06:46:20 2026 +0000
 
     initial
 
-diff --git a/source/config/linux/ppc64/config/aom_config.asm chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm b/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
 new file mode 100644
-index 0000000..3053106
+index 0000000..08126c1
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
++++ b/third_party/libaom/source/config/linux/ppc64/config/aom_config.asm
 @@ -0,0 +1,100 @@
 +;
-+; Copyright (c) 2026, Alliance for Open Media. All rights reserved.
++; Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 +;
 +; This source code is subject to the terms of the BSD 2 Clause License and
 +; the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -110,14 +110,14 @@ index 0000000..3053106
 +HAVE_VSX equ 1
 +HAVE_WXWIDGETS equ 0
 +STATIC_LINK_JXL equ 0
-diff --git a/source/config/linux/ppc64/config/aom_config.c chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/aom_config.c b/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
 new file mode 100644
-index 0000000..429274e
+index 0000000..e53cf65
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
++++ b/third_party/libaom/source/config/linux/ppc64/config/aom_config.c
 @@ -0,0 +1,13 @@
 +/*
-+ * Copyright (c) 2026, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2016, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -129,14 +129,14 @@ index 0000000..429274e
 +#include "aom/aom_codec.h"
 +static const char* const cfg = "cmake ../source/libaom -G \"Unix Makefiles\" -DCMAKE_TOOLCHAIN_FILE=\"../source/libaom/cmake/toolchains/ppc-linux-gcc.cmake\" -DCONFIG_AV1_DECODER=0 -DCONFIG_AV1_ENCODER=1 -DCONFIG_AV1_HIGHBITDEPTH=0 -DCONFIG_AV1_TEMPORAL_DENOISING=0 -DCONFIG_QUANT_MATRIX=0 -DCONFIG_REALTIME_ONLY=1 -DCONFIG_DENOISE=0 -DCONFIG_SIZE_LIMIT=1 -DDECODE_HEIGHT_LIMIT=16384 -DDECODE_WIDTH_LIMIT=16384";
 +const char *aom_codec_build_config(void) {return cfg;}
-diff --git a/source/config/linux/ppc64/config/aom_config.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/aom_config.h b/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
 new file mode 100644
-index 0000000..c374d31
+index 0000000..9a89f28
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
++++ b/third_party/libaom/source/config/linux/ppc64/config/aom_config.h
 @@ -0,0 +1,103 @@
 +/*
-+ * Copyright (c) 2026, Alliance for Open Media. All rights reserved.
++ * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
 + * This source code is subject to the terms of the BSD 2 Clause License and
 + * the Alliance for Open Media Patent License 1.0. If the BSD 2 Clause License
@@ -238,12 +238,12 @@ index 0000000..c374d31
 +#define HAVE_WXWIDGETS 0
 +#define STATIC_LINK_JXL 0
 +#endif  // AOM_CONFIG_H_
-diff --git a/source/config/linux/ppc64/config/aom_dsp_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h b/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
 new file mode 100644
-index 0000000..e3bab69
+index 0000000..900c534
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
-@@ -0,0 +1,1177 @@
++++ b/third_party/libaom/source/config/linux/ppc64/config/aom_dsp_rtcd.h
+@@ -0,0 +1,1180 @@
 +/*
 + * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
@@ -296,6 +296,9 @@ index 0000000..e3bab69
 +
 +void aom_blend_a64_vmask_c(uint8_t *dst, uint32_t dst_stride, const uint8_t *src0, uint32_t src0_stride, const uint8_t *src1, uint32_t src1_stride, const uint8_t *mask, int w, int h);
 +#define aom_blend_a64_vmask aom_blend_a64_vmask_c
++
++int64_t aom_calc_variance_stat_c(const uint8_t *src, int stride, int bw, int bh);
++#define aom_calc_variance_stat aom_calc_variance_stat_c
 +
 +void aom_comp_avg_pred_c(uint8_t *comp_pred, const uint8_t *pred, int width, int height, const uint8_t *ref, int ref_stride);
 +#define aom_comp_avg_pred aom_comp_avg_pred_c
@@ -1421,11 +1424,11 @@ index 0000000..e3bab69
 +#endif
 +
 +#endif  // AOM_DSP_RTCD_H_
-diff --git a/source/config/linux/ppc64/config/aom_scale_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h b/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
 new file mode 100644
 index 0000000..a3dbd73
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
++++ b/third_party/libaom/source/config/linux/ppc64/config/aom_scale_rtcd.h
 @@ -0,0 +1,88 @@
 +/*
 + * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
@@ -1515,12 +1518,12 @@ index 0000000..a3dbd73
 +#endif
 +
 +#endif  // AOM_SCALE_RTCD_H_
-diff --git a/source/config/linux/ppc64/config/av1_rtcd.h chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
+diff --git a/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h b/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
 new file mode 100644
-index 0000000..e96010f
+index 0000000..86b67bd
 --- /dev/null
-+++ chromium-149.0.7827.3/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
-@@ -0,0 +1,402 @@
++++ b/third_party/libaom/source/config/linux/ppc64/config/av1_rtcd.h
+@@ -0,0 +1,405 @@
 +/*
 + * Copyright (c) 2017, Alliance for Open Media. All rights reserved.
 + *
@@ -1758,6 +1761,9 @@ index 0000000..e96010f
 +
 +void av1_highbd_iwht4x4_1_add_c(const tran_low_t *input, uint8_t *dest, int dest_stride, int bd);
 +#define av1_highbd_iwht4x4_1_add av1_highbd_iwht4x4_1_add_c
++
++void av1_interp_cubic_rate_dist_c(const double *p1, const double *p2, double x, double rate_dist_f[2]);
++#define av1_interp_cubic_rate_dist av1_interp_cubic_rate_dist_c
 +
 +void av1_inv_txfm2d_add_16x16_c(const int32_t *input, uint16_t *output, int stride, TX_TYPE tx_type, int bd);
 +#define av1_inv_txfm2d_add_16x16 av1_inv_txfm2d_add_16x16_c

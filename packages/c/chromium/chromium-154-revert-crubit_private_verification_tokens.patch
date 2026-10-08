@@ -1,6 +1,6 @@
-diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/BUILD.gn chromium-153.0.8010.12/chrome/browser/private_verification_tokens/BUILD.gn
---- chromium-154.0.8037.0/chrome/browser/private_verification_tokens/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/chrome/browser/private_verification_tokens/BUILD.gn	2026-08-25 22:20:53.000000000 +0200
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/BUILD.gn chromium-153.0.8010.47/chrome/browser/private_verification_tokens/BUILD.gn
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/BUILD.gn	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/BUILD.gn	2026-09-15 00:17:16.000000000 +0200
 @@ -16,8 +16,6 @@
      "private_verification_tokens_service.h",
      "private_verification_tokens_service_factory.cc",
@@ -18,18 +18,17 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/BUILD.g
      "//url",
    ]
  }
-@@ -49,10 +46,8 @@
-     "//chrome/browser/content_settings:content_settings_factory",
-     "//chrome/test:test_support",
+@@ -51,9 +48,6 @@
      "//components/content_settings/core/common",
--    "//components/private_verification_tokens/common:athm_test_issuer",
      "//components/private_verification_tokens/common:private_verification_tokens_database",
      "//components/private_verification_tokens/common:private_verification_tokens_issuer_config",
+-    "//components/private_verification_tokens/common:test_support",
+-    "//components/private_verification_tokens/common/athm_ffi:athm_ffi_bindings",
 -    "//net:test_support",
      "//services/network:test_support",
      "//url",
    ]
-@@ -60,10 +55,7 @@
+@@ -61,10 +55,7 @@
  
  source_set("unit_tests") {
    testonly = true
@@ -41,18 +40,321 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/BUILD.g
    deps = [
      ":private_verification_tokens",
      "//base",
-@@ -76,7 +68,6 @@
+@@ -73,11 +64,10 @@
+     "//chrome/test:test_support",
+     "//components/content_settings/core/browser",
+     "//components/content_settings/core/common",
++    "//components/private_verification_tokens/common:athm_test_issuer",
      "//components/private_verification_tokens/common:private_verification_tokens_database",
      "//components/private_verification_tokens/common:private_verification_tokens_issuer_config",
      "//components/private_verification_tokens/common:private_verification_tokens_parameters",
 -    "//components/private_verification_tokens/common:test_support",
+-    "//components/private_verification_tokens/common/athm_ffi:athm_ffi_bindings",
      "//content/test:test_support",
      "//net",
      "//services/network:test_support",
-diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc chromium-153.0.8010.12/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc
---- chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -5,35 +5,20 @@
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service.cc chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service.cc
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -5,7 +5,6 @@
+ #include "chrome/browser/private_verification_tokens/private_verification_tokens_service.h"
+ 
+ #include <map>
+-#include <set>
+ #include <string>
+ #include <utility>
+ #include <vector>
+@@ -16,14 +15,9 @@
+ #include "base/files/file_path.h"
+ #include "base/functional/bind.h"
+ #include "base/functional/callback_helpers.h"
+-#include "base/logging.h"
+ #include "base/memory/ptr_util.h"
+ #include "base/memory/scoped_refptr.h"
+-#include "base/metrics/histogram_functions.h"
+-#include "base/supports_user_data.h"
+ #include "base/task/sequenced_task_runner.h"
+-#include "base/time/time.h"
+-#include "chrome/browser/profiles/profile.h"
+ #include "components/content_settings/core/browser/host_content_settings_map.h"
+ #include "components/private_verification_tokens/common/privacy_pass_athm_batch_request.h"
+ #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
+@@ -42,57 +36,6 @@
+ 
+ using private_verification_tokens::PrivateVerificationTokensStore;
+ 
+-const char* PrivacyPassAthmBatchRequestErrorToString(
+-    private_verification_tokens::PrivacyPassAthmBatchRequestError error) {
+-  switch (error) {
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kInvalidBatchSize:
+-      return "kInvalidBatchSize";
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kInvalidBucketCount:
+-      return "kInvalidBucketCount";
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kClientRequestGenerationFailed:
+-      return "kClientRequestGenerationFailed";
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kAlreadyFinalized:
+-      return "kAlreadyFinalized";
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kInvalidResponseBodyLength:
+-      return "kInvalidResponseBodyLength";
+-    case private_verification_tokens::PrivacyPassAthmBatchRequestError::
+-        kClientFinalizeFailed:
+-      return "kClientFinalizeFailed";
+-  }
+-}
+-
+-const char* TryGetTokensErrorToString(
+-    private_verification_tokens::TryGetTokensError error) {
+-  switch (error) {
+-    case private_verification_tokens::TryGetTokensError::kNetNotOk:
+-      return "kNetNotOk";
+-    case private_verification_tokens::TryGetTokensError::kNullResponse:
+-      return "kNullResponse";
+-  }
+-}
+-const char kOtrIssuerTrackerKey[] = "PrivateVerificationTokensOtrTracker";
+-
+-class OtrIssuerTracker : public base::SupportsUserData::Data {
+- public:
+-  std::set<url::Origin> issuers;
+-};
+-
+-OtrIssuerTracker* GetOrCreateOtrTracker(Profile* profile) {
+-  OtrIssuerTracker* tracker = static_cast<OtrIssuerTracker*>(
+-      profile->GetUserData(kOtrIssuerTrackerKey));
+-  if (!tracker) {
+-    auto new_tracker = std::make_unique<OtrIssuerTracker>();
+-    tracker = new_tracker.get();
+-    profile->SetUserData(kOtrIssuerTrackerKey, std::move(new_tracker));
+-  }
+-  return tracker;
+-}
+-
+ }  // namespace
+ 
+ // static
+@@ -241,26 +184,6 @@
+   std::move(callback).Run(std::move(issuers));
+ }
+ 
+-void PrivateVerificationTokensService::GetAllTokens(
+-    base::OnceCallback<
+-        void(std::vector<private_verification_tokens::TokenWithId>)> callback) {
+-  DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+-  if (is_shutting_down_) {
+-    std::move(callback).Run({});
+-    return;
+-  }
+-
+-  if (!is_initialized()) {
+-    pending_operations_.push_back(
+-        base::BindOnce(&PrivateVerificationTokensService::GetAllTokens,
+-                       weak_ptr_factory_.GetWeakPtr(), std::move(callback)));
+-    return;
+-  }
+-
+-  CHECK(store_);
+-  store_->GetAllTokens(std::move(callback));
+-}
+-
+ void PrivateVerificationTokensService::DeleteTokens(
+     base::Time delete_begin,
+     base::Time delete_end,
+@@ -354,10 +277,6 @@
+   }
+   const auto& config = it->second;
+ 
+-  if (config.public_key.expiration() <= base::Time::Now()) {
+-    return;
+-  }
+-
+   if (store_->TokenCountForIssuer(issuer) >
+       static_cast<size_t>(config.batch_size / 2)) {
+     return;
+@@ -366,8 +285,6 @@
+   auto params = private_verification_tokens::GetParametersForVersion(
+       config.public_key.version());
+   if (!params.has_value()) {
+-    VLOG(1) << "Invalid version value in PVT config. Version: "
+-            << config.public_key.version();
+     return;
+   }
+ 
+@@ -377,18 +294,13 @@
+           private_verification_tokens::PrivacyPassAthmBatchRequest::Create(
+               config, params->num_buckets);
+   if (!batch_request.has_value()) {
+-    VLOG(1) << "PVT token request derivation failed with error: "
+-            << PrivacyPassAthmBatchRequestErrorToString(batch_request.error());
+     return;
+   }
+ 
+   auto fetcher =
+       private_verification_tokens::PrivateVerificationTokensFetcher::Create(
+-          config.issuer_request_url, url_loader_factory->Clone(),
+-          params->max_response_body_size);
++          config.issuer_request_url, url_loader_factory->Clone());
+   if (!fetcher) {
+-    VLOG(1) << "Failed to initialize PVT fetcher for URL: "
+-            << config.issuer_request_url;
+     return;
+   }
+ 
+@@ -420,9 +332,6 @@
+   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+   active_fetchers_.erase(issuer);
+   if (!result.has_value()) {
+-    VLOG(1) << "PVT fetcher failed with error: "
+-            << TryGetTokensErrorToString(result.error().error)
+-            << ", network error code: " << result.error().network_error_code;
+     return;
+   }
+   base::expected<std::vector<std::vector<uint8_t>>,
+@@ -430,9 +339,6 @@
+       finalized_tokens =
+           batch_request.Finalize(base::as_byte_span(result.value()));
+   if (!finalized_tokens.has_value()) {
+-    VLOG(1) << "PVT response parsing failed with error: "
+-            << PrivacyPassAthmBatchRequestErrorToString(
+-                   finalized_tokens.error());
+     return;
+   }
+   std::vector<private_verification_tokens::PrivateVerificationTokensToken>
+@@ -447,8 +353,7 @@
+ 
+ std::optional<std::pair<int64_t, std::string>>
+ PrivateVerificationTokensService::GetTokenForRedemption(
+-    const url::Origin& redeemer_origin,
+-    Profile* profile) {
++    const url::Origin& redeemer_origin) {
+   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+   if (is_shutting_down_ || !is_initialized() || !issuer_config_) {
+     return std::nullopt;
+@@ -468,29 +373,6 @@
+     return std::nullopt;
+   }
+ 
+-  auto config_it = issuer_config_->config().find(matching_issuer);
+-  if (config_it == issuer_config_->config().end() ||
+-      config_it->second.public_key.expiration() <= base::Time::Now()) {
+-    return std::nullopt;
+-  }
+-
+-  OtrIssuerTracker* tracker = nullptr;
+-  if (profile && profile->IsOffTheRecord()) {
+-    tracker = GetOrCreateOtrTracker(profile);
+-    if (tracker->issuers.contains(matching_issuer)) {
+-      // matching_issuer already received a token in this session.
+-      return std::nullopt;
+-    }
+-    auto params = private_verification_tokens::GetParametersForVersion(
+-        config_it->second.public_key.version());
+-    if (params.has_value() &&
+-        tracker->issuers.size() >= params->max_distinct_issuers_per_session) {
+-      base::UmaHistogramBoolean("PrivateVerificationTokens.RedemptionLimitHit",
+-                                true);
+-      return std::nullopt;
+-    }
+-  }
+-
+   CHECK(store_);
+   const auto& tokens = store_->tokens();
+   auto it = tokens.find(matching_issuer);
+@@ -502,24 +384,6 @@
+   return std::make_pair(it->second.id, std::move(base64_token));
+ }
+ 
+-void PrivateVerificationTokensService::TrackerInsert(
+-    Profile* profile,
+-    const url::Origin& redeemer_origin) {
+-  DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+-  CHECK(profile);
+-  if (!profile->IsOffTheRecord()) {
+-    return;
+-  }
+-
+-  OtrIssuerTracker* tracker = GetOrCreateOtrTracker(profile);
+-  auto it_issuer = redeemer_to_issuer_.find(redeemer_origin);
+-  if (it_issuer == redeemer_to_issuer_.end()) {
+-    return;
+-  }
+-
+-  tracker->issuers.insert(it_issuer->second);
+-}
+-
+ void PrivateVerificationTokensService::DeleteToken(int64_t token_id,
+                                                    base::OnceClosure callback) {
+   DCHECK_CURRENTLY_ON(content::BrowserThread::UI);
+@@ -545,18 +409,7 @@
+   if (!issuer_config_) {
+     return false;
+   }
+-  auto it = redeemer_to_issuer_.find(redeemer_origin);
+-  if (it == redeemer_to_issuer_.end()) {
+-    return false;
+-  }
+-
+-  auto config_it = issuer_config_->config().find(it->second);
+-  if (config_it == issuer_config_->config().end() ||
+-      config_it->second.public_key.expiration() <= base::Time::Now()) {
+-    return false;
+-  }
+-
+-  return true;
++  return redeemer_to_issuer_.contains(redeemer_origin);
+ }
+ 
+ void PrivateVerificationTokensService::SetIssuerConfig(
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service.h chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service.h
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service.h	2026-09-15 00:17:16.000000000 +0200
+@@ -37,7 +37,6 @@
+ 
+ class GURL;
+ class HostContentSettingsMap;
+-class Profile;
+ 
+ class PrivateVerificationTokensService : public KeyedService {
+  public:
+@@ -61,11 +60,6 @@
+   void GetTokenIssuers(
+       base::OnceCallback<void(std::vector<url::Origin>)> callback);
+ 
+-  // Retrieve all stored tokens across all issuers asynchronously.
+-  void GetAllTokens(
+-      base::OnceCallback<void(
+-          std::vector<private_verification_tokens::TokenWithId>)> callback);
+-
+   // Delete tokens within a time range [delete_begin, delete_end) and/or
+   // matching specific origins.
+   // If `issuers` is std::nullopt, no filtering is performed on origins.
+@@ -101,8 +95,7 @@
+   // (token_id, base64_encoded_token) if available. Does not delete or remove
+   // the token from storage.
+   std::optional<std::pair<int64_t, std::string>> GetTokenForRedemption(
+-      const url::Origin& redeemer_origin,
+-      Profile* profile = nullptr);
++      const url::Origin& redeemer_origin);
+ 
+   // Deletes the token with `token_id` from the cache and database.
+   void DeleteToken(int64_t token_id, base::OnceClosure callback);
+@@ -123,8 +116,6 @@
+     return issuer_config_;
+   }
+ 
+-  void TrackerInsert(Profile* profile, const url::Origin& redeemer_origin);
+-
+  private:
+   explicit PrivateVerificationTokensService(
+       HostContentSettingsMap* host_content_settings_map);
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_browsertest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -5,46 +5,27 @@
  #include "chrome/browser/private_verification_tokens/private_verification_tokens_service.h"
  
  #include <memory>
@@ -75,8 +377,9 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
  #include "chrome/browser/profiles/profile.h"
  #include "chrome/test/base/chrome_test_utils.h"
  #include "chrome/test/base/platform_browser_test.h"
--#include "components/private_verification_tokens/common/athm_test_issuer.h"
+-#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
  #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
+-#include "components/private_verification_tokens/common/private_verification_tokens_test_util.h"
  #include "content/public/test/browser_test.h"
 -#include "content/public/test/browser_test_utils.h"
  #include "net/base/features.h"
@@ -87,8 +390,18 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -#include "net/test/embedded_test_server/http_response.h"
  #include "testing/gmock/include/gmock/gmock.h"
  #include "testing/gtest/include/gtest/gtest.h"
+-#include "third_party/crubit/support/rs_std/slice_ref.h"
  #include "url/gurl.h"
-@@ -142,334 +127,4 @@
+ #include "url/origin.h"
+ 
+ namespace {
+ 
+-using ::private_verification_tokens::test::CreateTestIssuer;
+-
+ class PrivateVerificationTokensServiceBrowserTest : public PlatformBrowserTest {
+  public:
+   PrivateVerificationTokensServiceBrowserTest() {
+@@ -146,348 +127,4 @@
    EXPECT_EQ(issuer_config.public_key, expected_public_key);
  }
  
@@ -124,7 +437,10 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -          base::Base64Decode(token_it->second);
 -      if (decoded.has_value()) {
 -        redemption_count_++;
--        last_recovered_metadata_ = test_issuer_->VerifyWithCheck(*decoded);
+-        auto metadata = test_issuer_->verify_wire_token(
+-            rs_std::SliceRef<const uint8_t>(*decoded));
+-        last_recovered_metadata_ =
+-            metadata.has_value() ? std::make_optional(*metadata) : std::nullopt;
 -      }
 -    }
 -
@@ -150,12 +466,14 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -      if (accept_it != request.headers.end()) {
 -        last_issuance_request_accept_ = accept_it->second;
 -      }
--      std::optional<std::string> batch_response =
--          test_issuer_->BatchIssue(request.content, /*hidden_metadata=*/0);
+-      auto batch_response = test_issuer_->issue_batch_from_bytes(
+-          rs_std::SliceRef<const uint8_t>(base::as_byte_span(request.content)),
+-          /*hidden_metadata=*/0);
 -      auto response = std::make_unique<net::test_server::BasicHttpResponse>();
 -      response->set_code(net::HTTP_OK);
 -      if (batch_response.has_value()) {
--        response->set_content(*batch_response);
+-        response->set_content(
+-            std::string(batch_response->begin(), batch_response->end()));
 -      }
 -      response->set_content_type("application/private-token-response");
 -      return response;
@@ -197,10 +515,8 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -  std::optional<uint8_t> last_recovered_metadata_;
 -  std::optional<std::string> last_issuance_request_content_type_;
 -  std::optional<std::string> last_issuance_request_accept_;
--  std::optional<private_verification_tokens::AthmTestIssuer> test_issuer_ =
--      private_verification_tokens::AthmTestIssuer::Create(
--          /*num_buckets=*/2,
--          base::as_byte_span(std::string_view("test-deployment")));
+-  std::optional<private_verification_tokens::PrivacyPassAthmIssuer>
+-      test_issuer_ = CreateTestIssuer(/*num_buckets=*/2, "test-deployment");
 -
 - private:
 -  base::test::ScopedFeatureList scoped_feature_list_;
@@ -224,9 +540,9 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -  const url::Origin redeemer_origin = url::Origin::Create(redemption_url);
 -
 -  const std::string encoded_public_key =
--      base::Base64Encode(test_issuer_->public_key());
+-      base::Base64Encode(test_issuer_->public_key_bytes());
 -  const std::string encoded_public_key_proof =
--      base::Base64Encode(test_issuer_->public_key_proof());
+-      base::Base64Encode(test_issuer_->public_key_proof_bytes());
 -  const std::string json_str = base::StringPrintf(
 -      R"({
 -    "issuers": [
@@ -325,9 +641,9 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -  const url::Origin redeemer_origin = url::Origin::Create(redirect_url);
 -
 -  const std::string encoded_public_key =
--      base::Base64Encode(test_issuer_->public_key());
+-      base::Base64Encode(test_issuer_->public_key_bytes());
 -  const std::string encoded_public_key_proof =
--      base::Base64Encode(test_issuer_->public_key_proof());
+-      base::Base64Encode(test_issuer_->public_key_proof_bytes());
 -  const std::string json_str = base::StringPrintf(
 -      R"({
 -    "issuers": [
@@ -406,57 +722,153 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
 -  service->GetTokenIssuers(issuers_after_future.GetCallback());
 -  EXPECT_THAT(issuers_after_future.Take(), testing::ElementsAre(issuer_origin));
 -
--  // 3. Navigate to a direct URL on redeemer.a.test to consume the remaining
--  // token.
+-  // 3. Navigate to a direct URL on redeemer.a.test. Since the issuer was
+-  // already processed in this incognito session, redemption is denied by the
+-  // limit.
 -  const GURL direct_redeem_url =
 -      https_server().GetURL("redeemer.a.test", "/direct-redeem");
 -  ASSERT_TRUE(
 -      content::NavigateToURL(incognito_web_contents.get(), direct_redeem_url));
 -
--  EXPECT_EQ(redemption_count_, 2);
+-  // The redemption_count_ should remain 1.
+-  EXPECT_EQ(redemption_count_, 1);
 -
--  // Now all tokens have been spent.
+-  // The token remains in the store.
 -  base::test::TestFuture<std::vector<url::Origin>> issuers_final_future;
 -  service->GetTokenIssuers(issuers_final_future.GetCallback());
--  EXPECT_TRUE(issuers_final_future.Take().empty());
--  EXPECT_FALSE(service->GetTokenForRedemption(redeemer_origin).has_value());
+-  EXPECT_THAT(issuers_final_future.Take(), testing::ElementsAre(issuer_origin));
+-
+-  // Directly attempting to fetch the token strictly for this incognito session
+-  // returns nullopt due to the limit...
+-  EXPECT_FALSE(
+-      service->GetTokenForRedemption(redeemer_origin, incognito_profile)
+-          .has_value());
+-
+-  // ...but the token fundamentally still exists in the database and is
+-  // available when queried globally (e.g. for a non-incognito profile context).
+-  EXPECT_TRUE(service->GetTokenForRedemption(redeemer_origin).has_value());
 -}
 -
  }  // namespace
-diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc chromium-153.0.8010.12/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc
---- chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -29,7 +29,6 @@
- #include "components/private_verification_tokens/common/athm_test_issuer.h"
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.cc chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.cc
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -26,20 +26,14 @@
+   std::string custom_issuer_json =
+       net::features::kPrivateVerificationTokensCustomIssuer.Get();
+   if (!custom_issuer_json.empty()) {
+-    auto parsed =
+-        base::JSONReader::ReadAndReturnValueWithError(custom_issuer_json, 0);
+-    if (!parsed.has_value()) {
+-      LOG(WARNING) << "Failed to parse command-line custom PVT issuer JSON: "
+-                   << parsed.error().message;
+-    } else if (!parsed->is_dict()) {
+-      LOG(WARNING) << "Failed to parse command-line custom PVT issuer JSON: "
+-                   << "Root value is not a dictionary.";
+-    } else {
+-      VLOG(1) << "Successfully parsed and will use custom PVT issuer config "
+-              << "from command line: " << custom_issuer_json;
++    std::optional<base::DictValue> dict =
++        base::JSONReader::ReadDict(custom_issuer_json, 0);
++    if (dict.has_value()) {
+       return private_verification_tokens::
+           PrivateVerificationTokensIssuerConfig::CreateWithCustomIssuer(
+-              std::move(base_config), std::move(*parsed).TakeDict());
++              std::move(base_config), std::move(*dict));
++    } else {
++      LOG(WARNING) << "Failed to parse command-line custom PVT issuer JSON.";
+     }
+   }
+   return base_config;
+diff -ur --unidirectional-new-file chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc
+--- chromium-155.0.8059.5/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/chrome/browser/private_verification_tokens/private_verification_tokens_service_unittest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -17,7 +17,6 @@
+ #include "base/scoped_observation.h"
+ #include "base/strings/stringprintf.h"
+ #include "base/test/bind.h"
+-#include "base/test/metrics/histogram_tester.h"
+ #include "base/test/scoped_feature_list.h"
+ #include "base/test/test_future.h"
+ #include "base/test/values_test_util.h"
+@@ -27,11 +26,9 @@
+ #include "chrome/browser/private_verification_tokens/private_verification_tokens_service_factory.h"
+ #include "chrome/test/base/testing_profile.h"
+ #include "components/content_settings/core/browser/host_content_settings_map.h"
+-#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
++#include "components/private_verification_tokens/common/athm_test_issuer.h"
  #include "components/private_verification_tokens/common/private_verification_tokens_database.h"
  #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
+-#include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
 -#include "components/private_verification_tokens/common/private_verification_tokens_test_util.h"
  #include "components/private_verification_tokens/common/private_verification_tokens_token.h"
  #include "content/public/test/browser_task_environment.h"
  #include "net/base/features.h"
-@@ -43,9 +42,6 @@
+@@ -40,23 +37,20 @@
+ #include "testing/gmock/include/gmock/gmock.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+ #include "third_party/blink/public/common/storage_key/storage_key.h"
+-#include "third_party/crubit/support/rs_std/slice_ref.h"
+ #include "url/gurl.h"
+ #include "url/origin.h"
  
  namespace {
  
+-using ::private_verification_tokens::test::CreateTestIssuer;
 -using ::private_verification_tokens::test::FutureExpiration;
 -using ::private_verification_tokens::test::GetFutureExpiration;
 -
  const base::FilePath::CharType kDatabaseName[] =
      FILE_PATH_LITERAL("PrivateVerificationTokens");
  
-@@ -193,8 +189,7 @@
-         base::Base64Encode(test_issuer_->public_key());
+ class PrivateVerificationTokensServiceTest : public testing::Test {
+  public:
+   PrivateVerificationTokensServiceTest()
+-      : test_issuer_(CreateTestIssuer(2, "1")) {
++      : test_issuer_(private_verification_tokens::AthmTestIssuer::Create(
++            2,
++            base::as_byte_span(std::string_view("1")))) {
+     scoped_feature_list_.InitAndEnableFeature(
+         net::features::kEnablePrivateVerificationTokens);
+   }
+@@ -115,8 +109,7 @@
+   const base::FilePath& temp_dir_path() const { return temp_dir_.GetPath(); }
+   const base::FilePath& db_path() const { return db_path_; }
+ 
+-  const private_verification_tokens::PrivacyPassAthmIssuer& test_issuer()
+-      const {
++  const private_verification_tokens::AthmTestIssuer& test_issuer() const {
+     return *test_issuer_;
+   }
+ 
+@@ -193,11 +186,10 @@
+     const GURL issuer_request_url_d("https://d.com/pvt/i");
+     const url::Origin redeemer_d = url::Origin::Create(GURL("https://d.com"));
+     const std::string encoded_public_key =
+-        base::Base64Encode(test_issuer_->public_key_bytes());
++        base::Base64Encode(test_issuer_->public_key());
      const std::string encoded_public_key_proof =
-         base::Base64Encode(test_issuer_->public_key_proof());
+-        base::Base64Encode(test_issuer_->public_key_proof_bytes());
 -    const FutureExpiration future_expiration = GetFutureExpiration();
 -    const std::string expiration_str = future_expiration.string_rep;
++        base::Base64Encode(test_issuer_->public_key_proof());
 +    const std::string expiration_str = "12";
      const std::string json_str = base::StringPrintf(
          R"({
        "issuers": [
-@@ -267,8 +262,7 @@
+@@ -267,17 +259,10 @@
+     target_service->SetIssuerConfig(config);
+   }
+ 
+-  void AdvanceTime(base::TimeDelta time_delta) {
+-    ASSERT_FALSE(time_delta.is_negative());
+-    task_environment_.FastForwardBy(time_delta);
+-  }
+-
   private:
-   std::optional<private_verification_tokens::AthmTestIssuer> test_issuer_;
+-  std::optional<private_verification_tokens::PrivacyPassAthmIssuer>
+-      test_issuer_;
++  std::optional<private_verification_tokens::AthmTestIssuer> test_issuer_;
    base::test::ScopedFeatureList scoped_feature_list_;
 -  content::BrowserTaskEnvironment task_environment_{
 -      base::test::TaskEnvironment::TimeSource::MOCK_TIME};
@@ -464,24 +876,321 @@ diff -u chromium-154.0.8037.0/chrome/browser/private_verification_tokens/private
    base::ScopedTempDir temp_dir_;
    base::FilePath db_path_;
    TestingProfile profile_;
-Only in chromium-154.0.8037.0/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle.cc
-Only in chromium-154.0.8037.0/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle.h
-Only in chromium-154.0.8037.0/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle_unittest.cc
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/BUILD.gn chromium-153.0.8010.12/components/private_verification_tokens/BUILD.gn
---- chromium-154.0.8037.0/components/private_verification_tokens/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/BUILD.gn	2026-08-25 22:20:53.000000000 +0200
-@@ -23,7 +23,6 @@
+@@ -842,13 +827,11 @@
+           }
+         }
+ 
+-        auto response = test_issuer().issue_batch_from_bytes(
+-            rs_std::SliceRef<const uint8_t>(base::as_byte_span(request_body)),
+-            /*hidden_metadata=*/0);
++        std::optional<std::string> response =
++            test_issuer().BatchIssue(request_body, /*hidden_metadata=*/0);
+         ASSERT_TRUE(response.has_value());
+-        test_url_loader_factory.AddResponse(
+-            request.url.spec(),
+-            std::string(response->begin(), response->end()));
++        test_url_loader_factory.AddResponse(request.url.spec(),
++                                            std::move(*response));
+       }));
+ 
+   service()->MaybeFetchTokens(GURL("https://c.net/pvt/issue"),
+@@ -902,81 +885,6 @@
+             GURL("https://a.com/pvt/issue"));
+ }
+ 
+-TEST_F(PrivateVerificationTokensServiceEmptyDatabaseTest,
+-       MaybeFetchTokens_MaxBatchSize_FetchesTokens) {
+-  WaitForInitialization(service());
+-
+-  std::optional<
+-      private_verification_tokens::PrivateVerificationTokensParameters>
+-      params = private_verification_tokens::GetParametersForVersion(1);
+-  ASSERT_TRUE(params.has_value());
+-
+-  const std::string encoded_public_key =
+-      base::Base64Encode(test_issuer().public_key_bytes());
+-  const std::string encoded_public_key_proof =
+-      base::Base64Encode(test_issuer().public_key_proof_bytes());
+-  const FutureExpiration future_expiration = GetFutureExpiration();
+-  const std::string json_str = base::StringPrintf(
+-      R"({
+-      "issuers": [
+-        {
+-          "issuerRequestUrl": "https://max-batch.com/pvt/issue",
+-          "version": 1,
+-          "publicKey": "%s",
+-          "publicKeyProof": "%s",
+-          "batchSize": %d,
+-          "expiration": "%s",
+-          "redeemers": [
+-            "https://r.max-batch.com"
+-          ],
+-          "deploymentId": "1"
+-        }
+-      ]
+-    })",
+-      encoded_public_key.c_str(), encoded_public_key_proof.c_str(),
+-      params->max_batch_size, future_expiration.string_rep.c_str());
+-
+-  auto config =
+-      private_verification_tokens::PrivateVerificationTokensIssuerConfig::
+-          Create(base::test::ParseJsonDict(json_str));
+-  ASSERT_TRUE(config);
+-  service()->SetIssuerConfig(config);
+-
+-  network::TestURLLoaderFactory test_url_loader_factory;
+-  test_url_loader_factory.SetInterceptor(
+-      base::BindLambdaForTesting([&](const network::ResourceRequest& request) {
+-        EXPECT_EQ(request.url, GURL("https://max-batch.com/pvt/issue"));
+-        std::string request_body;
+-        if (request.request_body) {
+-          for (const auto& element : *request.request_body->elements()) {
+-            if (element.type() == network::DataElement::Tag::kBytes) {
+-              const auto& bytes =
+-                  element.As<network::DataElementBytes>().bytes();
+-              request_body.append(bytes.begin(), bytes.end());
+-            }
+-          }
+-        }
+-        auto response = test_issuer().issue_batch_from_bytes(
+-            rs_std::SliceRef<const uint8_t>(base::as_byte_span(request_body)),
+-            /*hidden_metadata=*/0);
+-        ASSERT_TRUE(response.has_value());
+-        test_url_loader_factory.AddResponse(
+-            request.url.spec(),
+-            std::string(response->begin(), response->end()));
+-      }));
+-
+-  service()->MaybeFetchTokens(GURL("https://max-batch.com/pvt/issue"),
+-                              test_url_loader_factory.GetSafeWeakWrapper());
+-
+-  WaitForTokensStored(service());
+-
+-  base::test::TestFuture<std::vector<url::Origin>> future;
+-  service()->GetTokenIssuers(future.GetCallback());
+-  auto issuers = future.Take();
+-  EXPECT_THAT(issuers, testing::ElementsAre(
+-                           url::Origin::Create(GURL("https://max-batch.com"))));
+-}
+-
+ TEST_F(PrivateVerificationTokensServiceTest,
+        MaybeFetchTokens_UnregisteredIssuer_DoesNothing) {
+   WaitForInitialization(service());
+@@ -1047,13 +955,11 @@
+             }
+           }
+         }
+-        auto response = test_issuer().issue_batch_from_bytes(
+-            rs_std::SliceRef<const uint8_t>(base::as_byte_span(request_body)),
+-            /*hidden_metadata=*/0);
++        std::optional<std::string> response =
++            test_issuer().BatchIssue(request_body, /*hidden_metadata=*/0);
+         ASSERT_TRUE(response.has_value());
+-        test_url_loader_factory.AddResponse(
+-            request.url.spec(),
+-            std::string(response->begin(), response->end()));
++        test_url_loader_factory.AddResponse(request.url.spec(),
++                                            std::move(*response));
+       }));
+ 
+   service()->MaybeFetchTokens(GURL("https://c.net/pvt/issue"),
+@@ -1072,130 +978,4 @@
+               testing::ElementsAre(url::Origin::Create(GURL("https://c.net"))));
+ }
+ 
+-TEST_F(PrivateVerificationTokensServiceTest,
+-       MaybeFetchTokens_ConfigExpired_ReturnsEarly) {
+-  WaitForInitialization(service());
+-  SetTestIssuerConfig(service());
+-
+-  auto origin = url::Origin::Create(GURL("https://c.net"));
+-  base::Time expiration =
+-      service()->issuer_config()->config().at(origin).public_key.expiration();
+-  base::TimeDelta advance_delta = expiration - base::Time::Now();
+-  AdvanceTime(advance_delta);
+-
+-  network::TestURLLoaderFactory test_url_loader_factory;
+-  service()->MaybeFetchTokens(GURL("https://c.net/pvt/issue"),
+-                              test_url_loader_factory.GetSafeWeakWrapper());
+-
+-  EXPECT_EQ(test_url_loader_factory.NumPending(), 0);
+-}
+-
+-TEST_F(PrivateVerificationTokensServiceTest,
+-       GetTokenForRedemption_ConfigExpired_ReturnsNullopt) {
+-  WaitForInitialization(service());
+-  SetTestIssuerConfig(service());
+-
+-  auto origin = url::Origin::Create(GURL("https://a.com"));
+-  base::Time expiration =
+-      service()->issuer_config()->config().at(origin).public_key.expiration();
+-  base::TimeDelta advance_delta = expiration - base::Time::Now();
+-  AdvanceTime(advance_delta);
+-
+-  const url::Origin redeemer_a = url::Origin::Create(GURL("https://r1.a.com"));
+-  auto token = service()->GetTokenForRedemption(redeemer_a);
+-  EXPECT_FALSE(token.has_value());
+-}
+-
+-TEST_F(PrivateVerificationTokensServiceTest,
+-       IsRegisteredRedeemer_ConfigExpired_ReturnsFalse) {
+-  WaitForInitialization(service());
+-  SetTestIssuerConfig(service());
+-
+-  auto origin = url::Origin::Create(GURL("https://a.com"));
+-  base::Time expiration =
+-      service()->issuer_config()->config().at(origin).public_key.expiration();
+-  base::TimeDelta advance_delta = expiration - base::Time::Now();
+-  AdvanceTime(advance_delta);
+-
+-  EXPECT_FALSE(service()->IsRegisteredRedeemer(
+-      url::Origin::Create(GURL("https://r1.a.com"))));
+-}
+-
+ }  // namespace
+-
+-TEST_F(PrivateVerificationTokensServiceEmptyDatabaseTest,
+-       OtrProfileRedemptionLimit) {
+-  base::HistogramTester histogram_tester;
+-  auto* otr_profile =
+-      profile()->GetPrimaryOTRProfile(/*create_if_needed=*/true);
+-
+-  SetTestIssuerConfig(service());
+-
+-  std::vector<private_verification_tokens::PrivateVerificationTokensToken>
+-      tokens;
+-  const auto expiration = base::Time::Now() + base::Hours(2);
+-  tokens.emplace_back(url::Origin::Create(GURL("https://a.com")),
+-                      std::vector<uint8_t>{1}, 1, expiration, 1);
+-  tokens.emplace_back(url::Origin::Create(GURL("https://b.org")),
+-                      std::vector<uint8_t>{1}, 1, expiration, 1);
+-  tokens.emplace_back(url::Origin::Create(GURL("https://c.net")),
+-                      std::vector<uint8_t>{1}, 1, expiration, 1);
+-  tokens.emplace_back(url::Origin::Create(GURL("https://d.com")),
+-                      std::vector<uint8_t>{1}, 1, expiration, 1);
+-  StoreInDatabase(db_path(), tokens);
+-
+-  WaitForInitialization(service());
+-
+-  // 1st issuer redemption (a.com via r1.a.com)
+-  EXPECT_TRUE(
+-      service()
+-          ->GetTokenForRedemption(url::Origin::Create(GURL("https://r1.a.com")),
+-                                  otr_profile)
+-          .has_value());
+-  service()->TrackerInsert(otr_profile,
+-                           url::Origin::Create(GURL("https://r1.a.com")));
+-  histogram_tester.ExpectTotalCount(
+-      "PrivateVerificationTokens.RedemptionLimitHit", 0);
+-
+-  // 2nd issuer redemption (b.org via r2.b.org)
+-  EXPECT_TRUE(
+-      service()
+-          ->GetTokenForRedemption(url::Origin::Create(GURL("https://r2.b.org")),
+-                                  otr_profile)
+-          .has_value());
+-  service()->TrackerInsert(otr_profile,
+-                           url::Origin::Create(GURL("https://r2.b.org")));
+-  histogram_tester.ExpectTotalCount(
+-      "PrivateVerificationTokens.RedemptionLimitHit", 0);
+-
+-  // 1st issuer redemption AGAIN (fails per-issuer limit)
+-  EXPECT_FALSE(
+-      service()
+-          ->GetTokenForRedemption(url::Origin::Create(GURL("https://r1.a.com")),
+-                                  otr_profile)
+-          .has_value());
+-
+-  // 3rd issuer redemption (c.net) -> fails limit!
+-  EXPECT_FALSE(service()
+-                   ->GetTokenForRedemption(
+-                       url::Origin::Create(GURL("https://c.net")), otr_profile)
+-                   .has_value());
+-  histogram_tester.ExpectBucketCount(
+-      "PrivateVerificationTokens.RedemptionLimitHit", true, 1);
+-}
+-
+-TEST_F(PrivateVerificationTokensServiceTest, GetAllTokens) {
+-  WaitForInitialization(service());
+-
+-  base::test::TestFuture<std::vector<private_verification_tokens::TokenWithId>>
+-      future;
+-  service()->GetAllTokens(future.GetCallback());
+-  auto tokens = future.Take();
+-
+-  ASSERT_EQ(tokens.size(), 2u);
+-  EXPECT_EQ(tokens[0].token.issuer(),
+-            url::Origin::Create(GURL("https://a.com")));
+-  EXPECT_EQ(tokens[0].token.token(), (std::vector<uint8_t>{1, 2, 3}));
+-  EXPECT_EQ(tokens[1].token.issuer(),
+-            url::Origin::Create(GURL("https://b.org")));
+-}
+Only in chromium-155.0.8059.5/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle.cc
+Only in chromium-155.0.8059.5/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle.h
+Only in chromium-155.0.8059.5/chrome/browser/private_verification_tokens: private_verification_tokens_url_loader_throttle_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/BUILD.gn	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/BUILD.gn	2026-09-15 00:17:16.000000000 +0200
+@@ -21,8 +21,8 @@
+   # C++ via the cxx bridge. The ATHM targets live in common/.
+   if (enable_rust) {
      deps += [
-       "//components/private_verification_tokens/common:athm_test_issuer_unittest",
++      "//components/private_verification_tokens/common:athm_test_issuer_unittest",
        "//components/private_verification_tokens/common:privacy_pass_athm_batch_request_unittest",
 -      "//components/private_verification_tokens/common/athm_ffi:privacy_pass_unittests",
      ]
    }
  }
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs	1970-01-01 01:00:00.000000000 +0100
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/BUILD.gn chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/BUILD.gn
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/BUILD.gn	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/BUILD.gn	1970-01-01 01:00:00.000000000 +0100
 @@ -1,43 +0,0 @@
+-# Copyright 2026 The Chromium Authors
+-# Use of this source code is governed by a BSD-style license that can be
+-# found in the LICENSE file.
+-
+-import("//build/config/rust.gni")
+-import("//build/rust/rust_static_library.gni")
+-
+-assert(enable_rust)
+-
+-rust_static_library("athm_ffi") {
+-  crate_root = "athm_ffi.rs"
+-  sources = [
+-    "athm_ffi.rs",
+-    "privacy_pass_client.rs",
+-    "privacy_pass_common.rs",
+-    "privacy_pass_issuer.rs",
+-  ]
+-  cpp_api_from_rust = {
+-    target_name = "athm_ffi_bindings"
+-    cpp_namespace = "private_verification_tokens"
+-  }
+-  deps = [ "//third_party/anonymous_tokens:athm" ]
+-  visibility = [
+-    ":*",
+-    "//components/private_verification_tokens/common:*",
+-  ]
+-}
+-
+-rust_static_library("privacy_pass_unittests") {
+-  testonly = true
+-  is_gtest_unittests = true
+-  crate_root = "privacy_pass_unittest.rs"
+-  sources = [ "privacy_pass_unittest.rs" ]
+-  deps = [
+-    ":athm_ffi",
+-    "//testing/rust_gtest_interop",
+-    "//third_party/anonymous_tokens:athm",
+-  ]
+-  visibility = [
+-    "//components/private_verification_tokens:*",
+-    "//components/private_verification_tokens/common:*",
+-  ]
+-}
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/athm_ffi.rs	1970-01-01 01:00:00.000000000 +0100
+@@ -1,37 +0,0 @@
 -// Copyright 2026 The Chromium Authors
 -// Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.
@@ -512,204 +1221,17 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -//! TODO: These entry points decode untrusted serialized input and are prime
 -//! fuzz targets; add cargo-fuzz/libfuzzer coverage for them in a follow-up.
 -
--pub mod client;
--pub mod issuer;
 -pub mod privacy_pass_client;
 -pub mod privacy_pass_common;
 -pub mod privacy_pass_issuer;
--pub mod types;
 -
--pub use client::AthmClientRequest;
--pub use issuer::AthmKeyMaterial;
 -pub use privacy_pass_client::*;
 -pub use privacy_pass_common::*;
 -pub use privacy_pass_issuer::*;
--pub use types::{AthmParameters, AthmStatus, TokenRequest};
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/BUILD.gn chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/BUILD.gn
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/BUILD.gn	1970-01-01 01:00:00.000000000 +0100
-@@ -1,46 +0,0 @@
--# Copyright 2026 The Chromium Authors
--# Use of this source code is governed by a BSD-style license that can be
--# found in the LICENSE file.
--
--import("//build/config/rust.gni")
--import("//build/rust/rust_static_library.gni")
--
--assert(enable_rust)
--
--rust_static_library("athm_ffi") {
--  crate_root = "athm_ffi.rs"
--  sources = [
--    "athm_ffi.rs",
--    "client.rs",
--    "issuer.rs",
--    "privacy_pass_client.rs",
--    "privacy_pass_common.rs",
--    "privacy_pass_issuer.rs",
--    "types.rs",
--  ]
--  cpp_api_from_rust = {
--    target_name = "athm_ffi_bindings"
--    cpp_namespace = "private_verification_tokens"
--  }
--  deps = [ "//third_party/anonymous_tokens:athm" ]
--  visibility = [
--    ":*",
--    "//components/private_verification_tokens/common:*",
--  ]
--}
--
--rust_static_library("privacy_pass_unittests") {
--  testonly = true
--  is_gtest_unittests = true
--  crate_root = "privacy_pass_unittest.rs"
--  sources = [ "privacy_pass_unittest.rs" ]
--  deps = [
--    ":athm_ffi",
--    "//testing/rust_gtest_interop",
--    "//third_party/anonymous_tokens:athm",
--  ]
--  visibility = [
--    "//components/private_verification_tokens:*",
--    "//components/private_verification_tokens/common:*",
--  ]
--}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/client.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/client.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/client.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/client.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,57 +0,0 @@
--// Copyright 2026 The Chromium Authors
--// Use of this source code is governed by a BSD-style license that can be
--// found in the LICENSE file.
--
--use athm::{PublicKey, PublicKeyProof, TokenContext, TokenResponse};
--
--use crate::types::{AthmParameters, AthmStatus, TokenRequest};
--
--/// Result of the client building a token request. `context` is the client's
--/// secret state that it must retain until it finalizes the token.
--#[derive(Clone)]
--pub struct AthmClientRequest {
--    pub(crate) context: TokenContext,
--    pub(crate) request: TokenRequest,
--}
--
--impl AthmClientRequest {
--    /// Builds a blinded token request from the issuer's public material and
--    /// protocol parameters.
--    pub fn try_new(
--        public_key: &[u8],
--        public_key_proof: &[u8],
--        params: &AthmParameters,
--    ) -> Result<Self, AthmStatus> {
--        use athm::Decodable;
--        let public_key = PublicKey::decode(public_key).map_err(|_| AthmStatus::InvalidInput)?;
--        let proof =
--            PublicKeyProof::decode(public_key_proof).map_err(|_| AthmStatus::InvalidInput)?;
--        athm::token_request(&public_key, &proof, &params.0)
--            .map(|(context, request)| AthmClientRequest { context, request: TokenRequest(request) })
--            .map_err(|_| AthmStatus::OperationFailed)
--    }
--
--    /// Unblinds the issuer `response` into a finalized token using the stored
--    /// context and request.
--    pub fn finalize(
--        &self,
--        public_key: &[u8],
--        response: &[u8],
--        params: &AthmParameters,
--    ) -> Result<Vec<u8>, AthmStatus> {
--        use athm::Decodable;
--        let public_key = PublicKey::decode(public_key).map_err(|_| AthmStatus::InvalidInput)?;
--        let response =
--            TokenResponse::decode(response, &params.0).map_err(|_| AthmStatus::InvalidInput)?;
--        athm::finalize_token(&self.context, &public_key, &self.request.0, &response, &params.0)
--            .map(|token| crate::types::encode(&token))
--            .map_err(|_| AthmStatus::OperationFailed)
--    }
--
--    /// Serialized wire encoding of the blinded token request to send to the
--    /// issuer.
--    #[must_use]
--    pub fn request(&self) -> Vec<u8> {
--        self.request.to_bytes()
--    }
--}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/issuer.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/issuer.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/issuer.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/issuer.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,66 +0,0 @@
--// Copyright 2026 The Chromium Authors
--// Use of this source code is governed by a BSD-style license that can be
--// found in the LICENSE file.
--
--use athm::{Params, PrivateKey, PublicKey, PublicKeyProof, Token};
--
--use crate::types::{AthmStatus, TokenRequest};
--
--/// Server (issuer) key material.
--#[derive(Clone)]
--pub struct AthmKeyMaterial {
--    pub(crate) params: Params,
--    pub(crate) private_key: PrivateKey,
--    pub(crate) public_key: PublicKey,
--    pub(crate) public_key_proof: PublicKeyProof,
--}
--
--impl AthmKeyMaterial {
--    /// Generates issuer key material for `n_buckets` metadata buckets under
--    /// `deployment_id`.
--    pub fn try_new(n_buckets: u8, deployment_id: &[u8]) -> Result<Self, AthmStatus> {
--        let params =
--            Params::new(n_buckets, deployment_id.to_vec()).map_err(|_| AthmStatus::InvalidInput)?;
--        let (private_key, public_key, public_key_proof) = athm::key_gen(&params);
--        Ok(AthmKeyMaterial { params, private_key, public_key, public_key_proof })
--    }
--
--    /// Returns the serialized public key bytes.
--    #[must_use]
--    pub fn public_key(&self) -> Vec<u8> {
--        crate::types::encode(&self.public_key)
--    }
--
--    /// Returns the serialized public key proof bytes.
--    #[must_use]
--    pub fn public_key_proof(&self) -> Vec<u8> {
--        crate::types::encode(&self.public_key_proof)
--    }
--
--    /// Signs a client `request`, embedding `hidden_metadata` (which must be
--    /// `< n_buckets`).
--    pub fn issue(
--        &self,
--        request: &TokenRequest,
--        hidden_metadata: u8,
--    ) -> Result<Vec<u8>, AthmStatus> {
--        athm::token_response(
--            &self.private_key,
--            &self.public_key,
--            &request.0,
--            hidden_metadata,
--            &self.params,
--        )
--        .map(|response| crate::types::encode(&response))
--        .map_err(|_| AthmStatus::OperationFailed)
--    }
--
--    /// Verifies a finalized `token` and recovers the hidden metadata.
--    pub fn verify(&self, token: &[u8]) -> Result<u8, AthmStatus> {
--        use athm::Decodable;
--        let token = Token::decode(token).map_err(|_| AthmStatus::InvalidInput)?;
--        athm::verify_token(&self.private_key, &token, &self.params)
--            .into_option()
--            .ok_or(AthmStatus::OperationFailed)
--    }
--}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,158 +0,0 @@
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_client.rs	1970-01-01 01:00:00.000000000 +0100
+@@ -1,162 +0,0 @@
 -// Copyright 2026 The Chromium Authors
 -// Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.
@@ -719,11 +1241,13 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -
 -use athm::{Decodable, Params, PublicKey, PublicKeyProof, Token, TokenResponse};
 -
--use crate::privacy_pass_common::{Frame, TokenState, UnframeError, TOKEN_REQUEST_FRAMED_SIZE};
+-use crate::privacy_pass_common::{
+-    AthmStatus, Frame, TokenState, UnframeError, TOKEN_REQUEST_FRAMED_SIZE,
+-};
 -use crate::privacy_pass_issuer::PrivacyPassAthmIssuer;
--use crate::types::AthmStatus;
 -
 -/// Client key material and cryptographic parameters.
+-#[derive(Clone)]
 -pub struct PrivacyPassAthmClient {
 -    public_key: PublicKey,
 -    public_key_proof: PublicKeyProof,
@@ -776,6 +1300,7 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -}
 -
 -/// Parsed token responses as seen by the client.
+-#[derive(Clone)]
 -pub struct TokenResponseInboundBatch {
 -    pub responses: Vec<TokenResponse>,
 -}
@@ -818,6 +1343,7 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    }
 -}
 -
+-#[derive(Clone)]
 -pub struct PrivacyPassBatchClient {
 -    client: PrivacyPassAthmClient,
 -    states: Vec<TokenState>,
@@ -868,10 +1394,10 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -        Ok(tokens.iter().map(|t| t.frame(&self.client.public_key)).collect())
 -    }
 -}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,105 +0,0 @@
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_common.rs	1970-01-01 01:00:00.000000000 +0100
+@@ -1,117 +0,0 @@
 -// Copyright 2026 The Chromium Authors
 -// Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.
@@ -973,14 +1499,26 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    }
 -}
 -
+-/// Error outcome of a bridge operation.
+-#[repr(u8)]
+-#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+-pub enum AthmStatus {
+-    /// One of the serialized inputs failed to decode.
+-    InvalidInput = 1,
+-    /// Inputs decoded, but the cryptographic operation failed (e.g. invalid
+-    /// proof, out-of-range metadata, or a token that did not verify).
+-    OperationFailed = 2,
+-}
+-
+-#[derive(Clone)]
 -pub struct TokenState {
 -    pub(crate) context: TokenContext,
 -    pub request: TokenRequest,
 -}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,135 +0,0 @@
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_issuer.rs	1970-01-01 01:00:00.000000000 +0100
+@@ -1,130 +0,0 @@
 -// Copyright 2026 The Chromium Authors
 -// Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.
@@ -991,10 +1529,12 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    Encodable, Params, PrivateKey, PublicKey, PublicKeyProof, Token, TokenRequest, TokenResponse,
 -};
 -
--use crate::privacy_pass_common::{Frame, TruncatedKeyId, UnframeError, TOKEN_REQUEST_FRAMED_SIZE};
--use crate::types::AthmStatus;
+-use crate::privacy_pass_common::{
+-    AthmStatus, Frame, TruncatedKeyId, UnframeError, TOKEN_REQUEST_FRAMED_SIZE,
+-};
 -
 -/// Parsed results from a token issuance request as seen by the server.
+-#[derive(Clone)]
 -pub struct TokenRequestInboundBatch {
 -    pub version: u32,
 -    pub truncated_key_id: u8,
@@ -1026,6 +1566,7 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    }
 -}
 -
+-#[derive(Clone)]
 -pub struct PrivacyPassAthmIssuer {
 -    private_key: PrivateKey,
 -    pub public_key: PublicKey,
@@ -1051,14 +1592,6 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -        let mut out = Vec::new();
 -        self.public_key_proof.encode(&mut out);
 -        out
--    }
--
--    pub fn key_id(&self) -> [u8; 32] {
--        self.public_key.key_id()
--    }
--
--    pub fn truncated_key_id(&self) -> u8 {
--        self.public_key.truncated_key_id()
 -    }
 -
 -    pub fn issue(
@@ -1116,10 +1649,10 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -        self.verify(token)
 -    }
 -}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,767 +0,0 @@
+diff -urN chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi/privacy_pass_unittest.rs	1970-01-01 01:00:00.000000000 +0100
+@@ -1,766 +0,0 @@
 -// Copyright 2026 The Chromium Authors
 -// Use of this source code is governed by a BSD-style license that can be
 -// found in the LICENSE file.
@@ -1129,10 +1662,9 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -}
 -
 -use athm::{Decodable, Encodable, Token, TokenRequest};
--use athm_ffi::types::AthmStatus;
 -use athm_ffi::{
--    Frame, PrivacyPassAthmClient, PrivacyPassAthmIssuer, PrivacyPassBatchClient,
--    TokenRequestInboundBatch, TokenResponseInboundBatch, UnframeError,
+-    AthmStatus, Frame, PrivacyPassAthmClient, PrivacyPassAthmIssuer, PrivacyPassBatchClient,
+-    TokenRequestInboundBatch, TokenResponseInboundBatch, TruncatedKeyId, UnframeError,
 -};
 -use rust_gtest_interop::prelude::*;
 -
@@ -1856,7 +2388,7 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    let proof_bytes = issuer.public_key_proof_bytes();
 -    expect_false!(pk_bytes.is_empty());
 -    expect_false!(proof_bytes.is_empty());
--    expect_eq!(issuer.truncated_key_id(), issuer.key_id()[31]);
+-    expect_eq!(issuer.public_key.truncated_key_id(), issuer.public_key.key_id()[31]);
 -
 -    let batch_size = 2;
 -    let mut batch_req =
@@ -1887,76 +2419,8 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 -    bad_token[0] = 0xFF; // Bad token type
 -    expect_eq!(issuer.verify_wire_token(&bad_token).err(), Some(AthmStatus::InvalidInput));
 -}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/types.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/types.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi/types.rs	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi/types.rs	1970-01-01 01:00:00.000000000 +0100
-@@ -1,63 +0,0 @@
--// Copyright 2026 The Chromium Authors
--// Use of this source code is governed by a BSD-style license that can be
--// found in the LICENSE file.
--
--use athm::{Params, PublicKey, PublicKeyProof};
--
--/// Error outcome of a bridge operation.
--#[repr(u8)]
--#[derive(Clone, Copy, Debug, PartialEq, Eq)]
--pub enum AthmStatus {
--    /// One of the serialized inputs failed to decode.
--    InvalidInput = 1,
--    /// Inputs decoded, but the cryptographic operation failed (e.g. invalid
--    /// proof, out-of-range metadata, or a token that did not verify).
--    OperationFailed = 2,
--}
--
--/// Blinded token request from the client.
--#[derive(Clone)]
--pub struct TokenRequest(pub(crate) athm::TokenRequest);
--
--impl TokenRequest {
--    /// Decodes a serialized token request from wire bytes.
--    pub fn decode(bytes: &[u8]) -> Result<Self, AthmStatus> {
--        use athm::Decodable;
--        athm::TokenRequest::decode(bytes).map(TokenRequest).map_err(|_| AthmStatus::InvalidInput)
--    }
--
--    /// Serializes the token request to wire bytes.
--    #[must_use]
--    pub fn to_bytes(&self) -> Vec<u8> {
--        encode(&self.0)
--    }
--}
--
--/// Public parameters for the ATHM protocol, derived deterministically by each
--/// party from `(n_buckets, deployment_id)`. Parameters are never sent over the
--/// wire.
--#[derive(Clone)]
--pub struct AthmParameters(pub(crate) Params);
--
--impl AthmParameters {
--    /// Creates parameters for `n_buckets` metadata buckets under
--    /// `deployment_id`.
--    pub fn try_new(n_buckets: u8, deployment_id: &[u8]) -> Result<Self, AthmStatus> {
--        Params::new(n_buckets, deployment_id.to_vec())
--            .map(AthmParameters)
--            .map_err(|_| AthmStatus::InvalidInput)
--    }
--
--    /// Returns the expected wire size in bytes of a single `TokenResponse`.
--    #[must_use]
--    pub fn token_response_size(&self) -> usize {
--        core::mem::size_of::<PublicKey>()
--            + (2 + self.0.n_buckets as usize) * core::mem::size_of::<PublicKeyProof>()
--    }
--}
--
--pub(crate) fn encode<T: athm::Encodable>(value: &T) -> Vec<u8> {
--    let mut out = Vec::new();
--    value.encode(&mut out);
--    out
--}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi.rs chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi.rs
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_ffi.rs	1970-01-01 01:00:00.000000000 +0100
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_ffi.rs	2026-08-25 22:20:53.000000000 +0200
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_ffi.rs	1970-01-01 01:00:00.000000000 +0100
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_ffi.rs	1970-01-01 01:00:00.000000000 +0100
 @@ -0,0 +1,307 @@
 +// Copyright 2026 The Chromium Authors
 +// Use of this source code is governed by a BSD-style license that can be
@@ -2265,41 +2729,32 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 +    };
 +    token_response_size_for_buckets(params.n_buckets)
 +}
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer.cc chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -6,15 +6,14 @@
- 
- #include <utility>
- 
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_test_issuer.cc	1970-01-01 01:00:00.000000000 +0100
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_test_issuer.cc	1970-01-01 01:00:00.000000000 +0100
+@@ -0,0 +1,211 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "components/private_verification_tokens/common/athm_test_issuer.h"
++
++#include <utility>
++
 +#include "base/containers/span_rust.h"
- #include "base/containers/to_vector.h"
--#include "base/numerics/byte_conversions.h"
- #include "base/strings/string_util.h"
- #include "base/strings/string_view_util.h"
--#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
++#include "base/containers/to_vector.h"
++#include "base/strings/string_util.h"
++#include "base/strings/string_view_util.h"
 +#include "components/private_verification_tokens/common/athm_ffi.rs.h"
- #include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
- #include "crypto/hash.h"
- #include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
--#include "third_party/crubit/support/rs_std/slice_ref.h"
- 
- namespace private_verification_tokens {
- 
-@@ -22,40 +21,42 @@
- std::optional<AthmTestIssuer> AthmTestIssuer::Create(
-     uint8_t num_buckets,
-     base::span<const uint8_t> deployment_id) {
--  auto key_material = AthmKeyMaterial::try_new(
--      num_buckets, rs_std::SliceRef<const uint8_t>(deployment_id));
--  if (!key_material.has_value()) {
--    return std::nullopt;
--  }
--  return AthmTestIssuer(std::move(*key_material));
--}
--
--AthmTestIssuer::AthmTestIssuer(AthmKeyMaterial key_material)
--    : key_material_(std::move(key_material)) {}
++#include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
++#include "crypto/hash.h"
++#include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
++
++namespace private_verification_tokens {
++
++// static
++std::optional<AthmTestIssuer> AthmTestIssuer::Create(
++    uint8_t num_buckets,
++    base::span<const uint8_t> deployment_id) {
 +  AthmKeyMaterial key_material =
 +      athm_key_gen(num_buckets, base::SpanToRustSlice(deployment_id));
 +  if (key_material.status != AthmStatus::Ok) {
@@ -2320,273 +2775,295 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 +      public_key_(std::move(public_key)),
 +      public_key_proof_(std::move(public_key_proof)),
 +      key_id_(crypto::hash::Sha256(public_key_)) {}
- 
- AthmTestIssuer::AthmTestIssuer(AthmTestIssuer&&) = default;
- AthmTestIssuer& AthmTestIssuer::operator=(AthmTestIssuer&&) = default;
- AthmTestIssuer::~AthmTestIssuer() = default;
- 
- std::optional<std::vector<uint8_t>> AthmTestIssuer::Issue(
--    const TokenRequest& request,
--    uint8_t hidden_metadata) const {
--  auto result = key_material_.issue(request, hidden_metadata);
--  if (!result.has_value()) {
--    return std::nullopt;
--  }
--  return base::ToVector(*result);
--}
--
--std::optional<std::vector<uint8_t>> AthmTestIssuer::Issue(
-     base::span<const uint8_t> request,
-     uint8_t hidden_metadata) const {
--  auto token_req =
--      TokenRequest::decode(rs_std::SliceRef<const uint8_t>(request));
--  if (!token_req.has_value()) {
++
++AthmTestIssuer::AthmTestIssuer(AthmTestIssuer&&) = default;
++AthmTestIssuer& AthmTestIssuer::operator=(AthmTestIssuer&&) = default;
++AthmTestIssuer::~AthmTestIssuer() = default;
++
++std::optional<std::vector<uint8_t>> AthmTestIssuer::Issue(
++    base::span<const uint8_t> request,
++    uint8_t hidden_metadata) const {
 +  AthmBytesResult result = athm_issue(
 +      base::SpanToRustSlice(private_key_), base::SpanToRustSlice(public_key_),
 +      base::SpanToRustSlice(request), hidden_metadata,
 +      base::SpanToRustSlice(params_));
 +  if (result.status != AthmStatus::Ok) {
-     return std::nullopt;
-   }
--  return Issue(*token_req, hidden_metadata);
++    return std::nullopt;
++  }
 +  return base::ToVector(result.bytes);
- }
- 
- std::optional<std::vector<std::vector<uint8_t>>> AthmTestIssuer::BatchIssue(
-@@ -90,34 +91,23 @@
- std::optional<std::string> AthmTestIssuer::BatchIssue(
-     std::string_view request_body,
-     uint8_t hidden_metadata) const {
--  constexpr size_t kVersionSize = sizeof(uint32_t);
--  if (request_body.size() < kVersionSize) {
--    return std::nullopt;
--  }
--
--  base::span<const uint8_t> request_body_span =
--      base::as_byte_span(request_body);
--  const uint32_t version =
--      base::U32FromBigEndian(request_body_span.last<kVersionSize>());
-   std::optional<PrivateVerificationTokensParameters> params =
--      GetParametersForVersion(version);
++}
++
++std::optional<std::vector<std::vector<uint8_t>>> AthmTestIssuer::BatchIssue(
++    const std::vector<std::vector<uint8_t>>& requests,
++    uint8_t hidden_metadata) const {
++  if (requests.empty()) {
++    return std::nullopt;
++  }
++  std::vector<std::vector<uint8_t>> responses;
++  responses.reserve(requests.size());
++  for (const auto& request : requests) {
++    anonymous_tokens::AthmTokenRequest unmarshaled_request;
++    absl::Status status = anonymous_tokens::UnmarshalAthmTokenRequest(
++        base::as_string_view(request), &unmarshaled_request);
++    if (!status.ok() ||
++        unmarshaled_request.token_type !=
++            PrivateVerificationTokensParameters::kAthmTokenType ||
++        unmarshaled_request.truncated_issuer_key_id != truncated_key_id()) {
++      return std::nullopt;
++    }
++    std::optional<std::vector<uint8_t>> response =
++        Issue(base::as_byte_span(unmarshaled_request.encoded_request),
++              hidden_metadata);
++    if (!response.has_value()) {
++      return std::nullopt;
++    }
++    responses.push_back(std::move(*response));
++  }
++  return responses;
++}
++
++std::optional<std::string> AthmTestIssuer::BatchIssue(
++    std::string_view request_body,
++    uint8_t hidden_metadata) const {
++  std::optional<PrivateVerificationTokensParameters> params =
 +      GetParametersForVersion(1);
-   if (!params.has_value()) {
-     return std::nullopt;
-   }
- 
--  std::string_view token_requests =
--      request_body.substr(0, request_body.size() - kVersionSize);
--  if (token_requests.empty() ||
--      token_requests.size() % params->single_request_size != 0) {
++  if (!params.has_value()) {
++    return std::nullopt;
++  }
++
 +  if (request_body.empty() ||
 +      request_body.size() % params->single_request_size != 0) {
-     return std::nullopt;
-   }
- 
--  const size_t batch_size = token_requests.size() / params->single_request_size;
++    return std::nullopt;
++  }
++
 +  const size_t batch_size = request_body.size() / params->single_request_size;
-   std::vector<std::vector<uint8_t>> requests;
-   requests.reserve(batch_size);
-   for (size_t i = 0; i < batch_size; ++i) {
-     base::span<const uint8_t> single_req =
--        base::as_byte_span(token_requests)
++  std::vector<std::vector<uint8_t>> requests;
++  requests.reserve(batch_size);
++  for (size_t i = 0; i < batch_size; ++i) {
++    base::span<const uint8_t> single_req =
 +        base::as_byte_span(request_body)
-             .subspan(i * params->single_request_size,
-                      params->single_request_size);
-     requests.push_back(base::ToVector(single_req));
-@@ -138,11 +128,13 @@
- 
- std::optional<uint8_t> AthmTestIssuer::Verify(
-     base::span<const uint8_t> token) const {
--  auto result = key_material_.verify(rs_std::SliceRef<const uint8_t>(token));
--  if (!result.has_value()) {
++            .subspan(i * params->single_request_size,
++                     params->single_request_size);
++    requests.push_back(base::ToVector(single_req));
++  }
++
++  std::optional<std::vector<std::vector<uint8_t>>> responses =
++      BatchIssue(requests, hidden_metadata);
++  if (!responses.has_value()) {
++    return std::nullopt;
++  }
++
++  std::string response_body;
++  for (const auto& token_resp : *responses) {
++    response_body.append(base::as_string_view(token_resp));
++  }
++  return response_body;
++}
++
++std::optional<uint8_t> AthmTestIssuer::Verify(
++    base::span<const uint8_t> token) const {
 +  AthmVerifyResult result =
 +      athm_verify(base::SpanToRustSlice(private_key_),
 +                  base::SpanToRustSlice(token), base::SpanToRustSlice(params_));
 +  if (result.status != AthmStatus::Ok) {
-     return std::nullopt;
-   }
--  return *result;
++    return std::nullopt;
++  }
 +  return result.metadata;
- }
- 
- std::optional<uint8_t> AthmTestIssuer::VerifyWithCheck(
-@@ -152,7 +144,7 @@
-       base::as_string_view(marshaled_token), &token);
-   if (!status.ok() ||
-       token.token_type != PrivateVerificationTokensParameters::kAthmTokenType ||
--      base::as_byte_span(token.issuer_key_id) != base::as_byte_span(key_id())) {
++}
++
++std::optional<uint8_t> AthmTestIssuer::VerifyWithCheck(
++    base::span<const uint8_t> marshaled_token) const {
++  anonymous_tokens::AthmToken token;
++  absl::Status status = anonymous_tokens::UnmarshalAthmToken(
++      base::as_string_view(marshaled_token), &token);
++  if (!status.ok() ||
++      token.token_type != PrivateVerificationTokensParameters::kAthmTokenType ||
 +      base::as_byte_span(token.issuer_key_id) != base::as_byte_span(key_id_)) {
-     return std::nullopt;
-   }
-   return Verify(base::as_byte_span(token.token));
-@@ -166,19 +158,20 @@
-     base::span<const uint8_t> public_key_proof,
-     uint8_t num_buckets,
-     base::span<const uint8_t> deployment_id) {
--  auto params = AthmParameters::try_new(
--      num_buckets, rs_std::SliceRef<const uint8_t>(deployment_id));
--  if (!params.has_value()) {
++    return std::nullopt;
++  }
++  return Verify(base::as_byte_span(token.token));
++}
++
++// --- AthmTestClient ---
++
++// static
++std::optional<AthmTestClient> AthmTestClient::Create(
++    base::span<const uint8_t> public_key,
++    base::span<const uint8_t> public_key_proof,
++    uint8_t num_buckets,
++    base::span<const uint8_t> deployment_id) {
 +  AthmClientParams params =
 +      athm_client_params(num_buckets, base::SpanToRustSlice(deployment_id));
 +  if (params.status != AthmStatus::Ok) {
-     return std::nullopt;
-   }
- 
-   return AthmTestClient(base::ToVector(public_key),
--                        base::ToVector(public_key_proof), std::move(*params));
++    return std::nullopt;
++  }
++
++  return AthmTestClient(base::ToVector(public_key),
 +                        base::ToVector(public_key_proof),
 +                        base::ToVector(params.params));
- }
- 
- AthmTestClient::AthmTestClient(std::vector<uint8_t> public_key,
-                                std::vector<uint8_t> public_key_proof,
--                               AthmParameters params)
++}
++
++AthmTestClient::AthmTestClient(std::vector<uint8_t> public_key,
++                               std::vector<uint8_t> public_key_proof,
 +                               std::vector<uint8_t> params)
-     : public_key_(std::move(public_key)),
-       public_key_proof_(std::move(public_key_proof)),
-       params_(std::move(params)) {}
-@@ -189,26 +182,30 @@
- AthmTestClient::AthmTestClient(AthmTestClient&&) = default;
- AthmTestClient& AthmTestClient::operator=(AthmTestClient&&) = default;
- 
--std::optional<AthmClientRequest> AthmTestClient::CreateClientRequest() const {
--  auto bridge_result = AthmClientRequest::try_new(
--      rs_std::SliceRef<const uint8_t>(public_key_),
--      rs_std::SliceRef<const uint8_t>(public_key_proof_), params_);
--  if (!bridge_result.has_value()) {
++    : public_key_(std::move(public_key)),
++      public_key_proof_(std::move(public_key_proof)),
++      params_(std::move(params)) {}
++
++AthmTestClient::~AthmTestClient() = default;
++AthmTestClient::AthmTestClient(const AthmTestClient&) = default;
++AthmTestClient& AthmTestClient::operator=(const AthmTestClient&) = default;
++AthmTestClient::AthmTestClient(AthmTestClient&&) = default;
++AthmTestClient& AthmTestClient::operator=(AthmTestClient&&) = default;
++
 +std::optional<AthmTestClient::ClientRequest>
 +AthmTestClient::CreateClientRequest() const {
 +  AthmClientRequest bridge_result = athm_client_request(
 +      base::SpanToRustSlice(public_key_),
 +      base::SpanToRustSlice(public_key_proof_), base::SpanToRustSlice(params_));
 +  if (bridge_result.status != AthmStatus::Ok) {
-     return std::nullopt;
-   }
--  return std::move(*bridge_result);
++    return std::nullopt;
++  }
 +  return ClientRequest{.context = base::ToVector(bridge_result.context),
 +                       .request = base::ToVector(bridge_result.request)};
- }
- 
- std::optional<std::vector<uint8_t>> AthmTestClient::FinalizeToken(
--    const AthmClientRequest& client_request,
++}
++
++std::optional<std::vector<uint8_t>> AthmTestClient::FinalizeToken(
 +    const ClientRequest& client_request,
-     base::span<const uint8_t> response) const {
--  auto result = client_request.finalize(
--      rs_std::SliceRef<const uint8_t>(public_key_),
--      rs_std::SliceRef<const uint8_t>(response), params_);
--  if (!result.has_value()) {
++    base::span<const uint8_t> response) const {
 +  AthmBytesResult result = athm_client_finalize(
 +      base::SpanToRustSlice(client_request.context),
 +      base::SpanToRustSlice(public_key_),
 +      base::SpanToRustSlice(client_request.request),
 +      base::SpanToRustSlice(response), base::SpanToRustSlice(params_));
 +  if (result.status != AthmStatus::Ok) {
-     return std::nullopt;
-   }
--  return base::ToVector(*result);
++    return std::nullopt;
++  }
 +  return base::ToVector(result.bytes);
- }
- 
- }  // namespace private_verification_tokens
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer.h chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer.h
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer.h	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer.h	2026-08-25 22:20:53.000000000 +0200
-@@ -13,8 +13,6 @@
- #include <vector>
- 
- #include "base/containers/span.h"
--#include "base/containers/to_vector.h"
--#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
- #include "crypto/hash.h"
- 
- namespace private_verification_tokens {
-@@ -27,8 +25,8 @@
- // to participate (public key, the public-key proof, and the public protocol
- // params). All inputs/outputs are serialized ATHM wire encodings.
- //
--// The crypto runs through the Crubit bindings in athm_ffi.rs on Chromium's
--// in-tree BoringSSL. This is a test utility, not production code.
++}
++
++}  // namespace private_verification_tokens
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_test_issuer.h	1970-01-01 01:00:00.000000000 +0100
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_test_issuer.h	1970-01-01 01:00:00.000000000 +0100
+@@ -0,0 +1,162 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#ifndef COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_ATHM_TEST_ISSUER_H_
++#define COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_ATHM_TEST_ISSUER_H_
++
++#include <array>
++#include <cstdint>
++#include <optional>
++#include <string>
++#include <string_view>
++#include <vector>
++
++#include "base/containers/span.h"
++#include "crypto/hash.h"
++
++namespace private_verification_tokens {
++
++// A self-contained test issuer for Anonymous Tokens with Hidden Metadata
++// (ATHM), analogous to network::TestTrustTokenIssuer for Private State Tokens.
++//
++// It holds the (secret) issuer key material and exposes the issuer-side
++// operations -- Issue() and Verify() -- plus the public material a client needs
++// to participate (public key, the public-key proof, and the public protocol
++// params). All inputs/outputs are serialized ATHM wire encodings.
++//
 +// The crypto runs through the cxx bridge in athm_ffi.rs on Chromium's in-tree
 +// BoringSSL. This is a test utility, not production code.
- class AthmTestIssuer {
-  public:
-   // Creates an issuer for `num_buckets` metadata buckets (valid hidden metadata
-@@ -47,24 +45,21 @@
-   AthmTestIssuer& operator=(const AthmTestIssuer&) = delete;
- 
-   // Public material the client/browser needs (the "verification key" analog).
--  std::vector<uint8_t> public_key() const {
--    return base::ToVector(key_material_.public_key());
++class AthmTestIssuer {
++ public:
++  // Creates an issuer for `num_buckets` metadata buckets (valid hidden metadata
++  // is then `0..num_buckets`) bound to `deployment_id`. Returns nullopt if key
++  // generation fails, which happens when `num_buckets == 0` or when
++  // `deployment_id` exceeds the 255-byte limit the ATHM parameters enforce.
++  static std::optional<AthmTestIssuer> Create(
++      uint8_t num_buckets,
++      base::span<const uint8_t> deployment_id);
++
++  AthmTestIssuer(AthmTestIssuer&&);
++  AthmTestIssuer& operator=(AthmTestIssuer&&);
++  ~AthmTestIssuer();
++
++  AthmTestIssuer(const AthmTestIssuer&) = delete;
++  AthmTestIssuer& operator=(const AthmTestIssuer&) = delete;
++
++  // Public material the client/browser needs (the "verification key" analog).
 +  const std::vector<uint8_t>& public_key() const { return public_key_; }
 +  const std::vector<uint8_t>& public_key_proof() const {
 +    return public_key_proof_;
-   }
--  std::vector<uint8_t> public_key_proof() const {
--    return base::ToVector(key_material_.public_key_proof());
++  }
 +  const std::vector<uint8_t>& params() const { return params_; }
 +  // The 32-byte SHA-256 digest of `public_key_`.
 +  const std::array<uint8_t, crypto::hash::kSha256Size>& key_id() const {
 +    return key_id_;
-   }
--  // The 32-byte SHA-256 digest of `public_key()`.
--  std::array<uint8_t, crypto::hash::kSha256Size> key_id() const {
--    return crypto::hash::Sha256(public_key());
--  }
--  // The 1-byte truncated key ID (last byte of `key_id()`) used in Privacy Pass
--  // / ATHM token request and redemption framing.
--  uint8_t truncated_key_id() const { return key_id().back(); }
++  }
 +  // The 1-byte truncated key ID (last byte of `key_id_`) used in Privacy Pass /
 +  // ATHM token request and redemption framing.
 +  uint8_t truncated_key_id() const { return key_id_.back(); }
- 
-   // Issuer side: signs `request`, embedding `hidden_metadata`. Returns the
-   // serialized token response, or nullopt on failure.
--  std::optional<std::vector<uint8_t>> Issue(const TokenRequest& request,
--                                            uint8_t hidden_metadata) const;
-   std::optional<std::vector<uint8_t>> Issue(base::span<const uint8_t> request,
-                                             uint8_t hidden_metadata) const;
- 
-@@ -80,12 +75,11 @@
-       uint8_t hidden_metadata) const;
- 
-   // Issuer side: processes a concatenated batch request body `request_body`
--  // (sliced into single wire-formatted request chunks according to the 4-byte
--  // version number extracted from the end of the request body) by delegating to
--  // the vector BatchIssue() overload. Returns the concatenated serialized token
--  // responses as a string, or nullopt if `request_body` has an invalid/empty
--  // size, an unsupported version, or if any request fails validation or
--  // signing.
++
++  // Issuer side: signs `request`, embedding `hidden_metadata`. Returns the
++  // serialized token response, or nullopt on failure.
++  std::optional<std::vector<uint8_t>> Issue(base::span<const uint8_t> request,
++                                            uint8_t hidden_metadata) const;
++
++  // Issuer side: processes a batch of wire-formatted `AthmTokenRequest`s,
++  // unmarshaling each request, validating that the token type is
++  // `kAthmTokenType` and the truncated key ID matches `truncated_key_id()`, and
++  // signing each extracted blinded request with `hidden_metadata` via Issue().
++  // Returns a vector of serialized token responses, or nullopt if `requests` is
++  // empty, if any request fails validation/unmarshaling, or if token signing
++  // fails.
++  std::optional<std::vector<std::vector<uint8_t>>> BatchIssue(
++      const std::vector<std::vector<uint8_t>>& requests,
++      uint8_t hidden_metadata) const;
++
++  // Issuer side: processes a concatenated batch request body `request_body`
 +  // (sliced into single wire-formatted request chunks according to Version 1
 +  // parameters) by delegating to the vector BatchIssue() overload. Returns the
 +  // concatenated serialized token responses as a string, or nullopt if
 +  // `request_body` has an invalid/empty size, or if any request fails
 +  // validation or signing.
-   std::optional<std::string> BatchIssue(std::string_view request_body,
-                                         uint8_t hidden_metadata) const;
- 
-@@ -102,9 +96,16 @@
-       base::span<const uint8_t> marshaled_token) const;
- 
-  private:
--  explicit AthmTestIssuer(AthmKeyMaterial key_material);
++  std::optional<std::string> BatchIssue(std::string_view request_body,
++                                        uint8_t hidden_metadata) const;
++
++  // Issuer side: verifies `token` and recovers the embedded hidden metadata, or
++  // nullopt if the token does not verify.
++  std::optional<uint8_t> Verify(base::span<const uint8_t> token) const;
++
++  // Issuer side: verifies `marshaled_token` (132-byte wire-formatted token),
++  // validating that the token type is `kAthmTokenType` and the issuer key ID
++  // matches `key_id()`, and verifies the inner 98-byte unblinded token via
++  // Verify(). Returns the recovered hidden metadata on success, or nullopt if
++  // unmarshaling, header validation, or cryptographic verification fails.
++  std::optional<uint8_t> VerifyWithCheck(
++      base::span<const uint8_t> marshaled_token) const;
++
++ private:
 +  AthmTestIssuer(std::vector<uint8_t> params,
 +                 std::vector<uint8_t> private_key,
 +                 std::vector<uint8_t> public_key,
 +                 std::vector<uint8_t> public_key_proof);
- 
--  AthmKeyMaterial key_material_;
++
 +  std::vector<uint8_t> params_;
 +  std::vector<uint8_t> private_key_;
 +  std::vector<uint8_t> public_key_;
 +  std::vector<uint8_t> public_key_proof_;
 +  std::array<uint8_t, crypto::hash::kSha256Size> key_id_;
- };
- 
- // A self-contained test client for Anonymous Tokens with Hidden Metadata
-@@ -115,6 +116,15 @@
- // can drive the issuer and client as separate parties.
- class AthmTestClient {
-  public:
++};
++
++// A self-contained test client for Anonymous Tokens with Hidden Metadata
++// (ATHM).
++//
++// It holds only public material (public_key, public_key_proof, params) and
++// exposes client-side operations (CreateClientRequest, FinalizeToken) so tests
++// can drive the issuer and client as separate parties.
++class AthmTestClient {
++ public:
 +  // The client state produced by CreateClientRequest(). Holding one of these
 +  // means it is valid; CreateClientRequest() returns nullopt on failure.
 +  struct ClientRequest {
@@ -2596,313 +3073,701 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/at
 +    std::vector<uint8_t> request;
 +  };
 +
-   static std::optional<AthmTestClient> Create(
-       base::span<const uint8_t> public_key,
-       base::span<const uint8_t> public_key_proof,
-@@ -128,23 +138,23 @@
-   AthmTestClient& operator=(AthmTestClient&&);
- 
-   // Client side: builds a blinded token request from public material.
--  std::optional<AthmClientRequest> CreateClientRequest() const;
++  static std::optional<AthmTestClient> Create(
++      base::span<const uint8_t> public_key,
++      base::span<const uint8_t> public_key_proof,
++      uint8_t num_buckets,
++      base::span<const uint8_t> deployment_id);
++  ~AthmTestClient();
++
++  AthmTestClient(const AthmTestClient&);
++  AthmTestClient& operator=(const AthmTestClient&);
++  AthmTestClient(AthmTestClient&&);
++  AthmTestClient& operator=(AthmTestClient&&);
++
++  // Client side: builds a blinded token request from public material.
 +  std::optional<ClientRequest> CreateClientRequest() const;
- 
-   // Client side: unblinds the issuer `response` into a finalized token, using
-   // the `client_request` returned by CreateClientRequest(). Returns the
-   // serialized token, or nullopt on failure.
-   std::optional<std::vector<uint8_t>> FinalizeToken(
--      const AthmClientRequest& client_request,
++
++  // Client side: unblinds the issuer `response` into a finalized token, using
++  // the `client_request` returned by CreateClientRequest(). Returns the
++  // serialized token, or nullopt on failure.
++  std::optional<std::vector<uint8_t>> FinalizeToken(
 +      const ClientRequest& client_request,
-       base::span<const uint8_t> response) const;
- 
-  private:
-   AthmTestClient(std::vector<uint8_t> public_key,
-                  std::vector<uint8_t> public_key_proof,
--                 AthmParameters params);
++      base::span<const uint8_t> response) const;
++
++ private:
++  AthmTestClient(std::vector<uint8_t> public_key,
++                 std::vector<uint8_t> public_key_proof,
 +                 std::vector<uint8_t> params);
- 
-   std::vector<uint8_t> public_key_;
-   std::vector<uint8_t> public_key_proof_;
--  AthmParameters params_;
++
++  std::vector<uint8_t> public_key_;
++  std::vector<uint8_t> public_key_proof_;
 +  std::vector<uint8_t> params_;
- };
- 
- }  // namespace private_verification_tokens
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer_unittest.cc chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer_unittest.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/athm_test_issuer_unittest.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/athm_test_issuer_unittest.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -12,8 +12,6 @@
- 
- #include "base/check.h"
- #include "base/containers/span.h"
--#include "base/containers/to_vector.h"
--#include "base/numerics/byte_conversions.h"
- #include "base/strings/string_view_util.h"
- #include "base/time/time.h"
- #include "components/private_verification_tokens/common/privacy_pass_athm_batch_request.h"
-@@ -67,12 +65,13 @@
- std::optional<uint8_t> RunRoundtrip(const AthmTestIssuer& issuer,
-                                     const AthmTestClient& client,
-                                     uint8_t metadata) {
--  std::optional<AthmClientRequest> request = client.CreateClientRequest();
++};
++
++}  // namespace private_verification_tokens
++
++#endif  // COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_ATHM_TEST_ISSUER_H_
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/athm_test_issuer_unittest.cc	1970-01-01 01:00:00.000000000 +0100
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/athm_test_issuer_unittest.cc	1970-01-01 01:00:00.000000000 +0100
+@@ -0,0 +1,645 @@
++// Copyright 2026 The Chromium Authors
++// Use of this source code is governed by a BSD-style license that can be
++// found in the LICENSE file.
++
++#include "components/private_verification_tokens/common/athm_test_issuer.h"
++
++#include <cstddef>
++#include <cstdint>
++#include <optional>
++#include <string>
++#include <vector>
++
++#include "base/check.h"
++#include "base/containers/span.h"
++#include "base/strings/string_view_util.h"
++#include "base/time/time.h"
++#include "components/private_verification_tokens/common/privacy_pass_athm_batch_request.h"
++#include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
++#include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
++#include "components/private_verification_tokens/common/private_verification_tokens_public_key.h"
++#include "crypto/hash.h"
++#include "testing/gmock/include/gmock/gmock.h"
++#include "testing/gtest/include/gtest/gtest.h"
++#include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
++#include "url/gurl.h"
++#include "url/origin.h"
++
++namespace private_verification_tokens {
++namespace {
++
++// ATHM token wire layout: t[32] || big_p[33] || big_q[33].
++constexpr size_t kTokenSize = 98;
++// Offset of a coordinate byte inside the big_p compressed point (big_p starts
++// immediately after the 32-byte t field).
++constexpr size_t kTamperByteOffset = 40;
++// Metadata buckets exercised by the all-buckets round-trip test.
++constexpr uint8_t kBucketCount = 8;
++// One past the ATHM parameters' 255-byte deployment_id limit.
++constexpr size_t kOverlongDeploymentIdSize = 256;
++
++std::vector<uint8_t> DeploymentId(const std::string& s) {
++  return std::vector<uint8_t>(s.begin(), s.end());
++}
++
++std::optional<std::vector<uint8_t>> CreateAthmTokenRequestBytes(
++    uint16_t token_type,
++    uint8_t truncated_key_id,
++    base::span<const uint8_t> encoded_request) {
++  anonymous_tokens::AthmTokenRequest req{
++      .token_type = token_type,
++      .truncated_issuer_key_id = truncated_key_id,
++      .encoded_request =
++          std::string(encoded_request.begin(), encoded_request.end()),
++  };
++  std::string marshaled;
++  if (!anonymous_tokens::MarshalAthmTokenRequest(req, &marshaled).ok()) {
++    return std::nullopt;
++  }
++  return std::vector<uint8_t>(marshaled.begin(), marshaled.end());
++}
++
++// Drives the issuer and client as separate parties through a full issuance +
++// redemption (the client touches only public material, the issuer holds the
++// secret key) and returns the recovered metadata, or nullopt if any step fails.
++std::optional<uint8_t> RunRoundtrip(const AthmTestIssuer& issuer,
++                                    const AthmTestClient& client,
++                                    uint8_t metadata) {
 +  std::optional<AthmTestClient::ClientRequest> request =
 +      client.CreateClientRequest();
-   if (!request) {
-     return std::nullopt;
-   }
-   std::optional<std::vector<uint8_t>> response =
--      issuer.Issue(base::ToVector(request->request()), metadata);
++  if (!request) {
++    return std::nullopt;
++  }
++  std::optional<std::vector<uint8_t>> response =
 +      issuer.Issue(request->request, metadata);
-   if (!response) {
-     return std::nullopt;
-   }
-@@ -91,6 +90,7 @@
-   ASSERT_TRUE(issuer.has_value());
-   EXPECT_THAT(issuer->public_key(), testing::Not(testing::IsEmpty()));
-   EXPECT_THAT(issuer->public_key_proof(), testing::Not(testing::IsEmpty()));
++  if (!response) {
++    return std::nullopt;
++  }
++  std::optional<std::vector<uint8_t>> token =
++      client.FinalizeToken(*request, *response);
++  if (!token) {
++    return std::nullopt;
++  }
++  return issuer.Verify(*token);
++}
++
++TEST(AthmTestIssuerTest, IssuanceRedemptionRoundtrip) {
++  std::optional<AthmTestIssuer> issuer = AthmTestIssuer::Create(
++      /*num_buckets=*/4, DeploymentId("pvt-issuer-test"));
++
++  ASSERT_TRUE(issuer.has_value());
++  EXPECT_THAT(issuer->public_key(), testing::Not(testing::IsEmpty()));
++  EXPECT_THAT(issuer->public_key_proof(), testing::Not(testing::IsEmpty()));
 +  EXPECT_THAT(issuer->params(), testing::Not(testing::IsEmpty()));
- 
-   std::optional<AthmTestClient> client = AthmTestClient::Create(
-       issuer->public_key(), issuer->public_key_proof(), /*num_buckets=*/4,
-@@ -129,9 +129,9 @@
- 
- // Create() returns nullopt for parameters the ATHM crate rejects.
- struct InvalidConstructionCase {
--  const char* name;
++
++  std::optional<AthmTestClient> client = AthmTestClient::Create(
++      issuer->public_key(), issuer->public_key_proof(), /*num_buckets=*/4,
++      DeploymentId("pvt-issuer-test"));
++  ASSERT_TRUE(client.has_value());
++
++  std::optional<uint8_t> recovered =
++      RunRoundtrip(*issuer, *client, /*metadata=*/3);
++  ASSERT_TRUE(recovered.has_value());
++  EXPECT_EQ(int{*recovered}, 3);
++}
++
++// Every metadata bucket should round-trip, showing the value is genuinely
++// carried through issuance and recovered at verification.
++class AthmTestIssuerBucketTest : public testing::TestWithParam<uint8_t> {};
++
++TEST_P(AthmTestIssuerBucketTest, MetadataRoundtrips) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("buckets"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("buckets"));
++  ASSERT_TRUE(client.has_value());
++
++  const uint8_t metadata = GetParam();
++  std::optional<uint8_t> recovered = RunRoundtrip(*issuer, *client, metadata);
++  ASSERT_TRUE(recovered.has_value()) << "metadata=" << int{metadata};
++  EXPECT_EQ(int{*recovered}, int{metadata});
++}
++
++INSTANTIATE_TEST_SUITE_P(AllBuckets,
++                         AthmTestIssuerBucketTest,
++                         testing::Range(uint8_t{0}, kBucketCount));
++
++// Create() returns nullopt for parameters the ATHM crate rejects.
++struct InvalidConstructionCase {
 +  std::string name;
-   uint8_t num_buckets;
--  size_t deployment_id_len;
++  uint8_t num_buckets;
 +  size_t deployment_id_size;
- };
- 
- class AthmTestIssuerInvalidConstructionTest
-@@ -139,13 +139,10 @@
- 
- TEST_P(AthmTestIssuerInvalidConstructionTest, CreateReturnsNullopt) {
-   const InvalidConstructionCase& test_case = GetParam();
--  std::vector<uint8_t> deployment_id(test_case.deployment_id_len, 'x');
--
--  EXPECT_EQ(AthmTestIssuer::Create(test_case.num_buckets, deployment_id),
--            std::nullopt);
--  EXPECT_EQ(AthmTestClient::Create(/*public_key=*/{}, /*public_key_proof=*/{},
--                                   test_case.num_buckets, deployment_id),
--            std::nullopt);
++};
++
++class AthmTestIssuerInvalidConstructionTest
++    : public testing::TestWithParam<InvalidConstructionCase> {};
++
++TEST_P(AthmTestIssuerInvalidConstructionTest, CreateReturnsNullopt) {
++  const InvalidConstructionCase& test_case = GetParam();
 +  std::vector<uint8_t> deployment_id(test_case.deployment_id_size,
 +                                     uint8_t{'d'});
 +  EXPECT_FALSE(
 +      AthmTestIssuer::Create(test_case.num_buckets, deployment_id).has_value());
- }
- 
- INSTANTIATE_TEST_SUITE_P(
-@@ -169,12 +166,14 @@
-       AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
-                              /*num_buckets=*/4, DeploymentId("blinding"));
-   ASSERT_TRUE(client.has_value());
--  std::optional<AthmClientRequest> first = client->CreateClientRequest();
--  std::optional<AthmClientRequest> second = client->CreateClientRequest();
++}
++
++INSTANTIATE_TEST_SUITE_P(
++    All,
++    AthmTestIssuerInvalidConstructionTest,
++    testing::Values(InvalidConstructionCase{"ZeroBuckets", 0, 8},
++                    InvalidConstructionCase{"DeploymentIdTooLong", 4,
++                                            kOverlongDeploymentIdSize}),
++    [](const testing::TestParamInfo<InvalidConstructionCase>& info) {
++      return info.param.name;
++    });
++
++// Each token request uses freshly randomized blinding, so two requests from the
++// same issuer must differ.
++TEST(AthmTestIssuerTest, ClientRequestsAreFreshlyBlinded) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(/*num_buckets=*/4, DeploymentId("blinding"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             /*num_buckets=*/4, DeploymentId("blinding"));
++  ASSERT_TRUE(client.has_value());
 +  std::optional<AthmTestClient::ClientRequest> first =
 +      client->CreateClientRequest();
 +  std::optional<AthmTestClient::ClientRequest> second =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(first.has_value());
-   ASSERT_TRUE(second.has_value());
--  EXPECT_NE(base::ToVector(first->request()),
--            base::ToVector(second->request()));
++  ASSERT_TRUE(first.has_value());
++  ASSERT_TRUE(second.has_value());
 +  EXPECT_THAT(first->context, testing::Not(testing::IsEmpty()));
 +  EXPECT_NE(first->request, second->request);
- }
- 
- // A tampered token must not verify. (Negative case: an early guard against
-@@ -189,10 +188,11 @@
-                              /*num_buckets=*/4, DeploymentId("tamper"));
-   ASSERT_TRUE(client.has_value());
- 
--  std::optional<AthmClientRequest> request = client->CreateClientRequest();
++}
++
++// A tampered token must not verify. (Negative case: an early guard against
++// silently accepting corrupted tokens.)
++TEST(AthmTestIssuerTest, TamperedTokenDoesNotVerify) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(/*num_buckets=*/4, DeploymentId("tamper"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             /*num_buckets=*/4, DeploymentId("tamper"));
++  ASSERT_TRUE(client.has_value());
++
 +  std::optional<AthmTestClient::ClientRequest> request =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(request.has_value());
-   std::optional<std::vector<uint8_t>> response =
--      issuer->Issue(base::ToVector(request->request()), /*hidden_metadata=*/2);
++  ASSERT_TRUE(request.has_value());
++  std::optional<std::vector<uint8_t>> response =
 +      issuer->Issue(request->request, /*hidden_metadata=*/2);
-   ASSERT_TRUE(response.has_value());
-   std::optional<std::vector<uint8_t>> token =
-       client->FinalizeToken(*request, *response);
-@@ -221,10 +221,11 @@
-       issuer_a->public_key(), issuer_a->public_key_proof(),
-       /*num_buckets=*/4, DeploymentId("cross-key"));
-   ASSERT_TRUE(client_a.has_value());
--  std::optional<AthmClientRequest> request = client_a->CreateClientRequest();
++  ASSERT_TRUE(response.has_value());
++  std::optional<std::vector<uint8_t>> token =
++      client->FinalizeToken(*request, *response);
++  ASSERT_TRUE(token.has_value());
++  ASSERT_EQ(issuer->Verify(*token), std::optional<uint8_t>(2));
++
++  // Corrupt a coordinate byte of the big_p point field and require verification
++  // to fail. A malformed compressed point is rejected gracefully by the
++  // decoder; it does not abort.
++  std::vector<uint8_t> tampered = *token;
++  ASSERT_EQ(tampered.size(), kTokenSize);
++  tampered[kTamperByteOffset] ^= 0xFF;
++  EXPECT_FALSE(issuer->Verify(tampered).has_value());
++}
++
++// A token issued by one issuer must not verify under a different issuer's key.
++TEST(AthmTestIssuerTest, WrongIssuerKeyDoesNotVerify) {
++  std::optional<AthmTestIssuer> issuer_a =
++      AthmTestIssuer::Create(/*num_buckets=*/4, DeploymentId("cross-key"));
++  std::optional<AthmTestIssuer> issuer_b =
++      AthmTestIssuer::Create(/*num_buckets=*/4, DeploymentId("cross-key"));
++  ASSERT_TRUE(issuer_a.has_value());
++  ASSERT_TRUE(issuer_b.has_value());
++
++  std::optional<AthmTestClient> client_a = AthmTestClient::Create(
++      issuer_a->public_key(), issuer_a->public_key_proof(),
++      /*num_buckets=*/4, DeploymentId("cross-key"));
++  ASSERT_TRUE(client_a.has_value());
 +  std::optional<AthmTestClient::ClientRequest> request =
 +      client_a->CreateClientRequest();
-   ASSERT_TRUE(request.has_value());
--  std::optional<std::vector<uint8_t>> response = issuer_a->Issue(
--      base::ToVector(request->request()), /*hidden_metadata=*/1);
++  ASSERT_TRUE(request.has_value());
 +  std::optional<std::vector<uint8_t>> response =
 +      issuer_a->Issue(request->request, /*hidden_metadata=*/1);
-   ASSERT_TRUE(response.has_value());
-   std::optional<std::vector<uint8_t>> token =
-       client_a->FinalizeToken(*request, *response);
-@@ -253,15 +254,16 @@
-   ASSERT_TRUE(client.has_value());
- 
-   constexpr size_t kBatchSize = 3;
--  std::vector<AthmClientRequest> client_requests;
++  ASSERT_TRUE(response.has_value());
++  std::optional<std::vector<uint8_t>> token =
++      client_a->FinalizeToken(*request, *response);
++  ASSERT_TRUE(token.has_value());
++
++  EXPECT_EQ(issuer_a->Verify(*token), std::optional<uint8_t>(1));
++  EXPECT_FALSE(issuer_b->Verify(*token).has_value());
++}
++
++TEST(AthmTestIssuerTest, KeyIdComputation_MatchesSha256OfPublicKey) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("key-id-test"));
++  ASSERT_TRUE(issuer.has_value());
++  EXPECT_EQ(issuer->key_id(), crypto::hash::Sha256(issuer->public_key()));
++  EXPECT_EQ(issuer->truncated_key_id(), issuer->key_id().back());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_Success) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-issue"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("batch-issue"));
++  ASSERT_TRUE(client.has_value());
++
++  constexpr size_t kBatchSize = 3;
 +  std::vector<AthmTestClient::ClientRequest> client_requests;
-   std::vector<std::vector<uint8_t>> requests;
-   for (size_t i = 0; i < kBatchSize; ++i) {
--    std::optional<AthmClientRequest> req = client->CreateClientRequest();
++  std::vector<std::vector<uint8_t>> requests;
++  for (size_t i = 0; i < kBatchSize; ++i) {
 +    std::optional<AthmTestClient::ClientRequest> req =
 +        client->CreateClientRequest();
-     ASSERT_TRUE(req.has_value());
-     std::optional<std::vector<uint8_t>> request_bytes =
-         CreateAthmTokenRequestBytes(
-             PrivateVerificationTokensParameters::kAthmTokenType,
--            issuer->truncated_key_id(), base::ToVector(req->request()));
++    ASSERT_TRUE(req.has_value());
++    std::optional<std::vector<uint8_t>> request_bytes =
++        CreateAthmTokenRequestBytes(
++            PrivateVerificationTokensParameters::kAthmTokenType,
 +            issuer->truncated_key_id(), req->request);
-     ASSERT_TRUE(request_bytes.has_value());
-     requests.push_back(std::move(request_bytes.value()));
-     client_requests.push_back(std::move(*req));
-@@ -304,13 +306,14 @@
-                              kBucketCount, DeploymentId("batch-issue-invalid"));
-   ASSERT_TRUE(client.has_value());
- 
--  std::optional<AthmClientRequest> valid_req = client->CreateClientRequest();
++    ASSERT_TRUE(request_bytes.has_value());
++    requests.push_back(std::move(request_bytes.value()));
++    client_requests.push_back(std::move(*req));
++  }
++
++  constexpr uint8_t kMetadata = 2;
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue(requests, kMetadata);
++  ASSERT_TRUE(batch_responses.has_value());
++  ASSERT_EQ(batch_responses->size(), kBatchSize);
++
++  for (size_t i = 0; i < kBatchSize; ++i) {
++    std::optional<std::vector<uint8_t>> token =
++        client->FinalizeToken(client_requests[i], (*batch_responses)[i]);
++    ASSERT_TRUE(token.has_value());
++    std::optional<uint8_t> recovered = issuer->Verify(*token);
++    ASSERT_TRUE(recovered.has_value());
++    EXPECT_EQ(*recovered, kMetadata);
++  }
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_EmptyRequests_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-issue-empty"));
++  ASSERT_TRUE(issuer.has_value());
++
++  const std::vector<std::vector<uint8_t>> empty_requests;
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue(empty_requests, /*hidden_metadata=*/0);
++  EXPECT_FALSE(batch_responses.has_value());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_InvalidRequestInBatch_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-issue-invalid"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("batch-issue-invalid"));
++  ASSERT_TRUE(client.has_value());
++
 +  std::optional<AthmTestClient::ClientRequest> valid_req =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(valid_req.has_value());
- 
-   std::optional<std::vector<uint8_t>> formatted_valid_req =
-       CreateAthmTokenRequestBytes(
-           PrivateVerificationTokensParameters::kAthmTokenType,
--          issuer->truncated_key_id(), base::ToVector(valid_req->request()));
++  ASSERT_TRUE(valid_req.has_value());
++
++  std::optional<std::vector<uint8_t>> formatted_valid_req =
++      CreateAthmTokenRequestBytes(
++          PrivateVerificationTokensParameters::kAthmTokenType,
 +          issuer->truncated_key_id(), valid_req->request);
-   ASSERT_TRUE(formatted_valid_req.has_value());
- 
-   std::vector<uint8_t> invalid_req = {1, 2, 3};
-@@ -330,13 +333,14 @@
-                              kBucketCount, DeploymentId("batch-issue-meta"));
-   ASSERT_TRUE(client.has_value());
- 
--  std::optional<AthmClientRequest> valid_req = client->CreateClientRequest();
++  ASSERT_TRUE(formatted_valid_req.has_value());
++
++  std::vector<uint8_t> invalid_req = {1, 2, 3};
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue({formatted_valid_req.value(), invalid_req},
++                         /*hidden_metadata=*/0);
++  EXPECT_FALSE(batch_responses.has_value());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_InvalidMetadata_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-issue-meta"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("batch-issue-meta"));
++  ASSERT_TRUE(client.has_value());
++
 +  std::optional<AthmTestClient::ClientRequest> valid_req =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(valid_req.has_value());
- 
-   std::optional<std::vector<uint8_t>> formatted_valid_req =
-       CreateAthmTokenRequestBytes(
-           PrivateVerificationTokensParameters::kAthmTokenType,
--          issuer->truncated_key_id(), base::ToVector(valid_req->request()));
++  ASSERT_TRUE(valid_req.has_value());
++
++  std::optional<std::vector<uint8_t>> formatted_valid_req =
++      CreateAthmTokenRequestBytes(
++          PrivateVerificationTokensParameters::kAthmTokenType,
 +          issuer->truncated_key_id(), valid_req->request);
-   ASSERT_TRUE(formatted_valid_req.has_value());
- 
-   // Metadata >= kBucketCount is out of range.
-@@ -356,13 +360,14 @@
-                              kBucketCount, DeploymentId("batch-type-inv"));
-   ASSERT_TRUE(client.has_value());
- 
--  std::optional<AthmClientRequest> valid_req = client->CreateClientRequest();
++  ASSERT_TRUE(formatted_valid_req.has_value());
++
++  // Metadata >= kBucketCount is out of range.
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue({formatted_valid_req.value()},
++                         /*hidden_metadata=*/kBucketCount);
++  EXPECT_FALSE(batch_responses.has_value());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_WrongTokenType_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-type-inv"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("batch-type-inv"));
++  ASSERT_TRUE(client.has_value());
++
 +  std::optional<AthmTestClient::ClientRequest> valid_req =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(valid_req.has_value());
- 
-   std::optional<std::vector<uint8_t>> wrong_type_req =
-       CreateAthmTokenRequestBytes(/*token_type=*/0x1234,
-                                   issuer->truncated_key_id(),
--                                  base::ToVector(valid_req->request()));
++  ASSERT_TRUE(valid_req.has_value());
++
++  std::optional<std::vector<uint8_t>> wrong_type_req =
++      CreateAthmTokenRequestBytes(/*token_type=*/0x1234,
++                                  issuer->truncated_key_id(),
 +                                  valid_req->request);
-   ASSERT_TRUE(wrong_type_req.has_value());
- 
-   std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
-@@ -380,7 +385,8 @@
-                              kBucketCount, DeploymentId("batch-keyid-inv"));
-   ASSERT_TRUE(client.has_value());
- 
--  std::optional<AthmClientRequest> valid_req = client->CreateClientRequest();
++  ASSERT_TRUE(wrong_type_req.has_value());
++
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue({wrong_type_req.value()}, /*hidden_metadata=*/0);
++  EXPECT_FALSE(batch_responses.has_value());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_WrongTruncatedKeyId_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-keyid-inv"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<AthmTestClient> client =
++      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
++                             kBucketCount, DeploymentId("batch-keyid-inv"));
++  ASSERT_TRUE(client.has_value());
++
 +  std::optional<AthmTestClient::ClientRequest> valid_req =
 +      client->CreateClientRequest();
-   ASSERT_TRUE(valid_req.has_value());
- 
-   uint8_t wrong_key_id =
-@@ -389,7 +395,7 @@
-   std::optional<std::vector<uint8_t>> wrong_key_req =
-       CreateAthmTokenRequestBytes(
-           PrivateVerificationTokensParameters::kAthmTokenType, wrong_key_id,
--          base::ToVector(valid_req->request()));
++  ASSERT_TRUE(valid_req.has_value());
++
++  uint8_t wrong_key_id =
++      static_cast<uint8_t>(issuer->truncated_key_id() ^ 0xFF);
++
++  std::optional<std::vector<uint8_t>> wrong_key_req =
++      CreateAthmTokenRequestBytes(
++          PrivateVerificationTokensParameters::kAthmTokenType, wrong_key_id,
 +          valid_req->request);
-   ASSERT_TRUE(wrong_key_req.has_value());
- 
-   std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
-@@ -416,15 +422,6 @@
-           PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
-   ASSERT_TRUE(batch_request.has_value());
- 
--  auto params = GetParametersForVersion(1);
--  ASSERT_TRUE(params.has_value());
--  EXPECT_EQ(batch_request->request_body().size(),
--            kBatchSize * params->single_request_size + sizeof(uint32_t));
--  EXPECT_EQ(
--      base::U32FromBigEndian(
--          base::span(batch_request->request_body()).last<sizeof(uint32_t)>()),
--      1u);
--
-   constexpr uint8_t kMetadata = 1;
-   std::optional<std::string> response_body = issuer->BatchIssue(
-       base::as_string_view(batch_request->request_body()), kMetadata);
-@@ -472,51 +469,6 @@
-   EXPECT_FALSE(response_body.has_value());
- }
- 
--TEST(AthmTestIssuerTest,
--     BatchIssue_StringOverload_UnsupportedVersion_ReturnsNullopt) {
--  std::optional<AthmTestIssuer> issuer =
--      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-str-bad-ver"));
--  ASSERT_TRUE(issuer.has_value());
--
--  std::optional<AthmTestClient> client =
--      AthmTestClient::Create(issuer->public_key(), issuer->public_key_proof(),
--                             kBucketCount, DeploymentId("batch-str-bad-ver"));
--  ASSERT_TRUE(client.has_value());
--
--  std::optional<AthmClientRequest> valid_req = client->CreateClientRequest();
--  ASSERT_TRUE(valid_req.has_value());
--
--  std::optional<std::vector<uint8_t>> formatted_valid_req =
--      CreateAthmTokenRequestBytes(
--          PrivateVerificationTokensParameters::kAthmTokenType,
--          issuer->truncated_key_id(), base::ToVector(valid_req->request()));
--  ASSERT_TRUE(formatted_valid_req.has_value());
--
--  // Append unsupported version number 2 as 4 bytes in big-endian.
--  std::vector<uint8_t> request_body = *formatted_valid_req;
--  std::array<uint8_t, sizeof(uint32_t)> version_bytes =
--      base::U32ToBigEndian(2u);
--  request_body.insert(request_body.end(), version_bytes.begin(),
--                      version_bytes.end());
--
--  std::optional<std::string> response_body = issuer->BatchIssue(
--      base::as_string_view(request_body), /*hidden_metadata=*/0);
--  EXPECT_FALSE(response_body.has_value());
--}
--
--TEST(AthmTestIssuerTest,
--     BatchIssue_StringOverload_OnlyVersionBytes_ReturnsNullopt) {
--  std::optional<AthmTestIssuer> issuer =
--      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-str-ver-only"));
--  ASSERT_TRUE(issuer.has_value());
--
--  // 4-byte body with version = 1, but no token requests.
--  std::array<uint8_t, sizeof(uint32_t)> version_only = base::U32ToBigEndian(1u);
--  std::optional<std::string> response_body = issuer->BatchIssue(
--      base::as_string_view(version_only), /*hidden_metadata=*/0);
--  EXPECT_FALSE(response_body.has_value());
--}
--
- TEST(AthmTestIssuerTest, VerifyWithCheck_Success) {
-   std::optional<AthmTestIssuer> issuer =
-       AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-ok"));
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/BUILD.gn chromium-153.0.8010.12/components/private_verification_tokens/common/BUILD.gn
---- chromium-154.0.8037.0/components/private_verification_tokens/common/BUILD.gn	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/BUILD.gn	2026-08-25 22:20:53.000000000 +0200
-@@ -173,27 +173,30 @@
++  ASSERT_TRUE(wrong_key_req.has_value());
++
++  std::optional<std::vector<std::vector<uint8_t>>> batch_responses =
++      issuer->BatchIssue({wrong_key_req.value()}, /*hidden_metadata=*/0);
++  EXPECT_FALSE(batch_responses.has_value());
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_StringOverload_Success) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-str"));
++  ASSERT_TRUE(issuer.has_value());
++
++  constexpr size_t kBatchSize = 2;
++  PrivateVerificationTokensPublicKey public_key(
++      url::Origin::Create(GURL("https://issuer.example.com")),
++      issuer->public_key(), issuer->public_key_proof(),
++      base::Time::Now() + base::Days(30), /*version=*/1);
++  IssuerConfig issuer_config(GURL("https://issuer.example.com/request"),
++                             kBatchSize, std::move(public_key), {},
++                             "batch-str");
++
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
++  ASSERT_TRUE(batch_request.has_value());
++
++  constexpr uint8_t kMetadata = 1;
++  std::optional<std::string> response_body = issuer->BatchIssue(
++      base::as_string_view(batch_request->request_body()), kMetadata);
++  ASSERT_TRUE(response_body.has_value());
++  ASSERT_FALSE(response_body->empty());
++
++  base::expected<std::vector<std::vector<uint8_t>>,
++                 PrivacyPassAthmBatchRequestError>
++      finalized_tokens =
++          batch_request->Finalize(base::as_byte_span(*response_body));
++  ASSERT_TRUE(finalized_tokens.has_value());
++  ASSERT_EQ(finalized_tokens->size(), kBatchSize);
++
++  for (size_t i = 0; i < kBatchSize; ++i) {
++    const std::vector<uint8_t>& token_bytes = (*finalized_tokens)[i];
++    anonymous_tokens::AthmToken unmarshaled_token;
++    absl::Status unmarshal_status = anonymous_tokens::UnmarshalAthmToken(
++        base::as_string_view(token_bytes), &unmarshaled_token);
++    ASSERT_TRUE(unmarshal_status.ok());
++    std::optional<uint8_t> recovered =
++        issuer->Verify(base::as_byte_span(unmarshaled_token.token));
++    ASSERT_TRUE(recovered.has_value());
++    EXPECT_EQ(*recovered, kMetadata);
++  }
++}
++
++TEST(AthmTestIssuerTest, BatchIssue_StringOverload_Empty_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-str-empty"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<std::string> response_body =
++      issuer->BatchIssue("", /*hidden_metadata=*/0);
++  EXPECT_FALSE(response_body.has_value());
++}
++
++TEST(AthmTestIssuerTest,
++     BatchIssue_StringOverload_InvalidLength_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("batch-str-inv"));
++  ASSERT_TRUE(issuer.has_value());
++
++  std::optional<std::string> response_body =
++      issuer->BatchIssue("not_36_bytes", /*hidden_metadata=*/0);
++  EXPECT_FALSE(response_body.has_value());
++}
++
++TEST(AthmTestIssuerTest, VerifyWithCheck_Success) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-ok"));
++  ASSERT_TRUE(issuer.has_value());
++
++  constexpr size_t kBatchSize = 1;
++  PrivateVerificationTokensPublicKey public_key(
++      url::Origin::Create(GURL("https://issuer.example.com")),
++      issuer->public_key(), issuer->public_key_proof(),
++      base::Time::Now() + base::Days(30), /*version=*/1);
++  IssuerConfig issuer_config(GURL("https://issuer.example.com/request"),
++                             kBatchSize, std::move(public_key), {},
++                             "verify-check-ok");
++
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
++  ASSERT_TRUE(batch_request.has_value());
++
++  constexpr uint8_t kMetadata = 3;
++  std::optional<std::string> response_body = issuer->BatchIssue(
++      base::as_string_view(batch_request->request_body()), kMetadata);
++  ASSERT_TRUE(response_body.has_value());
++
++  base::expected<std::vector<std::vector<uint8_t>>,
++                 PrivacyPassAthmBatchRequestError>
++      finalized_tokens =
++          batch_request->Finalize(base::as_byte_span(*response_body));
++  ASSERT_TRUE(finalized_tokens.has_value());
++  ASSERT_EQ(finalized_tokens->size(), 1u);
++
++  std::optional<uint8_t> recovered =
++      issuer->VerifyWithCheck((*finalized_tokens)[0]);
++  ASSERT_TRUE(recovered.has_value());
++  EXPECT_EQ(*recovered, kMetadata);
++}
++
++TEST(AthmTestIssuerTest, VerifyWithCheck_WrongTokenType_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-type"));
++  ASSERT_TRUE(issuer.has_value());
++
++  constexpr size_t kBatchSize = 1;
++  PrivateVerificationTokensPublicKey public_key(
++      url::Origin::Create(GURL("https://issuer.example.com")),
++      issuer->public_key(), issuer->public_key_proof(),
++      base::Time::Now() + base::Days(30), /*version=*/1);
++  IssuerConfig issuer_config(GURL("https://issuer.example.com/request"),
++                             kBatchSize, std::move(public_key), {},
++                             "verify-check-type");
++
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
++  ASSERT_TRUE(batch_request.has_value());
++
++  std::optional<std::string> response_body =
++      issuer->BatchIssue(base::as_string_view(batch_request->request_body()),
++                         /*hidden_metadata=*/0);
++  ASSERT_TRUE(response_body.has_value());
++
++  base::expected<std::vector<std::vector<uint8_t>>,
++                 PrivacyPassAthmBatchRequestError>
++      finalized_tokens =
++          batch_request->Finalize(base::as_byte_span(*response_body));
++  ASSERT_TRUE(finalized_tokens.has_value());
++
++  anonymous_tokens::AthmToken token;
++  ASSERT_TRUE(anonymous_tokens::UnmarshalAthmToken(
++                  base::as_string_view((*finalized_tokens)[0]), &token)
++                  .ok());
++  token.token_type = 0x1234;
++  std::string marshaled;
++  ASSERT_TRUE(anonymous_tokens::MarshalAthmToken(token, &marshaled).ok());
++
++  EXPECT_FALSE(
++      issuer->VerifyWithCheck(base::as_byte_span(marshaled)).has_value());
++}
++
++TEST(AthmTestIssuerTest, VerifyWithCheck_WrongKeyId_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-keyid"));
++  ASSERT_TRUE(issuer.has_value());
++
++  constexpr size_t kBatchSize = 1;
++  PrivateVerificationTokensPublicKey public_key(
++      url::Origin::Create(GURL("https://issuer.example.com")),
++      issuer->public_key(), issuer->public_key_proof(),
++      base::Time::Now() + base::Days(30), /*version=*/1);
++  IssuerConfig issuer_config(GURL("https://issuer.example.com/request"),
++                             kBatchSize, std::move(public_key), {},
++                             "verify-check-keyid");
++
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
++  ASSERT_TRUE(batch_request.has_value());
++
++  std::optional<std::string> response_body =
++      issuer->BatchIssue(base::as_string_view(batch_request->request_body()),
++                         /*hidden_metadata=*/0);
++  ASSERT_TRUE(response_body.has_value());
++
++  base::expected<std::vector<std::vector<uint8_t>>,
++                 PrivacyPassAthmBatchRequestError>
++      finalized_tokens =
++          batch_request->Finalize(base::as_byte_span(*response_body));
++  ASSERT_TRUE(finalized_tokens.has_value());
++
++  anonymous_tokens::AthmToken token;
++  ASSERT_TRUE(anonymous_tokens::UnmarshalAthmToken(
++                  base::as_string_view((*finalized_tokens)[0]), &token)
++                  .ok());
++  token.issuer_key_id[0] ^= 0xFF;
++  std::string marshaled;
++  ASSERT_TRUE(anonymous_tokens::MarshalAthmToken(token, &marshaled).ok());
++
++  EXPECT_FALSE(
++      issuer->VerifyWithCheck(base::as_byte_span(marshaled)).has_value());
++}
++
++TEST(AthmTestIssuerTest, VerifyWithCheck_InvalidCrypto_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-crypto"));
++  ASSERT_TRUE(issuer.has_value());
++
++  constexpr size_t kBatchSize = 1;
++  PrivateVerificationTokensPublicKey public_key(
++      url::Origin::Create(GURL("https://issuer.example.com")),
++      issuer->public_key(), issuer->public_key_proof(),
++      base::Time::Now() + base::Days(30), /*version=*/1);
++  IssuerConfig issuer_config(GURL("https://issuer.example.com/request"),
++                             kBatchSize, std::move(public_key), {},
++                             "verify-check-crypto");
++
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kBucketCount);
++  ASSERT_TRUE(batch_request.has_value());
++
++  std::optional<std::string> response_body =
++      issuer->BatchIssue(base::as_string_view(batch_request->request_body()),
++                         /*hidden_metadata=*/0);
++  ASSERT_TRUE(response_body.has_value());
++
++  base::expected<std::vector<std::vector<uint8_t>>,
++                 PrivacyPassAthmBatchRequestError>
++      finalized_tokens =
++          batch_request->Finalize(base::as_byte_span(*response_body));
++  ASSERT_TRUE(finalized_tokens.has_value());
++
++  anonymous_tokens::AthmToken token;
++  ASSERT_TRUE(anonymous_tokens::UnmarshalAthmToken(
++                  base::as_string_view((*finalized_tokens)[0]), &token)
++                  .ok());
++  token.token[kTamperByteOffset] ^= 0x01;
++  std::string marshaled;
++  ASSERT_TRUE(anonymous_tokens::MarshalAthmToken(token, &marshaled).ok());
++
++  EXPECT_FALSE(
++      issuer->VerifyWithCheck(base::as_byte_span(marshaled)).has_value());
++}
++
++TEST(AthmTestIssuerTest, VerifyWithCheck_InvalidLength_ReturnsNullopt) {
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kBucketCount, DeploymentId("verify-check-len"));
++  ASSERT_TRUE(issuer.has_value());
++
++  const std::vector<uint8_t> short_bytes = {0xC0, 0x7E, 0x01, 0x02};
++  EXPECT_FALSE(issuer->VerifyWithCheck(short_bytes).has_value());
++}
++
++}  // namespace
++}  // namespace private_verification_tokens
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/BUILD.gn chromium-153.0.8010.47/components/private_verification_tokens/common/BUILD.gn
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/BUILD.gn	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/BUILD.gn	2026-09-15 00:17:16.000000000 +0200
+@@ -70,7 +70,6 @@
+   sources = [ "private_verification_tokens_fetcher_unittest.cc" ]
+   deps = [
+     ":private_verification_tokens_fetcher",
+-    ":private_verification_tokens_parameters",
+     "//base",
+     "//base/test:test_support",
+     "//services/network:test_support",
+@@ -174,36 +173,62 @@
    deps = [
      ":private_verification_tokens_issuer_config",
      ":private_verification_tokens_parameters",
@@ -2918,7 +3783,10 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/BU
 -source_set("test_support") {
 -  testonly = true
 -  sources = [ "private_verification_tokens_test_util.h" ]
--  deps = [ "//base" ]
+-  public_deps = [
+-    "//base",
+-    "//components/private_verification_tokens/common/athm_ffi:athm_ffi_bindings",
+-  ]
 -}
 -
 -# ATHM (Anonymous Tokens with Hidden Metadata): Crubit bindings over
@@ -2936,36 +3804,38 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/BU
 +    visibility = [ ":*" ]
 +  }
 +
-   # Test issuer modeled on network::TestTrustTokenIssuer: holds the secret ATHM
-   # key material and exposes issuer-side (Issue/Verify) and client-side
--  # (request/finalize) operations over Crubit bindings.
++  # Test issuer modeled on network::TestTrustTokenIssuer: holds the secret ATHM
++  # key material and exposes issuer-side (Issue/Verify) and client-side
 +  # (request/finalize) operations over the cxx bridge.
-   # This is to be used in tests only. Chrome does not need/use
-   # issuer side capability.
-   source_set("athm_test_issuer") {
-@@ -202,11 +205,9 @@
-       "athm_test_issuer.cc",
-       "athm_test_issuer.h",
-     ]
--    public_deps = [
--      "//base",
--      "//components/private_verification_tokens/common/athm_ffi:athm_ffi_bindings",
--    ]
++  # This is to be used in tests only. Chrome does not need/use
++  # issuer side capability.
++  source_set("athm_test_issuer") {
++    testonly = true
++    sources = [
++      "athm_test_issuer.cc",
++      "athm_test_issuer.h",
++    ]
 +    public_deps = [ "//base" ]
-     deps = [
++    deps = [
 +      ":athm_ffi",
-       ":private_verification_tokens_parameters",
-       "//crypto",
-       "//third_party/anonymous_tokens:athm_token_encodings_utils",
-@@ -219,6 +220,7 @@
++      ":private_verification_tokens_parameters",
++      "//crypto",
++      "//third_party/anonymous_tokens:athm_token_encodings_utils",
++    ]
++  }
++
+   source_set("privacy_pass_athm_batch_request") {
+     sources = [
+       "privacy_pass_athm_batch_request.cc",
        "privacy_pass_athm_batch_request.h",
      ]
-     deps = [
++    deps = [
 +      ":athm_ffi",
-       ":private_verification_tokens_parameters",
-       ":private_verification_tokens_public_key",
-       "//crypto",
-@@ -227,7 +229,6 @@
++      ":private_verification_tokens_parameters",
++      ":private_verification_tokens_public_key",
++      "//crypto",
++      "//third_party/anonymous_tokens:athm_token_encodings_utils",
++    ]
      public_deps = [
        ":private_verification_tokens_issuer_config",
        "//base",
@@ -2973,122 +3843,161 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/BU
      ]
    }
  
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -8,15 +8,13 @@
- #include <string>
+@@ -211,14 +236,33 @@
+     testonly = true
+     sources = [ "privacy_pass_athm_batch_request_unittest.cc" ]
+     deps = [
++      ":athm_test_issuer",
++      ":privacy_pass_athm_batch_request",
++      ":private_verification_tokens_issuer_config",
++      ":private_verification_tokens_parameters",
++      ":private_verification_tokens_public_key",
++      "//base",
++      "//testing/gmock",
++      "//testing/gtest",
++      "//third_party/anonymous_tokens:athm_token_encodings_utils",
++      "//url",
++    ]
++  }
++
++  source_set("athm_test_issuer_unittest") {
++    testonly = true
++    sources = [ "athm_test_issuer_unittest.cc" ]
++    deps = [
++      ":athm_test_issuer",
+       ":privacy_pass_athm_batch_request",
+       ":private_verification_tokens_issuer_config",
+       ":private_verification_tokens_parameters",
+       ":private_verification_tokens_public_key",
+       "//base",
+-      "//components/private_verification_tokens/common/athm_ffi:athm_ffi_bindings",
++      "//crypto",
+       "//testing/gmock",
+       "//testing/gtest",
++      "//third_party/anonymous_tokens:athm_token_encodings_utils",
+       "//url",
+     ]
+   }
+Only in chromium-155.0.8059.5/components/private_verification_tokens/common: athm_ffi
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -4,12 +4,17 @@
+ 
+ #include "components/private_verification_tokens/common/privacy_pass_athm_batch_request.h"
+ 
++#include <array>
++#include <string>
  #include <utility>
+-#include <vector>
  
 +#include "base/containers/span_rust.h"
  #include "base/containers/to_vector.h"
--#include "base/numerics/byte_conversions.h"
 -#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
-+#include "components/private_verification_tokens/common/athm_ffi.rs.h"
- #include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
- #include "components/private_verification_tokens/common/private_verification_tokens_public_key.h"
- #include "crypto/hash.h"
- #include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
 -#include "third_party/crubit/support/rs_std/slice_ref.h"
--#include "third_party/crubit/support/rs_std/vec.h"
++#include "components/private_verification_tokens/common/athm_ffi.rs.h"
++#include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
++#include "components/private_verification_tokens/common/private_verification_tokens_public_key.h"
++#include "crypto/hash.h"
++#include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
  
  namespace private_verification_tokens {
  
-@@ -34,33 +32,34 @@
+@@ -26,27 +31,71 @@
+         PrivacyPassAthmBatchRequestError::kInvalidBucketCount);
    }
  
-   // Derive client protocol parameters using the deployment ID and bucket count.
--  auto params = AthmParameters::try_new(
--      num_buckets, rs_std::SliceRef<const uint8_t>(
--                       base::as_byte_span(issuer_config.deployment_id)));
--  if (!params.has_value()) {
+-  auto client_result = PrivacyPassBatchClient::try_new(
+-      rs_std::SliceRef<const uint8_t>(issuer_config.public_key.public_key()),
+-      rs_std::SliceRef<const uint8_t>(
+-          issuer_config.public_key.public_key_proof()),
++  // Derive client protocol parameters using the deployment ID and bucket count.
 +  AthmClientParams client_params = athm_client_params(
-+      num_buckets,
+       num_buckets,
+-      rs_std::SliceRef<const uint8_t>(
+-          base::as_byte_span(issuer_config.deployment_id)),
+-      issuer_config.public_key.version(),
+-      static_cast<size_t>(issuer_config.batch_size));
+-  if (!client_result.has_value()) {
 +      base::SpanToRustSlice(base::as_byte_span(issuer_config.deployment_id)));
 +  if (client_params.status != AthmStatus::Ok) {
      return base::unexpected(
-         PrivacyPassAthmBatchRequestError::kParameterGenerationFailed);
+-        PrivacyPassAthmBatchRequestError::kClientRequestGenerationFailed);
++        PrivacyPassAthmBatchRequestError::kParameterGenerationFailed);
    }
 +  std::vector<uint8_t> params = base::ToVector(client_params.params);
  
-   const size_t count = static_cast<size_t>(issuer_config.batch_size);
-   base::span<const uint8_t> public_key = issuer_config.public_key.public_key();
-   base::span<const uint8_t> public_key_proof =
-       issuer_config.public_key.public_key_proof();
- 
--  std::vector<AthmClientRequest> client_requests;
--  client_requests.reserve(count);
+-  return PrivacyPassAthmBatchRequest(std::move(*client_result));
++  const size_t count = static_cast<size_t>(issuer_config.batch_size);
++  base::span<const uint8_t> public_key = issuer_config.public_key.public_key();
++  base::span<const uint8_t> public_key_proof =
++      issuer_config.public_key.public_key_proof();
++
 +  std::vector<TokenState> token_states;
 +  token_states.reserve(count);
-   std::vector<uint8_t> batch_request_body;
- 
-   for (size_t i = 0; i < count; ++i) {
--    auto bridge_result = AthmClientRequest::try_new(
--        rs_std::SliceRef<const uint8_t>(public_key),
--        rs_std::SliceRef<const uint8_t>(public_key_proof), *params);
--    if (!bridge_result.has_value()) {
++  std::vector<uint8_t> batch_request_body;
++
++  for (size_t i = 0; i < count; ++i) {
 +    AthmClientRequest bridge_result = athm_client_request(
 +        base::SpanToRustSlice(public_key),
 +        base::SpanToRustSlice(public_key_proof), base::SpanToRustSlice(params));
 +    if (bridge_result.status != AthmStatus::Ok) {
-       return base::unexpected(
-           PrivacyPassAthmBatchRequestError::kClientRequestGenerationFailed);
-     }
- 
--    rs_std::Vec<uint8_t> req_bytes = bridge_result->request();
++      return base::unexpected(
++          PrivacyPassAthmBatchRequestError::kClientRequestGenerationFailed);
++    }
++
 +    std::vector<uint8_t> req_bytes = base::ToVector(bridge_result.request);
-     anonymous_tokens::AthmTokenRequest token_req;
-     token_req.token_type = PrivateVerificationTokensParameters::kAthmTokenType;
-     token_req.truncated_issuer_key_id =
-@@ -77,27 +76,25 @@
- 
-     batch_request_body.insert(batch_request_body.end(), marshaled_req.begin(),
-                               marshaled_req.end());
--    client_requests.push_back(std::move(*bridge_result));
++    anonymous_tokens::AthmTokenRequest token_req;
++    token_req.token_type = PrivateVerificationTokensParameters::kAthmTokenType;
++    token_req.truncated_issuer_key_id =
++        issuer_config.public_key.truncated_key_id();
++    token_req.encoded_request = std::string(req_bytes.begin(), req_bytes.end());
++
++    std::string marshaled_req;
++    absl::Status status =
++        anonymous_tokens::MarshalAthmTokenRequest(token_req, &marshaled_req);
++    if (!status.ok()) {
++      return base::unexpected(
++          PrivacyPassAthmBatchRequestError::kTokenRequestEncodingFailed);
++    }
++
++    batch_request_body.insert(batch_request_body.end(), marshaled_req.begin(),
++                              marshaled_req.end());
 +    token_states.push_back(TokenState{
 +        .context = base::ToVector(bridge_result.context),
 +        .request = std::move(req_bytes),
 +    });
-   }
- 
--  std::array<uint8_t, sizeof(uint32_t)> version_bytes =
--      base::U32ToBigEndian(issuer_config.public_key.version());
--  batch_request_body.insert(batch_request_body.end(), version_bytes.begin(),
--                            version_bytes.end());
--
--  return PrivacyPassAthmBatchRequest(
--      issuer_config.public_key, std::move(*params), std::move(client_requests),
--      std::move(batch_request_body));
++  }
++
 +  return PrivacyPassAthmBatchRequest(issuer_config.public_key,
 +                                     std::move(params), std::move(token_states),
 +                                     std::move(batch_request_body));
  }
  
  PrivacyPassAthmBatchRequest::PrivacyPassAthmBatchRequest(
-     PrivateVerificationTokensPublicKey pvt_public_key,
--    AthmParameters params,
--    std::vector<AthmClientRequest> client_requests,
+-    PrivacyPassBatchClient batch_client)
+-    : batch_client_(std::move(batch_client)),
+-      request_body_(base::ToVector(batch_client_->request_body().to_span())) {}
++    PrivateVerificationTokensPublicKey pvt_public_key,
 +    std::vector<uint8_t> params,
 +    std::vector<TokenState> token_states,
-     std::vector<uint8_t> request_body)
-     : pvt_public_key_(std::move(pvt_public_key)),
-       params_(std::move(params)),
--      client_requests_(std::move(client_requests)),
++    std::vector<uint8_t> request_body)
++    : pvt_public_key_(std::move(pvt_public_key)),
++      params_(std::move(params)),
 +      token_states_(std::move(token_states)),
-       request_body_(std::move(request_body)) {}
++      request_body_(std::move(request_body)) {}
  
  PrivacyPassAthmBatchRequest::PrivacyPassAthmBatchRequest(
-@@ -109,12 +106,17 @@
+     PrivacyPassAthmBatchRequest&&) = default;
+@@ -57,28 +106,66 @@
  base::expected<std::vector<std::vector<uint8_t>>,
                 PrivacyPassAthmBatchRequestError>
  PrivacyPassAthmBatchRequest::Finalize(base::span<const uint8_t> response_body) {
--  if (client_requests_.empty()) {
+-  if (!batch_client_.has_value()) {
 +  if (token_states_.empty()) {
      return base::unexpected(
          PrivacyPassAthmBatchRequestError::kAlreadyFinalized);
    }
--  const size_t token_count = client_requests_.size();
--  const size_t single_response_size = params_.token_response_size();
 +  const size_t token_count = token_states_.size();
 +  const size_t single_response_size =
 +      athm_token_response_size(base::SpanToRustSlice(params_));
@@ -3097,50 +4006,78 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
 +        PrivacyPassAthmBatchRequestError::kParameterGenerationFailed);
 +  }
  
-   const size_t expected_response_size = token_count * single_response_size;
-   if (response_body.size() != expected_response_size) {
-@@ -128,18 +130,20 @@
-                                       issuer_key_id.end());
+-  auto finalize_result =
+-      std::exchange(batch_client_, std::nullopt)
+-          ->finalize(rs_std::SliceRef<const uint8_t>(response_body));
+-  if (!finalize_result.has_value()) {
+-    if (finalize_result.error() == AthmStatus::MakeInvalidInput()) {
+-      return base::unexpected(
+-          PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+-    }
++  const size_t expected_response_size = token_count * single_response_size;
++  if (response_body.size() != expected_response_size) {
+     return base::unexpected(
+-        PrivacyPassAthmBatchRequestError::kClientFinalizeFailed);
++        PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+   }
  
++  const std::array<uint8_t, crypto::hash::kSha256Size> issuer_key_id =
++      pvt_public_key_.key_id();
++  const std::string issuer_key_id_str(issuer_key_id.begin(),
++                                      issuer_key_id.end());
++
    std::vector<std::vector<uint8_t>> finalized_tokens;
--  finalized_tokens.reserve(client_requests_.size());
+-  finalized_tokens.reserve(finalize_result->size());
+-  for (const auto& token : *finalize_result) {
+-    finalized_tokens.push_back(base::ToVector(token));
 +  finalized_tokens.reserve(token_states_.size());
- 
--  // Consume client_requests_ so this instance cannot be finalized again.
--  std::vector<AthmClientRequest> requests = std::exchange(client_requests_, {});
++
 +  // Consume token_states_ so this instance cannot be finalized again.
 +  std::vector<TokenState> states = std::exchange(token_states_, {});
- 
-   for (size_t i = 0; i < token_count; ++i) {
-     base::span<const uint8_t> item_response =
-         response_body.subspan(i * single_response_size, single_response_size);
--    auto finalize_result = requests[i].finalize(
--        rs_std::SliceRef<const uint8_t>(pvt_public_key_.public_key()),
--        rs_std::SliceRef<const uint8_t>(item_response), params_);
--    if (!finalize_result.has_value()) {
++
++  for (size_t i = 0; i < token_count; ++i) {
++    base::span<const uint8_t> item_response =
++        response_body.subspan(i * single_response_size, single_response_size);
 +    AthmBytesResult finalize_result = athm_client_finalize(
 +        base::SpanToRustSlice(states[i].context),
 +        base::SpanToRustSlice(pvt_public_key_.public_key()),
 +        base::SpanToRustSlice(states[i].request),
 +        base::SpanToRustSlice(item_response), base::SpanToRustSlice(params_));
 +    if (finalize_result.status != AthmStatus::Ok) {
-       return base::unexpected(
-           PrivacyPassAthmBatchRequestError::kClientFinalizeFailed);
-     }
-@@ -147,7 +151,8 @@
-     anonymous_tokens::AthmToken token;
-     token.token_type = PrivateVerificationTokensParameters::kAthmTokenType;
-     token.issuer_key_id = issuer_key_id_str;
--    token.token = std::string(finalize_result->begin(), finalize_result->end());
++      return base::unexpected(
++          PrivacyPassAthmBatchRequestError::kClientFinalizeFailed);
++    }
++
++    anonymous_tokens::AthmToken token;
++    token.token_type = PrivateVerificationTokensParameters::kAthmTokenType;
++    token.issuer_key_id = issuer_key_id_str;
 +    token.token =
 +        std::string(finalize_result.bytes.begin(), finalize_result.bytes.end());
++
++    std::string marshaled_token;
++    absl::Status status =
++        anonymous_tokens::MarshalAthmToken(token, &marshaled_token);
++    if (!status.ok()) {
++      return base::unexpected(
++          PrivacyPassAthmBatchRequestError::kTokenEncodingFailed);
++    }
++
++    finalized_tokens.push_back(
++        base::ToVector(base::as_byte_span(marshaled_token)));
+   }
++
+   return finalized_tokens;
+ }
  
-     std::string marshaled_token;
-     absl::Status status =
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h
---- chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h	2026-08-25 22:20:53.000000000 +0200
-@@ -10,7 +10,6 @@
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request.h	2026-09-15 00:17:16.000000000 +0200
+@@ -6,12 +6,10 @@
+ #define COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_PRIVACY_PASS_ATHM_BATCH_REQUEST_H_
+ 
+ #include <cstdint>
+-#include <optional>
+ #include <vector>
  
  #include "base/containers/span.h"
  #include "base/types/expected.h"
@@ -3148,7 +4085,21 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
  #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
  
  namespace private_verification_tokens {
-@@ -63,8 +62,7 @@
+@@ -21,10 +19,13 @@
+ enum class PrivacyPassAthmBatchRequestError {
+   kInvalidBatchSize,
+   kInvalidBucketCount,
++  kParameterGenerationFailed,
+   kClientRequestGenerationFailed,
++  kTokenRequestEncodingFailed,
+   kAlreadyFinalized,
+   kInvalidResponseBodyLength,
+   kClientFinalizeFailed,
++  kTokenEncodingFailed,
+ };
+ 
+ // Encapsulates a batched Privacy Pass request using Anonymous Tokens with
+@@ -61,8 +62,7 @@
        delete;
  
    // The serialized HTTP request body containing the concatenated marshaled
@@ -3158,42 +4109,101 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
    const std::vector<uint8_t>& request_body() const { return request_body_; }
  
    // Unblinds and finalizes the batch response returned by the issuance server.
-@@ -80,14 +78,19 @@
+@@ -78,9 +78,19 @@
    Finalize(base::span<const uint8_t> response_body);
  
   private:
+-  explicit PrivacyPassAthmBatchRequest(PrivacyPassBatchClient batch_client);
+-
+-  std::optional<PrivacyPassBatchClient> batch_client_;
 +  struct TokenState {
 +    std::vector<uint8_t> context;
 +    std::vector<uint8_t> request;
 +  };
 +
-   PrivacyPassAthmBatchRequest(PrivateVerificationTokensPublicKey pvt_public_key,
--                              AthmParameters params,
--                              std::vector<AthmClientRequest> client_requests,
++  PrivacyPassAthmBatchRequest(PrivateVerificationTokensPublicKey pvt_public_key,
 +                              std::vector<uint8_t> params,
 +                              std::vector<TokenState> token_states,
-                               std::vector<uint8_t> request_body);
- 
-   PrivateVerificationTokensPublicKey pvt_public_key_;
--  AthmParameters params_;
--  std::vector<AthmClientRequest> client_requests_;
++                              std::vector<uint8_t> request_body);
++
++  PrivateVerificationTokensPublicKey pvt_public_key_;
 +  std::vector<uint8_t> params_;
 +  std::vector<TokenState> token_states_;
    std::vector<uint8_t> request_body_;
  };
  
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc	2026-08-25 22:20:53.000000000 +0200
-@@ -11,7 +11,6 @@
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/privacy_pass_athm_batch_request_unittest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -11,16 +11,15 @@
  
  #include "base/containers/span.h"
  #include "base/containers/to_vector.h"
 -#include "base/numerics/byte_conversions.h"
  #include "base/strings/string_view_util.h"
  #include "base/time/time.h"
- #include "components/private_verification_tokens/common/athm_test_issuer.h"
-@@ -81,11 +80,7 @@
+-#include "components/private_verification_tokens/common/athm_ffi/athm_ffi.h"
++#include "components/private_verification_tokens/common/athm_test_issuer.h"
+ #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
+ #include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
+ #include "components/private_verification_tokens/common/private_verification_tokens_public_key.h"
+ #include "testing/gmock/include/gmock/gmock.h"
+ #include "testing/gtest/include/gtest/gtest.h"
+-#include "third_party/crubit/support/rs_std/slice_ref.h"
++#include "third_party/anonymous_tokens/src/anonymous_tokens/cpp/privacy_pass/athm_token_encodings_utils.h"
+ #include "url/gurl.h"
+ #include "url/origin.h"
+ 
+@@ -35,31 +34,39 @@
+   return base::ToVector(base::as_byte_span(std::string_view(kDeploymentId)));
+ }
+ 
+-IssuerConfig CreateTestIssuerConfig(const PrivacyPassAthmIssuer& issuer,
++IssuerConfig CreateTestIssuerConfig(const AthmTestIssuer& issuer,
+                                     int32_t batch_size) {
+   PrivateVerificationTokensPublicKey public_key(
+       url::Origin::Create(GURL("https://issuer.example.com")),
+-      base::ToVector(issuer.public_key_bytes()),
+-      base::ToVector(issuer.public_key_proof_bytes()),
++      issuer.public_key(), issuer.public_key_proof(),
+       base::Time::Now() + base::Days(30), /*version=*/1);
+   return IssuerConfig(GURL("https://issuer.example.com/request"), batch_size,
+                       std::move(public_key), {}, kDeploymentId);
+ }
+ 
+ void VerifyFinalizedTokenMetadata(
+-    const PrivacyPassAthmIssuer& issuer,
++    const AthmTestIssuer& issuer,
+     base::span<const uint8_t> finalized_token_bytes,
+     uint8_t expected_metadata) {
+   EXPECT_EQ(finalized_token_bytes.size(), kSingleTokenSize);
+-  auto recovered_metadata = issuer.verify_wire_token(
+-      rs_std::SliceRef<const uint8_t>(finalized_token_bytes));
++  std::string_view finalized_token_str(
++      reinterpret_cast<const char*>(finalized_token_bytes.data()),
++      finalized_token_bytes.size());
++  anonymous_tokens::AthmToken unmarshaled_token;
++  absl::Status unmarshal_status = anonymous_tokens::UnmarshalAthmToken(
++      finalized_token_str, &unmarshaled_token);
++  ASSERT_TRUE(unmarshal_status.ok());
++  std::vector<uint8_t> raw_token(unmarshaled_token.token.begin(),
++                                 unmarshaled_token.token.end());
++
++  std::optional<uint8_t> recovered_metadata = issuer.Verify(raw_token);
+   ASSERT_TRUE(recovered_metadata.has_value());
+-  EXPECT_EQ(*recovered_metadata, expected_metadata);
++  EXPECT_EQ(recovered_metadata.value(), expected_metadata);
+ }
+ 
+ TEST(PrivacyPassAthmBatchRequestTest, RoundtripBatchIssuance) {
+-  auto issuer = PrivacyPassAthmIssuer::try_new(
+-      kNumBuckets, rs_std::SliceRef<const uint8_t>(DeploymentIdBytes()));
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kNumBuckets, DeploymentIdBytes());
+   ASSERT_TRUE(issuer.has_value());
+ 
+   constexpr int32_t kBatchSize = 10;
+@@ -73,16 +80,11 @@
            PrivacyPassAthmBatchRequest::Create(issuer_config, kNumBuckets);
    ASSERT_TRUE(batch_request.has_value());
    EXPECT_EQ(batch_request->request_body().size(),
@@ -3205,8 +4215,37 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
 +            kBatchSize * params->single_request_size);
  
    const uint8_t hidden_metadata = 1;
-   std::optional<std::string> batch_response = issuer->BatchIssue(
-@@ -151,18 +146,9 @@
+-  auto batch_response = issuer->issue_batch_from_bytes(
+-      rs_std::SliceRef<const uint8_t>(batch_request->request_body()),
+-      hidden_metadata);
++  std::optional<std::string> batch_response = issuer->BatchIssue(
++      base::as_string_view(batch_request->request_body()), hidden_metadata);
+   ASSERT_TRUE(batch_response.has_value());
+ 
+   // Finalize the batch request.
+@@ -103,8 +105,8 @@
+ }
+ 
+ TEST(PrivacyPassAthmBatchRequestTest, InvalidBatchParameters) {
+-  auto issuer = PrivacyPassAthmIssuer::try_new(
+-      kNumBuckets, rs_std::SliceRef<const uint8_t>(DeploymentIdBytes()));
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kNumBuckets, DeploymentIdBytes());
+   ASSERT_TRUE(issuer.has_value());
+ 
+   // Zero batch size.
+@@ -133,8 +135,8 @@
+ }
+ 
+ TEST(PrivacyPassAthmBatchRequestTest, SingleUseFinalization) {
+-  auto issuer = PrivacyPassAthmIssuer::try_new(
+-      kNumBuckets, rs_std::SliceRef<const uint8_t>(DeploymentIdBytes()));
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kNumBuckets, DeploymentIdBytes());
+   ASSERT_TRUE(issuer.has_value());
+ 
+   IssuerConfig issuer_config =
+@@ -144,18 +146,18 @@
            PrivacyPassAthmBatchRequest::Create(issuer_config, kNumBuckets);
    ASSERT_TRUE(batch_request.has_value());
  
@@ -3219,16 +4258,425 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
 -          base::span(batch_request->request_body()).last<sizeof(uint32_t)>()),
 -      issuer_config.public_key.version());
 -
-   std::string_view req_str(
-       reinterpret_cast<const char*>(batch_request->request_body().data()),
--      params->single_request_size);
+-  auto token_resp = issuer->issue_batch_from_bytes(
+-      rs_std::SliceRef<const uint8_t>(batch_request->request_body()),
+-      /*hidden_metadata=*/1);
++  std::string_view req_str(
++      reinterpret_cast<const char*>(batch_request->request_body().data()),
 +      batch_request->request_body().size());
-   anonymous_tokens::AthmTokenRequest unmarshaled_req;
-   absl::Status req_status =
-       anonymous_tokens::UnmarshalAthmTokenRequest(req_str, &unmarshaled_req);
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc	2026-08-25 22:20:53.000000000 +0200
++  anonymous_tokens::AthmTokenRequest unmarshaled_req;
++  absl::Status req_status =
++      anonymous_tokens::UnmarshalAthmTokenRequest(req_str, &unmarshaled_req);
++  ASSERT_TRUE(req_status.ok());
++
++  std::vector<uint8_t> raw_req(unmarshaled_req.encoded_request.begin(),
++                               unmarshaled_req.encoded_request.end());
++  std::optional<std::vector<uint8_t>> token_resp =
++      issuer->Issue(raw_req, /*hidden_metadata=*/1);
+   ASSERT_TRUE(token_resp.has_value());
+ 
+   auto res1 = batch_request->Finalize(*token_resp);
+@@ -171,27 +173,26 @@
+ }
+ 
+ TEST(PrivacyPassAthmBatchRequestTest, MalformedResponseBody) {
+-  auto issuer = PrivacyPassAthmIssuer::try_new(
+-      kNumBuckets, rs_std::SliceRef<const uint8_t>(DeploymentIdBytes()));
++  std::optional<AthmTestIssuer> issuer =
++      AthmTestIssuer::Create(kNumBuckets, DeploymentIdBytes());
+   ASSERT_TRUE(issuer.has_value());
+ 
+   IssuerConfig issuer_config =
+       CreateTestIssuerConfig(*issuer, /*batch_size=*/2);
+-  auto make_batch_request = [&]() {
+-    auto req = PrivacyPassAthmBatchRequest::Create(issuer_config, kNumBuckets);
+-    EXPECT_TRUE(req.has_value());
+-    return std::move(*req);
+-  };
++  base::expected<PrivacyPassAthmBatchRequest, PrivacyPassAthmBatchRequestError>
++      batch_request =
++          PrivacyPassAthmBatchRequest::Create(issuer_config, kNumBuckets);
++  ASSERT_TRUE(batch_request.has_value());
+ 
+   // Empty response body.
+-  auto empty_res = make_batch_request().Finalize({});
++  auto empty_res = batch_request->Finalize({});
+   EXPECT_FALSE(empty_res.has_value());
+   EXPECT_EQ(empty_res.error(),
+             PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+ 
+   // Indivisible response body (odd number of bytes for batch_size = 2).
+   std::vector<uint8_t> odd_bytes(15, 0xAA);
+-  auto odd_res = make_batch_request().Finalize(odd_bytes);
++  auto odd_res = batch_request->Finalize(odd_bytes);
+   EXPECT_FALSE(odd_res.has_value());
+   EXPECT_EQ(odd_res.error(),
+             PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+@@ -199,7 +200,7 @@
+   // Divisible by batch_size, but incorrect total length (e.g. 100 bytes per
+   // token instead of expected 483 bytes for 4 buckets).
+   std::vector<uint8_t> wrong_chunk_size_bytes(200, 0xAA);
+-  auto wrong_chunk_res = make_batch_request().Finalize(wrong_chunk_size_bytes);
++  auto wrong_chunk_res = batch_request->Finalize(wrong_chunk_size_bytes);
+   EXPECT_FALSE(wrong_chunk_res.has_value());
+   EXPECT_EQ(wrong_chunk_res.error(),
+             PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+@@ -209,14 +210,14 @@
+ 
+   // Correct size minus one byte (truncated).
+   std::vector<uint8_t> truncated_bytes(kExpectedBatchResponseSize - 1, 0xAA);
+-  auto truncated_res = make_batch_request().Finalize(truncated_bytes);
++  auto truncated_res = batch_request->Finalize(truncated_bytes);
+   EXPECT_FALSE(truncated_res.has_value());
+   EXPECT_EQ(truncated_res.error(),
+             PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+ 
+   // Correct size plus one byte (extra).
+   std::vector<uint8_t> extra_bytes(kExpectedBatchResponseSize + 1, 0xAA);
+-  auto extra_res = make_batch_request().Finalize(extra_bytes);
++  auto extra_res = batch_request->Finalize(extra_bytes);
+   EXPECT_FALSE(extra_res.has_value());
+   EXPECT_EQ(extra_res.error(),
+             PrivacyPassAthmBatchRequestError::kInvalidResponseBodyLength);
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -54,11 +54,7 @@
+     "SELECT id,issuer,key_id,expiration,token,version,creation_time "
+     "FROM tokens WHERE issuer = ?";
+ 
+-static constexpr char kGetAllStoredTokensSql[] =
+-    "SELECT id,issuer,key_id,expiration,token,version,creation_time "
+-    "FROM tokens ORDER BY issuer, id";
+-
+-static constexpr char kGetTokensFromEachSql[] =
++static constexpr char kGetAllTokensSql[] =
+     "SELECT id,issuer,key_id,expiration,token,version,creation_time,COUNT(*) "
+     "FROM tokens "
+     "GROUP BY issuer";
+@@ -73,24 +69,6 @@
+ 
+ // clang-format on
+ 
+-private_verification_tokens::TokenWithId ReadTokenFromStatement(
+-    sql::Statement& statement) {
+-  int64_t id = statement.ColumnInt64(0);
+-  url::Origin issuer = url::Origin::Create(GURL(statement.ColumnString(1)));
+-  uint32_t key_id = static_cast<uint32_t>(statement.ColumnInt64(2));
+-  int64_t expiration = statement.ColumnInt64(3);
+-  private_verification_tokens::SerializedToken token =
+-      statement.ColumnBlobAsVector(4);
+-  uint32_t version = static_cast<uint32_t>(statement.ColumnInt64(5));
+-  int64_t creation_time = statement.ColumnInt64(6);
+-
+-  return private_verification_tokens::TokenWithId{
+-      id, private_verification_tokens::PrivateVerificationTokensToken(
+-              std::move(issuer), std::move(token), key_id,
+-              base::Time::UnixEpoch() + base::Seconds(expiration), version,
+-              base::Time::UnixEpoch() + base::Seconds(creation_time))};
+-}
+-
+ }  // namespace
+ 
+ namespace private_verification_tokens {
+@@ -208,29 +186,26 @@
+   statement.BindString(0, issuer.Serialize());
+ 
+   if (statement.Step()) {
+-    return ReadTokenFromStatement(statement);
+-  }
+-  return std::nullopt;
+-}
+-
+-std::vector<TokenWithId> PrivateVerificationTokensDatabase::GetAllTokens() {
+-  DCHECK_CALLED_ON_VALID_SEQUENCE(sequence_checker_);
+-  if (!EnsureDBInitialized()) {
+-    return {};
+-  }
+-
+-  sql::Statement statement(
+-      database_->GetCachedStatement(SQL_FROM_HERE, kGetAllStoredTokensSql));
+-  DCHECK(statement.is_valid());
+-
+-  std::vector<TokenWithId> tokens;
+-  while (statement.Step()) {
+-    tokens.push_back(ReadTokenFromStatement(statement));
++    int64_t id = statement.ColumnInt64(0);
++    std::string issuer_str = statement.ColumnString(1);
++    uint32_t key_id = static_cast<uint32_t>(statement.ColumnInt64(2));
++    int64_t expiration = statement.ColumnInt64(3);
++    SerializedToken token = statement.ColumnBlobAsVector(4);
++    uint32_t version = static_cast<uint32_t>(statement.ColumnInt64(5));
++    int64_t creation_time = statement.ColumnInt64(6);
++
++    url::Origin read_issuer = url::Origin::Create(GURL(issuer_str));
++
++    return TokenWithId{
++        id, PrivateVerificationTokensToken(
++                std::move(read_issuer), std::move(token), key_id,
++                base::Time::UnixEpoch() + base::Seconds(expiration), version,
++                base::Time::UnixEpoch() + base::Seconds(creation_time))};
+   }
+   if (!statement.Succeeded()) {
+-    return {};
++    return std::nullopt;
+   }
+-  return tokens;
++  return std::nullopt;
+ }
+ 
+ TokensAndCounts PrivateVerificationTokensDatabase::GetTokensFromEach() {
+@@ -240,17 +215,29 @@
+   }
+ 
+   sql::Statement statement(
+-      database_->GetCachedStatement(SQL_FROM_HERE, kGetTokensFromEachSql));
++      database_->GetCachedStatement(SQL_FROM_HERE, kGetAllTokensSql));
+   DCHECK(statement.is_valid());
+ 
+   std::map<url::Origin, TokenWithId> tokens;
+   std::map<url::Origin, size_t> counts;
+   while (statement.Step()) {
+-    TokenWithId token_with_id = ReadTokenFromStatement(statement);
+-    url::Origin issuer = token_with_id.token.issuer();
++    int64_t id = statement.ColumnInt64(0);
++    std::string issuer_str = statement.ColumnString(1);
++    uint32_t key_id = static_cast<uint32_t>(statement.ColumnInt64(2));
++    int64_t expiration = statement.ColumnInt64(3);
++    SerializedToken token = statement.ColumnBlobAsVector(4);
++    uint32_t version = static_cast<uint32_t>(statement.ColumnInt64(5));
++    int64_t creation_time = statement.ColumnInt64(6);
+     int64_t count = statement.ColumnInt64(7);
+-    tokens.try_emplace(issuer, std::move(token_with_id));
+-    counts.emplace(std::move(issuer), static_cast<size_t>(count));
++
++    url::Origin issuer = url::Origin::Create(GURL(issuer_str));
++    tokens.try_emplace(
++        issuer, id,
++        PrivateVerificationTokensToken(
++            issuer, std::move(token), key_id,
++            base::Time::UnixEpoch() + base::Seconds(expiration), version,
++            base::Time::UnixEpoch() + base::Seconds(creation_time)));
++    counts.emplace(issuer, static_cast<size_t>(count));
+   }
+   if (!statement.Succeeded()) {
+     return {};
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database.h chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database.h	2026-09-15 00:17:16.000000000 +0200
+@@ -97,9 +97,6 @@
+   // exist.
+   std::optional<TokenWithId> GetToken(const url::Origin& issuer);
+ 
+-  // Returns all stored tokens across all issuers.
+-  std::vector<TokenWithId> GetAllTokens();
+-
+   // Get one token and the total token count from each distinct issuer.
+   TokensAndCounts GetTokensFromEach();
+ 
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database_unittest.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_database_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_database_unittest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -822,34 +822,6 @@
+   }
+ }
+ 
+-TEST_F(PrivateVerificationTokensDatabaseTest, GetAllTokens) {
+-  CreateDatabase(db_path_);
+-  const url::Origin kOriginA = url::Origin::Create(GURL("https://a.com"));
+-  const url::Origin kOriginB = url::Origin::Create(GURL("https://b.com"));
+-  uint32_t key_id = 678;
+-  const base::Time expiration = base::Time::UnixEpoch() + base::Seconds(7);
+-  uint32_t version = 1;
+-
+-  std::vector<PrivateVerificationTokensToken> tokens = {
+-      PrivateVerificationTokensToken(kOriginB, {7, 8, 9}, key_id, expiration,
+-                                     version),
+-      PrivateVerificationTokensToken(kOriginA, {1, 2, 3}, key_id, expiration,
+-                                     version),
+-      PrivateVerificationTokensToken(kOriginA, {4, 5, 6}, key_id, expiration,
+-                                     version),
+-  };
+-  EXPECT_TRUE(pvt_database_->StoreTokens(tokens));
+-
+-  std::vector<TokenWithId> all_tokens = pvt_database_->GetAllTokens();
+-  ASSERT_EQ(all_tokens.size(), 3u);
+-  EXPECT_EQ(all_tokens[0].token.issuer(), kOriginA);
+-  EXPECT_EQ(all_tokens[0].token.token(), (SerializedToken{1, 2, 3}));
+-  EXPECT_EQ(all_tokens[1].token.issuer(), kOriginA);
+-  EXPECT_EQ(all_tokens[1].token.token(), (SerializedToken{4, 5, 6}));
+-  EXPECT_EQ(all_tokens[2].token.issuer(), kOriginB);
+-  EXPECT_EQ(all_tokens[2].token.token(), (SerializedToken{7, 8, 9}));
+-}
+-
+ }  // namespace
+ 
+ }  // namespace private_verification_tokens
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -62,6 +62,9 @@
+ constexpr char kAccept[] = "application/private-token-response";
+ constexpr char kContentType[] = "application/private-token-request";
+ constexpr base::TimeDelta kFetchTimeout = base::Minutes(1);
++// Response max is set based on ATHM token size and max batch size of
++// 20, Ns=32 and Ne=33.
++constexpr size_t kResponseMaxBodySize = 2 * 1024;
+ 
+ network::ResourceRequest CreateFetchRequest(GURL issuer_request_url) {
+   network::ResourceRequest resource_request;
+@@ -79,8 +82,7 @@
+ PrivateVerificationTokensFetcher::Create(
+     GURL issuer_request_url,
+     std::unique_ptr<network::PendingSharedURLLoaderFactory>
+-        pending_url_loader_factory,
+-    size_t max_response_body_size) {
++        pending_url_loader_factory) {
+   if (!pending_url_loader_factory) {
+     return nullptr;
+   }
+@@ -89,19 +91,17 @@
+   }
+   return base::WrapUnique<PrivateVerificationTokensFetcher>(
+       new PrivateVerificationTokensFetcher(
+-          std::move(issuer_request_url), std::move(pending_url_loader_factory),
+-          max_response_body_size));
++          std::move(issuer_request_url),
++          std::move(pending_url_loader_factory)));
+ }
+ 
+ PrivateVerificationTokensFetcher::PrivateVerificationTokensFetcher(
+     GURL issuer_request_url,
+     std::unique_ptr<network::PendingSharedURLLoaderFactory>
+-        pending_url_loader_factory,
+-    size_t max_response_body_size)
++        pending_url_loader_factory)
+     : request_(CreateFetchRequest(std::move(issuer_request_url))),
+       url_loader_factory_(network::SharedURLLoaderFactory::Create(
+-          std::move(pending_url_loader_factory))),
+-      max_response_body_size_(max_response_body_size) {
++          std::move(pending_url_loader_factory))) {
+   CHECK(url_loader_factory_);
+   CHECK(request_.url.is_valid());
+ }
+@@ -136,7 +136,7 @@
+                      // error code and prevent it from going out of scope until
+                      // the download is complete.
+                      std::move(url_loader), std::move(callback)),
+-      max_response_body_size_);
++      kResponseMaxBodySize);
+ }
+ 
+ void PrivateVerificationTokensFetcher::OnGetTokensCompleted(
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher.h chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher.h	2026-09-15 00:17:16.000000000 +0200
+@@ -60,8 +60,7 @@
+   static std::unique_ptr<PrivateVerificationTokensFetcher> Create(
+       GURL issuer_request_url,
+       std::unique_ptr<network::PendingSharedURLLoaderFactory>
+-          pending_url_loader_factory,
+-      size_t max_response_body_size);
++          pending_url_loader_factory);
+   ~PrivateVerificationTokensFetcher();
+   void TryGetTokens(const std::string& request_body,
+                     TryGetTokensCallback callback);
+@@ -70,8 +69,7 @@
+   PrivateVerificationTokensFetcher(
+       GURL issuer_request_url,
+       std::unique_ptr<network::PendingSharedURLLoaderFactory>
+-          pending_url_loader_factory,
+-      size_t max_response_body_size);
++          pending_url_loader_factory);
+   void OnGetTokensCompleted(
+       std::unique_ptr<network::SimpleURLLoader> url_loader,
+       TryGetTokensCallback callback,
+@@ -79,7 +77,6 @@
+ 
+   const network::ResourceRequest request_;
+   scoped_refptr<network::SharedURLLoaderFactory> url_loader_factory_;
+-  size_t max_response_body_size_;
+   SEQUENCE_CHECKER(sequence_checker_);
+   base::WeakPtrFactory<PrivateVerificationTokensFetcher> weak_ptr_factory_{
+       this};
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher_unittest.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_fetcher_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_fetcher_unittest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -14,7 +14,6 @@
+ #include "base/test/task_environment.h"
+ #include "base/test/test_future.h"
+ #include "base/types/expected.h"
+-#include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
+ #include "net/base/net_errors.h"
+ #include "net/http/http_request_headers.h"
+ #include "net/traffic_annotation/network_traffic_annotation.h"
+@@ -37,6 +36,7 @@
+ constexpr char kExpectedContentTypeHeaderValue[] =
+     "application/private-token-request";
+ constexpr base::TimeDelta kFetchTimeout = base::Minutes(1);
++constexpr size_t kResponseMaxBodySize = 2 * 1024;
+ constexpr char kIssuerServerUrl[] = "http://main.example:8080/issuepvt";
+ 
+ class PrivateVerificationTokensFetcherTest : public testing::Test {
+@@ -45,18 +45,10 @@
+     pvt_server_issuer_request_url_ = GURL(kIssuerServerUrl);
+     fetcher_ = PrivateVerificationTokensFetcher::Create(
+         pvt_server_issuer_request_url_,
+-        test_url_loader_factory_.GetSafeWeakWrapper()->Clone(),
+-        MaxResponseBodySize());
++        test_url_loader_factory_.GetSafeWeakWrapper()->Clone());
+     ASSERT_TRUE(fetcher_);
+   }
+ 
+-  size_t MaxResponseBodySize() const {
+-    std::optional<PrivateVerificationTokensParameters> params =
+-        private_verification_tokens::GetParametersForVersion(1);
+-    CHECK(params.has_value());
+-    return params->max_response_body_size;
+-  }
+-
+  public:
+   void SetResponse(std::string response,
+                    std::string expected_request_body,
+@@ -123,7 +115,7 @@
+ 
+ TEST_F(PrivateVerificationTokensFetcherTest, LargeResponseWithinLimit) {
+   const std::string request_body = "token-request-bytes";
+-  const std::string response_body(MaxResponseBodySize(), 'a');
++  const std::string response_body(kResponseMaxBodySize, 'a');
+   SetResponse(response_body, /*expected_request_body = */ request_body);
+ 
+   base::test::TestFuture<base::expected<std::string, TryGetTokensResult>>
+@@ -137,7 +129,7 @@
+ 
+ TEST_F(PrivateVerificationTokensFetcherTest, LargeResponseOverLimit) {
+   const std::string request_body = "token-request-bytes";
+-  const std::string response_body(MaxResponseBodySize() + 1, 'a');
++  const std::string response_body(kResponseMaxBodySize + 1, 'a');
+   SetResponse(response_body, /*expected_request_body = */ request_body);
+ 
+   base::test::TestFuture<base::expected<std::string, TryGetTokensResult>>
+@@ -221,7 +213,7 @@
+ 
+ TEST(PrivateVerificationTokensFetcherCreateTest, NullURLLoaderFactory) {
+   EXPECT_THAT(PrivateVerificationTokensFetcher::Create(
+-                  GURL("http://example.com"), nullptr, 0),
++                  GURL("http://example.com"), nullptr),
+               testing::IsNull());
+ }
+ 
+@@ -230,7 +222,7 @@
+   network::TestURLLoaderFactory test_url_loader_factory;
+   EXPECT_THAT(
+       PrivateVerificationTokensFetcher::Create(
+-          GURL(), test_url_loader_factory.GetSafeWeakWrapper()->Clone(), 0),
++          GURL(), test_url_loader_factory.GetSafeWeakWrapper()->Clone()),
+       testing::IsNull());
+ }
+ 
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config.cc	2026-09-15 00:17:16.000000000 +0200
 @@ -23,7 +23,6 @@
  #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h"
  #include "components/private_verification_tokens/common/private_verification_tokens_parameters.h"
@@ -3316,9 +4764,9 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
    }
  
    std::optional<int> version = internal::GetValidVersion(dict);
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h
---- chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h	2026-08-25 22:20:53.000000000 +0200
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config_internal.h	2026-09-15 00:17:16.000000000 +0200
 @@ -38,10 +38,8 @@
  // - The redeemer list size is larger than params.max_number_of_redeemers.
  // - An item in the redeemer list is not a string.
@@ -3332,9 +4780,9 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
  std::optional<std::vector<url::Origin>> GetValidRedeemers(
      const base::DictValue& dict,
      std::string_view issuer_etld_plus_one,
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc
---- chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc	2026-08-25 22:20:53.000000000 +0200
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_issuer_config_unittest.cc	2026-09-15 00:17:16.000000000 +0200
 @@ -4,7 +4,6 @@
  
  #include "components/private_verification_tokens/common/private_verification_tokens_issuer_config.h"
@@ -4021,42 +5469,87 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
    EXPECT_EQ(custom_entry_cfg.public_key, expected_custom_pk);
  }
  
-diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_test_util.h chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_test_util.h
---- chromium-154.0.8037.0/components/private_verification_tokens/common/private_verification_tokens_test_util.h	2026-09-01 05:04:57.000000000 +0200
-+++ chromium-153.0.8010.12/components/private_verification_tokens/common/private_verification_tokens_test_util.h	1970-01-01 01:00:00.000000000 +0100
-@@ -1,30 +0,0 @@
--// Copyright 2026 The Chromium Authors
--// Use of this source code is governed by a BSD-style license that can be
--// found in the LICENSE file.
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -19,8 +19,6 @@
+         .num_buckets = 2,
+         .single_request_size = 36,
+         .blinded_request_size = 33,
+-        .max_response_body_size = 7 * 1024,
+-        .max_distinct_issuers_per_session = 2,
+     };
+   }
+   return std::nullopt;
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters.h chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters.h	2026-09-15 00:17:16.000000000 +0200
+@@ -27,21 +27,6 @@
+   size_t single_request_size = 0;
+   // Size of the blinded token request in bytes.
+   size_t blinded_request_size = 0;
 -
--#ifndef COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_PRIVATE_VERIFICATION_TOKENS_TEST_UTIL_H_
--#define COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_PRIVATE_VERIFICATION_TOKENS_TEST_UTIL_H_
--
--#include <string>
--
--#include "base/strings/string_number_conversions.h"
--#include "base/time/time.h"
--
--namespace private_verification_tokens::test {
--
--struct FutureExpiration {
--  base::Time time;
--  std::string string_rep;
--};
--
--inline FutureExpiration GetFutureExpiration(
--    base::TimeDelta delta = base::Days(30)) {
--  const base::TimeDelta future_seconds = base::Seconds(
--      (base::Time::Now() + delta - base::Time::UnixEpoch()).InSeconds());
--  return {base::Time::UnixEpoch() + future_seconds,
--          base::NumberToString(future_seconds.InSeconds())};
+-  // Response max is set based on ATHM token size and max batch size of
+-  // 20, Ns=32 and Ne=33.
+-  //
+-  // Token response is as follows.
+-  // struct TokenResponse {
+-  //    big_u: Point,                  // 33 bytes
+-  //    big_v: Point,                  // 33 bytes
+-  //    ts: Scalar,                    // 32 bytes
+-  //    issuance_proof: IssuanceProof, // 257 bytes
+-  //}
+-  // Total response is 355 bytes for a single token.
+-  // For batch size of 20, response size is 7100 < 7 * 1024
+-  size_t max_response_body_size = 0;
+-  size_t max_distinct_issuers_per_session = 0;
+ };
+ 
+ // Returns the parameters for a given version, or nullopt if the version is not
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters_unittest.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters_unittest.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_parameters_unittest.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_parameters_unittest.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -17,8 +17,6 @@
+   EXPECT_EQ(params->num_buckets, 2);
+   EXPECT_EQ(params->single_request_size, 36u);
+   EXPECT_EQ(params->blinded_request_size, 33u);
+-  EXPECT_EQ(params->max_response_body_size, /*7 * 1024 = */ 7168u);
+-  EXPECT_EQ(params->max_distinct_issuers_per_session, 2u);
+ }
+ 
+ TEST(PrivateVerificationTokensParametersTest, GetParametersForUnknownVersion) {
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_store.cc chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_store.cc
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_store.cc	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_store.cc	2026-09-15 00:17:16.000000000 +0200
+@@ -83,12 +83,6 @@
+   return tokens_;
+ }
+ 
+-void PrivateVerificationTokensStore::GetAllTokens(
+-    base::OnceCallback<void(std::vector<TokenWithId>)> callback) {
+-  database_.AsyncCall(&PrivateVerificationTokensDatabase::GetAllTokens)
+-      .Then(std::move(callback));
 -}
 -
--}  // namespace private_verification_tokens::test
+ void PrivateVerificationTokensStore::DeleteAllTokens() {
+   DeleteTokens(base::Time(), base::Time::Max(), std::nullopt,
+                base::DoNothing());
+diff -u --unidirectional-new-file chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_store.h chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_store.h
+--- chromium-155.0.8059.5/components/private_verification_tokens/common/private_verification_tokens_store.h	2026-09-16 02:15:15.000000000 +0200
++++ chromium-153.0.8010.47/components/private_verification_tokens/common/private_verification_tokens_store.h	2026-09-15 00:17:16.000000000 +0200
+@@ -42,9 +42,6 @@
+   size_t TokenCountForIssuer(const url::Origin& issuer) const;
+   bool is_initialized() const { return initialized_; }
+ 
+-  void GetAllTokens(
+-      base::OnceCallback<void(std::vector<TokenWithId>)> callback);
 -
--#endif  // COMPONENTS_PRIVATE_VERIFICATION_TOKENS_COMMON_PRIVATE_VERIFICATION_TOKENS_TEST_UTIL_H_
---- chromium-154.0.8037.0/components/component_updater/installer_policies/BUILD.gn	2026/09/10 22:40:31	1.1
-+++ chromium-154.0.8037.0/components/component_updater/installer_policies/BUILD.gn	2026/09/10 22:40:55
+   void DeleteAllTokens();
+   void DeleteTokens(base::Time delete_begin,
+                     base::Time delete_end,
+Only in chromium-155.0.8059.5/components/private_verification_tokens/common: private_verification_tokens_test_util.h
+--- chromium-155.0.8040.2/components/component_updater/installer_policies/BUILD.gn	2026/09/10 22:42:10	1.1
++++ chromium-155.0.8040.2/components/component_updater/installer_policies/BUILD.gn	2026/09/10 22:42:18
 @@ -107,7 +107,6 @@
      "//components/optimization_guide/core",
      "//components/optimization_guide/proto:optimization_guide_proto",
@@ -4065,9 +5558,9 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
      "//mojo/public/cpp/base:protobuf_support",
      "//services/network/public/cpp",
      "//testing/gmock",
---- chromium-154.0.8037.0/chrome/browser/chrome_content_browser_client.cc	2026/09/11 13:07:42	1.1
-+++ chromium-154.0.8037.0/chrome/browser/chrome_content_browser_client.cc	2026/09/11 13:08:43
-@@ -6009,22 +6009,6 @@
+--- chromium-155.0.8059.5/chrome/browser/chrome_content_browser_client.cc	2026/09/17 06:50:09	1.1
++++ chromium-155.0.8059.5/chrome/browser/chrome_content_browser_client.cc	2026/09/17 06:50:37
+@@ -6089,22 +6089,6 @@
      result.push_back(std::move(signin_throttle));
    }
  
@@ -4080,7 +5573,7 @@ diff -urN chromium-154.0.8037.0/components/private_verification_tokens/common/pr
 -                                    ->GetURLLoaderFactoryForBrowserProcess();
 -      if (auto pvt_throttle =
 -              PrivateVerificationTokensURLLoaderThrottle::Create(
--                  pvt_service, profile->IsOffTheRecord(),
+-                  pvt_service, profile->GetWeakPtr(),
 -                  std::move(url_loader_factory))) {
 -        result.push_back(std::move(pvt_throttle));
 -      }
