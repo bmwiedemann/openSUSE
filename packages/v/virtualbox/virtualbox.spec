@@ -594,11 +594,11 @@ install -m 644 components/*			%{buildroot}%{_vbox_instdir}/components/
 install -m 644 nls/*				%{buildroot}%{_datadir}/virtualbox/nls/
 install -m 644 UnattendedTemplates/*		%{buildroot}%{_datadir}/virtualbox/UnattendedTemplates/
 
-# Workaround kvm.ko usurping VMX.
-# (Linux kernel commit b4886fab6fb620b96ad7eeefb9801c42dfa91741 is the culprit.
-# See also https://lore.kernel.org/kvm/ZwQjUSOle6sWARsr@google.com/T/ )
-# This workaround only functions up to and including vbox-7.2.8.
-# echo options kvm enable_virt_at_load=0 >"%buildroot/%_modprobedir/50-virtualbox.conf"
+%if 0%{?suse_version} < 1699
+# Between Linux >=6.11 and <7.0 (or thereabouts), kvm.ko usurps VMX,
+# and blocks the vbox hypervisor from starting.
+echo options kvm enable_virt_at_load=0 >"%buildroot/%_modprobedir/50-virtualbox.conf"
+%endif
 
 # install kmp src
 mkdir -p %{buildroot}%{_usrsrc}/kernel-modules/virtualbox
@@ -831,7 +831,6 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VBoxVMMPreload.so
 #todo:double check - if this file should be assigned to the host side
 %{_vbox_instdir}/VBoxDxVk.so
-%{_vbox_instdir}/UICommon.so
 %{_vbox_instdir}/VBoxHostChannel.so
 %{_vbox_instdir}/VBoxTraceLogDecoders.so
 %dir %{_vbox_instdir}/components
@@ -886,6 +885,7 @@ export DISABLE_RESTART_ON_UPDATE=yes
 %{_vbox_instdir}/VirtualBoxVM.so
 %{_vbox_instdir}/VBoxDbg.so
 %{_bindir}/VBoxSDL
+%{_vbox_instdir}/UICommon.so
 %{_vbox_instdir}/VBoxSDL.so
 %{_vbox_instdir}/VBoxKeyboard.so
 %{_vbox_instdir}/VBoxSharedClipboard.so

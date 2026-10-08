@@ -2966,4 +2966,13 @@ we must have vb7.1.10.</comment>
     <comment>- Update to release 7.2.20</comment>
     <requestid>1380671</requestid>
   </revision>
+  <revision rev="318" vrev="2">
+    <srcmd5>05bd93f9778d64d6c14eacb78e6818e8</srcmd5>
+    <version>7.2.20</version>
+    <time>1791453313</time>
+    <user>anag_factory</user>
+    <comment>- Reenable kvm.enable_virt_at_load=0 workaround for Leap 16
+  (kernel too old to support cooperative KVM)</comment>
+    <requestid>1382838</requestid>
+  </revision>
 </revisionlist>

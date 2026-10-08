@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Tue Oct  6 14:00:29 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Reenable kvm.enable_virt_at_load=0 workaround for Leap 16
+  (kernel too old to support cooperative KVM)
+
+-------------------------------------------------------------------
+Mon Oct  5 19:08:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Move UICommon.so to virtualbox-qt so the virtualbox base RPM
+  is qt-free.
+
+-------------------------------------------------------------------
 Fri Sep 25 12:05:22 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Add Requires(post) as needed
