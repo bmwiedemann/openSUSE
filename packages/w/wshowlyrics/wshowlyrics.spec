@@ -17,7 +17,7 @@
 
 
 Name:           wshowlyrics
-Version:        0.10.0
+Version:        0.11.2
 Release:        0
 Summary:        A lightweight lyrics overlay for Wayland compositors
 License:        GPL-3.0-or-later
@@ -49,14 +49,13 @@ synchronized lyrics for currently playing music.
 %install
 %meson_install
 
-#fix wrong binary name
-sed -i 's|Exec=wshowlyrics|Exec=lyrics|g' \
-    %{buildroot}%{_datadir}/applications/wshowlyrics.desktop
+#fix wrong binary name (same in github action)
+mv %{buildroot}%{_bindir}/lyrics %{buildroot}%{_bindir}/wshowlyrics
 
 %files
-%license LICENSE
+%license LICENSE THIRD_PARTY_LICENSES.md
 %doc README*
-%{_bindir}/lyrics
+%{_bindir}/wshowlyrics
 %{_bindir}/%{name}-offset
 %{_userunitdir}/%{name}.service
 %{_datadir}/applications/wshowlyrics.desktop
