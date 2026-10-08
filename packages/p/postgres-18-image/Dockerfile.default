@@ -32,7 +32,8 @@ RUN set -euo pipefail; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends coreutils-single findutils grep gzip libpq5 postgresql18-server sed tar util-linux zstd
 # changing user id and group id created by package installation to stable values
 RUN set -euo pipefail; \
-    chroot /target chown -R --from=postgres:postgres 999:999 /; \
+    chroot /target chown -R --from=postgres 999 /; \
+    chroot /target chown -R --from=:postgres :999 /; \
     groupmod -R /target -g 999 postgres; \
     usermod -R /target -u 999 postgres
 
