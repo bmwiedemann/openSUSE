@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-langgraph-sdk
-Version:        0.4.5
+Version:        0.4.6
 Release:        0
 Summary:        SDK for interacting with the LangGraph API
 License:        MIT
