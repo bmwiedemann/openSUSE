@@ -16,6 +16,7 @@
 #
 
 
+# When bumping sover, do so in baselibs.conf too!
 %define         sover 1
 %define         sname oapv
 Name:           openapv
@@ -25,6 +26,7 @@ Summary:        Open Advanced Professional Video Codec
 License:        BSD-3-Clause
 URL:            https://github.com/AcademySoftwareFoundation/openapv
 Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 Patch0:         remove-opensuse-release-requirement.patch
 BuildRequires:  cmake
 

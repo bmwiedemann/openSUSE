@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:31:47 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add baselibs.conf, 32bit support.
+
+-------------------------------------------------------------------
 Fri Oct  2 16:00:08 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Delete unnecessary ExcludeArch line.

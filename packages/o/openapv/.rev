@@ -167,4 +167,12 @@
     <comment>1</comment>
     <requestid>1382223</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>535581e20ce764b33893b1611c76e849</srcmd5>
+    <version>1.1.2.0</version>
+    <time>1791453333</time>
+    <user>anag_factory</user>
+    <comment>- Add baselibs.conf, 32bit support.</comment>
+    <requestid>1383005</requestid>
+  </revision>
 </revisionlist>
