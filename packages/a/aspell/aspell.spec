@@ -20,17 +20,21 @@ Name:           aspell
 Version:        0.60.8.2
 Release:        0
 Summary:        A Spell Checker
-License:        GFDL-1.1-or-later AND LGPL-2.1-only AND HPND AND SUSE-BSD-Mark-Modifications
+License:        BSD-Mark-Modifications AND GFDL-1.1-or-later AND LGPL-2.1-only AND HPND
 Group:          Productivity/Text/Spell
 URL:            http://aspell.net/
 Source0:        https://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz
 Source1:        https://ftp.gnu.org/gnu/aspell/%{name}-%{version}.tar.gz.sig
 Source2:        %{name}.keyring
 Source100:      baselibs.conf
-# PATCH-FIX-OPENSUSE aspell-strict-aliasing.patch pnemec@suse.cz -- Fix gcc strict aliasing warnings
-Patch0:         aspell-strict-aliasing.patch
 # PATCH-FIX-OPENSUSE aspell-quotes.patch lmichnovic@suse.cz -- Fix command execution in script "run-with-aspell"
 Patch1:         aspell-quotes.patch
+# CVE-2026-75818: heap-based buffer overflow in the decompressor in `prog/prezip.c` can lead to memory corruption and process crash [bsc#1284337]
+Patch2:         aspell-CVE-2026-75818.patch
+# CVE-2026-75820: integer truncation in `WritableDict::add() ` of ` modules/speller/default/writable.cpp` can lead to heap corruption [bsc#1284339]
+Patch3:         aspell-CVE-2026-75820.patch
+# CVE-2026-75819: out-of-bounds read in `ReadOnlyDict::load()` of `readonly_ws.cpp` can lead to heap memory disclosure or application crash [bsc#1284338]
+Patch4:         aspell-CVE-2026-75819.patch
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
 BuildRequires:  libtool
@@ -121,7 +125,7 @@ This package contains the pspell compatibility library.
 
 %build
 autoreconf -fiv
-export CXXFLAGS="%{optflags} `ncursesw6-config --cflags`"
+export CXXFLAGS="%{optflags} -Werror=strict-aliasing `ncursesw6-config --cflags`"
 #this is an ugly kludge , don't look :-)
 export LDFLAGS="`ncursesw6-config --libs`"
 %configure \

@@ -374,4 +374,14 @@
     <comment>version update to 0.60.8.2</comment>
     <requestid>1356354</requestid>
   </revision>
+  <revision rev="45" vrev="2">
+    <srcmd5>8213dc110165f62bc8a754b841b1f5c5</srcmd5>
+    <version>0.60.8.2</version>
+    <time>1791465216</time>
+    <user>anag_factory</user>
+    <comment>- drop aspell-strict-aliasing.patch (the iterator must remain
+  a reference, otherwise ++i does not advance it and that
+  causes an infinte loop) (forwarded request 1383091 from dirkmueller)</comment>
+    <requestid>1383235</requestid>
+  </revision>
 </revisionlist>

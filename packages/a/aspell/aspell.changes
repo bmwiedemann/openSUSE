@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  7 16:31:24 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- drop aspell-strict-aliasing.patch (the iterator must remain
+  a reference, otherwise ++i does not advance it and that
+  causes an infinte loop)
+
+-------------------------------------------------------------------
+Wed Oct  7 06:29:53 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-75818: heap-based buffer overflow in the decompressor in `prog/prezip.c` can lead to memory corruption and process crash [bsc#1284337]
+  * aspell-CVE-2026-75818.patch
+  CVE-2026-75819: out-of-bounds read in `ReadOnlyDict::load()` of `readonly_ws.cpp` can lead to heap memory disclosure or application crash [bsc#1284338]
+  * aspell-CVE-2026-75819.patch
+  CVE-2026-75820: integer truncation in `WritableDict::add() ` of ` modules/speller/default/writable.cpp` can lead to heap corruption [bsc#1284339]
+  * aspell-CVE-2026-75820.patch
+- SUSE-BSD-Mark-Modifications -> BSD-Mark-Modifications
+
+-------------------------------------------------------------------
 Mon Jun  1 12:24:13 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - version update to 0.60.8.2:
