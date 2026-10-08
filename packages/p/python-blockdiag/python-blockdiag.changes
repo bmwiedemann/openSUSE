@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 01:01:31 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Modify patch no-more-pkg-resources.patch to call correct method on error.
+
+-------------------------------------------------------------------
 Fri Sep 25 02:03:54 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch no-more-pkg-resources.patch:

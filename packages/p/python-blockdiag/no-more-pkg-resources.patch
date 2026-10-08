@@ -54,7 +54,7 @@ Index: blockdiag-3.0.0/src/blockdiag/imagedraw/__init__.py
  
  from blockdiag.utils.logging import warning
  
-@@ -21,7 +21,7 @@ drawers = {}
+@@ -21,14 +21,14 @@ drawers = {}
  
  
  def init_imagedrawers(debug=False):
@@ -63,3 +63,11 @@ Index: blockdiag-3.0.0/src/blockdiag/imagedraw/__init__.py
          try:
              module = drawer.load()
              if hasattr(module, 'setup'):
+                 module.setup(module)
+         except Exception as exc:
+             if debug:
+-                warning('Failed to load %s: %r' % (drawer.module_name, exc))
++                warning('Failed to load %s: %r' % (drawer.module, exc))
+ 
+ 
+ def install_imagedrawer(ext, drawer):

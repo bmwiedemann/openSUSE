@@ -118,4 +118,12 @@
   * Do not use pkg_resources to find entry points.</comment>
     <requestid>1380284</requestid>
   </revision>
+  <revision rev="15" vrev="8">
+    <srcmd5>2d19ce99738663b0d8a5b2fe79625cd1</srcmd5>
+    <version>3.0.0</version>
+    <time>1791453436</time>
+    <user>anag_factory</user>
+    <comment>- Modify patch no-more-pkg-resources.patch to call correct method on error.</comment>
+    <requestid>1383135</requestid>
+  </revision>
 </revisionlist>
