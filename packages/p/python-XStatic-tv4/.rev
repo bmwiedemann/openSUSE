@@ -15,4 +15,13 @@
     <comment></comment>
     <requestid>1277142</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>4bb19f00e76b064cfc40a8f6c4bcca59</srcmd5>
+    <version>1.2.7.1</version>
+    <time>1791458851</time>
+    <user>anag_factory</user>
+    <comment>- Update to 1.2.7.1:
+  * Do not use pkg_resources namespace packaging.</comment>
+    <requestid>1383150</requestid>
+  </revision>
 </revisionlist>
