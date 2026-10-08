@@ -7,4 +7,16 @@
     <comment>I want to maintain dsvpn in Factory</comment>
     <requestid>795573</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>4a5aad1e2e3aeb49762a155c8f37e173</srcmd5>
+    <version>0.1.5</version>
+    <time>1791453393</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.1.5:
+  * Replaced deprecated -Ofast with standard optimization flags
+  * Improved documentation
+  * No major changes, since `dsvpn` remains secure and rock
+    solid.</comment>
+    <requestid>1383092</requestid>
+  </revision>
 </revisionlist>

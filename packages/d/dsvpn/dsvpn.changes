@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct  7 16:34:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.1.5:
+  * Replaced deprecated -Ofast with standard optimization flags
+  * Improved documentation
+  * No major changes, since `dsvpn` remains secure and rock
+    solid.
+
+-------------------------------------------------------------------
 Fri Apr 17 16:07:31 UTC 2020 - Martin Hauke <mardnh@gmx.de>
 
 - Initial package, version 0.1.4
