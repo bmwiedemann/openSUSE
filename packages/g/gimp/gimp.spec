@@ -122,6 +122,10 @@ Patch11:        gimp-CVE-2026-96544.patch
 Patch12:        gimp-CVE-2026-96544-2.patch
 # PATCH-FIX-UPSTREAM gimp-CVE-2026-96545.patch bsc#1282602 mgorse@suse.com -- Guard loading 4BPP TIM images.
 Patch13:        gimp-CVE-2026-96545.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-96546.patch bsc#1282601 mgorse@suse.com -- plug-ins/file-dds: Fix buffer overrun.
+Patch14:        gimp-CVE-2026-96546.patch
+# PATCH-FIX-UPSTREAM gimp-CVE-2026-97185.patch bsc#1282596 mgorse@suse.com -- fix out-of-bound write in gimpressionist preset.
+Patch15:        gimp-CVE-2026-97185.patch
 %if %{with debug_in_build_gimp}
 BuildRequires:  gdb
 %endif

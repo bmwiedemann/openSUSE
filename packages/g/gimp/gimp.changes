@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  1 15:19:09 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- CVE-2026-96546: one-byte out-of-bounds heap read in the
+  uncompressed DDS loader (bsc#1282601)
+  * gimp-CVE-2026-96546.patch
+- CVE-2026-97185: out-of-bounds write in GIMPressionist plugin via
+  crafted preset file (bsc#1282596)
+  * gimp-CVE-2026-97185.patch
+
+-------------------------------------------------------------------
 Thu Sep 24 18:02:06 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - CVE-2026-96543: out-of-bounds heap write when loading non-square
