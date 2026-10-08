@@ -176,4 +176,13 @@
   * gcc16-aarch64.patch</comment>
     <requestid>1368036</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>ac0aadf2dbba87c5e805dd723dd6c5b7</srcmd5>
+    <version>1.4.0</version>
+    <time>1791465189</time>
+    <user>anag_factory</user>
+    <comment>- Disable LTO for aarch64 as a Workaround for
+  &quot;error: this operation requires the SVE ISA extension&quot;</comment>
+    <requestid>1383035</requestid>
+  </revision>
 </revisionlist>

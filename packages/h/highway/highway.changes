@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 09:39:57 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Disable LTO for aarch64 as a Workaround for
+  "error: this operation requires the SVE ISA extension"
+
+-------------------------------------------------------------------
 Mon Jul 27 12:33:23 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Add upstream patch to fix build on aarch64 with gcc16:

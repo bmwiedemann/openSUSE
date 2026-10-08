@@ -15,6 +15,10 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+%ifarch aarch64
+# Workaround for 'error: this operation requires the SVE ISA extension'
+%define _lto_cflags %{nil}
+%endif
 
 %define lname libhwy1
 
