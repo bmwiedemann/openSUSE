@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:59:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
+  pass enable-liboapv to configure.
+- Add 0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
+
+-------------------------------------------------------------------
 Sat Oct  3 08:30:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add aptx/aptx_hd to enable_decoders/encoders.
@@ -12,8 +19,6 @@ Fri Oct  2 15:02:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Sep 29 21:26:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
-  pass enable-liboapv to configure.
 - Correct version in "mini" part of spec.
 
 -------------------------------------------------------------------

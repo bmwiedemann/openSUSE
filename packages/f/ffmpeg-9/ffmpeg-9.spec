@@ -18,7 +18,8 @@
 
 %define flavor @BUILD_FLAVOR@%nil
 #
-# preamble is present twice, watch out
+# preamble is present twice, watch out.
+# buildtest with BUILD_ORIG=1 too.
 #
 %if "%flavor" != "mini"
 
@@ -121,6 +122,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
 BuildRequires:  c++_compiler
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
@@ -819,6 +821,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 

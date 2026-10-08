@@ -1,0 +1,41 @@
+From c54710db21c1827dbc3e47658a562525af0fe528 Mon Sep 17 00:00:00 2001
+From: Werner Robitza <werner.robitza@gmail.com>
+Date: Thu, 24 Sep 2026 15:02:42 +0200
+Subject: [PATCH] avcodec/liboapvenc: fix build with openapv >= 1.1
+
+openapv 1.1 changed oapvm_create() to take a descriptor argument.
+This was first raised here:
+https://github.com/homebrew-ffmpeg/homebrew-ffmpeg/issues/235
+---
+ libavcodec/liboapvenc.c | 7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/libavcodec/liboapvenc.c b/libavcodec/liboapvenc.c
+index 22a8ac4890..32a8cd5f1c 100644
+--- a/libavcodec/liboapvenc.c
++++ b/libavcodec/liboapvenc.c
+@@ -477,6 +477,9 @@ static av_cold int liboapve_init(AVCodecContext *avctx)
+ {
+     ApvEncContext *apv = avctx->priv_data;
+     oapve_cdesc_t *cdsc = &apv->cdsc;
++#if OAPV_VER_APISET >= 1
++    oapvm_cdesc_t mcdsc = { 0 };
++#endif
+     unsigned char *bs_buf;
+     int ret;
+ 
+@@ -509,7 +512,11 @@ static av_cold int liboapve_init(AVCodecContext *avctx)
+     }
+ 
+     /* create metadata handler */
++#if OAPV_VER_APISET >= 1
++    apv->mid = oapvm_create(&mcdsc, &ret);
++#else
+     apv->mid = oapvm_create(&ret);
++#endif
+     if (apv->mid == NULL || OAPV_FAILED(ret)) {
+         av_log(avctx, AV_LOG_ERROR, "cannot create OAPV metadata handler\n");
+         return AVERROR_EXTERNAL;
+-- 
+2.55.0
+

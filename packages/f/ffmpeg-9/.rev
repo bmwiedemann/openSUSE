@@ -62,4 +62,12 @@
 - Update to release 9.0.2</comment>
     <requestid>1382271</requestid>
   </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>03c297653c35f4224f12b57fa1c9eb80</srcmd5>
+    <version>9.0.2</version>
+    <time>1791453333</time>
+    <user>anag_factory</user>
+    <comment>- Enable apv encoder</comment>
+    <requestid>1383010</requestid>
+  </revision>
 </revisionlist>
