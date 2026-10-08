@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 04:43:07 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.0.7.1:
+  * Do not use pkg_resources namespace packaging.
+- Convert to noarch, we don't build any binaries.
+
+-------------------------------------------------------------------
 Tue May 13 10:35:43 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

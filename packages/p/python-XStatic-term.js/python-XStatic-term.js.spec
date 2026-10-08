@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-term.js
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,18 +17,18 @@
 
 
 Name:           python-XStatic-term.js
-Version:        0.0.7.0
+Version:        0.0.7.1
 Release:        0
 Summary:        AngularJS library "term.js" repackaged for the XStatic standard
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/chjj/term.js
-Source:         https://files.pythonhosted.org/packages/source/X/XStatic-term.js/XStatic-term.js-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/X/XStatic-term.js/xstatic_term_js-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+BuildArch:      noarch
 %python_subpackages
 
 %description
@@ -41,7 +41,7 @@ There are otherwise no changes.
 You can find more info about the xstatic packaging way in the package `XStatic`.
 
 %prep
-%setup -q -n XStatic-term.js-%{version}
+%setup -q -n xstatic_term_js-%{version}
 
 %build
 %pyproject_wheel
@@ -55,7 +55,6 @@ You can find more info about the xstatic packaging way in the package `XStatic`.
 %dir %{python_sitelib}/xstatic
 %dir %{python_sitelib}/xstatic/pkg
 %{python_sitelib}/xstatic/pkg/termjs
-%{python_sitelib}/[Xx][Ss]tatic[-_]term[._]js-%{version}*-info
-%{python_sitelib}/[Xx][Ss]tatic[-_]term[._]js-%{version}*nspkg.pth
+%{python_sitelib}/[Xx][Ss]tatic[-_]term[._]js-%{version}.dist-info
 
 %changelog
