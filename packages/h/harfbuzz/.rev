@@ -1571,4 +1571,28 @@ New stable rel</comment>
 - Update version dependencies according to meson.build.</comment>
     <requestid>1381892</requestid>
   </revision>
+  <revision rev="144" vrev="1">
+    <srcmd5>f4de6da92c4bf22cef2e416dcf812e84</srcmd5>
+    <version>14.6.0</version>
+    <time>1791453304</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 14.6.0:
+  * Fix shaping failures caused by out-of-range glyph IDs, a regression from
+  * Update experimental beyond-64k support to the final ISO Open Font Format
+    5th edition. This support remains disabled by default.
+  * Add support for the `DMAP` table.
+  * Support `FeatureVariations` 1.1 lookup variations, including subsetting
+    and instancing.
+  * Update `VARC` to the revised variation-store format. The new format is
+    incompatible with the previous one.
+  * Various `VARC` fixes.
+  * Fix background color and stride handling in the experimental raster
+    library.
+  * Improve the experimental Rust shaper (HarfRust) and font functions
+    (`fontations`), and update HarfRust to 0.14.
+  * Various subsetting fixes and improvements.
+  * Various fixes for malformed fonts.
+  * Various build and CI fixes.</comment>
+    <requestid>1382702</requestid>
+  </revision>
 </revisionlist>
