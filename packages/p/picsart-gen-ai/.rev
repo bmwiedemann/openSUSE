@@ -243,4 +243,12 @@ unchanged; re-vendoring moves ansi-regex 6.3.0 -&gt; 6.4.0.
 </comment>
     <requestid>1382265</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4939de544e4aec5b7d28419884a2a80e</srcmd5>
+    <version>2.80.1</version>
+    <time>1791458862</time>
+    <user>anag_factory</user>
+    <comment>Update picsart-gen-ai to 2.80.1, a real content update adding login --device for headless sign-in. Vendored deps re-derived with unchanged licences; local build green with --version/--help passing.</comment>
+    <requestid>1383225</requestid>
+  </revision>
 </revisionlist>

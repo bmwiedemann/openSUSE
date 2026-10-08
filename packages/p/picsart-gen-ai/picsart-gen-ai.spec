@@ -29,7 +29,7 @@
 %define npm_name gen-ai
 %define npm_scope @picsart
 Name:           picsart-gen-ai
-Version:        2.79.1
+Version:        2.80.1
 Release:        0
 Summary:        Picsart AI CLI for generating images, video and audio
 # Legal-Review-Notice: the CLI itself is MIT. The published cli.js is a bundle

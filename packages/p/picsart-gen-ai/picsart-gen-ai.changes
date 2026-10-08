@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:36:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.80.1 (real content change, not a republish):
+  * login --device: sign in via the device-code flow, for SSH,
+    containers and headless hosts without a local browser
+  * Otherwise the bundle diff is internal churn (minified
+    identifier renames); no other user-visible surface found
+- Re-vendor: same 71-dependency set, @inquirer/* patch and
+  minor floats only; licences re-derived over the new tree,
+  unchanged (MIT, ISC, Apache-2.0, BlueOak-1.0.0, MIT OR
+  CC0-1.0), no copyleft
+- The bundle still requires Node.js 22, so the nodejs >= 22
+  floor stands
+
+-------------------------------------------------------------------
 Sat Oct  3 19:17:20 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.79.1:
