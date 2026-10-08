@@ -42,7 +42,7 @@ Index: nss/lib/freebl/blapi.h
 ===================================================================
 --- nss.orig/lib/freebl/blapi.h
 +++ nss/lib/freebl/blapi.h
-@@ -1860,17 +1860,17 @@ extern void BL_Unload(void);
+@@ -1855,17 +1855,17 @@ extern void BL_Unload(void);
  /**************************************************************************
   *  Verify a given Shared library signature                               *
   **************************************************************************/
@@ -63,7 +63,7 @@ Index: nss/lib/freebl/blapi.h
  
  /*********************************************************************/
  extern const SECHashObject *HASH_GetRawHashObject(HASH_HashType hashType);
-@@ -1969,6 +1969,9 @@ SECStatus MLDSA_VerifyFinal(MLDSAContext
+@@ -1970,6 +1970,9 @@ void MLDSA_DestroyContext(MLDSAContext *
   */
  SECStatus EC_DecompressPublicKey(const SECItem *publicCompressed, const ECParams *params, SECItem *publicUncompressed);
  
@@ -910,7 +910,7 @@ Index: nss/lib/freebl/loader.h
  
      /* Version 3.013 came to here */
  
-@@ -945,6 +945,9 @@ struct FREEBLVectorStr {
+@@ -948,6 +948,9 @@ struct FREEBLVectorStr {
  
      /* Add new function pointers at the end of this struct and bump
       * FREEBL_VERSION at the beginning of this file. */
@@ -924,7 +924,7 @@ Index: nss/lib/freebl/manifest.mn
 ===================================================================
 --- nss.orig/lib/freebl/manifest.mn
 +++ nss/lib/freebl/manifest.mn
-@@ -102,6 +102,7 @@ PRIVATE_EXPORTS = \
+@@ -98,6 +98,7 @@ PRIVATE_EXPORTS = \
  	ecl.h \
  	ecl-curve.h \
  	eclt.h \
@@ -932,7 +932,7 @@ Index: nss/lib/freebl/manifest.mn
  	$(NULL)
  
  MPI_HDRS = mpi-config.h mpi.h mpi-priv.h mplogic.h mpprime.h logtab.h mp_gf2m.h
-@@ -195,6 +196,7 @@ ALL_HDRS =  \
+@@ -189,6 +190,7 @@ ALL_HDRS =  \
  	shsign.h \
  	vis_proto.h \
  	seed.h \
@@ -1530,10 +1530,11 @@ Index: nss/lib/freebl/ldvector.c
 ===================================================================
 --- nss.orig/lib/freebl/ldvector.c
 +++ nss/lib/freebl/ldvector.c
-@@ -462,6 +462,8 @@ static const struct FREEBLVectorStr vect
-     EC_DecompressPublicKey,
-     /* End of version 3.032 */
+@@ -464,6 +464,9 @@ static const struct FREEBLVectorStr vect
  
+     MLDSA_DestroyContext,
+     /* End of version 3.033 */
++
 +    /* SUSE patch: Goes last */
 +    BL_FIPSRepeatIntegrityCheck
  };

@@ -3794,4 +3794,12 @@
   * bmo#1983320 - ml-dsa tls tests</comment>
     <requestid>1379125</requestid>
   </revision>
+  <revision rev="247" vrev="1">
+    <srcmd5>438f47a9e16bebdfe9b0dd9ca809f93e</srcmd5>
+    <version>3.129</version>
+    <time>1791465176</time>
+    <user>anag_factory</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1382991</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Wed Sep 30 05:49:36 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- update to NSS 3.129
+  * bmo#2068788 - emit static library names during static build.
+  * bmo#2067434 - avoid building libcrux twice in makefile builds.
+  * bmo#2068010 - fix non-linux arm64 makefile builds.
+  * bmo#2017322 - set CKA_NSS_SERVER_DISTRUST_AFTER for CN=Izenpe.com.
+  * bmo#2057185 - Document ./mach try and its Mercurial-only caveat in
+                  CLAUDE.md.
+  * bmo#2056793 - Add tests for concurrent channel info queries during
+                  session replacement.
+  * bmo#2056793 - take the session cache lock when reading ss->sec.ci.sid.
+  * bmo#2066046 - Fix a race in STAN_GetNSSCertificate.
+  * bmo#2066591 - Remove write-only blLib and libraryName statics from
+                  freebl's lowhash_vector.
+  * bmo#2025246 - fix unknown key error type in ssl_SetAuthKeyBits.
+  * bmo#2065879 - re-vendor HACL* and simplify run_hacl.sh.
+  * bmo#2065879 - stop clang-formatting the vendored HACL* code.
+  * bmo#2068191 - add --dry-run to mach try to print job list.
+  * bmo#2029288 - avoid integer overflow in PK11_BlockData.
+  * bmo#2066960 - fix UB in ecperf.c.
+  * bmo#2067239 - Old coverity issues.
+  * bmo#2067237 - MLKEM mechinfo needs keys sizes.
+  * bmo#2066900 - pin NSPR 4.40 in CI.
+  * bmo#2066266 - ML-KEM-1024 incorrectly allows an explicit encapsulation seed.
+  * bmo#2066265 - Support for ML-KEM-512 in freebl and softoken.
+  * bmo#2060316 - remove support for pre-standard Kyber.
+  * bmo#2065423 - Build NSPR out of tree, into the dist directory.
+  * bmo#2065423 - Write a machine-readable summary.json for each test run.
+  * bmo#2065423 - Fail test runs on UBSan errors and on core dumps in
+                  debug builds.
+  * bmo#2065423 - Link tests_results/latest at the newest test run.
+  * bmo#2065423 - Resolve ssl_gtest_db.sh against QADIR.
+  * bmo#2065423 - Generate nss.pc and nss-config into the dist directory.
+  * bmo#2065423 - Add a --dist option to build.sh.
+  * bmo#2065219 - Update Cryptofuzz version.
+  * bmo#2056790 - Use PK11 digest contexts for explicit hashing in cryptohi.
+- rebased add-relro-linker-option.patch and
+  nss-fips-constructor-self-tests.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 20:37:31 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
 - update to NSS 3.128
