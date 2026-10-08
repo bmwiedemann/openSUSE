@@ -596,4 +596,12 @@
     deadlocks</comment>
     <requestid>1360254</requestid>
   </revision>
+  <revision rev="60" vrev="2">
+    <srcmd5>dc80b05532a4309cbe28b25403818a8a</srcmd5>
+    <version>1.22.1</version>
+    <time>1791453303</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1382689</requestid>
+  </revision>
 </revisionlist>

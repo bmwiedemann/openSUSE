@@ -60,12 +60,12 @@ BuildRequires:  gstreamer-plugins-good
 BuildRequires:  gstreamer-utils
 BuildRequires:  systemd-rpm-macros
 BuildRequires:  xmlto
-BuildRequires:  pkgconfig(flatpak)
-BuildRequires:  pkgconfig(fuse3)
+BuildRequires:  pkgconfig(flatpak) >= 1.5.0
+BuildRequires:  pkgconfig(fuse3) >= 3.10.0
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0)
 BuildRequires:  pkgconfig(gio-2.0)
 BuildRequires:  pkgconfig(gio-unix-2.0)
-BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(glib-2.0) >= 2.76
 BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
 BuildRequires:  pkgconfig(libgeoclue-2.0) >= 2.5.2
