@@ -201,4 +201,16 @@
 - Update Requires from pyproject.toml (forwarded request 1361861 from glaubitz)</comment>
     <requestid>1361864</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>ee6f5537d40e8304a32e9567f66233ca</srcmd5>
+    <version>1.10.0~b1</version>
+    <time>1791453343</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 1.10.0b1
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Override upstream version with 1.10.0~b1 (forwarded request 1382975 from glaubitz)</comment>
+    <requestid>1383099</requestid>
+  </revision>
 </revisionlist>
