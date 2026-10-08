@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Sat Oct  3 11:24:26 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 1.5:
+  * Performs operations on messages using IMAP UIDs rather than
+    just the sequence IDs.  This should be more robust if
+    mailboxes are modified during the process, or if the
+    connection is restarted.
+  * Periodically stores an in-memory checkpoint of the current
+    position, so that if the server connection is lost we can
+    reconnect and carry on more efficiently.
+  * No real functional changes, but the minimum Python version is
+    now 3.10, and the code has been updated to adopt some newer
+    Python conventions.
+  * Attempt fix for issue #57: 'Too many items to unpack' from
+    some servers which return extraneous lines in the response.
+
+-------------------------------------------------------------------
 Tue Nov 19 09:11:14 UTC 2024 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - update to 1.2:

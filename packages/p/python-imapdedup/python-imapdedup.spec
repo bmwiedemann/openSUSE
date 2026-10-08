@@ -1,7 +1,7 @@
 #
 # spec file for package python-imapdedup
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -15,25 +15,26 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
+
 %if 0%{?suse_version} >= 1699
 %define pythons python3
 %else
 %{?sle15_python_module_pythons}
 %endif
-Name:            python-imapdedup
-Version:         1.2
-Release:         0
-Summary:         IMAP de-duplication tool
-License:         GPL-2.0-only
-URL:             https://github.com/quentinsf/IMAPdedup
-Source:          https://files.pythonhosted.org/packages/source/i/imapdedup/imapdedup-%{version}.tar.gz
-BuildRequires:   python-rpm-macros
-BuildRequires:   %{python_module hatchling}
-BuildRequires:   %{python_module pip}
-BuildRequires:   fdupes
-Requires(post):  update-alternatives
+Name:           python-imapdedup
+Version:        1.5
+Release:        0
+Summary:        IMAP de-duplication tool
+License:        GPL-2.0-only
+URL:            https://github.com/quentinsf/IMAPdedup
+Source:         https://files.pythonhosted.org/packages/source/i/imapdedup/imapdedup-%{version}.tar.gz
+BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module pip}
+BuildRequires:  fdupes
+BuildRequires:  python-rpm-macros
+Requires(post): update-alternatives
 Requires(postun): update-alternatives
-BuildArch:       noarch
+BuildArch:      noarch
 %python_subpackages
 
 %description
