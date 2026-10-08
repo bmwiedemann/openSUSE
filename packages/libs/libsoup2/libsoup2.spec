@@ -110,8 +110,24 @@ Patch40:        https://github.com/GNOME/libsoup/commit/35af2342.patch
 Patch41:        libsoup2-CVE-2026-1801.patch
 # PATCH-FIX-UPSTREAM libsoup2-CVE-2026-12548.patch bsc#1272196, glgo#GNOME/libsoup!524 alynx.zhou@suse.com -- Fix heap out-of-bounds read flaw when parsing multipart HTTP messages
 Patch42:        libsoup2-CVE-2026-12548.patch
-# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-77680.patch bsc#1276759, bsc#1275988, glgo#GNOME/libsoup!550 alynx.zhou@suse.com -- Fix flaw in HTTP Range heaader processing
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-77680.patch bsc#1276759, bsc#1275988, glgo#GNOME/libsoup!550 alynx.zhou@suse.com -- Fix flaw in HTTP Range header processing
 Patch43:        libsoup2-CVE-2026-77680.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-15711.patch bsc#1271446 mgorse@suse.com -- websocket: Reject oversized control frames.
+Patch44:        libsoup2-CVE-2026-15711.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-15714.patch bsc#1271449 mgorse@suse.com -- multipart: Fix out-of-bounds read in case of an excessively.
+Patch45:        libsoup2-CVE-2026-15714.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-66339.patch bsc#1273156 mgorse@suse.com -- auth: Don't send Proxy-Authorization through an established.
+Patch46:        libsoup2-CVE-2026-66339.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-12547.patch bsc#1272195 mgorse@suse.com -- auth: Scope cached proxy credentials to the proxy they came.
+Patch47:        libsoup2-CVE-2026-12547.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-102558.patch bsc#1283302 mgorse@suse.com -- websocket: Cap incoming frame payloads at what the buffer can hold.
+Patch48:        libsoup2-CVE-2026-102558.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-102556.patch bsc#1283300 mgorse@suse.com -- websocket: Emit the pong signal with a GBytes as declared.
+Patch49:        libsoup2-CVE-2026-102556.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-102560.patch bsc#1283304 mgorse@suse.com -- websocket: Bound outgoing permessage-deflate buffer growth.
+Patch50:        libsoup2-CVE-2026-102560.patch
+# PATCH-FIX-UPSTREAM libsoup2-CVE-2026-102557.patch bsc#1283301 bsc#1283303 mgorse@suse.com -- websocket: Cap message reassembly and outgoing frames at the buffer limit.
+Patch51:        libsoup2-CVE-2026-102557.patch
 
 BuildRequires:  glib-networking
 BuildRequires:  meson >= 0.50

@@ -247,4 +247,41 @@ Forwarded request #1101518 from iznogood
   CVE-2026-77014, glgo#GNOME/libsoup!550).</comment>
     <requestid>1379608</requestid>
   </revision>
+  <revision rev="28" vrev="24">
+    <srcmd5>2fc9ded2f45d7bc1a2e3086d1a965c66</srcmd5>
+    <version>2.74.3</version>
+    <time>1791465167</time>
+    <user>anag_factory</user>
+    <comment>- CVE-2026-15711: WebSocket denial of service via oversized control
+  frame protocol violation (bsc#1271446)
+  * libsoup2-CVE-2026-15711.patch
+- CVE-2026-15714: Out-of-bounds read in
+  soup_multipart_input_stream_read_headers via an oversized
+  multipart boundary string (bsc#1271449)
+  * libsoup2-CVE-2026-15714.patch
+- CVE-2026-66339: proxy credentials leak to destination server via
+  `Proxy-Authorization` header in CONNECT tunnels (bsc#1273156)
+  * libsoup2-CVE-2026-66339.patch
+- CVE-2026-12547: Header &quot;Proxy-Authorization&quot; leads to credentials
+  being send to different proxy after proxy switch (bsc#1272195)
+  * libsoup2-CVE-2026-12547.patch
+- CVE-2026-102558: Heap buffer overflow during WebSocket
+  receive-buffer growth (bsc#1283302)
+  * libsoup2-CVE-2026-102558.patch
+- CVE-2026-102556: Heap buffer overflow from WebSocket Pong signal
+  type confusion (bsc#1283300)
+  * libsoup2-CVE-2026-102556.patch
+- CVE-2026-102560: Heap buffer overflow during outgoing
+  permessage-deflate buffer growth (bsc#1283304)
+  * libsoup2-CVE-2026-102560.patch
+- CVE-2026-102557: Heap buffer overflow during WebSocket message
+  reassembly (bsc#1283301)
+- CVE-2026-102559: Heap buffer overflow during WebSocket
+  client-frame masking (bsc#1283303)
+  * libsoup2-CVE-2026-102557.patch
+- Tweak libsoup2-CVE-2026-12548.patch and
+  libsoup2-CVE-2026-2708.patch to remove superfluous initializer
+  values in the tests.</comment>
+    <requestid>1382958</requestid>
+  </revision>
 </revisionlist>
