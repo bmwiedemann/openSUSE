@@ -1,7 +1,7 @@
 #
 # spec file for package squid
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -61,7 +61,6 @@ BuildRequires:  pkgconfig(krb5)
 BuildRequires:  pkgconfig(libcap)
 BuildRequires:  pkgconfig(libsasl2)
 BuildRequires:  pkgconfig(libxml-2.0)
-BuildRequires:  pkgconfig(nettle)
 BuildRequires:  pkgconfig(tdb)
 Requires(pre):  permissions
 Recommends:     logrotate
@@ -137,6 +136,8 @@ export CXX=g++-11
 	--enable-arp-acl \
 	--enable-ssl-crtd \
 	--with-openssl \
+	--without-nettle \
+	--without-gnutls \
 	--enable-forw-via-db \
 	--enable-cache-digests \
 	--enable-linux-netfilter \
@@ -246,6 +247,7 @@ end
 %if 0%{?suse_version} >= 1500
 %pre -f squid.pre
 %else
+
 %pre
 # we need this group for /usr/sbin/pinger
 getent group %{name} >/dev/null || %{_sbindir}/groupadd -g 31 -r %{name}

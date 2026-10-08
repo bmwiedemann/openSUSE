@@ -1397,4 +1397,12 @@ and CVE references,
   - CVE-2026-33515, CVE-2026-32748, CVE-2026-33526: fixes out of bounds read in ICP message handling (bsc#1260454, bsc#1260453, bsc#1260452)</comment>
     <requestid>1381508</requestid>
   </revision>
+  <revision rev="129" vrev="3">
+    <srcmd5>27291d9ef0526692ee583cefdd0d925f</srcmd5>
+    <version>7.7</version>
+    <time>1791455150</time>
+    <user>anag_factory</user>
+    <comment>- Use the openssl instead of gnutls/nettle</comment>
+    <requestid>1383045</requestid>
+  </revision>
 </revisionlist>
