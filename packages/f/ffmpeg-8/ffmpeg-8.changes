@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:59:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.1.3
+  * More robust parsing of formats
+- Delete ffmpeg-8-CVE-2026-58049.patch,
+  ffmpeg-8-CVE-2026-64833.patch, ffmpeg-8-CVE-2026-64834.patch,
+  ffmpeg-8-CVE-2026-65703.patch, ffmpeg-8-CVE-2026-65704.patch,
+  ffmpeg-8-CVE-2026-65705.patch, ffmpeg-8-CVE-2026-65706.patch,
+  ffmpeg-8-CVE-2026-66037.patch, ffmpeg-8-CVE-2026-70628.patch,
+  ffmpeg-8-CVE-2026-70629.patch, ffmpeg-8-CVE-2026-70630.patch,
+  ffmpeg-8-CVE-2026-70631.patch, ffmpeg-8-CVE-2026-70632.patch,
+  ffmpeg-8-CVE-2026-75141.patch, ffmpeg-8-CVE-2026-75142.patch,
+  ffmpeg-8-CVE-2026-75143.patch, ffmpeg-8-CVE-2026-75144.patch,
+  ffmpeg-8-CVE-2026-75145.patch, ffmpeg-8-CVE-2026-75146.patch,
+  ffmpeg-8-CVE-2026-75147.patch,
+  ffmpeg-8-CVE-2026-66036-shim01.patch (merged)
+- Delete ffmpeg-8-CVE-2026-66036.patch (feature patch not accepted
+  upstream for 8.x)
+- Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
+  pass enable-liboapv to configure.
+- Add 0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
+
+-------------------------------------------------------------------
 Sat Oct  3 08:30:10 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add aptx/aptx_hd to enable_decoders/encoders.
@@ -12,8 +35,6 @@ Fri Oct  2 15:02:41 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 -------------------------------------------------------------------
 Tue Sep 29 21:26:57 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
-- Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
-  pass enable-liboapv to configure.
 - Correct version in "mini" part of spec.
 
 -------------------------------------------------------------------

@@ -19,6 +19,7 @@
 %define flavor @BUILD_FLAVOR@%nil
 #
 # preamble is present twice, watch out
+# buildtest with BUILD_ORIG=1 too.
 #
 %if "%flavor" != "mini"
 
@@ -108,7 +109,7 @@
 %define _major_expected 9
 
 Name:           ffmpeg-8
-Version:        8.1.2
+Version:        8.1.3
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -131,28 +132,10 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
-Patch16:        ffmpeg-8-CVE-2026-58049.patch
-Patch17:        ffmpeg-8-CVE-2026-64833.patch
-Patch18:        ffmpeg-8-CVE-2026-64834.patch
-Patch19:        ffmpeg-8-CVE-2026-65703.patch
-Patch20:        ffmpeg-8-CVE-2026-65704.patch
-Patch21:        ffmpeg-8-CVE-2026-65705.patch
-Patch22:        ffmpeg-8-CVE-2026-65706.patch
-Patch23:        ffmpeg-8-CVE-2026-66036-shim01.patch
-Patch24:        ffmpeg-8-CVE-2026-66036.patch
-Patch25:        ffmpeg-8-CVE-2026-66037.patch
-Patch26:        ffmpeg-8-CVE-2026-70628.patch
-Patch27:        ffmpeg-8-CVE-2026-70629.patch
-Patch28:        ffmpeg-8-CVE-2026-70630.patch
-Patch29:        ffmpeg-8-CVE-2026-70631.patch
-Patch30:        ffmpeg-8-CVE-2026-70632.patch
-Patch31:        ffmpeg-8-CVE-2026-75141.patch
-Patch32:        ffmpeg-8-CVE-2026-75142.patch
-Patch33:        ffmpeg-8-CVE-2026-75143.patch
-Patch34:        ffmpeg-8-CVE-2026-75144.patch
-Patch35:        ffmpeg-8-CVE-2026-75145.patch
-Patch36:        ffmpeg-8-CVE-2026-75146.patch
-Patch37:        ffmpeg-8-CVE-2026-75147.patch
+Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
+#
+# preamble is present twice, watch out
+#
 BuildRequires:  c++_compiler
 BuildRequires:  ladspa-devel
 BuildRequires:  libgsm-devel
@@ -165,7 +148,6 @@ BuildRequires:  pkgconfig(ffnvcodec) >= 8.1.24.15
 BuildRequires:  pkgconfig(fontconfig) >= 2.4.2
 BuildRequires:  pkgconfig(freetype2)
 BuildRequires:  pkgconfig(fribidi) >= 0.19.0
-BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(harfbuzz)
 BuildRequires:  pkgconfig(jack)
 BuildRequires:  pkgconfig(libass) >= 0.11.0
@@ -197,6 +179,7 @@ BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  pkgconfig(oapv)
 BuildRequires:  pkgconfig(ogg)
 BuildRequires:  pkgconfig(openh264)
+BuildRequires:  pkgconfig(openssl)
 BuildRequires:  pkgconfig(opus)
 BuildRequires:  pkgconfig(sdl2) >= 2.0.1
 BuildRequires:  pkgconfig(soxr)
@@ -277,9 +260,9 @@ BuildRequires:  pkgconfig(libplacebo) >= 6.292.0
 %else
 BuildRequires:  (pkgconfig(libplacebo) >= 4.192.0 with pkgconfig(libplacebo) < 6.292.0)
 %endif
+BuildRequires:  glslang-devel
 BuildRequires:  pkgconfig(shaderc) >= 2019.1
 BuildRequires:  pkgconfig(vulkan) >= 1.3.255
-BuildRequires:  glslang-devel
 %endif
 
 %if 0%{?suse_version} >= 1550 || 0%{?sle_version} >= 150500
@@ -835,7 +818,7 @@ done
 #
 #!BcntSyncTag:  ffmpeg-8
 Name:           ffmpeg-8-mini
-Version:        8.1.2
+Version:        8.1.3
 Release:        0
 Summary:        Set of libraries for working with various multimedia formats
 License:        GPL-3.0-or-later
@@ -851,6 +834,7 @@ Patch4:         ffmpeg-4.2-dlopen-fdk_aac.patch
 Patch5:         work-around-abi-break.patch
 Patch10:        ffmpeg-chromium.patch
 Patch15:        11013-avcodec-decode-clean-up-if-get_hw_frames_parameters-.patch
+Patch16:        0001-avcodec-liboapvenc-fix-build-with-openapv-1.1.patch
 BuildRequires:  c_compiler
 Requires:       this-is-only-for-build-envs
 
