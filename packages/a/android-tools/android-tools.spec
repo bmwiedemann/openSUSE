@@ -30,7 +30,7 @@
 %endif
 
 Name:           android-tools
-Version:        37.0.0
+Version:        37.0.0p1
 Release:        0
 Summary:        Android platform tools
 License:        Apache-2.0 AND MIT
@@ -38,12 +38,6 @@ License:        Apache-2.0 AND MIT
 URL:            https://github.com/nmeum/android-tools
 Source0:        %{url}/releases/download/%{version}/%{name}-%{version}.tar.xz
 Source1:        vendor.tar.zst
-Source99:       prepare.sh
-# PATCH-FEATURE-UPSTREAM fix-rust-based-mDNS-backend.patch -- based on PR 209
-Patch0:         fix-rust-based-mDNS-backend.patch
-# PATCH-FIX-OPENSUSE fix-protobuf-36-absl-log-macros.patch -- based on arch linux patch
-# https://gitlab.archlinux.org/archlinux/packaging/packages/android-tools/-/raw/03fecd370e9633927b8157ab94a7db11e7b8cf16/protobuf-36-absl-log-macros.patch
-Patch1:         fix-protobuf-36-absl-log-macros.patch
 BuildRequires:  cargo
 BuildRequires:  cmake >= 3.12
 BuildRequires:  llvm-gold
@@ -167,9 +161,6 @@ popd
 
 # fix link
 ln -sf %{_datadir}/%{name}/mkbootimg/mkbootimg.py %{buildroot}%{_bindir}/mkbootimg
-
-# fix non-executable-script
-chmod 0755 %{buildroot}%{_datadir}/%{name}/mkbootimg/gki/generate_gki_certificate.py
 
 # note: check when support for Leap < 16.0 (sle?) can be removed (eol)
 # fix env-script-interpreter (Leap < 16.0 requires special handling)

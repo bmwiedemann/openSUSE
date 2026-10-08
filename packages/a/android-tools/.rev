@@ -260,4 +260,20 @@
 </comment>
     <requestid>1379725</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>9570ef157c6a06f0db8b590423bd9d84</srcmd5>
+    <version>37.0.0p1</version>
+    <time>1791465236</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 37.0.0p1
+  * Make generate_gki_certificate.py executable by @luk1337 in #208
+  * Add option to enable new Rust based mDNS backend by @luk1337 in #209
+  * cmake: Remove useless cpp from target by @meator in #211
+  * adb: keep libbase logging macros after protobuf includes by @munix9 in #213
+  * CMakeLists.txt: Bump to 37.0.0p1 by @Biswa96 in #215
+- Remove prepare.sh, fix-protobuf-36-absl-log-macros.patch and
+  fix-rust-based-mDNS-backend.patch (solved/merged upstream)
+</comment>
+    <requestid>1383273</requestid>
+  </revision>
 </revisionlist>
