@@ -19,7 +19,7 @@
 Name:           inspektor-gadget
 Version:        0.57.0
 Release:        0
-Summary:        A eBPF tool and systems inspection framework
+Summary:        An eBPF tool and systems inspection framework
 License:        Apache-2.0
 URL:            https://github.com/inspektor-gadget/inspektor-gadget
 Source:         inspektor-gadget-%{version}.tar.gz
@@ -71,7 +71,7 @@ Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description -n %{name}-zsh-completion
-zsh command line completion support for %{name}.
+Zsh command line completion support for %{name}.
 
 %prep
 %autosetup -a 1 -p 1
@@ -111,7 +111,7 @@ go build \
 # Install the binary.
 install -D -m 0755 bin/kubectl-gadget %{buildroot}/%{_bindir}/kubectl-gadget
 install -D -m 0755 bin/gadgetctl %{buildroot}/%{_bindir}/gadgetctl
-install -D -m 0755 bin/gadgetctl %{buildroot}/%{_bindir}/ig
+install -D -m 0755 bin/ig %{buildroot}/%{_bindir}/ig
 
 # create the bash completion file
 mkdir -p %{buildroot}%{_datarootdir}/bash-completion/completions/
