@@ -2025,4 +2025,33 @@ echo &quot;WARNING: Dummy prjconf macro. gpg-offline is not available, skipping 
     readonly (prompted by discussion with Thomas Wolff). (forwarded request 1352223 from dirkmueller)</comment>
     <requestid>1352244</requestid>
   </revision>
+  <revision rev="155" vrev="1">
+    <srcmd5>9638a955d859bd0d2acb6ad68c2cd1a9</srcmd5>
+    <version>411</version>
+    <time>1791465183</time>
+    <user>anag_factory</user>
+    <comment>- update to 411:
+  * add  a  case  for DECSWT in VT520 mode
+  * correct  an  index  computation in VS15/VS16 logic for
+    -emoji_width option
+  * add ich1 to terminfo where appropriate.
+  * drop “GTK_*” from environment filtering
+  * fix a couple of places in terminfo which used BEL rather than
+    ST.
+  * add  DECSCUSR  7 for the “power-up” configuration, which can
+    be different   from   the   documented  VT520  behavior
+  * correct  a  limit-check  added  in  patch  #399,  which
+    resulted in regex-based  selections to be limited to the first
+    row of a wrapped line (Redhat #2479962).
+  * add   resource   brokenCopyArea,  using  that  to  control
+    whether XCopyArea  is used for indexing and scrolling, as well
+    as inserting or deleting characters and lines.
+  * amend  check  for  validity  of  C1  controls to check both
+    whether wide-characters  have  been  initialized,  as  well  as
+    whether the current encoding is UTF-8 (Debian #687699).
+  * call  Cleanup  directly when processing SIGHUP, because the
+    process running in xterm may ignore a killpg sent to the top-level
+    screen's process (Debian #243598). (forwarded request 1382864 from dirkmueller)</comment>
+    <requestid>1382992</requestid>
+  </revision>
 </revisionlist>
