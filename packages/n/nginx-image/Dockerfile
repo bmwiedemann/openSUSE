@@ -29,7 +29,8 @@ RUN set -euo pipefail; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends curl envsubst findutils gawk grep nginx sed
 # changing user id and group id created by package installation to stable values
 RUN set -euo pipefail; \
-    chroot /target chown -R --from=nginx:nginx 499:499 /; \
+    chroot /target chown -R --from=nginx 499 /; \
+    chroot /target chown -R --from=:nginx :499 /; \
     groupmod -R /target -g 499 nginx; \
     usermod -R /target -u 499 nginx
 # sanity check that the version from the tag is equal to the version of nginx that we expect
