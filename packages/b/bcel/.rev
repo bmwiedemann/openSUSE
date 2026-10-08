@@ -254,4 +254,12 @@
     <comment></comment>
     <requestid>1202359</requestid>
   </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9d9f95354b4ab3fd1ab4c0764433b10a</srcmd5>
+    <version>6.13.0</version>
+    <time>1791465185</time>
+    <user>anag_factory</user>
+    <comment>6.13.0 with security fixes</comment>
+    <requestid>1382999</requestid>
+  </revision>
 </revisionlist>

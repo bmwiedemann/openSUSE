@@ -1,7 +1,7 @@
 #
 # spec file for package bcel
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           bcel
-Version:        6.10.0
+Version:        6.13.0
 Release:        0
 Summary:        Byte Code Engineering Library
 License:        Apache-2.0
@@ -27,10 +27,14 @@ Source0:        https://archive.apache.org/dist/commons/bcel/source/%{name}-%{ve
 Source1:        %{name}-build.xml
 BuildRequires:  ant
 BuildRequires:  apache-commons-lang3
+BuildRequires:  apache-commons-io
 BuildRequires:  fdupes
 BuildRequires:  java-devel >= 1.8
 BuildRequires:  javapackages-local >= 6
-#!BuildIgnore:  xalan-j2 xerces-j2 xml-apis xml-resolver
+#!BuildIgnore:  xalan-j2
+#!BuildIgnore:  xerces-j2
+#!BuildIgnore:  xml-apis
+#!BuildIgnore:  xml-resolver
 BuildArch:      noarch
 
 %description
@@ -68,8 +72,8 @@ cp %{SOURCE1} build.xml
 
 %build
 mkdir -p lib
-build-jar-repository -s lib apache-commons-lang3
-%ant jar javadoc
+build-jar-repository -s lib apache-commons-lang3 commons-io
+ant jar javadoc
 
 %install
 # jar
@@ -77,7 +81,7 @@ mkdir -p %{buildroot}%{_javadir}
 install -m 644 target/%{name}-%{version}.jar %{buildroot}%{_javadir}/%{name}.jar
 # pom
 mkdir -p %{buildroot}%{_mavenpomdir}
-%mvn_install_pom pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
+%{mvn_install_pom} pom.xml %{buildroot}%{_mavenpomdir}/%{name}.pom
 %add_maven_depmap %{name}.pom %{name}.jar -a "bcel:bcel"
 # javadoc
 mkdir -p %{buildroot}%{_javadocdir}/%{name}
