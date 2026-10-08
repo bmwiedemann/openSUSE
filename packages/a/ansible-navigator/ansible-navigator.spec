@@ -61,7 +61,6 @@ BuildRequires:  %{ansible_python}-Jinja2
 BuildRequires:  %{ansible_python}-PyYAML
 BuildRequires:  %{ansible_python}-jsonschema
 BuildRequires:  %{ansible_python}-onigurumacffi >= 1.1.0
-BuildRequires:  %{ansible_python}-pytzdata
 BuildRequires:  %{ansible_python}-requirements-parser
 BuildRequires:  ansible-builder >= 3.0.0
 BuildRequires:  ansible-core >= 2.14.3
@@ -81,8 +80,8 @@ Requires:       %{ansible_python}-PyYAML
 Requires:       %{ansible_python}-curses
 Requires:       %{ansible_python}-jsonschema
 Requires:       %{ansible_python}-onigurumacffi >= 1.1.0
-Requires:       %{ansible_python}-pytzdata
 Requires:       %{ansible_python}-setuptools
+Requires:       %{ansible_python}-tzdata
 Requires:       ansible-builder >= 3.0.0
 Requires:       ansible-core >= 2.14.3
 Requires:       ansible-lint >= 6.19.0

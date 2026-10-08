@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct  5 16:58:06 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- use python-tzdata, not pytzdata (which is unmaintained)
+
+-------------------------------------------------------------------
 Thu Sep 24 05:12:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 26.9.0:
