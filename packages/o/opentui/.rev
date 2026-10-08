@@ -53,4 +53,12 @@ artifact set and Zig pin; unblocks opencode 2.0.22, which requires
 opentui = 0.5.14 exactly.</comment>
     <requestid>1382250</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>50037cd634655376178243c2f4613702</srcmd5>
+    <version>0.5.16</version>
+    <time>1791458861</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.16 (carries 0.5.15). LOCKSTEP part 1/2: opencode 2.0.24 pins @opentui/* = 0.5.16 via its private unversioned FFI ABI, so its matching update follows as part 2/2; neither half works without the other.</comment>
+    <requestid>1383224</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:21:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.16, which also carries 0.5.15 (opencode v2 pins
+  @opentui/* at exactly this version; the FFI ABI is private and
+  unversioned, so both halves and every consumer move together):
+  * Fixed the native core rejecting invalid blended cell coordinates
+  * Non-positive draw extents are now treated as empty in core
+  * The runtime plugin preserves host-provided bare specifiers
+  * 0.5.16 itself carries no further user-visible changes beyond
+    a dependency update
+
+-------------------------------------------------------------------
 Sat Oct  3 15:17:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.14, which also carries 0.5.13 (opencode v2 pins

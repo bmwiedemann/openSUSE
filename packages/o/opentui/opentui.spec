@@ -33,7 +33,7 @@
 %global node_arch arm64
 %endif
 Name:           opentui
-Version:        0.5.14
+Version:        0.5.16
 Release:        0
 Summary:        Library for building terminal user interfaces
 # OpenTUI itself is MIT. miniaudio is vendored as a single header in
@@ -210,7 +210,7 @@ for pkg in core keymap solid; do
       # CLI under import.meta.main, so they carry a bun shebang. Nothing here
       # is meant to be executed in place, and leaving the shebang on would
       # have rpm demand an interpreter the distribution does not have yet.
-      grep -rlZ '^#!/usr/bin/env ' --include='*.ts' . \
+      grep -rlZ '^#!%{_bindir}/env ' --include='*.ts' . \
           | xargs -0 -r sed -i '1{/^#!/d}'
       # workspace:* only means anything inside upstream's monorepo. These
       # packages are installed side by side, so pin the sibling to the
