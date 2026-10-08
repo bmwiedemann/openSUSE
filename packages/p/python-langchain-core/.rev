@@ -205,4 +205,12 @@ Built and checked locally on aarch64: 2076 tests pass under python3.13 and
 </comment>
     <requestid>1381680</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>acf9950ae57b28541e361a95145b729b</srcmd5>
+    <version>1.6.7</version>
+    <time>1791453570</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-core to 1.6.7: Bedrock Converse redacted_content fix and Python 3.14 inspect.signature hardening.</comment>
+    <requestid>1383213</requestid>
+  </revision>
 </revisionlist>

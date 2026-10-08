@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:24:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.7:
+  * Include OpenAI redacted_content in v1 output for Bedrock Converse
+  * Python 3.14 hardening around `inspect.signature`
+
+-------------------------------------------------------------------
 Wed Sep 30 08:27:39 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.6:
