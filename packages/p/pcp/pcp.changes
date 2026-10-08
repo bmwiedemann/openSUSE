@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Tue Oct  6 15:06:56 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Treat 32-bit arm as 32-bit x86 aka disable perl
+  (perl lacks Y2038-safe time_t)
+
+-------------------------------------------------------------------
+Sun Sep 27 19:13:49 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
+
+- Fix bsc#1267897, systemd-tmpfiles "Duplicate line for path" warnings
+  logged at every boot and package update since the /var/lib/pcp relocation:
+  * pcp-stash-relocate.sh: add --defer-to, so paths already declared
+    by upstream's pcp-reboot-init.conf (/var/log/pcp/*) are no longer
+    emitted in pcp-base-stash.conf, and --prune, which drops every path
+    recreated by a pcp-*-stash.conf snippet from the install-sh
+    generated pcp.conf.
+  * Stop listing /var/lib/pcp/config/pmieconf/dm in base pcp; it
+    belongs to pcp-pmda-dm only.
+  * Fail the build if any path is declared by more than one of the
+    shipped tmpfiles.d files.
+
+-------------------------------------------------------------------
 Thu Jul 30 18:47:41 UTC 2026 - Martin Schreiner <martin.schreiner@suse.com>
 
 - Fix bsc#1272922 / CVE-2026-16524.

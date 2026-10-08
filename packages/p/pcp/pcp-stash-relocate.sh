@@ -47,6 +47,19 @@
 #       --listdir     <path>     # dir containing the *.list files
 #       --tmpfilesdir <path>     # dir where pcp-*-stash.conf files land
 #                                #   (relative to --buildroot)
+#       --defer-to    <file>     # tmpfiles.d file (relative to
+#                                #   --buildroot, repeatable) whose paths
+#                                #   are authoritative: they are not
+#                                #   emitted in any stash snippet
+#       --prune       <file>     # tmpfiles.d file (relative to
+#                                #   --buildroot, repeatable) from which
+#                                #   every path emitted in a stash snippet
+#                                #   is removed afterwards
+#
+# systemd-tmpfiles warns 'Duplicate line for path' whenever two snippets
+# declare the same path. --defer-to and --prune keep the generated
+# snippets disjoint from the tmpfiles.d files upstream PCP installs
+# (pcp-reboot-init.conf, and the install-sh generated pcp.conf).
 
 set -euo pipefail
 
@@ -56,6 +69,8 @@ STASH_ROOT=
 LISTDIR=
 TMPFILESDIR=
 SKIP_LISTS=
+DEFER_FILES=()
+PRUNE_FILES=()
 
 die() {
     printf 'pcp-stash-relocate: error: %s\n' "$*" >&2
@@ -70,6 +85,8 @@ while [ $# -gt 0 ]; do
         --listdir)     LISTDIR=$2; shift 2 ;;
         --tmpfilesdir) TMPFILESDIR=$2; shift 2 ;;
         --skip)        SKIP_LISTS="$SKIP_LISTS $2"; shift 2 ;;
+        --defer-to)    DEFER_FILES+=("$2"); shift 2 ;;
+        --prune)       PRUNE_FILES+=("$2"); shift 2 ;;
         -h|--help)     sed -n '2,/^# Usage/p' "$0" | sed 's/^# \{0,1\}//'; exit 0 ;;
         *)             die "unknown argument: $1" ;;
     esac
@@ -86,6 +103,9 @@ for lr in "${LEGACY_ROOTS[@]}"; do
     [ -d "$BUILDROOT$lr" ] || die "legacy root does not exist in buildroot: $BUILDROOT$lr"
 done
 [ -d "$LISTDIR" ] || die "listdir does not exist: $LISTDIR"
+for f in ${DEFER_FILES[@]+"${DEFER_FILES[@]}"} ${PRUNE_FILES[@]+"${PRUNE_FILES[@]}"}; do
+    [ -f "$BUILDROOT$f" ] || die "tmpfiles file does not exist in buildroot: $BUILDROOT$f"
+done
 
 mkdir -p "$BUILDROOT$STASH_ROOT"
 mkdir -p "$BUILDROOT$TMPFILESDIR"
@@ -100,6 +120,24 @@ match_legacy_root() {
         esac
     done
     return 1
+}
+
+# Helper: print the path (2nd field) of every entry in the given
+# tmpfiles.d files, skipping blank lines and comments.
+tmpfiles_paths() {
+    awk '$0 !~ /^[[:space:]]*(#|$)/ { print $2 }' "$@"
+}
+
+# Paths declared by the --defer-to files. Entries for these are not
+# emitted in any stash snippet.
+DEFERRED_PATHS=$(mktemp)
+trap 'rm -f "$DEFERRED_PATHS"' EXIT
+for f in ${DEFER_FILES[@]+"${DEFER_FILES[@]}"}; do
+    tmpfiles_paths "$BUILDROOT$f" >> "$DEFERRED_PATHS"
+done
+
+is_deferred() {
+    grep -Fxq -- "$1" "$DEFERRED_PATHS"
 }
 
 # ---------------------------------------------------------------------------
@@ -121,12 +159,6 @@ PERM_OVERRIDES=$(cat <<'EOF'
 /var/lib/pcp/tmp/pmie        0775 pcp pcp
 /var/lib/pcp/tmp/pmlogger    0775 pcp pcp
 /var/lib/pcp/tmp/pmproxy     0775 pcp pcp
-/var/log/pcp                 0775 pcp pcp
-/var/log/pcp/pmcd            0775 pcp pcp
-/var/log/pcp/pmlogger        0775 pcp pcp
-/var/log/pcp/pmie            0775 pcp pcp
-/var/log/pcp/pmproxy         0775 pcp pcp
-/var/log/pcp/pmfind          0775 pcp pcp
 EOF
 )
 
@@ -208,7 +240,7 @@ for listfile in "$LISTDIR"/*.list; do
     tmpfile_snippet="$BUILDROOT$TMPFILESDIR/pcp-${listname}-stash.conf"
 
     work_dir=$(mktemp -d)
-    trap 'rm -rf "$work_dir"' EXIT
+    trap 'rm -rf "$work_dir" "$DEFERRED_PATHS"' EXIT
 
     files_to_relocate=$work_dir/files     # real files: move to stash
     links_to_remove=$work_dir/links       # symlinks: just delete
@@ -253,7 +285,7 @@ for listfile in "$LISTDIR"/*.list; do
     if [ ! -s "$files_to_relocate" ] && [ ! -s "$links_to_remove" ] \
        && [ ! -s "$dirs_listed" ]; then
         rm -rf "$work_dir"
-        trap - EXIT
+        trap 'rm -f "$DEFERRED_PATHS"' EXIT
         continue
     fi
 
@@ -314,6 +346,7 @@ for listfile in "$LISTDIR"/*.list; do
         # other subpackages (triggering rpmlint's tmpfile-not-in-filelist).
         sort -u "$dirs_listed" | awk '{ print length, $0 }' | sort -n | cut -d' ' -f2- | \
         while IFS= read -r d; do
+            is_deferred "$d" && continue
             read -r mode user group <<<"$(lookup_perms "$d")"
             printf 'd %-50s %s %s %s -\n' "$d" "$mode" "$user" "$group"
         done
@@ -323,11 +356,13 @@ for listfile in "$LISTDIR"/*.list; do
             lr=$(match_legacy_root "$path") || continue
             rel=${path#"$lr"/}
             target="$STASH_ROOT/$rel"
+            is_deferred "$path" && continue
             printf 'L+ %-50s - - - - %s\n' "$path" "$target"
         done < "$files_to_relocate"
 
         # Symlinks for previously-shipped symlinks (target preserved).
         while IFS=$'\t' read -r path target; do
+            is_deferred "$path" && continue
             printf 'L+ %-50s - - - - %s\n' "$path" "$target"
         done < "$links_to_remove"
     } > "$tmpfile_snippet"
@@ -387,8 +422,30 @@ for listfile in "$LISTDIR"/*.list; do
     mv "$rewritten" "$listfile"
 
     rm -rf "$work_dir"
-    trap - EXIT
+    trap 'rm -f "$DEFERRED_PATHS"' EXIT
 done
+
+# ---------------------------------------------------------------------------
+# Remove every path declared by a stash snippet from the --prune files.
+# Upstream's install-sh records an L+ entry in $DIST_TMPFILES for each
+# symlink it installs under /var, and those same symlinks are what the
+# stash snippets recreate per subpackage. Keeping both makes
+# systemd-tmpfiles log a 'Duplicate line' warning for each of them.
+# ---------------------------------------------------------------------------
+
+if [ ${#PRUNE_FILES[@]} -gt 0 ]; then
+    stash_paths=$(mktemp)
+    tmpfiles_paths "$BUILDROOT$TMPFILESDIR"/pcp-*-stash.conf | sort -u > "$stash_paths"
+    for f in "${PRUNE_FILES[@]}"; do
+        pruned=$(mktemp)
+        awk 'NR == FNR { seen[$0] = 1; next }
+             $0 ~ /^[[:space:]]*(#|$)/ || !($2 in seen)' \
+            "$stash_paths" "$BUILDROOT$f" > "$pruned"
+        cat "$pruned" > "$BUILDROOT$f"
+        rm -f "$pruned"
+    done
+    rm -f "$stash_paths"
+fi
 
 # Note: we deliberately do NOT remove empty directories from the legacy
 # buildroot tree. %ghost and %ghost %dir entries in the rewritten lists

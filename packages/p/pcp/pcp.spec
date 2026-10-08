@@ -142,7 +142,7 @@ Patch21:        pcp-CVE-2026-16531.patch
 %endif
 
 # Perl PMDA bindings need a Y2038-safe Perl (64-bit time_t)
-%ifarch %{ix86}
+%ifarch %{ix86} %{arm}
 %global disable_perl 1
 %global disable_nutcracker 1
 %global disable_snmp 1
@@ -2653,9 +2653,10 @@ echo '/var/lib/pcp/config/pmafm/pcp-gui' >> pcp-gui.list
 ls -1 %{buildroot}/%{_logconfdir}/ |\
     sed -e 's#^#'%{_logconfdir}'\/#' |\
     grep -E -v 'zeroconf' >pcp-logconf.list
+# pmieconf/dm belongs to pcp-pmda-dm (see pmda-dm.list), not base pcp.
 ls -1 %{buildroot}/%{_ieconfdir}/ |\
     sed -e 's#^#'%{_ieconfdir}'\/#' |\
-    grep -E -v 'zeroconf' >pcp-ieconf.list
+    grep -E -v 'zeroconf|/dm$' >pcp-ieconf.list
 
 # generate full base package file list
 cat base_pmdas.list base_conf.list base_bin.list base_exec.list base_bashcomp.list \
@@ -3137,8 +3138,16 @@ echo '%%dir /var/lib/pcp/testsuite' >> testsuite.list
 # Required for transactional-update / immutable-OS targets where /var
 # is a separate writable subvolume from the read-only /usr snapshot.
 ###############################################################################
+# Keep the generated snippets disjoint from upstream's tmpfiles.d files:
+# paths declared by pcp-reboot-init.conf are left to it, and paths the
+# snippets recreate are dropped from the install-sh generated pcp.conf.
+# Otherwise systemd-tmpfiles logs 'Duplicate line for path' for each.
+TMPFILES_DEDUP=
+%if !%{disable_systemd}
+TMPFILES_DEDUP="--defer-to %{_tmpfilesdir}/pcp-reboot-init.conf --prune %{_tmpfilesdir}/pcp.conf"
+%endif
 install -m 0755 %{SOURCE50} $BACKDIR/pcp-stash-relocate.sh
-$BACKDIR/pcp-stash-relocate.sh \
+$BACKDIR/pcp-stash-relocate.sh $TMPFILES_DEDUP \
     --buildroot   %{buildroot} \
     --legacy-root /var/lib/pcp \
     --legacy-root /var/log/pcp \
@@ -3153,6 +3162,18 @@ $BACKDIR/pcp-stash-relocate.sh \
     --skip        base_bashcomp \
     --skip        pcp-logconf \
     --skip        pcp-ieconf
+
+%if !%{disable_systemd}
+# Fail the build if any path is declared by more than one of our
+# tmpfiles.d files; systemd-tmpfiles would warn about it at every boot.
+dups=$(awk '$0 !~ /^[[:space:]]*(#|$)/ { print $2 }' \
+    %{buildroot}%{_tmpfilesdir}/pcp*.conf | sort | uniq -d)
+if [ -n "$dups" ]; then
+    echo "error: duplicate tmpfiles.d paths:" >&2
+    echo "$dups" >&2
+    exit 1
+fi
+%endif
 
 %pre testsuite
 test -d %{_testsdir} || mkdir -p -m 755 %{_testsdir}
