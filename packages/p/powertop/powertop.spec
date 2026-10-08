@@ -17,7 +17,7 @@
 
 
 Name:           powertop
-Version:        2.16
+Version:        2.16.1
 Release:        0
 Summary:        A Linux Tool to Find out What is Using Power on a Laptop
 License:        GPL-2.0-only

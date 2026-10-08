@@ -580,4 +580,29 @@ A powertop_libc++_fix.patch</comment>
 - Drop powertop-2.16-fix-missing-sources.patch: sources in meson are complete</comment>
     <requestid>1371008</requestid>
   </revision>
+  <revision rev="62" vrev="1">
+    <srcmd5>ae3c70aefe765b37c8025bc170fbe1da</srcmd5>
+    <version>2.16.1</version>
+    <time>1791453578</time>
+    <user>anag_factory</user>
+    <comment>- Update to 2.16.1:
+  * Removed the legacy autoconf build support entirely (Meson is now the
+    sole supported build system), eliminating a class of build breakage
+    reports caused by the two build systems drifting out of sync
+  * Fixed broken cursor navigation on the WakeUp and Tunables tabs (#217)
+  * Added vi-style (h/j/k/l) navigation keys alongside the existing arrow keys
+  * Hid the rfkill pseudo-device from the Device stats list; it exists only
+    for power accounting and was cluttering the device list (#214)
+  * Fixed the Parameters tab failing to show power estimates once 250 or more
+    parameters were tracked
+  * Fixed a process-tab debug printf that corrupted the interactive display
+  * Fixed gpu_rapl_device reporting power computed from an uninitialized
+    energy value (#223)
+  * Fixed the extech power meter reporting bogus power readings instead of
+    errors when it received invalid BCD digits
+  * Added a Georgian translation
+  * -s is now accepted, and non-positive numeric option values are rejected
+    with an error instead of silently misbehaving</comment>
+    <requestid>1383234</requestid>
+  </revision>
 </revisionlist>
