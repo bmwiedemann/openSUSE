@@ -16,11 +16,15 @@ Index: b/tests/lit-tests/llvm_ident.ispc
 ===================================================================
 --- a/tests/lit-tests/llvm_ident.ispc
 +++ b/tests/lit-tests/llvm_ident.ispc
-@@ -1,3 +1,4 @@
-+// XFAIL: *
- // RUN: %{ispc} %s --emit-llvm-text -o - | FileCheck %s
- // RUN: %{ispc} %s --emit-llvm-text --nostdlib -o - | FileCheck %s
+@@ -3,7 +3,7 @@
  
+ // Check that version string embeded in !llvm.ident metadata is formed correctly.
+ 
+-// CHECK: Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), {{1\.[[:digit:]]+\.[[:digit:]]+(dev)?}} (build{{( commit( [[:xdigit:]]+)?[ ]+)?}}@ {{([[:digit:]]{8})}}, LLVM [[LLVM_VERSION:[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+]])
++// CHECK: Intel(r) Implicit SPMD Program Compiler (Intel(r) ISPC), {{1\.[[:digit:]]+\.[[:digit:]]+(dev)?}} (build{{( commit( [[:xdigit:]]+)?)?[ ]+}}@ {{([[:digit:]]{8})}}, LLVM [[LLVM_VERSION:[[:digit:]]+\.[[:digit:]]+\.[[:digit:]]+]])
+ // CHECK: LLVM version [[LLVM_VERSION]]{{(\( [[:graph:]]+ [[:graph:]]+\))?}}
+ 
+ int i;
 Index: b/tests/lit-tests/3081.ispc
 ===================================================================
 --- a/tests/lit-tests/3081.ispc

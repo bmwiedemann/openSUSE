@@ -19,7 +19,8 @@
 
 %define libname libispcrt1
 
-%define minimum_llvm_version 20
+%global minimum_llvm_version 20
+%global maximum_llvm_version_exclusive 23
 
 #if 0%{?suse_version} < 1699
 #define force_llvm_version 21
@@ -43,12 +44,24 @@ Source0:        https://github.com/%{name}/%{name}/archive/v%{version}/v-%{versi
 Source1:        series
 Patch1:         skip-tests.patch
 BuildRequires:  bison
-BuildRequires:  clang%{?force_llvm_version}-devel >= %{minimum_llvm_version}
+%if 0%{?force_llvm_version}
+BuildRequires:  clang%{force_llvm_version}-devel >= %{minimum_llvm_version}
+%else
+BuildRequires:  (cmake(Clang) >= %{minimum_llvm_version} with cmake(Clang) < %{maximum_llvm_version_exclusive})
+%endif
 BuildRequires:  cmake >= 3.13
 BuildRequires:  flex
-BuildRequires:  llvm%{?force_llvm_version}-devel >= %{minimum_llvm_version}
+%if 0%{?force_llvm_version}
+BuildRequires:  llvm%{force_llvm_version}-devel >= %{minimum_llvm_version}
+%else
+BuildRequires:  (cmake(LLVM) >= %{minimum_llvm_version} with cmake(LLVM) < %{maximum_llvm_version_exclusive})
+%endif
 %if %{with openmp_task_model}
-BuildRequires:  libomp%{?force_llvm_version}-devel >= %{minimum_llvm_version}
+%if 0%{?force_llvm_version}
+BuildRequires:  libomp%{force_llvm_version}-devel >= %{minimum_llvm_version}
+%else
+BuildRequires:  (libomp-devel-provider >= %{minimum_llvm_version} with libomp-devel-provider < %{maximum_llvm_version_exclusive})
+%endif
 %else
 BuildRequires:  tbb-devel
 %endif
@@ -100,20 +113,27 @@ sed -i -e '/build_ispcrt(STATIC/ s@.*@#\0@' ispcrt/CMakeLists.txt
 
 %build
 %if 0%{?force_llvm_version}
-perl -p -i -e "s:'clang':'clang-%{force_llvm_version}':g; s:'clang++':'clang++-%{force_llvm_version}':g" tests/lit-tests/lit.cfg
-perl -p -i -e "s:llvm-dis:llvm-dis-%{force_llvm_version}:g" tests/lit-tests/avx10.2dmr-x8.ispc
+LLVM_MAJOR_VERSION=%{force_llvm_version}
+%else
+LLVM_MAJOR_VERSION=$(llvm-config --version | cut -d'.' -f1)
 %endif
+
+CLANG_EXECUTABLE="clang-${LLVM_MAJOR_VERSION}"
+CLANGPP_EXECUTABLE="clang++-${LLVM_MAJOR_VERSION}"
+LLVM_AS_EXECUTABLE="llvm-as-${LLVM_MAJOR_VERSION}"
+LLVM_DIS_EXECUTABLE="llvm-dis-${LLVM_MAJOR_VERSION}"
+
+perl -p -i -e "s:'clang':'${CLANG_EXECUTABLE}':g; s:'clang\+\+':'${CLANGPP_EXECUTABLE}':g" tests/lit-tests/lit.cfg
+perl -p -i -e "s:llvm-dis:${LLVM_DIS_EXECUTABLE}:g" tests/lit-tests/avx10.{2dmr-x8,2nvl-x8_llvm22_plus}.ispc
 
 %define _lto_cflags "-flto=thin"
 echo "optflags: %{optflags}"
 %cmake \
-%if 0%{?force_llvm_version}
-        -DCLANG_EXECUTABLE:STRING="clang-%{force_llvm_version}" \
-        -DCLANGPP_EXECUTABLE:STRING="clang++-%{force_llvm_version}" \
-        -DLLVM_AS_EXECUTABLE:STRING="llvm-as-%{force_llvm_version}" \
-        -DCMAKE_C_COMPILER:STRING="clang-%{force_llvm_version}" \
-        -DCMAKE_CXX_COMPILER:STRING="clang++-%{force_llvm_version}" \
-%endif
+        -DCLANG_EXECUTABLE:STRING="${CLANG_EXECUTABLE}" \
+        -DCLANGPP_EXECUTABLE:STRING="${CLANGPP_EXECUTABLE}" \
+        -DLLVM_AS_EXECUTABLE:STRING="${LLVM_AS_EXECUTABLE}" \
+        -DCMAKE_C_COMPILER:STRING="${CLANG_EXECUTABLE}" \
+        -DCMAKE_CXX_COMPILER:STRING="${CLANGPP_EXECUTABLE}" \
         -DCMAKE_INSTALL_PREFIX=%{_prefix} \
         -DCMAKE_C_FLAGS:STRING="$CFLAGS %{optflags} -fPIE" \
         -DCMAKE_CXX_FLAGS:STRING="$CXXFLAGS %{optflags} -fPIE" \

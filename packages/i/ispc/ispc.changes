@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 15:21:35 UTC 2026 - JS <obs.coke518@passinbox.com>
+
+- Add upper limit to llvm/clang versions and make sure the
+  executables come from the same version.
+  * Switch to cmake(Clang), cmake(LLVM) and libomp-devel-provider
+    for BuildRequires, because non-default llvm/clang packages do
+    not provide {clang,llvm,libomp}-devel without version numbers
+    in the symbol names.
+- Refresh skip-tests.patch, fix test llvm_ident.ispc.
+
+-------------------------------------------------------------------
 Thu Jul 16 21:23:11 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Prepare for building with locked llvm/clang versions similar to
