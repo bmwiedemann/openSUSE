@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:24:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.1.104: 614 template definitions (was 608),
+  the six additions being Nano Banana 2.1 text to image and image
+  edit, Clarity AI crystal upscaler, Kling virtual try-on, and Vidu
+  Q4 Preview image to video and reference to video
+- 590 of the 608 existing definitions are byte-identical; the 18
+  rewritten ones are five templates plus all 13 index files
+  * the three Krea 2 Turbo templates rewrite their prompt-engineer
+    system prompt around a new no-rendered-text rule
+  * api_bfl_flux3_image_bboxes re-rolls its pinned seeds, rewords
+    its edit prompt and moves a bounding box, while
+    utility_image_segment_sam3 wires up its preview outputs
+  * the 13 index files register the six new templates, refresh usage
+    counters and advance all sourceRevision fields to upstream 9d60ee0
+- No code change and no dependency change
+
+-------------------------------------------------------------------
 Sun Oct  4 17:54:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.1.102: 608 template definitions (was 606),

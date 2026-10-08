@@ -237,4 +237,12 @@ entries are re-sorted. Data only, no code or dependency change.</comment>
 - No code or dependency change</comment>
     <requestid>1382393</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>f9effa39f2ac930ade944daf135066dc</srcmd5>
+    <version>0.1.104</version>
+    <time>1791458874</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.1.104: six new workflow templates plus an index refresh. Local build green, rpmlint clean.</comment>
+    <requestid>1383214</requestid>
+  </revision>
 </revisionlist>
