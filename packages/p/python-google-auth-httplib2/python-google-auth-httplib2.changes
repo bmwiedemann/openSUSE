@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 08:35:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 0.4.4
+  * repair broken and stale repository URLs in package metadata (#18498)
+- from version 0.4.3
+  * declare Python3.15 support
+- from version 0.4.2
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642)
+
+-------------------------------------------------------------------
 Thu Aug 13 08:46:33 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 0.4.1

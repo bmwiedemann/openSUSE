@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-httplib2
-Version:        0.4.1
+Version:        0.4.4
 Release:        0
 Summary:        Google Authentication Library: httplib2 transport
 License:        Apache-2.0

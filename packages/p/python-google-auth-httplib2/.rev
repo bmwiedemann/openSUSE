@@ -100,4 +100,17 @@
 - Update BuildRequires from setup.py (forwarded request 1370980 from glaubitz)</comment>
     <requestid>1371016</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>fb8be1c8224f46cfb9f045bf2f69ae56</srcmd5>
+    <version>0.4.4</version>
+    <time>1791467932</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.4.4
+  * repair broken and stale repository URLs in package metadata (#18498)
+- from version 0.4.3
+  * declare Python3.15 support
+- from version 0.4.2
+  * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1383257 from glaubitz)</comment>
+    <requestid>1383299</requestid>
+  </revision>
 </revisionlist>
