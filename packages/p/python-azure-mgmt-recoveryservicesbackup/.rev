@@ -336,4 +336,16 @@
 - Update Requires from setup.py (forwarded request 1370079 from glaubitz)</comment>
     <requestid>1370087</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>2c63dc9af55147e2a79a128ff714bb6b</srcmd5>
+    <version>11.1.0</version>
+    <time>1791453349</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 11.1.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package
+- Update Requires from pyproject.toml (forwarded request 1382978 from glaubitz)</comment>
+    <requestid>1383101</requestid>
+  </revision>
 </revisionlist>
