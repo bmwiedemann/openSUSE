@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:27:17 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.79.2:
+  * Bug Fixes
+    - cleanup: stop import metadata cleanup leaking goroutines
+      (#7864) (5b7332f), closes #7862
+    - release: relabel only merged releases of the current branch
+      (6e73257)
+- Update to version 2.79.1:
+  * Bug Fixes
+    - build: synchronize legacy image metadata (#7892) (d82cd44)
+    - registry: delete Harbor repositories through v2 API (#7891)
+      (2f47707)
+- Update to version 2.79.0:
+  * Features
+    - build: include werf version in the build report (#7859)
+      (851eb02)
+    - deploy: return rendered resources from ReleaseInstall (#7869)
+      (9a6146b)
+  * Bug Fixes
+    - cleanup: avoid slow tag deletion in GitLab registries (#7866)
+      (cdb0a19)
+    - cleanup: preserve retained final images (#7867) (72162e5)
+    - deploy: prevent panic when release deletion fails (#7861)
+      (1015652)
+    - deploy: render included charts at the project root (#7865)
+      (83605cc)
+    - deploy: report the inaccessible events feed through the nelm
+      logger (#7857) (8faf82a)
+
+-------------------------------------------------------------------
 Fri Oct 02 04:51:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.78.2:
