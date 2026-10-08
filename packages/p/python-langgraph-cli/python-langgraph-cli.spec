@@ -16,9 +16,14 @@
 #
 
 
+%if 0%{?suse_version} > 1500
+%bcond_without libalternatives
+%else
+%bcond_with libalternatives
+%endif
 %{?sle15_python_module_pythons}
 Name:           python-langgraph-cli
-Version:        0.4.32
+Version:        0.4.33
 Release:        0
 Summary:        CLI for interacting with the LangGraph API
 License:        MIT
@@ -33,8 +38,13 @@ Requires:       python-httpx >= 0.24.0
 Requires:       python-langgraph-sdk >= 0.1.0
 Requires:       python-pathspec >= 0.11.0
 Requires:       python-python-dotenv >= 0.8.0
+%if %{with libalternatives}
+BuildRequires:  alts
+Requires:       alts
+%else
 Requires(post): update-alternatives
 Requires(postun): update-alternatives
+%endif
 BuildArch:      noarch
 # SECTION test requirements
 BuildRequires:  %{python_module click >= 8.1.7}
@@ -63,6 +73,7 @@ langgraph.json configuration.
 %install
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/langgraph
+%python_group_libalternatives langgraph
 %python_expand $python -m compileall -q -f --invalidation-mode=unchecked-hash -o 0 -o 1 -s %{buildroot} %{buildroot}%{$python_sitelib}/langgraph_cli
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
@@ -78,6 +89,9 @@ langgraph.json configuration.
 
 %postun
 %python_uninstall_alternative langgraph
+
+%pre
+%python_libalternatives_reset_alternative langgraph
 
 %files %{python_files}
 %doc README.md
