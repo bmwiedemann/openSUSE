@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:19:08 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.6.154:
+  * fix: carry git_timeout in the job spec so policy repo clones
+    honor it (#2740)
+- Update to version 0.6.153:
+  * fix: respect git_timeout in drift policy checks (#2739)
+
+-------------------------------------------------------------------
 Thu Oct 01 05:14:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.6.152:
