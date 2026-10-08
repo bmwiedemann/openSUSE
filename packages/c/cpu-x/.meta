@@ -1,0 +1,7 @@
+<package name="cpu-x" project="openSUSE:Factory">
+  <title>CPU-X gathers information on CPU, motherboard and more</title>
+  <description>CPU-X is a system profiling and monitoring application (similar to CPU-Z for Windows), but CPU-X is a Free and Open Source software designed for GNU/Linux and FreeBSD. 
+
+It can be used in graphical mode by using GTK or in text-based mode by using NCurses. A dump mode is present from command line.</description>
+  <url>https://github.com/TheTumultuousUnicornOfDarkness/CPU-X</url>
+</package>
