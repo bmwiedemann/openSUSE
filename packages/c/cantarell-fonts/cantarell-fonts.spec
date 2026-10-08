@@ -17,13 +17,13 @@
 
 
 Name:           cantarell-fonts
-Version:        0.303.1
+Version:        0.311
 Release:        0
 Summary:        Contemporary Humanist Sans Serif Font
 License:        OFL-1.1
 Group:          System/X11/Fonts
 URL:            https://wiki.gnome.org/Projects/CantarellFonts
-Source0:        https://download.gnome.org/sources/cantarell-fonts/0.303/%{name}-%{version}.tar.xz
+Source0:        https://cantarell.gnome.org/releases/%{name}-%{version}.tar.xz
 
 # needed for directory ownership
 BuildRequires:  fontconfig
@@ -51,6 +51,9 @@ for on-screen reading.
 
 %install
 %meson_install
+
+%check
+%meson_test
 
 %reconfigure_fonts_scriptlets
 

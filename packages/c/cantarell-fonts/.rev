@@ -312,4 +312,30 @@
     <comment></comment>
     <requestid>1314016</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>b6f76b4b8dd670f5e4fc09e214529d58</srcmd5>
+    <version>0.311</version>
+    <time>1791465208</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.311:
+  + Also provide a ss01 variant for the &quot;fl&quot; ligature, which I
+    forgot in the last release.
+  + Relax Python version requirements to &gt;= 3.10 when using uv.
+- Changes from version 0.310:
+  + Extend ss01 to all lowercase 'l' characters and add a feature
+    name.
+  + Improve autohinting of 'я' and disable autohinting for 'Ф'
+    because it rendered badly.
+  + Static fonts will now have PANOSE values. They're incomplete,
+    but better than nothing.
+  + The VF will carry a name ID 25 to help e.g. Adobe apps tell it
+    apart from the statics. Maybe it also helps other apps.
+  + Implement soft-dotting for more glyphs.
+  + Remove unreachable glyphs from font, lightening them by a few
+    bytes.
+  + Updated translations.
+- Call %meson_test in %check section: there are currently no tests
+  defined yet though.</comment>
+    <requestid>1383075</requestid>
+  </revision>
 </revisionlist>
