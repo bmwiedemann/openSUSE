@@ -21,7 +21,7 @@
 Name:           jfrog-cli
 Version:        2.126.0
 Release:        0
-Summary:        A client that automates access to the JFrog products
+Summary:        A client that automates access to JFrog products
 License:        Apache-2.0
 URL:            https://github.com/jfrog/jfrog-cli
 Source:         %{name}-%{version}.tar.gz
@@ -37,7 +37,7 @@ JFrog CLI is a compact and smart client that provides a simple interface that
 automates access to Artifactory and Mission Control through their respective
 REST APIs. By using the JFrog CLI, you can greatly simplify your automation
 scripts making them more readable and easier to maintain. Several features of
-the JFrog CLI makes your scripts more efficient and reliable:
+the JFrog CLI make your scripts more efficient and reliable:
 
 - Multithreaded upload and download of artifacts make builds run faster
 - Checksum optimization reduces redundant file transfers
