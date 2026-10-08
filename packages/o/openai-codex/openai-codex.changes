@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:47:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.161.0:
+  * GPT-6.1 Sol is now the default model in the bundled catalog
+  * Sign in to MCP servers from a terminal session with
+    /mcp login <name>
+  * Voice conversations can select microphone, speaker and input
+    channels, saved locally
+  * Approved filesystem escalation grants broader writes while
+    keeping denied reads and network limits; launch permissions
+    survive reconnects
+  * Thread resume includes the latest history; recoverable SQLite
+    corruption is detected earlier with backups preserved
+  * Drop codex-recursion-limit-chatgpt.patch: upstream ships the
+    recursion_limit attribute in codex-chatgpt now
+  * Re-vendored for process-wrap 10.0.0, rmcp 3.3.0 and new
+    file-id: License tag unchanged, audit still shows only the
+    four known RUSTSEC advisories
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+
+-------------------------------------------------------------------
 Tue Oct  6 07:15:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.160.1:

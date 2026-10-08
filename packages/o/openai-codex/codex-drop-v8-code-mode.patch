@@ -30,14 +30,14 @@ Downstream-only distribution policy, not suitable for upstream submission.
      "codex-home",
      "cloud-config",
      "cloud-tasks",
-@@ -109,7 +107,6 @@
+@@ -107,7 +107,6 @@
      "tui",
      "user-verification",
      "tools",
 -    "v8-poc",
      "websocket-auth",
      "websocket-client",
-     "windows-sandbox-service",
+     "windows-sandbox-rs/tests/support",
 @@ -198,7 +195,6 @@
  codex-cloud-tasks-mock-client = { path = "cloud-tasks-mock-client" }
  codex-code-mode = { path = "code-mode" }
@@ -46,14 +46,14 @@ Downstream-only distribution policy, not suitable for upstream submission.
  codex-home = { path = "codex-home" }
  codex-http-client = { path = "http-client" }
  codex-websocket-auth = { path = "websocket-auth" }
-@@ -312,7 +308,6 @@
+@@ -311,7 +310,6 @@
  codex-utils-string = { path = "utils/string" }
  codex-utils-template = { path = "utils/template" }
  codex-user-verification = { path = "user-verification" }
 -codex-v8-poc = { path = "v8-poc" }
  codex-workload-identity = { path = "workload-identity" }
  codex-windows-sandbox = { path = "windows-sandbox-rs" }
- core_test_support = { path = "core/tests/common" }
+ codex-windows-sandbox-test-support = { path = "windows-sandbox-rs/tests/support" }
 @@ -536,7 +531,6 @@
  url = "2"
  urlencoding = "2.1"

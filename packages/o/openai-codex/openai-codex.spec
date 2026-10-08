@@ -17,7 +17,7 @@
 
 
 Name:           openai-codex
-Version:        0.160.1
+Version:        0.161.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
@@ -41,6 +41,11 @@ Summary:        OpenAI Codex coding agent for the terminal
 # 0.160.1 moves no crate at all - Cargo.lock is byte-identical to 0.160.0's
 # and the only source delta is first-party codex code (Apache-2.0) - so the
 # tag above is unchanged by that bump.
+# 0.161.0 moves process-wrap 9.0.1 -> 10.0.0 (Apache-2.0 OR MIT) and
+# rmcp 3.2.0 -> 3.3.0 (Apache-2.0), and adds file-id 0.2.3 (MIT OR
+# Apache-2.0): all elect Apache-2.0, so the tag above is unchanged by
+# that bump. codex-windows-sandbox-test-support is new in the lock
+# but is test-only and is not linked into codex-cli.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
@@ -85,8 +90,6 @@ Patch0:         codex-drop-v8-code-mode.patch
 Patch1:         codex-no-startup-update-check.patch
 # PATCH-FIX-OPENSUSE codex-system-libzstd.patch mpluskal@suse.com -- link zstd-sys against the system libzstd instead of its bundled copy
 Patch2:         codex-system-libzstd.patch
-# PATCH-FIX-OPENSUSE codex-recursion-limit-chatgpt.patch mpluskal@suse.com -- raise the query-depth limit rustc overflows on codex-chatgpt's list_connectors async state machine (toolchain workaround, upstream pins its own toolchain)
-Patch3:         codex-recursion-limit-chatgpt.patch
 BuildRequires:  cargo
 BuildRequires:  cargo-packaging >= 1.2.0
 BuildRequires:  cmake
