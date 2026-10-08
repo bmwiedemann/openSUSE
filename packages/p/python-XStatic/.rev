@@ -32,4 +32,14 @@
     <comment></comment>
     <requestid>1277060</requestid>
   </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>0755f06eafab59fa5faa01b96225060c</srcmd5>
+    <version>1.0.3</version>
+    <time>1791458851</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Do not register pkg_resource-style namespace packages.
+- Sprinkle in fdupes.</comment>
+    <requestid>1383151</requestid>
+  </revision>
 </revisionlist>

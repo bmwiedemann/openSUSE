@@ -1,0 +1,33 @@
+Index: XStatic-1.0.3/setup.py
+===================================================================
+--- XStatic-1.0.3.orig/setup.py
++++ XStatic-1.0.3/setup.py
+@@ -7,8 +7,7 @@ XStatic - setup.py
+ 
+ import os
+ 
+-from setuptools import setup, find_packages
+-import pkg_resources
++from setuptools import setup, find_namespace_packages
+ 
+ # The README.txt file should be written in reST so that PyPI can use
+ # it to generate your project's PyPI page. 
+@@ -39,8 +38,7 @@ setup(
+     author_email='tw@waldmann-edv.de',
+     url='https://github.com/xstatic-py/xstatic',
+     license='MIT license',
+-    packages=find_packages(),
+-    namespace_packages=['xstatic', 'xstatic.pkg', ],
++    packages=find_namespace_packages(exclude=['docs*']),
+     include_package_data=True,
+     zip_safe=False,
+     install_requires=[],  # there should never be a dependency!
+Index: XStatic-1.0.3/xstatic/__init__.py
+===================================================================
+--- XStatic-1.0.3.orig/xstatic/__init__.py
++++ XStatic-1.0.3/xstatic/__init__.py
+@@ -1,4 +1,2 @@
+ # Copyright: 2011-2018 by the XStatic authors, see AUTHORS.txt for details.
+ # License: MIT license, see LICENSE.txt for details.
+-
+-__import__('pkg_resources').declare_namespace(__name__)

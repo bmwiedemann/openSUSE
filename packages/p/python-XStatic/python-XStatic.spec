@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -23,9 +23,12 @@ Summary:        XStatic base package with minimal support code
 License:        MIT
 URL:            https://github.com/xstatic-py/xstatic
 Source:         https://files.pythonhosted.org/packages/source/X/XStatic/XStatic-%{version}.tar.gz
+# PATCH-FIX-OPENSUSE Drop pkg_resources usage, can be dropped when 2.0.0 is released
+Patch0:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
+BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildArch:      noarch
 %python_subpackages
@@ -35,19 +38,21 @@ XStatic is a packaging standard to package external (often 3rd party)
 static files as a Python package.
 
 %prep
-%setup -q -n XStatic-%{version}
+%autosetup -p1 -n XStatic-%{version}
+# Also needs to be removed due to no-more-pkg-resources.patch
+rm -r xstatic/pkg
 
 %build
 %pyproject_wheel
 
 %install
 %pyproject_install
+%python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %files %{python_files}
 %doc README.txt
 %license LICENSE.txt
 %{python_sitelib}/[Xx][Ss]tatic
-%{python_sitelib}/[Xx][Ss]tatic-%{version}*-info
-%{python_sitelib}/[Xx][Ss]tatic-%{version}*nspkg.pth
+%{python_sitelib}/[Xx][Ss]tatic-%{version}.dist-info
 
 %changelog

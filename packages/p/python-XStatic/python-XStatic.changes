@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 04:43:12 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Do not register pkg_resource-style namespace packages.
+- Sprinkle in fdupes.
+
+-------------------------------------------------------------------
 Mon May 12 15:58:46 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
