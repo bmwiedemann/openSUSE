@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Thu Oct  8 07:14:51 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.55.0
+  * declare Python3.15 support
+  * update API sources and regenerate (#18513)
+  * update Compute v1 API to version 2026-09-01 (#18523)
+  * all AggregatedList RPCs behavior is now return_partial_success=true
+  * all AggregatedList RPCs return_partial_success fields removed
+  * remove several enums and fields that no longer exist in the API
+  * see https://docs.cloud.google.com/compute/docs/release-notes
+
+-------------------------------------------------------------------
 Thu Sep 24 13:11:59 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.54.0
