@@ -1,7 +1,7 @@
 #
 # spec file for package python-configshell-fb
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -37,6 +37,7 @@ BuildRequires:  %{python_module wheel}
 BuildRequires:  git
 BuildRequires:  python-rpm-macros
 Requires:       %{_bindir}/env
+Requires:       python-curses
 Requires:       python-pyparsing
 Provides:       python-configshell = %{version}-%{release}
 Obsoletes:      python-configshell < %{version}
