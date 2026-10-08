@@ -9,4 +9,12 @@
 Classic aptX &amp; aptX HD Encoders: In March 2023, Qualcomm open-sourced the source code for both the classic aptX and aptX HD encoders by adding them to the Android Open Source Project (AOSP) under the permissive Apache 2.0 license. This allowed developers to freely compile and integrate the encoders without paying licensing fees to Qualcomm.</comment>
     <requestid>1382139</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>8aad69bf94f2a7fb148bb2dfb7484c96</srcmd5>
+    <version>0.2.2</version>
+    <time>1791453301</time>
+    <user>anag_factory</user>
+    <comment>Add baselibs.conf, 32bit</comment>
+    <requestid>1382661</requestid>
+  </revision>
 </revisionlist>

@@ -16,7 +16,6 @@
 #
 
 
-
 Name:           libfreeaptx
 %define lname   libfreeaptx0
 Version:        0.2.2
@@ -24,12 +23,13 @@ Release:        0
 Summary:        Open Source implementation of Audio Processing Technology codec (aptX)
 License:        LGPL-2.0-or-later
 URL:            https://github.com/regularhunter/libfreeaptx
-Source:         %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source99:       baselibs.conf
 
 BuildRequires:  c_compiler
 BuildRequires:  make
-BuildRequires:  sed
 BuildRequires:  pkgconfig
+BuildRequires:  sed
 
 %description
 This is Open Source implementation of Audio Processing Technology codec (aptX)
