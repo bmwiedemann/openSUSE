@@ -22,7 +22,7 @@
 %bcond_with js
 %endif
 Name:           elinks
-Version:        0.19.1
+Version:        0.20.0
 Release:        0
 Summary:        An advanced and well-established feature-rich text mode web browser
 License:        GPL-2.0-or-later

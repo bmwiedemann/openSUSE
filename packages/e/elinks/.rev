@@ -137,4 +137,38 @@
     <comment>1</comment>
     <requestid>1382458</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>f73916ae6060b917c25b8c50dce7edfd</srcmd5>
+    <version>0.20.0</version>
+    <time>1791465210</time>
+    <user>anag_factory</user>
+    <comment>- update to 0.20.0:
+  * bump mozjs to 140
+  * switch from quickjs to quickjs-ng
+  * Added color &quot;default&quot; in colors settings (e[39m and e[49m
+    sequences)
+  * support for SVG #423
+  * infinite loop in mailcap code #425
+  * Use /usr/bin/env to determine awk interpreter path for awk
+    example scripts #426
+  * skip DNS lookup for local files which have empty hostname
+    #428
+  * check declaration of fgets_unlocked for bionic libc #429
+  * fix parallel build race #431
+  * added document.browse.sorting_type (and let sort
+    &quot;numerically&quot;, for example kernel versions)
+  * increase max number of concurrent connections
+  * extend document.browse.images.display_style, adding value -1
+    (no text)
+  * apply libcss twice (similar to elinks css implementation)
+  * refresh-view, set-mark, goto-mark and onload-oneshot actions
+    for exmode #220
+  * back to smb based on smbclient binary
+
+  * bool options ui.clipboard.remove_leading_spaces and
+  * do not load js scripts if ecmascript is disabled by disallow.txt or
+  (gh#rkd77/elinks#370)
+  * configuration files are now saved to ~/.config/elinks/ or</comment>
+    <requestid>1383093</requestid>
+  </revision>
 </revisionlist>

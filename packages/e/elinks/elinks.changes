@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  7 16:35:00 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.20.0:
+  * bump mozjs to 140
+  * switch from quickjs to quickjs-ng
+  * Added color "default" in colors settings (e[39m and e[49m
+    sequences)
+  * support for SVG #423
+  * infinite loop in mailcap code #425
+  * Use /usr/bin/env to determine awk interpreter path for awk
+    example scripts #426
+  * skip DNS lookup for local files which have empty hostname
+    #428
+  * check declaration of fgets_unlocked for bionic libc #429
+  * fix parallel build race #431
+  * added document.browse.sorting_type (and let sort
+    "numerically", for example kernel versions)
+  * increase max number of concurrent connections
+  * extend document.browse.images.display_style, adding value -1
+    (no text)
+  * apply libcss twice (similar to elinks css implementation)
+  * refresh-view, set-mark, goto-mark and onload-oneshot actions
+    for exmode #220
+  * back to smb based on smbclient binary
+
+-------------------------------------------------------------------
 Wed Sep 30 09:44:48 UTC 2026 - Bernhard Wiedemann <bwiedemann@suse.de>
 
 - Drop __DATE__/__TIME__ replacement based on .changes mtime;
@@ -14,7 +40,7 @@ Sun Mar  1 16:41:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
   * NULL dereference in iframes code (crash at github)
   * Add action move-cursor-line-end
   * bool option document.browse.wrap
-  * bool options ui.clipboard.remove_leading_spaces and 
+  * bool options ui.clipboard.remove_leading_spaces and
     ui.clipboard.remove_trailing_spaces
   * Serbian translation update
   * fix in gopher
@@ -23,7 +49,7 @@ Sun Mar  1 16:41:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
 
 - Update to version 0.19.0:
   * print progress of curl http uploads
-  * do not load js scripts if ecmascript is disabled by disallow.txt or 
+  * do not load js scripts if ecmascript is disabled by disallow.txt or
     allow.txt
   * option document.browse.margin_auto (hard margins)
   * TERM=dumb for js tests
@@ -80,7 +106,7 @@ Fri Feb 28 16:06:11 UTC 2025 - Marius Grossu <marius.grossu@suse.com>
   * redirect also for 308 #343
   * ignore HUBBUB_UNKNOWN #344
 - Add move_ruby_headers.patch: Moved the headers to a ruby.c
-  (gh#rkd77/elinks#370) 
+  (gh#rkd77/elinks#370)
 
 
 -------------------------------------------------------------------
@@ -113,7 +139,7 @@ Sun Jan 14 02:31:22 UTC 2024 - Muhammad Akbar Yanuar Mantari <mantarimay@pm.me>
 - update to 0.17.0:
   * Avoid division by zero. Refs #276
   * fix for some 32-bit systems and select-only builds
-  * configuration files are now saved to ~/.config/elinks/ or 
+  * configuration files are now saved to ~/.config/elinks/ or
     $XDG_CONFIG_HOME/elinks/ #199
   * User must copy files from ~/.elinks/ to ~/.config/elinks/
     himself or herself
