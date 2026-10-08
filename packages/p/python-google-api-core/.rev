@@ -577,4 +577,12 @@
   - Update Requires from pyproject.toml</comment>
     <requestid>1380254</requestid>
   </revision>
+  <revision rev="54" vrev="1">
+    <srcmd5>9e20e642119cee0ec4707e7d7c98787b</srcmd5>
+    <version>2.41.0</version>
+    <time>1791453573</time>
+    <user>anag_factory</user>
+    <comment>1</comment>
+    <requestid>1383241</requestid>
+  </revision>
 </revisionlist>
