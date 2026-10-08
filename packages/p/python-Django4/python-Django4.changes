@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  8 10:23:59 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add security patches:
+  * CVE-2026-87975: an authenticated user permitted to submit a
+    formset to delete rows outside the limiting queryset, without any
+    permission on the targeted object, marking an out-of-queryset
+    object for deletion (bsc#1284471)
+    * CVE-2026-87975.patch
+  * CVE-2026-87890: An incomplete fix for CVE-2026-15307 in Django
+    spatial lookups allows an attacker who can supply `bytes` values
+    to cause the Django process to make network requests via a
+    crafted VRT document (bsc#1284472)
+    * CVE-2026-87890.patch
+  * CVE-2026-84429: potential denial-of-service attack due to
+    quadratic time complexity when parsing a value with many
+    separators inside a quoted parameter (bsc#1284476)
+    * CVE-2026-84429.patch
+  * CVE-2026-77050: potential denial-of-service in
+    `get_supported_language_variant()` when processing many distinct,
+    very long language codes (bsc#1284481)
+    * CVE-2026-77050.patch
+
+-------------------------------------------------------------------
 Wed Aug  5 12:50:13 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Add security patches:

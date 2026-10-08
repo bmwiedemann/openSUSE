@@ -87,6 +87,15 @@ Patch20:        CVE-2026-15337.patch
 Patch21:        CVE-2026-15830.patch
 # PATCH-FIX-UPSTREAM CVE-2026-15920.patch bsc#1273000
 Patch22:        CVE-2026-15920.patch
+# PATCH-FIX-UPSTREAM CVE-2026-77050.patch bsc#1284481
+# combined with bits of https://github.com/django/django/commit/0e94f292cda632153f2b3d9a9037eb0141ae9c2e
+Patch23:        CVE-2026-77050.patch
+# PATCH-FIX-UPSTREAM CVE-2026-84429.patch bsc#1284476
+Patch24:        CVE-2026-84429.patch
+# PATCH-FIX-UPSTREAM CVE-2026-87890.patch bsc#1284472
+Patch25:        CVE-2026-87890.patch
+# PATCH-FIX-UPSTREAM CVE-2026-87975.patch bsc#1284471
+Patch26:        CVE-2026-87975.patch
 BuildRequires:  %{python_module Jinja2 >= 2.9.2}
 BuildRequires:  %{python_module Pillow >= 6.2.0}
 BuildRequires:  %{python_module PyYAML}
