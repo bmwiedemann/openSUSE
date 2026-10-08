@@ -28,7 +28,11 @@ Then, in order:
 1. Check the @opentui/core pin. The spec has a hard equality check in %prep,
    so a moved pin fails the build with an explanatory message rather than
    producing something subtly broken - see "OpenTUI" below. If it moved, bump
-   the opentui package first and update opentui_version here.
+   the opentui package first and update opentui_version here. If instead the
+   opentui package moved ahead of the tag (a lockstep bump), opencode_vendor
+   rebases the tree onto it through upstream's own script/upgrade-opentui.ts
+   before installing; the opentui_version constant at the top of that script
+   is the pin and must match the spec.
 
 2. Rebase the five patches. They are small and all of them sit in code
    upstream changes rarely, but the grammar patch in particular is a single
@@ -86,9 +90,9 @@ something a reviewer should have to work out.
 The keep list
 -------------
 
-opencode-vendor-keep.txt names the 356 store entries the vendor tarball
-keeps, out of the 746 that are left once the filtered install has had the
-platforms we do not build for removed. It is derived, not curated.
+opencode-vendor-keep.txt names the 354 store entries the vendor tarball
+keeps, out of the 2419 a full unfiltered install produces (746 once the
+filtered install has had the platforms we do not build for removed). It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
 the result still links. It applies opencode-relax-bun-version.patch so the
@@ -247,10 +251,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 2.0.23,
-across the 355 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 2.0.24,
+across the 353 shipped packages:
 
-    MIT 197, Apache-2.0 72, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
+    MIT 198, Apache-2.0 69, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
     BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither
@@ -275,7 +279,7 @@ solid-js's h/html/store/universal/web, effect's ai-docs, diff's esm/cjs, and
 tslib's modules - and those manifests carry no name, no version and no license
 field. Counting the first package.json found per entry therefore reports a
 handful of unlicensed packages that are not packages at all; take the manifest
-whose name matches the entry, and count 355 rather than the number of files.
+whose name matches the entry, and count 353 rather than the number of files.
 Separately, poe-oauth 0.0.8 (no license field, no LICENSE file in the npm
 tarball, MIT granted by the root LICENSE of github.com/poe-platform/poe-code)
 left the closure after 1.18.32 and is no longer shipped; if it comes back the
@@ -301,8 +305,8 @@ one of these ways:
     it; there is no such package today, so the prebuilt copy is what ships.
     Note that %%check cannot see it: its embedded-file assertion matches
     only .so, .node and .wasm, so the extensionless entry passes through
-    unasserted. Verified on 2.0.23, where 2.0.22 shipped the same two
-    binaries at 0.1.13.
+unasserted. Verified on 2.0.24, where 2.0.23 shipped the same two
+binaries at 0.2.0.
 
   - Loaded from a package at run time (like libopentui.so): libfff_c.so
     from the fff package (the file finder behind the @ file picker,

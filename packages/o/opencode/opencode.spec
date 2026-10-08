@@ -25,7 +25,7 @@
 # The TypeScript and libopentui.so talk over a private FFI ABI with no
 # versioning of its own, so the runtime opentui package must be the
 # release this tree pins. %%prep checks that this still matches.
-%global opentui_version 0.5.14
+%global opentui_version 0.5.16
 # The two native libraries loaded through bun:ffi at run time. Both ABIs are
 # private to the TypeScript that ships in the vendor tree, so the packages
 # are required at exactly the version that tree was generated from; %%prep
@@ -56,24 +56,22 @@
 %global node_arch arm64
 %endif
 Name:           opencode
-Version:        2.0.23
+Version:        2.0.24
 Release:        0
 Summary:        AI coding agent for the terminal
 # opencode itself is MIT. The npm dependency tree is compiled into the
 # executable, so its licences are part of the binary; see README.SUSE-maint
 # for how the expression below is derived and rechecked on a bump.
-# Legal-Review-Notice: rederived for 2.0.23 from the declared license field
-# of all 355 unique packages in the vendor tarball (356 store entries, one of
+# Legal-Review-Notice: rederived for 2.0.24 from the declared license field
+# of all 353 unique packages in the vendor tarball (354 store entries, one of
 # which is the symlink farm and not a package). No copyleft of any kind. The
-# SPDX set is unchanged; this release lost six Apache-2.0 store entries
-# (four packages: @ai-sdk/provider, @ai-sdk/provider-utils,
-# @ai-sdk/openai-compatible and venice-ai-sdk-provider, the last the
-# native Venice provider replaced) and version-bumped four MIT ones
-# (@opencode-ai/pty 0.1.13 -> 0.2.0, its two -linux-*-gnu packages and
-# bun-pty 0.4.8 -> 0.4.9). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
+# SPDX set is unchanged; this release lost three Apache-2.0 store entries
+# (@ai-sdk/gateway, @ampproject/remapping and @vercel/oidc, replaced by the
+# native Vercel AI Gateway provider) and gained one MIT one
+# (@jridgewell/remapping, the maintained fork). @opencode-ai/pty-linux-{arm64,x64}-gnu ship a
 # prebuilt ELF bin/opencode-pty that ends up embedded in the payload rather
 # than loaded from a package like the rest of the native code; both are MIT
-# and both shipped that way at 2.0.22 too. See README.SUSE-maint "Native code".
+# and both shipped that way at 2.0.23 too. See README.SUSE-maint "Native code".
 # Three conclusions are not visible from the packages themselves:
 # @npmcli/redact says ISC and ships MIT text, abbrev says ISC and its LICENSE
 # says "ISC OR MIT", and caniuse-lite is CC-BY-4.0, whose attribution clause

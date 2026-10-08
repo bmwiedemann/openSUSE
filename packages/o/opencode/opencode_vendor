@@ -23,6 +23,12 @@ set -euo pipefail
 version="${1:?usage: opencode_vendor <opencode-version> [--retrace]}"
 retrace=""
 [[ "${2:-}" == "--retrace" ]] && retrace=1
+# The @opentui/* version the vendor tree is resolved at. Normally this is
+# whatever the tag pins in its catalog block, but the private unversioned
+# FFI ABI ties the tree to the opentui RPM 1:1, so on a lockstep bump this
+# leads and the tag's pin is rebased up to it (same %global opentui_version
+# as the spec). Must stay in sync with the opentui package.
+opentui_version="0.5.16"
 
 here="$(cd "$(dirname "$0")" && pwd)"
 src="$here/opencode-$version.orig.tar.gz"
@@ -58,6 +64,15 @@ trap 'rm -rf "$work"' EXIT
 tar xzf "$src" -C "$work"
 tree="$work/opencode-$version"
 [[ -d $tree ]] || { echo "unexpected tarball layout" >&2; exit 1; }
+
+echo "==> rebasing @opentui to the lockstep version"
+# Upstream's own upgrade script rewrites the catalog pin in every manifest
+# and re-resolves bun.lock, refusing to finish while a stale @opentui entry
+# remains. It runs a full unfiltered install, which the next step repeats
+# filtered; that second install is what the tarball carries.
+( cd "$tree" && bun run script/upgrade-opentui.ts "$opentui_version" >/dev/null )
+pinned=$(python3 -c "import json; print(json.load(open('$tree/package.json'))['workspaces']['catalog']['@opentui/core'])")
+[[ $pinned == "$opentui_version" ]] || { echo "@opentui/core pin is $pinned, want $opentui_version" >&2; exit 1; }
 
 echo "==> installing npm dependencies"
 # --filter restricts the install to the CLI and its build script. Without it

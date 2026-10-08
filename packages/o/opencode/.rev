@@ -424,4 +424,12 @@ aarch64, all 5 patches still apply.</comment>
 - No CVE in the 127-commit range; boo#1280159 is RESOLVED FIXED</comment>
     <requestid>1382573</requestid>
   </revision>
+  <revision rev="20" vrev="1">
+    <srcmd5>7a11d4e4512eeaa8c49403e0e8c7ebff</srcmd5>
+    <version>2.0.24</version>
+    <time>1791458862</time>
+    <user>anag_factory</user>
+    <comment>Update to 2.0.24. LOCKSTEP part 2/2 with the opentui 0.5.16 SR (part 1/2): vendored @opentui/* rebased to 0.5.16, Requires: opentui = 0.5.16.</comment>
+    <requestid>1383227</requestid>
+  </revision>
 </revisionlist>

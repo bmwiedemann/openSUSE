@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:45:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.24 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.23..v2.0.24 tag-to-tag diff)
+  * New native Vercel AI Gateway provider and language models; AI SDK
+    v6 providers are now installed by default, and local provider
+    discovery is shared across vllm, lmstudio and ollama
+  * The TUI surfaces sessions awaiting input at the top of the open
+    menu, untangles crossing branches in mermaid flowcharts and keeps
+    the subagent activity filter across navigation
+  * Subagent text block boundaries are preserved; the portable bash
+    and PowerShell scanners are sound against real shells
+  * Completions-shaped Azure catalog models route to chat and non-text
+    models leave the catalog; MCP OAuth failures reach the callback
+    page; legacy OpenAI OAuth methods are renamed to Codex
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.23..v2.0.24 commit range, which publishes no release notes
+- Lockstep with opentui 0.5.16: the vendored @opentui/* tree is rebased
+  to 0.5.16 through upstream's own script/upgrade-opentui.ts (the tag
+  still pins 0.5.14; the FFI ABI is private and unversioned, so both
+  halves move together). Its tree-sitter surface is unchanged
+- Regenerate the vendor tree: 354 of 2419 store entries kept (was 356).
+  The native Vercel AI Gateway provider replaces its SDK shims and
+  gitlab-ai-provider moves to 6.19.0
+- Legal review re-derived for the new tree: 353 packages, SPDX licence
+  set unchanged (three Apache-2.0 entries out, one MIT in, no copyleft)
+
+-------------------------------------------------------------------
 Mon Oct  5 07:22:12 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.23 (the 2.x line publishes no release objects, so
