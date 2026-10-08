@@ -40,4 +40,14 @@
     <comment></comment>
     <requestid>1277138</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>6d8409aef74efff182fb967799a461fc</srcmd5>
+    <version>3.7.1.1</version>
+    <time>1791458849</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.7.1.1:
+  * Do not use pkg_resources namespace packaging.
+- Convert to noarch, we don't build any binaries.</comment>
+    <requestid>1383146</requestid>
+  </revision>
 </revisionlist>
