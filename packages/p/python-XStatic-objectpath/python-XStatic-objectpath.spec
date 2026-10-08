@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-objectpath
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           python-XStatic-objectpath
-Version:        1.2.1.0
+Version:        1.2.1.1
 Release:        0
 Summary:        AngularJS library "objectpath" repackaged for the XStatic standard
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://github.com/mike-marcacci/objectpath
-Source:         https://files.pythonhosted.org/packages/source/X/XStatic-objectpath/XStatic-objectpath-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/X/XStatic-objectpath/xstatic_objectpath-%{version}.tar.gz
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
@@ -39,7 +38,7 @@ There are otherwise no changes.
 You can find more info about the xstatic packaging way in the package `XStatic`.
 
 %prep
-%setup -q -n XStatic-objectpath-%{version}
+%setup -q -n xstatic_objectpath-%{version}
 
 %build
 %pyproject_wheel
@@ -53,7 +52,6 @@ You can find more info about the xstatic packaging way in the package `XStatic`.
 %dir %{python_sitelib}/xstatic
 %dir %{python_sitelib}/xstatic/pkg
 %{python_sitelib}/xstatic/pkg/objectpath
-%{python_sitelib}/[Xx][Ss]tatic[-_]objectpath-%{version}*-info
-%{python_sitelib}/[Xx][Ss]tatic[-_]objectpath-%{version}*nspkg.pth
+%{python_sitelib}/[Xx][Ss]tatic[-_]objectpath-%{version}.dist-info
 
 %changelog
