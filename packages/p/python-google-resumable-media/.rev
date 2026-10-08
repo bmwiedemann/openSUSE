@@ -341,4 +341,13 @@
   * **handwritten:** centralize CONTRIBUTING.rst pointers (#17642) (forwarded request 1375586 from glaubitz)</comment>
     <requestid>1375617</requestid>
   </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>0ee6c83581f0273c7f042b864878e10c</srcmd5>
+    <version>2.11.0</version>
+    <time>1791467928</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.11.0
+  * declare Python3.15 support (forwarded request 1383284 from glaubitz)</comment>
+    <requestid>1383297</requestid>
+  </revision>
 </revisionlist>
