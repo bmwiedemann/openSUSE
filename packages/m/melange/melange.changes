@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:26:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.62.0:
+  * feat(build): add --exclude-env-from-recorded-config flag
+    (#2688)
+
+-------------------------------------------------------------------
 Tue Oct 06 04:45:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.61.4:
