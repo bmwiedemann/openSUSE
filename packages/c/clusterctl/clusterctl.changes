@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:14:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.3:
+  * Others
+    - clusterctl: Bump cert-manager to v1.21.2 (#14238)
+    - Dependency: Bump grpc to 1.83.2 to address security
+      advisories (#14243)
+    - Dependency: Update Otel version to v1.45.0 (#14315)
+    - Runtime SDK: Improve discovery (#14261)
+
+-------------------------------------------------------------------
 Sun Sep 20 07:07:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.2:
