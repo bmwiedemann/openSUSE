@@ -445,4 +445,17 @@
     <comment>Push GNOME 50</comment>
     <requestid>1345430</requestid>
   </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>b328e5e51e84a85f12e467bd6fe5f516</srcmd5>
+    <version>0.14.7</version>
+    <time>1791453311</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 0.14.7:
+  * Fix crash when opening a file without preview images after one with preview
+    images.
+- Update version dependencies according to meson.build.
+
+- Add libtool as explicit BuildRequires to avoid implicit</comment>
+    <requestid>1382832</requestid>
+  </revision>
 </revisionlist>

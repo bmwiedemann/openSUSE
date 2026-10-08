@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct  6 11:14:07 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 0.14.7:
+  * Fix crash when opening a file without preview images after one with preview
+    images.
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Fri Mar 27 12:12:04 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Disable python3 bindings for Tumbleweed, where the python
@@ -462,7 +470,7 @@ Sat Feb 11 12:35:45 UTC 2012 - dimstar@opensuse.org
 -------------------------------------------------------------------
 Sun Nov 13 09:16:42 UTC 2011 - coolo@suse.com
 
-- Add libtool as explicit BuildRequires to avoid implicit 
+- Add libtool as explicit BuildRequires to avoid implicit
   dependency from prjconf.
 
 -------------------------------------------------------------------

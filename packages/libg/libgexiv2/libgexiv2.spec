@@ -25,7 +25,7 @@
 %endif
 
 Name:           libgexiv2
-Version:        0.14.6
+Version:        0.14.7
 Release:        0
 Summary:        A GObject-based Exiv2 wrapper
 License:        GPL-2.0-or-later
@@ -44,8 +44,8 @@ BuildRequires:  python3-devel
 BuildRequires:  python3-gobject-devel
 %endif
 BuildRequires:  pkgconfig(exiv2) >= 0.26
-BuildRequires:  pkgconfig(gio-2.0) >= 2.32.0
-BuildRequires:  pkgconfig(gobject-2.0) >= 2.38.0
+BuildRequires:  pkgconfig(gio-2.0) >= 2.46.0
+BuildRequires:  pkgconfig(gobject-2.0) >= 2.46.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0)
 BuildRequires:  pkgconfig(vapigen)
 
