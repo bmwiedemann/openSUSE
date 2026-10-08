@@ -1003,4 +1003,41 @@
   + Updated translations.</comment>
     <requestid>1370958</requestid>
   </revision>
+  <revision rev="132" vrev="2">
+    <srcmd5>3e2abd71344a1365e5692e2b07eb7d36</srcmd5>
+    <version>49.2</version>
+    <time>1791453304</time>
+    <user>anag_factory</user>
+    <comment>- Update version dependencies according to meson.build.
+
+  + Updated location for appdata screenshot.
+  + Updated translations.
+  %suse_update_desktop_file, so no need to patch.
+    #462440, #462813, #450168, #463281, #458693, and #462056
+- Test programs are disabled for now.
+- Merge of the yelp rework branch.
+- New themes are working now.
+- Search across is using Rarian now.
+  opensuse-manual and opensuse-gnomeuser docs.
+- translation updates
+- translation updates
+- fix big memory leak (use xmlFreeDoc, not xmlFree)
+- Fixed mozilla/xulrunner/xulrunner180 dependencies
+- build with xulrunner
+- Update to version 2.11.92
+- move code from previous change from post to install section
+- Remove upstreamed patch
+- Update to version 2.10.0
+- Update to version 2.9.3
+- updated to version 2.4.2 [GNOME2.4.2]
+- updated to 2.4.0 (translation release)
+- added directories to filelist
+- updated to version 2.2.0 [GNOME 2.2.0]
+	* improved translation and updates
+- removed wrapper script
+- updated to stable version 1.0.6
+	* Fixed a bug that caused Yelp to segfault on
+	  startup if you used MANPATH instead of</comment>
+    <requestid>1382690</requestid>
+  </revision>
 </revisionlist>

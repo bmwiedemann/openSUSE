@@ -40,7 +40,7 @@ BuildRequires:  pkgconfig(gtk+-unix-print-3.0)
 BuildRequires:  pkgconfig(gtk4) >= 4.16.0
 BuildRequires:  pkgconfig(libadwaita-1) >= 1.6.0
 BuildRequires:  pkgconfig(libhandy-1)
-BuildRequires:  pkgconfig(liblzma)
+BuildRequires:  pkgconfig(liblzma) >= 4.9
 BuildRequires:  pkgconfig(libxml-2.0) >= 2.6.5
 BuildRequires:  pkgconfig(libxslt) >= 1.1.4
 BuildRequires:  pkgconfig(sqlite3)

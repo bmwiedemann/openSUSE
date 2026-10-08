@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 19:48:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Aug 10 10:35:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 49.2:
@@ -107,7 +112,7 @@ Thu Mar 31 11:44:11 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 42.1:
   + Fixed URI parsing issue that can lead to crash.
-  + Updated location for appdata screenshot. 
+  + Updated location for appdata screenshot.
 - Drop yelp-ghelp.patch: fixed upstream.
 
 -------------------------------------------------------------------
@@ -659,7 +664,7 @@ Sat Mar  8 10:37:38 UTC 2014 - zaitor@opensuse.org
 
 - Update to version 3.10.2:
   + Fixed critical crasher after closing windows.
-  + Updated translations. 
+  + Updated translations.
 
 -------------------------------------------------------------------
 Tue Oct 15 14:30:41 UTC 2013 - dimstar@opensuse.org
@@ -1414,7 +1419,7 @@ Mon Jun 23 18:13:19 CEST 2008 - maw@suse.de
 Wed May  7 12:58:20 CEST 2008 - vuntz@suse.de
 
 - Drop yelp-desktop.patch: the generic name is set via
-  %suse_update_desktop_file, so no need to patch. 
+  %suse_update_desktop_file, so no need to patch.
 
 -------------------------------------------------------------------
 Mon Apr 28 20:03:34 CEST 2008 - maw@suse.de
@@ -1510,7 +1515,7 @@ Fri Aug 31 18:49:48 CEST 2007 - maw@suse.de
   + Register EXSLT extensions
   + Other bugs (bugzilla.gnome.org) fixed: #447107, #431078,
     #430365, #381431, #364768, #370167, #358825, #464295, #457082,
-    #462440, #462813, #450168, #463281, #458693, and #462056 
+    #462440, #462813, #450168, #463281, #458693, and #462056
   + Updated translations.
 
 -------------------------------------------------------------------
@@ -1529,11 +1534,11 @@ Sat Aug  4 00:13:53 CEST 2007 - maw@suse.de
 Fri Aug  3 22:07:57 CEST 2007 - mauro@suse.de
 
 - Update to version 2.19.2
-- Test programs are disabled for now. 
-- Merge of the yelp rework branch. 
-- New themes are working now. 
+- Test programs are disabled for now.
+- Merge of the yelp rework branch.
+- New themes are working now.
 - Make loading of files directly work again.
-- Search across is using Rarian now. 
+- Search across is using Rarian now.
 - mp-search-parser.patch was added to fix search-parser.c
 
 -------------------------------------------------------------------
@@ -1604,7 +1609,7 @@ Wed Nov  1 07:59:00 CET 2006 - hpj@suse.de
 Wed Oct 18 21:31:09 CEST 2006 - jhargadon@suse.de
 
 - modified yelp-2.14.0-process-suse-manuals.patch to include
-  opensuse-manual and opensuse-gnomeuser docs. 
+  opensuse-manual and opensuse-gnomeuser docs.
 
 -------------------------------------------------------------------
 Sat Oct 14 19:13:10 CEST 2006 - danw@suse.de
@@ -1625,7 +1630,7 @@ Tue Oct  3 21:32:44 CEST 2006 - jhargadon@suse.de
 - Set initial caret state properly in prefs
 - Fix build with gecko trunk
 - Prefer xulrunner over mozilla
-- translation updates 
+- translation updates
 
 -------------------------------------------------------------------
 Fri Sep 15 00:35:40 CEST 2006 - jhargadon@suse.de
@@ -1638,7 +1643,7 @@ Fri Sep 15 00:35:40 CEST 2006 - jhargadon@suse.de
 - Other info file fixes
 - Fix crash when apropos goes nuts, fixes bug #347467
 - Fix crash on CVS info file
-- translation updates 
+- translation updates
 - added patch to eliminate autobuild warnings in src/yelp-main.c
 
 -------------------------------------------------------------------
@@ -1655,12 +1660,12 @@ Fri Aug 25 23:35:19 CEST 2006 - jhargadon@suse.de
 - On demands page loads for TOC
 - Expand/collapse on double-click.
 - Fix to properly escape ampersand characters
-- fix big memory leak (use xmlFreeDoc, not xmlFree) 
+- fix big memory leak (use xmlFreeDoc, not xmlFree)
 
 -------------------------------------------------------------------
 Fri Jul  7 05:33:39 CEST 2006 - lrupp@suse.de
 
-- Fixed mozilla/xulrunner/xulrunner180 dependencies 
+- Fixed mozilla/xulrunner/xulrunner180 dependencies
 
 -------------------------------------------------------------------
 Tue May 23 03:12:28 CEST 2006 - hpj@suse.de
@@ -1773,7 +1778,7 @@ Thu Feb 16 19:20:48 CET 2006 - joeshaw@suse.de
 - Update package to 2.13.5 (fixes bnc 151224 and other 64-bit
   issues)
 - Regenerate SUSE yelp patch against it.
- 
+
 Upstream changelog:
 Changes in 2.13.5:
 * Reverted a11y patch due to issues finding registry      (Brent Smith)
@@ -1903,7 +1908,7 @@ Thu Oct 13 23:04:31 CEST 2005 - gekker@suse.de
 -------------------------------------------------------------------
 Thu Oct 13 16:20:51 CEST 2005 - ro@suse.de
 
-- build with xulrunner 
+- build with xulrunner
 
 -------------------------------------------------------------------
 Thu Oct  6 21:05:15 CEST 2005 - gekker@suse.de
@@ -1933,7 +1938,7 @@ Tue Sep  6 12:46:08 CEST 2005 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Wed Aug 24 22:29:11 CEST 2005 - gekker@suse.de
 
-- Update to version 2.11.92 
+- Update to version 2.11.92
 - Rediff yelp-updates.patch so that it applies agains the new version
 
 -------------------------------------------------------------------
@@ -1956,7 +1961,7 @@ Fri Aug 19 23:56:35 CEST 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Fri Aug 19 12:24:44 CEST 2005 - ro@suse.de
 
-- move code from previous change from post to install section 
+- move code from previous change from post to install section
 
 -------------------------------------------------------------------
 Tue Aug 16 15:33:53 CEST 2005 - sbrabec@suse.cz
@@ -1973,7 +1978,7 @@ Fri Jul 29 22:52:39 CEST 2005 - clahey@suse.de
 Sat Jul 23 00:39:08 CEST 2005 - gekker@suse.de
 
 - Update to version 2.11.1
-- Remove upstreamed patch 
+- Remove upstreamed patch
 
 -------------------------------------------------------------------
 Tue Jul 19 15:09:11 CEST 2005 - jpr@suse.de
@@ -1988,7 +1993,7 @@ Wed Jul  6 21:10:01 CEST 2005 - clahey@suse.de
 -------------------------------------------------------------------
 Wed Jun 22 19:44:09 CEST 2005 - gekker@suse.de
 
-- Update to version 2.10.0 
+- Update to version 2.10.0
 - Fix warnings
 
 -------------------------------------------------------------------
@@ -1999,7 +2004,7 @@ Wed Feb 16 16:27:44 CET 2005 - ke@suse.de
 -------------------------------------------------------------------
 Mon Feb  7 19:43:04 CET 2005 - gekker@suse.de
 
-- Update to version 2.9.3 
+- Update to version 2.9.3
 
 -------------------------------------------------------------------
 Mon Jan 24 05:02:53 CET 2005 - clahey@suse.de
@@ -2040,7 +2045,7 @@ Fri Feb 20 15:51:45 CET 2004 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Mon Feb  9 15:43:49 CET 2004 - hhetter@suse.de
 
-- updated to version 2.4.2 [GNOME2.4.2] 
+- updated to version 2.4.2 [GNOME2.4.2]
 
 -------------------------------------------------------------------
 Sat Jan 10 16:48:04 CET 2004 - adrian@suse.de
@@ -2055,7 +2060,7 @@ Mon Oct 27 15:23:53 CET 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Sep  9 16:40:20 CEST 2003 - hhetter@suse.de
 
-- updated to 2.4.0 (translation release) 
+- updated to 2.4.0 (translation release)
 
 -------------------------------------------------------------------
 Fri Aug 15 13:58:53 CEST 2003 - adrian@suse.de
@@ -2082,12 +2087,12 @@ Thu Jun 26 15:58:28 CEST 2003 - sbrabec@suse.cz
 -------------------------------------------------------------------
 Tue Jun 17 01:03:35 CEST 2003 - ro@suse.de
 
-- added directories to filelist 
+- added directories to filelist
 
 -------------------------------------------------------------------
 Fri Feb  7 11:55:36 CET 2003 - hhetter@suse.de
 
-- updated to version 2.2.0 [GNOME 2.2.0] 
+- updated to version 2.2.0 [GNOME 2.2.0]
 
 -------------------------------------------------------------------
 Thu Jan 16 10:16:27 CET 2003 - sbrabec@suse.cz
@@ -2098,8 +2103,8 @@ Thu Jan 16 10:16:27 CET 2003 - sbrabec@suse.cz
 Tue Nov 19 08:28:42 CET 2002 - hhetter@suse.de
 
 - updated to version 1.0.7
-	* improved translation and updates 
-- removed wrapper script 
+	* improved translation and updates
+- removed wrapper script
 
 -------------------------------------------------------------------
 Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
@@ -2109,7 +2114,7 @@ Mon Nov 11 23:49:54 CET 2002 - ro@suse.de
 -------------------------------------------------------------------
 Wed Oct 23 10:17:03 CEST 2002 - hhetter@suse.de
 
-- updated to stable version 1.0.6 
+- updated to stable version 1.0.6
 - FHS fix
 
 -------------------------------------------------------------------
@@ -2126,16 +2131,16 @@ Thu Sep 19 11:02:31 CEST 2002 - sbrabec@suse.cz
 Wed Aug 14 10:12:00 CEST 2002 - hhetter@suse.de
 
 - updated to version 1.0.3
-	* Fixed a bug that caused Yelp to segfault on 
-	  startup if you used MANPATH instead of 
-	  manpath                                     
-	* Stylesheet improvments                    
-	* Updated translations (pt)               
+	* Fixed a bug that caused Yelp to segfault on
+	  startup if you used MANPATH instead of
+	  manpath
+	* Stylesheet improvments
+	* Updated translations (pt)
 
 -------------------------------------------------------------------
 Wed Aug  7 13:15:00 CEST 2002 - hhetter@suse.de
 
-- updated to version 1.0.2 
+- updated to version 1.0.2
 	* libexec movement
 	* translation updates
 
@@ -2148,20 +2153,20 @@ Mon Jul 29 11:51:59 CEST 2002 - hhetter@suse.de
 Wed Jun 19 15:52:45 CEST 2002 - hhetter@suse.de
 
 - updated to version 1.0.1
-	* translation updates 
+	* translation updates
 
 -------------------------------------------------------------------
 Tue Jun 11 11:00:01 CEST 2002 - hhetter@suse.de
 
-- updated to version 1.0 
+- updated to version 1.0
 
 -------------------------------------------------------------------
 Wed Jun  5 23:34:14 CEST 2002 - ro@suse.de
 
-- use libdir for configure 
+- use libdir for configure
 
 -------------------------------------------------------------------
 Wed Jun  5 15:13:01 CEST 2002 - hhetter@suse.de
 
-- initial SuSE Release 
+- initial SuSE Release
 
