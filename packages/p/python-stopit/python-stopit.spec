@@ -1,7 +1,7 @@
 #
 # spec file for package python-stopit
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -28,6 +28,8 @@ Source1:        https://raw.githubusercontent.com/glenfant/stopit/refs/tags/%{ve
 Source2:        https://raw.githubusercontent.com/glenfant/stopit/refs/tags/%{version}/LICENSE
 # PATCH-FIX-UPSTREAM
 Patch0:         https://github.com/glenfant/stopit/commit/dda4bd181d1d29ab1fb22314dc9bde0e3c931abc.patch#/python-stopit-ulong-for-thread-id.patch
+# PATCH-FIX-OPENSUSE Use importlib.metadata
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -63,7 +65,7 @@ $python tests.py
 %files %{python_files}
 %license LICENSE
 %doc CHANGES.rst README.rst
-%{python_sitelib}/%{modname}/
-%{python_sitelib}/%{modname}-%{version}*.*-info
+%{python_sitelib}/%{modname}
+%{python_sitelib}/%{modname}-%{version}.dist-info
 
 %changelog

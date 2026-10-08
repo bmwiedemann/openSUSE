@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  1 02:17:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata to discover the version.
+
+-------------------------------------------------------------------
 Tue Feb  4 15:44:08 UTC 2025 - Atri Bhattacharya <badshah400@gmail.com>
 
 - Add python-stopit-ulong-for-thread-id.patch: Use ulong for
