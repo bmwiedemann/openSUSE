@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Wed Oct 07 16:25:07 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 1.1.0+git20261007.d929392:
+  * Release version 1.1.0
+  * image: add rdii version to menu entry
+  * Don't show sysext images in the filter by default
+  * Added filter for selecting online images (#24)
+
+-------------------------------------------------------------------
 Tue Sep 29 12:45:26 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - keywait: add conflict with ucommon 

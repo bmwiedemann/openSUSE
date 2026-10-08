@@ -16,7 +16,7 @@
 #
 
 Name:           rdi-installer
-Version:        1.0.0+git20260923.8f88a3f
+Version:        1.1.0+git20261007.d929392
 Release:        0
 Summary:        Utility to write disk images to hard disk
 License:        MIT
