@@ -16,11 +16,11 @@
 #
 
 
-%define realversion 15.1.0b2
+%define realversion 15.1.0b3
 
 %{?sle15_python_module_pythons}
 Name:           python-azure-mgmt-containerregistry
-Version:        15.1.0~b2
+Version:        15.1.0~b3
 Release:        0
 Summary:        Microsoft Azure Container Registry Client Library
 License:        MIT

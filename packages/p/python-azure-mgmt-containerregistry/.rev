@@ -337,4 +337,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1369530 from glaubitz)</comment>
     <requestid>1369545</requestid>
   </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>691d3dca3c7e8335fd9f3338bda5c9cf</srcmd5>
+    <version>15.1.0~b3</version>
+    <time>1791453346</time>
+    <user>anag_factory</user>
+    <comment>- New upstream release
+  + Version 15.1.0b3
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1382976 from glaubitz)</comment>
+    <requestid>1383100</requestid>
+  </revision>
 </revisionlist>
