@@ -17,7 +17,7 @@
 
 
 Name:           hyperfine
-Version:        1.20.0
+Version:        1.21.0
 Release:        0
 Summary:        Command-line benchmarking tool
 License:        Apache-2.0 OR MIT
@@ -25,7 +25,7 @@ URL:            https://github.com/sharkdp/%{name}
 Source0:        https://github.com/sharkdp/hyperfine/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
 BuildRequires:  cargo-packaging
-BuildRequires:  rust >= 1.88
+BuildRequires:  rust >= 1.97
 BuildRequires:  zstd
 
 %description
