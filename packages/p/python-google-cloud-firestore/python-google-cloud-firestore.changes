@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:28:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.34.0
+  * declare Python3.15 support
+- from version 2.33.0
+  * **firestore:** add BSON cross-type query ordering support (#18405)
+  * **firestore:** add BSON read deserialization support (#18402)
+  * **firestore:** add PyMongo duck-typing serialization support (#18406)
+- from version 2.32.0
+  * **firestore:** add BSONBinary support (#18389)
+  * **firestore:** add BSONDecimal128 support (#18395)
+  * **firestore:** add BSONRegex support (#18394)
+  * **firestore:** add BSONTimestamp support (#18390)
+
+-------------------------------------------------------------------
 Thu Sep 24 13:26:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.31.0
