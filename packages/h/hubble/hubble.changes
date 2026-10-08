@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Thu Oct 08 04:56:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.20.2 (no releases between 1.19.4 and this):
+  * Bugfixes:
+    - Fix Hubble flow compact output for policy verdict events with
+      default field masks (cilium/cilium#46672)
+  * Misc Changes:
+    - chore(deps): update dependency cilium/cilium to v1.20.2
+      (#1824)
+    - chore(deps): update dependency helm/helm to v4.3.0 (#1822)
+    - chore(deps): update go toolchain directive to v1.26.6 (#1813)
+    - chore(deps): update golang to v1.27.1 (#1820)
+    - chore(deps): update library/golang:1.27.1-alpine docker
+      digest to 8a5910f (#1823)
+    - chore(deps): update module github.com/google/cel-go to
+      v0.29.0 [security] (#1810)
+    - chore(deps): update module go.mongodb.org/mongo-driver to
+      v1.17.7 [security] (#1797)
+    - chore(deps): update module golang.org/x/net to v0.55.0
+      [security] (#1805)
+    - chore(deps): update module google.golang.org/grpc to v1.83.2
+      [security] (#1821)
+
+-------------------------------------------------------------------
 Mon Jun 08 05:27:58 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.19.4:

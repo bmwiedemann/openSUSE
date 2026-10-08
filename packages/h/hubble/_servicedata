@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/cilium/hubble</param>
-              <param name="changesrevision">39037bdd6cb6acb02a241dde33b5ffcf0e8471e2</param></service></servicedata>
+              <param name="changesrevision">39037bdd6cb6acb02a241dde33b5ffcf0e8471e2</param></service><service name="tar_scm">
+                <param name="url">https://github.com/cilium/hubble.git</param>
+              <param name="changesrevision">90adec13bd28db3eb2671dd0629116640e21b26f</param></service></servicedata>
