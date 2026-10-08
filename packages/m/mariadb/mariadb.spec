@@ -407,7 +407,12 @@ cat %{SOURCE50} | tee -a mysql-test/unstable-tests
 
 %build
 %global _lto_cflags %{_lto_cflags} -ffat-lto-objects
-%cmake -DWITH_SSL=system                                            \
+# -DSECURITY_HARDENED=OFF: upstream would add -fstack-protector (basic)
+# via SECURITY_HARDENED, downgrading -fstack-protector-strong from %{optflags}.
+# Distro optflags already provide -fPIE/-pie, -Wl,-z,relro,-z,now and
+# -D_FORTIFY_SOURCE=3 (stronger than upstream's level 2).
+%cmake -DSECURITY_HARDENED=OFF \
+       -DWITH_SSL=system                                            \
        -DWITH_LIBWRAP=ON                                            \
        -DENABLED_PROFILING=ON                                       \
        -DENABLE_DEBUG_SYNC=OFF                                      \

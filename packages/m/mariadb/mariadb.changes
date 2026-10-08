@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Sep 29 09:12:27 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Disable upstream SECURITY_HARDENED (would append -fstack-protector
+  basic, downgrading -fstack-protector-strong from distro optflags;
+  optflags already provide -fPIE/-pie, -z relro/now and
+  -D_FORTIFY_SOURCE=3).
+
+-------------------------------------------------------------------
 Mon Sep 14 07:28:51 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
 
 - Ignore multiple perfschema.* tests on armv7
