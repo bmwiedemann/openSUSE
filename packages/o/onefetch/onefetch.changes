@@ -1,13 +1,35 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:34:26 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 3.0.0:
+  Breaking Changes:
+  * JSON/YAML output (-o json, -o yaml) now contains raw values instead of display text:
+    + creationDate and lastChange are always ISO 8601 timestamps
+      ("2018-09-14T18:51:00Z"). Previously they were relative text ("8 years
+      ago") unless --iso-time was passed.
+    + repoSize is a number of bytes (2161012) instead of formatted text ("2.06 MiB").
+    + dependencies is replaced by numberOfDependencies (number) and
+      manifestType ("Cargo", "Npm", "PyProject", or null when there is no manifest).
+  * onefetch-manifest crate: ManifestType has a new PyProject variant.
+  Security Fix:
+  * Fix terminal escape sequence injection through repository data (CVE-2026-100866) #1829
+  New Features:
+  * Add pyproject.toml manifest support (PEP 621) #1842
+  * Update Elixir colors to the official brand color #1868
+  Bug Fixes:
+  * Use the default remote for the repository URL #1873
+  * Exit with clear error message when repository uses reftable #1853
+
+-------------------------------------------------------------------
 Mon Aug 31 06:32:46 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.28.1:
+- Update to 2.28.1:
   * Fix CD pipeline
 
 -------------------------------------------------------------------
 Mon Aug 31 06:31:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.28.0:
+- Update to 2.28.0:
   New Features:
   * Add language support for Just b0b9742
   * Add language support for Mojo #1500
@@ -19,13 +41,13 @@ Mon Aug 31 06:31:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Tue Mar 24 08:17:23 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.27.1:
+- Update to 2.27.1:
   * Fix CD pipeline
 
 -------------------------------------------------------------------
 Tue Mar 24 08:16:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.27.0:
+- Update to 2.27.0:
   New Features:
   * add language support for Nushell #1687
   * add language support for Slint #1710
@@ -37,13 +59,13 @@ Tue Mar 24 08:16:37 UTC 2026 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Tue Jan 20 08:05:45 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.26.1:
+- Update to 2.26.1:
   * Fix CD pipeline
 
 -------------------------------------------------------------------
 Tue Jan 20 08:04:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.26.0:
+- Update to 2.26.0:
   New Features:
   * Add colors to --help #1633
   Chores:
@@ -56,7 +78,7 @@ Tue Jan 20 08:04:33 UTC 2026 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Wed Jul  9 06:22:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.25.0:
+- Update to 2.25.0:
   New Features:
   * add language support for Text #1579
   * support repos "without source code" #1580
@@ -69,7 +91,7 @@ Wed Jul  9 06:22:16 UTC 2025 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Sun Apr 13 18:49:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.24.0:
+- Update to 2.24.0:
   * add language support for Lean #1509
   * add language support for Typst #1508
   * add language support for Razor #1521
@@ -81,13 +103,13 @@ Sun Apr 13 18:49:49 UTC 2025 - Michael Vetter <mvetter@suse.com>
 -------------------------------------------------------------------
 Tue Jan  7 13:08:54 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.23.1:
+- Update to 2.23.1:
   * Fix version in man page
 
 -------------------------------------------------------------------
 Tue Jan  7 13:07:52 UTC 2025 - Michael Vetter <mvetter@suse.com>
 
-- Update to 0.23.0:
+- Update to 2.23.0:
   New Features:
   * add language support for OpenSCAD #1502
   * add language support for Modelica #1262

@@ -3,7 +3,7 @@
     <param name="url">https://github.com/o2sh/onefetch.git</param>
     <param name="versionformat">@PARENT_TAG@</param>
     <param name="scm">git</param>
-    <param name="revision">2.28.1</param>
+    <param name="revision">3.0.0</param>
     <param name="match-tag">*</param>
     <param name="versionrewrite-pattern">v(\d+\.\d+\.\d+)</param>
     <param name="versionrewrite-replacement">\1</param>
@@ -22,5 +22,8 @@
   </service>
   <service name="cargo_audit" mode="disabled">
      <param name="srcdir">onefetch</param>
+  </service>
+  <service name="go_modules" mode="manual">
+    <param name="replace">github.com/cloudflare/circl=github.com/cloudflare/circl@v0.59.2</param>
   </service>
 </services>

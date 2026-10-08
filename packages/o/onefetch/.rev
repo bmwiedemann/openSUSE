@@ -553,4 +553,40 @@
   * Prevent churn calculation from returning an error on partial clones #1736</comment>
     <requestid>1374789</requestid>
   </revision>
+  <revision rev="32" vrev="1">
+    <srcmd5>ff7421eb42963f680324ee4e21d79f31</srcmd5>
+    <version>3.0.0</version>
+    <time>1791465246</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.0.0:
+  Breaking Changes:
+  * JSON/YAML output (-o json, -o yaml) now contains raw values instead of display text:
+    + creationDate and lastChange are always ISO 8601 timestamps
+      (&quot;2018-09-14T18:51:00Z&quot;). Previously they were relative text (&quot;8 years
+      ago&quot;) unless --iso-time was passed.
+    + repoSize is a number of bytes (2161012) instead of formatted text (&quot;2.06 MiB&quot;).
+    + dependencies is replaced by numberOfDependencies (number) and
+      manifestType (&quot;Cargo&quot;, &quot;Npm&quot;, &quot;PyProject&quot;, or null when there is no manifest).
+  * onefetch-manifest crate: ManifestType has a new PyProject variant.
+  Security Fix:
+  * Fix terminal escape sequence injection through repository data (CVE-2026-100866) #1829
+  New Features:
+  * Add pyproject.toml manifest support (PEP 621) #1842
+  * Update Elixir colors to the official brand color #1868
+  Bug Fixes:
+  * Use the default remote for the repository URL #1873
+  * Exit with clear error message when repository uses reftable #1853
+
+- Update to 2.28.1:
+- Update to 2.28.0:
+- Update to 2.27.1:
+- Update to 2.27.0:
+- Update to 2.26.1:
+- Update to 2.26.0:
+- Update to 2.25.0:
+- Update to 2.24.0:
+- Update to 2.23.1:
+- Update to 2.23.0:</comment>
+    <requestid>1383303</requestid>
+  </revision>
 </revisionlist>
