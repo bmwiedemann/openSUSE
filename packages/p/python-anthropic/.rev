@@ -284,4 +284,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
 </comment>
     <requestid>1381938</requestid>
   </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>0c07d59485c4dbe649f30e99f5ec36ae</srcmd5>
+    <version>1.12.1</version>
+    <time>1791453568</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.12.1: new model ids and tool-call types, RBAC display_name deprecates name, chores-only 1.12.1. Local build green, rpmlint clean.</comment>
+    <requestid>1383211</requestid>
+  </revision>
 </revisionlist>

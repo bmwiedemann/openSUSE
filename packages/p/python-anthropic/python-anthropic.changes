@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:23:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.12.1:
+  * Add claude-haiku-5-5 and typed computer and browser toolset
+    tool calls, model lifecycle fields and filter for /v1/models,
+    and web-search and code-execution model capabilities
+  * RBAC roles gain display_name; name is deprecated (no removals)
+  * Bug fixes: spend-limits beta header sent by default, empty
+    strings kept in query params and multipart forms, memory-tool
+    local edit kept after a lost upload response
+  * 1.12.1 itself is chores-only (CI changelog check, docs note,
+    uv.lock version match)
+- No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Thu Oct  1 16:15:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.11.0:
