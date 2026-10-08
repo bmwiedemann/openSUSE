@@ -1,4 +1,238 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:39:06 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.22:
+  * fix: improve input validation (#4521)
+  * chore: bump zui version (#4519)
+  * fix(storage): fail closed on GC, dedupe, and incomplete
+    listings (#4514)
+  * fix(api): return MANIFEST_BLOB_UNKNOWN for a manifest with a
+    missing blob (#4515)
+  * chore(deps): bump the github-actions group with 7 updates
+    (#4516)
+  * fix(api): map storage Transient to 503, not client 404 (#4512)
+  * fix(zb): retry timeout-class errors on seed image uploads
+    (#4511)
+  * fix(storage): stop collapsing blob I/O to bare ErrBlobNotFound
+    (#4505)
+  * fix(sync): surface on-demand upstream errors (#4507)
+  * fix(zb): treat unexpected EOF as a timeout-class failure
+    (#4510)
+  * test(metrics): disable dedupe in TestPopulateStorageMetrics
+    (#4509)
+  * fix: complete GC when repository metadata is absent (#4500)
+  * fix(meta): stop storing signature layers in MetaDB, verify from
+    storage (#4493)
+  * fix(storage): classify driver errors as missing, transient, or
+    permanent (#4474)
+  * fix(storage): avoid remote-cache races during concurrent dedupe
+    uploads (#4504)
+  * chore(deps): bump the go-dependencies group with 10 updates
+    (#4503)
+  * fix(build): tag the image make docker-image builds (#4501)
+  * fix(cli): don't ignore SIGCHLD, so child processes can be
+    waited for (#4499)
+  * fix(storage): keep remote dedupe origins from being emptied on
+    rebuild (#4465)
+  * test(race): fix race condition when running dynamodb tests
+    (#4496)
+  * bug: treat cosign attestations as referrers, not signatures
+    (#4492)
+  * test(gc): start the scheduler before stopping it in
+    runSchedulerUntil (#4494)
+  * test(stress): pull alpine from project GHCR instead of ECR
+    Public (#4490)
+  * fix(storage): return an empty referrers index for a namespace
+    without a repo (#4488)
+  * fix(api): don't overflow the tags/list page end for a large n
+    (#4489)
+  * test: hash test htpasswd credentials with the minimum bcrypt
+    cost (#4481)
+  * fix(cve): don't read MetaDB inside the scan generator's
+    FilterTags filter (#4483)
+  * chore(deps): bump the github-actions group with 5 updates
+    (#4478)
+  * fix(api): reject manifest pushes with an invalid path tag
+    (#4475)
+  * fix(api): report the whole upload in the Range of a streamed
+    PATCH (#4476)
+  * fix(auth): never proxy local api keys to upstream token service
+    (#4473)
+  * fix(storage): repair remote dedupe origin on manifest re-upload
+    (#4457)
+  * fix(meta): update repo info when index manifests are added
+    after the index (#4470)
+  * feat(server): notify systemd when ready (#4464)
+  * chore(deps): bump github.com/containerd/containerd/v2 from
+    2.3.5 to 2.3.6 (#4462)
+  * feat: add zot healthcheck for distroless container probes
+    (#4461)
+  * feat(sync): add onDemandInBackground for non-blocking on-demand
+    sync (#4451)
+  * fix(meta): avoid DeleteSignature panic when signature type is
+    missing (#4459)
+  * fix(storage): list repositories after a last value that is not
+    a repo (#4455)
+  * fix(api): return 404 when deleting a manifest in a missing repo
+    (#4460)
+  * feat(sync): seed on-demand sync sessions with locally-stored
+    blobs (#4420)
+  * chore(deps): bump the go-dependencies group with 12 updates
+    (#4458)
+  * fix(api): list tags after a last value that is not a tag
+    (#4448)
+  * test: stabilize apikey expiry test (#4450)
+  * fix(storage): keep digests pullable after last-tag overwrite
+    (#4444) (#4447)
+  * fix(gc): validate cosign tag subject digest before use in
+    removeReferrer (#4445)
+  * test(scanner): fix flaky concurrent ScanImage coalescing test
+    (#4446)
+  * fix(storage): repair equal-size corrupted manifests on
+    re-upload (#4443)
+  * fix(scanner): synchronize trivy scans (#4440)
+  * chore: fix dependabot alerts (#4441)
+  * chore: fix dependabot alerts (#4439)
+  * fix(storage): 404 when S3 dedupe stubs resolve to empty content
+    (#4432)
+  * fix(zb): create and remove a dedicated temp dir for test blobs
+    (#4428)
+  * chore(deps): bump the github-actions group with 4 updates
+    (#4426)
+  * ci: fix nightly (#4425)
+  * feat(auth): allow bearer with API keys and OIDC for humans
+    (#4243)
+  * feat(sync): sparse multi-arch indexes with periodic platforms
+    filter (#4410)
+  * chore: fix dependabot alerts (#4424)
+  * fix: skip invalid repo dirs like lost+found during storage
+    walks (#4419)
+  * fix(authn): avoid session CookieStore panic for anonymous UI
+    clients (#4418)
+  * chore(deps): bump google.golang.org/grpc from 1.83.1 to 1.83.2
+    (#4415)
+  * fix: set Strict-Transport-Security header on TLS responses
+    (#4414)
+  * chore(deps): bump the github-actions group with 6 updates
+    (#4411)
+  * ci: replace HELM_PUSH_TOKEN with App token and verified API
+    commits (#4409)
+
+-------------------------------------------------------------------
+Sat Sep 19 05:53:55 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.21:
+  * fix(ci): use latest zot for upgrade tests in #4298
+  * chore(deps): bump the go-dependencies group with 12 updates in
+    #4306
+  * fix(imagetrust): add recognization of sigstore v3 bundles in
+    #4307
+  * chore(deps): bump github.com/go-git/go-git/v5 from 5.19.1 to
+    5.19.2 in #4310
+  * fix(auth): make htpasswd hot-reload work for K8s secret mounts
+    in #4285
+  * chore(deps): bump the github-actions group with 7 updates in
+    #4314
+  * fix: code quality review comments in #4312
+  * fix(storage): dedupe walk must visit nested-namespace
+    repositories in #4313
+  * fix(gc): collect referenced blobs once per repo during cleanup
+    in #4236
+  * test: prefer Port "0" and TLS-aware StartAndWait to cut bind
+    flakes in #4317
+  * ci: update codeowners in #4321
+  * fix: stop metrics goroutine leak in sync without metrics build
+    in #4320
+  * chore(deps): bump the go-dependencies group with 15 updates in
+    #4324
+  * fix(gc): prevent exponential nested-index walks during untagged
+    GC; correctly GC multi-tag and cosign referrers that share a
+    digest in #4318
+  * fix(storage): memoize nested index walks and honor docker media
+    types in blob lookups in #4325
+  * fix(storage): honor docker2s2 compat media types in
+    delete/prune/scrub in #4327
+  * chore(deps): bump the github-actions group with 5 updates in
+    #4329
+  * feat: bump zui version in #4330
+  * feat(sync): add manifestCheckInterval to throttle on-demand
+    upstream manifest checks in #4328
+  * feat(sync): make upstream request concurrency/rate configurable
+    in #4322
+  * fix(cli): stop test server leaks and initialize Trivy logger
+    safely in #4331
+  * fix(sync): add disableHTTP2 option to saturate high-bandwidth
+    links in #4335
+  * fix(events): only log successful publish when all sinks accept
+    the event in #4334
+  * chore(deps): bump the go-dependencies group with 15 updates in
+    #4340
+  * Update link reference for project-zot repository in #4342
+  * feat(ci): also use floci for CI tests in #4295
+  * ci: always run emulator teardown after job failures in #4341
+  * fix: miscellaneous code quality review fixes in #4348
+  * chore(deps): bump the github-actions group with 4 updates in
+    #4354
+  * perf: drop the index walk on blob Content-Type in #4350
+  * feat(search): support Trivy ignore files in #4346
+  * test: fix scrub extension flaky tests in #4358
+  * chore(deps): bump the go-dependencies group with 13 updates in
+    #4362
+  * perf: walk storage once per dedupe run in #4351
+  * fix: don't lock storage before reading blob upload bodies in
+    #4360
+  * feat(server): support systemd socket activation in #4326
+  * test(blackbox): allocate two distinct systemd ports for
+    multi-listener in #4367
+  * ci: stabilize systemd tests in #4369
+  * test: avoid TestAPIKeys short-expire flake in #4370
+  * fix(compat): preserve Docker media types through MetaDB and
+    search in #4359
+  * feat(mgmt): expose allowAnonymousAccess in auth config in #4368
+  * chore: bump zui version in #4377
+  * fix(api)!: make blob HEAD/range reads repo-local by default in
+    #4363
+  * chore(deps): bump the github-actions group with 5 updates in
+    #4381
+  * fix(cve): stop SBOM generation from widening CVE results in
+    #4366
+  * chore: bump zui version in #4382
+  * fix(sync): dedupe on-demand sync with singleflight in #4379
+  * fix(meta): release the repo quota slot when a repo is emptied
+    in #4332
+  * fix(api): enforce dedupe mount auth for bearer and unify via
+    UserAc in #4380
+  * feat(events): configurable CloudEvents source and type
+    namespace in #4385
+  * chore(deps): bump google.golang.org/grpc from 1.82.1 to 1.83.1
+    in #4388
+  * test(blackbox): add mount authorization tests with curl and
+    regctl in #4387
+  * test(sync,retention): fix flaky tests in #4389
+  * fix(sync,gc): guard repo removal and reap stale .sync staging
+    sessions in #4383
+  * feat(zb): add --max-timeout-failures budget for GC stress
+    flakes in #4394
+  * fix(search): configure the GraphQL server explicitly instead of
+    the e… in #4395
+  * ci: build zot binaries once per workflow and reuse them in
+    #4397
+  * ci: parallelize ecosystem client-tools jobs with shared build
+    artifact in #4392
+  * chore(deps): bump the go-dependencies group with 12 updates in
+    #4396
+  * refactor(compat): consolidate repetitive media-type checks into
+    helpers with @Copilot in #4402
+  * fix(api): don't 500 on GET manifest when download-stats update
+    fails in #4403
+  * ci: consolidate shared binary install and scale-out CI helpers
+    in #4401
+  * feat(events): reload the event recorder on config change in
+    #4400
+  * fix(cli): reload config on Kubernetes ConfigMap updates in
+    #4384
+
+-------------------------------------------------------------------
 Wed Aug 05 05:50:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.1.20:
