@@ -272,4 +272,12 @@ checksums. Data only, no code or dependency change.</comment>
 - loader.py byte-identical, no code or dependency change</comment>
     <requestid>1382395</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>d6b790d45e1d55042aaac55ca6464c2b</srcmd5>
+    <version>0.3.369</version>
+    <time>1791458876</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.3.369: manifest grows 608 to 614 templates (all new ones in media-assets-02); Requires floors unchanged.</comment>
+    <requestid>1383216</requestid>
+  </revision>
 </revisionlist>

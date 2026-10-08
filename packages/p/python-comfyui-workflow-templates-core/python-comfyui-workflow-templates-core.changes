@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:25:26 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.3.369: the manifest now lists 614
+  templates (was 608)
+  * New, all owned by the media-assets-02 bundle: Nano Banana
+    2.1 text to image and image edit, Clarity AI crystal
+    upscale, Kling virtual try-on, and Vidu Q4 preview image
+    to video plus reference to video
+  * The bump crosses 0.3.368, which added the two Nano Banana
+    entries; described together here as only 0.3.369 is
+    submitted
+  * Refreshed checksums: the 13 index files, which now list
+    the six new templates, plus five rewritten templates
+    (three Krea 2 Turbo, the SAM 3 image segment utility and
+    Flux 3 Image bounding boxes); no template is dropped
+- No code or dependency change: loader.py is byte-identical,
+  the sdist still declares no runtime requirements, and the
+  json >= 0.1.102 and media-assets-02 >= 0.1.9 Requires floors
+  are still satisfied (devel carries 0.1.102 and 0.1.9)
+
+-------------------------------------------------------------------
 Sun Oct  4 06:47:25 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.3.367, from upstream 0.11.74 to 0.11.76:
