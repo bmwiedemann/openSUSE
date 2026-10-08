@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 03:28:13 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for entry points as well.
+
+-------------------------------------------------------------------
 Sun Jul 19 07:29:56 UTC 2026 - Sebastian Wagner <sebix@sebix.at>
 
 - Drop obsolete leap_version/suse_version conditional around %license.

@@ -1,0 +1,90 @@
+Index: click-plugins-1.1.1.2/tests/test_plugins.py
+===================================================================
+--- click-plugins-1.1.1.2.orig/tests/test_plugins.py
++++ click-plugins-1.1.1.2/tests/test_plugins.py
+@@ -1,9 +1,6 @@
+ import importlib.metadata
+ 
+ from packaging.version import Version
+-from pkg_resources import EntryPoint
+-from pkg_resources import iter_entry_points
+-from pkg_resources import working_set
+ 
+ import click
+ from click_plugins import with_plugins
+@@ -32,37 +29,48 @@ else:
+ 
+ # Manually register plugins in an entry point and put broken plugins in a
+ # different entry point.
++GROUP_TEST = '_test_click_plugins.test_plugins'
++GROUP_BROKEN = '_test_click_plugins.broken_plugins'
+ 
+-# The `DistStub()` class gets around an exception that is raised when
+-# `entry_point.load()` is called.  By default `load()` has `requires=True`
+-# which calls `dist.requires()` and the `click.group()` decorator
+-# doesn't allow us to change this.  Because we are manually registering these
+-# plugins the `dist` attribute is `None` so we can just create a stub that
+-# always returns an empty list since we don't have any requirements.  A full
+-# `pkg_resources.Distribution()` instance is not needed because there isn't
+-# a package installed anywhere.
+-class DistStub(object):
+-    def requires(self, *args):
+-        return []
+-
+-working_set.by_key['click']._ep_map = {
+-    '_test_click_plugins.test_plugins': {
+-        'cmd1': EntryPoint.parse(
+-            'cmd1=tests.test_plugins:cmd1', dist=DistStub()),
+-        'cmd2': EntryPoint.parse(
+-            'cmd2=tests.test_plugins:cmd2', dist=DistStub())
+-    },
+-    '_test_click_plugins.broken_plugins': {
+-        'before': EntryPoint.parse(
+-            'before=tests.broken_plugins:before', dist=DistStub()),
+-        'after': EntryPoint.parse(
+-            'after=tests.broken_plugins:after', dist=DistStub()),
+-        'do_not_exist': EntryPoint.parse(
+-            'do_not_exist=tests.broken_plugins:do_not_exist', dist=DistStub())
+-    }
++
++mock_entry_points_dict = {
++    GROUP_TEST: [
++        importlib.metadata.EntryPoint(
++            name='cmd1',
++            value='tests.test_plugins:cmd1',
++            group=GROUP_TEST
++        ),
++        importlib.metadata.EntryPoint(
++            name='cmd2',
++            value='tests.test_plugins:cmd2',
++            group=GROUP_TEST
++        ),
++    ],
++    GROUP_BROKEN: [
++        importlib.metadata.EntryPoint(
++            name='before',
++            value='tests.broken_plugins:before',
++            group=GROUP_BROKEN
++        ),
++        importlib.metadata.EntryPoint(
++            name='after',
++            value='tests.broken_plugins:after',
++            group=GROUP_BROKEN
++        ),
++        importlib.metadata.EntryPoint(
++            name='do_not_exist',
++            value='tests.broken_plugins:do_not_exist',
++            group=GROUP_BROKEN
++        ),
++    ]
+ }
+ 
+ 
++# Re-use function name to make the patch smaller
++def iter_entry_points(group):
++    return iter(mock_entry_points_dict[group])
++
++
+ # Main CLI groups - one with good plugins attached and the other broken
+ @with_plugins(iter_entry_points('_test_click_plugins.test_plugins'))
+ @click.group()

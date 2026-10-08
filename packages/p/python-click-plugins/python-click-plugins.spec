@@ -30,6 +30,8 @@ URL:            https://github.com/click-contrib/click-plugins
 Source0:        https://github.com/click-contrib/click-plugins/archive/refs/tags/%{version}.tar.gz#/%{name}-%{version}.tar.gz
 # PATCH-FIX-OPENSUSE https://github.com/click-contrib/click-plugins/issues/38
 Patch0:         support-click-8.2.patch
+# PATCH-FIX-OPENSUSE Use importlib.metadata, not pkg_resouces
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module click >= 3.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}

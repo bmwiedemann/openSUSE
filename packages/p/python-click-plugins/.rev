@@ -104,4 +104,13 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1367811</requestid>
   </revision>
+  <revision rev="13" vrev="3">
+    <srcmd5>87300ae8c86c28dc50e72b53d2c116d7</srcmd5>
+    <version>1.1.1.2</version>
+    <time>1791453441</time>
+    <user>anag_factory</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.metadata for entry points as well.</comment>
+    <requestid>1383141</requestid>
+  </revision>
 </revisionlist>
