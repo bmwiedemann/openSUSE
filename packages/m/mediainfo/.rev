@@ -2800,4 +2800,57 @@
 </comment>
     <requestid>1352904</requestid>
   </revision>
+  <revision rev="49" vrev="1">
+    <srcmd5>add32f3007d7dafc28d2c66f1038e145</srcmd5>
+    <version>26.10</version>
+    <time>1791453427</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 26.10
+  Added features:
+  * Conformance checker: update with more precise error messages,
+    sponsored by Austrian Mediatek
+  * Conformance checker: tolerate common padding patterns found in
+    some files, sponsored by Austrian Mediatek
+  * MXF: cross-check header and footer values for timecode tracks,
+    prioritizing the footer value
+  * MXF: support more ARRI camera metadata,
+    thanks to Luis Gómez Gutiérrez
+  * Global performance improvement when analyzing files with
+    uncommon file extensions or junk files
+  * HEVC: support interlaced content, thanks to Torbjörn Einarsson
+  * HEVC: detect CBR and report nominal bitrate
+  * AV2: support v1.0.0 streams, thanks to cjee21
+  * MP3: support gapless files, thanks to hat3k
+  * MOV/MP4: support Auro CS layout information, thanks to almirus
+  * DTS:X: support supplemental channel layout, thanks to almirus
+  * EIA-608/708: report maximum number of characters per line
+  * TTML: report maximum number of characters per line
+  * MOV: support chpl version 0
+  * ELF: support RISC-V
+  * GIF: support XMP and loop count, thanks to cjee21
+  * GIF: support animated GIFs
+  * I2632, ApeTag: handle cover images, thanks to cjee21
+  Fixed bugs:
+  * I2690, TAR: improve parsing of the TAR header to avoid more
+    false positives
+  * I2706, MPEG-TS: fix infinite loop with some partial packets at
+    the end of the file
+  * I2670, DVD-Video: preserve IFO stream languages after VOB merge,
+    thanks to wastaken7
+  * I2589: fix MediaInfoList_Open file options not being used with
+    the DLL API
+  * MXF: fix failure to detect sparse content in Teletext or OP47,
+    thanks to MaxEliaserAWS
+  * DTS: move DTS:X objects to their own field, matching Dolby Atmos
+  * Opus: fix 5.0 support and center-channel ordering,
+    thanks to Puella Purpura
+  * MP3: detect headerless VBR after parsing finishes,
+    thanks to Bernard Wiesner
+  * MP3: fix reconstructed settings for LAME CBR 256 and 320 kbps,
+    thanks to hat3k
+  * MP3: clean up some LAME version values
+  * MOV: fix mapping for Apple language tags &gt;= 95
+</comment>
+    <requestid>1383118</requestid>
+  </revision>
 </revisionlist>
