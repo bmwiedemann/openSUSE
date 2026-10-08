@@ -1718,6 +1718,7 @@ unsorted:
   - bspwm-fish-completion 
   - bspwm-zsh-completion 
   - bstone 
+  - bstring-devel 
   - btar 
   - btcflash 
   - btfdump 
@@ -2788,6 +2789,8 @@ unsorted:
   - cppunit-devel-doc 
   - cppzmq-devel 
   - cpr-devel 
+  - cpu-x 
+  - cpu-x-lang 
   - cpufetch 
   - cpuid 
   - cpuinfo 
@@ -11266,6 +11269,10 @@ unsorted:
   - leechcraft-xproxy 
   - leechcraft-xtazy 
   - leechcraft-zalil 
+  - lefthook 
+  - lefthook-bash-completion 
+  - lefthook-fish-completion 
+  - lefthook-zsh-completion 
   - leftwm 
   - legendary 
   - lego 
@@ -12698,6 +12705,7 @@ unsorted:
   - libbsd-ctor-static 
   - libbsd-devel 
   - libbson2 
+  - libbstring1 
   - libbtf2 
   - libbtrfs-devel 
   - libbtrfsutil-devel 
@@ -13581,7 +13589,7 @@ unsorted:
   - libframel8 
   - libfreeaptx-devel 
   - libfreeaptx-tools 
-  - libfreeaptx0 
+  - libfreeaptx0-32bit 
   - libfreebl3-32bit 
   - libfreefare-devel 
   - libfreefare-tools 
@@ -14715,7 +14723,7 @@ unsorted:
   - liblldb22 
   - liblldb23 
   - liblldpctl4 
-  - libllhttp9_3 
+  - libllhttp9_4 
   - liblmdb-0_9_35-32bit 
   - liblms7002m-devel 
   - liblms7compact0 
@@ -15307,6 +15315,7 @@ unsorted:
   - libo2scl0 
   - liboaml1 
   - liboapv1 
+  - liboapv1-32bit 
   - liboath-devel 
   - liboauth-devel 
   - libobby-0_4-1 
@@ -25362,6 +25371,7 @@ unsorted:
   - python313-azure-mgmt-rdbms 
   - python313-azure-mgmt-recoveryservices 
   - python313-azure-mgmt-recoveryservicesbackup 
+  - python313-azure-mgmt-recoveryservicesbackup-passivestamp 
   - python313-azure-mgmt-recoveryservicesdatareplication 
   - python313-azure-mgmt-recoveryservicessiterecovery 
   - python313-azure-mgmt-redhatopenshift 
@@ -27792,7 +27802,6 @@ unsorted:
   - python313-pytoolconfig-validation 
   - python313-pytools 
   - python313-pytz 
-  - python313-pytzdata 
   - python313-pyu2f 
   - python313-pyuca 
   - python313-pyupgrade 
@@ -29430,6 +29439,7 @@ unsorted:
   - python314-azure-mgmt-rdbms 
   - python314-azure-mgmt-recoveryservices 
   - python314-azure-mgmt-recoveryservicesbackup 
+  - python314-azure-mgmt-recoveryservicesbackup-passivestamp 
   - python314-azure-mgmt-recoveryservicesdatareplication 
   - python314-azure-mgmt-recoveryservicessiterecovery 
   - python314-azure-mgmt-redhatopenshift 
@@ -31918,7 +31928,6 @@ unsorted:
   - python314-pytoolconfig-validation 
   - python314-pytools 
   - python314-pytz 
-  - python314-pytzdata 
   - python314-pyu2f 
   - python314-pyuca 
   - python314-pyudev 
@@ -33580,6 +33589,7 @@ unsorted:
   - rcs 
   - rcshist 
   - rdap 
+  - rdesktop 
   - rdfind 
   - rdi-installer 
   - rdi-installer-image-arch-deps 

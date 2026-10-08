@@ -1982,6 +1982,7 @@ packagesets:
    - libfontenc1 # reason: dvd:patterns-gnome-gnome
    - libfprint-2-2 # reason: dvd:patterns-media-rest_cd_core
    - libfprint-2-tod1 # reason: dvd:patterns-media-rest_cd_core
+   - libfreeaptx0 # reason: dvd:patterns-gnome-gnome
    - libfreebl3 # reason: dvd:openSUSE-release
    - libfreecell-solver0 # reason: dvd:patterns-kde-kde
    - libfreehand-0_1-1 # reason: dvd:openSUSE-release
@@ -2189,9 +2190,9 @@ packagesets:
    - libhidapi-hidraw0 # reason: dvd:patterns-gnome-gnome
    - libhiredis1_3_0 # reason: dvd:patterns-media-rest_dvd
    - libhns1 # reason: dvd:patterns-media-rest_dvd
-   - libhogweed6 # reason: dvd:openSUSE-release
-   - libhogweed6-32bit # reason: dvd:patterns-media-rest_dvd
-   - libhogweed6-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libhogweed7 # reason: dvd:openSUSE-release
+   - libhogweed7-32bit # reason: dvd:patterns-media-rest_dvd
+   - libhogweed7-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libhplip0 # reason: dvd:patterns-server-printing
    - libhunspell-1_7-0 # reason: dvd:openSUSE-release
    - libhwasan0 # reason: dvd:patterns-base-console
@@ -2415,9 +2416,9 @@ packagesets:
    - libneon27 # reason: dvd:patterns-gnome-gnome
    - libnetfilter_conntrack3 # reason: dvd:patterns-gnome-gnome
    - libnetpbm11 # reason: dvd:patterns-base-console
-   - libnettle8 # reason: dvd:openSUSE-release
-   - libnettle8-32bit # reason: dvd:patterns-media-rest_dvd
-   - libnettle8-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
+   - libnettle9 # reason: dvd:openSUSE-release
+   - libnettle9-32bit # reason: dvd:patterns-media-rest_dvd
+   - libnettle9-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libnewt0_52 # reason: dvd:patterns-kde-kde
    - libnfnetlink0 # reason: dvd:patterns-gnome-gnome
    - libnfs16 # reason: dvd:grub2
@@ -3774,7 +3775,6 @@ packagesets:
    - quadrapassel-lang # reason: dvd:patterns-gnome-gnome
    - quota # reason: dvd:patterns-media-rest_cd_core
    - quota-nfs # reason: dvd:quota-nfs
-   - rdesktop # reason: dvd:patterns-media-rest_dvd
    - rdma-core # reason: dvd:patterns-media-rest_dvd
    - rdma-ndd # reason: dvd:patterns-media-rest_dvd
    - re2c # reason: dvd:patterns-server-mail_server
@@ -5533,7 +5533,7 @@ packagesets:
    - libharfbuzz0 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libhd26 # reason: opensuse_microos:patterns-base-hardware
    - libheif1 # reason: opensuse_microos:patterns-microos-onlyDVD
-   - libhogweed6 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libhogweed7 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libhplip0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libhunspell-1_7-0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libhwy1 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -5629,7 +5629,7 @@ packagesets:
    - libncurses6 # reason: opensuse_microos:MicroOS-release
    - libndp0 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnetfilter_conntrack3 # reason: opensuse_microos:docker
-   - libnettle8 # reason: opensuse_microos:patterns-containers-runtime_podman
+   - libnettle9 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libnewt0_52 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libnfnetlink0 # reason: opensuse_microos:docker
    - libnfs16 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
@@ -7346,7 +7346,7 @@ packagesets:
    - libharfbuzz0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhd26 # reason: opensuse_kalpa:patterns-kalpa-base
    - libheif1 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libhogweed6 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libhogweed7 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhplip0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhunspell-1_7-0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libhwy1 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7437,7 +7437,7 @@ packagesets:
    - libmysofa1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libncurses6 # reason: opensuse_kalpa:Kalpa-release
    - libndp0 # reason: opensuse_kalpa:patterns-kalpa-base
-   - libnettle8 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libnettle9 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnfs16 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnftables1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnftnl11 # reason: opensuse_kalpa:patterns-kalpa-base
