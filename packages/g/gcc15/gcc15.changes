@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Tue Oct  6 08:06:04 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Add gcc15-pr127656.patch to fix use-after-free in
+  __gnu_pbds::priority_queue.  [bsc#1283123] (CVE-2026-102010)
+
+-------------------------------------------------------------------
+Tue Jun 30 10:44:21 UTC 2026 - Richard Biener <rguenther@suse.com>
+
+- Update gcc15-Wtime_t-conversion.patch
+
+-------------------------------------------------------------------
+Sat Jun 20 15:11:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Make build recipe compatible with POSIX sh
+
+-------------------------------------------------------------------
 Fri Jun 12 06:14:26 UTC 2026 - Richard Biener <rguenther@suse.com>
 
 - Update to GCC 15.3 release 
