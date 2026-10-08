@@ -5834,4 +5834,16 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1381655</requestid>
   </revision>
+  <revision rev="551" vrev="1">
+    <srcmd5>77f79f7c14ae583317f0e7218d51c7f3</srcmd5>
+    <version>2.10.0+git20261006.6936b8a3</version>
+    <time>1791467889</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0+git20261006.6936b8a3:
+  * dbus-services: whitelist gnome-remote-desktop pcscd extension (bsc#1276523)
+  * dbus-services: drop compatibility entry for gnome-remote-desktop
+  * varlink-whitelist: add invalid whitelisting entry for regression test
+</comment>
+    <requestid>1382822</requestid>
+  </revision>
 </revisionlist>

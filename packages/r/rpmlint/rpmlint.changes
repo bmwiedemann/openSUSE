@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Tue Oct 06 15:21:15 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20261006.6936b8a3:
+  * dbus-services: whitelist gnome-remote-desktop pcscd extension (bsc#1276523)
+  * dbus-services: drop compatibility entry for gnome-remote-desktop
+  * varlink-whitelist: add invalid whitelisting entry for regression test
+
+-------------------------------------------------------------------
 Wed Sep 30 11:14:00 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.10.0+git20260930.8e30f1e0:
