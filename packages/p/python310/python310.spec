@@ -108,7 +108,7 @@ Obsoletes:      python39%{?1:-%{1}}
 # _md5.cpython-38m-x86_64-linux-gnu.so
 %define dynlib() %{sitedir}/lib-dynload/%{1}.cpython-%{abi_tag}-%{archname}-%{_os}%{?_gnu}%{?armsuffix}.so
 Name:           %{python_pkg_name}%{psuffix}
-Version:        3.10.21
+Version:        3.10.22
 Release:        0
 Summary:        Python 3 Interpreter
 License:        Python-2.0
@@ -225,26 +225,11 @@ Patch47:        CVE-2026-3446-base64-padding.patch
 # PATCH-FIX-UPSTREAM CVE-2026-6019-Morsel-js_output.patch bsc#1262654 mcepl@suse.com
 # Base64-encode cookie values embedded in JS
 Patch51:        CVE-2026-6019-Morsel-js_output.patch
-# PATCH-FIX-UPSTREAM CVE-2026-7210-pyexpat-entropy-hash-flooding.patch bsc#1264962 mcepl@suse.com
-# Use XML_SetHashSalt16Bytes in pyexpat/_elementtree when possible
-Patch54:        CVE-2026-7210-pyexpat-entropy-hash-flooding.patch
 # PATCH-FIX-UPSTREAM Based on gh#python/cpython#142057 Support fixes required for Sphinx 9
 Patch56:        support-sphinx-9.patch
 # PATCH-FIX-UPSTREAM bsc1263083-http-cookies-atob-utf8.patch bsc#1263083 mcepl@suse.com
 # Use decodeURIComponent() for UTF-8 support in js_output()
 Patch63:        bsc1263083-http-cookies-atob-utf8.patch
-# PATCH-FIX-UPSTREAM CVE-2026-15806-HTTPPasswordMgr-scheme.patch bsc#1276223 mcepl@suse.com
-# Scope HTTPPasswordMgr credentials by URL scheme
-Patch64:        CVE-2026-15806-HTTPPasswordMgr-scheme.patch
-# PATCH-FIX-UPSTREAM CVE-2026-17084-stringprep-rfc3454.patch bsc#1276226 Matej Cepl <mcepl@suse.com>
-# Don't consider Unicode codepoint attributes outside RFC 3454
-Patch65:        CVE-2026-17084-stringprep-rfc3454.patch
-# PATCH-FIX-UPSTREAM CVE-2026-19672-tarfile-outside-dirs.patch bsc#1276227 mcepl@suse.com
-# in tarfile, handle a member that leaves the destination and comes back
-Patch66:        CVE-2026-19672-tarfile-outside-dirs.patch
-# PATCH-FIX-UPSTREAM CVE-2026-15310-bound-zipfile-decompression.patch bsc#1277111 mcepl@suse.com
-# Bound zipfile decompression for bzip2/LZMA/Zstandard (gh#python/cpython!156003)
-Patch67:        CVE-2026-15310-bound-zipfile-decompression.patch
 ### END OF PATCHES                                                              
 BuildRequires:  autoconf-archive
 BuildRequires:  automake

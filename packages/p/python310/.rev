@@ -1488,4 +1488,41 @@ CVE-2026-3276-On2-unicodedata-normalize.patch
   * Add CVE-2026-15806-HTTPPasswordMgr-scheme.patch</comment>
     <requestid>1381747</requestid>
   </revision>
+  <revision rev="84" vrev="1">
+    <srcmd5>a0bc485dc12816bc7d9385b18f4bf26f</srcmd5>
+    <version>3.10.22</version>
+    <time>1791465241</time>
+    <user>anag_factory</user>
+    <comment>- Update to 3.10.22 (final release, upstream EOS)
+  - Security
+    - gh-158446: Fix a crash or incorrect output that could occur
+      when formatting a float or complex with a precision close
+      to the platform’s INT_MAX. PyOS_double_to_string() now
+      raises ValueError for any precision of that magnitude,
+      regardless of presentation type or value, as the format
+      string parsers already did for precisions above INT_MAX.
+    - gh-156793: asyncio: loop.start_tls() and
+      loop.create_connection() now validate the server_hostname
+      argument if an ssl.SSLContext is passed with check_hostname
+      set to True, emitting DeprecationWarning if server_hostname
+      is missing. (This will raise ValueError in Python 3.13 and
+      later.) (bsc#1283826, CVE-2026-19553)
+    - gh-156793: ssl.SSLContext.wrap_bio() now validates its
+      server_side, server_hostname and session arguments similar
+      to ssl.SSLContext.wrap_socket(), but for backward
+      compatiblity reasons emits DeprecationWarning instead of
+      ValueError.
+      In particular, a context with check_hostname enabled and no
+      server_hostname passed to wrap_bio() now emits
+      DeprecationWarning to indicate the hostname wasn’t
+      checked. (In Python 3.13 and later, this raises
+      ValueError.)
+    - gh-157265: In tarfile, when extracting a link falls back to
+      extracting a member of the archive, skip the member when
+      the filter function returns None when called with the
+      extracted member’s name replaced with the link’s.
+    - gh-157190: Fixed a vulnerability in the tarfile data and
+      tar extraction filters where a crafted archive using a hard</comment>
+    <requestid>1383280</requestid>
+  </revision>
 </revisionlist>
