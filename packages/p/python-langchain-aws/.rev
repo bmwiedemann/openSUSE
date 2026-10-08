@@ -226,4 +226,12 @@ No dependency floor changes.
 </comment>
     <requestid>1381955</requestid>
   </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>ae361651207821ee89fd55e92d5e5394</srcmd5>
+    <version>1.8.1</version>
+    <time>1791453572</time>
+    <user>anag_factory</user>
+    <comment>Update python-langchain-aws to 1.8.1 (raises langchain-core floor to &gt;= 1.6.7). Requires SR 1383213 (python-langchain-core 1.6.7) first — submit in order.</comment>
+    <requestid>1383222</requestid>
+  </revision>
 </revisionlist>

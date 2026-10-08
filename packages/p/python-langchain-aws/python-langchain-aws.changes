@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:27:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.8.1:
+  * Raise ContextOverflowError from ChatBedrockConverse on context
+    window overflow, and from ChatOpenAIMantle Chat Completions models
+  * Filter out foreign reasoning items for reasoning models
+  * Refreshed the bundled Bedrock model profile data
+  * Raise the langchain-core floor to >= 1.6.7
+
+-------------------------------------------------------------------
 Thu Oct  1 17:52:40 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 1.8.0:
