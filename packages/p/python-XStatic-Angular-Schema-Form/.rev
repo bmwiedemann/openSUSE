@@ -23,4 +23,13 @@
     <comment></comment>
     <requestid>1277143</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>1342bcc0faa21ba798752cc235541940</srcmd5>
+    <version>0.8.13.1</version>
+    <time>1791458848</time>
+    <user>anag_factory</user>
+    <comment>- Update to 0.8.13.1:
+  * Do not use pkg_resources namespace packaging.</comment>
+    <requestid>1383145</requestid>
+  </revision>
 </revisionlist>

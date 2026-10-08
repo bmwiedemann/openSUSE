@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 04:43:04 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.8.13.1:
+  * Do not use pkg_resources namespace packaging.
+
+-------------------------------------------------------------------
 Mon May 12 16:00:14 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
