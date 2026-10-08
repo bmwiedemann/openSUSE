@@ -1,4 +1,78 @@
 -------------------------------------------------------------------
+Fri Aug 14 07:43:04 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 9.4.3
+  * fix: Do not allow empty transfer-encoding. by @ShogunPanda in (#874)
+
+-------------------------------------------------------------------
+Tue Jul 21 23:33:48 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to version 9.4.2
+  * fix: Require CRLF in the status line. (#865)
+  * fix: Correctly handle tab after connection-close header value. (#866)
+  * chore: Updated build script.
+- from version 9.4.1
+  * fix: Build before releasing.
+  * fix: Include required CMake file.
+- from version 9.4.0
+  * build(deps): bump actions/checkout from 4.2.2 to 5.0.0 (#737)
+  * build(deps): bump actions/setup-python from 5.6.0 to 6.0.0 (#750)
+  * build(deps): bump actions/cache from 4.2.3 to 4.3.0 (#760)
+  * build(deps-dev): bump typescript from 5.8.3 to 5.9.3 (#764)
+  * build(deps): bump node from 24-alpine to 25-alpine (#775)
+  * build(deps): bump actions/setup-node from 4.4.0 to 6.0.0 (#776)
+  * build(deps): bump github/codeql-action from 3.29.11 to 4.31.0 (#779)
+  * chore: Pin python version to fix aiohttp regression tests (#788)
+  * build(deps-dev): bump @stylistic/eslint-plugin from 5.2.2 to 5.5.0 (#772)
+  * build(deps-dev): bump @types/node from 24.2.0 to 24.9.1 (#778)
+  * feat: Add support for relaxed header value parsing (#787)
+  * Fix typo: on_protocol_complete is called after protocol has been parsed (#762)
+  * build(deps-dev): bump js-yaml from 4.1.0 to 4.1.1 (#781)
+  * Add llhttp-config-version.cmake (#783)
+  * improve pause function (#785)
+  * chore: Support both dynamic and static build. (#789)
+  * add an all plaform supported cleanup solution (#780)
+  * build(deps): bump minimatch (#790)
+  * build(deps-dev): bump @types/node from 25.3.0 to 25.3.3 (#793)
+  * build(deps-dev): bump typescript-eslint from 8.55.0 to 8.56.1 (#791)
+  * build(deps): bump node from `8099726` to `18e0265` (#795)
+  * build(deps): bump docker/setup-buildx-action from 3.11.1 to 3.12.0 (#796)
+  * build(deps): bump github/codeql-action from 4.31.0 to 4.32.4 (#799)
+  * build(deps): bump actions/cache from 4.3.0 to 5.0.3 (#800)
+  * build(deps): bump actions/checkout from 5.0.0 to 6.0.2 (#798)
+  * build(deps-dev): bump eslint from 9.39.2 to 10.0.2 (#792)
+  * build(deps-dev): bump @eslint/js from 9.39.2 to 10.0.1 (#794)
+  * build(deps): bump actions/setup-node from 6.0.0 to 6.2.0 (#797)
+  * fix: allow tabs around Content-Length (#810)
+  * Rename CMake files to modern variant (#814)
+  * chore: Added WASM benchmarks. (#815)
+  * build(deps-dev): bump @types/node from 25.3.3 to 25.5.0 (#801)
+  * build(deps-dev): bump @stylistic/eslint-plugin from 5.9.0 to 5.10.0 (#802)
+  * build(deps): bump node from `18e0265` to `5209bca` (#803)
+  * build(deps): bump actions/setup-node from 6.2.0 to 6.3.0 (#804)
+  * build(deps): bump github/codeql-action from 4.32.4 to 4.32.6 (#805)
+  * build(deps): bump actions/setup-python from 6.0.0 to 6.2.0 (#806)
+  * build(deps): bump actions/upload-artifact from 4.6.2 to 7.0.0 (#807)
+  * build(deps-dev): bump flatted from 3.3.2 to 3.4.2 (#809)
+  * build(deps-dev): bump typescript-eslint from 8.57.0 to 8.57.1 (#811)
+  * build(deps-dev): bump eslint from 10.0.3 to 10.1.0 (#812)
+  * build(deps): bump docker/setup-buildx-action from 3.12.0 to 4.0.0 (#808)
+  * build(deps): bump picomatch from 4.0.3 to 4.0.4 (#813)
+  * build(deps): bump node from `5209bca` to `ad82eca` (#822)
+  * build(deps): bump ossf/scorecard-action from 2.4.2 to 2.4.3 (#824)
+  * build(deps-dev): bump @types/node from 25.5.0 to 25.6.0 (#827)
+  * build(deps): bump actions/upload-artifact from 7.0.0 to 7.0.1 (#828)
+  * build(deps-dev): bump eslint from 10.1.0 to 10.2.1 (#830)
+  * build(deps): bump github/codeql-action from 4.32.6 to 4.35.2 (#832)
+  * build(deps): bump actions/cache from 5.0.3 to 5.0.5 (#833)
+  * build(deps): bump actions/setup-node from 6.3.0 to 6.4.0 (#834)
+  * Fix LICENSE (#835)
+  * build(deps-dev): bump typescript-eslint from 8.57.1 to 8.59.1 (#836)
+  * chore: Fixed build. (#837)
+  * chore: Fixed build. (#838)
+  * fix: Reverted package.json bump
+
+-------------------------------------------------------------------
 Wed Apr  8 13:27:38 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Initial import of llhttp 9.3.1

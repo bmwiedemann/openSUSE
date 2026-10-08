@@ -15,11 +15,11 @@
 # Please submit bugfixes or comments via https://bugs.opensuse.org/
 #
 
-%define library_version 9.3.1
-%define library_soversion 9.3
-%define library_sosuffix 9_3
+%define library_version 9.4.3
+%define library_soversion 9.4
+%define library_sosuffix 9_4
 Name:           llhttp
-Version:        9.3.1
+Version:        9.4.3
 Release:        0
 Summary:        Port of http_parser to llparse
 License:        MIT
