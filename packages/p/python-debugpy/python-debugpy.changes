@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:41:25 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.8.22:
+  * Fix invalid type annotation in test_pydev_monkey comprehension
+  * Fix PEP 768 code injection SyntaxError when temp path contains
+    backslashes
+  * Fix race between adapter connection publication and session attachment
+  * Fix debugger hang when expanding objects with blocking property getters
+  * Fix duplicate stopped event when two threads hit a breakpoint at once
+  * Avoid exceptions in environment diagnostics
+  * Fix thread identity when the first traced call is another thread's
+    is_alive()
+  * Respect isolated mode when patching sys.path
+  * Add trigger_exception_handler() for post-mortem debugging of caught
+    exceptions
+  * Add lldb attach-to-PID option for debugpy on Linux
+  * Populate hitBreakpointIds in the DAP stopped event
+  * Return the endpoint from listen() with the in-process adapter
+
+-------------------------------------------------------------------
 Sun Jun 14 09:02:08 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 1.8.21:

@@ -34,14 +34,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-debugpy%{psuffix}
-Version:        1.8.21
+Version:        1.8.22
 Release:        0
 Summary:        An implementation of the Debug Adapter Protocol for Python
 License:        MIT
 URL:            https://github.com/microsoft/debugpy/
 Source:         https://github.com/microsoft/debugpy/archive/v%{version}.tar.gz#/debugpy-%{version}.tar.gz
 BuildRequires:  %{python_module Cython}
-BuildRequires:  %{python_module devel >= 3.8}
+BuildRequires:  %{python_module devel >= 3.10}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  fdupes
@@ -142,9 +142,8 @@ donttest+=" or test_reattach"
 donttest+=" or test_numpy"
 # Skip all attach_pid tests, it fails in OBS enviroment bsc#1219921
 donttest+=" or attach_pid"
-
-# fix tests with pytest 9 https://github.com/microsoft/debugpy/issues/1974
-sed -i '/launch/d' tests/debugpy/test_flask.py
+# lldb is only built for primary python
+donttest+=" or test_lldb_command"
 
 %pytest_arch -k "not ($donttest)"
 %endif
@@ -161,7 +160,7 @@ sed -i '/launch/d' tests/debugpy/test_flask.py
 %if ! %{with test}
 %files %{python_files}
 %{python_sitearch}/debugpy
-%{python_sitearch}/debugpy-%{version}*-info
+%{python_sitearch}/debugpy-%{version}.dist-info
 %python_alternative %{_bindir}/debugpy
 %python_alternative %{_bindir}/debugpy-adapter
 %endif
