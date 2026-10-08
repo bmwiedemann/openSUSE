@@ -16,7 +16,7 @@
 #
 
 Name:           python-comfyui-workflow-templates
-Version:        0.11.76
+Version:        0.11.78
 Release:        0
 Summary:        ComfyUI workflow templates meta package
 License:        MIT

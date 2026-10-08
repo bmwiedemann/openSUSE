@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:24:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.11.78: metadata-only release, the re-export
+  shim's code is byte-identical to 0.11.76
+  * Upstream's release-train pins move to core 0.3.369, json 0.1.104
+    and media-assets-02 0.1.11. The floors here stay unchanged: the
+    shim imports only five stable helpers from core, ships no
+    manifest, and core's code is byte-identical across the pinned
+    range, so the existing floors already admit every pinned version
+
+-------------------------------------------------------------------
 Sun Oct  4 06:47:28 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.11.76: metadata-only release, the re-export

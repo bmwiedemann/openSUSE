@@ -285,4 +285,12 @@ its own request first.</comment>
 - Fix the %description, which claimed the bundles were pulled in pinned</comment>
     <requestid>1382361</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>92e872d149ea7abb3072c0cefc87876c</srcmd5>
+    <version>0.11.78</version>
+    <time>1791458875</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.11.78, a metadata-only pin roll; floors unchanged. Local build green, rpmlint clean.</comment>
+    <requestid>1383215</requestid>
+  </revision>
 </revisionlist>
