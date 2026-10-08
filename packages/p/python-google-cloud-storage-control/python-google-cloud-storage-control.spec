@@ -17,7 +17,7 @@
 
 
 Name:           python-google-cloud-storage-control
-Version:        1.15.0
+Version:        1.16.0
 Release:        0
 Summary:        Google Cloud Storage Control API client library
 License:        Apache-2.0
