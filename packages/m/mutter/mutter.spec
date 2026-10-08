@@ -38,6 +38,8 @@ Patch1:         mutter-disable-cvt-s390x.patch
 Patch2:         mutter-window-actor-Special-case-shaped-Java-windows.patch
 # PATCH-FIX-OPENSUSE 0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch glgo#GNOME/mutter#3302 bsc#1219546 alynx.zhou@suse.com -- Fix partial update on VT switch
 Patch4:         0001-Revert-clutter-actor-Cache-stage-relative-instead-of.patch
+# PATCH-FIX-UPSTREAM
+Patch5:         https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5370.patch
 
 BuildRequires:  Mesa-libGLESv3-devel
 BuildRequires:  fdupes

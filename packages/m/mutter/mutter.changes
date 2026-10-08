@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 15:45:37 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 5370.patch: wayland: Allow changing selections with the same serial
+  (boo#1284143).
+
+-------------------------------------------------------------------
 Tue Sep 15 18:15:18 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.5:
@@ -591,8 +597,8 @@ Fri Mar 28 16:50:36 UTC 2025 - Bjørn Lie <bjorn.lie@gmail.com>
 Fri Mar 21 08:05:33 UTC 2025 - Dead Mozay <dead_mozay@opensuse.org>
 
 - Add 0001-cursor-Unify-prepare_func-for-shape-cursors.patch.
-  Solves the problem of changing the size of the cursor in gtk 
-  applications on HiDPI displays. 
+  Solves the problem of changing the size of the cursor in gtk
+  applications on HiDPI displays.
 
 -------------------------------------------------------------------
 Thu Mar 20 15:43:17 UTC 2025 - bjorn.lie@gmail.com
@@ -841,7 +847,7 @@ Thu Sep 26 18:20:54 UTC 2024 - bjorn.lie@gmail.com
   * wayland/tablet-tool: Fix grabbing tablet devices
   * cogl/gles: Use unsized internal formats for RGB8, RGBA8 in GLES
     2.0
-  * wayland/color-management: Fix SIGSEGV on dispose 
+  * wayland/color-management: Fix SIGSEGV on dispose
   * x11: Reduce chances XPending does recvmsg() syscall
   * gwakeup: Reduce wake-ups to only first item in queue
   * window/x11: Use g_autoslist (MetaStrut) in
@@ -1192,7 +1198,7 @@ Wed Jan 24 13:54:15 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com
 -------------------------------------------------------------------
 Tue Jan 23 17:35:28 UTC 2024 - Eugenio Paolantonio <eugenio.paolantonio@suse.com>
 
-- Rebase mutter-disable-cvt-s390x.patch for mutter 45.x. 
+- Rebase mutter-disable-cvt-s390x.patch for mutter 45.x.
 
 -------------------------------------------------------------------
 Wed Jan 10 08:53:06 UTC 2024 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -2181,7 +2187,7 @@ Wed Jan 12 10:00:28 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
   + Plugged leaks.
   + Misc. bug fixes and cleanups.
   + Updated translations.
-- Bump api_major to 10, following upstream changes. 
+- Bump api_major to 10, following upstream changes.
 
 -------------------------------------------------------------------
 Tue Jan 11 17:28:52 UTC 2022 - Bjørn Lie <bjorn.lie@gmail.com>

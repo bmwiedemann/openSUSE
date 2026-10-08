@@ -1,0 +1,45 @@
+From d82671c3035bfdb10fdc1ffd2c0e31859bb00ff7 Mon Sep 17 00:00:00 2001
+From: Vlad Zahorodnii <vlad.zahorodnii@kde.org>
+Date: Mon, 5 Oct 2026 09:31:28 +0300
+Subject: [PATCH] wayland: Allow changing selections with the same serial
+
+A client may replace a data source with the same serial. For example, it
+may happen when a GTK3 application calls clear_targets() followed by
+add_targets(). The spec itself doesn't say that serials must be
+distinct. It also matches how wlroots and kwin treat selection serials.
+
+Part-of: <https://gitlab.gnome.org/GNOME/mutter/-/merge_requests/5370>
+---
+ src/wayland/meta-wayland-data-device-primary.c | 2 +-
+ src/wayland/meta-wayland-data-device.c         | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/wayland/meta-wayland-data-device-primary.c b/src/wayland/meta-wayland-data-device-primary.c
+index 52824e6854b..bfccc9223a8 100644
+--- a/src/wayland/meta-wayland-data-device-primary.c
++++ b/src/wayland/meta-wayland-data-device-primary.c
+@@ -137,7 +137,7 @@ meta_wayland_data_device_primary_set_selection (MetaWaylandDataDevicePrimary *da
+   g_assert (!source || META_IS_WAYLAND_DATA_SOURCE_PRIMARY (source));
+ 
+   if (data_device->data_source &&
+-      data_device->serial - serial < UINT32_MAX / 2)
++      serial - data_device->serial > UINT32_MAX / 2)
+     return;
+ 
+   if (data_device->data_source)
+diff --git a/src/wayland/meta-wayland-data-device.c b/src/wayland/meta-wayland-data-device.c
+index f4004d148bd..dc38b72b9ec 100644
+--- a/src/wayland/meta-wayland-data-device.c
++++ b/src/wayland/meta-wayland-data-device.c
+@@ -1086,7 +1086,7 @@ meta_wayland_data_device_set_selection (MetaWaylandDataDevice *data_device,
+   MetaSelectionSource *selection_source;
+ 
+   if (data_device->selection_data_source &&
+-      data_device->selection_serial - serial < UINT32_MAX / 2)
++      serial - data_device->selection_serial > UINT32_MAX / 2)
+     return;
+ 
+   if (data_device->selection_data_source)
+-- 
+GitLab
+

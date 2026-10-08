@@ -2521,4 +2521,19 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1378328</requestid>
   </revision>
+  <revision rev="271" vrev="2">
+    <srcmd5>6b5f5bbed7afb7ff10c6f5c891eec808</srcmd5>
+    <version>50.5</version>
+    <time>1791465214</time>
+    <user>anag_factory</user>
+    <comment>- Add 5370.patch: wayland: Allow changing selections with the same serial
+  (boo#1284143).
+
+  Solves the problem of changing the size of the cursor in gtk
+  applications on HiDPI displays.
+  * wayland/color-management: Fix SIGSEGV on dispose
+- Rebase mutter-disable-cvt-s390x.patch for mutter 45.x.
+- Bump api_major to 10, following upstream changes.</comment>
+    <requestid>1383105</requestid>
+  </revision>
 </revisionlist>
