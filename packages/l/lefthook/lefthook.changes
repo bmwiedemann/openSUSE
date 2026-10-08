@@ -1,0 +1,101 @@
+-------------------------------------------------------------------
+Thu Oct 08 05:14:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.2.0:
+  * fix: don't write an install-time lefthook path into AI hook
+    configs (#1544)
+  * docs: publish JSON schema at lefthook.dev/schema.json (#1579)
+  * fix: pass --output path to git diff as a single argument
+    (#1581)
+  * fix: ignore trailing NUL in --files-from-stdin (#1574)
+  * deps: October 2026 (#1571)
+
+-------------------------------------------------------------------
+Mon Oct 05 11:40:54 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.17:
+  * fix: don't hash submodules when checking fail_on_changes
+    (#1566)
+  * refactor: naming of helpers (#1568)
+  * fix: diff push files against the merge base with the default
+    branch (#1565)
+  * refactor: working with git (#1564)
+  * docs: add protect-branch example to docs (#1563)
+
+-------------------------------------------------------------------
+Fri Oct 02 05:02:47 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.16:
+  * fix: test staging fixed files with partially staged
+  * fix: preserve unrelated unstaged changes on conflict (#1483)
+  * deps: bump mod and text deps to resolve CVEs (#1560)
+
+-------------------------------------------------------------------
+Thu Oct 01 05:39:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.15:
+  * fix(lfs): do not pipe stdin into post-checkout git-lfs hook
+    (#1523)
+  * fix: remove color blending (#1558)
+  * fix: resolve push-files fallback against the remote-tracking
+    ref (#1485)
+  * test(cmd): regression for valid fish shell completion output
+    (#1527)
+  * fix: sanitize slashes in remote ref when building the checkout
+    dir name (#1486)
+  * fix: quote paths in the generated hook shim (#1509)
+  * feat: propagate forced colors to hook commands via
+    CLICOLOR_FORCE (#1547)
+
+-------------------------------------------------------------------
+Sat Sep 19 08:21:07 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.14 (.13 was not released):
+  * fix: error when --job/--command matches nothing (#1512)
+  * fix: disable tty things when stdout is not TTY (#1545)
+  * docs: document files inheritance for grouped jobs (#1536)
+  * fix: force colors when colors are explicitly enabled (#1538)
+  * fix: resolve file_types paths from the repo root (#1537)
+  * fix: don't force-install hooks from the npm postinstall (#1510)
+  * docs: quote template run examples (#1472)
+
+-------------------------------------------------------------------
+Sat Aug 29 07:09:53 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.12:
+  * fix: fail the hook when staging fixed files errors (#1484)
+  * fix: LEFTHOOK_OUTPUT precedence (#1506)
+- Update to version 2.1.12:
+  * fix: inherit terminal size for PTY commands (#1498)
+  * docs: correct Lefthook commit message configuration (#1499)
+  * docs: hide contributors regenerate tip from the site (#1500)
+  * docs: clarify signed-off commit example (#1492)
+  * deps: bump Go to 1.26.6 (#1495)
+  * docs: fix em notice
+  * docs: update docmd (#1481)
+  * docs: fix EM mention HTML
+  * docs: clarify remote script folders (#1477)
+  * docs: document script args (#1479)
+  * docs: update em logo
+
+-------------------------------------------------------------------
+Thu Aug 13 13:40:18 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.1.10:
+  * 2.1.10: add experimental ai hooks
+  * deps: July 2026 (#1463)
+  * docs: fix links to new beta feature
+  * feat: AI coding agents integration (#1448)
+  * docs: fix language (#1453)
+  * fix: make test suite stable when `NO_COLOR` is set (#1449)
+  * deps: June 2026 (#1447)
+  * deps: migrate shellescape to al.essio.dev/pkg/shellescape
+    (#1443)
+  * docs: upgrade docmd (#1442)
+  * docs: use single quotes in example to handle filepaths with $
+
+-------------------------------------------------------------------
+Thu Aug 13 13:38:56 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- new package lefthook: Fast and powerful Git hooks manager for any
+  type of projects
