@@ -7,4 +7,13 @@
     <comment>UKI (efi binary) for the raw disk image installer</comment>
     <requestid>1381673</requestid>
   </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>ceb25251a553e4f628f6ec96dde340c6</srcmd5>
+    <version>unknown</version>
+    <time>1791453392</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 20261007.d929392:
+  * image: add rdii version to menu entry</comment>
+    <requestid>1383090</requestid>
+  </revision>
 </revisionlist>
