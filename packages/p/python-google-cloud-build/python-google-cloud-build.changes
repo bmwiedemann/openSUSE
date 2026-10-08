@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 07:12:30 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 3.40.0
+  * declare Python3.15 support
+- Update BuildRequires and Requires from setup.py
+
+-------------------------------------------------------------------
 Thu Sep 24 13:01:34 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 3.39.0

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-build
-Version:        3.39.0
+Version:        3.40.0
 Release:        0
 Summary:        Google Cloud Build API client library
 License:        Apache-2.0
@@ -30,7 +30,7 @@ BuildRequires:  %{python_module setuptools}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
 BuildRequires:  %{python_module google-auth >= 2.14.1}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.14.2}
 BuildRequires:  %{python_module proto-plus >= 1.26.1}
@@ -44,7 +44,7 @@ Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-grpc-google-iam-v1 >= 0.14.2
 Requires:       python-proto-plus >= 1.26.1
