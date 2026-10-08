@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Thu Oct 08 05:03:42 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.21.5:
+  * Remove no longer used Zizmor config. (#3998) (#4001)
+  * [stable-2.21] Update workflows and bump zizmor (#3982)
+  * docs: fix 'allow to provide' grammar in module defaults groups
+    (#3967) (#3978)
+  * docs: fix 'allows to run' grammar in command guide seealso
+    (#3968) (#3974)
+  * docs: remove duplicate 'the' in tmpdir directory note (#3969)
+    (#3972)
+  * Ansible 14 is out, Ansible 13 is EOL (#3957) (#3970)
+  * [stable-2.21] ci: refresh docs build dependencies (#3955)
+  * [stable-2.21] Backport #3619 and #3941 (#3959)
+  * docs: update Galaxy namespace request link to service-requests
+    category (#3945) (#3946)
+  * Add the Ansible community 14.4.0 porting guide (#3943) (#3944)
+
+-------------------------------------------------------------------
 Wed Sep 16 05:44:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.21.4:
