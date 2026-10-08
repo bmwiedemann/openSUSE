@@ -33,4 +33,15 @@
     <comment></comment>
     <requestid>1277140</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>48d66b9767a604fdfbee2db8dd401246</srcmd5>
+    <version>1.13.0.2</version>
+    <time>1791458852</time>
+    <user>anag_factory</user>
+    <comment>- Update licence file, it points now to OpenJS Foundation 
+- Update to 1.13.0.2:
+  * Do not use pkg_resources namespace packaging.
+</comment>
+    <requestid>1383275</requestid>
+  </revision>
 </revisionlist>

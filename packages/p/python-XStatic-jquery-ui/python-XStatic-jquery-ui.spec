@@ -1,7 +1,7 @@
 #
 # spec file for package python-XStatic-jquery-ui
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,13 +17,12 @@
 
 
 Name:           python-XStatic-jquery-ui
-Version:        1.13.0.1
+Version:        1.13.0.2
 Release:        0
 Summary:        jQuery UI repackaged for the XStatic standard
 License:        MIT
-Group:          Development/Languages/Python
 URL:            https://jqueryui.com/
-Source:         https://files.pythonhosted.org/packages/source/X/XStatic-jquery-ui/XStatic-jquery-ui-%{version}.tar.gz
+Source:         https://files.pythonhosted.org/packages/source/X/XStatic-jquery-ui/xstatic_jquery_ui-%{version}.tar.gz
 Source1:        https://raw.githubusercontent.com/jquery/jquery-ui/master/LICENSE.txt
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module setuptools}
@@ -40,7 +39,7 @@ jquery-ui javascript library packaged for setuptools (easy_install) / pip.
 You can find more info about the xstatic packaging way in the package `XStatic`.
 
 %prep
-%setup -q -n XStatic-jquery-ui-%{version}
+%setup -q -n xstatic_jquery_ui-%{version}
 cp %{SOURCE1} .
 
 %build
@@ -56,7 +55,6 @@ cp %{SOURCE1} .
 %dir %{python_sitelib}/xstatic
 %dir %{python_sitelib}/xstatic/pkg
 %{python_sitelib}/xstatic/pkg/jquery_ui
-%{python_sitelib}/[Xx][Ss]tatic[-_]jquery[-_]ui-%{version}*-info
-%{python_sitelib}/[Xx][Ss]tatic[-_]jquery[-_]ui-%{version}*nspkg.pth
+%{python_sitelib}/[Xx][Ss]tatic[-_]jquery[-_]ui-%{version}.dist-info
 
 %changelog

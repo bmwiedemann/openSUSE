@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  8 10:38:56 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
+
+- Update licence file, it points now to OpenJS Foundation 
+
+-------------------------------------------------------------------
+Thu Oct  8 04:43:05 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 1.13.0.2:
+  * Do not use pkg_resources namespace packaging.
+
+-------------------------------------------------------------------
 Tue May 13 10:24:28 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build
