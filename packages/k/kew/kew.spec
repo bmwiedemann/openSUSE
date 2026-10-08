@@ -19,7 +19,7 @@
 
 %bcond_without aac
 Name:           kew
-Version:        4.2.7
+Version:        4.3.8
 Release:        0
 Summary:        A command-line music player
 License:        GPL-2.0-only
@@ -71,6 +71,9 @@ sed -i '1s|gcc|clang|' Makefile
 %{_bindir}/kew
 %{_datadir}/kew
 %{_mandir}/man1/kew.1%{?ext_man}
+%{_mandir}/man5/kew.5%{?ext_man}
+%{_mandir}/man5/kewrc.5%{?ext_man}
+%{_mandir}/man5/kewstaterc.5%{?ext_man}
 %{_datadir}/applications/kew.desktop
 %{_datadir}/icons
 
