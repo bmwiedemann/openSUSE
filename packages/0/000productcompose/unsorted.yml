@@ -14990,17 +14990,17 @@ unsorted:
   - libmirage-lang 
   - libmirage-vala 
   - libmirage12 
-  - libmiral7 
-  - libmircommon12 
-  - libmircore2 
-  - libmirevdev10 
+  - libmiral8 
+  - libmircommon13 
+  - libmircore3 
+  - libmirevdev11 
   - libmirisdr-devel 
   - libmirisdr4 
-  - libmiroil9 
-  - libmirplatform34 
-  - libmirserver67 
-  - libmirserverplatform23 
-  - libmirwayland6 
+  - libmiroil10 
+  - libmirplatform35 
+  - libmirserver69 
+  - libmirserverplatform24 
+  - libmirwayland7 
   - libmission-control-plugins0 
   - libmjpegutils-2_2-0-32bit 
   - libmjpegutils-devel 
@@ -15131,7 +15131,7 @@ unsorted:
   - libmypaint-gegl0 
   - libmysofa-devel 
   - libmysofa1-32bit 
-  - libnanomsg6 
+  - libnanomsg7 
   - libnanosvg0 
   - libnanosvgrast0 
   - libnauty-2_9_3 
@@ -47944,7 +47944,6 @@ unsorted:
   - xviewer-lang 
   - xviewer-plugin-exif-display 
   - xviewer-plugin-export-to-folder 
-  - xviewer-plugin-light-theme 
   - xviewer-plugin-map 
   - xviewer-plugin-pythonconsole 
   - xviewer-plugin-send-by-mail 
