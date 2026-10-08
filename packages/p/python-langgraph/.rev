@@ -94,4 +94,12 @@ Built locally on aarch64: rpmlint 0 errors, 0 warnings, 0 badness.</comment>
     <comment>Update python-langgraph to 1.2.13: upstream fix-only release for DeltaChannel forks, update_state paths and subgraph handling. No dependency changes.</comment>
     <requestid>1382763</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>cbd915dd301b6581084aa0fb23fd1f12</srcmd5>
+    <version>1.2.14</version>
+    <time>1791453571</time>
+    <user>anag_factory</user>
+    <comment>Update to 1.2.14 (3/3 langgraph train: after SDK 0.4.6 and cli 0.4.33). SDK floor &gt;=0.4.6, no code changes.</comment>
+    <requestid>1383220</requestid>
+  </revision>
 </revisionlist>

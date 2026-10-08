@@ -17,7 +17,7 @@
 
 
 Name:           python-langgraph
-Version:        1.2.13
+Version:        1.2.14
 Release:        0
 Summary:        Library for building stateful, multi-actor applications with LLMs
 License:        MIT
@@ -34,7 +34,7 @@ Requires:       python-langgraph-checkpoint >= 4.1.0
 Requires:       python-langgraph-prebuilt < 1.2
 Requires:       python-langgraph-prebuilt >= 1.1.0
 Requires:       python-langgraph-sdk < 0.5
-Requires:       python-langgraph-sdk >= 0.4.2
+Requires:       python-langgraph-sdk >= 0.4.6
 Requires:       python-pydantic >= 2.7.4
 Requires:       python-xxhash >= 3.5.0
 BuildArch:      noarch

@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:30:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.2.14:
+  * Raise minimum langgraph-sdk to >=0.4.6, which
+    percent-encodes thread_id and assistant_id in thread
+    stream requests
+  * No langgraph code changes, dependency floor only
+
+-------------------------------------------------------------------
 Tue Oct  6 07:16:10 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.2.13:
