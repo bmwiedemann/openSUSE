@@ -1,0 +1,63 @@
+-------------------------------------------------------------------
+Fri Oct  2 13:36:44 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 1.1.1
+  * allow NULL empty blocks in blk2bstr.
+- Update to version 1.1.0
+  * remove autotools macros and supporting files.
+  * clarify the dual licensing terms of the code, include GPL v2
+    text.
+  * borrow the library features section from the parent project.
+  * remove C++ references in the docs.
+  * port UTF8 string manipulation modules from bstrlib.
+  * add biseqblk, biseqcaselessblk, binsertblk, bjoinblk.
+  * add bfromcstrrangealloc, improve bSecureInput, fix bfindreplace.
+  * port bSGMLEncode function from bstrlib.
+  * fix bUuDecodeEx: prevent OOM and memory leak on malformed input.
+  * fix bNetStr2Bstr: prevent OOB read on crafted netstring length
+  * introduce fuzz testing of the library using llvm libfuzzer.
+  * rename namespace pollution meson option and define in config.h
+- Update to version 1.0.3
+  * Create a bstring security policy.
+  * Use the full project version as library version.
+  * remove invalid # chars from documentation.
+  * pkg-config should look for headers in include root.
+- Use ldconfig_scriptlets macro.
+- Run tests
+- Adjust License
+- Specfile cleanup
+
+-------------------------------------------------------------------
+Tue Oct  7 19:06:19 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Add library to devel
+
+-------------------------------------------------------------------
+Tue Oct  7 18:52:03 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Rename to libbstring1
+
+-------------------------------------------------------------------
+Tue Oct  7 18:31:46 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Make it build, even if it's ugly.
+
+-------------------------------------------------------------------
+Tue Oct 07 18:30:20 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 1.0.2:
+  * Bump version to 1.0.2
+  * Define project C standard to C99
+  * Check that -Wno-gnu compiler flag is supported before using
+  * Remove the SonarCube Cloud configuration file
+  * Turn the bgets workaround into a manual option
+  * Use specific base image version tags in CI build jobs
+  * Create an OpenSSF scorecard workflow
+  * Bump to stable version 1.0.2
+  * Bump vmactions/freebsd-vm from 1.2.1 to 1.2.3
+  * Bump vmactions/netbsd-vm from 1.1.8 to 1.1.9
+
+-------------------------------------------------------------------
+Tue Sep 30 19:18:21 UTC 2025 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Kickoff with version 1.0.2
