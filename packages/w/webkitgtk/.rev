@@ -111,4 +111,41 @@
     CVe-2026-43660, CVE-2026-28984.</comment>
     <requestid>1373244</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>ae374cdb98d0888155f6221966bb8da9</srcmd5>
+    <version>2.54.1</version>
+    <time>1791453306</time>
+    <user>anag_factory</user>
+    <comment>- riscv-platformenable.patch: Fix build for riscv64
+
+- Update to version 2.54.1:
+  + What's new in WebKitGTK 2.54.1?:
+    - Allow pasting in-memory image data from clipboard.
+    - Add User-Agent quirk for Amazon Luna.
+    - Align the filter surface with the device pixel grid.
+    - Fix rendering of scaled or transformed no-repeat background
+      images.
+    - Fix rendering of preserve-3d layers when a layer crosses the
+      camera plane.
+    - Fix SkiaCompositingLayer filter rendering under transforms.
+    - Do not rasterize the part of a tile that the clip drops.
+    - Skip non-composited frames when damage is empty.
+    - Fix text deleted by input method delete-surrounding in
+      contenteditable.
+    - Fix several crashes and rendering issues.
+- Drop 5d013e57c4c4e2674e28399fc162afa3adf25283.patch and
+  webkitgtk-main-thread.patch: fixed upstream.
+
+- Add webkitgtk-skia-s390x.patch: fix skia build on s390x.
+- Add webkitgtk-main-thread.patch: RELEASE_ASSERT in
+  initializeMainThread aborts Eclipse/SWT applications
+  (bwo#322394).
+
+- No longer disable skia for ppc64le.
+- Add upstream patch: bmalloc installs mimalloc as a system library
+  fix bwo#324458 - 5d013e57c4c4e2674e28399fc162afa3adf25283.patch
+
+- Update to version 2.54.0:</comment>
+    <requestid>1382718</requestid>
+  </revision>
 </revisionlist>

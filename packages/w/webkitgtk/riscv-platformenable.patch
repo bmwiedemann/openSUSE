@@ -1,9 +1,9 @@
-Index: webkitgtk-2.52.1/Source/WTF/wtf/PlatformEnable.h
+Index: webkitgtk-2.54.0/Source/WTF/wtf/PlatformEnable.h
 ===================================================================
---- webkitgtk-2.52.1.orig/Source/WTF/wtf/PlatformEnable.h
-+++ webkitgtk-2.52.1/Source/WTF/wtf/PlatformEnable.h
-@@ -737,15 +737,6 @@
- #endif
+--- webkitgtk-2.54.0.orig/Source/WTF/wtf/PlatformEnable.h
++++ webkitgtk-2.54.0/Source/WTF/wtf/PlatformEnable.h
+@@ -730,15 +730,6 @@
+ #define ENABLE_JIT 0
  #endif
  
 -#if CPU(RISCV64)
@@ -18,18 +18,19 @@ Index: webkitgtk-2.52.1/Source/WTF/wtf/PlatformEnable.h
  #if !defined(ENABLE_C_LOOP)
  #if ENABLE(JIT) || CPU(X86_64) || CPU(ARM64)
  #define ENABLE_C_LOOP 0
-Index: webkitgtk-2.52.1/Source/cmake/WebKitFeatures.cmake
+Index: webkitgtk-2.54.0/Source/cmake/WebKitFeatures.cmake
 ===================================================================
---- webkitgtk-2.52.1.orig/Source/cmake/WebKitFeatures.cmake
-+++ webkitgtk-2.52.1/Source/cmake/WebKitFeatures.cmake
-@@ -106,12 +106,6 @@ macro(WEBKIT_OPTION_BEGIN)
-         set(USE_SYSTEM_MALLOC_DEFAULT OFF)
+--- webkitgtk-2.54.0.orig/Source/cmake/WebKitFeatures.cmake
++++ webkitgtk-2.54.0/Source/cmake/WebKitFeatures.cmake
+@@ -110,13 +110,6 @@ macro(WEBKIT_OPTION_BEGIN)
+         set(USE_MIMALLOC_DEFAULT ON)
          set(ENABLE_C_LOOP_DEFAULT ON)
          set(ENABLE_SAMPLING_PROFILER_DEFAULT OFF)
 -    elseif (WTF_CPU_RISCV64)
 -        set(ENABLE_JIT_DEFAULT ON)
 -        set(ENABLE_FTL_DEFAULT ON)
 -        set(USE_SYSTEM_MALLOC_DEFAULT OFF)
+-        set(USE_MIMALLOC_DEFAULT ON)
 -        set(ENABLE_C_LOOP_DEFAULT OFF)
 -        set(ENABLE_SAMPLING_PROFILER_DEFAULT OFF)
      else ()

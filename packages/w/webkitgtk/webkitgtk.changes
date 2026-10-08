@@ -1,4 +1,124 @@
 -------------------------------------------------------------------
+Sat Oct  3 12:55:56 CEST 2026 - Andreas Schwab <schwab@suse.de>
+
+- riscv-platformenable.patch: Fix build for riscv64
+
+-------------------------------------------------------------------
+Fri Oct  2 14:55:25 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update to version 2.54.1:
+  + What's new in WebKitGTK 2.54.1?:
+    - Allow pasting in-memory image data from clipboard.
+    - Add User-Agent quirk for Amazon Luna.
+    - Align the filter surface with the device pixel grid.
+    - Fix rendering of scaled or transformed no-repeat background
+      images.
+    - Fix rendering of preserve-3d layers when a layer crosses the
+      camera plane.
+    - Fix SkiaCompositingLayer filter rendering under transforms.
+    - Do not rasterize the part of a tile that the clip drops.
+    - Skip non-composited frames when damage is empty.
+    - Fix text deleted by input method delete-surrounding in
+      contenteditable.
+    - Fix several crashes and rendering issues.
+- Drop 5d013e57c4c4e2674e28399fc162afa3adf25283.patch and
+  webkitgtk-main-thread.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Sun Sep 27 18:38:01 UTC 2026 - Michael Gorse <mgorse@suse.com>
+
+- Add webkitgtk-skia-s390x.patch: fix skia build on s390x.
+- Add webkitgtk-main-thread.patch: RELEASE_ASSERT in
+  initializeMainThread aborts Eclipse/SWT applications
+  (bwo#322394).
+
+-------------------------------------------------------------------
+Wed Sep 23 11:25:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- No longer disable skia for ppc64le.
+- Add upstream patch: bmalloc installs mimalloc as a system library
+  fix bwo#324458 - 5d013e57c4c4e2674e28399fc162afa3adf25283.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 17:05:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.54.0:
+  + Switch web process compositor to use Skia instead of
+    TextureMapper.
+  + Improved damage handling that is now also used during the
+    composition to limit the composited areas.
+  + Implement GPU atlas creation and replay substitution for
+    batched raster image uploads.
+  + Media capability reporting is more accurate.
+  + Video decoding limits are now respected in media capabilities
+    queries.
+  + Add new improved API for page favicons.
+  + Add magnification property to WebKitWebView to handle visual
+    scaling.
+  + Add new API to allow setting a per-navigation custom User-Agent
+    to WebKitWebsitePolicies.
+  + Remove the option to use cairo for 2D rendering.
+
+-------------------------------------------------------------------
+Thu Sep 17 16:05:54 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.91 (Unstable):
+  + Handle video orientation in skia compositor.
+  + Do not use cached credentials when Authorization header is
+    present.
+  + Fix scrollbar rendering issues due to incorrect damage.
+  + Add log fallback when journald is not reachable.
+  + Fix several crashes and rendering issues.
+- Drop webkitgtk-ppc64le-build-fix.patch: Fixed upstream.
+
+-------------------------------------------------------------------
+Thu Sep 17 16:05:53 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.53.4 (Unstable):
+  + Implemented batched painting in skia compositor, which improves
+    performance when there are many layers that can be painted in
+    the same operation.
+  + Avoid unnecessary clips when possible in skia compositor.
+  + Fix synchronization issues between main, scrolling and
+    compositing threads causing glitches while scrolling in some
+    cases.
+  + Limit the damage region of the scrollbar to the region actually
+    painted.
+  + Add support for image/webp to canvas.toDataURL().
+  + Expose search inputs as WEBKIT_INPUT_PURPOSE_SEARCH.
+  + Add User-Agent quirk for HBO Max.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.53.3:
+  + Switch web process compositor to use Skia instead of
+    TextureMapper.
+  + Fix missing glyph before ZWJ/ZWNJ if no font is found for the
+    cluster.
+  + Add support for half width fonts.
+  + Support time zone change notifications on linux.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.53.2:
+  + Only use DMA-BUF mapping for writing to the GPU atlas when
+    possible.
+  + Do not resolve ‘-apple-system’ font to default system font.
+  + Set real time limits when not using the portal.
+  + Report support for supported non-AAC mp4a codecs.
+  + Fix several crashes and rendering issues.
+- Changes from version 2.53.1:
+  + Remove the option to use cairo for 2D rendering.
+  + Implement GPU atlas creation and replay substitution for
+    batched raster image uploads.
+  + Improved non accelerated composited mode by using the same
+    buffer sharing implementation as accelerated mode.
+  + The on-demand hardware acceleration policy is now deprecated in
+    GTK3 API.
+  + Add new improved API for page favicons.
+  + Add webkit_feature_list_find() to public API.
+  + Support PGO features in regular CMake builds.
+  + Fix several crashes and rendering issues.
+- Drop riscv-platformenable.patch: fixed upstream.
+- Rebase webkitgtk-ppc64le-build-fix.patch with quilt.
+
+-------------------------------------------------------------------
 Fri Aug 21 00:56:00 UTC 2026 - Michael Gorse <mgorse@suse.com>
 
 - Update to version 2.52.6 (bsc#1275791):
@@ -177,3 +297,4 @@ Tue Feb 24 13:48:41 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 Thu Jan 29 21:41:09 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Renamed webkit2gtk3 package to webkitgk, drop soup2 variant.
+

@@ -62,7 +62,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           webkit%{_gtknamesuffix}
-Version:        2.52.6
+Version:        2.54.1
 Release:        0
 Summary:        Library for rendering web content, GTK+ Port
 License:        BSD-3-Clause AND LGPL-2.0-or-later
@@ -74,9 +74,11 @@ Source99:       webkitgtk.keyring
 
 # PATCH-FEATURE-OPENSUSE reproducibility.patch -- Make build reproducible
 Patch0:         reproducibility.patch
+# PATCH-FIX-UPSTREAM webkitgtk-skia-s390x.patch webkit#312677 mgorse@suse.com -- fix skia build on s390x.
+Patch2:         webkitgtk-skia-s390x.patch
 
 # PATCH-FIX-UPSTREAM riscv-platformenable.patch gh#Webkit/Webkit#64268
-Patch2:         riscv-platformenable.patch
+Patch3:         riscv-platformenable.patch
 
 BuildRequires:  Mesa-libEGL-devel
 BuildRequires:  Mesa-libGL-devel
@@ -461,9 +463,6 @@ export PYTHON=%{_bindir}/python3
   -DCMAKE_MODULE_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DCMAKE_SHARED_LINKER_FLAGS="-Wl,--as-needed -Wl,-z,now -pthread" \
   -DPYTHON_EXECUTABLE=%{_bindir}/python3 \
-%ifarch ppc64le
-  -DUSE_SKIA=OFF \
-%endif
 %ifarch aarch64
   -DUSE_64KB_PAGE_BLOCK=ON \
 %endif
