@@ -33,7 +33,7 @@ BuildRequires:  zsh
 %description
 Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.
 
-This packages contains the CLI to interact with the ArgoCD installation in a
+This package contains the CLI to interact with the ArgoCD installation in a
 Kubernetes cluster.
 
 %package -n %{name}-bash-completion
