@@ -21,7 +21,7 @@
 Name:           kargo-cli
 Version:        1.12.2
 Release:        0
-Summary:        CLI for the Kubernetes Application lifecycle orchestration
+Summary:        CLI for the Kubernetes application lifecycle orchestration
 License:        Apache-2.0
 URL:            https://github.com/akuity/kargo
 Source:         %{name}-%{version}.tar.gz
@@ -67,7 +67,7 @@ Supplements:    (%{name} and zsh)
 BuildArch:      noarch
 
 %description -n %{name}-zsh-completion
-zsh command line completion support for %{name}.
+Zsh command line completion support for %{name}.
 
 %prep
 %autosetup -p1 -a 1
