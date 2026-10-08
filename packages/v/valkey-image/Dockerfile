@@ -31,7 +31,8 @@ RUN set -euo pipefail; \
     zypper -n --installroot /target --gpg-auto-import-keys install --no-recommends sed valkey
 # changing user id and group id created by package installation to stable values
 RUN set -euo pipefail; \
-    chroot /target chown -R --from=valkey:valkey 999:999 /; \
+    chroot /target chown -R --from=valkey 999 /; \
+    chroot /target chown -R --from=:valkey :999 /; \
     groupmod -R /target -g 999 valkey; \
     usermod -R /target -u 999 valkey
 

@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  7 16:33:39 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
+
+- split the ownership change into two operations to catch all cases
+
+-------------------------------------------------------------------
 Mon Oct  5 09:54:58 UTC 2026 - SUSE Update Bot <bci-internal@suse.de>
 
 - use a stable uid/gid
