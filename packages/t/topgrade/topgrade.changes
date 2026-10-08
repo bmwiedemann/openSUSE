@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Thu Oct 08 08:12:12 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 17.12.3:
+  * chore: release v17.12.3 (#2383)
+  * fix: restore old working directory when opening a shell (#2391)
+  * chore(deps): update rust to v1.99.0 (#2386)
+  * chore(pre-commit): autoupdate (#2384)
+  * chore(deps): update github/codeql-action action to v4.38.2 (#2375)
+  * chore(deps): update vmactions/openbsd-vm action to v1.4.8 (#2378)
+  * chore(deps): lock file maintenance (#2381)
+  * fix(mise): skip self-update when disabled by the package manager (#2374)
+  * chore: release v17.12.2 (#2369)
+  * fix(hyprpm): run hyprpm at the end to avoid dropping cached sudo credentials for other steps
+  * fix(brew): run brew at the end to avoid dropping cached sudo credentials for other steps
+  * fix(zed): support preview channel (#2372)
+  * chore(pre-commit): autoupdate (#2368)
+
+-------------------------------------------------------------------
 Tue Sep 22 01:26:09 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 17.12.1:
