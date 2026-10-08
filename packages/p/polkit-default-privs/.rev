@@ -2562,4 +2562,14 @@ for 12.3</comment>
     <comment>1</comment>
     <requestid>1381125</requestid>
   </revision>
+  <revision rev="275" vrev="1">
+    <srcmd5>3823122254a4754968169ea5af75cf7d</srcmd5>
+    <version>1550+20261007.d5bf5b4</version>
+    <time>1791465171</time>
+    <user>anag_factory</user>
+    <comment>- Update to version 1550+20261007.d5bf5b4:
+  * profiles: add gnome-remote-desktop use-grd-pcscd action (bsc#1276523)
+</comment>
+    <requestid>1382964</requestid>
+  </revision>
 </revisionlist>

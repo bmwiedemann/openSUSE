@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct 07 07:17:18 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20261007.d5bf5b4:
+  * profiles: add gnome-remote-desktop use-grd-pcscd action (bsc#1276523)
+
+-------------------------------------------------------------------
 Mon Sep 28 09:22:27 UTC 2026 - Mislav Bozicevic <mislav.bozicevic@suse.com>
 
 - Update to version 1550+20260928.d1c0e7e:
