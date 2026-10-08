@@ -1,0 +1,81 @@
+From 5b190f0fd9e6b0bfd32752a9115242f87ec36c59 Mon Sep 17 00:00:00 2001
+From: Andri Yngvason <andri@yngvason.is>
+Date: Sun, 17 May 2026 09:57:07 +0000
+Subject: [PATCH] Use nettle & hogweed version 4
+
+---
+ meson.build                | 6 ++++--
+ src/crypto/nettle/cipher.c | 8 ++++----
+ src/crypto/nettle/hash.c   | 2 +-
+ 3 files changed, 9 insertions(+), 7 deletions(-)
+
+Index: neatvnc-1.0.3/meson.build
+===================================================================
+--- neatvnc-1.0.3.orig/meson.build
++++ neatvnc-1.0.3/meson.build
+@@ -61,8 +61,10 @@ libm = cc.find_library('m', required: fa
+ pixman = dependency('pixman-1')
+ libturbojpeg = dependency('libturbojpeg', required: get_option('jpeg'))
+ gnutls = dependency('gnutls', required: get_option('tls'))
+-nettle = dependency('nettle', required: get_option('nettle'))
+-hogweed = dependency('hogweed', required: get_option('nettle'))
++nettle = dependency('nettle', required: get_option('nettle'),
++                    version: ['>=4.0', '<5.0'])
++hogweed = dependency('hogweed', required: get_option('nettle'),
++                     version: ['>=4.0', '<5.0'])
+ gmp = cc.find_library('gmp')
+ zlib = dependency('zlib')
+ gbm = dependency('gbm', required: get_option('gbm'))
+Index: neatvnc-1.0.3/src/crypto/nettle/cipher.c
+===================================================================
+--- neatvnc-1.0.3.orig/src/crypto/nettle/cipher.c
++++ neatvnc-1.0.3/src/crypto/nettle/cipher.c
+@@ -119,7 +119,7 @@ static bool crypto_cipher_aes_eax_encryp
+ 			(uint8_t*)dst->data + dst->len, src);
+ 	dst->len += src_len;
+ 
+-	nettle_eax_aes128_digest(&self->enc_ctx.aes_eax.ctx, 16, mac);
++	nettle_eax_aes128_digest(&self->enc_ctx.aes_eax.ctx, mac);
+ 
+ 	return true;
+ }
+@@ -131,7 +131,7 @@ static ssize_t crypto_cipher_aes_eax_dec
+ 	crypto_aes_eax_update_nonce(&self->dec_ctx.aes_eax);
+ 	nettle_eax_aes128_update(&self->dec_ctx.aes_eax.ctx, ad_len, ad);
+ 	nettle_eax_aes128_decrypt(&self->dec_ctx.aes_eax.ctx, len, dst, src);
+-	nettle_eax_aes128_digest(&self->dec_ctx.aes_eax.ctx, 16, mac);
++	nettle_eax_aes128_digest(&self->dec_ctx.aes_eax.ctx, mac);
+ 	return len;
+ }
+ 
+@@ -179,7 +179,7 @@ static bool crypto_cipher_aes256_eax_enc
+ 			(uint8_t*)dst->data + dst->len, src);
+ 	dst->len += src_len;
+ 
+-	EAX_DIGEST(&self->enc_ctx.aes256_eax.ctx, aes256_encrypt, 16, mac);
++	EAX_DIGEST(&self->enc_ctx.aes256_eax.ctx, aes256_encrypt, mac);
+ 
+ 	return true;
+ }
+@@ -191,7 +191,7 @@ static ssize_t crypto_cipher_aes256_eax_
+ 	crypto_aes256_eax_update_nonce(&self->dec_ctx.aes256_eax);
+ 	EAX_UPDATE(&self->dec_ctx.aes256_eax.ctx, aes256_encrypt, ad_len, ad);
+ 	EAX_DECRYPT(&self->dec_ctx.aes256_eax.ctx, aes256_encrypt, len, dst, src);
+-	EAX_DIGEST(&self->dec_ctx.aes256_eax.ctx, aes256_encrypt, 16, mac);
++	EAX_DIGEST(&self->dec_ctx.aes256_eax.ctx, aes256_encrypt, mac);
+ 	return len;
+ }
+ 
+Index: neatvnc-1.0.3/src/crypto/nettle/hash.c
+===================================================================
+--- neatvnc-1.0.3.orig/src/crypto/nettle/hash.c
++++ neatvnc-1.0.3/src/crypto/nettle/hash.c
+@@ -21,7 +21,7 @@
+ #include <stdlib.h>
+ #include <nettle/md5.h>
+ #include <nettle/sha1.h>
+-#include <nettle/sha.h>
++#include <nettle/sha2.h>
+ 
+ struct crypto_hash {
+ 	union {

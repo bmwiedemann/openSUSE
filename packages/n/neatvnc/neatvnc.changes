@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:25:49 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Add 5b190f0.patch: backport from master: Use nettle & hogweed version 4;
+  Fixes build against libnettle 4.x.
+
+-------------------------------------------------------------------
+Thu Oct  8 11:59:41 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 1.0.3:
+  * stream: Fix message ordering, stalls and leaks
+  * stream: Remove local send queue
+  * stream: Do callbacks last on close
+  * stream: Add weakref guard around stream_close in remote_closed
+  * stream: ws: Return early on read failure
+  * stream: rsa-aes: Return early on read failure
+  * stream: ws: Return early on header send failure
+  * stream: ws: Queue frame header with payload
+  * stream: ws: Wait for complete ping before replying
+  * stream: ws: Keep mask phase across payload chunks
+  * stream: ws: Handle control frames between fragments
+  * stream: ws: Keep reading after empty frame
+
+-------------------------------------------------------------------
 Mon Sep 28 06:19:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 1.0.2:

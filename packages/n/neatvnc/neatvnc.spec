@@ -19,7 +19,7 @@
 %define libsoname libneatvnc1
 
 Name:           neatvnc
-Version:        1.0.2
+Version:        1.0.3
 Release:        0
 Summary:        A VNC server library
 License:        ISC
@@ -27,6 +27,8 @@ Group:          System/GUI/Other
 URL:            https://github.com/any1/neatvnc
 Source0:        %{name}-%{version}.tar.xz
 Patch0:         fix-build-in-15.6.patch
+# PATCH-FIX-UPSTREAM -- Use nettle & hogweed version 4; backported from https://github.com/any1/neatvnc/commit/5b190f0.patch
+Patch1:         5b190f0.patch
 
 BuildRequires:  meson
 BuildRequires:  pkgconfig
