@@ -1,4 +1,18 @@
 --------------------------------------------------------------------
+Thu Oct 8 07:29:32 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1099
+- record json output of lsscsi (since version 0.33)
+- 4.5.362
+
+--------------------------------------------------------------------
+Wed Oct 7 17:05:04 UTC 2026 - aschnell@suse.com
+
+- merge gh#openSUSE/libstorage-ng#1098
+- improved readability of testsuite data
+- 4.5.361
+
+--------------------------------------------------------------------
 Sun Oct 4 12:27:00 UTC 2026 - aschnell@suse.com
 
 - Translated using Weblate (Slovak) (bsc#1149754)
