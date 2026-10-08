@@ -152,6 +152,7 @@ BuildRequires:  pkgconfig(libcurl) >= 7.35.0
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
 BuildRequires:  pkgconfig(libdca)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
+BuildRequires:  pkgconfig(libfreeaptx)
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpng) >= 1.2
@@ -238,7 +239,6 @@ BuildRequires:  pkgconfig(vpl)
 %if 0%{?BUILD_ORIG}
 BuildRequires:  pkgconfig(libde265) >= 0.9
 BuildRequires:  pkgconfig(libmodplug)
-BuildRequires:  pkgconfig(libopenaptx) == 0.2.0
 BuildRequires:  pkgconfig(librtmp)
 BuildRequires:  pkgconfig(vo-aacenc) >= 0.1.0
 BuildRequires:  pkgconfig(x265)
@@ -876,7 +876,6 @@ export PYTHON=%{_bindir}/python3
 	-D rtmp=disabled \
 	-D voaacenc=disabled \
 	-D x265=disabled \
-	-D openaptx=disabled \
 %endif
 	-D gpl=enabled \
 	-D aja=disabled \
@@ -1104,6 +1103,7 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %{_libdir}/gstreamer-%{gst_branch}/libgstneonhttpsrc.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnetsim.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstnvcodec.so
+%{_libdir}/gstreamer-%{gst_branch}/libgstopenaptx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenexr.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopenh264.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstopusparse.so
@@ -1381,7 +1381,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 %endif
 %{_libdir}/gstreamer-%{gst_branch}/libgstde265.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstmodplug.so
-%{_libdir}/gstreamer-%{gst_branch}/libgstopenaptx.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstrtmp.so
 %{_libdir}/gstreamer-%{gst_branch}/libgstx265.so
 %endif

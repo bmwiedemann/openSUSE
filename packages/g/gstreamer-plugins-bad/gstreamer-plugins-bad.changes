@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct  3 06:11:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add pkgconfig(libfreeaptx) BuildRequires and stop passing
+  openaptx=disable to meson setup, build aptx support. Also drop
+  the conditional pkgconfig(libopenaptx) BuildRequires.
+
+-------------------------------------------------------------------
 Tue Sep  8 06:59:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.7:
