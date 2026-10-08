@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Thu Oct  8 06:23:50 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.6:
+  * Native allocator only: NULL-guard the malloc-graph
+    physical-ref free on the rogue handoff path (src/malloc-graph.c,
+    src/vmm-ref.c), which this build does not compile
+  * The Python fallback shipped by this package is unchanged
+    (only _version.py differs), so the >= 0.5.5 floor consumers
+    require stays as is
+
+-------------------------------------------------------------------
 Wed Sep 16 07:24:48 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.5:

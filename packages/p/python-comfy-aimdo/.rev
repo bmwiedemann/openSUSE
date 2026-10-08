@@ -136,4 +136,12 @@ unchanged and is still needed. Factory's comfyui floor (&gt;= 0.4.15) satisfied.
 - Extend %check to import the new comfy_aimdo.storage module</comment>
     <requestid>1378284</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>8f5dd0e354a97a8aa2166d426944eb5c</srcmd5>
+    <version>0.5.6</version>
+    <time>1791458874</time>
+    <user>anag_factory</user>
+    <comment>Update to 0.5.6: native-allocator NULL guard only, shipped Python fallback unchanged. Local build green, rpmlint clean.</comment>
+    <requestid>1383210</requestid>
+  </revision>
 </revisionlist>
