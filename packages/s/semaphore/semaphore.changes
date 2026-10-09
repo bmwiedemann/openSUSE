@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:17:38 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.19.16 (no releases between .12 and this one):
+  * Configurable runner check interval
+    Runners can now be told how often to ask the server for new
+    jobs. Until now the interval was hard-coded to 1 second, which
+    on installations with many runners produced a noticeable amount
+    of request traffic.
+    New option in the runner section of the runner config:
+
+      {
+        "runner": {
+          "check_interval_seconds": 5
+        }
+      }
+
+    Or via environment variable:
+
+      SEMAPHORE_RUNNER_CHECK_INTERVAL_SECONDS=5
+
+    Default: 1 second, so existing installations behave exactly as
+    before. Values of 0, negative values, or values too large to
+    represent as a duration fall back to the default.
+
+    What changes and what does not. Only the check for new jobs
+    honours the configured interval. The runner's progress report,
+    which also serves as its heartbeat, keeps running once per
+    second. Raising the check interval therefore does not affect
+    when the server marks a runner offline. Jobs will start up to
+    check_interval_seconds later than before, so pick a value that
+    matches how quickly you need new tasks to be picked up.
+    Affected components: runner (semaphore runner start), config
+    schema. No database migration, no changes to the server or the
+    web interface.
+  * refactor(config): remove redundant conf.Dirs nil checks in
+    GetSecretsPath
+  * fix: old secrets path in config
+
+-------------------------------------------------------------------
 Fri Sep 18 05:30:49 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.19.12:
