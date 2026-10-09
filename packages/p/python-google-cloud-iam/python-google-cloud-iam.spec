@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-cloud-iam
-Version:        2.25.0
+Version:        2.26.0
 Release:        0
 Summary:        Google Cloud Iam API client library
 License:        Apache-2.0
@@ -31,7 +31,7 @@ BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  python-rpm-macros
 # SECTION test requirements
-BuildRequires:  %{python_module google-api-core >= 2.25.0}
+BuildRequires:  %{python_module google-api-core >= 2.28.0}
 BuildRequires:  %{python_module grpc-google-iam-v1 >= 0.12.4 with %python-grpc-google-iam-v1 < 1.0.0dev}
 BuildRequires:  %{python_module proto-plus >= 1.26.1}
 BuildRequires:  %{python_module protobuf >= 6.33.5}
@@ -42,7 +42,7 @@ Requires:       python-grpcio >= 1.59.0
 %else
 Requires:       python-grpcio >= 1.75.1
 %endif
-Requires:       python-google-api-core >= 2.25.0
+Requires:       python-google-api-core >= 2.28.0
 Requires:       python-google-auth >= 2.14.1
 Requires:       python-proto-plus >= 1.26.1
 Requires:       python-protobuf >= 6.33.5
