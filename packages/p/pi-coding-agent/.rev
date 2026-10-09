@@ -280,4 +280,12 @@ Built and checked locally on aarch64: rpmlint 0 errors, 0 warnings,
 - Details in .changes; gate.sh green, rpmlint clean, build passed</comment>
     <requestid>1382765</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c453e2932f5e0ef5af72e4414cd1fac6</srcmd5>
+    <version>1.1.0</version>
+    <time>1791575126</time>
+    <user>dimstar_suse</user>
+    <comment>Update pi-coding-agent to 1.1.0 with re-vendored node_modules (ten @earendil-works siblings to 1.1.0, 119 shipped modules unchanged). Local build green, rpmlint clean, both distro patches still apply.</comment>
+    <requestid>1383685</requestid>
+  </revision>
 </revisionlist>
