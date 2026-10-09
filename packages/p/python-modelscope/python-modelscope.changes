@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  9 13:23:36 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.40.2:
+  * Add Intel XPU device support for model inference and
+    training, with CPU fallback where XPU is unavailable
+  * Require python-modelscope-hub >= 0.4.6
+
+-------------------------------------------------------------------
 Wed Sep 16 07:26:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.40.1:
