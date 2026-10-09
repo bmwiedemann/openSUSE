@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Thu Oct 08 14:03:28 UTC 2026 - okurz@suse.com
+
+- Update to version 5.1791468191.ebf995c1:
+  * refactor(job-overview-helper): Pull code in separate function
+  * fix(job-overview-helper): Return json error when called via API
+  * fix(navbar): Ensure $job_groups_and_parents is defined
+  * fix(tests): Don't allow overwriting OPENQA_BASEDIR for .t files
+  * refactor: Collapse @-split scenario name strings
+  * refactor: Simplify `_gru_tasks_items`
+  * fix(test-details): Avoid error when computing list of Gru tasks
+  * git subrepo pull (merge) --force external/os-autoinst-common
+  * perf(tests): Optimize t/ui/15-admin-workers.t execution time
+  * feat(ui): Use timeago for reservation timestamps
+  * docs: Document worker host views and reservations
+  * fix(ui): Include reserve modal in host view
+  * feat(ui): Make host names clickable and add scope
+  * feat(ui): Add worker host view with configuration
+  * feat(cli): Add worker-host to reservation command
+  * feat(api): Add worker host reservation endpoints
+  * feat(workers): Support whole-host reservation
+
+-------------------------------------------------------------------
 Tue Oct 06 20:12:54 UTC 2026 - okurz@suse.com
 
 - Update to version 5.1791317561.396de3fb:
