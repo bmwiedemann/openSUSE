@@ -1,5 +1,5 @@
 #!/bin/sh -ex
-v="1.8.23"
+v="1.8.24"
 wget -c "https://www.math.rwth-aachen.de/homes/Browse/Browse-$v.tar.bz2"
 tar -xf "Browse-$v.tar.bz2"
 # Delete CC-BY-NC files

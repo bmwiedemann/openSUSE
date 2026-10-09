@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:15:07 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.8.24
+  * Reset signal handlers after initialization of ncurses. This
+    avoids problems with conflicting signal handlers in
+    julia/Oscar.
+  * Make sure that 'NCurses.mousemask' is called with a plain list,
+    which is needed since
+    https://github.com/gap-system/gap/pull/6334 got merged.
+  * Fix argument of 'NCurses.mouseinterval' which did nothing so
+    far.
+
+-------------------------------------------------------------------
 Wed Aug 12 05:00:11 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.8.23

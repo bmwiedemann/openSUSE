@@ -48,4 +48,12 @@
     <comment>- Update to release 1.8.23</comment>
     <requestid>1370756</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>90a9a5c4fc1c591538ad042665d61574</srcmd5>
+    <version>1.8.24</version>
+    <time>1791575154</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to release 1.8.24</comment>
+    <requestid>1383716</requestid>
+  </revision>
 </revisionlist>
