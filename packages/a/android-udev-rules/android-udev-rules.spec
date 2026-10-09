@@ -23,6 +23,8 @@ Summary:        Udev rules for Android Debug Bridge
 License:        GPL-3.0-or-later
 URL:            https://github.com/M0Rf30/android-udev-rules
 Source0:        %{url}/archive/%{version}/%{name}-%{version}.tar.gz
+# systemd is required for udevadm in %%check
+#BuildRequires:  systemd
 BuildRequires:  sysuser-shadow
 BuildRequires:  sysuser-tools
 BuildRequires:  udev
@@ -49,12 +51,8 @@ such as /dev/android*.
 install -D -m 0644 -t %{buildroot}%{_sysusersdir} android-udev.conf
 install -D -m 0644 -t %{buildroot}%{_udevrulesdir} 51-android.rules
 
-%if 0%{?suse_version} >= 1699
-# error in leap 16:
-# udevadm: symbol lookup error: udevadm: undefined symbol: sym_kmod_unref, version SD_SHARED
-%check
-udevadm verify --resolve-names=never 51-android.rules
-%endif
+#%%check
+#udevadm verify --resolve-names=never 51-android.rules
 
 %pre -f adbusers.pre
 

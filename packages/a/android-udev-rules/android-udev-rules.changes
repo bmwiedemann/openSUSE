@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:07:51 UTC 2026 - munix9@googlemail.com
+
+- Disable %check for now cause it requires systemd (not systemd-mini)
+  to avoid the error message "udevadm: symbol lookup error: udevadm:
+  undefined symbol: sym_kmod_unref, version SD_SHARED"
+
+-------------------------------------------------------------------
 Tue Sep 22 11:58:16 UTC 2026 - munix9@googlemail.com
 
 - Update to version 20260922

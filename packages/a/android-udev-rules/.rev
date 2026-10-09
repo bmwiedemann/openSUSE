@@ -244,4 +244,15 @@
 </comment>
     <requestid>1379724</requestid>
   </revision>
+  <revision rev="30" vrev="2">
+    <srcmd5>236d0476ea8df7b005f506d7fcf3ce5a</srcmd5>
+    <version>20260922</version>
+    <time>1791574982</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable %check for now cause it requires systemd (not systemd-mini)
+  to avoid the error message &quot;udevadm: symbol lookup error: udevadm:
+  undefined symbol: sym_kmod_unref, version SD_SHARED&quot;
+</comment>
+    <requestid>1383271</requestid>
+  </revision>
 </revisionlist>
