@@ -65,11 +65,11 @@ application which will use libsoxr/libsoxr-lsr.
 
 %build
 
-%ifarch %arm
-%define _lto_cflags %{nil}
-%endif
-
 %cmake \
+%ifarch %{arm}
+  -DCMAKE_EXE_LINKER_FLAGS="%{?build_ldflags} -lm" \
+  -DCMAKE_SHARED_LINKER_FLAGS="%{?build_ldflags} -lm" \
+%endif
   -DDOC_INSTALL_DIR=%{_docdir}/%{name} \
   -DCMAKE_POLICY_VERSION_MINIMUM=3.5
 make %{?_smp_mflags}

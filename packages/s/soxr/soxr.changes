@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct  8 08:29:42 UTC 2026 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Add -lm for %{arm} to fix build
+- Re-enable LTO for %{arm} since boo#1155011 is fixed
+
+-------------------------------------------------------------------
 Sat Mar 22 14:52:06 UTC 2025 - Shawn Dunn <sfalken@opensuse.org>
 
 - Add -DCMAKE_POLICY_VERSION_MINIMUM=3.5 to fix FTBFS with cmake4
