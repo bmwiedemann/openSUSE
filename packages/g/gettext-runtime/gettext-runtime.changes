@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Sep 30 07:33:15 UTC 2026 - Michael Pujos <pujos.michael@gmail.com>
+
+- Add lexical-binding statement to suse-start-po-mode.el to fix
+  emacs 31 warning on startup
+
+-------------------------------------------------------------------
 Mon Sep 14 13:32:54 UTC 2026 - Ana Guerrero <ana.guerrero@suse.com>
 
 - Fix for automake1.19: Update patch

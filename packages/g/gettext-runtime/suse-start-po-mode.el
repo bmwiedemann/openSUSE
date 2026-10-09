@@ -1,4 +1,4 @@
-;; /usr/share/emacs/site-lisp/suse-start-po-mode.el
+;; /usr/share/emacs/site-lisp/suse-start-po-mode.el  -*- lexical-binding: t; -*-
 
 (autoload 'po-mode "po-mode"
   "Major mode for translators when they edit PO files.
