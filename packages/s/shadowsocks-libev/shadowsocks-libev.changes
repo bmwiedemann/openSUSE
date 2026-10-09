@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 14:01:05 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix build for Leap 16.1+: switch BuildRequires from mbedtls-devel to
+  mbedtls-3-devel since Leap 16.1
+
+-------------------------------------------------------------------
 Fri Oct  2 08:41:12 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025)

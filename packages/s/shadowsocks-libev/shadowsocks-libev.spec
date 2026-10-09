@@ -74,7 +74,7 @@ BuildRequires:  pkgconfig(libcares)
 BuildRequires:  pkgconfig(libev)
 BuildRequires:  pkgconfig(libpcre2-8)
 BuildRequires:  pkgconfig(libsodium) >= 1.0.4
-%if 0%{?suse_version} > 1600
+%if 0%{?suse_version} > 1610
 BuildRequires:  mbedtls-3-devel
 %else
 BuildRequires:  pkgconfig(mbedtls)

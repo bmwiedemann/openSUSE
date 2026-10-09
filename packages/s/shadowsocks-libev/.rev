@@ -264,4 +264,13 @@
     <comment>- Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025) (forwarded request 1382050 from hillwood)</comment>
     <requestid>1382051</requestid>
   </revision>
+  <revision rev="31" vrev="6">
+    <srcmd5>d48283197bd5bdd47d56d6bf542fe030</srcmd5>
+    <version>3.3.6</version>
+    <time>1791575217</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix build for Leap 16.1+: switch BuildRequires from mbedtls-devel to
+  mbedtls-3-devel since Leap 16.1 (forwarded request 1383835 from hillwood)</comment>
+    <requestid>1383836</requestid>
+  </revision>
 </revisionlist>
