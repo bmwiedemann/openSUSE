@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Thu Oct 01 15:49:07 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 2.3.0+git2.b031728:
+  * DOC: otel: added a security policy to the repository
+  * MINOR: otel: test: added a test with an optional upstream context
+
+-------------------------------------------------------------------
+Thu Oct 01 15:49:06 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to version 3.4.6+git1.3ce8f6169:
+  * MEDIUM: jwt: Reject "none" alg in jwt_verify by default
+  * [RELEASE] Released version 3.4.6
+  * REGTESTS: log: check that a ring's internal server may target a UNIX socket
+  * BUG/MEDIUM: server: skip log backend addr checks for internal proxies
+  * BUG/MEDIUM: sink: reconnect attempt not working after session lasted more than ~25 days
+  * BUG/MAJOR: mux_quic: fix potential crash on RESET_STREAM receive
+  * MINOR: log: add the +utf8 encoding option to let valid UTF-8 pass
+  * MINOR: log: pass the input end to the _lf_encode_bytes() byte encoders
+
+-------------------------------------------------------------------
 Thu Sep 24 14:39:27 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to version 3.4.5+git0.c28c410a7:
