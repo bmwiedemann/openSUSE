@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:15:05 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 5.8.3:
+  * Update api to v0.21.3
+  * Update cmd/config to v0.21.3
+  * Update kyaml to v0.21.3
+  * fix: use uncompressed json for openapi schema definition
+  * Bump to the latest kube-openapi
+  * Bump to Go 1.27
+  * Use slices functions instead of open-coding them
+  * Back to development mode; unpin the modules
+
+-------------------------------------------------------------------
 Thu Oct 01 05:39:28 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 5.8.2:
