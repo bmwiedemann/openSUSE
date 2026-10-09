@@ -1,7 +1,7 @@
 #
 # spec file for package xterm-console
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           xterm-console
-Version:        1.1
+Version:        1.1785509059.165d3b6
 Release:        0
 Summary:        A Linux vt console look-alike xterm wrapper
 License:        MIT
@@ -30,6 +30,11 @@ BuildRequires:  fontpackages-devel
 # the original consolefonts:
 BuildRequires:  kbd
 Requires:       fonts-config
+Requires:       mkfontscale
+Requires:       python3-base
+Requires:       xorg-x11-fonts
+Requires:       xterm
+Requires(post): mkfontscale
 # svirt, eg. s390x, xen
 Supplements:    os-autoinst
 %reconfigure_fonts_prereq
@@ -63,7 +68,17 @@ mkdir -p %{buildroot}%{_datadir}/fonts/misc/
 install -m 0755 %{SOURCE0} %{buildroot}%{_bindir}
 install -m 0644 *.pcf.gz %{buildroot}%{_datadir}/fonts/misc/
 
-%reconfigure_fonts_scriptlets
+%post
+%reconfigure_fonts_post
+# modern systems don't seem to do this automatically
+mkfontscale %{_datadir}/fonts/misc/
+mkfontscale -b -s -l %{_datadir}/fonts/misc/
+
+%postun
+%reconfigure_fonts_postun
+
+%posttrans
+%reconfigure_fonts_posttrans
 
 %files
 %{_bindir}/xterm-console

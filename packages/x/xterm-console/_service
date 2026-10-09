@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version='1.0' encoding='utf-8'?>
 <services>
   <service name="obs_scm" mode="disabled">
     <param name="extract">psf2bdf.pl</param>
@@ -8,11 +8,13 @@
     <param name="url">https://github.com/os-autoinst/xterm_console.git</param>
     <param name="scm">git</param>
     <param name="revision">master</param>
+    <param name="versionprefix">1</param>
+    <param name="versionformat">%ct.%h</param>
     <param name="changesgenerate">enable</param>
     <param name="changesauthor">okurz@suse.com</param>
   </service>
-  <service name="set_version" mode="disabled"/>
-  <service name="tar" mode="buildtime"/>
+  <service name="set_version" mode="disabled" />
+  <service name="tar" mode="buildtime" />
   <service name="recompress" mode="buildtime">
     <param name="compression">xz</param>
     <param name="file">*.tar</param>
