@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:40:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 7.9.0
+  New Features
+  * #793 - Support changelog_message on create, save(), update()
+    and delete(), including bulk update and delete.
+  Bug Fixes
+  * #711 - Treat more list fields as sets when detecting changes
+    (object_types, permissions, groups, actions, config context
+    assignment scopes, and VRF/L2VPN route targets), so reordering
+    no longer triggers an update.
+  * #806 - Fix updates to objects with multiple selection custom
+    fields on NetBox 4.7 by flattening {value, label} values and
+    sending only the custom fields that changed.
+  * #808 - Preserve unsaved local changes when a record is
+    re-fetched, such as by print() or reading an attribute that is
+    not yet loaded.
+- Drop support for python 3.11 (upstream requires >= 3.12)
+
+-------------------------------------------------------------------
 Fri Jun 19 07:15:59 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 7.8.0
