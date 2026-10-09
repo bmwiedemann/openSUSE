@@ -1,4 +1,44 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:07:15 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.0
+  Features
+  * Add support for alternative performance metrics (peak memory
+    usage, instructions, CPU cycles, cache misses, branch misses,
+    ...). By default, hyperfine will now display wall-clock time
+    and peak memory usage, but users can use the new --metrics
+    option to select different performance metrics. The terminal
+    output now shows an overview of all selected performance
+    metrics (see here for a run with more metrics enabled).
+  * Add --env to set environment variables even without an
+    intermediate shell (which is the new default behavior).
+  * The plotting and analysis scripts now support different
+    metrics as well.
+  Breaking changes
+  * Benchmarked commands are now executed directly by default,
+    without an intermediate shell (--shell=none). Use -S (an alias
+    for --shell=default) to restore the previous behavior (sh on
+    Unix), or select a shell with --shell <SHELL>.
+  * Always run --setup, --prepare, --conclude, and --cleanup
+    commands in a shell, even when using --shell=none
+  * The JSON format for --export-json has changed (schema version
+    2). The new format now includes metadata, per-run measurements,
+    and statistical summaries for all measured quantities
+  * --time-unit/-u has been removed. Units can now be selected
+    using the --metrics METRIC[:UNIT],… option, e.g. --metrics
+    time_wall_clock:ms,memory_peak_resident:MiB
+  * --sort has been removed. It complicated hyperfine significantly
+    and doesn't make too much sense with the new output format.
+  * --reference and --reference-name have been removed (for now).
+    The first command is always considered as the reference command
+    Invocations using --reference now show migration guidance to
+    put the reference command first.
+  * The format of Markdown, AsciiDoc and org-mode, and CSV exports
+    has also been changed. Markdown, AsciiDoc, and org-mode contain
+    only the primary metric (the first metric selected by
+    --metrics). CSV exports all selected metrics side by side.
+
+-------------------------------------------------------------------
 Mon Oct  5 15:34:58 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 1.20.0
