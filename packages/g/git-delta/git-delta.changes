@@ -1,7 +1,25 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:07:11 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.1:
+  * Fix #2270
+
+-------------------------------------------------------------------
+Thu Oct  8 12:06:32 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 0.20.0:
+  * docs: fix DELTA_FEATURES markdown link and grammar #2199
+  * Don't misparse git grep -h output as path=code #2194
+  * docs: add link to a live browser demo #2229
+  * Take the terminal width from $COLUMNS when it is set #2240
+  * Support OSC-1717 metadata #2181
+  * Emit custom OSC-1717 commit C records #2266
+  * Fix decorations wider than width #2261
+
+-------------------------------------------------------------------
 Mon Mar 30 17:43:31 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
-- Updaet to 0.10.2:
+- Updaet to 0.19.2:
   * CD: pin GNU Linux builds to ubuntu-22.04 for Debian 12 compat #2135
 
 -------------------------------------------------------------------

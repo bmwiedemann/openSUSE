@@ -157,4 +157,12 @@
   * CD: pin GNU Linux builds to ubuntu-22.04 for Debian 12 compat #2135</comment>
     <requestid>1343747</requestid>
   </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>ac22c8dcd637ff8ba18f8455a1b24ca8</srcmd5>
+    <version>0.20.1</version>
+    <time>1791574987</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1383310</requestid>
+  </revision>
 </revisionlist>
