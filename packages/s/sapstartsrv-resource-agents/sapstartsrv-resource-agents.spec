@@ -1,7 +1,7 @@
 #
 # spec file for package sapstartsrv-resource-agents
 #
-# Copyright (c) 2020-2025 SUSE LLC.
+# Copyright (c) 2020-2026 SUSE LLC.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -24,7 +24,7 @@ Name:           sapstartsrv-resource-agents
 License:        GPL-2.0
 Group:          Productivity/Clustering/HA
 Summary:        Resource agent for SAP instance specific sapstartsrv service
-Version:        0.9.5+git.1751011207.4481e75
+Version:        0.9.6+git.1791548114.2a86b96
 Release:        0
 URL:            https://github.com/SUSE/SAPStartSrv-resourceAgent
 Source0:        %{name}-%{version}.tar.gz
@@ -62,16 +62,31 @@ Authors:
 gzip man/*
 
 %install
+#
+# resource agent
+#
 install -D -m 0755 ra/%{raname}.in %{buildroot}%{ocf_dir}/resource.d/suse/%{raname}
+#
+# alert-timeout and helper
+#
+install -d %{buildroot}%{_bindir}
+install -m 0755 bin/SAPStartSrv-helper %{buildroot}%{_bindir}
+install -m 0755 alert/SAPStartSrv-alert-timeout %{buildroot}%{_bindir}
+#
+# service system unit files, helper and links
+#
+install -d %{buildroot}%{_unitdir}
+install -m 0644 service/* %{buildroot}%{_unitdir}
+install -D -m 0644 sbin/%{srvname}.in %{buildroot}%{_sbindir}/%{srvname}
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsapping
+ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsappong
+#
+# man pages
+#
 install -d %{buildroot}%{_mandir}/man7
 install -d %{buildroot}%{_mandir}/man8
 install -m 0444 man/*.7.gz %{buildroot}%{_mandir}/man7
 install -m 0444 man/*.8.gz %{buildroot}%{_mandir}/man8
-install -D -m 0644 sbin/%{srvname}.in %{buildroot}%{_sbindir}/%{srvname}
-install -d %{buildroot}%{_unitdir}
-install -m 0644 service/* %{buildroot}%{_unitdir}
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsapping
-ln -s /usr/sbin/service %{buildroot}%{_sbindir}/rcsappong
 
 sed -i 's+@PYTHON@+%{_bindir}/python3+' %{buildroot}%{ocf_dir}/resource.d/suse/%{raname}
 sed -i 's+@PYTHON@+%{_bindir}/python3+' %{buildroot}%{_sbindir}/%{srvname}
@@ -105,6 +120,7 @@ pytest tests
 %defattr(755,root,root,-)
 %{ocf_dir}/resource.d/suse/%{raname}
 %{_sbindir}/*
+%{_bindir}/*
 %defattr(644,root,root,-)
 %{_unitdir}/*
 

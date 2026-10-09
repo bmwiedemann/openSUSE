@@ -1,4 +1,34 @@
 -------------------------------------------------------------------
+Fri Oct  9 10:17:05 UTC 2026 - abriel@suse.com
+
+- Version bump to 0.9.6
+  * removed misleading interval-value for the monitor-operation
+    and move init to probe only.
+    (bsc#1221641)
+  * Add an alert agent that can react on cluster resources timeout
+    alerts.
+    SAPStartSrv-alert-timeout and SAPStartSrv-Helper
+  * new man pages
+    SAPStartSrv-alert-timeout.8 and
+    SAPStartSrv-helper.8
+      for the new alert agent feature
+    SAPStartSrv_upgrade_from_Filesystem.7
+      Describes the upgrade of an HA cluster for SAP central service
+      instances from the Filesystem resource based setup to the
+      simple-mount setup.
+    SAPStartSrv_upgrade_from_Filesystem_disk.7
+      Describes the upgrade of an HA cluster for SAP central service
+      instances from the Filesystem resource based setup with
+      shared disk to the simple-mount setup.
+  * changed man pages
+    ocf_suse_SAPStartSrv.7
+    SAPStartSrv_basic_cluster.7
+    SAPStartSrv_maintenance_examples.7
+    SAPStartSrv_maintenance_procedures.7
+    sapping.7
+    sapservices-move.8
+
+-------------------------------------------------------------------
 Thu Jun 26 12:58:26 UTC 2025 - abriel@suse.com
 
 - Version bump to 0.9.5
