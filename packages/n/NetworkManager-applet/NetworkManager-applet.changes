@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 14:58:23 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Update version dependencies according to meson.build.
+
+-------------------------------------------------------------------
 Mon Mar 23 08:20:08 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
@@ -342,7 +347,7 @@ Wed May 29 18:37:36 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
 -------------------------------------------------------------------
 Tue May 14 09:56:53 UTC 2019 - maurizio.galli@gmail.com
 
-- Build against Ayatana Indicators instead as it's considered 
+- Build against Ayatana Indicators instead as it's considered
   the new upstream
 
 -------------------------------------------------------------------

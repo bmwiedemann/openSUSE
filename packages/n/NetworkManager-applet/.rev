@@ -507,4 +507,14 @@
     <comment>Update version</comment>
     <requestid>1348446</requestid>
   </revision>
+  <revision rev="56" vrev="6">
+    <srcmd5>ef8cc098646f40d67bdff43a26dc174b</srcmd5>
+    <version>1.36.0</version>
+    <time>1791575147</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.
+
+- Build against Ayatana Indicators instead as it's considered</comment>
+    <requestid>1383705</requestid>
+  </revision>
 </revisionlist>

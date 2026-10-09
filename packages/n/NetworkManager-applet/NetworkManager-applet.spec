@@ -39,7 +39,7 @@ BuildRequires:  pkgconfig(gio-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.10
 BuildRequires:  pkgconfig(iso-codes)
-BuildRequires:  pkgconfig(jansson) >= 2.3
+BuildRequires:  pkgconfig(jansson) >= 2.7
 BuildRequires:  pkgconfig(libnm) >= 1.15
 BuildRequires:  pkgconfig(libnma) >= 1.8.28
 BuildRequires:  pkgconfig(libsecret-1) >= 0.18
