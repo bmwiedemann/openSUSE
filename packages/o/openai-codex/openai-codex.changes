@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:20:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.162.0:
+  * Create and list managed Git worktrees from trusted local
+    projects when the worktrees feature is enabled
+  * Pin tasks in the agent Command Center with `p`
+  * Copy transcript blocks with /copy, copy selections with
+    Ctrl+Insert, and tune mouse-wheel scrolling with
+    tui.mouse_scroll_speed
+  * Clickable URLs in approval headers, questions, MCP prompts,
+    warnings and verification prompts
+  * apply_patch preserves CRLF line endings without requiring
+    an opt-in
+  * Linux sandbox fixes: startup with multiple denied files,
+    writable sandbox-construction executables are rejected, and
+    ripgrep configuration no longer weakens deny-glob masks
+  * New TUI threads honor the server model and reasoning-summary
+    defaults; Retry-After is honored for retryable Responses and
+    WebSocket failures
+  * Re-vendored for age 0.12.1, the fluent/i18n-embed stack and
+    proc-macro-error3: License tag unchanged, audit still shows
+    only the four known RUSTSEC advisories
+  * Many more fixes and improvements; see upstream release notes
+    for the full list
+
+-------------------------------------------------------------------
 Thu Oct  8 06:47:38 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.161.0:

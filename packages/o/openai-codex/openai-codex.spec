@@ -17,15 +17,15 @@
 
 
 Name:           openai-codex
-Version:        0.161.0
+Version:        0.162.0
 Release:        0
 Summary:        OpenAI Codex coding agent for the terminal
 # Legal-Review-Notice: upstream codex is Apache-2.0. Everything after that
 # covers the Rust crates statically linked into the shipped
 # %%{_bindir}/codex binary, enumerated with
 #   cargo tree --offline -p codex-cli -e normal,no-proc-macro
-# against the vendored tree (894 crates on aarch64: 754 third-party vendored
-# deps plus 140 first-party codex workspace members, which are Apache-2.0
+# against the vendored tree (895 crates on aarch64: 754 third-party vendored
+# deps plus 141 first-party codex workspace members, which are Apache-2.0
 # like upstream. Every one declares a licence, none is missing; only the
 # third-party count is a licence signal, the workspace one moves whenever
 # upstream adds a crate). Electing Apache-2.0 where it is offered and MIT
@@ -46,10 +46,18 @@ Summary:        OpenAI Codex coding agent for the terminal
 # Apache-2.0): all elect Apache-2.0, so the tag above is unchanged by
 # that bump. codex-windows-sandbox-test-support is new in the lock
 # but is test-only and is not linked into codex-cli.
+# 0.162.0 moves age 0.11.2 -> 0.12.1 (MIT OR Apache-2.0, adding hpke
+# 0.12.0 onto the already-locked p256/ml-kem), fluent 0.16.1/0.15.3/0.11.1 ->
+# 0.17.0/0.16.0/0.12.0 and i18n-embed 0.15.4/0.9.4 -> 0.16.0/0.10.1
+# (Apache-2.0-or-MIT/MIT), and proc-macro-error2/attr2 -> error3/attr3
+# (MIT OR Apache-2.0, proc-macro-only, not linked); base64 0.21.7,
+# rustc-hash 1.1.0 and self_cell 0.10.3 drop out of the lock. Re-derived
+# with the same scope the set is unchanged, so the tag above is unchanged
+# by that bump. codex-cloud-client is new in the lock but is not linked
+# into codex-cli.
 #  - self_cell 1.2.2 is "Apache-2.0 OR GPL-2.0-only" and is the ONLY crate
 #    anywhere in the graph offering GPL. Apache-2.0 is elected, so this
 #    package carries no GPL obligation; please do not re-derive it as GPL.
-#    (self_cell 0.10.3, also linked, is Apache-2.0 only.)
 #  - MPL-2.0 is unavoidable and comes from nucleo, nucleo-matcher, option-ext
 #    and the nine symphonia-* crates. MPL-2.0 section 3.2 source availability
 #    is satisfied by vendor.tar.zst, which ships in the src.rpm.

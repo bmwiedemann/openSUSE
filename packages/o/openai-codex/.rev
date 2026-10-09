@@ -501,4 +501,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update to version 0.161.0. Built green locally (rpmlint clean, 861 tests passed).</comment>
     <requestid>1383278</requestid>
   </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>888407343bc08c7b7fe2dea365471045</srcmd5>
+    <version>0.162.0</version>
+    <time>1791575171</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.162.0: worktrees, task pinning, /copy, clickable URLs, CRLF apply_patch, sandbox fixes; re-vendored (License unchanged).</comment>
+    <requestid>1383801</requestid>
+  </revision>
 </revisionlist>
