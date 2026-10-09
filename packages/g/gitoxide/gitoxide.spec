@@ -17,13 +17,13 @@
 
 
 Name:           gitoxide
-Version:        0.59.0
+Version:        0.60.0
 Release:        0
 Summary:        An idiomatic & safe pure-Rust implementation of Git
 # Legal-Review-Notice: gitoxide itself is "Apache-2.0 OR MIT", but the
 # binaries statically link the vendored Rust dependencies. Derived on this
 # re-vendor with "cargo tree --offline -p gitoxide -e normal" over the
-# vendored tree (531 crates, 298 in the linked graph): the only copyleft
+# vendored tree (515 crates, 260 in the linked graph): the only copyleft
 # licence in the graph is MPL-2.0, from two crates - uluru, an LRU cache
 # pulled in via gix-pack (itself reached through gitoxide-core, gix and
 # gix-odb), and option-ext, reached through directories and dirs-sys,
@@ -38,6 +38,8 @@ License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/GitoxideLabs/gitoxide
 Source0:        https://github.com/GitoxideLabs/gitoxide/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
+# PATCH-FIX-UPSTREAM gix-utils-prodash-feature.patch mpluskal@suse.com -- restore the explicit prodash feature gix-utils 0.5.0 dropped in its dep: migration; workspace-wide cargo metadata --features (as run by cargo-auditable) requires it
+Patch0:         gix-utils-prodash-feature.patch
 BuildRequires:  cargo-packaging
 BuildRequires:  cmake
 BuildRequires:  pkgconfig

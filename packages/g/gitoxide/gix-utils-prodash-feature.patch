@@ -1,0 +1,15 @@
+Index: gitoxide-0.60.0/gix-utils/Cargo.toml
+===================================================================
+--- gitoxide-0.60.0.orig/gix-utils/Cargo.toml
++++ gitoxide-0.60.0/gix-utils/Cargo.toml
+@@ -23,6 +23,10 @@ harness = false
+ bstr = ["dep:bstr"]
+ ## Progress traits, types, and I/O wrappers backed by `prodash`.
+ progress = ["dep:prodash"]
++## Explicit alias for the `prodash` dependency: `dep:`-only optional
++## dependencies carry no implicit feature, which workspace-wide
++## `cargo metadata --features` (as run by cargo-auditable) requires.
++prodash = ["dep:prodash"]
+ ## Human-readable numbers in progress units.
+ progress-unit-human-numbers = ["prodash?/unit-human"]
+ ## Human-readable byte sizes and progress units.
