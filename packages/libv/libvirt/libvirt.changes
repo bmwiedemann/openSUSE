@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct  5 19:31:15 UTC 2026 - James Fehlig <jfehlig@suse.com>
+
+- Update to libvirt 12.8.0
+  - bsc#1201510
+  - Many incremental improvements and bug fixes, see
+    https://libvirt.org/news.html#v12-8-0-2026-10-01
+
+-------------------------------------------------------------------
 Thu Sep 17 13:20:06 UTC 2026 - Andreas Schwab <schwab@suse.de>
 
 - spec: Skip vishtest test in qemu emulation

@@ -155,7 +155,7 @@
 
 Name:           libvirt
 URL:            https://libvirt.org/
-Version:        12.7.0
+Version:        12.8.0
 Release:        0
 Summary:        Library providing a virtualization API
 License:        LGPL-2.1-or-later
@@ -452,8 +452,12 @@ virtual network APIs using the Linux bridge capabilities.
 Summary:        A nwfilter daemon and driver plugin
 Requires:       %{name}-daemon-common = %{version}-%{release}
 Requires:       %{name}-libs = %{version}-%{release}
+%if %{prefer_nftables}
+Requires:       nftables
+%else
 Requires:       ebtables
 Requires:       iptables
+%endif
 
 %description daemon-driver-nwfilter
 The nwfilter daemon and driver plugin, providing an implementation of the
@@ -1645,6 +1649,9 @@ fi
 %config(noreplace) %{_sysconfdir}/%{name}/virtnwfilterd.conf
 %{_datadir}/augeas/lenses/virtnwfilterd.aug
 %{_datadir}/augeas/lenses/tests/test_virtnwfilterd.aug
+%config(noreplace) %{_sysconfdir}/%{name}/nwfilter.conf
+%{_datadir}/augeas/lenses/libvirtd_nwfilter.aug
+%{_datadir}/augeas/lenses/tests/test_libvirtd_nwfilter.aug
 %{_unitdir}/virtnwfilterd.service
 %{_unitdir}/virtnwfilterd.socket
 %{_unitdir}/virtnwfilterd-ro.socket
