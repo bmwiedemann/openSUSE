@@ -2441,4 +2441,13 @@ Now one could consider building emacs with gsettings support (both debian and fe
     Emacs Lisp mode due to incomplete fix for older CVE</comment>
     <requestid>1380658</requestid>
   </revision>
+  <revision rev="226" vrev="5">
+    <srcmd5>af9a36a4b32d342a0bedd0ab3a5c0cae</srcmd5>
+    <version>31.1</version>
+    <time>1791574964</time>
+    <user>dimstar_suse</user>
+    <comment>- Disable test41 of tramp as this fails
+- Fix lexical bindings in site-lisp path again (boo#1277717)</comment>
+    <requestid>1383279</requestid>
+  </revision>
 </revisionlist>

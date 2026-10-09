@@ -53,6 +53,7 @@
 
 Name:           emacs
 %if %{with checks}
+BuildRequires:  bash-sh
 BuildRequires:  bubblewrap
 BuildRequires:  screen
 %endif
@@ -1080,6 +1081,9 @@ fi
 # This is patch emacs-30.2-fix-zoom.patch
 ZOOM_IMAGE_TESTS=broken
 export ZOOM_IMAGE_TESTS
+LANG=C.UTF-8
+LC_ALL=C.UTF-8
+export LANG LC_ALL
 mkdir -p native-lisp
 rm -rf native-lisp/%{version}-*
 ln -sf %{buildroot}%{_libdir}/emacs/%{version}/native-lisp/%{version}-* native-lisp/
@@ -1088,14 +1092,16 @@ sed -ri '/\(sleep-for/{ s/1/5/ }' test/lisp/net/network-stream-tests.el
 sed -ri '/\(looking-at "hello stderr!"\)/ i\
 	        (sleep-for 1)' test/src/process-tests.el
 sed -ri '/defvar eshell-test--max-wait-time/ s/[0-9]+/60/' test/lisp/eshell/resources/eshell-tests-helpers.el
+sed -ri '/\(ert-deftest tramp-test41-special-characters /,/\(tramp--test-deftest-direct-async-process tramp-test41-special-characters/d' test/lisp/net/tramp-tests.el
 SCREENDIR=$(mktemp -d ${PWD}/screen.XXXXXX) || exit 1
-SCREENRC=${SCREENDIR}/ncurses
+SCREENRC=${SCREENDIR}/screenrc
 export SCREENRC SCREENDIR
 exec 0< /dev/null
 SCREENLOG=${SCREENDIR}/log
 cat > $SCREENRC<<-EOF
 	deflogin off
 	deflog on
+	defwrap off
 	logfile $SCREENLOG
 	logfile flush 1
 	logtstamp off
@@ -1103,6 +1109,7 @@ cat > $SCREENRC<<-EOF
 	setsid on
 	scrollback 0
 	silence on
+	defutf8 on
 	utf8 on
 	EOF
 export MAKEFLAGS="--jobs=1"

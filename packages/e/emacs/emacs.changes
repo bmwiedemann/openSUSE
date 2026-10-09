@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Wed Oct  7 14:11:00 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Disable test41 of tramp as this fails
+- Fix lexical bindings in site-lisp path again (boo#1277717)
+
+-------------------------------------------------------------------
 Thu Sep 24 09:28:46 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add patch bsc1282390.patch

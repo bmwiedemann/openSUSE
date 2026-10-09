@@ -1,5 +1,5 @@
 ---
- Makefile.in                     |   11 ++--
+ Makefile.in                     |   14 ++++-
  configure.ac                    |    6 --
  lib-src/pop.c                   |    1 
  lisp/cmuscheme.el               |    3 -
@@ -14,11 +14,28 @@
  site-lisp/term/kvt.el           |   98 ++++++++++++++++++++++++++++++++++++++++
  site-lisp/term/linux.el         |   78 +++++++++++++++++++++++++++++++
  site-lisp/term/locale.el        |   14 +++++
- 15 files changed, 461 insertions(+), 24 deletions(-)
+ 15 files changed, 465 insertions(+), 23 deletions(-)
 
 --- Makefile.in
 +++ Makefile.in	2026-08-24 12:36:11.482292390 +0000
-@@ -619,7 +619,7 @@ install-arch-dep: src install-arch-indep
+@@ -607,8 +607,14 @@ write_subdir=if [ -f "$${subdir}/subdirs
+ 	else \
+ 	  umask 022; \
+ 	  ${MKDIR_P} "$${subdir}"; \
+-	  (echo "(if (fboundp 'normal-top-level-add-subdirs-to-load-path)"; \
+-	   echo "    (normal-top-level-add-subdirs-to-load-path))") \
++	  (echo ";;; -*- lexical-binding: t; -*-"; \
++	   echo "(if (fboundp 'normal-top-level-add-subdirs-to-load-path)"; \
++	   echo "    (normal-top-level-add-subdirs-to-load-path))"; \
++	   echo ";; Local Variables:"; \
++	   echo ";; version-control: never"; \
++	   echo ";; no-byte-compile: t"; \
++	   echo ";; no-update-autoloads: t"; \
++	   echo ";; End:") \
+ 	    > "$${subdir}/subdirs.el"; \
+ 	fi
+ 
+@@ -619,7 +625,7 @@ install-arch-dep: src install-arch-indep
  	umask 022; ${MKDIR_P} "$(DESTDIR)${bindir}"
  	$(MAKE) -C lib-src install
  ifeq (${ns_self_contained},no)
@@ -27,7 +44,7 @@
  ifeq (${HAVE_BE_APP},yes)
  	${INSTALL_PROGRAM} $(INSTALL_STRIP) src/Emacs "$(DESTDIR)${prefix}/apps/Emacs"
  endif
-@@ -629,7 +629,7 @@ ifeq (${HAVE_BE_APP},yes)
+@@ -629,7 +635,7 @@ ifeq (${HAVE_BE_APP},yes)
  endif
  	${INSTALL_DATA} src/emacs.pdmp "$(DESTDIR)${libexecdir}/emacs/${version}/${configuration}"/emacs-${EMACS_PDMP}
  endif
@@ -36,7 +53,7 @@
  ifndef NO_BIN_LINK
  	rm -f "$(DESTDIR)${bindir}/$(EMACS)"
  	cd "$(DESTDIR)${bindir}" && $(LN_S_FILEONLY) "$(EMACSFULL)" "$(EMACS)"
-@@ -961,7 +962,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
+@@ -961,7 +967,7 @@ uninstall: uninstall-$(NTDIR) uninstall-
  	   for page in *.1; do \
  	     rm -f "$(DESTDIR)${man1dir}"/`echo "$${page}" | sed -e 's/\.1$$//' -e '$(TRANSFORM)'`.1$$ext; done; \
  	 fi)
