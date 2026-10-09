@@ -1462,4 +1462,12 @@ New Features:
   * GraphicsMagick-CVE-2025-55154.patch</comment>
     <requestid>1375771</requestid>
   </revision>
+  <revision rev="111" vrev="3">
+    <srcmd5>9267969709c69d0e2773a88ea94c7ee7</srcmd5>
+    <version>1.3.48</version>
+    <time>1791574959</time>
+    <user>dimstar_suse</user>
+    <comment>[bsc#1283767], CVE-2026-103118</comment>
+    <requestid>1383238</requestid>
+  </revision>
 </revisionlist>

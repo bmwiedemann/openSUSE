@@ -41,6 +41,8 @@ Patch11:        GraphicsMagick-CVE-2026-61464.patch
 Patch12:        GraphicsMagick-CVE-2026-56379.patch
 # CVE-2025-55154: integer overflow when performing magnified size calculations in ReadOneMNGIMage can lead to out-of-bounds write [bsc#1248078]
 Patch13:        GraphicsMagick-CVE-2025-55154.patch
+# CVE-2026-103118: uncontrolled recursion in the WPG file handler when processing crafted WPG files which are self-referencing [bsc#1283767]
+Patch14:        GraphicsMagick-CVE-2026-103118.patch
 BuildRequires:  cups-client
 BuildRequires:  dcraw
 BuildRequires:  gcc-c++

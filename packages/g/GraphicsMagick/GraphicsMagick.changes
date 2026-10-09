@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 07:38:45 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
+
+- added patches
+  CVE-2026-103118: uncontrolled recursion in the WPG file handler when processing crafted WPG files which are self-referencing [bsc#1283767]
+  * GraphicsMagick-CVE-2026-103118.patch
+
+-------------------------------------------------------------------
 Fri Sep  4 10:50:12 UTC 2026 - Petr Gajdos <pgajdos@suse.com>
 
 - added patches
