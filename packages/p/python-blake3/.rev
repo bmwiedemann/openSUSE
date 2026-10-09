@@ -16,4 +16,12 @@
 </comment>
     <requestid>1381677</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>641c51e51be9bda2d96d45b9138fc920</srcmd5>
+    <version>1.0.11</version>
+    <time>1791575016</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 1.0.11: requires-python raised to &gt;= 3.11, so Python 3.8-3.10 are no longer supported upstream. Vendored crates refreshed to their next patch releases and the maturin &gt;= 1.0 floor from build-system requires is declared.</comment>
+    <requestid>1383616</requestid>
+  </revision>
 </revisionlist>

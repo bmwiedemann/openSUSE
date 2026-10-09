@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-blake3
-Version:        1.0.10
+Version:        1.0.11
 Release:        0
 Summary:        Python bindings for the BLAKE3 cryptographic hash function
 License:        Apache-2.0 OR CC0-1.0
@@ -26,7 +26,7 @@ URL:            https://github.com/oconnor663/blake3-py
 Source0:        https://github.com/oconnor663/blake3-py/archive/refs/tags/%{version}.tar.gz#/blake3-py-%{version}.tar.gz
 Source1:        registry.tar.zst
 BuildRequires:  %{python_module devel}
-BuildRequires:  %{python_module maturin}
+BuildRequires:  %{python_module maturin >= 1.0}
 BuildRequires:  %{python_module numpy >= 1.24.4}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest >= 8.3.5}
@@ -40,6 +40,8 @@ ExclusiveArch:  %{rust_tier1_arches} riscv64
 %if %{python_version_nodots} < 312
 Requires:       python-typing_extensions >= 4.6.0
 %endif
+# upstream requires-python >= 3.11, so the flavour set is restricted to the
+# python3.11+ entries of the project's python flavour list
 %python_subpackages
 
 %description

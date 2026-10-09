@@ -1,4 +1,17 @@
 -------------------------------------------------------------------
+Thu Oct  8 19:15:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.0.11:
+  * raise the Python floor: requires-python >= 3.8 -> >= 3.11, so
+    Python 3.8-3.10 are no longer supported upstream
+  * add Python 3.15 to the supported interpreter range
+- Refresh registry.tar.zst: the Rust core is unchanged, but the
+  vendored crates move to their next patch release (pyo3 0.29.2 ->
+  0.29.3, cc 1.5.1 -> 1.6.0, either 1.18.0 -> 1.19.0, libc 0.2.189
+  -> 0.2.190)
+- Declare the maturin >= 1.0 floor stated in build-system requires
+
+-------------------------------------------------------------------
 Wed Sep 30 08:20:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.0.10:
