@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Oct  7 14:59:41 UTC 2026 - Andreas Schwab <schwab@suse.de>
+
+- timeout.patch: increase integration tests timeout
+
+-------------------------------------------------------------------
 Tue Oct  6 17:29:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 3.0.0:

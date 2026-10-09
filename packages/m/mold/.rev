@@ -1310,4 +1310,12 @@
 - Drop-in replacement claim is upstream's (Gentoo-tested, not verified on openSUSE).</comment>
     <requestid>1382849</requestid>
   </revision>
+  <revision rev="66" vrev="2">
+    <srcmd5>ffa79044056fa2958db963ba24971975</srcmd5>
+    <version>3.0.0</version>
+    <time>1791575197</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1383820</requestid>
+  </revision>
 </revisionlist>

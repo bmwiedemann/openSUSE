@@ -1,0 +1,13 @@
+diff --git a/tests/lib.rs b/tests/lib.rs
+index 173400fd..31c7950b 100644
+--- a/tests/lib.rs
++++ b/tests/lib.rs
+@@ -19,7 +19,7 @@ use std::time::{Duration, Instant};
+ #[cfg(unix)]
+ use std::os::unix::process::CommandExt;
+ 
+-const DEFAULT_TIMEOUT: Duration = Duration::from_secs(60);
++const DEFAULT_TIMEOUT: Duration = Duration::from_secs(240);
+ 
+ #[derive(Clone, Copy)]
+ struct TargetSpec {

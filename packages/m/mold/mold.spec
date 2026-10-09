@@ -24,6 +24,7 @@ License:        MIT
 URL:            https://github.com/rui314/mold
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor.tar.zst
+Patch0:         timeout.patch
 BuildRequires:  cargo
 BuildRequires:  clang
 BuildRequires:  diffutils
