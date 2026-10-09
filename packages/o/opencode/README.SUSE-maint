@@ -90,8 +90,8 @@ something a reviewer should have to work out.
 The keep list
 -------------
 
-opencode-vendor-keep.txt names the 354 store entries the vendor tarball
-keeps, out of the 2419 a full unfiltered install produces (746 once the
+opencode-vendor-keep.txt names the 364 store entries the vendor tarball
+keeps, out of the 2539 a full unfiltered install produces (2427 once the
 filtered install has had the platforms we do not build for removed). It is derived, not curated.
 `--retrace` runs the real build under strace, resolves every path it touched
 back to the package that owns it, prunes to that set and rebuilds to prove
@@ -251,10 +251,10 @@ Licensing
 ---------
 
 The dependency tree is compiled into the executable, so its licences are part
-of the binary and the License: tag has to cover all of them. As of 2.0.24,
-across the 353 shipped packages:
+of the binary and the License: tag has to cover all of them. As of 2.0.26,
+across the 363 shipped packages:
 
-    MIT 198, Apache-2.0 69, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
+    MIT 207, Apache-2.0 70, ISC 63, BlueOak-1.0.0 9, BSD-2-Clause 8,
     BSD-3-Clause 2, 0BSD 1, CC0-1.0 1, CC-BY-3.0 1, CC-BY-4.0 1
 
 No copyleft, nothing non-free. Two declarations are inconsistent and neither
@@ -305,7 +305,7 @@ one of these ways:
     it; there is no such package today, so the prebuilt copy is what ships.
     Note that %%check cannot see it: its embedded-file assertion matches
     only .so, .node and .wasm, so the extensionless entry passes through
-unasserted. Verified on 2.0.24, where 2.0.23 shipped the same two
+unasserted. Verified on 2.0.26, where 2.0.24 shipped the same two
 binaries at 0.2.0.
 
   - Loaded from a package at run time (like libopentui.so): libfff_c.so

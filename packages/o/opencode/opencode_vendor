@@ -28,7 +28,7 @@ retrace=""
 # FFI ABI ties the tree to the opentui RPM 1:1, so on a lockstep bump this
 # leads and the tag's pin is rebased up to it (same %global opentui_version
 # as the spec). Must stay in sync with the opentui package.
-opentui_version="0.5.16"
+opentui_version="0.5.17"
 
 here="$(cd "$(dirname "$0")" && pwd)"
 src="$here/opencode-$version.orig.tar.gz"

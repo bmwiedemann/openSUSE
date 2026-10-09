@@ -71,6 +71,8 @@
 @jridgewell+trace-mapping@0.3.31
 @modelcontextprotocol+client@2.0.0
 @modelcontextprotocol+core@2.0.0
+@msgpackr-extract+msgpackr-extract-linux-arm64@3.0.4
+@msgpackr-extract+msgpackr-extract-linux-x64@3.0.4
 @npmcli+agent@4.0.2+759ce506b1ed1a42
 @npmcli+arborist@9.4.0+759ce506b1ed1a42
 @npmcli+config@10.8.1
@@ -102,11 +104,13 @@
 @opentelemetry+sdk-trace-base@2.8.0+460773ef8ff1e07c
 @opentelemetry+sdk-trace-node@2.8.0+460773ef8ff1e07c
 @opentelemetry+semantic-conventions@1.43.0
-@opentui+core-linux-arm64@0.5.16
-@opentui+core-linux-x64@0.5.16
-@opentui+core@0.5.16+2240c214a0f33214
-@opentui+keymap@0.5.16+c3ac2afefa4c9285
-@opentui+solid@0.5.16+b80727ad73327db2
+@opentui+core-linux-arm64@0.5.17
+@opentui+core-linux-x64@0.5.17
+@opentui+core@0.5.17+2240c214a0f33214
+@opentui+keymap@0.5.17+0d55a91270269eb9
+@opentui+solid@0.5.17+b80727ad73327db2
+@opentunnel+client@0.2.0
+@opentunnel+protocol@0.2.0
 @parcel+watcher-linux-arm64-glibc@2.5.1
 @parcel+watcher-linux-x64-glibc@2.5.1
 @parcel+watcher@2.5.1
@@ -168,6 +172,7 @@ debug@4.4.3+759ce506b1ed1a42
 default-browser-id@5.0.1
 default-browser@5.5.1
 define-lazy-prop@3.0.0
+detect-libc@2.1.2
 diff@8.0.4
 dom-serializer@2.0.0
 domelementtype@2.3.0
@@ -186,6 +191,7 @@ eventsource-parser@3.1.1
 eventsource@3.0.7
 extend-shallow@2.0.1
 extend@3.0.2
+fast-check@4.9.0
 fill-range@7.1.1
 find-babel-config@2.1.2
 find-up@3.0.0
@@ -267,7 +273,10 @@ minipass@4.2.8
 minipass@7.1.3
 minizlib@3.1.0
 ms@2.1.3
+msgpackr-extract@3.0.4
+msgpackr@2.0.5
 negotiator@1.0.0
+node-gyp-build-optional-packages@5.2.2
 node-releases@2.0.53
 node_modules
 nopt@9.0.0
@@ -280,7 +289,7 @@ npm-pick-manifest@11.0.3
 npm-registry-fetch@19.1.1+759ce506b1ed1a42
 open@11.0.4
 openai@6.49.0+386b76f59bd48871
-opentui-spinner@0.0.7+57d55f73e19b8dd3
+opentui-spinner@0.0.7+29ea88ac267c2643
 p-limit@2.3.0
 p-locate@3.0.0
 p-map@7.0.6
@@ -303,6 +312,7 @@ proc-log@6.1.0
 proggy@4.0.0
 promise-all-reject-late@1.0.1
 promise-call-limit@3.0.2
+pure-rand@8.4.2
 read-cmd-shim@6.0.0
 remeda@2.26.0
 reselect@4.1.8

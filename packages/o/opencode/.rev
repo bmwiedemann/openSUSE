@@ -432,4 +432,12 @@ aarch64, all 5 patches still apply.</comment>
     <comment>Update to 2.0.24. LOCKSTEP part 2/2 with the opentui 0.5.16 SR (part 1/2): vendored @opentui/* rebased to 0.5.16, Requires: opentui = 0.5.16.</comment>
     <requestid>1383227</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>26899e3b26c2b26976a60d3eb6674e7b</srcmd5>
+    <version>2.0.26</version>
+    <time>1791575128</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 2.0.26, lockstep half 2/2 with opentui 0.5.17 (SR 1383689): exact Requires pin rebased, vendor tree regenerated.</comment>
+    <requestid>1383702</requestid>
+  </revision>
 </revisionlist>

@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:35:40 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.0.26 (the 2.x line publishes no release objects, so
+  this is a summary of the v2.0.24..v2.0.26 tag-to-tag diff)
+  * Provider auth: Azure CLI as an external credential, Google
+    Cloud setup for Vertex, AWS profile setup for Bedrock
+  * Managed integration and tool/skill policies are now enforced
+  * Remote pairing through OpenTunnel, with every address in the
+    QR code and an unguessable subdomain
+  * Portable shell scanner on local and dev channels; faster
+    snapshot capture with batched git diffs
+  * TUI: clicked transcript links open including wrapped rows,
+    dialogs no longer read stale rows, separate queued-prompt dock
+  * No external directory access prompt by default; API key
+    metadata is no longer sent as request body; malformed tool
+    arguments are rejected
+  * Many more fixes and improvements; the full list is upstream's
+    v2.0.24..v2.0.26 commit range, which publishes no release notes
+- Lockstep with opentui 0.5.17: the vendored @opentui/* tree is
+  rebased to 0.5.17 through upstream's own
+  script/upgrade-opentui.ts (the tag pins 0.5.17; the FFI ABI is
+  private and unversioned, so both halves move together). Its
+  tree-sitter surface is unchanged
+- Regenerate the vendor tree: 364 of 2539 store entries kept (was
+  354 of 2419). The closure gained msgpackr and the OpenTunnel
+  client for remote pairing
+- Legal review re-derived for the new tree: 363 packages, SPDX
+  licence set unchanged (nine MIT and one Apache-2.0 entries in,
+  no copyleft)
+
+-------------------------------------------------------------------
 Thu Oct  8 06:45:43 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.0.24 (the 2.x line publishes no release objects, so
