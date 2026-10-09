@@ -17,7 +17,7 @@
 
 
 %global ver_major 1
-%global ver_minor 85
+%global ver_minor 86
 #%%global ver_micro 1
 %global gittag r%{ver_major}rv%{ver_minor}%{?ver_micro:v%{ver_micro}}
 %global archivever jdk18on-%{ver_major}.%{ver_minor}%{?ver_micro:0%{ver_micro}}
@@ -139,6 +139,9 @@ API documentation for the Bouncy Castle Cryptography APIs.
 # Remove provided binaries
 find . -type f -name "*.class" -exec rm -f {} \;
 find . -type f -name "*.jar" -exec rm -f {} \;
+
+# Create missing resource directories expected by Ant build scripts
+mkdir -p core/src/main/resources
 
 %build
 echo "package.version:\ %{version}" >> bc-build.properties

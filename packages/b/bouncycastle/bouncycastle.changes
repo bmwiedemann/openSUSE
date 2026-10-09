@@ -1,4 +1,38 @@
 -------------------------------------------------------------------
+Tue Oct  6 10:01:54 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
+
+- Update to 1.86:
+  * CVE-2026-97873: Unbounded iteration counts in legacy PBES1 and PKCS#12
+    PBE implementations can cause resource exhaustion (bsc#1284224)
+  * CVE-2026-71890: Unbounded Remove proposals in external MLS commits can
+    cause arbitrary group member eviction and session takeover (bsc#1284219)
+  * CVE-2026-71891: Forged ECPoint curves in BLS12-381 key validation can
+    cause aggregate signature verification bypasses (bsc#1284220)
+  * CVE-2026-71892: Type mismatch in CMS key-transport validation can cause
+    key-size enforcement bypasses for HKDF-derived content keys (bsc#1284221)
+  * CVE-2026-85515: Laundered EOF exceptions in OpenPGP message stream processing
+    can cause unregistered truncation errors and integrity check bypasses (bsc#1284222)
+  * CVE-2026-71889: Skipped leaf certificate evaluation in checkNameConstraints
+    can cause X.509 name constraint bypasses (bsc#1284218)
+  * CVE-2026-71888: Disagreement between digestAlgorithm and authAttrs in CMS
+    parsing can cause unauthenticated attribute injection (bsc#1284215)
+  * CVE-2026-18040: Table lookups and variable-time duplicate scanning in HQC
+    can cause cache side-channel leaks (bsc#1284205)
+  * CVE-2026-71886: Unvalidated CERTIFY_OTHER flags in OpenPGP subkeys can cause
+    unauthorized trust delegations and identity spoofing (bsc#1284212)
+  * CVE-2026-71887: Missing primary key back-signature validation on subkeys can
+    cause signature misattribution and trust context spoofing (bsc#1284213)
+  * CVE-2026-71885: Unbound X.509 certificates in MLS LeafNode verification can
+    cause identity impersonation and group message interception (bsc#1284165)
+  * CVE-2026-17508: Unbounded KDF iteration and memory parameters can cause
+    resource exhaustion (bsc#1284073)
+  * CVE-2026-17507: Negative signed leaf_index values from unsigned wire
+    encodings can cause heap exhaustion (bsc#1284075)
+  * CVE-2026-18036: Variable-time modulo and division operations in NTRU
+    implementation can allow timing side-channel attacks (bsc#1284065)
+  * Rebase bouncycastle-notests.patch
+
+-------------------------------------------------------------------
 Wed Jul 15 11:27:05 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 1.85:

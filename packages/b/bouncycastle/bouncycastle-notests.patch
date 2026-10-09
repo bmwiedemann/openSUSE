@@ -1,8 +1,8 @@
-Index: bc-java-r1rv85/ant/bc+-build.xml
+Index: bc-java-r1rv86/ant/bc+-build.xml
 ===================================================================
---- bc-java-r1rv85.orig/ant/bc+-build.xml
-+++ bc-java-r1rv85/ant/bc+-build.xml
-@@ -299,7 +299,7 @@
+--- bc-java-r1rv86.orig/ant/bc+-build.xml
++++ bc-java-r1rv86/ant/bc+-build.xml
+@@ -302,7 +302,7 @@
  
      </target>
  
@@ -11,7 +11,7 @@ Index: bc-java-r1rv85/ant/bc+-build.xml
  
      <target name="build-lw" depends="initMacros">
          <!--
-@@ -993,153 +993,6 @@
+@@ -1025,174 +1025,6 @@
  
      </target>
  
@@ -35,6 +35,12 @@ Index: bc-java-r1rv85/ant/bc+-build.xml
 -             <fileset dir="${src.dir}" includes="**/*AllTests.java" />
 -             <fileset dir="${src.dir}" includes="**/math/**/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/crypto/*/*Test.java" />
+-             <fileset dir="${src.dir}" includes="**/crypto/agreement/owl/*Test.java" />
+-             <fileset dir="${src.dir}" includes="org/bouncycastle/tls/SpreadCertificateStatusTest.java" />
+-             <!-- main-namespace test fixture the bcpg copy now excludes; the openpgp.api tests resolve it from here -->
+-             <fileset dir="${src.dir}" includes="org/bouncycastle/openpgp/OpenPGPTestKeys.java" />
+-             <fileset dir="${src.dir}" includes="**/pqc/crypto/hqc/*Test.java" />
+-             <fileset dir="${src.dir}" includes="**/pqc/math/ntru/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/tsp/*UnitTest.java" />
 -             <fileset dir="${src.dir}" includes="**/utiltest/*Test.java" />
 -             <fileset dir="${src.dir}" includes="**/util/io/pem/*Test.java" />
@@ -72,9 +78,13 @@ Index: bc-java-r1rv85/ant/bc+-build.xml
 -        </copy>
 -
 -        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/lms/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/crypto/params/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/crypto/signers/lms/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/crypto/signers/xmss/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/pqc/crypto/mayo/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/est/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/gpg/keybox/AllTests.java" />
+-        <delete file="${test.target.src.dir}/org/bouncycastle/crypto/agreement/owl/AllTests.java" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages_de.properties" />
 -        <delete file="${test.target.src.dir}/org/bouncycastle/x509/CertPathReviewerMessages.properties" />
 -
@@ -113,6 +123,11 @@ Index: bc-java-r1rv85/ant/bc+-build.xml
 -                </fileset>
 -            </classpath>
 -            <sysproperty key="test.java.version.prefix" value="${env.JAVA_VERSION_PREFIX}" />
+-            <!-- the PKCS#12 keystore writes with a 600,000 iteration PBE by default and BCFKS
+-                 with a 51,200 iteration PBKDF2, several seconds per store; the tests are not
+-                 measuring the KDF, so write cheap files -->
+-            <sysproperty key="org.bouncycastle.pkcs12.store_it_count" value="4096" />
+-            <sysproperty key="org.bouncycastle.bcfks.store_it_count" value="1024" />
 -
 -            <formatter type="xml" />
 -            <batchtest todir="${artifacts.reports.xml.dir}" unless="testcase">
@@ -141,6 +156,12 @@ Index: bc-java-r1rv85/ant/bc+-build.xml
 -                    <exclude name="**/bcprov-jdk*.jar" />
 -                </fileset>
 -            </classpath>
+-
+-            <!-- the PKCS#12 keystore writes with a 600,000 iteration PBE by default and BCFKS
+-                 with a 51,200 iteration PBKDF2, several seconds per store; the tests are not
+-                 measuring the KDF, so write cheap files -->
+-            <sysproperty key="org.bouncycastle.pkcs12.store_it_count" value="4096" />
+-            <sysproperty key="org.bouncycastle.bcfks.store_it_count" value="1024" />
 -
 -            <formatter type="xml" />
 -            <test name="${testcase}" todir="${artifacts.reports.xml.dir}" if="testcase" />
