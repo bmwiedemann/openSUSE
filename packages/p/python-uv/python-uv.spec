@@ -36,13 +36,13 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.12.23
+Version:        0.12.24
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
 # statically links the vendored Rust dependencies. Re-derived on this
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
-# tree (509 unique name-version nodes); the copyleft licences in the linked graph are:
+# tree (525 unique name-version nodes); the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
 #    (the last via shellexpand -> dirs -> dirs-sys),
 #  - priority-queue, which is "LGPL-3.0-or-later OR MPL-2.0" - we elect
@@ -217,11 +217,15 @@ export CARGO_PROFILE_RELEASE_STRIP=false
 # nothing, so the spawn fails outright - and would then resolve a
 # Python interpreter and its dependencies over the network. The other
 # nine uv-extract tests, including the rest of the dirhash suite, still
-# run.
+# run. uv-requirements-txt's malformed_option cases 2-3 are the same
+# insta-in-one-process limitation as uv-build-backend above, new in
+# 0.12.24 with the malformed-requirements-option rejections: three
+# #[test_case]s share one inline snapshot, so the first passes and the
+# rest panic before comparing anything. Case 1 still runs.
 #
 # The leading "--" is required: %%cargo_test is a parametrised macro, so
 # without it rpm parses "--workspace" as a macro option and aborts.
-%{cargo_test -- --workspace --exclude uv --exclude uv-dev --exclude uv-build-backend -- --test-threads=1 --skip user_agent_version::test_user_agent_has_linehaul --skip dirhash::tests::test_vectors_json}
+%{cargo_test -- --workspace --exclude uv --exclude uv-dev --exclude uv-build-backend -- --test-threads=1 --skip user_agent_version::test_user_agent_has_linehaul --skip dirhash::tests::test_vectors_json --skip malformed_option::test_case_2 --skip malformed_option::test_case_3}
 %endif
 
 %if %{without test}

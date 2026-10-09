@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:14:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.12.24:
+  * `uv cache prune` removes orphaned temporary build environments
+  * Accept PEP 508 marker operators before grouped expressions;
+    reject malformed requirements-file options instead of ignoring
+    them
+  * Managed Python: honour exact patch pins in script environments,
+    custom GraalPy/Pyodide mirrors, clearer uninstall errors
+  * Preview: `uv audit` prefers PYSEC, then GHSA, then CVE IDs
+  * UV_NO_CACHE/UV_OFFLINE/UV_SYSTEM_CERTS=false now override the
+    config file; explicit --trusted-publishing wins over config
+  * Verify supplied hashes even with require-hashes disabled;
+    overrides no longer pull unselected optional deps; IPv6 loopback
+    for `uv auth login`; GitHub refs with `#`/`%`
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh the vendored dependencies: async-compression 0.4.19 ->
+  0.4.50 (split out compression-codecs/core), astral-html 0.0.3
+  replaces astral-tl and html-escape, smallvec 1.15.2 -> 1.16.2,
+  tokio-rustls 0.26.4 -> 0.26.6 and fs-err 3.3.1 -> 3.3.2 are all
+  linked into the binary; the linked graph grows to 525 nodes (was
+  509) and the licence set is unchanged
+  * CVE-2026-92987 (boo#1281170): roxmltree is vendored but not
+    linked into the shipped binary, so this package is not affected
+- Upstream MSRV is still Rust 1.97, so BuildRequires on cargo is
+  unchanged
+
+-------------------------------------------------------------------
 Sun Oct  4 07:24:11 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.23:
