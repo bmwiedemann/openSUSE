@@ -15,4 +15,41 @@
     <comment></comment>
     <requestid>1371685</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>332792c30b6216c299cfaa018b37446e</srcmd5>
+    <version>0.83.0</version>
+    <time>1791575032</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.83.0:
+  * Deduplication now compares referenced models
+  * Specialized dynamic-scope models shift generated class names
+  * Dynamic ref resolution scope for inline resources and merged refs
+  * Constraints are now emitted on recursive container fields
+  * Stricter runtime validation of recursive container payloads
+  * Protobuf weak imports can not longer escape the temporary directory
+    (CVE-2026-107377, bsc#1284763)
+  * Python union annotations preserve unsupported member types
+  * Safe frozen set items use native Pydantic hash generation
+  * Constrained root aliases retain their validation
+  * Reject unsupported msgspec enum members
+  * Aliases now abort generation on conflicts or invalid names
+  * MCP tools schema-instance values preserved verbatim
+  * allOf merge modes now intersect bounds and enums
+  * Nested Avro bytes and fixed defaults are now decoded to bytes
+  * Dictionary defaults now render as factories for pydantic v2 dataclasses
+  * Avro duration defaults now decode to timedelta
+  * XML Schema nillable now recognizes the 1 lexical value
+  * Multiple enum sources in a union are converted
+  * Combined XSD pattern facets change generated regexes
+  * Parser source loading, run state, output-model capabilities, field-name
+    policies, and input-model transport have been separated to clarify
+    internal ownership
+  * Root-model collapsing tracks references incrementally, and the built-in
+    formatter skips unnecessary string normalization
+  * x-enum-descriptions now accepts null entries, allowing schemas with
+    missing individual enum descriptions to generate successfully
+  * Pydantic v2 extra-property keys now enforce propertyNames
+  * minProperties/maxProperties now generate runtime validators</comment>
+    <requestid>1383624</requestid>
+  </revision>
 </revisionlist>

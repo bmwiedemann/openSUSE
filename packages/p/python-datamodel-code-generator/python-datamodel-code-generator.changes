@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct  9 01:58:49 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 0.83.0:
+  * Deduplication now compares referenced models
+  * Specialized dynamic-scope models shift generated class names
+  * Dynamic ref resolution scope for inline resources and merged refs
+  * Constraints are now emitted on recursive container fields
+  * Stricter runtime validation of recursive container payloads
+  * Protobuf weak imports can not longer escape the temporary directory
+    (CVE-2026-107377, bsc#1284763)
+  * Python union annotations preserve unsupported member types
+  * Safe frozen set items use native Pydantic hash generation
+  * Constrained root aliases retain their validation
+  * Reject unsupported msgspec enum members
+  * Aliases now abort generation on conflicts or invalid names
+  * MCP tools schema-instance values preserved verbatim
+  * allOf merge modes now intersect bounds and enums
+  * Nested Avro bytes and fixed defaults are now decoded to bytes
+  * Dictionary defaults now render as factories for pydantic v2 dataclasses
+  * Avro duration defaults now decode to timedelta
+  * XML Schema nillable now recognizes the 1 lexical value
+  * Multiple enum sources in a union are converted
+  * Combined XSD pattern facets change generated regexes
+  * Parser source loading, run state, output-model capabilities, field-name
+    policies, and input-model transport have been separated to clarify
+    internal ownership
+  * Root-model collapsing tracks references incrementally, and the built-in
+    formatter skips unnecessary string normalization
+  * x-enum-descriptions now accepts null entries, allowing schemas with
+    missing individual enum descriptions to generate successfully
+  * Pydantic v2 extra-property keys now enforce propertyNames
+  * minProperties/maxProperties now generate runtime validators
+  * Runtime-validation helper base class renamed in mixed modules
+  * Non-finite float values now render as structural float(...) expressions
+  * Additional imports are now validated as Python import paths
+  * Reserved template keys in --extra-template-data now raise an error for
+    built-in templates
+  * Built-in templates now serialize extra_template_data values as
+    non-executing literals
+- Rewrite Description to be longer.
+
+-------------------------------------------------------------------
 Thu Aug 13 16:29:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - Update to 0.72.4 (fixes CVE-2026-55391 (bsc#1272870),
