@@ -205,4 +205,12 @@ import smoke py313/py314.</comment>
 </comment>
     <requestid>1382006</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>f6776896d3609adbdd8ad5a0221f188a</srcmd5>
+    <version>2.2.0</version>
+    <time>1791575139</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-huggingface-hub to 2.2.0: jobs stats snapshot, hf_xet download fix, filesystem cache and CLI fixes.</comment>
+    <requestid>1383686</requestid>
+  </revision>
 </revisionlist>

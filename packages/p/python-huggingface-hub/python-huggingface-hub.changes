@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:06:57 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 2.2.0:
+  * hf jobs stats prints a snapshot by default; use -f/--follow for
+    the live view. fetch_job_metrics() gains the same follow flag
+    (default False)
+  * Concurrent downloads always use hf_xet (race fix); HfFileSystem
+    cache fixes for empty buckets, duplicate listings and stale
+    not-found entries
+  * load_torch_model raises FileNotFoundError for a missing path;
+    model_index_to_eval_results raises ValueError on an empty list
+  * CLI: no glob expansion on Windows, UTF-8 env/secrets files,
+    upload paths with glob characters as-is
+  * Warn when snapshot patterns match nothing; faster
+    delete_revisions; offline snapshot with pinned revision fixed
+  * No new runtime dependencies
+
+-------------------------------------------------------------------
 Fri Oct  2 05:45:56 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 2.1.1:
