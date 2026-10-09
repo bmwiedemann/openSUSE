@@ -19,7 +19,7 @@
 %define         qt6ver 6.7.0
 %define         appid org.deskflow.deskflow
 Name:           deskflow
-Version:        1.26.0
+Version:        1.27.0
 Release:        0
 Summary:        Share a single keyboard and mouse between multiple computers
 License:        GPL-2.0-only AND MIT AND SUSE-GPL-2.0-with-openssl-exception AND LGPL-2.1-only
@@ -28,12 +28,14 @@ Source0:        %{url}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Source1:        %{name}.firewalld
 Patch0:         disable-updater.patch
 Patch1:         disable-test-x86.patch
+Patch2:         remove-release.patch
 BuildRequires:  c++_compiler
 BuildRequires:  cmake >= 3.24
 BuildRequires:  doxygen
 BuildRequires:  fdupes
 BuildRequires:  firewall-macros
 BuildRequires:  firewalld
+BuildRequires:  help2man
 BuildRequires:  hicolor-icon-theme
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(CLI11)
@@ -51,7 +53,7 @@ BuildRequires:  pkgconfig(gtest)
 BuildRequires:  pkgconfig(ice)
 BuildRequires:  pkgconfig(libcrypto) >= 3.0.0
 BuildRequires:  pkgconfig(libei-1.0) >= 1.3.0
-BuildRequires:  pkgconfig(libportal) >= 0.8.0
+BuildRequires:  pkgconfig(libportal) >= 0.9.1
 BuildRequires:  pkgconfig(pugixml)
 BuildRequires:  pkgconfig(sm)
 BuildRequires:  pkgconfig(tomlplusplus)
@@ -62,8 +64,12 @@ BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xinerama)
 BuildRequires:  pkgconfig(xkbcommon)
 BuildRequires:  pkgconfig(xkbfile)
+BuildRequires:  pkgconfig(xkbregistry)
 BuildRequires:  pkgconfig(xrandr)
 BuildRequires:  pkgconfig(xtst)
+Recommends:     wl-clipboard
+Provides:       %{name}-doc = %{version}
+Obsoletes:      %{name}-doc < %{version}
 
 %description
 Deskflow is a free and open source keyboard and mouse sharing app. Use the
@@ -85,23 +91,21 @@ BuildArch:      noarch
 %autopatch -p1
 %else
 %patch -P0 -p1
+%patch -P2 -p1
 %endif
 
 %build
 %cmake \
   -DBUILD_DOCS=ON \
   -DBUILD_GUI=ON \
-  -DBUILD_INSTALLER=OFF \
+  -DBUILD_INSTALLER=ON \
   -DBUILD_TESTS=ON \
-  -DBUILD_UNIFIED=OFF \
+  -DBUILD_UNIFIED=ON \
   %{nil}
 %cmake_build
 
 %install
 %cmake_install
-install -Dm0644 ./deploy/linux/%{appid}.desktop %{buildroot}%{_datadir}/applications/%{appid}.desktop
-install -Dm0644 ./deploy/linux/%{appid}.metainfo.xml %{buildroot}%{_datadir}/metainfo/%{appid}.metainfo.xml
-install -Dm0644 ./deploy/linux/%{appid}.png %{buildroot}%{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
 install -Dm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}.xml
 %fdupes %{buildroot}%{_docdir}
 
@@ -118,16 +122,16 @@ install -Dm0644 %{SOURCE1} %{buildroot}%{_prefix}/lib/firewalld/services/%{name}
 
 %files
 %license LICENSE LICENSE_EXCEPTION
-%doc README.md
+%doc Configuration.md HelpMain.md Issues.md Readme.md Security.md
 %{_bindir}/%{name}
 %{_bindir}/%{name}-core
 %{_datadir}/%{name}
 %{_datadir}/applications/%{appid}.desktop
 %{_datadir}/icons/hicolor/512x512/apps/%{appid}.png
+%{_datadir}/icons/hicolor/symbolic/apps/%{appid}-symbolic.svg
 %{_datadir}/metainfo/%{appid}.metainfo.xml
+%{_mandir}/man?/%{name}-core.?%{?ext_man}
+%{_mandir}/man?/%{name}.?%{?ext_man}
 %{_prefix}/lib/firewalld/services/%{name}.xml
-
-%files doc
-%{_docdir}/%{name}/html
 
 %changelog

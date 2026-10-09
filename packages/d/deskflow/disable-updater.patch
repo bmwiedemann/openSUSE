@@ -1,51 +1,83 @@
-diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp
---- deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.cpp	2025-11-21 15:09:53.000000000 +0000
-+++ deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp	2025-11-21 18:33:54.237928288 +0000
-@@ -165,7 +165,6 @@
+diff -rubN deskflow-1.27.0/src/lib/gui/dialogs/SettingsDialog.cpp deskflow-1.27.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp
+--- deskflow-1.27.0/src/lib/gui/dialogs/SettingsDialog.cpp	2026-10-01 14:00:00.000000000 +0200
++++ deskflow-1.27.0-patched/src/lib/gui/dialogs/SettingsDialog.cpp	2026-10-08 15:34:46.197887245 +0200
+@@ -129,7 +129,6 @@
+   connect(ui->cbPreventSleep, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+   connect(ui->rbCloseToTray, &QRadioButton::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+   connect(ui->cbElevateDaemon, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+-  connect(ui->cbAutoUpdate, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+   connect(ui->cbGuiDebug, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+   connect(ui->cbShowVersion, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+   connect(ui->cbRequireClientCert, &QCheckBox::toggled, this, &SettingsDialog::setButtonBoxEnabledButtons);
+@@ -227,7 +226,6 @@
    Settings::setValue(Settings::Log::File, ui->lineLogFilename->text());
    Settings::setValue(Settings::Daemon::Elevate, ui->cbElevateDaemon->isChecked());
-   Settings::setValue(Settings::Gui::Autohide, ui->cbAutoHide->isChecked());
+   Settings::setValue(Settings::Gui::Autohide, ui->rbAutoHide->isChecked());
 -  Settings::setValue(Settings::Gui::AutoUpdateCheck, ui->cbAutoUpdate->isChecked());
    Settings::setValue(Settings::Core::PreventSleep, ui->cbPreventSleep->isChecked());
    Settings::setValue(Settings::Security::Certificate, ui->lineTlsCertPath->text());
    Settings::setValue(Settings::Security::KeySize, ui->comboTlsKeyLength->currentText().toInt());
-@@ -203,7 +202,6 @@
+@@ -263,7 +261,6 @@
+   ui->lineLogFilename->setText(Settings::value(Settings::Log::File).toString());
    ui->cbPreventSleep->setChecked(Settings::value(Settings::Core::PreventSleep).toBool());
-   ui->cbCloseToTray->setChecked(Settings::value(Settings::Gui::CloseToTray).toBool());
    ui->cbElevateDaemon->setChecked(Settings::value(Settings::Daemon::Elevate).toBool());
 -  ui->cbAutoUpdate->setChecked(Settings::value(Settings::Gui::AutoUpdateCheck).toBool());
    ui->cbGuiDebug->setChecked(Settings::value(Settings::Log::GuiDebug).toBool());
-   ui->cbUseWlClipboard->setChecked(Settings::value(Settings::Core::UseWlClipboard).toBool());
    ui->cbShowVersion->setChecked(Settings::value(Settings::Gui::ShowVersionInTitle).toBool());
-@@ -295,7 +293,6 @@
-   ui->comboLogLevel->setEnabled(writable);
-   ui->cbLogToFile->setEnabled(writable);
-   ui->cbAutoHide->setEnabled(writable);
+   ui->cbRunEnterCommand->setChecked(Settings::value(Settings::Core::EnableEnterCommand).toBool());
+@@ -380,7 +377,6 @@
+   ui->rbAutoHide->setEnabled(writable);
+   ui->rbShowOnStart->setEnabled(writable);
+   ui->btnClearAllSettings->setEnabled(writable);
 -  ui->cbAutoUpdate->setEnabled(writable);
    ui->cbPreventSleep->setEnabled(writable);
    ui->lineTlsCertPath->setEnabled(writable);
    ui->comboTlsKeyLength->setEnabled(writable);
-diff -rubN deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.ui
---- deskflow-1.25.0/src/lib/gui/dialogs/SettingsDialog.ui	2025-11-21 15:09:53.000000000 +0000
-+++ deskflow-1.25.0-patched/src/lib/gui/dialogs/SettingsDialog.ui	2025-11-21 18:35:19.472529908 +0000
-@@ -105,13 +105,6 @@
-          </property>
-          <layout class="QVBoxLayout" name="verticalLayout_2">
-           <item>
--           <widget class="QCheckBox" name="cbAutoUpdate">
--            <property name="text">
--             <string>Check for updates on startup</string>
--            </property>
--           </widget>
--          </item>
--          <item>
-            <widget class="QCheckBox" name="cbShowVersion">
-             <property name="text">
-              <string>Include version in the window title</string>
-diff -rubN deskflow-1.25.0/src/lib/gui/MainWindow.cpp deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp
---- deskflow-1.25.0/src/lib/gui/MainWindow.cpp	2025-11-21 15:09:53.000000000 +0000
-+++ deskflow-1.25.0-patched/src/lib/gui/MainWindow.cpp	2025-11-21 18:37:12.053894888 +0000
-@@ -660,6 +660,7 @@
+@@ -431,7 +427,6 @@
+       (ui->cbPreventSleep->isChecked() != Settings::value(Settings::Core::PreventSleep).toBool()) ||
+       (ui->rbCloseToTray->isChecked() != Settings::value(Settings::Gui::CloseToTray).toBool()) ||
+       (ui->cbElevateDaemon->isChecked() != Settings::value(Settings::Daemon::Elevate).toBool()) ||
+-      (ui->cbAutoUpdate->isChecked() != Settings::value(Settings::Gui::AutoUpdateCheck).toBool()) ||
+       (ui->cbGuiDebug->isChecked() != Settings::value(Settings::Log::GuiDebug).toBool()) ||
+       (ui->cbShowVersion->isChecked() != Settings::value(Settings::Gui::ShowVersionInTitle).toBool()) ||
+       (ui->rbIconMono->isChecked() != Settings::value(Settings::Gui::SymbolicTrayIcon).toBool()) ||
+@@ -466,7 +461,6 @@
+       (ui->cbPreventSleep->isChecked() == Settings::defaultValue(Settings::Core::PreventSleep).toBool()) &&
+       (ui->rbCloseToTray->isChecked() == Settings::defaultValue(Settings::Gui::CloseToTray).toBool()) &&
+       (ui->cbElevateDaemon->isChecked() == Settings::defaultValue(Settings::Daemon::Elevate).toBool()) &&
+-      (ui->cbAutoUpdate->isChecked() == Settings::defaultValue(Settings::Gui::AutoUpdateCheck).toBool()) &&
+       (ui->cbGuiDebug->isChecked() == Settings::defaultValue(Settings::Log::GuiDebug).toBool()) &&
+       (ui->cbShowVersion->isChecked() == Settings::defaultValue(Settings::Gui::ShowVersionInTitle).toBool()) &&
+       (ui->rbIconMono->isChecked() == Settings::defaultValue(Settings::Gui::SymbolicTrayIcon).toBool()) &&
+@@ -494,7 +488,6 @@
+   ui->lineLogFilename->setText(Settings::defaultValue(Settings::Log::File).toString());
+   ui->cbPreventSleep->setChecked(Settings::defaultValue(Settings::Core::PreventSleep).toBool());
+   ui->cbElevateDaemon->setChecked(Settings::defaultValue(Settings::Daemon::Elevate).toBool());
+-  ui->cbAutoUpdate->setChecked(Settings::defaultValue(Settings::Gui::AutoUpdateCheck).toBool());
+   ui->cbGuiDebug->setChecked(Settings::defaultValue(Settings::Log::GuiDebug).toBool());
+   ui->cbShowVersion->setChecked(Settings::defaultValue(Settings::Gui::ShowVersionInTitle).toBool());
+   ui->cbRunEnterCommand->setChecked(Settings::defaultValue(Settings::Core::EnableEnterCommand).toBool());
+diff -rubN deskflow-1.27.0/src/lib/gui/dialogs/SettingsDialog.ui deskflow-1.27.0-patched/src/lib/gui/dialogs/SettingsDialog.ui
+--- deskflow-1.27.0/src/lib/gui/dialogs/SettingsDialog.ui	2026-10-01 14:00:00.000000000 +0200
++++ deskflow-1.27.0-patched/src/lib/gui/dialogs/SettingsDialog.ui	2026-10-08 15:35:19.516524976 +0200
+@@ -79,13 +79,6 @@
+         </layout>
+        </item>
+        <item>
+-        <widget class="QCheckBox" name="cbAutoUpdate">
+-         <property name="text">
+-          <string>Check for updates on startup</string>
+-         </property>
+-        </widget>
+-       </item>
+-       <item>
+         <widget class="QCheckBox" name="cbPreventSleep">
+          <property name="text">
+           <string>Prevent this computer from going to sleep</string>
+diff -rubN deskflow-1.27.0/src/lib/gui/MainWindow.cpp deskflow-1.27.0-patched/src/lib/gui/MainWindow.cpp
+--- deskflow-1.27.0/src/lib/gui/MainWindow.cpp	2026-10-01 14:00:00.000000000 +0200
++++ deskflow-1.27.0-patched/src/lib/gui/MainWindow.cpp	2026-10-08 15:36:26.581808816 +0200
+@@ -640,6 +640,7 @@
    const auto kCriticalDialogDelay = 100;
    QTimer::singleShot(kCriticalDialogDelay, this, &messages::raiseCriticalDialog);
  

@@ -1,4 +1,59 @@
 -------------------------------------------------------------------
+Thu Oct  8 14:38:46 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.27.0:
+  + Remove the generic connection failure dialog
+  + Suggest also ipv6
+  + Make a Status bar widget
+  + Disable screen rename when core is running
+  + Settings adjust
+  + Window settings
+  + Allow for run command on enter or exit
+  + fix: adjust command line size to allow expanding
+  + Timeout longer
+  + Have the Messages check settings on their own
+  + Replace LOG_IPC with actual IPC
+  + Closes core upon accessibility permissions revocation
+  + Improve connection stability
+  + Protocol settings in main settings only
+  + feat: Print Qt logs same as other log lines
+  + feat: handle input capture session persistence
+  + Use QStrings for exceptions whats
+  + Log updates
+  + feat: add search evdev.xml path for NetBSD/OpenBSD
+  + refactor: include install info in about info
+  + Fix client network bind
+  + Better local fingerprint preview
+  + Mv grid info outof server config
+  + Cleanup protocol remnents
+  + Move more to general settings
+  + Move more server options to new settings
+  + Clipboard support for Wayland (input capture and remote desktop portals)
+  + Move aliases to general config
+  + fix: defer client disconnect cleanup
+  + fix(wayland): only add input-capture barriers on the outer desktop edge
+  + fix: release EIS emulation grab when idle so client screens can sleep
+  + Better help
+  + Token in state
+  + Accumulate smooth scroll into full wheel clicks on server
+  + refactor: no need to call setAppId for gui as the App does it on its own
+  + fix(wayland): fix mouse scroll jitter and missing scroll events on a
+    wayland host to a mac client
+  + Better readonly settings
+  + More updates to Server Config Dialog
+  + Default action for help dialog
+  + Prep for more items in general configuration
+  + Deletion of dead code, refactor and correcting logging messages
+  + Support a clean exit of the client
+  + feat: support link-local connections in Preferences dialog
+  + Portal Globalshortcuts implementation
+  + Move more screen options to the general config
+  + Use computer not Screen
+- create remove-release.patch, as it otherwise requires rebuilding
+  all the time in TW, as it requires /etc/os-release
+- Remove %{name}-doc package, as the docs don't exist anymore
+
+-------------------------------------------------------------------
 Sat Mar 28 00:05:58 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
 
 - Offer a firewalld service file

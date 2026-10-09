@@ -131,4 +131,41 @@
     <comment>- Offer a firewalld service file (forwarded request 1343262 from rrahl0)</comment>
     <requestid>1343263</requestid>
   </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>5ac43232e6f23797737244a4de5915f3</srcmd5>
+    <version>1.27.0</version>
+    <time>1791575000</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.27.0:
+  + Remove the generic connection failure dialog
+  + Suggest also ipv6
+  + Make a Status bar widget
+  + Disable screen rename when core is running
+  + Settings adjust
+  + Window settings
+  + Allow for run command on enter or exit
+  + fix: adjust command line size to allow expanding
+  + Timeout longer
+  + Have the Messages check settings on their own
+  + Replace LOG_IPC with actual IPC
+  + Closes core upon accessibility permissions revocation
+  + Improve connection stability
+  + Protocol settings in main settings only
+  + feat: Print Qt logs same as other log lines
+  + feat: handle input capture session persistence
+  + Use QStrings for exceptions whats
+  + Log updates
+  + feat: add search evdev.xml path for NetBSD/OpenBSD
+  + refactor: include install info in about info
+  + Fix client network bind
+  + Better local fingerprint preview
+  + Mv grid info outof server config
+  + Cleanup protocol remnents
+  + Move more to general settings
+  + Move more server options to new settings
+  + Clipboard support for Wayland (input capture and remote desktop portals)
+  + Move aliases to general config
+  + fix: defer client disconnect cleanup (forwarded request 1383341 from rrahl0)</comment>
+    <requestid>1383342</requestid>
+  </revision>
 </revisionlist>
