@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Thu Oct  8 13:21:17 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
+
+- Upgrade libzpc to version 2.1.0
+  * [FEATURE] PKCS#11 Cryptoki API for hardware-backed key operations
+- Removed pre-defined `hbkzpcprovider.7`,`hbkzpcprovider.conf.5`,`zpckey.1` man pages
+- Included the man pages provided by the package (Source0) 
+
+-------------------------------------------------------------------
 Fri Sep 11 09:12:05 UTC 2026 - Nikolay Gueorguiev <nikolay.gueorguiev@suse.com>
 
 - Amended the .spec file to fix build and packaging issues (jsc#PED-16483):

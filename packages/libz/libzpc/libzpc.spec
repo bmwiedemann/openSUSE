@@ -17,7 +17,7 @@
 
 
 Name:           libzpc
-Version:        2.0.1
+Version:        2.1.0
 Release:        0
 Summary:        IBM Z Protected-key Crypto library
 License:        MIT
@@ -25,10 +25,6 @@ Group:          Productivity/Security
 URL:            https://github.com/opencryptoki/libzpc
 Source0:        https://github.com/opencryptoki/libzpc/archive/refs/tags/v%{version}.tar.gz#/libzpc-%{version}.tar.gz
 Source1:        libzpc-rpmlintrc
-### The man pages must be pre-generated in advance!
-Source2:        hbkzpcprovider.conf.5
-Source3:        hbkzpcprovider.7
-Source4:        zpckey.1
 ###
 
 BuildRequires:  clang
@@ -79,7 +75,6 @@ persistent protected key origins, from which protected keys can be (re-)derived.
 
 %install
 cd build
-cp %{SOURCE2} %{SOURCE3} %{SOURCE4} .
 %make_install
 install -D -m 0644 hbkzpcprovider.conf \
         %{buildroot}%{_docdir}/libzpc-provider/hbkzpcprovider.conf.example
@@ -97,14 +92,16 @@ install -D -m 0644 hbkzpcprovider.conf \
 %files provider
 %license LICENSE
 %{_docdir}/libzpc-provider/
+%dir %{_libdir}/pkcs11
+%{_libdir}/pkcs11/zpcpkcs11.so
 %{modulesdir}/zpcprovider.so
-%{_mandir}/man5/hbkzpcprovider.conf.5*
-%{_mandir}/man7/hbkzpcprovider.7*
+%{_mandir}/man5/*.5*
+%{_mandir}/man7/*.7*
 %endif
 
 %files tools
 %license LICENSE
 %{_bindir}/zpckey
-%{_mandir}/man1/zpckey.1*
+%{_mandir}/man1/*.1*
 
 %changelog
