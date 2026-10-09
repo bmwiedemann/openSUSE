@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:03:11 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.21:
+  * docs: add v0.2.21 changelog entry (#820)
+  * bump Go to 1.26.6 (#819)
+
+-------------------------------------------------------------------
 Thu Sep 24 04:55:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.20:
