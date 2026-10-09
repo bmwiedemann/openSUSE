@@ -23,7 +23,7 @@
 %define server_package_name woodpecker-server
 %define server_executable_name woodpecker-server
 Name:           woodpecker
-Version:        3.18.1
+Version:        3.19.0
 Release:        0
 Summary:        Simple yet powerful CI/CD engine with great extensibility
 License:        Apache-2.0
