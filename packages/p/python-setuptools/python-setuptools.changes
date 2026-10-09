@@ -1,4 +1,49 @@
 -------------------------------------------------------------------
+Thu Sep 24 05:06:17 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 84.0.0:
+  ## Features
+  * Newline-separated keywords and platforms, which are invalid and corrupt
+    the generated metadata, are now handled forgivingly: each line is treated
+    as a separate item and a deprecation warning is emitted.
+  * Extension is now a dataclass, exposing type annotations for its
+    constructor arguments so subclasses can inherit them without redeclaring
+    each parameter.
+  * The C compiler modules now emit log messages through their own
+    compilers.C.* loggers instead of the distutils root logger, part of
+    decoupling the compilers package from distutils.
+  * The C compilers gained a Compiler.call method – a thin wrapper over
+    subprocess.check_call that is the modern replacement for Compiler.spawn.
+  * The compilers no longer depend on distutils.util, distutils.version,
+    distutils.compat, or distutils._macos_compat.
+  * The compilers now read their build configuration from the standard
+    library's sysconfig instead of distutils.sysconfig.
+  * Require Python 3.10 or later.
+  * Remove post-release tags on setuptools’ own build.
+  ## Bugfixes
+  * copy_file now preserves the full precision of the source's modification
+    time, so a copy is no longer considered older than its source on
+    filesystems with sub-second timestamp resolution.
+  * Setuptools wheels no longer bundled the project’s own test modules.
+  * MANIFEST.in matching (via FileList) is now insensitive to Unicode
+    normalization form.
+  * Fix the loading of launcher manifest.xml file.
+  * Replaced deprecated json.__version__ with fixture in tests.
+  ## Deprecations and Removals
+  * Compiler.spawn is deprecated in favor of the new Compiler.call. call
+    raises native subprocess exceptions; spawn remains as a shim that emits a
+    DeprecationWarning and translates them to DistutilsExecError.
+  * The compilers now define their own exception vocabulary instead of
+    borrowing distutils' framework errors.
+  * customize_compiler now asserts that the compiler-related config variables
+    (CC, CXX, CFLAGS, etc.) resolve to strings, raising AssertionError if any
+    are unexpectedly None rather than failing later with a less clear error.
+  * pkg_resources has been removed from Setuptools. Most common uses of
+    pkg_resources have been superseded by the importlib.resources and
+    importlib.metadata projects.
+  * Removed support for the –dry-run parameter to setup.py.
+
+-------------------------------------------------------------------
 Mon Apr 13 18:01:35 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - add testsuite for tests

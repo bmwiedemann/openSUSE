@@ -65,7 +65,7 @@ ExclusiveArch:  do-not-build
 %endif
 
 Name:           %{pprefix}-setuptools%{psuffix}
-Version:        80.9.0
+Version:        84.0.0
 Release:        0
 Summary:        Download, build, install, upgrade, and uninstall Python packages
 License:        Apache-2.0 AND MIT AND BSD-2-Clause AND Python-2.0
@@ -74,7 +74,7 @@ Source:         https://files.pythonhosted.org/packages/source/s/setuptools/setu
 Source99:       python-setuptools.rpmlintrc
 Patch0:         sort-for-reproducibility.patch
 # Bootstrap: Don't BuildRequire pip here!
-BuildRequires:  %{python_module base >= 3.9}
+BuildRequires:  %{python_module base >= 3.10}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 %if 0%{?suse_version} > 1500
@@ -82,7 +82,8 @@ BuildRequires:  python-rpm-packaging
 %endif
 BuildArch:      noarch
 %if %{with test}
-BuildRequires:  %{python_module build}
+BuildRequires:  %{python_module build >= 1.0.3}
+BuildRequires:  %{python_module coverage}
 BuildRequires:  %{python_module devel}
 BuildRequires:  %{python_module filelock >= 3.4.0}
 BuildRequires:  %{python_module ini2toml-lite >= 0.14}
@@ -186,8 +187,6 @@ donttest+=" or uses_network"
 %doc NEWS.rst README.rst
 %{python_sitelib}/setuptools
 %{python_sitelib}/setuptools-%{version}.dist-info
-%dir %{python_sitelib}/pkg_resources
-%{python_sitelib}/pkg_resources/*
 %{python_sitelib}/_distutils_hack
 %{python_sitelib}/distutils-precedence.pth
 %endif

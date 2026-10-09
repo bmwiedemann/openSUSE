@@ -1934,6 +1934,7 @@
     <package name="libfontenc1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfprint-2-2" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="libfprint-2-tod1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
+    <package name="libfreeaptx0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libfreebl3" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libfreecell-solver0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libfreehand-0_1-1" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
@@ -2141,9 +2142,9 @@
     <package name="libhidapi-hidraw0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libhiredis1_3_0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhns1" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libhogweed6" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libhogweed6-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libhogweed6-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libhogweed7" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libhogweed7-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libhogweed7-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libhplip0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-printing -->
     <package name="libhunspell-1_7-0" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
     <package name="libhwasan0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
@@ -2367,9 +2368,9 @@
     <package name="libneon27" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnetfilter_conntrack3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnetpbm11" supportstatus="unsupported"/> <!-- reason: dvd:patterns-base-console -->
-    <package name="libnettle8" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
-    <package name="libnettle8-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
-    <package name="libnettle8-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libnettle9" supportstatus="unsupported"/> <!-- reason: dvd:openSUSE-release -->
+    <package name="libnettle9-32bit" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
+    <package name="libnettle9-x86-64-v3" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="libnewt0_52" supportstatus="unsupported"/> <!-- reason: dvd:patterns-kde-kde -->
     <package name="libnfnetlink0" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="libnfs16" supportstatus="unsupported"/> <!-- reason: dvd:grub2 -->
@@ -3726,7 +3727,6 @@
     <package name="quadrapassel-lang" supportstatus="unsupported"/> <!-- reason: dvd:patterns-gnome-gnome -->
     <package name="quota" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_cd_core -->
     <package name="quota-nfs" supportstatus="unsupported"/> <!-- reason: dvd:quota-nfs -->
-    <package name="rdesktop" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdma-core" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="rdma-ndd" supportstatus="unsupported"/> <!-- reason: dvd:patterns-media-rest_dvd -->
     <package name="re2c" supportstatus="unsupported"/> <!-- reason: dvd:patterns-server-mail_server -->

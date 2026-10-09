@@ -1406,4 +1406,12 @@
     <comment>- add testsuite for tests</comment>
     <requestid>1346492</requestid>
   </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>0b5d8ffb16e4c88c5cbfacfbd0a6858a</srcmd5>
+    <version>84.0.0</version>
+    <time>1791574952</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1381809</requestid>
+  </revision>
 </revisionlist>

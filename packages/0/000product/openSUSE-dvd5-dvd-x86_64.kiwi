@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261007" schemaversion="4.1">
+<image name="OBS__openSUSE___20261008" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261007</productvar>
+      <productvar name="VERSION">20261008</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261007,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261008,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261007/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261008/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -1508,6 +1508,7 @@
       <repopackage name="libfontenc1"/>
       <repopackage name="libfprint-2-2"/>
       <repopackage name="libfprint-2-tod1"/>
+      <repopackage name="libfreeaptx0"/>
       <repopackage name="libfreebl3"/>
       <repopackage name="libfreecell-solver0"/>
       <repopackage name="libfreehand-0_1-1"/>
@@ -1719,9 +1720,9 @@
       <repopackage name="libhidapi-hidraw0"/>
       <repopackage name="libhiredis1_3_0"/>
       <repopackage name="libhns1"/>
-      <repopackage name="libhogweed6"/>
-      <repopackage name="libhogweed6-32bit"/>
-      <repopackage name="libhogweed6-x86-64-v3"/>
+      <repopackage name="libhogweed7"/>
+      <repopackage name="libhogweed7-32bit"/>
+      <repopackage name="libhogweed7-x86-64-v3"/>
       <repopackage name="libhplip0"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libhwasan0"/>
@@ -2214,9 +2215,9 @@
       <repopackage name="libneon27"/>
       <repopackage name="libnetfilter_conntrack3"/>
       <repopackage name="libnetpbm11"/>
-      <repopackage name="libnettle8"/>
-      <repopackage name="libnettle8-32bit"/>
-      <repopackage name="libnettle8-x86-64-v3"/>
+      <repopackage name="libnettle9"/>
+      <repopackage name="libnettle9-32bit"/>
+      <repopackage name="libnettle9-x86-64-v3"/>
       <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs16"/>
@@ -3773,7 +3774,6 @@
       <repopackage name="quadrapassel-lang"/>
       <repopackage name="quota"/>
       <repopackage name="quota-nfs"/>
-      <repopackage name="rdesktop"/>
       <repopackage name="rdma-core"/>
       <repopackage name="rdma-ndd"/>
       <repopackage name="re2c"/>

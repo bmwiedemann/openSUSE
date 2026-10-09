@@ -1,4 +1,4 @@
-<image name="OBS__MicroOS___20261007" schemaversion="4.1">
+<image name="OBS__MicroOS___20261008" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261007</productvar>
+      <productvar name="VERSION">20261008</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261007,openSUSE MicroOS</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:microos:20261008,openSUSE MicroOS</productinfo>
       <productinfo name="LINGUAS">en_US </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261007/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/MicroOS/20261008/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -721,7 +721,7 @@
       <repopackage name="libharfbuzz0"/>
       <repopackage name="libhd26"/>
       <repopackage name="libheif1"/>
-      <repopackage name="libhogweed6"/>
+      <repopackage name="libhogweed7"/>
       <repopackage name="libhplip0"/>
       <repopackage name="libhunspell-1_7-0"/>
       <repopackage name="libhwy1"/>
@@ -944,7 +944,7 @@
       <repopackage name="libncurses6"/>
       <repopackage name="libndp0"/>
       <repopackage name="libnetfilter_conntrack3"/>
-      <repopackage name="libnettle8"/>
+      <repopackage name="libnettle9"/>
       <repopackage name="libnewt0_52"/>
       <repopackage name="libnfnetlink0"/>
       <repopackage name="libnfs16"/>
