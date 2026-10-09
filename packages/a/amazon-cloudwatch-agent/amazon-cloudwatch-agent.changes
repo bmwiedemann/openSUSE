@@ -20,7 +20,7 @@ Thu Oct  1 15:32:57 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.c
   * [Logs] Prevent high log throughput from stalling log collection
     while recording file read progress by @lorespiz in (#2253)
 - Update github.com/klauspost/compress to v1.18.7
-  (bsc1283594#, CVE-2026-63209)
+  (bsc#1283594, CVE-2026-63209)
 
 -------------------------------------------------------------------
 Sat Sep 19 08:23:22 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
