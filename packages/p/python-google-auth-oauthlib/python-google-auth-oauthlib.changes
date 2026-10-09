@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:01:54 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.5.0
+  * declare Python3.15 support
+  * **google-auth-oauthlib:** prevent ipv6 address reuse (#18463)
+
+-------------------------------------------------------------------
 Thu Sep  3 09:30:06 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.4.1

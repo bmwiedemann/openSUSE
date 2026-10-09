@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-google-auth-oauthlib
-Version:        1.4.1
+Version:        1.5.0
 Release:        0
 Summary:        Google authentication library
 License:        Apache-2.0
