@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:12:08 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.0.2 (bugfix):
+  * Restore typed tool HTTP header validation (upstream PR 3454):
+    Streamable HTTP rejects header/body mismatches before the
+    receiving middleware, with full body validation and defaults
+    unchanged behind tool guards and advertised schemas unchanged
+  * No tool changes: identical tool surface as 2.0.1, verified via
+    schema on locally built binaries of both versions (91 tools each)
+- Vendored Go modules are unchanged (go.mod/go.sum identical to
+  2.0.1), so the licence audit stands: only MIT, BSD-3-Clause and
+  Apache-2.0, no copyleft; the crossed range and release notes
+  name no CVE
+- go.mod still requires go 1.26.8, so the golang(API) >= 1.26.8
+  floor stands
+
+-------------------------------------------------------------------
 Thu Oct  8 06:30:24 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.0.1 (day-after bugfix on the 2.0.0 major):

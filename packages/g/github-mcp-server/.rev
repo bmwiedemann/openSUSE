@@ -231,4 +231,12 @@ Vendored Go modules unchanged (go.mod/go.sum identical to 1.12.1).</comment>
     <comment>Update github-mcp-server to 2.0.1, a day-after bugfix on the 2.0.0 major fixing the Go module path (/v2, PR 3445). Tool surface verified identical to 2.0.0; local build green with all unit suites passing.</comment>
     <requestid>1383221</requestid>
   </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>9261a157fe97d8ef9b7bc0162cc00319</srcmd5>
+    <version>2.0.2</version>
+    <time>1791575126</time>
+    <user>dimstar_suse</user>
+    <comment>Update github-mcp-server to 2.0.2: restores typed tool HTTP header validation (upstream PR 3454), no tool changes.</comment>
+    <requestid>1383687</requestid>
+  </revision>
 </revisionlist>
