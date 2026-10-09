@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-openai
-Version:        1.6.7
+Version:        1.7.0
 Release:        0
 Summary:        An integration package connecting OpenAI and LangChain
 License:        MIT
@@ -28,7 +28,7 @@ BuildRequires:  %{python_module pip}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 Requires:       python-certifi >= 2024.6.2
-Requires:       python-langchain-core >= 1.6.6
+Requires:       python-langchain-core >= 1.6.8
 Requires:       python-openai >= 2.45.0
 Requires:       python-tiktoken >= 0.7.0
 BuildArch:      noarch
@@ -36,7 +36,7 @@ BuildArch:      noarch
 BuildRequires:  %{python_module certifi >= 2024.6.2}
 BuildRequires:  %{python_module httpx2}
 BuildRequires:  %{python_module httpx}
-BuildRequires:  %{python_module langchain-core >= 1.6.6}
+BuildRequires:  %{python_module langchain-core >= 1.6.8}
 BuildRequires:  %{python_module openai >= 2.45.0}
 BuildRequires:  %{python_module pytest-asyncio}
 BuildRequires:  %{python_module tiktoken >= 0.7.0}
@@ -72,15 +72,15 @@ rm tests/conftest.py
 
 %check
 # The standard-test bridge modules (test_*_standard.py), the responses
-# streaming tests and the moderation-middleware test need
-# python-langchain-tests / python-langchain (not in Factory), as does the
+# streaming tests and the moderation/auto_mode/model_router middleware
+# tests need python-langchain-tests / python-langchain (not in Factory), as does the
 # single deselected test_openai_stream_events_v3_lifecycle; the remaining
 # unit tests run fully offline. addopts is cleared to drop the --cov default
 # (pytest-cov is not needed for the build). The deselected token-counting
 # tests call tiktoken with a model whose BPE encoding is not bundled, so
 # tiktoken tries to download it from openaipublic.blob.core.windows.net,
 # which fails in the offline build (including the o-series variant).
-%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --deselect tests/unit_tests/chat_models/test_base.py::test_openai_stream_events_v3_lifecycle --deselect tests/unit_tests/chat_models/test_base.py::test__get_encoding_model --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages_o_series --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
+%pytest tests/unit_tests -o addopts='' --ignore tests/unit_tests/embeddings/test_azure_standard.py --ignore tests/unit_tests/embeddings/test_base_standard.py --ignore tests/unit_tests/chat_models/test_azure_standard.py --ignore tests/unit_tests/chat_models/test_base_standard.py --ignore tests/unit_tests/chat_models/test_responses_standard.py --ignore tests/unit_tests/chat_models/test_responses_stream.py --ignore tests/unit_tests/middleware/test_openai_moderation_middleware.py --ignore tests/unit_tests/middleware/test_auto_mode.py --ignore tests/unit_tests/middleware/test_model_router.py --deselect tests/unit_tests/chat_models/test_base.py::test_openai_stream_events_v3_lifecycle --deselect tests/unit_tests/chat_models/test_base.py::test__get_encoding_model --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages --deselect tests/unit_tests/chat_models/test_base.py::test_get_num_tokens_from_messages_o_series --deselect tests/unit_tests/embeddings/test_base.py::test_embed_documents_with_custom_chunk_size --deselect tests/unit_tests/embeddings/test_base.py::test_embeddings_respects_token_limit --deselect "tests/unit_tests/llms/test_base.py::test_get_token_ids[gpt-3.5-turbo-instruct]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5.5]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[gpt-5-nano]" --deselect "tests/unit_tests/test_token_counts.py::test_chat_openai_get_num_tokens[o3]"
 
 %files %{python_files}
 %doc README.md

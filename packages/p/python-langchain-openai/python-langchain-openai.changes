@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:06:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.7.0:
+  * Add beta Decisions API wrapper (langchain_openai.decisions)
+  * Add auto_mode and model_router middleware
+  * Raise langchain-core requirement to >= 1.6.8, as upstream does
+
+-------------------------------------------------------------------
 Thu Oct  1 17:52:30 UTC 2026 - Martin Pluskal <martin@pluskal.org>
 
 - Update to 1.6.7:

@@ -179,4 +179,12 @@ The new azure-identity extra is not required: the import is guarded and falls ba
 </comment>
     <requestid>1381954</requestid>
   </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>a688e377109ffe48611beee58b104e9e</srcmd5>
+    <version>1.7.0</version>
+    <time>1791575124</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langchain-openai to 1.7.0 (Decisions API, new middleware). Requires langchain-core &gt;= 1.6.8 from SR 1383683 — land that one first.</comment>
+    <requestid>1383688</requestid>
+  </revision>
 </revisionlist>
