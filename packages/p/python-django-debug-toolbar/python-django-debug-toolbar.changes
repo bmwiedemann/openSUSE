@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 05:33:33 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Update to 8.0.0:
+  * Refreshed the toolbar's visual design with self-hosted Alef (panel
+    titles) and Geist (body text) fonts, an updated color palette, and
+    per-panel navigation icons.
+  * Changed the highlight color for the current request and other "relevant
+    to you" rows from yellow to a green tint, with a left border accent for
+    legibility in dark mode.
+  * Improved toolbar accessibility: visible keyboard focus, keyboard-operable
+    scroll regions, reduced-motion support, aria-expanded on panel toggles,
+    an aria-live status for history refreshes, and WCAG 2.1 AA contrast in
+    both themes.
+  * Track and display processing time of application, including the toolbar's
+    time, in the timer panel.
+  * Fixed the History panel rendering a duplicate Refresh button below the
+    one in its title bar.
+  * Fixed the History panel's Refresh button submitting its form when
+    clicked before the panel's script had loaded.
+- Update URL and Source to its new home.
+- Add patch support-python-315.patch:
+  * Do not call cProfile.label.
+
+-------------------------------------------------------------------
 Wed Aug 26 08:42:55 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 7.1.1

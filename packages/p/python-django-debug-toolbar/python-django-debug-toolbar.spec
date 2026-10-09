@@ -18,12 +18,14 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-django-debug-toolbar
-Version:        7.1.1
+Version:        8.0.0
 Release:        0
 Summary:        A configurable set of panels that display various debug information
 License:        BSD-3-Clause
-URL:            https://github.com/jazzband/django-debug-toolbar
-Source:         https://github.com/jazzband/django-debug-toolbar/archive/%{version}.tar.gz#/django-debug-toolbar-%{version}.tar.gz
+URL:            https://github.com/django-commons/django-debug-toolbar
+Source:         https://github.com/django-commons/django-debug-toolbar/archive/%{version}.tar.gz#/django-debug-toolbar-%{version}.tar.gz
+# PATCH-FIX-UPSTREAM Two commits from gh#django-commons/django-debug-toolbar#2483
+Patch0:         support-python-315.patch
 BuildRequires:  %{python_module Django >= 5.2}
 BuildRequires:  %{python_module Jinja2}
 BuildRequires:  %{python_module base >= 3.10}
@@ -33,7 +35,6 @@ BuildRequires:  %{python_module html5lib}
 BuildRequires:  %{python_module isort}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module sqlparse >= 0.2.0}
-BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 Requires:       python-Django >= 5.2
 Requires:       python-sqlparse >= 0.2.0
@@ -61,9 +62,7 @@ There is also one Django management command currently:
    interactive shell.
 
 %prep
-%setup -q -n django-debug-toolbar-%{version}
-# not sure what is wrong, hatchling does not like "Framework :: Django :: 6.1"
-sed -i '/Django :: 6.1/d' pyproject.toml
+%autosetup -p1 -n django-debug-toolbar-%{version}
 
 %build
 %pyproject_wheel

@@ -1,0 +1,46 @@
+From 008920f95c2fcd4e3000b41e194146e4e56f6d47 Mon Sep 17 00:00:00 2001
+From: Pravin Kamble <iampbkamble@gmail.com>
+Date: Fri, 2 Oct 2026 09:25:14 +0530
+Subject: [PATCH 07/12] Fixed the profiling panel on python 3.15
+
+---
+ debug_toolbar/panels/profiling.py | 3 ++-
+ docs/changes.rst                  | 1 +
+ 2 files changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/debug_toolbar/panels/profiling.py b/debug_toolbar/panels/profiling.py
+index 515a61965..3698ec45f 100644
+--- a/debug_toolbar/panels/profiling.py
++++ b/debug_toolbar/panels/profiling.py
+@@ -184,7 +184,8 @@ def generate_stats(self, request, response):
+         self.stats = Stats(self.profiler)
+         self.stats.calc_callees()
+ 
+-        root_func = cProfile.label(super().process_request.__code__)
++        code = super().process_request.__code__
++        root_func = (code.co_filename, code.co_firstlineno, code.co_name)
+ 
+         if root_func in self.stats.stats:
+             root = FunctionCall(self.stats, root_func, depth=0)
+
+From 10eb58e6520417accf3db00b1116fa450cc11c60 Mon Sep 17 00:00:00 2001
+From: Pravin Kamble <iampbkamble@gmail.com>
+Date: Sat, 3 Oct 2026 21:00:50 +0530
+Subject: [PATCH 12/12] added comment tell reason for removing cProfile.label()
+
+---
+ debug_toolbar/panels/profiling.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/debug_toolbar/panels/profiling.py b/debug_toolbar/panels/profiling.py
+index 3698ec45f..7b65805f3 100644
+--- a/debug_toolbar/panels/profiling.py
++++ b/debug_toolbar/panels/profiling.py
+@@ -184,6 +184,7 @@ def generate_stats(self, request, response):
+         self.stats = Stats(self.profiler)
+         self.stats.calc_callees()
+ 
++        # This tuple replaces cProfile.label(), which was removed in Python 3.15.
+         code = super().process_request.__code__
+         root_func = (code.co_filename, code.co_firstlineno, code.co_name)
+ 
