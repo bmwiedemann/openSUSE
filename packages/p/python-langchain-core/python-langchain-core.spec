@@ -17,7 +17,7 @@
 
 
 Name:           python-langchain-core
-Version:        1.6.7
+Version:        1.6.9
 Release:        0
 Summary:        Building applications with LLMs through composability
 License:        MIT

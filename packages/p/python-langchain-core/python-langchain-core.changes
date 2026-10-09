@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:55:05 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.6.9:
+  * Harden scoped and compatible IPv6 SSRF checks
+  * with_retry now accepts a callable for retry_if_exception_type
+
+-------------------------------------------------------------------
 Thu Oct  8 06:24:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.6.7:
