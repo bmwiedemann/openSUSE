@@ -1,4 +1,88 @@
 -------------------------------------------------------------------
+Fri Oct 09 02:55:10 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
+
+- Update to version 8.3.0:
+  * Updated NEWS
+  * Translated using Weblate (Italian)
+  * Bump github/codeql-action from 4.38.1 to 4.38.2
+  * update NEWS.yaml
+  * pitch: check soundtouch setPitchSemiTones input values
+  * pitch: improve stepsize controls in UI
+  * Translated using Weblate (Indonesian)
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Spanish)
+  * Making sure the autoload preset fallback name is not empty if the list has entries
+  * Bump github/codeql-action from 4.38.0 to 4.38.1
+  * Translated using Weblate (Romanian)
+  * Translated using Weblate (Italian)
+  * Remove ad hoc tests and simplify related documentation
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (French)
+  * Update translation templates
+  * Update NEWS.yaml with new features and bug fixes
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Georgian)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Czech)
+  * feat: exclude selected audio devices from automatic processing
+  * Update translation templates
+  * Translated using Weblate (Estonian)
+  * Keep window visibility unchanged when setting or querying bypass
+  * Preserve window visibility when using monitoring and sharing CLI controls
+  * Test monitoring connectivity independently of its internal route
+  * Monitor the processed microphone before mixing shared desktop audio
+  * Add CLI controls for microphone monitoring and audio sharing
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * feat: extend input monitoring volume slider to 200 percent
+  * import community presets: add clarification on extension lookup
+  * update news
+  * import community presets: add support for SOFA addons
+  * Bump github/codeql-action from 4.37.9 to 4.38.0
+  * Using the subtitle content item in the community presets list
+  * presets: fix ListModel::update emitting row changes inside a model reset
+  * Translated using Weblate (Irish)
+  * Translated using Weblate (Italian)
+  * Update NEWS.yaml
+  * community presets: fix wrong folder append
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (Italian)
+  * Translated using Weblate (French)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (German)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Ukrainian)
+  * Translated using Weblate (French)
+  * Translated using Weblate (Chinese (Simplified Han script))
+  * Translated using Weblate (Czech)
+  * Translated using Weblate (Chinese (Traditional Han script))
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Romanian)
+  * Deferring Qt's cache cleanup call
+  * Avoiding undefined behavior
+  * Avoiding undefined behavior
+  * Translated using Weblate (Russian)
+  * Translated using Weblate (Turkish)
+  * Update translation templates
+  * Bump actions/deploy-pages from 5.0.0 to 5.0.1
+  * feat: add volume control for input monitoring
+  * Translated using Weblate (Polish)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Romanian)
+  * Bump flatpak/flatpak-github-actions from 6.7 to 6.8
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+  * Translated using Weblate (Estonian)
+
+-------------------------------------------------------------------
 Mon Aug 31 17:18:09 UTC 2026 - Gerald Chen <gerald_chen@foxmail.com>
 
 - Update to version 8.2.9:
