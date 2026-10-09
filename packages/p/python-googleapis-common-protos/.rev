@@ -379,4 +379,16 @@
     <comment>Automatic submission by obs-autosubmit</comment>
     <requestid>1378571</requestid>
   </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>738b3886a57b360ebe859f069385eeed</srcmd5>
+    <version>1.75.5</version>
+    <time>1791575173</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 1.75.5
+  * resolve error where google/longrunning/operations.proto is missing (#18477)
+- from version 1.75.4
+  * regenerate gencode with protobuf 6.33.5 (#18461)
+- Update BuildRequires and Requires from pyproject.toml (forwarded request 1383717 from glaubitz)</comment>
+    <requestid>1383809</requestid>
+  </revision>
 </revisionlist>

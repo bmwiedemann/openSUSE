@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:22:19 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 1.75.5
+  * resolve error where google/longrunning/operations.proto is missing (#18477)
+- from version 1.75.4
+  * regenerate gencode with protobuf 6.33.5 (#18461)
+- Update BuildRequires and Requires from pyproject.toml
+
+-------------------------------------------------------------------
 Thu Sep 10 08:20:52 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 1.75.3

@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-googleapis-common-protos
-Version:        1.75.3
+Version:        1.75.5
 Release:        0
 Summary:        Common protobufs used in Google APIs
 License:        Apache-2.0
@@ -26,14 +26,15 @@ Group:          Development/Languages/Python
 URL:            https://github.com/googleapis/google-cloud-python/tree/main/packages/googleapis-common-protos
 Source:         https://files.pythonhosted.org/packages/source/g/googleapis_common_protos/googleapis_common_protos-%{version}.tar.gz
 Source1:        test_google_api_error_reason.py
+BuildRequires:  %{python_module grpcio >= 1.59.0}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module protobuf >= 6.33.5}
 BuildRequires:  %{python_module pytest}
 BuildRequires:  %{python_module wheel}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
+Requires:       python-grpcio >= 1.59.0
 Requires:       python-protobuf >= 6.33.5
-Recommends:     python-grpcio >= 1.59.0
 BuildArch:      noarch
 %if 0%{?sle_version} >= 150400
 Obsoletes:      python3-googleapis-common-protos < %{version}
