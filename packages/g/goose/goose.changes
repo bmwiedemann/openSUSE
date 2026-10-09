@@ -1,4 +1,37 @@
 -------------------------------------------------------------------
+Fri Oct  9 08:06:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 1.54.0:
+  * first-time configure prompts for the goose mode, and sessions
+    export to self-contained HTML with an interactive viewer
+  * adaptive thinking for Claude Sonnet and Haiku 5.5, and thinking
+    shows whenever GOOSE_CLI_SHOW_THINKING is set
+  * session handling fixes: a client extension selection is the exact
+    session set, and chat loading state is reflected
+  * cache accounting fixes: the Bedrock service total survives cache
+    folding, and cache-write tokens come from the Responses API usage
+  * revoked GitHub Copilot tokens are refreshed when listing models
+    and for API use
+  * hyphenated GPT-6.1-sol effort aliases, a session naming fix for
+    the "none" effort, and Databricks GLM pricing from the zhipuai
+    catalog
+  * every extension operation resolves through a per-inference lease
+    and subagents run foregrounded in the state-machine loop
+  * Nostr session sharing is removed from goose core
+  * vision support is detected from the provider catalog
+- Drop the nostr entry from goose_features: upstream removed the feature
+  and deleted session/nostr_share.rs, so building with it fails
+- boo#1279391 is still open: recipe/mod.rs and agents/retry.rs are
+  byte-identical to 1.53.0 and no recipe security scan file changed
+  in this range
+- Refresh the vendored dependencies; the linked crate graph shrinks from
+  520 to 490 third-party crates (the nostr stack left it), and the four
+  crate-bundled C libraries keep their versions
+- Re-derive the License tag from the new vendored crate graph
+  (1306 crates vendored): drop CC0-1.0 with the nostr
+  bitcoin_hashes/secp256k1 crates, 12 SPDX identifiers remain
+
+-------------------------------------------------------------------
 Sun Oct  4 07:25:07 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 1.53.0:

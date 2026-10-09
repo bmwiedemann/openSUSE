@@ -16,9 +16,9 @@
 #
 
 
-%global goose_features aws-providers,nostr,otel,rustls-tls,system-keyring,disable-update
+%global goose_features aws-providers,otel,rustls-tls,system-keyring,disable-update
 Name:           goose
-Version:        1.53.0
+Version:        1.54.0
 Release:        0
 Summary:        Extensible open source AI agent that automates engineering tasks
 # Legal-Review-Notice: goose itself is Apache-2.0, but the shipped binary
@@ -26,7 +26,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # whole linked set. Derived on this vendoring with
 # "cargo tree --offline -p goose-cli -e normal --no-default-features
 #  --features %%{goose_features}" over the vendored tree
-# (1336 crates vendored, 520 third-party crates in the linked graph plus the
+# (1306 crates vendored, 490 third-party crates in the linked graph plus the
 # nine goose workspace crates -- the code-mode and
 # local-inference branches, and with them v8/candle/llama-cpp, are not built,
 # and neither is the cuda branch, so the cudaforge git dependency is unused),
@@ -40,8 +40,8 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # crates with no choice
 # to make: LGPL-3.0-or-later from ansi_colours (pulled in by bat),
 # MPL-2.0 from option-ext (via dirs-sys), Unicode-3.0 from the ICU crates and
-# unicode-ident, CC0-1.0 from the seven bitcoin_hashes/secp256k1 crates (nostr),
-# CDLA-Permissive-2.0 from the two webpki-roots, ISC from rustls-webpki,
+# unicode-ident (which names "(MIT OR Apache-2.0) AND Unicode-3.0"),
+# CDLA-Permissive-2.0 from webpki-roots, ISC from rustls-webpki,
 # simple_asn1, untrusted and the aws-lc pair (and from ring, "Apache-2.0 AND
 # ISC"),
 # BSD-3-Clause from ten crates -- subtle/brotli/encoding_rs/matchit,
@@ -50,7 +50,10 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # legacy "BSD-3-Clause/MIT" dual form, where the MIT branch is elected),
 # Zlib from foldhash
 # and zlib-rs, MIT-0 from borrow-or-share, bzip2-1.0.6 from libbz2-rs-sys, and
-# MIT from the 132 crates that elect it.
+# MIT from the 114 crates that elect it.
+# Upstream removed Nostr session sharing in this release (the goose/nostr
+# feature and session/nostr_share.rs are gone), so the bitcoin_hashes/secp256k1
+# crates that carried the previous CC0-1.0 entry left the linked graph with it.
 # BSD-2-Clause is elected by no crate -- zerocopy names it only as the branch
 # of a choice that is not taken. It comes from the bundled oniguruma instead:
 # onig_sys compiles the oniguruma 6.9.10 C sources into the binary while its
@@ -70,7 +73,7 @@ Summary:        Extensible open source AI agent that automates engineering tasks
 # crates/goose-mcp/licenses/, still ship as %%license files; every identifier
 # they carry is already held above by a Rust crate, so none of them supports an
 # entry in the tag.
-License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CC0-1.0 AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-or-later AND MIT AND MIT-0 AND MPL-2.0 AND Unicode-3.0 AND Zlib AND bzip2-1.0.6
+License:        Apache-2.0 AND BSD-2-Clause AND BSD-3-Clause AND CDLA-Permissive-2.0 AND ISC AND LGPL-3.0-or-later AND MIT AND MIT-0 AND MPL-2.0 AND Unicode-3.0 AND Zlib AND bzip2-1.0.6
 URL:            https://github.com/aaif-goose/goose
 Source0:        %{name}-%{version}.tar.zst
 Source1:        vendor-crates.tar.zst
