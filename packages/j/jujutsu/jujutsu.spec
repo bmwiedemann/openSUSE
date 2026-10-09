@@ -18,19 +18,15 @@
 
 %define binary_name jj
 Name:           jujutsu
-Version:        0.45.1
+Version:        0.46.0
 Release:        0
 Summary:        Git-compatible DVCS that is both simple and powerful
 License:        MIT
 URL:            https://github.com/jj-vcs/jj
 Source0:        %{name}-%{version}.tar.gz
 Source1:        vendor.tar.zst
-# Upstream post-0.45.1 test fixes: allow duplicate inline snapshots
-# under plain cargo test; accept GnuPG 2.5.22 NO_PUBKEY metadata.
-Patch0:         fix-converge-duplicate-snapshot.patch
-Patch1:         fix-gpgsm-unknown-key.patch
 BuildRequires:  bash-completion
-BuildRequires:  cargo >= 1.89
+BuildRequires:  cargo >= 1.97.1
 BuildRequires:  cargo-packaging
 BuildRequires:  fish
 # git-core provides the git binary used by tests, not perl modules
