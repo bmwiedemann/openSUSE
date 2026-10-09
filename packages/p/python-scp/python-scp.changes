@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Wed Oct  7 05:47:42 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 0.16.2
+  * Catch EOFError from channel.close() that happens sporadically
+    on some devices.
+  * Check erroneous server path on download.
+
+-------------------------------------------------------------------
 Thu Jul 30 06:14:23 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 0.16.1

@@ -19,7 +19,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-scp
-Version:        0.16.1
+Version:        0.16.2
 Release:        0
 Summary:        SSH scp module for paramiko
 License:        LGPL-2.1-or-later
