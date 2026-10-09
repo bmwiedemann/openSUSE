@@ -1,8 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  8 19:30:37 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 1.6.3
+  * Fix an error in `ClosureDiagram` for gradings whose 0-component
+    is a torus
+  * Fix the manual entry of `SubalgebraOfClosedSet`, which was
+    listed as `LieAlgebraOfClosedSet`, and correct several other
+    statements and typos in the manual
+
+-------------------------------------------------------------------
 Tue Sep 10 08:55:39 UTC 2024 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 1.6.2
-  * No changelog was provided
+  * Add highest-weight modules: `IsIrreducibleHWModule`,
+    `HighestWeight`, `HighestWeightVector`, `DisplayHighestWeight`
+    and `IsomorphismOfIrreducibleHWModules`
+  * Add nilpotent orbit functions `ComponentGroup`,
+    `RichardsonOrbits`, `DisplayWeightedDynkinDiagram`,
+    `IsRegular`, `RegularNilpotentOrbit`, `IsDistinguished` and
+    `DistinguishedNilpotentOrbits`
+  * Add `DisplayDynkinDiagram` and `ApplyWeylPermToCartanElement`
+  * Rewrite `CharacteristicsOfStrata`: it accepts a list of highest
+    weights and an optional bilinear form
+  * `WeylTransversal` with an empty index list returns all Weyl
+    group elements
 
 -------------------------------------------------------------------
 Sat Nov 19 01:18:59 UTC 2022 - Jan Engelhardt <jengelh@inai.de>
