@@ -1,4 +1,105 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:18:34 UTC 2026 - Michael Vetter <mvetter@suse.com>
+
+- Update to 2.2.1:
+  Added:
+  * Added message.send.save-copy, the mailbox a sent message is copied to when
+    --save is not passed, and --no-save on message send, compose, reply and
+    forward to skip it.
+    It takes a mailbox name, alias or role, and the v1 true still reads as the
+    sent mailbox. Leave it unset on Gmail and Microsoft Graph, which file the
+    sent message themselves.
+  * Added envelope.list.datetime-relative, rendering recent dates relative to
+    today: the time for today, yesterday, then the weekday for the past week,
+    older dates falling back to datetime-fmt (#510).
+  * Added proxy, a per-account SOCKS5 or HTTP proxy every network backend
+    connects through, and <backend>.proxy to override it for one backend
+    (#742).
+    The password is a secret like any credential, so it stays out of the URL.
+    Without either, the all_proxy and https_proxy environment variables are
+    still read.
+  * Added --posting-style none to message reply and message forward, sending the written body without quoting the source.
+  * Added a decoded template to message compose, message reply and message
+    forward under --json when neither saving nor sending.
+    It carries from, to, cc, bcc, subject and a body without the signature, so
+    an editor can lay the message out and hand it back through the flags.
+  * Added messages-added-details to gmail history list --json, preserving each
+    arrival's message id, optional thread id and supplied label ids alongside
+    the existing message-id arrays.
+  * Added message add on Gmail, inserting the raw message through
+    messages.insert with the mailbox and flags as labels, dated by its Date:
+    header.
+  * Added envelope search on Microsoft Graph, its filter translated to a KQL
+    $search. Flag clauses are refused, Graph accepting no $filter beside
+    $search, and the sort applies within the page.
+  * A pimdir write now shows on the next read instead of on the next sync.
+  * himalaya pimdir queue list and himalaya pimdir queue cancel, for the staged creations the mailbox listing cannot show.
+  * Added sending from a pimdir account: the message is queued in the store for
+    its owner to send, the one holding the credentials.
+  * Added ManageSieve support behind the sieve cargo feature, on by default (#739).
+  * Added the mailbox role (inbox, sent, drafts, trash...) to mailbox list, as
+    a ROLE column and a role JSON field, with the mailbox.list.table.role-color
+    option. #743
+  * Added imap fetch --body, fetching the whole message of every UID in the
+    sequence set over one session (BODY.PEEK[], \Seen left unset) (#762).
+  * Added the mbox backend, behind the mbox cargo feature (off by default), over the new io-mbox library (#697).
+  Changed:
+  * Saving and sending at once (--save with --send, message send --save,
+    message add --send) now sends first, so a failed send leaves no copy
+    behind. A save failing after the send reports that the message was sent.
+  * A pimdir account sends through the store's queue and no longer uses its smtp section. Behaviour change.
+  * -m/--mailbox resolves a role after the aliases, so -m sent reaches the sent
+    mailbox without an alias. A role carried by several mailboxes is an error
+    naming them.
+  * An omitted -m/--mailbox falls back to the inbox role when no inbox alias is set, instead of failing.
+  * message delete takes the trash from mailbox.alias.trash first, then from
+    the backend. Behaviour change: an alias set on JMAP, Gmail or Graph used to
+    be ignored.
+  * The wizard no longer pre-fills mailbox.alias.*, the backends reporting their roles themselves.
+  * Changed Gmail draft create/update JSON output to structured draft, message
+    and thread IDs, with schemas for both commands. Text confirmations are
+    unchanged.
+  * Changed the default --format of gmail messages get, gmail drafts get and gmail threads get from full to metadata.
+  * Forwarded vendored to io-pimdir and turned it on by default, so cargo
+    install builds SQLite from source and needs none on the machine. Drop it to
+    link the system SQLite and save about 1 MB; it also vendors OpenSSL when
+    native-tls is on. The Nix builds still link the store's SQLite.
+  * BREAKING: a pimdir store written before io-pimdir 0.4 is refused, and Himalaya reads the store's typed summaries.
+  * A credential command that several blocks of one account name is now spawned once per run instead of once per block.
+  * BREAKING: a pimdir mailbox is now its collection id, verbatim, and pimdir.namespace is removed.
+  * Renamed the plural commands that name no vendor resource to their singular, the plural staying as a hidden alias.
+  * Renamed the type configure prints from GeneratedConfig to ConfigureOutput, the shape the rest of the family uses.
+  Removed:
+  * Removed the mbox alias of the mailbox command: himalaya mbox now runs the
+    new mbox backend command. Scripts should call the command by its name,
+    himalaya mailbox, rather than by an alias.
+  Fixed:
+  * Fixed a message sent over JMAP staying in the drafts mailbox as a draft.
+  * Fixed a successful IMAP append being reported as failed when its UID could not be recovered (#759).
+  * Fixed the "No backend matching auto" error saying nothing of the cause
+    (#740). It now names the account and either the supported backends this
+    build compiles in or the missing <backend> block, and points at
+    MIGRATION.md when the account still carries the v1 backend table.
+  * Fixed envelope list and envelope search truncating the ID column under --max-width.
+  * Fixed --to, --cc and --bcc carrying a display name composing a To: <Alice
+    <alice@example.org>> no SMTP server accepts, as --from did before (#727).
+    Each value is now parsed as an address list, so a comma inside a quoted
+    display name ("Doe, Alice" <alice@example.org>) no longer splits it.
+  * Fixed imap raw hanging until the stream timed out when the last command was
+    not terminated by an explicit \r\n (#764).
+  * Fixed IMAP searches with non-ASCII text being rejected by Gmail (io-imap#3).
+  * Fixed the Bcc: field being transmitted over SMTP, disclosing blind recipients to everyone (#747).
+  * Fixed a local path carrying a ~ or a shell variable being read verbatim.
+  * Fixed a pimdir-only build failing to compile.
+  * Fixed message move and message delete on IMAP servers without the MOVE extension.
+  * Preserved message MIME payloads in gmail threads get --json, including
+    full-format bodies and attachment metadata (#750).
+  * Fixed a duplicated message disappearing from the pimdir backend's listing.
+  * Fixed completion writing files instead of printing the completion script to the standard output (#736).
+  * Fixed maildir message copy leaving an empty message behind when the process died mid-copy (#738).
+  * Fixed maildir flag writes doing nothing to a message still unread in a mailbox's new directory (#637).
+
+-------------------------------------------------------------------
 Mon Aug 17 06:03:47 UTC 2026 - Michael Vetter <mvetter@suse.com>
 
 - Update to 2.1.0:

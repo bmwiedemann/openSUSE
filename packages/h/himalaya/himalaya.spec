@@ -21,7 +21,7 @@
 %global himalaya_features maildir
 
 Name:           himalaya
-Version:        2.1.0
+Version:        2.2.1
 Release:        0
 Summary:        Command-line interface for email management
 #SourceLicense:  MIT
@@ -57,7 +57,7 @@ install -d -m 0755 %{buildroot}%{_datadir}/bash-completion/completions \
 ./target/release/%{name} completion bash > %{buildroot}%{_datadir}/bash-completion/completions/%{name}
 ./target/release/%{name} completion fish > %{buildroot}%{_datadir}/fish/vendor_completions.d/%{name}.fish
 ./target/release/%{name} completion zsh  > %{buildroot}%{_datadir}/zsh/site-functions/_%{name}
-./target/release/%{name} man %{buildroot}%{_mandir}/man1
+./target/release/%{name} manual -d %{buildroot}%{_mandir}/man1
 
 %check
 # there are currently no tests available (v1.2.0)

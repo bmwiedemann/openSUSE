@@ -215,4 +215,41 @@
   * Added a --seen flag to message read, marking the message as seen while reading it.</comment>
     <requestid>1371507</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>eb035bce4641c2aa14714f09f2903698</srcmd5>
+    <version>2.2.1</version>
+    <time>1791575144</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.1:
+  Added:
+  * Added message.send.save-copy, the mailbox a sent message is copied to when
+    --save is not passed, and --no-save on message send, compose, reply and
+    forward to skip it.
+    It takes a mailbox name, alias or role, and the v1 true still reads as the
+    sent mailbox. Leave it unset on Gmail and Microsoft Graph, which file the
+    sent message themselves.
+  * Added envelope.list.datetime-relative, rendering recent dates relative to
+    today: the time for today, yesterday, then the weekday for the past week,
+    older dates falling back to datetime-fmt (#510).
+  * Added proxy, a per-account SOCKS5 or HTTP proxy every network backend
+    connects through, and &lt;backend&gt;.proxy to override it for one backend
+    (#742).
+    The password is a secret like any credential, so it stays out of the URL.
+    Without either, the all_proxy and https_proxy environment variables are
+    still read.
+  * Added --posting-style none to message reply and message forward, sending the written body without quoting the source.
+  * Added a decoded template to message compose, message reply and message
+    forward under --json when neither saving nor sending.
+    It carries from, to, cc, bcc, subject and a body without the signature, so
+    an editor can lay the message out and hand it back through the flags.
+  * Added messages-added-details to gmail history list --json, preserving each
+    arrival's message id, optional thread id and supplied label ids alongside
+    the existing message-id arrays.
+  * Added message add on Gmail, inserting the raw message through
+    messages.insert with the mailbox and flags as labels, dated by its Date:
+    header.
+  * Added envelope search on Microsoft Graph, its filter translated to a KQL
+    $search. Flag clauses are refused, Graph accepting no $filter beside</comment>
+    <requestid>1383693</requestid>
+  </revision>
 </revisionlist>
