@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:06:53 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.5.17 (opencode v2.0.26 pins @opentui/* at exactly
+  this version; the FFI ABI is private and unversioned, so both
+  halves and every consumer move together):
+  * Detect OSC 8 hyperlinks in more terminals: xterm.js, VS Code,
+    Zed, mintty and VTE 0.52.2 and newer, so a wrapped link opens
+    whole instead of only the clicked row
+  * FORCE_HYPERLINK overrides the detection; 0, false or off
+    disables hyperlinks
+
+-------------------------------------------------------------------
 Thu Oct  8 06:21:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.16, which also carries 0.5.15 (opencode v2 pins

@@ -61,4 +61,12 @@ opentui = 0.5.14 exactly.</comment>
     <comment>Update to 0.5.16 (carries 0.5.15). LOCKSTEP part 1/2: opencode 2.0.24 pins @opentui/* = 0.5.16 via its private unversioned FFI ABI, so its matching update follows as part 2/2; neither half works without the other.</comment>
     <requestid>1383224</requestid>
   </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>076a7cbf0a4c8cbb80919672d7b8b456</srcmd5>
+    <version>0.5.17</version>
+    <time>1791575128</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 0.5.17, lockstep half 1/2: opencode 2.0.26 pins @opentui/* at exactly this version (private FFI ABI), its SR follows once this lands in devel.</comment>
+    <requestid>1383689</requestid>
+  </revision>
 </revisionlist>
