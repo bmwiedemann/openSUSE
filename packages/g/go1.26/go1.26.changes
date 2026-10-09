@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Thu Oct  8 15:36:16 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
+
+- go1.26.9 (released 2026-10-08) includes security fixes to the go
+  command, and the crypto/tls, html/template, net/http,
+  net/textproto, and os packages, as well as bug fixes to the
+  compiler, the linker, the runtime, vet, and the crypto/mlkem,
+  net/http, and os packages.
+  Refs boo#1255111 go1.26 release tracking
+  CVE-2026-56857 CVE-2026-56866 CVE-2026-78659 CVE-2026-78660 CVE-2026-78667 CVE-2026-94439 CVE-2026-94440 CVE-2026-94444 CVE-2026-94447 CVE-2026-94448 CVE-2026-97030 CVE-2026-97031 CVE-2026-97032
+  * go#81897 go#81739 boo#1284766 security: fix CVE-2026-56857 os: Root.Mkdir(All) can follow junctions out of the root on Windows
+  * go#81899 go#81740 boo#1284767 security: fix CVE-2026-56866 net/http: HTTP/1 client connection desynchronization after CONNECT rejection
+  * go#81917 go#81857 boo#1284768 security: fix CVE-2026-78659 net/http: HTTP/2 server memory exhaustion due to Trailer headers
+  * go#81584 go#81115 boo#1284769 security: fix CVE-2026-78660 net/http: HTTP/2 transport accepts malformed framing-related headers
+  * go#81919 go#81858 boo#1284771 security: fix CVE-2026-78667 net/http: lack of limit on size of parsed Range headers
+  * go#81907 go#81744 boo#1284773 security: fix CVE-2026-94439 net/http: HTTP/1 server connection desynchronization after 2xx CONNECT response
+  * go#81901 go#81741 boo#1284774 security: fix CVE-2026-94440 net/textproto, mime/multipart: memory limit bypass when parsing MIME headers
+  * go#81911 go#81833 boo#1284775 security: fix CVE-2026-94444 cmd/go: checksum bypass for golang.org/fips140
+  * go#81913 go#81834 boo#1284776 security: fix CVE-2026-94447 cmd/go: checksum database bypass for golang.org/toolchain
+  * go#81923 go#81821 boo#1284777 security: fix CVE-2026-94448 html/template: reset context tracking on consecutive template expressions
+  * go#81909 go#81823 boo#1284778 security: fix CVE-2026-97030 html/template: recognize yield as regexp preceder keyword
+  * go#81915 go#81855 boo#1284779 security: fix CVE-2026-97031 crypto/tls: reject malformed ECH outer extension references
+  * go#81921 go#81867 boo#1284780 security: fix CVE-2026-97032 net/http: HTTP/2 server crash due to HPACK encoder race
+  * go#81144 runtime: mutex profiling can deadlock Windows asynchronous preemption during GC
+  * go#81225 runtime: netpoll: eventfd ready for something unexpected
+  * go#81251 lib/fips140: fix ML-KEM CAST and re-seal v1.26.0
+  * go#81295 cmd/compile: internal compiler error: MoveLoop too small
+  * go#81318 os,internal/poll: NewFile on an inherited overlapped stdout pipe hangs a sibling's WriteFile (Windows)
+  * go#81401 os: go 1.25.x regression on RemoveAll for oldest Windows 10 build 10240
+  * go#81436 runtime: intermittent SIGBUS (unaligned access) in netpoll on mips64le (Go 1.27)
+  * go#81668 cmd/compile: go1.27 miscompiles &slice[i].Field on an append-built slice; returned pointer aliases reused memory
+  * go#81689 cmd/compile: slice allocation reuses stack backing store incorrectly
+  * go#81860 cmd/go: vet reports no diagnostics for a package that an earlier run vetted as a dependency
+  * go#81889 cmd/link: plugin.Open fails on macOS 27: LC_DYLD_CHAINED_FIXUPS seg_count not updated after combining DWARF
+
+-------------------------------------------------------------------
 Tue Sep  1 19:56:19 UTC 2026 - Jeff Kowalczyk <jkowalczyk@suse.com>
 
 - go1.26.8 (released 2026-09-01) includes fixes to cgo, the
