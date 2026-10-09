@@ -17,7 +17,7 @@
 
 
 Name:           gap-gapdoc
-Version:        1.6.10
+Version:        1.6.11
 Release:        0
 Summary:        GAP: package for GAP Documentation
 License:        GPL-2.0-or-later
