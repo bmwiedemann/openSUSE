@@ -1,4 +1,13 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:01:46 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.4.34:
+  * Bug fixes
+    - fix(go): update charm.land/bubbletea/v2 ( v2.0.10 → v2.1.0 )
+  * Chores
+    - chore(mise): update golangci-lint ( 2.13.2 → 2.14.0 )
+
+-------------------------------------------------------------------
 Fri Sep 25 04:50:45 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 2.4.33:
