@@ -17,7 +17,7 @@
 
 
 Name:           clusteradm
-Version:        1.3.1
+Version:        1.4.0
 Release:        0
 Summary:        CLI to bootstrap the open-cluster-management control plane
 License:        Apache-2.0
@@ -26,8 +26,8 @@ Source:         %{name}-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
+BuildRequires:  go1.26 >= 1.26.2
 BuildRequires:  zsh
-BuildRequires:  golang(API) >= 1.25
 
 %description
 clusteradm is the command-line tool for Open Cluster Management (OCM),

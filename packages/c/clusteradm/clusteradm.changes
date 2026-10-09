@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:05:41 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.4.0:
+  * Bump OCM to v1.4.0 (#593)
+  * E2E test tweaks (#592)
+  * Bump the kubernetes group across 1 directory with 6 updates
+    (#590)
+  * Bump the gomod group with 2 updates (#591)
+  * Add unit tests for the check package (#578)
+  * chore: replace `watch` with `get`/`list` (#588)
+  * Bump k8s.io/apimachinery in the kubernetes group (#585)
+  * Bump github.com/onsi/gomega in the gomod group (#586)
+  * test: add unit tests for the printer package (#581)
+  * feat: implement and propagate parent context (#584)
+  * Bump github.com/onsi/ginkgo/v2 in the gomod group (#583)
+  * test: add coverage for the shared pod ready watch handler in
+    wait (#582)
+  * Reject --clusters in proxy kubectl instead of silently ignoring
+    it (#575)
+  * Test flow tweaks (#567)
+  * Bump the gomod group across 1 directory with 3 updates (#574)
+  * Bump open-cluster-management.io/managed-serviceaccount (#572)
+  * Bump the kubernetes group across 1 directory with 9 updates
+    (#569)
+  * Bump the gomod group with 5 updates (#571)
+  * chore: enable Dependabot (#568)
+  * fix: use ptr in Helm client for `clusteradm` flags (#566)
+  * fix: update broken URLs (#565)
+  * feat: add `raw` option for token fetch (#563)
+  * chore: update OWNERS (#564)
+  * fix: propagate Clusteradm flags into Helm (#562)
+  * chore: upgrade to go 1.26 (#558)
+  * chore: update GRC permissions (#560)
+  * chore: adopt shared golangci-lint configuration from sdk-go
+    (#557)
+  * fix: undo the e2e use default bundle change, it should be like
+    before checking against latest (#555)
+  * Bump to OCM v1.3.1 (#551)
+  * Use matching bundle version in e2e tests instead of latest
+    (#553)
+
+-------------------------------------------------------------------
 Wed May 20 11:01:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.3.1:
