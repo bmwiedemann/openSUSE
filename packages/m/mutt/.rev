@@ -1598,4 +1598,13 @@ with a run of spec-cleaner (forwarded request 826781 from AndreasStieger)</comme
 - Fix python macro usage</comment>
     <requestid>1377855</requestid>
   </revision>
+  <revision rev="127" vrev="2">
+    <srcmd5>a5772a32d13987be9e580c7cab94f994</srcmd5>
+    <version>2.4.2</version>
+    <time>1791575158</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch bsc1284739-CVE-2026-107570.patch
+  * Fix bsc#1284739 (CVE-2026-107570)</comment>
+    <requestid>1383711</requestid>
+  </revision>
 </revisionlist>

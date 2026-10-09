@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct  9 08:20:33 UTC 2026 - Dr. Werner Fink <werner@suse.de>
+
+- Add patch bsc1284739-CVE-2026-107570.patch
+  * Fix bsc#1284739 (CVE-2026-107570)
+
+-------------------------------------------------------------------
 Mon Sep 14 09:09:25 UTC 2026 - Dominique Leuenberger <dleuenberger@suse.com>
 
 - Use https://ftp.osuosl.org to download assets: ftp.mutt.org is an
