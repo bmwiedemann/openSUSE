@@ -49,4 +49,41 @@
   and transition to pkgconfig BuildRequires</comment>
     <requestid>1378875</requestid>
   </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>94b566417bc35dffce6229c3f23cbdeb</srcmd5>
+    <version>2.45</version>
+    <time>1791574986</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.45:
+  Added:
+  * pb-reload command which (like pb-purge) loads new items from the queue but
+    (unlike pb-purge) does not purge anything
+  * keep-forever-if-flagged-with setting to mark items that should not be
+    deleted by keep-articles-days (#2722)
+  * listnormal_deleted and listfocus_deleted highlight groups for deleted (but
+    not yet purged) items. Defaults are the same as listnormal and
+    listfocus, so existing colorschemes don't need updating
+  Changed:
+  * Updated translations: Dutch, German, Italian, Russian and Ukrainian, Spanish, Turkish
+  * Bumped minimum supported Rust version to 1.94.0
+  Removed:
+  * Ability to import OPML that contains pipe URLs, filtercmd, or URLs with
+    schemas other thatn http://, https://, or file://. The reason are the
+    security fixes listed below. If your workflows relied on these abilities,
+    please open and issue and let's find a way to bring these features back
+    without compromising other setups.
+  Fixed:
+  * exec: feeds garbled the encoding (#1412)
+  Security:
+  * Remote code execution via manual OPML import (--import-from-opml)
+    Newsboat imported pipe-URLs (turning them into exec: feeds) and
+    filtercmd URLs (turning them into filter: feeds). As a result, Newsboat
+    executed shell commands provided in the OPML file.
+    Starting with 2.45, Newsboat will warn about each of those during import and
+    either skip the URL (if it's a pipe-URL) or ignore the filtering part (if
+    it's a filtercmd URL). You can add them manually if you trust the OPML
+    source.
+    Disclosed via a pull request #3426. Fixed in #3445.</comment>
+    <requestid>1383306</requestid>
+  </revision>
 </revisionlist>

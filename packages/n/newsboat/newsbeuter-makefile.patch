@@ -1,9 +1,9 @@
-Index: newsboat-2.29/Makefile
+Index: newsboat-2.45/Makefile
 ===================================================================
---- newsboat-2.29.orig/Makefile
-+++ newsboat-2.29/Makefile
-@@ -25,7 +25,7 @@ DEFINES=-DLOCALEDIR='"$(localedir)"'
- WARNFLAGS=-Werror -Wall -Wextra -Wunreachable-code
+--- newsboat-2.45.orig/Makefile
++++ newsboat-2.45/Makefile
+@@ -27,7 +27,7 @@ DEFINES=-DLOCALEDIR='"$(localedir)"' -DC
+ WARNFLAGS=-Werror -Wall -Wextra -Wunreachable-code -Wno-unused-function
  INCLUDES=-Iinclude -Istfl -Ifilter -I. -Irss -I$(CARGO_TARGET_DIR)/cxxbridge/
  # Keep in sync with c++ version specified in FFI build.rs
 -BARE_CXXFLAGS=-std=c++17 -O2 -ggdb $(INCLUDES)
