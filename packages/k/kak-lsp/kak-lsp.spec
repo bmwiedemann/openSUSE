@@ -17,7 +17,7 @@
 
 
 Name:           kak-lsp
-Version:        21.0.2
+Version:        22.0.0
 Release:        0
 Summary:        Language Server Protocol client for Kakoune
 # Legal-Review-Notice: kak-lsp itself is "Unlicense OR MIT", but the binary

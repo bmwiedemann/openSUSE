@@ -765,4 +765,23 @@ Packaging cleanup: dropped two CARGO_TARGET_DIR exports that referenced the unde
 Built and verified on aarch64: rpmlint 0 errors / 0 warnings / 0 badness, %check 16 passed / 0 failed, source_validator clean.</comment>
     <requestid>1370358</requestid>
   </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>97c12d639ce6021b6f60a65d8060985f</srcmd5>
+    <version>22.0.0</version>
+    <time>1791575199</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 22.0.0:
+  * v22.0.0
+  * Simplify mktemp usage
+  * Update dependencies
+  * Changelog save notification regression fix
+  * Changelog
+  * Fix spurious root parameter errors with legacy configuration
+  * feat: add intellij-server for Kotlin
+  * Handle missing cases of TextDocumentSyncSaveOptions
+  * lsp-send-buffer: make finaleol override work without window in context
+  * Fix typo
+  * start new cycle</comment>
+    <requestid>1383826</requestid>
+  </revision>
 </revisionlist>

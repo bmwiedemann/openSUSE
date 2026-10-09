@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Thu Oct 08 01:11:31 UTC 2026 - Soc Virnyl Estela <uncomfyhalomacro@opensuse.org>
+
+- Update to version 22.0.0:
+  * v22.0.0
+  * Simplify mktemp usage
+  * Update dependencies
+  * Changelog save notification regression fix
+  * Changelog
+  * Fix spurious root parameter errors with legacy configuration
+  * feat: add intellij-server for Kotlin
+  * Handle missing cases of TextDocumentSyncSaveOptions
+  * lsp-send-buffer: make finaleol override work without window in context
+  * Fix typo
+  * start new cycle
+
+-------------------------------------------------------------------
 Sat Aug  8 18:59:33 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 21.0.2:
