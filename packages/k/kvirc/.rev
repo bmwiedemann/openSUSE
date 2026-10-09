@@ -616,4 +616,12 @@
     <comment>Update to 5.2.10</comment>
     <requestid>1328991</requestid>
   </revision>
+  <revision rev="51" vrev="2">
+    <srcmd5>b5a41c4775c19b5f4b45e95c3c22ff79</srcmd5>
+    <version>5.2.10</version>
+    <time>1791575010</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1383356</requestid>
+  </revision>
 </revisionlist>

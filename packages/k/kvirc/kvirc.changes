@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  1 16:13:41 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Stop using Phonon. kvirc has another backend using QtMultimedia
+
+-------------------------------------------------------------------
 Sat Jan 24 11:32:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 5.2.10
