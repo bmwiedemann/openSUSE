@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Fri Oct  2 13:31:38 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.16.1:
+  * Add --natmap for Redis Cluster deployments whose nodes
+    advertise private addresses (e.g. through SSH tunnels or NAT)
+  * Handle redis-py MovedError so cluster MOVED redirects are
+    reissued correctly
+  * Properly handle empty passwords when connecting with auth
+  * Fix bottom bar syntax tokens display (MATCH, COUNT, TYPE)
+  * Update auto-completion grammar and syntax to align with latest
+    Redis commands.json
+  * Support Python 3.13 and 3.14; drop Python 3.8 and 3.9
+  * Deprecate Pyoxidizer standalone builds
+- Drop python3-wcwidth BuildRequires and Requires: no longer needed
+- Raise python3-packaging BuildRequires and Requires floor to
+  >= 24.2 per pyproject.toml
+- Spec cleanup using spec-cleaner
+
+-------------------------------------------------------------------
 Sun Jan 18 13:49:30 UTC 2026 - Ben Greiner <code@bnavigator.de>
 
 - Update to 1.15.2

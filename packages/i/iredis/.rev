@@ -133,4 +133,12 @@ ssues/495
 </comment>
     <requestid>1328492</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>f520a6789eca9b7f0bd742f153d824f4</srcmd5>
+    <version>1.16.1</version>
+    <time>1791575214</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1383834</requestid>
+  </revision>
 </revisionlist>

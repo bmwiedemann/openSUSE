@@ -18,7 +18,7 @@
 
 %define pythons python3
 Name:           iredis
-Version:        1.15.2
+Version:        1.16.1
 Release:        0
 Summary:        Terminal client for Redis with auto-completion and syntax highlighting
 License:        BSD-3-Clause
@@ -28,6 +28,16 @@ BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-pip
 BuildRequires:  python3-poetry-core
+Requires:       python3-Pygments >= 2
+Requires:       python3-click >= 8.0
+Requires:       python3-configobj >= 5.0
+Requires:       python3-mistune >= 3.0
+Requires:       python3-packaging >= 24.2
+Requires:       python3-prompt_toolkit >= 3
+Requires:       python3-python-dateutil >= 2.8.2
+Requires:       python3-redis >= 5
+Recommends:     redis >= 5.0.0
+BuildArch:      noarch
 # SECTION tests
 # for killall
 BuildRequires:  psmisc
@@ -40,24 +50,12 @@ BuildRequires:  python3-Pygments >= 2
 BuildRequires:  python3-click >= 8.0
 BuildRequires:  python3-configobj >= 5.0
 BuildRequires:  python3-mistune >= 3.0
-BuildRequires:  python3-packaging >= 23.0
+BuildRequires:  python3-packaging >= 24.2
 BuildRequires:  python3-prompt_toolkit >= 3
 BuildRequires:  python3-python-dateutil >= 2.8.2
 BuildRequires:  python3-redis >= 5.0.0
-BuildRequires:  python3-wcwidth >= 0.1.9
 BuildRequires:  redis >= 5.0.0
 # /SECTION
-Requires:       python3-Pygments >= 2
-Requires:       python3-click >= 8.0
-Requires:       python3-configobj >= 5.0
-Requires:       python3-mistune >= 3.0
-Requires:       python3-packaging >= 23.0
-Requires:       python3-prompt_toolkit >= 3
-Requires:       python3-python-dateutil >= 2.8.2
-Requires:       python3-redis >= 5
-Requires:       python3-wcwidth >= 0.1.9
-Recommends:     redis >= 5.0.0
-BuildArch:      noarch
 
 %description
 A terminal client for redis with auto-completion and syntax
@@ -84,7 +82,7 @@ sed -i 's/timeout=2/timeout=5/' tests/cli_tests/test_*.py
 sed -i 's/timeout=3/timeout=8/' tests/cli_tests/test_*.py
 sed -i 's/timeout=10/timeout=20/' tests/cli_tests/test_*.py
 # the tests are extremely flaky on i586 (hitting timeouts), as long as x86_64 succeeds, we don't care as this is noarch
-%ifnarch %ix86
+%ifnarch %{ix86}
 %{_sbindir}/redis-server --port 6379 &
 # wait for redis startup
 sleep 2
