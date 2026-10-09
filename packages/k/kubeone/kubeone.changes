@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:03:30 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 1.14.4:
+  * Bugfixes or Regression
+    - Update machine-controller to v1.66.3 (#4243)
+    - Update flatcar-linux-update-operator to v0.10.0 (#4238)
+      - Fixes the update agent crashing on Flatcar >= 4757 due to
+        quoted /etc/os-release values
+    - Fix OCI registry auth for helm charts (#4240)
+      - Fixed OCI Helm chart authentication so HelmRelease.Auth
+        credentials are correctly passed to private OCI registries.
+      - Fixed mirror-images failing to retag digest-pinned images
+        by preserving the source digest instead of incorrectly
+        using it as a tag.
+    - Update oras-go dependency to v2.6.2 (#4239)
+    - Upgrade golang.org/x/crypto to v0.56.0 (#4218)
+
+-------------------------------------------------------------------
 Fri Aug 28 08:05:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 1.14.3:
