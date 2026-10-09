@@ -1,0 +1,2 @@
+# Ghostty temporarily points ZDOTDIR here so zsh sources this file.
+addFilter(r"hidden-file-or-dir /usr/share/ghostty/shell-integration/zsh/\.zshenv$")

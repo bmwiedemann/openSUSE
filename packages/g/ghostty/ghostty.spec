@@ -18,6 +18,8 @@
 
 %global shlib_name libghostty-vt0
 %global common_build_flags --system %{_builddir}/%{name}-%{version}/vendor/zig/p -Doptimize=ReleaseFast -Dcpu=baseline -Dpie=true -Dstrip=false -Dversion-string=%{version} -fsys=freetype -fsys=harfbuzz -fsys=fontconfig -fsys=libpng -fsys=zlib -fsys=oniguruma -fsys=glslang -fsys=spirv-cross -fsys=simdutf -fsys=gtk4-layer-shell -fsys=highway %{?_smp_mflags}
+# See editors/vim vim.spec
+%define site_runtimepath %{_datadir}/vim/site
 
 %bcond_without  standalone_terminfo
 
@@ -32,6 +34,7 @@ URL:            https://github.com/ghostty-org/ghostty
 Source0:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz
 Source2:        https://release.files.ghostty.org/%{version}/ghostty-%{version}.tar.gz.minisig
 Source1:        vendor.tar.zst
+Source98:       %{name}-rpmlintrc
 Source99:       vendor.sh
 BuildRequires:  fdupes
 BuildRequires:  gobject-introspection
@@ -120,7 +123,7 @@ Supplements:    (%{name} and nushell)
 BuildArch:      noarch
 
 %description    nushell-completion
-Nushell support for %{name}.
+Optional Nushell command-line completion support for %{name}.
 
 %package doc
 Summary:        Documentation for %{name}
@@ -203,6 +206,8 @@ zig build %{common_build_flags}
 %install
 export DESTDIR=%{buildroot}
 zig build %{common_build_flags} --prefix %{_prefix} --prefix-lib-dir %{_libdir}
+mv %{buildroot}%{_datadir}/vim/vimfiles \
+  %{buildroot}%{site_runtimepath}
 %if %{without standalone_terminfo}
 rm -rv %{buildroot}%{_datadir}/terminfo/
 %endif
@@ -211,8 +216,11 @@ mv %{buildroot}%{_datadir}/pkgconfig/ %{buildroot}%{_libdir}
 
 %find_lang com.mitchellh.ghostty
 
-%fdupes %{buildroot}/%{_datadir}/icons/hicolor
-%fdupes %{buildroot}/%{_datadir}/%{pkg_name}/themes
+%fdupes %{buildroot}%{_datadir}/icons/hicolor
+%fdupes %{buildroot}%{_datadir}/%{name}/themes
+
+chmod 0644 \
+    %{buildroot}%{_datadir}/kio/servicemenus/com.mitchellh.ghostty.desktop
 
 %files
 %license LICENSE src/font/res/OFL.txt
@@ -295,6 +303,8 @@ mv %{buildroot}%{_datadir}/pkgconfig/ %{buildroot}%{_libdir}
 
 %files zsh-completion
 %license LICENSE
+%dir %{_datadir}/zsh
+%dir %{_datadir}/zsh/site-functions
 %{_datadir}/zsh/site-functions/_ghostty
 %{_datadir}/ghostty/shell-integration/zsh/
 
@@ -305,15 +315,15 @@ mv %{buildroot}%{_datadir}/pkgconfig/ %{buildroot}%{_libdir}
 %files vim
 %license LICENSE
 %dir %{_datadir}/vim
-%dir %{_datadir}/vim/vimfiles
-%dir %{_datadir}/vim/vimfiles/ftdetect
-%dir %{_datadir}/vim/vimfiles/ftplugin
-%dir %{_datadir}/vim/vimfiles/syntax
-%dir %{_datadir}/vim/vimfiles/compiler
-%{_datadir}/vim/vimfiles/ftdetect/ghostty.vim
-%{_datadir}/vim/vimfiles/ftplugin/ghostty.vim
-%{_datadir}/vim/vimfiles/syntax/ghostty.vim
-%{_datadir}/vim/vimfiles/compiler/ghostty.vim
+%dir %{site_runtimepath}
+%dir %{site_runtimepath}/ftdetect
+%dir %{site_runtimepath}/ftplugin
+%dir %{site_runtimepath}/syntax
+%dir %{site_runtimepath}/compiler
+%{site_runtimepath}/ftdetect/ghostty.vim
+%{site_runtimepath}/ftplugin/ghostty.vim
+%{site_runtimepath}/syntax/ghostty.vim
+%{site_runtimepath}/compiler/ghostty.vim
 
 %if %{with standalone_terminfo}
 %files -n terminfo-ghostty
