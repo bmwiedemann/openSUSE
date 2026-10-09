@@ -475,4 +475,12 @@ consumer passes the removed arguments.
 - BuildRequires opentelemetry-exporter-otlp-proto-http for %check</comment>
     <requestid>1382338</requestid>
   </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>1912769302e5348dab93e2abf4a9a3ab</srcmd5>
+    <version>0.14.5</version>
+    <time>1791575137</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-langsmith to 0.14.5: address types, sandbox tracing IDs, revision-id support and redaction fixes.</comment>
+    <requestid>1383684</requestid>
+  </revision>
 </revisionlist>

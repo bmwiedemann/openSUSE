@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:06:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.5:
+  * Add AgentAddress, ExperimentAddress and EvaluatorAddress types;
+    attach sandbox IDs to active tracing metadata
+  * Read LANGSMITH_REVISION_ID for the run revision_id; fix the URL
+    built for a run sent to an agent
+  * Redact license key and API key salt assignments in the anonymizer
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Sun Oct  4 06:59:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.4:
