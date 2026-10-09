@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Thu Oct 08 08:00:58 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
+
+- Update to version 4.0+git20261008.76d8ee7:
+  * rebootmgr-metrics.conf: fix metrics vs report
+
+-------------------------------------------------------------------
 Mon Oct 05 13:33:17 UTC 2026 - Thorsten Kukuk <kukuk@suse.com>
 
 - Update to version 4.0+git20261005.1e5481c:

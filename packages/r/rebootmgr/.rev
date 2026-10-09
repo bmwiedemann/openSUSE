@@ -389,4 +389,13 @@
   * mkdir_p: fix return value if mkdir fails</comment>
     <requestid>1382557</requestid>
   </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>57a18547cbed49170e4b5431193edc65</srcmd5>
+    <version>4.0+git20261008.76d8ee7</version>
+    <time>1791574962</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 4.0+git20261008.76d8ee7:
+  * rebootmgr-metrics.conf: fix metrics vs report</comment>
+    <requestid>1383243</requestid>
+  </revision>
 </revisionlist>
