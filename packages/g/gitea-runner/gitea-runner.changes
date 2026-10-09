@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Fri Oct 09 12:23:53 UTC 2026 - Elisei Roca <eroca@suse.com>
+
+- Update to version 5.0.0:
+  * enhance!: send OTLP metrics under OpenTelemetry semantic conventions, add runner state (#1282)
+  * enhance(config): add `container.sweep` option (#1275)
+  * enhance: support client certificates for mutual TLS (#1273)
+  * fix: apply the daemon's mtu to job networks (#1270)
+  * enhance(config): expand environment values (#1274)
+  * enhance(runner): add extra HTTP headers (#1269)
+  * fix: enforce read-only volume restrictions (#1272)
+  * fix!: use the git CLI for action clones and make builtin:checkout match actions/checkout (#1277)
+  * fix: reject workflows with jobs lacking `runs-on` (#1271)
+  * fix: strip log-driver and OOM options when privileged is off (#1283)
+  * fix: allow tmpfs mounts in container options (#1289)
+  * fix: extract copied directories at their destination in Kubernetes pods (#1286)
+  * fix: recognize Gitea's 401 reply for an unregistered runner (#1287)
+
+-------------------------------------------------------------------
 Fri Oct 02 05:50:56 UTC 2026 - Elisei Roca <eroca@suse.com>
 
 - Update to version 4.1.0:
