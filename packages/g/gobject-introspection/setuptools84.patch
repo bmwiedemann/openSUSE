@@ -1,0 +1,166 @@
+From b1af1fc33707cb7fa2c8e07487f37e9828df83e7 Mon Sep 17 00:00:00 2001
+From: Simon McVittie <smcv@debian.org>
+Date: Wed, 30 Sep 2026 11:22:24 +0100
+Subject: [PATCH 1/3] tests: Mock both spawn() and call() for setuptools >= 84
+ compatibility
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+In older setuptools, subcommands are run via the spawn() method, which
+was already replaced with a mock implementation here. In newer
+setuptools, spawn() is just a deprecated wrapper around call(), and
+other CCompiler methods use call() directly, so we need to patch both.
+
+Helps: https://gitlab.gnome.org/GNOME/gobject-introspection/-/work_items/575
+Co-authored-by: Lumír Balhar
+---
+ tests/scanner/test_ccompiler.py | 32 ++++++++++++++++++++++++--------
+ 1 file changed, 24 insertions(+), 8 deletions(-)
+
+diff --git a/tests/scanner/test_ccompiler.py b/tests/scanner/test_ccompiler.py
+index 6c0674a14..811ab2413 100644
+--- a/tests/scanner/test_ccompiler.py
++++ b/tests/scanner/test_ccompiler.py
+@@ -82,7 +82,10 @@ class UnixCCompilerTest(unittest.TestCase):
+         except ImportError as e:
+             raise unittest.SkipTest(e)
+ 
+-        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn:
++        # setuptools >= 84 replaced spawn() with call(), but that might not
++        # exist in older versions
++        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn, \
++             patch.object(distutils.ccompiler.CCompiler, 'call', create=True) as call:
+             with Environ(environ):
+                 cc = CCompiler(compiler_name=compiler_name)
+                 # Avoid check if target is newer from source.
+@@ -90,9 +93,14 @@ class UnixCCompilerTest(unittest.TestCase):
+                 # Don't actually do anything.
+                 cc.compiler.dry_run = True
+                 cc.compile(pkg_config_cflags, cpp_includes, [source], init_sections)
+-        self.assertEqual(1, spawn.call_count)
+-        args, kwargs = spawn.call_args
+-        return args[0]
++
++        if spawn.call_count:
++            args, kwargs = spawn.call_args
++            return args[0]
++        else:
++            self.assertEqual(1, call.call_count)
++            args, kwargs = call.call_args
++            return args[0]
+ 
+     def preprocess_args(self, environ={}, compiler_name=None,
+                         source='a.c', output=None, cpp_options=[]):
+@@ -103,7 +111,10 @@ class UnixCCompilerTest(unittest.TestCase):
+         except ImportError as e:
+             raise unittest.SkipTest(e)
+ 
+-        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn:
++        # setuptools >= 84 replaced spawn() with call(), but that might not
++        # exist in older versions
++        with patch.object(distutils.ccompiler.CCompiler, 'spawn') as spawn, \
++             patch.object(distutils.ccompiler.CCompiler, 'call', create=True) as call:
+             with Environ(environ):
+                 cc = CCompiler(compiler_name=compiler_name)
+                 # Avoid check if target is newer from source.
+@@ -111,9 +122,14 @@ class UnixCCompilerTest(unittest.TestCase):
+                 # Don't actually do anything.
+                 cc.compiler.dry_run = True
+                 cc.preprocess(source, output, cpp_options)
+-        self.assertEqual(1, spawn.call_count)
+-        args, kwargs = spawn.call_args
+-        return args[0]
++
++        if spawn.call_count:
++            args, kwargs = spawn.call_args
++            return args[0]
++        else:
++            self.assertEqual(1, call.call_count)
++            args, kwargs = call.call_args
++            return args[0]
+ 
+     @unittest.skip("Currently a Python build time compiler is used as the default.")
+     def test_compile_default(self):
+-- 
+GitLab
+
+
+From 55390c331b2bcc93945c9e299068e8f5b79ec6e7 Mon Sep 17 00:00:00 2001
+From: Dan Yeaw <dan@yeaw.me>
+Date: Tue, 17 Feb 2026 12:38:03 -0500
+Subject: [PATCH 2/3] Fix Setuptools >= 81 TypeError for dry-run removed
+
+Helps: https://gitlab.gnome.org/GNOME/gobject-introspection/-/work_items/575
+---
+ giscanner/msvccompiler.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/giscanner/msvccompiler.py b/giscanner/msvccompiler.py
+index c9f14b584..98a470f23 100644
+--- a/giscanner/msvccompiler.py
++++ b/giscanner/msvccompiler.py
+@@ -38,9 +38,9 @@ def get_msvc_compiler():
+ 
+ class MSVCCompiler(DistutilsMSVCCompiler):
+ 
+-    def __init__(self, verbose=0, dry_run=0, force=0):
++    def __init__(self, verbose=0, force=0):
+         super(DistutilsMSVCCompiler, self).__init__()
+-        CCompiler.__init__(self, verbose, dry_run, force)
++        CCompiler.__init__(self, verbose=verbose, force=force)
+         self.__paths = []
+         self.__arch = None  # deprecated name
+         self.initialized = False
+-- 
+GitLab
+
+
+From c93478c5a6be12215db19deacb9b35cc8ed71b67 Mon Sep 17 00:00:00 2001
+From: Dan Yeaw <dan@yeaw.me>
+Date: Tue, 17 Feb 2026 12:53:44 -0500
+Subject: [PATCH 3/3] tests: Add more targeted tests for CCompiler
+
+Helps: https://gitlab.gnome.org/GNOME/gobject-introspection/-/work_items/575
+[smcv: separated from a larger commit]
+---
+ tests/scanner/test_ccompiler.py | 23 +++++++++++++++++++++++
+ 1 file changed, 23 insertions(+)
+
+diff --git a/tests/scanner/test_ccompiler.py b/tests/scanner/test_ccompiler.py
+index 811ab2413..8f7ce18a9 100644
+--- a/tests/scanner/test_ccompiler.py
++++ b/tests/scanner/test_ccompiler.py
+@@ -234,6 +234,29 @@ class UnixCCompilerTest(unittest.TestCase):
+                           '-Wno-deprecated-declarations'],
+                          args)
+ 
++    def test_compile_args_dry_run(self):
++        """Compile dry-run produces expected compiler args."""
++        args = self.compile_args(environ=dict(CC='gcc'), source='a.c')
++        self.assertListStartsWith(args, ['gcc'])
++        self.assertIn('-c', args)
++
++    def test_preprocess_args_dry_run(self):
++        """Preprocess dry-run produces expected preprocessor args."""
++        args = self.preprocess_args(environ=dict(CC='gcc'), source='a.c')
++        self.assertListStartsWith(args, ['gcc'])
++        self.assertIn('-E', args)
++
++
++class MSVCCompilerSetuptoolsTest(unittest.TestCase):
++    """Tests for MSVCCompiler compatibility with Setuptools."""
++
++    @unittest.skipIf(os.name != 'nt', 'MSVC compiler only on Windows')
++    def test_msvc_compiler_instantiation_setuptools_ge_81(self):
++        """MSVCCompiler can be instantiated with Setuptools >= 81 without TypeError."""
++        from giscanner.msvccompiler import get_msvc_compiler
++        compiler = get_msvc_compiler()
++        self.assertIsNotNone(compiler)
++
+ 
+ if __name__ == '__main__':
+     unittest.main()
+-- 
+GitLab
+

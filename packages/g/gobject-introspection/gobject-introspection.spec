@@ -32,6 +32,8 @@ Source2:        gobjectintrospection.attr
 Source3:        gobject-introspection-typelib.template
 Source98:       baselibs.conf
 Source99:       %{name}-rpmlintrc
+# PATCH-FIX-UPSTREAM https://gitlab.gnome.org/GNOME/gobject-introspection/-/merge_requests/564 Compatibility with setuptools >= 84
+Patch0:         setuptools84.patch
 BuildRequires:  bison
 BuildRequires:  fdupes
 BuildRequires:  flex

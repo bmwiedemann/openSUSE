@@ -2204,4 +2204,12 @@
     <comment>Switch to tar.xz post git scm move</comment>
     <requestid>1342968</requestid>
   </revision>
+  <revision rev="120" vrev="4">
+    <srcmd5>072ac38da15447a568af590a40a6566f</srcmd5>
+    <version>1.86.0</version>
+    <time>1791574954</time>
+    <user>dimstar_suse</user>
+    <comment>- Add upstream setuptools84.patch to fix build with setuptools v84</comment>
+    <requestid>1382741</requestid>
+  </revision>
 </revisionlist>

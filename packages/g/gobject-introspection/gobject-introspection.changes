@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Oct  6 09:49:40 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Add upstream setuptools84.patch to fix build with setuptools v84
+
+-------------------------------------------------------------------
 Mon Mar 23 08:46:31 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Migrate to xz compression and manual service run
