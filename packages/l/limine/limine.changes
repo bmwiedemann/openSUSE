@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:22:45 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
+
+- Update to 12.9.3:
+  * Limine boot protocol: Stop leaving the highest memory map entry out
+    of the page tables. The copy of the memory map they are built from
+    missed its last entry whenever allocating that copy added one to
+    the map, which left the framebuffer, or memory above 4GiB,
+    unmapped on some machines.
+
+-------------------------------------------------------------------
 Thu Oct  1 07:38:29 UTC 2026 - Marvin Friedrich <contact@marvinf.com>
 
 - Update to 12.9.1:
