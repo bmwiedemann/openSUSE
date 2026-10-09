@@ -181,4 +181,12 @@ source_validator clean.</comment>
 </comment>
     <requestid>1379432</requestid>
   </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>a1fef6a63a07389d189c2160e7b0b095</srcmd5>
+    <version>0.4.6</version>
+    <time>1791575209</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-modelscope-hub to 0.4.6 with the upstream cross-region download fix.</comment>
+    <requestid>1383819</requestid>
+  </revision>
 </revisionlist>
