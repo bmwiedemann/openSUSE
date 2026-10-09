@@ -1,4 +1,43 @@
 -------------------------------------------------------------------
+Fri Oct 09 06:30:40 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20261009.9e8a64a1:
+  * feat(corosync): Default 'crm corosync status' to all components (#2038)
+
+-------------------------------------------------------------------
+Wed Sep 30 06:17:46 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260930.6c5ea909:
+  * feat(report): collect cluster health output
+
+-------------------------------------------------------------------
+Tue Sep 29 06:20:28 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260929.34fb39ee:
+  * fix(bootstrap): provide default value for qnetd port in interactive mode (#2191)
+
+-------------------------------------------------------------------
+Mon Sep 28 06:47:29 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260928.c3d2957c:
+  * feat(corosync_health): support SKIP status and determine QDevice checks from config
+  * refactor(corosync_health): move health check business logic from ui_cluster to corosync_healthcheck
+  * feat(corosync_health): check QDevice status in corosync health check
+  * feat(corosync_health): validate QDevice network interface separation from Corosync links
+  * feat(corosync_health): check that multiple knet links are on different network interfaces
+  * Dev: corosync: Warn on non-knet transport in health check
+  * Dev: corosync: Add corosync health check
+
+-------------------------------------------------------------------
+Thu Sep 24 09:50:37 UTC 2026 - XLiang@suse.com
+
+- Update to version 5.1.0+20260924.e58af967:
+  * feat(resource): warn when tracing a non-shell resource agent
+  * feat(ui_node): deprecate `node online` command
+  * feat(ui_node): add on|off option to `node standby` command
+  * refactor(ui_node): use boolean value for `node standby|online` command
+
+-------------------------------------------------------------------
 Thu Sep 17 08:34:48 UTC 2026 - XLiang@suse.com
 
 - Update to version 5.1.0+20260917.eab338e3:
