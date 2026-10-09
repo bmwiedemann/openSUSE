@@ -1,4 +1,6 @@
 <servicedata>
 <service name="tar_scm">
                 <param name="url">https://github.com/controlplaneio/kubesec</param>
-              <param name="changesrevision">bb804de5ed6f311a7d281c3d119fe85e77e75a13</param></service></servicedata>
+              <param name="changesrevision">bb804de5ed6f311a7d281c3d119fe85e77e75a13</param></service><service name="tar_scm">
+                <param name="url">https://github.com/controlplaneio/kubesec.git</param>
+              <param name="changesrevision">29e1d5e2ff4c2dd4045a90c96705ecd6bc767f4a</param></service></servicedata>

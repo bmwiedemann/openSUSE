@@ -1,7 +1,7 @@
 #
 # spec file for package kubesec
 #
-# Copyright (c) 2024 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -17,7 +17,7 @@
 
 
 Name:           kubesec
-Version:        2.14.2
+Version:        2.15.0
 Release:        0
 Summary:        Security risk analysis for Kubernetes resources
 License:        Apache-2.0
@@ -26,7 +26,7 @@ Source:         kubesec-%{version}.tar.gz
 Source1:        vendor.tar.gz
 BuildRequires:  bash-completion
 BuildRequires:  fish
-BuildRequires:  go >= 1.23.1
+BuildRequires:  go1.27 >= 1.27.0
 BuildRequires:  zsh
 
 %description

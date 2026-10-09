@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:04:25 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 2.15.0:
+  * docs: add changelog for 2.15.0
+  * chore: update docker images and pin digests
+  * refactor: migrate from legacy in-toto-go library to go-witness
+  * fix: maintain closer compatibility with prior error messaging
+  * chore: remove now unnecessary reassignment
+  * chore: update go deps
+  * docs: update maintainers list
+  * fix: resolve golangci-lint complaints and improve http error
+    handling
+  * chore: resolve shellcheck issue
+
+-------------------------------------------------------------------
 Tue Nov 26 14:02:59 UTC 2024 - opensuse_buildservice@ojkastl.de
 
 - Update to version 2.14.2:
