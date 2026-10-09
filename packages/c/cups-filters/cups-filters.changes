@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:41:24 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
+
+- No longer provide the serial backend with 0700 permissions
+  so cupsd does no longer run it as root but as usual
+  as user 'lp' to avoid CVE-2026-95511
+  "Root arbitrary file overwrite via serial ... device-URI path"
+  https://github.com/OpenPrinting/cups-filters/security/advisories/GHSA-m74w-wg6q-vvpj
+  "`lpadmin` user can escalate privileges to `root` via printers
+   that uses a privileged serial backend" (bsc#1282291)
+  Note the general security advice in the section
+  "Allow printer admin tasks for a normal user" in
+  https://en.opensuse.org/SDB:CUPS_in_a_Nutshell
+- No longer provide any other backend with 0700 permissions
+  so cupsd does no longer run them as root but as usual
+  as user 'lp' because running something as root by default
+  is a generic security issue which we avoid now by default
+  so the user must set less secure permissions manually
+  only as specifically needed. In particular longer provide
+  /usr/lib/cups/backend/beh
+  /usr/lib/cups/backend/cups-brf
+  /usr/lib/cups/backend/implicitclass
+  with 0700 permissions by default so in particular
+  https://bugzilla.opensuse.org/show_bug.cgi?id=1178604
+  re-appears but security by default is mandatory nowadays,
+  cf. the sections "Security: Make Things Not Just Work"
+  and "Automated print queue setup via cups-browsed" in
+  https://en.opensuse.org/SDB:CUPS_and_SANE_Firewall_settings
+
+-------------------------------------------------------------------
 Tue Sep  1 11:05:03 UTC 2026 - Johannes Meixner <jsmeix@suse.com>
 
 - cups-filters-1.28.17-CVE-2026-64611.patch is based on

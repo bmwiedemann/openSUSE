@@ -526,4 +526,12 @@
     <comment>Fixes for CVE-2026-64611 bsc#1273145 and CVE-2026-64612 bsc#1273146 (forwarded request 1375093 from jsmeix)</comment>
     <requestid>1375096</requestid>
   </revision>
+  <revision rev="65" vrev="10">
+    <srcmd5>b376283746c6c690840c7ed9a50e71ec</srcmd5>
+    <version>1.28.17</version>
+    <time>1791574967</time>
+    <user>dimstar_suse</user>
+    <comment>Fix for CVE-2026-95511 bsc#1282291 and in avoid such kind of generic issues also for other backends (forwarded request 1383291 from jsmeix)</comment>
+    <requestid>1383292</requestid>
+  </revision>
 </revisionlist>
