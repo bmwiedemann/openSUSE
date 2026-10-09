@@ -190,4 +190,12 @@ warnings, 0 badness; %check imports under python3.13 and python3.14.</comment>
     <comment>Update to 1.55.15, same-lineage successor of 1.54.12. Agent/cloud fixes in range are compiled out of this build; DOMPurify stays 3.4.13.</comment>
     <requestid>1383217</requestid>
   </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>9a6bde3e1297191cc48763482e8ce948</srcmd5>
+    <version>1.55.16</version>
+    <time>1791575111</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-comfyui-frontend-package to 1.55.16 on the 1.55 line. Fixes layer-editor load and templates-nudge placement; agent/billing fixes are cloud-only.</comment>
+    <requestid>1383682</requestid>
+  </revision>
 </revisionlist>

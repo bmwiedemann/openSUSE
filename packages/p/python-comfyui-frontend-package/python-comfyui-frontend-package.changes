@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:54:13 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.55.16:
+  * Layer editor opens before its images finish loading
+  * Post-tour nudge shown next to the Templates button
+  * Upstream's Comfy Agent and billing fixes in this range are
+    cloud-only and land in source this package does not ship
+  * Vendored DOMPurify stays at 3.4.13
+  * Many more fixes and improvements; see upstream's release
+    notes for the full list
+- No packaging change: setup.py still declares no runtime
+  requirements
+
+-------------------------------------------------------------------
 Thu Oct  8 06:27:47 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 1.55.15 (crosses 1.55.14, superseded the same
