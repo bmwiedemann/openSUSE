@@ -1,0 +1,5 @@
+<package name="shake-cursor" project="openSUSE:Factory">
+  <title>A lightweight X11 utility to dynamically enlarge the cursor on rapid movement</title>
+  <description>Shake-cursor is a background utility for X11 environments that detects rapid mouse shaking and temporarily scales up the pointer. It features dynamic desktop theme matching, high-resolution rendering to prevent pixelation, and integrates seamlessly via a user-level systemd service.</description>
+  <url>https://github.com/Jonatas-Goncalves/Shake-Cursor</url>
+</package>
