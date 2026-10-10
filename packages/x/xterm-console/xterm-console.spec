@@ -17,7 +17,7 @@
 
 
 Name:           xterm-console
-Version:        1.1785509059.165d3b6
+Version:        1.1791553421.2204a45
 Release:        0
 Summary:        A Linux vt console look-alike xterm wrapper
 License:        MIT
