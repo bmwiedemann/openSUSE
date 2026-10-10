@@ -1,0 +1,23 @@
+From: Peter Varkoly <varkoly@suse.com>
+Subject: digestmd5: fix heap overflow in add_to_challenge() when quoting
+
+add_to_challenge() computed the needed buffer size from the unquoted
+value length. When the value contains '"' or '\', quote() returns a
+longer string, but the buffer was re-allocated with the stale size and
+the quoted value was then appended with strcat(), overflowing the heap
+buffer by an attacker-controlled amount (e.g. a crafted realm or nonce
+sent by a malicious DIGEST-MD5 / HTTP Digest server).
+
+Recompute newlen from the quoted length before re-allocating. This also
+keeps *curlen consistent with the actual string length.
+
+--- a/plugins/digestmd5.c
++++ b/plugins/digestmd5.c
+@@ -567,6 +567,7 @@
+ 	    valuesize = strlen(quoted);
+ 	    /* As the quoted string is bigger, make sure we have enough
+ 	       space now */
++	    newlen = (unsigned) (*curlen + 1 + namesize + 2 + valuesize + 2);
+ 	    ret = _plug_buf_alloc(utils, str, buflen, newlen);
+ 	    if (ret == SASL_OK) {
+ 		strcat(*str, quoted);

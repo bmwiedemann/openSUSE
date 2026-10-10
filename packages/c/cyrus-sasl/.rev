@@ -730,4 +730,41 @@
   * add remove-senceless-log.patch</comment>
     <requestid>1320525</requestid>
   </revision>
+  <revision rev="76" vrev="13">
+    <srcmd5>9b3edd460a7ba3e27e4da5bc18fbd19e</srcmd5>
+    <version>2.1.28</version>
+    <time>1791637110</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix heap-based buffer overflow in DIGEST-MD5 add_to_challenge():
+  buffer size was not recomputed after quoting expanded the value,
+  allowing a malicious server to overflow the client heap. (bsc#1284687)
+  * add cyrus-sasl-digestmd5-quote-overflow.patch
+
+- Clean up an synchronize changes
+- Fix packages for Immutable Mode - cyrus-sasl (jsc#PED-14856)
+
+  * add remove-senceless-log.patch
+
+- bsc#1247498 - replace insecure MD5 with ephemeral HMAC-SHA256
+  * 0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
+- Make DIGEST-MD5 work with openssl3 ( bsc#1230111 )
+  RC4 is legacy provided since openSSL3 and requires explicit loading, dDisable openssl3 depricated API warnings.
+- drop optional opie dependency
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28
+  so no Prereq added)
+- bnc#908883 cyrus-sasl-scram refers to wrong RFC
+- Add patch fix-sasl-header.diff to resolve build issues that
+        + Added support for GSS-SPNEGO SASL mechanism (Unix only), which is also HTTP capable
+        + Updated GS2 plugin not to lose minor GSS-API status codes on errors
+        + fixed some memory leaks
+        + Added support for BerkleyDB 5.X or later
+        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications
+        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications
+        + fixed some memory leaks
+- Removed the /var/run/sasl2 directory from cyrus-sasl.spec.
+- Fixed linker arguments for ldap- and sql-auxprop plugins
+- Update to 2.1.23, the only change is a fix for a potential buffer
+- remove all &quot;la&quot; files</comment>
+    <requestid>1383727</requestid>
+  </revision>
 </revisionlist>

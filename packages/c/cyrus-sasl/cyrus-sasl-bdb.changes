@@ -1,9 +1,29 @@
 -------------------------------------------------------------------
+Thu Oct  8 12:06:21 UTC 2026 - Peter Varkoly <varkoly@suse.com>
+
+- Fix heap-based buffer overflow in DIGEST-MD5 add_to_challenge():
+  buffer size was not recomputed after quoting expanded the value,
+  allowing a malicious server to overflow the client heap. (bsc#1284687)
+  * add cyrus-sasl-digestmd5-quote-overflow.patch
+
+-------------------------------------------------------------------
+Mon Dec 29 15:43:45 UTC 2025 - Peter Varkoly <varkoly@suse.com>
+
+- Clean up an synchronize changes
+- Fix packages for Immutable Mode - cyrus-sasl (jsc#PED-14856)
+
+-------------------------------------------------------------------
 Fri Nov 28 19:40:42 UTC 2025 - Peter Varkoly <varkoly@suse.com>
 
 - Python3 error log upon importing pycurl (bsc#1233529)
   Remove senceless log message.
-  * add remove-senceless-log.patch 
+  * add remove-senceless-log.patch
+
+-------------------------------------------------------------------
+Wed Sep 10 02:45:48 UTC 2025 - William Brown <william.brown@suse.com>
+
+- bsc#1247498 - replace insecure MD5 with ephemeral HMAC-SHA256
+  * 0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
 
 -------------------------------------------------------------------
 Mon Apr  7 14:52:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
@@ -14,8 +34,8 @@ Mon Apr  7 14:52:06 UTC 2025 - Friedrich Haubensak <hsk17@mail.de>
 -------------------------------------------------------------------
 Thu Sep 19 06:36:56 UTC 2024 - Angel Yankov <angel.yankov@suse.com>
 
-- Make DIGEST-MD5 work with openssl3 ( bsc#1230111 ) 
-  RC4 is legacy provided since openSSL3 and requires explicit loading, disable openssl3 depricated API warnings.
+- Make DIGEST-MD5 work with openssl3 ( bsc#1230111 )
+  RC4 is legacy provided since openSSL3 and requires explicit loading, dDisable openssl3 depricated API warnings.
   * Add cyrus-sasl-make-digestmd5-work-ssl3.patch
 
 -------------------------------------------------------------------
@@ -45,7 +65,7 @@ Thu May  4 11:21:19 UTC 2023 - Dominique Leuenberger <dimstar@opensuse.org>
 -------------------------------------------------------------------
 Mon Jan 23 20:35:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 
-- drop optional opie dependency 
+- drop optional opie dependency
 
 -------------------------------------------------------------------
 Wed Dec  7 11:15:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
@@ -59,7 +79,7 @@ Wed Dec  7 11:15:12 UTC 2022 - Dominique Leuenberger <dimstar@opensuse.org>
 Wed Mar  9 08:39:23 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.1.28 (bsc#1196036, CVE-2022-24407):
-  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28 
+  * https://www.cyrusimap.org/sasl/sasl/release-notes/2.1/index.html#new-in-2-1-28
 - drop cyrus-sasl-bug587.patch (upstream)
 
 -------------------------------------------------------------------
@@ -67,7 +87,7 @@ Mon Jan 31 10:03:15 UTC 2022 - Dirk Müller <dmueller@suse.com>
 
 - cyrus-sasl: prevent fail of %pre when berkely db utils are
   not installed (seems like we want to use this only for upgrade
-  so no Prereq added) 
+  so no Prereq added)
 - move license to licensedir
 - remove use of RPM_BUILD_ROOT
 - minimal spec cleanups
@@ -129,7 +149,7 @@ Tue Dec  8 13:33:33 UTC 2020 - Peter Varkoly <varkoly@suse.com>
 - bsc#983938 `After=syslog.target` left-overs in several unit files
 - added patches:
   fix_libpq-fe_include.diff  for fixing including libpq-fe.h
-  
+
 - removed patches obsoleted by upstream changes:
   * shared_link_on_ppc.patch
   * cyrus-sasl-2.1.27-openssl-1.1.0.patch
@@ -191,7 +211,7 @@ Wed Dec  9 20:15:40 UTC 2015 - bwiedemann@suse.com
 -------------------------------------------------------------------
 Tue Jan  6 19:02:33 UTC 2015 - varkoly@suse.com
 
-- bnc#908883 cyrus-sasl-scram refers to wrong RFC 
+- bnc#908883 cyrus-sasl-scram refers to wrong RFC
 
 -------------------------------------------------------------------
 Thu Nov 27 09:08:36 UTC 2014 - jengelh@inai.de
@@ -245,7 +265,7 @@ Sat Oct  5 19:10:55 UTC 2013 - tchvatal@suse.com
 -------------------------------------------------------------------
 Sun Sep 29 08:11:05 UTC 2013 - tittiatcoke@gmail.com
 
-- Add patch fix-sasl-header.diff to resolve build issues that 
+- Add patch fix-sasl-header.diff to resolve build issues that
   are failing due to typedef 'sasl_malloc_t' is initialized.
   (see gentoo#458870, fedora#906519)
 
@@ -268,24 +288,24 @@ Tue Sep  3 22:07:15 UTC 2013 - jcnengel@gmail.com
     - GSSAPI plugin:
         + Fixed a segfault in gssapi.c introduced in 2.1.25.
         + Code refactoring
-        + Added support for GSS-SPNEGO SASL mechanism (Unix only), which is also HTTP capable 
+        + Added support for GSS-SPNEGO SASL mechanism (Unix only), which is also HTTP capable
     - GS2 plugin:
-        + Updated GS2 plugin not to lose minor GSS-API status codes on errors 
+        + Updated GS2 plugin not to lose minor GSS-API status codes on errors
     - DIGEST-MD5 plugin:
         + Correctly send "stale" directive to prevent clients from (re)promtping for password
         + Better handling of HTTP reauthentication cases
-        + fixed some memory leaks 
+        + fixed some memory leaks
     - SASLDB plugin:
-        + Added support for BerkleyDB 5.X or later 
+        + Added support for BerkleyDB 5.X or later
     - OTP plugin:
-        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications 
+        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications
     - SRP plugin:
-        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications 
+        + Removed calling of EVP_cleanup() on plugin shutdown in order to prevent TLS from failing in calling applications
     - saslauthd:
         + auth_rimap.c: qstring incorrectly appending the closing double quote, which might be causing crashes
         + auth_rimap.c: read the whole IMAP greeting
         + better error reporting from some drivers
-        + fixed some memory leaks 
+        + fixed some memory leaks
 - New BuildRequires for pkgconfig since pkgconfig file is generated
 - Removed patches that do no longer apply
   * cyrus-sasl-gcc4.patch (integrated upstream)
@@ -386,7 +406,7 @@ Mon May 10 12:53:14 UTC 2010 - rhafer@novell.com
 -------------------------------------------------------------------
 Wed Apr 28 09:24:11 UTC 2010 - rhafer@novell.com
 
-- Removed the /var/run/sasl2 directory from cyrus-sasl.spec. 
+- Removed the /var/run/sasl2 directory from cyrus-sasl.spec.
   It will now be created on demand by the saslauthd init script.
 - Adjusted init script headers to silence rpmlint warning/errors.
 
@@ -398,7 +418,7 @@ Mon Dec 14 17:15:20 CET 2009 - jengelh@medozas.de
 -------------------------------------------------------------------
 Mon Nov 23 10:57:47 UTC 2009 - rhafer@novell.com
 
-- Fixed linker arguments for ldap- and sql-auxprop plugins 
+- Fixed linker arguments for ldap- and sql-auxprop plugins
   (bnc#555568)
 
 -------------------------------------------------------------------
@@ -409,7 +429,7 @@ Mon Jul 20 16:20:35 CEST 2009 - coolo@novell.com
 -------------------------------------------------------------------
 Fri May 15 14:23:03 CEST 2009 - rhafer@novell.com
 
-- Update to 2.1.23, the only change is a fix for a potential buffer 
+- Update to 2.1.23, the only change is a fix for a potential buffer
   overflow in sasl_encode64() (bnc#499104, CVE-2009-0688)
 - Imported some automake/libtool fixes from upstream cvs
 
@@ -417,7 +437,7 @@ Fri May 15 14:23:03 CEST 2009 - rhafer@novell.com
 Mon Mar  2 21:28:09 CET 2009 - crrodriguez@suse.de
 
 - fix build with GCC 4.4
-- remove all "la" files 
+- remove all "la" files
 
 -------------------------------------------------------------------
 Wed Dec 10 12:34:56 CET 2008 - olh@suse.de
@@ -433,7 +453,7 @@ Thu Oct 30 12:34:56 CET 2008 - olh@suse.de
 -------------------------------------------------------------------
 Mon Aug 18 10:32:31 CEST 2008 - rhafer@suse.de
 
-- Fixed init-scripts Required-Stop Tags 
+- Fixed init-scripts Required-Stop Tags
 
 -------------------------------------------------------------------
 Tue Jul 29 15:15:25 CEST 2008 - rhafer@suse.de
@@ -451,7 +471,7 @@ Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
 -------------------------------------------------------------------
 Fri Mar 28 09:45:45 CET 2008 - rhafer@suse.de
 
-- Moved "Version:" up to the top to make versioned 
+- Moved "Version:" up to the top to make versioned
   Obsoletes/Requires work correctly.
 
 -------------------------------------------------------------------
@@ -473,21 +493,21 @@ Fri Oct 26 16:40:22 CEST 2007 - rhafer@suse.de
 -------------------------------------------------------------------
 Tue Mar 20 10:13:29 CET 2007 - rhafer@suse.de
 
-- Add SASLAUTHD_THREADS to /etc/sysconfig/saslauthd to be able to 
-  set the number of threads that saslauthd should spawn 
+- Add SASLAUTHD_THREADS to /etc/sysconfig/saslauthd to be able to
+  set the number of threads that saslauthd should spawn
   (Bug #199114)
 
 -------------------------------------------------------------------
 Fri Oct 27 13:20:59 CEST 2006 - rhafer@suse.de
 
 - Use /etc/sasl2/ as directory for config files of services
-  %{_libdir} can still be used for backwards compatibilty 
+  %{_libdir} can still be used for backwards compatibilty
   (Bug #206414)
 
 -------------------------------------------------------------------
 Mon Sep 25 16:21:55 CEST 2006 - rhafer@suse.de
 
-- Remove unneeded automake/autoheader calls 
+- Remove unneeded automake/autoheader calls
 
 -------------------------------------------------------------------
 Mon Sep 11 12:56:51 CEST 2006 - rhafer@suse.de
@@ -500,7 +520,7 @@ Mon Sep 11 12:56:51 CEST 2006 - rhafer@suse.de
 -------------------------------------------------------------------
 Tue Aug 29 12:47:43 CEST 2006 - rhafer@suse.de
 
-- Enabled the ldapdb auxprop plugin and created new subpackage 
+- Enabled the ldapdb auxprop plugin and created new subpackage
   cyrus-sasl-ldap-auxprop for it (Bug #201478)
 
 -------------------------------------------------------------------
@@ -514,10 +534,10 @@ Fri Jun  2 11:33:04 CEST 2006 - rhafer@suse.de
 
 - updated to 2.1.22
   * new pluginviewer utility for reporting information about client
-    and server side authentication plugins and auxprop plugins 
+    and server side authentication plugins and auxprop plugins
     (e.g.  supported features, methods, etc.).
   * Added support for HTTP POST password validation in saslauthd
-- rename SuSE.tar.gz to cyrus-sasl-rc.tar.gz to avoid name 
+- rename SuSE.tar.gz to cyrus-sasl-rc.tar.gz to avoid name
   collision with other packages in src.rpm (Bug #98188)
 - include "crypt.h" in auth_shadow.c to avoid possible crash in
   saslauthd (Bug #179621)
@@ -525,7 +545,7 @@ Fri Jun  2 11:33:04 CEST 2006 - rhafer@suse.de
 -------------------------------------------------------------------
 Mon Apr  3 15:10:49 CEST 2006 - rhafer@suse.de
 
-- remove dlcompat-20010505 from tarball because of legal risk and 
+- remove dlcompat-20010505 from tarball because of legal risk and
   documented this in README.Source (Bug: #161390)
 - added check for dlcompat-20010505 to the spec file
 
@@ -716,7 +736,7 @@ Mon Jun 30 18:04:22 CEST 2003 - choeger@suse.de
 -------------------------------------------------------------------
 Wed Jun 18 12:03:48 CEST 2003 - ro@suse.de
 
-- use kerberos-devel-packages in neededforbuild 
+- use kerberos-devel-packages in neededforbuild
 
 -------------------------------------------------------------------
 Fri Jun 13 10:25:14 CEST 2003 - kukuk@suse.de
@@ -737,7 +757,7 @@ Tue May  6 14:37:14 CEST 2003 - choeger@suse.de
 -------------------------------------------------------------------
 Tue Apr 15 08:50:41 CEST 2003 - ro@suse.de
 
-- added krb4-lib,krb4-devel to neededforbuild 
+- added krb4-lib,krb4-devel to neededforbuild
 
 -------------------------------------------------------------------
 Mon Apr  7 14:56:11 CEST 2003 - choeger@suse.de
@@ -815,12 +835,12 @@ Tue Dec 10 09:46:44 CET 2002 - choeger@suse.de
 -------------------------------------------------------------------
 Thu Oct 31 00:23:42 CET 2002 - ro@suse.de
 
-- make it build again 
+- make it build again
 
 -------------------------------------------------------------------
 Tue Oct 29 15:13:35 CET 2002 - ro@suse.de
 
-- remove own libtool macros 
+- remove own libtool macros
 
 -------------------------------------------------------------------
 Thu Oct 24 10:42:11 CEST 2002 - choeger@suse.de
@@ -837,8 +857,8 @@ Thu Sep 12 14:52:42 CEST 2002 - choeger@suse.de
 -------------------------------------------------------------------
 Mon Aug 19 18:48:02 CEST 2002 - rhafer@suse.de
 
-- enabled building of the static libsasl.a. It is needed for 
-  cyrus-imap to be usable with nss_ldap (which is linked against 
+- enabled building of the static libsasl.a. It is needed for
+  cyrus-imap to be usable with nss_ldap (which is linked against
   cyrus-sasl1)
 
 -------------------------------------------------------------------
@@ -894,11 +914,11 @@ Tue Jun 18 12:34:35 CEST 2002 - rhafer@suse.de
 -------------------------------------------------------------------
 Mon Jun 17 20:37:14 CEST 2002 - rhafer@suse.de
 
-- additional autoconf related patches, that were missing at first 
+- additional autoconf related patches, that were missing at first
   check in
 
 -------------------------------------------------------------------
 Mon Jun 17 18:12:24 CEST 2002 - rhafer@suse.de
 
-- Initial checkin of cyrus-sasl-2.1.5 
+- Initial checkin of cyrus-sasl-2.1.5
 

@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -36,7 +36,7 @@ Patch8:         0001-Fix-time.h-check.patch
 Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
 Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
 Patch11:        remove-senceless-log.patch
-
+Patch12:        cyrus-sasl-digestmd5-quote-overflow.patch
 BuildRequires:  gdbm-devel
 BuildRequires:  krb5-mini-devel
 BuildRequires:  libtool
@@ -182,6 +182,7 @@ fi
 %patch -P 9 -p1
 %patch -P 10 -p1
 %patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
@@ -211,6 +212,7 @@ mkdir -p %{buildroot}%{_bindir}
 mkdir -p %{buildroot}%{_sysconfdir}/sasl2
 install -m 755 sample/.libs/client %{buildroot}%{_bindir}/cyrus_sasl_sample_client
 install -m 755 sample/.libs/server %{buildroot}%{_bindir}/cyrus_sasl_sample_server
+rm doc/html/.buildinfo
 find doc -type f -exec chmod 0644 {} \;
 rm -f doc/Makefile*
 rm -f %{buildroot}/%{_mandir}/cat?/*
@@ -222,7 +224,6 @@ find %{buildroot} -type f -name "*.la" -delete -print
 
 %pre
 #Convert password file from berkely into gdbm
-#In %pre the existing file will be dumped out
 
 if test -x %{_bindir}/db_verify && %{_bindir}/db_verify %{_sysconfdir}/sasldb2 >/dev/null 2>&1 ; then
 cat > %{_localstatedir}/adm/update-scripts/saslpw.awk <<EOF
@@ -265,8 +266,11 @@ fi
 %{_libdir}/sasl2/liblogin.so*
 %{_libdir}/sasl2/libsasldb.so*
 %dir %{_sysconfdir}/sasl2/
-%{_sbindir}/*
-%{_bindir}/*
+%{_sbindir}/pluginviewer
+%{_sbindir}/sasldblistusers2
+%{_sbindir}/saslpasswd2
+%{_bindir}/cyrus_sasl_sample_client
+%{_bindir}/cyrus_sasl_sample_server
 %{_mandir}/man3/sasl.*.gz
 %{_mandir}/man8/*.gz
 

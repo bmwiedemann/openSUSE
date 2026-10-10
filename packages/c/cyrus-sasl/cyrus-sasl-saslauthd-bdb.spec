@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl-saslauthd-bdb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -38,7 +38,10 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
-Patch9:         remove-senceless-log.patch
+Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
+Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
+Patch11:        remove-senceless-log.patch
+Patch12:        cyrus-sasl-digestmd5-quote-overflow.patch
 PreReq:         %fillup_prereq
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 BuildRequires:  db-devel
@@ -83,6 +86,9 @@ The SQL auxprop plugin supports PostgreSQL and MySQL
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"

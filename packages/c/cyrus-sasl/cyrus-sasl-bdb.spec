@@ -1,7 +1,7 @@
 #
 # spec file for package cyrus-sasl-bdb
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -33,7 +33,10 @@ Patch5:         cyrus-sasl-no_rpath.patch
 Patch6:         cyrus-sasl-lfs.patch
 Patch7:         fix_libpq-fe_include.diff
 Patch8:         0001-Fix-time.h-check.patch
-Patch9:         remove-senceless-log.patch
+Patch9:         cyrus-sasl-make-digestmd5-work-ssl3.patch
+Patch10:        0001-Use-HMAC-SHA256-for-cache-passwords-over-MD5.patch
+Patch11:        remove-senceless-log.patch
+Patch12:        cyrus-sasl-digestmd5-quote-overflow.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 Requires:       libsasl2-3
 BuildRequires:  db-devel
@@ -169,6 +172,9 @@ fi
 %patch -P 7 -p1
 %patch -P 8 -p1
 %patch -P 9 -p1
+%patch -P 10 -p1
+%patch -P 11 -p1
+%patch -P 12 -p1
 
 %build
 find . -name "*.cvsignore" -exec rm -fv "{}" "+"
@@ -211,8 +217,11 @@ find "%buildroot" -type f -name "*.la" -print -delete
 %{_libdir}/sasl2/liblogin.so*
 %{_libdir}/sasl2/libsasldb.so*
 %dir /etc/sasl2/
-/usr/sbin/*
-/usr/bin/*
+%{_sbindir}/pluginviewer
+%{_sbindir}/sasldblistusers2
+%{_sbindir}/saslpasswd2
+%{_bindir}/cyrus_sasl_sample_client
+%{_bindir}/cyrus_sasl_sample_server
 %doc %{_mandir}/man3/sasl.*.gz
 %doc %{_mandir}/man8/*.gz
 
