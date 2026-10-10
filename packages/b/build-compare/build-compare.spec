@@ -17,7 +17,7 @@
 
 
 Name:           build-compare
-Version:        20260622T095938.6416d96
+Version:        20261001T080039.deb96f7
 Release:        0
 Summary:        Build Result Compare Script
 License:        GPL-2.0-or-later
