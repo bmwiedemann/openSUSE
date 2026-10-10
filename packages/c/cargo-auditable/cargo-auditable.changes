@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Fri Oct 09 03:44:27 UTC 2026 - william.brown@suse.com
+
+- Update to version 0.7.7~0:
+  * Bump version
+  * Populate changelog
+  * Avoid obscure slice operation, use find_map instead
+  * Wire up detection of default linker flavor from the target platform JSON
+  * Add a function to query linker flavor from rustc where possible
+  * Add tests for linker flavor flag parsing
+  * Honor linker flavor flag
+
+-------------------------------------------------------------------
 Tue Sep 15 00:39:45 UTC 2026 - william.brown@suse.com
 
 - Update to version 0.7.6~0:
