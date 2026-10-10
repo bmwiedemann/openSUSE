@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:02:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Fix Qt 6.12 build
+
+-------------------------------------------------------------------
 Tue Sep  8 09:34:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
