@@ -16,18 +16,15 @@
 #
 
 
-%define _name gst-python
-%define _version 1.28.0
-
 %{?sle15_python_module_pythons}
 Name:           python-gst
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        Python Bindings for GStreamer
 License:        LGPL-2.1-or-later
 Group:          System/Libraries
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 
 BuildRequires:  %{python_module devel}
 BuildRequires:  c++_compiler
@@ -35,11 +32,11 @@ BuildRequires:  gobject-introspection
 BuildRequires:  meson >= 1.1
 BuildRequires:  pkgconfig
 BuildRequires:  python-rpm-macros
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{version}
-BuildRequires:  pkgconfig(gstreamer-analytics-1.0) >= %{_version}
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{_version}
-BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0) >= %{_version}
-BuildRequires:  pkgconfig(pygobject-3.0) >= 3.0
+BuildRequires:  pkgconfig(gstreamer-1.0)
+BuildRequires:  pkgconfig(gstreamer-analytics-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
+BuildRequires:  pkgconfig(gstreamer-rtsp-server-1.0)
+BuildRequires:  pkgconfig(pygobject-3.0) >= 3.8
 Requires:       gstreamer >= %{_version}
 %{python_subpackages}
 
@@ -56,7 +53,7 @@ This module contains a wrapper that allows GStreamer applications to be
 written in Python.
 
 %prep
-%autosetup -p3 -n %{_name}-%{version}
+%autosetup -p3 -n gstreamer-%{version}
 
 %build
 %{python_expand py_var=$python

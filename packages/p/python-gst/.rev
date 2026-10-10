@@ -679,4 +679,17 @@
     <comment>1</comment>
     <requestid>1378655</requestid>
   </revision>
+  <revision rev="80" vrev="1">
+    <srcmd5>cb5db645d0d6cc051c5694f7f7f316d0</srcmd5>
+    <version>1.28.8</version>
+    <time>1791637161</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.8:
+  * No changes, stable version bump only.
+- Drop _version define, not needed.
+- Update version dependencies according to meson.build.
+
+- Migrate to xz compression and manual service run</comment>
+    <requestid>1383879</requestid>
+  </revision>
 </revisionlist>
