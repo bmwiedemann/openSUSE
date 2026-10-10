@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:05:33 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Update expected results for GpgME 2.2.0 and GnuPG 2.5.22
+  * Fix bug 525868: Kmail crashes when sending signed email (kde#525868)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:38:08 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
