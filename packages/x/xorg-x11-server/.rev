@@ -4499,4 +4499,44 @@ to build this: &quot;Prefer: libatomic1-gcc5&quot;</comment>
   * bsc1268894_CVE-2026-56000_0001-glx-free-old-context-tag-before-allocating-new-one-i.patch (bsc#1268894, CVE-2026-56000)</comment>
     <requestid>1365922</requestid>
   </revision>
+  <revision rev="454" vrev="2">
+    <srcmd5>9b57d575bd6f0f849f72fec0f0c4cef6</srcmd5>
+    <version>21.1.24</version>
+    <time>1791637053</time>
+    <user>dimstar_suse</user>
+    <comment>- 0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
+  XKB SetGeometry TextDoodad Double Free
+  (bsc#1281213, CVE-2026-88812, ZDI-CAN-31221)
+- 0002-xkb-allocate-names-keys-to-MAP_LENGTH-in-XkbAllocNam.patch
+  XKB ChangeKeycodeRange Heap Out-of-Bounds Write
+  (bsc#1281236, CVE-2026-93520, ZDI-CAN-31941)
+- 0003-xkb-widen-size_syms-num_syms-size_acts-num_acts-to-u.patch
+  XKB ResizeKeyType Numeric Truncation
+  (bsc#1281227, CVE-2026-93518, ZDI-CAN-31834)
+- 0004-xkb-fix-CheckKeySyms-overwriting-request-range-symsP.patch
+  XKB SetMap Key Width/Action Count Desync Out-Of-Bounds Read
+  (bsc#1281242, CVE-2026-93524, ZDI-CAN-32408)
+- 0005-randr-fix-size-and-offset-in-RRChangeProviderPropert.patch
+  RandR ChangeProviderProperty Heap Buffer Overflow
+  (bsc#1281238, CVE-2026-93521, ZDI-CAN-31944)
+- 0006-Xi-validate-modifier-values-in-ProcXIPassiveUngrabDe.patch
+  XInput2 PassiveUngrabDevice Out-of-Bounds Write
+  (bsc#1281241, CVE-2026-93523, ZDI-CAN-32366)
+- 0007-glx-validate-dataBytes-against-cmdlen-in-RenderLarge.patch
+  GLX RenderLarge Heap Buffer Overflow
+  (bsc#1281225, CVE-2026-93517, ZDI-CAN-31833)
+- 0008-present-unlink-notifies-from-window-list-in-present_.patch
+  X.Org Server Present Extension Use-After-Free
+  (bsc#1281218, CVE-2026-93515, ZDI-CAN-31830)
+- 0009-dix-remove-passive-grabs-referencing-a-device-on-rem.patch
+  X.Org Server XInput Passive Grab Use-After-Free
+  (bsc#1281220, CVE-2026-93516, ZDI-CAN-31832)
+- 0010-Xi-add-bounds-check-for-barrier-events-in-input_cons.patch
+  XFixes Pointer Barrier Event List Buffer Overflow
+  (bsc#1281233, CVE-2026-93519, ZDI-CAN-31938)
+- 0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch
+  GestureBuildSprite Use-After-Free
+  (bsc#1281244 CVE-2026-93536, ZDI-CAN-32753)</comment>
+    <requestid>1383336</requestid>
+  </revision>
 </revisionlist>

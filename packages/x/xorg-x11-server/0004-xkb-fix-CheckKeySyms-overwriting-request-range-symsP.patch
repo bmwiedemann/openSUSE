@@ -1,0 +1,61 @@
+From cea71d0273e4d5092aa9c6a8a770734c8935c02e Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Thu, 3 Sep 2026 14:55:27 +1000
+Subject: [PATCH 04/12] xkb: fix CheckKeySyms overwriting request-range
+ symsPerKey entries
+
+CheckKeySyms() has two loops: the first processes keys in the SetMap
+request range, the second fills in any missing keys from the existing
+map.
+
+The indexing between the two was inconsistent: the first loop
+uses a zero-based index + req->firstKeySym, the second loop used it just
+as zero-based index.
+
+Example:
+   req->firstKeySym = 50
+   req->nKeySyms = 10
+
+  i goes from 0 to 10,
+  loop 1 checks [50, 60), changes the width but finishes with i at 10.
+  loop 2 then runs over [10, 255(, copying the old keymap width
+
+The second loop overwrites the new widths with the width of the
+existing keymap. The subsequent SetKeySyms worked on the new width
+and may write fewer actions than the map width.
+
+A subsequent XkbGetMap request would then read XkbKeyNumActions()
+entries (derived from the new wider key_sym_map.width) from the shorter
+action allocation, causing an out-of-bounds heap read. The overread
+bytes would be copied into the GetMap reply and sent back to the client,
+producing a bounded heap information disclosure.
+
+This vulnerability was discovered by:
+  WONJOON HWANG (@joon1337) working with TrendAI Zero Day Initiative
+
+ZDI-CAN-32408
+
+CVE-2026-93524
+
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ test/pyxtest/test_xkb.py | 161 +++++++++++++++++++++++++++++++++++++++
+ xkb/xkb.c                |   1 +
+ 2 files changed, 162 insertions(+)
+
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 961ce9ca3..f0fa89be7 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -1813,6 +1813,7 @@ CheckKeySyms(ClientPtr client,
+         wire = (xkbSymMapWireDesc *) &pSyms[wire->nSyms];
+     }
+ 
++    i = req->firstKeySym + req->nKeySyms;
+     map = &xkb->map->key_sym_map[i];
+     for (; i <= (unsigned) xkb->max_key_code; i++, map++) {
+         register int g, nG, w;
+-- 
+2.51.0
+

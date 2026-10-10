@@ -1,0 +1,196 @@
+From 1f42cc1f00d9c6d46978ae82dba8a52f4d902369 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:17:12 +1000
+Subject: [PATCH 10/12] Xi: add bounds check for barrier events in
+ input_constrain_cursor
+
+input_constrain_cursor() writes barrier hit and leave events into the
+InputEventList buffer without checking how many slots remain.
+The buffer is allocated by the DDX at GetMaximumEventsNum() (100) entries
+and may contain one raw event already. A client can create more than 100
+pointer barriers, pre-arm them as released via XIBarrierReleasePointer,
+and then trigger a single pointer motion that crosses all barriers
+simultaneously. The leave event loop iterates every hit barrier and
+writes one event per barrier, overflowing the 100-slot buffer.
+
+In an ideal world we'd change the InternalEvent* pointer to a struct
+that contains allocated size, number of events and the pointer itself
+but we're crossing public APIs here and that requires an ABI bump.
+
+So we make do with cutting off the number of barrier events at 64 which
+should be low enough to not trigger the issue. However, for the 100+
+barrier case this means we only send BarierHit events, not BarrierRelease.
+Potentially leaving a client stuck.
+
+We mitigate that problem by simply refusing to create more than 32
+barriers per screen (which on its own would also fix the issue, but hey,
+'doppelt gemoppelt' as they say).
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31938
+
+CVE-2026-93519
+
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ Xi/xibarriers.c              |  82 ++++++++++++++++++----------
+ test/pyxtest/proto/xfixes.py |  99 ++++++++++++++++++++++++++++++++++
+ test/pyxtest/proto/xi.py     |  49 +++++++++++++++++
+ test/pyxtest/proto/xtest.py  |  77 ++++++++++++++++++++++++++
+ test/pyxtest/test_xi.py      | 102 ++++++++++++++++++++++++++++++++++-
+ 5 files changed, 381 insertions(+), 28 deletions(-)
+ create mode 100644 test/pyxtest/proto/xfixes.py
+ create mode 100644 test/pyxtest/proto/xtest.py
+
+diff --git a/Xi/xibarriers.c b/Xi/xibarriers.c
+index 2d84d3fb7..354d6d783 100644
+--- a/Xi/xibarriers.c
++++ b/Xi/xibarriers.c
+@@ -416,6 +416,18 @@ input_constrain_cursor(DeviceIntPtr dev, ScreenPtr screen,
+     InternalEvent *barrier_events = events;
+     DeviceIntPtr master;
+ 
++    /* We cannot know how many events are available in *events, but
++     * we know it all DDX very protbably allocated them with
++     * GetMaximumEventsNum() and fill_pointer_events() may have added one.
++     *
++     * Let's cap at a maximum of 64 barrier events which is way more than
++     * we'll need but low enough that we shouldn't OOB on *events.
++     *
++     * Changing the signatures to get some sz_events in here is an ABI change
++     * through miPointerSetPosition so... weeping face.
++     */
++    const int MAX_BARRIER_EVENTS = 64;
++
+     if (nevents)
+         *nevents = 0;
+ 
+@@ -460,7 +472,6 @@ input_constrain_cursor(DeviceIntPtr dev, ScreenPtr screen,
+         if (pbd->barrier_event_id == pbd->release_event_id)
+             continue;
+ 
+-        ev.type = ET_BarrierHit;
+         barrier_clamp_to_barrier(nearest, dir, &x, &y);
+ 
+         if (barrier_is_vertical(nearest)) {
+@@ -472,19 +483,22 @@ input_constrain_cursor(DeviceIntPtr dev, ScreenPtr screen,
+             current_y = y;
+         }
+ 
+-        ev.flags = 0;
+-        ev.event_id = pbd->barrier_event_id;
+-        ev.barrierid = c->id;
++        if (*nevents < MAX_BARRIER_EVENTS) {
++            ev.type = ET_BarrierHit;
++            ev.flags = 0;
++            ev.event_id = pbd->barrier_event_id;
++            ev.barrierid = c->id;
+ 
+-        ev.dt = new_sequence ? 0 : ms - pbd->last_timestamp;
+-        ev.window = c->window;
+-        pbd->last_timestamp = ms;
++            ev.dt = new_sequence ? 0 : ms - pbd->last_timestamp;
++            ev.window = c->window;
+ 
+-        /* root x/y is filled in later */
++            /* root x/y is filled in later */
+ 
+-        barrier_events->barrier_event = ev;
+-        barrier_events++;
+-        *nevents += 1;
++            barrier_events->barrier_event = ev;
++            barrier_events++;
++            *nevents += 1;
++        }
++        pbd->last_timestamp = ms;
+     }
+ 
+     xorg_list_for_each_entry(c, &cs->barriers, entry) {
+@@ -503,29 +517,31 @@ input_constrain_cursor(DeviceIntPtr dev, ScreenPtr screen,
+             continue;
+ 
+         pbd->hit = FALSE;
++        pbd->last_timestamp = ms;
++        /* If we've left the hit box, this is the
++         * start of a new event ID. */
++        pbd->barrier_event_id++;
+ 
+-        ev.type = ET_BarrierLeave;
++        if (*nevents < MAX_BARRIER_EVENTS) {
++            ev.type = ET_BarrierLeave;
+ 
+-        if (pbd->barrier_event_id == pbd->release_event_id)
+-            flags |= XIBarrierPointerReleased;
++            if (pbd->barrier_event_id == pbd->release_event_id)
++                flags |= XIBarrierPointerReleased;
+ 
+-        ev.flags = flags;
+-        ev.event_id = pbd->barrier_event_id;
+-        ev.barrierid = c->id;
++            ev.flags = flags;
++            ev.event_id = pbd->barrier_event_id;
++            ev.barrierid = c->id;
+ 
+-        ev.dt = ms - pbd->last_timestamp;
+-        ev.window = c->window;
+-        pbd->last_timestamp = ms;
++            ev.dt = ms - pbd->last_timestamp;
++            ev.window = c->window;
+ 
+-        /* root x/y is filled in later */
++            /* root x/y is filled in later */
+ 
+-        barrier_events->barrier_event = ev;
+-        barrier_events++;
+-        *nevents += 1;
++            barrier_events->barrier_event = ev;
++            barrier_events++;
++            *nevents += 1;
++        }
+ 
+-        /* If we've left the hit box, this is the
+-         * start of a new event ID. */
+-        pbd->barrier_event_id++;
+     }
+ 
+  out:
+@@ -557,8 +573,10 @@ CreatePointerBarrierClient(ClientPtr client,
+     int size;
+     int i;
+     struct PointerBarrierClient *ret;
++    struct PointerBarrierClient *counter;
+     CARD16 *in_devices;
+     DeviceIntPtr dev;
++    size_t nbarriers = 0;
+ 
+     size = sizeof(*ret) + sizeof(DeviceIntPtr) * stuff->num_devices;
+     ret = malloc(size);
+@@ -578,6 +596,16 @@ CreatePointerBarrierClient(ClientPtr client,
+     screen = pWin->drawable.pScreen;
+     cs = GetBarrierScreen(screen);
+ 
++    /* Only allow for a maximum of 32 barriers to be created. This
++     * should be more than enough and prevents issues in
++     * input_constrain_cursor, see MAX_BARRIER_EVENTS in that
++     * function */
++    xorg_list_for_each_entry(counter, &cs->barriers, entry) {
++        nbarriers++;
++        if (nbarriers >= 32)
++            return BadAlloc;
++    }
++
+     ret->screen = screen;
+     ret->window = stuff->window;
+     ret->num_devices = stuff->num_devices;
+diff --git a/test/pyxtest/proto/xfixes.py b/test/pyxtest/proto/xfixes.py
+new file mode 100644
+index 000000000..8c7b022a5
+diff --git a/test/pyxtest/proto/xtest.py b/test/pyxtest/proto/xtest.py
+new file mode 100644
+index 000000000..ef23f8601
+-- 
+2.51.0
+

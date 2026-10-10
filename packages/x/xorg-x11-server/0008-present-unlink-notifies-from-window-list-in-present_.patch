@@ -1,0 +1,73 @@
+From 1b6955c3108e6b43433aefe860070708e6f43d1b Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:04:47 +1000
+Subject: [PATCH 08/12] present: unlink notifies from window list in
+ present_clear_window_notifies
+
+When a window is destroyed, present_clear_window_notifies()
+does not remove the notify list node from the window. The notify
+may then be freed as part of the window_priv, leaving dangling
+pointers in place.
+
+When the vblank owning the notify is later torn down,
+present_free_window_notify() calls xorg_list_del() which
+writes through these dangling pointers (use-after-free write).
+
+This happens when Present cross-window notifies are used: a
+PresentPixmap on window A can reference window B as a notify target.
+An untriggered wait_fence keeps the vblank alive so that B can be
+destroyed first, creating the dangling-pointer window.
+
+Fix this by calling the free function we have (and moving the window
+reset into that function too). present_clear_window_notifies is only
+called from one place anyway.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31830
+
+CVE-2026-93515
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ present/present_notify.c     |  7 +--
+ test/pyxtest/proto/x11.py    | 90 ++++++++++++++++++++++++++++++++++++
+ test/pyxtest/test_present.py | 87 +++++++++++++++++++++++++++++++++-
+ 3 files changed, 180 insertions(+), 4 deletions(-)
+
+diff --git a/present/present_notify.c b/present/present_notify.c
+index 1f9ff7474..7cb0ad5b2 100644
+--- a/present/present_notify.c
++++ b/present/present_notify.c
+@@ -30,14 +30,14 @@
+ void
+ present_clear_window_notifies(WindowPtr window)
+ {
+-    present_notify_ptr          notify;
++    present_notify_ptr          notify, tmp;
+     present_window_priv_ptr     window_priv = present_window_priv(window);
+ 
+     if (!window_priv)
+         return;
+ 
+-    xorg_list_for_each_entry(notify, &window_priv->notifies, window_list) {
+-        notify->window = NULL;
++    xorg_list_for_each_entry_safe(notify, tmp, &window_priv->notifies, window_list) {
++        present_free_window_notify(notify);
+     }
+ }
+ 
+@@ -48,6 +48,7 @@ present_clear_window_notifies(WindowPtr window)
+ void
+ present_free_window_notify(present_notify_ptr notify)
+ {
++    notify->window = NULL;
+     xorg_list_del(&notify->window_list);
+ }
+ 
+-- 
+2.51.0
+

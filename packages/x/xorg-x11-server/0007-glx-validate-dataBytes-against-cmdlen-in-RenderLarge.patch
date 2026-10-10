@@ -1,0 +1,53 @@
+From 2abe4632d793314d3d5f28c19583fb76019f5ce4 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:16:49 +1000
+Subject: [PATCH 07/12] glx: validate dataBytes against cmdlen in RenderLarge
+ first request
+
+__glXDisp_RenderLarge() allocates the large command buffer based on
+cmdlen (from hdr->length, the total command size embedded in the
+payload), but copies dataBytes (from req->dataBytes, the payload size
+of the current sub-request) into it. The existing length check only
+validates that the X11 request length is consistent with dataBytes,
+not that dataBytes fits within the cmdlen-sized buffer.
+
+A malicious client can set hdr->length to a small value (e.g. 12 bytes)
+while sending a large dataBytes (up to ~256KB or more with
+BIG-REQUESTS), causing the memcpy to overflow the cmdlen-sized buffer.
+
+Add a check that dataBytes <= cmdlen before the buffer allocation and
+copy on the first request.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31833
+
+CVE-2026-93517
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ glx/glxcmds.c             |  3 ++
+ test/pyxtest/proto/glx.py | 50 +++++++++++++++++++++
+ test/pyxtest/test_glx.py  | 94 +++++++++++++++++++++++++++++++++++++++
+ 3 files changed, 147 insertions(+)
+
+diff --git a/glx/glxcmds.c b/glx/glxcmds.c
+index 58ef861f5..39b187fd9 100644
+--- a/glx/glxcmds.c
++++ b/glx/glxcmds.c
+@@ -2187,6 +2187,9 @@ __glXDisp_RenderLarge(__GLXclientState * cl, GLbyte * pc)
+             return BadLength;
+         }
+ 
++        if (dataBytes > cmdlen)
++            return BadLength;
++
+         /*
+          ** Make enough space in the buffer, then copy the entire request.
+          */
+-- 
+2.51.0
+

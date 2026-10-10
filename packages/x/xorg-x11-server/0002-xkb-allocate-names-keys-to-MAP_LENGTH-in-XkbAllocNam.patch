@@ -1,0 +1,54 @@
+From b941a473e06f26a407a9adb15759be79f7418e86 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:04:03 +1000
+Subject: [PATCH 02/12] xkb: allocate names->keys to MAP_LENGTH in
+ XkbAllocNames
+
+Commit a3171732d ("xkb: Always use MAP_LENGTH keymap size") converted
+most XKB allocation functions to use MAP_LENGTH (256) instead of
+max_key_code + 1. It also removed the per-array reallocarray() calls in
+XkbChangeKeycodeRange(), replacing them with a memset up to MAP_LENGTH.
+However, XkbAllocNames() was missed and still allocates names->keys to
+max_key_code + 1.
+
+When a keycodes component with max_key_code < 255 is loaded (e.g.
+sun(type6) with max_key_code=132) and then a SetMap request extends
+maxKeyCode to 255, XkbChangeKeycodeRange() memsets names->keys from
+max_key_code to MAP_LENGTH-1, writing past the undersized allocation.
+
+Fix by allocating names->keys to MAP_LENGTH, consistent with all other
+keymap arrays after a3171732d.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31941
+
+CVE-2026-93520
+
+Fixes: a3171732da50 ("xkb: Always use MAP_LENGTH keymap size")
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ test/pyxtest/test_xkb.py | 75 ++++++++++++++++++++++++++++++++++++++++
+ xkb/XKBAlloc.c           |  2 +-
+ 2 files changed, 76 insertions(+), 1 deletion(-)
+
+diff --git a/xkb/XKBAlloc.c b/xkb/XKBAlloc.c
+index dced42eeb..314a858dd 100644
+--- a/xkb/XKBAlloc.c
++++ b/xkb/XKBAlloc.c
+@@ -148,7 +148,7 @@ XkbAllocNames(XkbDescPtr xkb, unsigned which, int nTotalRG, int nTotalAliases)
+             (!XkbIsLegalKeycode(xkb->max_key_code)) ||
+             (xkb->max_key_code < xkb->min_key_code))
+             return BadValue;
+-        names->keys = calloc((xkb->max_key_code + 1), sizeof(XkbKeyNameRec));
++        names->keys = calloc(MAP_LENGTH, sizeof(XkbKeyNameRec));
+         if (names->keys == NULL)
+             return BadAlloc;
+     }
+-- 
+2.51.0
+

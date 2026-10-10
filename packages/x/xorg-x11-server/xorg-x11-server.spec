@@ -242,6 +242,18 @@ Patch1960:      u_sync-pci-ids-with-Mesa.patch
 
 Patch1218176:   u_miCloseScreen_check_for_null_pScreen_dev_private.patch
 
+Patch1281213:   0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
+Patch1281236:   0002-xkb-allocate-names-keys-to-MAP_LENGTH-in-XkbAllocNam.patch
+Patch1281227:   0003-xkb-widen-size_syms-num_syms-size_acts-num_acts-to-u.patch
+Patch1281242:   0004-xkb-fix-CheckKeySyms-overwriting-request-range-symsP.patch
+Patch1281238:   0005-randr-fix-size-and-offset-in-RRChangeProviderPropert.patch
+Patch1281241:   0006-Xi-validate-modifier-values-in-ProcXIPassiveUngrabDe.patch
+Patch1281225:   0007-glx-validate-dataBytes-against-cmdlen-in-RenderLarge.patch
+Patch1281218:   0008-present-unlink-notifies-from-window-list-in-present_.patch
+Patch1281220:   0009-dix-remove-passive-grabs-referencing-a-device-on-rem.patch
+Patch1281233:   0010-Xi-add-bounds-check-for-barrier-events-in-input_cons.patch
+Patch1281244:   0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch
+
 %description
 This package contains the X.Org Server.
 
@@ -394,6 +406,18 @@ sh %{SOURCE92} --verify . %{SOURCE91}
 %patch -P 1960 -p1
 
 %patch -P 1218176 -p1
+
+%patch -P 1281213 -p1
+%patch -P 1281236 -p1
+%patch -P 1281227 -p1
+%patch -P 1281242 -p1
+%patch -P 1281238 -p1
+%patch -P 1281241 -p1
+%patch -P 1281225 -p1
+%patch -P 1281218 -p1
+%patch -P 1281220 -p1
+%patch -P 1281233 -p1
+%patch -P 1281244 -p1
 
 %build
 # We have some -z now related errors during X default startup (boo#1197994):
