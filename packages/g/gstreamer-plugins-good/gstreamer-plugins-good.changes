@@ -1,4 +1,45 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:40:05 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.8:
+  * adaptivedemux2:
+    + Drain downloadhelper main context with the main context as
+      the thread default
+    + SIGABRT in downloadhelper_stop() draining transfer context
+    + Remove redundant hls_dep fallback, re-enabling unit tests
+  * audiofx: Miscellaneous FIR filter fixes
+  * flacparse:
+    + regression since 1.28 - valid FLAC errors out with "Internal
+      data stream error" after a seek
+    + Fix resyncing after a seek
+  * matroska: Use the display unit for storing the display aspect
+    ratio more accurately
+  * matroskamux: DisplayWidth rounding loses aspect ratio for
+    non-integer PARs
+  * matroskademux: fix crash caused by bogus xiph codec data packet
+    sizes
+  * qtmux: preserve earliest reordered presentation time
+  * rtph265depay: Check for short packets before processing them
+  * rtph265pay: unmap the RTP header before appending the payload
+  * rtpsession: Ignore SDES priv RTCP packets with invalid lengths
+  * rtp: Various small (RTP and not) depayloader fixes
+  * rtpL8depay, rtpL16depay, rtpL24depay: fix out of bounds write
+    for high channel count
+  * rtspsrc:
+    + Fix handling of missing control attribute with multiple media
+      sections
+    + SIGSEGV in gst_rtspsrc_setup_streams_start() when an SDP
+      media section has no a=control attribute
+  * v4l2:
+    + fix guint overflow in calculate_max_sizeimage
+    + object: Don't corrupt the caller's filter caps when probing
+
+-------------------------------------------------------------------
+Tue Oct  6 15:12:16 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Tue Sep  8 07:10:12 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.7:

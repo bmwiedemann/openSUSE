@@ -33,13 +33,13 @@
 %endif
 
 Name:           gstreamer-plugins-good
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source1:        gstreamer-plugins-good.appdata.xml
 Source99:       baselibs.conf
 
@@ -175,7 +175,7 @@ This package provides the qml6glsink output plugin for gstreamer-plugins-good.
 %lang_package
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -p1 -n gstreamer-%{version}
 
 %build
 %if 0%{?suse_version} < 1600
