@@ -19,13 +19,13 @@
 %define gst_branch 1.0
 
 Name:           gstreamer-plugins-libav
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        A ffmpeg/libav plugin for GStreamer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        gst-libav-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source1000:     baselibs.conf
 
 BuildRequires:  gcc-c++
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(libavformat)
 BuildRequires:  pkgconfig(libavutil)
 BuildRequires:  pkgconfig(liblzma)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(orc-0.4) >= 0.4.16
+BuildRequires:  pkgconfig(orc-0.4) >= 0.4.34
 BuildRequires:  pkgconfig(zlib)
 Requires:       gstreamer >= %{version}
 Enhances:       gstreamer
@@ -60,23 +60,8 @@ plug-ins.
 This plugin contains the FFmpeg codecs, containing codecs for most popular
 multimedia formats.
 
-%package doc
-Summary:        GStreamer Streaming-Media Framework Plug-Ins
-Group:          Development/Libraries/C and C++
-Requires:       %{name} = %{version}
-
-%description doc
-GStreamer is a streaming media framework, based on graphs of filters which
-operate on media data. Applications using this library can do anything
-from real-time sound processing to playing videos, and just about anything
-else media-related. Its plugin-based architecture means that new data
-types or processing capabilities can be added simply by installing new
-plug-ins.
-
-This plugin contains the documentation
-
 %prep
-%autosetup -n gst-libav-%{version} -p1
+%autosetup -p1 -n gstreamer-%{version}
 
 %build
 %meson \

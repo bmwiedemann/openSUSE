@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:58:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.8:
+  * avaudenc: Fix endless drain of encoders that support flushing
+  * avcodecmap: Take the dual mono case into account
+  * avenc_tta: Allow up to 16 channels and use that in the 16
+    channel test
+  * Disable OMX encoders and decoders
+- Update version dependencies according to meson.build
+- Drop leftover doc subpackage from spec, not built for many years
+
+-------------------------------------------------------------------
+Tue Oct  6 15:33:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Wed Sep 30 11:29:58 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add gst-libav Provides (upstream name).
