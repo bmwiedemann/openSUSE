@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:38:02 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.14.7:
+  * Do not require a completions resource in wrap_anthropic
+  * Normalize sandbox API endpoint prefixes
+  * No new runtime dependencies; requires-python stays >= 3.10
+
+-------------------------------------------------------------------
 Fri Oct  9 07:06:49 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.14.5:
