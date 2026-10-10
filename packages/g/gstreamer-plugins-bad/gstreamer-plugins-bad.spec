@@ -16,7 +16,6 @@
 #
 
 
-%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 # Use rpmbuild -D 'BUILD_ORIG 1' to build original code.
 # Use rpmbuild -D 'BUILD_ORIG 1' -D 'BUILD_ORIG_ADDON 1' to build patched build plus original as addon.
 %define _name gst-plugins-bad
@@ -81,13 +80,13 @@
 %endif
 
 Name:           gstreamer-plugins-bad
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source2:        gstreamer-plugins-bad.appdata.xml
 Source99:       baselibs.conf
 # PATCH-FIX-OPENSUSE spandsp3.patch jengelh@inai.de -- Fix build against spandsp 3.x. Patch is not upstreamable in this form
@@ -132,12 +131,12 @@ BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gmodule-export-2.0)
 BuildRequires:  pkgconfig(graphene-1.0) >= 1.4.0
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.7
 BuildRequires:  pkgconfig(gstreamer-allocators-1.0)
-BuildRequires:  pkgconfig(gstreamer-audio-1.0) >= %{gstreamer_req_version}
-BuildRequires:  pkgconfig(gstreamer-pbutils-1.0) >= %{gstreamer_req_version}
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= %{gstreamer_req_version}
-BuildRequires:  pkgconfig(gstreamer-video-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-audio-1.0)
+BuildRequires:  pkgconfig(gstreamer-pbutils-1.0)
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.28.7
+BuildRequires:  pkgconfig(gstreamer-video-1.0)
 BuildRequires:  pkgconfig(gtk+-3.0)
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(json-glib-1.0)
@@ -152,8 +151,8 @@ BuildRequires:  pkgconfig(libcurl) >= 7.35.0
 BuildRequires:  pkgconfig(libdc1394-2) >= 2.0.0
 BuildRequires:  pkgconfig(libdca)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
-BuildRequires:  pkgconfig(libfreeaptx)
 BuildRequires:  pkgconfig(libexif) >= 0.6.16
+BuildRequires:  pkgconfig(libfreeaptx)
 BuildRequires:  pkgconfig(libopenmpt)
 BuildRequires:  pkgconfig(libpng) >= 1.2
 BuildRequires:  pkgconfig(libqrencode)
@@ -857,7 +856,7 @@ making use of the GStreamer Transcoding API.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p1 -n gstreamer-%{version}
 %if ! 0%{?BUILD_ORIG}
 rm -Rf sys/decklink
 sed -ie "/subdir('decklink')/d" sys/meson.build

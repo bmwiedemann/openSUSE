@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:10:42 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.8:
+  * adpcmenc: stop the IMA encode loop before reading past the input frame
+  * amfav1enc: Force a key frame on force-key-unit
+  * ccutils: Miscellaneous parsing fixes
+  * closedcaption: Use truncated length when converting CEA708 / CEA608 S334-1A data too
+  * d3d12: Various GstBaseTransform::transform_meta() related fixes
+  * hipevent: Fix device ID getter
+  * hipmemory: Fix minor leak and typo
+  * jpegparse: handle missing NUL terminator in COM segment
+  * mpegts: fix GError usage in a loop
+  * mxfdemux: Add support for reading AAF AIFF-AIFC audio
+  * mxfmux: Fix possible crash when adding a new segment due to frame reordering
+  * nvh264dec: Fix top field POC in DPB entry
+  * rsvgdec: Fix out-of-bounds read when scanning for SVG end tag
+  * rtp: Various small (RTP and not) depayloader fixes
+  * segmentationoverlay:
+    + Fix off-by-one bug and add test
+    + Respect video meta strides
+  * va: compositor: Fix alpha blending with Intel driver
+  * vmaf: use GST_PARAM_DOC_SHOW_DEFAULT for "threads" property
+  * vulkan:
+    + encoder: DPB slots and DBP barrier fixes
+    + h26x enc/dec misc fixes
+    + tests: examples fixes
+  * webrtc/nice: Fix crash in nice_candidate_free during gather
+- Refresh spandsp3.patch with quilt.
+
+-------------------------------------------------------------------
+Tue Oct  6 15:05:24 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Migrate to xz compression and manual service run
+
+-------------------------------------------------------------------
 Sat Oct  3 06:11:33 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Add pkgconfig(libfreeaptx) BuildRequires and stop passing

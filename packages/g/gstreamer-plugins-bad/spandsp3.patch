@@ -7,10 +7,10 @@ Make the build with spandsp-3.x succeed again.
  ext/spandsp/gstspanplc.c |    1 +
  1 file changed, 1 insertion(+)
 
-Index: gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
+Index: gstreamer-1.28.8/ext/spandsp/gstspanplc.c
 ===================================================================
---- gst-plugins-bad-1.20.1.orig/ext/spandsp/gstspanplc.c
-+++ gst-plugins-bad-1.20.1/ext/spandsp/gstspanplc.c
+--- gstreamer-1.28.8.orig/ext/spandsp/gstspanplc.c
++++ gstreamer-1.28.8/ext/spandsp/gstspanplc.c
 @@ -36,6 +36,10 @@
  #include "gstspanplc.h"
  
