@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Fri Oct  9 22:46:18 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Update to 26.08
+  * Updates the code to build with Mir API changes
+  * Fixes documentation of shell-component (gh#miriway/miriway#213)
+  * Fixes misuse of MIRIWAY_CONFIG_DIR (gh#miriway/miriway#214)
+
+-------------------------------------------------------------------
 Thu Jun 18 15:26:34 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
 
 - Update version 26.06.1
