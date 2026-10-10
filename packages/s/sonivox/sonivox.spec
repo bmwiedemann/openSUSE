@@ -18,17 +18,13 @@
 
 %define soversion 4
 Name:           sonivox
-Version:        4.0.1
+Version:        4.0.2
 Release:        0
 Summary:        Fork of the AOSP 'platform_external_sonivox' project
 License:        Apache-2.0
 URL:            https://github.com/pedrolcl/sonivox
 Source:         https://github.com/pedrolcl/sonivox/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 BuildRequires:  cmake >= 3.21
-%if 0%{?suse_version} == 1500
-BuildRequires:  gcc14-PIE
-BuildRequires:  gcc14-c++
-%endif
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  cmake(GTest)
@@ -69,10 +65,6 @@ Development files for the sonivox library.
 %autosetup -p1
 
 %build
-%if 0%{?suse_version} == 1500
-export CC=gcc-14 CXX=g++-14
-%endif
-
 %cmake -DBUILD_SONIVOX_STATIC:BOOL=FALSE \
        -DBUILD_EXAMPLE:BOOL=FALSE \
        -DBUILD_TESTING:BOOL=FALSE

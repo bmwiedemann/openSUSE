@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 10 07:45:21 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 4.0.2
+  * Fix documentation of EAS_SetVolume and EAS_GetVolume
+  * New configurable options for flexible DLS testing
+  * Conditional DLS testing
+
+-------------------------------------------------------------------
 Tue Mar 10 10:06:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.0.1
