@@ -16,20 +16,20 @@
 #
 
 
-%define _name   gst-devtools
+%define _name   gstreamer
 # rust1.88 build failed without this flag on PowerPC, bsc#1246111
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 %{?sle15_python_module_pythons}
 Name:           gstreamer-devtools
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        Development and debugging tools for GStreamer
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source:         %{_name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
+Source:         %{_name}-%{version}.tar.xz
+Source2:        vendor.tar.xz
 # PATCH-FIX-UPSTREAM gst-devtools-fix-hicolor-dir.patch -- Install icon file in correct folder
 Patch0:         gst-devtools-fix-hicolor-dir.patch
 

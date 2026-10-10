@@ -4,23 +4,25 @@
     <param name="scm">git</param>
     <param name="url">https://gitlab.freedesktop.org/gstreamer/gstreamer.git</param>
     <param name="subdir">subprojects/gst-devtools</param>
-    <param name="filename">gst-devtools</param>
-    <param name="revision">1.28.7</param>
+    <param name="revision">1.28.8</param>
     <param name="versionformat">@PARENT_TAG@+@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">v?(.*)\+0</param>
     <param name="versionrewrite-replacement">\1</param>
 <!--    <param name="changesgenerate">enable</param> -->
   </service>
   <service name="cargo_vendor" mode="manual">
-	  <param name="srcdir">gstreamer/subprojects/gst-devtools/dots-viewer</param>
-	  <param name="compression">zst</param>
-	  <param name="update">false</param>
+    <param name="srcdir">gstreamer/subprojects/gst-devtools/dots-viewer</param>
+    <param name="compression">xz</param>
+    <param name="update">false</param>
   </service>
-  <service name="tar" mode="buildtime"/>
-  <service name="recompress" mode="buildtime">
+    <service name="tar" mode="manual">
+    <param name="subdir">subprojects/gst-devtools</param>
+  </service>
+  <service name="recompress" mode="manual">
     <param name="file">*.tar</param>
-    <param name="compression">zst</param>
+    <param name="compression">xz</param>
   </service>
-  <service name="set_version" mode="manual" />
+  <service name="set_version" mode="manual">
+  </service>
 </services>
 
