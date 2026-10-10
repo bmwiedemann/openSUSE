@@ -292,4 +292,12 @@ claude-sonnet-4-5 is deprecated. No new dependencies.
     <comment>Update to 1.12.1: new model ids and tool-call types, RBAC display_name deprecates name, chores-only 1.12.1. Local build green, rpmlint clean.</comment>
     <requestid>1383211</requestid>
   </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>2af5cd4c17af3c9e2fc870c94cb3bf27</srcmd5>
+    <version>1.13.0</version>
+    <time>1791638477</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-anthropic to 1.13.0: unified analytics metric types, Managed Agents workflows and multiagent config, Skills error codes. No new runtime dependencies.</comment>
+    <requestid>1383991</requestid>
+  </revision>
 </revisionlist>
