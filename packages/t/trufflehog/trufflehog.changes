@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct 09 05:02:39 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 3.99.2:
+  * Copy over dedupe cache size into the engine from the config in
+    #5402
+- Update to version 3.99.1:
+  * [INT-1084] Make the results deduplication cache size
+    configurable (#5399)
+  * Update github-actions (#5363)
+
+-------------------------------------------------------------------
 Wed Oct 07 05:02:22 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 3.99.0:
