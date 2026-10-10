@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Thu Oct  8 11:09:08 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update to 2.61.0
+  * **auth:** support bound access and ID tokens for GKE (#18594)
+- from version 2.60.0
+  * **auth:** Support sync credentials in AsyncAuthorizedSession (#18542)
+- from version 2.59.1
+  * **auth:** support mTLS in requests.Request for token refresh and
+    impersonation (#18486)
+- from version 2.59.0
+  * declare Python3.15 support
+- from version 2.58.1
+  * **auth:** allow mTLS retry when credentials raise NotImplementedError
+    on refresh (#18349)
+- from version 2.58.0
+  * [aiohttp] Add mTLS reconfiguration logic when certificate mismatch
+  * **auth:** [aiohttp] Add mTLS reconfiguration logic when certificate
+    mismatch for existing credentials & Agent Identity workloads (#18224)
+- from version 2.57.1
+  * **auth:** parse hostname for mTLS and PSC endpoint certificate
+    rotation (#18147)
+
+-------------------------------------------------------------------
 Thu Sep  3 10:29:35 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update to 2.57.0
