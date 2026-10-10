@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:01:57 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * CI: Comment flatpak job
+  * confirmationssettingspage: Set vertical text alignment for form labels
+  * kstandarditemlistwidget: Fix poorly legible selection text with certain styles and color schemes (kde#524851)
+  * folderspanel: set hightLightEntireRow for view (kde#486383)
+  * dolphinview: Refresh the default zoom level when previews are toggled (kde#524842)
+  * viewproperties: keep the style chosen for a special folder (kde#501442)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:33:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
