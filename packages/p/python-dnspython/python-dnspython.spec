@@ -27,17 +27,17 @@
 %define skip_python2 1
 %{?sle15_python_module_pythons}
 Name:           python-dnspython%{psuffix}
-Version:        2.8.0
+Version:        2.9.0
 Release:        0
 Summary:        A DNS toolkit for Python
 License:        ISC
 Group:          Development/Languages/Python
 URL:            https://github.com/rthalley/dnspython
-Source:         https://files.pythonhosted.org/packages/source/d/dnspython/dnspython-%{version}.tar.gz
-BuildRequires:  %{python_module base >= 3.10}
-BuildRequires:  %{python_module hatchling}
+Source:         https://github.com/rthalley/dnspython/archive/refs/tags/v%{version}/dnspython-%{version}.tar.gz
+BuildRequires:  %{python_module base >= 3.11}
+#BuildRequires:  %{python_module hatchling}
+BuildRequires:  %{python_module uv-build >= 0.9.21}
 BuildRequires:  %{python_module pip}
-BuildRequires:  %{python_module poetry-core}
 BuildRequires:  fdupes
 BuildRequires:  python-rpm-macros
 # dnssec
@@ -55,7 +55,6 @@ BuildArch:      noarch
 %if %{with test}
 # dnssec
 BuildRequires:  %{python_module cryptography}
-# BuildRequires:  %%{python_module curio >= 1.2}
 BuildRequires:  %{python_module h2}
 # doh
 BuildRequires:  %{python_module httpx}
@@ -69,7 +68,7 @@ BuildRequires:  %{python_module requests}
 # # curio
 # BuildRequires:  %%{python_module sniffio >= 1.1}
 # trio
-BuildRequires:  %{python_module trio >= 0.30.0}
+BuildRequires:  %{python_module trio >= 0.34.0}
 BuildRequires:  %{python_module typing}
 BuildRequires:  netcfg
 BuildRequires:  (python3-contextvars if python3-base < 3.7)

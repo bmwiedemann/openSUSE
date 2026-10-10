@@ -413,4 +413,12 @@
     <comment>- Skip tests failing with idna 1.19</comment>
     <requestid>1375549</requestid>
   </revision>
+  <revision rev="43" vrev="1">
+    <srcmd5>90353108d2d5bf395112efb985cd1665</srcmd5>
+    <version>2.9.0</version>
+    <time>1791637117</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1383833</requestid>
+  </revision>
 </revisionlist>
