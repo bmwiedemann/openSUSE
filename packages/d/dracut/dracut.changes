@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 09 09:13:44 UTC 2026 - antonio.feijoo@suse.com
+
+- Update to version 112+suse.54.g5c7a104:
+  * fix(systemd-pcrextend): add systemd-pcrextend.socket
+
+-------------------------------------------------------------------
 Thu Sep 24 06:24:31 UTC 2026 - antonio.feijoo@suse.com
 
 - Update to version 112+suse.53.g97cbf62:
