@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kmbox
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        KDE PIM Libraries: Mailbox functionality
 License:        LGPL-2.1-or-later
