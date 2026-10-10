@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 10 09:16:47 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 4.7.4
+  * Fix sample bounding in Imago Orpheus IMF loader.
+  * Remove maximum samples clamp in libxmp_load_epilogue (it is not
+    protecting anything and causes leaks in the XM loader).
+
+-------------------------------------------------------------------
 Fri Sep 11 20:22:09 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 4.7.3
