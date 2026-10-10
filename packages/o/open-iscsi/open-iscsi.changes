@@ -1,4 +1,35 @@
 -------------------------------------------------------------------
+Tue Oct 06 16:14:10 UTC 2026 - Lee Duncan <lduncan@suse.com>
+
+- Update to version 2.1.13.suse+4.dc2446a1:
+  * iscsid: honor REPORT LUNS DATA HAS CHANGED again (#557)
+  * Convert shell scripts to POSIX sh (#552)
+  * Preparing for version 2.1.13
+  * iscsiuio: fix incorrect comparison of IPv6 subnet mask
+  * usr: verify IPC peer credentials before sending data
+  * login: fix infinite redirect loops with configurable limits
+  * iscsiuio: strengthen IPv6 payload length validation in uip_process()
+  * iscsiuio: strengthen DHCPv6 option parsing loop bound check
+  * iscsiuio: validate DHCPv6 IA_NA option lengths to prevent OOB reads
+  * usr: network code ioctl handling improvements
+  * fix typo in user-facing error message in verify_mode_params() (#548)
+  * gitignore: ignore generated build artifacts (#550)
+  * iscsiadm: handle getopt errors directly (#551)
+  * Fix iscsi_conn_iface_has_ip error handling (#531)
+  * Fix reopen log freq change (#542)
+  * iscsi_net_util: fix broken VLAN support in find_vlan_dev (#545)
+  * Fixes for CVEs CVE-2026-18724 - CVE-2026-18728 (#544)
+  * usr: fix "-Wdiscarded-qualifiers" warning in auth.c (#539)
+  * usr: Fix -Wdiscarded-qualifiers warning in iqn_name_valid (#537)
+  * iscsiuio: Fix -Waddress-of-packed-member (#534)
+  * Fixes CVEs:
+    + bsc#1275171/CVE-2026-18724
+    + bsc#1275258/CVE-2026-18725
+    + bsc#1275260/CVE-2026-18726
+    + bsc#1275261/CVE-2026-18727
+    + bsc#1275262/CVE-2026-18728
+
+-------------------------------------------------------------------
 Thu Jul 16 17:56:39 UTC 2026 - Lee Duncan <lduncan@suse.com>
 
 - Update to version 2.1.12.suse+0.8f77cf16:

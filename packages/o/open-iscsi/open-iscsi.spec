@@ -45,13 +45,13 @@
 %endif
 
 %define iscsi_minor_release 1
-%define iscsi_patch_release 12
+%define iscsi_patch_release 13
 %define iscsi_patch_release_suse %{iscsi_patch_release}.suse
-%define iscsi_service_tag 0.8f77cf16
+%define iscsi_service_tag 4.dc2446a1
 %define libname libopeniscsiusr0
 %define libversion 0.2.0
 Name:           open-iscsi
-Version:        2.1.12
+Version:        2.1.13
 Release:        0
 Summary:        Linux iSCSI Software Initiator
 License:        GPL-2.0-or-later
