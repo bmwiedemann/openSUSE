@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:04:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Fix reading MAPI string values lacking null termination (kde#525967)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:37:16 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
