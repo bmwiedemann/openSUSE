@@ -22,7 +22,7 @@
 
 %bcond_without released
 Name:           kio-extras
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Additional KIO slaves for KDE applications
 License:        GPL-2.0-or-later
@@ -63,10 +63,7 @@ BuildRequires:  cmake(Qt6Network) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Sql) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
-# Leap only has openEXR 2
-%if 0%{?suse_version} > 1500
 BuildRequires:  pkgconfig(OpenEXR) >= 3.0
-%endif
 BuildRequires:  pkgconfig(flac)
 BuildRequires:  pkgconfig(libimobiledevice-1.0)
 BuildRequires:  pkgconfig(libplist-2.0)
@@ -170,9 +167,7 @@ This is the development package for libkioarchive6
 %{_kf6_plugindir}/kf6/thumbcreator/directorythumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/djvuthumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/ebookthumbnail.so
-%if 0%{?suse_version} > 1500
 %{_kf6_plugindir}/kf6/thumbcreator/exrthumbnail.so
-%endif
 %{_kf6_plugindir}/kf6/thumbcreator/imagethumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/jpegthumbnail.so
 %{_kf6_plugindir}/kf6/thumbcreator/kraorathumbnail.so

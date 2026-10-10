@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:03:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Thumbnail worker: fix unneeded scaling of folder pixmaps and sub thumbs
+
+-------------------------------------------------------------------
 Tue Sep  8 09:35:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
