@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 16:39:37 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 0.4b56:
+  * Fixes for more strict modern GCC.
+  * Fixes for bigendian architectures and alpha debian port.
+  * Fix restore of extended attributes where tape is
+    written or read on a big-endian machine. LE restore of a
+    LE written tape was unaffected.
+  * Allow the initial bitmaps written to tape to span
+    more than one volume.
+
+-------------------------------------------------------------------
 Sat Sep 12 14:23:29 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4b55:
@@ -135,9 +147,9 @@ Fri Jul 16 15:28:17 UTC 2021 - Danilo Spinella <danilo.spinella@suse.com>
 Sun Mar 29 21:05:53 UTC 2020 - Kristyna Streitova <kstreitova@suse.com>
 
 - starting with GCC 10, the default of '-fcommon' option will
-  change to '-fno-common'. Because dump build fails with 
+  change to '-fno-common'. Because dump build fails with
   'fno-common', add '-fcommon' option to optflags as a temporary
-  workaround for this problem till it's properly fixed [bsc#1160263]  
+  workaround for this problem till it's properly fixed [bsc#1160263]
 
 -------------------------------------------------------------------
 Thu Jun 15 12:33:17 UTC 2017 - tchvatal@suse.com
@@ -182,7 +194,7 @@ Tue Mar 21 10:13:12 UTC 2017 - svalx@svalx.net
 - A new version of dump have an updated make system, because of this
   * remove patches dump-0.4b43-configure.patch, dump-0.4b43-destdir.patch, dump-buildfix.patch
   * rebase patch dump-0.4b43-pathnames.patch to dump-0.4b46-pathnames.patch
-- Add dump-0.4b46-lzo-no-return.patch - fixing rpmlint 
+- Add dump-0.4b46-lzo-no-return.patch - fixing rpmlint
   no-return-in-nonvoid-function error in dump
 - Add dump-0.4b46-rmt-ermt.patch - independent rmt and ermt build,
   change its locations to _bindir
@@ -193,7 +205,7 @@ Tue Mar 21 10:13:12 UTC 2017 - svalx@svalx.net
 -------------------------------------------------------------------
 Fri May  1 15:16:02 UTC 2015 - mpluskal@suse.com
 
-- Enable ermt support 
+- Enable ermt support
 - Update dependencies
 
 -------------------------------------------------------------------
@@ -203,21 +215,21 @@ Tue Feb 24 18:37:52 UTC 2015 - mpluskal@suse.com
 - Update urls
 - Add patch dump-buildfix.patch
 - Update to 0.4b44
-  * Recognize ext4 partitions in dump -w commands (Sourceforge bug 
+  * Recognize ext4 partitions in dump -w commands (Sourceforge bug
     #3125587, RedHat bug #658890).
-  * Fix an issue with multi volume backups, which breaks restoring 
-    of files which are splitted on two or more volumes and are 
+  * Fix an issue with multi volume backups, which breaks restoring
+    of files which are splitted on two or more volumes and are
     starting on 2nd tape or later (RedHat bug #507948).
-  * Fix a bug in dump when dumping files with holes. This bug was 
-    introduced in 0.4b42 while adding ext4 support. (Sourceforge 
+  * Fix a bug in dump when dumping files with holes. This bug was
+    introduced in 0.4b42 while adding ext4 support. (Sourceforge
     bug #3133762).
-  * Fix a bug in restore -P where useless index files for 
+  * Fix a bug in restore -P where useless index files for
     compressed dumps were created (Debian bug #583093).
-  * Fix SYS_clone invocation on s390 architectures (Sourceforge 
+  * Fix SYS_clone invocation on s390 architectures (Sourceforge
     bug #3303235).
   * Fix static builds.
   * Add quick regression script from Bear Giles.
-  * Fix a bug introduced in 0.4b43 causing restore to crash when 
+  * Fix a bug introduced in 0.4b43 causing restore to crash when
     asking for a new volume when doing multi-volume restores.
 
 -------------------------------------------------------------------
@@ -386,7 +398,7 @@ Fri Aug 17 14:21:31 CEST 2001 - nadvornik@suse.cz
 -------------------------------------------------------------------
 Thu Aug 16 00:12:55 CEST 2001 - ro@suse.de
 
-- up to 0.4b23 to make it build with new e2fsprogs 
+- up to 0.4b23 to make it build with new e2fsprogs
 
 -------------------------------------------------------------------
 Tue Feb 27 11:29:53 CET 2001 - nadvornik@suse.cz
@@ -428,7 +440,7 @@ Sun Dec  3 15:17:15 CET 2000 - smid@suse.cz
 -------------------------------------------------------------------
 Thu Nov  9 00:05:49 CET 2000 - ro@suse.de
 
-- fixed neededforbuild 
+- fixed neededforbuild
 
 -------------------------------------------------------------------
 Fri Sep 29 10:42:05 CEST 2000 - smid@suse.cz
@@ -455,7 +467,7 @@ Thu Feb 10 16:49:19 CET 2000 - kukuk@suse.de
 Sun Jan 30 17:46:55 CET 2000 - kukuk@suse.de
 
 - Update to version 0.4b13
-- Move /usr/man -> /usr/share/man 
+- Move /usr/man -> /usr/share/man
 
 -------------------------------------------------------------------
 Mon Dec  6 16:18:54 MET 1999 - kukuk@suse.de
@@ -476,12 +488,12 @@ Mon Nov  8 12:39:32 MET 1999 - kukuk@suse.de
 -------------------------------------------------------------------
 Fri Oct 29 10:36:28 CEST 1999 - ro@suse.de
 
-- fixed spec for e2fsprogs-1.17 
+- fixed spec for e2fsprogs-1.17
 
 -------------------------------------------------------------------
 Mon Oct 25 00:02:14 CEST 1999 - ro@suse.de
 
-- fixed spec for e2fsprogs-1.16 
+- fixed spec for e2fsprogs-1.16
 
 -------------------------------------------------------------------
 Mon Oct 18 16:13:55 MEST 1999 - kukuk@suse.de
@@ -496,12 +508,12 @@ Mon Sep 13 17:23:57 CEST 1999 - bs@suse.de
 -------------------------------------------------------------------
 Tue Aug 31 11:03:02 CEST 1999 - ro@suse.de
 
-- changed for e2fsprogs-1.15 / only do install-lib 
+- changed for e2fsprogs-1.15 / only do install-lib
 
 -------------------------------------------------------------------
 Sat Jun 26 18:40:37 MEST 1999 - kukuk@suse.de
 
-- Update to dump 0.4b4 
+- Update to dump 0.4b4
 
 -------------------------------------------------------------------
 Tue Sep  1 17:28:14 MEST 1998 - ro@suse.de

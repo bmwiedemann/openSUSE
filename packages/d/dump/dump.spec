@@ -17,7 +17,7 @@
 
 
 Name:           dump
-Version:        0.4b55
+Version:        0.4b56
 Release:        0
 Summary:        Programs for backing up and restoring ext2/3/4 filesystems
 License:        BSD-3-Clause
