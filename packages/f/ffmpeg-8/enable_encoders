@@ -25,7 +25,6 @@ anull
 apng # libpng
 aptx
 aptx_hd
-apv # liboapv
 ass # trivial
 asv1
 asv2
@@ -74,6 +73,7 @@ libilbc # ilbc
 libjxl # libjxl
 liblc3 # liblc3
 libmp3lame # lame
+liboapv # apv
 libopencore_amrnb # opencore-amr
 libopenh264 # passthrough/dlopen
 libopenjpeg # openjpeg
