@@ -148,4 +148,12 @@
 - Update to version 2.54.0:</comment>
     <requestid>1382718</requestid>
   </revision>
+  <revision rev="10" vrev="2">
+    <srcmd5>31e02e026acba1759fecf7a5a60fbbed</srcmd5>
+    <version>2.54.1</version>
+    <time>1791637104</time>
+    <user>dimstar_suse</user>
+    <comment>- Add 30 gigs of memory constraint for aarch64 and x86_64.</comment>
+    <requestid>1383707</requestid>
+  </revision>
 </revisionlist>

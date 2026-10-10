@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sun Oct  4 08:35:27 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Add 30 gigs of memory constraint for aarch64 and x86_64.
+
+-------------------------------------------------------------------
 Sat Oct  3 12:55:56 CEST 2026 - Andreas Schwab <schwab@suse.de>
 
 - riscv-platformenable.patch: Fix build for riscv64
