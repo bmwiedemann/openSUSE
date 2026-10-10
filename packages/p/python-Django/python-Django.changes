@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Fri Oct  9 09:08:40 UTC 2026 - Markéta Machová <mmachova@suse.com>
+
+- Update to 6.1.2
+  * CVE-2026-77050: Potential denial-of-service vulnerability in
+    get_supported_language_variant() (bsc#1284481)
+  * CVE-2026-84429: Potential denial-of-service vulnerability in
+    HTTP header parsing (bsc#1284476)
+  * CVE-2026-87890: Potential request forgery via spatial lookup
+    byte values (bsc#1284472)
+  * CVE-2026-87975: Privilege abuse in model formsets with editable
+    primary keys (bsc#1284471)
+  * Fixed a class of bugs in Django 6.1 that allowed bypassing the
+    depth limiter for deeply nested geometry collections
+    (CVE-2026-15830).
+  * Fixed a data loss issue in Django 4.0 where network rasters
+    were deleted by GeoDjango when closed.
+  * Fixed an infinite loop in Django 5.2 in tuple lookups (e.g.
+    TupleIn) when an F() expression was used as the left-hand side
+  * Fixed many bugs and regressions in Django 6.1
+
+-------------------------------------------------------------------
 Wed Sep  2 08:44:05 UTC 2026 - Markéta Machová <mmachova@suse.com>
 
 - Update to 6.1.1
