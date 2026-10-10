@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kcalc
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Scientific Calculator
 License:        GPL-2.0-or-later
