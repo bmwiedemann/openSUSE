@@ -38,10 +38,10 @@ BuildRequires:  pkgconfig
 # We still need some part to build the man pages
 BuildRequires:  xsltproc
 BuildRequires:  pkgconfig(gdk-pixbuf-2.0) >= 2.31.5
-BuildRequires:  pkgconfig(gio-2.0)
-BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.45.8
+BuildRequires:  pkgconfig(gio-2.0) >= 2.58.0
+BuildRequires:  pkgconfig(gio-unix-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(glib-2.0) >= 2.45.8
-BuildRequires:  pkgconfig(gmodule-2.0) >= 2.45.8
+BuildRequires:  pkgconfig(gmodule-2.0) >= 2.58.0
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(json-glib-1.0) >= 1.1.2
 BuildRequires:  pkgconfig(libarchive)

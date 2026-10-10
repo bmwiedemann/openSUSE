@@ -904,4 +904,12 @@ to have a hook to perform appstream-util install &lt;xml&gt; &lt;iconset&gt; and
     - Fix RISC-V test failure</comment>
     <requestid>1374893</requestid>
   </revision>
+  <revision rev="85" vrev="2">
+    <srcmd5>91fca8480328007dfcafe0523259f2f6</srcmd5>
+    <version>0.8.4</version>
+    <time>1791637103</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1383706</requestid>
+  </revision>
 </revisionlist>
