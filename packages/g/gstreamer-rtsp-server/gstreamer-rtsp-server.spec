@@ -17,24 +17,23 @@
 
 
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
-%define _name gst-rtsp-server
 
 Name:           gstreamer-rtsp-server
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer-based RTSP server library
 License:        LGPL-2.0-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source99:       gstreamer-rtsp-server-rpmlintrc
 
 BuildRequires:  meson >= 1.4
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40.0
 BuildRequires:  pkgconfig(gobject-introspection-1.0) >= 1.31.1
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
-BuildRequires:  pkgconfig(gstreamer-app-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.0
+BuildRequires:  pkgconfig(gstreamer-app-1.0) >= 1.28.0
 BuildRequires:  pkgconfig(gstreamer-net-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtp-1.0)
 BuildRequires:  pkgconfig(gstreamer-rtsp-1.0)
@@ -69,7 +68,7 @@ Obsoletes:      gst-rtsp-server-devel < %{version}
 Development files for the GStreamer library for building an RTSP server.
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -p1 -n gstreamer-%{version}
 
 %build
 %meson \
@@ -85,8 +84,7 @@ Development files for the GStreamer library for building an RTSP server.
 %install
 %meson_install
 
-%post -n libgstrtspserver-1_0-0 -p /sbin/ldconfig
-%postun -n libgstrtspserver-1_0-0 -p /sbin/ldconfig
+%ldconfig_scriptlets -n libgstrtspserver-1_0-0
 
 %files -n libgstrtspserver-1_0-0
 %license COPYING

@@ -637,4 +637,17 @@
     <comment>1</comment>
     <requestid>1378657</requestid>
   </revision>
+  <revision rev="77" vrev="1">
+    <srcmd5>b0b194b7aa08e90cfdd37e3ba49c0ea6</srcmd5>
+    <version>1.28.8</version>
+    <time>1791637160</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.28.8:
+  * rtsp-stream: Use updated string length when stripping invalid
+    characters
+- Migrate to xz compression and manual service run
+- Use ldconfig_scriptlets for post(un) handling
+</comment>
+    <requestid>1383877</requestid>
+  </revision>
 </revisionlist>
