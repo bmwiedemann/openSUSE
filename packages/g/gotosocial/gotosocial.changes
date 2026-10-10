@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Fri Oct  9 16:40:41 UTC 2026 - Flann van der Eik <fl4nn@opensuse.org>
+
+- Update to version 0.22.2:
+  * Update dependencies to allow building on Go v1.27
+  * Tighten some auth functions to fix a two-factor authentication
+    (2FA) security bug whereby an attacker who already knows a
+    victim's email address + password could bypass having to input a
+    code from an authenticator app and obtain an OAuth token for that
+    account
+
+-------------------------------------------------------------------
 Sun Aug 23 00:18:25 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 -  limit to go 1.26 until it works with 1.27
