@@ -25,13 +25,13 @@
 %define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
 
 Name:           gstreamer-plugins-ugly
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source99:       baselibs.conf
 
 BuildRequires:  gcc-c++
@@ -97,7 +97,7 @@ openSUSE because of patent problems.
 %lang_package
 
 %prep
-%autosetup -p1 -n %{_name}-%{version}
+%autosetup -p1 -n gstreamer-%{version}
 
 %build
 export PYTHON=%{_bindir}/python3
