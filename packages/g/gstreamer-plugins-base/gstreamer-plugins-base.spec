@@ -18,15 +18,15 @@
 
 %define _name gst-plugins-base
 %define gst_branch 1.0
-%define gstreamer_req_version %(echo %{version} | sed -e "s/+.*//")
+
 Name:           gstreamer-plugins-base
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gstreamer.freedesktop.org
-Source0:        %{_name}-%{version}.tar.zst
+Source0:        gstreamer-%{version}.tar.xz
 Source1:        gstreamer-plugins-base.appdata.xml
 Source2:        baselibs.conf
 Patch1:         add_wayland_dep_to_tests.patch
@@ -58,7 +58,7 @@ BuildRequires:  pkgconfig(glesv1_cm)
 BuildRequires:  pkgconfig(glesv2)
 BuildRequires:  pkgconfig(glib-2.0) >= 2.40
 BuildRequires:  pkgconfig(gmodule-no-export-2.0)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= %{gstreamer_req_version}
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.28.7
 BuildRequires:  pkgconfig(gudev-1.0)
 BuildRequires:  pkgconfig(iso-codes)
 BuildRequires:  pkgconfig(libdrm) >= 2.4.55
@@ -82,7 +82,7 @@ BuildRequires:  pkgconfig(xext)
 BuildRequires:  pkgconfig(xi)
 BuildRequires:  pkgconfig(xv)
 BuildRequires:  pkgconfig(zlib)
-Requires:       gstreamer >= %{gstreamer_req_version}
+Requires:       gstreamer >= 1.28.7
 Supplements:    gstreamer
 Conflicts:      gstreamer-plugins-bad < 1.18.1
 # Generic name, never used in SuSE:
@@ -495,7 +495,7 @@ to compile and link applications that use gstreamer-plugins-base.
 %lang_package
 
 %prep
-%autosetup -n %{_name}-%{version} -p1
+%autosetup -n gstreamer-%{version} -p1
 
 %build
 export PYTHON=%{_bindir}/python3

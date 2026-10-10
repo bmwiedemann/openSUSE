@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:02:43 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.8:
+  * appsink: Reset EOS state on PAUSED → READY
+  * audio-resampler-neon: handle Thumb1-only builds correctly
+  * audio-resampler-neon: Follow-up from "fix Thumb encoding and
+    use Clang O2 calculation for strides"
+  * audio: video: Validate audio/video meta deserialization & other
+    meta deserialization fixes
+  * audioconverter: guard against NULL input in do_convert_out
+  * sdpmessage: Avoid sign bit when hex-escaping chars
+  * udmabuf: Open device with O_RDONLY instead O_RDWR
+  * videoconvertscale: Take GstVideoMeta into account when
+    converting
+- Rebase patches with quilt.
+
+-------------------------------------------------------------------
+Tue Oct  6 14:54:51 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Migrate to xz compression and manual service run.
+- Drop required versions define, manually set it, as the obs ignores the
+  define.
+
+-------------------------------------------------------------------
 Tue Sep  8 06:54:49 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.7:
