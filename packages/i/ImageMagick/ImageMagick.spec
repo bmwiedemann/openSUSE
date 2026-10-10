@@ -34,8 +34,14 @@
 %define urw_base35_fonts 0
 # do/don't pull djvulibre dependency
 %bcond_without djvu
+%if "%{flavor}" == ""
+%define nsuffix %nil
+%else
+%define nsuffix -%{flavor}
+%endif
 
-Name:           ImageMagick
+%define _name ImageMagick
+Name:           ImageMagick%{?nsuffix}
 Version:        %{mfr_version}.%{mfr_revision}
 Release:        0
 Summary:        Viewer and Converter for Images
@@ -480,7 +486,7 @@ sed -i 's:%{buildroot}::' %{buildroot}/%{_libdir}/ImageMagick-%{mfr_version}/con
 # END NIL FLAVOR
 
 %if "%{flavor}" == "config_open"
-%package config-7-upstream-open
+%package -n %{_name}-config-7-upstream-open
 Summary:        Open ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
 Provides:       imagick-config-7
@@ -489,7 +495,7 @@ Provides:       config-7-upstream = %{version}
 Conflicts:      imagick-config-7
 BuildArch:      noarch
 
-%description config-7-upstream-open
+%description -n %{_name}-config-7-upstream-open
 This policy is designed for usage in secure settings like those
 protected by firewalls or within Docker containers. Within this framework,
 ImageMagick enjoys broad access to resources and functionalities. This policy
@@ -510,20 +516,20 @@ cp config/policy-secure.xml config/policy-SUSE.xml
 mkdir -p %{buildroot}%{_sysconfdir}/%{config_dir}/
 cp config/policy-open.xml %{buildroot}%{_sysconfdir}/%{config_dir}/policy.xml
 
-%files config-7-upstream-open
+%files -n %{_name}-config-7-upstream-open
 %dir %{_sysconfdir}/%{config_dir}
 %config(noreplace) %{_sysconfdir}/%{config_dir}/policy.xml
 %endif
 
 %if "%{flavor}" == "config_limited"
-%package config-7-upstream-limited
+%package -n %{_name}-config-7-upstream-limited
 Summary:        Limited ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
 Provides:       imagick-config-7
 Conflicts:      imagick-config-7
 BuildArch:      noarch
 
-%description config-7-upstream-limited
+%description -n %{_name}-config-7-upstream-limited
 The primary objective of the limited security policy is to find a
 middle ground between convenience and security. This policy involves the
 deactivation of potentially hazardous functionalities, like specific coders
@@ -545,20 +551,20 @@ cp config/policy-secure.xml config/policy-SUSE.xml
 mkdir -p %{buildroot}%{_sysconfdir}/%{config_dir}/
 cp config/policy-limited.xml %{buildroot}%{_sysconfdir}/%{config_dir}/policy.xml
 
-%files config-7-upstream-limited
+%files -n %{_name}-config-7-upstream-limited
 %dir %{_sysconfdir}/%{config_dir}
 %config(noreplace) %{_sysconfdir}/%{config_dir}/policy.xml
 %endif
 
 %if "%{flavor}" == "config_secure"
-%package config-7-upstream-secure
+%package -n %{_name}-config-7-upstream-secure
 Summary:        Secure ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
 Provides:       imagick-config-7
 Conflicts:      imagick-config-7
 BuildArch:      noarch
 
-%description config-7-upstream-secure
+%description -n %{_name}-config-7-upstream-secure
 This stringent security policy prioritizes the implementation of
 rigorous controls and restricted resource utilization to establish a
 profoundly secure setting while employing ImageMagick. It deactivates
@@ -584,20 +590,20 @@ cp config/policy-secure.xml config/policy-SUSE.xml
 mkdir -p %{buildroot}%{_sysconfdir}/%{config_dir}/
 cp config/policy-secure.xml %{buildroot}%{_sysconfdir}/%{config_dir}/policy.xml
 
-%files config-7-upstream-secure
+%files -n %{_name}-config-7-upstream-secure
 %dir %{_sysconfdir}/%{config_dir}
 %config(noreplace) %{_sysconfdir}/%{config_dir}/policy.xml
 %endif
 
 %if "%{flavor}" == "config_websafe"
-%package config-7-upstream-websafe
+%package -n %{_name}-config-7-upstream-websafe
 Summary:        Web-safe ImageMagick Security Policy
 Group:          Development/Libraries/C and C++
 Provides:       imagick-config-7
 Conflicts:      imagick-config-7
 BuildArch:      noarch
 
-%description config-7-upstream-websafe
+%description -n %{_name}-config-7-upstream-websafe
 This security protocol designed for web-safe usage focuses on situations
 where ImageMagick is applied in publicly accessible contexts, like websites.
 It deactivates the capability to read from or write to any image formats
@@ -619,7 +625,7 @@ cp config/policy-secure.xml config/policy-SUSE.xml
 mkdir -p %{buildroot}%{_sysconfdir}/%{config_dir}/
 cp config/policy-websafe.xml %{buildroot}%{_sysconfdir}/%{config_dir}/policy.xml
 
-%files config-7-upstream-websafe
+%files -n %{_name}-config-7-upstream-websafe
 %dir %{_sysconfdir}/%{config_dir}
 %config(noreplace) %{_sysconfdir}/%{config_dir}/policy.xml
 %endif

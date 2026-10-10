@@ -4684,4 +4684,12 @@ Use SUSE- proprietary prefix until SPDX upstream accepts ImageMagick as license 
     <comment>[bsc#1284668], [bsc#1284669], [bsc#1284671], [bsc#1284672], [bsc#1284673], [bsc#1284674], [bsc#1284675], [bsc#1284677], [bsc#1284678], [bsc#1284680], [bsc#1284681], [bsc#1284682], [bsc#1284683], CVE-2026-106571, CVE-2026-106572, CVE-2026-106573, CVE-2026-106574, CVE-2026-106575, CVE-2026-106576, CVE-2026-106577, CVE-2026-106578, CVE-2026-106579, CVE-2026-106580, CVE-2026-107208, CVE-2026-107209, CVE-2026-107210</comment>
     <requestid>1383270</requestid>
   </revision>
+  <revision rev="352" vrev="2">
+    <srcmd5>4f078a66b89a695796f88b1957a1d7b8</srcmd5>
+    <version>7.1.2.32</version>
+    <time>1791637130</time>
+    <user>dimstar_suse</user>
+    <comment>- Ensure the different src.rpm have different names.</comment>
+    <requestid>1383901</requestid>
+  </revision>
 </revisionlist>
