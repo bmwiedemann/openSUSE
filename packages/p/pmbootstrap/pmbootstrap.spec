@@ -21,9 +21,9 @@
 
 
 %define         pythons %{primary_python}
-%define         commit 130b89d3c391596a1de9c12997b228b1e8a1f692
+%define         commit 200f5123615808326ac796f66b02fdc6cebbcbf1
 Name:           pmbootstrap
-Version:        3.11.1
+Version:        3.12.0
 Release:        0
 Summary:        Sophisticated chroot/build/flash tool to develop and install postmarketOS
 License:        GPL-3.0-or-later

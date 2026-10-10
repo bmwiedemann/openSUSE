@@ -1,4 +1,134 @@
 -------------------------------------------------------------------
+Fri Oct  9 17:26:57 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.12.0
+  * pmb.helpers.package: adjust log level.
+  * pmb.build._package: Fix handling of arch=None in package().
+  * pmb.build.backend: Fix instance of nonexistent kwarg.
+  * pmb.install._install: remove invalid command.
+  * Revert "pmb.build._package: avoid updating all package indexes
+    on arch=None"
+  * pmb.build._package: Use a set for all_pkgnames.
+  * pmb.build._package: Make BuildQueueItem a proper class.
+  * pmb.helpers.repo: make arch option compulsory.
+  * pmb.helpers.repo: rename apkindex_hash to apkrepo_hash and fix
+    types.
+  * pmb.helpers.repo: improve a bit the typing and variable names.
+  * pmb.aportgen.gcc: directly get alpine main repo
+  * pmb.parse.apkindex: make indexes compulsory for providers.
+  * pmb.build._package: use pmb.parse.apkindex.package to check
+    existing packages
+  * Make the arch option across package and repo functions more
+    deterministic
+  * pmb.parse.arguments,pmb.build._package: update arch defaul
+     documentation
+  * pmb.build._package: avoid updating all package indexes on
+    arch=None
+  * pmb.build._package: remove fallback_arch to simplify the logic.
+  * pmb.build._package: use pkg_arch instead of arch for index info
+    of package
+  * pmb.aportgen.core: set arch as native if it's None.
+  * pmb.commands.export: Export symlinks to uBoot FIT images, if
+    present
+  * pmb.core.config: Update Alpine mirror URL.
+  * pmb.install._install.get_recommends: respect !deps.
+  * pmb.install._install.get_recommends: remove install_recommends
+    param
+  * pmb.aportgen: add BPF dependencies.
+  * Revert "pmb.config: support legacy pmb:systemd option".
+  * pmb.core.apkindex: add class method to get the local packages
+    indeces.
+  * pmb.core.apkindex: add class method to get the apk installed db.
+  * pmb.chroot.initfs_hooks: only take initfs hooks from binary
+    archives
+  * pmb.chroot.initfs_hooks: simplify functions needed to list hooks
+  * pmb: parse and save the pkgdesc from APKINDEX files.
+  * pmb.chroot.initfs_hooks: mark private functions as such.
+  * Move Apkbuild from pmb.types to pmb.core.apk_package.
+  * pmb.core.apkindex: add get_apk_packages, replacing
+    pmb.parse.apkindex.parse_blocks.
+  * pmb.core.apkindex: add read_lines method.
+  * pmb.core.apkindex: create a dummy Apkindex class to deal with
+    indexes.
+  * Fix leftover renames of ApkindexBlock in comments.
+  * pmb.aportgen.core: Change placeholder maintainer field to appease
+    abuild.
+  * pmb.commands.sideload: Add --allow-untrusted argument.
+  * pmb.commands.kconfig: Make error_msg variable a global constant.
+  * pmb.aportgen: Don't ask for mainline or downstream with
+    --fork-alpine.
+  * pmb.aportgen.device: Use gzip for initramfs on downstream.
+  * repo_missing: fix packages appearing twice.
+  * pmb.build._package: Use Apkbuild type in more places.
+  * pmb.config.init: Use Apkbuild type in ask_for_provider_select()
+  * pmb.core.config: Make "aports" variable a Path rather than a
+    list[Path]
+  * pmb.core.apk_package: Remove instance of implicit Any generic.
+  * pmb.helpers.apk_static: Remove instances of implicit Any
+    generics.
+  * pmb: Fix missing generic type for subprocess.Popen.
+  * pmb.parse._apkbuild: Add generic type annotation for re.Match.
+  * pmb.parse.arguments: Fix instances of implicit Any in generics.
+  * pmb: Introduce TomlTable type and use it.
+  * pmb.install._install: Improve keymap logging.
+  * pmb.build._package: Update BPO part of --no-depends error.
+  * pmb.flasher.frontend: Use str() instead of __str__() dunder.
+  * pmb.parse.arguments: Remove unnecessary lambdas.
+  * test.core.test_pkgrepo: Remove debug print.
+  * pmb.config.other: Don't force OpenRC on nonexistent UI
+    packages.
+  * pmb.aportgen.device: Use match for flash_method deviceinfo
+    generation.
+  * pmb.core.apkindex_block: Replace unnecessary explicit Any with
+    object.
+  * pmb.config.init: Break out package spec from extra packages
+    .pattern
+  * pmb.config.init: Allow colon in extra packages list.
+  * pmb.aportgen: do not install kernel.release as executable in
+    the aportgen kernel template.
+  * pmb.aportgen: add '_config' to the legacy section of kernel
+    APKBUILD aportgen.
+  * pmb.chroot.apk: check if apk db exists before trying to parse it
+  * pmb.core.package_metadata: remove in favor of apk_package.
+  * pmb.core.package_metadata: use apkbuild "depends" for depends.
+  * pmb.core.package_metadata: only allow a single Arch instead of a
+    list.
+  * pmb.core.apk_package: rename ApkPackage from ApkindexBlock.
+  * pmb.parse.kconfig: Only check kconfig for architecture
+    generating for.
+  * pmb.helpers.git: Fix implicit Any in rev_parse().
+  * pmb.aportgen.gcc: Fix implicit Any in depends_for_sonames().
+  * pmb.chroot.initfs: Remove support for non-usr merge setups.
+  * pmb: Remove more remnants of flavour support.
+  * pmb.install._install: Remove check for supported_base_nofde.
+  * test.parse.test_apkindex: add test for parse_blocks.
+  * pmb.chroot.apk: use parse_blocks instead of parse for installed
+  * pmb.commands.export: Only create and show links to existing
+    files.
+  * pmb.install: Switch PReP-boot devices to fat32 boot with
+    powervm-boot.
+  * pmb.parse.depends: remove unused module.
+  * pmb.install._install: don't reimplement provides for unlocker
+    package.
+  * pmb: specify which android-tools programs to install
+  * pmb.core.test_arch: Add test for Arch.from_arch_field().
+  * pmb: Replace pmaports.check_arch() with Arch.from_arch_field()
+  * pmb.build: Use Arch.from_arch_field() for handling APKBUILD
+    arch field.
+  * pmb.core.arch: Introduce Arch.from_arch_field().
+  * pmb.build: fix missing 'r' in two messages.
+  * pmb.aportgen: modernize kernel APKBUILD formatting.
+  * pmb.helpers.file.wait_until_exists: add env var.
+  * pmb: Update Ruff rule references to use new naming scheme.
+  * pmb.core.arch: Add machine type mapping for riscv64.
+  * pmb.build: allow not specifying _flavor in linux-* APKBUILD.
+  * pmb.install._install: accept glob patterns in sd_embed binary
+    path.
+  * pmb.parse._apkbuild: Error on missing subpackages.
+  * pmb.config.pmaports: Use NonBugError for failed to switch branch
+    case.
+
+-------------------------------------------------------------------
 Tue Jul 14 14:17:41 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.11.1
