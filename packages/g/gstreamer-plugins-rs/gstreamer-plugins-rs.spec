@@ -23,15 +23,15 @@
 %bcond_with aws
 
 Name:           gstreamer-plugins-rs
-Version:        1.28.7
+Version:        1.28.8
 Release:        0
 Summary:        GStreamer Streaming-Media Framework Plug-Ins
 License:        LGPL-2.1-or-later
 Group:          Productivity/Multimedia/Other
 URL:            https://gitlab.freedesktop.org/gstreamer/gst-plugins-rs
 
-Source:         %{_name}-%{version}.tar.zst
-Source2:        vendor.tar.zst
+Source:         %{_name}-%{version}.tar.xz
+Source2:        vendor.tar.xz
 Source4:        gstreamer-plugins-rs.appdata.xml
 
 BuildRequires:  c++_compiler
@@ -53,7 +53,7 @@ BuildRequires:  pkgconfig(gstreamer-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
 BuildRequires:  pkgconfig(gstreamer-validate-1.0)
 BuildRequires:  pkgconfig(gstreamer-webrtc-1.0)
-BuildRequires:  pkgconfig(gtk4)
+BuildRequires:  pkgconfig(gtk4) >= 4.6
 BuildRequires:  pkgconfig(libsodium)
 BuildRequires:  pkgconfig(libwebp)
 BuildRequires:  pkgconfig(openssl)
