@@ -68,7 +68,11 @@
 %bcond_without apparmor
 %endif
 
+%if 0%{?suse_version} > 1610
+%bcond_without aptx
+%else
 %bcond_with aptx
+%endif
 
 Name:           pipewire
 Version:        1.6.9
@@ -334,6 +338,10 @@ This package contains the ROC module for PipeWire.
 %package spa-plugins-%{spa_ver_str}
 Summary:        Plugins For PipeWire SPA
 Group:          Productivity/Multimedia/Other
+%if %{with aptx}
+Provides:       pipewire-aptx = %{version}
+Obsoletes:      pipewire-aptx <= 1.6.9
+%endif
 
 %description spa-plugins-%{spa_ver_str}
 PipeWire is a server and user space API to deal with multimedia pipelines.
