@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Tue Oct 06 14:07:57 UTC 2026 - schubi@suse.com
+
+- Update to version 0.8.5:
+  * Fix a crash if sections are empty (#249)
+
+-------------------------------------------------------------------
 Wed Jul 22 13:37:11 UTC 2026 - schubi@suse.com
 
 - Update to version 0.8.4:
