@@ -18,23 +18,12 @@
 
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
-%define kpim6_version 6.8.1
+%define kpim6_version 6.8.2
 
 %bcond_without kde_python_bindings
-%if %{with kde_python_bindings}
-%if 0%{suse_version} > 1500
-%define pythons %{primary_python}
-%else
-%{?sle15_python_module_pythons}
-%endif
-%define mypython %pythons
-%define __mypython %{expand:%%__%{mypython}}
-%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
-%endif
-
 %bcond_without released
 Name:           akonadi-calendar
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Akonadi calendar integration
 License:        LGPL-2.1-or-later
@@ -66,10 +55,10 @@ BuildRequires:  cmake(KPim6MessageComposer) >= %{kpim6_version}
 BuildRequires:  cmake(KPim6MessageCore) >= %{kpim6_version}
 # SECTION bindings
 %if %{with kde_python_bindings}
-BuildRequires:  %{mypython}-build
-BuildRequires:  %{mypython}-devel >= 3.9
-BuildRequires:  %{mypython}-setuptools
-BuildRequires:  %{mypython}-wheel
+BuildRequires:  python3-build
+BuildRequires:  python3-devel >= 3.9
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  python3-akonadi >= %{kpim6_version}
 BuildRequires:  python3-kf6-kcalendarcore >= %{kf6_version}
 BuildRequires:  cmake(PySide6)
@@ -150,11 +139,7 @@ This package provides Python bindings for akonadi-calendar.
 %autosetup -p1 -n akonadi-calendar-%{version}
 
 %build
-%cmake_kf6 \
-%if %{with kde_python_bindings}
-  -DPython_EXECUTABLE:STRING=%{__mypython}
-%endif
-%{nil}
+%cmake_kf6
 
 %kf6_build
 
@@ -207,7 +192,7 @@ This package provides Python bindings for akonadi-calendar.
 
 %if %{with kde_python_bindings}
 %files -n python3-akonadi-calendar
-%{mypython_sitearch}/*.so
+%{python_sitearch}/*.so
 %{_kf6_sharedir}/PySide6/typesystems/typesystem_akonadi_calendar.xml
 %endif
 
