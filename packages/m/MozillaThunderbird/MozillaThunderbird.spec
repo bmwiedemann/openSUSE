@@ -29,9 +29,9 @@
 # orig_suffix b3 (or esr)
 # major 69
 # mainver %%major.99
-%define major          140
-%define mainver        %major.16.0
-%define orig_version   140.16.0
+%define major          153
+%define mainver        %major.4.0
+%define orig_version   153.4.0
 %define orig_suffix    esr
 %define update_channel esr
 %define source_prefix  thunderbird-%{orig_version}
@@ -40,7 +40,7 @@
 %define do_profiling   0
 
 # upstream default is clang (to use gcc for large parts set to 0)
-%define clang_build    1
+%define clang_build    0
 
 %bcond_with only_print_mozconfig
 
@@ -48,19 +48,13 @@
 %bcond_without mozilla_tb_optimize_for_size
 
 # define if ccache should be used or not
-%define useccache     1
+%define useccache     0
+# ccache doesn't work with pgo
+%if 0%{?do_profiling}
+%define useccache     0
+%endif
 
-# No i586 on SLE-12, as the rpmlints are broken and can't handle the big rpms resulting from this build.
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
 ExclusiveArch:  aarch64 ppc64le x86_64 s390x
-%else
-# Firefox only supports i686
-%ifarch %ix86
-ExclusiveArch:  i586 i686
-BuildArch:      i686
-%{expand:%%global optflags %(echo "%optflags"|sed -e s/i586/i686/) -march=i686 -mtune=generic -msse2}
-%endif
-%endif
 %{expand:%%global optflags %(echo "%optflags"|sed -e s/-flto=auto//) }
 
 # general build definitions
@@ -88,56 +82,51 @@ BuildArch:      i686
 # Wayland is too old on Leap <=15.1 as well
 %define wayland_supported 0
 %endif
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150000
+%define gcc_version 13
+%else
+%define gcc_version 15
+%endif
 
 Name:           %{pkgname}
 BuildRequires:  Mesa-devel
 BuildRequires:  alsa-devel
 BuildRequires:  autoconf213
-BuildRequires:  cargo1.84
+BuildRequires:  cargo1.94
 BuildRequires:  dbus-1-glib-devel
 BuildRequires:  dejavu-fonts
 BuildRequires:  fdupes
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-BuildRequires:  gcc13
-BuildRequires:  gcc13-c++
-BuildRequires:  libstdc++6-devel-gcc13
-%else
-BuildRequires:  gcc15-c++
-BuildRequires:  libstdc++6-devel-gcc15
-%endif
+BuildRequires:  gcc%{gcc_version}
+BuildRequires:  gcc%{gcc_version}-c++
+BuildRequires:  libstdc++6-devel-gcc%{gcc_version}
 BuildRequires:  memory-constraints
-BuildRequires:  rust1.84
+BuildRequires:  rust1.94
 %if 0%{useccache} != 0
 BuildRequires:  ccache
 %endif
 BuildRequires:  libXcomposite-devel
 BuildRequires:  libcurl-devel
-BuildRequires:  mozilla-nspr-devel >= 4.35
-BuildRequires:  mozilla-nss-devel >= 3.101.1
+BuildRequires:  mozilla-nspr-devel >= 4.39
+BuildRequires:  mozilla-nss-devel >= 3.124
 BuildRequires:  nasm >= 2.14
-%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150000
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} <= 150700
 BuildRequires:  libXtst-devel
 BuildRequires:  nodejs12 >= 12.22.12
 #BuildRequires:  python-libxml2
-BuildRequires:  python39
-BuildRequires:  python39-curses
-BuildRequires:  python39-devel
-%else
-%if 0%{?sle_version} > 150000 && 0%{?sle_version} <= 150600
-BuildRequires:  nodejs12 >= 12.22.12
-BuildRequires:  python39
-BuildRequires:  python39-curses
-BuildRequires:  python39-devel
+BuildRequires:  python311
+BuildRequires:  python311-curses
+BuildRequires:  python311-devel
 %else
 # ALP
 BuildRequires:  nodejs >= 12.22.12
-BuildRequires:  python3 >= 3.7
+BuildRequires:  python3 >= 3.11
 BuildRequires:  python3-curses
 BuildRequires:  python3-devel
 %endif
-%endif
-BuildRequires:  rust-cbindgen-0_29_2
+BuildRequires:  rust-cbindgen >= 0.29.4
+%if 0%{?suse_version} >= 1699
 BuildRequires:  translate-suse-desktop
+%endif
 BuildRequires:  unzip
 BuildRequires:  xorg-x11-libXt-devel
 %if 0%{?do_profiling}
@@ -148,11 +137,11 @@ BuildRequires:  zip
 %if 0%{?suse_version} < 1550
 BuildRequires:  pkgconfig(gconf-2.0) >= 1.2.1
 %endif
+%if 0%{?suse_version} < 1599
 BuildRequires:  clang19-devel
-%if 0%{?suse_version} > 1600
-BuildRequires:  llvm19-libclang13
+%else
+BuildRequires:  clang-devel
 %endif
-#!BuildIgnore:  clang-tools
 BuildRequires:  pkgconfig(glib-2.0) >= 2.22
 BuildRequires:  pkgconfig(gobject-2.0)
 BuildRequires:  pkgconfig(gtk+-3.0) >= 3.14.0
@@ -187,6 +176,9 @@ Source1:        thunderbird.desktop.in
 Source2:        thunderbird-rpmlintrc
 Source3:        mozilla.sh.in
 Source4:        tar_stamps
+# Ready made desktop file for products that don't support %%translate_suse_desktop.
+# You can be prompted for the update during the Factory build.
+Source5:        thunderbird.desktop
 Source6:        suse-default-prefs.js
 %if %{localize}
 Source7:        l10n-%{orig_version}%{orig_suffix}.tar.xz
@@ -196,23 +188,20 @@ Source13:       spellcheck.js
 Source14:       https://github.com/openSUSE/firefox-scripts/raw/913fab1a196e2a0623b5c554598bfde3b4b49e29/create-tar.sh
 Source20:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/source/%{srcname}-%{orig_version}%{orig_suffix}.source.tar.xz.asc
 Source21:       https://ftp.mozilla.org/pub/%{srcname}/releases/%{version}%{orig_suffix}/KEY#/mozilla.keyring
-Source22:       thunderbird-glibc-2.43.patch
 # Gecko/Toolkit
-Patch1:         mozilla-nongnome-proxies.patch
-Patch3:         mozilla-ntlm-full-path.patch
-Patch4:         mozilla-aarch64-startup-crash.patch
-Patch5:         mozilla-bmo531915.patch
-Patch6:         mozilla-s390-context.patch
-Patch7:         mozilla-pgo.patch
-Patch8:         mozilla-reduce-rust-debuginfo.patch
-Patch10:        mozilla-bmo1504834-part1.patch
-Patch14:        mozilla-bmo849632.patch
-Patch15:        mozilla-bmo998749.patch
-Patch17:        mozilla-libavcodec58_91.patch
-Patch18:        mozilla-silence-no-return-type.patch
-Patch20:        one_swizzle_to_rule_them_all.patch
-Patch21:        svg-rendering.patch
-Patch22:        thunderbird-silence-no-return.patch
+Patch1:         mozilla-ntlm-full-path.patch
+Patch2:         mozilla-aarch64-startup-crash.patch
+Patch4:         mozilla-s390-context.patch
+Patch5:         mozilla-pgo.patch
+Patch6:         mozilla-reduce-rust-debuginfo.patch
+Patch7:         mozilla-bmo1504834-part1.patch
+Patch8:         mozilla-bmo849632.patch
+Patch9:         mozilla-sandbox-lto.patch
+Patch10:        mozilla-libavcodec58_91.patch
+Patch11:        mozilla-silence-no-return-type.patch
+Patch12:        one_swizzle_to_rule_them_all.patch
+Patch13:        svg-rendering.patch
+Patch100:       thunderbird-silence-no-return.patch
 %endif
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 PreReq:         /bin/sh
@@ -237,7 +226,7 @@ Suggests:       %{name}-openpgp-librnp
 Requires(post): desktop-file-utils
 Requires(postun): desktop-file-utils
 %define libgssapi libgssapi_krb5.so.2
-ExcludeArch:    armv6l armv6hl
+ExcludeArch:    armv6l armv6hl ppc ppc64 i586
 
 %description
 Thunderbird is a free, open-source, cross-platform application for
@@ -295,27 +284,41 @@ fi
 %else
 %setup -q -n %{srcname}-%{orig_version}
 %endif
-cp %{SOURCE1} %{desktop_file_name}.desktop.in
+#%if 0%{?suse_version} >= 1699
+#cp %{SOURCE1} %{desktop_file_name}.desktop.in
+#%else
+cp %{SOURCE5} %{desktop_file_name}.desktop
+#%endif
 cd $RPM_BUILD_DIR/%{srcname}-%{orig_version}
 %autopatch -p1
-case "`rpm -q --qf '%%{version}\n' glibc-devel`" in
-    2.4[3-9]* )
-        patch -p1 < %{SOURCE22}
-        ;;
-esac
 %endif
 
 %build
-%translate_suse_desktop %{desktop_file_name}.desktop
+#%if 0%{?suse_version} >= 1699
+#%%translate_suse_desktop %{desktop_file_name}.desktop
+#if ! diff %{desktop_file_name}.desktop %{SOURCE5} ; then
+#cat <<EOF
+#A new version of desktop file exists. Please update thunderbird.desktop
+#rpm source from $PWD/%{desktop_file_name}.desktop
+#to get translations to older products.
+#EOF
+#  exit 0
+#fi
+#%endif
 %if !%{with only_print_mozconfig}
 # no need to add build time to binaries
 modified="$(sed -n '/^----/n;s/ - .*$//;p;q' "%{_sourcedir}/%{pkgname}.changes")"
 DATE="\"$(date -d "${modified}" "+%%b %%e %%Y")\""
 TIME="\"$(date -d "${modified}" "+%%R")\""
-find . -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
-for c in glslopt cubeb-sys minimal-lexical sfv wasi ; do
-  sed -i -e 's/"[^"]*\.gitmodules":"[0-9a-f]*",//g' comm/third_party/rust/${c}/.cargo-checksum.json
-done
+find . -type f -regex ".*\.c\|.*\.cpp\|.*\.h" -exec sed -i "s/__DATE__/${DATE}/g;s/__TIME__/${TIME}/g" {} +
+
+# SLE-12 provides python311, but that package does not provide a python3 binary
+%if 0%{?sle_version} >= 120000 && 0%{?sle_version} < 150000
+sed -i "s|/usr/bin/env python3|/usr/bin/env python3.11|" mach
+sed -i "s|potential_python_binary = f\"python3.{i}\"|potential_python_binary = f\"python3.11.{i}\"|" mach
+export PYTHON3=/usr/bin/python3.11
+%endif
+
 # When doing only_print_mozconfig, this file isn't necessarily available, so skip it
 cp %{SOURCE4} .obsenv.sh
 %else
@@ -335,32 +338,15 @@ export BUILD_OFFICIAL=1
 export MOZ_TELEMETRY_REPORTING=1
 export MACH_BUILD_PYTHON_NATIVE_PACKAGE_SOURCE=system
 export CFLAGS="%{optflags}"
-%if 0%{?clang_build} != 0
-export CC=clang-19
-export CXX=clang++-19
-export AR=llvm-ar-19
-export NM=llvm-nm-19
-export OBJCOPY=llvm-objcopy-19
-export OBJDUMP=llvm-objdump-19
-export RANLIB=llvm-ranlib-19
-export READELF=llvm-readelf-19
-export LLVM_AR=llvm-ar-19
-export LLVM_NM=llvm-nm-19
-export LLVM_OBJCOPY=llvm-objcopy-19
-export LLVM_OBJDUMP=llvm-objdump-19
-export LLVM_RANLIB=llvm-ranlib-19
-export LLVM_READELF=llvm-readelf-19
+%if 0%{?clang_build} == 0
+export CC=gcc-%{gcc_version}
+export CXX=g++-%{gcc_version}
+export AR=gcc-ar-%{gcc_version}
+export NM=gcc-nm-%{gcc_version}
+export RANLIB=gcc-ranlib-%{gcc_version}
 %else
-%if 0%{?suse_version} < 1550 && 0%{?sle_version} <= 150600
-export CC=gcc-13
-export CXX=g++-13
-%else
-export CC=gcc-15
-export CXX=g++-15
-export AR=gcc-ar-15
-export NM=gcc-nm-15
-export RANLIB=gcc-ranlib-15
-%endif
+export CC=clang
+export CXX=clang++
 %endif
 %ifarch %arm %ix86
 ### NOTE: these sections are not required anymore. Alson --no-keep-memory + -Wl,-z,pack-relative-relocs causes
@@ -382,7 +368,7 @@ EOF
 # Done with env-variables.
 source ./.obsenv.sh
 
-%ifarch aarch64 %arm ppc64 ppc64le riscv64 s390x
+%ifarch aarch64 %arm ppc64 ppc64le riscv64
 %limit_build -m 2500
 %endif
 
@@ -407,9 +393,13 @@ ac_add_options --enable-default-toolkit=cairo-gtk3
 %ifarch %ix86 %arm
 ac_add_options --disable-debug-symbols
 %else
-ac_add_options --enable-debug-symbols=-g1
+ac_add_options --enable-debug-symbols=-g0
 %endif
 ac_add_options --disable-install-strip
+%ifarch %ix86 %arm
+# OOM on 32-bit when ld passed -Wl,-z,pack-relative-relocs
+# ac_add_options --enable-elf-hack
+%endif
 ac_add_options --with-system-nspr
 ac_add_options --with-system-nss
 %if 0%{useccache} != 0
@@ -455,6 +445,7 @@ ac_add_options --enable-optimize="-O1"
 ac_add_options --enable-lto
 %if 0%{?do_profiling}
 ac_add_options MOZ_PGO=1
+export CCACHE_DISABLE=1
 %endif
 %endif
 %if %{with mozilla_tb_valgrind}
@@ -463,6 +454,10 @@ ac_add_options --enable-valgrind
 %endif
 %endif
 EOF
+
+%if 0%{?do_profiling}
+export CCACHE_DISABLE=1
+%endif
 
 %if %{with only_print_mozconfig}
 cat ./.obsenv.sh
@@ -534,6 +529,7 @@ ccache -s
 %endif
 
 %install
+install -D -m 0644 %{desktop_file_name}.desktop %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
 cd $RPM_BUILD_DIR/obj
 source %{SOURCE4}
 export MOZ_SOURCE_STAMP=$RELEASE_TAG
@@ -568,10 +564,6 @@ s:%%PROFILE:.thunderbird:g" \
   %{SOURCE3} > %{buildroot}%{progdir}/%{progname}.sh
 chmod 755 %{buildroot}%{progdir}/%{progname}.sh
 ln -sf ../..%{progdir}/%{progname}.sh %{buildroot}%{_bindir}/%{progname}
-# desktop file
-mkdir -p %{buildroot}%{_datadir}/applications
-install -m 644 %{_builddir}/%{source_prefix}/%{desktop_file_name}.desktop \
-               %{buildroot}%{_datadir}/applications/%{desktop_file_name}.desktop
 # additional mime-types
 #mkdir -p %{buildroot}%{_datadir}/mime/packages
 # cp %{SOURCE8} %{buildroot}%{_datadir}/mime/packages/%{progname}.xml
@@ -642,8 +634,6 @@ exit 0
 %{progdir}/fonts/
 %{progdir}/pingsender
 %{progdir}/platform.ini
-%{progdir}/rnp-cli
-%{progdir}/rnpkeys
 %{progdir}/thunderbird-bin
 # crashreporter files
 %if %crashreporter

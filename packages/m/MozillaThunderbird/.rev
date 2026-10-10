@@ -6612,4 +6612,12 @@ I cannot test locally unfortunately.
     Privilege escalation due to incorrect boundary conditions in</comment>
     <requestid>1379126</requestid>
   </revision>
+  <revision rev="395" vrev="1">
+    <srcmd5>3219342809392b07bea33ed8afd22d58</srcmd5>
+    <version>153.4.0</version>
+    <time>1791637173</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1383983</requestid>
+  </revision>
 </revisionlist>

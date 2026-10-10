@@ -22,12 +22,12 @@ Index: firefox-115.0/gfx/webrender_bindings/RenderCompositorSWGL.cpp
    }
    mDT->Flush();
  
-+#if MOZ_BIG_ENDIAN()
-+  // One swizzle to rule them all.
-+  gfx::SwizzleData(mMappedData, mMappedStride, gfx::SurfaceFormat::B8G8R8A8,
-+                   mMappedData, mMappedStride, gfx::SurfaceFormat::A8R8G8B8,
-+                   mDT->GetSize());
-+#endif
++  if constexpr (std::endian::native == std::endian::big) {
++    // One swizzle to rule them all.
++    gfx::SwizzleData(mMappedData, mMappedStride, gfx::SurfaceFormat::B8G8R8A8,
++                     mMappedData, mMappedStride, gfx::SurfaceFormat::A8R8G8B8,
++                     mDT->GetSize());
++  }
 +
    // Done with the DT. Hand it back to the widget and clear out any trace of it.
    mWidget->EndRemoteDrawingInRegion(mDT, mDirtyRegion);

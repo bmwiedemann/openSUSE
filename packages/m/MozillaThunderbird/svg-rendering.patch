@@ -13,16 +13,16 @@ diff --git a/image/imgFrame.cpp b/image/imgFrame.cpp
      return NS_ERROR_OUT_OF_MEMORY;
    }
  
-+#if MOZ_BIG_ENDIAN()
-+  if (aBackend == gfx::BackendType::SKIA && canUseDataSurface) {
-+      // SKIA is lying about what format it returns on big endian
-+      for (int ii=0; ii < mRawSurface->GetSize().Height()*mRawSurface->Stride() / 4; ++ii) {
-+        uint32_t *vals = (uint32_t*)(mRawSurface->GetData());
-+        uint32_t val = ((vals[ii] << 8) & 0xFF00FF00 ) | ((vals[ii] >> 8) & 0xFF00FF );
-+        vals[ii] = (val << 16) | (val >> 16);
-+      }
++  if constexpr (std::endian::native == std::endian::big) {
++    if (aBackend == gfx::BackendType::SKIA && canUseDataSurface) {
++        // SKIA is lying about what format it returns on big endian
++        for (int ii=0; ii < mRawSurface->GetSize().Height()*mRawSurface->Stride() / 4; ++ii) {
++          uint32_t *vals = (uint32_t*)(mRawSurface->GetData());
++          uint32_t val = ((vals[ii] << 8) & 0xFF00FF00 ) | ((vals[ii] >> 8) & 0xFF00FF );
++          vals[ii] = (val << 16) | (val >> 16);
++        }
++    }
 +  }
-+#endif
 +
    if (!canUseDataSurface) {
      // We used an offscreen surface, which is an "optimized" surface from

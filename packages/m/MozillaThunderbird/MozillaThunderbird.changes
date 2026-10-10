@@ -1,8 +1,179 @@
 -------------------------------------------------------------------
-Tue Sep 15 07:56:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+Tue Sep 29 06:02:59 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Mozilla Thunderbird 140.16.0 ESR
-  MFSA 2026-95 (bsc#1280371)
+- Mozilla Thunderbird 153.4.0 ESR
+  * RNP command-line utilities are no longer included with Thunderbird
+  * Thundermail built-in add-on updated to v2.0.16
+  * Ctrl+Shift+K could fail to open the Quick Filter UI
+  * Nested S/MIME signed parts could fail to render
+  * Thunderbird could hang when waiting for IMAP server greeting
+    during account setup
+  * Gmail OAuth2 authentication could intermittently fail on Windows
+  * AppUpdatePin policy did not prevent Thunderbird from updating
+    beyond pinned version
+  * "What's New?" linked to Release channel notes instead of ESR
+    release notes
+  MFSA 2026-103 (bsc#1282929)
+  * CVE-2026-103500 (bmo#2070267)
+    Heap buffer overflow opening large email
+  * CVE-2026-100756 (bmo#2047721)
+    Incorrect boundary conditions in the Audio/Video: Playback
+    component
+  * CVE-2026-100757 (bmo#2049352)
+    Use-after-free in the Widget component
+  * CVE-2026-100758 (bmo#2049792)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-100759 (bmo#2054736)
+    Uninitialized memory in the Storage: Quota Manager component
+  * CVE-2026-100760 (bmo#2058017)
+    Sandbox escape in the Security: Process Sandboxing component
+  * CVE-2026-100762 (bmo#2059404)
+    Sandbox escape due to use-after-free in the DOM: Content
+    Processes component
+  * CVE-2026-100765 (bmo#2061399)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-100766 (bmo#2061526)
+    Information disclosure in the Networking: JAR component
+  * CVE-2026-100767 (bmo#2063680)
+    Use-after-free in the Networking: Cache component
+  * CVE-2026-100769 (bmo#2067190)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-100770 (bmo#2068322)
+    Sandbox escape due to use-after-free in the DOM: Content
+    Processes component
+  * CVE-2026-100771 (bmo#2068336)
+    Undefined behavior in the DOM: Streams component
+  * CVE-2026-100772 (bmo#2068340)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-100773 (bmo#2068346)
+    Use-after-free in the Storage: IndexedDB component
+  * CVE-2026-100774 (bmo#2068351)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-100775 (bmo#2068367)
+    Sandbox escape in the Graphics component
+  * CVE-2026-100776 (bmo#2068374)
+    Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-100777 (bmo#2068375)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-100778 (bmo#2068406)
+    Sandbox escape due to use-after-free in the DOM: Core & HTML
+    component
+  * CVE-2026-100779 (bmo#2068417)
+    Use-after-free in the XSLT component
+  * CVE-2026-100780 (bmo#2068422)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-100781 (bmo#2068434)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics: WebRender component
+  * CVE-2026-100782 (bmo#2068456)
+    Privilege escalation due to incorrect boundary conditions in
+    the Graphics component
+  * CVE-2026-100783 (bmo#2069804)
+    Uninitialized memory in the Audio/Video component
+  * CVE-2026-100784 (bmo#2070264)
+    Use-after-free in the Layout: Text and Fonts component
+  * CVE-2026-100785 (bmo#2071064)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-100786 (bmo#2071067)
+    Sandbox escape due to use-after-free in the Graphics
+    component
+  * CVE-2026-100787 (bmo#2071068)
+    Sandbox escape in the XUL component
+  * CVE-2026-100788 (bmo#2072413)
+    Invalid pointer in the JavaScript: WebAssembly component
+  * CVE-2026-100789 (bmo#2072429)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-100790 (bmo#2072432)
+    Use-after-free in the XSLT component
+  * CVE-2026-100791 (bmo#2072433)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-100832 (bmo#2072467)
+    Use-after-free in the Graphics: Canvas2D component
+  * CVE-2026-100792 (bmo#2073266)
+    JIT miscompilation in the JavaScript: WebAssembly component
+  * CVE-2026-100794 (bmo#2028871)
+    Sandbox escape due to incorrect boundary conditions in the
+    Internationalization component
+  * CVE-2026-96869 (bmo#2041248)
+    Information disclosure in the Networking component
+  * CVE-2026-100797 (bmo#2050542)
+    Privilege escalation due to use-after-free in the Graphics:
+    WebRender component
+  * CVE-2026-100798 (bmo#2055694)
+    Cryptography misuse in Storage: Quota Manager component
+  * CVE-2026-100800 (bmo#2056767)
+    Sandbox escape due to use-after-free in the Disability Access
+    APIs component
+  * CVE-2026-100801 (bmo#2057112)
+    Privilege escalation in the DLL Services component
+  * CVE-2026-100803 (bmo#2057988)
+    Same-origin policy bypass in the WebExtensions component
+  * CVE-2026-100806 (bmo#2060408)
+    Uninitialized memory in the Graphics: WebGPU component
+  * CVE-2026-100807 (bmo#2062740)
+    Privilege escalation in the DOM: Service Workers component
+  * CVE-2026-100808 (bmo#2063488)
+    Mitigation bypass in the DOM: Service Workers component
+  * CVE-2026-100809 (bmo#2063658)
+    Same-origin policy bypass in the DevTools component
+  * CVE-2026-100811 (bmo#2067973)
+    Sandbox escape due to use-after-free in the DOM: Core & HTML
+    component
+  * CVE-2026-100812 (bmo#2068335)
+    Denial-of-service in the Graphics component
+  * CVE-2026-100814 (bmo#2068385)
+    Incorrect boundary conditions in the JavaScript Engine: JIT
+    component
+  * CVE-2026-100815 (bmo#2068404)
+    Use-after-free in the CSS Parsing and Computation component
+  * CVE-2026-100816 (bmo#2068648)
+    Site isolation issue in the DOM: Networking component
+  * CVE-2026-100818 (bmo#2069399)
+    Sandbox escape due to use-after-free in the Widget: Gtk
+    component
+  * CVE-2026-100819 (bmo#2071069)
+    Sandbox escape due to incorrect boundary conditions in the
+    XPCOM component
+  * CVE-2026-100820 (bmo#2071645)
+    Privilege escalation in the Address Bar component
+  * CVE-2026-100821 (bmo#2071784)
+    Site isolation issue in the Panning and Zooming component
+  * CVE-2026-100822 (bmo#2051115)
+    Spoofing issue in the Networking: HTTP component
+  * CVE-2026-100824 (bmo#2054767)
+    Privilege escalation in the Places component
+  * CVE-2026-100825 (bmo#2057465)
+    Use-after-free in the JavaScript Engine: JIT component
+  * CVE-2026-100826 (bmo#2059222)
+    Denial-of-service in the Storage: StorageManager component
+  * CVE-2026-100828 (bmo#2066019)
+    Mitigation bypass in the Bookmarks & History component
+  * CVE-2026-100829 (bmo#2066321)
+    Mitigation bypass in the DOM: Security component
+  * CVE-2026-100830 (bmo#2066770)
+    Mitigation bypass in the DOM: Navigation component
+  * CVE-2026-100831 (bmo#2067172)
+    Use-after-free in the DOM: UI Events & Focus Handling
+    component
+- Rebase mozilla-pgo.patch
+
+-------------------------------------------------------------------
+Fri Sep 18 05:14:21 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 153.3.1 ESR
+  * There are no Thunderbird changes requiring release notes in this release
+
+-------------------------------------------------------------------
+Tue Sep 15 09:05:41 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+
+- Mozilla Thunderbird 153.3.0 ESR
+  * Detached attachment links were truncated when folder path contained &
+  * Save All, Detach All, and Delete All failed after deleting one attachment
+  * Blank 1970-dated messages could appear from incomplete message file copies
+  * Forwarded messages could display incorrect encoding
+  * Manual Get Messages failed after startup until toggling offline mode
+  * Thunderbird could crash on shutdown while waiting for OAuth2 password entry
+  MFSA 2026-96 (bsc#)
   * CVE-2026-92238 (bmo#2060601)
     Ambiguous parsing of mail headers
   * CVE-2026-92239 (bmo#2060488)
@@ -35,11 +206,11 @@ Tue Sep 15 07:56:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
   * CVE-2026-92013 (bmo#2058078)
     Privilege escalation due to incorrect boundary conditions in
     the Graphics: CanvasWebGL component
-  * CVE-2026-92014 (bmo#2060000)
-    Privilege escalation due to incorrect boundary conditions in
-    the Graphics component
   * CVE-2026-92015 (bmo#2060235)
     Privilege escalation in the WebExtensions component
+  * CVE-2026-92035 (bmo#2061245)
+    Sandbox escape due to incorrect boundary conditions in the
+    Graphics component
   * CVE-2026-92016 (bmo#2061327)
     Use-after-free in the Disability Access APIs component
   * CVE-2026-92017 (bmo#2061777)
@@ -51,8 +222,6 @@ Tue Sep 15 07:56:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
   * CVE-2026-92020 (bmo#2066329)
     Privilege escalation due to incorrect boundary conditions in
     the Graphics: WebRender component
-  * CVE-2026-92021 (bmo#2067208)
-    Use-after-free in the JavaScript Engine: JIT component
   * CVE-2026-92022 (bmo#2068059)
     Use-after-free in the DOM: HTML Parser component
   * CVE-2026-92023 (bmo#2068342)
@@ -69,72 +238,224 @@ Tue Sep 15 07:56:03 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
     Use-after-free in the DOM: Core & HTML component
   * CVE-2026-92029 (bmo#2068445)
     Use-after-free in the SVG component
+  * CVE-2026-92038 (bmo#2068952)
+    Mitigation bypass in the Remote Settings Client component
+  * CVE-2026-92039 (bmo#2001265)
+    Mitigation bypass in the DOM: Notifications component
+  * CVE-2026-92041 (bmo#2029482)
+    Mitigation bypass in the DOM: Networking component
+  * CVE-2026-92042 (bmo#2049342)
+    Race condition in the DOM: Content Processes component
+  * CVE-2026-92043 (bmo#2050150)
+    Privilege escalation due to incorrect boundary conditions in
+    the Audio/Video component
+  * CVE-2026-92044 (bmo#2051466)
+    Information disclosure in the Networking: HTTP component
+  * CVE-2026-92045 (bmo#2054622)
+    Sandbox escape due to incorrect boundary conditions in the
+    WebRTC component
   * CVE-2026-92030 (bmo#2058417)
-    Mitigation bypass in the DOM: Copy & Paste and Drag & Drop component
+    Mitigation bypass in the DOM: Copy & Paste and Drag & Drop
+    component
+  * CVE-2026-92046 (bmo#2058618)
+    Use-after-free in the Graphics component
+  * CVE-2026-92047 (bmo#2059021)
+    Privilege escalation in the Crash Reporting component
+  * CVE-2026-92048 (bmo#2061235)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92049 (bmo#2061295)
+    Use-after-free in the Widget: Win32 component
+  * CVE-2026-92052 (bmo#2061499)
+    Privilege escalation due to uninitialized memory in the
+    Graphics: CanvasWebGL component
+  * CVE-2026-92053 (bmo#2061503)
+    Privilege escalation in the Graphics: CanvasWebGL component
+  * CVE-2026-92054 (bmo#2062551)
+    Privilege escalation in the Memory component
+  * CVE-2026-92055 (bmo#2063652)
+    Privilege escalation in the DevTools component
+  * CVE-2026-92056 (bmo#2065346)
+    Use-after-free in the Graphics: Text component
+  * CVE-2026-92057 (bmo#2065646)
+    Mitigation bypass in the Enterprise Policies component
   * CVE-2026-92031 (bmo#2067971)
     Information disclosure in the Graphics: ImageLib component
   * CVE-2026-92032 (bmo#2068437)
-    Sandbox escape due to invalid pointer in the Graphics component
+    Sandbox escape due to invalid pointer in the Graphics
+    component
+  * CVE-2026-92058 (bmo#2068438)
+    Use-after-free in the Graphics component
+  * CVE-2026-92059 (bmo#2068442)
+    Incorrect boundary conditions in the DOM: Editor component
+  * CVE-2026-92060 (bmo#2027336)
+    Use-after-free in the Internationalization component
+  * CVE-2026-92062 (bmo#2054670)
+    Privilege escalation in the Session Restore component
+  * CVE-2026-92064 (bmo#2057990)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92065 (bmo#2058018)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92067 (bmo#2058664)
+    Use-after-free in the Widget: Gtk component
+  * CVE-2026-92068 (bmo#2058790)
+    Site isolation issue in the Reader Mode component
+  * CVE-2026-92069 (bmo#2059196)
+    Spoofing issue in the DOM: Navigation component
+  * CVE-2026-92070 (bmo#2060220)
+    Information disclosure in the Networking component
+  * CVE-2026-92071 (bmo#2061231)
+    Sandbox escape due to incorrect boundary conditions in the
+    Widget: Win32 component
+  * CVE-2026-92072 (bmo#2061257)
+    Incorrect boundary conditions in the Safe Browsing component
+  * CVE-2026-92073 (bmo#2062527)
+    Privilege escalation in the Enterprise Policies component
+  * CVE-2026-92074 (bmo#2063539)
+    Mitigation bypass in the Popup Blocker component
+  * CVE-2026-92075 (bmo#2063814)
+    Mitigation bypass in the Networking component
+  * CVE-2026-92076 (bmo#2064026)
+    Incorrect boundary conditions in the Networking component
+  * CVE-2026-92077 (bmo#2064601)
+    Denial-of-service in the SVG component
+  * CVE-2026-92078 (bmo#2066736)
+    Denial-of-service in the Security component
+  * CVE-2026-92079 (bmo#2067531)
+    Mitigation bypass in the Widget: Win32 component
 
 -------------------------------------------------------------------
-Sun Aug 30 10:25:54 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+Sun Aug 30 10:38:01 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Mozilla Thunderbird 140.15.0 ESR
-  https://www.thunderbird.net/en-US/thunderbird/140.15.0esr/releasenotes/
+- Mozilla Thunderbird 153.2.0 ESR
+  * Deleting an Exchange account retained the outgoing server settings
+  * Thunderbird upgrade disabled Settings menu for versions before macOS 13
   * Windows jump list menu no longer functioned correctly
-  MFSA 2026-87 (bsc#1278001)
+  MFSA 2026-88 (bsc#1278001)
   * CVE-2026-84639 (bmo#2061087)
     Uninitialized memory in MIME parsing
   * CVE-2026-84640 (bmo#2063964)
     One byte overflow read in mail parser
   * CVE-2026-84641 (bmo#2057805)
     Information disclosure due to malicious IMAP server response
+  * CVE-2026-84637 (bmo#2043878)
+    Calendar invitation attachments could launch local
+    executables
+  * CVE-2026-84642 (bmo#2060462)
+    Allowed UNC hostnames for attachments interpreted as a
+    regular expression
   * CVE-2026-75874 (bmo#2039972)
     Sandbox escape in the Remote Settings Client component
-  * CVE-2026-16365 (bmo#2049149)
-    Privilege escalation in the DOM: Workers component
+  * CVE-2026-84118 (bmo#2057457)
+    Use-after-free in the JavaScript: GC component
   * CVE-2026-84119 (bmo#2057817)
-    Sandbox escape due to use-after-free in the DOM: Navigation component
+    Sandbox escape due to use-after-free in the DOM: Navigation
+    component
   * CVE-2026-84120 (bmo#2058911)
     Use-after-free in the Audio/Video component
   * CVE-2026-84121 (bmo#2059018)
-    Sandbox escape due to use-after-free in the DOM: Security component
+    Sandbox escape due to use-after-free in the DOM: Security
+    component
   * CVE-2026-84122 (bmo#2059965)
     Use-after-free in the Audio/Video component
+  * CVE-2026-84123 (bmo#2060047)
+    Privilege escalation due to use-after-free in the Graphics:
+    WebGPU component
   * CVE-2026-84124 (bmo#2061110)
     Use-after-free in the DOM: Core & HTML component
-  * CVE-2026-16371 (bmo#2008369)
-    Privilege escalation in the DOM: Navigation component
+  * CVE-2026-84125 (bmo#2063871)
+    Use-after-free in the DOM: Core & HTML component
+  * CVE-2026-74952 (bmo#2021757)
+    Privilege escalation in the Application Update component
+  * CVE-2026-84129 (bmo#2055028)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-84130 (bmo#2057834)
+    Information disclosure in the Graphics: WebGPU component
   * CVE-2026-84131 (bmo#2060008)
-    Privilege escalation due to invalid pointer in the Graphics component
-  * CVE-2026-84143 (bmo#2048793, bmo#2054631, bmo#2054645, bmo#2054657,
-    bmo#2055007, bmo#2055681, bmo#2057107, bmo#2057108, bmo#2057114,
-    bmo#2058087, bmo#2058088, bmo#2058090, bmo#2058095, bmo#2058101,
-    bmo#2059109, bmo#2059183, bmo#2059185, bmo#2061287, bmo#2061301,
+    Privilege escalation due to invalid pointer in the Graphics
+    component
+  * CVE-2026-84132 (bmo#2063020)
+    Information disclosure in the Networking: HTTP component
+  * CVE-2026-84133 (bmo#2032388)
+    Site isolation issue in the DOM: Push Subscriptions component
+  * CVE-2026-84134 (bmo#2044882)
+    Other issue in the Profile Backup component
+  * CVE-2026-84136 (bmo#2048699)
+    Other issue in the DOM: Navigation component
+  * CVE-2026-84137 (bmo#2051146)
+    Spoofing issue in the DOM: Core & HTML component
+  * CVE-2026-84139 (bmo#2060153)
+    Clickjacking issue in the DOM: Events component
+  * CVE-2026-84140 (bmo#2063780)
+    Site isolation issue in the DOM: Navigation component
+  * CVE-2026-84141 (bmo#2063994)
+    Integer overflow in the Graphics: ImageLib component
+  * CVE-2026-84143 (bmo#2048793, bmo#2054631, bmo#2054645,
+    bmo#2054657, bmo#2055007, bmo#2055681, bmo#2057107,
+    bmo#2057108, bmo#2057114, bmo#2058087, bmo#2058088,
+    bmo#2058090, bmo#2058095, bmo#2058101, bmo#2059109,
+    bmo#2059183, bmo#2059185, bmo#2061287, bmo#2061301,
     bmo#2061325)
     Internally found bugs fixed in Thunderbird 155, Thunderbird
     ESR 153.2 and Thunderbird ESR 140.15
-  * CVE-2026-84145 (bmo#2054640, bmo#2054650, bmo#2054652, bmo#2055678,
-    bmo#2055693, bmo#2055705, bmo#2058001, bmo#2058051, bmo#2058652,
-    bmo#2058660, bmo#2059027, bmo#2059139, bmo#2061220, bmo#2061242,
-    bmo#2061285, bmo#2061300, bmo#2061316, bmo#2061397, bmo#2062400,
+  * CVE-2026-84144 (bmo#2054619, bmo#2054620, bmo#2054624,
+    bmo#2054625, bmo#2054691, bmo#2054702, bmo#2054726,
+    bmo#2054775, bmo#2055703, bmo#2058006, bmo#2058013,
+    bmo#2058085, bmo#2058098, bmo#2058627, bmo#2058661,
+    bmo#2059002, bmo#2059127, bmo#2059128, bmo#2059144,
+    bmo#2059180, bmo#2059191, bmo#2059192, bmo#2059199,
+    bmo#2059205, bmo#2061320, bmo#2061430, bmo#2061495,
+    bmo#2061505, bmo#2061521, bmo#2061532, bmo#2061775,
+    bmo#2061799, bmo#2062395, bmo#2062404)
+    Internally found bugs fixed in Thunderbird 155 and
+    Thunderbird ESR 153.2
+  * CVE-2026-84145 (bmo#2054640, bmo#2054650, bmo#2054652,
+    bmo#2055678, bmo#2055693, bmo#2055705, bmo#2058001,
+    bmo#2058051, bmo#2058652, bmo#2058660, bmo#2059027,
+    bmo#2059139, bmo#2061220, bmo#2061242, bmo#2061285,
+    bmo#2061300, bmo#2061316, bmo#2061397, bmo#2062400,
     bmo#2062419)
     Internally found bugs fixed in Thunderbird 155, Thunderbird
     ESR 153.2 and Thunderbird ESR 140.15
-- Mozilla Thunderbird 140.14.1 ESR
-  * Dragging attachments from Local Folders to desktop failed on Windows
 
 -------------------------------------------------------------------
-Tue Aug 18 13:05:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
+Wed Aug 26 06:22:23 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
 
-- Mozilla Thunderbird 140.14.0 ESR
-  MFSA 2026-79 (bsc#1274867)
+- Mozilla Thunderbird 153.1.1 ESR
+  * Thunderbird upgrade disabled composition toolbar
+  * Draft was not preserved when encrypted message send failed
+  * Account Hub prompted for calendar credentials after successful login
+  * Thunderbird crash fixes
+  * Folder compaction showed incorrect disk space recovery estimates
+  * Thunderbird failed to launch GPU process
+- also exclude ppc, ppc64, and i586 from supported architectures
+  aligned with Firefox
+
+-------------------------------------------------------------------
+Wed Aug 19 11:23:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Disable ccache; it only speeds up local builds during development,
+  but certainly not when building on OBS.
+
+-------------------------------------------------------------------
+Wed Aug 19 07:07:02 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
+
+- Mozilla Thunderbird 153.1.0 ESR
+  * fixed: Autoscroll icon was missing directional arrows in
+    scrollable messages (bmo#2059914)
+  MFSA 2026-80 (bsc#1274867)
   * CVE-2026-74934 (bmo#2050584)
     Site isolation issue in the Graphics: CanvasWebGL component
   * CVE-2026-74935 (bmo#2051013)
     Privilege escalation in the DOM: Networking component
   * CVE-2026-74936 (bmo#2052688)
     Use-after-free in the JavaScript: WebAssembly component
+  * CVE-2026-74937 (bmo#2053337)
+    Use-after-free in the JavaScript: GC component
+  * CVE-2026-74938 (bmo#2053688)
+    Mitigation bypass in the JavaScript: GC component
   * CVE-2026-74939 (bmo#2054416)
     Privilege escalation in the DOM: Navigation component
   * CVE-2026-74940 (bmo#2054842)
@@ -152,31 +473,56 @@ Tue Aug 18 13:05:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
   * CVE-2026-74946 (bmo#2059997)
     Privilege escalation due to incorrect boundary conditions in
     the Graphics: CanvasWebGL component
+  * CVE-2026-74947 (bmo#2060010)
+    Privilege escalation due to invalid pointer in the Graphics
+    component
   * CVE-2026-74948 (bmo#2060106)
     Information disclosure in the Graphics component
   * CVE-2026-74949 (bmo#2060245)
     Privilege escalation due to use-after-free in the Graphics:
     Canvas2D component
+  * CVE-2026-74950 (bmo#1880253)
+    Privilege escalation in the Downloads API component
   * CVE-2026-74953 (bmo#2022382)
     Privilege escalation in the Networking: Cookies component
+  * CVE-2026-74954 (bmo#2025732)
+    Information disclosure due to side-channel in the Storage:
+    Cache API component
+  * CVE-2026-74955 (bmo#2029265)
+    Privilege escalation in the Request Handling component
+  * CVE-2026-74956 (bmo#2032406)
+    Same-origin policy bypass in the DOM: Service Workers
+    component
   * CVE-2026-74957 (bmo#2041906)
     Mitigation bypass in the Safe Browsing component
+  * CVE-2026-74958 (bmo#2045368)
+    Information disclosure in the WebRTC component
   * CVE-2026-74959 (bmo#2047853)
     Mitigation bypass in the Storage: Cache API component
   * CVE-2026-74960 (bmo#2049148)
     Site isolation issue in the WebExtensions component
+  * CVE-2026-74961 (bmo#2050380)
+    Side-channel in the Web Audio component
   * CVE-2026-74962 (bmo#2050425)
     Site isolation issue in the Networking: Cookies component
   * CVE-2026-74963 (bmo#2050482)
-    Same-origin policy bypass in the Networking: Cookies component
+    Same-origin policy bypass in the Networking: Cookies
+    component
   * CVE-2026-74964 (bmo#2053327)
     Integer overflow in the Graphics component
   * CVE-2026-74965 (bmo#2053455)
     Privilege escalation in the Shell Integration component
+  * CVE-2026-74966 (bmo#2054776)
+    Information disclosure in the Form Autofill component
   * CVE-2026-74967 (bmo#2055697)
-    Same-origin policy bypass in the Audio/Video: Playback component
+    Same-origin policy bypass in the Audio/Video: Playback
+    component
+  * CVE-2026-74968 (bmo#2055738)
+    Site isolation issue in the Graphics: WebRender component
   * CVE-2026-74969 (bmo#2056065)
     Use-after-free in the Layout: Text and Fonts component
+  * CVE-2026-74970 (bmo#2056558)
+    Site isolation issue in the Graphics component
   * CVE-2026-74971 (bmo#2057204)
     Information disclosure in the DOM: UI Events & Focus Handling
     component
@@ -189,344 +535,575 @@ Tue Aug 18 13:05:07 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
     Same-origin policy bypass in the Graphics: ImageLib component
   * CVE-2026-74976 (bmo#1952164)
     JIT miscompilation in the JavaScript Engine: JIT component
+  * CVE-2026-74977 (bmo#2028440)
+    Integer overflow in the Graphics component
+  * CVE-2026-74978 (bmo#2036097)
+    Clickjacking issue in the Widget component
+  * CVE-2026-74979 (bmo#2045676)
+    Mitigation bypass in the Add-ons Manager component
+  * CVE-2026-74981 (bmo#2050480)
+    Site isolation issue in the Audio/Video: Web Codecs component
+  * CVE-2026-74982 (bmo#2051788)
+    Denial-of-service in the Widget component
   * CVE-2026-74983 (bmo#2051897)
     Mitigation bypass in the Data Loss Prevention component
-  * CVE-2026-74987 (bmo#1500946, bmo#1788109, bmo#2045379, bmo#2045380,
-    bmo#2048797, bmo#2049339, bmo#2049393, bmo#2050536, bmo#2053272,
-    bmo#2053579, bmo#2053580, bmo#2054662, bmo#2054665, bmo#2054673,
-    bmo#2054785, bmo#2057115, bmo#2057116, bmo#2057130, bmo#2057991,
-    bmo#2057995, bmo#2058002, bmo#2058008, bmo#2058032, bmo#2058102,
-    bmo#2058645, bmo#2058667, bmo#2059424)
-    Internally found bugs fixed in Thunderbird ESR 140.14,
-    Thunderbird ESR 153.1 and Thunderbird 154
-  * CVE-2026-74990 (bmo#2045762, bmo#2045774, bmo#2048490, bmo#2050864,
-    bmo#2052401, bmo#2053159, bmo#2053260, bmo#2053261, bmo#2053582,
-    bmo#2053599, bmo#2053607, bmo#2053608, bmo#2053853, bmo#2054626,
-    bmo#2054627, bmo#2054635, bmo#2054677, bmo#2054740, bmo#2054832,
-    bmo#2056792, bmo#2057098, bmo#2057100, bmo#2057101, bmo#2057103,
-    bmo#2057117, bmo#2057118, bmo#2058048, bmo#2058049, bmo#2058208,
-    bmo#2058622, bmo#2058623, bmo#2058665, bmo#2058666, bmo#2059121,
-    bmo#2059164, bmo#2059188)
-    Internally found bugs fixed in Thunderbird ESR 140.14,
-    Thunderbird ESR 153.1 and Thunderbird 154
-- updated mozilla.keyring
-
--------------------------------------------------------------------
-Tue Jul 21 13:42:04 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- Mozilla Thunderbird 140.13.0 ESR
-  MFSA 2026-72 (bsc#1271649)
-  * CVE-2026-14899 (bmo#2046137)
-    Off-by-one out of bounds read in MIME header parser for forwarding
-  * CVE-2026-15718 (bmo#2045443)
-    Invalid pointer in the JavaScript: WebAssembly component
-  * CVE-2026-15719 (bmo#2043820)
-    Site isolation issue in the DOM: Navigation component
-  * CVE-2026-16349 (bmo#2034682)
-    Same-origin policy bypass in the DOM: Navigation component
-  * CVE-2026-16350 (bmo#2042033)
-    Incorrect boundary conditions in the Audio/Video: cubeb component
-  * CVE-2026-16362 (bmo#2043188)
-    Use-after-free in the WebRTC: Audio/Video component
-  * CVE-2026-16351 (bmo#2045468)
-    Sandbox escape due to use-after-free in the DOM: Navigation component
-  * CVE-2026-16352 (bmo#2046416)
-    Sandbox escape due to use-after-free in the Disability Access
-    APIs component
-  * CVE-2026-16363 (bmo#2047689)
-    JIT miscompilation in the JavaScript: WebAssembly component
-  * CVE-2026-16353 (bmo#2049523)
-    Invalid pointer in the DOM: Bindings (WebIDL) component
-  * CVE-2026-16354 (bmo#2050626)
-    Information disclosure in the Graphics: ImageLib component
-  * CVE-2026-16368 (bmo#2051015)
-    Incorrect boundary conditions in the JavaScript: WebAssembly component
-  * CVE-2026-16369 (bmo#2051854)
-    Integer overflow in the JavaScript: WebAssembly component
-  * CVE-2026-16355 (bmo#2052207)
-    JIT miscompilation in the JavaScript Engine: JIT component
-  * CVE-2026-16356 (bmo#2052562)
-    Sandbox escape due to use-after-free in the Disability Access
-    APIs component
-  * CVE-2026-16357 (bmo#2053326)
-    Incorrect boundary conditions in the Graphics component
-  * CVE-2026-16371 (bmo#2008369)
-    Privilege escalation in the DOM: Navigation component
-  * CVE-2026-16374 (bmo#2027519)
-    Information disclosure in the Framework component in DevTools
-  * CVE-2026-16375 (bmo#2032140)
-    Site isolation issue in the Networking: HTTP component
-  * CVE-2026-16377 (bmo#2037770)
-    Mitigation bypass in the PDF Viewer component
-  * CVE-2026-16379 (bmo#2039452)
-    Privilege escalation in the DOM: Content Processes component
-  * CVE-2026-16358 (bmo#2040119)
-    Site isolation issue in the Graphics: WebRender component
-  * CVE-2026-16381 (bmo#2041001)
-    Same-origin policy bypass in the Networking: DNS component
-  * CVE-2026-16383 (bmo#2041902)
-    Mitigation bypass in the DOM: Networking component
-  * CVE-2026-16387 (bmo#2043200)
-    Site isolation issue in the Networking component
-  * CVE-2026-16390 (bmo#2044527)
-    Mitigation bypass in the Enterprise Policies component
-  * CVE-2026-16391 (bmo#2044536)
-    Information disclosure in the Storage: IndexedDB component
-  * CVE-2026-16359 (bmo#2045424)
-    Incorrect boundary conditions in the Audio/Video: GMP component
-  * CVE-2026-16396 (bmo#2047240)
-    Privilege escalation in WebExtensions
-  * CVE-2026-16405 (bmo#2036591)
-    Information disclosure in the Networking: WebSockets component
-  * CVE-2026-16412 (bmo#2005113, bmo#2025369, bmo#2026301, bmo#2028663,
-    bmo#2029761, bmo#2042242, bmo#2043035, bmo#2043271, bmo#2043300,
-    bmo#2044612, bmo#2045057, bmo#2045187, bmo#2045378, bmo#2045402,
-    bmo#2045406, bmo#2045407, bmo#2045413, bmo#2045417, bmo#2045482,
-    bmo#2045611, bmo#2045616, bmo#2045618, bmo#2045626, bmo#2045730,
-    bmo#2045732, bmo#2045756, bmo#2045769, bmo#2045771, bmo#2046917,
-    bmo#2047718, bmo#2047957, bmo#2048934, bmo#2049818, bmo#2049822,
-    bmo#2050151, bmo#2050368, bmo#2051653, bmo#2051658, bmo#2053635,
-    bmo#2053637)
-    Memory safety bugs fixed in Thunderbird ESR 140.13 and
-    Thunderbird 153
-  * CVE-2026-16360 (bmo#2022635, bmo#2028004, bmo#2035756, bmo#2043739,
-    bmo#2045184, bmo#2045185, bmo#2045198, bmo#2045281, bmo#2045392,
-    bmo#2045395, bmo#2045396, bmo#2045397, bmo#2045405, bmo#2045414,
-    bmo#2045415, bmo#2045451, bmo#2045454, bmo#2045508, bmo#2045510,
-    bmo#2045513, bmo#2045515, bmo#2045518, bmo#2045604, bmo#2045607,
-    bmo#2045612, bmo#2045614, bmo#2045617, bmo#2045619, bmo#2045624,
-    bmo#2045625, bmo#2045729, bmo#2045737, bmo#2045741, bmo#2045742,
-    bmo#2045744, bmo#2045763, bmo#2045767, bmo#2045770, bmo#2045772,
-    bmo#2045773, bmo#2045775, bmo#2045783, bmo#2045833, bmo#2045848,
-    bmo#2045865, bmo#2045875, bmo#2045957, bmo#2047719, bmo#2047723,
-    bmo#2047729, bmo#2048795, bmo#2048799, bmo#2048801, bmo#2049392,
-    bmo#2049397, bmo#2049398, bmo#2049399, bmo#2049404, bmo#2049405,
-    bmo#2049407, bmo#2049805, bmo#2049812, bmo#2050657, bmo#2050668,
-    bmo#2050990, bmo#2051666, bmo#2053166, bmo#2053273, bmo#2053576,
-    bmo#2053583, bmo#2053587)
-    Memory safety bugs fixed in Thunderbird ESR 140.13 and
-    Thunderbird 153
-  * CVE-2026-16361 (bmo#2029734, bmo#2036518)
-    Memory safety bugs fixed in Thunderbird ESR 140.13
-- require transitional rust-cbindgen-0_29_<F2> package to build
-
--------------------------------------------------------------------
-Wed Jul  1 05:55:29 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- Mozilla Thunderbird 140.12.1 ESR
-  MFSA 2026-63
-  * CVE-2026-57962 (bmo#2042872)
-    Denial-of-service via malicious LDAP address-book server
-  * CVE-2026-57963 (bmo#2042910)
-    Chat UI manipulation by injection
-
--------------------------------------------------------------------
-Wed Jun 17 16:23:29 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Enable clang_build to allow building with the latest versions of
-  llvm/clang due to them dropping support for update-alternatives.
-
--------------------------------------------------------------------
-Sat Jun 13 20:25:40 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- Mozilla Thunderbird 140.12.0 ESR
-  MFSA 2026-61 (bsc#1268071)
-  * CVE-2026-12289 (bmo#2023443)
-    Privilege escalation in the Graphics: WebRender component
-  * CVE-2026-12290 (bmo#2024852)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12291 (bmo#2036929)
-    Use-after-free in the Networking: HTTP component
-  * CVE-2026-12292 (bmo#2038465)
-    Incorrect boundary conditions in the Web Audio component
-  * CVE-2026-12294 (bmo#2039873)
-    Sandbox escape in the DOM: Workers component
-  * CVE-2026-12295 (bmo#2040160)
-    Sandbox escape in the DOM: Navigation component
-  * CVE-2026-12298 (bmo#2041981)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12296 (bmo#2040515)
-    Sandbox escape in the Security: Process Sandboxing component
-  * CVE-2026-12297 (bmo#2041610)
-    Sandbox escape due to incorrect boundary conditions in the
-    Networking component
-  * CVE-2026-12299 (bmo#2043139)
-    JIT miscompilation in the DOM: Core & HTML component
-  * CVE-2026-12329 (bmo#2044738)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12302 (bmo#2034489)
-    Mitigation bypass in the DOM: Security component
-  * CVE-2026-12304 (bmo#2034944)
-    Same-origin policy bypass in the Networking: Cookies component
-  * CVE-2026-12305 (bmo#2037290)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12306 (bmo#2037323)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12307 (bmo#2038133)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12308 (bmo#2038302)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12309 (bmo#2038476)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12310 (bmo#2039707)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12311 (bmo#2040177)
-    Information disclosure, sandbox escape in the Security:
-    Process Sandboxing component
-  * CVE-2026-12312 (bmo#2040383)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12313 (bmo#2040477)
-    Information disclosure, sandbox escape in the Security:
-    Process Sandboxing component
-  * CVE-2026-12314 (bmo#2041856)
-    Memory safety bug fixed in Thunderbird ESR 140.12
-  * CVE-2026-12315 (bmo#2042058)
-    Mitigation bypass in the DOM: Security component
-  * CVE-2026-12330 (bmo#2029326)
-    Incorrect boundary conditions in the Internationalization
-    component
-  * CVE-2026-12324 (bmo#2038444)
-    Incorrect boundary conditions in the Graphics: CanvasWebGL
-    component
-  * CVE-2026-12325 (bmo#2039443)
-    Denial-of-service in the Graphics: ImageLib component
-  * CVE-2026-12327 (bmo#2011842, bmo#2023902, bmo#2025512, bmo#2027312,
-    bmo#2029444, bmo#2036571, bmo#2036900, bmo#2036936, bmo#2037995,
-    bmo#2038551, bmo#2040717, bmo#2042724)
-    Memory safety bugs fixed in Firefox ESR 140.12, Thunderbird
-    ESR 140.12, Firefox 152 and Thunderbird 152
-  * CVE-2026-12328 (bmo#2029402, bmo#2038477, bmo#2039726, bmo#2041373,
-    bmo#2042268, bmo#2042451, bmo#2042782, bmo#2042858, bmo#2042929,
-    bmo#2042965, bmo#2043213)
-    Memory safety bugs fixed in Firefox ESR 115.37, Firefox ESR
-    140.12, Thunderbird ESR 140.12, Firefox 152 and Thunderbird 152
-
--------------------------------------------------------------------
-Tue May 26 11:38:26 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- Mozilla Thunderbird 140.11.1 ESR
-  * There are no Thunderbird changes requiring release notes in
-    this release
-
--------------------------------------------------------------------
-Sat May 23 10:32:31 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Refresh thunderbird-glibc-2.43.patch and re-enable its application
-  on systems with glibc >= 2.43
-
--------------------------------------------------------------------
-Tue May 19 02:43:56 UTC 2026 - Max Lin <mlin@suse.com>
-
-- Use BuildRequires: libclang13 to instead of llvm21-libclang13 on
-  Leap 16.1
-  * Built llvm21 coming from SLFO does not name a llvm versioned
-    libclang13
-
--------------------------------------------------------------------
-Sat May 16 06:57:28 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
-
-- Mozilla Thunderbird 140.11.0 ESR
-  MFSA 2026-51 (bsc#1265212)
-  * CVE-2026-8946 (bmo#2029070)
-    Incorrect boundary conditions in the Audio/Video: Web Codecs
-    component
-  * CVE-2026-8388 (bmo#2036978)
-    Incorrect boundary conditions in the JavaScript Engine: JIT
-    component
-  * CVE-2026-8947 (bmo#2038439)
-    Use-after-free in the DOM: Bindings (WebIDL) component
-  * CVE-2026-8391 (bmo#2038575)
-    Other issue in the JavaScript Engine component
-  * CVE-2026-8401 (bmo#2038679)
-    Sandbox escape in the Profile Backup component
-  * CVE-2026-8949 (bmo#1355639)
-    Integer overflow in the Widget: Win32 component
-  * CVE-2026-8950 (bmo#1965430)
-    Same-origin policy bypass in the Networking: HTTP component
-  * CVE-2026-8953 (bmo#2029511)
-    Sandbox escape due to use-after-free in the Disability Access
-    APIs component
-  * CVE-2026-8954 (bmo#2030747)
-    Incorrect boundary conditions, integer overflow in the
-    Audio/Video component
-  * CVE-2026-8955 (bmo#2031064)
-    Privilege escalation in the DOM: Workers component
-  * CVE-2026-8956 (bmo#2032427)
-    Integer overflow in the Networking: JAR component
-  * CVE-2026-8957 (bmo#2033850)
+  * CVE-2026-74984 (bmo#2053670)
+    Race condition in the JavaScript Engine component
+  * CVE-2026-74985 (bmo#2059825)
     Privilege escalation in the Enterprise Policies component
-  * CVE-2026-8958 (bmo#2034713)
-    Information disclosure, sandbox escape in the Security:
-    Process Sandboxing component
-  * CVE-2026-8959 (bmo#2034754)
-    Sandbox escape due to incorrect boundary conditions in the
-    Widget: Win32 component
-  * CVE-2026-8961 (bmo#1962625)
-    Spoofing issue in the Form Autofill component
-  * CVE-2026-8962 (bmo#2004804)
-    Mitigation bypass in the DOM: Security component
-  * CVE-2026-8968 (bmo#2030467)
-    Denial-of-service due to invalid pointer in the Audio/Video:
-    Web Codecs component
-  * CVE-2026-8970 (bmo#2032174)
-    Privilege escalation in the Security component
-  * CVE-2026-8974 (bmo#1784128, bmo#1883230, bmo#1983677, bmo#2022390,
-    bmo#2023116, bmo#2023657, bmo#2024255, bmo#2024418, bmo#2024441,
-    bmo#2024447, bmo#2024966, bmo#2025412, bmo#2025467, bmo#2025940,
-    bmo#2025950, bmo#2025956, bmo#2026284, bmo#2027247, bmo#2027255,
-    bmo#2027288, bmo#2027306, bmo#2027322, bmo#2027332, bmo#2027333,
-    bmo#2028266, bmo#2028292, bmo#2028319, bmo#2028526, bmo#2028870,
-    bmo#2028876, bmo#2028882, bmo#2029062, bmo#2029309, bmo#2029414,
-    bmo#2029422, bmo#2029428, bmo#2029447, bmo#2029732, bmo#2029785,
-    bmo#2029793, bmo#2029813, bmo#2029899, bmo#2031028, bmo#2031457,
-    bmo#2032039, bmo#2033610, bmo#2033854, bmo#2034498, bmo#2034628,
-    bmo#2034978, bmo#2035966, bmo#2036668, bmo#2036905, bmo#2036930)
-    Memory safety bugs fixed in Thunderbird 140.11 and Thunderbird 151
-  * CVE-2026-8975 (bmo#1860195, bmo#2029325, bmo#2029429, bmo#2029910,
-    bmo#2035915, bmo#2038669, bmo#2038678)
-    Memory safety bugs fixed in Thunderbird 140.11 and Thunderbird 151
-- removed obsolete patches
-  * thunderbird-bmo2006630.patch
-  * mozilla-bmo2031958.patch
+  * CVE-2026-74986 (bmo#2060048)
+    Site isolation issue in the CSS Parsing and Computation
+    component
+  * CVE-2026-74987 (bmo#1500946, bmo#1788109, bmo#2045379,
+    bmo#2045380, bmo#2048797, bmo#2049339, bmo#2049393,
+    bmo#2050536, bmo#2053272, bmo#2053579, bmo#2053580,
+    bmo#2054662, bmo#2054665, bmo#2054673, bmo#2054785,
+    bmo#2057115, bmo#2057116, bmo#2057130, bmo#2057991,
+    bmo#2057995, bmo#2058002, bmo#2058008, bmo#2058032,
+    bmo#2058102, bmo#2058645, bmo#2058667, bmo#2059424)
+    Internally found bugs fixed in Thunderbird ESR 140.14,
+    Thunderbird ESR 153.1 and Thunderbird 154
+  * CVE-2026-74988 (bmo#2018164, bmo#2045404, bmo#2045507,
+    bmo#2045711, bmo#2045796, bmo#2046734, bmo#2051424,
+    bmo#2052403, bmo#2053153, bmo#2053174, bmo#2053262,
+    bmo#2054643, bmo#2054667, bmo#2054671, bmo#2054674,
+    bmo#2054687, bmo#2054717, bmo#2054721, bmo#2054761,
+    bmo#2054763, bmo#2054787, bmo#2055676, bmo#2056779,
+    bmo#2056781, bmo#2057994, bmo#2058094, bmo#2058611,
+    bmo#2058615, bmo#2058616, bmo#2058629, bmo#2059019,
+    bmo#2059138, bmo#2059198, bmo#2059224, bmo#2061315)
+    Internally found bugs fixed in Thunderbird ESR 153.1 and
+    Thunderbird 154
+  * CVE-2026-74990 (bmo#2045762, bmo#2045774, bmo#2048490,
+    bmo#2050864, bmo#2052401, bmo#2053159, bmo#2053260,
+    bmo#2053261, bmo#2053582, bmo#2053599, bmo#2053607,
+    bmo#2053608, bmo#2053853, bmo#2054626, bmo#2054627,
+    bmo#2054635, bmo#2054677, bmo#2054740, bmo#2054832,
+    bmo#2056792, bmo#2057098, bmo#2057100, bmo#2057101,
+    bmo#2057103, bmo#2057117, bmo#2057118, bmo#2058048,
+    bmo#2058049, bmo#2058208, bmo#2058622, bmo#2058623,
+    bmo#2058665, bmo#2058666, bmo#2059121, bmo#2059164,
+    bmo#2059188)
+    Internally found bugs fixed in Thunderbird ESR 140.14,
+    Thunderbird ESR 153.1 and Thunderbird 154
+- Rebase mozilla-libavcodec58_91.patch
 
 -------------------------------------------------------------------
-Fri May  8 10:02:50 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+Wed Aug 12 14:09:09 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Mozilla Thunderbird 140.10.2
-  MFSA 2026-44 (bsc#1264378)
-  * CVE-2026-8090 (bmo#2034352)
-    Use-after-free in the DOM: Networking component
-  * CVE-2026-8094 (bmo#2035939)
-    Other issue in the WebRTC component
-  * CVE-2026-8092 (bmo#1806249, bmo#2021977, bmo#2022576, bmo#2022722,
-    bmo#2024439, bmo#2027883, bmo#2029463, bmo#2030323, bmo#2032042,
-    bmo#2032043, bmo#2033270, bmo#2033637, bmo#2034422, bmo#2034496,
-    bmo#2035879, bmo#2036516)
-    Memory safety bugs fixed in Thunderbird ESR 140.10.2 and
-    Thunderbird 150.0.2
+- Mozilla Thunderbird 153.0.3 ESR
+  * Dragging attachments from Local Folders to the desktop
+    failed on Windows (bmo#2060748)
+  * IMAP tags did not sync automatically across clients (bmo#1865651)
+  * DisablePasswordReveal policy failed to prevent
+    revealing saved passwords (bmo#2058522)
+  * Thunderbird could crash when saving a sent Exchange message (bmo#2061208)
 
 -------------------------------------------------------------------
-Tue May  5 22:20:10 UTC 2026 - Stanislav Brabec <sbrabec@suse.com>
+Mon Aug 10 08:31:02 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
 
-- Migrate from deprecated %suse_update_desktop_file to
-  %translate_suse_desktop. (boo#1158957)
-
--------------------------------------------------------------------
-Tue May  5 09:53:04 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Add thunderbird-glibc-2.43.patch as source22 and apply it only
-  if glibc newer than 2.42 is installed in the build environment.
-  It serves to remove conflicting definitions and adapt the syscall
-  in accordance with glibc-2.43.
-
--------------------------------------------------------------------
-Wed Apr 29 14:22:59 UTC 2026 - Manfred Hollstein <manfred.h@gmx.net>
-
-- Further tests have shown that the rule which llvm version should
-  be used, can be simplified: only on TW, Slowroll and Factory we
-  need to explicitly BuildRequire the llvm21 based packages, while
-  on all other (i.e. Leap) distribution versions we can stick with
-  the distro's default release of llvm.
+- Mozilla Thunderbird 153.0.2 ESR
+  * Restored previous Yahoo sign-in flow to improve login
+    reliability (bmo#2058239)
+  * Edit Calendar dialog opened without a window title (bmo#2050953)
+  * Thunderbird could crash when going offline with active
+    IMAP connection (bmo#1852017)
+- Rebase patches:
+  * mozilla-bmo849632.patch
+  * mozilla-bmo1504834-part1.patch
+  * mozilla-libavcodec58_91.patch
+  * mozilla-silence-no-return-type.patch
+  * one_swizzle_to_rule_them_all.patch
+  * svg-rendering.patch
+- Remove obsolete patches:
+  * mozilla-bmo531915.patch
+  * mozilla-bmo1746799.patch
+  * mozilla-bmo1999625.patch
+- Mozilla Thunderbird 153.0 ESR
+  MFSA-2026-71
+  * new: Visual signatures can be added to PDF attachments opened
+    in Thunderbird (bmo#1970796)
+  * new: 'Copy Message Link' and 'Copy News Link' added to header
+    pane 'More actions' (bmo#1968470)
+  * new: Accessiblity is improved in various tree views
+    (bmo#2001258)
+  * new: Added 'Archive' action to mail notifications
+    (bmo#1953661)
+  * new: Add "Show Full Path" folder pane option for compact view
+    modes (bmo#382977)
+  * new: Unified folders now display account color indicator with
+    account name tooltip (bmo#1882368)
+  * new: Folder copy enabled within mail server accounts and
+    local folders (bmo#1842514)
+  * new: 'Reset Folder Order' option added to folder pane to
+    reset custom folder sorting (bmo#1972710)
+  * new: Add `mail.useLocalizedFolderNames' to toggle special
+    folder name localization (bmo#2006549)
+  * new: 'Favorites' added as destination for 'Move To' and
+    'File' buttons (bmo#2009042)
+  * new: Composer now shows a warning if user's configured
+    OpenPGP key expires soon (bmo#1840861)
+  * new: Enabled configuration of preferred OpenPGP keyserver via
+    the UI (bmo#1665723)
+  * new: Add `mail.openpgp.load_untested_gpgme_version` to load
+    untested GPGME version (bmo#1967121)
+  * new: Added support for generating Unobtrusive Signatures
+    (OpenPGP) (bmo#1958983)
+  * new: Implemented option to show only messages without any tag
+    (bmo#683809)
+  * new: Message body search enabled for OpenPGP and S/MIME
+    encrypted messages (bmo#1562737)
+  * new: SecurityDevices enabled in enterprise policies
+    (bmo#1580753)
+  * new: Enable support for DNS over HTTPS (bmo#1988718)
+  * new: OAuth login for mail accounts now opens in default web
+    browser (bmo#2024728)
+  * new: Thundermail services can now be used without installing
+    an add-on (bmo#2024728)
+  * new: OAuth responses now verify issuer fields and reject
+    missing required issuers (bmo#2044463)
+  * new: Enable the "Sign in with Thundermail" button in Account
+    Hub (bmo#2048038)
+  * new: Account hub is opened on the first run of Thunderbird
+    (bmo#1968073)
+  * new: Account Hub email manual config option added
+    (bmo#1993070)
+  * new: Enable Thundermail OAuth sign-in with account auto-
+    configuration (bmo#2020826)
+  * new: Address book cards can be copied to the clipboard as
+    vCard (bmo#2018035)
+  * new: Enable exporting selected address book cards (bmo#20304)
+  * new: Custom Accent Color can be chosen in Appearance Settings
+    (bmo#2021632)
+  * new: Enable support for Microsoft Exchange via Exchange Web
+    Services (bmo#1970399)
+  * new: Calendar month/multiweek views are now scrollable with
+    touch screen (bmo#1969263)
+  * new: Tasks can be sorted by created or modified date
+    (bmo#2028925)
+  * new: PDF pages can be reorganized directly in the PDF viewer
+    (bmo#2018919)
+  * changed: 'Copy Message Location' removed from mail context
+    menu (bmo#1968470)
+  * changed: Read folders are now removed from Unread Folders
+    view (bmo#341266)
+  * changed: Special folders are now localized based on a
+    restricted set of names (bmo#2006549)
+  * changed: OpenPGP public key no longer attached by default in
+    signed-only messages (bmo#2020139)
+  * changed: Address books are now created in Account Hub
+    (bmo#1991626)
+  * changed: Yahoo, AT&T, AOL accounts migrated to OAuth 2.0 with
+    PKCE for improved security (bmo#1999291,bmo#2005044)
+  * changed: GMail OAuth updated to use PKCE (bmo#2033048)
+  * changed: Skype has been retired and therefore dropped from
+    Address book IM selection (bmo#1960650)
+  * changed: Removed pref `default_supports_diskspace.{HOST}`
+    (bmo#1991002)
+  * changed: Removed pref `default_offline_support_level.{HOST}`
+    (bmo#1991002)
+  * changed: Removed Odnoklassniki chat setup and directed users
+    to XMPP configuration (bmo#2044769)
+  * changed: Use of the string "Junk" has been replaced with
+    "Spam" (bmo#1823084)
+  * changed: Updated about:rights to replace local with hosted
+    url (bmo#2030386)
+  * changed: Stop shipping 32-bit Linux x86 binaries
+    (bmo#1989558,bmo#1990232)
+  * changed: 'Hide completed tasks' now also hides cancelled
+    tasks (bmo#382363)
+  * fixed: Thunderbird could crash when parsing message state
+    (bmo#1954381)
+  * fixed: The English string for the Angry emoji was incorrectly
+    named as the Yell emoji (bmo#1951142)
+  * fixed: Notification sounds did not respect operating system's
+    do-not-disturb mode (bmo#1876310)
+  * fixed: Non-English localized Thunderbird created English
+    special folders on first start (bmo#1976687)
+  * fixed: Copying text from some error alerts was not possible
+    (bmo#1976565)
+  * fixed: Fastmail CalDAV app password access failed due to
+    forced OAuth regression (bmo#1984376)
+  * fixed: Thunderbird could crash in server subscription logic
+    (bmo#1835523)
+  * fixed: Could not distinguish folders with same name in
+    'Recent Destinations' and 'Favorites' (bmo#1829728)
+  * fixed: Donation banner stole focus when Thunderbird was
+    running in the background (bmo#2003825)
+  * fixed: Unknown command-line arguments passed to Thunderbird
+    did not print warning (bmo#2022038)
+  * fixed: Thunderbird could crash when processing new incoming
+    messages (bmo#2001729)
+  * fixed: Spam messages triggered new mail notifications before
+    being moved to Spam folder (bmo#1953623)
+  * fixed: Web pages with bad certificates displayed as blank
+    (bmo#1980371)
+  * fixed: Memory leak after opening New Window from folder pane
+    context menu (bmo#1994088)
+  * fixed: Importing a vCard only displayed VCF files in the file
+    picker (bmo#1995926)
+  * fixed: Calendar view tabs were not properly keyboard
+    accessible (bmo#2024125)
+  * fixed: Ctrl+S did not save PDF attachments opened in
+    Thunderbird tabs (bmo#1914849)
+  * fixed: TLS errors incorrectly reported all unknown failures
+    as untrusted certificates (bmo#2042575)
+  * fixed: Thunderbird could crash when copying an empty list of
+    messages (bmo#1855401)
+  * fixed: Incorrect roaming data directory caused regression on
+    Windows and macOS (bmo#1971216)
+  * fixed: Changing to new drafts folder and then back did not
+    correctly restore the folder (bmo#1979410)
+  * fixed: Message headers were re-downloaded at every startup
+    (bmo#1912195)
+  * fixed: Old IMAP profile migration deleted INBOX and other
+    mailbox files (bmo#2043867)
+  * fixed: 'Search Messages...' dialog could not be opened
+    outside the email tab (bmo#1970721)
+  * fixed: Option did not exist to create new address book under
+    File -> New (bmo#1976190)
+  * fixed: Newly created folder was missing under "Recent" when
+    moving a message (bmo#1367034)
+  * fixed: Could not compose new message if the folder pane was
+    empty (bmo#1991417)
+  * fixed: 'Delete' was missing from context menu when multiple
+    IMAP folders were selected (bmo#1999101)
+  * fixed: Compacting multiple folders failed and did not compact
+    (bmo#1984945)
+  * fixed: Shift-click for 'Edit' button in drafts header view
+    did not work (bmo#1392056)
+  * fixed: "Replace All" in Compose did not update plain text
+    until dialog closed (bmo#2011581)
+  * fixed: Status bar messages displayed unlocalized folder names
+    or IMAP mailbox names (bmo#2006550)
+  * fixed: Saved email filenames were not not always cross-
+    platform safe (bmo#2018026)
+  * fixed: Space bar did not scroll in PDF attachments opened
+    from emails (bmo#2038141)
+  * fixed: Folder location widget used non-localised name
+    (bmo#2043529)
+  * fixed: Empty confirmation dialog when more messages opened in
+    tabs than `mailnews.open_tab_warning` (bmo#2045486)
+  * fixed: Removing tags from IMAP messages could fail and tags
+    reappeared after refresh (bmo#355205)
+  * fixed: Toggling dark message mode did not restore focus and
+    scroll position (bmo#1962931)
+  * fixed: 'Show remote content' did not display remote content
+    for EML message (bmo#1851875)
+  * fixed: Emoji sequences were not properly handled in subject
+    lines (bmo#1900708)
+  * fixed: 'Delete' button in unified toolbar could delete
+    attachments instead of message (bmo#1995417)
+  * fixed: "Repair text encoding" could duplicate recipient and
+    attachments (bmo#2009143)
+  * fixed: Some IMAP emails showed current time instead of
+    correct received date (bmo#1905210)
+  * fixed: Deleting a single message in folder using 'Group by
+    Sort' failed after CTRL+A (bmo#1977321)
+  * fixed: New newsgroups were not added in alphabetical order by
+    default (bmo#251707)
+  * fixed: Sorting by threads only brought threads with unread
+    top messages to the top (bmo#617855)
+  * fixed: News message marked read after NNTP error prevented
+    retrieval from server (bmo#541744)
+  * fixed: 'Recent destinations' submenu was not sorted by time
+    of modification (bmo#1829748)
+  * fixed: Account column could display incorrect account name
+    (bmo#707165)
+  * fixed: 'Tag' submenu of mail context menu could be populated
+    incorrectly (bmo#1997914)
+  * fixed: Unified archive subfolders could show wrong names and
+    no messages (bmo#1826762)
+  * fixed: Moving saved search/virtual folder under IMAP could
+    fail (bmo#533766)
+  * fixed: New Folder dialog allowed invalid folder creation
+    without a selected parent folder (bmo#1793315)
+  * fixed: New/unread messages in collapsed thread were not
+    obvious enough (bmo#242300)
+  * fixed: Pressing Delete on Trash folder could remove it
+    without confirmation (bmo#1912998)
+  * fixed: Renaming of a 'unified folder' created a duplicate
+    (bmo#532643)
+  * fixed: Clicking on a folder in the folder pane did not always
+    open folder (bmo#1933913)
+  * fixed: Messages nested deeper than 255 levels disappeared
+    from threading view (bmo#1772455)
+  * fixed: Performing Delete followed by Undo on thread parent
+    message could corrupt view (bmo#671497)
+  * fixed: Single messages still appeared collapsible after
+    thread members were deleted (bmo#1913385)
+  * fixed: Updated threads remained misordered until folder
+    refresh or resort (bmo#1649402)
+  * fixed: Global search failed to display inaccessible messages
+    found in local folders (bmo#1914180)
+  * fixed: Numeric subfolders were sorted alphabetically instead
+    of naturally (bmo#2034429)
+  * fixed: Virtual folder folder-picker showed unlabeled IM
+    account as selectable folder (bmo#2046506)
+  * fixed: Some folders showed new mail count prior to receiving
+    mail (bmo#1811038)
+  * fixed: Menu Bar -> View contained duplicate accelerator keys
+    (bmo#1981317)
+  * fixed: Unified toolbar Spam button did not switch to "Not
+    Spam" when spam message selected (bmo#1831713)
+  * fixed: Warning was not logged if
+    `mail.openpgp.alias_rules_file` file did not exist
+    (bmo#1976055)
+  * fixed: Not all headers were signed when creating digitally
+    signed OpenPGP email (bmo#1959096)
+  * fixed: When configuring external GnuPG, user was not promted
+    to import public key (bmo#1924357)
+  * fixed: "Open and Show" for OpenPGP-signed message (.eml) did
+    not work (bmo#1953098)
+  * fixed: Invalidly signed unencrypted emails were indicated as
+    worse than unsigned ones (bmo#1836262)
+  * fixed: Reason for revoked certificate was not shown
+    (bmo#1666599)
+  * fixed: Apple Mail OpenPGP emails failed to decrypt due to
+    hidden recipient key ID (bmo#1752799)
+  * fixed: OpenPGP import of public key with experimental packets
+    failed with unclear error (bmo#1997493)
+  * fixed: Opening messages with OpenPGP keys was slow and
+    blocked the UI for large keyrings (bmo#2011199)
+  * fixed: OpenPGP key refresh failed when fingerprint lookup
+    returned multiple results (bmo#2047358)
+  * fixed: Encrypted Gmail CSE emails with outer opaque S/MIME
+    were not readable (bmo#2002546)
+  * fixed: Invalid S/MIME encryption certificate caused
+    misleading send errors (bmo#2017206)
+  * fixed: "Search Messages" search did not finish due to
+    unparsable local folders (bmo#1976655)
+  * fixed: Search results showed older irrelevant emails before
+    newer exact matches (bmo#2027396)
+  * fixed: Filter search on Body missed draft messages containing
+    German umlauts (bmo#521649)
+  * fixed: Esc cleared quick filter pin after changing folder
+    (bmo#1974689)
+  * fixed: Thunderbird could crash during local message search
+    (bmo#2039883)
+  * fixed: Replying could fail with
+    `mailnews.reply_quoting_selection.multi_word` set false
+    (bmo#1977461)
+  * fixed: Drag-drop of unselected contact inserted wrong or no
+    email address (bmo#1979567)
+  * fixed: Changing identity in compose window caused modified
+    draft not to be saved (bmo#1986558)
+  * fixed: Shift-click 'Compose Message To' on 'mailto' link did
+    not open in plain text (bmo#1903100)
+  * fixed: Reply with selected text lost formatting for HTML
+    messages containing &lt;/pre&gt; (bmo#2029007)
+  * fixed: Multipart/related attachments were not preserved when
+    editing or forwarding (bmo#2029333)
+  * fixed: Forwarded malformed MIME email had empty body and
+    extra attachment (bmo#1813044)
+  * fixed: Message compose window was removed from Task Bar after
+    saving as draft or template (bmo#1986628,bmo#1991347)
+  * fixed: Dragging email address between compose windows failed
+    to add recipients (bmo#1762167,bmo#2046949)
+  * fixed: Thunderbird could crash when using Find and Replace
+    All (bmo#2011814)
+  * fixed: Compose with PDF attachments opened PDFs instead of
+    creating a new email (bmo#1877420)
+  * fixed: Multiple saves while using 'Options' -> 'Send a Copy'
+    resulted in multiple copies (bmo#279366)
+  * fixed: Search for "Attachment" in Settings menu did not find
+    "Files and Attachments" (bmo#1742234)
+  * fixed: Add-on account creation did not work with Account Hub
+    (bmo#1973399)
+  * fixed: Owl install did not show link to website in Account
+    Hub (bmo#1973543)
+  * fixed: Username field did not appear in Account Hub when
+    exchange authentication failed (bmo#1973582)
+  * fixed: Account Hub advanced config setup did not include
+    default outgoing config (bmo#1973526)
+  * fixed: Disabled inputs could be toggled in Account Hub
+    address book (bmo#1975209)
+  * fixed: Users could not disable spinning overlay in Account
+    Hub for email (bmo#1977955)
+  * fixed: Account Hub local address book creation could continue
+    with blank name (bmo#1991902)
+  * fixed: Account Hub email success messages were not always
+    accurate about config source (bmo#1992106)
+  * fixed: Calendar/address book sections were shown in Account
+    Hub when there were none (bmo#1993081)
+  * fixed: New password-based Exchange accounts failed to save
+    passwords in login manager (bmo#2005779)
+  * fixed: Account hub showed connection security instead of
+    actual authentication method (bmo#1985707)
+  * fixed: New identity dialog lacked reply-matching and end-to-
+    end encryption settings (bmo#2037262)
+  * fixed: Thunderbird could fail to shut down cleanly during
+    active OAuth requests (bmo#2042257)
+  * fixed: Account Hub kept OAuth selected after changing to
+    hostname without OAuth support (bmo#2044386)
+  * fixed: Account Hub autodetect wrongly prompted for a password
+    when auth was unavailable (bmo#2046793)
+  * fixed: Interrupted external OAuth2 setup required restarting
+    Thunderbird (bmo#2035829)
+  * fixed: The default account could be reset after restart if
+    uninitialized (bmo#1991298)
+  * fixed: Virtual folders did not update correctly for filtered
+    POP3 messages (bmo#775472)
+  * fixed: 'Copy Message to' action in a newsgroup filter did not
+    work (bmo#694780)
+  * fixed: Thunderbird could crash while importing mail thread
+    (bmo#1999428)
+  * fixed: Thunderbird did not clearly fail when importing
+    profile from a bad source (bmo#1984550)
+  * fixed: Thunderbird could not import profile located at the
+    top level of zip file (bmo#1985421)
+  * fixed: 'Any Number' was unavailable in address book search
+    with 'Match all of the following' (bmo#1969851)
+  * fixed: Contact not found in Advanced Address Book Search if
+    phone number had a period (bmo#1962868)
+  * fixed: Thunderbird did not display contact photos in WebP
+    format from CardDAV servers (bmo#1947052)
+  * fixed: Opening a vCard (.vcf) from file manager or CLI did
+    not work in some cases (bmo#1921406)
+  * fixed: Redirected CardDAV URLs resolved relative URLs against
+    the wrong host (bmo#2042109)
+  * fixed: Installations from Microsoft Store did not open when
+    clicking 'mailto:' links (bmo#1876691)
+  * fixed: Windows new message notification click did not bring
+    Thunderbird to foreground (bmo#1935298)
+  * fixed: Microsoft Store installs did not open when clicking
+    'news://' link or .eml file (bmo#2018545)
+  * fixed: Using thunderbird -compose with double quotes made
+    last email address invalid (bmo#1980843)
+  * fixed: Clicking the backspace icon in the quick filter field
+    cleared the input field (bmo#1975115)
+  * fixed: Subfolder kept stale accessibility unread count after
+    unread messages were deleted (bmo#2004961)
+  * fixed: Moving virtual folder within maildir based IMAP or
+    local folder could fail (bmo#1835556)
+  * fixed: Thunderbird could crash when completing folder
+    copy/move (bmo#2051428)
+  * fixed: 'Edit as New Message' and inline 'Forward' not
+    possible with PGP-signed messages (bmo#1843860)
+  * fixed: Various MIME improvements (bmo#184869,bmo#230377,bmo#3
+    33880,bmo#471402,bmo#580842,bmo#734823,bmo#782736,bmo#1362539
+    ,bmo#1628441,bmo#1861800,bmo#1890876)
+  * fixed: Forwarding some Apple Mail messages incorrectly
+    attached inline text as a file (bmo#2049079)
+  * fixed: Thunderbird could crash when marking all messages as
+    read (bmo#2004053)
+  * fixed: Auto-compaction could corrupt database and cause
+    crashes during syncs (bmo#554482)
+  * fixed: 'news:' URIs without specific server had incorrect
+    format displayed in status bar (bmo#617287)
+  * fixed: 'Mark' -> 'All Read' affected newsgroup messages that
+    had not been fetched yet (bmo#1755659)
+  * fixed: Thunderbird could not reconnect to newsgroups after
+    connection loss until restarted (bmo#1901338)
+  * fixed: Sending a newsgroup post appeared successful when it
+    had actually failed (bmo#1979618)
+  * fixed: Saving a new draft retained superceded version
+    (bmo#1974867)
+  * fixed: Thunderbird hung when auto-checking multiple accounts
+    for new messages (bmo#1911950)
+  * fixed: Spam not checked with
+    `mail.server.default.check_all_folders_for_new` on
+    (bmo#1986092)
+  * fixed: Startup could be slow with large number of folders not
+    using subscriptions (bmo#1992248)
+  * fixed: Saved search in unified folder resulted in server
+    error (bmo#1877646)
+  * fixed: Thunderbird did not report refused POP3 connection
+    (bmo#2011088)
+  * fixed: Remove message body retention policy was not
+    functional (bmo#499301)
+  * fixed: POP3 could stop downloading mail until restart
+    (bmo#2020627)
+  * fixed: With auto-mark-read disabled, large mail still marked
+    as read during load delay (bmo#1975865)
+  * fixed: IMAP "Show only subscribed folders" could not be
+    changed without restart (bmo#38943)
+  * fixed: POP3 deadlocked when server went silent without
+    closing socket (bmo#2020627)
+  * fixed: Thunderbird could crash when mail folder was renamed
+    or moved (bmo#1996650)
+  * fixed: NNTP server with invalid TLS certificate could not be
+    added to certificate exceptions (bmo#1192098)
+  * fixed: Cancelled message send could not be retried and hung
+    with SMTP timeout errors (bmo#2040638)
+  * fixed: Corrupted NNTP account data caused excessive memory
+    use and startup crash (bmo#2046366)
+  * fixed: Multiple selected IMAP folders could not be moved or
+    deleted together (bmo#589008)
+  * fixed: Non-Latin IMAP keywords were lowercased and encoded
+    incorrectly as MUTF-7 (bmo#650623)
+  * fixed: Message tags were lost when moving folder from local
+    folder to IMAP folder (bmo#760856)
+  * fixed: Removing a chat account threw an exception and failed
+    to clear the UI (bmo#2046647)
+  * fixed: Enterprise policy use not indicated in
+    about:preferences with link to about:policies (bmo#1968505)
+  * fixed: Language field in settings was empty after restart in
+    Troubleshoot Mode (bmo#1973658)
+  * fixed: Primary Password policy was detected but not enforced
+    for saved account passwords (bmo#1755068)
+  * fixed: Archived RSS feed messages were sent to the archive
+    folder of default identity (bmo#1966810)
+  * fixed: Broken feed icon could prevent updating of feeds
+    (bmo#1979019)
+  * fixed: Task reminders could fail for tasks without end dates
+    or with shifted due dates (bmo#1972904)
+  * fixed: Calendar did not alert user for connection issues
+    (bmo#1998342)
+  * fixed: Copying one recurring event occurrence failed to set
+    the date when pasted (bmo#2035327)
+  * fixed: Could not copy an event in multiweek or month view by
+    drag-and-drop (bmo#411069)
+  * fixed: Duplicate attendees were added to invitations instead
+    of being filtered out (bmo#1008681)
+  * fixed: Calendar discovery with certificate error displayed
+    multiple exceptions (bmo#1985183)
+  * fixed: It was not possible to create date-only all-day tasks
+    (bmo#357502)
+  * fixed: Task percentage complete was not preserved separately
+    from status in tooltips (bmo#383501)
+  * fixed: Calendar invites were incorrectly marked processed
+    after calendar sync completed (bmo#1760272)
+  * fixed: ICS event comments were not displayed in Thunderbird
+    event details (bmo#1902644)
+  * fixed: Dismissed Gmail calendar reminder did nothing and item
+    stayed visible (bmo#1921611)
+  * fixed: iCal imports misread unknown timezones as GMT,
+    creating events at wrong times (bmo#729685)
+  * fixed: Could not export local calendar as HTML (bmo#2009741)
+  * fixed: Cancelled filter edit dialog closed the message filter
+    dialog (bmo#1741049)
+  * fixed: Visual and UX improvements (bmo#382977, bmo#493499,
+    bmo#518629, bmo#635869, bmo#1416232, bmo#1667865, bmo#1768565,
+    bmo#1792482, bmo#1810361, bmo#1814450, bmo#1832899, bmo#1853912,
+    bmo#1896280, bmo#1898889, bmo#1901089, bmo#1910472, bmo#1925654,
+    bmo#1938799, bmo#1939939, bmo#1941471, bmo#1941975, bmo#1942381,
+    bmo#1945321, bmo#1945489, bmo#1953072, bmo#1957486, bmo#1962871,
+    bmo#1965006, bmo#1966298, bmo#1966342, bmo#1967725, bmo#1967908,
+    bmo#1968626, bmo#1968659, bmo#1969202, bmo#1970917, bmo#1971655,
+    bmo#1973072, bmo#1976645, bmo#1976900, bmo#1977051, bmo#1977204,
+    bmo#1977319, bmo#1978946, bmo#1979367, bmo#1979371, bmo#1981702,
+    bmo#1982542, bmo#1984294, bmo#1984546, bmo#1984608, bmo#1984894,
+    bmo#1985033, bmo#1985056, bmo#1985165, bmo#1985227, bmo#1986289,
+    bmo#1986628, bmo#1987157, bmo#1988374, bmo#1990132, bmo#1990434,
+    bmo#1990657, bmo#1990824, bmo#1991679, bmo#1991690, bmo#1991755,
+    bmo#1991900, bmo#1991926, bmo#1992593, bmo#1997050, bmo#1997465,
+    bmo#1997487, bmo#2001543, bmo#2003145, bmo#2005718, bmo#2009292,
+    bmo#2009620, bmo#2009930, bmo#2010207, bmo#2010970, bmo#2013486,
+    bmo#2013725, bmo#2013751, bmo#2014492, bmo#2014779, bmo#2014792,
+    bmo#2017516, bmo#2017583, bmo#2018063, bmo#2019941, bmo#2020331,
+    bmo#2020338, bmo#2020869, bmo#2021255, bmo#2021633, bmo#2021848,
+    bmo#2022132, bmo#2023919, bmo#2025621, bmo#2027674, bmo#2028124,
+    bmo#2029036, bmo#2030855, bmo#2034414, bmo#2036996, bmo#2038114,
+    bmo#2038292, bmo#2038356, bmo#2041292, bmo#2041627, bmo#2042138,
+    bmo#2042358, bmo#2042806, bmo#2043482, bmo#2044047, bmo#2044545,
+    bmo#2044989, bmo#2045024, bmo#2045025, bmo#2045135, bmo#2045224,
+    bmo#2047354, bmo#2049014, bmo#2049929)
+- removed obsolete
+  mozilla-bmo998749.patch
+  mozilla-nongnome-proxies.patch
+  thunderbird-glibc-2.43.patch
+- added mozilla-sandbox-lto.patch
 
 -------------------------------------------------------------------
 Wed Apr 29 11:28:35 UTC 2026 - Wolfgang Rosenauer <wr@rosenauer.org>
@@ -6309,7 +6886,7 @@ Fri Jun 19 17:00:11 UTC 2015 - wr@rosenauer.org
 - tb-develdirs.patch is now mozilla-develdirs.patch as it is a
   platform configuration now
 
--------------------------------------------------------------------
+--------------------------------------------------------------------
 Thu Jun 18 10:30:18 UTC 2015 - schwab@suse.de
 
 - mozilla-arm64-libjpeg-turbo.patch: fix libjpeg-turbo configuration

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <constraints>
   <hardware>
+    <jobs>4</jobs>
     <disk>
-      <size unit="G">36</size>
+      <size unit="G">26</size>
     </disk>
-    <memory>
-      <size unit="G">9</size>
-    </memory>
+    <physicalmemory>
+      <size unit="G">15</size>
+    </physicalmemory>
   </hardware>
   <hostlabel exclude="true">SLOW_CPU</hostlabel>
   <overwrite>
@@ -18,33 +19,33 @@
       <disk>
         <size unit="G">12</size>
       </disk>
-      <memory>
+      <physicalmemory>
         <size unit="G">5</size>
-      </memory>
+      </physicalmemory>
     </hardware>
   </overwrite>
+  <!-- LTO disabled - less RAM -->
   <overwrite>
     <conditions>
       <arch>aarch64</arch>
     </conditions>
     <hardware>
-      <memory>
-        <size unit="G">16</size>
-      </memory>
+      <cpu>
+        <flag>asimdrdm</flag>
+      </cpu>
+      <physicalmemory>
+        <size unit="G">14</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>
     <conditions>
-      <arch>ppc64</arch>
       <arch>ppc64le</arch>
     </conditions>
     <hardware>
       <physicalmemory>
-        <size unit="G">11</size>
+        <size unit="G">12</size>
       </physicalmemory>
-      <memoryperjob>
-        <size unit="M">2500</size>
-      </memoryperjob>
     </hardware>
   </overwrite>
   <overwrite>
@@ -52,19 +53,9 @@
       <arch>s390x</arch>
     </conditions>
     <hardware>
-      <memory>
-        <size unit="G">17</size>
-      </memory>
-    </hardware>
-  </overwrite>
-  <overwrite>
-    <conditions>
-      <arch>x86_64</arch>
-    </conditions>
-    <hardware>
-      <memory>
-        <size unit="G">22</size>
-      </memory>
+      <physicalmemory>
+        <size unit="G">15</size>
+      </physicalmemory>
     </hardware>
   </overwrite>
   <overwrite>
@@ -73,7 +64,7 @@
     </conditions>
     <hardware>
       <memory>
-        <size unit="G">28</size>
+        <size unit="G">25</size>
       </memory>
     </hardware>
   </overwrite>
