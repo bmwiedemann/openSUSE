@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:01:31 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * ETM: mark re-added ancestor collections as populated
+- Stop requiring mariadb and qt6-sql-mysql
+
+-------------------------------------------------------------------
 Tue Sep  8 09:33:24 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1

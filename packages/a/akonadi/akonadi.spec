@@ -22,20 +22,9 @@
 %define name   akonadi
 
 %bcond_without kde_python_bindings
-%if %{with kde_python_bindings}
-%if 0%{suse_version} > 1500
-%define pythons %{primary_python}
-%else
-%{?sle15_python_module_pythons}
-%endif
-%define mypython %pythons
-%define __mypython %{expand:%%__%{mypython}}
-%define mypython_sitearch %{expand:%%%{mypython}_sitearch}
-%endif
-
 %bcond_without released
 Name:           akonadi
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        PIM Storage Service
 License:        LGPL-2.1-or-later
@@ -77,10 +66,10 @@ BuildRequires:  cmake(Qt6Xml) >= %{qt6_version}
 BuildRequires:  pkgconfig(liblzma) >= 5.0.0
 # SECTION bindings
 %if %{with kde_python_bindings}
-BuildRequires:  %{mypython}-build
-BuildRequires:  %{mypython}-devel >= 3.9
-BuildRequires:  %{mypython}-setuptools
-BuildRequires:  %{mypython}-wheel
+BuildRequires:  python3-build
+BuildRequires:  python3-devel >= 3.9
+BuildRequires:  python3-setuptools
+BuildRequires:  python3-wheel
 BuildRequires:  python3-kf6-kcoreaddons
 BuildRequires:  cmake(PySide6)
 BuildRequires:  cmake(Shiboken6)
@@ -89,11 +78,6 @@ BuildRequires:  cmake(Shiboken6)
 # SECTION sqlite
 Requires:       qt6-sql-sqlite
 Requires:       sqlite3
-# /SECTION
-# SECTION mysql
-# Users already using the mysql backend need the backend
-Requires:       qt6-sql-mysql
-Requires:       mariadb
 # /SECTION
 Recommends:     kaccounts-integration
 Recommends:     kaccounts-providers
@@ -211,11 +195,7 @@ This package provides a python interface for Akonadi.
 %autosetup -p1
 
 %build
-%cmake_kf6 \
-%if %{with kde_python_bindings}
-  -DPython_EXECUTABLE:STRING=%{__mypython}
-%endif
-%{nil}
+%cmake_kf6
 
 %kf6_build
 
@@ -342,7 +322,7 @@ This package provides a python interface for Akonadi.
 %if %{with kde_python_bindings}
 %files -n python3-akonadi
 %{_kf6_sharedir}/PySide6/typesystems/typesystem_akonadi.xml
-%{mypython_sitearch}/*.so
+%{python_sitearch}/*.so
 %endif
 
 %files lang -f %{name}.lang
