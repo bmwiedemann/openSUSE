@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:05:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * JS: Ensure interval timers dont outlive the app
+  * JS: Scope interval timer lifetime more narrow
+  * JS: move interval timers to document scope
+  * JS: move field cache to document scope
+  * JS: Make all bridge-object cppowned
+  * JS: Ensure global objects are c++ owned
+  * JS: Ensure timers dont outlive the app
+  * Wrap some pdf specific javascript console functions to console.log
+  * Drop custom non-functioning console logger; just debug dump things
+  * Memory-safety: Dont let raw pointers out
+  * Small executeScriptEvent refactor
+  * Check action is of type Script before static casting to it
+  * Adapt to newer clang-format
+  * add Arabic Percent Sign to parseZoomString()
+  * Fix signature panel crash on document refresh (kde#525809)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:38:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
