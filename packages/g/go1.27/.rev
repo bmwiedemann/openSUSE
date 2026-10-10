@@ -75,4 +75,40 @@
   to fix esbuild reproducible builds (boo#1234374)</comment>
     <requestid>1375249</requestid>
   </revision>
+  <revision rev="5" vrev="1">
+    <srcmd5>1d04b711305d8cde8434348f0ba53821</srcmd5>
+    <version>1.27.2</version>
+    <time>1791637091</time>
+    <user>dimstar_suse</user>
+    <comment>- go1.27.2 (released 2026-10-08) includes security fixes to the go
+  command, and the crypto/tls, html/template, net/http,
+  net/textproto, and os packages, as well as bug fixes to the
+  compiler, the linker, the runtime, the cover tool, the go fix
+  command, vet, and the compress/flate, crypto/mlkem,
+  encoding/json, encoding/json/v2, net/http, and os packages.
+  Refs boo#1272545 go1.27 release tracking
+  CVE-2026-56857 CVE-2026-56866 CVE-2026-78659 CVE-2026-78660 CVE-2026-78663 CVE-2026-78667 CVE-2026-78669 CVE-2026-94439 CVE-2026-94440 CVE-2026-94444 CVE-2026-94447 CVE-2026-94448 CVE-2026-97030 CVE-2026-97031 CVE-2026-97032
+  * go#81898 go#81739 boo#1284766 security: fix CVE-2026-56857 os: Root.Mkdir(All) can follow junctions out of the root on Windows
+  * go#81900 go#81740 boo#1284767 security: fix CVE-2026-56866 net/http: HTTP/1 client connection desynchronization after CONNECT rejection
+  * go#81918 go#81857 boo#1284768 security: fix CVE-2026-78659 net/http: HTTP/2 server memory exhaustion due to Trailer headers
+  * go#81585 go#81115 boo#1284769 security: fix CVE-2026-78660 net/http: HTTP/2 transport accepts malformed framing-related headers
+  * go#81906 go#81743 boo#1284770 security: fix CVE-2026-78663 net/http: double flow control refund on HTTP/2 server streams
+  * go#81920 go#81858 boo#1284771 security: fix CVE-2026-78667 net/http: lack of limit on size of parsed Range headers
+  * go#81904 go#81742 boo#1284772 security: fix CVE-2026-78669 net/http: excessive CPU consumption from repeated initial window changes
+  * go#81908 go#81744 boo#1284773 security: fix CVE-2026-94439 net/http: HTTP/1 server connection desynchronization after 2xx CONNECT response
+  * go#81902 go#81741 boo#1284774 security: fix CVE-2026-94440 net/textproto, mime/multipart: memory limit bypass when parsing MIME headers
+  * go#81912 go#81833 boo#1284775 security: fix CVE-2026-94444 cmd/go: checksum bypass for golang.org/fips140
+  * go#81914 go#81834 boo#1284776 security: fix CVE-2026-94447 cmd/go: checksum database bypass for golang.org/toolchain
+  * go#81924 go#81821 boo#1284777 security: fix CVE-2026-94448 html/template: reset context tracking on consecutive template expressions
+  * go#81910 go#81823 boo#1284778 security: fix CVE-2026-97030 html/template: recognize yield as regexp preceder keyword
+  * go#81916 go#81855 boo#1284779 security: fix CVE-2026-97031 crypto/tls: reject malformed ECH outer extension references
+  * go#81922 go#81867 boo#1284780 security: fix CVE-2026-97032 net/http: HTTP/2 server crash due to HPACK encoder race
+  * go#81084 encoding/json: Unmarshal leaves ±Inf in the destination on float overflow in Go 1.27
+  * go#81145 runtime: mutex profiling can deadlock Windows asynchronous preemption during GC
+  * go#81226 runtime: netpoll: eventfd ready for something unexpected
+  * go#81229 encoding/json: json.UnsupportedValueError returns an Invalid Value instead of a Float value
+  * go#81233 compress/flate: Writer with a preset dictionary emits the dictionary into the output stream
+  * go#81252 lib/fips140: fix ML-KEM CAST and re-seal v1.26.0</comment>
+    <requestid>1383637</requestid>
+  </revision>
 </revisionlist>
