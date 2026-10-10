@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  2 10:01:56 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fixup fdupes
+
+-------------------------------------------------------------------
 Wed Sep 30 11:50:25 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
 
 - Update to version 0.5.18:
@@ -172,7 +177,7 @@ Fri Jun 19 07:13:41 UTC 2026 - Antonio Larrosa <alarrosa@suse.com>
     - Added new bluetooth.profile-preference setting to
       find-preferred-profile for selecting quality or latency A2DP
       profiles (!819 (merged))
-    - Added a cache for camera permission checks in the portal 
+    - Added a cache for camera permission checks in the portal
       access module to avoid frequent D-Bus calls; also added a
       3-second timeout and fixed the Set create parameter in
       portal-permissionstore (!820 (merged), !821 (merged))
@@ -461,7 +466,7 @@ Mon May 19 11:37:42 UTC 2025 - Antonio Larrosa <alarrosa@suse.com>
       script (!704)
     - Fixed name deduplication of v4l2 and libcamera devices (!705)
     - Fixed an issue with wpctl not being able to save settings
-      sometimes (!708, #749) 
+      sometimes (!708, #749)
 - Drop patches that are already included in this version:
   * 0001-internal-comp-loader-generate-a-provides-for-components.patch
   * 0002-wpctl-fix-default-device-name-leak.patch
@@ -608,7 +613,7 @@ Mon Sep  9 12:12:28 UTC 2024 - Frederic Crozat <fcrozat@suse.com>
      for portal-based connections)
   * Fixes:
    - The Bluetooth auto-switch script now uses the common event
-     source object managers, which should improve its 
+     source object managers, which should improve its
      stability (!663)
    - Fix an issue where switching between Bluetooth profiles
      would temporarily link active audio streams to the internal
@@ -625,7 +630,7 @@ Tue Jul  2 08:14:44 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
       (#682)
   * Improvements:
     - wpctl will now properly show a '*' in front of sink filters
-      when they are selected as the default sink (!660) 
+      when they are selected as the default sink (!660)
 
 -------------------------------------------------------------------
 Fri Jun 28 06:01:56 UTC 2024 - alarrosa@suse.com
@@ -864,7 +869,7 @@ Fri Mar 22 08:30:48 UTC 2024 - Antonio Larrosa <alarrosa@suse.com>
 - Add patch from upstream to fix all input sources only working
   when bluetooth profile is set to HSF/HFP, which was a regression
   in 0.5.0 (glfo#pipewire/wireplumber#598):
-  * 0001-filter-utils-fix-handling-of-targetless-smart-filters.patch 
+  * 0001-filter-utils-fix-handling-of-targetless-smart-filters.patch
 
 -------------------------------------------------------------------
 Tue Mar 19 07:43:16 UTC 2024 - Richard Biener <rguenther@suse.com>
@@ -927,23 +932,23 @@ Tue Mar 12 16:25:39 UTC 2024 - alarrosa@suse.com
   * scripts: fix regression in state-routes.lua when marking routes
     as 'active'
   * scripts: improve linking logs
-  * monitors: use parseBool for boolean properties in rules 
+  * monitors: use parseBool for boolean properties in rules
   * config: add {device|node}.disable
-  * object-interest: make WP_INTEREST_MATCH_ALL part of the enum 
+  * object-interest: make WP_INTEREST_MATCH_ALL part of the enum
   * proxy: make the FEATURES_MINIMAL and FEATURES_ALL constants
-    part of the enum 
-  * log: fix WP_LOG_LEVEL_TRACE value in the g-i bindings 
-  * base-dirs: wrap flag groups in parenthesis 
+    part of the enum
+  * log: fix WP_LOG_LEVEL_TRACE value in the g-i bindings
+  * base-dirs: wrap flag groups in parenthesis
   * log.h: define G_LOG_DOMAIN only if
-    WP_USE_LOCAL_LOG_TOPIC_IN_G_LOG is defined 
-  * meson: make sure the boolean options have boolean values 
+    WP_USE_LOCAL_LOG_TOPIC_IN_G_LOG is defined
+  * meson: make sure the boolean options have boolean values
   * meson: move the common CFLAGS to project-wide scope
   * scripts: make sure target is not nil when iterating filters
     with matching targets
   * docs: update the documentation around file search locations
-  * scripts: rescan linkables when device EnumRoute param changes 
+  * scripts: rescan linkables when device EnumRoute param changes
   * scripts: fix available routes check when selecting the default
-    node 
+    node
   * scripts: fix typo in rescan-virtual-links.lua
 - Remove patch already included in the upstream version
   * 0001-scripts-fix-typo-in-rescan-virtual-links.lua.patch
@@ -1285,7 +1290,7 @@ Fri Jan 13 10:51:07 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 Wed Jan 11 12:41:28 UTC 2023 - Antonio Larrosa <alarrosa@suse.com>
 
 - Add upstream patches to fix glfo#pipewire/pipewire#2214 and to
-  handle better non-null terminated strings: 
+  handle better non-null terminated strings:
   * 0001-alsa-monitor-handle-snd_aloop-devices-better.patch
   * 0001-spa-json-make-sure-we-only-add-encoded-string-data.patch
   * 0001-m-lua-scripting-ignore-string-integer-table-keys-when-constructing-a-JSON-Array-Object.patch

@@ -122,7 +122,7 @@ a GObject-based high-level library that wraps PipeWire's API,
 providing convenience for writing the daemon's modules as well as
 external tools for managing PipeWire.
 
-This package provides all the necessary files for development with WirePlumber
+This package provides all the necessary files for development with WirePlumber.
 
 %package -n %{libwireplumber}
 Summary:        Session / policy manager implementation for PipeWire
@@ -192,12 +192,11 @@ install -m 644 %{S:1} %{buildroot}/%{_distconfdir}/
 mkdir -p %{buildroot}/%{_sysconfdir}
 install -m 644 %{S:1} %{buildroot}/%{_sysconfdir}/
 %endif
-%fdupes -s %{buildroot}/%{_datadir}/doc/pipewire/html
+%fdupes -s %{buildroot}/%{_datadir}/doc/wireplumber/html
 %find_lang %{name} %{?no_lang_C}
 
 %ifnarch %ix86 ppc64
 %check
-export XDG_RUNTIME_DIR=/tmp
 %meson_test
 %endif
 
