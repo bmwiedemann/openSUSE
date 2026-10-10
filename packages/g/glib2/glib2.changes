@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Thu Oct  8 18:43:35 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 2.88.4:
+  * Bugs fixed:
+    + gio/tests/services:
+      - Installed service file contains build path
+      - Fix installed service file containing build path
+    + docs: Fix gio gi-docgen docs_url
+    + gconstructor: Reference _tls_used also on GCC, CLang
+    + fix: handle long filenames in trash by truncating from front
+    + Backport various security fixes
+  * Updated translations.
+
+-------------------------------------------------------------------
 Wed Jul 29 16:21:08 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 2.88.3 (CVE-2026-15588):
