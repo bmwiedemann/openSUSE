@@ -1,4 +1,4 @@
-<image name="OBS__openSUSE___20261009" schemaversion="4.1">
+<image name="OBS__openSUSE___20261010" schemaversion="4.1">
   <description type="system">
     <author>The SUSE Team</author>
     <contact>build@opensuse.org</contact>
@@ -35,11 +35,11 @@
       <productvar name="SEPARATE_MEDIA">true</productvar>
       <productvar name="SHA1OPT">-x -2</productvar>
       <productvar name="VENDOR">openSUSE</productvar>
-      <productvar name="VERSION">20261009</productvar>
+      <productvar name="VERSION">20261010</productvar>
       <productinfo name="CONTENTSTYLE">11</productinfo>
-      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261009,openSUSE Tumbleweed</productinfo>
+      <productinfo name="DISTRO">cpe:/o:opensuse:opensuse:20261010,openSUSE Tumbleweed</productinfo>
       <productinfo name="LINGUAS">cs da de el en en_GB en_US es fr hu it ja pl pt pt_BR ru zh zh_CN zh_TW </productinfo>
-      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261009/x86_64</productinfo>
+      <productinfo name="REPOID">obsproduct://build.opensuse.org/openSUSE:Factory/openSUSE/20261010/x86_64</productinfo>
       <productinfo name="VENDOR">openSUSE</productinfo>
       <productoption name="INI_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
       <productoption name="PLUGIN_DIR">/usr/share/kiwi/modules/plugins/tumbleweed</productoption>
@@ -2251,6 +2251,7 @@
       <repopackage name="libnumbertext-data"/>
       <repopackage name="libnvme1"/>
       <repopackage name="libnvme3-1"/>
+      <repopackage name="liboapv1"/>
       <repopackage name="liboauth0"/>
       <repopackage name="libobjc4"/>
       <repopackage name="libodbc2"/>
@@ -3756,7 +3757,6 @@
       <repopackage name="qt6-printsupport-cups"/>
       <repopackage name="qt6-qt5compat-imports"/>
       <repopackage name="qt6-quick3d-imports"/>
-      <repopackage name="qt6-sql-mysql"/>
       <repopackage name="qt6-sql-sqlite"/>
       <repopackage name="qt6-texttospeech"/>
       <repopackage name="qt6-tools-qdbus"/>
@@ -4201,6 +4201,7 @@
       <repopackage name="vlc-codec-gstreamer"/>
       <repopackage name="vlc-lang"/>
       <repopackage name="vlc-noX"/>
+      <repopackage name="vlc-plugins-desktop"/>
       <repopackage name="vlc-qt"/>
       <repopackage name="vlgothic-fonts"/>
       <repopackage name="vorbis-tools"/>
