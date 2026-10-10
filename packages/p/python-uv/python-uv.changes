@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Sat Oct 10 07:10:23 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.13.0:
+  * BREAKING: Python 3.15 is the default stable version (was 3.14);
+    installed 3.14 is still reused, --python 3.14 pins the old default
+  * BREAKING: cache entries changed format; uv may re-download or
+    rebuild deps after upgrading (cache stays shareable)
+  * BREAKING: honor --require-hashes in included constraints, reject
+    editables there, single-path option values, native Python on
+    Windows ARM64, no distutils patch on 3.10+, tar-codec backend,
+    safer `uv build --clear`
+  * CPython 3.15.0 in the managed catalogue; preview
+    --require-build-hashes for transitive build deps; faster HTTP
+    cache, smaller storage; fix Windows lock filenames
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+- Refresh vendored deps: smallvec 1.16.2 -> 1.16.3, zstd 0.14.0 ->
+  0.14.1, zstd-safe 8.0.0 -> 8.1.0, zstd-sys 2.1.0 -> 2.1.1;
+  tar-codec 0.0.14 is the new default tar backend; linked graph stays
+  at 525 nodes, licence set unchanged
+- Upstream MSRV is still Rust 1.97, so BuildRequires on cargo is
+  unchanged
+
+-------------------------------------------------------------------
 Fri Oct  9 07:14:27 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.12.24:

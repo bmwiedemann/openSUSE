@@ -36,11 +36,11 @@
 %global build_rustflags -C linker=clang -C link-arg=-fuse-ld=%{_bindir}/mold -C link-arg=-Wl,-z,relro,-z,now -C debuginfo=2 -C incremental=false -C strip=none
 %endif
 Name:           %{origname}%{psuffix}
-Version:        0.12.24
+Version:        0.13.0
 Release:        0
 Summary:        A Python package installer and resolver, written in Rust
 # Legal-Review-Notice: uv itself is "Apache-2.0 OR MIT", but the binary
-# statically links the vendored Rust dependencies. Re-derived on this
+# statically links the vendored Rust dependencies. Re-derived on the 0.13.0
 # re-vendor with "cargo tree --offline -p uv -e normal" over the vendored
 # tree (525 unique name-version nodes); the copyleft licences in the linked graph are:
 #  - MPL-2.0 from astral-pubgrub, astral-version-ranges and option-ext
@@ -53,8 +53,8 @@ Summary:        A Python package installer and resolver, written in Rust
 # Everything else is permissive, BSD-3-Clause included: subtle,
 # encoding_rs, aws-lc-sys and the zstd bindings. 0.12.22 added a second
 # zstd chain through uv-python's new direct dependency: zstd 0.13.3 (MIT)
-# and zstd-safe 7.3.0 (BSD-3-Clause), alongside zstd 0.14.0 /
-# zstd-safe 8.0.0 / zstd-sys 2.1.0. MPL-2.0 section 3.2 is satisfied
+# and zstd-safe 7.3.0 (BSD-3-Clause), alongside zstd 0.14.1 /
+# zstd-safe 8.1.0 / zstd-sys 2.1.1. MPL-2.0 section 3.2 is satisfied
 # because the complete vendor.tar.zst ships in the src.rpm.
 License:        (Apache-2.0 OR MIT) AND MPL-2.0
 URL:            https://github.com/astral-sh/uv

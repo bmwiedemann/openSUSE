@@ -3326,4 +3326,12 @@ licence set is unchanged. Both flavors build green on aarch64.</comment>
     <comment>Update python-uv to 0.12.24: upstream fixes and enhancements with re-vendored dependencies (licence set unchanged, MSRV still Rust 1.97).</comment>
     <requestid>1383704</requestid>
   </revision>
+  <revision rev="133" vrev="1">
+    <srcmd5>d3adde7a4a434b056e68b6ec76133b09</srcmd5>
+    <version>0.13.0</version>
+    <time>1791638476</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-uv to 0.13.0. BREAKING: Python 3.15 becomes the default (3.14 still reused) and the cache format changed, forcing re-downloads.</comment>
+    <requestid>1383990</requestid>
+  </revision>
 </revisionlist>
