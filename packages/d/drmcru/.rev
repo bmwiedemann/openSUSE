@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>f6f230c6d59d37c8f4c99343a47f6166</srcmd5>
+    <version>0.1.5</version>
+    <time>1791637133</time>
+    <user>dimstar_suse</user>
+    <comment>drmcru is a modern TUI utility written in Rust for managing Linux DRM/KMS custom resolutions. It allows users to inspect/edit monitor EDID data, export patched EDID binaries, and apply kernel-level overrides. It also features native Hyprland integration for live mode discovery, mode switching, and generating Hyprland monitor rules (hyprland.conf / Lua hl.monitor).</comment>
+    <requestid>1383885</requestid>
+  </revision>
+</revisionlist>

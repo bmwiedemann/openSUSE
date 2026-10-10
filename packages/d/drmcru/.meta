@@ -1,0 +1,7 @@
+<package name="drmcru" project="openSUSE:Factory">
+  <title>Linux DRM/KMS custom resolution and EDID override utility</title>
+  <description>drmcru is a Linux DRM/KMS custom resolution utility.
+
+It edits monitor EDID data, exports patched EDID binaries, and can install those overrides on supported systems so the kernel exposes custom modes after reboot. Hyprland integration is included for live mode discovery, switching, verification, and generated legacy monitor=... or Hyprland 0.55+ Lua monitor rules.</description>
+  <url>https://github.com/ssupt/drmcru</url>
+</package>
