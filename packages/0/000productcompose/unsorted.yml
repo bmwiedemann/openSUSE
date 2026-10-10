@@ -3547,6 +3547,7 @@ unsorted:
   - drgn 
   - driverctl 
   - drm_info 
+  - drmcru 
   - droidcam 
   - droidcam-cli 
   - dropbox-cli 
@@ -15313,7 +15314,6 @@ unsorted:
   - libnxml0 
   - libo2scl0 
   - liboaml1 
-  - liboapv1 
   - liboapv1-32bit 
   - liboath-devel 
   - liboauth-devel 
@@ -33361,6 +33361,7 @@ unsorted:
   - qt6-speech-docs-qch 
   - qt6-speech-examples 
   - qt6-sql-devel 
+  - qt6-sql-mysql 
   - qt6-sql-postgresql 
   - qt6-sql-private-devel 
   - qt6-sql-unixODBC 

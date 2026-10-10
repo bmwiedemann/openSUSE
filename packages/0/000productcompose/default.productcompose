@@ -1198,7 +1198,7 @@ packagesets:
    - libIlmThread-3_4-33-x86-64-v3 # reason: dvd:patterns-media-rest_dvd
    - libImath-3_2-30 # reason: dvd:patterns-gnome-gnome
    - libImlib2-1 # reason: dvd:patterns-kde-kde
-   - libJudy1 # reason: dvd:patterns-kde-kde
+   - libJudy1 # reason: dvd:patterns-server-lamp_server
    - libKCddb5 # reason: dvd:patterns-kde-kde
    - libKChart2 # reason: dvd:patterns-media-rest_dvd
    - libKDEGames6 # reason: dvd:patterns-kde-kde
@@ -1982,7 +1982,7 @@ packagesets:
    - libfontenc1 # reason: dvd:patterns-gnome-gnome
    - libfprint-2-2 # reason: dvd:patterns-media-rest_cd_core
    - libfprint-2-tod1 # reason: dvd:patterns-media-rest_cd_core
-   - libfreeaptx0 # reason: dvd:patterns-gnome-gnome
+   - libfreeaptx0 # reason: dvd:openSUSE-release
    - libfreebl3 # reason: dvd:openSUSE-release
    - libfreecell-solver0 # reason: dvd:patterns-kde-kde
    - libfreehand-0_1-1 # reason: dvd:openSUSE-release
@@ -2452,9 +2452,10 @@ packagesets:
    - libnumbertext-data # reason: dvd:openSUSE-release
    - libnvme1 # reason: dvd:grub2
    - libnvme3-1 # reason: dvd:patterns-media-rest_dvd
+   - liboapv1 # reason: dvd:openSUSE-release
    - liboauth0 # reason: dvd:patterns-gnome-gnome
    - libobjc4 # reason: dvd:patterns-kde-kde
-   - libodbc2 # reason: dvd:patterns-kde-kde
+   - libodbc2 # reason: dvd:patterns-server-lamp_server
    - libodfgen-0_1-1 # reason: dvd:openSUSE-release
    - libogg0 # reason: dvd:openSUSE-release
    - liboggkate1 # reason: dvd:patterns-gnome-gnome
@@ -2510,7 +2511,7 @@ packagesets:
    - libpcre2-32-0 # reason: dvd:patterns-gnome-gnome
    - libpcre2-8-0 # reason: dvd:openSUSE-release
    - libpcre2-8-0-32bit # reason: dvd:patterns-media-rest_dvd
-   - libpcre2-posix3 # reason: dvd:patterns-kde-kde
+   - libpcre2-posix3 # reason: dvd:patterns-server-lamp_server
    - libpcsclite1 # reason: dvd:openSUSE-release
    - libpeas-1_0-1 # reason: dvd:patterns-xfce-xfce
    - libpeas-2-0 # reason: dvd:patterns-gnome-gnome
@@ -3065,9 +3066,9 @@ packagesets:
    - man-pages-ja # reason: dvd:patterns-base-console
    - man-pages-zh_CN # reason: dvd:patterns-base-console
    - manufacturer-PPDs # reason: dvd:patterns-server-printing
-   - mariadb # reason: dvd:patterns-kde-kde
-   - mariadb-client # reason: dvd:patterns-kde-kde
-   - mariadb-errormessages # reason: dvd:patterns-kde-kde
+   - mariadb # reason: dvd:patterns-server-lamp_server
+   - mariadb-client # reason: dvd:patterns-server-lamp_server
+   - mariadb-errormessages # reason: dvd:patterns-server-lamp_server
    - markdownpart # reason: dvd:patterns-kde-kde
    - markdownpart-lang # reason: dvd:patterns-kde-kde
    - mbimcli-bash-completion # reason: dvd:patterns-kde-kde
@@ -3641,7 +3642,7 @@ packagesets:
    - python313-markdown-it-py # reason: dvd:salt-master
    - python313-mdurl # reason: dvd:salt-master
    - python313-msgpack # reason: dvd:salt-master
-   - python313-mysqlclient # reason: dvd:patterns-kde-kde
+   - python313-mysqlclient # reason: dvd:patterns-server-lamp_server
    - python313-netaddr # reason: dvd:salt-master
    - python313-nftables # reason: dvd:patterns-kde-kde
    - python313-notify2 # reason: dvd:patterns-base-apparmor
@@ -3757,7 +3758,6 @@ packagesets:
    - qt6-printsupport-cups # reason: dvd:patterns-kde-kde
    - qt6-qt5compat-imports # reason: dvd:patterns-kde-kde
    - qt6-quick3d-imports # reason: dvd:patterns-kde-kde
-   - qt6-sql-mysql # reason: dvd:patterns-kde-kde
    - qt6-sql-sqlite # reason: dvd:patterns-kde-kde
    - qt6-texttospeech # reason: dvd:patterns-kde-kde
    - qt6-tools-qdbus # reason: dvd:patterns-kde-kde
@@ -4202,6 +4202,7 @@ packagesets:
    - vlc-codec-gstreamer # reason: dvd:patterns-kde-kde
    - vlc-lang # reason: dvd:patterns-kde-kde
    - vlc-noX # reason: dvd:patterns-kde-kde
+   - vlc-plugins-desktop # reason: dvd:patterns-kde-kde
    - vlc-qt # reason: dvd:patterns-kde-kde
    - vlgothic-fonts # reason: dvd:openSUSE-release
    - vorbis-tools # reason: dvd:patterns-gnome-gnome
@@ -5474,6 +5475,7 @@ packagesets:
    - libfmt12 # reason: opensuse_microos:patterns-microos-base-packagekit
    - libfontconfig1 # reason: opensuse_microos:patterns-microos-onlyDVD
    - libfontenc1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - libfreeaptx0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libfreebl3 # reason: opensuse_microos:patterns-containers-runtime_podman
    - libfreetype6 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libfribidi0 # reason: opensuse_microos:patterns-microos-onlyDVD
@@ -5650,6 +5652,7 @@ packagesets:
    - libnuma1 # reason: opensuse_microos:patterns-base-hardware
    - libnvme1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libnvme3-1 # reason: opensuse_microos:patterns-microos-onlyDVD
+   - liboapv1 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - liboath0 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
    - libogg0 # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - libonig5 # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -6286,6 +6289,7 @@ packagesets:
    - vim-small # reason: opensuse_microos:patterns-containers-runtime_podman
    - vlc # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vlc-noX # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
+   - vlc-plugins-desktop # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vlc-qt # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - vulkan-tools # reason: opensuse_microos_desktop:patterns-microos-desktop-kde
    - wallpaper-branding-openSUSE # reason: opensuse_microos:patterns-microos-alt_onlyDVD
@@ -7287,6 +7291,7 @@ packagesets:
    - libfontenc1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfprint-2-2 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfprint-2-tod1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - libfreeaptx0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfreebl3 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfreetype6 # reason: opensuse_kalpa:patterns-kalpa-base
    - libfribidi0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7455,6 +7460,7 @@ packagesets:
    - libntfs-3g90 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnuma1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libnvme1 # reason: opensuse_kalpa:patterns-kalpa-base
+   - liboapv1 # reason: opensuse_kalpa:patterns-kalpa-base
    - libogg0 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopenconnect5 # reason: opensuse_kalpa:patterns-kalpa-base
    - libopencore-amrnb0 # reason: opensuse_kalpa:patterns-kalpa-base
@@ -7995,6 +8001,7 @@ packagesets:
    - vim-small # reason: opensuse_kalpa:patterns-kalpa-base
    - vlc # reason: opensuse_kalpa:patterns-kalpa-base
    - vlc-noX # reason: opensuse_kalpa:patterns-kalpa-base
+   - vlc-plugins-desktop # reason: opensuse_kalpa:patterns-kalpa-base
    - vlc-qt # reason: opensuse_kalpa:patterns-kalpa-base
    - vulkan-tools # reason: opensuse_kalpa:patterns-kalpa-base
    - wallpaper-branding-openSUSE # reason: opensuse_kalpa:patterns-kalpa-base
