@@ -8531,4 +8531,41 @@
     <comment>1</comment>
     <requestid>1380691</requestid>
   </revision>
+  <revision rev="504" vrev="1">
+    <srcmd5>fba09da4ea36c36ef6f862b39a954cd4</srcmd5>
+    <version>157.0.1</version>
+    <time>1791637058</time>
+    <user>dimstar_suse</user>
+    <comment>- Mozilla Firefox 157.0.1
+  * Fixed downloads failing on macOS when Firefox is set to ask where
+    to save files but doesn't have permission to access the Downloads
+    folder. (bmo#2077390)
+  * Fixed the sidebar getting stuck on the Bookmarks or AI Chatbot
+    panel for some users. (bmo#2076296)
+  * Fixed the Restore from Backup option not appearing during onboarding
+    on Windows. (bmo#2073401)
+  MFSA 2026-104
+  * CVE-2026-106016 (bmo#2067465)
+    Mitigation bypass in the File Handling component
+
+- Mozilla Firefox 157.0
+  https://www.firefox.com/en-US/firefox/157.0/releasenotes/
+  MFSA 2026-97 (bsc#1282929)
+  * CVE-2026-100756 (bmo#2047721)
+    Incorrect boundary conditions in the Audio/Video: Playback component
+  * CVE-2026-100757 (bmo#2049352)
+    Use-after-free in the Widget component
+  * CVE-2026-100758 (bmo#2049792)
+    Sandbox escape in the DOM: Navigation component
+  * CVE-2026-100759 (bmo#2054736)
+    Uninitialized memory in the Storage: Quota Manager component
+  * CVE-2026-100760 (bmo#2058017)
+    Sandbox escape in the Security: Process Sandboxing component
+  * CVE-2026-100761 (bmo#2059020)
+    Privilege escalation due to use-after-free in the Graphics:
+    WebGPU component
+  * CVE-2026-100762 (bmo#2059404)
+    Sandbox escape due to use-after-free in the DOM: Content</comment>
+    <requestid>1383340</requestid>
+  </revision>
 </revisionlist>
