@@ -46,6 +46,8 @@ Patch1:         gnome-settings-daemon-switch-Japanese-default-input-to-mozc.patc
 Patch4:         0001-usb-protection-Treat-hubs-and-HID-devices-like-any-o.patch
 # PATCH-FEATURE-OPENSUSE -- Sorry GNOME, but pestering users like this is not welcome. We will add a Support GNOME into our welcome app thogh
 Patch5:         g-s-d-skip-donation.patch
+# PATCH-FIX-UPSTREAM libgnome-volume-control-Avoid-NULL-deref.patch xwang@suse.com bsc#1278300 glgo#GNOME/libgnome-volume-control!38 -- Avoid NULL deref when card has no active profile
+Patch6:         libgnome-volume-control-Avoid-NULL-deref.patch
 
 ## SLE/LEAP-only patches start at 1000
 # PATCH-FEATURE-OPENSUSE gnome-settings-daemon-notify-idle-resumed.patch bnc#439018 bnc#708182 bgo#575467 hpj@suse.com -- notify user about auto suspend when returning from sleep
