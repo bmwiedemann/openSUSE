@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:03:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Fix SBB QR code matching pattern to cover current Bern Tickets
+  * Add Snållåget PDF ticket extractor script
+  * Adapt Entur extractor to a new/alternative ticket PDF layout
+  * Fix reading date values from JSON with Qt 6.13
+  * accor: Prefer checkin/out dates from JSON-LD data
+  * feat: support Spanish bus tickets from ALSA
+  * Add extractor for Delta Air Lines emails
+  * Add extractor for Frontier Airlines emails
+  * Support "English" Ouigo tickets
+
+-------------------------------------------------------------------
 Tue Sep  8 09:35:54 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
