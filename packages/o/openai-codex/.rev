@@ -509,4 +509,12 @@ Fixes the OOM that declined 0.157.0: the 16 GB x86_64 workers are too small for 
     <comment>Update to 0.162.0: worktrees, task pinning, /copy, clickable URLs, CRLF apply_patch, sandbox fixes; re-vendored (License unchanged).</comment>
     <requestid>1383801</requestid>
   </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>a751e782cfb721d67c5009466c707d37</srcmd5>
+    <version>0.162.1</version>
+    <time>1791639461</time>
+    <user>dimstar_suse</user>
+    <comment>Update openai-codex to 0.162.1: two upstream bug fixes (multiline async-question TUI crash, daemon feature-compat startup failure). No Cargo.lock change; vendor tree carried over.</comment>
+    <requestid>1383988</requestid>
+  </revision>
 </revisionlist>

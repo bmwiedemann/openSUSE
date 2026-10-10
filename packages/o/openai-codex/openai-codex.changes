@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sat Oct 10 10:49:19 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 0.162.1:
+  * Fixed a TUI crash on multiline asynchronous questions,
+    preserving line breaks and complete hyperlink destinations
+  * Fixed startup failures from a running background server whose
+    feature settings differ from the CLI defaults; compatibility
+    checks now apply only to explicit command-line overrides
+  * No Cargo.lock change, so the vendored tree carries over
+    unchanged and the License tag is untouched
+
+-------------------------------------------------------------------
 Fri Oct  9 07:20:35 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 0.162.0:
