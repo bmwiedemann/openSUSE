@@ -1,7 +1,7 @@
 #
 # spec file for package parted
 #
-# Copyright (c) 2026 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -103,8 +103,7 @@ Summary:        Library for manipulating partitions
 Group:          System/Libraries
 
 %description -n libparted-fs-resize0
-Libparted is a library for creating, destroying, resizing, checking
-and copying partitions and the file systems on them.
+Libparted-fs-resize is a library for resizing filesystems.
 
 %package devel
 Summary:        Parted Include Files and Libraries necessary for Development
