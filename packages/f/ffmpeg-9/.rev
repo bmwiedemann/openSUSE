@@ -70,4 +70,12 @@
     <comment>- Enable apv encoder</comment>
     <requestid>1383010</requestid>
   </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>44705b521d02d5e2536090dd396deecc</srcmd5>
+    <version>9.0.2</version>
+    <time>1791637121</time>
+    <user>dimstar_suse</user>
+    <comment>- Correctly enable apv encoder, encoder is named liboapv.</comment>
+    <requestid>1383855</requestid>
+  </revision>
 </revisionlist>

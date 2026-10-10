@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Oct  9 12:18:06 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Correctly enable apv encoder, encoder is named liboapv.
+
+-------------------------------------------------------------------
 Wed Oct  7 07:59:26 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Enable apv encoder support, add pkgconfig(oapv) BuildRequires and
