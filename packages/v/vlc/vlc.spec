@@ -109,7 +109,6 @@ BuildRequires:  live555-devel >= 2015.01.27
 BuildRequires:  mpg123-devel
 BuildRequires:  pkgconfig
 BuildRequires:  posix_cc
-BuildRequires:  schroedinger-devel >= 1.0.10
 BuildRequires:  (lua >= 5.1 with lua < 5.4)
 BuildRequires:  (lua-devel >= 5.1 with lua-devel < 5.4)
 BuildConflicts: lua >= 5.4
@@ -173,10 +172,8 @@ BuildRequires:  pkgconfig(xpm)
 BuildRequires:  pkgconfig(xproto)
 BuildRequires:  pkgconfig(zvbi-0.2) >= 0.2.28
 Requires:       %{name}-noX = %{version}-%{release}
+Requires:       %{name}-plugins-desktop = %{version}-%{release}
 Requires:       %{name}-qt = %{version}-%{release}
-# FIXME: use proper Requires(pre/post/preun/...)
-# We need the noX package first, as it contains vlc-cache-gen
-PreReq:         %{name}-noX
 Conflicts:      %{conflicts}
 Obsoletes:      %{name}-gnome <= %{version}
 %if 0%{?suse_version} >= 1550
@@ -250,6 +247,8 @@ Group:          Development/Libraries/C and C++
 Requires:       %{name} = %{version}
 Requires:       %{name}-jack = %{version}
 Requires:       %{name}-noX = %{version}
+Requires:       libvlc%{libvlc} = %{version}-%{release}
+Requires:       libvlccore%{libvlccore} = %{version}-%{release}
 %if %{with vdpau}
 Requires:       %{name}-vdpau = %{version}
 %endif
@@ -345,6 +344,21 @@ Requires(post): %{name}-noX
 
 %description jack
 This package adds jack support to vlc via plugins.
+
+%package plugins-desktop
+Summary:        Output plugins for VLC
+Requires:       %{name}-noX = %{version}-%{release}
+Requires(post): %{name}-noX
+Conflicts:      %{name} < %{version}-%{release}
+
+%description plugins-desktop
+This package provides the audio and video output plugins,
+FFMpeg-based codecs and desktop integration plugins for VLC on
+desktop systems.
+
+It does not include a graphical interface, but with vlc-noX it can
+be used with other frontends, applications built on libvlc, or for
+use on headless systems.
 
 %if 0%{?BUILD_ORIG}
 %package codecs
@@ -537,9 +551,6 @@ done
 # ensure the ghost file has constant length for reproducibility
 dd if=/dev/zero bs=1M count=1 of=%{buildroot}/%{_libdir}/vlc/plugins/plugins.dat
 
-%post
-%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
-
 %post -n %{name}-noX
 /sbin/ldconfig
 %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
@@ -589,6 +600,14 @@ if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
   %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
 fi
 
+%post -n %{name}-plugins-desktop
+%{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+
+%postun -n %{name}-plugins-desktop
+if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
+  %{_libdir}/vlc/vlc-cache-gen %{_libdir}/vlc/plugins
+fi
+
 %if 0%{?BUILD_ORIG}
 %post -n %{name}-codecs
 if [ -x %{_libdir}/vlc/vlc-cache-gen ]; then
@@ -630,53 +649,6 @@ fi
 %{_datadir}/solid
 %dir %{_datadir}/kde4
 %dir %{_datadir}/kde4/apps
-%{_libdir}/vlc/libvlc_pulse.so
-%{_libdir}/vlc/libvlc_pulse.so.0
-%{_libdir}/vlc/libvlc_pulse.so.0.0.0
-%{_libdir}/vlc/libvlc_xcb_events.so
-%{_libdir}/vlc/libvlc_xcb_events.so.0
-%{_libdir}/vlc/libvlc_xcb_events.so.0.0.0
-%{_libdir}/vlc/plugins/access/libavio_plugin.so
-%{_libdir}/vlc/plugins/access/libpulsesrc_plugin.so
-%{_libdir}/vlc/plugins/access/libxcb_screen_plugin.so
-%{_libdir}/vlc/plugins/audio_output/libpulse_plugin.so
-%{_libdir}/vlc/plugins/codec/libavcodec_plugin.so
-%{_libdir}/vlc/plugins/codec/liblibass_plugin.so
-%{_libdir}/vlc/plugins/control/libxcb_hotkeys_plugin.so
-%{_libdir}/vlc/plugins/demux/libavformat_plugin.so
-%{_libdir}/vlc/plugins/gui/libskins2_plugin.so
-%{_libdir}/vlc/plugins/notify/libnotify_plugin.so
-%{_libdir}/vlc/plugins/packetizer/libpacketizer_avparser_plugin.so
-%{_libdir}/vlc/plugins/packetizer/libpacketizer_av1_plugin.so
-%{_libdir}/vlc/plugins/services_discovery/libpulselist_plugin.so
-%{_libdir}/vlc/plugins/services_discovery/libxcb_apps_plugin.so
-%if 0%{?is_opensuse}
-%{_libdir}/vlc/plugins/stream_out/libstream_out_chromaprint_plugin.so
-%endif
-%{_libdir}/vlc/plugins/text_renderer/libfreetype_plugin.so
-%{_libdir}/vlc/plugins/text_renderer/libsvg_plugin.so
-%{_libdir}/vlc/plugins/video_chroma/libswscale_plugin.so
-%{_libdir}/vlc/plugins/video_output/libaa_plugin.so
-%{_libdir}/vlc/plugins/video_output/libcaca_plugin.so
-%{_libdir}/vlc/plugins/video_output/libegl_x11_plugin.so
-%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
-%{_libdir}/vlc/plugins/video_output/libegl_wl_plugin.so
-%{_libdir}/vlc/plugins/video_output/libglconv_vaapi_wl_plugin.so
-%endif
-%if %{with opengles}
-%{_libdir}/vlc/plugins/video_output/libgles2_plugin.so
-%endif
-%{_libdir}/vlc/plugins/video_output/libglx_plugin.so
-%{_libdir}/vlc/plugins/video_output/libxcb_window_plugin.so
-%{_libdir}/vlc/plugins/video_output/libxcb_x11_plugin.so
-%{_libdir}/vlc/plugins/video_output/libxcb_xv_plugin.so
-%{_libdir}/vlc/plugins/video_splitter/libpanoramix_plugin.so
-%{_libdir}/vlc/plugins/visualization/libglspectrum_plugin.so
-%if 0%{?is_opensuse}
-%ifarch %{ix86} x86_64
-%{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
-%endif
-%endif
 
 %files lang -f vlc.lang
 
@@ -1162,6 +1134,55 @@ fi
 %files jack
 %{_libdir}/vlc/plugins/access/libaccess_jack_plugin.so
 %{_libdir}/vlc/plugins/audio_output/libjack_plugin.so
+
+%files plugins-desktop
+%{_libdir}/vlc/libvlc_pulse.so
+%{_libdir}/vlc/libvlc_pulse.so.0
+%{_libdir}/vlc/libvlc_pulse.so.0.0.0
+%{_libdir}/vlc/libvlc_xcb_events.so
+%{_libdir}/vlc/libvlc_xcb_events.so.0
+%{_libdir}/vlc/libvlc_xcb_events.so.0.0.0
+%{_libdir}/vlc/plugins/access/libavio_plugin.so
+%{_libdir}/vlc/plugins/access/libpulsesrc_plugin.so
+%{_libdir}/vlc/plugins/access/libxcb_screen_plugin.so
+%{_libdir}/vlc/plugins/audio_output/libpulse_plugin.so
+%{_libdir}/vlc/plugins/codec/libavcodec_plugin.so
+%{_libdir}/vlc/plugins/codec/liblibass_plugin.so
+%{_libdir}/vlc/plugins/control/libxcb_hotkeys_plugin.so
+%{_libdir}/vlc/plugins/demux/libavformat_plugin.so
+%{_libdir}/vlc/plugins/gui/libskins2_plugin.so
+%{_libdir}/vlc/plugins/notify/libnotify_plugin.so
+%{_libdir}/vlc/plugins/packetizer/libpacketizer_avparser_plugin.so
+%{_libdir}/vlc/plugins/packetizer/libpacketizer_av1_plugin.so
+%{_libdir}/vlc/plugins/services_discovery/libpulselist_plugin.so
+%{_libdir}/vlc/plugins/services_discovery/libxcb_apps_plugin.so
+%if 0%{?is_opensuse}
+%{_libdir}/vlc/plugins/stream_out/libstream_out_chromaprint_plugin.so
+%endif
+%{_libdir}/vlc/plugins/text_renderer/libfreetype_plugin.so
+%{_libdir}/vlc/plugins/text_renderer/libsvg_plugin.so
+%{_libdir}/vlc/plugins/video_chroma/libswscale_plugin.so
+%{_libdir}/vlc/plugins/video_output/libaa_plugin.so
+%{_libdir}/vlc/plugins/video_output/libcaca_plugin.so
+%{_libdir}/vlc/plugins/video_output/libegl_x11_plugin.so
+%if 0%{?suse_version} >= 1500 && 0%{?is_opensuse}
+%{_libdir}/vlc/plugins/video_output/libegl_wl_plugin.so
+%{_libdir}/vlc/plugins/video_output/libglconv_vaapi_wl_plugin.so
+%endif
+%if %{with opengles}
+%{_libdir}/vlc/plugins/video_output/libgles2_plugin.so
+%endif
+%{_libdir}/vlc/plugins/video_output/libglx_plugin.so
+%{_libdir}/vlc/plugins/video_output/libxcb_window_plugin.so
+%{_libdir}/vlc/plugins/video_output/libxcb_x11_plugin.so
+%{_libdir}/vlc/plugins/video_output/libxcb_xv_plugin.so
+%{_libdir}/vlc/plugins/video_splitter/libpanoramix_plugin.so
+%{_libdir}/vlc/plugins/visualization/libglspectrum_plugin.so
+%if 0%{?is_opensuse}
+%ifarch %{ix86} x86_64
+%{_libdir}/vlc/plugins/visualization/libprojectm_plugin.so
+%endif
+%endif
 
 %if %{with gstreamer}
 %files codec-gstreamer

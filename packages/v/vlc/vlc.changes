@@ -1,4 +1,29 @@
 -------------------------------------------------------------------
+Fri Oct  9 07:29:57 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
+
+- Require vlc from vlc-devel: whereas the desktop app is not exactly needed
+  when building against the libraries, many consumers expect the full stack to
+  be present.
+
+-------------------------------------------------------------------
+Sun Oct  4 06:18:11 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Drop schroedinger-devel BuildRequires: Not needed, nor used.
+  Upstream removed support in 3.0.24
+
+-------------------------------------------------------------------
+Sat Oct  3 16:27:44 UTC 2026 - Shawn Dunn <sfalken@kalpadesktop.org>
+
+- Rework subpackaging
+  * Split the desktop output plugins out of the main vlc package,
+    for use on headless systems
+  * Installing vlc-noX and vlc-plugins-desktop will now give a
+    fully functional CLI installation, without pulling in the
+    graphical frontend
+  * Main 'vlc' package will now pull in all components for desktop
+    GUI interface
+
+-------------------------------------------------------------------
 Wed Sep 23 13:12:36 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Update to version 3.0.24:
