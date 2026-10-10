@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:28:54 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 0.4.1:
+  * No functional change: only the license metadata in
+    pyproject.toml is now explicit (same MIT license)
+
+-------------------------------------------------------------------
 Mon Aug 10 20:21:58 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.4.0:

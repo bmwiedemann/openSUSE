@@ -17,7 +17,7 @@
 
 
 Name:           python-uncalled-for
-Version:        0.4.0
+Version:        0.4.1
 Release:        0
 Summary:        Async-friendly dependency injection for Python
 License:        MIT

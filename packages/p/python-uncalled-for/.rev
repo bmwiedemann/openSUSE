@@ -15,4 +15,12 @@
     <comment>Update to 0.4.0: adds a call-scoped Frame mechanism (new uncalled_for.frames module) and CallArgument(&quot;name&quot;), which lets a dependency factory receive a value from the outer function call - usable as a factory parameter default or as a keyword binding in Depends(factory, **bindings). New public API: CallArgument, CycleError, Frame, current_frame, frame_scope. Existing resolution paths are unchanged (bare Depends(f) keeps its cache key, _resolve_parameters keeps its signature). Also fixes five pyright errors, four pre-existing. Packaging: %check now runs the full upstream test suite (121 tests, green on python313 and python314) instead of a bare import smoke test, adding pytest/pytest-asyncio BuildRequires; upstream's coverage and per-test-timeout addopts are CI-only gates and are dropped. LICENSE is now packaged. No dependency or requires-python changes (pyproject.toml is unchanged from 0.3.2). Local build green on openSUSE_Tumbleweed/aarch64, rpmlint 0 errors 0 warnings 0 badness.</comment>
     <requestid>1370575</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>c8572d153e000ad066f55b44e897762f</srcmd5>
+    <version>0.4.1</version>
+    <time>1791638479</time>
+    <user>dimstar_suse</user>
+    <comment>Update python-uncalled-for to 0.4.1. No functional change: only the license metadata is now explicit (same MIT license); src/tests byte-identical to 0.4.0.</comment>
+    <requestid>1383993</requestid>
+  </revision>
 </revisionlist>
