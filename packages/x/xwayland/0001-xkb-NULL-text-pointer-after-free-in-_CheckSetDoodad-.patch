@@ -1,0 +1,50 @@
+From 0d1b1b0bad86c9ea2a3b7ca5a70e681dc69f1ecc Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 16:53:56 +1000
+Subject: [PATCH 01/12] xkb: NULL text pointer after free in _CheckSetDoodad
+ error path
+
+_CheckSetDoodad() allocates doodad->text.text via _GetCountedString()
+and then attempts to allocate doodad->text.font. If the font string
+allocation fails (e.g. because the font string length extends past
+the request boundary), the error handler frees doodad->text.text but
+does not NULL the pointer. The doodad was already added to the geometry
+by XkbAddGeomDoodad() before the string allocations, so when
+XkbFreeGeometry() runs cleanup, _XkbClearDoodad() frees the same
+dangling pointer again, resulting in a double-free.
+
+NULL the pointer after freeing it to prevent the double-free.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31221
+
+CVE-2026-88812
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ test/pyxtest/proto/xkb.py | 62 +++++++++++++++++++++++++++++++++++++++
+ test/pyxtest/test_xkb.py  | 60 +++++++++++++++++++++++++++++++++++++
+ xkb/xkb.c                 |  3 +-
+ 3 files changed, 124 insertions(+), 1 deletion(-)
+
+diff --git a/xkb/xkb.c b/xkb/xkb.c
+index 67c9b3dbe..961ce9ca3 100644
+--- a/xkb/xkb.c
++++ b/xkb/xkb.c
+@@ -5312,7 +5312,8 @@ _CheckSetDoodad(char **wire_inout, xkbSetGeometryReq *req,
+             return status;
+         status = _GetCountedString(&wire, client, &doodad->text.font);
+         if (status != Success) {
+-            free (doodad->text.text);
++            free(doodad->text.text);
++            doodad->text.text = NULL;
+             return status;
+         }
+         break;
+-- 
+2.51.0
+

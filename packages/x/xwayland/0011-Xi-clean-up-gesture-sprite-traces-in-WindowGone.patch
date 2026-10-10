@@ -1,0 +1,77 @@
+From efcfd8acc754c5ac4b2555ff375dd5101d735b0a Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Thu, 3 Sep 2026 14:57:31 +1000
+Subject: [PATCH 11/12] Xi: clean up gesture sprite traces in WindowGone
+
+Gesture sprite traces which have the same 'fixed sprite trace
+for the duration of the gesture' logic as touch sprite traces.
+Both copy WindowPtrs into the trace without refcounting them.
+
+If a device supports gestures but does not have a TouchClass,
+the cleanup skipped over the gesture sprite cleanup, leaving
+dangling pointers in place if a sprite trace is destroyed
+during an active gesture (i.e. window is removed).
+
+DeliverOneGestureEvent() then dereferences the stale pointer via
+DeepestSpriteWin(&gi->sprite)->drawable.id, causing a use-after-free.
+
+This vulnerability was discovered by:
+  4nibhal working with TrendAI Zero Day Initiative
+
+ZDI-CAN-32753
+
+CVE-2026-93536
+
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ Xi/exevents.c             |  24 +++-
+ test/pyxtest/inputtest.py | 295 ++++++++++++++++++++++++++++++++++++++
+ test/pyxtest/proto/xi.py  |  76 ++++++++++
+ test/pyxtest/test_xi.py   | 188 +++++++++++++++++++++++-
+ 4 files changed, 575 insertions(+), 8 deletions(-)
+ create mode 100644 test/pyxtest/inputtest.py
+
+Index: xorg-server-21.1.24/Xi/exevents.c
+===================================================================
+--- xorg-server-21.1.24.orig/Xi/exevents.c
++++ xorg-server-21.1.24/Xi/exevents.c
+@@ -2871,9 +2871,8 @@ InputClientGone(WindowPtr pWin, XID id)
+ }
+ 
+ /**
+- * Search for window in each touch trace for each device. Remove the window
+- * and all its subwindows from the trace when found. The initial window
+- * order is preserved.
++ * Search for window in each touch and gesture trace for each device.
++ * Truncate the trace when the window is found.
+  */
+ void
+ WindowGone(WindowPtr win)
+@@ -2884,11 +2883,22 @@ WindowGone(WindowPtr win)
+         TouchClassPtr t = dev->touch;
+         int i;
+ 
+-        if (!t)
+-            continue;
++        if (t) {
++            for (i = 0; i < t->num_touches; i++) {
++                SpritePtr sprite = &t->touches[i].sprite;
++                int j;
+ 
+-        for (i = 0; i < t->num_touches; i++) {
+-            SpritePtr sprite = &t->touches[i].sprite;
++                for (j = 0; j < sprite->spriteTraceGood; j++) {
++                    if (sprite->spriteTrace[j] == win) {
++                        sprite->spriteTraceGood = j;
++                        break;
++                    }
++                }
++            }
++        }
++
++        if (dev->gesture) {
++            SpritePtr sprite = &dev->gesture->gesture.sprite;
+             int j;
+ 
+             for (j = 0; j < sprite->spriteTraceGood; j++) {

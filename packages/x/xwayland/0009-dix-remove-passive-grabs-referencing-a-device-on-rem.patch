@@ -1,0 +1,109 @@
+From be572634158850fff4e9829cee88db08d30c9743 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:16:59 +1000
+Subject: [PATCH 09/12] dix: remove passive grabs referencing a device on
+ removal
+
+Passive grabs (GrabRec) store raw DeviceIntPtr values for both the
+grabbed device and the modifier device without any lifetime management.
+When a device is removed via XIRemoveMaster, CloseDevice() frees the
+device struct, but leaves dangling pointers in grab->modifierDevice
+for any grab that used this device.
+
+Subsequent pointer events trigger CheckPassiveGrab() which dereferences
+the dangling modifierDevice pointer for XI grabs (the CORE and XI2 paths
+reassign it, but the XI path does not).
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31832
+
+CVE-2026-93516
+
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ dix/devices.c            |  36 +++++
+ test/pyxtest/proto/xi.py | 309 +++++++++++++++++++++++++++++++++++++++
+ test/pyxtest/test_xi.py  | 109 ++++++++++++++
+ 3 files changed, 454 insertions(+)
+
+Index: xwayland-24.1.13/dix/devices.c
+===================================================================
+--- xwayland-24.1.13.orig/dix/devices.c
++++ xwayland-24.1.13/dix/devices.c
+@@ -1197,6 +1197,40 @@ CloseOneDevice(const DeviceIntPtr dev, D
+     return BadMatch;
+ }
+ 
++static Bool
++GrabReferencesDevice(void *value, XID id, void *cdata)
++{
++    GrabPtr grab = value;
++    DeviceIntPtr dev = cdata;
++
++    return grab->device == dev || grab->modifierDevice == dev;
++}
++
++/**
++ * Remove all passive grabs that reference the given device, either as
++ * the grabbed device or as the modifier device. This must be called
++ * before the device is freed to avoid dangling pointers in GrabRec.
++ */
++static void
++RemovePassiveGrabsForDevice(DeviceIntPtr dev)
++{
++    int i;
++
++    for (i = 0; i < currentMaxClients; i++) {
++        GrabPtr grab;
++
++        if (!clients[i])
++            continue;
++
++        while ((grab = LookupClientResourceComplex(clients[i],
++                                                   X11_RESTYPE_PASSIVEGRAB,
++                                                   GrabReferencesDevice,
++                                                   dev))) {
++            FreeResource(grab->resource, X11_RESTYPE_NONE);
++        }
++    }
++}
++
+ /**
+  * Remove a device from the device list, closes it and thus frees all
+  * resources.
+@@ -1238,6 +1272,8 @@ RemoveDevice(DeviceIntPtr dev, BOOL send
+ 
+     flag = IsMaster(dev) ? XIMasterRemoved : XISlaveRemoved;
+ 
++    RemovePassiveGrabsForDevice(dev);
++
+     input_lock();
+ 
+     if ((ret = CloseOneDevice(dev, &inputInfo.devices)) == Success ||
+Index: xwayland-24.1.13/include/resource.h
+===================================================================
+--- xwayland-24.1.13.orig/include/resource.h
++++ xwayland-24.1.13/include/resource.h
+@@ -71,6 +71,19 @@ typedef uint32_t RESTYPE;
+ 
+ /* types for Resource routines */
+ 
++// prevent namespace clash with Windows
++#define X11_RESTYPE_NONE        ((RESTYPE)0)
++#define X11_RESTYPE_WINDOW      ((RESTYPE)1|RC_DRAWABLE)
++#define X11_RESTYPE_PIXMAP      ((RESTYPE)2|RC_DRAWABLE)
++#define X11_RESTYPE_GC          ((RESTYPE)3)
++#define X11_RESTYPE_FONT        ((RESTYPE)4)
++#define X11_RESTYPE_CURSOR      ((RESTYPE)5)
++#define X11_RESTYPE_COLORMAP    ((RESTYPE)6)
++#define X11_RESTYPE_CMAPENTRY   ((RESTYPE)7)
++#define X11_RESTYPE_OTHERCLIENT ((RESTYPE)8|RC_NEVERRETAIN)
++#define X11_RESTYPE_PASSIVEGRAB ((RESTYPE)9|RC_NEVERRETAIN)
++#define X11_RESTYPE_LASTPREDEF  ((RESTYPE)9)
++
+ #define RT_WINDOW	((RESTYPE)1|RC_DRAWABLE)
+ #define RT_PIXMAP	((RESTYPE)2|RC_DRAWABLE)
+ #define RT_GC		((RESTYPE)3)

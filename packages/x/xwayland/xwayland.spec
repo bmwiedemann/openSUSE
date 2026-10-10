@@ -38,6 +38,19 @@ Source1:        %{url}/archive/individual/xserver/%{name}-%{version}.tar.xz.sig
 Source2:        xwayland.keyring
 Patch3:         U_xwayland_Dont_run_key_behaviors_and_actions.patch
 
+Patch1281213:   0001-xkb-NULL-text-pointer-after-free-in-_CheckSetDoodad-.patch
+Patch1281236:   0002-xkb-allocate-names-keys-to-MAP_LENGTH-in-XkbAllocNam.patch
+Patch1281227:   0003-xkb-widen-size_syms-num_syms-size_acts-num_acts-to-u.patch
+Patch1281242:   0004-xkb-fix-CheckKeySyms-overwriting-request-range-symsP.patch
+Patch1281238:   0005-randr-fix-size-and-offset-in-RRChangeProviderPropert.patch
+Patch1281241:   0006-Xi-validate-modifier-values-in-ProcXIPassiveUngrabDe.patch
+Patch1281225:   0007-glx-validate-dataBytes-against-cmdlen-in-RenderLarge.patch
+Patch1281218:   0008-present-unlink-notifies-from-window-list-in-present_.patch
+Patch1281220:   0009-dix-remove-passive-grabs-referencing-a-device-on-rem.patch
+Patch1281233:   0010-Xi-add-bounds-check-for-barrier-events-in-input_cons.patch
+Patch1281244:   0011-Xi-clean-up-gesture-sprite-traces-in-WindowGone.patch
+Patch1281240:   0012-glamor-size-tmp_bits-buffer-for-source-coordinate-ra.patch
+
 BuildRequires:  meson
 BuildRequires:  ninja
 BuildRequires:  pkgconfig

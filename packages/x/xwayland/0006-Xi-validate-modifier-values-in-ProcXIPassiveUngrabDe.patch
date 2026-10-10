@@ -1,0 +1,67 @@
+From 37a1847a60c6799aecf163a5cfa40077a9002675 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:04:20 +1000
+Subject: [PATCH 06/12] Xi: validate modifier values in
+ ProcXIPassiveUngrabDevice
+
+ProcXIPassiveUngrabDevice() passes client-supplied modifier values
+directly to DeletePassiveGrabFromList() without validating them.
+
+DeletePassiveGrabFromList() may reach DeleteDetailFromMask() which uses
+BITCLEAR(mask, modifier). The mask is allocated as 8 Mask words (256
+bits). A modifier value > 255 causes BITCLEAR to index mask[modifier>>5]
+past the allocation, resulting in a controlled single-bit-clear at an
+attacker-chosen heap offset.
+
+Add the same modifier validation that CheckGrabValues() uses: reject
+modifiers that are not XIAnyModifier and have bits set outside
+AllModifiersMask.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-32366
+
+CVE-2026-93523
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ Xi/xipassivegrab.c      | 12 ++++++++++
+ test/pyxtest/test_xi.py | 51 +++++++++++++++++++++++++++++++++++++++++
+ 2 files changed, 63 insertions(+)
+
+diff --git a/Xi/xipassivegrab.c b/Xi/xipassivegrab.c
+index 65b7b805a..181f430a4 100644
+--- a/Xi/xipassivegrab.c
++++ b/Xi/xipassivegrab.c
+@@ -46,6 +46,10 @@
+ #include "misc.h"
+ #include "inpututils.h"
+ 
++#define AllModifiersMask ( \
++	ShiftMask | LockMask | ControlMask | Mod1Mask | Mod2Mask | \
++	Mod3Mask | Mod4Mask | Mod5Mask )
++
+ int _X_COLD
+ SProcXIPassiveGrabDevice(ClientPtr client)
+ {
+@@ -350,6 +354,14 @@ ProcXIPassiveUngrabDevice(ClientPtr client)
+     if (rc != Success)
+         return rc;
+ 
++    modifiers = (uint32_t *) &stuff[1];
++    for (i = 0; i < stuff->num_modifiers; i++, modifiers++) {
++        if (*modifiers != XIAnyModifier && (*modifiers & ~AllModifiersMask)) {
++            client->errorValue = *modifiers;
++            return BadValue;
++        }
++    }
++
+     mod_dev = (IsFloating(dev)) ? dev : GetMaster(dev, MASTER_KEYBOARD);
+ 
+     tempGrab = AllocGrab(NULL);
+-- 
+2.51.0
+

@@ -1,0 +1,77 @@
+From 89101a6c6618f543d7502f2077c7ef1a507af256 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 16:57:38 +1000
+Subject: [PATCH 03/12] xkb: widen size_syms, num_syms, size_acts, num_acts to
+ unsigned int
+
+Fields in XkbClientMapRec and XkbServerMapRec that denote size/num
+and are unsigned short can result in truncations. For example
+when XkbResizeKeyType() computes the new size_syms value as
+(nTotal * 15) / 10, the result may be implicitly truncated to 16
+bits on assignment. This causes an undersized calloc allocation, and the
+subsequent copy loop writes based on the actual (untruncated) key count,
+resulting in a heap buffer overflow. A similar truncation may happen
+in XkbResizeKeySyms() and XkbResizeKeyActions().
+
+Widen the fields from unsigned short to unsigned int. These are internal
+server structures, not wire protocol types.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31834
+
+CVE-2026-93518
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ include/xkbstr.h         |   8 +--
+ test/pyxtest/test_xkb.py | 104 +++++++++++++++++++++++++++++++++++++++
+ xkb/XKBMAlloc.c          |   3 +-
+ 3 files changed, 110 insertions(+), 5 deletions(-)
+
+diff --git a/include/xkbstr.h b/include/xkbstr.h
+index 749f1f26e..45a15f376 100644
+--- a/include/xkbstr.h
++++ b/include/xkbstr.h
+@@ -312,8 +312,8 @@ typedef struct _XkbControls {
+                                   XkbAX_NeedOption((c), (w)))
+ 
+ typedef struct _XkbServerMapRec {
+-    unsigned short num_acts;
+-    unsigned short size_acts;
++    unsigned int num_acts;
++    unsigned int size_acts;
+     XkbAction *acts;
+ 
+     XkbBehavior *behaviors;
+@@ -346,8 +346,8 @@ typedef struct _XkbClientMapRec {
+     unsigned char num_types;
+     XkbKeyTypePtr types;
+ 
+-    unsigned short size_syms;
+-    unsigned short num_syms;
++    unsigned int size_syms;
++    unsigned int num_syms;
+     KeySym *syms;
+     XkbSymMapPtr key_sym_map;
+ 
+diff --git a/xkb/XKBMAlloc.c b/xkb/XKBMAlloc.c
+index 78e597f3d..8f8ac28fa 100644
+--- a/xkb/XKBMAlloc.c
++++ b/xkb/XKBMAlloc.c
+@@ -385,7 +385,8 @@ XkbResizeKeyType(XkbDescPtr xkb,
+         }
+         if (nResize > 0) {
+             int nextMatch;
+-
++            if (nTotal > INT_MAX / 15)
++                return BadAlloc;
+             xkb->map->size_syms = (nTotal * 15) / 10;
+             newSyms = calloc(xkb->map->size_syms, sizeof(KeySym));
+             if (newSyms == NULL)
+-- 
+2.51.0
+

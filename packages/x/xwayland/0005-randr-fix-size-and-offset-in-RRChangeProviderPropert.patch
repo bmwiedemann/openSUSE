@@ -1,0 +1,58 @@
+From 5dc9efd5a199717b53f70b9c6cd336a522370e46 Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:04:35 +1000
+Subject: [PATCH 05/12] randr: fix size and offset in RRChangeProviderProperty
+ PrependMode
+
+RRChangeProviderProperty() has two bugs in the PropModePrepend case:
+
+1. new_value.size is set to 'len' (the new data length) instead of
+   'total_len' (len + prop_value->size), losing track of the existing
+   data. This also affects PropModeAppend.
+
+2. The old_data offset is computed using prop_value->size instead of
+   len. For PrependMode, the layout should be [new(len)][old(size)],
+   so old_data should start at len * size_in_bytes.
+
+These bugs are analogous to the ones fixed in RRChangeOutputProperty(),
+see commit 541ab2ecd41d ("Xi/randr: fix handling of PropModeAppend/Prepend").
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-31944
+
+CVE-2026-93521
+
+Assisted-by: Claude:claude-opus-4-6
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ randr/rrproviderproperty.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/randr/rrproviderproperty.c b/randr/rrproviderproperty.c
+index a14865583..2e53291ee 100644
+--- a/randr/rrproviderproperty.c
++++ b/randr/rrproviderproperty.c
+@@ -191,7 +191,7 @@ RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
+                 RRDestroyProviderProperty(prop);
+             return BadAlloc;
+         }
+-        new_value.size = len;
++        new_value.size = total_len;
+         new_value.type = type;
+         new_value.format = format;
+ 
+@@ -208,7 +208,7 @@ RRChangeProviderProperty(RRProviderPtr provider, Atom property, Atom type,
+         case PropModePrepend:
+             new_data = new_value.data;
+             old_data = (void *) (((char *) new_value.data) +
+-                                  (prop_value->size * size_in_bytes));
++                                  (len * size_in_bytes));
+             break;
+         }
+         if (new_data)
+-- 
+2.51.0
+

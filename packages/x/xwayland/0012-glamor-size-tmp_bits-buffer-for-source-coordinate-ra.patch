@@ -1,0 +1,52 @@
+From ad26c26bf795e6464f74c8ef5bb1d41403d877ab Mon Sep 17 00:00:00 2001
+From: Peter Hutterer <peter.hutterer@who-t.net>
+Date: Wed, 26 Aug 2026 17:17:21 +1000
+Subject: [PATCH 12/12] glamor: size tmp_bits buffer for source coordinate
+ range in upload_boxes
+
+glamor_upload_boxes() allocates the tmp_bits buffer (used for 24-bit to
+32-bit depth conversion) based on the destination pixmap height, but
+indexes it using source coordinates (y1 - dy_dst + dy_src). When the
+source is taller than the destination, the source-relative offset
+exceeds the destination height, causing writes past the buffer end.
+
+Size the buffer to account for the source coordinate mapping:
+byte_stride * (pixmap->drawable.height - dy_dst + dy_src). This
+ensures the buffer covers the full range of source rows that will be
+accessed during the upload.
+
+This vulnerability was discovered by:
+  Anonymous working with TrendAI Zero Day Initiative
+
+ZDI-CAN-32361
+
+CVE-2026-93522
+
+Signed-off-by: Peter Hutterer <peter.hutterer@who-t.net>
+Assisted-by: Claude:claude-opus-4-6
+Part-of: <https://gitlab.freedesktop.org/xorg/xserver/-/merge_requests/2341>
+---
+ glamor/glamor_transfer.c | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+Index: xwayland-24.1.13/glamor/glamor_transfer.c
+===================================================================
+--- xwayland-24.1.13.orig/glamor/glamor_transfer.c
++++ xwayland-24.1.13/glamor/glamor_transfer.c
+@@ -41,8 +41,14 @@ glamor_upload_boxes(DrawablePtr drawable
+     int                         bytes_per_pixel = PICT_FORMAT_BPP(f->render_format) >> 3;
+     char *tmp_bits = NULL;
+ 
+-    if (glamor_drawable_effective_depth(drawable) == 24 && pixmap->drawable.depth == 32)
+-        tmp_bits = xnfalloc(byte_stride * pixmap->drawable.height);
++    if (glamor_drawable_effective_depth(drawable) == 24 && pixmap->drawable.depth == 32) {
++        int tmp_height = pixmap->drawable.height - dy_dst + dy_src;
++        if (tmp_height > 0) {
++            if (byte_stride > 0 && tmp_height > INT_MAX / byte_stride)
++                return;
++            tmp_bits = XNFalloc(byte_stride * tmp_height);
++        }
++    }
+ 
+     glamor_make_current(glamor_priv);
+ 
