@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Tue Oct  6 13:29:56 UTC 2026 - David Anes <david.anes@suse.com>
+
+- update to 2.9.0:
+  * Security fixes:
+    * CVE-2026-102633, bsc#1283493: integer overflow in expat_realloc
+      on 32bit platforms
+    * CVE-2026-77214, bsc#1284334: out-of-bounds read in
+      XML_ParseBuffer due to missing validation of the len parameter
+  * drop the patch, fixed upstream:
+    * expat-CVE-2026-102633.patch
+  * Bug fixes:
+    * Handle OOM when copying encodingName in XML_ParserReset
+  * New features:
+    * Properties API to get and set scalar properties of a parser
+    * Five new 64bit location API functions
+
+-------------------------------------------------------------------
 Wed Sep 30 15:30:59 UTC 2026 - David Anes <david.anes@suse.com>
 
 - security update:
@@ -60,7 +77,7 @@ Fri Aug 21 21:02:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
       bsc#1267631, CVE-2026-50219,
       bsc#1268572, CVE-2026-56131,
       bsc#1268573, CVE-2026-56132,
-      bsc#1275096, CVE-2026-56403, CVE-2026-56404, CVE-2026-56405,
+      bsc#1275115, CVE-2026-56403, CVE-2026-56404, CVE-2026-56405,
       CVE-2026-56406, CVE-2026-56407, CVE-2026-56408,
       CVE-2026-56409, CVE-2026-56410, CVE-2026-56411,
       CVE-2026-56412):
@@ -300,7 +317,7 @@ Thu Sep  5 09:21:17 UTC 2024 - David Anes <david.anes@suse.com>
 
 - Update to 2.6.3:
   * Security fixes:
-    - CVE-2024-45490, bsc#1229930 -- Calling function XML_ParseBuffer with
+    - CVE-2024-45490, bsc#1229930, bsc#1229962 -- Calling function XML_ParseBuffer with
       len < 0 without noticing and then calling XML_GetBuffer
       will have XML_ParseBuffer fail to recognize the problem
       and XML_GetBuffer corrupt memory.
@@ -309,12 +326,12 @@ Thu Sep  5 09:21:17 UTC 2024 - David Anes <david.anes@suse.com>
       has been doing since Expat 2.2.1, and now documented.
       Impact is denial of service to potentially artitrary code
       execution.
-    - CVE-2024-45491, bsc#1229931 -- Internal function dtdCopy can have an
+    - CVE-2024-45491, bsc#1229931, bsc#1229963 -- Internal function dtdCopy can have an
       integer overflow for nDefaultAtts on 32-bit platforms
       (where UINT_MAX equals SIZE_MAX).
       Impact is denial of service to potentially artitrary code
       execution.
-    - CVE-2024-45492, bsc#1229932 -- Internal function nextScaffoldPart can
+    - CVE-2024-45492, bsc#1229932, bsc#1229964 -- Internal function nextScaffoldPart can
       have an integer overflow for m_groupSize on 32-bit
       platforms (where UINT_MAX equals SIZE_MAX).
       Impact is denial of service to potentially artitrary code

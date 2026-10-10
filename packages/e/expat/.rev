@@ -920,4 +920,12 @@
     - Added patch expat-CVE-2026-102633.patch (forwarded request 1381964 from david.anes)</comment>
     <requestid>1382090</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>f71ed500447918913b7a7353fbcef8fc</srcmd5>
+    <version>2.9.0</version>
+    <time>1791636918</time>
+    <user>dimstar_suse</user>
+    <comment>bsc#1275115, CVE-2026-56403, CVE-2026-56404, CVE-2026-56405, (forwarded request 1383697 from david.anes)</comment>
+    <requestid>1383718</requestid>
+  </revision>
 </revisionlist>

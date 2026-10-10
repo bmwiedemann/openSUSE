@@ -17,10 +17,10 @@
 #
 
 
-%global unversion 2_8_5
+%global unversion 2_9_0
 %define sover 1
 Name:           expat
-Version:        2.8.5
+Version:        2.9.0
 Release:        0
 Summary:        XML Parser Toolkit
 License:        MIT
@@ -33,8 +33,6 @@ Source3:        %{name}faq.html
 # https://www.gentoo.org/inside-gentoo/developers/index.html#sping
 # https://github.com/libexpat/libexpat/issues/537#issuecomment-1003796884
 Source4:        https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3176ef7db2367f1fca4f306b1f9b0e909af37285#/expat.keyring
-# CVE-2026-102633 [bsc#1283493], denial of service via integer overflow in expat_realloc
-Patch0:         expat-CVE-2026-102633.patch
 BuildRequires:  c++_compiler
 BuildRequires:  pkgconfig
 
