@@ -40,6 +40,8 @@ Source100:      noise-texture.png
 Patch1:         gnome-shell-fix-cursor-on-hide-preedit.patch
 # PATCH-FIX-UPSTREAM fix-ibus-engine-race-condition-on-unlock.patch hillwood@opensuse.org glgo#GNOME/gnome-shell!4202 -- Delay IBus reload on unlock to prevent race conditions
 Patch2:         fix-ibus-engine-race-condition-on-unlock.patch
+# PATCH-FIX-UPSTREAM libgnome-volume-control-Avoid-NULL-deref.patch xwang@suse.com bsc#1278300 glgo#GNOME/libgnome-volume-control!38 -- Avoid NULL deref when card has no active profile
+Patch3:         libgnome-volume-control-Avoid-NULL-deref.patch
 
 # PATCH-FEATURE-OPENSUSE -- Do not ask to launch gnome-tour; openSUSE handles the logic in opensuse-welcome-launcher
 Patch100:       gnome-shell-no-gnome-tour.patch

@@ -2764,4 +2764,14 @@ Upstream applied and then reverted gnome-shell-animations-speedup.patch for the 
   + Updated translations.</comment>
     <requestid>1378329</requestid>
   </revision>
+  <revision rev="294" vrev="2">
+    <srcmd5>1ee2beee6750e86e427fb119a14f0dfb</srcmd5>
+    <version>50.5</version>
+    <time>1791637097</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
+  deref when card has no active profile
+  (bsc#1278300 glgo#GNOME/libgnome-volume-control!38)</comment>
+    <requestid>1383674</requestid>
+  </revision>
 </revisionlist>

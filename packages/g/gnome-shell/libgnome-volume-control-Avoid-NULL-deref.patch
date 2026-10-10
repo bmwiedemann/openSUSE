@@ -1,0 +1,48 @@
+From 495dd274bd4e9aa1d901b13a530d1e49f3dc7888 Mon Sep 17 00:00:00 2001
+From: Ricardo Branco <rbranco@suse.de>
+Date: Wed, 2 Sep 2026 23:18:54 +0200
+Subject: [PATCH] mixer-control: Avoid NULL deref when card has no active
+ profile
+
+PulseAudio (and PipeWire's pulse compatibility layer) can report a
+card with n_profiles == 0 and active_profile == NULL. update_card()
+dereferenced info->active_profile->name unconditionally, both in its
+debug logging loop and when calling gvc_mixer_card_set_profile(),
+causing a SIGSEGV in any process using GvcMixerControl (e.g.
+gnome-settings-daemon's media-keys plugin).
+
+gvc_mixer_card_set_profile() already handles an empty profile list
+gracefully, so simply guard both accesses on active_profile being
+non-NULL.
+
+Closes: https://gitlab.gnome.org/GNOME/libgnome-volume-control/-/issues/47
+
+Signed-off-by: Ricardo Branco <rbranco@suse.de>
+---
+ gvc-mixer-control.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+Index: gnome-shell-48.8/subprojects/gvc/gvc-mixer-control.c
+===================================================================
+--- gnome-shell-48.8.orig/subprojects/gvc/gvc-mixer-control.c
++++ gnome-shell-48.8/subprojects/gvc/gvc-mixer-control.c
+@@ -2545,7 +2545,8 @@ update_card (GvcMixerControl      *contr
+                 struct pa_card_profile_info pi = info->profiles[i];
+                 gboolean is_default;
+ 
+-                is_default = (g_strcmp0 (pi.name, info->active_profile->name) == 0);
++                is_default = (info->active_profile != NULL &&
++                              g_strcmp0 (pi.name, info->active_profile->name) == 0);
+                 g_debug ("\tProfile '%s': %d sources %d sinks%s",
+                          pi.name, pi.n_sources, pi.n_sinks,
+                          is_default ? " (Current)" : "");
+@@ -2583,7 +2584,8 @@ update_card (GvcMixerControl      *contr
+         gvc_mixer_card_set_profiles (card, profile_list);
+         gvc_mixer_card_set_name (card, pa_proplist_gets (info->proplist, "device.description"));
+         gvc_mixer_card_set_icon_name (card, pa_proplist_gets (info->proplist, "device.icon_name"));
+-        gvc_mixer_card_set_profile (card, info->active_profile->name);
++        if (info->active_profile != NULL)
++                gvc_mixer_card_set_profile (card, info->active_profile->name);
+ 
+         if (is_new) {
+                 g_hash_table_insert (control->priv->cards,
