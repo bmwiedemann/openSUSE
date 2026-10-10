@@ -1,7 +1,7 @@
-Index: gstreamer-1.24.0/libs/gst/helpers/meson.build
+Index: gstreamer-1.28.8/libs/gst/helpers/meson.build
 ===================================================================
---- gstreamer-1.24.0.orig/libs/gst/helpers/meson.build
-+++ gstreamer-1.24.0/libs/gst/helpers/meson.build
+--- gstreamer-1.28.8.orig/libs/gst/helpers/meson.build
++++ gstreamer-1.28.8/libs/gst/helpers/meson.build
 @@ -6,11 +6,13 @@ gst_helpers = {
      'deps': [gst_dep, mathlib, gmodule_dep],
      'env': ['GST_PLUGIN_SCANNER', 'exe-full-path'],

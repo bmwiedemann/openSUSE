@@ -1,4 +1,39 @@
 -------------------------------------------------------------------
+Fri Oct  9 06:53:39 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 1.28.8:
+  * Highlighted bugfixes:
+    + Various security fixes and playback fixes
+    + Fix adaptivedemux2 HLS and DASH playback regression
+    + Fix FLAC audio seeking regression
+    + Various RTP depayloader and RTSP client SDP handling fixes
+    + MXF demuxer: Added support for reading AAF AIFF-AIFC audio
+    + VA-API compositor: Fix alpha blending with Intel driver
+    + Windows media audio/video seeking improvements
+    + AMD AMF AV1 video encoder force-keyframe fixes
+    + Fix endless drain in some FFmpeg wrapper audio encoders and
+      support dual mono hlssink3 improvements
+    + ISOBMFF dash/iso/fmp4 muxer fixes for timestamp rollover in
+      2036
+    + cerbero: Rework checksum verification to allow mirror retries
+    + Various bug fixes, build fixes, memory leak fixes, and other
+      stability and reliability improvements
+  * gstreamer:
+    + baseparse: Fix accumulating of detection buffers
+    + buffer: Don't leave buffers with dangling memory pointers if
+      appending memory fails
+    + buffer: Prevent NULL pointer dereferences when deserializing
+      reference timestamp meta
+    + value: fix crash when comparing mixed-type lists
+    + ptp: Fix build failures with Rust 1.99
+- Rebase gstreamer-pie.patch with quilt.
+
+-------------------------------------------------------------------
+Tue Oct  6 14:47:41 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Migrate to xz compression and manual service run.
+
+-------------------------------------------------------------------
 Tue Sep  8 06:46:28 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 1.28.7:
