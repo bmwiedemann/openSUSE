@@ -2564,4 +2564,14 @@ New stable rel</comment>
   + Updated translations.</comment>
     <requestid>1369847</requestid>
   </revision>
+  <revision rev="288" vrev="2">
+    <srcmd5>32189c7960e23d271ea9d84dd755e468</srcmd5>
+    <version>50.4</version>
+    <time>1791637095</time>
+    <user>dimstar_suse</user>
+    <comment>- Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
+  deref when card has no active profile
+  (bsc#1278300 glgo#GNOME/libgnome-volume-control!38)</comment>
+    <requestid>1383672</requestid>
+  </revision>
 </revisionlist>

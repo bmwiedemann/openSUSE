@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Thu Oct  8 01:18:35 UTC 2026 - Xiaoguang Wang <xiaoguang.wang@suse.com>
+
+- Add libgnome-volume-control-Avoid-NULL-deref.patch: Avoid NULL
+  deref when card has no active profile
+  (bsc#1278300 glgo#GNOME/libgnome-volume-control!38)
+
+-------------------------------------------------------------------
 Fri Jul 31 13:51:02 UTC 2026 - Bjørn Lie <bjorn.lie@gmail.com>
 
 - Update to version 50.4:
