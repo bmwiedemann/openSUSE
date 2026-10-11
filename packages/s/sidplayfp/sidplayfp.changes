@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:54:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.2
+  * Don't print messages when quiet (#146).
+  * Link with dl (#142).
+
+-------------------------------------------------------------------
 Fri Oct  2 18:43:20 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.1
