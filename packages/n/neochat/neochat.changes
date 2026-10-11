@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:05:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Too many changes since 26.08.1, only listing bugfixes:
+  * When checking whether to send a notification for the current room, explicitely consider whether we're minimized in the tray (kde#498704)
+  * Fix wrapping of poll answers (kde#520278)
+  * Fix closeToYEnd (kde#524315)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:38:11 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
