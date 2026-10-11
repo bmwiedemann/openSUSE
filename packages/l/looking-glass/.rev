@@ -20,4 +20,13 @@
     <comment></comment>
     <requestid>1348946</requestid>
   </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>0543969ba0bf51417e54186d6a8e612a</srcmd5>
+    <version>B7</version>
+    <time>1791724844</time>
+    <user>dimstar_suse</user>
+    <comment>Add fix-compatibility-for-nettle-4.patch
+rsa: add compatibility for nettle 4.x (gh#gnif/PureSpice#22)</comment>
+    <requestid>1384024</requestid>
+  </revision>
 </revisionlist>

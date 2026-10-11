@@ -23,6 +23,8 @@ License:        GPL-2.0
 URL:            https://looking-glass.io/
 Source0:        %{name}-%{version}.tar.xz
 Patch1:         fix-bfd-ctf-zstd.patch
+# PATCH-FIX-UPSTREAM fix-compatibility-for-nettle-4.patch gh#gnif/PureSpice#22
+Patch2:         fix-compatibility-for-nettle-4.patch
 BuildRequires:  binutils-devel
 BuildRequires:  cmake
 BuildRequires:  c++_compiler
@@ -64,7 +66,9 @@ ExclusiveArch:  x86_64
 An extremely low latency KVMFR (KVM FrameRelay) implementation for guests with VGA PCI Passthrough.
 
 %prep
-%autosetup -n %{name}-%{version} -p1
+%setup -q -n %{name}-%{version}
+%patch -P 1 -p1
+%patch -P 2 -d repos/PureSpice -p1
 
 sed -i 's|@CMAKE_INSTALL_PREFIX@|%{_prefix}|g' resources/looking-glass-client.desktop.in
 

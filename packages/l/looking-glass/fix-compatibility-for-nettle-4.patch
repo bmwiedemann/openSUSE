@@ -1,0 +1,45 @@
+From 37802d09b500e4a615d9cc36c1d1388bcf999a97 Mon Sep 17 00:00:00 2001
+From: Nikko Renn <renn@qqm.ca>
+Date: Mon, 11 May 2026 14:57:20 -0400
+Subject: [PATCH] rsa: add compatibility for nettle 4.x
+
+---
+ CMakeLists.txt | 7 +++++++
+ src/rsa.c      | 5 +++++
+ 2 files changed, 12 insertions(+)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 4193d45..ac3739f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,6 +9,13 @@ pkg_check_modules(SPICE_PKGCONFIG REQUIRED
+ 	hogweed
+ )
+ 
++if (SPICE_PKGCONFIG_nettle_VERSION)
++	if (SPICE_PKGCONFIG_nettle_VERSION VERSION_GREATER_EQUAL "4.0")
++		message(STATUS "Using nettle >= 4.0 compatibility")
++		add_compile_definitions(USE_NETTLE_GE_4)
++	endif()
++endif()
++
+ add_definitions(-D USE_NETTLE)
+ 
+ add_compile_options(
+diff --git a/src/rsa.c b/src/rsa.c
+index 73fba92..a5f384b 100644
+--- a/src/rsa.c
++++ b/src/rsa.c
+@@ -62,7 +62,12 @@ static void sha1(uint8_t * hash, const uint8_t *data, unsigned int len)
+ 
+   sha1_init(&ctx);
+   sha1_update(&ctx, len, data);
++
++#if defined(USE_NETTLE_GE_4)
++  sha1_digest(&ctx, hash);
++#else
+   sha1_digest(&ctx, SHA1_HASH_LEN, hash);
++#endif
+ }
+ 
+ static void oaep_mask(uint8_t * dest, size_t dest_len,

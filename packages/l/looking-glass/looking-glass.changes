@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sat Oct 10 06:58:04 UTC 2026 - munix9@googlemail.com
+
+- Add fix-compatibility-for-nettle-4.patch
+  * rsa: add compatibility for nettle 4.x (gh#gnif/PureSpice#22)
+
+-------------------------------------------------------------------
 Thu Apr 23 12:31:43 UTC 2026 - Dominique Leuenberger <dimstar@opensuse.org>
 
 - Drop Epoch from the spec file. Epoch is forbidden in openSUSE.
