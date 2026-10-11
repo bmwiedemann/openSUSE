@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:26 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Too many changes since 6.30.0, only listing bugfixes:
+  * KCoreDirLister: update search results when a file is deleted or renamed (kde#392456)
+  * KNewFileMenu: resolve symlink targets when creating a new link (kde#525084)
+  * workers/ftp: implement proper file modification timestamps using RFC3659 (kde#510976)
+  * kdirlister: keep entries that share a name but not a url (kde#524791)
+  * KFileItem: detect locally mounted remote filesystems in isSlow() (kde#460127)
+  * trash: Watch physical trash directories for changes (kde#465581)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:12 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0

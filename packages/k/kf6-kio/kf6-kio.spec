@@ -19,11 +19,11 @@
 %define qt6_version 6.9.0
 
 %define rname kio
-# Full KF6 version (e.g. 6.30.0)
+# Full KF6 version (e.g. 6.31.0)
 %{!?_kf6_version: %global _kf6_version %{version}}
 %bcond_without released
 Name:           kf6-kio
-Version:        6.30.0
+Version:        6.31.0
 Release:        0
 Summary:        Network transparent access to files and data
 License:        LGPL-2.1-or-later
@@ -158,6 +158,7 @@ Development files.
 %{_kf6_libexecdir}/kioworker
 %{_kf6_plugindir}/designer/kio6widgets.so
 %{_kf6_plugindir}/kf6/kded/remotenotifier.so
+%{_kf6_plugindir}/kf6/kded/trashdirnotify.so
 %{_kf6_plugindir}/kf6/kio/kio_file.so
 %{_kf6_plugindir}/kf6/kio/kio_ftp.so
 %{_kf6_plugindir}/kf6/kio/kio_ghelp.so
