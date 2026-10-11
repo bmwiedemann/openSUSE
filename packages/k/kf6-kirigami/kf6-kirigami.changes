@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:27 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Too many changes since 6.30.0, only listing bugfixes:
+  * columnview: Fix rapid touch taps not working by fasttracking anim (kde#523866)
+  * ActionsMenu: Tie loader's visibility to its action's visibility (kde#525225)
+  * ActionsMenu: Tie separator's visibility to its action's visibility (kde#525225)
+  * PlatformTheme: Insert frameContrast to the data (kde#525364)
+  * Revert "Add textFormat property to other delegates" (kde#525837)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:13 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
