@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:02 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * [Codecs] Replace some pointers with references
+  * [Codecs] Fix varint helper const correctness
+  * kinotify: handle gracefully event overflow
+  * [Codecs] Drop the undefined const overload of getVarint32Ptr
+  * [Term] Remove unused Term(const QString&) constructor
+  * Change internal AdvancedQueryParser class to QueryParser namespace
+  * Use ECMInstalledLibraryCheck
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:21:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
