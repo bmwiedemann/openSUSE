@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           tokodon
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Mastodon client by KDE
 License:        GPL-3.0-only
