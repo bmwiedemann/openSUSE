@@ -1,4 +1,40 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * Perl: Missing operators, fix END section, operators style, heredoc languages, POD fix
+  * systemd unit: update to systemd v262
+  * Use ECMInstalledLibraryCheck
+  * Zsh: prefer 'Parameter Expansion Operator' to 'Control' for ',' in subscript (i.e. $foo[1,2])
+  * Zsh: remove identical contexts or replaces rules with <IncludeRules/>
+  * Zsh: fix some forms of floating number using separator
+  * Zsh: use Base style for anything that refers to base change and BaseN for associated numbers
+  * Zsh: use 'Replacement String' style in ${foo/patt/rep}
+  * Zsh: glob: enclosed characters: fix ']', '-' and '!' at the beginning of the pattern
+  * Zsh: replace ' &tab;' with '&ws;' entity
+  * Zsh: fix subscripting expansion followed by modifier (i.e. ${s:1:4:h})
+  * Zsh: glob modifier: add :f, :F, :w and :W ; :s behaves like with brace parameter
+  * Zsh: add f, F, w and W modifiers with variable when braces are absent
+  * Zsh: remove :x and :& modifier with variable when braces are absent
+  * Zsh: fix :s modifier with variable when braces are absent
+  * Zsh: fix subscript chain with variable when braces are absent, the second and subsequent ones are patterns
+  * Zsh: remove VarNameParam+ context and replace its use with VarNameSubstLen
+  * Zsh: add brace command substitution of zsh-5.10: `${ cmd }`, `${|cmd}` and `${{param} cmd}`
+  * Zsh: add `$[...]` equivalent to arithmetic expansion `$((...))`
+  * Zsh: fix subscript and variable substring
+  * Zsh: fix glob subscript after modifier when braces are absent (i.e. $x:h[...])
+  * Zsh: fix digits after modifiers h and t when braces are absent (i.e. $foo:h3)
+  * Zsh: fix value of character in arithmetic context (i.e. ##c and #word)
+  * use offscreen plugin for the one UI test
+  * Add LRC Lyrics syntax highlighting
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
