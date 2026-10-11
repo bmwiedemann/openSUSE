@@ -1,4 +1,25 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:02:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Add 26.08.2 release notes
+  * Fix opening external maps while the indoor map is still loading
+  * Don't use const references for co-routine arguments
+  * Fix booking card visibility
+  * Consistently show the currency conversion with the target currency first
+  * ImportController: Handle anything that doesn't look like an email
+  * Fix journey progress bar when encountering time-less intermediate stops
+  * Remove no longer (machine-)retrievable JSON schema
+  * Restore the unreachable transfer warning indicator
+  * Fix corner radius for location info delegate backgrounds
+  * Exclude KF 6.30 KCalendarCore translation catalogs from APKs
+  * Add 26.08.1 release notes
+
+-------------------------------------------------------------------
 Tue Sep  8 09:33:58 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
