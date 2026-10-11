@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * JobDialog: Fix translation call when cancelling
+  * Use ECMInstalledLibraryCheck
+  * plugins/bluetooth: Escape html
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
