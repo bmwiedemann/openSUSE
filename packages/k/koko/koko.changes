@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:03:59 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * EditorView: use DirModelUtils::fileNameOfUrl to get file name
+  * DirModelUtils::fileNameOfUrl: properly decode url file name
+  * EditorView: use a JavaScript URL object to get the image path
+  * EditorView: set AnnotationDocument base image with url (kde#525591)
+  * Fix build with MSVC compiler
+- Drop 0001-Revert-Remove-old-libexiv2-support.patch
+
+-------------------------------------------------------------------
 Tue Sep  8 09:36:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1

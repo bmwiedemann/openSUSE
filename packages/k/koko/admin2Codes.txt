@@ -1493,7 +1493,7 @@ AU.05.44830	Mount Remarkable	Mount Remarkable	7839441
 AU.05.45040	Murray Bridge	Murray Bridge	7839442
 AU.05.45090	Naracoorte Lucindale	Naracoorte Lucindale	7839443
 AU.05.45120	Northern Areas	Northern Areas	7839444
-AU.05.45290	Norwood Payneham and St Peters	Norwood Payneham and St Peters	7839445
+AU.05.45290	Norwood, Payneham & St Peters	Norwood, Payneham & St Peters	7839445
 AU.05.45340	Onkaparinga	Onkaparinga	7839446
 AU.05.45400	Orroroo Carrieton	Orroroo Carrieton	7839447
 AU.05.45540	Peterborough	Peterborough	7839448
@@ -14625,6 +14625,7 @@ ES.07.PM	Illes Balears	Illes Balears	6424360
 ES.CE.CE	Ceuta	Ceuta	8335119
 ES.ML.ME	Melilla	Melilla	8335120
 ET.56.326423	Wolayita Zone	Wolayita Zone	326423
+ET.52.327278	Gashamo Hawd Somali Ethiopia	Gashamo Hawd Somali Ethiopia	327278
 ET.47.330790	Metekel Āwraja	Metekel Awraja	330790
 ET.SW.331677	Bench Maji Zone	Bench Maji Zone	331677
 ET.55.333384	Hadiya Zone	Hadiya Zone	333384
@@ -14634,6 +14635,7 @@ ET.48.338829	Dire Dawa Zone	Dire Dawa Zone	338829
 ET.55.341021	Guraghe Zone	Guraghe Zone	341021
 ET.47.343291	Asosa	Asosa	343291
 ET.51.343450	Arsi Zone	Arsi Zone	343450
+ET.52.444996	Gashamo Hawd Somali Ethiopia	Gashamo Hawd Somali Ethiopia	444996
 ET.45.7646394	Pemba District	Pemba District	7646394
 ET.51.7648477	Misraq Shewa	Misraq Shewa	7648477
 ET.53.7667868	Southern Tigray Zone	Southern Tigray Zone	7667868
@@ -18738,7 +18740,7 @@ IR.33.449440	Shahrestān-e Mīāneh	Shahrestan-e Mianeh	449440
 IR.33.449441	Shahrestān-e Herīs	Shahrestan-e Heris	449441
 IR.33.449442	Shahrestān-e Varzaqān	Shahrestan-e Varzaqan	449442
 IR.33.449443	Shahrestān-e Hashtrūd	Shahrestan-e Hashtrud	449443
-IR.01.449444	Shahrestān-e Orūmīyeh	Shahrestan-e Orumiyeh	449444
+IR.01.449444	Orūmīyeh	Orumiyeh	449444
 IR.01.449445	Shahrestān-e Oshnavīyeh	Shahrestan-e Oshnaviyeh	449445
 IR.01.449446	Shahrestān-e Būkān	Shahrestan-e Bukan	449446
 IR.01.449447	Shahrestān-e Pīrānshahr	Shahrestan-e Piranshahr	449447
@@ -18958,7 +18960,7 @@ IR.23.449671	Dorūd	Dorud	449671
 IR.23.449672	Selseleh	Selseleh	449672
 IR.23.449673	Shahrestān-e Kūhdasht	Shahrestan-e Kuhdasht	449673
 IR.35.449674	Shahrestān-e Āmol	Shahrestan-e Amol	449674
-IR.35.449675	Shahrestān-e Bābol	Shahrestan-e Babol	449675
+IR.35.449675	Bābol	Babol	449675
 IR.35.449676	Shahrestān-e Bābolsar	Shahrestan-e Babolsar	449676
 IR.35.449677	Behshahr	Behshahr	449677
 IR.35.449678	Shahrestān-e Tonekābon	Shahrestan-e Tonekabon	449678
@@ -19010,7 +19012,7 @@ IR.40.449725	Shahrestān-e Yazd	Shahrestan-e Yazd	449725
 IR.04.1158999	Shahrestān-e Īrānshahr	Shahrestan-e Iranshahr	1158999
 IR.41.1482419	Shahrestān-e Nehbandān	Shahrestan-e Nehbandan	1482419
 IR.42.1482420	Shahrestān-e Tāybād	Shahrestan-e Taybad	1482420
-IR.42.1482421	Shahrestān-e Torbat-e Jām	Shahrestan-e Torbat-e Jam	1482421
+IR.42.1482421	Torbat-e Jām	Torbat-e Jam	1482421
 IR.42.1482426	Shahrestān-e Khvāf	Shahrestan-e Khvaf	1482426
 IR.42.1482443	Sarakhs	Sarakhs	1482443
 IR.42.1482469	Shahrestān-e Kalāt	Shahrestan-e Kalat	1482469
@@ -19025,7 +19027,7 @@ IR.35.7830204	Savadkuh-e Shomali	Savadkuh-e Shomali	7830204
 IR.08.8620884	Shahrestān-e Ţavālesh	Shahrestan-e Tavalesh	8620884
 IR.43.8620941	Shahrestān-e Māneh va Samalqān	Shahrestan-e Maneh va Samalqan	8620941
 IR.43.8620942	Shahrestān-e Fārūj	Shahrestan-e Faruj	8620942
-IR.42.8620943	Shahrestān-e Mah Velāt	Shahrestan-e Mah Velat	8620943
+IR.42.8620943	Mahvelāt	Mahvelat	8620943
 IR.41.8620944	Shahrestān-e Darmīān	Shahrestan-e Darmian	8620944
 IR.11.8620945	Shahrestān-e Khamīr	Shahrestan-e Khamir	8620945
 IR.11.8620946	Shahrestān-e Pārsīān	Shahrestan-e Parsian	8620946
@@ -19075,9 +19077,9 @@ IR.42.9526253	Shahrestān-e Bajestān	Shahrestan-e Bajestan	9526253
 IR.42.9526254	Shahrestān-e Joghatāy	Shahrestan-e Joghatay	9526254
 IR.42.9526255	Joveyn	Joveyn	9526255
 IR.42.9526257	Shahrestān-e Khowshāb	Shahrestan-e Khowshab	9526257
-IR.42.9526258	Shahrestān-e Fīrūzeh	Shahrestan-e Firuzeh	9526258
+IR.42.9526258	Fīrūzeh	Firuzeh	9526258
 IR.42.9526260	Shahrestān-e Bīnālūd	Shahrestan-e Binalud	9526260
-IR.42.9526342	Shahrestān-e Zāveh	Shahrestan-e Zaveh	9526342
+IR.42.9526342	Zāveh	Zaveh	9526342
 IR.42.9526343	Shahrestān-e Bākharz	Shahrestan-e Bakharz	9526343
 IR.43.9532886	Garmeh	Garmeh	9532886
 IR.15.9532909	Gotvand	Gotvand	9532909
@@ -29528,7 +29530,7 @@ NO.09.1820	Alstahaug	Alstahaug	3163293
 NO.04.3328	Ål	Al	3163374
 NO.21.5058	Åfjord	Afjord	3163537
 NO.05.5603	Hammerfest	Hammerfest	6453312
-NO.05.5634	Vardø	Vardo	6453313
+NO.05.5634	Vardø kommune	Vardo kommune	6453313
 NO.05.5622	Porsanger	Porsanger	6453314
 NO.05.5607	Vadsø	Vadso	6453315
 NO.18.5501	Tromsø	Tromso	6453316
@@ -38570,6 +38572,54 @@ SD.58.12196617	Ed Dinder Locality	Ed Dinder Locality	12196617
 SD.58.12196618	Es Suki Locality	Es Suki Locality	12196618
 SD.58.12196619	Abu Hujar Locality	Abu Hujar Locality	12196619
 SD.58.12196620	El Dali Locality	El Dali Locality	12196620
+SD.50.13711186	Abu Jubayhah	Abu Jubayhah	13711186
+SD.53.13711187	Ad Damar	Ad Damar	13711187
+SD.50.13711188	Abu Kershola	Abu Kershola	13711188
+SD.43.13711189	Al Golid	Al Golid	13711189
+SD.38.13711190	Al Kamlin	Al Kamlin	13711190
+SD.53.13711191	Abu Hamad	Abu Hamad	13711191
+SD.50.13711192	Al Dibab	Al Dibab	13711192
+SD.39.13711193	Al Fashaga	Al Fashaga	13711193
+SD.39.13711194	Al Galabat al Gharbyah	Al Galabat al Gharbyah	13711194
+SD.50.13711195	Al Buram	Al Buram	13711195
+SD.50.13711196	Al Meiram	Al Meiram	13711196
+SD.38.13711197	Al Manaqil	Al Manaqil	13711197
+SD.55.13711198	Al Lait	Al Lait	13711198
+SD.53.13711199	Al Buhaira	Al Buhaira	13711199
+SD.55.13711200	Al Koma	Al Koma	13711200
+SD.50.13711201	Al Leri	Al Leri	13711201
+SD.49.13711202	Al Radoum	Al Radoum	13711202
+SD.55.13711203	Al Malha	Al Malha	13711203
+SD.53.13711204	Al Matama	Al Matama	13711204
+SD.60.13711205	Abu Karinka	Abu Karinka	13711205
+SD.47.13711206	Ag Geneina	Ag Geneina	13711206
+SD.55.13711207	Al Fasher	Al Fasher	13711207
+SD.60.13711208	Ad Du'ayn	Ad Du'ayn	13711208
+SD.43.13711209	Al Burgaig	Al Burgaig	13711209
+SD.38.13711210	Al Hasahisa	Al Hasahisa	13711210
+SD.42.13711211	Al Kurmuk	Al Kurmuk	13711211
+SD.43.13711212	Ad Dabbah	Ad Dabbah	13711212
+SD.36.13711213	Agig	Agig	13711213
+SD.60.13711214	Abu Jabrah	Abu Jabrah	13711214
+SD.56.13711215	Al Khiwai	Al Khiwai	13711215
+SD.60.13711216	Adila	Adila	13711216
+SD.41.13711217	Aj Jabalain	Aj Jabalain	13711217
+SD.41.13711218	Al Gitaina	Al Gitaina	13711218
+SD.50.13711219	Al Quoz	Al Quoz	13711219
+SD.36.13711220	Al Ganab	Al Ganab	13711220
+SD.56.13711221	Abu Zabad	Abu Zabad	13711221
+SD.38.13711222	Al Qurashi	Al Qurashi	13711222
+SD.39.13711223	Al Mafaza	Al Mafaza	13711223
+SD.41.13711224	Ad Diwaim	Ad Diwaim	13711224
+SD.39.13711225	Al Butanah	Al Butanah	13711225
+SD.39.13711226	Al Qureisha	Al Qureisha	13711226
+SD.50.13711227	Al Lagowa	Al Lagowa	13711227
+SD.49.13711228	Al Wihda	Al Wihda	13711228
+SD.50.13711229	Abassiya	Abassiya	13711229
+SD.50.13711230	Abyei	Abyei	13711230
+SD.39.13711231	Al Fao	Al Fao	13711231
+SD.60.13711232	Al Firdous	Al Firdous	13711232
+SD.56.13711233	Al Idia	Al Idia	13711233
 SE.23.2480	Umeå Kommun	Umea Kommun	602149
 SE.23.2482	Skellefteå Kommun	Skelleftea Kommun	602912
 SE.23.2409	Robertsfors Kommun	Robertsfors Kommun	603302
@@ -38856,7 +38906,7 @@ SE.28.1489	Alingsås Kommun	Alingsas Kommun	2726755
 SE.28.1440	Ale Kommun	Ale Kommun	2726973
 SE.18.0461	Gnesta Kommun	Gnesta Kommun	3315140
 SE.18.0488	Trosa Kommun	Trosa Kommun	3315141
-SE.21.0330	Knivsta muncipality	Knivsta muncipality	3337384
+SE.21.0330	Knivsta kommun	Knivsta kommun	3337384
 SE.28.1443	Bollebygds Kommun	Bollebygds Kommun	3337401
 SE.15.1814	Lekebergs Kommun	Lekebergs Kommun	3337402
 SE.26.0140	Nykvarns Kommun	Nykvarns Kommun	3337442
@@ -40624,7 +40674,7 @@ TM.01.13696852	Sarahs District	Sarahs District	13696852
 TM.01.13696853	Tejen District	Tejen District	13696853
 TM.01.13696854	Gorjaw District	Gorjaw District	13696854
 TM.01.13696856	Kärizek District	Kaerizek District	13696856
-TM.01.13696857	Berkararlyk District	Berkararlyk District	13696857
+TM.S.13696857	Berkararlyk District	Berkararlyk District	13696857
 TM.01.13696858	Büzmeýin District	Buezmeyin District	13696858
 TM.01.13696859	Kopetdag District	Kopetdag District	13696859
 TM.02.13696863	Bereket District	Bereket District	13696863
@@ -46626,7 +46676,7 @@ VN.91.893	Huyện Chợ Mới	Huyen Cho Moi	1905490
 VN.91.888	Huyện Phú Tân	Huyen Phu Tan	1905491
 VN.91.889	Huyện Châu Phú	Huyen Chau Phu	1905492
 VN.91.891	Huyện Tri Tôn	Huyen Tri Ton	1905493
-VN.91.890	Huyện Tịnh Biên	Huyen Tinh Bien	1905494
+VN.91.890	Thị Xã Tịnh Biên	Thi Xa Tinh Bien	1905494
 VN.91.887	Thị Xã Tân Châu	Thi Xa Tan Chau	1905495
 VN.91.886	Huyện An Phú	Huyen An Phu	1905496
 VN.19.165	Thị Xã Sông Công	Thi Xa Song Cong	1905498

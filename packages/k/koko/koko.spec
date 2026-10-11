@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           koko
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Kirigami based gallery application
 License:        LGPL-2.1-or-later
@@ -31,8 +31,6 @@ Source0:        https://download.kde.org/stable/release-service/%{version}/src/%
 Source1:        https://download.kde.org/stable/release-service/%{version}/src/%{name}-%{version}.tar.xz.sig
 Source2:        applications.keyring
 %endif
-# PATCH-FIX-OPENSUSE -- reverted change for 15.6
-Patch0:         0001-Revert-Remove-old-libexiv2-support.patch
 # TODO Sources change daily, download updates before each release
 # https://download.geonames.org/export/dump/cities1000.zip
 Source3:        cities1000.zip
