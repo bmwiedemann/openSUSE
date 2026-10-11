@@ -1017,4 +1017,12 @@ See SR#946556</comment>
     <comment>- Update to version 1.98.1 - for details see the rust1.98 package</comment>
     <requestid>1376268</requestid>
   </revision>
+  <revision rev="120" vrev="1">
+    <srcmd5>9348a0f69198997177e5426fb5286366</srcmd5>
+    <version>1.99.0</version>
+    <time>1791724596</time>
+    <user>dimstar_suse</user>
+    <comment>Submit rust 1.99</comment>
+    <requestid>1383887</requestid>
+  </revision>
 </revisionlist>
