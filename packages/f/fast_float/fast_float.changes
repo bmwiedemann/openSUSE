@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Fri Oct  9 21:31:36 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to release 8.3.2
+  * Avoid signed negation overflow in `integer_times_pow10`
+  * Avoid signed overflow in `is_integer` on negative wchar_t units
+
+-------------------------------------------------------------------
 Sun Oct  4 18:19:45 UTC 2026 - Jan Engelhardt <jengelh@inai.de>
 
 - Update to release 8.3.1
