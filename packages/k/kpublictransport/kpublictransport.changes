@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:04:28 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Fix forwarding error messages from the Deutsche Bahn backend
+  * Handle altitude information not being available on CD onboard API
+  * cmake: Add explicit file extensions to fix a warning
+
+-------------------------------------------------------------------
 Tue Sep  8 09:36:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
