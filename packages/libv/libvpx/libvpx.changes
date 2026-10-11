@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Thu Aug 27 12:17:34 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to 1.17.0 "Yellowbilled Duck":
+  * ABI compatible with 1.16.0, SONAME stays at 12
+  * VP9 high bitdepth input is now validated by default; out of range
+    values return VPX_CODEC_INVALID_PARAM. Disable with the new
+    VP9E_SET_VALIDATE_HBD_INPUT control or vpxenc --validate-hbd-input=0
+  * VP9 now reports the actual image width and height instead of the
+    stride and aligned height, a behaviour change for callers relying
+    on the old values
+  * SVC is now rejected for 2-pass encoding
+  * Stricter API validation: vpx_img_alloc()/vpx_img_wrap() check the
+    image format, encoders reject unequal U and V strides, the external
+    rate control API and VP9 SVC spatial layer ids are validated
+  * ISO C11 is now enforced for C sources
+  * New Neon DotProd and AVX2/AVX512 paths, new --disable-x86-asm
+  * Heap and integer overflow fixes in vp9_postproc, vpx_setup_noise,
+    vp9_change_config, vp8_sixtap_predict, vp9-svc and others, plus
+    decoder crash and hang fixes for corrupt input
+  * Fixed a heap buffer overflow from a missing buffer full check in
+    write_superframe_index() (CVE-2026-2447, boo#1258388)
+- Drop -std=gnu99 from --extra-cflags: it came after configure's own
+  -std=gnu11 and won, so the C11 static_assert in vp8/common/common.h
+  failed to compile
+- Drop the obsolete Group tags
+- Add _service: the tar and recompress buildtime services are what turn
+  the checked in obscpio into the Source0 tarball. Without it %prep dies
+  on a missing libvpx-%{version}.tar.xz, which is why this package was
+  red on every arch in the devel project
+
+-------------------------------------------------------------------
+Sat Jun 27 12:41:24 UTC 2026 - Adrian Schröter <adrian@suse.de>
+
+- switch to RemoteAsset to prepare git switch
+- pbuild-ai generated update
+
+-------------------------------------------------------------------
 Mon Mar 23 19:31:40 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to 1.16.0:

@@ -20,12 +20,13 @@
 %define         sover 12
 %define use_gcc13 0%{?suse_version} < 1600
 Name:           libvpx
-Version:        1.16.0
+Version:        1.17.0
 Release:        0
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 URL:            https://www.webmproject.org/
+#!RemoteAsset: git+https://chromium.googlesource.com/webm/libvpx#v%{version}
+#!CreateArchive
 Source0:        %{name}-%{version}.tar.xz
 Source1000:     baselibs.conf
 Patch2:         libvpx-configure-add-arch.patch
@@ -52,7 +53,6 @@ The WebM file structure is based on the Matroska container.
 %package -n vpx-tools
 Summary:        Utilies from the VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Productivity/Multimedia/Other
 
 %description -n vpx-tools
 This package contains utilities around the vp8 codec sdk.
@@ -67,7 +67,6 @@ The WebM file structure is based on the Matroska container.
 %package -n %{name}%{sover}
 Summary:        VP8/VP9 codec library
 License:        BSD-3-Clause
-Group:          System/Libraries
 
 %description -n %{name}%{sover}
 WebM is an open, royalty-free, media file format designed for the web.
@@ -80,7 +79,6 @@ The WebM file structure is based on the Matroska container.
 %package devel
 Summary:        Development files for libvpx, a VP8/VP9 codec library
 License:        BSD-3-Clause AND GPL-2.0-or-later
-Group:          Development/Languages/C and C++
 Requires:       %{name}%{sover} = %{version}
 
 %description devel
@@ -110,6 +108,9 @@ export CC=gcc-13
 # It is only an emulation of autotools configure; the macro does not work
 export CFLAGS="%{optflags} -O3"
 export CXXFLAGS="%{optflags} -O3"
+# No -std in --extra-cflags: 1.17.0 enforces C11 (static_assert in
+# vp8/common/common.h) and configure already passes -std=gnu11; a later
+# -std=gnu99 would come last on the command line and win.
 ../configure \
     --prefix=%{_prefix} \
     --libdir=%{_libdir} \
@@ -133,7 +134,7 @@ export CXXFLAGS="%{optflags} -O3"
     --target=armv7-linux-gcc \
     --enable-runtime-cpu-detect \
 %endif
-    --extra-cflags="-std=gnu99 -U_FORTIFY_SOURCE %{optflags}" \
+    --extra-cflags="-U_FORTIFY_SOURCE %{optflags}" \
     --extra-cxxflags="-U_FORTIFY_SOURCE %{optflags}" \
 # size-limit to avoid CVE-2017-0641 DoS attacks. The limit is the
 # 8K Fulldome resolution and should be enough for all current use cases
