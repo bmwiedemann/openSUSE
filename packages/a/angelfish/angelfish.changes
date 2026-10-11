@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:01:46 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * mobile: Improve navbar to be a bit more modern looking
+  * mobile: Enforce constant webview size for performance
+
+-------------------------------------------------------------------
 Tue Sep  8 09:33:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
