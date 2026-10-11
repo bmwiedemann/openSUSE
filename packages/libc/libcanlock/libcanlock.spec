@@ -20,7 +20,7 @@
 %global sover   3
 %global libname %{name}%{sover}
 Name:           libcanlock
-Version:        3.3.3
+Version:        3.3.4
 Release:        0
 Summary:        Library for creating and verifying Usenet cancel locks
 License:        MIT AND NLPL
