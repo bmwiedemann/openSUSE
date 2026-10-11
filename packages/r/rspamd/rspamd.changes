@@ -1,4 +1,73 @@
 -------------------------------------------------------------------
+Sat Oct 10 21:51:54 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 4.2.2
+  - Incompatible changes
+    - MIME parts: the CRLF before a boundary delimiter no longer
+      counts as part of the preceding part. Message digests and
+      non-base64 part digests change for multipart messages, so
+      anything keyed on them will not match values computed by
+      earlier versions.
+  - Features
+    - Crypto wallet detection: Rspamd now detects wallet addresses
+      for Bitcoin and its forks, Litecoin, Dogecoin, Tron, XRP,
+      Zcash, Cardano, Cosmos, Stellar, TON, Ethereum and Monero,
+      with one independent symbol per currency. This replaces
+      bitcoin.lua. The bounded scanner in lua_crypto_addresses also
+      catches addresses split across text, add_from_string feeds it
+      text recovered from attachments, and the new
+      crypto_addresses() selector extractor exposes the results.
+    - metadata_exporter: mail_from, mail_to, helo, channel,
+      stream_key and the email template support custom variables
+      and selector expansion. Email alerts can be built as
+      multipart messages from email_parts, with plain and HTML
+      parts grouped into multipart/alternative, and non-ASCII
+      headers are encoded automatically. Rules are validated
+      against a schema, so configtest fails on an invalid rule.
+    - lua_smtp: EHLO and 8BITMIME are negotiated with a HELO
+      fallback. 8-bit messages are downgraded to 7-bit when the
+      server does not advertise 8BITMIME.
+    - Lua API: util.fold_header_unstructured folds unstructured
+      headers per RFC 5322, and rspamd_text gains an smtp newline
+      normalization mode.
+  - Bug fixes
+    - Memory safety: fixed a heap overflow in util.lower_utf8
+      (U+023A and U+023E grow when lowercased). Also fixed a crash
+      during HTTP keepalive reset, when a late error handler ran
+      after the peer had closed the connection.
+    - HTML and URLs: table elements no longer inherit box sizes,
+      which triggered HIDDEN_TEXT and MANY_INVISIBLE_PARTS on
+      tables pasted from Google Sheets. Visible link text is
+      terminated after normalisation, because stale trailing bytes
+      broke phishing checks. Invisible characters in hostnames are
+      now flagged instead of truncating the URL, and U+FEFF is
+      stripped during unicode normalisation. url_suspect anchors
+      obfuscated URL extraction to the matched URL and makes
+      URL_OBFUSCATED_TEXT one-shot, so domains written in plain
+      sight are no longer reported as obfuscated.
+    - Message composition: mime_headers emits valid RFC 2047
+      encoded-words and keeps addresses intact in structured mode.
+      lua_smtp dot-stuffs DATA (a line with a single . truncated
+      messages), turns bare CR into CRLF, accepts a bare reply code
+      and reads multi-line greetings.
+    - Lua library: deferred DNS for HTTP upstreams is retried, so
+      gpt, aws_s3, HTTP maps and dkim vault no longer stay stuck
+      after a failed lookup at startup. callback_from_string
+      compiles whole-chunk callbacks, task:get_symbol() works with
+      a table of names when the symbols are present, and
+      parse_content_type keeps boundary and charset as strings.
+    - Modules: LEAKED_PASSWORD_SCAM fires only on checksum-verified
+      addresses, and the word "wallet" no longer counts as a scam
+      signal. known_senders expires senders after max_ttl in zset
+      mode, and both known_senders and replies honour
+      reply_sender_privacy. milter_headers applies header skipping
+      to x-spamd-bar and fixes the x-virus fail branch. fuzzy_check
+      parses top-level html_ignore_domains, and metadata_exporter
+      always emits an integer redis_stream MAXLEN. cfg_transform no
+      longer warns about scored custom actions, and rspamadm
+      control fuzzystat labels epochs correctly.
+
+-------------------------------------------------------------------
 Thu Oct  1 10:18:18 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 4.2.1

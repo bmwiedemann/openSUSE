@@ -70,7 +70,7 @@
 %define __builder ninja
 
 Name:           rspamd
-Version:        4.2.1
+Version:        4.2.2
 Release:        0
 Summary:        Spam filtering system
 License:        Apache-2.0
@@ -596,6 +596,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/lua_url_filter.lua
 %{_datadir}/rspamd/lualib/lua_extras.lua
 %{_datadir}/rspamd/lualib/lua_feedback_parsers.lua
+%{_datadir}/rspamd/lualib/lua_crypto_addresses.lua
 
 %dir %{_datadir}/rspamd/lualib/lua_content
 %{_datadir}/rspamd/lualib/lua_content/ical.lua
@@ -696,6 +697,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/lualib/plugins/neural/
 %{_datadir}/rspamd/lualib/plugins/rbl.lua
 %{_datadir}/rspamd/lualib/plugins/ratelimit.lua
+%{_datadir}/rspamd/lualib/plugins/metadata_exporter.lua
 
 %dir %{_datadir}/rspamd/lualib/redis_scripts/
 %{_datadir}/rspamd/lualib/redis_scripts/neural_maybe_invalidate.lua
@@ -716,7 +718,6 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 
 %dir %{_datadir}/rspamd/rules
 %{_datadir}/rspamd/rules/archives.lua
-%{_datadir}/rspamd/rules/bitcoin.lua
 %{_datadir}/rspamd/rules/bounce.lua
 %{_datadir}/rspamd/rules/content.lua
 %{_datadir}/rspamd/rules/forwarding.lua
@@ -736,6 +737,7 @@ find /var/lib/rspamd/ -type f -name '*.unser' -delete -print ||:
 %{_datadir}/rspamd/rules/regexp/misc.lua
 %{_datadir}/rspamd/rules/regexp/upstream_spam_filters.lua
 %{_datadir}/rspamd/rules/controller
+%{_datadir}/rspamd/rules/crypto.lua
 
 %{_mandir}/man8/rspamd.8*
 
