@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sun Sep 27 17:49:47 UTC 2026 - RN <R_Nik_C@proton.me>
+
+- Update to 2.2.0
+  * Added Kokoro text-to-speech plugin and helper script
+  * Added Whisper speech-to-text plugin and helper script
+  * Added new AI/LLM text generation and MCP protocol plugins/libraries
+  * Split Kokoro TTS and Whisper STT components into dedicated 
+    subpackages (ktextaddons-tts-kokoro and ktextaddons-stt-whisper)
+  * Added KF6TextAutoCorrectionCore library and development files
+
+-------------------------------------------------------------------
 Fri Aug 28 07:04:07 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 2.1.2

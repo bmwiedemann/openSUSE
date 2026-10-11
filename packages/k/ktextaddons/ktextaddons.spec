@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           ktextaddons
-Version:        2.1.2
+Version:        2.2.0
 Release:        0
 Summary:        Various text handling addons
 License:        LGPL-2.1-or-later
@@ -111,14 +111,20 @@ This package provides development files to use ktextaddons in other applications
 %ldconfig_scriptlets -n libKF6TextAddons1
 
 %files
+%{_kf6_bindir}/whisper_helper.py
+%{_kf6_bindir}/kokoro_helper.py
 %{_kf6_debugdir}/ktextaddons.categories
 %{_kf6_debugdir}/ktextaddons.renamecategories
+%{_kf6_libdir}/libkokorotexttospeech.so.*
+%{_kf6_libdir}/libkokoroinstalltexttospeech.so.*
+%{_kf6_libdir}/libspeechtotextwhisperinstall.so.*
+%{_kf6_libdir}/libspeechtotextwhisper.so.*
 %{_kf6_libdir}/libmcpprotocolclientplugin.so.*
 %{_kf6_libdir}/libmcpprotocolserverplugin.so.*
 %{_kf6_libdir}/libtextautogenerategenericnetwork.so.*
+%{_kf6_libdir}/libtextautogeneratellamacpp.so.*
 %{_kf6_libdir}/libtextautogeneratelmstudio.so.*
 %{_kf6_libdir}/libtextautogenerateollama.so.*
-%{_kf6_libdir}/libtextautogeneratellamacpp.so.*
 %{_kf6_libdir}/libtextautogenerateollamacloud.so.*
 %{_kf6_libdir}/libtextautogenerateollamacommon.so.*
 %{_kf6_libdir}/libtextautogenerateollamaonline.so.*
@@ -127,6 +133,8 @@ This package provides development files to use ktextaddons in other applications
 %{_kf6_plugindir}/kf6/speechtotext/
 %{_kf6_plugindir}/kf6/textautogeneratetext/
 %{_kf6_plugindir}/kf6/translator/
+%dir %{_kf6_pluginsdir}/texttospeech/
+%{_kf6_pluginsdir}/texttospeech/KokoroTextToSpeechPlugin.so
 %{_kf6_sharedir}/config.kcfg/textautogeneratetextglobalconfig.kcfg
 
 %files lang -f %{name}.lang

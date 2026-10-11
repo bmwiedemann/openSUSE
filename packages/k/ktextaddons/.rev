@@ -90,4 +90,18 @@
     <comment>Update to 2.1.2</comment>
     <requestid>1374299</requestid>
   </revision>
+  <revision rev="12" vrev="1">
+    <srcmd5>e68a84b4351eb2efa4ca571ae31e748a</srcmd5>
+    <version>2.2.0</version>
+    <time>1791724486</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 2.2.0
+  * Added Kokoro text-to-speech plugin and helper script
+  * Added Whisper speech-to-text plugin and helper script
+  * Added new AI/LLM text generation and MCP protocol plugins/libraries
+  * Split Kokoro TTS and Whisper STT components into dedicated 
+    subpackages (ktextaddons-tts-kokoro and ktextaddons-stt-whisper)
+  * Added KF6TextAutoCorrectionCore library and development files (forwarded request 1383857 from RN)</comment>
+    <requestid>1383978</requestid>
+  </revision>
 </revisionlist>
