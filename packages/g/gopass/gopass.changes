@@ -1,4 +1,46 @@
 -------------------------------------------------------------------
+Sat Oct 10 20:48:52 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Disable secret service until we solved the conflicts
+
+-------------------------------------------------------------------
+Sat Oct 10 13:43:40 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 1.17.4:
+  - Added
+    - age: Add hello capability negotiation to the age agent
+      protocol (#3624)
+    - age: Report the time left until auto-lock in gopass age agent
+      status
+    - age: add hello capability negotiation to the age agent
+      (#3634)
+    - age: log received identities via out.Secret (#3630) (#3625)
+    - age: report auto-lock countdown in age agent status (#3656)
+    - age: support hardware-backed keyring unlocking (#3648)
+      (#3644)
+    - secret-service: add Linux Secret Service daemon (#3434)
+      (#3607)
+    - show: Add show.password config option to display only the
+      password by default (#3621)
+    - show: add show.password config option (#3621) (#3623)
+  - Fixed
+    - Mitigate path-traversal gap in Store.Link (#3649)
+    - Remove capslock (#3647)
+    - age-agent: redact sensitive protocol lines from debug logs
+      (#3625) (#3508)
+    - age: cache unlocked SSH identities in agent (#3646)
+    - age: honor preferred identity order during decryption (#3643)
+      (#3632)
+    - age: prevent agent panic when decrypting plugin identities
+      (#3633)
+    - ls: Hide template-only folders from flat listing (#3650)
+    - msi: add install dir to user PATH (#3588) (#3622)
+  - Security
+    - fs: reject symlinked store entries escaping the store root
+      (#3654)
+- add gopass-secret-service subpackage
+
+-------------------------------------------------------------------
 Tue Sep 22 18:40:49 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update to 1.17.3:

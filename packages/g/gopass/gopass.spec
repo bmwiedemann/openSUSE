@@ -16,11 +16,14 @@
 #
 
 
+%global user_services gopass-secret-service.service
+%bcond_with secret_service
+
 %global make_args PREFIX=%{_prefix} GOPASS_REVISION=v%{version}
 Name:           gopass
-Version:        1.17.3
+Version:        1.17.4
 Release:        0
-%global pkg_version 1.17.3
+%global pkg_version %{version}
 Summary:        The slightly more awesome standard unix password manager for teams
 License:        MIT
 URL:            https://www.gopass.pw/
@@ -36,8 +39,10 @@ BuildRequires:  pkgconfig
 BuildRequires:  zsh
 BuildRequires:  golang(API) >= 1.22
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(systemd)
 Requires:       git-core
 %{go_nostrip}
+%{systemd_ordering}
 
 %description
 Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
@@ -112,16 +117,51 @@ Full autonomy - No network connectivity required, unless you want it
 
 This package provides a symlink to make this a drop in replacement for password-store.
 
+%if %{with secret_service}
+%package secret-service
+Summary:        Freedesktop secret service support for gopass
+Requires:       %{name} = %{version}
+BuildArch:      noarch
+
+%description secret-service
+Manage your credentials with ease. In a globally distributed team, on multiple devices or fully offline on an air gapped machine.
+
+Works everywhere - The same user experience on Linux, MacOS, *BSD or Windows
+Built for teams - Built from our experience working in distributed development teams
+Full autonomy - No network connectivity required, unless you want it
+
+This package provides the secret service support for gopass.
+%endif
+
 %prep
 %autosetup -p1 -a1 -n %{name}-%{pkg_version}
 
 %build
 %make_build %{make_args}
 
+perl -p -i -e 's|@GOPASS@|%{_bindir}/gopass|g' contrib/secret-service/*
+
 %install
 %make_install %{make_args}
 install -D -m 0644 %{SOURCE2} %{buildroot}%{_sysconfdir}/gopass/config
 ln -sf gopass %{buildroot}%{_bindir}/pass
+
+%if %{with secret_service}
+install -D -m 0644 -t %{buildroot}%{_userunitdir}      contrib/secret-service/gopass-secret-service.service
+install -D -m 0644 -t %{buildroot}/usr/share/dbus-1/services/ contrib/secret-service/org.freedesktop.secrets.service
+
+%pre secret-service
+%systemd_user_pre %{user_services}
+
+%post secret-service
+%systemd_user_post %{user_services}
+
+%preun secret-service
+%systemd_user_preun %{user_services}
+
+%postun secret-service
+%systemd_user_postun %{user_services}
+%endif
 
 %files
 %license LICENSE
@@ -129,6 +169,12 @@ ln -sf gopass %{buildroot}%{_bindir}/pass
 %config(noreplace) %{_sysconfdir}/gopass/
 %{_bindir}/gopass
 %{_mandir}/man1/gopass.1%{?ext_man}
+
+%if %{with secret_service}
+%files secret-service
+%{_userunitdir}/gopass-secret-service.service
+/usr/share/dbus-1/services/org.freedesktop.secrets.service
+%endif
 
 %files bash-completion
 %license LICENSE
