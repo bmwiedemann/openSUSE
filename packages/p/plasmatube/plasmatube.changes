@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:05:49 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * fix protocol being chopped off urls (kde#525299)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:38:30 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
