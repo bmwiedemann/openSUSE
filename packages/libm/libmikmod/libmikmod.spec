@@ -18,7 +18,7 @@
 
 %define lname	libmikmod3
 Name:           libmikmod
-Version:        3.3.14
+Version:        3.3.15
 Release:        0
 Summary:        MikMod Sound Library
 License:        LGPL-2.1-or-later

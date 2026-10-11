@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:04:32 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.3.15
+  * Fix out-of-bounds writes in unimod version 6 loader with crafted
+    files.
+  * Reject zero-channel samples to avoid division by zero.
+
+-------------------------------------------------------------------
 Sat Sep 12 06:51:26 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.3.14
