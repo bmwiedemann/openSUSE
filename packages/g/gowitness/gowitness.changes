@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Sun Oct 11 06:06:46 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.2
+  * bump wappalyzergo, which includes a long standing regex related
+    performance issue. (07c0cb4).
+
+-------------------------------------------------------------------
+Sat Oct 10 12:48:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 3.2.1
+  * Fix dashboard not loading with an empty database.
+  * Various dependency bumps.
+
+-------------------------------------------------------------------
 Mon Sep 14 15:38:30 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 3.2.0
