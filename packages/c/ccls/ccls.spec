@@ -17,7 +17,7 @@
 
 
 Name:           ccls
-Version:        0.20250815.1
+Version:        0.20261004
 Release:        0
 Summary:        C/C++/ObjC language server
 # main package is Apache 2.0
@@ -26,8 +26,6 @@ License:        Apache-2.0 AND CC0-1.0 AND BSL-1.0
 Group:          Development/Tools/IDE
 URL:            https://github.com/MaskRay/ccls
 Source0:        %{URL}/archive/%{version}/%{name}-%{version}.tar.gz
-Patch1:         fix-llvm22-build.patch
-Patch2:         fix-llvm23-build.patch
 BuildRequires:  clang-devel >= 10
 BuildRequires:  cmake >= 3.8
 BuildRequires:  llvm-devel >= 10

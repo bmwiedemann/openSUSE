@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Sat Oct 10 13:37:38 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.20261004.
+  * Support the LSP 3.17 type hierarchy:
+    - textDocument/prepareTypeHierarchy,
+    - typeHierarchy/supertypes and
+    - typeHierarchy/subtypes.
+    For a virtual method, supertypes/subtypes are the overridden/
+    overriding methods. $ccls/inheritance is unchanged.
+  * Find references and call hierarchy on a constructor now include
+    calls through forwarding functions such as
+    std::make_unique<A>(...) and std::vector<A>::emplace_back(...).
+  * Hover on an auto variable in a function template shows the
+    deduced type when the template has exactly one instantiation.
+    Locals and parameters of template instantiations are no longer
+    indexed as duplicate symbols. For a sugared deduced type, hover
+    adds the desugared type (// aka ...), as clangd does.
+  * Type hierarchy: a class that derives from a type alias now
+    shows up under the aliased base.
+  * `-ivfsoverlay` is honored again with LLVM 22+. Before this, it
+    was silently dropped, and --warning-suppression-mappings= could
+    crash.
+  * Adapt to LLVM 22, 23 and 24.
+- Drop obsolete patches:
+  * fix-llvm22-build.patch
+  * fix-llvm23-build.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 21:30:45 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Add fix-llvm23-build.patch to fix build with LLVM 23.
