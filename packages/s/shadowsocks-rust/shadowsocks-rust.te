@@ -67,7 +67,7 @@ allow shadowsocks_rust_t sysctl_net_t:dir search;
 # ===================================================================
 # Network Communication Rules (TCP & UDP)
 # ===================================================================
-allow shadowsocks_rust_t port_type:tcp_socket { name_bind connect };
+allow shadowsocks_rust_t port_type:tcp_socket { name_bind name_connect connect };
 allow shadowsocks_rust_t port_type:udp_socket { name_bind };
 allow shadowsocks_rust_t { node_t lo_node_t inaddr_any_node_t }:tcp_socket { node_bind };
 allow shadowsocks_rust_t self:tcp_socket { create bind listen accept connect setopt getopt getattr setattr read write ioctl };

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Sun Oct 11 11:54:01 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
+
+- Fix SELinux denial (name_connect) when forwarding outbound TCP traffic
+  (boo#1284975) 
+
+-------------------------------------------------------------------
 Fri Oct  2 08:44:54 UTC 2026 - Hillwood Yang <hillwood@opensuse.org>
 
 - Fix: Unable to bind ports below 1024 with SELinux enabled (boo#1284025) 

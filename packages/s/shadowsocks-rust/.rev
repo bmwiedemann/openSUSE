@@ -218,4 +218,13 @@
 - Update vendor, fix boo#1215658 and CVE-2023-42811 (forwarded request 1382086 from hillwood)</comment>
     <requestid>1382087</requestid>
   </revision>
+  <revision rev="23" vrev="3">
+    <srcmd5>0018e0ea56ea55e4ffde66f7982fcb65</srcmd5>
+    <version>1.25.0</version>
+    <time>1791730795</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SELinux denial (name_connect) when forwarding outbound TCP traffic
+  (boo#1284975) (forwarded request 1384085 from hillwood)</comment>
+    <requestid>1384087</requestid>
+  </revision>
 </revisionlist>
