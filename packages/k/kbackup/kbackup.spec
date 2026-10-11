@@ -21,7 +21,7 @@
 
 %bcond_without released
 Name:           kbackup
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Backup program based on KDE Frameworks 5
 License:        GPL-2.0-only
