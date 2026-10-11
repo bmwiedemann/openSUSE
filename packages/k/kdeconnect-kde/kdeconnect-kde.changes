@@ -1,4 +1,20 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:02:42 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * digitizer: Ensure we are installing into udev's rules.d
+  * Fix race condition between connect and flush
+  * Fix runtime warning
+  * Further fix HTML escaping in notifications
+  * Add margin
+  * Remove non-working link to the wiki
+  * digitizer: Do not try and guess udevdir
+
+-------------------------------------------------------------------
 Tue Sep  8 09:34:29 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
