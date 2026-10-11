@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 09 09:35:24 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 1550+20261009.03465cb:
+  * profiles: whitelist Flatpak downgrade actions (bsc#1283013)
+
+-------------------------------------------------------------------
 Wed Oct 07 07:17:18 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 1550+20261007.d5bf5b4:
