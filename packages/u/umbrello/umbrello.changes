@@ -1,4 +1,21 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:06:10 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Changes since 26.08.1:
+  * Add the missing icon for the “Code Viewer” tab in the “Settings” dialog (kde#525932)
+  * Fix bug not been able to resize a selected message widget (kde#502790)
+  * Fix parenting of modal dialogs
+  * Fix 'the activity button icon in the activity diagram is corrupted' (kde#525552)
+  * Coverity check CID 268365: unsafe_xml_parse_config (UNSAFE_XML_PARSE_CONFIG)
+  * Fix bug that newly created fork and joins widgets are not rectangles
+  * Coverity check CID 268381: Use after free (USE_AFTER_FREE)
+  * Fix bug that activies does not have rounded corners (kde#525283)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:38:45 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
