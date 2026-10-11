@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Sun Oct 11 06:02:55 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 5.8.1
+  * TII data export: Added CSV and KML file export tools to the
+    Transmitter Identification Information (TII) list window.
+  * Spectrum visualization modes: Added multiple audio spectrum
+    display modes and refactored the plotting subsystem.
+  * RTL-SDR hardware details: Added tuner type and firmware version
+    reporting in the device configuration interface.
+  * Service database resilience: Improved SQLite conflict resolution
+    to prevent duplicate entries and maintain database integrity.
+  * DAB+ audio decoding fix: Resolved audio stutter and decoding
+    failures for DAB+ stations with very large AU sizes.
+
+-------------------------------------------------------------------
 Mon Aug 31 07:36:06 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 5.7.0
