@@ -19,13 +19,9 @@
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
-%if 0%{?suse_version} > 1500 || 0%{?sle_version} > 150400
-%bcond_without bhsolver
-%endif
-
 %bcond_without released
 Name:           kpat
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        Patience card game
 License:        GPL-2.0-or-later
@@ -37,9 +33,6 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  freecell-solver-devel
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
-%if %{with bhsolver}
-BuildRequires:  pkgconfig(libblack-hole-solver)
-%endif
 BuildRequires:  cmake(KDEGames6)
 BuildRequires:  cmake(KF6Completion) >= %{kf6_version}
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
@@ -57,6 +50,8 @@ BuildRequires:  cmake(KF6XmlGui) >= %{kf6_version}
 BuildRequires:  cmake(Qt6Svg) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Test) >= %{qt6_version}
 BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
+BuildRequires:  pkgconfig
+BuildRequires:  pkgconfig(libblack-hole-solver)
 Requires:       kdegames-carddecks-default
 Obsoletes:      kpat5 < %{version}
 Provides:       kpat5 = %{version}
@@ -72,12 +67,7 @@ more. The game has nice graphics and many different carddecks.
 %autosetup -p1
 
 %build
-%cmake_kf6 \
-%if %{with bhsolver}
-  -DWITH_BH_SOLVER:BOOL=TRUE
-%else
-  -DWITH_BH_SOLVER:BOOL=FALSE
-%endif
+%cmake_kf6
 
 %kf6_build
 
