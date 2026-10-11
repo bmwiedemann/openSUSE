@@ -1,4 +1,27 @@
 -------------------------------------------------------------------
+Sun Oct 11 09:18:18 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- Update to version 2.82.0 (skips 2.81.1, both published 2026-10-10;
+  real content, not a republish: distinct sha256, cli.js grows
+  1260305 -> 1309368 bytes with the bulk of the delta in 2.81.1):
+  * Model catalog refresh: new GPT-5/GPT-6 text tiers, GPT Image 2.5
+    Sunburst, Gemini 3.8 TTS voices, Ideogram 4.5 Precise Edit,
+    Google Lyria 3.5 song generation, Eleven Video to Music,
+    Seedance 2.5 Without Moderation (plus Edit/Extend) and MiniMax
+    H3 Max Camera/Extend/Lip Sync/Relight controls; H3 Max Turbo
+    moves up to 1080p, cinematic video gains 10/8-bit mp4/mov
+  * Retired: Luma Flash 2/Ray 2 reframe, Sora continuation, the
+    older 768p H3 Max tiers and the previous voice engine
+  * 2.82.0 itself adds no further user-visible strings over 2.81.1
+    (bundle rebuild, +248 bytes); README documents the SDK-catalog
+    freshness check (npm run check:sdk-catalog)
+- Re-vendor: the 71-tarball set is unchanged (only the root version
+  floats), licences re-derived over the new tree, unchanged (MIT,
+  ISC, Apache-2.0, BlueOak-1.0.0, MIT OR CC0-1.0), no copyleft
+- The bundle still requires Node.js 22, so the nodejs >= 22
+  floor stands
+
+-------------------------------------------------------------------
 Thu Oct  8 06:36:31 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to version 2.80.1 (real content change, not a republish):
