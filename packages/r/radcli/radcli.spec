@@ -19,7 +19,7 @@
 
 %define sover 10
 Name:           radcli
-Version:        2.0.0
+Version:        2.0.1
 Release:        0
 Summary:        A RADIUS client library
 License:        BSD-2-Clause AND MIT
@@ -28,7 +28,7 @@ URL:            https://radcli.github.io/radcli/
 Source:         https://github.com/radcli/radcli/releases/download/%{version}/%{name}-%{version}.tar.xz
 BuildRequires:  meson
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(gnutls)
+BuildRequires:  pkgconfig(gnutls) >= 3.3
 BuildRequires:  pkgconfig(nettle)
 
 %description

@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Sat Oct 10 16:13:13 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.0.1
+  * Fixed several issues in the TLS/DTLS transport and in the
+    handling of asynchronous requests and replies, including dropped
+    salt-encrypted attributes in radcli_aaa() replies over RadSec, a
+    deadlock on TLS session restart, and a crash in
+    radcli_ctx_dispatch().
+  * GnuTLS 3.3 or later is now required.
+
+-------------------------------------------------------------------
 Sun Sep 13 12:26:14 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 2.0.0
