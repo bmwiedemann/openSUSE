@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:04 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * Centre the 64px mimetype icons in their canvas (kde#508535)
+  * Centre the 32px mimetype icons in their canvas
+  * Use ECMInstalledLibraryCheck
+  * Add a tab-close icon instead of linking to window-close
+  * Add audio-speakers-bluetooth, and the other names PipeWire asks for
+  * Draw audio-speakers at 22
+  * Add Zeal tray icon to status
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:21:39 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
