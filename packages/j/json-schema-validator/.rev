@@ -1,0 +1,11 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>3b6e3f7876985d79a58116b05bcb68e2</srcmd5>
+    <version>2.4.0</version>
+    <time>1791724828</time>
+    <user>dimstar_suse</user>
+    <comment>I changed the _service file to use download_files, not obs_scm.
+I had a hard time understanding what the error in the superseded requests actually meant, and if or how download_files apparently is being used. If there's any documentation on that, please point me there. Anyways, I hope this time I got it right.</comment>
+    <requestid>1384000</requestid>
+  </revision>
+</revisionlist>
