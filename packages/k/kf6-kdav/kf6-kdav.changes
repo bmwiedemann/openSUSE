@@ -1,4 +1,24 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:17 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * Fix documentation formatting
+  * Add DavPushUnregisterJob for unsubscribing dav push notifications
+  * Add davpushregistrationjob for subscribing DavPush notifications
+  * Add DavItemsSyncJob that fetches only changed items using sync-token
+  * Add detection of sync-tag property in collection fetch
+  * Add DavPushDontNotify to item and collection operations
+  * Use ECMInstalledLibraryCheck
+  * Fix CI tests by closing conncetions after each requests
+  * Fix since version
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:21:53 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
