@@ -1,4 +1,19 @@
 -------------------------------------------------------------------
+Wed Oct  7 07:02:47 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 26.08.2
+  * New bugfix release
+  * For more details please see:
+  * https://kde.org/announcements/gear/26.08.2/
+- Too many changes since 26.08.1, only listing bugfixes:
+  * Avoid hardcoding absolute root path in generated MLT clip (kde#495091)
+  * Fix incorrect proxy param breaking nvidia encoding (kde#526155)
+  * Disconnect monitor signal on deactivation in RotatedRectHelper (kde#523263)
+  * Fix leaking monitor helper caused rotation on wrong clip (kde#523263)
+  * Fix arrow keys moving playhead instead of grabbed clip after monitor interaction (kde#472365)
+  * Fix master audio levels incorrect with latest MLT (kde#525578)
+
+-------------------------------------------------------------------
 Tue Sep  8 09:34:48 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 26.08.1
