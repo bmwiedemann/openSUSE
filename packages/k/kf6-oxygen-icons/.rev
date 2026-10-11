@@ -76,4 +76,12 @@
   * Update version to 6.30.0</comment>
     <requestid>1376862</requestid>
   </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>8ad9add76d6500179c132db6a2facb10</srcmd5>
+    <version>6.31.0</version>
+    <time>1791724576</time>
+    <user>dimstar_suse</user>
+    <comment>KDE Frameworks 6.31 (forwarded request 1383794 from krop)</comment>
+    <requestid>1383968</requestid>
+  </revision>
 </revisionlist>

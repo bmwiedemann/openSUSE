@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:44 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * 48x48 and 64x64 versions of the koko app icon
+  * Add scalable svgz variant of koko icon
+  * Add koko icon
+  * initial experiment on plasma-studio icon
+  * improved version
+  * Fix missing fill:none on zeal-tray symbolic icon
+  * Fix hardcoded black stroke color in disk/drive 32x32 symbolic icons
+  * new icons
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Thu Sep 10 08:22:33 UTC 2026 - Fabian Vogt <fabian@ritter-vogt.de>
 
 - Remove wrong URL from the .spec file, same as other kf6-* packages
