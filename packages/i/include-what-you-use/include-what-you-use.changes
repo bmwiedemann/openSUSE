@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 10 14:39:58 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
+
+- Update to version 0.27, update LLVM/Clang to version 23.
+  * Improve printing of forward-declarations.
+  * Fix several crashes on valid inputs.
+  * Improve analysis of template types.
+  * Always keep includes embedded in language constructs.
+  * Add IWYU_USE_SYSTEM_GTEST option to use system googletest
+    instead of bundled.
+  * Add mapping generators for Clang builtin and intrinsics headers.
+  * Allow forward-decl-specific symbol mappings (e.g. for mapping
+    fwd-decl uses of std::basic_ios to <iosfwd>).
+  * Prefer <c*> headers for C library symbols in C++ mode.
+  * Add --always_first_include option to force particular headers
+    to the top.
+- Rebase iwyu_include_picker.patch.
+- Use system googletest.
+
+-------------------------------------------------------------------
 Sun Apr 26 21:00:08 UTC 2026 - Aaron Puchert <aaronpuchert@alice-dsl.net>
 
 - Update to version 0.26, update LLVM/Clang to version 22.

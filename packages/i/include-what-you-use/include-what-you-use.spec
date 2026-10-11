@@ -16,10 +16,10 @@
 #
 
 
-%define _llvm_version 22
+%define _llvm_version 23
 
 Name:           include-what-you-use
-Version:        0.26
+Version:        0.27
 Release:        0
 Summary:        A tool to analyze #includes in C and C++ source files
 License:        NCSA
@@ -33,6 +33,7 @@ BuildRequires:  clang%{_llvm_version}-devel
 BuildRequires:  cmake
 BuildRequires:  libstdc++-devel
 BuildRequires:  llvm%{_llvm_version}-devel
+BuildRequires:  cmake(GTest)
 %if %{suse_version} > 1500
 BuildRequires:  python3-base
 %else
@@ -66,6 +67,9 @@ refactoring tool.
 %prep
 %autosetup -p1 -n %{name}
 
+# We use the system package instead.
+rm -r vendor/googletest
+
 %build
 # We build static libraries because they're internal to the build and not
 # installed. (They're used for testing only.)
@@ -74,6 +78,7 @@ refactoring tool.
     -DBUILD_STATIC_LIBS:BOOL=ON \
     -DIWYU_LLVM_ROOT_PATH=%{_libdir} \
     -DCMAKE_SKIP_RPATH:BOOL=ON \
+    -DIWYU_USE_SYSTEM_GTEST:BOOL=ON \
 %if %{suse_version} <= 1500
     -DPython3_EXECUTABLE=%{_bindir}/python3.11 \
 %endif

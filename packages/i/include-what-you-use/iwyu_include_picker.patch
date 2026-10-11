@@ -1,8 +1,8 @@
 diff --git a/iwyu_include_picker.cc b/iwyu_include_picker.cc
-index 72cb6cb..5bb8ddc 100644
+index 8ea9cda..683ddc8 100644
 --- a/iwyu_include_picker.cc
 +++ b/iwyu_include_picker.cc
-@@ -86,14 +86,14 @@ struct IncludeMapEntry {      // A POD so we can make the input static
+@@ -95,14 +95,14 @@ struct SymbolMapEntry {
  namespace {
  
  // Listed below are all IWYU's native symbol and include mappings,
@@ -10,36 +10,36 @@ index 72cb6cb..5bb8ddc 100644
 +// loosely based on GCC 14's libc and libstdc++.
  
  // Symbol -> include mappings for GNU libc
- const IncludeMapEntry libc_symbol_map[] = {
+ const SymbolMapEntry libc_symbol_map[] = {
    // For library symbols that can be defined in more than one header
    // file, maps from symbol-name to legitimate header files.
    // This list was generated via
 -  // grep -R '__.*_defined' /usr/include | perl -nle 'm,/usr/include/([^:]*):#\s*\S+ __(.*)_defined, and print qq@    { "$2", kPublic, "<$1>", kPublic },@' | sort -u
-+  // grep -R '__.*_defined' /usr/include | perl -nle 'm,/usr/include/([^:]*):#\s*\S+ __(.*)_defined, and print qq@  { "$2", kPrivate, "<$1>", kPublic },@' | sort -u
++  // grep -R '__.*_defined' /usr/include | perl -nle 'm,/usr/include/([^:]*):#\s*\S+ __(.*)_defined, and print qq@  { "$2", UseKind::Full, "<$1>", kPublic },@' | sort -u
    // I ignored all entries that only appeared once on the list (eg uint32_t).
    // I then added in NULL, which according to [diff.null] C.2.2.3, can
    // be defined in <clocale>, <cstddef>, <cstdio>, <cstdlib>,
-@@ -399,55 +399,84 @@ const IncludeMapEntry stdlib_cxx_symbol_map[] = {
-   { "std::char_traits<char16_t>", kPrivate, "<istream>", kPublic },
-   { "std::char_traits<char32_t>", kPrivate, "<istream>", kPublic },
-   { "std::char_traits<wchar_t>", kPrivate, "<istream>", kPublic },
+@@ -404,55 +404,84 @@ const SymbolMapEntry stdlib_cxx_symbol_map[] = {
+   { "std::char_traits<char16_t>", UseKind::Full, "<istream>", kPublic },
+   { "std::char_traits<char32_t>", UseKind::Full, "<istream>", kPublic },
+   { "std::char_traits<wchar_t>", UseKind::Full, "<istream>", kPublic },
 +
-+  { "std::pair", kPrivate, "<map>", kPublic },
-+  { "std::pair", kPrivate, "<multimap>", kPublic },
-+  { "std::pair", kPrivate, "<utility>", kPublic },
++  { "std::pair", UseKind::Full, "<map>", kPublic },
++  { "std::pair", UseKind::Full, "<multimap>", kPublic },
++  { "std::pair", UseKind::Full, "<utility>", kPublic },
 +
-+  { "std::istringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::ostringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::stringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::wistringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::wostringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::wstringstream", kPrivate, "<sstream>", kPublic },
-+  { "std::ifstream", kPrivate, "<fstream>", kPublic },
-+  { "std::ofstream", kPrivate, "<fstream>", kPublic },
-+  { "std::fstream", kPrivate, "<fstream>", kPublic },
-+  { "std::wifstream", kPrivate, "<fstream>", kPublic },
-+  { "std::wofstream", kPrivate, "<fstream>", kPublic },
-+  { "std::wfstream", kPrivate, "<fstream>", kPublic },
++  { "std::istringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::ostringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::stringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::wistringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::wostringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::wstringstream", UseKind::Full, "<sstream>", kPublic },
++  { "std::ifstream", UseKind::Full, "<fstream>", kPublic },
++  { "std::ofstream", UseKind::Full, "<fstream>", kPublic },
++  { "std::fstream", UseKind::Full, "<fstream>", kPublic },
++  { "std::wifstream", UseKind::Full, "<fstream>", kPublic },
++  { "std::wofstream", UseKind::Full, "<fstream>", kPublic },
++  { "std::wfstream", UseKind::Full, "<fstream>", kPublic },
  };
  
  const IncludeMapEntry libc_include_map[] = {
@@ -117,7 +117,7 @@ index 72cb6cb..5bb8ddc 100644
    { "<bits/netdb.h>", kPrivate, "<netdb.h>", kPublic },
    { "<bits/param.h>", kPrivate, "<sys/param.h>", kPublic },
    { "<bits/poll.h>", kPrivate, "<sys/poll.h>", kPrivate },
-@@ -456,8 +485,15 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -461,8 +490,15 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/posix2_lim.h>", kPrivate, "<limits.h>", kPublic },
    { "<bits/posix_opt.h>", kPrivate, "<unistd.h>", kPublic },
    { "<bits/printf-ldbl.h>", kPrivate, "<printf.h>", kPublic },
@@ -133,7 +133,7 @@ index 72cb6cb..5bb8ddc 100644
    { "<bits/sched.h>", kPrivate, "<sched.h>", kPublic },
    { "<bits/select.h>", kPrivate, "<sys/select.h>", kPublic },
    { "<bits/select2.h>", kPrivate, "<sys/select.h>", kPublic },
-@@ -468,42 +504,43 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -473,42 +509,43 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/shm.h>", kPrivate, "<sys/shm.h>", kPublic },
    { "<bits/sigaction.h>", kPrivate, "<signal.h>", kPublic },
    { "<bits/sigcontext.h>", kPrivate, "<signal.h>", kPublic },
@@ -190,7 +190,7 @@ index 72cb6cb..5bb8ddc 100644
    { "<bits/termios-baud.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-c_cc.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-c_cflag.h>", kPrivate, "<termios.h>", kPublic },
-@@ -515,18 +552,53 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -520,18 +557,53 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/termios-struct.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios-tcflow.h>", kPrivate, "<termios.h>", kPublic },
    { "<bits/termios.h>", kPrivate, "<termios.h>", kPublic },
@@ -248,7 +248,7 @@ index 72cb6cb..5bb8ddc 100644
    { "<bits/utmp.h>", kPrivate, "<utmp.h>", kPublic },
    { "<bits/utmpx.h>", kPrivate, "<utmpx.h>", kPublic },
    { "<bits/utsname.h>", kPrivate, "<sys/utsname.h>", kPublic },
-@@ -535,61 +607,155 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -540,61 +612,155 @@ const IncludeMapEntry libc_include_map[] = {
    { "<bits/wchar-ldbl.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar.h>", kPrivate, "<wchar.h>", kPublic },
    { "<bits/wchar2.h>", kPrivate, "<wchar.h>", kPublic },
@@ -420,7 +420,7 @@ index 72cb6cb..5bb8ddc 100644
    // Top-level #includes that just forward to another file:
    // $ for i in /usr/include/*; do [ -f $i ] && [ `wc -l < $i` = 1 ] && echo $i; done
    // (poll.h, syscall.h, syslog.h, ustat.h, wait.h).
-@@ -615,8 +781,9 @@ const IncludeMapEntry libc_include_map[] = {
+@@ -620,8 +786,9 @@ const IncludeMapEntry libc_include_map[] = {
    // $ for i in /usr/include/bits/*; do for dir in asm linux; do grep -H -e $dir/`basename $i` $i; done; done
    { "<linux/errno.h>", kPrivate, "<bits/errno.h>", kPrivate },
    { "<asm/ioctls.h>", kPrivate, "<bits/ioctls.h>", kPrivate },
@@ -431,7 +431,7 @@ index 72cb6cb..5bb8ddc 100644
    // Some asm files have 32- and 64-bit variants:
    // $ ls /usr/include/asm/*_{32,64}.h
    { "<asm/posix_types_32.h>", kPrivate, "<asm/posix_types.h>", kPublic },
-@@ -652,7 +819,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
+@@ -657,7 +824,7 @@ const IncludeMapEntry stdlib_c_include_map[] = {
    // <cassert> back to <assert.h>.  (If you *did* want to replace
    // assert.h with cassert, you'd change it to a public->private
    // mapping.)  Here is how I identified the files to map:
@@ -440,7 +440,7 @@ index 72cb6cb..5bb8ddc 100644
    //
    // These headers are defined in [headers.cpp.c].
    // https://github.com/cplusplus/draft/blob/c+%2B20/source/lib-intro.tex
-@@ -786,25 +953,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
+@@ -791,25 +958,29 @@ const IncludeMapEntry stdlib_cpp_include_map[] = {
    // #including each other (eg <iostream> #includes <istream>).  We
    // are pretty forgiving: if a user specifies any public header, we
    // generally don't require the others.
@@ -473,7 +473,7 @@ index 72cb6cb..5bb8ddc 100644
  //
  // Do not edit!
  const IncludeMapEntry libstdcpp_include_map[] = {
-@@ -857,9 +1028,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
+@@ -862,9 +1033,8 @@ const IncludeMapEntry libstdcpp_include_map[] = {
    { "<bits/stdc++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
    { "<bits/stdc++.h>", kPrivate, "<bits/stdtr1c++.h>", kPrivate },
    { "<bits/stdtr1c++.h>", kPrivate, "<bits/extc++.h>", kPrivate },
@@ -484,3 +484,25 @@ index 72cb6cb..5bb8ddc 100644
    { "<debug/assertions.h>", kPrivate, "<bits/stl_deque.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/stl_iterator_base_funcs.h>", kPrivate },
    { "<debug/assertions.h>", kPrivate, "<bits/stl_vector.h>", kPrivate },
+diff --git a/tests/cxx/std_symbol_mapping.cc b/tests/cxx/std_symbol_mapping.cc
+index 08168f9..97cc26e 100644
+--- a/tests/cxx/std_symbol_mapping.cc
++++ b/tests/cxx/std_symbol_mapping.cc
+@@ -122,7 +122,6 @@ tests/cxx/std_symbol_mapping.cc should add these lines:
+ #include <cstdint>
+ #include <cwchar>
+ #include <functional>
+-#include <iosfwd>
+ #include <spanstream>
+ #include <tuple>
+ #include <utility>
+@@ -139,8 +138,7 @@ The full include-list for tests/cxx/std_symbol_mapping.cc:
+ #include <cstdint>  // for int8_t
+ #include <cwchar>  // for tm (ptr only), wprintf
+ #include <functional>  // for function, swap
+-#include <iosfwd>  // for basic_ostream (ptr only), char_traits (ptr only)
+-#include <spanstream>  // for basic_spanstream
++#include <spanstream>  // for basic_ostream (ptr only), basic_spanstream, char_traits (ptr only)
+ #include <tuple>  // for tuple
+ #include <utility>  // for get, move, operator==, pair, swap
+ #include <valarray>  // for pow, valarray
