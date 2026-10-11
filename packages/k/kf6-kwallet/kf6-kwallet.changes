@@ -1,4 +1,33 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:40 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * Use ECMInstalledLibraryCheck
+  * ksecretd: Rename setter for clarity
+  * Use enum instead of int in function signature
+  * ksecretd: Drop unused entryUpdated signal
+  * ksecretd: Don't call emitEntryUpdated in writePassword
+  * ksecretd: Drop redundant writeEntry function
+  * ksecretd: Preserve entry type in setLabel
+  * ksecretd: Remove unneeded null check in internalClose
+  * ksecretd: Use find_if in KSecretD::findWallet
+  * ksecretd: Simplify destruction
+  * ksecretd: Drop KWalletTransaction::OpenFail
+  * ksecretd: Manage KWalletTransaction as move-only type
+  * ksecretd: Use QScopedValueRollback
+  * ksecretd: Remove empty KWalletTransaction dtor definition
+  * ksecretd: Drop Unknown transaction type
+  * ksecretd: Drop dead code in transaction handling
+  * ksecretd: Use QFuture for changing password
+  * ksecretd: Use QFuture for opening the wallet
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:37 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
