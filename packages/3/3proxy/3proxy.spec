@@ -21,7 +21,7 @@
 %define _group  proxy
 %define _home   %{_localstatedir}/lib/%{name}
 Name:           3proxy
-Version:        0.9.9
+Version:        1.0.1
 Release:        0
 Summary:        Tiny proxy servers set
 License:        Apache-2.0 OR BSD-3-Clause OR GPL-2.0-or-later OR LGPL-2.1-or-later
@@ -66,7 +66,7 @@ install -Dpm0660 %{SOURCE3} %{buildroot}%{_sysconfdir}/%{name}/%{name}.cfg
 
 %pre
 getent group %{_group} &> /dev/null || groupadd -r %{_group}
-getent passwd %{_user} &> /dev/null || %{_sbindir}/useradd -rc 'User for tiny proxy servers set.' -s /bin/false -d %{_home} -g %{_group} %{_user}
+getent passwd %{_user} &> /dev/null || %{_sbindir}/useradd -rc 'User for tiny proxy servers set.' -s /usr/sbin/nologin -d %{_home} -g %{_group} %{_user}
 %service_add_pre %{name}.service
 
 %post
