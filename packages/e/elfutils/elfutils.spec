@@ -56,7 +56,7 @@ License:        GPL-2.0-or-later OR LGPL-3.0-or-later
 
 %description -n libasm1
 libasm contains the "asm" and "disasm" functions to assemble and
-disassamble instructions. (There is only partial support for i686 and
+disassemble instructions. (There is only partial support for i686 and
 BPF instructions.) This is part of the elfutils package.
 
 %package -n libasm-devel
@@ -123,7 +123,8 @@ The libdebuginfod1 package contains shared libraries
 dynamically loaded from -ldw, which use a debuginfod service
 to look up debuginfo and associated data. Also includes a
 command-line frontend.
-The package is dummy.
+
+This is a is dummy package.
 
 %package -n libdebuginfod-dummy-devel
 Summary:        Libraries and headers to build debuginfod client applications

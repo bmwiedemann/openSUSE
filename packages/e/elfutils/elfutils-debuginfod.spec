@@ -124,7 +124,7 @@ Summary:        Profile files for build-id HTTP ELF/DWARF server
 Group:          Development/Tools/Building
 
 %description -n debuginfod-profile
-The debuginfod-profile package contains a profile files that set default
+The debuginfod-profile package contains a profile files that set the default
 URL for a distribution.
 
 %lang_package
