@@ -4,11 +4,11 @@ Date:   Thu Apr 18 16:00:02 2013 +0800
 
     Log: fencing: Drop the severity of the messages on registering a stonith device
 
-Index: pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_commands.c
+Index: pacemaker-3.0.3+20260730.0a945c3184/daemons/fenced/fenced_commands.c
 ===================================================================
---- pacemaker-3.0.1+20260422.a77694f0.orig/daemons/fenced/fenced_commands.c
-+++ pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_commands.c
-@@ -1553,7 +1553,7 @@ fenced_device_register(const xmlNode *de
+--- pacemaker-3.0.3+20260730.0a945c3184.orig/daemons/fenced/fenced_commands.c
++++ pacemaker-3.0.3+20260730.0a945c3184/daemons/fenced/fenced_commands.c
+@@ -1558,7 +1558,7 @@ fenced_device_register(const xmlNode *de
          g_hash_table_replace(device_table, device->id, device);
  
          ndevices = g_hash_table_size(device_table);
@@ -17,16 +17,16 @@ Index: pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_commands.c
                       device->id, ndevices, pcmk__plural_s(ndevices));
      }
  
-Index: pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_cib.c
+Index: pacemaker-3.0.3+20260730.0a945c3184/daemons/fenced/fenced_cib.c
 ===================================================================
---- pacemaker-3.0.1+20260422.a77694f0.orig/daemons/fenced/fenced_cib.c
-+++ pacemaker-3.0.1+20260422.a77694f0/daemons/fenced/fenced_cib.c
-@@ -538,7 +538,7 @@ update_cib_cache_cb(const char *event, x
-                  */
-                 break;
-             case -pcmk_err_diff_failed:
+--- pacemaker-3.0.3+20260730.0a945c3184.orig/daemons/fenced/fenced_cib.c
++++ pacemaker-3.0.3+20260730.0a945c3184/daemons/fenced/fenced_cib.c
+@@ -531,7 +531,7 @@ update_cib_cache_cb(const char *event, x
+ 
+         if (rc != pcmk_ok) {
+             if ((rc == -pcmk_err_old_data) || (rc == -pcmk_err_diff_failed)) {
 -                pcmk__notice("[%s] Patch aborted: %s (%d)", event,
 +                pcmk__info("[%s] Patch aborted: %s (%d)", event,
                               pcmk_strerror(rc), rc);
-                 g_clear_pointer(&local_cib, pcmk__xml_free);
-                 break;
+             } else {
+                 pcmk__warn("[%s] ABORTED: %s (%d)", event, pcmk_strerror(rc),

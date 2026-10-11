@@ -1,0 +1,27 @@
+From c7e6f3ddb44642ea21de10adc986e0dee4a4d3e0 Mon Sep 17 00:00:00 2001
+From: Yan Gao <yangao.jazz@gmail.com>
+Date: Thu, 24 Sep 2026 11:15:30 +0200
+Subject: [PATCH] Test: cts: make cts-scheduler -o/--out-dir default to a
+ temporary directory
+
+This allows cts-scheduler to run in immutable mode by default.
+---
+ cts/cts-scheduler.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cts/cts-scheduler.in b/cts/cts-scheduler.in
+index b516917cad..3b8ab53add 100644
+--- a/cts/cts-scheduler.in
++++ b/cts/cts-scheduler.in
+@@ -1381,7 +1381,7 @@ class CtsScheduler:
+ 
+         # Where to store generated files
+         if self.args.out_dir is None:
+-            self.args.out_dir = self.args.io_dir
++            self.args.out_dir = self.failed_dir
+             self.failed_filename = os.path.join(self.failed_dir, "test-output.diff")
+         else:
+             self.failed_filename = os.path.join(self.args.out_dir, "test-output.diff")
+-- 
+2.55.0
+

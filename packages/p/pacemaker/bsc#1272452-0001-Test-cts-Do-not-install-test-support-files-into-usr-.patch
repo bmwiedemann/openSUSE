@@ -1,0 +1,89 @@
+From 022d3020a702d1ac2cbe772e678bbbed0610538b Mon Sep 17 00:00:00 2001
+From: Yan Gao <yangao.jazz@gmail.com>
+Date: Wed, 23 Sep 2026 10:56:28 +0200
+Subject: [PATCH] Test: cts: Do not install test support files into /usr at
+ runtime
+
+---
+ cts/support/cts-support.in | 11 ++++++++++-
+ 1 file changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/cts/support/cts-support.in b/cts/support/cts-support.in
+index 062d44bbef..4b3297eeaa 100644
+--- a/cts/support/cts-support.in
++++ b/cts/support/cts-support.in
+@@ -76,6 +76,7 @@ def cmd_install(src):
+ 
+     os.chdir(src)
+ 
++    """
+     if os.path.exists(BuildOptions.UNIT_DIR):
+         print(f"Installing {DUMMY_DAEMON} ...")
+         d = f"{BuildOptions.LIBEXEC_DIR}/pacemaker"
+@@ -86,6 +87,7 @@ def cmd_install(src):
+         print(f"Installing {DUMMY_DAEMON_UNIT} ...")
+         install(DUMMY_DAEMON_UNIT, BuildOptions.UNIT_DIR, 0o644)
+         daemon_reload()
++    """
+ 
+     runtime_unit_dir = f"{BuildOptions.RUNTIME_STATE_DIR}/systemd/system"
+     if os.path.exists(runtime_unit_dir):
+@@ -96,6 +98,7 @@ def cmd_install(src):
+         install(COROSYNC_RUNTIME_CONF, unit_dir, 0o644)
+         daemon_reload()
+ 
++    """
+     print(f"Installing {FENCE_DUMMY} to {BuildOptions._FENCE_BINDIR} ...")
+     makedirs_if_missing(BuildOptions._FENCE_BINDIR)
+     install(FENCE_DUMMY, BuildOptions._FENCE_BINDIR)
+@@ -106,6 +109,7 @@ def cmd_install(src):
+             os.symlink(FENCE_DUMMY, f"{BuildOptions._FENCE_BINDIR}/fence_dummy_{alias}")
+         except OSError:
+             sys.exit(ExitStatus.ERROR)
++    """
+ 
+     if BuildOptions.INIT_DIR is not None:
+         print(f"Installing {LSB_DUMMY} to {BuildOptions.INIT_DIR} ... ")
+@@ -117,10 +121,12 @@ def cmd_uninstall():
+     """Remove support files needed by Pacemaker CTS."""
+     dummy_unit_file = f"{BuildOptions.UNIT_DIR}/{DUMMY_DAEMON_UNIT}"
+ 
++    """
+     if os.path.exists(dummy_unit_file):
+         print(f"Removing {dummy_unit_file} ...")
+         os.remove(dummy_unit_file)
+         daemon_reload()
++    """
+ 
+     corosync_runtime_dir = f"{BuildOptions.RUNTIME_STATE_DIR}/systemd/system/{COROSYNC_RUNTIME_UNIT}"
+ 
+@@ -129,8 +135,9 @@ def cmd_uninstall():
+         shutil.rmtree(corosync_runtime_dir)
+         daemon_reload()
+ 
+-    for f in [f"{BuildOptions.LIBEXEC_DIR}/pacemaker/{DUMMY_DAEMON}",
++    for f in ["""f"{BuildOptions.LIBEXEC_DIR}/pacemaker/{DUMMY_DAEMON}",
+               f"{BuildOptions._FENCE_BINDIR}/{FENCE_DUMMY}",
++              """
+               f"{BuildOptions.INIT_DIR}/{LSB_DUMMY}"]:
+         if not os.path.exists(f):
+             continue
+@@ -138,6 +145,7 @@ def cmd_uninstall():
+         print(f"Removing {f} ...")
+         os.remove(f)
+ 
++    """
+     for alias in FENCE_DUMMY_ALIASES:
+         f = f"{BuildOptions._FENCE_BINDIR}/fence_dummy_{alias}"
+ 
+@@ -146,6 +154,7 @@ def cmd_uninstall():
+ 
+         print(f"Removing {f} ...")
+         os.remove(f)
++    """
+ 
+ 
+ def cmd_watch(filename, limit, offset, prefix):
+-- 
+2.55.0
+

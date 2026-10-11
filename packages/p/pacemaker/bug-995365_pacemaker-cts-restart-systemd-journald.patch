@@ -1,20 +1,20 @@
-Index: pacemaker-3.0.0+20250128.0de22e5f75/python/pacemaker/_cts/audits.py
+Index: pacemaker-3.0.3+20260730.0a945c3184/python/pacemaker/_cts/audits.py
 ===================================================================
---- pacemaker-3.0.0+20250128.0de22e5f75.orig/python/pacemaker/_cts/audits.py
-+++ pacemaker-3.0.0+20250128.0de22e5f75/python/pacemaker/_cts/audits.py
-@@ -82,13 +82,9 @@ class LogAudit(ClusterAudit):
+--- pacemaker-3.0.3+20260730.0a945c3184.orig/python/pacemaker/_cts/audits.py
++++ pacemaker-3.0.3+20260730.0a945c3184/python/pacemaker/_cts/audits.py
+@@ -83,13 +83,9 @@ class LogAudit(ClusterAudit):
  
          for node in nodes:
              if self._cm.env["have_systemd"]:
--                (rc, _) = self._cm.rsh(node, "systemctl stop systemd-journald.socket")
-+                (rc, _) = self._cm.rsh(node, "systemctl restart systemd-journald.socket")
+-                (rc, _) = self._cm.rsh.call(node, "systemctl stop systemd-journald.socket")
++                (rc, _) = self._cm.rsh.call(node, "systemctl restart systemd-journald.socket")
                  if rc != 0:
--                    self._cm.log(f"ERROR: Cannot stop 'systemd-journald' on {node}")
+-                    logging.log(f"ERROR: Cannot stop 'systemd-journald' on {node}")
 -
--                (rc, _) = self._cm.rsh(node, "systemctl start systemd-journald.service")
+-                (rc, _) = self._cm.rsh.call(node, "systemctl start systemd-journald.service")
 -                if rc != 0:
--                    self._cm.log(f"ERROR: Cannot start 'systemd-journald' on {node}")
-+                    self._cm.log(f"ERROR: Cannot restart 'systemd-journald' on {node}")
+-                    logging.log(f"ERROR: Cannot start 'systemd-journald' on {node}")
++                    logging.log(f"ERROR: Cannot restart 'systemd-journald' on {node}")
  
              if "syslogd" in self._cm.env:
-                 (rc, _) = self._cm.rsh(node, f"service {self._cm.env['syslogd']} restart")
+                 (rc, _) = self._cm.rsh.call(node, f"service {self._cm.env['syslogd']} restart")

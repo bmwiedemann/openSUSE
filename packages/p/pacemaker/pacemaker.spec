@@ -128,7 +128,7 @@
 %define with_regression_tests   0
 
 Name:           pacemaker
-Version:        3.0.3+20260728.7052efa194
+Version:        3.0.3+20260916.98b92cfb9b
 Release:        0
 Summary:        Scalable High-Availability cluster resource manager
 # AGPL-3.0 licensed extra/clustermon.sh is not present in the binary
@@ -150,6 +150,8 @@ Patch6:         bug-977201_pacemaker-controld-self-fencing.patch
 Patch7:         bug-995365_pacemaker-cts-restart-systemd-journald.patch
 Patch8:         pacemaker-cts-StartCmd.patch
 Patch9:         bsc#1180966-0001-Log-pacemakerd-downgrade-the-warning-about-SBD_SYNC_.patch
+Patch10:        bsc#1272452-0001-Test-cts-Do-not-install-test-support-files-into-usr-.patch
+Patch11:        bsc#1272452-0001-Test-cts-make-cts-scheduler-o-out-dir-default-to-a-t.patch
 # Required basic build tools
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -521,6 +523,18 @@ ln -s ../heartbeat/NodeUtilization %{buildroot}%{ocf_root}/resource.d/pacemaker/
 %python3_fix_shebang_path %{buildroot}%{_datadir}/pacemaker/tests/cts/*
 %endif
 
+# For running cts tests in immutable mode
+ln -s %{_datadir}/pacemaker/tests/cts/pacemaker-cts-dummyd %{buildroot}%{_libexecdir}/pacemaker/
+ln -s %{_datadir}/pacemaker/tests/cts/pacemaker-cts-dummyd@.service %{buildroot}%{_unitdir}/
+
+ln -s %{_datadir}/pacemaker/tests/cts/fence_dummy %{buildroot}%{_sbindir}/
+
+fence_dummy_aliases="auto_unfence no_reboot no_on no_nodeid"
+
+for alias in ${fence_dummy_aliases}; do
+    ln -s fence_dummy %{buildroot}%{_sbindir}/fence_dummy_${alias}
+done
+
 %check
 make %{_smp_mflags} check
 # Prevent false positives in rpmlint
@@ -817,6 +831,10 @@ fi
 %{_datadir}/pacemaker/tests
 
 %{_libexecdir}/pacemaker/cts-support
+
+%{_libexecdir}/pacemaker/pacemaker-cts-dummyd
+%{_unitdir}/pacemaker-cts-dummyd@.service
+%{_sbindir}/fence_dummy*
 
 #%license licenses/GPLv2
 %license COPYING

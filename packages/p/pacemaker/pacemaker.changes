@@ -1,4 +1,121 @@
 -------------------------------------------------------------------
+Thu Sep 17 12:34:14 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- cts: make cts-scheduler -o/--out-dir default to a temporary directory (bsc#1272452)
+  * bsc#1272452-0001-Test-cts-make-cts-scheduler-o-out-dir-default-to-a-t.patch
+
+- spec: Add symlinks for test support files in the pacemaker-cts sub-package (bsc#1272452)
+
+- cts: Do not install test support files into /usr at runtime (bsc#1272452)
+  * bsc#1272452-0001-Test-cts-Do-not-install-test-support-files-into-usr-.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 10:44:30 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260916.98b92cfb9b:
+- libcrmcommon: Make pcmk__auto_fencing_watchdog_timeout() static
+- libcrmcommon: Functionize parsing "fencing-watchdog-timeout"
+- liblrmd: Check watchdog-based self-fencing device for remote nodes only if "fencing-watchdog-timeout" is enabled (bsc#1270354, gh#ClusterLabs/pacemaker#4146)
+- controller: Check for watchdog-based self-fencing device only if "fencing-watchdog-timeout" is enabled (bsc#1270354, gh#ClusterLabs/pacemaker#4146)
+
+-------------------------------------------------------------------
+Thu Sep 17 10:37:55 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260916.e87efb0519:
+- fencer: Avoid use-after-free in debug log (bsc#1279543, gh#ClusterLabs/pacemaker#4172)
+
+-------------------------------------------------------------------
+Wed Sep 16 12:48:43 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260915.fa84f1530b:
+- sysconfig: Drop G_SLICE from /etc/sysconfig/pacemaker boilerplate
+- libstonithd: Improve messages for watchdog fencing enabled func
+
+-------------------------------------------------------------------
+Wed Aug 12 12:13:33 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260811.93991aaf12:
+- fenced: Prevent segfault by not merging with in-flight fencing actions (bsc#1271652, gh#ClusterLabs/pacemaker##4152)
+
+-------------------------------------------------------------------
+Wed Aug 12 12:06:05 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260811.0df1bac311:
+- libcrmcommon: Avoid overflow in crm_time_add_weeks()
+- libcrmcommon: Avoid overflow in crm_time_add_hours()
+- libcrmcommon: Avoid overflow in crm_time_add_minutes()
+- libcrmcommon: Handle NULL argument in pcmk_copy_time()
+- libcrmcommon: Add support for compression to remote messages.
+- libcrmcommon: Improve remote message version checking.
+- controller: Avoid double-free from fail_pending_op()
+
+-------------------------------------------------------------------
+Fri Jul 31 11:06:12 UTC 2026 - Yan Gao <ygao@suse.com>
+
+- Update to version 3.0.3+20260730.0a945c3184:
+- libcrmcommon: decode_transition_magic() validates more strictly
+- libcrmcommon: Suppress INCOMPLETE_DEALLOCATOR false positive
+- devel: Provide a model of g_clear_pointer() for Coverity
+- libcrmcommon, tools: Fix NULL dereference in crm_resource.c
+- libpe_status: Fix double-free in pe__unpack_bundle()
+- libpe_status: Clear unique flag on setting nreplicas_per_host to 1
+- libcrmcommon: Avoid memory leak when creating alert recipient entry
+- libcib: Assert on allocation error when creating new cib_t
+- libcrmcommon: Clear remaining attrs' flags in commit_attr_deletions
+- based: Destroy remote listeners in based_remote_cleanup()
+- based: Fix memory leak in remote listeners
+- libcrmcommon: Use QB_IPC_SHM in pcmk__serve_DAEMON_ipc()
+- libcrmcommon: Drop support for PCMK_ipc_type env variable
+- cibadmin: allow altering status section without triggering refresh
+- libstonithd: Fix memory leak in stonith__api_new() error path
+- libcrmcluster: NULL to pcmk_cluster_disconnect() returns EINVAL
+- tools: Use g_spawn_sync in cibsecret.
+- based: Move based_ipc_cleanup() call to based_terminate()
+- report.collector: fix wrong DC name fetching
+- tools: Handle UTF-8 parameters in crm_resource.
+- tools: Handle UTF-8 parameters in cibsecret.
+- libcrmcommon: Fix an integer overflow in pcmk__remote_send_xml.
+- libcrmcommon: Limit the max size of a remote message.
+- libcrmcommon: Fix integer overflow in remote message code.
+- libcrmcommon: Fix checks in localized_remote_header.
+- agents: Move pid file management into ClusterMon.in.
+- based: Drop log message from forward_request()
+- based: Fix handling of intermediate transaction results
+- based: Free digest_timer on exit
+- libcrmcommon: Drop "<null>" fallback in show_xml_element()
+- based: Fix a segfault in cib_process_command.
+- liblrmd: Don't include internal header in lrmd.h
+- controller: Add an error message to controld_sched_timeout() so the fatal error isn't a mystery
+- pacemakerd: Properly find and track all existing sub-daemons (gh#ClusterLabs/pacemaker#4113)
+- tools: Use the VERSION variable instead of invoking `crm_attribute --version` (gh#ClusterLabs/pacemaker#4112)
+- libcib: Handle cib_xpath_address for an XPath query for an atribute (gh#ClusterLabs/pacemaker#3980)
+- tools: crm_rule requires dates to have year between 1 and 9999
+- libcrmcommon: crm_time_parse_period requires years in [1, 9999]
+- libcrmcommon: Improve crm_time_get_seconds() for durations
+- libcrmcommon: Simplify overflow logging in parse_duration_element()
+- libcrmcommon: Improve no-units message in parse_duration_element()
+- liblrmd: Don't assert if queue_time is < 0.
+- libcib: Avoid memory leak in processing CIB file commit transaction
+- based: Drop remote clients during shutdown
+- based: Free remote client if TLS session creation fails
+- libcrmcommon: Assert on memory error in mainloop_add_fd()
+- based: Free ping_digest on exit
+- based: Ignore ping reply if we're no longer DC
+- based: Drop redundant log from cib_process_command()
+- libcib: Avoid assertion when processing a shutdown request
+- libcib: Full-CIB replace op no longer segfaults with cib_xpath
+- libcib: Move CIB op input transformation to ops that need it
+- libcib: Prevent based or cibadmin from crashing when handling an XPath query for an attribute (gh#ClusterLabs/pacemaker#3980)
+- libpe_status: Avoid leaking a pcmk_resource_t's xml/orig_xml
+- based: Don't send entire CIB in ping reply for digest mismatch
+- fencer: Refresh CIB in case of old diff
+
+- Rebase:
+  * bug-728579_pacemaker-stonith-dev-id.patch
+  * bug-812269_pacemaker-fencing-device-register-messages.patch
+  * bug-995365_pacemaker-cts-restart-systemd-journald.patch
+
+-------------------------------------------------------------------
 Wed Jul 29 11:17:49 UTC 2026 - Yan Gao <ygao@suse.com>
 
 - Update to version 3.0.3+20260728.7052efa194 (Pacemaker-3.0.3):
