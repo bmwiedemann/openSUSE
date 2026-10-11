@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Fri Oct 09 10:04:58 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
+
+- Update to version 2.10.0+git20261009.041119a7:
+  * polkit-rules-whitelist: add fwupd.rules (bsc#1279948)
+
+-------------------------------------------------------------------
 Tue Oct 06 15:21:15 UTC 2026 - Filippo Bonazzi <filippo.bonazzi@suse.com>
 
 - Update to version 2.10.0+git20261006.6936b8a3:

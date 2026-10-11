@@ -5846,4 +5846,14 @@ The version curretnly submitted to Factory breaks build of e.g coreutils (forwar
 </comment>
     <requestid>1382822</requestid>
   </revision>
+  <revision rev="552" vrev="1">
+    <srcmd5>e698eb9fe5a88e7f0c93cb632d827a62</srcmd5>
+    <version>2.10.0+git20261009.041119a7</version>
+    <time>1791724600</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 2.10.0+git20261009.041119a7:
+  * polkit-rules-whitelist: add fwupd.rules (bsc#1279948)
+</comment>
+    <requestid>1383726</requestid>
+  </revision>
 </revisionlist>
