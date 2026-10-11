@@ -273,4 +273,15 @@
   mbedtls-3-devel since Leap 16.1 (forwarded request 1383835 from hillwood)</comment>
     <requestid>1383836</requestid>
   </revision>
+  <revision rev="32" vrev="7">
+    <srcmd5>c6bccc4be1f5b9704bd35e345770dc6d</srcmd5>
+    <version>3.3.6</version>
+    <time>1791730794</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix SELinux denial (name_connect) when forwarding outbound TCP traffic
+  (boo#1284975)
+
+  mbedtls-3-devel Tumbleweed, don't do this work on Leap 16 (forwarded request 1384083 from hillwood)</comment>
+    <requestid>1384084</requestid>
+  </revision>
 </revisionlist>

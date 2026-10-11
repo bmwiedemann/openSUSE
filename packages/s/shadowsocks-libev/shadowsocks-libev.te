@@ -67,12 +67,13 @@ allow shadowsocks_libev_t sysctl_net_t:dir search;
 # ===================================================================
 # Network Communication Rules (TCP & UDP)
 # ===================================================================
-allow shadowsocks_libev_t port_type:tcp_socket { name_bind connect };
+allow shadowsocks_libev_t port_type:tcp_socket { name_bind name_connect connect };
 allow shadowsocks_libev_t port_type:udp_socket { name_bind };
 allow shadowsocks_libev_t { node_t lo_node_t inaddr_any_node_t }:tcp_socket { node_bind };
 allow shadowsocks_libev_t self:tcp_socket { create bind listen accept connect setopt getopt getattr setattr read write ioctl };
 allow shadowsocks_libev_t { node_t lo_node_t inaddr_any_node_t }:udp_socket { node_bind };
 allow shadowsocks_libev_t self:udp_socket { create bind getattr setattr read write connect setopt getopt listen accept };
+
 
 # ===================================================================
 # Core Kernel Capabilities
