@@ -42,7 +42,6 @@ BuildRequires:  %{python_module importlib-resources >= 1.1.0 if %python-base < 3
 BuildRequires:  %{python_module packaging}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module qt5}
-BuildRequires:  %{python_module qtwebengine-qt5}
 BuildRequires:  %{python_module setuptools >= 61}
 BuildRequires:  %{python_module traits >= 6.2}
 BuildRequires:  %{python_module wheel}
@@ -61,7 +60,6 @@ Requires:       python-traits >= 6.2
 Recommends:     python-Pygments
 Recommends:     python-numpy
 Recommends:     python-qt5
-Recommends:     python-qtwebengine-qt5
 Recommends:     python-traitsui
 Recommends:     python-wxWidgets
 BuildArch:      noarch

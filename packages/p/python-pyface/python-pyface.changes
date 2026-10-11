@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct 10 09:52:18 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Drop optional python-qtwebengine-qt5 dependency (boo#1273182)
+
+-------------------------------------------------------------------
 Sun Apr 26 19:37:22 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - buildignore python314 variant
