@@ -380,8 +380,8 @@ set +x
 GPGTMP=$(mktemp -d ${PWD}/tmp.XXXXXXXXXX)
 gpg --homedir $GPGTMP -q --no-default-keyring --trust-model always --import %{S:11}
 gpg --homedir $GPGTMP -q --multifile --verify ../patches/*.patch.gz.asc
-unset GPGTMP
 rm -rf "$GPGTMP"
+unset GPGTMP
 %endif
 for patch in ../patches/ncurses*.patch.gz
 do
@@ -515,7 +515,7 @@ export CFLAGS_SHARED
     INSTALL_OPT_S=""
     export CC CFLAGS CXX CXXFLAGS CPPFLAGS TERM LDFLAGS INSTALL_PROGRAM INSTALL_OPT_S
     #
-    # Detect 64bit architecures and be sure that we use an
+    # Detect 64bit architectures and be sure that we use an
     # unsigned long for chtype to be backward compatible with
     # already existing ncurses applications.  Otherwise we
     # might break existing applications on any update!
@@ -697,7 +697,7 @@ export CFLAGS_SHARED
 %if !0%{?_crossbuild}
 		    #
 		    # This is a hack to be able to boot strap libncurses with
-		    # our preferred fallback.c.  For this we need the appropiate
+		    # our preferred fallback.c.  For this we need the appropriate
 		    # tools list infocmp(1) and tic(1).  The first step was with
 		    # an empty fallback.c, now we include the latest terminfo
 		    # of our preferred fallback terminfo list into the final
@@ -975,7 +975,7 @@ export LANG
 	. ${PWD}/../.build_tic
 	{ echo "# See annotated version in %{_defaultdocdir}/ncurses/terminfo.src.bz2"
 	$BUILD_TIC -C -r ../misc/terminfo.src | grep -E -v '^#'; } > termcap
-	# Gererate new termcap entries for various linux consoles
+	# Generate new termcap entries for various linux consoles
 	TERMCAP=termcap \
 	TERMINFO=%{buildroot}%{_datadir}/terminfo \
 	    bash %{SOURCE2}
@@ -1074,7 +1074,7 @@ export LANG
 	grep -v -F -x -f default.list -f screen.list -f iterm.list \
 	> extension.list
 #
-# Remove backward compatibilty link if any
+# Remove backward compatibility link if any
 #
     rm -f %{buildroot}%{_prefix}/lib/terminfo
 #

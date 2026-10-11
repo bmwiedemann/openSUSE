@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Oct  3 11:41:14 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix weird unset/rm -rf typo and a few spelling errors
+
+-------------------------------------------------------------------
 Fri Oct  2 08:07:05 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20260926
@@ -24,7 +29,7 @@ Mon Sep 21 09:47:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Sep 14 09:38:41 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
-- Work around common name in certificate of www.invisible-island.net 
+- Work around common name in certificate of www.invisible-island.net
 
 -------------------------------------------------------------------
 Mon Sep 14 06:36:58 UTC 2026 - Dr. Werner Fink <werner@suse.de>
@@ -57,7 +62,7 @@ Fri Sep  4 13:37:32 UTC 2026 - Dr. Werner Fink <werner@suse.de>
   + improve limit-checks for trace calls in read_entry.c (report by Yeo
     JooHo).
   + improve tic warnings regarding the empty smir/rmir strings which
-    may be added in dump_entry.c for termcap if ich/ich1 are present but 
+    may be added in dump_entry.c for termcap if ich/ich1 are present but
     smir/rmir are not.
   + add sun+fkeys -TD
   + add dtterm-sk, dtterm+sk -TD
@@ -116,7 +121,7 @@ Mon Aug  3 07:31:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
   + use ansi+idc in hurd, tw100, vt420 -TD
   + use ansi+erase in tw100 -TD
   + add vt100+tabs -TD
-  + fix unbounded recursion in winsch if given a parameter which is not a 
+  + fix unbounded recursion in winsch if given a parameter which is not a
     valid character in the current encoding (report/analysis by Serhiy
     Storchaka).
 - Add ncurses patch 20260725
@@ -136,7 +141,7 @@ Mon Aug  3 07:31:51 UTC 2026 - Dr. Werner Fink <werner@suse.de>
 
 -------------------------------------------------------------------
 Tue Jul 14 07:56:18 UTC 2026 - Dr. Werner Fink <werner@suse.de>
- 
+
 - Add ncurses patch 20260711
   + add otty -TD
   + add vt100+arrows, vt100+apparrows -TD
@@ -435,7 +440,7 @@ Mon Jan 19 07:17:50 UTC 2026 - Dr. Werner Fink <werner@suse.de>
     vt100+keypad (prompted by patch by Jakub Horky) -TD
   + use vt100+keypad instead of vt220+keypad (patch by Jakub Horky)
   + use vt100+keypad in putty+keypad, replacing kpXX extension -TD
-  + remove vt100+fnkeys-sco from putty -TD 
+  + remove vt100+fnkeys-sco from putty -TD
   + fix link_test.c for configuration without extended colors by
     adjusting ifdefs and improving MKlib_gen.sh by checking for #if
     statements with only a 0 or 1 parameter.
@@ -838,7 +843,7 @@ Mon Apr 14 08:59:25 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 Wed Apr  9 12:03:58 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
 - Modify patch ncurses-5.9-ibm327x.dif
-  * Add a further sclp entry for qemu s390 based systems 
+  * Add a further sclp entry for qemu s390 based systems
 
 -------------------------------------------------------------------
 Mon Apr  7 06:14:22 UTC 2025 - Dr. Werner Fink <werner@suse.de>
@@ -904,7 +909,7 @@ Thu Mar 13 11:37:03 UTC 2025 - Dan Čermák <dcermak@suse.com>
 -------------------------------------------------------------------
 Tue Mar 11 12:33:48 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Move manual pages of examples from section 6 to subsection 6n 
+- Move manual pages of examples from section 6 to subsection 6n
 
 -------------------------------------------------------------------
 Mon Mar 10 07:32:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
@@ -1036,7 +1041,7 @@ Mon Jan 13 08:16:46 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Jan  7 10:15:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
 
-- Add ncurses patch 20250104 
+- Add ncurses patch 20250104
   + modify tput to warn about capabilities which expect parameters where
     none are given; also repair the feature where multiple capabilities
     can be handled on a single line.
@@ -1045,7 +1050,7 @@ Tue Jan  7 10:15:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
   + add vt220+ufkeys, vt220+sfkeys
   + revert man/manlinks.sed change, which loses aliases (cf: 20241228).
   + modify MKlib_gen.c to allow for Solaris's definition of NULL as 0L
-- Add ncurses patch 20241228 
+- Add ncurses patch 20241228
   + correct conditional-compile for a case when the C compiler does not
     have a bool type.
   + add ghostty -TD
@@ -1053,13 +1058,13 @@ Tue Jan  7 10:15:07 UTC 2025 - Dr. Werner Fink <werner@suse.de>
   + add comments to generated term.h to hint the configure options used
   + use same subdir-convention for term.h, in configure script
   + improve formatting/style of manpages
-- Add ncurses patch 20241221 
+- Add ncurses patch 20241221
   + modify ncurses/tinfo/MKfallback.sh to work with MacOS sed, which
     lacks BSD-style \< and \>
   + trim padding from sgr expresion used in trim_sgr0, to avoid copying
     the padding into the resulting sgr0 (report by Rajeev Pillai).
   + strict compiler-warning fixes for upcoming gcc15
-- Add ncurses patch 20241214 
+- Add ncurses patch 20241214
   + avoid redefining bool in curses.h if the platform already supports
     that type (cf: 20241123).
   + move include <curses.h> from etip.h.in to cursesw.h, to work around
@@ -1143,7 +1148,7 @@ Mon Sep 30 06:48:02 UTC 2024 - Dr. Werner Fink <werner@suse.de>
   + improve filtering of -L options in misc/gen-pkgconfig.in and in
     misc/ncurses-config.in
   + add check in wresize() for out-of-range dimensions (report by Peter
-    Bierma). 
+    Bierma).
 
 -------------------------------------------------------------------
 Mon Sep 23 06:00:15 UTC 2024 - Dr. Werner Fink <werner@suse.de>
@@ -1199,7 +1204,7 @@ Mon Aug 26 06:27:00 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 Wed Aug 21 06:32:53 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
 - Break dependency cycle between libncurses6 which provides "ncurses"
-  by only let terminfo-base recommending "ncurses" 
+  by only let terminfo-base recommending "ncurses"
 
 -------------------------------------------------------------------
 Mon Aug 19 07:33:34 UTC 2024 - Dr. Werner Fink <werner@suse.de>
@@ -1373,7 +1378,7 @@ Tue May 14 06:12:46 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Wed May  8 07:30:03 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
-- Make verify the patches an optional task for local builds only 
+- Make verify the patches an optional task for local builds only
 
 -------------------------------------------------------------------
 Mon May  6 06:51:35 UTC 2024 - Dr. Werner Fink <werner@suse.de>
@@ -1942,7 +1947,7 @@ Mon Apr 24 06:41:58 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Wed Apr 19 09:16:10 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Fix get_version_number.sh to show version without suffix gz.asc 
+- Fix get_version_number.sh to show version without suffix gz.asc
 
 -------------------------------------------------------------------
 Wed Apr 19 07:39:41 UTC 2023 - Dr. Werner Fink <werner@suse.de>
@@ -1959,7 +1964,7 @@ Wed Apr 19 07:39:41 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Apr 18 09:01:36 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
-- Add signatures of the patches as well in patch tar ball 
+- Add signatures of the patches as well in patch tar ball
 
 -------------------------------------------------------------------
 Mon Apr 17 06:14:32 UTC 2023 - Dr. Werner Fink <werner@suse.de>
@@ -2091,7 +2096,7 @@ Mon Jan 16 08:30:13 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 Tue Jan 10 10:34:17 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 
 - Avoid trouble with invalid certificate for ftp.invisible-island.net
-  and use www.invisible-island.net 
+  and use www.invisible-island.net
 
 -------------------------------------------------------------------
 Mon Jan  9 12:56:49 UTC 2023 - Dr. Werner Fink <werner@suse.de>
@@ -2100,7 +2105,7 @@ Mon Jan  9 12:56:49 UTC 2023 - Dr. Werner Fink <werner@suse.de>
 - Port patch ncurses-6.3.dif and rename it to ncurses-6.4.dif
 - Update tack to 1.09-20221229
   * latest config.guess and config.sub
-- Add ncurses patch 20230107 
+- Add ncurses patch 20230107
   + add --with-abi-altered configure option (prompted by discussion with
     Brian Inglis).
   + add BSD erase2 to characters handled by tset/reset.
@@ -2256,7 +2261,7 @@ Mon Sep 19 07:54:26 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 Mon Sep 12 10:35:22 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20220910
-  + amend verbose-option change to make this affect level 3, e.g., using 
+  + amend verbose-option change to make this affect level 3, e.g., using
     "tic -cv3 terminfo".
   + work around musl's nonstandard use of feature test macros by adding
     a definition for NCURSES_WIDECHAR to the generated ".pc" and *-config
@@ -2600,7 +2605,7 @@ Tue Feb  1 15:10:51 UTC 2022 - Dirk Müller <dmueller@suse.com>
 Tue Jan 18 08:59:41 UTC 2022 - Dr. Werner Fink <werner@suse.de>
 
 - Fix boo#1194805 by skipping linker optimizations from final
-  pkgconfig files as well as ncurses-config 
+  pkgconfig files as well as ncurses-config
 
 -------------------------------------------------------------------
 Mon Jan 17 08:49:49 UTC 2022 - Dr. Werner Fink <werner@suse.de>
@@ -3048,7 +3053,7 @@ Tue Apr  6 06:52:18 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Mar 29 07:37:33 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Disable pcre support for now (boo#1183960, boo#1184083) 
+- Disable pcre support for now (boo#1183960, boo#1184083)
 
 -------------------------------------------------------------------
 Mon Mar 29 06:33:05 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -3069,12 +3074,12 @@ Thu Mar 25 07:31:16 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Mar 23 10:07:04 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Enhence cursescheck script 
+- Enhence cursescheck script
 
 -------------------------------------------------------------------
 Mon Mar 22 15:39:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- Disable _Noreturn usage as it breaks build of e.g. dialog 
+- Disable _Noreturn usage as it breaks build of e.g. dialog
 
 -------------------------------------------------------------------
 Mon Mar 22 08:37:32 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -3099,7 +3104,7 @@ Mon Mar 22 08:37:32 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 Tue Mar 16 12:20:59 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
 - New package ncurses-tests which includes examples and tests
-- Include bash script cursescheck for ASC and REP capabilities 
+- Include bash script cursescheck for ASC and REP capabilities
 
 -------------------------------------------------------------------
 Mon Mar 15 07:36:19 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -3168,7 +3173,7 @@ Mon Feb 15 11:15:34 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Feb  9 09:33:11 UTC 2021 - Dr. Werner Fink <werner@suse.de>
 
-- For (lib)pcre2 support the devel package has to require this 
+- For (lib)pcre2 support the devel package has to require this
 
 -------------------------------------------------------------------
 Mon Feb  8 08:46:27 UTC 2021 - Dr. Werner Fink <werner@suse.de>
@@ -3337,7 +3342,7 @@ Wed Oct 28 14:42:54 UTC 2020 - Ludwig Nussel <lnussel@suse.de>
 -------------------------------------------------------------------
 Mon Oct 26 12:31:53 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Disable usage of libbsd as this one is not in bootstrap image 
+- Disable usage of libbsd as this one is not in bootstrap image
 
 -------------------------------------------------------------------
 Mon Oct 26 07:45:58 UTC 2020 - Dr. Werner Fink <werner@suse.de>
@@ -3621,7 +3626,7 @@ Mon Jun 15 11:05:42 UTC 2020 - Dr. Werner Fink <werner@suse.de>
     in the former which could be called from SIGTSTP handler (Debian
     #961097).
 - Add ncurses patch 20200606
-  + add xterm+256color2, xterm+88color2, to deprecate nonstandard usage 
+  + add xterm+256color2, xterm+88color2, to deprecate nonstandard usage
     in xterm+256color, xterm+88color -TD
   + add shifted Linux console keys in linux+sfkeys entry for
     screen.linux (report by Alexandre Montaron).
@@ -3635,7 +3640,7 @@ Tue Jun  2 06:24:20 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   + correct configure version-check/warnng for g++ to allow for 10.x
   + re-enable "bel" in konsole-base (report by Nia Huang)
   + add linux-s entry (patch by Alexandre Montaron).
-  + drop long-obsolete convert_configure.pl 
+  + drop long-obsolete convert_configure.pl
   + add test/test_parm.c, for checking tparm changes.
   + improve parameter-checking for tparm, adding function _nc_tiparm() to
     handle the most-used case, which accepts only numeric parameters
@@ -3654,7 +3659,7 @@ Mon May 25 07:11:21 UTC 2020 - Dr. Werner Fink <werner@suse.de>
   + update version-check for gnat to allow for gnat 10.x to 99.x
   + fix an uninitialized variable in lib_mouse.c changes (cf: 20200502)
   + add a check in EmitRange to guard against repeat_char emitting digits
-    which could be interpreted as BSD-style padding when --enable-bsdpad 
+    which could be interpreted as BSD-style padding when --enable-bsdpad
     is configured (report/patch by Hiltjo Posthuma).
   + add --disable-pkg-ldflags to suppress EXTRA_LDFLAGS from the
     generated pkg-config and ncurses*-config files, to simplify
@@ -3717,12 +3722,12 @@ Mon Apr 20 06:39:46 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Tue Apr  7 08:42:40 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Add check for wide character support in libncursesw 
+- Add check for wide character support in libncursesw
 
 -------------------------------------------------------------------
 Mon Apr  6 10:31:47 UTC 2020 - Dr. Werner Fink <werner@suse.de>
 
-- Use %() to extract patch date for adding it to version 
+- Use %() to extract patch date for adding it to version
   * add script get_version_number.sh which is used within the
     spec file to determine the actual patch version date
 
@@ -3924,7 +3929,7 @@ Wed Dec 18 09:25:48 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 Tue Dec 17 09:03:41 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Addd missing space between two include options for ABI 5
-  package configuration 
+  package configuration
 
 -------------------------------------------------------------------
 Mon Dec 16 10:15:37 UTC 2019 - Dr. Werner Fink <werner@suse.de>
@@ -4058,7 +4063,7 @@ Wed Oct 16 08:29:53 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Oct 14 10:04:05 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
-- Avoid recursion trouble in spec file cause by undefined _lto_cflags 
+- Avoid recursion trouble in spec file cause by undefined _lto_cflags
 
 -------------------------------------------------------------------
 Mon Oct 14 06:38:31 UTC 2019 - Dr. Werner Fink <werner@suse.de>
@@ -4111,7 +4116,7 @@ Mon Sep 16 06:24:42 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 Mon Sep  9 11:25:49 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
 - Add ncurses patch 20190907
-  + add --with-ada-libname option and modify Ada95 configuration to 
+  + add --with-ada-libname option and modify Ada95 configuration to
     allow renaming the "AdaCurses" library (prompted by proposed changes
     by Pascal Pignard).
   + modify configure script to distinguish gcc from icc and clang when
@@ -4344,7 +4349,7 @@ Mon Mar 25 11:15:44 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Fri Mar 22 08:59:22 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 
-- Reintroduce patch ncurses-6.1-fallback.dif to fix boo#1130091 
+- Reintroduce patch ncurses-6.1-fallback.dif to fix boo#1130091
 
 -------------------------------------------------------------------
 Tue Mar 19 09:16:38 UTC 2019 - Dr. Werner Fink <werner@suse.de>
@@ -4434,7 +4439,7 @@ Wed Feb  6 07:45:22 UTC 2019 - Dr. Werner Fink <werner@suse.de>
   + add -p option to test/pair_content, test/color_content to show the
     return values from the tested functions.
   + improve manual page curs_color.3x discussion of error returns and
-    extensions. 
+    extensions.
   + add O_INPUT_FIELD extension to form library (patch by Leon Winter).
   + override/suppress --enable-db-install if --disable-database configure
     option was given.
@@ -4458,7 +4463,7 @@ Mon Jan  7 07:46:46 UTC 2019 - Dr. Werner Fink <werner@suse.de>
 - Add ncurses patch 20190105
   + add dummy "check" rule in top-level and test-Makefile to simply
     building test-packages for Arch.
-  + modify configure script to avoid conflict with a non-POSIX feature 
+  + modify configure script to avoid conflict with a non-POSIX feature
     that enables all parts of the system headers by default.  Some
     packagers have come to rely upon this behavior (FreeBSD #234049).
   + update config.guess, config.sub
@@ -4516,7 +4521,7 @@ Mon Dec  3 06:49:35 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 -------------------------------------------------------------------
 Mon Nov 26 12:42:11 UTC 2018 - Dr. Werner Fink <werner@suse.de>
 
- 
+
 - Add ncurses patch 20181125
   + build-fix (reports by Chih-Hsuan Yen, Sven Joachim).
 - Add ncurses patch 20181124
@@ -4870,7 +4875,7 @@ Mon Apr  9 09:33:21 UTC 2018 - werner@suse.de
 Wed Apr  4 12:22:26 UTC 2018 - werner@suse.de
 
 - Add version requirement for packages terminfo and terminfo-base
-  to avoid trouble with old ncurses tools and libraries 
+  to avoid trouble with old ncurses tools and libraries
 
 -------------------------------------------------------------------
 Tue Apr  3 09:30:14 UTC 2018 - werner@suse.de
@@ -4909,7 +4914,7 @@ Mon Mar 19 09:23:35 UTC 2018 - werner@suse.de
 -------------------------------------------------------------------
 Thu Mar  8 10:06:24 UTC 2018 - werner@suse.de
 
-- Avoid opaque libraries for Leap 15 and SLES 15 
+- Avoid opaque libraries for Leap 15 and SLES 15
 - No tests on Leap 15 and SLES 15
 
 -------------------------------------------------------------------
@@ -5000,13 +5005,13 @@ Mon Feb  5 08:15:58 UTC 2018 - werner@suse.de
 -------------------------------------------------------------------
 Tue Jan 30 08:53:57 UTC 2018 - werner@suse.de
 
-- Add ncurses patch 6.1-20180129 
+- Add ncurses patch 6.1-20180129
   + update "VERSION" file, used in shared-library naming.
 
 -------------------------------------------------------------------
 Tue Jan 30 07:51:09 UTC 2018 - werner@suse.de
 
-- Correct include path for wide chraracter header files for ABI 6.1 
+- Correct include path for wide chraracter header files for ABI 6.1
 
 -------------------------------------------------------------------
 Mon Jan 29 10:48:07 UTC 2018 - werner@suse.de
@@ -5147,7 +5152,7 @@ Sat Jan  8 08:45:51 UTC 2018 - werner@suse.de
 -------------------------------------------------------------------
 Fri Dec 22 11:44:19 UTC 2017 - werner@suse.de
 
-- Disable memory leak checking (boo#1070450) 
+- Disable memory leak checking (boo#1070450)
 
 -------------------------------------------------------------------
 Mon Dec 18 07:22:49 UTC 2017 - werner@suse.de
@@ -5510,7 +5515,7 @@ Mon Jul 24 07:17:59 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Tue Jul 18 06:49:37 UTC 2017 - werner@suse.de
 
-- Fix build by removing workaround in patch ncurses-5.7-tack.dif 
+- Fix build by removing workaround in patch ncurses-5.7-tack.dif
   which was required since patch 20170415 but had become obsolete
   with patch 20170715
 
@@ -5531,7 +5536,7 @@ Mon Jul 10 07:17:16 UTC 2017 - werner@suse.de
 
 - Add ncurses patch 20170708
   + add a note to tic manual page about -W versus -f options.
-  + correct a limit-check in fixes from 20170701 (report by Sven Joachim). 
+  + correct a limit-check in fixes from 20170701 (report by Sven Joachim).
 - This also for bug bsc#1047964 and bug bsc#1047965
 
 -------------------------------------------------------------------
@@ -5666,7 +5671,7 @@ Fri May 12 06:35:00 UTC 2017 - werner@suse.de
 -------------------------------------------------------------------
 Wed May 10 12:56:39 UTC 2017 - werner@suse.de
 
-- Disable the usage of getttynam(3) as under Linux this is not used 
+- Disable the usage of getttynam(3) as under Linux this is not used
 
 -------------------------------------------------------------------
 Tue May  9 09:46:16 UTC 2017 - werner@suse.de
@@ -5752,7 +5757,7 @@ Mon Apr 24 06:46:05 UTC 2017 - werner@suse.de
 Thu Apr 13 13:16:58 UTC 2017 - werner@suse.de
 
 - With one of the latest update patches libtinfo now has become
-  splitted into a normal and wide character version (boo#1033198) 
+  splitted into a normal and wide character version (boo#1033198)
 
 -------------------------------------------------------------------
 Mon Apr 10 09:40:23 UTC 2017 - werner@suse.de
@@ -5826,7 +5831,7 @@ Mon Mar 20 08:36:28 UTC 2017 - werner@suse.de
     Robinson).
   + fix a couple of broken links in generated man-html documentation.
   + regenerate man-html documentation.
-- Add tack patch 1.07.20170318 
+- Add tack patch 1.07.20170318
   * init.c:
     use def_prog_mode() to eliminate two internal details from ncurses
   * edit.c, tack.h: accommodate opaque TERMINAL structure in ncurses
@@ -5876,7 +5881,7 @@ Mon Feb 20 11:15:23 UTC 2017 - werner@suse.de
     treated as only absent.
   + modify infocmp to suppress mixture of absent/cancelled capabilities
     that would only show as "NULL, NULL", unless the -q option is used,
-    e.g., to show "-, @" or "@, -". 
+    e.g., to show "-, @" or "@, -".
 
 -------------------------------------------------------------------
 Mon Feb 13 09:16:11 UTC 2017 - werner@suse.de
@@ -5921,7 +5926,7 @@ Fri Feb  3 08:00:06 UTC 2017 - werner@suse.de
 
 - Use gzip shell script as GZIP envornment variable becomes obsolescent
 - Split of ncurses5-devel from ncurses-devel
-- Now ncurses-devel also provides ncurses6-devel 
+- Now ncurses-devel also provides ncurses6-devel
 - Also ncurses5-devel requires libncurses5 (boo#1023296)
   packages which want to be build with ncurses5-devel may require
   pkgconfig(ncurses5) or pkgconfig(ncursesw5) or
@@ -6092,7 +6097,7 @@ Mon Nov  7 13:40:58 UTC 2016 - werner@suse.de
 Thu Oct 27 09:51:21 UTC 2016 - werner@suse.de
 
 - Drop patch ncurses-5.9-environment.dif as YaST2 ncurses GUI does
-  not need it anymore and as well as it causes bug bsc#1000662 
+  not need it anymore and as well as it causes bug bsc#1000662
 
 -------------------------------------------------------------------
 Mon Oct 24 08:44:52 UTC 2016 - werner@suse.de
@@ -6258,8 +6263,8 @@ Thu Jul  7 08:57:03 UTC 2016 - werner@suse.de
 - Add ncurses patch 20160702
   + improve test/list_keys.c, using $TERM if no parameters areg given.
 - Add ncurses patch 20160625
-  + build-fixes for ncurses "test_progs" rule. 
-  + amend change to CF_CC_ENV_FLAGS in 20160521 to make multilib build 
+  + build-fixes for ncurses "test_progs" rule.
+  + amend change to CF_CC_ENV_FLAGS in 20160521 to make multilib build
     work (report by Sven Joachim).
 - Add ncurses patch 20160618
   + build-fixes for ncurses-examples with NetBSD curses.
@@ -6679,7 +6684,7 @@ Fri Aug 14 14:26:52 UTC 2015 - werner@suse.de
   + workaround for Debian #65617, which was fixed in mawk's upstream
     releases in 2009 (report by Sven Joachim).  See
           http://invisible-island.net/mawk/CHANGES.html#t20090727
-- Move infocmp from devel to utils package for ruby readline implementation 
+- Move infocmp from devel to utils package for ruby readline implementation
 
 -------------------------------------------------------------------
 Mon Aug 12 10:11:22 UTC 2015 - werner@suse.de
@@ -6716,7 +6721,7 @@ Tue Jul 28 12:26:57 UTC 2015 - werner@suse.de
 -------------------------------------------------------------------
 Mon Jul 27 12:01:41 UTC 2015 - werner@suse.de
 
-- Rework fixing the pkg-config files 
+- Rework fixing the pkg-config files
 
 -------------------------------------------------------------------
 Mon Jul 20 08:09:33 UTC 2015 - werner@suse.de
@@ -6972,7 +6977,7 @@ Mon Jan 26 09:44:16 UTC 2015 - werner@suse.de
 -------------------------------------------------------------------
 Wed Jan 21 15:58:08 UTC 2015 - werner@suse.de
 
-- Now with symbol version control 
+- Now with symbol version control
 
 -------------------------------------------------------------------
 Wed Jan 21 13:24:17 UTC 2015 - werner@suse.de
@@ -7168,7 +7173,7 @@ Mon Sep  1 12:18:19 UTC 2014 - werner@suse.de
 Mon Aug 25 13:48:27 UTC 2014 - werner@suse.de
 
 - Make pkgconfig files work for all current versions that is
-  abi 5, abi wide 5, abi 6, and abi wide 6 
+  abi 5, abi wide 5, abi 6, and abi wide 6
 - Change patch ncurses-5.9.dif to enable gen-pkgconfig to do this
 
 -------------------------------------------------------------------
@@ -7278,7 +7283,7 @@ Tue Jun 24 12:40:25 UTC 2014 - werner@suse.de
 Mon Jun 16 11:21:55 UTC 2014 - werner@suse.de
 
 - Add ncurses patch 20140614
-  + fix dereference before null check found by Coverity in tic.c 
+  + fix dereference before null check found by Coverity in tic.c
     (cf: 20140524).
   + fix sign-extension bug in read_entry.c which prevented "toe" from
     reading empty "screen+italics" entry.
@@ -7422,7 +7427,7 @@ Mon Mar 31 10:13:11 UTC 2014 - werner@suse.de
 -------------------------------------------------------------------
 Thu Mar 27 13:57:11 UTC 2014 - werner@suse.de
 
-- Make sure that libgpm is always loaded dynamically 
+- Make sure that libgpm is always loaded dynamically
 
 -------------------------------------------------------------------
 Wed Mar 26 09:04:28 UTC 2014 - werner@suse.de
@@ -7504,7 +7509,7 @@ Mon Feb  3 10:11:10 UTC 2014 - werner@suse.de
 Tue Jan 28 18:18:22 UTC 2014 - werner@suse.de
 
 - Add patch ncurses-5.9-ibm327x.dif to make ibm327x not a generic
-  terminal type but a more dumb one (bnc#859214) 
+  terminal type but a more dumb one (bnc#859214)
 
 -------------------------------------------------------------------
 Mon Jan 20 13:49:00 UTC 2014 - werner@suse.de
@@ -7544,7 +7549,7 @@ Fri Nov 29 12:55:49 UTC 2013 - werner@suse.de
  + minor fix for CF_GCC_WARNINGS to special-case options which are not
    recognized by clang.
 - Add ncurses patch 20131116
-  + add special case to configure script to move _XOPEN_SOURCE_EXTENDED 
+  + add special case to configure script to move _XOPEN_SOURCE_EXTENDED
     definition from CPPFLAGS to CFLAGS if it happens to be needed for
     Solaris, because g++ errors with that definition (report by
     Jean-Pierre Flori, Sage #15268).
@@ -7753,13 +7758,13 @@ Mon Aug  5 14:07:53 UTC 2013 - werner@suse.de
 -------------------------------------------------------------------
 Fri Jun 21 13:53:22 UTC 2013 - werner@suse.de
 
-- Add some more terminfo entries to terminfo-base (bnc#826171) 
+- Add some more terminfo entries to terminfo-base (bnc#826171)
 
 -------------------------------------------------------------------
 Mon May 13 12:40:31 UTC 2013 - werner@suse.de
 
 - Make LD_LIBRARY_PATH include %_lib to make sure use and test the
-  fresh build libraries 
+  fresh build libraries
 
 -------------------------------------------------------------------
 Mon May 13 09:28:09 UTC 2013 - werner@suse.de
@@ -7969,7 +7974,7 @@ Mon Dec 17 10:10:22 UTC 2012 - werner@suse.de
     a null-pointer check in _nc_mvcur_resume.
   + correct display of double-width characters with MinGW port (report
     by Erwin Waterlander).
-  + replace MinGW's wcrtomb(), fixing a problem with _nc_viscbuf 
+  + replace MinGW's wcrtomb(), fixing a problem with _nc_viscbuf
   + correct check for 8-bit value in _nc_insert_ch().
   + remove dead code in progs/tset.c, test/linedata.h
   + add null-pointer checks in lib_tracemse.c, panel.priv.h, and some
@@ -7992,7 +7997,7 @@ Mon Dec 17 10:10:22 UTC 2012 - werner@suse.de
 - Add ncurses patch 5.9.20121124
   + correct order of color initialization versus display in some of the
     test-programs, e.g., test_addstr.c
-- Add tack patch 1.07.20120916 
+- Add tack patch 1.07.20120916
   * tack.c: ensure that $TERM is set and is not too large
   * edit.c: build-fix for g++
   * color.c:
@@ -8080,7 +8085,7 @@ Mon Oct  8 13:08:00 UTC 2012 - werner@suse.de
   + modify treatment of TERM variable for MinGW port to allow explicit
     use of the windows console driver by checking if $TERM is set to
     "#win32con" or an abbreviation of that.
-  + undo recent change to fallback definition of vsscanf() to 
+  + undo recent change to fallback definition of vsscanf() to
 
 -------------------------------------------------------------------
 Mon Sep 17 12:50:12 UTC 2012 - werner@suse.de
@@ -8139,7 +8144,7 @@ Tue Jul 31 09:57:02 UTC 2012 - werner@suse.de
   + parenthesize parameter of COLOR_PAIR and PAIR_NUMBER in curses.h
    in case it happens to be a comma-expression, etc. (patch by Nick
    Black).
-- Add ncurses patch 5.9.20120721 
+- Add ncurses patch 5.9.20120721
   + improved form_request_by_name() and menu_request_by_name().
   + eliminate two fixed-size buffers in toe.c
   + extend use_tioctl() to have expected behavior when use_env(FALSE) and
@@ -8332,7 +8337,7 @@ Mon Mar 12 10:38:59 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Mon Mar  5 11:33:17 UTC 2012 - werner@suse.de
 
-- Add tack patch 1.07.20120303 
+- Add tack patch 1.07.20120303
   + fix many compilerv warnings
   + update auto configure
   + update copyright date
@@ -8345,7 +8350,7 @@ Mon Mar  5 11:33:17 UTC 2012 - werner@suse.de
 -------------------------------------------------------------------
 Mon Mar  5 10:36:49 UTC 2012 - werner@suse.de
 
-- Add ncurses patch 5.9.20120303  
+- Add ncurses patch 5.9.20120303
   + minor tidying of terminfo.tail, clarify reason for limitation
     regarding mapping of \0 to \200
   + minor improvement to _nc_copy_termtype(), using memcpy to replace
@@ -8420,7 +8425,7 @@ Mon Jan 30 16:13:37 UTC 2012 - werner@suse.de
   + make sgr for aaa-unk, aaa-rv agree with other caps -TD
   + make sgr for avt-ns agree with other caps -TD
   + amend fix intended to separate fixups for acsc to allow "tic -cv" to
-    give verbose warnings (cf:  20110730). 
+    give verbose warnings (cf:  20110730).
   + modify misc/gen-edit.sh to make the location of the tabset directory
     consistent with misc/Makefile.in, i.., using ${datadir}/tabset
     (Debian #653435, patch by Sven Joachim).
@@ -8486,7 +8491,7 @@ Tue Dec 20 11:05:51 UTC 2011 - coolo@suse.com
 -------------------------------------------------------------------
 Mon Dec  5 13:33:46 UTC 2011 - werner@suse.de
 
-- Add ncurses patch 5.9.20111203 
+- Add ncurses patch 5.9.20111203
  * modify configure-check for etip.h dependencies, supplying a temporary
    copy of ncurses_dll.h since it is a generated file (prompted by
    Debian #646977).
@@ -8521,7 +8526,7 @@ Thu Nov 24 13:32:02 UTC 2011 - werner@suse.de
 Thu Nov 24 12:17:08 UTC 2011 - werner@suse.de
 
 - Use linker scripts to amke sure that libtinfo will be found
-  even if -ltinfo is missed on the linker command line 
+  even if -ltinfo is missed on the linker command line
 
 -------------------------------------------------------------------
 Tue Nov 22 12:03:47 UTC 2011 - werner@suse.de
@@ -9056,7 +9061,7 @@ Mon Oct 11 16:09:48 CEST 2010 - werner@suse.de
     a read operation in wgetch() (Novell #540571, patch by Werner Fink).
   * modify _nc_capcmp() to work with cancelled strings.
   * correct translation of "^" in _nc_infotocap(), used to transform
-    terminfo to termcap strings 
+    terminfo to termcap strings
   * simplify logic in _nc_get_screensize() to make it easier to see how
     environment variables may override system- and terminfo-values
     (prompted by discussion with Igor Bujna).
@@ -9288,7 +9293,7 @@ Thu Aug 28 16:00:36 CEST 2008 - ro@suse.de
 
 - require libncurses5 _and_ libncurses6 from ncurses-devel
   (avoid having a version with only static libs in the
-   build environment to prevent static linking fallback) 
+   build environment to prevent static linking fallback)
 
 -------------------------------------------------------------------
 Mon Aug 18 16:17:24 CEST 2008 - werner@suse.de
@@ -9361,7 +9366,7 @@ Tue Apr 22 16:57:32 CEST 2008 - werner@suse.de
 -------------------------------------------------------------------
 Sat Apr 19 23:47:19 CEST 2008 - ro@suse.de
 
-- update baselibs.conf 
+- update baselibs.conf
 
 -------------------------------------------------------------------
 Fri Apr 11 18:22:32 CEST 2008 - werner@suse.de
@@ -9371,7 +9376,7 @@ Fri Apr 11 18:22:32 CEST 2008 - werner@suse.de
 -------------------------------------------------------------------
 Thu Apr 10 13:39:08 CEST 2008 - lrupp@suse.de
 
-- rename ncurses to libncurses5 in baselibs.conf 
+- rename ncurses to libncurses5 in baselibs.conf
 
 -------------------------------------------------------------------
 Thu Apr 10 12:54:45 CEST 2008 - ro@suse.de
@@ -9409,7 +9414,7 @@ Wed Dec  5 17:35:53 CET 2007 - werner@suse.de
 -------------------------------------------------------------------
 Mon Oct 29 15:51:12 CET 2007 - pth@suse.de
 
-- Fix configure so that ncurses-config doesn't erroneously 
+- Fix configure so that ncurses-config doesn't erroneously
   report ncurses.h to reside in /usr/include/ncurses (#337412).
 
 -------------------------------------------------------------------
@@ -9647,7 +9652,7 @@ Thu Jan  9 16:07:22 CET 2003 - werner@suse.de
 -------------------------------------------------------------------
 Tue Sep 17 17:34:28 CEST 2002 - ro@suse.de
 
-- removed bogus self-provides 
+- removed bogus self-provides
 
 -------------------------------------------------------------------
 Wed Aug 14 15:45:46 MEST 2002 - mls@suse.de
@@ -9711,7 +9716,7 @@ Thu Feb 21 13:07:47 CET 2002 - werner@suse.de
 -------------------------------------------------------------------
 Mon Feb 11 22:43:34 CET 2002 - ro@suse.de
 
-- tar option for bz2 is "j" 
+- tar option for bz2 is "j"
 
 -------------------------------------------------------------------
 Wed Feb  6 10:15:27 CET 2002 - coolo@suse.de
@@ -9731,7 +9736,7 @@ Sun Nov 11 15:47:58 CET 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Nov  9 15:05:08 CET 2001 - stepan@suse.de
 
-- fix ncurses 4.2 on gcc3 distributions. 
+- fix ncurses 4.2 on gcc3 distributions.
 
 -------------------------------------------------------------------
 Thu Oct  4 18:22:34 CEST 2001 - werner@suse.de
@@ -9756,7 +9761,7 @@ Wed Apr 11 12:06:10 CEST 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Thu Mar 22 19:06:45 CET 2001 - ro@suse.de
 
-- added split aliases as provides 
+- added split aliases as provides
 
 -------------------------------------------------------------------
 Tue Mar 20 17:45:50 CET 2001 - schwab@suse.de
@@ -9767,12 +9772,12 @@ Tue Mar 20 17:45:50 CET 2001 - schwab@suse.de
 -------------------------------------------------------------------
 Fri Mar 16 14:52:14 CET 2001 - ro@suse.de
 
-- fix to compile on s390 (cursesw.cc) 
+- fix to compile on s390 (cursesw.cc)
 
 -------------------------------------------------------------------
 Mon Feb 19 14:16:38 CET 2001 - ro@suse.de
 
-- fixed to compile on gcc-2.96 (include string.h) 
+- fixed to compile on gcc-2.96 (include string.h)
 
 -------------------------------------------------------------------
 Fri Feb 16 17:17:45 CET 2001 - werner@suse.de
@@ -9850,7 +9855,7 @@ Sun Oct  1 17:40:09 CEST 2000 - kukuk@suse.de
 Sun Oct  1 10:15:03 CEST 2000 - kukuk@suse.de
 
 - Don't use run_cmd.sh to create fallback.c
-- Don't build compat ncurses 4.2 on new platforms 
+- Don't build compat ncurses 4.2 on new platforms
 - Use rpm 3.0.5 macros for 32/64bit support
 
 -------------------------------------------------------------------
@@ -9944,7 +9949,7 @@ Thu Feb  3 17:12:11 CET 2000 - ro@suse.de
 -------------------------------------------------------------------
 Thu Jan 20 13:21:35 CET 2000 - ro@suse.de
 
-- don't build ncurses-4.2/c++/demo 
+- don't build ncurses-4.2/c++/demo
 
 -------------------------------------------------------------------
 Tue Jan 18 16:21:55 CET 2000 - werner@suse.de
