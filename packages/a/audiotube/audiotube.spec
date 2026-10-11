@@ -19,17 +19,9 @@
 %define kf6_version 6.27.0
 %define qt6_version 6.9.0
 
-%{?sle15_python_module_pythons}
-%if 0%{?suse_version} == 1500
-%define pyver python311
-%else
-# latest
-%define pyver python3
-%endif
-
 %bcond_without released
 Name:           audiotube
-Version:        26.08.1
+Version:        26.08.2
 Release:        0
 Summary:        YT Music player and playlists manager
 License:        GPL-2.0-or-later
@@ -41,11 +33,11 @@ Source2:        applications.keyring
 %endif
 BuildRequires:  kf6-extra-cmake-modules >= %{kf6_version}
 # Temporary: SR#1188363
-BuildRequires:  %{pyver}-devel
-BuildRequires:  %{pyver}-ytmusicapi
+BuildRequires:  python3-devel
+BuildRequires:  python3-ytmusicapi
 # ffmpeg and ffmpeg-mini-libs can be out of sync, leading to unresolvable conflicts
 #!BuildIgnore: ffmpeg
-BuildRequires:  %{pyver}-yt-dlp
+BuildRequires:  python3-yt-dlp
 BuildRequires:  cmake(FutureSQL6)
 BuildRequires:  cmake(KF6Config) >= %{kf6_version}
 BuildRequires:  cmake(KF6CoreAddons) >= %{kf6_version}
@@ -69,7 +61,7 @@ BuildRequires:  cmake(Qt6Widgets) >= %{qt6_version}
 BuildRequires:  cmake(pybind11)
 # audio/mpeg decoder is needed
 Requires:       gstreamer-plugins-bad
-Requires:       %{pyver}-ytmusicapi >= 1.11.1
+Requires:       python3-ytmusicapi >= 1.11.1
 Requires:       kf6-kconfig-imports >= %{kf6_version}
 Requires:       kf6-kirigami-imports >= %{kf6_version}
 Requires:       kf6-purpose >= %{kf6_version}
