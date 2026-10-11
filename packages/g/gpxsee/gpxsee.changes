@@ -1,4 +1,14 @@
 -------------------------------------------------------------------
+Sat Oct 10 12:44:10 CEST 2026 - tumic@gpxsee.org
+
+- Update to version 16.17
+  * Added playback of waypoint videos.
+  * Added symbols to MP4/JPEG waypoints.
+  * Fixed multiple graphs drawing issues.
+  * Only permissions/features that are really needed are now
+    declared in the Android manifest.
+
+-------------------------------------------------------------------
 Sat Sep 26 17:56:25 CEST 2026 - tumic@gpxsee.org
 
 - Update to version 16.16

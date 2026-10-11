@@ -1,3 +1,13 @@
+gpxsee (16.17) stable; urgency=low
+
+  * Added playback of waypoint videos.
+  * Added symbols to MP4/JPEG waypoints.
+  * Fixed multiple graphs drawing issues.
+  * Only permissions/features that are really needed are now
+    declared in the Android manifest.
+
+ -- Martin Tůma <tumic@gpxsee.org>  Sat, 10 Oct 2026 12:47:08 +0200
+
 gpxsee (16.16) stable; urgency=low
 
   * Added IMG maps deatil level configuration.
