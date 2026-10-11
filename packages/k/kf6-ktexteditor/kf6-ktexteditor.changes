@@ -1,4 +1,30 @@
 -------------------------------------------------------------------
+Wed Oct  7 06:47:38 UTC 2026 - Christophe Marin <christophe@krop.fr>
+
+- Update to 6.31.0
+  * New feature release
+  * For more details please see:
+  * https://kde.org/announcements/frameworks/6/6.31.0
+- Changes since 6.30.0:
+  * Update dependency version to 6.31.0
+  * autotests: Verify when opening test files
+  * vi-mode: Allow numpad digits to be used as count
+  * .kde-ci.yml - use run-installed-library-check-on with platform list
+  * keep m_cursor & m_displayCursor better in sync (kde#525170)
+  * a11y: Fix text boundary offsets (kde#523883)
+  * vi-mode: Add binary format to addition commands
+  * vi-mode: Fix behavior of operation commands on numbers
+  * vi-mode: Implement addition/substraction commands for visual modes
+  * ensure we do some initial reload if we just enabled auto reload in the prompt (kde#524241)
+  * move color theme selector to 'View' as that is view local (kde#518920)
+  * Use ECMInstalledLibraryCheck
+  * vi-mode: Fix motion for the backspace key
+  * KateIconBorder: Fill the blank area at the end
+  * Escape file path before using it as error text
+  * Add missing <vector> include
+  * Update version to 6.31.0
+
+-------------------------------------------------------------------
 Tue Sep  8 09:22:32 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 6.30.0
