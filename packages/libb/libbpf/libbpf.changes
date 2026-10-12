@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Sat Oct 10 11:45:55 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
+
+- Update to version 1.8.0
+  * Add f{entry,exit,session}.multi support on x86-64
+  * Add tp.s/raw_tp.s/tp_btf.s (sleepable) support
+  * Support attaching struct_ops maps to cgroups
+  * Support reading BPF streams through pollable fds
+  * Support custom loads of individual programs from prepared BPF objects
+  * Add helpers to change specific program flags while preserving others
+  * Support kernel logs for map creation and fd-based uprobe_multi targets
+  * Add BTF kind layouts, 24-bit vlen, and location kinds
+  * Add type lookup within the current BTF object
+  * Add allowlist for kernel module BTF loading
+  * Emit BTF declaration tags as C attributes
+  * Add .percpu global variable and callx (indirect call) support
+  * Optimize nop/nop10 USDTs on Linux 7.3+, use regular uprobes otherwise
+- Update %license to LICENSE.LGPL-2.1-only
+
+-------------------------------------------------------------------
 Thu Aug 27 05:54:12 UTC 2026 - Hoyeon Lee <hoyeon.lee@suse.com>
 
 - Use make macros with -C

@@ -20,7 +20,7 @@
 %define sover_major 1
 %define libname libbpf%{sover_major}
 Name:           libbpf
-Version:        1.7.0
+Version:        1.8.0
 Release:        0
 Summary:        C library for managing eBPF programs and maps
 License:        LGPL-2.1-only
@@ -69,18 +69,18 @@ libbpf is a C library which provides API for managing eBPF programs and maps.
 %ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
-%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1-only
 %{_libdir}/%{name}.so.%{sover_major}{,.*}
 
 %files devel
-%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1-only
 %doc README.md
 %{_includedir}/bpf
 %{_libdir}/%{name}.so
 %{_libdir}/pkgconfig/%{name}.pc
 
 %files devel-static
-%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1
+%license LICENSE LICENSE.BSD-2-Clause LICENSE.LGPL-2.1-only
 %{_libdir}/%{name}.a
 
 %changelog
