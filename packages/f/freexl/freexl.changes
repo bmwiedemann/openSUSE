@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:30:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- drop unused BuildRequires: gcc-c++ (pure C codebase) and fdupes
+  (never invoked)
+- fix devel package description (mentioned libspatialite)
+- drop obsolete Group tags
+
+-------------------------------------------------------------------
 Wed Jan  3 05:24:56 UTC 2024 - Stefan Brüns <stefan.bruens@rwth-aachen.de>
 
 - update to 2.0.0:

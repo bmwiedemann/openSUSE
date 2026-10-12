@@ -23,11 +23,8 @@ Version:        2.0.0
 Release:        0
 Summary:        Library to extract valid data from within an Excel
 License:        GPL-2.0-or-later OR MPL-1.1 OR LGPL-2.1-or-later
-Group:          Development/Libraries/C and C++
 URL:            https://www.gaia-gis.it/fossil/freexl/index
 Source:         https://www.gaia-gis.it/gaia-sins/%{name}-%{version}.tar.gz
-BuildRequires:  fdupes
-BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
 BuildRequires:  pkgconfig(expat)
 BuildRequires:  pkgconfig(minizip)
@@ -38,7 +35,6 @@ FreeXL is an open source library to extract valid data from within an Excel
 
 %package -n %{libname}
 Summary:        Shared library for FreeXL
-Group:          System/Libraries
 
 %description -n %{libname}
 FreeXL is an open source library to extract valid data from within an Excel
@@ -46,14 +42,13 @@ FreeXL is an open source library to extract valid data from within an Excel
 
 %package devel
 Summary:        Development files for %{name}
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
 Requires:       glibc-devel
 Requires:       pkgconfig
 
 %description devel
 This package contains all necessary include files and libraries needed to
-compile and develop applications that use libspatialite.
+compile and develop applications that use freexl.
 
 %prep
 %setup -q
