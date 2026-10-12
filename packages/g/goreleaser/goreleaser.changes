@@ -1,4 +1,32 @@
 -------------------------------------------------------------------
+Mon Oct 12 09:37:32 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
+
+- Update to version 2.18.3:
+  * fix(docker): preserve buildx metadata key in lint checks (#7187)
+  * fix(brew,cask): sort dependencies case-insensitively (#7186)
+  * chore: auto-update generated files (#7183)
+  * fix(github): explain upload redirects caused by a moved repository (#7179)
+  * fix: dockers_v2 reports the image config digest (#7181)
+  * fix(aur,aursources): reject duplicate package names (#7171)
+  * fix(announce): let webhook headers override the default headers (#7174)
+  * fix(git): handle remote URLs with a trailing slash (#7170)
+  * chore(deps): bump the gomod group across 1 directory with 7 updates (#7176)
+  * chore: auto-update generated files (#7172)
+  * ci(deps): bump the actions group across 1 directory with 6 updates (#7177)
+  * chore(deps): bump the docker group across 1 directory with 2 updates (#7167)
+  * fix(ci): restore linux build (#7175)
+  * chore: auto-update generated files (#7166)
+  * chore: auto-update generated files (#7165)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlplog/otlploggrpc from 0.18.0 to 0.21.0 (#7164)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracehttp from 1.43.0 to 1.45.0 (#7162)
+  * chore(deps): bump go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc from 1.42.0 to 1.46.0 (#7160)
+  * ci(deps): bump the actions group with 3 updates (#7158)
+  * chore(deps): bump the gomod group with 2 updates (#7157)
+  * fix(docs): point nightly links to the current nightly release (#7155)
+  * chore: auto-update generated files (#7159)
+  * chore: auto-update generated files (#7152)
+
+-------------------------------------------------------------------
 Mon Sep 21 07:35:38 UTC 2026 - Felix Niederwanger <felix.niederwanger@suse.de>
 
 - Update to version 2.18.2:
