@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct  5 08:41:04 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
+
+- Update to 14.10:
+  * Enable lock file support on Windows to prevent concurrent runs.
+
+-------------------------------------------------------------------
 Mon Jul 20 11:49:28 UTC 2026 - Paolo Stivanin <info@paolostivanin.com>
 
 - Update to 14.9: 
