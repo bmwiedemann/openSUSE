@@ -1,4 +1,111 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:21:51 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 2.8.9
+  Added
+  * align parameter for FPDF.alias_nb_pages() to control horizontal
+    alignment (Align.L, Align.C, Align.R) of substitution text
+    inside reserved alias space.
+  * support for page number alias substitution with bidirectional
+    / RTL text shaping.
+  * appearance parameter for FPDF.file_attachment_annotation(),
+    accepting FileAttachmentAppearance.HIDDEN to give the
+    annotation an empty appearance stream so its default icon is
+    not displayed while the file stays embedded and reachable.
+  * Turkish translation of the Tuto 7 - Creating PDF/A Documents
+    tutorial section, along with fixes for duplicated clauses and
+    mistranslations in the Tuto 2, 4 & 6 descriptions.
+  Fixed
+  * escaped Markdown markers adjacent to emphasis markers in link
+    labels no longer lose literal characters or apply unintended
+    styling.
+  * PDF serialization of boolean and null values: booleans in
+    arrays and dictionaries now use lowercase true and false,
+    including in mixed numeric/boolean arrays; None in arrays is
+    serialized as null; and filtering empty dictionary fields
+    preserves False and numeric zero values.
+  * SVG percentage width and height values with surrounding
+    whitespace (e.g. width="100% ") no longer raise ValueError.
+  * PDF/A-1 documents using TrueType or CFF-based CID fonts now
+    include a /CIDSet stream in each font descriptor, as required
+    by ISO 19005-1 (veraPDF rule 6.3.5-3).
+  * split font /ToUnicode and /Encoding CMap mappings into blocks
+    of at most 100 entries, as required by the PDF specification.
+  * visual gap in rendering subsequent text after {nb} page alias
+    when text shaping is enabled.
+  * FPDF.write_html() no longer raises IndexError: pop from empty
+    list when a <ul> or <ol> element carries a line-height that
+    is not a bare number (e.g. line-height: normal or line-height:
+    1.5em); such values are now ignored, and the default line
+    height is used, consistently with <p line-height="x">.
+  * FPDF.write_html() now renders list bullets with correct font
+    styling instead of inheriting preceding heading (e.g. <h1>)
+    styles.
+  * table cells landing in the wrong column when a row was covered
+    by several rowspans that did not start in column order.
+  * Padding.new() now accepts 1-element sequences per CSS shorthand
+    rules and preserves existing Padding instances without
+    redundant allocations.
+- Update to version 2.8.8
+  Added
+  * Punjabi (pa) tutorial translation.
+  * FPDF.svg_limits and SVGLimits to configure SVG complexity
+    limits while rendering SVG images.
+  * resource_access_policy and Security considerations documentation
+  * FPDF.optional_content() context manager to mark content as
+    visible on screen only or in print only, using PDF Optional
+    Content Groups.
+  * basic support for SVG <symbol> elements in the SVG parser.
+  * basic support for SVG <switch> elements in the SVG parser.
+  * support for keeping aspect ratio for images in templates.
+  Fixed
+  * custom height passed to Paragraph.ln() in a text region is now
+    applied to the line it terminates instead of the first line of
+    the following paragraph.
+  * the optional numpy import in image_parsing.py no longer crashes
+    on CPUs unsupported by numpy's manylinux wheel baseline;
+    RuntimeError is now treated the same as ImportError, so numpy
+    degrades to unavailable instead of taking down import fpdf.
+  * font state (family, style, size, current font, and the
+    page-level "font is set" flag) no longer leaks back onto the
+    FPDF instance after a text_columns() / text_region() context
+    exits, so a subsequent pdf.cell() / pdf.write() renders at the
+    caller's font instead of the last paragraph's.
+  * text rendering when the first text on a page starts with a
+    fallback glyph.
+  * preserve boundary-neutral formatting during bidirectional text
+    preprocessing.
+  * transform application on user space gradients.
+  * dependency extras for camelot-py and endesive on pyproject.toml
+  * preserve link annotations during dry-run of FPDF.multi_cell.
+  * preserve two consecutive markdown links (without space
+    inbetween).
+  * support markdown style around markdown links.
+  * Reset gstate for ToC-rendering.
+  * preserve markdown format in FPDF.multi_cell in dry-run.
+  * fix page order after dry-run of FPDF.multi_cell in ToC.
+  * rendering SVG arcs with very small sweeps that previously
+    rounded to zero.
+  * spurious "Not enough horizontal space to render a single
+    character" error when text without break opportunities is
+    split into many small fragments, e.g. by a fallback font
+    alternating with the main fon
+  * number of surviving escape characters.
+  * leading spaces on new lines inside <pre> and <pre><code> blocks
+    are no longer dropped.
+  * FPDF.set_font() can restore current_font when the selected font
+    state diverged.
+  * embed CID-keyed CFF fonts as raw CFF programs so browser PDF
+    viewers render them correctly.
+  * fixed broken links on documentation not directly leading to the
+    API reference.
+  * reject SVG <use> cycles and excessive nested expansion to
+    prevent resource exhaustion in FPDF.image().
+  * count SVG <switch> elements in SVG complexity limits.
+  * declare the default base state and display order for Optional
+    Content Groups so PDF viewers can list layers correctly.
+
+-------------------------------------------------------------------
 Sat Apr 11 16:39:15 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.8.7:

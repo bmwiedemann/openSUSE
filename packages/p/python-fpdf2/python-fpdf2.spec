@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-fpdf2
-Version:        2.8.7
+Version:        2.8.9
 Release:        0
 Summary:        Simple & fast PDF generation for Python
 License:        LGPL-3.0-or-later
@@ -48,6 +48,7 @@ BuildRequires:  %{python_module qrcode}
 BuildRequires:  %{python_module tabula-py}
 BuildRequires:  %{python_module uharfbuzz}
 BuildRequires:  java
+BuildRequires:  qpdf
 # /SECTION
 BuildRequires:  fdupes
 Requires:       python-Pillow >= 8.3.2
@@ -73,7 +74,9 @@ Simple & fast PDF generation for Python.
 %check
 donttest="test_png_url or test_bidi_conformance or test_bidi_character or test_page_background or test_insert_jpg_jpxdecode"
 # Requires non-commercial licensed file SBL_Hbrw.ttf
-donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_text_with_parentheses"
+donttest+=" or test_bidi_paragraph_direction or test_hebrew_diacritics or test_text_with_parentheses or test_alias_in_rtl_text or test_alias_and_literal_side_by_side_in_rtl"
+# Exclude tests that fail due to SVG/fontTools floating-point rendering diffs on modern Python toolchains:
+donttest+=" or test_twitter_emoji_shaping or test_twitter_emoji_text"
 %pytest -s -k "not ($donttest)"
 
 %files %{python_files}
