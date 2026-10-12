@@ -1,4 +1,16 @@
 -------------------------------------------------------------------
+Sun Oct 11 14:15:37 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 6.1.3 (includes 6.1.2):
+  * No changes to the runtime code
+  * Type stubs import TypeAlias from typing, so typing_extensions
+    is no longer needed by type checkers
+  * Minor style and documentation improvements
+  * Update build environment
+- Raise setuptools BuildRequires to >= 80, as upstream requires
+- Spec cleanup: drop obsolete Group tag
+
+-------------------------------------------------------------------
 Tue May 19 20:38:51 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 6.1.1:
