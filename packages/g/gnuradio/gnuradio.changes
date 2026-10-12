@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Oct  8 01:47:45 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Remove {Build,}Requires on python3-click-plugins, it is now not needed.
+
+-------------------------------------------------------------------
 Tue Aug 18 13:52:38 UTC 2026 - Mikhail Paulyshka <me@mixaill.net>
 
 - Enable all GNU Radio components explicitly at CMake configure time so missing dependencies cause the build to fail.

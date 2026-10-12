@@ -67,7 +67,6 @@ BuildRequires:  portaudio-devel
 BuildRequires:  python-rpm-macros
 BuildRequires:  python3-Sphinx
 BuildRequires:  python3-click
-BuildRequires:  python3-click-plugins
 BuildRequires:  python3-devel >= 3.6.5
 BuildRequires:  python3-gobject
 BuildRequires:  python3-gobject-cairo
@@ -98,7 +97,6 @@ Requires:       python3-QDarkStyle
 Requires:       python3-QtPy
 # gr_modtool dependencies
 Requires:       python3-click
-Requires:       python3-click-plugins
 Requires:       python3-gobject-Gdk
 Requires:       python3-jsonschema
 Requires:       python3-mako >= 1.1.0
