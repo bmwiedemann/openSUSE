@@ -491,4 +491,12 @@ covered).</comment>
       CVE-2026-82049)</comment>
     <requestid>1382950</requestid>
   </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>a5206167b687120404f1bd481f78d702</srcmd5>
+    <version>3.15.0</version>
+    <time>1791835549</time>
+    <user>dimstar_suse</user>
+    <comment>Update to 3.15.0</comment>
+    <requestid>1384137</requestid>
+  </revision>
 </revisionlist>
