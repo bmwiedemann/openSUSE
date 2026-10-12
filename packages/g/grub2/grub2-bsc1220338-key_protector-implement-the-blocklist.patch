@@ -75,8 +75,8 @@ Signed-off-by: Gary Lin <glin@suse.com>
  }
 --- a/include/grub/efi/api.h
 +++ b/include/grub/efi/api.h
-@@ -409,6 +409,11 @@
-     { 0xbd, 0x89, 0x86, 0x3b, 0xbe, 0xf8, 0x23, 0x25 } \
+@@ -414,6 +414,11 @@
+     { 0x99, 0x20, 0x2d, 0x3b, 0x36, 0xd7, 0x50, 0xdf } \
    }
  
 +#define GRUB_EFI_SYSTEMD_GUID \

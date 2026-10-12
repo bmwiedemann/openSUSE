@@ -41,7 +41,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/disk/diskfilter.c
 +++ b/grub-core/disk/diskfilter.c
-@@ -159,8 +159,8 @@
+@@ -161,8 +161,8 @@
        for (m = arr->pvs; m; m = m->next)
  	if (m->disk && m->disk->id == disk->id
  	    && m->disk->dev->id == disk->dev->id
@@ -52,7 +52,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	  return 0;
      }
  
-@@ -1340,19 +1340,23 @@
+@@ -1359,19 +1359,23 @@
  	? (grub_memcmp (pv->id.uuid, id->uuid, id->uuidlen) == 0)
  	: (pv->id.id == id->id))
        {
@@ -83,7 +83,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  #ifdef GRUB_UTIL
  	{
-@@ -1369,7 +1373,6 @@
+@@ -1388,7 +1392,6 @@
  #endif
  	if (start_sector != (grub_uint64_t)-1)
  	  pv->start_sector = start_sector;
@@ -91,7 +91,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	/* Add the device to the array. */
  	for (lv = array->lvs; lv; lv = lv->next)
  	  if (!lv->became_readable_at && lv->fullname && is_lv_readable (lv, 0))
-@@ -1457,8 +1460,8 @@
+@@ -1476,8 +1479,8 @@
        {
  	if (pv->disk && pv->disk->id == disk->id
  	    && pv->disk->dev->id == disk->dev->id
@@ -104,7 +104,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	      *vg_out = vg;
 --- a/grub-core/disk/mdraid1x_linux.c
 +++ b/grub-core/disk/mdraid1x_linux.c
-@@ -208,6 +208,9 @@
+@@ -289,6 +289,9 @@
  					 grub_le_to_cpu32 (sb.chunksize),
  					 grub_le_to_cpu32 (sb.layout),
  					 grub_le_to_cpu32 (sb.level));
@@ -128,7 +128,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  }
 --- a/grub-core/osdep/unix/platform.c
 +++ b/grub-core/osdep/unix/platform.c
-@@ -132,15 +132,14 @@
+@@ -135,15 +135,14 @@
  }
  
  int
@@ -149,9 +149,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    if (grub_util_exec_redirect_null ((const char * []){ "efibootmgr", "--version", NULL }))
      {
-@@ -158,22 +157,50 @@
-   if (ret)
-     return ret;
+@@ -168,22 +167,50 @@
+       return 0;
+     }
  
 -  char *efidir_part_str = xasprintf ("%d", efidir_part);
 +  for (curdisk = efidir_grub_disk; *curdisk; curdisk++)
@@ -208,7 +208,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +  return 0;
  }
  
- void
+ 
 --- a/grub-core/osdep/windows/platform.c
 +++ b/grub-core/osdep/windows/platform.c
 @@ -204,7 +204,8 @@
@@ -242,7 +242,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    /* Optional.  */
 --- a/include/grub/util/install.h
 +++ b/include/grub/util/install.h
-@@ -236,9 +236,10 @@
+@@ -239,9 +239,10 @@
  grub_install_get_powerpc_secure_boot (void);
  
  int
@@ -253,11 +253,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +			   const char *efi_distributor,
 +			   const char *force_disk);
  
- void
- grub_install_register_ieee1275 (int is_prep, const char *install_device,
+ char *
+ add_multiple_nvme_bootdevices (const char *install_device);
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
-@@ -1719,6 +1719,40 @@
+@@ -1777,6 +1777,40 @@
  	    }
  	}
        prefix_drive = xasprintf ("(%s)", grub_drives[0]);
@@ -298,7 +298,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      }
  
  #ifdef __linux__
-@@ -2258,9 +2292,13 @@
+@@ -2316,9 +2350,13 @@
  	    {
  	      /* Try to make this image bootable using the EFI Boot Manager, if available.  */
  	      int ret;
@@ -314,7 +314,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	      if (ret)
  	        grub_util_error (_("efibootmgr failed to register the boot entry: %s"),
  				 strerror (ret));
-@@ -2314,7 +2352,11 @@
+@@ -2372,7 +2410,11 @@
  	{
  	  char * efifile_path;
  	  char * part;
@@ -326,7 +326,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
  	  /* Try to make this image bootable using the EFI Boot Manager, if available.  */
  	  if (!efi_distributor || efi_distributor[0] == '\0')
-@@ -2331,8 +2373,65 @@
+@@ -2389,8 +2431,65 @@
  			  efidir_grub_dev->disk->name,
  			  (part ? ",": ""), (part ? : ""));
  	  grub_free (part);

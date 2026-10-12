@@ -23,8 +23,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  5 files changed, 71 insertions(+), 59 deletions(-)
  create mode 100644 include/grub/crypttab.h
 
---- a/grub-core/commands/crypttab.c
-+++ b/grub-core/commands/crypttab.c
+Index: grub-2.16/grub-core/commands/crypttab.c
+===================================================================
+--- grub-2.16.orig/grub-core/commands/crypttab.c
++++ grub-2.16/grub-core/commands/crypttab.c
 @@ -3,10 +3,56 @@
  #include <grub/command.h>
  #include <grub/misc.h>
@@ -83,9 +85,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_cmd_crypttab_entry (grub_command_t cmd __attribute__ ((unused)),
  	       int argc, char **argv)
---- a/grub-core/disk/cryptodisk.c
-+++ b/grub-core/disk/cryptodisk.c
-@@ -31,7 +31,7 @@
+Index: grub-2.16/grub-core/disk/cryptodisk.c
+===================================================================
+--- grub-2.16.orig/grub-core/disk/cryptodisk.c
++++ grub-2.16/grub-core/disk/cryptodisk.c
+@@ -34,7 +34,7 @@
  #ifdef GRUB_UTIL
  #include <grub/emu/hostdisk.h>
  #else
@@ -94,17 +98,19 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  #endif
  
  GRUB_MOD_LICENSE ("GPLv3+");
---- a/grub-core/loader/linux.c
-+++ b/grub-core/loader/linux.c
-@@ -6,6 +6,7 @@
- #include <grub/mm.h>
+Index: grub-2.16/grub-core/loader/linux.c
+===================================================================
+--- grub-2.16.orig/grub-core/loader/linux.c
++++ grub-2.16/grub-core/loader/linux.c
+@@ -7,6 +7,7 @@
  #include <grub/safemath.h>
+ #include <grub/verify.h>
  #include <grub/list.h>
 +#include <grub/crypttab.h>
  
  struct newc_head
  {
-@@ -40,18 +41,6 @@
+@@ -41,18 +42,6 @@ struct dir
    struct dir *child;
  };
  
@@ -123,9 +129,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static char
  hex (grub_uint8_t val)
  {
-@@ -436,45 +425,3 @@
-   root = 0;
-   return GRUB_ERR_NONE;
+@@ -471,45 +460,3 @@ grub_initrd_load (struct grub_linux_init
+   grub_initrd_close (initrd_ctx);
+   return status;
  }
 -
 -grub_err_t
@@ -169,8 +175,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 -
 -  return GRUB_ERR_NONE;
 -}
+Index: grub-2.16/include/grub/crypttab.h
+===================================================================
 --- /dev/null
-+++ b/include/grub/crypttab.h
++++ grub-2.16/include/grub/crypttab.h
 @@ -0,0 +1,22 @@
 +#ifndef GRUB_CRYPTTAB_HEADER
 +#define GRUB_CRYPTTAB_HEADER 1
@@ -194,9 +202,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +grub_initrd_publish_key (const char *uuid, const char *key, grub_size_t key_len, const char *path);
 +
 +#endif /* ! GRUB_CRYPTTAB_HEADER */
---- a/include/grub/linux.h
-+++ b/include/grub/linux.h
-@@ -22,6 +22,3 @@
+Index: grub-2.16/include/grub/linux.h
+===================================================================
+--- grub-2.16.orig/include/grub/linux.h
++++ grub-2.16/include/grub/linux.h
+@@ -22,6 +22,3 @@ grub_initrd_close (struct grub_linux_ini
  grub_err_t
  grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
  		  void *target);

@@ -1,0 +1,48 @@
+From e696b603427a3fb6685c821fd519293e78ffc5db Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Fri, 21 Aug 2026 09:15:17 +0000
+Subject: [PATCH 3/5] tpm/tpcm: mark TPM and TPCM verifiers as in-place capable
+
+Set the `in_place` member to true for TPM and TPCM verifiers so that
+they are deferred to `grub_verify_in_place()` rather than running in
+`grub_verifiers_open()`.
+
+Assisted-by: Claude:claude-opus-5 Gemini:gemini-3.5-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/254>
+---
+ grub-core/commands/tpcm.c | 2 ++
+ grub-core/commands/tpm.c  | 2 ++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/grub-core/commands/tpcm.c b/grub-core/commands/tpcm.c
+index 82fd6cc25..f6c2f108e 100644
+--- a/grub-core/commands/tpcm.c
++++ b/grub-core/commands/tpcm.c
+@@ -96,6 +96,8 @@ grub_tpcm_verify_string (char *str, enum grub_verify_string_type type)
+ 
+ struct grub_file_verifier grub_tpcm_verifier = {
+     .name = "tpcm",
++    /* Measurement only, so it can run on the final buffer. */
++    .in_place = true,
+     .init  = grub_tpcm_verify_init,
+     .write = grub_tpcm_verify_write,
+     .close = grub_tpcm_verify_close,
+diff --git a/grub-core/commands/tpm.c b/grub-core/commands/tpm.c
+index 3cbd464ee..187d7e90a 100644
+--- a/grub-core/commands/tpm.c
++++ b/grub-core/commands/tpm.c
+@@ -125,6 +125,8 @@ grub_tpm_verify_string (char *str, enum grub_verify_string_type type)
+ 
+ struct grub_file_verifier grub_tpm_verifier = {
+   .name = "tpm",
++  /* Measurement only, so it can run on the final buffer. */
++  .in_place = true,
+   .init = grub_tpm_verify_init,
+   .write = grub_tpm_verify_write,
+   .verify_string = grub_tpm_verify_string,
+-- 
+2.51.0
+

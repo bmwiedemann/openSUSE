@@ -29,16 +29,15 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/include/grub/lib/envblk.h
 +++ b/include/grub/lib/envblk.h
-@@ -24,6 +24,9 @@
- 
+@@ -25,6 +25,8 @@
  #ifndef ASM_FILE
  
+ #include <grub/types.h>
 +#include <grub/disk.h>
 +#define GRUB_ENVBLK_PREP_SIZE (GRUB_DISK_SECTOR_SIZE << 3)
-+
+ 
  struct grub_envblk
  {
-   char *buf;
 --- a/util/grub-install.c
 +++ b/util/grub-install.c
 @@ -43,6 +43,7 @@
@@ -91,7 +90,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static int
  is_same_disk (const char *a, const char *b)
  {
-@@ -2138,6 +2174,43 @@
+@@ -2147,6 +2183,43 @@
  	  if (write_to_disk (ins_dev, imgfile))
  	    grub_util_error ("%s", _("failed to copy Grub to the PReP partition"));
  	  grub_set_install_backup_ponr ();

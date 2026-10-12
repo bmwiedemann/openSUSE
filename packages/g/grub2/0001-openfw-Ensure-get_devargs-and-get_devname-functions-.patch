@@ -20,21 +20,12 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/kern/ieee1275/openfw.c | 15 +++++++++------
  1 file changed, 9 insertions(+), 6 deletions(-)
 
-diff --git a/grub-core/kern/ieee1275/openfw.c b/grub-core/kern/ieee1275/openfw.c
-index e2ffec32d..3bbd07d95 100644
 --- a/grub-core/kern/ieee1275/openfw.c
 +++ b/grub-core/kern/ieee1275/openfw.c
-@@ -354,13 +354,16 @@ static char *
- grub_ieee1275_get_devargs (const char *path)
+@@ -360,6 +360,16 @@
  {
-   char *colon = grub_strchr (path, ':');
--  char *colon_check = colon;
+   char *colon = grub_strrchr (path, ':');
  
--  /* Find the last occurence of colon */
--  while(colon_check){
--    colon = colon_check;
--    colon_check = grub_strchr (colon+1, ':');
--  }
 +  /* Use the same logic in grub_ieee1275_get_devname for nvme-of arguments */
 +  if (grub_strstr(path, "nvme-of"))
 +    {
@@ -44,9 +35,7 @@ index e2ffec32d..3bbd07d95 100644
 +      else
 +	colon = NULL;
 +    }
- 
++
    if (! colon)
      return 0;
--- 
-2.39.2
-
+ 

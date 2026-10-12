@@ -23,29 +23,24 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub.d/10_linux.in | 6 ++++--
  1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/util/grub.d/10_linux.in b/util/grub.d/10_linux.in
-index 5531239eb..4d8bdeac2 100644
 --- a/util/grub.d/10_linux.in
 +++ b/util/grub.d/10_linux.in
-@@ -54,14 +54,16 @@ esac
+@@ -54,14 +54,16 @@
  if ( [ "x${GRUB_DEVICE_UUID}" = "x" ] && [ "x${GRUB_DEVICE_PARTUUID}" = "x" ] ) \
      || ( [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ] \
  	&& [ "x${GRUB_DISABLE_LINUX_PARTUUID}" = "xtrue" ] ) \
--    || ( ! test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" \
--	&& ! test -e "/dev/disk/by-partuuid/${GRUB_DEVICE_PARTUUID}" ) \
-     || ( test -e "${GRUB_DEVICE}" && uses_abstraction "${GRUB_DEVICE}" lvm ); then
+-    || ( ! findfs UUID="${GRUB_DEVICE_UUID}" > /dev/null 2>&1 \
+-	&& ! findfs PARTUUID="${GRUB_DEVICE_PARTUUID}" > /dev/null 2>&1 ) \
+     || ( test -e "${GRUB_DEVICE}" && ( uses_abstraction "${GRUB_DEVICE}" lvm || uses_abstraction "${GRUB_DEVICE}" diskfilter ) ); then
    LINUX_ROOT_DEVICE=${GRUB_DEVICE}
  elif [ "x${GRUB_DEVICE_UUID}" = "x" ] \
      || [ "x${GRUB_DISABLE_LINUX_UUID}" = "xtrue" ]; then
-+  test -e "/dev/disk/by-partuuid/${GRUB_DEVICE_PARTUUID}" ||
++  findfs PARTUUID="${GRUB_DEVICE_PARTUUID}" > /dev/null 2>&1 ||
 +    echo "WARN: Use PARTUUID=${GRUB_DEVICE_PARTUUID} despite missing by-partuuid symlink" >&2
    LINUX_ROOT_DEVICE=PARTUUID=${GRUB_DEVICE_PARTUUID}
  else
-+  test -e "/dev/disk/by-uuid/${GRUB_DEVICE_UUID}" ||
++  findfs UUID="${GRUB_DEVICE_UUID}" > /dev/null 2>&1 ||
 +    echo "WARN: Use UUID=${GRUB_DEVICE_UUID} despite missing by-uuid symlink" >&2
    LINUX_ROOT_DEVICE=UUID=${GRUB_DEVICE_UUID}
  fi
  
--- 
-2.44.0
-

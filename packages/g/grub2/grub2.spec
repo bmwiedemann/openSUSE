@@ -22,7 +22,6 @@
 %if %{defined sbat_distro}
 # SBAT metadata
 %define sbat_generation 1
-%define sbat_generation_grub 6
 %else
 %{error please define sbat_distro, sbat_distro_summary and sbat_distro_url}
 %endif
@@ -175,13 +174,13 @@ BuildRequires:  fde-tpm-helper-rpm-macros
 %endif
 %endif
 
-Version:        2.14
+Version:        2.16
 Release:        0
 Summary:        Bootloader with support for Linux, Multiboot and more
 License:        GPL-3.0-or-later
 Group:          System/Boot
 URL:            http://www.gnu.org/software/grub/
-Source0:        https://ftp.gnu.org/gnu/grub/grub-%{version}.tar.xz
+Source0:        https://gitlab.freedesktop.org/api/v4/projects/26558/packages/generic/source-assets/grub-%{version}/grub-%{version}.tar.xz
 Source1:        90_persistent
 Source2:        grub.default
 Source4:        grub2.rpmlintrc
@@ -198,28 +197,13 @@ Source17:       grub2-systemd-sleep.sh
 Source18:       grub2-check-default.sh
 Source19:       grub2-instdev-fixup.pl
 Source1000:     PATCH_POLICY
-Patch:          0001-fs-btrfs-mark-Btrfs-on-disk-structs-as-GRUB_PACKED.patch
-Patch:          0002-fs-btrfs-add-btrfs-info-command.patch
-Patch:          0003-fs-btrfs-add-btrfs-list-subvols-command.patch
-Patch:          0004-fs-btrfs-add-btrfs-get-default-subvol-command.patch
-Patch:          0001-lvm-allocate-metadata-buffer-from-raw-contents.patch
-Patch:          0001-net-http-Check-result-of-grub_netbuff_put-in-http_re.patch
-Patch:          0002-efinet-Add-structures-for-PXE-messages.patch
-Patch:          0003-efinet-bootp-add-net_dhcp6-command-supporting-dhcpv6.patch
-Patch:          0004-grub.texi-Add-net_dhcp6-document.patch
-Patch:          0005-bootp-Process-DHCPACK-packet-during-HTTP-Boot.patch
-Patch:          0006-efinet-Configure-network-from-UEFI-device-path.patch
-Patch:          0007-efinet-Set-DNS-server-from-UEFI-protocol.patch
-Patch:          0008-kern-efi-efi-Print-URI-and-DNS-device-path-info.patch
-Patch:          0009-kern-efi-efi-Correct-endianness-in-IPv6-device-path.patch
-Patch:          0010-bootp-Fix-logical-operator-in-DHCP-option-overload-c.patch
-Patch:          0001-test-Fix-f-test-on-files-over-network.patch
-Patch:          0002-http-Return-HTTP-status-code-in-http_establish.patch
-Patch:          0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
-Patch:          0004-tftp-Fix-hang-when-file-is-a-directory.patch
-Patch:          0001-cacheinfo-fix-hit-ratio-calculation-and-statistics-o.patch
-Patch:          0002-disk-fix-cache-lock-and-hit-counter-for-invalidated-.patch
-Patch:          0003-disk-reduce-cache-slot-thrashing.patch
+Patch:          0001-kern-file-record-file-type-and-track-in-place-verifi.patch
+Patch:          0002-verifiers-support-in-place-verification.patch
+Patch:          0003-tpm-tpcm-mark-TPM-and-TPCM-verifiers-as-in-place-cap.patch
+Patch:          0004-loader-linux-measure-initrd-in-place.patch
+Patch:          0005-docs-grub-dev.texi-Document-in-place-verification.patch
+Patch:          0001-disk-i386-pc-biosdisk-Fix-retry-of-CDROM-reads.patch
+Patch:          0001-grub-core-sbat.csv.in-Set-vendor_package_name-to-gru.patch
 Patch:          rename-grub-info-file-to-grub2.patch
 Patch:          grub2-linux.patch
 Patch:          use-grub2-as-a-package-name.patch
@@ -301,7 +285,6 @@ Patch:          grub2-video-limit-the-resolution-for-fixed-bimap-font.patch
 Patch:          grub2-gfxmenu-support-scrolling-menu-entry-s-text.patch
 Patch:          0001-kern-mm.c-Make-grub_calloc-inline.patch
 Patch:          0002-cmdline-Provide-cmdline-functions-as-module.patch
-Patch:          0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
 Patch:          0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
 Patch:          0001-Unify-the-check-to-enable-btrfs-relative-path.patch
 Patch:          0001-efi-linux-provide-linux-command.patch
@@ -313,7 +296,6 @@ Patch:          0044-squash-kern-Add-lockdown-support.patch
 Patch:          0001-ieee1275-Avoiding-many-unecessary-open-close.patch
 Patch:          0001-Workaround-volatile-efi-boot-variable.patch
 Patch:          0001-templates-Follow-the-path-of-usr-merged-kernel-confi.patch
-Patch:          0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
 Patch:          0001-arm64-Fix-EFI-loader-kernel-image-allocation.patch
 Patch:          0002-Arm-check-for-the-PE-magic-for-the-compiled-arch.patch
 Patch:          0001-Factor-out-grub_efi_linux_boot.patch
@@ -345,9 +327,6 @@ Patch:          grub-read-pcr.patch
 Patch:          tpm-record-pcrs.patch
 Patch:          grub-install-record-pcrs.patch
 Patch:          safe_tpm_pcr_snapshot.patch
-Patch:          0001-ieee1275-add-support-for-NVMeoFC.patch
-Patch:          0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
-Patch:          0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
 Patch:          grub2-increase-crypttab-path-buffer.patch
 Patch:          0001-tpm2-Add-extra-RSA-SRK-types.patch
 Patch:          0001-clean-up-crypttab-and-linux-modules-dependency.patch
@@ -357,7 +336,6 @@ Patch:          0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
 Patch:          0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
 Patch:          0002-prep_loadenv-Fix-regex-for-Open-Firmware-device-spec.patch
 Patch:          0001-font-Try-memdisk-fonts-with-the-same-name.patch
-Patch:          0001-Make-grub.cfg-compatible-to-old-binaries.patch
 Patch:          grub2-mkconfig-riscv64.patch
 Patch:          arm64-Use-proper-memory-type-for-kernel-allocation.patch
 Patch:          0001-luks2-Use-grub-tpm2-token-for-TPM2-protected-volume-.patch
@@ -372,35 +350,27 @@ Patch:          0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
 Patch:          0001-util-enable-grub-protect-only-for-EFI-systems.patch
 Patch:          grub2-s390x-set-hostonly.patch
 Patch:          0001-Streamline-BLS-and-improve-PCR-stability.patch
-Patch:          0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
 Patch:          0001-kern-main-Fix-cmdpath-in-root-directory.patch
 Patch:          grub2-s390x-secure-execution-support.patch
 Patch:          0001-autofs-Ignore-zfs-not-found.patch
 Patch:          0001-s390x-emu-Pass-through-PAES-cipher-as-AES.patch
-Patch:          0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
 Patch:          grub2-btrfs-filter-non-subvol-mount.patch
 Patch:          0001-prep_loadenv-Measure-the-environment-block-into-PCR-.patch
 Patch:          0001-Fix-PowerPC-CAS-reboot-to-evaluate-menu-context.patch
 Patch:          0001-blscfg-read-fragments-in-order.patch
-Patch:          grub2-bls-boot-show-snapshot.patch
 Patch:          0001-Improve-TPM-key-protection-on-boot-interruptions.patch
 Patch:          0004-Key-revocation-on-out-of-bound-file-access.patch
 Patch:          0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
-Patch:          0001-getroot-Skip-mount-points-in-grub_find_device.patch
 Patch:          0001-linux-fallback-to-EFI-handover-on-x86_64.patch
 Patch:          0002-linux-fallback-to-direct-PE-entry-boot-on-arm64.patch
 Patch:          0003-efi-chainloader-fallback-to-direct-image-execution.patch
 Patch:          0004-efi-chainloader-fix-missing-file_path-in-loaded_imag.patch
 Patch:          grub2-i386-pc-no-pageflipping.patch
 Patch:          0001-editenv-create-health_check_flag-env-var-on-RW-raw-b.patch
-Patch:          0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
-Patch:          0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
-Patch:          0002-Revert-configure-Check-linker-for-image-base-support.patch
 Patch:          0001-blsuki-Fix-linux_cmd-size-calcution-in-bls_get_linux.patch
 Patch:          0001-bls-Allow-configuration-of-active-console-type.patch
 Patch:          0002-grubbls-Add-automatic-fwsetup-menu-entry.patch
 Patch:          0001-ieee1275-support-dm-multipath-bootlist.patch
-Patch:          0001-mdraid1x-fix-raid_disks-decoding-on-big-endian-syste.patch
 Patch:          0001-blsuki-Add-support-for-LoaderEntries.patch
 Patch:          0002-menu-Allow-default-entry-to-have-.conf-suffix.patch
 Patch:          0003-bli-Add-support-for-LoaderEntryDefault-and-LoaderEnt.patch
@@ -410,16 +380,12 @@ Patch:          0006-bli-Add-support-for-LoaderFeatures.patch
 Patch:          0007-blsuki-Fix-sorting-for-entries-with-boot-counting-en.patch
 Patch:          0008-blsuki-append-leftover-LoaderEntries.patch
 Patch:          0009-blsuki-conservative-UTF-8-buffer-size.patch
-Patch:          0001-Mandatory-install-device-check-for-PowerPC.patch
-Patch:          0001-osdep-linux-ofpath-Update-strstr-calls.patch
-Patch:          0001-util-probe-Save-strrchr-ret-val-to-const-data-ptr.patch
-Patch:          0002-util-resolve-Save-str-r-chr-ret-val-to-const-data-pt.patch
 Patch:          0001-Fix-problematic-utf8-conversion-in-bli-patches.patch
 Patch:          0001-bls-fix-default-entry-and-bumpcounter-for-BLS-boot-c.patch
-Patch:          gcc16.patch
-Patch:          0001-lib-hwfeatures-gcry-Fix-write_cr0-writing-to-CR4.patch
 Patch:          0001-bash-completion-add-_init_completion-marker.patch
 Patch:          0001-linux-allocate-EFI-kernel-buffer-as-GRUB_EFI_LOADER_.patch
+Patch:          0001-insmod-ignore-efi_uga-on-EFI.patch
+Patch:          0001-Skip-in-place-verifier-for-the-synthesized-initrd.patch
 
 %if 0%{?suse_version} < 1600
 Requires:       gettext-runtime
@@ -449,6 +415,18 @@ Recommends:     memtest86+
 %endif
 %endif
 
+%global sbat_generation_grub %(tar -xOf %{SOURCE0} grub-%{version}/configure.ac | sed -n '/^GLOBAL_SBAT_LEVEL=/s///p')
+
+%ifarch %{efi}
+%if "%{?sbat_generation_grub}" == ""
+%{error: GLOBAL_SBAT_LEVEL is not found in %{SOURCE0}}
+%endif
+%endif
+
+%if "%{platform}" == "ieee1275" && "%{?sbat_generation_grub}" == ""
+%{error: GLOBAL_SBAT_LEVEL is not found in %{SOURCE0}}
+%endif
+
 %if 0%{?suse_version} >= 1600
 # Always requires a default cpu-platform package
 Requires:       grub2-%{grubarch} = %{version}-%{release}
@@ -467,12 +445,12 @@ ExclusiveArch:  %{ix86} x86_64 ppc ppc64 ppc64le s390x aarch64 %{arm} riscv64 lo
 %description
 This is the second version of the GRUB (Grand Unified Bootloader), a
 highly configurable and customizable bootloader with modular
-architecture.  It support rich scale of kernel formats, file systems,
+architecture.  It supports a rich variety of kernel formats, file systems,
 computer architectures and hardware devices.
 
 %if 0%{?suse_version} >= 1600
 %package common
-Summary:        Utilies to manage grub
+Summary:        Utilities to manage grub
 Group:          System/Boot
 Requires:       gettext-runtime
 %ifnarch s390x
@@ -499,7 +477,7 @@ Recommends:     memtest86+
 %endif
 
 %description common
-This package includes user space utlities to manage GRUB on your system.
+This package includes user space utilities to manage GRUB on your system.
 %endif
 
 %package branding-upstream
@@ -538,7 +516,7 @@ Provides:       %{name}-%{grubarch}-sbat = %{sbat_generation_grub}
 
 %description %{grubarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
-bootloader with modular architecture.  It supports rich variety of kernel formats,
+bootloader with modular architecture.  It supports a rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for %{platform} systems.
 
@@ -596,7 +574,7 @@ Provides:       %{name}-%{grubefiarch}-sbat = %{sbat_generation_grub}
 
 %description %{grubefiarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
-bootloader with modular architecture.  It supports rich variety of kernel formats,
+bootloader with modular architecture.  It supports a rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for EFI systems.
 
@@ -652,7 +630,7 @@ BuildArch:      noarch
 
 %description %{grubxenarch}
 The GRand Unified Bootloader (GRUB) is a highly configurable and customizable
-bootloader with modular architecture.  It supports rich variety of kernel formats,
+bootloader with modular architecture.  It supports a rich variety of kernel formats,
 file systems, computer architectures and hardware devices.  This subpackage
 provides support for XEN systems.
 
@@ -716,7 +694,7 @@ BuildArch:      noarch
 
 %description systemd-sleep-plugin
 Grub2's systemd-sleep plugin for directly booting hibernated kernel image in
-swap partition while in resuming
+swap partition while resuming.
 %endif
 
 %prep
@@ -809,7 +787,7 @@ CD_MODULES="all_video boot cat configfile echo true \
 PXE_MODULES="tftp http"
 CRYPTO_MODULES="luks luks2 gcry_rijndael gcry_sha1 gcry_sha256 gcry_sha512 crypttab"
 %ifarch %{efi}
-CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter"
+CD_MODULES="${CD_MODULES} chain efifwsetup efinet read tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter efibootnext"
 PXE_MODULES="${PXE_MODULES} efinet"
 %else
 CD_MODULES="${CD_MODULES} net ofnet"
@@ -829,6 +807,11 @@ GRUB_MODULES="${GRUB_MODULES} appendedsig memdisk tar regexp prep_loadenv tpm"
 
 %ifarch %{efi}
 cd build-efi
+
+%if 0%{?sbat_generation}
+echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" > vendor_sbat.csv
+%endif
+
 ../configure   				                \
         TARGET_LDFLAGS=-static                          \
 	--prefix=%{_prefix}				\
@@ -836,14 +819,11 @@ cd build-efi
 	--sysconfdir=%{_sysconfdir}			\
         --target=%{_target_platform}                    \
         --with-platform=efi                             \
+%if 0%{?sbat_generation}
+	--with-sbat-file=vendor_sbat.csv                \
+%endif
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
-
-%if 0%{?sbat_generation}
-echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md" > sbat.csv
-echo "grub,%{sbat_generation_grub},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
-echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" >> sbat.csv
-%endif
 
 mkdir -p ./fonts
 cp %{_datadir}/%{name}/themes/*/*.pf2 ./fonts
@@ -854,7 +834,7 @@ tar --sort=name -cf - ./fonts | mksquashfs - memdisk.sqsh -tar -comp xz -quiet -
 mksquashfs ./fonts memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
 %endif
 
-./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat sbat.csv} \
+./grub-mkimage -O %{grubefiarch} -o grub.efi --memdisk=./memdisk.sqsh --prefix= %{?sbat_generation:--sbat=} \
 		-d grub-core ${GRUB_MODULES}
 
 %if 0%{?suse_version} >= 1600
@@ -899,10 +879,10 @@ mksquashfs ./boot memdisk.sqsh -keep-as-directory -comp xz -quiet -no-progress
     -o grubbls.efi \
     --memdisk=./memdisk.sqsh \
     -c ./grubbls.cfg \
-    %{?sbat_generation:--sbat sbat.csv} \
+    %{?sbat_generation:--sbat=} \
     -d grub-core \
     all_video boot font gfxmenu gfxterm gzio halt jpeg minicmd normal part_gpt png reboot video \
-    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter linux bli regexp loadenv test echo true sleep efifwsetup
+    fat tpm tss2 tpm2_key_protector memdisk tar squash4 xzio blsuki bls_bumpcounter linux bli regexp loadenv test echo true sleep efifwsetup efibootnext
 %endif
 
 %ifarch x86_64 aarch64
@@ -937,9 +917,7 @@ cd build
 
 %ifarch ppc ppc64 ppc64le
 %if 0%{?sbat_generation}
-echo "sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md" > sbat.csv
-echo "grub,%{sbat_generation_grub},Free Software Foundation,grub,%{version},https://www.gnu.org/software/grub/" >> sbat.csv
-echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" >> sbat.csv
+echo "grub.%{sbat_distro},%{sbat_generation},%{sbat_distro_summary},%{name},%{version},%{sbat_distro_url}" > vendor_sbat.csv
 %endif
 %endif
 
@@ -956,6 +934,11 @@ TLFLAGS="-static"
         --target=%{_target_platform}    \
         --with-platform=%{platform}     \
 	%{arch_specific}                \
+%ifarch ppc ppc64 ppc64le
+%if 0%{?sbat_generation}
+        --with-sbat-file=vendor_sbat.csv \
+%endif
+%endif
         --program-transform-name=s,grub,%{name},
 make %{?_smp_mflags}
 
@@ -1081,7 +1064,7 @@ fi
 EOF
         %{__tar} cvf memdisk.tar ./grub.cfg
         ./grub-mkimage -O %{grubarch} -o grub.elf -d grub-core -x grub.der -m memdisk.tar \
-            -c %{platform}-config -s sbat.csv --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
+            -c %{platform}-config -s "" --appended-signature-size %brp_pesign_reservation ${GRUB_MODULES}
         ls -l "grub.elf"
         # truncate -s -%brp_pesign_reservation "grub.elf"
 fi
@@ -1378,6 +1361,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 # to be a drop-in file, requires no external dependency (boo#1231591)
 %attr(0644, root, root) %config(noreplace) %{_sysconfdir}/grub.d/25_bli
 %config(noreplace) %{_sysconfdir}/grub.d/30_uefi-firmware
+%config(noreplace) %{_sysconfdir}/grub.d/31_efi_bootnext
 %config(noreplace) %{_sysconfdir}/grub.d/40_custom
 %config(noreplace) %{_sysconfdir}/grub.d/41_custom
 %config(noreplace) %{_sysconfdir}/grub.d/90_persistent
@@ -1411,6 +1395,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_bindir}/%{name}-mkimage
 %{_bindir}/%{name}-mklayout
 %{_bindir}/%{name}-mknetdir
+%{_bindir}/%{name}-mkpasswd-argon2
 %{_bindir}/%{name}-mkpasswd-pbkdf2
 %{_bindir}/%{name}-mkrelpath
 %{_bindir}/%{name}-mkrescue
@@ -1441,6 +1426,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_mandir}/man1/%{name}-mkimage.1.*
 %{_mandir}/man1/%{name}-mklayout.1.*
 %{_mandir}/man1/%{name}-mknetdir.1.*
+%{_mandir}/man1/%{name}-mkpasswd-argon2.1.*
 %{_mandir}/man1/%{name}-mkpasswd-pbkdf2.1.*
 %{_mandir}/man1/%{name}-mkrelpath.1.*
 %{_mandir}/man1/%{name}-mkrescue.1.*
@@ -1491,6 +1477,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_datadir}/%{name}/%{grubarch}/grub.elf
 %{_datadir}/%{name}/%{grubarch}/grub.der
 %{_datadir}/%{name}/%{grubarch}/bootinfo.txt
+%{_datadir}/%{name}/%{grubarch}/sbat.csv
 %endif
 %ifnarch ppc ppc64 ppc64le s390x %{arm}
 %{_datadir}/%{name}/%{grubarch}/*.image
@@ -1531,6 +1518,7 @@ grep -E ${EXTRA_PATTERN} %{grubarch}-mod-all.lst > %{grubarch}-mod-extras.lst
 %{_datadir}/%{name}/%{grubefiarch}/*.lst
 %{_datadir}/%{name}/%{grubefiarch}/kernel.exec
 %{_datadir}/%{name}/%{grubefiarch}/modinfo.sh
+%{_datadir}/%{name}/%{grubefiarch}/sbat.csv
 %dir %{sysefibasedir}
 %dir %{sysefidir}
 %{sysefidir}/grub.efi

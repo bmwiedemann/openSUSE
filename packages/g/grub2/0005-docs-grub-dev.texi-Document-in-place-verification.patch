@@ -1,0 +1,83 @@
+From 0ec84e5e4ce2604726bf1ec7a972d846a005f111 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 1 Sep 2026 07:36:15 +0000
+Subject: [PATCH 5/5] docs/grub-dev.texi: Document in-place verification
+
+Add the documentation of in-place verification to verifiers framework.
+
+Assisted-by: Gemini:gemini-3.5-flash
+Signed-off-by: Gary Lin <glin@suse.com>
+Reviewed-by: Avnish Chouhan <avnish@linux.ibm.com>
+Reviewed-by: Leo Sandoval <lsandova@redhat.com>
+Part-of: <https://gitlab.freedesktop.org/gnu-grub/grub/-/merge_requests/254>
+---
+ docs/grub-dev.texi | 53 ++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 53 insertions(+)
+
+diff --git a/docs/grub-dev.texi b/docs/grub-dev.texi
+index d7e2ec919..2fc4121c0 100644
+--- a/docs/grub-dev.texi
++++ b/docs/grub-dev.texi
+@@ -2487,6 +2487,59 @@ Optionally at the end of the file @samp{fini}, if it exists, is called with just
+ the context. If you return no error during any of @samp{init}, @samp{write} and
+ @samp{fini} then the file is considered as having succeded verification.
+ 
++@heading In-place Verification and Measurement
++
++By default, the verifier framework copies every opened file into a private heap
++buffer, runs the verifiers on that copy, and then serves all subsequent reads
++from it. This ensures that unverified data never reaches its final destination,
++preventing Time-of-Check to Time-of-Use (TOCTOU) vulnerabilities. However, for
++large files like an @samp{initrd} (often tens or hundreds of megabytes), this
++doubled the peak memory usage, since both the verifier framework and the bootloader
++kept separate copies of the file in memory.
++
++For verifiers that do not gate or authenticate the boot process (such as
++measurement-style verifiers like TPM and TPCM), it is safe to run verification
++directly on the loaded buffer inside the caller's memory, avoiding the need for
++a private copy.
++
++To support this optimization, the verifier structure @code{struct grub_file_verifier}
++has a boolean member @code{in_place}:
++
++@itemize
++@item @code{in_place}
++Should be set to @code{true} if the verifier only measures or hashes the file (like TPM
++or TPCM) rather than deciding whether the file is allowed to be loaded or run. Gating or
++authenticating verifiers (e.g., PGP, @samp{shim_lock}, or @samp{appendedsig}) @strong{must}
++leave this field set to @code{false}.
++@end itemize
++
++When a bootloader or loader wants to verify a file in place, it must use the following
++procedure:
++
++@enumerate
++@item Open the file with @code{grub_file_open()} using the type flag
++@code{GRUB_FILE_TYPE_VERIFY_IN_PLACE}. This flag @strong{must} be combined with
++@code{GRUB_FILE_TYPE_NO_DECOMPRESS}.
++
++@item If all registered and active verifiers are marked as @code{in_place}, the verifiers
++framework defers verification during the open stage and sets the tracking field
++@code{verify_pending} on the @code{grub_file_t} structure.
++
++@item If even one active verifier does not support @code{in_place}, the framework
++automatically falls back to normal open-time verification and reads the entire file
++into a private buffer.
++
++@item The loader must allocate the destination buffer, read or load the file into it,
++and then execute the deferred verification by calling:
++@code{grub_verify_in_place (file, buf, size)}
++before the file is closed. This function executes all deferred in-place verifiers
++on the loaded buffer and clears the @code{verify_pending} field.
++
++@item If the file is closed via @code{grub_file_close()} while @code{verify_pending}
++is still set to @code{1}, a warning is logged to the @samp{verify} debug stream, indicating
++that the loader forgot to call @code{grub_verify_in_place()}.
++@end enumerate
++
+ @node Lockdown framework
+ @chapter Lockdown framework
+ 
+-- 
+2.51.0
+

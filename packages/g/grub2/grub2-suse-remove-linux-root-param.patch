@@ -1,8 +1,8 @@
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -301,7 +301,8 @@
-   GRUB_DISABLE_SUBMENU \
-   GRUB_FORCE_EFI_ALL_VIDEO \
+@@ -323,7 +323,8 @@
+   GRUB_RECOVERY_ACCESS_LEVEL \
+   GRUB_BOOTNEXT_OMIT_INACTIVE \
    SUSE_BTRFS_SNAPSHOT_BOOTING \
 -  SUSE_CMDLINE_XENEFI
 +  SUSE_CMDLINE_XENEFI \
@@ -21,7 +21,7 @@
  	    GRUB_CMDLINE_LINUX="rootflags=subvol=${rootsubvol} ${GRUB_CMDLINE_LINUX}"
  	fi
  	fi;;
-@@ -87,6 +87,10 @@
+@@ -93,6 +93,10 @@
  	;;
  esac
  

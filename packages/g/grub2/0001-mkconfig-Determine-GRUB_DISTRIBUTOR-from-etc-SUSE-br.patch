@@ -12,13 +12,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  util/grub-mkconfig.in | 18 +++++++++++++++++-
  1 file changed, 17 insertions(+), 1 deletion(-)
 
-diff --git a/util/grub-mkconfig.in b/util/grub-mkconfig.in
-index 31c4851aee..e11835ad69 100644
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -226,6 +226,17 @@ GRUB_ACTUAL_DEFAULT="$GRUB_DEFAULT"
- 
- if [ "x${GRUB_ACTUAL_DEFAULT}" = "xsaved" ] ; then GRUB_ACTUAL_DEFAULT="`"${grub_editenv}" - list | sed -n '/^saved_entry=/ s,^saved_entry=,,p'`" ; fi
+@@ -241,6 +241,17 @@
+ if [ "x${GRUB_ADVANCED_ACCESS_LEVEL}" = "x" ] ; then GRUB_ADVANCED_ACCESS_LEVEL="0" ; fi
+ if [ "x${GRUB_RECOVERY_ACCESS_LEVEL}" = "x" ] ; then GRUB_RECOVERY_ACCESS_LEVEL="0" ; fi
  
 +# Use /etc/SUSE-brand for os label (bsc#1239169)
 +grub_os_id () (
@@ -34,7 +32,7 @@ index 31c4851aee..e11835ad69 100644
  if [ x"${GRUB_DISTRIBUTOR}" = x ] ; then
      for i in "${sysconfdir}/os-release" "/usr/lib/os-release" ; do
        if [ -f "$i" ] ; then
-@@ -233,7 +244,12 @@ if [ x"${GRUB_DISTRIBUTOR}" = x ] ; then
+@@ -248,7 +259,12 @@
          break
        fi
      done
@@ -48,6 +46,3 @@ index 31c4851aee..e11835ad69 100644
        GRUB_DISTRIBUTOR="${NAME} ${VERSION}"
      else
        GRUB_DISTRIBUTOR="${NAME}"
--- 
-2.49.0
-

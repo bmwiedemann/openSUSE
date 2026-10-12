@@ -26,7 +26,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/loader/efi/chainloader.c
 +++ b/grub-core/loader/efi/chainloader.c
-@@ -42,10 +42,24 @@
+@@ -42,6 +42,15 @@
  #include <grub/i386/macho.h>
  #endif
  
@@ -42,6 +42,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  GRUB_MOD_LICENSE ("GPLv3+");
  
  static grub_dl_t my_mod;
+@@ -63,6 +72,11 @@
+   grub_efi_device_path_t *saved_device_path;
+ };
  
 +#ifdef SUPPORT_SECURE_BOOT
 +static grub_efi_boolean_t debug_secureboot = 0;
@@ -51,7 +54,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_chainloader_unload (void *context)
  {
-@@ -207,6 +221,421 @@
+@@ -240,6 +254,421 @@
    return file_path;
  }
  
@@ -473,7 +476,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static grub_err_t
  grub_cmd_chainloader (grub_command_t cmd __attribute__ ((unused)),
  		      int argc, char *argv[])
-@@ -220,11 +649,12 @@
+@@ -253,12 +682,13 @@
    grub_efi_loaded_image_t *loaded_image;
    char *filename;
    void *boot_image = 0;
@@ -482,12 +485,13 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    grub_efi_uintn_t pages = 0;
    grub_efi_char16_t *cmdline = NULL;
    grub_efi_handle_t image_handle = NULL;
+   struct grub_chainloader_context *ctx = NULL;
 +  grub_ssize_t cmdline_len = 0;
 +  grub_efi_handle_t dev_handle = 0;
  
    if (argc == 0)
      return grub_error (GRUB_ERR_BAD_ARGUMENT, N_("filename expected"));
-@@ -234,12 +664,39 @@
+@@ -268,12 +698,39 @@
  
    b = grub_efi_system_table->boot_services;
  
@@ -529,7 +533,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    if (dev == NULL)
      ;
    else if (dev->disk)
-@@ -338,6 +795,28 @@
+@@ -372,6 +829,28 @@
      }
  #endif
  
@@ -558,7 +562,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    image_handle = grub_efi_get_last_verified_image_handle ();
    if (image_handle == NULL)
      {
-@@ -366,33 +845,10 @@
+@@ -400,33 +879,10 @@
    loaded_image->device_handle = dev_handle;
  
    /* Build load options with arguments from chainloader command line. */
@@ -593,4 +597,4 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +      loaded_image->load_options_size = cmdline_len;
      }
  
-   grub_file_close (file);
+   /*

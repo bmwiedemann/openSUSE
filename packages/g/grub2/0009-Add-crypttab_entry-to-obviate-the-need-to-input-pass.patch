@@ -29,9 +29,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  5 files changed, 193 insertions(+), 5 deletions(-)
  create mode 100644 grub-core/commands/crypttab.c
 
---- a/grub-core/Makefile.core.def
-+++ b/grub-core/Makefile.core.def
-@@ -2802,3 +2802,8 @@
+Index: grub-2.16/grub-core/Makefile.core.def
+===================================================================
+--- grub-2.16.orig/grub-core/Makefile.core.def
++++ grub-2.16/grub-core/Makefile.core.def
+@@ -2906,3 +2906,8 @@ module = {
    cflags = '$(CFLAGS_POSIX) $(CFLAGS_GNULIB)';
    cppflags = '$(CPPFLAGS_POSIX) $(CPPFLAGS_GNULIB)';
  };
@@ -40,8 +42,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +  name = crypttab;
 +  common = commands/crypttab.c;
 +};
+Index: grub-2.16/grub-core/commands/crypttab.c
+===================================================================
 --- /dev/null
-+++ b/grub-core/commands/crypttab.c
++++ grub-2.16/grub-core/commands/crypttab.c
 @@ -0,0 +1,47 @@
 +
 +#include <grub/dl.h>
@@ -90,8 +94,10 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +{
 +  grub_unregister_command (cmd);
 +}
---- a/grub-core/disk/cryptodisk.c
-+++ b/grub-core/disk/cryptodisk.c
+Index: grub-2.16/grub-core/disk/cryptodisk.c
+===================================================================
+--- grub-2.16.orig/grub-core/disk/cryptodisk.c
++++ grub-2.16/grub-core/disk/cryptodisk.c
 @@ -33,6 +33,8 @@
  
  #ifdef GRUB_UTIL
@@ -101,7 +107,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  #endif
  
  GRUB_MOD_LICENSE ("GPLv3+");
-@@ -1303,6 +1305,10 @@
+@@ -1310,6 +1312,10 @@ grub_cryptodisk_scan_device_real (const
    if (cargs->hdr_file != NULL)
      source->read_hook = NULL;
  
@@ -112,17 +118,19 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    if (askpass)
      {
        grub_memset (cargs->key_data, 0, cargs->key_len);
---- a/grub-core/loader/linux.c
-+++ b/grub-core/loader/linux.c
-@@ -5,6 +5,7 @@
- #include <grub/file.h>
+Index: grub-2.16/grub-core/loader/linux.c
+===================================================================
+--- grub-2.16.orig/grub-core/loader/linux.c
++++ grub-2.16/grub-core/loader/linux.c
+@@ -6,6 +6,7 @@
  #include <grub/mm.h>
  #include <grub/safemath.h>
+ #include <grub/verify.h>
 +#include <grub/list.h>
  
  struct newc_head
  {
-@@ -27,6 +28,7 @@
+@@ -28,6 +29,7 @@ struct newc_head
  struct grub_linux_initrd_component
  {
    grub_file_t file;
@@ -130,7 +138,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    char *newc_name;
    grub_off_t size;
  };
-@@ -38,6 +40,18 @@
+@@ -39,6 +41,18 @@ struct dir
    struct dir *child;
  };
  
@@ -149,7 +157,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static char
  hex (grub_uint8_t val)
  {
-@@ -162,6 +176,65 @@
+@@ -163,6 +177,65 @@ insert_dir (const char *name, struct dir
    return GRUB_ERR_NONE;
  }
  
@@ -215,7 +223,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub_err_t
  grub_initrd_init (int argc, char *argv[],
  		  struct grub_linux_initrd_context *initrd_ctx)
-@@ -169,11 +242,17 @@
+@@ -170,11 +243,17 @@ grub_initrd_init (int argc, char *argv[]
    int i;
    int newc = 0;
    struct dir *root = 0;
@@ -234,7 +242,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    if (!initrd_ctx->components)
      return grub_errno;
  
-@@ -253,6 +332,10 @@
+@@ -255,6 +334,10 @@ grub_initrd_init (int argc, char *argv[]
        root = 0;
      }
  
@@ -245,7 +253,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    return GRUB_ERR_NONE;
  
   overflow:
-@@ -276,7 +359,9 @@
+@@ -278,7 +361,9 @@ grub_initrd_close (struct grub_linux_ini
    for (i = 0; i < initrd_ctx->nfiles; i++)
      {
        grub_free (initrd_ctx->components[i].newc_name);
@@ -256,7 +264,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      }
    grub_free (initrd_ctx->components);
    initrd_ctx->components = 0;
-@@ -325,7 +410,12 @@
+@@ -327,7 +412,12 @@ grub_initrd_load (struct grub_linux_init
  	}
  
        cursize = initrd_ctx->components[i].size;
@@ -270,9 +278,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	  != cursize)
  	{
  	  if (!grub_errno)
-@@ -346,3 +436,45 @@
-   root = 0;
-   return GRUB_ERR_NONE;
+@@ -381,3 +471,45 @@ grub_initrd_load (struct grub_linux_init
+   grub_initrd_close (initrd_ctx);
+   return status;
  }
 +
 +grub_err_t
@@ -316,9 +324,11 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 +
 +  return GRUB_ERR_NONE;
 +}
---- a/include/grub/linux.h
-+++ b/include/grub/linux.h
-@@ -22,3 +22,6 @@
+Index: grub-2.16/include/grub/linux.h
+===================================================================
+--- grub-2.16.orig/include/grub/linux.h
++++ grub-2.16/include/grub/linux.h
+@@ -22,3 +22,6 @@ grub_initrd_close (struct grub_linux_ini
  grub_err_t
  grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
  		  void *target);

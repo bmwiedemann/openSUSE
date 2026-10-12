@@ -161,7 +161,7 @@ v2 -> v3:
  
    return -1;
  }
-@@ -520,6 +534,10 @@
+@@ -524,6 +538,10 @@
        grub_menu_entry_t e = menu->entry_list;
        int i;
  
@@ -172,7 +172,7 @@ v2 -> v3:
        grub_errno = GRUB_ERR_NONE;
  
        for (i = 0; e; i++)
-@@ -531,6 +549,10 @@
+@@ -535,6 +553,10 @@
  	      break;
  	    }
  	  e = e->next;
@@ -220,7 +220,7 @@ v2 -> v3:
  grub_normal_set_password (const char *user, const char *password);
 --- a/grub-core/commands/blsuki.c
 +++ b/grub-core/commands/blsuki.c
-@@ -1022,7 +1022,7 @@
+@@ -1033,7 +1033,7 @@
  			linux_cmd, initrd_cmd ? initrd_cmd : "",
  			dt_cmd ? dt_cmd : "");
  
@@ -228,8 +228,8 @@ v2 -> v3:
 +  grub_normal_add_menu_entry (argc, argv, classes, id, users, hotkey, NULL, src, 0, entry, 0);
  
   finish:
-   grub_free (linux_cmd);
-@@ -1088,7 +1088,7 @@
+   grub_free (full_title);
+@@ -1118,7 +1118,7 @@
  			(options != NULL) ? " " : "",
  			(options != NULL) ? options : "");
  
@@ -237,4 +237,4 @@ v2 -> v3:
 +  grub_normal_add_menu_entry (1, argv, NULL, id, NULL, NULL, NULL, src, 0, entry, 0);
  
   finish:
-   grub_free (argv);
+   grub_free (full_title);

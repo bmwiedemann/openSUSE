@@ -6,11 +6,9 @@ distributor with a generic one.
 v2:
 Use /usr/lib/os-release as fallback to /etc/os-release
 
-Index: grub-2.06/grub-core/osdep/unix/config.c
-===================================================================
---- grub-2.06.orig/grub-core/osdep/unix/config.c
-+++ grub-2.06/grub-core/osdep/unix/config.c
-@@ -61,6 +61,131 @@ grub_util_get_localedir (void)
+--- a/grub-core/osdep/unix/config.c
++++ b/grub-core/osdep/unix/config.c
+@@ -61,6 +61,131 @@
    return LOCALEDIR;
  }
  
@@ -142,7 +140,7 @@ Index: grub-2.06/grub-core/osdep/unix/config.c
  void
  grub_util_load_config (struct grub_util_config *cfg)
  {
-@@ -125,7 +250,17 @@ grub_util_load_config (struct grub_util_
+@@ -125,7 +250,32 @@
        waitpid (pid, NULL, 0);
      }
    if (f)
@@ -154,6 +152,21 @@ Index: grub-2.06/grub-core/osdep/unix/config.c
 +	  if (cfg->grub_distributor)
 +	    grub_free (cfg->grub_distributor);
 +	  cfg->grub_distributor = grub_util_default_distributor ();
++	  if (cfg->grub_distributor)
++	    {
++	      /*
++	       * For bootloader-id derived from the default distributor, use
++	       * the first word in all lower case. It is to retain the behavior
++	       * prior to this commit. ddb8f4c1f util/grub-install:
++	       * bootloader-id, pass GRUB_DISTRIBUTOR directly.
++	       */
++	      char *s;
++
++	      for (s = cfg->grub_distributor; *s && *s != ' '; s++)
++		if (*s >= 'A' && *s <= 'Z')
++		  *s = *s - 'A' + 'a';
++	      *s = '\0';
++	    }
 +	}
 +#endif
 +      return;
@@ -161,7 +174,7 @@ Index: grub-2.06/grub-core/osdep/unix/config.c
  
    f = grub_util_fopen (cfgfile, "r");
    if (f)
-@@ -136,4 +271,13 @@ grub_util_load_config (struct grub_util_
+@@ -136,4 +286,28 @@
    else
      grub_util_warn (_("cannot open configuration file `%s': %s"),
  		    cfgfile, strerror (errno));
@@ -172,16 +185,29 @@ Index: grub-2.06/grub-core/osdep/unix/config.c
 +      if (cfg->grub_distributor)
 +	grub_free (cfg->grub_distributor);
 +      cfg->grub_distributor = grub_util_default_distributor ();
++      if (cfg->grub_distributor)
++	{
++	  /*
++	   * For bootloader-id derived from the default distributor, use
++	   * the first word in all lower case. It is to retain the behavior
++	   * prior to this commit. ddb8f4c1f util/grub-install:
++	   * bootloader-id, pass GRUB_DISTRIBUTOR directly.
++	   */
++	  char *s;
++
++	  for (s = cfg->grub_distributor; *s && *s != ' '; s++)
++	    if (*s >= 'A' && *s <= 'Z')
++	      *s = *s - 'A' + 'a';
++	  *s = '\0';
++	}
 +    }
 +#endif
  }
-Index: grub-2.06/util/grub-mkconfig.in
-===================================================================
---- grub-2.06.orig/util/grub-mkconfig.in
-+++ grub-2.06/util/grub-mkconfig.in
-@@ -225,6 +225,19 @@ GRUB_ACTUAL_DEFAULT="$GRUB_DEFAULT"
- 
- if [ "x${GRUB_ACTUAL_DEFAULT}" = "xsaved" ] ; then GRUB_ACTUAL_DEFAULT="`"${grub_editenv}" - list | sed -n '/^saved_entry=/ s,^saved_entry=,,p'`" ; fi
+--- a/util/grub-mkconfig.in
++++ b/util/grub-mkconfig.in
+@@ -241,6 +241,19 @@
+ if [ "x${GRUB_ADVANCED_ACCESS_LEVEL}" = "x" ] ; then GRUB_ADVANCED_ACCESS_LEVEL="0" ; fi
+ if [ "x${GRUB_RECOVERY_ACCESS_LEVEL}" = "x" ] ; then GRUB_RECOVERY_ACCESS_LEVEL="0" ; fi
  
 +if [ x"${GRUB_DISTRIBUTOR}" = x ] ; then
 +    for i in "${sysconfdir}/os-release" "/usr/lib/os-release" ; do

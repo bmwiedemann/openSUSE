@@ -21,15 +21,7 @@ Fix gcc-12 error: pointer 'device_path' may be used after 'free'
 
 --- a/grub-core/osdep/linux/ofpath.c
 +++ b/grub-core/osdep/linux/ofpath.c
-@@ -37,6 +37,7 @@
- #include <fcntl.h>
- #include <errno.h>
- #include <ctype.h>
-+#include <dirent.h>
- 
- #ifdef __sparc__
- typedef enum
-@@ -757,13 +758,74 @@
+@@ -1205,13 +1205,74 @@
    return new;
  }
  

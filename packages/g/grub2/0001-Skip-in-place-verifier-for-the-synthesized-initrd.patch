@@ -1,0 +1,41 @@
+From bf4d87ed116bfa9772ae2b9ac8ea9ff57f950d12 Mon Sep 17 00:00:00 2001
+From: Gary Lin <glin@suse.com>
+Date: Tue, 6 Oct 2026 11:38:58 +0800
+Subject: [PATCH] Skip in-place verifier for the synthesized initrd
+
+The in-place verifier expects a 'file' when verifying an initrd. However
+the synthesized initrd isn't loaded from a file, so the verifier failed
+to verify it. Skip in-place verifier for the synthesized initrd to avoid
+the potential error.
+
+Signed-off-by: Gary Lin <glin@suse.com>
+---
+ grub-core/loader/linux.c | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/grub-core/loader/linux.c b/grub-core/loader/linux.c
+index 352bd1e..853789d 100644
+--- a/grub-core/loader/linux.c
++++ b/grub-core/loader/linux.c
+@@ -413,6 +413,10 @@ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+ 	  goto fail;
+ 	}
+ 
++      /* The synthesized initrd does not have 'file'. Skip in-place verifier. */
++      if (initrd_ctx->components[i].file == NULL)
++	goto next;
++
+       /*
+        * Measure the buffer the kernel is actually going to consume. The
+        * verifiers which authenticate the file already ran when it was opened
+@@ -429,6 +433,7 @@ grub_initrd_load (struct grub_linux_initrd_context *initrd_ctx,
+ 	  goto fail;
+ 	}
+ 
++ next:
+       ptr += cursize;
+     }
+   if (newc)
+-- 
+2.51.0
+

@@ -1,4 +1,152 @@
 -------------------------------------------------------------------
+Thu Oct  8 08:01:44 UTC 2026 - Fabian Vogt <fvogt@suse.com>
+
+- Add upstream patch to fix CDROM boot failures (boo#1282614):
+  * 0001-disk-i386-pc-biosdisk-Fix-retry-of-CDROM-reads.patch
+
+-------------------------------------------------------------------
+Wed Oct  7 10:50:57 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typos in description
+
+-------------------------------------------------------------------
+Tue Oct  6 03:45:41 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Fix a potential boot error when loading the synthesized initrd
+  * 0001-Skip-in-place-verifier-for-the-synthesized-initrd.patch
+
+-------------------------------------------------------------------
+Mon Oct  5 01:44:49 UTC 2026 - Gary Ching-Pang Lin <glin@suse.com>
+
+- Backport upstream fixes to verify linux initrd in place to avoid
+  the potential OOM (bsc#1275739)
+  * 0001-kern-file-record-file-type-and-track-in-place-verifi.patch
+  * 0002-verifiers-support-in-place-verification.patch
+  * 0003-tpm-tpcm-mark-TPM-and-TPCM-verifiers-as-in-place-cap.patch
+  * 0004-loader-linux-measure-initrd-in-place.patch
+  * 0005-docs-grub-dev.texi-Document-in-place-verification.patch
+- Patch refreshed
+  * 0001-clean-up-crypttab-and-linux-modules-dependency.patch
+  * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
+
+-------------------------------------------------------------------
+Sat Oct  3 16:04:21 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- fix typos
+
+-------------------------------------------------------------------
+Fri Sep 18 09:35:59 UTC 2026 - Michael Chang <mchang@suse.com>
+
+- Update to 2.16
+  * libgcrypt 1.12.2.
+  * libtasn1 4.21.0.
+  * ML-DSA post-quantum signature support for appended signatures.
+  * Certificate revocation (dbx) checks for appended signatures.
+  * PKCS#7 signedAttrs verification and X.509 validity period checking.
+  * NVMe native disk support.
+  * NVMe over Fibre Channel and multiple NVMe boot paths on IEEE 1275.
+  * virtio-net driver.
+  * AMBA PL011 UART support.
+  * DHCPv6 support and network configuration from the UEFI device path.
+  * Argon2 password hashing for GRUB users and the grub-mkpasswd-argon2 utility.
+  * Access levels for authentication in grub-mkconfig.
+  * MFA key protector.
+  * TPCM (Trusted Platform Control Module) verifier on x86_64 EFI.
+  * New tpm_record_pcrs command exposing a TPM PCR snapshot to the OS.
+  * New efibootnext module and 31_efi_bootnext script for one-shot boot entries.
+  * New connectefi, lsefivar, btrfs-info, btrfs-list-subvols and
+    btrfs-get-default-subvol commands.
+  * Downstream SBAT support and SBAT level validation in grub-mkimage.
+  * Serial port addresses restricted to firmware-described UARTs under lockdown.
+  * Drop UGA Draw and Console Control protocols support.
+  * GitLab CI with multi-architecture builds, clang jobs and weekly Coverity scans.
+  * Cygwin and mingw cross-build fixes.
+  * Filesystems hardening and fixes.
+  * Video readers and font fixes found by fuzzing.
+  * EFI code improvements and fixes.
+  * Network stack fixes.
+  * Coverity and memory leak fixes.
+  * ofpath and grub-install host utility robustness fixes.
+  * Tests improvements.
+  * Documentation improvements.
+  * ... and tons of other fixes and cleanups...
+- Patch removed
+  * 0001-fs-btrfs-mark-Btrfs-on-disk-structs-as-GRUB_PACKED.patch
+  * 0002-fs-btrfs-add-btrfs-info-command.patch
+  * 0003-fs-btrfs-add-btrfs-list-subvols-command.patch
+  * 0004-fs-btrfs-add-btrfs-get-default-subvol-command.patch
+  * 0001-lvm-allocate-metadata-buffer-from-raw-contents.patch
+  * 0001-net-http-Check-result-of-grub_netbuff_put-in-http_re.patch
+  * 0002-efinet-Add-structures-for-PXE-messages.patch
+  * 0003-efinet-bootp-add-net_dhcp6-command-supporting-dhcpv6.patch
+  * 0004-grub.texi-Add-net_dhcp6-document.patch
+  * 0005-bootp-Process-DHCPACK-packet-during-HTTP-Boot.patch
+  * 0006-efinet-Configure-network-from-UEFI-device-path.patch
+  * 0007-efinet-Set-DNS-server-from-UEFI-protocol.patch
+  * 0008-kern-efi-efi-Print-URI-and-DNS-device-path-info.patch
+  * 0009-kern-efi-efi-Correct-endianness-in-IPv6-device-path.patch
+  * 0010-bootp-Fix-logical-operator-in-DHCP-option-overload-c.patch
+  * 0001-test-Fix-f-test-on-files-over-network.patch
+  * 0002-http-Return-HTTP-status-code-in-http_establish.patch
+  * 0003-docs-Clarify-test-for-files-on-TFTP-and-HTTP.patch
+  * 0004-tftp-Fix-hang-when-file-is-a-directory.patch
+  * 0001-cacheinfo-fix-hit-ratio-calculation-and-statistics-o.patch
+  * 0002-disk-fix-cache-lock-and-hit-counter-for-invalidated-.patch
+  * 0003-disk-reduce-cache-slot-thrashing.patch
+  * 0001-ieee1275-powerpc-implements-fibre-channel-discovery-.patch
+  * 0001-ieee1275-implement-FCP-methods-for-WWPN-and-LUNs.patch
+  * 0001-ieee1275-add-support-for-NVMeoFC.patch
+  * 0002-ieee1275-ofpath-enable-NVMeoF-logical-device-transla.patch
+  * 0003-ieee1275-change-the-logic-of-ieee1275_get_devargs.patch
+  * 0001-Make-grub.cfg-compatible-to-old-binaries.patch
+  * 0001-ieee1275-support-added-for-multiple-nvme-bootpaths.patch
+  * 0001-ofpath-Add-error-check-in-NVMEoF-device-translation.patch
+  * grub2-bls-boot-show-snapshot.patch
+  * 0001-getroot-Skip-mount-points-in-grub_find_device.patch
+  * 0001-00_header-Omit-loading-efi_uga-on-non-x86-EFI-platfo.patch
+  * 0001-Revert-configure-Print-a-more-helpful-error-if-autoc.patch
+  * 0002-Revert-configure-Check-linker-for-image-base-support.patch
+  * 0001-mdraid1x-fix-raid_disks-decoding-on-big-endian-syste.patch
+  * 0001-Mandatory-install-device-check-for-PowerPC.patch
+  * 0001-osdep-linux-ofpath-Update-strstr-calls.patch
+  * 0001-util-probe-Save-strrchr-ret-val-to-const-data-ptr.patch
+  * 0002-util-resolve-Save-str-r-chr-ret-val-to-const-data-pt.patch
+  * gcc16.patch
+  * 0001-lib-hwfeatures-gcry-Fix-write_cr0-writing-to-CR4.patch
+- Patch rebased
+  * use-grub2-as-a-package-name.patch
+  * info-dir-entry.patch
+  * grub2-sysfb.patch
+  * grub2-iterate-and-hook-for-extended-partition.patch
+  * grub2-secureboot-chainloader.patch
+  * grub2-s390x-04-grub2-install.patch
+  * grub2-s390x-05-grub2-mkconfig.patch
+  * grub2-default-distributor.patch
+  * grub2-emu-4-all.patch
+  * grub2-btrfs-04-grub2-install.patch
+  * grub2-btrfs-05-grub2-mkconfig.patch
+  * grub2-efi-xen-cmdline.patch
+  * grub2-Add-hidden-menu-entries.patch
+  * grub2-suse-remove-linux-root-param.patch
+  * 0002-ieee1275-powerpc-enables-device-mapper-discovery.patch
+  * 0001-Unify-the-check-to-enable-btrfs-relative-path.patch
+  * 0004-Try-to-pick-better-locations-for-kernel-and-initrd.patch
+  * 0003-grub-install-support-prep-environment-block.patch
+  * 0001-install-fix-software-raid1-on-esp.patch
+  * 0001-ieee1275-ofdisk-retry-on-open-and-read-failure.patch
+  * 0001-openfw-Ensure-get_devargs-and-get_devname-functions-.patch
+  * 0001-ofdisk-enhance-boot-time-by-focusing-on-boot-disk-re.patch
+  * grub2-bsc1220338-key_protector-implement-the-blocklist.patch
+  * 0001-ofdisk-Enhance-canonical-path-handling-for-bootpath.patch
+  * 0001-10_linux-Ensure-persistence-of-root-file-system-moun.patch
+  * 0001-mkconfig-Determine-GRUB_DISTRIBUTOR-from-etc-SUSE-br.patch
+  * 0001-bls-fix-default-entry-and-bumpcounter-for-BLS-boot-c.patch
+- Avoid insmod error when dealing with old grub.cfg
+  * 0001-insmod-ignore-efi_uga-on-EFI.patch
+- Set grub as vendor_package_name in upstream's SBAT entry
+  0001-grub-core-sbat.csv.in-Set-vendor_package_name-to-gru.patch
+
+-------------------------------------------------------------------
 Tue Sep 15 08:05:43 UTC 2026 - Michael Chang <mchang@suse.com>
 
 - Add SBAT Provides to support shim SBAT dependency checks (bsc#1278729)
@@ -925,13 +1073,13 @@ Wed Nov 13 01:09:47 UTC 2024 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Fri Nov  8 14:42:12 UTC 2024 - Michael Chang <mchang@suse.com>
 
-- Fix previous change as the variable has to be set earlier 
+- Fix previous change as the variable has to be set earlier
   * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
 
 -------------------------------------------------------------------
 Fri Nov  8 05:21:47 UTC 2024 - Michael Chang <mchang@suse.com>
 
-- Do not enable blscfg on s390-emu 
+- Do not enable blscfg on s390-emu
   * 0001-10_linux-Do-not-enable-BLSCFG-on-s390-emu.patch
 
 -------------------------------------------------------------------
@@ -948,7 +1096,7 @@ Fri Nov  1 08:46:36 UTC 2024 - Michael Chang <mchang@suse.com>
   directory (bsc#1232391)
   * 0001-kern-main-Fix-cmdpath-in-root-directory.patch
   * grub2.spec: Refine PPC grub.elf early config to derive root from cmdpath
-    directly, avoiding the unneeded search 
+    directly, avoiding the unneeded search
 
 -------------------------------------------------------------------
 Wed Oct 30 08:24:15 UTC 2024 - Michael Chang <mchang@suse.com>
@@ -974,7 +1122,7 @@ Wed Oct 30 00:44:41 UTC 2024 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Wed Oct 23 06:17:54 UTC 2024 - Michael Chang <mchang@suse.com>
 
-- Fix error: /boot/grub2/x86_64-efi/bli.mod not found (bsc#1231591) 
+- Fix error: /boot/grub2/x86_64-efi/bli.mod not found (bsc#1231591)
 
 -------------------------------------------------------------------
 Tue Oct 22 07:34:04 UTC 2024 - Michael Chang <mchang@suse.com>
@@ -1012,7 +1160,7 @@ Fri Oct  4 06:58:06 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix missng menu entry "Start bootloader from a read-only snapshot" by
   ensuring grub2-snapper-plugin is installed when both snapper and grub2-common
-  are installed (bsc#1231271) 
+  are installed (bsc#1231271)
 
 -------------------------------------------------------------------
 Fri Oct  4 06:49:12 UTC 2024 - Michael Chang <mchang@suse.com>
@@ -1182,7 +1330,7 @@ Fri Mar 22 06:01:13 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix memdisk becomes the default boot entry, resolving no graphic display
   device error in guest vnc console (bsc#1221779)
-  * grub2-xen-pv-firmware.cfg 
+  * grub2-xen-pv-firmware.cfg
 
 -------------------------------------------------------------------
 Wed Mar 20 06:16:45 UTC 2024 - Michael Chang <mchang@suse.com>
@@ -1214,7 +1362,7 @@ Fri Mar  1 12:44:37 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
 -------------------------------------------------------------------
 Thu Feb 29 10:12:12 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 
-- Add patch grub2-bash-completion-2.12.patch 
+- Add patch grub2-bash-completion-2.12.patch
   The shell function have() had become deprecated with 2.11
   and had been removed from 2.12 which is now providing
   the shell function _comp_have_command() (boo#1220626)
@@ -1223,7 +1371,7 @@ Thu Feb 29 10:12:12 UTC 2024 - Dr. Werner Fink <werner@suse.de>
 Thu Feb 22 04:19:21 UTC 2024 - Michael Chang <mchang@suse.com>
 
 - Fix grub.xen memdisk script doesn't look for /boot/grub/grub.cfg
-  (bsc#1219248) (bsc#1181762) 
+  (bsc#1219248) (bsc#1181762)
   * grub2-xen-pv-firmware.cfg
   * 0001-disk-Optimize-disk-iteration-by-moving-memdisk-to-th.patch
 
@@ -1259,7 +1407,7 @@ Tue Jan 23 04:56:58 UTC 2024 - Michael Chang <mchang@suse.com>
   data blocks (bsc#1218864)
   * 0001-fs-xfs-always-verify-the-total-number-of-entries-is-.patch
 - Removed temporary fix as reverting it will cause a different XFS parser bug
-  * 0001-Revert-fs-xfs-Fix-XFS-directory-extent-parsing.patch 
+  * 0001-Revert-fs-xfs-Fix-XFS-directory-extent-parsing.patch
 
 -------------------------------------------------------------------
 Sat Jan 20 20:08:34 UTC 2024 - Giacomo Comes <gcomes.obs@gmail.com>
@@ -1363,7 +1511,7 @@ Tue Nov 14 07:52:41 UTC 2023 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Mon Oct 30 07:15:17 UTC 2023 - Michael Chang <mchang@suse.com>
 
-- Fix fadump not working with 1GB/2GB/4GB LMB[P10] (bsc#1216253) 
+- Fix fadump not working with 1GB/2GB/4GB LMB[P10] (bsc#1216253)
   * 0001-kern-ieee1275-init-Restrict-high-memory-in-presence-.patch
 
 -------------------------------------------------------------------
@@ -1376,7 +1524,7 @@ Thu Oct 26 06:04:54 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Wed Oct 25 01:56:09 UTC 2023 - Michael Chang <mchang@suse.com>
 
-- Fix Xen chainloding error of no matching file path found (bsc#1216081) 
+- Fix Xen chainloding error of no matching file path found (bsc#1216081)
   * grub2-efi-chainload-harder.patch
 
 -------------------------------------------------------------------
@@ -1390,7 +1538,7 @@ Mon Oct 23 13:11:45 UTC 2023 - Michael Chang <mchang@suse.com>
 Mon Oct 16 08:05:03 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix detection of encrypted disk's uuid in powerpc to cope with logical disks
-  when signed image installation is specified (bsc#1216075) 
+  when signed image installation is specified (bsc#1216075)
   * 0003-grub-install-support-prep-environment-block.patch
 - grub2.spec: Add support to unlocking multiple encrypted disks in signed
   grub.elf image for logical disks
@@ -1482,7 +1630,7 @@ Wed Aug 16 06:59:35 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 Thu Aug  3 03:24:41 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
 
 - Change the bash-completion directory (bsc#1213855)
-  * grub2-change-bash-completion-dir.patch 
+  * grub2-change-bash-completion-dir.patch
 
 -------------------------------------------------------------------
 Thu Jul 27 06:16:36 UTC 2023 - Michael Chang <mchang@suse.com>
@@ -1744,7 +1892,7 @@ Thu Jul 27 06:16:36 UTC 2023 - Michael Chang <mchang@suse.com>
     - 0002-Restrict-cryptsetup-key-file-permission-for-better-s.patch
   * New:
     - 0001-xen_boot-add-missing-grub_arch_efi_linux_load_image_.patch
-    - 0001-font-Try-memdisk-fonts-with-the-same-name.patch 
+    - 0001-font-Try-memdisk-fonts-with-the-same-name.patch
     - 0001-Make-grub.cfg-compatible-to-old-binaries.patch
     - 0001-disk-cryptodisk-Fix-missing-change-when-updating-to-.patch
   * Embedding fonts in the grub.efi to get signed for secure boot
@@ -1754,7 +1902,7 @@ Wed Jul 26 03:04:25 UTC 2023 - Michael Chang <mchang@suse.com>
 
 - Fix error message "unknown command tpm_record_pcrs" with encrypted boot and
   no tpm device present (bsc#1213547)
-  * 0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch 
+  * 0002-tpm-Disable-tpm-verifier-if-tpm-is-not-present.patch
 
 -------------------------------------------------------------------
 Tue May 30 11:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
@@ -1767,7 +1915,7 @@ Tue May 30 11:03:54 UTC 2023 - Dirk Müller <dmueller@suse.com>
 -------------------------------------------------------------------
 Thu May  4 06:58:12 UTC 2023 - Michael Chang <mchang@suse.com>
 
-- grub2-once: Fix 'sh: terminal_output: command not found' error (bsc#1204563) 
+- grub2-once: Fix 'sh: terminal_output: command not found' error (bsc#1204563)
 
 -------------------------------------------------------------------
 Wed Apr 26 07:22:03 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
@@ -1853,7 +2001,7 @@ Tue Apr 11 11:13:26 UTC 2023 - Michael Chang <mchang@suse.com>
   * 0004-Introduce-prep_load_env-command.patch
 - Refreshed
   * 0005-export-environment-at-start-up.patch
- 
+
 -------------------------------------------------------------------
 Thu Mar 23 05:25:50 UTC 2023 - Michael Chang <mchang@suse.com>
 
@@ -1926,7 +2074,7 @@ Fri Feb 10 14:54:35 UTC 2023 - Valentin Lefebvre <valentin.lefebvre@suse.com>
 
 - Add module for boot loader interface. Needed for load Unified Kernel
   Image (UKI)
-  * grub2-add-module-for-boot-loader-interface.patch 
+  * grub2-add-module-for-boot-loader-interface.patch
 
 -------------------------------------------------------------------
 Thu Feb  9 08:42:26 UTC 2023 - Gary Ching-Pang Lin <glin@suse.com>
@@ -2007,7 +2155,7 @@ Fri Dec 16 01:51:45 UTC 2022 - Gary Ching-Pang Lin <glin@suse.com>
 -------------------------------------------------------------------
 Mon Dec  5 08:47:06 UTC 2022 - Michael Chang <mchang@suse.com>
 
-- Add tpm to signed grub.elf image (PED-1990) (bsc#1205912) 
+- Add tpm to signed grub.elf image (PED-1990) (bsc#1205912)
 - Increase initial heap size from 1/4 to 1/3
   * 0001-ieee1275-Increase-initially-allocated-heap-from-1-4-.patch
 
@@ -2071,7 +2219,7 @@ Fri Oct 28 04:58:28 UTC 2022 - Michael Chang <mchang@suse.com>
   * 0001-commands-efi-tpm-Refine-the-status-of-log-event.patch
   * 0002-commands-efi-tpm-Use-grub_strcpy-instead-of-grub_mem.patch
   * 0003-efi-tpm-Add-EFI_CC_MEASUREMENT_PROTOCOL-support.patch
-- Measure the kernel on POWER10 and extend TPM PCRs (PED-1990) 
+- Measure the kernel on POWER10 and extend TPM PCRs (PED-1990)
   * 0001-ibmvtpm-Add-support-for-trusted-boot-using-a-vTPM-2..patch
   * 0002-ieee1275-implement-vec5-for-cas-negotiation.patch
 - Fix efi pcr snapshot related funtion is defined but not used on powerpc
@@ -2086,7 +2234,7 @@ Mon Oct 24 01:58:08 UTC 2022 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Thu Oct  6 07:13:23 UTC 2022 - Michael Chang <mchang@suse.com>
 
-- Fix firmware oops after disk decrypting failure (bsc#1204037) 
+- Fix firmware oops after disk decrypting failure (bsc#1204037)
   * 0009-Add-crypttab_entry-to-obviate-the-need-to-input-pass.patch
 
 -------------------------------------------------------------------
@@ -2266,7 +2414,7 @@ Thu Apr 21 09:35:15 UTC 2022 - Michael Chang <mchang@suse.com>
 
 - Fix Power10 LPAR error "The partition fails to activate as partition went
   into invalid state" (bsc#1198714)
-  * 0001-powerpc-do-CAS-in-a-more-compatible-way.patch 
+  * 0001-powerpc-do-CAS-in-a-more-compatible-way.patch
 
 -------------------------------------------------------------------
 Mon Apr 11 11:50:04 UTC 2022 - Ludwig Nussel <lnussel@suse.de>
@@ -2307,7 +2455,7 @@ Fri Mar 11 09:30:05 UTC 2022 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Thu Mar 10 09:10:23 UTC 2022 - Michael Chang <mchang@suse.com>
 
-- Fix riscv64 build error 
+- Fix riscv64 build error
   * 0001-RISC-V-Adjust-march-flags-for-binutils-2.38.patch
 
 -------------------------------------------------------------------
@@ -2326,7 +2474,7 @@ Fri Mar  4 03:37:40 UTC 2022 - Michael Chang <mchang@suse.com>
   * 0003-grub-install-support-prep-environment-block.patch
   * 0004-Introduce-prep_load_env-command.patch
   * 0005-export-environment-at-start-up.patch
-- Use enviroment variable in early boot config to looking up root device 
+- Use enviroment variable in early boot config to looking up root device
   * grub2.spec
 
 -------------------------------------------------------------------
@@ -2402,7 +2550,7 @@ Tue Dec 21 03:03:47 UTC 2021 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Fri Dec 17 10:42:33 UTC 2021 - Michael Chang <mchang@suse.com>
 
-- Fix can't allocate initrd error (bsc#1191378) 
+- Fix can't allocate initrd error (bsc#1191378)
   * 0001-Factor-out-grub_efi_linux_boot.patch
   * 0002-Fix-race-in-EFI-validation.patch
   * 0003-Handle-multi-arch-64-on-32-boot-in-linuxefi-loader.patch
@@ -2425,7 +2573,7 @@ Wed Dec  8 14:16:58 UTC 2021 - Michal Suchanek <msuchanek@suse.com>
 Mon Dec  6 01:21:07 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix extent not found when initramfs contains shared extents (bsc#1190982)
-  * 0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch 
+  * 0001-fs-btrfs-Make-extent-item-iteration-to-handle-gaps.patch
 
 -------------------------------------------------------------------
 Thu Nov 11 07:45:11 UTC 2021 - Michael Chang <mchang@suse.com>
@@ -2675,7 +2823,7 @@ Tue May 11 02:14:06 UTC 2021 - Michael Chang <mchang@suse.com>
 Fri Apr 23 03:27:37 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix obsolete syslog in systemd unit file and updating to use journal as
-  StandardOutput (bsc#1185149) 
+  StandardOutput (bsc#1185149)
   * grub2-once.service
 
 -------------------------------------------------------------------
@@ -2688,7 +2836,7 @@ Mon Apr 19 09:53:43 UTC 2021 - Michael Chang <mchang@suse.com>
 Thu Apr  8 12:32:52 UTC 2021 - Michael Chang <mchang@suse.com>
 
 - Fix error grub_file_filters not found in Azure virtual machine (bsc#1182012)
-  * 0001-Workaround-volatile-efi-boot-variable.patch 
+  * 0001-Workaround-volatile-efi-boot-variable.patch
 
 -------------------------------------------------------------------
 Tue Mar 16 02:57:12 UTC 2021 - Michael Chang <mchang@suse.com>
@@ -2870,7 +3018,7 @@ Fri Aug 21 04:40:48 UTC 2020 - Michael Chang <mchang@suse.com>
 -------------------------------------------------------------------
 Tue Aug 18 06:02:21 UTC 2020 - Michael Chang <mchang@suse.com>
 
-- Fix for CVE-2020-15705 (bsc#1174421) 
+- Fix for CVE-2020-15705 (bsc#1174421)
   * 0001-linuxefi-fail-kernel-validation-without-shim-protoco.patch
   * 0002-cmdline-Provide-cmdline-functions-as-module.patch
 
@@ -2878,7 +3026,7 @@ Tue Aug 18 06:02:21 UTC 2020 - Michael Chang <mchang@suse.com>
 Thu Aug 13 06:41:16 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Make grub-calloc inline to avoid symbol not found error as the system may not
-  use updated grub to boot the system (bsc#1174782) (bsc#1175060) (bsc#1175036) 
+  use updated grub to boot the system (bsc#1174782) (bsc#1175060) (bsc#1175036)
   * 0001-kern-mm.c-Make-grub_calloc-inline.patch
 
 -------------------------------------------------------------------
@@ -2901,7 +3049,7 @@ Mon Jul 27 10:04:49 UTC 2020 - Michael Chang <mchang@suse.com>
   * 0010-linux-Fix-integer-overflows-in-initrd-size-handling.patch
 - Use overflow checking primitives where the arithmetic expression for buffer
   allocations may include unvalidated data
-- Use grub_calloc for overflow check and return NULL when it would occur 
+- Use grub_calloc for overflow check and return NULL when it would occur
   * 0001-add-support-for-UEFI-network-protocols.patch
   * 0003-bootp-New-net_bootp6-command.patch
   * grub2-btrfs-01-add-ability-to-boot-from-subvolumes.patch
@@ -2918,14 +3066,14 @@ Thu Jul 16 13:15:27 UTC 2020 - Michel Normand <normand@linux.vnet.ibm.com>
 Mon May 18 08:15:01 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Skip zfcpdump kernel from the grub boot menu (bsc#1166513)
-  * grub2-s390x-skip-zfcpdump-image.patch 
+  * grub2-s390x-skip-zfcpdump-image.patch
 
 -------------------------------------------------------------------
 Tue May  5 06:48:55 UTC 2020 - Michael Chang <mchang@suse.com>
 
 - Fix boot failure as journaled data not get drained due to abrupt power
   off after grub-install (bsc#1167756)
-  * grub-install-force-journal-draining-to-ensure-data-i.patch 
+  * grub-install-force-journal-draining-to-ensure-data-i.patch
 
 -------------------------------------------------------------------
 Thu Apr 16 13:35:10 UTC 2020 - Michael Chang <mchang@suse.com>
@@ -3002,7 +3150,7 @@ Wed Oct 30 06:26:33 UTC 2019 - Michael Chang <mchang@suse.com>
 
 - Disable btrfs zstd support for i386-pc to workaround core.img too large to be
   embedded in btrfs bootloader area or MBR gap (boo#1154809)
-  * 0001-btrfs-disable-zstd-support-for-i386-pc.patch 
+  * 0001-btrfs-disable-zstd-support-for-i386-pc.patch
 
 -------------------------------------------------------------------
 Mon Oct 28 11:52:19 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>

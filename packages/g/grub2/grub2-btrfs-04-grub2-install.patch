@@ -80,8 +80,8 @@
 +
    if (!bootloader_id && config.grub_distributor)
      {
-       char *ptr;
-@@ -1451,6 +1456,15 @@
+       bootloader_id = xstrdup (config.grub_distributor);
+@@ -1459,6 +1464,15 @@
                debug_image);
      }
  
@@ -99,7 +99,7 @@
        if ((disk_module && grub_strcmp (disk_module, "biosdisk") != 0)
 --- a/grub-core/osdep/linux/getroot.c
 +++ b/grub-core/osdep/linux/getroot.c
-@@ -373,6 +373,7 @@
+@@ -375,6 +375,7 @@
    return NULL;
  }
  
@@ -107,7 +107,7 @@
  
  char **
  grub_find_root_devices_from_mountinfo (const char *dir, char **relroot)
-@@ -516,6 +517,12 @@
+@@ -521,6 +522,12 @@
  	{
  	  ret = grub_find_root_devices_from_btrfs (dir);
  	  fs_prefix = get_btrfs_fs_prefix (entries[i].enc_path);

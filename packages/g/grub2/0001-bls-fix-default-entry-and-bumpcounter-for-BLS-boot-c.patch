@@ -15,11 +15,9 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  grub-core/commands/blsuki.c          | 48 ++++++++++++++++++++++++++++
  2 files changed, 71 insertions(+), 9 deletions(-)
 
-diff --git a/grub-core/commands/bls_bumpcounter.c b/grub-core/commands/bls_bumpcounter.c
-index d45fe276c..fe4a9ea92 100644
 --- a/grub-core/commands/bls_bumpcounter.c
 +++ b/grub-core/commands/bls_bumpcounter.c
-@@ -102,8 +102,9 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -102,8 +102,9 @@
    grub_efi_status_t err;
    char *entry, *new_path = NULL, *old_path;
    const char *blsdir;
@@ -30,7 +28,7 @@ index d45fe276c..fe4a9ea92 100644
  
    if (argc != 1) {
      grub_dprintf ("bls_bumpcounter", "only one argument should be passed\n");
-@@ -160,7 +161,7 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -160,7 +161,7 @@
          blsdir = GRUB_BLS_CONFIG_PATH;
      }
  
@@ -39,7 +37,7 @@ index d45fe276c..fe4a9ea92 100644
    grub_utf8_to_utf16_alloc (old_path, &old_path16, NULL);
  
    err = root->Open (root, &handle, old_path16,
-@@ -179,14 +180,15 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -179,14 +180,15 @@
       most cases, and, if it fails, allocate a new one with the exact size
       returned from GetInfo.
       Reference: systemd:src/boot/efi/util.c =*/
@@ -57,7 +55,7 @@ index d45fe276c..fe4a9ea92 100644
    err = handle->GetInfo (handle, &grub_efi_file_info_guid, &size, file_info);
    if (err == GRUB_EFI_BUFFER_TOO_SMALL)
      {
-@@ -194,12 +196,12 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -194,12 +196,12 @@
        /* When we bump the counter, it might happen that we increase the filename
           length. Add the space for 2 more characters (4 bytes). (i.e. adding the
           boot done part "-1") */
@@ -72,7 +70,7 @@ index d45fe276c..fe4a9ea92 100644
        if (!file_info)
  	{
  	  grub_error (GRUB_ERR_OUT_OF_MEMORY, N_("out of memory"));
-@@ -221,12 +223,24 @@ grub_cmd_bls_bumpcounter (grub_extcmd_context_t ctxt __attribute__ ((unused)),
+@@ -221,12 +223,24 @@
      goto finish;
  
    grub_dprintf ("bls_bumpcounter", "renaming entry to %s\n", new_path);
@@ -100,11 +98,9 @@ index d45fe276c..fe4a9ea92 100644
  
    if (err != GRUB_EFI_SUCCESS)
      {
-diff --git a/grub-core/commands/blsuki.c b/grub-core/commands/blsuki.c
-index 4dfc4934e..8b152b443 100644
 --- a/grub-core/commands/blsuki.c
 +++ b/grub-core/commands/blsuki.c
-@@ -1091,6 +1091,7 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+@@ -1093,6 +1093,7 @@
    char *initrd_cmd = NULL;
    char *dt_cmd = NULL;
    char *id = entry->filename;
@@ -112,7 +108,7 @@ index 4dfc4934e..8b152b443 100644
    grub_size_t id_len;
    char *hotkey = NULL;
    char *users = NULL;
-@@ -1111,6 +1112,52 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+@@ -1113,6 +1114,52 @@
    id_len = grub_strlen (id);
    if (id_len >= BLS_EXT_LEN && grub_strcmp (id + id_len - BLS_EXT_LEN, ".conf") == 0)
      id[id_len - BLS_EXT_LEN] = '\0';
@@ -164,8 +160,8 @@ index 4dfc4934e..8b152b443 100644
 +    }
  
    title = blsuki_get_val (entry, "title", NULL);
-   if (title != NULL)
-@@ -1178,6 +1225,7 @@ bls_create_entry (grub_blsuki_entry_t *entry)
+   version = blsuki_get_val (entry, "version", NULL);
+@@ -1174,6 +1221,7 @@
    grub_free (args);
    grub_free (argv);
    grub_free (src);
@@ -173,6 +169,3 @@ index 4dfc4934e..8b152b443 100644
  }
  
  #ifdef GRUB_MACHINE_EFI
--- 
-2.53.0
-

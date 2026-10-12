@@ -25,7 +25,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 
 --- a/grub-core/disk/ieee1275/ofdisk.c
 +++ b/grub-core/disk/ieee1275/ofdisk.c
-@@ -36,8 +36,13 @@
+@@ -40,8 +40,13 @@
  #define IEEE1275_DISK_ALIAS "/disk@"
  #define IEEE1275_NVMEOF_DISK_ALIAS "/nvme-of/controller@"
  
@@ -39,47 +39,47 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  static int is_boot_nvmeof;
  
  struct ofdisk_hash_ent
-@@ -554,20 +559,30 @@
+@@ -550,20 +555,30 @@
  {
    if (grub_strcmp (alias->type, "fcp") == 0)
-   {
--    if (boot_type &&
--	grub_strcmp (boot_type, alias->type) != 0)
-+    if (boot_parent &&
-+	grub_strcmp (boot_parent, alias->path) != 0)
-       {
--	grub_dprintf ("ofdisk", "Skipped device: %s, type %s did not match boot_type %s\n",
--	    alias->path, alias->type, boot_type);
-+	grub_dprintf ("ofdisk", "Skipped device: %s, doesn't match boot_parent %s\n",
-+	    alias->path, boot_parent);
- 	goto iter_children;
-       }
+     {
+-      if (boot_type &&
+-	  grub_strcmp (boot_type, alias->type) != 0)
++      if (boot_parent &&
++	  grub_strcmp (boot_parent, alias->path) != 0)
+ 	{
+-	  grub_dprintf ("ofdisk", "Skipped device: %s, type %s did not match boot_type %s\n",
+-	      alias->path, alias->type, boot_type);
++	  grub_dprintf ("ofdisk", "Skipped device: %s, doesn't match boot_parent %s\n",
++	      alias->path, boot_parent);
+ 	  goto iter_children;
+ 	}
  
--    if (grub_strcmp (boot_parent, alias->path) == 0)
-+    /* Allow set boot_parent and boot_type to NULL to force iteration */
-+    if (!boot_parent)
-       {
--	if (is_boot_nvmeof)
--	  dev_iterate_fcp_nvmeof(alias);
--	else
--	  dev_iterate_fcp_disks(alias);
-+	grub_dprintf ("ofdisk", "iterate %s\n", alias->path);
-+	dev_iterate_fcp_nvmeof(alias);
-+	dev_iterate_fcp_disks(alias);
-+      }
-+    else if (is_boot_nvmeof)
-+      {
-+	grub_dprintf ("ofdisk", "iterate nvmeof: %s\n", alias->path);
-+	dev_iterate_fcp_nvmeof(alias);
-+      }
-+    else
-+      {
-+	grub_dprintf ("ofdisk", "iterate fcp: %s\n", alias->path);
-+	dev_iterate_fcp_disks(alias);
-       }
-   }
+-      if (grub_strcmp (boot_parent, alias->path) == 0)
++      /* Allow set boot_parent and boot_type to NULL to force iteration */
++      if (!boot_parent)
++	{
++	  grub_dprintf ("ofdisk", "iterate %s\n", alias->path);
++	  dev_iterate_fcp_nvmeof(alias);
++	  dev_iterate_fcp_disks(alias);
++	}
++      else if (is_boot_nvmeof)
++	{
++	  grub_dprintf ("ofdisk", "iterate nvmeof: %s\n", alias->path);
++	  dev_iterate_fcp_nvmeof(alias);
++	}
++      else
+ 	{
+-	  if (is_boot_nvmeof)
+-	    dev_iterate_fcp_nvmeof(alias);
+-	  else
+-	    dev_iterate_fcp_disks(alias);
++	  grub_dprintf ("ofdisk", "iterate fcp: %s\n", alias->path);
++	  dev_iterate_fcp_disks(alias);
+ 	}
+     }
    else if (grub_strcmp (alias->type, "vscsi") == 0)
-@@ -590,9 +605,8 @@
+@@ -586,9 +601,8 @@
        if (boot_type &&
  	  grub_strcmp (boot_type, alias->type) != 0)
  	{
@@ -90,7 +90,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	}
  
        if (grub_ieee1275_open (alias->path, &ihandle))
-@@ -672,9 +686,8 @@
+@@ -668,9 +682,8 @@
        if (boot_type &&
  	  grub_strcmp (boot_type, alias->type) != 0)
  	{
@@ -101,7 +101,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  	}
  
        if (grub_add (grub_strlen (alias->path), sizeof ("/disk@7766554433221100"), &sz))
-@@ -1155,13 +1168,37 @@
+@@ -1151,13 +1164,37 @@
    return parent;
  }
  
@@ -142,7 +142,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    if (!canon)
      {
-@@ -1170,8 +1207,6 @@
+@@ -1166,8 +1203,6 @@
        grub_print_error ();
        return NULL;
      }
@@ -151,7 +151,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
    parent = get_parent_devname (canon, is_nvmeof);
    early_log ("%s is parent of %s\n", parent, canon);
-@@ -1225,9 +1260,9 @@
+@@ -1221,9 +1256,9 @@
        boot_parent = get_boot_device_parent (bootpath, &is_boot_nvmeof);
        boot_type =  grub_ieee1275_get_device_type (boot_parent);
        if (boot_type)

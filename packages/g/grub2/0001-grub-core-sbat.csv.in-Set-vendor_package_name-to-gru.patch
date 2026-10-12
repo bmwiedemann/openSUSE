@@ -1,0 +1,28 @@
+From 26d4eb318d3e5048fc666ba086cb9e3f4c0d146d Mon Sep 17 00:00:00 2001
+From: Michael Chang <mchang@suse.com>
+Date: Mon, 7 Sep 2026 18:15:49 +0800
+Subject: [PATCH] grub-core/sbat.csv.in: Set vendor_package_name to grub
+
+Replace @PACKAGE@ with a fixed "grub" in grub-core/sbat.csv.in.
+
+The "vendor_package_name" field is informational metadata. Using a
+constant value avoids variation from distro's package naming policies
+(for example, grub vs grub2) and matches SBAT.md examples for upstream
+GRUB.
+
+Signed-off-by: Michael Chang <mchang@suse.com>
+---
+ grub-core/sbat.csv.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/grub-core/sbat.csv.in b/grub-core/sbat.csv.in
+index d5a8be7ea..4776b6ee2 100644
+--- a/grub-core/sbat.csv.in
++++ b/grub-core/sbat.csv.in
+@@ -1,2 +1,2 @@
+ sbat,1,SBAT Version,sbat,1,https://github.com/rhboot/shim/blob/main/SBAT.md
+-grub,@GLOBAL_SBAT_LEVEL@,Free Software Foundation,@PACKAGE@,@VERSION@,https://www.gnu.org/software/grub/
++grub,@GLOBAL_SBAT_LEVEL@,Free Software Foundation,grub,@VERSION@,https://www.gnu.org/software/grub/
+-- 
+2.55.0
+

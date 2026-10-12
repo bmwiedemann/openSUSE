@@ -24,7 +24,7 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
 
 --- a/docs/grub.texi
 +++ b/docs/grub.texi
-@@ -3323,6 +3323,7 @@
+@@ -3423,6 +3423,7 @@
  * net_default_ip::
  * net_default_mac::
  * net_default_server::
@@ -32,7 +32,7 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
  * pager::
  * prefix::
  * pxe_default_server::
-@@ -3783,6 +3784,13 @@
+@@ -3883,6 +3884,13 @@
  @xref{Network}.
  
  
@@ -56,9 +56,9 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
 +
 +#define RETRY_DEFAULT_TIMEOUT 15
  
- static char *last_devpath;
- static grub_ieee1275_ihandle_t last_ihandle;
-@@ -822,7 +825,7 @@
+ #define EXTEND_PATH_64  64
+ #define EXTEND_PATH_512 512
+@@ -816,7 +819,7 @@
  }
  
  static grub_err_t
@@ -67,7 +67,7 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
  {
    grub_ieee1275_phandle_t dev;
    char *devpath;
-@@ -918,6 +921,56 @@
+@@ -912,6 +915,56 @@
    return 0;
  }
  
@@ -124,7 +124,7 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
  static void
  grub_ofdisk_close (grub_disk_t disk)
  {
-@@ -954,7 +1007,7 @@
+@@ -948,7 +1001,7 @@
  }
  
  static grub_err_t
@@ -133,7 +133,7 @@ Signed-off-by: Mukesh Kumar Chaurasiya <mchauras@linux.ibm.com>
  		  grub_size_t size, char *buf)
  {
    grub_err_t err;
-@@ -974,6 +1027,29 @@
+@@ -968,6 +1021,29 @@
  }
  
  static grub_err_t

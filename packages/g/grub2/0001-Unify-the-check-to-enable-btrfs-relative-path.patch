@@ -41,8 +41,8 @@ Signed-off-by: Michael Chang <mchang@suse.com>
 -
    if (!bootloader_id && config.grub_distributor)
      {
-       char *ptr;
-@@ -1064,6 +1064,45 @@
+       bootloader_id = xstrdup (config.grub_distributor);
+@@ -1059,6 +1059,45 @@
    grub_hostfs_init ();
    grub_host_init ();
  
@@ -88,7 +88,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
    switch (platform)
      {
      case GRUB_INSTALL_PLATFORM_I386_EFI:
-@@ -1478,8 +1517,7 @@
+@@ -1486,8 +1525,7 @@
                debug_image);
      }
  
@@ -98,7 +98,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
      {
        if (!load_cfg_f)
          load_cfg_f = grub_util_fopen (load_cfg, "wb");
-@@ -1670,22 +1708,14 @@
+@@ -1678,22 +1716,14 @@
  
  #ifdef __linux__
  
@@ -125,7 +125,7 @@ Signed-off-by: Michael Chang <mchang@suse.com>
  
        if (subvol && mount_path)
  	{
-@@ -1709,11 +1739,6 @@
+@@ -1717,11 +1747,6 @@
  	    }
  	}
  

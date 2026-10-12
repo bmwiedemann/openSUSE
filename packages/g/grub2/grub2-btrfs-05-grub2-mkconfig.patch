@@ -48,8 +48,8 @@ elsewhere. (bsc#1209165)
  # Do this as early as possible, since other commands might depend on it.
  # (e.g. the `loadfont' command might need lvm or raid modules)
  for i in ${GRUB_PRELOAD_MODULES} ; do
-@@ -43,7 +58,9 @@
- if [ "x${GRUB_TIMEOUT_BUTTON}" = "x" ] ; then GRUB_TIMEOUT_BUTTON="$GRUB_TIMEOUT" ; fi
+@@ -90,7 +105,9 @@
+ fi
  
  cat << EOF
 -if [ -s \$prefix/grubenv ]; then
@@ -59,7 +59,7 @@ elsewhere. (bsc#1209165)
    load_env
  fi
  
-@@ -417,3 +434,15 @@
+@@ -462,3 +479,15 @@
  if [ "x${GRUB_BADRAM}" != "x" ] ; then
    echo "badram ${GRUB_BADRAM}"
  fi
@@ -77,12 +77,12 @@ elsewhere. (bsc#1209165)
 +fi
 --- a/util/grub-mkconfig.in
 +++ b/util/grub-mkconfig.in
-@@ -299,7 +299,8 @@
-   GRUB_BADRAM \
-   GRUB_OS_PROBER_SKIP_LIST \
-   GRUB_DISABLE_SUBMENU \
--  GRUB_FORCE_EFI_ALL_VIDEO
-+  GRUB_FORCE_EFI_ALL_VIDEO \
+@@ -321,7 +321,8 @@
+   GRUB_SIMPLE_ACCESS_LEVEL \
+   GRUB_ADVANCED_ACCESS_LEVEL \
+   GRUB_RECOVERY_ACCESS_LEVEL \
+-  GRUB_BOOTNEXT_OMIT_INACTIVE
++  GRUB_BOOTNEXT_OMIT_INACTIVE \
 +  SUSE_BTRFS_SNAPSHOT_BOOTING
  
  if test "x${grub_cfg}" != "x"; then
@@ -104,7 +104,7 @@ elsewhere. (bsc#1209165)
  	fi;;
      xzfs)
  	rpool=`${grub_probe} --device ${GRUB_DEVICE} --target=fs_label 2>/dev/null || zdb -l ${GRUB_DEVICE} | awk -F \' '/ name/ { print $2 }'`
-@@ -295,7 +299,12 @@
+@@ -308,7 +312,12 @@
    if [ $PLATFORM != "emu" ]; then
      hotkey=0
    else
