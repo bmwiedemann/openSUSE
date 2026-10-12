@@ -40,23 +40,23 @@ BuildRequires:  pkgconfig(colord) >= 1.3
 BuildRequires:  pkgconfig(exiv2) >= 0.28
 BuildRequires:  pkgconfig(glib-2.0) >= 2.36.0
 BuildRequires:  pkgconfig(gsettings-desktop-schemas)
-BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.0.0
-BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0)
-BuildRequires:  pkgconfig(gstreamer-video-1.0)
+BuildRequires:  pkgconfig(gstreamer-1.0) >= 1.26.0
+BuildRequires:  pkgconfig(gstreamer-plugins-base-1.0) >= 1.26.0
+BuildRequires:  pkgconfig(gstreamer-video-1.0) >= 1.26.0
 BuildRequires:  pkgconfig(gthread-2.0)
 BuildRequires:  pkgconfig(gtk4)
 BuildRequires:  pkgconfig(lcms2) >= 2.6
 BuildRequires:  pkgconfig(libadwaita-1)
 BuildRequires:  pkgconfig(libheif) >= 1.11
-BuildRequires:  pkgconfig(libjxl)
-BuildRequires:  pkgconfig(libjxl_threads)
+BuildRequires:  pkgconfig(libjxl) >= 0.3.0
+BuildRequires:  pkgconfig(libjxl_threads) >= 0.3.0
 BuildRequires:  pkgconfig(libpng)
-BuildRequires:  pkgconfig(libportal)
-BuildRequires:  pkgconfig(libportal-gtk4)
-BuildRequires:  pkgconfig(libraw) >= 0.14
+BuildRequires:  pkgconfig(libportal) >= 0.9
+BuildRequires:  pkgconfig(libportal-gtk4) >= 0.9
+BuildRequires:  pkgconfig(libraw) >= 0.22
 BuildRequires:  pkgconfig(librsvg-2.0) >= 2.34.0
 BuildRequires:  pkgconfig(libwebp) >= 0.2.0
-BuildRequires:  pkgconfig(libwebpdemux)
+BuildRequires:  pkgconfig(libwebpdemux) >= 0.2.0
 BuildRequires:  pkgconfig(zlib)
 Obsoletes:      %{name}-devel < %{version}
 

@@ -1166,4 +1166,12 @@
     - Use a fast resize algorithm for big images</comment>
     <requestid>1381115</requestid>
   </revision>
+  <revision rev="133" vrev="2">
+    <srcmd5>cfa6f1e97129ca58ab06bf55bfc5d478</srcmd5>
+    <version>4.0</version>
+    <time>1791835619</time>
+    <user>dimstar_suse</user>
+    <comment>- Update version dependencies according to meson.build.</comment>
+    <requestid>1384259</requestid>
+  </revision>
 </revisionlist>
