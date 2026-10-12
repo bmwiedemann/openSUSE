@@ -17,7 +17,11 @@
 
 
 %if %{defined primary_python}
-%define use_python     %(echo %{primary_python} | sed -e 's|python3|python3.|g')
+%if "%{primary_python}" == "python3"
+%define use_python python3
+%else
+%define use_python     %(echo %{primary_python} | sed -E 's|python3([0-9]+)|python3.\\\1|g')
+%endif
 %define use_python_pkg %{primary_python}
 %else
 %define use_python python3
@@ -84,7 +88,7 @@
 %endif
 
 Name:           osc
-Version:        1.27.3
+Version:        1.28.0
 Release:        0
 Summary:        Command-line client for the Open Build Service
 License:        GPL-2.0-or-later
@@ -247,7 +251,6 @@ sphinx-build -b man doc .
 %{use_python} -mpip install \
   --verbose --progress-bar off --disable-pip-version-check \
   --root %{buildroot} \
-  --no-compile \
   --ignore-installed --no-deps \
   --no-index --find-links ./build osc
 
