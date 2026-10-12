@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sat Oct 10 14:39:50 UTC 2026 - Carsten Ziepke <kieltux@gmail.com>
+
+- Update to 4.3 
+  * Added new data sources for Goodreads and Hardcover.
+  * Updated MusicBrainz (kde#524735), IMDB (kde#525019), 
+    Numista (kde#474986), DarkHorse, Kino-Teatr, and
+    Kinopoisk (kde#525687) data sources.
+  * Added appropriate data rate limiting to many data sources.
+  * Added option to read composer during audio file import
+    (kde#524734).
+  * Added option to disable ISBN auto-formatting.
+  * Added option to include filters and loans when importing
+    a collection.
+  * Updated file exporting to include default file extensions.
+  * Updated Number fields to allow 64-bit values.
+  * Fixed bug with MusicBrainz keyword search (kde#524735).
+  * Fixed bug when exporting HTML files for collection with
+    no title.
+  * Fixed bug with restoring entry values after undoing
+    a collection append or merge.
+    
+-------------------------------------------------------------------
 Fri Aug 28 07:01:14 UTC 2026 - Christophe Marin <christophe@krop.fr>
 
 - Update to 4.2.2
