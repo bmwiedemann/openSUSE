@@ -1,0 +1,15 @@
+<services>
+  <service name="obs_scm" mode="manual">
+    <param name="url">https://github.com/rpatters1/mnxdom.git</param>
+    <param name="scm">git</param>
+    <param name="submodule">enable</param>
+    <param name="revision">v3.0.1</param>
+    <param name="versionformat">3.0.1</param>
+  </service>
+  <service name="tar" mode="buildtime" />
+  <service name="recompress" mode="buildtime">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="manual"/>
+</services>
