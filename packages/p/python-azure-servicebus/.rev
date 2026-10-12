@@ -445,4 +445,15 @@
     CHANGELOG.md file provided with this package (forwarded request 1314690 from glaubitz)</comment>
     <requestid>1314908</requestid>
   </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>7fee08f9d4883d74d1f0e7b18693c363</srcmd5>
+    <version>7.15.0</version>
+    <time>1791835656</time>
+    <user>dimstar_suse</user>
+    <comment>- New upstream release
+  + Version 7.15.0
+  + For detailed information about changes see the
+    CHANGELOG.md file provided with this package (forwarded request 1384281 from glaubitz)</comment>
+    <requestid>1384284</requestid>
+  </revision>
 </revisionlist>
