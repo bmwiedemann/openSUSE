@@ -18,6 +18,12 @@
 
 %global __builder ninja
 
+%if 0%{?suse_version} >= 1699
+%bcond_without nanobind
+%else
+%bcond_with    nanobind
+%endif
+
 %if 0%{?suse_version} > 1500
 %ifarch aarch64 %{arm}
 %bcond_with imageviewer
@@ -47,17 +53,17 @@
 %endif
 
 %global images_ts 20260825T082532
-%global so_ver 3_1
-%global major_minor_ver 3.1
+%global so_ver 3_2
+%global major_minor_ver 3.2
 
 Name:           OpenImageIO
-Version:        3.1.17.0
+Version:        3.2.1.1
 Release:        0
 Summary:        Library for Reading and Writing Images
 License:        Apache-2.0
 Group:          Productivity/Graphics/Other
 URL:            https://www.openimageio.org/
-Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/archive/refs/tags/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Source0:        https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/download/v%{version}/OpenImageIO-%{version}.tar.gz
 # this contains the actual test images, only used during build
 Source1:        oiio-images-%{images_ts}.tar.xz
 Source2:        series
@@ -65,8 +71,8 @@ Source2:        series
 Patch1:         skip-heif-tests.patch
 # NOTE: Please don't uncomment a build requirement unless you have submitted the package to factory and it exists
 #BuildRequires:  Field3D-devel
-BuildRequires:  cmake >= 3.18.2
-BuildRequires:  dcmtk-devel
+BuildRequires:  cmake >= 3.23
+BuildRequires:  dcmtk-devel >= 3.6.2
 BuildRequires:  ninja
 %if %{with apidocs}
 BuildRequires:  doxygen
@@ -88,7 +94,11 @@ BuildRequires:  pkgconfig
 BuildRequires:  pugixml-devel
 %if %{with python_bindings}
 BuildRequires:  python3-devel >= 3.9
+%if %{with nanobind}
+BuildRequires:  python3-nanobind-devel >= 2.13
+%else
 BuildRequires:  python3-pybind11-devel >= 2.7
+%endif
 # required for testsuite
 BuildRequires:  python3-numpy
 %endif
@@ -101,7 +111,7 @@ BuildRequires:  pkgconfig(OpenEXR) >= 3.1
 BuildRequires:  ptex-devel-static
 %endif
 BuildRequires:  pkgconfig(bzip2)
-BuildRequires:  pkgconfig(fmt)
+BuildRequires:  pkgconfig(fmt) >= 9
 BuildRequires:  pkgconfig(freetype2) >= 2.10
 # we need the full package to make the testsuite pass:
 # https://github.com/AcademySoftwareFoundation/OpenImageIO/issues/4919
@@ -124,8 +134,8 @@ BuildRequires:  cmake(Qt6Gui)
 BuildRequires:  cmake(Qt6OpenGLWidgets)
 BuildRequires:  cmake(Qt6Widgets)
 %endif
-BuildRequires:  pkgconfig(libraw) >= 0.20
-BuildRequires:  pkgconfig(libtiff-4) > 4.0
+BuildRequires:  pkgconfig(libraw) >= 0.21
+BuildRequires:  pkgconfig(libtiff-4) > 4.1
 BuildRequires:  pkgconfig(libwebp) >= 1.1
 BuildRequires:  pkgconfig(libwebpdecoder)
 BuildRequires:  pkgconfig(libwebpdemux)
@@ -237,6 +247,9 @@ export CXX="g++-%{?force_gcc_version}"
     -DCMAKE_SKIP_RPATH:BOOL=ON \
     -DUSE_OPENCV:BOOL=%{?with_opencv:ON}%{!?with_opencv:OFF} \
     -DUSE_PYTHON:BOOL=%{?with_python_bindings:ON}%{!?with_python_bindings:OFF} \
+    %if %{without nanobind}
+    -DOIIO_PYTHON_BINDINGS_BACKEND=pybind11 \
+    %endif
     -DUSE_Ptex:BOOL=%{?with_ptex:ON}%{!?with_ptex:OFF} \
     -DPYTHON_EXECUTABLE:PATH=%{_bindir}/python3 \
     -DPLUGIN_SEARCH_PATH:PATH=%{_libdir}/%{name}-%{major_minor_ver} \

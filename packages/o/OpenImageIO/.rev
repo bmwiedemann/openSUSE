@@ -764,4 +764,41 @@ Updated oiio-detectplatform-others.patch to handle armv6l
     @luna-y-kim / Luna Kim)</comment>
     <requestid>1375322</requestid>
   </revision>
+  <revision rev="90" vrev="1">
+    <srcmd5>b691e9bc717360196247753c7c934fce</srcmd5>
+    <version>3.2.1.1</version>
+    <time>1791835789</time>
+    <user>dimstar_suse</user>
+    <comment>- Adjust memory _contraints: 30G
+
+- Update to 3.2.1.1
+  - fix(ImageInput/Output): Honor the data window origin in the
+    image_span read/write methods. #5531
+  - fix(docs): Fix oiiotool man page generation errors with gawk.
+    #5528
+- drop 5528.patch
+
+- Switch the url since we are now using the tarball which is
+  covered by their sigstore signature
+
+- Update to 3.2.1.0
+  - Executive Summary / Highlights
+    - JPEG support for writing Ultra-HDR images.
+    - FLIP perceptual image comparison via
+      ImageBufAlgo::flip_diff() and oiiotool --flipdiff.
+    - Many color management improvements: use of Color Interop
+      Forum (CIF) standardized names throughout, support for CICF
+      codes in file formats that allow them, better ICC profile R/W
+      support.
+    - Improved &quot;thumbnail image&quot; support by several image file
+      formats, and via new oiiotool commands for adding and
+      extracting thumbnails.
+    - Dozens and dozens of security/bug improvements to harden the
+      various file format readers against corrupted or malicious
+      image file input.
+    - Switch Python bindings to nanobind by default.
+    - New ABI version namespacing scheme makes 3.2 fully API, ABI,
+      and link compatible with OpenImageIO 3.1.</comment>
+    <requestid>1384381</requestid>
+  </revision>
 </revisionlist>

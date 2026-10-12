@@ -1,4 +1,53 @@
 -------------------------------------------------------------------
+Mon Oct 12 14:41:00 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Adjust memory _contraints: 30G
+
+-------------------------------------------------------------------
+Sat Oct  3 12:03:05 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.1.1
+  - fix(ImageInput/Output): Honor the data window origin in the
+    image_span read/write methods. #5531
+  - fix(docs): Fix oiiotool man page generation errors with gawk.
+    #5528
+- drop 5528.patch
+
+-------------------------------------------------------------------
+Fri Oct  2 14:20:57 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Switch the url since we are now using the tarball which is
+  covered by their sigstore signature
+
+-------------------------------------------------------------------
+Thu Oct  1 21:23:10 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
+
+- Update to 3.2.1.0
+  - Executive Summary / Highlights
+    - JPEG support for writing Ultra-HDR images.
+    - FLIP perceptual image comparison via
+      ImageBufAlgo::flip_diff() and oiiotool --flipdiff.
+    - Many color management improvements: use of Color Interop
+      Forum (CIF) standardized names throughout, support for CICF
+      codes in file formats that allow them, better ICC profile R/W
+      support.
+    - Improved "thumbnail image" support by several image file
+      formats, and via new oiiotool commands for adding and
+      extracting thumbnails.
+    - Dozens and dozens of security/bug improvements to harden the
+      various file format readers against corrupted or malicious
+      image file input.
+    - Switch Python bindings to nanobind by default.
+    - New ABI version namespacing scheme makes 3.2 fully API, ABI,
+      and link compatible with OpenImageIO 3.1.
+  For alle the details see:
+  https://github.com/AcademySoftwareFoundation/OpenImageIO/releases/tag/v3.2.1.0
+- Adapt minimum versions to follow upstream.
+- switch python bindings to nanobind on TW
+- Add 5528.patch:
+  Fix building of the oiiotool man page
+
+-------------------------------------------------------------------
 Wed Sep  2 07:35:06 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
 
 - More test adjustments: sgi fails now
