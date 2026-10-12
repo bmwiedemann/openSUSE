@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 15:10:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- drop duplicate LICENSE.md from dist-info (shipped via %%license)
+
+-------------------------------------------------------------------
 Thu Sep  3 17:13:37 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.2.3:

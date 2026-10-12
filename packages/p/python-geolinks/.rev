@@ -39,4 +39,12 @@ Local build openSUSE_Tumbleweed/aarch64 green, rpmlint 0 badness,
 1 test passed per flavour (python313, python314).</comment>
     <requestid>1375669</requestid>
   </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>0db5e76075747828482fa3f7e2e11828</srcmd5>
+    <version>0.2.3</version>
+    <time>1791835743</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384364</requestid>
+  </revision>
 </revisionlist>

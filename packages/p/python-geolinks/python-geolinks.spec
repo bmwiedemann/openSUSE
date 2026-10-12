@@ -51,6 +51,9 @@ Python implementation of Cat-Interop utilities for geospatial links.
 %pyproject_install
 %python_clone -a %{buildroot}%{_bindir}/geolinks
 %python_group_libalternatives geolinks
+# %%license already ships LICENSE.md in %%{_datadir}/licenses; drop the
+# dist-info copy to avoid files-duplicate
+%python_expand rm -rf %{buildroot}%{$python_sitelib}/geolinks-%{version}.dist-info/licenses
 %python_expand %fdupes %{buildroot}%{$python_sitelib}
 
 %check
