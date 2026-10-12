@@ -1,7 +1,7 @@
 #
 # spec file for package python-pyramid-chameleon
 #
-# Copyright (c) 2025 SUSE LLC
+# Copyright (c) 2026 SUSE LLC and contributors
 # Copyright (c) 2017 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
@@ -25,6 +25,8 @@ License:        BSD-3-Clause AND ZPL-2.1 AND MIT
 URL:            https://github.com/Pylons/pyramid_chameleon
 Source:         https://files.pythonhosted.org/packages/source/p/pyramid_chameleon/pyramid_chameleon-%{version}.tar.gz
 Patch0:         pyramid2.patch
+# PATCH-FIX-OPENSUSE Use importlib.resources
+Patch1:         no-more-pkg-resources.patch
 BuildRequires:  %{python_module Chameleon}
 BuildRequires:  %{python_module hupper}
 BuildRequires:  %{python_module pip}
@@ -47,8 +49,7 @@ These are bindings for the `Chameleon templating system
 <http://pagetemplates.org/>`_ for the Pyramid_ web framework.
 
 %prep
-%setup -q -n pyramid_chameleon-%{version}
-%autopatch -p1
+%autosetup -p1 -n pyramid_chameleon-%{version}
 # Remove CC-SA-NC licensed stuff
 rm -rf docs/
 
@@ -67,6 +68,6 @@ rm -rf docs/
 %doc CHANGES.txt README.rst
 %license LICENSE.txt COPYRIGHT.txt CONTRIBUTORS.txt
 %{python_sitelib}/pyramid[-_]chameleon
-%{python_sitelib}/pyramid[-_]chameleon-%{version}*-info
+%{python_sitelib}/pyramid[-_]chameleon-%{version}.dist-info
 
 %changelog

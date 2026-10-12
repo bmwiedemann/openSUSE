@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 03:39:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to find assets.
+
+-------------------------------------------------------------------
 Tue Jun 10 12:29:25 UTC 2025 - Markéta Machová <mmachova@suse.com>
 
 - Convert to pip-based build

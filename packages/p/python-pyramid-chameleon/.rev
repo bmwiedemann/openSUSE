@@ -47,4 +47,13 @@
     <comment>- Convert to pip-based build</comment>
     <requestid>1284438</requestid>
   </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>c9dc5fe1bd66583077ebe74bb1267f14</srcmd5>
+    <version>0.3</version>
+    <time>1791835550</time>
+    <user>dimstar_suse</user>
+    <comment>- Add patch no-more-pkg-resources.patch:
+  * Use importlib.resources to find assets.</comment>
+    <requestid>1384142</requestid>
+  </revision>
 </revisionlist>

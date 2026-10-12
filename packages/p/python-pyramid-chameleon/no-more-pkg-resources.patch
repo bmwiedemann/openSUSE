@@ -1,0 +1,27 @@
+Index: pyramid_chameleon-0.3/pyramid_chameleon/renderer.py
+===================================================================
+--- pyramid_chameleon-0.3.orig/pyramid_chameleon/renderer.py
++++ pyramid_chameleon-0.3/pyramid_chameleon/renderer.py
+@@ -1,8 +1,7 @@
+ import os
+ import re
+ import threading
+-
+-import pkg_resources
++from importlib.resources import files
+ 
+ from zope.interface import implementer
+ 
+@@ -111,9 +110,9 @@ class ChameleonRendererLookup(object):
+                     # should die
+                     package_name = caller_package(4).__name__
+                     filename = spec_without_macro
+-                abspath = pkg_resources.resource_filename(package_name,
+-                                                          filename)
+-                if not pkg_resources.resource_exists(package_name, filename):
++                resource_path = files(package_name).joinpath(filename)
++                abspath = str(resource_path.absolute())
++                if not resource_path.is_file():
+                     raise ValueError(
+                         'Missing template asset: %s (%s)' % (
+                             spec_without_macro, abspath)
