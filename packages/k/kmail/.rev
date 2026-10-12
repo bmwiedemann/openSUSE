@@ -1016,4 +1016,12 @@
     <comment>KDE release gear 26.08.2 (forwarded request 1383113 from krop)</comment>
     <requestid>1383495</requestid>
   </revision>
+  <revision rev="128" vrev="2">
+    <srcmd5>9d5aa1532ac4d2d873c0c1ac25d261d8</srcmd5>
+    <version>26.08.2</version>
+    <time>1791835527</time>
+    <user>dimstar_suse</user>
+    <comment>- Be stricter about the ktextaddons dependency</comment>
+    <requestid>1384175</requestid>
+  </revision>
 </revisionlist>

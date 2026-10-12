@@ -101,7 +101,7 @@ Requires:       kdepim-addons
 Requires:       kdepim-runtime
 Requires:       kmail-account-wizard
 Requires:       kmail-application-icons
-Requires:       ktextaddons
+%requires_eq    ktextaddons
 Recommends:     akonadi-import-wizard
 Recommends:     akonadi-search
 Recommends:     kleopatra
