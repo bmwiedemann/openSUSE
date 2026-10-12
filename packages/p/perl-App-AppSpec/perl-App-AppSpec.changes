@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 13:17:41 UTC 2026 - Tina Müller <timueller+perl@suse.de>
+
+- updated to 0.7.0 (v0.7.0)
+   see /usr/share/doc/packages/perl-App-AppSpec/Changes
+
+  v0.7.0 2026-10-12 12:43:00+02:00
+
+      - Add support for fish shell (App::Spec v0.16)
+      - Support unicode in completion and pod
+
+-------------------------------------------------------------------
 Sun Mar 23 17:02:39 UTC 2025 - Tina Müller <tina.mueller@suse.com>
 
 - initial package 0.6.0 (0.006)

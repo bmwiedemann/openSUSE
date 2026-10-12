@@ -7,4 +7,16 @@
     <comment>We would like to use this for openQA</comment>
     <requestid>1350776</requestid>
   </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>01b882886f462db250832e35ff458cb4</srcmd5>
+    <version>0.7.0</version>
+    <time>1791835773</time>
+    <user>dimstar_suse</user>
+    <comment>- updated to 0.7.0 (v0.7.0)
+   see /usr/share/doc/packages/perl-App-AppSpec/Changes
+  v0.7.0 2026-10-12 12:43:00+02:00
+      - Add support for fish shell (App::Spec v0.16)
+      - Support unicode in completion and pod</comment>
+    <requestid>1384375</requestid>
+  </revision>
 </revisionlist>
