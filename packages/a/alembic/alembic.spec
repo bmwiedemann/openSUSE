@@ -1,8 +1,8 @@
 #
 # spec file for package alembic
 #
-# Copyright (c) 2024 SUSE LLC
-# Copyright (c) 2019 LISA GmbH, Bingen, Germany.
+# Copyright (c) 2026 SUSE LLC and contributors
+# Copyright (c) 2019-2026 LISA GmbH, Bingen, Germany.
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -19,19 +19,16 @@
 
 %define libname libAlembic1_8
 Name:           alembic
-Version:        1.8.8
+Version:        1.8.12
 Release:        0
 Summary:        Computer graphics interchange framework
 License:        BSD-3-Clause
-Group:          Development/Libraries/C and C++
 URL:            https://www.alembic.io
 Source:         https://github.com/%{name}/%{name}/archive/%{version}.tar.gz#/%{name}-%{version}.tar.gz
-# PATCH-FIX-UPSTREAM fuzztest.patch -- Workaround https://github.com/alembic/alembic/issues/346
-Patch0:         fuzztest.patch
-BuildRequires:  cmake >= 3.13
+BuildRequires:  cmake >= 3.29
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig
-BuildRequires:  pkgconfig(OpenEXR)
+BuildRequires:  cmake(Imath) >= 3.0
 BuildRequires:  pkgconfig(zlib)
 # Ogawa does only support little endianess
 ExcludeArch:    ppc64 s390x
@@ -44,7 +41,6 @@ rendering scenes into rendered image data.
 
 %package -n %{libname}
 Summary:        Sparse volume data structure library
-Group:          System/Libraries
 
 %description -n %{libname}
 Alembic distills complex, animated scenes into a non-procedural, application-
@@ -54,8 +50,8 @@ rendering scenes into rendered image data.
 
 %package devel
 Summary:        Development files for alembic
-Group:          Development/Libraries/C and C++
 Requires:       %{libname} = %{version}
+Requires:       cmake(Imath) >= 3.0
 
 %description	devel
 This package contains the C++ header files and symbolic links to the shared
@@ -64,27 +60,26 @@ you will need to install %{name}-devel.
 
 %prep
 %autosetup -p1
-# Where to install the Alembic's cmake files
-sed -i "s/\(ConfigPackageLocation\) lib/\1 %{_lib}/" lib/Alembic/CMakeLists.txt
 
 %build
 %cmake \
-    -DALEMBIC_LIB_INSTALL_DIR=%{_libdir} \
     -DUSE_ARNOLD=OFF \
     -DUSE_BINARIES=OFF \
+    -DCMAKE_SKIP_BUILD_RPATH=ON \
     -DUSE_TESTS=ON
 
 %make_build
 
 %check
 export LD_LIBRARY_PATH="%{buildroot}%{_libdir}"
-%ctest --verbose
+# CurvesTest and GeomBaseTest both write and read curves1.abc in the same
+# directory, so they fail randomly when ctest runs them in parallel
+%ctest --verbose --parallel 1
 
 %install
 %cmake_install
 
-%post -n %{libname} -p /sbin/ldconfig
-%postun -n %{libname} -p /sbin/ldconfig
+%ldconfig_scriptlets -n %{libname}
 
 %files -n %{libname}
 %license LICENSE.txt

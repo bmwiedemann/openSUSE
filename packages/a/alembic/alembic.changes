@@ -1,4 +1,41 @@
 -------------------------------------------------------------------
+Mon Oct 12 08:46:00 UTC 2026 - Hans-Peter Jansen <hpj@urpla.net>
+
+- Disable RPATH
+
+-------------------------------------------------------------------
+Sun Oct 11 14:31:23 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 1.8.12 (crossing 1.8.9, 1.8.10, 1.8.11):
+  * Fix buffer overruns when reading maliciously crafted files: Ogawa
+    strings and wstrings (PR500), Ogawa data with dimensions smaller
+    than the stored data (PR494) and xform op channels (PR497). No
+    CVE ids are known for these.
+  * Ogawa: better handling of very large Ogawa version numbers (PR472)
+  * OPoints: write an empty sample if no ids are given (PR501)
+  * Drop support for IlmBase and Python 2: Imath 3+ is now required
+    and the public headers include <Imath/...> (Issue 431)
+  * CMake: minimum version is now 3.29 (PR487); the config files are
+    installed to ${CMAKE_INSTALL_LIBDIR}/cmake/Alembic (PR464)
+  * Many more fixes and improvements; see upstream's release notes
+    for the full list
+  * The soname is unchanged (libAlembic.so.1.8), exported symbols
+    are identical to 1.8.8
+- Drop fuzztest.patch: upstream's fuzzTest.cpp already accepts the
+  32-bit error message (alembic issue 346); the test passes on i586
+  without the patch
+- BuildRequires: cmake >= 3.29 as required by upstream, and
+  cmake(Imath) >= 3.0 instead of pkgconfig(OpenEXR); alembic-devel
+  now Requires cmake(Imath), needed by AlembicConfig.cmake and the
+  public headers
+- Run the tests serially (%ctest --parallel 1): CurvesTest and
+  GeomBaseTest share curves1.abc and failed randomly when run in
+  parallel
+- Spec cleanup: drop the obsolete sed on ConfigPackageLocation and
+  the unused -DALEMBIC_LIB_INSTALL_DIR, use %ldconfig_scriptlets,
+  remove Group tags
+
+-------------------------------------------------------------------
 Sat Dec  7 14:57:55 UTC 2024 - Andrea Manzini <andrea.manzini@suse.com>
 
 - update to 1.8.8:
