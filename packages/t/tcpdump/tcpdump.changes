@@ -1,4 +1,26 @@
 -------------------------------------------------------------------
+Sun Oct 11 13:37:28 UTC 2026 - Andrea Manzini <andrea.manzini@suse.com>
+
+- Update to 4.99.7:
+  * Fix an integer underflow in the ISAKMP (IKEv2) ID printer:
+    validate item_len before subtracting sizeof(ikev2_id), short
+    payloads now print "[payload too short]" (no CVE id listed by
+    upstream)
+  * MPTCP: parse the MP_CAPABLE data_len field, print the flags of
+    the MP_CAPABLE option, dissect the MP_TCPRST sub-option
+  * TCP: add support for the AE (AccECN) flag
+  * IP: update the "presumed TSO" offload case for "BIG TCP"
+  * IP: call ip_demux_print() with the correct payload length
+  * NetFlow: use tcp_flag_values[] for TCP flags
+  * Print an error message about --count without -r or -V
+  * Always use setvbuf(3) instead of setlinebuf(3), treat SA_RESTART
+    as optional, fix compiling on GNU/Hurd
+- Refresh tcpdump.keyring from upstream: same signing key
+  (E089DEF1D9C15D0D), expiry extended to 2027-05-08
+- Spec cleanup: BuildRequires pkgconfig(libsmi) instead of
+  libsmi-devel, add pkgconfig
+
+-------------------------------------------------------------------
 Fri Jan  2 08:55:43 UTC 2026 - Pedro Monreal <pmonreal@suse.com>
 
 - Update to 4.99.6:
