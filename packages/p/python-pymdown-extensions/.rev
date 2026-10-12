@@ -286,4 +286,12 @@ update to version 10.17.2</comment>
     <comment>1</comment>
     <requestid>1380049</requestid>
   </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>e6bc17de424a94dfe617d474abea2723</srcmd5>
+    <version>12.2</version>
+    <time>1791835636</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384224</requestid>
+  </revision>
 </revisionlist>
