@@ -1,0 +1,93 @@
+-------------------------------------------------------------------
+Thu Sep 10 19:35:44 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.1.0
+
+-------------------------------------------------------------------
+Thu Sep 03 20:43:32 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.1
+
+-------------------------------------------------------------------
+Fri Aug 28 08:54:30 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta10
+
+-------------------------------------------------------------------
+Thu Aug 20 21:09:43 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta9
+
+-------------------------------------------------------------------
+Mon Aug 10 21:28:20 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta8
+
+-------------------------------------------------------------------
+Tue Aug  4 00:20:37 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Add 'git' as runtime dep for cloning plugins 
+
+-------------------------------------------------------------------
+Fri Jul 31 03:23:21 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta7
+
+-------------------------------------------------------------------
+Mon Jul 27 22:45:11 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta6
+
+-------------------------------------------------------------------
+Sat Jul 25 19:57:17 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta5
+
+-------------------------------------------------------------------
+Thu Jul 23 23:49:40 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta4
+
+-------------------------------------------------------------------
+Thu Jul 16 13:57:12 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta3
+
+-------------------------------------------------------------------
+Thu Jul 09 13:34:42 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0-beta2
+
+-------------------------------------------------------------------
+Fri Jul 03 11:22:42 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0-beta1
+
+-------------------------------------------------------------------
+Wed Jul 01 20:09:44 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~beta
+
+-------------------------------------------------------------------
+Wed Jul 01 13:26:18 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Add 'wireplumber-devel' buildtime dep
+- Update to version 5.0.0~alpha:
+  * chore(nix): add wireplumber to buildInputs
+  * feat(pipewire): drop wpctl completely
+  * feat(pipewire): device volume via libwireplumber, accelerated volume keys
+
+-------------------------------------------------------------------
+Fri Jun 26 19:49:04 UTC 2026 - Khang Lê <neyfua@proton.me>
+
+- Update to version 5.0.0~alpha
+
+-------------------------------------------------------------------
+Sat Jun 20 10:57:59 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- Add harfbuzz-devel buildtime dep 
+
+-------------------------------------------------------------------
+Mon Jun  8 15:51:09 UTC 2026 - Khang Lê <ogkhang.05@gmail.com>
+
+- First commit

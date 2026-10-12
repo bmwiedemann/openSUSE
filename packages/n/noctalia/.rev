@@ -1,0 +1,10 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a59f21de83244a6915b26093ddfa0c50</srcmd5>
+    <version>5.1.0</version>
+    <time>1791835530</time>
+    <user>dimstar_suse</user>
+    <comment>This package of Noctalia is the v5 of Noctalia-shell project, it's a complete rewritten in C++ and stopped depending on Quickshell. Noctalia will perform much differ than Noctalia-shell package so if it's needed I can request for Noctalia-shell removal on Factory project.</comment>
+    <requestid>1384110</requestid>
+  </revision>
+</revisionlist>

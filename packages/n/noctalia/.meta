@@ -1,0 +1,14 @@
+<package name="noctalia" project="openSUSE:Factory">
+  <title>A sleek and minimal desktop shell thoughtfully crafted for Wayland. </title>
+  <description>noctalia (stable release)
+===
+
+Noctalia is a native Wayland desktop shell for people who want a polished, configurable Linux desktop without stitching
+together a separate bar, launcher, notification daemon, lock screen, wallpaper tool, and settings UI.
+
+It provides the shell layer around your compositor: bars, widgets, dock, launcher, control center, notifications,
+wallpaper, lock screen, session actions, clipboard history, OSDs, tray integration, and desktop widgets. The project is
+built directly on Wayland and OpenGL ES with no Qt or GTK dependency, so the UI, rendering, configuration, and IPC model
+are designed as one cohesive shell instead of a collection of unrelated panels and scripts.</description>
+  <url>https://github.com/noctalia-dev/noctalia</url>
+</package>
