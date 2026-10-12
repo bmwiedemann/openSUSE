@@ -1,4 +1,22 @@
 -------------------------------------------------------------------
+Mon Oct 12 16:01:01 UTC 2026 - Richard Rahl <rrahl0@opensuse.org>
+
+- Update to version 1.104.1:
+  + Go is updated to version 1.27
+  + WireGuard packet buffering uses less memory while waiting for peer
+    handshakes
+  + WireGuard packet queue depth scales with CPU core count, reducing peak
+    memory usage under heavy traffic
+  + Client-side netmap caching improves start up speed and connectivity when
+    the Tailscale control plane is unreachable
+  + WireGuard allocates a single packet buffer for batched I/O, improving
+    throughput and reducing memory usage
+  + An issue that could prevent traffic over IPv6 link-local addresses from
+    flowing through direct and Tailscale Peer Relay connections is resolved
+  + An issue preventing Linux desktop detection from working on Wayland
+    environments is resolved
+
+-------------------------------------------------------------------
 Tue Sep 29 18:55:42 UTC 2026 - Marcus Rueckert <mrueckert@suse.de>
 
 - Update 1.102.5

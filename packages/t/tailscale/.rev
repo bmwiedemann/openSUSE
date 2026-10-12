@@ -688,4 +688,25 @@
     if it cannot reconnect within one minute. (forwarded request 1381533 from darix)</comment>
     <requestid>1381653</requestid>
   </revision>
+  <revision rev="60" vrev="1">
+    <srcmd5>704a85d4daf1eedd25cd672edcb57663</srcmd5>
+    <version>1.104.1</version>
+    <time>1791835739</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to version 1.104.1:
+  + Go is updated to version 1.27
+  + WireGuard packet buffering uses less memory while waiting for peer
+    handshakes
+  + WireGuard packet queue depth scales with CPU core count, reducing peak
+    memory usage under heavy traffic
+  + Client-side netmap caching improves start up speed and connectivity when
+    the Tailscale control plane is unreachable
+  + WireGuard allocates a single packet buffer for batched I/O, improving
+    throughput and reducing memory usage
+  + An issue that could prevent traffic over IPv6 link-local addresses from
+    flowing through direct and Tailscale Peer Relay connections is resolved
+  + An issue preventing Linux desktop detection from working on Wayland
+    environments is resolved (forwarded request 1384357 from rrahl0)</comment>
+    <requestid>1384358</requestid>
+  </revision>
 </revisionlist>
