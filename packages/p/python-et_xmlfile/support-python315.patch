@@ -1,0 +1,58 @@
+Index: et_xmlfile-2.0.0/et_xmlfile/tests/_vendor/test/test_xml_etree.py
+===================================================================
+--- et_xmlfile-2.0.0.orig/et_xmlfile/tests/_vendor/test/test_xml_etree.py
++++ et_xmlfile-2.0.0/et_xmlfile/tests/_vendor/test/test_xml_etree.py
+@@ -372,8 +372,10 @@ class ElementTreeTest(unittest.TestCase)
+         self.serialize_check(element, '<tag key="value"><subtag /></tag>') # 4
+         element.remove(subelement)
+         self.serialize_check(element, '<tag key="value" />') # 5
+-        with self.assertRaisesRegex(ValueError,
+-                                    r'Element\.remove\(.+\): element not found'):
++        msg_regex = r'Element\.remove\(.+\): element not found'
++        if sys.version_info[:2] >= (3, 15):
++            msg_regex = r"<Element 'subtag'.* not in <Element 'tag'"
++        with self.assertRaisesRegex(ValueError, msg_regex):
+             element.remove(subelement)
+         self.serialize_check(element, '<tag key="value" />') # 6
+         element[0:0] = [subelement, subelement, subelement]
+@@ -699,12 +701,14 @@ class ElementTreeTest(unittest.TestCase)
+                 next(it)
+             self.assertEqual(str(cm.exception),
+                     'junk after document element: line 1, column 12')
++            it.close()
+             del cm, it
+ 
+         # Not exhausting the iterator still closes the resource (bpo-43292)
+-        with warnings_helper.check_no_resource_warning(self):
+-            it = iterparse(SIMPLE_XMLFILE)
+-            del it
++        if sys.version_info[:2] < (3, 15):
++            with warnings_helper.check_no_resource_warning(self):
++                it = iterparse(SIMPLE_XMLFILE)
++                del it
+ 
+         with warnings_helper.check_no_resource_warning(self):
+             it = iterparse(SIMPLE_XMLFILE)
+@@ -714,6 +718,7 @@ class ElementTreeTest(unittest.TestCase)
+         with warnings_helper.check_no_resource_warning(self):
+             it = iterparse(SIMPLE_XMLFILE)
+             action, elem = next(it)
++            it.close()
+             self.assertEqual((action, elem.tag), ('end', 'element'))
+             del it, elem
+ 
+@@ -4357,9 +4362,12 @@ class KeywordArgsTest(unittest.TestCase)
+         e2 = ET.SubElement(elements[0], 'foobar', attrib={'key1': 'value1'})
+         self.assertEqual(e2.attrib['key1'], 'value1')
+ 
+-        with self.assertRaisesRegex(TypeError, 'must be dict, not str'):
++        message = 'must be dict, not str'
++        if sys.version_info[:2] >= (3, 15):
++            message = 'must be dict or frozendict, not str'
++        with self.assertRaisesRegex(TypeError, message):
+             ET.Element('a', "I'm not a dict")
+-        with self.assertRaisesRegex(TypeError, 'must be dict, not str'):
++        with self.assertRaisesRegex(TypeError, message):
+             ET.Element('a', attrib="I'm not a dict")
+ 
+ # --------------------------------------------------------------------

@@ -1,4 +1,10 @@
 -------------------------------------------------------------------
+Mon Oct 12 00:45:57 UTC 2026 - Steve Kowalik <steven.kowalik@suse.com>
+
+- Add patch support-python315.patch:
+  * Support Python 3.15 changes.
+
+-------------------------------------------------------------------
 Wed Nov 19 04:36:02 UTC 2025 - Steve Kowalik <steven.kowalik@suse.com>
 
 - Add patch support-python314.patch:

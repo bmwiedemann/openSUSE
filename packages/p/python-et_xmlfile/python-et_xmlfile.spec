@@ -1,7 +1,7 @@
 #
 # spec file for package python-et_xmlfile
 #
-# Copyright (c) 2025 SUSE LLC and contributors
+# Copyright (c) 2026 SUSE LLC and contributors
 #
 # All modifications and additions to the file contributed by third parties
 # remain the property of their copyright owners, unless otherwise agreed
@@ -26,6 +26,8 @@ URL:            https://foss.heptapod.net/openpyxl/et_xmlfile
 Source0:        https://foss.heptapod.net/openpyxl/et_xmlfile/-/archive/%{version}/et_xmlfile-%{version}.tar.gz
 # PATCH-FIX-UPSTREAM https://foss.heptapod.net/openpyxl/et_xmlfile/-/merge_requests/4
 Patch0:         support-python314.patch
+# PATCH-FIX-OPENSUSE Support Python 3.15 changes
+Patch1:         support-python315.patch
 BuildRequires:  %{python_module lxml}
 BuildRequires:  %{python_module pip}
 BuildRequires:  %{python_module pytest}
