@@ -1,4 +1,117 @@
 -------------------------------------------------------------------
+Mon Oct 12 04:48:20 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.2.79:
+  * Added
+    - MD095: detect confusable link destinations with accurate
+      source spans (7937059)
+    - MD060: add stable configurable table-cell padding (b2323fd)
+    - MD013: add opt-in sentence-pack reflow (#915) (d736ced)
+    - code-block-tools: add format-mode = "pipeline" to chain
+      formatters (b1da3de)
+    - docs: add question search and aggregate usage tracking
+      (aaabeaa)
+  * Fixed
+    - MD013: count only rewritten prose in list sentence warnings
+      (276f266)
+    - MD013: preserve reflow structure and expand scheduled fuzz
+      coverage (73a9731)
+    - MD013: preserve source sentence breaks and emphasis step
+      labels (042d304)
+    - MD013: keep emphasized step labels within their sentence
+      (c1d1073)
+    - MD013: keep a deep continuation line from setting a list
+      item's indent (fc8cacd)
+    - MD013: preserve document structure during reflow (79e8b95)
+    - preserve Markdown content across lint fixes (37dc5e7)
+    - MD013: read the code spans of a paragraph whose first line is
+      indented (4879938)
+    - MD013: keep a code span whole where only a reader without
+      math sees it (7f22aa9)
+    - MD013: keep a footnote's hard breaks and the lines its
+      paragraph runs on into (224509d)
+    - MD013: keep a quoted item's marker where a later line sits
+      short of its content (84309ba)
+    - MD013: recognize ) ordered list markers (2c9cced)
+    - MD013: leave a paragraph as written where a code span runs
+      into indentation (66a0855)
+    - MD013: keep a code span whole across a line that looks like a
+      block start (efc637d)
+    - MD013: keep a heading inside a list item on its own line
+      (fbe3671)
+    - MD013: keep the indentation of HTML text in a list item
+      (dd1dbf5)
+    - MD013: run an HTML block on past its closing tag to a blank
+      line (cfc5840)
+    - lint_context: run an HTML block opened by a closing tag to a
+      blank line (f1d4b66)
+    - MD013: keep a line after a lone task checkbox out of the item
+      (bf1712c)
+    - lint_context: run an HTML block closed on its opening line to
+      a blank line (28f5927)
+    - MD013: keep an item paragraph's indentation over a lazy line
+      (2065813)
+    - MD013: end a list item at a line after its HTML block
+      (0b1694b)
+    - MD013: strip enclosing item indentation from a lazy line in a
+      code span (2926426)
+    - MD013: never start a wrapped line with a table delimiter row
+      (071a070)
+    - MD013: drop extra marker padding before an item line kept as
+      written (4a1aae9)
+    - MD013: keep a link reference definition that opens a list
+      item paragraph (d579c9b)
+    - MD013: reflow a lazy continuation line with its list item
+      (f55ebb2)
+    - MD013: keep a list item's marker spacing when reflow leaves
+      lines it owns (236d7b7)
+    - MD013: keep a wrapped inline tag from opening an HTML block
+      (0d0b3e8)
+    - MD013: keep code span whitespace across container line breaks
+      (2de3893)
+    - MD013: split CJK sentences only where the line break renders
+      as the gap (8c21758)
+    - parser: continue a GFM table until a blank line or another
+      block (803e69c)
+    - MD056: close a padded row that had no closing pipe (4064ec6)
+    - parser: recognize every CommonMark type-6 tag as an HTML
+      block start (937186a)
+    - MD013: keep a list item's paragraph and the HTML block after
+      it tight (98b1aa4)
+    - MD013: stop reflow ending a wrapped line in a literal
+      backslash (48ddcb9)
+    - MD013: stop reflow splitting a list item paragraph at a NOTE:
+      line (2b6120b)
+    - MD013: drop a continuation line's indentation when reflow
+      joins it (5b1666d)
+    - MD013: stop splitting a sentence before clause punctuation
+      after a CJK ender (e9d055d)
+    - MD013: keep an element glued to sentence punctuation on its
+      sentence (8607da9)
+    - MD013: stop reflow breaking inside inline HTML comments
+      (e0d00da)
+    - parser: read a markdown attribute inside fenced code as code
+      (e388d58)
+    - MD013: keep whitespace that CommonMark treats as content when
+      reflowing (a77a051)
+    - MD013: stop reflow joining a paragraph onto an empty list
+      item (9b54483)
+    - config: apply subdirectory configs in a repository without a
+      root config (634284e)
+    - lint piped text under the nearest config of its
+      --stdin-filename (6605753)
+    - address CRLF bytes in --stdin-batch JSON fix ranges (792bdbe)
+    - read Rust doc comments only on lines that start in code
+      (56e73e7)
+    - lint a Rust document in --stdin-batch through its doc
+      comments (3d17db3)
+    - refuse source-code files instead of linting them as Markdown
+      (49c6527)
+  * Performance
+    - MD035: filter horizontal rule candidates before source checks
+      (c7e4242)
+
+-------------------------------------------------------------------
 Thu Oct 01 04:59:52 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.2.78:

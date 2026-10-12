@@ -17,7 +17,7 @@
 
 
 Name:           rumdl
-Version:        0.2.78
+Version:        0.2.79
 Release:        0
 Summary:        Markdown Linter written in Rust
 # Legal-Review-Notice: MPL-2.0 from the colored crate (statically linked).
