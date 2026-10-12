@@ -798,4 +798,12 @@ declares a GEOS upper bound.
 Local aarch64 build green, 535/535 ctest, rpmlint 0 errors / 0 badness.</comment>
     <requestid>1375315</requestid>
   </revision>
+  <revision rev="31" vrev="2">
+    <srcmd5>fdd773658f9c75ba148e61e0c8d21d4f</srcmd5>
+    <version>3.15.0</version>
+    <time>1791835684</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384310</requestid>
+  </revision>
 </revisionlist>

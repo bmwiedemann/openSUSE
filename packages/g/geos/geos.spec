@@ -105,7 +105,9 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:%{buildroot}%{_libdir}
 %license COPYING
 %doc NEWS.md README.md
 %{_bindir}/geos-config
-%{_includedir}/*
+%{_includedir}/geos.h
+%{_includedir}/geos_c.h
+%{_includedir}/geos/
 %{_libdir}/pkgconfig/%{name}.pc
 %dir %{_libdir}/cmake/GEOS
 %{_libdir}/cmake/GEOS/geos-*
