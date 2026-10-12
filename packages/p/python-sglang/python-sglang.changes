@@ -1,4 +1,15 @@
 -------------------------------------------------------------------
+Mon Oct 12 12:12:14 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
+
+- CVE-2026-105245: /server_info, gRPC GetServerInfo and
+  Engine.get_server_info leaked api_key, admin_api_key and
+  ssl_keyfile_password via full ServerArgs serialization (boo#1284214)
+  * sglang-30343-server-info-redact.patch
+- ZMQ msgpack IPC pickle survey (boo#1284755): top-level PickleWrapper
+  stays load-bearing for encoder, DP-controller and dumper traffic,
+  so no decode-side reject is shipped; sockets stay loopback-only
+
+-------------------------------------------------------------------
 Fri Oct  2 09:09:32 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 0.5.21:

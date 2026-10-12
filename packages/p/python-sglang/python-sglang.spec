@@ -50,6 +50,8 @@ Patch2:         sglang-cpu-rust-exts.patch
 Patch3:         sglang-grpc-system-protoc.patch
 # PATCH-FIX-UPSTREAM sglang-40185-bootstrap-room-dedup.patch boo#1283270 -- CVE-2026-102634: sgl-project/sglang PR 40185 (unmerged, head commit 1901ddecfe), report an unknown bootstrap_room as KVPoll.Failed instead of letting check_status raise KeyError, and count KVPoll.Success as bootstrap-done; 2 of the PR's 27 files, the rest being a typing modernisation that does not apply to 0.5.21
 Patch4:         sglang-40185-bootstrap-room-dedup.patch
+# PATCH-FIX-UPSTREAM sglang-30343-server-info-redact.patch boo#1284214 -- CVE-2026-105245: sgl-project/sglang PR 30343 (unmerged as of 2026-10-12, head commit 38787264b70c), mask api_key/admin_api_key/ssl_keyfile_password in /server_info, gRPC GetServerInfo and Engine.get_server_info; rebased onto 0.5.21 resolved_dict()
+Patch5:         sglang-30343-server-info-redact.patch
 BuildRequires:  %{python_module IPython}
 BuildRequires:  %{python_module Pillow}
 BuildRequires:  %{python_module SoundFile >= 0.13.1}
@@ -271,6 +273,8 @@ $python -m compileall -q -f -o 0 -o 1 --invalidation-mode unchecked-hash \
 # graph, the CLI, and that the Rust PyO3 extensions loaded.
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} $python -B -c "import sglang; print(sglang.__version__); import sglang.srt.rust_extensions._multimodal; import sglang.srt.rust_extensions._grpc"
 %python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} %{buildroot}%{_bindir}/sglang-%{$python_bin_suffix} --help
+# CVE-2026-105245: redacted_asdict() masks set secrets, keeps None, no mutate.
+%python_expand PYTHONPATH=%{buildroot}%{$python_sitearch}:%{buildroot}%{$python_sitelib} $python -B -c "from sglang.srt.server_args import ServerArgs; a=ServerArgs(model_path='dummy', api_key='u', admin_api_key='a', ssl_keyfile_password='s'); d=a.redacted_asdict(); assert d['api_key']=='****' and d['admin_api_key']=='****' and d['ssl_keyfile_password']=='****', d; assert a.api_key=='u'; b=ServerArgs(model_path='dummy'); e=b.redacted_asdict(); assert e['api_key'] is None and e['admin_api_key'] is None and e['ssl_keyfile_password'] is None, e"
 
 %pre
 %python_libalternatives_reset_alternative sglang

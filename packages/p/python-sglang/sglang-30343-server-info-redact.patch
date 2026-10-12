@@ -1,0 +1,85 @@
+Redact api_key/admin_api_key/ssl_keyfile_password from server info endpoints
+
+Fixes CVE-2026-105245 (boo#1284214): /server_info (and the deprecated
+/get_server_info alias), the gRPC bridge get_server_info, and
+Engine.get_server_info() serialized the full ServerArgs via
+resolved_dict(), exposing api_key, admin_api_key and
+ssl_keyfile_password verbatim. With only --admin-api-key set,
+/server_info is reachable anonymously (AuthLevel.NORMAL), so the
+admin key leaked to unauthenticated callers; with both keys set, a
+holder of either key could read the other.
+
+Carried from sgl-project/sglang PR 30343 by Rejudge-F (unmerged as of
+2026-10-12; closed by github-actions as stale, head commit
+38787264b70c5d931abf95ddf29d494fe5a943a8). Rebased onto 0.5.21: upstream
+wrote ServerArgs.redacted_asdict() around dataclasses.asdict(), but
+0.5.21 serializes via ServerArgs.resolved_dict() (msgspec defstruct +
+resolution pipeline), so redacted_asdict() here masks resolved_dict()
+instead. The three call sites and SENSITIVE_FIELDS are otherwise the
+same; the unit test from that PR is not carried (no pytest in %check).
+---
+ python/sglang/srt/entrypoints/engine.py      |  2 +-
+ python/sglang/srt/entrypoints/grpc_bridge.py |  2 +-
+ python/sglang/srt/entrypoints/http_server.py |  2 +-
+ python/sglang/srt/server_args.py             | 17 ++++++++++++++++-
+ 4 files changed, 20 insertions(+), 4 deletions(-)
+
+--- a/python/sglang/srt/server_args.py
++++ b/python/sglang/srt/server_args.py
+@@ -265,6 +265,23 @@
+             for field in record_fields(type(self))
+         }
+ 
++    # Fields whose values are secrets and must never leave the process via
++    # introspection surfaces (/server_info, gRPC GetServerInfo, etc.).
++    SENSITIVE_FIELDS = ("api_key", "admin_api_key", "ssl_keyfile_password")
++
++    def redacted_asdict(self) -> dict[str, Any]:
++        """Like resolved_dict() but with secret fields masked.
++
++        Keys stay present (so consumers can still detect whether e.g. an
++        API key is configured), but any set value is replaced with
++        "****". Unset (None) values are left as None.
++        """
++        d = self.resolved_dict()
++        for key in self.SENSITIVE_FIELDS:
++            if d.get(key) is not None:
++                d[key] = "****"
++        return d
++
+     LANGUAGE_MODEL_ONLY_ARCHITECTURES = (
+         "MuseGlimmerForConditionalGeneration",
+         "Cosmos3ForConditionalGeneration",
+--- a/python/sglang/srt/entrypoints/http_server.py
++++ b/python/sglang/srt/entrypoints/http_server.py
+@@ -859,7 +859,7 @@
+ 
+     return msgspec_to_builtins(
+         {
+-            **server_args.resolved_dict(),
++            **server_args.redacted_asdict(),
+             "launch_command": server_args.launch_command,
+             **_global_state.scheduler_info,
+             "startup_time": _global_state.tokenizer_manager.startup_time,
+--- a/python/sglang/srt/entrypoints/grpc_bridge.py
++++ b/python/sglang/srt/entrypoints/grpc_bridge.py
+@@ -430,7 +430,7 @@
+         return json.dumps(result, default=str)
+ 
+     def get_server_info(self) -> str:
+-        result: Dict[str, Any] = self.tokenizer_manager.server_args.resolved_dict()
++        result: Dict[str, Any] = self.tokenizer_manager.server_args.redacted_asdict()
+         # `resolved_dict` answers with what resolution decided; the launch
+         # command answers with what was asked for, and the two are not
+         # derivable from each other. The HTTP and in-process readbacks both
+--- a/python/sglang/srt/entrypoints/engine.py
++++ b/python/sglang/srt/entrypoints/engine.py
+@@ -1488,7 +1488,7 @@
+         )
+         return msgspec_to_builtins(
+             {
+-                **self.tokenizer_manager.server_args.resolved_dict(),
++                **self.tokenizer_manager.server_args.redacted_asdict(),
+                 "launch_command": self.tokenizer_manager.server_args.launch_command,
+                 **self._scheduler_init_result.scheduler_infos[0],
+                 "startup_time": self.tokenizer_manager.startup_time,

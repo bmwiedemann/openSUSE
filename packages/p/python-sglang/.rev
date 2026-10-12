@@ -136,4 +136,12 @@ Security:
     <comment>Update to 0.5.21. CVE-2026-86793 is fixed upstream, so its two SafeUnpickler backport patches are dropped; the still-unmerged PR 40185 patch for CVE-2026-102634 (boo#1283270) is rebased and applies at fuzz 0. Also rebases sglang-relax-cpu-requirements.patch and regenerates vendor.tar.zst.</comment>
     <requestid>1382074</requestid>
   </revision>
+  <revision rev="7" vrev="2">
+    <srcmd5>db21312d11f1f40358b93772a7c418e3</srcmd5>
+    <version>0.5.21</version>
+    <time>1791835683</time>
+    <user>dimstar_suse</user>
+    <comment>Security: redact server_info secrets for CVE-2026-105245 (boo#1284214) on 0.5.21; ZMQ pickle survey for boo#1284755 ships no code change (documented posture).</comment>
+    <requestid>1384305</requestid>
+  </revision>
 </revisionlist>
