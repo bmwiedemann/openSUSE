@@ -1,4 +1,48 @@
 -------------------------------------------------------------------
+Sun Oct 11 15:15:24 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.24:
+  * scd: Fix for regression in 2.5.23 related to the new Nitrokey
+    detection
+
+-------------------------------------------------------------------
+Sun Oct 11 15:02:08 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- Update to 2.5.23:
+  * gpg: New option --allow-9980 to enable the processing of
+    RFC-9980 specified data structures. The use of this option is
+    only recommended if external policy requirements demand the use
+    of these governmental approved specification. PGP folks
+    requiring some PQC resistance should keep on using the standard
+    LibrePGP Kyber algorithm introduced 2 years ago
+  * gpg: In 9980 mode support PQC encryption using ML-KEM (aka
+    Kyber) with X448, X25519, Brainpool, or NIST curves as
+    specified by RFC-9980 et al
+  * gpg: In 9980 mode support ED25519 and X25519 as specified by
+    RFC-9580 under the names "ietf27" and "ietf27".
+  * gpg: Add experimental support for a --compliance=fips mode to
+    use GCM for bulk encryption.
+  * scd: Add Nitrokey 3 to pcsc-shared interference detection
+  * gpgsm: Fix an exploitable printf bug when using the debug
+    option "--debug x509"
+  * dirmngr: Make the LDAP upload flags also work for KS_SEARCH
+  * dirmngr: Fix OOB read in DNS CERT record parser
+  * scd: Fix OOB access in DO parsing of faulty cards
+  * dirmngr: Add a mitigation for badly configured web key
+    directories
+  * New option --debug-no-libgcrypt for gpg, gpgsm, and agent
+    This debug option is useful to avoid cluttering other debug
+    output with libgcrypt generated debug details
+  * gpg: New --list-options "debug-show-sexp" to print a secret key
+    as an s-expression
+- drop patches due to different upstream changes:
+  * gnupg-add-test-cases-for-import-without-uid.patch
+  * gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
+- Rebase patches:
+  * gnupg-add_legacy_FIPS_mode_option.patch
+  * Rebase gnupg-revert-rfc4880bis.patch
+
+-------------------------------------------------------------------
 Thu Sep  3 06:06:10 UTC 2026 - Andreas Stieger <andreas.stieger@gmx.de>
 
 - Update to 2.5.22:

@@ -18,7 +18,7 @@
 
 
 Name:           gpg2
-Version:        2.5.22
+Version:        2.5.24
 Release:        0
 Summary:        File encryption, decryption, signature creation and verification utility
 License:        GPL-3.0-or-later
@@ -39,8 +39,6 @@ Patch5:         gnupg-detect_FIPS_mode.patch
 Patch6:         gnupg-add_legacy_FIPS_mode_option.patch
 Patch7:         gnupg-2.2.16-secmem.patch
 Patch8:         gnupg-accept_subkeys_with_a_good_revocation_but_no_self-sig_during_import.patch
-Patch9:         gnupg-add-test-cases-for-import-without-uid.patch
-Patch10:        gnupg-allow-import-of-previously-known-keys-even-without-UIDs.patch
 #PATCH-FIX-SUSE Allow 8192 bit RSA keys in keygen UI when large_rsa is set
 Patch11:        gnupg-allow-large-rsa.patch
 #PATCH-FIX-SUSE Revert the rfc4880bis features default of key generation
@@ -57,7 +55,7 @@ BuildRequires:  pkgconfig(gpg-error) >= 1.56
 BuildRequires:  pkgconfig(ksba) >= 1.6.3
 BuildRequires:  pkgconfig(ldap)
 BuildRequires:  pkgconfig(libassuan) >= 3.0.0
-BuildRequires:  pkgconfig(libgcrypt) >= 1.11.0
+BuildRequires:  pkgconfig(libgcrypt) >= 1.12.0
 BuildRequires:  pkgconfig(libusb-1.0)
 BuildRequires:  pkgconfig(npth) >= 1.2
 BuildRequires:  pkgconfig(readline)
