@@ -1,4 +1,18 @@
 -------------------------------------------------------------------
+Mon Oct 12 04:46:13 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
+
+- Update to version 0.62.1:
+  * sca: use libcrypto.so.4 for go-msft 1.26.9+ via
+    microsoft_toolset_version (#2694)
+  * sca: drop obsolete experiments (#2693)
+  * linter: recognise -docs and versioned -doc-<version> as doc
+    packages (#2686)
+  * fix(renovate): read the yam config from the config file's
+    repository (#2690)
+  * build(deps): bump golang.org/x/sync (#2691)
+  * build(deps): bump github.com/go-git/go-git/v5 (#2687)
+
+-------------------------------------------------------------------
 Thu Oct 08 05:26:37 UTC 2026 - Johannes Kastl <opensuse_buildservice@ojkastl.de>
 
 - Update to version 0.62.0:
