@@ -538,4 +538,12 @@ This package is included in Debian.
 - Add proj-data-co subpackage for the Colombia grids</comment>
     <requestid>1378274</requestid>
   </revision>
+  <revision rev="57" vrev="2">
+    <srcmd5>2b1a84bdfdc05ef60868b1d0d410b02c</srcmd5>
+    <version>9.9.0</version>
+    <time>1791835745</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384365</requestid>
+  </revision>
 </revisionlist>

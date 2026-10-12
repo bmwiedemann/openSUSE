@@ -82,7 +82,6 @@ Supplements:  proj\
 %files data-%{countrycode}\
 %{wildcard}\
 %{extrafile}
-License:        MIT
 %data_subpkg -c ar -n Argentina
 %data_subpkg -c at -n Austria
 %data_subpkg -c au -n Australia
