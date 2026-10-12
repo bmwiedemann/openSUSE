@@ -23,7 +23,7 @@
 %endif
 
 Name:           muon
-Version:        0.6.0
+Version:        0.7.0
 Release:        0
 Summary:        An implementation of the meson build system in c99
 License:        Apache-2.0 AND GPL-3.0-only

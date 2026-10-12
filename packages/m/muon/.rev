@@ -31,4 +31,12 @@
   * Added wayland module</comment>
     <requestid>1374767</requestid>
   </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>2c911f587037fdd6b7026d42c1944594</srcmd5>
+    <version>0.7.0</version>
+    <time>1791835540</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1384125</requestid>
+  </revision>
 </revisionlist>
