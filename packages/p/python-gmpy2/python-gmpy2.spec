@@ -18,7 +18,7 @@
 
 %{?sle15_python_module_pythons}
 Name:           python-gmpy2
-Version:        2.3.1
+Version:        2.3.2
 Release:        0
 Summary:        GMP/MPIR, MPFR, and MPC interface to Python 2.6+ and 3x
 License:        LGPL-3.0-only

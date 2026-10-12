@@ -142,4 +142,12 @@
   * Drop additional constraint for Jacobi symbol. (skirpichev)</comment>
     <requestid>1365770</requestid>
   </revision>
+  <revision rev="11" vrev="1">
+    <srcmd5>14ee2ee7d781415fecb81d5217727116</srcmd5>
+    <version>2.3.2</version>
+    <time>1791835661</time>
+    <user>dimstar_suse</user>
+    <comment>Automatic submission by obs-autosubmit</comment>
+    <requestid>1384294</requestid>
+  </revision>
 </revisionlist>

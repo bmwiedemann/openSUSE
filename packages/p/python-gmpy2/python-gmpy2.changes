@@ -1,4 +1,11 @@
 -------------------------------------------------------------------
+Mon Oct  5 11:30:01 UTC 2026 - Dirk Müller <dmueller@suse.com>
+
+- update to 2.3.2:
+  * Fix processing defaults for e/E format types precision.
+  * Support PyPy3.12.
+
+-------------------------------------------------------------------
 Sun Jul  5 08:35:10 UTC 2026 - Dirk Müller <dmueller@suse.com>
 
 - update to 2.3.1:
