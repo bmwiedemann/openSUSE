@@ -1,4 +1,28 @@
 -------------------------------------------------------------------
+Mon Oct 12 07:54:25 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
+
+- Update to 0.6.6
+  * Add --sysinfo command by @JohnAZoidberg in #353
+  * --thermal: Add AP throttle status by @JohnAZoidberg in #354
+  * framework_tool: Add man page by @nadzyah in #352
+  * Add many more commands by @JohnAZoidberg in #355
+  * flake.lock: Update by @JohnAZoidberg in #361
+  * Fix npcx/zephyr flash layout by @JohnAZoidberg in #363
+  * Add installation instructions for Aurora / Project Bluefin
+    by @MrAn0nym in #364
+  * Add support for Laptop 12 Intel Core Series 3
+    by @JohnAZoidberg in #368
+  * sakura: Add support for CCG8 CFP binaries
+    by @JohnAZoidberg in #359
+  * Fix tests in OVMF. Need to enable SMM by @JohnAZoidberg in #371
+  * Add support for CCG6 CFP binaries by @JohnAZoidberg in #372
+  * --thermal: Return data instead of only printing it
+    by @blackdragoon26 in #369
+  * --versions: Integrate with smartmontools library
+    by @JohnAZoidberg in #374
+  * Bump 0.6.6 by @JohnAZoidberg in #356
+
+-------------------------------------------------------------------
 Tue Sep  1 12:43:03 UTC 2026 - Nico Krapp <nico.krapp@suse.com>
 
 - don't use vendored system libs
