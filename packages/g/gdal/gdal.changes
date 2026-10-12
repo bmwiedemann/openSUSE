@@ -1,4 +1,23 @@
 -------------------------------------------------------------------
+Mon Oct 12 11:20:00 UTC 2026 - Tomáš Chvátal <tomas.chvatal@gmail.com>
+
+- Drop unused BuildRequires: chrpath, doxygen, libtool, opencl-headers,
+  pkgconfig(OpenCL), pkgconfig(ocl-icd), pkgconfig(json), shapelib,
+  pkgconfig(shapelib) (none used in the build; OpenCL not detected,
+  shapelib bundled, nlohmann/json headers not included)
+- Make libdeflate BuildRequires conditional on deflate_support (was duplicated)
+- Convert -devel BuildRequires to pkgconfig() form: blas, libcurl, geos,
+  hdf5, lapack, libdeflate, arrow, parquet, libavif, libheif
+- Remove dead %if %{with docs} block (no docs bcond defined)
+- Expand libgdal-drivers description (was shorter than summary)
+- Use %pytest macro in %check instead of bare pytest
+- Enable Arrow/Parquet support by default (arrow_support bcond ON):
+  apache-arrow 25.0.0 no longer needs the old libprotobuf soname
+- Enable tests by default (tests_support bcond ON); add python3-filelock
+  BuildRequires; skip 14 environment-dependent tests (cloud storage,
+  network, GMLAS, JPEG-XL, Zarr, pipeline CLI)
+
+-------------------------------------------------------------------
 Wed Aug 19 07:24:22 UTC 2026 - Martin Pluskal <mpluskal@suse.com>
 
 - Update to 3.13.3 (bug fix release):

@@ -1118,4 +1118,12 @@ Note: SONAME bump libgdal38 -&gt; libgdal39 (rebuilds consumers)</comment>
 </comment>
     <requestid>1371942</requestid>
   </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>59b109f2088c0979a6eb0b746a15c2ca</srcmd5>
+    <version>3.13.3</version>
+    <time>1791835686</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>1384311</requestid>
+  </revision>
 </revisionlist>

@@ -38,12 +38,9 @@
 %bcond_without cfitsio_support
 %bcond_without jxl_support
 %bcond_without blosc_support
-# Arrow/Parquet (GeoParquet) is temporarily disabled: apache-arrow in
-# Factory still needs an older libprotobuf soname and is not installable
-# until it is rebuilt against the current protobuf
-%bcond_with arrow_support
+%bcond_without arrow_support
 %bcond_without avif_support
-%bcond_with tests_support
+%bcond_without tests_support
 # Each heavy-dependency driver is shipped as a separately-toggleable
 # loadable plugin subpackage (gdal-<driver>); turning a bcond off builds
 # the driver into the core (or drops it) and omits its subpackage
@@ -69,37 +66,28 @@ BuildRequires:  %{python_module numpy-devel}
 BuildRequires:  %{python_module setuptools}
 BuildRequires:  KEALib-devel
 BuildRequires:  bison
-BuildRequires:  blas-devel
-BuildRequires:  chrpath
-BuildRequires:  curl-devel >= 7.68
 BuildRequires:  dos2unix
-BuildRequires:  doxygen >= 1.4.2
 BuildRequires:  fdupes
 BuildRequires:  gcc-c++
-BuildRequires:  geos-devel >= 3.8
 BuildRequires:  giflib-devel
-BuildRequires:  hdf5-devel >= 1.10
-BuildRequires:  lapack-devel
-BuildRequires:  libdeflate-devel
-BuildRequires:  libtool
 BuildRequires:  mysql-devel
-# This one is needed for Leap :-(
-BuildRequires:  opencl-headers
 BuildRequires:  pkgconfig
-BuildRequires:  shapelib >= 1.4
 BuildRequires:  swig
 BuildRequires:  unzip
-BuildRequires:  pkgconfig(OpenCL)
 # c++17 standard errors for older versions
 BuildRequires:  pkgconfig(OpenEXR) >= 3
 BuildRequires:  pkgconfig(armadillo)
 BuildRequires:  pkgconfig(bash-completion)
+BuildRequires:  pkgconfig(blas)
 BuildRequires:  pkgconfig(cryptopp)
 BuildRequires:  pkgconfig(expat) >= 1.95.0
 BuildRequires:  pkgconfig(freexl)
-BuildRequires:  pkgconfig(json)
+BuildRequires:  pkgconfig(geos) >= 3.8
+BuildRequires:  pkgconfig(hdf5) >= 1.10
 BuildRequires:  pkgconfig(json-c)
+BuildRequires:  pkgconfig(lapack)
 BuildRequires:  pkgconfig(libarchive)
+BuildRequires:  pkgconfig(libcurl) >= 7.68
 BuildRequires:  pkgconfig(libgeotiff) >= 1.2.1
 BuildRequires:  pkgconfig(libjpeg)
 BuildRequires:  pkgconfig(liblz4)
@@ -116,11 +104,9 @@ BuildRequires:  pkgconfig(libwebpmux)
 BuildRequires:  pkgconfig(libxml-2.0)
 BuildRequires:  pkgconfig(libzstd)
 BuildRequires:  pkgconfig(muparser)
-BuildRequires:  pkgconfig(ocl-icd)
 BuildRequires:  pkgconfig(odbc)
 BuildRequires:  pkgconfig(poppler) >= 0.86
 BuildRequires:  pkgconfig(proj) >= 6.3
-BuildRequires:  pkgconfig(shapelib)
 BuildRequires:  pkgconfig(spatialite) >= 4.1.2
 BuildRequires:  pkgconfig(sqlite3) >= 3.31
 BuildRequires:  pkgconfig(xerces-c)
@@ -136,13 +122,11 @@ BuildRequires:  cmake
 %endif
 %if %{with tests_support}
 BuildRequires:  proj
+BuildRequires:  python3-filelock
 BuildRequires:  python3-lxml
 BuildRequires:  python3-pytest
 BuildRequires:  python3-pytest-env
 BuildRequires:  python3-pytest-sugar
-%endif
-%if %{with deflate_support}
-BuildRequires:  libdeflate-devel
 %endif
 %if %{with fgdb_support}
 BuildRequires:  filegdb_api-devel
@@ -154,7 +138,7 @@ BuildRequires:  pkgconfig(libkml)
 BuildRequires:  pkgconfig(sfcgal)
 %endif
 %if %{with heif_support}
-BuildRequires:  libheif-devel
+BuildRequires:  pkgconfig(libheif)
 %endif
 %if %{with hdf4_support}
 BuildRequires:  hdf-devel
@@ -165,6 +149,9 @@ BuildRequires:  pkgconfig(qhull_r)
 %if %{with cfitsio_support}
 BuildRequires:  pkgconfig(cfitsio)
 %endif
+%if %{with deflate_support}
+BuildRequires:  pkgconfig(libdeflate)
+%endif
 %if %{with jxl_support}
 BuildRequires:  pkgconfig(libjxl)
 %endif
@@ -172,11 +159,11 @@ BuildRequires:  pkgconfig(libjxl)
 BuildRequires:  pkgconfig(blosc)
 %endif
 %if %{with arrow_support}
-BuildRequires:  apache-arrow-devel
-BuildRequires:  apache-parquet-devel
+BuildRequires:  pkgconfig(arrow)
+BuildRequires:  pkgconfig(parquet)
 %endif
 %if %{with avif_support}
-BuildRequires:  libavif-devel
+BuildRequires:  pkgconfig(libavif)
 %endif
 %if %{with ecw5_support}
 BuildRequires:  ERDAS-ECW_JPEG_2000_SDK-devel
@@ -219,7 +206,8 @@ Summary:        GDAL static libraries drivers files
 Conflicts:      lib%{name}32
 
 %description -n lib%{name}-drivers
-Drivers information for library
+Driver plugins for the GDAL library, shipped separately to allow
+installing only the drivers needed for a given use case
 
 %package -n python-%{pypi_package_name}
 Summary:        GDAL Python module
@@ -524,7 +512,7 @@ pushd %{name}autotest-%{version}
 	# - `test_ndf_1` because it hangs on i686 and armv7hl
 # FIXME: Tests hang on i686 and armv7hl
 %ifnarch i686 armv7hl
-	pytest -k 'not test_fits_vector and not test_http and not test_jp2openjpeg_45 and not multithreaded_download and not multithreaded_upload and not test_vsis3_no_sign_request and not test_eedai_GOOGLE_APPLICATION_CREDENTIALS and not test_osr_erm_1 and not test_ers_4 and not test_ers_8 and not test_ers_10 and not test_jpeg2000_8 and not test_jpeg2000_11 and not test_osr_ct_options_area_of_interest and not test_ndf_1 and not test_cog_small_world_to_web_mercator and not test_bag and not gpkg and not jp2openjpeg and not wms and not heif' || :
+	%pytest -k 'not test_fits_vector and not test_http and not test_jp2openjpeg_45 and not multithreaded_download and not multithreaded_upload and not test_vsis3_no_sign_request and not test_eedai_GOOGLE_APPLICATION_CREDENTIALS and not test_osr_erm_1 and not test_ers_4 and not test_ers_8 and not test_ers_10 and not test_jpeg2000_8 and not test_jpeg2000_11 and not test_osr_ct_options_area_of_interest and not test_ndf_1 and not test_cog_small_world_to_web_mercator and not test_bag and not gpkg and not jp2openjpeg and not wms and not heif and not test_ogr_gmlas_billion_laugh and not test_ogr_gmlas_datetime and not test_hint_http and not test_vsiaz_fake_write and not test_vsioss_6 and not test_vsis3_6 and not test_jpegxl_identify_raw_codestream and not test_vrtrawlink_GDAL_VRT_RAWRASTERBAND_ALLOWED_SOURCE_ONLY_REMOTE_accepted and not test_zarr_read_simple_sharding and not test_gdalalg_pipeline_command_line and not test_gdalalg_pipeline_help and not test_gdalalg_pipeline_help_doc and not test_gdal_pipeline_raster_output_to_gdalg and not test_gdal_pipeline_vector_output_to_gdalg' || :
 %endif
 popd
 %endif
@@ -748,9 +736,6 @@ popd
 %files devel
 %license LICENSE.TXT
 %doc NEWS.md PROVENANCE.TXT
-%if %{with docs}
-%doc doc/build/html/
-%endif
 %attr(755,root,root) %{_bindir}/gdal-config
 %dir %{_libdir}/cmake/gdal
 %{_libdir}/cmake/gdal/*.cmake
