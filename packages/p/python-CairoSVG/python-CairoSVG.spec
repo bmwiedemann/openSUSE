@@ -23,7 +23,7 @@
 %endif
 %{?sle15_python_module_pythons}
 Name:           python-CairoSVG
-Version:        2.9.0
+Version:        2.9.1
 Release:        0
 Summary:        A Python SVG converter based on Cairo
 License:        LGPL-3.0-or-later

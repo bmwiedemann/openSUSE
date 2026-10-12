@@ -3,7 +3,7 @@
     <param name="url">https://github.com/Kozea/CairoSVG.git</param>
     <param name="scm">git</param>
     <param name="submodules">enable</param>
-    <param name="revision">2.9.0</param>
+    <param name="revision">2.9.1</param>
     <param name="versionformat">@PARENT_TAG@+git@TAG_OFFSET@</param>
     <param name="versionrewrite-pattern">(.*?)(\+git0)?$</param>
   </service>
