@@ -1,4 +1,12 @@
 -------------------------------------------------------------------
+Mon Oct 12 06:01:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
+
+- Update to version 142-bld314
+  Bugfix
+  * SC/MP: E register is also allowed as displacement for PC-based
+    addressing.
+
+-------------------------------------------------------------------
 Mon Sep 28 06:15:29 UTC 2026 - Martin Hauke <mardnh@gmx.de>
 
 - Update to version 142-bld313
