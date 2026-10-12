@@ -50,7 +50,8 @@ sed -i 's/\(\tVersion\s=\s"\)0.0.1\("$\)/\1%{version}\2/g' cli/version.go
 
 %build
 %goprep %{import_path}
-CGO_ENABLED=0 go build -v -x -buildmode=pie -ldflags="-X 'github.com/aliyun/aliyun-cli/cli.Version=${VERSION}'" -mod=vendor -o aliyun main/main.go
+go generate ./bundledmeta
+CGO_ENABLED=0 go build -v -x -buildmode=pie -ldflags="-X 'github.com/aliyun/aliyun-cli/cli.Version=${VERSION}'" -tags aliyun_cli_packed_meta -mod=vendor -o aliyun main/main.go
 
 %install
 install -d %{buildroot}%{_bindir}

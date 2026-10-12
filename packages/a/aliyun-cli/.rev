@@ -354,4 +354,12 @@
   (bsc#1283596, CVE-2026-63209) (forwarded request 1382008 from glaubitz)</comment>
     <requestid>1382082</requestid>
   </revision>
+  <revision rev="24" vrev="3">
+    <srcmd5>7269505aff29dbb4166812643d41a141</srcmd5>
+    <version>3.5.1</version>
+    <time>1791835658</time>
+    <user>dimstar_suse</user>
+    <comment>- Generate code from bundled metadata before build (bsc#1284203) (forwarded request 1384272 from glaubitz)</comment>
+    <requestid>1384287</requestid>
+  </revision>
 </revisionlist>

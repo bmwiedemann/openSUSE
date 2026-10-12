@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Mon Oct 12 09:31:23 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Generate code from bundled metadata before build (bsc#1284203)
+
+-------------------------------------------------------------------
 Fri Oct  2 05:51:50 UTC 2026 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
 
 - Update github.com/klauspost/compress to v1.18.7
